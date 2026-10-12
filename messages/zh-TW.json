@@ -234,6 +234,29 @@
         "submit": "送出成績",
         "submitting": "送出中…",
         "thanks": "感謝參與，{name}！"
+      },
+      "share": {
+        "button": "分享結果",
+        "title": "分享你的結果",
+        "kicker": "{kind, select, daily {每日棋盤 · {date}} review {複習回合} other {回合結果}}",
+        "accuracy": "準確率",
+        "pieces": "{total, plural, other {# 子}}中記住 {correct, number} 子",
+        "setting": "設定",
+        "settingValue": "{pieceCount, plural, other {# 子}}，記憶 {seconds} 秒",
+        "rebuild": "重建用時",
+        "seconds": "{seconds} 秒",
+        "rating": "評分",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "連勝",
+        "winStreakValue": "{count, plural, other {連續 # 回合}}",
+        "legend": {
+          "correct": "正確",
+          "missed": "遺漏",
+          "wrong": "錯誤"
+        },
+        "cta": "你能超越嗎？",
+        "text": "{kind, select, daily {我在 Memory Chess {date} 的每日棋盤中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。} review {我在 Memory Chess 的複習棋盤中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。} other {我在 Memory Chess 中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。}}你能超越嗎？",
+        "alt": "Memory Chess 結果卡片：{details}。"
       }
     },
     "comparison": {

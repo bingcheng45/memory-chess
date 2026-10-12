@@ -234,6 +234,29 @@
         "submit": "Wyślij wynik",
         "submitting": "Wysyłanie…",
         "thanks": "Dziękujemy za udział, {name}!"
+      },
+      "share": {
+        "button": "Udostępnij wynik",
+        "title": "Udostępnij swój wynik",
+        "kicker": "{kind, select, daily {Szachownica dnia · {date}} review {Runda powtórkowa} other {Wynik rundy}}",
+        "accuracy": "Celność",
+        "pieces": "{correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}}",
+        "setting": "Ustawienie",
+        "settingValue": "{pieceCount, plural, one {# figura} few {# figury} many {# figur} other {# figury}}, {seconds} s na zapamiętanie",
+        "rebuild": "Czas rozwiązania",
+        "seconds": "{seconds} s",
+        "rating": "Ocena",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Seria wygranych",
+        "winStreakValue": "{count, plural, one {# runda z rzędu} few {# rundy z rzędu} many {# rund z rzędu} other {# rundy z rzędu}}",
+        "legend": {
+          "correct": "Dobrze",
+          "missed": "Pominięta",
+          "wrong": "Źle"
+        },
+        "cta": "Pobijesz to?",
+        "text": "{kind, select, daily {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na dziennej szachownicy Memory Chess z dnia {date}.} review {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na szachownicy powtórkowej Memory Chess.} other {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) w Memory Chess.}} Pobijesz to?",
+        "alt": "Karta wyniku Memory Chess: {details}."
       }
     },
     "comparison": {

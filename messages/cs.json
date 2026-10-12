@@ -234,6 +234,29 @@
         "submit": "Odeslat výsledek",
         "submitting": "Odesílání…",
         "thanks": "Díky za účast, {name}!"
+      },
+      "share": {
+        "button": "Sdílet výsledek",
+        "title": "Sdílet výsledek",
+        "kicker": "{kind, select, daily {Denní pozice · {date}} review {Kolo opakování} other {Výsledek kola}}",
+        "accuracy": "Přesnost",
+        "pieces": "{correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}}",
+        "setting": "Nastavení",
+        "settingValue": "{pieceCount, plural, one {# figura} few {# figury} many {# figury} other {# figur}}, {seconds} s na zapamatování",
+        "rebuild": "Čas řešení",
+        "seconds": "{seconds} s",
+        "rating": "Hodnocení",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Vítězná série",
+        "winStreakValue": "{count, plural, one {# kolo v řadě} few {# kola v řadě} many {# kola v řadě} other {# kol v řadě}}",
+        "legend": {
+          "correct": "Správně",
+          "missed": "Vynecháno",
+          "wrong": "Špatně"
+        },
+        "cta": "Překonáš to?",
+        "text": "{kind, select, daily {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na denní pozici Memory Chess z {date}.} review {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na opakovací pozici Memory Chess.} other {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) v Memory Chess.}} Překonáš to?",
+        "alt": "Karta s výsledkem Memory Chess: {details}."
       }
     },
     "comparison": {

@@ -37,6 +37,9 @@ import ArticleTile from "@/components/game/ArticleTile";
 import { countWrong } from "@/lib/game/scoring";
 import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
+import ShareResult from "@/components/game/ShareResult";
+import { roundShareOf } from "@/components/game/roundShare";
+import { START_RATING } from "@/lib/store/gameStore";
 
 // Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
 // never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.
@@ -345,6 +348,16 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
             <button type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary">
               {t("submitToLeaderboard")}
             </button>
+          )}
+          {round.phase === "scored" && (
+            <ShareResult
+              share={roundShareOf(round, {
+                rating: gameState.skillRating ?? START_RATING,
+                change: extendedGameState.skillRatingChange ?? 0,
+                winStreak: gameState.streak ?? 0,
+              })}
+              roundKey={gameState.labRoundId ?? "round"}
+            />
           )}
           <Link href="/leaderboard" className="lab-result-link">
             {t("viewLeaderboard")}

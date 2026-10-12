@@ -234,6 +234,29 @@
         "submit": "स्कोर भेजें",
         "submitting": "भेजा जा रहा है...",
         "thanks": "भाग लेने के लिए धन्यवाद, {name}!"
+      },
+      "share": {
+        "button": "नतीजा साझा करें",
+        "title": "अपना नतीजा साझा करें",
+        "kicker": "{kind, select, daily {दैनिक बोर्ड · {date}} review {समीक्षा राउंड} other {राउंड का नतीजा}}",
+        "accuracy": "सटीकता",
+        "pieces": "{total, number} में से {correct, number} मोहरे",
+        "setting": "सेटिंग",
+        "settingValue": "{pieceCount, plural, one {# मोहरा} other {# मोहरे}}, {seconds} से. याद करने का समय",
+        "rebuild": "हल करने का समय",
+        "seconds": "{seconds} से.",
+        "rating": "रेटिंग",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "जीत का सिलसिला",
+        "winStreakValue": "{count, plural, one {# राउंड} other {# राउंड}} लगातार",
+        "legend": {
+          "correct": "सही",
+          "missed": "छूटा",
+          "wrong": "गलत"
+        },
+        "cta": "क्या आप इसे हरा सकते हैं?",
+        "text": "{kind, select, daily {मैंने Memory Chess के {date} के दैनिक बोर्ड पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।} review {मैंने Memory Chess के एक समीक्षा बोर्ड पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।} other {मैंने Memory Chess पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।}} क्या आप इसे हरा सकते हैं?",
+        "alt": "Memory Chess नतीजा कार्ड: {details}।"
       }
     },
     "comparison": {

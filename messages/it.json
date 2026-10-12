@@ -234,6 +234,29 @@
         "submit": "Invia punteggio",
         "submitting": "Invio...",
         "thanks": "Grazie per aver partecipato, {name}!"
+      },
+      "share": {
+        "button": "Condividi il risultato",
+        "title": "Condividi il tuo risultato",
+        "kicker": "{kind, select, daily {Scacchiera del giorno · {date}} review {Partita di ripasso} other {Risultato della partita}}",
+        "accuracy": "Precisione",
+        "pieces": "{correct, number} su {total, plural, one {# pezzo} many {# pezzi} other {# pezzi}}",
+        "setting": "Impostazione",
+        "settingValue": "{pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}}, {seconds} s di memorizzazione",
+        "rebuild": "Tempo di risoluzione",
+        "seconds": "{seconds} s",
+        "rating": "Punteggio",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Serie di vittorie",
+        "winStreakValue": "{count, plural, one {# partita di fila} many {# partite di fila} other {# partite di fila}}",
+        "legend": {
+          "correct": "Corretto",
+          "missed": "Mancato",
+          "wrong": "Sbagliato"
+        },
+        "cta": "Riesci a fare di meglio?",
+        "text": "{kind, select, daily {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) sulla scacchiera giornaliera di Memory Chess del {date}.} review {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) su una scacchiera di ripasso di Memory Chess.} other {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) su Memory Chess.}} Riesci a fare di meglio?",
+        "alt": "Scheda del risultato di Memory Chess: {details}."
       }
     },
     "comparison": {

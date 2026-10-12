@@ -234,6 +234,29 @@
         "submit": "Kirim skor",
         "submitting": "Mengirim…",
         "thanks": "Terima kasih sudah ikut, {name}!"
+      },
+      "share": {
+        "button": "Bagikan hasil",
+        "title": "Bagikan hasilmu",
+        "kicker": "{kind, select, daily {Papan harian · {date}} review {Ronde ulasan} other {Hasil ronde}}",
+        "accuracy": "Akurasi",
+        "pieces": "{correct, number} dari {total, plural, other {# bidak}}",
+        "setting": "Pengaturan",
+        "settingValue": "{pieceCount, plural, other {# bidak}}, {seconds} dtk menghafal",
+        "rebuild": "Waktu penyelesaian",
+        "seconds": "{seconds} dtk",
+        "rating": "Rating",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Kemenangan beruntun",
+        "winStreakValue": "{count, plural, other {# ronde berturut-turut}}",
+        "legend": {
+          "correct": "Benar",
+          "missed": "Terlewat",
+          "wrong": "Salah"
+        },
+        "cta": "Bisa kalahkan?",
+        "text": "{kind, select, daily {Aku mengingat {correct, number} dari {total, number} bidak ({accuracy}) di papan harian Memory Chess tanggal {date}.} review {Aku mengingat {correct, number} dari {total, number} bidak ({accuracy}) di papan ulasan Memory Chess.} other {Aku mengingat {correct, number} dari {total, number} bidak ({accuracy}) di Memory Chess.}} Bisa kalahkan?",
+        "alt": "Kartu hasil Memory Chess: {details}."
       }
     },
     "comparison": {

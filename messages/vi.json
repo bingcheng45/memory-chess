@@ -234,6 +234,29 @@
         "submit": "Gửi điểm",
         "submitting": "Đang gửi…",
         "thanks": "Cảm ơn bạn đã tham gia, {name}!"
+      },
+      "share": {
+        "button": "Chia sẻ kết quả",
+        "title": "Chia sẻ kết quả của bạn",
+        "kicker": "{kind, select, daily {Bàn cờ hằng ngày · {date}} review {Ván ôn tập} other {Kết quả ván}}",
+        "accuracy": "Độ chính xác",
+        "pieces": "{correct, number} trên {total, plural, other {# quân}}",
+        "setting": "Thiết lập",
+        "settingValue": "{pieceCount, plural, other {# quân}}, ghi nhớ {seconds} giây",
+        "rebuild": "Thời gian hoàn thành",
+        "seconds": "{seconds} giây",
+        "rating": "Điểm",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Chuỗi thắng",
+        "winStreakValue": "{count, plural, other {# ván liên tiếp}}",
+        "legend": {
+          "correct": "Đúng",
+          "missed": "Sót",
+          "wrong": "Sai"
+        },
+        "cta": "Bạn có vượt được không?",
+        "text": "{kind, select, daily {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở bàn cờ hằng ngày của Memory Chess ngày {date}.} review {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở một bàn cờ ôn tập của Memory Chess.} other {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) trên Memory Chess.}} Bạn có vượt được không?",
+        "alt": "Thẻ kết quả Memory Chess: {details}."
       }
     },
     "comparison": {

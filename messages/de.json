@@ -234,6 +234,29 @@
         "submit": "Ergebnis senden",
         "submitting": "Wird gesendet...",
         "thanks": "Danke fürs Mitmachen, {name}!"
+      },
+      "share": {
+        "button": "Ergebnis teilen",
+        "title": "Teile dein Ergebnis",
+        "kicker": "{kind, select, daily {Tagesbrett · {date}} review {Wiederholungsrunde} other {Rundenergebnis}}",
+        "accuracy": "Genauigkeit",
+        "pieces": "{correct, number} von {total, plural, one {# Figur} other {# Figuren}}",
+        "setting": "Einstellung",
+        "settingValue": "{pieceCount, plural, one {# Figur} other {# Figuren}}, {seconds} s Einprägezeit",
+        "rebuild": "Lösungszeit",
+        "seconds": "{seconds} s",
+        "rating": "Wertung",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Siegesserie",
+        "winStreakValue": "{count, plural, one {# Runde} other {# Runden}} in Folge",
+        "legend": {
+          "correct": "Richtig",
+          "missed": "Verpasst",
+          "wrong": "Falsch"
+        },
+        "cta": "Schaffst du das?",
+        "text": "{kind, select, daily {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) auf dem Tagesbrett von Memory Chess vom {date} gemerkt.} review {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) auf einem Wiederholungsbrett von Memory Chess gemerkt.} other {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) bei Memory Chess gemerkt.}} Schaffst du das?",
+        "alt": "Ergebniskarte von Memory Chess: {details}."
       }
     },
     "comparison": {

@@ -1051,6 +1051,29 @@
         "submit": "Submit Score",
         "submitting": "Submitting...",
         "thanks": "Thanks for participating, {name}!"
+      },
+      "share": {
+        "button": "Share result",
+        "title": "Share your result",
+        "kicker": "{kind, select, daily {Daily board · {date}} review {Review round} other {Round result}}",
+        "accuracy": "Accuracy",
+        "pieces": "{correct, number} of {total, plural, one {# piece} other {# pieces}}",
+        "setting": "Setting",
+        "settingValue": "{pieceCount, plural, one {# piece} other {# pieces}}, {seconds} s study",
+        "rebuild": "Rebuild time",
+        "seconds": "{seconds} s",
+        "rating": "Rating",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Win streak",
+        "winStreakValue": "{count, plural, one {# round} other {# rounds}} in a row",
+        "legend": {
+          "correct": "Correct",
+          "missed": "Missed",
+          "wrong": "Wrong"
+        },
+        "cta": "Can you beat it?",
+        "text": "{kind, select, daily {I recalled {correct, number} of {total, number} pieces ({accuracy}) on the Memory Chess daily board for {date}.} review {I recalled {correct, number} of {total, number} pieces ({accuracy}) on a Memory Chess review board.} other {I recalled {correct, number} of {total, number} pieces ({accuracy}) on Memory Chess.}} Can you beat it?",
+        "alt": "Memory Chess result card: {details}."
       }
     },
     "comparison": {

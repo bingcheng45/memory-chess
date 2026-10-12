@@ -234,6 +234,29 @@
         "submit": "Eredmény beküldése",
         "submitting": "Küldés…",
         "thanks": "Köszönjük a részvételt, {name}!"
+      },
+      "share": {
+        "button": "Eredmény megosztása",
+        "title": "Oszd meg az eredményed",
+        "kicker": "{kind, select, daily {Napi tábla · {date}} review {Ismétlőkör} other {A kör eredménye}}",
+        "accuracy": "Pontosság",
+        "pieces": "{correct, number} / {total, plural, one {# bábu} other {# bábu}}",
+        "setting": "Beállítás",
+        "settingValue": "{pieceCount, plural, one {# bábu} other {# bábu}}, {seconds} mp memorizálás",
+        "rebuild": "Megoldási idő",
+        "seconds": "{seconds} mp",
+        "rating": "Pontszám",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Győzelmi sorozat",
+        "winStreakValue": "{count, plural, one {# kör} other {# kör}} egymás után",
+        "legend": {
+          "correct": "Helyes",
+          "missed": "Kihagyott",
+          "wrong": "Hibás"
+        },
+        "cta": "Meg tudod verni?",
+        "text": "{kind, select, daily {{correct, number} / {total, number} bábut ({accuracy}) jegyeztem meg a Memory Chess {date} napi tábláján.} review {{correct, number} / {total, number} bábut ({accuracy}) jegyeztem meg egy Memory Chess ismétlőtáblán.} other {{correct, number} / {total, number} bábut ({accuracy}) jegyeztem meg a Memory Chessben.}} Meg tudod verni?",
+        "alt": "Memory Chess eredménykártya: {details}."
       }
     },
     "comparison": {

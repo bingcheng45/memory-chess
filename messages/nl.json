@@ -234,6 +234,29 @@
         "submit": "Score versturen",
         "submitting": "Versturen…",
         "thanks": "Bedankt voor het meedoen, {name}!"
+      },
+      "share": {
+        "button": "Resultaat delen",
+        "title": "Deel je resultaat",
+        "kicker": "{kind, select, daily {Dagbord · {date}} review {Herhalingsronde} other {Rondeuitslag}}",
+        "accuracy": "Nauwkeurigheid",
+        "pieces": "{correct, number} van {total, plural, one {# stuk} other {# stukken}}",
+        "setting": "Instelling",
+        "settingValue": "{pieceCount, plural, one {# stuk} other {# stukken}}, {seconds} s kijktijd",
+        "rebuild": "Oplostijd",
+        "seconds": "{seconds} s",
+        "rating": "Rating",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Winstreeks",
+        "winStreakValue": "{count, plural, one {# ronde} other {# rondes}} op rij",
+        "legend": {
+          "correct": "Goed",
+          "missed": "Gemist",
+          "wrong": "Fout"
+        },
+        "cta": "Kun jij het beter?",
+        "text": "{kind, select, daily {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) op het dagbord van Memory Chess van {date}.} review {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) op een herhalingsbord van Memory Chess.} other {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) bij Memory Chess.}} Kun jij het beter?",
+        "alt": "Resultaatkaart van Memory Chess: {details}."
       }
     },
     "comparison": {

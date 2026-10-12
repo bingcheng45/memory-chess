@@ -39,6 +39,8 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 @media (max-width: 767px) {
   .lab-game .lab-result-grid { grid-template-columns: minmax(0, 1fr); }
   .lab-game .lab-result-actions .lab-btn { flex: 1 1 calc(50% - 6px); }
+  /* Sharing is not the next step: it keeps its own width and sits beside the leaderboard link, so Try Again and New Game stay the wide pair. */
+  .lab-game .lab-result-actions .lab-result-share { flex: none; }
 }
 
 /* The lab card, the article tile and the dialogs are drawn with the dark site's Tailwind colours, which they share

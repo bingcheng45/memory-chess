@@ -234,6 +234,29 @@
         "submit": "Enviar puntuación",
         "submitting": "Enviando...",
         "thanks": "¡Gracias por participar, {name}!"
+      },
+      "share": {
+        "button": "Compartir resultado",
+        "title": "Comparte tu resultado",
+        "kicker": "{kind, select, daily {Tablero diario · {date}} review {Ronda de repaso} other {Resultado de la ronda}}",
+        "accuracy": "Precisión",
+        "pieces": "{correct, number} de {total, plural, one {# pieza} many {# piezas} other {# piezas}}",
+        "setting": "Configuración",
+        "settingValue": "{pieceCount, plural, one {# pieza} many {# piezas} other {# piezas}}, {seconds} s de memorización",
+        "rebuild": "Tiempo de resolución",
+        "seconds": "{seconds} s",
+        "rating": "Puntuación",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Racha de victorias",
+        "winStreakValue": "{count, plural, one {# ronda seguida} many {# rondas seguidas} other {# rondas seguidas}}",
+        "legend": {
+          "correct": "Correcta",
+          "missed": "Omitida",
+          "wrong": "Errónea"
+        },
+        "cta": "¿Puedes superarlo?",
+        "text": "{kind, select, daily {Recordé {correct, number} de {total, number} piezas ({accuracy}) en el tablero diario de Memory Chess del {date}.} review {Recordé {correct, number} de {total, number} piezas ({accuracy}) en un tablero de repaso de Memory Chess.} other {Recordé {correct, number} de {total, number} piezas ({accuracy}) en Memory Chess.}} ¿Puedes superarlo?",
+        "alt": "Tarjeta de resultado de Memory Chess: {details}."
       }
     },
     "comparison": {

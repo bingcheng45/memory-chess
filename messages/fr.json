@@ -234,6 +234,29 @@
         "submit": "Envoyer le score",
         "submitting": "Envoi...",
         "thanks": "Merci d’avoir participé, {name} !"
+      },
+      "share": {
+        "button": "Partager le résultat",
+        "title": "Partagez votre résultat",
+        "kicker": "{kind, select, daily {Plateau du jour · {date}} review {Partie de révision} other {Résultat de la partie}}",
+        "accuracy": "Précision",
+        "pieces": "{correct, number} sur {total, plural, one {# pièce} many {# pièces} other {# pièces}}",
+        "setting": "Réglage",
+        "settingValue": "{pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}}, {seconds} s de mémorisation",
+        "rebuild": "Temps de résolution",
+        "seconds": "{seconds} s",
+        "rating": "Cote",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Série de victoires",
+        "winStreakValue": "{count, plural, one {# partie d’affilée} many {# parties d’affilée} other {# parties d’affilée}}",
+        "legend": {
+          "correct": "Correcte",
+          "missed": "Manquée",
+          "wrong": "Erronée"
+        },
+        "cta": "Saurez-vous faire mieux ?",
+        "text": "{kind, select, daily {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur le plateau du jour de Memory Chess du {date}.} review {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur un plateau de révision de Memory Chess.} other {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur Memory Chess.}} Saurez-vous faire mieux ?",
+        "alt": "Carte de résultat Memory Chess : {details}."
       }
     },
     "comparison": {

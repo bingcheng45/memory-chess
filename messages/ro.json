@@ -234,6 +234,29 @@
         "submit": "Trimite rezultatul",
         "submitting": "Se trimite…",
         "thanks": "Mulțumim că ai participat, {name}!"
+      },
+      "share": {
+        "button": "Distribuie rezultatul",
+        "title": "Distribuie rezultatul tău",
+        "kicker": "{kind, select, daily {Tabla zilei · {date}} review {Rundă de recapitulare} other {Rezultatul rundei}}",
+        "accuracy": "Precizie",
+        "pieces": "{correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}}",
+        "setting": "Setare",
+        "settingValue": "{pieceCount, plural, one {# piesă} few {# piese} other {# de piese}}, {seconds} s de memorare",
+        "rebuild": "Timp de rezolvare",
+        "seconds": "{seconds} s",
+        "rating": "Rating",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Serie de victorii",
+        "winStreakValue": "{count, plural, one {# rundă la rând} few {# runde la rând} other {# de runde la rând}}",
+        "legend": {
+          "correct": "Corect",
+          "missed": "Ratat",
+          "wrong": "Greșit"
+        },
+        "cta": "Poți mai bine?",
+        "text": "{kind, select, daily {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) pe tabla zilnică Memory Chess din {date}.} review {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) pe o tablă de recapitulare Memory Chess.} other {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) la Memory Chess.}} Poți mai bine?",
+        "alt": "Card de rezultat Memory Chess: {details}."
       }
     },
     "comparison": {

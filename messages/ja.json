@@ -234,6 +234,29 @@
         "submit": "スコアを送信",
         "submitting": "送信中…",
         "thanks": "ご参加ありがとうございます、{name} さん！"
+      },
+      "share": {
+        "button": "結果をシェア",
+        "title": "結果をシェア",
+        "kicker": "{kind, select, daily {デイリー盤面 · {date}} review {復習ラウンド} other {ラウンド結果}}",
+        "accuracy": "正答率",
+        "pieces": "{total, plural, other {#駒}}中{correct, number}駒",
+        "setting": "設定",
+        "settingValue": "{pieceCount, plural, other {#駒}}、記憶{seconds}秒",
+        "rebuild": "解答時間",
+        "seconds": "{seconds}秒",
+        "rating": "レーティング",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "連勝",
+        "winStreakValue": "{count, plural, other {#ラウンド連続}}",
+        "legend": {
+          "correct": "正解",
+          "missed": "見逃し",
+          "wrong": "誤り"
+        },
+        "cta": "あなたは超えられる?",
+        "text": "{kind, select, daily {Memory Chess の{date}のデイリー盤面で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。} review {Memory Chess の復習盤面で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。} other {Memory Chess で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。}}あなたは超えられる?",
+        "alt": "Memory Chess の結果カード: {details}。"
       }
     },
     "comparison": {

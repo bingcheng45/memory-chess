@@ -234,6 +234,29 @@
         "submit": "Skoru gönder",
         "submitting": "Gönderiliyor...",
         "thanks": "Katıldığın için teşekkürler, {name}!"
+      },
+      "share": {
+        "button": "Sonucu paylaş",
+        "title": "Sonucunu paylaş",
+        "kicker": "{kind, select, daily {Günlük tahta · {date}} review {Tekrar turu} other {Tur sonucu}}",
+        "accuracy": "İsabet",
+        "pieces": "{total, plural, one {# taş} other {# taş}} içinden {correct, number}",
+        "setting": "Ayar",
+        "settingValue": "{pieceCount, plural, one {# taş} other {# taş}}, {seconds} sn ezberleme",
+        "rebuild": "Çözüm süresi",
+        "seconds": "{seconds} sn",
+        "rating": "Puan",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Galibiyet serisi",
+        "winStreakValue": "{count, plural, one {üst üste # tur} other {üst üste # tur}}",
+        "legend": {
+          "correct": "Doğru",
+          "missed": "Kaçırılan",
+          "wrong": "Yanlış"
+        },
+        "cta": "Geçebilir misin?",
+        "text": "{kind, select, daily {Memory Chess günlük tahtasında ({date}) {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} review {Memory Chess tekrar tahtasında {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} other {Memory Chess'te {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.}} Geçebilir misin?",
+        "alt": "Memory Chess sonuç kartı: {details}."
       }
     },
     "comparison": {

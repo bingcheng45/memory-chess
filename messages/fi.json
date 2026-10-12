@@ -234,6 +234,29 @@
         "submit": "Lähetä tulos",
         "submitting": "Lähetetään…",
         "thanks": "Kiitos osallistumisesta, {name}!"
+      },
+      "share": {
+        "button": "Jaa tulos",
+        "title": "Jaa tuloksesi",
+        "kicker": "{kind, select, daily {Päivän lauta · {date}} review {Kertauskierros} other {Kierroksen tulos}}",
+        "accuracy": "Tarkkuus",
+        "pieces": "{correct, number} / {total, plural, one {# nappula} other {# nappulaa}}",
+        "setting": "Asetus",
+        "settingValue": "{pieceCount, plural, one {# nappula} other {# nappulaa}}, muistiinpanoaika {seconds} s",
+        "rebuild": "Ratkaisuaika",
+        "seconds": "{seconds} s",
+        "rating": "Taitoluku",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Voittoputki",
+        "winStreakValue": "{count, plural, one {# kierros} other {# kierrosta}} putkeen",
+        "legend": {
+          "correct": "Oikein",
+          "missed": "Unohtui",
+          "wrong": "Väärin"
+        },
+        "cta": "Pystytkö parempaan?",
+        "text": "{kind, select, daily {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessin päivän laudalla {date}.} review {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessin kertauslaudalla.} other {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessissä.}} Pystytkö parempaan?",
+        "alt": "Memory Chessin tuloskortti: {details}."
       }
     },
     "comparison": {

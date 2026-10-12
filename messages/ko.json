@@ -234,6 +234,29 @@
         "submit": "점수 등록",
         "submitting": "등록 중…",
         "thanks": "참여해 주셔서 감사합니다, {name}님!"
+      },
+      "share": {
+        "button": "결과 공유",
+        "title": "결과 공유하기",
+        "kicker": "{kind, select, daily {데일리 보드 · {date}} review {복습 라운드} other {라운드 결과}}",
+        "accuracy": "정확도",
+        "pieces": "기물 {total, plural, other {#개}} 중 {correct, number}개",
+        "setting": "설정",
+        "settingValue": "기물 {pieceCount, plural, other {#개}}, 암기 {seconds}초",
+        "rebuild": "풀이 시간",
+        "seconds": "{seconds}초",
+        "rating": "레이팅",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "연승",
+        "winStreakValue": "{count, plural, other {#라운드 연속}}",
+        "legend": {
+          "correct": "정답",
+          "missed": "놓침",
+          "wrong": "오답"
+        },
+        "cta": "이길 수 있나요?",
+        "text": "{kind, select, daily {Memory Chess {date} 데일리 보드에서 기물 {total, number}개 중 {correct, number}개({accuracy})를 기억했어요.} review {Memory Chess 복습 보드에서 기물 {total, number}개 중 {correct, number}개({accuracy})를 기억했어요.} other {Memory Chess에서 기물 {total, number}개 중 {correct, number}개({accuracy})를 기억했어요.}} 이길 수 있나요?",
+        "alt": "Memory Chess 결과 카드: {details}."
       }
     },
     "comparison": {

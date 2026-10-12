@@ -234,6 +234,29 @@
         "submit": "Send resultatet",
         "submitting": "Sender …",
         "thanks": "Tak fordi du var med, {name}!"
+      },
+      "share": {
+        "button": "Del resultat",
+        "title": "Del dit resultat",
+        "kicker": "{kind, select, daily {Dagens bræt · {date}} review {Repetitionsrunde} other {Rundens resultat}}",
+        "accuracy": "Præcision",
+        "pieces": "{correct, number} af {total, plural, one {# brik} other {# brikker}}",
+        "setting": "Indstilling",
+        "settingValue": "{pieceCount, plural, one {# brik} other {# brikker}}, {seconds} s indlæring",
+        "rebuild": "Løsningstid",
+        "seconds": "{seconds} s",
+        "rating": "Rating",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Sejre i træk",
+        "winStreakValue": "{count, plural, one {# runde} other {# runder}} i træk",
+        "legend": {
+          "correct": "Rigtig",
+          "missed": "Overset",
+          "wrong": "Forkert"
+        },
+        "cta": "Kan du slå det?",
+        "text": "{kind, select, daily {Jeg huskede {correct, number} af {total, number} brikker ({accuracy}) på dagens bræt i Memory Chess for {date}.} review {Jeg huskede {correct, number} af {total, number} brikker ({accuracy}) på et repetitionsbræt i Memory Chess.} other {Jeg huskede {correct, number} af {total, number} brikker ({accuracy}) i Memory Chess.}} Kan du slå det?",
+        "alt": "Resultatkort fra Memory Chess: {details}."
       }
     },
     "comparison": {

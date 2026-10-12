@@ -234,6 +234,29 @@
         "submit": "Skicka resultatet",
         "submitting": "Skickar ...",
         "thanks": "Tack för att du var med, {name}!"
+      },
+      "share": {
+        "button": "Dela resultat",
+        "title": "Dela ditt resultat",
+        "kicker": "{kind, select, daily {Dagens bräde · {date}} review {Repetitionsrunda} other {Rundans resultat}}",
+        "accuracy": "Träffsäkerhet",
+        "pieces": "{correct, number} av {total, plural, one {# pjäs} other {# pjäser}}",
+        "setting": "Inställning",
+        "settingValue": "{pieceCount, plural, one {# pjäs} other {# pjäser}}, {seconds} s memoreringstid",
+        "rebuild": "Lösningstid",
+        "seconds": "{seconds} s",
+        "rating": "Rating",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Vinstsvit",
+        "winStreakValue": "{count, plural, one {# runda} other {# rundor}} i rad",
+        "legend": {
+          "correct": "Rätt",
+          "missed": "Missad",
+          "wrong": "Fel"
+        },
+        "cta": "Kan du slå det?",
+        "text": "{kind, select, daily {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) på dagens bräde i Memory Chess den {date}.} review {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) på ett repetitionsbräde i Memory Chess.} other {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) i Memory Chess.}} Kan du slå det?",
+        "alt": "Resultatkort från Memory Chess: {details}."
       }
     },
     "comparison": {

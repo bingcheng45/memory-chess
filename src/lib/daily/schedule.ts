@@ -1,3 +1,4 @@
+import { utcDayOf } from "@/lib/lab/daily";
 import { shiftDay } from "@/lib/lab/engine";
 import { positionId } from "@/lib/lab/record";
 import { seededRandom } from "@/lib/utils/seededRandom";
@@ -37,12 +38,12 @@ export const WEEKLY_ARC: WeeklyArc = {
 
 const MAX_LOOKBACK_DAYS = 7;
 
-const UTC_DAY = /^\d{4}-\d{2}-\d{2}$/;
+const DAY_FORMAT = /^\d{4}-\d{2}-\d{2}$/;
 
 export function isUtcDay(day: string): boolean {
-  if (!UTC_DAY.test(day)) return false;
+  if (!DAY_FORMAT.test(day)) return false;
   const midnight = Date.parse(`${day}T00:00:00Z`);
-  return !Number.isNaN(midnight) && new Date(midnight).toISOString().slice(0, 10) === day;
+  return !Number.isNaN(midnight) && utcDayOf(midnight) === day;
 }
 
 export class InvalidDayError extends RangeError {

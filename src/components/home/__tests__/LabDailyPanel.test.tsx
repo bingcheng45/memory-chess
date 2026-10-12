@@ -102,8 +102,8 @@ describe("today's board panel", () => {
 
     act(() => jest.advanceTimersByTime(5 * 3_600_000 + 13 * 60_000));
 
-    expect(screen.getByText("Today's board has 10 pieces and 2 seconds to study. You have not played it yet.")).toBeInTheDocument();
-    expect(playLink()).toHaveAttribute("href", "/game?pieceCount=10&memorizeTime=2&source=daily");
+    expect(screen.getByText("Today's board has 6 pieces and 2 seconds to study. You have not played it yet.")).toBeInTheDocument();
+    expect(playLink()).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=2&source=daily");
     expect(screen.getByText("Daily streak 1 day · longest 1 day")).toBeInTheDocument();
     expect(screen.getByText("Resets in 23 h 59 min")).toBeInTheDocument();
   });

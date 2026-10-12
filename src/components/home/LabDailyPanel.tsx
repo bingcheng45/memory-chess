@@ -4,6 +4,7 @@ import { Fragment } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { trackEvent } from "@/lib/analytics/events";
+import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
 import { playHref } from "@/lib/game/roundLink";
 import { dailySettingOf } from "@/lib/daily/schedule";
 import { boardGrid, dailyBoardOf, OUTCOME_CELLS, readDailyOpened, SHARE_ORDER, shareRow, utcDayOf, type DailyRound } from "@/lib/lab/daily";
@@ -12,6 +13,8 @@ import type { StreakValue } from "@/lib/lab/streak";
 import { DailyResetsIn, useNow } from "./DailyResetsIn";
 import { figureOf, PanelHead, useTags } from "./LabRecordPanels";
 import { useCopyText } from "./useCopyText";
+
+const DAILY_HREF_BEFORE_CLOCK = playHref(DEFAULT_PRESET.pieceCount, DEFAULT_PRESET.memorizeTime, "daily");
 
 type Translate = ReturnType<typeof useTranslations<"home.lab.record.daily">>;
 
@@ -100,10 +103,10 @@ export function DailyPanel({ records, ready }: DailyPanelProps) {
           <>
             <p className="lab-daily-status">{board && setting && (board.status === "unfinished" ? t("unfinished") : t("open", { pieceCount: setting.pieceCount, memorizeSeconds: setting.memorizeTime }))}</p>
             <StreakLine t={t} streak={board?.streak ?? null} />
-            {setting && board?.status !== "unfinished" && (
+            {board?.status !== "unfinished" && (
               <Link
                 className="lab-btn lab-btn-secondary lab-daily-play"
-                href={playHref(setting.pieceCount, setting.memorizeTime, "daily")}
+                href={setting ? playHref(setting.pieceCount, setting.memorizeTime, "daily") : DAILY_HREF_BEFORE_CLOCK}
                 onClick={() => trackEvent({ name: "lab_panel_action", params: { panel: "daily", action: "play" } })}
               >
                 {t("play")} →

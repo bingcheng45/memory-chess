@@ -48,12 +48,18 @@ export interface TileContext {
   readonly values: Readonly<Record<string, string | number | Date>>;
 }
 
+/** Which way a rating moved over the rounds a tile reads, and by how much; the page and the share card both draw it from this. */
+export interface Trend {
+  readonly direction: "up" | "down" | "level";
+  readonly amount: number;
+}
+
 /** The setting a warming tile asks for, when its figure reads only one setting. */
 export type Rig = Pick<TrendSetting, "pieceCount" | "memorizeSeconds">;
 
 /** Ready and stale draw a figure; warming says what is missing and where to play it, or null when only tomorrow can add it; empty only invites a first round or a choice. */
 export type TileState =
-  | { readonly state: "ready" | "stale"; readonly figure: Figure; readonly context: TileContext }
+  | { readonly state: "ready" | "stale"; readonly figure: Figure; readonly context: TileContext; readonly trend?: Trend }
   | { readonly state: "warming"; readonly need: Need; readonly rig: Rig | null; readonly href: string | null }
   | { readonly state: "empty"; readonly href: string; readonly cta: "play" | "choose" };
 
@@ -116,7 +122,13 @@ const settingValues = ({ source, pieceCount, memorizeSeconds }: TrendSetting) =>
 const gameRig = (setting: TrendSetting | undefined): Rig | null =>
   setting?.source === "game" ? { pieceCount: setting.pieceCount, memorizeSeconds: setting.memorizeSeconds } : null;
 
-const ready = (figureValue: Figure, tileContext: TileContext): TileState => ({ state: "ready", figure: figureValue, context: tileContext });
+const ready = (figureValue: Figure, tileContext: TileContext, trend?: Trend): TileState => ({
+  state: "ready",
+  figure: figureValue,
+  context: tileContext,
+  ...(trend && { trend }),
+});
+const trendOf = (change: number): Trend => ({ direction: change > 0 ? "up" : change < 0 ? "down" : "level", amount: Math.abs(change) });
 const emptyPlay = (href = DASHBOARD_PLAY_HREF): TileState => ({ state: "empty", href, cta: "play" });
 
 /** One metric's tile: its figure only once the metric can read one, else what it still needs. */
@@ -150,11 +162,8 @@ const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
     if (!game) return emptyPlay();
     const recent = game.changes.slice(0, LAB_THRESHOLDS.rollingWindow);
     if (recent.length === 0) return ready(figure(game.rating, "rating"), context("ratingSince", {}));
-    const change = sumOf(recent);
-    return ready(
-      figure(game.rating, "rating"),
-      context("rating", { sign: change > 0 ? "up" : change < 0 ? "down" : "level", change: Math.abs(change), rounds: recent.length }),
-    );
+    const trend = trendOf(sumOf(recent));
+    return ready(figure(game.rating, "rating"), context("rating", { sign: trend.direction, change: trend.amount, rounds: recent.length }), trend);
   },
   winStreak: ({ game, winAccuracy }) => (game ? ready(figure(game.winStreak, "rounds"), context("winStreak", { accuracy: winAccuracy })) : emptyPlay()),
   bestAccuracy: ({ results: { bests } }) =>
@@ -256,6 +265,7 @@ export interface ShareFigure {
   readonly id: ShareFigureId;
   readonly figure: Figure;
   readonly context: TileContext;
+  readonly trend?: Trend;
 }
 
 /**
@@ -270,7 +280,7 @@ export interface ShareCard {
 export function shareCardOf(tiles: readonly DashboardTile[], rounds: number): ShareCard | null {
   const figures = SHARE_TILES.flatMap((id): ShareFigure[] => {
     const tile = tiles.find((candidate) => candidate.id === id);
-    return tile?.state === "ready" ? [{ id, figure: tile.figure, context: tile.context }] : [];
+    return tile?.state === "ready" ? [{ id, figure: tile.figure, context: tile.context, ...(tile.trend && { trend: tile.trend }) }] : [];
   });
   const lead = figures.find(({ figure }) => figure.value > 0);
   if (!lead) return null;

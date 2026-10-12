@@ -140,6 +140,7 @@ describe("dashboardOf", () => {
       state: "ready",
       figure: { value: 1240, unit: "rating", digits: 0 },
       context: { kind: "rating", values: { sign: "up", change: 75, rounds: 10 } },
+      trend: { direction: "up", amount: 75 },
     });
     expect(tile(tiles, "winStreak")).toEqual({
       id: "winStreak",
@@ -149,7 +150,16 @@ describe("dashboardOf", () => {
     });
     expect(tile(tilesFor("threeDays", { game: { rating: 980, winStreak: 0, changes: [-20] } }), "rating")).toMatchObject({
       context: { kind: "rating", values: { sign: "down", change: 20, rounds: 1 } },
+      trend: { direction: "down", amount: 20 },
     });
+  });
+
+  it("reads a rating that is level over the window as a level trend, and one with no rated round as no trend", () => {
+    expect(tile(tilesFor("threeDays", { game: { rating: 1000, winStreak: 0, changes: [15, -15] } }), "rating")).toMatchObject({
+      context: { kind: "rating", values: { sign: "level", change: 0, rounds: 2 } },
+      trend: { direction: "level", amount: 0 },
+    });
+    expect(tile(tilesFor("threeDays", { game: { rating: 1000, winStreak: 0, changes: [] } }), "rating")).not.toHaveProperty("trend");
   });
 
   it("invites a game round for the rating and win streak before the store holds one", () => {
@@ -176,7 +186,12 @@ describe("shareCardOf", () => {
     const card = shareCardOf(tilesFor("threeDays", { game: { rating: 1102, winStreak: 2, changes: [30] } }), 12);
 
     expect(ids(card)).toEqual(["span 6", "rating 1102", "piecesHeld 5.2", "speed 4.6", "bestAccuracy 100", "recentAccuracy 87", "winStreak 2", "streak 3", "rounds 12", "days 3"]);
-    expect(card?.figures[1]).toEqual({ id: "rating", figure: { value: 1102, unit: "rating", digits: 0 }, context: { kind: "rating", values: { sign: "up", change: 30, rounds: 1 } } });
+    expect(card?.figures[1]).toEqual({
+      id: "rating",
+      figure: { value: 1102, unit: "rating", digits: 0 },
+      context: { kind: "rating", values: { sign: "up", change: 30, rounds: 1 } },
+      trend: { direction: "up", amount: 30 },
+    });
     expect(card?.rounds).toBe(12);
   });
 

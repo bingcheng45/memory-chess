@@ -29,6 +29,9 @@ const SetBoardNotice = lazy(() => import('@/components/game/SetBoardNotice'));
 type SetBoardSource = 'daily' | 'review';
 const isSetBoardSource = (source: RoundSource): source is SetBoardSource => source === 'daily' || source === 'review';
 
+/** A review's copy is the lab record's, English only; every string a daily round shows is translated. */
+const NEEDS_LAB_COPY: Record<SetBoardSource, boolean> = { daily: false, review: true };
+
 /** What a set board's link opens: its round, with the marker to write once that round starts, or a refusal. */
 type SetBoardOpen =
   | { kind: 'play'; pieceCount: number; memorizeTime: number; board: SetBoard; markOpened: () => void }
@@ -88,8 +91,7 @@ function takeUrlRound(hasLab: boolean): UrlRound | null {
 
   // A refresh then opens the configuration screen instead of restarting the round.
   const asked = roundSourceFrom(params.get(ROUND_PARAMS.source));
-  // The lab record's copy is English only, so elsewhere a daily or review link plays an ordinary round.
-  const source = isSetBoardSource(asked) && !hasLab ? 'link' : asked;
+  const source = isSetBoardSource(asked) && NEEDS_LAB_COPY[asked] && !hasLab ? 'link' : asked;
   Object.values(ROUND_PARAMS).forEach((name) => params.delete(name));
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);

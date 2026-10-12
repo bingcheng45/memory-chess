@@ -11,10 +11,14 @@ interface CountryOption {
 }
 
 interface CountryPickerProps {
-  readonly value: CountryCode;
+  /** Null shows `placeholder` until a country is picked. */
+  readonly value: CountryCode | null;
   readonly onChange: (code: CountryCode) => void;
   readonly id: string;
   readonly disabled?: boolean;
+  readonly placeholder?: string;
+  /** False on a board that ranks countries only, such as the daily board. */
+  readonly withWorld?: boolean;
 }
 
 const fold = (text: string): string =>
@@ -59,7 +63,7 @@ const MOVES = new Map<string, (index: number, count: number) => number>([
   ["End", (_index, count) => count - 1],
 ]);
 
-export default function CountryPicker({ value, onChange, id, disabled }: CountryPickerProps) {
+export default function CountryPicker({ value, onChange, id, disabled, placeholder, withWorld = true }: CountryPickerProps) {
   const t = useTranslations("country");
   const locale = useLocale();
   const worldLabel = t("world");
@@ -69,8 +73,8 @@ export default function CountryPicker({ value, onChange, id, disabled }: Country
     const countries = COUNTRY_CODES.filter((code) => code !== WORLD_CODE)
       .map((code) => toOption(code, countryName(code, locale)))
       .sort((a, b) => collator.compare(a.name, b.name));
-    return [toOption(WORLD_CODE, worldLabel), ...countries];
-  }, [locale, worldLabel]);
+    return withWorld ? [toOption(WORLD_CODE, worldLabel), ...countries] : countries;
+  }, [locale, worldLabel, withWorld]);
 
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
@@ -86,7 +90,7 @@ export default function CountryPicker({ value, onChange, id, disabled }: Country
   }, [options, query]);
 
   const activeOption = filtered[activeIndex];
-  const selectedName = options.find((option) => option.code === value)?.name ?? value;
+  const selectedName = value === null ? placeholder : (options.find((option) => option.code === value)?.name ?? value);
   const listboxId = `${id}-listbox`;
 
   useEffect(() => {
@@ -188,8 +192,8 @@ export default function CountryPicker({ value, onChange, id, disabled }: Country
         onKeyDown={handleTriggerKeyDown}
         className="flex h-10 w-full items-center gap-2 rounded-md border border-[var(--lp-line)] bg-transparent px-3 text-left text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"
       >
-        <span aria-hidden="true">{flagEmoji(value)}</span>
-        <span className="min-w-0 truncate">{selectedName}</span>
+        {value !== null && <span aria-hidden="true">{flagEmoji(value)}</span>}
+        <span className={`min-w-0 truncate ${value === null ? "text-[var(--lp-muted)]" : ""}`}>{selectedName}</span>
       </button>
       {open && (
         <div

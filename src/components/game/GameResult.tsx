@@ -83,6 +83,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const showsLab = hasLabCopy(useLocale()) && keepsRecord;
   const tCountry = useTranslations("country");
   const tComparison = useTranslations("game.comparison");
+  const tDaily = useTranslations("daily.round");
   const { gameState, round } = useGameStore();
   const { labRound } = gameState;
   const { countryCode, setCountryCode, showCoordinates } = useSettingsStore();
@@ -328,6 +329,11 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <button type="button" onClick={onNewGame} className={`lab-btn ${tryAgainFirst ? "lab-btn-secondary" : "lab-btn-primary"}`}>
             {t("newGame")}
           </button>
+          {gameState.board?.kind === "daily" && (
+            <Link href="/daily" className="lab-btn lab-btn-secondary lab-result-submit">
+              {tDaily("join")}
+            </Link>
+          )}
           {leaderboardEligible && (
             <button type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
               {t("submitToLeaderboard")}

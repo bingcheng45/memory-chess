@@ -22,6 +22,7 @@ export const LAB_PAPER_ROUTES: readonly LabPaperRoute[] = [
   { path: "/articles", scope: "subtree", locales: "all" },
   { path: "/game", scope: "page", locales: "all" },
   { path: "/dashboard", scope: "page", locales: "all" },
+  { path: "/daily", scope: "page", locales: "all" },
   { path: "/settings", scope: "page", locales: "all" },
   // Served only at the bare English URL (UNLISTED_ROUTES), so only "en" ever reaches the layout.
   { path: "/share", scope: "subtree", locales: ["en"] },

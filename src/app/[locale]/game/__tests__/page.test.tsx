@@ -173,8 +173,8 @@ describe("GamePage daily board link", () => {
 
     render(<GamePage />);
 
-    expect(await screen.findByText("You have already opened today's board. One try per day on this device.")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Open your lab record" })).toHaveAttribute("href", "/#record");
+    expect(await screen.findByText("You have played today's board. One try a day keeps it fair.")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "See today's board" })).toHaveAttribute("href", "/daily");
     expect(document.querySelector("[data-game-config]")).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Play another round" }));
     expect(document.querySelector("[data-game-config]")).not.toBeNull();
@@ -193,13 +193,13 @@ describe("GamePage daily board link", () => {
     expect(mockStartGame.mock.calls.map(([, , source]) => source)).toEqual(["game_form"]);
   });
 
-  it("plays an ordinary round from the link in a language without the daily board's copy", () => {
+  it("plays today's set board from the link in German too, whose catalogue carries the daily copy", async () => {
+    opens({ kind: "play", pieceCount: 6, memorizeTime: 10, board: BOARD });
     window.history.pushState({}, "", "/de/game?pieceCount=6&memorizeTime=10&source=daily");
 
     render(<GamePage />, { locale: "de" });
 
-    expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link");
-    expect(openDaily).not.toHaveBeenCalled();
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(6, 10, "daily", BOARD));
   });
 });
 

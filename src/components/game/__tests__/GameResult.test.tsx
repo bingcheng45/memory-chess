@@ -397,6 +397,23 @@ describe("GameResult", () => {
     }
   });
 
+  it("sends a daily round to join its own day's board on /daily, and a review nowhere", () => {
+    const joinLinks = (board: SetBoard) => {
+      mockGameState = { ...baseGameState, board };
+      const { unmount } = render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      const hrefs = screen.queryAllByRole("link", { name: "Join today's board" }).map((link) => link.getAttribute("href"));
+      unmount();
+      return hrefs;
+    };
+
+    try {
+      expect(joinLinks({ kind: "daily", day: "2026-10-13", fen: baseGameState.originalPosition })).toEqual(["/daily"]);
+      expect(joinLinks({ kind: "review", fen: baseGameState.originalPosition, reviewOf: "first-round", firstDay: "2026-10-06", step: 1 })).toEqual([]);
+    } finally {
+      mockGameState = baseGameState;
+    }
+  });
+
   describe("leaderboard qualifier", () => {
     afterEach(() => {
       mockGameState = baseGameState;

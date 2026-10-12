@@ -46,8 +46,8 @@ jest.mock("@/lib/utils/soundEffects", () => ({
 jest.mock("@/i18n/navigation", () => ({
   usePathname: () => "/game",
   useRouter: () => ({ push: jest.fn(), replace: jest.fn() }),
-  Link: ({ href, children, className }: { href: string; children: ReactNode; className?: string }) => (
-    <a href={href} className={className}>
+  Link: ({ href, children, className, "aria-current": ariaCurrent }: { href: string; children: ReactNode; className?: string; "aria-current"?: "page" }) => (
+    <a href={href} className={className} aria-current={ariaCurrent}>
       {children}
     </a>
   ),
@@ -302,14 +302,15 @@ describe("GamePage URL-driven start under StrictMode", () => {
 
 describe("GamePage header", () => {
   it.each(["idle", "study", "rebuild"] as const)(
-    "draws the Lab Paper header, without a Play button that would reopen this page, in the %s phase",
+    "draws the Lab Paper header, with Play in the nav marked current and no Play button, in the %s phase",
     (phase) => {
       mockPhase = phase;
 
       const { container } = render(<GamePage />);
 
       expect(container.querySelector(".lab-paper .lab-header")).not.toBeNull();
-      expect(screen.queryByRole("link", { name: "Play" })).toBeNull();
+      expect(container.querySelector(".lab-header-tools .lab-btn-primary")).toBeNull();
+      expect(screen.getByRole("link", { name: "Play" })).toHaveAttribute("aria-current", "page");
     },
   );
 });

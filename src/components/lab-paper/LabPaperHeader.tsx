@@ -10,6 +10,7 @@ import "./lab-paper.css";
 
 /** `extra` links leave the desktop row first and stay in the phone menu. Changelog lives in the footer and the phone menu only. */
 const SITE_LINKS = [
+  { href: "/game", key: "play" },
   { href: "/learn", key: "learn" },
   { href: "/articles", key: "articles" },
   { href: "/leaderboard", key: "leaderboard" },

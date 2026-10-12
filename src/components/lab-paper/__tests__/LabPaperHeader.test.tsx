@@ -22,6 +22,7 @@ const hrefsOf = (container: HTMLElement) =>
     .map((link) => [link.textContent, link.getAttribute("href")]);
 
 const SITE = [
+  ["Play", "/game"],
   ["Learn", "/learn"],
   ["Articles", "/articles"],
   ["Leaderboard", "/leaderboard"],
@@ -73,11 +74,27 @@ describe("the Lab Paper header", () => {
     );
   });
 
+  it("lists Play first in the nav and the phone menu on the game, marks it current, and drops the Play button there", () => {
+    mockPathname = "/game";
+    renderWithIntl(<LabPaperHeader showPlay={false} />);
+    const nav = screen.getByRole("navigation", { name: "Main" });
+
+    expect(hrefsOf(nav)[0]).toEqual(["Play", "/game"]);
+    expect(within(nav).getByRole("link", { name: "Play" })).toHaveAttribute("aria-current", "page");
+    expect(screen.queryByRole("link", { name: "Play Play" })).toBeNull();
+
+    fireEvent.click(screen.getByRole("button", { name: "Menu" }));
+    const panel = screen.getByRole("navigation", { name: "Menu" });
+    expect(hrefsOf(panel)[0]).toEqual(["Play", "/game"]);
+    expect(within(panel).getByRole("link", { name: "Play" })).toHaveAttribute("aria-current", "page");
+  });
+
   it("speaks the reader's language and sends English-only pages to their bare English URL", () => {
     renderWithIntl(<LabPaperHeader />, { locale: "de", messages: deMessages });
     const nav = screen.getByRole("navigation", { name: "Main" });
 
     expect(within(nav).getAllByRole("link").map((link) => [link.textContent, link.getAttribute("hreflang")])).toEqual([
+      ["Spielen", null],
       ["Lernen (English)", "en"],
       ["Artikel", null],
       ["Bestenliste", null],

@@ -420,6 +420,12 @@
       "typeRequired": "Elige un tipo de consulta.",
       "messageTooShort": "El mensaje debe tener al menos 10 caracteres."
     },
+    "hints": {
+      "name": "Al menos 2 caracteres.",
+      "email": "Las respuestas llegan a esta dirección.",
+      "type": "Cada tipo se explica debajo del formulario.",
+      "message": "Al menos 10 caracteres."
+    },
     "errors": {
       "submitFailed": "No se pudo enviar el formulario{details}",
       "generic": "Se ha producido un error al enviar el formulario. Inténtalo de nuevo."

@@ -420,6 +420,12 @@
       "typeRequired": "Vui lòng chọn loại liên hệ.",
       "messageTooShort": "Nội dung phải có ít nhất 10 ký tự."
     },
+    "hints": {
+      "name": "Ít nhất 2 ký tự.",
+      "email": "Phản hồi sẽ được gửi đến địa chỉ này.",
+      "type": "Từng loại được giải thích bên dưới biểu mẫu.",
+      "message": "Ít nhất 10 ký tự."
+    },
     "errors": {
       "submitFailed": "Không thể gửi biểu mẫu{details}",
       "generic": "Đã xảy ra lỗi khi gửi biểu mẫu. Vui lòng thử lại."

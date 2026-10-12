@@ -420,6 +420,12 @@
       "typeRequired": "Vælg en type henvendelse.",
       "messageTooShort": "Beskeden skal have mindst 10 tegn."
     },
+    "hints": {
+      "name": "Mindst 2 tegn.",
+      "email": "Svar sendes til denne adresse.",
+      "type": "Hver type er forklaret under formularen.",
+      "message": "Mindst 10 tegn."
+    },
     "errors": {
       "submitFailed": "Formularen kunne ikke sendes{details}",
       "generic": "Der opstod en fejl, da formularen blev sendt. Prøv igen."

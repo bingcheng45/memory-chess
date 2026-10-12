@@ -420,6 +420,12 @@
       "typeRequired": "Vyberte typ dotazu.",
       "messageTooShort": "Zpráva musí mít alespoň 10 znaků."
     },
+    "hints": {
+      "name": "Alespoň 2 znaky.",
+      "email": "Odpověď přijde na tuto adresu.",
+      "type": "Každý typ je vysvětlen pod formulářem.",
+      "message": "Alespoň 10 znaků."
+    },
     "errors": {
       "submitFailed": "Formulář se nepodařilo odeslat{details}",
       "generic": "Při odesílání formuláře došlo k chybě. Zkuste to prosím znovu."

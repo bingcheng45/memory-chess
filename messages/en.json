@@ -1235,6 +1235,12 @@
       "typeRequired": "Please select an inquiry type.",
       "messageTooShort": "Message must be at least 10 characters."
     },
+    "hints": {
+      "name": "At least 2 characters.",
+      "email": "Replies go to this address.",
+      "type": "Each type is explained below the form.",
+      "message": "At least 10 characters."
+    },
     "errors": {
       "submitFailed": "Failed to submit form{details}",
       "generic": "An error occurred while submitting the form. Please try again."

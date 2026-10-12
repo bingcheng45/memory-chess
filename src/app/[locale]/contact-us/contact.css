@@ -1,0 +1,46 @@
+/* The contact page in Lab Paper: the reading column's head, then the form on a surface card, then the reference
+   section in the reading column's prose. */
+.lab-paper .lab-contact-head { padding-bottom: 0; border-bottom: 0; }
+
+.lab-paper .lab-contact-card { display: grid; margin-top: 32px; padding: 32px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
+.lab-paper .lab-contact-card > * { grid-area: 1 / 1; min-width: 0; }
+.lab-paper .lab-contact-form { display: grid; gap: 24px; }
+.lab-paper .lab-contact-form[data-sent] { visibility: hidden; }
+
+.lab-paper .lab-field label { font: 600 15px/1.4 var(--lp-ui); color: var(--lp-ink); }
+.lab-paper .lab-field .lab-hint { font: 400 14px/1.55 var(--lp-body); color: var(--lp-muted); }
+.lab-paper .lab-field .lab-field-error { font: 500 14px/1.5 var(--lp-ui); color: var(--lp-wrong); }
+.lab-paper .lab-input { display: block; width: 100%; min-height: 44px; padding: 10px 12px; background: var(--lp-surface); color: var(--lp-ink); border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-md); font: 400 16px/1.5 var(--lp-body); transition: border-color 0.15s; }
+.lab-paper .lab-input::placeholder { color: var(--lp-muted); opacity: 1; }
+.lab-paper .lab-input:hover { border-color: var(--lp-ink-2); }
+.lab-paper .lab-input:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 0; border-color: var(--lp-accent); border-radius: var(--lp-r-md); }
+.lab-paper .lab-input[aria-invalid="true"] { border-color: var(--lp-wrong); }
+.lab-paper .lab-textarea { min-height: 160px; resize: vertical; }
+.lab-paper .lab-select { appearance: none; padding-right: 40px; cursor: pointer; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 3.5 5 6.5 8 3.5' fill='none' stroke='%23364853' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 14px center; background-size: 12px; }
+.lab-paper .lab-select:has(option[value=""]:checked) { color: var(--lp-muted); }
+.lab-paper .lab-select option { color: var(--lp-ink); }
+
+.lab-paper .lab-contact-actions { display: grid; gap: 12px; justify-items: start; }
+.lab-paper .lab-contact-submit[aria-busy="true"] { opacity: 1; cursor: progress; }
+.lab-paper .lab-spinner { width: 16px; height: 16px; border: 2px solid currentColor; border-right-color: transparent; border-radius: 50%; animation: lab-spin 0.8s linear infinite; }
+@keyframes lab-spin { to { transform: rotate(360deg); } }
+/* Room for a two-line error, so the error arriving does not push the reference section down. */
+.lab-paper .lab-contact-status { min-height: 48px; }
+.lab-paper .lab-contact-error { display: flex; gap: 8px; align-items: flex-start; font: 500 15px/1.5 var(--lp-ui); color: var(--lp-wrong); }
+.lab-paper .lab-contact-error svg { flex: none; margin-top: 3px; }
+
+.lab-paper .lab-contact-sent { align-self: center; display: grid; gap: 8px; justify-items: start; color: var(--lp-ink-2); font-size: 17px; }
+.lab-paper .lab-contact-sent svg { color: var(--lp-correct); }
+.lab-paper .lab-contact-sent h2 { margin-top: 8px; font: 650 28px/1.2 var(--lp-ui); letter-spacing: -0.015em; }
+.lab-paper .lab-contact-sent h2:focus { outline: none; }
+/* Focus scrolls the heading into view; this keeps the check mark above it clear of the sticky header too. */
+.lab-paper .lab-contact-sent h2 { scroll-margin-top: calc(var(--lp-header-h) + 72px); }
+.lab-paper .lab-contact-redirect { font: 500 15px/1.4 var(--lp-ui); color: var(--lp-muted); }
+
+.lab-paper .lab-prose .lab-contact-note { font-size: 16px; color: var(--lp-muted); }
+
+@media (max-width: 767px) {
+  .lab-paper .lab-contact-card { margin-top: 24px; padding: 20px 16px; }
+  .lab-paper .lab-contact-actions { justify-items: stretch; }
+  .lab-paper .lab-contact-sent h2 { font-size: 24px; }
+}

@@ -420,6 +420,12 @@
       "typeRequired": "Válaszd ki a megkeresés típusát.",
       "messageTooShort": "Az üzenet legalább 10 karakter legyen."
     },
+    "hints": {
+      "name": "Legalább 2 karakter.",
+      "email": "A válasz erre a címre érkezik.",
+      "type": "Az egyes típusok magyarázata az űrlap alatt található.",
+      "message": "Legalább 10 karakter."
+    },
     "errors": {
       "submitFailed": "Az űrlapot nem sikerült elküldeni{details}",
       "generic": "Hiba történt az űrlap elküldésekor. Próbáld újra."

@@ -420,6 +420,12 @@
       "typeRequired": "Kies een soort vraag.",
       "messageTooShort": "Het bericht moet minstens 10 tekens hebben."
     },
+    "hints": {
+      "name": "Minstens 2 tekens.",
+      "email": "Antwoorden gaan naar dit adres.",
+      "type": "Elk type wordt onder het formulier uitgelegd.",
+      "message": "Minstens 10 tekens."
+    },
     "errors": {
       "submitFailed": "Het formulier kon niet worden verzonden{details}",
       "generic": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw."

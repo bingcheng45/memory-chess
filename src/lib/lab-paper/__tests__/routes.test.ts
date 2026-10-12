@@ -5,7 +5,7 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/", "en")).toBe(true);
     expect(isLabPaperRoute("/", "de")).toBe(false);
     expect(isLabPaperRoute("/settings", "en")).toBe(false);
-    expect(isLabPaperRoute("/contact-us", "de")).toBe(false);
+    expect(isLabPaperRoute("/settings", "de")).toBe(false);
   });
 
   it("draws the English-only changelog, about, terms and privacy pages in Lab Paper", () => {
@@ -15,9 +15,11 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/privacy", "en")).toBe(true);
   });
 
-  it("draws the leaderboard in Lab Paper in every locale, since every catalogue carries its copy", () => {
+  it("draws the leaderboard and the contact page in Lab Paper in every locale, since every catalogue carries their copy", () => {
     expect(isLabPaperRoute("/leaderboard", "en")).toBe(true);
     expect(isLabPaperRoute("/leaderboard", "ja")).toBe(true);
+    expect(isLabPaperRoute("/contact-us", "en")).toBe(true);
+    expect(isLabPaperRoute("/contact-us", "de")).toBe(true);
   });
 
   it("draws both kinds of shared card page in Lab Paper at their bare English URL", () => {

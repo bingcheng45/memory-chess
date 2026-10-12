@@ -420,6 +420,12 @@
       "typeRequired": "请选择咨询类型。",
       "messageTooShort": "留言至少需要 10 个字符。"
     },
+    "hints": {
+      "name": "至少 2 个字符。",
+      "email": "回复会发到这个邮箱。",
+      "type": "表单下方介绍了每种类型。",
+      "message": "至少 10 个字符。"
+    },
     "errors": {
       "submitFailed": "表单提交失败{details}",
       "generic": "提交表单时出错，请再试一次。"

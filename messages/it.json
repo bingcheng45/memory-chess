@@ -383,7 +383,14 @@
       "title": "Impostazioni di Memory Chess",
       "description": "Personalizza le impostazioni e le preferenze della tua partita a Memory Chess."
     },
+    "title": "Impostazioni",
+    "intro": "Queste impostazioni valgono per ogni partita che giochi in questo browser.",
     "showCoordinates": "Mostra le coordinate della scacchiera",
+    "coordinatesHelp": "Lettere e numeri lungo i bordi della scacchiera mentre memorizzi e posizioni i pezzi. La schermata del risultato li mostra sempre.",
+    "on": "Sì",
+    "off": "No",
+    "savedOn": "Salvato. La scacchiera mostrerà le coordinate.",
+    "savedOff": "Salvato. La scacchiera nasconderà le coordinate.",
     "home": "Home",
     "playGame": "Gioca"
   },
@@ -761,5 +768,20 @@
       "note": "Ogni link pubblica il tuo testo con un link alla tua scheda, e X, Facebook, LinkedIn e gli altri mostrano la scheda nell'anteprima del link. Per Instagram o ovunque serva il file dell'immagine, scaricalo o copialo prima.",
       "newTab": "(si apre in una nuova scheda)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Pagina non trovata",
+      "heading": "Questa pagina non esiste.",
+      "body": "Il link potrebbe essere vecchio o l’indirizzo potrebbe contenere un errore di battitura. Puoi giocare una partita o tornare alla home page."
+    },
+    "error": {
+      "title": "Qualcosa è andato storto",
+      "heading": "Qualcosa è andato storto in questa pagina.",
+      "body": "Le tue partite e le impostazioni sono salvate in questo browser e non sono state toccate. Riprova o torna alla home page.",
+      "retry": "Riprova"
+    },
+    "play": "Gioca una partita",
+    "home": "Vai alla home page"
   }
 }

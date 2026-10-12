@@ -97,7 +97,7 @@ export default async function drive(page, { baseUrl }) {
     await page.waitFor(`!document.getElementById("game-feedback")`);
   }
 
-  await page.clickText("button", "Submit to Leaderboard");
+  await page.clickText("button", "Submit to leaderboard");
   await page.waitFor(`!!document.getElementById("player-name")`);
 
   await mouseClick(page, "#player-name");
@@ -121,7 +121,7 @@ export default async function drive(page, { baseUrl }) {
   }
   await page.screenshot("1-country-picked.png");
 
-  await page.clickText("button", "Submit Score");
+  await page.clickText("button", "Submit score");
 
   const deadline = Date.now() + 20_000;
   await page.waitFor(
@@ -129,7 +129,7 @@ export default async function drive(page, { baseUrl }) {
        const dialog = document.querySelector('[role="dialog"]');
        if (!dialog) return false;
        const text = dialog.innerText;
-       return text.includes("Error:") || text.includes("Score Submitted");
+       return text.includes("Error:") || text.includes("Score submitted");
      })()`,
     20_000,
   );
@@ -149,6 +149,6 @@ export default async function drive(page, { baseUrl }) {
     requestBody: JSON.parse(exchange.postData),
     responseStatus: exchange.status,
     dialogText,
-    succeeded: dialogText.includes("Score Submitted"),
+    succeeded: dialogText.includes("Score submitted"),
   };
 }

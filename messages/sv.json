@@ -383,7 +383,14 @@
       "title": "Memory Chess-inställningar",
       "description": "Anpassa inställningar och preferenser för ditt Memory Chess-spel."
     },
+    "title": "Inställningar",
+    "intro": "Inställningarna gäller varje runda du spelar i den här webbläsaren.",
     "showCoordinates": "Visa brädets koordinater",
+    "coordinatesHelp": "Bokstäver och siffror längs brädets kanter medan du memorerar och placerar pjäserna. Resultatskärmen visar dem alltid.",
+    "on": "På",
+    "off": "Av",
+    "savedOn": "Sparat. Brädet visar sina koordinater.",
+    "savedOff": "Sparat. Brädet döljer sina koordinater.",
     "home": "Start",
     "playGame": "Spela"
   },
@@ -761,5 +768,20 @@
       "note": "Varje länk lägger upp din text med en länk till ditt kort, och X, Facebook, LinkedIn och de andra visar kortet i länkförhandsvisningen. För Instagram eller andra ställen som kräver bildfilen laddar du ned eller kopierar den först.",
       "newTab": "(öppnas i en ny flik)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Sidan hittades inte",
+      "heading": "Den här sidan finns inte.",
+      "body": "Länken kan vara inaktuell, eller så har adressen ett stavfel. Du kan spela en runda eller gå tillbaka till startsidan."
+    },
+    "error": {
+      "title": "Något gick fel",
+      "heading": "Något gick fel på den här sidan.",
+      "body": "Dina rundor och inställningar sparas i den här webbläsaren och påverkas inte. Försök igen eller gå tillbaka till startsidan.",
+      "retry": "Försök igen"
+    },
+    "play": "Spela en runda",
+    "home": "Till startsidan"
   }
 }

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef, type CSSProperties } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import type { RoundSource } from '@/lib/analytics/events';
+import { CoordinatesSwitch } from '@/components/settings/CoordinatesSwitch';
 import { useTranslations } from 'next-intl';
 import {
   MEMORIZE_SECONDS_RANGE,
@@ -179,6 +180,10 @@ export default function GameConfig({ onStart }: GameConfigProps) {
             <span key={tick}>{t('config.seconds', { seconds: tick })}</span>
           ))}
         </div>
+      </div>
+
+      <div className="lab-config-group">
+        <CoordinatesSwitch />
       </div>
 
       <button type="button" onClick={handleStart} data-start-round className="lab-btn lab-btn-primary lab-config-start">

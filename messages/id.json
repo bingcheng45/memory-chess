@@ -383,7 +383,14 @@
       "title": "Pengaturan Memory Chess",
       "description": "Sesuaikan pengaturan dan preferensi permainan Memory Chess kamu."
     },
+    "title": "Pengaturan",
+    "intro": "Pengaturan ini berlaku untuk setiap ronde yang dimainkan di browser ini.",
     "showCoordinates": "Tampilkan koordinat papan",
+    "coordinatesHelp": "Huruf dan angka di tepi papan saat menghafal dan menempatkan bidak. Layar hasil selalu menampilkannya.",
+    "on": "Aktif",
+    "off": "Mati",
+    "savedOn": "Tersimpan. Papan akan menampilkan koordinat.",
+    "savedOff": "Tersimpan. Papan akan menyembunyikan koordinat.",
     "home": "Beranda",
     "playGame": "Main"
   },
@@ -761,5 +768,20 @@
       "note": "Setiap tautan mengunggah teksmu beserta tautan ke kartumu, dan X, Facebook, LinkedIn, serta yang lain menampilkan kartu di pratinjau tautan. Untuk Instagram atau tempat lain yang membutuhkan file gambar, unduh atau salin dulu.",
       "newTab": "(terbuka di tab baru)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Halaman tidak ditemukan",
+      "heading": "Halaman ini tidak ada.",
+      "body": "Tautannya mungkin sudah usang, atau alamatnya salah ketik. Mainkan satu ronde atau kembali ke beranda."
+    },
+    "error": {
+      "title": "Terjadi kesalahan",
+      "heading": "Terjadi kesalahan di halaman ini.",
+      "body": "Ronde dan pengaturanmu tersimpan di browser ini dan tidak terpengaruh. Coba lagi atau kembali ke beranda.",
+      "retry": "Coba lagi"
+    },
+    "play": "Mainkan satu ronde",
+    "home": "Ke beranda"
   }
 }

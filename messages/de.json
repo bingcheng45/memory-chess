@@ -383,7 +383,14 @@
       "title": "Einstellungen für Memory Chess",
       "description": "Passe die Einstellungen und Vorlieben für dein Spiel bei Memory Chess an."
     },
+    "title": "Einstellungen",
+    "intro": "Diese Einstellungen gelten für jede Runde, die du in diesem Browser spielst.",
     "showCoordinates": "Brettkoordinaten anzeigen",
+    "coordinatesHelp": "Buchstaben und Zahlen am Rand des Bretts, während du dir die Stellung einprägst und die Figuren setzt. Der Ergebnisbildschirm zeigt sie immer.",
+    "on": "An",
+    "off": "Aus",
+    "savedOn": "Gespeichert. Das Brett zeigt seine Koordinaten.",
+    "savedOff": "Gespeichert. Das Brett blendet seine Koordinaten aus.",
     "home": "Startseite",
     "playGame": "Spielen"
   },
@@ -761,5 +768,20 @@
       "note": "Jeder Link postet deinen Text mit einem Link zu deiner Karte, und X, Facebook, LinkedIn und die anderen zeigen die Karte in der Link-Vorschau. Für Instagram oder überall sonst, wo die Bilddatei nötig ist, lade sie zuerst herunter oder kopiere sie.",
       "newTab": "(öffnet in einem neuen Tab)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Seite nicht gefunden",
+      "heading": "Diese Seite gibt es nicht.",
+      "body": "Vielleicht ist der Link veraltet oder die Adresse enthält einen Tippfehler. Du kannst eine Runde spielen oder zur Startseite zurückkehren."
+    },
+    "error": {
+      "title": "Etwas ist schiefgelaufen",
+      "heading": "Auf dieser Seite ist etwas schiefgelaufen.",
+      "body": "Deine Runden und Einstellungen sind in diesem Browser gespeichert und nicht betroffen. Versuch es noch einmal oder kehre zur Startseite zurück.",
+      "retry": "Erneut versuchen"
+    },
+    "play": "Eine Runde spielen",
+    "home": "Zur Startseite"
   }
 }

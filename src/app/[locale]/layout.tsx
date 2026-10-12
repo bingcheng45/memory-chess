@@ -111,7 +111,7 @@ export async function generateMetadata({
     applicationName: "Memory Chess",
     appleWebApp: {
       title: "Memory Chess",
-      statusBarStyle: "black-translucent",
+      statusBarStyle: "default",
       capable: true,
     },
 
@@ -122,12 +122,13 @@ export async function generateMetadata({
   };
 }
 
+/** The browser chrome takes the Lab Paper page colour (--lp-paper), the site's light paper. */
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#1D1C20",
-  colorScheme: "dark",
+  themeColor: "#f5f8f7",
+  colorScheme: "light",
 };
 
 export default async function LocaleLayout({

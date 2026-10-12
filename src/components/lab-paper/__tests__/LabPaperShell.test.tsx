@@ -10,12 +10,18 @@ jest.mock("@/i18n/navigation", () => ({
   Link: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => <a href={href} {...props} />,
   usePathname: () => mockPathname,
 }));
+let mockSegments: string[] | null = null;
+jest.mock("next/navigation", () => ({
+  ...jest.requireActual("next/navigation"),
+  useSelectedLayoutSegments: () => mockSegments,
+}));
 jest.mock("@/lib/articles/translatedLocales");
 
 const BANNER_NAME = new RegExp(`Memory Chess v${LATEST_CHANGELOG_ENTRY.version.replaceAll(".", "\\.")} is here`);
 
 beforeEach(() => {
   mockPathname = "/";
+  mockSegments = null;
   jest.useFakeTimers();
   jest.setSystemTime(new Date(Date.parse(LATEST_CHANGELOG_ENTRY.publishedAt) + 24 * 60 * 60 * 1000));
   window.localStorage.clear();
@@ -66,6 +72,21 @@ describe("the footer the locale layout renders", () => {
     mockPathname = "/";
     renderWithIntl(<SiteFooter />, { locale: "de", messages: deMessages });
     expect(screen.getByRole("contentinfo").closest(".lab-paper")).toBeNull();
+  });
+
+  it("is the Lab Paper footer, with the paper banner, under the 404 any unmatched path gets, in every locale", () => {
+    mockPathname = "/no-such-page";
+    mockSegments = ["(missing)", "no-such-page"];
+    renderWithIntl(
+      <>
+        <ChangelogBanner announce />
+        <SiteFooter />
+      </>,
+      { locale: "de", messages: deMessages },
+    );
+
+    expect(screen.getByRole("contentinfo").closest(".lab-paper")).not.toBeNull();
+    expect(screen.getByRole("complementary")).toHaveClass("lab-banner");
   });
 });
 

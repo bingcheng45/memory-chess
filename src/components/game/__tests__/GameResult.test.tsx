@@ -106,27 +106,27 @@ describe("GameResult", () => {
     render(<GameResult onTryAgain={onTryAgain} onNewGame={onNewGame} onPlay={jest.fn()} />);
 
     expect(
-      screen.getByRole("heading", { name: "Great Job!" }),
+      screen.getByRole("heading", { name: "Great job!" }),
     ).toBeInTheDocument();
     expect(screen.getByText("4 / 6")).toBeInTheDocument();
-    expect(screen.getByText("Recall Speed")).toBeInTheDocument();
+    expect(screen.getByText("Recall speed")).toBeInTheDocument();
     expect(document.querySelector(".lab-rc-big")).toHaveTextContent("80%");
 
-    const summary = screen.getByRole("region", { name: "Great Job!" });
+    const summary = screen.getByRole("region", { name: "Great job!" });
     const actions = within(summary).getByRole("navigation", {
       name: "Result actions",
     });
     expect(
-      within(actions).getByRole("button", { name: "Try Again" }),
+      within(actions).getByRole("button", { name: "Try again" }),
     ).toBeInTheDocument();
     expect(
-      within(actions).getByRole("button", { name: "New Game" }),
+      within(actions).getByRole("button", { name: "New game" }),
     ).toBeInTheDocument();
     expect(
-      within(actions).getByRole("button", { name: "Submit to Leaderboard" }),
+      within(actions).getByRole("button", { name: "Submit to leaderboard" }),
     ).toBeInTheDocument();
     expect(
-      within(actions).getByRole("link", { name: "View Leaderboard" }),
+      within(actions).getByRole("link", { name: "View leaderboard" }),
     ).toBeInTheDocument();
 
     const board = document.querySelector<HTMLElement>('[data-result-board="scored"]')!;
@@ -134,8 +134,8 @@ describe("GameResult", () => {
       ["a2", "e1", "d4", "h8"].map((square) => board.querySelector(`[data-coordinate="${square}"]`)?.getAttribute("data-mark") ?? null),
     ).toEqual(["ok", "ok", "miss", null]);
 
-    fireEvent.click(screen.getByRole("button", { name: "Try Again" }));
-    fireEvent.click(screen.getByRole("button", { name: "New Game" }));
+    fireEvent.click(screen.getByRole("button", { name: "Try again" }));
+    fireEvent.click(screen.getByRole("button", { name: "New game" }));
     expect(onTryAgain).toHaveBeenCalledTimes(1);
     expect(onNewGame).toHaveBeenCalledTimes(1);
   });
@@ -144,16 +144,16 @@ describe("GameResult", () => {
     render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
     expect(
-      screen.getByRole("link", { name: "View Leaderboard" }),
+      screen.getByRole("link", { name: "View leaderboard" }),
     ).toBeInTheDocument();
     fireEvent.click(
-      screen.getByRole("button", { name: "Submit to Leaderboard" }),
+      screen.getByRole("button", { name: "Submit to leaderboard" }),
     );
 
     expect(
-      screen.getByRole("heading", { name: "Submit to Leaderboard" }),
+      screen.getByRole("heading", { name: "Submit to leaderboard" }),
     ).toBeInTheDocument();
-    expect(screen.getByLabelText("Player Name")).toBeInTheDocument();
+    expect(screen.getByLabelText("Player name")).toBeInTheDocument();
   });
 
   describe("the article tile", () => {
@@ -178,11 +178,11 @@ describe("GameResult", () => {
 
       expect(comesBeforeTile(document.querySelector<HTMLElement>('[data-result-board="scored"]')!)).toBe(true);
       expect(
-        ["Try Again", "New Game", "Submit to Leaderboard", "View Leaderboard"].map((name) =>
-          comesBeforeTile(screen.getByRole(name === "View Leaderboard" ? "link" : "button", { name })),
+        ["Try again", "New game", "Submit to leaderboard", "View leaderboard"].map((name) =>
+          comesBeforeTile(screen.getByRole(name === "View leaderboard" ? "link" : "button", { name })),
         ),
       ).toEqual([true, true, true, true]);
-      expect(screen.getByRole("region", { name: "Great Job!" })).not.toContainElement(tile);
+      expect(screen.getByRole("region", { name: "Great job!" })).not.toContainElement(tile);
     });
 
     it("sets the round that was just played beside the article's drill", () => {
@@ -199,9 +199,9 @@ describe("GameResult", () => {
       expect(shownSlug()).toBe("alder-fixture");
 
       random.mockReturnValue(0.99);
-      fireEvent.click(screen.getByRole("button", { name: "Submit to Leaderboard" }));
+      fireEvent.click(screen.getByRole("button", { name: "Submit to leaderboard" }));
 
-      expect(screen.getByLabelText("Player Name")).toBeInTheDocument();
+      expect(screen.getByLabelText("Player name")).toBeInTheDocument();
       expect(shownSlug()).toBe("alder-fixture");
     });
 
@@ -226,12 +226,12 @@ describe("GameResult", () => {
     render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
     fireEvent.click(
-      screen.getByRole("button", { name: "Submit to Leaderboard" }),
+      screen.getByRole("button", { name: "Submit to leaderboard" }),
     );
-    fireEvent.change(screen.getByLabelText("Player Name"), {
+    fireEvent.change(screen.getByLabelText("Player name"), {
       target: { value: "Poteto" },
     });
-    fireEvent.click(screen.getByRole("button", { name: "Submit Score" }));
+    fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
 
     expect(
       await screen.findByText(`Error: ${serverMessage}`),
@@ -246,12 +246,12 @@ describe("GameResult", () => {
     function submitScore() {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
       fireEvent.click(
-        screen.getByRole("button", { name: "Submit to Leaderboard" }),
+        screen.getByRole("button", { name: "Submit to leaderboard" }),
       );
-      fireEvent.change(screen.getByLabelText("Player Name"), {
+      fireEvent.change(screen.getByLabelText("Player name"), {
         target: { value: "Poteto" },
       });
-      fireEvent.click(screen.getByRole("button", { name: "Submit Score" }));
+      fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
     }
 
     beforeEach(() => {
@@ -314,7 +314,7 @@ describe("GameResult", () => {
 
       submitScore();
 
-      expect(await screen.findByRole("heading", { name: "Score Submitted!" })).toBeInTheDocument();
+      expect(await screen.findByRole("heading", { name: "Score submitted!" })).toBeInTheDocument();
       expect(screen.queryByText(/^Error:/)).toBeNull();
       expect(window.localStorage.getItem("memory-chess-lab-entries")).toBeNull();
     });
@@ -346,10 +346,10 @@ describe("GameResult", () => {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
       expect(
-        screen.queryByRole("button", { name: "Submit to Leaderboard" }),
+        screen.queryByRole("button", { name: "Submit to leaderboard" }),
       ).not.toBeInTheDocument();
       expect(
-        screen.getByRole("link", { name: "View Leaderboard" }),
+        screen.getByRole("link", { name: "View leaderboard" }),
       ).toBeInTheDocument();
     } finally {
       mockGameState = baseGameState;
@@ -365,8 +365,8 @@ describe("GameResult", () => {
     try {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
-      expect(screen.queryByRole("button", { name: "Submit to Leaderboard" })).not.toBeInTheDocument();
-      expect(screen.getByRole("button", { name: "Try Again" })).toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "Submit to leaderboard" })).not.toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Try again" })).toBeInTheDocument();
     } finally {
       mockGameState = baseGameState;
     }
@@ -445,12 +445,12 @@ describe("GameResult", () => {
       expect(screen.getByText(QUALIFIES_SENTENCE)).toBeInTheDocument();
 
       fireEvent.click(
-        screen.getByRole("button", { name: "Submit to Leaderboard" }),
+        screen.getByRole("button", { name: "Submit to leaderboard" }),
       );
-      fireEvent.change(screen.getByLabelText("Player Name"), {
+      fireEvent.change(screen.getByLabelText("Player name"), {
         target: { value: "Poteto" },
       });
-      fireEvent.click(screen.getByRole("button", { name: "Submit Score" }));
+      fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
 
       await waitFor(() => {
         expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();

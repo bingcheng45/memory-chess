@@ -1,11 +1,18 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { isLabPaperRoute, type LabPaperRoute } from "@/lib/lab-paper/routes";
+import { UNKNOWN_PATH_GROUP } from "@/lib/lab-paper/useIsLabPaperRoute";
+
+it("names the route group of the catch-all that sends every unmatched path to the Lab Paper 404", () => {
+  expect(existsSync(join(process.cwd(), "src/app/[locale]", UNKNOWN_PATH_GROUP, "[...rest]/page.tsx"))).toBe(true);
+});
 
 describe("the Lab Paper route registry", () => {
   it("draws the homepage in Lab Paper only in the locales that have its copy, and leaves unlisted routes in the site shell", () => {
     expect(isLabPaperRoute("/", "en")).toBe(true);
     expect(isLabPaperRoute("/", "de")).toBe(false);
-    expect(isLabPaperRoute("/settings", "en")).toBe(false);
-    expect(isLabPaperRoute("/settings", "de")).toBe(false);
+    expect(isLabPaperRoute("/learn", "en")).toBe(false);
+    expect(isLabPaperRoute("/learn/chess-memory-training", "en")).toBe(false);
   });
 
   it("draws the English-only changelog, about, terms and privacy pages in Lab Paper", () => {
@@ -13,6 +20,11 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/about", "en")).toBe(true);
     expect(isLabPaperRoute("/terms", "en")).toBe(true);
     expect(isLabPaperRoute("/privacy", "en")).toBe(true);
+  });
+
+  it("draws the settings page in Lab Paper in every locale", () => {
+    expect(isLabPaperRoute("/settings", "en")).toBe(true);
+    expect(isLabPaperRoute("/settings", "hu")).toBe(true);
   });
 
   it("draws the leaderboard and the contact page in Lab Paper in every locale, since every catalogue carries their copy", () => {

@@ -121,10 +121,8 @@ describe("a guide page", () => {
 });
 
 describe("the hub", () => {
-  it("lists every guide under its group heading and in the ItemList in the same order", () => {
+  it("walks five numbered stages, each guide numbered within its stage, then the closing routine", () => {
     const markup = html(LearnHub());
-    const items = graph(markup).find((node) => node["@type"] === "ItemList")?.itemListElement as { name: string }[];
-    const cards = texts(markup, "b");
 
     expect(texts(markup, "h2")).toEqual([
       "Start here",
@@ -132,8 +130,36 @@ describe("the hub", () => {
       "Visualization and calculation",
       "Memory and patterns",
       "Practice and review",
+      "Then keep the routine going",
     ]);
-    expect(items.map((item) => item.name)).toEqual(cards);
-    expect(cards).toHaveLength(14);
+    expect(texts(markup, "p").find((text) => text.endsWith("matches your problem."))).toBe(
+      "Five stages, each a few short guides. Read them in order, or start at the stage that matches your problem.",
+    );
+    expect([...markup.matchAll(/<nav class="lh-map"[^]*?<\/nav>/g)][0][0].match(/href="#[^"]+"/g)).toEqual([
+      'href="#foundations"',
+      'href="#board-vision"',
+      'href="#visualization"',
+      'href="#memory"',
+      'href="#practice"',
+    ]);
+    expect(texts(markup, "span").filter((text) => /^\d\.\d$/.test(text))).toHaveLength(14);
+    expect(markup).toContain("6 min read · ends with 6 pieces, 10 seconds");
+  });
+
+  it("lists every guide in the ItemList in the order a reader sees them", () => {
+    const markup = html(LearnHub());
+    const items = graph(markup).find((node) => node["@type"] === "ItemList")?.itemListElement as { name: string }[];
+    const shown = [...markup.matchAll(/class="lh-guide"[^]*?<b>(.*?)<\/b>/g)].map((match) => match[1].replace(/&#x27;/g, "'"));
+
+    expect(shown).toHaveLength(14);
+    expect(items.map((item) => item.name)).toEqual(shown);
+  });
+
+  it("closes stages with their own call to action and never hides text", () => {
+    const markup = html(LearnHub());
+
+    expect(markup).toContain('<a href="/game?pieceCount=6&amp;memorizeTime=10&amp;source=guide_cta">Check where you stand first: play a 6-piece round</a>');
+    expect(markup).toContain('<a href="/dashboard#tile-span">Track your memory span as you climb the ladder</a>');
+    expect(markup).not.toMatch(/\shidden(=|\s|>)/);
   });
 });

@@ -4,7 +4,7 @@
 
 ## Sub-features
 
-- `learn-hub` lists the guides grouped by topic group, each group anchored at `/learn#<group>`.
+- `learn-hub` is the Path: a stage map that jumps to `/learn#<group>`, then each topic group as a numbered stage of numbered guides (`2.3`), stage calls to action, and a closing routine block.
 - `learn-article` renders one guide (`LearnGuidePage`): a reading column, a numbered contents rail that marks the section being read (`aria-current="location"` on `[data-toc]`) and fills a progress line (`--lg-read`), server-rendered boards (`.lg-board`), calls to action, the FAQ in native `<details>`, and JSON-LD.
 - `learn-english-only` redirects `/<locale>/learn[/slug]` to the bare URL and renders the bare URL in English for every visitor.
 - `learn-404` unknown slugs return the not-found page.

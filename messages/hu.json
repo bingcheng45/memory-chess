@@ -671,8 +671,6 @@
       "button": "Fejlődésem megosztása",
       "working": "A kártyád készül.",
       "shared": "Megosztva.",
-      "saved": "Kártya elmentve, szöveg kimásolva. Oszd meg, ahol szeretnéd.",
-      "savedNoCopy": "Kártya elmentve. Másold ki az alábbi szöveget, és tedd mellé.",
       "failed": "A kártyát itt nem sikerült elkészíteni. Másold ki helyette az alábbi szöveget.",
       "caption": "Szöveg",
       "copy": "Szöveg másolása",
@@ -691,6 +689,26 @@
         "kicker": "Laborjegyzőkönyv",
         "rounds": "{count, plural, one {# lejátszott kör} other {# lejátszott kör}}",
         "cta": "Meg tudod verni?"
+      },
+      "lede": "Készíts képet a jegyzőkönyvedről, hogy megoszd, elmentsd vagy elküldd.",
+      "title": "Oszd meg a fejlődésed",
+      "intro": "Oszd meg a kártyát, mentsd el, vagy másold be egy bejegyzésbe.",
+      "close": "Bezárás",
+      "alt": "Memory Chess fejlődési kártya: {figures}. {rounds}.",
+      "shareFailed": "A megosztás itt nem működött. Inkább töltsd le vagy másold ki a képet.",
+      "downloaded": "Kép letöltve.",
+      "imageCopied": "Kép kimásolva. Illeszd be a bejegyzésedbe.",
+      "imageCopyFailed": "Ez a böngésző nem másolta ki a képet. Inkább töltsd le.",
+      "opened": "A(z) {network} új lapon nyílt meg. Ott add hozzá a képet, ha elmentetted vagy kimásoltad.",
+      "actions": {
+        "share": "Megosztás",
+        "download": "Kép letöltése",
+        "copyImage": "Kép másolása"
+      },
+      "post": {
+        "title": "Közzététel itt",
+        "note": "Ezek a hivatkozások a szövegedet és a linket osztják meg, a képet nem. A Facebook és a LinkedIn csak a linket veszi át. Ha a kártyát is szeretnéd, előbb töltsd le vagy másold ki a képet, majd add hozzá a bejegyzésedhez.",
+        "newTab": "(új lapon nyílik meg)"
       }
     }
   }

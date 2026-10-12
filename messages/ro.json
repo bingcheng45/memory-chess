@@ -671,8 +671,6 @@
       "button": "Distribuie progresul meu",
       "working": "Se creează cardul tău.",
       "shared": "Distribuit.",
-      "saved": "Card salvat și text copiat. Publică-le oriunde.",
-      "savedNoCopy": "Card salvat. Copiază textul de mai jos ca să-l publici împreună.",
       "failed": "Cardul nu a putut fi creat aici. Copiază în schimb textul de mai jos.",
       "caption": "Text",
       "copy": "Copiază textul",
@@ -691,6 +689,26 @@
         "kicker": "Jurnal de laborator",
         "rounds": "{count, plural, one {# rundă jucată} few {# runde jucate} other {# de runde jucate}}",
         "cta": "Poți mai bine?"
+      },
+      "lede": "Fă o imagine a jurnalului tău ca s-o publici, s-o salvezi sau s-o trimiți.",
+      "title": "Distribuie progresul tău",
+      "intro": "Distribuie cardul, salvează-l sau copiază-l într-o postare.",
+      "close": "Închide",
+      "alt": "Card de progres Memory Chess: {figures}. {rounds}.",
+      "shareFailed": "Distribuirea nu a funcționat aici. Descarcă sau copiază imaginea.",
+      "downloaded": "Imagine descărcată.",
+      "imageCopied": "Imagine copiată. Lipește-o în postare.",
+      "imageCopyFailed": "Acest browser nu a copiat imaginea. Descarc-o în schimb.",
+      "opened": "{network} s-a deschis într-o filă nouă. Adaugă acolo imaginea dacă ai salvat-o sau ai copiat-o.",
+      "actions": {
+        "share": "Distribuie",
+        "download": "Descarcă imaginea",
+        "copyImage": "Copiază imaginea"
+      },
+      "post": {
+        "title": "Publică pe",
+        "note": "Aceste linkuri publică textul și linkul tău, nu imaginea. Facebook și LinkedIn preiau doar linkul. Ca să incluzi cardul, descarcă sau copiază mai întâi imaginea, apoi adaug-o la postare.",
+        "newTab": "(se deschide într-o filă nouă)"
       }
     }
   }

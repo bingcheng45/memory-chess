@@ -18,10 +18,14 @@ export function shareUrl(locale: string): string {
   return url.toString();
 }
 
+/** The card's figures as one list in words, as the caption and the card's alt text name them. */
+export function figureList(t: DashboardTranslate, card: ShareCard, locale: string): string {
+  return new Intl.ListFormat(locale, { type: "unit" }).format(card.figures.map(({ id, figure }) => t(`share.figure.${id}`, { value: figure.value })));
+}
+
 /** The brag line posted with the card: its figures as one list, then the link on its own. */
 export function shareCaption(t: DashboardTranslate, card: ShareCard, locale: string): ShareCaption {
-  const figures = new Intl.ListFormat(locale, { type: "unit" }).format(card.figures.map(({ id, figure }) => t(`share.figure.${id}`, { value: figure.value })));
-  return { text: t("share.text", { figures }), url: shareUrl(locale) };
+  return { text: t("share.text", { figures: figureList(t, card, locale) }), url: shareUrl(locale) };
 }
 
 /** Where the share sheet is missing, the caption is copied with its link in one piece. */

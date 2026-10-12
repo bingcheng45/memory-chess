@@ -1,4 +1,4 @@
-import { fireEvent } from "@testing-library/react";
+import { act, fireEvent } from "@testing-library/react";
 import { renderWithIntl, screen, within } from "@/test-utils/intl";
 import { Dashboard } from "@/components/dashboard/Dashboard";
 import type { LabData } from "@/hooks/useLabData";
@@ -6,6 +6,7 @@ import { persona } from "@/test-utils/labPersona";
 import type { PersonaName } from "@/lib/lab/personas";
 
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
+jest.mock("@/components/dashboard/shareImage", () => ({ drawShareCard: () => Promise.resolve(new Blob(["png"], { type: "image/png" })) }));
 
 let labData: LabData;
 jest.mock("@/hooks/useLabData", () => ({
@@ -22,11 +23,13 @@ const tileText = (id: string) => document.querySelector(`[data-tile="${id}"]`)?.
 beforeEach(() => window.localStorage.clear());
 
 describe("Dashboard", () => {
-  it("offers the share card once a headline figure is ready, with the caption it will post", () => {
+  it("offers the share card once a headline figure is ready, with the caption it will post", async () => {
+    URL.createObjectURL = jest.fn(() => "blob:card");
+    URL.revokeObjectURL = jest.fn();
     show("threeDays");
 
-    expect(screen.getByRole("button", { name: "Share my progress" })).toBeInTheDocument();
-    expect(document.querySelector(".lab-share-caption pre")?.textContent).toBe(
+    await act(async () => fireEvent.click(screen.getByRole("button", { name: "Share my progress" })));
+    expect(within(screen.getByRole("dialog")).getByText(/^My Memory Chess progress/).textContent).toBe(
       "My Memory Chess progress: memory span 6 pieces, 5.2 pieces held, 4.6 s per piece, 3 days in a row. Can you beat it? https://thememorychess.com/?utm_source=share&utm_medium=dashboard",
     );
     expect(tileText("span")).toBe("Memory span6 pieces80% or better in 11 rounds, studied 10 s");

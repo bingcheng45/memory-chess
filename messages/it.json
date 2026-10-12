@@ -671,8 +671,6 @@
       "button": "Condividi i miei progressi",
       "working": "Creazione della scheda.",
       "shared": "Condiviso.",
-      "saved": "Scheda salvata e testo copiato. Pubblicali dove vuoi.",
-      "savedNoCopy": "Scheda salvata. Copia il testo qui sotto per pubblicarlo insieme.",
       "failed": "Qui non è stato possibile creare la scheda. Copia invece il testo qui sotto.",
       "caption": "Testo",
       "copy": "Copia testo",
@@ -691,6 +689,26 @@
         "kicker": "Registro del laboratorio",
         "rounds": "{count, plural, one {# partita giocata} many {# partite giocate} other {# partite giocate}}",
         "cta": "Riesci a fare di meglio?"
+      },
+      "lede": "Crea un'immagine del tuo registro da pubblicare, salvare o inviare.",
+      "title": "Condividi i tuoi progressi",
+      "intro": "Condividi la scheda, salvala o copiala in un post.",
+      "close": "Chiudi",
+      "alt": "Scheda dei progressi di Memory Chess: {figures}. {rounds}.",
+      "shareFailed": "La condivisione qui non ha funzionato. Scarica o copia l'immagine.",
+      "downloaded": "Immagine scaricata.",
+      "imageCopied": "Immagine copiata. Incollala nel tuo post.",
+      "imageCopyFailed": "Questo browser non ha copiato l'immagine. Scaricala invece.",
+      "opened": "{network} si è aperto in una nuova scheda. Aggiungi lì l'immagine se l'hai salvata o copiata.",
+      "actions": {
+        "share": "Condividi",
+        "download": "Scarica immagine",
+        "copyImage": "Copia immagine"
+      },
+      "post": {
+        "title": "Pubblica su",
+        "note": "Questi link pubblicano il tuo testo e il link, non l'immagine. Facebook e LinkedIn prendono solo il link. Per includere la scheda, scarica o copia prima l'immagine, poi aggiungila al tuo post.",
+        "newTab": "(si apre in una nuova scheda)"
       }
     }
   }

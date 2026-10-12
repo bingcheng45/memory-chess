@@ -1,4 +1,5 @@
 import type { LeaderboardDifficulty } from "@/types/leaderboard";
+import type { ShareNetwork } from "@/lib/shareIntents";
 
 /** Where a round was started from. `link` is a round link that names no known source. */
 export const ROUND_SOURCES = [
@@ -103,13 +104,13 @@ export type FunnelEvent =
       name: "lab_panel_action";
       params: { panel: LabPanel; action: LabPanelAction };
     }
-  /** How the progress card left the dashboard: the share sheet, a saved image, or the caption copied. Never its figures. */
+  /** How the progress card left the dashboard: the share sheet, a saved or copied image, the caption copied, or a network's post page. Never its figures. */
   | {
       name: "lab_dashboard_share";
-      params: { method: ShareMethod };
+      params: { method: Exclude<ShareMethod, "post"> } | { method: "post"; network: ShareNetwork };
     };
 
-export type ShareMethod = "native" | "download" | "copy";
+export type ShareMethod = "native" | "download" | "copy_image" | "copy" | "post";
 
 export function trackEvent({ name, params }: FunnelEvent): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;

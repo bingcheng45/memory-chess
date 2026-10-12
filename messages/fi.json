@@ -671,8 +671,6 @@
       "button": "Jaa edistymiseni",
       "working": "Korttiasi tehdään.",
       "shared": "Jaettu.",
-      "saved": "Kortti tallennettu ja teksti kopioitu. Julkaise ne missä haluat.",
-      "savedNoCopy": "Kortti tallennettu. Kopioi alla oleva teksti ja julkaise se kortin kanssa.",
       "failed": "Korttia ei voitu tehdä täällä. Kopioi sen sijaan alla oleva teksti.",
       "caption": "Teksti",
       "copy": "Kopioi teksti",
@@ -691,6 +689,26 @@
         "kicker": "Laboratoriopäiväkirja",
         "rounds": "{count, plural, one {# kierros pelattu} other {# kierrosta pelattu}}",
         "cta": "Pystytkö parempaan?"
+      },
+      "lede": "Tee päiväkirjastasi kuva, jonka voit julkaista, tallentaa tai lähettää.",
+      "title": "Jaa edistymisesi",
+      "intro": "Jaa kortti, tallenna se tai kopioi se julkaisuun.",
+      "close": "Sulje",
+      "alt": "Memory Chess -edistymiskortti: {figures}. {rounds}.",
+      "shareFailed": "Jakaminen ei onnistunut täällä. Lataa tai kopioi kuva sen sijaan.",
+      "downloaded": "Kuva ladattu.",
+      "imageCopied": "Kuva kopioitu. Liitä se julkaisuusi.",
+      "imageCopyFailed": "Tämä selain ei kopioinut kuvaa. Lataa se sen sijaan.",
+      "opened": "{network} avautui uudelle välilehdelle. Lisää kuva sinne, jos tallensit tai kopioit sen.",
+      "actions": {
+        "share": "Jaa",
+        "download": "Lataa kuva",
+        "copyImage": "Kopioi kuva"
+      },
+      "post": {
+        "title": "Julkaise palvelussa",
+        "note": "Nämä linkit julkaisevat tekstisi ja linkin, eivät kuvaa. Facebook ja LinkedIn ottavat vain linkin. Jos haluat kortin mukaan, lataa tai kopioi kuva ensin ja lisää se julkaisuusi.",
+        "newTab": "(avautuu uudelle välilehdelle)"
       }
     }
   }

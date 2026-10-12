@@ -671,8 +671,6 @@
       "button": "Udostępnij moje postępy",
       "working": "Tworzenie karty.",
       "shared": "Udostępniono.",
-      "saved": "Karta zapisana, a tekst skopiowany. Opublikuj je, gdzie chcesz.",
-      "savedNoCopy": "Karta zapisana. Skopiuj tekst poniżej, aby opublikować go razem z nią.",
       "failed": "Nie udało się tu utworzyć karty. Skopiuj zamiast tego tekst poniżej.",
       "caption": "Tekst",
       "copy": "Kopiuj tekst",
@@ -691,6 +689,26 @@
         "kicker": "Dziennik laboratorium",
         "rounds": "{count, plural, one {# rozegrana runda} few {# rozegrane rundy} many {# rozegranych rund} other {# rozegranej rundy}}",
         "cta": "Pobijesz to?"
+      },
+      "lede": "Zrób obraz swojego dziennika, aby go opublikować, zapisać lub wysłać.",
+      "title": "Udostępnij swoje postępy",
+      "intro": "Udostępnij kartę, zapisz ją albo skopiuj do posta.",
+      "close": "Zamknij",
+      "alt": "Karta postępów Memory Chess: {figures}. {rounds}.",
+      "shareFailed": "Udostępnianie tu nie zadziałało. Pobierz lub skopiuj obraz.",
+      "downloaded": "Obraz pobrany.",
+      "imageCopied": "Obraz skopiowany. Wklej go do posta.",
+      "imageCopyFailed": "Ta przeglądarka nie skopiowała obrazu. Pobierz go zamiast tego.",
+      "opened": "Otwarto {network} w nowej karcie. Dodaj tam obraz, jeśli go zapisałeś lub skopiowałeś.",
+      "actions": {
+        "share": "Udostępnij",
+        "download": "Pobierz obraz",
+        "copyImage": "Kopiuj obraz"
+      },
+      "post": {
+        "title": "Opublikuj w",
+        "note": "Te linki publikują tekst i link, a nie obraz. Facebook i LinkedIn biorą tylko link. Aby dołączyć kartę, najpierw pobierz lub skopiuj obraz, a potem dodaj go do posta.",
+        "newTab": "(otwiera się w nowej karcie)"
       }
     }
   }

@@ -671,8 +671,6 @@
       "button": "Compartilhar meu progresso",
       "working": "Criando seu cartão.",
       "shared": "Compartilhado.",
-      "saved": "Cartão salvo e legenda copiada. Publique onde quiser.",
-      "savedNoCopy": "Cartão salvo. Copie a legenda abaixo para publicar junto.",
       "failed": "Não foi possível criar o cartão aqui. Copie a legenda abaixo.",
       "caption": "Legenda",
       "copy": "Copiar legenda",
@@ -691,6 +689,26 @@
         "kicker": "Registro do laboratório",
         "rounds": "{count, plural, one {# rodada jogada} many {# rodadas jogadas} other {# rodadas jogadas}}",
         "cta": "Consegue superar?"
+      },
+      "lede": "Crie uma imagem do seu registro para publicar, salvar ou enviar.",
+      "title": "Compartilhe seu progresso",
+      "intro": "Compartilhe o cartão, salve-o ou copie-o em uma publicação.",
+      "close": "Fechar",
+      "alt": "Cartão de progresso do Memory Chess: {figures}. {rounds}.",
+      "shareFailed": "Não foi possível compartilhar aqui. Baixe ou copie a imagem.",
+      "downloaded": "Imagem baixada.",
+      "imageCopied": "Imagem copiada. Cole-a na sua publicação.",
+      "imageCopyFailed": "Este navegador não copiou a imagem. Baixe-a em vez disso.",
+      "opened": "{network} foi aberto em uma nova aba. Adicione a imagem lá se você a salvou ou copiou.",
+      "actions": {
+        "share": "Compartilhar",
+        "download": "Baixar imagem",
+        "copyImage": "Copiar imagem"
+      },
+      "post": {
+        "title": "Publicar no",
+        "note": "Estes links publicam sua legenda e o link, não a imagem. Facebook e LinkedIn usam só o link. Para incluir o cartão, baixe ou copie a imagem primeiro e depois adicione-a à sua publicação.",
+        "newTab": "(abre em uma nova aba)"
       }
     }
   }

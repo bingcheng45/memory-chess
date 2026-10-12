@@ -671,8 +671,6 @@
       "button": "Fortschritt teilen",
       "working": "Deine Karte wird erstellt.",
       "shared": "Geteilt.",
-      "saved": "Karte gespeichert und Text kopiert. Poste beides, wo du willst.",
-      "savedNoCopy": "Karte gespeichert. Kopiere den Text unten, um ihn dazu zu posten.",
       "failed": "Die Karte konnte hier nicht erstellt werden. Kopiere stattdessen den Text unten.",
       "caption": "Text",
       "copy": "Text kopieren",
@@ -691,6 +689,26 @@
         "kicker": "Laborbericht",
         "rounds": "{count, plural, one {# Runde gespielt} other {# Runden gespielt}}",
         "cta": "Schaffst du das?"
+      },
+      "lede": "Mach ein Bild deines Berichts zum Posten, Speichern oder Verschicken.",
+      "title": "Fortschritt teilen",
+      "intro": "Teile die Karte, speichere sie oder kopiere sie in einen Beitrag.",
+      "close": "Schließen",
+      "alt": "Memory Chess-Fortschrittskarte: {figures}. {rounds}.",
+      "shareFailed": "Teilen hat hier nicht funktioniert. Lade das Bild stattdessen herunter oder kopiere es.",
+      "downloaded": "Bild heruntergeladen.",
+      "imageCopied": "Bild kopiert. Füge es in deinen Beitrag ein.",
+      "imageCopyFailed": "Dieser Browser konnte das Bild nicht kopieren. Lade es stattdessen herunter.",
+      "opened": "{network} wurde in einem neuen Tab geöffnet. Füge das Bild dort hinzu, wenn du es gespeichert oder kopiert hast.",
+      "actions": {
+        "share": "Teilen",
+        "download": "Bild herunterladen",
+        "copyImage": "Bild kopieren"
+      },
+      "post": {
+        "title": "Posten auf",
+        "note": "Diese Links posten deinen Text und den Link, nicht das Bild. Facebook und LinkedIn übernehmen nur den Link. Um die Karte mitzuschicken, lade das Bild zuerst herunter oder kopiere es und füge es dann in deinen Beitrag ein.",
+        "newTab": "(öffnet in einem neuen Tab)"
       }
     }
   }

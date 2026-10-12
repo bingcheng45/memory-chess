@@ -671,8 +671,6 @@
       "button": "Partager mes progrès",
       "working": "Création de votre carte.",
       "shared": "Partagé.",
-      "saved": "Carte enregistrée et légende copiée. Publiez-les où vous voulez.",
-      "savedNoCopy": "Carte enregistrée. Copiez la légende ci-dessous pour la publier avec.",
       "failed": "La carte n’a pas pu être créée ici. Copiez plutôt la légende ci-dessous.",
       "caption": "Légende",
       "copy": "Copier la légende",
@@ -691,6 +689,26 @@
         "kicker": "Carnet de labo",
         "rounds": "{count, plural, one {# partie jouée} many {# parties jouées} other {# parties jouées}}",
         "cta": "Saurez-vous faire mieux ?"
+      },
+      "lede": "Créez une image de votre carnet à publier, enregistrer ou envoyer.",
+      "title": "Partagez vos progrès",
+      "intro": "Partagez la carte, enregistrez-la ou copiez-la dans une publication.",
+      "close": "Fermer",
+      "alt": "Carte de progrès Memory Chess : {figures}. {rounds}.",
+      "shareFailed": "Le partage n’a pas fonctionné ici. Téléchargez ou copiez plutôt l’image.",
+      "downloaded": "Image téléchargée.",
+      "imageCopied": "Image copiée. Collez-la dans votre publication.",
+      "imageCopyFailed": "Ce navigateur n’a pas pu copier l’image. Téléchargez-la plutôt.",
+      "opened": "{network} s’est ouvert dans un nouvel onglet. Ajoutez-y l’image si vous l’avez enregistrée ou copiée.",
+      "actions": {
+        "share": "Partager",
+        "download": "Télécharger l’image",
+        "copyImage": "Copier l’image"
+      },
+      "post": {
+        "title": "Publier sur",
+        "note": "Ces liens publient votre légende et le lien, pas l’image. Facebook et LinkedIn ne prennent que le lien. Pour inclure la carte, téléchargez ou copiez d’abord l’image, puis ajoutez-la à votre publication.",
+        "newTab": "(s’ouvre dans un nouvel onglet)"
       }
     }
   }

@@ -671,8 +671,6 @@
       "button": "İlerlememi paylaş",
       "working": "Kartın hazırlanıyor.",
       "shared": "Paylaşıldı.",
-      "saved": "Kart kaydedildi ve metin kopyalandı. İstediğin yerde paylaş.",
-      "savedNoCopy": "Kart kaydedildi. Birlikte paylaşmak için aşağıdaki metni kopyala.",
       "failed": "Kart burada oluşturulamadı. Bunun yerine aşağıdaki metni kopyala.",
       "caption": "Metin",
       "copy": "Metni kopyala",
@@ -691,6 +689,26 @@
         "kicker": "Laboratuvar kaydı",
         "rounds": "{count, plural, one {# tur oynandı} other {# tur oynandı}}",
         "cta": "Geçebilir misin?"
+      },
+      "lede": "Kaydının bir görselini oluştur; paylaş, kaydet ya da gönder.",
+      "title": "İlerlemeni paylaş",
+      "intro": "Kartı paylaş, kaydet ya da bir gönderiye kopyala.",
+      "close": "Kapat",
+      "alt": "Memory Chess ilerleme kartı: {figures}. {rounds}.",
+      "shareFailed": "Paylaşım burada çalışmadı. Bunun yerine görseli indir ya da kopyala.",
+      "downloaded": "Görsel indirildi.",
+      "imageCopied": "Görsel kopyalandı. Gönderine yapıştır.",
+      "imageCopyFailed": "Bu tarayıcı görseli kopyalamadı. Bunun yerine indir.",
+      "opened": "{network} yeni sekmede açıldı. Görseli kaydettiysen ya da kopyaladıysan orada ekle.",
+      "actions": {
+        "share": "Paylaş",
+        "download": "Görseli indir",
+        "copyImage": "Görseli kopyala"
+      },
+      "post": {
+        "title": "Şurada paylaş",
+        "note": "Bu bağlantılar görseli değil, metnini ve bağlantını paylaşır. Facebook ve LinkedIn yalnızca bağlantıyı alır. Kartı eklemek için önce görseli indir ya da kopyala, sonra gönderine ekle.",
+        "newTab": "(yeni sekmede açılır)"
       }
     }
   }

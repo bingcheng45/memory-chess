@@ -671,8 +671,6 @@
       "button": "分享我的进度",
       "working": "正在生成你的卡片。",
       "shared": "已分享。",
-      "saved": "卡片已保存，文案已复制。随处发布吧。",
-      "savedNoCopy": "卡片已保存。复制下方文案一起发布。",
       "failed": "此处无法生成卡片。请改为复制下方文案。",
       "caption": "文案",
       "copy": "复制文案",
@@ -691,6 +689,26 @@
         "kicker": "实验室记录",
         "rounds": "{count, plural, other {已玩 # 回合}}",
         "cta": "你能超过吗？"
+      },
+      "lede": "把你的记录生成图片，用来发布、保存或发送。",
+      "title": "分享你的进度",
+      "intro": "分享卡片、保存，或复制到帖子里。",
+      "close": "关闭",
+      "alt": "Memory Chess 进度卡片：{figures}。{rounds}。",
+      "shareFailed": "此处无法分享。请改为下载或复制图片。",
+      "downloaded": "图片已下载。",
+      "imageCopied": "图片已复制。粘贴到你的帖子里吧。",
+      "imageCopyFailed": "此浏览器无法复制图片。请改为下载。",
+      "opened": "已在新标签页打开 {network}。如果你已保存或复制图片，请在那里添加。",
+      "actions": {
+        "share": "分享",
+        "download": "下载图片",
+        "copyImage": "复制图片"
+      },
+      "post": {
+        "title": "发布到",
+        "note": "这些链接只发布文案和链接，不含图片。Facebook 和 LinkedIn 只会带上链接。想附上卡片，请先下载或复制图片，再添加到帖子里。",
+        "newTab": "（在新标签页打开）"
       }
     }
   }

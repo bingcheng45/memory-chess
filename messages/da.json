@@ -671,8 +671,6 @@
       "button": "Del mine fremskridt",
       "working": "Dit kort laves.",
       "shared": "Delt.",
-      "saved": "Kort gemt og tekst kopieret. Del dem, hvor du vil.",
-      "savedNoCopy": "Kort gemt. Kopiér teksten herunder og del den med kortet.",
       "failed": "Kortet kunne ikke laves her. Kopiér teksten herunder i stedet.",
       "caption": "Tekst",
       "copy": "Kopiér tekst",
@@ -691,6 +689,26 @@
         "kicker": "Laboratoriejournal",
         "rounds": "{count, plural, one {# runde spillet} other {# runder spillet}}",
         "cta": "Kan du slå det?"
+      },
+      "lede": "Lav et billede af din journal, som du kan dele, gemme eller sende.",
+      "title": "Del dine fremskridt",
+      "intro": "Del kortet, gem det, eller kopiér det ind i et opslag.",
+      "close": "Luk",
+      "alt": "Memory Chess-fremskridtskort: {figures}. {rounds}.",
+      "shareFailed": "Deling virkede ikke her. Download eller kopiér billedet i stedet.",
+      "downloaded": "Billede downloadet.",
+      "imageCopied": "Billede kopieret. Indsæt det i dit opslag.",
+      "imageCopyFailed": "Denne browser ville ikke kopiere billedet. Download det i stedet.",
+      "opened": "{network} åbnede i en ny fane. Tilføj billedet der, hvis du har gemt eller kopieret det.",
+      "actions": {
+        "share": "Del",
+        "download": "Download billede",
+        "copyImage": "Kopiér billede"
+      },
+      "post": {
+        "title": "Del på",
+        "note": "Disse links deler din tekst og dit link, ikke billedet. Facebook og LinkedIn tager kun linket. Vil du have kortet med, så download eller kopiér billedet først, og tilføj det til dit opslag.",
+        "newTab": "(åbner i en ny fane)"
       }
     }
   }

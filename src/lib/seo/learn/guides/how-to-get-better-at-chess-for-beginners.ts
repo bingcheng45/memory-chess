@@ -31,7 +31,7 @@ const guide: LearnDocument = {
   intro: {
     quickAnswer: "To get better at chess as a beginner, stop losing pieces for free before you study openings. Each day, play five short board-reading rounds, then one slow game where you ask one safety question before every move. After the game, write one line about the move that lost material.",
     takeaways: [
-      "Add pieces to the board-reading rounds only after five perfect rounds at the current count.",
+      "Add two pieces each week, but only after one session of five perfect rounds at the current count.",
       "One line after each game tells you whether the board reading, the question or the pace failed.",
     ],
     audience: [
@@ -126,14 +126,14 @@ const guide: LearnDocument = {
               title: "Four pieces, read out loud",
               description: "Play 4 pieces with 10 seconds to look, 5 rounds. While the position is up, say each piece and its square out loud, like white knight c3. Then rebuild it.",
               duration: "about 4 minutes",
-              goal: "All five rounds at 100 percent in one session. Then move to six pieces.",
+              goal: "All five rounds at 100 percent in one session before week 2 starts.",
               play: { label: "Play 4 pieces, 10 seconds", pieceCount: 4, memorizeTime: 10 },
             },
             {
               title: "Six pieces, same ten seconds",
               description: "Play 6 pieces with 10 seconds to look, 5 rounds. Keep naming every piece aloud, and start with the two kings so they are never the ones you miss.",
               duration: "about 5 minutes",
-              goal: "All five rounds at 100 percent in one session. Then move to eight pieces.",
+              goal: "All five rounds at 100 percent in one session before week 3 starts.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
             },
             {
@@ -214,7 +214,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Skip the full engine review for now. Find the first move where you lost a piece or missed a check, and write one line about it. The line names the stage that failed.",
+            "Skip the full engine review for now. Find the first move where you lost a piece for free, and write one line about it. The line names the stage that failed.",
           ],
         },
         {
@@ -241,7 +241,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Each day has two parts, a few minutes of rounds and one slow game. Repeat a week if its drill goal is not met.",
+            "Each day has two parts, a few minutes of rounds and one slow game. Move up a count only at the start of a new week, and only if last week's drill goal was met. Otherwise repeat the week.",
           ],
         },
         {

@@ -8,9 +8,10 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/contact-us", "de")).toBe(false);
   });
 
-  it("draws the English-only changelog and about pages in Lab Paper", () => {
+  it("draws the English-only changelog, about and terms pages in Lab Paper", () => {
     expect(isLabPaperRoute("/changelog", "en")).toBe(true);
     expect(isLabPaperRoute("/about", "en")).toBe(true);
+    expect(isLabPaperRoute("/terms", "en")).toBe(true);
   });
 
   it("draws the leaderboard in Lab Paper in every locale, since every catalogue carries its copy", () => {

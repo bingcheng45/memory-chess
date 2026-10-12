@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Puzzle rating doesn't transfer to games because a puzzle does half the work for you. It promises a tactic, marks whose move it is, draws the current position fresh and lets you look at no cost. A game gives you none of that, so you have to find the conditions for a tactic before you can solve it.",
+    quickAnswer: "Puzzle rating doesn't transfer to games because a puzzle does half the work for you. It promises a tactic, tells you which side has it, draws the current position fresh and lets you look with no opponent waiting. A game gives you none of that, so you have to find the conditions for a tactic before you can solve it.",
     takeaways: [
       "Puzzle and game ratings come from separate pools, so the gap between them proves nothing on its own.",
       "Each of the four things a puzzle hands you needs a habit to replace it at the board.",
@@ -49,7 +49,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "A puzzle rating measures a real skill. It shows how reliably you find a winning move once you know one exists.",
-            "It is also measured in its own pool. Puzzle sites rate you against the puzzles you solve, while games rate you against other players. The two numbers sit on different scales, so the gap alone tells you little.",
+            "It is also measured in its own pool. Puzzle sites rate you against the puzzles you solve, while games rate you against other players. The two scales are not tied to each other, so the gap alone proves little. Puzzle ratings often run higher because each puzzle hands you the four gifts below.",
             "The real sign of a transfer problem shows up in your games. You lose to a fork you would solve in ten seconds as a puzzle, then spot it at once on the analysis screen.",
           ],
         },
@@ -62,7 +62,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Every rated puzzle is solved under the same four conditions. None of them holds at the board, and each one needs a habit to stand in for it.",
+            "A standard rated puzzle is solved under four conditions, and a game removes all four. Each one needs a habit to stand in for it.",
           ],
         },
         {
@@ -77,7 +77,7 @@ const guide: LearnDocument = {
               ],
             },
             {
-              label: "The side to move, marked",
+              label: "Which side has the tactic, marked",
               cells: [
                 "Threats run both ways, and the tactic you spot may be your opponent's",
                 "Check your opponent's checks, captures and threats before your own ideas",
@@ -91,7 +91,7 @@ const guide: LearnDocument = {
               ],
             },
             {
-              label: "Time to look at no cost",
+              label: "Time to look with no opponent waiting",
               cells: [
                 "Every second of scanning comes off your own clock",
                 "Keep the scan short and in a fixed order so it fits every move",
@@ -109,9 +109,9 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Of the four, the fresh diagram is the easiest to overlook. In a game the position reaches you one move at a time, over half an hour or more.",
-            "By move 25 your picture can lag behind the board. It is the position from a few moves back with the recent changes patched in. The piece that moved last is the one your picture is most likely to have wrong.",
+            "By move 25 your picture can lag behind the board. It is the position from a few moves back with the recent changes patched in. The usual error sits around the last move rather than on it: the square a piece left, or the line it opened.",
             "A puzzle never tests this. Its diagram is complete and current, so your puzzle rating has never once been measured on a stale picture.",
-            "A Memory Chess round does test it. Take a hard preset of 12 pieces with 8 seconds to look. The board then goes blank and you rebuild it from your picture, and the result board marks each square you got wrong or missed.",
+            "A Memory Chess round tests the picture itself. Take a hard preset of 12 pieces with 8 seconds to look. The board goes blank, you rebuild it, and the result board marks each square you got wrong or missed, so you see where your picture split from the real one.",
           ],
         },
         {
@@ -167,7 +167,7 @@ const guide: LearnDocument = {
           ordered: false,
           items: [
             "A loose piece, one that nothing defends. Any attack on it is already a threat.",
-            "A lined-up pair, two pieces on one file, rank or diagonal, like the knight on f6 in front of the queen on d8.",
+            "A lined-up pair, like the knight on f6 in front of the queen on d8. Two pieces of one side share a file, rank or diagonal, with the more valuable one behind. A bishop, rook or queen on that line can pin or skewer them.",
             "A king with no flight squares, where a single check can end the game.",
           ],
         },
@@ -244,7 +244,7 @@ const guide: LearnDocument = {
         },
         {
           question: "Are Puzzle Rush and Puzzle Storm closer to a real game?",
-          answer: "They add a clock, so they remove one of the four gifts. Every position still holds a tactic and still shows whose move it is, so they train how fast you solve and leave the scan untrained. Treat them as quick pattern practice, and keep slow games for the scan.",
+          answer: "They add a clock, so they remove one of the four gifts. Every position still holds a tactic and still tells you which side has it, so they train how fast you solve and leave the scan untrained. Treat them as quick pattern practice, and keep slow games for the scan.",
         },
       ],
     },

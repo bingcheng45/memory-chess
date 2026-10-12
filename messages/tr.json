@@ -383,7 +383,14 @@
       "title": "Memory Chess ayarları",
       "description": "Memory Chess oyununun ayarlarını ve tercihlerini özelleştir."
     },
+    "title": "Ayarlar",
+    "intro": "Bu ayarlar, bu tarayıcıda oynanan her tura uygulanır.",
     "showCoordinates": "Tahta koordinatlarını göster",
+    "coordinatesHelp": "Konumu ezberlerken ve taşları yerleştirirken tahtanın kenarlarındaki harfler ve sayılar. Sonuç ekranı bunları her zaman gösterir.",
+    "on": "Açık",
+    "off": "Kapalı",
+    "savedOn": "Kaydedildi. Tahta koordinatlarını gösterecek.",
+    "savedOff": "Kaydedildi. Tahta koordinatlarını gizleyecek.",
     "home": "Ana sayfa",
     "playGame": "Oyna"
   },

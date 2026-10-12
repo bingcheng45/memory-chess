@@ -383,7 +383,14 @@
       "title": "Memory Chess-innstillinger",
       "description": "Tilpass innstillingene og preferansene for Memory Chess-spillet ditt."
     },
+    "title": "Innstillinger",
+    "intro": "Innstillingene gjelder hver runde du spiller i denne nettleseren.",
     "showCoordinates": "Vis brettkoordinater",
+    "coordinatesHelp": "Bokstaver og tall langs kantene av brettet mens du memorerer og plasserer brikkene. Resultatskjermen viser dem alltid.",
+    "on": "På",
+    "off": "Av",
+    "savedOn": "Lagret. Brettet viser koordinatene.",
+    "savedOff": "Lagret. Brettet skjuler koordinatene.",
     "home": "Hjem",
     "playGame": "Spill"
   },

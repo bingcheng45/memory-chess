@@ -1,0 +1,56 @@
+"use client";
+
+import { useId } from "react";
+import { useTranslations } from "next-intl";
+import { useSettingsStore } from "@/stores/settingsStore";
+
+interface CoordinatesSwitchProps {
+  /** Called after each change has been written to the store. */
+  readonly onChange?: (showCoordinates: boolean) => void;
+}
+
+/** The "Show board coordinates" switch, on /settings and in the game's setup card. Both write the same persisted setting. */
+export function CoordinatesSwitch({ onChange }: CoordinatesSwitchProps) {
+  const t = useTranslations("settings");
+  const showCoordinates = useSettingsStore((state) => state.showCoordinates);
+  const setShowCoordinates = useSettingsStore((state) => state.setShowCoordinates);
+  const id = useId();
+  const labelId = `${id}-label`;
+  const helpId = `${id}-help`;
+
+  const toggle = () => {
+    const next = !showCoordinates;
+    setShowCoordinates(next);
+    onChange?.(next);
+  };
+
+  return (
+    <div className="lab-switch-field">
+      <div className="lab-switch-row">
+        <label id={labelId} htmlFor={id} className="lab-switch-label">
+          {t("showCoordinates")}
+        </label>
+        <button
+          id={id}
+          type="button"
+          role="switch"
+          aria-checked={showCoordinates}
+          aria-labelledby={labelId}
+          aria-describedby={helpId}
+          className="lab-switch"
+          onClick={toggle}
+        >
+          <span className="lab-switch-track" aria-hidden="true">
+            <span className="lab-switch-thumb" />
+          </span>
+          <span className="lab-switch-state" aria-hidden="true">
+            {showCoordinates ? t("on") : t("off")}
+          </span>
+        </button>
+      </div>
+      <p id={helpId} className="lab-switch-help">
+        {t("coordinatesHelp")}
+      </p>
+    </div>
+  );
+}

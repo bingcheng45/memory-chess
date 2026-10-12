@@ -112,6 +112,7 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-range::-moz-range-thumb { width: 18px; height: 18px; border: 2px solid var(--lp-surface); border-radius: 50%; background: var(--lp-accent); }
 .lab-game .lab-range:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 4px; }
 .lab-game .lab-range-scale { display: flex; justify-content: space-between; margin-top: 6px; font: 400 12px/1.3 var(--lp-data); color: var(--lp-muted); }
+.lab-game .lab-config .lab-switch-label { font-size: 15px; }
 .lab-game .lab-config-start { width: 100%; margin-top: 28px; }
 .lab-game .lab-config-last { margin-top: 16px; text-align: center; }
 @media (max-width: 520px) { .lab-game .lab-config-presets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

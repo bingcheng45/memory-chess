@@ -383,7 +383,14 @@
       "title": "Nastavení Memory Chess",
       "description": "Přizpůsobte si nastavení a předvolby své hry Memory Chess."
     },
+    "title": "Nastavení",
+    "intro": "Tato nastavení platí pro každé kolo, které v tomto prohlížeči hrajete.",
     "showCoordinates": "Zobrazit souřadnice šachovnice",
+    "coordinatesHelp": "Písmena a čísla podél okrajů šachovnice, zatímco si pozici zapamatováváte a rozmisťujete figury. Obrazovka s výsledkem je zobrazuje vždy.",
+    "on": "Zap.",
+    "off": "Vyp.",
+    "savedOn": "Uloženo. Šachovnice bude zobrazovat souřadnice.",
+    "savedOff": "Uloženo. Šachovnice bude skrývat souřadnice.",
     "home": "Domů",
     "playGame": "Hrát"
   },

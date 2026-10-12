@@ -383,7 +383,14 @@
       "title": "Paramètres Memory Chess",
       "description": "Personnalisez les paramètres et préférences de votre partie Memory Chess."
     },
+    "title": "Paramètres",
+    "intro": "Ces paramètres s’appliquent à toutes les parties que vous jouez dans ce navigateur.",
     "showCoordinates": "Afficher les coordonnées de l’échiquier",
+    "coordinatesHelp": "Les lettres et les chiffres sur les bords de l’échiquier pendant que vous mémorisez et placez les pièces. L’écran de résultat les affiche toujours.",
+    "on": "Oui",
+    "off": "Non",
+    "savedOn": "Enregistré. L’échiquier affichera ses coordonnées.",
+    "savedOff": "Enregistré. L’échiquier masquera ses coordonnées.",
     "home": "Accueil",
     "playGame": "Jouer"
   },

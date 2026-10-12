@@ -383,7 +383,14 @@
       "title": "Memory Chess -asetukset",
       "description": "Muokkaa Memory Chess -pelisi asetuksia ja mieltymyksiä."
     },
+    "title": "Asetukset",
+    "intro": "Asetukset koskevat jokaista tässä selaimessa pelattua kierrosta.",
     "showCoordinates": "Näytä laudan koordinaatit",
+    "coordinatesHelp": "Kirjaimet ja numerot laudan reunoilla, kun painat asemaa mieleen ja asetat nappuloita. Tulosnäkymä näyttää ne aina.",
+    "on": "Päällä",
+    "off": "Pois",
+    "savedOn": "Tallennettu. Lauta näyttää koordinaatit.",
+    "savedOff": "Tallennettu. Lauta piilottaa koordinaatit.",
     "home": "Etusivu",
     "playGame": "Pelaa"
   },

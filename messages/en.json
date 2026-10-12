@@ -1198,9 +1198,16 @@
       "title": "Memory Chess Settings",
       "description": "Customize your Memory Chess game settings and preferences."
     },
+    "title": "Settings",
+    "intro": "These settings apply to every round you play in this browser.",
     "showCoordinates": "Show board coordinates",
+    "coordinatesHelp": "Letters and numbers along the edges of the board while you memorize and place pieces. The result screen always shows them.",
+    "on": "On",
+    "off": "Off",
+    "savedOn": "Saved. The board will show its coordinates.",
+    "savedOff": "Saved. The board will hide its coordinates.",
     "home": "Home",
-    "playGame": "Play Game"
+    "playGame": "Play a round"
   },
   "contact": {
     "meta": {

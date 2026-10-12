@@ -383,7 +383,14 @@
       "title": "Configurações do Memory Chess",
       "description": "Personalize as configurações e preferências do seu jogo Memory Chess."
     },
+    "title": "Configurações",
+    "intro": "Estas configurações valem para todas as rodadas que você jogar neste navegador.",
     "showCoordinates": "Mostrar as coordenadas do tabuleiro",
+    "coordinatesHelp": "Letras e números nas bordas do tabuleiro enquanto você memoriza e posiciona as peças. A tela de resultado sempre os mostra.",
+    "on": "Sim",
+    "off": "Não",
+    "savedOn": "Salvo. O tabuleiro vai mostrar as coordenadas.",
+    "savedOff": "Salvo. O tabuleiro vai ocultar as coordenadas.",
     "home": "Início",
     "playGame": "Jogar"
   },

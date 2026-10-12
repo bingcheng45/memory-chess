@@ -383,7 +383,14 @@
       "title": "Cài đặt Memory Chess",
       "description": "Tùy chỉnh cài đặt và tùy chọn cho ván Memory Chess của bạn."
     },
+    "title": "Cài đặt",
+    "intro": "Các cài đặt này áp dụng cho mọi ván bạn chơi trên trình duyệt này.",
     "showCoordinates": "Hiện tọa độ bàn cờ",
+    "coordinatesHelp": "Chữ cái và chữ số dọc các cạnh bàn cờ khi bạn ghi nhớ và đặt quân. Màn hình kết quả luôn hiển thị chúng.",
+    "on": "Bật",
+    "off": "Tắt",
+    "savedOn": "Đã lưu. Bàn cờ sẽ hiện tọa độ.",
+    "savedOff": "Đã lưu. Bàn cờ sẽ ẩn tọa độ.",
     "home": "Trang chủ",
     "playGame": "Chơi"
   },

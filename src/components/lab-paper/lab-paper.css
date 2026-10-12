@@ -58,6 +58,18 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-tag { display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 999px; font: 600 12px/1 var(--lp-ui); background: var(--lp-surface-2); color: var(--lp-ink-2); white-space: nowrap; }
 .lab-paper .lab-tag-accent { background: var(--lp-accent-soft); color: var(--lp-accent); }
 
+/* a labelled on/off switch with helper text (/settings and the game's setup card); the state is also written as a word */
+.lab-paper .lab-switch-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.lab-paper .lab-switch-label { min-width: 0; font: 600 16px/1.4 var(--lp-ui); color: var(--lp-ink); cursor: pointer; }
+.lab-paper .lab-switch-help { margin: 4px 0 0; font: 400 14px/1.55 var(--lp-body); color: var(--lp-muted); }
+.lab-paper .lab-switch { display: inline-flex; flex: none; align-items: center; gap: 10px; min-height: 44px; padding: 0 4px; border: 0; border-radius: var(--lp-r-sm); background: none; font: 500 15px/1 var(--lp-ui); color: var(--lp-ink-2); cursor: pointer; }
+.lab-paper .lab-switch-track { position: relative; width: 44px; height: 26px; border-radius: 999px; background: var(--lp-surface-2); box-shadow: inset 0 0 0 1px var(--lp-line-strong); transition: background-color 0.15s; }
+.lab-paper .lab-switch-thumb { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--lp-surface); box-shadow: 0 0 0 1px var(--lp-line-strong); transition: transform 0.15s; }
+.lab-paper .lab-switch[aria-checked="true"] .lab-switch-track { background: var(--lp-accent); box-shadow: none; }
+.lab-paper .lab-switch[aria-checked="true"] .lab-switch-thumb { transform: translateX(18px); box-shadow: none; }
+/* Wide enough for either word, so the track never moves when the state changes. */
+.lab-paper .lab-switch-state { min-width: 6.5ch; text-align: left; }
+
 /* changelog banner: a quiet line above the header that scrolls away with the page */
 .lab-paper .lab-banner { background: var(--lp-surface); border-bottom: 1px solid var(--lp-line); }
 .lab-paper .lab-banner-row { position: relative; display: flex; align-items: center; justify-content: center; min-height: 40px; padding: 8px 48px; text-align: center; font: 400 14px/1.4 var(--lp-ui); color: var(--lp-ink-2); }

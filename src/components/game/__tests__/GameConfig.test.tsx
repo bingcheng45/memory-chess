@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@/test-utils/intl";
 import GameConfig from "@/components/game/GameConfig";
 import { useGameStore } from "@/lib/store/gameStore";
+import { useSettingsStore } from "@/stores/settingsStore";
 
 const pristineGameState = useGameStore.getState().gameState;
 
@@ -149,5 +150,21 @@ describe("GameConfig start", () => {
 
     expect(useGameStore.getState().round).toMatchObject({ phase: "study", config: { pieceCount: 6, studyMs: 60000, source: "game_form" } });
     expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 60, source: "game_form" }]]);
+  });
+});
+
+describe("GameConfig coordinates switch", () => {
+  afterEach(() => {
+    useSettingsStore.setState({ showCoordinates: true });
+  });
+
+  it("hides the next round's coordinates through the same setting the settings page writes", () => {
+    useSettingsStore.setState({ showCoordinates: true });
+    render(<GameConfig />);
+
+    fireEvent.click(screen.getByRole("switch", { name: "Show board coordinates" }));
+
+    expect(screen.getByRole("switch", { name: "Show board coordinates" })).toHaveAttribute("aria-checked", "false");
+    expect(useSettingsStore.getState().showCoordinates).toBe(false);
   });
 });

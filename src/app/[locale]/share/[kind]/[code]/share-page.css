@@ -1,4 +1,61 @@
-/* A shared card's page: the card at the width of the reading column, its 1200:630 frame held from the first paint. */
-.lab-paper .lab-shared-card { margin: 32px 0 0; overflow: hidden; background: var(--lp-surface-2); border: 1px solid var(--lp-line); border-radius: var(--lp-r-md); aspect-ratio: 1200 / 630; }
+/* A shared card's page: the round replayed when the card has a board, its figures, the way in, then the card itself,
+   its 1200:630 frame held from the first paint. */
+.lab-paper .lab-shared-card { margin: 32px 0 0; }
+.lab-paper .lab-shared-card[data-small] { max-width: 480px; margin: 0 0 16px; }
+.lab-paper .lab-shared-card figcaption { margin-bottom: 8px; font: 500 14px/1.4 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lab-shared-card-frame { overflow: hidden; background: var(--lp-surface-2); border: 1px solid var(--lp-line); border-radius: var(--lp-r-md); aspect-ratio: 1200 / 630; }
 .lab-paper .lab-shared-card img { display: block; width: 100%; height: 100%; }
 .lab-paper .lab-shared-actions { display: flex; flex-wrap: wrap; gap: 12px; margin: 32px 0 64px; }
+
+/* the replay: a figure plate with its clock, the board, a caption of fixed height, the legend and the controls */
+.lab-paper .lab-replay { margin-top: 32px; padding: 24px; }
+.lab-paper .lab-replay-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 8px 16px; }
+.lab-paper .lab-replay-head h2 { font: 650 22px/1.25 var(--lp-ui); letter-spacing: -0.01em; }
+.lab-paper .lab-replay-clock { display: flex; align-items: baseline; gap: 10px; font: 500 15px/1.4 var(--lp-ui); color: var(--lp-ink-2); }
+.lab-paper .lab-replay-phase { font-weight: 600; color: var(--lp-accent); }
+.lab-paper .lab-mono { font-family: var(--lp-data); font-variant-numeric: tabular-nums; }
+.lab-paper .lab-replay .lab-figure { max-width: 480px; margin: 16px auto 0; }
+.lab-paper .lab-replay-turn { position: absolute; top: 2px; left: 3px; font: 600 11px/1 var(--lp-data); color: var(--lp-mk-ink); pointer-events: none; }
+.lab-paper .lab-replay-caption { min-height: calc(2 * 1.55em); margin-top: 12px; font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .lab-replay-legend { display: flex; flex-wrap: wrap; gap: 6px 20px; margin-top: 8px; font: 500 14px/1.4 var(--lp-ui); color: var(--lp-ink-2); }
+.lab-paper .lab-replay-legend li { display: flex; align-items: center; gap: 8px; }
+.lab-paper .lab-replay-legend b { font-weight: 600; color: var(--lp-ink); }
+.lab-paper .lab-replay-legend i { width: 18px; height: 18px; background: var(--lp-sq-light); }
+.lab-paper .lab-replay-legend i[data-mark="correct"] { background-image: linear-gradient(var(--lp-mark-correct), var(--lp-mark-correct)); }
+.lab-paper .lab-replay-legend i[data-mark="wrong"] { background-image: linear-gradient(var(--lp-mark-wrong), var(--lp-mark-wrong)); }
+.lab-paper .lab-replay-legend i[data-mark="missed"] { box-shadow: inset 0 0 0 3px var(--lp-wrong); }
+
+.lab-paper .lab-replay-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--lp-line); }
+.lab-paper .lab-replay-controls .lab-btn { min-width: 44px; min-height: 44px; }
+.lab-paper .lab-replay-play { min-width: 88px; }
+.lab-paper .lab-replay-speed { display: inline-flex; margin-left: auto; border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-md); overflow: hidden; }
+.lab-paper .lab-replay-speed button { min-width: 44px; min-height: 44px; padding: 0 10px; border: 0; background: var(--lp-surface); font: 600 14px/1 var(--lp-data); color: var(--lp-ink-2); cursor: pointer; }
+.lab-paper .lab-replay-speed button + button { border-left: 1px solid var(--lp-line); }
+.lab-paper .lab-replay-speed button[aria-pressed="true"] { background: var(--lp-accent-soft); color: var(--lp-accent); box-shadow: inset 0 -3px 0 var(--lp-accent); }
+.lab-paper .lab-replay-speed button:focus-visible { outline-offset: -3px; }
+
+.lab-paper .lab-replay-phases { display: grid; grid-template-columns: repeat(auto-fit, minmax(0, 1fr)); gap: 6px; margin-top: 12px; }
+.lab-paper .lab-replay-phases button { width: 100%; min-height: 44px; padding: 14px 4px 6px; border: 0; background: none; font: 500 13px/1.2 var(--lp-ui); color: var(--lp-muted); text-align: left; cursor: pointer; position: relative; }
+.lab-paper .lab-replay-phases button::before { content: ""; position: absolute; left: 0; right: 0; top: 4px; height: 4px; border-radius: 2px; background: var(--lp-surface-2); outline: 1px solid var(--lp-line); outline-offset: -1px; }
+.lab-paper .lab-replay-phases button[data-state]::before { background: var(--lp-accent); outline: 0; }
+.lab-paper .lab-replay-phases button[data-state="past"]::before { opacity: 0.4; }
+.lab-paper .lab-replay-phases button[aria-current] { font-weight: 650; color: var(--lp-ink); }
+.lab-paper .lab-replay-note { margin-top: 8px; font: 400 13px/1.5 var(--lp-body); color: var(--lp-muted); }
+
+/* figures: label and value pairs, two to a row where there is room */
+.lab-paper .lab-shared-figures { margin-top: 48px; }
+.lab-paper .lab-shared-figures h2 { font: 650 22px/1.25 var(--lp-ui); letter-spacing: -0.01em; }
+.lab-paper .lab-shared-figures dl { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 0 32px; margin-top: 12px; }
+.lab-paper .lab-shared-figures dl > div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 12px 0; border-top: 1px solid var(--lp-line); }
+.lab-paper .lab-shared-figures dt { font: 500 15px/1.4 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lab-shared-figures dd { font: 600 16px/1.4 var(--lp-ui); color: var(--lp-ink); text-align: right; }
+
+@media (max-width: 640px) {
+  .lab-paper .lab-replay { padding: 16px; }
+  .lab-paper .lab-replay .lab-figure { padding: 18px; }
+  .lab-paper .lab-replay-speed { margin-left: 0; }
+  .lab-paper .lab-replay-phases button, .lab-paper .lab-replay-speed button { padding-left: 4px !important; padding-right: 4px !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .lab-paper .lab-replay .lab-piece, .lab-paper .lab-replay .lab-cell { transition: none; }
+}

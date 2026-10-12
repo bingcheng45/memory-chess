@@ -43,6 +43,7 @@ export default function SiteNav() {
             "aria-current": isCurrent ? ("page" as const) : undefined,
           };
           const label = t(labelKey);
+          const marked = dailyReady && href === "/dashboard";
 
           return (
             <li key={href} className={"itemClass" in link ? link.itemClass : undefined}>
@@ -70,10 +71,10 @@ export default function SiteNav() {
                 <Link
                   href={href}
                   {...linkProps}
-                  aria-label={dailyReady && href === "/dashboard" ? entry("navReady", { label }) : undefined}
+                  aria-label={marked ? entry("navReady", { label }) : undefined}
                 >
                   {label}
-                  {dailyReady && href === "/dashboard" && (
+                  {marked && (
                     <span aria-hidden="true" className="absolute right-0 top-2 h-1.5 w-1.5 rounded-full bg-peach-500" />
                   )}
                 </Link>

@@ -3,12 +3,12 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useDailyState } from "@/hooks/useDailyState";
-import { DAILY_OPENED_KEY } from "@/lib/lab/daily";
+import { DAILY_OPENED_KEY, utcDayOf } from "@/lib/lab/daily";
 
 const CARD_ID = "lab-dash-daily";
 
 /** Runs as the card is parsed, so a visitor who already opened today's board never sees the card paint and vanish. */
-const HIDE_USED_CARD = `try{if(localStorage.getItem(${JSON.stringify(DAILY_OPENED_KEY)})===new Date().toISOString().slice(0,10))document.getElementById(${JSON.stringify(CARD_ID)}).hidden=true}catch(e){}`;
+const HIDE_USED_CARD = `try{if(localStorage.getItem(${JSON.stringify(DAILY_OPENED_KEY)})===(${utcDayOf})(Date.now()))document.getElementById(${JSON.stringify(CARD_ID)}).hidden=true}catch(e){}`;
 
 /** Today's daily board, at the top of the dashboard until it is opened on this device. */
 export function DashboardDailyCard() {

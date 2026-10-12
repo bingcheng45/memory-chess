@@ -35,17 +35,17 @@ export function dailyStateAt(at: number, openedDay: string | null): DailyState {
  * next UTC day, which lands one tick exactly on midnight, and again when another tab opens the board.
  */
 export function useDailyState(): DailyState | null {
-  const [now, setNow] = useState<{ readonly at: number } | null>(null);
+  const [state, setState] = useState<DailyState | null>(null);
 
   useEffect(() => {
     let timer: number | undefined;
+    const read = () => setState(dailyStateAt(Date.now(), readDailyOpened()));
     const tick = () => {
-      const at = Date.now();
-      setNow({ at });
-      timer = window.setTimeout(tick, msToNextUtcDay(at) % MINUTE_MS || MINUTE_MS);
+      read();
+      timer = window.setTimeout(tick, msToNextUtcDay(Date.now()) % MINUTE_MS || MINUTE_MS);
     };
     const onStorage = (event: StorageEvent) => {
-      if (event.key === DAILY_OPENED_KEY || event.key === null) setNow({ at: Date.now() });
+      if (event.key === DAILY_OPENED_KEY || event.key === null) read();
     };
     tick();
     window.addEventListener("storage", onStorage);
@@ -55,5 +55,5 @@ export function useDailyState(): DailyState | null {
     };
   }, []);
 
-  return now === null ? null : dailyStateAt(now.at, readDailyOpened());
+  return state;
 }

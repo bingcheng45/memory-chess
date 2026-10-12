@@ -156,7 +156,7 @@ const guide: LearnDocument = {
           paragraphs: [
             "The safety question is always the same. After my move, what can my opponent take for free? Ask it on every move, including the quiet ones.",
             "Start from your opponent's last move. Say you are Black after 1.e4 e5. If White plays 2.Bc4, the bishop now looks at f7. If White plays 2.Qh5 instead, the queen looks at f7, e5 and h7.",
-            "Then check your own move. The piece you move stops guarding whatever it guarded. A knight on f3 guards e5, so moving it can leave a pawn on e5 loose, with nothing defending it.",
+            "Then check your own move. The piece you move stops guarding whatever it guarded. Your knight on c6 guards e5, so moving it can leave the pawn on e5 loose, with nothing defending it, right as the queen on h5 attacks it.",
           ],
         },
         {
@@ -187,10 +187,9 @@ const guide: LearnDocument = {
           claims: [{ kind: "attacks", from: "h5", squares: ["f7", "e5", "h7"] }],
         },
         {
-          id: "knight-f3-guards-e5",
-          white: ["Nf3"],
-          black: [],
-          claims: [{ kind: "attacks", from: "f3", squares: ["e5"] }],
+          id: "knight-c6-guards-e5",
+          line: ["e4", "e5", "Qh5", "Nc6"],
+          claims: [{ kind: "attacks", from: "c6", squares: ["e5"] }],
         },
       ],
     },

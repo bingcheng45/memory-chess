@@ -49,7 +49,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "A puzzle rating measures a real skill. It shows how reliably you find a winning move once you know one exists.",
-            "It is also measured in its own pool. Puzzle sites rate you against the puzzles you solve, while games rate you against other players. The two scales are not tied to each other, so the gap alone proves little. Puzzle ratings often run higher because each puzzle hands you the four gifts below.",
+            "It is also measured in its own pool. Puzzle sites rate you against the puzzles you solve, while games rate you against other players. Puzzle ratings often sit higher because the two scales are set separately, so the gap alone does not mean you play below your level. What the gap can hide is the four gifts below. They make a puzzle easier than the same tactic in a game.",
             "The real sign of a transfer problem shows up in your games. You lose to a fork you would solve in ten seconds as a puzzle, then spot it at once on the analysis screen.",
           ],
         },
@@ -121,7 +121,7 @@ const guide: LearnDocument = {
               title: "Flag the square you doubt",
               description: "Run 3 rounds in a row at 12 pieces and 8 seconds. Before you submit each rebuild, say aloud the one square you are least sure of. On the result board, compare that square with the squares marked wrong or missed.",
               duration: "about 5 minutes",
-              goal: "Every square marked wrong or missed is one you flagged. An unflagged miss is a piece your picture lost without warning, the same slip that drops a piece in a game.",
+              goal: "In each round, no square is marked wrong or missed except, at most, the one you flagged. An unflagged miss is a piece your picture lost without warning, the same slip that drops a piece in a game.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
           ],

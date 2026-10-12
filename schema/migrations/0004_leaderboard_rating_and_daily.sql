@@ -9,8 +9,9 @@
 -- from, so the column needs no nullable state.
 
 -- An ALTER waiting for its lock holds up every read and write queued behind
--- it, so give up after five seconds rather than stall the leaderboard.
-SET lock_timeout = '5s';
+-- it, so give up after five seconds rather than stall the leaderboard. LOCAL
+-- ends with this transaction, so a pooled connection does not keep it.
+SET LOCAL lock_timeout = '5s';
 
 ALTER TABLE leaderboard_entries
   ADD COLUMN IF NOT EXISTS skill_rating INTEGER NOT NULL DEFAULT 1000;
@@ -81,6 +82,23 @@ BEGIN
     ALTER TABLE leaderboard_entries
       ADD CONSTRAINT check_daily_day_matches_board
       CHECK ((difficulty = 'daily') = (daily_day IS NOT NULL));
+  END IF;
+END
+$$;
+
+-- The anon key can insert past the API route, so the table itself holds a
+-- daily row to the UTC day it was stored or the day before.
+DO $$
+BEGIN
+  IF NOT EXISTS (
+    SELECT 1
+    FROM pg_constraint
+    WHERE conname = 'check_daily_day_recent'
+      AND conrelid = 'leaderboard_entries'::regclass
+  ) THEN
+    ALTER TABLE leaderboard_entries
+      ADD CONSTRAINT check_daily_day_recent
+      CHECK (daily_day IS NULL OR daily_day BETWEEN (created_at AT TIME ZONE 'UTC')::date - 1 AND (created_at AT TIME ZONE 'UTC')::date);
   END IF;
 END
 $$;

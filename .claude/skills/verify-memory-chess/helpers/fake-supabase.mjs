@@ -89,6 +89,16 @@ const CHECKS = [
   ["check_difficulty_board", "difficulty", (row) => boards.includes(row.difficulty)],
   ["check_daily_day_matches_board", "daily_day", (row) => (row.difficulty === "daily") === (row.daily_day != null)],
   [
+    "check_daily_day_recent",
+    "daily_day",
+    (row) => {
+      if (row.daily_day == null) return true;
+      const stored = Date.parse(row.created_at.slice(0, 10));
+      const day = Date.parse(row.daily_day);
+      return day === stored || day === stored - 86_400_000;
+    },
+  ],
+  [
     "check_skill_rating_range",
     "skill_rating",
     (row) => Number.isInteger(row.skill_rating) && row.skill_rating >= 0 && row.skill_rating <= 5000,

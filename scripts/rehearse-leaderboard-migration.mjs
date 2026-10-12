@@ -68,6 +68,7 @@ LANGUAGE sql VOLATILE AS 'SELECT gen_random_uuid()';
 const STRIP_LATER_MIGRATIONS = `
 DROP INDEX idx_leaderboard_daily_ranking;
 ALTER TABLE leaderboard_entries DROP CONSTRAINT check_daily_day_matches_board;
+ALTER TABLE leaderboard_entries DROP CONSTRAINT check_daily_day_recent;
 ALTER TABLE leaderboard_entries DROP CONSTRAINT check_skill_rating_range;
 ALTER TABLE leaderboard_entries DROP CONSTRAINT check_difficulty_board;
 ALTER TABLE leaderboard_entries

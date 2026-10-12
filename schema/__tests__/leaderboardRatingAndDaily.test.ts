@@ -7,6 +7,7 @@ import { startPostgres, type Database, type Postgres, type SqlResult } from "./d
 const readSql = (file: string) => readFileSync(path.join(__dirname, "..", file), "utf8");
 const MIGRATION = readSql("migrations/0004_leaderboard_rating_and_daily.sql");
 const ROLLBACK = readSql("migrations/0004_leaderboard_rating_and_daily_rollback.sql");
+const RUNBOOK = readFileSync(path.join(__dirname, "..", "..", "docs/migrations/2026-10-leaderboard-rating-and-daily.md"), "utf8");
 // uuid_generate_v4 needs the uuid-ossp extension, which PGlite does not ship.
 const SCHEMA = readSql("leaderboard_schema.sql").replace("uuid_generate_v4()", "gen_random_uuid()");
 
@@ -79,6 +80,8 @@ const insert = (db: Database, extra: Record<string, string>) =>
 
 const codeOf = (result: SqlResult) => (result.ok ? null : result.code);
 
+const STORED_ON_13TH = "'2026-10-13T00:30:00Z'";
+
 describe("0004 leaderboard rating and daily", () => {
   it("reads 1000 and no daily day from a row stored before it, and is a no-op the second time", async () => {
     const db = await before0004();
@@ -99,7 +102,7 @@ describe("0004 leaderboard rating and daily", () => {
     const db = await before0004();
     await db.rows(MIGRATION);
 
-    expect(codeOf(await insert(db, { difficulty: "'daily'", daily_day: "'2026-10-13'", skill_rating: "1240" }))).toBeNull();
+    expect(codeOf(await insert(db, { difficulty: "'daily'", daily_day: "'2026-10-13'", skill_rating: "1240", created_at: STORED_ON_13TH }))).toBeNull();
     expect(codeOf(await insert(db, { difficulty: "'medium'", skill_rating: "1240" }))).toBeNull();
     expect(codeOf(await insert(db, { difficulty: "'daily'", skill_rating: "1240" }))).toBe(CHECK_VIOLATION);
     expect(codeOf(await insert(db, { difficulty: "'medium'", daily_day: "'2026-10-13'", skill_rating: "1240" }))).toBe(CHECK_VIOLATION);
@@ -112,6 +115,23 @@ describe("0004 leaderboard rating and daily", () => {
       { difficulty: "hard", daily_day: null, skill_rating: 5000 },
       { difficulty: "medium", daily_day: null, skill_rating: 1240 },
     ]);
+  });
+
+  it("stores a daily row only for the UTC day it was stored or the day before", async () => {
+    const db = await before0004();
+    await db.rows(MIGRATION);
+    const daily = (day: string) =>
+      insert(db, { difficulty: "'daily'", daily_day: `'${day}'`, skill_rating: "1240", created_at: STORED_ON_13TH });
+
+    const codes = [
+      await daily("2026-10-11"),
+      await daily("2026-10-12"),
+      await daily("2026-10-13"),
+      await daily("2026-10-14"),
+      await daily("9999-12-31"),
+    ].map(codeOf);
+
+    expect(codes).toEqual([CHECK_VIOLATION, null, null, CHECK_VIOLATION, CHECK_VIOLATION]);
   });
 
   it("leaves the table exactly as leaderboard_schema.sql describes it", async () => {
@@ -134,10 +154,47 @@ describe("0004 leaderboard rating and daily", () => {
     expect(await db.rows(SHAPE)).toEqual(found);
   });
 
+  it("rolls back a paste that stopped after the two ADD COLUMN statements", async () => {
+    const db = await before0004();
+    const found = await db.rows(SHAPE);
+    await db.rows(MIGRATION.slice(0, MIGRATION.indexOf("DO $$")));
+
+    await db.rows(ROLLBACK);
+
+    expect(await db.rows(SHAPE)).toEqual(found);
+  });
+
+  it("passes the runbook's step 4 check of each new constraint's exact definition", async () => {
+    const db = await before0004();
+    await db.rows(MIGRATION);
+    const verify = RUNBOOK.match(/SELECT expected\.conname[\s\S]*?ORDER BY expected\.conname;/);
+    if (verify === null) throw new Error("the runbook no longer carries the constraint definition check");
+
+    const matches = (await db.rows(verify[0])).map((row) => [row.conname, row.matches]);
+
+    expect(matches).toEqual([
+      ["check_daily_day_matches_board", true],
+      ["check_daily_day_recent", true],
+      ["check_difficulty_board", true],
+      ["check_skill_rating_range", true],
+    ]);
+  });
+
+  it("leaves no lock timeout behind on the session that ran the migration or the rollback", async () => {
+    const db = await before0004();
+
+    await db.rows(MIGRATION);
+    const afterMigration = await db.rows("SELECT current_setting('lock_timeout') AS lock_timeout");
+    await db.rows(ROLLBACK);
+    const afterRollback = await db.rows("SELECT current_setting('lock_timeout') AS lock_timeout");
+
+    expect([afterMigration, afterRollback]).toEqual([[{ lock_timeout: "0" }], [{ lock_timeout: "0" }]]);
+  });
+
   it("refuses to roll back while daily rows exist, and changes nothing", async () => {
     const db = await before0004();
     await db.rows(MIGRATION);
-    await insert(db, { difficulty: "'daily'", daily_day: "'2026-10-13'", skill_rating: "1240" });
+    expect(codeOf(await insert(db, { difficulty: "'daily'", daily_day: "'2026-10-13'", skill_rating: "1240", created_at: STORED_ON_13TH }))).toBeNull();
     const migrated = await db.rows(SHAPE);
 
     expect(codeOf(await db.attempt(ROLLBACK))).toBe(RAISED);

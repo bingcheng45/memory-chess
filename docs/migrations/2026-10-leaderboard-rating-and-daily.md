@@ -1,16 +1,17 @@
 # Runbook: add `skill_rating` and `daily_day` to `leaderboard_entries`
 
-Migration 0004 changes the live leaderboard table in five ways:
+Migration 0004 changes the live leaderboard table in six ways:
 
 - `skill_rating INTEGER NOT NULL DEFAULT 1000`, checked `BETWEEN 0 AND 5000`. Every row already in the table reads 1000, the rating every player starts from.
 - `daily_day DATE`, nullable. It names the UTC day a daily board belongs to.
 - The difficulty check also allows `'daily'`. The old check was declared inline, so Postgres named it. The migration finds it by the column it reads and replaces it with `check_difficulty_board`.
 - `check_daily_day_matches_board`: a `daily` row must carry a day, and no other row may.
+- `check_daily_day_recent`: a row's day is the UTC day it was stored or the day before. The anon key can insert past the API, so the table holds this bound too.
 - `idx_leaderboard_daily_ranking`, a partial index for one day's daily board.
 
 You will be in the Supabase dashboard, pasting SQL by hand, against a table of real player scores. Work top to bottom. Do not skip step 1.
 
-Rehearsed before you got here. `schema/__tests__/leaderboardRatingAndDaily.test.ts` applies the migration twice and the rollback twice on PGlite, and checks that the result matches `schema/leaderboard_schema.sql`. The migration and rollback were also run over a 376-row copy of real rows: the checksum of the old columns did not change, and every row read 1000.
+Rehearsed before you got here. `schema/__tests__/leaderboardRatingAndDaily.test.ts` applies the migration twice and the rollback twice on PGlite, and checks that the result matches `schema/leaderboard_schema.sql`.
 
 ---
 
@@ -94,7 +95,7 @@ Paste the whole of `schema/migrations/0004_leaderboard_rating_and_daily.sql` int
 
 Neither new column rewrites the table. A column with a constant default is stored as metadata since Postgres 11. Each new check scans the table once, and the index build reads it once. On a table of a few thousand rows that is instant. The first `ALTER TABLE` takes an exclusive lock that blocks reads as well as writes, and the editor's single transaction holds it until the whole file finishes, index build included. Every board load and score submitted in that second waits for it.
 
-The file starts with `SET lock_timeout = '5s'`. If another transaction holds the table, the migration gives up after five seconds with `canceling statement due to lock timeout` rather than queue every leaderboard read behind it. Wait a minute and run it again.
+The file starts with `SET LOCAL lock_timeout = '5s'`. `LOCAL` ends the setting with the editor's transaction, so the pooled connection does not keep it. If another transaction holds the table, the migration gives up after five seconds with `canceling statement due to lock timeout` rather than queue every leaderboard read behind it. Wait a minute and run it again.
 
 **If it errors,** nothing was applied. The SQL editor runs a paste as one transaction, so a failure rolls back every statement before it. Read the error, fix the cause and run the whole file again. Each statement is also guarded, so a file that ran before does nothing the second time.
 
@@ -121,8 +122,25 @@ GROUP BY skill_rating;
 -- 0.
 SELECT COUNT(*) AS rows_with_a_day FROM leaderboard_entries WHERE daily_day IS NOT NULL;
 
--- Lists check_daily_day_matches_board, check_difficulty_board and
--- check_skill_rating_range, and no other check on difficulty alone.
+-- Each new check by name, compared with the exact definition 0004 writes.
+-- Expect four rows, every one with matches = true. A false means a check of
+-- that name was already there with a different rule, and the migration's
+-- IF NOT EXISTS guard kept it: stop and ask.
+SELECT expected.conname,
+       pg_get_constraintdef(c.oid) AS definition,
+       pg_get_constraintdef(c.oid) = expected.definition AS matches
+FROM (VALUES
+  ('check_daily_day_matches_board', 'CHECK (((difficulty = ''daily''::text) = (daily_day IS NOT NULL)))'),
+  ('check_daily_day_recent', 'CHECK (((daily_day IS NULL) OR ((daily_day >= (((created_at AT TIME ZONE ''UTC''::text))::date - 1)) AND (daily_day <= ((created_at AT TIME ZONE ''UTC''::text))::date))))'),
+  ('check_difficulty_board', 'CHECK ((difficulty = ANY (ARRAY[''easy''::text, ''medium''::text, ''hard''::text, ''grandmaster''::text, ''daily''::text])))'),
+  ('check_skill_rating_range', 'CHECK (((skill_rating >= 0) AND (skill_rating <= 5000)))')
+) AS expected (conname, definition)
+LEFT JOIN pg_constraint c
+  ON c.conname = expected.conname
+ AND c.conrelid = 'leaderboard_entries'::regclass
+ORDER BY expected.conname;
+
+-- No check on difficulty alone other than check_difficulty_board.
 SELECT conname, pg_get_constraintdef(oid) AS definition
 FROM pg_constraint
 WHERE conrelid = 'leaderboard_entries'::regclass
@@ -139,12 +157,12 @@ Probe the checks as the role the site uses, inside a transaction you roll back, 
 BEGIN;
 SET LOCAL ROLE anon;
 INSERT INTO leaderboard_entries (player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, skill_rating, daily_day)
-VALUES ('Runbook probe', 'daily', 6, 4, 8.25, 12.5, 1240, '2026-10-13');
+VALUES ('Runbook probe', 'daily', 6, 4, 8.25, 12.5, 1240, (now() AT TIME ZONE 'UTC')::date);
 SELECT difficulty, skill_rating, daily_day FROM leaderboard_entries WHERE player_name = 'Runbook probe';
 ROLLBACK;
 ```
 
-Expect one row back, `daily | 1240 | 2026-10-13`. A permission or policy error means anon cannot write the new columns: stop and fix the grant or policy before the deploy. A `daily` insert without the day, or a `medium` insert with one, must fail with `check_daily_day_matches_board`, and a `skill_rating` of 5001 with `check_skill_rating_range`.
+Expect one row back, `daily | 1240 |` and today's UTC date. A permission or policy error means anon cannot write the new columns: stop and fix the grant or policy before the deploy. A `daily` insert without the day, or a `medium` insert with one, must fail with `check_daily_day_matches_board`, a day a week ago with `check_daily_day_recent`, and a `skill_rating` of 5001 with `check_skill_rating_range`.
 
 Finally read a row through the site. `GET /api/leaderboard?difficulty=medium` returns `skill_rating` on every row.
 
@@ -197,7 +215,7 @@ DELETE FROM leaderboard_entries WHERE difficulty = 'daily';
 
 ### The SQL
 
-Paste the whole of `schema/migrations/0004_leaderboard_rating_and_daily_rollback.sql` and run it. Like the migration, it sets a five-second lock timeout and applies nothing if it fails. It is safe to run twice and safe on a half-applied migration. It drops the index and the two new checks, restores the original difficulty check as `leaderboard_entries_difficulty_check`, and drops both columns. Run `NOTIFY pgrst, 'reload schema';` afterwards.
+Paste the whole of `schema/migrations/0004_leaderboard_rating_and_daily_rollback.sql` and run it. Like the migration, it sets a five-second lock timeout for its own transaction and applies nothing if it fails. It locks the table before it looks for daily rows, so no daily row can land between that check and the drops. A daily score submitted while the rollback runs waits for the lock, then fails with a raw database error once the board is gone. The rollback still applies in full. It drops the index and the three new checks, restores the original difficulty check as `leaderboard_entries_difficulty_check`, and drops both columns. Run `NOTIFY pgrst, 'reload schema';` afterwards.
 
 ### What it does not undo
 
@@ -208,3 +226,7 @@ Paste the whole of `schema/migrations/0004_leaderboard_rating_and_daily_rollback
 - So the rollback is safe only between apply and deploy, while every row still reads 1000. After the deploy, prefer rolling back the app.
 
 Rows, the other columns, the other checks, `idx_leaderboard_ranking` and the RLS policies stay as they were.
+
+### Where it was tested
+
+`schema/__tests__/leaderboardRatingAndDaily.test.ts` runs it on PGlite in three states: twice after a full apply, once after a paste that stopped after the two `ADD COLUMN` statements, and once with a daily row present, where it refuses and changes nothing. It is written to undo any half-applied state, but only those were tested. On any other state, compare the table with your step 2 notes before and after.

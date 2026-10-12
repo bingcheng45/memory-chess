@@ -10,8 +10,13 @@
 -- difficulty check cannot hold them. The runbook says how to deal with them.
 
 -- An ALTER waiting for its lock holds up every read and write queued behind
--- it, so give up after five seconds rather than stall the leaderboard.
-SET lock_timeout = '5s';
+-- it, so give up after five seconds rather than stall the leaderboard. LOCAL
+-- ends with this transaction, so a pooled connection does not keep it.
+SET LOCAL lock_timeout = '5s';
+
+-- Taken before the daily-row check so no daily row can land between the check
+-- and the drop of the board that allows it.
+LOCK TABLE leaderboard_entries IN ACCESS EXCLUSIVE MODE;
 
 DO $$
 BEGIN
@@ -25,6 +30,9 @@ DROP INDEX IF EXISTS idx_leaderboard_daily_ranking;
 
 ALTER TABLE leaderboard_entries
   DROP CONSTRAINT IF EXISTS check_daily_day_matches_board;
+
+ALTER TABLE leaderboard_entries
+  DROP CONSTRAINT IF EXISTS check_daily_day_recent;
 
 ALTER TABLE leaderboard_entries
   DROP CONSTRAINT IF EXISTS check_difficulty_board;

@@ -62,6 +62,10 @@ ALTER TABLE leaderboard_entries
   ADD CONSTRAINT check_daily_day_matches_board
   CHECK ((difficulty = 'daily') = (daily_day IS NOT NULL));
 
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_daily_day_recent
+  CHECK (daily_day IS NULL OR daily_day BETWEEN (created_at AT TIME ZONE 'UTC')::date - 1 AND (created_at AT TIME ZONE 'UTC')::date);
+
 -- Index for quick leaderboard retrieval.
 CREATE INDEX idx_leaderboard_ranking ON leaderboard_entries (
   difficulty,

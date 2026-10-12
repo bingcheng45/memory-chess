@@ -4,7 +4,7 @@
  * locale shows untranslated English. scripts/validate-messages.mjs imports
  * this file directly, so it must stay free of path aliases and imports.
  */
-export const LAB_LOCALES: readonly string[] = ["en", "de", "es", "fr", "pt-BR", "ro", "ru", "cs", "ja", "ko", "zh-CN", "zh-TW", "sv", "no", "tr", "id", "nl", "vi", "fi", "hi", "it"];
+export const LAB_LOCALES: readonly string[] = ["en", "de", "es", "fr", "pt-BR", "ro", "ru", "cs", "ja", "ko", "zh-CN", "zh-TW", "sv", "no", "tr", "id", "nl", "vi", "fi", "hi", "it", "da"];
 
 export function hasLabCopy(locale: string): boolean {
   return LAB_LOCALES.includes(locale);

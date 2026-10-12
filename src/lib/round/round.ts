@@ -206,7 +206,8 @@ function rebuildReducer(
       return remainingOf(state.placed, action.piece) <= 0 ? refuse(picked, action.piece) : picked;
     }
     case "grab":
-      return remainingOf(state.placed, action.piece) <= 0 ? refuse(state, action.piece) : { ...state, refused: null };
+      if (remainingOf(state.placed, action.piece) <= 0) return refuse(state, action.piece);
+      return state.refused ? { ...state, refused: null } : state;
     case "tapSquare": {
       const current = state.placed[action.square];
       if (current && (!state.selected || samePiece(current, state.selected))) return lift(state, action.square);

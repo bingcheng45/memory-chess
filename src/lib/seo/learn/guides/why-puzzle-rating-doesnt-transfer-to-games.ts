@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Puzzle rating doesn't transfer to games because a puzzle does half the work for you. It promises a tactic, tells you which side has it, draws the current position fresh and lets you look with no opponent waiting. A game gives you none of that, so you have to find the conditions for a tactic before you can solve it.",
+    quickAnswer: "Puzzle rating doesn't transfer to games because a puzzle does half the work for you. It promises a tactic, tells you which side has it, shows you a position you have never seen and lets you look with no opponent waiting. A game gives you none of that, so you must find the conditions for a tactic first.",
     takeaways: [
       "Puzzle and game ratings come from separate pools, so the gap between them proves nothing on its own.",
       "Each of the four things a puzzle hands you needs a habit to replace it at the board.",
@@ -84,9 +84,9 @@ const guide: LearnDocument = {
               ],
             },
             {
-              label: "The current position, drawn fresh",
+              label: "A position you see for the first time",
               cells: [
-                "A picture in your head, built one move at a time",
+                "The same board you have watched for 20 moves, read through the picture you built of it",
                 "Ask what the last move changed before you trust the picture",
               ],
             },
@@ -108,7 +108,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Of the four, the fresh diagram is the easiest to overlook. In a game the position reaches you one move at a time, over half an hour or more.",
+            "Of the four, the fresh position is the easiest to overlook. In a game the position reaches you one move at a time, over half an hour or more. You stop rereading the squares you think you already know.",
             "By move 25 your picture can lag behind the board. It is the position from a few moves back with the recent changes patched in. The usual error sits around the last move rather than on it: the square a piece left, or the line it opened.",
             "A puzzle never tests this. Its diagram is complete and current, so your puzzle rating has never once been measured on a stale picture.",
             "A Memory Chess round tests the picture itself. Take a hard preset of 12 pieces with 8 seconds to look. The board goes blank, you rebuild it, and the result board marks each square you got wrong or missed, so you see where your picture split from the real one.",

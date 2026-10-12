@@ -1,21 +1,11 @@
--- 0004 rollback: remove leaderboard_entries.skill_rating and daily_day
---
--- Destructive. Dropping the columns discards every rating and daily day in
--- them, including values written by app code that ran between apply and
--- rollback. See docs/migrations/2026-10-leaderboard-rating-and-daily.md before
--- running this.
---
--- Safe to run twice, and safe to run against a partially applied migration.
--- It stops before changing anything while daily rows exist, because the old
--- difficulty check cannot hold them. The runbook says how to deal with them.
+-- Destructive: dropping the columns discards every rating and daily day in them.
+-- Runbook: docs/migrations/2026-10-leaderboard-rating-and-daily.md
 
 -- An ALTER waiting for its lock holds up every read and write queued behind
 -- it, so give up after five seconds rather than stall the leaderboard. LOCAL
 -- ends with this transaction, so a pooled connection does not keep it.
 SET LOCAL lock_timeout = '5s';
 
--- Taken before the daily-row check so no daily row can land between the check
--- and the drop of the board that allows it.
 LOCK TABLE leaderboard_entries IN ACCESS EXCLUSIVE MODE;
 
 DO $$

@@ -3,7 +3,6 @@ import type { CountryCode } from '@/lib/leaderboard/countries';
 export const LEADERBOARD_DIFFICULTIES = ['easy', 'medium', 'hard', 'grandmaster'] as const;
 export type LeaderboardDifficulty = (typeof LEADERBOARD_DIFFICULTIES)[number];
 
-/** The board a daily row is filed under, next to its `daily_day`. */
 export const DAILY_BOARD = 'daily';
 
 export const isLeaderboardDifficulty = (value: unknown): value is LeaderboardDifficulty =>
@@ -20,16 +19,12 @@ export interface LeaderboardEntry {
    */
   country_code?: CountryCode;
   difficulty: LeaderboardDifficulty | typeof DAILY_BOARD;
-  /** The UTC day of a daily row's board; null on every other board, absent where migration 0004 is outstanding. */
   daily_day?: string | null;
   piece_count: number;
   correct_pieces: number;
   memorize_time: number;
   solution_time: number;
   total_wrong_pieces?: number; // Total wrong pieces (missed + extra)
-  /**
-   * Absent where the rating migration is outstanding.
-   */
   skill_rating?: number;
   created_at: string;
 }
@@ -49,11 +44,9 @@ type SubmittedRound = {
   memorize_time: number;
   solution_time: number;
   total_wrong_pieces?: number; // Total wrong pieces (missed + extra)
-  /** The rating after this round's own change, an integer from 0 to MAX_SKILL_RATING in src/lib/game/rating.ts. */
   skill_rating: number;
 };
 
-/** A daily row names the UTC day of its board, as YYYY-MM-DD. No other row carries a day. */
 export type LeaderboardBoard =
   | { difficulty: LeaderboardDifficulty }
   | { difficulty: typeof DAILY_BOARD; daily_day: string };

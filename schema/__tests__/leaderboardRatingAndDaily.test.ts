@@ -8,11 +8,8 @@ const readSql = (file: string) => readFileSync(path.join(__dirname, "..", file),
 const MIGRATION = readSql("migrations/0004_leaderboard_rating_and_daily.sql");
 const ROLLBACK = readSql("migrations/0004_leaderboard_rating_and_daily_rollback.sql");
 const RUNBOOK = readFileSync(path.join(__dirname, "..", "..", "docs/migrations/2026-10-leaderboard-rating-and-daily.md"), "utf8");
-// uuid_generate_v4 needs the uuid-ossp extension, which PGlite does not ship.
 const SCHEMA = readSql("leaderboard_schema.sql").replace("uuid_generate_v4()", "gen_random_uuid()");
 
-// The live table as it stood after 0001, with its difficulty check declared
-// inline the way the production table was created.
 const BEFORE_0004 = `
   CREATE TABLE leaderboard_entries (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -75,7 +72,6 @@ async function before0004(): Promise<Database> {
   return db;
 }
 
-/** Inserts one round with the given extra columns, each value written as SQL. */
 const insert = (db: Database, extra: Record<string, string>) =>
   db.attempt(
     `INSERT INTO leaderboard_entries (player_name, piece_count, correct_pieces, memorize_time, solution_time, ${Object.keys(extra).join(", ")})

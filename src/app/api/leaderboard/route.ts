@@ -8,7 +8,6 @@ import { isLeaderboardDifficulty } from '@/types/leaderboard';
 
 const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
 
-/** A missing rating comes from a tab loaded before ratings were sent, and reads as the starting rating. */
 function parseSkillRating(value: unknown): number | null {
   if (value === undefined) return START_RATING;
   return isSkillRating(value) ? Math.min(value, MAX_SKILL_RATING) : null;

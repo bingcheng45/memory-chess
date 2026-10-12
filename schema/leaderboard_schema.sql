@@ -29,10 +29,7 @@ CREATE TABLE leaderboard_entries (
   total_wrong_pieces INTEGER,
   -- 'ZZ' is CLDR's unknown region, used as the "world" option.
   country_code TEXT NOT NULL DEFAULT 'ZZ',
-  -- The player's rating after the round, as the result screen showed it.
-  -- Rows stored before the column read 1000, the starting rating.
   skill_rating INTEGER NOT NULL DEFAULT 1000,
-  -- The UTC day a 'daily' row's board belongs to. NULL on every other board.
   daily_day DATE,
 
   CHECK (correct_pieces <= piece_count),
@@ -66,8 +63,9 @@ ALTER TABLE leaderboard_entries
   ADD CONSTRAINT check_daily_day_recent
   CHECK (daily_day IS NULL OR daily_day BETWEEN (created_at AT TIME ZONE 'UTC')::date - 1 AND (created_at AT TIME ZONE 'UTC')::date);
 
--- check_daily_day_recent reads created_at, and a direct insert can send its
--- own created_at, NULL included. A daily row always takes the database's clock.
+-- The anon key can insert past the API route and send its own created_at,
+-- NULL included, which would bypass check_daily_day_recent. A daily row always
+-- takes the database's clock.
 CREATE FUNCTION leaderboard_daily_created_at() RETURNS trigger
 LANGUAGE plpgsql
 SET search_path = ''
@@ -92,7 +90,8 @@ CREATE INDEX idx_leaderboard_ranking ON leaderboard_entries (
   solution_time ASC
 );
 
--- One day's daily board, in RANKING_ORDER.
+-- Column order follows RANKING_ORDER in src/lib/leaderboard/ranking.ts after
+-- the day, so one day's board reads straight off the index.
 CREATE INDEX idx_leaderboard_daily_ranking ON leaderboard_entries (
   daily_day,
   correct_pieces DESC,

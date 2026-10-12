@@ -59,12 +59,6 @@ CREATE OR REPLACE FUNCTION uuid_generate_v4() RETURNS uuid
 LANGUAGE sql VOLATILE AS 'SELECT gen_random_uuid()';
 `;
 
-/**
- * Drops what 0001 and 0004 added, newest first, to reach the pre-0001 shape
- * the schema file no longer describes. Spelled out here rather than reused
- * from the rollback files: if setup ran a rollback, a rollback that silently
- * did nothing would still produce a green rehearsal.
- */
 const STRIP_LATER_MIGRATIONS = `
 DROP INDEX idx_leaderboard_daily_ranking;
 DROP TRIGGER leaderboard_daily_created_at ON leaderboard_entries;

@@ -1,12 +1,4 @@
--- 0004: add leaderboard_entries.skill_rating and daily_day, and the 'daily' board
---
--- Every statement is guarded, so running this file a second time is a no-op
--- rather than an error. The owner applies it by hand in the Supabase SQL
--- editor, where a re-run is likely.
 -- Runbook: docs/migrations/2026-10-leaderboard-rating-and-daily.md
---
--- Rows stored before this migration take 1000, the rating every player starts
--- from, so the column needs no nullable state.
 
 -- An ALTER waiting for its lock holds up every read and write queued behind
 -- it, so give up after five seconds rather than stall the leaderboard. LOCAL
@@ -16,8 +8,6 @@ SET LOCAL lock_timeout = '5s';
 ALTER TABLE leaderboard_entries
   ADD COLUMN IF NOT EXISTS skill_rating INTEGER NOT NULL DEFAULT 1000;
 
--- A daily row is filed under the UTC day its board belongs to, not the day it
--- was submitted, so a round started at 23:59 lands on the right board.
 ALTER TABLE leaderboard_entries
   ADD COLUMN IF NOT EXISTS daily_day DATE;
 
@@ -37,9 +27,7 @@ END
 $$;
 
 -- The original difficulty check was declared inline in CREATE TABLE, so its
--- name was chosen by Postgres and is not written down anywhere. Every check
--- that reads difficulty alone is replaced by the named one below, whatever it
--- is called.
+-- name was chosen by Postgres and is not written down anywhere.
 DO $$
 DECLARE
   stale RECORD;
@@ -86,8 +74,9 @@ BEGIN
 END
 $$;
 
--- check_daily_day_recent reads created_at, and a direct insert can send its
--- own created_at, NULL included. A daily row always takes the database's clock.
+-- The anon key can insert past the API route and send its own created_at,
+-- NULL included, which would bypass check_daily_day_recent. A daily row always
+-- takes the database's clock.
 CREATE OR REPLACE FUNCTION leaderboard_daily_created_at() RETURNS trigger
 LANGUAGE plpgsql
 SET search_path = ''
@@ -122,8 +111,8 @@ BEGIN
 END
 $$;
 
--- Follows RANKING_ORDER in src/lib/leaderboard/ranking.ts after the day, so
--- one day's board reads straight off the index.
+-- Column order follows RANKING_ORDER in src/lib/leaderboard/ranking.ts after
+-- the day, so one day's board reads straight off the index.
 CREATE INDEX IF NOT EXISTS idx_leaderboard_daily_ranking
   ON leaderboard_entries (
     daily_day,

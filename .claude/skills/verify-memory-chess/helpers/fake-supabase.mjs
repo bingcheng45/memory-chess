@@ -15,8 +15,6 @@ if (!fixturePath) {
 const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
 
 const DEFAULTS = { country_code: "ZZ", skill_rating: 1000, daily_day: null };
-// The leaderboard table as each outstanding migration leaves it, so a driver
-// can see the insert retries the real server runs.
 const SCHEMAS = {
   MISSING_COUNTRY: {
     label: ", without migrations 0001 and 0004 (no country_code, skill_rating or daily_day)",
@@ -110,8 +108,6 @@ function rejectInsert(body) {
   return { status: 400, body };
 }
 
-// Stores the row the way the live table would, with its defaults and checks,
-// so a submission can be read back from /api/leaderboard and /leaderboard.
 function insertRow(body) {
   const unknown = Object.keys(body).find((column) => !has(column));
   if (unknown) return rejectInsert(missingColumn(unknown));
@@ -169,7 +165,6 @@ function recordArticleEvent(body) {
   return { status: 200, body: [{ views: after.views, likes: after.likes }] };
 }
 
-// Splits a PostgREST logic list such as `a.gt.1,and(b.eq.2,c.lt.3)` at its top-level commas.
 function splitTopLevel(list) {
   const parts = [];
   let depth = 0;
@@ -191,7 +186,6 @@ const COMPARE = {
   lt: (x, y) => x != null && Number(x) < Number(y),
 };
 
-// One PostgREST condition on one column, such as `eq.5`, `gt.1.5`, `is.null` or `not.is.null`.
 function condition(column, test) {
   if (test === "is.null") return (row) => row[column] == null;
   if (test === "not.is.null") return (row) => row[column] != null;
@@ -202,7 +196,6 @@ function condition(column, test) {
 const CONTROL_PARAMS = new Set(["select", "order", "limit", "offset"]);
 const anyOf = (tests) => (row) => tests.some((test) => test(row));
 
-// The `or` filter getStanding sends: conditions and nested `and(...)`.
 function logicTest(clause) {
   if (clause.startsWith("and(")) {
     const tests = splitTopLevel(clause.slice("and(".length, -1)).map(logicTest);

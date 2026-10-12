@@ -193,12 +193,6 @@ function isMissingColumn(error: PostgrestError): boolean {
 
 type BoardSubmission = Extract<LeaderboardSubmission, { difficulty: LeaderboardDifficulty }>;
 
-/**
- * Transition shim. Each entry is a column a migration added, newest first.
- * Delete an entry once its migration is applied in every environment, and the
- * retry with the last one. A score outlives its rating and its flag, so a
- * missing column is dropped and the score kept.
- */
 const DROPPABLE_COLUMNS = [
   { column: 'skill_rating', migration: 'the rating and daily migration (0004)' },
   { column: 'country_code', migration: 'the country migration (0001)' },

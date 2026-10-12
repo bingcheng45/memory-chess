@@ -370,8 +370,7 @@ export const useGameStore = create<GameStore>()(
         lastSettings: state.lastSettings,
       }),
       // localStorage is user-editable and outlives app versions, so a stored
-      // value that would put the configuration form out of range is dropped,
-      // and so is a rating that is not a whole number from 0 up.
+      // value that would put the configuration form out of range is dropped.
       // The stored game state is laid over the defaults, so a field saved only
       // by a later version, such as the streak, starts from its default.
       merge: (persisted, current) => {

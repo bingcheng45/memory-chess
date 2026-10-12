@@ -7,7 +7,7 @@ export const utcDayOf = (at: number): string => new Date(at).toISOString().slice
 
 const DAY_FORMAT = /^(\d{4})-\d{2}-\d{2}$/;
 
-/** A UTC day that exists, as YYYY-MM-DD, from year 0001 on: Postgres's DATE has no year 0. */
+/** Postgres's DATE has no year 0. */
 export function parseUtcDay(value: unknown): string | null {
   if (typeof value !== "string") return null;
   const format = DAY_FORMAT.exec(value);

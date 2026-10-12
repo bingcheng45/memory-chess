@@ -1,13 +1,12 @@
-import PageHeader from "@/components/ui/PageHeader";
-import { ProgressDashboard } from "@/components/dashboard/ProgressDashboard";
+import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
+import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
+import { Dashboard } from "@/components/dashboard/Dashboard";
 
 export default function DashboardPage() {
   return (
-    <>
-      <div className="container mx-auto flex justify-center px-2 pt-4 sm:px-4">
-        <PageHeader showSoundSettings={false} />
-      </div>
-      <ProgressDashboard />
-    </>
+    <div className={LAB_PAPER_CLASS}>
+      <LabPaperHeader />
+      <Dashboard />
+    </div>
   );
 }

@@ -16,6 +16,7 @@ import {
 import type { CurvePoint } from "@/lib/lab/curve";
 import type { StreakDay } from "@/lib/lab/streak";
 import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
+import "@/components/lab-paper/lab-charts.css";
 
 const CURVE = { left: 44, right: 580, bottom: 210, top: 20 };
 const curveX = (day: number) => CURVE.left + ((CURVE.right - CURVE.left) * day) / CURVE_SPAN_DAYS;

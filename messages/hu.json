@@ -10,7 +10,7 @@
       "terms": "Feltételek",
       "play": "Játék",
       "leaderboard": "Ranglista",
-      "progress": "Fejlődés",
+      "dashboard": "Irányítópult",
       "menu": "Menü",
       "site": "Webhely"
     },
@@ -464,17 +464,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "A fejlődésed",
-      "description": "Minden érték, amelyet a Memory Chess a köreidből követ ezen az eszközön, egy oldalon, megosztható kártyával."
+      "title": "Irányítópult",
+      "description": "A Memory Chess irányítópultod: képességpontszám, memóriaterjedelem, minden kör, amelyet ezen az eszközön játszottál, a pontosság és a sebesség alakulása, egyéni csúcsok, és egy kártya a megosztásukhoz."
     },
-    "kicker": "Laborjegyzőkönyv",
-    "title": "A fejlődésed",
-    "lede": "Minden érték, amelyet a köreid ezen az eszközön elértek, egy helyen. Semmi sem hagyja el a böngésződet, hacsak meg nem osztod.",
+    "title": "Irányítópult",
+    "lede": "Minden kör, amelyet ezen az eszközön játszottál, amit ezek a memóriádról elárulnak, és egy kártya a megosztáshoz. Innen semmi sem hagyja el a böngésződet, hacsak meg nem osztod.",
     "loading": "A jegyzőkönyved beolvasása erről az eszközről.",
     "unavailable": "Ez a böngésző nem tárol jegyzőkönyvet, így nincs megjeleníthető fejlődés. A privát ablakok semmit sem őriznek meg.",
     "fullRecord": "A teljes jegyzőkönyv",
-    "headline": "Fő értékek",
-    "more": "Minden más",
+    "sections": {
+      "summary": "Összegzés",
+      "history": "Játékelőzmények",
+      "analysis": "Elemzés",
+      "more": "További adatok"
+    },
+    "historyLede": "A legújabb elöl. Nyiss meg egy kört a kiértékelt tábla megtekintéséhez.",
+    "analysisLede": "Hogyan alakul a pontosságod és a sebességed az idő során, és hol csúsznak ki a bábuk.",
     "stale": "Az utolsó köröd szerint",
     "staleNote": "Utoljára {count, plural, one {# napja} other {# napja}} játszottál. Az így jelölt értékek akkoriak.",
     "play": "Játssz egy kört",
@@ -495,23 +500,22 @@
       "reviews": "{count, plural, one {még # ismétlés} other {még # ismétlés}} ugyanakkora szünet után"
     },
     "label": {
+      "rating": "Képességpontszám",
+      "winStreak": "Győzelmi sorozat",
+      "bestAccuracy": "Legjobb pontosság",
+      "recentAccuracy": "Legutóbbi pontosság",
       "span": "Memóriaterjedelem",
       "piecesHeld": "Megjegyzett bábuk",
       "speed": "Sebesség",
-      "streak": "Sorozat",
+      "streak": "Napi sorozat",
       "rounds": "Lejátszott körök",
       "days": "Játéknapok",
-      "trend": "Pontosság",
       "daily": "A nap táblája",
       "week": "Ezen a héten",
       "curve": "Emlékezés ismétlés után",
-      "missMap": "Leggyakrabban hibázott vonal",
-      "typeRecall": "Leggyengébb bábu",
-      "insights": "Megfigyelések",
       "notebook": "Jegyzetfüzet",
       "plans": "Terv",
       "goal": "Cél",
-      "bests": "Egyéni csúcsok",
       "board": "Ranglista"
     },
     "unit": {
@@ -521,8 +525,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> kör} other {<n>{value}</n> kör}}",
       "entries": "{count, plural, one {<n>{value}</n> bejegyzés} other {<n>{value}</n> bejegyzés}}",
-      "findings": "{count, plural, one {<n>{value}</n> megfigyelés} other {<n>{value}</n> megfigyelés}}",
-      "settings": "{count, plural, one {<n>{value}</n> beállítás} other {<n>{value}</n> beállítás}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "Legalább {accuracy}% {rounds, plural, one {# körben} other {# körben}}, {memorizeSeconds} mp tanulással",
@@ -532,15 +535,124 @@
       "daily": "{status, select, played {Ma lejátszva} unfinished {Ma megnyitva} other {Ma elérhető}}, leghosszabb sorozat {longest, plural, one {# nap} other {# nap}}",
       "curve": "Felidézve {day, plural, one {# nap} other {# nap}} után, {reviews, plural, one {# ismétlésből} other {# ismétlésből}}",
       "rounds": "{rounds, plural, one {# körből} other {# körből}}",
-      "missLine": "Hibák {line, select, file {a(z) {name} vonalon} other {a(z) {name}. soron}}, {shown} látott bábuból",
-      "pieceType": "{type, select, p {Gyalogok felidézve} n {Huszárok felidézve} b {Futók felidézve} r {Bástyák felidézve} q {Vezérek felidézve} other {Királyok felidézve}}, {shown} látottból",
       "plan": "{planId, select, baseline {Alapszint terv} edge {Szélek terv} other {Létra terv}}, {status, select, active {még folyamatban} done {már kész} other {már leállítva}}",
       "goal": "Úton {pieceCount} bábu felé {accuracy}%-kal",
       "week": "Heti cél {goal} nap",
-      "best": "Legjobb eredmény {accuracy}% {pieceCount} bábuval, {memorizeSeconds} mp",
       "entry": "Helyes bábuk a legjobb nevezésedben, {difficulty, select, easy {Könnyű szint} medium {Közepes szint} hard {Nehéz szint} other {Nagymester szint}}",
       "overDays": "{days, plural, one {# nap} other {# nap}} alatt",
-      "firstDay": "{date} óta"
+      "firstDay": "{date} óta",
+      "rating": "{sign, select, up {Emelkedés: {change}} down {Csökkenés: {change}} other {Nincs változás}} az utolsó {rounds, plural, one {# pontozott körödben} other {# pontozott körödben}}",
+      "ratingSince": "A pontozott játékköreid alapján",
+      "winStreak": "Egymást követő játékkörök legalább {accuracy}%-kal",
+      "bestAt": "{source, select, calibration {Gyakorlás} other {Játék}}, {pieceCount} bábu, {memorizeSeconds} mp"
+    },
+    "history": {
+      "count": "{shown} látható, összesen {total, plural, one {# kör} other {# kör}}",
+      "filterSource": "Forrás",
+      "filterSetting": "Beállítás",
+      "allSources": "Minden forrás",
+      "allSettings": "Minden beállítás",
+      "sources": {
+        "game": "Játék",
+        "daily": "A nap táblája",
+        "plan": "Terv",
+        "review": "Ismétlés",
+        "practice": "Gyakorlás"
+      },
+      "settingValue": "{pieceCount} bábu, {memorizeSeconds} mp",
+      "col": {
+        "date": "Lejátszva",
+        "source": "Forrás",
+        "setting": "Beállítás",
+        "accuracy": "Pontosság",
+        "correct": "Helyes",
+        "time": "Kirakási idő",
+        "rating": "Pontszám",
+        "board": "Tábla"
+      },
+      "correctValue": "{correct}/{total}",
+      "seconds": "{value} mp",
+      "ratingUp": "Pontszám emelkedése: {change}",
+      "ratingDown": "Pontszám csökkenése: {change}",
+      "ratingLevel": "Pontszám változatlan",
+      "unrated": "Nem pontozott",
+      "show": "Tábla mutatása",
+      "hide": "Tábla elrejtése",
+      "boardLabel": "Kiértékelt tábla: {correct}/{total} bábu helyes.",
+      "detail": "Tanulási idő: {studied}/{memorizeSeconds} mp. {wrong, plural, =0 {Nincs hibás bábu} one {# hibás bábu} other {# hibás bábu}}, {extra, plural, =0 {nincs fölösleges bábu} one {# fölösleges bábu} other {# fölösleges bábu}}.",
+      "more": "Még {count} mutatása",
+      "ratingNote": "A pontszám változásait a legújabb 20 pontozott játékkörödnél őrizzük meg. A gyakorló és ismétlő körök nem pontozottak.",
+      "kept": "A jegyzőkönyved összesen {total} köröd közül a legújabb {kept} kört őrzi meg körönként. A régebbi körök továbbra is beleszámítanak az összesítésekbe és a csúcsokba.",
+      "emptyTitle": "Még nincs kör.",
+      "empty": "Minden kör, amelyet ezen az eszközön játszol, itt jelenik meg, a legújabb elöl, a beállításával, pontosságával és kirakási idejével. Nyiss meg egyet a kiértékelt tábla megtekintéséhez.",
+      "noMatch": "Egy kör sem felel meg ezeknek a szűrőknek.",
+      "clear": "Szűrők törlése"
+    },
+    "analysis": {
+      "fromRounds": "{count, plural, one {# körből} other {# körből}}",
+      "oldest": "Legrégebbi",
+      "latest": "Legújabb",
+      "accuracy": {
+        "title": "Pontosság az idő során",
+        "desc": "A pontosságod körről körre a leggyakrabban játszott beállításodban, 0 és 100% közötti skálán.",
+        "note": "{source, select, calibration {Gyakorló körök} other {Játékkörök}}, {pieceCount} bábu, {memorizeSeconds} mp, a leggyakrabban játszott beállításod. Utolsó {count, plural, one {# kör} other {# kör}}.",
+        "aria": "Pontosság az utolsó {count} körödben, {pieceCount} bábu, {memorizeSeconds} mp, 0 és 100 százalék közötti skálán, legutóbb {latest} százalék."
+      },
+      "speed": {
+        "title": "Sebesség az idő során",
+        "unit": "Másodperc helyes bábunként. A kevesebb gyorsabb.",
+        "note": "{source, select, calibration {Gyakorló körök} other {Játékkörök}}, {pieceCount} bábu, {memorizeSeconds} mp. Utolsó {count, plural, one {# kör} other {# kör}}.",
+        "aria": "Másodperc helyes bábunként az utolsó {count} körödben, {pieceCount} bábu, {memorizeSeconds} mp, legutóbb {latest}."
+      },
+      "bests": {
+        "title": "Egyéni csúcsok beállításonként",
+        "desc": "A csúcsokat beállításonként tartjuk nyilván, mert a 6 és a 20 bábu két különböző teszt.",
+        "setting": "{source, select, calibration {Gyakorlás} other {Játék}} · {pieceCount} bábu, {memorizeSeconds} mp",
+        "col": {
+          "setting": "Beállítás",
+          "accuracy": "Legjobb pontosság",
+          "correct": "Helyes",
+          "time": "Kirakási idő",
+          "rounds": "Körök",
+          "date": "Dátum"
+        }
+      },
+      "types": {
+        "title": "Felidézés bábutípusonként",
+        "desc": "Milyen gyakran teszed vissza az egyes bábutípusokat oda, ahol álltak.",
+        "value": "{recalled}/{shown}",
+        "thin": "{shown}/{minimum} látva",
+        "baseline": "Királyok minden körben vannak, ezért viszonyítási alapot adnak: {recalled}/{shown} felidézve.",
+        "onlyKings": "Eddigi köreidben csak a két király szerepelt. A bábutípusonkénti felidézéshez több bábu kell."
+      },
+      "miss": {
+        "title": "Hibatérkép",
+        "desc": "Mely mezőket és vonalakat hibázod el a legtöbbször, az összes kör alapján.",
+        "aria": "A hibaarányod mezőnként. A sötétebb gyakoribb hibát jelent. A szürke mezőkön még nem volt látható legalább {minimum} bábu.",
+        "note": "A sötétebb mezőket gyakrabban hibázod el. A szürke mezőkön még nem volt látható legalább {minimum} bábu.",
+        "lines": "Amíg minden mezőn nem volt látható legalább {minimum} bábu, a térkép teljes vonalakat és sorokat mutat.",
+        "files": "Vonalak",
+        "ranks": "Sorok",
+        "line": "{line}: {missed}/{shown} elhibázva",
+        "lineThin": "{line}: {shown} látva, ez még kevés"
+      },
+      "insights": {
+        "title": "Megfigyelések",
+        "desc": "Mintázatok az eredményeidben, amelyekkel érdemes foglalkozni, mindegyik a mögötte álló számokkal.",
+        "none": "Még semmi sem tűnik ki. Játssz tovább.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Az a és h vonalon {edgeShown} bábu közül {edge, select, 0 {kevesebb mint 1%-ot} other {{edge}%-ot}} hibázol el, a középső d és e vonalon pedig {centreShown} közül egyet sem.} 2 {Az a és h vonalat nagyjából kétszer olyan gyakran hibázod el, mint a középső d és e vonalat: {edgeShown} bábu közül {edge, select, 0 {kevesebb mint 1%} other {{edge}%}}, míg {centreShown} közül {centre, select, 0 {kevesebb mint 1%} other {{centre}%}}.} other {Az a és h vonalat nagyjából {times}× olyan gyakran hibázod el, mint a középső d és e vonalat: {edgeShown} bábu közül {edge, select, 0 {kevesebb mint 1%} other {{edge}%}}, míg {centreShown} közül {centre, select, 0 {kevesebb mint 1%} other {{centre}%}}.}}",
+          "weakType": "A királyokon kívüli, legalább {minimum} alkalommal látott bábuk közül {type, select, q {a vezérek} r {a bástyák} b {a futók} n {a huszárok} other {a gyalogok}} csúsznak ki a leggyakrabban: {recalled}/{shown} felidézve, {percent}%.",
+          "fasterLessAccurate": "{pieceCount} bábu, {studyTime} beállításnál az utolsó {window} köröd helyes bábunként {fasterTime} idővel kevesebbet vett igénybe, mint az előző {window}, a pontosság viszont {fell} ponttal esett.",
+          "colourGap": "A {weaker, select, w {világos} other {sötét}} bábukat ritkábban idézed fel, mint a {weaker, select, w {sötét} other {világos}} bábukat: {weakerShown} közül {weakerPercent}%, míg {strongerShown} közül {strongerPercent}%, királyok nélkül.",
+          "plateau": "{pieceCount} bábu, {studyTime} beállításnál az utolsó {window} köröd átlaga {last}% volt, az előző {window} körödé {before}%, és a memóriaterjedelmed {span} bábunál maradt az utolsó játékheted során. Egy további bábu elmozdíthatja."
+        },
+        "actions": {
+          "rig": "Játssz {pieceCount} bábuval, {studyTime}",
+          "patterns": "Olvasd el a mintafelismerő gyakorlatokat",
+          "vision": "Olvasd el, hogyan láthatod az egész táblát"
+        }
+      }
     },
     "share": {
       "button": "Fejlődésem megosztása",
@@ -553,10 +665,11 @@
       "copy": "Szöveg másolása",
       "copied": "Szöveg kimásolva.",
       "copyFailed": "A másolás itt nem működött. A szöveg ki van jelölve, másold ki magad.",
-      "locked": "A megosztható kártya akkor oldódik fel, amikor kész a memóriaterjedelem, a megjegyzett bábuk, a sebesség vagy a sorozatod.",
+      "locked": "A megosztható kártya akkor oldódik fel, amikor kész a memóriaterjedelem, a képességpontszám, a megjegyzett bábuk, a sebesség vagy a napi sorozatod.",
       "text": "A fejlődésem a Memory Chessben: {figures}. Meg tudod verni?",
       "figure": {
         "span": "{value, plural, one {# bábus} other {# bábus}} memóriaterjedelem",
+        "rating": "képességpontszám: {value, number}",
         "piecesHeld": "{value, number} megjegyzett bábu",
         "speed": "{value, number} mp bábunként",
         "streak": "{value, plural, one {# nap} other {# nap}} egymás után"

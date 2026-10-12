@@ -10,7 +10,7 @@
       "terms": "利用規約",
       "play": "プレイ",
       "leaderboard": "ランキング",
-      "progress": "進捗",
+      "dashboard": "ダッシュボード",
       "menu": "メニュー",
       "site": "サイト"
     },
@@ -464,17 +464,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "あなたの進捗",
-      "description": "このデバイスでのラウンドから Memory Chess が記録するすべての数値を1ページに。シェア用のカード付き。"
+      "title": "ダッシュボード",
+      "description": "Memory Chess のあなたのダッシュボード。スキルレーティング、記憶スパン、このデバイスでプレイした全ラウンド、正解率とスピードの推移、自己ベスト、そしてそれをシェアするカード。"
     },
-    "kicker": "ラボ記録",
-    "title": "あなたの進捗",
-    "lede": "このデバイスでのラウンドで得たすべての数値を一か所に。シェアしない限り、ブラウザーの外には出ません。",
+    "title": "ダッシュボード",
+    "lede": "このデバイスでプレイしたすべてのラウンドと、そこから分かるあなたの記憶力、そしてシェア用のカード。シェアしない限り、ここにあるものはブラウザーの外に出ません。",
     "loading": "このデバイスの記録を読み込んでいます。",
     "unavailable": "このブラウザーは記録を保存しないため、表示できる進捗はありません。プライベートウィンドウでは何も保存されません。",
     "fullRecord": "記録の全体を見る",
-    "headline": "主な数値",
-    "more": "その他",
+    "sections": {
+      "summary": "概要",
+      "history": "ゲーム履歴",
+      "analysis": "分析",
+      "more": "その他の数値"
+    },
+    "historyLede": "新しい順に表示。ラウンドを開くと採点済みの盤面を確認できます。",
+    "analysisLede": "正解率とスピードの推移と、駒を取りこぼしやすい場所。",
     "stale": "最後のラウンド時点",
     "staleNote": "最後のプレイは{count, plural, other {#日}}前です。この印の数値はその時点のものです。",
     "play": "1ラウンド遊ぶ",
@@ -495,23 +500,22 @@
       "reviews": "同じ間隔での復習を{count, plural, other {#回}}"
     },
     "label": {
+      "rating": "スキルレーティング",
+      "winStreak": "連勝",
+      "bestAccuracy": "最高正解率",
+      "recentAccuracy": "最近の正解率",
       "span": "記憶スパン",
       "piecesHeld": "記憶できた駒",
       "speed": "スピード",
       "streak": "連続日数",
       "rounds": "プレイしたラウンド",
       "days": "プレイした日数",
-      "trend": "正解率",
       "daily": "今日の盤面",
       "week": "今週",
       "curve": "復習後の記憶",
-      "missMap": "最もミスの多いライン",
-      "typeRecall": "最も苦手な駒",
-      "insights": "気づき",
       "notebook": "ノート",
       "plans": "プラン",
       "goal": "目標",
-      "bests": "自己ベスト",
       "board": "ランキング"
     },
     "unit": {
@@ -521,8 +525,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, other {<n>{value}</n>ラウンド}}",
       "entries": "{count, plural, other {<n>{value}</n>件}}",
-      "findings": "{count, plural, other {<n>{value}</n>件}}",
-      "settings": "{count, plural, other {<n>{value}</n>設定}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{rounds, plural, other {#ラウンド}}で{accuracy}%以上、記憶時間{memorizeSeconds}秒",
@@ -532,15 +535,124 @@
       "daily": "{status, select, played {今日プレイ済み} unfinished {今日開いた} other {今日プレイ可能}}、最長連続{longest, plural, other {#日}}",
       "curve": "{day, plural, other {#日}}後の記憶、{reviews, plural, other {#回}}の復習から",
       "rounds": "{rounds, plural, other {#ラウンド}}から",
-      "missLine": "{line, select, file {{name}ファイル} other {{name}ランク}}でのミス、{shown}駒中",
-      "pieceType": "{type, select, p {ポーン} n {ナイト} b {ビショップ} r {ルーク} q {クイーン} other {キング}}の記憶率、{shown}駒中",
       "plan": "{planId, select, baseline {ベースライン} edge {端} other {はしご}}プラン、{status, select, active {進行中} done {完了} other {停止}}",
       "goal": "{pieceCount}駒・{accuracy}%への到達度",
       "week": "週の目標 {goal}日",
-      "best": "最高記録 {pieceCount}駒・{memorizeSeconds}秒で{accuracy}%",
       "entry": "ベスト登録の正解駒数、{difficulty, select, easy {やさしい} medium {ふつう} hard {むずかしい} other {グランドマスター}}",
       "overDays": "{days, plural, other {#日}}間で",
-      "firstDay": "{date}から"
+      "firstDay": "{date}から",
+      "rating": "直近{rounds, plural, other {#回のレーティング対象ラウンド}}で{sign, select, up {{change}上昇} down {{change}下降} other {変化なし}}",
+      "ratingSince": "レーティング対象のゲームラウンドから",
+      "winStreak": "正解率{accuracy}%以上のゲームラウンドの連続数",
+      "bestAt": "{source, select, calibration {練習} other {ゲーム}}・{pieceCount}駒・{memorizeSeconds}秒"
+    },
+    "history": {
+      "count": "{total, plural, other {#ラウンド}}中{shown}件を表示",
+      "filterSource": "種類",
+      "filterSetting": "設定",
+      "allSources": "すべての種類",
+      "allSettings": "すべての設定",
+      "sources": {
+        "game": "ゲーム",
+        "daily": "デイリー盤面",
+        "plan": "プラン",
+        "review": "復習",
+        "practice": "練習"
+      },
+      "settingValue": "{pieceCount}駒・{memorizeSeconds}秒",
+      "col": {
+        "date": "プレイ日",
+        "source": "種類",
+        "setting": "設定",
+        "accuracy": "正解率",
+        "correct": "正解",
+        "time": "配置時間",
+        "rating": "レーティング",
+        "board": "盤面"
+      },
+      "correctValue": "{correct}/{total}",
+      "seconds": "{value}秒",
+      "ratingUp": "レーティング{change}上昇",
+      "ratingDown": "レーティング{change}下降",
+      "ratingLevel": "レーティング変化なし",
+      "unrated": "レーティング対象外",
+      "show": "盤面を表示",
+      "hide": "盤面を隠す",
+      "boardLabel": "採点済みの盤面: {total}駒中{correct}駒正解。",
+      "detail": "記憶時間{memorizeSeconds}秒のうち{studied}秒を使用。{wrong, plural, =0 {誤った駒なし} other {誤った駒#個}}、{extra, plural, =0 {余分な駒なし} other {余分な駒#個}}。",
+      "more": "さらに{count}件表示",
+      "ratingNote": "レーティングの変化は、最新20回のレーティング対象ゲームラウンドについて保存されます。練習と復習のラウンドはレーティング対象外です。",
+      "kept": "記録には全{total}ラウンドのうち最新{kept}ラウンドの詳細が保存されます。それより古いラウンドも合計とベストには引き続き反映されます。",
+      "emptyTitle": "まだラウンドがありません。",
+      "empty": "このデバイスでプレイしたラウンドは、新しい順に設定・正解率・配置時間とともにここに表示されます。開くと採点済みの盤面を確認できます。",
+      "noMatch": "この条件に合うラウンドはありません。",
+      "clear": "フィルターを解除"
+    },
+    "analysis": {
+      "fromRounds": "{count, plural, other {#ラウンド}}から",
+      "oldest": "最古",
+      "latest": "最新",
+      "accuracy": {
+        "title": "正解率の推移",
+        "desc": "最もよくプレイする設定での、ラウンドごとの正解率（0〜100%）。",
+        "note": "最もよくプレイする設定、{source, select, calibration {練習} other {ゲーム}}ラウンド・{pieceCount}駒・{memorizeSeconds}秒。直近{count, plural, other {#ラウンド}}。",
+        "aria": "{pieceCount}駒・{memorizeSeconds}秒での直近{count}ラウンドの正解率。0から100パーセントの目盛りで、最新は{latest}パーセント。"
+      },
+      "speed": {
+        "title": "スピードの推移",
+        "unit": "正解1駒あたりの秒数。低いほど速い。",
+        "note": "{source, select, calibration {練習} other {ゲーム}}ラウンド・{pieceCount}駒・{memorizeSeconds}秒。直近{count, plural, other {#ラウンド}}。",
+        "aria": "{pieceCount}駒・{memorizeSeconds}秒での直近{count}ラウンドの正解1駒あたりの秒数。最新は{latest}。"
+      },
+      "bests": {
+        "title": "設定別の自己ベスト",
+        "desc": "6駒と20駒は別のテストなので、ベストは設定ごとに記録されます。",
+        "setting": "{source, select, calibration {練習} other {ゲーム}} · {pieceCount}駒・{memorizeSeconds}秒",
+        "col": {
+          "setting": "設定",
+          "accuracy": "最高正解率",
+          "correct": "正解",
+          "time": "配置時間",
+          "rounds": "ラウンド",
+          "date": "記録日"
+        }
+      },
+      "types": {
+        "title": "駒の種類別の再現率",
+        "desc": "駒の種類ごとに、元のマスへ戻せた頻度。",
+        "value": "{recalled}/{shown}",
+        "thin": "{shown}/{minimum}回出現",
+        "baseline": "キングは毎ラウンド登場するため基準になります。{shown}駒中{recalled}駒を再現。",
+        "onlyKings": "これまでのラウンドでは2つのキングしか配置されていません。駒の種類別の再現率にはもっと多くの駒が必要です。"
+      },
+      "miss": {
+        "title": "ミスマップ",
+        "desc": "全ラウンドを通して、ミスが多いマスとライン。",
+        "aria": "マスごとのミスの割合。濃いほどミスが多いことを示します。灰色のマスは出現した駒が{minimum}個未満です。",
+        "note": "濃いマスほどミスが多いマスです。灰色のマスは出現した駒が{minimum}個未満です。",
+        "lines": "すべてのマスで駒が{minimum}個出現するまでは、ファイルとランク単位で表示します。",
+        "files": "ファイル",
+        "ranks": "ランク",
+        "line": "{line}: {shown}駒中{missed}駒ミス",
+        "lineThin": "{line}: {shown}駒出現、判断にはまだ不足"
+      },
+      "insights": {
+        "title": "気づき",
+        "desc": "記録から見えた取り組む価値のある傾向と、その根拠となる数。",
+        "none": "まだ目立つ傾向はありません。プレイを続けましょう。",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {aファイルとhファイルでは{edgeShown}駒中{edge, select, 0 {1%未満} other {{edge}%}}をミスしていますが、中央のdファイルとeファイルでは{centreShown}駒中1つもミスしていません。} 2 {aファイルとhファイルのミスは、中央のdファイルとeファイルの約2倍です。{edgeShown}駒中{edge, select, 0 {1%未満} other {{edge}%}}に対し、{centreShown}駒中{centre, select, 0 {1%未満} other {{centre}%}}。} other {aファイルとhファイルのミスは、中央のdファイルとeファイルの約{times}倍です。{edgeShown}駒中{edge, select, 0 {1%未満} other {{edge}%}}に対し、{centreShown}駒中{centre, select, 0 {1%未満} other {{centre}%}}。}}",
+          "weakType": "キング以外で{minimum}回以上出現した駒のうち、最も取りこぼしが多いのは{type, select, q {クイーン} r {ルーク} b {ビショップ} n {ナイト} other {ポーン}}です。{shown}駒中{recalled}駒、{percent}%を再現。",
+          "fasterLessAccurate": "{pieceCount}駒・{studyTime}では、直近{window}ラウンドはその前の{window}ラウンドより正解1駒あたり{fasterTime}速くなりましたが、正解率は{fell}ポイント下がりました。",
+          "colourGap": "{weaker, select, w {白} other {黒}}の駒は{weaker, select, w {黒} other {白}}の駒より再現率が低めです。{weakerShown}駒中{weakerPercent}%に対し、{strongerShown}駒中{strongerPercent}%（キングを除く）。",
+          "plateau": "{pieceCount}駒・{studyTime}では、直近{window}ラウンドの平均は{last}%、その前の{window}ラウンドは{before}%で、直近1週間のプレイで記憶スパンは{span}駒にとどまっています。駒を1つ増やすと伸びるかもしれません。"
+        },
+        "actions": {
+          "rig": "{pieceCount}駒・{studyTime}でプレイ",
+          "patterns": "パターン認識ドリルを読む",
+          "vision": "盤面全体を見る方法を読む"
+        }
+      }
     },
     "share": {
       "button": "進捗をシェア",
@@ -553,10 +665,11 @@
       "copy": "キャプションをコピー",
       "copied": "キャプションをコピーしました。",
       "copyFailed": "ここではコピーできませんでした。キャプションを選択したので、手動でコピーしてください。",
-      "locked": "記憶スパン、記憶できた駒、スピード、連続日数のいずれかが揃うと、シェア用カードが解放されます。",
+      "locked": "記憶スパン、スキルレーティング、記憶できた駒、スピード、連続日数のいずれかが揃うと、シェア用カードが解放されます。",
       "text": "Memory Chess の進捗: {figures}。あなたは超えられる?",
       "figure": {
         "span": "記憶スパン{value, plural, other {#駒}}",
+        "rating": "スキルレーティング{value, number}",
         "piecesHeld": "記憶できた駒{value, number}",
         "speed": "1駒あたり{value, number}秒",
         "streak": "{value, plural, other {#日}}連続"

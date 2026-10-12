@@ -37,6 +37,12 @@ const SOLUTION_FEN_SUFFIX = ' w - - 0 1';
 /** The newest rounds kept in the persisted history. A review round is left out, as it is from the rating and the streak. */
 const HISTORY_LIMIT = 20;
 
+/** Every player's rating before their first rated round. */
+export const START_RATING = 1000;
+
+/** The accuracy a rated round needs to extend the win streak; below it the streak starts again. */
+export const WIN_ACCURACY = 70;
+
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
 
 interface GameStore {
@@ -52,14 +58,8 @@ interface GameStore {
   submitSolution: (now?: number) => void;
   resetGame: () => void;
 
-  // Stats and progression (kept because they're used in game components)
-  getTotalGames: () => number;
-  getBestTime: () => number;
-  getAverageAccuracy: () => number;
-  getHighestLevel: () => number;
   getSkillRating: () => number;
   getCurrentStreak: () => number;
-  getLongestStreak: () => number;
   getRecommendedDifficulty: () => DifficultyLevel;
   calculateSkillRatingChange: (accuracy: number, pieceCount: number, completionTime: number) => number;
 }
@@ -70,7 +70,7 @@ const initialGameState: GameState = {
   memorizeTime: 10, // Default to 10 seconds
   currentLevel: 1,
   level: 1,
-  skillRating: 1000, // Starting skill rating
+  skillRating: START_RATING,
   streak: 0,
 };
 
@@ -216,7 +216,7 @@ export const useGameStore = create<GameStore>()(
         const perfectScore = score.accuracy === 100 && score.extra === 0;
 
         // Determine success (e.g., accuracy >= 70%)
-        const success = score.accuracy >= 70;
+        const success = score.accuracy >= WIN_ACCURACY;
 
         // A review replays a board the player has already seen, so it is not a fair test of skill.
         const rated = gameState.board?.kind !== 'review';
@@ -320,73 +320,12 @@ export const useGameStore = create<GameStore>()(
       },
 
       // Stats and progression
-      getTotalGames: () => get().history.length,
-      
-      getBestTime: () => {
-        const history = get().history;
-        if (history.length === 0) return 0;
-        
-        // Find the fastest completion time for each piece count
-        const bestTimes = new Map<number, number>();
-        
-        history.forEach(game => {
-          const currentBest = bestTimes.get(game.pieceCount) || Infinity;
-          if (game.completionTime !== undefined && game.completionTime < currentBest && game.accuracy >= 80) {
-            bestTimes.set(game.pieceCount, game.completionTime);
-          }
-        });
-        
-        // Return the best time for the current piece count or overall best
-        const currentPieceCount = get().gameState.pieceCount;
-        return bestTimes.get(currentPieceCount) || 
-               Math.min(...Array.from(bestTimes.values()), Infinity) || 
-               0;
-      },
-      
-      getAverageAccuracy: () => {
-        const history = get().history;
-        if (history.length === 0) return 0;
-        return Math.round(
-          history.reduce((acc, game) => acc + game.accuracy, 0) / history.length
-        );
-      },
-      
-      getHighestLevel: () => {
-        const history = get().history;
-        if (history.length === 0) return 1;
-        return Math.max(...history.map((game) => game.level));
-      },
-      
       getSkillRating: () => {
         return get().gameState.skillRating || 1000;
       },
       
       getCurrentStreak: () => {
         return get().gameState.streak || 0;
-      },
-      
-      getLongestStreak: () => {
-        const history = get().history;
-        if (history.length === 0) return 0;
-        
-        let longestStreak = 0;
-        let currentStreak = 0;
-        
-        // Sort history by timestamp
-        const sortedHistory = [...history].sort((a, b) => 
-          a.timestamp - b.timestamp
-        );
-        
-        sortedHistory.forEach(game => {
-          if (game.accuracy >= 70) {
-            currentStreak++;
-            longestStreak = Math.max(longestStreak, currentStreak);
-          } else {
-            currentStreak = 0;
-          }
-        });
-        
-        return Math.max(longestStreak, get().gameState.streak || 0);
       },
       
       getRecommendedDifficulty: () => {

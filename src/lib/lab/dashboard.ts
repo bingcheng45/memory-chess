@@ -1,13 +1,13 @@
-import type { PieceSymbol } from "chess.js";
 import type { RoundSource } from "@/lib/analytics/events";
 import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
-import { FILES, RANKS } from "@/lib/game/board";
 import { playHref } from "@/lib/game/roundLink";
 import type { StoredEntries } from "./entries";
 import { dailyBoardOf, DAILY_SETTING } from "./daily";
 import { dayDate, mean, type TrendSetting } from "./engine";
-import type { LabResults, MissCell } from "./metrics";
+import type { BestEntry, LabResults } from "./metrics";
 import { hasFigure, LAB_THRESHOLDS, type Need, type Readiness } from "./readiness";
+import { isFreshReading, type RoundRecord } from "./record";
+import { byEndedAt } from "./sessions";
 import type { LabSummary } from "./summary";
 import { weekProgress, type WeekGoal } from "./week";
 
@@ -15,7 +15,7 @@ const DASHBOARD_SOURCE: RoundSource = "dashboard";
 export const DASHBOARD_PLAY_HREF = playHref(DEFAULT_PRESET.pieceCount, DEFAULT_PRESET.memorizeTime, DASHBOARD_SOURCE);
 const DAILY_PLAY = playHref(DAILY_SETTING.pieceCount, DAILY_SETTING.memorizeTime, "daily");
 
-export type DashboardUnit = "pieces" | "secondsPerPiece" | "days" | "percent" | "rounds" | "entries" | "findings" | "settings";
+export type DashboardUnit = "pieces" | "secondsPerPiece" | "days" | "percent" | "rounds" | "entries" | "rating";
 
 export interface Figure {
   readonly value: number;
@@ -32,15 +32,16 @@ type ContextKind =
   | "daily"
   | "curve"
   | "rounds"
-  | "missLine"
-  | "pieceType"
   | "plan"
   | "goal"
   | "week"
-  | "best"
   | "entry"
   | "overDays"
-  | "firstDay";
+  | "firstDay"
+  | "rating"
+  | "ratingSince"
+  | "winStreak"
+  | "bestAt";
 
 export interface TileContext {
   readonly kind: ContextKind;
@@ -56,37 +57,38 @@ export type TileState =
   | { readonly state: "warming"; readonly need: Need; readonly rig: Rig | null; readonly href: string | null }
   | { readonly state: "empty"; readonly href: string; readonly cta: "play" | "choose" };
 
-export const DASHBOARD_TILES = [
-  "span",
-  "piecesHeld",
-  "speed",
-  "streak",
-  "rounds",
-  "days",
-  "trend",
-  "daily",
-  "week",
-  "curve",
-  "missMap",
-  "typeRecall",
-  "insights",
-  "notebook",
-  "plans",
-  "goal",
-  "bests",
-  "board",
-] as const;
+/**
+ * The page's figure tiles by where they sit: the lead row a player checks first, the totals and records under it,
+ * and the figures of the record's other parts at the foot. The charts and tables between them read the metrics whole.
+ */
+export const DASHBOARD_GROUPS = {
+  lead: ["rating", "span", "piecesHeld", "speed"],
+  summary: ["bestAccuracy", "recentAccuracy", "winStreak", "streak", "rounds", "days"],
+  more: ["daily", "week", "curve", "notebook", "plans", "goal", "board"],
+} as const;
+
+export const DASHBOARD_TILES = [...DASHBOARD_GROUPS.lead, ...DASHBOARD_GROUPS.summary, ...DASHBOARD_GROUPS.more] as const;
 
 export type DashboardTileId = (typeof DASHBOARD_TILES)[number];
 export type DashboardTile = { readonly id: DashboardTileId } & TileState;
 
-/** The headline row: the four figures a player checks first, and the ones the share card carries. */
-export const HEADLINE_TILES = ["span", "piecesHeld", "speed", "streak"] as const satisfies readonly DashboardTileId[];
+/** The figures the share card carries, the first drawn largest. */
+export const SHARE_TILES = ["span", "rating", "piecesHeld", "speed", "streak"] as const satisfies readonly DashboardTileId[];
+
+/**
+ * What only the game store knows: the skill rating, the run of rounds at WIN_ACCURACY or better, and the rating change
+ * of each round it still holds, newest first. Null before the first rated /game round.
+ */
+export interface GameStanding {
+  readonly rating: number;
+  readonly winStreak: number;
+  readonly changes: readonly number[];
+}
 
 export interface DashboardInput {
   readonly results: LabResults;
   readonly summary: LabSummary;
-  readonly records: Parameters<typeof dailyBoardOf>[0];
+  readonly records: readonly RoundRecord[];
   readonly weekGoal: WeekGoal;
   readonly entries: StoredEntries | null;
   /** The client's local day. */
@@ -96,6 +98,9 @@ export interface DashboardInput {
   readonly dailyOpened: string | null;
   /** Where a plan or goal is chosen, null where the locale has no lab record to choose it on. */
   readonly chooseHref: string | null;
+  readonly game: GameStanding | null;
+  /** The accuracy a game round needs to extend the win streak. */
+  readonly winAccuracy: number;
 }
 
 const rigHref = (rig: Rig | null) => (rig ? playHref(rig.pieceCount, rig.memorizeSeconds, DASHBOARD_SOURCE) : DASHBOARD_PLAY_HREF);
@@ -119,21 +124,48 @@ function fromReadiness(readiness: Readiness, draw: () => Omit<Extract<TileState,
   return emptyPlay();
 }
 
-const missShare = ({ shown, missed }: MissCell) => missed / shown;
-
-/** The most missed file or rank among those with enough pieces seen to read. */
-function weakestLine(files: readonly MissCell[], ranks: readonly MissCell[]) {
-  const lines = [
-    ...files.map((cell, index) => ({ cell, line: "file", name: FILES[index] as string })),
-    ...ranks.map((cell, index) => ({ cell, line: "rank", name: RANKS[index] as string })),
-  ].filter(({ cell }) => cell.ready);
-  return lines.reduce<(typeof lines)[number] | null>((worst, line) => (worst === null || missShare(line.cell) > missShare(worst.cell) ? line : worst), null);
+/** The highest accuracy among the per-setting bests, the larger board on a tie, then the faster rebuild. */
+function topBest(entries: readonly BestEntry[]): BestEntry | null {
+  return entries.reduce<BestEntry | null>(
+    (top, entry) =>
+      top === null ||
+      entry.accuracy > top.accuracy ||
+      (entry.accuracy === top.accuracy && (entry.pieceCount > top.pieceCount || (entry.pieceCount === top.pieceCount && entry.solveMs < top.solveMs)))
+        ? entry
+        : top,
+    null,
+  );
 }
+
+const sumOf = (values: readonly number[]) => values.reduce((sum, value) => sum + value, 0);
 
 /** Null leaves the tile off the page: a figure of nothing found is not progress to show. */
 type TileBuilder = (input: DashboardInput) => TileState | null;
 
 const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
+  rating: ({ game }) => {
+    if (!game) return emptyPlay();
+    const recent = game.changes.slice(0, LAB_THRESHOLDS.rollingWindow);
+    if (recent.length === 0) return ready(figure(game.rating, "rating"), context("ratingSince", {}));
+    const change = sumOf(recent);
+    return ready(
+      figure(game.rating, "rating"),
+      context("rating", { sign: change > 0 ? "up" : change < 0 ? "down" : "level", change: Math.abs(change), rounds: recent.length }),
+    );
+  },
+  winStreak: ({ game, winAccuracy }) => (game ? ready(figure(game.winStreak, "rounds"), context("winStreak", { accuracy: winAccuracy })) : emptyPlay()),
+  bestAccuracy: ({ results: { bests } }) =>
+    fromReadiness(bests.readiness, () => {
+      const top = bests.value && topBest(bests.value.entries);
+      return top
+        ? { figure: figure(Math.round(top.accuracy), "percent"), context: context("bestAt", { source: top.source, pieceCount: top.pieceCount, memorizeSeconds: top.memorizeSeconds }) }
+        : null;
+    }),
+  recentAccuracy: ({ records }) => {
+    const recent = byEndedAt(records.filter(isFreshReading)).slice(-LAB_THRESHOLDS.rollingWindow);
+    if (recent.length === 0) return emptyPlay();
+    return ready(figure(Math.round(mean(recent.map(({ accuracy }) => accuracy))), "percent"), context("recent", { rounds: recent.length }));
+  },
   span: ({ results: { span } }) =>
     fromReadiness(span.readiness, () =>
       span.value?.pieceCount == null || span.value.memorizeSeconds === null
@@ -167,16 +199,6 @@ const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
     const first = summary.days[0];
     return first === undefined ? emptyPlay() : ready(figure(summary.days.length, "days"), context("firstDay", { date: dayDate(first) }));
   },
-  trend: ({ results: { trend } }) =>
-    fromReadiness(
-      trend.readiness,
-      () =>
-        trend.value && {
-          figure: figure(Math.round(mean(trend.value.points.slice(-LAB_THRESHOLDS.rollingWindow))), "percent"),
-          context: context("setting", { ...settingValues(trend.value.setting), rounds: trend.readiness.sampleSize }),
-        },
-      gameRig(trend.value?.setting),
-    ),
   daily: ({ records, utcDay, dailyOpened }) => {
     const board = dailyBoardOf(records, utcDay, dailyOpened);
     if (!board.streak) return emptyPlay(DAILY_PLAY);
@@ -192,27 +214,6 @@ const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
       const latest = curve.value?.points.filter(({ day }) => day > 0).at(-1);
       return latest ? { figure: figure(latest.accuracy, "percent"), context: context("curve", { day: latest.day, reviews: latest.count }) } : null;
     }),
-  missMap: ({ results: { missMap } }) =>
-    fromReadiness(missMap.readiness, () => {
-      const worst = missMap.value && weakestLine(missMap.value.files, missMap.value.ranks);
-      return worst
-        ? { figure: figure(Math.round(missShare(worst.cell) * 100), "percent"), context: context("missLine", { line: worst.line, name: worst.name, shown: worst.cell.shown }) }
-        : null;
-    }),
-  typeRecall: ({ results: { typeRecall } }) =>
-    fromReadiness(typeRecall.readiness, () => {
-      const weakest = typeRecall.value?.types
-        .filter(({ ready: counted }) => counted)
-        .reduce<{ type: PieceSymbol; share: number; shown: number } | null>((low, { type, shown, recalled }) => {
-          const share = recalled / shown;
-          return low === null || share < low.share ? { type, share, shown } : low;
-        }, null);
-      return weakest ? { figure: figure(Math.round(weakest.share * 100), "percent"), context: context("pieceType", { type: weakest.type, shown: weakest.shown }) } : null;
-    }),
-  insights: ({ results: { insights }, summary }) =>
-    hasFigure(insights.readiness) && insights.value?.insights.length === 0
-      ? null
-      : fromReadiness(insights.readiness, () => insights.value && { figure: figure(insights.value.insights.length, "findings"), context: context("rounds", { rounds: summary.rounds }) }),
   notebook: ({ results: { notebook }, summary }) =>
     fromReadiness(notebook.readiness, () => notebook.value && { figure: figure(notebook.value.entries.length, "entries"), context: context("rounds", { rounds: summary.rounds }) }),
   plans: ({ results: { plans }, chooseHref }) => {
@@ -229,20 +230,6 @@ const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
       { pieceCount: target.pieceCount, memorizeSeconds: DEFAULT_PRESET.memorizeTime },
     );
   },
-  bests: ({ results: { bests } }) =>
-    fromReadiness(bests.readiness, () => {
-      const entries = bests.value?.entries ?? [];
-      const top = entries.reduce<(typeof entries)[number] | null>(
-        (best, entry) => (best === null || entry.pieceCount > best.pieceCount || (entry.pieceCount === best.pieceCount && entry.accuracy > best.accuracy) ? entry : best),
-        null,
-      );
-      return top
-        ? {
-            figure: figure(entries.length, "settings"),
-            context: context("best", { accuracy: Math.round(top.accuracy), pieceCount: top.pieceCount, memorizeSeconds: top.memorizeSeconds }),
-          }
-        : null;
-    }),
   board: ({ entries }) => {
     const best = Object.values(entries ?? {}).reduce<{ difficulty: string; correct: number } | null>(
       (top, entry) => (entry && (top === null || entry.score.correctPieces > top.correct) ? { difficulty: entry.difficulty, correct: entry.score.correctPieces } : top),
@@ -260,7 +247,7 @@ export function dashboardOf(input: DashboardInput): readonly DashboardTile[] {
   });
 }
 
-export type ShareFigureId = (typeof HEADLINE_TILES)[number];
+export type ShareFigureId = (typeof SHARE_TILES)[number];
 
 /** The figures the share card prints: ready ones only, since a stale or warming figure would pass for current. */
 export interface ShareCard {
@@ -269,7 +256,7 @@ export interface ShareCard {
 }
 
 export function shareCardOf(tiles: readonly DashboardTile[], rounds: number): ShareCard | null {
-  const figures = HEADLINE_TILES.flatMap((id) => {
+  const figures = SHARE_TILES.flatMap((id) => {
     const tile = tiles.find((candidate) => candidate.id === id);
     return tile?.state === "ready" && tile.figure.value > 0 ? [{ id, figure: tile.figure }] : [];
   });

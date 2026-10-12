@@ -31,12 +31,12 @@ describe("SiteNav", () => {
       ["Learn", ""],
       ["Articles", ""],
       ["Leaderboard", ""],
-      ["Progress", ""],
+      ["Dashboard", ""],
       ["About", "hidden sm:list-item"],
     ]);
   });
 
-  it("links Play, Learn, Articles, Leaderboard, Progress and About in that order", () => {
+  it("links Play, Learn, Articles, Leaderboard, Dashboard and About in that order", () => {
     render(<SiteNav />);
 
     const links = within(nav()).getAllByRole("link");
@@ -45,7 +45,7 @@ describe("SiteNav", () => {
       "Learn",
       "Articles",
       "Leaderboard",
-      "Progress",
+      "Dashboard",
       "About",
     ]);
     expect(links.map((link) => link.getAttribute("href"))).toEqual([

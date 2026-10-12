@@ -10,7 +10,7 @@
       "terms": "शर्तें",
       "play": "खेलें",
       "leaderboard": "लीडरबोर्ड",
-      "progress": "प्रगति",
+      "dashboard": "डैशबोर्ड",
       "menu": "मेन्यू",
       "site": "साइट"
     },
@@ -464,17 +464,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "आपकी प्रगति",
-      "description": "इस डिवाइस पर आपके राउंड से Memory Chess जो भी आंकड़े दर्ज करता है, सब एक पेज पर, साझा करने के लिए एक कार्ड के साथ।"
+      "title": "डैशबोर्ड",
+      "description": "आपका Memory Chess डैशबोर्ड: कौशल रेटिंग, स्मृति क्षमता, इस डिवाइस पर खेला हर राउंड, समय के साथ सटीकता और गति, व्यक्तिगत रिकॉर्ड, और उन्हें साझा करने के लिए एक कार्ड।"
     },
-    "kicker": "लैब रिकॉर्ड",
-    "title": "आपकी प्रगति",
-    "lede": "इस डिवाइस पर आपके राउंड ने जो भी आंकड़े कमाए हैं, सब एक जगह। जब तक आप साझा न करें, कुछ भी आपके ब्राउज़र से बाहर नहीं जाता।",
+    "title": "डैशबोर्ड",
+    "lede": "इस डिवाइस पर खेला हर राउंड, वह आपकी स्मृति के बारे में क्या बताता है, और उसे साझा करने के लिए एक कार्ड। जब तक आप साझा न करें, यहाँ का कुछ भी आपके ब्राउज़र से बाहर नहीं जाता।",
     "loading": "इस डिवाइस पर आपका रिकॉर्ड पढ़ा जा रहा है।",
     "unavailable": "यह ब्राउज़र रिकॉर्ड नहीं रखता, इसलिए दिखाने के लिए कोई प्रगति नहीं है। प्राइवेट विंडो कुछ नहीं रखतीं।",
     "fullRecord": "पूरा रिकॉर्ड देखें",
-    "headline": "मुख्य आंकड़े",
-    "more": "बाकी सब",
+    "sections": {
+      "summary": "सारांश",
+      "history": "गेम इतिहास",
+      "analysis": "विश्लेषण",
+      "more": "और आंकड़े"
+    },
+    "historyLede": "सबसे नया पहले। किसी राउंड को खोलकर उसका जाँचा हुआ बोर्ड देखें।",
+    "analysisLede": "समय के साथ आपकी सटीकता और गति कैसे बदलती है, और मोहरे कहाँ छूटते हैं।",
     "stale": "आपके पिछले राउंड के अनुसार",
     "staleNote": "आखिरी बार {count, plural, one {# दिन} other {# दिन}} पहले खेला। इस तरह चिह्नित आंकड़े उसी समय के हैं।",
     "play": "एक राउंड खेलें",
@@ -495,23 +500,22 @@
       "reviews": "उसी अंतराल के बाद {count, plural, one {# और दोहराव} other {# और दोहराव}}"
     },
     "label": {
+      "rating": "कौशल रेटिंग",
+      "winStreak": "जीत का सिलसिला",
+      "bestAccuracy": "सबसे अच्छी सटीकता",
+      "recentAccuracy": "हाल की सटीकता",
       "span": "स्मृति क्षमता",
       "piecesHeld": "याद रखे मोहरे",
       "speed": "गति",
       "streak": "लगातार दिन",
       "rounds": "खेले गए राउंड",
       "days": "खेले गए दिन",
-      "trend": "सटीकता",
       "daily": "आज का बोर्ड",
       "week": "इस सप्ताह",
       "curve": "दोहराव के बाद याद",
-      "missMap": "सबसे ज़्यादा चूकी पंक्ति",
-      "typeRecall": "सबसे कमज़ोर मोहरा",
-      "insights": "निष्कर्ष",
       "notebook": "नोटबुक",
       "plans": "योजना",
       "goal": "लक्ष्य",
-      "bests": "व्यक्तिगत रिकॉर्ड",
       "board": "लीडरबोर्ड"
     },
     "unit": {
@@ -521,8 +525,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> राउंड} other {<n>{value}</n> राउंड}}",
       "entries": "{count, plural, one {<n>{value}</n> प्रविष्टि} other {<n>{value}</n> प्रविष्टियाँ}}",
-      "findings": "{count, plural, one {<n>{value}</n> निष्कर्ष} other {<n>{value}</n> निष्कर्ष}}",
-      "settings": "{count, plural, one {<n>{value}</n> सेटिंग} other {<n>{value}</n> सेटिंग}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{rounds, plural, one {# राउंड} other {# राउंड}} में {accuracy}% या बेहतर, {memorizeSeconds} से. याद किया",
@@ -532,15 +535,124 @@
       "daily": "{status, select, played {आज खेला} unfinished {आज खोला} other {आज खुला है}}, सबसे लंबा सिलसिला {longest, plural, one {# दिन} other {# दिन}}",
       "curve": "{day, plural, one {# दिन} other {# दिन}} बाद याद, {reviews, plural, one {# दोहराव} other {# दोहराव}} से",
       "rounds": "{rounds, plural, one {# राउंड} other {# राउंड}} से",
-      "missLine": "{line, select, file {{name} फ़ाइल} other {रैंक {name}}} पर चूक, {shown} देखे गए मोहरों में से",
-      "pieceType": "{type, select, p {प्यादे याद रहे} n {घोड़े याद रहे} b {ऊँट याद रहे} r {हाथी याद रहे} q {वज़ीर याद रहे} other {राजा याद रहे}}, {shown} देखे गए में से",
       "plan": "{planId, select, baseline {आधार रेखा योजना} edge {किनारे योजना} other {सीढ़ी योजना}}, {status, select, active {अभी जारी} done {अब पूरी} other {अब रुकी}}",
       "goal": "{accuracy}% पर {pieceCount} मोहरों की ओर",
       "week": "साप्ताहिक लक्ष्य {goal} दिन",
-      "best": "सबसे अच्छा परिणाम {pieceCount} मोहरे, {memorizeSeconds} से. पर {accuracy}%",
       "entry": "आपकी सबसे अच्छी प्रविष्टि में सही मोहरे, {difficulty, select, easy {आसान बोर्ड} medium {मध्यम बोर्ड} hard {कठिन बोर्ड} other {ग्रैंडमास्टर बोर्ड}}",
       "overDays": "{days, plural, one {# दिन} other {# दिनों}} में",
-      "firstDay": "{date} से"
+      "firstDay": "{date} से",
+      "rating": "आपके पिछले {rounds, plural, one {# रेटेड राउंड} other {# रेटेड राउंड}} में {sign, select, up {{change} ऊपर} down {{change} नीचे} other {कोई बदलाव नहीं}}",
+      "ratingSince": "आपके रेटेड गेम राउंड से",
+      "winStreak": "लगातार गेम राउंड जिनमें {accuracy}% या बेहतर",
+      "bestAt": "{source, select, calibration {अभ्यास} other {गेम}}, {pieceCount} मोहरे, {memorizeSeconds} से."
+    },
+    "history": {
+      "count": "{total, plural, one {# राउंड} other {# राउंड}} में से {shown} दिखाए गए",
+      "filterSource": "स्रोत",
+      "filterSetting": "सेटिंग",
+      "allSources": "सभी स्रोत",
+      "allSettings": "सभी सेटिंग",
+      "sources": {
+        "game": "गेम",
+        "daily": "दैनिक बोर्ड",
+        "plan": "योजना",
+        "review": "दोहराव",
+        "practice": "अभ्यास"
+      },
+      "settingValue": "{pieceCount} मोहरे, {memorizeSeconds} से.",
+      "col": {
+        "date": "खेला गया",
+        "source": "स्रोत",
+        "setting": "सेटिंग",
+        "accuracy": "सटीकता",
+        "correct": "सही",
+        "time": "रखने का समय",
+        "rating": "रेटिंग",
+        "board": "बोर्ड"
+      },
+      "correctValue": "{total} में से {correct}",
+      "seconds": "{value} से.",
+      "ratingUp": "रेटिंग {change} बढ़ी",
+      "ratingDown": "रेटिंग {change} घटी",
+      "ratingLevel": "रेटिंग में बदलाव नहीं",
+      "unrated": "रेटेड नहीं",
+      "show": "बोर्ड दिखाएँ",
+      "hide": "बोर्ड छिपाएँ",
+      "boardLabel": "जाँचा हुआ बोर्ड: {total} में से {correct} मोहरे सही।",
+      "detail": "{memorizeSeconds} से. में से {studied} से. याद किया। {wrong, plural, =0 {कोई गलत मोहरा नहीं} one {# गलत मोहरा} other {# गलत मोहरे}}, {extra, plural, =0 {कोई अतिरिक्त मोहरा नहीं} one {# अतिरिक्त मोहरा} other {# अतिरिक्त मोहरे}}।",
+      "more": "{count} और दिखाएँ",
+      "ratingNote": "रेटिंग में बदलाव आपके सबसे नए 20 रेटेड गेम राउंड के लिए रखे जाते हैं। अभ्यास और दोहराव राउंड रेटेड नहीं होते।",
+      "kept": "आपका रिकॉर्ड आपके {total} राउंड में से सबसे नए {kept} को राउंड-दर-राउंड रखता है। पुराने राउंड अब भी आपके कुल योग और सर्वश्रेष्ठ में गिने जाते हैं।",
+      "emptyTitle": "अभी कोई राउंड नहीं।",
+      "empty": "इस डिवाइस पर खेला हर राउंड यहाँ दिखता है, सबसे नया पहले, अपनी सेटिंग, सटीकता और रखने के समय के साथ। किसी एक को खोलकर उसका जाँचा हुआ बोर्ड देखें।",
+      "noMatch": "इन फ़िल्टर से कोई राउंड मेल नहीं खाता।",
+      "clear": "फ़िल्टर हटाएँ"
+    },
+    "analysis": {
+      "fromRounds": "{count, plural, one {# राउंड} other {# राउंड}} से",
+      "oldest": "सबसे पुराना",
+      "latest": "सबसे नया",
+      "accuracy": {
+        "title": "समय के साथ सटीकता",
+        "desc": "आपकी सबसे ज़्यादा खेली गई सेटिंग पर हर राउंड की आपकी सटीकता, 0 से 100% के पैमाने पर।",
+        "note": "{pieceCount} मोहरे, {memorizeSeconds} से. पर {source, select, calibration {अभ्यास} other {गेम}} राउंड, आपकी सबसे ज़्यादा खेली गई सेटिंग। पिछले {count, plural, one {# राउंड} other {# राउंड}}।",
+        "aria": "{pieceCount} मोहरे, {memorizeSeconds} से. पर आपके पिछले {count} राउंड की सटीकता, 0 से 100 प्रतिशत के पैमाने पर, नवीनतम {latest} प्रतिशत।"
+      },
+      "speed": {
+        "title": "समय के साथ गति",
+        "unit": "प्रति सही मोहरा सेकंड। कम का मतलब तेज़।",
+        "note": "{pieceCount} मोहरे, {memorizeSeconds} से. पर {source, select, calibration {अभ्यास} other {गेम}} राउंड। पिछले {count, plural, one {# राउंड} other {# राउंड}}।",
+        "aria": "{pieceCount} मोहरे, {memorizeSeconds} से. पर आपके पिछले {count} राउंड में प्रति सही मोहरा सेकंड, नवीनतम {latest}।"
+      },
+      "bests": {
+        "title": "हर सेटिंग के व्यक्तिगत रिकॉर्ड",
+        "desc": "रिकॉर्ड हर सेटिंग के लिए अलग रखे जाते हैं, क्योंकि 6 मोहरे और 20 मोहरे अलग-अलग परीक्षाएँ हैं।",
+        "setting": "{source, select, calibration {अभ्यास} other {गेम}} · {pieceCount} मोहरे, {memorizeSeconds} से.",
+        "col": {
+          "setting": "सेटिंग",
+          "accuracy": "सबसे अच्छी सटीकता",
+          "correct": "सही",
+          "time": "रखने का समय",
+          "rounds": "राउंड",
+          "date": "तारीख"
+        }
+      },
+      "types": {
+        "title": "मोहरे के प्रकार के अनुसार याददाश्त",
+        "desc": "आप हर तरह के मोहरे को कितनी बार उसके सही खाने पर वापस रखते हैं।",
+        "value": "{shown} में से {recalled}",
+        "thin": "{minimum} में से {shown} देखे",
+        "baseline": "राजा हर राउंड में होते हैं, इसलिए वे आधार रेखा हैं: {shown} में से {recalled} याद रहे।",
+        "onlyKings": "अब तक आपके राउंड में सिर्फ़ दोनों राजा रखे गए। मोहरे के प्रकार के अनुसार याददाश्त के लिए ज़्यादा मोहरे चाहिए।"
+      },
+      "miss": {
+        "title": "चूक का नक्शा",
+        "desc": "सभी राउंड मिलाकर आप कौन-से खाने और लाइनें सबसे ज़्यादा चूकते हैं।",
+        "aria": "हर खाने पर आपकी चूक का हिस्सा। गहरे रंग का मतलब ज़्यादा बार चूका। धूसर खानों पर {minimum} से कम मोहरे देखे गए हैं।",
+        "note": "गहरे खाने ज़्यादा बार चूके जाते हैं। धूसर खानों पर {minimum} से कम मोहरे देखे गए हैं।",
+        "lines": "जब तक हर खाने पर {minimum} मोहरे न देखे जाएँ, नक्शा पूरी फ़ाइलें और रैंक पढ़ता है।",
+        "files": "फ़ाइलें",
+        "ranks": "रैंक",
+        "line": "{line}: {shown} में से {missed} चूके",
+        "lineThin": "{line}: {shown} देखे, पढ़ने के लिए काफ़ी नहीं"
+      },
+      "insights": {
+        "title": "निष्कर्ष",
+        "desc": "आपके रिकॉर्ड के वे पैटर्न जिन पर काम करना फ़ायदेमंद है, हर एक के पीछे की गिनती के साथ।",
+        "none": "अभी कुछ खास नहीं दिखता। खेलते रहें।",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {आप a और h फ़ाइलों पर {edgeShown} में से {edge, select, 0 {1% से कम} other {{edge}%}} मोहरे चूकते हैं, और बीच की फ़ाइलों d और e पर {centreShown} में से एक भी नहीं।} 2 {आप a और h फ़ाइलें बीच की फ़ाइलों d और e से लगभग दोगुनी बार चूकते हैं: {edgeShown} में से {edge, select, 0 {1% से कम} other {{edge}%}} मोहरे, जबकि {centreShown} में से {centre, select, 0 {1% से कम} other {{centre}%}}।} other {आप a और h फ़ाइलें बीच की फ़ाइलों d और e से लगभग {times} गुना ज़्यादा चूकते हैं: {edgeShown} में से {edge, select, 0 {1% से कम} other {{edge}%}} मोहरे, जबकि {centreShown} में से {centre, select, 0 {1% से कम} other {{centre}%}}।}}",
+          "weakType": "राजा के अलावा जो मोहरे {minimum} या ज़्यादा बार देखे गए, उनमें {type, select, q {वज़ीर} r {हाथी} b {ऊँट} n {घोड़े} other {प्यादे}} सबसे ज़्यादा छूटते हैं: आपको {shown} में से {recalled} याद रहे, {percent}%।",
+          "fasterLessAccurate": "{pieceCount} मोहरे, {studyTime} पर आपके पिछले {window} राउंड में उससे पहले के {window} राउंड की तुलना में प्रति सही मोहरा {fasterTime} कम लगा, और सटीकता {fell} अंक गिरी।",
+          "colourGap": "आपको {weaker, select, w {सफ़ेद} other {काले}} मोहरे {weaker, select, w {काले} other {सफ़ेद}} मोहरों से कम याद रहते हैं: {weakerShown} में से {weakerPercent}%, जबकि {strongerShown} में से {strongerPercent}%, राजा को छोड़कर।",
+          "plateau": "{pieceCount} मोहरे, {studyTime} पर आपके पिछले {window} राउंड का औसत {last}% और उससे पहले के {window} राउंड का {before}% रहा, और पिछले एक हफ़्ते के खेल में आपकी स्मृति क्षमता {span} मोहरों पर टिकी रही। एक और मोहरा इसे आगे बढ़ा सकता है।"
+        },
+        "actions": {
+          "rig": "{pieceCount} मोहरे, {studyTime} खेलें",
+          "patterns": "पैटर्न पहचानने के अभ्यास पढ़ें",
+          "vision": "पढ़ें कि पूरा बोर्ड एक साथ कैसे देखें"
+        }
+      }
     },
     "share": {
       "button": "मेरी प्रगति साझा करें",
@@ -553,10 +665,11 @@
       "copy": "कैप्शन कॉपी करें",
       "copied": "कैप्शन कॉपी हुआ।",
       "copyFailed": "यहाँ कॉपी नहीं हुआ। कैप्शन चुना हुआ है, खुद कॉपी करें।",
-      "locked": "आपका साझा कार्ड तब खुलेगा जब स्मृति क्षमता, याद रखे मोहरे, गति या आपका सिलसिला तैयार होगा।",
+      "locked": "आपका साझा कार्ड तब खुलेगा जब स्मृति क्षमता, कौशल रेटिंग, याद रखे मोहरे, गति या लगातार दिनों का आपका सिलसिला तैयार होगा।",
       "text": "Memory Chess पर मेरी प्रगति: {figures}। क्या आप इसे हरा सकते हैं?",
       "figure": {
         "span": "{value, plural, one {# मोहरे} other {# मोहरों}} की स्मृति क्षमता",
+        "rating": "कौशल रेटिंग {value, number}",
         "piecesHeld": "{value, number} मोहरे याद",
         "speed": "{value, number} से. प्रति मोहरा",
         "streak": "लगातार {value, plural, one {# दिन} other {# दिन}}"

@@ -10,7 +10,7 @@
       "terms": "Podmínky",
       "play": "Hrát",
       "leaderboard": "Žebříček",
-      "progress": "Pokrok",
+      "dashboard": "Přehled",
       "menu": "Menu",
       "site": "Web"
     },
@@ -464,17 +464,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Tvůj pokrok",
-      "description": "Každé číslo, které Memory Chess sleduje z tvých kol na tomto zařízení, na jedné stránce a s kartou ke sdílení."
+      "title": "Přehled",
+      "description": "Tvůj přehled v Memory Chess: hodnocení dovednosti, paměťový rozsah, každé kolo odehrané na tomto zařízení, přesnost a rychlost v čase, osobní rekordy a karta ke sdílení."
     },
-    "kicker": "Laboratorní záznam",
-    "title": "Tvůj pokrok",
-    "lede": "Všechna čísla, která tvá kola na tomto zařízení získala, na jednom místě. Nic neopustí tvůj prohlížeč, pokud to nesdílíš.",
+    "title": "Přehled",
+    "lede": "Každé kolo odehrané na tomto zařízení, co vypovídá o tvé paměti, a karta ke sdílení. Nic odsud neopustí tvůj prohlížeč, pokud to nesdílíš.",
     "loading": "Načítá se tvůj záznam na tomto zařízení.",
     "unavailable": "Tento prohlížeč neukládá záznam, takže není co ukázat. Anonymní okna neukládají nic.",
     "fullRecord": "Zobrazit celý záznam",
-    "headline": "Hlavní čísla",
-    "more": "Vše ostatní",
+    "sections": {
+      "summary": "Souhrn",
+      "history": "Historie her",
+      "analysis": "Analýza",
+      "more": "Další čísla"
+    },
+    "historyLede": "Nejnovější nahoře. Otevři kolo a uvidíš jeho vyhodnocenou desku.",
+    "analysisLede": "Jak se tvá přesnost a rychlost mění v čase a kde ti figury unikají.",
     "stale": "Ke tvému poslednímu kolu",
     "staleNote": "Naposledy hráno před {count, plural, one {# dnem} few {# dny} many {# dne} other {# dny}}. Takto označená čísla jsou z té doby.",
     "play": "Zahrát kolo",
@@ -495,23 +500,22 @@
       "reviews": "{count, plural, one {# dalším opakování} few {# dalších opakováních} many {# dalšího opakování} other {# dalších opakováních}} po stejném odstupu"
     },
     "label": {
+      "rating": "Hodnocení dovednosti",
+      "winStreak": "Vítězná série",
+      "bestAccuracy": "Nejlepší přesnost",
+      "recentAccuracy": "Nedávná přesnost",
       "span": "Paměťový rozsah",
       "piecesHeld": "Zapamatované figury",
       "speed": "Rychlost",
-      "streak": "Série",
+      "streak": "Denní série",
       "rounds": "Odehraná kola",
       "days": "Herní dny",
-      "trend": "Přesnost",
       "daily": "Deska dne",
       "week": "Tento týden",
       "curve": "Paměť po opakování",
-      "missMap": "Nejčastěji minutá linie",
-      "typeRecall": "Nejslabší figura",
-      "insights": "Postřehy",
       "notebook": "Zápisník",
       "plans": "Plán",
       "goal": "Cíl",
-      "bests": "Osobní rekordy",
       "board": "Žebříček"
     },
     "unit": {
@@ -521,8 +525,7 @@
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> kolo} few {<n>{value}</n> kola} many {<n>{value}</n> kola} other {<n>{value}</n> kol}}",
       "entries": "{count, plural, one {<n>{value}</n> záznam} few {<n>{value}</n> záznamy} many {<n>{value}</n> záznamu} other {<n>{value}</n> záznamů}}",
-      "findings": "{count, plural, one {<n>{value}</n> postřeh} few {<n>{value}</n> postřehy} many {<n>{value}</n> postřehu} other {<n>{value}</n> postřehů}}",
-      "settings": "{count, plural, one {<n>{value}</n> nastavení} few {<n>{value}</n> nastavení} many {<n>{value}</n> nastavení} other {<n>{value}</n> nastavení}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy} % a více v {rounds, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}}, zapamatováno {memorizeSeconds} s",
@@ -532,15 +535,124 @@
       "daily": "{status, select, played {Dnes odehráno} unfinished {Dnes otevřeno} other {Dnes k dispozici}}, nejdelší série {longest, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
       "curve": "Zapamatováno po {day, plural, one {# dni} few {# dnech} many {# dne} other {# dnech}}, z {reviews, plural, one {# opakování} few {# opakování} many {# opakování} other {# opakování}}",
       "rounds": "Z {rounds, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
-      "missLine": "Minuto {line, select, file {ve sloupci {name}} other {v řadě {name}}}, z {shown} viděných figur",
-      "pieceType": "{type, select, p {Pěšci zapamatováni} n {Jezdci zapamatováni} b {Střelci zapamatováni} r {Věže zapamatovány} q {Dámy zapamatovány} other {Králové zapamatováni}}, z {shown} viděných",
       "plan": "{planId, select, baseline {Plán Výchozí stav} edge {Plán Okraje} other {Plán Žebřík}}, {status, select, active {stále probíhá} done {nyní dokončen} other {nyní zastaven}}",
       "goal": "Směrem k {pieceCount} figurám s přesností {accuracy} %",
       "week": "Týdenní cíl {goal} dní",
-      "best": "Nejlepší výsledek {accuracy} % při {pieceCount} figurách, {memorizeSeconds} s",
       "entry": "Správné figury v tvém nejlepším záznamu, {difficulty, select, easy {úroveň Lehká} medium {úroveň Střední} hard {úroveň Těžká} other {úroveň Velmistr}}",
       "overDays": "Za {days, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
-      "firstDay": "Od {date}"
+      "firstDay": "Od {date}",
+      "rating": "{sign, select, up {Nahoru o {change}} down {Dolů o {change}} other {Beze změny}} za {rounds, plural, one {poslední # hodnocené kolo} few {poslední # hodnocená kola} many {posledního # hodnoceného kola} other {posledních # hodnocených kol}}",
+      "ratingSince": "Z tvých hodnocených kol v partiích",
+      "winStreak": "Kola v partiích za sebou s přesností {accuracy} % a více",
+      "bestAt": "{source, select, calibration {Trénink} other {Partie}} při {pieceCount} figurách, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "Zobrazeno {shown} z {total, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
+      "filterSource": "Zdroj",
+      "filterSetting": "Nastavení",
+      "allSources": "Všechny zdroje",
+      "allSettings": "Všechna nastavení",
+      "sources": {
+        "game": "Partie",
+        "daily": "Deska dne",
+        "plan": "Plán",
+        "review": "Opakování",
+        "practice": "Trénink"
+      },
+      "settingValue": "{pieceCount} figur, {memorizeSeconds} s",
+      "col": {
+        "date": "Odehráno",
+        "source": "Zdroj",
+        "setting": "Nastavení",
+        "accuracy": "Přesnost",
+        "correct": "Správně",
+        "time": "Čas rozestavení",
+        "rating": "Hodnocení",
+        "board": "Deska"
+      },
+      "correctValue": "{correct} z {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Hodnocení nahoru o {change}",
+      "ratingDown": "Hodnocení dolů o {change}",
+      "ratingLevel": "Hodnocení beze změny",
+      "unrated": "Nehodnoceno",
+      "show": "Zobrazit desku",
+      "hide": "Skrýt desku",
+      "boardLabel": "Vyhodnocená deska: správně {correct} z {total} figur.",
+      "detail": "Zapamatováno {studied} s z {memorizeSeconds} s. {wrong, plural, =0 {Žádné chybné figury} one {# chybná figura} few {# chybné figury} many {# chybné figury} other {# chybných figur}}, {extra, plural, =0 {žádné figury navíc} one {# figura navíc} few {# figury navíc} many {# figury navíc} other {# figur navíc}}.",
+      "more": "Zobrazit dalších {count}",
+      "ratingNote": "Změny hodnocení se uchovávají pro tvých 20 nejnovějších hodnocených kol v partiích. Tréninková kola a opakování se nehodnotí.",
+      "kept": "Tvůj záznam uchovává kolo po kole {kept} nejnovějších z tvých {total} kol. Starší kola se dál počítají do tvých součtů a rekordů.",
+      "emptyTitle": "Zatím žádná kola.",
+      "empty": "Každé kolo, které na tomto zařízení odehraješ, se objeví tady, nejnovější nahoře, s nastavením, přesností a časem rozestavení. Otevři ho a uvidíš jeho vyhodnocenou desku.",
+      "noMatch": "Těmto filtrům neodpovídá žádné kolo.",
+      "clear": "Zrušit filtry"
+    },
+    "analysis": {
+      "fromRounds": "Z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
+      "oldest": "Nejstarší",
+      "latest": "Nejnovější",
+      "accuracy": {
+        "title": "Přesnost v čase",
+        "desc": "Tvá přesnost kolo po kole při tvém nejčastějším nastavení, na stupnici od 0 do 100 %.",
+        "note": "{source, select, calibration {Tréninková kola} other {Kola v partiích}} při {pieceCount} figurách, {memorizeSeconds} s, tvé nejčastější nastavení. {count, plural, one {Poslední # kolo} few {Poslední # kola} many {Posledního # kola} other {Posledních # kol}}.",
+        "aria": "Přesnost v tvých posledních {count} kolech při {pieceCount} figurách, {memorizeSeconds} s, na stupnici od 0 do 100 procent, naposledy {latest} procent."
+      },
+      "speed": {
+        "title": "Rychlost v čase",
+        "unit": "Sekundy na správnou figuru. Méně znamená rychleji.",
+        "note": "{source, select, calibration {Tréninková kola} other {Kola v partiích}} při {pieceCount} figurách, {memorizeSeconds} s. {count, plural, one {Poslední # kolo} few {Poslední # kola} many {Posledního # kola} other {Posledních # kol}}.",
+        "aria": "Sekundy na správnou figuru v tvých posledních {count} kolech při {pieceCount} figurách, {memorizeSeconds} s, naposledy {latest}."
+      },
+      "bests": {
+        "title": "Osobní rekordy podle nastavení",
+        "desc": "Rekordy se vedou pro každé nastavení zvlášť, protože 6 figur a 20 figur jsou různé testy.",
+        "setting": "{source, select, calibration {Trénink} other {Partie}} · {pieceCount} figur, {memorizeSeconds} s",
+        "col": {
+          "setting": "Nastavení",
+          "accuracy": "Nejlepší přesnost",
+          "correct": "Správně",
+          "time": "Čas rozestavení",
+          "rounds": "Kola",
+          "date": "Dosaženo"
+        }
+      },
+      "types": {
+        "title": "Úspěšnost podle druhu figurky",
+        "desc": "Jak často vracíš jednotlivé druhy figur na pole, kde stály.",
+        "value": "{recalled} z {shown}",
+        "thin": "Viděno {shown} z {minimum}",
+        "baseline": "Králové jsou v každém kole, proto slouží jako základ: zapamatováno {recalled} z {shown}.",
+        "onlyKings": "Tvá dosavadní kola obsahovala jen oba krále. Úspěšnost podle druhu figurky potřebuje víc figur."
+      },
+      "miss": {
+        "title": "Mapa chyb",
+        "desc": "Která pole a linie mineš nejčastěji, napříč všemi koly.",
+        "aria": "Tvůj podíl minutých figur na každém poli. Tmavší znamená častěji minuto. Šedá pole mají méně než {minimum} viděných figur.",
+        "note": "Tmavší pole jsou minutá častěji. Šedá pole mají méně než {minimum} viděných figur.",
+        "lines": "Dokud nemá každé pole {minimum} viděných figur, mapa ukazuje celé sloupce a řady.",
+        "files": "Sloupce",
+        "ranks": "Řady",
+        "line": "{line}: minuto {missed} z {shown}",
+        "lineThin": "{line}: viděno {shown}, na závěr to nestačí"
+      },
+      "insights": {
+        "title": "Postřehy",
+        "desc": "Vzorce ve tvých výsledcích, se kterými stojí za to něco dělat, každý s čísly, na kterých stojí.",
+        "none": "Zatím nic nevyčnívá. Hraj dál.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Minuješ {edge, select, 0 {méně než 1 %} other {{edge} %}} z {edgeShown} figur ve sloupcích a a h a žádnou z {centreShown} ve středových sloupcích d a e.} 2 {Sloupce a a h minuješ zhruba dvakrát častěji než středové sloupce d a e: {edge, select, 0 {méně než 1 %} other {{edge} %}} z {edgeShown} figur oproti {centre, select, 0 {méně než 1 %} other {{centre} %}} z {centreShown}.} other {Sloupce a a h minuješ zhruba {times}krát častěji než středové sloupce d a e: {edge, select, 0 {méně než 1 %} other {{edge} %}} z {edgeShown} figur oproti {centre, select, 0 {méně než 1 %} other {{centre} %}} z {centreShown}.}}",
+          "weakType": "Z figur kromě králů viděných {minimum}krát a víckrát ti nejvíc unikají {type, select, q {dámy} r {věže} b {střelci} n {jezdci} other {pěšci}}: zapamatováno {recalled} z {shown}, {percent} %.",
+          "fasterLessAccurate": "Při {pieceCount} figurách, {studyTime}, ti posledních {window} kol trvalo o {fasterTime} méně na správnou figuru než {window} předchozích a přesnost klesla o {fell} bodů.",
+          "colourGap": "{weaker, select, w {Bílé} other {Černé}} figury si pamatuješ hůř než {weaker, select, w {černé} other {bílé}}: {weakerPercent} % z {weakerShown} oproti {strongerPercent} % z {strongerShown}, bez králů.",
+          "plateau": "Při {pieceCount} figurách, {studyTime}, měla tvá posledních {window} kol průměr {last} % a {window} předchozích {before} % a tvůj rozsah se za poslední týden hraní držel na {span} figurách. Jedna figura navíc to může posunout."
+        },
+        "actions": {
+          "rig": "Zahrát {pieceCount} figur, {studyTime}",
+          "patterns": "Přečti si cvičení na rozpoznávání vzorců",
+          "vision": "Přečti si, jak vidět celou desku"
+        }
+      }
     },
     "share": {
       "button": "Sdílet můj pokrok",
@@ -553,10 +665,11 @@
       "copy": "Kopírovat text",
       "copied": "Text zkopírován.",
       "copyFailed": "Kopírování zde nefungovalo. Text je označený, zkopíruj ho sám.",
-      "locked": "Karta ke sdílení se odemkne, jakmile bude připraven paměťový rozsah, zapamatované figury, rychlost nebo tvá série.",
+      "locked": "Karta ke sdílení se odemkne, jakmile bude připraven paměťový rozsah, hodnocení dovednosti, zapamatované figury, rychlost nebo tvá denní série.",
       "text": "Můj pokrok v Memory Chess: {figures}. Překonáš to?",
       "figure": {
         "span": "paměťový rozsah {value, plural, one {# figura} few {# figury} many {# figury} other {# figur}}",
+        "rating": "hodnocení dovednosti {value, number}",
         "piecesHeld": "{value, number} zapamatované figury",
         "speed": "{value, number} s na figuru",
         "streak": "{value, plural, one {# den} few {# dny} many {# dne} other {# dní}} v řadě"

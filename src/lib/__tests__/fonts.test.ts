@@ -56,7 +56,7 @@ describe("Geist Mono fallback", () => {
 
 describe("lab mono font shorthands", () => {
   it("all set a line-height, so the line box does not depend on font metrics Safari reads from the face", () => {
-    const shorthands = ["home/lab-paper.css", "home/lab-instruments.css", "dashboard/lab.css"].flatMap((file) =>
+    const shorthands = ["home/lab-paper.css", "home/lab-instruments.css", "lab-paper/lab-charts.css", "dashboard/dashboard.css"].flatMap((file) =>
       [...readFileSync(join(process.cwd(), "src/components", file), "utf8").matchAll(/font:\s*([^;]*var\(--(?:lp-data|lab-mono)\))/g)].map(([, value]) => value),
     );
 

@@ -10,7 +10,7 @@
       "terms": "이용약관",
       "play": "플레이",
       "leaderboard": "리더보드",
-      "progress": "진행 상황",
+      "dashboard": "대시보드",
       "menu": "메뉴",
       "site": "사이트"
     },
@@ -464,17 +464,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "내 진행 상황",
-      "description": "이 기기에서 플레이한 라운드로 Memory Chess가 기록하는 모든 수치를 한 페이지에서. 공유할 카드도 함께."
+      "title": "대시보드",
+      "description": "내 Memory Chess 대시보드: 실력 레이팅, 기억 범위, 이 기기에서 플레이한 모든 라운드, 시간에 따른 정확도와 속도, 개인 최고 기록, 그리고 이를 공유할 카드."
     },
-    "kicker": "랩 기록",
-    "title": "내 진행 상황",
-    "lede": "이 기기에서 라운드로 얻은 모든 수치를 한곳에. 공유하지 않는 한 브라우저 밖으로 나가지 않습니다.",
+    "title": "대시보드",
+    "lede": "이 기기에서 플레이한 모든 라운드, 그 라운드가 내 기억력에 대해 알려 주는 것, 그리고 공유할 카드. 공유하지 않는 한 여기 있는 어떤 것도 브라우저 밖으로 나가지 않습니다.",
     "loading": "이 기기의 기록을 읽는 중입니다.",
     "unavailable": "이 브라우저는 기록을 저장하지 않아 보여 줄 진행 상황이 없습니다. 시크릿 창은 아무것도 저장하지 않습니다.",
     "fullRecord": "전체 기록 보기",
-    "headline": "주요 수치",
-    "more": "그 밖의 모든 것",
+    "sections": {
+      "summary": "요약",
+      "history": "게임 기록",
+      "analysis": "분석",
+      "more": "추가 수치"
+    },
+    "historyLede": "최신순입니다. 라운드를 열면 채점된 보드를 볼 수 있습니다.",
+    "analysisLede": "시간에 따라 정확도와 속도가 어떻게 변하는지, 그리고 어디서 말을 놓치는지.",
     "stale": "마지막 라운드 기준",
     "staleNote": "마지막 플레이는 {count, plural, other {#일}} 전입니다. 이렇게 표시된 수치는 그때의 것입니다.",
     "play": "한 라운드 플레이",
@@ -495,23 +500,22 @@
       "reviews": "같은 간격 후 복습 {count, plural, other {#회}}"
     },
     "label": {
+      "rating": "실력 레이팅",
+      "winStreak": "연승",
+      "bestAccuracy": "최고 정확도",
+      "recentAccuracy": "최근 정확도",
       "span": "기억 범위",
       "piecesHeld": "기억한 말",
       "speed": "속도",
-      "streak": "연속 기록",
+      "streak": "연속 일수",
       "rounds": "플레이한 라운드",
       "days": "플레이한 날",
-      "trend": "정확도",
       "daily": "오늘의 보드",
       "week": "이번 주",
       "curve": "복습 후 기억",
-      "missMap": "가장 많이 놓친 줄",
-      "typeRecall": "가장 약한 말",
-      "insights": "발견",
       "notebook": "노트",
       "plans": "플랜",
       "goal": "목표",
-      "bests": "개인 최고 기록",
       "board": "리더보드"
     },
     "unit": {
@@ -521,8 +525,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, other {<n>{value}</n>라운드}}",
       "entries": "{count, plural, other {<n>{value}</n>개}}",
-      "findings": "{count, plural, other {<n>{value}</n>개}}",
-      "settings": "{count, plural, other {<n>{value}</n>개 설정}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{rounds, plural, other {#라운드}}에서 {accuracy}% 이상, 기억 시간 {memorizeSeconds}초",
@@ -532,15 +535,124 @@
       "daily": "{status, select, played {오늘 플레이함} unfinished {오늘 열어 봄} other {오늘 플레이 가능}}, 최장 연속 {longest, plural, other {#일}}",
       "curve": "{day, plural, other {#일}} 후 기억, 복습 {reviews, plural, other {#회}} 기준",
       "rounds": "{rounds, plural, other {#라운드}} 기준",
-      "missLine": "{line, select, file {{name} 파일} other {{name} 랭크}}에서 놓침, 본 말 {shown}개 중",
-      "pieceType": "{type, select, p {폰} n {나이트} b {비숍} r {룩} q {퀸} other {킹}} 기억률, 본 말 {shown}개 중",
       "plan": "{planId, select, baseline {기준선} edge {가장자리} other {사다리}} 플랜, {status, select, active {진행 중} done {완료} other {중단}}",
       "goal": "{pieceCount}개, {accuracy}% 목표까지",
       "week": "주간 목표 {goal}일",
-      "best": "최고 기록 {pieceCount}개, {memorizeSeconds}초에서 {accuracy}%",
       "entry": "최고 등록 기록의 맞힌 말, {difficulty, select, easy {쉬움} medium {보통} hard {어려움} other {그랜드마스터}}",
       "overDays": "{days, plural, other {#일}} 동안",
-      "firstDay": "{date}부터"
+      "firstDay": "{date}부터",
+      "rating": "최근 레이팅 {rounds, plural, other {#라운드}} 동안 {sign, select, up {{change} 상승} down {{change} 하락} other {변동 없음}}",
+      "ratingSince": "레이팅 게임 라운드 기준",
+      "winStreak": "정확도 {accuracy}% 이상 게임 라운드 연속 횟수",
+      "bestAt": "{source, select, calibration {연습} other {게임}} {pieceCount}개, {memorizeSeconds}초"
+    },
+    "history": {
+      "count": "전체 {total, plural, other {#라운드}} 중 {shown}개 표시",
+      "filterSource": "출처",
+      "filterSetting": "설정",
+      "allSources": "모든 출처",
+      "allSettings": "모든 설정",
+      "sources": {
+        "game": "게임",
+        "daily": "데일리 보드",
+        "plan": "플랜",
+        "review": "복습",
+        "practice": "연습"
+      },
+      "settingValue": "{pieceCount}개, {memorizeSeconds}초",
+      "col": {
+        "date": "플레이 날짜",
+        "source": "출처",
+        "setting": "설정",
+        "accuracy": "정확도",
+        "correct": "정답",
+        "time": "배치 시간",
+        "rating": "레이팅",
+        "board": "보드"
+      },
+      "correctValue": "{total}개 중 {correct}개",
+      "seconds": "{value}초",
+      "ratingUp": "레이팅 {change} 상승",
+      "ratingDown": "레이팅 {change} 하락",
+      "ratingLevel": "레이팅 변동 없음",
+      "unrated": "레이팅 없음",
+      "show": "보드 보기",
+      "hide": "보드 숨기기",
+      "boardLabel": "채점된 보드: {total}개 중 {correct}개 정답.",
+      "detail": "{memorizeSeconds}초 중 {studied}초 동안 암기. {wrong, plural, =0 {틀린 말 없음} other {틀린 말 #개}}, {extra, plural, =0 {추가된 말 없음} other {추가된 말 #개}}.",
+      "more": "{count}개 더 보기",
+      "ratingNote": "레이팅 변동은 최신 레이팅 게임 라운드 20개까지 보관됩니다. 연습과 복습 라운드에는 레이팅이 매겨지지 않습니다.",
+      "kept": "기록에는 전체 {total}라운드 중 최신 {kept}라운드가 라운드별로 저장됩니다. 그보다 오래된 라운드도 합계와 최고 기록에는 계속 반영됩니다.",
+      "emptyTitle": "아직 라운드가 없습니다.",
+      "empty": "이 기기에서 플레이한 모든 라운드가 최신순으로 설정, 정확도, 배치 시간과 함께 여기에 표시됩니다. 하나를 열면 채점된 보드를 볼 수 있습니다.",
+      "noMatch": "이 필터에 맞는 라운드가 없습니다.",
+      "clear": "필터 지우기"
+    },
+    "analysis": {
+      "fromRounds": "{count, plural, other {#라운드}} 기준",
+      "oldest": "가장 오래됨",
+      "latest": "최신",
+      "accuracy": {
+        "title": "시간에 따른 정확도",
+        "desc": "가장 많이 플레이한 설정에서의 라운드별 정확도이며, 0~100% 척도로 표시됩니다.",
+        "note": "가장 많이 플레이한 설정인 {source, select, calibration {연습} other {게임}} 라운드 {pieceCount}개, {memorizeSeconds}초. 최근 {count, plural, other {#라운드}}.",
+        "aria": "{pieceCount}개, {memorizeSeconds}초로 플레이한 최근 {count}라운드의 정확도, 0~100퍼센트 척도, 최신 {latest}퍼센트."
+      },
+      "speed": {
+        "title": "시간에 따른 속도",
+        "unit": "맞힌 말 하나당 초. 낮을수록 빠릅니다.",
+        "note": "{source, select, calibration {연습} other {게임}} 라운드 {pieceCount}개, {memorizeSeconds}초. 최근 {count, plural, other {#라운드}}.",
+        "aria": "{pieceCount}개, {memorizeSeconds}초로 플레이한 최근 {count}라운드의 맞힌 말 하나당 초, 최신 {latest}."
+      },
+      "bests": {
+        "title": "설정별 개인 최고 기록",
+        "desc": "말 6개와 20개는 서로 다른 테스트이므로 최고 기록은 설정별로 보관됩니다.",
+        "setting": "{source, select, calibration {연습} other {게임}} · {pieceCount}개, {memorizeSeconds}초",
+        "col": {
+          "setting": "설정",
+          "accuracy": "최고 정확도",
+          "correct": "정답",
+          "time": "배치 시간",
+          "rounds": "라운드",
+          "date": "달성일"
+        }
+      },
+      "types": {
+        "title": "말 종류별 기억률",
+        "desc": "각 종류의 말을 원래 있던 칸에 얼마나 자주 되돌려 놓았는지 보여 줍니다.",
+        "value": "{shown}개 중 {recalled}개",
+        "thin": "{minimum}개 중 {shown}개 확인",
+        "baseline": "킹은 모든 라운드에 나오므로 기준이 됩니다. {shown}개 중 {recalled}개 기억.",
+        "onlyKings": "지금까지의 라운드에는 킹 두 개만 놓였습니다. 말 종류별 기억률을 보려면 더 많은 말이 필요합니다."
+      },
+      "miss": {
+        "title": "놓침 지도",
+        "desc": "모든 라운드를 통틀어 가장 자주 놓친 칸과 줄입니다.",
+        "aria": "칸별로 놓친 비율. 어두울수록 더 자주 놓쳤습니다. 회색 칸은 본 말이 {minimum}개 미만입니다.",
+        "note": "어두운 칸일수록 더 자주 놓친 칸입니다. 회색 칸은 본 말이 {minimum}개 미만입니다.",
+        "lines": "모든 칸에서 말을 {minimum}개씩 볼 때까지 지도는 파일과 랭크 단위로 읽습니다.",
+        "files": "파일",
+        "ranks": "랭크",
+        "line": "{line}: {shown}개 중 {missed}개 놓침",
+        "lineThin": "{line}: {shown}개 확인, 읽기에는 부족"
+      },
+      "insights": {
+        "title": "발견",
+        "desc": "기록에서 찾은 실천할 만한 패턴으로, 각각 근거가 되는 횟수를 함께 보여 줍니다.",
+        "none": "아직 눈에 띄는 것이 없습니다. 계속 플레이하세요.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {a·h 파일에서는 말 {edgeShown}개 중 {edge, select, 0 {1% 미만을} other {{edge}%를}} 놓쳤지만, 가운데 d·e 파일에서는 {centreShown}개 중 하나도 놓치지 않았습니다.} 2 {a·h 파일을 가운데 d·e 파일보다 약 두 배 자주 놓칩니다. {edgeShown}개 중 {edge, select, 0 {1% 미만} other {{edge}%}}, 반면 {centreShown}개 중 {centre, select, 0 {1% 미만} other {{centre}%}}입니다.} other {a·h 파일을 가운데 d·e 파일보다 약 {times}배 자주 놓칩니다. {edgeShown}개 중 {edge, select, 0 {1% 미만} other {{edge}%}}, 반면 {centreShown}개 중 {centre, select, 0 {1% 미만} other {{centre}%}}입니다.}}",
+          "weakType": "{minimum}번 이상 본 킹 외의 말 중 {type, select, q {퀸을} r {룩을} b {비숍을} n {나이트를} other {폰을}} 가장 많이 놓칩니다. {shown}개 중 {recalled}개, {percent}%를 기억했습니다.",
+          "fasterLessAccurate": "{pieceCount}개, {studyTime}에서 최근 {window}라운드는 그 전 {window}라운드보다 맞힌 말 하나당 {fasterTime} 덜 걸렸지만, 정확도는 {fell}포인트 떨어졌습니다.",
+          "colourGap": "{weaker, select, w {백} other {흑}} 말을 {weaker, select, w {흑} other {백}} 말보다 덜 기억합니다. 킹을 제외하고 {weakerShown}개 중 {weakerPercent}%, 반면 {strongerShown}개 중 {strongerPercent}%입니다.",
+          "plateau": "{pieceCount}개, {studyTime}에서 최근 {window}라운드 평균은 {last}%, 그 전 {window}라운드는 {before}%였고, 최근 일주일 동안 기억 범위는 {span}개에 머물렀습니다. 말을 하나 더 늘리면 올라갈 수도 있습니다."
+        },
+        "actions": {
+          "rig": "{pieceCount}개, {studyTime} 플레이",
+          "patterns": "패턴 인식 훈련 읽기",
+          "vision": "보드 전체를 보는 법 읽기"
+        }
+      }
     },
     "share": {
       "button": "내 진행 상황 공유",
@@ -553,10 +665,11 @@
       "copy": "캡션 복사",
       "copied": "캡션을 복사했습니다.",
       "copyFailed": "여기서는 복사가 되지 않았습니다. 캡션이 선택되어 있으니 직접 복사하세요.",
-      "locked": "기억 범위, 기억한 말, 속도, 연속 기록 중 하나가 준비되면 공유 카드가 열립니다.",
+      "locked": "기억 범위, 실력 레이팅, 기억한 말, 속도, 연속 일수 중 하나가 준비되면 공유 카드가 열립니다.",
       "text": "Memory Chess 내 진행 상황: {figures}. 이길 수 있나요?",
       "figure": {
         "span": "기억 범위 {value, plural, other {#개}}",
+        "rating": "실력 레이팅 {value, number}",
         "piecesHeld": "기억한 말 {value, number}개",
         "speed": "말 하나당 {value, number}초",
         "streak": "{value, plural, other {#일}} 연속"

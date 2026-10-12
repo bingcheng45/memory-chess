@@ -10,7 +10,7 @@
       "terms": "Termeni",
       "play": "Joacă",
       "leaderboard": "Clasament",
-      "progress": "Progres",
+      "dashboard": "Tablou de bord",
       "menu": "Meniu",
       "site": "Site"
     },
@@ -464,17 +464,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Progresul tău",
-      "description": "Fiecare cifră pe care Memory Chess o urmărește din rundele tale pe acest dispozitiv, pe o singură pagină, cu un card de distribuit."
+      "title": "Tablou de bord",
+      "description": "Tabloul tău de bord Memory Chess: rating de abilitate, capacitate de memorie, fiecare rundă jucată pe acest dispozitiv, precizia și viteza în timp, recorduri personale și un card pentru a le distribui."
     },
-    "kicker": "Jurnal de laborator",
-    "title": "Progresul tău",
-    "lede": "Toate cifrele pe care rundele tale le-au obținut pe acest dispozitiv, într-un singur loc. Nimic nu părăsește browserul decât dacă distribui.",
+    "title": "Tablou de bord",
+    "lede": "Fiecare rundă jucată pe acest dispozitiv, ce spune despre memoria ta și un card pentru a o distribui. Nimic de aici nu părăsește browserul decât dacă distribui.",
     "loading": "Se citește jurnalul tău de pe acest dispozitiv.",
     "unavailable": "Acest browser nu păstrează un jurnal, așa că nu există progres de afișat. Ferestrele private nu păstrează nimic.",
     "fullRecord": "Vezi jurnalul complet",
-    "headline": "Cifre principale",
-    "more": "Tot restul",
+    "sections": {
+      "summary": "Rezumat",
+      "history": "Istoric de joc",
+      "analysis": "Analiză",
+      "more": "Mai multe cifre"
+    },
+    "historyLede": "Cele mai noi primele. Deschide o rundă ca să vezi tabla corectată.",
+    "analysisLede": "Cum evoluează în timp precizia și viteza ta și unde scapă piesele.",
     "stale": "La ultima rundă",
     "staleNote": "Ultima rundă acum {count, plural, one {# zi} few {# zile} other {# de zile}}. Cifrele marcate astfel sunt de atunci.",
     "play": "Joacă o rundă",
@@ -495,23 +500,22 @@
       "reviews": "{count, plural, one {încă # recapitulare} few {încă # recapitulări} other {încă # de recapitulări}} după același interval"
     },
     "label": {
+      "rating": "Rating de abilitate",
+      "winStreak": "Serie de victorii",
+      "bestAccuracy": "Cea mai bună precizie",
+      "recentAccuracy": "Precizie recentă",
       "span": "Capacitate de memorie",
       "piecesHeld": "Piese reținute",
       "speed": "Viteză",
-      "streak": "Serie",
+      "streak": "Serie de zile",
       "rounds": "Runde jucate",
       "days": "Zile jucate",
-      "trend": "Precizie",
       "daily": "Tabla zilei",
       "week": "Săptămâna aceasta",
       "curve": "Amintire după recapitulare",
-      "missMap": "Linia cea mai greșită",
-      "typeRecall": "Cea mai slabă piesă",
-      "insights": "Observații",
       "notebook": "Caiet",
       "plans": "Plan",
       "goal": "Obiectiv",
-      "bests": "Recorduri personale",
       "board": "Clasament"
     },
     "unit": {
@@ -521,8 +525,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> rundă} few {<n>{value}</n> runde} other {<n>{value}</n> de runde}}",
       "entries": "{count, plural, one {<n>{value}</n> însemnare} few {<n>{value}</n> însemnări} other {<n>{value}</n> de însemnări}}",
-      "findings": "{count, plural, one {<n>{value}</n> observație} few {<n>{value}</n> observații} other {<n>{value}</n> de observații}}",
-      "settings": "{count, plural, one {<n>{value}</n> setare} few {<n>{value}</n> setări} other {<n>{value}</n> de setări}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy}% sau mai mult în {rounds, plural, one {# rundă} few {# runde} other {# de runde}}, memorat {memorizeSeconds} s",
@@ -532,15 +535,124 @@
       "daily": "{status, select, played {Jucată azi} unfinished {Deschisă azi} other {Disponibilă azi}}, cea mai lungă serie {longest, plural, one {# zi} few {# zile} other {# de zile}}",
       "curve": "Amintit după {day, plural, one {# zi} few {# zile} other {# de zile}}, din {reviews, plural, one {# recapitulare} few {# recapitulări} other {# de recapitulări}}",
       "rounds": "Din {rounds, plural, one {# rundă} few {# runde} other {# de runde}}",
-      "missLine": "Greșite pe {line, select, file {coloana {name}} other {rândul {name}}}, din {shown} piese văzute",
-      "pieceType": "{type, select, p {Pioni reținuți} n {Cai reținuți} b {Nebuni reținuți} r {Turnuri reținute} q {Regine reținute} other {Regi reținuți}}, din {shown} văzuți",
       "plan": "{planId, select, baseline {Planul Referință} edge {Planul Margini} other {Planul Scară}}, {status, select, active {încă în desfășurare} done {acum încheiat} other {acum oprit}}",
       "goal": "Spre {pieceCount} piese la {accuracy}%",
       "week": "Obiectiv săptămânal {goal} zile",
-      "best": "Cel mai bun rezultat {accuracy}% la {pieceCount} piese, {memorizeSeconds} s",
       "entry": "Piese corecte în cea mai bună înscriere, {difficulty, select, easy {nivelul Ușor} medium {nivelul Mediu} hard {nivelul Greu} other {nivelul Mare maestru}}",
       "overDays": "În {days, plural, one {# zi} few {# zile} other {# de zile}}",
-      "firstDay": "Din {date}"
+      "firstDay": "Din {date}",
+      "rating": "{sign, select, up {Crește cu {change}} down {Scade cu {change}} other {Nicio schimbare}} în ultimele tale {rounds, plural, one {# rundă cu rating} few {# runde cu rating} other {# de runde cu rating}}",
+      "ratingSince": "Din rundele tale din partide cu rating",
+      "winStreak": "Runde din partide la rând cu {accuracy}% sau mai mult",
+      "bestAt": "{source, select, calibration {Exercițiu} other {Partidă}} la {pieceCount} piese, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "Se afișează {shown} din {total, plural, one {# rundă} few {# runde} other {# de runde}}",
+      "filterSource": "Sursă",
+      "filterSetting": "Setare",
+      "allSources": "Toate sursele",
+      "allSettings": "Toate setările",
+      "sources": {
+        "game": "Partidă",
+        "daily": "Tabla zilei",
+        "plan": "Plan",
+        "review": "Recapitulare",
+        "practice": "Exercițiu"
+      },
+      "settingValue": "{pieceCount} piese, {memorizeSeconds} s",
+      "col": {
+        "date": "Jucată",
+        "source": "Sursă",
+        "setting": "Setare",
+        "accuracy": "Precizie",
+        "correct": "Corecte",
+        "time": "Timp de reconstruire",
+        "rating": "Rating",
+        "board": "Tablă"
+      },
+      "correctValue": "{correct} din {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Rating crescut cu {change}",
+      "ratingDown": "Rating scăzut cu {change}",
+      "ratingLevel": "Rating neschimbat",
+      "unrated": "Fără rating",
+      "show": "Arată tabla",
+      "hide": "Ascunde tabla",
+      "boardLabel": "Tabla corectată: {correct} din {total} piese corecte.",
+      "detail": "Ai studiat {studied} s din {memorizeSeconds} s. {wrong, plural, =0 {Nicio piesă greșită} one {# piesă greșită} few {# piese greșite} other {# de piese greșite}}, {extra, plural, =0 {nicio piesă în plus} one {# piesă în plus} few {# piese în plus} other {# de piese în plus}}.",
+      "more": "Arată încă {count}",
+      "ratingNote": "Schimbările de rating se păstrează pentru cele mai noi 20 de runde din partide cu rating. Rundele de exercițiu și de recapitulare nu au rating.",
+      "kept": "Jurnalul tău păstrează rundă cu rundă cele mai noi {kept} din cele {total} runde ale tale. Rundele mai vechi contează în continuare la totaluri și recorduri.",
+      "emptyTitle": "Nicio rundă încă.",
+      "empty": "Fiecare rundă pe care o joci pe acest dispozitiv apare aici, cele mai noi primele, cu setarea, precizia și timpul de reconstruire. Deschide una ca să vezi tabla corectată.",
+      "noMatch": "Nicio rundă nu corespunde acestor filtre.",
+      "clear": "Șterge filtrele"
+    },
+    "analysis": {
+      "fromRounds": "Din {count, plural, one {# rundă} few {# runde} other {# de runde}}",
+      "oldest": "Cea mai veche",
+      "latest": "Cea mai nouă",
+      "accuracy": {
+        "title": "Precizia în timp",
+        "desc": "Precizia ta rundă cu rundă la setarea pe care o joci cel mai des, pe o scară de la 0 la 100%.",
+        "note": "{source, select, calibration {Runde de exercițiu} other {Runde din partide}} cu {pieceCount} piese, {memorizeSeconds} s, setarea pe care o joci cel mai des. {count, plural, one {Ultima # rundă} few {Ultimele # runde} other {Ultimele # de runde}}.",
+        "aria": "Precizia în ultimele tale {count} runde cu {pieceCount} piese, {memorizeSeconds} s, pe o scară de la 0 la 100 la sută, cea mai recentă {latest} la sută."
+      },
+      "speed": {
+        "title": "Viteza în timp",
+        "unit": "Secunde pe piesă corectă. Mai puțin înseamnă mai rapid.",
+        "note": "{source, select, calibration {Runde de exercițiu} other {Runde din partide}} cu {pieceCount} piese, {memorizeSeconds} s. {count, plural, one {Ultima # rundă} few {Ultimele # runde} other {Ultimele # de runde}}.",
+        "aria": "Secunde pe piesă corectă în ultimele tale {count} runde cu {pieceCount} piese, {memorizeSeconds} s, cea mai recentă {latest}."
+      },
+      "bests": {
+        "title": "Recorduri personale pe setare",
+        "desc": "Recordurile se păstrează separat pe setare, pentru că 6 piese și 20 de piese sunt teste diferite.",
+        "setting": "{source, select, calibration {Exercițiu} other {Partidă}} · {pieceCount} piese, {memorizeSeconds} s",
+        "col": {
+          "setting": "Setare",
+          "accuracy": "Cea mai bună precizie",
+          "correct": "Corecte",
+          "time": "Timp de reconstruire",
+          "rounds": "Runde",
+          "date": "Stabilit pe"
+        }
+      },
+      "types": {
+        "title": "Reținere pe tip de piesă",
+        "desc": "Cât de des pui fiecare tip de piesă înapoi pe câmpul unde stătea.",
+        "value": "{recalled} din {shown}",
+        "thin": "{shown} din {minimum} văzute",
+        "baseline": "Regii apar în fiecare rundă, așa că sunt un punct de referință: ai reținut {recalled} din {shown}.",
+        "onlyKings": "Rundele tale de până acum au avut doar cei doi regi. Reținerea pe tip de piesă are nevoie de mai multe piese."
+      },
+      "miss": {
+        "title": "Harta greșelilor",
+        "desc": "Ce câmpuri și linii greșești cel mai des, în toate rundele.",
+        "aria": "Proporția greșelilor tale pe fiecare câmp. Mai închis înseamnă greșit mai des. Câmpurile gri au mai puțin de {minimum} piese văzute.",
+        "note": "Câmpurile mai închise sunt greșite mai des. Câmpurile gri au mai puțin de {minimum} piese văzute.",
+        "lines": "Până când fiecare câmp are {minimum} piese văzute, harta citește coloane și rânduri întregi.",
+        "files": "Coloane",
+        "ranks": "Rânduri",
+        "line": "{line}: {missed} din {shown} greșite",
+        "lineThin": "{line}: {shown} văzute, prea puține pentru o citire"
+      },
+      "insights": {
+        "title": "Observații",
+        "desc": "Tipare din rezultatele tale asupra cărora merită să acționezi, fiecare cu cifrele din spate.",
+        "none": "Nimic nu iese în evidență încă. Joacă în continuare.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Greșești {edge, select, 0 {sub 1%} other {{edge}%}} din {edgeShown} piese pe coloanele a și h și niciuna din {centreShown} pe coloanele din centru, d și e.} 2 {Greșești pe coloanele a și h cam de două ori mai des decât pe coloanele din centru, d și e: {edge, select, 0 {sub 1%} other {{edge}%}} din {edgeShown} piese față de {centre, select, 0 {sub 1%} other {{centre}%}} din {centreShown}.} other {Greșești pe coloanele a și h cam de {times} ori mai des decât pe coloanele din centru, d și e: {edge, select, 0 {sub 1%} other {{edge}%}} din {edgeShown} piese față de {centre, select, 0 {sub 1%} other {{centre}%}} din {centreShown}.}}",
+          "weakType": "Dintre piesele în afară de regi văzute de cel puțin {minimum} ori, {type, select, q {damele} r {turnurile} b {nebunii} n {caii} other {pionii}} îți scapă cel mai des: ai reținut {recalled} din {shown}, {percent}%.",
+          "fasterLessAccurate": "La {pieceCount} piese, {studyTime}, ultimele tale {window} runde au durat cu {fasterTime} mai puțin pe piesă corectă decât cele {window} dinainte, iar precizia a scăzut cu {fell} puncte.",
+          "colourGap": "Reții piesele {weaker, select, w {albe} other {negre}} mai rar decât pe cele {weaker, select, w {negre} other {albe}}: {weakerPercent}% din {weakerShown} față de {strongerPercent}% din {strongerShown}, fără regi.",
+          "plateau": "La {pieceCount} piese, {studyTime}, ultimele tale {window} runde au avut o medie de {last}%, iar cele {window} dinainte {before}%, și capacitatea ta a rămas la {span} piese în ultima ta săptămână de joc. O piesă în plus o poate urni."
+        },
+        "actions": {
+          "rig": "Joacă {pieceCount} piese, {studyTime}",
+          "patterns": "Citește exercițiile de recunoaștere a tiparelor",
+          "vision": "Citește cum să vezi toată tabla"
+        }
+      }
     },
     "share": {
       "button": "Distribuie progresul meu",
@@ -553,10 +665,11 @@
       "copy": "Copiază textul",
       "copied": "Text copiat.",
       "copyFailed": "Copierea nu a mers aici. Textul este selectat, copiază-l singur.",
-      "locked": "Cardul de distribuit se deblochează când capacitatea de memorie, piesele reținute, viteza sau seria ta sunt gata.",
+      "locked": "Cardul de distribuit se deblochează când capacitatea de memorie, ratingul de abilitate, piesele reținute, viteza sau seria ta de zile sunt gata.",
       "text": "Progresul meu la Memory Chess: {figures}. Poți mai bine?",
       "figure": {
         "span": "capacitate de memorie de {value, plural, one {# piesă} few {# piese} other {# de piese}}",
+        "rating": "rating de abilitate {value, number}",
         "piecesHeld": "{value, number} piese reținute",
         "speed": "{value, number} s pe piesă",
         "streak": "{value, plural, one {# zi} few {# zile} other {# de zile}} la rând"

@@ -1,5 +1,7 @@
 "use client";
 
+import "@/components/lab-paper/lab-charts.css";
+
 const PLOT = { width: 290, height: 110, pad: 8, left: 28 };
 
 interface AxisProps {

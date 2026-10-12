@@ -10,7 +10,7 @@
       "terms": "Conditions",
       "play": "Jouer",
       "leaderboard": "Classement",
-      "progress": "Progrès",
+      "dashboard": "Tableau de bord",
       "menu": "Menu",
       "site": "Site"
     },
@@ -464,17 +464,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Vos progrès",
-      "description": "Tous les chiffres que Memory Chess suit à partir de vos parties sur cet appareil, sur une seule page, avec une carte à partager."
+      "title": "Tableau de bord",
+      "description": "Votre tableau de bord Memory Chess : cote de niveau, empan mémoriel, chaque partie jouée sur cet appareil, précision et vitesse dans le temps, records personnels et une carte pour les partager."
     },
-    "kicker": "Carnet de labo",
-    "title": "Vos progrès",
-    "lede": "Tous les chiffres que vos parties ont obtenus sur cet appareil, au même endroit. Rien ne quitte votre navigateur, sauf si vous le partagez.",
+    "title": "Tableau de bord",
+    "lede": "Chaque partie jouée sur cet appareil, ce qu’elle dit de votre mémoire, et une carte pour la partager. Rien ici ne quitte votre navigateur, sauf si vous le partagez.",
     "loading": "Lecture de votre historique sur cet appareil.",
     "unavailable": "Ce navigateur ne conserve pas d’historique, il n’y a donc aucun progrès à afficher. Les fenêtres privées ne gardent rien.",
     "fullRecord": "Voir l’historique complet",
-    "headline": "Chiffres clés",
-    "more": "Tout le reste",
+    "sections": {
+      "summary": "Résumé",
+      "history": "Historique des parties",
+      "analysis": "Analyse",
+      "more": "Autres chiffres"
+    },
+    "historyLede": "Les plus récentes d’abord. Ouvrez une partie pour voir son échiquier corrigé.",
+    "analysisLede": "Comment votre précision et votre vitesse évoluent dans le temps, et où les pièces vous échappent.",
     "stale": "À votre dernière partie",
     "staleNote": "Dernière partie il y a {count, plural, one {# jour} many {# jours} other {# jours}}. Les chiffres ainsi marqués datent de ce moment.",
     "play": "Jouer une partie",
@@ -495,23 +500,22 @@
       "reviews": "{count, plural, one {# révision de plus} many {# révisions de plus} other {# révisions de plus}} après le même intervalle"
     },
     "label": {
+      "rating": "Cote de niveau",
+      "winStreak": "Série de victoires",
+      "bestAccuracy": "Meilleure précision",
+      "recentAccuracy": "Précision récente",
       "span": "Empan mémoriel",
       "piecesHeld": "Pièces retenues",
       "speed": "Vitesse",
-      "streak": "Série",
+      "streak": "Série de jours",
       "rounds": "Parties jouées",
       "days": "Jours joués",
-      "trend": "Précision",
       "daily": "Échiquier du jour",
       "week": "Cette semaine",
       "curve": "Rappel après révision",
-      "missMap": "Ligne la plus manquée",
-      "typeRecall": "Pièce la plus faible",
-      "insights": "Constats",
       "notebook": "Carnet",
       "plans": "Programme",
       "goal": "Objectif",
-      "bests": "Records personnels",
       "board": "Classement"
     },
     "unit": {
@@ -521,8 +525,7 @@
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> partie} many {<n>{value}</n> parties} other {<n>{value}</n> parties}}",
       "entries": "{count, plural, one {<n>{value}</n> entrée} many {<n>{value}</n> entrées} other {<n>{value}</n> entrées}}",
-      "findings": "{count, plural, one {<n>{value}</n> constat} many {<n>{value}</n> constats} other {<n>{value}</n> constats}}",
-      "settings": "{count, plural, one {<n>{value}</n> réglage} many {<n>{value}</n> réglages} other {<n>{value}</n> réglages}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy} % ou mieux sur {rounds, plural, one {# partie} many {# parties} other {# parties}}, mémorisé {memorizeSeconds} s",
@@ -532,15 +535,124 @@
       "daily": "{status, select, played {Joué aujourd’hui} unfinished {Ouvert aujourd’hui} other {Ouvert pour aujourd’hui}}, plus longue série {longest, plural, one {# jour} many {# jours} other {# jours}}",
       "curve": "Rappel après {day, plural, one {# jour} many {# jours} other {# jours}}, sur {reviews, plural, one {# révision} many {# révisions} other {# révisions}}",
       "rounds": "Sur {rounds, plural, one {# partie} many {# parties} other {# parties}}",
-      "missLine": "Manquées sur {line, select, file {la colonne {name}} other {la rangée {name}}}, sur {shown} pièces vues",
-      "pieceType": "{type, select, p {Pions retenus} n {Cavaliers retenus} b {Fous retenus} r {Tours retenues} q {Dames retenues} other {Rois retenus}}, sur {shown} vus",
       "plan": "{planId, select, baseline {Programme Référence} edge {Programme Bords} other {Programme Échelle}}, {status, select, active {en cours} done {désormais terminé} other {désormais arrêté}}",
       "goal": "Vers {pieceCount} pièces à {accuracy} %",
       "week": "Objectif hebdomadaire {goal} jours",
-      "best": "Meilleur résultat {accuracy} % à {pieceCount} pièces, {memorizeSeconds} s",
       "entry": "Pièces justes de votre meilleure entrée, {difficulty, select, easy {niveau Facile} medium {niveau Moyen} hard {niveau Difficile} other {niveau Grand maître}}",
       "overDays": "Sur {days, plural, one {# jour} many {# jours} other {# jours}}",
-      "firstDay": "Depuis le {date}"
+      "firstDay": "Depuis le {date}",
+      "rating": "{sign, select, up {En hausse de {change}} down {En baisse de {change}} other {Aucun changement}} sur {rounds, plural, one {votre dernière # partie cotée} many {vos # dernières parties cotées} other {vos # dernières parties cotées}}",
+      "ratingSince": "D’après vos parties de jeu cotées",
+      "winStreak": "Parties de jeu d’affilée à {accuracy} % ou mieux",
+      "bestAt": "{source, select, calibration {Entraînement} other {Jeu}} à {pieceCount} pièces, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "{shown} affichées sur {total, plural, one {# partie} many {# parties} other {# parties}}",
+      "filterSource": "Source",
+      "filterSetting": "Réglage",
+      "allSources": "Toutes les sources",
+      "allSettings": "Tous les réglages",
+      "sources": {
+        "game": "Jeu",
+        "daily": "Échiquier du jour",
+        "plan": "Programme",
+        "review": "Révision",
+        "practice": "Entraînement"
+      },
+      "settingValue": "{pieceCount} pièces, {memorizeSeconds} s",
+      "col": {
+        "date": "Jouée le",
+        "source": "Source",
+        "setting": "Réglage",
+        "accuracy": "Précision",
+        "correct": "Correctes",
+        "time": "Temps de placement",
+        "rating": "Cote",
+        "board": "Échiquier"
+      },
+      "correctValue": "{correct} sur {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Cote en hausse de {change}",
+      "ratingDown": "Cote en baisse de {change}",
+      "ratingLevel": "Cote inchangée",
+      "unrated": "Non cotée",
+      "show": "Afficher l’échiquier",
+      "hide": "Masquer l’échiquier",
+      "boardLabel": "Échiquier corrigé : {correct} pièces justes sur {total}.",
+      "detail": "Étudié {studied} s sur {memorizeSeconds} s. {wrong, plural, =0 {Aucune pièce erronée} one {# pièce erronée} many {# pièces erronées} other {# pièces erronées}}, {extra, plural, =0 {aucune pièce en trop} one {# pièce en trop} many {# pièces en trop} other {# pièces en trop}}.",
+      "more": "Afficher {count} de plus",
+      "ratingNote": "Les variations de cote sont conservées pour vos 20 parties de jeu cotées les plus récentes. Les parties d’entraînement et de révision ne sont pas cotées.",
+      "kept": "Votre historique conserve en détail les {kept} plus récentes de vos {total} parties. Les plus anciennes comptent toujours dans vos totaux et vos records.",
+      "emptyTitle": "Aucune partie pour l’instant.",
+      "empty": "Chaque partie jouée sur cet appareil apparaît ici, la plus récente d’abord, avec son réglage, sa précision et son temps de placement. Ouvrez-en une pour voir son échiquier corrigé.",
+      "noMatch": "Aucune partie ne correspond à ces filtres.",
+      "clear": "Effacer les filtres"
+    },
+    "analysis": {
+      "fromRounds": "Sur {count, plural, one {# partie} many {# parties} other {# parties}}",
+      "oldest": "Plus ancienne",
+      "latest": "Plus récente",
+      "accuracy": {
+        "title": "Précision dans le temps",
+        "desc": "Votre précision partie après partie dans votre réglage le plus joué, sur une échelle de 0 à 100 %.",
+        "note": "{source, select, calibration {Parties d’entraînement} other {Parties de jeu}} à {pieceCount} pièces, {memorizeSeconds} s, votre réglage le plus joué. {count, plural, one {Dernière # partie} many {# dernières parties} other {# dernières parties}}.",
+        "aria": "Précision sur vos {count} dernières parties à {pieceCount} pièces, {memorizeSeconds} s, sur une échelle de 0 à 100 pour cent, la plus récente à {latest} pour cent."
+      },
+      "speed": {
+        "title": "Vitesse dans le temps",
+        "unit": "Secondes par pièce correcte. Plus bas, c’est plus rapide.",
+        "note": "{source, select, calibration {Parties d’entraînement} other {Parties de jeu}} à {pieceCount} pièces, {memorizeSeconds} s. {count, plural, one {Dernière # partie} many {# dernières parties} other {# dernières parties}}.",
+        "aria": "Secondes par pièce correcte sur vos {count} dernières parties à {pieceCount} pièces, {memorizeSeconds} s, la plus récente à {latest}."
+      },
+      "bests": {
+        "title": "Records personnels par réglage",
+        "desc": "Les records sont tenus par réglage, car 6 pièces et 20 pièces sont des tests différents.",
+        "setting": "{source, select, calibration {Entraînement} other {Jeu}} · {pieceCount} pièces, {memorizeSeconds} s",
+        "col": {
+          "setting": "Réglage",
+          "accuracy": "Meilleure précision",
+          "correct": "Correctes",
+          "time": "Temps de placement",
+          "rounds": "Parties",
+          "date": "Établi le"
+        }
+      },
+      "types": {
+        "title": "Mémorisation par type de pièce",
+        "desc": "À quelle fréquence vous replacez chaque type de pièce sur sa case.",
+        "value": "{recalled} sur {shown}",
+        "thin": "{shown} vues sur {minimum}",
+        "baseline": "Les rois sont présents dans chaque partie, ils servent donc de référence : {recalled} retenus sur {shown}.",
+        "onlyKings": "Jusqu’ici, vos parties n’ont placé que les deux rois. La mémorisation par type de pièce demande davantage de pièces."
+      },
+      "miss": {
+        "title": "Carte des oublis",
+        "desc": "Les cases et les lignes que vous manquez le plus, toutes parties confondues.",
+        "aria": "Votre part d’oublis sur chaque case. Plus c’est foncé, plus la case est souvent manquée. Les cases grises comptent moins de {minimum} pièces vues.",
+        "note": "Les cases plus foncées sont manquées plus souvent. Les cases grises comptent moins de {minimum} pièces vues.",
+        "lines": "Tant que chaque case n’a pas {minimum} pièces vues, la carte se lit par colonnes et rangées entières.",
+        "files": "Colonnes",
+        "ranks": "Rangées",
+        "line": "{line} : {missed} manquées sur {shown}",
+        "lineThin": "{line} : {shown} vues, pas assez pour conclure"
+      },
+      "insights": {
+        "title": "Constats",
+        "desc": "Des tendances de votre historique sur lesquelles agir, chacune avec les chiffres qui l’appuient.",
+        "none": "Rien ne ressort pour l’instant. Continuez à jouer.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Vous manquez {edge, select, 0 {moins de 1 %} other {{edge} %}} des {edgeShown} pièces des colonnes a et h et aucune des {centreShown} des colonnes centrales, d et e.} 2 {Vous manquez les colonnes a et h environ deux fois plus souvent que les colonnes centrales, d et e : {edge, select, 0 {moins de 1 %} other {{edge} %}} de {edgeShown} pièces contre {centre, select, 0 {moins de 1 %} other {{centre} %}} de {centreShown}.} other {Vous manquez les colonnes a et h environ {times} fois plus souvent que les colonnes centrales, d et e : {edge, select, 0 {moins de 1 %} other {{edge} %}} de {edgeShown} pièces contre {centre, select, 0 {moins de 1 %} other {{centre} %}} de {centreShown}.}}",
+          "weakType": "Parmi les pièces autres que les rois vues {minimum} fois ou plus, ce sont {type, select, q {les dames} r {les tours} b {les fous} n {les cavaliers} other {les pions}} qui vous échappent le plus : {recalled} retenus sur {shown}, soit {percent} %.",
+          "fasterLessAccurate": "À {pieceCount} pièces, {studyTime}, vos {window} dernières parties ont pris {fasterTime} de moins par pièce correcte que les {window} précédentes, et la précision a baissé de {fell} points.",
+          "colourGap": "Vous retenez les pièces {weaker, select, w {blanches} other {noires}} moins souvent que les {weaker, select, w {noires} other {blanches}} : {weakerPercent} % sur {weakerShown} contre {strongerPercent} % sur {strongerShown}, rois exclus.",
+          "plateau": "À {pieceCount} pièces, {studyTime}, vos {window} dernières parties ont atteint {last} % en moyenne et les {window} précédentes {before} %, et votre empan est resté à {span} pièces sur votre dernière semaine de jeu. Une pièce de plus pourrait le faire bouger."
+        },
+        "actions": {
+          "rig": "Jouer {pieceCount} pièces, {studyTime}",
+          "patterns": "Lire les exercices de reconnaissance de motifs",
+          "vision": "Lire comment voir tout l’échiquier"
+        }
+      }
     },
     "share": {
       "button": "Partager mes progrès",
@@ -553,10 +665,11 @@
       "copy": "Copier la légende",
       "copied": "Légende copiée.",
       "copyFailed": "La copie n’a pas fonctionné ici. La légende est sélectionnée, copiez-la vous-même.",
-      "locked": "Votre carte à partager se débloque dès que l’empan mémoriel, les pièces retenues, la vitesse ou votre série est prêt.",
+      "locked": "Votre carte à partager se débloque dès que l’empan mémoriel, la cote de niveau, les pièces retenues, la vitesse ou votre série de jours est prêt.",
       "text": "Mes progrès sur Memory Chess : {figures}. Saurez-vous faire mieux ?",
       "figure": {
         "span": "empan mémoriel de {value, plural, one {# pièce} many {# pièces} other {# pièces}}",
+        "rating": "cote de niveau {value, number}",
         "piecesHeld": "{value, number} pièces retenues",
         "speed": "{value, number} s par pièce",
         "streak": "{value, plural, one {# jour} many {# jours} other {# jours}} d’affilée"

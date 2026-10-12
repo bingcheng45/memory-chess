@@ -4,7 +4,6 @@ import { lazy, Suspense, useState, useEffect, useLayoutEffect, useRef } from 're
 import { useGameStore } from '@/lib/store/gameStore';
 import GameConfig from '@/components/game/GameConfig';
 import GameResult from '@/components/game/GameResult';
-import GameStats from '@/components/game/GameStats';
 import ActiveRound from '@/components/game/ActiveRound';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
 import SoundSettings from '@/components/ui/SoundSettings';
@@ -213,13 +212,6 @@ function GamePageContent() {
               <ErrorBoundary>
                 <GameConfig onStart={handleStartGame} />
               </ErrorBoundary>
-            )}
-            {gameState.completionTime !== undefined && (
-              <div className="lab-bridge mt-8 w-full max-w-md md:max-w-lg mx-auto">
-                <ErrorBoundary>
-                  <GameStats />
-                </ErrorBoundary>
-              </div>
             )}
           </div>
         );

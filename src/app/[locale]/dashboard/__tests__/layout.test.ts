@@ -10,7 +10,7 @@ describe("dashboard metadata", () => {
   it("names the page and keeps it out of the index while its links still count", async () => {
     const metadata = await generateMetadata({ params: Promise.resolve({ locale: "en" }) });
 
-    expect(metadata.title).toBe("Your progress");
+    expect(metadata.title).toBe("Dashboard");
     expect(metadata.robots).toEqual({ index: false, follow: true });
   });
 });

@@ -10,7 +10,7 @@
       "terms": "Regulamin",
       "play": "Graj",
       "leaderboard": "Ranking",
-      "progress": "Postępy",
+      "dashboard": "Panel",
       "menu": "Menu",
       "site": "Serwis"
     },
@@ -464,17 +464,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "Twoje postępy",
-      "description": "Każda liczba, którą Memory Chess śledzi z twoich rund na tym urządzeniu, na jednej stronie, z kartą do udostępnienia."
+      "title": "Panel",
+      "description": "Twój panel w Memory Chess: ocena umiejętności, zakres pamięci, każda runda rozegrana na tym urządzeniu, dokładność i tempo w czasie, rekordy osobiste oraz karta do ich udostępnienia."
     },
-    "kicker": "Dziennik laboratorium",
-    "title": "Twoje postępy",
-    "lede": "Wszystkie liczby, które twoje rundy zdobyły na tym urządzeniu, w jednym miejscu. Nic nie opuszcza twojej przeglądarki, chyba że to udostępnisz.",
+    "title": "Panel",
+    "lede": "Każda runda rozegrana na tym urządzeniu, co mówi o twojej pamięci, i karta do udostępnienia. Nic stąd nie opuszcza twojej przeglądarki, chyba że to udostępnisz.",
     "loading": "Wczytywanie twojego dziennika na tym urządzeniu.",
     "unavailable": "Ta przeglądarka nie przechowuje dziennika, więc nie ma postępów do pokazania. Okna prywatne niczego nie zapisują.",
     "fullRecord": "Zobacz pełny dziennik",
-    "headline": "Najważniejsze liczby",
-    "more": "Wszystko inne",
+    "sections": {
+      "summary": "Podsumowanie",
+      "history": "Historia gier",
+      "analysis": "Analiza",
+      "more": "Więcej liczb"
+    },
+    "historyLede": "Najnowsze na górze. Otwórz rundę, aby zobaczyć jej ocenioną planszę.",
+    "analysisLede": "Jak zmieniają się w czasie twoja dokładność i tempo oraz gdzie umykają figury.",
     "stale": "Z ostatniej rundy",
     "staleNote": "Ostatnia gra {count, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} temu. Tak oznaczone liczby pochodzą z tamtego czasu.",
     "play": "Zagraj rundę",
@@ -495,23 +500,22 @@
       "reviews": "{count, plural, one {# kolejnej powtórce} few {# kolejnych powtórkach} many {# kolejnych powtórkach} other {# kolejnej powtórki}} po tej samej przerwie"
     },
     "label": {
+      "rating": "Ocena umiejętności",
+      "winStreak": "Seria wygranych",
+      "bestAccuracy": "Najlepsza dokładność",
+      "recentAccuracy": "Ostatnia dokładność",
       "span": "Zakres pamięci",
       "piecesHeld": "Zapamiętane figury",
       "speed": "Tempo",
-      "streak": "Seria",
+      "streak": "Seria dni",
       "rounds": "Rozegrane rundy",
       "days": "Dni gry",
-      "trend": "Dokładność",
       "daily": "Plansza dnia",
       "week": "Ten tydzień",
       "curve": "Pamięć po powtórce",
-      "missMap": "Najczęściej mylona linia",
-      "typeRecall": "Najsłabsza figura",
-      "insights": "Spostrzeżenia",
       "notebook": "Notatnik",
       "plans": "Plan",
       "goal": "Cel",
-      "bests": "Rekordy osobiste",
       "board": "Ranking"
     },
     "unit": {
@@ -521,8 +525,7 @@
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> runda} few {<n>{value}</n> rundy} many {<n>{value}</n> rund} other {<n>{value}</n> rundy}}",
       "entries": "{count, plural, one {<n>{value}</n> wpis} few {<n>{value}</n> wpisy} many {<n>{value}</n> wpisów} other {<n>{value}</n> wpisu}}",
-      "findings": "{count, plural, one {<n>{value}</n> spostrzeżenie} few {<n>{value}</n> spostrzeżenia} many {<n>{value}</n> spostrzeżeń} other {<n>{value}</n> spostrzeżenia}}",
-      "settings": "{count, plural, one {<n>{value}</n> ustawienie} few {<n>{value}</n> ustawienia} many {<n>{value}</n> ustawień} other {<n>{value}</n> ustawienia}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{accuracy}% lub lepiej w {rounds, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}}, zapamiętywanie {memorizeSeconds} s",
@@ -532,15 +535,124 @@
       "daily": "{status, select, played {Zagrane dziś} unfinished {Otwarte dziś} other {Dostępne dziś}}, najdłuższa seria {longest, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
       "curve": "Zapamiętane po {day, plural, one {# dniu} few {# dniach} many {# dniach} other {# dnia}}, z {reviews, plural, one {# powtórki} few {# powtórek} many {# powtórek} other {# powtórki}}",
       "rounds": "Z {rounds, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
-      "missLine": "Pomyłki {line, select, file {w kolumnie {name}} other {w rzędzie {name}}}, z {shown} zobaczonych figur",
-      "pieceType": "{type, select, p {Pionki zapamiętane} n {Skoczki zapamiętane} b {Gońce zapamiętane} r {Wieże zapamiętane} q {Hetmany zapamiętane} other {Króle zapamiętane}}, z {shown} zobaczonych",
       "plan": "{planId, select, baseline {Plan Punkt odniesienia} edge {Plan Krawędzie} other {Plan Drabina}}, {status, select, active {wciąż w toku} done {już ukończony} other {już przerwany}}",
       "goal": "W drodze do {pieceCount} figur z dokładnością {accuracy}%",
       "week": "Cel tygodniowy {goal} dni",
-      "best": "Najlepszy wynik {accuracy}% przy {pieceCount} figurach, {memorizeSeconds} s",
       "entry": "Poprawne figury w twoim najlepszym wpisie, {difficulty, select, easy {poziom Łatwy} medium {poziom Średni} hard {poziom Trudny} other {poziom Arcymistrz}}",
       "overDays": "W ciągu {days, plural, one {# dnia} few {# dni} many {# dni} other {# dnia}}",
-      "firstDay": "Od {date}"
+      "firstDay": "Od {date}",
+      "rating": "{sign, select, up {Wzrost o {change}} down {Spadek o {change}} other {Bez zmian}} w ostatnich rundach liczonych do oceny: {rounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}",
+      "ratingSince": "Z twoich rund w partiach liczonych do oceny",
+      "winStreak": "Rundy w partiach z rzędu z wynikiem {accuracy}% lub lepszym",
+      "bestAt": "{source, select, calibration {Trening} other {Partia}} przy {pieceCount} figurach, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "Wyświetlono {shown} z {total, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+      "filterSource": "Źródło",
+      "filterSetting": "Ustawienie",
+      "allSources": "Wszystkie źródła",
+      "allSettings": "Wszystkie ustawienia",
+      "sources": {
+        "game": "Partia",
+        "daily": "Plansza dnia",
+        "plan": "Plan",
+        "review": "Powtórka",
+        "practice": "Trening"
+      },
+      "settingValue": "{pieceCount} figur, {memorizeSeconds} s",
+      "col": {
+        "date": "Rozegrano",
+        "source": "Źródło",
+        "setting": "Ustawienie",
+        "accuracy": "Dokładność",
+        "correct": "Poprawne",
+        "time": "Czas ustawiania",
+        "rating": "Ocena",
+        "board": "Plansza"
+      },
+      "correctValue": "{correct} z {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Ocena w górę o {change}",
+      "ratingDown": "Ocena w dół o {change}",
+      "ratingLevel": "Ocena bez zmian",
+      "unrated": "Bez oceny",
+      "show": "Pokaż planszę",
+      "hide": "Ukryj planszę",
+      "boardLabel": "Oceniona plansza: {correct} z {total} figur poprawnie.",
+      "detail": "Zapamiętywanie {studied} s z {memorizeSeconds} s. {wrong, plural, =0 {Brak błędnych figur} one {# błędna figura} few {# błędne figury} many {# błędnych figur} other {# błędnej figury}}, {extra, plural, =0 {brak dodatkowych figur} one {# dodatkowa figura} few {# dodatkowe figury} many {# dodatkowych figur} other {# dodatkowej figury}}.",
+      "more": "Pokaż jeszcze {count}",
+      "ratingNote": "Zmiany oceny są zapisywane dla 20 najnowszych rund w partiach liczonych do oceny. Rundy treningowe i powtórki nie są oceniane.",
+      "kept": "Twój dziennik przechowuje szczegółowo {kept} najnowszych z {total} rund. Starsze rundy nadal liczą się do sum i rekordów.",
+      "emptyTitle": "Jeszcze brak rund.",
+      "empty": "Każda runda rozegrana na tym urządzeniu pojawi się tutaj, od najnowszej, z ustawieniem, dokładnością i czasem ustawiania. Otwórz ją, aby zobaczyć ocenioną planszę.",
+      "noMatch": "Żadna runda nie pasuje do tych filtrów.",
+      "clear": "Wyczyść filtry"
+    },
+    "analysis": {
+      "fromRounds": "Z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+      "oldest": "Najstarsze",
+      "latest": "Najnowsze",
+      "accuracy": {
+        "title": "Dokładność w czasie",
+        "desc": "Twoja dokładność runda po rundzie w twoim najczęstszym ustawieniu, w skali od 0 do 100%.",
+        "note": "{source, select, calibration {Rundy treningowe} other {Rundy w partiach}} z {pieceCount} figurami, {memorizeSeconds} s, twoje najczęstsze ustawienie. Ostatnie rundy: {count, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}.",
+        "aria": "Dokładność w ostatnich rundach ({count}) z {pieceCount} figurami, {memorizeSeconds} s, w skali od 0 do 100 procent, ostatnio {latest} procent."
+      },
+      "speed": {
+        "title": "Tempo w czasie",
+        "unit": "Sekundy na poprawną figurę. Mniej znaczy szybciej.",
+        "note": "{source, select, calibration {Rundy treningowe} other {Rundy w partiach}} z {pieceCount} figurami, {memorizeSeconds} s. Ostatnie rundy: {count, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}.",
+        "aria": "Sekundy na poprawną figurę w ostatnich rundach ({count}) z {pieceCount} figurami, {memorizeSeconds} s, ostatnio {latest}."
+      },
+      "bests": {
+        "title": "Rekordy osobiste według ustawienia",
+        "desc": "Rekordy są zapisywane osobno dla każdego ustawienia, bo 6 figur i 20 figur to różne testy.",
+        "setting": "{source, select, calibration {Trening} other {Partia}} · {pieceCount} figur, {memorizeSeconds} s",
+        "col": {
+          "setting": "Ustawienie",
+          "accuracy": "Najlepsza dokładność",
+          "correct": "Poprawne",
+          "time": "Czas ustawiania",
+          "rounds": "Rundy",
+          "date": "Ustanowiono"
+        }
+      },
+      "types": {
+        "title": "Zapamiętywanie według rodzaju figury",
+        "desc": "Jak często odstawiasz każdy rodzaj figury na pole, na którym stał.",
+        "value": "{recalled} z {shown}",
+        "thin": "Zobaczono {shown} z {minimum}",
+        "baseline": "Króle są w każdej rundzie, więc stanowią punkt odniesienia: zapamiętano {recalled} z {shown}.",
+        "onlyKings": "Twoje dotychczasowe rundy zawierały tylko dwa króle. Zapamiętywanie według rodzaju figury wymaga więcej figur."
+      },
+      "miss": {
+        "title": "Mapa pomyłek",
+        "desc": "Które pola i linie mylisz najczęściej, we wszystkich rundach.",
+        "aria": "Udział pomyłek na każdym polu. Ciemniejsze oznacza częstsze pomyłki. Szare pola mają mniej niż {minimum} zobaczonych figur.",
+        "note": "Na ciemniejszych polach mylisz się częściej. Szare pola mają mniej niż {minimum} zobaczonych figur.",
+        "lines": "Dopóki każde pole nie ma {minimum} zobaczonych figur, mapa pokazuje całe kolumny i rzędy.",
+        "files": "Kolumny",
+        "ranks": "Rzędy",
+        "line": "{line}: pomyłki w {missed} z {shown}",
+        "lineThin": "{line}: zobaczono {shown}, za mało do oceny"
+      },
+      "insights": {
+        "title": "Spostrzeżenia",
+        "desc": "Wzorce w twoich wynikach, nad którymi warto popracować, każdy z liczbami, które za nim stoją.",
+        "none": "Na razie nic się nie wyróżnia. Graj dalej.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {W kolumnach a i h mylisz {edge, select, 0 {poniżej 1%} other {{edge}%}} z {edgeShown} figur, a w kolumnach centralnych, d i e, żadnej z {centreShown}.} 2 {Mylisz się w kolumnach a i h mniej więcej dwa razy częściej niż w kolumnach centralnych, d i e: {edge, select, 0 {poniżej 1%} other {{edge}%}} z {edgeShown} figur wobec {centre, select, 0 {poniżej 1%} other {{centre}%}} z {centreShown}.} other {Mylisz się w kolumnach a i h mniej więcej {times} razy częściej niż w kolumnach centralnych, d i e: {edge, select, 0 {poniżej 1%} other {{edge}%}} z {edgeShown} figur wobec {centre, select, 0 {poniżej 1%} other {{centre}%}} z {centreShown}.}}",
+          "weakType": "Spośród figur innych niż króle, widzianych co najmniej {minimum} razy, najczęściej umykają ci {type, select, q {hetmany} r {wieże} b {gońce} n {skoczki} other {pionki}}: zapamiętano {recalled} z {shown}, {percent}%.",
+          "fasterLessAccurate": "Przy {pieceCount} figurach, {studyTime}, ostatnie rundy ({window}) zajęły ci o {fasterTime} mniej na poprawną figurę niż {window} wcześniejszych, a dokładność spadła o {fell} pkt.",
+          "colourGap": "{weaker, select, w {Białe} other {Czarne}} figury zapamiętujesz rzadziej niż {weaker, select, w {czarne} other {białe}}: {weakerPercent}% z {weakerShown} wobec {strongerPercent}% z {strongerShown}, bez królów.",
+          "plateau": "Przy {pieceCount} figurach, {studyTime}, ostatnie rundy ({window}) dały średnio {last}%, a {window} wcześniejszych {before}%, a twój zakres utrzymał się na {span} figurach przez ostatni tydzień gry. Jedna figura więcej może go ruszyć."
+        },
+        "actions": {
+          "rig": "Zagraj {pieceCount} figur, {studyTime}",
+          "patterns": "Przeczytaj ćwiczenia z rozpoznawania wzorców",
+          "vision": "Przeczytaj, jak widzieć całą planszę"
+        }
+      }
     },
     "share": {
       "button": "Udostępnij moje postępy",
@@ -553,10 +665,11 @@
       "copy": "Kopiuj tekst",
       "copied": "Tekst skopiowany.",
       "copyFailed": "Kopiowanie tu nie zadziałało. Tekst jest zaznaczony, skopiuj go samodzielnie.",
-      "locked": "Karta do udostępnienia odblokuje się, gdy gotowy będzie zakres pamięci, zapamiętane figury, tempo lub twoja seria.",
+      "locked": "Twoja karta do udostępnienia odblokuje się, gdy gotowy będzie zakres pamięci, ocena umiejętności, zapamiętane figury, tempo lub seria dni.",
       "text": "Moje postępy w Memory Chess: {figures}. Pobijesz to?",
       "figure": {
         "span": "zakres pamięci {value, plural, one {# figura} few {# figury} many {# figur} other {# figury}}",
+        "rating": "ocena umiejętności {value, number}",
         "piecesHeld": "{value, number} figury w pamięci",
         "speed": "{value, number} s na figurę",
         "streak": "{value, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} z rzędu"

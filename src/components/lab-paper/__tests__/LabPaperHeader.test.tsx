@@ -26,7 +26,7 @@ const SITE = [
   ["Learn", "/learn"],
   ["Articles", "/articles"],
   ["Leaderboard", "/leaderboard"],
-  ["Progress", "/dashboard"],
+  ["Dashboard", "/dashboard"],
   ["About", "/about"],
 ];
 
@@ -98,7 +98,7 @@ describe("the Lab Paper header", () => {
       ["Lernen (English)", "en"],
       ["Artikel", null],
       ["Bestenliste", null],
-      ["Fortschritt", null],
+      ["Dashboard", null],
       ["Über (English)", "en"],
     ]);
     expect(screen.getByRole("button", { name: "Menü" })).toBeInTheDocument();

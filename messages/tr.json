@@ -10,7 +10,7 @@
       "terms": "Koşullar",
       "play": "Oyna",
       "leaderboard": "Sıralama",
-      "progress": "İlerleme",
+      "dashboard": "Panel",
       "menu": "Menü",
       "site": "Site"
     },
@@ -464,17 +464,22 @@
   },
   "dashboard": {
     "meta": {
-      "title": "İlerlemen",
-      "description": "Memory Chess'in bu cihazdaki turlarından izlediği her değer, tek sayfada ve paylaşılabilir bir kartla."
+      "title": "Panel",
+      "description": "Memory Chess panelin: beceri puanı, bellek kapasitesi, bu cihazda oynadığın her tur, zaman içinde isabet ve hız, kişisel rekorlar ve bunları paylaşmak için bir kart."
     },
-    "kicker": "Laboratuvar kaydı",
-    "title": "İlerlemen",
-    "lede": "Turlarının bu cihazda kazandığı her değer tek bir yerde. Sen paylaşmadıkça hiçbiri tarayıcından çıkmaz.",
+    "title": "Panel",
+    "lede": "Bu cihazda oynadığın her tur, bunların belleğin hakkında söyledikleri ve paylaşmak için bir kart. Sen paylaşmadıkça buradaki hiçbir şey tarayıcından çıkmaz.",
     "loading": "Bu cihazdaki kaydın okunuyor.",
     "unavailable": "Bu tarayıcı kayıt tutmuyor, bu yüzden gösterilecek ilerleme yok. Gizli pencereler hiçbir şey saklamaz.",
     "fullRecord": "Kaydın tamamını gör",
-    "headline": "Öne çıkan değerler",
-    "more": "Diğer her şey",
+    "sections": {
+      "summary": "Özet",
+      "history": "Oyun geçmişi",
+      "analysis": "Analiz",
+      "more": "Diğer değerler"
+    },
+    "historyLede": "En yenisi önce. Puanlanmış tahtasını görmek için bir turu aç.",
+    "analysisLede": "İsabetin ve hızın zamanla nasıl değişiyor, taşlar nerede kaçıyor.",
     "stale": "Son turuna göre",
     "staleNote": "En son {count, plural, one {# gün} other {# gün}} önce oynadın. Böyle işaretlenen değerler o zamana ait.",
     "play": "Bir tur oyna",
@@ -495,23 +500,22 @@
       "reviews": "Aynı aralıktan sonra {count, plural, one {# tekrar daha} other {# tekrar daha}}"
     },
     "label": {
+      "rating": "Beceri puanı",
+      "winStreak": "Galibiyet serisi",
+      "bestAccuracy": "En iyi isabet",
+      "recentAccuracy": "Son isabet",
       "span": "Bellek kapasitesi",
       "piecesHeld": "Akılda tutulan taşlar",
       "speed": "Hız",
-      "streak": "Seri",
+      "streak": "Gün serisi",
       "rounds": "Oynanan turlar",
       "days": "Oynanan günler",
-      "trend": "İsabet",
       "daily": "Günün tahtası",
       "week": "Bu hafta",
       "curve": "Tekrardan sonra hatırlama",
-      "missMap": "En çok kaçırılan hat",
-      "typeRecall": "En zayıf taş",
-      "insights": "Bulgular",
       "notebook": "Defter",
       "plans": "Plan",
       "goal": "Hedef",
-      "bests": "Kişisel rekorlar",
       "board": "Sıralama"
     },
     "unit": {
@@ -521,8 +525,7 @@
       "percent": "%<n>{value}</n>",
       "rounds": "{count, plural, one {<n>{value}</n> tur} other {<n>{value}</n> tur}}",
       "entries": "{count, plural, one {<n>{value}</n> not} other {<n>{value}</n> not}}",
-      "findings": "{count, plural, one {<n>{value}</n> bulgu} other {<n>{value}</n> bulgu}}",
-      "settings": "{count, plural, one {<n>{value}</n> ayar} other {<n>{value}</n> ayar}}"
+      "rating": "<n>{value}</n>"
     },
     "context": {
       "span": "{rounds, plural, one {# turda} other {# turda}} %{accuracy} veya üzeri, {memorizeSeconds} sn ezber",
@@ -532,15 +535,124 @@
       "daily": "{status, select, played {Bugün oynandı} unfinished {Bugün açıldı} other {Bugün açık}}, en uzun seri {longest, plural, one {# gün} other {# gün}}",
       "curve": "{day, plural, one {# gün} other {# gün}} sonra hatırlanan, {reviews, plural, one {# tekrardan} other {# tekrardan}}",
       "rounds": "{rounds, plural, one {# turdan} other {# turdan}}",
-      "missLine": "{line, select, file {{name} sütununda} other {{name}. sırada}} kaçırılan, görülen {shown} taştan",
-      "pieceType": "{type, select, p {Hatırlanan piyonlar} n {Hatırlanan atlar} b {Hatırlanan filler} r {Hatırlanan kaleler} q {Hatırlanan vezirler} other {Hatırlanan şahlar}}, görülen {shown} taştan",
       "plan": "{planId, select, baseline {Başlangıç planı} edge {Kenarlar planı} other {Merdiven planı}}, {status, select, active {hâlâ sürüyor} done {artık tamamlandı} other {artık durduruldu}}",
       "goal": "%{accuracy} ile {pieceCount} taşa doğru",
       "week": "Haftalık hedef {goal} gün",
-      "best": "En iyi sonuç {pieceCount} taş, {memorizeSeconds} sn ile %{accuracy}",
       "entry": "En iyi kaydındaki doğru taşlar, {difficulty, select, easy {Kolay seviye} medium {Orta seviye} hard {Zor seviye} other {Büyükusta seviyesi}}",
       "overDays": "{days, plural, one {# günde} other {# günde}}",
-      "firstDay": "{date} tarihinden beri"
+      "firstDay": "{date} tarihinden beri",
+      "rating": "Son {rounds, plural, one {# puanlı turda} other {# puanlı turda}} {sign, select, up {{change} arttı} down {{change} düştü} other {değişmedi}}",
+      "ratingSince": "Puanlı oyun turlarından",
+      "winStreak": "Üst üste %{accuracy} veya üzeri oyun turları",
+      "bestAt": "{source, select, calibration {Alıştırma} other {Oyun}}, {pieceCount} taş, {memorizeSeconds} sn"
+    },
+    "history": {
+      "count": "{total, plural, one {# turdan} other {# turdan}} {shown} tanesi gösteriliyor",
+      "filterSource": "Kaynak",
+      "filterSetting": "Ayar",
+      "allSources": "Tüm kaynaklar",
+      "allSettings": "Tüm ayarlar",
+      "sources": {
+        "game": "Oyun",
+        "daily": "Günün tahtası",
+        "plan": "Plan",
+        "review": "Tekrar",
+        "practice": "Alıştırma"
+      },
+      "settingValue": "{pieceCount} taş, {memorizeSeconds} sn",
+      "col": {
+        "date": "Tarih",
+        "source": "Kaynak",
+        "setting": "Ayar",
+        "accuracy": "İsabet",
+        "correct": "Doğru",
+        "time": "Yerleştirme süresi",
+        "rating": "Puan",
+        "board": "Tahta"
+      },
+      "correctValue": "{total} taştan {correct}",
+      "seconds": "{value} sn",
+      "ratingUp": "Puan {change} arttı",
+      "ratingDown": "Puan {change} düştü",
+      "ratingLevel": "Puan değişmedi",
+      "unrated": "Puanlanmadı",
+      "show": "Tahtayı göster",
+      "hide": "Tahtayı gizle",
+      "boardLabel": "Puanlanmış tahta: {total} taştan {correct} tanesi doğru.",
+      "detail": "{memorizeSeconds} sn içinde {studied} sn çalıştın. {wrong, plural, =0 {Yanlış taş yok} one {# yanlış taş} other {# yanlış taş}}, {extra, plural, =0 {fazla taş yok} one {# fazla taş} other {# fazla taş}}.",
+      "more": "{count} tane daha göster",
+      "ratingNote": "Puan değişiklikleri en yeni 20 puanlı oyun turun için saklanır. Alıştırma ve tekrar turları puanlanmaz.",
+      "kept": "Kaydın, {total} turunun en yeni {kept} tanesini tur tur saklar. Daha eski turlar toplamlarında ve rekorlarında hâlâ sayılır.",
+      "emptyTitle": "Henüz tur yok.",
+      "empty": "Bu cihazda oynadığın her tur ayarı, isabeti ve yerleştirme süresiyle birlikte burada görünür, en yenisi önce. Puanlanmış tahtasını görmek için birini aç.",
+      "noMatch": "Bu filtrelere uyan tur yok.",
+      "clear": "Filtreleri temizle"
+    },
+    "analysis": {
+      "fromRounds": "{count, plural, one {# turdan} other {# turdan}}",
+      "oldest": "En eski",
+      "latest": "En yeni",
+      "accuracy": {
+        "title": "Zaman içinde isabet",
+        "desc": "En çok oynadığın ayarda tur tur isabetin, 0 ile %100 arasındaki bir ölçekte.",
+        "note": "En çok oynadığın ayar olan {pieceCount} taş, {memorizeSeconds} sn ile {source, select, calibration {alıştırma turları} other {oyun turları}}. Son {count, plural, one {# tur} other {# tur}}.",
+        "aria": "{pieceCount} taş, {memorizeSeconds} sn ile son {count} turundaki isabet, yüzde 0 ile 100 arasında bir ölçekte, en son yüzde {latest}."
+      },
+      "speed": {
+        "title": "Zaman içinde hız",
+        "unit": "Doğru taş başına saniye. Düşük olan daha hızlıdır.",
+        "note": "{pieceCount} taş, {memorizeSeconds} sn ile {source, select, calibration {alıştırma turları} other {oyun turları}}. Son {count, plural, one {# tur} other {# tur}}.",
+        "aria": "{pieceCount} taş, {memorizeSeconds} sn ile son {count} turunda doğru taş başına saniye, en son {latest}."
+      },
+      "bests": {
+        "title": "Ayara göre kişisel rekorlar",
+        "desc": "Rekorlar her ayar için ayrı tutulur, çünkü 6 taş ile 20 taş farklı testlerdir.",
+        "setting": "{source, select, calibration {Alıştırma} other {Oyun}} · {pieceCount} taş, {memorizeSeconds} sn",
+        "col": {
+          "setting": "Ayar",
+          "accuracy": "En iyi isabet",
+          "correct": "Doğru",
+          "time": "Yerleştirme süresi",
+          "rounds": "Tur",
+          "date": "Tarih"
+        }
+      },
+      "types": {
+        "title": "Taş türüne göre hatırlama",
+        "desc": "Her taş türünü ne sıklıkla durduğu kareye geri koyduğun.",
+        "value": "{shown} taştan {recalled}",
+        "thin": "{minimum} taştan {shown} tanesi görüldü",
+        "baseline": "Şahlar her turda bulunur, bu yüzden bir referans noktasıdır: {shown} şahtan {recalled} tanesi hatırlandı.",
+        "onlyKings": "Şimdiye kadarki turlarında yalnızca iki şah yerleştirildi. Taş türüne göre hatırlama için daha fazla taş gerekir."
+      },
+      "miss": {
+        "title": "Kaçırma haritası",
+        "desc": "Tüm turlar boyunca en çok hangi kareleri ve hatları kaçırdığın.",
+        "aria": "Her karedeki kaçırma oranın. Koyu kareler daha sık kaçırılır. Gri karelerde görülen taş sayısı {minimum} altındadır.",
+        "note": "Koyu kareler daha sık kaçırılır. Gri karelerde görülen taş sayısı {minimum} altındadır.",
+        "lines": "Her karede {minimum} taş görülene kadar harita tüm sütunları ve sıraları okur.",
+        "files": "Sütunlar",
+        "ranks": "Sıralar",
+        "line": "{line}: {shown} taştan {missed} tanesi kaçırıldı",
+        "lineThin": "{line}: {shown} taş görüldü, okumak için yetersiz"
+      },
+      "insights": {
+        "title": "Bulgular",
+        "desc": "Kayıtlarında üzerinde durmaya değer örüntüler, her biri dayandığı sayılarla.",
+        "none": "Henüz öne çıkan bir şey yok. Oynamaya devam et.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Kenardaki a ve h sütunlarında {edgeShown} taşta kaçırma oranın {edge, select, 0 {%1'in altında} other {%{edge}}}, d ve e merkez sütunlarındaki {centreShown} taşın ise hiçbirini kaçırmadın.} 2 {Kenardaki a ve h sütunlarını d ve e merkez sütunlarından yaklaşık iki kat daha sık kaçırıyorsun: {edgeShown} taşta {edge, select, 0 {%1'in altında} other {%{edge}}}, buna karşılık {centreShown} taşta {centre, select, 0 {%1'in altında} other {%{centre}}}.} other {Kenardaki a ve h sütunlarını d ve e merkez sütunlarından yaklaşık {times} kat daha sık kaçırıyorsun: {edgeShown} taşta {edge, select, 0 {%1'in altında} other {%{edge}}}, buna karşılık {centreShown} taşta {centre, select, 0 {%1'in altında} other {%{centre}}}.}}",
+          "weakType": "Şahlar dışında en az {minimum} kez görülen taşlar arasında en çok {type, select, q {vezirler} r {kaleler} b {filler} n {atlar} other {piyonlar}} kaçıyor: {shown} taştan {recalled} tanesini hatırladın, %{percent}.",
+          "fasterLessAccurate": "{pieceCount} taş, {studyTime} ile son {window} turun, önceki {window} tura göre doğru taş başına {fasterTime} daha kısa sürdü ve isabet {fell} puan düştü.",
+          "colourGap": "{weaker, select, w {Beyaz} other {Siyah}} taşları {weaker, select, w {siyah} other {beyaz}} taşlardan daha az hatırlıyorsun: {weakerShown} taşta %{weakerPercent}, buna karşılık {strongerShown} taşta %{strongerPercent}, şahlar hariç.",
+          "plateau": "{pieceCount} taş, {studyTime} ile son {window} turunun ortalaması %{last}, önceki {window} turun ortalaması %{before} oldu ve bellek kapasiten son bir haftalık oyununda {span} taşta kaldı. Bir taş daha onu ilerletebilir."
+        },
+        "actions": {
+          "rig": "{pieceCount} taş, {studyTime} oyna",
+          "patterns": "Örüntü tanıma alıştırmalarını oku",
+          "vision": "Tahtanın tamamını nasıl göreceğini oku"
+        }
+      }
     },
     "share": {
       "button": "İlerlememi paylaş",
@@ -553,10 +665,11 @@
       "copy": "Metni kopyala",
       "copied": "Metin kopyalandı.",
       "copyFailed": "Kopyalama burada çalışmadı. Metin seçili, kendin kopyala.",
-      "locked": "Paylaşım kartın; bellek kapasitesi, akılda tutulan taşlar, hız veya serin hazır olduğunda açılır.",
+      "locked": "Paylaşım kartın; bellek kapasitesi, beceri puanı, akılda tutulan taşlar, hız veya gün serin hazır olduğunda açılır.",
       "text": "Memory Chess ilerlemem: {figures}. Geçebilir misin?",
       "figure": {
         "span": "{value, plural, one {# taşlık} other {# taşlık}} bellek kapasitesi",
+        "rating": "beceri puanı {value, number}",
         "piecesHeld": "akılda tutulan {value, number} taş",
         "speed": "taş başına {value, number} sn",
         "streak": "üst üste {value, plural, one {# gün} other {# gün}}"

@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Jaa edistymiseni",
-      "working": "Korttiasi tehdään.",
-      "shared": "Jaettu.",
-      "failed": "Korttia ei voitu tehdä täällä. Kopioi sen sijaan alla oleva teksti.",
-      "caption": "Teksti",
-      "copy": "Kopioi teksti",
-      "copied": "Teksti kopioitu.",
-      "copyFailed": "Kopiointi ei toiminut täällä. Teksti on valittu, joten kopioi se itse.",
       "locked": "Jaettava kortti avautuu, kun muistijänne, taitoluku, muistetut nappulat, nopeus tai päiväputkesi on valmis.",
       "text": "Edistymiseni Memory Chessissä: {figures}. Pystytkö parempaan?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Tee päiväkirjastasi kuva, jonka voit julkaista, tallentaa tai lähettää.",
       "title": "Jaa edistymisesi",
-      "intro": "Jaa kortti, tallenna se tai kopioi se julkaisuun.",
-      "close": "Sulje",
-      "alt": "Memory Chess -edistymiskortti: {figures}. {rounds}.",
-      "shareFailed": "Jakaminen ei onnistunut täällä. Lataa tai kopioi kuva sen sijaan.",
-      "downloaded": "Kuva ladattu.",
-      "imageCopied": "Kuva kopioitu. Liitä se julkaisuusi.",
-      "imageCopyFailed": "Tämä selain ei kopioinut kuvaa. Lataa se sen sijaan.",
-      "opened": "{network} avautui uudelle välilehdelle. Lisää kuva sinne, jos tallensit tai kopioit sen.",
-      "actions": {
-        "share": "Jaa",
-        "download": "Lataa kuva",
-        "copyImage": "Kopioi kuva"
-      },
-      "post": {
-        "title": "Julkaise palvelussa",
-        "note": "Nämä linkit julkaisevat tekstisi ja linkin, eivät kuvaa. Facebook ja LinkedIn ottavat vain linkin. Jos haluat kortin mukaan, lataa tai kopioi kuva ensin ja lisää se julkaisuusi.",
-        "newTab": "(avautuu uudelle välilehdelle)"
-      }
+      "alt": "Memory Chess -edistymiskortti: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Jaa kortti, tallenna se tai kopioi se julkaisuun.",
+    "working": "Korttiasi tehdään.",
+    "shared": "Jaettu.",
+    "failed": "Korttia ei voitu tehdä täällä. Kopioi sen sijaan alla oleva teksti.",
+    "caption": "Teksti",
+    "copy": "Kopioi teksti",
+    "copied": "Teksti kopioitu.",
+    "copyFailed": "Kopiointi ei toiminut täällä. Teksti on valittu, joten kopioi se itse.",
+    "close": "Sulje",
+    "shareFailed": "Jakaminen ei onnistunut täällä. Lataa tai kopioi kuva sen sijaan.",
+    "downloaded": "Kuva ladattu.",
+    "imageCopied": "Kuva kopioitu. Liitä se julkaisuusi.",
+    "imageCopyFailed": "Tämä selain ei kopioinut kuvaa. Lataa se sen sijaan.",
+    "opened": "{network} avautui uudelle välilehdelle. Lisää kuva sinne, jos tallensit tai kopioit sen.",
+    "actions": {
+      "share": "Jaa",
+      "download": "Lataa kuva",
+      "copyImage": "Kopioi kuva"
+    },
+    "post": {
+      "title": "Julkaise palvelussa",
+      "note": "Nämä linkit julkaisevat tekstisi ja linkin, eivät kuvaa. Facebook ja LinkedIn ottavat vain linkin. Jos haluat kortin mukaan, lataa tai kopioi kuva ensin ja lisää se julkaisuusi.",
+      "newTab": "(avautuu uudelle välilehdelle)"
     }
   }
 }

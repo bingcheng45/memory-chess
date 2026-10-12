@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Del fremgangen min",
-      "working": "Kortet ditt lages.",
-      "shared": "Delt.",
-      "failed": "Kortet kunne ikke lages her. Kopier teksten under i stedet.",
-      "caption": "Tekst",
-      "copy": "Kopier tekst",
-      "copied": "Tekst kopiert.",
-      "copyFailed": "Kopiering virket ikke her. Teksten er merket, så kopier den selv.",
       "locked": "Delekortet ditt låses opp når hukommelsesspenn, ferdighetsrating, husket brikker, tempo eller dager på rad er klart.",
       "text": "Fremgangen min i Memory Chess: {figures}. Klarer du å slå det?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Lag et bilde av journalen din som du kan dele, lagre eller sende.",
       "title": "Del fremgangen din",
-      "intro": "Del kortet, lagre det eller kopier det inn i et innlegg.",
-      "close": "Lukk",
-      "alt": "Memory Chess-fremgangskort: {figures}. {rounds}.",
-      "shareFailed": "Deling fungerte ikke her. Last ned eller kopier bildet i stedet.",
-      "downloaded": "Bildet er lastet ned.",
-      "imageCopied": "Bildet er kopiert. Lim det inn i innlegget ditt.",
-      "imageCopyFailed": "Denne nettleseren ville ikke kopiere bildet. Last det ned i stedet.",
-      "opened": "{network} åpnet i en ny fane. Legg til bildet der hvis du lagret eller kopierte det.",
-      "actions": {
-        "share": "Del",
-        "download": "Last ned bilde",
-        "copyImage": "Kopier bilde"
-      },
-      "post": {
-        "title": "Del på",
-        "note": "Disse lenkene deler teksten og lenken din, ikke bildet. Facebook og LinkedIn tar bare lenken. For å ta med kortet må du laste ned eller kopiere bildet først og så legge det til i innlegget.",
-        "newTab": "(åpnes i en ny fane)"
-      }
+      "alt": "Memory Chess-fremgangskort: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Del kortet, lagre det eller kopier det inn i et innlegg.",
+    "working": "Kortet ditt lages.",
+    "shared": "Delt.",
+    "failed": "Kortet kunne ikke lages her. Kopier teksten under i stedet.",
+    "caption": "Tekst",
+    "copy": "Kopier tekst",
+    "copied": "Tekst kopiert.",
+    "copyFailed": "Kopiering virket ikke her. Teksten er merket, så kopier den selv.",
+    "close": "Lukk",
+    "shareFailed": "Deling fungerte ikke her. Last ned eller kopier bildet i stedet.",
+    "downloaded": "Bildet er lastet ned.",
+    "imageCopied": "Bildet er kopiert. Lim det inn i innlegget ditt.",
+    "imageCopyFailed": "Denne nettleseren ville ikke kopiere bildet. Last det ned i stedet.",
+    "opened": "{network} åpnet i en ny fane. Legg til bildet der hvis du lagret eller kopierte det.",
+    "actions": {
+      "share": "Del",
+      "download": "Last ned bilde",
+      "copyImage": "Kopier bilde"
+    },
+    "post": {
+      "title": "Del på",
+      "note": "Disse lenkene deler teksten og lenken din, ikke bildet. Facebook og LinkedIn tar bare lenken. For å ta med kortet må du laste ned eller kopiere bildet først og så legge det til i innlegget.",
+      "newTab": "(åpnes i en ny fane)"
     }
   }
 }

@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Compartir mi progreso",
-      "working": "Creando tu tarjeta.",
-      "shared": "Compartido.",
-      "failed": "No se pudo crear la tarjeta aquí. Copia el texto de abajo en su lugar.",
-      "caption": "Texto",
-      "copy": "Copiar texto",
-      "copied": "Texto copiado.",
-      "copyFailed": "Copiar no funcionó aquí. El texto está seleccionado, cópialo tú.",
       "locked": "Tu tarjeta para compartir se desbloquea cuando tu amplitud de memoria, puntuación de habilidad, piezas retenidas, velocidad o racha de días estén listas.",
       "text": "Mi progreso en Memory Chess: {figures}. ¿Puedes superarlo?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Crea una imagen de tu registro para publicarla, guardarla o enviarla.",
       "title": "Comparte tu progreso",
-      "intro": "Comparte la tarjeta, guárdala o cópiala en una publicación.",
-      "close": "Cerrar",
-      "alt": "Tarjeta de progreso de Memory Chess: {figures}. {rounds}.",
-      "shareFailed": "No se pudo compartir aquí. Descarga o copia la imagen en su lugar.",
-      "downloaded": "Imagen descargada.",
-      "imageCopied": "Imagen copiada. Pégala en tu publicación.",
-      "imageCopyFailed": "Este navegador no pudo copiar la imagen. Descárgala en su lugar.",
-      "opened": "{network} se abrió en una pestaña nueva. Añade allí la imagen si la guardaste o copiaste.",
-      "actions": {
-        "share": "Compartir",
-        "download": "Descargar imagen",
-        "copyImage": "Copiar imagen"
-      },
-      "post": {
-        "title": "Publicar en",
-        "note": "Estos enlaces publican tu texto y tu enlace, no la imagen. Facebook y LinkedIn solo toman el enlace. Para incluir la tarjeta, descarga o copia la imagen primero y añádela a tu publicación.",
-        "newTab": "(se abre en una pestaña nueva)"
-      }
+      "alt": "Tarjeta de progreso de Memory Chess: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Comparte la tarjeta, guárdala o cópiala en una publicación.",
+    "working": "Creando tu tarjeta.",
+    "shared": "Compartido.",
+    "failed": "No se pudo crear la tarjeta aquí. Copia el texto de abajo en su lugar.",
+    "caption": "Texto",
+    "copy": "Copiar texto",
+    "copied": "Texto copiado.",
+    "copyFailed": "Copiar no funcionó aquí. El texto está seleccionado, cópialo tú.",
+    "close": "Cerrar",
+    "shareFailed": "No se pudo compartir aquí. Descarga o copia la imagen en su lugar.",
+    "downloaded": "Imagen descargada.",
+    "imageCopied": "Imagen copiada. Pégala en tu publicación.",
+    "imageCopyFailed": "Este navegador no pudo copiar la imagen. Descárgala en su lugar.",
+    "opened": "{network} se abrió en una pestaña nueva. Añade allí la imagen si la guardaste o copiaste.",
+    "actions": {
+      "share": "Compartir",
+      "download": "Descargar imagen",
+      "copyImage": "Copiar imagen"
+    },
+    "post": {
+      "title": "Publicar en",
+      "note": "Estos enlaces publican tu texto y tu enlace, no la imagen. Facebook y LinkedIn solo toman el enlace. Para incluir la tarjeta, descarga o copia la imagen primero y añádela a tu publicación.",
+      "newTab": "(se abre en una pestaña nueva)"
     }
   }
 }

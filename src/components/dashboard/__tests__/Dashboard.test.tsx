@@ -5,7 +5,7 @@ import type { LabData } from "@/hooks/useLabData";
 import { persona } from "@/test-utils/labPersona";
 import type { PersonaName } from "@/lib/lab/personas";
 
-jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
+jest.mock("@/lib/analytics/events", () => ({ ...jest.requireActual("@/lib/analytics/events"), trackEvent: jest.fn() }));
 jest.mock("@/components/dashboard/shareImage", () => ({ drawShareCard: () => Promise.resolve(new Blob(["png"], { type: "image/png" })) }));
 
 let labData: LabData;

@@ -5,7 +5,7 @@ import { saveBlob } from "@/lib/saveBlob";
 import { drawShareCard } from "@/components/dashboard/shareImage";
 import type { ShareCard } from "@/lib/lab/dashboard";
 
-jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
+jest.mock("@/lib/analytics/events", () => ({ ...jest.requireActual("@/lib/analytics/events"), trackEvent: jest.fn() }));
 jest.mock("@/lib/saveBlob", () => ({ saveBlob: jest.fn() }));
 jest.mock("@/components/dashboard/shareImage", () => ({ drawShareCard: jest.fn() }));
 

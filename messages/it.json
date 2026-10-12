@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Condividi i miei progressi",
-      "working": "Creazione della scheda.",
-      "shared": "Condiviso.",
-      "failed": "Qui non è stato possibile creare la scheda. Copia invece il testo qui sotto.",
-      "caption": "Testo",
-      "copy": "Copia testo",
-      "copied": "Testo copiato.",
-      "copyFailed": "La copia non ha funzionato qui. Il testo è selezionato, copialo tu.",
       "locked": "La scheda da condividere si sblocca quando span di memoria, punteggio di abilità, pezzi ricordati, velocità o giorni di fila sono pronti.",
       "text": "I miei progressi su Memory Chess: {figures}. Riesci a fare di meglio?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Crea un'immagine del tuo registro da pubblicare, salvare o inviare.",
       "title": "Condividi i tuoi progressi",
-      "intro": "Condividi la scheda, salvala o copiala in un post.",
-      "close": "Chiudi",
-      "alt": "Scheda dei progressi di Memory Chess: {figures}. {rounds}.",
-      "shareFailed": "La condivisione qui non ha funzionato. Scarica o copia l'immagine.",
-      "downloaded": "Immagine scaricata.",
-      "imageCopied": "Immagine copiata. Incollala nel tuo post.",
-      "imageCopyFailed": "Questo browser non ha copiato l'immagine. Scaricala invece.",
-      "opened": "{network} si è aperto in una nuova scheda. Aggiungi lì l'immagine se l'hai salvata o copiata.",
-      "actions": {
-        "share": "Condividi",
-        "download": "Scarica immagine",
-        "copyImage": "Copia immagine"
-      },
-      "post": {
-        "title": "Pubblica su",
-        "note": "Questi link pubblicano il tuo testo e il link, non l'immagine. Facebook e LinkedIn prendono solo il link. Per includere la scheda, scarica o copia prima l'immagine, poi aggiungila al tuo post.",
-        "newTab": "(si apre in una nuova scheda)"
-      }
+      "alt": "Scheda dei progressi di Memory Chess: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Condividi la scheda, salvala o copiala in un post.",
+    "working": "Creazione della scheda.",
+    "shared": "Condiviso.",
+    "failed": "Qui non è stato possibile creare la scheda. Copia invece il testo qui sotto.",
+    "caption": "Testo",
+    "copy": "Copia testo",
+    "copied": "Testo copiato.",
+    "copyFailed": "La copia non ha funzionato qui. Il testo è selezionato, copialo tu.",
+    "close": "Chiudi",
+    "shareFailed": "La condivisione qui non ha funzionato. Scarica o copia l'immagine.",
+    "downloaded": "Immagine scaricata.",
+    "imageCopied": "Immagine copiata. Incollala nel tuo post.",
+    "imageCopyFailed": "Questo browser non ha copiato l'immagine. Scaricala invece.",
+    "opened": "{network} si è aperto in una nuova scheda. Aggiungi lì l'immagine se l'hai salvata o copiata.",
+    "actions": {
+      "share": "Condividi",
+      "download": "Scarica immagine",
+      "copyImage": "Copia immagine"
+    },
+    "post": {
+      "title": "Pubblica su",
+      "note": "Questi link pubblicano il tuo testo e il link, non l'immagine. Facebook e LinkedIn prendono solo il link. Per includere la scheda, scarica o copia prima l'immagine, poi aggiungila al tuo post.",
+      "newTab": "(si apre in una nuova scheda)"
     }
   }
 }

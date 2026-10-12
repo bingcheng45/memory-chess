@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Sdílet můj pokrok",
-      "working": "Vytváří se tvá karta.",
-      "shared": "Sdíleno.",
-      "failed": "Kartu zde nešlo vytvořit. Zkopíruj místo toho text níže.",
-      "caption": "Text",
-      "copy": "Kopírovat text",
-      "copied": "Text zkopírován.",
-      "copyFailed": "Kopírování zde nefungovalo. Text je označený, zkopíruj ho sám.",
       "locked": "Karta ke sdílení se odemkne, jakmile bude připraven paměťový rozsah, hodnocení dovednosti, zapamatované figury, rychlost nebo tvá denní série.",
       "text": "Můj pokrok v Memory Chess: {figures}. Překonáš to?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Vytvoř obrázek svého záznamu a zveřejni ho, ulož nebo pošli.",
       "title": "Sdílej svůj pokrok",
-      "intro": "Kartu sdílej, ulož nebo zkopíruj do příspěvku.",
-      "close": "Zavřít",
-      "alt": "Karta pokroku Memory Chess: {figures}. {rounds}.",
-      "shareFailed": "Sdílení zde nefungovalo. Obrázek místo toho stáhni nebo zkopíruj.",
-      "downloaded": "Obrázek stažen.",
-      "imageCopied": "Obrázek zkopírován. Vlož ho do příspěvku.",
-      "imageCopyFailed": "Tento prohlížeč obrázek nezkopíroval. Místo toho ho stáhni.",
-      "opened": "{network} se otevřel v nové kartě. Pokud jsi obrázek uložil nebo zkopíroval, přidej ho tam.",
-      "actions": {
-        "share": "Sdílet",
-        "download": "Stáhnout obrázek",
-        "copyImage": "Kopírovat obrázek"
-      },
-      "post": {
-        "title": "Zveřejnit na",
-        "note": "Tyto odkazy zveřejní text a odkaz, ne obrázek. Facebook a LinkedIn převezmou jen odkaz. Chceš-li přidat kartu, nejdřív obrázek stáhni nebo zkopíruj a pak ho vlož do příspěvku.",
-        "newTab": "(otevře se v nové kartě)"
-      }
+      "alt": "Karta pokroku Memory Chess: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Kartu sdílej, ulož nebo zkopíruj do příspěvku.",
+    "working": "Vytváří se tvá karta.",
+    "shared": "Sdíleno.",
+    "failed": "Kartu zde nešlo vytvořit. Zkopíruj místo toho text níže.",
+    "caption": "Text",
+    "copy": "Kopírovat text",
+    "copied": "Text zkopírován.",
+    "copyFailed": "Kopírování zde nefungovalo. Text je označený, zkopíruj ho sám.",
+    "close": "Zavřít",
+    "shareFailed": "Sdílení zde nefungovalo. Obrázek místo toho stáhni nebo zkopíruj.",
+    "downloaded": "Obrázek stažen.",
+    "imageCopied": "Obrázek zkopírován. Vlož ho do příspěvku.",
+    "imageCopyFailed": "Tento prohlížeč obrázek nezkopíroval. Místo toho ho stáhni.",
+    "opened": "{network} se otevřel v nové kartě. Pokud jsi obrázek uložil nebo zkopíroval, přidej ho tam.",
+    "actions": {
+      "share": "Sdílet",
+      "download": "Stáhnout obrázek",
+      "copyImage": "Kopírovat obrázek"
+    },
+    "post": {
+      "title": "Zveřejnit na",
+      "note": "Tyto odkazy zveřejní text a odkaz, ne obrázek. Facebook a LinkedIn převezmou jen odkaz. Chceš-li přidat kartu, nejdřív obrázek stáhni nebo zkopíruj a pak ho vlož do příspěvku.",
+      "newTab": "(otevře se v nové kartě)"
     }
   }
 }

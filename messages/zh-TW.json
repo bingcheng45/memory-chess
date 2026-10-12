@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "分享我的進度",
-      "working": "正在產生你的卡片。",
-      "shared": "已分享。",
-      "failed": "此處無法產生卡片。請改為複製下方文案。",
-      "caption": "文案",
-      "copy": "複製文案",
-      "copied": "文案已複製。",
-      "copyFailed": "此處無法複製。文案已選取，請手動複製。",
       "locked": "當記憶廣度、技能評分、記住的棋子、速度或連續天數任一項就緒後，分享卡片即會解鎖。",
       "text": "我在 Memory Chess 的進度：{figures}。你能超越嗎？",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "把你的紀錄產生成圖片，用來發布、儲存或傳送。",
       "title": "分享你的進度",
-      "intro": "分享卡片、儲存，或複製到貼文裡。",
-      "close": "關閉",
-      "alt": "Memory Chess 進度卡片：{figures}。{rounds}。",
-      "shareFailed": "此處無法分享。請改為下載或複製圖片。",
-      "downloaded": "圖片已下載。",
-      "imageCopied": "圖片已複製。貼到你的貼文裡吧。",
-      "imageCopyFailed": "此瀏覽器無法複製圖片。請改為下載。",
-      "opened": "已在新分頁開啟 {network}。如果你已儲存或複製圖片，請在那裡加入。",
-      "actions": {
-        "share": "分享",
-        "download": "下載圖片",
-        "copyImage": "複製圖片"
-      },
-      "post": {
-        "title": "發布到",
-        "note": "這些連結只會發布文案和連結，不含圖片。Facebook 和 LinkedIn 只會帶上連結。想附上卡片，請先下載或複製圖片，再加入貼文。",
-        "newTab": "（在新分頁開啟）"
-      }
+      "alt": "Memory Chess 進度卡片：{figures}。{rounds}。"
+    }
+  },
+  "share": {
+    "intro": "分享卡片、儲存，或複製到貼文裡。",
+    "working": "正在產生你的卡片。",
+    "shared": "已分享。",
+    "failed": "此處無法產生卡片。請改為複製下方文案。",
+    "caption": "文案",
+    "copy": "複製文案",
+    "copied": "文案已複製。",
+    "copyFailed": "此處無法複製。文案已選取，請手動複製。",
+    "close": "關閉",
+    "shareFailed": "此處無法分享。請改為下載或複製圖片。",
+    "downloaded": "圖片已下載。",
+    "imageCopied": "圖片已複製。貼到你的貼文裡吧。",
+    "imageCopyFailed": "此瀏覽器無法複製圖片。請改為下載。",
+    "opened": "已在新分頁開啟 {network}。如果你已儲存或複製圖片，請在那裡加入。",
+    "actions": {
+      "share": "分享",
+      "download": "下載圖片",
+      "copyImage": "複製圖片"
+    },
+    "post": {
+      "title": "發布到",
+      "note": "這些連結只會發布文案和連結，不含圖片。Facebook 和 LinkedIn 只會帶上連結。想附上卡片，請先下載或複製圖片，再加入貼文。",
+      "newTab": "（在新分頁開啟）"
     }
   }
 }

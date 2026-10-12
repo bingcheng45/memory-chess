@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Bagikan kemajuanku",
-      "working": "Membuat kartumu.",
-      "shared": "Dibagikan.",
-      "failed": "Kartu tidak bisa dibuat di sini. Salin teks di bawah sebagai gantinya.",
-      "caption": "Teks",
-      "copy": "Salin teks",
-      "copied": "Teks disalin.",
-      "copyFailed": "Menyalin tidak berhasil di sini. Teks sudah dipilih, salin sendiri.",
       "locked": "Kartu untuk dibagikan terbuka setelah rentang memori, rating keahlian, bidak diingat, kecepatan, atau hari beruntunmu siap.",
       "text": "Kemajuanku di Memory Chess: {figures}. Bisa kalahkan?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Buat gambar dari catatanmu untuk diunggah, disimpan, atau dikirim.",
       "title": "Bagikan kemajuanmu",
-      "intro": "Bagikan kartunya, simpan, atau salin ke dalam unggahan.",
-      "close": "Tutup",
-      "alt": "Kartu kemajuan Memory Chess: {figures}. {rounds}.",
-      "shareFailed": "Berbagi tidak berhasil di sini. Unduh atau salin gambarnya sebagai gantinya.",
-      "downloaded": "Gambar diunduh.",
-      "imageCopied": "Gambar disalin. Tempelkan ke unggahanmu.",
-      "imageCopyFailed": "Browser ini tidak bisa menyalin gambar. Unduh saja sebagai gantinya.",
-      "opened": "{network} terbuka di tab baru. Tambahkan gambarnya di sana jika kamu sudah menyimpan atau menyalinnya.",
-      "actions": {
-        "share": "Bagikan",
-        "download": "Unduh gambar",
-        "copyImage": "Salin gambar"
-      },
-      "post": {
-        "title": "Unggah ke",
-        "note": "Tautan ini mengunggah teks dan tautanmu, bukan gambarnya. Facebook dan LinkedIn hanya mengambil tautannya. Untuk menyertakan kartu, unduh atau salin gambarnya dulu, lalu tambahkan ke unggahanmu.",
-        "newTab": "(terbuka di tab baru)"
-      }
+      "alt": "Kartu kemajuan Memory Chess: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Bagikan kartunya, simpan, atau salin ke dalam unggahan.",
+    "working": "Membuat kartumu.",
+    "shared": "Dibagikan.",
+    "failed": "Kartu tidak bisa dibuat di sini. Salin teks di bawah sebagai gantinya.",
+    "caption": "Teks",
+    "copy": "Salin teks",
+    "copied": "Teks disalin.",
+    "copyFailed": "Menyalin tidak berhasil di sini. Teks sudah dipilih, salin sendiri.",
+    "close": "Tutup",
+    "shareFailed": "Berbagi tidak berhasil di sini. Unduh atau salin gambarnya sebagai gantinya.",
+    "downloaded": "Gambar diunduh.",
+    "imageCopied": "Gambar disalin. Tempelkan ke unggahanmu.",
+    "imageCopyFailed": "Browser ini tidak bisa menyalin gambar. Unduh saja sebagai gantinya.",
+    "opened": "{network} terbuka di tab baru. Tambahkan gambarnya di sana jika kamu sudah menyimpan atau menyalinnya.",
+    "actions": {
+      "share": "Bagikan",
+      "download": "Unduh gambar",
+      "copyImage": "Salin gambar"
+    },
+    "post": {
+      "title": "Unggah ke",
+      "note": "Tautan ini mengunggah teks dan tautanmu, bukan gambarnya. Facebook dan LinkedIn hanya mengambil tautannya. Untuk menyertakan kartu, unduh atau salin gambarnya dulu, lalu tambahkan ke unggahanmu.",
+      "newTab": "(terbuka di tab baru)"
     }
   }
 }

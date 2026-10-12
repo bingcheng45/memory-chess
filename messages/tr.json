@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "İlerlememi paylaş",
-      "working": "Kartın hazırlanıyor.",
-      "shared": "Paylaşıldı.",
-      "failed": "Kart burada oluşturulamadı. Bunun yerine aşağıdaki metni kopyala.",
-      "caption": "Metin",
-      "copy": "Metni kopyala",
-      "copied": "Metin kopyalandı.",
-      "copyFailed": "Kopyalama burada çalışmadı. Metin seçili, kendin kopyala.",
       "locked": "Paylaşım kartın; bellek kapasitesi, beceri puanı, akılda tutulan taşlar, hız veya gün serin hazır olduğunda açılır.",
       "text": "Memory Chess ilerlemem: {figures}. Geçebilir misin?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Kaydının bir görselini oluştur; paylaş, kaydet ya da gönder.",
       "title": "İlerlemeni paylaş",
-      "intro": "Kartı paylaş, kaydet ya da bir gönderiye kopyala.",
-      "close": "Kapat",
-      "alt": "Memory Chess ilerleme kartı: {figures}. {rounds}.",
-      "shareFailed": "Paylaşım burada çalışmadı. Bunun yerine görseli indir ya da kopyala.",
-      "downloaded": "Görsel indirildi.",
-      "imageCopied": "Görsel kopyalandı. Gönderine yapıştır.",
-      "imageCopyFailed": "Bu tarayıcı görseli kopyalamadı. Bunun yerine indir.",
-      "opened": "{network} yeni sekmede açıldı. Görseli kaydettiysen ya da kopyaladıysan orada ekle.",
-      "actions": {
-        "share": "Paylaş",
-        "download": "Görseli indir",
-        "copyImage": "Görseli kopyala"
-      },
-      "post": {
-        "title": "Şurada paylaş",
-        "note": "Bu bağlantılar görseli değil, metnini ve bağlantını paylaşır. Facebook ve LinkedIn yalnızca bağlantıyı alır. Kartı eklemek için önce görseli indir ya da kopyala, sonra gönderine ekle.",
-        "newTab": "(yeni sekmede açılır)"
-      }
+      "alt": "Memory Chess ilerleme kartı: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Kartı paylaş, kaydet ya da bir gönderiye kopyala.",
+    "working": "Kartın hazırlanıyor.",
+    "shared": "Paylaşıldı.",
+    "failed": "Kart burada oluşturulamadı. Bunun yerine aşağıdaki metni kopyala.",
+    "caption": "Metin",
+    "copy": "Metni kopyala",
+    "copied": "Metin kopyalandı.",
+    "copyFailed": "Kopyalama burada çalışmadı. Metin seçili, kendin kopyala.",
+    "close": "Kapat",
+    "shareFailed": "Paylaşım burada çalışmadı. Bunun yerine görseli indir ya da kopyala.",
+    "downloaded": "Görsel indirildi.",
+    "imageCopied": "Görsel kopyalandı. Gönderine yapıştır.",
+    "imageCopyFailed": "Bu tarayıcı görseli kopyalamadı. Bunun yerine indir.",
+    "opened": "{network} yeni sekmede açıldı. Görseli kaydettiysen ya da kopyaladıysan orada ekle.",
+    "actions": {
+      "share": "Paylaş",
+      "download": "Görseli indir",
+      "copyImage": "Görseli kopyala"
+    },
+    "post": {
+      "title": "Şurada paylaş",
+      "note": "Bu bağlantılar görseli değil, metnini ve bağlantını paylaşır. Facebook ve LinkedIn yalnızca bağlantıyı alır. Kartı eklemek için önce görseli indir ya da kopyala, sonra gönderine ekle.",
+      "newTab": "(yeni sekmede açılır)"
     }
   }
 }

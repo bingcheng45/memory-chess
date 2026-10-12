@@ -1,5 +1,6 @@
 import { createTranslator } from "next-intl";
-import { captionWithLink, shareCaption, type DashboardTranslate } from "@/components/dashboard/shareCaption";
+import { shareCaption, type DashboardTranslate } from "@/components/dashboard/shareCaption";
+import { captionWithLink } from "@/components/share/shareLink";
 import type { ShareCard } from "@/lib/lab/dashboard";
 import en from "../../../../messages/en.json";
 import de from "../../../../messages/de.json";

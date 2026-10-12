@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Chia sẻ tiến bộ của tôi",
-      "working": "Đang tạo thẻ của bạn.",
-      "shared": "Đã chia sẻ.",
-      "failed": "Không thể tạo thẻ ở đây. Hãy sao chép chú thích bên dưới.",
-      "caption": "Chú thích",
-      "copy": "Sao chép chú thích",
-      "copied": "Đã sao chép chú thích.",
-      "copyFailed": "Sao chép không hoạt động ở đây. Chú thích đã được chọn, hãy tự sao chép.",
       "locked": "Thẻ chia sẻ sẽ mở khi tầm nhớ, điểm kỹ năng, số quân nhớ được, tốc độ hoặc chuỗi ngày của bạn sẵn sàng.",
       "text": "Tiến bộ của tôi trên Memory Chess: {figures}. Bạn có vượt được không?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Tạo hình ảnh hồ sơ của bạn để đăng, lưu hoặc gửi.",
       "title": "Chia sẻ tiến bộ của bạn",
-      "intro": "Chia sẻ thẻ, lưu lại hoặc sao chép vào bài đăng.",
-      "close": "Đóng",
-      "alt": "Thẻ tiến bộ Memory Chess: {figures}. {rounds}.",
-      "shareFailed": "Không chia sẻ được ở đây. Hãy tải xuống hoặc sao chép hình ảnh.",
-      "downloaded": "Đã tải hình ảnh xuống.",
-      "imageCopied": "Đã sao chép hình ảnh. Dán vào bài đăng của bạn.",
-      "imageCopyFailed": "Trình duyệt này không sao chép được hình ảnh. Hãy tải xuống.",
-      "opened": "Đã mở {network} trong thẻ mới. Thêm hình ảnh ở đó nếu bạn đã lưu hoặc sao chép.",
-      "actions": {
-        "share": "Chia sẻ",
-        "download": "Tải hình ảnh",
-        "copyImage": "Sao chép hình ảnh"
-      },
-      "post": {
-        "title": "Đăng lên",
-        "note": "Các liên kết này đăng chú thích và liên kết của bạn, không kèm hình ảnh. Facebook và LinkedIn chỉ nhận liên kết. Để kèm thẻ, hãy tải xuống hoặc sao chép hình ảnh trước rồi thêm vào bài đăng.",
-        "newTab": "(mở trong thẻ mới)"
-      }
+      "alt": "Thẻ tiến bộ Memory Chess: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Chia sẻ thẻ, lưu lại hoặc sao chép vào bài đăng.",
+    "working": "Đang tạo thẻ của bạn.",
+    "shared": "Đã chia sẻ.",
+    "failed": "Không thể tạo thẻ ở đây. Hãy sao chép chú thích bên dưới.",
+    "caption": "Chú thích",
+    "copy": "Sao chép chú thích",
+    "copied": "Đã sao chép chú thích.",
+    "copyFailed": "Sao chép không hoạt động ở đây. Chú thích đã được chọn, hãy tự sao chép.",
+    "close": "Đóng",
+    "shareFailed": "Không chia sẻ được ở đây. Hãy tải xuống hoặc sao chép hình ảnh.",
+    "downloaded": "Đã tải hình ảnh xuống.",
+    "imageCopied": "Đã sao chép hình ảnh. Dán vào bài đăng của bạn.",
+    "imageCopyFailed": "Trình duyệt này không sao chép được hình ảnh. Hãy tải xuống.",
+    "opened": "Đã mở {network} trong thẻ mới. Thêm hình ảnh ở đó nếu bạn đã lưu hoặc sao chép.",
+    "actions": {
+      "share": "Chia sẻ",
+      "download": "Tải hình ảnh",
+      "copyImage": "Sao chép hình ảnh"
+    },
+    "post": {
+      "title": "Đăng lên",
+      "note": "Các liên kết này đăng chú thích và liên kết của bạn, không kèm hình ảnh. Facebook và LinkedIn chỉ nhận liên kết. Để kèm thẻ, hãy tải xuống hoặc sao chép hình ảnh trước rồi thêm vào bài đăng.",
+      "newTab": "(mở trong thẻ mới)"
     }
   }
 }

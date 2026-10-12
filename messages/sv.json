@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Dela mina framsteg",
-      "working": "Ditt kort skapas.",
-      "shared": "Delat.",
-      "failed": "Kortet kunde inte skapas här. Kopiera texten nedan i stället.",
-      "caption": "Text",
-      "copy": "Kopiera text",
-      "copied": "Texten kopierad.",
-      "copyFailed": "Kopieringen fungerade inte här. Texten är markerad, så kopiera den själv.",
       "locked": "Ditt delningskort låses upp när minnesspann, färdighetsrating, hållna pjäser, tempo eller dagssvit är klar.",
       "text": "Mina framsteg i Memory Chess: {figures}. Kan du slå det?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Gör en bild av din journal att lägga upp, spara eller skicka.",
       "title": "Dela dina framsteg",
-      "intro": "Dela kortet, spara det eller kopiera in det i ett inlägg.",
-      "close": "Stäng",
-      "alt": "Memory Chess-framstegskort: {figures}. {rounds}.",
-      "shareFailed": "Delningen fungerade inte här. Ladda ned eller kopiera bilden i stället.",
-      "downloaded": "Bilden har laddats ned.",
-      "imageCopied": "Bilden kopierad. Klistra in den i ditt inlägg.",
-      "imageCopyFailed": "Den här webbläsaren kopierade inte bilden. Ladda ned den i stället.",
-      "opened": "{network} öppnades i en ny flik. Lägg till bilden där om du har sparat eller kopierat den.",
-      "actions": {
-        "share": "Dela",
-        "download": "Ladda ned bild",
-        "copyImage": "Kopiera bild"
-      },
-      "post": {
-        "title": "Lägg upp på",
-        "note": "De här länkarna lägger upp din text och länk, inte bilden. Facebook och LinkedIn tar bara länken. Vill du ha med kortet laddar du ned eller kopierar bilden först och lägger sedan till den i inlägget.",
-        "newTab": "(öppnas i en ny flik)"
-      }
+      "alt": "Memory Chess-framstegskort: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Dela kortet, spara det eller kopiera in det i ett inlägg.",
+    "working": "Ditt kort skapas.",
+    "shared": "Delat.",
+    "failed": "Kortet kunde inte skapas här. Kopiera texten nedan i stället.",
+    "caption": "Text",
+    "copy": "Kopiera text",
+    "copied": "Texten kopierad.",
+    "copyFailed": "Kopieringen fungerade inte här. Texten är markerad, så kopiera den själv.",
+    "close": "Stäng",
+    "shareFailed": "Delningen fungerade inte här. Ladda ned eller kopiera bilden i stället.",
+    "downloaded": "Bilden har laddats ned.",
+    "imageCopied": "Bilden kopierad. Klistra in den i ditt inlägg.",
+    "imageCopyFailed": "Den här webbläsaren kopierade inte bilden. Ladda ned den i stället.",
+    "opened": "{network} öppnades i en ny flik. Lägg till bilden där om du har sparat eller kopierat den.",
+    "actions": {
+      "share": "Dela",
+      "download": "Ladda ned bild",
+      "copyImage": "Kopiera bild"
+    },
+    "post": {
+      "title": "Lägg upp på",
+      "note": "De här länkarna lägger upp din text och länk, inte bilden. Facebook och LinkedIn tar bara länken. Vill du ha med kortet laddar du ned eller kopierar bilden först och lägger sedan till den i inlägget.",
+      "newTab": "(öppnas i en ny flik)"
     }
   }
 }

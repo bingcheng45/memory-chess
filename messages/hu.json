@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Fejlődésem megosztása",
-      "working": "A kártyád készül.",
-      "shared": "Megosztva.",
-      "failed": "A kártyát itt nem sikerült elkészíteni. Másold ki helyette az alábbi szöveget.",
-      "caption": "Szöveg",
-      "copy": "Szöveg másolása",
-      "copied": "Szöveg kimásolva.",
-      "copyFailed": "A másolás itt nem működött. A szöveg ki van jelölve, másold ki magad.",
       "locked": "A megosztható kártya akkor oldódik fel, amikor kész a memóriaterjedelem, a képességpontszám, a megjegyzett bábuk, a sebesség vagy a napi sorozatod.",
       "text": "A fejlődésem a Memory Chessben: {figures}. Meg tudod verni?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Készíts képet a jegyzőkönyvedről, hogy megoszd, elmentsd vagy elküldd.",
       "title": "Oszd meg a fejlődésed",
-      "intro": "Oszd meg a kártyát, mentsd el, vagy másold be egy bejegyzésbe.",
-      "close": "Bezárás",
-      "alt": "Memory Chess fejlődési kártya: {figures}. {rounds}.",
-      "shareFailed": "A megosztás itt nem működött. Inkább töltsd le vagy másold ki a képet.",
-      "downloaded": "Kép letöltve.",
-      "imageCopied": "Kép kimásolva. Illeszd be a bejegyzésedbe.",
-      "imageCopyFailed": "Ez a böngésző nem másolta ki a képet. Inkább töltsd le.",
-      "opened": "A(z) {network} új lapon nyílt meg. Ott add hozzá a képet, ha elmentetted vagy kimásoltad.",
-      "actions": {
-        "share": "Megosztás",
-        "download": "Kép letöltése",
-        "copyImage": "Kép másolása"
-      },
-      "post": {
-        "title": "Közzététel itt",
-        "note": "Ezek a hivatkozások a szövegedet és a linket osztják meg, a képet nem. A Facebook és a LinkedIn csak a linket veszi át. Ha a kártyát is szeretnéd, előbb töltsd le vagy másold ki a képet, majd add hozzá a bejegyzésedhez.",
-        "newTab": "(új lapon nyílik meg)"
-      }
+      "alt": "Memory Chess fejlődési kártya: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Oszd meg a kártyát, mentsd el, vagy másold be egy bejegyzésbe.",
+    "working": "A kártyád készül.",
+    "shared": "Megosztva.",
+    "failed": "A kártyát itt nem sikerült elkészíteni. Másold ki helyette az alábbi szöveget.",
+    "caption": "Szöveg",
+    "copy": "Szöveg másolása",
+    "copied": "Szöveg kimásolva.",
+    "copyFailed": "A másolás itt nem működött. A szöveg ki van jelölve, másold ki magad.",
+    "close": "Bezárás",
+    "shareFailed": "A megosztás itt nem működött. Inkább töltsd le vagy másold ki a képet.",
+    "downloaded": "Kép letöltve.",
+    "imageCopied": "Kép kimásolva. Illeszd be a bejegyzésedbe.",
+    "imageCopyFailed": "Ez a böngésző nem másolta ki a képet. Inkább töltsd le.",
+    "opened": "A(z) {network} új lapon nyílt meg. Ott add hozzá a képet, ha elmentetted vagy kimásoltad.",
+    "actions": {
+      "share": "Megosztás",
+      "download": "Kép letöltése",
+      "copyImage": "Kép másolása"
+    },
+    "post": {
+      "title": "Közzététel itt",
+      "note": "Ezek a hivatkozások a szövegedet és a linket osztják meg, a képet nem. A Facebook és a LinkedIn csak a linket veszi át. Ha a kártyát is szeretnéd, előbb töltsd le vagy másold ki a képet, majd add hozzá a bejegyzésedhez.",
+      "newTab": "(új lapon nyílik meg)"
     }
   }
 }

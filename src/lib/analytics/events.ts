@@ -107,10 +107,22 @@ export type FunnelEvent =
   /** How the progress card left the dashboard: the share sheet, a saved or copied image, the caption copied, or a network's post page. Never its figures. */
   | {
       name: "lab_dashboard_share";
-      params: { method: Exclude<ShareMethod, "post"> } | { method: "post"; network: ShareNetwork };
+      params: ShareParams;
+    }
+  /** The same for a round's result card on /game. Never the round's score or position. */
+  | {
+      name: "result_share";
+      params: ShareParams;
     };
 
 export type ShareMethod = "native" | "download" | "copy_image" | "copy" | "post";
+
+export type ShareParams = { method: Exclude<ShareMethod, "post"> } | { method: "post"; network: ShareNetwork };
+
+/** Where a share dialog opens, and the event it reports under: each surface keeps its own name, so neither one's counts need a custom dimension to read apart. */
+export const SHARE_EVENTS = { dashboard: "lab_dashboard_share", result: "result_share" } as const satisfies Record<string, FunnelEvent["name"]>;
+
+export type ShareSurface = keyof typeof SHARE_EVENTS;
 
 export function trackEvent({ name, params }: FunnelEvent): void {
   if (typeof window === "undefined" || typeof window.gtag !== "function") return;

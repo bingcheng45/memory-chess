@@ -1486,13 +1486,6 @@
     },
     "share": {
       "button": "Share my progress",
-      "working": "Making your card.",
-      "shared": "Shared.",
-      "failed": "The card could not be made here. Copy the caption below instead.",
-      "caption": "Caption",
-      "copy": "Copy caption",
-      "copied": "Caption copied.",
-      "copyFailed": "Copy did not work here. The caption is selected, so copy it yourself.",
       "locked": "Your share card unlocks once memory span, skill rating, pieces held, speed or your day streak is ready.",
       "text": "My Memory Chess progress: {figures}. Can you beat it?",
       "figure": {
@@ -1509,24 +1502,33 @@
       },
       "lede": "Make an image of your record to post, save or send.",
       "title": "Share your progress",
-      "intro": "Share the card, save it, or copy it into a post.",
-      "close": "Close",
-      "alt": "Memory Chess progress card: {figures}. {rounds}.",
-      "shareFailed": "Sharing did not work here. Download or copy the image instead.",
-      "downloaded": "Image downloaded.",
-      "imageCopied": "Image copied. Paste it into your post.",
-      "imageCopyFailed": "This browser would not copy the image. Download it instead.",
-      "opened": "{network} opened in a new tab. Add the image there if you saved or copied it.",
-      "actions": {
-        "share": "Share",
-        "download": "Download image",
-        "copyImage": "Copy image"
-      },
-      "post": {
-        "title": "Post to",
-        "note": "These links post your caption and link, not the image. Facebook and LinkedIn take the link only. To include the card, download or copy the image first, then add it to your post.",
-        "newTab": "(opens in a new tab)"
-      }
+      "alt": "Memory Chess progress card: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Share the card, save it, or copy it into a post.",
+    "working": "Making your card.",
+    "shared": "Shared.",
+    "failed": "The card could not be made here. Copy the caption below instead.",
+    "caption": "Caption",
+    "copy": "Copy caption",
+    "copied": "Caption copied.",
+    "copyFailed": "Copy did not work here. The caption is selected, so copy it yourself.",
+    "close": "Close",
+    "shareFailed": "Sharing did not work here. Download or copy the image instead.",
+    "downloaded": "Image downloaded.",
+    "imageCopied": "Image copied. Paste it into your post.",
+    "imageCopyFailed": "This browser would not copy the image. Download it instead.",
+    "opened": "{network} opened in a new tab. Add the image there if you saved or copied it.",
+    "actions": {
+      "share": "Share",
+      "download": "Download image",
+      "copyImage": "Copy image"
+    },
+    "post": {
+      "title": "Post to",
+      "note": "These links post your caption and link, not the image. Facebook and LinkedIn take the link only. To include the card, download or copy the image first, then add it to your post.",
+      "newTab": "(opens in a new tab)"
     }
   }
 }

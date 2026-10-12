@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Deel mijn voortgang",
-      "working": "Je kaart wordt gemaakt.",
-      "shared": "Gedeeld.",
-      "failed": "De kaart kon hier niet worden gemaakt. Kopieer in plaats daarvan de tekst hieronder.",
-      "caption": "Tekst",
-      "copy": "Tekst kopiëren",
-      "copied": "Tekst gekopieerd.",
-      "copyFailed": "Kopiëren werkte hier niet. De tekst is geselecteerd, kopieer hem zelf.",
       "locked": "Je deelkaart wordt ontgrendeld zodra je geheugenspanne, vaardigheidsrating, onthouden stukken, snelheid of dagreeks klaar is.",
       "text": "Mijn voortgang bij Memory Chess: {figures}. Kun jij het beter?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Maak een afbeelding van je verslag om te plaatsen, op te slaan of te versturen.",
       "title": "Deel je voortgang",
-      "intro": "Deel de kaart, sla hem op of kopieer hem in een bericht.",
-      "close": "Sluiten",
-      "alt": "Memory Chess-voortgangskaart: {figures}. {rounds}.",
-      "shareFailed": "Delen werkte hier niet. Download of kopieer de afbeelding in plaats daarvan.",
-      "downloaded": "Afbeelding gedownload.",
-      "imageCopied": "Afbeelding gekopieerd. Plak hem in je bericht.",
-      "imageCopyFailed": "Deze browser kon de afbeelding niet kopiëren. Download hem in plaats daarvan.",
-      "opened": "{network} is geopend in een nieuw tabblad. Voeg de afbeelding daar toe als je hem hebt opgeslagen of gekopieerd.",
-      "actions": {
-        "share": "Delen",
-        "download": "Afbeelding downloaden",
-        "copyImage": "Afbeelding kopiëren"
-      },
-      "post": {
-        "title": "Plaatsen op",
-        "note": "Deze links plaatsen je tekst en link, niet de afbeelding. Facebook en LinkedIn nemen alleen de link over. Wil je de kaart erbij, download of kopieer de afbeelding dan eerst en voeg hem toe aan je bericht.",
-        "newTab": "(opent in een nieuw tabblad)"
-      }
+      "alt": "Memory Chess-voortgangskaart: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Deel de kaart, sla hem op of kopieer hem in een bericht.",
+    "working": "Je kaart wordt gemaakt.",
+    "shared": "Gedeeld.",
+    "failed": "De kaart kon hier niet worden gemaakt. Kopieer in plaats daarvan de tekst hieronder.",
+    "caption": "Tekst",
+    "copy": "Tekst kopiëren",
+    "copied": "Tekst gekopieerd.",
+    "copyFailed": "Kopiëren werkte hier niet. De tekst is geselecteerd, kopieer hem zelf.",
+    "close": "Sluiten",
+    "shareFailed": "Delen werkte hier niet. Download of kopieer de afbeelding in plaats daarvan.",
+    "downloaded": "Afbeelding gedownload.",
+    "imageCopied": "Afbeelding gekopieerd. Plak hem in je bericht.",
+    "imageCopyFailed": "Deze browser kon de afbeelding niet kopiëren. Download hem in plaats daarvan.",
+    "opened": "{network} is geopend in een nieuw tabblad. Voeg de afbeelding daar toe als je hem hebt opgeslagen of gekopieerd.",
+    "actions": {
+      "share": "Delen",
+      "download": "Afbeelding downloaden",
+      "copyImage": "Afbeelding kopiëren"
+    },
+    "post": {
+      "title": "Plaatsen op",
+      "note": "Deze links plaatsen je tekst en link, niet de afbeelding. Facebook en LinkedIn nemen alleen de link over. Wil je de kaart erbij, download of kopieer de afbeelding dan eerst en voeg hem toe aan je bericht.",
+      "newTab": "(opent in een nieuw tabblad)"
     }
   }
 }

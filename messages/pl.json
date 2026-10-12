@@ -669,13 +669,6 @@
     },
     "share": {
       "button": "Udostępnij moje postępy",
-      "working": "Tworzenie karty.",
-      "shared": "Udostępniono.",
-      "failed": "Nie udało się tu utworzyć karty. Skopiuj zamiast tego tekst poniżej.",
-      "caption": "Tekst",
-      "copy": "Kopiuj tekst",
-      "copied": "Tekst skopiowany.",
-      "copyFailed": "Kopiowanie tu nie zadziałało. Tekst jest zaznaczony, skopiuj go samodzielnie.",
       "locked": "Twoja karta do udostępnienia odblokuje się, gdy gotowy będzie zakres pamięci, ocena umiejętności, zapamiętane figury, tempo lub seria dni.",
       "text": "Moje postępy w Memory Chess: {figures}. Pobijesz to?",
       "figure": {
@@ -692,24 +685,33 @@
       },
       "lede": "Zrób obraz swojego dziennika, aby go opublikować, zapisać lub wysłać.",
       "title": "Udostępnij swoje postępy",
-      "intro": "Udostępnij kartę, zapisz ją albo skopiuj do posta.",
-      "close": "Zamknij",
-      "alt": "Karta postępów Memory Chess: {figures}. {rounds}.",
-      "shareFailed": "Udostępnianie tu nie zadziałało. Pobierz lub skopiuj obraz.",
-      "downloaded": "Obraz pobrany.",
-      "imageCopied": "Obraz skopiowany. Wklej go do posta.",
-      "imageCopyFailed": "Ta przeglądarka nie skopiowała obrazu. Pobierz go zamiast tego.",
-      "opened": "Otwarto {network} w nowej karcie. Dodaj tam obraz, jeśli go zapisałeś lub skopiowałeś.",
-      "actions": {
-        "share": "Udostępnij",
-        "download": "Pobierz obraz",
-        "copyImage": "Kopiuj obraz"
-      },
-      "post": {
-        "title": "Opublikuj w",
-        "note": "Te linki publikują tekst i link, a nie obraz. Facebook i LinkedIn biorą tylko link. Aby dołączyć kartę, najpierw pobierz lub skopiuj obraz, a potem dodaj go do posta.",
-        "newTab": "(otwiera się w nowej karcie)"
-      }
+      "alt": "Karta postępów Memory Chess: {figures}. {rounds}."
+    }
+  },
+  "share": {
+    "intro": "Udostępnij kartę, zapisz ją albo skopiuj do posta.",
+    "working": "Tworzenie karty.",
+    "shared": "Udostępniono.",
+    "failed": "Nie udało się tu utworzyć karty. Skopiuj zamiast tego tekst poniżej.",
+    "caption": "Tekst",
+    "copy": "Kopiuj tekst",
+    "copied": "Tekst skopiowany.",
+    "copyFailed": "Kopiowanie tu nie zadziałało. Tekst jest zaznaczony, skopiuj go samodzielnie.",
+    "close": "Zamknij",
+    "shareFailed": "Udostępnianie tu nie zadziałało. Pobierz lub skopiuj obraz.",
+    "downloaded": "Obraz pobrany.",
+    "imageCopied": "Obraz skopiowany. Wklej go do posta.",
+    "imageCopyFailed": "Ta przeglądarka nie skopiowała obrazu. Pobierz go zamiast tego.",
+    "opened": "Otwarto {network} w nowej karcie. Dodaj tam obraz, jeśli go zapisałeś lub skopiowałeś.",
+    "actions": {
+      "share": "Udostępnij",
+      "download": "Pobierz obraz",
+      "copyImage": "Kopiuj obraz"
+    },
+    "post": {
+      "title": "Opublikuj w",
+      "note": "Te linki publikują tekst i link, a nie obraz. Facebook i LinkedIn biorą tylko link. Aby dołączyć kartę, najpierw pobierz lub skopiuj obraz, a potem dodaj go do posta.",
+      "newTab": "(otwiera się w nowej karcie)"
     }
   }
 }

@@ -130,6 +130,821 @@
           "answer": "Pár soustředěných kol pravidelně je dobrý začátek. Udržujte lekce dost krátké na to, abyste si každou pozici stále pečlivě prohlédli."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Laboratoř",
+        "onPage": "Na této stránce",
+        "notebook": "Zápisník",
+        "method": "Metoda",
+        "calibrate": "Kalibrace",
+        "tiers": "Obtížnost",
+        "record": "Záznam",
+        "library": "Knihovna",
+        "hints": {
+          "notebook": "Proč měřit",
+          "method": "Jedno kolo krok za krokem",
+          "calibrate": "Proveďte měření",
+          "tiers": "Úrovně a sestava",
+          "record": "Vaše měření",
+          "library": "Návody a cvičení"
+        },
+        "play": "Zahrát si kolo zdarma"
+      },
+      "tags": {
+        "proposed": "Návrh",
+        "sample": "Ukázka",
+        "illustrative": "Ilustrace",
+        "free": "Zdarma · bez účtu",
+        "rig": "Sestava"
+      },
+      "sections": {
+        "notebook": "Zápisník",
+        "method": "Metoda",
+        "recording": "Terénní záznam",
+        "calibrate": "Kalibrace",
+        "tiers": "Obtížnost",
+        "record": "Laboratorní záznam",
+        "library": "Knihovna",
+        "faq": "Otázky",
+        "next": "Další pokus"
+      },
+      "hero": {
+        "platforms": "Prohlížeč · počítač · mobil",
+        "display": "Změřte své <em>vnitřní oko.</em>",
+        "lede": "Memory Chess je bezplatná šachová hra na paměť a trenažér šachové paměti. Několik sekund si prohlížíte pozici, šachovnice se vyprázdní a vy ji poskládáte zpátky po paměti. Každé kolo je krátký test paměti s přesností od 0 do 100 % a mapou všech polí, která jste trefili nebo spletli.",
+        "secondaryCta": "Provést kalibrační měření",
+        "facts": {
+          "study": "čas na prohlížení",
+          "pieces": "figur v kole",
+          "accuracy": "škála přesnosti",
+          "plays": "odehraných partií",
+          "languages": "jazyků"
+        },
+        "showcase": {
+          "aria": "Veselin Topalov proti Alexey Shirov, Linares 1998, s průvodcem po pozici",
+          "event": "Linares · 10. kolo",
+          "venue": "4. března 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "proti",
+          "pieceLabel": "{piece} na {square}",
+          "tags": {
+            "study": "Prohlížení",
+            "trap": "Past",
+            "sacrifice": "Oběť",
+            "walk": "Pochod krále",
+            "runners": "Dva volní pěšci",
+            "rebuild": "Rozestavení",
+            "inspect": "Dosah"
+          },
+          "counter": {
+            "study": "Prohlížení {n}/{total}",
+            "game": "Partie {n}/{total}",
+            "resume": "Klikněte znovu a pokračujte"
+          },
+          "controls": {
+            "steps": "Kroky",
+            "step": "Krok {n} z {total}: {tag}",
+            "previous": "Předchozí krok",
+            "next": "Další krok",
+            "play": "Přehrát",
+            "pause": "Pozastavit"
+          },
+          "inspect": {
+            "title": "{piece} na {square}.",
+            "reach": "{moves, plural, =0 {Žádný tah} one {# tah} few {# tahy} many {# tahu} other {# tahů}}, {captures, plural, =0 {žádné braní} one {# braní} few {# braní} many {# braní} other {# braní}}.",
+            "checks": "Šachy: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "Roh bílého",
+            "longDiagonal": "Dlouhá diagonála",
+            "blackWall": "Hradba černého",
+            "runner": "Uprchlík"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Shirov hraje černými a má o dva pěšce víc, jenže s nestejnobarevnými střelci se remíza často udrží. Deset figur."
+              },
+              "whiteCorner": {
+                "caption": "Bílý král na g1 kryje pěšce g2. Pěšec h doběhl na h4."
+              },
+              "longDiagonal": {
+                "caption": "Bílý střelec na c3 ovládá dlouhou diagonálu a napadá pěšce f6.",
+                "thought": "Černopolný střelec, z c3 na f6."
+              },
+              "blackWall": {
+                "caption": "Černý král na e6, jeho střelec na f5, pěšci na d5, f6 a g6.",
+                "thought": "Král kryje f6 a d5. Pěšec g6 kryje střelce."
+              },
+              "runner": {
+                "caption": "Jeden černý pěšec na a4, daleko od všeho."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "Černý král nemůže vykročit dopředu. Na d5 a f5 stojí jeho vlastní figury a střelec c3 hlídá e5.",
+                "thought": "Jen Kd6, Kd7, Ke7 a Kf7. Každý z těch tahů vede dozadu nebo do strany."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! Střelec se obětuje na poli, kde ho může vzít pěšec g. Stál králi v cestě.",
+                "thought": "Pole f5 je teď volné. To jsou dveře."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Dveřmi, které střelec otevřel, se král dostane do centra."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Jeden střelec nezastaví dva volné pěšce.",
+                "thought": "Topalov vzal střelce a po 53...Kb3 se vzdal."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "Šachovnice se vyprázdní. Poskládejte výchozí pozici: roh bílého, dlouhou diagonálu, hradbu černého, uprchlíka."
+              },
+              "back": {
+                "caption": "Skupinu po skupině se každá figura vrací na své pole."
+              },
+              "check": {
+                "caption": "Teď to zkontrolujte. Nestejnobarevní střelci, c3 je tmavé pole a f5 světlé. Střelec c3 stále napadá f6. Čtyři bílé figury, šest černých."
+              }
+            }
+          }
+        }
+      },
+      "notebook": {
+        "title": "Co nikdy nezměříte, to nezlepšíte.",
+        "lede": "Většina šachového tréninku cvičí rozhodování. Jen málokdy se ověřuje, jestli opravdu udržíte šachovnici v hlavě. Na té dovednosti stojí propočet variant, hra naslepo i hledání taktiky, a obvykle se nechává náhodě.",
+        "observation": {
+          "kicker": "Pozorování",
+          "title": "Hráči uprostřed propočtu ztrácejí přehled o figurách.",
+          "body": "Tři tahy do hloubky a střelec na dlouhé diagonále vám z obrazu v hlavě nenápadně zmizí. Šachovnice před vámi byla správně. Ta v hlavě ne."
+        },
+        "hypothesis": {
+          "kicker": "Hypotéza",
+          "title": "Paměť na pozici se dá trénovat i změřit.",
+          "body": "Krátce si zapamatujte pozici, poskládejte ji a zkontrolujte výsledek. Opakujte s více figurami a kratším časem. <hl>O vašem mozku nic netvrdíme.</hl> Dáváme vám měření, které můžete sledovat."
+        },
+        "method": {
+          "kicker": "Metoda",
+          "title": "Jedno kolo, jedno čisté číslo.",
+          "body": "Prohlížení, prázdná šachovnice, rozestavení, skóre. Správná pole jsou označená, chybná také, nic se neskrývá. Kolo trvá necelou minutu, takže jich zvládnete hodně."
+        }
+      },
+      "method": {
+        "title": "Kolo pod mikroskopem.",
+        "lede": "Projděte si jedno kolo na skutečné pozici: závěr Kasparovovy nesmrtelné partie, Kasparov proti Topalovovi ve Wijk aan Zee v roce 1999. Vyznačení na šachovnici ukazuje jeden ze způsobů, jak si ji zapamatovat, a není to záznam něčí pozornosti.",
+        "status": "Fáze {number} · {name}",
+        "clock": "t = {seconds} s",
+        "scoreChip": "Pole: {correct} z {total}",
+        "countChip": "Bílý {white} · Černý {black}",
+        "groups": {
+          "standoff": {
+            "name": "Konfrontace",
+            "sentence": "Bílý král napadá d2. Černý král a c3 ho kryjí."
+          },
+          "mirror": {
+            "name": "Schody",
+            "sentence": "Zrcadlové schody, z h2 nahoru na f4, z h7 dolů na f5."
+          },
+          "longShots": {
+            "name": "Dalekonosné hrozby",
+            "sentence": "Dáma a7 míří na h7. Věž d2 míří na h2."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "Prohlížení",
+            "title": "Jedenáct figur, deset sekund.",
+            "body": "Závěrečná pozice Kasparovovy nesmrtelné partie po 44.Qa7. Tady se Topalov vzdal. Vnímejte celou šachovnici, ne pole po poli. V pokusech de Groota mistři rekonstruovali krátce ukázanou pozici z partie mnohem lépe než slabší hráči.",
+            "note": "Obr. Bílý: král c1, dáma a7, pěšci f4, g3, h2. Černý: král e1, věž d2, pěšci c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Kotvy",
+            "title": "Začněte králi.",
+            "body": "Nejdřív si upevněte dva body. Oba králové stojí na první řadě, dva sloupce od sebe, a černý král doběhl až na e1. Všechno ostatní umisťujte vzhledem k nim.",
+            "note": "Obr. Oba králové zakroužkovaní. Všechno ostatní čeká."
+          },
+          "chunk": {
+            "name": "Celky",
+            "title": "Z jedenácti figur se stanou tři myšlenky.",
+            "body": "Seskupte figury podle toho, co dělají jedna druhé. Králové se přetahují o d2. Potkávají se dvě pěšcová schodiště. Dáma i věž míří každá na nekrytého pěšce h. Chase a Simon (1973) zjistili, že silní hráči si pozice pamatují po celcích souvisejících figur.",
+            "note": "Obr. Oranžově útok, modře obrana, šedě pěšcový řetěz, pruh označuje zablokovanou dvojici. Věž na d2 patří do dvou skupin."
+          },
+          "encode": {
+            "name": "Kódování",
+            "title": "Z každé skupiny udělejte větu.",
+            "body": "Pojmenujte každou skupinu podle její úlohy. Gobet a Simon (1996) popisují, jak silní hráči drží v paměti větší struktury podobné schématům. Samotné věty jsou technika, ne výsledek výzkumu.",
+            "note": "Obr. Tři pojmenované skupiny. Jejich věty:"
+          },
+          "blank": {
+            "name": "Prázdno",
+            "title": "Šachovnice se vyprázdní.",
+            "body": "Žádné figury, žádné nápovědy. Skládejte podle vět, ne podle obrázku. Řekněte si je popořadě: nejdřív krále, pak jednotlivé skupiny.",
+            "note": "Tady stačí jen udržet tři věty."
+          },
+          "rebuild": {
+            "name": "Rozestavení",
+            "title": "Skládejte skupinu po skupině.",
+            "body": "Králové. Konfrontace. Schody. Dalekonosné hrozby. Každou skupinu rozestavte podle její věty, než začnete další.",
+            "note": "Obr. Rozestavení před kontrolou. Jeden pěšec stojí na špatném poli. Poznáte který?"
+          },
+          "score": {
+            "name": "Skóre",
+            "title": "Porovnejte s větami, pak vyhodnoťte.",
+            "body": "Na poskládané šachovnici znovu ověřte každý vztah. Je věž pořád dvakrát krytá? Z c2 kryje pěšec d1, ne d2. Počet, pět a šest, stále sedí, takže chybu odhalí jen kontrola vztahů.",
+            "note": "Obr. Zaškrtnuté vztahy stále platí, červený křížek označuje porušený vztah. Oranžová výplň je špatné pole (c2), kroužek ukazuje, kam pěšec patřil (c3). {correct} z {total} polí, tedy {accuracy} %."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Proveďte kalibrační měření.",
+        "lede": "Kolo úrovně Střední ze skutečné partie: počet figur {pieceCount} včetně obou králů, {memorizeSeconds} s. Pak se šachovnice vyprázdní a vy ji poskládáte zpátky. Dostanete kartu s výsledky, přesností a úspěšností podle druhu figury. Funguje s myší, dotykem i klávesnicí.",
+        "phaseReady": "Připraveno · figury: {pieceCount} · expozice {memorizeSeconds} s",
+        "phaseLabel": "Fáze {number} · {name}",
+        "start": "Začít kalibraci",
+        "restart": "Od začátku",
+        "again": "Znovu",
+        "done": "Hotovo",
+        "submit": "Odeslat měření",
+        "clear": "Vyčistit šachovnici",
+        "controlsLabel": "Ovládání kola",
+        "boardLabel": "Kalibrační šachovnice. Mezi poli se pohybujte šipkami.",
+        "paletteLabel": "Paleta figur",
+        "paletteItem": "{piece}, zbývá: {count}",
+        "usedUp": {
+          "white": {
+            "king": "Bílý král už je na šachovnici.",
+            "queen": "Bílá dáma už je na šachovnici.",
+            "rook": "Obě bílé věže jsou na šachovnici.",
+            "bishop": "Oba bílí střelci jsou na šachovnici.",
+            "knight": "Oba bílí jezdci jsou na šachovnici.",
+            "pawn": "Všech osm bílých pěšců je na šachovnici."
+          },
+          "black": {
+            "king": "Černý král už je na šachovnici.",
+            "queen": "Černá dáma už je na šachovnici.",
+            "rook": "Obě černé věže jsou na šachovnici.",
+            "bishop": "Oba černí střelci jsou na šachovnici.",
+            "knight": "Oba černí jezdci jsou na šachovnici.",
+            "pawn": "Všech osm černých pěšců je na šachovnici."
+          }
+        },
+        "squareEmpty": "{square}, prázdné",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Prohlédněte si pozici. Čas: {memorizeSeconds} s.",
+        "liveRebuild": "Šachovnice je prázdná. Vyberte figuru a pak pole.",
+        "liveScore": "Přesnost {accuracy} %. Správná pole: {correct} z {total}.",
+        "startFailed": "Pozici se nepodařilo načíst. Zkontrolujte připojení a zkuste to znovu.",
+        "steps": [
+          "Stiskněte Začít. Prohlížejte si pozici, dokud se ukazatel nevyprázdní.",
+          "Vyberte figuru z palety a klepněte na pole. Klepnutím na umístěnou figuru ji odeberete.",
+          "Odešlete. Když umístíte víc figur, než v pozici bylo, přesnost klesne, takže umisťujte jen to, co si pamatujete."
+        ],
+        "readout": {
+          "title": "Karta s výsledky",
+          "statusIdle": "Čeká na pokus",
+          "statusRecording": "Probíhá záznam",
+          "statusDone": "Pokus dokončen",
+          "correct": "Správná pole",
+          "time": "Čas rozestavení",
+          "wrong": "Chybné figury",
+          "exposure": "Expozice",
+          "byType": "Úspěšnost podle druhu figury",
+          "byTypeEmpty": "Úspěšnost podle druhu figury se tu zobrazí po prvním pokusu.",
+          "nextEmpty": "Po měření se tu zobrazí doporučená obtížnost.",
+          "suggested": "Doporučení:",
+          "stepUp": "přejděte na úroveň {tier}, počet figur {pieceCount}, {memorizeSeconds} s. Nejdřív to potvrďte dvěma dalšími čistými koly.",
+          "stay": "zůstaňte na úrovni {tier}, počet figur {pieceCount}, {memorizeSeconds} s. Odehrajte tři kola a sledujte vývoj.",
+          "start": "začněte na úrovni {tier}, počet figur {pieceCount}, {memorizeSeconds} s. Při prohlížení spojujte figury do dvojic.",
+          "playTier": "Hrát úroveň {tier}",
+          "legendCorrect": "správně",
+          "legendWrong": "špatné umístění",
+          "legendMissed": "vynechané pole"
+        },
+        "pieceTypes": {
+          "king": "Král",
+          "queen": "Dáma",
+          "rook": "Věž",
+          "bishop": "Střelec",
+          "knight": "Jezdec",
+          "pawn": "Pěšec"
+        }
+      },
+      "tiers": {
+        "title": "Čtyři úrovně. Jedna vlastní sestava.",
+        "lede": "Zátěž roste, expozice klesá. Na vyšší úroveň přejděte, až budou vaše měření stabilní, ne po jednom šťastném kole.",
+        "columns": {
+          "tier": "Obtížnost",
+          "pieces": "Figury",
+          "exposure": "Expozice",
+          "load": "Zátěž"
+        },
+        "loadLabel": "Obsazená pole: {pieceCount} z 32",
+        "play": "Hrát",
+        "custom": {
+          "label": "Vlastní",
+          "description": "Nastavte si vlastní proměnné a izolujte jednu slabinu."
+        }
+      },
+      "record": {
+        "title": "Vraťte se pro trendovou křivku.",
+        "lede": "Jedno měření je jen snímek. Teprve deset měření něco opravdu změří. Každé odehrané kolo se ukládá na tomto zařízení a tyto panely se plní z vašich vlastních kol. Před prvním kolem ukazují panely hodnoty označené <tag>Ukázka</tag>, ne skutečné hráče. Potom panel, který váš záznam ještě nedokáže přečíst, napíše, co mu chybí.",
+        "span": {
+          "fig": "Obr. {number} · Paměťový rozsah",
+          "title": "Kolik figur udržíte.",
+          "figure": "{pieceCount, plural, one {# figura} few {# figury} many {# figury} other {# figur}}",
+          "held": "{accuracy} % a více v {count, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}}. Nejkratší čas na prohlížení mezi nimi: {studyTime}.",
+          "up": "O {count, plural, one {# figuru} few {# figury} many {# figury} other {# figur}} víc než minulý týden",
+          "same": "Beze změny oproti minulému týdnu",
+          "aria": "Ukázkové schody paměťového rozsahu za 12 sezení, stoupají ze 4 na 8 figur.",
+          "note": "Ukázkový záznam · 12 sezení",
+          "realAria": "Váš paměťový rozsah {sessions, plural, one {v sezení, kdy jste ho poprvé dosáhli} few {za # sezení od chvíle, kdy jste ho poprvé dosáhli} many {za # sezení od chvíle, kdy jste ho poprvé dosáhli} other {za # sezení od chvíle, kdy jste ho poprvé dosáhli}}, {shape, select, flat {drží se na počtu figur {now}} other {počet figur vzrostl z {first} na {now}}}.",
+          "need": "Dosáhněte {accuracy} % nebo víc {count, plural, =2 {dvakrát} one {ještě jednou} few {ještě #krát} many {ještě #krát} other {ještě #krát}} při stejném počtu figur, nejméně {minPieces}.",
+          "onlyKings": "Vaše dosavadní kola obsahovala jen oba krále a rozsah potřebuje víc figur.",
+          "first": "Rozsah poprvé dosažen",
+          "last": "Nejnovější"
+        },
+        "held": {
+          "fig": "Obr. {number} · Zapamatované figury",
+          "title": "Figury, které umístíte správně, při jakémkoli nastavení.",
+          "aria": "Ukázková křivka zapamatovaných figur za 12 kol, průměr z 5 kol stoupá ze 4,0 na 7,0 figury.",
+          "note": "Ukázkový záznam · 12 kol · jakékoli nastavení",
+          "partial": "Čárkovaně: průměr z méně než {window} kol",
+          "realAria": "Vaše zapamatované figury za {count, plural, one {poslední # kolo} few {poslední # kola} many {posledního # kola} other {posledních # kol}} při jakémkoli nastavení jako průměr z {window} kol, nejnovější hodnota {latest}.",
+          "average": "Nedávný průměr figur: {average}",
+          "up": "o {change} víc než předchozích {window} kol",
+          "down": "o {change} méně než předchozích {window} kol",
+          "flat": "beze změny oproti předchozím {window} kolům",
+          "realNote": "Jakékoli nastavení · Z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
+          "needRounds": "Ještě {count, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} a vykreslí se vaše křivka.",
+          "needRoundsAndDay": "Ještě {count, plural, one {# kolo odehrané v jiný den} few {# kola, aspoň jedno v jiný den} many {# kola, aspoň jedno v jiný den} other {# kol, aspoň jedno v jiný den}} a vykreslí se vaše křivka.",
+          "needDay": "Zahrajte si ještě v jeden další den a vykreslí se vaše křivka.",
+          "first": "Nejstarší",
+          "last": "Nejnovější"
+        },
+        "speed": {
+          "fig": "Obr. {number} · Rychlost",
+          "title": "Sekundy na každou rozestavenou figuru.",
+          "aria": "Ukázková křivka sekund rozestavení na správnou figuru za 12 kol, klesá ze 4,1 na 2,6 sekundy.",
+          "note": "Ukázkový záznam · 12 kol · Střední",
+          "realAria": "Sekundy rozestavení na správnou figuru za vaše poslední {source, select, calibration {tréninková} other {herní}} kola ({count}) při {pieceCount} figurách a {memorizeSeconds} sekundách, nejnovější hodnota {latest} s.",
+          "average": "Nedávný průměr {average} na figuru",
+          "down": "o {change} rychleji než předchozích {window} kol",
+          "up": "o {change} pomaleji než předchozích {window} kol",
+          "flat": "stejné tempo jako předchozích {window} kol",
+          "accuracy": "Přesnost ve stejných kolech {average} %",
+          "accuracyChange": {
+            "up": "nahoru o {change, plural, one {# bod} few {# body} many {# bodu} other {# bodů}}",
+            "down": "dolů o {change, plural, one {# bod} few {# body} many {# bodu} other {# bodů}}",
+            "flat": "beze změny"
+          },
+          "fastWrong": "Rychle a špatně není zlepšení.",
+          "config": "{source, select, calibration {Trénink} other {Partie}} · figury: {pieceCount} · {studyTime}, vaše poslední dobou nejčastější nastavení · Z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
+          "need": "Ještě {count, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} s {pieceCount} figurami, {studyTime} {source, select, calibration {v tréninku} other {v partiích}} a {count, plural, one {vykreslí} few {vykreslí} many {vykreslí} other {vykreslí}} se vaše křivka rychlosti.",
+          "needRight": "Rychlost počítá jen kola, kde je aspoň jedna figura správně. Odehrajte {count, plural, one {# takové kolo} few {# taková kola} many {# takového kola} other {# takových kol}} a vaše křivka začne.",
+          "first": "Nejstarší",
+          "last": "Nejnovější"
+        },
+        "curve": {
+          "fig": "Obr. {number} · Křivka zapomínání",
+          "title": "Krátká rozložená opakování porazí jedno dlouhé sezení.",
+          "desc": "Desky, na kterých máte méně než 80 %, se vracejí k opakování 1, 3, 7 a 14 dní po prvním zobrazení. Vaše křivka ukazuje, kolik si po každém odstupu pamatujete.",
+          "aria": "Ilustrační graf: bez opakování paměť rychle slábne, po každém rozloženém opakování ve dnech 1, 3 a 7 slábne pomaleji.",
+          "note": "Ilustrační model efektu rozloženého opakování. Nejde o naměřená data.",
+          "noReview": "bez opakování",
+          "spaced": "rozložená kola",
+          "review": "opakování",
+          "day": "d{day}",
+          "warming": "Ještě {reviews, plural, one {# opakování} few {# opakování} many {# opakování} other {# opakování}} po stejném odstupu a vykreslí se váš první naměřený bod.",
+          "measuredAria": "Vaše úspěšnost na opakovaných deskách: {points}.",
+          "pointFirst": "první zobrazení {accuracy} % z {count, plural, one {# desky} few {# desek} many {# desky} other {# desek}}",
+          "pointAfter": "po {day, plural, one {# dni} few {# dnech} many {# dne} other {# dnech}} {accuracy} % z {count, plural, one {# opakování} few {# opakování} many {# opakování} other {# opakování}}",
+          "count": "n={count}",
+          "measuredNote": "Z {reviews, plural, one {# opakování} few {# opakování} many {# opakování} other {# opakování}} {boards, plural, one {# desky} few {# desek} many {# desky} other {# desek}}. Bod potřebuje {min} opakování po svém odstupu.",
+          "due": "Opakování {number} z {cap} na dnešek",
+          "capped": "Dnešní opakování hotová",
+          "play": "Zahrát opakování",
+          "waiting": "Další opakování {days, plural, one {zítra} few {za # dny} many {za # dne} other {za # dní}}. Ve frontě {queued, plural, one {je # deska} few {jsou # desky} many {je # desky} other {je # desek}}.",
+          "empty": "Zatím žádné desky k opakování. Deska, na které máte méně než 80 %, se sem vrátí další den."
+        },
+        "spark": {
+          "fig": "Obr. {number} · Přesnost v čase",
+          "title": "Vaše křivka, kolo za kolem.",
+          "titleSessions": "Vaše křivka, sezení za sezením.",
+          "aria": "Ukázkový minigraf přesnosti za 12 kol, stoupá z 52 na 79 procent.",
+          "note": "Ukázkový záznam · 12 kol · Střední",
+          "first": "K01",
+          "last": "K12",
+          "needRounds": "Ještě {count, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} s {pieceCount} figurami, {studyTime} a vykreslí se váš trend {source, select, calibration {v tréninku} other {v partiích}}.",
+          "needRoundsAndDay": "Ještě {count, plural, one {# kolo s {pieceCount} figurami, {studyTime}, odehrané v jiný den,} few {# kola s {pieceCount} figurami, {studyTime}, aspoň jedno v jiný den,} many {# kola s {pieceCount} figurami, {studyTime}, aspoň jedno v jiný den,} other {# kol s {pieceCount} figurami, {studyTime}, aspoň jedno v jiný den,}} a vykreslí se váš trend {source, select, calibration {v tréninku} other {v partiích}}.",
+          "needDay": "Zahrajte si nastavení s {pieceCount} figurami, {studyTime}, {source, select, calibration {v tréninku} other {v partii}} ještě v jeden další den a vykreslí se váš trend.",
+          "config": "{source, select, calibration {Trénink} other {Partie}} · figury: {pieceCount} · {studyTime}, vaše nejčastější nastavení s trendem",
+          "realAria": "Vaše přesnost za poslední {source, select, calibration {tréninková} other {herní}} kola ({count}) při {pieceCount} figurách a {memorizeSeconds} sekundách, nejnovější hodnota {latest} procent.",
+          "realAriaSessions": "Vaše přesnost za {count, plural, one {poslední # sezení} few {poslední # sezení} many {posledního # sezení} other {posledních # sezení}} s {source, select, calibration {tréninkovými} other {herními}} koly při {pieceCount} figurách a {memorizeSeconds} sekundách, nejnovější hodnota {latest} procent.",
+          "sessions": "{count, plural, one {# sezení} few {# sezení} many {# sezení} other {# sezení}}",
+          "realFirst": "Nejstarší",
+          "realLast": "Nejnovější"
+        },
+        "heat": {
+          "fig": "Obr. {number} · Mapa chyb",
+          "title": "Kde vám pole unikají.",
+          "aria": "Ukázková teplotní mapa vynechaných polí: nejtmavší podél sloupce h a kolem h1, horká místa na b7 a f7, nejsvětlejší ve středu.",
+          "note": "Ukázka: chyby se hromadí ve sloupci h a kolem královského rohu na h1. Trénujte příště tenhle okraj.",
+          "need": "Zhruba {count, plural, one {# další kolo} few {# další kola} many {# dalšího kola} other {# dalších kol}}, než bude mít každý sloupec a řada 10 figur ke čtení.",
+          "needStart": "Odehrajte ještě pár kol a vaše mapa chyb začne.",
+          "files": "Sloupce",
+          "ranks": "Řady",
+          "line": "{line}: vynecháno {missed} z {shown}",
+          "lineThin": "{line}: viděno {shown}, na závěr to nestačí",
+          "realAria": "Váš podíl vynechaných figur na každém poli. Šedá pole mají méně než 10 viděných figur.",
+          "realNote": "Tmavší znamená častěji vynecháno. Šedá mají méně než 10 viděných figur."
+        },
+        "daily": {
+          "fig": "Obr. {number} · Deska dne",
+          "title": "Jedna deska denně, pro všechny stejná.",
+          "desc": "Nová pozice se otevírá každý den o půlnoci UTC. Všichni dostanou stejných 6 figur a 10 sekund na prohlížení a máte jeden pokus.",
+          "play": "Zahrát desku dne",
+          "open": "Dnešní desku jste ještě nehráli.",
+          "played": "Správně jste umístili {correct} z {pieceCount, plural, one {# figury} few {# figur} many {# figury} other {# figur}}, tedy {accuracy} %.",
+          "unfinished": "Dnešní desku jste otevřeli a odešli před výsledkem. Na tomto zařízení máte jeden pokus denně.",
+          "streak": "Denní série {current, plural, one {# den} few {# dny} many {# dne} other {# dní}}{forgiven, plural, =0 {} one {, # vynechaný den odpuštěn} few {, # vynechané dny odpuštěny} many {, # vynechaného dne odpuštěno} other {, # vynechaných dní odpuštěno}} · nejdelší {longest, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+          "streakLongest": "Nejdelší denní série {longest, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+          "gridAria": "Váš výsledek na každém poli, od a8: správně {correct}, {wrong, plural, one {# chybná figura} few {# chybné figury} many {# chybné figury} other {# chybných figur}}, vynecháno {missed}, navíc {extra}.",
+          "key": {
+            "c": "správně",
+            "w": "chybná figura",
+            "m": "vynecháno",
+            "x": "navíc"
+          },
+          "share": "Memory Chess, deska dne {day}\nSprávně {correct} z {pieceCount}, {accuracy} %\n{row}\nthememorychess.com",
+          "copy": "Zkopírovat výsledek",
+          "showGrid": "Zobrazit mřížku",
+          "copied": "Zkopírováno. Vložte to kamkoli.",
+          "copyFailed": "Kopírování tady nefungovalo. Výsledek je označený níže, zkopírujte si ho sami."
+        },
+        "streak": {
+          "fig": "Obr. {number} · Dny za sebou",
+          "title": "Jedno kolo denně buduje sérii.",
+          "desc": "Každé dokončené kolo, v partii i v tréninku, se počítá pro svůj den. Jeden vynechaný den z libovolných 7 se odpouští.",
+          "aria": "Ukázková mřížka dvoutýdenní série",
+          "note": "Ukázka · čárkované pole je dnešní kolo, které ještě čeká",
+          "realDesc": "Každé dokončené kolo se počítá pro svůj den. Jeden vynechaný den z libovolných 7 se odpouští.",
+          "need": "Hrajte ještě {days, plural, one {# den} few {# dny} many {# dne} other {# dní}} a uvidíte svou sérii.",
+          "realAria": "Vašich posledních 14 dní: {count, plural, one {# den odehrán} few {# dny odehrány} many {# dne odehráno} other {# dní odehráno}}{forgiven, plural, =0 {} one {, # odpuštěn} few {, # odpuštěny} many {, # odpuštěno} other {, # odpuštěno}}.",
+          "realNote": "Aktuální série {current, plural, one {# den} few {# dny} many {# dne} other {# dní}}{forgiven, plural, =0 {} one {, # vynechaný den odpuštěn} few {, # vynechané dny odpuštěny} many {, # vynechaného dne odpuštěno} other {, # vynechaných dní odpuštěno}} · nejdelší {longest, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+          "key": {
+            "played": "odehráno",
+            "forgiven": "odpuštěno",
+            "missed": "vynecháno",
+            "today": "dnes"
+          }
+        },
+        "week": {
+          "ring": "Tento týden {played} z {goal} dní",
+          "ringOver": "Cíl splněn, tento týden dní: {played}",
+          "sampleRing": "Ukázkový týden · {played} z {goal} dní",
+          "left": "{remaining, plural, =0 {Cíl na tento týden splněn.} one {Do cíle zbývá # den.} few {Do cíle zbývají # dny.} many {Do cíle zbývá # dne.} other {Do cíle zbývá # dní.}}",
+          "outOfReach": "Cíl už nejde splnit, {daysLeft, plural, =0 {nezbývá žádný den} one {zbývá # den} few {zbývají # dny} many {zbývá # dne} other {zbývá # dní}}. Nový týden začíná v pondělí.",
+          "goal": "Dní v týdnu",
+          "option": "Dní v týdnu: {days}"
+        },
+        "welcome": {
+          "line": "Vítejte zpět. Den {day} vašeho záznamu. Minule {accuracy} % při {pieceCount} figurách, {studyTime}.",
+          "lineNoDay": "Vítejte zpět. Minule {accuracy} % při {pieceCount} figurách, {studyTime}."
+        },
+        "board": {
+          "fig": "Obr. {number} · Žebříček",
+          "title": "Porovnejte svá měření se světem.",
+          "desc": "Každá obtížnost se řadí podle správných figur, pak podle menšího počtu chybných figur, pak podle rychlejšího zapamatování a nakonec podle rychlejšího řešení. U každého řádku je uvedena země hráče.",
+          "howTo": "Odešlete skóre z obrazovky s výsledkem a podívejte se, kde stojí ve světě nebo ve vaší zemi.",
+          "sketchPieces": "Figury: {count}",
+          "open": "Otevřít žebříček",
+          "difficulty": "Obtížnost",
+          "scope": "Pořadí mezi",
+          "world": "Svět",
+          "entry": "Váš nejlepší záznam na úrovni {difficulty}: {correct, plural, one {# správná figura} few {# správné figury} many {# správné figury} other {# správných figur}}, odesláno {date}.",
+          "check": "Zjistit moje pořadí",
+          "checking": "Zjišťuji...",
+          "ranked": "{rank, number}. místo z {total, plural, one {# záznamu} few {# záznamů} many {# záznamu} other {# záznamů}} na úrovni {difficulty} ve světě.",
+          "rankedIn": "{rank, number}. místo z {total, plural, one {# záznamu} few {# záznamů} many {# záznamu} other {# záznamů}} na úrovni {difficulty}, země: {country}.",
+          "checkedAt": "Zjištěno v {time}.",
+          "boardSize": "Veřejný žebříček ukazuje nejlepších {limit}.",
+          "up": "O {places, plural, one {# místo} few {# místa} many {# místa} other {# míst}} výš než v {time}.",
+          "down": "O {places, plural, one {# místo} few {# místa} many {# místa} other {# míst}} níž než v {time}.",
+          "same": "Stejné pořadí jako v {time}.",
+          "missing": "Váš záznam na úrovni {difficulty} už v žebříčku není, takže ho toto zařízení přestalo uchovávat. Žebříčky se občas čistí nebo nulují. Zjištěno v {time}.",
+          "limited": "Z vašeho připojení přišlo příliš mnoho dotazů. Zkuste to znovu za {wait, plural, one {# sekundu} few {# sekundy} many {# sekundy} other {# sekund}}.",
+          "noCountry": "Žebříček u tohoto záznamu nemá zemi, takže ho lze zařadit jen ve světě.",
+          "offline": "Jste offline, takže se nic neodeslalo. Připojte se a zkuste to znovu.",
+          "failed": "Žebříček se nepodařilo zastihnout, takže pořadí není známé. Zkuste to později."
+        },
+        "plans": {
+          "fig": "Obr. {number} · Programy",
+          "title": "Vyberte si plán a dotáhněte ho do konce.",
+          "desc": "Vždy jen jeden plán. Postup se počítá z vašich kol, takže zastavení plánu nikdy nesmaže žádné kolo.",
+          "baseline": {
+            "kicker": "Plán A · 7 dní",
+            "title": "Týden výchozího stavu",
+            "steps": [
+              "Jedno kolo úrovně Střední denně.",
+              "Zapište měření a odolejte nutkání hrát znovu.",
+              "Den 7: porovnejte se dnem 1."
+            ],
+            "progress": "Dny s kolem úrovně Střední: {played} z {days}",
+            "compare": "Den {firstDay} {first} %, den {lastDay} {latest} %: {direction, select, up {nahoru o {change, plural, one {# bod} few {# body} many {# bodu} other {# bodů}}} down {dolů o {change, plural, one {# bod} few {# body} many {# bodu} other {# bodů}}} other {beze změny}}.",
+            "compareNone": "Od začátku plánu jste neodehráli žádné kolo úrovně Střední, takže není co porovnat.",
+            "compareOne": "Od začátku plánu jste odehráli jen jedno kolo úrovně Střední, takže zatím není co porovnat."
+          },
+          "edge": {
+            "kicker": "Plán B · 14 dní",
+            "title": "Dril krajních sloupců",
+            "steps": [
+              "Vlastní sestava: 8 figur, 15 s.",
+              "Každé 3 dny si projděte mapu chyb.",
+              "Doplňte to návodem na přehled o šachovnici."
+            ],
+            "progress": "Sestavu jste hráli {played, plural, one {# den} few {# dny} many {# dne} other {# dní}} z {elapsed}. Cíl: {target} z {days} dní.",
+            "share": "Vynechané krajní sloupce: {before} % v {beforeRounds, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}} před plánem, {now} % v {nowRounds, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}} od jeho začátku.",
+            "shareMissing": "Chyby v krajních sloupcích se porovnají, až bude před plánem i po jeho začátku po {needed} kolech s figurou ve sloupci a nebo h. Zatím {before} před plánem a {now} od začátku.",
+            "guide": "Přečtěte si, jak vidět celou šachovnici"
+          },
+          "ladder": {
+            "kicker": "Plán C · bez konce",
+            "title": "Sestupný žebřík",
+            "steps": [
+              "Udržte 90 % tři kola za sebou.",
+              "Pak zkraťte čas na prohlížení o 2 sekundy.",
+              "Až čas na prohlížení dojde na minimum, přidejte figury."
+            ],
+            "rung": "Příčka: počet figur {pieceCount}, {studyTime}.",
+            "run": "Kola za sebou s {accuracy} % a více: {run} z {needed}.",
+            "climbed": "Příčka zdolána: počet kol za sebou s {accuracy} % a více dosáhl {needed}.",
+            "next": "Další příčka: počet figur {pieceCount}, {studyTime}.",
+            "top": "Vrchol žebříku: žádná deska nemá víc než {pieceCount} figur."
+          },
+          "status": {
+            "day": "Den {day}",
+            "dayOf": "Den {day} z {length}",
+            "overtime": "Den {day}, po plánovaných {length}",
+            "done": "Hotovo v den {day}.",
+            "finished": "Ukončeno předčasně v den {day}.",
+            "stopped": "Zastaveno v den {day}."
+          },
+          "start": "Začít: {title}",
+          "again": "Začít znovu: {title}",
+          "busy": "Vždy jen jeden plán. Abyste mohli začít tento, zastavte plán {title}.",
+          "stop": "Zastavit plán",
+          "confirmStop": "Opravdu zastavit?",
+          "keep": "Pokračovat",
+          "finish": "Ukončit předčasně",
+          "play": "Hrát s {pieceCount} figurami, {studyTime}"
+        },
+        "goal": {
+          "fig": "Obr. {number} · Cíl",
+          "title": "Zamiřte na konkrétní měření.",
+          "desc": "Zvolte počet figur a přesnost. Ukazatel se plní podle vašeho nejlepšího kola s tímto nebo vyšším počtem figur od chvíle, kdy jste cíl nastavili.",
+          "sample": "Ukázkový cíl: počet figur {pieceCount}, přesnost {accuracy} %. Zatím nejlépe {best} %, splněno {percent} % cesty.",
+          "target": "Cíl: {pieceCount} nebo víc figur s přesností {accuracy, select, 100 {100 %} other {{accuracy} % nebo víc}}, nastaveno {date}.",
+          "progress": "Nejlepší od té doby: {best} % při {pieceCount} figurách, splněno {percent} % cesty.",
+          "bar": "Splněno {percent} % cesty k cíli",
+          "need": "Od nastavení cíle jste neodehráli žádné kolo s {pieceCount} nebo více figurami.",
+          "reached": "Dosaženo {date}: {accuracy} % při {pieceCount} figurách.",
+          "form": "Nový cíl",
+          "pieces": "Figur aspoň",
+          "accuracy": "Přesnost aspoň",
+          "percent": "{value} %",
+          "set": "Nastavit cíl",
+          "newGoal": "Nastavit nový cíl",
+          "clear": "Zrušit cíl",
+          "cancel": "Zrušit",
+          "saved": "Cíl nastaven.",
+          "cleared": "Cíl zrušen."
+        },
+        "mine": "Váš záznam",
+        "fromRounds": "Z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
+        "dashboardLink": "Otevřít přehled",
+        "play": "Zahrát kolo",
+        "tomorrow": "Vraťte se zítra.",
+        "stale": "Naposledy hráno před {count, plural, one {# dnem} few {# dny} many {# dne} other {# dny}}.",
+        "unlock": {
+          "label": "Zbývá odemknout",
+          "count": "Odemčené obrázky: {unlocked} z {total}",
+          "done": "Všechny obrázky níže jsou odemčené.",
+          "showAll": "Zobrazit všechny obrázky ({count})",
+          "showFewer": "Zobrazit méně",
+          "span": "{qualifyingRounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} s {accuracy} %+ a {minPieces}+ figurami",
+          "piecesHeld": "{rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} během {days, plural, one {# dne} few {# dnů} many {# dne} other {# dnů}}",
+          "trend": "{rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} při jednom nastavení během {days, plural, one {# dne} few {# dnů} many {# dne} other {# dnů}}",
+          "speed": "{rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} při jednom nastavení",
+          "streak": "{days, plural, one {# odehraný den} few {# odehrané dny} many {# odehraného dne} other {# odehraných dní}}",
+          "curve": "{reviews, plural, one {# opakování} few {# opakování} many {# opakování} other {# opakování}} po stejném odstupu",
+          "typeRecall": "{exposures, plural, one {# zobrazení} few {# zobrazení} many {# zobrazení} other {# zobrazení}} jedné figury jiné než král",
+          "missMap": "{exposures, plural, one {# zobrazení} few {# zobrazení} many {# zobrazení} other {# zobrazení}} na každý sloupec a řadu",
+          "trendRounds": "ještě {rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} {source, select, calibration {v tréninku} other {v partiích}} s {pieceCount} figurami, {studyTime}",
+          "trendDays": "ještě {days, plural, one {# den} few {# dny} many {# dne} other {# dní}} {source, select, calibration {tréninkových} other {herních}} kol s {pieceCount} figurami, {studyTime}",
+          "trendRoundsDays": "ještě {rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} {source, select, calibration {v tréninku} other {v partiích}} s {pieceCount} figurami, {studyTime}, ještě {days, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+          "spanLeft": "ještě {qualifyingRounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} s {accuracy} %+ a {minPieces}+ figurami",
+          "spanLarger": "{largerRounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} s {minPieces}+ figurami",
+          "piecesHeldRounds": "ještě {rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
+          "piecesHeldDays": "ještě {days, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+          "piecesHeldRoundsDays": "ještě {rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}, ještě {days, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
+          "speedRounds": "ještě {rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} {source, select, calibration {v tréninku} other {v partiích}} s {pieceCount} figurami, {studyTime}",
+          "speedRight": "{rightRounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} se správnou figurou",
+          "streakLeft": "ještě {days, plural, one {# odehraný den} few {# odehrané dny} many {# odehraného dne} other {# odehraných dní}}",
+          "curveLeft": "ještě {reviews, plural, one {# opakování} few {# opakování} many {# opakování} other {# opakování}} po stejném odstupu",
+          "typeRecallLeft": "ještě {exposures, plural, one {# zobrazení} few {# zobrazení} many {# zobrazení} other {# zobrazení}} jedné figury jiné než král",
+          "missMapLeft": "ještě {exposures, plural, one {# zobrazení} few {# zobrazení} many {# zobrazení} other {# zobrazení}} na nejméně viděném sloupci nebo řadě",
+          "insights": "{rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
+          "insightsLeft": "ještě {rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
+          "notebook": "{rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}"
+        },
+        "bests": {
+          "fig": "Obr. {number} · Osobní rekordy",
+          "title": "Vaše nejlepší měření pro každé nastavení.",
+          "desc": "Rekordy se vedou zvlášť pro každé nastavení, protože 6 figur a 20 figur jsou různé testy. Tréninková měření na této stránce se počítají odděleně od partií.",
+          "empty": "Vaše nejlepší měření pro každé nastavení se objeví po prvním kole.",
+          "setting": "{source, select, calibration {Trénink} other {Partie}} · figury: {pieceCount} · {studyTime}",
+          "first": "první měření",
+          "showAll": "Zobrazit všechna nastavení ({count})",
+          "showFewer": "Zobrazit méně",
+          "reading": "{accuracy} % · rozestaveno za {time}"
+        },
+        "types": {
+          "fig": "Obr. {number} · Úspěšnost podle druhu figury",
+          "title": "Které figury vám unikají.",
+          "need": "Zhruba {count, plural, one {# další kolo} few {# další kola} many {# dalšího kola} other {# dalších kol}}, než bude mít některá figura kromě krále 20 zobrazení.",
+          "needStart": "Úspěšnost podle druhu figury se zobrazí po prvním kole.",
+          "onlyKings": "Vaše dosavadní kola obsahovala jen oba krále a úspěšnost podle druhu figury potřebuje víc figur.",
+          "thin": "viděno {shown}/20",
+          "baseline": "základ",
+          "kings": "Králové jsou v každém kole, proto slouží jako základ. Zapamatováno {recalled} z {shown}.",
+          "sampleNote": "Ukázka: nejdřív unikají pěšci a jezdci."
+        },
+        "insights": {
+          "fig": "Obr. {number} · Postřehy",
+          "title": "Co vyčnívá a co zkusit.",
+          "desc": "Postřeh se zobrazí, až jeho čísla dosáhnou minimálního vzorku, a uvádí počty, ze kterých vychází.",
+          "sample": "Příklad z ukázkového záznamu: sloupce a a h byly vynechány {times, select, 2 {zhruba dvakrát} other {zhruba {times}krát}} častěji než středové sloupce d a e, {edge} % figur oproti {centre} %.",
+          "sampleList": "Ukázkový postřeh",
+          "sampleNote": "Ukázkový postřeh, ne z vašich kol.",
+          "list": "Postřehy z vašeho záznamu",
+          "need": "Postřehy čtou váš záznam od {threshold} kol. Zbývá {count, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}.",
+          "none": "Zatím nic nevyčnívá. Hrajte dál.",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {Vynecháváte {edge, select, 0 {méně než 1 %} other {{edge} %}} z {edgeShown} figur ve sloupcích a a h a žádnou z {centreShown} ve středových sloupcích d a e.} 2 {Sloupce a a h vynecháváte zhruba dvakrát častěji než středové sloupce d a e: {edge, select, 0 {méně než 1 %} other {{edge} %}} z {edgeShown} figur oproti {centre, select, 0 {méně než 1 %} other {{centre} %}} z {centreShown}.} other {Sloupce a a h vynecháváte zhruba {times}krát častěji než středové sloupce d a e: {edge, select, 0 {méně než 1 %} other {{edge} %}} z {edgeShown} figur oproti {centre, select, 0 {méně než 1 %} other {{centre} %}} z {centreShown}.}}",
+            "weakType": "Z figur kromě králů viděných {minimum}krát a víckrát vám nejvíc unikají {type, select, q {dámy} r {věže} b {střelci} n {jezdci} other {pěšci}}: zapamatováno {recalled} z {shown}, {percent} %.",
+            "fasterLessAccurate": "Při {pieceCount} figurách, {studyTime}, vám posledních {window} kol trvalo o {fasterTime} méně na správnou figuru než {window} předchozích a přesnost klesla o {fell} bodů.",
+            "colourGap": "{weaker, select, w {Bílé} other {Černé}} figury si pamatujete hůř než {weaker, select, w {černé} other {bílé}}: {weakerPercent} % z {weakerShown} oproti {strongerPercent} % z {strongerShown}, bez králů.",
+            "plateau": "Při {pieceCount} figurách, {studyTime}, měla vaše posledních {window} kol průměr {last} % a {window} předchozích {before} % a váš rozsah se za poslední týden hraní držel na {span} figurách. Jedna figura navíc to může posunout."
+          },
+          "actions": {
+            "rig": "Hrát s {pieceCount} figurami, {studyTime}",
+            "patterns": "Přečtěte si cvičení na rozpoznávání vzorců",
+            "vision": "Přečtěte si, jak vidět celou šachovnici"
+          }
+        },
+        "notebook": {
+          "fig": "Obr. {number} · Laboratorní zápisník",
+          "title": "Co se stalo a kdy.",
+          "empty": "Záznamy přibývají, jak hrajete.",
+          "sampleList": "Ukázkové záznamy zápisníku",
+          "list": "Váš zápisník, nejnovější nahoře",
+          "new": "Nové",
+          "newNote": "Štítek Nové označuje záznamy od vaší poslední návštěvy.",
+          "showAll": "Zobrazit všechny záznamy ({count})",
+          "showFewer": "Zobrazit méně",
+          "day": "Den {day}.",
+          "olderBefore": "Záznamy před {date} se v tomto prohlížeči neuchovávají.",
+          "older": "Starší záznamy se v tomto prohlížeči neuchovávají.",
+          "entries": {
+            "firstRound": "První kolo: {accuracy} % při {pieceCount} figurách.",
+            "rounds": "Odehráno {count, number}. kolo.",
+            "first90": "Poprvé {threshold} % nebo víc při {pieceCount} figurách.",
+            "best": "Nový {source, select, calibration {tréninkový} other {herní}} rekord při {pieceCount} figurách, {studyTime}: {by, select, time {znovu {accuracy} %, rozestaveno za {solveTime}} other {{accuracy} %, zlepšení z {previous} %}}.",
+            "span": "{from, select, 0 {Paměťový rozsah dosáhl počtu figur {to}} other {Počet figur v paměťovém rozsahu vzrostl z {from} na {to}}}.",
+            "streak": "{forgiven, plural, =0 {Počet dní za sebou: {days}.} one {Dní v sérii: {days}, # vynechaný den odpuštěn.} few {Dní v sérii: {days}, # vynechané dny odpuštěny.} many {Dní v sérii: {days}, # vynechaného dne odpuštěno.} other {Dní v sérii: {days}, # vynechaných dní odpuštěno.}}",
+            "rungUp": "O příčku výš: počet figur {pieceCount}, {studyTime}.",
+            "goalReached": "Cíl splněn: {accuracy} % při {pieceCount} nebo více figurách."
+          }
+        },
+        "tools": {
+          "title": "Uloženo na tomto zařízení",
+          "body": "Bez účtu a bez serveru. Stáhněte si kopii, abyste ho mohli přenést do jiného prohlížeče nebo bezpečně uschovat.",
+          "download": "Stáhnout můj laboratorní záznam",
+          "import": "Importovat",
+          "lastBackup": "Export spuštěn {date}",
+          "neverBackedUp": "Zatím neexportováno",
+          "imported": "{added, plural, =0 {Nic nového k importu. Tato kola už tu jsou.} one {Importováno # kolo.} few {Importována # kola.} many {Importováno # kola.} other {Importováno # kol.}}",
+          "skipped": "{count, plural, one {# kolo v souboru nešlo přečíst a bylo přeskočeno.} few {# kola v souboru nešla přečíst a byla přeskočena.} many {# kola v souboru nešlo přečíst a bylo přeskočeno.} other {# kol v souboru nešlo přečíst a bylo přeskočeno.}}",
+          "importFailed": "Tento soubor není laboratorní záznam Memory Chess.",
+          "tooLarge": "Soubor má přes 5 MB, víc než jakýkoli laboratorní záznam, takže se nic neimportovalo.",
+          "overCap": "{count, plural, one {# starší kolo bylo vynecháno} few {# starší kola byla vynechána} many {# staršího kola bylo vynecháno} other {# starších kol bylo vynecháno}}, aby se nepřekročil limit 5 000 kol.",
+          "summaryIgnored": "V tomto prohlížeči už nějaká kola byla, takže se sloučila jen nová kola, ne celkové součty ze souboru.",
+          "summaryDropped": "Celkové součty v souboru nešly přečíst nebo pocházejí ze starší verze, takže se importovala jen jeho kola.",
+          "safari": "V Safari si anonymní panel tento záznam po zavření nepamatuje a Safari maže uložená data webu přibližně po 7 dnech bez návštěvy. Exportujte si kopii, ať o něj nepřijdete.",
+          "unavailable": "V anonymních oknech se nic neukládá. Toto okno prohlížeče vaše kola neuchovává.",
+          "backup": "Záloha napříč zařízeními (připravujeme)",
+          "backupNoted": "Záloha napříč zařízeními zatím není hotová. Děkujeme, váš zájem jsme zaznamenali.",
+          "card": {
+            "open": "Sdílet moje měření",
+            "title": "Moje měření v Memory Chess",
+            "span": "Paměťový rozsah: {pieceCount, plural, one {# figura} few {# figury} many {# figury} other {# figur}}, {accuracy} % nebo víc v {count, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}}",
+            "held": "Zapamatované figury: nedávný průměr {average}, z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
+            "speed": "Rychlost: nedávný průměr {average} na figuru {source, select, calibration {v tréninku} other {v partiích}} při {pieceCount} figurách, {studyTime}, z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
+            "site": "thememorychess.com",
+            "copy": "Zkopírovat moje měření",
+            "copied": "Zkopírováno. Vložte to kamkoli.",
+            "copyFailed": "Kopírování tady nefungovalo. Měření je označené výše, zkopírujte si ho sami."
+          },
+          "nudge": {
+            "title": "Váš záznam žije v tomto prohlížeči",
+            "body": "Vymazáním dat prohlížeče ho smažete. Přidejte si tento web do záložek, abyste se vraceli do stejného prohlížeče, a kopii si uložte tlačítkem Stáhnout můj laboratorní záznam výše.",
+            "safari": "Na iPhone a iPad uloží volba Přidat na plochu web jako aplikaci s vlastním záznamem, který pravidlo Safari o 7 dnech nemaže. Začíná prázdný, takže do něj importujte staženou kopii.",
+            "dismiss": "Zavřít"
+          }
+        }
+      },
+      "library": {
+        "title": "Příruční knihovna.",
+        "lede": "Výukové centrum spojuje krátké návody s cvičeními, takže každé měření ukazuje na něco, co můžete trénovat.",
+        "ref": "Č. {number}",
+        "read": "Číst návod",
+        "vision": {
+          "title": "Přehled o šachovnici",
+          "body": "Vidět celou šachovnici najednou, ne jen jeden roh po druhém."
+        },
+        "visualization": {
+          "title": "Představivost",
+          "body": "Udržet v hlavě pozici, ve které se figury pohybují."
+        },
+        "calculation": {
+          "title": "Propočet variant",
+          "body": "Dívat se dál dopředu a neztratit přitom přehled o šachovnici."
+        },
+        "memory": {
+          "title": "Paměť",
+          "body": "Techniky celků a vzorců, které zvednou vaše měření."
+        },
+        "blindfold": {
+          "title": "Trénink hry naslepo",
+          "body": "Čtyřfázový plán od paměti na pozici až po celé partie naslepo."
+        },
+        "blundering": "Jak přestat dělat hrubé chyby"
+      },
+      "final": {
+        "title": "První měření vám zabere necelou minutu.",
+        "body": "Bez účtu, bez stahování, bez registrace. Otevřete kolo, prohlédněte si pozici, poskládejte ji a přečtěte si číslo. Pak se rozhodněte, jestli chcete druhé."
+      },
+      "resultCard": {
+        "title": "Váš laboratorní záznam",
+        "device": "Uloženo na tomto zařízení",
+        "lines": "Toto kolo ve vašem záznamu",
+        "unshown": "Váš laboratorní záznam se pro toto kolo nepodařilo zobrazit.",
+        "newBest": {
+          "up": "Nový rekord při {pieceCount} figurách, {studyTime}: {accuracy} %, zlepšení z {previous} %",
+          "faster": "Nový rekord při {pieceCount} figurách, {studyTime}: znovu {accuracy} %, o {fasterTime} rychleji",
+          "plain": "Nový rekord při {pieceCount} figurách, {studyTime}: {accuracy} %"
+        },
+        "vsRecent": {
+          "above": "O {points, plural, one {# bod} few {# body} many {# bodu} other {# bodů}} nad vaším průměrem za poslední kola při tomto nastavení ({rounds})",
+          "below": "O {points, plural, one {# bod} few {# body} many {# bodu} other {# bodů}} pod vaším průměrem za poslední kola při tomto nastavení ({rounds})",
+          "level": "Na úrovni vašeho průměru za poslední kola při tomto nastavení ({rounds})"
+        },
+        "span": "Rozsah vzrostl, počet figur: {pieceCount}",
+        "streak": "{current, plural, one {Den 1} few {# dny za sebou} many {# dne za sebou} other {# dní za sebou}}{graceUsed, select, true {, využit den odkladu} other {}}, tento týden {days} z {goal} dní",
+        "next": {
+          "label": "Dál",
+          "why": {
+            "more": "90 % nebo víc, takže o figuru víc při stejném čase na prohlížení.",
+            "fewer": "Pod 50 %, takže o figuru méně při stejném čase na prohlížení.",
+            "edgeFiles": "Sloupce a a h vynecháváte častěji než středové sloupce.",
+            "weakType": "Nejvíc unikají {type, select, q {dámy} r {věže} b {střelci} n {jezdci} other {pěšci}}: zapamatováno {recalled} z {shown}.",
+            "fasterLessAccurate": "Při {pieceCount} figurách, {studyTime}, jste zrychlili na správnou figuru a přesnost klesla o {fell} bodů.",
+            "colourGap": "{weaker, select, w {Bílé} other {Černé}} figury si pamatujete hůř: {weakerPercent} % oproti {strongerPercent} %.",
+            "plateau": "Váš rozsah se drží na {span} figurách."
+          },
+          "play": "Hrát s {pieceCount} figurami, {studyTime}",
+          "again": "Hrát znovu s {pieceCount} figurami, {studyTime}",
+          "patterns": "Přečtěte si cvičení na rozpoznávání vzorců",
+          "vision": "Přečtěte si, jak vidět celou šachovnici"
+        }
+      },
+      "daily": {
+        "locked": "Dnešní desku jste už otevřeli. Na tomto zařízení máte jeden pokus denně.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Obnoví se za necelou minutu} one {Obnoví se za # min} few {Obnoví se za # min} many {Obnoví se za # min} other {Obnoví se za # min}}} one {Obnoví se za # h {minutes} min} few {Obnoví se za # h {minutes} min} many {Obnoví se za # h {minutes} min} other {Obnoví se za # h {minutes} min}}",
+        "seeRecord": "Otevřít laboratorní záznam",
+        "chooseRound": "Zahrát další kolo"
+      },
+      "review": {
+        "none": "Na tomto zařízení teď žádná deska nečeká na opakování.",
+        "capped": "Dnešní opakování ({cap}) jsou na tomto zařízení hotová.",
+        "cappedNext": "Desky, které ještě čekají, se vrátí zítra, nejdřív ty, které čekají nejdéle.",
+        "schedule": "Desky, na kterých máte méně než 80 %, se vracejí 1, 3, 7 a 14 dní po prvním zobrazení."
+      }
     }
   },
   "game": {

@@ -730,7 +730,7 @@
     "downloaded": "Görsel indirildi.",
     "imageCopied": "Görsel kopyalandı. Gönderine yapıştır.",
     "imageCopyFailed": "Bu tarayıcı görseli kopyalamadı. Bunun yerine indir.",
-    "opened": "{network} yeni sekmede açıldı. Görseli kaydettiysen ya da kopyaladıysan orada ekle.",
+    "opened": "{network} yeni sekmede açıldı. Kartın bağlantı önizlemesinde görünür.",
     "actions": {
       "share": "Paylaş",
       "download": "Görseli indir",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Şurada paylaş",
-      "note": "Bu bağlantılar görseli değil, metnini ve bağlantını paylaşır. Facebook ve LinkedIn yalnızca bağlantıyı alır. Kartı eklemek için önce görseli indir ya da kopyala, sonra gönderine ekle.",
+      "note": "Her bağlantı metnini ve kartına giden bir bağlantıyı paylaşır; X, Facebook, LinkedIn ve diğerleri kartı bağlantı önizlemesinde gösterir. Instagram için ya da görsel dosyasının gerektiği başka yerlerde önce görseli indir veya kopyala.",
       "newTab": "(yeni sekmede açılır)"
     }
   }

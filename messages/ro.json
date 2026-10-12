@@ -730,7 +730,7 @@
     "downloaded": "Imagine descărcată.",
     "imageCopied": "Imagine copiată. Lipește-o în postare.",
     "imageCopyFailed": "Acest browser nu a copiat imaginea. Descarc-o în schimb.",
-    "opened": "{network} s-a deschis într-o filă nouă. Adaugă acolo imaginea dacă ai salvat-o sau ai copiat-o.",
+    "opened": "{network} s-a deschis într-o filă nouă. Cardul tău apare în previzualizarea linkului.",
     "actions": {
       "share": "Distribuie",
       "download": "Descarcă imaginea",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Publică pe",
-      "note": "Aceste linkuri publică textul și linkul tău, nu imaginea. Facebook și LinkedIn preiau doar linkul. Ca să incluzi cardul, descarcă sau copiază mai întâi imaginea, apoi adaug-o la postare.",
+      "note": "Fiecare link publică textul tău cu un link către cardul tău, iar X, Facebook, LinkedIn și celelalte afișează cardul în previzualizarea linkului. Pentru Instagram sau oriunde altundeva e nevoie de fișierul imagine, descarcă-l sau copiază-l mai întâi.",
       "newTab": "(se deschide într-o filă nouă)"
     }
   }

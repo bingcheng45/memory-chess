@@ -1,6 +1,7 @@
 import type { useTranslations } from "next-intl";
 import { SITE, type CardFrame, type CardTrend } from "@/components/share/cardCanvas";
-import { shareUrl } from "@/components/share/shareLink";
+import { sharePageUrl } from "@/components/share/shareLink";
+import { resultCode } from "@/lib/share/shareCode";
 import type { LabPosition, RoundState } from "@/lib/round/round";
 import type { SharePost } from "@/lib/shareIntents";
 
@@ -128,7 +129,7 @@ export function resultCardCopy(t: ResultTranslate, share: RoundShare, locale: st
   };
 }
 
-/** One sentence with the score and the board it was on, then the link tagged as a shared result. */
+/** One sentence with the score and the board it was on, then the link to the card's own page. */
 export function resultCaption(t: ResultTranslate, share: RoundShare, locale: string): SharePost {
   const text = t("text", {
     kind: share.kind,
@@ -137,5 +138,5 @@ export function resultCaption(t: ResultTranslate, share: RoundShare, locale: str
     accuracy: percentText(share.accuracy, locale),
     date: share.kind === "daily" ? dayText(share.day, locale) : "",
   });
-  return { text, url: shareUrl(locale, "result") };
+  return { text, url: sharePageUrl("result", resultCode(share)) };
 }

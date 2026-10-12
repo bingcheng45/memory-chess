@@ -30,7 +30,7 @@ describe("Dashboard", () => {
 
     await act(async () => fireEvent.click(screen.getByRole("button", { name: "Share my progress" })));
     expect(within(screen.getByRole("dialog")).getByText(/^My Memory Chess progress/).textContent).toBe(
-      "My Memory Chess progress: memory span 6 pieces, 5.2 pieces held, 4.6 s per piece, 100% best accuracy. Can you beat it? https://thememorychess.com/?utm_source=share&utm_medium=dashboard",
+      "My Memory Chess progress: memory span 6 pieces, 5.2 pieces held, 4.6 s per piece, 100% best accuracy. Can you beat it? https://thememorychess.com/share/progress/1_s6_h52_v46_b100_a87_k3_n12_d3?utm_source=share&utm_medium=dashboard",
     );
     expect(tileText("span")).toBe("Memory span6 pieces80% or better in 11 rounds, studied 10 s");
   });
@@ -83,7 +83,7 @@ describe("Dashboard", () => {
 
     await act(async () => fireEvent.click(screen.getByRole("button", { name: "Share my progress" })));
     expect(within(screen.getByRole("dialog")).getByText(/^My Memory Chess progress/).textContent).toBe(
-      "My Memory Chess progress: 83% best accuracy, 67% recent accuracy, 2 rounds played, 1 day played. Can you beat it? https://thememorychess.com/?utm_source=share&utm_medium=dashboard",
+      "My Memory Chess progress: 83% best accuracy, 67% recent accuracy, 2 rounds played, 1 day played. Can you beat it? https://thememorychess.com/share/progress/1_b83_a67_n2_d1?utm_source=share&utm_medium=dashboard",
     );
   });
 

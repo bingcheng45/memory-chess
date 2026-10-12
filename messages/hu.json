@@ -730,7 +730,7 @@
     "downloaded": "Kép letöltve.",
     "imageCopied": "Kép kimásolva. Illeszd be a bejegyzésedbe.",
     "imageCopyFailed": "Ez a böngésző nem másolta ki a képet. Inkább töltsd le.",
-    "opened": "A(z) {network} új lapon nyílt meg. Ott add hozzá a képet, ha elmentetted vagy kimásoltad.",
+    "opened": "A(z) {network} új lapon nyílt meg. A kártyád megjelenik a link előnézetében.",
     "actions": {
       "share": "Megosztás",
       "download": "Kép letöltése",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Közzététel itt",
-      "note": "Ezek a hivatkozások a szövegedet és a linket osztják meg, a képet nem. A Facebook és a LinkedIn csak a linket veszi át. Ha a kártyát is szeretnéd, előbb töltsd le vagy másold ki a képet, majd add hozzá a bejegyzésedhez.",
+      "note": "Minden hivatkozás a szövegedet teszi közzé a kártyádra mutató linkkel, és az X, a Facebook, a LinkedIn és a többi a link előnézetében mutatja a kártyát. Az Instagramhoz vagy bárhová, ahol a képfájl kell, előbb töltsd le vagy másold ki.",
       "newTab": "(új lapon nyílik meg)"
     }
   }

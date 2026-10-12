@@ -15,7 +15,7 @@ const CARD: ShareCard = {
   rounds: 40,
 };
 const CAPTION = "My Memory Chess progress: memory span 8 pieces. Can you beat it?";
-const URL_TAGGED = "https://thememorychess.com/?utm_source=share&utm_medium=dashboard";
+const URL_TAGGED = "https://thememorychess.com/share/progress/1_s8?utm_source=share&utm_medium=dashboard";
 
 class FakeClipboardItem {
   readonly items: Record<string, Blob>;
@@ -257,7 +257,7 @@ describe("DashboardShare", () => {
     expect(events()).toEqual([{ name: "lab_dashboard_share", params: { method: "copy" } }]);
   });
 
-  it("links each network's post page in a new tab, says the image is not attached, and counts the network", async () => {
+  it("links each network's post page in a new tab, carry the card's own link, says the preview shows the card, and counts the network", async () => {
     renderWithIntl(<DashboardShare card={CARD} />);
     await openDialog();
     const x = within(dialog()).getByRole("link", { name: "X (opens in a new tab)" });
@@ -268,10 +268,10 @@ describe("DashboardShare", () => {
       "noopener noreferrer",
     ]);
     expect(within(dialog()).getAllByRole("link")).toHaveLength(7);
-    expect(within(dialog()).getByText(/not the image/)).toBeInTheDocument();
+    expect(within(dialog()).getByText(/show the card in the link preview/)).toBeInTheDocument();
 
     await act(async () => fireEvent.click(x));
-    expect(status()).toHaveTextContent("X opened in a new tab. Add the image there if you saved or copied it.");
+    expect(status()).toHaveTextContent("X opened in a new tab. Your card shows in the link preview.");
     expect(events()).toEqual([{ name: "lab_dashboard_share", params: { method: "post", network: "x" } }]);
   });
 

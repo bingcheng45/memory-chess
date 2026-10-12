@@ -730,7 +730,7 @@
     "downloaded": "图片已下载。",
     "imageCopied": "图片已复制。粘贴到你的帖子里吧。",
     "imageCopyFailed": "此浏览器无法复制图片。请改为下载。",
-    "opened": "已在新标签页打开 {network}。如果你已保存或复制图片，请在那里添加。",
+    "opened": "已在新标签页打开 {network}。你的卡片会显示在链接预览中。",
     "actions": {
       "share": "分享",
       "download": "下载图片",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "发布到",
-      "note": "这些链接只发布文案和链接，不含图片。Facebook 和 LinkedIn 只会带上链接。想附上卡片，请先下载或复制图片，再添加到帖子里。",
+      "note": "每个链接都会发布你的文案和指向卡片的链接，X、Facebook、LinkedIn 等会在链接预览中显示卡片。若要发到 Instagram 或其他需要图片文件的地方，请先下载或复制图片。",
       "newTab": "（在新标签页打开）"
     }
   }

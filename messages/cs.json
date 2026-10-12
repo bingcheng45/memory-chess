@@ -730,7 +730,7 @@
     "downloaded": "Obrázek stažen.",
     "imageCopied": "Obrázek zkopírován. Vlož ho do příspěvku.",
     "imageCopyFailed": "Tento prohlížeč obrázek nezkopíroval. Místo toho ho stáhni.",
-    "opened": "{network} se otevřel v nové kartě. Pokud jsi obrázek uložil nebo zkopíroval, přidej ho tam.",
+    "opened": "{network} se otevřel v nové kartě. Tvá karta se zobrazí v náhledu odkazu.",
     "actions": {
       "share": "Sdílet",
       "download": "Stáhnout obrázek",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Zveřejnit na",
-      "note": "Tyto odkazy zveřejní text a odkaz, ne obrázek. Facebook a LinkedIn převezmou jen odkaz. Chceš-li přidat kartu, nejdřív obrázek stáhni nebo zkopíruj a pak ho vlož do příspěvku.",
+      "note": "Každý odkaz zveřejní tvůj text s odkazem na kartu a X, Facebook, LinkedIn i další ukážou kartu v náhledu odkazu. Pro Instagram nebo kdekoli jinde, kde je potřeba soubor s obrázkem, ho nejdřív stáhni nebo zkopíruj.",
       "newTab": "(otevře se v nové kartě)"
     }
   }

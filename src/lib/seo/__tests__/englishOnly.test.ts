@@ -109,6 +109,11 @@ describe("isServedAtBareEnglishUrl", () => {
     },
   );
 
+  it("sends every locale to the bare URL of a shared card's page, which is not an editorial route", () => {
+    expect(["en", "de", "ja"].map((locale) => isServedAtBareEnglishUrl("/share/result/1_v_4_100_84_383", locale))).toEqual([true, true, true]);
+    expect(isEnglishOnlyPath("/share/result/1_v_4_100_84_383")).toBe(false);
+  });
+
   it.each(["/articles", "/articles/magnus-carlsen"])(
     "serves %s at the bare URL to English and to a locale without translated articles",
     (path) => {

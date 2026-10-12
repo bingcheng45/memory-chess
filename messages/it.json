@@ -730,7 +730,7 @@
     "downloaded": "Immagine scaricata.",
     "imageCopied": "Immagine copiata. Incollala nel tuo post.",
     "imageCopyFailed": "Questo browser non ha copiato l'immagine. Scaricala invece.",
-    "opened": "{network} si è aperto in una nuova scheda. Aggiungi lì l'immagine se l'hai salvata o copiata.",
+    "opened": "{network} si è aperto in una nuova scheda. La tua scheda compare nell'anteprima del link.",
     "actions": {
       "share": "Condividi",
       "download": "Scarica immagine",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Pubblica su",
-      "note": "Questi link pubblicano il tuo testo e il link, non l'immagine. Facebook e LinkedIn prendono solo il link. Per includere la scheda, scarica o copia prima l'immagine, poi aggiungila al tuo post.",
+      "note": "Ogni link pubblica il tuo testo con un link alla tua scheda, e X, Facebook, LinkedIn e gli altri mostrano la scheda nell'anteprima del link. Per Instagram o ovunque serva il file dell'immagine, scaricalo o copialo prima.",
       "newTab": "(si apre in una nuova scheda)"
     }
   }

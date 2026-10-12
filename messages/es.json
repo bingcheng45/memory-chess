@@ -730,7 +730,7 @@
     "downloaded": "Imagen descargada.",
     "imageCopied": "Imagen copiada. Pégala en tu publicación.",
     "imageCopyFailed": "Este navegador no pudo copiar la imagen. Descárgala en su lugar.",
-    "opened": "{network} se abrió en una pestaña nueva. Añade allí la imagen si la guardaste o copiaste.",
+    "opened": "{network} se abrió en una pestaña nueva. Tu tarjeta aparece en la vista previa del enlace.",
     "actions": {
       "share": "Compartir",
       "download": "Descargar imagen",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Publicar en",
-      "note": "Estos enlaces publican tu texto y tu enlace, no la imagen. Facebook y LinkedIn solo toman el enlace. Para incluir la tarjeta, descarga o copia la imagen primero y añádela a tu publicación.",
+      "note": "Cada enlace publica tu texto con un enlace a tu tarjeta, y X, Facebook, LinkedIn y los demás muestran la tarjeta en la vista previa del enlace. Para Instagram o cualquier otro sitio que necesite el archivo de imagen, descárgalo o cópialo primero.",
       "newTab": "(se abre en una pestaña nueva)"
     }
   }

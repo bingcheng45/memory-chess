@@ -730,7 +730,7 @@
     "downloaded": "Đã tải hình ảnh xuống.",
     "imageCopied": "Đã sao chép hình ảnh. Dán vào bài đăng của bạn.",
     "imageCopyFailed": "Trình duyệt này không sao chép được hình ảnh. Hãy tải xuống.",
-    "opened": "Đã mở {network} trong thẻ mới. Thêm hình ảnh ở đó nếu bạn đã lưu hoặc sao chép.",
+    "opened": "Đã mở {network} trong thẻ mới. Thẻ của bạn hiển thị trong bản xem trước liên kết.",
     "actions": {
       "share": "Chia sẻ",
       "download": "Tải hình ảnh",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Đăng lên",
-      "note": "Các liên kết này đăng chú thích và liên kết của bạn, không kèm hình ảnh. Facebook và LinkedIn chỉ nhận liên kết. Để kèm thẻ, hãy tải xuống hoặc sao chép hình ảnh trước rồi thêm vào bài đăng.",
+      "note": "Mỗi liên kết đăng chú thích của bạn kèm liên kết đến thẻ, và X, Facebook, LinkedIn cùng các nền tảng khác hiển thị thẻ trong bản xem trước liên kết. Với Instagram hoặc nơi nào cần tệp hình ảnh, hãy tải xuống hoặc sao chép hình ảnh trước.",
       "newTab": "(mở trong thẻ mới)"
     }
   }

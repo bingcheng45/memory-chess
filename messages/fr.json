@@ -730,7 +730,7 @@
     "downloaded": "Image téléchargée.",
     "imageCopied": "Image copiée. Collez-la dans votre publication.",
     "imageCopyFailed": "Ce navigateur n’a pas pu copier l’image. Téléchargez-la plutôt.",
-    "opened": "{network} s’est ouvert dans un nouvel onglet. Ajoutez-y l’image si vous l’avez enregistrée ou copiée.",
+    "opened": "{network} s’est ouvert dans un nouvel onglet. Votre carte s’affiche dans l’aperçu du lien.",
     "actions": {
       "share": "Partager",
       "download": "Télécharger l’image",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Publier sur",
-      "note": "Ces liens publient votre légende et le lien, pas l’image. Facebook et LinkedIn ne prennent que le lien. Pour inclure la carte, téléchargez ou copiez d’abord l’image, puis ajoutez-la à votre publication.",
+      "note": "Chaque lien publie votre légende avec un lien vers votre carte, et X, Facebook, LinkedIn et les autres affichent la carte dans l’aperçu du lien. Pour Instagram, ou partout ailleurs où le fichier image est nécessaire, téléchargez-le ou copiez-le d’abord.",
       "newTab": "(s’ouvre dans un nouvel onglet)"
     }
   }

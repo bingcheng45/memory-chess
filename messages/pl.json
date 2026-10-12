@@ -730,7 +730,7 @@
     "downloaded": "Obraz pobrany.",
     "imageCopied": "Obraz skopiowany. Wklej go do posta.",
     "imageCopyFailed": "Ta przeglądarka nie skopiowała obrazu. Pobierz go zamiast tego.",
-    "opened": "Otwarto {network} w nowej karcie. Dodaj tam obraz, jeśli go zapisałeś lub skopiowałeś.",
+    "opened": "Otwarto {network} w nowej karcie. Twoja karta pojawi się w podglądzie linku.",
     "actions": {
       "share": "Udostępnij",
       "download": "Pobierz obraz",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Opublikuj w",
-      "note": "Te linki publikują tekst i link, a nie obraz. Facebook i LinkedIn biorą tylko link. Aby dołączyć kartę, najpierw pobierz lub skopiuj obraz, a potem dodaj go do posta.",
+      "note": "Każdy link publikuje Twój tekst wraz z linkiem do karty, a X, Facebook, LinkedIn i pozostałe pokazują kartę w podglądzie linku. W przypadku Instagrama lub innych miejsc, które wymagają pliku obrazu, najpierw go pobierz lub skopiuj.",
       "newTab": "(otwiera się w nowej karcie)"
     }
   }

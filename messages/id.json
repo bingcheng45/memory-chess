@@ -730,7 +730,7 @@
     "downloaded": "Gambar diunduh.",
     "imageCopied": "Gambar disalin. Tempelkan ke unggahanmu.",
     "imageCopyFailed": "Browser ini tidak bisa menyalin gambar. Unduh saja sebagai gantinya.",
-    "opened": "{network} terbuka di tab baru. Tambahkan gambarnya di sana jika kamu sudah menyimpan atau menyalinnya.",
+    "opened": "{network} terbuka di tab baru. Kartumu tampil di pratinjau tautan.",
     "actions": {
       "share": "Bagikan",
       "download": "Unduh gambar",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Unggah ke",
-      "note": "Tautan ini mengunggah teks dan tautanmu, bukan gambarnya. Facebook dan LinkedIn hanya mengambil tautannya. Untuk menyertakan kartu, unduh atau salin gambarnya dulu, lalu tambahkan ke unggahanmu.",
+      "note": "Setiap tautan mengunggah teksmu beserta tautan ke kartumu, dan X, Facebook, LinkedIn, serta yang lain menampilkan kartu di pratinjau tautan. Untuk Instagram atau tempat lain yang membutuhkan file gambar, unduh atau salin dulu.",
       "newTab": "(terbuka di tab baru)"
     }
   }

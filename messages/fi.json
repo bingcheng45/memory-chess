@@ -730,7 +730,7 @@
     "downloaded": "Kuva ladattu.",
     "imageCopied": "Kuva kopioitu. Liitä se julkaisuusi.",
     "imageCopyFailed": "Tämä selain ei kopioinut kuvaa. Lataa se sen sijaan.",
-    "opened": "{network} avautui uudelle välilehdelle. Lisää kuva sinne, jos tallensit tai kopioit sen.",
+    "opened": "{network} avautui uudelle välilehdelle. Korttisi näkyy linkin esikatselussa.",
     "actions": {
       "share": "Jaa",
       "download": "Lataa kuva",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Julkaise palvelussa",
-      "note": "Nämä linkit julkaisevat tekstisi ja linkin, eivät kuvaa. Facebook ja LinkedIn ottavat vain linkin. Jos haluat kortin mukaan, lataa tai kopioi kuva ensin ja lisää se julkaisuusi.",
+      "note": "Jokainen linkki julkaisee tekstisi ja linkin korttiisi, ja X, Facebook, LinkedIn ja muut näyttävät kortin linkin esikatselussa. Instagramia tai muuta paikkaa varten, joka tarvitsee kuvatiedoston, lataa tai kopioi se ensin.",
       "newTab": "(avautuu uudelle välilehdelle)"
     }
   }

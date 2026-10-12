@@ -730,7 +730,7 @@
     "downloaded": "Bilden har laddats ned.",
     "imageCopied": "Bilden kopierad. Klistra in den i ditt inlägg.",
     "imageCopyFailed": "Den här webbläsaren kopierade inte bilden. Ladda ned den i stället.",
-    "opened": "{network} öppnades i en ny flik. Lägg till bilden där om du har sparat eller kopierat den.",
+    "opened": "{network} öppnades i en ny flik. Ditt kort visas i länkförhandsvisningen.",
     "actions": {
       "share": "Dela",
       "download": "Ladda ned bild",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Lägg upp på",
-      "note": "De här länkarna lägger upp din text och länk, inte bilden. Facebook och LinkedIn tar bara länken. Vill du ha med kortet laddar du ned eller kopierar bilden först och lägger sedan till den i inlägget.",
+      "note": "Varje länk lägger upp din text med en länk till ditt kort, och X, Facebook, LinkedIn och de andra visar kortet i länkförhandsvisningen. För Instagram eller andra ställen som kräver bildfilen laddar du ned eller kopierar den först.",
       "newTab": "(öppnas i en ny flik)"
     }
   }

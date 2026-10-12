@@ -730,7 +730,7 @@
     "downloaded": "圖片已下載。",
     "imageCopied": "圖片已複製。貼到你的貼文裡吧。",
     "imageCopyFailed": "此瀏覽器無法複製圖片。請改為下載。",
-    "opened": "已在新分頁開啟 {network}。如果你已儲存或複製圖片，請在那裡加入。",
+    "opened": "已在新分頁開啟 {network}。你的卡片會顯示在連結預覽中。",
     "actions": {
       "share": "分享",
       "download": "下載圖片",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "發布到",
-      "note": "這些連結只會發布文案和連結，不含圖片。Facebook 和 LinkedIn 只會帶上連結。想附上卡片，請先下載或複製圖片，再加入貼文。",
+      "note": "每個連結都會發布你的文案和指向卡片的連結，X、Facebook、LinkedIn 等會在連結預覽中顯示卡片。若要發到 Instagram 或其他需要圖片檔的地方，請先下載或複製圖片。",
       "newTab": "（在新分頁開啟）"
     }
   }

@@ -1547,7 +1547,7 @@
     "downloaded": "Image downloaded.",
     "imageCopied": "Image copied. Paste it into your post.",
     "imageCopyFailed": "This browser would not copy the image. Download it instead.",
-    "opened": "{network} opened in a new tab. Add the image there if you saved or copied it.",
+    "opened": "{network} opened in a new tab. Your card shows in the link preview.",
     "actions": {
       "share": "Share",
       "download": "Download image",
@@ -1555,7 +1555,7 @@
     },
     "post": {
       "title": "Post to",
-      "note": "These links post your caption and link, not the image. Facebook and LinkedIn take the link only. To include the card, download or copy the image first, then add it to your post.",
+      "note": "Each link posts your caption with a link to your card, and X, Facebook, LinkedIn and the others show the card in the link preview. For Instagram, or anywhere else that needs the image file, download or copy it first.",
       "newTab": "(opens in a new tab)"
     }
   }

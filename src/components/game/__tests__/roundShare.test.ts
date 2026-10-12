@@ -122,9 +122,9 @@ describe("resultCardCopy", () => {
 });
 
 describe("resultCaption", () => {
-  it("says the score in one sentence and links the home page tagged as a shared result", () => {
+  it("says the score in one sentence and links the card's own page tagged as a shared result", () => {
     expect(captionWithLink(resultCaption(EN, roundShareOf(scored(), STANDING), "en"))).toBe(
-      "I recalled 2 of 4 pieces (50%) on Memory Chess. Can you beat it? https://thememorychess.com/?utm_source=share&utm_medium=result",
+      "I recalled 2 of 4 pieces (50%) on Memory Chess. Can you beat it? https://thememorychess.com/share/result/1_g_4_100_84_383_1214_u14_3_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3?utm_source=share&utm_medium=result",
     );
   });
 

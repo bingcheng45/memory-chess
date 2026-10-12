@@ -730,7 +730,7 @@
     "downloaded": "Billede downloadet.",
     "imageCopied": "Billede kopieret. Indsæt det i dit opslag.",
     "imageCopyFailed": "Denne browser ville ikke kopiere billedet. Download det i stedet.",
-    "opened": "{network} åbnede i en ny fane. Tilføj billedet der, hvis du har gemt eller kopieret det.",
+    "opened": "{network} åbnede i en ny fane. Dit kort vises i linkforhåndsvisningen.",
     "actions": {
       "share": "Del",
       "download": "Download billede",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Del på",
-      "note": "Disse links deler din tekst og dit link, ikke billedet. Facebook og LinkedIn tager kun linket. Vil du have kortet med, så download eller kopiér billedet først, og tilføj det til dit opslag.",
+      "note": "Hvert link deler din tekst med et link til dit kort, og X, Facebook, LinkedIn og de andre viser kortet i linkforhåndsvisningen. Til Instagram eller andre steder, der kræver billedfilen, skal du først downloade eller kopiere den.",
       "newTab": "(åbner i en ny fane)"
     }
   }

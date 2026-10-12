@@ -36,6 +36,12 @@ export const ENGLISH_ONLY_ROUTES = [
 ] as const;
 
 /**
+ * Routes served only at their bare English URL but kept out of search and the footer: a shared card's page exists
+ * for the people its link was posted to, and its preview image is drawn in English.
+ */
+export const UNLISTED_ROUTES = ["/share"] as const;
+
+/**
  * Routes served to readers in translation but indexed only at their English
  * URL. A translated page is noindex with a canonical to itself, so nothing may
  * advertise it: the sitemap lists the English URL once with no alternates, and
@@ -78,6 +84,6 @@ export function isEnglishOnlyPath(path: string): boolean {
  * article URL always answers in English.
  */
 export function isServedAtBareEnglishUrl(path: string, locale: string): boolean {
-  if (isEnglishOnlyPath(path)) return true;
+  if (isEnglishOnlyPath(path) || UNLISTED_ROUTES.some((route) => isUnder(path, route))) return true;
   return isUnder(path, ARTICLES_PATH) && (locale === DEFAULT_LOCALE || !servesArticlesIn(locale));
 }

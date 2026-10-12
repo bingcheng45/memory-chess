@@ -730,7 +730,7 @@
     "downloaded": "Bildet er lastet ned.",
     "imageCopied": "Bildet er kopiert. Lim det inn i innlegget ditt.",
     "imageCopyFailed": "Denne nettleseren ville ikke kopiere bildet. Last det ned i stedet.",
-    "opened": "{network} åpnet i en ny fane. Legg til bildet der hvis du lagret eller kopierte det.",
+    "opened": "{network} åpnet i en ny fane. Kortet ditt vises i lenkeforhåndsvisningen.",
     "actions": {
       "share": "Del",
       "download": "Last ned bilde",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Del på",
-      "note": "Disse lenkene deler teksten og lenken din, ikke bildet. Facebook og LinkedIn tar bare lenken. For å ta med kortet må du laste ned eller kopiere bildet først og så legge det til i innlegget.",
+      "note": "Hver lenke deler teksten din med en lenke til kortet ditt, og X, Facebook, LinkedIn og de andre viser kortet i lenkeforhåndsvisningen. For Instagram eller andre steder som trenger bildefilen, må du laste den ned eller kopiere den først.",
       "newTab": "(åpnes i en ny fane)"
     }
   }

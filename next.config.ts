@@ -35,6 +35,8 @@ const nextConfig: NextConfig = {
     return { beforeFiles: [{ source: "/_next/:path+/", destination: "/_not-found" }], afterFiles: [], fallback: [] };
   },
   serverExternalPackages: ["google-auth-library"],
+  /** The share preview reads its fonts from disk at request time, which tracing cannot see on its own. */
+  outputFileTracingIncludes: { "/api/share/**": ["./src/lib/share/fonts/*.ttf"] },
   images: {
     domains: [],
     remotePatterns: [

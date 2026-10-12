@@ -730,7 +730,7 @@
     "downloaded": "Afbeelding gedownload.",
     "imageCopied": "Afbeelding gekopieerd. Plak hem in je bericht.",
     "imageCopyFailed": "Deze browser kon de afbeelding niet kopiëren. Download hem in plaats daarvan.",
-    "opened": "{network} is geopend in een nieuw tabblad. Voeg de afbeelding daar toe als je hem hebt opgeslagen of gekopieerd.",
+    "opened": "{network} is geopend in een nieuw tabblad. Je kaart verschijnt in de linkpreview.",
     "actions": {
       "share": "Delen",
       "download": "Afbeelding downloaden",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Plaatsen op",
-      "note": "Deze links plaatsen je tekst en link, niet de afbeelding. Facebook en LinkedIn nemen alleen de link over. Wil je de kaart erbij, download of kopieer de afbeelding dan eerst en voeg hem toe aan je bericht.",
+      "note": "Elke link plaatst je tekst met een link naar je kaart, en X, Facebook, LinkedIn en de rest tonen de kaart in de linkpreview. Voor Instagram of waar dan ook het afbeeldingsbestand nodig is, download of kopieer je het eerst.",
       "newTab": "(opent in een nieuw tabblad)"
     }
   }

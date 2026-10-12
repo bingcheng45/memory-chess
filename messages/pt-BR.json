@@ -730,7 +730,7 @@
     "downloaded": "Imagem baixada.",
     "imageCopied": "Imagem copiada. Cole-a na sua publicação.",
     "imageCopyFailed": "Este navegador não copiou a imagem. Baixe-a em vez disso.",
-    "opened": "{network} foi aberto em uma nova aba. Adicione a imagem lá se você a salvou ou copiou.",
+    "opened": "{network} foi aberto em uma nova aba. Seu cartão aparece na prévia do link.",
     "actions": {
       "share": "Compartilhar",
       "download": "Baixar imagem",
@@ -738,7 +738,7 @@
     },
     "post": {
       "title": "Publicar no",
-      "note": "Estes links publicam sua legenda e o link, não a imagem. Facebook e LinkedIn usam só o link. Para incluir o cartão, baixe ou copie a imagem primeiro e depois adicione-a à sua publicação.",
+      "note": "Cada link publica sua legenda com um link para o seu cartão, e X, Facebook, LinkedIn e os outros mostram o cartão na prévia do link. Para o Instagram, ou qualquer outro lugar que precise do arquivo de imagem, baixe ou copie a imagem primeiro.",
       "newTab": "(abre em uma nova aba)"
     }
   }

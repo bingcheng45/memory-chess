@@ -72,7 +72,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Nxf7 is stronger still. The king cannot take the knight either, because the bishop now covers f7, and the knight attacks the rook on d8.",
-            "Nothing about the bishop changed. Only a Black pawn moved. Your eyes follow the pawn to e5 and the space it gains, so a bishop that has stood still for ten moves drops out of the picture.",
+            "Nothing about the bishop changed. Only a Black pawn moved. This is tunnel vision. Your eyes follow the pawn to e5 and the space it gains, so a bishop that has stood still for ten moves drops out of the picture.",
             "Rooks do the same more quietly. A rook can sit on h1 all game until the h-pawns are traded, and then it owns an open file without having moved.",
           ],
         },
@@ -131,7 +131,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The order matters more than the speed. Run these five steps before you choose a move.",
+            "The sweep is the cure for tunnel vision. The order matters more than the speed. Run these five steps before you choose a move.",
           ],
         },
         {
@@ -194,14 +194,14 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Edge-first recall round",
-              description: "Play 3 rounds of 12 pieces with 8 seconds to look. During the look, read the edges first, meaning the a-file, h-file, first rank and eighth rank, then the middle. Place the edge pieces first. The result board rings each square you missed. You pass when no ring lands on an edge square.",
+              description: "Play 3 rounds of 12 pieces with 8 seconds to look. During the look, read the edges first, then the middle. Place the edge pieces first. The result board rings each square you missed. You pass when no ring lands on an edge square.",
               duration: "3 rounds, about 5 minutes",
               goal: "Hold the edges and the middle at once instead of one cluster.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
             {
               title: "Edge inventory",
-              description: "Open an annotated game at any middlegame diagram. List every piece on the a-file, the h-file, the first rank and the eighth rank. For each bishop, rook and queen among them, trace each of its lines to the edge and write every piece it passes. Check each trace against the diagram. You pass when no piece is missing and no trace stops at the first piece in its way.",
+              description: "Open an annotated game at any middlegame diagram. List every piece on the four edges. For each bishop, rook and queen among them, trace its lines to the edge and write every piece they pass. Then check in a second pass. Run your finger from a1 to h1, h8, a8 and back to a1, ticking each piece on your list, and touch every square of each trace. You pass when the second pass adds nothing.",
               duration: "4 minutes",
               goal: "Make the pieces you usually skip the first ones you list.",
             },
@@ -249,7 +249,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The habit is small. The last thing your eyes touch before a move is the far corner, and the bishop on a2 is the reason why.",
+            "The last thing your eyes touch before a move is the far corner, and the bishop on a2 is the reason why.",
           ],
         },
       ],
@@ -264,7 +264,7 @@ const guide: LearnDocument = {
         pieceCount: 12,
         memorizeTime: 8,
       },
-      why: "Twelve pieces spread over the whole board, so a round you finish short usually lost a piece near an edge.",
+      why: "Twelve randomly placed pieces can land on any file or rank, so the edges get tested as hard as the middle.",
     },
     {
       kind: "faq",

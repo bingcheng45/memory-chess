@@ -131,6 +131,17 @@ describe("submitLeaderboardEntry", () => {
     expect(mockInsert.mock.calls).toEqual([[entry], [entryWithoutRating], [entryWithoutRatingOrCountry]]);
   });
 
+  it("keeps every column and reports the database unavailable when the error names a column no migration here added", async () => {
+    const error = missingColumn("PGRST204", "seed_version");
+    mockSingle.mockResolvedValueOnce({ data: null, error });
+
+    const result = await submitLeaderboardEntry(entry);
+
+    expect(result).toEqual({ status: "unavailable", cause: error });
+    expect(mockInsert).toHaveBeenCalledTimes(1);
+    expect(warn).not.toHaveBeenCalled();
+  });
+
   it("does not retry a daily row, which no table without 0004 can hold", async () => {
     const error = missingColumn("PGRST204");
     mockSingle.mockResolvedValueOnce({ data: null, error });

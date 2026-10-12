@@ -251,7 +251,7 @@ export async function submitLeaderboardEntry(
   let left: readonly Droppable[] = DROPPABLE_COLUMNS;
   for (;;) {
     const named = columnNamedBy(rejection);
-    const drop = left.find(({ column }) => column === named) ?? left[0];
+    const drop = named === null ? left[0] : left.find(({ column }) => column === named);
     if (drop === undefined) {
       return { status: 'unavailable', cause: rejection };
     }

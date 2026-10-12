@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
-import { MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
+import { isSkillRating, MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
 import { readBoard } from '@/lib/leaderboard/board';
 import { isLeaderboardDifficulty } from '@/types/leaderboard';
 
@@ -11,9 +11,7 @@ const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try ag
 /** A missing rating comes from a tab loaded before ratings were sent, and reads as the starting rating. */
 function parseSkillRating(value: unknown): number | null {
   if (value === undefined) return START_RATING;
-  return typeof value === 'number' && Number.isInteger(value) && value >= 0
-    ? Math.min(value, MAX_SKILL_RATING)
-    : null;
+  return isSkillRating(value) ? Math.min(value, MAX_SKILL_RATING) : null;
 }
 
 export async function GET(request: NextRequest) {

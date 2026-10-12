@@ -13,7 +13,7 @@ import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
 import { trackEvent, type RoundSource } from '@/lib/analytics/events';
 import type { LabRound } from '@/lib/lab/recordRound';
 import { now as monotonicNow } from '@/lib/game/clock';
-import { START_RATING } from "@/lib/game/rating";
+import { isSkillRating, START_RATING } from "@/lib/game/rating";
 import { isSoundEnabled } from '@/lib/utils/soundEffects';
 import {
   IDLE_ROUND,
@@ -376,18 +376,14 @@ export const useGameStore = create<GameStore>()(
       // by a later version, such as the streak, starts from its default.
       merge: (persisted, current) => {
         const stored = (isRecord(persisted) ? persisted : {}) as Partial<GameStore>;
-        const storedGameState = isRecord(stored.gameState) ? stored.gameState : {};
-        const storedRating: unknown = isRecord(stored.gameState) ? stored.gameState.skillRating : undefined;
+        const storedGameState: Record<string, unknown> = isRecord(stored.gameState) ? stored.gameState : {};
         return {
           ...current,
           ...stored,
           gameState: {
             ...current.gameState,
             ...storedGameState,
-            skillRating:
-              typeof storedRating === "number" && Number.isInteger(storedRating) && storedRating >= 0
-                ? storedRating
-                : START_RATING,
+            skillRating: isSkillRating(storedGameState.skillRating) ? storedGameState.skillRating : START_RATING,
           },
           lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
         };

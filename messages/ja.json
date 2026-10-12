@@ -12,7 +12,9 @@
       "leaderboard": "ランキング",
       "dashboard": "ダッシュボード",
       "menu": "メニュー",
-      "site": "サイト"
+      "site": "サイト",
+      "streakChip": "{count}日目",
+      "streakChipLabel": "連続記録の{count}日目{forgiven, plural, =0 {} other {（休んだ#日は猶予）}}。ダッシュボードを開く。"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 無断転載を禁じます。",

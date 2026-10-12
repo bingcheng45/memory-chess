@@ -12,7 +12,9 @@
       "leaderboard": "लीडरबोर्ड",
       "dashboard": "डैशबोर्ड",
       "menu": "मेन्यू",
-      "site": "साइट"
+      "site": "साइट",
+      "streakChip": "दिन {count}",
+      "streakChipLabel": "आपकी लगातार श्रृंखला का दिन {count}{forgiven, plural, =0 {} one {, # छूटा दिन माफ़} other {, # छूटे दिन माफ़}}। अपना डैशबोर्ड खोलें।"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. सर्वाधिकार सुरक्षित।",

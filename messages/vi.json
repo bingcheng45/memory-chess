@@ -12,7 +12,9 @@
       "leaderboard": "Bảng xếp hạng",
       "dashboard": "Bảng thống kê",
       "menu": "Menu",
-      "site": "Trang web"
+      "site": "Trang web",
+      "streakChip": "Ngày {count}",
+      "streakChipLabel": "Ngày {count} trong chuỗi của bạn{forgiven, plural, =0 {} other {, # ngày bỏ lỡ được bỏ qua}}. Mở bảng điều khiển."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Bảo lưu mọi quyền.",

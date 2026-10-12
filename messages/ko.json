@@ -12,7 +12,9 @@
       "leaderboard": "리더보드",
       "dashboard": "대시보드",
       "menu": "메뉴",
-      "site": "사이트"
+      "site": "사이트",
+      "streakChip": "{count}일째",
+      "streakChipLabel": "연속 기록 {count}일째{forgiven, plural, =0 {} other {, 놓친 #일 면제}}. 대시보드 열기."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 모든 권리 보유.",

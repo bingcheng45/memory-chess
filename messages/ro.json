@@ -12,7 +12,9 @@
       "leaderboard": "Clasament",
       "dashboard": "Tablou de bord",
       "menu": "Meniu",
-      "site": "Site"
+      "site": "Site",
+      "streakChip": "Ziua {count}",
+      "streakChipLabel": "Ziua {count} din seria ta{forgiven, plural, =0 {} one {, # zi ratată iertată} few {, # zile ratate iertate} other {, # de zile ratate iertate}}. Deschide panoul."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Toate drepturile rezervate.",

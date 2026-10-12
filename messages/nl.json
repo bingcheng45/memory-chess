@@ -12,7 +12,9 @@
       "leaderboard": "Ranglijst",
       "dashboard": "Dashboard",
       "menu": "Menu",
-      "site": "Site"
+      "site": "Site",
+      "streakChip": "Dag {count}",
+      "streakChipLabel": "Dag {count} van je reeks{forgiven, plural, =0 {} one {, # gemiste dag vergeven} other {, # gemiste dagen vergeven}}. Open je dashboard."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle rechten voorbehouden.",

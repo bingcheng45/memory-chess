@@ -12,7 +12,9 @@
       "leaderboard": "Sıralama",
       "dashboard": "Panel",
       "menu": "Menü",
-      "site": "Site"
+      "site": "Site",
+      "streakChip": "{count}. gün",
+      "streakChipLabel": "Serinin {count}. günü{forgiven, plural, =0 {} one {, # kaçırılan gün affedildi} other {, # kaçırılan gün affedildi}}. Panonu aç."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tüm hakları saklıdır.",

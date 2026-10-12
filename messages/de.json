@@ -12,7 +12,9 @@
       "leaderboard": "Bestenliste",
       "dashboard": "Dashboard",
       "menu": "Menü",
-      "site": "Website"
+      "site": "Website",
+      "streakChip": "Tag {count}",
+      "streakChipLabel": "Tag {count} deiner Serie{forgiven, plural, =0 {} one {, # verpasster Tag verziehen} other {, # verpasste Tage verziehen}}. Dashboard öffnen."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle Rechte vorbehalten.",

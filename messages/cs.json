@@ -12,7 +12,9 @@
       "leaderboard": "Žebříček",
       "dashboard": "Přehled",
       "menu": "Menu",
-      "site": "Web"
+      "site": "Web",
+      "streakChip": "Den {count}",
+      "streakChipLabel": "Den {count} tvé série{forgiven, plural, =0 {} one {, # vynechaný den odpuštěn} few {, # vynechané dny odpuštěny} many {, # vynechaného dne odpuštěno} other {, # vynechaných dní odpuštěno}}. Otevřít přehled."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Všechna práva vyhrazena.",

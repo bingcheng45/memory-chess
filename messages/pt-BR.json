@@ -12,7 +12,9 @@
       "leaderboard": "Ranking",
       "dashboard": "Painel",
       "menu": "Menu",
-      "site": "Site"
+      "site": "Site",
+      "streakChip": "Dia {count}",
+      "streakChipLabel": "Dia {count} da sua sequência{forgiven, plural, =0 {} one {, # dia perdido perdoado} many {, # dias perdidos perdoados} other {, # dias perdidos perdoados}}. Abrir seu painel."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Todos os direitos reservados.",

@@ -12,7 +12,9 @@
       "leaderboard": "Peringkat",
       "dashboard": "Dasbor",
       "menu": "Menu",
-      "site": "Situs"
+      "site": "Situs",
+      "streakChip": "Hari ke-{count}",
+      "streakChipLabel": "Hari ke-{count} beruntunmu{forgiven, plural, =0 {} other {, # hari terlewat dimaafkan}}. Buka dasbor."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Seluruh hak cipta dilindungi.",

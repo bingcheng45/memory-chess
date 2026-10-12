@@ -1,8 +1,6 @@
 "use client";
 
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
-import { LAB_METRICS } from "@/lib/lab/metrics";
-import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { CalibrationSection } from "./CalibrationSection";
 import { FinalCta } from "./FinalCta";
 import { HomeStructuredData } from "./HomeStructuredData";
@@ -23,11 +21,10 @@ import "./lab-instruments.css";
 export function BrainLabHome() {
   const totalPlays = useTotalPlays();
   const record = useLabRecord();
-  const streak = record.today ? LAB_METRICS.streak.compute(record).value : null;
 
   return (
     <div className={LAB_PAPER_CLASS}>
-      <LabHomeHeader streak={streak && streak.current >= LAB_THRESHOLDS.streakDays ? { days: streak.current, forgiven: streak.forgivenDays.length } : null} />
+      <LabHomeHeader />
       <main>
         <HomeStructuredData />
         <LabHero totalPlays={totalPlays} />

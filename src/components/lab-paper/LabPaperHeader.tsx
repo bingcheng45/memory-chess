@@ -6,6 +6,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import LanguageSettings from "@/components/ui/LanguageSettings";
 import SiteLink from "@/components/ui/SiteLink";
 import { QUICK_START_HREF } from "@/components/home/links";
+import { HeaderStreakChip } from "./HeaderStreakChip";
 import "./lab-paper.css";
 
 /** `extra` links leave the desktop row first and stay in the phone menu. Changelog lives in the footer and the phone menu only. */
@@ -37,9 +38,9 @@ export interface LabPaperHeaderProps {
   readonly sections?: PageSections;
   /** The Play button's wide-screen label and accessible name; phones show the short "Play". */
   readonly playLabel?: string;
-  /** Page-specific tools placed before Play, such as the homepage's streak chip. */
-  readonly tools?: ReactNode;
   /** False on the game itself, where Play would link to the page already open and start nothing. */
+  /** Page-specific tools placed before Play, such as the game's sound toggle. */
+  readonly tools?: ReactNode;
   readonly showPlay?: boolean;
 }
 
@@ -156,6 +157,7 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
           </nav>
           <div className="lab-header-tools">
             <LanguageSettings appearance="paper" className="lab-lang" />
+            <HeaderStreakChip />
             {tools}
             {showPlay && (
               <Link className="lab-btn lab-btn-primary lab-btn-sm" href={QUICK_START_HREF} aria-label={playLabel}>
@@ -170,8 +172,12 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
               aria-expanded={menu.open}
               aria-controls={menuPanelId}
               onClick={menu.toggle}
+              aria-label={nav("menu")}
             >
-              {nav("menu")}
+              <svg className="lab-menu-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
+                <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
+              </svg>
+              <span className="lab-menu-label">{nav("menu")}</span>
             </button>
           </div>
         </div>

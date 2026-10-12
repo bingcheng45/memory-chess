@@ -12,7 +12,9 @@
       "leaderboard": "排行榜",
       "dashboard": "儀表板",
       "menu": "選單",
-      "site": "網站"
+      "site": "網站",
+      "streakChip": "第 {count} 天",
+      "streakChipLabel": "連續第 {count} 天{forgiven, plural, =0 {} other {，已寬限 # 個缺席日}}。開啟你的儀表板。"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 保留一切權利。",

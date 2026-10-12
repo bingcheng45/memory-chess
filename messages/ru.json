@@ -12,7 +12,9 @@
       "leaderboard": "Рейтинг",
       "dashboard": "Статистика",
       "menu": "Меню",
-      "site": "Сайт"
+      "site": "Сайт",
+      "streakChip": "День {count}",
+      "streakChipLabel": "День {count} вашей серии{forgiven, plural, =0 {} one {, # пропущенный день прощён} few {, # пропущенных дня прощены} many {, # пропущенных дней прощены} other {, # пропущенного дня прощены}}. Открыть панель."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Все права защищены.",

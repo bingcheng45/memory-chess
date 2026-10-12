@@ -12,7 +12,9 @@
       "leaderboard": "Rangliste",
       "dashboard": "Oversigt",
       "menu": "Menu",
-      "site": "Websted"
+      "site": "Websted",
+      "streakChip": "Dag {count}",
+      "streakChipLabel": "Dag {count} i din stime{forgiven, plural, =0 {} one {, # misset dag tilgivet} other {, # missede dage tilgivet}}. Åbn dit dashboard."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle rettigheder forbeholdes.",

@@ -12,7 +12,9 @@
       "leaderboard": "Toppliste",
       "dashboard": "Oversikt",
       "menu": "Meny",
-      "site": "Nettsted"
+      "site": "Nettsted",
+      "streakChip": "Dag {count}",
+      "streakChipLabel": "Dag {count} i rekken din{forgiven, plural, =0 {} one {, # tapt dag tilgitt} other {, # tapte dager tilgitt}}. Åpne oversikten din."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Med enerett.",

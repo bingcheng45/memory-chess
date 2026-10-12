@@ -12,7 +12,9 @@
       "leaderboard": "Ranglista",
       "dashboard": "Irányítópult",
       "menu": "Menü",
-      "site": "Webhely"
+      "site": "Webhely",
+      "streakChip": "{count}. nap",
+      "streakChipLabel": "Sorozatod {count}. napja{forgiven, plural, =0 {} one {, # kihagyott nap megbocsátva} other {, # kihagyott nap megbocsátva}}. Irányítópult megnyitása."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Minden jog fenntartva.",

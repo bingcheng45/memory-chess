@@ -12,7 +12,9 @@
       "leaderboard": "Topplista",
       "dashboard": "Översikt",
       "menu": "Meny",
-      "site": "Webbplats"
+      "site": "Webbplats",
+      "streakChip": "Dag {count}",
+      "streakChipLabel": "Dag {count} i din svit{forgiven, plural, =0 {} one {, # missad dag förlåten} other {, # missade dagar förlåtna}}. Öppna din översikt."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Med ensamrätt.",

@@ -12,7 +12,9 @@
       "leaderboard": "Clasificación",
       "dashboard": "Panel",
       "menu": "Menú",
-      "site": "Sitio"
+      "site": "Sitio",
+      "streakChip": "Día {count}",
+      "streakChipLabel": "Día {count} de tu racha{forgiven, plural, =0 {} one {, # día perdido perdonado} many {, # días perdidos perdonados} other {, # días perdidos perdonados}}. Abre tu panel."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Todos los derechos reservados.",

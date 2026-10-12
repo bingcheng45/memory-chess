@@ -12,7 +12,9 @@
       "leaderboard": "Tulostaulukko",
       "dashboard": "Koontinäyttö",
       "menu": "Valikko",
-      "site": "Sivusto"
+      "site": "Sivusto",
+      "streakChip": "Päivä {count}",
+      "streakChipLabel": "Putkesi päivä {count}{forgiven, plural, =0 {} one {, # väliin jäänyt päivä annettu anteeksi} other {, # väliin jäänyttä päivää annettu anteeksi}}. Avaa koontinäyttö."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Kaikki oikeudet pidätetään.",

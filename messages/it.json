@@ -12,7 +12,9 @@
       "leaderboard": "Classifica",
       "dashboard": "Dashboard",
       "menu": "Menu",
-      "site": "Sito"
+      "site": "Sito",
+      "streakChip": "Giorno {count}",
+      "streakChipLabel": "Giorno {count} della tua serie{forgiven, plural, =0 {} one {, # giorno saltato perdonato} many {, # giorni saltati perdonati} other {, # giorni saltati perdonati}}. Apri la dashboard."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tutti i diritti riservati.",

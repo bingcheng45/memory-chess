@@ -12,7 +12,9 @@
       "leaderboard": "Ranking",
       "dashboard": "Panel",
       "menu": "Menu",
-      "site": "Serwis"
+      "site": "Serwis",
+      "streakChip": "Dzień {count}",
+      "streakChipLabel": "Dzień {count} Twojej serii{forgiven, plural, =0 {} one {, # opuszczony dzień wybaczony} few {, # opuszczone dni wybaczone} many {, # opuszczonych dni wybaczonych} other {, # opuszczonego dnia wybaczone}}. Otwórz panel."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Wszelkie prawa zastrzeżone.",

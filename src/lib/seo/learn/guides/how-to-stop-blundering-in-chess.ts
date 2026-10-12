@@ -29,7 +29,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Before every move, run one five-step scan in a fixed order. Check what your opponent's last move attacks, list every check, capture and threat they have, and find your loose pieces, the undefended ones. Then ask whether your intended move lands on a defended square and what it stops guarding. Only then look for your own checks and captures.",
+    quickAnswer: "Before every move, run a five-step scan in a fixed order. Check what your opponent's last move attacks, list their checks, captures and threats, and find your loose pieces, the undefended ones. Then ask whether your move lands on a defended square and what it stops guarding, and only then look for your own checks and captures.",
     takeaways: [
       "A one-move blunder is a move that only works on the board in your head.",
       "A loose piece has no defender, so list yours before your opponent's check finds one.",
@@ -200,7 +200,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "No seventh piece",
-              description: "Play 4 rounds of 6 pieces with 10 seconds to look, pressing Try Again on the result screen to keep the settings. Before each submit, count your pieces. If there are seven, remove the one you are least sure you saw.",
+              description: "Play 4 rounds of 6 pieces with 10 seconds to look, pressing Try Again on the result screen to keep the settings. Before each submit, count your pieces. If you have more than six, remove the ones you are least sure you saw. You pass when all four rounds go in with six pieces or fewer.",
               duration: "4 rounds, about 4 minutes",
               goal: "Tell a piece you saw from a piece you assumed was there.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
@@ -260,7 +260,6 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "On a low clock the full scan will not fit, so keep step one and drop the rest. A piece that just moved has fresh targets, and step one also catches any line it opened.",
-            "Slow play alone fails for the same reason. Extra time is only as useful as the question you spend it on.",
           ],
         },
       ],

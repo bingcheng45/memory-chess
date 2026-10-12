@@ -120,7 +120,7 @@ const guide: LearnDocument = {
           items: [
             "The last move. Name every square the moved piece now attacks, and any line it opened by leaving its old square.",
             "Your opponent's forcing moves. List every check they could give, every capture they could make, and every move that would attack one of your pieces.",
-            "Your loose pieces. A loose piece is one with no defender. Name each one by its square, then name any piece attacked more times than it is defended.",
+            "Your loose pieces. A loose piece is one with no defender, and a pinned piece does not count as one. Name each loose piece by its square, then name any piece attacked more times than it is defended.",
             "Your intended move. Picture the piece gone from its square, then ask what it was guarding and which line it was blocking.",
             "Your own forcing moves. Only now look at checks and captures for you, starting with any loose enemy piece.",
           ],

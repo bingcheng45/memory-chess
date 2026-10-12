@@ -83,7 +83,8 @@ function useAutoplay(play: () => void) {
   return ref;
 }
 
-const Time = ({ value }: { value: number }) => <span className="lab-mono">{seconds(value)}</span>;
+// Only the digits are mono: a mono space is a whole digit cell wide, which read "5.4  s of5.4  s".
+const Time = ({ value }: { value: number }) => <><span className="lab-mono">{value.toFixed(1)}</span>{"\u00a0"}s</>;
 
 function Clock({ round, cursor: { phase, elapsed } }: { round: ReplayRound; cursor: ReplayCursor }) {
   if (phase === "clear") return "Board cleared";

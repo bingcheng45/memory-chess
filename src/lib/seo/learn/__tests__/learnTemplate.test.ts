@@ -55,7 +55,7 @@ describe("derived page values", () => {
       "chess-visualization-exercises": 5,
       "how-to-see-the-whole-board-in-chess": 5,
       "chess-calculation-exercises-for-beginners": 7,
-      "blindfold-chess-training-for-beginners": 6,
+      "blindfold-chess-training-for-beginners": 7,
       "chess-memory-training": 7,
       "chess-pattern-recognition-drills": 5,
       "how-to-think-in-chess-for-beginners": 5,

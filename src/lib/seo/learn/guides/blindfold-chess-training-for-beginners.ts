@@ -122,7 +122,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Scholar's mate is the right first game because it is four moves long and only six pieces move. The other 25 still stand where they started, and those are the ones a blind player drops.",
-            "Now say why it is mate. The king on e8 cannot take on f7, because the bishop on c4 covers that square. It cannot step to e7, because the queen on f7 covers it. Black's own queen, bishop and pawn fill d8, f8 and d7. Black's king is in check with Black to move, so the sixth check passes.",
+            "Now say why it is mate. The king on e8 cannot take on f7, because the bishop on c4 covers that square. It cannot step to e7, because the queen on f7 covers it. Black's own queen, bishop and pawn fill d8, f8 and d7. Black's king is in check and it is Black's move, so the last item on the list holds.",
             "The pass mark is a clean run on two different days. Clean means every piece on its square and the mate explained without a look.",
           ],
         },
@@ -204,7 +204,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Fifteen moves with the move list in view",
-              description: "Play a friend or an engine. Cover the game board with paper, or turn on the site's blindfold or hidden-pieces setting if it has one. Read the move list after a failed check or when unsure where a piece stands, never to find a move. At move 15, set the position up on a real board from memory. Uncover the game board and count the pieces on your real board that stand on a different square.",
+              description: "Play a friend or an engine. Cover the game board with paper, or turn on the site's blindfold or hidden-pieces setting if it has one. Read the move list after your picture breaks one of the six checks or when unsure where a piece stands, never to find a move. At move 15, set the position up on a real board from memory. Uncover the game board and count the pieces on your real board that stand on a different square.",
               duration: "One game every other day",
               goal: "Every piece on its square at move 15, two games in a row.",
             },
@@ -225,7 +225,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The first three stages take about four weeks. Repeat a stage you fail instead of skipping ahead.",
+            "The first three stages take about four weeks. Stage four needs two clean games played every other day, so plan on at least another week, which puts your first full blind game about five weeks from today. Repeat a stage you fail instead of skipping ahead.",
           ],
         },
         {
@@ -248,7 +248,7 @@ const guide: LearnDocument = {
             },
             {
               label: "Stage four",
-              duration: "One game every other day",
+              duration: "One game every other day, a week or more",
               detail: "Fifteen moves with the move list in view, checked on a real board, until two games in a row come out clean.",
             },
           ],

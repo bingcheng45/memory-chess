@@ -15,8 +15,14 @@ export type DragSource =
       readonly piece: LabPiece;
     };
 
-/** Movement, in CSS pixels, a press may wander and still count as a tap. */
-const TAP_SLOP_PX = 6;
+/**
+ * Movement, in CSS pixels, a press may wander and still count as a tap. A finger wobbles, and Chrome keeps sending the
+ * tap's click until it has moved 15px, so a finger gets one pixel more: every press the browser still treats as a tap
+ * stays one here, and a press it no longer clicks for is a drag.
+ */
+const TAP_SLOP_PX = { mouse: 6, finger: 16 } as const;
+/** How long after a drag's release its click may still come: a phone sends it in a task of its own, later. */
+const DRAG_CLICK_MS = 400;
 /** How far above a finger the ghost rides, as a share of its size, so the finger does not hide it. */
 const TOUCH_LIFT = 0.75;
 /** The ghost's size where nothing on the page has one to lend it. */
@@ -77,14 +83,24 @@ function ghostTransform(x: number, y: number, size: number, lift: number): strin
   return `translate3d(${x - size / 2}px, ${y - size / 2 - lift}px, 0)`;
 }
 
-/** The click a browser sends after a drag's release belongs to the drag, not to the element it started on. */
+/**
+ * The click a browser sends after a drag's release belongs to the drag, not to the element under it. It is held back
+ * until it comes, the next press starts, or DRAG_CLICK_MS pass, whichever is first.
+ */
 function swallowNextClick(): void {
   const swallow = (event: MouseEvent) => {
     event.stopPropagation();
     event.preventDefault();
+    disarm();
   };
-  window.addEventListener("click", swallow, { capture: true, once: true });
-  setTimeout(() => window.removeEventListener("click", swallow, { capture: true }), 0);
+  const disarm = () => {
+    clearTimeout(timer);
+    window.removeEventListener("click", swallow, true);
+    window.removeEventListener("pointerdown", disarm, true);
+  };
+  window.addEventListener("click", swallow, true);
+  window.addEventListener("pointerdown", disarm, true);
+  const timer = setTimeout(disarm, DRAG_CLICK_MS);
 }
 
 /**
@@ -141,7 +157,8 @@ export function usePieceDrag({ onStart, onDrop }: PieceDragOptions): PieceDrag {
       const current = gesture.current;
       if (!current || current.pointerId !== event.pointerId) return;
       if (current.phase === "pressed") {
-        if (Math.hypot(event.clientX - current.x, event.clientY - current.y) < TAP_SLOP_PX) return;
+        const slop = event.pointerType === "mouse" ? TAP_SLOP_PX.mouse : TAP_SLOP_PX.finger;
+        if (Math.hypot(event.clientX - current.x, event.clientY - current.y) < slop) return;
         if (onStart && !onStart(current.source)) {
           gesture.current = { phase: "spent", pointerId: current.pointerId };
           return;

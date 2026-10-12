@@ -43,8 +43,8 @@ function Round({ initial }: { initial: RoundState }) {
 const pointOf = (square: SquareName) => ({ clientX: BOARD_SQUARES.indexOf(square) * 10 + 5, clientY: 5 });
 const OFF_BOARD = { clientX: 5, clientY: 900 };
 
-// A drag's release arms a one-shot click swallower that the next task disarms; let it go before the next test.
-afterEach(() => new Promise((resolve) => setTimeout(resolve, 0)));
+// A drag's release holds back the next click until the next press; press once so it never reaches the next test.
+afterEach(() => fireEvent.pointerDown(document.body));
 
 beforeEach(() => {
   Object.assign(document, {

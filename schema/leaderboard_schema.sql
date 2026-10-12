@@ -66,6 +66,24 @@ ALTER TABLE leaderboard_entries
   ADD CONSTRAINT check_daily_day_recent
   CHECK (daily_day IS NULL OR daily_day BETWEEN (created_at AT TIME ZONE 'UTC')::date - 1 AND (created_at AT TIME ZONE 'UTC')::date);
 
+-- check_daily_day_recent reads created_at, and a direct insert can send its
+-- own created_at, NULL included. A daily row always takes the database's clock.
+CREATE FUNCTION leaderboard_daily_created_at() RETURNS trigger
+LANGUAGE plpgsql
+SET search_path = ''
+AS $$
+BEGIN
+  NEW.created_at := now();
+  RETURN NEW;
+END
+$$;
+
+CREATE TRIGGER leaderboard_daily_created_at
+  BEFORE INSERT ON leaderboard_entries
+  FOR EACH ROW
+  WHEN (NEW.daily_day IS NOT NULL)
+  EXECUTE FUNCTION leaderboard_daily_created_at();
+
 -- Index for quick leaderboard retrieval.
 CREATE INDEX idx_leaderboard_ranking ON leaderboard_entries (
   difficulty,

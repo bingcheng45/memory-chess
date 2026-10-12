@@ -86,6 +86,25 @@ BEGIN
 END
 $$;
 
+-- check_daily_day_recent reads created_at, and a direct insert can send its
+-- own created_at, NULL included. A daily row always takes the database's clock.
+CREATE OR REPLACE FUNCTION leaderboard_daily_created_at() RETURNS trigger
+LANGUAGE plpgsql
+SET search_path = ''
+AS $$
+BEGIN
+  NEW.created_at := now();
+  RETURN NEW;
+END
+$$;
+
+DROP TRIGGER IF EXISTS leaderboard_daily_created_at ON leaderboard_entries;
+CREATE TRIGGER leaderboard_daily_created_at
+  BEFORE INSERT ON leaderboard_entries
+  FOR EACH ROW
+  WHEN (NEW.daily_day IS NOT NULL)
+  EXECUTE FUNCTION leaderboard_daily_created_at();
+
 -- The anon key can insert past the API route, so the table itself holds a
 -- daily row to the UTC day it was stored or the day before.
 DO $$

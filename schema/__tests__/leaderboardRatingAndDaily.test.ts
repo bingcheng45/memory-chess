@@ -55,6 +55,10 @@ const SHAPE = `
   SELECT 'index', indexdef
   FROM pg_indexes
   WHERE tablename = 'leaderboard_entries'
+  UNION ALL
+  SELECT 'trigger', pg_get_triggerdef(oid)
+  FROM pg_trigger
+  WHERE tgrelid = 'leaderboard_entries'::regclass AND NOT tgisinternal
   ORDER BY 1, 2
 `;
 
@@ -80,7 +84,9 @@ const insert = (db: Database, extra: Record<string, string>) =>
 
 const codeOf = (result: SqlResult) => (result.ok ? null : result.code);
 
-const STORED_ON_13TH = "'2026-10-13T00:30:00Z'";
+const UTC_TODAY = "(now() AT TIME ZONE 'UTC')::date";
+const daysAgo = (days: number) => `${UTC_TODAY} - ${days}`;
+const todayInUtc = () => new Date().toISOString().slice(0, 10);
 
 describe("0004 leaderboard rating and daily", () => {
   it("reads 1000 and no daily day from a row stored before it, and is a no-op the second time", async () => {
@@ -102,7 +108,7 @@ describe("0004 leaderboard rating and daily", () => {
     const db = await before0004();
     await db.rows(MIGRATION);
 
-    expect(codeOf(await insert(db, { difficulty: "'daily'", daily_day: "'2026-10-13'", skill_rating: "1240", created_at: STORED_ON_13TH }))).toBeNull();
+    expect(codeOf(await insert(db, { difficulty: "'daily'", daily_day: UTC_TODAY, skill_rating: "1240" }))).toBeNull();
     expect(codeOf(await insert(db, { difficulty: "'medium'", skill_rating: "1240" }))).toBeNull();
     expect(codeOf(await insert(db, { difficulty: "'daily'", skill_rating: "1240" }))).toBe(CHECK_VIOLATION);
     expect(codeOf(await insert(db, { difficulty: "'medium'", daily_day: "'2026-10-13'", skill_rating: "1240" }))).toBe(CHECK_VIOLATION);
@@ -111,7 +117,7 @@ describe("0004 leaderboard rating and daily", () => {
     expect(codeOf(await insert(db, { difficulty: "'hard'", skill_rating: "5000" }))).toBeNull();
     expect(codeOf(await insert(db, { difficulty: "'hard'", skill_rating: "5001" }))).toBe(CHECK_VIOLATION);
     expect(await db.rows("SELECT difficulty, daily_day::text AS daily_day, skill_rating FROM leaderboard_entries ORDER BY difficulty")).toEqual([
-      { difficulty: "daily", daily_day: "2026-10-13", skill_rating: 1240 },
+      { difficulty: "daily", daily_day: todayInUtc(), skill_rating: 1240 },
       { difficulty: "hard", daily_day: null, skill_rating: 5000 },
       { difficulty: "medium", daily_day: null, skill_rating: 1240 },
     ]);
@@ -120,18 +126,32 @@ describe("0004 leaderboard rating and daily", () => {
   it("stores a daily row only for the UTC day it was stored or the day before", async () => {
     const db = await before0004();
     await db.rows(MIGRATION);
-    const daily = (day: string) =>
-      insert(db, { difficulty: "'daily'", daily_day: `'${day}'`, skill_rating: "1240", created_at: STORED_ON_13TH });
+    const daily = (day: string) => insert(db, { difficulty: "'daily'", daily_day: day, skill_rating: "1240" });
 
     const codes = [
-      await daily("2026-10-11"),
-      await daily("2026-10-12"),
-      await daily("2026-10-13"),
-      await daily("2026-10-14"),
-      await daily("9999-12-31"),
+      await daily(daysAgo(2)),
+      await daily(daysAgo(1)),
+      await daily(UTC_TODAY),
+      await daily(daysAgo(-1)),
+      await daily("'9999-12-31'"),
     ].map(codeOf);
 
     expect(codes).toEqual([CHECK_VIOLATION, null, null, CHECK_VIOLATION, CHECK_VIOLATION]);
+  });
+
+  it("files a daily row under the database's clock, whatever created_at the insert sends", async () => {
+    const db = await before0004();
+    await db.rows(MIGRATION);
+    const forged = (createdAt: string) =>
+      insert(db, { difficulty: "'daily'", daily_day: "'2020-01-01'", skill_rating: "1240", created_at: createdAt });
+
+    const codes = [await forged("'2020-01-01T12:00:00Z'"), await forged("NULL")].map(codeOf);
+    await insert(db, { difficulty: "'daily'", daily_day: UTC_TODAY, skill_rating: "1240", created_at: "'2020-01-01T12:00:00Z'" });
+
+    expect(codes).toEqual([CHECK_VIOLATION, CHECK_VIOLATION]);
+    expect(await db.rows("SELECT (created_at AT TIME ZONE 'UTC')::date::text AS stored_on FROM leaderboard_entries")).toEqual([
+      { stored_on: todayInUtc() },
+    ]);
   });
 
   it("leaves the table exactly as leaderboard_schema.sql describes it", async () => {
@@ -194,7 +214,7 @@ describe("0004 leaderboard rating and daily", () => {
   it("refuses to roll back while daily rows exist, and changes nothing", async () => {
     const db = await before0004();
     await db.rows(MIGRATION);
-    expect(codeOf(await insert(db, { difficulty: "'daily'", daily_day: "'2026-10-13'", skill_rating: "1240", created_at: STORED_ON_13TH }))).toBeNull();
+    expect(codeOf(await insert(db, { difficulty: "'daily'", daily_day: UTC_TODAY, skill_rating: "1240" }))).toBeNull();
     const migrated = await db.rows(SHAPE);
 
     expect(codeOf(await db.attempt(ROLLBACK))).toBe(RAISED);

@@ -28,6 +28,10 @@ $$;
 
 DROP INDEX IF EXISTS idx_leaderboard_daily_ranking;
 
+DROP TRIGGER IF EXISTS leaderboard_daily_created_at ON leaderboard_entries;
+
+DROP FUNCTION IF EXISTS leaderboard_daily_created_at();
+
 ALTER TABLE leaderboard_entries
   DROP CONSTRAINT IF EXISTS check_daily_day_matches_board;
 

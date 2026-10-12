@@ -1,12 +1,13 @@
 # Runbook: add `skill_rating` and `daily_day` to `leaderboard_entries`
 
-Migration 0004 changes the live leaderboard table in six ways:
+Migration 0004 changes the live leaderboard table in seven ways:
 
 - `skill_rating INTEGER NOT NULL DEFAULT 1000`, checked `BETWEEN 0 AND 5000`. Every row already in the table reads 1000, the rating every player starts from.
 - `daily_day DATE`, nullable. It names the UTC day a daily board belongs to.
 - The difficulty check also allows `'daily'`. The old check was declared inline, so Postgres named it. The migration finds it by the column it reads and replaces it with `check_difficulty_board`.
 - `check_daily_day_matches_board`: a `daily` row must carry a day, and no other row may.
-- `check_daily_day_recent`: a row's day is the UTC day it was stored or the day before. The anon key can insert past the API, so the table holds this bound too.
+- `check_daily_day_recent`: a row's day is the UTC day of its `created_at` or the day before. The anon key can insert past the API, so the table holds this bound too. Like every check, it runs again on any `UPDATE` that touches `daily_day` or `created_at`, so a later backfill must keep the pair consistent.
+- `leaderboard_daily_created_at`, a `BEFORE INSERT` trigger and its function. A direct insert can send its own `created_at`, so the trigger sets a daily row's `created_at` to the database's `now()` and the day check cannot be fooled.
 - `idx_leaderboard_daily_ranking`, a partial index for one day's daily board.
 
 You will be in the Supabase dashboard, pasting SQL by hand, against a table of real player scores. Work top to bottom. Do not skip step 1.
@@ -89,7 +90,7 @@ If more than one check reads `difficulty` alone, stop and ask. The migration rep
 
 ## 3. Apply
 
-Paste the whole of `schema/migrations/0004_leaderboard_rating_and_daily.sql` into the SQL editor and run it in one go, including every `DO $$ ... $$;` block.
+Paste the whole of `schema/migrations/0004_leaderboard_rating_and_daily.sql` into the SQL editor and run it in one go, including every `DO $$ ... $$;` block. Use the SQL editor, or `psql --single-transaction`. Run statement by statement, the lock timeout does not apply and a failure leaves the statements before it applied.
 
 **What success looks like.** `Success. No rows returned`, in about a second.
 
@@ -125,7 +126,8 @@ SELECT COUNT(*) AS rows_with_a_day FROM leaderboard_entries WHERE daily_day IS N
 -- Each new check by name, compared with the exact definition 0004 writes.
 -- Expect four rows, every one with matches = true. A false means a check of
 -- that name was already there with a different rule, and the migration's
--- IF NOT EXISTS guard kept it: stop and ask.
+-- IF NOT EXISTS guard kept it: stop and ask. The expected text is how
+-- Postgres 15 and later print each rule, so compare a false by eye first.
 SELECT expected.conname,
        pg_get_constraintdef(c.oid) AS definition,
        pg_get_constraintdef(c.oid) = expected.definition AS matches
@@ -147,6 +149,11 @@ WHERE conrelid = 'leaderboard_entries'::regclass
   AND contype = 'c'
 ORDER BY conname;
 
+-- One row: BEFORE INSERT ... WHEN ((new.daily_day IS NOT NULL)) EXECUTE FUNCTION leaderboard_daily_created_at().
+SELECT tgname, pg_get_triggerdef(oid) AS definition
+FROM pg_trigger
+WHERE tgrelid = 'leaderboard_entries'::regclass AND NOT tgisinternal;
+
 -- One row, idx_leaderboard_daily_ranking, ending in WHERE (difficulty = 'daily'::text).
 SELECT indexname, indexdef FROM pg_indexes WHERE indexname = 'idx_leaderboard_daily_ranking';
 ```
@@ -156,13 +163,13 @@ Probe the checks as the role the site uses, inside a transaction you roll back, 
 ```sql
 BEGIN;
 SET LOCAL ROLE anon;
-INSERT INTO leaderboard_entries (player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, skill_rating, daily_day)
-VALUES ('Runbook probe', 'daily', 6, 4, 8.25, 12.5, 1240, (now() AT TIME ZONE 'UTC')::date);
-SELECT difficulty, skill_rating, daily_day FROM leaderboard_entries WHERE player_name = 'Runbook probe';
+INSERT INTO leaderboard_entries (player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, skill_rating, daily_day, created_at)
+VALUES ('Runbook probe', 'daily', 6, 4, 8.25, 12.5, 1240, (now() AT TIME ZONE 'UTC')::date, '2020-01-01T00:00:00Z');
+SELECT difficulty, skill_rating, daily_day, created_at FROM leaderboard_entries WHERE player_name = 'Runbook probe';
 ROLLBACK;
 ```
 
-Expect one row back, `daily | 1240 |` and today's UTC date. A permission or policy error means anon cannot write the new columns: stop and fix the grant or policy before the deploy. A `daily` insert without the day, or a `medium` insert with one, must fail with `check_daily_day_matches_board`, a day a week ago with `check_daily_day_recent`, and a `skill_rating` of 5001 with `check_skill_rating_range`.
+Expect one row back, `daily | 1240 |`, today's UTC date, and a `created_at` of now, not 2020: the trigger replaced the one the insert sent. A permission or policy error means anon cannot write the new columns: stop and fix the grant or policy before the deploy. A `daily` insert without the day, or a `medium` insert with one, must fail with `check_daily_day_matches_board`, a day a week ago with `check_daily_day_recent`, and a `skill_rating` of 5001 with `check_skill_rating_range`.
 
 Finally read a row through the site. `GET /api/leaderboard?difficulty=medium` returns `skill_rating` on every row.
 
@@ -215,7 +222,7 @@ DELETE FROM leaderboard_entries WHERE difficulty = 'daily';
 
 ### The SQL
 
-Paste the whole of `schema/migrations/0004_leaderboard_rating_and_daily_rollback.sql` and run it. Like the migration, it sets a five-second lock timeout for its own transaction and applies nothing if it fails. It locks the table before it looks for daily rows, so no daily row can land between that check and the drops. A daily score submitted while the rollback runs waits for the lock, then fails with a raw database error once the board is gone. The rollback still applies in full. It drops the index and the three new checks, restores the original difficulty check as `leaderboard_entries_difficulty_check`, and drops both columns. Run `NOTIFY pgrst, 'reload schema';` afterwards.
+Paste the whole of `schema/migrations/0004_leaderboard_rating_and_daily_rollback.sql` and run it. Like the migration, it sets a five-second lock timeout for its own transaction and applies nothing if it fails. It locks the table before it looks for daily rows, so no daily row can land between that check and the drops. A daily score submitted while the rollback runs waits for the lock, then fails once the column is gone: the player sees the 503 `The leaderboard is being updated` answer and the server log names the missing column. The rollback still applies in full. It drops the index, the trigger and its function, and the three new checks, restores the original difficulty check as `leaderboard_entries_difficulty_check`, and drops both columns. Run `NOTIFY pgrst, 'reload schema';` afterwards.
 
 ### What it does not undo
 

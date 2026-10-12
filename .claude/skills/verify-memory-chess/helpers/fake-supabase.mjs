@@ -115,7 +115,8 @@ function rejectInsert(body) {
 function insertRow(body) {
   const unknown = Object.keys(body).find((column) => !has(column));
   if (unknown) return rejectInsert(missingColumn(unknown));
-  const row = { id: randomUUID(), created_at: new Date().toISOString(), total_wrong_pieces: null, ...present(DEFAULTS), ...body };
+  const stamped = { id: randomUUID(), created_at: new Date().toISOString(), total_wrong_pieces: null, ...present(DEFAULTS), ...body };
+  const row = stamped.daily_day == null ? stamped : { ...stamped, created_at: new Date().toISOString() };
   const broken = CHECKS.find(([, , holds]) => !holds(row));
   if (broken) return rejectInsert(checkViolation(broken[0]));
   rows.push(row);

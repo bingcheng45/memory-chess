@@ -49,6 +49,13 @@ describe("the dashboard's daily board card", () => {
     expect(dailyTile()).toMatch(/played/i);
   });
 
+  it("is gone when today's board was played on another device and restored from a backup, as the daily tile also says", () => {
+    show("dailyPlayed");
+
+    expect(card()).toBeNull();
+    expect(dailyTile()).toMatch(/played/i);
+  });
+
   it("comes back at UTC midnight for the next board without a reload", () => {
     window.localStorage.setItem(DAILY_OPENED_KEY, "2026-10-08");
     jest.setSystemTime(Date.parse("2026-10-08T23:59:30Z"));

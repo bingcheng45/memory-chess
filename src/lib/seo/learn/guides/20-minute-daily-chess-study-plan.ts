@@ -51,7 +51,7 @@ const guide: LearnDocument = {
             "The plan is short because it has to happen on a Tuesday when you are tired. A long plan you skip three days a week trains less than a short one you keep.",
             "Memory research points the same way. In verbal recall studies, practice spread across sessions was retained better than the same practice massed into one sitting.",
             "So the twenty minutes stay fixed and the days are what you protect. Aim for five days a week.",
-            "After a missed day, start again with the same four blocks and do not double up. Forty minutes in one sitting is the massed practice those studies found weaker.",
+            "After a missed day, start again with the same four blocks and do not double up. A forty-minute catch-up is the long session this plan exists to avoid, and the next day is easier to keep when it looks like every other day.",
           ],
         },
       ],
@@ -81,7 +81,7 @@ const guide: LearnDocument = {
             {
               label: "Minutes 17 to 20",
               duration: "3 minutes",
-              detail: "One line in a notebook. The move you would take back, and which block would have caught it.",
+              detail: "One line in a notebook. The move you would take back, and the block whose habit would have caught it.",
             },
           ],
         },
@@ -150,7 +150,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Write one line. Name the move you would take back and the block that trains what would have caught it. For example, move 14, knight left on e5 with no defender, game block.",
+            "Write one line. Name the move you would take back and the block whose habit would have caught it. For example, move 14, missed that ...Bd6 newly attacked my knight on e5, game block.",
             "Read yesterday's line before you start the warm-up. It is what makes each session build on the one before.",
           ],
         },

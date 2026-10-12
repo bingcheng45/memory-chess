@@ -59,7 +59,7 @@ describe("derived page values", () => {
       "chess-memory-training": 7,
       "chess-pattern-recognition-drills": 6,
       "how-to-think-in-chess-for-beginners": 5,
-      "20-minute-daily-chess-study-plan": 4,
+      "20-minute-daily-chess-study-plan": 5,
       "how-to-analyze-chess-games-for-beginners": 5,
       "how-many-chess-puzzles-a-day": 4,
     });

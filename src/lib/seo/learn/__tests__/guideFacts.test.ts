@@ -367,7 +367,7 @@ function guideFacts(): Record<string, string[]> {
       row(3, 6),
       row(9, 12),
       `one missed piece already costs ${at(6, 6) - at(5, 6)} points`,
-      `${label("excellent")}, which at this count means at least ${fewestForExcellent} of the 12`,
+      `${label("excellent")} or ${label("perfect")}, which at this count means at least ${fewestForExcellent} of the 12`,
       `the piece slider runs from ${PIECE_COUNT_RANGE.min} to ${PIECE_COUNT_RANGE.max}`,
       `counts other than ${easy.pieceCount}, ${medium.pieceCount}, ${hard.pieceCount} and ${grandmaster.pieceCount}`,
       `below ${label("wellDone")}, which is ${minAccuracy("wellDone")} percent`,

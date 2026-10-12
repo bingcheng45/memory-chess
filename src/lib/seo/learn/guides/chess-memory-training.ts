@@ -50,7 +50,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Memory Chess compares your board with the original square by square. A piece counts only when its square, type and colour all match. A white knight on f3 when the original had it on e3 is wrong. So is a black rook on a8 when that rook was white.",
-            "An extra piece is any piece beyond the round's count. Extra pieces hurt twice: each one is listed as wrong and also takes ten points off your accuracy, which never drops below zero. With five right and one wrong already on a 6-piece board, a seventh piece drops 83 percent to 73. So stop placing once you reach the count.",
+            "An extra piece is any piece beyond the round's count. Each extra piece is listed as wrong and also takes ten points off your accuracy, which never drops below zero. With five right and one wrong already on a 6-piece board, a seventh piece drops 83 percent to 73. So stop placing once you reach the count.",
           ],
         },
         {
@@ -103,7 +103,7 @@ const guide: LearnDocument = {
             { label: "2", cells: ["8 pieces, 10 seconds, custom", "Three Perfect Score rounds in a row"] },
             { label: "3", cells: ["10 pieces, 10 seconds, custom", "Three Perfect Score rounds in a row"] },
             { label: "4", cells: ["12 pieces, 10 seconds, the hard preset count with a longer look", "Three Perfect Score rounds in a row"] },
-            { label: "5", cells: ["12 pieces, 8 seconds, the hard preset", "Excellent Memory in three of four rounds, then try the 20-piece preset"] },
+            { label: "5", cells: ["12 pieces, 8 seconds, the hard preset", "Excellent Memory or Perfect Score in three of four rounds, then try the 20-piece preset"] },
           ],
         },
         {
@@ -122,7 +122,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "The honest baseline",
-              description: "5 rounds of 6 pieces, 10 seconds, about 5 minutes. Place the kings first, then only the pieces you are sure of, then submit. Leave guesses off so the result shows what you actually remembered. A wrong guess within the count does not lower the score, but it hides which pieces you lost.",
+              description: "5 rounds of 6 pieces, 10 seconds, about 5 minutes. Place the kings first, then only the pieces you are sure of, then submit. Leave guesses off so the result shows what you actually remembered. A lucky guess scores the same as a remembered piece, and a wrong one costs nothing, so guesses make the score claim more than you know.",
               duration: "About 5 minutes",
               goal: "Three Perfect Score rounds in a row before you add a single piece.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
@@ -138,7 +138,7 @@ const guide: LearnDocument = {
               title: "The hard preset",
               description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Play these once 12 pieces at 10 seconds gives three Perfect Score rounds in a row. Read the board in three or four groups of three or four pieces, starting with the kings.",
               duration: "About 6 minutes",
-              goal: "Excellent Memory, which at this count means at least 11 of the 12, in three of four rounds. Then try the 20-piece preset.",
+              goal: "Excellent Memory or Perfect Score, which at this count means at least 11 of the 12, in three of four rounds. Then try the 20-piece preset.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
           ],
@@ -167,7 +167,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Rebuilding from an empty board is a recall test, and recall tests help a memory last. Roediger and Karpicke had students study a prose passage, then either reread it or write down what they recalled. A week later the tested students remembered more.",
-            "That study used prose passages, so it says nothing about how long to look at a board. The advice here is this guide's own: once you have the board, skip, and let the rebuild do the work.",
+            "That study used prose passages, so it says nothing about how long to look at a board. Skipping once you have the board is this guide's own advice.",
             "Gobet and Simon showed strong players several boards in a row for a few seconds each, and the players still recalled much of each one. The authors explain it with templates, large familiar patterns held in long-term memory.",
             "Memory Chess positions are random, so the groups you find are plain shapes on the board. A pawn pair on f2 and g2. A king tucked in a corner. Three pieces on one rank.",
             "Groups are what make the hard preset possible. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four groups it leaves two seconds or more each.",
@@ -201,7 +201,7 @@ const guide: LearnDocument = {
       items: [
         {
           question: "Should I go straight to the 20-piece preset?",
-          answer: "No. Twenty pieces in five seconds leaves a quarter of a second for each. Until 12 pieces at 8 seconds gives you Excellent Memory in three of four rounds, 20 is likely to end in Keep Practicing with little to learn from.",
+          answer: "No. Twenty pieces in five seconds leaves a quarter of a second for each. First reach Excellent Memory or Perfect Score in three of four rounds at 12 pieces and 8 seconds. Before that, 20 pieces is likely to end in Keep Practicing with little to learn from.",
         },
         {
           question: "Does the leaderboard care about speed?",

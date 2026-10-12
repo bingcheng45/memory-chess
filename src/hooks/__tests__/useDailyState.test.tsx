@@ -14,16 +14,16 @@ describe("dailyStateAt", () => {
       status: "ready",
       day: "2026-10-13",
       setting: { pieceCount: 6, memorizeTime: 10 },
-      left: { hours: 4, minutes: 12 },
+      left: { hours: 4, minutes: 11 },
     });
   });
 
-  it("is ready when the board opened on this device was yesterday's", () => {
-    expect(dailyStateAt(at("2026-10-13T00:00:00Z"), "2026-10-12")).toMatchObject({ status: "ready", day: "2026-10-13", left: { hours: 24, minutes: 0 } });
+  it("is ready when the board opened on this device was yesterday's, with 23 h 59 min left at midnight", () => {
+    expect(dailyStateAt(at("2026-10-13T00:00:00Z"), "2026-10-12")).toMatchObject({ status: "ready", day: "2026-10-13", left: { hours: 23, minutes: 59 } });
   });
 
-  it("is used once today's board was opened", () => {
-    expect(dailyStateAt(at("2026-10-13T23:59:30Z"), "2026-10-13")).toEqual({ status: "used", day: "2026-10-13", left: { hours: 0, minutes: 1 } });
+  it("is used once today's board was opened, with no whole minute left in the final minute", () => {
+    expect(dailyStateAt(at("2026-10-13T23:59:00Z"), "2026-10-13")).toEqual({ status: "used", day: "2026-10-13", left: { hours: 0, minutes: 0 } });
   });
 });
 
@@ -42,13 +42,13 @@ describe("useDailyState", () => {
     jest.useFakeTimers({ now: at("2026-10-13T23:59:50Z") });
     window.localStorage.setItem(DAILY_OPENED_KEY, "2026-10-13");
     const { result } = renderHook(() => useDailyState());
-    expect(result.current).toEqual({ status: "used", day: "2026-10-13", left: { hours: 0, minutes: 1 } });
+    expect(result.current).toEqual({ status: "used", day: "2026-10-13", left: { hours: 0, minutes: 0 } });
 
     act(() => jest.advanceTimersByTime(9_999));
     expect(result.current?.status).toBe("used");
 
     act(() => jest.advanceTimersByTime(1));
-    expect(result.current).toEqual({ status: "ready", day: "2026-10-14", setting: { pieceCount: 7, memorizeTime: 10 }, left: { hours: 24, minutes: 0 } });
+    expect(result.current).toEqual({ status: "ready", day: "2026-10-14", setting: { pieceCount: 7, memorizeTime: 10 }, left: { hours: 23, minutes: 59 } });
   });
 
   it("counts down on each whole minute, not more often", () => {
@@ -62,7 +62,7 @@ describe("useDailyState", () => {
     act(() => jest.advanceTimersByTime(29_999));
     act(() => jest.advanceTimersByTime(1));
     act(() => jest.advanceTimersByTime(60_000));
-    expect(renders).toEqual(["4:13", "4:12", "4:11"]);
+    expect(renders).toEqual(["4:12", "4:11", "4:10"]);
   });
 
   it("turns used when another tab opens the board", () => {
@@ -96,7 +96,7 @@ describe("useDailyState", () => {
     act(() => {
       document.dispatchEvent(new Event("visibilitychange"));
     });
-    expect(result.current).toMatchObject({ status: "ready", day: "2026-10-14", setting: { pieceCount: 7, memorizeTime: 10 } });
+    expect(result.current).toEqual({ status: "ready", day: "2026-10-14", setting: { pieceCount: 7, memorizeTime: 10 }, left: { hours: 16, minutes: 29 } });
   });
 
   it("catches up when the page is restored from the back-forward cache", () => {

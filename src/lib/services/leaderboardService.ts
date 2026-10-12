@@ -221,7 +221,7 @@ function withoutColumn(row: SubmissionRow, column: Droppable['column']): Submiss
   return rest;
 }
 
-export const INVALID_DIFFICULTY_OR_DAY = 'Invalid difficulty or daily day';
+const INVALID_DIFFICULTY_OR_DAY = 'Invalid difficulty or daily day';
 
 const DAILY_DAY_CHECK = 'check_daily_day_recent';
 

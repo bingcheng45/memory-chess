@@ -145,7 +145,7 @@
       "complete": "Partiet klart"
     },
     "config": {
-      "title": "Spelinställningar",
+      "title": "Schackminnesspel",
       "presetsLabel": "Svårighetsnivåer",
       "presetSummary": "{pieces} pjäser / {seconds} s",
       "customLabel": "Egna inställningar",

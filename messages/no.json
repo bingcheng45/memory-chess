@@ -145,7 +145,7 @@
       "complete": "Partiet er ferdig"
     },
     "config": {
-      "title": "Spillinnstillinger",
+      "title": "Sjakkhukommelsesspill",
       "presetsLabel": "Vanskelighetsgrader",
       "presetSummary": "{pieces} brikker / {seconds} s",
       "customLabel": "Egne innstillinger",

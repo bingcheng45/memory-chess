@@ -145,7 +145,7 @@
       "complete": "Partia zakończona"
     },
     "config": {
-      "title": "Ustawienia partii",
+      "title": "Szachowa gra pamięciowa",
       "presetsLabel": "Poziomy trudności",
       "presetSummary": "{pieces} bierek / {seconds} s",
       "customLabel": "Ustawienia własne",

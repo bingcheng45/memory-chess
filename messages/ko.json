@@ -145,7 +145,7 @@
       "complete": "게임 종료"
     },
     "config": {
-      "title": "게임 설정",
+      "title": "체스 기억력 게임",
       "presetsLabel": "난이도 프리셋",
       "presetSummary": "기물 {pieces}개 / {seconds}초",
       "customLabel": "사용자 설정",

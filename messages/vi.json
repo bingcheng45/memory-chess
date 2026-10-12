@@ -145,7 +145,7 @@
       "complete": "Ván đấu kết thúc"
     },
     "config": {
-      "title": "Thiết lập ván đấu",
+      "title": "Trò chơi trí nhớ cờ vua",
       "presetsLabel": "Mức độ khó",
       "presetSummary": "{pieces} quân / {seconds} giây",
       "customLabel": "Thiết lập riêng",

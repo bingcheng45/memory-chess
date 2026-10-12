@@ -145,7 +145,7 @@
       "complete": "Partie terminée"
     },
     "config": {
-      "title": "Configuration de la partie",
+      "title": "Jeu de mémoire aux échecs",
       "presetsLabel": "Niveaux prédéfinis",
       "presetSummary": "{pieces} pcs / {seconds} s",
       "customLabel": "Réglages personnalisés",

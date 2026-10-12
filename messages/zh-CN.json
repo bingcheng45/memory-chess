@@ -145,7 +145,7 @@
       "complete": "对局结束"
     },
     "config": {
-      "title": "对局设置",
+      "title": "国际象棋记忆游戏",
       "presetsLabel": "难度预设",
       "presetSummary": "{pieces} 子 / {seconds} 秒",
       "customLabel": "自定义设置",

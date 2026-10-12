@@ -145,7 +145,7 @@
       "complete": "गेम पूरा हुआ"
     },
     "config": {
-      "title": "गेम सेटिंग",
+      "title": "शतरंज स्मृति खेल",
       "presetsLabel": "कठिनाई स्तर",
       "presetSummary": "{pieces} मोहरे / {seconds} से.",
       "customLabel": "अपनी सेटिंग",

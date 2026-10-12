@@ -145,7 +145,7 @@
       "complete": "A játszma véget ért"
     },
     "config": {
-      "title": "Játékbeállítások",
+      "title": "Sakkmemória-játék",
       "presetsLabel": "Nehézségi szintek",
       "presetSummary": "{pieces} bábu / {seconds} mp",
       "customLabel": "Egyéni beállítások",

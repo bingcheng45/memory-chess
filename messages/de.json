@@ -145,7 +145,7 @@
       "complete": "Spiel beendet"
     },
     "config": {
-      "title": "Spieleinstellungen",
+      "title": "Schach-Gedächtnisspiel",
       "presetsLabel": "Schwierigkeitsstufen",
       "presetSummary": "{pieces} Fig. / {seconds} s",
       "customLabel": "Eigene Einstellungen",

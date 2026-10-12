@@ -145,7 +145,7 @@
       "complete": "ゲーム終了"
     },
     "config": {
-      "title": "ゲーム設定",
+      "title": "チェス記憶ゲーム",
       "presetsLabel": "難易度プリセット",
       "presetSummary": "{pieces} 駒 / {seconds} 秒",
       "customLabel": "カスタム設定",

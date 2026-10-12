@@ -145,7 +145,7 @@
       "complete": "Partiet er slut"
     },
     "config": {
-      "title": "Spilindstillinger",
+      "title": "Spil til skakhukommelse",
       "presetsLabel": "Sværhedsgrader",
       "presetSummary": "{pieces} brikker / {seconds} s",
       "customLabel": "Egne indstillinger",

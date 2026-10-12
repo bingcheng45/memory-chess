@@ -962,7 +962,7 @@
       "complete": "Game complete"
     },
     "config": {
-      "title": "Chess memory game",
+      "title": "Memory chess game",
       "presetsLabel": "Difficulty Presets",
       "presetSummary": "{pieces} pcs / {seconds}s",
       "customLabel": "Custom settings",

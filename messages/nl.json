@@ -145,7 +145,7 @@
       "complete": "Partij afgerond"
     },
     "config": {
-      "title": "Spelinstellingen",
+      "title": "Schaakgeheugenspel",
       "presetsLabel": "Moeilijkheidsgraden",
       "presetSummary": "{pieces} st. / {seconds} s",
       "customLabel": "Eigen instellingen",

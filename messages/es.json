@@ -145,7 +145,7 @@
       "complete": "Partida completada"
     },
     "config": {
-      "title": "Configuración de la partida",
+      "title": "Juego de memoria de ajedrez",
       "presetsLabel": "Niveles predefinidos",
       "presetSummary": "{pieces} pzs / {seconds} s",
       "customLabel": "Ajustes personalizados",

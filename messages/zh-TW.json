@@ -145,7 +145,7 @@
       "complete": "對局結束"
     },
     "config": {
-      "title": "對局設定",
+      "title": "西洋棋記憶遊戲",
       "presetsLabel": "難度預設",
       "presetSummary": "{pieces} 子 / {seconds} 秒",
       "customLabel": "自訂設定",

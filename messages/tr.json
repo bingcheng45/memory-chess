@@ -145,7 +145,7 @@
       "complete": "Oyun tamamlandı"
     },
     "config": {
-      "title": "Oyun ayarları",
+      "title": "Satranç hafıza oyunu",
       "presetsLabel": "Zorluk seviyeleri",
       "presetSummary": "{pieces} taş / {seconds} sn",
       "customLabel": "Özel ayarlar",

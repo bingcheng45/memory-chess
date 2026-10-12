@@ -145,7 +145,7 @@
       "complete": "Permainan selesai"
     },
     "config": {
-      "title": "Pengaturan permainan",
+      "title": "Gim memori catur",
       "presetsLabel": "Tingkat kesulitan",
       "presetSummary": "{pieces} bidak / {seconds} dtk",
       "customLabel": "Pengaturan sendiri",

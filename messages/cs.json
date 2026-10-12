@@ -145,7 +145,7 @@
       "complete": "Partie dokončena"
     },
     "config": {
-      "title": "Nastavení hry",
+      "title": "Hra na šachovou paměť",
       "presetsLabel": "Úrovně obtížnosti",
       "presetSummary": "{pieces} figurek / {seconds} s",
       "customLabel": "Vlastní nastavení",

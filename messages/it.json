@@ -145,7 +145,7 @@
       "complete": "Partita completata"
     },
     "config": {
-      "title": "Configurazione della partita",
+      "title": "Gioco di memoria per gli scacchi",
       "presetsLabel": "Livelli predefiniti",
       "presetSummary": "{pieces} pz / {seconds} s",
       "customLabel": "Impostazioni personalizzate",

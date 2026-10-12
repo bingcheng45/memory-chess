@@ -145,7 +145,7 @@
       "complete": "Peli päättyi"
     },
     "config": {
-      "title": "Pelin asetukset",
+      "title": "Shakkimuistipeli",
       "presetsLabel": "Vaikeustasot",
       "presetSummary": "{pieces} nappulaa / {seconds} s",
       "customLabel": "Omat asetukset",

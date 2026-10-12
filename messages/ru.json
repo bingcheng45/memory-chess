@@ -145,7 +145,7 @@
       "complete": "Партия завершена"
     },
     "config": {
-      "title": "Настройки партии",
+      "title": "Шахматная игра на память",
       "presetsLabel": "Уровни сложности",
       "presetSummary": "{pieces} фиг. / {seconds} с",
       "customLabel": "Свои настройки",

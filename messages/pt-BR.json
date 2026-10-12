@@ -145,7 +145,7 @@
       "complete": "Partida concluída"
     },
     "config": {
-      "title": "Configuração da partida",
+      "title": "Jogo de memória de xadrez",
       "presetsLabel": "Níveis prontos",
       "presetSummary": "{pieces} pçs / {seconds} s",
       "customLabel": "Configuração personalizada",

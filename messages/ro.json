@@ -145,7 +145,7 @@
       "complete": "Partidă încheiată"
     },
     "config": {
-      "title": "Setările partidei",
+      "title": "Joc de memorie la șah",
       "presetsLabel": "Niveluri de dificultate",
       "presetSummary": "{pieces} piese / {seconds} s",
       "customLabel": "Setări personalizate",

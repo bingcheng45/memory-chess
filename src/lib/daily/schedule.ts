@@ -1,4 +1,4 @@
-import { utcDayOf } from "@/lib/lab/daily";
+import { shiftDay } from "@/lib/lab/engine";
 import { positionId } from "@/lib/lab/record";
 import { seededRandom } from "@/lib/utils/seededRandom";
 
@@ -35,8 +35,6 @@ const WEEKLY_ARC: Readonly<Record<Weekday, Band>> = {
   sunday: { pieces: { min: 12, max: 32 }, seconds: exactly(12) },
 };
 
-const DAY_MS = 86_400_000;
-
 /** The day's seed from the stable position-id hash, so a day's setting and board never change once they are out. */
 export const dailySeed = (day: string) => Number.parseInt(positionId(`daily ${day}`).slice(-8), 16);
 
@@ -55,7 +53,7 @@ const pick = <T>(items: readonly T[], random: () => number): T => items[Math.flo
 
 /** Only a day whose band overlaps yesterday's can draw yesterday's setting, so only then is yesterday worked out. */
 function yesterdayWithin(day: string, band: Band): DailySetting | null {
-  const yesterday = utcDayOf(Date.parse(`${day}T00:00:00Z`) - DAY_MS);
+  const yesterday = shiftDay(day, -1);
   const before = bandOf(yesterday);
   return overlaps(before.pieces, band.pieces) && overlaps(before.seconds, band.seconds) ? dailySettingOf(yesterday) : null;
 }
@@ -64,11 +62,12 @@ function yesterdayWithin(day: string, band: Band): DailySetting | null {
 export function dailySettingOf(day: string): DailySetting {
   const band = bandOf(day);
   const random = seededRandom(dailySeed(day));
-  const drawn = pick(settingsIn(band), random);
+  const settings = settingsIn(band);
+  const drawn = pick(settings, random);
   const yesterday = yesterdayWithin(day, band);
   if (!yesterday || !sameSetting(drawn, yesterday)) return drawn;
   return pick(
-    settingsIn(band).filter((setting) => !sameSetting(setting, yesterday)),
+    settings.filter((setting) => !sameSetting(setting, yesterday)),
     random,
   );
 }

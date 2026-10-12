@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "A beginner should do about one chess puzzle a minute, with the opponent's reply checked before each move. So how many chess puzzles a day you do comes from your minutes. Ten minutes gives about ten and fifteen about fifteen, and you stop sooner once you play moves just to see whether they work.",
+    quickAnswer: "Most beginners should do 10 to 15 chess puzzles a day, at about one a minute in a 10- to 15-minute block. Before each move, look for the opponent's reply that would refute it. Stop sooner once you start playing moves just to see whether they work.",
     takeaways: [
       "Your daily count is your minutes at one checked puzzle a minute.",
       "Treat the count as a ceiling. Stop earlier when you start guessing moves.",

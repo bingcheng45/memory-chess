@@ -272,6 +272,25 @@
       "controlsLabel": "Rundens knapper",
       "boardLabel": "Bræt. Brug piletasterne til at flytte mellem felterne.",
       "paletteLabel": "Brikpalet",
+      "paletteItem": "{piece}, {count} tilbage",
+      "usedUp": {
+        "white": {
+          "king": "Den hvide konge står allerede på brættet.",
+          "queen": "Den hvide dronning står allerede på brættet.",
+          "rook": "Begge de hvide tårne står på brættet.",
+          "bishop": "Begge de hvide løbere står på brættet.",
+          "knight": "Begge de hvide springere står på brættet.",
+          "pawn": "Alle otte hvide bønder står på brættet."
+        },
+        "black": {
+          "king": "Den sorte konge står allerede på brættet.",
+          "queen": "Den sorte dronning står allerede på brættet.",
+          "rook": "Begge de sorte tårne står på brættet.",
+          "bishop": "Begge de sorte løbere står på brættet.",
+          "knight": "Begge de sorte springere står på brættet.",
+          "pawn": "Alle otte sorte bønder står på brættet."
+        }
+      },
       "squareEmpty": "{square}, tomt",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Husk stillingen",

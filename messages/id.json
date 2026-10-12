@@ -272,6 +272,25 @@
       "controlsLabel": "Kontrol ronde",
       "boardLabel": "Papan. Gunakan tombol panah untuk berpindah antarpetak.",
       "paletteLabel": "Palet bidak",
+      "paletteItem": "{piece}, sisa {count}",
+      "usedUp": {
+        "white": {
+          "king": "Raja putih sudah ada di papan.",
+          "queen": "Menteri putih sudah ada di papan.",
+          "rook": "Kedua benteng putih sudah ada di papan.",
+          "bishop": "Kedua gajah putih sudah ada di papan.",
+          "knight": "Kedua kuda putih sudah ada di papan.",
+          "pawn": "Kedelapan pion putih sudah ada di papan."
+        },
+        "black": {
+          "king": "Raja hitam sudah ada di papan.",
+          "queen": "Menteri hitam sudah ada di papan.",
+          "rook": "Kedua benteng hitam sudah ada di papan.",
+          "bishop": "Kedua gajah hitam sudah ada di papan.",
+          "knight": "Kedua kuda hitam sudah ada di papan.",
+          "pawn": "Kedelapan pion hitam sudah ada di papan."
+        }
+      },
       "squareEmpty": "{square}, kosong",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Hafalkan posisinya",

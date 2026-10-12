@@ -272,6 +272,25 @@
       "controlsLabel": "라운드 조작",
       "boardLabel": "보드. 화살표 키로 칸 사이를 이동하세요.",
       "paletteLabel": "기물 팔레트",
+      "paletteItem": "{piece}, {count}개 남음",
+      "usedUp": {
+        "white": {
+          "king": "백 킹은 이미 보드에 있습니다.",
+          "queen": "백 퀸은 이미 보드에 있습니다.",
+          "rook": "백 룩 2개가 모두 보드에 있습니다.",
+          "bishop": "백 비숍 2개가 모두 보드에 있습니다.",
+          "knight": "백 나이트 2개가 모두 보드에 있습니다.",
+          "pawn": "백 폰 8개가 모두 보드에 있습니다."
+        },
+        "black": {
+          "king": "흑 킹은 이미 보드에 있습니다.",
+          "queen": "흑 퀸은 이미 보드에 있습니다.",
+          "rook": "흑 룩 2개가 모두 보드에 있습니다.",
+          "bishop": "흑 비숍 2개가 모두 보드에 있습니다.",
+          "knight": "흑 나이트 2개가 모두 보드에 있습니다.",
+          "pawn": "흑 폰 8개가 모두 보드에 있습니다."
+        }
+      },
       "squareEmpty": "{square}, 빈 칸",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "국면을 외우세요",

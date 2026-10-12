@@ -272,6 +272,25 @@
       "controlsLabel": "Comandi del round",
       "boardLabel": "Scacchiera. Usa le frecce per spostarti tra le case.",
       "paletteLabel": "Tavolozza dei pezzi",
+      "paletteItem": "{piece}, disponibili: {count}",
+      "usedUp": {
+        "white": {
+          "king": "Il re bianco è già sulla scacchiera.",
+          "queen": "La donna bianca è già sulla scacchiera.",
+          "rook": "Entrambe le torri bianche sono sulla scacchiera.",
+          "bishop": "Entrambi gli alfieri bianchi sono sulla scacchiera.",
+          "knight": "Entrambi i cavalli bianchi sono sulla scacchiera.",
+          "pawn": "Tutti e otto i pedoni bianchi sono sulla scacchiera."
+        },
+        "black": {
+          "king": "Il re nero è già sulla scacchiera.",
+          "queen": "La donna nera è già sulla scacchiera.",
+          "rook": "Entrambe le torri nere sono sulla scacchiera.",
+          "bishop": "Entrambi gli alfieri neri sono sulla scacchiera.",
+          "knight": "Entrambi i cavalli neri sono sulla scacchiera.",
+          "pawn": "Tutti e otto i pedoni neri sono sulla scacchiera."
+        }
+      },
       "squareEmpty": "{square}, vuota",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Memorizza la posizione",

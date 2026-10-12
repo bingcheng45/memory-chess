@@ -372,6 +372,25 @@
         "controlsLabel": "Round controls",
         "boardLabel": "Calibration board. Use the arrow keys to move between squares.",
         "paletteLabel": "Piece palette",
+        "paletteItem": "{piece}, {count} left",
+        "usedUp": {
+          "white": {
+            "king": "The white king is already on the board.",
+            "queen": "The white queen is already on the board.",
+            "rook": "Both white rooks are on the board.",
+            "bishop": "Both white bishops are on the board.",
+            "knight": "Both white knights are on the board.",
+            "pawn": "All eight white pawns are on the board."
+          },
+          "black": {
+            "king": "The black king is already on the board.",
+            "queen": "The black queen is already on the board.",
+            "rook": "Both black rooks are on the board.",
+            "bishop": "Both black bishops are on the board.",
+            "knight": "Both black knights are on the board.",
+            "pawn": "All eight black pawns are on the board."
+          }
+        },
         "squareEmpty": "{square}, empty",
         "squareWith": "{square}, {piece}",
         "liveStudy": "Study the position. {memorizeSeconds} seconds.",
@@ -1070,6 +1089,25 @@
       "controlsLabel": "Round controls",
       "boardLabel": "Board. Use the arrow keys to move between squares.",
       "paletteLabel": "Piece palette",
+      "paletteItem": "{piece}, {count} left",
+      "usedUp": {
+        "white": {
+          "king": "The white king is already on the board.",
+          "queen": "The white queen is already on the board.",
+          "rook": "Both white rooks are on the board.",
+          "bishop": "Both white bishops are on the board.",
+          "knight": "Both white knights are on the board.",
+          "pawn": "All eight white pawns are on the board."
+        },
+        "black": {
+          "king": "The black king is already on the board.",
+          "queen": "The black queen is already on the board.",
+          "rook": "Both black rooks are on the board.",
+          "bishop": "Both black bishops are on the board.",
+          "knight": "Both black knights are on the board.",
+          "pawn": "All eight black pawns are on the board."
+        }
+      },
       "squareEmpty": "{square}, empty",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Memorize the position",

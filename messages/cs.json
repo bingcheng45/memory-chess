@@ -272,6 +272,25 @@
       "controlsLabel": "Ovládání kola",
       "boardLabel": "Šachovnice. Mezi poli se pohybujte šipkami.",
       "paletteLabel": "Paleta figurek",
+      "paletteItem": "{piece}, zbývá: {count}",
+      "usedUp": {
+        "white": {
+          "king": "Bílý král už je na šachovnici.",
+          "queen": "Bílá dáma už je na šachovnici.",
+          "rook": "Obě bílé věže jsou na šachovnici.",
+          "bishop": "Oba bílí střelci jsou na šachovnici.",
+          "knight": "Oba bílí jezdci jsou na šachovnici.",
+          "pawn": "Všech osm bílých pěšců je na šachovnici."
+        },
+        "black": {
+          "king": "Černý král už je na šachovnici.",
+          "queen": "Černá dáma už je na šachovnici.",
+          "rook": "Obě černé věže jsou na šachovnici.",
+          "bishop": "Oba černí střelci jsou na šachovnici.",
+          "knight": "Oba černí jezdci jsou na šachovnici.",
+          "pawn": "Všech osm černých pěšců je na šachovnici."
+        }
+      },
       "squareEmpty": "{square}, prázdné",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Zapamatujte si pozici",

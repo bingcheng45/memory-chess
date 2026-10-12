@@ -272,6 +272,25 @@
       "controlsLabel": "Điều khiển vòng chơi",
       "boardLabel": "Bàn cờ. Dùng phím mũi tên để di chuyển giữa các ô.",
       "paletteLabel": "Bảng quân cờ",
+      "paletteItem": "{piece}, còn {count}",
+      "usedUp": {
+        "white": {
+          "king": "Vua trắng đã ở trên bàn cờ.",
+          "queen": "Hậu trắng đã ở trên bàn cờ.",
+          "rook": "Cả hai xe trắng đều đã ở trên bàn cờ.",
+          "bishop": "Cả hai tượng trắng đều đã ở trên bàn cờ.",
+          "knight": "Cả hai mã trắng đều đã ở trên bàn cờ.",
+          "pawn": "Cả tám tốt trắng đều đã ở trên bàn cờ."
+        },
+        "black": {
+          "king": "Vua đen đã ở trên bàn cờ.",
+          "queen": "Hậu đen đã ở trên bàn cờ.",
+          "rook": "Cả hai xe đen đều đã ở trên bàn cờ.",
+          "bishop": "Cả hai tượng đen đều đã ở trên bàn cờ.",
+          "knight": "Cả hai mã đen đều đã ở trên bàn cờ.",
+          "pawn": "Cả tám tốt đen đều đã ở trên bàn cờ."
+        }
+      },
       "squareEmpty": "{square}, trống",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Ghi nhớ thế cờ",

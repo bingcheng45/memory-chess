@@ -272,6 +272,25 @@
       "controlsLabel": "本輪操作",
       "boardLabel": "棋盤。使用方向鍵在格子之間移動。",
       "paletteLabel": "棋子選擇列",
+      "paletteItem": "{piece}，剩餘 {count}",
+      "usedUp": {
+        "white": {
+          "king": "白方國王已在棋盤上。",
+          "queen": "白方皇后已在棋盤上。",
+          "rook": "白方兩個城堡都已在棋盤上。",
+          "bishop": "白方兩個主教都已在棋盤上。",
+          "knight": "白方兩個騎士都已在棋盤上。",
+          "pawn": "白方八個兵都已在棋盤上。"
+        },
+        "black": {
+          "king": "黑方國王已在棋盤上。",
+          "queen": "黑方皇后已在棋盤上。",
+          "rook": "黑方兩個城堡都已在棋盤上。",
+          "bishop": "黑方兩個主教都已在棋盤上。",
+          "knight": "黑方兩個騎士都已在棋盤上。",
+          "pawn": "黑方八個兵都已在棋盤上。"
+        }
+      },
       "squareEmpty": "{square}，空",
       "squareWith": "{square}，{piece}",
       "phaseStudy": "記住這個棋局",

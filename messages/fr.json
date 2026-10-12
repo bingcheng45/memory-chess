@@ -272,6 +272,25 @@
       "controlsLabel": "Commandes de la manche",
       "boardLabel": "Échiquier. Utilisez les flèches pour passer d’une case à l’autre.",
       "paletteLabel": "Palette de pièces",
+      "paletteItem": "{piece}, il en reste {count}",
+      "usedUp": {
+        "white": {
+          "king": "Le roi blanc est déjà sur l’échiquier.",
+          "queen": "La dame blanche est déjà sur l’échiquier.",
+          "rook": "Les deux tours blanches sont sur l’échiquier.",
+          "bishop": "Les deux fous blancs sont sur l’échiquier.",
+          "knight": "Les deux cavaliers blancs sont sur l’échiquier.",
+          "pawn": "Les huit pions blancs sont sur l’échiquier."
+        },
+        "black": {
+          "king": "Le roi noir est déjà sur l’échiquier.",
+          "queen": "La dame noire est déjà sur l’échiquier.",
+          "rook": "Les deux tours noires sont sur l’échiquier.",
+          "bishop": "Les deux fous noirs sont sur l’échiquier.",
+          "knight": "Les deux cavaliers noirs sont sur l’échiquier.",
+          "pawn": "Les huit pions noirs sont sur l’échiquier."
+        }
+      },
       "squareEmpty": "{square}, vide",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Mémorisez la position",

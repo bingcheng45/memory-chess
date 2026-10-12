@@ -272,6 +272,25 @@
       "controlsLabel": "Sterowanie rundą",
       "boardLabel": "Szachownica. Poruszaj się między polami klawiszami strzałek.",
       "paletteLabel": "Paleta bierek",
+      "paletteItem": "{piece}, pozostało: {count}",
+      "usedUp": {
+        "white": {
+          "king": "Biały król jest już na szachownicy.",
+          "queen": "Biały hetman jest już na szachownicy.",
+          "rook": "Obie białe wieże są na szachownicy.",
+          "bishop": "Oba białe gońce są na szachownicy.",
+          "knight": "Oba białe skoczki są na szachownicy.",
+          "pawn": "Wszystkie osiem białych pionków jest na szachownicy."
+        },
+        "black": {
+          "king": "Czarny król jest już na szachownicy.",
+          "queen": "Czarny hetman jest już na szachownicy.",
+          "rook": "Obie czarne wieże są na szachownicy.",
+          "bishop": "Oba czarne gońce są na szachownicy.",
+          "knight": "Oba czarne skoczki są na szachownicy.",
+          "pawn": "Wszystkie osiem czarnych pionków jest na szachownicy."
+        }
+      },
       "squareEmpty": "{square}, puste",
       "squareWith": "{square}, {piece}",
       "phaseStudy": "Zapamiętaj pozycję",

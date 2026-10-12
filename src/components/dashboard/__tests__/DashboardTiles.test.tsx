@@ -2,6 +2,7 @@ import { renderWithIntl, screen, within } from "@/test-utils/intl";
 import { TileList } from "@/components/dashboard/DashboardTiles";
 import { useContextText } from "@/components/dashboard/figureText";
 import type { DashboardTile, Trend } from "@/lib/lab/dashboard";
+import de from "../../../../messages/de.json";
 
 const ratingTile = (change: number, rounds: number, trend?: Trend): DashboardTile => ({
   id: "rating",
@@ -61,5 +62,30 @@ describe("rating sentence", () => {
 
   it("keeps the count for several rounds", () => {
     expect(sentence(27, 5)).toBe("Up 27 over your last 5 rated rounds");
+  });
+});
+
+describe("figure numbers", () => {
+  const piecesHeld: DashboardTile = {
+    id: "piecesHeld",
+    state: "ready",
+    figure: { value: 5.2, unit: "pieces", digits: 1 },
+    context: { kind: "recent", values: { rounds: 10 } },
+  };
+
+  it("read 5,2 in German, the decimal comma drawn narrow between the digits rather than in a full mono cell", () => {
+    renderWithIntl(<TileList ids={["piecesHeld"]} tiles={[piecesHeld]} size="lead" />, { locale: "de", messages: de });
+    const value = document.querySelector('[data-tile="piecesHeld"] .lab-tile-value') as HTMLElement;
+
+    expect(value.textContent).toBe("5,2");
+    expect([...value.querySelectorAll(".lab-num-sep")].map((separator) => separator.textContent)).toEqual([","]);
+  });
+
+  it("narrow a group separator the same way", () => {
+    renderWithIntl(<TileList ids={["rating"]} tiles={[ratingTile(0, 2)]} size="lead" />);
+    const value = document.querySelector('[data-tile="rating"] .lab-tile-value') as HTMLElement;
+
+    expect(value.textContent).toBe("1,102");
+    expect([...value.querySelectorAll(".lab-num-sep")].map((separator) => separator.textContent)).toEqual([","]);
   });
 });

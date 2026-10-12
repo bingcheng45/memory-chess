@@ -41,6 +41,8 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper h1, .lab-paper h2, .lab-paper h3, .lab-paper h4 { font-family: var(--lp-ui); color: var(--lp-ink); }
 .lab-paper .lab-wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--lp-gutter); }
 .lab-paper .lab-mono { font-family: var(--lp-data); font-variant-numeric: tabular-nums; }
+/* Geist Mono gives a comma, point or thin space a whole digit cell; pulling both sides in keeps "5,2" one number. */
+.lab-paper .lab-num-sep { margin-inline: -0.12em; }
 .lab-paper .lab-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .lab-paper .lab-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: var(--lp-r-md); font: 600 16px/1.2 var(--lp-ui); text-align: center; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background-color 0.15s, border-color 0.15s, color 0.15s; }

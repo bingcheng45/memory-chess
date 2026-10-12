@@ -6,6 +6,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import LanguageSettings from "@/components/ui/LanguageSettings";
 import SiteLink from "@/components/ui/SiteLink";
 import { QUICK_START_HREF } from "@/components/home/links";
+import { useDailyState } from "@/hooks/useDailyState";
 import { HeaderStreakChip } from "./HeaderStreakChip";
 import "./lab-paper.css";
 
@@ -103,6 +104,30 @@ function SectionLinks({ links, withHints, onPick }: { links: readonly PageSectio
   ));
 }
 
+type SiteLinkItem = (typeof SITE_LINKS)[number] | (typeof MENU_ONLY_LINKS)[number];
+
+interface NavLinkProps {
+  readonly link: SiteLinkItem;
+  readonly dailyReady: boolean;
+  readonly className?: string;
+  readonly onClick?: () => void;
+  readonly "aria-current"?: "page";
+}
+
+/** A site link; Dashboard carries a dot while today's daily board is unused on this device. */
+function NavLink({ link, dailyReady, ...props }: NavLinkProps) {
+  const nav = useTranslations("common.nav");
+  const entry = useTranslations("dailyEntry");
+  const label = nav(link.key);
+  if (link.href !== "/dashboard" || !dailyReady) return <SiteLink href={link.href} label={label} {...props} />;
+  return (
+    <Link href={link.href} {...props} aria-label={entry("navReady", { label })}>
+      {label}
+      <span className="lab-daily-dot" aria-hidden="true" />
+    </Link>
+  );
+}
+
 function isCurrent(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
@@ -110,6 +135,7 @@ function isCurrent(pathname: string, href: string): boolean {
 export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: LabPaperHeaderProps) {
   const nav = useTranslations("common.nav");
   const pathname = usePathname();
+  const dailyReady = useDailyState()?.status === "ready";
   const pageMenu = useDisclosure();
   const menu = useDisclosure();
   const pagePanelId = useId();
@@ -125,11 +151,11 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
           </Link>
           <nav className="lab-nav" aria-label="Main">
             {SITE_LINKS.map((link) => (
-              <SiteLink
+              <NavLink
                 key={link.href}
+                link={link}
+                dailyReady={dailyReady}
                 className={`lab-nav-link${"extra" in link ? " lab-nav-extra" : ""}`}
-                href={link.href}
-                label={nav(link.key)}
                 aria-current={currentOf(link.href)}
               />
             ))}
@@ -178,6 +204,7 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
                 <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
               </svg>
               <span className="lab-menu-label">{nav("menu")}</span>
+              {dailyReady && <span className="lab-daily-dot" aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -196,7 +223,7 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
               <ul>
                 {[...SITE_LINKS, ...MENU_ONLY_LINKS].map((link) => (
                   <li key={link.href}>
-                    <SiteLink href={link.href} label={nav(link.key)} onClick={menu.close} aria-current={currentOf(link.href)} />
+                    <NavLink link={link} dailyReady={dailyReady} onClick={menu.close} aria-current={currentOf(link.href)} />
                   </li>
                 ))}
               </ul>

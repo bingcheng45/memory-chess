@@ -63,8 +63,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Set the position up, on a board or on screen, and write one sentence about why the move was bad. Do this before you switch the engine on.",
-            "The engine will tell you the move was bad. It will not tell you which of your habits produced it. Only you can, and only if you answer first.",
-            "Once the engine line is on screen, it is hard to recall what you would have said without it.",
+            "The engine will tell you the move was bad. It will not tell you which of your habits produced it. Only you can, and only if you answer first, because once the engine line is on screen it is hard to recall what you would have said without it.",
             "Then run the engine, once, on that single position. If it agrees with your sentence, good. If it names something you did not see, write a second sentence about it.",
           ],
         },
@@ -169,9 +168,9 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Do not skip minutes 2 to 4. A piece you cannot place from memory is a lead. Check whether it was one of the pieces that decided the move.",
-            "If it was, the label is probably never looked. If the missing piece stood far from the action, your sentence and the engine will say more.",
+            "If it was, the label is probably never looked. If the piece you lost stood far from the action, it tells you little about this mistake, so choose the label from your sentence and the engine check instead.",
             "Memory Chess trains the same rebuild on positions from outside your games. A position appears for a fixed number of seconds, the board clears, and you put the pieces back.",
-            "The result screen then scores your board square by square as correct, wrong placement or missed square. A missed square is one where the position had a piece and your board does not have that piece there. The piece that belonged shows faded on it when the square is empty. If you put another piece there, the square shows both marks. A piece you put on the wrong square gives two marks: wrong placement where you put it, and a missed square where it stood.",
+            "The result screen marks each square as correct, wrong placement or missed square. A missed square is any square where your board lacks the piece that stood there. A piece you put on the wrong square counts twice: wrong placement where you put it, and missed square where it belonged.",
             "Start at 8 pieces with 10 seconds. That is two more pieces than the 6-piece medium preset, with the same time to look.",
           ],
         },

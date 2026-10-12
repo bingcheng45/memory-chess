@@ -192,10 +192,34 @@ function isMissingColumn(error: PostgrestError): boolean {
 }
 
 type BoardSubmission = Extract<LeaderboardSubmission, { difficulty: LeaderboardDifficulty }>;
-type SubmissionRow =
-  | LeaderboardSubmission
-  | Omit<BoardSubmission, 'skill_rating'>
-  | Omit<BoardSubmission, 'skill_rating' | 'country_code'>;
+
+/**
+ * Transition shim. Each entry is a column a migration added, newest first.
+ * Delete an entry once its migration is applied in every environment, and the
+ * retry with the last one. A score outlives its rating and its flag, so a
+ * missing column is dropped and the score kept.
+ */
+const DROPPABLE_COLUMNS = [
+  { column: 'skill_rating', migration: 'the rating and daily migration (0004)' },
+  { column: 'country_code', migration: 'the country migration (0001)' },
+] as const;
+type Droppable = (typeof DROPPABLE_COLUMNS)[number];
+type SubmissionRow = Omit<BoardSubmission, Droppable['column']> &
+  Partial<Pick<BoardSubmission, Droppable['column']>>;
+
+/** PGRST204 says "the 'x' column"; Postgres's 42703 says 'column "x"'. */
+const NAMED_COLUMN = /the '(\w+)' column|column "(\w+)"/;
+
+function columnNamedBy(error: PostgrestError): string | null {
+  const named = NAMED_COLUMN.exec(error.message);
+  return named?.[1] ?? named?.[2] ?? null;
+}
+
+function withoutColumn(row: SubmissionRow, column: Droppable['column']): SubmissionRow {
+  const rest = { ...row };
+  delete rest[column];
+  return rest;
+}
 
 export async function submitLeaderboardEntry(
   entry: LeaderboardSubmission,
@@ -208,7 +232,7 @@ export async function submitLeaderboardEntry(
   }
 
   const client = supabase;
-  const insertRow = (row: SubmissionRow) =>
+  const insertRow = (row: LeaderboardSubmission | SubmissionRow) =>
     client.from('leaderboard_entries').insert(row).select().single();
 
   const first = await insertRow(entry);
@@ -222,32 +246,30 @@ export async function submitLeaderboardEntry(
     return { status: 'unavailable', cause: first.error };
   }
 
-  // Transition shim. Delete it, and this retry, once migration 0004 is applied
-  // in every environment. The score is kept and the rating dropped.
-  const { skill_rating: droppedRating, ...withoutRating } = entry;
-  console.warn(
-    `Leaderboard insert rejected a column (${first.error.code}: ${first.error.message}); the rating and daily migration (0004) is outstanding. Retrying without skill_rating ${droppedRating}.`,
-  );
-  const second = await insertRow(withoutRating);
-  if (!second.error) {
-    return { status: 'stored', entry: second.data };
-  }
-  if (!isMissingColumn(second.error)) {
-    return { status: 'unavailable', cause: second.error };
-  }
+  let row: SubmissionRow = entry;
+  let rejection = first.error;
+  let left: readonly Droppable[] = DROPPABLE_COLUMNS;
+  for (;;) {
+    const named = columnNamedBy(rejection);
+    const drop = left.find(({ column }) => column === named) ?? left[0];
+    if (drop === undefined) {
+      return { status: 'unavailable', cause: rejection };
+    }
+    console.warn(
+      `Leaderboard insert rejected ${drop.column} ${row[drop.column]} (${rejection.code}: ${rejection.message}); ${drop.migration} is outstanding. Retrying without it.`,
+    );
+    row = withoutColumn(row, drop.column);
+    left = left.filter((candidate) => candidate !== drop);
 
-  // Transition shim. Delete it, and this whole retry branch, once the
-  // country_code migration is applied in every environment. A player's score
-  // outlives their flag, so the score is kept and the country dropped.
-  const { country_code: droppedCountry, ...withoutCountry } = withoutRating;
-  console.warn(
-    `Leaderboard insert rejected country_code ${droppedCountry} (${second.error.code}: ${second.error.message}); the country migration is outstanding. Retrying without it.`,
-  );
-  const third = await insertRow(withoutCountry);
-  if (third.error) {
-    return { status: 'unavailable', cause: third.error };
+    const retry = await insertRow(row);
+    if (!retry.error) {
+      return { status: 'stored', entry: retry.data };
+    }
+    if (!isMissingColumn(retry.error)) {
+      return { status: 'failed', cause: retry.error };
+    }
+    rejection = retry.error;
   }
-  return { status: 'stored', entry: third.data };
 }
 
 export type StandingResult =

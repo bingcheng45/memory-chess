@@ -193,7 +193,7 @@ Expect `"success":true` and a row carrying `"skill_rating":1240` and `"daily_day
 DELETE FROM leaderboard_entries WHERE id = '<id from the response>' AND player_name = 'Runbook probe';
 ```
 
-Once the migration is applied everywhere, delete the 0004 retry in `submitLeaderboardEntry` in `src/lib/services/leaderboardService.ts`.
+Once the migration is applied everywhere, delete the `skill_rating` entry in `DROPPABLE_COLUMNS` in `src/lib/services/leaderboardService.ts`.
 
 ---
 

@@ -5,15 +5,16 @@ const guide: LearnDocument = {
     slug: "20-minute-daily-chess-study-plan",
     title: "20-Minute Daily Chess Study Plan for Beginners",
     h1: "A 20-minute daily chess study plan for beginners",
-    description: "Twenty minutes in four fixed blocks. Three memory rounds, seven minutes of slow puzzles, seven minutes on one of your games, three for a written line.",
+    description: "A 20-minute daily chess study plan in four fixed blocks. Three memory rounds, six slow puzzles, one of your own games, and one written line for tomorrow.",
     group: "practice",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
-    updatedAt: "2026-09-15T00:00:00.000Z",
+    updatedAt: "2026-10-13T00:00:00.000Z",
     questions: [
-      "What is a good daily chess routine?",
-      "How should I spend 20 minutes on chess?",
-      "How do I study chess with little time?",
+      "How should I spend 20 minutes a day on chess?",
+      "What is a good daily chess routine for beginners?",
+      "Where do games fit in a 20-minute chess routine?",
+      "What if I miss a day of chess study?",
     ],
     keywords: {
       primary: "20 minute daily chess study plan",
@@ -27,10 +28,11 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Minutes 0 to 3, three rounds of 6 pieces at 10 seconds. Minutes 3 to 10, six puzzles solved slowly with the reply checked. Minutes 10 to 17, one of your games replayed with a single question per move. Minutes 17 to 20, one written line.",
+    quickAnswer: "A 20-minute daily chess study plan works best as four fixed blocks in the same order. Spend 3 minutes on three memory rounds of 6 pieces and 7 on six slow puzzles with the reply checked. Then spend 7 replaying your latest game and 3 writing one line about the move you would take back.",
     takeaways: [
-      "Six puzzles in seven minutes leaves time to say the reply before each move.",
-      "The written line is what carries one day into the next.",
+      "Same four blocks, same order, five days a week.",
+      "Six puzzles in seven minutes leaves time to name the reply before each move.",
+      "The written line carries one day into the next. Read it before you start.",
     ],
     audience: [
       "You have twenty minutes on a weekday and want them filled in advance.",
@@ -46,9 +48,10 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The plan is short because it has to happen on a Tuesday when you are tired. A plan you skip three days a week is not a plan.",
+            "The plan is short because it has to happen on a Tuesday when you are tired. A long plan you skip three days a week trains less than a short one you keep.",
             "Memory research points the same way. In verbal recall studies, practice spread across sessions was retained better than the same practice massed into one sitting.",
-            "So the twenty minutes are fixed and the days are what you protect. Aim for five days a week, and treat a missed day as a reason to start again tomorrow.",
+            "So the twenty minutes stay fixed and the days are what you protect. Aim for five days a week.",
+            "After a missed day, start again with the same four blocks and do not double up. Forty minutes in one sitting is the massed practice those studies found weaker.",
           ],
         },
       ],
@@ -92,9 +95,8 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "The medium preset in Memory Chess is 6 pieces with 10 seconds to look. Three rounds of it fit in three minutes, with a moment to read each result.",
-            "After the 10 seconds the board clears. Placing has no time limit, but the clock runs from the moment the board clears until you submit.",
-            "Try Again on the result screen keeps the same settings and generates a new position. The three rounds are three different boards, so none of them can be remembered from yesterday.",
-            "Naming every piece aloud makes the first thing in the session a full read of a board. The puzzles and the game block ask for the same full read.",
+            "Press Try Again on the result screen for the next round. It keeps the settings and deals a new position, so no round can be remembered from yesterday.",
+            "Name each piece and its square aloud while the board is up. The session then opens with a full read of a board, which the puzzles and your game ask for next.",
           ],
         },
         {
@@ -118,10 +120,10 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Six puzzles in seven minutes is slow on purpose. The habit being built is not finding the move. It is checking the move against the reply before you play it.",
-            "So for each puzzle, find your move, then say out loud the reply that would refute it if there is one. Only then play it.",
+            "Six puzzles in seven minutes is slow on purpose. The habit this block builds is the check between finding a move and playing it.",
+            "For each puzzle, find your move. Then say aloud the reply that would refute it, if one exists. Play the move only once you have named that reply or ruled it out.",
             "A wrong answer after that check shows you a reply you could not see. A right answer without it shows you nothing about your checking.",
-            "If a puzzle site shows a rating, ignore it for these seven minutes. The block is measured by whether you said the reply, not by the number.",
+            "If the puzzle site shows a rating, ignore it for these seven minutes. Score the block on one thing, whether you said the reply before every move.",
           ],
         },
       ],
@@ -133,9 +135,10 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Take your most recent game and replay it from move one. At each of your moves, before you look at what you played, say what the opponent's last move newly attacks.",
-            "You will reach a move where you missed it. That is the move that matters today. Look at what the board told you and what you did instead.",
-            "Seven minutes is about 15 seconds for each of your moves in a 28-move game. If the game runs longer, stop where the block ends.",
+            "Take your most recent game and step through it from move one. Pause before each of your moves appears and say what your opponent's last move newly attacks.",
+            "Sooner or later you reach a move where you missed it. That move is today's lesson. Compare what the board was showing with the move you played.",
+            "Seven minutes gives about 15 seconds to each of your moves in a 28-move game. If the game runs longer, stop when the block ends.",
+            "Play your games outside the twenty minutes, at a slow control such as 15 minutes plus 10 seconds. The block reviews games you have already played, so it needs a steady supply.",
           ],
         },
       ],
@@ -147,8 +150,8 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Write one line. Which move you would take back, and which block would have caught it. For example, move 14, knight left on e5 with no defender, the game block.",
-            "The line is what makes tomorrow's session different from today's. Read yesterday's line before you start the warm-up.",
+            "Write one line. Name the move you would take back and the block that trains what would have caught it. For example, move 14, knight left on e5 with no defender, game block.",
+            "Read yesterday's line before you start the warm-up. It is what makes each session build on the one before.",
           ],
         },
       ],
@@ -162,8 +165,8 @@ const guide: LearnDocument = {
           ordered: false,
           items: [
             "If the warm-up rounds finish with every piece right three days running, switch to the 8-piece round below and keep 10 seconds.",
-            "Eight pieces take longer to place, so play two rounds instead of three and the warm-up still ends at minute 3.",
-            "If the puzzles feel easy, raise their difficulty, not their number. Six stays six.",
+            "Eight pieces take longer to place, so play two rounds instead of three and the warm-up still ends by minute 3.",
+            "If the puzzles feel easy, choose harder ones and keep the count at six.",
             "If the written line names the same block every day, give that block an extra minute and take it from the line.",
             "Leave the order of the blocks alone. A fixed order means no minutes go on deciding what to do next.",
           ],
@@ -211,6 +214,11 @@ const guide: LearnDocument = {
           kind: "guide",
           slug: "how-many-chess-puzzles-a-day",
           reason: "How to set a puzzle count when you have more than seven minutes.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-stop-blundering-in-chess",
+          reason: "The full pre-move scan that grows out of the game block's one question.",
         },
       ],
     },

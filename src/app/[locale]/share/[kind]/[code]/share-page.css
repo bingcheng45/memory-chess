@@ -32,7 +32,7 @@
 .lab-paper .lab-shared-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
 
 /* the card full screen: the image fit to the viewport on a dimmed page, which the reader may pinch to zoom */
-.lab-card-viewer-overlay { position: fixed; inset: 0; z-index: 60; background: color-mix(in srgb, var(--lp-ink) 88%, transparent); }
+.lab-card-viewer-overlay { position: fixed; inset: 0; z-index: 60; background: color-mix(in srgb, var(--lp-ink) 94%, transparent); }
 .lab-paper.lab-card-viewer { position: fixed; inset: 0; z-index: 61; display: grid; grid-template-rows: auto minmax(0, 1fr); gap: 12px; padding: max(12px, env(safe-area-inset-top)) var(--lp-gutter) max(16px, env(safe-area-inset-bottom)); background: transparent; color: var(--lp-on-accent); }
 .lab-paper .lab-card-viewer-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
 .lab-paper .lab-card-viewer-title { font: 600 16px/1.3 var(--lp-ui); color: var(--lp-on-accent); }

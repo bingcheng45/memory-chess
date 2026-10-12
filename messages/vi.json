@@ -383,7 +383,14 @@
       "title": "Cài đặt Memory Chess",
       "description": "Tùy chỉnh cài đặt và tùy chọn cho ván Memory Chess của bạn."
     },
+    "title": "Cài đặt",
+    "intro": "Các cài đặt này áp dụng cho mọi ván bạn chơi trên trình duyệt này.",
     "showCoordinates": "Hiện tọa độ bàn cờ",
+    "coordinatesHelp": "Chữ cái và chữ số dọc các cạnh bàn cờ khi bạn ghi nhớ và đặt quân. Màn hình kết quả luôn hiển thị chúng.",
+    "on": "Bật",
+    "off": "Tắt",
+    "savedOn": "Đã lưu. Bàn cờ sẽ hiện tọa độ.",
+    "savedOff": "Đã lưu. Bàn cờ sẽ ẩn tọa độ.",
     "home": "Trang chủ",
     "playGame": "Chơi"
   },
@@ -761,5 +768,20 @@
       "note": "Mỗi liên kết đăng chú thích của bạn kèm liên kết đến thẻ, và X, Facebook, LinkedIn cùng các nền tảng khác hiển thị thẻ trong bản xem trước liên kết. Với Instagram hoặc nơi nào cần tệp hình ảnh, hãy tải xuống hoặc sao chép hình ảnh trước.",
       "newTab": "(mở trong thẻ mới)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Không tìm thấy trang",
+      "heading": "Trang này không tồn tại.",
+      "body": "Liên kết có thể đã cũ hoặc địa chỉ bị gõ sai. Bạn có thể chơi một ván hoặc quay lại trang chủ."
+    },
+    "error": {
+      "title": "Đã xảy ra lỗi",
+      "heading": "Trang này đã gặp lỗi.",
+      "body": "Các ván chơi và cài đặt của bạn được lưu trong trình duyệt này và không bị ảnh hưởng. Hãy thử lại hoặc quay về trang chủ.",
+      "retry": "Thử lại"
+    },
+    "play": "Chơi một ván",
+    "home": "Về trang chủ"
   }
 }

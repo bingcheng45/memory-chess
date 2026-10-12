@@ -23,7 +23,7 @@ it("keeps the result screen and its actions when the share dialog's code will no
   await act(async () => fireEvent.click(screen.getByRole("button", { name: "Share result" })));
 
   expect(screen.queryByRole("dialog")).toBeNull();
-  expect(screen.getByRole("heading", { name: "Great Job!" })).toBeInTheDocument();
-  expect(screen.getByRole("button", { name: "Try Again" })).toBeInTheDocument();
+  expect(screen.getByRole("heading", { name: "Great job!" })).toBeInTheDocument();
+  expect(screen.getByRole("button", { name: "Try again" })).toBeInTheDocument();
   expect(screen.getByRole("button", { name: "Share result" })).toBeInTheDocument();
 });

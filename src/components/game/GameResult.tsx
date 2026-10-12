@@ -370,7 +370,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         </nav>
       </section>
 
-      <div className="lab-bridge space-y-6">
+      <div className="lab-ui-face space-y-6">
         {showsLab && labRound && (
           <ErrorBoundary key={labRound.facts.id} fallback={<ResultLabEnd />}>
             <Suspense fallback={<ResultLabSlot />}>
@@ -410,7 +410,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         open={showLeaderboardDialog}
         onOpenChange={setShowLeaderboardDialog}
       >
-        <DialogContent className={`${LAB_PAPER_CLASS} lab-bridge lab-dialog`}>
+        <DialogContent className={`${LAB_PAPER_CLASS} lab-dialog`}>
           <DialogHeader>
             <DialogTitle className="lab-dialog-title">
               {submitSuccess ? t("dialog.successTitle") : t("dialog.submitTitle")}

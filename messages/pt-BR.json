@@ -383,7 +383,14 @@
       "title": "Configurações do Memory Chess",
       "description": "Personalize as configurações e preferências do seu jogo Memory Chess."
     },
+    "title": "Configurações",
+    "intro": "Estas configurações valem para todas as rodadas que você jogar neste navegador.",
     "showCoordinates": "Mostrar as coordenadas do tabuleiro",
+    "coordinatesHelp": "Letras e números nas bordas do tabuleiro enquanto você memoriza e posiciona as peças. A tela de resultado sempre os mostra.",
+    "on": "Sim",
+    "off": "Não",
+    "savedOn": "Salvo. O tabuleiro vai mostrar as coordenadas.",
+    "savedOff": "Salvo. O tabuleiro vai ocultar as coordenadas.",
     "home": "Início",
     "playGame": "Jogar"
   },
@@ -761,5 +768,20 @@
       "note": "Cada link publica sua legenda com um link para o seu cartão, e X, Facebook, LinkedIn e os outros mostram o cartão na prévia do link. Para o Instagram, ou qualquer outro lugar que precise do arquivo de imagem, baixe ou copie a imagem primeiro.",
       "newTab": "(abre em uma nova aba)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Página não encontrada",
+      "heading": "Esta página não existe.",
+      "body": "O link pode estar desatualizado ou o endereço pode ter um erro de digitação. Você pode jogar uma rodada ou voltar à página inicial."
+    },
+    "error": {
+      "title": "Algo deu errado",
+      "heading": "Algo deu errado nesta página.",
+      "body": "Suas rodadas e configurações ficam salvas neste navegador e não foram afetadas. Tente de novo ou volte à página inicial.",
+      "retry": "Tentar de novo"
+    },
+    "play": "Jogar uma rodada",
+    "home": "Ir para a página inicial"
   }
 }

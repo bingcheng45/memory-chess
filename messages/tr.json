@@ -383,7 +383,14 @@
       "title": "Memory Chess ayarları",
       "description": "Memory Chess oyununun ayarlarını ve tercihlerini özelleştir."
     },
+    "title": "Ayarlar",
+    "intro": "Bu ayarlar, bu tarayıcıda oynanan her tura uygulanır.",
     "showCoordinates": "Tahta koordinatlarını göster",
+    "coordinatesHelp": "Konumu ezberlerken ve taşları yerleştirirken tahtanın kenarlarındaki harfler ve sayılar. Sonuç ekranı bunları her zaman gösterir.",
+    "on": "Açık",
+    "off": "Kapalı",
+    "savedOn": "Kaydedildi. Tahta koordinatlarını gösterecek.",
+    "savedOff": "Kaydedildi. Tahta koordinatlarını gizleyecek.",
     "home": "Ana sayfa",
     "playGame": "Oyna"
   },
@@ -761,5 +768,20 @@
       "note": "Her bağlantı metnini ve kartına giden bir bağlantıyı paylaşır; X, Facebook, LinkedIn ve diğerleri kartı bağlantı önizlemesinde gösterir. Instagram için ya da görsel dosyasının gerektiği başka yerlerde önce görseli indir veya kopyala.",
       "newTab": "(yeni sekmede açılır)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Sayfa bulunamadı",
+      "heading": "Bu sayfa yok.",
+      "body": "Bağlantı eskimiş ya da adreste bir yazım hatası olabilir. Bir tur oynayabilir ya da ana sayfaya dönebilirsin."
+    },
+    "error": {
+      "title": "Bir şeyler ters gitti",
+      "heading": "Bu sayfada bir şeyler ters gitti.",
+      "body": "Turların ve ayarların bu tarayıcıda kayıtlı ve etkilenmedi. Tekrar dene ya da ana sayfaya dön.",
+      "retry": "Tekrar dene"
+    },
+    "play": "Bir tur oyna",
+    "home": "Ana sayfaya git"
   }
 }

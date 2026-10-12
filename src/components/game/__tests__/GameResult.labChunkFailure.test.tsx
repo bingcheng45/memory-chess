@@ -47,10 +47,10 @@ describe("the result screen when the lab card's code fails to load", () => {
 
     expect(await screen.findByText("Your lab record could not be shown for this round.")).toBeInTheDocument();
     expect(screen.queryByText("Something went wrong")).toBeNull();
-    expect(screen.getByRole("heading", { name: "Great Job!" })).toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Great job!" })).toBeInTheDocument();
     expect(document.querySelector(".lab-rc-big")).toHaveTextContent("80%");
-    screen.getByRole("button", { name: "Try Again" }).click();
+    screen.getByRole("button", { name: "Try again" }).click();
     expect(onTryAgain).toHaveBeenCalledTimes(1);
-    expect(screen.getByRole("button", { name: "New Game" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "New game" })).toBeInTheDocument();
   });
 });

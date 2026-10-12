@@ -383,7 +383,14 @@
       "title": "Memory Chess-instellingen",
       "description": "Pas de instellingen en voorkeuren van je Memory Chess-spel aan."
     },
+    "title": "Instellingen",
+    "intro": "Deze instellingen gelden voor elke ronde die je in deze browser speelt.",
     "showCoordinates": "Bordcoördinaten tonen",
+    "coordinatesHelp": "Letters en cijfers langs de randen van het bord terwijl je de stelling onthoudt en de stukken plaatst. Het resultaatscherm toont ze altijd.",
+    "on": "Aan",
+    "off": "Uit",
+    "savedOn": "Opgeslagen. Het bord toont zijn coördinaten.",
+    "savedOff": "Opgeslagen. Het bord verbergt zijn coördinaten.",
     "home": "Home",
     "playGame": "Spelen"
   },
@@ -761,5 +768,20 @@
       "note": "Elke link plaatst je tekst met een link naar je kaart, en X, Facebook, LinkedIn en de rest tonen de kaart in de linkpreview. Voor Instagram of waar dan ook het afbeeldingsbestand nodig is, download of kopieer je het eerst.",
       "newTab": "(opent in een nieuw tabblad)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Pagina niet gevonden",
+      "heading": "Deze pagina bestaat niet.",
+      "body": "De link is misschien verouderd, of er staat een typfout in het adres. Je kunt een ronde spelen of teruggaan naar de startpagina."
+    },
+    "error": {
+      "title": "Er ging iets mis",
+      "heading": "Er ging iets mis op deze pagina.",
+      "body": "Je rondes en instellingen staan in deze browser en zijn niet aangetast. Probeer het opnieuw of ga terug naar de startpagina.",
+      "retry": "Opnieuw proberen"
+    },
+    "play": "Speel een ronde",
+    "home": "Naar de startpagina"
   }
 }

@@ -383,7 +383,14 @@
       "title": "Memory Chess 設定",
       "description": "自訂你的 Memory Chess 遊戲設定與偏好。"
     },
+    "title": "設定",
+    "intro": "這些設定適用於你在此瀏覽器中玩的每一局。",
     "showCoordinates": "顯示棋盤座標",
+    "coordinatesHelp": "記憶與擺放棋子時，棋盤邊緣顯示的字母與數字。結果畫面一律會顯示座標。",
+    "on": "開",
+    "off": "關",
+    "savedOn": "已儲存。棋盤將顯示座標。",
+    "savedOff": "已儲存。棋盤將隱藏座標。",
     "home": "首頁",
     "playGame": "開始遊戲"
   },
@@ -761,5 +768,20 @@
       "note": "每個連結都會發布你的文案和指向卡片的連結，X、Facebook、LinkedIn 等會在連結預覽中顯示卡片。若要發到 Instagram 或其他需要圖片檔的地方，請先下載或複製圖片。",
       "newTab": "（在新分頁開啟）"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "找不到頁面",
+      "heading": "此頁面不存在。",
+      "body": "連結可能已過期，或網址有拼字錯誤。你可以開始一局，或返回首頁。"
+    },
+    "error": {
+      "title": "發生問題",
+      "heading": "此頁面發生問題。",
+      "body": "你的對局與設定儲存在此瀏覽器中，不受影響。請再試一次，或返回首頁。",
+      "retry": "再試一次"
+    },
+    "play": "開始一局",
+    "home": "返回首頁"
   }
 }

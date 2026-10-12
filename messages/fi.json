@@ -383,7 +383,14 @@
       "title": "Memory Chess -asetukset",
       "description": "Muokkaa Memory Chess -pelisi asetuksia ja mieltymyksiä."
     },
+    "title": "Asetukset",
+    "intro": "Asetukset koskevat jokaista tässä selaimessa pelattua kierrosta.",
     "showCoordinates": "Näytä laudan koordinaatit",
+    "coordinatesHelp": "Kirjaimet ja numerot laudan reunoilla, kun painat asemaa mieleen ja asetat nappuloita. Tulosnäkymä näyttää ne aina.",
+    "on": "Päällä",
+    "off": "Pois",
+    "savedOn": "Tallennettu. Lauta näyttää koordinaatit.",
+    "savedOff": "Tallennettu. Lauta piilottaa koordinaatit.",
     "home": "Etusivu",
     "playGame": "Pelaa"
   },
@@ -761,5 +768,20 @@
       "note": "Jokainen linkki julkaisee tekstisi ja linkin korttiisi, ja X, Facebook, LinkedIn ja muut näyttävät kortin linkin esikatselussa. Instagramia tai muuta paikkaa varten, joka tarvitsee kuvatiedoston, lataa tai kopioi se ensin.",
       "newTab": "(avautuu uudelle välilehdelle)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Sivua ei löytynyt",
+      "heading": "Tätä sivua ei ole.",
+      "body": "Linkki voi olla vanhentunut tai osoitteessa voi olla kirjoitusvirhe. Voit pelata kierroksen tai palata etusivulle."
+    },
+    "error": {
+      "title": "Jotain meni pieleen",
+      "heading": "Tällä sivulla meni jotain pieleen.",
+      "body": "Kierroksesi ja asetuksesi on tallennettu tähän selaimeen, eikä niihin tullut muutoksia. Yritä uudelleen tai palaa etusivulle.",
+      "retry": "Yritä uudelleen"
+    },
+    "play": "Pelaa kierros",
+    "home": "Etusivulle"
   }
 }

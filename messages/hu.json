@@ -383,7 +383,14 @@
       "title": "Memory Chess beállítások",
       "description": "Szabd testre a Memory Chess játékod beállításait és preferenciáit."
     },
+    "title": "Beállítások",
+    "intro": "Ezek a beállítások minden körre érvényesek, amelyet ebben a böngészőben játszol.",
     "showCoordinates": "Tábla koordinátáinak mutatása",
+    "coordinatesHelp": "Betűk és számok a tábla szélén, amíg megjegyzed az állást és lerakod a bábukat. Az eredményképernyő mindig mutatja őket.",
+    "on": "Be",
+    "off": "Ki",
+    "savedOn": "Mentve. A tábla mutatja a koordinátákat.",
+    "savedOff": "Mentve. A tábla elrejti a koordinátákat.",
     "home": "Főoldal",
     "playGame": "Játék"
   },
@@ -761,5 +768,20 @@
       "note": "Minden hivatkozás a szövegedet teszi közzé a kártyádra mutató linkkel, és az X, a Facebook, a LinkedIn és a többi a link előnézetében mutatja a kártyát. Az Instagramhoz vagy bárhová, ahol a képfájl kell, előbb töltsd le vagy másold ki.",
       "newTab": "(új lapon nyílik meg)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Az oldal nem található",
+      "heading": "Ez az oldal nem létezik.",
+      "body": "Lehet, hogy a link elavult, vagy elírás van a címben. Játszhatsz egy kört, vagy visszatérhetsz a főoldalra."
+    },
+    "error": {
+      "title": "Hiba történt",
+      "heading": "Hiba történt ezen az oldalon.",
+      "body": "A köreid és a beállításaid ebben a böngészőben vannak mentve, és nem sérültek. Próbáld újra, vagy térj vissza a főoldalra.",
+      "retry": "Próbáld újra"
+    },
+    "play": "Játssz egy kört",
+    "home": "Vissza a főoldalra"
   }
 }

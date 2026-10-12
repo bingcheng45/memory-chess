@@ -14,8 +14,8 @@
 ## How to get to it (user POV)
 
 - Open `/leaderboard` from the home page footer or nav.
-- Choose `View Leaderboard` on a game result screen.
-- Land on `/leaderboard?player=<name>&difficulty=<tab>&...` right after `Submit to Leaderboard`.
+- Choose `View leaderboard` on a game result screen.
+- Land on `/leaderboard?player=<name>&difficulty=<tab>&...` right after `Submit to leaderboard`.
 
 ## Driving it with cdp.mjs
 

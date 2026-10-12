@@ -383,7 +383,14 @@
       "title": "Nastavení Memory Chess",
       "description": "Přizpůsobte si nastavení a předvolby své hry Memory Chess."
     },
+    "title": "Nastavení",
+    "intro": "Tato nastavení platí pro každé kolo, které v tomto prohlížeči hrajete.",
     "showCoordinates": "Zobrazit souřadnice šachovnice",
+    "coordinatesHelp": "Písmena a čísla podél okrajů šachovnice, zatímco si pozici zapamatováváte a rozmisťujete figury. Obrazovka s výsledkem je zobrazuje vždy.",
+    "on": "Zap.",
+    "off": "Vyp.",
+    "savedOn": "Uloženo. Šachovnice bude zobrazovat souřadnice.",
+    "savedOff": "Uloženo. Šachovnice bude skrývat souřadnice.",
     "home": "Domů",
     "playGame": "Hrát"
   },
@@ -761,5 +768,20 @@
       "note": "Každý odkaz zveřejní tvůj text s odkazem na kartu a X, Facebook, LinkedIn i další ukážou kartu v náhledu odkazu. Pro Instagram nebo kdekoli jinde, kde je potřeba soubor s obrázkem, ho nejdřív stáhni nebo zkopíruj.",
       "newTab": "(otevře se v nové kartě)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Stránka nenalezena",
+      "heading": "Tato stránka neexistuje.",
+      "body": "Odkaz může být zastaralý nebo je v adrese překlep. Můžete si zahrát kolo nebo se vrátit na úvodní stránku."
+    },
+    "error": {
+      "title": "Něco se pokazilo",
+      "heading": "Na této stránce se něco pokazilo.",
+      "body": "Vaše kola a nastavení jsou uložené v tomto prohlížeči a nic se jim nestalo. Zkuste to znovu nebo se vraťte na úvodní stránku.",
+      "retry": "Zkusit znovu"
+    },
+    "play": "Zahrát kolo",
+    "home": "Na úvodní stránku"
   }
 }

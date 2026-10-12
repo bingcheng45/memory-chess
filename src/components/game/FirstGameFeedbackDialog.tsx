@@ -140,36 +140,36 @@ export default function FirstGameFeedbackDialog({
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogContent className={`${LAB_PAPER_CLASS} lab-bridge lab-dialog max-h-[90vh] overflow-y-auto sm:max-w-md`}>
+      <DialogContent className={`${LAB_PAPER_CLASS} lab-dialog max-h-[90vh] overflow-y-auto sm:max-w-md`}>
         {submitSuccess ? (
           <div className="space-y-5 py-2 text-center">
-            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-peach-500/10 text-2xl">
+            <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-[var(--lp-accent-soft)] text-2xl">
               ✓
             </div>
             <DialogHeader className="text-center sm:text-center">
-              <DialogTitle className="text-xl text-text-primary">{t("sentTitle")}</DialogTitle>
-              <DialogDescription className="text-text-muted">{t("sentBody")}</DialogDescription>
+              <DialogTitle className="text-xl text-[var(--lp-ink)]">{t("sentTitle")}</DialogTitle>
+              <DialogDescription className="text-[var(--lp-muted)]">{t("sentBody")}</DialogDescription>
             </DialogHeader>
             <Button
               type="button"
               onClick={() => handleOpenChange(false)}
-              className="bg-peach-500 text-white hover:bg-peach-600 hover:text-white"
+              className="bg-[var(--lp-accent)] text-[var(--lp-on-accent)] hover:bg-[var(--lp-accent)] hover:text-[var(--lp-on-accent)]"
             >{t("done")}</Button>
           </div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-5">
             <DialogHeader className="pr-8 text-left">
-              <DialogTitle className="text-xl text-text-primary">{t("title")}</DialogTitle>
-              <DialogDescription className="leading-6 text-text-muted">{t("description")}</DialogDescription>
+              <DialogTitle className="text-xl text-[var(--lp-ink)]">{t("title")}</DialogTitle>
+              <DialogDescription className="leading-6 text-[var(--lp-muted)]">{t("description")}</DialogDescription>
             </DialogHeader>
 
             <fieldset className="space-y-3">
-              <legend className="text-sm font-medium text-text-secondary">{t("prompt")}</legend>
+              <legend className="text-sm font-medium text-[var(--lp-ink-2)]">{t("prompt")}</legend>
               <div className="flex items-center gap-2" role="radiogroup">
                 {[1, 2, 3, 4, 5].map((star) => (
                   <label
                     key={star}
-                    className="cursor-pointer rounded-md p-1 focus-within:ring-2 focus-within:ring-peach-500 focus-within:ring-offset-2 focus-within:ring-offset-bg-card"
+                    className="cursor-pointer rounded-md p-1 focus-within:ring-2 focus-within:ring-[var(--lp-accent)] focus-within:ring-offset-2 focus-within:ring-offset-[var(--lp-surface)]"
                   >
                     <input
                       type="radio"
@@ -187,8 +187,8 @@ export default function FirstGameFeedbackDialog({
                       aria-hidden="true"
                       className={`h-8 w-8 transition-colors ${
                         rating !== null && star <= rating
-                          ? "fill-peach-400 text-peach-400"
-                          : "text-text-muted hover:text-peach-300"
+                          ? "fill-peach-400 text-[var(--lp-accent)]"
+                          : "text-[var(--lp-muted)] hover:text-[var(--lp-accent)]"
                       }`}
                     />
                   </label>
@@ -199,10 +199,10 @@ export default function FirstGameFeedbackDialog({
             <div className="space-y-2">
               <label
                 htmlFor="game-feedback"
-                className="text-sm font-medium text-text-secondary"
+                className="text-sm font-medium text-[var(--lp-ink-2)]"
               >
                 {t("commentLabel")}{" "}
-                <span className="font-normal text-text-muted">
+                <span className="font-normal text-[var(--lp-muted)]">
                   {t("commentOptional")}
                 </span>
               </label>
@@ -214,15 +214,15 @@ export default function FirstGameFeedbackDialog({
                 rows={5}
                 placeholder={t("placeholder")}
                 disabled={isSubmitting}
-                className="resize-none border-bg-light bg-bg-dark/60 text-text-primary placeholder:text-text-muted focus-visible:ring-peach-500"
+                className="resize-none border-[var(--lp-line)] bg-[var(--lp-surface)] text-[var(--lp-ink)] placeholder:text-[var(--lp-muted)] focus-visible:ring-[var(--lp-accent)]"
               />
-              <p className="text-right text-xs text-text-muted">
+              <p className="text-right text-xs text-[var(--lp-muted)]">
                 {feedback.length}/{FEEDBACK_MAX_LENGTH}
               </p>
             </div>
 
             {submitError && (
-              <p role="alert" className="text-sm text-red-400">
+              <p role="alert" className="text-sm text-[var(--lp-wrong)]">
                 {submitError}
               </p>
             )}
@@ -233,12 +233,12 @@ export default function FirstGameFeedbackDialog({
                 variant="ghost"
                 onClick={() => handleOpenChange(false)}
                 disabled={isSubmitting}
-                className="text-text-secondary hover:bg-bg-light hover:text-white"
+                className="text-[var(--lp-ink-2)] hover:bg-[var(--lp-surface-2)] hover:text-[var(--lp-ink)]"
               >{t("notNow")}</Button>
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-peach-500 text-white hover:bg-peach-600 hover:text-white"
+                className="bg-[var(--lp-accent)] text-[var(--lp-on-accent)] hover:bg-[var(--lp-accent)] hover:text-[var(--lp-on-accent)]"
               >
                 {isSubmitting ? t("sending") : t("send")}
               </Button>

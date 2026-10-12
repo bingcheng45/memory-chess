@@ -129,7 +129,7 @@ Spacing scale: 4, 8, 12, 16, 24, 32, 48, 64, 96. Sections are 96px apart on desk
 
 Radius: 6px for small controls and nav hovers, 8px for buttons and inputs, 12px for figures and cards, 999px for tags and phase pills only. The board itself uses 4px.
 
-Shadows appear only on the dropdown (`0 12px 32px rgba(13,27,36,.12)`) and the video play disc. Everything else uses a 1px border.
+Shadows appear only on the dropdown (`0 12px 32px rgba(13,27,36,.12)`) and the video play disc. Everything else uses a 1px border. A dialog sits on one scrim, ink at 48% (`--lp-scrim`), whichever component draws it.
 
 ## Components
 

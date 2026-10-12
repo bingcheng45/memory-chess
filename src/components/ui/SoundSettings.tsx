@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, type CSSProperties } from "react";
 import {
   DEFAULT_SOUND_VOLUME,
   isSoundEnabled,
@@ -170,16 +170,13 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
       <motion.button
         onClick={handleSoundToggle}
         whileTap={{ scale: 0.9 }}
-        className="flex h-9 w-9 sm:h-10 sm:w-10 items-center justify-center rounded-full bg-bg-card/30 backdrop-blur-sm hover:bg-bg-card/50 transition-all"
+        className={`flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-[var(--lp-surface-2)] hover:text-[var(--lp-ink)] ${soundOn ? "text-[var(--lp-ink-2)]" : "text-[var(--lp-muted)]"}`}
         aria-label={soundOn ? t("mute") : t("unmute")}
         title={soundOn ? t("mute") : t("unmute")}
       >
         <motion.div
           initial={{ scale: 1 }}
-          animate={{
-            scale: [1, 1.2, 1],
-            color: soundOn ? "var(--peach-500)" : "var(--text-secondary)",
-          }}
+          animate={{ scale: [1, 1.2, 1] }}
           transition={{ duration: 0.3, ease: "easeInOut" }}
           key={soundOn ? "sound-on" : "sound-off"}
         >
@@ -227,7 +224,7 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 10 }}
             transition={{ duration: 0.2 }}
-            className="absolute p-3 bg-bg-card/90 backdrop-blur-sm rounded-lg shadow-lg z-10"
+            className="absolute z-10 rounded-xl border border-[var(--lp-line)] bg-[var(--lp-surface)] px-4 py-3 shadow-[var(--lp-pop-shadow)]"
             style={{
               top: "100%",
               right: 0,
@@ -243,13 +240,11 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
                 step="0.05"
                 value={volume}
                 onChange={handleVolumeChange}
-                className="h-1.5 w-24 cursor-pointer appearance-none rounded-lg bg-bg-light"
-                style={{
-                  backgroundImage: `linear-gradient(to right, #FFB380 0%, #FFB380 ${volume * 100}%, #222222 ${volume * 100}%, #222222 100%)`,
-                }}
+                className="lab-range w-28"
+                style={{ "--fill": `${volume * 100}%` } as CSSProperties}
                 aria-label={t("volume")}
               />
-              <span className="text-sm font-medium text-text-primary">
+              <span className="lab-mono min-w-[4ch] text-right text-sm font-medium text-[var(--lp-ink)]">
                 {Math.round(volume * 100)}%
               </span>
             </div>
@@ -272,7 +267,7 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
                   stiffness: 300,
                   damping: 30,
                 }}
-                className="px-6 py-3 bg-black/85 text-white rounded-full shadow-xl backdrop-blur-md text-sm font-medium"
+                className="rounded-full border border-[var(--lp-line)] bg-[var(--lp-surface)] px-5 py-2.5 text-sm font-medium text-[var(--lp-ink)] shadow-[var(--lp-pop-shadow)]"
               >
                 {toastMessage}
               </motion.div>

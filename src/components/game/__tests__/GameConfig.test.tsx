@@ -1,6 +1,7 @@
 import { fireEvent, render, screen } from "@/test-utils/intl";
 import GameConfig from "@/components/game/GameConfig";
 import { useGameStore } from "@/lib/store/gameStore";
+import { useSettingsStore } from "@/stores/settingsStore";
 
 const pristineGameState = useGameStore.getState().gameState;
 
@@ -18,8 +19,8 @@ const expectPressed = (label: RegExp) => {
 };
 
 const expectSliders = (pieceCount: number, memorizeTime: number) => {
-  expect(screen.getByLabelText("Number of Pieces")).toHaveValue(String(pieceCount));
-  expect(screen.getByLabelText("Memorization Time")).toHaveValue(String(memorizeTime));
+  expect(screen.getByLabelText("Number of pieces")).toHaveValue(String(pieceCount));
+  expect(screen.getByLabelText("Memorization time")).toHaveValue(String(memorizeTime));
 };
 
 beforeEach(() => {
@@ -39,7 +40,7 @@ describe("GameConfig ?difficulty= deep link", () => {
 
     expect(screen.getByRole("button", { name: /Hard/ })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: /Medium/ })).toHaveAttribute("aria-pressed", "false");
-    expect(screen.getByLabelText("Number of Pieces")).toHaveValue("12");
+    expect(screen.getByLabelText("Number of pieces")).toHaveValue("12");
   });
 
   it("keeps the Medium default for an unknown difficulty", () => {
@@ -144,10 +145,26 @@ describe("GameConfig start", () => {
     window.gtag = gtag;
     render(<GameConfig />);
 
-    fireEvent.change(screen.getByLabelText("Memorization Time"), { target: { value: "60" } });
+    fireEvent.change(screen.getByLabelText("Memorization time"), { target: { value: "60" } });
     fireEvent.click(screen.getByRole("button", { name: "Start round" }));
 
     expect(useGameStore.getState().round).toMatchObject({ phase: "study", config: { pieceCount: 6, studyMs: 60000, source: "game_form" } });
     expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 60, source: "game_form" }]]);
+  });
+});
+
+describe("GameConfig coordinates switch", () => {
+  afterEach(() => {
+    useSettingsStore.setState({ showCoordinates: true });
+  });
+
+  it("hides the next round's coordinates through the same setting the settings page writes", () => {
+    useSettingsStore.setState({ showCoordinates: true });
+    render(<GameConfig />);
+
+    fireEvent.click(screen.getByRole("switch", { name: "Show board coordinates" }));
+
+    expect(screen.getByRole("switch", { name: "Show board coordinates" })).toHaveAttribute("aria-checked", "false");
+    expect(useSettingsStore.getState().showCoordinates).toBe(false);
   });
 });

@@ -383,7 +383,14 @@
       "title": "Setări Memory Chess",
       "description": "Personalizează setările și preferințele partidei tale de Memory Chess."
     },
+    "title": "Setări",
+    "intro": "Aceste setări se aplică fiecărei runde jucate în acest browser.",
     "showCoordinates": "Afișează coordonatele tablei",
+    "coordinatesHelp": "Literele și cifrele de pe marginile tablei, cât memorezi și așezi piesele. Ecranul cu rezultatul le arată mereu.",
+    "on": "Da",
+    "off": "Nu",
+    "savedOn": "Salvat. Tabla își va afișa coordonatele.",
+    "savedOff": "Salvat. Tabla își va ascunde coordonatele.",
     "home": "Acasă",
     "playGame": "Joacă"
   },
@@ -761,5 +768,20 @@
       "note": "Fiecare link publică textul tău cu un link către cardul tău, iar X, Facebook, LinkedIn și celelalte afișează cardul în previzualizarea linkului. Pentru Instagram sau oriunde altundeva e nevoie de fișierul imagine, descarcă-l sau copiază-l mai întâi.",
       "newTab": "(se deschide într-o filă nouă)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Pagina nu a fost găsită",
+      "heading": "Această pagină nu există.",
+      "body": "Linkul poate fi învechit sau adresa poate conține o greșeală de scriere. Poți juca o rundă sau te poți întoarce la pagina principală."
+    },
+    "error": {
+      "title": "Ceva nu a funcționat",
+      "heading": "Ceva nu a funcționat pe această pagină.",
+      "body": "Rundele și setările tale sunt salvate în acest browser și nu au fost afectate. Încearcă din nou sau întoarce-te la pagina principală.",
+      "retry": "Încearcă din nou"
+    },
+    "play": "Joacă o rundă",
+    "home": "Mergi la pagina principală"
   }
 }

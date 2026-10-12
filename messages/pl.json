@@ -383,7 +383,14 @@
       "title": "Ustawienia Memory Chess",
       "description": "Dostosuj ustawienia i preferencje swojej gry w Memory Chess."
     },
+    "title": "Ustawienia",
+    "intro": "Te ustawienia obowiązują w każdej rundzie rozgrywanej w tej przeglądarce.",
     "showCoordinates": "Pokaż współrzędne szachownicy",
+    "coordinatesHelp": "Litery i cyfry wzdłuż krawędzi szachownicy podczas zapamiętywania i ustawiania bierek. Ekran wyniku zawsze je pokazuje.",
+    "on": "Wł.",
+    "off": "Wył.",
+    "savedOn": "Zapisano. Szachownica będzie pokazywać współrzędne.",
+    "savedOff": "Zapisano. Szachownica będzie ukrywać współrzędne.",
     "home": "Strona główna",
     "playGame": "Graj"
   },
@@ -761,5 +768,20 @@
       "note": "Każdy link publikuje Twój tekst wraz z linkiem do karty, a X, Facebook, LinkedIn i pozostałe pokazują kartę w podglądzie linku. W przypadku Instagrama lub innych miejsc, które wymagają pliku obrazu, najpierw go pobierz lub skopiuj.",
       "newTab": "(otwiera się w nowej karcie)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Nie znaleziono strony",
+      "heading": "Ta strona nie istnieje.",
+      "body": "Link może być nieaktualny albo w adresie jest literówka. Możesz zagrać rundę lub wrócić na stronę główną."
+    },
+    "error": {
+      "title": "Coś poszło nie tak",
+      "heading": "Na tej stronie coś poszło nie tak.",
+      "body": "Twoje rundy i ustawienia są zapisane w tej przeglądarce i nic im się nie stało. Spróbuj ponownie lub wróć na stronę główną.",
+      "retry": "Spróbuj ponownie"
+    },
+    "play": "Zagraj rundę",
+    "home": "Przejdź na stronę główną"
   }
 }

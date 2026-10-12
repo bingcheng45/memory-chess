@@ -130,6 +130,821 @@
           "answer": "Néhány koncentrált kör rendszeresen jó kezdet. Tartsd elég rövidre az alkalmakat ahhoz, hogy minden állást alaposan meg tudj nézni."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Labor",
+        "onPage": "Ezen az oldalon",
+        "notebook": "Jegyzetfüzet",
+        "method": "Módszer",
+        "calibrate": "Kalibrálás",
+        "tiers": "Nehézség",
+        "record": "Jegyzőkönyv",
+        "library": "Könyvtár",
+        "hints": {
+          "notebook": "Miért mérjünk",
+          "method": "Egy kör lépésről lépésre",
+          "calibrate": "Végezz egy mérést",
+          "tiers": "Szintek és összeállítás",
+          "record": "A méréseid",
+          "library": "Útmutatók és gyakorlatok"
+        },
+        "play": "Játssz egy ingyenes kört"
+      },
+      "tags": {
+        "proposed": "Javaslat",
+        "sample": "Minta",
+        "illustrative": "Szemléltetés",
+        "free": "Ingyenes · fiók nélkül",
+        "rig": "Összeállítás"
+      },
+      "sections": {
+        "notebook": "Jegyzetfüzet",
+        "method": "Módszer",
+        "recording": "Terepfelvétel",
+        "calibrate": "Kalibrálás",
+        "tiers": "Nehézség",
+        "record": "Laborjegyzőkönyv",
+        "library": "Könyvtár",
+        "faq": "Kérdések",
+        "next": "Következő kísérlet"
+      },
+      "hero": {
+        "platforms": "Böngésző · asztali gép · mobil",
+        "display": "Mérd meg a <em>belső látásodat.</em>",
+        "lede": "A Memory Chess ingyenes sakkos memóriajáték és sakkmemória-tréner. Néhány másodpercig nézed az állást, a tábla kiürül, te pedig emlékezetből újraépíted. Minden kör egy rövid memóriateszt, 0 és 100% közötti pontossággal és egy térképpel, amely megmutatja, melyik mezőt találtad el és melyiket nem.",
+        "secondaryCta": "Végezz egy kalibráló mérést",
+        "facts": {
+          "study": "megfigyelési idő",
+          "pieces": "bábu körönként",
+          "accuracy": "pontossági skála",
+          "plays": "lejátszott játszma",
+          "languages": "nyelv"
+        },
+        "showcase": {
+          "aria": "Veselin Topalov és Alexey Shirov játszmája, Linares, 1998, az állás vezetett elemzésével",
+          "event": "Linares · 10. forduló",
+          "venue": "1998. március 4-én",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "és",
+          "pieceLabel": "{piece}: {square}",
+          "tags": {
+            "study": "Megfigyelés",
+            "trap": "A csapda",
+            "sacrifice": "Az áldozat",
+            "walk": "A királymenet",
+            "runners": "Két szabadgyalog",
+            "rebuild": "Újraépítés",
+            "inspect": "Hatósugár"
+          },
+          "counter": {
+            "study": "Megfigyelés {n}/{total}",
+            "game": "Játszma {n}/{total}",
+            "resume": "Kattints újra a folytatáshoz"
+          },
+          "controls": {
+            "steps": "Lépések",
+            "step": "{n}/{total}. lépés: {tag}",
+            "previous": "Előző lépés",
+            "next": "Következő lépés",
+            "play": "Lejátszás",
+            "pause": "Szünet"
+          },
+          "inspect": {
+            "title": "{piece}: {square}.",
+            "reach": "{moves, plural, =0 {Nincs lépése} one {# lépés} other {# lépés}}, {captures, plural, =0 {nincs ütés} one {# ütés} other {# ütés}}.",
+            "checks": "Sakkok: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "Világos sarka",
+            "longDiagonal": "Hosszú átló",
+            "blackWall": "Sötét fala",
+            "runner": "A szökevény"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Shirov sötéttel két gyaloggal áll jobban, de ellentétes színű futókkal gyakran tartható a döntetlen. Tíz bábu."
+              },
+              "whiteCorner": {
+                "caption": "Világos királya a g1-en védi a g2-gyalogot. A h-gyalog előrefutott h4-re."
+              },
+              "longDiagonal": {
+                "caption": "Világos c3-on álló futója uralja a hosszú átlót, és támadja az f6-gyalogot.",
+                "thought": "Sötét mezős futó, c3-tól f6-ig."
+              },
+              "blackWall": {
+                "caption": "Sötét királya e6-on, futója f5-ön, gyalogjai d5-ön, f6-on és g6-on.",
+                "thought": "A király védi f6-ot és d5-öt. A g6-gyalog védi a futót."
+              },
+              "runner": {
+                "caption": "Egyetlen sötét gyalog a4-en, mindentől távol."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "Sötét királya nem léphet előre. A d5-ön és f5-ön a saját bábui állnak, az e5-öt pedig a c3-as futó őrzi.",
+                "thought": "Csak Kd6, Kd7, Ke7 és Kf7. Mindegyik hátrafelé vagy oldalra vezet."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! A futó feláldozza magát egy olyan mezőn, ahol a g-gyalog leütheti. Útjában állt a királynak.",
+                "thought": "Az f5 most üres. Ez az ajtó."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. A futó nyitotta ajtón át a király eljut a centrumba."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Egy futó nem tud megállítani két szabadgyalogot.",
+                "thought": "Topalov leütötte a futót, és 53...Kb3 után feladta."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "A tábla kiürül. Építsd újra a kiinduló állást: világos sarka, a hosszú átló, sötét fala, a szökevény."
+              },
+              "back": {
+                "caption": "Csoportról csoportra minden bábu visszakerül a mezőjére."
+              },
+              "check": {
+                "caption": "Most ellenőrizd. Ellentétes színű futók, a c3 sötét, az f5 világos mező. A c3-as futó még mindig támadja f6-ot. Négy világos, hat sötét bábu."
+              }
+            }
+          }
+        }
+      },
+      "notebook": {
+        "title": "Amit sosem mérsz, azon nem tudsz javítani.",
+        "lede": "A legtöbb sakkgyakorlás a döntéseket edzi. Szinte semmi sem ellenőrzi, hogy valóban fejben tudod-e tartani a táblát. Erre a képességre épül a számolás, a vakjáték és a taktikák meglátása, mégis többnyire a véletlenre bízzák.",
+        "observation": {
+          "kicker": "Megfigyelés",
+          "title": "A játékosok számolás közben szem elől tévesztik a bábukat.",
+          "body": "Három lépés mélyen a hosszú átlón álló futó csendben eltűnik a fejedben lévő képről. Az előtted lévő tábla helyes volt. A fejedben lévő nem."
+        },
+        "hypothesis": {
+          "kicker": "Hipotézis",
+          "title": "Az állásmemória edzhető és mérhető képesség.",
+          "body": "Jegyezz meg röviden egy állást, építsd újra, ellenőrizd az eredményt. Ismételd több bábuval és kevesebb idővel. <hl>Az agyadról semmit sem állítunk.</hl> Egy mérést adunk, amelyet követni tudsz."
+        },
+        "method": {
+          "kicker": "Módszer",
+          "title": "Egy kör, egy tiszta szám.",
+          "body": "Megfigyelés, üres tábla, újraépítés, pontozás. A helyes mezők jelölve vannak, a hibásak is, semmi sincs elrejtve. Egy kör kevesebb mint egy perc, így sokat lefuttathatsz."
+        }
+      },
+      "method": {
+        "title": "Egy kör mikroszkóp alatt.",
+        "lede": "Görgess végig egy kört egy valódi álláson: Kasparov halhatatlan játszmájának végén, amelyet Kasparov Topalov ellen játszott Wijk aan Zee-ben 1999-ben. A jelölések a megjegyzés egyik módját mutatják, nem bárki figyelmének felvételét.",
+        "status": "{number}. fázis · {name}",
+        "clock": "t = {seconds} s",
+        "scoreChip": "{total} mezőből {correct}",
+        "countChip": "Világos {white} · Sötét {black}",
+        "groups": {
+          "standoff": {
+            "name": "Szembenállás",
+            "sentence": "Világos királya támadja d2-t. Sötét királya és a c3 védi."
+          },
+          "mirror": {
+            "name": "Lépcsők",
+            "sentence": "Tükörlépcsők, h2-től fel f4-ig, h7-től le f5-ig."
+          },
+          "longShots": {
+            "name": "Távoli célpontok",
+            "sentence": "Az a7-es vezér h7-re néz. A d2-es bástya h2-re néz."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "Megfigyelés",
+            "title": "Tizenegy bábu, tíz másodperc.",
+            "body": "Kasparov halhatatlan játszmájának záróállása 44.Qa7 után. Topalov itt feladta. Az egész táblát fogd át, ne mezőről mezőre haladj. A de Groot-féle kísérletekben a mesterek egy röviden mutatott játszmaállást sokkal jobban vissza tudtak idézni, mint a gyengébb játékosok.",
+            "note": "Ábra. Világos: király c1, vezér a7, gyalogok f4, g3, h2. Sötét: király e1, bástya d2, gyalogok c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Horgonyok",
+            "title": "Kezdd a királyokkal.",
+            "body": "Először rögzíts két pontot. Mindkét király az első soron áll, két vonalnyira egymástól, és sötét királya egészen e1-ig futott. Minden mást hozzájuk képest helyezz el.",
+            "note": "Ábra. A két király bekarikázva. Minden más vár."
+          },
+          "chunk": {
+            "name": "Tömbök",
+            "title": "Tizenegy bábuból három gondolat lesz.",
+            "body": "Csoportosítsd a bábukat aszerint, mit tesznek egymással. A királyok d2-ért küzdenek. Két gyaloglépcső találkozik. A vezér és a bástya egy-egy védtelen h-gyalogot vesz célba. Chase és Simon (1973) azt találták, hogy az erős játékosok egymáshoz kapcsolódó bábuk tömbjeiben jegyzik meg az állásokat.",
+            "note": "Ábra. A narancs támad, a kék véd, a szürke gyalogláncot köt össze, a vonal blokkolt párt jelöl. A d2-es bástya két csoportba is tartozik."
+          },
+          "encode": {
+            "name": "Kódolás",
+            "title": "Minden csoportból legyen egy mondat.",
+            "body": "Nevezd el a csoportokat a feladatuk szerint. Gobet és Simon (1996) leírása szerint az erős játékosok nagyobb, sémaszerű szerkezeteket tartanak fejben. Maguk a mondatok technikát jelentenek, nem kutatási eredményt.",
+            "note": "Ábra. A három csoport, névvel. A mondataik:"
+          },
+          "blank": {
+            "name": "Üres tábla",
+            "title": "A tábla kiürül.",
+            "body": "Nincs bábu, nincs segítség. A mondatokból építs újra, ne egy képből. Mondd el őket sorban: először a királyokat, aztán az egyes csoportokat.",
+            "note": "Itt nincs más dolgod, mint fejben tartani három mondatot."
+          },
+          "rebuild": {
+            "name": "Újraépítés",
+            "title": "Építsd újra csoportról csoportra.",
+            "body": "Királyok. A szembenállás. A lépcsők. A távoli célpontok. Minden csoportot a mondata alapján rakj ki, mielőtt a következőbe kezdesz.",
+            "note": "Ábra. Az újraépítés ellenőrzés előtt. Egy gyalog rossz mezőn áll. Látod, melyik?"
+          },
+          "score": {
+            "name": "Pontozás",
+            "title": "Vesd össze a mondataiddal, aztán pontozz.",
+            "body": "Ellenőrizz újra minden kapcsolatot az újraépített táblán. Kétszeresen védett még a bástya? A c2-ről a gyalog d1-et védi, nem d2-t. A létszám, öt és hat, még mindig stimmel, így a hibát csak a kapcsolatok ellenőrzése szúrja ki.",
+            "note": "Ábra. A pipák továbbra is érvényesek, a piros kereszt megszakadt kapcsolatot jelez. A narancs kitöltés a rossz mező (c2), a karika a helyes (c3). {total} mezőből {correct} helyes, ez {accuracy}%."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Végezz egy kalibráló mérést.",
+        "lede": "A Közepes kör a valódi játszmából: {pieceCount} bábu, köztük a két király, {memorizeSeconds} másodperc. Aztán a tábla kiürül, és újraépíted. Kapsz egy eredménykártyát a pontosságoddal és a bábutípusonkénti felidézéssel. Egérrel, érintéssel és billentyűzettel is működik.",
+        "phaseReady": "Kész · {pieceCount} bábu · {memorizeSeconds} s expozíció",
+        "phaseLabel": "{number}. fázis · {name}",
+        "start": "Kalibrálás indítása",
+        "restart": "Újrakezdés",
+        "again": "Újra",
+        "done": "Kész",
+        "submit": "Mérés beküldése",
+        "clear": "Tábla törlése",
+        "controlsLabel": "A kör vezérlői",
+        "boardLabel": "Kalibráló tábla. A mezők között a nyílbillentyűkkel lépkedhetsz.",
+        "paletteLabel": "Bábupaletta",
+        "paletteItem": "{piece}, maradt: {count}",
+        "usedUp": {
+          "white": {
+            "king": "A világos király már a táblán van.",
+            "queen": "A világos vezér már a táblán van.",
+            "rook": "Mindkét világos bástya a táblán van.",
+            "bishop": "Mindkét világos futó a táblán van.",
+            "knight": "Mindkét világos huszár a táblán van.",
+            "pawn": "Mind a nyolc világos gyalog a táblán van."
+          },
+          "black": {
+            "king": "A sötét király már a táblán van.",
+            "queen": "A sötét vezér már a táblán van.",
+            "rook": "Mindkét sötét bástya a táblán van.",
+            "bishop": "Mindkét sötét futó a táblán van.",
+            "knight": "Mindkét sötét huszár a táblán van.",
+            "pawn": "Mind a nyolc sötét gyalog a táblán van."
+          }
+        },
+        "squareEmpty": "{square}, üres",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Nézd meg az állást. {memorizeSeconds} másodperc.",
+        "liveRebuild": "A tábla kiürült. Válassz egy bábut, majd egy mezőt.",
+        "liveScore": "Pontosság: {accuracy} százalék. {total} mezőből {correct} helyes.",
+        "startFailed": "Nem sikerült betölteni az állást. Ellenőrizd a kapcsolatot, és próbáld újra.",
+        "steps": [
+          "Nyomd meg az Indítást. Figyeld az állást, amíg a jelző ki nem ürül.",
+          "Válassz egy bábut a palettáról, aztán koppints egy mezőre. Egy lerakott bábura koppintva leveszed.",
+          "Küldd be. Ha több bábut raksz le, mint amennyi az állásban volt, csökken a pontosságod, ezért csak azt rakd le, amire emlékszel."
+        ],
+        "readout": {
+          "title": "Eredménykártya",
+          "statusIdle": "Futásra vár",
+          "statusRecording": "Rögzítés",
+          "statusDone": "A futás véget ért",
+          "correct": "Helyes mezők",
+          "time": "Újraépítési idő",
+          "wrong": "Hibás bábuk",
+          "exposure": "Expozíció",
+          "byType": "Felidézés bábutípusonként",
+          "byTypeEmpty": "A bábutípusonkénti felidézés az első futás után jelenik meg itt.",
+          "nextEmpty": "A mérés után itt jelenik meg a javasolt nehézség.",
+          "suggested": "Javaslat:",
+          "stepUp": "lépj tovább ide: {tier}, {pieceCount} bábu, {memorizeSeconds} s. Előbb erősítsd meg két további tiszta körrel.",
+          "stay": "maradj ezen: {tier}, {pieceCount} bábu, {memorizeSeconds} s. Játssz három kört, és figyeld a trendet.",
+          "start": "kezdd itt: {tier}, {pieceCount} bábu, {memorizeSeconds} s. Megfigyelés közben párosítsd a bábukat.",
+          "playTier": "Játék: {tier}",
+          "legendCorrect": "helyes",
+          "legendWrong": "rossz helyen",
+          "legendMissed": "kihagyott mező"
+        },
+        "pieceTypes": {
+          "king": "Király",
+          "queen": "Vezér",
+          "rook": "Bástya",
+          "bishop": "Futó",
+          "knight": "Huszár",
+          "pawn": "Gyalog"
+        }
+      },
+      "tiers": {
+        "title": "Négy szint. Egy saját összeállítás.",
+        "lede": "A terhelés nő, az expozíció csökken. Akkor lépj feljebb, ha a méréseid stabilak, ne egyetlen szerencsés kör után.",
+        "columns": {
+          "tier": "Nehézség",
+          "pieces": "Bábuk",
+          "exposure": "Expozíció",
+          "load": "Terhelés"
+        },
+        "loadLabel": "32 mezőből {pieceCount} foglalt",
+        "play": "Játék",
+        "custom": {
+          "label": "Egyéni",
+          "description": "Állítsd be a saját változóidat, hogy egyetlen gyengeséget különíts el."
+        }
+      },
+      "record": {
+        "title": "Gyere vissza a trendvonalért.",
+        "lede": "Egy mérés csak pillanatkép. Tíz mérés már valódi mérés. Minden lejátszott kört ezen az eszközön tárolunk, és ezek a panelek a saját köreidből töltődnek fel. Az első köröd előtt a panelek <tag>Minta</tag> értékeket mutatnak, nem valódi játékosokat. Utána az a panel, amely még nem tudja kiolvasni a jegyzőkönyvedet, megírja, mire van még szüksége.",
+        "span": {
+          "fig": "{number}. ábra · Memóriaterjedelem",
+          "title": "Hány bábut tudsz fejben tartani.",
+          "figure": "{pieceCount, plural, one {# bábu} other {# bábu}}",
+          "held": "Legalább {accuracy}% {count, plural, one {# körben} other {# körben}}. Közülük a legrövidebb megfigyelési idő: {studyTime}.",
+          "up": "{count, plural, one {# bábuval} other {# bábuval}} több, mint múlt héten",
+          "same": "Nincs változás a múlt héthez képest",
+          "aria": "Minta lépcső a memóriaterjedelemről 12 alkalom alatt, 4 bábutól 8 bábuig emelkedik.",
+          "note": "Minta jegyzőkönyv · 12 alkalom",
+          "realAria": "A memóriaterjedelmed {sessions, plural, one {azon az alkalmon, amikor először elérted} other {az első elérése óta eltelt # alkalom alatt}}: {shape, select, flat {a bábuk száma {now} maradt} other {a bábuk száma {first} helyett már {now}}}.",
+          "need": "Érj el legalább {accuracy}%-ot {count, plural, =2 {kétszer} one {még # alkalommal} other {még # alkalommal}} ugyanannál a bábuszámnál, amely legalább {minPieces}.",
+          "onlyKings": "Eddigi köreidben csak a két király szerepelt, a terjedelemhez pedig több bábu kell.",
+          "first": "Terjedelem először elérve",
+          "last": "Legutóbbi"
+        },
+        "held": {
+          "fig": "{number}. ábra · Megjegyzett bábuk",
+          "title": "Helyesen lerakott bábuk, bármilyen beállításnál.",
+          "aria": "Minta görbe a megjegyzett bábukról 12 kör alatt, az 5 körös átlag 4,0 báburól 7,0 bábura emelkedik.",
+          "note": "Minta jegyzőkönyv · 12 kör · bármilyen beállítás",
+          "partial": "Szaggatott vonal: kevesebb mint {window} kör átlaga",
+          "realAria": "A megjegyzett bábuid az utolsó {count, plural, one {# körödben} other {# körödben}} bármilyen beállításnál, {window} körös átlagként, a legutóbbi érték {latest} bábu.",
+          "average": "Friss átlag: {average} bábu",
+          "up": "{change} bábuval több, mint az előző {window} körben",
+          "down": "{change} bábuval kevesebb, mint az előző {window} körben",
+          "flat": "nincs változás az előző {window} körhöz képest",
+          "realNote": "Bármilyen beállítás · {count, plural, one {# kör alapján} other {# kör alapján}}",
+          "needRounds": "Még {count, plural, one {# kör} other {# kör}}, és kirajzolódik a görbéd.",
+          "needRoundsAndDay": "Még {count, plural, one {# kör egy másik napon} other {# kör, ebből legalább egy egy másik napon}}, és kirajzolódik a görbéd.",
+          "needDay": "Játssz még egy másik napon is, és kirajzolódik a görbéd.",
+          "first": "Legrégebbi",
+          "last": "Legutóbbi"
+        },
+        "speed": {
+          "fig": "{number}. ábra · Sebesség",
+          "title": "Másodperc bábunként az újraépítéskor.",
+          "aria": "Minta görbe az újraépítés helyes bábunkénti másodperceiről 12 kör alatt, 4,1 másodpercről 2,6 másodpercre csökken.",
+          "note": "Minta jegyzőkönyv · 12 kör · Közepes",
+          "realAria": "Az újraépítés helyes bábunkénti másodpercei az utolsó {count} {source, select, calibration {gyakorló} other {játék}}körödben, {pieceCount} bábuval és {memorizeSeconds} másodperccel, a legutóbbi érték {latest} másodperc.",
+          "average": "Friss átlag: {average} bábunként",
+          "down": "{change} különbséggel gyorsabb, mint az előző {window} kör",
+          "up": "{change} különbséggel lassabb, mint az előző {window} kör",
+          "flat": "ugyanaz a tempó, mint az előző {window} körben",
+          "accuracy": "Pontosság ugyanezekben a körökben: {average}%",
+          "accuracyChange": {
+            "up": "{change, plural, one {# ponttal} other {# ponttal}} feljebb",
+            "down": "{change, plural, one {# ponttal} other {# ponttal}} lejjebb",
+            "flat": "nincs változás"
+          },
+          "fastWrong": "A gyors, de hibás nem fejlődés.",
+          "config": "{source, select, calibration {Gyakorlás} other {Játszma}} · {pieceCount} bábu · {studyTime}, mostanában ez a leggyakoribb beállításod · {count, plural, one {# kör alapján} other {# kör alapján}}",
+          "need": "Még {count, plural, one {# kör} other {# kör}} {pieceCount} bábuval, {studyTime} idővel {source, select, calibration {gyakorlásban} other {játszmákban}}, és {count, plural, one {kirajzolódik} other {kirajzolódik}} a sebességgörbéd.",
+          "needRight": "A sebesség csak azokat a köröket számolja, amelyekben legalább egy bábu helyes. Játssz {count, plural, one {# ilyen kört} other {# ilyen kört}}, hogy elinduljon a görbéd.",
+          "first": "Legrégebbi",
+          "last": "Legutóbbi"
+        },
+        "curve": {
+          "fig": "{number}. ábra · Felejtési görbe",
+          "title": "A rövid, elosztott ismétlések jobbak egy hosszú alkalomnál.",
+          "desc": "Azok a táblák, amelyeken 80% alatt teljesítesz, az első megtekintés után 1, 3, 7 és 14 nappal visszatérnek ismétlésre. A görbéd azt mutatja, mennyire emlékszel az egyes szünetek után.",
+          "aria": "Szemléltető ábra: ismétlés nélkül a megtartás gyorsan csökken, az 1., 3. és 7. napi elosztott ismétlések után pedig egyre lassabban.",
+          "note": "Az elosztott ismétlés hatásának szemléltető modellje. Nem mért adat.",
+          "noReview": "ismétlés nélkül",
+          "spaced": "elosztott körök",
+          "review": "ismétlés",
+          "day": "{day}. nap",
+          "warming": "Még {reviews, plural, one {# ismétlés} other {# ismétlés}} ugyanakkora szünet után, és kirajzolódik az első mért pontod.",
+          "measuredAria": "A felidézésed az ismételt táblákon: {points}.",
+          "pointFirst": "első megtekintés: {accuracy}%, {count, plural, one {# tábla alapján} other {# tábla alapján}}",
+          "pointAfter": "{day, plural, one {# nap} other {# nap}} után: {accuracy}%, {count, plural, one {# ismétlés alapján} other {# ismétlés alapján}}",
+          "count": "n={count}",
+          "measuredNote": "{boards, plural, one {# tábla} other {# tábla}} {reviews, plural, one {# ismétlése alapján} other {# ismétlése alapján}}. Egy ponthoz {min} ismétlés kell a saját szünete után.",
+          "due": "Mai ismétlés: {number}/{cap}",
+          "capped": "A mai ismétlések megvannak",
+          "play": "Ismétlés indítása",
+          "waiting": "A következő ismétlés {days, plural, one {holnap} other {# nap múlva}}. {queued, plural, one {# tábla} other {# tábla}} vár a sorodban.",
+          "empty": "Még nincs ismételendő tábla. Az a tábla, amelyen 80% alatt teljesítesz, másnap ide visszatér."
+        },
+        "spark": {
+          "fig": "{number}. ábra · Pontosság az idő függvényében",
+          "title": "A görbéd, körről körre.",
+          "titleSessions": "A görbéd, alkalomról alkalomra.",
+          "aria": "Minta mini görbe a pontosságról 12 kör alatt, 52-ről 79 százalékra emelkedik.",
+          "note": "Minta jegyzőkönyv · 12 kör · Közepes",
+          "first": "K01",
+          "last": "K12",
+          "needRounds": "Még {count, plural, one {# kör} other {# kör}} {pieceCount} bábuval, {studyTime} idővel, és kirajzolódik a {source, select, calibration {gyakorlási} other {játszmabeli}} trended.",
+          "needRoundsAndDay": "Még {count, plural, one {# kör {pieceCount} bábuval, {studyTime} idővel, egy másik napon játszva} other {# kör {pieceCount} bábuval, {studyTime} idővel, ebből legalább egy egy másik napon}}, és kirajzolódik a {source, select, calibration {gyakorlási} other {játszmabeli}} trended.",
+          "needDay": "Játssz {pieceCount} bábuval, {studyTime} idővel {source, select, calibration {gyakorlásban} other {játszmában}} még egy másik napon is, és kirajzolódik a trended.",
+          "config": "{source, select, calibration {Gyakorlás} other {Játszma}} · {pieceCount} bábu · {studyTime}, a leggyakoribb beállításod, amelyhez van trend",
+          "realAria": "A pontosságod az utolsó {count} {source, select, calibration {gyakorló} other {játék}}körödben, {pieceCount} bábuval és {memorizeSeconds} másodperccel, a legutóbbi érték {latest} százalék.",
+          "realAriaSessions": "A pontosságod az utolsó {count, plural, one {# alkalmadon} other {# alkalmadon}}, {source, select, calibration {gyakorló} other {játék}}körökkel, {pieceCount} bábuval és {memorizeSeconds} másodperccel, a legutóbbi érték {latest} százalék.",
+          "sessions": "{count, plural, one {# alkalom} other {# alkalom}}",
+          "realFirst": "Legrégebbi",
+          "realLast": "Legutóbbi"
+        },
+        "heat": {
+          "fig": "{number}. ábra · Hibatérkép",
+          "title": "Hol csúsznak ki a mezők.",
+          "aria": "Minta hőtérkép a kihagyott mezőkről: a h-vonal mentén és a h1 körül a legsötétebb, a b7-en és az f7-en forró pontokkal, középen a legvilágosabb.",
+          "note": "Minta: a hibák a h-vonalon és a h1-es királysarok körül halmozódnak. Legközelebb ezt a szélt edzd.",
+          "need": "Nagyjából még {count, plural, one {# kör} other {# kör}}, amíg minden vonalon és soron lesz 10 kiolvasható bábu.",
+          "needStart": "Játssz még néhány kört, hogy elinduljon a hibatérképed.",
+          "files": "Vonalak",
+          "ranks": "Sorok",
+          "line": "{line}: {shown} közül {missed} elhibázva",
+          "lineThin": "{line}: {shown} látva, ez még kevés",
+          "realAria": "A hibaarányod mezőnként. A szürke mezőkön 10-nél kevesebb bábu volt látható.",
+          "realNote": "A sötétebb gyakoribb hibát jelent. A szürke mezőkön 10-nél kevesebb bábu volt látható."
+        },
+        "daily": {
+          "fig": "{number}. ábra · A nap táblája",
+          "title": "Napi egy tábla, mindenkinek ugyanaz.",
+          "desc": "Minden nap éjfélkor (UTC) új állás nyílik. Mindenki ugyanazt a 6 bábut és 10 másodperc megfigyelési időt kapja, és egy próbálkozásod van.",
+          "play": "A nap táblájának indítása",
+          "open": "A mai táblát még nem játszottad le.",
+          "played": "{pieceCount, plural, one {# bábuból} other {# bábuból}} {correct} helyére tetted, ez {accuracy}%.",
+          "unfinished": "Megnyitottad a mai táblát, de az eredmény előtt kiléptél. Ezen az eszközön naponta egy próbálkozás jár.",
+          "streak": "Napi sorozat: {current, plural, one {# nap} other {# nap}}{forgiven, plural, =0 {} one {, # kihagyott nap elengedve} other {, # kihagyott nap elengedve}} · leghosszabb: {longest, plural, one {# nap} other {# nap}}",
+          "streakLongest": "Leghosszabb napi sorozat: {longest, plural, one {# nap} other {# nap}}",
+          "gridAria": "Az eredményed mezőnként, a8-cal kezdve: helyes {correct}, {wrong, plural, one {# hibás bábu} other {# hibás bábu}}, kihagyott {missed}, felesleges {extra}.",
+          "key": {
+            "c": "helyes",
+            "w": "hibás bábu",
+            "m": "kihagyott",
+            "x": "felesleges"
+          },
+          "share": "Memory Chess, a nap táblája {day}\n{pieceCount} bábuból {correct} helyes, {accuracy}%\n{row}\nthememorychess.com",
+          "copy": "Eredmény másolása",
+          "showGrid": "Rács megjelenítése",
+          "copied": "Kimásolva. Illeszd be bárhová.",
+          "copyFailed": "Itt nem sikerült a másolás. Az eredmény lent ki van jelölve, másold ki magad."
+        },
+        "streak": {
+          "fig": "{number}. ábra · Egymást követő napok",
+          "title": "Napi egy kör sorozatot épít.",
+          "desc": "Minden befejezett kör, játszmában vagy gyakorlásban, beszámít a saját napjába. Bármely 7 napból egy kihagyott napot elengedünk.",
+          "aria": "Minta rács egy kéthetes sorozatról",
+          "note": "Minta · a szaggatott mező a mai kör, amely még hátravan",
+          "realDesc": "Minden befejezett kör beszámít a saját napjába. Bármely 7 napból egy kihagyott napot elengedünk.",
+          "need": "Játssz még {days, plural, one {# napon} other {# napon}}, hogy lásd a sorozatodat.",
+          "realAria": "Az utolsó 14 napod: {count, plural, one {# nap játékkal} other {# nap játékkal}}{forgiven, plural, =0 {} one {, # elengedve} other {, # elengedve}}.",
+          "realNote": "Jelenlegi sorozat: {current, plural, one {# nap} other {# nap}}{forgiven, plural, =0 {} one {, # kihagyott nap elengedve} other {, # kihagyott nap elengedve}} · leghosszabb: {longest, plural, one {# nap} other {# nap}}",
+          "key": {
+            "played": "játszott",
+            "forgiven": "elengedve",
+            "missed": "kihagyott",
+            "today": "ma"
+          }
+        },
+        "week": {
+          "ring": "Ezen a héten {goal} napból {played}",
+          "ringOver": "Cél teljesítve, ezen a héten {played} nap",
+          "sampleRing": "Minta hét · {goal} napból {played}",
+          "left": "{remaining, plural, =0 {A heti cél teljesítve.} one {Még # nap a célodig.} other {Még # nap a célodig.}}",
+          "outOfReach": "A cél már nem teljesíthető, {daysLeft, plural, =0 {nem maradt nap} one {# nap maradt} other {# nap maradt}}. Hétfőn új hét kezdődik.",
+          "goal": "Nap hetente",
+          "option": "Heti {days} nap"
+        },
+        "welcome": {
+          "line": "Üdv újra. A jegyzőkönyved {day}. napja. Legutóbb {accuracy}% {pieceCount} bábuval, {studyTime} idővel.",
+          "lineNoDay": "Üdv újra. Legutóbb {accuracy}% {pieceCount} bábuval, {studyTime} idővel."
+        },
+        "board": {
+          "fig": "{number}. ábra · Ranglista",
+          "title": "Vesd össze a méréseidet a világgal.",
+          "desc": "Minden nehézségi szint rangsora a helyes bábukon alapul, aztán a kevesebb hibás bábun, aztán a gyorsabb memorizáláson, végül a gyorsabb megoldáson. Minden sorban ott a játékos országa.",
+          "howTo": "Küldj be egy eredményt az eredményképernyőről, aztán nézd meg, hol áll világszerte vagy az országodban.",
+          "sketchPieces": "{count} bábu",
+          "open": "Ranglista megnyitása",
+          "difficulty": "Nehézség",
+          "scope": "Rangsor",
+          "world": "Világ",
+          "entry": "A legjobb nevezésed ezen a szinten: {difficulty}, {correct, plural, one {# helyes bábu} other {# helyes bábu}}, beküldve: {date}.",
+          "check": "Helyezésem ellenőrzése",
+          "checking": "Ellenőrzés...",
+          "ranked": "{rank, number}. hely {total, plural, one {# nevezésből} other {# nevezésből}} ezen a szinten: {difficulty}, világszerte.",
+          "rankedIn": "{rank, number}. hely {total, plural, one {# nevezésből} other {# nevezésből}} ezen a szinten: {difficulty}, ebben az országban: {country}.",
+          "checkedAt": "Ellenőrizve: {time}.",
+          "boardSize": "A nyilvános ranglista az első {limit} helyet mutatja.",
+          "up": "{places, plural, one {# hellyel} other {# hellyel}} feljebb {time} óta.",
+          "down": "{places, plural, one {# hellyel} other {# hellyel}} lejjebb {time} óta.",
+          "same": "Ugyanaz a helyezés, mint ekkor: {time}.",
+          "missing": "A {difficulty} szintű nevezésed már nincs a ranglistán, ezért ez az eszköz sem tárolja tovább. A ranglistákat időnként megtisztítják vagy nullázzák. Ellenőrizve: {time}.",
+          "limited": "Túl sok ellenőrzés érkezett a kapcsolatodról. Próbáld újra {wait, plural, one {# másodperc} other {# másodperc}} múlva.",
+          "noCountry": "A ranglistán ennél a nevezésnél nincs ország, ezért csak világszerte rangsorolható.",
+          "offline": "Offline vagy, ezért semmi sem lett elküldve. Csatlakozz, és próbáld újra.",
+          "failed": "A ranglista nem érhető el, ezért a helyezést nem sikerült lekérni. Próbáld újra később."
+        },
+        "plans": {
+          "fig": "{number}. ábra · Programok",
+          "title": "Válassz egy tervet, és vidd végig.",
+          "desc": "Egyszerre egy terv. A haladás a köreidből számolódik, így egy terv leállítása soha nem töröl kört.",
+          "baseline": {
+            "kicker": "A-terv · 7 nap",
+            "title": "Alapszint-hét",
+            "steps": [
+              "Napi egy Közepes kör.",
+              "Jegyezd fel a mérést, és állj ellen az újrapróbálás vágyának.",
+              "7. nap: hasonlítsd össze az 1. nappal."
+            ],
+            "progress": "Napok Közepes körrel: {days} napból {played}",
+            "compare": "{firstDay}. nap: {first}%, {lastDay}. nap: {latest}%, {direction, select, up {{change, plural, one {# ponttal} other {# ponttal}} feljebb} down {{change, plural, one {# ponttal} other {# ponttal}} lejjebb} other {nincs változás}}.",
+            "compareNone": "A terv indulása óta nem volt Közepes kör, így nincs mit összehasonlítani.",
+            "compareOne": "A terv indulása óta egy Közepes kör volt, így még nincs mit összehasonlítani."
+          },
+          "edge": {
+            "kicker": "B-terv · 14 nap",
+            "title": "Szélső vonalak gyakorlása",
+            "steps": [
+              "Egyéni összeállítás: 8 bábu, 15 s.",
+              "3 naponta nézd át a hibatérképedet.",
+              "Párosítsd a tábla átlátásáról szóló útmutatóval."
+            ],
+            "progress": "Az összeállítást {elapsed} napból {played, plural, one {# napon} other {# napon}} játszottad. Cél: {days} nap alatt {target} nap.",
+            "share": "Elhibázott szélső vonalak: a terv előtt {before}% {beforeRounds, plural, one {# körben} other {# körben}}, azóta {now}% {nowRounds, plural, one {# körben} other {# körben}}.",
+            "shareMissing": "A szélső vonalakon elkövetett hibák akkor vethetők össze, ha mindkét oldalon lesz {needed} olyan kör, amelyben bábu áll az a- vagy a h-vonalon. Eddig a terv előtt {before}, azóta {now}.",
+            "guide": "Olvasd el, hogyan lásd az egész táblát"
+          },
+          "ladder": {
+            "kicker": "C-terv · határidő nélkül",
+            "title": "Lefelé lépő létra",
+            "steps": [
+              "Tarts 90%-ot három egymást követő körben.",
+              "Aztán csökkentsd a megfigyelési időt 2 másodperccel.",
+              "Ha a megfigyelési idő elérte a minimumot, adj hozzá bábukat."
+            ],
+            "rung": "Létrafok: {pieceCount} bábu, {studyTime}.",
+            "run": "Egymást követő körök legalább {accuracy}%-kal: {needed} körből {run}.",
+            "climbed": "Megmászva: {needed} egymást követő kör legalább {accuracy}%-kal.",
+            "next": "Következő fok: {pieceCount} bábu, {studyTime}.",
+            "top": "A létra teteje: egyik tábla sem tartalmaz {pieceCount} bábunál többet."
+          },
+          "status": {
+            "day": "{day}. nap",
+            "dayOf": "{day}. nap ({length} napból)",
+            "overtime": "{day}. nap, túl a tervezett {length} napon",
+            "done": "Befejezve, {day}. nap.",
+            "finished": "Korábban befejezve, {day}. nap.",
+            "stopped": "Leállítva, {day}. nap."
+          },
+          "start": "Indítás: {title}",
+          "again": "Újraindítás: {title}",
+          "busy": "Egyszerre csak egy terv futhat. Ehhez előbb állítsd le a futó tervet ({title}).",
+          "stop": "Terv leállítása",
+          "confirmStop": "Biztosan leállítod?",
+          "keep": "Folytatom",
+          "finish": "Befejezés korábban",
+          "play": "Játék: {pieceCount} bábu, {studyTime}"
+        },
+        "goal": {
+          "fig": "{number}. ábra · Cél",
+          "title": "Tűzz ki egy mérési célt.",
+          "desc": "Válassz bábuszámot és pontosságot. A sáv a cél kitűzése óta elért legjobb körödből töltődik, amelyben legalább ennyi bábu volt.",
+          "sample": "Minta cél: {pieceCount} bábu {accuracy}%-kal. Eddigi legjobb {best}%, az út {percent}%-a megvan.",
+          "target": "Cél: legalább {pieceCount} bábu {accuracy, select, 100 {100%-kal} other {legalább {accuracy}%-kal}}, kitűzve: {date}.",
+          "progress": "Legjobb azóta: {best}% {pieceCount} bábuval, az út {percent}%-a megvan.",
+          "bar": "A célhoz vezető út {percent}%-a megvan",
+          "need": "A cél kitűzése óta nem volt kör legalább {pieceCount} bábuval.",
+          "reached": "Elérve: {date}, {accuracy}% {pieceCount} bábuval.",
+          "form": "Új cél",
+          "pieces": "Bábuk, legalább",
+          "accuracy": "Pontosság, legalább",
+          "percent": "{value}%",
+          "set": "Cél kitűzése",
+          "newGoal": "Új cél kitűzése",
+          "clear": "Cél törlése",
+          "cancel": "Mégse",
+          "saved": "Cél kitűzve.",
+          "cleared": "Cél törölve."
+        },
+        "mine": "A jegyzőkönyved",
+        "fromRounds": "{count, plural, one {# kör alapján} other {# kör alapján}}",
+        "dashboardLink": "Irányítópult megnyitása",
+        "play": "Játssz egy kört",
+        "tomorrow": "Gyere vissza holnap.",
+        "stale": "Utoljára {count, plural, one {# napja} other {# napja}} játszottál.",
+        "unlock": {
+          "label": "Még feloldandó",
+          "count": "{total} ábrából {unlocked} feloldva",
+          "done": "Az összes lenti ábra fel van oldva.",
+          "showAll": "Az összes ábra mutatása ({count})",
+          "showFewer": "Kevesebb mutatása",
+          "span": "{qualifyingRounds, plural, one {# kör} other {# kör}} legalább {accuracy}%-kal és legalább {minPieces} bábuval",
+          "piecesHeld": "{rounds, plural, one {# kör} other {# kör}} {days, plural, one {# nap alatt} other {# nap alatt}}",
+          "trend": "{rounds, plural, one {# kör} other {# kör}} egy beállítással, {days, plural, one {# nap alatt} other {# nap alatt}}",
+          "speed": "{rounds, plural, one {# kör} other {# kör}} egy beállítással",
+          "streak": "{days, plural, one {# játéknap} other {# játéknap}}",
+          "curve": "{reviews, plural, one {# ismétlés} other {# ismétlés}} ugyanakkora szünet után",
+          "typeRecall": "egy királyon kívüli bábu {exposures, plural, one {# megjelenése} other {# megjelenése}}",
+          "missMap": "{exposures, plural, one {# megjelenés} other {# megjelenés}} vonalanként és soronként",
+          "trendRounds": "még {rounds, plural, one {# kör} other {# kör}} {source, select, calibration {gyakorlásban} other {játszmában}}, {pieceCount} bábu, {studyTime}",
+          "trendDays": "még {days, plural, one {# nap} other {# nap}} {source, select, calibration {gyakorló} other {játék}}körökkel, {pieceCount} bábu, {studyTime}",
+          "trendRoundsDays": "még {rounds, plural, one {# kör} other {# kör}} {source, select, calibration {gyakorlásban} other {játszmában}}, {pieceCount} bábu, {studyTime}, még {days, plural, one {# nap} other {# nap}}",
+          "spanLeft": "még {qualifyingRounds, plural, one {# kör} other {# kör}} legalább {accuracy}%-kal és legalább {minPieces} bábuval",
+          "spanLarger": "{largerRounds, plural, one {# kör} other {# kör}} legalább {minPieces} bábuval",
+          "piecesHeldRounds": "még {rounds, plural, one {# kör} other {# kör}}",
+          "piecesHeldDays": "még {days, plural, one {# nap} other {# nap}}",
+          "piecesHeldRoundsDays": "még {rounds, plural, one {# kör} other {# kör}}, még {days, plural, one {# nap} other {# nap}}",
+          "speedRounds": "még {rounds, plural, one {# kör} other {# kör}} {source, select, calibration {gyakorlásban} other {játszmában}}, {pieceCount} bábu, {studyTime}",
+          "speedRight": "{rightRounds, plural, one {# kör} other {# kör}} egy helyes bábuval",
+          "streakLeft": "még {days, plural, one {# játéknap} other {# játéknap}}",
+          "curveLeft": "még {reviews, plural, one {# ismétlés} other {# ismétlés}} ugyanakkora szünet után",
+          "typeRecallLeft": "egy királyon kívüli bábu még {exposures, plural, one {# megjelenése} other {# megjelenése}}",
+          "missMapLeft": "még {exposures, plural, one {# megjelenés} other {# megjelenés}} a legkevésbé látott vonalon vagy soron",
+          "insights": "{rounds, plural, one {# kör} other {# kör}}",
+          "insightsLeft": "még {rounds, plural, one {# kör} other {# kör}}",
+          "notebook": "{rounds, plural, one {# kör} other {# kör}}"
+        },
+        "bests": {
+          "fig": "{number}. ábra · Egyéni csúcsok",
+          "title": "A legjobb mérésed beállításonként.",
+          "desc": "A csúcsokat beállításonként tartjuk nyilván, mert a 6 bábu és a 20 bábu két különböző teszt. Az ezen az oldalon végzett gyakorló mérések külön maradnak a játszmáktól.",
+          "empty": "A legjobb mérésed beállításonként az első köröd után jelenik meg.",
+          "setting": "{source, select, calibration {Gyakorlás} other {Játszma}} · {pieceCount} bábu · {studyTime}",
+          "first": "első mérés",
+          "showAll": "Az összes beállítás mutatása ({count})",
+          "showFewer": "Kevesebb mutatása",
+          "reading": "{accuracy}% · újraépítve {time} alatt"
+        },
+        "types": {
+          "fig": "{number}. ábra · Felidézés bábutípusonként",
+          "title": "Mely bábuk csúsznak ki.",
+          "need": "Nagyjából még {count, plural, one {# kör} other {# kör}}, amíg egy királyon kívüli bábu 20 megjelenést gyűjt.",
+          "needStart": "A bábutípusonkénti felidézés az első köröd után jelenik meg.",
+          "onlyKings": "Eddigi köreidben csak a két király szerepelt, a bábutípusonkénti felidézéshez pedig több bábu kell.",
+          "thin": "{shown}/20 látva",
+          "baseline": "viszonyítási alap",
+          "kings": "A királyok minden körben ott vannak, ezért viszonyítási alapként szolgálnak. {shown} közül {recalled} felidézve.",
+          "sampleNote": "Minta: először a gyalogok és a huszárok csúsznak ki."
+        },
+        "insights": {
+          "fig": "{number}. ábra · Megfigyelések",
+          "title": "Mi tűnik ki, és mit érdemes kipróbálni.",
+          "desc": "Egy megfigyelés csak akkor jelenik meg, ha a számai elérik a minimális mintát, és megnevezi a mögötte álló darabszámokat.",
+          "sample": "Példa egy minta jegyzőkönyvből: az a- és h-vonalat {times, select, 2 {nagyjából kétszer} other {nagyjából {times}×}} olyan gyakran hibázták el, mint a középső d- és e-vonalat: a bábuk {edge}%-át, középen pedig {centre}%-át.",
+          "sampleList": "Minta megfigyelés",
+          "sampleNote": "Minta megfigyelés, nem a te köreidből.",
+          "list": "Megfigyelések a jegyzőkönyvedből",
+          "need": "A megfigyelések {threshold} körtől olvassák a jegyzőkönyvedet. Még {count, plural, one {# kör} other {# kör}} van hátra.",
+          "none": "Egyelőre semmi sem tűnik ki. Játssz tovább.",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {Az a és h vonalon {edgeShown} bábu közül {edge, select, 0 {kevesebb mint 1%-ot} other {{edge}%-ot}} hibázol el, a középső d és e vonalon pedig {centreShown} közül egyet sem.} 2 {Az a és h vonalat nagyjából kétszer olyan gyakran hibázod el, mint a középső d és e vonalat: {edgeShown} bábu közül {edge, select, 0 {kevesebb mint 1%} other {{edge}%}}, míg {centreShown} közül {centre, select, 0 {kevesebb mint 1%} other {{centre}%}}.} other {Az a és h vonalat nagyjából {times}× olyan gyakran hibázod el, mint a középső d és e vonalat: {edgeShown} bábu közül {edge, select, 0 {kevesebb mint 1%} other {{edge}%}}, míg {centreShown} közül {centre, select, 0 {kevesebb mint 1%} other {{centre}%}}.}}",
+            "weakType": "A királyokon kívüli, legalább {minimum} alkalommal látott bábuk közül {type, select, q {a vezérek} r {a bástyák} b {a futók} n {a huszárok} other {a gyalogok}} csúsznak ki a leggyakrabban: {recalled}/{shown} felidézve, {percent}%.",
+            "fasterLessAccurate": "{pieceCount} bábu, {studyTime} beállításnál az utolsó {window} köröd helyes bábunként {fasterTime} idővel kevesebbet vett igénybe, mint az előző {window}, a pontosság viszont {fell} ponttal esett.",
+            "colourGap": "A {weaker, select, w {világos} other {sötét}} bábukat ritkábban idézed fel, mint a {weaker, select, w {sötét} other {világos}} bábukat: {weakerShown} közül {weakerPercent}%, míg {strongerShown} közül {strongerPercent}%, királyok nélkül.",
+            "plateau": "{pieceCount} bábu, {studyTime} beállításnál az utolsó {window} köröd átlaga {last}% volt, az előző {window} körödé {before}%, és a memóriaterjedelmed {span} bábunál maradt az utolsó játékheted során. Egy további bábu elmozdíthatja."
+          },
+          "actions": {
+            "rig": "Játék: {pieceCount} bábu, {studyTime}",
+            "patterns": "Olvasd el a mintafelismerő gyakorlatokat",
+            "vision": "Olvasd el, hogyan lásd az egész táblát"
+          }
+        },
+        "notebook": {
+          "fig": "{number}. ábra · Laborjegyzetfüzet",
+          "title": "Mi történt, és mikor.",
+          "empty": "A bejegyzések játék közben jelennek meg.",
+          "sampleList": "Minta jegyzetfüzet-bejegyzések",
+          "list": "A jegyzetfüzeted, a legújabb elöl",
+          "new": "Új",
+          "newNote": "Az Új jelölés a legutóbbi látogatásod óta készült bejegyzéseket mutatja.",
+          "showAll": "Az összes bejegyzés mutatása ({count})",
+          "showFewer": "Kevesebb mutatása",
+          "day": "{day}. nap.",
+          "olderBefore": "A korábbi bejegyzéseket ({date} előtt) ez a böngésző nem őrzi meg.",
+          "older": "A régebbi bejegyzéseket ez a böngésző nem őrzi meg.",
+          "entries": {
+            "firstRound": "Első kör: {accuracy}% {pieceCount} bábuval.",
+            "rounds": "{count, number}. kör lejátszva.",
+            "first90": "Először legalább {threshold}% {pieceCount} bábuval.",
+            "best": "Új {source, select, calibration {gyakorlási} other {játszmabeli}} csúcs {pieceCount} bábuval, {studyTime} idővel: {by, select, time {ismét {accuracy}%, újraépítve {solveTime} alatt} other {{accuracy}%, a korábbi {previous}% helyett}}.",
+            "span": "{from, select, 0 {A memóriaterjedelem először {to} bábu lett} other {A memóriaterjedelem {from} báburól {to} bábura nőtt}}.",
+            "streak": "{forgiven, plural, =0 {{days} nap egymás után.} one {{days} nap a sorozatban, # kihagyott nap elengedve.} other {{days} nap a sorozatban, # kihagyott nap elengedve.}}",
+            "rungUp": "Feljebb egy fokkal: {pieceCount} bábu, {studyTime}.",
+            "goalReached": "Cél elérve: {accuracy}% legalább {pieceCount} bábuval."
+          }
+        },
+        "tools": {
+          "title": "Ezen az eszközön tárolva",
+          "body": "Nincs fiók és nincs szerver. Tölts le egy másolatot, hogy átvihesd egy másik böngészőbe, vagy biztonságban tartsd.",
+          "download": "Laborjegyzőkönyvem letöltése",
+          "import": "Importálás",
+          "lastBackup": "Exportálás elindítva: {date}",
+          "neverBackedUp": "Még nincs exportálva",
+          "imported": "{added, plural, =0 {Nincs új importálnivaló. Ezek a körök már itt vannak.} one {# kör importálva.} other {# kör importálva.}}",
+          "skipped": "{count, plural, one {A fájlban # kört nem sikerült beolvasni, ezért kimaradt.} other {A fájlban # kört nem sikerült beolvasni, ezért kimaradtak.}}",
+          "importFailed": "Ez a fájl nem Memory Chess laborjegyzőkönyv.",
+          "tooLarge": "A fájl nagyobb 5 MB-nál, nagyobb bármelyik laborjegyzőkönyvnél, ezért semmi sem lett importálva.",
+          "overCap": "{count, plural, one {# régebbi kör kimaradt} other {# régebbi kör kimaradt}}, hogy a jegyzőkönyv az 5000 körös korláton belül maradjon.",
+          "summaryIgnored": "Ebben a böngészőben már voltak körök, ezért csak az új körök kerültek be, a fájl összesített adatai nem.",
+          "summaryDropped": "A fájl összesített adatai olvashatatlanok voltak vagy régebbi verzióból származnak, ezért csak a körei lettek importálva.",
+          "safari": "Safariban a privát lap bezárás után nem őrzi meg ezt a jegyzőkönyvet, és a Safari nagyjából 7 nap látogatás nélkül törli a webhely tárolt adatait. Exportálj egy másolatot, hogy megmaradjon.",
+          "unavailable": "Privát ablakban nem mentődik. Ez a böngészőablak nem őrzi meg a köreidet.",
+          "backup": "Biztonsági mentés eszközök között (hamarosan)",
+          "backupNoted": "Az eszközök közötti biztonsági mentés még nem készült el. Köszönjük, az érdeklődésedet feljegyeztük.",
+          "card": {
+            "open": "Mérésem megosztása",
+            "title": "A Memory Chess mérésem",
+            "span": "Memóriaterjedelem: {pieceCount, plural, one {# bábu} other {# bábu}}, legalább {accuracy}% {count, plural, one {# körben} other {# körben}}",
+            "held": "Megjegyzett bábuk: friss átlag {average}, {count, plural, one {# kör alapján} other {# kör alapján}}",
+            "speed": "Sebesség: friss átlag {average} bábunként {source, select, calibration {gyakorlásban} other {játszmákban}}, {pieceCount} bábu, {studyTime}, {count, plural, one {# kör alapján} other {# kör alapján}}",
+            "site": "thememorychess.com",
+            "copy": "Mérésem másolása",
+            "copied": "Kimásolva. Illeszd be bárhová.",
+            "copyFailed": "Itt nem sikerült a másolás. A mérés fent ki van jelölve, másold ki magad."
+          },
+          "nudge": {
+            "title": "A jegyzőkönyved ebben a böngészőben él",
+            "body": "A böngészési adatok törlése a jegyzőkönyvet is törli. Tedd könyvjelzőbe ezt az oldalt, hogy ugyanabba a böngészőbe térj vissza, és a fenti Laborjegyzőkönyvem letöltése gombbal ments egy másolatot.",
+            "safari": "iPhone-on és iPaden a Hozzáadás a főképernyőhöz lehetőséggel a webhely saját jegyzőkönyvvel rendelkező alkalmazásként marad meg, amelyet a Safari 7 napos szabálya nem töröl. Üresen indul, ezért oda importáld a letöltött másolatot.",
+            "dismiss": "Bezárás"
+          }
+        }
+      },
+      "library": {
+        "title": "Kézikönyvtár.",
+        "lede": "A Tanulóközpont rövid útmutatókat párosít gyakorlatokkal, így minden mérés megmutat valamit, amit gyakorolhatsz.",
+        "ref": "Hiv. {number}",
+        "read": "Útmutató olvasása",
+        "vision": {
+          "title": "A tábla átlátása",
+          "body": "Lásd egyszerre az egész táblát, ne csak egyik sarkát a másik után."
+        },
+        "visualization": {
+          "title": "Vizualizáció",
+          "body": "Tarts fejben egy mozgó állást, miközben a bábuk elmozdulnak."
+        },
+        "calculation": {
+          "title": "Számolás",
+          "body": "Láss messzebbre előre úgy, hogy közben nem veszíted szem elől a táblát."
+        },
+        "memory": {
+          "title": "Memória",
+          "body": "Tömbösítési és mintázati technikák, amelyek javítják a méréseidet."
+        },
+        "blindfold": {
+          "title": "Vakjáték-edzés",
+          "body": "Négylépcsős terv az állásmemóriától a teljes vakjátszmákig."
+        },
+        "blundering": "Hogyan hagyd abba a durva hibákat"
+      },
+      "final": {
+        "title": "Az első mérésed kevesebb mint egy perc.",
+        "body": "Nincs fiók, nincs letöltés, nincs regisztráció. Nyiss meg egy kört, figyeld meg, építsd újra, olvasd le a számot. Aztán döntsd el, kérsz-e egy másodikat."
+      },
+      "resultCard": {
+        "title": "A laborjegyzőkönyved",
+        "device": "Ezen az eszközön tárolva",
+        "lines": "Ez a kör a jegyzőkönyvedben",
+        "unshown": "A laborjegyzőkönyvedet ennél a körnél nem sikerült megjeleníteni.",
+        "newBest": {
+          "up": "Új csúcs {pieceCount} bábuval, {studyTime} idővel: {accuracy}%, a korábbi {previous}% helyett",
+          "faster": "Új csúcs {pieceCount} bábuval, {studyTime} idővel: ismét {accuracy}%, {fasterTime} különbséggel gyorsabban",
+          "plain": "Új csúcs {pieceCount} bábuval, {studyTime} idővel: {accuracy}%"
+        },
+        "vsRecent": {
+          "above": "{points, plural, one {# ponttal} other {# ponttal}} az átlagod felett, amelyet ennél a beállításnál az utolsó {rounds} körben értél el",
+          "below": "{points, plural, one {# ponttal} other {# ponttal}} az átlagod alatt, amelyet ennél a beállításnál az utolsó {rounds} körben értél el",
+          "level": "Pont az átlagod, amelyet ennél a beállításnál az utolsó {rounds} körben értél el"
+        },
+        "span": "A terjedelem {pieceCount} bábura nőtt",
+        "streak": "{current, plural, one {1. nap} other {# nap egymás után}}{graceUsed, select, true {, türelmi nap felhasználva} other {}}, ezen a héten {goal} napból {days}",
+        "next": {
+          "label": "Következő",
+          "why": {
+            "more": "Legalább 90%, ezért eggyel több bábu ugyanannyi megfigyelési idővel.",
+            "fewer": "50% alatt, ezért eggyel kevesebb bábu ugyanannyi megfigyelési idővel.",
+            "edgeFiles": "Az a- és h-vonalat gyakrabban hibázod el, mint a középső vonalakat.",
+            "weakType": "{type, select, q {A vezérek} r {A bástyák} b {A futók} n {A huszárok} other {A gyalogok}} csúsznak ki a leggyakrabban: {shown} közül {recalled} felidézve.",
+            "fasterLessAccurate": "{pieceCount} bábu, {studyTime} beállításnál helyes bábunként gyorsabb lettél, a pontosság viszont {fell} ponttal esett.",
+            "colourGap": "A {weaker, select, w {világos} other {sötét}} bábukat ritkábban idézed fel: {weakerPercent}%, szemben ezzel: {strongerPercent}%.",
+            "plateau": "A terjedelmed {span} bábunál megállt."
+          },
+          "play": "Játék: {pieceCount} bábu, {studyTime}",
+          "again": "Újra: {pieceCount} bábu, {studyTime}",
+          "patterns": "Olvasd el a mintafelismerő gyakorlatokat",
+          "vision": "Olvasd el, hogyan lásd az egész táblát"
+        }
+      },
+      "daily": {
+        "locked": "A mai táblát már megnyitottad. Ezen az eszközön naponta egy próbálkozás jár.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Kevesebb mint egy perc múlva frissül} one {# perc múlva frissül} other {# perc múlva frissül}}} one {# óra {minutes} perc múlva frissül} other {# óra {minutes} perc múlva frissül}}",
+        "seeRecord": "Laborjegyzőkönyv megnyitása",
+        "chooseRound": "Másik kör indítása"
+      },
+      "review": {
+        "none": "Ezen az eszközön most nincs ismétlésre váró tábla.",
+        "capped": "A mai {cap} ismétlés ezen az eszközön kész.",
+        "cappedNext": "A még esedékes táblák holnap visszatérnek, a legrégebben várakozók elsőként.",
+        "schedule": "Azok a táblák, amelyeken 80% alatt teljesítesz, az első megtekintés után 1, 3, 7 és 14 nappal visszatérnek."
+      }
     }
   },
   "game": {

@@ -505,7 +505,6 @@
     },
     "title": "Dashboard",
     "lede": "Elke ronde die je op dit apparaat hebt gespeeld, wat die over je geheugen zegt, en een kaart om het te delen. Niets hiervan verlaat je browser, tenzij je het deelt.",
-    "loading": "Je verslag op dit apparaat wordt gelezen.",
     "unavailable": "Deze browser bewaart geen verslag, dus er is geen voortgang om te tonen. Privévensters bewaren niets.",
     "fullRecord": "Bekijk het volledige verslag",
     "sections": {

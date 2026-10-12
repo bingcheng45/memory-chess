@@ -505,7 +505,6 @@
     },
     "title": "Panel",
     "lede": "Bu cihazda oynadığın her tur, bunların belleğin hakkında söyledikleri ve paylaşmak için bir kart. Sen paylaşmadıkça buradaki hiçbir şey tarayıcından çıkmaz.",
-    "loading": "Bu cihazdaki kaydın okunuyor.",
     "unavailable": "Bu tarayıcı kayıt tutmuyor, bu yüzden gösterilecek ilerleme yok. Gizli pencereler hiçbir şey saklamaz.",
     "fullRecord": "Kaydın tamamını gör",
     "sections": {

@@ -505,7 +505,6 @@
     },
     "title": "Bảng thống kê",
     "lede": "Mọi ván bạn đã chơi trên thiết bị này, điều chúng cho thấy về trí nhớ của bạn và một thẻ để chia sẻ. Không gì ở đây rời khỏi trình duyệt trừ khi bạn chia sẻ.",
-    "loading": "Đang đọc hồ sơ của bạn trên thiết bị này.",
     "unavailable": "Trình duyệt này không lưu hồ sơ, nên không có tiến bộ nào để hiển thị. Cửa sổ ẩn danh không lưu gì.",
     "fullRecord": "Xem toàn bộ hồ sơ",
     "sections": {

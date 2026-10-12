@@ -505,7 +505,6 @@
     },
     "title": "Tablou de bord",
     "lede": "Fiecare rundă jucată pe acest dispozitiv, ce spune despre memoria ta și un card pentru a o distribui. Nimic de aici nu părăsește browserul decât dacă distribui.",
-    "loading": "Se citește jurnalul tău de pe acest dispozitiv.",
     "unavailable": "Acest browser nu păstrează un jurnal, așa că nu există progres de afișat. Ferestrele private nu păstrează nimic.",
     "fullRecord": "Vezi jurnalul complet",
     "sections": {

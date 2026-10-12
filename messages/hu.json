@@ -505,7 +505,6 @@
     },
     "title": "Irányítópult",
     "lede": "Minden kör, amelyet ezen az eszközön játszottál, amit ezek a memóriádról elárulnak, és egy kártya a megosztáshoz. Innen semmi sem hagyja el a böngésződet, hacsak meg nem osztod.",
-    "loading": "A jegyzőkönyved beolvasása erről az eszközről.",
     "unavailable": "Ez a böngésző nem tárol jegyzőkönyvet, így nincs megjeleníthető fejlődés. A privát ablakok semmit sem őriznek meg.",
     "fullRecord": "A teljes jegyzőkönyv",
     "sections": {

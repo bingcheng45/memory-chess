@@ -505,7 +505,6 @@
     },
     "title": "Dashboard",
     "lede": "Ogni partita giocata su questo dispositivo, cosa dice della tua memoria e una scheda per condividerla. Nulla di ciò che vedi qui lascia il browser, a meno che tu non lo condivida.",
-    "loading": "Lettura del tuo registro su questo dispositivo.",
     "unavailable": "Questo browser non conserva un registro, quindi non ci sono progressi da mostrare. Le finestre private non conservano nulla.",
     "fullRecord": "Vedi il registro completo",
     "sections": {

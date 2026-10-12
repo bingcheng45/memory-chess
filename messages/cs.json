@@ -505,7 +505,6 @@
     },
     "title": "Přehled",
     "lede": "Každé kolo odehrané na tomto zařízení, co vypovídá o tvé paměti, a karta ke sdílení. Nic odsud neopustí tvůj prohlížeč, pokud to nesdílíš.",
-    "loading": "Načítá se tvůj záznam na tomto zařízení.",
     "unavailable": "Tento prohlížeč neukládá záznam, takže není co ukázat. Anonymní okna neukládají nic.",
     "fullRecord": "Zobrazit celý záznam",
     "sections": {

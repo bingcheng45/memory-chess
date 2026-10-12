@@ -505,7 +505,6 @@
     },
     "title": "Panel",
     "lede": "Cada ronda que has jugado en este dispositivo, lo que dice de tu memoria y una tarjeta para compartirlo. Nada de esto sale de tu navegador a menos que lo compartas.",
-    "loading": "Leyendo tu registro en este dispositivo.",
     "unavailable": "Este navegador no guarda un registro, así que no hay progreso que mostrar. Las ventanas privadas no guardan nada.",
     "fullRecord": "Ver el registro completo",
     "sections": {

@@ -505,7 +505,6 @@
     },
     "title": "Koontinäyttö",
     "lede": "Jokainen tällä laitteella pelaamasi kierros, mitä se kertoo muististasi, ja kortti sen jakamiseen. Mitään täältä ei lähde selaimestasi, ellet jaa sitä.",
-    "loading": "Luetaan päiväkirjaasi tältä laitteelta.",
     "unavailable": "Tämä selain ei säilytä päiväkirjaa, joten näytettävää edistymistä ei ole. Yksityiset ikkunat eivät säilytä mitään.",
     "fullRecord": "Katso koko päiväkirja",
     "sections": {

@@ -505,7 +505,6 @@
     },
     "title": "Panel",
     "lede": "Każda runda rozegrana na tym urządzeniu, co mówi o twojej pamięci, i karta do udostępnienia. Nic stąd nie opuszcza twojej przeglądarki, chyba że to udostępnisz.",
-    "loading": "Wczytywanie twojego dziennika na tym urządzeniu.",
     "unavailable": "Ta przeglądarka nie przechowuje dziennika, więc nie ma postępów do pokazania. Okna prywatne niczego nie zapisują.",
     "fullRecord": "Zobacz pełny dziennik",
     "sections": {

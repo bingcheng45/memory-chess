@@ -505,7 +505,6 @@
     },
     "title": "Oversikt",
     "lede": "Hver runde du har spilt på denne enheten, hva den sier om hukommelsen din, og et kort du kan dele. Ingenting her forlater nettleseren din med mindre du deler det.",
-    "loading": "Leser journalen din på denne enheten.",
     "unavailable": "Denne nettleseren lagrer ingen journal, så det er ingen fremgang å vise. Private vinduer lagrer ingenting.",
     "fullRecord": "Se hele journalen",
     "sections": {

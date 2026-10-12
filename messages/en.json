@@ -1322,7 +1322,6 @@
     },
     "title": "Dashboard",
     "lede": "Every round you have played on this device, what it says about your memory, and a card to share it. Nothing here leaves your browser unless you share it.",
-    "loading": "Reading your record on this device.",
     "unavailable": "This browser does not keep a record, so there is no progress to show. Private windows keep nothing.",
     "fullRecord": "See the full record",
     "sections": {

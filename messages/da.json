@@ -505,7 +505,6 @@
     },
     "title": "Oversigt",
     "lede": "Hver runde du har spillet på denne enhed, hvad den siger om din hukommelse, og et kort til at dele det. Intet her forlader din browser, medmindre du deler det.",
-    "loading": "Læser din journal på denne enhed.",
     "unavailable": "Denne browser gemmer ikke en journal, så der er ingen fremskridt at vise. Private vinduer gemmer intet.",
     "fullRecord": "Se hele journalen",
     "sections": {

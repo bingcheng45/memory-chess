@@ -505,7 +505,6 @@
     },
     "title": "Painel",
     "lede": "Todas as rodadas que você jogou neste dispositivo, o que elas dizem sobre sua memória e um cartão para compartilhar. Nada daqui sai do seu navegador, a não ser que você compartilhe.",
-    "loading": "Lendo seu registro neste dispositivo.",
     "unavailable": "Este navegador não guarda um registro, então não há progresso para mostrar. Janelas anônimas não guardam nada.",
     "fullRecord": "Ver o registro completo",
     "sections": {

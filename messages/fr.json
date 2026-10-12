@@ -505,7 +505,6 @@
     },
     "title": "Tableau de bord",
     "lede": "Chaque partie jouée sur cet appareil, ce qu’elle dit de votre mémoire, et une carte pour la partager. Rien ici ne quitte votre navigateur, sauf si vous le partagez.",
-    "loading": "Lecture de votre historique sur cet appareil.",
     "unavailable": "Ce navigateur ne conserve pas d’historique, il n’y a donc aucun progrès à afficher. Les fenêtres privées ne gardent rien.",
     "fullRecord": "Voir l’historique complet",
     "sections": {

@@ -505,7 +505,6 @@
     },
     "title": "Dashboard",
     "lede": "Jede Runde, die du auf diesem Gerät gespielt hast, was sie über dein Gedächtnis verrät, und eine Karte zum Teilen. Nichts davon verlässt deinen Browser, außer du teilst es.",
-    "loading": "Dein Verlauf auf diesem Gerät wird gelesen.",
     "unavailable": "Dieser Browser speichert keinen Verlauf, daher gibt es keinen Fortschritt anzuzeigen. Private Fenster speichern nichts.",
     "fullRecord": "Vollständigen Bericht ansehen",
     "sections": {

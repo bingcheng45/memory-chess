@@ -505,7 +505,6 @@
     },
     "title": "Dasbor",
     "lede": "Setiap ronde yang kamu mainkan di perangkat ini, apa artinya bagi ingatanmu, dan kartu untuk membagikannya. Tidak ada yang keluar dari browsermu kecuali kamu membagikannya.",
-    "loading": "Membaca catatanmu di perangkat ini.",
     "unavailable": "Browser ini tidak menyimpan catatan, jadi tidak ada kemajuan untuk ditampilkan. Jendela pribadi tidak menyimpan apa pun.",
     "fullRecord": "Lihat catatan lengkap",
     "sections": {

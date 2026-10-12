@@ -1,10 +1,6 @@
-import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
 import { DAY_MS } from "./readiness";
 import { streakOf, type StreakValue } from "./streak";
 import type { RoundRecord, RoundRecordV2, SquareOutcome } from "./record";
-
-/** Everyone plays the same board at the Medium preset. */
-export const DAILY_SETTING = { pieceCount: DEFAULT_PRESET.pieceCount, memorizeTime: DEFAULT_PRESET.memorizeTime } as const;
 
 /** The board changes at midnight UTC, so the whole world shares one board and one reset moment. */
 export const utcDayOf = (at: number): string => new Date(at).toISOString().slice(0, 10);

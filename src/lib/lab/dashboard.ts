@@ -1,8 +1,9 @@
 import type { RoundSource } from "@/lib/analytics/events";
 import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
+import { dailySettingOf } from "@/lib/daily/schedule";
 import { playHref } from "@/lib/game/roundLink";
 import type { StoredEntries } from "./entries";
-import { dailyBoardOf, DAILY_SETTING } from "./daily";
+import { dailyBoardOf } from "./daily";
 import { dayDate, mean, type TrendSetting } from "./engine";
 import type { BestEntry, LabResults } from "./metrics";
 import { hasFigure, LAB_THRESHOLDS, type Need, type Readiness } from "./readiness";
@@ -13,7 +14,6 @@ import { weekProgress, type WeekGoal } from "./week";
 
 const DASHBOARD_SOURCE: RoundSource = "dashboard";
 export const DASHBOARD_PLAY_HREF = playHref(DEFAULT_PRESET.pieceCount, DEFAULT_PRESET.memorizeTime, DASHBOARD_SOURCE);
-const DAILY_PLAY = playHref(DAILY_SETTING.pieceCount, DAILY_SETTING.memorizeTime, "daily");
 
 export type DashboardUnit = "pieces" | "secondsPerPiece" | "days" | "percent" | "rounds" | "entries" | "rating";
 
@@ -213,7 +213,10 @@ const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
   },
   daily: ({ records, utcDay, dailyOpened }) => {
     const board = dailyBoardOf(records, utcDay, dailyOpened);
-    if (!board.streak) return emptyPlay(DAILY_PLAY);
+    if (!board.streak) {
+      const { pieceCount, memorizeTime } = dailySettingOf(utcDay);
+      return emptyPlay(playHref(pieceCount, memorizeTime, "daily"));
+    }
     return ready(figure(board.streak.current, "days"), context("daily", { status: board.status, longest: board.streak.longest }));
   },
   week: ({ summary, today, weekGoal }) => {

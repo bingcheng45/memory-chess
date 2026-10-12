@@ -136,6 +136,7 @@ const THREE_DAYS: PersonaPlan = { seed: 3, rounds: daily(countdown(2, 0), (_, sl
 const EDGE_RIG_SETTING: Setting = { source: "game", ...EDGE_RIG };
 const MEDIUM_8S: Setting = { ...MEDIUM, memorizeSeconds: 8 };
 const at = (setting: Setting, daysAgo: number, miss?: number): PlannedRound => ({ ...setting, daysAgo, ...(miss !== undefined && { miss }) });
+/** Pinned at Medium, the setting these stories were worked out at, rather than the day's scheduled setting. */
 const dailyBoardOn = (daysAgo: number): PlannedRound => ({ ...MEDIUM, daysAgo, dailyBoard: true });
 
 /** Medium games placed back in full, so the only boards in a review persona's queue are the ones it misses on purpose. */
@@ -315,7 +316,7 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
     const playedAt = noonUtc(today, -planned.daysAgo);
     const day = utcDayOf(playedAt);
     const reviewed = planned.reviewOf === undefined ? undefined : built[planned.reviewOf];
-    const fen = reviewed ? reviewed.targetFen : planned.dailyBoard ? dailyFen(day) : generateMemorizationPosition(planned.pieceCount, random, RULES_AFTER_PERSONAS)?.fen();
+    const fen = reviewed ? reviewed.targetFen : planned.dailyBoard ? dailyFen(day, planned.pieceCount) : generateMemorizationPosition(planned.pieceCount, random, RULES_AFTER_PERSONAS)?.fen();
     const target = placementFromFen(fen ?? "8/8/8/8/8/8/8/8");
     const progress = index / rounds.length;
     const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= (planned.miss ?? missChance(square, piece, progress))));

@@ -566,9 +566,9 @@
         "daily": {
           "fig": "Fig. {number} · Today's board",
           "title": "One board a day, the same for everyone.",
-          "desc": "A new position opens every day at midnight UTC. Everyone gets the same 6 pieces and 10 seconds to study, and you get one try.",
+          "desc": "A new position opens every day at midnight UTC. Everyone gets the same board and study time, and you get one try.",
           "play": "Play today's board",
-          "open": "You have not played today's board yet.",
+          "open": "Today's board has {pieceCount, plural, one {# piece} other {# pieces}} and {memorizeSeconds, plural, one {# second} other {# seconds}} to study. You have not played it yet.",
           "played": "You placed {correct} of {pieceCount, plural, one {# piece} other {# pieces}} right, {accuracy} percent.",
           "unfinished": "You opened today's board and left before the result. One try per day on this device.",
           "streak": "Daily streak {current, plural, one {# day} other {# days}}{forgiven, plural, =0 {} one {, # missed day forgiven} other {, # missed days forgiven}} · longest {longest, plural, one {# day} other {# days}}",

@@ -2,7 +2,10 @@ import type { useTranslations } from "next-intl";
 import { SITE, type CardFrame, type CardTrend } from "@/components/share/cardCanvas";
 import { sharePageUrl } from "@/components/share/shareLink";
 import { resultCode } from "@/lib/share/shareCode";
+import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import type { LabPosition, RoundState } from "@/lib/round/round";
+import { pieceTypeToFenChar } from "@/utils/chessPieces";
+import type { PlacementLog } from "@/lib/lab/placements";
 import type { SharePost } from "@/lib/shareIntents";
 
 export type ResultTranslate = ReturnType<typeof useTranslations<"game.result.share">>;
@@ -16,9 +19,20 @@ export interface Standing {
   readonly winStreak: number;
 }
 
+/** A piece of the final board and when it went down, in seconds since the rebuild started, to the tenth. */
+export interface PlacedPiece {
+  readonly square: SquareName;
+  readonly seconds: number;
+}
+
 export interface ScoredBoard {
   readonly target: LabPosition;
   readonly placed: LabPosition;
+  /**
+   * Every piece of `placed`, in the order it went down and at the time it last did. Null when the placement log
+   * stopped short of the board, as it does past its cap, so the order is unknown.
+   */
+  readonly order: readonly PlacedPiece[] | null;
 }
 
 /** A streak of one is any round at the win mark; two in a row is the first that says something. */
@@ -48,6 +62,19 @@ export type RoundShare = RoundFacts &
 
 const tenths = (ms: number) => Math.round(ms / 100) / 10;
 
+/** A piece lifted later leaves no trace in the log, so only the pieces still standing are ordered. */
+export function rebuildOrder(placed: LabPosition, log: PlacementLog): readonly PlacedPiece[] | null {
+  const last = new Map(log.placements.map(([ms, square, letter], index) => [BOARD_SQUARES[square], { ms, letter, index }]));
+  const pieces = BOARD_SQUARES.flatMap((square) => {
+    const piece = placed[square];
+    if (!piece) return [];
+    const event = last.get(square);
+    return [event?.letter === pieceTypeToFenChar(piece.type, piece.color) ? { square, ...event } : null];
+  });
+  if (!pieces.every((piece) => piece !== null)) return null;
+  return pieces.sort((a, b) => a.index - b.index).map(({ square, ms }) => ({ square, seconds: tenths(ms) }));
+}
+
 export function roundShareOf(round: ScoredRound, { rating, change, winStreak }: Standing): RoundShare {
   const facts: RoundFacts = {
     accuracy: Math.round(round.score.accuracy),
@@ -58,11 +85,12 @@ export function roundShareOf(round: ScoredRound, { rating, change, winStreak }: 
     studySeconds: tenths(round.studyMs),
     rebuildSeconds: tenths(round.rebuildMs),
   };
+  const board: ScoredBoard = { target: round.target, placed: round.placed, order: rebuildOrder(round.placed, round.log) };
   const set = round.config.board;
-  if (set?.kind === "review") return { ...facts, kind: "review", board: { target: round.target, placed: round.placed } };
+  if (set?.kind === "review") return { ...facts, kind: "review", board };
   const rated = { rating: { rating, change }, winStreak: winStreak >= SHOWN_STREAK ? winStreak : null };
   if (set?.kind === "daily") return { ...facts, kind: "daily", day: set.day, ...rated };
-  return { ...facts, kind: "game", board: { target: round.target, placed: round.placed }, ...rated };
+  return { ...facts, kind: "game", board, ...rated };
 }
 
 export interface ResultStat {

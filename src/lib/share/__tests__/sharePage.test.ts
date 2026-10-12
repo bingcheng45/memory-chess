@@ -1,6 +1,6 @@
 import { sharePageMetadata, sharePageOf } from "@/lib/share/sharePage";
 
-const RESULT = "1_g_4_100_84_383_1214_d14_3_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3";
+const RESULT = "1_g_4_100_84_383_1214_d14_3_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3_e131e819a174";
 const PROGRESS = "1_s8_r1214u23_h64";
 const TITLE = "I recalled 2 of 4 pieces (50%) on Memory Chess. Can you beat it?";
 const DESCRIPTION = "Study a chess position for a few seconds, rebuild it from memory, and get your score. Free, no sign-up.";

@@ -14,6 +14,7 @@ import {
   type ChangelogTable,
 } from "@/lib/changelog";
 import { CHANGELOG_PAGE_COPY } from "@/lib/changelog/copy";
+import { ReleaseIndex, type ReleaseIndexItem } from "@/components/changelog/ReleaseIndex";
 
 const siteUrl = "https://thememorychess.com";
 
@@ -43,14 +44,18 @@ const dateFormatter = new Intl.DateTimeFormat("en-US", {
 
 const formatDate = (publishedAt: string) => dateFormatter.format(new Date(publishedAt));
 
+const RELEASE_INDEX: readonly ReleaseIndexItem[] = CHANGELOG_ENTRIES.map((entry) => ({
+  id: getChangelogEntryId(entry.version),
+  version: entry.version,
+  title: entry.title,
+  date: formatDate(entry.publishedAt),
+  dateTime: entry.publishedAt,
+}));
+
 const RELEASE_SECTIONS: PageSections = {
   trigger: CHANGELOG_PAGE_COPY.releases,
   heading: CHANGELOG_PAGE_COPY.releases,
-  links: CHANGELOG_ENTRIES.map((entry) => ({
-    href: `#${getChangelogEntryId(entry.version)}`,
-    label: `v${entry.version}`,
-    hint: formatDate(entry.publishedAt),
-  })),
+  links: RELEASE_INDEX.map((item) => ({ href: `#${item.id}`, label: `v${item.version}`, hint: item.date })),
 };
 
 function changeKey(change: ChangelogChange): string {
@@ -132,24 +137,34 @@ export default function ChangelogPage() {
       lede={CHANGELOG_PAGE_COPY.meta.socialDescription}
       sections={RELEASE_SECTIONS}
     >
-      {CHANGELOG_ENTRIES.map((entry) => (
-        <article key={entry.version} id={getChangelogEntryId(entry.version)} className="lab-release">
-          <div className="lab-release-meta">
-            <h2>v{entry.version}</h2>
-            <time dateTime={entry.publishedAt}>{formatDate(entry.publishedAt)}</time>
-            {entry.version === LATEST_CHANGELOG_ENTRY.version && (
-              <span className="lab-tag lab-tag-accent">{CHANGELOG_PAGE_COPY.latest}</span>
-            )}
-          </div>
-          <h3 className="lab-release-title">{entry.title}</h3>
-          <p className="lab-release-summary">{entry.summary}</p>
-          <div aria-label={CHANGELOG_PAGE_COPY.changesIn(entry.version)} role="group">
-            {entry.groups.map((group) => (
-              <ChangeGroup key={group.title} group={group} />
-            ))}
-          </div>
-        </article>
-      ))}
+      <div className="lab-log">
+        <ReleaseIndex
+          items={RELEASE_INDEX}
+          label={CHANGELOG_PAGE_COPY.releases}
+          jumpLabel={CHANGELOG_PAGE_COPY.jumpTo}
+          countLabel={CHANGELOG_PAGE_COPY.releaseCount(RELEASE_INDEX.length)}
+        />
+        <div className="lab-log-releases">
+          {CHANGELOG_ENTRIES.map((entry) => (
+            <article key={entry.version} id={getChangelogEntryId(entry.version)} className="lab-release">
+              <div className="lab-release-meta">
+                <h2>v{entry.version}</h2>
+                <time dateTime={entry.publishedAt}>{formatDate(entry.publishedAt)}</time>
+                {entry.version === LATEST_CHANGELOG_ENTRY.version && (
+                  <span className="lab-tag lab-tag-accent">{CHANGELOG_PAGE_COPY.latest}</span>
+                )}
+              </div>
+              <h3 className="lab-release-title">{entry.title}</h3>
+              <p className="lab-release-summary">{entry.summary}</p>
+              <div aria-label={CHANGELOG_PAGE_COPY.changesIn(entry.version)} role="group">
+                {entry.groups.map((group) => (
+                  <ChangeGroup key={group.title} group={group} />
+                ))}
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
     </LabReadingPage>
   );
 }

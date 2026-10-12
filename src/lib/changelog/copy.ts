@@ -13,6 +13,8 @@ export const CHANGELOG_PAGE_COPY = {
   title: "Changelog",
   latest: "Latest",
   releases: "Releases",
+  jumpTo: "Jump to a release",
+  releaseCount: (count: number) => `${count} releases`,
   eyebrow: "What is new",
   changesIn: (version: string) => `Changes in version ${version}`,
 };

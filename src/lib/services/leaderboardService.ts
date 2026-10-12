@@ -5,6 +5,7 @@ import { RANKING_ORDER, type BoardCutoff, type LeaderboardCutoffs } from '@/lib/
 import { rankedAboveFilter, type Standing, type StandingScope } from '@/lib/leaderboard/standing';
 import { WORLD_CODE } from '@/lib/leaderboard/countries';
 import {
+  DAILY_BOARD,
   LEADERBOARD_DIFFICULTIES,
   type LeaderboardDifficulty,
   type LeaderboardEntry,
@@ -190,8 +191,11 @@ function isMissingColumn(error: PostgrestError): boolean {
   return MISSING_COLUMN_CODES.includes(error.code);
 }
 
-/** The columns migration 0004 adds. An insert naming them fails until it is applied. */
-const RATING_MIGRATION_COLUMNS: readonly string[] = ['skill_rating', 'daily_day'];
+type BoardSubmission = Extract<LeaderboardSubmission, { difficulty: LeaderboardDifficulty }>;
+type SubmissionRow =
+  | LeaderboardSubmission
+  | Omit<BoardSubmission, 'skill_rating'>
+  | Omit<BoardSubmission, 'skill_rating' | 'country_code'>;
 
 export async function submitLeaderboardEntry(
   entry: LeaderboardSubmission,
@@ -204,7 +208,7 @@ export async function submitLeaderboardEntry(
   }
 
   const client = supabase;
-  const insertRow = (row: Record<string, unknown>) =>
+  const insertRow = (row: SubmissionRow) =>
     client.from('leaderboard_entries').insert(row).select().single();
 
   const first = await insertRow(entry);
@@ -214,20 +218,36 @@ export async function submitLeaderboardEntry(
   if (!isMissingColumn(first.error)) {
     return { status: 'failed', cause: first.error };
   }
-
-  // Transition shim. Delete it, and this whole retry branch, once migration
-  // 0004 is applied in every environment. The score is kept and the rating
-  // dropped; a daily row still fails, since only 0004 allows the daily board.
-  console.warn(
-    `Leaderboard insert rejected a column (${first.error.code}); the rating and daily migration (0004) is outstanding. Retrying without ${RATING_MIGRATION_COLUMNS.join(' and ')}.`,
-  );
-  const retry = await insertRow(
-    Object.fromEntries(Object.entries(entry).filter(([column]) => !RATING_MIGRATION_COLUMNS.includes(column))),
-  );
-  if (retry.error) {
-    return { status: 'unavailable', cause: retry.error };
+  if (entry.difficulty === DAILY_BOARD) {
+    return { status: 'unavailable', cause: first.error };
   }
-  return { status: 'stored', entry: retry.data };
+
+  // Transition shim. Delete it, and this retry, once migration 0004 is applied
+  // in every environment. The score is kept and the rating dropped.
+  const { skill_rating: droppedRating, ...withoutRating } = entry;
+  console.warn(
+    `Leaderboard insert rejected a column (${first.error.code}: ${first.error.message}); the rating and daily migration (0004) is outstanding. Retrying without skill_rating ${droppedRating}.`,
+  );
+  const second = await insertRow(withoutRating);
+  if (!second.error) {
+    return { status: 'stored', entry: second.data };
+  }
+  if (!isMissingColumn(second.error)) {
+    return { status: 'unavailable', cause: second.error };
+  }
+
+  // Transition shim. Delete it, and this whole retry branch, once the
+  // country_code migration is applied in every environment. A player's score
+  // outlives their flag, so the score is kept and the country dropped.
+  const { country_code: droppedCountry, ...withoutCountry } = withoutRating;
+  console.warn(
+    `Leaderboard insert rejected country_code ${droppedCountry} (${second.error.code}: ${second.error.message}); the country migration is outstanding. Retrying without it.`,
+  );
+  const third = await insertRow(withoutCountry);
+  if (third.error) {
+    return { status: 'unavailable', cause: third.error };
+  }
+  return { status: 'stored', entry: third.data };
 }
 
 export type StandingResult =

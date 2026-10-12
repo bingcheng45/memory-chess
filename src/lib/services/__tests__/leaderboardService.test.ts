@@ -35,24 +35,17 @@ const entry: LeaderboardSubmission = {
   skill_rating: 1240,
 };
 
-const entryWithoutRating = {
-  player_name: "Poteto",
-  country_code: "SG",
-  difficulty: "medium",
-  piece_count: 6,
-  correct_pieces: 4,
-  memorize_time: 8.25,
-  solution_time: 12.5,
-  total_wrong_pieces: 2,
-};
+const without = (...columns: string[]) =>
+  Object.fromEntries(Object.entries(entry).filter(([column]) => !columns.includes(column)));
+const entryWithoutRating = without("skill_rating");
+const entryWithoutRatingOrCountry = without("skill_rating", "country_code");
 
-function missingColumn(code: string) {
+function missingColumn(code: string, column = "skill_rating") {
   return {
     code,
     details: null,
     hint: null,
-    message:
-      "Could not find the 'skill_rating' column of 'leaderboard_entries' in the schema cache",
+    message: `Could not find the '${column}' column of 'leaderboard_entries' in the schema cache`,
   };
 }
 
@@ -79,33 +72,61 @@ describe("submitLeaderboardEntry", () => {
       const result = await submitLeaderboardEntry(entry);
 
       expect(result).toEqual({ status: "stored", entry: { id: "row-1", ...entryWithoutRating } });
-      expect(mockInsert).toHaveBeenNthCalledWith(1, entry);
-      expect(mockInsert).toHaveBeenNthCalledWith(2, entryWithoutRating);
-      expect(warn).toHaveBeenCalledWith(expect.stringContaining(code));
-      expect(warn).toHaveBeenCalledWith(expect.stringContaining("migration (0004) is outstanding"));
+      expect(mockInsert.mock.calls).toEqual([[entry], [entryWithoutRating]]);
+      expect(warn).toHaveBeenCalledWith(
+        `Leaderboard insert rejected a column (${code}: Could not find the 'skill_rating' column of 'leaderboard_entries' in the schema cache); the rating and daily migration (0004) is outstanding. Retrying without skill_rating 1240.`,
+      );
     },
   );
 
-  it("drops the daily day with the rating, so the retry names no column 0004 adds", async () => {
+  it("keeps the score when the country column is missing as well", async () => {
     mockSingle
       .mockResolvedValueOnce({ data: null, error: missingColumn("PGRST204") })
-      .mockResolvedValueOnce({ data: null, error: { code: "23514", details: null, hint: null, message: "check" } });
+      .mockResolvedValueOnce({ data: null, error: missingColumn("PGRST204", "country_code") })
+      .mockResolvedValueOnce({ data: { id: "row-1", ...entryWithoutRatingOrCountry }, error: null });
 
-    await submitLeaderboardEntry({ ...entry, difficulty: "daily", daily_day: "2026-10-13" });
+    const result = await submitLeaderboardEntry(entry);
 
-    expect(mockInsert).toHaveBeenNthCalledWith(2, { ...entryWithoutRating, difficulty: "daily" });
+    expect(result).toEqual({ status: "stored", entry: { id: "row-1", ...entryWithoutRatingOrCountry } });
+    expect(mockInsert.mock.calls).toEqual([[entry], [entryWithoutRating], [entryWithoutRatingOrCountry]]);
+    expect(warn).toHaveBeenLastCalledWith(
+      "Leaderboard insert rejected country_code SG (PGRST204: Could not find the 'country_code' column of 'leaderboard_entries' in the schema cache); the country migration is outstanding. Retrying without it.",
+    );
   });
 
-  it("reports the database unavailable when the retry fails too", async () => {
+  it("does not retry a daily row, which no table without 0004 can hold", async () => {
     const error = missingColumn("PGRST204");
+    mockSingle.mockResolvedValueOnce({ data: null, error });
+
+    const result = await submitLeaderboardEntry({ ...entry, difficulty: "daily", daily_day: "2026-10-13" });
+
+    expect(result).toEqual({ status: "unavailable", cause: error });
+    expect(mockInsert).toHaveBeenCalledTimes(1);
+  });
+
+  it("reports the database unavailable when the rating retry fails on anything but a column", async () => {
+    const error = { code: "23514", details: null, hint: null, message: "check" };
     mockSingle
-      .mockResolvedValueOnce({ data: null, error })
+      .mockResolvedValueOnce({ data: null, error: missingColumn("PGRST204") })
       .mockResolvedValueOnce({ data: null, error });
 
     const result = await submitLeaderboardEntry(entry);
 
     expect(result).toEqual({ status: "unavailable", cause: error });
     expect(mockInsert).toHaveBeenCalledTimes(2);
+  });
+
+  it("reports the database unavailable when the country retry fails too", async () => {
+    const error = missingColumn("PGRST204", "country_code");
+    mockSingle
+      .mockResolvedValueOnce({ data: null, error: missingColumn("PGRST204") })
+      .mockResolvedValueOnce({ data: null, error })
+      .mockResolvedValueOnce({ data: null, error });
+
+    const result = await submitLeaderboardEntry(entry);
+
+    expect(result).toEqual({ status: "unavailable", cause: error });
+    expect(mockInsert).toHaveBeenCalledTimes(3);
   });
 
   it("does not retry an insert error that has nothing to do with the column", async () => {

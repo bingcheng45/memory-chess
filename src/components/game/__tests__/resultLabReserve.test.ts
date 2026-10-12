@@ -1,15 +1,11 @@
-import { RESULT_DELTAS_RESERVE } from "@/components/game/ResultDeltasFrame";
 import { RESULT_LAB_FRAME } from "@/components/game/ResultLabSlot";
-import measuredDeltas from "../result-deltas-heights.json";
 import measuredLab from "../result-lab-heights.json";
 
 const BREAKPOINTS = { "": 0, "sm:": 640, "lg:": 1024 } as const;
 
-describe.each([
-  ["lab card", RESULT_LAB_FRAME, measuredLab.worst],
-  ["dashboard figures", RESULT_DELTAS_RESERVE, measuredDeltas.worst],
-])("the result screen's %s reserve", (_name, classes, worst: Record<string, number>) => {
-  const reserves = [...classes.matchAll(/(?:^|\s)(sm:|lg:)?min-h-\[(\d+)px\]/g)].map(([, prefix = "", px]) => ({
+describe("the result screen's lab card reserve", () => {
+  const worst: Record<string, number> = measuredLab.worst;
+  const reserves = [...RESULT_LAB_FRAME.matchAll(/(?:^|\s)(sm:|lg:)?min-h-\[(\d+)px\]/g)].map(([, prefix = "", px]) => ({
     from: BREAKPOINTS[prefix as keyof typeof BREAKPOINTS],
     px: Number(px),
   }));

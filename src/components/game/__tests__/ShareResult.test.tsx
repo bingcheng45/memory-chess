@@ -24,7 +24,7 @@ function show(board?: SetBoard) {
   const round = scoredRound(TARGET, "4k3/8/8/8/8/8/PP6/4K3", { pieceCount: 5, studyMs: 10000, source: board ? "daily" : "game_form", board });
   mockStore = {
     round,
-    gameState: { pieceCount: 5, memorizeTime: 10, accuracy: 80, correctPlacements: 4, skillRating: 1042, skillRatingChange: 12, streak: 3, labRoundId: "r1", board },
+    gameState: { pieceCount: 5, memorizeTime: 10, accuracy: 80, correctPlacements: 4, skillRating: 1042, skillRatingChange: 12, streak: 3, labRound: { facts: { id: "r1" }, endedAt: 0 }, board },
   };
   render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 }

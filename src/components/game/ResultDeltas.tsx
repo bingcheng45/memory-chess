@@ -3,7 +3,6 @@
 import { useMemo } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import type { LabData } from "@/hooks/useLabData";
 import { useFigureText } from "@/components/dashboard/figureText";
 import { TrendChip } from "@/components/dashboard/TrendChip";
 import { standingOf } from "@/components/dashboard/useGameStanding";
@@ -11,9 +10,11 @@ import { useWeekGoal } from "@/components/home/useWeekGoal";
 import { readDailyOpened, utcDayOf } from "@/lib/lab/daily";
 import type { GameStanding } from "@/lib/lab/dashboard";
 import type { RoundRecord } from "@/lib/lab/record";
+import { roundRecordOf, type LabRound } from "@/lib/lab/recordRound";
+import { labStore } from "@/lib/lab/storage";
+import { addToSummary, type LabSummary } from "@/lib/lab/summary";
 import { roundDeltasOf, verdictOf, type FigureDelta } from "@/lib/lab/roundDeltas";
 import { START_RATING, useGameStore, WIN_ACCURACY } from "@/lib/store/gameStore";
-import { useSavedRound } from "./useSavedRound";
 
 /** The game standing after the round and the one it started from; a review moves neither, so both are the same. */
 function useRoundStandings(roundId: string): { readonly before: GameStanding | null; readonly after: GameStanding | null } {
@@ -67,31 +68,53 @@ function DeltaRow({ delta }: { delta: FigureDelta }) {
   );
 }
 
-function DeltaSection({ round, data, roundId }: { round: RoundRecord; data: LabData; roundId: string }) {
+/** The record as the round found it: read while the round is played, so the result screen can count the round in its first frame. */
+export interface RecordBefore {
+  readonly records: readonly RoundRecord[];
+  readonly summary: LabSummary;
+}
+
+/** Null when this device keeps no record. The summary is read after the rounds, the order useLabData reads them in. */
+export async function readRecordBefore(): Promise<RecordBefore | null> {
+  const store = labStore();
+  if (!store || !(await store.isAvailable())) return null;
+  const records = await store.listRounds();
+  return { records, summary: await store.readSummary() };
+}
+
+export interface ResultDeltasProps {
+  readonly before: RecordBefore;
+  readonly labRound: LabRound;
+}
+
+/**
+ * The dashboard's lead and summary figures after the round just played, each beside what it read before. Counted
+ * from the record read during the round plus the round itself, through the same tile builders as the dashboard, so
+ * the list is whole in the result screen's first frame and nothing under it moves.
+ */
+export default function ResultDeltas({ before, labRound }: ResultDeltasProps) {
   const t = useTranslations("dashboard.deltas");
   const [weekGoal] = useWeekGoal();
-  const standings = useRoundStandings(roundId);
-  const { records, summary, today } = data;
-  const deltas = useMemo(
-    () =>
-      roundDeltasOf({
-        dashboard: {
-          records,
-          summary,
-          today,
-          weekGoal,
-          entries: null,
-          utcDay: utcDayOf(Date.now()),
-          dailyOpened: readDailyOpened(),
-          chooseHref: null,
-          game: standings.after,
-          winAccuracy: WIN_ACCURACY,
-        },
-        round,
-        gameBefore: standings.before,
-      }),
-    [records, summary, today, weekGoal, standings, round],
-  );
+  const standings = useRoundStandings(labRound.facts.id);
+  const deltas = useMemo(() => {
+    const round = roundRecordOf(labRound.facts, new Date(labRound.endedAt));
+    return roundDeltasOf({
+      dashboard: {
+        records: [...before.records, round],
+        summary: addToSummary(before.summary, round),
+        today: round.localDay,
+        weekGoal,
+        entries: null,
+        utcDay: utcDayOf(labRound.endedAt),
+        dailyOpened: readDailyOpened(),
+        chooseHref: null,
+        game: standings.after,
+        winAccuracy: WIN_ACCURACY,
+      },
+      round,
+      gameBefore: standings.before,
+    });
+  }, [before, labRound, weekGoal, standings]);
 
   return (
     <section aria-labelledby="result-deltas-title" className="lab-card lab-deltas">
@@ -108,14 +131,4 @@ function DeltaSection({ round, data, roundId }: { round: RoundRecord; data: LabD
       </Link>
     </section>
   );
-}
-
-/**
- * The dashboard's lead and summary figures after the round just played, each beside what it read before. Drawn once
- * the round is in the record, from the same tile builders as the dashboard; nothing when the round never arrives.
- */
-export default function ResultDeltas({ roundId }: { roundId: string }) {
-  const saved = useSavedRound(roundId);
-  if (saved.state !== "found") return null;
-  return <DeltaSection round={saved.round} data={saved.data} roundId={roundId} />;
 }

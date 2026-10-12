@@ -16,11 +16,11 @@ export type DragSource =
     };
 
 /**
- * Movement, in CSS pixels, a press may wander and still count as a tap. A finger wobbles, and Chrome keeps sending the
- * tap's click until it has moved 15px, so a finger gets one pixel more: every press the browser still treats as a tap
- * stays one here, and a press it no longer clicks for is a drag.
+ * The farthest, in CSS pixels, a press may wander and still count as a tap. A finger wobbles, and Chrome sends a tap's
+ * click while it has moved at most 15px, so a finger gets exactly that: a press the browser clicks for stays a tap
+ * here, and one it does not is a drag.
  */
-const TAP_SLOP_PX = { mouse: 6, finger: 16 } as const;
+const TAP_SLOP_PX = { mouse: 6, finger: 15 } as const;
 /** How long after a drag's release its click may still come: a phone sends it in a task of its own, later. */
 const DRAG_CLICK_MS = 400;
 /** How far above a finger the ghost rides, as a share of its size, so the finger does not hide it. */
@@ -167,7 +167,7 @@ export function usePieceDrag<S extends DragSource>({ enabled, onStart, onDrop }:
       if (current?.pointerId !== event.pointerId) return;
       if (current.phase === "pressed") {
         const slop = event.pointerType === "mouse" ? TAP_SLOP_PX.mouse : TAP_SLOP_PX.finger;
-        if (Math.hypot(event.clientX - current.x, event.clientY - current.y) < slop) return;
+        if (Math.hypot(event.clientX - current.x, event.clientY - current.y) <= slop) return;
         if (onStart && !onStart(current.source)) {
           gesture.current = { phase: "spent", pointerId };
           return;

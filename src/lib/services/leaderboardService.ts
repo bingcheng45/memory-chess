@@ -221,6 +221,10 @@ function withoutColumn(row: SubmissionRow, column: Droppable['column']): Submiss
   return rest;
 }
 
+export const INVALID_DIFFICULTY_OR_DAY = 'Invalid difficulty or daily day';
+
+const DAILY_DAY_CHECK = 'check_daily_day_recent';
+
 export async function submitLeaderboardEntry(
   entry: LeaderboardSubmission,
 ): Promise<LeaderboardSubmitResult> {
@@ -238,6 +242,9 @@ export async function submitLeaderboardEntry(
   const first = await insertRow(entry);
   if (!first.error) {
     return { status: 'stored', entry: first.data };
+  }
+  if (first.error.code === '23514' && first.error.message.includes(DAILY_DAY_CHECK)) {
+    return { status: 'invalid', message: INVALID_DIFFICULTY_OR_DAY };
   }
   if (!isMissingColumn(first.error)) {
     return { status: 'failed', cause: first.error };

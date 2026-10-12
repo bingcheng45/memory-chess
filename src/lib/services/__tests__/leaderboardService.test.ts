@@ -152,6 +152,21 @@ describe("submitLeaderboardEntry", () => {
     expect(mockInsert).toHaveBeenCalledTimes(1);
   });
 
+  it("reports a daily row the database clock refuses as invalid, not failed", async () => {
+    const error = {
+      code: "23514",
+      details: null,
+      hint: null,
+      message: 'new row for relation "leaderboard_entries" violates check constraint "check_daily_day_recent"',
+    };
+    mockSingle.mockResolvedValueOnce({ data: null, error });
+
+    const result = await submitLeaderboardEntry({ ...entry, difficulty: "daily", daily_day: "2026-10-13" });
+
+    expect(result).toEqual({ status: "invalid", message: "Invalid difficulty or daily day" });
+    expect(mockInsert).toHaveBeenCalledTimes(1);
+  });
+
   it("reports a failure when the rating retry fails on anything but a column", async () => {
     const error = { code: "23514", details: null, hint: null, message: "check" };
     mockSingle

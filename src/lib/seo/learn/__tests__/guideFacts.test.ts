@@ -199,7 +199,7 @@ const positionCases = LEARN_GUIDES.flatMap((guide) =>
 
 describe("guide chess positions", () => {
   it("replays every position the guides state, drawn or not", () => {
-    expect(positionCases.length).toBe(50);
+    expect(positionCases.length).toBe(52);
   });
 
   it.each(positionCases.map((entry) => [`${entry.guide.meta.slug} ${entry.position.id}`, entry] as const))(
@@ -228,6 +228,17 @@ describe("guide chess positions", () => {
       expect(squares.filter((square) => !namesSquare(text, square))).toEqual([]);
     },
   );
+});
+
+describe("the pinned knight the beginners guide shows", () => {
+  it("leaves White no checking reply once the pawn reaches e4", () => {
+    const entry = positionCases.find(({ position }) => position.id === "pinned-knight-after-e4");
+    const checks = chessOf(entry!.position)
+      .moves()
+      .filter((move) => /[+#]$/.test(move));
+
+    expect(checks).toEqual([]);
+  });
 });
 
 describe("board rules the coordinates guide states", () => {

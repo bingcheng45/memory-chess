@@ -49,7 +49,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "At beginner level, a game usually turns on a piece lost for nothing or for a pawn. One lost knight outweighs anything the opening gave you.",
-            "Your knight on f3 is pinned to your queen on d1 by Black's bishop on g4. Black pushes the pawn from e5 to e4, and now the pawn attacks the knight.",
+            "Your knight on f3 is pinned to your queen on d1 by Black's bishop on g4. Black pushes the pawn from e5 to e4, and it attacks the knight. Pawns on d6, f7 and h5 block every queen check and guard the bishop.",
           ],
         },
         {
@@ -57,7 +57,7 @@ const guide: LearnDocument = {
           position: {
             id: "pinned-knight-after-e4",
             white: ["Kg1", "Qd1", "Nf3", "g2"],
-            black: ["Kg8", "Bg4", "e5"],
+            black: ["Kg8", "Bg4", "e5", "d6", "f7", "h5"],
             toMove: "b",
             unstated: ["g1", "g2", "g8"],
             line: ["e4"],
@@ -90,7 +90,7 @@ const guide: LearnDocument = {
         {
           id: "pinned-knight",
           white: ["Kg1", "Qd1", "Nf3", "g2"],
-          black: ["Kg8", "Bg4", "e5"],
+          black: ["Kg8", "Bg4", "e5", "d6", "f7", "h5"],
           toMove: "b",
           unstated: ["g1", "g2", "g8"],
           claims: [{ kind: "attacks", from: "g4", squares: ["f3"] }],
@@ -98,11 +98,29 @@ const guide: LearnDocument = {
         {
           id: "pinned-knight-steps-away",
           white: ["Kg1", "Qd1", "Nf3", "g2"],
-          black: ["Kg8", "Bg4", "e5"],
+          black: ["Kg8", "Bg4", "e5", "d6", "f7", "h5"],
           toMove: "b",
           unstated: ["g1", "g2", "g8"],
           line: ["e4", "Nd4"],
           claims: [{ kind: "legal", move: "Bxd1" }],
+        },
+        {
+          id: "pinned-knight-stays",
+          white: ["Kg1", "Qd1", "Nf3", "g2"],
+          black: ["Kg8", "Bg4", "e5", "d6", "f7", "h5"],
+          toMove: "b",
+          unstated: ["g1", "g2", "g8"],
+          line: ["e4", "Kh1", "exf3", "gxf3"],
+          claims: [{ kind: "material", white: "kpq", black: "bkppp" }],
+        },
+        {
+          id: "pinned-knight-queen-counterattack",
+          white: ["Kg1", "Qd1", "Nf3", "g2"],
+          black: ["Kg8", "Bg4", "e5", "d6", "f7", "h5"],
+          toMove: "b",
+          unstated: ["g1", "g2", "g8"],
+          line: ["e4", "Qd4", "exf3", "Qxg4"],
+          claims: [{ kind: "legal", move: "hxg4" }],
         },
       ],
     },

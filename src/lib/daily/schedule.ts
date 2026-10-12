@@ -12,18 +12,20 @@ interface Range {
   readonly max: number;
 }
 
-interface Band {
+export interface Band {
   readonly pieces: Range;
   readonly seconds: Range;
 }
 
 type Weekday = "sunday" | "monday" | "tuesday" | "wednesday" | "thursday" | "friday" | "saturday";
 
+export type WeeklyArc = Readonly<Record<Weekday, Band>>;
+
 const WEEKDAYS: readonly Weekday[] = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
 const exactly = (value: number): Range => ({ min: value, max: value });
 
-const WEEKLY_ARC: Readonly<Record<Weekday, Band>> = {
+export const WEEKLY_ARC: WeeklyArc = {
   monday: { pieces: { min: 4, max: 5 }, seconds: exactly(12) },
   tuesday: { pieces: { min: 5, max: 6 }, seconds: exactly(10) },
   wednesday: { pieces: { min: 6, max: 7 }, seconds: exactly(10) },
@@ -33,36 +35,60 @@ const WEEKLY_ARC: Readonly<Record<Weekday, Band>> = {
   sunday: { pieces: { min: 12, max: 32 }, seconds: exactly(12) },
 };
 
-export const dailySeed = (day: string) => Number.parseInt(positionId(`daily ${day}`).slice(-8), 16);
+const MAX_LOOKBACK_DAYS = 7;
 
-const bandOf = (day: string): Band => WEEKLY_ARC[WEEKDAYS[new Date(`${day}T00:00:00Z`).getUTCDay()]];
+const UTC_DAY = /^\d{4}-\d{2}-\d{2}$/;
+
+export function isUtcDay(day: string): boolean {
+  if (!UTC_DAY.test(day)) return false;
+  const midnight = Date.parse(`${day}T00:00:00Z`);
+  return !Number.isNaN(midnight) && new Date(midnight).toISOString().slice(0, 10) === day;
+}
+
+export class InvalidDayError extends RangeError {
+  override name = "InvalidDayError";
+
+  constructor(day: string) {
+    super(`Not a UTC day in YYYY-MM-DD form: "${day}"`);
+  }
+}
+
+const seedOf = (label: string) => Number.parseInt(positionId(label).slice(-8), 16);
+
+export const dailySeed = (day: string) => seedOf(`daily ${day}`);
 
 const valuesIn = ({ min, max }: Range) => Array.from({ length: max - min + 1 }, (_, index) => min + index);
 
-const settingsIn = (band: Band): DailySetting[] =>
+export const settingsIn = (band: Band): DailySetting[] =>
   valuesIn(band.pieces).flatMap((pieceCount) => valuesIn(band.seconds).map((memorizeTime) => ({ pieceCount, memorizeTime })));
 
 const overlaps = (a: Range, b: Range) => a.min <= b.max && b.min <= a.max;
+
+export const bandsOverlap = (a: Band, b: Band) => overlaps(a.pieces, b.pieces) && overlaps(a.seconds, b.seconds);
 
 const sameSetting = (a: DailySetting, b: DailySetting) => a.pieceCount === b.pieceCount && a.memorizeTime === b.memorizeTime;
 
 const pick = <T>(items: readonly T[], random: () => number): T => items[Math.floor(random() * items.length)];
 
-function yesterdayIfBandsOverlap(day: string, band: Band): DailySetting | null {
-  const yesterday = shiftDay(day, -1);
-  const before = bandOf(yesterday);
-  return overlaps(before.pieces, band.pieces) && overlaps(before.seconds, band.seconds) ? dailySettingOf(yesterday) : null;
+export function scheduleOf(arc: WeeklyArc): (day: string) => DailySetting {
+  const bandOf = (day: string): Band => arc[WEEKDAYS[new Date(`${day}T00:00:00Z`).getUTCDay()]];
+
+  function settingOf(day: string, lookback: number): DailySetting {
+    const band = bandOf(day);
+    const settings = settingsIn(band);
+    const random = seededRandom(seedOf(`daily-setting ${day}`));
+    const drawn = pick(settings, random);
+    const yesterday = shiftDay(day, -1);
+    if (lookback === 0 || !bandsOverlap(bandOf(yesterday), band)) return drawn;
+    const before = settingOf(yesterday, lookback - 1);
+    const others = settings.filter((setting) => !sameSetting(setting, before));
+    return sameSetting(drawn, before) && others.length > 0 ? pick(others, random) : drawn;
+  }
+
+  return (day) => {
+    if (!isUtcDay(day)) throw new InvalidDayError(day);
+    return settingOf(day, MAX_LOOKBACK_DAYS);
+  };
 }
 
-export function dailySettingOf(day: string): DailySetting {
-  const band = bandOf(day);
-  const random = seededRandom(dailySeed(day));
-  const settings = settingsIn(band);
-  const drawn = pick(settings, random);
-  const yesterday = yesterdayIfBandsOverlap(day, band);
-  if (!yesterday || !sameSetting(drawn, yesterday)) return drawn;
-  return pick(
-    settings.filter((setting) => !sameSetting(setting, yesterday)),
-    random,
-  );
-}
+export const dailySettingOf = scheduleOf(WEEKLY_ARC);

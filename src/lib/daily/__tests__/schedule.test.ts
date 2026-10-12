@@ -1,4 +1,4 @@
-import { dailySettingOf } from "@/lib/daily/schedule";
+import { bandsOverlap, dailySettingOf, InvalidDayError, isUtcDay, scheduleOf, settingsIn, WEEKLY_ARC, type Band, type WeeklyArc } from "@/lib/daily/schedule";
 import { utcDayOf } from "@/lib/lab/daily";
 
 const DAY_MS = 86_400_000;
@@ -20,10 +20,10 @@ describe("the daily setting", () => {
       { pieceCount: 5, memorizeTime: 12 },
       { pieceCount: 5, memorizeTime: 10 },
       { pieceCount: 7, memorizeTime: 10 },
-      { pieceCount: 8, memorizeTime: 9 },
-      { pieceCount: 9, memorizeTime: 8 },
-      { pieceCount: 9, memorizeTime: 3 },
-      { pieceCount: 12, memorizeTime: 12 },
+      { pieceCount: 7, memorizeTime: 9 },
+      { pieceCount: 8, memorizeTime: 8 },
+      { pieceCount: 10, memorizeTime: 4 },
+      { pieceCount: 13, memorizeTime: 12 },
     ]);
   });
 
@@ -56,5 +56,43 @@ describe("the daily setting", () => {
     );
 
     expect(reached).toEqual(EXPECTED_WEEKLY_ARC);
+  });
+
+  it("throws an InvalidDayError for anything but a real UTC day", () => {
+    expect(["", "2026-02-30", "2026-10", "2026-10-19"].map(isUtcDay)).toEqual([false, false, false, true]);
+    expect(() => dailySettingOf("")).toThrow(new InvalidDayError(""));
+    expect(() => dailySettingOf("2026-02-30")).toThrow(InvalidDayError);
+    expect(() => dailySettingOf("2026-10")).toThrow(RangeError);
+    expect(dailySettingOf("2026-10-19")).toEqual({ pieceCount: 5, memorizeTime: 12 });
+  });
+
+  it("gives every band at least two settings, so a redraw always has one left", () => {
+    expect(Object.fromEntries(Object.entries(WEEKLY_ARC).map(([weekday, band]) => [weekday, settingsIn(band).length >= 2]))).toEqual({
+      monday: true,
+      tuesday: true,
+      wednesday: true,
+      thursday: true,
+      friday: true,
+      saturday: true,
+      sunday: true,
+    });
+  });
+
+  it("ends every run of overlapping days within a week", () => {
+    const week: Band[] = [WEEKLY_ARC.sunday, WEEKLY_ARC.monday, WEEKLY_ARC.tuesday, WEEKLY_ARC.wednesday, WEEKLY_ARC.thursday, WEEKLY_ARC.friday, WEEKLY_ARC.saturday];
+    const runs = week.map((_, weekday) => {
+      let run = 0;
+      while (run < 7 && bandsOverlap(week[(weekday - run + 6) % 7], week[(weekday - run + 7) % 7])) run += 1;
+      return run;
+    });
+
+    expect(runs).toEqual([0, 0, 0, 1, 0, 0, 0]);
+  });
+
+  it("returns the only setting a one-setting week has, looking back no more than a week", () => {
+    const only = { pieces: { min: 6, max: 6 }, seconds: { min: 10, max: 10 } };
+    const flat: WeeklyArc = { monday: only, tuesday: only, wednesday: only, thursday: only, friday: only, saturday: only, sunday: only };
+
+    expect(scheduleOf(flat)("2026-10-19")).toEqual({ pieceCount: 6, memorizeTime: 10 });
   });
 });

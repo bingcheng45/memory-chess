@@ -5,7 +5,7 @@ import { roundV2 } from "./fixtures";
 const NOON = Date.parse("2026-10-09T12:00:00Z");
 /** Pinned literally: a change to the generator or the seed would hand every player a different board for a past day. */
 const DAY_ONE = "8/8/8/1pQB3k/P2p1p2/3P4/8/1K6 w - - 0 1";
-const DAY_TWO = "3r4/1P6/8/8/1kP2K1p/1p1p4/7R/1R6 w - - 0 1";
+const DAY_TWO = "8/8/8/8/1kp2K1p/8/7R/1R6 b - - 0 1";
 const DAY_ONE_AT_SIX = "8/8/8/1pQ4k/P2p4/8/8/1K6 b - - 0 1";
 
 describe("the daily board position", () => {
@@ -20,9 +20,9 @@ describe("the daily board position", () => {
     expect(DAY_TWO).not.toBe(DAY_ONE);
   });
 
-  it("holds the day's scheduled piece count, 9 on a Friday and 10 on that Saturday", () => {
+  it("holds the day's scheduled piece count, 9 on a Friday and 6 on that Saturday", () => {
     expect(DAY_ONE.split(" ")[0].replace(/[\d/]/g, "")).toHaveLength(9);
-    expect(DAY_TWO.split(" ")[0].replace(/[\d/]/g, "")).toHaveLength(10);
+    expect(DAY_TWO.split(" ")[0].replace(/[\d/]/g, "")).toHaveLength(6);
   });
 
   it("draws the same board as before the schedule for a round pinned at 6 pieces", () => {

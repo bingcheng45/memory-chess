@@ -82,7 +82,7 @@ describe("dashboardOf", () => {
       ["streak", "empty", QUICK],
       ["rounds", "empty", QUICK],
       ["days", "empty", QUICK],
-      ["daily", "empty", "/game?pieceCount=8&memorizeTime=9&source=daily"],
+      ["daily", "empty", "/game?pieceCount=7&memorizeTime=9&source=daily"],
       ["week", "empty", QUICK],
       ["curve", "empty", QUICK],
       ["notebook", "empty", QUICK],

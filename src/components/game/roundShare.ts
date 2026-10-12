@@ -1,5 +1,5 @@
 import type { useTranslations } from "next-intl";
-import { SITE, type CardFrame } from "@/components/share/cardCanvas";
+import { SITE, type CardFrame, type CardTrend } from "@/components/share/cardCanvas";
 import { shareUrl } from "@/components/share/shareLink";
 import type { LabPosition, RoundState } from "@/lib/round/round";
 import type { SharePost } from "@/lib/shareIntents";
@@ -66,7 +66,10 @@ export function roundShareOf(round: ScoredRound, { rating, change, winStreak }: 
 
 export interface ResultStat {
   readonly label: string;
+  /** The stat in words, which the card's description reads. */
   readonly value: string;
+  /** What the card draws instead of `value` when a figure carries a trend: the figure, and its change as an arrow. */
+  readonly mark?: { readonly figure: string; readonly trend: CardTrend };
 }
 
 /** Everything the result card prints, in the player's language and number format. */
@@ -98,7 +101,10 @@ function statsOf(t: ResultTranslate, share: RoundShare, locale: string): ResultS
     { label: t("rebuild"), value: t("seconds", { seconds: secondsText(share.rebuildSeconds, locale) }) },
   ];
   if (share.kind === "review") return stats;
-  const rating = { label: t("rating"), value: t("ratingValue", { rating: number.format(share.rating.rating), change: signed.format(share.rating.change) }) };
+  const { rating: score, change } = share.rating;
+  const direction = change > 0 ? "up" : "down";
+  const mark = change === 0 ? undefined : { figure: number.format(score), trend: { direction, text: number.format(Math.abs(change)) } } as const;
+  const rating: ResultStat = { label: t("rating"), value: t("ratingValue", { rating: number.format(score), change: signed.format(change) }), ...(mark && { mark }) };
   const streak = share.winStreak === null ? [] : [{ label: t("winStreak"), value: t("winStreakValue", { count: share.winStreak }) }];
   return [...stats, rating, ...streak];
 }

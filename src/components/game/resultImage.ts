@@ -1,9 +1,9 @@
-import { BODY_BOTTOM, BODY_TOP, CARD_WIDTH, drawCard, fitFont, font, INK, INNER, PAD, wrapLines, type CardFonts, type Ctx } from "@/components/share/cardCanvas";
+import { BODY_BOTTOM, BODY_TOP, CARD_WIDTH, drawCard, drawTrend, fitFont, font, INK, INNER, PAD, trendWidth, wrapLines, type CardFonts, type Ctx } from "@/components/share/cardCanvas";
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { isDarkSquare, squareVerdict, type LabPiece } from "@/lib/round/round";
 import type { PieceColor, PieceType } from "@/types/chess";
 import { getPieceImageUrl } from "@/utils/chessPieces";
-import type { ResultCardCopy, ScoredBoard } from "./roundShare";
+import type { ResultCardCopy, ResultStat, ScoredBoard } from "./roundShare";
 
 const BOARD_SIZE = 400;
 const SQUARE = BOARD_SIZE / 8;
@@ -138,7 +138,7 @@ function drawHeadline(ctx: Ctx, copy: ResultCardCopy, width: number, fonts: Card
 function drawStats(ctx: Ctx, copy: ResultCardCopy, top: number, fonts: CardFonts, locale: string) {
   const columns = copy.stats.length === 4 ? 2 : 3;
   const width = (INNER - COLUMN_GAP * (columns - 1)) / columns;
-  copy.stats.forEach(({ label, value }, index) => {
+  copy.stats.forEach(({ label, value, mark }, index) => {
     const x = PAD + (index % columns) * (width + COLUMN_GAP);
     const y = top + Math.floor(index / columns) * STAT_ROW;
     ctx.fillStyle = INK.rule;
@@ -149,8 +149,27 @@ function drawStats(ctx: Ctx, copy: ResultCardCopy, top: number, fonts: CardFonts
     ctx.fillStyle = INK.ink;
     const size = columns === 2 ? 46 : 36;
     ctx.font = font(600, size, fonts);
+    if (mark) {
+      drawMarked(ctx, mark, x, y + 64 + size, width, size, fonts);
+      return;
+    }
     wrapLines(ctx, value, width, 2, locale).forEach((line, row) => ctx.fillText(line, x, y + 64 + size + row * Math.round(size * 1.2)));
   });
+}
+
+/** A figure with its trend beside it on one baseline; the trend is a little smaller, and both shrink together to fit. */
+function drawMarked(ctx: Ctx, { figure, trend }: NonNullable<ResultStat["mark"]>, x: number, baseline: number, width: number, size: number, fonts: CardFonts) {
+  const trendSize = (at: number) => Math.round(at * 0.72);
+  const room = (at: number) => {
+    ctx.font = font(600, at, fonts);
+    return ctx.measureText(figure).width + trendWidth(ctx, trend, trendSize(at), fonts);
+  };
+  let fitted = size;
+  while (fitted > 16 && room(fitted) > width) fitted -= 2;
+  ctx.font = font(600, fitted, fonts);
+  ctx.fillStyle = INK.ink;
+  ctx.fillText(figure, x, baseline);
+  drawTrend(ctx, trend, x + ctx.measureText(figure).width, baseline, trendSize(fitted), fonts);
 }
 
 function drawWith(copy: ResultCardCopy, board: ScoredBoard | null, art: PieceArt, fonts: CardFonts, locale: string): Promise<Blob> {

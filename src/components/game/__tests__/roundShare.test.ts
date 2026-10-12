@@ -84,7 +84,7 @@ describe("resultCardCopy", () => {
         { label: "Setting", value: "4 pieces, 10 s study" },
         { label: "Study time", value: "8.4 s" },
         { label: "Rebuild time", value: "38.3 s" },
-        { label: "Rating", value: "1,214 (+14)" },
+        { label: "Rating", value: "1,214 (+14)", mark: { figure: "1,214", trend: { direction: "up", text: "14" } } },
         { label: "Win streak", value: "3 rounds in a row" },
       ],
       legend: { correct: "Correct", missed: "Missed", wrong: "Wrong" },
@@ -98,6 +98,14 @@ describe("resultCardCopy", () => {
     const copy = resultCardCopy(EN, roundShareOf(scored(DAILY), { ...STANDING, change: -6, winStreak: 0 }), "en");
 
     expect([copy.kicker, copy.legend, copy.stats.map(({ value }) => value)]).toEqual(["Daily board · Oct 12, 2026", null, ["4 pieces, 10 s study", "8.4 s", "38.3 s", "1,214 (-6)"]]);
+  });
+
+  it("hands the card the rating and its change apart, so the change is drawn as an arrow in green or red, and none when it is level", () => {
+    const rating = (change: number) =>
+      resultCardCopy(EN, roundShareOf(scored(DAILY), { ...STANDING, change, winStreak: 0 }), "en").stats.find(({ label }) => label === "Rating");
+
+    expect(rating(-6)?.mark).toEqual({ figure: "1,214", trend: { direction: "down", text: "6" } });
+    expect(rating(0)).toEqual({ label: "Rating", value: "1,214 (0)" });
   });
 
   it("names a review round and leaves out the rating it did not change", () => {

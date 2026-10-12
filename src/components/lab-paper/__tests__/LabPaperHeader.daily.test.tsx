@@ -61,4 +61,21 @@ describe("the daily dot on the Dashboard nav item", () => {
     act(() => jest.advanceTimersByTime(10_000));
     expect(dotsIn(container)).toBe(3);
   });
+
+  it("shows when the browser blocks storage, and the header still renders", () => {
+    const blocked = () => {
+      throw new DOMException("The operation is insecure.", "SecurityError");
+    };
+    jest.spyOn(Storage.prototype, "getItem").mockImplementation(blocked);
+    jest.spyOn(Storage.prototype, "setItem").mockImplementation(blocked);
+    try {
+      const { container } = renderWithIntl(<LabPaperHeader />);
+
+      expect(within(mainNav()).getByRole("link", { name: "Dashboard, today's daily board is ready" })).toHaveAttribute("href", "/dashboard");
+      expect(dotsIn(container)).toBe(3);
+    } finally {
+      jest.restoreAllMocks();
+    }
+  });
 });
+

@@ -130,6 +130,821 @@
           "answer": "Algumas rodadas focadas com regularidade já é um bom começo. Mantenha as sessões curtas o bastante para conseguir estudar cada posição com calma."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Laboratório",
+        "onPage": "Nesta página",
+        "notebook": "Caderno",
+        "method": "Método",
+        "calibrate": "Calibrar",
+        "tiers": "Dificuldade",
+        "record": "Registro",
+        "library": "Biblioteca",
+        "hints": {
+          "notebook": "Por que medir",
+          "method": "Uma rodada, passo a passo",
+          "calibrate": "Faça uma leitura",
+          "tiers": "Níveis e ajuste livre",
+          "record": "Suas leituras",
+          "library": "Guias e exercícios"
+        },
+        "play": "Jogar uma rodada grátis"
+      },
+      "tags": {
+        "proposed": "Proposto",
+        "sample": "Exemplo",
+        "illustrative": "Ilustrativo",
+        "free": "Grátis · sem conta",
+        "rig": "Ajuste livre"
+      },
+      "sections": {
+        "notebook": "Caderno",
+        "method": "Método",
+        "recording": "Gravação de campo",
+        "calibrate": "Calibrar",
+        "tiers": "Dificuldade",
+        "record": "Registro do laboratório",
+        "library": "Biblioteca",
+        "faq": "Perguntas",
+        "next": "Próximo teste"
+      },
+      "hero": {
+        "platforms": "Navegador · computador · celular",
+        "display": "Dê um número à sua <em>visão mental.</em>",
+        "lede": "O Memory Chess é um jogo grátis de memória no xadrez e um treino de memória para enxadristas. Estude uma posição por alguns segundos, o tabuleiro fica vazio e você a reconstrói de memória. Cada rodada é um teste curto de memória, com uma leitura de precisão de 0 a 100% e um mapa de cada casa que você acertou ou errou.",
+        "secondaryCta": "Fazer uma leitura de calibração",
+        "facts": {
+          "study": "tempo de estudo",
+          "pieces": "peças por rodada",
+          "accuracy": "leitura de precisão",
+          "plays": "partidas jogadas",
+          "languages": "idiomas"
+        },
+        "showcase": {
+          "aria": "Veselin Topalov contra Alexey Shirov, Linares 1998, com um estudo guiado da posição",
+          "event": "Linares · Rodada 10",
+          "venue": "4 de março de 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "x",
+          "pieceLabel": "{piece} em {square}",
+          "tags": {
+            "study": "Estudo",
+            "trap": "A armadilha",
+            "sacrifice": "O sacrifício",
+            "walk": "A marcha",
+            "runners": "Dois passados",
+            "rebuild": "Reconstrução",
+            "inspect": "Alcance"
+          },
+          "counter": {
+            "study": "Estudo {n}/{total}",
+            "game": "Partida {n}/{total}",
+            "resume": "Clique de novo para continuar"
+          },
+          "controls": {
+            "steps": "Passos",
+            "step": "Passo {n} de {total}: {tag}",
+            "previous": "Passo anterior",
+            "next": "Próximo passo",
+            "play": "Reproduzir",
+            "pause": "Pausar"
+          },
+          "inspect": {
+            "title": "{piece} em {square}.",
+            "reach": "{moves, plural, =0 {Nenhum lance} one {# lance} many {# lances} other {# lances}}, {captures, plural, =0 {nenhuma captura} one {# captura} many {# capturas} other {# capturas}}.",
+            "checks": "Xeques: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "Canto das brancas",
+            "longDiagonal": "Grande diagonal",
+            "blackWall": "Muralha das pretas",
+            "runner": "O peão solto"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Shirov, de pretas, tem dois peões a mais, mas bispos de cores opostas costumam segurar o empate. Dez peças."
+              },
+              "whiteCorner": {
+                "caption": "O rei branco em g1 protege o peão de g2. O peão da coluna h já avançou até h4."
+              },
+              "longDiagonal": {
+                "caption": "O bispo branco em c3 domina a grande diagonal e ataca o peão de f6.",
+                "thought": "Bispo das casas escuras, de c3 a f6."
+              },
+              "blackWall": {
+                "caption": "O rei preto em e6, o bispo dele em f5, peões em d5, f6 e g6.",
+                "thought": "O rei protege f6 e d5. O peão de g6 protege o bispo."
+              },
+              "runner": {
+                "caption": "Um peão preto em a4, longe de tudo."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "O rei preto não pode avançar. As casas d5 e f5 estão ocupadas pelas peças dele, e o bispo de c3 controla e5.",
+                "thought": "Só Kd6, Kd7, Ke7 e Kf7. Todas voltam ou vão para o lado."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! O bispo se entrega numa casa onde o peão g pode capturá-lo. Ele estava no caminho do rei.",
+                "thought": "Agora f5 está livre. Essa é a porta."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Pela porta que o bispo abriu, o rei chega ao centro."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Um bispo sozinho não segura dois peões passados.",
+                "thought": "Topalov capturou o bispo e abandonou depois de 53...Kb3."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "O tabuleiro fica vazio. Reconstrua o início: o canto das brancas, a grande diagonal, a muralha das pretas, o peão solto."
+              },
+              "back": {
+                "caption": "Grupo por grupo, cada peça volta para a sua casa."
+              },
+              "check": {
+                "caption": "Agora confira. Bispos de cores opostas, c3 escura e f5 clara. O bispo de c3 ainda ataca f6. Quatro brancas, seis pretas."
+              }
+            }
+          }
+        }
+      },
+      "notebook": {
+        "title": "Não dá para melhorar o que você nunca mede.",
+        "lede": "A maior parte do treino de xadrez trabalha decisões. Muito pouco dele verifica se você consegue mesmo segurar o tabuleiro na cabeça. Essa habilidade está por baixo do cálculo, das partidas às cegas e da visão tática, e quase sempre fica por conta do acaso.",
+        "observation": {
+          "kicker": "Observação",
+          "title": "Jogadores perdem peças de vista no meio do cálculo.",
+          "body": "Três lances adiante, um bispo na grande diagonal some em silêncio da imagem na sua cabeça. O tabuleiro à sua frente estava certo. O da sua mente, não."
+        },
+        "hypothesis": {
+          "kicker": "Hipótese",
+          "title": "Lembrar o tabuleiro é uma habilidade que se treina e se testa.",
+          "body": "Segure uma posição por pouco tempo, reconstrua, confira o resultado. Repita com mais peças e menos tempo. <hl>Não prometemos nada sobre o seu cérebro.</hl> Damos a você uma leitura que dá para acompanhar."
+        },
+        "method": {
+          "kicker": "Método",
+          "title": "Uma rodada, um número limpo.",
+          "body": "Estudo, tabuleiro vazio, reconstrução, pontuação. As casas certas ficam marcadas, as erradas também, nada fica escondido. Uma rodada leva menos de um minuto, então dá para fazer muitas."
+        }
+      },
+      "method": {
+        "title": "Uma rodada no microscópio.",
+        "lede": "Role a página por uma rodada numa posição real: o fim da Imortal de Kasparov, Kasparov contra Topalov em Wijk aan Zee, em 1999. As camadas mostram uma maneira de memorizá-la, não uma gravação da atenção de alguém.",
+        "status": "Fase {number} · {name}",
+        "clock": "t = {seconds} s",
+        "scoreChip": "{correct} de {total} casas",
+        "countChip": "Brancas {white} · Pretas {black}",
+        "groups": {
+          "standoff": {
+            "name": "Impasse",
+            "sentence": "O rei branco ataca d2. O rei preto e c3 o defendem."
+          },
+          "mirror": {
+            "name": "Escadas",
+            "sentence": "Escadas espelhadas, de h2 subindo até f4, de h7 descendo até f5."
+          },
+          "longShots": {
+            "name": "Tiros longos",
+            "sentence": "A dama em a7 mira h7. A torre em d2 mira h2."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "Estudo",
+            "title": "Onze peças, dez segundos.",
+            "body": "A posição final da Imortal de Kasparov, depois de 44.Qa7. Topalov abandonou aqui. Absorva o tabuleiro inteiro, não casa por casa. Nos experimentos de de Groot, mestres reproduziram uma posição de partida mostrada por pouco tempo muito melhor do que jogadores mais fracos.",
+            "note": "Fig. Brancas: rei c1, dama a7, peões f4, g3, h2. Pretas: rei e1, torre d2, peões c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Âncoras",
+            "title": "Comece pelos reis.",
+            "body": "Fixe dois pontos primeiro. Os dois reis estão na primeira fileira, a duas colunas um do outro, e o rei preto correu até e1. Posicione todo o resto em relação a eles.",
+            "note": "Fig. os dois reis circulados. Todo o resto espera."
+          },
+          "chunk": {
+            "name": "Agrupar",
+            "title": "Onze peças viram três ideias.",
+            "body": "Agrupe as peças pelo que elas fazem umas com as outras. Os reis disputam d2. Duas escadas de peões se encontram. A dama e a torre miram, cada uma, um peão da coluna h sem defesa. Chase e Simon (1973) mostraram que jogadores fortes lembram posições em blocos de peças relacionadas.",
+            "note": "Fig. laranja ataca, azul defende, cinza liga uma cadeia de peões, a barra marca um par bloqueado. A torre em d2 está em dois grupos."
+          },
+          "encode": {
+            "name": "Codificar",
+            "title": "Transforme cada grupo numa frase.",
+            "body": "Dê a cada grupo um nome pela função dele. Gobet e Simon (1996) descrevem jogadores fortes que retêm estruturas maiores, parecidas com esquemas. As frases em si são uma técnica, não um resultado de pesquisa.",
+            "note": "Fig. os três grupos, com nome. As frases deles:"
+          },
+          "blank": {
+            "name": "Vazio",
+            "title": "O tabuleiro se esvazia.",
+            "body": "Sem peças, sem dicas. Reconstrua a partir das frases, não de uma imagem. Diga as frases em ordem: primeiro os reis, depois cada grupo.",
+            "note": "Aqui não há nada a fazer além de guardar três frases."
+          },
+          "rebuild": {
+            "name": "Reconstruir",
+            "title": "Reconstrua grupo por grupo.",
+            "body": "Os reis. O impasse. As escadas. Os tiros longos. Posicione cada grupo com a sua frase antes de começar o próximo.",
+            "note": "Fig. a reconstrução antes da conferência. Um peão está na casa errada. Consegue ver qual?"
+          },
+          "score": {
+            "name": "Pontuação",
+            "title": "Confira com as suas frases e depois pontue.",
+            "body": "Verifique de novo cada relação no tabuleiro reconstruído. A torre continua defendida duas vezes? De c2 o peão protege d1, não d2. A contagem, cinco e seis, continua batendo, então só a conferência das relações pega o deslize.",
+            "note": "Fig. os vistos continuam valendo, a cruz vermelha se rompeu. O preenchimento laranja é a casa errada (c2), o anel é onde a peça deveria estar (c3). {correct} de {total} casas são {accuracy}%."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Faça uma leitura de calibração.",
+        "lede": "A rodada do nível Médio tirada da partida real: {pieceCount} peças, entre elas os dois reis, {memorizeSeconds} segundos. Depois o tabuleiro se esvazia e você o reconstrói. Você recebe um cartão de leitura com a sua precisão e a lembrança por tipo de peça. Funciona com mouse, toque e teclado.",
+        "phaseReady": "Pronto · {pieceCount} peças · {memorizeSeconds} s de estudo",
+        "phaseLabel": "Fase {number} · {name}",
+        "start": "Iniciar calibração",
+        "restart": "Reiniciar",
+        "again": "Fazer de novo",
+        "done": "Pronto",
+        "submit": "Enviar leitura",
+        "clear": "Limpar tabuleiro",
+        "controlsLabel": "Controles da rodada",
+        "boardLabel": "Tabuleiro de calibração. Use as setas para se mover entre as casas.",
+        "paletteLabel": "Paleta de peças",
+        "paletteItem": "{piece}, restam {count}",
+        "usedUp": {
+          "white": {
+            "king": "O rei branco já está no tabuleiro.",
+            "queen": "A dama branca já está no tabuleiro.",
+            "rook": "As duas torres brancas estão no tabuleiro.",
+            "bishop": "Os dois bispos brancos estão no tabuleiro.",
+            "knight": "Os dois cavalos brancos estão no tabuleiro.",
+            "pawn": "Os oito peões brancos estão no tabuleiro."
+          },
+          "black": {
+            "king": "O rei preto já está no tabuleiro.",
+            "queen": "A dama preta já está no tabuleiro.",
+            "rook": "As duas torres pretas estão no tabuleiro.",
+            "bishop": "Os dois bispos pretos estão no tabuleiro.",
+            "knight": "Os dois cavalos pretos estão no tabuleiro.",
+            "pawn": "Os oito peões pretos estão no tabuleiro."
+          }
+        },
+        "squareEmpty": "{square}, vazia",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Estude a posição. {memorizeSeconds} segundos.",
+        "liveRebuild": "Tabuleiro limpo. Escolha uma peça e depois uma casa.",
+        "liveScore": "Precisão de {accuracy} por cento. {correct} de {total} casas corretas.",
+        "startFailed": "Não foi possível carregar uma posição. Verifique sua conexão e tente de novo.",
+        "steps": [
+          "Toque em iniciar. Estude a posição até o medidor esvaziar.",
+          "Escolha uma peça na paleta e toque numa casa. Toque numa peça já colocada para tirá-la.",
+          "Envie. Colocar mais peças do que a posição tinha reduz a sua precisão, então coloque só o que você lembra."
+        ],
+        "readout": {
+          "title": "Cartão de leitura",
+          "statusIdle": "Aguardando rodada",
+          "statusRecording": "Registrando",
+          "statusDone": "Rodada concluída",
+          "correct": "Casas corretas",
+          "time": "Tempo de montagem",
+          "wrong": "Peças erradas",
+          "exposure": "Tempo de estudo",
+          "byType": "Lembrança por tipo de peça",
+          "byTypeEmpty": "A lembrança por tipo de peça aparece aqui depois da sua primeira rodada.",
+          "nextEmpty": "Uma dificuldade sugerida aparece depois da leitura.",
+          "suggested": "Sugestão:",
+          "stepUp": "suba para {tier}, {pieceCount} peças com {memorizeSeconds} s. Antes, confirme com mais duas rodadas limpas.",
+          "stay": "fique em {tier}, {pieceCount} peças com {memorizeSeconds} s. Faça três rodadas e observe a tendência.",
+          "start": "comece em {tier}, {pieceCount} peças com {memorizeSeconds} s. Agrupe as peças em pares enquanto estuda.",
+          "playTier": "Jogar {tier}",
+          "legendCorrect": "correta",
+          "legendWrong": "posição errada",
+          "legendMissed": "casa esquecida"
+        },
+        "pieceTypes": {
+          "king": "Rei",
+          "queen": "Dama",
+          "rook": "Torre",
+          "bishop": "Bispo",
+          "knight": "Cavalo",
+          "pawn": "Peão"
+        }
+      },
+      "tiers": {
+        "title": "Quatro níveis. Um ajuste livre.",
+        "lede": "A carga sobe, o tempo de estudo desce. Suba de nível quando as suas leituras se mantiverem estáveis, não depois de uma rodada de sorte.",
+        "columns": {
+          "tier": "Dificuldade",
+          "pieces": "Peças",
+          "exposure": "Estudo",
+          "load": "Carga"
+        },
+        "loadLabel": "{pieceCount} de 32 casas ocupadas",
+        "play": "Jogar",
+        "custom": {
+          "label": "Personalizado",
+          "description": "Defina as suas próprias variáveis para isolar um ponto fraco."
+        }
+      },
+      "record": {
+        "title": "Volte para ver a linha de tendência.",
+        "lede": "Uma leitura é um retrato. Dez leituras são uma medição. Cada rodada que você joga fica guardada neste dispositivo, e estes painéis se preenchem com as suas próprias rodadas. Antes da sua primeira rodada, os painéis mostram valores de <tag>Exemplo</tag>, não de jogadores reais. Depois dela, um painel que ainda não consegue ler o seu registro diz o que ainda falta.",
+        "span": {
+          "fig": "Fig. {number} · Amplitude de memória",
+          "title": "Quantas peças você consegue segurar.",
+          "figure": "{pieceCount, plural, one {# peça} many {# peças} other {# peças}}",
+          "held": "Fez {accuracy} por cento ou mais em {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}. Menor tempo de estudo entre elas: {studyTime}.",
+          "up": "Subiu {count, plural, one {# peça} many {# peças} other {# peças}} desde a semana passada",
+          "same": "Sem mudança desde a semana passada",
+          "aria": "Escada de exemplo da amplitude de memória em 12 sessões, subindo de 4 para 8 peças.",
+          "note": "Registro de exemplo · 12 sessões",
+          "realAria": "Sua amplitude de memória {sessions, plural, one {na sessão em que foi alcançada pela primeira vez} many {nas # sessões desde que foi alcançada pela primeira vez} other {nas # sessões desde que foi alcançada pela primeira vez}}, {shape, select, flat {estável em {now} peças} other {subindo de {first} para {now} peças}}.",
+          "need": "Faça {accuracy} por cento ou mais {count, plural, =2 {duas vezes} one {mais uma vez} many {mais # vezes} other {mais # vezes}} num mesmo tamanho, de {minPieces} peças ou mais.",
+          "onlyKings": "Até agora as suas rodadas tiveram só os dois reis, e uma amplitude precisa de mais peças.",
+          "first": "Amplitude alcançada pela primeira vez",
+          "last": "Mais recente"
+        },
+        "held": {
+          "fig": "Fig. {number} · Peças retidas",
+          "title": "Peças que você coloca certo, em qualquer configuração.",
+          "aria": "Linha de exemplo das peças retidas em 12 rodadas, uma média de 5 rodadas subindo de 4,0 para 7,0 peças.",
+          "note": "Registro de exemplo · 12 rodadas · qualquer configuração",
+          "partial": "Linha tracejada: média de menos de {window} rodadas",
+          "realAria": "Suas peças retidas nas suas {count, plural, one {última rodada} many {# últimas rodadas} other {# últimas rodadas}} em qualquer configuração, como média de {window} rodadas, a mais recente com {latest} peças.",
+          "average": "Média recente: {average} peças",
+          "up": "{change} a mais que nas {window} rodadas anteriores",
+          "down": "{change} a menos que nas {window} rodadas anteriores",
+          "flat": "sem mudança em relação às {window} rodadas anteriores",
+          "realNote": "Qualquer configuração · De {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
+          "needRounds": "{count, plural, one {Falta # rodada} many {Faltam # rodadas} other {Faltam # rodadas}} para desenhar a sua linha.",
+          "needRoundsAndDay": "{count, plural, one {Falta # rodada, jogada em outro dia,} many {Faltam # rodadas, pelo menos uma em outro dia,} other {Faltam # rodadas, pelo menos uma em outro dia,}} para desenhar a sua linha.",
+          "needDay": "Jogue em mais um dia para desenhar a sua linha.",
+          "first": "Mais antiga",
+          "last": "Mais recente"
+        },
+        "speed": {
+          "fig": "Fig. {number} · Velocidade",
+          "title": "Segundos por peça que você reconstrói.",
+          "aria": "Linha de exemplo dos segundos de reconstrução por peça certa em 12 rodadas, caindo de 4,1 para 2,6 segundos.",
+          "note": "Registro de exemplo · 12 rodadas · Médio",
+          "realAria": "Seus segundos de reconstrução por peça certa nas suas últimas {count} rodadas de {source, select, calibration {treino} other {partida}} com {pieceCount} peças e {memorizeSeconds} segundos, a mais recente com {latest} segundos.",
+          "average": "Média recente: {average} por peça",
+          "down": "{change} mais rápido que nas {window} rodadas anteriores",
+          "up": "{change} mais lento que nas {window} rodadas anteriores",
+          "flat": "o mesmo ritmo das {window} rodadas anteriores",
+          "accuracy": "Precisão nas mesmas rodadas: {average}%",
+          "accuracyChange": {
+            "up": "subiu {change, plural, one {# ponto} many {# pontos} other {# pontos}}",
+            "down": "caiu {change, plural, one {# ponto} many {# pontos} other {# pontos}}",
+            "flat": "sem mudança"
+          },
+          "fastWrong": "Rápido e errado não é progresso.",
+          "config": "{source, select, calibration {Treino} other {Partida}} · {pieceCount} peças · {studyTime}, a configuração que você mais jogou ultimamente · De {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
+          "need": "{count, plural, one {Falta # rodada} many {Faltam # rodadas} other {Faltam # rodadas}} com {pieceCount} peças, {studyTime} {source, select, calibration {no treino} other {em partidas}} para desenhar a sua linha de velocidade.",
+          "needRight": "A velocidade só lê rodadas com pelo menos uma peça certa. Jogue {count, plural, one {# rodada assim} many {# rodadas assim} other {# rodadas assim}} para começar a sua linha.",
+          "first": "Mais antiga",
+          "last": "Mais recente"
+        },
+        "curve": {
+          "fig": "Fig. {number} · Curva do esquecimento",
+          "title": "Revisões curtas e espaçadas valem mais que uma sessão longa.",
+          "desc": "Tabuleiros em que você faz menos de 80% voltam para revisão 1, 3, 7 e 14 dias depois da primeira vez que você os vê. A sua curva mostra quanto você lembra em cada intervalo.",
+          "aria": "Gráfico ilustrativo: a retenção cai rápido sem revisão e decai mais devagar depois de cada revisão espaçada, nos dias 1, 3 e 7.",
+          "note": "Modelo ilustrativo do efeito de espaçamento. Não são dados medidos.",
+          "noReview": "sem revisão",
+          "spaced": "rodadas espaçadas",
+          "review": "revisão",
+          "day": "d{day}",
+          "warming": "{reviews, plural, one {Falta # revisão após o mesmo intervalo} many {Faltam # revisões após o mesmo intervalo} other {Faltam # revisões após o mesmo intervalo}} para desenhar o seu primeiro ponto medido.",
+          "measuredAria": "Sua lembrança nos tabuleiros que você revisou: {points}.",
+          "pointFirst": "na primeira vez, {accuracy}% em {count, plural, one {# tabuleiro} many {# tabuleiros} other {# tabuleiros}}",
+          "pointAfter": "após {day, plural, one {# dia} many {# dias} other {# dias}}, {accuracy}% em {count, plural, one {# revisão} many {# revisões} other {# revisões}}",
+          "count": "n={count}",
+          "measuredNote": "De {reviews, plural, one {# revisão} many {# revisões} other {# revisões}} de {boards, plural, one {# tabuleiro} many {# tabuleiros} other {# tabuleiros}}. Um ponto precisa de {min} revisões após o seu intervalo.",
+          "due": "Revisão {number} de {cap} hoje",
+          "capped": "Revisões de hoje concluídas",
+          "play": "Jogar uma revisão",
+          "waiting": "Próxima revisão {days, plural, one {amanhã} many {em # dias} other {em # dias}}. {queued, plural, one {# tabuleiro} many {# tabuleiros} other {# tabuleiros}} na sua fila.",
+          "empty": "Ainda não há tabuleiros para revisar. Um tabuleiro em que você faz menos de 80% volta aqui no dia seguinte."
+        },
+        "spark": {
+          "fig": "Fig. {number} · Precisão ao longo do tempo",
+          "title": "Sua linha, rodada a rodada.",
+          "titleSessions": "Sua linha, sessão a sessão.",
+          "aria": "Minigráfico de exemplo da precisão em 12 rodadas, subindo de 52 para 79 por cento.",
+          "note": "Registro de exemplo · 12 rodadas · Médio",
+          "first": "R01",
+          "last": "R12",
+          "needRounds": "{count, plural, one {Falta # rodada} many {Faltam # rodadas} other {Faltam # rodadas}} com {pieceCount} peças, {studyTime}, para desenhar a sua tendência {source, select, calibration {de treino} other {de partidas}}.",
+          "needRoundsAndDay": "{count, plural, one {Falta # rodada com {pieceCount} peças, {studyTime}, jogada em outro dia,} many {Faltam # rodadas com {pieceCount} peças, {studyTime}, pelo menos uma em outro dia,} other {Faltam # rodadas com {pieceCount} peças, {studyTime}, pelo menos uma em outro dia,}} para desenhar a sua tendência {source, select, calibration {de treino} other {de partidas}}.",
+          "needDay": "Jogue com {pieceCount} peças, {studyTime}, {source, select, calibration {no treino} other {numa partida}} em mais um dia para desenhar a sua tendência.",
+          "config": "{source, select, calibration {Treino} other {Partida}} · {pieceCount} peças · {studyTime}, a configuração que você mais jogou com tendência",
+          "realAria": "Sua precisão nas suas últimas {count} rodadas de {source, select, calibration {treino} other {partida}} com {pieceCount} peças e {memorizeSeconds} segundos, a mais recente com {latest} por cento.",
+          "realAriaSessions": "Sua precisão nas suas {count, plural, one {última sessão} many {# últimas sessões} other {# últimas sessões}} com rodadas de {source, select, calibration {treino} other {partida}} com {pieceCount} peças e {memorizeSeconds} segundos, a mais recente com {latest} por cento.",
+          "sessions": "{count, plural, one {# sessão} many {# sessões} other {# sessões}}",
+          "realFirst": "Mais antiga",
+          "realLast": "Mais recente"
+        },
+        "heat": {
+          "fig": "Fig. {number} · Mapa de erros",
+          "title": "Onde as suas casas escapam.",
+          "aria": "Mapa de calor de exemplo das casas erradas: mais escuro ao longo da coluna h e em volta de h1, com pontos quentes em b7 e f7, mais claro no centro.",
+          "note": "Exemplo: os erros se acumulam na coluna h e em volta do canto do rei, em h1. Treine essa borda em seguida.",
+          "need": "Cerca de {count, plural, one {mais # rodada} many {mais # rodadas} other {mais # rodadas}} até que cada coluna e cada fileira tenham 10 peças para ler.",
+          "needStart": "Jogue mais algumas rodadas para começar o seu mapa de erros.",
+          "files": "Colunas",
+          "ranks": "Fileiras",
+          "line": "{line}: {missed} de {shown} erradas",
+          "lineThin": "{line}: {shown} vistas, poucas para ler",
+          "realAria": "Sua taxa de erro em cada casa. As casas cinza têm menos de 10 peças vistas.",
+          "realNote": "Mais escuro quer dizer errado com mais frequência. Cinza tem menos de 10 peças vistas."
+        },
+        "daily": {
+          "fig": "Fig. {number} · Tabuleiro do dia",
+          "title": "Um tabuleiro por dia, o mesmo para todos.",
+          "desc": "Uma posição nova abre todo dia à meia-noite UTC. Todo mundo recebe as mesmas 6 peças e 10 segundos para estudar, e você tem uma tentativa.",
+          "play": "Jogar o tabuleiro de hoje",
+          "open": "Você ainda não jogou o tabuleiro de hoje.",
+          "played": "Você acertou {correct} de {pieceCount, plural, one {# peça} many {# peças} other {# peças}}, {accuracy} por cento.",
+          "unfinished": "Você abriu o tabuleiro de hoje e saiu antes do resultado. Uma tentativa por dia neste dispositivo.",
+          "streak": "Sequência diária de {current, plural, one {# dia} many {# dias} other {# dias}}{forgiven, plural, =0 {} one {, # falta perdoada} many {, # faltas perdoadas} other {, # faltas perdoadas}} · recorde de {longest, plural, one {# dia} many {# dias} other {# dias}}",
+          "streakLongest": "Maior sequência diária: {longest, plural, one {# dia} many {# dias} other {# dias}}",
+          "gridAria": "Seu resultado em cada casa, começando por a8: {correct} corretas, {wrong, plural, one {# peça errada} many {# peças erradas} other {# peças erradas}}, {missed} esquecidas, {extra} a mais.",
+          "key": {
+            "c": "correta",
+            "w": "peça errada",
+            "m": "esquecida",
+            "x": "a mais"
+          },
+          "share": "Tabuleiro do dia do Memory Chess {day}\n{correct} de {pieceCount} certas, {accuracy}%\n{row}\nthememorychess.com",
+          "copy": "Copiar resultado",
+          "showGrid": "Mostrar a grade",
+          "copied": "Copiado. Cole onde quiser.",
+          "copyFailed": "A cópia não funcionou aqui. O resultado está selecionado abaixo, então copie você mesmo."
+        },
+        "streak": {
+          "fig": "Fig. {number} · Dias seguidos",
+          "title": "Uma rodada por dia forma uma sequência.",
+          "desc": "Qualquer rodada concluída, de partida ou de treino, conta para o seu dia. Uma falta a cada 7 dias é perdoada.",
+          "aria": "Grade de exemplo de uma sequência de duas semanas",
+          "note": "Exemplo · o quadrado tracejado é o teste de hoje, ainda pendente",
+          "realDesc": "Qualquer rodada concluída conta para o seu dia. Uma falta a cada 7 dias é perdoada.",
+          "need": "Jogue em {days, plural, one {mais # dia} many {mais # dias} other {mais # dias}} para ler a sua sequência.",
+          "realAria": "Seus últimos 14 dias: {count, plural, one {# dia jogado} many {# dias jogados} other {# dias jogados}}{forgiven, plural, =0 {} one {, # perdoado} many {, # perdoados} other {, # perdoados}}.",
+          "realNote": "Sequência atual de {current, plural, one {# dia} many {# dias} other {# dias}}{forgiven, plural, =0 {} one {, # falta perdoada} many {, # faltas perdoadas} other {, # faltas perdoadas}} · recorde de {longest, plural, one {# dia} many {# dias} other {# dias}}",
+          "key": {
+            "played": "jogado",
+            "forgiven": "perdoado",
+            "missed": "falta",
+            "today": "hoje"
+          }
+        },
+        "week": {
+          "ring": "{played} de {goal} dias nesta semana",
+          "ringOver": "Meta cumprida, {played} dias nesta semana",
+          "sampleRing": "Semana de exemplo · {played} de {goal} dias",
+          "left": "{remaining, plural, =0 {Meta cumprida nesta semana.} one {Falta # dia para cumprir a sua meta.} many {Faltam # dias para cumprir a sua meta.} other {Faltam # dias para cumprir a sua meta.}}",
+          "outOfReach": "Não dá mais para cumprir a meta {daysLeft, plural, =0 {sem nenhum dia restante} one {com # dia restante} many {com # dias restantes} other {com # dias restantes}}. Uma nova semana começa na segunda-feira.",
+          "goal": "Dias por semana",
+          "option": "{days} dias por semana"
+        },
+        "welcome": {
+          "line": "Que bom ter você de volta. Dia {day} do seu registro. Da última vez, {accuracy}% com {pieceCount} peças, {studyTime}.",
+          "lineNoDay": "Que bom ter você de volta. Da última vez, {accuracy}% com {pieceCount} peças, {studyTime}."
+        },
+        "board": {
+          "fig": "Fig. {number} · Ranking",
+          "title": "Compare leituras com o mundo todo.",
+          "desc": "Cada dificuldade é ordenada por peças certas, depois por menos peças erradas, depois pelo menor tempo de memorização e, por fim, pelo menor tempo de resolução. Cada linha mostra o país do jogador.",
+          "howTo": "Envie uma pontuação na tela de resultado e depois veja onde ela fica, no mundo ou no seu país.",
+          "sketchPieces": "{count} peças",
+          "open": "Abrir o ranking",
+          "difficulty": "Dificuldade",
+          "scope": "Posição entre",
+          "world": "Mundo",
+          "entry": "Seu melhor registro em {difficulty}: {correct, plural, one {# peça certa} many {# peças certas} other {# peças certas}}, enviado em {date}.",
+          "check": "Ver minha posição",
+          "checking": "Verificando...",
+          "ranked": "Posição {rank, number} de {total, plural, one {# registro} many {# registros} other {# registros}} em {difficulty}, no mundo.",
+          "rankedIn": "Posição {rank, number} de {total, plural, one {# registro} many {# registros} other {# registros}} em {difficulty}. País: {country}.",
+          "checkedAt": "Verificado às {time}.",
+          "boardSize": "O ranking público mostra os {limit} primeiros.",
+          "up": "Subiu {places, plural, one {# posição} many {# posições} other {# posições}} desde {time}.",
+          "down": "Caiu {places, plural, one {# posição} many {# posições} other {# posições}} desde {time}.",
+          "same": "Mesma posição que às {time}.",
+          "missing": "Seu registro em {difficulty} não está mais no ranking, então este dispositivo deixou de guardá-lo. Às vezes os rankings são limpos ou zerados. Verificado às {time}.",
+          "limited": "Verificações demais vindas da sua conexão. Tente de novo em {wait, plural, one {# segundo} many {# segundos} other {# segundos}}.",
+          "noCountry": "O ranking não tem país para este registro, então ele só pode entrar na classificação mundial.",
+          "offline": "Você está offline, então nada foi enviado. Conecte-se e tente de novo.",
+          "failed": "Não foi possível acessar o ranking, então nenhuma posição foi lida. Tente de novo mais tarde."
+        },
+        "plans": {
+          "fig": "Fig. {number} · Programas",
+          "title": "Escolha um plano e vá até o fim.",
+          "desc": "Um plano por vez. O progresso é contado a partir das suas rodadas, então interromper um plano nunca apaga uma rodada.",
+          "baseline": {
+            "kicker": "Plano A · 7 dias",
+            "title": "Semana de referência",
+            "steps": [
+              "Uma rodada no nível Médio por dia.",
+              "Anote a leitura e resista à vontade de repetir.",
+              "Dia 7: compare com o dia 1."
+            ],
+            "progress": "{played} de {days} dias com uma rodada no nível Médio",
+            "compare": "Dia {firstDay} {first}%, dia {lastDay} {latest}%: {direction, select, up {subiu {change, plural, one {# ponto} many {# pontos} other {# pontos}}} down {caiu {change, plural, one {# ponto} many {# pontos} other {# pontos}}} other {sem mudança}}.",
+            "compareNone": "Nenhuma rodada no nível Médio desde o início do plano, então não há o que comparar.",
+            "compareOne": "Só uma rodada no nível Médio desde o início do plano, então ainda não há o que comparar."
+          },
+          "edge": {
+            "kicker": "Plano B · 14 dias",
+            "title": "Treino das colunas de borda",
+            "steps": [
+              "Ajuste livre: 8 peças, 15 s.",
+              "Revise o seu mapa de erros a cada 3 dias.",
+              "Combine com o guia de visão do tabuleiro."
+            ],
+            "progress": "Você jogou esse ajuste em {played, plural, one {# dia} many {# dias} other {# dias}} de {elapsed}. Objetivo: {target} dias em {days}.",
+            "share": "Erros nas colunas de borda: {before}% em {beforeRounds, plural, one {# rodada} many {# rodadas} other {# rodadas}} antes do plano, {now}% em {nowRounds, plural, one {# rodada} many {# rodadas} other {# rodadas}} desde então.",
+            "shareMissing": "Os erros nas colunas de borda são comparados quando cada lado tiver {needed} rodadas com uma peça na coluna a ou h. Até agora, {before} antes do plano e {now} desde então.",
+            "guide": "Leia como ver o tabuleiro inteiro"
+          },
+          "ladder": {
+            "kicker": "Plano C · sem prazo",
+            "title": "Escada descendente",
+            "steps": [
+              "Mantenha 90% por três rodadas seguidas.",
+              "Depois reduza o tempo de estudo em 2 segundos.",
+              "Quando o tempo de estudo chegar ao mínimo, adicione peças."
+            ],
+            "rung": "Degrau: {pieceCount} peças, {studyTime}.",
+            "run": "{run} de {needed} rodadas seguidas com {accuracy} por cento ou mais.",
+            "climbed": "Degrau vencido: {needed} rodadas seguidas com {accuracy} por cento ou mais.",
+            "next": "Próximo degrau: {pieceCount} peças, {studyTime}.",
+            "top": "Topo da escada: nenhum tabuleiro tem mais de {pieceCount} peças."
+          },
+          "status": {
+            "day": "Dia {day}",
+            "dayOf": "Dia {day} de {length}",
+            "overtime": "Dia {day}, além dos {length} previstos",
+            "done": "Concluído no dia {day}.",
+            "finished": "Encerrado antes, no dia {day}.",
+            "stopped": "Interrompido no dia {day}."
+          },
+          "start": "Começar {title}",
+          "again": "Começar {title} de novo",
+          "busy": "Um plano por vez. Interrompa {title} para começar este.",
+          "stop": "Interromper plano",
+          "confirmStop": "Interromper mesmo?",
+          "keep": "Continuar",
+          "finish": "Encerrar antes",
+          "play": "Jogar {pieceCount} peças, {studyTime}"
+        },
+        "goal": {
+          "fig": "Fig. {number} · Meta",
+          "title": "Mire numa leitura.",
+          "desc": "Escolha um número de peças e uma precisão. A barra se preenche com a sua melhor rodada com esse número de peças ou mais desde que você definiu a meta.",
+          "sample": "Meta de exemplo: {pieceCount} peças com {accuracy} por cento. Melhor até agora: {best} por cento, {percent}% do caminho.",
+          "target": "Meta: {pieceCount} peças ou mais com {accuracy, select, 100 {100 por cento} other {{accuracy} por cento ou mais}}, definida em {date}.",
+          "progress": "Melhor desde então: {best} por cento com {pieceCount} peças, {percent}% do caminho.",
+          "bar": "{percent}% do caminho até a meta",
+          "need": "Nenhuma rodada com {pieceCount} peças ou mais desde que você definiu esta meta.",
+          "reached": "Alcançada em {date}: {accuracy} por cento com {pieceCount} peças.",
+          "form": "Nova meta",
+          "pieces": "Peças, no mínimo",
+          "accuracy": "Precisão, no mínimo",
+          "percent": "{value}%",
+          "set": "Definir meta",
+          "newGoal": "Definir uma nova meta",
+          "clear": "Apagar meta",
+          "cancel": "Cancelar",
+          "saved": "Meta definida.",
+          "cleared": "Meta apagada."
+        },
+        "mine": "Seu registro",
+        "fromRounds": "De {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
+        "dashboardLink": "Abrir seu painel",
+        "play": "Jogar uma rodada",
+        "tomorrow": "Volte amanhã.",
+        "stale": "Você jogou pela última vez há {count, plural, one {# dia} many {# dias} other {# dias}}.",
+        "unlock": {
+          "label": "Falta desbloquear",
+          "count": "{unlocked} de {total} figuras desbloqueadas",
+          "done": "Todas as figuras abaixo estão desbloqueadas.",
+          "showAll": "Mostrar todas as {count} figuras",
+          "showFewer": "Mostrar menos",
+          "span": "{qualifyingRounds, plural, one {# rodada} many {# rodadas} other {# rodadas}} com {accuracy}%+ e {minPieces}+ peças",
+          "piecesHeld": "{rounds, plural, one {# rodada} many {# rodadas} other {# rodadas}} em {days, plural, one {# dia} many {# dias} other {# dias}}",
+          "trend": "{rounds, plural, one {# rodada} many {# rodadas} other {# rodadas}} numa mesma configuração em {days, plural, one {# dia} many {# dias} other {# dias}}",
+          "speed": "{rounds, plural, one {# rodada} many {# rodadas} other {# rodadas}} numa mesma configuração",
+          "streak": "{days, plural, one {# dia jogado} many {# dias jogados} other {# dias jogados}}",
+          "curve": "{reviews, plural, one {# revisão} many {# revisões} other {# revisões}} após o mesmo intervalo",
+          "typeRecall": "{exposures, plural, one {# aparição} many {# aparições} other {# aparições}} de uma peça que não seja rei",
+          "missMap": "{exposures, plural, one {# aparição} many {# aparições} other {# aparições}} por coluna e fileira",
+          "trendRounds": "mais {rounds} {rounds, plural, one {rodada} many {rodadas} other {rodadas}} de {source, select, calibration {treino} other {partida}} com {pieceCount} peças, {studyTime}",
+          "trendDays": "{days, plural, one {mais # dia} many {mais # dias} other {mais # dias}} de rodadas de {source, select, calibration {treino} other {partida}} com {pieceCount} peças, {studyTime}",
+          "trendRoundsDays": "mais {rounds} {rounds, plural, one {rodada} many {rodadas} other {rodadas}} de {source, select, calibration {treino} other {partida}} com {pieceCount} peças, {studyTime}, {days, plural, one {mais # dia} many {mais # dias} other {mais # dias}}",
+          "spanLeft": "{qualifyingRounds, plural, one {mais # rodada} many {mais # rodadas} other {mais # rodadas}} com {accuracy}%+ e {minPieces}+ peças",
+          "spanLarger": "{largerRounds, plural, one {# rodada} many {# rodadas} other {# rodadas}} com {minPieces}+ peças",
+          "piecesHeldRounds": "{rounds, plural, one {mais # rodada} many {mais # rodadas} other {mais # rodadas}}",
+          "piecesHeldDays": "{days, plural, one {mais # dia} many {mais # dias} other {mais # dias}}",
+          "piecesHeldRoundsDays": "{rounds, plural, one {mais # rodada} many {mais # rodadas} other {mais # rodadas}}, {days, plural, one {mais # dia} many {mais # dias} other {mais # dias}}",
+          "speedRounds": "mais {rounds} {rounds, plural, one {rodada} many {rodadas} other {rodadas}} de {source, select, calibration {treino} other {partida}} com {pieceCount} peças, {studyTime}",
+          "speedRight": "{rightRounds, plural, one {# rodada} many {# rodadas} other {# rodadas}} com uma peça certa",
+          "streakLeft": "{days, plural, one {mais # dia jogado} many {mais # dias jogados} other {mais # dias jogados}}",
+          "curveLeft": "{reviews, plural, one {mais # revisão} many {mais # revisões} other {mais # revisões}} após o mesmo intervalo",
+          "typeRecallLeft": "{exposures, plural, one {mais # aparição} many {mais # aparições} other {mais # aparições}} de uma peça que não seja rei",
+          "missMapLeft": "{exposures, plural, one {mais # aparição} many {mais # aparições} other {mais # aparições}} na coluna ou fileira menos vista",
+          "insights": "{rounds, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
+          "insightsLeft": "{rounds, plural, one {mais # rodada} many {mais # rodadas} other {mais # rodadas}}",
+          "notebook": "{rounds, plural, one {# rodada} many {# rodadas} other {# rodadas}}"
+        },
+        "bests": {
+          "fig": "Fig. {number} · Recordes pessoais",
+          "title": "Sua melhor leitura em cada configuração.",
+          "desc": "Os recordes são guardados por configuração, porque 6 peças e 20 peças são testes diferentes. As leituras de treino desta página ficam separadas das partidas.",
+          "empty": "Sua melhor leitura em cada configuração aparece depois da sua primeira rodada.",
+          "setting": "{source, select, calibration {Treino} other {Partida}} · {pieceCount} peças · {studyTime}",
+          "first": "primeira leitura",
+          "showAll": "Mostrar todas as {count} configurações",
+          "showFewer": "Mostrar menos",
+          "reading": "{accuracy}% · reconstruído em {time}"
+        },
+        "types": {
+          "fig": "Fig. {number} · Lembrança por tipo de peça",
+          "title": "Quais peças escapam.",
+          "need": "Cerca de {count, plural, one {mais # rodada} many {mais # rodadas} other {mais # rodadas}} até que uma peça que não seja o rei tenha 20 aparições.",
+          "needStart": "A lembrança por tipo de peça aparece depois da sua primeira rodada.",
+          "onlyKings": "Até agora as suas rodadas tiveram só os dois reis, e a lembrança por tipo de peça precisa de mais peças.",
+          "thin": "{shown}/20 vistas",
+          "baseline": "referência",
+          "kings": "Os reis estão em todas as rodadas, então servem de referência. Você lembrou {recalled} de {shown}.",
+          "sampleNote": "Exemplo: peões e cavalos escapam primeiro."
+        },
+        "insights": {
+          "fig": "Fig. {number} · Descobertas",
+          "title": "O que se destaca e o que tentar.",
+          "desc": "Uma descoberta só aparece quando os números dela passam de uma amostra mínima, e ela informa as contagens que a sustentam.",
+          "sample": "Exemplo de um registro de amostra: as colunas a e h foram erradas {times, select, 2 {cerca de duas vezes} other {cerca de {times} vezes}} mais que as colunas centrais, d e e, {edge}% das peças contra {centre}%.",
+          "sampleList": "Descoberta de exemplo",
+          "sampleNote": "Descoberta de exemplo, não tirada das suas rodadas.",
+          "list": "Descobertas do seu registro",
+          "need": "As descobertas leem o seu registro a partir de {threshold} rodadas. {count, plural, one {Falta # rodada} many {Faltam # rodadas} other {Faltam # rodadas}}.",
+          "none": "Nada se destaca ainda. Continue jogando.",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {Você erra {edge, select, 0 {menos de 1%} other {{edge}%}} de {edgeShown} peças nas colunas a e h e nenhuma de {centreShown} nas colunas centrais, d e e.} 2 {Você erra nas colunas a e h cerca do dobro das vezes que nas colunas centrais, d e e: {edge, select, 0 {menos de 1%} other {{edge}%}} de {edgeShown} peças contra {centre, select, 0 {menos de 1%} other {{centre}%}} de {centreShown}.} other {Você erra nas colunas a e h cerca de {times} vezes mais que nas colunas centrais, d e e: {edge, select, 0 {menos de 1%} other {{edge}%}} de {edgeShown} peças contra {centre, select, 0 {menos de 1%} other {{centre}%}} de {centreShown}.}}",
+            "weakType": "Das peças, sem contar os reis, vistas {minimum} vezes ou mais, {type, select, q {as damas} r {as torres} b {os bispos} n {os cavalos} other {os peões}} são as que mais escapam: você lembrou {recalled} de {shown}, {percent}%.",
+            "fasterLessAccurate": "Com {pieceCount} peças, {studyTime}, suas últimas {window} rodadas levaram {fasterTime} a menos por peça certa que as {window} anteriores, e a precisão caiu {fell} pontos.",
+            "colourGap": "Você lembra das peças {weaker, select, w {brancas} other {pretas}} com menos frequência que das {weaker, select, w {pretas} other {brancas}}: {weakerPercent}% de {weakerShown} contra {strongerPercent}% de {strongerShown}, sem contar os reis.",
+            "plateau": "Com {pieceCount} peças, {studyTime}, suas últimas {window} rodadas tiveram média de {last}% e as {window} anteriores {before}%, e sua amplitude ficou em {span} peças na sua última semana de jogo. Uma peça a mais pode movê-la."
+          },
+          "actions": {
+            "rig": "Jogar {pieceCount} peças, {studyTime}",
+            "patterns": "Leia os exercícios de reconhecimento de padrões",
+            "vision": "Leia como ver o tabuleiro inteiro"
+          }
+        },
+        "notebook": {
+          "fig": "Fig. {number} · Caderno do laboratório",
+          "title": "O que aconteceu, e quando.",
+          "empty": "As anotações aparecem conforme você joga.",
+          "sampleList": "Anotações de exemplo do caderno",
+          "list": "Seu caderno, das mais recentes para as mais antigas",
+          "new": "Novo",
+          "newNote": "“Novo” marca as anotações feitas desde a sua última visita.",
+          "showAll": "Mostrar todas as {count} anotações",
+          "showFewer": "Mostrar menos",
+          "day": "Dia {day}.",
+          "olderBefore": "As anotações anteriores a {date} não ficam guardadas neste navegador.",
+          "older": "As anotações mais antigas não ficam guardadas neste navegador.",
+          "entries": {
+            "firstRound": "Primeira rodada: {accuracy} por cento com {pieceCount} peças.",
+            "rounds": "Rodada {count, number} jogada.",
+            "first90": "Primeira vez com {threshold} por cento ou mais com {pieceCount} peças.",
+            "best": "Novo recorde {source, select, calibration {de treino} other {de partida}} com {pieceCount} peças, {studyTime}: {by, select, time {{accuracy} por cento de novo, reconstruído em {solveTime}} other {de {previous} para {accuracy} por cento}}.",
+            "span": "{from, select, 0 {A amplitude de memória chegou a {to} peças} other {A amplitude de memória passou de {from} para {to} peças}}.",
+            "streak": "{forgiven, plural, =0 {{days} dias seguidos.} one {{days} dias de sequência, # falta perdoada.} many {{days} dias de sequência, # faltas perdoadas.} other {{days} dias de sequência, # faltas perdoadas.}}",
+            "rungUp": "Subiu de degrau: {pieceCount} peças com {studyTime}.",
+            "goalReached": "Meta alcançada: {accuracy} por cento com {pieceCount} peças ou mais."
+          }
+        },
+        "tools": {
+          "title": "Guardado neste dispositivo",
+          "body": "Sem conta e sem servidor. Baixe uma cópia para levar o registro a outro navegador ou para guardá-lo com segurança.",
+          "download": "Baixar meu registro do laboratório",
+          "import": "Importar",
+          "lastBackup": "Exportação iniciada em {date}",
+          "neverBackedUp": "Ainda não exportado",
+          "imported": "{added, plural, =0 {Nada novo para importar. Essas rodadas já estão aqui.} one {# rodada importada.} many {# rodadas importadas.} other {# rodadas importadas.}}",
+          "skipped": "{count, plural, one {# rodada do arquivo não pôde ser lida e foi ignorada.} many {# rodadas do arquivo não puderam ser lidas e foram ignoradas.} other {# rodadas do arquivo não puderam ser lidas e foram ignoradas.}}",
+          "importFailed": "Esse arquivo não é um registro do laboratório do Memory Chess.",
+          "tooLarge": "Esse arquivo tem mais de 5 MB, mais do que qualquer registro do laboratório, então nada foi importado.",
+          "overCap": "{count, plural, one {# rodada mais antiga ficou de fora} many {# rodadas mais antigas ficaram de fora} other {# rodadas mais antigas ficaram de fora}} para respeitar o limite de 5.000 rodadas.",
+          "summaryIgnored": "Este navegador já tinha rodadas, então só as rodadas novas foram mescladas, não os totais acumulados do arquivo.",
+          "summaryDropped": "Os totais acumulados do arquivo estavam ilegíveis ou eram de uma versão mais antiga, então só as rodadas dele foram importadas.",
+          "safari": "No Safari, uma aba privada não guarda este registro depois de fechada, e o Safari apaga os dados salvos de um site depois de uns 7 dias sem visita. Exporte uma cópia para não perdê-lo.",
+          "unavailable": "Não fica salvo em janelas privadas. Esta janela do navegador não está guardando as suas rodadas.",
+          "backup": "Backup entre dispositivos (em breve)",
+          "backupNoted": "O backup entre dispositivos ainda não existe. Obrigado, o seu interesse foi registrado.",
+          "card": {
+            "open": "Compartilhar minha leitura",
+            "title": "Minha leitura no Memory Chess",
+            "span": "Amplitude de memória: {pieceCount, plural, one {# peça} many {# peças} other {# peças}}, {accuracy}% ou mais em {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
+            "held": "Peças retidas: média recente de {average}, de {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
+            "speed": "Velocidade: média recente de {average} por peça {source, select, calibration {no treino} other {em partidas}} com {pieceCount} peças, {studyTime}, de {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
+            "site": "thememorychess.com",
+            "copy": "Copiar minha leitura",
+            "copied": "Copiado. Cole onde quiser.",
+            "copyFailed": "A cópia não funcionou aqui. A leitura está selecionada acima, então copie você mesmo."
+          },
+          "nudge": {
+            "title": "Seu registro mora neste navegador",
+            "body": "Limpar os dados do navegador apaga o registro. Salve este site nos favoritos para voltar sempre ao mesmo navegador e use Baixar meu registro do laboratório, acima, para guardar uma cópia.",
+            "safari": "No iPhone e no iPad, Adicionar à Tela de Início mantém o site como um app com o seu próprio registro, que a regra de 7 dias do Safari não apaga. Ele começa vazio, então importe lá a cópia que você baixou.",
+            "dismiss": "Dispensar"
+          }
+        }
+      },
+      "library": {
+        "title": "Biblioteca de referência.",
+        "lede": "A Central de aprendizado combina guias curtos com exercícios, para que cada leitura aponte para algo que você possa praticar.",
+        "ref": "Ref. {number}",
+        "read": "Ler o guia",
+        "vision": {
+          "title": "Visão do tabuleiro",
+          "body": "Veja o tabuleiro inteiro de uma vez, em vez de um canto de cada vez."
+        },
+        "visualization": {
+          "title": "Visualização",
+          "body": "Segure na cabeça uma posição em movimento enquanto as peças mudam de lugar."
+        },
+        "calculation": {
+          "title": "Cálculo",
+          "body": "Enxergue mais lances à frente sem perder o tabuleiro de vista."
+        },
+        "memory": {
+          "title": "Memória",
+          "body": "Técnicas de agrupamento e de padrões que elevam as suas leituras."
+        },
+        "blindfold": {
+          "title": "Treino de xadrez às cegas",
+          "body": "Um plano em quatro etapas, da lembrança do tabuleiro até partidas inteiras às cegas."
+        },
+        "blundering": "Como parar de cometer erros graves"
+      },
+      "final": {
+        "title": "Sua primeira leitura leva menos de um minuto.",
+        "body": "Sem conta, sem download, sem cadastro. Abra uma rodada, estude, reconstrua, leia o número. Depois decida se quer uma segunda."
+      },
+      "resultCard": {
+        "title": "Seu registro do laboratório",
+        "device": "Guardado neste dispositivo",
+        "lines": "Esta rodada no seu registro",
+        "unshown": "Não foi possível mostrar o seu registro do laboratório para esta rodada.",
+        "newBest": {
+          "up": "Novo recorde com {pieceCount} peças, {studyTime}: {accuracy}%, acima dos {previous}% anteriores",
+          "faster": "Novo recorde com {pieceCount} peças, {studyTime}: {accuracy}% de novo, {fasterTime} mais rápido",
+          "plain": "Novo recorde com {pieceCount} peças, {studyTime}: {accuracy}%"
+        },
+        "vsRecent": {
+          "above": "{points, plural, one {# ponto} many {# pontos} other {# pontos}} acima da sua média nas últimas {rounds} rodadas nesta configuração",
+          "below": "{points, plural, one {# ponto} many {# pontos} other {# pontos}} abaixo da sua média nas últimas {rounds} rodadas nesta configuração",
+          "level": "Igual à sua média nas últimas {rounds} rodadas nesta configuração"
+        },
+        "span": "Amplitude subiu para {pieceCount} peças",
+        "streak": "{current, plural, one {Dia 1} many {# dias seguidos} other {# dias seguidos}}{graceUsed, select, true {, dia de tolerância usado} other {}}, {days} de {goal} dias nesta semana",
+        "next": {
+          "label": "Próximo",
+          "why": {
+            "more": "90% ou mais, então uma peça a mais com o mesmo tempo de estudo.",
+            "fewer": "Menos de 50%, então uma peça a menos com o mesmo tempo de estudo.",
+            "edgeFiles": "Você erra nas colunas a e h com mais frequência que nas colunas centrais.",
+            "weakType": "{type, select, q {As damas} r {As torres} b {Os bispos} n {Os cavalos} other {Os peões}} são as que mais escapam: você lembrou {recalled} de {shown}.",
+            "fasterLessAccurate": "Com {pieceCount} peças, {studyTime}, você ficou mais rápido por peça certa e a precisão caiu {fell} pontos.",
+            "colourGap": "Você lembra das peças {weaker, select, w {brancas} other {pretas}} com menos frequência: {weakerPercent}% contra {strongerPercent}%.",
+            "plateau": "Sua amplitude está parada em {span} peças."
+          },
+          "play": "Jogar {pieceCount} peças, {studyTime}",
+          "again": "Jogar de novo com {pieceCount} peças, {studyTime}",
+          "patterns": "Leia os exercícios de reconhecimento de padrões",
+          "vision": "Leia como ver o tabuleiro inteiro"
+        }
+      },
+      "daily": {
+        "locked": "Você já abriu o tabuleiro de hoje. Uma tentativa por dia neste dispositivo.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Reinicia em menos de um minuto} one {Reinicia em # min} many {Reinicia em # min} other {Reinicia em # min}}} one {Reinicia em # h {minutes} min} many {Reinicia em # h {minutes} min} other {Reinicia em # h {minutes} min}}",
+        "seeRecord": "Abrir seu registro do laboratório",
+        "chooseRound": "Jogar outra rodada"
+      },
+      "review": {
+        "none": "Nenhum tabuleiro está pronto para revisão neste dispositivo agora.",
+        "capped": "As {cap} revisões de hoje estão concluídas neste dispositivo.",
+        "cappedNext": "Qualquer tabuleiro ainda pendente volta amanhã, começando pelo que espera há mais tempo.",
+        "schedule": "Tabuleiros em que você faz menos de 80% voltam 1, 3, 7 e 14 dias depois da primeira vez que você os vê."
+      }
     }
   },
   "game": {

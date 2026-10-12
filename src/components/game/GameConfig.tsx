@@ -61,15 +61,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     setMemorizeTime(preset.memorizeTime);
   }
   
-  const startRound = (settings: { pieceCount: number; memorizeTime: number }, source: RoundSource) => {
-    if (onStart) {
-      onStart(settings.pieceCount, settings.memorizeTime, source);
-    } else {
-      startGame(settings.pieceCount, settings.memorizeTime, source);
-    }
-  };
-
-  const handleStart = () => startRound({ pieceCount, memorizeTime }, 'game_form');
+  const handleStart = () => (onStart ?? startGame)(pieceCount, memorizeTime, 'game_form');
   
   const fillOf = (value: number, range: { min: number; max: number }) =>
     ({ '--fill': `${((value - range.min) / (range.max - range.min)) * 100}%` }) as CSSProperties;
@@ -82,25 +74,6 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       className="lab-card lab-config"
     >
       <h1 className="lab-config-h">{t('config.title')}</h1>
-
-      <div className="lab-config-quick">
-        <button
-          type="button"
-          onClick={() => startRound(DEFAULT_PRESET, 'game_quick')}
-          data-quick-start
-          className="lab-btn lab-btn-primary"
-        >
-          {t('config.quickStart')}
-        </button>
-        <p className="lab-note">
-          {t(`presets.${DEFAULT_PRESET.id}.label`)}
-          {' · '}
-          {t('config.presetSummary', {
-            pieces: DEFAULT_PRESET.pieceCount,
-            seconds: DEFAULT_PRESET.memorizeTime,
-          })}
-        </p>
-      </div>
 
       <div className="lab-config-group">
         <h2 className="lab-config-label">{t('config.presetsLabel')}</h2>
@@ -208,7 +181,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </div>
       </div>
 
-      <button type="button" onClick={handleStart} className="lab-btn lab-btn-secondary lab-config-start">
+      <button type="button" onClick={handleStart} data-start-round className="lab-btn lab-btn-primary lab-config-start">
         {t('config.start')}
       </button>
 

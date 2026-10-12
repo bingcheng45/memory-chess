@@ -52,10 +52,10 @@ export default async function drive(page, { baseUrl }) {
     `fetch("/api/leaderboard/cutoffs").then(r => r.json()).then(b => JSON.stringify(b.data))`,
   );
   await page.waitFor(
-    `[...document.querySelectorAll("button")].some(b => b.textContent.includes("Start Training"))`,
+    `[...document.querySelectorAll("button")].some(b => b.textContent.includes("Start round"))`,
   );
   await page.clickText("button", "Easy");
-  await page.clickText("button", "Start Training");
+  await page.clickText("button", "Start round");
 
   await page.waitFor(
     `[...document.querySelectorAll("button")].some(b => b.textContent.trim() === "Skip")`,

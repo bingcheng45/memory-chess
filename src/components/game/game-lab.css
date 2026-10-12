@@ -77,8 +77,6 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 /* configuration form */
 .lab-game .lab-config { width: 100%; max-width: 560px; margin: 0 auto; padding: clamp(20px, 4vw, 32px); }
 .lab-game .lab-config-h { margin: 0 0 20px; font: 650 clamp(30px, 4vw, 40px)/1.12 var(--lp-ui); letter-spacing: -0.02em; }
-.lab-game .lab-config-quick { display: grid; gap: 8px; padding-bottom: 24px; border-bottom: 1px solid var(--lp-line); }
-.lab-game .lab-config-quick .lab-btn { width: 100%; }
 .lab-game .lab-config-group { margin-top: 24px; }
 .lab-game .lab-config-label { display: block; margin: 0 0 10px; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-ink); }
 .lab-game .lab-config-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }

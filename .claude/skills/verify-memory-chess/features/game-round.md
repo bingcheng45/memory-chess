@@ -14,7 +14,7 @@ The core loop on `/game`. A player picks a difficulty, memorizes a random positi
 
 ## How to get to it (user POV)
 
-- Open `/game` and choose `Start Training`.
+- Open `/game` and choose `Start round`.
 - Open `/game?difficulty=hard` to preselect a preset.
 - Open `/game?pieceCount=6&memorizeTime=10`, which auto-starts a round.
 - Choose `Try Again` on a result screen.
@@ -33,7 +33,7 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
   --evidence .verify-evidence/game-round --base http://127.0.0.1:4517
 ```
 
-- **Configure.** Choose `Easy`, then `Start Training`. Run `clickText("button", "Easy")` then `clickText("button", "Start Training")`. The board grid carries `data-round-phase="study"` and the controls show `Done`.
+- **Configure.** Choose `Easy`, then `Start round`. Run `clickText("button", "Easy")` then `clickText("button", "Start round")`. The board grid carries `data-round-phase="study"` and the controls show `Done`.
 - **Read the position.** Every square is a `button[data-coordinate]` whose `aria-label` reads "e4, white king" or "e4, empty" (`game.round.squareWith` and `squareEmpty`). Collect the occupied ones. Screenshot as evidence of the position shown.
 - **End study.** Run `clickText("button", "Done")`. The grid turns `data-round-phase="rebuild"` and the palette (`.lab-palette`, one button per piece, named for the piece and what is left of it, like "white king, 1 left"; a piece with none left is greyed with `data-used-up` and stays pressable, so it is not `aria-disabled`) becomes active.
 - **Place each piece.** For each remembered square: `click('.lab-palette [aria-label^="white king, "]')` unless that button already has `aria-pressed="true"` (pressing it again deselects), then `click('[data-coordinate="e4"]')`. The square's `aria-label` becomes "e4, white king".

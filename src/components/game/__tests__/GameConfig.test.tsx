@@ -118,24 +118,36 @@ describe("GameConfig last-game line", () => {
   });
 });
 
-describe("GameConfig one-tap start", () => {
-  it("starts the Medium preset whatever the form below is set to", () => {
-    const onStart = jest.fn();
-    render(<GameConfig onStart={onStart} />);
-
-    fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
-    fireEvent.click(screen.getByRole("button", { name: "Start a round" }));
-
-    expect(onStart).toHaveBeenCalledWith(6, 10, "game_quick");
+describe("GameConfig start", () => {
+  afterEach(() => {
+    Reflect.deleteProperty(window, "gtag");
   });
 
-  it("still starts the round the form is set to from the form's own button", () => {
+  it("offers one start button", () => {
+    render(<GameConfig />);
+
+    expect(screen.getAllByRole("button", { name: /start/i }).map((button) => button.textContent)).toEqual(["Start round"]);
+  });
+
+  it("starts the preset the form is set to", () => {
     const onStart = jest.fn();
     render(<GameConfig onStart={onStart} />);
 
     fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
-    fireEvent.click(screen.getByRole("button", { name: "Start Training" }));
+    fireEvent.click(screen.getByRole("button", { name: "Start round" }));
 
     expect(onStart).toHaveBeenCalledWith(12, 8, "game_form");
+  });
+
+  it("starts a 60 second round from the slider and reports it as a form start", () => {
+    const gtag = jest.fn();
+    window.gtag = gtag;
+    render(<GameConfig />);
+
+    fireEvent.change(screen.getByLabelText("Memorization Time"), { target: { value: "60" } });
+    fireEvent.click(screen.getByRole("button", { name: "Start round" }));
+
+    expect(useGameStore.getState().round).toMatchObject({ phase: "study", config: { pieceCount: 6, studyMs: 60000, source: "game_form" } });
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 60, source: "game_form" }]]);
   });
 });

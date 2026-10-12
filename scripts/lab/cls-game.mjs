@@ -4,7 +4,7 @@
  * phone held sideways, and records every layout shift with the nodes that moved
  * and their rects before and after.
  * Each shift is tagged in the page with the screen showing when it happened:
- * config, memorize, solve or result. Two loads per width: /game, where the quick
+ * config, memorize, solve or result. Two loads per width: /game, where the
  * start button opens a round, and the home page's round link, which memorizes
  * until the clock runs out (no Done, so the switch to solving is not an input),
  * places 4 of 6 pieces and submits. The leaderboard cutoffs answer "open" for
@@ -12,7 +12,7 @@
  * They answer when asked, as they do in the field, where the round warms them;
  * with --late-cutoffs they arrive LATE_CUTOFFS_MS after the result screen does,
  * as on a network slower than the whole round. Plays counter and leaderboard
- * writes are answered locally. Shifts after the quick start click count as
+ * writes are answered locally. Shifts after the start click count as
  * "start". Fails when any screen's CLS, the largest session window of shifts
  * without recent input (sessionWindowCls in cls.mjs), is over MAX_CLS, and when
  * the board on the memorize or solve screen is not min(width, height, MAX_BOARD)
@@ -202,9 +202,9 @@ async function measureViewport(page, base, { prefix, lateCutoffs }, text, { widt
   cutoffs.release = () => Promise.resolve();
 
   await page.goto(`${base}${prefix}/game`);
-  await page.waitFor(`!!document.querySelector("[data-quick-start]")`, 20_000);
+  await page.waitFor(`!!document.querySelector("[data-start-round]")`, 20_000);
   await page.sleep(SETTLE_MS);
-  await page.click("[data-quick-start]");
+  await page.click("[data-start-round]");
   await page.sleep(START_SETTLE_MS);
   const start = (await page.eval("window.__shifts")).map((shift) => ({ ...shift, screen: shift.screen === "config" ? "config" : "start" }));
   await page.eval(`localStorage.removeItem("memory-chess:leaderboard-cutoffs:v1")`);

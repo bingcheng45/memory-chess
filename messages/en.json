@@ -969,8 +969,7 @@
       "pieceCount": "Number of Pieces",
       "memorizeTime": "Memorization Time",
       "seconds": "{seconds}s",
-      "start": "Start Training",
-      "quickStart": "Start a round",
+      "start": "Start round",
       "lastGame": "Last game: {time}s solution time with {accuracy}% accuracy"
     },
     "presets": {

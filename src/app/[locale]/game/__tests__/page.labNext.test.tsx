@@ -40,7 +40,7 @@ afterEach(() => {
 describe("GamePage starting the lab card's next round", () => {
   it("starts the card's setting in place, on a fresh round, without leaving the page", async () => {
     render(<GamePage />);
-    fireEvent.click(screen.getByRole("button", { name: "Start Training" }));
+    fireEvent.click(screen.getByRole("button", { name: "Start round" }));
     fireEvent.click(screen.getByRole("button", { name: "Done" }));
     fireEvent.click(screen.getByRole("button", { name: "Submit" }));
     const url = window.location.href;

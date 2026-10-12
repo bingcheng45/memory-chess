@@ -187,7 +187,7 @@ describe("GamePage daily board link", () => {
     window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10&source=daily");
     render(<GamePage />);
 
-    fireEvent.click(await screen.findByRole("button", { name: "Start Training" }));
+    fireEvent.click(await screen.findByRole("button", { name: "Start round" }));
     await act(async () => answer({ kind: "play", pieceCount: 6, memorizeTime: 10, board: BOARD }));
 
     expect(mockStartGame.mock.calls.map(([, , source]) => source)).toEqual(["game_form"]);

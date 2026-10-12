@@ -152,8 +152,7 @@
       "pieceCount": "Bábuk száma",
       "memorizeTime": "Memorizálási idő",
       "seconds": "{seconds} mp",
-      "start": "Edzés indítása",
-      "quickStart": "Kör indítása",
+      "start": "Kör indítása",
       "lastGame": "Előző játszma: {time} mp megoldási idő, {accuracy}% pontosság"
     },
     "presets": {

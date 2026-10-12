@@ -42,10 +42,10 @@ async function pressKey(page, name) {
 async function playEasyRound(page, baseUrl) {
   await page.goto(`${baseUrl}/game`);
   await page.waitFor(
-    `[...document.querySelectorAll("button")].some(b => b.textContent.includes("Start Training"))`,
+    `[...document.querySelectorAll("button")].some(b => b.textContent.includes("Start round"))`,
   );
   await page.clickText("button", "Easy");
-  await page.clickText("button", "Start Training");
+  await page.clickText("button", "Start round");
 
   await page.waitFor(
     `[...document.querySelectorAll("button")].some(b => b.textContent.trim() === "Skip")`,

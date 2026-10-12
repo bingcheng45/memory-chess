@@ -30,7 +30,7 @@ describe("GamePage new game after a round", () => {
     render(<GamePage />);
 
     fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
-    fireEvent.click(screen.getByRole("button", { name: "Start Training" }));
+    fireEvent.click(screen.getByRole("button", { name: "Start round" }));
     fireEvent.click(screen.getByRole("button", { name: "Done" }));
     fireEvent.click(screen.getByRole("button", { name: "Submit" }));
     fireEvent.click(screen.getByRole("button", { name: "New Game" }));

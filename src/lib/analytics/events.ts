@@ -9,7 +9,6 @@ export const ROUND_SOURCES = [
   "calibration_cta",
   "guide_cta",
   "article_cta",
-  "game_quick",
   "game_form",
   "tile_drill",
   "try_again",
@@ -23,6 +22,11 @@ export const ROUND_SOURCES = [
 ] as const;
 
 export type RoundSource = (typeof ROUND_SOURCES)[number];
+
+/** Sources no control sends any more. A lab record written while one did still carries it, so an import accepts it. */
+export const RETIRED_ROUND_SOURCES = ["game_quick"] as const;
+export type RecordedRoundSource = RoundSource | (typeof RETIRED_ROUND_SOURCES)[number];
+export const RECORDED_ROUND_SOURCES: readonly RecordedRoundSource[] = [...ROUND_SOURCES, ...RETIRED_ROUND_SOURCES];
 
 export function roundSourceFrom(value: string | null): RoundSource {
   return ROUND_SOURCES.find((source) => source === value) ?? "link";

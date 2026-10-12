@@ -152,8 +152,7 @@
       "pieceCount": "Taş sayısı",
       "memorizeTime": "Ezberleme süresi",
       "seconds": "{seconds} sn",
-      "start": "Antrenmana başla",
-      "quickStart": "Bir tur başlat",
+      "start": "Bir tur başlat",
       "lastGame": "Son oyun: {time} sn çözüm süresi, %{accuracy} isabet"
     },
     "presets": {

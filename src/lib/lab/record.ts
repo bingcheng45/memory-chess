@@ -2,7 +2,7 @@ import type { PieceSymbol } from "chess.js";
 import { BOARD_SQUARES } from "@/lib/game/board";
 import { placementFromFen, scorePlacement } from "@/lib/game/scoring";
 import { GAME_CONFIG_RULES, presetIdFor, type PresetId } from "@/lib/game/configPrefill";
-import type { RoundSource } from "@/lib/analytics/events";
+import type { RecordedRoundSource } from "@/lib/analytics/events";
 import type { PlacementLog } from "./placements";
 
 export const PIECE_LETTERS: readonly PieceSymbol[] = ["k", "q", "r", "b", "n", "p"];
@@ -57,7 +57,7 @@ export const isFreshReading = (record: RoundRecord): boolean => record.v === 1 |
 
 /** Facts only a version 2 round carries. Each is optional, so a file written before a fact existed still reads. */
 export interface RoundCapture {
-  readonly startSource?: RoundSource;
+  readonly startSource?: RecordedRoundSource;
   readonly kind?: RoundKind;
   /** Review rounds only: the round reviewed and the days since it. */
   readonly reviewOf?: string;

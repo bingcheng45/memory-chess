@@ -1,5 +1,5 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
-import { ROUND_SOURCES, type RoundSource } from "@/lib/analytics/events";
+import { RECORDED_ROUND_SOURCES, type RecordedRoundSource } from "@/lib/analytics/events";
 import { isPieceCode, MAX_PLACEMENT_MS, MAX_PLACEMENTS, MAX_REMOVALS, type PlacementEvent } from "./placements";
 import {
   buildRoundRecord,
@@ -99,7 +99,7 @@ function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
   const reviewed = raw.reviewOf !== undefined;
   const valid =
     ROUND_KINDS.includes(kind as RoundKind) &&
-    (raw.startSource === undefined || ROUND_SOURCES.includes(raw.startSource as RoundSource)) &&
+    (raw.startSource === undefined || RECORDED_ROUND_SOURCES.includes(raw.startSource as RecordedRoundSource)) &&
     (raw.tzOffsetMin === undefined || (Number.isInteger(raw.tzOffsetMin) && Math.abs(raw.tzOffsetMin as number) <= MAX_TZ_OFFSET_MIN)) &&
     reviewed === (raw.reviewDelayDays !== undefined) &&
     (!reviewed || (kind === "review" && isId(raw.reviewOf) && isCount(raw.reviewDelayDays, MAX_REVIEW_DELAY_DAYS))) &&
@@ -108,7 +108,7 @@ function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
   if (!valid) return null;
   return {
     kind: kind as RoundKind,
-    startSource: raw.startSource as RoundSource | undefined,
+    startSource: raw.startSource as RecordedRoundSource | undefined,
     reviewOf: raw.reviewOf as string | undefined,
     reviewDelayDays: raw.reviewDelayDays as number | undefined,
     // A bad board day costs the round its day, not the round: it then never reads as a day's board.

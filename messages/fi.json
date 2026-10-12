@@ -152,8 +152,7 @@
       "pieceCount": "Nappuloiden määrä",
       "memorizeTime": "Muistiinpainamisaika",
       "seconds": "{seconds} s",
-      "start": "Aloita harjoitus",
-      "quickStart": "Aloita kierros",
+      "start": "Aloita kierros",
       "lastGame": "Edellinen peli: ratkaisuaika {time} s, tarkkuus {accuracy} %"
     },
     "presets": {

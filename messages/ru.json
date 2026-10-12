@@ -152,8 +152,7 @@
       "pieceCount": "Количество фигур",
       "memorizeTime": "Время на запоминание",
       "seconds": "{seconds} с",
-      "start": "Начать тренировку",
-      "quickStart": "Начать раунд",
+      "start": "Начать раунд",
       "lastGame": "Прошлая партия: {time} с на решение, точность {accuracy} %"
     },
     "presets": {

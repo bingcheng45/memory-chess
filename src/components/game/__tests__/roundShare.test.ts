@@ -18,7 +18,7 @@ const WHITE_ROOK = { color: "white", type: "rook" } as const;
 function scored(board?: SetBoard): Extract<RoundState, { phase: "scored" }> {
   const target = labPositionFromFen("4k3/8/8/3q4/8/8/4P3/4K3");
   const actions = [
-    { type: "start", config: { pieceCount: 4, studyMs: 10_000, source: board ? board.kind : "game_quick", board }, target, now: 0 },
+    { type: "start", config: { pieceCount: 4, studyMs: 10_000, source: board ? board.kind : "game_form", board }, target, now: 0 },
     { type: "studyEnded", now: 8_400 },
     { type: "place", piece: { color: "black", type: "king" }, square: "e8", now: 9_000 },
     { type: "place", piece: WHITE_KING, square: "e1", now: 10_000 },

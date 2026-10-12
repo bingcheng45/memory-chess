@@ -152,8 +152,7 @@
       "pieceCount": "Antal pjäser",
       "memorizeTime": "Memoreringstid",
       "seconds": "{seconds} s",
-      "start": "Starta träningen",
-      "quickStart": "Starta en runda",
+      "start": "Starta en runda",
       "lastGame": "Senaste partiet: {time} s lösningstid med {accuracy} % träffsäkerhet"
     },
     "presets": {

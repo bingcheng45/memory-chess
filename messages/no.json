@@ -152,8 +152,7 @@
       "pieceCount": "Antall brikker",
       "memorizeTime": "Innlæringstid",
       "seconds": "{seconds} s",
-      "start": "Start treningen",
-      "quickStart": "Start en runde",
+      "start": "Start en runde",
       "lastGame": "Forrige parti: {time} s løsningstid med {accuracy} % treffsikkerhet"
     },
     "presets": {

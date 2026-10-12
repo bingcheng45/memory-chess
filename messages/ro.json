@@ -152,8 +152,7 @@
       "pieceCount": "Numărul de piese",
       "memorizeTime": "Timp de memorare",
       "seconds": "{seconds} s",
-      "start": "Începe antrenamentul",
-      "quickStart": "Începe o rundă",
+      "start": "Începe o rundă",
       "lastGame": "Partida anterioară: {time} s timp de rezolvare, precizie {accuracy}%"
     },
     "presets": {

@@ -51,9 +51,9 @@ describe("reporting a round", () => {
     const gtag = jest.fn();
     window.gtag = gtag;
 
-    store().startGame(6, 10, "game_quick");
+    store().startGame(6, 10, "home_quick");
 
-    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "game_quick" }]]);
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "home_quick" }]]);
   });
 
   it("sends round_complete once when the round is scored, with what the player got right", () => {

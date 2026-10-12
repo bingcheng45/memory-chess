@@ -152,8 +152,7 @@
       "pieceCount": "Número de piezas",
       "memorizeTime": "Tiempo de memorización",
       "seconds": "{seconds} s",
-      "start": "Empezar a entrenar",
-      "quickStart": "Empezar una ronda",
+      "start": "Empezar una ronda",
       "lastGame": "Última partida: {time} s de resolución con un {accuracy} % de precisión"
     },
     "presets": {

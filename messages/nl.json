@@ -152,8 +152,7 @@
       "pieceCount": "Aantal stukken",
       "memorizeTime": "Kijktijd",
       "seconds": "{seconds} s",
-      "start": "Start de training",
-      "quickStart": "Start een ronde",
+      "start": "Start een ronde",
       "lastGame": "Vorige partij: {time} s oplostijd met {accuracy}% nauwkeurigheid"
     },
     "presets": {

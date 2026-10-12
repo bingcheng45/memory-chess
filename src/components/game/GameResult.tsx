@@ -351,12 +351,12 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           )}
           {round.phase === "scored" && (
             <ShareResult
+              key={gameState.labRoundId}
               share={roundShareOf(round, {
                 rating: gameState.skillRating ?? START_RATING,
                 change: extendedGameState.skillRatingChange ?? 0,
                 winStreak: gameState.streak ?? 0,
               })}
-              roundKey={gameState.labRoundId ?? "round"}
             />
           )}
           <Link href="/leaderboard" className="lab-result-link">

@@ -6,23 +6,32 @@ import { Share2 } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { fontsOf } from "@/components/share/cardCanvas";
 import { useCardImage } from "@/components/share/useCardImage";
+import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import { resultCaption, resultCardCopy, type RoundShare } from "./roundShare";
 
 const FILE_NAME = "memory-chess-result.png";
 
-// The dialog and the card's drawing load on the first open, so /game pays nothing for them until a player shares.
-const ShareDialog = lazy(() => import("@/components/share/ShareDialog").then(({ ShareDialog: dialog }) => ({ default: dialog })));
-const drawResultCard = (...args: Parameters<typeof import("./resultImage").drawResultCard>) => import("./resultImage").then(({ drawResultCard: draw }) => draw(...args));
+// The dialog and the card's drawing load when a player reaches for the button, so /game pays nothing for them until then.
+const loadDialog = () => import("@/components/share/ShareDialog");
+const ShareDialog = lazy(() => loadDialog().then(({ ShareDialog: dialog }) => ({ default: dialog })));
+const loadDrawing = () => import("./resultImage");
+const prefetch = () => {
+  void loadDialog().catch(() => undefined);
+  void loadDrawing().catch(() => undefined);
+};
 
 /** The result screen's Share result button and its dialog. The card is drawn the first time the dialog opens, and kept for the round. */
-export default function ShareResult({ share, roundKey }: { share: RoundShare; roundKey: string }) {
+export default function ShareResult({ share }: { share: RoundShare }) {
   const t = useTranslations("game.result.share");
   const locale = useLocale();
   const button = useRef<HTMLButtonElement>(null);
   const [open, setOpen] = useState(false);
   const [opened, setOpened] = useState(false);
   const copy = resultCardCopy(t, share, locale);
-  const image = useCardImage(() => drawResultCard(copy, share.kind === "daily" ? null : share.board, fontsOf(button.current ?? document.body), locale), opened ? `${locale}:${roundKey}` : null);
+  const image = useCardImage(
+    () => loadDrawing().then(({ drawResultCard }) => drawResultCard(copy, share.kind === "daily" ? null : share.board, fontsOf(button.current ?? document.body), locale)),
+    opened ? locale : null,
+  );
 
   const changeOpen = (next: boolean) => {
     setOpen(next);
@@ -31,14 +40,17 @@ export default function ShareResult({ share, roundKey }: { share: RoundShare; ro
 
   return (
     <Dialog.Root open={open} onOpenChange={changeOpen}>
-      <Dialog.Trigger ref={button} className="lab-btn lab-btn-secondary lab-result-share">
+      <Dialog.Trigger ref={button} className="lab-btn lab-btn-secondary lab-result-share" onPointerEnter={prefetch} onFocus={prefetch}>
         <Share2 aria-hidden size={18} />
         {t("button")}
       </Dialog.Trigger>
       {open && (
-        <Suspense fallback={null}>
-          <ShareDialog surface="result" title={t("title")} caption={resultCaption(t, share, locale)} image={image} alt={copy.alt} fileName={FILE_NAME} />
-        </Suspense>
+        // A dialog chunk that will not load leaves the button and the rest of the result screen as they were.
+        <ErrorBoundary fallback={null}>
+          <Suspense fallback={null}>
+            <ShareDialog surface="result" title={t("title")} caption={resultCaption(t, share, locale)} image={image} alt={copy.alt} fileName={FILE_NAME} />
+          </Suspense>
+        </ErrorBoundary>
       )}
     </Dialog.Root>
   );

@@ -11,6 +11,8 @@ const BOARD_X = CARD_WIDTH - PAD - BOARD_SIZE;
 const BOARD_Y = BODY_TOP + 6;
 const COLUMN_GAP = 48;
 const STATS_TOP = 760;
+/** Two rows fit between the legend and the footer; a daily card keeps the same rows, moved up. */
+const STAT_ROW = (BODY_BOTTOM - STATS_TOP) / 2;
 /** With no board beside the accuracy, the figures move up under it. */
 const DAILY_STATS_TOP = 640;
 /** The board's marks as round.css draws them on the result screen. */
@@ -44,10 +46,13 @@ function loadImage(src: string): Promise<HTMLImageElement | null> {
 }
 
 /** The site's own piece images; a piece whose image will not load is drawn as its chess symbol instead. */
-async function pieceArt(board: ScoredBoard): Promise<PieceArt> {
+async function loadPieces(board: ScoredBoard): Promise<ReadonlyMap<string, HTMLImageElement | null>> {
   const pieces = [...Object.values(board.target), ...Object.values(board.placed)].filter((piece): piece is LabPiece => piece !== undefined);
   const urls = [...new Set(pieces.map(({ type, color }) => getPieceImageUrl(type, color)))];
-  const images = new Map(await Promise.all(urls.map(async (url) => [url, await loadImage(url)] as const)));
+  return new Map(await Promise.all(urls.map(async (url) => [url, await loadImage(url)] as const)));
+}
+
+function pieceArt(images: ReadonlyMap<string, HTMLImageElement | null>): PieceArt {
   return (ctx, piece, x, y, size) => {
     const image = images.get(getPieceImageUrl(piece.type, piece.color));
     if (image) {
@@ -133,10 +138,9 @@ function drawHeadline(ctx: Ctx, copy: ResultCardCopy, width: number, fonts: Card
 function drawStats(ctx: Ctx, copy: ResultCardCopy, top: number, fonts: CardFonts, locale: string) {
   const columns = copy.stats.length === 4 ? 2 : 3;
   const width = (INNER - COLUMN_GAP * (columns - 1)) / columns;
-  const rowHeight = (BODY_BOTTOM - STATS_TOP) / 2;
   copy.stats.forEach(({ label, value }, index) => {
     const x = PAD + (index % columns) * (width + COLUMN_GAP);
-    const y = top + Math.floor(index / columns) * rowHeight;
+    const y = top + Math.floor(index / columns) * STAT_ROW;
     ctx.fillStyle = INK.rule;
     ctx.fillRect(x, y, width, 2);
     ctx.fillStyle = INK.muted;
@@ -149,13 +153,23 @@ function drawStats(ctx: Ctx, copy: ResultCardCopy, top: number, fonts: CardFonts
   });
 }
 
-/** The round's card: the accuracy large, the scored board beside it unless the round was the daily board, the rest in a grid. */
-export async function drawResultCard(copy: ResultCardCopy, board: ScoredBoard | null, fonts: CardFonts, locale: string): Promise<Blob> {
-  const art = board ? await pieceArt(board) : null;
+function drawWith(copy: ResultCardCopy, board: ScoredBoard | null, art: PieceArt, fonts: CardFonts, locale: string): Promise<Blob> {
   return drawCard(copy, fonts, (ctx) => {
     drawHeadline(ctx, copy, board ? BOARD_X - PAD - COLUMN_GAP : INNER, fonts);
-    if (board && art) drawBoard(ctx, board, art);
+    if (board) drawBoard(ctx, board, art);
     if (board && copy.legend) drawLegend(ctx, copy.legend, fonts);
     drawStats(ctx, copy, board ? STATS_TOP : DAILY_STATS_TOP, fonts, locale);
+  });
+}
+
+/**
+ * The round's card: the accuracy large, the scored board beside it unless the round was the daily board, the rest in a
+ * grid. Should a piece image still leave the canvas unreadable, the card is drawn again with the chess symbols.
+ */
+export async function drawResultCard(copy: ResultCardCopy, board: ScoredBoard | null, fonts: CardFonts, locale: string): Promise<Blob> {
+  const images = board ? await loadPieces(board) : new Map<string, null>();
+  return drawWith(copy, board, pieceArt(images), fonts, locale).catch((error: unknown) => {
+    if (!(error instanceof DOMException && error.name === "SecurityError")) throw error;
+    return drawWith(copy, board, pieceArt(new Map()), fonts, locale);
   });
 }

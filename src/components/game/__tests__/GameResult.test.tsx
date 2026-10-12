@@ -97,6 +97,7 @@ describe("GameResult", () => {
 
   afterEach(() => {
     jest.restoreAllMocks();
+    mockGameState = baseGameState;
   });
 
   it("renders the compact summary, both board positions, and working replay actions", () => {
@@ -287,7 +288,6 @@ describe("GameResult", () => {
       await waitFor(() => expect(screen.getByRole("heading", { name: "Score submitted!" })).toBeInTheDocument());
       const [, init] = fetchMock.mock.calls.find(([url]) => String(url).includes("/api/leaderboard"));
       expect(JSON.parse(init.body)).toMatchObject({ difficulty: "medium", skill_rating: 1187 });
-      mockGameState = baseGameState;
     });
 
     it("keeps the entry the board stored on this device, so the lab record can ask for its standing", async () => {

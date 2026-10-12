@@ -420,6 +420,12 @@
       "typeRequired": "Pilih jenis pertanyaan.",
       "messageTooShort": "Pesan harus minimal 10 karakter."
     },
+    "hints": {
+      "name": "Minimal 2 karakter.",
+      "email": "Balasan dikirim ke alamat ini.",
+      "type": "Setiap jenis dijelaskan di bawah formulir.",
+      "message": "Minimal 10 karakter."
+    },
     "errors": {
       "submitFailed": "Gagal mengirim formulir{details}",
       "generic": "Terjadi kesalahan saat mengirim formulir. Silakan coba lagi."

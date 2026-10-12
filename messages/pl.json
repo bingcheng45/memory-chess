@@ -420,6 +420,12 @@
       "typeRequired": "Wybierz rodzaj sprawy.",
       "messageTooShort": "Wiadomość musi mieć co najmniej 10 znaków."
     },
+    "hints": {
+      "name": "Co najmniej 2 znaki.",
+      "email": "Odpowiedź przyjdzie na ten adres.",
+      "type": "Każdy rodzaj jest opisany pod formularzem.",
+      "message": "Co najmniej 10 znaków."
+    },
     "errors": {
       "submitFailed": "Nie udało się wysłać formularza{details}",
       "generic": "Podczas wysyłania formularza wystąpił błąd. Spróbuj ponownie."

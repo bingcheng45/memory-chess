@@ -6,12 +6,24 @@
 .lab-paper .lab-read-head { padding-bottom: 48px; border-bottom: 1px solid var(--lp-line); }
 .lab-paper .lab-read-head h1 { font: 650 48px/1.08 var(--lp-ui); letter-spacing: -0.025em; }
 .lab-paper .lab-read-head .lab-lede { margin-top: 16px; }
+.lab-paper .lab-read-updated { margin-top: 16px; font: 500 15px/1.4 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lab-read-updated time { color: var(--lp-ink); font-variant-numeric: tabular-nums; }
+.lab-paper .lab-read-contents { margin-top: 32px; }
+.lab-paper .lab-read-contents-label { font: 600 13px/1.4 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lab-read-contents ul { margin-top: 8px; columns: 2; column-gap: 32px; list-style: none; padding: 0; }
+.lab-paper .lab-read-contents li { break-inside: avoid; }
+.lab-paper .lab-read-contents a { display: inline-block; padding: 6px 0; font: 500 15px/1.4 var(--lp-ui); text-decoration: none; }
+.lab-paper .lab-read-contents a:hover { text-decoration: underline; }
 
 .lab-paper .lab-read-sec { padding-top: 48px; }
 .lab-paper .lab-read-sec h2 { font: 650 28px/1.2 var(--lp-ui); letter-spacing: -0.015em; }
 .lab-paper .lab-prose { margin-top: 16px; font-size: 18px; line-height: 1.7; color: var(--lp-ink-2); }
 .lab-paper .lab-prose > * + * { margin-top: 20px; }
 .lab-paper .lab-prose a, .lab-paper .lab-changes a { text-decoration-line: underline; }
+.lab-paper .lab-prose ul { padding-left: 20px; list-style: disc; }
+.lab-paper .lab-prose li + li { margin-top: 12px; }
+.lab-paper .lab-prose li::marker { color: var(--lp-muted); }
+.lab-paper .lab-prose strong { font-weight: 600; color: var(--lp-ink); }
 
 /* changelog: a release is a meta line (version, date, tag), its title and summary, then its groups of changes */
 .lab-paper .lab-release { padding: 48px 0; border-bottom: 1px solid var(--lp-line); }
@@ -78,6 +90,7 @@
   .lab-paper .lab-read-head h1 { font-size: 36px; line-height: 1.1; }
   .lab-paper .lab-read-sec { padding-top: 40px; }
   .lab-paper .lab-read-sec h2 { font-size: 24px; }
+  .lab-paper .lab-read-contents ul { columns: 1; }
   .lab-paper .lab-prose { font-size: 17px; line-height: 1.65; }
   .lab-paper .lab-release { padding: 40px 0; }
   .lab-paper .lab-release-title { font-size: 22px; }

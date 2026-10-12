@@ -420,6 +420,12 @@
       "typeRequired": "Bir konu türü seç.",
       "messageTooShort": "Mesaj en az 10 karakter olmalı."
     },
+    "hints": {
+      "name": "En az 2 karakter.",
+      "email": "Yanıtlar bu adrese gelir.",
+      "type": "Her tür formun altında açıklanıyor.",
+      "message": "En az 10 karakter."
+    },
     "errors": {
       "submitFailed": "Form gönderilemedi{details}",
       "generic": "Form gönderilirken bir hata oluştu. Lütfen tekrar dene."

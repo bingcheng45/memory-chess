@@ -420,6 +420,12 @@
       "typeRequired": "Choisissez un type de demande.",
       "messageTooShort": "Le message doit contenir au moins 10 caractères."
     },
+    "hints": {
+      "name": "Au moins 2 caractères.",
+      "email": "Les réponses arrivent à cette adresse.",
+      "type": "Chaque type est expliqué sous le formulaire.",
+      "message": "Au moins 10 caractères."
+    },
     "errors": {
       "submitFailed": "Impossible d’envoyer le formulaire{details}",
       "generic": "Une erreur s’est produite lors de l’envoi du formulaire. Veuillez réessayer."

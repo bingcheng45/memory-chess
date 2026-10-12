@@ -420,6 +420,12 @@
       "typeRequired": "Välj en typ av ärende.",
       "messageTooShort": "Meddelandet måste ha minst 10 tecken."
     },
+    "hints": {
+      "name": "Minst 2 tecken.",
+      "email": "Svar skickas till den här adressen.",
+      "type": "Varje typ förklaras under formuläret.",
+      "message": "Minst 10 tecken."
+    },
     "errors": {
       "submitFailed": "Det gick inte att skicka formuläret{details}",
       "generic": "Ett fel inträffade när formuläret skickades. Försök igen."

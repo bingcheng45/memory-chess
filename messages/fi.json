@@ -420,6 +420,12 @@
       "typeRequired": "Valitse yhteydenoton aihe.",
       "messageTooShort": "Viestissä on oltava vähintään 10 merkkiä."
     },
+    "hints": {
+      "name": "Vähintään 2 merkkiä.",
+      "email": "Vastaukset lähetetään tähän osoitteeseen.",
+      "type": "Jokainen tyyppi selitetään lomakkeen alla.",
+      "message": "Vähintään 10 merkkiä."
+    },
     "errors": {
       "submitFailed": "Lomakkeen lähettäminen epäonnistui{details}",
       "generic": "Lomaketta lähetettäessä tapahtui virhe. Yritä uudelleen."

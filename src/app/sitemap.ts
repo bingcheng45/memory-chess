@@ -7,6 +7,7 @@ import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
 import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly } from "@/lib/seo/englishOnly";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
+import { TERMS_LAST_UPDATED } from "@/lib/seo/termsOfService";
 
 const SITE_URL = "https://thememorychess.com";
 
@@ -84,7 +85,7 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   },
   {
     path: "/terms",
-    lastModified: "2026-09-03T00:00:00.000Z",
+    lastModified: TERMS_LAST_UPDATED,
     changeFrequency: "yearly",
     priority: 0.3,
   },

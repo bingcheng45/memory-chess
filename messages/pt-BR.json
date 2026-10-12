@@ -420,6 +420,12 @@
       "typeRequired": "Escolha um tipo de contato.",
       "messageTooShort": "A mensagem precisa ter pelo menos 10 caracteres."
     },
+    "hints": {
+      "name": "Pelo menos 2 caracteres.",
+      "email": "As respostas chegam neste endereço.",
+      "type": "Cada tipo é explicado abaixo do formulário.",
+      "message": "Pelo menos 10 caracteres."
+    },
     "errors": {
       "submitFailed": "Não foi possível enviar o formulário{details}",
       "generic": "Ocorreu um erro ao enviar o formulário. Tente novamente."

@@ -27,12 +27,12 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Puzzle rating doesn't transfer to games because a puzzle does half the work for you. It promises a tactic, tells you which side has it, shows you a position you have never seen and lets you look with no opponent waiting. A game gives you none of that, so you must find the conditions for a tactic first.",
+    quickAnswer: "Puzzle rating doesn't transfer to games because a puzzle does half the work for you. It promises a tactic, tells you which side has it, shows the whole position fresh with nothing remembered to go stale, and lets you look with no opponent waiting. A game gives you none of that, so you must find the tactic's conditions first.",
     takeaways: [
       "Puzzle and game ratings come from separate pools, so the gap between them proves nothing on its own.",
       "Each of the four things a puzzle hands you needs a habit to replace it at the board.",
       "Scan for a loose piece, a lined-up pair or a king with no flight squares, and calculate only when one appears.",
-      "Five slow games and one engine check show whether your missed tactics are a scanning problem or a calculation problem.",
+      "Five slow games, each checked once with an engine, show whether your missed tactics are a scanning problem or a calculation problem.",
     ],
     audience: [
       "Your puzzle rating is several hundred points above your game rating.",

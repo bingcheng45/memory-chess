@@ -225,7 +225,7 @@
           "steps": {
             "study": {
               "intro": {
-                "caption": "Shirov sötéttel két gyaloggal áll jobban, de ellentétes színű futókkal gyakran tartható a döntetlen. Tíz bábu."
+                "caption": "Shirov sötéttel két gyalog előnyben van, de ellentétes színű futókkal gyakran tartható a döntetlen. Tíz bábu."
               },
               "whiteCorner": {
                 "caption": "Világos királya a g1-en védi a g2-gyalogot. A h-gyalog előrefutott h4-re."
@@ -281,7 +281,7 @@
         "observation": {
           "kicker": "Megfigyelés",
           "title": "A játékosok számolás közben szem elől tévesztik a bábukat.",
-          "body": "Három lépés mélyen a hosszú átlón álló futó csendben eltűnik a fejedben lévő képről. Az előtted lévő tábla helyes volt. A fejedben lévő nem."
+          "body": "Három lépés mélységben a hosszú átlón álló futó csendben eltűnik a fejedben lévő képről. Az előtted lévő tábla helyes volt. A fejedben lévő nem."
         },
         "hypothesis": {
           "kicker": "Hipotézis",
@@ -291,12 +291,12 @@
         "method": {
           "kicker": "Módszer",
           "title": "Egy kör, egy tiszta szám.",
-          "body": "Megfigyelés, üres tábla, újraépítés, pontozás. A helyes mezők jelölve vannak, a hibásak is, semmi sincs elrejtve. Egy kör kevesebb mint egy perc, így sokat lefuttathatsz."
+          "body": "Megfigyelés, üres tábla, újraépítés, pontozás. A helyes mezők jelölve vannak, a hibásak is, semmi sincs elrejtve. Egy kör kevesebb mint egy percig tart, így sokat lefuttathatsz."
         }
       },
       "method": {
         "title": "Egy kör mikroszkóp alatt.",
-        "lede": "Görgess végig egy kört egy valódi álláson: Kasparov halhatatlan játszmájának végén, amelyet Kasparov Topalov ellen játszott Wijk aan Zee-ben 1999-ben. A jelölések a megjegyzés egyik módját mutatják, nem bárki figyelmének felvételét.",
+        "lede": "Görgess végig egy kört egy valódi álláson: Kasparov halhatatlan játszmájának végén, amelyet Kasparov Topalov ellen játszott Wijk aan Zee-ben 1999-ben. A jelölések a megjegyzés egyik lehetséges módját mutatják, nem valakinek a tényleges figyelmét rögzítik.",
         "status": "{number}. fázis · {name}",
         "clock": "t = {seconds} s",
         "scoreChip": "{total} mezőből {correct}",
@@ -417,9 +417,9 @@
           "byTypeEmpty": "A bábutípusonkénti felidézés az első futás után jelenik meg itt.",
           "nextEmpty": "A mérés után itt jelenik meg a javasolt nehézség.",
           "suggested": "Javaslat:",
-          "stepUp": "lépj tovább ide: {tier}, {pieceCount} bábu, {memorizeSeconds} s. Előbb erősítsd meg két további tiszta körrel.",
-          "stay": "maradj ezen: {tier}, {pieceCount} bábu, {memorizeSeconds} s. Játssz három kört, és figyeld a trendet.",
-          "start": "kezdd itt: {tier}, {pieceCount} bábu, {memorizeSeconds} s. Megfigyelés közben párosítsd a bábukat.",
+          "stepUp": "lépj feljebb erre a szintre: {tier}, {pieceCount} bábu, {memorizeSeconds} s. Előbb erősítsd meg két további tiszta körrel.",
+          "stay": "maradj ezen a szinten: {tier}, {pieceCount} bábu, {memorizeSeconds} s. Játssz három kört, és figyeld a trendet.",
+          "start": "kezdd ezen a szinten: {tier}, {pieceCount} bábu, {memorizeSeconds} s. Megfigyelés közben párosítsd a bábukat.",
           "playTier": "Játék: {tier}",
           "legendCorrect": "helyes",
           "legendWrong": "rossz helyen",
@@ -452,7 +452,7 @@
       },
       "record": {
         "title": "Gyere vissza a trendvonalért.",
-        "lede": "Egy mérés csak pillanatkép. Tíz mérés már valódi mérés. Minden lejátszott kört ezen az eszközön tárolunk, és ezek a panelek a saját köreidből töltődnek fel. Az első köröd előtt a panelek <tag>Minta</tag> értékeket mutatnak, nem valódi játékosokat. Utána az a panel, amely még nem tudja kiolvasni a jegyzőkönyvedet, megírja, mire van még szüksége.",
+        "lede": "Egy mérés csak pillanatkép. Tíz mérésből már mérés lesz. Minden lejátszott kört ezen az eszközön tárolunk, és ezek a panelek a saját köreidből töltődnek fel. Az első köröd előtt a panelek <tag>Minta</tag> értékeket mutatnak, nem valódi játékosokat. Utána az a panel, amely még nem tudja kiolvasni a jegyzőkönyvedet, megírja, mire van még szüksége.",
         "span": {
           "fig": "{number}. ábra · Memóriaterjedelem",
           "title": "Hány bábut tudsz fejben tartani.",
@@ -553,7 +553,7 @@
           "fig": "{number}. ábra · Hibatérkép",
           "title": "Hol csúsznak ki a mezők.",
           "aria": "Minta hőtérkép a kihagyott mezőkről: a h-vonal mentén és a h1 körül a legsötétebb, a b7-en és az f7-en forró pontokkal, középen a legvilágosabb.",
-          "note": "Minta: a hibák a h-vonalon és a h1-es királysarok körül halmozódnak. Legközelebb ezt a szélt edzd.",
+          "note": "Minta: a hibák a h-vonalon és a h1-es királysarok körül halmozódnak. Legközelebb ezt a táblaszélt gyakorold.",
           "need": "Nagyjából még {count, plural, one {# kör} other {# kör}}, amíg minden vonalon és soron lesz 10 kiolvasható bábu.",
           "needStart": "Játssz még néhány kört, hogy elinduljon a hibatérképed.",
           "files": "Vonalak",
@@ -896,7 +896,7 @@
         "blundering": "Hogyan hagyd abba a durva hibákat"
       },
       "final": {
-        "title": "Az első mérésed kevesebb mint egy perc.",
+        "title": "Az első mérésed kevesebb mint egy percig tart.",
         "body": "Nincs fiók, nincs letöltés, nincs regisztráció. Nyiss meg egy kört, figyeld meg, építsd újra, olvasd le a számot. Aztán döntsd el, kérsz-e egy másodikat."
       },
       "resultCard": {
@@ -912,7 +912,7 @@
         "vsRecent": {
           "above": "{points, plural, one {# ponttal} other {# ponttal}} az átlagod felett, amelyet ennél a beállításnál az utolsó {rounds} körben értél el",
           "below": "{points, plural, one {# ponttal} other {# ponttal}} az átlagod alatt, amelyet ennél a beállításnál az utolsó {rounds} körben értél el",
-          "level": "Pont az átlagod, amelyet ennél a beállításnál az utolsó {rounds} körben értél el"
+          "level": "Pontosan az átlagod, amelyet ennél a beállításnál az utolsó {rounds} körben értél el"
         },
         "span": "A terjedelem {pieceCount} bábura nőtt",
         "streak": "{current, plural, one {1. nap} other {# nap egymás után}}{graceUsed, select, true {, türelmi nap felhasználva} other {}}, ezen a héten {goal} napból {days}",
@@ -924,7 +924,7 @@
             "edgeFiles": "Az a- és h-vonalat gyakrabban hibázod el, mint a középső vonalakat.",
             "weakType": "{type, select, q {A vezérek} r {A bástyák} b {A futók} n {A huszárok} other {A gyalogok}} csúsznak ki a leggyakrabban: {shown} közül {recalled} felidézve.",
             "fasterLessAccurate": "{pieceCount} bábu, {studyTime} beállításnál helyes bábunként gyorsabb lettél, a pontosság viszont {fell} ponttal esett.",
-            "colourGap": "A {weaker, select, w {világos} other {sötét}} bábukat ritkábban idézed fel: {weakerPercent}%, szemben ezzel: {strongerPercent}%.",
+            "colourGap": "A {weaker, select, w {világos} other {sötét}} bábukat ritkábban idézed fel: {weakerPercent}%, a másik szín {strongerPercent}%-ával szemben.",
             "plateau": "A terjedelmed {span} bábunál megállt."
           },
           "play": "Játék: {pieceCount} bábu, {studyTime}",

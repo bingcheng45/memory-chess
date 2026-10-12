@@ -241,8 +241,8 @@ describe("remembering the last settings played", () => {
 
   it.each([
     [2, 2],
-    [32, 32],
-    [2, 32],
+    [32, 60],
+    [2, 60],
     [32, 2],
   ])("restores stored settings at the range ends (%i pieces, %is)", async (pieceCount, memorizeTime) => {
     await expect(rehydrateFrom({ pieceCount, memorizeTime })).resolves.toEqual({
@@ -255,7 +255,7 @@ describe("remembering the last settings played", () => {
     ["1 piece", { pieceCount: 1, memorizeTime: 10 }],
     ["33 pieces", { pieceCount: 33, memorizeTime: 10 }],
     ["1 second", { pieceCount: 6, memorizeTime: 1 }],
-    ["33 seconds", { pieceCount: 6, memorizeTime: 33 }],
+    ["61 seconds", { pieceCount: 6, memorizeTime: 61 }],
     ["an out-of-range piece count", { pieceCount: 999, memorizeTime: 8 }],
     ["a missing memorize time", { pieceCount: 12 }],
     ["a fractional value", { pieceCount: 12.5, memorizeTime: 8 }],

@@ -31,6 +31,9 @@ function Round({ initial }: { initial: RoundState }) {
     <>
       <RoundBoard state={state} dispatch={dispatch} copy="game.round" />
       <RoundPalette state={state} dispatch={dispatch} copy="game.round" />
+      <button type="button" onClick={() => dispatch({ type: "submit", now: 9000 })}>
+        Submit
+      </button>
       <p aria-live="polite" data-testid="live">
         Board cleared.
         <RefusalAnnouncement state={state} copy="game.round" />
@@ -240,6 +243,45 @@ describe("drag and drop", () => {
 
     expect(cell("b8")).toHaveAccessibleName("b8, black rook");
     expect(cell("a8")).toHaveAccessibleName("a8, empty");
+  });
+});
+
+describe("a drag whose piece stops being draggable before the release", () => {
+  const mouse = { pointerId: 12, isPrimary: true, button: 0, pointerType: "mouse" };
+  const traces = () => ({
+    ghost: document.querySelector(".lab-drag-ghost") !== null,
+    dropTarget: document.querySelector("[data-drop-target]")?.getAttribute("data-coordinate") ?? null,
+    lifted: document.querySelector("[data-lifted]")?.getAttribute("data-coordinate") ?? null,
+  });
+  const settled = { ghost: false, dropTarget: null, lifted: null };
+
+  it("ends when the round is submitted from the keyboard mid-drag", () => {
+    renderWithIntl(<Round initial={rebuilding({ type: "place", piece: { color: "black", type: "rook" }, square: "a8", now: 2000 })} />);
+
+    fireEvent.pointerDown(cell("a8"), { ...mouse, ...pointOf("a8") });
+    fireEvent.pointerMove(cell("a8"), { ...mouse, ...pointOf("d8") });
+    fireEvent.click(screen.getByRole("button", { name: "Submit" }));
+    expect(traces()).toEqual(settled);
+    fireEvent.pointerMove(cell("a8"), { ...mouse, ...pointOf("e8") });
+    fireEvent.pointerUp(cell("a8"), { ...mouse, ...pointOf("e8") });
+
+    expect(traces()).toEqual(settled);
+    expect(cell("a8")).toHaveAccessibleName("a8, black rook");
+  });
+
+  it("ends on the release when a key lifts the piece mid-drag", () => {
+    renderWithIntl(<Round initial={rebuilding({ type: "place", piece: { color: "black", type: "rook" }, square: "a8", now: 2000 })} />);
+
+    fireEvent.pointerDown(cell("a8"), { ...mouse, ...pointOf("a8") });
+    fireEvent.pointerMove(cell("a8"), { ...mouse, ...pointOf("d8") });
+    fireEvent.click(cell("a8"));
+    fireEvent.pointerUp(cell("a8"), { ...mouse, ...pointOf("d8") });
+
+    expect(traces()).toEqual(settled);
+    expect(cell("d8")).toHaveAccessibleName("d8, empty");
+    drag(palette("white pawn"), [{ clientX: 300, clientY: 600 }, pointOf("c8")]);
+    expect(cell("c8")).toHaveAccessibleName("c8, white pawn");
+    expect(traces()).toEqual(settled);
   });
 });
 

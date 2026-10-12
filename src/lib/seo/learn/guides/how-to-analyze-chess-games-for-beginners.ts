@@ -240,7 +240,7 @@ const guide: LearnDocument = {
         },
         {
           question: "What if no single move decided the game?",
-          answer: "Pick the earliest move after which you felt worse and write your sentence about it anyway. If the engine then shows a bigger mistake earlier in the game, note the move number and review that one next time. One move per review still holds.",
+          answer: "Pick the earliest move after which you felt worse and write your sentence about it anyway. If the engine says you were already losing in that position, the real mistake came earlier. Note the move number and make that move your next review. One move per review still holds.",
         },
       ],
     },

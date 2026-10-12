@@ -775,6 +775,12 @@
       "heading": "Den här sidan finns inte.",
       "body": "Länken kan vara inaktuell, eller så har adressen ett stavfel. Du kan spela en runda eller gå tillbaka till startsidan."
     },
+    "error": {
+      "title": "Något gick fel",
+      "heading": "Något gick fel på den här sidan.",
+      "body": "Dina rundor och inställningar sparas i den här webbläsaren och påverkas inte. Försök igen eller gå tillbaka till startsidan.",
+      "retry": "Försök igen"
+    },
     "play": "Spela en runda",
     "home": "Till startsidan"
   }

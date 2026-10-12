@@ -775,6 +775,12 @@
       "heading": "Bu sayfa yok.",
       "body": "Bağlantı eskimiş ya da adreste bir yazım hatası olabilir. Bir tur oynayabilir ya da ana sayfaya dönebilirsin."
     },
+    "error": {
+      "title": "Bir şeyler ters gitti",
+      "heading": "Bu sayfada bir şeyler ters gitti.",
+      "body": "Turların ve ayarların bu tarayıcıda kayıtlı ve etkilenmedi. Tekrar dene ya da ana sayfaya dön.",
+      "retry": "Tekrar dene"
+    },
     "play": "Bir tur oyna",
     "home": "Ana sayfaya git"
   }

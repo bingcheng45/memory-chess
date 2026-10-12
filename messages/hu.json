@@ -775,6 +775,12 @@
       "heading": "Ez az oldal nem létezik.",
       "body": "Lehet, hogy a link elavult, vagy elírás van a címben. Játszhatsz egy kört, vagy visszatérhetsz a főoldalra."
     },
+    "error": {
+      "title": "Hiba történt",
+      "heading": "Hiba történt ezen az oldalon.",
+      "body": "A köreid és a beállításaid ebben a böngészőben vannak mentve, és nem sérültek. Próbáld újra, vagy térj vissza a főoldalra.",
+      "retry": "Próbáld újra"
+    },
     "play": "Játssz egy kört",
     "home": "Vissza a főoldalra"
   }

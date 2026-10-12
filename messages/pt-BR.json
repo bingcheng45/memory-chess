@@ -775,6 +775,12 @@
       "heading": "Esta página não existe.",
       "body": "O link pode estar desatualizado ou o endereço pode ter um erro de digitação. Você pode jogar uma rodada ou voltar à página inicial."
     },
+    "error": {
+      "title": "Algo deu errado",
+      "heading": "Algo deu errado nesta página.",
+      "body": "Suas rodadas e configurações ficam salvas neste navegador e não foram afetadas. Tente de novo ou volte à página inicial.",
+      "retry": "Tentar de novo"
+    },
     "play": "Jogar uma rodada",
     "home": "Ir para a página inicial"
   }

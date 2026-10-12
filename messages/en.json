@@ -1590,6 +1590,12 @@
       "heading": "This page does not exist.",
       "body": "The link may be out of date, or the address may have a typo. You can play a round or go back to the home page."
     },
+    "error": {
+      "title": "Something went wrong",
+      "heading": "Something went wrong on this page.",
+      "body": "Your rounds and settings are stored in this browser and are not affected. Try again, or go back to the home page.",
+      "retry": "Try again"
+    },
     "play": "Play a round",
     "home": "Go to the home page"
   }

@@ -775,6 +775,12 @@
       "heading": "Diese Seite gibt es nicht.",
       "body": "Vielleicht ist der Link veraltet oder die Adresse enthält einen Tippfehler. Du kannst eine Runde spielen oder zur Startseite zurückkehren."
     },
+    "error": {
+      "title": "Etwas ist schiefgelaufen",
+      "heading": "Auf dieser Seite ist etwas schiefgelaufen.",
+      "body": "Deine Runden und Einstellungen sind in diesem Browser gespeichert und nicht betroffen. Versuch es noch einmal oder kehre zur Startseite zurück.",
+      "retry": "Erneut versuchen"
+    },
     "play": "Eine Runde spielen",
     "home": "Zur Startseite"
   }

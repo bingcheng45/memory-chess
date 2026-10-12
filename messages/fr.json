@@ -775,6 +775,12 @@
       "heading": "Cette page n’existe pas.",
       "body": "Le lien est peut-être périmé, ou l’adresse contient une faute de frappe. Vous pouvez jouer une partie ou revenir à la page d’accueil."
     },
+    "error": {
+      "title": "Une erreur s’est produite",
+      "heading": "Une erreur s’est produite sur cette page.",
+      "body": "Vos parties et vos paramètres sont enregistrés dans ce navigateur et ne sont pas touchés. Réessayez ou revenez à la page d’accueil.",
+      "retry": "Réessayer"
+    },
     "play": "Jouer une partie",
     "home": "Aller à l’accueil"
   }

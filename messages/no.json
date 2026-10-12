@@ -775,6 +775,12 @@
       "heading": "Denne siden finnes ikke.",
       "body": "Lenken kan være utdatert, eller adressen kan ha en skrivefeil. Du kan spille en runde eller gå tilbake til forsiden."
     },
+    "error": {
+      "title": "Noe gikk galt",
+      "heading": "Noe gikk galt på denne siden.",
+      "body": "Rundene og innstillingene dine er lagret i denne nettleseren og er ikke berørt. Prøv igjen eller gå tilbake til forsiden.",
+      "retry": "Prøv igjen"
+    },
     "play": "Spill en runde",
     "home": "Til forsiden"
   }

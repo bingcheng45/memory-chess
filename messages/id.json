@@ -775,6 +775,12 @@
       "heading": "Halaman ini tidak ada.",
       "body": "Tautannya mungkin sudah usang, atau alamatnya salah ketik. Mainkan satu ronde atau kembali ke beranda."
     },
+    "error": {
+      "title": "Terjadi kesalahan",
+      "heading": "Terjadi kesalahan di halaman ini.",
+      "body": "Ronde dan pengaturanmu tersimpan di browser ini dan tidak terpengaruh. Coba lagi atau kembali ke beranda.",
+      "retry": "Coba lagi"
+    },
     "play": "Mainkan satu ronde",
     "home": "Ke beranda"
   }

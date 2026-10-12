@@ -775,6 +775,12 @@
       "heading": "Tato stránka neexistuje.",
       "body": "Odkaz může být zastaralý nebo je v adrese překlep. Můžete si zahrát kolo nebo se vrátit na úvodní stránku."
     },
+    "error": {
+      "title": "Něco se pokazilo",
+      "heading": "Na této stránce se něco pokazilo.",
+      "body": "Vaše kola a nastavení jsou uložené v tomto prohlížeči a nic se jim nestalo. Zkuste to znovu nebo se vraťte na úvodní stránku.",
+      "retry": "Zkusit znovu"
+    },
     "play": "Zahrát kolo",
     "home": "Na úvodní stránku"
   }

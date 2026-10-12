@@ -775,6 +775,12 @@
       "heading": "Esta página no existe.",
       "body": "Puede que el enlace esté desactualizado o que la dirección tenga un error. Puedes jugar una ronda o volver a la página de inicio."
     },
+    "error": {
+      "title": "Algo salió mal",
+      "heading": "Algo salió mal en esta página.",
+      "body": "Tus rondas y ajustes se guardan en este navegador y no se han visto afectados. Inténtalo de nuevo o vuelve a la página de inicio.",
+      "retry": "Intentar de nuevo"
+    },
     "play": "Jugar una ronda",
     "home": "Ir a la página de inicio"
   }

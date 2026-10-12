@@ -775,6 +775,12 @@
       "heading": "Ta strona nie istnieje.",
       "body": "Link może być nieaktualny albo w adresie jest literówka. Możesz zagrać rundę lub wrócić na stronę główną."
     },
+    "error": {
+      "title": "Coś poszło nie tak",
+      "heading": "Na tej stronie coś poszło nie tak.",
+      "body": "Twoje rundy i ustawienia są zapisane w tej przeglądarce i nic im się nie stało. Spróbuj ponownie lub wróć na stronę główną.",
+      "retry": "Spróbuj ponownie"
+    },
     "play": "Zagraj rundę",
     "home": "Przejdź na stronę główną"
   }

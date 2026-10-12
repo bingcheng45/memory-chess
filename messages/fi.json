@@ -775,6 +775,12 @@
       "heading": "Tätä sivua ei ole.",
       "body": "Linkki voi olla vanhentunut tai osoitteessa voi olla kirjoitusvirhe. Voit pelata kierroksen tai palata etusivulle."
     },
+    "error": {
+      "title": "Jotain meni pieleen",
+      "heading": "Tällä sivulla meni jotain pieleen.",
+      "body": "Kierroksesi ja asetuksesi on tallennettu tähän selaimeen, eikä niihin tullut muutoksia. Yritä uudelleen tai palaa etusivulle.",
+      "retry": "Yritä uudelleen"
+    },
     "play": "Pelaa kierros",
     "home": "Etusivulle"
   }

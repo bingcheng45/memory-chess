@@ -7,3 +7,9 @@
   .lab-paper .lab-message { padding-top: 56px; padding-bottom: 80px; }
   .lab-paper .lab-message-h { font-size: 34px; }
 }
+
+/* The same message drawn in place of a failed part of a page, by ErrorBoundary. */
+.lab-paper .lab-boundary { width: 100%; max-width: 560px; margin: 0 auto; }
+.lab-paper .lab-boundary-h { margin: 0 0 8px; font: 650 22px/1.3 var(--lp-ui); }
+.lab-paper .lab-boundary-text { margin: 0; font: 400 16px/1.6 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .lab-boundary .lab-message-actions { margin-top: 20px; }

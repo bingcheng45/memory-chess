@@ -1,6 +1,6 @@
 import Link from "next/link";
 import messages from "../../messages/en.json";
-import { LabMessageDocument } from "@/components/lab-paper/LabMessagePage";
+import { LabMessageDocument } from "@/components/lab-paper/LabMessageDocument";
 
 const { notFound, play, home } = messages.errorPages;
 

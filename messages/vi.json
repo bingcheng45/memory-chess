@@ -775,6 +775,12 @@
       "heading": "Trang này không tồn tại.",
       "body": "Liên kết có thể đã cũ hoặc địa chỉ bị gõ sai. Bạn có thể chơi một ván hoặc quay lại trang chủ."
     },
+    "error": {
+      "title": "Đã xảy ra lỗi",
+      "heading": "Trang này đã gặp lỗi.",
+      "body": "Các ván chơi và cài đặt của bạn được lưu trong trình duyệt này và không bị ảnh hưởng. Hãy thử lại hoặc quay về trang chủ.",
+      "retry": "Thử lại"
+    },
     "play": "Chơi một ván",
     "home": "Về trang chủ"
   }

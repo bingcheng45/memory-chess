@@ -775,6 +775,12 @@
       "heading": "Denne side findes ikke.",
       "body": "Linket kan være forældet, eller adressen kan have en stavefejl. Du kan spille en runde eller gå tilbage til forsiden."
     },
+    "error": {
+      "title": "Noget gik galt",
+      "heading": "Noget gik galt på denne side.",
+      "body": "Dine runder og indstillinger er gemt i denne browser og er ikke berørt. Prøv igen, eller gå tilbage til forsiden.",
+      "retry": "Prøv igen"
+    },
     "play": "Spil en runde",
     "home": "Til forsiden"
   }

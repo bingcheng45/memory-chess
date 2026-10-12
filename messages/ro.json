@@ -775,6 +775,12 @@
       "heading": "Această pagină nu există.",
       "body": "Linkul poate fi învechit sau adresa poate conține o greșeală de scriere. Poți juca o rundă sau te poți întoarce la pagina principală."
     },
+    "error": {
+      "title": "Ceva nu a funcționat",
+      "heading": "Ceva nu a funcționat pe această pagină.",
+      "body": "Rundele și setările tale sunt salvate în acest browser și nu au fost afectate. Încearcă din nou sau întoarce-te la pagina principală.",
+      "retry": "Încearcă din nou"
+    },
     "play": "Joacă o rundă",
     "home": "Mergi la pagina principală"
   }

@@ -46,6 +46,26 @@ afterEach(() => {
 });
 
 describe("DashboardShare", () => {
+  it("hands the card a rating's change as a direction and a formatted amount, and nothing for a level rating", async () => {
+    const rating = (trend: NonNullable<ShareCard["figures"][number]["trend"]>): ShareCard => ({
+      rounds: 5,
+      figures: [{ id: "rating", figure: { value: 1102, unit: "rating", digits: 0 }, context: { kind: "rating", values: { sign: trend.direction, change: trend.amount, rounds: 5 } }, trend }],
+    });
+    const lastLead = () => (jest.mocked(drawShareCard).mock.calls.at(-1)?.[0] as { lead: { trend?: unknown } }).lead;
+
+    const { rerender } = renderWithIntl(<DashboardShare card={rating({ direction: "up", amount: 1234 })} />);
+    await act(async () => {});
+    expect(lastLead().trend).toEqual({ direction: "up", text: "1,234" });
+
+    rerender(<DashboardShare card={rating({ direction: "down", amount: 12 })} />);
+    await act(async () => {});
+    expect(lastLead().trend).toEqual({ direction: "down", text: "12" });
+
+    rerender(<DashboardShare card={rating({ direction: "level", amount: 0 })} />);
+    await act(async () => {});
+    expect(lastLead().trend).toBeUndefined();
+  });
+
   it("draws the card into the panel as it shows, in words and numbers ready to print, and opens the dialog from the picture", async () => {
     const { container } = renderWithIntl(<DashboardShare card={CARD} />);
     await act(async () => {});

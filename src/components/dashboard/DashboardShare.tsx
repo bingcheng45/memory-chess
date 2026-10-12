@@ -2,7 +2,7 @@
 
 import { useRef, useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { useLocale, useTranslations } from "next-intl";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { DASHBOARD_PLAY_HREF, type ShareCard, type ShareFigure } from "@/lib/lab/dashboard";
 import { fontsOf, SITE } from "@/components/share/cardCanvas";
@@ -40,8 +40,14 @@ function useCardCopy(card: ShareCard | null): CardCopy | null {
   const t = useTranslations("dashboard");
   const figureText = useFigureText();
   const contextText = useContextText();
+  const format = useFormatter();
   if (!card) return null;
-  const printed = ({ id, figure, context }: ShareFigure): CardFigure => ({ label: t(`label.${id}`), segments: figureText.segments(figure), note: contextText(context) });
+  const printed = ({ id, figure, context, trend }: ShareFigure): CardFigure => ({
+    label: t(`label.${id}`),
+    segments: figureText.segments(figure),
+    note: contextText(context),
+    ...(trend && trend.direction !== "level" && { trend: { direction: trend.direction, text: format.number(trend.amount) } }),
+  });
   const [lead, ...grid] = card.figures.map(printed);
   return { kicker: t("share.card.kicker"), lead, grid, cta: t("share.card.cta"), site: SITE };
 }

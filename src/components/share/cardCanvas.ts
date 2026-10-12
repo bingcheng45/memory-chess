@@ -168,3 +168,43 @@ export function fontsOf(element: HTMLElement): CardFonts {
 }
 
 export const SITE = "thememorychess.com";
+
+/** How far a rating moved, as the card draws it: the amount in the player's number format, the arrow by direction. */
+export interface CardTrend {
+  readonly direction: "up" | "down";
+  readonly text: string;
+}
+
+const TREND_GAP = 12;
+const trendFont = (size: number, fonts: CardFonts) => font(600, size, fonts);
+
+/** The room a trend takes beside a figure, the gap before it included. */
+export function trendWidth(ctx: Ctx, { text }: CardTrend, size: number, fonts: CardFonts): number {
+  ctx.font = trendFont(size, fonts);
+  return TREND_GAP + size * 0.8 + size * 0.3 + ctx.measureText(text).width;
+}
+
+/**
+ * A triangle and the amount, in Lab Paper's correct green for a rise and wrong red for a fall, starting `TREND_GAP` after `x`
+ * on the figure's baseline. The triangle is a path, so no font has to carry an arrow glyph.
+ */
+export function drawTrend(ctx: Ctx, trend: CardTrend, x: number, baseline: number, size: number, fonts: CardFonts) {
+  const side = size * 0.8;
+  const left = x + TREND_GAP;
+  const top = baseline - size * 0.72;
+  ctx.fillStyle = trend.direction === "up" ? INK.correct : INK.wrong;
+  ctx.beginPath();
+  if (trend.direction === "up") {
+    ctx.moveTo(left + side / 2, top);
+    ctx.lineTo(left + side, baseline);
+    ctx.lineTo(left, baseline);
+  } else {
+    ctx.moveTo(left, top);
+    ctx.lineTo(left + side, top);
+    ctx.lineTo(left + side / 2, baseline);
+  }
+  ctx.closePath();
+  ctx.fill();
+  ctx.font = trendFont(size, fonts);
+  ctx.fillText(trend.text, left + side + size * 0.3, baseline);
+}

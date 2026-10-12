@@ -1,4 +1,20 @@
-import { BODY_BOTTOM, BODY_TOP, drawCard, fitFont, font, INK, INNER, PAD, wrapLines, type CardFonts, type CardFrame, type Ctx } from "@/components/share/cardCanvas";
+import {
+  BODY_BOTTOM,
+  BODY_TOP,
+  drawCard,
+  drawTrend,
+  fitFont,
+  font,
+  INK,
+  INNER,
+  PAD,
+  trendWidth,
+  wrapLines,
+  type CardFonts,
+  type CardFrame,
+  type CardTrend,
+  type Ctx,
+} from "@/components/share/cardCanvas";
 import type { FigureSegment } from "./figureText";
 
 /** One figure as the card prints it, already in the player's language and number format. */
@@ -6,6 +22,8 @@ export interface CardFigure {
   readonly label: string;
   readonly segments: readonly FigureSegment[];
   readonly note: string;
+  /** The change in a rating, when the figure has one that moved. */
+  readonly trend?: CardTrend;
 }
 
 /** What the progress card prints: one figure large, the rest in a grid under it. */
@@ -28,7 +46,7 @@ const GRID_TOP = 540;
 const COLUMN_GAP = 40;
 
 /** The number large and its unit small on one baseline, in the order the language puts them, shrunk together until they fit. */
-function drawValue(ctx: Ctx, segments: readonly FigureSegment[], x: number, baseline: number, width: number, size: number, fonts: CardFonts) {
+function drawValue(ctx: Ctx, segments: readonly FigureSegment[], x: number, baseline: number, width: number, size: number, fonts: CardFonts): number {
   const fontOf = (big: boolean, at: number) => (big ? font(600, at, fonts) : font(500, Math.round(at * 0.3), fonts));
   const widthAt = (at: number) =>
     segments.reduce((sum, { text, big }) => {
@@ -45,16 +63,23 @@ function drawValue(ctx: Ctx, segments: readonly FigureSegment[], x: number, base
     ctx.fillText(text, left, baseline);
     left += ctx.measureText(text).width;
   });
+  return left;
 }
 
-function drawFigure(ctx: Ctx, { label, segments, note }: CardFigure, slot: Slot, fonts: CardFonts, locale: string) {
+/** The trend sits beside the figure at about a third of its height, so a figure shrunk to fit leaves it the room it needs. */
+const trendSizeOf = (valueSize: number) => Math.max(22, Math.round(valueSize * 0.34));
+
+function drawFigure(ctx: Ctx, { label, segments, note, trend }: CardFigure, slot: Slot, fonts: CardFonts, locale: string) {
   ctx.fillStyle = INK.muted;
   fitFont(ctx, label, 600, slot.labelSize, fonts, slot.width);
   const labelBaseline = slot.y + slot.labelSize;
   ctx.fillText(label, slot.x, labelBaseline);
 
   const valueBaseline = labelBaseline + 14 + slot.valueSize * 0.8;
-  drawValue(ctx, segments, slot.x, valueBaseline, slot.width, slot.valueSize, fonts);
+  const trendSize = trendSizeOf(slot.valueSize);
+  const reserve = trend ? trendWidth(ctx, trend, trendSize, fonts) : 0;
+  const end = drawValue(ctx, segments, slot.x, valueBaseline, slot.width - reserve, slot.valueSize, fonts);
+  if (trend) drawTrend(ctx, trend, end, valueBaseline, trendSize, fonts);
 
   ctx.font = font(400, slot.noteSize, fonts);
   ctx.fillStyle = INK.ink2;

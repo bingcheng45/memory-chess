@@ -221,9 +221,9 @@ const guide: LearnDocument = {
             },
             {
               title: "Two candidates, one sentence each",
-              description: "Take a position from a game you lost. Pick two moves, follow each for two plies, and end each line with one sentence: what changed, and who guards the landing square.",
+              description: "Take a position from a game you lost. Pick two moves, follow each for two plies, and end each line with one sentence: what changed, and who guards the landing square. Then play both lines on the board and label any miss.",
               duration: "About 10 minutes",
-              goal: "Two lines you can say out loud without looking at the board.",
+              goal: "Both lines play out on the board as you said them, with no forgotten defender.",
             },
           ],
         },

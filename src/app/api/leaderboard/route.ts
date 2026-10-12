@@ -3,7 +3,7 @@ import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboa
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 import { isSkillRating, MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
-import { readBoard } from '@/lib/leaderboard/board';
+import { readBoard, todaysDailyBoard } from '@/lib/leaderboard/board';
 import { dailySettingOf } from '@/lib/daily/schedule';
 import { DAILY_BOARD, isLeaderboardDifficulty, type LeaderboardBoard } from '@/types/leaderboard';
 
@@ -24,9 +24,9 @@ function parseSkillRating(value: unknown): number | null {
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const difficulty = searchParams.get('difficulty') || 'medium';
-  
-  // Validate difficulty
-  if (!isLeaderboardDifficulty(difficulty)) {
+  const board = difficulty === DAILY_BOARD ? todaysDailyBoard(Date.now()) : isLeaderboardDifficulty(difficulty) ? { difficulty } : null;
+
+  if (board === null) {
     return NextResponse.json(
       { error: 'Invalid difficulty level' },
       { status: 400 }
@@ -45,7 +45,7 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    const result = await getLeaderboard(difficulty);
+    const result = await getLeaderboard(board);
     
     if (result.error) {
       // Return a more detailed error message but still with empty data

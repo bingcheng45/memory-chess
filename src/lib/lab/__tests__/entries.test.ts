@@ -1,4 +1,4 @@
-import { ENTRIES_KEY, entryFromRow, parseEntries, rememberEntry, withEntry, withoutEntry, type StoredEntry } from "@/lib/lab/entries";
+import { DAILY_ENTRY_KEY, ENTRIES_KEY, entryFromRow, parseEntries, readDailyEntry, rememberEntry, withEntry, withoutEntry, type StoredEntry } from "@/lib/lab/entries";
 
 const ID_A = "0b5e8f7c-3c1a-4e2b-9d4f-1a2b3c4d5e6f";
 const ID_B = "7d1f0a2e-5b6c-4d8e-8f9a-0b1c2d3e4f5a";
@@ -42,6 +42,47 @@ describe("entryFromRow", () => {
       null,
       null,
     ]);
+  });
+});
+
+describe("a daily row", () => {
+  const ID_TODAY = "3c3c3c3c-0000-4000-8000-000000000003";
+  const ID_YESTERDAY = "1a1a1a1a-0000-4000-8000-000000000001";
+  const dailyRow = (id: string, day: string, correct: number) => ({
+    ...row,
+    id,
+    difficulty: "daily",
+    daily_day: day,
+    piece_count: 6,
+    correct_pieces: correct,
+    total_wrong_pieces: 2,
+    memorize_time: 10,
+    solution_time: 12,
+  });
+
+  beforeEach(() => window.localStorage.clear());
+
+  it("keeps the UTC day it was played on with its score", () => {
+    expect(entryFromRow(dailyRow(ID_TODAY, "2026-10-13", 4), 7_000)).toEqual({
+      id: ID_TODAY,
+      difficulty: "daily",
+      dailyDay: "2026-10-13",
+      country: "SG",
+      score: { correctPieces: 4, totalWrongPieces: 2, memorizeTime: 10, solutionTime: 12 },
+      submittedAt: 7_000,
+    });
+    expect(entryFromRow({ ...dailyRow(ID_TODAY, "2026-10-13", 4), daily_day: null }, 7_000)).toBeNull();
+  });
+
+  it("is remembered for its own day only: 2026-10-13's entry replaces 2026-10-12's better one and leaves the ranked boards alone", () => {
+    expect(rememberEntry(dailyRow(ID_YESTERDAY, "2026-10-12", 5), 1_000)).toBe(true);
+    expect(readDailyEntry("2026-10-12")?.id).toBe(ID_YESTERDAY);
+
+    expect(rememberEntry(dailyRow(ID_TODAY, "2026-10-13", 4), 2_000)).toBe(true);
+
+    expect([readDailyEntry("2026-10-13")?.id, readDailyEntry("2026-10-12")]).toEqual([ID_TODAY, null]);
+    expect(window.localStorage.getItem(ENTRIES_KEY)).toBeNull();
+    expect(JSON.parse(window.localStorage.getItem(DAILY_ENTRY_KEY) ?? "null")).toMatchObject({ id: ID_TODAY, dailyDay: "2026-10-13" });
   });
 });
 

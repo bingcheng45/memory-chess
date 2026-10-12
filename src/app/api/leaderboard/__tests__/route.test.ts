@@ -275,10 +275,25 @@ describe("GET /api/leaderboard", () => {
     const response = await get(difficulty);
 
     expect(response.status).toBe(200);
-    expect(getLeaderboard).toHaveBeenCalledWith(difficulty);
+    expect(getLeaderboard).toHaveBeenCalledWith({ difficulty });
   });
 
-  it.each(["daily", "weekly"])("rejects the %s board, which it does not serve", async (difficulty) => {
+  it.each([
+    ["2026-10-13T00:00:00Z", "2026-10-13"],
+    ["2026-10-13T23:59:59Z", "2026-10-13"],
+    ["2026-10-14T00:00:00Z", "2026-10-14"],
+  ])("reads the daily board of the UTC day at %s, %s", async (now, day) => {
+    jest.spyOn(Date, "now").mockReturnValue(Date.parse(now));
+    jest.mocked(getLeaderboard).mockResolvedValue({ data: [] });
+
+    const response = await get("daily");
+
+    expect(response.status).toBe(200);
+    expect(getLeaderboard).toHaveBeenCalledWith({ difficulty: "daily", daily_day: day });
+    jest.mocked(Date.now).mockRestore();
+  });
+
+  it.each(["weekly", "custom"])("rejects the %s board, which it does not serve", async (difficulty) => {
     const response = await get(difficulty);
 
     expect(response.status).toBe(400);

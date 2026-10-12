@@ -112,14 +112,4 @@ describe("getStanding", () => {
 
     expect(results).toEqual(["unavailable", "unavailable"]);
   });
-
-  it("ranks no daily row, whose board is one day rather than the whole daily column", async () => {
-    mockBoard.row = { ...mediumRow, difficulty: "daily", daily_day: "2026-10-13" };
-
-    await expect(getStanding(ENTRY_ID, "world")).resolves.toEqual({
-      status: "unavailable",
-      cause: "daily standings are not served yet",
-    });
-    expect(countRequests()).toEqual([]);
-  });
 });

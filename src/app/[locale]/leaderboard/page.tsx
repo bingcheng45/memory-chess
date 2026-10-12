@@ -11,7 +11,7 @@ export const revalidate = 300;
 
 export default async function LeaderboardPage() {
   const results = await Promise.all(
-    RANKED_DIFFICULTIES.map((difficulty) => getLeaderboard(difficulty)),
+    RANKED_DIFFICULTIES.map((difficulty) => getLeaderboard({ difficulty })),
   );
   // A failed revalidation that throws keeps serving the last good page; one that
   // renders would cache the error for the whole window. A build has no last

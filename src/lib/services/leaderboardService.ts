@@ -2,11 +2,13 @@ import type { PostgrestError } from '@supabase/supabase-js';
 import { supabase, checkSupabaseConnection } from '@/lib/supabase';
 import { LEADERBOARD_ROW_LIMIT } from '@/lib/reference/facts';
 import { RANKING_ORDER, type BoardCutoff, type LeaderboardCutoffs } from '@/lib/leaderboard/ranking';
+import { parseBoard } from '@/lib/leaderboard/board';
 import { rankedAboveFilter, type Standing, type StandingScope } from '@/lib/leaderboard/standing';
 import { WORLD_CODE } from '@/lib/leaderboard/countries';
 import {
   DAILY_BOARD,
   LEADERBOARD_DIFFICULTIES,
+  type LeaderboardBoard,
   type LeaderboardDifficulty,
   type LeaderboardEntry,
   type LeaderboardSubmission,
@@ -50,7 +52,7 @@ export type LeaderboardSubmitResult =
   | { status: 'unavailable'; cause: unknown }
   | { status: 'failed'; cause: unknown };
 
-export async function getLeaderboard(difficulty: string = 'medium'): Promise<{data: LeaderboardEntry[], error?: string}> {
+export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: LeaderboardEntry[], error?: string}> {
   try {
     // First check the Supabase connection
     const connectionStatus = await checkSupabaseConnection();
@@ -68,12 +70,10 @@ export async function getLeaderboard(difficulty: string = 'medium'): Promise<{da
       };
     }
     
+    const rows = supabase.from('leaderboard_entries').select('*').eq('difficulty', board.difficulty).gt('correct_pieces', 0);
+    // A daily board is one UTC day. Filtering on both columns is also what lets the query read the partial daily index.
     const { data, error } = await orderByRanking(
-      supabase
-        .from('leaderboard_entries')
-        .select('*')
-        .eq('difficulty', difficulty)
-        .gt('correct_pieces', 0),
+      board.difficulty === DAILY_BOARD ? rows.eq('daily_day', board.daily_day) : rows,
     ).limit(LEADERBOARD_ROW_LIMIT);
       
     if (error) {
@@ -293,8 +293,9 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
   if (entry === null) {
     return { status: 'missing' };
   }
-  if (entry.difficulty === DAILY_BOARD) {
-    return { status: 'unavailable', cause: 'daily standings are not served yet' };
+  const board = parseBoard(entry.difficulty, entry.daily_day);
+  if (board === null) {
+    return { status: 'unavailable', cause: `entry ${id} names no board: ${entry.difficulty} ${entry.daily_day}` };
   }
   const country = scope === 'country' ? entry.country_code ?? WORLD_CODE : null;
   if (country === WORLD_CODE) {
@@ -302,11 +303,12 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
   }
 
   const bucket = () => {
-    const ranked = client
+    const onDifficulty = client
       .from('leaderboard_entries')
       .select('id', { count: 'exact', head: true })
-      .eq('difficulty', entry.difficulty)
+      .eq('difficulty', board.difficulty)
       .gt('correct_pieces', 0);
+    const ranked = board.difficulty === DAILY_BOARD ? onDifficulty.eq('daily_day', board.daily_day) : onDifficulty;
     return country === null ? ranked : ranked.eq('country_code', country);
   };
   const score = {
@@ -321,6 +323,6 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
   }
   return {
     status: 'ranked',
-    standing: { difficulty: entry.difficulty, country, rank: above.count + 1, total: total.count },
+    standing: { ...board, country, rank: above.count + 1, total: total.count },
   };
 }

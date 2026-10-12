@@ -1,23 +1,38 @@
 import { parseCountryCode, WORLD_CODE, type CountryCode } from "@/lib/leaderboard/countries";
 import { compareRanking, parseScore, type RankingScore } from "@/lib/leaderboard/ranking";
+import { parseBoard } from "@/lib/leaderboard/board";
 import { isEntryId } from "@/lib/leaderboard/standing";
+import { parseUtcDay } from "./daily";
 import { isObject } from "./guards";
-import { isLeaderboardDifficulty, LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } from "@/types/leaderboard";
+import { DAILY_BOARD, LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } from "@/types/leaderboard";
 
 export const ENTRIES_KEY = "memory-chess-lab-entries";
 
-export interface StoredEntry {
+/** One entry, the latest day's: each daily board is its own day, so an entry from another day never competes with it. */
+export const DAILY_ENTRY_KEY = "memory-chess-daily-entry";
+
+interface EntryFacts {
   readonly id: string;
-  readonly difficulty: LeaderboardDifficulty;
   readonly country: CountryCode;
   readonly score: RankingScore;
   readonly submittedAt: number;
 }
 
+export interface StoredEntry extends EntryFacts {
+  readonly difficulty: LeaderboardDifficulty;
+}
+
+export interface DailyEntry extends EntryFacts {
+  readonly difficulty: typeof DAILY_BOARD;
+  readonly dailyDay: string;
+}
+
 export type StoredEntries = Readonly<Partial<Record<LeaderboardDifficulty, StoredEntry>>>;
 
-export function entryFromRow(row: unknown, submittedAt: number): StoredEntry | null {
-  if (!isObject(row) || !isEntryId(row.id) || !isLeaderboardDifficulty(row.difficulty)) return null;
+export function entryFromRow(row: unknown, submittedAt: number): StoredEntry | DailyEntry | null {
+  if (!isObject(row) || !isEntryId(row.id)) return null;
+  const board = parseBoard(row.difficulty, row.daily_day);
+  if (board === null) return null;
   const score = parseScore({
     correctPieces: row.correct_pieces,
     totalWrongPieces: row.total_wrong_pieces ?? null,
@@ -27,7 +42,8 @@ export function entryFromRow(row: unknown, submittedAt: number): StoredEntry | n
   if (score === null) return null;
   const country = row.country_code === undefined ? WORLD_CODE : parseCountryCode(row.country_code);
   if (country === null) return null;
-  return { id: row.id, difficulty: row.difficulty, country, score, submittedAt };
+  const facts = { id: row.id, country, score, submittedAt };
+  return board.difficulty === DAILY_BOARD ? { ...facts, difficulty: DAILY_BOARD, dailyDay: board.daily_day } : { ...facts, difficulty: board.difficulty };
 }
 
 function parseEntry(raw: unknown, difficulty: LeaderboardDifficulty): StoredEntry | null {
@@ -67,11 +83,41 @@ export function withoutEntry(entries: StoredEntries | null, { id, difficulty }: 
   return orNothing(Object.fromEntries(Object.entries(entries).filter(([kept]) => kept !== difficulty)));
 }
 
+function parseDailyEntry(text: string | null): DailyEntry | null {
+  if (text === null) return null;
+  let raw: unknown;
+  try {
+    raw = JSON.parse(text);
+  } catch {
+    return null;
+  }
+  if (!isObject(raw) || !isEntryId(raw.id) || raw.difficulty !== DAILY_BOARD) return null;
+  const dailyDay = parseUtcDay(raw.dailyDay);
+  const score = parseScore(raw.score);
+  const country = parseCountryCode(raw.country);
+  if (dailyDay === null || score === null || country === null || !Number.isSafeInteger(raw.submittedAt)) return null;
+  return { id: raw.id, difficulty: DAILY_BOARD, dailyDay, country, score, submittedAt: raw.submittedAt as number };
+}
+
+/** This device's entry on the daily board of `day`, or null when it joined no board that day. */
+export function readDailyEntry(day: string): DailyEntry | null {
+  try {
+    const entry = parseDailyEntry(window.localStorage.getItem(DAILY_ENTRY_KEY));
+    return entry?.dailyDay === day ? entry : null;
+  } catch {
+    return null;
+  }
+}
+
 /** False when the reply carries no entry or storage refuses the write; the score is on the board either way. */
 export function rememberEntry(row: unknown, now: number): boolean {
   const entry = entryFromRow(row, now);
   if (entry === null) return false;
   try {
+    if (entry.difficulty === DAILY_BOARD) {
+      window.localStorage.setItem(DAILY_ENTRY_KEY, JSON.stringify(entry));
+      return true;
+    }
     const stored = parseEntries(window.localStorage.getItem(ENTRIES_KEY));
     window.localStorage.setItem(ENTRIES_KEY, JSON.stringify(withEntry(stored, entry)));
     return true;

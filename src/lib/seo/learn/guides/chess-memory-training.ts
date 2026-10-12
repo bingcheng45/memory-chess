@@ -28,11 +28,11 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the whole board from memory and scoring it square by square. Start at 6 pieces and 10 seconds. Add two pieces after three perfect rounds in a row. Keep the look at 10 seconds until 12 pieces comes back perfect three times, then lower it to 8.",
+    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the whole board from memory and scoring it square by square. Start at 6 pieces and 10 seconds, and add two pieces after three perfect rounds in a row. Keep the look at 10 seconds until 12 pieces comes back perfect three times, then lower it to 8.",
     takeaways: [
       "A piece scores only when its square, type and colour all match, so a near miss is a miss.",
       "At 6 pieces one missed piece already costs 17 points, so the result messages are blunt at low counts.",
-      "Every extra piece you place costs ten points, so leave guesses off the board.",
+      "Each piece beyond the round's count costs ten points, so stop placing once you reach the count.",
       "Every round is a fresh position, so judge yourself by rounds in a row at the same settings.",
     ],
     audience: [
@@ -50,7 +50,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Memory Chess compares your board with the original square by square. A piece counts only when its square, type and colour all match. A white knight on f3 when the original had it on e3 is wrong. So is a black rook on a8 when that rook was white.",
-            "Extra pieces hurt twice. Each piece you place beyond the position's count is listed as wrong and also takes ten points off your accuracy, which never drops below zero. One guessed extra piece turns a 6-piece round with five correct from 83 percent into 73. So place only the pieces you remember.",
+            "An extra piece is any piece beyond the round's count. Extra pieces hurt twice: each one is listed as wrong and also takes ten points off your accuracy, which never drops below zero. With five right and one wrong already on a 6-piece board, a seventh piece drops 83 percent to 73. So stop placing once you reach the count.",
           ],
         },
         {
@@ -69,7 +69,7 @@ const guide: LearnDocument = {
           paragraphs: [
             "The message on the result screen comes straight from your accuracy. 100 percent is Perfect Score, 90 or more is Excellent Memory, 80 is Great Job, 70 is Well Done and 50 is Good Effort. Below 50 the screen says Keep Practicing. Those are the only six messages, and the thresholds are the same at every piece count.",
             "At 6 pieces each piece is worth about 17 points, so the steps are steep. Four out of 6 is 67 percent, Good Effort. It means two pieces were missing or wrong, and the next round is about finding which two.",
-            "With no extra pieces on the board, a 6-piece round goes straight from Great Job at five correct to Perfect Score at six, so it never shows Excellent Memory. Six correct plus one invented piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message.",
+            "With no extra pieces on the board, a 6-piece round goes straight from Great Job at five correct to Perfect Score at six, so it never shows Excellent Memory. Six correct plus one extra piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message.",
           ],
         },
         {
@@ -122,7 +122,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "The honest baseline",
-              description: "5 rounds of 6 pieces, 10 seconds, about 5 minutes. Place the kings first, then only the pieces you are sure of, then submit. Leave every guess off the board.",
+              description: "5 rounds of 6 pieces, 10 seconds, about 5 minutes. Place the kings first, then only the pieces you are sure of, then submit. Leave guesses off so the result shows what you actually remembered. A wrong guess within the count does not lower the score, but it hides which pieces you lost.",
               duration: "About 5 minutes",
               goal: "Three Perfect Score rounds in a row before you add a single piece.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },

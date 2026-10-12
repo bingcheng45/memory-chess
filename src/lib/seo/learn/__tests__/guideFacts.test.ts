@@ -348,12 +348,12 @@ function guideFacts(): Record<string, string[]> {
   return {
     "chess-memory-training": [
       `takes ${word(penalty)} points off your accuracy`,
-      `with five correct from ${at(5, 6)} percent into ${at(5, 6, 1)}`,
+      `a seventh piece drops ${at(5, 6)} percent to ${at(5, 6, 1)}`,
       `${minAccuracy("perfect")} percent is ${label("perfect")}, ${minAccuracy("excellent")} or more is ${label("excellent")}, ${minAccuracy("great")} is ${label("great")}, ${minAccuracy("wellDone")} is ${label("wellDone")} and ${minAccuracy("goodEffort")} is ${label("goodEffort")}`,
       `below ${minAccuracy("goodEffort")} the screen says ${label("keepPracticing")}`,
       `the only ${word(ACCURACY_BANDS.length)} messages`,
       `four out of 6 is ${at(4, 6)} percent, ${band(at(4, 6))}`,
-      `six correct plus one invented piece shows ${band(at(6, 6, 1))}, at ${at(6, 6, 1)}`,
+      `six correct plus one extra piece shows ${band(at(6, 6, 1))}, at ${at(6, 6, 1)}`,
       `a 6-piece round goes straight from ${band(at(5, 6))} at five correct to ${label("perfect")} at six`,
       `${at(6, 6, 1)} percent, ${band(at(6, 6, 1))}`,
       `${at(12, 12, 1)} percent, ${band(at(12, 12, 1))}`,

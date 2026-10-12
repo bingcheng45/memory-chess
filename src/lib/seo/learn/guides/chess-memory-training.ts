@@ -69,7 +69,7 @@ const guide: LearnDocument = {
           paragraphs: [
             "The message on the result screen comes straight from your accuracy. 100 percent is Perfect Score, 90 or more is Excellent Memory, 80 is Great Job, 70 is Well Done and 50 is Good Effort. Below 50 the screen says Keep Practicing. Those are the only six messages, and the thresholds are the same at every piece count.",
             "At 6 pieces each piece is worth about 17 points, so the steps are steep. Four out of 6 is 67 percent, Good Effort. It means two pieces were missing or wrong, and the next round is about finding which two.",
-            "No clean round at 6 pieces shows Excellent Memory. Six correct plus one invented piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message.",
+            "With no extra pieces on the board, a 6-piece round goes straight from Great Job at five correct to Perfect Score at six, so it never shows Excellent Memory. Six correct plus one invented piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message.",
           ],
         },
         {
@@ -103,7 +103,7 @@ const guide: LearnDocument = {
             { label: "2", cells: ["8 pieces, 10 seconds, custom", "Three Perfect Score rounds in a row"] },
             { label: "3", cells: ["10 pieces, 10 seconds, custom", "Three Perfect Score rounds in a row"] },
             { label: "4", cells: ["12 pieces, 10 seconds, the hard preset count with a longer look", "Three Perfect Score rounds in a row"] },
-            { label: "5", cells: ["12 pieces, 8 seconds, the hard preset", "Excellent Memory in most rounds"] },
+            { label: "5", cells: ["12 pieces, 8 seconds, the hard preset", "Excellent Memory in three of four rounds, then try the 20-piece preset"] },
           ],
         },
         {
@@ -112,7 +112,7 @@ const guide: LearnDocument = {
           items: [
             "Three Perfect Score rounds in a row at your current settings: add two pieces. The piece slider runs from 2 to 32, so every rung exists.",
             "Two rounds in a row below Well Done, which is 70 percent: take two pieces away and rebuild the streak there.",
-            "Change one setting at a time. Hold the look at 10 seconds until 12 pieces is clean, then drop it to 8. If you change both at once, you cannot tell which one broke.",
+            "Change one setting at a time. Hold the look at 10 seconds until 12 pieces gives three Perfect Score rounds in a row, then drop it to 8. If you change both at once, you cannot tell which one broke.",
             "Rungs 2 and 3 use 8 and 10 pieces. Counts other than 2, 6, 12 and 20 are not preset counts, so those rounds are custom games and stay off the leaderboard. While you climb, that does not matter.",
             "The look slider runs from 2 to 60 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
           ],
@@ -136,9 +136,9 @@ const guide: LearnDocument = {
             },
             {
               title: "The hard preset",
-              description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Play these once 12 pieces at 10 seconds is clean. Read the board in groups of two or three pieces, starting with the kings.",
+              description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Play these once 12 pieces at 10 seconds gives three Perfect Score rounds in a row. Read the board in groups of two or three pieces, starting with the kings.",
               duration: "About 6 minutes",
-              goal: "Excellent Memory, which at this count means at least 11 of the 12.",
+              goal: "Excellent Memory, which at this count means at least 11 of the 12, in three of four rounds. Then try the 20-piece preset.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
           ],
@@ -161,7 +161,7 @@ const guide: LearnDocument = {
     },
     {
       id: "why-rebuilding-beats-staring",
-      heading: "Why rebuilding the board beats looking at it longer",
+      heading: "What the research says about recall and grouping",
       blocks: [
         {
           kind: "prose",
@@ -170,7 +170,7 @@ const guide: LearnDocument = {
             "That study used prose passages, so it says nothing about how long to look at a board. The advice here is this guide's own: once you have the board, skip, and let the rebuild do the work.",
             "Gobet and Simon showed strong players several boards in a row for a few seconds each, and the players still recalled much of each one. The authors explain it with templates, large familiar patterns held in long-term memory.",
             "Memory Chess positions are random, so the groups you find are plain shapes on the board. A pawn pair on f2 and g2. A king tucked in a corner. Three pieces on one rank.",
-            "Groups are what make the hard preset possible. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four chunks it leaves two seconds or more each.",
+            "Groups are what make the hard preset possible. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four groups it leaves two seconds or more each.",
           ],
         },
       ],
@@ -201,7 +201,7 @@ const guide: LearnDocument = {
       items: [
         {
           question: "Should I go straight to the 20-piece preset?",
-          answer: "No. Twenty pieces in five seconds leaves a quarter of a second for each. Until 12 pieces at 8 seconds gives you Excellent Memory most rounds, 20 is likely to end in Keep Practicing with little to learn from.",
+          answer: "No. Twenty pieces in five seconds leaves a quarter of a second for each. Until 12 pieces at 8 seconds gives you Excellent Memory in three of four rounds, 20 is likely to end in Keep Practicing with little to learn from.",
         },
         {
           question: "Does the leaderboard care about speed?",

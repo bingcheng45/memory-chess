@@ -354,6 +354,7 @@ function guideFacts(): Record<string, string[]> {
       `the only ${word(ACCURACY_BANDS.length)} messages`,
       `four out of 6 is ${at(4, 6)} percent, ${band(at(4, 6))}`,
       `six correct plus one invented piece shows ${band(at(6, 6, 1))}, at ${at(6, 6, 1)}`,
+      `a 6-piece round goes straight from ${band(at(5, 6))} at five correct to ${label("perfect")} at six`,
       `${at(6, 6, 1)} percent, ${band(at(6, 6, 1))}`,
       `${at(12, 12, 1)} percent, ${band(at(12, 12, 1))}`,
       row(6, 6),
@@ -374,7 +375,7 @@ function guideFacts(): Record<string, string[]> {
       `${word(grandmaster.pieceCount)} pieces in ${word(grandmaster.memorizeTime)} seconds`,
       `until ${hard.pieceCount} pieces at ${hard.memorizeTime} seconds`,
       `piece by piece, ${hard.pieceCount} pieces in ${hard.memorizeTime} seconds leaves two thirds of a second each`,
-      `in three or four chunks it leaves ${word(hard.memorizeTime / 4)} seconds or more each`,
+      `in three or four groups it leaves ${word(hard.memorizeTime / 4)} seconds or more each`,
     ],
     "how-many-chess-puzzles-a-day": [
       `one missed piece turns a ${label("perfect")} into ${band(at(5, 6))} at ${at(5, 6)} percent, and a second miss gives ${band(at(4, 6))} at ${at(4, 6)} percent`,

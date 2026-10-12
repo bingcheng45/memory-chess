@@ -41,13 +41,24 @@ export function useDailyState(): DailyState | null {
     const onStorage = (event: StorageEvent) => {
       if (event.key === DAILY_OPENED_KEY || event.key === null) read();
     };
+    const retick = () => {
+      window.clearTimeout(timer);
+      tick();
+    };
+    const onVisibility = () => {
+      if (document.visibilityState === "visible") retick();
+    };
     tick();
     window.addEventListener("storage", onStorage);
     window.addEventListener(DAILY_OPENED_EVENT, read);
+    window.addEventListener("pageshow", retick);
+    document.addEventListener("visibilitychange", onVisibility);
     return () => {
       window.clearTimeout(timer);
       window.removeEventListener("storage", onStorage);
       window.removeEventListener(DAILY_OPENED_EVENT, read);
+      window.removeEventListener("pageshow", retick);
+      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 

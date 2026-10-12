@@ -8,7 +8,7 @@ const ARROW_POINTS = { up: "6,1 11,10 1,10", down: "6,11 11,2 1,2" } as const;
 
 interface TrendChipProps {
   readonly trend: Trend;
-  /** Which way of the number is progress. The arrow and its colour follow progress, so a fall in seconds per piece points up. */
+  /** Which way of the number is progress. The colour follows progress, so a fall in seconds per piece is green. */
   readonly betterWhen?: "higher" | "lower";
   /** The chip's spoken name; the rating's rise or fall when left out. */
   readonly label?: string;
@@ -16,16 +16,16 @@ interface TrendChipProps {
 
 /**
  * How far a figure moved, beside it rather than in the sentence, so every language's word order leaves it where it is.
- * The arrow carries the meaning, the colour only echoes it, and where the arrow and the number's own direction part,
- * the number prints its sign. A level figure draws nothing.
+ * The arrow shows which way the number moved and the colour whether that is progress, so meaning never rests on colour
+ * alone. A level figure draws nothing.
  */
 export function TrendChip({ trend, betterWhen = "higher", label }: TrendChipProps) {
   const t = useTranslations("dashboard.history");
   const format = useFormatter();
   if (trend.direction === "level") return null;
   const better = (trend.direction === "up") === (betterWhen === "higher");
-  const arrow = better ? "up" : "down";
-  const shown = arrow === trend.direction ? format.number(trend.amount) : format.number(trend.direction === "up" ? trend.amount : -trend.amount, { signDisplay: "always" });
+  const arrow = trend.direction;
+  const shown = format.number(trend.amount);
   return (
     <span
       className="lab-trend"

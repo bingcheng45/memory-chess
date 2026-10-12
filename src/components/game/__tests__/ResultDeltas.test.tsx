@@ -78,7 +78,7 @@ describe("ResultDeltas", () => {
     expect(row(section, "bestAccuracy").querySelector(".lab-trend")).toBeNull();
   });
 
-  it("shows faster rebuilding as better in green with its signed fall in seconds per piece", () => {
+  it("shows faster rebuilding as better in green with a down arrow and the size of its fall", () => {
     const earlier = [9, 10, 11, 12, 13].map((hour) => roundV2({ id: `s${hour}`, ...at(TODAY, hour), solveMs: 20000 }));
     withRecord([...earlier, roundV2({ id: "fast", ...at(TODAY, 14), solveMs: 8000 })]);
 
@@ -87,7 +87,8 @@ describe("ResultDeltas", () => {
     expect(speed.querySelector(".lab-sr")?.textContent).toBe("Speed 4.5 s per piece, down 0.5 from 5.0 s per piece, better");
     expect(speed.dataset.verdict).toBe("better");
     expect(speed.querySelector(".lab-trend")?.getAttribute("data-tone")).toBe("better");
-    expect(speed.querySelector(".lab-trend")?.textContent).toBe("-0.5");
+    expect(speed.querySelector(".lab-trend")?.textContent).toBe("0.5");
+    expect(speed.querySelector(".lab-trend svg")?.getAttribute("data-arrow")).toBe("down");
   });
 
   it("draws nothing until the round is in the record", () => {

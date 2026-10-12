@@ -9,6 +9,10 @@
 -- It stops before changing anything while daily rows exist, because the old
 -- difficulty check cannot hold them. The runbook says how to deal with them.
 
+-- An ALTER waiting for its lock holds up every read and write queued behind
+-- it, so give up after five seconds rather than stall the leaderboard.
+SET lock_timeout = '5s';
+
 DO $$
 BEGIN
   IF EXISTS (SELECT 1 FROM leaderboard_entries WHERE difficulty = 'daily') THEN

@@ -8,6 +8,10 @@
 -- Rows stored before this migration take 1000, the rating every player starts
 -- from, so the column needs no nullable state.
 
+-- An ALTER waiting for its lock holds up every read and write queued behind
+-- it, so give up after five seconds rather than stall the leaderboard.
+SET lock_timeout = '5s';
+
 ALTER TABLE leaderboard_entries
   ADD COLUMN IF NOT EXISTS skill_rating INTEGER NOT NULL DEFAULT 1000;
 
@@ -26,7 +30,7 @@ BEGIN
   ) THEN
     ALTER TABLE leaderboard_entries
       ADD CONSTRAINT check_skill_rating_range
-      CHECK (skill_rating >= 0);
+      CHECK (skill_rating BETWEEN 0 AND 5000);
   END IF;
 END
 $$;

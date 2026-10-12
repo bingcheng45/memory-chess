@@ -95,7 +95,7 @@ describe("0004 leaderboard rating and daily", () => {
     ]);
   });
 
-  it("stores a daily row only with its day, and a board row only without one", async () => {
+  it("stores a daily row only with its day, a board row only without one, and a rating from 0 to 5000", async () => {
     const db = await before0004();
     await db.rows(MIGRATION);
 
@@ -105,8 +105,11 @@ describe("0004 leaderboard rating and daily", () => {
     expect(codeOf(await insert(db, { difficulty: "'medium'", daily_day: "'2026-10-13'", skill_rating: "1240" }))).toBe(CHECK_VIOLATION);
     expect(codeOf(await insert(db, { difficulty: "'weekly'", skill_rating: "1240" }))).toBe(CHECK_VIOLATION);
     expect(codeOf(await insert(db, { difficulty: "'medium'", skill_rating: "-1" }))).toBe(CHECK_VIOLATION);
+    expect(codeOf(await insert(db, { difficulty: "'hard'", skill_rating: "5000" }))).toBeNull();
+    expect(codeOf(await insert(db, { difficulty: "'hard'", skill_rating: "5001" }))).toBe(CHECK_VIOLATION);
     expect(await db.rows("SELECT difficulty, daily_day::text AS daily_day, skill_rating FROM leaderboard_entries ORDER BY difficulty")).toEqual([
       { difficulty: "daily", daily_day: "2026-10-13", skill_rating: 1240 },
+      { difficulty: "hard", daily_day: null, skill_rating: 5000 },
       { difficulty: "medium", daily_day: null, skill_rating: 1240 },
     ]);
   });

@@ -52,7 +52,7 @@ ALTER TABLE leaderboard_entries
 
 ALTER TABLE leaderboard_entries
   ADD CONSTRAINT check_skill_rating_range
-  CHECK (skill_rating >= 0);
+  CHECK (skill_rating BETWEEN 0 AND 5000);
 
 ALTER TABLE leaderboard_entries
   ADD CONSTRAINT check_difficulty_board

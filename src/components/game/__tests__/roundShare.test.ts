@@ -1,7 +1,8 @@
 import { createTranslator } from "next-intl";
 import { captionWithLink } from "@/components/share/shareLink";
-import { resultCaption, resultCardCopy, roundShareOf, type ResultTranslate } from "@/components/game/roundShare";
-import { labPositionFromFen, roundReducer, IDLE_ROUND, type RoundState } from "@/lib/round/round";
+import { rebuildOrder, resultCaption, resultCardCopy, roundShareOf, type ResultTranslate } from "@/components/game/roundShare";
+import { MAX_PLACEMENTS } from "@/lib/lab/placements";
+import { labPositionFromFen, roundReducer, IDLE_ROUND, type RoundAction, type RoundState } from "@/lib/round/round";
 import type { SetBoard } from "@/lib/types/game";
 import en from "../../../../messages/en.json";
 import de from "../../../../messages/de.json";
@@ -73,6 +74,61 @@ describe("roundShareOf", () => {
   });
 });
 
+describe("rebuildOrder", () => {
+  const rebuild = (moves: readonly RoundAction[]) => {
+    const start: readonly RoundAction[] = [
+      { type: "start", config: { pieceCount: 4, studyMs: 10_000, source: "game_form" }, target: labPositionFromFen("4k3/8/8/3q4/8/8/4P3/4K3"), now: 0 },
+      { type: "studyEnded", now: 8_000 },
+    ];
+    const state = [...start, ...moves, { type: "submit", now: 60_000 } as const].reduce<RoundState>(roundReducer, IDLE_ROUND);
+    if (state.phase !== "scored") throw new Error("round did not score");
+    return rebuildOrder(state.placed, state.log);
+  };
+
+  it("orders a round's pieces as they went down, in seconds since the rebuild started", () => {
+    expect(roundShareOf(scored(), STANDING)).toMatchObject({
+      board: {
+        order: [
+          { square: "e8", seconds: 0.6 },
+          { square: "e1", seconds: 1.6 },
+          { square: "a1", seconds: 2.6 },
+        ],
+      },
+    });
+  });
+
+  it("times a moved piece from its last move and leaves out a piece lifted off the board", () => {
+    const order = rebuild([
+      { type: "place", piece: WHITE_KING, square: "e2", now: 9_000 },
+      { type: "place", piece: WHITE_ROOK, square: "a1", now: 9_500 },
+      { type: "place", piece: { color: "black", type: "king" }, square: "e8", now: 10_000 },
+      { type: "move", from: "e2", to: "e1", now: 12_040 },
+      { type: "remove", square: "a1" },
+    ]);
+
+    expect(order).toEqual([
+      { square: "e8", seconds: 2 },
+      { square: "e1", seconds: 4 },
+    ]);
+  });
+
+  it("knows no order once the log stopped short of the board", () => {
+    const shuffles = Array.from({ length: MAX_PLACEMENTS - 1 }, (_, index): RoundAction => ({
+      type: "move",
+      from: index % 2 === 0 ? "a1" : "a2",
+      to: index % 2 === 0 ? "a2" : "a1",
+      now: 9_000 + index,
+    }));
+    const order = rebuild([
+      { type: "place", piece: WHITE_ROOK, square: "a1", now: 9_000 },
+      ...shuffles,
+      { type: "move", from: "a2", to: "a3", now: 20_000 },
+    ]);
+
+    expect(order).toBeNull();
+  });
+});
+
 describe("resultCardCopy", () => {
   it("prints the accuracy large, the pieces, the setting, times, rating and streak, and a legend for the board", () => {
     expect(resultCardCopy(EN, roundShareOf(scored(), STANDING), "en")).toEqual({
@@ -124,7 +180,7 @@ describe("resultCardCopy", () => {
 describe("resultCaption", () => {
   it("says the score in one sentence and links the card's own page tagged as a shared result", () => {
     expect(captionWithLink(resultCaption(EN, roundShareOf(scored(), STANDING), "en"))).toBe(
-      "I recalled 2 of 4 pieces (50%) on Memory Chess. Can you beat it? https://thememorychess.com/share/result/1_g_4_100_84_383_1214_u14_3_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3?utm_source=share&utm_medium=result",
+      "I recalled 2 of 4 pieces (50%) on Memory Chess. Can you beat it? https://thememorychess.com/share/result/1_g_4_100_84_383_1214_u14_3_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3_e86e110a110?utm_source=share&utm_medium=result",
     );
   });
 

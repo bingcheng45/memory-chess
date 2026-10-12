@@ -265,7 +265,7 @@ describe("GameResult", () => {
     });
 
     it("fires once when the server accepts the score", async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200 });
+      global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });
 
       submitScore();
 

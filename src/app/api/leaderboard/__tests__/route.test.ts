@@ -1,8 +1,8 @@
 /** @jest-environment node */
 
 import { NextRequest } from "next/server";
-import { POST } from "@/app/api/leaderboard/route";
-import { submitLeaderboardEntry } from "@/lib/services/leaderboardService";
+import { GET, POST } from "@/app/api/leaderboard/route";
+import { getLeaderboard, submitLeaderboardEntry } from "@/lib/services/leaderboardService";
 import { checkSupabaseConnection } from "@/lib/supabase";
 import { WORLD_CODE } from "@/lib/leaderboard/countries";
 
@@ -188,13 +188,31 @@ describe("POST /api/leaderboard", () => {
     });
   });
 
-  it("stores a daily row with the day its board belongs to", async () => {
-    const response = await post({ ...validEntry, difficulty: "daily", daily_day: "2026-10-13" });
+  describe("on 2026-10-13 at 00:30 UTC", () => {
+    beforeEach(() => {
+      jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-13T00:30:00Z"));
+    });
 
-    expect(response.status).toBe(200);
-    expect(submitLeaderboardEntry).toHaveBeenCalledWith(
-      expect.objectContaining({ difficulty: "daily", daily_day: "2026-10-13" }),
-    );
+    afterEach(() => {
+      jest.mocked(Date.now).mockRestore();
+    });
+
+    it.each(["2026-10-13", "2026-10-12"])("stores a daily row for %s, today or yesterday in UTC", async (day) => {
+      const response = await post({ ...validEntry, difficulty: "daily", daily_day: day });
+
+      expect(response.status).toBe(200);
+      expect(submitLeaderboardEntry).toHaveBeenCalledWith(
+        expect.objectContaining({ difficulty: "daily", daily_day: day }),
+      );
+    });
+
+    it.each(["2026-10-14", "2026-10-11", "9999-12-31", "0000-01-01"])("rejects a daily row for %s", async (day) => {
+      const response = await post({ ...validEntry, difficulty: "daily", daily_day: day });
+
+      expect(response.status).toBe(400);
+      expect(await response.json()).toEqual({ error: "Invalid difficulty or daily day" });
+      expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+    });
   });
 
   it.each([
@@ -225,3 +243,31 @@ describe("POST /api/leaderboard", () => {
   });
 });
 
+describe("GET /api/leaderboard", () => {
+  beforeEach(() => {
+    jest.mocked(checkSupabaseConnection).mockResolvedValue({ connected: true });
+    jest.mocked(getLeaderboard).mockResolvedValue({ data: [] });
+  });
+
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  const get = (difficulty: string) =>
+    GET(new NextRequest(`http://localhost/api/leaderboard?difficulty=${difficulty}`));
+
+  it.each(["easy", "medium", "hard", "grandmaster"])("reads the %s board", async (difficulty) => {
+    const response = await get(difficulty);
+
+    expect(response.status).toBe(200);
+    expect(getLeaderboard).toHaveBeenCalledWith(difficulty);
+  });
+
+  it.each(["daily", "weekly"])("rejects the %s board, which it does not serve", async (difficulty) => {
+    const response = await get(difficulty);
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Invalid difficulty level" });
+    expect(getLeaderboard).not.toHaveBeenCalled();
+  });
+});

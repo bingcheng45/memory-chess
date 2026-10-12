@@ -3,16 +3,10 @@ import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboa
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 import { MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
-import { utcDayOf } from '@/lib/lab/daily';
-import {
-  DAILY_BOARD,
-  isLeaderboardDifficulty,
-  type LeaderboardBoard,
-} from '@/types/leaderboard';
+import { readBoard } from '@/lib/leaderboard/board';
+import { isLeaderboardDifficulty } from '@/types/leaderboard';
 
 const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
-
-const DAY_FORMAT = /^\d{4}-\d{2}-\d{2}$/;
 
 /** A missing rating comes from a tab loaded before ratings were sent, and reads as the starting rating. */
 function parseSkillRating(value: unknown): number | null {
@@ -22,29 +16,12 @@ function parseSkillRating(value: unknown): number | null {
     : null;
 }
 
-/** A calendar day that exists, as YYYY-MM-DD. */
-function parseDay(value: unknown): string | null {
-  if (typeof value !== 'string' || !DAY_FORMAT.test(value)) return null;
-  const midnight = Date.parse(`${value}T00:00:00Z`);
-  return !Number.isNaN(midnight) && utcDayOf(midnight) === value ? value : null;
-}
-
-function readBoard(difficulty: unknown, dailyDay: unknown): LeaderboardBoard | null {
-  if (difficulty === DAILY_BOARD) {
-    const day = parseDay(dailyDay);
-    return day === null ? null : { difficulty, daily_day: day };
-  }
-  return isLeaderboardDifficulty(difficulty) && dailyDay == null
-    ? { difficulty }
-    : null;
-}
-
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const difficulty = searchParams.get('difficulty') || 'medium';
   
   // Validate difficulty
-  if (!['easy', 'medium', 'hard', 'grandmaster'].includes(difficulty)) {
+  if (!isLeaderboardDifficulty(difficulty)) {
     return NextResponse.json(
       { error: 'Invalid difficulty level' },
       { status: 400 }
@@ -108,7 +85,7 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    const board = readBoard(difficulty, daily_day);
+    const board = readBoard(difficulty, daily_day, Date.now());
     if (board === null) {
       return NextResponse.json({ error: 'Invalid difficulty or daily day' }, { status: 400 });
     }

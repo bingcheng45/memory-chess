@@ -5,6 +5,17 @@ import type { RoundRecord, RoundRecordV2, SquareOutcome } from "./record";
 /** The board changes at midnight UTC, so the whole world shares one board and one reset moment. */
 export const utcDayOf = (at: number): string => new Date(at).toISOString().slice(0, 10);
 
+const DAY_FORMAT = /^(\d{4})-\d{2}-\d{2}$/;
+
+/** A UTC day that exists, as YYYY-MM-DD, from year 0001 on: Postgres's DATE has no year 0. */
+export function parseUtcDay(value: unknown): string | null {
+  if (typeof value !== "string") return null;
+  const format = DAY_FORMAT.exec(value);
+  if (format === null || Number(format[1]) < 1) return null;
+  const midnight = Date.parse(`${value}T00:00:00Z`);
+  return !Number.isNaN(midnight) && utcDayOf(midnight) === value ? value : null;
+}
+
 export const msToNextUtcDay = (at: number): number => DAY_MS - (at % DAY_MS);
 
 export type DailyRound = RoundRecordV2 & { readonly kind: "daily"; readonly dailyDay: string };

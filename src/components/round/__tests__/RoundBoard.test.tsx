@@ -73,7 +73,7 @@ describe("the palette inventory", () => {
 
     expect(palette("white knight")).toHaveAccessibleName("white knight, 1 left");
     expect(palette("white pawn")).toHaveAccessibleName("white pawn, 8 left");
-    expect(palette("white knight")).not.toHaveAttribute("aria-disabled");
+    expect(palette("white knight")).not.toHaveAttribute("data-used-up");
   });
 
   it("greys out a used-up piece, keeps it in the tab order and says why when a third knight is tried", () => {
@@ -85,7 +85,9 @@ describe("the palette inventory", () => {
     fireEvent.click(cell("e4"));
 
     const knight = screen.getByRole("button", { name: "white knight, 0 left" });
-    expect(knight).toHaveAttribute("aria-disabled", "true");
+    // Pressing it still selects it, so it is not announced as disabled; its name says none are left.
+    expect(knight).toHaveAttribute("data-used-up");
+    expect(knight).not.toHaveAttribute("aria-disabled");
     expect(knight).toHaveAttribute("aria-pressed", "true");
     expect(knight).not.toBeDisabled();
     expect(cell("e4")).toHaveAccessibleName("e4, empty");

@@ -225,7 +225,8 @@ describe("the calibration round controls", () => {
     fireEvent.click(screen.getByRole("button", { name: "e1, empty" }));
     fireEvent.click(screen.getByRole("button", { name: "d1, empty" }));
 
-    expect(screen.getByRole("button", { name: "white king, 0 left" })).toHaveAttribute("aria-disabled", "true");
+    expect(screen.getByRole("button", { name: "white king, 0 left" })).toHaveAttribute("data-used-up");
+    expect(screen.getByRole("button", { name: "white king, 0 left" })).not.toHaveAttribute("aria-disabled");
     expect(screen.getByRole("button", { name: "d1, empty" })).toBeInTheDocument();
     expect(screen.getByText(/Board cleared\./)).toHaveTextContent(
       "Board cleared. Pick a piece, then a square. The white king is already on the board.",

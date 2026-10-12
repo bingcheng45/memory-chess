@@ -1,29 +1,26 @@
 #!/usr/bin/env node
 import { createServer } from "node:http";
 import { readFileSync } from "node:fs";
+import { randomUUID } from "node:crypto";
 
 const [fixturePath, portArg = "54321"] = process.argv.slice(2);
 if (!fixturePath) {
   console.error("usage: fake-supabase.mjs <fixture.json> [port]");
   console.error("fixture: an array of leaderboard_entries rows, or { leaderboard_entries: [...], article_stats: [{ slug, views, likes }] }");
-  console.error("env: FAKE_SUPABASE_MISSING_COUNTRY=1 rejects inserts carrying country_code with PGRST204");
+  console.error("env: FAKE_SUPABASE_MISSING_RATING=1 serves the table before migration 0004: no skill_rating or daily_day, no daily board");
   process.exit(1);
 }
 
 const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
-const rows = Array.isArray(fixture) ? fixture : (fixture.leaderboard_entries ?? []);
+// Missing-rating mode stands in for a database where migration 0004 is
+// outstanding, so a driver can see the insert retry the real server runs.
+const missingRating = process.env.FAKE_SUPABASE_MISSING_RATING === "1";
+const RATING_COLUMNS = ["skill_rating", "daily_day"];
+const withoutRatingColumns = (row) =>
+  Object.fromEntries(Object.entries(row).filter(([column]) => !RATING_COLUMNS.includes(column)));
+const fixtureRows = Array.isArray(fixture) ? fixture : (fixture.leaderboard_entries ?? []);
+const rows = missingRating ? fixtureRows.map(withoutRatingColumns) : fixtureRows;
 let articleStats = Array.isArray(fixture) ? [] : (fixture.article_stats ?? []);
-
-// Opt-in: stand in for a database whose country_code migration has not been
-// applied, so a driver can see what a player gets from the real server.
-const rejectCountryInserts = process.env.FAKE_SUPABASE_MISSING_COUNTRY === "1";
-
-const MISSING_COUNTRY_COLUMN = {
-  code: "PGRST204",
-  details: null,
-  hint: null,
-  message: "Could not find the 'country_code' column of 'leaderboard_entries' in the schema cache",
-};
 
 const RECORD_EVENT_PATH = "/rest/v1/rpc/record_article_event";
 const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -59,9 +56,41 @@ function sendCannotAnswer(res, unsupported) {
   });
 }
 
-function carriesCountryCode(body) {
-  const inserted = Array.isArray(body) ? body : [body];
-  return inserted.some((row) => row && typeof row === "object" && "country_code" in row);
+const missingColumn = (column) => ({
+  code: "PGRST204",
+  details: null,
+  hint: null,
+  message: `Could not find the '${column}' column of 'leaderboard_entries' in the schema cache`,
+});
+
+const checkViolation = (constraint) => ({
+  code: "23514",
+  details: null,
+  hint: null,
+  message: `new row for relation "leaderboard_entries" violates check constraint "${constraint}"`,
+});
+
+const BOARDS = missingRating
+  ? ["easy", "medium", "hard", "grandmaster"]
+  : ["easy", "medium", "hard", "grandmaster", "daily"];
+
+// Stores the row the way the live table would, with its defaults and checks,
+// so a submission can be read back from /api/leaderboard and /leaderboard.
+function insertRow(body) {
+  const unknown = missingRating ? RATING_COLUMNS.find((column) => column in body) : undefined;
+  if (unknown) return { status: 400, body: missingColumn(unknown) };
+  const defaults = missingRating ? {} : { skill_rating: 1000, daily_day: null };
+  const row = { id: randomUUID(), created_at: new Date().toISOString(), country_code: "ZZ", total_wrong_pieces: null, ...defaults, ...body };
+  if (!BOARDS.includes(row.difficulty)) return { status: 400, body: checkViolation("check_difficulty_board") };
+  if (!missingRating && (row.difficulty === "daily") !== (row.daily_day != null)) {
+    return { status: 400, body: checkViolation("check_daily_day_matches_board") };
+  }
+  if (!missingRating && !(Number.isInteger(row.skill_rating) && row.skill_rating >= 0)) {
+    return { status: 400, body: checkViolation("check_skill_rating_range") };
+  }
+  rows.push(row);
+  console.log(`insert ${row.difficulty} ${row.player_name} skill_rating=${row.skill_rating ?? "(no column)"} -> ${rows.length} rows`);
+  return { status: 201, body: row };
 }
 
 function compare(order) {
@@ -107,6 +136,42 @@ function recordArticleEvent(body) {
   articleStats = [...articleStats.filter((row) => row.slug !== slug), after];
   console.log(`rpc record_article_event slug=${slug} event=${body.p_event} -> views=${after.views} likes=${after.likes}`);
   return { status: 200, body: [{ views: after.views, likes: after.likes }] };
+}
+
+// Splits a PostgREST logic list such as `a.gt.1,and(b.eq.2,c.lt.3)` at its top-level commas.
+function splitTopLevel(list) {
+  const parts = [];
+  let depth = 0;
+  let start = 0;
+  [...list].forEach((char, index) => {
+    if (char === "(") depth += 1;
+    if (char === ")") depth -= 1;
+    if (char === "," && depth === 0) {
+      parts.push(list.slice(start, index));
+      start = index + 1;
+    }
+  });
+  return [...parts, list.slice(start)];
+}
+
+const COMPARE = {
+  eq: (x, y) => String(x) === y,
+  gt: (x, y) => x != null && Number(x) > Number(y),
+  lt: (x, y) => x != null && Number(x) < Number(y),
+};
+
+// The `or` filter getStanding sends: comparisons, `is.null`, `not.is.null` and nested `and(...)`.
+function logicTest(clause) {
+  if (clause.startsWith("and(")) {
+    const tests = splitTopLevel(clause.slice("and(".length, -1)).map(logicTest);
+    return (row) => tests.every((test) => test(row));
+  }
+  const [column, ...rest] = clause.split(".");
+  const op = rest.join(".");
+  if (op === "is.null") return (row) => row[column] == null;
+  if (op === "not.is.null") return (row) => row[column] != null;
+  const [name, ...value] = rest;
+  return (row) => COMPARE[name](row[column], value.join("."));
 }
 
 const OPERATOR_THE_FIXTURE_CANNOT_RUN = Symbol("operator the fixture cannot run");
@@ -170,14 +235,16 @@ createServer(async (req, res) => {
     res.end(JSON.stringify({ code: "PGRST205", message: `no fixture for ${url.pathname}` }));
     return;
   }
-  if (rejectCountryInserts && req.method === "POST" && carriesCountryCode(await readJson(req))) {
-    res.writeHead(400, { "content-type": "application/json" });
-    res.end(JSON.stringify(MISSING_COUNTRY_COLUMN));
+  if (req.method === "POST") {
+    const answer = insertRow((await readJson(req)) ?? {});
+    if (answer.status !== 201) console.log(`insert rejected ${answer.body.code}: ${answer.body.message}`);
+    const single = (req.headers.accept ?? "").includes("vnd.pgrst.object");
+    sendJson(res, answer.status, answer.status === 201 && !single ? [answer.body] : answer.body);
     return;
   }
   const unsupported = [...url.searchParams].filter(
     ([key, value]) =>
-      !["select", "order", "limit", "offset"].includes(key) && !/^(eq|gt)\./.test(value),
+      !["select", "order", "limit", "offset", "or"].includes(key) && !/^(eq|gt)\./.test(value),
   );
   if (unsupported.length) {
     sendCannotAnswer(res, unsupported);
@@ -186,6 +253,7 @@ createServer(async (req, res) => {
   const ranked = rows
     .filter((row) =>
       [...url.searchParams].every(([column, value]) => {
+        if (column === "or") return splitTopLevel(value.slice(1, -1)).some((clause) => logicTest(clause)(row));
         if (value.startsWith("eq.")) return String(row[column]) === value.slice(3);
         if (value.startsWith("gt.")) return row[column] != null && Number(row[column]) > Number(value.slice(3));
         return true;
@@ -204,7 +272,7 @@ createServer(async (req, res) => {
   });
   res.end(req.method === "HEAD" ? undefined : JSON.stringify(page));
 }).listen(Number(portArg), "127.0.0.1", () => {
-  const mode = rejectCountryInserts ? ", rejecting country_code inserts with PGRST204" : "";
+  const mode = missingRating ? ", without migration 0004 (no skill_rating or daily_day)" : "";
   console.log(`fake supabase on http://127.0.0.1:${portArg} serving ${rows.length} rows${mode}`);
   console.log(`article_stats holds ${articleStats.length} rows`);
 });

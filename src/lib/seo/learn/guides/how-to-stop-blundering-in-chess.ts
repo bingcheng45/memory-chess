@@ -29,7 +29,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Before every move, run one scan in a fixed order. Ask what your opponent's last move attacks, then list every check, capture and threat they have. Find your loose pieces, the ones with no defender. Last, ask what your own move stops guarding.",
+    quickAnswer: "Before every move, run one five-step scan in a fixed order. Check what your opponent's last move attacks, list every check, capture and threat they have, and find your loose pieces, the ones with no defender. Then ask what your intended move stops guarding, and only after that look for your own checks and captures.",
     takeaways: [
       "A one-move blunder is a move that only works on the board in your head.",
       "A loose piece has no defender, so list yours before your opponent's check finds one.",
@@ -51,8 +51,8 @@ const guide: LearnDocument = {
           paragraphs: [
             "A puzzle tells you two things before you look. There is a tactic, and it is your move. A game tells you neither, so a fork you would find in a puzzle can walk past unseen.",
             "A one-move blunder needs no deep line to avoid. It is a move that works on the board in your head and fails on the board on the table.",
-            "The two boards differ in three common ways. The first is the phantom defender, a piece that looks like a guard and cannot act as one.",
-            "Put a White bishop on b5, a Black knight on c6, the Black king on e8 and a White pawn on e5, with d7 empty. Black counts the knight as a guard of e5. It is pinned, so Nxe5 is illegal.",
+            "The two boards differ in three common ways. The first is the phantom defender, a piece you count on to recapture that cannot legally move.",
+            "Put a White bishop on b5, a Black knight on c6, the Black king on e8 and a White pawn on e5, with d7 empty. The pawn has just captured a Black piece on e5. Black counted the knight as its defender and planned to recapture. The knight is pinned to the king, so Nxe5 is illegal and the piece is simply lost.",
           ],
         },
         {
@@ -71,7 +71,7 @@ const guide: LearnDocument = {
           },
           arrows: [{ from: "b5", to: "e8", kind: "pin" }, { from: "c6", to: "e5", kind: "attack" }],
           marks: [{ square: "c6", kind: "ring" }],
-          caption: "The knight on c6 seems to guard e5, but the bishop on b5 pins it to the king on e8.",
+          caption: "Black counted on Nxe5 to recapture, but the bishop on b5 pins the knight to the king on e8.",
         },
         {
           kind: "prose",

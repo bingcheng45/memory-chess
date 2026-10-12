@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the whole board from memory and scoring it square by square. Start at 6 pieces and 10 seconds. Add two pieces after three perfect rounds in a row, and shorten the look only once that count holds.",
+    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the whole board from memory and scoring it square by square. Start at 6 pieces and 10 seconds. Add two pieces after three perfect rounds in a row. Keep the look at 10 seconds until 12 pieces comes back perfect three times, then lower it to 8.",
     takeaways: [
       "A piece scores only when its square, type and colour all match, so a near miss is a miss.",
       "At 6 pieces one missed piece already costs 17 points, so the result messages are blunt at low counts.",
@@ -136,7 +136,7 @@ const guide: LearnDocument = {
             },
             {
               title: "The hard preset",
-              description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Play these once 12 pieces at 10 seconds gives three Perfect Score rounds in a row. Read the board in groups of two or three pieces, starting with the kings.",
+              description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Play these once 12 pieces at 10 seconds gives three Perfect Score rounds in a row. Read the board in three or four groups of three or four pieces, starting with the kings.",
               duration: "About 6 minutes",
               goal: "Excellent Memory, which at this count means at least 11 of the 12, in three of four rounds. Then try the 20-piece preset.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },

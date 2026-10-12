@@ -1599,5 +1599,17 @@
     },
     "play": "Play a round",
     "home": "Go to the home page"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} h {minutes} min",
+    "ready": "Today's board · {pieceCount, plural, one {# piece} other {# pieces}} · {seconds} s · {timeLeft} left",
+    "next": "Next board in {timeLeft}",
+    "pending": "Today's board",
+    "navReady": "{label}, today's daily board is ready",
+    "cardTitle": "Today's daily board is ready",
+    "cardSetting": "{pieceCount, plural, one {# piece} other {# pieces}} and {seconds, plural, one {# second} other {# seconds}} to study.",
+    "cardNote": "Everyone plays the same board today, and you get one try.",
+    "play": "Play today's board"
   }
 }

@@ -784,5 +784,17 @@
     },
     "play": "Speel een ronde",
     "home": "Naar de startpagina"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} u {minutes} min",
+    "ready": "Bord van vandaag · {pieceCount, plural, one {# stuk} other {# stukken}} · {seconds} s · nog {timeLeft}",
+    "next": "Volgend bord over {timeLeft}",
+    "pending": "Bord van vandaag",
+    "navReady": "{label}, het dagelijkse bord van vandaag staat klaar",
+    "cardTitle": "Het dagelijkse bord van vandaag staat klaar",
+    "cardSetting": "{pieceCount, plural, one {# stuk} other {# stukken}} en {seconds, plural, one {# seconde} other {# seconden}} om te onthouden.",
+    "cardNote": "Iedereen speelt vandaag hetzelfde bord, en je hebt één poging.",
+    "play": "Speel het bord van vandaag"
   }
 }

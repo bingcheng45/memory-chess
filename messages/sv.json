@@ -784,5 +784,17 @@
     },
     "play": "Spela en runda",
     "home": "Till startsidan"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} tim {minutes} min",
+    "ready": "Dagens bräde · {pieceCount, plural, one {# pjäs} other {# pjäser}} · {seconds} s · {timeLeft} kvar",
+    "next": "Nästa bräde om {timeLeft}",
+    "pending": "Dagens bräde",
+    "navReady": "{label}, dagens bräde är redo",
+    "cardTitle": "Dagens bräde är redo",
+    "cardSetting": "{pieceCount, plural, one {# pjäs} other {# pjäser}} och {seconds, plural, one {# sekund} other {# sekunder}} att memorera.",
+    "cardNote": "Alla spelar samma bräde i dag, och du får ett försök.",
+    "play": "Spela dagens bräde"
   }
 }

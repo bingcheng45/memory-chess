@@ -784,5 +784,17 @@
     },
     "play": "Játssz egy kört",
     "home": "Vissza a főoldalra"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} perc",
+    "hoursLeft": "{hours} ó {minutes} perc",
+    "ready": "A mai tábla · {pieceCount} bábu · {seconds} mp · még {timeLeft}",
+    "next": "Következő tábla {timeLeft} múlva",
+    "pending": "A mai tábla",
+    "navReady": "{label}, a mai napi tábla elérhető",
+    "cardTitle": "A mai napi tábla elérhető",
+    "cardSetting": "{pieceCount} bábu és {seconds} mp a megjegyzésre.",
+    "cardNote": "Ma mindenki ugyanazt a táblát játssza, és egy próbálkozásod van.",
+    "play": "Játszd a mai táblát"
   }
 }

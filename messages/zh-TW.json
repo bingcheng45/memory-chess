@@ -784,5 +784,17 @@
     },
     "play": "開始一局",
     "home": "返回首頁"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} 分鐘",
+    "hoursLeft": "{hours} 小時 {minutes} 分鐘",
+    "ready": "今日棋局 · {pieceCount} 子 · {seconds} 秒 · 剩餘 {timeLeft}",
+    "next": "{timeLeft}後開放下一局",
+    "pending": "今日棋局",
+    "navReady": "{label}，今日每日棋局已準備好",
+    "cardTitle": "今日每日棋局已準備好",
+    "cardSetting": "{pieceCount} 子，記憶時間 {seconds} 秒。",
+    "cardNote": "今天所有人玩同一局，你只有一次機會。",
+    "play": "開始今日棋局"
   }
 }

@@ -784,5 +784,17 @@
     },
     "play": "Zahrát kolo",
     "home": "Na úvodní stránku"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} h {minutes} min",
+    "ready": "Dnešní pozice · {pieceCount, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} · {seconds} s · zbývá {timeLeft}",
+    "next": "Další pozice za {timeLeft}",
+    "pending": "Dnešní pozice",
+    "navReady": "{label}, dnešní denní pozice je připravena",
+    "cardTitle": "Dnešní denní pozice je připravena",
+    "cardSetting": "{pieceCount, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} a {seconds, plural, one {# sekunda} few {# sekundy} many {# sekundy} other {# sekund}} na zapamatování.",
+    "cardNote": "Dnes všichni hrají stejnou pozici a máte jeden pokus.",
+    "play": "Hrát dnešní pozici"
   }
 }

@@ -784,5 +784,17 @@
     },
     "play": "Chơi một ván",
     "home": "Về trang chủ"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} phút",
+    "hoursLeft": "{hours} giờ {minutes} phút",
+    "ready": "Bàn cờ hôm nay · {pieceCount} quân · {seconds} giây · còn {timeLeft}",
+    "next": "Bàn cờ tiếp theo sau {timeLeft}",
+    "pending": "Bàn cờ hôm nay",
+    "navReady": "{label}, bàn cờ hằng ngày hôm nay đã sẵn sàng",
+    "cardTitle": "Bàn cờ hằng ngày hôm nay đã sẵn sàng",
+    "cardSetting": "{pieceCount} quân và {seconds} giây để ghi nhớ.",
+    "cardNote": "Hôm nay mọi người cùng chơi một bàn cờ, và bạn có một lượt thử.",
+    "play": "Chơi bàn cờ hôm nay"
   }
 }

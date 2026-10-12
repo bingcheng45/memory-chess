@@ -784,5 +784,17 @@
     },
     "play": "Spill en runde",
     "home": "Til forsiden"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} t {minutes} min",
+    "ready": "Dagens brett · {pieceCount, plural, one {# brikke} other {# brikker}} · {seconds} s · {timeLeft} igjen",
+    "next": "Neste brett om {timeLeft}",
+    "pending": "Dagens brett",
+    "navReady": "{label}, dagens brett er klart",
+    "cardTitle": "Dagens brett er klart",
+    "cardSetting": "{pieceCount, plural, one {# brikke} other {# brikker}} og {seconds, plural, one {# sekund} other {# sekunder}} til å huske.",
+    "cardNote": "Alle spiller det samme brettet i dag, og du får ett forsøk.",
+    "play": "Spill dagens brett"
   }
 }

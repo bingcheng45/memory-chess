@@ -784,5 +784,17 @@
     },
     "play": "Spil en runde",
     "home": "Til forsiden"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} t {minutes} min",
+    "ready": "Dagens bræt · {pieceCount, plural, one {# brik} other {# brikker}} · {seconds} s · {timeLeft} tilbage",
+    "next": "Næste bræt om {timeLeft}",
+    "pending": "Dagens bræt",
+    "navReady": "{label}, dagens bræt er klar",
+    "cardTitle": "Dagens bræt er klar",
+    "cardSetting": "{pieceCount, plural, one {# brik} other {# brikker}} og {seconds, plural, one {# sekund} other {# sekunder}} til at huske.",
+    "cardNote": "Alle spiller det samme bræt i dag, og du får ét forsøg.",
+    "play": "Spil dagens bræt"
   }
 }

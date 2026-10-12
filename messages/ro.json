@@ -784,5 +784,17 @@
     },
     "play": "Joacă o rundă",
     "home": "Mergi la pagina principală"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} h {minutes} min",
+    "ready": "Tabla de azi · {pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s · mai sunt {timeLeft}",
+    "next": "Următoarea tablă în {timeLeft}",
+    "pending": "Tabla de azi",
+    "navReady": "{label}, tabla zilei de azi este gata",
+    "cardTitle": "Tabla zilei de azi este gata",
+    "cardSetting": "{pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} și {seconds, plural, one {# secundă} few {# secunde} other {# de secunde}} pentru memorare.",
+    "cardNote": "Azi toată lumea joacă aceeași tablă și ai o singură încercare.",
+    "play": "Joacă tabla de azi"
   }
 }

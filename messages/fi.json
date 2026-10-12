@@ -784,5 +784,17 @@
     },
     "play": "Pelaa kierros",
     "home": "Etusivulle"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} h {minutes} min",
+    "ready": "Päivän lauta · {pieceCount, plural, one {# nappula} other {# nappulaa}} · {seconds} s · {timeLeft} jäljellä",
+    "next": "Seuraava lauta {timeLeft} päästä",
+    "pending": "Päivän lauta",
+    "navReady": "{label}, tämän päivän lauta on valmiina",
+    "cardTitle": "Tämän päivän lauta on valmiina",
+    "cardSetting": "{pieceCount, plural, one {# nappula} other {# nappulaa}} ja {seconds, plural, one {# sekunti} other {# sekuntia}} aikaa painaa mieleen.",
+    "cardNote": "Kaikki pelaavat tänään saman laudan, ja sinulla on yksi yritys.",
+    "play": "Pelaa päivän lauta"
   }
 }

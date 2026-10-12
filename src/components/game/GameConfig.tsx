@@ -5,6 +5,8 @@ import { useGameStore } from '@/lib/store/gameStore';
 import type { RoundSource } from '@/lib/analytics/events';
 import { CoordinatesSwitch } from '@/components/settings/CoordinatesSwitch';
 import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
+import { useDailyState, type DailyState } from '@/hooks/useDailyState';
 import {
   MEMORIZE_SECONDS_RANGE,
   PIECE_COUNT_RANGE,
@@ -24,6 +26,24 @@ interface GameConfigProps {
 }
 
 const { presets: DIFFICULTY_PRESETS } = GAME_CONFIG_RULES;
+
+function DailyBoardLink() {
+  const t = useTranslations('dailyEntry');
+  const daily = useDailyState();
+
+  function labelOf(state: DailyState) {
+    const { hours, minutes } = state.left;
+    const timeLeft = hours === 0 ? t('minutesLeft', { minutes }) : t('hoursLeft', { hours, minutes });
+    if (state.status === 'used') return t('next', { timeLeft });
+    return t('ready', { pieceCount: state.setting.pieceCount, seconds: state.setting.memorizeTime, timeLeft });
+  }
+
+  return (
+    <Link href="/daily" data-daily-entry={daily?.status ?? 'pending'} className="lab-btn lab-btn-secondary lab-config-daily">
+      {daily ? labelOf(daily) : t('pending')}
+    </Link>
+  );
+}
 
 const scaleOf = ({ min, max }: { min: number; max: number }) => [min, Math.round((min + max) / 2), max];
 
@@ -189,6 +209,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       <button type="button" onClick={handleStart} data-start-round className="lab-btn lab-btn-primary lab-config-start">
         {t('config.start')}
       </button>
+      <DailyBoardLink />
 
       {gameState.completionTime !== undefined && (
         <p className="lab-note lab-config-last">

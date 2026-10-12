@@ -784,5 +784,17 @@
     },
     "play": "라운드 플레이",
     "home": "홈으로 가기"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes}분",
+    "hoursLeft": "{hours}시간 {minutes}분",
+    "ready": "오늘의 보드 · 기물 {pieceCount}개 · {seconds}초 · {timeLeft} 남음",
+    "next": "다음 보드까지 {timeLeft}",
+    "pending": "오늘의 보드",
+    "navReady": "{label}, 오늘의 데일리 보드가 준비됐어요",
+    "cardTitle": "오늘의 데일리 보드가 준비됐어요",
+    "cardSetting": "기물 {pieceCount}개, 암기 시간 {seconds}초.",
+    "cardNote": "오늘은 모두가 같은 보드를 플레이하며, 기회는 한 번입니다.",
+    "play": "오늘의 보드 플레이"
   }
 }

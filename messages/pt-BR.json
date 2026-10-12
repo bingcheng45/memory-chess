@@ -784,5 +784,17 @@
     },
     "play": "Jogar uma rodada",
     "home": "Ir para a página inicial"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} h {minutes} min",
+    "ready": "Tabuleiro de hoje · {pieceCount, plural, one {# peça} many {# peças} other {# peças}} · {seconds} s · faltam {timeLeft}",
+    "next": "Próximo tabuleiro em {timeLeft}",
+    "pending": "Tabuleiro de hoje",
+    "navReady": "{label}, o tabuleiro diário de hoje está pronto",
+    "cardTitle": "O tabuleiro diário de hoje está pronto",
+    "cardSetting": "{pieceCount, plural, one {# peça} many {# peças} other {# peças}} e {seconds, plural, one {# segundo} many {# segundos} other {# segundos}} para memorizar.",
+    "cardNote": "Hoje todos jogam o mesmo tabuleiro, e você tem uma tentativa.",
+    "play": "Jogar o tabuleiro de hoje"
   }
 }

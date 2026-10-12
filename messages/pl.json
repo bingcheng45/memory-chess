@@ -784,5 +784,17 @@
     },
     "play": "Zagraj rundę",
     "home": "Przejdź na stronę główną"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} godz. {minutes} min",
+    "ready": "Dzisiejsza plansza · {pieceCount, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} · {seconds} s · zostało {timeLeft}",
+    "next": "Następna plansza za {timeLeft}",
+    "pending": "Dzisiejsza plansza",
+    "navReady": "{label}, dzisiejsza plansza dnia jest gotowa",
+    "cardTitle": "Dzisiejsza plansza dnia jest gotowa",
+    "cardSetting": "{pieceCount, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} i {seconds, plural, one {# sekunda} few {# sekundy} many {# sekund} other {# sekundy}} na zapamiętanie.",
+    "cardNote": "Dziś wszyscy grają na tej samej planszy, a ty masz jedną próbę.",
+    "play": "Zagraj dzisiejszą planszę"
   }
 }

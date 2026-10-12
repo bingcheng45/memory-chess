@@ -784,5 +784,17 @@
     },
     "play": "एक राउंड खेलें",
     "home": "होम पेज पर जाएँ"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} मि.",
+    "hoursLeft": "{hours} घं. {minutes} मि.",
+    "ready": "आज का बोर्ड · {pieceCount, plural, one {# मोहरा} other {# मोहरे}} · {seconds} से. · {timeLeft} बाकी",
+    "next": "अगला बोर्ड {timeLeft} में",
+    "pending": "आज का बोर्ड",
+    "navReady": "{label}, आज का दैनिक बोर्ड तैयार है",
+    "cardTitle": "आज का दैनिक बोर्ड तैयार है",
+    "cardSetting": "{pieceCount, plural, one {# मोहरा} other {# मोहरे}} और याद करने के लिए {seconds, plural, one {# सेकंड} other {# सेकंड}}।",
+    "cardNote": "आज सभी एक ही बोर्ड खेलते हैं, और आपको एक ही मौका मिलता है।",
+    "play": "आज का बोर्ड खेलें"
   }
 }

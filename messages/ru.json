@@ -784,5 +784,17 @@
     },
     "play": "Сыграть раунд",
     "home": "На главную"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} мин",
+    "hoursLeft": "{hours} ч {minutes} мин",
+    "ready": "Доска дня · {pieceCount, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}} · {seconds} с · осталось {timeLeft}",
+    "next": "Следующая доска через {timeLeft}",
+    "pending": "Доска дня",
+    "navReady": "{label}, сегодняшняя доска дня готова",
+    "cardTitle": "Сегодняшняя доска дня готова",
+    "cardSetting": "{pieceCount, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}} и {seconds, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунды}} на запоминание.",
+    "cardNote": "Сегодня все играют одну и ту же доску, и у вас одна попытка.",
+    "play": "Сыграть доску дня"
   }
 }

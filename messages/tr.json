@@ -784,5 +784,17 @@
     },
     "play": "Bir tur oyna",
     "home": "Ana sayfaya git"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} dk",
+    "hoursLeft": "{hours} sa {minutes} dk",
+    "ready": "Bugünün tahtası · {pieceCount} taş · {seconds} sn · {timeLeft} kaldı",
+    "next": "Sonraki tahta {timeLeft} sonra",
+    "pending": "Bugünün tahtası",
+    "navReady": "{label}, bugünün günlük tahtası hazır",
+    "cardTitle": "Bugünün günlük tahtası hazır",
+    "cardSetting": "{pieceCount} taş ve ezberlemek için {seconds} saniye.",
+    "cardNote": "Bugün herkes aynı tahtayı oynuyor ve tek bir deneme hakkın var.",
+    "play": "Bugünün tahtasını oyna"
   }
 }

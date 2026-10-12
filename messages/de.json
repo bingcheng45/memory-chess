@@ -784,5 +784,17 @@
     },
     "play": "Eine Runde spielen",
     "home": "Zur Startseite"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} Min.",
+    "hoursLeft": "{hours} Std. {minutes} Min.",
+    "ready": "Heutiges Brett · {pieceCount, plural, one {# Figur} other {# Figuren}} · {seconds} s · noch {timeLeft}",
+    "next": "Nächstes Brett in {timeLeft}",
+    "pending": "Heutiges Brett",
+    "navReady": "{label}, das heutige Tagesbrett ist bereit",
+    "cardTitle": "Das heutige Tagesbrett ist bereit",
+    "cardSetting": "{pieceCount, plural, one {# Figur} other {# Figuren}} und {seconds, plural, one {# Sekunde} other {# Sekunden}} zum Einprägen.",
+    "cardNote": "Heute spielen alle dasselbe Brett, und du hast einen Versuch.",
+    "play": "Heutiges Brett spielen"
   }
 }

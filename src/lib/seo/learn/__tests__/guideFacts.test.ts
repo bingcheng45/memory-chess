@@ -199,7 +199,7 @@ const positionCases = LEARN_GUIDES.flatMap((guide) =>
 
 describe("guide chess positions", () => {
   it("replays every position the guides state, drawn or not", () => {
-    expect(positionCases.length).toBe(53);
+    expect(positionCases.length).toBe(54);
   });
 
   it.each(positionCases.map((entry) => [`${entry.guide.meta.slug} ${entry.position.id}`, entry] as const))(

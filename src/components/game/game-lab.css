@@ -20,10 +20,6 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-cal-actions { margin-top: 8px; }
 .lab-game .lab-cal-main .lab-btn { min-height: 44px; height: 44px; padding: 0 8px; font-size: 15px; line-height: 1.15; white-space: normal; }
 
-/* The sound control was drawn for the dark header. */
-.lab-game .lab-sound button { background: none; color: var(--lp-ink-2); }
-.lab-game .lab-sound button:hover { background: var(--lp-surface-2); color: var(--lp-ink); }
-
 /* result screen */
 .lab-game .lab-result { max-width: 1000px; }
 .lab-game .lab-result-card { padding: clamp(16px, 3vw, 32px); }

@@ -26,8 +26,8 @@
     "sound": {
       "mute": "Mute sound",
       "unmute": "Unmute sound",
-      "on": "Sound On",
-      "off": "Sound Off",
+      "on": "Sound on",
+      "off": "Sound off",
       "volume": "Volume"
     },
     "language": {

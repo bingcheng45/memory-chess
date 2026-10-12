@@ -8,18 +8,45 @@ if (!fixturePath) {
   console.error("usage: fake-supabase.mjs <fixture.json> [port]");
   console.error("fixture: an array of leaderboard_entries rows, or { leaderboard_entries: [...], article_stats: [{ slug, views, likes }] }");
   console.error("env: FAKE_SUPABASE_MISSING_RATING=1 serves the table before migration 0004: no skill_rating or daily_day, no daily board");
+  console.error("env: FAKE_SUPABASE_MISSING_COUNTRY=1 serves the table before migration 0001 as well: no country_code either");
   process.exit(1);
 }
 
 const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
-// Missing-rating mode stands in for a database where migration 0004 is
-// outstanding, so a driver can see the insert retry the real server runs.
-const missingRating = process.env.FAKE_SUPABASE_MISSING_RATING === "1";
-const RATING_COLUMNS = ["skill_rating", "daily_day"];
-const withoutRatingColumns = (row) =>
-  Object.fromEntries(Object.entries(row).filter(([column]) => !RATING_COLUMNS.includes(column)));
+
+const CLASSIC_BOARDS = ["easy", "medium", "hard", "grandmaster"];
+// The leaderboard table as each outstanding migration leaves it, so a driver
+// can see the insert retries the real server runs.
+const SCHEMAS = {
+  current: {
+    label: "",
+    absent: [],
+    boards: [...CLASSIC_BOARDS, "daily"],
+    defaults: { country_code: "ZZ", skill_rating: 1000, daily_day: null },
+  },
+  missingRating: {
+    label: ", without migration 0004 (no skill_rating or daily_day)",
+    absent: ["skill_rating", "daily_day"],
+    boards: CLASSIC_BOARDS,
+    defaults: { country_code: "ZZ" },
+  },
+  missingCountry: {
+    label: ", without migrations 0001 and 0004 (no country_code, skill_rating or daily_day)",
+    absent: ["skill_rating", "daily_day", "country_code"],
+    boards: CLASSIC_BOARDS,
+    defaults: {},
+  },
+};
+const schema =
+  process.env.FAKE_SUPABASE_MISSING_COUNTRY === "1"
+    ? SCHEMAS.missingCountry
+    : process.env.FAKE_SUPABASE_MISSING_RATING === "1"
+      ? SCHEMAS.missingRating
+      : SCHEMAS.current;
+const has = (column) => !schema.absent.includes(column);
+
 const fixtureRows = Array.isArray(fixture) ? fixture : (fixture.leaderboard_entries ?? []);
-const rows = missingRating ? fixtureRows.map(withoutRatingColumns) : fixtureRows;
+const rows = fixtureRows.map((row) => Object.fromEntries(Object.entries(row).filter(([column]) => has(column))));
 let articleStats = Array.isArray(fixture) ? [] : (fixture.article_stats ?? []);
 
 const RECORD_EVENT_PATH = "/rest/v1/rpc/record_article_event";
@@ -70,24 +97,24 @@ const checkViolation = (constraint) => ({
   message: `new row for relation "leaderboard_entries" violates check constraint "${constraint}"`,
 });
 
-const BOARDS = missingRating
-  ? ["easy", "medium", "hard", "grandmaster"]
-  : ["easy", "medium", "hard", "grandmaster", "daily"];
+const CHECKS = [
+  ["check_difficulty_board", (row) => schema.boards.includes(row.difficulty)],
+  ...(has("daily_day")
+    ? [["check_daily_day_matches_board", (row) => (row.difficulty === "daily") === (row.daily_day != null)]]
+    : []),
+  ...(has("skill_rating")
+    ? [["check_skill_rating_range", (row) => Number.isInteger(row.skill_rating) && row.skill_rating >= 0 && row.skill_rating <= 5000]]
+    : []),
+];
 
 // Stores the row the way the live table would, with its defaults and checks,
 // so a submission can be read back from /api/leaderboard and /leaderboard.
 function insertRow(body) {
-  const unknown = missingRating ? RATING_COLUMNS.find((column) => column in body) : undefined;
+  const unknown = Object.keys(body).find((column) => !has(column));
   if (unknown) return { status: 400, body: missingColumn(unknown) };
-  const defaults = missingRating ? {} : { skill_rating: 1000, daily_day: null };
-  const row = { id: randomUUID(), created_at: new Date().toISOString(), country_code: "ZZ", total_wrong_pieces: null, ...defaults, ...body };
-  if (!BOARDS.includes(row.difficulty)) return { status: 400, body: checkViolation("check_difficulty_board") };
-  if (!missingRating && (row.difficulty === "daily") !== (row.daily_day != null)) {
-    return { status: 400, body: checkViolation("check_daily_day_matches_board") };
-  }
-  if (!missingRating && !(Number.isInteger(row.skill_rating) && row.skill_rating >= 0)) {
-    return { status: 400, body: checkViolation("check_skill_rating_range") };
-  }
+  const row = { id: randomUUID(), created_at: new Date().toISOString(), total_wrong_pieces: null, ...schema.defaults, ...body };
+  const broken = CHECKS.find(([, holds]) => !holds(row));
+  if (broken) return { status: 400, body: checkViolation(broken[0]) };
   rows.push(row);
   console.log(`insert ${row.difficulty} ${row.player_name} skill_rating=${row.skill_rating ?? "(no column)"} -> ${rows.length} rows`);
   return { status: 201, body: row };
@@ -160,18 +187,22 @@ const COMPARE = {
   lt: (x, y) => x != null && Number(x) < Number(y),
 };
 
-// The `or` filter getStanding sends: comparisons, `is.null`, `not.is.null` and nested `and(...)`.
+// One PostgREST condition on one column, such as `eq.5`, `gt.1.5`, `is.null` or `not.is.null`.
+function condition(column, test) {
+  if (test === "is.null") return (row) => row[column] == null;
+  if (test === "not.is.null") return (row) => row[column] != null;
+  const [name, ...value] = test.split(".");
+  return (row) => COMPARE[name](row[column], value.join("."));
+}
+
+// The `or` filter getStanding sends: conditions and nested `and(...)`.
 function logicTest(clause) {
   if (clause.startsWith("and(")) {
     const tests = splitTopLevel(clause.slice("and(".length, -1)).map(logicTest);
     return (row) => tests.every((test) => test(row));
   }
-  const [column, ...rest] = clause.split(".");
-  const op = rest.join(".");
-  if (op === "is.null") return (row) => row[column] == null;
-  if (op === "not.is.null") return (row) => row[column] != null;
-  const [name, ...value] = rest;
-  return (row) => COMPARE[name](row[column], value.join("."));
+  const [column, ...test] = clause.split(".");
+  return condition(column, test.join("."));
 }
 
 const OPERATOR_THE_FIXTURE_CANNOT_RUN = Symbol("operator the fixture cannot run");
@@ -244,7 +275,7 @@ createServer(async (req, res) => {
   }
   const unsupported = [...url.searchParams].filter(
     ([key, value]) =>
-      !["select", "order", "limit", "offset", "or"].includes(key) && !/^(eq|gt)\./.test(value),
+      !["select", "order", "limit", "offset", "or"].includes(key) && !/^(eq|gt|lt)\./.test(value),
   );
   if (unsupported.length) {
     sendCannotAnswer(res, unsupported);
@@ -253,10 +284,9 @@ createServer(async (req, res) => {
   const ranked = rows
     .filter((row) =>
       [...url.searchParams].every(([column, value]) => {
+        if (["select", "order", "limit", "offset"].includes(column)) return true;
         if (column === "or") return splitTopLevel(value.slice(1, -1)).some((clause) => logicTest(clause)(row));
-        if (value.startsWith("eq.")) return String(row[column]) === value.slice(3);
-        if (value.startsWith("gt.")) return row[column] != null && Number(row[column]) > Number(value.slice(3));
-        return true;
+        return condition(column, value)(row);
       }),
     )
     .sort(compare(url.searchParams.get("order") ?? "id"));
@@ -272,7 +302,6 @@ createServer(async (req, res) => {
   });
   res.end(req.method === "HEAD" ? undefined : JSON.stringify(page));
 }).listen(Number(portArg), "127.0.0.1", () => {
-  const mode = missingRating ? ", without migration 0004 (no skill_rating or daily_day)" : "";
-  console.log(`fake supabase on http://127.0.0.1:${portArg} serving ${rows.length} rows${mode}`);
+  console.log(`fake supabase on http://127.0.0.1:${portArg} serving ${rows.length} rows${schema.label}`);
   console.log(`article_stats holds ${articleStats.length} rows`);
 });

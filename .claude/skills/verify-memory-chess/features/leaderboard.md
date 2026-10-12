@@ -45,7 +45,7 @@ rm -rf .next && npm run build
 
 Give the fixture enough rows to look like the real board. The AdSense audit's 300-word floor for `/leaderboard` is met by the table itself, so a seven-row fixture fails `substance` at 263 words while two dozen medium rows pass at 660. That failure is the fixture's, not the page's.
 
-The fixture keeps every row it is sent until it stops, with the live table's defaults and checks: `skill_rating` defaults to 1000, a `daily` row needs a `daily_day` and no other row may carry one. A submission can be read back from `/api/leaderboard` and from `/leaderboard?player=<name>&difficulty=<board>`, the link the result screen gives, which refreshes the open board. A fixture row without `skill_rating` stands for a row stored before the column, and the table shows it as 1000.
+The fixture keeps every row it is sent until it stops, with the live table's defaults and checks: `skill_rating` defaults to 1000 and lies from 0 to 5000, a `daily` row needs a `daily_day` and no other row may carry one. A submission can be read back from `/api/leaderboard` and from `/leaderboard?player=<name>&difficulty=<board>`, the link the result screen gives, which refreshes the open board. A fixture row without `skill_rating` stands for a row stored before the column, and the table shows it as 1000.
 
 ```bash
 SUBMIT_DIFFICULTY=Medium SUBMIT_NAMES="Rater one,Rater two" node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
@@ -80,6 +80,19 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
 ```
 
 Expect status 200 and a stored row: the service drops the rating and keeps the score. The server log carries one `the rating and daily migration (0004) is outstanding` line per retry, which is how you tell the retry apart from a plain success. With the fixture stopped altogether the submission returns 503 and the player-facing `The leaderboard is being updated.` sentence.
+
+## Driving it against a database without the country column
+
+Start the fixture with `FAKE_SUPABASE_MISSING_COUNTRY=1` and it answers any insert carrying `country_code` with a PostgREST `PGRST204` body, the way a deployment reads before the migration in `docs/migrations/` is applied. The table also predates 0004, so the service first drops the rating and then the country. The same rows still serve `/leaderboard`.
+
+```bash
+FAKE_SUPABASE_MISSING_COUNTRY=1 node .claude/skills/verify-memory-chess/helpers/fake-supabase.mjs rows.json 54322 &
+node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
+  .claude/skills/verify-memory-chess/helpers/drive-leaderboard-retry.mjs \
+  --evidence .verify-evidence/leaderboard-retry --base http://127.0.0.1:4517
+```
+
+`drive-leaderboard-retry.mjs` plays a round, picks Singapore, submits, and returns the POST body, the response status and the dialog's own text. Expect `responseStatus` 200 and `succeeded` true: the service drops the country and keeps the score. The server log carries one `Leaderboard insert rejected country_code` line per retry, which is how you tell the retry apart from a plain success. The same script with the fixture stopped altogether returns 503 and the player-facing `The leaderboard is being updated.` sentence.
 
 ## Gotchas
 

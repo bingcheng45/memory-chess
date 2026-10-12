@@ -13,7 +13,40 @@ describe("sharePageOf", () => {
       caption: TITLE,
       image: `https://thememorychess.com/api/share/result/${RESULT}`,
       alt: expect.stringMatching(/^Memory Chess result card: Round result, Accuracy 50%, 2 of 4 pieces, .*Rating 1,214 \(-14\), Win streak 3 rounds in a row\.$/),
+      round: expect.anything(),
     });
+  });
+
+  it("gives a round with a board its replay, the card's figures, the legend, and a round at the same setting", () => {
+    expect(sharePageOf("result", RESULT)?.round).toEqual({
+      replay: {
+        board: {
+          target: { e8: { color: "black", type: "king" }, d5: { color: "black", type: "queen" }, e2: { color: "white", type: "pawn" }, e1: { color: "white", type: "king" } },
+          placed: { e8: { color: "black", type: "king" }, a1: { color: "white", type: "rook" }, e1: { color: "white", type: "king" } },
+          order: [
+            { square: "e1", seconds: 3.1 },
+            { square: "e8", seconds: 5 },
+            { square: "a1", seconds: 12.4 },
+          ],
+        },
+        studySeconds: 8.4,
+        rebuildSeconds: 38.3,
+      },
+      figures: [
+        { label: "Accuracy", value: "50%, 2 of 4 pieces" },
+        { label: "Setting", value: "4 pieces, 10 s study" },
+        { label: "Study time", value: "8.4 s" },
+        { label: "Rebuild time", value: "38.3 s" },
+        { label: "Rating", value: "1,214 (-14)" },
+        { label: "Win streak", value: "3 rounds in a row" },
+      ],
+      legend: { correct: "Correct", missed: "Missed", wrong: "Wrong" },
+      play: "/game?pieceCount=4&memorizeTime=10&source=share",
+    });
+  });
+
+  it("keeps the daily board's page to its card, since the card draws no board", () => {
+    expect(sharePageOf("result", "1_d_4_100_84_383_75_3_4_1000_0_0_20261012")?.round).toBeNull();
   });
 
   it("reads a progress card's page in English, whatever language it was shared from", () => {

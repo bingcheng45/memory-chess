@@ -50,6 +50,7 @@ it.each([
   ["tile_drill", "tile_drill"],
   ["result_next", "result_next"],
   ["plan", "plan"],
+  ["share", "share"],
   ["server", "link"],
   [null, "link"],
 ])("reads the round link source %p as %p", (value, source) => {

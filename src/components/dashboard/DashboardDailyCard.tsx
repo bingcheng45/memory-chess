@@ -3,11 +3,11 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useDailyState } from "@/hooks/useDailyState";
-import { DAILY_OPENED_KEY, utcDayOf } from "@/lib/lab/daily";
+import { DAILY_OPENED_KEY } from "@/lib/lab/daily";
 
 const CARD_ID = "lab-dash-daily";
 
-const HIDE_OPENED_CARD_BEFORE_PAINT = `try{if(localStorage.getItem(${JSON.stringify(DAILY_OPENED_KEY)})===(${utcDayOf})(Date.now()))document.getElementById(${JSON.stringify(CARD_ID)}).hidden=true}catch(e){}`;
+const HIDE_OPENED_CARD_BEFORE_PAINT = `try{if(localStorage.getItem(${JSON.stringify(DAILY_OPENED_KEY)})===new Date().toISOString().slice(0,10))document.getElementById(${JSON.stringify(CARD_ID)}).hidden=true}catch(e){}`;
 
 export function DashboardDailyCard() {
   const t = useTranslations("dailyEntry");

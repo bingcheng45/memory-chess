@@ -60,7 +60,7 @@ describe("derived page values", () => {
       "chess-pattern-recognition-drills": 6,
       "how-to-think-in-chess-for-beginners": 5,
       "20-minute-daily-chess-study-plan": 5,
-      "how-to-analyze-chess-games-for-beginners": 5,
+      "how-to-analyze-chess-games-for-beginners": 6,
       "how-many-chess-puzzles-a-day": 4,
     });
   });

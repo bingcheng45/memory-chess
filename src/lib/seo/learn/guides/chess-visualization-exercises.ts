@@ -55,7 +55,7 @@ const guide: LearnDocument = {
           kind: "list",
           ordered: false,
           items: [
-            "A piece vanishes. You calculated a capture, and two moves later you forgot the capturing piece still stands on its new square.",
+            "A piece vanishes. A piece outside the line, like a pawn on e4, drops out of your picture, and you calculate as if its square were empty.",
             "A piece drifts. The rook stands on d7, but your picture has it on d6, one square off.",
             "A piece changes identity. A bishop turns into a knight, or a white rook into a black one.",
           ],
@@ -263,7 +263,7 @@ const guide: LearnDocument = {
         },
         {
           question: "Can I do visualization exercises without a chess board?",
-          answer: "Yes. Cover-and-move works with any diagram you can hide, on paper or on a screen, and the board in this guide is enough to start. Setting the pieces up by hand helps a little, since placing the e4 pawn yourself makes it harder to forget.",
+          answer: "Yes. Cover-and-move works with any diagram you can hide, on paper or on a screen. Setting the pieces up by hand helps a little, since placing the e4 pawn yourself makes it harder to forget.",
         },
       ],
     },

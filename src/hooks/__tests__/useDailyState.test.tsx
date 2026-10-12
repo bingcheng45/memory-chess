@@ -1,6 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
 import { dailyStateAt, useDailyState } from "@/hooks/useDailyState";
 import { DAILY_OPENED_KEY } from "@/lib/lab/daily";
+import { markDailyOpened } from "@/lib/lab/dailyBoard";
 
 const at = (iso: string) => Date.parse(iso);
 
@@ -73,6 +74,15 @@ describe("useDailyState", () => {
       window.localStorage.setItem(DAILY_OPENED_KEY, "2026-10-13");
       window.dispatchEvent(new StorageEvent("storage", { key: DAILY_OPENED_KEY, newValue: "2026-10-13" }));
     });
+    expect(result.current?.status).toBe("used");
+  });
+
+  it("turns used as soon as this tab starts the board, with no storage event", () => {
+    jest.useFakeTimers({ now: at("2026-10-13T12:00:00Z") });
+    const { result } = renderHook(() => useDailyState());
+    expect(result.current?.status).toBe("ready");
+
+    act(() => markDailyOpened("2026-10-13"));
     expect(result.current?.status).toBe("used");
   });
 });

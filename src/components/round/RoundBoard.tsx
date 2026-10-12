@@ -73,6 +73,7 @@ export const RoundBoard = memo(function RoundBoard({ state, dispatch, copy, coor
   const live = state.phase === "rebuild";
   const navigable = live || state.phase === "scored";
   const drag = usePieceDrag({
+    enabled: live,
     onDrop: (source, square) => {
       if (source.kind !== "board" || square === source.square) return;
       dispatch(
@@ -185,6 +186,7 @@ export const RoundPalette = memo(function RoundPalette({ state, dispatch, copy }
   const message = useRefusalMessage(state, copy);
   const noticeVisible = useNoticeVisible(refused);
   const drag = usePieceDrag({
+    enabled: live,
     onStart: (source) => {
       dispatch({ type: "grab", piece: source.piece });
       return remainingOf(placed, source.piece) > 0;

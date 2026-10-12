@@ -3,16 +3,19 @@
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useDailyState } from "@/hooks/useDailyState";
-import { DAILY_OPENED_KEY } from "@/lib/lab/daily";
+import { DAILY_OPENED_KEY, dailyBoardOf } from "@/lib/lab/daily";
+import type { RoundRecord } from "@/lib/lab/record";
 
 const CARD_ID = "lab-dash-daily";
 
 const HIDE_OPENED_CARD_BEFORE_PAINT = `try{if(localStorage.getItem(${JSON.stringify(DAILY_OPENED_KEY)})===new Date().toISOString().slice(0,10))document.getElementById(${JSON.stringify(CARD_ID)}).hidden=true}catch(e){}`;
 
-export function DashboardDailyCard() {
+/** `records` is null until they load. A round restored from another device's backup counts as played here, as on the daily tile. */
+export function DashboardDailyCard({ records }: { records: readonly RoundRecord[] | null }) {
   const t = useTranslations("dailyEntry");
   const daily = useDailyState();
   if (daily?.status === "used") return null;
+  if (daily && records && dailyBoardOf(records, daily.day, null).status !== "open") return null;
 
   return (
     <>

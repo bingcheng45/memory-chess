@@ -85,4 +85,30 @@ describe("useDailyState", () => {
     act(() => markDailyOpened("2026-10-13"));
     expect(result.current?.status).toBe("used");
   });
+
+  it("catches up when the page becomes visible again after the device slept past midnight", () => {
+    jest.useFakeTimers({ now: at("2026-10-13T22:00:00Z") });
+    window.localStorage.setItem(DAILY_OPENED_KEY, "2026-10-13");
+    const { result } = renderHook(() => useDailyState());
+    expect(result.current?.status).toBe("used");
+
+    jest.setSystemTime(at("2026-10-14T07:30:20Z"));
+    act(() => {
+      document.dispatchEvent(new Event("visibilitychange"));
+    });
+    expect(result.current).toMatchObject({ status: "ready", day: "2026-10-14", setting: { pieceCount: 7, memorizeTime: 10 } });
+  });
+
+  it("catches up when the page is restored from the back-forward cache", () => {
+    jest.useFakeTimers({ now: at("2026-10-13T22:00:00Z") });
+    window.localStorage.setItem(DAILY_OPENED_KEY, "2026-10-13");
+    const { result } = renderHook(() => useDailyState());
+
+    jest.setSystemTime(at("2026-10-14T07:30:20Z"));
+    act(() => {
+      window.dispatchEvent(new Event("pageshow"));
+    });
+    expect(result.current?.day).toBe("2026-10-14");
+  });
 });
+

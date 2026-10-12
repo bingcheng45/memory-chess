@@ -3,10 +3,10 @@
 import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 
 /**
- * The height the dashboard figures keep while they are in view before they arrive: every figure ready, in the longest
- * copy, measured at 320 to 1440 wide. result-deltas-heights.json holds the measurements.
+ * The height the dashboard figures keep while they are in view before they arrive: all ten figures in the longest
+ * copy, measured at 320 to 1440 wide, about a tenth over. result-deltas-heights.json holds the measurements.
  */
-export const RESULT_DELTAS_RESERVE = "min-h-[760px] sm:min-h-[420px] lg:min-h-[400px]";
+export const RESULT_DELTAS_RESERVE = "min-h-[1010px] sm:min-h-[580px] lg:min-h-[540px]";
 
 /**
  * Where the dashboard figures go. Starting in view, it keeps the tallest list's height, so nothing under it moves when

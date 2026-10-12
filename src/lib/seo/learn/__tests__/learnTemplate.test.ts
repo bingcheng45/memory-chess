@@ -50,7 +50,7 @@ describe("derived page values", () => {
     expect(Object.fromEntries(EN_LEARN_PAGES.map((page) => [page.meta.slug, page.readingMinutes]))).toEqual({
       "how-to-get-better-at-chess-for-beginners": 7,
       "how-to-stop-blundering-in-chess": 6,
-      "why-puzzle-rating-doesnt-transfer-to-games": 4,
+      "why-puzzle-rating-doesnt-transfer-to-games": 6,
       "chess-coordinates-practice": 5,
       "chess-visualization-exercises": 5,
       "how-to-see-the-whole-board-in-chess": 5,

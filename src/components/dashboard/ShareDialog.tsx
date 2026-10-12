@@ -22,9 +22,8 @@ const trackPost = (network: ShareNetwork) => trackEvent({ name: "lab_dashboard_s
 
 const isCancel = (error: unknown) => error instanceof DOMException && error.name === "AbortError";
 
-/** The share sheet takes the PNG where it can (mostly phones), the caption and link where it cannot, and is absent on desktops that have none. */
-function shareData(caption: ShareCaption, blob: Blob | null): ShareData | null {
-  if (typeof navigator.share !== "function") return null;
+/** The share sheet takes the PNG where it can (mostly phones), and the caption and link where it cannot. */
+function shareData(caption: ShareCaption, blob: Blob | null): ShareData {
   const text = { text: caption.text, url: caption.url };
   const files = blob ? [new File([blob], FILE_NAME, { type: "image/png" })] : [];
   return files.length > 0 && navigator.canShare?.({ files }) ? { ...text, files } : text;
@@ -56,8 +55,10 @@ export function ShareDialog({ caption, image, alt }: { caption: ShareCaption; im
   const [status, setStatus] = useState("");
   const { copy, textRef } = useCopyText(captionWithLink(caption));
   const blob = image.state === "ready" ? image.blob : null;
-  const share = image.state === "rendering" ? null : shareData(caption, blob);
-  const copyImage = blob !== null && canCopyImage();
+  const pending = image.state === "rendering";
+  const hasImage = image.state !== "failed";
+  const canShare = typeof navigator.share === "function";
+  const copyImage = hasImage && canCopyImage();
 
   const runShare = async (data: ShareData) => {
     try {
@@ -114,18 +115,18 @@ export function ShareDialog({ caption, image, alt }: { caption: ShareCaption; im
           <div className="lab-share-tools">
             <div>
               <div className="lab-share-actions">
-                {share && (
-                  <button type="button" className="lab-btn lab-btn-primary" onClick={() => void runShare(share)}>
+                {canShare && (
+                  <button type="button" className="lab-btn lab-btn-primary" disabled={pending} onClick={() => void runShare(shareData(caption, blob))}>
                     {t("share.actions.share")}
                   </button>
                 )}
-                {blob && (
-                  <button type="button" className={`lab-btn ${share ? "lab-btn-secondary" : "lab-btn-primary"}`} onClick={() => download(blob)}>
+                {hasImage && (
+                  <button type="button" className={`lab-btn ${canShare ? "lab-btn-secondary" : "lab-btn-primary"}`} disabled={pending} onClick={() => blob && download(blob)}>
                     {t("share.actions.download")}
                   </button>
                 )}
-                {blob && copyImage && (
-                  <button type="button" className="lab-btn lab-btn-secondary" onClick={() => void copyPng(blob)}>
+                {copyImage && (
+                  <button type="button" className="lab-btn lab-btn-secondary" disabled={pending} onClick={() => blob && void copyPng(blob)}>
                     {t("share.actions.copyImage")}
                   </button>
                 )}

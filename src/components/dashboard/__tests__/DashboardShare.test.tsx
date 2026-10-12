@@ -55,6 +55,23 @@ describe("DashboardShare", () => {
     expect([image.getAttribute("src"), image.getAttribute("alt")]).toEqual(["blob:card", "Memory Chess progress card: memory span 8 pieces. 40 rounds played."]);
   });
 
+  it("holds the card's place and its buttons, disabled, while the card is drawn", async () => {
+    let finish: (png: Blob) => void = () => {};
+    jest.mocked(drawShareCard).mockReturnValue(new Promise((resolve) => (finish = resolve)));
+    Object.assign(navigator, { canShare: () => true, share: jest.fn() });
+    renderWithIntl(<DashboardShare card={CARD} />);
+
+    await openDialog();
+    const actions = () => ["Share", "Download image", "Copy image"].map((name) => within(dialog()).getByRole("button", { name }));
+    expect(within(dialog()).queryByRole("img")).toBeNull();
+    expect(within(dialog()).getByText("Making your card.")).toBeInTheDocument();
+    expect(actions().map((button) => button.hasAttribute("disabled"))).toEqual([true, true, true]);
+
+    await act(async () => finish(PNG));
+    expect(within(dialog()).getByRole("img")).toBeInTheDocument();
+    expect(actions().map((button) => button.hasAttribute("disabled"))).toEqual([false, false, false]);
+  });
+
   it("closes on Escape and hands focus back to the button that opened it", async () => {
     renderWithIntl(<DashboardShare card={CARD} />);
     await openDialog();

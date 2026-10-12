@@ -14,6 +14,7 @@ const rebuild = (startedAt: number): RoundState => ({
   target,
   placed: {},
   selected: null,
+  refused: null,
   studyMs: 3000,
   log: { startedAt, placements: [], removals: 0 },
 });

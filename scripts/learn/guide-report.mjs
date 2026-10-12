@@ -89,6 +89,7 @@ function report(page) {
       description: meta.description.toLowerCase().includes(primary),
       quickAnswer: opening.includes(primary),
     },
+    quickAnswerWords: words(intro.quickAnswer).length,
     questions: meta.questions,
     words: totalWords,
     readingMinutes: readingMinutes(page),
@@ -110,7 +111,7 @@ const arg = process.argv[2];
 if (arg === "--all") {
   for (const page of EN_LEARN_PAGES) {
     const r = report(page);
-    console.log(`${r.slug}: ${r.words} words, ${r.readingMinutes} min, avg ${r.avgSentenceWords} w/sentence, ${r.visuals.length} visuals, ${r.internalLinks.length} internal links, ${r.sentencesSharedWithOtherGuides.length} shared sentences`);
+    console.log(`${r.slug}: ${r.words} words, ${r.readingMinutes} min, answer ${r.quickAnswerWords} w, avg ${r.avgSentenceWords} w/sentence, ${r.visuals.length} visuals, ${r.internalLinks.length} internal links, ${r.sentencesSharedWithOtherGuides.length} shared sentences`);
   }
 } else {
   const page = EN_LEARN_PAGES.find((candidate) => candidate.meta.slug === arg);

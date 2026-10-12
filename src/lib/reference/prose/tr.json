@@ -65,6 +65,8 @@
         "bishop-color-complex": "Bir tarafın iki fili asla aynı renkteki karelerde durmaz.",
         "simultaneous-check": "İki şah asla aynı anda şah altında olmaz.",
         "checked-side-not-to-move": "Bir şah şahtaysa, sıra o tarafın hamlesindedir.",
+        "home-rank-pawn-check": "Başlangıç yatayından hiç ayrılmamış bir piyon asla şah çekmez.",
+        "impossible-double-check": "Bir şaha asla ikiden fazla taş aynı anda şah çekmez ve çifte şahta her zaman bir fil, kale ya da vezir yer alır.",
         "piece-count": "Tahta, seçilen seviyenin istediği kadar taş içerir.",
         "invalid-fen": "Konum, bir tahtanın kurulabileceği yasal bir satranç konumudur."
       },

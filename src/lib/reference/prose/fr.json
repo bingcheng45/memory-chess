@@ -65,6 +65,8 @@
         "bishop-color-complex": "Les deux fous d'un même camp ne se trouvent jamais sur des cases de la même couleur.",
         "simultaneous-check": "Les deux rois ne sont jamais en échec en même temps.",
         "checked-side-not-to-move": "Si un roi est en échec, c'est au camp de ce roi de jouer.",
+        "home-rank-pawn-check": "Un pion qui n'a jamais quitté sa rangée de départ ne donne jamais échec.",
+        "impossible-double-check": "Aucun roi n'est mis en échec par plus de deux pièces, et un échec double implique toujours un fou, une tour ou une dame.",
         "piece-count": "L'échiquier contient exactement le nombre de pièces demandé par le niveau choisi.",
         "invalid-fen": "La position est une position d'échecs légale, que l'on peut réellement installer sur un échiquier."
       },

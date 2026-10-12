@@ -65,6 +65,8 @@
         "bishop-color-complex": "En sides to løbere står aldrig på felter af samme farve.",
         "simultaneous-check": "Begge konger står aldrig i skak på samme tid.",
         "checked-side-not-to-move": "Hvis en konge står i skak, er det den sides tur til at trække.",
+        "home-rank-pawn-check": "En bonde, der aldrig har forladt sin startrække, giver aldrig skak.",
+        "impossible-double-check": "En konge står aldrig i skak fra mere end to brikker, og i en dobbeltskak indgår altid en løber, et tårn eller en dronning.",
         "piece-count": "Brættet indeholder præcis det antal brikker, sværhedsgraden beder om.",
         "invalid-fen": "Stillingen er en lovlig skakstilling, som et bræt kan stilles op i."
       },

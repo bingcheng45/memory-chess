@@ -65,6 +65,8 @@
         "bishop-color-complex": "同一方的两个象绝不会站在同色的格子上。",
         "simultaneous-check": "两个王绝不会同时被将军。",
         "checked-side-not-to-move": "如果有一方的王正被将军，那就轮到这一方走棋。",
+        "home-rank-pawn-check": "从未离开初始横线的兵绝不会将军。",
+        "impossible-double-check": "王绝不会同时被两个以上的棋子将军，双将中总有一个象、车或后。",
         "piece-count": "棋盘上的棋子数正好是所选难度要求的数量。",
         "invalid-fen": "局面是一个合法的国际象棋局面，可以原样摆上棋盘。"
       },

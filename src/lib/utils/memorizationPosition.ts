@@ -19,7 +19,9 @@ export type PositionViolation =
   | "bishop-color-complex"
   | "piece-inventory"
   | "simultaneous-check"
-  | "checked-side-not-to-move";
+  | "checked-side-not-to-move"
+  | "home-rank-pawn-check"
+  | "impossible-double-check";
 
 export interface PositionValidationResult {
   readonly valid: boolean;
@@ -39,6 +41,8 @@ const PIECE_WEIGHTS: Readonly<Record<Exclude<PieceSymbol, "k">, number>> = {
   r: 2,
   q: 1,
 };
+const PAWN_HOME_RANK: Readonly<Record<Color, string>> = { w: "2", b: "7" };
+const LINE_PIECES: ReadonlySet<PieceSymbol> = new Set(["b", "r", "q"]);
 
 const FALLBACK_POSITION: ReadonlyArray<{
   readonly square: Square;
@@ -108,14 +112,47 @@ function findKingSquare(chess: Chess, color: Color): Square | undefined {
   });
 }
 
-function getCheckState(chess: Chess) {
-  const whiteKing = findKingSquare(chess, "w");
-  const blackKing = findKingSquare(chess, "b");
+function checkersOf(chess: Chess, color: Color): Square[] {
+  const king = findKingSquare(chess, color);
+  return king ? chess.attackers(king, color === "w" ? "b" : "w") : [];
+}
 
+function getCheckState(chess: Chess) {
   return {
-    whiteInCheck: whiteKing ? chess.isAttacked(whiteKing, "b") : false,
-    blackInCheck: blackKing ? chess.isAttacked(blackKing, "w") : false,
+    whiteInCheck: checkersOf(chess, "w").length > 0,
+    blackInCheck: checkersOf(chess, "b").length > 0,
   };
+}
+
+// A check must come from the last move. A pawn still on its starting rank never moved, and a pawn's attack cannot
+// be uncovered, so it cannot be the checker. A double check is one piece moving while uncovering a bishop, rook or queen.
+function impossibleCheckViolations(chess: Chess): PositionViolation[] {
+  return COLORS.flatMap((color) => {
+    const checkers = checkersOf(chess, color).map((square) => ({
+      square,
+      piece: chess.get(square)!,
+    }));
+    const violations: PositionViolation[] = [];
+
+    if (
+      checkers.some(
+        ({ square, piece }) =>
+          piece.type === "p" && square[1] === PAWN_HOME_RANK[piece.color],
+      )
+    ) {
+      violations.push("home-rank-pawn-check");
+    }
+
+    if (
+      checkers.length > 2 ||
+      (checkers.length === 2 &&
+        !checkers.some(({ piece }) => LINE_PIECES.has(piece.type)))
+    ) {
+      violations.push("impossible-double-check");
+    }
+
+    return violations;
+  });
 }
 
 export function validateMemorizationPosition(
@@ -200,6 +237,9 @@ export function validateMemorizationPosition(
   ) {
     violations.add("checked-side-not-to-move");
   }
+  impossibleCheckViolations(chess).forEach((violation) =>
+    violations.add(violation),
+  );
 
   return {
     valid: violations.size === 0,

@@ -1,9 +1,10 @@
 import { isLabPaperRoute, type LabPaperRoute } from "@/lib/lab-paper/routes";
 
 describe("the Lab Paper route registry", () => {
-  it("draws the homepage in Lab Paper only in the locales that have its copy, and leaves unlisted routes in the site shell", () => {
+  it("draws the homepage in Lab Paper in every locale, and leaves unlisted routes in the site shell", () => {
     expect(isLabPaperRoute("/", "en")).toBe(true);
-    expect(isLabPaperRoute("/", "de")).toBe(false);
+    expect(isLabPaperRoute("/", "de")).toBe(true);
+    expect(isLabPaperRoute("/", "ja")).toBe(true);
     expect(isLabPaperRoute("/settings", "en")).toBe(false);
     expect(isLabPaperRoute("/settings", "de")).toBe(false);
   });

@@ -713,6 +713,19 @@
       "lede": "Crea un'immagine del tuo registro da pubblicare, salvare o inviare.",
       "title": "Condividi i tuoi progressi",
       "alt": "Scheda dei progressi di Memory Chess: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "La tua dashboard dopo questa partita",
+      "from": "da {before}",
+      "new": "Nuovo",
+      "level": "Invariato",
+      "open": "Apri la tua dashboard",
+      "say": {
+        "up": "{label} {after}, in salita di {amount} da {before}, {verdict, select, better {meglio} other {peggio}}",
+        "down": "{label} {after}, in discesa di {amount} da {before}, {verdict, select, better {meglio} other {peggio}}",
+        "level": "{label} {after}, invariato",
+        "new": "{label} {after}, nuovo"
+      }
     }
   },
   "share": {

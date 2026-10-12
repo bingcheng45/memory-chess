@@ -713,6 +713,19 @@
       "lede": "Mach ein Bild deines Berichts zum Posten, Speichern oder Verschicken.",
       "title": "Fortschritt teilen",
       "alt": "Memory Chess-Fortschrittskarte: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Dein Dashboard nach dieser Runde",
+      "from": "von {before}",
+      "new": "Neu",
+      "level": "Unverändert",
+      "open": "Dashboard öffnen",
+      "say": {
+        "up": "{label} {after}, um {amount} gestiegen von {before}, {verdict, select, better {besser} other {schlechter}}",
+        "down": "{label} {after}, um {amount} gesunken von {before}, {verdict, select, better {besser} other {schlechter}}",
+        "level": "{label} {after}, unverändert",
+        "new": "{label} {after}, neu"
+      }
     }
   },
   "share": {

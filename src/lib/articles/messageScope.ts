@@ -8,6 +8,8 @@ const RESULT_CARD_GROUP = "resultCard";
 const DAILY_GROUP = "daily";
 const REVIEW_GROUP = "review";
 const TILE_GROUP = "tile";
+/** The dashboard's groups the result screen prints its figures with. */
+const RESULT_FIGURE_GROUPS = ["label", "unit", "deltas"] as const;
 
 type ScopedMessages = {
   shared: AbstractIntlMessages;
@@ -25,7 +27,8 @@ const underLab = (group: AbstractIntlMessages): AbstractIntlMessages => ({ [HOME
  * own routes, the home layout adds `home.lab` and the game layout adds the
  * lab groups /game prints, `home.lab.resultCard` on the result screen, and
  * `home.lab.daily` and `home.lab.review` where a link to today's board or to a
- * review cannot open it, and the dashboard layout adds `dashboard`, so no page
+ * review cannot open it, with the dashboard groups the result screen's figures
+ * print in every locale, and the dashboard layout adds `dashboard`, so no page
  * carries strings it never shows.
  * Server components read the whole catalogue from the request and are not
  * affected.
@@ -35,19 +38,21 @@ export function splitClientMessages(messages: AbstractIntlMessages): ScopedMessa
   const { [LAB_GROUP]: lab, ...homeShared } = typeof home === "object" ? home : {};
   const { [RESULT_CARD_GROUP]: resultCard, ...homeLab } = typeof lab === "object" ? lab : {};
   const { [DAILY_GROUP]: daily, [REVIEW_GROUP]: review } = homeLab;
+  const figures = typeof dashboard === "object" ? Object.fromEntries(RESULT_FIGURE_GROUPS.flatMap((group) => (group in dashboard ? [[group, dashboard[group]]] : []))) : {};
 
   return {
     shared: { ...rest, [HOME_NAMESPACE]: homeShared },
     articles,
     lab: lab === undefined ? {} : underLab(homeLab),
-    game:
-      resultCard === undefined
-        ? {}
-        : underLab({
-            [RESULT_CARD_GROUP]: resultCard,
-            ...(daily !== undefined && { [DAILY_GROUP]: daily }),
-            ...(review !== undefined && { [REVIEW_GROUP]: review }),
-          }),
+    game: {
+      ...(resultCard !== undefined &&
+        underLab({
+          [RESULT_CARD_GROUP]: resultCard,
+          ...(daily !== undefined && { [DAILY_GROUP]: daily }),
+          ...(review !== undefined && { [REVIEW_GROUP]: review }),
+        })),
+      ...(Object.keys(figures).length > 0 && { [DASHBOARD_NAMESPACE]: figures }),
+    },
     dashboard: dashboard === undefined ? {} : { [DASHBOARD_NAMESPACE]: dashboard },
   };
 }

@@ -112,6 +112,48 @@ export function addToSummary(summary: LabSummary, record: RoundRecord): LabSumma
   };
 }
 
+const subtractCounts = (total: TypeCounts, less: TypeCounts): TypeCounts => addCounts(total, Object.fromEntries(Object.entries(less).map(([letter, count]) => [letter, -count])));
+
+/**
+ * The best at the round's setting without it: unchanged unless the round set it, then the best of `others` there.
+ * When rounds at the setting have left the log the earlier best is not known, and the round's own stands in for it.
+ */
+function removeBest(bests: LabSummary["bests"], record: RoundRecord, others: readonly RoundRecord[]): LabSummary["bests"] {
+  const key = settingKey(record.source, record.config);
+  const current = bests[key];
+  if (!current) return bests;
+  if (current.rounds <= 1) return Object.fromEntries(Object.entries(bests).filter(([other]) => other !== key));
+  if (current.at !== record.endedAt) return { ...bests, [key]: { ...current, rounds: current.rounds - 1 } };
+  const earlier = [...others]
+    .filter((other) => isFreshReading(other) && settingKey(other.source, other.config) === key)
+    .sort((a, b) => a.endedAt - b.endedAt)
+    .reduce<RoundRecord | undefined>((best, other) => (beats(other, best) ? other : best), undefined);
+  const best = earlier ? { accuracy: earlier.accuracy, correct: earlier.correct, solveMs: earlier.solveMs, at: earlier.endedAt } : current;
+  return { ...bests, [key]: { ...best, rounds: current.rounds - 1 } };
+}
+
+/**
+ * The summary as it stood before `record` was added, given the log without it. The inverse of addToSummary, so the
+ * result screen can read every figure as it was before the round just played.
+ */
+export function removeFromSummary(summary: LabSummary, record: RoundRecord, others: readonly RoundRecord[]): LabSummary {
+  const dayKept = others.some(({ localDay }) => localDay === record.localDay);
+  const played = { ...summary, rounds: Math.max(0, summary.rounds - 1), days: dayKept ? summary.days : summary.days.filter((day) => day !== record.localDay) };
+  if (!isFreshReading(record)) return played;
+
+  const added = addColors(EMPTY_SUMMARY, record);
+  return {
+    ...played,
+    bests: removeBest(summary.bests, record, others),
+    squareShown: summary.squareShown.map((count, index) => count - (record.squares[index] === "." || record.squares[index] === "x" ? 0 : 1)),
+    squareMissed: summary.squareMissed.map((count, index) => count - (record.squares[index] === "m" || record.squares[index] === "w" ? 1 : 0)),
+    typeShown: subtractCounts(summary.typeShown, record.shownByType),
+    typeMissed: subtractCounts(summary.typeMissed, record.missedByType),
+    colorShown: { w: summary.colorShown.w - added.colorShown.w, b: summary.colorShown.b - added.colorShown.b },
+    colorMissed: { w: summary.colorMissed.w - added.colorMissed.w, b: summary.colorMissed.b - added.colorMissed.b },
+  };
+}
+
 /** Every fresh round adds to exactly one best, so the bests count the rounds that read the board for the first time. */
 export const freshRounds = (summary: LabSummary): number =>
   Object.values(summary.bests).reduce((sum, best) => sum + best.rounds, 0);

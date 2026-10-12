@@ -713,6 +713,19 @@
       "lede": "Lag et bilde av journalen din som du kan dele, lagre eller sende.",
       "title": "Del fremgangen din",
       "alt": "Memory Chess-fremgangskort: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Oversikten din etter denne runden",
+      "from": "fra {before}",
+      "new": "Ny",
+      "level": "Uendret",
+      "open": "Åpne oversikten din",
+      "say": {
+        "up": "{label} {after}, opp {amount} fra {before}, {verdict, select, better {bedre} other {dårligere}}",
+        "down": "{label} {after}, ned {amount} fra {before}, {verdict, select, better {bedre} other {dårligere}}",
+        "level": "{label} {after}, uendret",
+        "new": "{label} {after}, ny"
+      }
     }
   },
   "share": {

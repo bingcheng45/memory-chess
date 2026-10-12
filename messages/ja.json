@@ -713,6 +713,19 @@
       "lede": "記録を画像にして、投稿・保存・送信できます。",
       "title": "進捗をシェア",
       "alt": "Memory Chess の進捗カード：{figures}。{rounds}。"
+    },
+    "deltas": {
+      "title": "このラウンド後のダッシュボード",
+      "from": "前回 {before}",
+      "new": "新規",
+      "level": "変化なし",
+      "open": "ダッシュボードを開く",
+      "say": {
+        "up": "{label} {after}、{before}から{amount}上昇、{verdict, select, better {改善} other {悪化}}",
+        "down": "{label} {after}、{before}から{amount}低下、{verdict, select, better {改善} other {悪化}}",
+        "level": "{label} {after}、変化なし",
+        "new": "{label} {after}、新規"
+      }
     }
   },
   "share": {

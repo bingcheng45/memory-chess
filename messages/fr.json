@@ -713,6 +713,19 @@
       "lede": "Créez une image de votre carnet à publier, enregistrer ou envoyer.",
       "title": "Partagez vos progrès",
       "alt": "Carte de progrès Memory Chess : {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Votre tableau de bord après cette partie",
+      "from": "contre {before}",
+      "new": "Nouveau",
+      "level": "Inchangé",
+      "open": "Ouvrir votre tableau de bord",
+      "say": {
+        "up": "{label} {after}, en hausse de {amount} par rapport à {before}, {verdict, select, better {mieux} other {moins bien}}",
+        "down": "{label} {after}, en baisse de {amount} par rapport à {before}, {verdict, select, better {mieux} other {moins bien}}",
+        "level": "{label} {after}, inchangé",
+        "new": "{label} {after}, nouveau"
+      }
     }
   },
   "share": {

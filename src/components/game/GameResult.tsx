@@ -36,6 +36,7 @@ import type { BoardAction } from "@/lib/round/round";
 import ArticleTile from "@/components/game/ArticleTile";
 import { countWrong } from "@/lib/game/scoring";
 import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
+import ResultDeltasFrame from "@/components/game/ResultDeltasFrame";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import ShareResult from "@/components/game/ShareResult";
 import { roundShareOf } from "@/components/game/roundShare";
@@ -44,6 +45,7 @@ import { START_RATING } from "@/lib/store/gameStore";
 // Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
 // never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.
 const ResultLabCard = lazy(() => import("@/components/game/ResultLabCard"));
+const ResultDeltas = lazy(() => import("@/components/game/ResultDeltas"));
 
 // The scored board only shows the round: it takes no input.
 const ignoreBoard: (action: BoardAction) => void = () => {};
@@ -77,7 +79,8 @@ function qualifiesForLeaderboard(
 export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResultProps) {
   const t = useTranslations("game.result");
   // Without IndexedDB nothing can be recorded, so no space is held for a card that could only leave again.
-  const showsLab = hasLabCopy(useLocale()) && browserIndexedDB() !== undefined;
+  const keepsRecord = browserIndexedDB() !== undefined;
+  const showsLab = hasLabCopy(useLocale()) && keepsRecord;
   const tCountry = useTranslations("country");
   const tComparison = useTranslations("game.comparison");
   const { gameState, round } = useGameStore();
@@ -372,6 +375,16 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
               <ResultLabCard roundId={gameState.labRoundId} onPlay={onPlay} />
             </Suspense>
           </ErrorBoundary>
+        )}
+
+        {keepsRecord && gameState.labRoundId && (
+          <ResultDeltasFrame key={gameState.labRoundId}>
+            <ErrorBoundary fallback={<></>}>
+              <Suspense fallback={null}>
+                <ResultDeltas roundId={gameState.labRoundId} />
+              </Suspense>
+            </ErrorBoundary>
+          </ResultDeltasFrame>
         )}
 
         <ArticleTile

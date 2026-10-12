@@ -713,6 +713,19 @@
       "lede": "Kaydının bir görselini oluştur; paylaş, kaydet ya da gönder.",
       "title": "İlerlemeni paylaş",
       "alt": "Memory Chess ilerleme kartı: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Bu turdan sonra panelin",
+      "from": "önceki {before}",
+      "new": "Yeni",
+      "level": "Değişmedi",
+      "open": "Panelini aç",
+      "say": {
+        "up": "{label} {after}, {before} değerinden {amount} arttı, {verdict, select, better {daha iyi} other {daha kötü}}",
+        "down": "{label} {after}, {before} değerinden {amount} azaldı, {verdict, select, better {daha iyi} other {daha kötü}}",
+        "level": "{label} {after}, değişmedi",
+        "new": "{label} {after}, yeni"
+      }
     }
   },
   "share": {

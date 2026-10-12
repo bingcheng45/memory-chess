@@ -713,6 +713,19 @@
       "lede": "Fă o imagine a jurnalului tău ca s-o publici, s-o salvezi sau s-o trimiți.",
       "title": "Distribuie progresul tău",
       "alt": "Card de progres Memory Chess: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Tabloul tău de bord după această rundă",
+      "from": "de la {before}",
+      "new": "Nou",
+      "level": "Neschimbat",
+      "open": "Deschide tabloul de bord",
+      "say": {
+        "up": "{label} {after}, crescut cu {amount} de la {before}, {verdict, select, better {mai bine} other {mai rău}}",
+        "down": "{label} {after}, scăzut cu {amount} de la {before}, {verdict, select, better {mai bine} other {mai rău}}",
+        "level": "{label} {after}, neschimbat",
+        "new": "{label} {after}, nou"
+      }
     }
   },
   "share": {

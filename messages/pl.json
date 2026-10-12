@@ -713,6 +713,19 @@
       "lede": "Zrób obraz swojego dziennika, aby go opublikować, zapisać lub wysłać.",
       "title": "Udostępnij swoje postępy",
       "alt": "Karta postępów Memory Chess: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Twój panel po tej rundzie",
+      "from": "z {before}",
+      "new": "Nowe",
+      "level": "Bez zmian",
+      "open": "Otwórz swój panel",
+      "say": {
+        "up": "{label} {after}, w górę o {amount} z {before}, {verdict, select, better {lepiej} other {gorzej}}",
+        "down": "{label} {after}, w dół o {amount} z {before}, {verdict, select, better {lepiej} other {gorzej}}",
+        "level": "{label} {after}, bez zmian",
+        "new": "{label} {after}, nowe"
+      }
     }
   },
   "share": {

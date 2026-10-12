@@ -713,6 +713,19 @@
       "lede": "Tee päiväkirjastasi kuva, jonka voit julkaista, tallentaa tai lähettää.",
       "title": "Jaa edistymisesi",
       "alt": "Memory Chess -edistymiskortti: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Koontinäyttösi tämän kierroksen jälkeen",
+      "from": "aiemmin {before}",
+      "new": "Uusi",
+      "level": "Ennallaan",
+      "open": "Avaa koontinäyttö",
+      "say": {
+        "up": "{label} {after}, nousi {amount} (aiemmin {before}), {verdict, select, better {parempi} other {huonompi}}",
+        "down": "{label} {after}, laski {amount} (aiemmin {before}), {verdict, select, better {parempi} other {huonompi}}",
+        "level": "{label} {after}, ennallaan",
+        "new": "{label} {after}, uusi"
+      }
     }
   },
   "share": {

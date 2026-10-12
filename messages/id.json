@@ -713,6 +713,19 @@
       "lede": "Buat gambar dari catatanmu untuk diunggah, disimpan, atau dikirim.",
       "title": "Bagikan kemajuanmu",
       "alt": "Kartu kemajuan Memory Chess: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Dasbor kamu setelah ronde ini",
+      "from": "dari {before}",
+      "new": "Baru",
+      "level": "Tetap",
+      "open": "Buka dasbor kamu",
+      "say": {
+        "up": "{label} {after}, naik {amount} dari {before}, {verdict, select, better {lebih baik} other {lebih buruk}}",
+        "down": "{label} {after}, turun {amount} dari {before}, {verdict, select, better {lebih baik} other {lebih buruk}}",
+        "level": "{label} {after}, tetap",
+        "new": "{label} {after}, baru"
+      }
     }
   },
   "share": {

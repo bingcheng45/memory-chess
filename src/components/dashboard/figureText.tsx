@@ -27,6 +27,7 @@ export function useFigureText() {
 
   return {
     rich: (figure: Figure) => t.rich(figure.unit, { ...valuesOf(figure), n: (chunks) => <span className="lab-tile-value">{chunks}</span> }),
+    plain: (figure: Figure): string => t.markup(figure.unit, { ...valuesOf(figure), n: (chunks) => chunks }),
     segments: (figure: Figure): FigureSegment[] =>
       t
         .markup(figure.unit, { ...valuesOf(figure), n: (chunks) => `${MARK}${chunks}${MARK}` })

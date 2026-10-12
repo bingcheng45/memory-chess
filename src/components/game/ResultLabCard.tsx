@@ -1,19 +1,20 @@
 "use client";
 
-import { useEffect, useMemo, useState, type MouseEvent } from "react";
+import { useMemo, type MouseEvent } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { useLabData, useLabResults, type LabData } from "@/hooks/useLabData";
+import { useLabResults, type LabData } from "@/hooks/useLabData";
 import { seconds } from "@/components/home/labFormat";
 import { useWeekGoal } from "@/components/home/useWeekGoal";
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { playHref } from "@/lib/game/roundLink";
 import { INSIGHT_GUIDES } from "@/lib/lab/insights";
-import { resultCardFor, summaryCounts, type NewBest, type NextStep, type ResultCard, type Setting, type VsRecent } from "@/lib/lab/resultCard";
+import { resultCardFor, type NewBest, type NextStep, type ResultCard, type Setting, type VsRecent } from "@/lib/lab/resultCard";
 import type { RoundRecord } from "@/lib/lab/record";
 import ResultLabSlot, { RESULT_LAB_FRAME, RESULT_LAB_LINK, ResultLabEnd } from "./ResultLabSlot";
+import { useSavedRound } from "./useSavedRound";
 
-export const RESULT_LAB_WAIT_MS = 3000;
+export { RESULT_LAB_WAIT_MS } from "./useSavedRound";
 
 const SOURCE: RoundSource = "result_next";
 
@@ -135,26 +136,10 @@ function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData;
   );
 }
 
-/**
- * The round just played, read against the record on this device. Shown once the round is in the record. When it is
- * not there in time (storage that will not open, a failed or held write) the card gives up for good, so a round that
- * lands later cannot redraw the screen, and the metrics are only derived once the round is there to read.
- */
+/** The round just played, read against the record on this device, shown once the round is in the record. */
 export default function ResultLabCard({ roundId, onPlay }: ResultLabCardProps) {
-  const data = useLabData();
-  const [waited, setWaited] = useState(false);
-  const saved = data.today ? data.records.find(({ id }) => id === roundId) : undefined;
-  const round = saved && summaryCounts(data.summary, saved) ? saved : undefined;
-  const found = round !== undefined;
-
-  useEffect(() => {
-    if (found) return;
-    const timer = setTimeout(() => setWaited(true), RESULT_LAB_WAIT_MS);
-    return () => clearTimeout(timer);
-  }, [found]);
-
-  const gaveUp = data.storage === "unavailable" || waited;
-  if (gaveUp) return <ResultLabEnd />;
-  if (!round) return <ResultLabSlot />;
-  return <FoundCard round={round} data={data} onPlay={onPlay} />;
+  const saved = useSavedRound(roundId);
+  if (saved.state === "gaveUp") return <ResultLabEnd />;
+  if (saved.state === "waiting") return <ResultLabSlot />;
+  return <FoundCard round={saved.round} data={saved.data} onPlay={onPlay} />;
 }

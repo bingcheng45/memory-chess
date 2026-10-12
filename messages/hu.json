@@ -713,6 +713,19 @@
       "lede": "Készíts képet a jegyzőkönyvedről, hogy megoszd, elmentsd vagy elküldd.",
       "title": "Oszd meg a fejlődésed",
       "alt": "Memory Chess fejlődési kártya: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Az irányítópultod e kör után",
+      "from": "korábban {before}",
+      "new": "Új",
+      "level": "Változatlan",
+      "open": "Irányítópult megnyitása",
+      "say": {
+        "up": "{label} {after}, {amount} emelkedés (korábban {before}), {verdict, select, better {jobb} other {rosszabb}}",
+        "down": "{label} {after}, {amount} csökkenés (korábban {before}), {verdict, select, better {jobb} other {rosszabb}}",
+        "level": "{label} {after}, változatlan",
+        "new": "{label} {after}, új"
+      }
     }
   },
   "share": {

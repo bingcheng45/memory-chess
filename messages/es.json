@@ -713,6 +713,19 @@
       "lede": "Crea una imagen de tu registro para publicarla, guardarla o enviarla.",
       "title": "Comparte tu progreso",
       "alt": "Tarjeta de progreso de Memory Chess: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Tu panel después de esta ronda",
+      "from": "desde {before}",
+      "new": "Nuevo",
+      "level": "Sin cambios",
+      "open": "Abrir tu panel",
+      "say": {
+        "up": "{label} {after}, sube {amount} desde {before}, {verdict, select, better {mejor} other {peor}}",
+        "down": "{label} {after}, baja {amount} desde {before}, {verdict, select, better {mejor} other {peor}}",
+        "level": "{label} {after}, sin cambios",
+        "new": "{label} {after}, nuevo"
+      }
     }
   },
   "share": {

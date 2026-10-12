@@ -1,0 +1,4 @@
+/* The trend chip, drawn on the dashboard and on the result screen. Its colour follows progress, not the sign. */
+.lab-paper .lab-trend { display: inline-flex; align-items: center; gap: 4px; font: 600 16px/1 var(--lp-ui); font-variant-numeric: tabular-nums; }
+.lab-paper .lab-trend[data-tone="better"] { color: var(--lp-correct); }
+.lab-paper .lab-trend[data-tone="worse"] { color: var(--lp-wrong); }

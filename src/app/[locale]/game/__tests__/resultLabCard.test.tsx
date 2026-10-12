@@ -21,6 +21,7 @@ jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: je
 jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn() }));
 
 const TARGET = "4k3/8/8/3q4/8/5N2/8/4K3";
+const said = (section: HTMLElement) => [...section.querySelectorAll(".lab-sr")].map((line) => line.textContent);
 
 async function renderResultScreen(locale: string) {
   const missing: string[] = [];
@@ -60,15 +61,19 @@ describe("the lab card on the result screen", () => {
 
     expect(within(card).getAllByRole("listitem").map((item) => item.textContent)).toEqual(["·Day 1, 1 of 5 days this week"]);
     expect(within(card).getByRole("link").getAttribute("href")).toBe("/game?pieceCount=5&memorizeTime=10&source=result_next");
+    const figures = await screen.findByRole("region", { name: "Your dashboard after this round" });
+    expect(said(figures)).toEqual(["Best accuracy 100%, new", "Recent accuracy 100%, new", "Rounds played 1 round, new", "Days played 1 day, new"]);
     expect(missing).toEqual([]);
   });
 
-  it("is not drawn, nor its space kept, in a language the lab is not written in", async () => {
+  it("is not drawn, nor its space kept, in a language the lab is not written in, where the dashboard figures still are", async () => {
     const missing = await renderResultScreen("de");
     await screen.findByRole("region", { name: "Als Nächstes lesen" });
 
     expect(screen.queryByTestId("result-lab-slot")).toBeNull();
     expect(screen.queryByRole("region", { name: "Your lab record" })).toBeNull();
+    const figures = await screen.findByRole("region", { name: "Dein Dashboard nach dieser Runde" });
+    expect(said(figures)).toEqual(["Beste Genauigkeit 100 %, neu", "Aktuelle Genauigkeit 100 %, neu", "Gespielte Runden 1 Runde, neu", "Spieltage 1 Tag, neu"]);
     expect(missing).toEqual([]);
   });
 });

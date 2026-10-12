@@ -713,6 +713,19 @@
       "lede": "把你的紀錄產生成圖片，用來發布、儲存或傳送。",
       "title": "分享你的進度",
       "alt": "Memory Chess 進度卡片：{figures}。{rounds}。"
+    },
+    "deltas": {
+      "title": "本回合後的儀表板",
+      "from": "之前 {before}",
+      "new": "新",
+      "level": "不變",
+      "open": "開啟儀表板",
+      "say": {
+        "up": "{label} {after}，比 {before} 上升 {amount}，{verdict, select, better {進步} other {退步}}",
+        "down": "{label} {after}，比 {before} 下降 {amount}，{verdict, select, better {進步} other {退步}}",
+        "level": "{label} {after}，不變",
+        "new": "{label} {after}，新"
+      }
     }
   },
   "share": {

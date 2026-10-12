@@ -83,7 +83,7 @@ const guide: LearnDocument = {
         {
           kind: "takeaway",
           title: "The order this guide follows",
-          body: "Board reading first, then the move question, then slower games, then a line after each game. Openings wait until the first three are automatic.",
+          body: "Board reading first, then the safety question, then slower games, then a line after each game. Openings wait until the first three are automatic.",
         },
       ],
       facts: [
@@ -172,7 +172,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The safety question is always the same. After my move, what can my opponent take for free or win with a pawn? Ask it on every move, including the quiet ones.",
+            "The safety question is always the same. After my move, can my opponent take anything for free, or attack one of my pieces with a pawn? Ask it on every move, including the quiet ones.",
             "Start from your opponent's last move. Say you are Black after 1.e4 e5. If White plays 2.Bc4, the bishop now looks at f7. If White plays 2.Qh5 instead, the queen looks at f7, e5 and h7.",
             "Then check your own move. The piece you move stops guarding whatever it guarded. Say you answered 2.Qh5 with 2...Nc6. The knight now guards e5, which the queen attacks. If you later move that knight, the pawn on e5 is loose and the queen takes it with check.",
           ],
@@ -183,7 +183,7 @@ const guide: LearnDocument = {
           items: [
             "Name your opponent's last move and every new square it attacks.",
             "Pick your move, but keep your hand off the piece.",
-            "Ask what they can take for free or win with a pawn after it, including anything your moving piece used to guard.",
+            "Ask whether they can take anything for free or attack a piece with a pawn after it, including anything your moving piece used to guard.",
             "If the answer is anything at all, pick again.",
           ],
         },

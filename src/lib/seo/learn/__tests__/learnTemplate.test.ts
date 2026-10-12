@@ -48,7 +48,7 @@ describe("derived page values", () => {
 
   it("gives every live guide its derived read time", () => {
     expect(Object.fromEntries(EN_LEARN_PAGES.map((page) => [page.meta.slug, page.readingMinutes]))).toEqual({
-      "how-to-get-better-at-chess-for-beginners": 6,
+      "how-to-get-better-at-chess-for-beginners": 7,
       "how-to-stop-blundering-in-chess": 6,
       "why-puzzle-rating-doesnt-transfer-to-games": 4,
       "chess-coordinates-practice": 5,

@@ -36,6 +36,9 @@ export type DailyBoard =
  */
 export const DAILY_OPENED_KEY = "memory-chess-lab-daily-opened";
 
+/** Storage events reach other tabs only, so the tab that opens the board announces it to itself. */
+export const DAILY_OPENED_EVENT = "memory-chess-daily-opened";
+
 export function readDailyOpened(): string | null {
   try {
     return window.localStorage.getItem(DAILY_OPENED_KEY);

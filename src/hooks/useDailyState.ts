@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { dailySettingOf, type DailySetting } from "@/lib/daily/schedule";
-import { DAILY_OPENED_KEY, msToNextUtcDay, readDailyOpened, utcDayOf } from "@/lib/lab/daily";
+import { DAILY_OPENED_EVENT, DAILY_OPENED_KEY, msToNextUtcDay, readDailyOpened, utcDayOf } from "@/lib/lab/daily";
 
 const MINUTE_MS = 60_000;
 
@@ -43,9 +43,11 @@ export function useDailyState(): DailyState | null {
     };
     tick();
     window.addEventListener("storage", onStorage);
+    window.addEventListener(DAILY_OPENED_EVENT, read);
     return () => {
       window.clearTimeout(timer);
       window.removeEventListener("storage", onStorage);
+      window.removeEventListener(DAILY_OPENED_EVENT, read);
     };
   }, []);
 

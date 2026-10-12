@@ -121,7 +121,6 @@ export default function ResponsiveChessBoard({
 
   // Files and ranks for coordinate labels
   const files = useMemo(() => ["a", "b", "c", "d", "e", "f", "g", "h"], []);
-  const ranks = useMemo(() => [8, 7, 6, 5, 4, 3, 2, 1], []);
 
   // Calculate board styles
   const boardStyle = useMemo(
@@ -151,7 +150,7 @@ export default function ResponsiveChessBoard({
 
   // Calculate square styles
   const getSquareStyle = (file: number, rank: number) => {
-    const isDark = (file + rank) % 2 === 1;
+    const isDark = (file + rank) % 2 === 0;
     const isSelected =
       selectedSquare &&
       selectedSquare.file === file &&
@@ -245,13 +244,14 @@ export default function ResponsiveChessBoard({
         style={{ gap: "0px" }}
       >
         {/* Generate all 64 squares */}
-        {Array.from({ length: 8 }, (_, rank) =>
+        {Array.from({ length: 8 }, (_, row) =>
           Array.from({ length: 8 }, (_, file) => {
+            const rank = 7 - row;
             const piece = getPieceAt(file, rank);
             const squareStyle = getSquareStyle(file, rank);
 
             // Calculate square name for aria-label
-            const squareName = `${files[file]}${ranks[rank]}`;
+            const squareName = `${files[file]}${rank + 1}`;
             const feedback = squareFeedback?.[`${file}-${rank}`];
 
             // Handle keyboard interaction
@@ -296,7 +296,7 @@ export default function ResponsiveChessBoard({
                 )}
 
                 {/* File coordinates (a-h on bottom row) */}
-                {showCoordinates && rank === 7 && (
+                {showCoordinates && rank === 0 && (
                   <span
                     style={{
                       ...coordinateStyle,
@@ -317,7 +317,7 @@ export default function ResponsiveChessBoard({
                       left: `${padding / 2}px`,
                     }}
                   >
-                    {ranks[rank]}
+                    {rank + 1}
                   </span>
                 )}
 

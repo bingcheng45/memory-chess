@@ -86,6 +86,13 @@ const calculateTimeBonus = (completionTime: number, memorizeTime: number, actual
   return 0;
 };
 
+/**
+ * Solving in a third of the study time earns the most a speed bonus can give,
+ * 30 points, the same as the 90% accuracy band. Faster than that is placing
+ * pieces, not recalling them faster.
+ */
+const MAX_TIME_RATIO = 3;
+
 // Calculate skill rating change based on performance
 const calculateSkillRatingChange = (
   accuracy: number, 
@@ -119,11 +126,12 @@ const calculateSkillRatingChange = (
   // Use actual memorize time if available, otherwise fall back to configured time
   const timeToCompare = actualMemorizeTime || memorizeTime;
   
-  // Time efficiency bonus
-  const timeRatio = timeToCompare / completionTime;
+  // Time efficiency bonus, earned only for the share of the board recalled.
+  // A solve that takes no time at all divides by zero, so the ratio is capped.
+  const timeRatio = Math.min(timeToCompare / completionTime, MAX_TIME_RATIO);
   if (timeRatio >= 1) {
     // Completed faster than memorize time
-    points += Math.floor(timeRatio * 10);
+    points += Math.floor(timeRatio * 10 * (accuracy / 100));
   }
   
   // Scale based on current rating (higher rated players gain/lose more slowly)

@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Compartilhar meu progresso",
-      "locked": "Seu cartão para compartilhar é liberado quando sua amplitude de memória, rating de habilidade, peças retidas, velocidade ou sequência de dias estiver pronta.",
+      "locked": "Depois da sua primeira rodada, seu cartão mostra aqui seus melhores números.",
       "text": "Meu progresso no Memory Chess: {figures}. Consegue superar?",
       "figure": {
         "span": "amplitude de memória de {value, plural, one {# peça} many {# peças} other {# peças}}",
         "rating": "rating de habilidade {value, number}",
         "piecesHeld": "{value, number} peças retidas",
         "speed": "{value, number} s por peça",
-        "streak": "{value, plural, one {# dia} many {# dias} other {# dias}} seguidos"
+        "streak": "{value, plural, one {# dia} many {# dias} other {# dias}} seguidos",
+        "bestAccuracy": "melhor precisão de {value, number}%",
+        "recentAccuracy": "precisão recente de {value, number}%",
+        "winStreak": "uma sequência de {value, plural, one {# vitória} many {# vitórias} other {# vitórias}}",
+        "rounds": "{value, plural, one {# rodada jogada} many {# rodadas jogadas} other {# rodadas jogadas}}",
+        "days": "{value, plural, one {# dia jogado} many {# dias jogados} other {# dias jogados}}"
       },
       "card": {
         "kicker": "Registro do laboratório",

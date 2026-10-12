@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Bagikan kemajuanku",
-      "locked": "Kartu untuk dibagikan terbuka setelah rentang memori, rating keahlian, bidak diingat, kecepatan, atau hari beruntunmu siap.",
+      "locked": "Setelah ronde pertamamu, kartumu akan menampilkan angka terbaikmu di sini.",
       "text": "Kemajuanku di Memory Chess: {figures}. Bisa kalahkan?",
       "figure": {
         "span": "rentang memori {value, plural, other {# bidak}}",
         "rating": "rating keahlian {value, number}",
         "piecesHeld": "{value, number} bidak diingat",
         "speed": "{value, number} dtk per bidak",
-        "streak": "{value, plural, other {# hari}} beruntun"
+        "streak": "{value, plural, other {# hari}} beruntun",
+        "bestAccuracy": "akurasi terbaik {value, number}%",
+        "recentAccuracy": "akurasi terbaru {value, number}%",
+        "winStreak": "kemenangan beruntun {value, plural, other {# ronde}}",
+        "rounds": "{value, plural, other {# ronde dimainkan}}",
+        "days": "{value, plural, other {# hari bermain}}"
       },
       "card": {
         "kicker": "Catatan lab",

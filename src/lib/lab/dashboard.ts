@@ -72,8 +72,11 @@ export const DASHBOARD_TILES = [...DASHBOARD_GROUPS.lead, ...DASHBOARD_GROUPS.su
 export type DashboardTileId = (typeof DASHBOARD_TILES)[number];
 export type DashboardTile = { readonly id: DashboardTileId } & TileState;
 
-/** The figures the share card carries, the first drawn largest. */
-export const SHARE_TILES = ["span", "rating", "piecesHeld", "speed", "streak"] as const satisfies readonly DashboardTileId[];
+/** The figures the share card can carry: the page's lead row and totals, strongest first, so the card and the page never disagree. */
+export const SHARE_TILES = ["span", "rating", "piecesHeld", "speed", "bestAccuracy", "recentAccuracy", "winStreak", "streak", "rounds", "days"] as const satisfies readonly (
+  | (typeof DASHBOARD_GROUPS.lead)[number]
+  | (typeof DASHBOARD_GROUPS.summary)[number]
+)[];
 
 /**
  * What only the game store knows: the skill rating, the run of rounds at WIN_ACCURACY or better, and the rating change
@@ -249,16 +252,27 @@ export function dashboardOf(input: DashboardInput): readonly DashboardTile[] {
 
 export type ShareFigureId = (typeof SHARE_TILES)[number];
 
-/** The figures the share card prints: ready ones only, since a stale or warming figure would pass for current. */
+export interface ShareFigure {
+  readonly id: ShareFigureId;
+  readonly figure: Figure;
+  readonly context: TileContext;
+}
+
+/**
+ * The figures the share card prints: ready ones only, since a stale or warming figure would pass for current. The
+ * first is drawn large: the strongest figure above zero, so a card never leads with a streak of nothing.
+ */
 export interface ShareCard {
-  readonly figures: readonly { readonly id: ShareFigureId; readonly figure: Figure }[];
+  readonly figures: readonly ShareFigure[];
   readonly rounds: number;
 }
 
 export function shareCardOf(tiles: readonly DashboardTile[], rounds: number): ShareCard | null {
-  const figures = SHARE_TILES.flatMap((id) => {
+  const figures = SHARE_TILES.flatMap((id): ShareFigure[] => {
     const tile = tiles.find((candidate) => candidate.id === id);
-    return tile?.state === "ready" && tile.figure.value > 0 ? [{ id, figure: tile.figure }] : [];
+    return tile?.state === "ready" ? [{ id, figure: tile.figure, context: tile.context }] : [];
   });
-  return figures.length === 0 ? null : { figures, rounds };
+  const lead = figures.find(({ figure }) => figure.value > 0);
+  if (!lead) return null;
+  return { figures: [lead, ...figures.filter((candidate) => candidate !== lead)], rounds };
 }

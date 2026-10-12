@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Dela mina framsteg",
-      "locked": "Ditt delningskort låses upp när minnesspann, färdighetsrating, hållna pjäser, tempo eller dagssvit är klar.",
+      "locked": "Efter din första runda visar ditt kort här dina bästa siffror.",
       "text": "Mina framsteg i Memory Chess: {figures}. Kan du slå det?",
       "figure": {
         "span": "minnesspann {value, plural, one {# pjäs} other {# pjäser}}",
         "rating": "färdighetsrating {value, number}",
         "piecesHeld": "{value, number} hållna pjäser",
         "speed": "{value, number} s per pjäs",
-        "streak": "{value, plural, one {# dag} other {# dagar}} i rad"
+        "streak": "{value, plural, one {# dag} other {# dagar}} i rad",
+        "bestAccuracy": "{value, number} % bästa träffsäkerhet",
+        "recentAccuracy": "{value, number} % senaste träffsäkerhet",
+        "winStreak": "en vinstsvit på {value, plural, one {# runda} other {# rundor}}",
+        "rounds": "{value, plural, one {# runda} other {# rundor}} spelade",
+        "days": "{value, plural, one {# dag} other {# dagar}} spelade"
       },
       "card": {
         "kicker": "Labbjournal",

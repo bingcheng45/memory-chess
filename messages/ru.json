@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Поделиться прогрессом",
-      "locked": "Карточка откроется, когда будет готов объём памяти, рейтинг навыка, запомненные фигуры, скорость или серия дней.",
+      "locked": "После первого раунда здесь на вашей карточке появятся лучшие результаты.",
       "text": "Мой прогресс в Memory Chess: {figures}. Сможете лучше?",
       "figure": {
         "span": "объём памяти {value, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}}",
         "rating": "рейтинг навыка {value, number}",
         "piecesHeld": "{value, number} фигуры в памяти",
         "speed": "{value, number} с на фигуру",
-        "streak": "{value, plural, one {# день} few {# дня} many {# дней} other {# дня}} подряд"
+        "streak": "{value, plural, one {# день} few {# дня} many {# дней} other {# дня}} подряд",
+        "bestAccuracy": "лучшая точность {value, number} %",
+        "recentAccuracy": "недавняя точность {value, number} %",
+        "winStreak": "серия побед: {value, plural, one {# раунд} few {# раунда} many {# раундов} other {# раунда}}",
+        "rounds": "сыграно {value, plural, one {# раунд} few {# раунда} many {# раундов} other {# раунда}}",
+        "days": "{value, plural, one {# игровой день} few {# игровых дня} many {# игровых дней} other {# игрового дня}}"
       },
       "card": {
         "kicker": "Журнал лаборатории",

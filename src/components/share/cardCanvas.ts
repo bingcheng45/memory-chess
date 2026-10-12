@@ -1,0 +1,157 @@
+/** The Lab Paper card every share draws on: the paper, the wordmark and its badge, the ruler, and the call to play. */
+
+export interface CardFonts {
+  readonly sans: string;
+}
+
+/** 4:5, the tallest shape the big feeds show uncropped. */
+export const CARD_WIDTH = 1080;
+export const CARD_HEIGHT = 1350;
+export const PAD = 88;
+export const INNER = CARD_WIDTH - 2 * PAD;
+/** Where a card's own content starts, under the header and its ruler. */
+export const BODY_TOP = 256;
+/** Lab Paper's light tokens (components/lab-paper/lab-paper.css): a card reads the same wherever it is posted. */
+export const INK = {
+  paper: "#f5f8f7",
+  ink: "#0d1b24",
+  ink2: "#364853",
+  muted: "#56666f",
+  accent: "#1f4fe0",
+  accentSoft: "#e5ebfc",
+  wordmark: "#c2541a",
+  grid: "rgba(31, 79, 224, 0.06)",
+  rule: "#d6dfe0",
+  correct: "#0f7a55",
+  wrong: "#c63f12",
+  squareLight: "#eef2f2",
+  squareDark: "#c4cfd4",
+} as const;
+
+export type Ctx = CanvasRenderingContext2D;
+
+export const font = (weight: number, size: number, fonts: CardFonts) => `${weight} ${size}px ${fonts.sans}`;
+
+function drawPaper(ctx: Ctx) {
+  ctx.fillStyle = INK.paper;
+  ctx.fillRect(0, 0, CARD_WIDTH, CARD_HEIGHT);
+  ctx.strokeStyle = INK.grid;
+  ctx.lineWidth = 1;
+  for (let at = 36; at < CARD_HEIGHT; at += 36) {
+    ctx.beginPath();
+    ctx.moveTo(at + 0.5, 0);
+    ctx.lineTo(at + 0.5, CARD_HEIGHT);
+    ctx.moveTo(0, at + 0.5);
+    ctx.lineTo(CARD_WIDTH, at + 0.5);
+    ctx.stroke();
+  }
+}
+
+/** The lab's ruler: a fine tick every 12px and a tall one every 120px. */
+function drawRuler(ctx: Ctx, y: number) {
+  ctx.fillStyle = INK.rule;
+  for (let x = PAD; x <= CARD_WIDTH - PAD; x += 12) {
+    const major = (x - PAD) % 120 === 0;
+    ctx.fillRect(x, major ? y - 14 : y - 6, 1.5, major ? 14 : 6);
+  }
+}
+
+/** Sets the largest size up to `size` at which the text fits, and returns it. */
+export function fitFont(ctx: Ctx, text: string, weight: number, size: number, fonts: CardFonts, maxWidth: number): number {
+  let fitted = size;
+  ctx.font = font(weight, fitted, fonts);
+  while (fitted > 12 && ctx.measureText(text).width > maxWidth) {
+    fitted -= 2;
+    ctx.font = font(weight, fitted, fonts);
+  }
+  return fitted;
+}
+
+/**
+ * Breaks text into lines no wider than maxWidth at the language's word breaks, so Japanese and Chinese wrap between
+ * characters and spaced languages between words. A last line that would overflow `maxLines` ends in an ellipsis.
+ */
+export function wrapLines(ctx: Ctx, text: string, maxWidth: number, maxLines: number, locale: string): string[] {
+  const words = [...new Intl.Segmenter(locale, { granularity: "word" }).segment(text)].map(({ segment }) => segment);
+  const lines = words.reduce<string[]>((done, word) => {
+    const last = done.at(-1) ?? "";
+    const joined = last + word;
+    if (done.length === 0) return [word.trimStart()];
+    return ctx.measureText(joined).width <= maxWidth || last.trim() === "" ? [...done.slice(0, -1), joined] : [...done, word.trimStart()];
+  }, []);
+  if (lines.length <= maxLines) return lines;
+  const kept = lines.slice(0, maxLines);
+  let tail = kept[maxLines - 1];
+  while (tail.length > 1 && ctx.measureText(`${tail}…`).width > maxWidth) tail = tail.slice(0, -1);
+  return [...kept.slice(0, -1), `${tail.trimEnd()}…`];
+}
+
+function drawHeader(ctx: Ctx, kicker: string, fonts: CardFonts) {
+  ctx.textBaseline = "alphabetic";
+  ctx.font = font(700, 60, fonts);
+  ctx.fillStyle = INK.ink;
+  ctx.fillText("Memory ", PAD, PAD + 52);
+  const memory = ctx.measureText("Memory ").width;
+  ctx.fillStyle = INK.wordmark;
+  ctx.fillText("Chess", PAD + memory, PAD + 52);
+
+  const size = fitFont(ctx, kicker, 600, 26, fonts, 420);
+  const width = ctx.measureText(kicker).width;
+  const height = size + 24;
+  ctx.fillStyle = INK.accentSoft;
+  ctx.beginPath();
+  ctx.roundRect(CARD_WIDTH - PAD - width - 36, PAD + 4, width + 36, height, height / 2);
+  ctx.fill();
+  ctx.fillStyle = INK.accent;
+  ctx.fillText(kicker, CARD_WIDTH - PAD - width - 18, PAD + 4 + 12 + size * 0.85);
+  drawRuler(ctx, PAD + 128);
+}
+
+function drawFooter(ctx: Ctx, cta: string, site: string, fonts: CardFonts) {
+  ctx.fillStyle = INK.rule;
+  ctx.fillRect(PAD, CARD_HEIGHT - PAD - 116, INNER, 2);
+  ctx.fillStyle = INK.ink;
+  fitFont(ctx, cta, 600, 48, fonts, INNER);
+  ctx.fillText(cta, PAD, CARD_HEIGHT - PAD - 52);
+  ctx.fillStyle = INK.accent;
+  fitFont(ctx, site, 600, 44, fonts, INNER);
+  ctx.fillText(site, PAD, CARD_HEIGHT - PAD + 4);
+}
+
+/** The top of the footer's rule: a card's content ends above it. */
+export const BODY_BOTTOM = CARD_HEIGHT - PAD - 116 - 32;
+
+/** Waits for the faces the card names, since a canvas draws with whatever is loaded at that moment. */
+async function loadFonts(fonts: CardFonts) {
+  if (!document.fonts) return;
+  await Promise.all([document.fonts.load(font(700, 60, fonts)), document.fonts.load(font(600, 60, fonts)), document.fonts.load(font(500, 24, fonts))]);
+}
+
+export interface CardFrame {
+  readonly kicker: string;
+  readonly cta: string;
+  readonly site: string;
+}
+
+/** Draws the frame, lets `body` draw between the ruler and the footer, and encodes the card as a PNG. */
+export async function drawCard(frame: CardFrame, fonts: CardFonts, body: (ctx: Ctx) => void | Promise<void>): Promise<Blob> {
+  await loadFonts(fonts);
+  const canvas = document.createElement("canvas");
+  canvas.width = CARD_WIDTH;
+  canvas.height = CARD_HEIGHT;
+  const ctx = canvas.getContext("2d");
+  if (!ctx) throw new Error("No 2D canvas here");
+  drawPaper(ctx);
+  drawHeader(ctx, frame.kicker, fonts);
+  await body(ctx);
+  drawFooter(ctx, frame.cta, frame.site, fonts);
+  return new Promise((resolve, reject) => canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("The card could not be encoded"))), "image/png"));
+}
+
+/** The card prints in Lab Paper's interface face, the one the page's headings and figures use. */
+export function fontsOf(element: HTMLElement): CardFonts {
+  const style = getComputedStyle(element);
+  return { sans: style.getPropertyValue("--lp-ui").trim() || style.fontFamily };
+}
+
+export const SITE = "thememorychess.com";

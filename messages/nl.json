@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Deel mijn voortgang",
-      "locked": "Je deelkaart wordt ontgrendeld zodra je geheugenspanne, vaardigheidsrating, onthouden stukken, snelheid of dagreeks klaar is.",
+      "locked": "Na je eerste ronde laat je kaart hier je beste cijfers zien.",
       "text": "Mijn voortgang bij Memory Chess: {figures}. Kun jij het beter?",
       "figure": {
         "span": "geheugenspanne van {value, plural, one {# stuk} other {# stukken}}",
         "rating": "vaardigheidsrating {value, number}",
         "piecesHeld": "{value, number} onthouden stukken",
         "speed": "{value, number} s per stuk",
-        "streak": "{value, plural, one {# dag} other {# dagen}} op rij"
+        "streak": "{value, plural, one {# dag} other {# dagen}} op rij",
+        "bestAccuracy": "{value, number}% beste nauwkeurigheid",
+        "recentAccuracy": "{value, number}% recente nauwkeurigheid",
+        "winStreak": "een winstreeks van {value, plural, one {# ronde} other {# rondes}}",
+        "rounds": "{value, plural, one {# ronde} other {# rondes}} gespeeld",
+        "days": "{value, plural, one {# dag} other {# dagen}} gespeeld"
       },
       "card": {
         "kicker": "Labverslag",

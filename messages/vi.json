@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Chia sẻ tiến bộ của tôi",
-      "locked": "Thẻ chia sẻ sẽ mở khi tầm nhớ, điểm kỹ năng, số quân nhớ được, tốc độ hoặc chuỗi ngày của bạn sẵn sàng.",
+      "locked": "Sau ván đầu tiên, thẻ của bạn sẽ hiện những chỉ số tốt nhất của bạn tại đây.",
       "text": "Tiến bộ của tôi trên Memory Chess: {figures}. Bạn có vượt được không?",
       "figure": {
         "span": "tầm nhớ {value, plural, other {# quân}}",
         "rating": "điểm kỹ năng {value, number}",
         "piecesHeld": "nhớ được {value, number} quân",
         "speed": "{value, number} giây mỗi quân",
-        "streak": "{value, plural, other {# ngày}} liên tiếp"
+        "streak": "{value, plural, other {# ngày}} liên tiếp",
+        "bestAccuracy": "độ chính xác cao nhất {value, number}%",
+        "recentAccuracy": "độ chính xác gần đây {value, number}%",
+        "winStreak": "chuỗi thắng {value, plural, other {# ván}}",
+        "rounds": "{value, plural, other {# ván đã chơi}}",
+        "days": "{value, plural, other {# ngày đã chơi}}"
       },
       "card": {
         "kicker": "Hồ sơ phòng lab",

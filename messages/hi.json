@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "मेरी प्रगति साझा करें",
-      "locked": "आपका साझा कार्ड तब खुलेगा जब स्मृति क्षमता, कौशल रेटिंग, याद रखे मोहरे, गति या लगातार दिनों का आपका सिलसिला तैयार होगा।",
+      "locked": "आपके पहले राउंड के बाद, आपका कार्ड यहाँ आपके सर्वश्रेष्ठ आँकड़े दिखाएगा।",
       "text": "Memory Chess पर मेरी प्रगति: {figures}। क्या आप इसे हरा सकते हैं?",
       "figure": {
         "span": "{value, plural, one {# मोहरे} other {# मोहरों}} की स्मृति क्षमता",
         "rating": "कौशल रेटिंग {value, number}",
         "piecesHeld": "{value, number} मोहरे याद",
         "speed": "{value, number} से. प्रति मोहरा",
-        "streak": "लगातार {value, plural, one {# दिन} other {# दिन}}"
+        "streak": "लगातार {value, plural, one {# दिन} other {# दिन}}",
+        "bestAccuracy": "{value, number}% सबसे अच्छी सटीकता",
+        "recentAccuracy": "{value, number}% हाल की सटीकता",
+        "winStreak": "लगातार {value, plural, one {# राउंड} other {# राउंड}} की जीत",
+        "rounds": "{value, plural, one {# राउंड} other {# राउंड}} खेले",
+        "days": "{value, plural, one {# दिन} other {# दिन}} खेले"
       },
       "card": {
         "kicker": "लैब रिकॉर्ड",

@@ -1,7 +1,15 @@
 "use client";
 
 import { useFormatter, useTranslations } from "next-intl";
-import type { Figure } from "@/lib/lab/dashboard";
+import type { Figure, TileContext } from "@/lib/lab/dashboard";
+
+/** What a figure is read from, in words: the line under it on a tile and on the share card. */
+export function useContextText() {
+  const t = useTranslations("dashboard.context");
+  const format = useFormatter();
+  return ({ kind, values }: TileContext) =>
+    t(kind, Object.fromEntries(Object.entries(values).map(([key, value]) => [key, value instanceof Date ? format.dateTime(value, { dateStyle: "medium" }) : value])));
+}
 
 /** A run of a figure's text, the number itself drawn large. */
 export interface FigureSegment {

@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "내 진행 상황 공유",
-      "locked": "기억 범위, 실력 레이팅, 기억한 말, 속도, 연속 일수 중 하나가 준비되면 공유 카드가 열립니다.",
+      "locked": "첫 라운드를 마치면 이 카드에 최고 기록이 표시돼요.",
       "text": "Memory Chess 내 진행 상황: {figures}. 이길 수 있나요?",
       "figure": {
         "span": "기억 범위 {value, plural, other {#개}}",
         "rating": "실력 레이팅 {value, number}",
         "piecesHeld": "기억한 말 {value, number}개",
         "speed": "말 하나당 {value, number}초",
-        "streak": "{value, plural, other {#일}} 연속"
+        "streak": "{value, plural, other {#일}} 연속",
+        "bestAccuracy": "최고 정확도 {value, number}%",
+        "recentAccuracy": "최근 정확도 {value, number}%",
+        "winStreak": "{value, plural, other {#연승}}",
+        "rounds": "{value, plural, other {#라운드 플레이}}",
+        "days": "{value, plural, other {#일 플레이}}"
       },
       "card": {
         "kicker": "랩 기록",

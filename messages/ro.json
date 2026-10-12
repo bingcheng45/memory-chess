@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Distribuie progresul meu",
-      "locked": "Cardul de distribuit se deblochează când capacitatea de memorie, ratingul de abilitate, piesele reținute, viteza sau seria ta de zile sunt gata.",
+      "locked": "După prima ta rundă, cardul tău va afișa aici cele mai bune cifre ale tale.",
       "text": "Progresul meu la Memory Chess: {figures}. Poți mai bine?",
       "figure": {
         "span": "capacitate de memorie de {value, plural, one {# piesă} few {# piese} other {# de piese}}",
         "rating": "rating de abilitate {value, number}",
         "piecesHeld": "{value, number} piese reținute",
         "speed": "{value, number} s pe piesă",
-        "streak": "{value, plural, one {# zi} few {# zile} other {# de zile}} la rând"
+        "streak": "{value, plural, one {# zi} few {# zile} other {# de zile}} la rând",
+        "bestAccuracy": "cea mai bună precizie: {value, number}%",
+        "recentAccuracy": "precizie recentă: {value, number}%",
+        "winStreak": "serie de victorii: {value, plural, one {# rundă} few {# runde} other {# de runde}}",
+        "rounds": "{value, plural, one {# rundă jucată} few {# runde jucate} other {# de runde jucate}}",
+        "days": "{value, plural, one {# zi de joc} few {# zile de joc} other {# de zile de joc}}"
       },
       "card": {
         "kicker": "Jurnal de laborator",

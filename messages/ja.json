@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "進捗をシェア",
-      "locked": "記憶スパン、スキルレーティング、記憶できた駒、スピード、連続日数のいずれかが揃うと、シェア用カードが解放されます。",
+      "locked": "最初のラウンドを終えると、ここにあなたのベスト記録がカードで表示されます。",
       "text": "Memory Chess の進捗: {figures}。あなたは超えられる?",
       "figure": {
         "span": "記憶スパン{value, plural, other {#駒}}",
         "rating": "スキルレーティング{value, number}",
         "piecesHeld": "記憶できた駒{value, number}",
         "speed": "1駒あたり{value, number}秒",
-        "streak": "{value, plural, other {#日}}連続"
+        "streak": "{value, plural, other {#日}}連続",
+        "bestAccuracy": "最高正解率{value, number}%",
+        "recentAccuracy": "最近の正解率{value, number}%",
+        "winStreak": "{value, plural, other {#連勝}}",
+        "rounds": "{value, plural, other {#ラウンドプレイ}}",
+        "days": "{value, plural, other {#日プレイ}}"
       },
       "card": {
         "kicker": "ラボ記録",

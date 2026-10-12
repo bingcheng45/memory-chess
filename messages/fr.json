@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Partager mes progrès",
-      "locked": "Votre carte à partager se débloque dès que l’empan mémoriel, la cote de niveau, les pièces retenues, la vitesse ou votre série de jours est prêt.",
+      "locked": "Après votre première partie, votre carte affichera ici vos meilleurs chiffres.",
       "text": "Mes progrès sur Memory Chess : {figures}. Saurez-vous faire mieux ?",
       "figure": {
         "span": "empan mémoriel de {value, plural, one {# pièce} many {# pièces} other {# pièces}}",
         "rating": "cote de niveau {value, number}",
         "piecesHeld": "{value, number} pièces retenues",
         "speed": "{value, number} s par pièce",
-        "streak": "{value, plural, one {# jour} many {# jours} other {# jours}} d’affilée"
+        "streak": "{value, plural, one {# jour} many {# jours} other {# jours}} d’affilée",
+        "bestAccuracy": "meilleure précision de {value, number} %",
+        "recentAccuracy": "précision récente de {value, number} %",
+        "winStreak": "une série de {value, plural, one {# victoire} many {# victoires} other {# victoires}}",
+        "rounds": "{value, plural, one {# partie jouée} many {# parties jouées} other {# parties jouées}}",
+        "days": "{value, plural, one {# jour joué} many {# jours joués} other {# jours joués}}"
       },
       "card": {
         "kicker": "Carnet de labo",

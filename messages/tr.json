@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "İlerlememi paylaş",
-      "locked": "Paylaşım kartın; bellek kapasitesi, beceri puanı, akılda tutulan taşlar, hız veya gün serin hazır olduğunda açılır.",
+      "locked": "İlk turunuzdan sonra kartınız en iyi rakamlarınızı burada gösterir.",
       "text": "Memory Chess ilerlemem: {figures}. Geçebilir misin?",
       "figure": {
         "span": "{value, plural, one {# taşlık} other {# taşlık}} bellek kapasitesi",
         "rating": "beceri puanı {value, number}",
         "piecesHeld": "akılda tutulan {value, number} taş",
         "speed": "taş başına {value, number} sn",
-        "streak": "üst üste {value, plural, one {# gün} other {# gün}}"
+        "streak": "üst üste {value, plural, one {# gün} other {# gün}}",
+        "bestAccuracy": "%{value, number} en iyi isabet",
+        "recentAccuracy": "%{value, number} son isabet",
+        "winStreak": "{value, plural, one {# turluk} other {# turluk}} galibiyet serisi",
+        "rounds": "{value, plural, one {# tur oynandı} other {# tur oynandı}}",
+        "days": "{value, plural, one {# gün oynandı} other {# gün oynandı}}"
       },
       "card": {
         "kicker": "Laboratuvar kaydı",

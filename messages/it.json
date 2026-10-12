@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Condividi i miei progressi",
-      "locked": "La scheda da condividere si sblocca quando span di memoria, punteggio di abilità, pezzi ricordati, velocità o giorni di fila sono pronti.",
+      "locked": "Dopo il tuo primo round, la tua scheda mostrerà qui i tuoi risultati migliori.",
       "text": "I miei progressi su Memory Chess: {figures}. Riesci a fare di meglio?",
       "figure": {
         "span": "span di memoria di {value, plural, one {# pezzo} many {# pezzi} other {# pezzi}}",
         "rating": "punteggio di abilità {value, number}",
         "piecesHeld": "{value, number} pezzi ricordati",
         "speed": "{value, number} s per pezzo",
-        "streak": "{value, plural, one {# giorno} many {# giorni} other {# giorni}} di fila"
+        "streak": "{value, plural, one {# giorno} many {# giorni} other {# giorni}} di fila",
+        "bestAccuracy": "miglior precisione del {value, number}%",
+        "recentAccuracy": "precisione recente del {value, number}%",
+        "winStreak": "una serie di {value, plural, one {# vittoria} many {# vittorie} other {# vittorie}}",
+        "rounds": "{value, plural, one {# partita giocata} many {# partite giocate} other {# partite giocate}}",
+        "days": "{value, plural, one {# giorno giocato} many {# giorni giocati} other {# giorni giocati}}"
       },
       "card": {
         "kicker": "Registro del laboratorio",

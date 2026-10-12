@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Jaa edistymiseni",
-      "locked": "Jaettava kortti avautuu, kun muistijänne, taitoluku, muistetut nappulat, nopeus tai päiväputkesi on valmis.",
+      "locked": "Ensimmäisen kierroksen jälkeen korttisi näyttää tässä parhaat lukemasi.",
       "text": "Edistymiseni Memory Chessissä: {figures}. Pystytkö parempaan?",
       "figure": {
         "span": "muistijänne {value, plural, one {# nappula} other {# nappulaa}}",
         "rating": "taitoluku {value, number}",
         "piecesHeld": "{value, number} muistettua nappulaa",
         "speed": "{value, number} s / nappula",
-        "streak": "{value, plural, one {# päivä} other {# päivää}} putkeen"
+        "streak": "{value, plural, one {# päivä} other {# päivää}} putkeen",
+        "bestAccuracy": "paras tarkkuus {value, number} %",
+        "recentAccuracy": "viimeaikainen tarkkuus {value, number} %",
+        "winStreak": "voittoputki {value, plural, one {# kierros} other {# kierrosta}}",
+        "rounds": "{value, plural, one {# kierros} other {# kierrosta}} pelattu",
+        "days": "{value, plural, one {# päivä} other {# päivää}} pelattu"
       },
       "card": {
         "kicker": "Laboratoriopäiväkirja",

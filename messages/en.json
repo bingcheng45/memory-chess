@@ -1486,14 +1486,19 @@
     },
     "share": {
       "button": "Share my progress",
-      "locked": "Your share card unlocks once memory span, skill rating, pieces held, speed or your day streak is ready.",
+      "locked": "After your first round, your card shows your best figures here.",
       "text": "My Memory Chess progress: {figures}. Can you beat it?",
       "figure": {
         "span": "memory span {value, plural, one {# piece} other {# pieces}}",
         "rating": "skill rating {value, number}",
         "piecesHeld": "{value, number} pieces held",
         "speed": "{value, number} s per piece",
-        "streak": "{value, plural, one {# day} other {# days}} in a row"
+        "streak": "{value, plural, one {# day} other {# days}} in a row",
+        "bestAccuracy": "{value, number}% best accuracy",
+        "recentAccuracy": "{value, number}% recent accuracy",
+        "winStreak": "a win streak of {value, plural, one {# round} other {# rounds}}",
+        "rounds": "{value, plural, one {# round} other {# rounds}} played",
+        "days": "{value, plural, one {# day} other {# days}} played"
       },
       "card": {
         "kicker": "Lab record",

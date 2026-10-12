@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Del fremgangen min",
-      "locked": "Delekortet ditt låses opp når hukommelsesspenn, ferdighetsrating, husket brikker, tempo eller dager på rad er klart.",
+      "locked": "Etter den første runden viser kortet ditt de beste tallene dine her.",
       "text": "Fremgangen min i Memory Chess: {figures}. Klarer du å slå det?",
       "figure": {
         "span": "hukommelsesspenn på {value, plural, one {# brikke} other {# brikker}}",
         "rating": "ferdighetsrating {value, number}",
         "piecesHeld": "{value, number} husket brikker",
         "speed": "{value, number} s per brikke",
-        "streak": "{value, plural, one {# dag} other {# dager}} på rad"
+        "streak": "{value, plural, one {# dag} other {# dager}} på rad",
+        "bestAccuracy": "{value, number} % beste presisjon",
+        "recentAccuracy": "{value, number} % nylig presisjon",
+        "winStreak": "en seiersrekke på {value, plural, one {# runde} other {# runder}}",
+        "rounds": "{value, plural, one {# runde} other {# runder}} spilt",
+        "days": "{value, plural, one {# dag} other {# dager}} spilt"
       },
       "card": {
         "kicker": "Laboratoriejournal",

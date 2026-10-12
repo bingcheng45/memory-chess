@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Fejlődésem megosztása",
-      "locked": "A megosztható kártya akkor oldódik fel, amikor kész a memóriaterjedelem, a képességpontszám, a megjegyzett bábuk, a sebesség vagy a napi sorozatod.",
+      "locked": "Az első köröd után a kártyád itt mutatja a legjobb eredményeidet.",
       "text": "A fejlődésem a Memory Chessben: {figures}. Meg tudod verni?",
       "figure": {
         "span": "{value, plural, one {# bábus} other {# bábus}} memóriaterjedelem",
         "rating": "képességpontszám: {value, number}",
         "piecesHeld": "{value, number} megjegyzett bábu",
         "speed": "{value, number} mp bábunként",
-        "streak": "{value, plural, one {# nap} other {# nap}} egymás után"
+        "streak": "{value, plural, one {# nap} other {# nap}} egymás után",
+        "bestAccuracy": "{value, number}% legjobb pontosság",
+        "recentAccuracy": "{value, number}% legutóbbi pontosság",
+        "winStreak": "{value, plural, one {# körös} other {# körös}} győzelmi sorozat",
+        "rounds": "{value, plural, one {# lejátszott kör} other {# lejátszott kör}}",
+        "days": "{value, plural, one {# játéknap} other {# játéknap}}"
       },
       "card": {
         "kicker": "Laborjegyzőkönyv",

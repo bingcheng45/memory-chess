@@ -10,7 +10,10 @@ jest.mock("@/lib/saveBlob", () => ({ saveBlob: jest.fn() }));
 jest.mock("@/components/dashboard/shareImage", () => ({ drawShareCard: jest.fn() }));
 
 const PNG = new Blob(["png"], { type: "image/png" });
-const CARD: ShareCard = { figures: [{ id: "span", figure: { value: 8, unit: "pieces", digits: 0 } }], rounds: 40 };
+const CARD: ShareCard = {
+  figures: [{ id: "span", figure: { value: 8, unit: "pieces", digits: 0 }, context: { kind: "span", values: { rounds: 12, accuracy: 80, memorizeSeconds: 10 } } }],
+  rounds: 40,
+};
 const CAPTION = "My Memory Chess progress: memory span 8 pieces. Can you beat it?";
 const URL_TAGGED = "https://thememorychess.com/?utm_source=share&utm_medium=dashboard";
 
@@ -30,7 +33,7 @@ const events = () => jest.mocked(trackEvent).mock.calls.map(([event]) => event);
 beforeEach(() => {
   jest.mocked(trackEvent).mockClear();
   jest.mocked(saveBlob).mockClear();
-  jest.mocked(drawShareCard).mockResolvedValue(PNG);
+  jest.mocked(drawShareCard).mockReset().mockResolvedValue(PNG);
   URL.createObjectURL = jest.fn(() => "blob:card");
   URL.revokeObjectURL = jest.fn();
   Object.assign(navigator, { clipboard: { writeText: jest.fn(() => Promise.resolve()), write: jest.fn(() => Promise.resolve()) } });
@@ -43,6 +46,42 @@ afterEach(() => {
 });
 
 describe("DashboardShare", () => {
+  it("draws the card into the panel as it shows, in words and numbers ready to print, and opens the dialog from the picture", async () => {
+    const { container } = renderWithIntl(<DashboardShare card={CARD} />);
+    await act(async () => {});
+
+    expect(container.querySelector(".lab-share-thumb img")?.getAttribute("src")).toBe("blob:card");
+    const [copy, , locale] = jest.mocked(drawShareCard).mock.calls.at(-1) ?? [];
+    expect([copy, locale]).toEqual([
+      {
+        kicker: "Lab record",
+        lead: { label: "Memory span", segments: [{ text: "8", big: true }, { text: " pieces", big: false }], note: "80% or better in 12 rounds, studied 10 s" },
+        grid: [],
+        cta: "Can you beat it?",
+        site: "thememorychess.com",
+      },
+      "en",
+    ]);
+
+    await act(async () => fireEvent.click(container.querySelector(".lab-share-thumb") as Element));
+    expect(within(dialog()).getByRole("img")).toHaveAttribute("src", "blob:card");
+  });
+
+  it("holds the panel's place with the Share button disabled until the record is read", () => {
+    renderWithIntl(<DashboardShare card="pending" />);
+
+    expect(screen.getByRole("button", { name: "Share my progress" })).toBeDisabled();
+    expect(screen.getByText("Make an image of your record to post, save or send.")).toBeInTheDocument();
+    expect(drawShareCard).not.toHaveBeenCalled();
+  });
+
+  it("offers a first round in place of the card before any round is played", () => {
+    renderWithIntl(<DashboardShare card={null} />);
+
+    expect(screen.queryByRole("button", { name: "Share my progress" })).toBeNull();
+    expect(screen.getByRole("link", { name: "Play a round" })).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
+  });
+
   it("opens a dialog with the card the share makes, described in words, and focus inside it", async () => {
     renderWithIntl(<DashboardShare card={CARD} />);
 

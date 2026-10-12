@@ -30,7 +30,7 @@ describe("Dashboard", () => {
 
     await act(async () => fireEvent.click(screen.getByRole("button", { name: "Share my progress" })));
     expect(within(screen.getByRole("dialog")).getByText(/^My Memory Chess progress/).textContent).toBe(
-      "My Memory Chess progress: memory span 6 pieces, 5.2 pieces held, 4.6 s per piece, 3 days in a row. Can you beat it? https://thememorychess.com/?utm_source=share&utm_medium=dashboard",
+      "My Memory Chess progress: memory span 6 pieces, 5.2 pieces held, 4.6 s per piece, 100% best accuracy. Can you beat it? https://thememorychess.com/?utm_source=share&utm_medium=dashboard",
     );
     expect(tileText("span")).toBe("Memory span6 pieces80% or better in 11 rounds, studied 10 s");
   });
@@ -69,11 +69,27 @@ describe("Dashboard", () => {
     expect(document.querySelectorAll("[data-history-row]")).toHaveLength(0);
   });
 
-  it("swaps the share button for a round while every headline figure is still warming", () => {
-    show("twoRounds");
+  it("swaps the share button for a first round before any round is played", () => {
+    show("newVisitor");
 
     expect(screen.queryByRole("button", { name: "Share my progress" })).toBeNull();
-    expect(screen.getByText("Your share card unlocks once memory span, skill rating, pieces held, speed or your day streak is ready.")).toBeInTheDocument();
+    expect(screen.getByText("After your first round, your card shows your best figures here.")).toBeInTheDocument();
+  });
+
+  it("shares the figures that are ready while the headline figures still warm", async () => {
+    URL.createObjectURL = jest.fn(() => "blob:card");
+    URL.revokeObjectURL = jest.fn();
+    show("twoRounds");
+
+    await act(async () => fireEvent.click(screen.getByRole("button", { name: "Share my progress" })));
+    expect(within(screen.getByRole("dialog")).getByText(/^My Memory Chess progress/).textContent).toBe(
+      "My Memory Chess progress: 83% best accuracy, 67% recent accuracy, 2 rounds played, 1 day played. Can you beat it? https://thememorychess.com/?utm_source=share&utm_medium=dashboard",
+    );
+  });
+
+  it("names what a warming figure still needs", () => {
+    show("twoRounds");
+
     const speed = document.querySelector<HTMLElement>('[data-tile="speed"]');
     expect(speed?.textContent).toBe("SpeedUnlocks with 4 more rounds at 6 pieces, 10 s.Play 6 pieces, 10 s →");
     expect(within(speed as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");

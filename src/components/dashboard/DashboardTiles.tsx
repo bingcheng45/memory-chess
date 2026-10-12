@@ -4,7 +4,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { DashboardTile, DashboardTileId, Rig } from "@/lib/lab/dashboard";
 import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
-import { useFigureText } from "./figureText";
+import { useContextText, useFigureText } from "./figureText";
 
 const NEED_VALUES = { accuracy: LAB_THRESHOLDS.spanAccuracy, minPieces: LAB_THRESHOLDS.spanMinPieces };
 
@@ -21,23 +21,19 @@ export function useNeedText() {
 
 function TileBody({ tile }: { tile: DashboardTile }) {
   const t = useTranslations("dashboard");
-  const format = useFormatter();
   const figureText = useFigureText();
+  const contextText = useContextText();
   const needText = useNeedText();
 
   switch (tile.state) {
     case "ready":
-    case "stale": {
-      const values = Object.fromEntries(
-        Object.entries(tile.context.values).map(([key, value]) => [key, value instanceof Date ? format.dateTime(value, { dateStyle: "medium" }) : value]),
-      );
+    case "stale":
       return (
         <>
           <p className="lab-tile-figure">{figureText.rich(tile.figure)}</p>
-          <p className="lab-tile-note">{t(`context.${tile.context.kind}`, values)}</p>
+          <p className="lab-tile-note">{contextText(tile.context)}</p>
         </>
       );
-    }
     case "warming":
       return (
         <>

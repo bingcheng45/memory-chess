@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "分享我的進度",
-      "locked": "當記憶廣度、技能評分、記住的棋子、速度或連續天數任一項就緒後，分享卡片即會解鎖。",
+      "locked": "完成第一回合後，你的卡片會在這裡顯示你的最佳成績。",
       "text": "我在 Memory Chess 的進度：{figures}。你能超越嗎？",
       "figure": {
         "span": "記憶廣度 {value, plural, other {# 子}}",
         "rating": "技能評分 {value, number}",
         "piecesHeld": "記住 {value, number} 子",
         "speed": "每子 {value, number} 秒",
-        "streak": "連續 {value, plural, other {# 天}}"
+        "streak": "連續 {value, plural, other {# 天}}",
+        "bestAccuracy": "最佳準確率 {value, number}%",
+        "recentAccuracy": "近期準確率 {value, number}%",
+        "winStreak": "{value, plural, other {# 回合連勝}}",
+        "rounds": "{value, plural, other {已玩 # 回合}}",
+        "days": "{value, plural, other {已玩 # 天}}"
       },
       "card": {
         "kicker": "實驗室紀錄",

@@ -87,7 +87,7 @@ export function Dashboard() {
             <TileList ids={DASHBOARD_GROUPS.lead} tiles={tiles} size="lead" />
             <div className="lab-dash-summary">
               <TileList ids={DASHBOARD_GROUPS.summary} tiles={tiles} size="summary" />
-              {tiles && <DashboardShare card={card} />}
+              <DashboardShare card={tiles ? card : "pending"} />
             </div>
           </Section>
           <Section id="history" title={t("sections.history")} lede={t("historyLede")}>

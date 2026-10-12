@@ -170,22 +170,25 @@ describe("dashboardOf", () => {
 });
 
 describe("shareCardOf", () => {
-  it("carries the ready headline figures and the rounds played", () => {
-    expect(shareCardOf(tilesFor("threeDays", { game: { rating: 1102, winStreak: 2, changes: [30] } }), 12)).toEqual({
-      figures: [
-        { id: "span", figure: { value: 6, unit: "pieces", digits: 0 } },
-        { id: "rating", figure: { value: 1102, unit: "rating", digits: 0 } },
-        { id: "piecesHeld", figure: { value: 5.2, unit: "pieces", digits: 1 } },
-        { id: "speed", figure: { value: 4.6, unit: "secondsPerPiece", digits: 1 } },
-        { id: "streak", figure: { value: 3, unit: "days", digits: 0 } },
-      ],
-      rounds: 12,
-    });
+  const ids = (card: ReturnType<typeof shareCardOf>) => card?.figures.map(({ id, figure }) => `${id} ${figure.value}`);
+
+  it("carries every ready figure of the lead row and the totals, each with what stands behind it, and the rounds played", () => {
+    const card = shareCardOf(tilesFor("threeDays", { game: { rating: 1102, winStreak: 2, changes: [30] } }), 12);
+
+    expect(ids(card)).toEqual(["span 6", "rating 1102", "piecesHeld 5.2", "speed 4.6", "bestAccuracy 100", "recentAccuracy 87", "winStreak 2", "streak 3", "rounds 12", "days 3"]);
+    expect(card?.figures[1]).toEqual({ id: "rating", figure: { value: 1102, unit: "rating", digits: 0 }, context: { kind: "rating", values: { sign: "up", change: 30, rounds: 1 } } });
+    expect(card?.rounds).toBe(12);
   });
 
-  it("offers no card while every headline figure is warming, empty or stale", () => {
-    expect(shareCardOf(tilesFor("twoRounds"), 2)).toBeNull();
+  it("leads with the strongest figure above zero and keeps a zero figure in the grid", () => {
+    const card = shareCardOf(tilesFor("twoRounds", { game: { rating: 1000, winStreak: 0, changes: [] } }), 2);
+
+    expect(ids(card)?.slice(0, 2)).toEqual(["rating 1000", "bestAccuracy 83"]);
+    expect(ids(card)).toContain("winStreak 0");
+  });
+
+  it("leaves out stale and warming figures, and offers no card before the first round", () => {
+    expect(ids(shareCardOf(tilesFor("stale"), 30))?.some((id) => id.startsWith("span"))).toBe(false);
     expect(shareCardOf(tilesFor("newVisitor", { today: "" }), 0)).toBeNull();
-    expect(shareCardOf(tilesFor("stale"), 30)).toBeNull();
   });
 });

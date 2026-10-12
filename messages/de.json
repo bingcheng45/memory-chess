@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Fortschritt teilen",
-      "locked": "Deine Karte zum Teilen wird freigeschaltet, sobald Gedächtnisspanne, Wertungszahl, gehaltene Figuren, Tempo oder deine Tagesserie bereit sind.",
+      "locked": "Nach deiner ersten Runde zeigt deine Karte hier deine besten Werte.",
       "text": "Mein Fortschritt bei Memory Chess: {figures}. Schaffst du das?",
       "figure": {
         "span": "Gedächtnisspanne {value, plural, one {# Figur} other {# Figuren}}",
         "rating": "Wertungszahl {value, number}",
         "piecesHeld": "{value, number} gehaltene Figuren",
         "speed": "{value, number} s pro Figur",
-        "streak": "{value, plural, one {# Tag} other {# Tage}} in Folge"
+        "streak": "{value, plural, one {# Tag} other {# Tage}} in Folge",
+        "bestAccuracy": "{value, number} % beste Genauigkeit",
+        "recentAccuracy": "{value, number} % aktuelle Genauigkeit",
+        "winStreak": "eine Siegesserie von {value, plural, one {# Runde} other {# Runden}}",
+        "rounds": "{value, plural, one {# Runde} other {# Runden}} gespielt",
+        "days": "{value, plural, one {# Tag} other {# Tage}} gespielt"
       },
       "card": {
         "kicker": "Laborbericht",

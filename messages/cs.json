@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Sdílet můj pokrok",
-      "locked": "Karta ke sdílení se odemkne, jakmile bude připraven paměťový rozsah, hodnocení dovednosti, zapamatované figury, rychlost nebo tvá denní série.",
+      "locked": "Po prvním kole se na tvé kartě zobrazí tvoje nejlepší výsledky.",
       "text": "Můj pokrok v Memory Chess: {figures}. Překonáš to?",
       "figure": {
         "span": "paměťový rozsah {value, plural, one {# figura} few {# figury} many {# figury} other {# figur}}",
         "rating": "hodnocení dovednosti {value, number}",
         "piecesHeld": "{value, number} zapamatované figury",
         "speed": "{value, number} s na figuru",
-        "streak": "{value, plural, one {# den} few {# dny} many {# dne} other {# dní}} v řadě"
+        "streak": "{value, plural, one {# den} few {# dny} many {# dne} other {# dní}} v řadě",
+        "bestAccuracy": "nejlepší přesnost {value, number} %",
+        "recentAccuracy": "nedávná přesnost {value, number} %",
+        "winStreak": "vítězná série {value, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
+        "rounds": "odehráno {value, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
+        "days": "{value, plural, one {# den hraní} few {# dny hraní} many {# dne hraní} other {# dní hraní}}"
       },
       "card": {
         "kicker": "Laboratorní záznam",

@@ -1,166 +1,89 @@
+import { BODY_BOTTOM, BODY_TOP, drawCard, fitFont, font, INK, INNER, PAD, wrapLines, type CardFonts, type CardFrame, type Ctx } from "@/components/share/cardCanvas";
 import type { FigureSegment } from "./figureText";
 
-/** What the card prints, already in the player's language and number format. */
-export interface CardCopy {
-  readonly kicker: string;
-  readonly figures: readonly { readonly label: string; readonly segments: readonly FigureSegment[] }[];
-  readonly rounds: string;
-  readonly cta: string;
-  readonly site: string;
+/** One figure as the card prints it, already in the player's language and number format. */
+export interface CardFigure {
+  readonly label: string;
+  readonly segments: readonly FigureSegment[];
+  readonly note: string;
 }
 
-export interface CardFonts {
-  readonly sans: string;
-}
-
-/** 4:5, the tallest shape the big feeds show uncropped. */
-const WIDTH = 1080;
-const HEIGHT = 1350;
-const PAD = 88;
-/** Lab Paper's light tokens (components/lab-paper/lab-paper.css): a card reads the same wherever it is posted. */
-const PAPER = "#f5f8f7";
-const INK = "#0d1b24";
-const INK_2 = "#364853";
-const MUTED = "#56666f";
-const ACCENT = "#1f4fe0";
-const ACCENT_SOFT = "#e5ebfc";
-const WORDMARK = "#c2541a";
-const GRID = "rgba(31, 79, 224, 0.06)";
-const RULE = "#d6dfe0";
-
-type Ctx = CanvasRenderingContext2D;
-
-function drawGrid(ctx: Ctx) {
-  ctx.fillStyle = PAPER;
-  ctx.fillRect(0, 0, WIDTH, HEIGHT);
-  ctx.strokeStyle = GRID;
-  ctx.lineWidth = 1;
-  for (let at = 36; at < Math.max(WIDTH, HEIGHT); at += 36) {
-    ctx.beginPath();
-    ctx.moveTo(at + 0.5, 0);
-    ctx.lineTo(at + 0.5, HEIGHT);
-    ctx.moveTo(0, at + 0.5);
-    ctx.lineTo(WIDTH, at + 0.5);
-    ctx.stroke();
-  }
-}
-
-/** The lab's ruler: a fine tick every 12px and a tall one every 120px. */
-function drawRuler(ctx: Ctx, y: number) {
-  ctx.fillStyle = RULE;
-  for (let x = PAD; x <= WIDTH - PAD; x += 12) {
-    const major = (x - PAD) % 120 === 0;
-    ctx.fillRect(x, major ? y - 14 : y - 6, 1.5, major ? 14 : 6);
-  }
-}
-
-function fitFont(ctx: Ctx, text: string, weight: number, size: number, family: string, maxWidth: number): number {
-  let fitted = size;
-  ctx.font = `${weight} ${fitted}px ${family}`;
-  while (fitted > 12 && ctx.measureText(text).width > maxWidth) {
-    fitted -= 2;
-    ctx.font = `${weight} ${fitted}px ${family}`;
-  }
-  return fitted;
-}
-
-function drawHeader(ctx: Ctx, copy: CardCopy, fonts: CardFonts) {
-  ctx.textBaseline = "alphabetic";
-  ctx.font = `700 60px ${fonts.sans}`;
-  ctx.fillStyle = INK;
-  ctx.fillText("Memory ", PAD, PAD + 52);
-  const memory = ctx.measureText("Memory ").width;
-  ctx.fillStyle = WORDMARK;
-  ctx.fillText("Chess", PAD + memory, PAD + 52);
-
-  const size = fitFont(ctx, copy.kicker, 600, 26, fonts.sans, 360);
-  const width = ctx.measureText(copy.kicker).width;
-  const height = size + 24;
-  ctx.fillStyle = ACCENT_SOFT;
-  ctx.beginPath();
-  ctx.roundRect(WIDTH - PAD - width - 36, PAD + 4, width + 36, height, height / 2);
-  ctx.fill();
-  ctx.fillStyle = ACCENT;
-  ctx.fillText(copy.kicker, WIDTH - PAD - width - 18, PAD + 4 + 12 + size * 0.85);
-  drawRuler(ctx, PAD + 128);
+/** What the progress card prints: one figure large, the rest in a grid under it. */
+export interface CardCopy extends CardFrame {
+  readonly lead: CardFigure;
+  readonly grid: readonly CardFigure[];
 }
 
 interface Slot {
   readonly x: number;
   readonly y: number;
   readonly width: number;
+  readonly labelSize: number;
   readonly valueSize: number;
+  readonly noteSize: number;
+  readonly noteLines: number;
 }
+
+const GRID_TOP = 572;
+const COLUMN_GAP = 40;
 
 /** The number large and its unit small on one baseline, in the order the language puts them, shrunk together until they fit. */
-function drawFigure(ctx: Ctx, { label, segments }: CardCopy["figures"][number], slot: Slot, fonts: CardFonts) {
-  const labelSize = Math.round(slot.valueSize / 5.5) + 8;
-  ctx.fillStyle = MUTED;
-  fitFont(ctx, label, 600, labelSize, fonts.sans, slot.width);
-  ctx.fillText(label, slot.x, slot.y + labelSize);
-
-  const baseline = slot.y + labelSize + 18 + slot.valueSize * 0.82;
-  const fontOf = (big: boolean, size: number) => (big ? `600 ${size}px ${fonts.sans}` : `500 ${Math.round(size * 0.24)}px ${fonts.sans}`);
-  const widthAt = (size: number) =>
+function drawValue(ctx: Ctx, segments: readonly FigureSegment[], x: number, baseline: number, width: number, size: number, fonts: CardFonts) {
+  const fontOf = (big: boolean, at: number) => (big ? font(600, at, fonts) : font(500, Math.round(at * 0.3), fonts));
+  const widthAt = (at: number) =>
     segments.reduce((sum, { text, big }) => {
-      ctx.font = fontOf(big, size);
+      ctx.font = fontOf(big, at);
       return sum + ctx.measureText(text).width;
     }, 0);
-  let size = slot.valueSize;
-  while (size > 24 && widthAt(size) > slot.width) size -= 4;
+  let fitted = size;
+  while (fitted > 24 && widthAt(fitted) > width) fitted -= 4;
 
-  let x = slot.x;
+  let left = x;
   segments.forEach(({ text, big }) => {
-    ctx.font = fontOf(big, size);
-    ctx.fillStyle = big ? INK : INK_2;
-    ctx.fillText(text, x, baseline);
-    x += ctx.measureText(text).width;
+    ctx.font = fontOf(big, fitted);
+    ctx.fillStyle = big ? INK.ink : INK.ink2;
+    ctx.fillText(text, left, baseline);
+    left += ctx.measureText(text).width;
   });
 }
 
-/** The first figure leads at full width; the rest share two columns below it. */
-function drawFigures(ctx: Ctx, copy: CardCopy, fonts: CardFonts) {
-  const [lead, ...rest] = copy.figures;
-  if (!lead) return;
-  const inner = WIDTH - 2 * PAD;
-  drawFigure(ctx, lead, { x: PAD, y: 300, width: inner, valueSize: 230 }, fonts);
-  const column = (inner - 48) / 2;
-  rest.forEach((figure, index) => {
-    const row = Math.floor(index / 2);
-    drawFigure(ctx, figure, { x: PAD + (index % 2) * (column + 48), y: 640 + row * 250, width: column, valueSize: 128 }, fonts);
+function drawFigure(ctx: Ctx, { label, segments, note }: CardFigure, slot: Slot, fonts: CardFonts, locale: string) {
+  ctx.fillStyle = INK.muted;
+  fitFont(ctx, label, 600, slot.labelSize, fonts, slot.width);
+  const labelBaseline = slot.y + slot.labelSize;
+  ctx.fillText(label, slot.x, labelBaseline);
+
+  const valueBaseline = labelBaseline + 14 + slot.valueSize * 0.8;
+  drawValue(ctx, segments, slot.x, valueBaseline, slot.width, slot.valueSize, fonts);
+
+  ctx.font = font(400, slot.noteSize, fonts);
+  ctx.fillStyle = INK.ink2;
+  const lineHeight = Math.round(slot.noteSize * 1.3);
+  wrapLines(ctx, note, slot.width, slot.noteLines, locale).forEach((line, index) => {
+    ctx.fillText(line, slot.x, valueBaseline + 14 + lineHeight * (index + 1) - (lineHeight - slot.noteSize));
   });
 }
 
-function drawFooter(ctx: Ctx, copy: CardCopy, fonts: CardFonts) {
-  ctx.fillStyle = INK_2;
-  fitFont(ctx, copy.rounds, 500, 30, fonts.sans, WIDTH - 2 * PAD);
-  ctx.fillText(copy.rounds, PAD, HEIGHT - PAD - 150);
-  ctx.fillStyle = RULE;
-  ctx.fillRect(PAD, HEIGHT - PAD - 116, WIDTH - 2 * PAD, 2);
-  ctx.fillStyle = INK;
-  fitFont(ctx, copy.cta, 600, 48, fonts.sans, WIDTH - 2 * PAD);
-  ctx.fillText(copy.cta, PAD, HEIGHT - PAD - 52);
-  ctx.fillStyle = ACCENT;
-  fitFont(ctx, copy.site, 600, 44, fonts.sans, WIDTH - 2 * PAD);
-  ctx.fillText(copy.site, PAD, HEIGHT - PAD + 4);
+/** Up to four figures share two wide columns; more take three, so ten figures still fit above the footer. */
+function drawGrid(ctx: Ctx, grid: readonly CardFigure[], fonts: CardFonts, locale: string) {
+  if (grid.length === 0) return;
+  const columns = grid.length <= 4 ? 2 : 3;
+  const rows = Math.ceil(grid.length / columns);
+  const width = (INNER - COLUMN_GAP * (columns - 1)) / columns;
+  const rowHeight = (BODY_BOTTOM - GRID_TOP) / Math.max(rows, columns === 2 ? 2 : 3);
+  const sizes = columns === 2 ? { labelSize: 28, valueSize: 96, noteSize: 24 } : { labelSize: 24, valueSize: 66, noteSize: 21 };
+  grid.forEach((figure, index) => {
+    const x = PAD + (index % columns) * (width + COLUMN_GAP);
+    const y = GRID_TOP + Math.floor(index / columns) * rowHeight;
+    ctx.fillStyle = INK.rule;
+    ctx.fillRect(x, y, width, 2);
+    drawFigure(ctx, figure, { x, y: y + 20, width, ...sizes, noteLines: 2 }, fonts, locale);
+  });
 }
 
-/** Waits for the faces the card names, since a canvas draws with whatever is loaded at that moment. */
-async function loadFonts(fonts: CardFonts) {
-  if (!document.fonts) return;
-  await Promise.all([document.fonts.load(`700 60px ${fonts.sans}`), document.fonts.load(`600 60px ${fonts.sans}`), document.fonts.load(`500 24px ${fonts.sans}`)]);
-}
-
-export async function drawShareCard(copy: CardCopy, fonts: CardFonts): Promise<Blob> {
-  await loadFonts(fonts);
-  const canvas = document.createElement("canvas");
-  canvas.width = WIDTH;
-  canvas.height = HEIGHT;
-  const ctx = canvas.getContext("2d");
-  if (!ctx) throw new Error("No 2D canvas here");
-  drawGrid(ctx);
-  drawHeader(ctx, copy, fonts);
-  drawFigures(ctx, copy, fonts);
-  drawFooter(ctx, copy, fonts);
-  return new Promise((resolve, reject) => canvas.toBlob((blob) => (blob ? resolve(blob) : reject(new Error("The card could not be encoded"))), "image/png"));
+export function drawShareCard(copy: CardCopy, fonts: CardFonts, locale: string): Promise<Blob> {
+  return drawCard(copy, fonts, (ctx) => {
+    drawFigure(ctx, copy.lead, { x: PAD, y: BODY_TOP, width: INNER, labelSize: 34, valueSize: 170, noteSize: 28, noteLines: 1 }, fonts, locale);
+    drawGrid(ctx, copy.grid, fonts, locale);
+  });
 }

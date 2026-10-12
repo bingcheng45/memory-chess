@@ -669,14 +669,19 @@
     },
     "share": {
       "button": "Udostępnij moje postępy",
-      "locked": "Twoja karta do udostępnienia odblokuje się, gdy gotowy będzie zakres pamięci, ocena umiejętności, zapamiętane figury, tempo lub seria dni.",
+      "locked": "Po pierwszej rundzie Twoja karta pokaże tutaj Twoje najlepsze wyniki.",
       "text": "Moje postępy w Memory Chess: {figures}. Pobijesz to?",
       "figure": {
         "span": "zakres pamięci {value, plural, one {# figura} few {# figury} many {# figur} other {# figury}}",
         "rating": "ocena umiejętności {value, number}",
         "piecesHeld": "{value, number} figury w pamięci",
         "speed": "{value, number} s na figurę",
-        "streak": "{value, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} z rzędu"
+        "streak": "{value, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} z rzędu",
+        "bestAccuracy": "najlepsza dokładność {value, number}%",
+        "recentAccuracy": "ostatnia dokładność {value, number}%",
+        "winStreak": "seria wygranych: {value, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}",
+        "rounds": "{value, plural, one {# rozegrana runda} few {# rozegrane rundy} many {# rozegranych rund} other {# rozegranej rundy}}",
+        "days": "{value, plural, one {# dzień gry} few {# dni gry} many {# dni gry} other {# dnia gry}}"
       },
       "card": {
         "kicker": "Dziennik laboratorium",

@@ -51,7 +51,7 @@ const guide: LearnDocument = {
           paragraphs: [
             "A puzzle tells you two things before you look. There is a tactic, and it is your move. A game tells you neither, so a fork you would find in a puzzle can walk past unseen.",
             "A one-move blunder needs no deep line to avoid. It is a move that works on the board in your head and fails on the board on the table.",
-            "The two boards differ in three common ways. The first is the phantom defender, a piece you count on to recapture that cannot legally move.",
+            "The two boards differ in three common ways. The first is the phantom defender, a piece you count on to recapture that cannot legally make that capture.",
             "Put a White bishop on b5, a Black knight on c6, the Black king on e8 and a White pawn on e5, with d7 empty. The pawn has just captured a Black piece on e5. Black counted the knight as its defender and planned to recapture. The knight is pinned to the king, so Nxe5 is illegal and the piece is simply lost.",
           ],
         },
@@ -120,7 +120,7 @@ const guide: LearnDocument = {
           items: [
             "The last move. Name every square the moved piece now attacks, and any line it opened by leaving its old square.",
             "Your opponent's forcing moves. List every check they could give, every capture they could make, and every move that would attack one of your pieces.",
-            "Your loose pieces. A loose piece is one with no defender, and a pinned piece does not count as one. Name each loose piece by its square, then name any piece attacked more times than it is defended.",
+            "Your loose pieces. A loose piece is one with no defender. A pinned defender counts only if it can legally recapture. Name each loose piece by its square, then name any piece attacked more times than it is defended.",
             "Your intended move. Picture the piece gone from its square, then ask what it was guarding and which line it was blocking.",
             "Your own forcing moves. Only now look at checks and captures for you, starting with any loose enemy piece.",
           ],
@@ -224,7 +224,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Loose-piece inventory",
-              description: "Set up a middlegame position from one of your games. For each of your pieces, write how many enemy pieces attack it and how many of yours defend it. Circle every zero.",
+              description: "Set up a middlegame position from one of your games. For each of your pieces, write two numbers: enemy attackers, then your defenders, leaving out any defender pinned so it cannot recapture. Circle each piece with no defenders. Star each piece with more attackers than defenders.",
               duration: "5 minutes",
               goal: "See your loose pieces before an opponent's check lands on one.",
             },

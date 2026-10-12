@@ -242,3 +242,41 @@ describe("drag and drop", () => {
     expect(cell("a8")).toHaveAccessibleName("a8, empty");
   });
 });
+
+describe("a finger on a placed piece, with another piece selected", () => {
+  const finger = { pointerId: 11, isPrimary: true, button: 0, pointerType: "touch" };
+  // A phone sends the click for a tap in a task of its own, after the release.
+  const browserClickLater = () => act(() => new Promise((resolve) => setTimeout(resolve, 50)));
+
+  function press(square: SquareName, dx: number) {
+    const start = pointOf(square);
+    const end = { clientX: start.clientX + dx, clientY: start.clientY };
+    fireEvent.pointerDown(cell(square), { ...finger, ...start });
+    fireEvent.pointerMove(cell(square), { ...finger, ...end });
+    fireEvent.pointerUp(cell(square), { ...finger, ...end });
+  }
+
+  it("counts a 10px wobble as one tap, which puts the selected piece there", async () => {
+    renderWithIntl(<Round initial={rebuilding({ type: "place", piece: { color: "black", type: "rook" }, square: "c8", now: 2000 })} />);
+    fireEvent.click(palette("white pawn"));
+
+    press("c8", 10);
+    await browserClickLater();
+    fireEvent.click(cell("c8"));
+
+    expect(cell("c8")).toHaveAccessibleName("c8, white pawn");
+    expect(cell("d8")).toHaveAccessibleName("d8, empty");
+  });
+
+  it("counts a 24px slide as one drag, and swallows the click that arrives after it", async () => {
+    renderWithIntl(<Round initial={rebuilding({ type: "place", piece: { color: "black", type: "rook" }, square: "c8", now: 2000 })} />);
+    fireEvent.click(palette("white pawn"));
+
+    press("c8", 24);
+    await browserClickLater();
+    fireEvent.click(cell("c8"));
+
+    expect(cell("e8")).toHaveAccessibleName("e8, black rook");
+    expect(cell("c8")).toHaveAccessibleName("c8, empty");
+  });
+});

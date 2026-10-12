@@ -9,6 +9,7 @@ import GameReference from '@/components/reference/GameReference';
 import { getTileArticles } from '@/lib/articles';
 import { splitClientMessages, tileGroupOf } from '@/lib/articles/messageScope';
 import { gameConfigPrefillScript } from '@/lib/game/configPrefill';
+import { coordinatesPrefillScript } from '@/lib/settings/coordinatesPrefill';
 
 const siteUrl = 'https://thememorychess.com';
 
@@ -49,7 +50,7 @@ export default async function GameLayout({
       </ScopedMessagesProvider>
       {/* Runs once the form above is parsed and before hydration, so a
           returning player's saved settings are what first paints. */}
-      <script dangerouslySetInnerHTML={{ __html: gameConfigPrefillScript() }} />
+      <script dangerouslySetInnerHTML={{ __html: gameConfigPrefillScript() + coordinatesPrefillScript() }} />
       <GameReference locale={locale} />
     </>
   );

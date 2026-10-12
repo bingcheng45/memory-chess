@@ -23,6 +23,7 @@ const validEntry = {
   memorize_time: 8.25,
   solution_time: 12.5,
   total_wrong_pieces: 2,
+  skill_rating: 1240,
 };
 
 function post(body: object) {
@@ -139,4 +140,79 @@ describe("POST /api/leaderboard", () => {
       error: "Player name must be between 4 and 16 characters",
     });
   });
+
+  it.each([
+    ["missing", undefined],
+    ["negative", -1],
+    ["above 5000", 5001],
+    ["fractional", 12.5],
+    ["a string", "1200"],
+    ["null", null],
+  ])("rejects a skill rating that is %s", async (_case, skill_rating) => {
+    const response = await post({ ...validEntry, skill_rating });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Invalid skill rating" });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it.each([0, 5000])("accepts the boundary rating %d", async (skill_rating) => {
+    const response = await post({ ...validEntry, skill_rating });
+
+    expect(response.status).toBe(200);
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ skill_rating }));
+  });
+
+  it("hands the rating to the insert unchanged", async () => {
+    await post(validEntry);
+
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith({
+      player_name: "Dino beta",
+      difficulty: "medium",
+      piece_count: 6,
+      correct_pieces: 4,
+      memorize_time: 8.25,
+      solution_time: 12.5,
+      total_wrong_pieces: 2,
+      skill_rating: 1240,
+      country_code: "ZZ",
+    });
+  });
+
+  it("stores a daily row with the day its board belongs to", async () => {
+    const response = await post({ ...validEntry, difficulty: "daily", daily_day: "2026-10-13" });
+
+    expect(response.status).toBe(200);
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith(
+      expect.objectContaining({ difficulty: "daily", daily_day: "2026-10-13" }),
+    );
+  });
+
+  it.each([
+    ["no day", { difficulty: "daily" }],
+    ["a null day", { difficulty: "daily", daily_day: null }],
+    ["a day that does not exist", { difficulty: "daily", daily_day: "2026-02-30" }],
+    ["a timestamp instead of a day", { difficulty: "daily", daily_day: "2026-10-13T00:00:00Z" }],
+    ["a medium row carrying a day", { difficulty: "medium", daily_day: "2026-10-13" }],
+  ])("rejects %s", async (_case, board) => {
+    const response = await post({ ...validEntry, ...board });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Invalid daily day" });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it("sends no daily day for a board row whose body carries an explicit null", async () => {
+    await post({ ...validEntry, daily_day: null });
+
+    expect(jest.mocked(submitLeaderboardEntry).mock.calls[0][0]).not.toHaveProperty("daily_day");
+  });
+
+  it("rejects a board that does not exist", async () => {
+    const response = await post({ ...validEntry, difficulty: "weekly" });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Invalid difficulty level" });
+  });
 });
+

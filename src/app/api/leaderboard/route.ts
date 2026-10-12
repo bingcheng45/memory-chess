@@ -2,8 +2,44 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
+import {
+  DAILY_BOARD,
+  isLeaderboardDifficulty,
+  MAX_SKILL_RATING,
+  type LeaderboardBoard,
+} from '@/types/leaderboard';
 
 const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
+
+const DAY_FORMAT = /^\d{4}-\d{2}-\d{2}$/;
+
+function parseSkillRating(value: unknown): number | null {
+  return typeof value === 'number' && Number.isInteger(value) && value >= 0 && value <= MAX_SKILL_RATING
+    ? value
+    : null;
+}
+
+/** A calendar day that exists, as YYYY-MM-DD. */
+function parseDay(value: unknown): string | null {
+  if (typeof value !== 'string' || !DAY_FORMAT.test(value)) return null;
+  const date = new Date(`${value}T00:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().startsWith(value) ? value : null;
+}
+
+type BoardReading = { board: LeaderboardBoard } | { error: string };
+
+function readBoard(difficulty: unknown, dailyDay: unknown): BoardReading {
+  if (difficulty === DAILY_BOARD) {
+    const day = parseDay(dailyDay);
+    return day === null ? { error: 'Invalid daily day' } : { board: { difficulty, daily_day: day } };
+  }
+  if (!isLeaderboardDifficulty(difficulty)) {
+    return { error: 'Invalid difficulty level' };
+  }
+  return dailyDay === undefined || dailyDay === null
+    ? { board: { difficulty } }
+    : { error: 'Invalid daily day' };
+}
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -56,7 +92,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     
     // Validate request body
-    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces, country_code } = body;
+    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces, country_code, skill_rating, daily_day } = body;
     
     if (!player_name || !difficulty || !piece_count || correct_pieces === undefined || 
         !memorize_time || !solution_time) {
@@ -74,14 +110,16 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Validate difficulty
-    if (!['easy', 'medium', 'hard', 'grandmaster'].includes(difficulty)) {
-      return NextResponse.json(
-        { error: 'Invalid difficulty level' },
-        { status: 400 }
-      );
+    const board = readBoard(difficulty, daily_day);
+    if ('error' in board) {
+      return NextResponse.json({ error: board.error }, { status: 400 });
     }
-    
+
+    const parsedSkillRating = parseSkillRating(skill_rating);
+    if (parsedSkillRating === null) {
+      return NextResponse.json({ error: 'Invalid skill rating' }, { status: 400 });
+    }
+
     const parsedCountryCode =
       country_code === undefined || country_code === null
         ? WORLD_CODE
@@ -113,12 +151,13 @@ export async function POST(request: NextRequest) {
     
     const result = await submitLeaderboardEntry({
       player_name,
-      difficulty,
+      ...board.board,
       piece_count,
       correct_pieces,
       memorize_time,
       solution_time,
       total_wrong_pieces,
+      skill_rating: parsedSkillRating,
       country_code: parsedCountryCode
     });
 

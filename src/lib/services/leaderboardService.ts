@@ -190,7 +190,8 @@ function isMissingColumn(error: PostgrestError): boolean {
   return MISSING_COLUMN_CODES.includes(error.code);
 }
 
-type SubmissionRow = LeaderboardSubmission | Omit<LeaderboardSubmission, 'country_code'>;
+/** The columns migration 0004 adds. An insert naming them fails until it is applied. */
+const RATING_MIGRATION_COLUMNS: readonly string[] = ['skill_rating', 'daily_day'];
 
 export async function submitLeaderboardEntry(
   entry: LeaderboardSubmission,
@@ -203,7 +204,7 @@ export async function submitLeaderboardEntry(
   }
 
   const client = supabase;
-  const insertRow = (row: SubmissionRow) =>
+  const insertRow = (row: Record<string, unknown>) =>
     client.from('leaderboard_entries').insert(row).select().single();
 
   const first = await insertRow(entry);
@@ -214,14 +215,15 @@ export async function submitLeaderboardEntry(
     return { status: 'failed', cause: first.error };
   }
 
-  // Transition shim. Delete it, and this whole retry branch, once the
-  // country_code migration is applied in every environment. A player's score
-  // outlives their flag, so the score is kept and the country dropped.
-  const { country_code: dropped, ...withoutCountry } = entry;
+  // Transition shim. Delete it, and this whole retry branch, once migration
+  // 0004 is applied in every environment. The score is kept and the rating
+  // dropped; a daily row still fails, since only 0004 allows the daily board.
   console.warn(
-    `Leaderboard insert rejected country_code ${dropped} (${first.error.code}); the country migration is outstanding. Retrying without it.`,
+    `Leaderboard insert rejected a column (${first.error.code}); the rating and daily migration (0004) is outstanding. Retrying without ${RATING_MIGRATION_COLUMNS.join(' and ')}.`,
   );
-  const retry = await insertRow(withoutCountry);
+  const retry = await insertRow(
+    Object.fromEntries(Object.entries(entry).filter(([column]) => !RATING_MIGRATION_COLUMNS.includes(column))),
+  );
   if (retry.error) {
     return { status: 'unavailable', cause: retry.error };
   }

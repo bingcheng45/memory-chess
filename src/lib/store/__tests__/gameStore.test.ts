@@ -458,3 +458,29 @@ describe("how solve speed moves the skill rating", () => {
     expect(slow.skillRatingChange).toBe(80);
   });
 });
+
+describe("the standing a round started from", () => {
+  beforeEach(() => {
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    freshPlayer();
+  });
+
+  afterEach(() => {
+    store().resetGame();
+    jest.restoreAllMocks();
+    freshPlayer();
+  });
+
+  it("keeps the rating and win streak from before each scored round beside the new ones", () => {
+    const won = playRound({ pieceCount: 2, solveMs: 4000 });
+    const wonBefore = won.standingBefore;
+    const lost = playRound({ pieceCount: 6, correct: 0, solveMs: 0 });
+
+    expect([wonBefore, [won.skillRating, won.streak], lost.standingBefore, [lost.skillRating, lost.streak]]).toEqual([
+      { skillRating: 1000, streak: 0 },
+      [1114, 1],
+      { skillRating: 1114, streak: 1 },
+      [1104, 0],
+    ]);
+  });
+});

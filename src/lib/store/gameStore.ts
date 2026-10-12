@@ -247,6 +247,7 @@ export const useGameStore = create<GameStore>()(
         const updatedGameState: GameStateWithRating = {
           ...gameState,
           labRoundId,
+          standingBefore: { skillRating: currentRating, streak: gameState.streak || 0 },
           userPosition,
           accuracy: score.accuracy,
           completionTime,

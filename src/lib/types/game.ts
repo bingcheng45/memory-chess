@@ -34,7 +34,9 @@ export interface GameState {
   level?: number;
   skillRating?: number;      // Player's skill rating (ELO-like system)
   streak?: number;           // Current streak of successful games
-  
+  /** The rating and streak the scored round started from, so the result screen can show what it moved. Never persisted. */
+  standingBefore?: { readonly skillRating: number; readonly streak: number };
+
   // Game data
   originalPosition?: string; // FEN string of position to memorize
   userPosition?: string;     // FEN string of user's solution

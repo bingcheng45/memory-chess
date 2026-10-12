@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square}：{piece}"
     },
-    "stats": {
-      "title": "对局数据",
-      "currentTime": "当前用时",
-      "piecesToMemorize": "待记忆棋子",
-      "averageAccuracy": "平均准确率"
-    },
     "result": {
       "messages": {
         "perfect": "✨ 满分！✨",

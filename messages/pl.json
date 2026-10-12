@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square}: {piece}"
     },
-    "stats": {
-      "title": "Statystyki",
-      "currentTime": "Bieżący czas",
-      "piecesToMemorize": "Bierki do zapamiętania",
-      "averageAccuracy": "Średnia celność"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Komplet punktów! ✨",

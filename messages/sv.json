@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square} med {piece}"
     },
-    "stats": {
-      "title": "Statistik",
-      "currentTime": "Aktuell tid",
-      "piecesToMemorize": "Pjäser att memorera",
-      "averageAccuracy": "Snittträffsäkerhet"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Full pott! ✨",

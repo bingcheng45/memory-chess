@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square} पर {piece}"
     },
-    "stats": {
-      "title": "गेम आँकड़े",
-      "currentTime": "मौजूदा समय",
-      "piecesToMemorize": "याद करने के मोहरे",
-      "averageAccuracy": "औसत सटीकता"
-    },
     "result": {
       "messages": {
         "perfect": "✨ पूरे अंक! ✨",

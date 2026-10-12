@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square} med {piece}"
     },
-    "stats": {
-      "title": "Statistikk",
-      "currentTime": "Nåværende tid",
-      "piecesToMemorize": "Brikker å huske",
-      "averageAccuracy": "Gjennomsnittlig treffsikkerhet"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Full pott! ✨",

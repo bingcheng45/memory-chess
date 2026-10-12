@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square}: {piece}"
     },
-    "stats": {
-      "title": "Statisztikák",
-      "currentTime": "Eltelt idő",
-      "piecesToMemorize": "Megjegyzendő bábuk",
-      "averageAccuracy": "Átlagos pontosság"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Hibátlan! ✨",

@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square} met {piece}"
     },
-    "stats": {
-      "title": "Statistieken",
-      "currentTime": "Huidige tijd",
-      "piecesToMemorize": "Te onthouden stukken",
-      "averageAccuracy": "Gemiddelde nauwkeurigheid"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Alles goed! ✨",

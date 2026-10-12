@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square} dengan {piece}"
     },
-    "stats": {
-      "title": "Statistik",
-      "currentTime": "Waktu berjalan",
-      "piecesToMemorize": "Bidak untuk dihafal",
-      "averageAccuracy": "Akurasi rata-rata"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Skor sempurna! ✨",

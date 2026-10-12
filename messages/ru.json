@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square}, {piece}"
     },
-    "stats": {
-      "title": "Статистика",
-      "currentTime": "Текущее время",
-      "piecesToMemorize": "Фигур для запоминания",
-      "averageAccuracy": "Средняя точность"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Идеальный результат! ✨",
@@ -641,7 +635,7 @@
         "desc": "Закономерности в ваших результатах, над которыми стоит поработать, каждая с цифрами, на которых она основана.",
         "none": "Пока ничего не выделяется. Продолжайте играть.",
         "rules": {
-          "edgeFiles": "{times, select, 0 {Вы ошибаетесь в {edge, select, 0 {менее 1%} other {{edge}%}} из {edgeShown} фигур на вертикалях a и h и ни в одной из {centreShown} на центральных вертикалях d и e.} 2 {На вертикалях a и h вы ошибаетесь примерно вдвое чаще, чем на центральных вертикалях d и e: {edge, select, 0 {менее 1%} other {{edge}%}} из {edgeShown} фигур против {centre, select, 0 {менее 1%} other {{centre}%}} из {centreShown}.} other {На вертикалях a и h вы ошибаетесь примерно в {times} раза чаще, чем на центральных вертикалях d и e: {edge, select, 0 {менее 1%} other {{edge}%}} из {edgeShown} фигур против {centre, select, 0 {менее 1%} other {{centre}%}} из {centreShown}.}}",
+          "edgeFiles": "{times, select, 0 {Вы ошибаетесь в {edge, select, 0 {менее 1%} other {{edge}%}} из {edgeShown} фигур на вертикалях a и h и ни в одной из {centreShown} на центральных вертикалях d и e.} 2 {На вертикалях a и h вы ошибаетесь примерно вдвое чаще, чем на центральных вертикалях d и e: {edge, select, 0 {менее 1%} other {{edge}%}} из {edgeShown} фигур против {centre, select, 0 {менее 1%} other {{centre}%}} из {centreShown}.} other {На вертикалях a и h вы ошибаетесь чаще, чем на центральных вертикалях d и e, примерно {times} к 1: {edge, select, 0 {менее 1%} other {{edge}%}} из {edgeShown} фигур против {centre, select, 0 {менее 1%} other {{centre}%}} из {centreShown}.}}",
           "weakType": "Среди фигур, кроме королей, увиденных {minimum} раз и более, чаще всего ускользают {type, select, q {ферзи} r {ладьи} b {слоны} n {кони} other {пешки}}: запомнено {recalled} из {shown}, {percent}%.",
           "fasterLessAccurate": "При {pieceCount} фигурах, {studyTime}, последние раунды ({window}) заняли на {fasterTime} меньше на верную фигуру, чем {window} предыдущих, а точность упала на {fell} п. п.",
           "colourGap": "{weaker, select, w {Белые} other {Чёрные}} фигуры вы запоминаете реже, чем {weaker, select, w {чёрные} other {белые}}: {weakerPercent}% из {weakerShown} против {strongerPercent}% из {strongerShown}, без учёта королей.",

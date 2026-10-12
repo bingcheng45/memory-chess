@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square}: {piece}"
     },
-    "stats": {
-      "title": "Statistiky",
-      "currentTime": "Aktuální čas",
-      "piecesToMemorize": "Figurky k zapamatování",
-      "averageAccuracy": "Průměrná přesnost"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Plný počet! ✨",

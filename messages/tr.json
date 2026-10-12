@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square}: {piece}"
     },
-    "stats": {
-      "title": "İstatistikler",
-      "currentTime": "Geçen süre",
-      "piecesToMemorize": "Ezberlenecek taş",
-      "averageAccuracy": "Ortalama isabet"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Kusursuz skor! ✨",

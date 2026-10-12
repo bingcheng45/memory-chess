@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square}: {piece}"
     },
-    "stats": {
-      "title": "Statistik",
-      "currentTime": "Aktuelle Zeit",
-      "piecesToMemorize": "Einzuprägende Figuren",
-      "averageAccuracy": "Durchschnittliche Genauigkeit"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Perfektes Ergebnis! ✨",

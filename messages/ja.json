@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square}に{piece}"
     },
-    "stats": {
-      "title": "ゲーム統計",
-      "currentTime": "経過時間",
-      "piecesToMemorize": "覚える駒の数",
-      "averageAccuracy": "平均正答率"
-    },
     "result": {
       "messages": {
         "perfect": "✨ 満点！ ✨",

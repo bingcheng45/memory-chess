@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square}에 {piece}"
     },
-    "stats": {
-      "title": "게임 통계",
-      "currentTime": "현재 시간",
-      "piecesToMemorize": "외울 기물 수",
-      "averageAccuracy": "평균 정확도"
-    },
     "result": {
       "messages": {
         "perfect": "✨ 만점! ✨",

@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square} com {piece}"
     },
-    "stats": {
-      "title": "Estatísticas",
-      "currentTime": "Tempo atual",
-      "piecesToMemorize": "Peças para memorizar",
-      "averageAccuracy": "Precisão média"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Pontuação perfeita! ✨",

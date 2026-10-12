@@ -997,12 +997,6 @@
       },
       "squareWithPiece": "{square} with {piece}"
     },
-    "stats": {
-      "title": "Game Stats",
-      "currentTime": "Current Time",
-      "piecesToMemorize": "Pieces to Memorize",
-      "averageAccuracy": "Average Accuracy"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Perfect Score! ✨",

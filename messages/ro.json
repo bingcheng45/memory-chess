@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square} cu {piece}"
     },
-    "stats": {
-      "title": "Statistici",
-      "currentTime": "Timp curent",
-      "piecesToMemorize": "Piese de memorat",
-      "averageAccuracy": "Precizie medie"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Punctaj perfect! ✨",

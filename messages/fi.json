@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square}: {piece}"
     },
-    "stats": {
-      "title": "Tilastot",
-      "currentTime": "Kulunut aika",
-      "piecesToMemorize": "Muistettavat nappulat",
-      "averageAccuracy": "Keskimääräinen tarkkuus"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Täydet pisteet! ✨",

@@ -199,12 +199,6 @@
       },
       "squareWithPiece": "{square} có {piece}"
     },
-    "stats": {
-      "title": "Thống kê",
-      "currentTime": "Thời gian hiện tại",
-      "piecesToMemorize": "Số quân cần nhớ",
-      "averageAccuracy": "Độ chính xác trung bình"
-    },
     "result": {
       "messages": {
         "perfect": "✨ Điểm tuyệt đối! ✨",

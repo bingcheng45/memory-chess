@@ -3,17 +3,17 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "chess-memory-training",
-    title: "Chess Memory Training: A Scored Ladder",
-    h1: "Chess memory training that the score can actually measure",
-    description: "How to train position recall with Memory Chess rounds from 2 pieces to 12, using the game's strict square-by-square score to decide when you move up.",
+    title: "Chess Memory Training: A Scored Ladder From 6 to 12 Pieces",
+    h1: "Chess memory training with a score that tells you when to move up",
+    description: "Chess memory training you can score. Rebuild boards from 6 pieces to 12, with a clear rule for when to add pieces and what each result message means.",
     group: "memory",
     level: "beginner",
     publishedAt: "2026-03-06T00:00:00.000Z",
-    updatedAt: "2026-10-12T00:00:00.000Z",
+    updatedAt: "2026-10-13T00:00:00.000Z",
     questions: [
       "How do I train my chess memory?",
-      "Is 6 pieces in 10 seconds a good score?",
-      "When should I add more pieces to a round?",
+      "Is 4 out of 6 a good score in Memory Chess?",
+      "When should I add more pieces to a memory round?",
     ],
     keywords: {
       primary: "chess memory training",
@@ -28,12 +28,12 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Train at 6 pieces and 10 seconds until you rebuild the whole board three rounds in a row. Only then add pieces, and only after that shorten the look.",
+    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the whole board from memory and scoring it square by square. Start at 6 pieces and 10 seconds. Add two pieces after three perfect rounds in a row, and shorten the look only once that count holds.",
     takeaways: [
       "A piece scores only when its square, type and colour all match, so a near miss is a miss.",
-      "At 6 pieces one missed piece already costs 17 points, so the result bands are blunt at low counts.",
-      "With all six right, one invented piece still shows Excellent Memory, so read the piece count before the message.",
-      "Every round is a fresh position, so the only fair comparison is your accuracy across rounds at the same settings.",
+      "At 6 pieces one missed piece already costs 17 points, so the result messages are blunt at low counts.",
+      "Every extra piece you place costs ten points, so leave guesses off the board.",
+      "Every round is a fresh position, so judge yourself by rounds in a row at the same settings.",
     ],
     audience: [
       "Players who lose the position the moment the board clears.",
@@ -43,22 +43,20 @@ const guide: LearnDocument = {
   },
   sections: [
     {
-      id: "score-counts-exact-squares",
-      heading: "The score counts exact squares, not a rough picture",
+      id: "how-a-rebuilt-board-is-scored",
+      heading: "How a rebuilt board is scored",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "Memory Chess compares your board with the original square by square. A piece counts as correct only when the square, the piece type and the colour all match.",
-            "A white knight on f3 when the original had it on e3 is wrong. A black rook on a8 when that rook was white is wrong. There is no half credit.",
-            "Extra pieces hurt twice. Each piece you place beyond the position's count is listed as wrong and also takes ten points off your accuracy, which never drops below zero.",
-            "So the habit that pays is placing only the pieces you actually remember. One guessed extra piece turns a 6-piece round with five correct from 83 percent into 73.",
+            "Memory Chess compares your board with the original square by square. A piece counts only when its square, type and colour all match. A white knight on f3 when the original had it on e3 is wrong. So is a black rook on a8 when that rook was white.",
+            "Extra pieces hurt twice. Each piece you place beyond the position's count is listed as wrong and also takes ten points off your accuracy, which never drops below zero. One guessed extra piece turns a 6-piece round with five correct from 83 percent into 73. So place only the pieces you remember.",
           ],
         },
         {
           kind: "takeaway",
-          title: "Why the kings go down first",
-          body: "Every position holds exactly one king of each colour, and the two kings are never on adjacent squares. That is two piece types you never have to remember, only two squares.",
+          title: "Place the kings first",
+          body: "Every position holds exactly one king of each colour, and the two kings never stand on adjacent squares. Their type is never in doubt, so you only have to remember two squares.",
         },
       ],
     },
@@ -69,24 +67,20 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The message on the result screen comes straight from your accuracy. 100 percent is Perfect Score, 90 or more is Excellent Memory, 80 is Great Job, 70 is Well Done and 50 is Good Effort.",
-            "Below 50 the screen says Keep Practicing. Those are the only six messages, and the thresholds do not change with piece count.",
-            "At 6 pieces the arithmetic is blunt. Six correct is 100 percent. Five is 83, Great Job. Four is 67, Good Effort. Three is 50, one piece from Keep Practicing.",
-            "With exactly six pieces placed, Excellent Memory needs all six correct, because five correct rounds to 83.",
-            "Six correct plus one invented piece also shows Excellent Memory, at 90, which is why the piece count matters more than the message.",
-            "At 12 pieces the steps shrink. Eleven correct is 92 and Excellent Memory. Ten is 83. Nine is 75, Well Done. Twelve pieces is where the bands start describing progress.",
+            "The message on the result screen comes straight from your accuracy. 100 percent is Perfect Score, 90 or more is Excellent Memory, 80 is Great Job, 70 is Well Done and 50 is Good Effort. Below 50 the screen says Keep Practicing. Those are the only six messages, and the thresholds are the same at every piece count.",
+            "At 6 pieces each piece is worth about 17 points, so the steps are steep. Four out of 6 is 67 percent, Good Effort. It means two pieces were missing or wrong, and the next round is about finding which two.",
+            "No clean round at 6 pieces shows Excellent Memory. Six correct plus one invented piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message.",
           ],
         },
         {
           kind: "table",
-          columns: ["Correct pieces", "At 6 pieces", "At 12 pieces"],
+          columns: ["Your rebuild", "At 6 pieces", "At 12 pieces"],
           rows: [
-            {
-              label: "All but one",
-              cells: ["83 percent, Great Job", "92 percent, Excellent Memory"],
-            },
-            { label: "All but two", cells: ["67 percent, Good Effort", "83 percent, Great Job"] },
-            { label: "All but three", cells: ["50 percent, Good Effort", "75 percent, Well Done"] },
+            { label: "All correct", cells: ["100 percent, Perfect Score", "100 percent, Perfect Score"] },
+            { label: "All correct plus one extra piece", cells: ["90 percent, Excellent Memory", "90 percent, Excellent Memory"] },
+            { label: "All but one correct", cells: ["83 percent, Great Job", "92 percent, Excellent Memory"] },
+            { label: "All but two correct", cells: ["67 percent, Good Effort", "83 percent, Great Job"] },
+            { label: "All but three correct", cells: ["50 percent, Good Effort", "75 percent, Well Done"] },
           ],
         },
       ],
@@ -94,14 +88,33 @@ const guide: LearnDocument = {
     {
       id: "ladder-six-to-twelve",
       heading: "The ladder from 6 pieces to 12",
-      summary: "The first card is where you climb from. The other two are short sets of four rounds at harder settings, and the promotion rule below sets the pace of the climb.",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "If you have never played, start with one round of the 2-piece preset. It is the two kings and nothing else, and it exists to teach the controls: pick a type and colour, tap a square, tap again to remove.",
-            "After that the 2-piece preset has nothing left to teach, so the ladder starts at 6.",
-            "Only the first card below is a rung. The other two are four rounds each at settings you are not climbing yet, so you know what is ahead. The second keeps 6 pieces and shortens the look. The third is the 12-piece preset, which adds pieces and shortens the look together. Treat it as a preview, not a rung. The climb itself follows the promotion rule: two pieces at a time, and the look only once the count is stable.",
+            "If you have never played, start with one round of the 2-piece preset. It holds only the two kings and teaches the controls: pick a type and colour, tap a square, tap again to remove. After that round it has nothing left to teach, so the ladder starts at 6.",
+          ],
+        },
+        {
+          kind: "table",
+          columns: ["Rung", "Pieces and look", "Move on after"],
+          rows: [
+            { label: "1", cells: ["6 pieces, 10 seconds, the medium preset", "Three Perfect Score rounds in a row"] },
+            { label: "2", cells: ["8 pieces, 10 seconds, custom", "Three Perfect Score rounds in a row"] },
+            { label: "3", cells: ["10 pieces, 10 seconds, custom", "Three Perfect Score rounds in a row"] },
+            { label: "4", cells: ["12 pieces, 10 seconds, custom", "Three Perfect Score rounds in a row"] },
+            { label: "5", cells: ["12 pieces, 8 seconds, the hard preset", "Excellent Memory in most rounds"] },
+          ],
+        },
+        {
+          kind: "list",
+          ordered: false,
+          items: [
+            "Three Perfect Score rounds in a row at your current settings: add two pieces. The piece slider runs from 2 to 32, so every rung exists.",
+            "Two rounds in a row below Well Done, which is 70 percent: take two pieces away and rebuild the streak there.",
+            "Change one setting at a time. Hold the look at 10 seconds until 12 pieces is clean, then drop it to 8. If you change both at once, you cannot tell which one broke.",
+            "Counts other than 2, 6, 12 and 20 make the round a custom game and keep it off the leaderboard. While you climb, that does not matter.",
+            "The look slider runs from 2 to 60 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
           ],
         },
         {
@@ -109,21 +122,21 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "The honest baseline",
-              description: "5 rounds of 6 pieces, 10 seconds, about 5 minutes. Kings first, then only the pieces you are sure of, then submit. Do not fill in guesses.",
+              description: "5 rounds of 6 pieces, 10 seconds, about 5 minutes. Place the kings first, then only the pieces you are sure of, then submit. Leave every guess off the board.",
               duration: "About 5 minutes",
               goal: "Three Perfect Score rounds in a row before you add a single piece.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
             },
             {
-              title: "Same count, shorter look",
-              description: "4 rounds of 6 pieces, 6 seconds, about 3 minutes. The same six pieces with four seconds less to look. Compare it with the 10-second rounds to see how much those four seconds were doing.",
-              duration: "About 3 minutes",
-              goal: "Perfect Score in at least two of the four rounds.",
-              play: { label: "Play 6 pieces, 6 seconds", pieceCount: 6, memorizeTime: 6 },
+              title: "The first climb",
+              description: "3 rounds of 8 pieces, 10 seconds, about 4 minutes. Keep the same routine with two more pieces. After each round, note which pieces you lost: the pawns, the pieces far from the kings, or the last ones you looked at.",
+              duration: "About 4 minutes",
+              goal: "Three Perfect Score rounds in a row, then move to 10 pieces.",
+              play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },
             },
             {
-              title: "Twelve pieces, read in groups",
-              description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Twelve pieces in eight seconds leaves two thirds of a second per piece, so read them in groups. Take the kings, then the pawns as chains, then whatever is left.",
+              title: "The hard preset",
+              description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Play these once 12 pieces at 10 seconds is clean. Read the board in groups of two or three pieces, starting with the kings.",
               duration: "About 6 minutes",
               goal: "Excellent Memory, which at this count means at least 11 of the 12.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
@@ -139,28 +152,9 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Skip ends the look early. The game records how long you actually looked rather than the time you were given, and that number is what the result screen and the leaderboard use.",
-            "So once you have the board, skip.",
-            "Try Again keeps your piece count and look time and generates a new position. You never see the same board twice, which is right for training and wrong for comparing two attempts at one board.",
-            "That is why the ladder measures rounds at the same settings rather than attempts at one position. Three perfect rounds in a row is a signal. One perfect round might be an easy draw.",
+            "Skip ends the look early. The game records how long you actually looked, and the result screen and the leaderboard use that number. So once you have the board, skip.",
+            "Try Again keeps your piece count and look time and deals a new position. You never see the same board twice. That suits training, and it means one perfect round might be an easy draw. Three perfect rounds in a row at the same settings is a signal.",
             "The result screen shows correct pieces out of the total, a red superscript for any extra pieces, your look time and your solution time. On your submitted board, a piece you placed is marked Correct or Incorrect, and an original square you left empty is marked Missed.",
-          ],
-        },
-      ],
-    },
-    {
-      id: "promotion-and-demotion",
-      heading: "When to add pieces and when to take them away",
-      blocks: [
-        {
-          kind: "list",
-          ordered: true,
-          items: [
-            "Three Perfect Score rounds in a row at your current settings: add two pieces. Go 6 to 8, 8 to 10, 10 to 12. The piece slider runs from 2 to 32, so every step exists.",
-            "Counts other than 2, 6, 12 and 20 make the round a custom game and keep it off the leaderboard. While you are climbing that does not matter.",
-            "Two rounds in a row below Well Done, which is 70 percent: take two pieces away and rebuild the streak there.",
-            "Shorten the look only once the count is stable. Changing both at once tells you nothing about which one broke.",
-            "The look slider runs from 2 to 60 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
           ],
         },
       ],
@@ -172,12 +166,11 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Rebuilding from an empty board is a memory test, and testing helps a memory last. Roediger and Karpicke had students study a passage and then either reread it or take a recall test.",
-            "A week later the tested students remembered more than the ones who had reread.",
-            "That study used prose passages and says nothing about how long to look at a board. What follows is this guide's suggestion, not its finding: once you have the board, skip, and let the rebuild do the work.",
-            "Gobet and Simon showed strong players several boards in a row, a few seconds each, and found they could still recall much of each one. They explain it by familiar chunks, not a bigger raw span.",
-            "Memory Chess positions are random, so the chunks you find are geometric rather than chess-typical. A pawn pair on f2 and g2. A king tucked in a corner. Three pieces on one rank.",
-            "Look for those geometric chunks as you climb from 6 pieces to 12. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four chunks it leaves two seconds or more each.",
+            "Rebuilding from an empty board is a recall test, and recall tests help a memory last. Roediger and Karpicke had students study a prose passage, then either reread it or write down what they recalled. A week later the tested students remembered more.",
+            "That study used prose passages, so it says nothing about how long to look at a board. The advice here is this guide's own: once you have the board, skip, and let the rebuild do the work.",
+            "Gobet and Simon showed strong players several boards in a row for a few seconds each, and the players still recalled much of each one. The authors explain it with templates, large familiar patterns held in long-term memory.",
+            "Memory Chess positions are random, so the groups you find are plain shapes on the board. A pawn pair on f2 and g2. A king tucked in a corner. Three pieces on one rank.",
+            "Groups are what make the hard preset possible. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four chunks it leaves two seconds or more each.",
           ],
         },
       ],
@@ -187,12 +180,12 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Open the 6-piece, 10-second round", pieceCount: 6, memorizeTime: 10 },
-      why: "Start the ladder where the guide does, at six pieces and ten seconds, and climb only after three perfect rounds.",
+      why: "Rung one is six pieces and ten seconds. Stay there until three rounds in a row come back perfect.",
     },
     {
       kind: "cta",
       target: { kind: "stat", tile: "span", label: "Check your memory span" },
-      why: "Memory span is the largest piece count you rebuild accurately over several rounds, so it names the rung of the ladder you hold.",
+      why: "Memory span is the largest piece count, three or more, where you have two rounds at 80 percent or better. It can sit a rung above your ladder, which asks for perfect rounds.",
     },
     {
       kind: "cta",
@@ -207,16 +200,16 @@ const guide: LearnDocument = {
       kind: "faq",
       items: [
         {
-          question: "Is 6 pieces in 10 seconds a good score for a beginner?",
-          answer: "It is the medium preset, a setting rather than a score. Whatever you get on day one, the target there is six correct three rounds in a row.",
-        },
-        {
           question: "Should I go straight to the 20-piece preset?",
           answer: "No. Twenty pieces in five seconds leaves a quarter of a second for each. Until 12 pieces at 8 seconds gives you Excellent Memory most rounds, 20 is likely to end in Keep Practicing with little to learn from.",
         },
         {
           question: "Does the leaderboard care about speed?",
-          answer: "Only as a tiebreak. Entries are ordered by correct pieces, then fewest wrong pieces, then shortest look time, then shortest solution time.",
+          answer: "Only as a tiebreak. Entries are ordered by correct pieces, then fewest wrong pieces, then shortest look time, then shortest solution time. A quick skip helps you only against a player with the same correct and wrong counts, so accuracy comes first.",
+        },
+        {
+          question: "Can I train chess memory without the app?",
+          answer: "Yes, with a real board and a friend. Have them set up 6 pieces, both kings included, and give you 10 seconds to look. Clear the board and rebuild it, then check square by square. Count a piece only when its square, type and colour match, and treat any extra piece as a miss.",
         },
       ],
     },
@@ -250,7 +243,7 @@ const guide: LearnDocument = {
         },
         {
           title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
-          note: "Supports the claim that strong players shown several boards briefly could still recall much of each, explained by chunking rather than raw span.",
+          note: "Supports the claim that strong players shown several boards briefly could still recall much of each, explained by templates held in long-term memory.",
           url: "https://doi.org/10.1006/cogp.1996.0011",
         },
       ],

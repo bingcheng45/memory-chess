@@ -56,7 +56,7 @@ const guide: LearnDocument = {
           ordered: false,
           items: [
             "A piece vanishes. You calculated a capture, and two moves later you forgot the capturing piece still stands on its new square.",
-            "A piece drifts. The knight went to e5, but your picture keeps it on f3.",
+            "A piece drifts. The rook stands on d7, but your picture has it on d6, one square off.",
             "A piece changes identity. A bishop turns into a knight, or a white rook into a black one.",
           ],
         },
@@ -90,8 +90,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "After you submit, the board shows the pieces you placed. A green square is correct. A red square holds a piece that does not belong there. A red ring marks a square where a piece stood in the original and you did not put it back. If you left that square empty, a faded copy of the missing piece sits inside the ring.",
-            "Read those marks, not the accuracy number.",
-            "If you place a seventh piece, accuracy drops ten points for it.",
+            "Read those marks, not the accuracy number. A phantom has no ring of its own. A seventh piece shows as one more red square, and accuracy drops ten points for it.",
           ],
         },
       ],

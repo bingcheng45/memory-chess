@@ -51,14 +51,15 @@ export default function LearnBoard({ block, figure }: { readonly block: BoardBlo
               );
             })}
           </svg>
+          {/* Labels come from CSS so the same coordinate run is not page text on every guide with a board. */}
           <span className="lg-board-ranks" aria-hidden="true">
             {RANKS.map((rank) => (
-              <span key={rank}>{rank}</span>
+              <span key={rank} data-coord={rank} />
             ))}
           </span>
           <span className="lg-board-files" aria-hidden="true">
             {[...FILES].map((file) => (
-              <span key={file}>{file}</span>
+              <span key={file} data-coord={file} />
             ))}
           </span>
         </div>

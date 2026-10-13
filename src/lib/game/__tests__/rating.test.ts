@@ -1,0 +1,90 @@
+import { boardLevel, parseRatedRoundFacts, ratingAfter, type RatedRoundFacts } from "../rating";
+
+const round = (pieceCount: number, studySeconds: number, accuracy: number, rebuildSeconds = pieceCount * 2.5): RatedRoundFacts => ({
+  pieceCount,
+  studySeconds,
+  rebuildSeconds,
+  accuracy,
+});
+
+/** Thirty rated rounds of Medium, newest first, at a mix of 83%, 100% and 67%. */
+const mediumNorm: RatedRoundFacts[] = Array.from({ length: 30 }, (_, i) => round(6, 9 + (i % 3) * 0.5, [83, 100, 67][i % 3], 15));
+
+describe("board level", () => {
+  it("puts Medium at 1000 and ranks the presets", () => {
+    const levels = [
+      [2, 10],
+      [6, 10],
+      [12, 8],
+      [20, 5],
+    ].map(([pieceCount, studySeconds]) => Math.round(boardLevel({ pieceCount, studySeconds })));
+    expect(levels).toEqual([128, 1000, 1598, 2105]);
+  });
+
+  it("counts study time used under a second as one second", () => {
+    expect(boardLevel({ pieceCount: 32, studySeconds: 0.01 })).toBe(boardLevel({ pieceCount: 32, studySeconds: 1 }));
+  });
+});
+
+describe("placement", () => {
+  it("moves the start by a tenth of the round's performance and names the round", () => {
+    expect(ratingAfter(1000, [], round(6, 10, 100))).toEqual({
+      phase: "placement",
+      rating: 1040,
+      change: 40,
+      breakdown: { round: 1, of: 10, boardLevel: 1000, gate: 1, performance: 1400 },
+    });
+  });
+
+  it("is the tenth round with nine earlier rounds and rated after that", () => {
+    const nine = mediumNorm.slice(0, 9);
+    expect([ratingAfter(1000, nine, round(6, 10, 100)).phase, ratingAfter(1000, mediumNorm.slice(0, 10), round(6, 10, 100)).phase]).toEqual([
+      "placement",
+      "rated",
+    ]);
+    expect(ratingAfter(1000, nine, round(6, 10, 100)).breakdown).toMatchObject({ round: 10, of: 10 });
+  });
+
+  it("gives an empty board no credit for its difficulty", () => {
+    expect([ratingAfter(1000, [], round(32, 1, 0, 0.2)).change, ratingAfter(1000, [], round(6, 10, 0)).change]).toEqual([-40, -40]);
+  });
+
+  it("weighs pieces over study time over rebuild time", () => {
+    const after = (r: RatedRoundFacts) => ratingAfter(1000, [], r).rating;
+    expect([after(round(12, 10, 90)), after(round(6, 5, 90)), after(round(6, 10, 90, 7.5)), after(round(6, 10, 90))]).toEqual([
+      1083, 1043, 1034, 1028,
+    ]);
+  });
+});
+
+describe("rated rounds against the player's own norm", () => {
+  const changeOf = (r: RatedRoundFacts) => ratingAfter(1200, mediumNorm, r).change;
+
+  it("gains more for a harder win and less for an easier one", () => {
+    expect([changeOf(round(10, 10, 100)), changeOf(round(6, 10, 100)), changeOf(round(3, 10, 100))]).toEqual([38, 8, 0]);
+  });
+
+  it("loses less for a harder loss and more for an easier one, and a harder loss still costs", () => {
+    expect([changeOf(round(10, 10, 20)), changeOf(round(6, 10, 17)), changeOf(round(3, 10, 33))]).toEqual([-4, -24, -47]);
+  });
+
+  it("never gains on an empty board however hard it was", () => {
+    expect(changeOf(round(32, 1, 0, 0.2))).toBe(-1);
+  });
+
+  it("keeps the rating between 0 and 5000", () => {
+    expect([ratingAfter(5, mediumNorm, round(2, 10, 0)).rating, ratingAfter(4990, [], round(32, 1, 100)).rating]).toEqual([0, 5000]);
+  });
+});
+
+describe("stored round facts", () => {
+  it("reads whole facts and drops missing or out-of-range ones", () => {
+    expect([
+      parseRatedRoundFacts({ pieceCount: 6, studySeconds: 9.5, rebuildSeconds: 12, accuracy: 83 }),
+      parseRatedRoundFacts(undefined),
+      parseRatedRoundFacts({ pieceCount: 6, studySeconds: 9.5, accuracy: 83 }),
+      parseRatedRoundFacts({ pieceCount: 6.5, studySeconds: 9.5, rebuildSeconds: 12, accuracy: 83 }),
+      parseRatedRoundFacts({ pieceCount: 6, studySeconds: 9.5, rebuildSeconds: 12, accuracy: 140 }),
+    ]).toEqual([{ pieceCount: 6, studySeconds: 9.5, rebuildSeconds: 12, accuracy: 83 }, null, null, null, null]);
+  });
+});

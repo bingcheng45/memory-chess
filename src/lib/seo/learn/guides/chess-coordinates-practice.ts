@@ -9,7 +9,7 @@ const guide: LearnDocument = {
     group: "board-vision",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
-    updatedAt: "2026-09-15T00:00:00.000Z",
+    updatedAt: "2026-10-13T00:00:00.000Z",
     questions: [
       "How do I learn chess coordinates fast?",
       "How do I know a square's colour without looking?",
@@ -27,12 +27,12 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. Learn eight anchor squares and the colour rule first. Then play short Memory Chess rounds with the board labels on, naming every square aloud, and repeat them with the labels hidden.",
+    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. Learn eight anchor squares and the colour rule first. Then play short Memory Chess rounds naming every square aloud, first reading the board labels and then naming each square before you look at them.",
     takeaways: [
       "A square you count takes two lookups, the file and then the rank. A square you recognise takes one.",
       "Add the file number to the rank number. An even total is a dark square, an odd total is light.",
       "A knight always lands on the other colour, so the colour rule checks every knight move you name.",
-      "Turn off Show board coordinates on the Memory Chess settings page to hide the labels on every board in a round. That turns any round into a coordinates drill.",
+      "Memory Chess shows the file letters and rank numbers on every board. Say each square's name before your eyes reach the edge, and the labels only check what you already know.",
     ],
     audience: [
       "Players who still find c3 by running a finger along the bottom edge.",
@@ -120,20 +120,16 @@ const guide: LearnDocument = {
       ],
     },
     {
-      id: "labels-on-then-off",
-      heading: "Labels on, then labels off",
-      summary: "Memory Chess shows the file letters and rank numbers on every board by default. A switch on the settings page hides them, and that switch is the drill.",
+      id: "name-it-before-you-read-it",
+      heading: "Read the labels, then beat them",
+      summary: "Memory Chess shows the file letters and rank numbers on every board. Use them first to learn the squares, then only to check a name you have already said.",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            [
-              "The setting is called Show board coordinates, on ",
-              { text: "the settings page", href: "/settings" },
-              ". It is on until you turn it off. Off, it hides the labels on the board you study, the board you rebuild on and the result board.",
-            ],
-            "The result board still marks each piece you placed right or wrong and rings each square you missed, so you can see whether you found the square. The browser remembers the setting, and a round link cannot change it. Both drills below open the same round, and only the setting decides whether its labels show.",
-            "If you use a screen reader, every square announces its name, and a square with a piece on it announces the piece too. The labels setting does not change that.",
+            "The labels run along the left and bottom edges of the board you study, the board you rebuild on and the result board. They are always shown, so the drill is where you let your eyes go.",
+            "The result board marks each piece you placed right or wrong and rings each square you missed, so you can see whether you found the square. Both drills below open the same round, and only your habit changes between them.",
+            "If you use a screen reader, every square announces its name, and a square with a piece on it announces the piece too.",
           ],
         },
         {
@@ -147,14 +143,10 @@ const guide: LearnDocument = {
               play: { label: "Play 4 pieces, 12 seconds", pieceCount: 4, memorizeTime: 12 },
             },
             {
-              title: "Labels off, place by name",
-              description: [
-                "Turn off Show board coordinates on ",
-                { text: "the settings page", href: "/settings" },
-                ", then play 5 rounds of 4 pieces with 12 seconds to look. Say the squares aloud as before. Find each one from its nearest anchor, so c3 is one step down and left of d4.",
-              ],
+              title: "Name it before you read it",
+              description: "Play 5 rounds of 4 pieces with 12 seconds to look. Keep your eyes on the pieces, not the edges. Say each square aloud before you glance at its label, finding it from its nearest anchor, so c3 is one step down and left of d4. A square you had to read first counts as missed.",
               duration: "About 4 minutes",
-              goal: "Find a named square on a blank board without running a finger along the edge.",
+              goal: "Name a square from its place on the board, with the label only confirming it.",
               play: { label: "Play 4 pieces, 12 seconds", pieceCount: 4, memorizeTime: 12 },
             },
           ],
@@ -162,7 +154,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Four pieces keeps the memory load light, so the only thing under pressure is the square name. When five rounds in a row with the labels off come back all correct, move to 6 pieces with the same 12 seconds.",
+            "Four pieces keeps the memory load light, so the only thing under pressure is the square name. When five rounds in a row come back all correct with every square named before you read its label, move to 6 pieces with the same 12 seconds.",
           ],
         },
       ],
@@ -247,8 +239,8 @@ const guide: LearnDocument = {
       kind: "faq",
       items: [
         {
-          question: "Why turn the labels off when they are on by default?",
-          answer: "A label lets you read the square instead of knowing it. With the labels hidden, the only way to put a rook on c3 is to know where c3 is. The result board still marks each piece you placed right or wrong and rings each square you missed, so you find out at once.",
+          question: "Why name a square before reading its label?",
+          answer: "A label lets you read the square instead of knowing it. Saying the name first is how you find out whether you know where c3 is. The label then checks you at once, and the result board marks each piece you placed right or wrong and rings each square you missed.",
         },
         {
           question: "Do I need to learn the board from Black's side?",

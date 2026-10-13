@@ -155,6 +155,21 @@ describe("middleware on articles, translated into German and not into French or 
   });
 });
 
+describe("middleware on the retired settings page", () => {
+  it.each([
+    ["https://thememorychess.com/settings", "https://thememorychess.com/game"],
+    ["https://thememorychess.com/en/settings", "https://thememorychess.com/game"],
+    ["https://thememorychess.com/de/settings", "https://thememorychess.com/de/game"],
+    ["https://thememorychess.com/pt-BR/settings/?ref=x", "https://thememorychess.com/pt-BR/game?ref=x"],
+  ])("sends %s to the game in one 308", (from, to) => {
+    const response = run(from, { "user-agent": BROWSER });
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(to);
+    expect(mockForwarded).toHaveLength(0);
+  });
+});
+
 describe("middleware on a trailing slash", () => {
   it.each([
     ["https://thememorychess.com/fr/learn/?utm=1", "https://thememorychess.com/learn?utm=1"],

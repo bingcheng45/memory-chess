@@ -29,11 +29,6 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/learning", "en")).toBe(false);
   });
 
-  it("draws the settings page in Lab Paper in every locale", () => {
-    expect(isLabPaperRoute("/settings", "en")).toBe(true);
-    expect(isLabPaperRoute("/settings", "hu")).toBe(true);
-  });
-
   it("draws the leaderboard and the contact page in Lab Paper in every locale, since every catalogue carries their copy", () => {
     expect(isLabPaperRoute("/leaderboard", "en")).toBe(true);
     expect(isLabPaperRoute("/leaderboard", "ja")).toBe(true);

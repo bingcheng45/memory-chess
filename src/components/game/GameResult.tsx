@@ -491,7 +491,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
               <div className="flex justify-center gap-2">
                 <Link
                   className="lab-btn lab-btn-primary"
-                  href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${(() => {
+                  href={`/leaderboard?player=${encodeURIComponent(playerName.trim())}&difficulty=${(() => {
                     const difficulty = determineDifficulty(
                       gameState.pieceCount,
                     );

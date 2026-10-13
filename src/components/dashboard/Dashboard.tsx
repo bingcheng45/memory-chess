@@ -1,13 +1,12 @@
 "use client";
 
 import { useMemo, type ReactNode } from "react";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useLabData, useLabResults } from "@/hooks/useLabData";
 import { readDailyOpened, utcDayOf } from "@/lib/lab/daily";
 import { DASHBOARD_GROUPS, dashboardOf, shareCardOf } from "@/lib/lab/dashboard";
 import { historyOf } from "@/lib/lab/history";
-import { hasLabCopy } from "@/lib/home/labLocales";
 import { daysBetween } from "@/lib/lab/readiness";
 import { WIN_ACCURACY } from "@/lib/store/gameStore";
 import { entriesChoice, planChoice, targetChoice } from "@/components/home/labChoices";
@@ -20,6 +19,8 @@ import { TileList } from "./DashboardTiles";
 import { useGameStanding } from "./useGameStanding";
 import "@/components/round/round.css";
 import "./dashboard.css";
+
+const CHOOSE_HREF = `/#${LAB_SECTIONS.record.anchor}`;
 
 function Section({ id, title, lede, children }: { id: string; title: string; lede?: string; children: ReactNode }) {
   return (
@@ -39,7 +40,6 @@ function Section({ id, title, lede, children }: { id: string; title: string; led
  */
 export function Dashboard() {
   const t = useTranslations("dashboard");
-  const locale = useLocale();
   const data = useLabData();
   const storedPlan = planChoice.useValue();
   const storedTarget = targetChoice.useValue();
@@ -48,7 +48,6 @@ export function Dashboard() {
   const loaded = data.storage === "available" && data.today !== "";
   const results = useLabResults({ ...data, plan: loaded ? storedPlan : null, target: loaded ? storedTarget : null });
   const { standing, rated } = useGameStanding(loaded);
-  const chooseHref = hasLabCopy(locale) ? `/#${LAB_SECTIONS.record.anchor}` : null;
 
   const tiles = useMemo(
     () =>
@@ -60,12 +59,12 @@ export function Dashboard() {
             entries,
             utcDay: utcDayOf(Date.now()),
             dailyOpened: readDailyOpened(),
-            chooseHref,
+            chooseHref: CHOOSE_HREF,
             game: standing,
             winAccuracy: WIN_ACCURACY,
           })
         : null,
-    [loaded, data, results, weekGoal, entries, chooseHref, standing],
+    [loaded, data, results, weekGoal, entries, standing],
   );
   const rounds = useMemo(() => (loaded ? historyOf(data.records, rated) : null), [loaded, data.records, rated]);
   const card = tiles && shareCardOf(tiles, data.summary.rounds);
@@ -97,11 +96,9 @@ export function Dashboard() {
           </Section>
           <Section id="more" title={t("sections.more")}>
             <TileList ids={DASHBOARD_GROUPS.more} tiles={tiles} size="more" />
-            {chooseHref && (
-              <Link className="lab-dash-full" href={chooseHref}>
-                {t("fullRecord")} →
-              </Link>
-            )}
+            <Link className="lab-dash-full" href={CHOOSE_HREF}>
+              {t("fullRecord")} →
+            </Link>
           </Section>
         </>
       )}

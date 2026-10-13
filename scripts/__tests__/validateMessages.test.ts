@@ -18,16 +18,10 @@ function put(root: string, path: string, text: string) {
   writeFileSync(join(root, path), text);
 }
 
-function validate(labLocales: string[], german: object): Run {
+function validate(german: object): Run {
   const root = realpathSync(mkdtempSync(join(tmpdir(), "validate-messages-")));
   try {
     put(root, "src/i18n/routing.ts", 'export const LOCALES = ["en", "de"] as const;\n');
-    put(
-      root,
-      "src/lib/home/labLocales.ts",
-      `export const LAB_LOCALES: readonly string[] = ${JSON.stringify(labLocales)};\n` +
-        "export function hasLabCopy(locale: string): boolean { return LAB_LOCALES.includes(locale); }\n",
-    );
     put(root, "messages/en.json", JSON.stringify(ENGLISH));
     put(root, "messages/de.json", JSON.stringify(german));
 
@@ -39,26 +33,15 @@ function validate(labLocales: string[], german: object): Run {
 }
 
 describe("validate-messages lab namespace", () => {
-  it("fails a locale in LAB_LOCALES whose catalogue lacks home.lab", () => {
-    const run = validate(["en", "de"], GERMAN_WITHOUT_LAB);
+  it("fails a locale whose catalogue lacks home.lab, since every locale serves the lab", () => {
+    const run = validate(GERMAN_WITHOUT_LAB);
 
     expect(run.status).toBe(1);
     expect(run.output).toContain("[de] missing key: home.lab.hero");
   });
 
-  it("fails a locale outside LAB_LOCALES whose catalogue carries home.lab", () => {
-    const run = validate(["en"], GERMAN_WITH_LAB);
-
-    expect(run.status).toBe(1);
-    expect(run.output).toContain("[de] lab key in a locale outside LAB_LOCALES: home.lab.hero");
-  });
-
-  it("passes when each locale carries home.lab exactly when it is in LAB_LOCALES", () => {
-    expect(validate(["en"], GERMAN_WITHOUT_LAB)).toEqual({
-      status: 0,
-      output: "2 keys x 2 locales - all consistent.\n",
-    });
-    expect(validate(["en", "de"], GERMAN_WITH_LAB)).toEqual({
+  it("passes a locale that carries home.lab", () => {
+    expect(validate(GERMAN_WITH_LAB)).toEqual({
       status: 0,
       output: "2 keys x 2 locales - all consistent.\n",
     });

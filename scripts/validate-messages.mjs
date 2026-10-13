@@ -11,11 +11,9 @@
  */
 import { readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { pathToFileURL } from "node:url";
 import { IntlMessageFormat } from "intl-messageformat";
 
 const fromRoot = (path) => join(process.cwd(), path);
-const { hasLabCopy } = await import(pathToFileURL(fromRoot("src/lib/home/labLocales.ts")).href);
 
 /**
  * The locale list is read from src/i18n/routing.ts rather than duplicated
@@ -69,13 +67,6 @@ const ENGLISH_AHEAD_OF_TRANSLATIONS = new Set([
   "home.meta.twitterDescription",
 ]);
 
-/**
- * The Brain Lab's copy. A locale in LAB_LOCALES (src/lib/home/labLocales.ts)
- * is served the lab and must carry all of it. Any other locale is served the
- * earlier homepage, where a lab key would be dead text.
- */
-const isLabKey = (key) => key.startsWith("home.lab.");
-
 function flatten(value, prefix = "", out = {}) {
   if (Array.isArray(value)) {
     value.forEach((item, i) => flatten(item, `${prefix}[${i}]`, out));
@@ -121,18 +112,14 @@ const problems = [];
 for (const locale of LOCALES) {
   if (locale === DEFAULT_LOCALE) continue;
   const current = flatten(catalogues[locale]);
-  const servesLab = hasLabCopy(locale);
 
   for (const key of Object.keys(base)) {
-    if (!(key in current) && (servesLab || !isLabKey(key))) {
+    if (!(key in current)) {
       problems.push(`[${locale}] missing key: ${key}`);
     }
   }
   for (const key of Object.keys(current)) {
     if (!(key in base)) problems.push(`[${locale}] unknown key: ${key}`);
-    else if (!servesLab && isLabKey(key)) {
-      problems.push(`[${locale}] lab key in a locale outside LAB_LOCALES: ${key}`);
-    }
   }
 
   for (const key of Object.keys(base)) {

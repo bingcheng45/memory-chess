@@ -69,7 +69,7 @@ describe("the footer the locale layout renders", () => {
     expect(screen.queryByText("Recognition")).toBeNull();
     unmount();
 
-    mockPathname = "/";
+    mockPathname = "/about";
     renderWithIntl(<SiteFooter />, { locale: "de", messages: deMessages });
     expect(screen.getByRole("contentinfo").closest(".lab-paper")).toBeNull();
   });

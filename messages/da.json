@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Træn din skakhukommelse og forestillingsevne",
-      "subtitle": "Husk en skakstilling, genskab den fra hukommelsen, og få point med det samme. Forbedr dit brætoverblik runde for runde.",
-      "freeToPlay": "Gratis at spille, uden konto. Du kan også sammenligne din score på <link>ranglisten</link>.",
-      "gamesPlayed": "Spillede partier: {count}"
+      "freeToPlay": "Gratis at spille, uden konto. Du kan også sammenligne din score på <link>ranglisten</link>."
     },
     "cta": {
-      "play": "Spil Memory Chess",
       "leaderboard": "Se ranglisten",
-      "playFree": "Spil en gratis runde",
       "chooseSettings": "Vælg brikker og tid"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Sådan spiller du Memory Chess",
       "credit": "Video: “A New Way To Train Your Vision” af Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Sådan fungerer det",
-      "title": "En enkel træning til din skakhukommelse",
-      "subtitle": "Hver runde har tre enkle trin: studér stillingen, genskab den, og lær af din score.",
-      "steps": {
-        "observe": {
-          "title": "Observér",
-          "description": "Læg mærke til, hvor hver brik står. Kig efter grupper, linjer og tomme felter, du kan bruge som holdepunkter."
-        },
-        "recreate": {
-          "title": "Genskab",
-          "description": "Når brættet tømmes, sætter du hver brik tilbage på det felt, du husker."
-        },
-        "improve": {
-          "title": "Bliv bedre",
-          "description": "Se din score, find ud af hvad du missede, og prøv igen med flere brikker eller kortere tid."
-        }
-      }
-    },
-    "board": {
-      "study": "Studér brættet",
-      "rebuild": "Genskab fra hukommelsen"
-    },
     "learn": {
-      "eyebrow": "Læringscenter",
-      "title": "Enkle skakguider",
-      "description": "Lær praktiske måder at forbedre brætoverblik, forestillingsevne, beregning og hukommelse på. Hver guide har øvelser, du kan prøve med det samme.",
-      "browseCta": "Se skakguiderne",
-      "beginnerCta": "Start med begynderguiden"
+      "browseCta": "Se skakguiderne"
     },
     "faq": {
       "title": "Spørgsmål om Memory Chess",
@@ -130,6 +99,822 @@
           "answer": "Et par fokuserede runder med jævne mellemrum er en god start. Hold sessionerne korte nok til, at du stadig kan studere hver stilling grundigt."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Laboratorium",
+        "onPage": "På denne side",
+        "notebook": "Notesbog",
+        "method": "Metode",
+        "calibrate": "Kalibrér",
+        "tiers": "Sværhedsgrad",
+        "record": "Journal",
+        "library": "Bibliotek",
+        "hints": {
+          "notebook": "Hvorfor måle",
+          "method": "Én runde, trin for trin",
+          "calibrate": "Tag en måling",
+          "tiers": "Niveauer og opstilling",
+          "record": "Dine målinger",
+          "library": "Guider og øvelser"
+        },
+        "play": "Spil en gratis runde"
+      },
+      "tags": {
+        "proposed": "Forslag",
+        "sample": "Eksempel",
+        "illustrative": "Skitse",
+        "free": "Gratis · ingen konto",
+        "rig": "Opstilling"
+      },
+      "sections": {
+        "notebook": "Notesbog",
+        "method": "Metode",
+        "recording": "Optagelse",
+        "calibrate": "Kalibrér",
+        "tiers": "Sværhedsgrad",
+        "record": "Laboratoriejournal",
+        "library": "Bibliotek",
+        "faq": "Spørgsmål",
+        "next": "Næste måling"
+      },
+      "hero": {
+        "platforms": "Browser · computer · mobil",
+        "display": "Sæt tal på dit <em>indre øje.</em>",
+        "lede": "Memory Chess er et gratis hukommelsesspil med skak og en træner til din skakhukommelse. Se på en stilling i nogle få sekunder, så bliver brættet tomt, og du sætter den op igen fra hukommelsen. Hver runde er en kort hukommelsestest med en præcision fra 0 til 100 % og et kort over hvert felt, du ramte eller missede.",
+        "secondaryCta": "Tag en kalibreringsmåling",
+        "settingsLink": "<link>{label}</link>.",
+        "facts": {
+          "study": "husketid",
+          "pieces": "brikker pr. runde",
+          "accuracy": "præcision",
+          "plays": "spillede partier",
+          "languages": "sprog"
+        },
+        "showcase": {
+          "aria": "Veselin Topalov mod Alexey Shirov, Linares 1998, med en guidet gennemgang af stillingen",
+          "event": "Linares · 10. runde",
+          "venue": "4. marts 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "mod",
+          "pieceLabel": "{piece} på {square}",
+          "tags": {
+            "study": "Indprægning",
+            "trap": "Fælden",
+            "sacrifice": "Ofret",
+            "walk": "Vandringen",
+            "runners": "To fribønder",
+            "rebuild": "Genopbygning",
+            "inspect": "Rækkevidde"
+          },
+          "counter": {
+            "study": "Indprægning {n}/{total}",
+            "game": "Parti {n}/{total}",
+            "resume": "Klik igen for at fortsætte"
+          },
+          "controls": {
+            "steps": "Trin",
+            "step": "Trin {n} af {total}: {tag}",
+            "previous": "Forrige trin",
+            "next": "Næste trin",
+            "play": "Afspil",
+            "pause": "Sæt på pause"
+          },
+          "inspect": {
+            "title": "{piece} på {square}.",
+            "reach": "{moves, plural, =0 {Ingen træk} one {# træk} other {# træk}}, {captures, plural, =0 {ingen slag} one {# slag} other {# slag}}.",
+            "checks": "Skak: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "Hvids hjørne",
+            "longDiagonal": "Lang diagonal",
+            "blackWall": "Sorts mur",
+            "runner": "Den ensomme bonde"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Shirov har de sorte brikker og to bønder mere, men med uligefarvede løbere holder man ofte remis. Ti brikker."
+              },
+              "whiteCorner": {
+                "caption": "Hvids konge på g1 dækker bonden på g2. h-bonden er løbet frem til h4."
+              },
+              "longDiagonal": {
+                "caption": "Hvids løber på c3 behersker den lange diagonal og angriber bonden på f6.",
+                "thought": "Sortfeltet løber, c3 til f6."
+              },
+              "blackWall": {
+                "caption": "Sorts konge på e6, hans løber på f5, bønder på d5, f6 og g6.",
+                "thought": "Kongen dækker f6 og d5. Bonden på g6 dækker løberen."
+              },
+              "runner": {
+                "caption": "Én sort bonde på a4, langt fra alt andet."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "Sorts konge kan ikke gå fremad. På d5 og f5 står hans egne brikker, og løberen på c3 dækker e5.",
+                "thought": "Kun Kd6, Kd7, Ke7 og Kf7. Hvert af dem går tilbage eller til siden."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! Løberen ofrer sig på et felt, hvor g-bonden kan slå den. Den stod i vejen for kongen.",
+                "thought": "Nu er f5 tomt. Det er døren."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Gennem døren, som løberen åbnede, når kongen ind til centrum."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Én løber kan ikke stoppe to fribønder.",
+                "thought": "Topalov tog løberen og opgav efter 53...Kb3."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "Brættet bliver tomt. Sæt udgangsstillingen op igen: Hvids hjørne, den lange diagonal, Sorts mur, den ensomme bonde."
+              },
+              "back": {
+                "caption": "Gruppe for gruppe kommer hver brik tilbage på sit felt."
+              },
+              "check": {
+                "caption": "Tjek det nu. Uligefarvede løbere, c3 mørkt og f5 lyst. Løberen på c3 angriber stadig f6. Fire hvide, seks sorte."
+              }
+            }
+          }
+        }
+      },
+      "notebook": {
+        "title": "Du kan ikke forbedre det, du aldrig måler.",
+        "lede": "Det meste skaktræning øver beslutninger. Meget lidt af den tjekker, om du faktisk kan holde brættet i hovedet. Den evne ligger til grund for beregning, blindskak og blik for taktik, og den bliver som regel overladt til tilfældighederne.",
+        "observation": {
+          "kicker": "Observation",
+          "title": "Spillere mister brikker af syne midt i en beregning.",
+          "body": "Tre træk inde forsvinder en løber på den lange diagonal stille ud af billedet i dit hoved. Brættet foran dig var rigtigt. Det i dit hoved var ikke."
+        },
+        "hypothesis": {
+          "kicker": "Hypotese",
+          "title": "Brætgenkaldelse er en evne, man kan træne og teste.",
+          "body": "Hold en stilling fast et øjeblik, sæt den op igen, tjek resultatet. Gentag med flere brikker og mindre tid. <hl>Vi påstår intet om din hjerne.</hl> Vi giver dig en måling, du kan følge."
+        },
+        "method": {
+          "kicker": "Metode",
+          "title": "Én runde, ét klart tal.",
+          "body": "Indprægning, tomt bræt, genopbygning, point. Rigtige felter bliver markeret, forkerte felter bliver markeret, intet er skjult. En runde tager under et minut, så du kan nå mange."
+        }
+      },
+      "method": {
+        "title": "En runde under mikroskopet.",
+        "lede": "Rul gennem én runde med en rigtig stilling: slutningen af Kasparovs udødelige, Kasparov mod Topalov i Wijk aan Zee i 1999. Markeringerne viser én måde at huske den på, ikke en optagelse af, hvad nogen faktisk så på.",
+        "status": "Fase {number} · {name}",
+        "clock": "t = {seconds} s",
+        "scoreChip": "{correct} af {total} felter",
+        "countChip": "Hvid {white} · Sort {black}",
+        "groups": {
+          "standoff": {
+            "name": "Dødvande",
+            "sentence": "Hvids konge angriber d2. Sorts konge og c3 dækker feltet."
+          },
+          "mirror": {
+            "name": "Trapper",
+            "sentence": "Spejlvendte trapper, h2 op til f4, h7 ned til f5."
+          },
+          "longShots": {
+            "name": "Langskud",
+            "sentence": "Dronningen på a7 sigter mod h7. Tårnet på d2 sigter mod h2."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "Indprægning",
+            "title": "Elleve brikker, ti sekunder.",
+            "body": "Slutstillingen i Kasparovs udødelige, efter 44.Qa7. Her opgav Topalov. Tag hele brættet ind på én gang, ikke felt for felt. I de Groots forsøg genskabte mestre en partistilling, der kun blev vist kort, langt bedre end svagere spillere.",
+            "note": "Fig. Hvid: konge c1, dronning a7, bønder f4, g3, h2. Sort: konge e1, tårn d2, bønder c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Ankre",
+            "title": "Start med kongerne.",
+            "body": "Fastlæg to punkter først. Begge konger står på første række, to linjer fra hinanden, og Sorts konge er løbet helt ned til e1. Placér alt andet ud fra dem.",
+            "note": "Fig. de to konger med ring om. Alt andet venter."
+          },
+          "chunk": {
+            "name": "Chunking",
+            "title": "Elleve brikker bliver til tre idéer.",
+            "body": "Gruppér brikkerne efter, hvad de gør ved hinanden. Kongerne kæmper om d2. To bondetrapper mødes. Dronningen og tårnet sigter hver mod en udækket h-bonde. Chase og Simon (1973) fandt, at stærke spillere husker stillinger i chunks af brikker, der hører sammen.",
+            "note": "Fig. orange angriber, blå forsvarer, grå indgår i en bondekæde, stregen markerer et blokeret par. Tårnet på d2 indgår i to grupper."
+          },
+          "encode": {
+            "name": "Indkodning",
+            "title": "Gør hver gruppe til en sætning.",
+            "body": "Navngiv hver gruppe efter dens opgave. Gobet og Simon (1996) beskriver, hvordan stærke spillere holder større, skemalignende strukturer i hovedet. Selve sætningerne er en teknik, ikke et forskningsresultat.",
+            "note": "Fig. de tre grupper med navn. Deres sætninger:"
+          },
+          "blank": {
+            "name": "Tomt",
+            "title": "Brættet bliver ryddet.",
+            "body": "Ingen brikker, ingen hjælp. Byg op fra sætningerne, ikke fra et billede. Sig dem i rækkefølge: kongerne først, så hver gruppe.",
+            "note": "Her er intet at gøre andet end at holde fast i tre sætninger."
+          },
+          "rebuild": {
+            "name": "Genopbygning",
+            "title": "Byg op gruppe for gruppe.",
+            "body": "Kongerne. Dødvandet. Trapperne. Langskuddene. Placér hver gruppe med dens sætning, før du går videre til den næste.",
+            "note": "Fig. genopbygningen, før den er tjekket. Én bonde står på det forkerte felt. Kan du se hvilken?"
+          },
+          "score": {
+            "name": "Point",
+            "title": "Tjek mod dine sætninger, og giv så point.",
+            "body": "Tjek hver forbindelse igen på det genopbyggede bræt. Er tårnet stadig dækket to gange? Fra c2 dækker bonden d1, ikke d2. Antallet, fem og seks, passer stadig, så kun tjekket af forbindelserne fanger fejlen.",
+            "note": "Fig. fluebenene holder stadig, det røde kryds er brudt. Orange udfyldning er det forkerte felt (c2), ringen er der, hvor bonden hørte til (c3). {correct} af {total} felter er {accuracy} %."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Tag en kalibreringsmåling.",
+        "lede": "Runden på niveau Mellem fra det rigtige parti: {pieceCount} brikker, heraf to konger, {memorizeSeconds} sekunder. Så bliver brættet ryddet, og du sætter det op igen. Du får et resultatkort med din præcision og din hukommelse pr. briktype. Det virker med mus, touch og tastatur.",
+        "phaseReady": "Klar · {pieceCount} brikker · {memorizeSeconds} s husketid",
+        "phaseLabel": "Fase {number} · {name}",
+        "start": "Start kalibrering",
+        "restart": "Forfra",
+        "again": "Kør igen",
+        "done": "Færdig",
+        "submit": "Send måling",
+        "clear": "Ryd brættet",
+        "controlsLabel": "Rundens knapper",
+        "boardLabel": "Kalibreringsbræt. Brug piletasterne til at flytte mellem felterne.",
+        "paletteLabel": "Brikpalet",
+        "paletteItem": "{piece}, {count} tilbage",
+        "usedUp": {
+          "white": {
+            "king": "Den hvide konge står allerede på brættet.",
+            "queen": "Den hvide dronning står allerede på brættet.",
+            "rook": "Begge de hvide tårne står på brættet.",
+            "bishop": "Begge de hvide løbere står på brættet.",
+            "knight": "Begge de hvide springere står på brættet.",
+            "pawn": "Alle otte hvide bønder står på brættet."
+          },
+          "black": {
+            "king": "Den sorte konge står allerede på brættet.",
+            "queen": "Den sorte dronning står allerede på brættet.",
+            "rook": "Begge de sorte tårne står på brættet.",
+            "bishop": "Begge de sorte løbere står på brættet.",
+            "knight": "Begge de sorte springere står på brættet.",
+            "pawn": "Alle otte sorte bønder står på brættet."
+          }
+        },
+        "squareEmpty": "{square}, tomt",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Se på stillingen. {memorizeSeconds} sekunder.",
+        "liveRebuild": "Brættet er ryddet. Vælg en brik og derefter et felt.",
+        "liveScore": "Præcision {accuracy} procent. {correct} af {total} felter korrekte.",
+        "startFailed": "Der kunne ikke hentes en stilling. Tjek din forbindelse, og prøv igen.",
+        "steps": [
+          "Tryk på start. Se på stillingen, indtil måleren er tom.",
+          "Vælg en brik fra paletten, og tryk så på et felt. Tryk på en placeret brik for at fjerne den.",
+          "Send. Placerer du flere brikker, end stillingen havde, falder din præcision, så placér kun det, du husker."
+        ],
+        "readout": {
+          "title": "Resultatkort",
+          "statusIdle": "Venter på måling",
+          "statusRecording": "Registrerer",
+          "statusDone": "Måling færdig",
+          "correct": "Korrekte felter",
+          "time": "Placeringstid",
+          "wrong": "Forkerte brikker",
+          "exposure": "Husketid",
+          "byType": "Hukommelse pr. briktype",
+          "byTypeEmpty": "Hukommelse pr. briktype vises her efter din første måling.",
+          "nextEmpty": "En foreslået sværhedsgrad vises efter målingen.",
+          "suggested": "Forslag:",
+          "stepUp": "gå op til {tier}, {pieceCount} brikker på {memorizeSeconds} s. Bekræft det først med to fejlfri runder mere.",
+          "stay": "bliv på {tier}, {pieceCount} brikker på {memorizeSeconds} s. Spil tre runder, og hold øje med udviklingen.",
+          "start": "begynd på {tier}, {pieceCount} brikker på {memorizeSeconds} s. Del brikkerne op i par, mens du ser på stillingen.",
+          "playTier": "Spil {tier}",
+          "legendCorrect": "korrekt",
+          "legendWrong": "forkert placering",
+          "legendMissed": "oversprunget felt"
+        },
+        "pieceTypes": {
+          "king": "Konge",
+          "queen": "Dronning",
+          "rook": "Tårn",
+          "bishop": "Løber",
+          "knight": "Springer",
+          "pawn": "Bonde"
+        }
+      },
+      "tiers": {
+        "title": "Fire niveauer. Én egen opstilling.",
+        "lede": "Belægningen går op, husketiden går ned. Ryk et niveau op, når dine målinger holder stabilt, ikke efter én heldig runde.",
+        "columns": {
+          "tier": "Sværhedsgrad",
+          "pieces": "Brikker",
+          "exposure": "Husketid",
+          "load": "Belægning"
+        },
+        "loadLabel": "{pieceCount} af 32 felter optaget",
+        "play": "Spil",
+        "custom": {
+          "label": "Egen",
+          "description": "Vælg dine egne variabler for at isolere én svaghed."
+        }
+      },
+      "record": {
+        "title": "Kom tilbage for at se udviklingen.",
+        "lede": "Én måling er et øjebliksbillede. Ti målinger er en måleserie. Hver runde, du spiller, bliver gemt på denne enhed, og panelerne her fyldes ud fra dine egne runder. Før din første runde viser panelerne værdier mærket <tag>Eksempel</tag>, ikke rigtige spillere. Bagefter fortæller et panel, der endnu ikke kan læse din journal, hvad det stadig mangler.",
+        "span": {
+          "fig": "Fig. {number} · Hukommelsesspænd",
+          "title": "Hvor mange brikker du kan holde fast i.",
+          "figure": "{pieceCount, plural, one {# brik} other {# brikker}}",
+          "held": "{accuracy} procent eller bedre i {count, plural, one {# runde} other {# runder}}. Korteste husketid blandt dem {studyTime}.",
+          "up": "{count, plural, one {# brik} other {# brikker}} mere end i sidste uge",
+          "same": "Ingen ændring siden sidste uge",
+          "aria": "Eksempel på en trappe for hukommelsesspænd over 12 sessioner, der stiger fra 4 til 8 brikker.",
+          "note": "Eksempeljournal · 12 sessioner",
+          "realAria": "Dit hukommelsesspænd {sessions, plural, one {i den session, hvor det første gang blev nået} other {over de # sessioner, siden det første gang blev nået}}, {shape, select, flat {stabilt på {now} brikker} other {stigende fra {first} til {now} brikker}}.",
+          "need": "Få {accuracy} procent eller bedre {count, plural, =2 {to gange} one {én gang mere} other {# gange mere}} med det samme antal brikker, mindst {minPieces}.",
+          "onlyKings": "Dine runder indtil nu har kun haft de to konger, og et spænd kræver flere brikker.",
+          "first": "Spænd første gang nået",
+          "last": "Seneste"
+        },
+        "held": {
+          "fig": "Fig. {number} · Huskede brikker",
+          "title": "Brikker, du placerer rigtigt, ved enhver indstilling.",
+          "aria": "Eksempel på en linje over huskede brikker i 12 runder, et gennemsnit over 5 runder, der stiger fra 4,0 til 7,0 brikker.",
+          "note": "Eksempeljournal · 12 runder · alle indstillinger",
+          "partial": "Stiplet linje: gennemsnit over færre end {window} runder",
+          "realAria": "Dine huskede brikker over dine seneste {count, plural, one {# runde} other {# runder}} ved alle indstillinger, som gennemsnit over {window} runder, senest {latest} brikker.",
+          "average": "Seneste gennemsnit {average} brikker",
+          "up": "op {change} i forhold til de {window} runder før",
+          "down": "ned {change} i forhold til de {window} runder før",
+          "flat": "ingen ændring i forhold til de {window} runder før",
+          "realNote": "Alle indstillinger · Fra {count, plural, one {# runde} other {# runder}}",
+          "needRounds": "{count, plural, one {# runde mere} other {# runder mere}}, så tegnes din linje.",
+          "needRoundsAndDay": "{count, plural, one {# runde mere, spillet en anden dag,} other {# runder mere, mindst én af dem en anden dag,}} så tegnes din linje.",
+          "needDay": "Spil på én dag mere for at tegne din linje.",
+          "first": "Ældste",
+          "last": "Seneste"
+        },
+        "speed": {
+          "fig": "Fig. {number} · Tempo",
+          "title": "Sekunder pr. brik, du sætter op.",
+          "aria": "Eksempel på en linje over sekunder pr. rigtig brik i 12 runder, der falder fra 4,1 til 2,6 sekunder.",
+          "note": "Eksempeljournal · 12 runder · Mellem",
+          "realAria": "Dine sekunder pr. rigtig brik over dine seneste {count} {source, select, calibration {øvelsesrunder} other {runder i partier}} med {pieceCount} brikker og {memorizeSeconds} sekunder, senest {latest} sekunder.",
+          "average": "Seneste gennemsnit {average} pr. brik",
+          "down": "{change} hurtigere end de {window} runder før",
+          "up": "{change} langsommere end de {window} runder før",
+          "flat": "samme tempo som de {window} runder før",
+          "accuracy": "Præcision i de samme runder {average} %",
+          "accuracyChange": {
+            "up": "op {change, plural, one {# point} other {# point}}",
+            "down": "ned {change, plural, one {# point} other {# point}}",
+            "flat": "ingen ændring"
+          },
+          "fastWrong": "Hurtigt og forkert er ikke fremgang.",
+          "config": "{source, select, calibration {Øvelse} other {Parti}} · {pieceCount} brikker · {studyTime}, din mest spillede indstilling for nylig · Fra {count, plural, one {# runde} other {# runder}}",
+          "need": "{count, plural, one {# runde mere} other {# runder mere}} med {pieceCount} brikker, {studyTime} {source, select, calibration {som øvelse} other {i partier}}, så tegnes din tempolinje.",
+          "needRight": "Tempo tæller kun runder med mindst én rigtig brik. Spil {count, plural, one {# sådan runde} other {# sådanne runder}} for at starte din linje.",
+          "first": "Ældste",
+          "last": "Seneste"
+        },
+        "curve": {
+          "fig": "Fig. {number} · Glemselskurve",
+          "title": "Korte, spredte gentagelser slår én lang session.",
+          "desc": "Bræt, hvor du får under 80 %, kommer tilbage til gentagelse 1, 3, 7 og 14 dage efter, at du så dem første gang. Din kurve viser, hvor meget du husker efter hver pause.",
+          "aria": "Skitse: uden gentagelse falder det, man husker, hurtigt, og efter hver spredt gentagelse på dag 1, 3 og 7 falder det langsommere.",
+          "note": "Skitse af spacing-effekten. Ikke målte data.",
+          "noReview": "ingen gentagelse",
+          "spaced": "spredte runder",
+          "review": "gentagelse",
+          "day": "d{day}",
+          "warming": "{reviews, plural, one {# gentagelse mere efter samme pause} other {# gentagelser mere efter samme pause}}, så tegnes dit første målte punkt.",
+          "measuredAria": "Hvad du huskede på bræt, du gentog: {points}.",
+          "pointFirst": "første gang set {accuracy} % fra {count, plural, one {# bræt} other {# bræt}}",
+          "pointAfter": "efter {day, plural, one {# dag} other {# dage}} {accuracy} % fra {count, plural, one {# gentagelse} other {# gentagelser}}",
+          "count": "n={count}",
+          "measuredNote": "Fra {reviews, plural, one {# gentagelse} other {# gentagelser}} af {boards, plural, one {# bræt} other {# bræt}}. Et punkt kræver {min} gentagelser efter sin pause.",
+          "due": "Gentagelse {number} af {cap} i dag",
+          "capped": "Dagens gentagelser er klaret",
+          "play": "Spil en gentagelse",
+          "waiting": "Næste gentagelse {days, plural, one {i morgen} other {om # dage}}. {queued, plural, one {# bræt} other {# bræt}} i din kø.",
+          "empty": "Ingen bræt at gentage endnu. Et bræt, hvor du får under 80 %, kommer tilbage her dagen efter."
+        },
+        "spark": {
+          "fig": "Fig. {number} · Præcision over tid",
+          "title": "Din linje, runde for runde.",
+          "titleSessions": "Din linje, session for session.",
+          "aria": "Eksempel på en kurve over præcision i 12 runder, der stiger fra 52 til 79 procent.",
+          "note": "Eksempeljournal · 12 runder · Mellem",
+          "first": "R01",
+          "last": "R12",
+          "needRounds": "{count, plural, one {# runde mere} other {# runder mere}} med {pieceCount} brikker, {studyTime}, så tegnes din udvikling {source, select, calibration {i øvelser} other {i partier}}.",
+          "needRoundsAndDay": "{count, plural, one {# runde mere med {pieceCount} brikker, {studyTime}, spillet en anden dag,} other {# runder mere med {pieceCount} brikker, {studyTime}, mindst én af dem en anden dag,}} så tegnes din udvikling {source, select, calibration {i øvelser} other {i partier}}.",
+          "needDay": "Spil {pieceCount} brikker, {studyTime} {source, select, calibration {som øvelse} other {i et parti}} på én dag mere for at tegne din udvikling.",
+          "config": "{source, select, calibration {Øvelse} other {Parti}} · {pieceCount} brikker · {studyTime}, din mest spillede indstilling med en udvikling",
+          "realAria": "Din præcision over dine seneste {count} {source, select, calibration {øvelsesrunder} other {runder i partier}} med {pieceCount} brikker og {memorizeSeconds} sekunder, senest {latest} procent.",
+          "realAriaSessions": "Din præcision over dine seneste {count, plural, one {# session} other {# sessioner}} med {source, select, calibration {øvelsesrunder} other {runder i partier}} med {pieceCount} brikker og {memorizeSeconds} sekunder, senest {latest} procent.",
+          "sessions": "{count, plural, one {# session} other {# sessioner}}",
+          "realFirst": "Ældste",
+          "realLast": "Seneste"
+        },
+        "heat": {
+          "fig": "Fig. {number} · Fejlkort",
+          "title": "Hvor dine felter smutter.",
+          "aria": "Eksempel på et varmekort over missede felter: mørkest ned langs h-linjen og omkring h1, med varme punkter på b7 og f7, lysest i centrum.",
+          "note": "Eksempel: fejlene hober sig op på h-linjen og omkring kongens hjørne på h1. Træn den kant som det næste.",
+          "need": "Cirka {count, plural, one {# runde mere} other {# runder mere}}, til hver linje og række har 10 brikker at læse.",
+          "needStart": "Spil et par runder mere for at starte dit fejlkort.",
+          "files": "Linjer",
+          "ranks": "Rækker",
+          "line": "{line}: {missed} af {shown} misset",
+          "lineThin": "{line}: {shown} set, for få til at sige noget",
+          "realAria": "Din andel af missede brikker på hvert felt. Grå felter har færre end 10 sete brikker.",
+          "realNote": "Mørkere betyder oftere misset. Grå har færre end 10 sete brikker."
+        },
+        "daily": {
+          "fig": "Fig. {number} · Dagens bræt",
+          "title": "Ét bræt om dagen, det samme for alle.",
+          "desc": "En ny stilling åbner hver dag ved midnat UTC. Alle får de samme 6 brikker og 10 sekunders husketid, og du har ét forsøg.",
+          "play": "Spil dagens bræt",
+          "open": "Du har ikke spillet dagens bræt endnu.",
+          "played": "Du placerede {correct} af {pieceCount, plural, one {# brik} other {# brikker}} rigtigt, {accuracy} procent.",
+          "unfinished": "Du åbnede dagens bræt og gik, før resultatet kom. Ét forsøg om dagen på denne enhed.",
+          "streak": "Daglig stime {current, plural, one {# dag} other {# dage}}{forgiven, plural, =0 {} one {, # mistet dag tilgivet} other {, # mistede dage tilgivet}} · længste {longest, plural, one {# dag} other {# dage}}",
+          "streakLongest": "Længste daglige stime {longest, plural, one {# dag} other {# dage}}",
+          "gridAria": "Dit resultat på hvert felt, a8 først: {correct} korrekte, {wrong, plural, one {# forkert brik} other {# forkerte brikker}}, {missed} misset, {extra} for mange.",
+          "key": {
+            "c": "korrekt",
+            "w": "forkert brik",
+            "m": "misset",
+            "x": "for mange"
+          },
+          "share": "Memory Chess dagens bræt {day}\n{correct} af {pieceCount} rigtige, {accuracy} %\n{row}\nthememorychess.com",
+          "copy": "Kopiér resultat",
+          "showGrid": "Vis gitteret",
+          "copied": "Kopieret. Indsæt det, hvor du vil.",
+          "copyFailed": "Kopiering virkede ikke her. Resultatet er markeret nedenfor, så kopiér det selv."
+        },
+        "streak": {
+          "fig": "Fig. {number} · Dage i træk",
+          "title": "Én runde om dagen giver en stime.",
+          "desc": "Enhver færdig runde, parti eller øvelse, tæller for sin dag. Én mistet dag inden for 7 dage bliver tilgivet.",
+          "aria": "Eksempel på et gitter for en stime over to uger",
+          "note": "Eksempel · det stiplede felt er dagens runde, der stadig mangler",
+          "realDesc": "Enhver færdig runde tæller for sin dag. Én mistet dag inden for 7 dage bliver tilgivet.",
+          "need": "Spil på {days, plural, one {# dag mere} other {# dage mere}} for at kunne læse din stime.",
+          "realAria": "Dine seneste 14 dage: {count, plural, one {# dag} other {# dage}} spillet{forgiven, plural, =0 {} one {, # tilgivet} other {, # tilgivet}}.",
+          "realNote": "Nuværende stime {current, plural, one {# dag} other {# dage}}{forgiven, plural, =0 {} one { spillet, # mistet dag tilgivet} other { spillet, # mistede dage tilgivet}} · længste {longest, plural, one {# dag} other {# dage}}",
+          "key": {
+            "played": "spillet",
+            "forgiven": "tilgivet",
+            "missed": "mistet",
+            "today": "i dag"
+          }
+        },
+        "week": {
+          "ring": "{played} af {goal} dage i denne uge",
+          "ringOver": "Mål nået, {played} dage i denne uge",
+          "sampleRing": "Eksempeluge · {played} af {goal} dage",
+          "left": "{remaining, plural, =0 {Målet er nået i denne uge.} one {# dag mere for at nå dit mål.} other {# dage mere for at nå dit mål.}}",
+          "outOfReach": "Målet kan ikke nås med {daysLeft, plural, =0 {ingen dage} one {# dag} other {# dage}} tilbage. En ny uge starter mandag.",
+          "goal": "Dage om ugen",
+          "option": "{days} dage om ugen"
+        },
+        "welcome": {
+          "line": "Velkommen tilbage. Dag {day} i din journal. Sidst {accuracy} % med {pieceCount} brikker, {studyTime}.",
+          "lineNoDay": "Velkommen tilbage. Sidst {accuracy} % med {pieceCount} brikker, {studyTime}."
+        },
+        "board": {
+          "fig": "Fig. {number} · Rangliste",
+          "title": "Sammenlign målinger med hele verden.",
+          "desc": "Hver sværhedsgrad rangeres efter rigtige brikker, så efter færre forkerte brikker, så efter kortere husketid og til sidst efter kortere løsningstid. Hver række viser spillerens land.",
+          "howTo": "Indsend en score fra resultatskærmen, og se så, hvor den ligger, i hele verden eller i dit land.",
+          "sketchPieces": "{count} brikker",
+          "open": "Åbn ranglisten",
+          "difficulty": "Sværhedsgrad",
+          "scope": "Rang blandt",
+          "world": "Verden",
+          "entry": "Dit bedste bidrag på niveau {difficulty}: {correct, plural, one {# rigtig brik} other {# rigtige brikker}}, sendt {date}.",
+          "check": "Tjek min placering",
+          "checking": "Tjekker...",
+          "ranked": "Nummer {rank, number} af {total, plural, one {# bidrag} other {# bidrag}} på niveau {difficulty}, i hele verden.",
+          "rankedIn": "Nummer {rank, number} af {total, plural, one {# bidrag} other {# bidrag}} på niveau {difficulty} i {country}.",
+          "checkedAt": "Tjekket kl. {time}.",
+          "boardSize": "Den offentlige rangliste viser top {limit}.",
+          "up": "Op {places, plural, one {# plads} other {# pladser}} siden {time}.",
+          "down": "Ned {places, plural, one {# plads} other {# pladser}} siden {time}.",
+          "same": "Samme placering som kl. {time}.",
+          "missing": "Dit bidrag på niveau {difficulty} er ikke længere på ranglisten, så denne enhed gemmer det ikke længere. Ranglister bliver nogle gange ryddet eller nulstillet. Tjekket kl. {time}.",
+          "limited": "For mange tjek fra din forbindelse. Prøv igen om {wait, plural, one {# sekund} other {# sekunder}}.",
+          "noCountry": "Ranglisten har intet land for dette bidrag, så det kan kun rangeres i hele verden.",
+          "offline": "Du er offline, så intet blev sendt. Opret forbindelse, og prøv igen.",
+          "failed": "Ranglisten kunne ikke nås, så der blev ikke hentet nogen placering. Prøv igen senere."
+        },
+        "plans": {
+          "fig": "Fig. {number} · Programmer",
+          "title": "Vælg en plan, og gennemfør den.",
+          "desc": "Én plan ad gangen. Fremskridt tælles ud fra dine runder, så når du stopper en plan, slettes der aldrig en runde.",
+          "baseline": {
+            "kicker": "Plan A · 7 dage",
+            "title": "Grundlinjeuge",
+            "steps": [
+              "Én runde på niveau Mellem om dagen.",
+              "Notér målingen, og modstå trangen til at prøve igen.",
+              "Dag 7: sammenlign med dag 1."
+            ],
+            "progress": "{played} af {days} dage med en runde på niveau Mellem",
+            "compare": "Dag {firstDay} {first} %, dag {lastDay} {latest} %: {direction, select, up {op {change, plural, one {# point} other {# point}}} down {ned {change, plural, one {# point} other {# point}}} other {ingen ændring}}.",
+            "compareNone": "Ingen runde på niveau Mellem siden planen startede, så der er intet at sammenligne.",
+            "compareOne": "Én runde på niveau Mellem siden planen startede, så der er intet at sammenligne endnu."
+          },
+          "edge": {
+            "kicker": "Plan B · 14 dage",
+            "title": "Træning af kantlinjer",
+            "steps": [
+              "Egen opstilling: 8 brikker, 15 s.",
+              "Gennemgå dit fejlkort hver 3. dag.",
+              "Kombinér med guiden om brætoverblik."
+            ],
+            "progress": "Opstillingen spillet på {played, plural, one {# dag} other {# dage}} af {elapsed}. Mål: {target} dage ud af {days}.",
+            "share": "Missede kantlinjer: {before} % i {beforeRounds, plural, one {# runde} other {# runder}} før planen, {now} % i {nowRounds, plural, one {# runde} other {# runder}} siden.",
+            "shareMissing": "Fejl på kantlinjerne sammenlignes, når hver side har {needed} runder med en brik på a- eller h-linjen. Indtil nu {before} før planen, {now} siden.",
+            "guide": "Læs, hvordan du ser hele brættet"
+          },
+          "ladder": {
+            "kicker": "Plan C · uden slutdato",
+            "title": "Nedtrapningsstige",
+            "steps": [
+              "Hold 90 % i tre runder i træk.",
+              "Skær så husketiden ned med 2 sekunder.",
+              "Når husketiden ikke kan blive kortere, så tilføj brikker."
+            ],
+            "rung": "Trin: {pieceCount} brikker, {studyTime}.",
+            "run": "{run} af {needed} runder i træk med {accuracy} procent eller bedre.",
+            "climbed": "Klaret: {needed} runder i træk med {accuracy} procent eller bedre.",
+            "next": "Næste trin: {pieceCount} brikker, {studyTime}.",
+            "top": "Toppen af stigen: intet bræt har mere end {pieceCount} brikker."
+          },
+          "status": {
+            "day": "Dag {day}",
+            "dayOf": "Dag {day} af {length}",
+            "overtime": "Dag {day}, ud over de planlagte {length}",
+            "done": "Færdig på dag {day}.",
+            "finished": "Afsluttet før tid på dag {day}.",
+            "stopped": "Stoppet på dag {day}."
+          },
+          "start": "Start {title}",
+          "again": "Start {title} igen",
+          "busy": "Én plan ad gangen. Stop {title} for at starte denne.",
+          "stop": "Stop planen",
+          "confirmStop": "Vil du virkelig stoppe?",
+          "keep": "Fortsæt",
+          "finish": "Afslut før tid",
+          "play": "Spil {pieceCount} brikker, {studyTime}"
+        },
+        "goal": {
+          "fig": "Fig. {number} · Mål",
+          "title": "Sigt efter en måling.",
+          "desc": "Vælg et antal brikker og en præcision. Bjælken fyldes ud fra din bedste runde med det antal eller flere, siden du satte målet.",
+          "sample": "Eksempelmål: {pieceCount} brikker med {accuracy} procent. Bedste indtil nu {best} procent, {percent} % af vejen.",
+          "target": "Mål: {pieceCount} eller flere brikker med {accuracy, select, 100 {100 procent} other {{accuracy} procent eller bedre}}, sat {date}.",
+          "progress": "Bedste siden da: {best} procent med {pieceCount} brikker, {percent} % af vejen.",
+          "bar": "{percent} % af vejen til målet",
+          "need": "Ingen runde med {pieceCount} eller flere brikker, siden du satte dette mål.",
+          "reached": "Nået {date}: {accuracy} procent med {pieceCount} brikker.",
+          "form": "Nyt mål",
+          "pieces": "Brikker, mindst",
+          "accuracy": "Præcision, mindst",
+          "percent": "{value} %",
+          "set": "Sæt mål",
+          "newGoal": "Sæt et nyt mål",
+          "clear": "Ryd mål",
+          "cancel": "Annullér",
+          "saved": "Mål sat.",
+          "cleared": "Mål ryddet."
+        },
+        "mine": "Din journal",
+        "fromRounds": "Fra {count, plural, one {# runde} other {# runder}}",
+        "dashboardLink": "Åbn din oversigt",
+        "play": "Spil en runde",
+        "tomorrow": "Kom tilbage i morgen.",
+        "stale": "Sidst spillet for {count, plural, one {# dag} other {# dage}} siden.",
+        "unlock": {
+          "label": "Mangler stadig",
+          "count": "{unlocked} af {total} figurer låst op",
+          "done": "Alle figurer nedenfor er låst op.",
+          "showAll": "Vis alle {count} figurer",
+          "showFewer": "Vis færre",
+          "span": "{qualifyingRounds, plural, one {# runde} other {# runder}} med {accuracy} %+ og {minPieces}+ brikker",
+          "piecesHeld": "{rounds, plural, one {# runde} other {# runder}} over {days, plural, one {# dag} other {# dage}}",
+          "trend": "{rounds, plural, one {# runde} other {# runder}} med én indstilling over {days, plural, one {# dag} other {# dage}}",
+          "speed": "{rounds, plural, one {# runde} other {# runder}} med én indstilling",
+          "streak": "{days, plural, one {# dag} other {# dage}} spillet",
+          "curve": "{reviews, plural, one {# gentagelse} other {# gentagelser}} efter samme pause",
+          "typeRecall": "{exposures, plural, one {# set brik} other {# sete brikker}} ud over kongerne",
+          "missMap": "{exposures, plural, one {# set brik} other {# sete brikker}} pr. linje og række",
+          "trendRounds": "{rounds} {rounds, plural, one {runde} other {runder}} mere {source, select, calibration {som øvelse} other {i partier}} med {pieceCount} brikker, {studyTime}",
+          "trendDays": "{days, plural, one {# dag mere} other {# dage mere}} med {source, select, calibration {øvelsesrunder} other {runder i partier}} med {pieceCount} brikker, {studyTime}",
+          "trendRoundsDays": "{rounds} {rounds, plural, one {runde} other {runder}} mere {source, select, calibration {som øvelse} other {i partier}} med {pieceCount} brikker, {studyTime}, {days, plural, one {# dag mere} other {# dage mere}}",
+          "spanLeft": "{qualifyingRounds, plural, one {# runde mere} other {# runder mere}} med {accuracy} %+ og {minPieces}+ brikker",
+          "spanLarger": "{largerRounds, plural, one {# runde} other {# runder}} med {minPieces}+ brikker",
+          "piecesHeldRounds": "{rounds, plural, one {# runde mere} other {# runder mere}}",
+          "piecesHeldDays": "{days, plural, one {# dag mere} other {# dage mere}}",
+          "piecesHeldRoundsDays": "{rounds, plural, one {# runde mere} other {# runder mere}}, {days, plural, one {# dag mere} other {# dage mere}}",
+          "speedRounds": "{rounds} {rounds, plural, one {runde} other {runder}} mere {source, select, calibration {som øvelse} other {i partier}} med {pieceCount} brikker, {studyTime}",
+          "speedRight": "{rightRounds, plural, one {# runde} other {# runder}} med en rigtig brik",
+          "streakLeft": "{days, plural, one {# dag mere} other {# dage mere}} spillet",
+          "curveLeft": "{reviews, plural, one {# gentagelse mere} other {# gentagelser mere}} efter samme pause",
+          "typeRecallLeft": "{exposures, plural, one {# set brik mere} other {# sete brikker mere}} ud over kongerne",
+          "missMapLeft": "{exposures, plural, one {# set brik mere} other {# sete brikker mere}} på den mindst sete linje eller række",
+          "insights": "{rounds, plural, one {# runde} other {# runder}}",
+          "insightsLeft": "{rounds, plural, one {# runde mere} other {# runder mere}}",
+          "notebook": "{rounds, plural, one {# runde} other {# runder}}"
+        },
+        "bests": {
+          "fig": "Fig. {number} · Personlige rekorder",
+          "title": "Din bedste måling pr. indstilling.",
+          "desc": "Rekorder gemmes pr. indstilling, fordi 6 brikker og 20 brikker er forskellige tests. Øvelsesmålinger på denne side holdes adskilt fra partier.",
+          "empty": "Din bedste måling for hver indstilling vises efter din første runde.",
+          "setting": "{source, select, calibration {Øvelse} other {Parti}} · {pieceCount} brikker · {studyTime}",
+          "first": "første måling",
+          "showAll": "Vis alle {count} indstillinger",
+          "showFewer": "Vis færre",
+          "reading": "{accuracy} % · sat op på {time}"
+        },
+        "types": {
+          "fig": "Fig. {number} · Hukommelse pr. briktype",
+          "title": "Hvilke brikker der smutter.",
+          "need": "Cirka {count, plural, one {# runde mere} other {# runder mere}}, til en anden brik end kongen er set 20 gange.",
+          "needStart": "Hukommelse pr. briktype vises efter din første runde.",
+          "onlyKings": "Dine runder indtil nu har kun haft de to konger, og hukommelse pr. briktype kræver flere brikker.",
+          "thin": "{shown}/20 set",
+          "baseline": "basislinje",
+          "kings": "Kongerne er med i hver runde, så de er en basislinje. {recalled} af {shown} husket.",
+          "sampleNote": "Eksempel: bønder og springere smutter først."
+        },
+        "insights": {
+          "fig": "Fig. {number} · Indsigter",
+          "title": "Hvad der skiller sig ud, og hvad du kan prøve.",
+          "desc": "Et fund vises først, når tallene bag det når en mindste stikprøve, og det nævner de tal, det bygger på.",
+          "sample": "Eksempel fra en eksempeljournal: a- og h-linjen blev misset {times, select, 2 {cirka dobbelt} other {cirka {times} gange}} så ofte som centerlinjerne d og e, {edge} % af brikkerne mod {centre} %.",
+          "sampleList": "Eksempel på et fund",
+          "sampleNote": "Eksempel på et fund, ikke fra dine runder.",
+          "list": "Fund fra din journal",
+          "need": "Indsigter læser din journal fra {threshold} runder. {count, plural, one {# runde mere} other {# runder mere}}.",
+          "none": "Intet skiller sig ud endnu. Bliv ved med at spille.",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {Du misser {edge, select, 0 {under 1 %} other {{edge} %}} af {edgeShown} brikker på a- og h-linjen og ingen af {centreShown} på centerlinjerne d og e.} 2 {Du misser a- og h-linjen cirka dobbelt så ofte som centerlinjerne d og e: {edge, select, 0 {under 1 %} other {{edge} %}} af {edgeShown} brikker mod {centre, select, 0 {under 1 %} other {{centre} %}} af {centreShown}.} other {Du misser a- og h-linjen cirka {times} gange så ofte som centerlinjerne d og e: {edge, select, 0 {under 1 %} other {{edge} %}} af {edgeShown} brikker mod {centre, select, 0 {under 1 %} other {{centre} %}} af {centreShown}.}}",
+            "weakType": "Af brikkerne ud over kongerne, som du har set {minimum} gange eller mere, smutter {type, select, q {dronninger} r {tårne} b {løbere} n {springere} other {bønder}} oftest: du huskede {recalled} af {shown}, {percent} %.",
+            "fasterLessAccurate": "Med {pieceCount} brikker, {studyTime}, brugte dine seneste {window} runder {fasterTime} mindre pr. rigtig brik end de {window} før, og præcisionen faldt {fell} point.",
+            "colourGap": "Du husker {weaker, select, w {hvide} other {sorte}} brikker sjældnere end {weaker, select, w {sorte} other {hvide}}: {weakerPercent} % af {weakerShown} mod {strongerPercent} % af {strongerShown}, kongerne ikke medregnet.",
+            "plateau": "Med {pieceCount} brikker, {studyTime}, lå dine seneste {window} runder i gennemsnit på {last} % og de {window} før på {before} %, og dit spænd holdt sig på {span} brikker i din seneste uges spil. Én brik mere kan flytte det."
+          },
+          "actions": {
+            "rig": "Spil {pieceCount} brikker, {studyTime}",
+            "patterns": "Læs øvelserne i mønstergenkendelse",
+            "vision": "Læs, hvordan du ser hele brættet"
+          }
+        },
+        "notebook": {
+          "fig": "Fig. {number} · Laboratorienotesbog",
+          "title": "Hvad der skete, og hvornår.",
+          "empty": "Notater dukker op, mens du spiller.",
+          "sampleList": "Eksempler på notater",
+          "list": "Din notesbog, nyeste først",
+          "new": "Ny",
+          "newNote": "Ny markerer notater siden dit sidste besøg.",
+          "showAll": "Vis alle {count} notater",
+          "showFewer": "Vis færre",
+          "day": "Dag {day}.",
+          "olderBefore": "Notater fra før {date} gemmes ikke i denne browser.",
+          "older": "Ældre notater gemmes ikke i denne browser.",
+          "entries": {
+            "firstRound": "Første runde: {accuracy} procent med {pieceCount} brikker.",
+            "rounds": "Runde {count, number} spillet.",
+            "first90": "Første gang {threshold} procent eller bedre med {pieceCount} brikker.",
+            "best": "Ny rekord {source, select, calibration {i øvelse} other {i partier}} med {pieceCount} brikker, {studyTime}: {by, select, time {{accuracy} procent igen, sat op på {solveTime}} other {{accuracy} procent, op fra {previous}}}.",
+            "span": "{from, select, 0 {Hukommelsesspændet nåede {to} brikker} other {Hukommelsesspændet gik fra {from} til {to} brikker}}.",
+            "streak": "{forgiven, plural, =0 {{days} dage i træk.} one {{days} dage i en stime, # mistet dag tilgivet.} other {{days} dage i en stime, # mistede dage tilgivet.}}",
+            "rungUp": "Et trin op: {pieceCount} brikker på {studyTime}.",
+            "goalReached": "Mål nået: {accuracy} procent med {pieceCount} eller flere brikker."
+          }
+        },
+        "tools": {
+          "title": "Gemt på denne enhed",
+          "body": "Ingen konto og ingen server. Download en kopi for at flytte den til en anden browser eller for at have den i sikkerhed.",
+          "download": "Download min laboratoriejournal",
+          "import": "Importér",
+          "lastBackup": "Eksport startet {date}",
+          "neverBackedUp": "Ikke eksporteret endnu",
+          "imported": "{added, plural, =0 {Intet nyt at importere. De runder er her allerede.} one {Importerede # runde.} other {Importerede # runder.}}",
+          "skipped": "{count, plural, one {# runde i filen kunne ikke læses og blev sprunget over.} other {# runder i filen kunne ikke læses og blev sprunget over.}}",
+          "importFailed": "Den fil er ikke en laboratoriejournal fra Memory Chess.",
+          "tooLarge": "Den fil er over 5 MB, større end nogen laboratoriejournal, så intet blev importeret.",
+          "overCap": "{count, plural, one {# ældre runde blev} other {# ældre runder blev}} udeladt for at holde grænsen på 5.000 runder.",
+          "summaryIgnored": "Denne browser havde allerede runder, så kun nye runder blev flettet ind, ikke filens samlede tal.",
+          "summaryDropped": "Filens samlede tal kunne ikke læses eller var fra en ældre version, så kun dens runder blev importeret.",
+          "safari": "I Safari gemmer en privat fane ikke denne journal, når den lukkes, og Safari sletter et websteds gemte data efter cirka 7 dage uden besøg. Eksportér en kopi for at beholde den.",
+          "unavailable": "Gemmes ikke i private vinduer. Dette browservindue gemmer ikke dine runder.",
+          "backup": "Sikkerhedskopi på tværs af enheder (kommer snart)",
+          "backupNoted": "Sikkerhedskopi på tværs af enheder findes ikke endnu. Tak, din interesse er noteret.",
+          "card": {
+            "open": "Del min måling",
+            "title": "Min måling i Memory Chess",
+            "span": "Hukommelsesspænd: {pieceCount, plural, one {# brik} other {# brikker}}, {accuracy} % eller bedre i {count, plural, one {# runde} other {# runder}}",
+            "held": "Huskede brikker: seneste gennemsnit {average}, fra {count, plural, one {# runde} other {# runder}}",
+            "speed": "Tempo: seneste gennemsnit {average} pr. brik {source, select, calibration {i øvelser} other {i partier}} med {pieceCount} brikker, {studyTime}, fra {count, plural, one {# runde} other {# runder}}",
+            "site": "thememorychess.com",
+            "copy": "Kopiér min måling",
+            "copied": "Kopieret. Indsæt det, hvor du vil.",
+            "copyFailed": "Kopiering virkede ikke her. Målingen er markeret ovenfor, så kopiér den selv."
+          },
+          "nudge": {
+            "title": "Din journal bor i denne browser",
+            "body": "Rydder du browserdata, sletter du den. Sæt et bogmærke ved siden, så du kommer tilbage til den samme browser, og brug »Download min laboratoriejournal« ovenfor til at gemme en kopi.",
+            "safari": "På iPhone og iPad gemmer »Føj til hjemmeskærm« siden som en app med sin egen journal, som Safaris 7-dagesregel ikke sletter. Den starter tom, så importér din downloadede kopi der.",
+            "dismiss": "Luk"
+          }
+        }
+      },
+      "library": {
+        "title": "Opslagsbibliotek.",
+        "lede": "Læringscentret parrer korte guider med øvelser, så hver måling peger på noget, du kan øve.",
+        "ref": "Nr. {number}",
+        "read": "Læs guiden",
+        "vision": {
+          "title": "Brætoverblik",
+          "body": "Se hele brættet på én gang i stedet for ét hjørne ad gangen."
+        },
+        "visualization": {
+          "title": "Visualisering",
+          "body": "Hold en stilling i hovedet, mens brikkerne flytter sig."
+        },
+        "calculation": {
+          "title": "Beregning",
+          "body": "Se længere frem uden at miste overblikket over brættet."
+        },
+        "memory": {
+          "title": "Hukommelse",
+          "body": "Chunking og mønsterteknikker, der løfter dine målinger."
+        },
+        "blindfold": {
+          "title": "Træning i blindskak",
+          "body": "En plan i fire trin fra brætgenkaldelse til hele blindpartier."
+        },
+        "blundering": "Sådan undgår du bukke"
+      },
+      "final": {
+        "title": "Din første måling tager under et minut.",
+        "body": "Ingen konto, ingen download, ingen tilmelding. Åbn en runde, se på stillingen, sæt den op igen, aflæs tallet. Bestem dig så for, om du vil have en til."
+      },
+      "resultCard": {
+        "title": "Din laboratoriejournal",
+        "device": "Gemt på denne enhed",
+        "lines": "Denne runde i din journal",
+        "unshown": "Din laboratoriejournal kunne ikke vises for denne runde.",
+        "newBest": {
+          "up": "Ny rekord med {pieceCount} brikker, {studyTime}: {accuracy} %, op fra {previous} %",
+          "faster": "Ny rekord med {pieceCount} brikker, {studyTime}: {accuracy} % igen, {fasterTime} hurtigere",
+          "plain": "Ny rekord med {pieceCount} brikker, {studyTime}: {accuracy} %"
+        },
+        "vsRecent": {
+          "above": "{points, plural, one {# point} other {# point}} over dit gennemsnit for dine seneste {rounds} runder med denne indstilling",
+          "below": "{points, plural, one {# point} other {# point}} under dit gennemsnit for dine seneste {rounds} runder med denne indstilling",
+          "level": "På niveau med dit gennemsnit for dine seneste {rounds} runder med denne indstilling"
+        },
+        "span": "Spænd op til {pieceCount} brikker",
+        "streak": "{current, plural, one {Dag 1} other {Dag # i træk}}{graceUsed, select, true {, fridag brugt} other {}}, {days} af {goal} dage i denne uge",
+        "next": {
+          "label": "Næste",
+          "why": {
+            "more": "90 % eller bedre, så én brik mere med samme husketid.",
+            "fewer": "Under 50 %, så én brik færre med samme husketid.",
+            "edgeFiles": "Du misser a- og h-linjen oftere end centerlinjerne.",
+            "weakType": "{type, select, q {Dronninger} r {Tårne} b {Løbere} n {Springere} other {Bønder}} smutter oftest: du huskede {recalled} af {shown}.",
+            "fasterLessAccurate": "Med {pieceCount} brikker, {studyTime}, blev du hurtigere pr. rigtig brik, og præcisionen faldt {fell} point.",
+            "colourGap": "Du husker {weaker, select, w {hvide} other {sorte}} brikker sjældnere: {weakerPercent} % mod {strongerPercent} %.",
+            "plateau": "Dit spænd står stille på {span} brikker."
+          },
+          "play": "Spil {pieceCount} brikker, {studyTime}",
+          "again": "Spil igen med {pieceCount} brikker, {studyTime}",
+          "patterns": "Læs øvelserne i mønstergenkendelse",
+          "vision": "Læs, hvordan du ser hele brættet"
+        }
+      },
+      "daily": {
+        "locked": "Du har allerede åbnet dagens bræt. Ét forsøg om dagen på denne enhed.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Nyt bræt om under et minut} one {Nyt bræt om # min.} other {Nyt bræt om # min.}}} one {Nyt bræt om # t. {minutes} min.} other {Nyt bræt om # t. {minutes} min.}}",
+        "seeRecord": "Åbn din laboratoriejournal",
+        "chooseRound": "Spil en runde til"
+      },
+      "review": {
+        "none": "Der er ikke noget bræt til gentagelse på denne enhed lige nu.",
+        "capped": "Dagens {cap} gentagelser er klaret på denne enhed.",
+        "cappedNext": "Bræt, der stadig venter, kommer tilbage i morgen, det der har ventet længst først.",
+        "schedule": "Bræt, hvor du får under 80 %, kommer tilbage 1, 3, 7 og 14 dage efter, at du så dem første gang."
+      }
     }
   },
   "game": {

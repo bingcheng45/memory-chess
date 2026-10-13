@@ -52,7 +52,7 @@ describe("footer placement", () => {
   });
 
   const pages: Array<[string, () => ReactElement | Promise<ReactElement>]> = [
-    ["home", () => HomePage({ params: Promise.resolve({ locale: "en" }) })],
+    ["home", () => HomePage()],
     ["privacy", () => <PrivacyPage />],
     ["contact-us", () => <ContactUsPage />],
   ];

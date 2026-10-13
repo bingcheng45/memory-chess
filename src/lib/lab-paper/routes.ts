@@ -1,5 +1,3 @@
-import { LAB_LOCALES } from "@/lib/home/labLocales";
-
 /**
  * A route drawn in the Lab Paper shell (docs/design/brand-directions/lab-paper.md, "Using the shell on a page").
  * `path` is unprefixed, as next-intl's usePathname returns it. `scope: "subtree"` also covers every path beneath it.
@@ -12,7 +10,7 @@ export interface LabPaperRoute {
 }
 
 export const LAB_PAPER_ROUTES: readonly LabPaperRoute[] = [
-  { path: "/", scope: "page", locales: LAB_LOCALES },
+  { path: "/", scope: "page", locales: "all" },
   { path: "/changelog", scope: "page", locales: ["en"] },
   { path: "/about", scope: "page", locales: ["en"] },
   { path: "/terms", scope: "page", locales: ["en"] },

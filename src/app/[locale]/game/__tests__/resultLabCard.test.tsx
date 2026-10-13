@@ -72,11 +72,10 @@ describe("the lab card on the result screen", () => {
     expect(missing).toEqual([]);
   });
 
-  it("is not drawn, nor its space kept, in a language the lab is not written in, where the dashboard figures still are", async () => {
+  it("reads the round just saved in German too, with every string the layouts send", async () => {
     const missing = await renderResultScreen("de");
-    await screen.findByRole("region", { name: "Als Nächstes lesen" });
 
-    expect(screen.queryByTestId("result-lab-slot")).toBeNull();
+    expect(await screen.findByRole("region", { name: "Dein Laborbericht" })).toBeInTheDocument();
     expect(screen.queryByRole("region", { name: "Your lab record" })).toBeNull();
     const figures = await screen.findByRole("region", { name: "Dein Dashboard nach dieser Runde" });
     expect(said(figures)).toEqual(["Beste Genauigkeit 100 %, neu", "Aktuelle Genauigkeit 100 %, neu", "Gespielte Runden 1 Runde, neu", "Spieltage 1 Tag, neu"]);

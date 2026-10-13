@@ -12,26 +12,6 @@ jest.mock("@/components/ui/LanguageSettings", () => function MockLanguageSetting
   return null;
 });
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>PageHeader</div>;
-  }
-
-  MockPageHeader.displayName = "MockPageHeader";
-
-  return MockPageHeader;
-});
-
-jest.mock("@/components/ui/VideoSection", () => {
-  function MockVideoSection() {
-    return null;
-  }
-
-  MockVideoSection.displayName = "MockVideoSection";
-
-  return MockVideoSection;
-});
-
 type SchemaNode = Record<string, unknown> & { "@type": string; "@id"?: string };
 type Schema = { "@graph"?: SchemaNode[]; "@type"?: string };
 
@@ -42,7 +22,7 @@ function jsonLdScripts(container: HTMLElement): Schema[] {
 }
 
 async function renderHome() {
-  const rendered = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
+  const rendered = render(HomePage());
   await screen.findByRole("heading", { level: 1 });
   return rendered;
 }

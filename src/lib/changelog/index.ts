@@ -109,6 +109,8 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
         changes: [
           "Your first ten rated rounds place you. More pieces count most, then a shorter look at the board, then a faster rebuild. A board you mostly missed earns nothing for how hard it was.",
           "After that, each round moves your rating up or down by how you did against how hard the board was. Clear boards above your level to climb. Miss easy ones and it drops.",
+          "Your rating keeps up with your last 30 rounds. Play better than your rating and it rises faster. Play worse and it falls faster. Hold steady and it holds.",
+          "There is no ceiling at the biggest board. Once you clear all 32 pieces, a shorter look and a faster rebuild keep raising it.",
           "A board harder than the ones you usually play earns more when you clear it and costs less when you miss it. An easier one earns little and costs more.",
           "Review rounds are still not rated. The daily board is.",
         ],

@@ -184,7 +184,7 @@ describe("lab record from a finished game round", () => {
     const daily = playPerfect("daily", { kind: "daily", day: "2026-10-09", fen });
 
     expect(review).toEqual({ skillRating: 1000, streak: 0, accuracy: 100 });
-    expect(daily).toEqual({ skillRating: 955, streak: 1, accuracy: 100 });
-    expect(store().history.map(({ skillRatingChange, streak }) => [skillRatingChange, streak])).toEqual([[-45, 1]]);
+    expect(daily).toEqual({ skillRating: 1000, streak: 1, accuracy: 100 });
+    expect(store().history.map(({ skillRatingChange, streak }) => [skillRatingChange, streak])).toEqual([[0, 1]]);
   });
 });

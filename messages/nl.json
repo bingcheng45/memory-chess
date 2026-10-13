@@ -1009,6 +1009,7 @@
       "solutionTime": "Oplostijd",
       "recallSpeed": "Herinneringssnelheid",
       "placement": "Plaatsing van je rating: ronde {round} van {total}",
+      "freeSkip": "Gratis overslaan van de dag: een leeg bord verandert je rating niet. Het volgende vandaag wel.",
       "piecesPerSecond": "{value} stukken/s",
       "actions": "Acties bij het resultaat",
       "tryAgain": "Opnieuw",

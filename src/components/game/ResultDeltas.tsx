@@ -18,7 +18,7 @@ import { roundDeltasOf, verdictOf, type FigureDelta } from "@/lib/lab/roundDelta
 import { START_RATING } from "@/lib/game/rating";
 import { useGameStore, WIN_ACCURACY } from "@/lib/store/gameStore";
 
-/** The game standing after the round and the one it started from; a review moves neither, so both are the same. */
+/** The game standing after the round and the one it started from; a review or a free skip moves neither, so both are the same. */
 function useRoundStandings(roundId: string): { readonly before: GameStanding | null; readonly after: GameStanding | null } {
   const gameState = useGameStore((state) => state.gameState);
   const history = useGameStore((state) => state.history);

@@ -1009,6 +1009,7 @@
       "solutionTime": "Tempo di risoluzione",
       "recallSpeed": "Velocità di richiamo",
       "placement": "Piazzamento del punteggio: round {round} di {total}",
+      "freeSkip": "Salto gratuito del giorno: una scacchiera vuota non cambia il tuo punteggio. La prossima di oggi sì.",
       "piecesPerSecond": "{value} pezzi/s",
       "actions": "Azioni sul risultato",
       "tryAgain": "Riprova",

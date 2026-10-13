@@ -1009,6 +1009,7 @@
       "solutionTime": "Megoldási idő",
       "recallSpeed": "Felidézési sebesség",
       "placement": "Besorolás: {round}/{total}. kör",
+      "freeSkip": "A nap ingyenes kihagyása: egy üres tábla nem változtat a pontszámodon. A mai következő már igen.",
       "piecesPerSecond": "{value} bábu/mp",
       "actions": "Eredményhez tartozó műveletek",
       "tryAgain": "Újra",

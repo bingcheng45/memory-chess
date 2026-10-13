@@ -1009,6 +1009,7 @@
       "solutionTime": "Timp de rezolvare",
       "recallSpeed": "Viteză de reamintire",
       "placement": "Plasarea ratingului: runda {round} din {total}",
+      "freeSkip": "Sărirea gratuită a zilei: o tablă goală nu îți schimbă ratingul. Următoarea de azi îl va schimba.",
       "piecesPerSecond": "{value} piese/s",
       "actions": "Acțiuni pentru rezultat",
       "tryAgain": "Încearcă din nou",

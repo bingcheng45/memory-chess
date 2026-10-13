@@ -18,11 +18,12 @@ import {
   MAX_SKILL_RATING,
   NORM_ROUNDS,
   parseRatedRoundFacts,
-  ratingAfter,
   START_RATING,
   WIN_ACCURACY,
   type RatedRoundFacts,
 } from "@/lib/game/rating";
+import { outcomeEffects, roundOutcomeOf } from "@/lib/game/roundOutcome";
+import { localDayOf } from "@/lib/lab/record";
 import { isSoundEnabled } from '@/lib/utils/soundEffects';
 import {
   IDLE_ROUND,
@@ -45,14 +46,19 @@ type GameStateWithRating = GameState & {
 /** The suffix chess.js gave the solution board's FEN, kept so the lab record's placed FEN reads as it always has. */
 const SOLUTION_FEN_SUFFIX = ' w - - 0 1';
 
-/** The newest rounds kept in the persisted history: the rated rounds the rating reads. A review round is left out, as it is from the rating and the streak. */
+/** The newest rounds kept in the persisted history: the rated rounds the rating reads. A review or a free skip is left out, as it is from the rating and the streak. */
 const HISTORY_LIMIT = NORM_ROUNDS;
 
 /**
  * The persisted shape's version. Version 1 replaced a rating that only went up with the placement and Elo rating, so
- * a rating stored before it starts again from START_RATING and a new placement.
+ * a rating stored before it starts again from START_RATING and a new placement. Version 2 added the free-skip day,
+ * which starts unspent.
  */
-const STORE_VERSION = 1;
+const STORE_VERSION = 2;
+const RATING_RESET_VERSION = 1;
+
+const LOCAL_DAY = /^\d{4}-\d{2}-\d{2}$/;
+const parseLocalDay = (value: unknown): string | null => (typeof value === 'string' && LOCAL_DAY.test(value) ? value : null);
 
 export { WIN_ACCURACY };
 
@@ -62,6 +68,8 @@ interface GameStore {
   gameState: GameState;
   lastSettings: GameSettings | null;
   history: GameHistory[];
+  /** The local day the last free skip was used: that day's first empty board, which leaves the rating alone. */
+  freeSkipDay: string | null;
   /** The round being played, run by the shared round reducer. Never persisted. */
   round: RoundState;
 
@@ -111,6 +119,7 @@ export const useGameStore = create<GameStore>()(
     (set, get) => ({
       gameState: initialGameState,
       history: [], // Empty history array
+      freeSkipDay: null,
       lastSettings: null,
       round: IDLE_ROUND,
 
@@ -183,8 +192,9 @@ export const useGameStore = create<GameStore>()(
         // Determine success (e.g., accuracy >= 70%)
         const success = score.accuracy >= WIN_ACCURACY;
 
-        // A review replays a board the player has already seen, so it is not a fair test of skill.
-        const rated = gameState.board?.kind !== 'review';
+        const labRoundId = uuidv4();
+        const endedAt = Date.now();
+        const day = localDayOf(new Date(endedAt));
 
         const currentRating = gameState.skillRating ?? START_RATING;
         const facts: RatedRoundFacts = {
@@ -193,19 +203,19 @@ export const useGameStore = create<GameStore>()(
           rebuildSeconds: completionTime,
           accuracy: score.accuracy,
         };
-        const rating = rated ? ratingAfter(currentRating, ratedFactsOf(get().history), facts) : undefined;
+        const rating = roundOutcomeOf(currentRating, ratedFactsOf(get().history), {
+          review: gameState.board?.kind === 'review',
+          placedPieces: Object.keys(placed).length,
+          day,
+          freeSkipDay: get().freeSkipDay,
+          facts,
+        });
+        const effects = outcomeEffects[rating.phase];
 
-        // Update streak
-        let streak = gameState.streak || 0;
-        if (rated) {
-          streak = success ? streak + 1 : 0;
-        }
-
-        const newSkillRating = rating?.rating ?? currentRating;
-        const skillRatingChange = rating?.change ?? 0;
-
-        const labRoundId = uuidv4();
-        const endedAt = Date.now();
+        const previousStreak = gameState.streak || 0;
+        const streak = effects.rated ? (success ? previousStreak + 1 : 0) : previousStreak;
+        const newSkillRating = rating.rating;
+        const skillRatingChange = rating.change;
 
         const labRound: LabRound = {
           endedAt,
@@ -263,10 +273,11 @@ export const useGameStore = create<GameStore>()(
           streak,
           facts,
         };
-        set(({ history }) => ({
+        set(({ history, freeSkipDay }) => ({
           round,
           gameState: updatedGameState as GameState,
-          history: rated ? [played, ...history].slice(0, HISTORY_LIMIT) : history,
+          history: effects.rated ? [played, ...history].slice(0, HISTORY_LIMIT) : history,
+          freeSkipDay: effects.spendsFreeSkip ? day : freeSkipDay,
         }));
 
         const soundEnabled = isSoundEnabled();
@@ -316,7 +327,7 @@ export const useGameStore = create<GameStore>()(
       // A rating stored before version 1 was earned under a formula that only went up, so it starts again. The win
       // streak and the history rows stay; rows without rated facts are shown but do not count toward placement.
       migrate: (persisted, version) => {
-        if (version >= STORE_VERSION || !isRecord(persisted)) return persisted;
+        if (version >= RATING_RESET_VERSION || !isRecord(persisted)) return persisted;
         const gameState = isRecord(persisted.gameState) ? persisted.gameState : {};
         return { ...persisted, gameState: { ...gameState, skillRating: START_RATING } };
       },
@@ -330,6 +341,7 @@ export const useGameStore = create<GameStore>()(
         },
         history: state.history,
         lastSettings: state.lastSettings,
+        freeSkipDay: state.freeSkipDay,
       }),
       // localStorage is user-editable and outlives app versions, so a stored
       // value that would put the configuration form out of range is dropped.
@@ -347,6 +359,7 @@ export const useGameStore = create<GameStore>()(
             skillRating: isSkillRating(storedGameState.skillRating) ? Math.min(storedGameState.skillRating, MAX_SKILL_RATING) : START_RATING,
           },
           lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
+          freeSkipDay: parseLocalDay(stored.freeSkipDay),
         };
       },
     }

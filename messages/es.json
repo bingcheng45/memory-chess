@@ -1009,6 +1009,7 @@
       "solutionTime": "Tiempo de resolución",
       "recallSpeed": "Velocidad de recuerdo",
       "placement": "Clasificación de la puntuación: ronda {round} de {total}",
+      "freeSkip": "Salto gratis del día: un tablero vacío no cambia tu puntuación. El siguiente de hoy sí.",
       "piecesPerSecond": "{value} piezas/s",
       "actions": "Acciones del resultado",
       "tryAgain": "Reintentar",

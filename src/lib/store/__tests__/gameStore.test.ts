@@ -4,6 +4,7 @@ import { labPositionToFen, type LabPiece, type LabPosition } from "@/lib/round/r
 import type { SquareName } from "@/lib/game/board";
 import type { PieceColor, PieceType } from "@/types/chess";
 import type { GameHistory, GameState } from "@/lib/types/game";
+import { localDayOf } from "@/lib/lab/record";
 
 const store = () => useGameStore.getState();
 const boardPlacement = (fen: string) => fen.split(" ")[0];
@@ -284,8 +285,13 @@ function playRound({ pieceCount, solveMs, correct = pieceCount, studyMs = 10000 
   return store().gameState as GameState & { skillRatingChange?: number };
 }
 
+/** 09:00 local time on 2026-10-14. */
+const TODAY = new Date(2026, 9, 14, 9).getTime();
+const DAY_MS = 24 * 60 * 60 * 1000;
+
 const freshPlayer = () =>
   useGameStore.setState({
+    freeSkipDay: null,
     history: [],
     gameState: { pieceCount: 8, memorizeTime: 10, currentLevel: 1, level: 1, skillRating: 1000, streak: 0 },
   });
@@ -511,7 +517,9 @@ describe("how a placement round moves the skill rating", () => {
     freshPlayer();
   });
 
-  it("lowers the rating for an empty submit however fast it comes", () => {
+  it("lowers the rating for an empty submit however fast it comes, once the day's free skip is spent", () => {
+    jest.spyOn(Date, "now").mockReturnValue(TODAY);
+    useGameStore.setState({ freeSkipDay: localDayOf(new Date(TODAY)) });
     const first = playRound({ pieceCount: 6, correct: 0, solveMs: 0 });
     const firstRating = first.skillRating;
     const second = playRound({ pieceCount: 6, correct: 0, solveMs: 1 });
@@ -571,6 +579,8 @@ describe("the standing a round started from", () => {
   });
 
   it("keeps the rating and win streak from before each scored round beside the new ones", () => {
+    jest.spyOn(Date, "now").mockReturnValue(TODAY);
+    useGameStore.setState({ freeSkipDay: localDayOf(new Date(TODAY)) });
     const won = playRound({ pieceCount: 2, solveMs: 4000 });
     const wonBefore = won.standingBefore;
     const lost = playRound({ pieceCount: 6, correct: 0, solveMs: 0 });
@@ -581,5 +591,120 @@ describe("the standing a round started from", () => {
       { skillRating: 955, streak: 1 },
       [915, 0],
     ]);
+  });
+});
+
+describe("the day's free skip", () => {
+  const heldRow: GameHistory = {
+    id: "held",
+    timestamp: 1,
+    pieceCount: 6,
+    memorizeTime: 10,
+    accuracy: 83,
+    correctPlacements: 5,
+    totalPlacements: 6,
+    level: 1,
+    duration: 15,
+    skillRatingChange: 12,
+    facts: { pieceCount: 6, studySeconds: 10, rebuildSeconds: 15, accuracy: 83 },
+  };
+  const playedOn = (at: number, round: Parameters<typeof playRound>[0]) => {
+    jest.spyOn(Date, "now").mockReturnValue(at);
+    return playRound(round);
+  };
+  const emptyBoard = { pieceCount: 6, correct: 0, solveMs: 2000 };
+
+  beforeEach(() => {
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    localStorage.clear();
+    freshPlayer();
+    useGameStore.setState(({ gameState }) => ({ history: [heldRow], gameState: { ...gameState, skillRating: 1200, streak: 3 } }));
+  });
+
+  afterEach(() => {
+    store().resetGame();
+    jest.restoreAllMocks();
+    freshPlayer();
+    localStorage.clear();
+  });
+
+  it("keeps the rating, the win streak and the rated history through the first empty board of the day, and stores the day", () => {
+    const skipped = playedOn(TODAY, emptyBoard);
+
+    expect([skipped.rating, skipped.skillRatingChange, skipped.skillRating, skipped.streak, store().history, storedState().freeSkipDay]).toEqual([
+      { phase: "freeSkip", rating: 1200, change: 0 },
+      0,
+      1200,
+      3,
+      [heldRow],
+      "2026-10-14",
+    ]);
+  });
+
+  it("rates a second empty board the same day as a loss that ends the win streak", () => {
+    playedOn(TODAY, emptyBoard);
+    const second = playedOn(TODAY + 60_000, emptyBoard);
+
+    expect([second.rating?.phase, second.skillRatingChange, second.skillRating, second.streak, store().history.length]).toEqual([
+      "placement",
+      -40,
+      1160,
+      0,
+      2,
+    ]);
+  });
+
+  it("gives the first empty board of the next day a free skip again", () => {
+    playedOn(TODAY, emptyBoard);
+    const tomorrow = playedOn(TODAY + DAY_MS, emptyBoard);
+
+    expect([tomorrow.rating?.phase, tomorrow.skillRating, tomorrow.streak, store().freeSkipDay]).toEqual(["freeSkip", 1200, 3, "2026-10-15"]);
+  });
+
+  it("rates a board with a piece on it as before and keeps the free skip for later", () => {
+    const one = playedOn(TODAY, { pieceCount: 6, correct: 1, solveMs: 2000 });
+
+    expect([one.rating?.phase, one.skillRatingChange, one.streak, store().history.length, store().freeSkipDay]).toEqual([
+      "placement",
+      -40,
+      0,
+      2,
+      null,
+    ]);
+  });
+
+  it("leaves an empty review unrated without spending the free skip", () => {
+    jest.spyOn(Date, "now").mockReturnValue(TODAY);
+    const fen = "8/8/8/8/8/8/8/K6k w - - 0 1";
+    store().startGame(2, 10, "review", { kind: "review", fen, reviewOf: "first", firstDay: "2026-10-01", step: 0 });
+    store().dispatch({ type: "studyEnded", now: 10000 });
+    store().submitSolution(12000);
+    const review = store().gameState;
+
+    expect([review.rating, review.skillRating, review.streak, store().history, store().freeSkipDay]).toEqual([
+      { phase: "review", rating: 1200, change: 0 },
+      1200,
+      3,
+      [heldRow],
+      null,
+    ]);
+  });
+
+  it.each([
+    ["kept", "2026-10-13", "2026-10-13"],
+    ["dropped when it is not a day", "yesterday", null],
+    ["dropped when it is not a string", 20261013, null],
+  ])("restores a stored free-skip day, %s", async (_case, stored, restored) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { gameState: { skillRating: 1300, streak: 2 }, freeSkipDay: stored }, version: 2 }));
+    await useGameStore.persist.rehydrate();
+
+    expect([store().freeSkipDay, store().gameState.skillRating]).toEqual([restored, 1300]);
+  });
+
+  it("migrates a version 1 store with its rating intact and no free skip spent", async () => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { gameState: { skillRating: 1300, streak: 2 }, history: [heldRow] }, version: 1 }));
+    await useGameStore.persist.rehydrate();
+
+    expect([store().gameState.skillRating, store().gameState.streak, store().history, store().freeSkipDay]).toEqual([1300, 2, [heldRow], null]);
   });
 });

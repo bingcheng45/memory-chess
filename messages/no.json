@@ -1009,6 +1009,7 @@
       "solutionTime": "Løsningstid",
       "recallSpeed": "Gjenkallingsfart",
       "placement": "Plassering av rating: runde {round} av {total}",
+      "freeSkip": "Dagens gratis hopp over: et tomt brett endrer ikke ratingen din. Det neste i dag gjør det.",
       "piecesPerSecond": "{value} brikker/s",
       "actions": "Handlinger for resultatet",
       "tryAgain": "Prøv igjen",

@@ -1009,6 +1009,7 @@
       "solutionTime": "Lösningstid",
       "recallSpeed": "Minneshastighet",
       "placement": "Placering av rating: runda {round} av {total}",
+      "freeSkip": "Dagens gratis överhoppning: ett tomt bräde ändrar inte din rating. Nästa i dag gör det.",
       "piecesPerSecond": "{value} pjäser/s",
       "actions": "Åtgärder för resultatet",
       "tryAgain": "Försök igen",

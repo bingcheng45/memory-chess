@@ -1009,6 +1009,7 @@
       "solutionTime": "Ratkaisuaika",
       "recallSpeed": "Palautusnopeus",
       "placement": "Taitoluvun sijoitus: kierros {round}/{total}",
+      "freeSkip": "Päivän ilmainen ohitus: tyhjä lauta ei muuta taitolukuasi. Seuraava tänään muuttaa.",
       "piecesPerSecond": "{value} nappulaa/s",
       "actions": "Tulokseen liittyvät toiminnot",
       "tryAgain": "Yritä uudelleen",

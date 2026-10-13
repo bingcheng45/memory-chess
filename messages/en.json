@@ -1009,6 +1009,7 @@
       "solutionTime": "Solution time",
       "recallSpeed": "Recall speed",
       "placement": "Rating placement: round {round} of {total}",
+      "freeSkip": "Free skip of the day: an empty board doesn't change your rating. The next one today will.",
       "piecesPerSecond": "{value} pieces/sec",
       "actions": "Result actions",
       "tryAgain": "Try again",

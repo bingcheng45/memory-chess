@@ -1009,6 +1009,7 @@
       "solutionTime": "Czas rozwiązania",
       "recallSpeed": "Szybkość przypominania",
       "placement": "Ustalanie oceny: runda {round} z {total}",
+      "freeSkip": "Dzisiejsze darmowe pominięcie: pusta plansza nie zmienia twojej oceny. Kolejna dzisiaj już tak.",
       "piecesPerSecond": "{value} bierek/s",
       "actions": "Działania dla wyniku",
       "tryAgain": "Spróbuj ponownie",

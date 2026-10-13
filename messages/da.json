@@ -1009,6 +1009,7 @@
       "solutionTime": "Løsningstid",
       "recallSpeed": "Genkaldelseshastighed",
       "placement": "Placering af rating: runde {round} af {total}",
+      "freeSkip": "Dagens gratis overspring: et tomt bræt ændrer ikke din rating. Det næste i dag gør.",
       "piecesPerSecond": "{value} brikker/s",
       "actions": "Handlinger for resultatet",
       "tryAgain": "Prøv igen",

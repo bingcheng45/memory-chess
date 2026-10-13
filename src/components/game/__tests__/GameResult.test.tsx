@@ -8,6 +8,7 @@ import type { BoardCutoff, LeaderboardCutoffs } from "@/lib/leaderboard/ranking"
 import { scoredRound } from "@/test-utils/round";
 import type { SetBoard } from "@/lib/types/game";
 import type { RatingResult } from "@/lib/game/rating";
+import type { RoundOutcome } from "@/lib/game/roundOutcome";
 
 const baseGameState = {
   isPlaying: false,
@@ -30,7 +31,7 @@ const baseGameState = {
 
 const mockRound = scoredRound("4k3/8/8/8/3q4/8/PP6/4K3", "4k3/8/8/8/8/8/PP6/4K3");
 
-let mockGameState: typeof baseGameState & { board?: SetBoard; rating?: RatingResult } = baseGameState;
+let mockGameState: typeof baseGameState & { board?: SetBoard; rating?: RoundOutcome } = baseGameState;
 
 jest.mock("@/lib/store/gameStore", () => ({
   useGameStore: () => ({ gameState: mockGameState, round: mockRound }),
@@ -164,6 +165,15 @@ describe("GameResult", () => {
     render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
     expect([placed?.textContent, screen.queryByText(/Rating placement/)]).toEqual(["Rating placement: round 3 of 10", null]);
+  });
+
+  it("says the day's free skip in place of a rating change", () => {
+    mockGameState = { ...baseGameState, accuracy: 0, correctPlacements: 0, totalPiecesPlaced: 0, rating: { phase: "freeSkip", rating: 1200, change: 0 } };
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+    expect(document.querySelector("[data-rating-phase]")?.textContent).toBe(
+      "Free skip of the day: an empty board doesn't change your rating. The next one today will.",
+    );
   });
 
   it("preserves leaderboard submission access for standard difficulties", () => {

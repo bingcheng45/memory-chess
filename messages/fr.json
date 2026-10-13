@@ -366,10 +366,17 @@
     "columns": {
       "rank": "Rang",
       "player": "Joueur",
+      "elo": "ELO",
       "pieces": "Pièces",
       "memorizeTime": "Temps de mémorisation",
       "solutionTime": "Temps de résolution",
       "date": "Date"
+    },
+    "daily": {
+      "tab": "Quotidien",
+      "setting": "{pieces, plural, one {# pièce} many {# pièces} other {# pièces}} · {seconds} s pour mémoriser",
+      "resetsAtUtc": "Réinitialisation à {utc} UTC",
+      "resetsAt": "Réinitialisation à {utc} UTC ({local} chez vous), dans {timeLeft}"
     }
   },
   "country": {
@@ -783,5 +790,119 @@
     },
     "play": "Jouer une partie",
     "home": "Aller à l’accueil"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} h {minutes} min",
+    "underMinute": "< 1 min",
+    "ready": "Plateau du jour · {pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}} · {seconds} s · encore {timeLeft}",
+    "next": "Prochain plateau dans {timeLeft}",
+    "pending": "Plateau du jour",
+    "navReady": "{label}, le plateau du jour est prêt",
+    "cardTitle": "Le plateau du jour est prêt",
+    "cardSetting": "{pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}} et {seconds, plural, one {# seconde} many {# secondes} other {# secondes}} pour mémoriser.",
+    "cardNote": "Tout le monde joue le même plateau aujourd'hui, et vous avez un seul essai.",
+    "play": "Jouer le plateau du jour"
+  },
+  "daily": {
+    "meta": {
+      "title": "Plateau quotidien de mémoire aux échecs : une position pour tous",
+      "description": "Un plateau de mémoire aux échecs par jour, la même position pour tous les joueurs. Mémorisez-la une fois, reconstituez-la et entrez dans le top 10 du jour. Un nouveau plateau s’ouvre à minuit UTC.",
+      "socialTitle": "Le plateau du jour de Memory Chess",
+      "socialDescription": "Aujourd’hui, tout le monde reçoit la même position. Mémorisez-la, reconstituez-la et voyez votre classement."
+    },
+    "round": {
+      "locked": "Vous avez déjà ouvert le plateau du jour. Un seul essai par jour garantit l’équité.",
+      "seeBoard": "Voir le plateau du jour",
+      "chooseRound": "Jouer une autre partie",
+      "join": "Rejoindre le plateau du jour"
+    },
+    "page": {
+      "fig": "Plateau du jour · {date}",
+      "title": "Un plateau, le même pour tous",
+      "lede": "Chaque jour apporte une position pour tous les joueurs. Mémorisez-la une fois, reconstituez-la de mémoire, puis rejoignez le plateau du jour pour voir où vous vous situez.",
+      "resets": "Nouveau plateau à minuit UTC",
+      "open": "Le plateau du jour est ouvert",
+      "pieces": "{count, plural, one {# pièce} many {# pièces} other {# pièces}}",
+      "seconds": "{count} s pour mémoriser",
+      "oneTry": "Un seul essai",
+      "hidden": "Caché tant que vous n’avez pas joué",
+      "play": "Jouer le plateau du jour",
+      "streak": "{count, plural, one {Série quotidienne : # jour} many {Série quotidienne : # jours} other {Série quotidienne : # jours}}",
+      "unfinishedTitle": "L’essai du jour est utilisé",
+      "unfinished": "Vous avez ouvert le plateau du jour et vous êtes parti avant le résultat. Un seul essai par jour garantit l’équité, revenez donc pour le prochain.",
+      "result": "Votre résultat",
+      "score": "{correct} sur {pieceCount} correctes",
+      "rebuild": "reconstitué en {seconds} s",
+      "gridAria": "Vos cases : {correct} correctes, {wrong} avec une mauvaise pièce, {missed} manquées, {extra} en trop",
+      "key": {
+        "c": "Correcte",
+        "w": "Mauvaise pièce",
+        "m": "Manquée",
+        "x": "En trop"
+      },
+      "shareLabel": "Partager sans dévoiler le plateau",
+      "shareText": "Plateau du jour Memory Chess {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Copier le résultat",
+      "copied": "Copié",
+      "copyFailed": "Le presse-papiers a refusé la copie. Sélectionnez le texte ci-dessous et copiez-le.",
+      "joined": "Vous êtes sur le plateau du jour",
+      "rank": "Rang {rank} sur {total} aujourd’hui",
+      "lateNote": "Vous avez joué le plateau d’hier sans l’avoir encore rejoint.",
+      "lateJoined": "Vous êtes sur le plateau de ce jour-là"
+    },
+    "join": {
+      "title": "Rejoindre le plateau du jour",
+      "lateTitle": "Rejoindre le plateau de ce jour-là",
+      "name": "Nom",
+      "nameHint": "De 4 à 16 caractères, affiché avec votre score.",
+      "nameShort": "Trop court. Utilisez au moins 4 caractères.",
+      "nameLong": "Trop long. Utilisez au plus 16 caractères.",
+      "country": "Pays",
+      "chooseCountry": "Choisissez un pays",
+      "from": {
+        "saved": "Enregistré sur cet appareil.",
+        "connection": "D’après votre connexion.",
+        "language": "D’après la langue de votre navigateur.",
+        "none": "Choisissez le pays que vous représentez."
+      },
+      "change": "Modifier",
+      "submit": "Rejoindre le plateau",
+      "submitting": "Inscription…",
+      "public": "Votre nom, votre pays, votre score et votre cote sont affichés publiquement.",
+      "failed": "Impossible de rejoindre le plateau. Veuillez réessayer.",
+      "noneRight": "Aucune pièce n’était correcte, cet essai n’a donc rien à classer. Le prochain plateau s’ouvre à minuit UTC."
+    },
+    "board": {
+      "title": "Le top 10 du jour",
+      "rank": "Rang",
+      "player": "Joueur",
+      "right": "Correctes",
+      "wrong": "Erronées",
+      "time": "Temps (s)",
+      "rating": "{rating} Elo",
+      "you": "Vous",
+      "empty": "Personne n’a encore rejoint le plateau du jour. Jouez-le et soyez le premier.",
+      "error": "Le plateau du jour n’a pas pu être chargé. Veuillez réessayer dans un instant.",
+      "joinToRank": "Rejoignez le plateau pour voir votre rang ici.",
+      "order": "Classé selon les pièces correctes, puis le moins de pièces erronées, puis la reconstitution la plus rapide.",
+      "all": "Voir tous les plateaux"
+    },
+    "reference": {
+      "title": "Comment fonctionne le plateau du jour",
+      "shared": "Chaque jour à minuit UTC, une nouvelle position est tirée et tous les joueurs du monde reçoivent la même. La position provient d’une graine calculée à partir de la date : le plateau est le même pour tous et personne n’obtient une version plus facile. Comme le plateau est partagé, un score y a le même sens pour tous ceux qui l’ont joué ce jour-là.",
+      "oneTry": "Vous avez un seul essai. L’ouverture du plateau compte comme l’essai : si vous partez pendant la phase de mémorisation et revenez, il ne vous est pas montré une seconde fois. Votre appareil retient l’essai jusqu’à l’ouverture du plateau suivant.",
+      "grid": "Après avoir reconstitué la position, vous voyez les cases justes, celles où se trouvait la mauvaise pièce, celles que vous avez manquées et l’endroit où vous avez placé une pièce en trop. La ligne à partager affiche une case par pièce, triée par résultat, sans indiquer où elle se trouvait : la publier ne dévoile donc pas le plateau à quelqu’un qui n’a pas encore joué.",
+      "join": "Pour rejoindre le plateau, choisissez un nom de 4 à 16 caractères et le pays que vous représentez. Le pays vient d’abord de votre choix précédent, puis de votre connexion, puis de la langue de votre navigateur, et vous pouvez toujours le modifier. Votre cote au moment de l’inscription s’affiche à côté de votre nom.",
+      "ranking": "Les lignes sont classées selon le nombre de pièces bien placées, puis le plus petit nombre de pièces erronées, puis la reconstitution la plus rapide. Tout le monde dispose du même nombre de secondes pour mémoriser : le temps d’étude ne départage donc jamais deux joueurs sur le plateau du jour.",
+      "arcTitle": "Pièces et temps d’étude au fil de la semaine",
+      "arcIntro": "Le réglage suit un arc hebdomadaire. Le lundi commence en douceur pour qu’une pause de week-end ne casse pas une série, la difficulté monte au fil de la semaine, le samedi est un plateau éclair que vous ne voyez que quelques secondes, et le dimanche est le plateau le plus difficile de tous. Dans la plage de chaque jour, la date choisit un réglage, le même pour tous les joueurs.",
+      "day": "Jour",
+      "pieces": "Pièces",
+      "seconds": "Temps d’étude",
+      "range": "De {min} à {max}",
+      "secondsRange": "De {min} à {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

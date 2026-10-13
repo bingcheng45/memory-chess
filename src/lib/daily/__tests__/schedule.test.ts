@@ -59,7 +59,7 @@ describe("the daily setting", () => {
   });
 
   it("throws an InvalidDayError for anything but a real UTC day", () => {
-    expect(["", "2026-02-30", "2026-10", "2026-10-19"].map(isUtcDay)).toEqual([false, false, false, true]);
+    expect(["", "2026-02-30", "2026-10", "0000-01-01", "2026-10-19"].map(isUtcDay)).toEqual([false, false, false, false, true]);
     expect(() => dailySettingOf("")).toThrow(new InvalidDayError(""));
     expect(() => dailySettingOf("2026-02-30")).toThrow(InvalidDayError);
     expect(() => dailySettingOf("2026-10")).toThrow(RangeError);

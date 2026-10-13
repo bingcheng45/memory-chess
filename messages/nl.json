@@ -366,10 +366,17 @@
     "columns": {
       "rank": "Plek",
       "player": "Speler",
+      "elo": "ELO",
       "pieces": "Stukken",
       "memorizeTime": "Kijktijd",
       "solutionTime": "Oplostijd",
       "date": "Datum"
+    },
+    "daily": {
+      "tab": "Dagelijks",
+      "setting": "{pieces, plural, one {# stuk} other {# stukken}} · {seconds} s kijktijd",
+      "resetsAtUtc": "Reset om {utc} UTC",
+      "resetsAt": "Reset om {utc} UTC ({local} bij jou), over {timeLeft}"
     }
   },
   "country": {
@@ -783,5 +790,119 @@
     },
     "play": "Speel een ronde",
     "home": "Naar de startpagina"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} u {minutes} min",
+    "underMinute": "minder dan een minuut",
+    "ready": "Bord van vandaag · {pieceCount, plural, one {# stuk} other {# stukken}} · {seconds} s · nog {timeLeft}",
+    "next": "Volgend bord over {timeLeft}",
+    "pending": "Bord van vandaag",
+    "navReady": "{label}, het dagelijkse bord van vandaag staat klaar",
+    "cardTitle": "Het dagelijkse bord van vandaag staat klaar",
+    "cardSetting": "{pieceCount, plural, one {# stuk} other {# stukken}} en {seconds, plural, one {# seconde} other {# seconden}} om te onthouden.",
+    "cardNote": "Iedereen speelt vandaag hetzelfde bord, en je hebt één poging.",
+    "play": "Speel het bord van vandaag"
+  },
+  "daily": {
+    "meta": {
+      "title": "Dagelijks schaakgeheugenbord: één stelling voor iedereen",
+      "description": "Elke dag één schaakgeheugenbord, voor alle spelers dezelfde stelling. Bekijk het één keer, bouw het na en kom in de top 10 van vandaag. Om middernacht UTC komt er een nieuw bord.",
+      "socialTitle": "Het dagbord van Memory Chess",
+      "socialDescription": "Vandaag krijgt iedereen dezelfde stelling. Onthoud hem, bouw hem na en kijk waar je staat."
+    },
+    "round": {
+      "locked": "Je hebt het bord van vandaag al geopend. Eén poging per dag houdt het eerlijk.",
+      "seeBoard": "Bekijk het bord van vandaag",
+      "chooseRound": "Speel nog een ronde",
+      "join": "Doe mee met het bord van vandaag"
+    },
+    "page": {
+      "fig": "Dagbord · {date}",
+      "title": "Eén bord, voor iedereen hetzelfde",
+      "lede": "Elke dag is er één stelling voor alle spelers. Bekijk hem één keer, bouw hem uit je hoofd na en doe dan mee met het bord van de dag om te zien waar je staat.",
+      "resets": "Nieuw bord om middernacht UTC",
+      "open": "Het bord van vandaag is open",
+      "pieces": "{count, plural, one {# stuk} other {# stukken}}",
+      "seconds": "{count} s kijktijd",
+      "oneTry": "Eén poging",
+      "hidden": "Verborgen tot je speelt",
+      "play": "Speel het bord van vandaag",
+      "streak": "{count, plural, one {Dagreeks: # dag} other {Dagreeks: # dagen}}",
+      "unfinishedTitle": "De poging van vandaag is gebruikt",
+      "unfinished": "Je hebt het bord van vandaag geopend en bent weggegaan voor het resultaat. Eén poging per dag houdt het bord eerlijk, dus kom terug voor het volgende.",
+      "result": "Jouw resultaat",
+      "score": "{correct} van {pieceCount} goed",
+      "rebuild": "nagebouwd in {seconds} s",
+      "gridAria": "Jouw velden: {correct} goed, {wrong, plural, one {# fout stuk} other {# foute stukken}}, {missed} gemist, {extra} extra",
+      "key": {
+        "c": "Goed",
+        "w": "Fout stuk",
+        "m": "Gemist",
+        "x": "Extra"
+      },
+      "shareLabel": "Deel zonder het bord te verklappen",
+      "shareText": "Memory Chess dagbord {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Resultaat kopiëren",
+      "copied": "Gekopieerd",
+      "copyFailed": "Het klembord weigerde de tekst. Selecteer de tekst hieronder en kopieer hem zelf.",
+      "joined": "Je staat op het bord van vandaag",
+      "rank": "Plek {rank} van {total} vandaag",
+      "lateNote": "Je speelde het bord van gisteren, maar staat er nog niet op.",
+      "lateJoined": "Je staat op het bord van die dag"
+    },
+    "join": {
+      "title": "Doe mee met het bord van vandaag",
+      "lateTitle": "Doe mee op het bord van die dag",
+      "name": "Naam",
+      "nameHint": "4 tot 16 tekens, wordt getoond bij je score.",
+      "nameShort": "Te kort. Gebruik minstens 4 tekens.",
+      "nameLong": "Te lang. Gebruik hoogstens 16 tekens.",
+      "country": "Land",
+      "chooseCountry": "Kies een land",
+      "from": {
+        "saved": "Opgeslagen op dit apparaat.",
+        "connection": "Afgeleid van je verbinding.",
+        "language": "Afgeleid van je browsertaal.",
+        "none": "Kies het land waarvoor je speelt."
+      },
+      "change": "Wijzigen",
+      "submit": "Meedoen",
+      "submitting": "Bezig met meedoen…",
+      "public": "Je naam, land, score en rating zijn openbaar zichtbaar.",
+      "failed": "Meedoen met het bord is mislukt. Probeer het opnieuw.",
+      "noneRight": "Geen enkel stuk was goed, dus er valt niets te ranglijsten. Het volgende bord komt om middernacht UTC."
+    },
+    "board": {
+      "title": "De top 10 van vandaag",
+      "rank": "Plek",
+      "player": "Speler",
+      "right": "Goed",
+      "wrong": "Fout",
+      "time": "Tijd (s)",
+      "rating": "{rating} Elo",
+      "you": "Jij",
+      "empty": "Nog niemand heeft meegedaan met het bord van vandaag. Speel het en wees de eerste.",
+      "error": "Het bord van vandaag kon niet worden geladen. Probeer het zo meteen opnieuw.",
+      "joinToRank": "Doe mee met het bord om hier je plek te zien.",
+      "order": "Gerangschikt op goede stukken, dan op minste fouten, dan op snelste nabouw.",
+      "all": "Bekijk alle borden"
+    },
+    "reference": {
+      "title": "Zo werkt het dagbord",
+      "shared": "Elke dag om middernacht UTC wordt een nieuwe stelling getrokken, en elke speler ter wereld krijgt dezelfde. De stelling komt uit een seed die uit de datum wordt gemaakt, dus het bord is voor iedereen hetzelfde en niemand krijgt een makkelijkere versie. Omdat het bord gedeeld wordt, betekent een score erop voor iedereen die het die dag speelde hetzelfde.",
+      "oneTry": "Je hebt één poging. Het openen van het bord telt al als poging. Als je tijdens de kijkfase weggaat en terugkomt, zie je het dus niet nog een keer. Je apparaat onthoudt de poging tot het volgende bord opent.",
+      "grid": "Nadat je de stelling hebt nagebouwd, zie je welke velden goed waren, op welke het verkeerde stuk stond, welke je hebt gemist en waar je een extra stuk hebt geplaatst. De deelregel toont één vakje per stuk, gesorteerd op uitkomst en zonder te laten zien waar het stond. Door hem te delen verklap je het bord dus niet aan iemand die nog niet heeft gespeeld.",
+      "join": "Om mee te doen kies je een naam van 4 tot 16 tekens en het land waarvoor je speelt. Het land komt eerst uit je eerdere keuze, dan uit je verbinding en dan uit de taal van je browser, en je kunt het altijd wijzigen. Je rating op het moment dat je meedoet staat naast je naam.",
+      "ranking": "De rijen worden gerangschikt op het aantal goed geplaatste stukken, dan op het kleinste aantal foute stukken, dan op de snelste nabouw. Iedereen kijkt evenveel seconden, dus kijktijd maakt op het dagbord nooit het verschil tussen twee spelers.",
+      "arcTitle": "Stukken en kijktijd door de week heen",
+      "arcIntro": "De instelling volgt een weekboog. Maandag begint rustig, zodat een weekendpauze geen reeks verbreekt, de zwaarte loopt op door de week, zaterdag is een flitsbord dat je maar een paar seconden ziet en zondag is het zwaarste bord van allemaal. Binnen het bereik van elke dag kiest de datum één instelling, voor alle spelers dezelfde.",
+      "day": "Dag",
+      "pieces": "Stukken",
+      "seconds": "Kijktijd",
+      "range": "{min} tot {max}",
+      "secondsRange": "{min} tot {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

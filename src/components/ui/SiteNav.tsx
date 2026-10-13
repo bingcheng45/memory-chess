@@ -4,6 +4,7 @@ import { useLocale, useTranslations } from "next-intl";
 
 import { Link, usePathname } from "@/i18n/navigation";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
+import { useDailyState } from "@/hooks/useDailyState";
 import { englishOnlyLinkSuffix, isServedAtBareEnglishUrl } from "@/lib/seo/englishOnly";
 
 const NAV_LINKS = [
@@ -17,7 +18,7 @@ const NAV_LINKS = [
 ] as const;
 
 const LINK_CLASS =
-  "inline-flex min-h-11 items-center gap-1.5 rounded-full px-1 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-peach-300 sm:px-3.5";
+  "relative inline-flex min-h-11 items-center gap-1.5 rounded-full px-1 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-peach-300 sm:px-3.5";
 const IDLE_CLASS = "text-text-muted hover:bg-white/5 hover:text-peach-300";
 const CURRENT_CLASS = "bg-peach-500/10 text-peach-300";
 const EN_MARKER_CLASS =
@@ -25,6 +26,8 @@ const EN_MARKER_CLASS =
 
 export default function SiteNav() {
   const t = useTranslations("common");
+  const entry = useTranslations("dailyEntry");
+  const dailyReady = useDailyState()?.status === "ready";
   const pathname = usePathname();
   const locale = useLocale();
   const englishSuffix = englishOnlyLinkSuffix(locale);
@@ -40,6 +43,7 @@ export default function SiteNav() {
             "aria-current": isCurrent ? ("page" as const) : undefined,
           };
           const label = t(labelKey);
+          const marked = dailyReady && href === "/dashboard";
 
           return (
             <li key={href} className={"itemClass" in link ? link.itemClass : undefined}>
@@ -64,8 +68,15 @@ export default function SiteNav() {
                   )}
                 </EnglishOnlyLink>
               ) : (
-                <Link href={href} {...linkProps}>
+                <Link
+                  href={href}
+                  {...linkProps}
+                  aria-label={marked ? entry("navReady", { label }) : undefined}
+                >
                   {label}
+                  {marked && (
+                    <span aria-hidden="true" className="absolute right-0 top-2 h-1.5 w-1.5 rounded-full bg-peach-500" />
+                  )}
                 </Link>
               )}
             </li>

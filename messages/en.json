@@ -1181,10 +1181,17 @@
     "columns": {
       "rank": "Rank",
       "player": "Player",
+      "elo": "ELO",
       "pieces": "Pieces",
       "memorizeTime": "Memorize Time",
       "solutionTime": "Solution Time",
       "date": "Date"
+    },
+    "daily": {
+      "tab": "Daily",
+      "setting": "{pieces, plural, one {# piece} other {# pieces}} · {seconds} s to study",
+      "resetsAtUtc": "Resets at {utc} UTC",
+      "resetsAt": "Resets at {utc} UTC ({local} your time), in {timeLeft}"
     }
   },
   "country": {
@@ -1598,5 +1605,119 @@
     },
     "play": "Play a round",
     "home": "Go to the home page"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} h {minutes} min",
+    "underMinute": "under a minute",
+    "ready": "Today's board · {pieceCount, plural, one {# piece} other {# pieces}} · {seconds} s · {timeLeft} left",
+    "next": "Next board in {timeLeft}",
+    "pending": "Today's board",
+    "navReady": "{label}, today's daily board is ready",
+    "cardTitle": "Today's daily board is ready",
+    "cardSetting": "{pieceCount, plural, one {# piece} other {# pieces}} and {seconds, plural, one {# second} other {# seconds}} to study.",
+    "cardNote": "Everyone plays the same board today, and you get one try.",
+    "play": "Play today's board"
+  },
+  "daily": {
+    "meta": {
+      "title": "Daily Chess Memory Board: One Position for Everyone",
+      "description": "One chess memory board a day, the same position for every player. Study it once, rebuild it, and join today's top 10. A new board opens at midnight UTC.",
+      "socialTitle": "The Memory Chess Daily Board",
+      "socialDescription": "Everyone gets the same position today. Study it, rebuild it, and see where you rank."
+    },
+    "round": {
+      "locked": "You have already opened today's board. One try a day keeps it fair.",
+      "seeBoard": "See today's board",
+      "chooseRound": "Play another round",
+      "join": "Join today's board"
+    },
+    "page": {
+      "fig": "Daily board · {date}",
+      "title": "One board, the same for everyone",
+      "lede": "Each day brings one position for every player. Study it once, rebuild it from memory, then join the day's board to see where you stand.",
+      "resets": "New board at midnight UTC",
+      "open": "Today's board is open",
+      "pieces": "{count, plural, one {# piece} other {# pieces}}",
+      "seconds": "{count} s to study",
+      "oneTry": "One try",
+      "hidden": "Hidden until you play",
+      "play": "Play today's board",
+      "streak": "{count, plural, one {Daily streak: # day} other {Daily streak: # days}}",
+      "unfinishedTitle": "Today's try is used",
+      "unfinished": "You opened today's board and left before the result. One try a day keeps the board fair, so come back for the next one.",
+      "result": "Your result",
+      "score": "{correct} of {pieceCount} right",
+      "rebuild": "rebuilt in {seconds} s",
+      "gridAria": "Your squares: {correct} correct, {wrong, plural, one {# wrong piece} other {# wrong pieces}}, {missed} missed, {extra} extra",
+      "key": {
+        "c": "Correct",
+        "w": "Wrong piece",
+        "m": "Missed",
+        "x": "Extra"
+      },
+      "shareLabel": "Share without giving the board away",
+      "shareText": "Memory Chess daily board {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Copy result",
+      "copied": "Copied",
+      "copyFailed": "The clipboard was refused. Select the text below and copy it.",
+      "joined": "You are on today's board",
+      "rank": "Rank {rank} of {total} today",
+      "lateNote": "You played yesterday's board and have not joined it yet.",
+      "lateJoined": "You are on the board for that day"
+    },
+    "join": {
+      "title": "Join today's board",
+      "lateTitle": "Join that day's board",
+      "name": "Name",
+      "nameHint": "4 to 16 characters, shown with your score.",
+      "nameShort": "Too short. Use at least 4 characters.",
+      "nameLong": "Too long. Use at most 16 characters.",
+      "country": "Country",
+      "chooseCountry": "Choose a country",
+      "from": {
+        "saved": "Saved on this device.",
+        "connection": "From your connection.",
+        "language": "From your browser language.",
+        "none": "Pick the country you play for."
+      },
+      "change": "Change",
+      "submit": "Join the board",
+      "submitting": "Joining…",
+      "public": "Your name, country, score and rating are shown publicly.",
+      "failed": "Could not join the board. Please try again.",
+      "noneRight": "No piece was right, so this try has nothing to rank. The next board opens at midnight UTC."
+    },
+    "board": {
+      "title": "Today's top 10",
+      "rank": "Rank",
+      "player": "Player",
+      "right": "Right",
+      "wrong": "Wrong",
+      "time": "Time (s)",
+      "rating": "{rating} Elo",
+      "you": "You",
+      "empty": "No one has joined today's board yet. Play it and be the first.",
+      "error": "Today's board could not be loaded. Please try again shortly.",
+      "joinToRank": "Join the board to see your rank here.",
+      "order": "Ranked by pieces right, then fewest wrong, then fastest rebuild.",
+      "all": "See every board"
+    },
+    "reference": {
+      "title": "How the daily board works",
+      "shared": "Every day at midnight UTC a new position is drawn, and every player in the world gets the same one. The position comes from a seed made from the date, so the board is the same for everyone and nobody gets an easier copy. Because the board is shared, a score on it means the same thing for everyone who played it that day.",
+      "oneTry": "You get one try. Opening the board counts as the try, so leaving during the study phase and coming back does not show it to you twice. Your device remembers the try until the next board opens.",
+      "grid": "After you rebuild the position you see which squares you got right, which held the wrong piece, which you missed and where you placed an extra piece. The share row lists one square per piece, sorted by outcome, with nothing about where it stood, so posting it does not give the board away to someone who has not played yet.",
+      "join": "To join the board, pick a name of 4 to 16 characters and the country you play for. The country starts from the one you picked before, then from your connection, then from your browser's language, and you can always change it. Your rating at the moment you join is shown beside your name.",
+      "ranking": "Rows are ranked by the number of pieces placed correctly, then by the fewest wrong pieces, then by the fastest rebuild. Everyone studies for the same number of seconds, so study time never separates two players on the daily board.",
+      "arcTitle": "Pieces and study time through the week",
+      "arcIntro": "The setting follows a weekly arc. Monday starts gently so a weekend break does not end a streak, the load builds through the week, Saturday is a flash board you see for only a few seconds, and Sunday is the hardest board of all. Within each day's range the date picks one setting, the same for every player.",
+      "day": "Day",
+      "pieces": "Pieces",
+      "seconds": "Study time",
+      "range": "{min} to {max}",
+      "secondsRange": "{min} to {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

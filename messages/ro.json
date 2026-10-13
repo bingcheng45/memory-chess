@@ -366,10 +366,17 @@
     "columns": {
       "rank": "Loc",
       "player": "Jucător",
+      "elo": "ELO",
       "pieces": "Piese",
       "memorizeTime": "Timp de memorare",
       "solutionTime": "Timp de rezolvare",
       "date": "Data"
+    },
+    "daily": {
+      "tab": "Zilnic",
+      "setting": "{pieces, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s de studiu",
+      "resetsAtUtc": "Se resetează la {utc} UTC",
+      "resetsAt": "Se resetează la {utc} UTC ({local} la tine), în {timeLeft}"
     }
   },
   "country": {
@@ -783,5 +790,119 @@
     },
     "play": "Joacă o rundă",
     "home": "Mergi la pagina principală"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} h {minutes} min",
+    "underMinute": "< 1 min",
+    "ready": "Tabla de azi · {pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s · mai sunt {timeLeft}",
+    "next": "Următoarea tablă în {timeLeft}",
+    "pending": "Tabla de azi",
+    "navReady": "{label}, tabla zilei de azi este gata",
+    "cardTitle": "Tabla zilei de azi este gata",
+    "cardSetting": "{pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} și {seconds, plural, one {# secundă} few {# secunde} other {# de secunde}} pentru memorare.",
+    "cardNote": "Azi toată lumea joacă aceeași tablă și ai o singură încercare.",
+    "play": "Joacă tabla de azi"
+  },
+  "daily": {
+    "meta": {
+      "title": "Tabla zilnică de memorie la șah: o poziție pentru toți",
+      "description": "O tablă de memorie la șah pe zi, aceeași poziție pentru toți jucătorii. Studiaz-o o dată, reconstruiește-o și intră în top 10 de azi. O tablă nouă se deschide la miezul nopții UTC.",
+      "socialTitle": "Tabla zilei din Memory Chess",
+      "socialDescription": "Azi toți primesc aceeași poziție. Studiaz-o, reconstruiește-o și vezi pe ce loc ajungi."
+    },
+    "round": {
+      "locked": "Ai deschis deja tabla de azi. O singură încercare pe zi păstrează jocul corect.",
+      "seeBoard": "Vezi tabla de azi",
+      "chooseRound": "Joacă o altă rundă",
+      "join": "Intră în tabla de azi"
+    },
+    "page": {
+      "fig": "Tabla zilei · {date}",
+      "title": "O singură tablă, la fel pentru toți",
+      "lede": "În fiecare zi, toți jucătorii primesc o singură poziție. Studiaz-o o dată, reconstruiește-o din memorie, apoi intră în tabla zilei ca să vezi unde te situezi.",
+      "resets": "Tablă nouă la miezul nopții UTC",
+      "open": "Tabla de azi este deschisă",
+      "pieces": "{count, plural, one {# piesă} few {# piese} other {# de piese}}",
+      "seconds": "{count} s de studiu",
+      "oneTry": "O singură încercare",
+      "hidden": "Ascunsă până joci",
+      "play": "Joacă tabla de azi",
+      "streak": "{count, plural, one {Serie zilnică: # zi} few {Serie zilnică: # zile} other {Serie zilnică: # de zile}}",
+      "unfinishedTitle": "Încercarea de azi a fost folosită",
+      "unfinished": "Ai deschis tabla de azi și ai plecat înainte de rezultat. O singură încercare pe zi păstrează tabla corectă, așa că revino pentru următoarea.",
+      "result": "Rezultatul tău",
+      "score": "{correct} din {pieceCount} corecte",
+      "rebuild": "reconstruită în {seconds} s",
+      "gridAria": "Pătratele tale: {correct} corecte, {wrong, plural, one {# piesă greșită} few {# piese greșite} other {# de piese greșite}}, {missed} ratate, {extra} în plus",
+      "key": {
+        "c": "Corect",
+        "w": "Piesă greșită",
+        "m": "Ratat",
+        "x": "În plus"
+      },
+      "shareLabel": "Distribuie fără să dezvălui tabla",
+      "shareText": "Memory Chess, tabla zilei {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Copiază rezultatul",
+      "copied": "Copiat",
+      "copyFailed": "Clipboardul a refuzat copierea. Selectează textul de mai jos și copiază-l.",
+      "joined": "Ești în tabla de azi",
+      "rank": "Locul {rank} din {total} azi",
+      "lateNote": "Ai jucat tabla de ieri și încă nu ai intrat în ea.",
+      "lateJoined": "Ești în tabla din ziua aceea"
+    },
+    "join": {
+      "title": "Intră în tabla de azi",
+      "lateTitle": "Intră în tabla din ziua aceea",
+      "name": "Nume",
+      "nameHint": "Între 4 și 16 caractere, afișat alături de scorul tău.",
+      "nameShort": "Prea scurt. Folosește cel puțin 4 caractere.",
+      "nameLong": "Prea lung. Folosește cel mult 16 caractere.",
+      "country": "Țară",
+      "chooseCountry": "Alege o țară",
+      "from": {
+        "saved": "Salvată pe acest dispozitiv.",
+        "connection": "După conexiunea ta.",
+        "language": "După limba browserului.",
+        "none": "Alege țara pe care o reprezinți."
+      },
+      "change": "Schimbă",
+      "submit": "Intră în tablă",
+      "submitting": "Se intră…",
+      "public": "Numele, țara, scorul și ratingul tău sunt afișate public.",
+      "failed": "Nu s-a putut intra în tablă. Încearcă din nou.",
+      "noneRight": "Nicio piesă nu a fost corectă, așa că această încercare nu are ce să intre în clasament. Următoarea tablă se deschide la miezul nopții UTC."
+    },
+    "board": {
+      "title": "Top 10 de azi",
+      "rank": "Loc",
+      "player": "Jucător",
+      "right": "Corecte",
+      "wrong": "Greșite",
+      "time": "Timp (s)",
+      "rating": "{rating} Elo",
+      "you": "Tu",
+      "empty": "Nimeni nu a intrat încă în tabla de azi. Joac-o și fii primul.",
+      "error": "Tabla de azi nu a putut fi încărcată. Încearcă din nou în scurt timp.",
+      "joinToRank": "Intră în tablă ca să-ți vezi aici locul.",
+      "order": "Ordonat după piesele corecte, apoi după cele mai puține greșite, apoi după cea mai rapidă reconstrucție.",
+      "all": "Vezi toate tablele"
+    },
+    "reference": {
+      "title": "Cum funcționează tabla zilei",
+      "shared": "În fiecare zi, la miezul nopții UTC, se alege o poziție nouă, iar fiecare jucător din lume o primește pe aceeași. Poziția provine dintr-un seed creat din dată, așa că tabla este aceeași pentru toți și nimeni nu primește o variantă mai ușoară. Fiindcă tabla este comună, un scor înseamnă același lucru pentru toți cei care au jucat-o în ziua respectivă.",
+      "oneTry": "Ai o singură încercare. Deschiderea tablei se numără ca încercare, așa că dacă pleci în timpul studiului și revii, nu ți-o mai arătăm a doua oară. Dispozitivul tău ține minte încercarea până se deschide următoarea tablă.",
+      "grid": "După ce reconstruiești poziția, vezi ce pătrate ai nimerit, care aveau o piesă greșită, pe care le-ai ratat și unde ai pus o piesă în plus. Rândul de distribuit are un pătrat pentru fiecare piesă, sortat după rezultat, fără nicio informație despre locul piesei, așa că postarea lui nu dezvăluie tabla cuiva care nu a jucat încă.",
+      "join": "Ca să intri în tablă, alege un nume de 4 până la 16 caractere și țara pe care o reprezinți. Țara pornește de la cea aleasă anterior, apoi de la conexiunea ta, apoi de la limba browserului, și o poți schimba oricând. Ratingul tău de la momentul intrării apare lângă nume.",
+      "ranking": "Rândurile sunt ordonate după numărul de piese plasate corect, apoi după cele mai puține piese greșite, apoi după cea mai rapidă reconstrucție. Toți studiază același număr de secunde, așa că timpul de studiu nu desparte niciodată doi jucători pe tabla zilei.",
+      "arcTitle": "Piesele și timpul de studiu de-a lungul săptămânii",
+      "arcIntro": "Setarea urmează un arc săptămânal. Luni începe lejer, ca o pauză de weekend să nu rupă o serie, încărcarea crește pe parcursul săptămânii, sâmbătă este o tablă fulger pe care o vezi doar câteva secunde, iar duminică este cea mai grea tablă dintre toate. În intervalul fiecărei zile, data alege o singură setare, aceeași pentru toți jucătorii.",
+      "day": "Ziua",
+      "pieces": "Piese",
+      "seconds": "Timp de studiu",
+      "range": "între {min} și {max}",
+      "secondsRange": "între {min} și {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

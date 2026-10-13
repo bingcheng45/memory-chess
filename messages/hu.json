@@ -366,10 +366,17 @@
     "columns": {
       "rank": "Helyezés",
       "player": "Játékos",
+      "elo": "ELO",
       "pieces": "Bábuk",
       "memorizeTime": "Memorizálási idő",
       "solutionTime": "Megoldási idő",
       "date": "Dátum"
+    },
+    "daily": {
+      "tab": "Napi",
+      "setting": "{pieces, plural, one {# bábu} other {# bábu}} · {seconds} mp tanulásra",
+      "resetsAtUtc": "Újraindul {utc} UTC-kor",
+      "resetsAt": "Újraindul {utc} UTC-kor (nálad {local}), {timeLeft} múlva"
     }
   },
   "country": {
@@ -783,5 +790,119 @@
     },
     "play": "Játssz egy kört",
     "home": "Vissza a főoldalra"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} perc",
+    "hoursLeft": "{hours} ó {minutes} perc",
+    "underMinute": "< 1 perc",
+    "ready": "A mai tábla · {pieceCount} bábu · {seconds} mp · még {timeLeft}",
+    "next": "Következő tábla {timeLeft} múlva",
+    "pending": "A mai tábla",
+    "navReady": "{label}, a mai napi tábla elérhető",
+    "cardTitle": "A mai napi tábla elérhető",
+    "cardSetting": "{pieceCount} bábu és {seconds} mp a megjegyzésre.",
+    "cardNote": "Ma mindenki ugyanazt a táblát játssza, és egy próbálkozásod van.",
+    "play": "Játszd a mai táblát"
+  },
+  "daily": {
+    "meta": {
+      "title": "Napi sakk-memóriatábla: egy állás mindenkinek",
+      "description": "Naponta egy sakk-memóriatábla, minden játékosnak ugyanaz az állás. Tanuld meg egyszer, építsd újra, és kerülj be a mai top 10-be. Az új tábla éjfélkor nyílik, UTC szerint.",
+      "socialTitle": "A Memory Chess napi táblája",
+      "socialDescription": "Ma mindenki ugyanazt az állást kapja. Tanuld meg, építsd újra, és nézd meg, hányadik vagy."
+    },
+    "round": {
+      "locked": "A mai táblát már megnyitottad. Napi egy próbálkozás tartja tisztességesen a játékot.",
+      "seeBoard": "A mai tábla megtekintése",
+      "chooseRound": "Újabb kör",
+      "join": "Csatlakozás a mai táblához"
+    },
+    "page": {
+      "fig": "Napi tábla · {date}",
+      "title": "Egy tábla, mindenkinek ugyanaz",
+      "lede": "Minden nap egyetlen állást kap minden játékos. Tanuld meg egyszer, építsd újra fejből, majd csatlakozz a napi táblához, hogy lásd, hol állsz.",
+      "resets": "Új tábla éjfélkor, UTC szerint",
+      "open": "A mai tábla nyitva van",
+      "pieces": "{count, plural, one {# bábu} other {# bábu}}",
+      "seconds": "{count} mp tanulásra",
+      "oneTry": "Egy próbálkozás",
+      "hidden": "Rejtve, amíg nem játszol",
+      "play": "A mai tábla játéka",
+      "streak": "{count, plural, one {Napi sorozat: # nap} other {Napi sorozat: # nap}}",
+      "unfinishedTitle": "A mai próbálkozást felhasználtad",
+      "unfinished": "Megnyitottad a mai táblát, de az eredmény előtt kiléptél. Napi egy próbálkozás tartja tisztességesen a táblát, ezért a következőre gyere vissza.",
+      "result": "Az eredményed",
+      "score": "{correct} / {pieceCount} helyes",
+      "rebuild": "újraépítve {seconds} mp alatt",
+      "gridAria": "A mezőid: {correct} helyes, {wrong} rossz bábu, {missed} kihagyott, {extra} felesleges",
+      "key": {
+        "c": "Helyes",
+        "w": "Rossz bábu",
+        "m": "Kihagyott",
+        "x": "Felesleges"
+      },
+      "shareLabel": "Megosztás a tábla elárulása nélkül",
+      "shareText": "Memory Chess napi tábla {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Eredmény másolása",
+      "copied": "Másolva",
+      "copyFailed": "A vágólap elutasította a másolást. Jelöld ki az alábbi szöveget, és másold ki.",
+      "joined": "Rajta vagy a mai táblán",
+      "rank": "{rank}. hely a mai {total} közül",
+      "lateNote": "Játszottál a tegnapi táblán, de még nem csatlakoztál hozzá.",
+      "lateJoined": "Rajta vagy annak a napnak a tábláján"
+    },
+    "join": {
+      "title": "Csatlakozás a mai táblához",
+      "lateTitle": "Csatlakozz annak a napnak a táblájához",
+      "name": "Név",
+      "nameHint": "4–16 karakter, a pontszámod mellett jelenik meg.",
+      "nameShort": "Túl rövid. Legalább 4 karaktert használj.",
+      "nameLong": "Túl hosszú. Legfeljebb 16 karaktert használj.",
+      "country": "Ország",
+      "chooseCountry": "Válassz országot",
+      "from": {
+        "saved": "Elmentve ezen az eszközön.",
+        "connection": "A kapcsolatod alapján.",
+        "language": "A böngésző nyelve alapján.",
+        "none": "Válaszd ki az országot, amelyet képviselsz."
+      },
+      "change": "Módosítás",
+      "submit": "Csatlakozás a táblához",
+      "submitting": "Csatlakozás…",
+      "public": "A neved, az országod, a pontszámod és az értékszámod nyilvánosan látható.",
+      "failed": "Nem sikerült csatlakozni a táblához. Próbáld újra.",
+      "noneRight": "Egyetlen bábu sem volt jó, így ennek a próbálkozásnak nincs helyezése. A következő tábla éjfélkor nyílik, UTC szerint."
+    },
+    "board": {
+      "title": "A mai top 10",
+      "rank": "Helyezés",
+      "player": "Játékos",
+      "right": "Helyes",
+      "wrong": "Hibás",
+      "time": "Idő (mp)",
+      "rating": "{rating} Elo",
+      "you": "Te",
+      "empty": "A mai táblához még senki nem csatlakozott. Játssz, és légy te az első.",
+      "error": "A mai táblát nem sikerült betölteni. Próbáld újra egy kis idő múlva.",
+      "joinToRank": "Csatlakozz a táblához, hogy itt lásd a helyezésedet.",
+      "order": "Sorrend: legtöbb helyes bábu, azután legkevesebb hibás, azután leggyorsabb újraépítés.",
+      "all": "Az összes tábla megtekintése"
+    },
+    "reference": {
+      "title": "Hogyan működik a napi tábla",
+      "shared": "Minden nap éjfélkor, UTC szerint új állást sorsolunk, és a világ minden játékosa ugyanazt kapja. Az állás a dátumból képzett kezdőértékből jön létre, így a tábla mindenkinek ugyanaz, és senki nem kap könnyebb változatot. Mivel a tábla közös, a pontszám ugyanazt jelenti mindenkinek, aki aznap játszott vele.",
+      "oneTry": "Egy próbálkozásod van. A tábla megnyitása már próbálkozásnak számít, ezért ha a tanulás közben kilépsz, majd visszatérsz, nem látod újra. Az eszközöd megjegyzi a próbálkozást a következő tábla megnyitásáig.",
+      "grid": "Az állás újraépítése után látod, mely mezőket találtad el, melyiken állt rossz bábu, melyiket hagytad ki, és hova tettél felesleges bábut. A megosztható sor bábunként egy mezőt mutat, eredmény szerint rendezve, anélkül, hogy a bábu helyére utalna, így a közzététel nem árulja el a táblát annak, aki még nem játszott.",
+      "join": "A csatlakozáshoz válassz egy 4–16 karakteres nevet és azt az országot, amelyet képviselsz. Az ország először a korábbi választásodból töltődik ki, aztán a kapcsolatodból, végül a böngésző nyelvéből, és bármikor módosíthatod. A csatlakozáskori értékszámod a neved mellett jelenik meg.",
+      "ranking": "A sorok a helyesen elhelyezett bábuk száma szerint vannak rendezve, azután a hibás bábuk legkisebb száma, végül a leggyorsabb újraépítés szerint. Mindenki ugyanannyi másodpercig tanul, így a tanulási idő a napi táblán soha nem dönt két játékos között.",
+      "arcTitle": "Bábuk és tanulási idő a hét során",
+      "arcIntro": "A beállítás heti ívet követ. A hétfő szelíden indul, hogy egy hétvégi kihagyás ne szakítsa meg a sorozatot, a terhelés a héten át nő, a szombat villámtábla, amelyet csak néhány másodpercig látsz, a vasárnap pedig az összes közül a legnehezebb. Az egyes napok tartományán belül a dátum választ egy beállítást, amely minden játékosnak ugyanaz.",
+      "day": "Nap",
+      "pieces": "Bábuk",
+      "seconds": "Tanulási idő",
+      "range": "{min}–{max}",
+      "secondsRange": "{min}–{max} mp",
+      "secondsExact": "{count} mp"
+    }
   }
 }

@@ -1,4 +1,4 @@
-import { boardGrid, dailyBoardOf, msToNextUtcDay, shareRow, utcDayOf } from "@/lib/lab/daily";
+import { boardGrid, dailyBoardOf, msToNextUtcDay, parseUtcDay, shareRow, utcDayOf } from "@/lib/lab/daily";
 import { LAB_METRICS } from "@/lib/lab/metrics";
 import { personaRounds, PERSONA_TODAY } from "@/lib/lab/personas";
 import { summarize } from "@/lib/lab/summary";
@@ -8,6 +8,26 @@ const daily = (dailyDay: string, overrides: Parameters<typeof roundV2>[0] = {}) 
   roundV2({ id: `daily-${dailyDay}`, endedAt: Date.parse(`${dailyDay}T09:00:00Z`), localDay: dailyDay, ...overrides }, { kind: "daily", dailyDay, startSource: "daily" });
 
 describe("the daily board's UTC day", () => {
+  it("reads a day that exists, written as YYYY-MM-DD", () => {
+    expect(["2026-10-13", "2024-02-29", "0001-01-01", "9999-12-31"].map(parseUtcDay)).toEqual([
+      "2026-10-13",
+      "2024-02-29",
+      "0001-01-01",
+      "9999-12-31",
+    ]);
+  });
+
+  it.each([
+    ["a year Postgres cannot store", "0000-01-01"],
+    ["a day that does not exist", "2026-02-29"],
+    ["an unpadded month", "2026-1-01"],
+    ["a timestamp", "2026-10-13T00:00:00Z"],
+    ["a number", 20261013],
+    ["null", null],
+  ])("reads nothing from %s", (_case, value) => {
+    expect(parseUtcDay(value)).toBeNull();
+  });
+
   it("names the day by UTC, whatever the time zone", () => {
     expect(utcDayOf(Date.parse("2026-10-08T23:59:59Z"))).toBe("2026-10-08");
     expect(utcDayOf(Date.parse("2026-10-09T00:00:00Z"))).toBe("2026-10-09");

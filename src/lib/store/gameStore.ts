@@ -13,6 +13,7 @@ import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
 import { trackEvent, type RoundSource } from '@/lib/analytics/events';
 import type { LabRound } from '@/lib/lab/recordRound';
 import { now as monotonicNow } from '@/lib/game/clock';
+import { isSkillRating, START_RATING } from "@/lib/game/rating";
 import { isSoundEnabled } from '@/lib/utils/soundEffects';
 import {
   IDLE_ROUND,
@@ -37,9 +38,6 @@ const SOLUTION_FEN_SUFFIX = ' w - - 0 1';
 
 /** The newest rounds kept in the persisted history. A review round is left out, as it is from the rating and the streak. */
 const HISTORY_LIMIT = 20;
-
-/** Every player's rating before their first rated round. */
-export const START_RATING = 1000;
 
 /** The accuracy a rated round needs to extend the win streak; below it the streak starts again. */
 export const WIN_ACCURACY = 70;
@@ -172,7 +170,7 @@ export const useGameStore = create<GameStore>()(
             startSource: source,
             board,
             originalPosition,
-            skillRating: get().gameState.skillRating || 1000,
+            skillRating: get().gameState.skillRating || START_RATING,
             streak: get().gameState.streak || 0,
           },
           lastSettings: { pieceCount, memorizeTime },
@@ -184,7 +182,7 @@ export const useGameStore = create<GameStore>()(
 
       resetGame: () => {
         // Preserve skill rating and streak when resetting
-        const currentSkillRating = get().gameState.skillRating || 1000;
+        const currentSkillRating = get().gameState.skillRating || START_RATING;
         const currentStreak = get().gameState.streak || 0;
 
         set({
@@ -223,7 +221,7 @@ export const useGameStore = create<GameStore>()(
         const rated = gameState.board?.kind !== 'review';
 
         // Calculate skill rating change
-        const currentRating = gameState.skillRating || 1000;
+        const currentRating = gameState.skillRating || START_RATING;
         const skillRatingChange = rated ? calculateSkillRatingChange(
           score.accuracy,
           gameState.pieceCount,
@@ -328,7 +326,7 @@ export const useGameStore = create<GameStore>()(
 
       // Stats and progression
       getSkillRating: () => {
-        return get().gameState.skillRating || 1000;
+        return get().gameState.skillRating || START_RATING;
       },
       
       getCurrentStreak: () => {
@@ -353,7 +351,7 @@ export const useGameStore = create<GameStore>()(
           pieceCount, 
           completionTime, 
           gameState.memorizeTime,
-          gameState.skillRating || 1000,
+          gameState.skillRating || START_RATING,
           gameState.actualMemorizeTime
         );
       }
@@ -377,10 +375,15 @@ export const useGameStore = create<GameStore>()(
       // by a later version, such as the streak, starts from its default.
       merge: (persisted, current) => {
         const stored = (isRecord(persisted) ? persisted : {}) as Partial<GameStore>;
+        const storedGameState: Record<string, unknown> = isRecord(stored.gameState) ? stored.gameState : {};
         return {
           ...current,
           ...stored,
-          gameState: { ...current.gameState, ...(isRecord(stored.gameState) ? stored.gameState : {}) },
+          gameState: {
+            ...current.gameState,
+            ...storedGameState,
+            skillRating: isSkillRating(storedGameState.skillRating) ? storedGameState.skillRating : START_RATING,
+          },
           lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
         };
       },

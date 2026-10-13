@@ -951,15 +951,18 @@
       "lastGame": "지난 게임: 풀이 시간 {time}초, 정확도 {accuracy}%",
       "preview": {
         "label": "레이팅 미리보기",
-        "placement": "배치 라운드 {round}/{of}",
+        "provisional": "임시 레이팅",
         "rated": "레이팅 라운드",
         "board": "보드 레이팅",
         "yours": "내 레이팅",
+        "expected": "예상 정확도",
+        "percent": "<num>{value}%</num>",
+        "suggested": "추천 보드",
         "clear": "성공하면",
         "miss": "실패하면",
         "gain": "최대 <num>+{value}</num>",
         "loss": "최대 <num>−{value}</num>",
-        "announce": "보드 레이팅 {board}. 내 레이팅 {rating}. 성공하면 최대 +{gain}. 실패하면 최대 −{loss}."
+        "announce": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}. 실패하면 최대 −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "암기 시간",
       "solutionTime": "풀이 시간",
       "recallSpeed": "회상 속도",
-      "placement": "레이팅 배치: {total}라운드 중 {round}라운드",
+      "provisional": "임시 레이팅",
       "freeSkip": "오늘의 무료 건너뛰기: 빈 보드는 레이팅을 바꾸지 않습니다. 오늘 다음 빈 보드부터는 바뀝니다.",
       "piecesPerSecond": "초당 {value}개",
       "actions": "결과 관련 작업",

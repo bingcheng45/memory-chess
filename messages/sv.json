@@ -951,15 +951,18 @@
       "lastGame": "Senaste partiet: {time} s lösningstid med {accuracy} % träffsäkerhet",
       "preview": {
         "label": "Förhandsvisning av rating",
-        "placement": "Placeringsrunda {round} av {of}",
+        "provisional": "Preliminär rating",
         "rated": "Ratad runda",
         "board": "Brädets rating",
         "yours": "Din rating",
+        "expected": "Förväntad precision",
+        "percent": "<num>{value} %</num>",
+        "suggested": "Föreslaget bräde",
         "clear": "Om du klarar den",
         "miss": "Om det går fel",
         "gain": "Upp till <num>+{value}</num>",
         "loss": "Högst <num>−{value}</num>",
-        "announce": "Brädets rating {board}. Din rating {rating}. Om du klarar den, upp till +{gain}. Om det går fel, högst −{loss}."
+        "announce": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}. Om det går fel, högst −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Memoreringstid",
       "solutionTime": "Lösningstid",
       "recallSpeed": "Minneshastighet",
-      "placement": "Placering av rating: runda {round} av {total}",
+      "provisional": "Preliminär rating",
       "freeSkip": "Dagens gratis överhoppning: ett tomt bräde ändrar inte din rating. Nästa i dag gör det.",
       "piecesPerSecond": "{value} pjäser/s",
       "actions": "Åtgärder för resultatet",

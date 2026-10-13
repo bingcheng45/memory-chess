@@ -951,15 +951,18 @@
       "lastGame": "Vorige partij: {time} s oplostijd met {accuracy}% nauwkeurigheid",
       "preview": {
         "label": "Voorbeeld van je rating",
-        "placement": "Plaatsingsronde {round} van {of}",
+        "provisional": "Voorlopige rating",
         "rated": "Rated ronde",
         "board": "Rating van het bord",
         "yours": "Jouw rating",
+        "expected": "Verwachte nauwkeurigheid",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Voorgesteld bord",
         "clear": "Als het lukt",
         "miss": "Als het misgaat",
         "gain": "Tot <num>+{value}</num>",
         "loss": "Hooguit <num>−{value}</num>",
-        "announce": "Rating van het bord {board}. Jouw rating {rating}. Als het lukt, tot +{gain}. Als het misgaat, hooguit −{loss}."
+        "announce": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}. Als het misgaat, hooguit −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Kijktijd",
       "solutionTime": "Oplostijd",
       "recallSpeed": "Herinneringssnelheid",
-      "placement": "Plaatsing van je rating: ronde {round} van {total}",
+      "provisional": "Voorlopige rating",
       "freeSkip": "Gratis overslaan van de dag: een leeg bord verandert je rating niet. Het volgende vandaag wel.",
       "piecesPerSecond": "{value} stukken/s",
       "actions": "Acties bij het resultaat",

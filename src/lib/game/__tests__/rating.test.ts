@@ -1,4 +1,18 @@
-import { boardLevel, challengeOf, parseRatedRoundFacts, ratingAfter, ratingPreview, type RatedRoundFacts } from "../rating";
+import {
+  boardLevel,
+  challengeOf,
+  isProvisional,
+  NEW_PLAYER,
+  parseCertainty,
+  parseRatedRoundFacts,
+  ratingAfter,
+  ratingPreview,
+  replay,
+  STEADY_RD,
+  suggestBoard,
+  type PlayerRating,
+  type RatedRoundFacts,
+} from "../rating";
 
 const round = (pieceCount: number, studySeconds: number, accuracy: number, rebuildSeconds = pieceCount * 2.5): RatedRoundFacts => ({
   pieceCount,
@@ -7,15 +21,10 @@ const round = (pieceCount: number, studySeconds: number, accuracy: number, rebui
   accuracy,
 });
 
-/** Plays rounds from the start rating, oldest first. */
-const play = (rounds: readonly RatedRoundFacts[]) =>
-  rounds.reduce(
-    ({ rating, history }, next) => ({ rating: ratingAfter(rating, history, next).rating, history: [next, ...history] }),
-    { rating: 1000, history: [] as RatedRoundFacts[] },
-  );
+/** A player the game is sure of: rated 1200 at the steady uncertainty. */
+const established: PlayerRating = { rating: 1200, rd: STEADY_RD, rounds: 100 };
 
-/** Thirty rated rounds of Medium, newest first, at a mix of 83%, 100% and 67%. */
-const mediumNorm: RatedRoundFacts[] = Array.from({ length: 30 }, (_, i) => round(6, 9 + (i % 3) * 0.5, [83, 100, 67][i % 3], 15));
+const RANGES = { pieces: { min: 2, max: 32 }, seconds: { min: 2, max: 60 } };
 
 describe("board level", () => {
   it("puts Medium at 1000 and ranks the presets", () => {
@@ -40,101 +49,107 @@ describe("challenge", () => {
   });
 });
 
-describe("placement", () => {
-  it("moves the start by a tenth of the round's estimate and names the round", () => {
-    expect(ratingAfter(1000, [], round(6, 10, 100))).toEqual({
-      phase: "placement",
-      rating: 1040,
-      change: 40,
-      breakdown: { round: 1, of: 10, boardLevel: 1000, challenge: 1000, estimate: 1400 },
-    });
-  });
+describe("an established player's round", () => {
+  const changes = (pieces: number, study: number) =>
+    [100, 95, 80, 50, 0].map((accuracy) => ratingAfter(established, round(pieces, study, accuracy)).change);
 
-  it("stands at the estimate from all ten rounds once placement ends", () => {
-    const tenth = play(Array.from({ length: 9 }, () => round(6, 10, 90)));
-    expect(ratingAfter(tenth.rating, tenth.history, round(6, 10, 90))).toMatchObject({ phase: "placement", rating: 1280, breakdown: { round: 10 } });
-  });
-
-  it("is the tenth round with nine earlier rounds and rated after that", () => {
-    expect([ratingAfter(1000, mediumNorm.slice(0, 9), round(6, 10, 100)).phase, ratingAfter(1000, mediumNorm.slice(0, 10), round(6, 10, 100)).phase]).toEqual([
-      "placement",
-      "rated",
+  it("gains more on harder boards and loses more on easier ones, for a 1200 player", () => {
+    expect([changes(2, 10), changes(6, 10), changes(7, 10), changes(12, 8), changes(20, 5)]).toEqual([
+      [0, -2, -11, -27, -50],
+      [10, 7, -1, -18, -45],
+      [15, 12, 3, -16, -47],
+      [50, 50, 42, 13, -36],
+      [50, 50, 50, 50, -15],
     ]);
   });
 
-  it("lowers the rating for an empty board however hard it was", () => {
-    expect([ratingAfter(1000, [], round(32, 1, 0, 0.2)).change, ratingAfter(1000, [], round(6, 10, 0)).change]).toEqual([-20, -40]);
+  it("reports the round's challenge, expected accuracy and score", () => {
+    expect(ratingAfter(established, round(6, 10, 80))).toMatchObject({
+      phase: "rated",
+      rating: 1199,
+      change: -1,
+      breakdown: { challenge: 1000, score: 0.8 },
+    });
   });
 
-  it("places ten rounds on the hardest board higher the more they scored, with no jump above the floor", () => {
-    const placed = (accuracy: number) => play(Array.from({ length: 10 }, () => round(32, 1, accuracy, 8))).rating;
-    expect([44, 45, 46, 47].map(placed)).toEqual([1038, 1110, 1190, 1282]);
+  it("never gains on a board 500 or more below the rating", () => {
+    expect(ratingAfter({ ...established, rating: 1600 }, round(6, 10, 100)).change).toBe(0);
   });
 
-  it("places the same rounds the same in either order", () => {
-    const rounds = [round(32, 1, 100, 8), ...Array.from({ length: 9 }, () => round(32, 1, 0, 8))];
-    expect([play(rounds).rating, play([...rounds].reverse()).rating]).toEqual([855, 855]);
+  it("never takes the rating below 0", () => {
+    expect(ratingAfter({ ...established, rating: 5 }, round(2, 10, 0)).rating).toBe(0);
+  });
+});
+
+describe("a new player", () => {
+  it("starts at 1000, provisional, and moves far on the first round", () => {
+    expect(ratingAfter(NEW_PLAYER, round(6, 10, 100))).toEqual({
+      phase: "provisional",
+      rating: 1192,
+      change: 192,
+      player: { rating: 1192, rd: expect.closeTo(255.64, 2), rounds: 1 },
+      breakdown: { challenge: 1000, expected: expect.closeTo(0.7, 6), score: 1 },
+    });
   });
 
-  it("never raises the rating for a failed round or lowers it for a perfect one", () => {
-    const strong = play(Array.from({ length: 5 }, () => round(20, 5, 85)));
-    expect([
-      ratingAfter(strong.rating, strong.history, round(6, 10, 0)).change,
-      ratingAfter(1000, [], round(2, 10, 100)).change,
-      play(Array.from({ length: 10 }, () => round(2, 10, 100))).rating,
-    ]).toEqual([-78, 0, 1000]);
+  it("is no longer provisional once the rounds have taught the game their level", () => {
+    const after = (n: number) => replay(NEW_PLAYER, Array.from({ length: n }, () => round(6, 10, 70)));
+    expect([1, 5, 10, 20].map((n) => isProvisional(after(n)))).toEqual([true, true, false, false]);
+  });
+
+  it("never gains on an empty or near-empty board however hard it was", () => {
+    expect([0, 20, 40].map((accuracy) => ratingAfter(NEW_PLAYER, round(32, 1, accuracy, 0.2)).change)).toEqual([-20, 0, 0]);
+  });
+
+  it("never lowers the rating for a perfect round, and gains nothing from a board 500 or more below it", () => {
+    expect([ratingAfter(NEW_PLAYER, round(2, 10, 100)).change, ratingAfter(NEW_PLAYER, round(3, 10, 100)).change, ratingAfter(NEW_PLAYER, round(4, 10, 100)).change]).toEqual([0, 0, 102]);
   });
 
   it("weighs pieces over study time over rebuild time", () => {
-    const after = (r: RatedRoundFacts) => ratingAfter(1000, [], r).rating;
+    const after = (r: RatedRoundFacts) => ratingAfter(NEW_PLAYER, r).rating;
     expect([after(round(12, 10, 90)), after(round(6, 5, 90)), after(round(6, 10, 90, 7.5)), after(round(6, 10, 90))]).toEqual([
-      1083, 1043, 1034, 1028,
+      1400, 1190, 1152, 1128,
     ]);
   });
 });
 
-describe("rated rounds against the player's own norm", () => {
-  const changeOf = (r: RatedRoundFacts, rating = 1200) => ratingAfter(rating, mediumNorm, r).change;
-
-  it("gains more for a harder win and little for an easier one", () => {
-    expect([changeOf(round(10, 10, 100)), changeOf(round(6, 10, 100)), changeOf(round(3, 10, 100))]).toEqual([34, 7, 0]);
-  });
-
-  it("loses less for a harder loss and more for an easier one, and a harder loss still costs", () => {
-    expect([changeOf(round(10, 10, 20)), changeOf(round(6, 10, 17)), changeOf(round(3, 10, 33))]).toEqual([-4, -27, -50]);
-  });
-
-  it("speeds a rating toward the player's recent rounds: an underrated player gains more and loses less, an overrated one the reverse", () => {
-    expect([changeOf(round(6, 10, 100), 1000), changeOf(round(6, 10, 17), 1000), changeOf(round(6, 10, 100), 1400), changeOf(round(6, 10, 17), 1400)]).toEqual([
-      24, -8, 1, -44,
+describe("suggested board", () => {
+  it("aims at an even board while provisional and at 75% once established", () => {
+    expect([
+      suggestBoard(NEW_PLAYER, RANGES),
+      suggestBoard(established, RANGES),
+      suggestBoard({ ...established, rating: 300 }, RANGES),
+      suggestBoard({ ...established, rating: 3200 }, RANGES),
+    ]).toEqual([
+      { pieceCount: 8, studySeconds: 10 },
+      { pieceCount: 7, studySeconds: 10 },
+      { pieceCount: 2, studySeconds: 6 },
+      { pieceCount: 32, studySeconds: 2 },
     ]);
-  });
-
-  it("never gains on an empty board however hard it was", () => {
-    expect(changeOf(round(32, 1, 0, 0.2))).toBe(-2);
-  });
-
-  it("keeps the rating between 0 and 5000", () => {
-    expect([ratingAfter(5, mediumNorm, round(2, 10, 0)).rating, ratingAfter(4990, [], round(32, 1, 100)).rating]).toEqual([0, 5000]);
   });
 });
 
 describe("setup-card preview", () => {
-  it("gives the board's rating and the round's range during placement and after it", () => {
+  it("gives the board's rating, the expected accuracy and the round's range", () => {
     expect([
-      ratingPreview(1000, [], { pieceCount: 6, studySeconds: 10 }),
-      ratingPreview(1600, mediumNorm, { pieceCount: 12, studySeconds: 8 }),
-      ratingPreview(1000, mediumNorm, { pieceCount: 2, studySeconds: 10 }),
+      ratingPreview(NEW_PLAYER, [], { pieceCount: 6, studySeconds: 10 }),
+      ratingPreview(established, [], { pieceCount: 12, studySeconds: 8 }),
+      ratingPreview(established, [], { pieceCount: 2, studySeconds: 10 }),
     ]).toEqual([
-      { phase: "placement", difficultyRating: 1000, perfectGain: 40, maxLoss: -40 },
-      { phase: "rated", difficultyRating: 1598, perfectGain: 13, maxLoss: -12 },
-      { phase: "rated", difficultyRating: 128, perfectGain: 0, maxLoss: -24 },
+      { phase: "provisional", difficultyRating: 1000, expectedAccuracy: 70, perfectGain: 192, maxLoss: -400 },
+      { phase: "rated", difficultyRating: 1598, expectedAccuracy: 37, perfectGain: 50, maxLoss: -36 },
+      { phase: "rated", difficultyRating: 128, expectedAccuracy: 99, perfectGain: 0, maxLoss: -50 },
     ]);
+  });
+
+  it("reads the perfect gain at the player's fastest recent rebuild pace", () => {
+    const fast = [round(6, 10, 90, 3)];
+    expect(ratingPreview({ ...established, rating: 1000 }, fast, { pieceCount: 6, studySeconds: 10 }).perfectGain).toBe(22);
   });
 });
 
-describe("stored round facts", () => {
-  it("reads whole facts and drops missing or out-of-range ones", () => {
+describe("stored facts", () => {
+  it("reads whole round facts and drops missing or out-of-range ones", () => {
     expect([
       parseRatedRoundFacts({ pieceCount: 6, studySeconds: 9.5, rebuildSeconds: 12, accuracy: 83 }),
       parseRatedRoundFacts(undefined),
@@ -142,5 +157,14 @@ describe("stored round facts", () => {
       parseRatedRoundFacts({ pieceCount: 6.5, studySeconds: 9.5, rebuildSeconds: 12, accuracy: 83 }),
       parseRatedRoundFacts({ pieceCount: 6, studySeconds: 9.5, rebuildSeconds: 12, accuracy: 140 }),
     ]).toEqual([{ pieceCount: 6, studySeconds: 9.5, rebuildSeconds: 12, accuracy: 83 }, null, null, null, null]);
+  });
+
+  it("reads a stored uncertainty and treats anything out of range as a new player's", () => {
+    expect([parseCertainty({ rd: 80, rounds: 12 }), parseCertainty({ rd: 900, rounds: 12 }), parseCertainty({ rd: 80, rounds: 1.5 }), parseCertainty(null)]).toEqual([
+      { rd: 80, rounds: 12 },
+      { rd: 350, rounds: 0 },
+      { rd: 350, rounds: 0 },
+      { rd: 350, rounds: 0 },
+    ]);
   });
 });

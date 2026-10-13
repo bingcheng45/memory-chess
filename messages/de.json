@@ -951,15 +951,18 @@
       "lastGame": "Letzte Partie: {time} s Lösungszeit bei {accuracy} % Genauigkeit",
       "preview": {
         "label": "Vorschau der Wertungszahl",
-        "placement": "Einstufungsrunde {round} von {of}",
+        "provisional": "Vorläufige Wertungszahl",
         "rated": "Gewertete Runde",
         "board": "Wertung des Bretts",
         "yours": "Deine Wertungszahl",
+        "expected": "Erwartete Genauigkeit",
+        "percent": "<num>{value} %</num>",
+        "suggested": "Vorgeschlagenes Brett",
         "clear": "Wenn du es schaffst",
         "miss": "Wenn es misslingt",
         "gain": "Bis zu <num>+{value}</num>",
         "loss": "Höchstens <num>−{value}</num>",
-        "announce": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Wenn du es schaffst, bis zu +{gain}. Wenn es misslingt, höchstens −{loss}."
+        "announce": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}. Wenn es misslingt, höchstens −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Einprägezeit",
       "solutionTime": "Lösungszeit",
       "recallSpeed": "Abruftempo",
-      "placement": "Einstufung der Wertungszahl: Runde {round} von {total}",
+      "provisional": "Vorläufige Wertungszahl",
       "freeSkip": "Freies Überspringen des Tages: Ein leeres Brett ändert deine Wertungszahl nicht. Das nächste heute schon.",
       "piecesPerSecond": "{value} Figuren/s",
       "actions": "Aktionen zum Ergebnis",

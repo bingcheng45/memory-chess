@@ -62,8 +62,8 @@ type GameStateWithRating = GameState & {
 /** The line under the score that says why the rating moved as it did, or null when the change says it all. */
 function ratingNoteOf(outcome: RoundOutcome | undefined, t: ReturnType<typeof useTranslations<"game.result">>): string | null {
   switch (outcome?.phase) {
-    case "placement":
-      return t("placement", { round: outcome.breakdown.round, total: outcome.breakdown.of });
+    case "provisional":
+      return t("provisional");
     case "freeSkip":
       return t("freeSkip");
     default:

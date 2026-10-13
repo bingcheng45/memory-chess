@@ -1,23 +1,67 @@
 /**
- * The skill rating. Placement estimates the first rating from the first rated rounds; after that each round is an
- * Elo game against its challenge, and how it counts is read against the player's own recent rounds: boards far from
- * their usual ones amplify or soften the result, their usual pace adds a little variance, and how their recent rounds
- * compare with their rating speeds the rating toward them. Pure and store-free, so the store, the tests and
- * scripts/rating/simulate.mjs all run the same engine.
+ * The skill rating. A player's rating is the board level they recall about 70% of, held with an uncertainty (RD) that
+ * shrinks as they play and widens a little each round. Each rated round compares the accuracy with what the rating
+ * expects on that board and moves the rating by how sure the game is of it, in the style of Glicko. Pure and
+ * store-free, so the store, the tests and scripts/rating/simulate.mjs all run the same engine.
  */
 
 export const START_RATING = 1000;
 
 export const MAX_SKILL_RATING = 5000;
 
-/** The accuracy a rated round needs to count as a win: it extends the win streak, and it is an even result. */
+/** The accuracy a rated round needs to extend the win streak. */
 export const WIN_ACCURACY = 70;
 
-/** Rated rounds that estimate the first rating. */
-export const PLACEMENT_ROUNDS = 10;
+/**
+ * Every tunable number of the rating. Calibration from real rounds replaces these values and nothing else.
+ * Board level: pieces per doubling, study per halving, rebuild credit per halving of the time per piece.
+ * Expectation: E = 1 / (1 + (1 − even) / even · e^(−κ(R − b))), so a board at the player's rating expects `evenAccuracy`.
+ * Noise: φ = chunk / max(pieces, minPieces) + noiseFloor, the variance of a round's accuracy around E.
+ */
+export const RATING_MODEL = {
+  referencePieces: 6,
+  referenceStudySeconds: 10,
+  pieceWeight: 550,
+  studyWeight: 150,
+  studySecondsRange: { min: 1, max: 60 },
+  rebuildWeight: 60,
+  referenceRebuildPerPiece: 2.5,
+  rebuildFloorPerPiece: 0.25,
 
-/** Rated rounds the player's norm is read from, and so the rated rounds the history keeps. */
-export const NORM_ROUNDS = 30;
+  kappa: Math.LN2 / 200,
+  evenAccuracy: 0.7,
+  chunk: 2,
+  minPieces: 6,
+  noiseFloor: 0.02,
+
+  startRd: 350,
+  driftRd: 15,
+  /** RD stays at least startRd / (1 + rounds / this), so the first rounds keep moving the rating. */
+  rdFloorRounds: 3,
+  /** Provisional while RD is above this many steady-state RDs. */
+  provisionalSpread: 2,
+  provisionalCap: 400,
+  establishedCap: 50,
+
+  /** At or under this accuracy a round never gains and earns no rebuild credit. */
+  floorAccuracy: 40,
+  /** A board this far or more below the rating has nothing left to prove: clearing it earns nothing. */
+  noGainGap: 500,
+
+  suggestTarget: { provisional: 0.5, established: 0.75 },
+} as const;
+
+const M = RATING_MODEL;
+
+export interface PlayerRating {
+  readonly rating: number;
+  /** Rating deviation: how unsure the game is of the rating, in rating points. */
+  readonly rd: number;
+  /** Rated rounds played under this rating. */
+  readonly rounds: number;
+}
+
+export const NEW_PLAYER: PlayerRating = { rating: START_RATING, rd: M.startRd, rounds: 0 };
 
 export const isSkillRating = (value: unknown): value is number =>
   typeof value === "number" && Number.isInteger(value) && value >= 0;
@@ -32,338 +76,157 @@ export interface RatedRoundFacts {
   readonly accuracy: number;
 }
 
-/** The player's last rated rounds summed up: the boards they usually take and how fast they usually are. */
-export interface PlayerNorm {
-  readonly rounds: number;
-  readonly meanLevel: number;
-  readonly levelSpread: number;
-  /** Means of log2 seconds per piece. */
-  readonly studyPace: number;
-  readonly rebuildPace: number;
+export type BoardSetting = Pick<RatedRoundFacts, "pieceCount" | "studySeconds">;
+
+export type RatingPhase = "provisional" | "rated";
+
+export interface RatingResult {
+  /** Whether the rating after this round is still provisional. */
+  readonly phase: RatingPhase;
+  readonly rating: number;
+  readonly change: number;
+  readonly player: PlayerRating;
+  readonly breakdown: {
+    /** The board plus the rebuild credit: the rating this round is a 70% board for. */
+    readonly challenge: number;
+    /** Expected accuracy, 0 to 1. */
+    readonly expected: number;
+    readonly score: number;
+  };
 }
 
-export type RiskDirection = "harder" | "normal" | "easier";
-
-export interface PlacementBreakdown {
-  /** 1-based: this round's place among the placement rounds. */
-  readonly round: number;
-  readonly of: number;
-  readonly boardLevel: number;
-  /** The board plus what the rebuild speed earned: the rating this round is an even result for. */
-  readonly challenge: number;
-  /** The rating every placement round so far suggests together, which the rating moves toward. */
-  readonly estimate: number;
-}
-
-export interface RatedBreakdown {
-  readonly boardLevel: number;
-  readonly challenge: number;
-  readonly expected: number;
-  readonly outcome: number;
-  /** K × (outcome − expected), before the multipliers. */
-  readonly base: number;
-  readonly risk: { readonly direction: RiskDirection; readonly sigmas: number; readonly multiplier: number };
-  /** Mean outcome minus expected over the norm rounds at the current rating: above 0 when the player has outplayed it. */
-  readonly form: { readonly surprise: number; readonly multiplier: number };
-  /** Applied to a gain only. */
-  readonly speed: number;
-}
-
-export type RatingResult =
-  | { readonly phase: "placement"; readonly rating: number; readonly change: number; readonly breakdown: PlacementBreakdown }
-  | { readonly phase: "rated"; readonly rating: number; readonly change: number; readonly breakdown: RatedBreakdown };
-
-/** What the setup card shows before a round: the board on the rating scale and how far this round can move the rating. */
+/** What the setup card shows before a round. */
 export interface RatingPreview {
-  readonly phase: RatingResult["phase"];
+  readonly phase: RatingPhase;
   readonly difficultyRating: number;
+  /** Percent. */
+  readonly expectedAccuracy: number;
   /** A perfect round at the full study time and the player's fastest recent rebuild pace; studying less or rebuilding faster gains more. */
   readonly perfectGain: number;
   readonly maxLoss: number;
 }
 
-/** Medium, 6 pieces studied for 10 seconds, is a board of level START_RATING. */
-const REFERENCE_PIECES = 6;
-const REFERENCE_STUDY_SECONDS = 10;
-/** Level per doubling of the pieces at the same study time per piece. */
-const PIECE_WEIGHT = 400;
-/** Level per halving of the study time at the same piece count. */
-const STUDY_WEIGHT = 150;
-/** Study time is counted between these, so pressing Done at once cannot make a board look endlessly hard. */
-const STUDY_SECONDS_RANGE = { min: 1, max: 60 } as const;
-
-/** The smallest weight: challenge per halving of the rebuild seconds per piece. */
-const REBUILD_WEIGHT = 60;
-const REFERENCE_REBUILD_PER_PIECE = 2.5;
-/** Faster than this per piece earns nothing more, so an instant submit is not a fast rebuild. */
-const REBUILD_FLOOR_PER_PIECE = 0.25;
-/** Placement counts at most one halving of the rebuild time either way, so it stays the smallest dimension. */
-const PLACEMENT_REBUILD_HALVINGS = 1;
-
-/** At or under this accuracy a round is a full loss and earns no credit for its rebuild speed. */
-const FLOOR_ACCURACY = 40;
-
-const K = 32;
-const ELO_SCALE = 400;
-/** A challenge this far or more above the rating counts as only this far above: a gain stays bounded and a miss still costs. */
-const HARDER_GAP_CAP = 400;
-/** A challenge this far or more below the rating has nothing left to prove: clearing it earns nothing. */
-const NO_GAIN_GAP = 500;
-const MAX_RATED_CHANGE = 50;
-
-/** A placement round reads as at most this far above or below its challenge, as in Elo's linear performance rating. */
-const PERFORMANCE_SPREAD = 400;
-/**
- * In placement a board counts as at most BOARD_CREDIT_BASE above START_RATING, plus BOARD_CREDIT_PER_POINT for each
- * accuracy point above FLOOR_ACCURACY, so a near-empty round on the hardest board reads as a loss to a modest board.
- * The base stays under PERFORMANCE_SPREAD so failed rounds alone always place below the start, which keeps a failed
- * round from raising the rating when it lifts the placement estimate's floor.
- */
-const BOARD_CREDIT_BASE = 200;
-const BOARD_CREDIT_PER_POINT = 60;
-/** Accuracy points over which a placement round's pull grows from none, at a failed or a perfect round, to a full round's. */
-const PLACEMENT_WEIGHT_RAMP = 5;
-
-/** ±5% of the player's usual effective piece count is their normal range. */
-const NORMAL_BAND = (PIECE_WEIGHT + STUDY_WEIGHT) * Math.log2(1.05);
-/** A player who always takes one board still has a spread, so a modest change is not read as extreme. */
-const SPREAD_FLOOR = (PIECE_WEIGHT + STUDY_WEIGHT) * Math.log2(1.25);
-const RISK_AMPLIFY = 0.5;
-const RISK_SOFTEN = 0.5;
-/** The most the speed variance moves a gain, either way. */
-const SPEED_SWING = 0.15;
-/** Form multiplier per unit of surprise, and the most it moves a gain or a loss either way. */
-const FORM_WEIGHT = 4;
-const FORM_SWING = 0.5;
-
 const clamp = (value: number, min: number, max: number): number => Math.min(max, Math.max(min, value));
 
-const studied = (seconds: number): number => clamp(seconds, STUDY_SECONDS_RANGE.min, STUDY_SECONDS_RANGE.max);
+const studied = (seconds: number): number => clamp(seconds, M.studySecondsRange.min, M.studySecondsRange.max);
 
-const mean = (values: readonly number[]): number => values.reduce((sum, value) => sum + value, 0) / values.length;
+const informationPer = (expected: number, phi: number): number => (M.kappa ** 2 * expected * (1 - expected)) / phi;
+
+const noiseOf = (pieceCount: number): number => M.chunk / Math.max(pieceCount, M.minPieces) + M.noiseFloor;
 
 /**
- * The board on the rating scale. Pieces weigh most: doubling them at the same study time per piece adds PIECE_WEIGHT,
- * and doubling them in the same study time adds that plus STUDY_WEIGHT.
+ * The RD a player settles at who keeps playing a reference board at their level: the fixed point of the drift and the
+ * round's information, rd² = 1 / (1 / (rd² + drift²) + I), solved as I·x² + I·d²·x − d² = 0.
  */
-export function boardLevel({ pieceCount, studySeconds }: Pick<RatedRoundFacts, "pieceCount" | "studySeconds">): number {
+export const STEADY_RD = (() => {
+  const info = informationPer(M.evenAccuracy, noiseOf(M.referencePieces));
+  const d2 = M.driftRd ** 2;
+  return Math.sqrt((-info * d2 + Math.sqrt((info * d2) ** 2 + 4 * info * d2)) / (2 * info));
+})();
+
+export const PROVISIONAL_RD = M.provisionalSpread * STEADY_RD;
+
+export const isProvisional = (player: PlayerRating): boolean => player.rd > PROVISIONAL_RD;
+
+const phaseOf = (player: PlayerRating): RatingPhase => (isProvisional(player) ? "provisional" : "rated");
+
+/** The board on the rating scale: pieces weigh most, then a shorter look. */
+export function boardLevel({ pieceCount, studySeconds }: BoardSetting): number {
   return (
     START_RATING +
-    (PIECE_WEIGHT + STUDY_WEIGHT) * Math.log2(pieceCount / REFERENCE_PIECES) +
-    STUDY_WEIGHT * Math.log2(REFERENCE_STUDY_SECONDS / studied(studySeconds))
+    M.pieceWeight * Math.log2(pieceCount / M.referencePieces) +
+    M.studyWeight * Math.log2(M.referenceStudySeconds / studied(studySeconds))
   );
 }
 
-/** Elo's score: 0 at FLOOR_ACCURACY or under, 1 at 100%, and an even 0.5 at WIN_ACCURACY. */
-export function outcomeOf(accuracy: number): number {
-  return clamp((accuracy - FLOOR_ACCURACY) / (100 - FLOOR_ACCURACY), 0, 1);
-}
-
-/** How much of the rebuild speed the accuracy earns: none at FLOOR_ACCURACY or under, all of it from a win. */
-function gateOf(accuracy: number): number {
-  return clamp((accuracy - FLOOR_ACCURACY) / (WIN_ACCURACY - FLOOR_ACCURACY), 0, 1);
-}
-
-const pace = (seconds: number, pieceCount: number): number => Math.log2(Math.max(seconds, 0.1) / pieceCount);
+/** How much of the rebuild speed the accuracy earns: none at the floor accuracy or under, all of it from a win. */
+const gateOf = (accuracy: number): number => clamp((accuracy - M.floorAccuracy) / (WIN_ACCURACY - M.floorAccuracy), 0, 1);
 
 /** Halvings of the rebuild time per piece against the reference: up to one slower, and faster down to the floor. */
 function rebuildHalvings({ pieceCount, rebuildSeconds }: RatedRoundFacts): number {
-  const perPiece = Math.max(rebuildSeconds / pieceCount, REBUILD_FLOOR_PER_PIECE);
-  return Math.max(Math.log2(REFERENCE_REBUILD_PER_PIECE / perPiece), -1);
+  const perPiece = Math.max(rebuildSeconds / pieceCount, M.rebuildFloorPerPiece);
+  return Math.max(Math.log2(M.referenceRebuildPerPiece / perPiece), -1);
 }
 
-/**
- * The rating this round is an even result for: its board, plus what the rebuild speed earned as far as the accuracy
- * allows. A full board studied for a second is the most the board offers; a faster rebuild keeps raising it.
- */
-export function challengeOf(round: RatedRoundFacts, maxHalvings = Infinity): number {
-  return boardLevel(round) + rebuildCredit(round, maxHalvings);
+/** The rating this round is a 70% board for: its board, plus what the rebuild speed earned as far as the accuracy allows. */
+export function challengeOf(round: RatedRoundFacts): number {
+  return boardLevel(round) + gateOf(round.accuracy) * M.rebuildWeight * rebuildHalvings(round);
 }
 
-function rebuildCredit(round: RatedRoundFacts, maxHalvings: number): number {
-  return gateOf(round.accuracy) * REBUILD_WEIGHT * Math.min(rebuildHalvings(round), maxHalvings);
+/** The accuracy, 0 to 1, a player of this rating is expected to reach on a board of this challenge. */
+export function expectedAccuracy(rating: number, challenge: number): number {
+  return 1 / (1 + ((1 - M.evenAccuracy) / M.evenAccuracy) * Math.exp(-M.kappa * (rating - challenge)));
 }
 
-/**
- * A placement round's challenge. A board above START_RATING counts only as far as the accuracy earns it, so a
- * near-empty round on the hardest board says little more than one on the start's board.
- */
-function placementChallenge(round: RatedRoundFacts): number {
-  const earned = START_RATING + BOARD_CREDIT_BASE + BOARD_CREDIT_PER_POINT * Math.max(round.accuracy - FLOOR_ACCURACY, 0);
-  return Math.min(boardLevel(round), earned) + rebuildCredit(round, PLACEMENT_REBUILD_HALVINGS);
+/** The RD before a round: widened by the drift, at most the start RD, and at least the floor for the rounds played. */
+function priorRd2({ rd, rounds }: PlayerRating): number {
+  const floor = M.startRd / (1 + rounds / M.rdFloorRounds);
+  return Math.max(Math.min(rd ** 2 + M.driftRd ** 2, M.startRd ** 2), floor ** 2);
 }
 
-const eloExpected = (rating: number, challenge: number): number => 1 / (1 + 10 ** ((challenge - rating) / ELO_SCALE));
-
-/** Elo's expected score at this rating against this challenge, with the challenge at most HARDER_GAP_CAP above. */
-const expectedAt = (rating: number, challenge: number): number => eloExpected(rating, Math.min(challenge, rating + HARDER_GAP_CAP));
-
-/**
- * Elo's performance rating over the placement rounds: the rating at which their scores match Elo's expectation, found
- * by bisection. It is held at most PERFORMANCE_SPREAD above the hardest challenge scored on and below the easiest one
- * missed on, which is where rounds all perfect or all failed stop, having no such rating. The floor is applied last,
- * so a failed round never raises the placed rating and a perfect one never lowers it.
- */
-function placementEstimate(rounds: readonly RatedRoundFacts[]): number {
-  const challenges = rounds.map(placementChallenge);
-  const scores = rounds.map((round) => outcomeOf(round.accuracy));
-  const scored = challenges.filter((_, i) => scores[i] > 0);
-  const missed = challenges.filter((_, i) => scores[i] < 1);
-  const ceiling = Math.max(...scored) + PERFORMANCE_SPREAD;
-  const floor = Math.min(...missed) - PERFORMANCE_SPREAD;
-  if (scored.length === 0 || missed.length === 0) return clamp(scored.length === 0 ? floor : ceiling, 0, MAX_SKILL_RATING);
-  const surplus = (rating: number): number => challenges.reduce((sum, challenge, i) => sum + scores[i] - eloExpected(rating, challenge), 0);
-  let low = Math.min(...challenges) - PERFORMANCE_SPREAD;
-  let high = Math.max(...challenges) + PERFORMANCE_SPREAD;
-  for (let step = 0; step < 40; step += 1) {
-    const middle = (low + high) / 2;
-    if (surplus(middle) > 0) low = middle;
-    else high = middle;
-  }
-  return clamp(Math.max(Math.min((low + high) / 2, ceiling), floor), 0, MAX_SKILL_RATING);
-}
-
-/** Null with no rounds. */
-export function normOf(history: readonly RatedRoundFacts[]): PlayerNorm | null {
-  const rounds = history.slice(0, NORM_ROUNDS);
-  if (rounds.length === 0) return null;
-  const levels = rounds.map(boardLevel);
-  const meanLevel = mean(levels);
-  return {
-    rounds: rounds.length,
-    meanLevel,
-    levelSpread: Math.sqrt(mean(levels.map((level) => (level - meanLevel) ** 2))),
-    studyPace: mean(rounds.map(({ studySeconds, pieceCount }) => pace(studied(studySeconds), pieceCount))),
-    rebuildPace: mean(rounds.map(({ rebuildSeconds, pieceCount }) => pace(rebuildSeconds, pieceCount))),
-  };
-}
-
-/** erf by Abramowitz and Stegun 7.1.26, within 1.5e-7. */
-function erf(x: number): number {
-  const t = 1 / (1 + 0.3275911 * Math.abs(x));
-  const poly = t * (0.254829592 + t * (-0.284496736 + t * (1.421413741 + t * (-1.453152027 + t * 1.061405429))));
-  return Math.sign(x) * (1 - poly * Math.exp(-x * x));
-}
-
-/**
- * How unusual the board is for this player, read as a normal distribution of their own recent boards: the distance
- * beyond the normal band in standard deviations, and 2Φ(z) − 1, which is 0 at the band's edge and nears 1 far out.
- */
-function riskOf(level: number, norm: PlayerNorm): { readonly direction: RiskDirection; readonly sigmas: number; readonly weight: number } {
-  const deviation = level - norm.meanLevel;
-  const beyond = Math.abs(deviation) - NORMAL_BAND;
-  if (beyond <= 0) return { direction: "normal", sigmas: 0, weight: 0 };
-  const sigmas = beyond / Math.max(norm.levelSpread, SPREAD_FLOOR);
-  return { direction: deviation > 0 ? "harder" : "easier", sigmas, weight: erf(sigmas / Math.SQRT2) };
-}
-
-/** A harder board amplifies a gain and softens a loss; an easier one does the reverse. */
-function riskMultiplier(direction: RiskDirection, weight: number, gained: boolean): number {
-  if (direction === "normal") return 1;
-  const rewarded = (direction === "harder") === gained;
-  return rewarded ? 1 + RISK_AMPLIFY * weight : 1 - RISK_SOFTEN * weight;
-}
-
-/**
- * How the player's own recent rounds compare with their rating. A player who has been outplaying it gains more and
- * loses less until the rating catches up; one who has been underplaying it, the reverse. Zero for a player at their level.
- */
-function formOf(rating: number, history: readonly RatedRoundFacts[], gained: boolean): RatedBreakdown["form"] {
-  const rounds = history.slice(0, NORM_ROUNDS);
-  const surprise = mean(rounds.map((round) => outcomeOf(round.accuracy) - expectedAt(rating, challengeOf(round))));
-  const swing = clamp(FORM_WEIGHT * surprise, -FORM_SWING, FORM_SWING);
-  return { surprise, multiplier: gained ? 1 + swing : 1 - swing };
-}
-
-/** Up to SPEED_SWING either way, half from study pace and half from rebuild pace against the player's own. */
-function speedOf(round: RatedRoundFacts, norm: PlayerNorm): number {
-  const study = clamp(norm.studyPace - pace(studied(round.studySeconds), round.pieceCount), -1, 1);
-  const rebuild = clamp(norm.rebuildPace - pace(round.rebuildSeconds, round.pieceCount), -1, 1);
-  return 1 + (SPEED_SWING * (study + rebuild)) / 2;
-}
-
-const bounded = (rating: number): number => clamp(Math.round(rating), 0, MAX_SKILL_RATING);
-
-/**
- * How much of its tenth a placement round pulls toward the estimate: up, as far as it scored above FLOOR_ACCURACY,
- * so none when failed; down, as far as it fell short of 100%, so none when perfect.
- */
-const pullOf = (accuracy: number, up: boolean): number =>
-  clamp((up ? accuracy - FLOOR_ACCURACY : 100 - accuracy) / PLACEMENT_WEIGHT_RAMP, 0, 1);
-
-/**
- * How far placement rounds move a player from where placement began: each round a tenth of the way to the estimate
- * from all of them, as far as it pulls that way. A failed round only lowers the estimate and adds no pull up, so it
- * never raises the rating; a perfect round never lowers it. Rounded, so the moves add up to it exactly.
- */
-function placedShift(rounds: readonly RatedRoundFacts[], estimate = placementEstimate(rounds)): number {
-  if (rounds.length === 0) return 0;
-  const distance = estimate - START_RATING;
-  const pull = rounds.reduce((sum, round) => sum + pullOf(round.accuracy, distance > 0), 0);
-  return Math.round((distance * pull) / PLACEMENT_ROUNDS);
-}
-
-/**
- * A placement round moves the rating by how much it changes the placed shift. The shift depends only on which rounds
- * were played, not their order, so a player who starts at START_RATING stands at the estimate once placement ends,
- * unless failed rounds would have lifted it or perfect ones dropped it there.
- */
-function placementRound(currentRating: number, history: readonly RatedRoundFacts[], round: RatedRoundFacts): RatingResult {
-  const rounds = [round, ...history];
-  const estimate = placementEstimate(rounds);
-  const rating = bounded(currentRating + placedShift(rounds, estimate) - placedShift(history));
-  return {
-    phase: "placement",
-    rating,
-    change: rating - currentRating,
-    breakdown: { round: rounds.length, of: PLACEMENT_ROUNDS, boardLevel: boardLevel(round), challenge: placementChallenge(round), estimate },
-  };
-}
-
-/**
- * The rating after a rated round. `history` is the player's earlier rated rounds, newest first; while it holds fewer
- * than PLACEMENT_ROUNDS the round is a placement round.
- */
-export function ratingAfter(currentRating: number, history: readonly RatedRoundFacts[], round: RatedRoundFacts): RatingResult {
-  const norm = history.length >= PLACEMENT_ROUNDS ? normOf(history) : null;
-  if (!norm) return placementRound(currentRating, history, round);
-
-  const level = boardLevel(round);
+/** The rating after a rated round. */
+export function ratingAfter(player: PlayerRating, round: RatedRoundFacts): RatingResult {
   const challenge = challengeOf(round);
-  const expected = expectedAt(currentRating, challenge);
-  const outcome = outcomeOf(round.accuracy);
-  const base = K * (outcome - expected);
-  const gained = base > 0;
-  const { direction, sigmas, weight } = riskOf(level, norm);
-  const multiplier = riskMultiplier(direction, weight, gained);
-  const form = formOf(currentRating, history, gained);
-  const speed = speedOf(round, norm);
-  const outgrown = gained && currentRating - challenge >= NO_GAIN_GAP;
-  const raw = outgrown ? 0 : base * multiplier * form.multiplier * (gained ? speed : 1);
-  const rating = bounded(currentRating + clamp(raw, -MAX_RATED_CHANGE, MAX_RATED_CHANGE));
+  const expected = expectedAccuracy(player.rating, challenge);
+  const score = round.accuracy / 100;
+  const phi = noiseOf(round.pieceCount);
+  const post2 = 1 / (1 / priorRd2(player) + informationPer(expected, phi));
+  const raw = (post2 * M.kappa * (score - expected)) / phi;
+  const guarded = round.accuracy <= M.floorAccuracy || player.rating - challenge >= M.noGainGap ? Math.min(raw, 0) : raw;
+  const rd = Math.sqrt(post2);
+  const cap = rd > PROVISIONAL_RD ? M.provisionalCap : M.establishedCap;
+  const rating = clamp(Math.round(player.rating + clamp(guarded, -cap, cap)), 0, MAX_SKILL_RATING);
+  const next = { rating, rd, rounds: player.rounds + 1 };
+  return { phase: phaseOf(next), rating, change: rating - player.rating, player: next, breakdown: { challenge, expected, score } };
+}
+
+/** Plays rated rounds oldest first. */
+export const replay = (player: PlayerRating, rounds: readonly RatedRoundFacts[]): PlayerRating =>
+  rounds.reduce((current, round) => ratingAfter(current, round).player, player);
+
+/**
+ * The setup card's preview, by the same engine: the board's level, the accuracy the rating expects on it, the change
+ * from a perfect round at the full study time and the player's fastest recent rebuild pace, and the change from an
+ * empty board, the most a round can lose. `recent` is the player's recent rated rounds, read only for that pace.
+ */
+export function ratingPreview(player: PlayerRating, recent: readonly RatedRoundFacts[], board: BoardSetting): RatingPreview {
+  const fastest =
+    recent.length > 0 ? Math.min(...recent.map(({ rebuildSeconds, pieceCount }) => rebuildSeconds / pieceCount)) : M.referenceRebuildPerPiece;
+  const rebuildSeconds = board.pieceCount * fastest;
+  const best = ratingAfter(player, { ...board, rebuildSeconds, accuracy: 100 });
+  const worst = ratingAfter(player, { ...board, rebuildSeconds, accuracy: 0 });
   return {
-    phase: "rated",
-    rating,
-    change: rating - currentRating,
-    breakdown: { boardLevel: level, challenge, expected, outcome, base, risk: { direction, sigmas, multiplier }, form, speed },
+    phase: phaseOf(player),
+    difficultyRating: clamp(Math.round(boardLevel(board)), 0, MAX_SKILL_RATING),
+    expectedAccuracy: Math.round(100 * expectedAccuracy(player.rating, boardLevel(board))),
+    perfectGain: best.change,
+    maxLoss: worst.change,
   };
 }
 
+export interface BoardRanges {
+  readonly pieces: { readonly min: number; readonly max: number };
+  readonly seconds: { readonly min: number; readonly max: number };
+}
+
 /**
- * The setup card's preview, by the same engine: the board's level, the change from a perfect round that uses the full
- * study time at the player's fastest recent rebuild pace, and the change from an empty board, the most a round can lose.
+ * The boards a suggestion picks from: every piece count at the reference study time, and the fewest and the most
+ * pieces at every study time, which fill the wide steps between small piece counts and go past the full board.
  */
-export function ratingPreview(
-  currentRating: number,
-  history: readonly RatedRoundFacts[],
-  board: Pick<RatedRoundFacts, "pieceCount" | "studySeconds">,
-): RatingPreview {
-  const recent = history.slice(0, NORM_ROUNDS);
-  const fastest = recent.length > 0 ? Math.min(...recent.map(({ rebuildSeconds, pieceCount }) => rebuildSeconds / pieceCount)) : REFERENCE_REBUILD_PER_PIECE;
-  const rebuildSeconds = board.pieceCount * fastest;
-  const best = ratingAfter(currentRating, history, { ...board, rebuildSeconds, accuracy: 100 });
-  const worst = ratingAfter(currentRating, history, { ...board, rebuildSeconds, accuracy: 0 });
-  return { phase: best.phase, difficultyRating: bounded(boardLevel(board)), perfectGain: best.change, maxLoss: worst.change };
+function candidatesOf({ pieces, seconds }: BoardRanges): BoardSetting[] {
+  const span = ({ min, max }: { readonly min: number; readonly max: number }): number[] => Array.from({ length: max - min + 1 }, (_, i) => min + i);
+  const study = clamp(M.referenceStudySeconds, seconds.min, seconds.max);
+  return [
+    ...span(pieces).map((pieceCount) => ({ pieceCount, studySeconds: study })),
+    ...[pieces.min, pieces.max].flatMap((pieceCount) => span(seconds).map((studySeconds) => ({ pieceCount, studySeconds }))),
+  ];
+}
+
+/** The board whose expected accuracy is nearest the target: an even board while provisional, which teaches the rating fastest, and 75% after. */
+export function suggestBoard(player: PlayerRating, ranges: BoardRanges): BoardSetting {
+  const target = isProvisional(player) ? M.suggestTarget.provisional : M.suggestTarget.established;
+  const gap = (board: BoardSetting): number => Math.abs(expectedAccuracy(player.rating, boardLevel(board)) - target);
+  return candidatesOf(ranges).reduce((best, board) => (gap(board) < gap(best) ? board : best));
 }
 
 const isFiniteIn = (value: unknown, min: number, max: number): value is number =>
@@ -376,4 +239,12 @@ export function parseRatedRoundFacts(value: unknown): RatedRoundFacts | null {
   if (!isFiniteIn(pieceCount, 1, 64) || !Number.isInteger(pieceCount)) return null;
   if (!isFiniteIn(studySeconds, 0, 3600) || !isFiniteIn(rebuildSeconds, 0, 86400) || !isFiniteIn(accuracy, 0, 100)) return null;
   return { pieceCount, studySeconds, rebuildSeconds, accuracy };
+}
+
+/** A stored RD and round count, which are user-editable: anything out of range is a new player's. */
+export function parseCertainty(value: unknown): Omit<PlayerRating, "rating"> {
+  if (typeof value !== "object" || value === null) return { rd: M.startRd, rounds: 0 };
+  const { rd, rounds } = value as Record<string, unknown>;
+  if (!isFiniteIn(rd, 0, M.startRd) || !isFiniteIn(rounds, 0, Number.MAX_SAFE_INTEGER) || !Number.isInteger(rounds)) return { rd: M.startRd, rounds: 0 };
+  return { rd, rounds };
 }

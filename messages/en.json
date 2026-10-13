@@ -951,15 +951,18 @@
       "lastGame": "Last game: {time}s solution time with {accuracy}% accuracy",
       "preview": {
         "label": "Rating preview",
-        "placement": "Placement round {round} of {of}",
+        "provisional": "Provisional rating",
         "rated": "Rated round",
         "board": "Board rating",
         "yours": "Your rating",
+        "expected": "Expected accuracy",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Suggested board",
         "clear": "If you clear it",
         "miss": "If you miss",
         "gain": "Up to <num>+{value}</num>",
         "loss": "At most <num>−{value}</num>",
-        "announce": "Board rating {board}. Your rating {rating}. If you clear it, up to +{gain}. If you miss, at most −{loss}."
+        "announce": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}. If you miss, at most −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Memorization time",
       "solutionTime": "Solution time",
       "recallSpeed": "Recall speed",
-      "placement": "Rating placement: round {round} of {total}",
+      "provisional": "Provisional rating",
       "freeSkip": "Free skip of the day: an empty board doesn't change your rating. The next one today will.",
       "piecesPerSecond": "{value} pieces/sec",
       "actions": "Result actions",

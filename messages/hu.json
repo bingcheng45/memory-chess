@@ -951,15 +951,18 @@
       "lastGame": "Előző játszma: {time} mp megoldási idő, {accuracy}% pontosság",
       "preview": {
         "label": "Pontszám-előnézet",
-        "placement": "Besorolás: {round}/{of}. kör",
+        "provisional": "Ideiglenes pontszám",
         "rated": "Pontozott kör",
         "board": "A tábla pontszáma",
         "yours": "A te pontszámod",
+        "expected": "Várható pontosság",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Javasolt tábla",
         "clear": "Ha sikerül",
         "miss": "Ha nem sikerül",
         "gain": "Legfeljebb <num>+{value}</num>",
         "loss": "Legfeljebb <num>−{value}</num>",
-        "announce": "A tábla pontszáma {board}. A te pontszámod {rating}. Ha sikerül, legfeljebb +{gain}. Ha nem sikerül, legfeljebb −{loss}."
+        "announce": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}. Ha nem sikerül, legfeljebb −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Memorizálási idő",
       "solutionTime": "Megoldási idő",
       "recallSpeed": "Felidézési sebesség",
-      "placement": "Besorolás: {round}/{total}. kör",
+      "provisional": "Ideiglenes pontszám",
       "freeSkip": "A nap ingyenes kihagyása: egy üres tábla nem változtat a pontszámodon. A mai következő már igen.",
       "piecesPerSecond": "{value} bábu/mp",
       "actions": "Eredményhez tartozó műveletek",

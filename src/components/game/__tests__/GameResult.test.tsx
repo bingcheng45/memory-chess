@@ -143,37 +143,19 @@ describe("GameResult", () => {
     expect(onNewGame).toHaveBeenCalledTimes(1);
   });
 
-  it("names the placement round while the rating is placed, and nothing once it is rated", () => {
-    const placement: RatingResult = {
-      phase: "placement",
-      rating: 1080,
-      change: 40,
-      breakdown: { round: 3, of: 10, boardLevel: 1000, challenge: 1000, estimate: 1400 },
-    };
-    const rated: RatingResult = {
-      phase: "rated",
-      rating: 1208,
-      change: 8,
-      breakdown: {
-        boardLevel: 1000,
-        challenge: 1000,
-        expected: 0.76,
-        outcome: 1,
-        base: 7.7,
-        risk: { direction: "normal", sigmas: 0, multiplier: 1 },
-        form: { surprise: 0, multiplier: 1 },
-        speed: 1,
-      },
-    };
+  it("says the rating is provisional while it is, and nothing once it is rated", () => {
+    const player = { rating: 1080, rd: 200, rounds: 3 };
+    const provisional: RatingResult = { phase: "provisional", rating: 1080, change: 40, player, breakdown: { challenge: 1000, expected: 0.82, score: 1 } };
+    const rated: RatingResult = { ...provisional, phase: "rated", player: { ...player, rd: 80 } };
 
-    mockGameState = { ...baseGameState, rating: placement };
+    mockGameState = { ...baseGameState, rating: provisional };
     const { unmount } = render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
-    const placed = screen.queryByText("Rating placement: round 3 of 10");
+    const shown = document.querySelector("[data-rating-phase]")?.textContent;
     unmount();
     mockGameState = { ...baseGameState, rating: rated };
     render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
-    expect([placed?.textContent, screen.queryByText(/Rating placement/)]).toEqual(["Rating placement: round 3 of 10", null]);
+    expect([shown, document.querySelector("[data-rating-phase]")]).toEqual(["Provisional rating", null]);
   });
 
   it("says the day's free skip in place of a rating change", () => {

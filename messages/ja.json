@@ -951,15 +951,18 @@
       "lastGame": "前回：解答時間 {time} 秒、正答率 {accuracy}%",
       "preview": {
         "label": "レーティングの見込み",
-        "placement": "判定ラウンド {round}/{of}",
+        "provisional": "暫定レーティング",
         "rated": "レーティング対象ラウンド",
         "board": "盤面のレーティング",
         "yours": "あなたのレーティング",
+        "expected": "予想正答率",
+        "percent": "<num>{value}%</num>",
+        "suggested": "おすすめの盤面",
         "clear": "クリアした場合",
         "miss": "失敗した場合",
         "gain": "最大 <num>+{value}</num>",
         "loss": "最大 <num>−{value}</num>",
-        "announce": "盤面のレーティング {board}。あなたのレーティング {rating}。クリアした場合は最大 +{gain}。失敗した場合は最大 −{loss}。"
+        "announce": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。失敗した場合は最大 −{loss}。"
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "記憶時間",
       "solutionTime": "解答時間",
       "recallSpeed": "想起スピード",
-      "placement": "レーティング判定: {total} ラウンド中 {round} ラウンド目",
+      "provisional": "暫定レーティング",
       "freeSkip": "今日の無料スキップ: 空の盤面ではレーティングは変わりません。今日の次の空の盤面からは変わります。",
       "piecesPerSecond": "{value} 駒/秒",
       "actions": "結果に対する操作",

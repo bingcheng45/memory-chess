@@ -16,10 +16,13 @@ import { now as monotonicNow } from '@/lib/game/clock';
 import {
   isSkillRating,
   MAX_SKILL_RATING,
-  NORM_ROUNDS,
+  NEW_PLAYER,
+  parseCertainty,
   parseRatedRoundFacts,
+  replay,
   START_RATING,
   WIN_ACCURACY,
+  type PlayerRating,
   type RatedRoundFacts,
 } from "@/lib/game/rating";
 import { outcomeEffects, roundOutcomeOf } from "@/lib/game/roundOutcome";
@@ -46,15 +49,15 @@ type GameStateWithRating = GameState & {
 /** The suffix chess.js gave the solution board's FEN, kept so the lab record's placed FEN reads as it always has. */
 const SOLUTION_FEN_SUFFIX = ' w - - 0 1';
 
-/** The newest rounds kept in the persisted history: the rated rounds the rating reads. A review or a free skip is left out, as it is from the rating and the streak. */
-const HISTORY_LIMIT = NORM_ROUNDS;
+/** The newest rated rounds kept in the persisted history. A review or a free skip is left out, as it is from the rating and the streak. */
+const HISTORY_LIMIT = 30;
 
 /**
- * The persisted shape's version. Version 1 replaced a rating that only went up with the placement and Elo rating, so
- * a rating stored before it starts again from START_RATING and a new placement. Version 2 added the free-skip day,
- * which starts unspent.
+ * The persisted shape's version. Version 1 replaced a rating that only went up with an Elo rating, so a rating stored
+ * before it starts again from START_RATING. Version 2 added the free-skip day, which starts unspent. Version 3 gave the
+ * rating its uncertainty, found by replaying the stored rated rounds.
  */
-const STORE_VERSION = 2;
+const STORE_VERSION = 3;
 const RATING_RESET_VERSION = 1;
 
 const LOCAL_DAY = /^\d{4}-\d{2}-\d{2}$/;
@@ -70,6 +73,8 @@ interface GameStore {
   history: GameHistory[];
   /** The local day the last free skip was used: that day's first empty board, which leaves the rating alone. */
   freeSkipDay: string | null;
+  /** How sure the game is of `gameState.skillRating`, which together with it is the player's rating. */
+  certainty: Omit<PlayerRating, 'rating'>;
   /** The round being played, run by the shared round reducer. Never persisted. */
   round: RoundState;
 
@@ -107,11 +112,30 @@ const calculateTimeBonus = (completionTime: number, memorizeTime: number, actual
 };
 
 /** The held rated rounds that carry the facts the rating reads, newest first. Rows saved before them are left out. */
-export const ratedFactsOf = (history: readonly GameHistory[]): RatedRoundFacts[] =>
+export const ratedFactsOf = (history: readonly Pick<GameHistory, 'facts'>[]): RatedRoundFacts[] =>
   history.flatMap(({ facts }) => {
     const parsed = parseRatedRoundFacts(facts);
     return parsed ? [parsed] : [];
   });
+
+export const playerRatingOf = ({ gameState, certainty }: Pick<GameStore, 'gameState' | 'certainty'>): PlayerRating => ({
+  rating: gameState.skillRating ?? START_RATING,
+  ...certainty,
+});
+
+/**
+ * A rating stored before version 3 has no uncertainty, so its stored rated rounds are replayed, oldest first, from it
+ * as a new player's uncertainty. With no rounds to replay the player starts as a new player.
+ */
+function withCertainty(persisted: Record<string, unknown>, version: number): Record<string, unknown> {
+  const gameState = isRecord(persisted.gameState) ? persisted.gameState : {};
+  const rows = Array.isArray(persisted.history) ? persisted.history.filter(isRecord) : [];
+  const rounds = ratedFactsOf(rows).reverse();
+  const stored = version < RATING_RESET_VERSION ? START_RATING : gameState.skillRating;
+  const from = rounds.length > 0 && isSkillRating(stored) ? Math.min(stored, MAX_SKILL_RATING) : START_RATING;
+  const { rating, ...certainty } = replay({ ...NEW_PLAYER, rating: from }, rounds);
+  return { ...persisted, gameState: { ...gameState, skillRating: rating }, certainty };
+}
 
 // Initialize the store
 export const useGameStore = create<GameStore>()(
@@ -120,6 +144,7 @@ export const useGameStore = create<GameStore>()(
       gameState: initialGameState,
       history: [], // Empty history array
       freeSkipDay: null,
+      certainty: { rd: NEW_PLAYER.rd, rounds: NEW_PLAYER.rounds },
       lastSettings: null,
       round: IDLE_ROUND,
 
@@ -203,7 +228,7 @@ export const useGameStore = create<GameStore>()(
           rebuildSeconds: completionTime,
           accuracy: score.accuracy,
         };
-        const rating = roundOutcomeOf(currentRating, ratedFactsOf(get().history), {
+        const rating = roundOutcomeOf(playerRatingOf(get()), {
           review: gameState.board?.kind === 'review',
           placedPieces: Object.keys(placed).length,
           day,
@@ -273,11 +298,12 @@ export const useGameStore = create<GameStore>()(
           streak,
           facts,
         };
-        set(({ history, freeSkipDay }) => ({
+        set(({ history, freeSkipDay, certainty }) => ({
           round,
           gameState: updatedGameState as GameState,
           history: effects.rated ? [played, ...history].slice(0, HISTORY_LIMIT) : history,
           freeSkipDay: effects.spendsFreeSkip ? day : freeSkipDay,
+          certainty: 'player' in rating ? { rd: rating.player.rd, rounds: rating.player.rounds } : certainty,
         }));
 
         const soundEnabled = isSoundEnabled();
@@ -325,12 +351,8 @@ export const useGameStore = create<GameStore>()(
       name: GAME_STORAGE_KEY,
       version: STORE_VERSION,
       // A rating stored before version 1 was earned under a formula that only went up, so it starts again. The win
-      // streak and the history rows stay; rows without rated facts are shown but do not count toward placement.
-      migrate: (persisted, version) => {
-        if (version >= RATING_RESET_VERSION || !isRecord(persisted)) return persisted;
-        const gameState = isRecord(persisted.gameState) ? persisted.gameState : {};
-        return { ...persisted, gameState: { ...gameState, skillRating: START_RATING } };
-      },
+      // streak and the history rows stay; rows without rated facts are shown but are not replayed.
+      migrate: (persisted, version) => (isRecord(persisted) ? withCertainty(persisted, version) : persisted),
       partialize: (state) => ({
         gameState: {
           pieceCount: state.gameState.pieceCount,
@@ -342,6 +364,7 @@ export const useGameStore = create<GameStore>()(
         history: state.history,
         lastSettings: state.lastSettings,
         freeSkipDay: state.freeSkipDay,
+        certainty: state.certainty,
       }),
       // localStorage is user-editable and outlives app versions, so a stored
       // value that would put the configuration form out of range is dropped.
@@ -360,6 +383,7 @@ export const useGameStore = create<GameStore>()(
           },
           lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
           freeSkipDay: parseLocalDay(stored.freeSkipDay),
+          certainty: parseCertainty(stored.certainty),
         };
       },
     }

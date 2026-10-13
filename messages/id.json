@@ -951,15 +951,18 @@
       "lastGame": "Permainan terakhir: {time} dtk waktu penyelesaian dengan akurasi {accuracy}%",
       "preview": {
         "label": "Pratinjau rating",
-        "placement": "Ronde penempatan {round} dari {of}",
+        "provisional": "Rating sementara",
         "rated": "Ronde berating",
         "board": "Rating papan",
         "yours": "Rating kamu",
+        "expected": "Akurasi yang diharapkan",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Papan yang disarankan",
         "clear": "Jika kamu berhasil",
         "miss": "Jika kamu gagal",
         "gain": "Hingga <num>+{value}</num>",
         "loss": "Paling banyak <num>−{value}</num>",
-        "announce": "Rating papan {board}. Rating kamu {rating}. Jika kamu berhasil, hingga +{gain}. Jika kamu gagal, paling banyak −{loss}."
+        "announce": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}. Jika kamu gagal, paling banyak −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Waktu menghafal",
       "solutionTime": "Waktu penyelesaian",
       "recallSpeed": "Kecepatan mengingat",
-      "placement": "Penempatan rating: ronde {round} dari {total}",
+      "provisional": "Rating sementara",
       "freeSkip": "Lewati gratis hari ini: papan kosong tidak mengubah rating Anda. Papan kosong berikutnya hari ini akan mengubahnya.",
       "piecesPerSecond": "{value} bidak/dtk",
       "actions": "Tindakan untuk hasil",

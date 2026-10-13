@@ -951,15 +951,18 @@
       "lastGame": "Última partida: {time} s de resolução com {accuracy}% de precisão",
       "preview": {
         "label": "Prévia do rating",
-        "placement": "Rodada de classificação {round} de {of}",
+        "provisional": "Rating provisório",
         "rated": "Rodada valendo rating",
         "board": "Rating do tabuleiro",
         "yours": "Seu rating",
+        "expected": "Precisão esperada",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Tabuleiro sugerido",
         "clear": "Se você acertar",
         "miss": "Se você errar",
         "gain": "Até <num>+{value}</num>",
         "loss": "No máximo <num>−{value}</num>",
-        "announce": "Rating do tabuleiro {board}. Seu rating {rating}. Se você acertar, até +{gain}. Se você errar, no máximo −{loss}."
+        "announce": "Rating do tabuleiro {board}. Seu rating {rating}. Precisão esperada {expected}%. Se você acertar, até +{gain}. Se você errar, no máximo −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Tempo de memorização",
       "solutionTime": "Tempo de resolução",
       "recallSpeed": "Velocidade de recordação",
-      "placement": "Classificação do rating: rodada {round} de {total}",
+      "provisional": "Rating provisório",
       "freeSkip": "Pulo grátis do dia: um tabuleiro vazio não muda seu rating. O próximo de hoje muda.",
       "piecesPerSecond": "{value} peças/s",
       "actions": "Ações do resultado",

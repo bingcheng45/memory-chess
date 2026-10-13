@@ -842,7 +842,7 @@
       "copyFailed": "Het klembord weigerde de tekst. Selecteer de tekst hieronder en kopieer hem zelf.",
       "joined": "Je staat op het bord van vandaag",
       "rank": "Plek {rank} van {total} vandaag",
-      "lateNote": "Je poging begon voor middernacht UTC en eindigde erna, dus telt hij voor het bord van die dag.",
+      "lateNote": "Je speelde het bord van gisteren, maar staat er nog niet op.",
       "lateJoined": "Je staat op het bord van die dag"
     },
     "join": {

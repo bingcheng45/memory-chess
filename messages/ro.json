@@ -842,7 +842,7 @@
       "copyFailed": "Clipboardul a refuzat copierea. Selectează textul de mai jos și copiază-l.",
       "joined": "Ești în tabla de azi",
       "rank": "Locul {rank} din {total} azi",
-      "lateNote": "Încercarea ta a început înainte de miezul nopții UTC și s-a încheiat după, așa că se numără pentru tabla din ziua aceea.",
+      "lateNote": "Ai jucat tabla de ieri și încă nu ai intrat în ea.",
       "lateJoined": "Ești în tabla din ziua aceea"
     },
     "join": {

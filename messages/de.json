@@ -842,7 +842,7 @@
       "copyFailed": "Die Zwischenablage hat den Zugriff abgelehnt. Markiere den Text unten und kopiere ihn.",
       "joined": "Du stehst auf dem heutigen Brett",
       "rank": "Platz {rank} von {total} heute",
-      "lateNote": "Dein Versuch begann vor Mitternacht UTC und endete danach, darum zählt er für das Brett dieses Tages.",
+      "lateNote": "Du hast das gestrige Brett gespielt und bist ihm noch nicht beigetreten.",
       "lateJoined": "Du stehst auf dem Brett dieses Tages"
     },
     "join": {

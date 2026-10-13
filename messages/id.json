@@ -842,7 +842,7 @@
       "copyFailed": "Papan klip menolak akses. Pilih teks di bawah lalu salin.",
       "joined": "Anda ada di papan hari ini",
       "rank": "Peringkat {rank} dari {total} hari ini",
-      "lateNote": "Percobaan Anda dimulai sebelum tengah malam UTC dan selesai sesudahnya, jadi masuk ke papan hari itu.",
+      "lateNote": "Anda sudah memainkan papan kemarin, tetapi belum bergabung ke papan itu.",
       "lateJoined": "Anda ada di papan hari itu"
     },
     "join": {

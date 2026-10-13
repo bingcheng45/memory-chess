@@ -842,7 +842,7 @@
       "copyFailed": "Gli appunti hanno rifiutato la copia. Seleziona il testo qui sotto e copialo.",
       "joined": "Sei nella scacchiera di oggi",
       "rank": "Posizione {rank} su {total} oggi",
-      "lateNote": "Il tuo tentativo è iniziato prima della mezzanotte UTC ed è finito dopo, quindi conta per la scacchiera di quel giorno.",
+      "lateNote": "Hai giocato la scacchiera di ieri, ma il tuo risultato non è ancora in classifica.",
       "lateJoined": "Sei nella scacchiera di quel giorno"
     },
     "join": {

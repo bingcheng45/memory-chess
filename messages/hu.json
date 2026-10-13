@@ -842,7 +842,7 @@
       "copyFailed": "A vágólap elutasította a másolást. Jelöld ki az alábbi szöveget, és másold ki.",
       "joined": "Rajta vagy a mai táblán",
       "rank": "{rank}. hely a mai {total} közül",
-      "lateNote": "A próbálkozásod UTC szerint éjfél előtt kezdődött és utána ért véget, ezért annak a napnak a táblájához tartozik.",
+      "lateNote": "Játszottál a tegnapi táblán, de még nem csatlakoztál hozzá.",
       "lateJoined": "Rajta vagy annak a napnak a tábláján"
     },
     "join": {

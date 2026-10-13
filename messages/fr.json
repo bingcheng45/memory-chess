@@ -842,7 +842,7 @@
       "copyFailed": "Le presse-papiers a refusé la copie. Sélectionnez le texte ci-dessous et copiez-le.",
       "joined": "Vous êtes sur le plateau du jour",
       "rank": "Rang {rank} sur {total} aujourd’hui",
-      "lateNote": "Votre essai a commencé avant minuit UTC et s’est terminé après, il compte donc pour le plateau de ce jour-là.",
+      "lateNote": "Vous avez joué le plateau d’hier sans l’avoir encore rejoint.",
       "lateJoined": "Vous êtes sur le plateau de ce jour-là"
     },
     "join": {

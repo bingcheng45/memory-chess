@@ -842,7 +842,7 @@
       "copyFailed": "Leikepöytä ei sallinut kopiointia. Valitse alla oleva teksti ja kopioi se.",
       "joined": "Olet mukana päivän laudalla",
       "rank": "Sija {rank} / {total} tänään",
-      "lateNote": "Yrityksesi alkoi ennen keskiyötä UTC ja päättyi sen jälkeen, joten se kuuluu sen päivän laudalle.",
+      "lateNote": "Pelasit eilisen laudan etkä ole vielä liittynyt sille.",
       "lateJoined": "Olet mukana sen päivän laudalla"
     },
     "join": {

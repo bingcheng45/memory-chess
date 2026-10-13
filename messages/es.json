@@ -842,7 +842,7 @@
       "copyFailed": "El portapapeles lo ha rechazado. Selecciona el texto de abajo y cópialo.",
       "joined": "Estás en el tablero de hoy",
       "rank": "Puesto {rank} de {total} hoy",
-      "lateNote": "Tu intento empezó antes de la medianoche UTC y terminó después, así que cuenta para el tablero de ese día.",
+      "lateNote": "Jugaste el tablero de ayer y todavía no te has unido.",
       "lateJoined": "Estás en el tablero de ese día"
     },
     "join": {

@@ -842,7 +842,7 @@
       "copyFailed": "Schránka kopírování odmítla. Označte text níže a zkopírujte ho ručně.",
       "joined": "Jste v dnešním žebříčku",
       "rank": "{rank}. místo z {total} dnes",
-      "lateNote": "Váš pokus začal před půlnocí UTC a skončil po ní, takže patří do žebříčku toho dne.",
+      "lateNote": "Včerejší pozici máte odehranou, ale v jejím žebříčku ještě nejste.",
       "lateJoined": "Jste v žebříčku toho dne"
     },
     "join": {

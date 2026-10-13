@@ -842,7 +842,7 @@
       "copyFailed": "Udklipsholderen afviste det. Markér teksten nedenfor og kopiér den.",
       "joined": "Du er med på dagens bræt",
       "rank": "Plads {rank} af {total} i dag",
-      "lateNote": "Dit forsøg begyndte før midnat UTC og sluttede efter, så det hører til den dags bræt.",
+      "lateNote": "Du spillede gårsdagens bræt og er ikke kommet med på det endnu.",
       "lateJoined": "Du er med på den dags bræt"
     },
     "join": {

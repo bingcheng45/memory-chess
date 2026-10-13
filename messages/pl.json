@@ -842,7 +842,7 @@
       "copyFailed": "Schowek odmówił dostępu. Zaznacz tekst poniżej i skopiuj go ręcznie.",
       "joined": "Jesteś w dzisiejszej szachownicy",
       "rank": "Miejsce {rank} z {total} dzisiaj",
-      "lateNote": "Twoja próba zaczęła się przed północą UTC i skończyła po niej, więc liczy się do szachownicy z tamtego dnia.",
+      "lateNote": "Twój wynik z wczorajszej szachownicy nie został jeszcze do niej dodany.",
       "lateJoined": "Jesteś w szachownicy z tamtego dnia"
     },
     "join": {

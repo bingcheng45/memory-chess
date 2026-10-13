@@ -57,7 +57,7 @@ export function DailyBoard() {
   );
 }
 
-/** A round opened before midnight UTC and finished after it still joins the board of the day it was opened on. */
+/** The server still takes rows for yesterday, so a round played on yesterday's board and not joined can join it here. */
 function LateJoin({ round }: { round: DailyRound }) {
   const t = useTranslations("daily.page");
   const tJoin = useTranslations("daily.join");

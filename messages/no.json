@@ -842,7 +842,7 @@
       "copyFailed": "Utklippstavlen ble nektet tilgang. Merk teksten under og kopier den.",
       "joined": "Du er med på dagens brett",
       "rank": "Plass {rank} av {total} i dag",
-      "lateNote": "Forsøket ditt begynte før midnatt UTC og sluttet etter, så det hører til brettet for den dagen.",
+      "lateNote": "Du spilte gårsdagens brett og er ikke med på det ennå.",
       "lateJoined": "Du er med på brettet for den dagen"
     },
     "join": {

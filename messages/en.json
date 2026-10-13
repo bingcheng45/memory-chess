@@ -1657,7 +1657,7 @@
       "copyFailed": "The clipboard was refused. Select the text below and copy it.",
       "joined": "You are on today's board",
       "rank": "Rank {rank} of {total} today",
-      "lateNote": "Your try began before midnight UTC and ended after it, so it joins that day's board.",
+      "lateNote": "You played yesterday's board and have not joined it yet.",
       "lateJoined": "You are on the board for that day"
     },
     "join": {

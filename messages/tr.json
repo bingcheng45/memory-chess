@@ -842,7 +842,7 @@
       "copyFailed": "Pano izin vermedi. Aşağıdaki metni seçip kopyala.",
       "joined": "Bugünün tahtasındasın",
       "rank": "Bugün {total} kişi arasında {rank}. sıra",
-      "lateNote": "Denemen UTC gece yarısından önce başlayıp sonra bittiği için o günün tahtasına sayılır.",
+      "lateNote": "Dünün tahtasını oynadın ama henüz katılmadın.",
       "lateJoined": "O günün tahtasındasın"
     },
     "join": {

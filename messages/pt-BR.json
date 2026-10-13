@@ -842,7 +842,7 @@
       "copyFailed": "A área de transferência recusou a cópia. Selecione o texto abaixo e copie.",
       "joined": "Você está no tabuleiro de hoje",
       "rank": "Posição {rank} de {total} hoje",
-      "lateNote": "Sua tentativa começou antes da meia-noite UTC e terminou depois, então conta para o tabuleiro daquele dia.",
+      "lateNote": "Você jogou o tabuleiro de ontem e ainda não entrou nele.",
       "lateJoined": "Você está no tabuleiro daquele dia"
     },
     "join": {

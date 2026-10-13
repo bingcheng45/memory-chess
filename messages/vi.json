@@ -842,7 +842,7 @@
       "copyFailed": "Bộ nhớ tạm đã từ chối. Hãy chọn đoạn văn bản bên dưới và sao chép.",
       "joined": "Bạn đã có tên trên bàn cờ hôm nay",
       "rank": "Hạng {rank} trên {total} hôm nay",
-      "lateNote": "Lượt chơi của bạn bắt đầu trước nửa đêm UTC và kết thúc sau đó, nên được tính cho bàn cờ của ngày đó.",
+      "lateNote": "Bạn đã chơi bàn cờ hôm qua nhưng chưa tham gia.",
       "lateJoined": "Bạn đã có tên trên bàn cờ của ngày đó"
     },
     "join": {

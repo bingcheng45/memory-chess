@@ -147,8 +147,7 @@
         "facts": {
           "study": "studietid",
           "pieces": "pjäser per runda",
-          "accuracy": "träffsäkerhet",
-          "plays": "spelade partier",
+          "plays": "{count, plural, one {spelat parti} other {spelade partier}}",
           "languages": "språk"
         },
         "showcase": {

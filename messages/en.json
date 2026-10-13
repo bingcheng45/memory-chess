@@ -147,8 +147,7 @@
         "facts": {
           "study": "study window",
           "pieces": "pieces per round",
-          "accuracy": "accuracy reading",
-          "plays": "games played",
+          "plays": "{count, plural, one {game played} other {games played}}",
           "languages": "languages"
         },
         "showcase": {

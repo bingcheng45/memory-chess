@@ -147,8 +147,7 @@
         "facts": {
           "study": "husketid",
           "pieces": "brikker pr. runde",
-          "accuracy": "præcision",
-          "plays": "spillede partier",
+          "plays": "{count, plural, one {spillet parti} other {spillede partier}}",
           "languages": "sprog"
         },
         "showcase": {

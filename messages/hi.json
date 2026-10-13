@@ -147,8 +147,7 @@
         "facts": {
           "study": "याद करने का समय",
           "pieces": "मोहरे प्रति राउंड",
-          "accuracy": "सटीकता रीडिंग",
-          "plays": "खेले गए गेम",
+          "plays": "{count, plural, one {खेला गया गेम} other {खेले गए गेम}}",
           "languages": "भाषाएँ"
         },
         "showcase": {

@@ -147,8 +147,7 @@
         "facts": {
           "study": "czas na zapamiętanie",
           "pieces": "figur w rundzie",
-          "accuracy": "odczyt dokładności",
-          "plays": "rozegranych gier",
+          "plays": "{count, plural, one {rozegrana gra} few {rozegrane gry} many {rozegranych gier} other {rozegranej gry}}",
           "languages": "języków"
         },
         "showcase": {

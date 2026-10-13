@@ -147,8 +147,7 @@
         "facts": {
           "study": "記憶時間",
           "pieces": "1ラウンドの駒数",
-          "accuracy": "正解率",
-          "plays": "プレイ回数",
+          "plays": "{count, plural, other {プレイ回数}}",
           "languages": "対応言語"
         },
         "showcase": {

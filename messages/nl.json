@@ -147,8 +147,7 @@
         "facts": {
           "study": "kijktijd",
           "pieces": "stukken per ronde",
-          "accuracy": "nauwkeurigheid",
-          "plays": "gespeelde partijen",
+          "plays": "{count, plural, one {gespeelde partij} other {gespeelde partijen}}",
           "languages": "talen"
         },
         "showcase": {

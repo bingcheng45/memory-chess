@@ -147,8 +147,7 @@
         "facts": {
           "study": "čas na prohlížení",
           "pieces": "figur v kole",
-          "accuracy": "škála přesnosti",
-          "plays": "odehraných partií",
+          "plays": "{count, plural, one {odehraná partie} few {odehrané partie} many {odehrané partie} other {odehraných partií}}",
           "languages": "jazyků"
         },
         "showcase": {

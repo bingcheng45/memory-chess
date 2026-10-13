@@ -8,21 +8,25 @@ import { MEMORIZE_SECONDS_RANGE, PIECE_COUNT_RANGE } from "@/lib/reference/facts
 import { LAB_SECTIONS } from "./SectionHeading";
 import { ShowcaseBoard } from "./ShowcaseBoard";
 import { QUICK_START_HREF } from "./links";
+import type { TotalPlays } from "./useLabEffects";
+
+/** Stands in for the count while it loads or when it cannot be read. */
+const PLAYS_PENDING = "–";
+// Any count that takes the general plural in every catalogue, so the label reads naturally with no number known.
+const GENERAL_COUNT = 100;
 
 function range(min: number, max: number, unit = ""): string {
   return `${min}–${max}${unit}`;
 }
 
-export function LabHero({ totalPlays }: { totalPlays: number | null }) {
+export function LabHero({ totalPlays }: { totalPlays: TotalPlays }) {
   const t = useTranslations("home");
   const lab = useTranslations("home.lab");
 
+  const plays = totalPlays.status === "known" ? totalPlays.plays : null;
   const facts = [
     { value: range(MEMORIZE_SECONDS_RANGE.min, MEMORIZE_SECONDS_RANGE.max, "s"), label: lab("hero.facts.study") },
     { value: range(PIECE_COUNT_RANGE.min, PIECE_COUNT_RANGE.max), label: lab("hero.facts.pieces") },
-    totalPlays === null
-      ? { value: "0–100%", label: lab("hero.facts.accuracy") }
-      : { value: formatNumber(totalPlays), label: lab("hero.facts.plays") },
     { value: String(LOCALES.length), label: lab("hero.facts.languages") },
   ];
 
@@ -57,6 +61,10 @@ export function LabHero({ totalPlays }: { totalPlays: number | null }) {
             })}
           </p>
           <div className="lab-facts">
+            <div className="lab-fact-lead" data-status={totalPlays.status} aria-busy={totalPlays.status === "loading"}>
+              <b>{plays === null ? PLAYS_PENDING : formatNumber(plays)}</b>
+              {lab("hero.facts.plays", { count: plays ?? GENERAL_COUNT })}
+            </div>
             {facts.map((fact) => (
               <div key={fact.label}>
                 <b>{fact.value}</b>

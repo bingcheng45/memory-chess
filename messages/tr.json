@@ -147,8 +147,7 @@
         "facts": {
           "study": "inceleme süresi",
           "pieces": "tur başına taş",
-          "accuracy": "isabet ölçümü",
-          "plays": "oynanan oyun",
+          "plays": "{count, plural, one {oynanan oyun} other {oynanan oyun}}",
           "languages": "dil"
         },
         "showcase": {

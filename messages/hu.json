@@ -147,8 +147,7 @@
         "facts": {
           "study": "megfigyelési idő",
           "pieces": "bábu körönként",
-          "accuracy": "pontossági skála",
-          "plays": "lejátszott játszma",
+          "plays": "{count, plural, one {lejátszott játszma} other {lejátszott játszma}}",
           "languages": "nyelv"
         },
         "showcase": {

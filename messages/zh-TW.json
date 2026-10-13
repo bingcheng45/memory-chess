@@ -147,8 +147,7 @@
         "facts": {
           "study": "記憶時間",
           "pieces": "每回合棋子數",
-          "accuracy": "準確率讀數",
-          "plays": "已玩局數",
+          "plays": "{count, plural, other {已玩局數}}",
           "languages": "種語言"
         },
         "showcase": {

@@ -147,8 +147,7 @@
         "facts": {
           "study": "thời gian quan sát",
           "pieces": "quân mỗi ván",
-          "accuracy": "số đo độ chính xác",
-          "plays": "ván đã chơi",
+          "plays": "{count, plural, other {ván đã chơi}}",
           "languages": "ngôn ngữ"
         },
         "showcase": {

@@ -147,8 +147,7 @@
         "facts": {
           "study": "Einprägezeit",
           "pieces": "Figuren pro Runde",
-          "accuracy": "Genauigkeit",
-          "plays": "gespielte Partien",
+          "plays": "{count, plural, one {gespielte Partie} other {gespielte Partien}}",
           "languages": "Sprachen"
         },
         "showcase": {

@@ -30,6 +30,8 @@
 .lab-facts div { padding: 16px 16px 0 0; font: 400 13px/1.4 var(--lp-ui); color: var(--lp-muted); }
 .lab-facts div + div { padding-left: 16px; border-left: 1px solid var(--lp-line); }
 .lab-facts b { display: block; margin-bottom: 4px; font: 500 22px/1.3 var(--lp-data); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--lp-ink); }
+.lab-facts .lab-fact-lead { font-weight: 700; color: var(--lp-accent); }
+.lab-facts .lab-fact-lead b { font-weight: 700; color: var(--lp-accent); white-space: nowrap; }
 
 /* notebook */
 .lab-nb { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 1px solid var(--lp-ink); }

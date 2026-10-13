@@ -147,8 +147,7 @@
         "facts": {
           "study": "studietid",
           "pieces": "brikker per runde",
-          "accuracy": "treffsikkerhet",
-          "plays": "spilte partier",
+          "plays": "{count, plural, one {spilt parti} other {spilte partier}}",
           "languages": "språk"
         },
         "showcase": {

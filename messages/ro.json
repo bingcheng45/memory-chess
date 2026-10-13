@@ -147,8 +147,7 @@
         "facts": {
           "study": "timp de studiu",
           "pieces": "piese pe rundă",
-          "accuracy": "citirea preciziei",
-          "plays": "partide jucate",
+          "plays": "{count, plural, one {partidă jucată} few {partide jucate} other {de partide jucate}}",
           "languages": "limbi"
         },
         "showcase": {

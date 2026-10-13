@@ -3,27 +3,36 @@
 import { useEffect, useState } from "react";
 import { REDUCED_MOTION_QUERY } from "@/components/articles/articleFlight";
 
-export function useTotalPlays(): number | null {
-  const [totalPlays, setTotalPlays] = useState<number | null>(null);
+/** The site-wide games-played count: still loading, known, or not available (no Supabase, a failed request). */
+export type TotalPlays =
+  | { readonly status: "loading" }
+  | { readonly status: "known"; readonly plays: number }
+  | { readonly status: "unavailable" };
+
+const UNAVAILABLE: TotalPlays = { status: "unavailable" };
+
+async function fetchTotalPlays(): Promise<TotalPlays> {
+  try {
+    const response = await fetch("/api/game-stats?metric=total_plays");
+    if (!response.ok) return UNAVAILABLE;
+    const data = await response.json();
+    const raw = data?.data?.metric_value;
+    // Postgres bigint columns can arrive as numeric strings.
+    const plays = raw === undefined || raw === null ? NaN : Number(raw);
+    return Number.isFinite(plays) ? { status: "known", plays } : UNAVAILABLE;
+  } catch {
+    return UNAVAILABLE;
+  }
+}
+
+export function useTotalPlays(): TotalPlays {
+  const [totalPlays, setTotalPlays] = useState<TotalPlays>({ status: "loading" });
 
   useEffect(() => {
     let cancelled = false;
-
-    async function load() {
-      try {
-        const response = await fetch("/api/game-stats?metric=total_plays");
-        if (!response.ok) return;
-        const data = await response.json();
-        const raw = data?.data?.metric_value;
-        // Postgres bigint columns can arrive as numeric strings.
-        const plays = raw === undefined || raw === null ? NaN : Number(raw);
-        if (Number.isFinite(plays) && !cancelled) setTotalPlays(plays);
-      } catch {
-        // Stats are optional; keep the homepage usable when local Supabase env vars are absent.
-      }
-    }
-
-    load();
+    fetchTotalPlays().then((result) => {
+      if (!cancelled) setTotalPlays(result);
+    });
     return () => {
       cancelled = true;
     };

@@ -147,8 +147,7 @@
         "facts": {
           "study": "암기 시간",
           "pieces": "라운드당 기물 수",
-          "accuracy": "정확도 측정값",
-          "plays": "플레이한 게임 수",
+          "plays": "{count, plural, other {플레이한 게임 수}}",
           "languages": "지원 언어"
         },
         "showcase": {

@@ -147,8 +147,7 @@
         "facts": {
           "study": "waktu menghafal",
           "pieces": "bidak per ronde",
-          "accuracy": "pembacaan akurasi",
-          "plays": "permainan dimainkan",
+          "plays": "{count, plural, other {permainan dimainkan}}",
           "languages": "bahasa"
         },
         "showcase": {

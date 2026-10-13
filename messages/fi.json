@@ -147,8 +147,7 @@
         "facts": {
           "study": "tutkimisaika",
           "pieces": "nappulaa kierroksella",
-          "accuracy": "tarkkuus",
-          "plays": "pelattua peliä",
+          "plays": "{count, plural, one {pelattu peli} other {pelattua peliä}}",
           "languages": "kieltä"
         },
         "showcase": {

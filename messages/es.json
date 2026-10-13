@@ -147,8 +147,7 @@
         "facts": {
           "study": "tiempo de estudio",
           "pieces": "piezas por ronda",
-          "accuracy": "medición de precisión",
-          "plays": "partidas jugadas",
+          "plays": "{count, plural, one {partida jugada} many {partidas jugadas} other {partidas jugadas}}",
           "languages": "idiomas"
         },
         "showcase": {

@@ -8,12 +8,14 @@ export const DELTA_FIGURES = [...DASHBOARD_GROUPS.lead, ...DASHBOARD_GROUPS.summ
 
 export type DeltaFigureId = (typeof DELTA_FIGURES)[number];
 
-/** Which way of a figure's number is progress. Speed is seconds per piece, so it improves as it falls. */
+/** Which way of a figure's number is progress. Speed and the two times are seconds, so they improve as they fall. */
 export const BETTER_WHEN: { readonly [K in DeltaFigureId]: "higher" | "lower" } = {
   rating: "higher",
   span: "higher",
   piecesHeld: "higher",
   speed: "lower",
+  studyTime: "lower",
+  rebuildTime: "lower",
   bestAccuracy: "higher",
   recentAccuracy: "higher",
   winStreak: "higher",

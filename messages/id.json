@@ -1366,6 +1366,8 @@
       "span": "Rentang memori",
       "piecesHeld": "Bidak diingat",
       "speed": "Kecepatan",
+      "studyTime": "Waktu menghafal",
+      "rebuildTime": "Waktu menyusun",
       "streak": "Hari beruntun",
       "rounds": "Ronde dimainkan",
       "days": "Hari bermain",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, other {<n>{value}</n> bidak}}",
       "secondsPerPiece": "<n>{value}</n> dtk per bidak",
+      "seconds": "<n>{value}</n> dtk",
       "days": "{count, plural, other {<n>{value}</n> hari}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, other {<n>{value}</n> ronde}}",
@@ -1425,6 +1428,7 @@
         "setting": "Pengaturan",
         "accuracy": "Akurasi",
         "correct": "Benar",
+        "study": "Waktu menghafal",
         "time": "Waktu menyusun",
         "rating": "Rating",
         "board": "Papan"
@@ -1525,6 +1529,8 @@
         "streak": "{value, plural, other {# hari}} beruntun",
         "bestAccuracy": "akurasi terbaik {value, number}%",
         "recentAccuracy": "akurasi terbaru {value, number}%",
+        "studyTime": "waktu menghafal {value, number} dtk",
+        "rebuildTime": "waktu menyusun {value, number} dtk",
         "winStreak": "kemenangan beruntun {value, plural, other {# ronde}}",
         "rounds": "{value, plural, other {# ronde dimainkan}}",
         "days": "{value, plural, other {# hari bermain}}"

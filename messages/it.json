@@ -1366,6 +1366,8 @@
       "span": "Span di memoria",
       "piecesHeld": "Pezzi ricordati",
       "speed": "Velocità",
+      "studyTime": "Tempo di studio",
+      "rebuildTime": "Tempo di ricostruzione",
       "streak": "Giorni di fila",
       "rounds": "Partite giocate",
       "days": "Giorni giocati",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> pezzo} many {<n>{value}</n> pezzi} other {<n>{value}</n> pezzi}}",
       "secondsPerPiece": "<n>{value}</n> s per pezzo",
+      "seconds": "<n>{value}</n> s",
       "days": "{count, plural, one {<n>{value}</n> giorno} many {<n>{value}</n> giorni} other {<n>{value}</n> giorni}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> partita} many {<n>{value}</n> partite} other {<n>{value}</n> partite}}",
@@ -1425,6 +1428,7 @@
         "setting": "Impostazione",
         "accuracy": "Precisione",
         "correct": "Corretti",
+        "study": "Tempo di studio",
         "time": "Tempo di ricostruzione",
         "rating": "Punteggio",
         "board": "Scacchiera"
@@ -1525,6 +1529,8 @@
         "streak": "{value, plural, one {# giorno} many {# giorni} other {# giorni}} di fila",
         "bestAccuracy": "miglior precisione del {value, number}%",
         "recentAccuracy": "precisione recente del {value, number}%",
+        "studyTime": "tempo di studio {value, number} s",
+        "rebuildTime": "tempo di ricostruzione {value, number} s",
         "winStreak": "una serie di {value, plural, one {# vittoria} many {# vittorie} other {# vittorie}}",
         "rounds": "{value, plural, one {# partita giocata} many {# partite giocate} other {# partite giocate}}",
         "days": "{value, plural, one {# giorno giocato} many {# giorni giocati} other {# giorni giocati}}"

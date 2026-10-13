@@ -1366,6 +1366,8 @@
       "span": "Gedächtnisspanne",
       "piecesHeld": "Gehaltene Figuren",
       "speed": "Tempo",
+      "studyTime": "Einprägezeit",
+      "rebuildTime": "Aufbauzeit",
       "streak": "Tagesserie",
       "rounds": "Gespielte Runden",
       "days": "Spieltage",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> Figur} other {<n>{value}</n> Figuren}}",
       "secondsPerPiece": "<n>{value}</n> s pro Figur",
+      "seconds": "<n>{value}</n> s",
       "days": "{count, plural, one {<n>{value}</n> Tag} other {<n>{value}</n> Tage}}",
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> Runde} other {<n>{value}</n> Runden}}",
@@ -1425,6 +1428,7 @@
         "setting": "Einstellung",
         "accuracy": "Genauigkeit",
         "correct": "Richtig",
+        "study": "Einprägezeit",
         "time": "Aufbauzeit",
         "rating": "Wertung",
         "board": "Brett"
@@ -1525,6 +1529,8 @@
         "streak": "{value, plural, one {# Tag} other {# Tage}} in Folge",
         "bestAccuracy": "{value, number} % beste Genauigkeit",
         "recentAccuracy": "{value, number} % aktuelle Genauigkeit",
+        "studyTime": "Einprägezeit {value, number} s",
+        "rebuildTime": "Aufbauzeit {value, number} s",
         "winStreak": "eine Siegesserie von {value, plural, one {# Runde} other {# Runden}}",
         "rounds": "{value, plural, one {# Runde} other {# Runden}} gespielt",
         "days": "{value, plural, one {# Tag} other {# Tage}} gespielt"

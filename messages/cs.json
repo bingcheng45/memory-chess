@@ -1366,6 +1366,8 @@
       "span": "Paměťový rozsah",
       "piecesHeld": "Zapamatované figury",
       "speed": "Rychlost",
+      "studyTime": "Čas na zapamatování",
+      "rebuildTime": "Čas rozestavení",
       "streak": "Denní série",
       "rounds": "Odehraná kola",
       "days": "Herní dny",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> figura} few {<n>{value}</n> figury} many {<n>{value}</n> figury} other {<n>{value}</n> figur}}",
       "secondsPerPiece": "<n>{value}</n> s na figuru",
+      "seconds": "<n>{value}</n> s",
       "days": "{count, plural, one {<n>{value}</n> den} few {<n>{value}</n> dny} many {<n>{value}</n> dne} other {<n>{value}</n> dní}}",
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> kolo} few {<n>{value}</n> kola} many {<n>{value}</n> kola} other {<n>{value}</n> kol}}",
@@ -1425,6 +1428,7 @@
         "setting": "Nastavení",
         "accuracy": "Přesnost",
         "correct": "Správně",
+        "study": "Čas na zapamatování",
         "time": "Čas rozestavení",
         "rating": "Hodnocení",
         "board": "Deska"
@@ -1525,6 +1529,8 @@
         "streak": "{value, plural, one {# den} few {# dny} many {# dne} other {# dní}} v řadě",
         "bestAccuracy": "nejlepší přesnost {value, number} %",
         "recentAccuracy": "nedávná přesnost {value, number} %",
+        "studyTime": "čas na zapamatování {value, number} s",
+        "rebuildTime": "čas rozestavení {value, number} s",
         "winStreak": "vítězná série {value, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
         "rounds": "odehráno {value, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
         "days": "{value, plural, one {# den hraní} few {# dny hraní} many {# dne hraní} other {# dní hraní}}"

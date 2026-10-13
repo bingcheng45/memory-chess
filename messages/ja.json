@@ -1366,6 +1366,8 @@
       "span": "記憶スパン",
       "piecesHeld": "記憶できた駒",
       "speed": "スピード",
+      "studyTime": "記憶時間",
+      "rebuildTime": "配置時間",
       "streak": "連続日数",
       "rounds": "プレイしたラウンド",
       "days": "プレイした日数",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, other {<n>{value}</n>駒}}",
       "secondsPerPiece": "<n>{value}</n>秒/駒",
+      "seconds": "<n>{value}</n>秒",
       "days": "{count, plural, other {<n>{value}</n>日}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, other {<n>{value}</n>ラウンド}}",
@@ -1425,6 +1428,7 @@
         "setting": "設定",
         "accuracy": "正解率",
         "correct": "正解",
+        "study": "記憶時間",
         "time": "配置時間",
         "rating": "レーティング",
         "board": "盤面"
@@ -1525,6 +1529,8 @@
         "streak": "{value, plural, other {#日}}連続",
         "bestAccuracy": "最高正解率{value, number}%",
         "recentAccuracy": "最近の正解率{value, number}%",
+        "studyTime": "記憶時間{value, number}秒",
+        "rebuildTime": "配置時間{value, number}秒",
         "winStreak": "{value, plural, other {#連勝}}",
         "rounds": "{value, plural, other {#ラウンドプレイ}}",
         "days": "{value, plural, other {#日プレイ}}"

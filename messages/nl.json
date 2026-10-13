@@ -1366,6 +1366,8 @@
       "span": "Geheugenspanne",
       "piecesHeld": "Onthouden stukken",
       "speed": "Snelheid",
+      "studyTime": "Kijktijd",
+      "rebuildTime": "Opbouwtijd",
       "streak": "Dagreeks",
       "rounds": "Gespeelde rondes",
       "days": "Speeldagen",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> stuk} other {<n>{value}</n> stukken}}",
       "secondsPerPiece": "<n>{value}</n> s per stuk",
+      "seconds": "<n>{value}</n> s",
       "days": "{count, plural, one {<n>{value}</n> dag} other {<n>{value}</n> dagen}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> ronde} other {<n>{value}</n> rondes}}",
@@ -1425,6 +1428,7 @@
         "setting": "Instelling",
         "accuracy": "Nauwkeurigheid",
         "correct": "Goed",
+        "study": "Kijktijd",
         "time": "Opbouwtijd",
         "rating": "Rating",
         "board": "Bord"
@@ -1525,6 +1529,8 @@
         "streak": "{value, plural, one {# dag} other {# dagen}} op rij",
         "bestAccuracy": "{value, number}% beste nauwkeurigheid",
         "recentAccuracy": "{value, number}% recente nauwkeurigheid",
+        "studyTime": "kijktijd {value, number} s",
+        "rebuildTime": "opbouwtijd {value, number} s",
         "winStreak": "een winstreeks van {value, plural, one {# ronde} other {# rondes}}",
         "rounds": "{value, plural, one {# ronde} other {# rondes}} gespeeld",
         "days": "{value, plural, one {# dag} other {# dagen}} gespeeld"

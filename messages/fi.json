@@ -1366,6 +1366,8 @@
       "span": "Muistijänne",
       "piecesHeld": "Muistetut nappulat",
       "speed": "Nopeus",
+      "studyTime": "Tutkimisaika",
+      "rebuildTime": "Asetteluaika",
       "streak": "Päiväputki",
       "rounds": "Pelatut kierrokset",
       "days": "Pelipäivät",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> nappula} other {<n>{value}</n> nappulaa}}",
       "secondsPerPiece": "<n>{value}</n> s / nappula",
+      "seconds": "<n>{value}</n> s",
       "days": "{count, plural, one {<n>{value}</n> päivä} other {<n>{value}</n> päivää}}",
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> kierros} other {<n>{value}</n> kierrosta}}",
@@ -1425,6 +1428,7 @@
         "setting": "Asetus",
         "accuracy": "Tarkkuus",
         "correct": "Oikein",
+        "study": "Tutkimisaika",
         "time": "Asetteluaika",
         "rating": "Taitoluku",
         "board": "Lauta"
@@ -1525,6 +1529,8 @@
         "streak": "{value, plural, one {# päivä} other {# päivää}} putkeen",
         "bestAccuracy": "paras tarkkuus {value, number} %",
         "recentAccuracy": "viimeaikainen tarkkuus {value, number} %",
+        "studyTime": "tutkimisaika {value, number} s",
+        "rebuildTime": "asetteluaika {value, number} s",
         "winStreak": "voittoputki {value, plural, one {# kierros} other {# kierrosta}}",
         "rounds": "{value, plural, one {# kierros} other {# kierrosta}} pelattu",
         "days": "{value, plural, one {# päivä} other {# päivää}} pelattu"

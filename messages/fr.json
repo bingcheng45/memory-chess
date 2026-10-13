@@ -1366,6 +1366,8 @@
       "span": "Empan mémoriel",
       "piecesHeld": "Pièces retenues",
       "speed": "Vitesse",
+      "studyTime": "Temps d’étude",
+      "rebuildTime": "Temps de placement",
       "streak": "Série de jours",
       "rounds": "Parties jouées",
       "days": "Jours joués",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> pièce} many {<n>{value}</n> pièces} other {<n>{value}</n> pièces}}",
       "secondsPerPiece": "<n>{value}</n> s par pièce",
+      "seconds": "<n>{value}</n> s",
       "days": "{count, plural, one {<n>{value}</n> jour} many {<n>{value}</n> jours} other {<n>{value}</n> jours}}",
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> partie} many {<n>{value}</n> parties} other {<n>{value}</n> parties}}",
@@ -1425,6 +1428,7 @@
         "setting": "Réglage",
         "accuracy": "Précision",
         "correct": "Correctes",
+        "study": "Temps d’étude",
         "time": "Temps de placement",
         "rating": "Cote",
         "board": "Échiquier"
@@ -1525,6 +1529,8 @@
         "streak": "{value, plural, one {# jour} many {# jours} other {# jours}} d’affilée",
         "bestAccuracy": "meilleure précision de {value, number} %",
         "recentAccuracy": "précision récente de {value, number} %",
+        "studyTime": "temps d’étude {value, number} s",
+        "rebuildTime": "temps de placement {value, number} s",
         "winStreak": "une série de {value, plural, one {# victoire} many {# victoires} other {# victoires}}",
         "rounds": "{value, plural, one {# partie jouée} many {# parties jouées} other {# parties jouées}}",
         "days": "{value, plural, one {# jour joué} many {# jours joués} other {# jours joués}}"

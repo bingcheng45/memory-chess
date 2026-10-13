@@ -11,13 +11,15 @@ const CARD: ShareCard = {
     { id: "piecesHeld", figure: { value: 6.4, unit: "pieces", digits: 1 }, context: { kind: "recent", values: { rounds: 10 } } },
     { id: "speed", figure: { value: 1.9, unit: "secondsPerPiece", digits: 1 }, context: { kind: "recent", values: { rounds: 10 } } },
     { id: "bestAccuracy", figure: { value: 100, unit: "percent", digits: 0 }, context: { kind: "bestAt", values: {} } },
+    { id: "studyTime", figure: { value: 6.3, unit: "seconds", digits: 1 }, context: { kind: "recent", values: { rounds: 30 } } },
+    { id: "rebuildTime", figure: { value: 41.7, unit: "seconds", digits: 1 }, context: { kind: "recent", values: { rounds: 30 } } },
     { id: "winStreak", figure: { value: 0, unit: "rounds", digits: 0 }, context: { kind: "winStreak", values: {} } },
     { id: "rounds", figure: { value: 140, unit: "rounds", digits: 0 }, context: { kind: "overDays", values: { days: 45 } } },
   ],
   rounds: 140,
 };
 
-const PROGRESS_CODE = "1_s8_r1214u23_h64_v19_b100_w0_n140";
+const PROGRESS_CODE = "1_s8_r1214u23_h64_v19_b100_m63_t417_w0_n140";
 
 const TARGET = labPositionFromFen("4k3/8/8/3q4/8/8/4P3/4K3");
 const PLACED = labPositionFromFen("4k3/8/8/8/8/8/8/R3K3");
@@ -57,6 +59,16 @@ describe("progressCode", () => {
     expect(parseProgress(PROGRESS_CODE)).toEqual({ figures: CARD.figures.map(({ id, figure, trend }) => ({ id, figure, ...(trend && { trend }) })) });
   });
 
+  it("reads back a card of every figure, the times at their longest, as the same code", () => {
+    const code = "1_s8_r1214u23_h64_v19_b100_a90_m600_t6000_w0_k5_n140_d45";
+
+    expect(parseProgress(code)?.figures.slice(6, 8)).toEqual([
+      { id: "studyTime", figure: { value: 60, unit: "seconds", digits: 1 } },
+      { id: "rebuildTime", figure: { value: 600, unit: "seconds", digits: 1 } },
+    ]);
+    expect(progressCode(parseProgress(code) ?? { figures: [] })).toBe(code);
+  });
+
   it("leaves out a rating trend that did not move", () => {
     const level: ShareCard = { figures: [{ ...CARD.figures[1], trend: { direction: "level", amount: 0 } }], rounds: 1 };
 
@@ -75,6 +87,9 @@ describe("progressCode", () => {
     ["a trend of nothing", "1_r1000u0"],
     ["a rating above the 5000 ceiling", "1_r5001"],
     ["a lead figure of zero", "1_w0_s8"],
+    ["a study time longer than any setting allows", "1_s8_m601"],
+    ["a rebuild time over the 600 second cap", "1_s8_t6001"],
+    ["a trend on a time", "1_s8_m63d2"],
     ["a sign", "1_r-5"],
     ["a decimal point", "1_h6.4"],
     ["a trailing separator", "1_s8_"],

@@ -27,7 +27,7 @@
 
 /* figure tiles: the number in tabular mono, its unit beside it, what it is read from under it */
 .lab-paper .lab-tiles { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
-.lab-paper .lab-tiles[data-size="lead"] { grid-template-columns: repeat(4, minmax(0, 1fr)); margin-bottom: 16px; }
+.lab-paper .lab-tiles[data-size="lead"] { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: 16px; }
 .lab-paper .lab-tiles[data-size="summary"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .lab-paper .lab-tiles[data-size="more"] { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 .lab-paper .lab-tile { display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 140px; padding: 20px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }

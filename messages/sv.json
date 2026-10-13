@@ -1366,6 +1366,8 @@
       "span": "Minnesspann",
       "piecesHeld": "Hållna pjäser",
       "speed": "Tempo",
+      "studyTime": "Studietid",
+      "rebuildTime": "Placeringstid",
       "streak": "Dagssvit",
       "rounds": "Spelade rundor",
       "days": "Speldagar",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> pjäs} other {<n>{value}</n> pjäser}}",
       "secondsPerPiece": "<n>{value}</n> s per pjäs",
+      "seconds": "<n>{value}</n> s",
       "days": "{count, plural, one {<n>{value}</n> dag} other {<n>{value}</n> dagar}}",
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> runda} other {<n>{value}</n> rundor}}",
@@ -1425,6 +1428,7 @@
         "setting": "Inställning",
         "accuracy": "Träffsäkerhet",
         "correct": "Rätt",
+        "study": "Studietid",
         "time": "Placeringstid",
         "rating": "Rating",
         "board": "Bräde"
@@ -1525,6 +1529,8 @@
         "streak": "{value, plural, one {# dag} other {# dagar}} i rad",
         "bestAccuracy": "{value, number} % bästa träffsäkerhet",
         "recentAccuracy": "{value, number} % senaste träffsäkerhet",
+        "studyTime": "studietid {value, number} s",
+        "rebuildTime": "placeringstid {value, number} s",
         "winStreak": "en vinstsvit på {value, plural, one {# runda} other {# rundor}}",
         "rounds": "{value, plural, one {# runda} other {# rundor}} spelade",
         "days": "{value, plural, one {# dag} other {# dagar}} spelade"

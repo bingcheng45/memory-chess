@@ -303,6 +303,12 @@ function placementsOf(placed: Readonly<Record<string, string>>, solveMs: number)
  */
 const RULES_AFTER_PERSONAS: readonly PositionViolation[] = ["home-rank-pawn-check", "impossible-double-check"];
 
+/**
+ * Half to all of the study time allowed, as a player who ends the study early often does. Drawn from the round's place
+ * rather than the seed, so every persona keeps the boards and scores its findings were worked out from.
+ */
+const studiedMs = (memorizeSeconds: number, index: number) => Math.round(memorizeSeconds * 1000 * (0.5 + ((index * 37) % 51) / 100));
+
 export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY): RoundRecord[] {
   const { seed, rounds, missChance, legacy } = PLANS[name];
   const random = seededRandom(seed);
@@ -329,7 +335,7 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
       memorizeSeconds: planned.memorizeSeconds,
       targetFen: boardFen(target),
       placedFen: boardFen(placed),
-      memorizeMs: planned.memorizeSeconds * 1000,
+      memorizeMs: studiedMs(planned.memorizeSeconds, index),
       solveMs,
     };
     if (legacy) return buildRoundRecord(input);

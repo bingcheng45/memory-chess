@@ -1366,6 +1366,8 @@
       "span": "Bellek kapasitesi",
       "piecesHeld": "Akılda tutulan taşlar",
       "speed": "Hız",
+      "studyTime": "İnceleme süresi",
+      "rebuildTime": "Yerleştirme süresi",
       "streak": "Gün serisi",
       "rounds": "Oynanan turlar",
       "days": "Oynanan günler",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> taş} other {<n>{value}</n> taş}}",
       "secondsPerPiece": "<n>{value}</n> sn / taş",
+      "seconds": "<n>{value}</n> sn",
       "days": "{count, plural, one {<n>{value}</n> gün} other {<n>{value}</n> gün}}",
       "percent": "%<n>{value}</n>",
       "rounds": "{count, plural, one {<n>{value}</n> tur} other {<n>{value}</n> tur}}",
@@ -1425,6 +1428,7 @@
         "setting": "Ayar",
         "accuracy": "İsabet",
         "correct": "Doğru",
+        "study": "İnceleme süresi",
         "time": "Yerleştirme süresi",
         "rating": "Puan",
         "board": "Tahta"
@@ -1525,6 +1529,8 @@
         "streak": "üst üste {value, plural, one {# gün} other {# gün}}",
         "bestAccuracy": "%{value, number} en iyi isabet",
         "recentAccuracy": "%{value, number} son isabet",
+        "studyTime": "inceleme süresi {value, number} sn",
+        "rebuildTime": "yerleştirme süresi {value, number} sn",
         "winStreak": "{value, plural, one {# turluk} other {# turluk}} galibiyet serisi",
         "rounds": "{value, plural, one {# tur oynandı} other {# tur oynandı}}",
         "days": "{value, plural, one {# gün oynandı} other {# gün oynandı}}"

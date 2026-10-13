@@ -1366,6 +1366,8 @@
       "span": "स्मृति क्षमता",
       "piecesHeld": "याद रखे मोहरे",
       "speed": "गति",
+      "studyTime": "याद करने का समय",
+      "rebuildTime": "रखने का समय",
       "streak": "लगातार दिन",
       "rounds": "खेले गए राउंड",
       "days": "खेले गए दिन",
@@ -1380,6 +1382,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> मोहरा} other {<n>{value}</n> मोहरे}}",
       "secondsPerPiece": "<n>{value}</n> से. प्रति मोहरा",
+      "seconds": "<n>{value}</n> से.",
       "days": "{count, plural, one {<n>{value}</n> दिन} other {<n>{value}</n> दिन}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> राउंड} other {<n>{value}</n> राउंड}}",
@@ -1425,6 +1428,7 @@
         "setting": "सेटिंग",
         "accuracy": "सटीकता",
         "correct": "सही",
+        "study": "याद करने का समय",
         "time": "रखने का समय",
         "rating": "रेटिंग",
         "board": "बोर्ड"
@@ -1525,6 +1529,8 @@
         "streak": "लगातार {value, plural, one {# दिन} other {# दिन}}",
         "bestAccuracy": "{value, number}% सबसे अच्छी सटीकता",
         "recentAccuracy": "{value, number}% हाल की सटीकता",
+        "studyTime": "याद करने का समय {value, number} से.",
+        "rebuildTime": "रखने का समय {value, number} से.",
         "winStreak": "लगातार {value, plural, one {# राउंड} other {# राउंड}} की जीत",
         "rounds": "{value, plural, one {# राउंड} other {# राउंड}} खेले",
         "days": "{value, plural, one {# दिन} other {# दिन}} खेले"

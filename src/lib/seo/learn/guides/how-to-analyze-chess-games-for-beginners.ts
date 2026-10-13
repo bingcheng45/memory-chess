@@ -107,7 +107,7 @@ const guide: LearnDocument = {
           ordered: false,
           items: [
             "Never looked. You did not check what the knight on f6 attacked. It had stood there for ten moves and your eyes never went to it.",
-            "Looked and misjudged. You saw the knight but counted it as pinned to a queen on d8. The queen had gone to d7 a move earlier. Even on d8 it would not have saved you, because after Nxh5 Bxd8 Kxd8 Black is still a bishop up.",
+            "Looked and misjudged. You saw the knight but counted it as pinned to a queen on d8. The queen had gone to d7 a move earlier. Even on d8 it would not have saved you, because after Nxh5 Bxd8 Kxd8 the queens are gone and Black has won your bishop.",
             "Knew and rushed. You saw the knight could take on h5, had 30 seconds on the clock, and played the move anyway. Treat this as a clock problem, and play longer games before you study more.",
           ],
         },

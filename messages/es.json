@@ -148,7 +148,7 @@
           "study": "tiempo de estudio",
           "pieces": "piezas por ronda",
           "plays": "{count, plural, one {partida jugada} many {partidas jugadas} other {partidas jugadas}}",
-          "languages": "idiomas"
+          "languages": "{count, plural, one {idioma} many {idiomas} other {idiomas}}"
         },
         "showcase": {
           "aria": "Veselin Topalov contra Alexey Shirov, Linares 1998, con un estudio guiado de la posición",
@@ -412,7 +412,7 @@
           "exposure": "Estudio",
           "load": "Carga"
         },
-        "loadLabel": "{pieceCount} de 32 casillas ocupadas",
+        "loadLabel": "{pieceCount} de 32 piezas",
         "play": "Jugar",
         "custom": {
           "label": "Personalizado",
@@ -879,9 +879,9 @@
           "plain": "Nueva mejor marca con {pieceCount} piezas, {studyTime}: {accuracy} %"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# punto} many {# puntos} other {# puntos}} por encima de tu media en tus últimas {rounds} rondas con este ajuste",
-          "below": "{points, plural, one {# punto} many {# puntos} other {# puntos}} por debajo de tu media en tus últimas {rounds} rondas con este ajuste",
-          "level": "Igual que tu media en tus últimas {rounds} rondas con este ajuste"
+          "above": "{points, plural, one {# punto} many {# puntos} other {# puntos}} por encima de {rounds, plural, one {tu última ronda} many {tu media en tus últimas # rondas} other {tu media en tus últimas # rondas}} con este ajuste",
+          "below": "{points, plural, one {# punto} many {# puntos} other {# puntos}} por debajo de {rounds, plural, one {tu última ronda} many {tu media en tus últimas # rondas} other {tu media en tus últimas # rondas}} con este ajuste",
+          "level": "Igual que {rounds, plural, one {tu última ronda} many {tu media en tus últimas # rondas} other {tu media en tus últimas # rondas}} con este ajuste"
         },
         "span": "Amplitud hasta {pieceCount} piezas",
         "streak": "{current, plural, one {Día 1} many {Día # seguido} other {Día # seguido}}{graceUsed, select, true {, día de gracia usado} other {}}, {days} de {goal} días esta semana",

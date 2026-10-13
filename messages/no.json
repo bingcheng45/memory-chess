@@ -148,7 +148,7 @@
           "study": "studietid",
           "pieces": "brikker per runde",
           "plays": "{count, plural, one {spilt parti} other {spilte partier}}",
-          "languages": "språk"
+          "languages": "{count, plural, one {språk} other {språk}}"
         },
         "showcase": {
           "aria": "Veselin Topalov mot Alexey Shirov, Linares 1998, med en guidet gjennomgang av stillingen",
@@ -412,7 +412,7 @@
           "exposure": "Visning",
           "load": "Belastning"
         },
-        "loadLabel": "{pieceCount} av 32 felt fylt",
+        "loadLabel": "{pieceCount} av 32 brikker",
         "play": "Spill",
         "custom": {
           "label": "Egen",
@@ -879,9 +879,9 @@
           "plain": "Ny rekord med {pieceCount} brikker, {studyTime}: {accuracy} %"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# poeng} other {# poeng}} over snittet ditt for de siste {rounds} rundene med denne innstillingen",
-          "below": "{points, plural, one {# poeng} other {# poeng}} under snittet ditt for de siste {rounds} rundene med denne innstillingen",
-          "level": "På nivå med snittet ditt for de siste {rounds} rundene med denne innstillingen"
+          "above": "{points, plural, one {# poeng} other {# poeng}} over {rounds, plural, one {den siste runden din} other {snittet ditt for de siste # rundene}} med denne innstillingen",
+          "below": "{points, plural, one {# poeng} other {# poeng}} under {rounds, plural, one {den siste runden din} other {snittet ditt for de siste # rundene}} med denne innstillingen",
+          "level": "På nivå med {rounds, plural, one {den siste runden din} other {snittet ditt for de siste # rundene}} med denne innstillingen"
         },
         "span": "Spennet opp til {pieceCount} brikker",
         "streak": "{current, plural, one {Dag 1} other {Dag # på rad}}{graceUsed, select, true {, en tilgitt dag brukt} other {}}, {days} av {goal} dager denne uken",

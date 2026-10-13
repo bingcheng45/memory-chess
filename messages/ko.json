@@ -148,7 +148,7 @@
           "study": "암기 시간",
           "pieces": "라운드당 기물 수",
           "plays": "{count, plural, other {플레이한 게임 수}}",
-          "languages": "지원 언어"
+          "languages": "{count, plural, other {지원 언어}}"
         },
         "showcase": {
           "aria": "Linares 1998, Veselin Topalov 대 Alexey Shirov의 국면과 그 국면을 따라가는 안내",
@@ -412,7 +412,7 @@
           "exposure": "암기 시간",
           "load": "부하"
         },
-        "loadLabel": "32칸 중 {pieceCount}칸 채움",
+        "loadLabel": "기물 32개 중 {pieceCount}개",
         "play": "플레이",
         "custom": {
           "label": "사용자 설정",
@@ -879,9 +879,9 @@
           "plain": "기물 {pieceCount}개, {studyTime} 새 최고 기록: {accuracy}%"
         },
         "vsRecent": {
-          "above": "이 설정의 최근 {rounds}라운드 평균보다 {points, plural, other {#포인트}} 높음",
-          "below": "이 설정의 최근 {rounds}라운드 평균보다 {points, plural, other {#포인트}} 낮음",
-          "level": "이 설정의 최근 {rounds}라운드 평균과 같음"
+          "above": "이 설정의 {rounds, plural, =1 {최근 라운드} other {최근 #라운드 평균}}보다 {points, plural, other {#포인트}} 높음",
+          "below": "이 설정의 {rounds, plural, =1 {최근 라운드} other {최근 #라운드 평균}}보다 {points, plural, other {#포인트}} 낮음",
+          "level": "이 설정의 {rounds, plural, =1 {최근 라운드와} other {최근 #라운드 평균과}} 같음"
         },
         "span": "기억 범위가 기물 {pieceCount}개로 상승",
         "streak": "{current, plural, =1 {1일째} other {#일 연속}}{graceUsed, select, true {, 유예일 사용} other {}}, 이번 주 {goal}일 중 {days}일",

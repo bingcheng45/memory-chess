@@ -148,7 +148,7 @@
           "study": "inceleme süresi",
           "pieces": "tur başına taş",
           "plays": "{count, plural, one {oynanan oyun} other {oynanan oyun}}",
-          "languages": "dil"
+          "languages": "{count, plural, one {dil} other {dil}}"
         },
         "showcase": {
           "aria": "Veselin Topalov ile Alexey Shirov arasındaki oyun, Linares 1998, konumun rehberli incelemesiyle",
@@ -412,7 +412,7 @@
           "exposure": "Süre",
           "load": "Yük"
         },
-        "loadLabel": "32 karenin {pieceCount} tanesi dolu",
+        "loadLabel": "32 taşın {pieceCount} tanesi",
         "play": "Oyna",
         "custom": {
           "label": "Özel",
@@ -879,9 +879,9 @@
           "plain": "{pieceCount} taş, {studyTime} ile yeni rekor: %{accuracy}"
         },
         "vsRecent": {
-          "above": "Bu ayardaki son {rounds} turunun ortalamasının {points, plural, one {# puan} other {# puan}} üstünde",
-          "below": "Bu ayardaki son {rounds} turunun ortalamasının {points, plural, one {# puan} other {# puan}} altında",
-          "level": "Bu ayardaki son {rounds} turunun ortalamasıyla aynı"
+          "above": "Bu ayardaki {rounds, plural, one {son turunun} other {son # turunun ortalamasının}} {points, plural, one {# puan} other {# puan}} üstünde",
+          "below": "Bu ayardaki {rounds, plural, one {son turunun} other {son # turunun ortalamasının}} {points, plural, one {# puan} other {# puan}} altında",
+          "level": "Bu ayardaki {rounds, plural, one {son turunla} other {son # turunun ortalamasıyla}} aynı"
         },
         "span": "Kapasite {pieceCount} taşa çıktı",
         "streak": "{current, plural, one {1. gün} other {Üst üste #. gün}}{graceUsed, select, true {, telafi günü kullanıldı} other {}}, bu hafta {goal} günden {days} gün",

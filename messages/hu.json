@@ -148,7 +148,7 @@
           "study": "megfigyelési idő",
           "pieces": "bábu körönként",
           "plays": "{count, plural, one {lejátszott játszma} other {lejátszott játszma}}",
-          "languages": "nyelv"
+          "languages": "{count, plural, one {nyelv} other {nyelv}}"
         },
         "showcase": {
           "aria": "Veselin Topalov és Alexey Shirov játszmája, Linares, 1998, az állás vezetett elemzésével",
@@ -412,7 +412,7 @@
           "exposure": "Expozíció",
           "load": "Terhelés"
         },
-        "loadLabel": "32 mezőből {pieceCount} foglalt",
+        "loadLabel": "32 bábuból {pieceCount}",
         "play": "Játék",
         "custom": {
           "label": "Egyéni",
@@ -879,9 +879,9 @@
           "plain": "Új csúcs {pieceCount} bábuval, {studyTime} idővel: {accuracy}%"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# ponttal} other {# ponttal}} az átlagod felett, amelyet ennél a beállításnál az utolsó {rounds} körben értél el",
-          "below": "{points, plural, one {# ponttal} other {# ponttal}} az átlagod alatt, amelyet ennél a beállításnál az utolsó {rounds} körben értél el",
-          "level": "Pontosan az átlagod, amelyet ennél a beállításnál az utolsó {rounds} körben értél el"
+          "above": "{points, plural, one {# ponttal} other {# ponttal}} {rounds, plural, one {az ennél a beállításnál játszott utolsó köröd felett} other {az átlagod felett, amelyet ennél a beállításnál az utolsó # körben értél el}}",
+          "below": "{points, plural, one {# ponttal} other {# ponttal}} {rounds, plural, one {az ennél a beállításnál játszott utolsó köröd alatt} other {az átlagod alatt, amelyet ennél a beállításnál az utolsó # körben értél el}}",
+          "level": "Pontosan {rounds, plural, one {az ennél a beállításnál játszott utolsó köröd szintjén} other {az átlagod, amelyet ennél a beállításnál az utolsó # körben értél el}}"
         },
         "span": "A terjedelem {pieceCount} bábura nőtt",
         "streak": "{current, plural, one {1. nap} other {# nap egymás után}}{graceUsed, select, true {, türelmi nap felhasználva} other {}}, ezen a héten {goal} napból {days}",

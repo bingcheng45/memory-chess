@@ -27,7 +27,7 @@ export function LabHero({ totalPlays }: { totalPlays: TotalPlays }) {
   const facts = [
     { value: range(MEMORIZE_SECONDS_RANGE.min, MEMORIZE_SECONDS_RANGE.max, "s"), label: lab("hero.facts.study") },
     { value: range(PIECE_COUNT_RANGE.min, PIECE_COUNT_RANGE.max), label: lab("hero.facts.pieces") },
-    { value: String(LOCALES.length), label: lab("hero.facts.languages") },
+    { value: String(LOCALES.length), label: lab("hero.facts.languages", { count: LOCALES.length }) },
   ];
 
   return (

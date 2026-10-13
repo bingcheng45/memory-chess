@@ -148,7 +148,7 @@
           "study": "czas na zapamiętanie",
           "pieces": "figur w rundzie",
           "plays": "{count, plural, one {rozegrana gra} few {rozegrane gry} many {rozegranych gier} other {rozegranej gry}}",
-          "languages": "języków"
+          "languages": "{count, plural, one {język} few {języki} many {języków} other {języka}}"
         },
         "showcase": {
           "aria": "Veselin Topalov kontra Alexey Shirov, Linares 1998, z prowadzoną analizą pozycji",
@@ -412,7 +412,7 @@
           "exposure": "Czas",
           "load": "Obciążenie"
         },
-        "loadLabel": "Zajęte pola: {pieceCount} z 32",
+        "loadLabel": "Figury: {pieceCount} z 32",
         "play": "Graj",
         "custom": {
           "label": "Własne",
@@ -879,9 +879,9 @@
           "plain": "Nowy rekord przy {pieceCount} figurach, {studyTime}: {accuracy}%"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# punkt} few {# punkty} many {# punktów} other {# punktu}} powyżej twojej średniej z ostatnich rund ({rounds}) przy tym ustawieniu",
-          "below": "{points, plural, one {# punkt} few {# punkty} many {# punktów} other {# punktu}} poniżej twojej średniej z ostatnich rund ({rounds}) przy tym ustawieniu",
-          "level": "Na poziomie twojej średniej z ostatnich rund ({rounds}) przy tym ustawieniu"
+          "above": "{points, plural, one {# punkt} few {# punkty} many {# punktów} other {# punktu}} powyżej {rounds, plural, one {twojej ostatniej rundy} few {twojej średniej z ostatnich # rund} many {twojej średniej z ostatnich # rund} other {twojej średniej z ostatnich # rundy}} przy tym ustawieniu",
+          "below": "{points, plural, one {# punkt} few {# punkty} many {# punktów} other {# punktu}} poniżej {rounds, plural, one {twojej ostatniej rundy} few {twojej średniej z ostatnich # rund} many {twojej średniej z ostatnich # rund} other {twojej średniej z ostatnich # rundy}} przy tym ustawieniu",
+          "level": "Na poziomie {rounds, plural, one {twojej ostatniej rundy} few {twojej średniej z ostatnich # rund} many {twojej średniej z ostatnich # rund} other {twojej średniej z ostatnich # rundy}} przy tym ustawieniu"
         },
         "span": "Zakres wzrósł do {pieceCount} figur",
         "streak": "{current, plural, one {Dzień 1} few {# dni z rzędu} many {# dni z rzędu} other {# dnia z rzędu}}{graceUsed, select, true {, wykorzystany dzień ulgi} other {}}, {days} z {goal} dni w tym tygodniu",

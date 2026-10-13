@@ -148,7 +148,7 @@
           "study": "waktu menghafal",
           "pieces": "bidak per ronde",
           "plays": "{count, plural, other {permainan dimainkan}}",
-          "languages": "bahasa"
+          "languages": "{count, plural, other {bahasa}}"
         },
         "showcase": {
           "aria": "Veselin Topalov melawan Alexey Shirov, Linares 1998, dengan pembahasan posisi secara terpandu",
@@ -412,7 +412,7 @@
           "exposure": "Waktu",
           "load": "Beban"
         },
-        "loadLabel": "{pieceCount} dari 32 petak terisi",
+        "loadLabel": "{pieceCount} dari 32 bidak",
         "play": "Main",
         "custom": {
           "label": "Khusus",
@@ -879,9 +879,9 @@
           "plain": "Rekor baru dengan {pieceCount} bidak, {studyTime}: {accuracy}%"
         },
         "vsRecent": {
-          "above": "{points, plural, other {# poin}} di atas rata-ratamu dalam {rounds} ronde terakhir di pengaturan ini",
-          "below": "{points, plural, other {# poin}} di bawah rata-ratamu dalam {rounds} ronde terakhir di pengaturan ini",
-          "level": "Setara dengan rata-ratamu dalam {rounds} ronde terakhir di pengaturan ini"
+          "above": "{points, plural, other {# poin}} di atas {rounds, plural, =1 {ronde terakhirmu} other {rata-ratamu dalam # ronde terakhir}} di pengaturan ini",
+          "below": "{points, plural, other {# poin}} di bawah {rounds, plural, =1 {ronde terakhirmu} other {rata-ratamu dalam # ronde terakhir}} di pengaturan ini",
+          "level": "Setara dengan {rounds, plural, =1 {ronde terakhirmu} other {rata-ratamu dalam # ronde terakhir}} di pengaturan ini"
         },
         "span": "Rentang naik ke {pieceCount} bidak",
         "streak": "{current, plural, =1 {Hari 1} other {Hari ke-# berturut-turut}}{graceUsed, select, true {, hari kelonggaran terpakai} other {}}, {days} dari {goal} hari minggu ini",

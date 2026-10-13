@@ -148,7 +148,7 @@
           "study": "tutkimisaika",
           "pieces": "nappulaa kierroksella",
           "plays": "{count, plural, one {pelattu peli} other {pelattua peliä}}",
-          "languages": "kieltä"
+          "languages": "{count, plural, one {kieli} other {kieltä}}"
         },
         "showcase": {
           "aria": "Veselin Topalovin ja Alexey Shirovin peli, Linares 1998, ja aseman opastettu läpikäynti",
@@ -412,7 +412,7 @@
           "exposure": "Tutkimisaika",
           "load": "Kuorma"
         },
-        "loadLabel": "{pieceCount}/32 ruutua täytetty",
+        "loadLabel": "{pieceCount}/32 nappulaa",
         "play": "Pelaa",
         "custom": {
           "label": "Oma",
@@ -879,9 +879,9 @@
           "plain": "Uusi ennätys asetuksella {pieceCount} nappulaa, {studyTime}: {accuracy} %"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# prosenttiyksikkö} other {# prosenttiyksikköä}} yli keskiarvosi viimeisillä {rounds} kierroksellasi tällä asetuksella",
-          "below": "{points, plural, one {# prosenttiyksikkö} other {# prosenttiyksikköä}} alle keskiarvosi viimeisillä {rounds} kierroksellasi tällä asetuksella",
-          "level": "Keskiarvosi tasolla viimeisillä {rounds} kierroksellasi tällä asetuksella"
+          "above": "{points, plural, one {# prosenttiyksikkö} other {# prosenttiyksikköä}} yli {rounds, plural, one {viimeisen kierroksesi} other {keskiarvosi viimeisillä # kierroksellasi}} tällä asetuksella",
+          "below": "{points, plural, one {# prosenttiyksikkö} other {# prosenttiyksikköä}} alle {rounds, plural, one {viimeisen kierroksesi} other {keskiarvosi viimeisillä # kierroksellasi}} tällä asetuksella",
+          "level": "{rounds, plural, one {Viimeisen kierroksesi tasolla} other {Keskiarvosi tasolla viimeisillä # kierroksellasi}} tällä asetuksella"
         },
         "span": "Jänne nousi {pieceCount} nappulaan",
         "streak": "{current, plural, one {Päivä 1} other {Päivä # putkeen}}{graceUsed, select, true {, armopäivä käytetty} other {}}, {days}/{goal} päivää tällä viikolla",

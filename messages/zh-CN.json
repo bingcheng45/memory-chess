@@ -148,7 +148,7 @@
           "study": "记忆时间",
           "pieces": "每回合棋子数",
           "plays": "{count, plural, other {已玩局数}}",
-          "languages": "种语言"
+          "languages": "{count, plural, other {种语言}}"
         },
         "showcase": {
           "aria": "Veselin Topalov 对 Alexey Shirov，1998 年 Linares，附该局面的分步讲解",
@@ -412,7 +412,7 @@
           "exposure": "记忆时间",
           "load": "负载"
         },
-        "loadLabel": "32 格中占用 {pieceCount} 格",
+        "loadLabel": "32 枚棋子中的 {pieceCount} 枚",
         "play": "开始",
         "custom": {
           "label": "自定义",
@@ -879,9 +879,9 @@
           "plain": "{pieceCount} 子、{studyTime} 新纪录：{accuracy}%"
         },
         "vsRecent": {
-          "above": "比你在此设置下最近 {rounds} 回合的平均值高 {points, plural, other {# 个百分点}}",
-          "below": "比你在此设置下最近 {rounds} 回合的平均值低 {points, plural, other {# 个百分点}}",
-          "level": "与你在此设置下最近 {rounds} 回合的平均值持平"
+          "above": "比你在此设置下{rounds, plural, =1 {最近一回合} other {最近 # 回合的平均值}}高 {points, plural, other {# 个百分点}}",
+          "below": "比你在此设置下{rounds, plural, =1 {最近一回合} other {最近 # 回合的平均值}}低 {points, plural, other {# 个百分点}}",
+          "level": "与你在此设置下{rounds, plural, =1 {最近一回合} other {最近 # 回合的平均值}}持平"
         },
         "span": "记忆广度升到 {pieceCount} 子",
         "streak": "{current, plural, =1 {第 1 天} other {连续第 # 天}}{graceUsed, select, true {，用掉了一天豁免} other {}}，本周 {goal} 天中已玩 {days} 天",

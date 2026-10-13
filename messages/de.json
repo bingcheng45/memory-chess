@@ -148,7 +148,7 @@
           "study": "Einprägezeit",
           "pieces": "Figuren pro Runde",
           "plays": "{count, plural, one {gespielte Partie} other {gespielte Partien}}",
-          "languages": "Sprachen"
+          "languages": "{count, plural, one {Sprache} other {Sprachen}}"
         },
         "showcase": {
           "aria": "Veselin Topalov gegen Alexey Shirov, Linares 1998, mit einer geführten Betrachtung der Stellung",
@@ -412,7 +412,7 @@
           "exposure": "Einprägezeit",
           "load": "Belegung"
         },
-        "loadLabel": "{pieceCount} von 32 Feldern belegt",
+        "loadLabel": "{pieceCount} von 32 Figuren",
         "play": "Spielen",
         "custom": {
           "label": "Eigene",
@@ -879,9 +879,9 @@
           "plain": "Neuer Bestwert bei {pieceCount} Figuren, {studyTime}: {accuracy} %"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# Punkt} other {# Punkte}} über deinem Schnitt der letzten {rounds} Runden in dieser Einstellung",
-          "below": "{points, plural, one {# Punkt} other {# Punkte}} unter deinem Schnitt der letzten {rounds} Runden in dieser Einstellung",
-          "level": "Gleichauf mit deinem Schnitt der letzten {rounds} Runden in dieser Einstellung"
+          "above": "{points, plural, one {# Punkt} other {# Punkte}} über {rounds, plural, one {deiner letzten Runde} other {deinem Schnitt der letzten # Runden}} in dieser Einstellung",
+          "below": "{points, plural, one {# Punkt} other {# Punkte}} unter {rounds, plural, one {deiner letzten Runde} other {deinem Schnitt der letzten # Runden}} in dieser Einstellung",
+          "level": "Gleichauf mit {rounds, plural, one {deiner letzten Runde} other {deinem Schnitt der letzten # Runden}} in dieser Einstellung"
         },
         "span": "Spanne bis {pieceCount} Figuren",
         "streak": "{current, plural, one {Tag 1} other {Tag # in Folge}}{graceUsed, select, true {, Jokertag genutzt} other {}}, {days} von {goal} Tagen diese Woche",

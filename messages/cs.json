@@ -148,7 +148,7 @@
           "study": "čas na prohlížení",
           "pieces": "figur v kole",
           "plays": "{count, plural, one {odehraná partie} few {odehrané partie} many {odehrané partie} other {odehraných partií}}",
-          "languages": "jazyků"
+          "languages": "{count, plural, one {jazyk} few {jazyky} many {jazyka} other {jazyků}}"
         },
         "showcase": {
           "aria": "Veselin Topalov proti Alexey Shirov, Linares 1998, s průvodcem po pozici",
@@ -412,7 +412,7 @@
           "exposure": "Expozice",
           "load": "Zátěž"
         },
-        "loadLabel": "Obsazená pole: {pieceCount} z 32",
+        "loadLabel": "Figury: {pieceCount} z 32",
         "play": "Hrát",
         "custom": {
           "label": "Vlastní",
@@ -879,9 +879,9 @@
           "plain": "Nový rekord při {pieceCount} figurách, {studyTime}: {accuracy} %"
         },
         "vsRecent": {
-          "above": "O {points, plural, one {# bod} few {# body} many {# bodu} other {# bodů}} nad vaším průměrem za poslední kola při tomto nastavení ({rounds})",
-          "below": "O {points, plural, one {# bod} few {# body} many {# bodu} other {# bodů}} pod vaším průměrem za poslední kola při tomto nastavení ({rounds})",
-          "level": "Na úrovni vašeho průměru za poslední kola při tomto nastavení ({rounds})"
+          "above": "O {points, plural, one {# bod} few {# body} many {# bodu} other {# bodů}} nad {rounds, plural, one {vaším posledním kolem} few {vaším průměrem za poslední # kola} many {vaším průměrem za posledních # kola} other {vaším průměrem za posledních # kol}} při tomto nastavení",
+          "below": "O {points, plural, one {# bod} few {# body} many {# bodu} other {# bodů}} pod {rounds, plural, one {vaším posledním kolem} few {vaším průměrem za poslední # kola} many {vaším průměrem za posledních # kola} other {vaším průměrem za posledních # kol}} při tomto nastavení",
+          "level": "Na úrovni {rounds, plural, one {vašeho posledního kola} few {vašeho průměru za poslední # kola} many {vašeho průměru za posledních # kola} other {vašeho průměru za posledních # kol}} při tomto nastavení"
         },
         "span": "Rozsah vzrostl, počet figur: {pieceCount}",
         "streak": "{current, plural, one {Den 1} few {# dny za sebou} many {# dne za sebou} other {# dní za sebou}}{graceUsed, select, true {, využit den odkladu} other {}}, tento týden {days} z {goal} dní",

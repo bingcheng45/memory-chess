@@ -259,6 +259,10 @@
         "cta": "Překonáš to?",
         "text": "{kind, select, daily {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na denní pozici Memory Chess z {date}.} review {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na opakovací pozici Memory Chess.} other {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) v Memory Chess.}} Překonáš to?",
         "alt": "Karta s výsledkem Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Kolo uloženo. Aktualizované statistiky najdeš hned níž.",
+        "action": "Ukázat"
       }
     },
     "comparison": {
@@ -579,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy} % a více v {rounds, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}}, zapamatováno {memorizeSeconds} s",
-      "recent": "Průměr posledních kol: {rounds, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}, jakékoli nastavení",
+      "recent": "{rounds, plural, one {Zatím jediné kolo, jakékoli nastavení} few {Průměr posledních kol: # kola, jakékoli nastavení} many {Průměr posledních kol: # kola, jakékoli nastavení} other {Průměr posledních kol: # kol, jakékoli nastavení}}",
       "setting": "{source, select, calibration {Tréninková kola} other {Kola v partiích}} s {pieceCount} figurami, {memorizeSeconds} s, z {rounds, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
       "longest": "Nejdelší série: {days, plural, one {# den} few {# dny} many {# dne} other {# dní}}",
       "daily": "{status, select, played {Dnes odehráno} unfinished {Dnes otevřeno} other {Dnes k dispozici}}, nejdelší série {longest, plural, one {# den} few {# dny} many {# dne} other {# dní}}",

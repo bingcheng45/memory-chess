@@ -259,6 +259,10 @@
         "cta": "¿Puedes superarlo?",
         "text": "{kind, select, daily {Recordé {correct, number} de {total, number} piezas ({accuracy}) en el tablero diario de Memory Chess del {date}.} review {Recordé {correct, number} de {total, number} piezas ({accuracy}) en un tablero de repaso de Memory Chess.} other {Recordé {correct, number} de {total, number} piezas ({accuracy}) en Memory Chess.}} ¿Puedes superarlo?",
         "alt": "Tarjeta de resultado de Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Ronda guardada. Tus estadísticas actualizadas están justo debajo.",
+        "action": "Ver"
       }
     },
     "comparison": {
@@ -579,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy} % o más en {rounds, plural, one {# ronda} many {# rondas} other {# rondas}}, memorizado {memorizeSeconds} s",
-      "recent": "Media de tus {rounds, plural, one {# última ronda} many {# últimas rondas} other {# últimas rondas}}, cualquier ajuste",
+      "recent": "{rounds, plural, one {De tu única ronda hasta ahora, cualquier ajuste} many {Media de tus # últimas rondas, cualquier ajuste} other {Media de tus # últimas rondas, cualquier ajuste}}",
       "setting": "{source, select, calibration {Rondas de práctica} other {Rondas de partida}} con {pieceCount} piezas, {memorizeSeconds} s, de {rounds, plural, one {# ronda} many {# rondas} other {# rondas}}",
       "longest": "Racha más larga: {days, plural, one {# día} many {# días} other {# días}}",
       "daily": "{status, select, played {Jugado hoy} unfinished {Abierto hoy} other {Disponible hoy}}, racha más larga {longest, plural, one {# día} many {# días} other {# días}}",
@@ -692,7 +696,7 @@
         "none": "Aún no destaca nada. Sigue jugando.",
         "rules": {
           "edgeFiles": "{times, select, 0 {Fallas {edge, select, 0 {menos del 1 %} other {el {edge} %}} de {edgeShown} piezas en las columnas a y h y ninguna de {centreShown} en las columnas centrales, d y e.} 2 {Fallas las columnas a y h aproximadamente el doble que las columnas centrales, d y e: {edge, select, 0 {menos del 1 %} other {el {edge} %}} de {edgeShown} piezas frente a {centre, select, 0 {menos del 1 %} other {el {centre} %}} de {centreShown}.} other {Fallas las columnas a y h aproximadamente {times} veces más que las columnas centrales, d y e: {edge, select, 0 {menos del 1 %} other {el {edge} %}} de {edgeShown} piezas frente a {centre, select, 0 {menos del 1 %} other {el {centre} %}} de {centreShown}.}}",
-          "weakType": "De las piezas, sin contar los reyes, que has visto {minimum} veces o más, {type, select, q {las damas} r {las torres} b {los alfiles} n {los caballos} other {los peones}} son las que más se te escapan: recordaste {recalled} de {shown}, el {percent} %.",
+          "weakType": "De las piezas, sin contar los reyes, que has visto {minimum} veces o más, las que más se te escapan son {type, select, q {las damas} r {las torres} b {los alfiles} n {los caballos} other {los peones}}: recordaste {recalled} de {shown}, el {percent} %.",
           "fasterLessAccurate": "Con {pieceCount} piezas, {studyTime}, tus últimas {window} rondas tardaron {fasterTime} menos por pieza correcta que las {window} anteriores, y la precisión bajó {fell} puntos.",
           "colourGap": "Recuerdas las piezas {weaker, select, w {blancas} other {negras}} con menos frecuencia que las {weaker, select, w {negras} other {blancas}}: {weakerPercent} % de {weakerShown} frente a {strongerPercent} % de {strongerShown}, sin contar los reyes.",
           "plateau": "Con {pieceCount} piezas, {studyTime}, tus últimas {window} rondas promediaron un {last} % y las {window} anteriores un {before} %, y tu amplitud se mantuvo en {span} piezas durante tu última semana de juego. Una pieza más puede moverla."

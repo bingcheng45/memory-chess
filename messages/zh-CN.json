@@ -259,6 +259,10 @@
         "cta": "你能超过吗？",
         "text": "{kind, select, daily {我在 Memory Chess {date} 的每日棋盘中记住了 {total, number} 子里的 {correct, number} 子（{accuracy}）。} review {我在 Memory Chess 的复习棋盘中记住了 {total, number} 子里的 {correct, number} 子（{accuracy}）。} other {我在 Memory Chess 中记住了 {total, number} 子里的 {correct, number} 子（{accuracy}）。}}你能超过吗？",
         "alt": "Memory Chess 结果卡片：{details}。"
+      },
+      "savedToast": {
+        "message": "本局已保存。更新后的数据就在下方。",
+        "action": "查看"
       }
     },
     "comparison": {
@@ -579,7 +583,7 @@
     },
     "context": {
       "span": "{rounds, plural, other {# 回合}}达到 {accuracy}% 以上，记忆 {memorizeSeconds} 秒",
-      "recent": "最近 {rounds, plural, other {# 回合}}的平均值，任意设置",
+      "recent": "{rounds, plural, =1 {目前仅 1 回合的结果，任意设置} other {最近 # 回合的平均值，任意设置}}",
       "setting": "{source, select, calibration {练习} other {对局}}，{pieceCount} 子、{memorizeSeconds} 秒，基于 {rounds, plural, other {# 回合}}",
       "longest": "最长连续 {days, plural, other {# 天}}",
       "daily": "{status, select, played {今天已玩} unfinished {今天已打开} other {今天可玩}}，最长连续 {longest, plural, other {# 天}}",

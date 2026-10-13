@@ -259,6 +259,10 @@
         "cta": "Geçebilir misin?",
         "text": "{kind, select, daily {Memory Chess günlük tahtasında ({date}) {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} review {Memory Chess tekrar tahtasında {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} other {Memory Chess'te {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.}} Geçebilir misin?",
         "alt": "Memory Chess sonuç kartı: {details}."
+      },
+      "savedToast": {
+        "message": "Tur kaydedildi. Güncel istatistiklerin hemen aşağıda.",
+        "action": "Göster"
       }
     },
     "comparison": {
@@ -579,7 +583,7 @@
     },
     "context": {
       "span": "{rounds, plural, one {# turda} other {# turda}} %{accuracy} veya üzeri, {memorizeSeconds} sn ezber",
-      "recent": "Son {rounds, plural, one {# turunun} other {# turunun}} ortalaması, her ayar",
+      "recent": "{rounds, plural, one {Şimdiye kadarki tek turundan, her ayar} other {Son # turunun ortalaması, her ayar}}",
       "setting": "{pieceCount} taş, {memorizeSeconds} sn {source, select, calibration {alıştırma turları} other {oyun turları}}, {rounds, plural, one {# turdan} other {# turdan}}",
       "longest": "En uzun seri: {days, plural, one {# gün} other {# gün}}",
       "daily": "{status, select, played {Bugün oynandı} unfinished {Bugün açıldı} other {Bugün açık}}, en uzun seri {longest, plural, one {# gün} other {# gün}}",

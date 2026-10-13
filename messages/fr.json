@@ -259,6 +259,10 @@
         "cta": "Saurez-vous faire mieux ?",
         "text": "{kind, select, daily {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur le plateau du jour de Memory Chess du {date}.} review {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur un plateau de révision de Memory Chess.} other {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur Memory Chess.}} Saurez-vous faire mieux ?",
         "alt": "Carte de résultat Memory Chess : {details}."
+      },
+      "savedToast": {
+        "message": "Partie enregistrée. Vos statistiques à jour sont juste en dessous.",
+        "action": "Voir"
       }
     },
     "comparison": {
@@ -579,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy} % ou mieux sur {rounds, plural, one {# partie} many {# parties} other {# parties}}, mémorisé {memorizeSeconds} s",
-      "recent": "Moyenne de vos {rounds, plural, one {# dernière partie} many {# dernières parties} other {# dernières parties}}, tous réglages",
+      "recent": "{rounds, plural, one {De votre seule partie jusqu’ici, tous réglages} many {Moyenne de vos # dernières parties, tous réglages} other {Moyenne de vos # dernières parties, tous réglages}}",
       "setting": "{source, select, calibration {Parties d’entraînement} other {Parties de jeu}} à {pieceCount} pièces, {memorizeSeconds} s, sur {rounds, plural, one {# partie} many {# parties} other {# parties}}",
       "longest": "Plus longue série : {days, plural, one {# jour} many {# jours} other {# jours}}",
       "daily": "{status, select, played {Joué aujourd’hui} unfinished {Ouvert aujourd’hui} other {Ouvert pour aujourd’hui}}, plus longue série {longest, plural, one {# jour} many {# jours} other {# jours}}",
@@ -692,7 +696,7 @@
         "none": "Rien ne ressort pour l’instant. Continuez à jouer.",
         "rules": {
           "edgeFiles": "{times, select, 0 {Vous manquez {edge, select, 0 {moins de 1 %} other {{edge} %}} des {edgeShown} pièces des colonnes a et h et aucune des {centreShown} des colonnes centrales, d et e.} 2 {Vous manquez les colonnes a et h environ deux fois plus souvent que les colonnes centrales, d et e : {edge, select, 0 {moins de 1 %} other {{edge} %}} de {edgeShown} pièces contre {centre, select, 0 {moins de 1 %} other {{centre} %}} de {centreShown}.} other {Vous manquez les colonnes a et h environ {times} fois plus souvent que les colonnes centrales, d et e : {edge, select, 0 {moins de 1 %} other {{edge} %}} de {edgeShown} pièces contre {centre, select, 0 {moins de 1 %} other {{centre} %}} de {centreShown}.}}",
-          "weakType": "Parmi les pièces autres que les rois vues {minimum} fois ou plus, ce sont {type, select, q {les dames} r {les tours} b {les fous} n {les cavaliers} other {les pions}} qui vous échappent le plus : {recalled} retenus sur {shown}, soit {percent} %.",
+          "weakType": "Parmi les pièces autres que les rois vues {minimum} fois ou plus, ce sont {type, select, q {les dames} r {les tours} b {les fous} n {les cavaliers} other {les pions}} qui vous échappent le plus : {recalled} retenues sur {shown}, soit {percent} %.",
           "fasterLessAccurate": "À {pieceCount} pièces, {studyTime}, vos {window} dernières parties ont pris {fasterTime} de moins par pièce correcte que les {window} précédentes, et la précision a baissé de {fell} points.",
           "colourGap": "Vous retenez les pièces {weaker, select, w {blanches} other {noires}} moins souvent que les {weaker, select, w {noires} other {blanches}} : {weakerPercent} % sur {weakerShown} contre {strongerPercent} % sur {strongerShown}, rois exclus.",
           "plateau": "À {pieceCount} pièces, {studyTime}, vos {window} dernières parties ont atteint {last} % en moyenne et les {window} précédentes {before} %, et votre empan est resté à {span} pièces sur votre dernière semaine de jeu. Une pièce de plus pourrait le faire bouger."

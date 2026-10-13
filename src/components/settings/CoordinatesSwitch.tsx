@@ -35,6 +35,10 @@ export function CoordinatesSwitch({ onChange }: CoordinatesSwitchProps) {
           type="button"
           role="switch"
           aria-checked={showCoordinates}
+          data-coordinates-switch=""
+          // The inline prefill script writes the stored value before hydration, and the store hydrates with its
+          // default and settles a render later, so this button and its state word may differ from the server's.
+          suppressHydrationWarning
           aria-labelledby={labelId}
           aria-describedby={helpId}
           className="lab-switch"
@@ -43,7 +47,7 @@ export function CoordinatesSwitch({ onChange }: CoordinatesSwitchProps) {
           <span className="lab-switch-track" aria-hidden="true">
             <span className="lab-switch-thumb" />
           </span>
-          <span className="lab-switch-state" aria-hidden="true">
+          <span className="lab-switch-state" aria-hidden="true" data-on-label={t("on")} data-off-label={t("off")} suppressHydrationWarning>
             {showCoordinates ? t("on") : t("off")}
           </span>
         </button>

@@ -259,6 +259,10 @@
         "cta": "Bạn có vượt được không?",
         "text": "{kind, select, daily {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở bàn cờ hằng ngày của Memory Chess ngày {date}.} review {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở một bàn cờ ôn tập của Memory Chess.} other {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) trên Memory Chess.}} Bạn có vượt được không?",
         "alt": "Thẻ kết quả Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Đã lưu ván. Số liệu mới của bạn ở ngay bên dưới.",
+        "action": "Xem"
       }
     },
     "comparison": {
@@ -579,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy}% trở lên trong {rounds, plural, other {# ván}}, ghi nhớ {memorizeSeconds} giây",
-      "recent": "Trung bình {rounds, plural, other {# ván}} gần nhất, mọi thiết lập",
+      "recent": "{rounds, plural, =1 {Từ ván duy nhất của bạn đến nay, mọi thiết lập} other {Trung bình # ván gần nhất, mọi thiết lập}}",
       "setting": "{source, select, calibration {Ván luyện tập} other {Ván đấu}} {pieceCount} quân, {memorizeSeconds} giây, từ {rounds, plural, other {# ván}}",
       "longest": "Chuỗi dài nhất: {days, plural, other {# ngày}}",
       "daily": "{status, select, played {Đã chơi hôm nay} unfinished {Đã mở hôm nay} other {Đang mở hôm nay}}, chuỗi dài nhất {longest, plural, other {# ngày}}",

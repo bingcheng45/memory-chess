@@ -259,6 +259,10 @@
         "cta": "क्या आप इसे हरा सकते हैं?",
         "text": "{kind, select, daily {मैंने Memory Chess के {date} के दैनिक बोर्ड पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।} review {मैंने Memory Chess के एक समीक्षा बोर्ड पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।} other {मैंने Memory Chess पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।}} क्या आप इसे हरा सकते हैं?",
         "alt": "Memory Chess नतीजा कार्ड: {details}।"
+      },
+      "savedToast": {
+        "message": "राउंड सेव हो गया। आपके नए आँकड़े ठीक नीचे हैं।",
+        "action": "दिखाएँ"
       }
     },
     "comparison": {
@@ -579,7 +583,7 @@
     },
     "context": {
       "span": "{rounds, plural, one {# राउंड} other {# राउंड}} में {accuracy}% या बेहतर, {memorizeSeconds} से. याद किया",
-      "recent": "आपके पिछले {rounds, plural, one {# राउंड} other {# राउंड}} का औसत, कोई भी सेटिंग",
+      "recent": "{rounds, plural, one {अब तक के आपके इकलौते राउंड से, कोई भी सेटिंग} other {आपके पिछले # राउंड का औसत, कोई भी सेटिंग}}",
       "setting": "{pieceCount} मोहरे, {memorizeSeconds} से. पर {source, select, calibration {अभ्यास राउंड} other {गेम राउंड}}, {rounds, plural, one {# राउंड} other {# राउंड}} से",
       "longest": "सबसे लंबा सिलसिला: {days, plural, one {# दिन} other {# दिन}}",
       "daily": "{status, select, played {आज खेला} unfinished {आज खोला} other {आज खुला है}}, सबसे लंबा सिलसिला {longest, plural, one {# दिन} other {# दिन}}",

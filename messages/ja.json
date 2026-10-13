@@ -259,6 +259,10 @@
         "cta": "あなたは超えられる?",
         "text": "{kind, select, daily {Memory Chess の{date}のデイリー盤面で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。} review {Memory Chess の復習盤面で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。} other {Memory Chess で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。}}あなたは超えられる?",
         "alt": "Memory Chess の結果カード: {details}。"
+      },
+      "savedToast": {
+        "message": "ラウンドを保存しました。更新された成績はすぐ下にあります。",
+        "action": "見る"
       }
     },
     "comparison": {
@@ -579,7 +583,7 @@
     },
     "context": {
       "span": "{rounds, plural, other {#ラウンド}}で{accuracy}%以上、記憶時間{memorizeSeconds}秒",
-      "recent": "直近{rounds, plural, other {#ラウンド}}の平均、全設定",
+      "recent": "{rounds, plural, =1 {これまでの1ラウンドの結果、全設定} other {直近#ラウンドの平均、全設定}}",
       "setting": "{source, select, calibration {練習} other {ゲーム}}・{pieceCount}駒・{memorizeSeconds}秒、{rounds, plural, other {#ラウンド}}から",
       "longest": "最長連続{days, plural, other {#日}}",
       "daily": "{status, select, played {今日プレイ済み} unfinished {今日開いた} other {今日プレイ可能}}、最長連続{longest, plural, other {#日}}",

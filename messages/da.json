@@ -259,6 +259,10 @@
         "cta": "Kan du slå det?",
         "text": "{kind, select, daily {Jeg huskede {correct, number} af {total, number} brikker ({accuracy}) på dagens bræt i Memory Chess for {date}.} review {Jeg huskede {correct, number} af {total, number} brikker ({accuracy}) på et repetitionsbræt i Memory Chess.} other {Jeg huskede {correct, number} af {total, number} brikker ({accuracy}) i Memory Chess.}} Kan du slå det?",
         "alt": "Resultatkort fra Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Runden er gemt. Dine opdaterede tal står lige herunder.",
+        "action": "Vis mig"
       }
     },
     "comparison": {
@@ -579,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy} % eller bedre i {rounds, plural, one {# runde} other {# runder}}, studeret {memorizeSeconds} s",
-      "recent": "Gennemsnit af dine seneste {rounds, plural, one {# runde} other {# runder}}, alle indstillinger",
+      "recent": "{rounds, plural, one {Fra din eneste runde indtil nu, alle indstillinger} other {Gennemsnit af dine seneste # runder, alle indstillinger}}",
       "setting": "{source, select, calibration {Øvelsesrunder} other {Runder i partier}} med {pieceCount} brikker, {memorizeSeconds} s, fra {rounds, plural, one {# runde} other {# runder}}",
       "longest": "Længste stime: {days, plural, one {# dag} other {# dage}}",
       "daily": "{status, select, played {Spillet i dag} unfinished {Åbnet i dag} other {Åbent i dag}}, længste stime {longest, plural, one {# dag} other {# dage}}",

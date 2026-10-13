@@ -1445,7 +1445,7 @@
       "boardLabel": "Scored board: {correct} of {total} pieces right.",
       "detail": "Studied {studied} s of {memorizeSeconds} s. {wrong, plural, =0 {No wrong pieces} one {# wrong piece} other {# wrong pieces}}, {extra, plural, =0 {no extra pieces} one {# extra piece} other {# extra pieces}}.",
       "more": "Show {count} more",
-      "ratingNote": "Rating changes are kept for your newest 20 rated game rounds. Practice and review rounds are not rated.",
+      "ratingNote": "Rating changes are kept for your newest 30 rated game rounds. Practice and review rounds are not rated.",
       "kept": "Your record keeps the newest {kept} of your {total} rounds round by round. Older rounds still count in your totals and bests.",
       "emptyTitle": "No rounds yet.",
       "empty": "Every round you play on this device appears here, newest first, with its setting, accuracy and rebuild time. Open one to see its scored board.",

@@ -1445,7 +1445,7 @@
       "boardLabel": "Vyhodnocená deska: správně {correct} z {total} figur.",
       "detail": "Zapamatováno {studied} s z {memorizeSeconds} s. {wrong, plural, =0 {Žádné chybné figury} one {# chybná figura} few {# chybné figury} many {# chybné figury} other {# chybných figur}}, {extra, plural, =0 {žádné figury navíc} one {# figura navíc} few {# figury navíc} many {# figury navíc} other {# figur navíc}}.",
       "more": "Zobrazit dalších {count}",
-      "ratingNote": "Změny hodnocení se uchovávají pro tvých 20 nejnovějších hodnocených kol v partiích. Tréninková kola a opakování se nehodnotí.",
+      "ratingNote": "Změny hodnocení se uchovávají pro tvých 30 nejnovějších hodnocených kol v partiích. Tréninková kola a opakování se nehodnotí.",
       "kept": "Tvůj záznam uchovává kolo po kole {kept} nejnovějších z tvých {total} kol. Starší kola se dál počítají do tvých součtů a rekordů.",
       "emptyTitle": "Zatím žádná kola.",
       "empty": "Každé kolo, které na tomto zařízení odehraješ, se objeví tady, nejnovější nahoře, s nastavením, přesností a časem rozestavení. Otevři ho a uvidíš jeho vyhodnocenou desku.",

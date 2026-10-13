@@ -1445,7 +1445,7 @@
       "boardLabel": "Oceniona plansza: {correct} z {total} figur poprawnie.",
       "detail": "Zapamiętywanie {studied} s z {memorizeSeconds} s. {wrong, plural, =0 {Brak błędnych figur} one {# błędna figura} few {# błędne figury} many {# błędnych figur} other {# błędnej figury}}, {extra, plural, =0 {brak dodatkowych figur} one {# dodatkowa figura} few {# dodatkowe figury} many {# dodatkowych figur} other {# dodatkowej figury}}.",
       "more": "Pokaż jeszcze {count}",
-      "ratingNote": "Zmiany oceny są zapisywane dla 20 najnowszych rund w partiach liczonych do oceny. Rundy treningowe i powtórki nie są oceniane.",
+      "ratingNote": "Zmiany oceny są zapisywane dla 30 najnowszych rund w partiach liczonych do oceny. Rundy treningowe i powtórki nie są oceniane.",
       "kept": "Twój dziennik przechowuje szczegółowo {kept} najnowszych z {total} rund. Starsze rundy nadal liczą się do sum i rekordów.",
       "emptyTitle": "Jeszcze brak rund.",
       "empty": "Każda runda rozegrana na tym urządzeniu pojawi się tutaj, od najnowszej, z ustawieniem, dokładnością i czasem ustawiania. Otwórz ją, aby zobaczyć ocenioną planszę.",

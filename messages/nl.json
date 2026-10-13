@@ -1445,7 +1445,7 @@
       "boardLabel": "Nagekeken bord: {correct} van {total} stukken goed.",
       "detail": "{studied} s van {memorizeSeconds} s bestudeerd. {wrong, plural, =0 {Geen foute stukken} one {# fout stuk} other {# foute stukken}}, {extra, plural, =0 {geen extra stukken} one {# extra stuk} other {# extra stukken}}.",
       "more": "Toon er nog {count}",
-      "ratingNote": "Ratingwijzigingen worden bewaard voor je nieuwste 20 rondes in partijen met rating. Oefen- en herhalingsrondes tellen niet mee voor je rating.",
+      "ratingNote": "Ratingwijzigingen worden bewaard voor je nieuwste 30 rondes in partijen met rating. Oefen- en herhalingsrondes tellen niet mee voor je rating.",
       "kept": "Je verslag bewaart de nieuwste {kept} van je {total} rondes ronde voor ronde. Oudere rondes tellen nog steeds mee in je totalen en records.",
       "emptyTitle": "Nog geen rondes.",
       "empty": "Elke ronde die je op dit apparaat speelt, verschijnt hier, nieuwste eerst, met de instelling, nauwkeurigheid en opbouwtijd. Open er een om het nagekeken bord te zien.",

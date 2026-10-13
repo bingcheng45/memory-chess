@@ -1445,7 +1445,7 @@
       "boardLabel": "评分后的棋盘：{total} 子中放对 {correct} 子。",
       "detail": "记忆了 {studied} 秒，共 {memorizeSeconds} 秒。{wrong, plural, =0 {没有放错的棋子} other {放错 # 子}}，{extra, plural, =0 {没有多放的棋子} other {多放 # 子}}。",
       "more": "再显示 {count} 个",
-      "ratingNote": "评分变化只保留最近 20 个计分对局回合。练习和复习回合不计分。",
+      "ratingNote": "评分变化只保留最近 30 个计分对局回合。练习和复习回合不计分。",
       "kept": "你的记录逐回合保留了 {total} 回合中最新的 {kept} 回合。更早的回合仍计入你的总计和个人最佳。",
       "emptyTitle": "还没有回合。",
       "empty": "你在本设备上玩的每一回合都会显示在这里，最新的在前，并附上设置、准确率和摆放用时。打开任意一个即可查看评分后的棋盘。",

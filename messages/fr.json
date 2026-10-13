@@ -1445,7 +1445,7 @@
       "boardLabel": "Échiquier corrigé : {correct} pièces justes sur {total}.",
       "detail": "Étudié {studied} s sur {memorizeSeconds} s. {wrong, plural, =0 {Aucune pièce erronée} one {# pièce erronée} many {# pièces erronées} other {# pièces erronées}}, {extra, plural, =0 {aucune pièce en trop} one {# pièce en trop} many {# pièces en trop} other {# pièces en trop}}.",
       "more": "Afficher {count} de plus",
-      "ratingNote": "Les variations de cote sont conservées pour vos 20 parties de jeu cotées les plus récentes. Les parties d’entraînement et de révision ne sont pas cotées.",
+      "ratingNote": "Les variations de cote sont conservées pour vos 30 parties de jeu cotées les plus récentes. Les parties d’entraînement et de révision ne sont pas cotées.",
       "kept": "Votre historique conserve en détail les {kept} plus récentes de vos {total} parties. Les plus anciennes comptent toujours dans vos totaux et vos records.",
       "emptyTitle": "Aucune partie pour l’instant.",
       "empty": "Chaque partie jouée sur cet appareil apparaît ici, la plus récente d’abord, avec son réglage, sa précision et son temps de placement. Ouvrez-en une pour voir son échiquier corrigé.",

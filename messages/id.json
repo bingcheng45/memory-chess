@@ -1445,7 +1445,7 @@
       "boardLabel": "Papan yang dinilai: {correct} dari {total} bidak benar.",
       "detail": "Menghafal {studied} dtk dari {memorizeSeconds} dtk. {wrong, plural, =0 {Tidak ada bidak salah} other {# bidak salah}}, {extra, plural, =0 {tidak ada bidak berlebih} other {# bidak berlebih}}.",
       "more": "Tampilkan {count} lagi",
-      "ratingNote": "Perubahan rating disimpan untuk 20 ronde permainan berating terbarumu. Ronde latihan dan ulasan tidak diberi rating.",
+      "ratingNote": "Perubahan rating disimpan untuk 30 ronde permainan berating terbarumu. Ronde latihan dan ulasan tidak diberi rating.",
       "kept": "Catatanmu menyimpan rincian {kept} ronde terbaru dari total {total} rondemu. Ronde yang lebih lama tetap dihitung dalam total dan rekormu.",
       "emptyTitle": "Belum ada ronde.",
       "empty": "Setiap ronde yang kamu mainkan di perangkat ini muncul di sini, terbaru lebih dulu, dengan pengaturan, akurasi, dan waktu menyusunnya. Buka satu untuk melihat papan yang sudah dinilai.",

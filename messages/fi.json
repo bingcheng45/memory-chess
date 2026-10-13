@@ -1445,7 +1445,7 @@
       "boardLabel": "Arvioitu lauta: {correct}/{total} nappulaa oikein.",
       "detail": "Tutkittu {studied} s / {memorizeSeconds} s. {wrong, plural, =0 {Ei vääriä nappuloita} one {# väärä nappula} other {# väärää nappulaa}}, {extra, plural, =0 {ei ylimääräisiä nappuloita} one {# ylimääräinen nappula} other {# ylimääräistä nappulaa}}.",
       "more": "Näytä {count} lisää",
-      "ratingNote": "Taitoluvun muutokset säilytetään 20 uusimmalle taitolukuun lasketulle pelien kierrokselle. Harjoitus- ja kertauskierrokset eivät vaikuta taitolukuun.",
+      "ratingNote": "Taitoluvun muutokset säilytetään 30 uusimmalle taitolukuun lasketulle pelien kierrokselle. Harjoitus- ja kertauskierrokset eivät vaikuta taitolukuun.",
       "kept": "Päiväkirjasi säilyttää kierros kierrokselta {kept} uusinta kierrosta kaikista {total} kierroksestasi. Vanhemmat kierrokset lasketaan yhä yhteismääriin ja ennätyksiin.",
       "emptyTitle": "Ei vielä kierroksia.",
       "empty": "Jokainen tällä laitteella pelaamasi kierros näkyy täällä uusin ensin, asetuksineen, tarkkuuksineen ja asetteluaikoineen. Avaa kierros nähdäksesi sen arvioidun laudan.",

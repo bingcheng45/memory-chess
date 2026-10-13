@@ -1445,7 +1445,7 @@
       "boardLabel": "Tablero corregido: {correct} de {total} piezas bien.",
       "detail": "Estudiaste {studied} s de {memorizeSeconds} s. {wrong, plural, =0 {Ninguna pieza incorrecta} one {# pieza incorrecta} many {# piezas incorrectas} other {# piezas incorrectas}}, {extra, plural, =0 {ninguna pieza de más} one {# pieza de más} many {# piezas de más} other {# piezas de más}}.",
       "more": "Mostrar {count} más",
-      "ratingNote": "Los cambios de puntuación se guardan para tus 20 rondas de partida puntuadas más recientes. Las rondas de práctica y de repaso no se puntúan.",
+      "ratingNote": "Los cambios de puntuación se guardan para tus 30 rondas de partida puntuadas más recientes. Las rondas de práctica y de repaso no se puntúan.",
       "kept": "Tu registro guarda una a una las {kept} rondas más recientes de tus {total}. Las rondas más antiguas siguen contando en tus totales y mejores marcas.",
       "emptyTitle": "Aún no hay rondas.",
       "empty": "Cada ronda que juegues en este dispositivo aparece aquí, la más reciente primero, con su ajuste, precisión y tiempo de colocación. Abre una para ver su tablero corregido.",

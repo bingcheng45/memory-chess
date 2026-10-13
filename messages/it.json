@@ -1445,7 +1445,7 @@
       "boardLabel": "Scacchiera valutata: {correct} pezzi giusti su {total}.",
       "detail": "Studiato {studied} s su {memorizeSeconds} s. {wrong, plural, =0 {Nessun pezzo errato} one {# pezzo errato} many {# pezzi errati} other {# pezzi errati}}, {extra, plural, =0 {nessun pezzo in più} one {# pezzo in più} many {# pezzi in più} other {# pezzi in più}}.",
       "more": "Mostra altre {count}",
-      "ratingNote": "Le variazioni di punteggio sono conservate per le tue 20 partite di gioco valutate più recenti. Le partite di allenamento e di ripasso non sono valutate.",
+      "ratingNote": "Le variazioni di punteggio sono conservate per le tue 30 partite di gioco valutate più recenti. Le partite di allenamento e di ripasso non sono valutate.",
       "kept": "Il tuo registro conserva nel dettaglio le {kept} più recenti delle tue {total} partite. Le partite più vecchie contano ancora nei totali e nei record.",
       "emptyTitle": "Ancora nessuna partita.",
       "empty": "Ogni partita giocata su questo dispositivo compare qui, dalla più recente, con impostazione, precisione e tempo di ricostruzione. Aprine una per vedere la sua scacchiera valutata.",

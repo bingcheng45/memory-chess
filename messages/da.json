@@ -1445,7 +1445,7 @@
       "boardLabel": "Bedømt bræt: {correct} af {total} brikker rigtige.",
       "detail": "Studeret {studied} s af {memorizeSeconds} s. {wrong, plural, =0 {Ingen forkerte brikker} one {# forkert brik} other {# forkerte brikker}}, {extra, plural, =0 {ingen ekstra brikker} one {# ekstra brik} other {# ekstra brikker}}.",
       "more": "Vis {count} mere",
-      "ratingNote": "Ratingændringer gemmes for dine nyeste 20 ratede runder i partier. Øvelses- og gentagelsesrunder bliver ikke ratet.",
+      "ratingNote": "Ratingændringer gemmes for dine nyeste 30 ratede runder i partier. Øvelses- og gentagelsesrunder bliver ikke ratet.",
       "kept": "Din journal gemmer de nyeste {kept} af dine {total} runder enkeltvis. Ældre runder tæller stadig med i dine totaler og rekorder.",
       "emptyTitle": "Ingen runder endnu.",
       "empty": "Hver runde du spiller på denne enhed vises her, nyeste først, med indstilling, præcision og placeringstid. Åbn en for at se dens bedømte bræt.",

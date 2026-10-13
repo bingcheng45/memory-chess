@@ -1445,7 +1445,7 @@
       "boardLabel": "Rättat bräde: {correct} av {total} pjäser rätt.",
       "detail": "Studerade {studied} s av {memorizeSeconds} s. {wrong, plural, =0 {Inga fel pjäser} one {# fel pjäs} other {# fel pjäser}}, {extra, plural, =0 {inga extra pjäser} one {# extra pjäs} other {# extra pjäser}}.",
       "more": "Visa {count} till",
-      "ratingNote": "Ratingförändringar sparas för dina 20 senaste rundor i partier med rating. Övnings- och repetitionsrundor ger ingen rating.",
+      "ratingNote": "Ratingförändringar sparas för dina 30 senaste rundor i partier med rating. Övnings- och repetitionsrundor ger ingen rating.",
       "kept": "Din journal sparar de {kept} senaste av dina {total} rundor runda för runda. Äldre rundor räknas fortfarande med i dina totaler och personbästa.",
       "emptyTitle": "Inga rundor ännu.",
       "empty": "Varje runda du spelar på den här enheten visas här, nyast först, med inställning, träffsäkerhet och placeringstid. Öppna en för att se dess rättade bräde.",

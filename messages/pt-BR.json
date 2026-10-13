@@ -1445,7 +1445,7 @@
       "boardLabel": "Tabuleiro corrigido: {correct} de {total} peças certas.",
       "detail": "Estudou {studied} s de {memorizeSeconds} s. {wrong, plural, =0 {Nenhuma peça errada} one {# peça errada} many {# peças erradas} other {# peças erradas}}, {extra, plural, =0 {nenhuma peça a mais} one {# peça a mais} many {# peças a mais} other {# peças a mais}}.",
       "more": "Mostrar mais {count}",
-      "ratingNote": "As mudanças de rating são guardadas para as suas 20 rodadas de partida com rating mais recentes. Rodadas de treino e de revisão não valem rating.",
+      "ratingNote": "As mudanças de rating são guardadas para as suas 30 rodadas de partida com rating mais recentes. Rodadas de treino e de revisão não valem rating.",
       "kept": "Seu registro guarda rodada a rodada as {kept} mais recentes das suas {total} rodadas. As mais antigas continuam contando nos totais e recordes.",
       "emptyTitle": "Nenhuma rodada ainda.",
       "empty": "Todas as rodadas que você jogar neste dispositivo aparecem aqui, das mais recentes para as mais antigas, com configuração, precisão e tempo de montagem. Abra uma para ver o tabuleiro corrigido.",

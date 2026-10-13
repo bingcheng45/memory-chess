@@ -1445,7 +1445,7 @@
       "boardLabel": "Tabla corectată: {correct} din {total} piese corecte.",
       "detail": "Ai studiat {studied} s din {memorizeSeconds} s. {wrong, plural, =0 {Nicio piesă greșită} one {# piesă greșită} few {# piese greșite} other {# de piese greșite}}, {extra, plural, =0 {nicio piesă în plus} one {# piesă în plus} few {# piese în plus} other {# de piese în plus}}.",
       "more": "Arată încă {count}",
-      "ratingNote": "Schimbările de rating se păstrează pentru cele mai noi 20 de runde din partide cu rating. Rundele de exercițiu și de recapitulare nu au rating.",
+      "ratingNote": "Schimbările de rating se păstrează pentru cele mai noi 30 de runde din partide cu rating. Rundele de exercițiu și de recapitulare nu au rating.",
       "kept": "Jurnalul tău păstrează rundă cu rundă cele mai noi {kept} din cele {total} runde ale tale. Rundele mai vechi contează în continuare la totaluri și recorduri.",
       "emptyTitle": "Nicio rundă încă.",
       "empty": "Fiecare rundă pe care o joci pe acest dispozitiv apare aici, cele mai noi primele, cu setarea, precizia și timpul de reconstruire. Deschide una ca să vezi tabla corectată.",

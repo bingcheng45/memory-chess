@@ -1445,7 +1445,7 @@
       "boardLabel": "Bàn cờ đã chấm: đúng {correct} trên {total} quân.",
       "detail": "Đã ghi nhớ {studied} giây trên {memorizeSeconds} giây. {wrong, plural, =0 {Không có quân sai} other {# quân sai}}, {extra, plural, =0 {không có quân thừa} other {# quân thừa}}.",
       "more": "Xem thêm {count}",
-      "ratingNote": "Thay đổi điểm được lưu cho 20 ván đấu tính điểm gần nhất. Ván luyện tập và ôn tập không tính điểm.",
+      "ratingNote": "Thay đổi điểm được lưu cho 30 ván đấu tính điểm gần nhất. Ván luyện tập và ôn tập không tính điểm.",
       "kept": "Hồ sơ của bạn lưu chi tiết từng ván cho {kept} ván mới nhất trong tổng số {total} ván. Các ván cũ hơn vẫn được tính vào tổng số và kỷ lục.",
       "emptyTitle": "Chưa có ván nào.",
       "empty": "Mọi ván bạn chơi trên thiết bị này sẽ hiện ở đây, mới nhất ở trên, kèm thiết lập, độ chính xác và thời gian xếp. Mở một ván để xem bàn cờ đã chấm.",

@@ -1445,7 +1445,7 @@
       "boardLabel": "Ausgewertetes Brett: {correct} von {total} Figuren richtig.",
       "detail": "{studied} s von {memorizeSeconds} s eingeprägt. {wrong, plural, =0 {Keine falschen Figuren} one {# falsche Figur} other {# falsche Figuren}}, {extra, plural, =0 {keine zusätzlichen Figuren} one {# zusätzliche Figur} other {# zusätzliche Figuren}}.",
       "more": "{count} weitere zeigen",
-      "ratingNote": "Wertungsänderungen werden für deine neuesten 20 gewerteten Runden in Partien gespeichert. Übungs- und Wiederholungsrunden werden nicht gewertet.",
+      "ratingNote": "Wertungsänderungen werden für deine neuesten 30 gewerteten Runden in Partien gespeichert. Übungs- und Wiederholungsrunden werden nicht gewertet.",
       "kept": "Dein Verlauf speichert die neuesten {kept} deiner {total} Runden einzeln. Ältere Runden zählen weiter für deine Summen und Bestwerte.",
       "emptyTitle": "Noch keine Runden.",
       "empty": "Jede Runde, die du auf diesem Gerät spielst, erscheint hier, die neueste zuerst, mit Einstellung, Genauigkeit und Aufbauzeit. Öffne eine, um ihr ausgewertetes Brett zu sehen.",

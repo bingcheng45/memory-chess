@@ -1445,7 +1445,7 @@
       "boardLabel": "Rettet brett: {correct} av {total} brikker riktig.",
       "detail": "Studerte {studied} s av {memorizeSeconds} s. {wrong, plural, =0 {Ingen feil brikker} one {# feil brikke} other {# feil brikker}}, {extra, plural, =0 {ingen ekstra brikker} one {# ekstra brikke} other {# ekstra brikker}}.",
       "more": "Vis {count} til",
-      "ratingNote": "Ratingendringer lagres for de 20 nyeste ratede rundene dine i partier. Øvings- og repetisjonsrunder er ikke ratet.",
+      "ratingNote": "Ratingendringer lagres for de 30 nyeste ratede rundene dine i partier. Øvings- og repetisjonsrunder er ikke ratet.",
       "kept": "Journalen din lagrer de {kept} nyeste av dine {total} runder runde for runde. Eldre runder teller fortsatt med i totaler og rekorder.",
       "emptyTitle": "Ingen runder ennå.",
       "empty": "Hver runde du spiller på denne enheten vises her, nyeste først, med innstilling, presisjon og plasseringstid. Åpne en for å se det rettede brettet.",

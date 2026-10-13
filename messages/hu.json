@@ -1445,7 +1445,7 @@
       "boardLabel": "Kiértékelt tábla: {correct}/{total} bábu helyes.",
       "detail": "Tanulási idő: {studied}/{memorizeSeconds} mp. {wrong, plural, =0 {Nincs hibás bábu} one {# hibás bábu} other {# hibás bábu}}, {extra, plural, =0 {nincs fölösleges bábu} one {# fölösleges bábu} other {# fölösleges bábu}}.",
       "more": "Még {count} mutatása",
-      "ratingNote": "A pontszám változásait a legújabb 20 pontozott játékkörödnél őrizzük meg. A gyakorló és ismétlő körök nem pontozottak.",
+      "ratingNote": "A pontszám változásait a legújabb 30 pontozott játékkörödnél őrizzük meg. A gyakorló és ismétlő körök nem pontozottak.",
       "kept": "A jegyzőkönyved összesen {total} köröd közül a legújabb {kept} kört őrzi meg körönként. A régebbi körök továbbra is beleszámítanak az összesítésekbe és a csúcsokba.",
       "emptyTitle": "Még nincs kör.",
       "empty": "Minden kör, amelyet ezen az eszközön játszol, itt jelenik meg, a legújabb elöl, a beállításával, pontosságával és kirakási idejével. Nyiss meg egyet a kiértékelt tábla megtekintéséhez.",

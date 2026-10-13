@@ -1,6 +1,7 @@
 import { PieceSymbol, Square } from 'chess.js';
 import type { RoundSource } from '@/lib/analytics/events';
 import type { LabRound } from '@/lib/lab/recordRound';
+import type { RatedRoundFacts, RatingResult } from '@/lib/game/rating';
 
 /** A round on a set position instead of a random one: today's shared daily board, or a board from the lab record come back for review. */
 export type SetBoard =
@@ -37,7 +38,9 @@ export interface GameState {
   streak?: number;           // Current streak of successful games
   /** The rating and streak the scored round started from, so the result screen can show what it moved. Never persisted. */
   standingBefore?: { readonly skillRating: number; readonly streak: number };
-  
+  /** How the scored round moved the rating, with its phase; absent for an unrated round. Never persisted. */
+  rating?: RatingResult;
+
   // Game data
   originalPosition?: string; // FEN string of position to memorize
   userPosition?: string;     // FEN string of user's solution
@@ -74,6 +77,8 @@ export type GameHistory = {
   skillRatingChange?: number; // Change in skill rating from this game
   streak?: number; // Current streak at the time of this game
   perfectScore?: boolean; // Whether the user achieved 100% accuracy
+  /** What the rating read from the round. Absent on rows saved before the placement and Elo rating, which it ignores. */
+  facts?: RatedRoundFacts;
 };
 
 export type GameSettings = {

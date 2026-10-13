@@ -1,4 +1,6 @@
+import { boardLevel } from "@/lib/game/rating";
 import { accuracyOf } from "@/lib/game/scoring";
+import type { DailySetting } from "./schedule";
 
 /** One player's round on the daily board, as the estimate reads it. */
 export interface DailyResult {
@@ -64,4 +66,10 @@ export function boardRatingOf(results: readonly DailyResult[], prior: number): n
     board += gradient / curvature;
   }
   return Math.round(board / ROUND_TO) * ROUND_TO;
+}
+
+/** How a day's board played, read from its leaderboard rows, with its setting's formula level as the starting point. */
+export function playedLikeOf(rows: readonly DailyResultRow[], setting: DailySetting): number | null {
+  const results = rows.flatMap((row) => dailyResultOf(row) ?? []);
+  return boardRatingOf(results, boardLevel({ pieceCount: setting.pieceCount, studySeconds: setting.memorizeTime }));
 }

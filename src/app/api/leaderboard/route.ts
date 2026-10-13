@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
+import { getDailyResults, getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 import { isSkillRating, MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
@@ -7,6 +7,7 @@ import { joinableDays, readableDays, readBoard } from '@/lib/leaderboard/board';
 import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { utcDayOf } from '@/lib/lab/daily';
 import { dailySettingOf } from '@/lib/daily/schedule';
+import { playedLikeOf } from '@/lib/daily/boardRating';
 import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardBoard } from '@/types/leaderboard';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
 
@@ -72,8 +73,15 @@ export async function GET(request: NextRequest) {
       return unavailable();
     }
 
-    const result = await getLeaderboard(board);
-    return result.error ? unavailable() : NextResponse.json({ data: result.data });
+    if (board.difficulty !== DAILY_BOARD) {
+      const result = await getLeaderboard(board);
+      return result.error ? unavailable() : NextResponse.json({ data: result.data });
+    }
+    // How the board played is a side note: when its read fails the board still answers, without it.
+    const [result, results] = await Promise.all([getLeaderboard(board), getDailyResults(board.daily_day)]);
+    if (result.error) return unavailable();
+    const playedLike = results === null ? null : playedLikeOf(results, dailySettingOf(board.daily_day));
+    return NextResponse.json({ data: result.data, playedLike });
   } catch (err) {
     console.error('Unexpected API error:', err);
     return unavailable();

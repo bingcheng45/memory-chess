@@ -1,4 +1,4 @@
-import { boardRatingOf, dailyResultOf, type DailyResult } from "../boardRating";
+import { boardRatingOf, dailyResultOf, playedLikeOf, type DailyResult, type DailyResultRow } from "../boardRating";
 
 const same = (count: number, rating: number, score: number, pieces = 6): DailyResult[] =>
   Array.from({ length: count }, () => ({ rating, score, pieces }));
@@ -42,5 +42,22 @@ describe("dailyResultOf", () => {
   it("leaves out a row without a rating", () => {
     expect(dailyResultOf({ piece_count: 6, correct_pieces: 6, total_wrong_pieces: 0, skill_rating: null })).toBeNull();
     expect(dailyResultOf({ piece_count: 6, correct_pieces: 6, total_wrong_pieces: null, skill_rating: 900 })).toEqual({ rating: 900, score: 1, pieces: 6 });
+  });
+});
+
+const row = (index: number, skill_rating: number | null = 1400): DailyResultRow =>
+  index % 2 ? { piece_count: 6, correct_pieces: 5, total_wrong_pieces: 1, skill_rating } : { piece_count: 6, correct_pieces: 4, total_wrong_pieces: 2, skill_rating };
+
+describe("playedLikeOf", () => {
+  const MEDIUM = { pieceCount: 6, memorizeTime: 10 };
+
+  it("reads a day's rows against its setting's formula level", () => {
+    expect(playedLikeOf(Array.from({ length: 30 }, (_, index) => row(index)), MEDIUM)).toBe(1180);
+  });
+
+  it("counts only rows with a rating toward the 25 it needs", () => {
+    const rows = Array.from({ length: 30 }, (_, index) => row(index, index < 24 ? 1400 : null));
+    expect(playedLikeOf(rows, MEDIUM)).toBeNull();
+    expect(playedLikeOf([...rows, row(30)], MEDIUM)).toBe(1170);
   });
 });

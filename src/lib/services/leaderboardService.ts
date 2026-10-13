@@ -6,6 +6,7 @@ import { parseBoard } from '@/lib/leaderboard/board';
 import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { rankedAboveFilter, type Standing, type StandingScope } from '@/lib/leaderboard/standing';
 import { WORLD_CODE } from '@/lib/leaderboard/countries';
+import type { DailyResultRow } from '@/lib/daily/boardRating';
 import {
   DAILY_BOARD,
   LEADERBOARD_DIFFICULTIES,
@@ -76,6 +77,32 @@ export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: Le
     return { data: data || [] };
   } catch (err) {
     return unavailable('Unexpected error in getLeaderboard:', err);
+  }
+}
+
+/** Enough results to settle the estimate many times over; a busier day reads a sample. */
+const DAILY_RESULTS_LIMIT = 1000;
+
+/** Every result on a daily board, not only the ranked top, so the board's rating is not read from its best players. Null on failure. */
+export async function getDailyResults(day: string): Promise<DailyResultRow[] | null> {
+  if (!supabase) return null;
+  try {
+    const { data, error } = await supabase
+      .from('leaderboard_entries')
+      .select('piece_count,correct_pieces,total_wrong_pieces,skill_rating')
+      .eq('difficulty', DAILY_BOARD)
+      .eq('daily_day', day)
+      .gt('correct_pieces', 0)
+      .order('created_at', { ascending: true })
+      .limit(DAILY_RESULTS_LIMIT);
+    if (error) {
+      console.error('Daily results query error:', error);
+      return null;
+    }
+    return data ?? [];
+  } catch (err) {
+    console.error('Unexpected error in getDailyResults:', err);
+    return null;
   }
 }
 

@@ -583,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy}% of beter in {rounds, plural, one {# ronde} other {# rondes}}, {memorizeSeconds} s bestudeerd",
-      "recent": "Gemiddelde van je laatste {rounds, plural, one {# ronde} other {# rondes}}, elke instelling",
+      "recent": "{rounds, plural, one {Uit je enige ronde tot nu toe, elke instelling} other {Gemiddelde van je laatste # rondes, elke instelling}}",
       "setting": "{source, select, calibration {Rondes als oefening} other {Rondes in partijen}} met {pieceCount} stukken, {memorizeSeconds} s, uit {rounds, plural, one {# ronde} other {# rondes}}",
       "longest": "Langste reeks: {days, plural, one {# dag} other {# dagen}}",
       "daily": "{status, select, played {Vandaag gespeeld} unfinished {Vandaag geopend} other {Vandaag open}}, langste reeks {longest, plural, one {# dag} other {# dagen}}",

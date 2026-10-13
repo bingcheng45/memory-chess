@@ -583,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy}% и выше в {rounds, plural, one {# раунде} few {# раундах} many {# раундах} other {# раунда}}, запоминание {memorizeSeconds} с",
-      "recent": "Среднее за последние раунды: {rounds, plural, one {# раунд} few {# раунда} many {# раундов} other {# раунда}}, любые настройки",
+      "recent": "{rounds, plural, =1 {По единственному пока раунду, любые настройки} one {Среднее за последние раунды: # раунд, любые настройки} few {Среднее за последние раунды: # раунда, любые настройки} many {Среднее за последние раунды: # раундов, любые настройки} other {Среднее за последние раунды: # раунда, любые настройки}}",
       "setting": "{source, select, calibration {Тренировочные раунды} other {Раунды в партиях}}: {pieceCount} фигур, {memorizeSeconds} с, по {rounds, plural, one {# раунду} few {# раундам} many {# раундам} other {# раунда}}",
       "longest": "Самая длинная серия: {days, plural, one {# день} few {# дня} many {# дней} other {# дня}}",
       "daily": "{status, select, played {Сыграно сегодня} unfinished {Открыто сегодня} other {Доступно сегодня}}, самая длинная серия {longest, plural, one {# день} few {# дня} many {# дней} other {# дня}}",

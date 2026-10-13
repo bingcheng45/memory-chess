@@ -1398,7 +1398,7 @@
     },
     "context": {
       "span": "{accuracy}% or better in {rounds, plural, one {# round} other {# rounds}}, studied {memorizeSeconds} s",
-      "recent": "Average of your last {rounds, plural, one {# round} other {# rounds}}, any setting",
+      "recent": "{rounds, plural, one {From your only round so far, any setting} other {Average of your last # rounds, any setting}}",
       "setting": "{source, select, calibration {Practice rounds} other {Game rounds}} at {pieceCount} pieces, {memorizeSeconds} s, from {rounds, plural, one {# round} other {# rounds}}",
       "longest": "Longest streak: {days, plural, one {# day} other {# days}}",
       "daily": "{status, select, played {Played today} unfinished {Opened today} other {Open today}}, longest streak {longest, plural, one {# day} other {# days}}",

@@ -583,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy} % eller bättre i {rounds, plural, one {# runda} other {# rundor}}, studerat {memorizeSeconds} s",
-      "recent": "Snitt av dina senaste {rounds, plural, one {# runda} other {# rundor}}, alla inställningar",
+      "recent": "{rounds, plural, one {Från din enda runda hittills, alla inställningar} other {Snitt av dina senaste # rundor, alla inställningar}}",
       "setting": "{source, select, calibration {Övningsrundor} other {Rundor i partier}} med {pieceCount} pjäser, {memorizeSeconds} s, från {rounds, plural, one {# runda} other {# rundor}}",
       "longest": "Längsta svit: {days, plural, one {# dag} other {# dagar}}",
       "daily": "{status, select, played {Spelat i dag} unfinished {Öppnat i dag} other {Öppet i dag}}, längsta svit {longest, plural, one {# dag} other {# dagar}}",

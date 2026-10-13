@@ -583,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy}% ou mais em {rounds, plural, one {# rodada} many {# rodadas} other {# rodadas}}, memorizou {memorizeSeconds} s",
-      "recent": "Média das suas {rounds, plural, one {# última rodada} many {# últimas rodadas} other {# últimas rodadas}}, qualquer configuração",
+      "recent": "{rounds, plural, one {Da sua única rodada até agora, qualquer configuração} many {Média das suas # últimas rodadas, qualquer configuração} other {Média das suas # últimas rodadas, qualquer configuração}}",
       "setting": "{source, select, calibration {Rodadas de treino} other {Rodadas de partida}} com {pieceCount} peças, {memorizeSeconds} s, de {rounds, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
       "longest": "Maior sequência: {days, plural, one {# dia} many {# dias} other {# dias}}",
       "daily": "{status, select, played {Jogado hoje} unfinished {Aberto hoje} other {Disponível hoje}}, maior sequência {longest, plural, one {# dia} many {# dias} other {# dias}}",

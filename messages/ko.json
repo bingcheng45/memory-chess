@@ -583,7 +583,7 @@
     },
     "context": {
       "span": "{rounds, plural, other {#라운드}}에서 {accuracy}% 이상, 기억 시간 {memorizeSeconds}초",
-      "recent": "최근 {rounds, plural, other {#라운드}} 평균, 모든 설정",
+      "recent": "{rounds, plural, =1 {지금까지 1라운드 결과, 모든 설정} other {최근 #라운드 평균, 모든 설정}}",
       "setting": "{source, select, calibration {연습} other {게임}} {pieceCount}개, {memorizeSeconds}초, {rounds, plural, other {#라운드}} 기준",
       "longest": "최장 연속 {days, plural, other {#일}}",
       "daily": "{status, select, played {오늘 플레이함} unfinished {오늘 열어 봄} other {오늘 플레이 가능}}, 최장 연속 {longest, plural, other {#일}}",

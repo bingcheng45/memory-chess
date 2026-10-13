@@ -2,7 +2,11 @@ import { renderWithIntl, screen, within } from "@/test-utils/intl";
 import { TileList } from "@/components/dashboard/DashboardTiles";
 import { useContextText } from "@/components/dashboard/figureText";
 import type { DashboardTile, Trend } from "@/lib/lab/dashboard";
+import { readdirSync, readFileSync } from "node:fs";
 import de from "../../../../messages/de.json";
+import messages from "../../../../messages/en.json";
+
+const MESSAGES_DIR = `${__dirname}/../../../../messages`;
 
 const ratingTile = (change: number, rounds: number, trend?: Trend): DashboardTile => ({
   id: "rating",
@@ -62,6 +66,36 @@ describe("rating sentence", () => {
 
   it("keeps the count for several rounds", () => {
     expect(sentence(27, 5)).toBe("Up 27 over your last 5 rated rounds");
+  });
+});
+
+describe("recent accuracy sentence", () => {
+  const recent = (rounds: number, locale = "en", catalogue: Record<string, unknown> = messages) => {
+    function Probe() {
+      return <p data-testid="probe">{useContextText()({ kind: "recent", values: { rounds } })}</p>;
+    }
+    const { unmount } = renderWithIntl(<Probe />, { locale, messages: catalogue });
+    const text = screen.getByTestId("probe").textContent;
+    unmount();
+    return text;
+  };
+
+  it("does not call one round an average of the last 1", () => {
+    expect(recent(1)).toBe("From your only round so far, any setting");
+    expect(recent(1, "de", de)).toBe("Aus deiner bisher einzigen Runde, jede Einstellung");
+  });
+
+  it("keeps the average for several rounds", () => {
+    expect(recent(2)).toBe("Average of your last 2 rounds, any setting");
+    expect(recent(10, "de", de)).toBe("Schnitt deiner letzten 10 Runden, jede Einstellung");
+  });
+
+  it.each(readdirSync(MESSAGES_DIR).map((file) => file.replace(".json", "")))("in %s says one round in other words than two", (locale) => {
+    const catalogue = JSON.parse(readFileSync(`${MESSAGES_DIR}/${locale}.json`, "utf8"));
+    const one = recent(1, locale, catalogue) ?? "";
+    const two = recent(2, locale, catalogue) ?? "";
+
+    expect(one.replace("1", "")).not.toBe(two.replace("2", ""));
   });
 });
 

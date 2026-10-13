@@ -583,7 +583,7 @@
     },
     "context": {
       "span": "{rounds, plural, other {# 回合}}達到 {accuracy}% 以上，記憶 {memorizeSeconds} 秒",
-      "recent": "最近 {rounds, plural, other {# 回合}}的平均值，任意設定",
+      "recent": "{rounds, plural, =1 {目前僅 1 回合的結果，任意設定} other {最近 # 回合的平均值，任意設定}}",
       "setting": "{source, select, calibration {練習} other {對局}}，{pieceCount} 子、{memorizeSeconds} 秒，根據 {rounds, plural, other {# 回合}}",
       "longest": "最長連續 {days, plural, other {# 天}}",
       "daily": "{status, select, played {今天已玩} unfinished {今天已開啟} other {今天可玩}}，最長連續 {longest, plural, other {# 天}}",

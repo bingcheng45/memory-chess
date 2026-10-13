@@ -583,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy} % eller bedre i {rounds, plural, one {# runde} other {# runder}}, studeret {memorizeSeconds} s",
-      "recent": "Gennemsnit af dine seneste {rounds, plural, one {# runde} other {# runder}}, alle indstillinger",
+      "recent": "{rounds, plural, one {Fra din eneste runde indtil nu, alle indstillinger} other {Gennemsnit af dine seneste # runder, alle indstillinger}}",
       "setting": "{source, select, calibration {Øvelsesrunder} other {Runder i partier}} med {pieceCount} brikker, {memorizeSeconds} s, fra {rounds, plural, one {# runde} other {# runder}}",
       "longest": "Længste stime: {days, plural, one {# dag} other {# dage}}",
       "daily": "{status, select, played {Spillet i dag} unfinished {Åbnet i dag} other {Åbent i dag}}, længste stime {longest, plural, one {# dag} other {# dage}}",

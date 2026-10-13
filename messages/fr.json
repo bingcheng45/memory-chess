@@ -583,7 +583,7 @@
     },
     "context": {
       "span": "{accuracy} % ou mieux sur {rounds, plural, one {# partie} many {# parties} other {# parties}}, mémorisé {memorizeSeconds} s",
-      "recent": "Moyenne de vos {rounds, plural, one {# dernière partie} many {# dernières parties} other {# dernières parties}}, tous réglages",
+      "recent": "{rounds, plural, one {De votre seule partie jusqu’ici, tous réglages} many {Moyenne de vos # dernières parties, tous réglages} other {Moyenne de vos # dernières parties, tous réglages}}",
       "setting": "{source, select, calibration {Parties d’entraînement} other {Parties de jeu}} à {pieceCount} pièces, {memorizeSeconds} s, sur {rounds, plural, one {# partie} many {# parties} other {# parties}}",
       "longest": "Plus longue série : {days, plural, one {# jour} many {# jours} other {# jours}}",
       "daily": "{status, select, played {Joué aujourd’hui} unfinished {Ouvert aujourd’hui} other {Ouvert pour aujourd’hui}}, plus longue série {longest, plural, one {# jour} many {# jours} other {# jours}}",

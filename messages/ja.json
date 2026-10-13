@@ -583,7 +583,7 @@
     },
     "context": {
       "span": "{rounds, plural, other {#ラウンド}}で{accuracy}%以上、記憶時間{memorizeSeconds}秒",
-      "recent": "直近{rounds, plural, other {#ラウンド}}の平均、全設定",
+      "recent": "{rounds, plural, =1 {これまでの1ラウンドの結果、全設定} other {直近#ラウンドの平均、全設定}}",
       "setting": "{source, select, calibration {練習} other {ゲーム}}・{pieceCount}駒・{memorizeSeconds}秒、{rounds, plural, other {#ラウンド}}から",
       "longest": "最長連続{days, plural, other {#日}}",
       "daily": "{status, select, played {今日プレイ済み} unfinished {今日開いた} other {今日プレイ可能}}、最長連続{longest, plural, other {#日}}",

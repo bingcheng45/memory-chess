@@ -329,7 +329,7 @@ describe("saving finished rounds to the history", () => {
         totalPlacements: 6,
         perfectScore: false,
         level: 1,
-        skillRatingChange: -4,
+        skillRatingChange: -25,
         streak: 0,
         facts: { pieceCount: 6, studySeconds: 10, rebuildSeconds: 15, accuracy: 50 },
       },
@@ -524,7 +524,7 @@ describe("how a placement round moves the skill rating", () => {
     const firstRating = first.skillRating;
     const second = playRound({ pieceCount: 6, correct: 0, solveMs: 1 });
 
-    expect([first.accuracy, first.skillRatingChange, firstRating, second.skillRatingChange, second.skillRating]).toEqual([0, -100, 900, -100, 800]);
+    expect([first.accuracy, first.skillRatingChange, firstRating, second.skillRatingChange, second.skillRating]).toEqual([0, -40, 960, -40, 920]);
   });
 
   it("gives an instant perfect round no more rebuild credit than one at 1.25 s a piece", () => {
@@ -589,7 +589,7 @@ describe("the standing a round started from", () => {
       { skillRating: 1000, streak: 0 },
       [1000, 1],
       { skillRating: 1000, streak: 1 },
-      [955, 0],
+      [960, 0],
     ]);
   });
 });
@@ -647,8 +647,8 @@ describe("the day's free skip", () => {
 
     expect([second.rating?.phase, second.skillRatingChange, second.skillRating, second.streak, store().history.length]).toEqual([
       "placement",
-      -40,
-      1160,
+      -36,
+      1164,
       0,
       2,
     ]);
@@ -666,7 +666,7 @@ describe("the day's free skip", () => {
 
     expect([one.rating?.phase, one.skillRatingChange, one.streak, store().history.length, store().freeSkipDay]).toEqual([
       "placement",
-      -40,
+      -36,
       0,
       2,
       null,

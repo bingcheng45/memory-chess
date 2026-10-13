@@ -170,7 +170,7 @@ export default function ChangelogBanner({ announce }: { announce: boolean }) {
             {(suffix) => (
               <>
                 <span className={look.lead}>
-                  Memory Chess v{release.version} is here.
+                  {t("bannerLead", { version: release.version })}
                 </span>{" "}
                 <span className={look.cta}>
                   {t("bannerCta")}

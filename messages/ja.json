@@ -1248,7 +1248,8 @@
   },
   "changelog": {
     "bannerCta": "新着をチェック",
-    "bannerLabel": "Memory Chess のアップデート"
+    "bannerLabel": "Memory Chess のアップデート",
+    "bannerLead": "Memory Chess v{version} が公開されました。"
   },
   "articles": {
     "meta": {

@@ -1248,7 +1248,8 @@
   },
   "changelog": {
     "bannerCta": "看看有什么新变化",
-    "bannerLabel": "Memory Chess 更新"
+    "bannerLabel": "Memory Chess 更新",
+    "bannerLead": "Memory Chess v{version} 现已推出。"
   },
   "articles": {
     "meta": {

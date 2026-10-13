@@ -1248,7 +1248,8 @@
   },
   "changelog": {
     "bannerCta": "Vezi noutățile",
-    "bannerLabel": "Actualizare Memory Chess"
+    "bannerLabel": "Actualizare Memory Chess",
+    "bannerLead": "Memory Chess v{version} a sosit."
   },
   "articles": {
     "meta": {

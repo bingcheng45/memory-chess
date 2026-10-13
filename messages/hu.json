@@ -1248,7 +1248,8 @@
   },
   "changelog": {
     "bannerCta": "Nézd meg, mi újult meg",
-    "bannerLabel": "Memory Chess frissítés"
+    "bannerLabel": "Memory Chess frissítés",
+    "bannerLead": "Megérkezett a Memory Chess v{version}."
   },
   "articles": {
     "meta": {

@@ -268,6 +268,29 @@ describe("POST /api/leaderboard", () => {
       expect(submitLeaderboardEntry).not.toHaveBeenCalled();
     });
 
+    it.each([
+      ["the text \"0.01\"", "0.01"],
+      ["the text \"12.5\"", "12.5"],
+      ["an array", [12.5]],
+    ])("rejects a daily rebuild time sent as %s, not a number", async (_case, solution_time) => {
+      const response = await post({ ...todaysRow, solution_time });
+
+      expect(response.status).toBe(400);
+      expect(await response.json()).toEqual({ error: "A daily rebuild of 6 pieces takes at least 1.5 seconds" });
+      expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+    });
+
+    it.each([
+      ["pieces as the text \"6\"", { piece_count: "6" }],
+      ["seconds as the text \"10\"", { memorize_time: "10" }],
+    ])("rejects a daily row for today with its %s", async (_case, setting) => {
+      const response = await post({ ...todaysRow, ...setting });
+
+      expect(response.status).toBe(400);
+      expect(await response.json()).toEqual({ error: "The daily board for 2026-10-13 is 6 pieces and 10 seconds" });
+      expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+    });
+
     it("stores a daily rebuild of 6 pieces in 1.5 s, exactly a quarter second a piece", async () => {
       const response = await post({ ...todaysRow, solution_time: 1.5 });
 

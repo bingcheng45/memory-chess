@@ -133,12 +133,14 @@ function isCurrent(pathname: string, href: string): boolean {
 
 export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: LabPaperHeaderProps) {
   const nav = useTranslations("common.nav");
+  const entry = useTranslations("dailyEntry");
   const pathname = usePathname();
   const dailyReady = useDailyState()?.status === "ready";
   const pageMenu = useDisclosure();
   const menu = useDisclosure();
   const pagePanelId = useId();
   const menuPanelId = useId();
+  const dailyHintId = useId();
   const currentOf = (href: string) => (isCurrent(pathname, href) ? ("page" as const) : undefined);
 
   return (
@@ -198,12 +200,20 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
               aria-controls={menuPanelId}
               onClick={menu.toggle}
               aria-label={nav("menu")}
+              aria-describedby={dailyReady ? dailyHintId : undefined}
             >
               <svg className="lab-menu-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
                 <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
               </svg>
               <span className="lab-menu-label">{nav("menu")}</span>
-              {dailyReady && <span className="lab-daily-dot" aria-hidden="true" />}
+              {dailyReady && (
+                <>
+                  <span className="lab-daily-dot" aria-hidden="true" />
+                  <span id={dailyHintId} className="sr-only">
+                    {entry("navReady", { label: nav("dashboard") })}
+                  </span>
+                </>
+              )}
             </button>
           </div>
         </div>

@@ -43,13 +43,26 @@ describe("the daily dot on the Dashboard nav item", () => {
     expect(dotsIn(container)).toBe(0);
   });
 
-  it("is gone once today's board was played", () => {
+  it("is gone once today's board was opened", () => {
     window.localStorage.setItem(DAILY_OPENED_KEY, "2026-10-13");
     jest.setSystemTime(Date.parse("2026-10-13T23:00:00Z"));
     const { container } = renderWithIntl(<LabPaperHeader />);
 
     expect(screen.queryByText(/daily board is ready/)).toBeNull();
     expect(dotsIn(container)).toBe(0);
+  });
+
+  it("describes the phone Menu button while ready, without renaming it, and not once used", () => {
+    const { unmount } = renderWithIntl(<LabPaperHeader />);
+    const menuButton = screen.getByRole("button", { name: "Menu" });
+    expect(menuButton).toHaveAccessibleDescription("Dashboard, today's daily board is ready");
+    unmount();
+
+    window.localStorage.setItem(DAILY_OPENED_KEY, "2026-10-13");
+    renderWithIntl(<LabPaperHeader />);
+    const usedButton = screen.getByRole("button", { name: "Menu" });
+    expect(usedButton).not.toHaveAttribute("aria-describedby");
+    expect(usedButton).toHaveAccessibleDescription("");
   });
 
   it("returns at UTC midnight for the next board without a reload", () => {

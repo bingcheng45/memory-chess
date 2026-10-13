@@ -87,9 +87,14 @@ export default function PrivacyPage() {
           </li>
           <li>
             <strong>Leaderboard entries:</strong>{" "}
-            the player name you choose and the score details you submit.
+            the player name you choose, the score details you submit, your
+            skill rating at the time, and the country you pick, if any.
             These are displayed publicly, so please do not use your real
-            name if you would rather keep it private.
+            name if you would rather keep it private. When you join the
+            daily board, the form suggests a country from the country your
+            connection comes from, which our hosting provider reports; we
+            do not store that guess, and the country you choose is the one
+            saved.
           </li>
         </ul>
       </LabReadingSection>
@@ -244,7 +249,9 @@ export default function PrivacyPage() {
           many guides matched, the top guide and whether the match was
           close, and an event when you open a result with that guide and
           its place in the list. Neither event carries the words you
-          typed.
+          typed. A search made from the search page itself puts your words
+          in that page&apos;s address, and the analytics tools record the
+          address of every page viewed, so those words can reach them.
         </p>
         <p>
           Google Analytics and advertising services may use cookies or

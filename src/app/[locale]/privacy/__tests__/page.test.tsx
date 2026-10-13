@@ -175,13 +175,13 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("says Learn search sends counts and the top guide but never the words typed", () => {
+  it("says Learn search events carry counts and the top guide, and that the search page's address can carry the words", () => {
     render(<PrivacyPage />);
 
     expect(
       screen.getByText(/The Learn search ranks guides in your browser/).textContent?.replace(/\s+/g, " ").trim(),
     ).toBe(
-      "The Learn search ranks guides in your browser, or on the server when you search from the search page. Google Analytics receives an event for a search with how many characters you typed, how many guides matched, the top guide and whether the match was close, and an event when you open a result with that guide and its place in the list. Neither event carries the words you typed.",
+      "The Learn search ranks guides in your browser, or on the server when you search from the search page. Google Analytics receives an event for a search with how many characters you typed, how many guides matched, the top guide and whether the match was close, and an event when you open a result with that guide and its place in the list. Neither event carries the words you typed. A search made from the search page itself puts your words in that page's address, and the analytics tools record the address of every page viewed, so those words can reach them.",
     );
   });
 

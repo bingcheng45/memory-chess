@@ -182,6 +182,33 @@ describe("the join form's name and country descriptions", () => {
     expect(screen.getByRole("button", { name: "Join the board" })).toBeDisabled();
   });
 
+  it("counts a name of three emoji as three characters and says it is too short once the player leaves the field", async () => {
+    serve("SG");
+    languages(["en-US"]);
+    render(<DailyJoinForm round={ROUND} onJoined={jest.fn()} />);
+    await screen.findByText("From your connection.");
+
+    fireEvent.change(name(), { target: { value: "\u{1F600}\u{1F600}\u{1F600}" } });
+    fireEvent.blur(name());
+
+    expect(name()).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByText("Too short. Use at least 4 characters.")).toBeVisible();
+    expect(screen.getByRole("button", { name: "Join the board" })).toBeDisabled();
+  });
+
+  it("counts a name of nine emoji as nine characters and lets the player join with it", async () => {
+    serve("SG");
+    languages(["en-US"]);
+    render(<DailyJoinForm round={ROUND} onJoined={jest.fn()} />);
+    await screen.findByText("From your connection.");
+
+    fireEvent.change(name(), { target: { value: "\u{1F600}".repeat(9) } });
+    fireEvent.blur(name());
+
+    expect(name()).toHaveAttribute("aria-invalid", "false");
+    expect(screen.getByRole("button", { name: "Join the board" })).toBeEnabled();
+  });
+
   it("describes the country picker with where its country came from", async () => {
     serve("SG");
     languages(["en-US"]);

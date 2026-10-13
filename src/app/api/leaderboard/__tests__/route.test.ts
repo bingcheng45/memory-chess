@@ -208,6 +208,21 @@ describe("POST /api/leaderboard", () => {
     expect(submitLeaderboardEntry).not.toHaveBeenCalled();
   });
 
+  it("counts a name of three emoji as three characters, as Postgres does, and refuses it", async () => {
+    const response = await post({ ...validEntry, player_name: "\u{1F600}\u{1F600}\u{1F600}" });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Player name must be between 4 and 16 characters" });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it("counts a name of nine emoji as nine characters and stores it", async () => {
+    const response = await post({ ...validEntry, player_name: "\u{1F600}".repeat(9) });
+
+    expect(response.status).toBe(200);
+    expect(jest.mocked(submitLeaderboardEntry).mock.calls[0][0]).toMatchObject({ player_name: "\u{1F600}".repeat(9) });
+  });
+
   it("stores the name without its surrounding spaces", async () => {
     await post({ ...validEntry, player_name: "  Poteto  " });
 

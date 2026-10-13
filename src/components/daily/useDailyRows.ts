@@ -14,7 +14,10 @@ export function useDailyRows(day: string | null, version: number): DailyRows {
   useEffect(() => {
     if (day === null) return;
     let live = true;
-    fetch(`/api/leaderboard?difficulty=daily&daily_day=${day}`, { cache: "no-store" })
+    const read = (query: string) => fetch(`/api/leaderboard?difficulty=daily${query}`, { cache: "no-store" });
+    // A device whose clock is off names a day the server will not read, so it shows the server's today instead.
+    read(`&daily_day=${day}`)
+      .then((response) => (response.status === 400 ? read("") : response))
       .then((response) => response.json())
       .then((body: { data?: LeaderboardEntry[]; error?: string }) => {
         if (live) setRows(body.error || !Array.isArray(body.data) ? { state: "failed" } : { state: "ready", rows: body.data });

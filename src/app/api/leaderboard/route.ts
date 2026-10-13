@@ -3,7 +3,7 @@ import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboa
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 import { isSkillRating, MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
-import { readBoard } from '@/lib/leaderboard/board';
+import { joinableDays, readableDays, readBoard } from '@/lib/leaderboard/board';
 import { utcDayOf } from '@/lib/lab/daily';
 import { dailySettingOf } from '@/lib/daily/schedule';
 import { DAILY_BOARD, type LeaderboardBoard } from '@/types/leaderboard';
@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const difficulty = searchParams.get('difficulty') || 'medium';
   const now = Date.now();
-  const board = readBoard(difficulty, difficulty === DAILY_BOARD ? (searchParams.get('daily_day') ?? utcDayOf(now)) : null, now);
+  const board = readBoard(difficulty, difficulty === DAILY_BOARD ? (searchParams.get('daily_day') ?? utcDayOf(now)) : null, readableDays(now));
 
   if (board === null) {
     return NextResponse.json(
@@ -104,7 +104,7 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    const board = readBoard(difficulty, daily_day, Date.now());
+    const board = readBoard(difficulty, daily_day, joinableDays(Date.now()));
     if (board === null) {
       return NextResponse.json({ error: 'Invalid difficulty or daily day' }, { status: 400 });
     }

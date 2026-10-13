@@ -89,17 +89,24 @@ describe("a daily round finished after midnight UTC", () => {
     expect(within(lateSection()).getByRole("button", { name: "Join the board" })).toBeInTheDocument();
   });
 
-  it("offers no form for the 13th once this device has joined that day's board", async () => {
+  it("never puts the 13th's join card on the page, not even for one frame, once this device has joined that day's board", async () => {
     jest.useFakeTimers({ now: Date.parse("2026-10-14T00:02:00Z"), doNotFake: ["queueMicrotask", "nextTick"] });
     window.localStorage.setItem(
       DAILY_ENTRY_KEY,
       JSON.stringify([{ id: ENTRY_ID, difficulty: "daily", dailyDay: "2026-10-13", country: "SG", score: { correctPieces: 4, totalWrongPieces: 2, memorizeTime: 10, solutionTime: 12.34 }, submittedAt: 1 }]),
     );
+    const container = document.body.appendChild(document.createElement("div"));
+    const added: string[] = [];
+    const observer = new MutationObserver((records) => {
+      for (const record of records) record.addedNodes.forEach((node) => node instanceof HTMLElement && added.push(node.outerHTML));
+    });
+    observer.observe(container, { childList: true, subtree: true });
 
-    render(<DailyBoard />);
+    render(<DailyBoard />, { container });
     await act(async () => {});
+    observer.disconnect();
 
-    expect(screen.queryByRole("region", { name: OCTOBER_13 })).toBeNull();
-    expect(screen.queryByRole("button", { name: "Join the board" })).toBeNull();
+    expect(added.join("").includes("Daily board · Tuesday, October 13")).toBe(false);
+    expect(added.join("").includes("Daily board · Wednesday, October 14")).toBe(true);
   });
 });

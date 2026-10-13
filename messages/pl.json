@@ -1008,6 +1008,7 @@
       "memorizationTime": "Czas zapamiętywania",
       "solutionTime": "Czas rozwiązania",
       "recallSpeed": "Szybkość przypominania",
+      "placement": "Ustalanie oceny: runda {round} z {total}",
       "piecesPerSecond": "{value} bierek/s",
       "actions": "Działania dla wyniku",
       "tryAgain": "Spróbuj ponownie",

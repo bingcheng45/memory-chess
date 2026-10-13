@@ -1008,6 +1008,7 @@
       "memorizationTime": "Einprägezeit",
       "solutionTime": "Lösungszeit",
       "recallSpeed": "Abruftempo",
+      "placement": "Einstufung der Wertungszahl: Runde {round} von {total}",
       "piecesPerSecond": "{value} Figuren/s",
       "actions": "Aktionen zum Ergebnis",
       "tryAgain": "Nochmal",

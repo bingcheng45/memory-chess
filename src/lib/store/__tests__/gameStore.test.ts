@@ -3,7 +3,7 @@ import { validateMemorizationPosition } from "@/lib/utils/memorizationPosition";
 import { labPositionToFen, type LabPiece, type LabPosition } from "@/lib/round/round";
 import type { SquareName } from "@/lib/game/board";
 import type { PieceColor, PieceType } from "@/types/chess";
-import type { GameState } from "@/lib/types/game";
+import type { GameHistory, GameState } from "@/lib/types/game";
 
 const store = () => useGameStore.getState();
 const boardPlacement = (fen: string) => fen.split(" ")[0];
@@ -148,10 +148,10 @@ describe("scoring and the skill rating", () => {
     jest.restoreAllMocks();
   });
 
-  it("scores a perfect rebuild, raises the rating and the streak, and leaves the round on its score", () => {
+  it("scores a perfect rebuild as the first placement round, raises the rating and the streak, and leaves the round on its score", () => {
     jest.spyOn(performance, "now").mockReturnValue(0);
-    useGameStore.setState(({ gameState }) => ({ gameState: { ...gameState, skillRating: 1000, streak: 0 } }));
-    store().startGame(2, 10, "game_form");
+    useGameStore.setState(({ gameState }) => ({ history: [], gameState: { ...gameState, skillRating: 1000, streak: 0 } }));
+    store().startGame(6, 10, "game_form");
     store().dispatch({ type: "studyEnded", now: 10000 });
     for (const [square, piece] of Object.entries(target()) as [SquareName, LabPiece][]) place(square, piece.type, piece.color, 11000);
     store().submitSolution(14000);
@@ -162,12 +162,13 @@ describe("scoring and the skill rating", () => {
       accuracy: 100,
       perfectScore: true,
       success: true,
-      correctPlacements: 2,
+      correctPlacements: 6,
       extraPieces: 0,
-      totalPiecesPlaced: 2,
-      skillRatingChange: 114,
-      skillRating: 1114,
+      totalPiecesPlaced: 6,
+      skillRatingChange: 46,
+      skillRating: 1046,
       streak: 1,
+      rating: { phase: "placement", breakdown: { round: 1, of: 10 } },
     });
   });
 
@@ -322,8 +323,9 @@ describe("saving finished rounds to the history", () => {
         totalPlacements: 6,
         perfectScore: false,
         level: 1,
-        skillRatingChange: 12,
+        skillRatingChange: -28,
         streak: 0,
+        facts: { pieceCount: 6, studySeconds: 10, rebuildSeconds: 15, accuracy: 50 },
       },
       {
         id: expect.any(String),
@@ -338,8 +340,9 @@ describe("saving finished rounds to the history", () => {
         totalPlacements: 2,
         perfectScore: true,
         level: 1,
-        skillRatingChange: 114,
+        skillRatingChange: -45,
         streak: 1,
+        facts: { pieceCount: 2, studySeconds: 10, rebuildSeconds: 4, accuracy: 100 },
       },
     ]);
   });
@@ -348,12 +351,12 @@ describe("saving finished rounds to the history", () => {
     playRound({ pieceCount: 2, solveMs: 4000 });
 
     const stored: { accuracy: number; skillRatingChange: number }[] = storedState().history;
-    expect(stored.map(({ accuracy, skillRatingChange }) => [accuracy, skillRatingChange])).toEqual([[100, 114]]);
+    expect(stored.map(({ accuracy, skillRatingChange }) => [accuracy, skillRatingChange])).toEqual([[100, -45]]);
   });
 
-  it("keeps the 20 newest rounds", () => {
+  it("keeps the 30 newest rounds", () => {
     useGameStore.setState({
-      history: Array.from({ length: 20 }, (_, i) => ({
+      history: Array.from({ length: 30 }, (_, i) => ({
         id: `old-${i}`,
         timestamp: i,
         pieceCount: 6,
@@ -369,13 +372,64 @@ describe("saving finished rounds to the history", () => {
     playRound({ pieceCount: 2, solveMs: 4000 });
 
     const { history } = store();
-    expect([history.length, history[0].accuracy, history[1].id, history[19].id]).toEqual([20, 100, "old-0", "old-18"]);
+    expect([history.length, history[0].accuracy, history[1].id, history[29].id]).toEqual([30, 100, "old-0", "old-28"]);
+  });
+});
+
+describe("placement and rated rounds", () => {
+  const heldRound = (i: number, facts?: GameHistory["facts"]): GameHistory => ({
+    id: `held-${i}`,
+    timestamp: i,
+    pieceCount: 6,
+    memorizeTime: 10,
+    accuracy: 83,
+    correctPlacements: 5,
+    totalPlacements: 6,
+    level: 1,
+    duration: 15,
+    skillRatingChange: 30,
+    ...(facts ? { facts } : {}),
+  });
+
+  beforeEach(() => {
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    freshPlayer();
+  });
+
+  afterEach(() => {
+    store().resetGame();
+    jest.restoreAllMocks();
+    freshPlayer();
+  });
+
+  it("rates the round after ten placement rounds against its board", () => {
+    const facts = { pieceCount: 6, studySeconds: 10, rebuildSeconds: 15, accuracy: 83 };
+    useGameStore.setState(({ gameState }) => ({
+      history: Array.from({ length: 10 }, (_, i) => heldRound(i, facts)),
+      gameState: { ...gameState, skillRating: 1200 },
+    }));
+
+    const won = playRound({ pieceCount: 6, solveMs: 4000 });
+
+    expect([won.rating?.phase, won.skillRatingChange, won.skillRating]).toEqual(["rated", 8, 1208]);
+  });
+
+  it("starts placement over rows saved without rated facts", () => {
+    useGameStore.setState({ history: Array.from({ length: 10 }, (_, i) => heldRound(i)) });
+
+    const first = playRound({ pieceCount: 6, solveMs: 4000 });
+
+    expect([first.rating?.phase, first.rating?.phase === "placement" && first.rating.breakdown.round, first.skillRating]).toEqual([
+      "placement",
+      1,
+      1046,
+    ]);
   });
 });
 
 describe("keeping the win streak across visits", () => {
-  const rehydrateFrom = async (gameState: object) => {
-    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { gameState }, version: 0 }));
+  const rehydrateFrom = async (gameState: object, version = 1, history: object[] = []) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { gameState, history }, version }));
     await useGameStore.persist.rehydrate();
     return store().gameState;
   };
@@ -396,7 +450,14 @@ describe("keeping the win streak across visits", () => {
   it("stores the win streak with the rating", () => {
     playRound({ pieceCount: 2, solveMs: 4000 });
 
-    expect(storedState().gameState).toEqual({ pieceCount: 2, memorizeTime: 10, level: 1, skillRating: 1114, streak: 1 });
+    expect(storedState().gameState).toEqual({ pieceCount: 2, memorizeTime: 10, level: 1, skillRating: 955, streak: 1 });
+  });
+
+  it("starts a rating stored before the placement and Elo rating again at 1000, keeping the streak and the rows", async () => {
+    const row = { id: "old", timestamp: 1, pieceCount: 6, memorizeTime: 10, accuracy: 100, correctPlacements: 6, totalPlacements: 6, level: 1, duration: 9, skillRatingChange: 114 };
+    const restored = await rehydrateFrom({ pieceCount: 6, memorizeTime: 10, level: 1, skillRating: 5000, streak: 4 }, 0, [row]);
+
+    expect([restored.skillRating, restored.streak, store().history]).toEqual([1000, 4, [row]]);
   });
 
   it("restores the stored win streak and counts on from it", async () => {
@@ -438,7 +499,7 @@ describe("keeping the win streak across visits", () => {
   });
 });
 
-describe("how solve speed moves the skill rating", () => {
+describe("how a placement round moves the skill rating", () => {
   beforeEach(() => {
     jest.spyOn(performance, "now").mockReturnValue(0);
     freshPlayer();
@@ -455,24 +516,26 @@ describe("how solve speed moves the skill rating", () => {
     const firstRating = first.skillRating;
     const second = playRound({ pieceCount: 6, correct: 0, solveMs: 1 });
 
-    expect([first.accuracy, first.skillRatingChange, firstRating, second.skillRatingChange, second.skillRating]).toEqual([0, -10, 990, -10, 980]);
+    expect([first.accuracy, first.skillRatingChange, firstRating, second.skillRatingChange, second.skillRating]).toEqual([0, -40, 960, -40, 920]);
   });
 
-  it("gives an instant perfect round no more speed bonus than solving in a third of the study time", () => {
-    const instant = playRound({ pieceCount: 2, solveMs: 100 });
+  it("gives an instant perfect round no more rebuild credit than one at 1.25 s a piece", () => {
+    const instant = playRound({ pieceCount: 2, solveMs: 100 }).skillRatingChange;
+    freshPlayer();
+    const quick = playRound({ pieceCount: 2, solveMs: 2500 }).skillRatingChange;
 
-    expect([instant.skillRatingChange, instant.skillRating]).toEqual([122, 1122]);
+    expect([instant, quick]).toEqual([-41, -41]);
   });
 
-  it("adds speed in proportion to what was recalled", () => {
+  it("lowers the rating for a half-recalled board", () => {
     const half = playRound({ pieceCount: 6, correct: 3, solveMs: 5000 });
 
-    expect([half.accuracy, half.skillRatingChange]).toEqual([50, 27]);
+    expect([half.accuracy, half.skillRatingChange]).toEqual([50, -26]);
   });
 
   it("stops the rating at the 5000 ceiling and reports the change it made", () => {
     useGameStore.setState(({ gameState }) => ({ gameState: { ...gameState, skillRating: 4990 } }));
-    const top = playRound({ pieceCount: 2, solveMs: 4000 });
+    const top = playRound({ pieceCount: 20, solveMs: 4000 });
 
     expect([top.skillRating, top.skillRatingChange]).toEqual([5000, 10]);
   });
@@ -481,15 +544,17 @@ describe("how solve speed moves the skill rating", () => {
     useGameStore.setState(({ gameState }) => ({ gameState: { ...gameState, skillRating: 0 } }));
     store().resetGame();
     const held = store().getSkillRating();
-    const won = playRound({ pieceCount: 2, solveMs: 4000 });
+    const won = playRound({ pieceCount: 6, solveMs: 4000 });
 
-    expect([held, won.standingBefore?.skillRating, won.skillRating]).toEqual([0, 0, 114]);
+    expect([held, won.standingBefore?.skillRating, won.skillRating]).toEqual([0, 0, 46]);
   });
 
-  it("leaves a slow perfect round as it was", () => {
-    const slow = playRound({ pieceCount: 6, solveMs: 60000 });
+  it("gives a slow perfect round less than a quick one", () => {
+    const slow = playRound({ pieceCount: 6, solveMs: 60000 }).skillRatingChange;
+    freshPlayer();
+    const quick = playRound({ pieceCount: 6, solveMs: 4000 }).skillRatingChange;
 
-    expect(slow.skillRatingChange).toBe(80);
+    expect([slow, quick]).toEqual([34, 46]);
   });
 });
 
@@ -512,9 +577,9 @@ describe("the standing a round started from", () => {
 
     expect([wonBefore, [won.skillRating, won.streak], lost.standingBefore, [lost.skillRating, lost.streak]]).toEqual([
       { skillRating: 1000, streak: 0 },
-      [1114, 1],
-      { skillRating: 1114, streak: 1 },
-      [1104, 0],
+      [955, 1],
+      { skillRating: 955, streak: 1 },
+      [915, 0],
     ]);
   });
 });

@@ -1008,6 +1008,7 @@
       "memorizationTime": "Indlæringstid",
       "solutionTime": "Løsningstid",
       "recallSpeed": "Genkaldelseshastighed",
+      "placement": "Placering af rating: runde {round} af {total}",
       "piecesPerSecond": "{value} brikker/s",
       "actions": "Handlinger for resultatet",
       "tryAgain": "Prøv igen",

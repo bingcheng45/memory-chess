@@ -7,6 +7,7 @@ import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cut
 import type { BoardCutoff, LeaderboardCutoffs } from "@/lib/leaderboard/ranking";
 import { scoredRound } from "@/test-utils/round";
 import type { SetBoard } from "@/lib/types/game";
+import type { RatingResult } from "@/lib/game/rating";
 
 const baseGameState = {
   isPlaying: false,
@@ -29,7 +30,7 @@ const baseGameState = {
 
 const mockRound = scoredRound("4k3/8/8/8/3q4/8/PP6/4K3", "4k3/8/8/8/8/8/PP6/4K3");
 
-let mockGameState: typeof baseGameState & { board?: SetBoard } = baseGameState;
+let mockGameState: typeof baseGameState & { board?: SetBoard; rating?: RatingResult } = baseGameState;
 
 jest.mock("@/lib/store/gameStore", () => ({
   useGameStore: () => ({ gameState: mockGameState, round: mockRound }),
@@ -139,6 +140,30 @@ describe("GameResult", () => {
     fireEvent.click(screen.getByRole("button", { name: "New game" }));
     expect(onTryAgain).toHaveBeenCalledTimes(1);
     expect(onNewGame).toHaveBeenCalledTimes(1);
+  });
+
+  it("names the placement round while the rating is placed, and nothing once it is rated", () => {
+    const placement: RatingResult = {
+      phase: "placement",
+      rating: 1080,
+      change: 40,
+      breakdown: { round: 3, of: 10, boardLevel: 1000, gate: 1, performance: 1400 },
+    };
+    const rated: RatingResult = {
+      phase: "rated",
+      rating: 1208,
+      change: 8,
+      breakdown: { boardLevel: 1000, expected: 0.76, outcome: 1, base: 7.7, risk: { direction: "normal", sigmas: 0, multiplier: 1 }, speed: 1 },
+    };
+
+    mockGameState = { ...baseGameState, rating: placement };
+    const { unmount } = render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    const placed = screen.queryByText("Rating placement: round 3 of 10");
+    unmount();
+    mockGameState = { ...baseGameState, rating: rated };
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+    expect([placed?.textContent, screen.queryByText(/Rating placement/)]).toEqual(["Rating placement: round 3 of 10", null]);
   });
 
   it("preserves leaderboard submission access for standard difficulties", () => {

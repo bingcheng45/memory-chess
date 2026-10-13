@@ -13,7 +13,16 @@ import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
 import { trackEvent, type RoundSource } from '@/lib/analytics/events';
 import type { LabRound } from '@/lib/lab/recordRound';
 import { now as monotonicNow } from '@/lib/game/clock';
-import { isSkillRating, MAX_SKILL_RATING, START_RATING } from "@/lib/game/rating";
+import {
+  isSkillRating,
+  MAX_SKILL_RATING,
+  NORM_ROUNDS,
+  parseRatedRoundFacts,
+  ratingAfter,
+  START_RATING,
+  WIN_ACCURACY,
+  type RatedRoundFacts,
+} from "@/lib/game/rating";
 import { isSoundEnabled } from '@/lib/utils/soundEffects';
 import {
   IDLE_ROUND,
@@ -36,11 +45,16 @@ type GameStateWithRating = GameState & {
 /** The suffix chess.js gave the solution board's FEN, kept so the lab record's placed FEN reads as it always has. */
 const SOLUTION_FEN_SUFFIX = ' w - - 0 1';
 
-/** The newest rounds kept in the persisted history. A review round is left out, as it is from the rating and the streak. */
-const HISTORY_LIMIT = 20;
+/** The newest rounds kept in the persisted history: the rated rounds the rating reads. A review round is left out, as it is from the rating and the streak. */
+const HISTORY_LIMIT = NORM_ROUNDS;
 
-/** The accuracy a rated round needs to extend the win streak; below it the streak starts again. */
-export const WIN_ACCURACY = 70;
+/**
+ * The persisted shape's version. Version 1 replaced a rating that only went up with the placement and Elo rating, so
+ * a rating stored before it starts again from START_RATING and a new placement.
+ */
+const STORE_VERSION = 1;
+
+export { WIN_ACCURACY };
 
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
 
@@ -60,7 +74,6 @@ interface GameStore {
   getSkillRating: () => number;
   getCurrentStreak: () => number;
   getRecommendedDifficulty: () => DifficultyLevel;
-  calculateSkillRatingChange: (accuracy: number, pieceCount: number, completionTime: number) => number;
 }
 
 // Initial game state
@@ -85,59 +98,12 @@ const calculateTimeBonus = (completionTime: number, memorizeTime: number, actual
   return 0;
 };
 
-/**
- * Solving in a third of the study time earns the most a speed bonus can give,
- * 30 points, the same as the 90% accuracy band. Faster than that is placing
- * pieces, not recalling them faster.
- */
-const MAX_TIME_RATIO = 3;
-
-// Calculate skill rating change based on performance
-const calculateSkillRatingChange = (
-  accuracy: number, 
-  pieceCount: number, 
-  completionTime: number, 
-  memorizeTime: number,
-  currentRating: number,
-  actualMemorizeTime?: number
-): number => {
-  // Base points for accuracy
-  let points = 0;
-  
-  // Points for accuracy (0-100 scale)
-  if (accuracy >= 100) {
-    points += 50; // Perfect score bonus
-  } else if (accuracy >= 90) {
-    points += 30;
-  } else if (accuracy >= 80) {
-    points += 20;
-  } else if (accuracy >= 70) {
-    points += 10;
-  } else if (accuracy >= 50) {
-    points += 5;
-  } else if (accuracy < 30) {
-    points -= 10; // Penalty for very low accuracy
-  }
-  
-  // Points for piece count (more pieces = more points)
-  points += Math.floor(pieceCount / 2);
-  
-  // Use actual memorize time if available, otherwise fall back to configured time
-  const timeToCompare = actualMemorizeTime || memorizeTime;
-  
-  // Time efficiency bonus, earned only for the share of the board recalled.
-  // A solve that takes no time at all divides by zero, so the ratio is capped.
-  const timeRatio = Math.min(timeToCompare / completionTime, MAX_TIME_RATIO);
-  if (timeRatio >= 1) {
-    // Completed faster than memorize time
-    points += Math.floor(timeRatio * 10 * (accuracy / 100));
-  }
-  
-  // Scale based on current rating (higher rated players gain/lose more slowly)
-  const scaleFactor = Math.max(0.5, Math.min(1.5, 2000 / currentRating));
-  
-  return Math.round(points * scaleFactor);
-};
+/** The held rated rounds that carry the facts the rating reads, newest first. Rows saved before them are left out. */
+const ratedFactsOf = (history: readonly GameHistory[]): RatedRoundFacts[] =>
+  history.flatMap(({ facts }) => {
+    const parsed = parseRatedRoundFacts(facts);
+    return parsed ? [parsed] : [];
+  });
 
 // Initialize the store
 export const useGameStore = create<GameStore>()(
@@ -220,16 +186,14 @@ export const useGameStore = create<GameStore>()(
         // A review replays a board the player has already seen, so it is not a fair test of skill.
         const rated = gameState.board?.kind !== 'review';
 
-        // Calculate skill rating change
         const currentRating = gameState.skillRating ?? START_RATING;
-        const ratingChange = rated ? calculateSkillRatingChange(
-          score.accuracy,
-          gameState.pieceCount,
-          completionTime,
-          gameState.memorizeTime,
-          currentRating,
-          actualMemorizeTime
-        ) : 0;
+        const facts: RatedRoundFacts = {
+          pieceCount: gameState.pieceCount,
+          studySeconds: actualMemorizeTime,
+          rebuildSeconds: completionTime,
+          accuracy: score.accuracy,
+        };
+        const rating = rated ? ratingAfter(currentRating, ratedFactsOf(get().history), facts) : undefined;
 
         // Update streak
         let streak = gameState.streak || 0;
@@ -237,8 +201,8 @@ export const useGameStore = create<GameStore>()(
           streak = success ? streak + 1 : 0;
         }
 
-        const newSkillRating = Math.min(MAX_SKILL_RATING, Math.max(0, currentRating + ratingChange));
-        const skillRatingChange = newSkillRating - currentRating;
+        const newSkillRating = rating?.rating ?? currentRating;
+        const skillRatingChange = rating?.change ?? 0;
 
         const labRoundId = uuidv4();
         const endedAt = Date.now();
@@ -276,6 +240,7 @@ export const useGameStore = create<GameStore>()(
           skillRating: newSkillRating,
           streak,
           skillRatingChange,
+          rating,
           extraPieces: score.extra,
           totalPiecesPlaced: Object.keys(placed).length,
           correctPlacements: score.correct
@@ -296,6 +261,7 @@ export const useGameStore = create<GameStore>()(
           level: gameState.level || gameState.currentLevel || 1,
           skillRatingChange,
           streak,
+          facts,
         };
         set(({ history }) => ({
           round,
@@ -343,21 +309,17 @@ export const useGameStore = create<GameStore>()(
         
         return recommendedLevel;
       },
-      
-      calculateSkillRatingChange: (accuracy, pieceCount, completionTime) => {
-        const { gameState } = get();
-        return calculateSkillRatingChange(
-          accuracy, 
-          pieceCount, 
-          completionTime, 
-          gameState.memorizeTime,
-          gameState.skillRating ?? START_RATING,
-          gameState.actualMemorizeTime
-        );
-      }
     }),
     {
       name: GAME_STORAGE_KEY,
+      version: STORE_VERSION,
+      // A rating stored before version 1 was earned under a formula that only went up, so it starts again. The win
+      // streak and the history rows stay; rows without rated facts are shown but do not count toward placement.
+      migrate: (persisted, version) => {
+        if (version >= STORE_VERSION || !isRecord(persisted)) return persisted;
+        const gameState = isRecord(persisted.gameState) ? persisted.gameState : {};
+        return { ...persisted, gameState: { ...gameState, skillRating: START_RATING } };
+      },
       partialize: (state) => ({
         gameState: {
           pieceCount: state.gameState.pieceCount,

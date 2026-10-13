@@ -1008,6 +1008,7 @@
       "memorizationTime": "記憶時間",
       "solutionTime": "解答時間",
       "recallSpeed": "想起スピード",
+      "placement": "レーティング判定: {total} ラウンド中 {round} ラウンド目",
       "piecesPerSecond": "{value} 駒/秒",
       "actions": "結果に対する操作",
       "tryAgain": "もう一度",

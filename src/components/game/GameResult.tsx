@@ -304,6 +304,11 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <span aria-hidden="true"> · </span>
           <span>{t("recallSpeed")}</span> <span className="lab-mono">{recallSpeed}</span>
         </p>
+        {gameState.rating?.phase === "placement" && (
+          <p className="lab-result-sub" data-rating-phase="placement">
+            {t("placement", { round: gameState.rating.breakdown.round, total: gameState.rating.breakdown.of })}
+          </p>
+        )}
 
         {showLeaderboardQualifier && (
           <p role="status" className="lab-result-qualifies">

@@ -1008,6 +1008,7 @@
       "memorizationTime": "Timp de memorare",
       "solutionTime": "Timp de rezolvare",
       "recallSpeed": "Viteză de reamintire",
+      "placement": "Plasarea ratingului: runda {round} din {total}",
       "piecesPerSecond": "{value} piese/s",
       "actions": "Acțiuni pentru rezultat",
       "tryAgain": "Încearcă din nou",

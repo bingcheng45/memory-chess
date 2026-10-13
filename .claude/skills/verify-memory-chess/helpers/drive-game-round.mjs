@@ -52,9 +52,14 @@ export default async function drive(page, { baseUrl }) {
   if (!(await page.eval(`document.body.innerText.includes("100")`))) throw new Error("result page does not show 100% accuracy");
   await page.screenshot("3-result.png");
 
-  const persisted = await page.eval(`JSON.parse(localStorage.getItem("memory-chess-storage"))?.state?.gameState ?? null`);
-  if (!persisted || typeof persisted.skillRating !== "number" || persisted.skillRating <= 1000 || persisted.pieceCount !== pieces.length) {
+  const stored = await page.eval(`JSON.parse(localStorage.getItem("memory-chess-storage"))?.state ?? null`);
+  const persisted = stored?.gameState;
+  const row = stored?.history?.[0];
+  if (!persisted || typeof persisted.skillRating !== "number" || persisted.pieceCount !== pieces.length) {
     throw new Error(`persisted state disagrees with the round played: ${JSON.stringify(persisted)}`);
+  }
+  if (row?.facts?.accuracy !== 100 || row.skillRatingChange !== persisted.skillRating - 1000) {
+    throw new Error(`the history row does not account for the rating: ${JSON.stringify(row)}`);
   }
   return {
     piecesMemorized: pieces.length,

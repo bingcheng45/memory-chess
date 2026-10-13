@@ -1008,6 +1008,7 @@
       "memorizationTime": "記憶時間",
       "solutionTime": "重建用時",
       "recallSpeed": "回想速度",
+      "placement": "定級中：第 {round} 輪，共 {total} 輪",
       "piecesPerSecond": "{value} 子/秒",
       "actions": "結果操作",
       "tryAgain": "再來一局",

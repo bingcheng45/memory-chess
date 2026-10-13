@@ -77,7 +77,7 @@ export function Dashboard() {
     <main className="lab-wrap lab-dashboard">
       <header className="lab-dash-head">
         <h1>{t("title")}</h1>
-        <DashboardDailyCard records={loaded ? data.records : null} />
+        <DashboardDailyCard records={loaded ? data.records : "loading"} />
         <p className="lab-lede">{t("lede")}</p>
         {data.storage === "unavailable" && <p className="lab-dash-warn">{t("unavailable")}</p>}
         {staleFor !== null && <p className="lab-dash-warn">{t("staleNote", { count: staleFor })}</p>}

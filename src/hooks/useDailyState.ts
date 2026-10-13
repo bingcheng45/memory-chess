@@ -17,10 +17,9 @@ export type DailyState =
 
 const msToNextMinuteTick = (at: number) => msToNextUtcDay(at) % MINUTE_MS || MINUTE_MS;
 
-/** Whole minutes left once a tick has passed, so a tick on a minute boundary already shows the lower value it holds until the next. */
 const timeLeftOf = (at: number): TimeLeft => {
-  const minutes = Math.ceil(msToNextUtcDay(at) / MINUTE_MS) - 1;
-  return { hours: Math.floor(minutes / 60), minutes: minutes % 60 };
+  const minutesAfterTheCurrentOne = Math.ceil(msToNextUtcDay(at) / MINUTE_MS) - 1;
+  return { hours: Math.floor(minutesAfterTheCurrentOne / 60), minutes: minutesAfterTheCurrentOne % 60 };
 };
 
 export function dailyStateAt(at: number, openedDay: string | null): DailyState {

@@ -13,7 +13,7 @@ jest.mock("@/i18n/navigation", () => ({
 
 const served = renderToString(
   <NextIntlClientProvider locale="en" messages={messages}>
-    <DashboardDailyCard records={null} />
+    <DashboardDailyCard records="loading" />
   </NextIntlClientProvider>,
 );
 

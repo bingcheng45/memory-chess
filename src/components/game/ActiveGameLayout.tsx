@@ -1,6 +1,6 @@
 'use client';
 
-import type { ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { useTranslations } from "next-intl";
 
 import { MAX_BOARD_SIZE, MIN_BOARD_SIZE, MIN_ROW_WIDTH } from '@/lib/layout';
@@ -47,15 +47,38 @@ export function activeColumnMinHeight(breakpoint: 'base' | 'sm') {
 }
 
 /**
- * The board's side: the largest square the column fits under both rows.
- *
- * Container units rather than a measured size, so the board has its size on
- * the first frame the browser paints. A measured size lives in React state,
- * and on a slow phone the update after the first commit reached the screen
- * frames late, painting the board at zero. Both breakpoints share one row
- * height, so one expression serves them.
+ * What surrounds the column on the page, read only where container units are
+ * unsupported: the page's side padding, and the banner (41px), header (65px)
+ * and page padding (16px) above and below it. A banner that wraps on a narrow
+ * phone is 15px taller, but there the screen's width sets the board's side.
  */
-const BOARD_SIZE = `min(100cqw, 100cqh - ${rowsHeight('base')}px, ${MAX_BOARD_SIZE}px)`;
+const PAGE_GUTTERS_PX = 32;
+const PAGE_CHROME_PX = 122;
+
+/**
+ * The figures the board's side is worked out from, handed to game-lab.css.
+ *
+ * The stylesheet turns them into `--board-size`, the largest square the column
+ * fits under both rows. It uses container units rather than a measured size,
+ * so the board has its size on the first frame the browser paints. A measured
+ * size lives in React state, and on a slow phone the update after the first
+ * commit reached the screen frames late, painting the board at zero. Both
+ * breakpoints share one row height, so one expression serves them.
+ *
+ * The expression lives in the stylesheet because a browser without container
+ * units needs a viewport-based size in its place, which an inline style
+ * cannot express.
+ */
+const BOARD_SIZE_INPUTS = {
+  containerType: 'size',
+  '--board-rows': `${rowsHeight('base')}px`,
+  '--board-min': `${MIN_BOARD_SIZE}px`,
+  '--board-max': `${MAX_BOARD_SIZE}px`,
+  '--page-gutters': `${PAGE_GUTTERS_PX}px`,
+  '--page-chrome': `${PAGE_CHROME_PX}px`,
+} as CSSProperties;
+
+const BOARD_SIZE = 'var(--board-size)';
 
 /**
  * The floor under the column, as classes.
@@ -109,8 +132,8 @@ export default function ActiveGameLayout({
 
   return (
     <div
-      className={`flex h-full w-full flex-col items-center justify-center gap-2 ${COLUMN_MIN_HEIGHT}`}
-      style={{ containerType: 'size' }}
+      className={`lab-active-column flex h-full w-full flex-col items-center justify-center gap-2 ${COLUMN_MIN_HEIGHT}`}
+      style={BOARD_SIZE_INPUTS}
     >
       {/*
         The two rows are a fixed height rather than being sized by their

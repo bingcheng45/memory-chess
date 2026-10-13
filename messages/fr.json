@@ -806,7 +806,7 @@
       "socialDescription": "Aujourd’hui, tout le monde reçoit la même position. Mémorisez-la, reconstituez-la et voyez votre classement."
     },
     "round": {
-      "locked": "Vous avez déjà joué le plateau du jour. Un seul essai par jour garantit l’équité.",
+      "locked": "Vous avez déjà ouvert le plateau du jour. Un seul essai par jour garantit l’équité.",
       "resetsIn": "Prochain plateau dans {hours} h {minutes} min",
       "resetsInMinutes": "Prochain plateau dans {minutes} min",
       "seeBoard": "Voir le plateau du jour",
@@ -862,8 +862,7 @@
       "submit": "Rejoindre le plateau",
       "submitting": "Inscription…",
       "public": "Votre nom, votre pays, votre score et votre cote sont affichés publiquement.",
-      "failed": "Impossible de rejoindre : {message}",
-      "failedGeneric": "Impossible de rejoindre le plateau. Veuillez réessayer."
+      "failed": "Impossible de rejoindre le plateau. Veuillez réessayer."
     },
     "board": {
       "title": "Le top 10 du jour",

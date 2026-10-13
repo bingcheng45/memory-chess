@@ -806,7 +806,7 @@
       "socialDescription": "Dziś wszyscy dostają tę samą pozycję. Przestudiuj ją, odtwórz i sprawdź, które miejsce zajmiesz."
     },
     "round": {
-      "locked": "Dzisiejsza szachownica została już zagrana. Jedna próba dziennie gwarantuje uczciwą grę.",
+      "locked": "Dzisiejsza szachownica została już otwarta. Jedna próba dziennie gwarantuje uczciwą grę.",
       "resetsIn": "Następna szachownica za {hours} godz. {minutes} min",
       "resetsInMinutes": "Następna szachownica za {minutes} min",
       "seeBoard": "Zobacz dzisiejszą szachownicę",
@@ -862,8 +862,7 @@
       "submit": "Dołącz do rankingu",
       "submitting": "Dołączanie…",
       "public": "Twoja nazwa, kraj, wynik i ranking są widoczne publicznie.",
-      "failed": "Nie udało się dołączyć: {message}",
-      "failedGeneric": "Nie udało się dołączyć do rankingu. Spróbuj ponownie."
+      "failed": "Nie udało się dołączyć do rankingu. Spróbuj ponownie."
     },
     "board": {
       "title": "Dzisiejsza dziesiątka",

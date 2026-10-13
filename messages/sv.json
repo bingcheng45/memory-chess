@@ -806,7 +806,7 @@
       "socialDescription": "I dag får alla samma ställning. Memorera den, bygg upp den igen och se var du hamnar."
     },
     "round": {
-      "locked": "Du har spelat dagens bräde. Ett försök per dag håller det rättvist.",
+      "locked": "Du har redan öppnat dagens bräde. Ett försök per dag håller det rättvist.",
       "resetsIn": "Nästa bräde om {hours} tim {minutes} min",
       "resetsInMinutes": "Nästa bräde om {minutes} min",
       "seeBoard": "Se dagens bräde",
@@ -862,8 +862,7 @@
       "submit": "Delta i brädet",
       "submitting": "Ansluter ...",
       "public": "Ditt namn, land, resultat och din rating visas offentligt.",
-      "failed": "Det gick inte att delta: {message}",
-      "failedGeneric": "Det gick inte att delta i brädet. Försök igen."
+      "failed": "Det gick inte att delta i brädet. Försök igen."
     },
     "board": {
       "title": "Dagens topp 10",

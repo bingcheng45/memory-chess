@@ -806,7 +806,7 @@
       "socialDescription": "Kaikki saavat tänään saman asetelman. Opettele se, rakenna se uudelleen ja katso, mihin sijalle yllät."
     },
     "round": {
-      "locked": "Olet pelannut päivän laudan. Yksi yritys päivässä pitää pelin reiluna.",
+      "locked": "Olet jo avannut päivän laudan. Yksi yritys päivässä pitää pelin reiluna.",
       "resetsIn": "Seuraava lauta {hours} h {minutes} min päästä",
       "resetsInMinutes": "Seuraava lauta {minutes} min päästä",
       "seeBoard": "Katso päivän lauta",
@@ -862,8 +862,7 @@
       "submit": "Liity lautaan",
       "submitting": "Liitytään…",
       "public": "Nimesi, maasi, pistemääräsi ja luokituksesi näkyvät julkisesti.",
-      "failed": "Liittyminen epäonnistui: {message}",
-      "failedGeneric": "Lautaan liittyminen epäonnistui. Yritä uudelleen."
+      "failed": "Lautaan liittyminen epäonnistui. Yritä uudelleen."
     },
     "board": {
       "title": "Päivän kymmenen parasta",

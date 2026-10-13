@@ -806,7 +806,7 @@
       "socialDescription": "Oggi tutti ricevono la stessa posizione. Studiala, ricostruiscila e scopri la tua posizione in classifica."
     },
     "round": {
-      "locked": "Hai già giocato la scacchiera di oggi. Un tentativo al giorno mantiene il gioco equo.",
+      "locked": "Hai già aperto la scacchiera di oggi. Un tentativo al giorno mantiene il gioco equo.",
       "resetsIn": "Prossima scacchiera tra {hours} h {minutes} min",
       "resetsInMinutes": "Prossima scacchiera tra {minutes} min",
       "seeBoard": "Vedi la scacchiera di oggi",
@@ -862,8 +862,7 @@
       "submit": "Partecipa",
       "submitting": "Iscrizione…",
       "public": "Il tuo nome, paese, punteggio e rating sono mostrati pubblicamente.",
-      "failed": "Impossibile partecipare: {message}",
-      "failedGeneric": "Impossibile partecipare alla scacchiera. Riprova."
+      "failed": "Impossibile partecipare alla scacchiera. Riprova."
     },
     "board": {
       "title": "La top 10 di oggi",

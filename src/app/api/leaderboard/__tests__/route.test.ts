@@ -201,7 +201,7 @@ describe("POST /api/leaderboard", () => {
       ["2026-10-13", 6, 10],
       ["2026-10-12", 5, 12],
     ])("stores a daily row for %s, today or yesterday in UTC, at that day's %i pieces and %i seconds", async (day, pieces, seconds) => {
-      const response = await post({ ...validEntry, difficulty: "daily", daily_day: day, piece_count: pieces, memorize_time: seconds });
+      const response = await post({ ...validEntry, difficulty: "daily", daily_day: day, piece_count: pieces, memorize_time: seconds, country_code: "SG" });
 
       expect(response.status).toBe(200);
       expect(submitLeaderboardEntry).toHaveBeenCalledWith(
@@ -214,10 +214,21 @@ describe("POST /api/leaderboard", () => {
       ["today's seconds with another piece count", { piece_count: 5, memorize_time: 10 }],
       ["today's pieces with the seconds actually studied", { piece_count: 6, memorize_time: 8.25 }],
     ])("rejects a row for today, 6 pieces and 10 seconds, sent with %s", async (_case, setting) => {
-      const response = await post({ ...validEntry, difficulty: "daily", daily_day: "2026-10-13", ...setting });
+      const response = await post({ ...validEntry, difficulty: "daily", daily_day: "2026-10-13", country_code: "SG", ...setting });
 
       expect(response.status).toBe(400);
       expect(await response.json()).toEqual({ error: "The daily board for 2026-10-13 is 6 pieces and 10 seconds" });
+      expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+    });
+
+    it.each([
+      ["no country", {}],
+      ["the world", { country_code: "ZZ" }],
+    ])("rejects a daily row for today sent with %s, since the daily board ranks countries", async (_case, country) => {
+      const response = await post({ ...validEntry, difficulty: "daily", daily_day: "2026-10-13", piece_count: 6, memorize_time: 10, ...country });
+
+      expect(response.status).toBe(400);
+      expect(await response.json()).toEqual({ error: "A daily row needs a country" });
       expect(submitLeaderboardEntry).not.toHaveBeenCalled();
     });
 
@@ -278,19 +289,27 @@ describe("GET /api/leaderboard", () => {
     expect(getLeaderboard).toHaveBeenCalledWith({ difficulty });
   });
 
-  it.each([
-    ["2026-10-13T00:00:00Z", "2026-10-13"],
-    ["2026-10-13T23:59:59Z", "2026-10-13"],
-    ["2026-10-14T00:00:00Z", "2026-10-14"],
-  ])("reads the daily board of the UTC day at %s, %s", async (now, day) => {
-    jest.spyOn(Date, "now").mockReturnValue(Date.parse(now));
-    jest.mocked(getLeaderboard).mockResolvedValue({ data: [] });
+  describe("on 2026-10-13 at 00:30 UTC", () => {
+    beforeEach(() => jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-13T00:30:00Z")));
+    afterEach(() => jest.mocked(Date.now).mockRestore());
 
-    const response = await get("daily");
+    it.each([
+      ["no day, which reads as today", "", "2026-10-13"],
+      ["today", "&daily_day=2026-10-13", "2026-10-13"],
+      ["yesterday, still open to late rounds", "&daily_day=2026-10-12", "2026-10-12"],
+    ])("reads the daily board of %s", async (_case, query, day) => {
+      const response = await get(`daily${query}`);
 
-    expect(response.status).toBe(200);
-    expect(getLeaderboard).toHaveBeenCalledWith({ difficulty: "daily", daily_day: day });
-    jest.mocked(Date.now).mockRestore();
+      expect(response.status).toBe(200);
+      expect(getLeaderboard).toHaveBeenCalledWith({ difficulty: "daily", daily_day: day });
+    });
+
+    it.each(["2026-10-11", "2026-10-14", "2026-02-30"])("refuses the daily board of %s, outside the days a row can join", async (day) => {
+      const response = await get(`daily&daily_day=${day}`);
+
+      expect(response.status).toBe(400);
+      expect(getLeaderboard).not.toHaveBeenCalled();
+    });
   });
 
   it.each(["weekly", "custom"])("rejects the %s board, which it does not serve", async (difficulty) => {

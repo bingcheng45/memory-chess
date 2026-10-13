@@ -806,7 +806,7 @@
       "socialDescription": "Alle får samme stilling i dag. Studer den, bygg den opp igjen og se hvor du havner."
     },
     "round": {
-      "locked": "Du har spilt dagens brett. Ett forsøk om dagen holder det rettferdig.",
+      "locked": "Du har allerede åpnet dagens brett. Ett forsøk om dagen holder det rettferdig.",
       "resetsIn": "Neste brett om {hours} t {minutes} min",
       "resetsInMinutes": "Neste brett om {minutes} min",
       "seeBoard": "Se dagens brett",
@@ -862,8 +862,7 @@
       "submit": "Bli med på brettet",
       "submitting": "Blir med …",
       "public": "Navnet, landet, poengsummen og ratingen din vises offentlig.",
-      "failed": "Kunne ikke bli med: {message}",
-      "failedGeneric": "Kunne ikke bli med på brettet. Prøv igjen."
+      "failed": "Kunne ikke bli med på brettet. Prøv igjen."
     },
     "board": {
       "title": "Dagens topp 10",

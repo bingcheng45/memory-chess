@@ -806,7 +806,7 @@
       "socialDescription": "Hari ini semua orang mendapat posisi yang sama. Hafalkan, susun ulang, dan lihat peringkat Anda."
     },
     "round": {
-      "locked": "Anda sudah memainkan papan hari ini. Satu kali percobaan sehari agar tetap adil.",
+      "locked": "Anda sudah membuka papan hari ini. Satu kali percobaan sehari agar tetap adil.",
       "resetsIn": "Papan berikutnya {hours} jam {minutes} menit lagi",
       "resetsInMinutes": "Papan berikutnya {minutes} menit lagi",
       "seeBoard": "Lihat papan hari ini",
@@ -862,8 +862,7 @@
       "submit": "Ikut papan",
       "submitting": "Bergabung…",
       "public": "Nama, negara, skor, dan rating Anda ditampilkan secara publik.",
-      "failed": "Gagal bergabung: {message}",
-      "failedGeneric": "Gagal bergabung ke papan. Silakan coba lagi."
+      "failed": "Gagal bergabung ke papan. Silakan coba lagi."
     },
     "board": {
       "title": "10 besar hari ini",

@@ -806,7 +806,7 @@
       "socialDescription": "Heute bekommen alle dieselbe Stellung. Präge sie dir ein, baue sie nach und sieh, wo du stehst."
     },
     "round": {
-      "locked": "Du hast das heutige Brett schon gespielt. Ein Versuch pro Tag hält es fair.",
+      "locked": "Du hast das heutige Brett schon geöffnet. Ein Versuch pro Tag hält es fair.",
       "resetsIn": "Nächstes Brett in {hours} Std. {minutes} Min.",
       "resetsInMinutes": "Nächstes Brett in {minutes} Min.",
       "seeBoard": "Heutiges Brett ansehen",
@@ -862,8 +862,7 @@
       "submit": "Dem Brett beitreten",
       "submitting": "Wird eingetragen…",
       "public": "Dein Name, dein Land, dein Ergebnis und deine Wertung sind öffentlich sichtbar.",
-      "failed": "Beitritt fehlgeschlagen: {message}",
-      "failedGeneric": "Der Beitritt zum Brett hat nicht geklappt. Bitte versuche es noch einmal."
+      "failed": "Der Beitritt zum Brett hat nicht geklappt. Bitte versuche es noch einmal."
     },
     "board": {
       "title": "Die heutigen Top 10",

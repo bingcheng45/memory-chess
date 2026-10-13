@@ -43,6 +43,15 @@ function orderByRanking<T extends OrderableQuery<T>>(query: T): T {
 }
 
 /**
+ * A board's rows that the leaderboard shows. A daily board is one UTC day, and filtering on both columns is also what
+ * lets the query read the partial daily index.
+ */
+function rankedRows<Columns extends '*' | 'id'>(client: SupabaseClient, board: LeaderboardBoard, columns: Columns, options?: { count: 'exact'; head: true }) {
+  const rows = client.from('leaderboard_entries').select(columns, options).eq('difficulty', board.difficulty).gt('correct_pieces', 0);
+  return board.difficulty === DAILY_BOARD ? rows.eq('daily_day', board.daily_day) : rows;
+}
+
+/**
  * What became of a submission, in terms the route can map to a status code.
  * `cause` is for the operator reading logs, never for the player.
  */
@@ -70,11 +79,7 @@ export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: Le
       };
     }
     
-    const rows = supabase.from('leaderboard_entries').select('*').eq('difficulty', board.difficulty).gt('correct_pieces', 0);
-    // A daily board is one UTC day. Filtering on both columns is also what lets the query read the partial daily index.
-    const { data, error } = await orderByRanking(
-      board.difficulty === DAILY_BOARD ? rows.eq('daily_day', board.daily_day) : rows,
-    ).limit(LEADERBOARD_ROW_LIMIT);
+    const { data, error } = await orderByRanking(rankedRows(supabase, board, '*')).limit(LEADERBOARD_ROW_LIMIT);
       
     if (error) {
       console.error('Supabase query error:', error);
@@ -303,12 +308,7 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
   }
 
   const bucket = () => {
-    const onDifficulty = client
-      .from('leaderboard_entries')
-      .select('id', { count: 'exact', head: true })
-      .eq('difficulty', board.difficulty)
-      .gt('correct_pieces', 0);
-    const ranked = board.difficulty === DAILY_BOARD ? onDifficulty.eq('daily_day', board.daily_day) : onDifficulty;
+    const ranked = rankedRows(client, board, 'id', { count: 'exact', head: true });
     return country === null ? ranked : ranked.eq('country_code', country);
   };
   const score = {

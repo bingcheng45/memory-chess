@@ -806,7 +806,7 @@
       "socialDescription": "Dnes mají všichni stejnou pozici. Prostudujte ji, postavte ji znovu a zjistěte, kolikátí jste."
     },
     "round": {
-      "locked": "Dnešní pozici jste už hráli. Jeden pokus denně udrží hru férovou.",
+      "locked": "Dnešní pozici jste už otevřeli. Jeden pokus denně udrží hru férovou.",
       "resetsIn": "Další pozice za {hours} h {minutes} min",
       "resetsInMinutes": "Další pozice za {minutes} min",
       "seeBoard": "Zobrazit dnešní pozici",
@@ -862,8 +862,7 @@
       "submit": "Zapojit se",
       "submitting": "Připojování…",
       "public": "Vaše jméno, země, skóre a hodnocení jsou veřejně vidět.",
-      "failed": "Zapojení se nepodařilo: {message}",
-      "failedGeneric": "Zapojení se nepodařilo. Zkuste to prosím znovu."
+      "failed": "Zapojení se nepodařilo. Zkuste to prosím znovu."
     },
     "board": {
       "title": "Dnešní desítka nejlepších",

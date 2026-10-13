@@ -806,7 +806,7 @@
       "socialDescription": "Vandaag krijgt iedereen dezelfde stelling. Onthoud hem, bouw hem na en kijk waar je staat."
     },
     "round": {
-      "locked": "Je hebt het bord van vandaag al gespeeld. Eén poging per dag houdt het eerlijk.",
+      "locked": "Je hebt het bord van vandaag al geopend. Eén poging per dag houdt het eerlijk.",
       "resetsIn": "Volgend bord over {hours} u {minutes} min",
       "resetsInMinutes": "Volgend bord over {minutes} min",
       "seeBoard": "Bekijk het bord van vandaag",
@@ -862,8 +862,7 @@
       "submit": "Meedoen",
       "submitting": "Bezig met meedoen…",
       "public": "Je naam, land, score en rating zijn openbaar zichtbaar.",
-      "failed": "Meedoen is mislukt: {message}",
-      "failedGeneric": "Meedoen met het bord is mislukt. Probeer het opnieuw."
+      "failed": "Meedoen met het bord is mislukt. Probeer het opnieuw."
     },
     "board": {
       "title": "De top 10 van vandaag",

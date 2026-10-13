@@ -806,7 +806,7 @@
       "socialDescription": "I dag får alle den samme stilling. Husk den, byg den igen og se, hvor du ligger."
     },
     "round": {
-      "locked": "Du har spillet dagens bræt. Ét forsøg om dagen holder det fair.",
+      "locked": "Du har allerede åbnet dagens bræt. Ét forsøg om dagen holder det fair.",
       "resetsIn": "Næste bræt om {hours} t. {minutes} min.",
       "resetsInMinutes": "Næste bræt om {minutes} min.",
       "seeBoard": "Se dagens bræt",
@@ -862,8 +862,7 @@
       "submit": "Deltag i brættet",
       "submitting": "Tilmelder …",
       "public": "Dit navn, land, din score og rating vises offentligt.",
-      "failed": "Kunne ikke deltage: {message}",
-      "failedGeneric": "Du kunne ikke deltage i brættet. Prøv igen."
+      "failed": "Du kunne ikke deltage i brættet. Prøv igen."
     },
     "board": {
       "title": "Dagens top 10",

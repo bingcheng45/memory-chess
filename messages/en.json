@@ -1621,7 +1621,7 @@
       "socialDescription": "Everyone gets the same position today. Study it, rebuild it, and see where you rank."
     },
     "round": {
-      "locked": "You have played today's board. One try a day keeps it fair.",
+      "locked": "You have already opened today's board. One try a day keeps it fair.",
       "resetsIn": "Next board in {hours} h {minutes} min",
       "resetsInMinutes": "Next board in {minutes} min",
       "seeBoard": "See today's board",
@@ -1677,8 +1677,7 @@
       "submit": "Join the board",
       "submitting": "Joining…",
       "public": "Your name, country, score and rating are shown publicly.",
-      "failed": "Could not join: {message}",
-      "failedGeneric": "Could not join the board. Please try again."
+      "failed": "Could not join the board. Please try again."
     },
     "board": {
       "title": "Today's top 10",

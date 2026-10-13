@@ -15,5 +15,3 @@ export function readBoard(difficulty: unknown, dailyDay: unknown, now: number): 
   if (board?.difficulty !== DAILY_BOARD) return board;
   return board.daily_day === utcDayOf(now) || board.daily_day === utcDayOf(now - DAY_MS) ? board : null;
 }
-
-export const todaysDailyBoard = (now: number): LeaderboardBoard => ({ difficulty: DAILY_BOARD, daily_day: utcDayOf(now) });

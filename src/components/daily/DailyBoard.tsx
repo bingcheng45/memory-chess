@@ -26,7 +26,7 @@ export function DailyBoard() {
   const board = day === null || lab.storage === "loading" ? null : dailyBoardOf(lab.records, day, readDailyOpened());
   const [joined, setJoined] = useState<DailyEntry | null>(null);
   const [rowsVersion, setRowsVersion] = useState(0);
-  const rows = useDailyRows(rowsVersion);
+  const rows = useDailyRows(day, rowsVersion);
   const standing = useDailyStanding(joined);
 
   useEffect(() => {

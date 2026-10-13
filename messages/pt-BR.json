@@ -806,7 +806,7 @@
       "socialDescription": "Hoje todo mundo recebe a mesma posição. Estude, reconstrua e veja em que posição você fica."
     },
     "round": {
-      "locked": "Você já jogou o tabuleiro de hoje. Uma tentativa por dia mantém o jogo justo.",
+      "locked": "Você já abriu o tabuleiro de hoje. Uma tentativa por dia mantém o jogo justo.",
       "resetsIn": "Próximo tabuleiro em {hours} h {minutes} min",
       "resetsInMinutes": "Próximo tabuleiro em {minutes} min",
       "seeBoard": "Ver o tabuleiro de hoje",
@@ -862,8 +862,7 @@
       "submit": "Entrar no tabuleiro",
       "submitting": "Entrando…",
       "public": "Seu nome, país, pontuação e rating são exibidos publicamente.",
-      "failed": "Não foi possível entrar: {message}",
-      "failedGeneric": "Não foi possível entrar no tabuleiro. Tente novamente."
+      "failed": "Não foi possível entrar no tabuleiro. Tente novamente."
     },
     "board": {
       "title": "Top 10 de hoje",

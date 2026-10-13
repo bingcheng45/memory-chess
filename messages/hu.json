@@ -806,7 +806,7 @@
       "socialDescription": "Ma mindenki ugyanazt az állást kapja. Tanuld meg, építsd újra, és nézd meg, hányadik vagy."
     },
     "round": {
-      "locked": "A mai táblát már lejátszottad. Napi egy próbálkozás tartja tisztességesen a játékot.",
+      "locked": "A mai táblát már megnyitottad. Napi egy próbálkozás tartja tisztességesen a játékot.",
       "resetsIn": "A következő tábla {hours} óra {minutes} perc múlva érkezik",
       "resetsInMinutes": "A következő tábla {minutes} perc múlva érkezik",
       "seeBoard": "A mai tábla megtekintése",
@@ -862,8 +862,7 @@
       "submit": "Csatlakozás a táblához",
       "submitting": "Csatlakozás…",
       "public": "A neved, az országod, a pontszámod és az értékszámod nyilvánosan látható.",
-      "failed": "Nem sikerült csatlakozni: {message}",
-      "failedGeneric": "Nem sikerült csatlakozni a táblához. Próbáld újra."
+      "failed": "Nem sikerült csatlakozni a táblához. Próbáld újra."
     },
     "board": {
       "title": "A mai top 10",

@@ -806,7 +806,7 @@
       "socialDescription": "오늘은 모두에게 같은 포지션이 주어집니다. 외우고, 다시 배치하고, 내 순위를 확인하세요."
     },
     "round": {
-      "locked": "오늘의 보드를 이미 플레이했습니다. 공정하게 하루에 한 번만 도전할 수 있어요.",
+      "locked": "오늘의 보드를 이미 열었습니다. 공정하게 하루에 한 번만 도전할 수 있어요.",
       "resetsIn": "다음 보드까지 {hours}시간 {minutes}분",
       "resetsInMinutes": "다음 보드까지 {minutes}분",
       "seeBoard": "오늘의 보드 보기",
@@ -862,8 +862,7 @@
       "submit": "보드에 참가",
       "submitting": "참가 중…",
       "public": "이름, 국가, 점수, 레이팅은 공개됩니다.",
-      "failed": "참가하지 못했습니다: {message}",
-      "failedGeneric": "보드에 참가하지 못했습니다. 다시 시도해 주세요."
+      "failed": "보드에 참가하지 못했습니다. 다시 시도해 주세요."
     },
     "board": {
       "title": "오늘의 TOP 10",

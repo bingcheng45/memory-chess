@@ -87,7 +87,7 @@ describe("the daily join form's country", () => {
 });
 
 describe("joining the daily board", () => {
-  it("posts the day's six pieces and ten seconds, the rebuild time and the country, then hands back the day's entry", async () => {
+  it("posts the day's six pieces and ten seconds, the rebuild time and the country, then hands back the day's entry without saving a guessed country", async () => {
     const posts = serve("SG");
     languages(["en-US"]);
     const onJoined = jest.fn();
@@ -113,7 +113,27 @@ describe("joining the daily board", () => {
       },
     ]);
     expect(onJoined.mock.calls[0][0]).toMatchObject({ id: ENTRY_ID, difficulty: "daily", dailyDay: "2026-10-13", country: "SG" });
-    expect(useSettingsStore.getState().countryCode).toBe("SG");
+    expect(useSettingsStore.getState().countryCode).toBe(WORLD_CODE);
+  });
+
+  it("says in the player's language that the join failed, whatever English reason the server gives, and lets them try again", async () => {
+    serve("SG");
+    languages(["en-US"]);
+    global.fetch = jest.fn(async (input: RequestInfo | URL) =>
+      String(input).includes("/api/geo")
+        ? { ok: true, json: async () => ({ country: "SG" }) }
+        : { ok: false, status: 400, json: async () => ({ error: "The daily board for 2026-10-13 is 6 pieces and 10 seconds" }) },
+    ) as unknown as typeof fetch;
+    const onJoined = jest.fn();
+
+    render(<DailyJoinForm round={ROUND} onJoined={onJoined} />);
+    await screen.findByText("From your connection.");
+    fireEvent.change(screen.getByLabelText("Name"), { target: { value: "Poteto" } });
+    fireEvent.click(screen.getByRole("button", { name: "Join the board" }));
+
+    expect(await screen.findByRole("alert")).toHaveTextContent("Could not join the board. Please try again.");
+    expect(screen.getByRole("button", { name: "Join the board" })).toBeEnabled();
+    expect(onJoined).not.toHaveBeenCalled();
   });
 
   it("offers no form for a try with no piece right, which the board cannot rank", () => {

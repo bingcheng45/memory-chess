@@ -806,7 +806,7 @@
       "socialDescription": "Azi toți primesc aceeași poziție. Studiaz-o, reconstruiește-o și vezi pe ce loc ajungi."
     },
     "round": {
-      "locked": "Ai jucat tabla de azi. O singură încercare pe zi păstrează jocul corect.",
+      "locked": "Ai deschis deja tabla de azi. O singură încercare pe zi păstrează jocul corect.",
       "resetsIn": "Următoarea tablă în {hours} h {minutes} min",
       "resetsInMinutes": "Următoarea tablă în {minutes} min",
       "seeBoard": "Vezi tabla de azi",
@@ -862,8 +862,7 @@
       "submit": "Intră în tablă",
       "submitting": "Se intră…",
       "public": "Numele, țara, scorul și ratingul tău sunt afișate public.",
-      "failed": "Nu s-a putut intra: {message}",
-      "failedGeneric": "Nu s-a putut intra în tablă. Încearcă din nou."
+      "failed": "Nu s-a putut intra în tablă. Încearcă din nou."
     },
     "board": {
       "title": "Top 10 de azi",

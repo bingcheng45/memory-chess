@@ -8,13 +8,14 @@ import type { LeaderboardEntry } from "@/types/leaderboard";
 
 export type DailyRows = { readonly state: "loading" } | { readonly state: "ready"; readonly rows: readonly LeaderboardEntry[] } | { readonly state: "failed" };
 
-/** Today's daily rows, best first, read again whenever `version` moves, as it does when this device joins. */
-export function useDailyRows(version: number): DailyRows {
+/** Today's daily rows, best first, read again for each new UTC day and whenever `version` moves, as it does when this device joins. */
+export function useDailyRows(day: string | null, version: number): DailyRows {
   const [rows, setRows] = useState<DailyRows>({ state: "loading" });
 
   useEffect(() => {
+    if (day === null) return;
     let live = true;
-    fetch("/api/leaderboard?difficulty=daily", { cache: "no-store" })
+    fetch(`/api/leaderboard?difficulty=daily&daily_day=${day}`, { cache: "no-store" })
       .then((response) => response.json())
       .then((body: { data?: LeaderboardEntry[]; error?: string }) => {
         if (live) setRows(body.error || !Array.isArray(body.data) ? { state: "failed" } : { state: "ready", rows: body.data });
@@ -25,7 +26,7 @@ export function useDailyRows(version: number): DailyRows {
     return () => {
       live = false;
     };
-  }, [version]);
+  }, [day, version]);
 
   return rows;
 }

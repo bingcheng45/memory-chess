@@ -806,7 +806,7 @@
       "socialDescription": "Hôm nay mọi người có cùng một thế cờ. Ghi nhớ, dựng lại và xem bạn đứng hạng mấy."
     },
     "round": {
-      "locked": "Bạn đã chơi bàn cờ hôm nay. Mỗi ngày chỉ một lượt để giữ sự công bằng.",
+      "locked": "Bạn đã mở bàn cờ hôm nay rồi. Mỗi ngày chỉ một lượt để giữ sự công bằng.",
       "resetsIn": "Bàn tiếp theo sau {hours} giờ {minutes} phút",
       "resetsInMinutes": "Bàn tiếp theo sau {minutes} phút",
       "seeBoard": "Xem bàn cờ hôm nay",
@@ -862,8 +862,7 @@
       "submit": "Tham gia bàn cờ",
       "submitting": "Đang tham gia…",
       "public": "Tên, quốc gia, điểm và điểm xếp hạng của bạn được hiển thị công khai.",
-      "failed": "Không tham gia được: {message}",
-      "failedGeneric": "Không tham gia được bàn cờ. Vui lòng thử lại."
+      "failed": "Không tham gia được bàn cờ. Vui lòng thử lại."
     },
     "board": {
       "title": "Top 10 hôm nay",

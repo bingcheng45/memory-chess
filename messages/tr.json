@@ -806,7 +806,7 @@
       "socialDescription": "Bugün herkes aynı konumu alıyor. İncele, yeniden kur ve kaçıncı olduğuna bak."
     },
     "round": {
-      "locked": "Bugünün tahtasını oynadın. Günde bir deneme oyunu adil tutar.",
+      "locked": "Bugünün tahtasını zaten açtın. Günde bir deneme oyunu adil tutar.",
       "resetsIn": "Sonraki tahtaya {hours} sa {minutes} dk kaldı",
       "resetsInMinutes": "Sonraki tahtaya {minutes} dk kaldı",
       "seeBoard": "Bugünün tahtasını gör",
@@ -862,8 +862,7 @@
       "submit": "Tahtaya katıl",
       "submitting": "Katılıyor...",
       "public": "Adın, ülken, skorun ve puanın herkese açık gösterilir.",
-      "failed": "Katılınamadı: {message}",
-      "failedGeneric": "Tahtaya katılınamadı. Lütfen tekrar dene."
+      "failed": "Tahtaya katılınamadı. Lütfen tekrar dene."
     },
     "board": {
       "title": "Bugünün ilk 10'u",

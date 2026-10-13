@@ -806,7 +806,7 @@
       "socialDescription": "今天所有人的局面都一样。记住它，还原它，看看你排第几。"
     },
     "round": {
-      "locked": "你已经玩过今天的棋盘了。每天只能玩一次，这样才公平。",
+      "locked": "你已经打开过今天的棋盘了。每天只能玩一次，这样才公平。",
       "resetsIn": "{hours} 小时 {minutes} 分钟后开启下一张棋盘",
       "resetsInMinutes": "{minutes} 分钟后开启下一张棋盘",
       "seeBoard": "查看今天的棋盘",
@@ -862,8 +862,7 @@
       "submit": "加入棋盘",
       "submitting": "加入中…",
       "public": "你的名字、国家/地区、成绩和评分会公开显示。",
-      "failed": "加入失败：{message}",
-      "failedGeneric": "无法加入棋盘，请重试。"
+      "failed": "无法加入棋盘，请重试。"
     },
     "board": {
       "title": "今日前 10 名",

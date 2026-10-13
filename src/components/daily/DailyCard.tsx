@@ -112,9 +112,7 @@ function Result({ t, round, titleId }: { t: Translate; round: DailyRound; titleI
       </ul>
       <div className="daily-share">
         <p className="daily-note">{t("shareLabel")}</p>
-        <p className="daily-share-row" aria-label={t("gridAria", { correct: counts.c, wrong: counts.w, missed: counts.m, extra: counts.x })}>
-          {row}
-        </p>
+        <p className="daily-share-row">{row}</p>
         <div className="daily-share-actions">
           <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={copyResult}>
             {t("copy")}

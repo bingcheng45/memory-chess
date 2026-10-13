@@ -3,9 +3,11 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
+import { WORLD_CODE } from "@/lib/leaderboard/countries";
 import { START_RATING } from "@/lib/game/rating";
 import type { DailyRound } from "@/lib/lab/daily";
-import { entryFromRow, type DailyEntry } from "@/lib/lab/entries";
+import type { DailyEntry } from "@/lib/lab/entries";
+import { DAILY_BOARD } from "@/types/leaderboard";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
 import { useGameStore } from "@/lib/store/gameStore";
 import { useSettingsStore } from "@/stores/settingsStore";
@@ -15,57 +17,56 @@ import { dailySubmission } from "./dailySubmission";
 const COUNTRY_ID = "daily-country";
 const NAME_LENGTH = { min: 4, max: 16 } as const;
 
-/** Undefined while /api/geo is asked; null when it names no country or cannot be reached. */
-function useGeoCountry(): string | null | undefined {
-  const [geo, setGeo] = useState<string | null | undefined>(undefined);
+const GEO_TIMEOUT_MS = 3_000;
+
+/** Undefined while /api/geo is asked; null when it names no country, cannot be reached, or is not needed. */
+function useGeoCountry(needed: boolean): string | null | undefined {
+  const [geo, setGeo] = useState<string | null | undefined>(needed ? undefined : null);
   useEffect(() => {
+    if (!needed) return;
     let live = true;
-    fetch("/api/geo", { cache: "no-store" })
+    const abort = new AbortController();
+    const timer = window.setTimeout(() => abort.abort(), GEO_TIMEOUT_MS);
+    fetch("/api/geo", { cache: "no-store", signal: abort.signal })
       .then((response) => response.json())
       .then((body: { country?: unknown }) => live && setGeo(typeof body.country === "string" ? body.country : null))
-      .catch(() => live && setGeo(null));
+      .catch(() => live && setGeo(null))
+      .finally(() => window.clearTimeout(timer));
     return () => {
       live = false;
+      abort.abort();
     };
-  }, []);
+  }, [needed]);
   return geo;
 }
 
-type Submit = { readonly state: "idle" | "sending" } | { readonly state: "failed"; readonly message: string | null };
+type Submit = "idle" | "sending" | "failed";
 
 export function DailyJoinForm({ round, onJoined }: { round: DailyRound; onJoined: (entry: DailyEntry) => void }) {
   const t = useTranslations("daily.join");
   const page = useTranslations("daily.page");
   const { countryCode: saved, setCountryCode } = useSettingsStore();
-  const rating = useGameStore((state) => state.gameState.skillRating) || START_RATING;
-  const geo = useGeoCountry();
+  const rating = useGameStore((state) => state.gameState.skillRating) ?? START_RATING;
+  const geo = useGeoCountry(saved === WORLD_CODE);
   const [name, setName] = useState("");
-  const [submit, setSubmit] = useState<Submit>({ state: "idle" });
+  const [submit, setSubmit] = useState<Submit>("idle");
 
   // The connection outranks the browser's language, so the language waits for the connection's answer.
   const guess = guessCountry({ saved, geo: geo ?? null, languages: geo === undefined ? [] : navigator.languages });
   const trimmed = name.trim();
   const nameFits = trimmed.length >= NAME_LENGTH.min && trimmed.length <= NAME_LENGTH.max;
-  const sending = submit.state === "sending";
+  const sending = submit === "sending";
 
   if (round.correct === 0) return <p className="daily-note daily-join">{page("noneRight")}</p>;
 
   const join = async (event: FormEvent) => {
     event.preventDefault();
     if (!nameFits || guess === null || sending) return;
-    setSubmit({ state: "sending" });
-    try {
-      const posted = await postLeaderboardEntry(dailySubmission(round, trimmed, guess.code, rating));
-      if (!posted.ok) {
-        setSubmit({ state: "failed", message: posted.message });
-        return;
-      }
-      setCountryCode(guess.code);
-      const entry = entryFromRow(posted.row, Date.now());
-      if (entry?.difficulty === "daily") onJoined(entry);
-    } catch {
-      setSubmit({ state: "failed", message: null });
-    }
+    setSubmit("sending");
+    // The server's own reason is English, so the player is told in their language that the join failed.
+    const posted = await postLeaderboardEntry(dailySubmission(round, trimmed, guess.code, rating)).catch(() => null);
+    if (posted?.ok && posted.entry?.difficulty === DAILY_BOARD) onJoined(posted.entry);
+    else setSubmit("failed");
   };
 
   return (
@@ -97,9 +98,9 @@ export function DailyJoinForm({ round, onJoined }: { round: DailyRound; onJoined
           )}
         </p>
       </div>
-      {submit.state === "failed" && (
+      {submit === "failed" && (
         <p role="alert" className="daily-error">
-          {submit.message ? t("failed", { message: submit.message }) : t("failedGeneric")}
+          {t("failed")}
         </p>
       )}
       <button type="submit" className="lab-btn lab-btn-primary" disabled={!nameFits || guess === null || sending}>

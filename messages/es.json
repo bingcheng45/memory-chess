@@ -806,7 +806,7 @@
       "socialDescription": "Hoy todos reciben la misma posición. Memorízala, reconstrúyela y mira en qué puesto quedas."
     },
     "round": {
-      "locked": "Ya has jugado el tablero de hoy. Un intento al día mantiene el juego justo.",
+      "locked": "Ya has abierto el tablero de hoy. Un intento al día mantiene el juego justo.",
       "resetsIn": "Próximo tablero en {hours} h {minutes} min",
       "resetsInMinutes": "Próximo tablero en {minutes} min",
       "seeBoard": "Ver el tablero de hoy",
@@ -862,8 +862,7 @@
       "submit": "Unirme al tablero",
       "submitting": "Uniéndote…",
       "public": "Tu nombre, país, puntuación y rating se muestran públicamente.",
-      "failed": "No se pudo unir: {message}",
-      "failedGeneric": "No se pudo unir al tablero. Inténtalo de nuevo."
+      "failed": "No se pudo unir al tablero. Inténtalo de nuevo."
     },
     "board": {
       "title": "Top 10 de hoy",

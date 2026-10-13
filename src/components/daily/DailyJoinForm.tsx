@@ -8,6 +8,7 @@ import { START_RATING } from "@/lib/game/rating";
 import type { DailyRound } from "@/lib/lab/daily";
 import type { DailyEntry } from "@/lib/lab/entries";
 import { DAILY_BOARD } from "@/types/leaderboard";
+import { entryFromRow } from "@/lib/leaderboard/entryRow";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
 import { useGameStore } from "@/lib/store/gameStore";
 import { useSettingsStore } from "@/stores/settingsStore";
@@ -62,7 +63,8 @@ export function DailyJoinForm({ round, onJoined }: { round: DailyRound; onJoined
     setSubmit("sending");
     // The server's own reason is English, so the player is told in their language that the join failed.
     const posted = await postLeaderboardEntry(dailySubmission(round, trimmed, guess.code, rating)).catch(() => null);
-    if (posted?.ok && posted.entry?.difficulty === DAILY_BOARD) onJoined(posted.entry);
+    const entry = posted?.ok ? (posted.entry ?? entryFromRow(posted.row, Date.now())) : null;
+    if (entry?.difficulty === DAILY_BOARD) onJoined(entry);
     else setSubmit("failed");
   };
 

@@ -1,6 +1,6 @@
-import { parseCountryCode, WORLD_CODE, type CountryCode } from "@/lib/leaderboard/countries";
+import { parseCountryCode, type CountryCode } from "@/lib/leaderboard/countries";
 import { compareRanking, parseScore, type RankingScore } from "@/lib/leaderboard/ranking";
-import { parseBoard } from "@/lib/leaderboard/board";
+import { entryFromRow } from "@/lib/leaderboard/entryRow";
 import { isEntryId } from "@/lib/leaderboard/standing";
 import { parseUtcDay } from "./daily";
 import { isObject } from "./guards";
@@ -28,23 +28,6 @@ export interface DailyEntry extends EntryFacts {
 }
 
 export type StoredEntries = Readonly<Partial<Record<LeaderboardDifficulty, StoredEntry>>>;
-
-export function entryFromRow(row: unknown, submittedAt: number): StoredEntry | DailyEntry | null {
-  if (!isObject(row) || !isEntryId(row.id)) return null;
-  const board = parseBoard(row.difficulty, row.daily_day);
-  if (board === null) return null;
-  const score = parseScore({
-    correctPieces: row.correct_pieces,
-    totalWrongPieces: row.total_wrong_pieces ?? null,
-    memorizeTime: row.memorize_time,
-    solutionTime: row.solution_time,
-  });
-  if (score === null) return null;
-  const country = row.country_code === undefined ? WORLD_CODE : parseCountryCode(row.country_code);
-  if (country === null) return null;
-  const facts = { id: row.id, country, score, submittedAt };
-  return board.difficulty === DAILY_BOARD ? { ...facts, difficulty: DAILY_BOARD, dailyDay: board.daily_day } : { ...facts, difficulty: board.difficulty };
-}
 
 function parseEntry(raw: unknown, difficulty: LeaderboardDifficulty): StoredEntry | null {
   if (!isObject(raw) || !isEntryId(raw.id) || raw.difficulty !== difficulty) return null;

@@ -1,5 +1,6 @@
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
 import type { LeaderboardSubmission } from "@/types/leaderboard";
+import type { CountryCode } from "@/lib/leaderboard/countries";
 
 jest.mock("@/lib/lab/entries", () => {
   throw new Error("Loading chunk 77 failed");
@@ -7,7 +8,7 @@ jest.mock("@/lib/lab/entries", () => {
 
 const SUBMISSION: LeaderboardSubmission = {
   player_name: "Poteto",
-  country_code: "SG",
+  country_code: "SG" as CountryCode,
   difficulty: "daily",
   daily_day: "2026-10-13",
   piece_count: 6,

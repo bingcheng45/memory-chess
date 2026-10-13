@@ -1,4 +1,5 @@
-import { DAILY_ENTRY_KEY, ENTRIES_KEY, entryFromRow, parseEntries, readDailyEntry, rememberEntry, withEntry, withoutEntry, type StoredEntry } from "@/lib/lab/entries";
+import { DAILY_ENTRY_KEY, ENTRIES_KEY, parseEntries, readDailyEntry, rememberEntry, withEntry, withoutEntry, type StoredEntry } from "@/lib/lab/entries";
+import { entryFromRow } from "@/lib/leaderboard/entryRow";
 
 const ID_A = "0b5e8f7c-3c1a-4e2b-9d4f-1a2b3c4d5e6f";
 const ID_B = "7d1f0a2e-5b6c-4d8e-8f9a-0b1c2d3e4f5a";

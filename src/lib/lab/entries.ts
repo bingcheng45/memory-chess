@@ -8,10 +8,7 @@ import { DAILY_BOARD, LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } fro
 
 export const ENTRIES_KEY = "memory-chess-lab-entries";
 
-/**
- * One entry per day for the two latest days: each daily board is its own day, and a round finished after midnight UTC
- * still joins the board of the day before.
- */
+/** One entry per day: a round finished after midnight UTC still joins the board of the day before. */
 export const DAILY_ENTRY_KEY = "memory-chess-daily-entry";
 
 interface EntryFacts {

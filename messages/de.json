@@ -830,7 +830,7 @@
       "result": "Dein Ergebnis",
       "score": "{correct} von {pieceCount} richtig",
       "rebuild": "in {seconds} s nachgebaut",
-      "gridAria": "Deine Felder: {correct} richtig, {wrong} falsche Figur, {missed} verpasst, {extra} zusätzlich",
+      "gridAria": "Deine Felder: {correct} richtig, {wrong, plural, one {# falsche Figur} other {# falsche Figuren}}, {missed} verpasst, {extra} zusätzlich",
       "key": {
         "c": "Richtig",
         "w": "Falsche Figur",

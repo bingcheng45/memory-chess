@@ -27,7 +27,7 @@ describe("the daily result grid's description", () => {
   it.each([
     ["one", "cccc" + "w" + "m" + ".".repeat(58), "Your squares: 4 correct, 1 wrong piece, 1 missed, 0 extra"],
     ["two", "cccc" + "ww" + ".".repeat(58), "Your squares: 4 correct, 2 wrong pieces, 0 missed, 0 extra"],
-  ])("counts %s wrong piece in the right number", (_case, squares, label) => {
+  ])("matches the noun to %s wrong", (_case, squares, label) => {
     render(<DailyCard board={playedWith(squares)} setting={null} joined={null} standing={null} onJoined={jest.fn()} />);
 
     expect(screen.getByRole("img", { name: label })).toBeInTheDocument();

@@ -1645,7 +1645,7 @@
       "result": "Your result",
       "score": "{correct} of {pieceCount} right",
       "rebuild": "rebuilt in {seconds} s",
-      "gridAria": "Your squares: {correct} correct, {wrong} wrong piece, {missed} missed, {extra} extra",
+      "gridAria": "Your squares: {correct} correct, {wrong, plural, one {# wrong piece} other {# wrong pieces}}, {missed} missed, {extra} extra",
       "key": {
         "c": "Correct",
         "w": "Wrong piece",

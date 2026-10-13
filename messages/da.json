@@ -830,7 +830,7 @@
       "result": "Dit resultat",
       "score": "{correct} af {pieceCount} rigtige",
       "rebuild": "genopbygget på {seconds} s",
-      "gridAria": "Dine felter: {correct} rigtige, {wrong} forkert brik, {missed} overset, {extra} ekstra",
+      "gridAria": "Dine felter: {correct} rigtige, {wrong, plural, one {# forkert brik} other {# forkerte brikker}}, {missed} overset, {extra} ekstra",
       "key": {
         "c": "Rigtig",
         "w": "Forkert brik",

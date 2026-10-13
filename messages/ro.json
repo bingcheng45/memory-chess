@@ -830,7 +830,7 @@
       "result": "Rezultatul tău",
       "score": "{correct} din {pieceCount} corecte",
       "rebuild": "reconstruită în {seconds} s",
-      "gridAria": "Pătratele tale: {correct} corecte, {wrong} piesă greșită, {missed} ratate, {extra} în plus",
+      "gridAria": "Pătratele tale: {correct} corecte, {wrong, plural, one {# piesă greșită} few {# piese greșite} other {# de piese greșite}}, {missed} ratate, {extra} în plus",
       "key": {
         "c": "Corect",
         "w": "Piesă greșită",

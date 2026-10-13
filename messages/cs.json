@@ -830,7 +830,7 @@
       "result": "Váš výsledek",
       "score": "{correct} z {pieceCount} správně",
       "rebuild": "postaveno za {seconds} s",
-      "gridAria": "Vaše pole: {correct} správně, {wrong} špatná figurka, {missed} vynecháno, {extra} navíc",
+      "gridAria": "Vaše pole: {correct} správně, {wrong, plural, one {# špatná figurka} few {# špatné figurky} many {# špatné figurky} other {# špatných figurek}}, {missed} vynecháno, {extra} navíc",
       "key": {
         "c": "Správně",
         "w": "Špatná figurka",

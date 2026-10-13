@@ -830,7 +830,7 @@
       "result": "Tuloksesi",
       "score": "{correct} / {pieceCount} oikein",
       "rebuild": "rakennettu {seconds} s:ssa",
-      "gridAria": "Ruutusi: {correct} oikein, {wrong} väärä nappula, {missed} unohtui, {extra} ylimääräistä",
+      "gridAria": "Ruutusi: {correct} oikein, {wrong, plural, one {# väärä nappula} other {# väärää nappulaa}}, {missed} unohtui, {extra} ylimääräistä",
       "key": {
         "c": "Oikein",
         "w": "Väärä nappula",

@@ -830,7 +830,7 @@
       "result": "Ditt resultat",
       "score": "{correct} av {pieceCount} rätt",
       "rebuild": "uppbyggt på {seconds} s",
-      "gridAria": "Dina rutor: {correct} rätt, {wrong} fel pjäs, {missed} missade, {extra} extra",
+      "gridAria": "Dina rutor: {correct} rätt, {wrong, plural, one {# fel pjäs} other {# fel pjäser}}, {missed} missade, {extra} extra",
       "key": {
         "c": "Rätt",
         "w": "Fel pjäs",

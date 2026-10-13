@@ -830,7 +830,7 @@
       "result": "Resultatet ditt",
       "score": "{correct} av {pieceCount} riktige",
       "rebuild": "bygd opp på {seconds} s",
-      "gridAria": "Rutene dine: {correct} riktige, {wrong} feil brikke, {missed} glemt, {extra} ekstra",
+      "gridAria": "Rutene dine: {correct} riktige, {wrong, plural, one {# feil brikke} other {# feil brikker}}, {missed} glemt, {extra} ekstra",
       "key": {
         "c": "Riktig",
         "w": "Feil brikke",

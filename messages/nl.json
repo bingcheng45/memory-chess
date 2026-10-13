@@ -830,7 +830,7 @@
       "result": "Jouw resultaat",
       "score": "{correct} van {pieceCount} goed",
       "rebuild": "nagebouwd in {seconds} s",
-      "gridAria": "Jouw velden: {correct} goed, {wrong} fout stuk, {missed} gemist, {extra} extra",
+      "gridAria": "Jouw velden: {correct} goed, {wrong, plural, one {# fout stuk} other {# foute stukken}}, {missed} gemist, {extra} extra",
       "key": {
         "c": "Goed",
         "w": "Fout stuk",

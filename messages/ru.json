@@ -830,7 +830,7 @@
       "result": "Ваш результат",
       "score": "{correct} из {pieceCount} верно",
       "rebuild": "восстановлено за {seconds} с",
-      "gridAria": "Ваши поля: {correct} верно, {wrong} неверная фигура, {missed} пропущено, {extra} лишних",
+      "gridAria": "Ваши поля: {correct} верно, {wrong, plural, one {# неверная фигура} few {# неверные фигуры} many {# неверных фигур} other {# неверной фигуры}}, {missed} пропущено, {extra} лишних",
       "key": {
         "c": "Верно",
         "w": "Неверная фигура",

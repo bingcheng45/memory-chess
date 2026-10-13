@@ -830,7 +830,7 @@
       "result": "आपका नतीजा",
       "score": "{pieceCount} में से {correct} सही",
       "rebuild": "{seconds} से. में दोबारा सजाया",
-      "gridAria": "आपके खाने: {correct} सही, {wrong} गलत मोहरा, {missed} छूटे, {extra} अतिरिक्त",
+      "gridAria": "आपके खाने: {correct} सही, {wrong, plural, one {# गलत मोहरा} other {# गलत मोहरे}}, {missed} छूटे, {extra} अतिरिक्त",
       "key": {
         "c": "सही",
         "w": "गलत मोहरा",

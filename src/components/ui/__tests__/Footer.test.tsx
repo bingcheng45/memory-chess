@@ -74,7 +74,7 @@ test("on an English page, English-only links and Articles carry no marker", () =
 test("localized pages keep the locale-aware link", () => {
   render(<Footer />);
 
-  const href = hrefFor(/^Contact Us$/);
+  const href = hrefFor(/^Contact us$/);
   expect(isEnglishOnlyPath(href)).toBe(false);
   expect(href.startsWith("/")).toBe(true);
 });

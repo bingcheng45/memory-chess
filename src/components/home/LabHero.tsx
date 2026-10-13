@@ -48,7 +48,10 @@ export function LabHero({ totalPlays }: { totalPlays: number | null }) {
             </a>
           </div>
           <p className="lab-subtle-links">
-            <Link href="/game">{t("cta.chooseSettings")}</Link>.{" "}
+            {lab.rich("hero.settingsLink", {
+              label: t("cta.chooseSettings"),
+              link: (chunks) => <Link href="/game">{chunks}</Link>,
+            })}{" "}
             {t.rich("hero.freeToPlay", {
               link: (chunks) => <Link href="/leaderboard">{chunks}</Link>,
             })}

@@ -1,0 +1,14 @@
+/* /settings in the Lab Paper shell: one reading-width column of controls. The switch itself is in lab-paper.css. */
+.lab-paper .lab-settings { max-width: calc(720px + 2 * var(--lp-gutter)); padding-top: 64px; padding-bottom: 96px; }
+.lab-paper .lab-settings-h { margin: 0 0 12px; font: 650 40px/1.12 var(--lp-ui); letter-spacing: -0.02em; }
+.lab-paper .lab-settings .lab-lede { margin: 0; }
+.lab-paper .lab-settings-card { margin-top: 32px; padding: 24px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
+/* Under the card, holding its line before the first save so confirming one moves nothing. */
+.lab-paper .lab-settings-status { display: flex; align-items: center; gap: 8px; min-height: 1.55em; margin: 12px 0 0; font: 400 14px/1.55 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .lab-settings-tick { flex: none; color: var(--lp-correct); }
+.lab-paper .lab-settings-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
+@media (max-width: 767px) {
+  .lab-paper .lab-settings { padding-top: 40px; padding-bottom: 64px; }
+  .lab-paper .lab-settings-h { font-size: 30px; }
+  .lab-paper .lab-settings-card { padding: 20px 16px; }
+}

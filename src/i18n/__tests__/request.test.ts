@@ -20,7 +20,8 @@ describe("request messages", () => {
   it("serves a locale its own catalogue, with no English lab copy mixed in", async () => {
     const messages = await messagesFor("de");
 
-    expect(messages.home.lab).toBeUndefined();
+    expect(messages.home.lab).toEqual(german.home.lab);
+    expect(messages.home.lab).not.toEqual(english.home.lab);
     expect(messages.home.hero.title).toBe(german.home.hero.title);
   });
 

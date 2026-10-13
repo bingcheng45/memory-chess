@@ -193,13 +193,14 @@ describe("GamePage daily board link", () => {
     expect(mockStartGame.mock.calls.map(([, , source]) => source)).toEqual(["game_form"]);
   });
 
-  it("plays an ordinary round from the link in a language without the daily board's copy", () => {
+  it("plays today's set board from a link in every language", async () => {
+    opens({ kind: "play", pieceCount: 6, memorizeTime: 10, board: BOARD });
     window.history.pushState({}, "", "/de/game?pieceCount=6&memorizeTime=10&source=daily");
 
     render(<GamePage />, { locale: "de" });
 
-    expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link");
-    expect(openDaily).not.toHaveBeenCalled();
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(6, 10, "daily", BOARD));
+    expect(mockStartGame).not.toHaveBeenCalledWith(6, 10, "link");
   });
 });
 
@@ -240,13 +241,14 @@ describe("GamePage review link", () => {
     expect(mockStartGame).not.toHaveBeenCalled();
   });
 
-  it("plays an ordinary round from the link in a language without the lab record's copy", () => {
+  it("replays the board due next from a link in every language", async () => {
+    opens({ kind: "play", pieceCount: 4, memorizeTime: 10, board: BOARD });
     window.history.pushState({}, "", "/de/game?pieceCount=4&memorizeTime=10&source=review");
 
     render(<GamePage />, { locale: "de" });
 
-    expect(mockStartGame).toHaveBeenCalledWith(4, 10, "link");
-    expect(openReview).not.toHaveBeenCalled();
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(4, 10, "review", BOARD));
+    expect(mockStartGame).not.toHaveBeenCalledWith(4, 10, "link");
   });
 });
 

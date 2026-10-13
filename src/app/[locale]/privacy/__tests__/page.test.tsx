@@ -1,13 +1,13 @@
-import { render, screen } from "@/test-utils/intl";
+import type { AnchorHTMLAttributes } from "react";
+import { render, screen, within } from "@/test-utils/intl";
 import PrivacyPage from "@/app/[locale]/privacy/page";
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>Memory Chess header</div>;
-  }
-
-  return MockPageHeader;
-});
+jest.mock("@/i18n/navigation", () => ({
+  Link: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => <a href={href} {...props} />,
+  usePathname: () => "/privacy",
+  useRouter: () => ({ replace: jest.fn() }),
+}));
+jest.mock("@/lib/articles/translatedLocales");
 
 describe("PrivacyPage", () => {
   it("explains data use, cookies, advertising, and user choices", () => {
@@ -185,5 +185,20 @@ describe("PrivacyPage", () => {
     expect(
       screen.getByText(/Do Not Sell or Share My Personal Information/),
     ).toBeInTheDocument();
+  });
+
+  it("is a Lab Paper page whose contents list lands on each of its thirteen sections", () => {
+    const { container } = render(<PrivacyPage />);
+
+    expect(container.firstElementChild).toHaveClass("lab-paper");
+    const contents = within(screen.getByRole("navigation", { name: "On this page" })).getAllByRole("link");
+    expect(contents).toHaveLength(13);
+    expect(contents.map((link) => link.textContent)).toEqual(
+      screen.getAllByRole("heading", { level: 2 }).map((heading) => heading.textContent),
+    );
+    for (const link of contents) {
+      const target = container.querySelector(link.getAttribute("href") ?? "");
+      expect(target?.querySelector("h2")?.textContent).toBe(link.textContent);
+    }
   });
 });

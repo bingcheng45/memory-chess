@@ -2,6 +2,8 @@ import type { AnchorHTMLAttributes } from "react";
 import { fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
 import { LabHomeHeader } from "@/components/home/LabHomeHeader";
+import type { LabData } from "@/hooks/useLabData";
+import { EMPTY_SUMMARY } from "@/lib/lab/summary";
 import deMessages from "../../../../messages/de.json";
 
 let mockPathname = "/";
@@ -12,8 +14,13 @@ jest.mock("@/i18n/navigation", () => ({
 }));
 jest.mock("@/lib/articles/translatedLocales");
 
+const LOADED: LabData = { storage: "available", records: [], summary: EMPTY_SUMMARY, lastBackup: null, today: "2026-10-07" };
+let mockLabData: LabData = LOADED;
+jest.mock("@/hooks/useLabData", () => ({ useLabData: () => mockLabData }));
+
 beforeEach(() => {
   mockPathname = "/";
+  mockLabData = LOADED;
 });
 
 const hrefsOf = (container: HTMLElement) =>
@@ -125,7 +132,7 @@ describe("the Lab Paper header", () => {
 
 describe("the homepage's header", () => {
   it("adds the Lab menu of on-page sections, and closes it on Escape with focus back on the button", () => {
-    renderWithIntl(<LabHomeHeader streak={null} />);
+    renderWithIntl(<LabHomeHeader />);
     const trigger = screen.getByRole("button", { name: "Lab" });
 
     expect(hrefsOf(screen.getByRole("navigation", { name: "Main" }))).toEqual(SITE);
@@ -147,7 +154,7 @@ describe("the homepage's header", () => {
   });
 
   it("closes the Lab menu when a section is picked, or when focus or a press lands outside it", () => {
-    renderWithIntl(<LabHomeHeader streak={null} />);
+    renderWithIntl(<LabHomeHeader />);
     const trigger = screen.getByRole("button", { name: "Lab" });
 
     fireEvent.click(trigger);
@@ -164,7 +171,7 @@ describe("the homepage's header", () => {
   });
 
   it("puts this page's sections before the site's pages in the phone menu", () => {
-    renderWithIntl(<LabHomeHeader streak={null} />);
+    renderWithIntl(<LabHomeHeader />);
 
     fireEvent.click(screen.getByRole("button", { name: "Menu" }));
 
@@ -181,22 +188,27 @@ describe("the homepage's header", () => {
   });
 });
 
-describe("streak chip in the homepage header", () => {
-  it("counts the days played, and names a forgiven day in its title and accessible name", () => {
-    renderWithIntl(<LabHomeHeader streak={{ days: 19, forgiven: 1 }} />);
-    const chip = screen.getByRole("link", { name: "Day 19 of your streak, 1 missed day forgiven" });
+describe("streak chip in the header", () => {
+  const days = (...list: string[]) => ({ ...LOADED, summary: { ...EMPTY_SUMMARY, rounds: list.length, days: list } });
 
-    expect(chip).toHaveTextContent(/^Day 19$/);
-    expect(chip).toHaveAttribute("title", "Day 19 of your streak, 1 missed day forgiven");
-    expect(chip).toHaveAttribute("href", "#record");
+  it("counts the days in a row on any Lab Paper page and links to the dashboard", () => {
+    mockLabData = days("2026-10-05", "2026-10-06", "2026-10-07");
+    mockPathname = "/leaderboard";
+    renderWithIntl(<LabPaperHeader />);
+    const chip = screen.getByRole("link", { name: "Day 3 of your streak. Open your dashboard." });
+
+    expect(chip).toHaveTextContent(/^Day 3$/);
+    expect(chip).toHaveAttribute("href", "/dashboard");
   });
 
-  it("reads Day N alone for an unbroken run, and is absent without a streak", () => {
-    const { unmount } = renderWithIntl(<LabHomeHeader streak={{ days: 30, forgiven: 0 }} />);
-
-    expect(screen.getByRole("link", { name: "Day 30" })).not.toHaveAttribute("title");
+  it("is absent below two days in a row and before the record is read", () => {
+    mockLabData = days("2026-10-07");
+    const { unmount } = renderWithIntl(<LabHomeHeader />);
+    expect(screen.queryByRole("link", { name: /^Day/ })).toBeNull();
     unmount();
-    renderWithIntl(<LabHomeHeader streak={null} />);
+
+    mockLabData = { ...days("2026-10-06", "2026-10-07"), today: "" };
+    renderWithIntl(<LabHomeHeader />);
     expect(screen.queryByRole("link", { name: /^Day/ })).toBeNull();
   });
 });

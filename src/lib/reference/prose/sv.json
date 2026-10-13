@@ -65,6 +65,8 @@
         "bishop-color-complex": "En sidas två löpare står aldrig på rutor av samma färg.",
         "simultaneous-check": "Båda kungarna står aldrig i schack samtidigt.",
         "checked-side-not-to-move": "Om en kung står i schack är det den sidan som har draget.",
+        "home-rank-pawn-check": "En bonde som aldrig har lämnat sin startrad ger aldrig schack.",
+        "impossible-double-check": "En kung står aldrig i schack från fler än två pjäser, och i ett dubbelschack ingår alltid en löpare, ett torn eller en dam.",
         "piece-count": "Brädet innehåller exakt det antal pjäser som nivån anger.",
         "invalid-fen": "Ställningen är en giltig schackställning som går att ställa upp på ett bräde."
       },

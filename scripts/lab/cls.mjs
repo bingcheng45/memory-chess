@@ -14,8 +14,7 @@
  * for a returning player due the record note, scrolled to #record, where the note must appear, and with the tools
  * row centred before the record loads, as a reload that restores the scroll position leaves it, where the note
  * must wait for a later visit,
- * and for /de, which renders the legacy body: its mono text
- * uses the platform monospace stack, so there Geist Mono must never be requested.
+ * and for the German, Japanese and Russian homes, new and 30-day, where translated copy fills the same reserved boxes.
  * Fails when either number is over MAX_CLS.
  *
  *   npm run lab:personas && npm run lab:cls -- --base http://localhost:3128 --out <dir> [--only <case>]
@@ -46,7 +45,12 @@ const CASES = [
   { name: "dailyPlayed-record", persona: "dailyPlayed", path: "/#record" },
   { name: "note-record", persona: "threeDays", path: "/#record", shows: NOTE_BOX, ...NOTE },
   { name: "note-tools", persona: "threeDays", path: "/", centre: "#record .lab-tools-slot", hides: NOTE_BOX, ...NOTE },
-  { name: "de", persona: "newVisitor", path: "/de", usesMono: false },
+  { name: "de", persona: "newVisitor", path: "/de" },
+  { name: "de-record", persona: "thirtyDays", path: "/de#record" },
+  { name: "ja", persona: "newVisitor", path: "/ja" },
+  { name: "ja-record", persona: "thirtyDays", path: "/ja#record" },
+  { name: "ru", persona: "newVisitor", path: "/ru" },
+  { name: "ru-record", persona: "thirtyDays", path: "/ru#record" },
 ];
 
 // Registered before any page script runs, so shifts during parse and hydration are not missed.
@@ -106,7 +110,7 @@ ${centre ? `document.addEventListener("DOMContentLoaded", () => document.querySe
 
 export default async function measure(page, { baseUrl, evidenceDir }) {
   const testCase = JSON.parse(process.env[CASE_ENV]);
-  const { path, usesMono = true, shows = null, hides = null } = testCase;
+  const { path, shows = null, hides = null } = testCase;
   await loadPersona(page, baseUrl, process.env[PERSONA_ENV]);
   await sized(page, 1440);
   const urls = await monoFontUrls(page, baseUrl);
@@ -139,12 +143,10 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     const statusAfter = await page.eval(MONO_STATUS);
     if (shows && !(await page.eval(`!!document.querySelector(${JSON.stringify(shows)})`))) throw new Error(`at ${width}: ${shows} never appeared`);
     if (hides && (await page.eval(`!!document.querySelector(${JSON.stringify(hides)})`))) throw new Error(`at ${width}: ${hides} appeared`);
-    if (!usesMono && held.length > 0) throw new Error(`at ${width}: ${path} requested Geist Mono, which it is listed as not using`);
-    if (usesMono) {
-      if (held.length === 0) throw new Error(`at ${width}: no Geist Mono request was held, so the fallback face may never have painted`);
-      if (held.some(({ statusWhileHeld }) => statusWhileHeld?.includes("loaded"))) throw new Error(`at ${width}: Geist Mono was already loaded while its file was held`);
-      if (!statusAfter.includes("loaded")) throw new Error(`at ${width}: Geist Mono did not load after release, status ${JSON.stringify(statusAfter)}`);
-    }
+    if (held.length === 0) throw new Error(`at ${width}: no Geist Mono request was held, so the fallback face may never have painted`);
+    // A page with Cyrillic text asks for a second subset file after the Latin one, so only the first hold proves the fallback painted first.
+    if (held[0].statusWhileHeld?.includes("loaded")) throw new Error(`at ${width}: Geist Mono was already loaded while its file was held`);
+    if (!statusAfter.includes("loaded")) throw new Error(`at ${width}: Geist Mono did not load after release, status ${JSON.stringify(statusAfter)}`);
     result[width] = {
       cls: round(sessionWindowCls(shifts)),
       shiftSum: round(shifts.reduce((sum, shift) => sum + shift.value, 0)),

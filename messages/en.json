@@ -5,14 +5,16 @@
       "articles": "Articles",
       "about": "About",
       "changelog": "Changelog",
-      "contactUs": "Contact Us",
+      "contactUs": "Contact us",
       "privacy": "Privacy",
       "terms": "Terms",
       "play": "Play",
       "leaderboard": "Leaderboard",
       "dashboard": "Dashboard",
       "menu": "Menu",
-      "site": "Site"
+      "site": "Site",
+      "streakChip": "Day {count}",
+      "streakChipLabel": "Day {count} of your streak{forgiven, plural, =0 {} one {, # missed day forgiven} other {, # missed days forgiven}}. Open your dashboard."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. All rights reserved.",
@@ -24,8 +26,8 @@
     "sound": {
       "mute": "Mute sound",
       "unmute": "Unmute sound",
-      "on": "Sound On",
-      "off": "Sound Off",
+      "on": "Sound on",
+      "off": "Sound off",
       "volume": "Volume"
     },
     "language": {
@@ -46,14 +48,10 @@
     },
     "hero": {
       "title": "Memory chess game · chess memory trainer",
-      "subtitle": "Memorize a chess position, rebuild it from memory, and get an instant score. Improve your board vision one round at a time.",
-      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
-      "gamesPlayed": "Games played: {count}"
+      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>."
     },
     "cta": {
-      "play": "Play Memory Chess",
       "leaderboard": "View leaderboard",
-      "playFree": "Play a Free Round",
       "chooseSettings": "Choose pieces and time"
     },
     "video": {
@@ -62,35 +60,8 @@
       "iframeTitle": "How to Play Memory Chess",
       "credit": "Video: “A New Way To Train Your Vision” by Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "How it works",
-      "title": "A Simple Workout for Your Chess Memory",
-      "subtitle": "Every round has three simple steps: study the position, rebuild it, and learn from your score.",
-      "steps": {
-        "observe": {
-          "title": "Observe",
-          "description": "Study where each piece sits. Look for groups, lines, and useful empty spaces."
-        },
-        "recreate": {
-          "title": "Recreate",
-          "description": "When the board clears, place every piece back on the square you remember."
-        },
-        "improve": {
-          "title": "Improve",
-          "description": "Check your score, see what you missed, and try again with more pieces or less time."
-        }
-      }
-    },
-    "board": {
-      "study": "Study the board",
-      "rebuild": "Rebuild from memory"
-    },
     "learn": {
-      "eyebrow": "Learning Center",
-      "title": "Simple Chess Guides",
-      "description": "Learn practical ways to improve board vision, visualization, calculation, and memory. Each guide includes drills you can try right away.",
-      "browseCta": "Browse chess guides",
-      "beginnerCta": "Start with the Beginner Guide"
+      "browseCta": "Browse chess guides"
     },
     "faq": {
       "title": "Questions about Memory Chess.",
@@ -172,6 +143,7 @@
         "display": "Put a number on your <em>mind's eye.</em>",
         "lede": "Memory Chess is a free memory chess game and chess memory trainer. Study a position for a few seconds, the board goes blank, then rebuild it from memory. Each round is a short memory test with an accuracy reading from 0 to 100% and a map of every square you got right or wrong.",
         "secondaryCta": "Take a calibration reading",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "study window",
           "pieces": "pieces per round",
@@ -599,9 +571,7 @@
             "forgiven": "forgiven",
             "missed": "missed",
             "today": "today"
-          },
-          "chip": "Day {count}",
-          "chipForgiven": "Day {count} of your streak, {forgiven, plural, one {# missed day} other {# missed days}} forgiven"
+          }
         },
         "week": {
           "ring": "{played} of {goal} days this week",
@@ -963,11 +933,11 @@
     },
     "config": {
       "title": "Memory chess game",
-      "presetsLabel": "Difficulty Presets",
+      "presetsLabel": "Difficulty presets",
       "presetSummary": "{pieces} pcs / {seconds}s",
       "customLabel": "Custom settings",
-      "pieceCount": "Number of Pieces",
-      "memorizeTime": "Memorization Time",
+      "pieceCount": "Number of pieces",
+      "memorizeTime": "Memorization time",
       "seconds": "{seconds}s",
       "start": "Start round",
       "lastGame": "Last game: {time}s solution time with {accuracy}% accuracy"
@@ -991,7 +961,7 @@
       }
     },
     "memorize": {
-      "title": "Memorize the Position",
+      "title": "Memorize the position",
       "hint": "The board will clear when the timer ends"
     },
     "board": {
@@ -1017,37 +987,37 @@
     },
     "result": {
       "messages": {
-        "perfect": "✨ Perfect Score! ✨",
-        "excellent": "Excellent Memory!",
-        "great": "Great Job!",
-        "wellDone": "Well Done!",
-        "goodEffort": "Good Effort!",
-        "keepPracticing": "Keep Practicing!"
+        "perfect": "✨ Perfect score! ✨",
+        "excellent": "Excellent memory!",
+        "great": "Great job!",
+        "wellDone": "Well done!",
+        "goodEffort": "Good effort!",
+        "keepPracticing": "Keep practicing!"
       },
       "accuracy": "Accuracy",
       "piecesCorrectCaption": "pieces correct",
-      "piecesCorrect": "Pieces Correct",
-      "memorizationTime": "Memorization Time",
-      "solutionTime": "Solution Time",
-      "recallSpeed": "Recall Speed",
+      "piecesCorrect": "Pieces correct",
+      "memorizationTime": "Memorization time",
+      "solutionTime": "Solution time",
+      "recallSpeed": "Recall speed",
       "piecesPerSecond": "{value} pieces/sec",
       "actions": "Result actions",
-      "tryAgain": "Try Again",
-      "newGame": "New Game",
-      "submitToLeaderboard": "Submit to Leaderboard",
+      "tryAgain": "Try again",
+      "newGame": "New game",
+      "submitToLeaderboard": "Submit to leaderboard",
       "leaderboardQualifies": "Your score makes the leaderboard. Submit it before it's gone.",
-      "viewLeaderboard": "View Leaderboard",
+      "viewLeaderboard": "View leaderboard",
       "dialog": {
-        "submitTitle": "Submit to Leaderboard",
+        "submitTitle": "Submit to leaderboard",
         "submitDescription": "Enter your name to be displayed on the leaderboard.",
-        "successTitle": "Score Submitted!",
+        "successTitle": "Score submitted!",
         "successDescription": "Your score has been successfully submitted to the leaderboard.",
-        "playerName": "Player Name",
+        "playerName": "Player name",
         "playerNamePlaceholder": "Enter your name",
         "error": "Error: {message}",
         "submitFailed": "Failed to submit score",
         "cancel": "Cancel",
-        "submit": "Submit Score",
+        "submit": "Submit score",
         "submitting": "Submitting...",
         "thanks": "Thanks for participating, {name}!"
       },
@@ -1074,10 +1044,14 @@
         "cta": "Can you beat it?",
         "text": "{kind, select, daily {I recalled {correct, number} of {total, number} pieces ({accuracy}) on the Memory Chess daily board for {date}.} review {I recalled {correct, number} of {total, number} pieces ({accuracy}) on a Memory Chess review board.} other {I recalled {correct, number} of {total, number} pieces ({accuracy}) on Memory Chess.}} Can you beat it?",
         "alt": "Memory Chess result card: {details}."
+      },
+      "savedToast": {
+        "message": "Round saved. Your updated stats are just below.",
+        "action": "Show me"
       }
     },
     "comparison": {
-      "title": "Review Your Position"
+      "title": "Review your position"
     },
     "feedback": {
       "title": "Thanks for playing Memory Chess!",
@@ -1198,9 +1172,16 @@
       "title": "Memory Chess Settings",
       "description": "Customize your Memory Chess game settings and preferences."
     },
+    "title": "Settings",
+    "intro": "These settings apply to every round you play in this browser.",
     "showCoordinates": "Show board coordinates",
+    "coordinatesHelp": "Letters and numbers along the edges of the board while you memorize and place pieces. The result screen always shows them.",
+    "on": "On",
+    "off": "Off",
+    "savedOn": "Saved. The board will show its coordinates.",
+    "savedOff": "Saved. The board will hide its coordinates.",
     "home": "Home",
-    "playGame": "Play Game"
+    "playGame": "Play a round"
   },
   "contact": {
     "meta": {
@@ -1209,31 +1190,37 @@
       "socialTitle": "Contact Memory Chess",
       "socialDescription": "Send feedback, feature requests, and partnership inquiries to Memory Chess."
     },
-    "title": "Contact Us",
-    "sentTitle": "Message Sent!",
+    "title": "Contact us",
+    "sentTitle": "Message sent",
     "sentBody": "Thank you for reaching out. We'll get back to you soon.",
     "redirecting": "Redirecting to homepage...",
     "name": "Name",
     "namePlaceholder": "Your name",
     "email": "Email",
     "emailPlaceholder": "your.email@example.com",
-    "inquiryType": "Inquiry Type",
+    "inquiryType": "Inquiry type",
     "inquiryPlaceholder": "Select inquiry type",
     "message": "Message",
     "messagePlaceholder": "Type your message here...",
-    "send": "Send Message",
+    "send": "Send message",
     "sending": "Sending...",
     "types": {
       "feedback": "Feedback",
-      "featureRequest": "Feature Request",
-      "general": "General Inquiry",
-      "business": "Business Opportunity"
+      "featureRequest": "Feature request",
+      "general": "General inquiry",
+      "business": "Business opportunity"
     },
     "validation": {
       "nameTooShort": "Name must be at least 2 characters.",
       "emailInvalid": "Please enter a valid email address.",
       "typeRequired": "Please select an inquiry type.",
       "messageTooShort": "Message must be at least 10 characters."
+    },
+    "hints": {
+      "name": "At least 2 characters.",
+      "email": "Replies go to this address.",
+      "type": "Each type is explained below the form.",
+      "message": "At least 10 characters."
     },
     "errors": {
       "submitFailed": "Failed to submit form{details}",
@@ -1381,7 +1368,7 @@
     },
     "context": {
       "span": "{accuracy}% or better in {rounds, plural, one {# round} other {# rounds}}, studied {memorizeSeconds} s",
-      "recent": "Average of your last {rounds, plural, one {# round} other {# rounds}}, any setting",
+      "recent": "{rounds, plural, one {From your only round so far, any setting} other {Average of your last # rounds, any setting}}",
       "setting": "{source, select, calibration {Practice rounds} other {Game rounds}} at {pieceCount} pieces, {memorizeSeconds} s, from {rounds, plural, one {# round} other {# rounds}}",
       "longest": "Longest streak: {days, plural, one {# day} other {# days}}",
       "daily": "{status, select, played {Played today} unfinished {Opened today} other {Open today}}, longest streak {longest, plural, one {# day} other {# days}}",
@@ -1570,5 +1557,20 @@
       "note": "Each link posts your caption with a link to your card, and X, Facebook, LinkedIn and the others show the card in the link preview. For Instagram, or anywhere else that needs the image file, download or copy it first.",
       "newTab": "(opens in a new tab)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Page not found",
+      "heading": "This page does not exist.",
+      "body": "The link may be out of date, or the address may have a typo. You can play a round or go back to the home page."
+    },
+    "error": {
+      "title": "Something went wrong",
+      "heading": "Something went wrong on this page.",
+      "body": "Your rounds and settings are stored in this browser and are not affected. Try again, or go back to the home page.",
+      "retry": "Try again"
+    },
+    "play": "Play a round",
+    "home": "Go to the home page"
   }
 }

@@ -12,7 +12,9 @@
       "leaderboard": "Classifica",
       "dashboard": "Dashboard",
       "menu": "Menu",
-      "site": "Sito"
+      "site": "Sito",
+      "streakChip": "Giorno {count}",
+      "streakChipLabel": "Giorno {count} della tua serie{forgiven, plural, =0 {} one {, # giorno saltato perdonato} many {, # giorni saltati perdonati} other {, # giorni saltati perdonati}}. Apri la dashboard."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tutti i diritti riservati.",
@@ -46,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Allena la tua memoria e visualizzazione negli scacchi",
-      "subtitle": "Memorizza una posizione, ricostruiscila a memoria e ricevi subito un punteggio. Migliora la tua visione della scacchiera turno dopo turno.",
-      "freeToPlay": "Gratis e senza bisogno di un account. Puoi anche confrontare il tuo punteggio nella <link>classifica</link>.",
-      "gamesPlayed": "Partite giocate: {count}"
+      "freeToPlay": "Gratis e senza bisogno di un account. Puoi anche confrontare il tuo punteggio nella <link>classifica</link>."
     },
     "cta": {
-      "play": "Gioca a Memory Chess",
       "leaderboard": "Vedi la classifica",
-      "playFree": "Gioca un turno gratis",
       "chooseSettings": "Scegli pezzi e tempo"
     },
     "video": {
@@ -62,35 +60,8 @@
       "iframeTitle": "Come giocare a Memory Chess",
       "credit": "Video: «A New Way To Train Your Vision», di Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Come funziona",
-      "title": "Un allenamento semplice per la tua memoria scacchistica",
-      "subtitle": "Ogni turno ha tre passaggi semplici: studia la posizione, ricostruiscila e impara dal tuo punteggio.",
-      "steps": {
-        "observe": {
-          "title": "Osserva",
-          "description": "Nota dove si trova ogni pezzo. Cerca gruppi, linee e case vuote che ti facciano da riferimento."
-        },
-        "recreate": {
-          "title": "Ricostruisci",
-          "description": "Quando la scacchiera si svuota, rimetti ogni pezzo sulla casa che ricordi."
-        },
-        "improve": {
-          "title": "Migliora",
-          "description": "Controlla il punteggio, guarda cosa ti è sfuggito e riprova con più pezzi o meno tempo."
-        }
-      }
-    },
-    "board": {
-      "study": "Studia la scacchiera",
-      "rebuild": "Ricostruisci a memoria"
-    },
     "learn": {
-      "eyebrow": "Area didattica",
-      "title": "Guide di scacchi semplici",
-      "description": "Scopri modi pratici per migliorare visione della scacchiera, visualizzazione, calcolo e memoria. Ogni guida include esercizi da provare subito.",
-      "browseCta": "Sfoglia le guide",
-      "beginnerCta": "Inizia dalla guida per principianti"
+      "browseCta": "Sfoglia le guide"
     },
     "faq": {
       "title": "Domande su Memory Chess",
@@ -128,6 +99,822 @@
           "answer": "Qualche turno ben concentrato con regolarità è un buon punto di partenza. Tieni le sessioni abbastanza brevi da riuscire a studiare ogni posizione con attenzione."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Laboratorio",
+        "onPage": "In questa pagina",
+        "notebook": "Quaderno",
+        "method": "Metodo",
+        "calibrate": "Calibra",
+        "tiers": "Difficoltà",
+        "record": "Registro",
+        "library": "Biblioteca",
+        "hints": {
+          "notebook": "Perché misurare",
+          "method": "Una partita, passo per passo",
+          "calibrate": "Fai una misurazione",
+          "tiers": "Livelli e impostazioni",
+          "record": "Le tue misurazioni",
+          "library": "Guide ed esercizi"
+        },
+        "play": "Gioca una partita gratis"
+      },
+      "tags": {
+        "proposed": "Proposto",
+        "sample": "Esempio",
+        "illustrative": "Illustrativo",
+        "free": "Gratis · senza account",
+        "rig": "Su misura"
+      },
+      "sections": {
+        "notebook": "Quaderno",
+        "method": "Metodo",
+        "recording": "Registrazione sul campo",
+        "calibrate": "Calibrazione",
+        "tiers": "Difficoltà",
+        "record": "Registro del laboratorio",
+        "library": "Biblioteca",
+        "faq": "Domande",
+        "next": "Prossima prova"
+      },
+      "hero": {
+        "platforms": "Browser · computer · mobile",
+        "display": "Dai un numero alla <em>tua visione mentale.</em>",
+        "lede": "Memory Chess è un gioco gratuito di memoria per gli scacchi e un allenatore della memoria scacchistica. Studia una posizione per qualche secondo, la scacchiera si svuota, poi ricostruiscila a memoria. Ogni partita è un breve test di memoria con una misurazione di precisione da 0 a 100% e una mappa di ogni casa giusta o sbagliata.",
+        "secondaryCta": "Fai una misurazione di calibrazione",
+        "settingsLink": "<link>{label}</link>.",
+        "facts": {
+          "study": "tempo di studio",
+          "pieces": "pezzi per partita",
+          "accuracy": "misurazione di precisione",
+          "plays": "partite giocate",
+          "languages": "lingue"
+        },
+        "showcase": {
+          "aria": "Veselin Topalov contro Alexey Shirov, Linares 1998, con uno studio guidato della posizione",
+          "event": "Linares · Turno 10",
+          "venue": "4 marzo 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "contro",
+          "pieceLabel": "{piece} in {square}",
+          "tags": {
+            "study": "Studio",
+            "trap": "La trappola",
+            "sacrifice": "Il sacrificio",
+            "walk": "La marcia",
+            "runners": "Due corridori",
+            "rebuild": "Ricostruzione",
+            "inspect": "Raggio d’azione"
+          },
+          "counter": {
+            "study": "Studio {n}/{total}",
+            "game": "Partita {n}/{total}",
+            "resume": "Fai di nuovo clic per riprendere"
+          },
+          "controls": {
+            "steps": "Passi",
+            "step": "Passo {n} di {total}: {tag}",
+            "previous": "Passo precedente",
+            "next": "Passo successivo",
+            "play": "Riproduci",
+            "pause": "Pausa"
+          },
+          "inspect": {
+            "title": "{piece} in {square}.",
+            "reach": "{moves, plural, =0 {Nessuna mossa} one {# mossa} many {# mosse} other {# mosse}}, {captures, plural, =0 {nessuna cattura} one {# cattura} many {# catture} other {# catture}}.",
+            "checks": "Mosse con scacco: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "L’angolo bianco",
+            "longDiagonal": "La grande diagonale",
+            "blackWall": "Il muro nero",
+            "runner": "Il corridore"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Shirov, con il Nero, ha due pedoni in più, ma gli alfieri di colore contrario spesso bastano per la patta. Dieci pezzi."
+              },
+              "whiteCorner": {
+                "caption": "Il re bianco in g1 protegge il pedone g2. Il pedone h è avanzato fino a h4."
+              },
+              "longDiagonal": {
+                "caption": "L’alfiere bianco in c3 controlla la grande diagonale e attacca il pedone f6.",
+                "thought": "Alfiere camposcuro, da c3 a f6."
+              },
+              "blackWall": {
+                "caption": "Il re nero in e6, il suo alfiere in f5, pedoni in d5, f6 e g6.",
+                "thought": "Il re protegge f6 e d5. Il pedone g6 protegge l’alfiere."
+              },
+              "runner": {
+                "caption": "Un pedone nero in a4, lontano da tutto."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "Il re nero non può avanzare. In d5 e f5 ci sono i suoi stessi pezzi, e l’alfiere c3 controlla e5.",
+                "thought": "Solo Kd6, Kd7, Ke7 e Kf7. Ognuna va indietro o di lato."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! L’alfiere si sacrifica su una casa dove il pedone g può prenderlo. Era d’intralcio al re.",
+                "thought": "Ora f5 è libera. Quella è la porta."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Attraverso la porta aperta dall’alfiere, il re raggiunge il centro."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Un solo alfiere non può fermare due pedoni passati.",
+                "thought": "Topalov prese l’alfiere e abbandonò dopo 53...Kb3."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "La scacchiera si svuota. Ricostruisci la posizione iniziale: l’angolo bianco, la grande diagonale, il muro nero, il corridore."
+              },
+              "back": {
+                "caption": "Gruppo dopo gruppo, ogni pezzo torna sulla sua casa."
+              },
+              "check": {
+                "caption": "Ora controlla. Alfieri di colore contrario, c3 casa scura e f5 casa chiara. L’alfiere c3 attacca ancora f6. Quattro pezzi bianchi, sei neri."
+              }
+            }
+          }
+        }
+      },
+      "notebook": {
+        "title": "Non puoi migliorare ciò che non misuri mai.",
+        "lede": "Quasi tutto l’allenamento scacchistico lavora sulle decisioni. Pochissimo verifica se riesci davvero a tenere la scacchiera in testa. Questa abilità sta alla base del calcolo, del gioco alla cieca e della capacità di vedere le tattiche, e di solito viene lasciata al caso.",
+        "observation": {
+          "kicker": "Osservazione",
+          "title": "I giocatori perdono di vista i pezzi a metà del calcolo.",
+          "body": "Tre mosse più avanti, un alfiere sulla grande diagonale sparisce senza rumore dall’immagine che hai in testa. La scacchiera davanti a te era giusta. Quella nella tua mente no."
+        },
+        "hypothesis": {
+          "kicker": "Ipotesi",
+          "title": "Ricordare la scacchiera è un’abilità che si allena e si misura.",
+          "body": "Tieni a mente una posizione per un attimo, ricostruiscila, controlla il risultato. Ripeti con più pezzi e meno tempo. <hl>Non diciamo nulla sul tuo cervello.</hl> Ti diamo una misurazione da seguire nel tempo."
+        },
+        "method": {
+          "kicker": "Metodo",
+          "title": "Una partita, un numero chiaro.",
+          "body": "Studio, scacchiera vuota, ricostruzione, punteggio. Le case giuste sono segnate, quelle sbagliate pure, niente è nascosto. Una partita dura meno di un minuto, quindi puoi farne tante."
+        }
+      },
+      "method": {
+        "title": "Una partita al microscopio.",
+        "lede": "Scorri una partita su una posizione reale: il finale dell’Immortale di Kasparov, Kasparov contro Topalov a Wijk aan Zee nel 1999. Le sovrapposizioni mostrano un modo per memorizzarla, non la registrazione dell’attenzione di qualcuno.",
+        "status": "Fase {number} · {name}",
+        "clock": "t = {seconds} s",
+        "scoreChip": "{correct} case su {total}",
+        "countChip": "Bianco {white} · Nero {black}",
+        "groups": {
+          "standoff": {
+            "name": "Braccio di ferro",
+            "sentence": "Il re bianco attacca d2. Il re nero e c3 la difendono."
+          },
+          "mirror": {
+            "name": "Scale",
+            "sentence": "Scale a specchio, da h2 su fino a f4, da h7 giù fino a f5."
+          },
+          "longShots": {
+            "name": "Tiri lunghi",
+            "sentence": "La donna in a7 mira a h7. La torre in d2 mira a h2."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "Studio",
+            "title": "Undici pezzi, dieci secondi.",
+            "body": "La posizione finale dell’Immortale di Kasparov, dopo 44.Qa7. Qui Topalov abbandonò. Abbraccia tutta la scacchiera, non una casa alla volta. Negli esperimenti di de Groot, i maestri riproducevano una posizione di partita mostrata per poco molto meglio dei giocatori più deboli.",
+            "note": "Fig. Bianco: re c1, donna a7, pedoni f4, g3, h2. Nero: re e1, torre d2, pedoni c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Punti fermi",
+            "title": "Comincia dai re.",
+            "body": "Fissa prima due punti. Entrambi i re sono sulla prima traversa, a due colonne di distanza, e il re nero è arrivato fino in e1. Colloca tutto il resto in relazione a loro.",
+            "note": "Fig. i due re cerchiati. Tutto il resto aspetta."
+          },
+          "chunk": {
+            "name": "Raggruppa",
+            "title": "Undici pezzi diventano tre idee.",
+            "body": "Raggruppa i pezzi in base a ciò che si fanno a vicenda. I re si contendono d2. Due scale di pedoni si incontrano. La donna e la torre puntano ciascuna a un pedone h indifeso. Chase e Simon (1973) hanno scoperto che i giocatori forti ricordano le posizioni a blocchi di pezzi collegati.",
+            "note": "Fig. l’arancione attacca, il blu difende, il grigio unisce una catena di pedoni, la barra segna una coppia bloccata. La torre in d2 sta in due gruppi."
+          },
+          "encode": {
+            "name": "Codifica",
+            "title": "Trasforma ogni gruppo in una frase.",
+            "body": "Dai un nome a ogni gruppo in base al suo compito. Gobet e Simon (1996) descrivono giocatori forti che tengono a mente strutture più ampie, simili a schemi. Le frasi in sé sono una tecnica, non un risultato della ricerca.",
+            "note": "Fig. i tre gruppi, con il loro nome. Le loro frasi:"
+          },
+          "blank": {
+            "name": "Vuoto",
+            "title": "La scacchiera si svuota.",
+            "body": "Niente pezzi, niente indizi. Ricostruisci dalle frasi, non da un’immagine. Ripetile in ordine: prima i re, poi ogni gruppo.",
+            "note": "Qui non c’è altro da fare che tenere a mente tre frasi."
+          },
+          "rebuild": {
+            "name": "Ricostruisci",
+            "title": "Ricostruisci gruppo per gruppo.",
+            "body": "I re. Il braccio di ferro. Le scale. I tiri lunghi. Colloca ogni gruppo con la sua frase prima di passare al successivo.",
+            "note": "Fig. la ricostruzione prima del controllo. Un pedone è sulla casa sbagliata. Vedi quale?"
+          },
+          "score": {
+            "name": "Punteggio",
+            "title": "Confrontala con le tue frasi, poi assegna il punteggio.",
+            "body": "Ricontrolla ogni relazione sulla scacchiera ricostruita. La torre è ancora difesa due volte? Da c2 il pedone protegge d1, non d2. Il conteggio, cinque e sei, torna ancora, quindi solo il controllo delle relazioni scova l’errore.",
+            "note": "Fig. le spunte reggono, la croce rossa si è rotta. Il riempimento arancione è la casa sbagliata (c2), il cerchio è dove doveva stare (c3). {correct} case su {total} fanno il {accuracy}%."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Fai una misurazione di calibrazione.",
+        "lede": "Il livello Medio, sulla posizione della partita reale: {pieceCount} pezzi, tra cui i due re, {memorizeSeconds} secondi. Poi la scacchiera si svuota e la ricostruisci. Riceverai una scheda con la tua precisione e la memoria per tipo di pezzo. Funziona con mouse, touch e tastiera.",
+        "phaseReady": "Pronto · pezzi: {pieceCount} · {memorizeSeconds} s di studio",
+        "phaseLabel": "Fase {number} · {name}",
+        "start": "Inizia la calibrazione",
+        "restart": "Ricomincia",
+        "again": "Ripeti",
+        "done": "Fatto",
+        "submit": "Invia la misurazione",
+        "clear": "Svuota scacchiera",
+        "controlsLabel": "Comandi della partita",
+        "boardLabel": "Scacchiera di calibrazione. Usa le frecce per spostarti tra le case.",
+        "paletteLabel": "Tavolozza dei pezzi",
+        "paletteItem": "{piece}, disponibili: {count}",
+        "usedUp": {
+          "white": {
+            "king": "Il re bianco è già sulla scacchiera.",
+            "queen": "La donna bianca è già sulla scacchiera.",
+            "rook": "Entrambe le torri bianche sono sulla scacchiera.",
+            "bishop": "Entrambi gli alfieri bianchi sono sulla scacchiera.",
+            "knight": "Entrambi i cavalli bianchi sono sulla scacchiera.",
+            "pawn": "Tutti gli otto pedoni bianchi sono sulla scacchiera."
+          },
+          "black": {
+            "king": "Il re nero è già sulla scacchiera.",
+            "queen": "La donna nera è già sulla scacchiera.",
+            "rook": "Entrambe le torri nere sono sulla scacchiera.",
+            "bishop": "Entrambi gli alfieri neri sono sulla scacchiera.",
+            "knight": "Entrambi i cavalli neri sono sulla scacchiera.",
+            "pawn": "Tutti gli otto pedoni neri sono sulla scacchiera."
+          }
+        },
+        "squareEmpty": "{square}, vuota",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Studia la posizione. {memorizeSeconds} secondi.",
+        "liveRebuild": "Scacchiera svuotata. Scegli un pezzo, poi una casa.",
+        "liveScore": "Precisione {accuracy} percento. {correct} case corrette su {total}.",
+        "startFailed": "Impossibile caricare una posizione. Controlla la connessione e riprova.",
+        "steps": [
+          "Premi Inizia. Studia la posizione finché l’indicatore non si svuota.",
+          "Scegli un pezzo dalla tavolozza, poi tocca una casa. Tocca un pezzo piazzato per toglierlo.",
+          "Invia. Piazzare più pezzi di quanti ne avesse la posizione abbassa la tua precisione, quindi piazza solo quello che ricordi."
+        ],
+        "readout": {
+          "title": "Scheda dei risultati",
+          "statusIdle": "In attesa della prova",
+          "statusRecording": "Registrazione",
+          "statusDone": "Prova completata",
+          "correct": "Case corrette",
+          "time": "Tempo di ricostruzione",
+          "wrong": "Pezzi errati",
+          "exposure": "Tempo di studio",
+          "byType": "Memoria per tipo di pezzo",
+          "byTypeEmpty": "La memoria per tipo di pezzo compare qui dopo la tua prima prova.",
+          "nextEmpty": "Dopo la misurazione compare una difficoltà consigliata.",
+          "suggested": "Consiglio:",
+          "stepUp": "passa a {tier}, {pieceCount} pezzi in {memorizeSeconds} s. Prima confermalo con altre due partite pulite.",
+          "stay": "resta su {tier}, {pieceCount} pezzi in {memorizeSeconds} s. Gioca tre partite e osserva la tendenza.",
+          "start": "comincia da {tier}, {pieceCount} pezzi in {memorizeSeconds} s. Raggruppa i pezzi a coppie mentre studi.",
+          "playTier": "Gioca {tier}",
+          "legendCorrect": "corretta",
+          "legendWrong": "posizione errata",
+          "legendMissed": "casa mancata"
+        },
+        "pieceTypes": {
+          "king": "Re",
+          "queen": "Donna",
+          "rook": "Torre",
+          "bishop": "Alfiere",
+          "knight": "Cavallo",
+          "pawn": "Pedone"
+        }
+      },
+      "tiers": {
+        "title": "Quattro livelli. Un’impostazione su misura.",
+        "lede": "Il carico sale, il tempo di studio scende. Sali di livello quando le tue misurazioni restano stabili, non dopo una sola partita fortunata.",
+        "columns": {
+          "tier": "Difficoltà",
+          "pieces": "Pezzi",
+          "exposure": "Studio",
+          "load": "Carico"
+        },
+        "loadLabel": "{pieceCount} case occupate su 32",
+        "play": "Gioca",
+        "custom": {
+          "label": "Personalizzato",
+          "description": "Imposta le tue variabili per isolare un punto debole."
+        }
+      },
+      "record": {
+        "title": "Torna per vedere la linea di tendenza.",
+        "lede": "Una misurazione è un’istantanea. Dieci misurazioni sono una misura vera. Ogni partita che giochi resta su questo dispositivo, e questi pannelli si riempiono con le tue partite. Prima della tua prima partita, i pannelli mostrano valori di <tag>Esempio</tag>, non giocatori reali. Dopo, un pannello che non riesce ancora a leggere il tuo registro dice cosa gli manca.",
+        "span": {
+          "fig": "Fig. {number} · Span di memoria",
+          "title": "Quanti pezzi riesci a tenere a mente.",
+          "figure": "{pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}}",
+          "held": "{accuracy} percento o meglio in {count, plural, one {# partita} many {# partite} other {# partite}}. Il tempo di studio più breve tra queste: {studyTime}.",
+          "up": "{count, plural, one {# pezzo} many {# pezzi} other {# pezzi}} in più rispetto alla settimana scorsa",
+          "same": "Nessuna variazione dalla settimana scorsa",
+          "aria": "Scala di esempio dello span di memoria su 12 sessioni, che sale da 4 a 8 pezzi.",
+          "note": "Registro di esempio · 12 sessioni",
+          "realAria": "Il tuo span di memoria {sessions, plural, one {nella sessione in cui l’hai raggiunto per la prima volta} many {nelle # sessioni da quando l’hai raggiunto per la prima volta} other {nelle # sessioni da quando l’hai raggiunto per la prima volta}}, {shape, select, flat {stabile a {now} pezzi} other {in crescita da {first} a {now} pezzi}}.",
+          "need": "Ottieni il {accuracy} percento o meglio {count, plural, =2 {due volte} one {un’altra volta} many {altre # volte} other {altre # volte}} con uno stesso numero di pezzi, da {minPieces} in su.",
+          "onlyKings": "Finora le tue partite avevano solo i due re, e uno span richiede più pezzi.",
+          "first": "Span raggiunto per la prima volta",
+          "last": "Ultimo"
+        },
+        "held": {
+          "fig": "Fig. {number} · Pezzi ricordati",
+          "title": "I pezzi che piazzi correttamente, con qualsiasi impostazione.",
+          "aria": "Linea di esempio dei pezzi ricordati su 12 partite, una media su 5 partite che sale da 4,0 a 7,0 pezzi.",
+          "note": "Registro di esempio · 12 partite · qualsiasi impostazione",
+          "partial": "Linea tratteggiata: media su meno di {window} partite",
+          "realAria": "I tuoi pezzi ricordati {count, plural, one {nella tua ultima partita} many {nelle tue ultime # partite} other {nelle tue ultime # partite}} con qualsiasi impostazione, come media su {window} partite, l’ultimo valore {latest} pezzi.",
+          "average": "Media recente: {average} pezzi",
+          "up": "{change} in più rispetto alle {window} partite precedenti",
+          "down": "{change} in meno rispetto alle {window} partite precedenti",
+          "flat": "nessuna variazione rispetto alle {window} partite precedenti",
+          "realNote": "Qualsiasi impostazione · Da {count, plural, one {# partita} many {# partite} other {# partite}}",
+          "needRounds": "{count, plural, one {Ancora # partita e compare} many {Ancora # partite e compare} other {Ancora # partite e compare}} la tua linea.",
+          "needRoundsAndDay": "{count, plural, one {Ancora # partita, giocata in un altro giorno, e compare} many {Ancora # partite, almeno una in un altro giorno, e compare} other {Ancora # partite, almeno una in un altro giorno, e compare}} la tua linea.",
+          "needDay": "Gioca in un altro giorno per tracciare la tua linea.",
+          "first": "Meno recente",
+          "last": "Più recente"
+        },
+        "speed": {
+          "fig": "Fig. {number} · Velocità",
+          "title": "Secondi per pezzo ricostruito.",
+          "aria": "Linea di esempio dei secondi di ricostruzione per pezzo corretto su 12 partite, che scende da 4,1 a 2,6 secondi.",
+          "note": "Registro di esempio · 12 partite · Medio",
+          "realAria": "I tuoi secondi di ricostruzione per pezzo corretto nelle tue ultime {count} partite di {source, select, calibration {allenamento} other {gioco}} a {pieceCount} pezzi e {memorizeSeconds} secondi, l’ultimo valore {latest} secondi.",
+          "average": "Media recente: {average} per pezzo",
+          "down": "{change} più veloce delle {window} partite precedenti",
+          "up": "{change} più lento delle {window} partite precedenti",
+          "flat": "lo stesso ritmo delle {window} partite precedenti",
+          "accuracy": "Precisione nelle stesse partite: {average}%",
+          "accuracyChange": {
+            "up": "in salita di {change, plural, one {# punto} many {# punti} other {# punti}}",
+            "down": "in calo di {change, plural, one {# punto} many {# punti} other {# punti}}",
+            "flat": "nessuna variazione"
+          },
+          "fastWrong": "Veloce e sbagliato non è un miglioramento.",
+          "config": "{source, select, calibration {Allenamento} other {Gioco}} · pezzi: {pieceCount} · {studyTime}, l’impostazione che giochi di più ultimamente · Da {count, plural, one {# partita} many {# partite} other {# partite}}",
+          "need": "{count, plural, one {Ancora # partita} many {Ancora # partite} other {Ancora # partite}} a {pieceCount} pezzi, {studyTime} {source, select, calibration {in allenamento} other {in gioco}} {count, plural, one {e compare} many {e compare} other {e compare}} la tua linea della velocità.",
+          "needRight": "La velocità conta solo le partite con almeno un pezzo giusto. Gioca {count, plural, one {# partita così} many {# partite così} other {# partite così}} per iniziare la tua linea.",
+          "first": "Meno recente",
+          "last": "Più recente"
+        },
+        "curve": {
+          "fig": "Fig. {number} · Curva dell’oblio",
+          "title": "Ripassi brevi e distanziati battono una lunga sessione.",
+          "desc": "Le scacchiere in cui fai meno dell’80% tornano per il ripasso 1, 3, 7 e 14 giorni dopo la prima volta che le vedi. La tua curva mostra quanto ricordi a ogni intervallo.",
+          "aria": "Grafico illustrativo: senza ripasso il ricordo cala in fretta, e dopo ogni ripasso distanziato nei giorni 1, 3 e 7 cala più lentamente.",
+          "note": "Modello illustrativo dell’effetto di spaziatura. Non sono dati misurati.",
+          "noReview": "senza ripasso",
+          "spaced": "ripassi distanziati",
+          "review": "ripasso",
+          "day": "g{day}",
+          "warming": "{reviews, plural, one {Ancora # ripasso dopo lo stesso intervallo e compare} many {Ancora # ripassi dopo lo stesso intervallo e compare} other {Ancora # ripassi dopo lo stesso intervallo e compare}} il tuo primo punto misurato.",
+          "measuredAria": "Il tuo ricordo sulle scacchiere ripassate: {points}.",
+          "pointFirst": "prima volta {accuracy}% su {count, plural, one {# scacchiera} many {# scacchiere} other {# scacchiere}}",
+          "pointAfter": "dopo {day, plural, one {# giorno} many {# giorni} other {# giorni}} {accuracy}% su {count, plural, one {# ripasso} many {# ripassi} other {# ripassi}}",
+          "count": "n={count}",
+          "measuredNote": "Da {reviews, plural, one {# ripasso} many {# ripassi} other {# ripassi}} di {boards, plural, one {# scacchiera} many {# scacchiere} other {# scacchiere}}. Un punto richiede {min} ripassi dopo il suo intervallo.",
+          "due": "Ripasso {number} di {cap} oggi",
+          "capped": "Ripassi di oggi completati",
+          "play": "Fai un ripasso",
+          "waiting": "Prossimo ripasso {days, plural, one {domani} many {tra # giorni} other {tra # giorni}}. {queued, plural, one {# scacchiera} many {# scacchiere} other {# scacchiere}} in coda.",
+          "empty": "Ancora nessuna scacchiera da ripassare. Una scacchiera in cui fai meno dell’80% torna qui il giorno dopo."
+        },
+        "spark": {
+          "fig": "Fig. {number} · Precisione nel tempo",
+          "title": "La tua linea, partita dopo partita.",
+          "titleSessions": "La tua linea, sessione dopo sessione.",
+          "aria": "Minigrafico di esempio della precisione su 12 partite, che sale dal 52 al 79 percento.",
+          "note": "Registro di esempio · 12 partite · Medio",
+          "first": "P01",
+          "last": "P12",
+          "needRounds": "{count, plural, one {Ancora # partita} many {Ancora # partite} other {Ancora # partite}} a {pieceCount} pezzi, {studyTime} e compare la tua tendenza {source, select, calibration {in allenamento} other {in gioco}}.",
+          "needRoundsAndDay": "{count, plural, one {Ancora # partita a {pieceCount} pezzi, {studyTime}, giocata in un altro giorno,} many {Ancora # partite a {pieceCount} pezzi, {studyTime}, almeno una in un altro giorno,} other {Ancora # partite a {pieceCount} pezzi, {studyTime}, almeno una in un altro giorno,}} e compare la tua tendenza {source, select, calibration {in allenamento} other {in gioco}}.",
+          "needDay": "Gioca {pieceCount} pezzi, {studyTime} {source, select, calibration {in allenamento} other {in una partita di gioco}} in un altro giorno per tracciare la tua tendenza.",
+          "config": "{source, select, calibration {Allenamento} other {Gioco}} · pezzi: {pieceCount} · {studyTime}, l’impostazione che giochi di più con una tendenza",
+          "realAria": "La tua precisione nelle tue ultime {count} partite di {source, select, calibration {allenamento} other {gioco}} a {pieceCount} pezzi e {memorizeSeconds} secondi, l’ultimo valore {latest} percento.",
+          "realAriaSessions": "La tua precisione {count, plural, one {nella tua ultima sessione} many {nelle tue ultime # sessioni} other {nelle tue ultime # sessioni}} con partite di {source, select, calibration {allenamento} other {gioco}} a {pieceCount} pezzi e {memorizeSeconds} secondi, l’ultimo valore {latest} percento.",
+          "sessions": "{count, plural, one {# sessione} many {# sessioni} other {# sessioni}}",
+          "realFirst": "Meno recente",
+          "realLast": "Più recente"
+        },
+        "heat": {
+          "fig": "Fig. {number} · Mappa degli errori",
+          "title": "Dove ti sfuggono le case.",
+          "aria": "Mappa di calore di esempio delle case mancate: più scura lungo la colonna h e attorno a h1, con punti caldi in b7 e f7, più chiara al centro.",
+          "note": "Esempio: gli errori si accumulano sulla colonna h e attorno all’angolo del re in h1. Allena quel bordo come prossimo passo.",
+          "need": "Circa {count, plural, one {# partita in più} many {# partite in più} other {# partite in più}} perché ogni colonna e ogni traversa abbia 10 pezzi da leggere.",
+          "needStart": "Gioca ancora qualche partita per iniziare la tua mappa degli errori.",
+          "files": "Colonne",
+          "ranks": "Traverse",
+          "line": "{line}: {missed} sbagliati su {shown}",
+          "lineThin": "{line}: {shown} visti, non abbastanza per una lettura",
+          "realAria": "La tua quota di errori su ogni casa. Le case grigie hanno meno di 10 pezzi visti.",
+          "realNote": "Più scuro significa sbagliata più spesso. Il grigio indica meno di 10 pezzi visti."
+        },
+        "daily": {
+          "fig": "Fig. {number} · Scacchiera del giorno",
+          "title": "Una scacchiera al giorno, uguale per tutti.",
+          "desc": "Ogni giorno a mezzanotte UTC si apre una nuova posizione. Tutti hanno gli stessi 6 pezzi e 10 secondi di studio, e hai un solo tentativo.",
+          "play": "Gioca la scacchiera del giorno",
+          "open": "Non hai ancora giocato la scacchiera di oggi.",
+          "played": "Hai piazzato correttamente {correct} su {pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}}, il {accuracy} percento.",
+          "unfinished": "Hai aperto la scacchiera di oggi e l’hai lasciata prima del risultato. Un tentativo al giorno su questo dispositivo.",
+          "streak": "Serie giornaliera: {current, plural, one {# giorno} many {# giorni} other {# giorni}}{forgiven, plural, =0 {} one {, # giorno saltato perdonato} many {, # giorni saltati perdonati} other {, # giorni saltati perdonati}} · la più lunga: {longest, plural, one {# giorno} many {# giorni} other {# giorni}}",
+          "streakLongest": "Serie giornaliera più lunga: {longest, plural, one {# giorno} many {# giorni} other {# giorni}}",
+          "gridAria": "Il tuo risultato su ogni casa, a partire da a8: {correct} corrette, {wrong, plural, one {# pezzo sbagliato} many {# pezzi sbagliati} other {# pezzi sbagliati}}, {missed} mancate, {extra} in più.",
+          "key": {
+            "c": "corretta",
+            "w": "pezzo sbagliato",
+            "m": "mancata",
+            "x": "in più"
+          },
+          "share": "Memory Chess, scacchiera del giorno {day}\n{correct} su {pieceCount} giusti, {accuracy}%\n{row}\nthememorychess.com",
+          "copy": "Copia il risultato",
+          "showGrid": "Mostra la griglia",
+          "copied": "Copiato. Incollalo dove vuoi.",
+          "copyFailed": "La copia non ha funzionato qui. Il risultato è selezionato qui sotto, copialo tu."
+        },
+        "streak": {
+          "fig": "Fig. {number} · Giorni di fila",
+          "title": "Una partita al giorno costruisce una serie.",
+          "desc": "Qualsiasi partita completata, di gioco o di allenamento, conta per il suo giorno. Un giorno saltato su 7 viene perdonato.",
+          "aria": "Griglia di esempio di una serie di due settimane",
+          "note": "Esempio · la casella tratteggiata è la prova di oggi, ancora in sospeso",
+          "realDesc": "Qualsiasi partita completata conta per il suo giorno. Un giorno saltato su 7 viene perdonato.",
+          "need": "Gioca ancora {days, plural, one {# giorno} many {# giorni} other {# giorni}} per leggere la tua serie.",
+          "realAria": "I tuoi ultimi 14 giorni: {count, plural, one {# giorno giocato} many {# giorni giocati} other {# giorni giocati}}{forgiven, plural, =0 {} one {, # perdonato} many {, # perdonati} other {, # perdonati}}.",
+          "realNote": "Serie attuale: {current, plural, one {# giorno} many {# giorni} other {# giorni}}{forgiven, plural, =0 {} one { giocati, # giorno saltato perdonato} many { giocati, # giorni saltati perdonati} other { giocati, # giorni saltati perdonati}} · la più lunga: {longest, plural, one {# giorno} many {# giorni} other {# giorni}}",
+          "key": {
+            "played": "giocato",
+            "forgiven": "perdonato",
+            "missed": "saltato",
+            "today": "oggi"
+          }
+        },
+        "week": {
+          "ring": "{played} giorni su {goal} questa settimana",
+          "ringOver": "Obiettivo raggiunto, {played} giorni questa settimana",
+          "sampleRing": "Settimana di esempio · {played} giorni su {goal}",
+          "left": "{remaining, plural, =0 {Obiettivo raggiunto questa settimana.} one {Ancora # giorno per raggiungere l’obiettivo.} many {Ancora # giorni per raggiungere l’obiettivo.} other {Ancora # giorni per raggiungere l’obiettivo.}}",
+          "outOfReach": "L’obiettivo non è più raggiungibile, {daysLeft, plural, =0 {non resta nessun giorno} one {resta solo # giorno} many {restano solo # giorni} other {restano solo # giorni}}. Lunedì inizia una nuova settimana.",
+          "goal": "Giorni a settimana",
+          "option": "{days} giorni a settimana"
+        },
+        "welcome": {
+          "line": "Ciao di nuovo. Giorno {day} del tuo registro. L’ultima volta {accuracy}% a {pieceCount} pezzi, {studyTime}.",
+          "lineNoDay": "Ciao di nuovo. L’ultima volta {accuracy}% a {pieceCount} pezzi, {studyTime}."
+        },
+        "board": {
+          "fig": "Fig. {number} · Classifica",
+          "title": "Confronta le tue misurazioni con il mondo.",
+          "desc": "Ogni difficoltà è ordinata per pezzi corretti, poi per meno pezzi sbagliati, poi per tempo di memorizzazione più breve, poi per tempo di risoluzione più breve. Ogni riga mostra il paese del giocatore.",
+          "howTo": "Invia un punteggio dalla schermata del risultato, poi controlla dove si piazza, nel mondo o nel tuo paese.",
+          "sketchPieces": "{count} pezzi",
+          "open": "Apri la classifica",
+          "difficulty": "Difficoltà",
+          "scope": "Classifica tra",
+          "world": "Mondo",
+          "entry": "La tua voce migliore a livello {difficulty}: {correct, plural, one {# pezzo corretto} many {# pezzi corretti} other {# pezzi corretti}}, inviata il {date}.",
+          "check": "Controlla la mia posizione",
+          "checking": "Controllo in corso...",
+          "ranked": "Posizione {rank, number} su {total, plural, one {# voce} many {# voci} other {# voci}} a livello {difficulty}, nel mondo.",
+          "rankedIn": "Posizione {rank, number} su {total, plural, one {# voce} many {# voci} other {# voci}} a livello {difficulty}, {country}.",
+          "checkedAt": "Controllato alle {time}.",
+          "boardSize": "La classifica pubblica mostra i primi {limit}.",
+          "up": "Su di {places, plural, one {# posizione} many {# posizioni} other {# posizioni}} dalle {time}.",
+          "down": "Giù di {places, plural, one {# posizione} many {# posizioni} other {# posizioni}} dalle {time}.",
+          "same": "Stessa posizione delle {time}.",
+          "missing": "La tua voce a livello {difficulty} non è più in classifica, quindi questo dispositivo non la conserva più. A volte le classifiche vengono ripulite o azzerate. Controllato alle {time}.",
+          "limited": "Troppi controlli dalla tua connessione. Riprova tra {wait, plural, one {# secondo} many {# secondi} other {# secondi}}.",
+          "noCountry": "La classifica non ha un paese per questa voce, quindi può essere classificata solo a livello mondiale.",
+          "offline": "Sei offline, quindi non è stato inviato nulla. Connettiti e riprova.",
+          "failed": "Impossibile raggiungere la classifica, quindi la tua posizione non è stata letta. Riprova più tardi."
+        },
+        "plans": {
+          "fig": "Fig. {number} · Programmi",
+          "title": "Scegli un piano e portalo a termine.",
+          "desc": "Un piano alla volta. I progressi si contano dalle tue partite, quindi interrompere un piano non cancella mai una partita.",
+          "baseline": {
+            "kicker": "Piano A · 7 giorni",
+            "title": "Settimana di riferimento",
+            "steps": [
+              "Una partita di livello Medio al giorno.",
+              "Annota la misurazione e resisti alla tentazione di riprovare.",
+              "Giorno 7: confronta con il giorno 1."
+            ],
+            "progress": "{played} giorni su {days} con una partita di livello Medio",
+            "compare": "Giorno {firstDay} {first}%, giorno {lastDay} {latest}%: {direction, select, up {in salita di {change, plural, one {# punto} many {# punti} other {# punti}}} down {in calo di {change, plural, one {# punto} many {# punti} other {# punti}}} other {nessuna variazione}}.",
+            "compareNone": "Nessuna partita di livello Medio dall’inizio del piano, quindi non c’è nulla da confrontare.",
+            "compareOne": "Una sola partita di livello Medio dall’inizio del piano, quindi non c’è ancora nulla da confrontare."
+          },
+          "edge": {
+            "kicker": "Piano B · 14 giorni",
+            "title": "Esercizio sulle colonne di bordo",
+            "steps": [
+              "Impostazione su misura: 8 pezzi, 15 s.",
+              "Rivedi la tua mappa degli errori ogni 3 giorni.",
+              "Abbinalo alla guida sulla visione della scacchiera."
+            ],
+            "progress": "Impostazione giocata in {played, plural, one {# giorno} many {# giorni} other {# giorni}} su {elapsed}. Obiettivo: {target} giorni su {days}.",
+            "share": "Colonne di bordo sbagliate: {before}% in {beforeRounds, plural, one {# partita} many {# partite} other {# partite}} prima del piano, {now}% in {nowRounds, plural, one {# partita} many {# partite} other {# partite}} da allora.",
+            "shareMissing": "Gli errori sulle colonne di bordo si confrontano quando ogni periodo ha {needed} partite con un pezzo sulla colonna a o h. Finora {before} prima del piano, {now} da allora.",
+            "guide": "Leggi come vedere tutta la scacchiera"
+          },
+          "ladder": {
+            "kicker": "Piano C · senza scadenza",
+            "title": "Scala discendente",
+            "steps": [
+              "Tieni il 90% per tre partite di fila.",
+              "Poi riduci il tempo di studio di 2 secondi.",
+              "Quando il tempo di studio arriva al minimo, aggiungi pezzi."
+            ],
+            "rung": "Gradino: {pieceCount} pezzi, {studyTime}.",
+            "run": "{run} partite di fila su {needed} al {accuracy} percento o meglio.",
+            "climbed": "Gradino superato: {needed} partite di fila al {accuracy} percento o meglio.",
+            "next": "Prossimo gradino: {pieceCount} pezzi, {studyTime}.",
+            "top": "In cima alla scala: nessuna scacchiera ha più di {pieceCount} pezzi."
+          },
+          "status": {
+            "day": "Giorno {day}",
+            "dayOf": "Giorno {day} di {length}",
+            "overtime": "Giorno {day}, oltre i {length} previsti",
+            "done": "Completato il giorno {day}.",
+            "finished": "Concluso in anticipo il giorno {day}.",
+            "stopped": "Interrotto il giorno {day}."
+          },
+          "start": "Inizia «{title}»",
+          "again": "Ricomincia «{title}»",
+          "busy": "Un piano alla volta. Interrompi «{title}» per iniziare questo.",
+          "stop": "Interrompi il piano",
+          "confirmStop": "Vuoi davvero interromperlo?",
+          "keep": "Continua",
+          "finish": "Concludi in anticipo",
+          "play": "Gioca {pieceCount} pezzi, {studyTime}"
+        },
+        "goal": {
+          "fig": "Fig. {number} · Obiettivo",
+          "title": "Punta a una misurazione.",
+          "desc": "Scegli un numero di pezzi e una precisione. La barra si riempie con la tua partita migliore a quel numero di pezzi o più da quando hai fissato l’obiettivo.",
+          "sample": "Obiettivo di esempio: {pieceCount} pezzi al {accuracy} percento. Il migliore finora: {best} percento, {percent}% del percorso.",
+          "target": "Obiettivo: {pieceCount} pezzi o più al {accuracy, select, 100 {100 percento} other {{accuracy} percento o meglio}}, fissato il {date}.",
+          "progress": "Il migliore da allora: {best} percento a {pieceCount} pezzi, {percent}% del percorso.",
+          "bar": "{percent}% del percorso verso l’obiettivo",
+          "need": "Nessuna partita a {pieceCount} pezzi o più da quando hai fissato questo obiettivo.",
+          "reached": "Raggiunto il {date}: {accuracy} percento a {pieceCount} pezzi.",
+          "form": "Nuovo obiettivo",
+          "pieces": "Pezzi, almeno",
+          "accuracy": "Precisione, almeno",
+          "percent": "{value}%",
+          "set": "Fissa l’obiettivo",
+          "newGoal": "Fissa un nuovo obiettivo",
+          "clear": "Cancella l’obiettivo",
+          "cancel": "Annulla",
+          "saved": "Obiettivo fissato.",
+          "cleared": "Obiettivo cancellato."
+        },
+        "mine": "Il tuo registro",
+        "fromRounds": "Da {count, plural, one {# partita} many {# partite} other {# partite}}",
+        "dashboardLink": "Apri la tua dashboard",
+        "play": "Gioca una partita",
+        "tomorrow": "Torna domani.",
+        "stale": "Ultima partita {count, plural, one {# giorno} many {# giorni} other {# giorni}} fa.",
+        "unlock": {
+          "label": "Ancora da sbloccare",
+          "count": "{unlocked} figure sbloccate su {total}",
+          "done": "Tutte le figure qui sotto sono sbloccate.",
+          "showAll": "Mostra tutte le {count} figure",
+          "showFewer": "Mostra meno",
+          "span": "{qualifyingRounds, plural, one {# partita} many {# partite} other {# partite}} al {accuracy}%+ con {minPieces}+ pezzi",
+          "piecesHeld": "{rounds, plural, one {# partita} many {# partite} other {# partite}} in {days, plural, one {# giorno} many {# giorni} other {# giorni}}",
+          "trend": "{rounds, plural, one {# partita} many {# partite} other {# partite}} con una stessa impostazione in {days, plural, one {# giorno} many {# giorni} other {# giorni}}",
+          "speed": "{rounds, plural, one {# partita} many {# partite} other {# partite}} con una stessa impostazione",
+          "streak": "{days, plural, one {# giorno giocato} many {# giorni giocati} other {# giorni giocati}}",
+          "curve": "{reviews, plural, one {# ripasso} many {# ripassi} other {# ripassi}} dopo lo stesso intervallo",
+          "typeRecall": "{exposures, plural, one {# apparizione} many {# apparizioni} other {# apparizioni}} di un pezzo diverso dal re",
+          "missMap": "{exposures, plural, one {# apparizione} many {# apparizioni} other {# apparizioni}} per colonna e traversa",
+          "trendRounds": "{rounds, plural, one {# partita} many {# partite} other {# partite}} di {source, select, calibration {allenamento} other {gioco}} in più a {pieceCount} pezzi, {studyTime}",
+          "trendDays": "{days, plural, one {# giorno in più} many {# giorni in più} other {# giorni in più}} di partite di {source, select, calibration {allenamento} other {gioco}} a {pieceCount} pezzi, {studyTime}",
+          "trendRoundsDays": "{rounds, plural, one {# partita} many {# partite} other {# partite}} di {source, select, calibration {allenamento} other {gioco}} in più a {pieceCount} pezzi, {studyTime}, {days, plural, one {# giorno in più} many {# giorni in più} other {# giorni in più}}",
+          "spanLeft": "{qualifyingRounds, plural, one {# partita in più} many {# partite in più} other {# partite in più}} al {accuracy}%+ con {minPieces}+ pezzi",
+          "spanLarger": "{largerRounds, plural, one {# partita} many {# partite} other {# partite}} con {minPieces}+ pezzi",
+          "piecesHeldRounds": "{rounds, plural, one {# partita in più} many {# partite in più} other {# partite in più}}",
+          "piecesHeldDays": "{days, plural, one {# giorno in più} many {# giorni in più} other {# giorni in più}}",
+          "piecesHeldRoundsDays": "{rounds, plural, one {# partita in più} many {# partite in più} other {# partite in più}}, {days, plural, one {# giorno in più} many {# giorni in più} other {# giorni in più}}",
+          "speedRounds": "{rounds, plural, one {# partita} many {# partite} other {# partite}} di {source, select, calibration {allenamento} other {gioco}} in più a {pieceCount} pezzi, {studyTime}",
+          "speedRight": "{rightRounds, plural, one {# partita} many {# partite} other {# partite}} con un pezzo giusto",
+          "streakLeft": "{days, plural, one {# giorno giocato in più} many {# giorni giocati in più} other {# giorni giocati in più}}",
+          "curveLeft": "{reviews, plural, one {# ripasso in più} many {# ripassi in più} other {# ripassi in più}} dopo lo stesso intervallo",
+          "typeRecallLeft": "{exposures, plural, one {# apparizione in più} many {# apparizioni in più} other {# apparizioni in più}} di un pezzo diverso dal re",
+          "missMapLeft": "{exposures, plural, one {# apparizione in più} many {# apparizioni in più} other {# apparizioni in più}} sulla colonna o traversa meno vista",
+          "insights": "{rounds, plural, one {# partita} many {# partite} other {# partite}}",
+          "insightsLeft": "{rounds, plural, one {# partita in più} many {# partite in più} other {# partite in più}}",
+          "notebook": "{rounds, plural, one {# partita} many {# partite} other {# partite}}"
+        },
+        "bests": {
+          "fig": "Fig. {number} · Record personali",
+          "title": "La tua migliore misurazione per impostazione.",
+          "desc": "I record sono tenuti per impostazione, perché 6 pezzi e 20 pezzi sono prove diverse. Le misurazioni di allenamento di questa pagina restano separate dalle partite di gioco.",
+          "empty": "La tua migliore misurazione per ogni impostazione compare dopo la tua prima partita.",
+          "setting": "{source, select, calibration {Allenamento} other {Gioco}} · pezzi: {pieceCount} · {studyTime}",
+          "first": "prima misurazione",
+          "showAll": "Mostra tutte le {count} impostazioni",
+          "showFewer": "Mostra meno",
+          "reading": "{accuracy}% · ricostruita in {time}"
+        },
+        "types": {
+          "fig": "Fig. {number} · Memoria per tipo di pezzo",
+          "title": "Quali pezzi ti sfuggono.",
+          "need": "Circa {count, plural, one {# partita in più} many {# partite in più} other {# partite in più}} perché un pezzo diverso dal re arrivi a 20 apparizioni.",
+          "needStart": "La memoria per tipo di pezzo compare dopo la tua prima partita.",
+          "onlyKings": "Finora le tue partite avevano solo i due re, e la memoria per tipo di pezzo richiede più pezzi.",
+          "thin": "{shown}/20 visti",
+          "baseline": "riferimento",
+          "kings": "I re sono in ogni partita, quindi fanno da riferimento. Ricordati {recalled} su {shown}.",
+          "sampleNote": "Esempio: pedoni e cavalli sono i primi a sfuggire."
+        },
+        "insights": {
+          "fig": "Fig. {number} · Osservazioni",
+          "title": "Cosa spicca, e cosa provare.",
+          "desc": "Un’osservazione compare solo quando i suoi numeri superano un campione minimo, e indica i conteggi su cui si basa.",
+          "sample": "Da un registro di esempio: le colonne a e h sbagliate {times, select, 2 {circa il doppio} other {circa {times} volte più spesso}} delle colonne centrali, d ed e, il {edge}% dei pezzi contro il {centre}%.",
+          "sampleList": "Osservazione di esempio",
+          "sampleNote": "Osservazione di esempio, non dalle tue partite.",
+          "list": "Osservazioni dal tuo registro",
+          "need": "Le osservazioni leggono il tuo registro da {threshold} partite. {count, plural, one {Manca ancora # partita} many {Mancano ancora # partite} other {Mancano ancora # partite}}.",
+          "none": "Ancora niente di rilevante. Continua a giocare.",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {Sbagli {edge, select, 0 {meno dell’1%} other {il {edge}%}} di {edgeShown} pezzi sulle colonne a e h e nessuno di {centreShown} sulle colonne centrali, d ed e.} 2 {Sbagli le colonne a e h circa il doppio delle colonne centrali, d ed e: {edge, select, 0 {meno dell’1%} other {il {edge}%}} di {edgeShown} pezzi contro {centre, select, 0 {meno dell’1%} other {il {centre}%}} di {centreShown}.} other {Sbagli le colonne a e h circa {times} volte più spesso delle colonne centrali, d ed e: {edge, select, 0 {meno dell’1%} other {il {edge}%}} di {edgeShown} pezzi contro {centre, select, 0 {meno dell’1%} other {il {centre}%}} di {centreShown}.}}",
+            "weakType": "Tra i pezzi diversi dal re visti {minimum} volte o più, {type, select, q {le donne} r {le torri} b {gli alfieri} n {i cavalli} other {i pedoni}} sfuggono di più: hai ricordato {recalled} pezzi su {shown}, il {percent}%.",
+            "fasterLessAccurate": "A {pieceCount} pezzi, {studyTime}, le tue ultime {window} partite hanno richiesto {fasterTime} in meno per pezzo corretto rispetto alle {window} precedenti, e la precisione è scesa di {fell} punti.",
+            "colourGap": "Ricordi i pezzi {weaker, select, w {bianchi} other {neri}} meno spesso di quelli {weaker, select, w {neri} other {bianchi}}: {weakerPercent}% di {weakerShown} contro {strongerPercent}% di {strongerShown}, re esclusi.",
+            "plateau": "A {pieceCount} pezzi, {studyTime}, le tue ultime {window} partite hanno fatto in media il {last}% e le {window} precedenti il {before}%, e il tuo span è rimasto a {span} pezzi nell’ultima settimana di gioco. Un pezzo in più potrebbe smuoverlo."
+          },
+          "actions": {
+            "rig": "Gioca {pieceCount} pezzi, {studyTime}",
+            "patterns": "Leggi gli esercizi di riconoscimento degli schemi",
+            "vision": "Leggi come vedere tutta la scacchiera"
+          }
+        },
+        "notebook": {
+          "fig": "Fig. {number} · Quaderno di laboratorio",
+          "title": "Cosa è successo, e quando.",
+          "empty": "Le voci compaiono mentre giochi.",
+          "sampleList": "Voci di quaderno di esempio",
+          "list": "Il tuo quaderno, dalle più recenti",
+          "new": "Nuovo",
+          "newNote": "«Nuovo» segna le voci dalla tua ultima visita.",
+          "showAll": "Mostra tutte le {count} voci",
+          "showFewer": "Mostra meno",
+          "day": "Giorno {day}.",
+          "olderBefore": "Le voci precedenti al {date} non sono conservate in questo browser.",
+          "older": "Le voci più vecchie non sono conservate in questo browser.",
+          "entries": {
+            "firstRound": "Prima partita: {accuracy} percento a {pieceCount} pezzi.",
+            "rounds": "Partita numero {count, number} giocata.",
+            "first90": "Primo {threshold} percento o meglio a {pieceCount} pezzi.",
+            "best": "Nuovo record di {source, select, calibration {allenamento} other {gioco}} a {pieceCount} pezzi, {studyTime}: {by, select, time {di nuovo {accuracy} percento, ricostruita in {solveTime}} other {{accuracy} percento, contro {previous} di prima}}.",
+            "span": "{from, select, 0 {Lo span di memoria ha raggiunto {to} pezzi} other {Lo span di memoria è passato da {from} a {to} pezzi}}.",
+            "streak": "{forgiven, plural, =0 {{days} giorni di fila.} one {{days} giorni di serie, # giorno saltato perdonato.} many {{days} giorni di serie, # giorni saltati perdonati.} other {{days} giorni di serie, # giorni saltati perdonati.}}",
+            "rungUp": "Gradino salito: {pieceCount} pezzi in {studyTime}.",
+            "goalReached": "Obiettivo raggiunto: {accuracy} percento a {pieceCount} pezzi o più."
+          }
+        },
+        "tools": {
+          "title": "Conservato su questo dispositivo",
+          "body": "Niente account e niente server. Scarica una copia per spostarla in un altro browser o per tenerla al sicuro.",
+          "download": "Scarica il mio registro del laboratorio",
+          "import": "Importa",
+          "lastBackup": "Esportazione avviata il {date}",
+          "neverBackedUp": "Non ancora esportato",
+          "imported": "{added, plural, =0 {Niente di nuovo da importare. Quelle partite ci sono già.} one {Importata # partita.} many {Importate # partite.} other {Importate # partite.}}",
+          "skipped": "{count, plural, one {# partita del file non è leggibile ed è stata saltata.} many {# partite del file non sono leggibili e sono state saltate.} other {# partite del file non sono leggibili e sono state saltate.}}",
+          "importFailed": "Quel file non è un registro del laboratorio di Memory Chess.",
+          "tooLarge": "Quel file supera i 5 MB, più di qualsiasi registro del laboratorio, quindi non è stato importato nulla.",
+          "overCap": "{count, plural, one {# partita più vecchia è stata esclusa} many {# partite più vecchie sono state escluse} other {# partite più vecchie sono state escluse}} per restare entro il limite di 5.000 partite.",
+          "summaryIgnored": "Questo browser aveva già delle partite, quindi sono state unite solo le partite nuove, non i totali complessivi del file.",
+          "summaryDropped": "I totali complessivi del file erano illeggibili o di una versione precedente, quindi sono state importate solo le sue partite.",
+          "safari": "Su Safari, una scheda privata non conserva questo registro dopo la chiusura, e Safari cancella i dati salvati di un sito dopo circa 7 giorni senza visite. Esporta una copia per conservarlo.",
+          "unavailable": "Non viene salvato nelle finestre private. Questa finestra del browser non sta conservando le tue partite.",
+          "backup": "Backup tra dispositivi (in arrivo)",
+          "backupNoted": "Il backup tra dispositivi non esiste ancora. Grazie, il tuo interesse è stato registrato.",
+          "card": {
+            "open": "Condividi la mia misurazione",
+            "title": "La mia misurazione su Memory Chess",
+            "span": "Span di memoria: {pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}}, {accuracy}% o meglio in {count, plural, one {# partita} many {# partite} other {# partite}}",
+            "held": "Pezzi ricordati: media recente {average}, da {count, plural, one {# partita} many {# partite} other {# partite}}",
+            "speed": "Velocità: media recente {average} per pezzo {source, select, calibration {in allenamento} other {in gioco}} a {pieceCount} pezzi, {studyTime}, da {count, plural, one {# partita} many {# partite} other {# partite}}",
+            "site": "thememorychess.com",
+            "copy": "Copia la mia misurazione",
+            "copied": "Copiato. Incollalo dove vuoi.",
+            "copyFailed": "La copia non ha funzionato qui. La misurazione è selezionata qui sopra, copiala tu."
+          },
+          "nudge": {
+            "title": "Il tuo registro vive in questo browser",
+            "body": "Cancellare i dati del browser lo elimina. Aggiungi questo sito ai preferiti per tornare nello stesso browser, e usa «Scarica il mio registro del laboratorio» qui sopra per tenerne una copia.",
+            "safari": "Su iPhone e iPad, «Aggiungi alla schermata Home» salva il sito come un’app con un registro tutto suo, che la regola dei 7 giorni di Safari non cancella. Parte vuoto, quindi importaci la copia che hai scaricato.",
+            "dismiss": "Chiudi"
+          }
+        }
+      },
+      "library": {
+        "title": "Biblioteca di riferimento.",
+        "lede": "Il Centro di apprendimento abbina guide brevi a esercizi, così ogni misurazione ti indica qualcosa su cui allenarti.",
+        "ref": "Rif. {number}",
+        "read": "Leggi la guida",
+        "vision": {
+          "title": "Visione della scacchiera",
+          "body": "Vedi tutta la scacchiera insieme invece di un angolo alla volta."
+        },
+        "visualization": {
+          "title": "Visualizzazione",
+          "body": "Tieni in testa una posizione che cambia mentre i pezzi si muovono."
+        },
+        "calculation": {
+          "title": "Calcolo",
+          "body": "Guarda più avanti senza perdere di vista la scacchiera."
+        },
+        "memory": {
+          "title": "Memoria",
+          "body": "Tecniche di raggruppamento e di schemi che alzano le tue misurazioni."
+        },
+        "blindfold": {
+          "title": "Allenamento agli scacchi alla cieca",
+          "body": "Un piano in quattro fasi, dal ricordo della scacchiera a partite intere alla cieca."
+        },
+        "blundering": "Come smettere di commettere sviste"
+      },
+      "final": {
+        "title": "La tua prima misurazione richiede meno di un minuto.",
+        "body": "Niente account, niente download, niente registrazione. Apri una partita, studia, ricostruisci, leggi il numero. Poi decidi se ne vuoi una seconda."
+      },
+      "resultCard": {
+        "title": "Il tuo registro del laboratorio",
+        "device": "Conservato su questo dispositivo",
+        "lines": "Questa partita nel tuo registro",
+        "unshown": "Non è stato possibile mostrare il tuo registro del laboratorio per questa partita.",
+        "newBest": {
+          "up": "Nuovo record a {pieceCount} pezzi, {studyTime}: {accuracy}%, contro il {previous}% di prima",
+          "faster": "Nuovo record a {pieceCount} pezzi, {studyTime}: di nuovo {accuracy}%, {fasterTime} più veloce",
+          "plain": "Nuovo record a {pieceCount} pezzi, {studyTime}: {accuracy}%"
+        },
+        "vsRecent": {
+          "above": "{points, plural, one {# punto} many {# punti} other {# punti}} sopra la tua media delle ultime {rounds} partite con questa impostazione",
+          "below": "{points, plural, one {# punto} many {# punti} other {# punti}} sotto la tua media delle ultime {rounds} partite con questa impostazione",
+          "level": "In linea con la tua media delle ultime {rounds} partite con questa impostazione"
+        },
+        "span": "Span salito a {pieceCount} pezzi",
+        "streak": "{current, plural, one {Giorno 1} many {Giorno # di fila} other {Giorno # di fila}}{graceUsed, select, true {, giorno di tolleranza usato} other {}}, {days} giorni su {goal} questa settimana",
+        "next": {
+          "label": "Prossimo passo",
+          "why": {
+            "more": "90% o meglio, quindi un pezzo in più con lo stesso tempo di studio.",
+            "fewer": "Sotto il 50%, quindi un pezzo in meno con lo stesso tempo di studio.",
+            "edgeFiles": "Sbagli le colonne a e h più spesso delle colonne centrali.",
+            "weakType": "{type, select, q {Le donne} r {Le torri} b {Gli alfieri} n {I cavalli} other {I pedoni}} sfuggono di più: ne hai ricordati {recalled} su {shown}.",
+            "fasterLessAccurate": "A {pieceCount} pezzi, {studyTime}, hai guadagnato velocità per pezzo corretto e la precisione è scesa di {fell} punti.",
+            "colourGap": "Ricordi meno spesso i pezzi {weaker, select, w {bianchi} other {neri}}: {weakerPercent}% contro {strongerPercent}%.",
+            "plateau": "Il tuo span è fermo a {span} pezzi."
+          },
+          "play": "Gioca {pieceCount} pezzi, {studyTime}",
+          "again": "Gioca di nuovo a {pieceCount} pezzi, {studyTime}",
+          "patterns": "Leggi gli esercizi di riconoscimento degli schemi",
+          "vision": "Leggi come vedere tutta la scacchiera"
+        }
+      },
+      "daily": {
+        "locked": "Hai già aperto la scacchiera di oggi. Un tentativo al giorno su questo dispositivo.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Nuova scacchiera tra meno di un minuto} one {Nuova scacchiera tra # min} many {Nuova scacchiera tra # min} other {Nuova scacchiera tra # min}}} one {Nuova scacchiera tra # h {minutes} min} many {Nuova scacchiera tra # h {minutes} min} other {Nuova scacchiera tra # h {minutes} min}}",
+        "seeRecord": "Apri il tuo registro del laboratorio",
+        "chooseRound": "Gioca un’altra partita"
+      },
+      "review": {
+        "none": "Al momento non c’è nessuna scacchiera da ripassare su questo dispositivo.",
+        "capped": "I {cap} ripassi di oggi sono completati su questo dispositivo.",
+        "cappedNext": "Le scacchiere ancora da ripassare tornano domani, a partire da quella che aspetta da più tempo.",
+        "schedule": "Le scacchiere in cui fai meno dell’80% tornano 1, 3, 7 e 14 giorni dopo la prima volta che le vedi."
+      }
     }
   },
   "game": {
@@ -257,6 +1044,10 @@
         "cta": "Riesci a fare di meglio?",
         "text": "{kind, select, daily {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) sulla scacchiera giornaliera di Memory Chess del {date}.} review {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) su una scacchiera di ripasso di Memory Chess.} other {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) su Memory Chess.}} Riesci a fare di meglio?",
         "alt": "Scheda del risultato di Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Partita salvata. Le tue statistiche aggiornate sono qui sotto.",
+        "action": "Mostra"
       }
     },
     "comparison": {
@@ -381,7 +1172,14 @@
       "title": "Impostazioni di Memory Chess",
       "description": "Personalizza le impostazioni e le preferenze della tua partita a Memory Chess."
     },
+    "title": "Impostazioni",
+    "intro": "Queste impostazioni valgono per ogni partita che giochi in questo browser.",
     "showCoordinates": "Mostra le coordinate della scacchiera",
+    "coordinatesHelp": "Lettere e numeri lungo i bordi della scacchiera mentre memorizzi e posizioni i pezzi. La schermata del risultato li mostra sempre.",
+    "on": "Sì",
+    "off": "No",
+    "savedOn": "Salvato. La scacchiera mostrerà le coordinate.",
+    "savedOff": "Salvato. La scacchiera nasconderà le coordinate.",
     "home": "Home",
     "playGame": "Gioca"
   },
@@ -417,6 +1215,12 @@
       "emailInvalid": "Inserisci un indirizzo e-mail valido.",
       "typeRequired": "Scegli un tipo di richiesta.",
       "messageTooShort": "Il messaggio deve avere almeno 10 caratteri."
+    },
+    "hints": {
+      "name": "Almeno 2 caratteri.",
+      "email": "Le risposte arrivano a questo indirizzo.",
+      "type": "Ogni tipo è spiegato sotto il modulo.",
+      "message": "Almeno 10 caratteri."
     },
     "errors": {
       "submitFailed": "Impossibile inviare il modulo{details}",
@@ -564,7 +1368,7 @@
     },
     "context": {
       "span": "{accuracy}% o meglio in {rounds, plural, one {# partita} many {# partite} other {# partite}}, memorizzato {memorizeSeconds} s",
-      "recent": "Media delle tue {rounds, plural, one {# ultima partita} many {# ultime partite} other {# ultime partite}}, qualsiasi impostazione",
+      "recent": "{rounds, plural, one {Dalla tua unica partita finora, qualsiasi impostazione} many {Media delle tue # ultime partite, qualsiasi impostazione} other {Media delle tue # ultime partite, qualsiasi impostazione}}",
       "setting": "{source, select, calibration {Partite di allenamento} other {Partite di gioco}} a {pieceCount} pezzi, {memorizeSeconds} s, da {rounds, plural, one {# partita} many {# partite} other {# partite}}",
       "longest": "Serie più lunga: {days, plural, one {# giorno} many {# giorni} other {# giorni}}",
       "daily": "{status, select, played {Giocata oggi} unfinished {Aperta oggi} other {Disponibile oggi}}, serie più lunga {longest, plural, one {# giorno} many {# giorni} other {# giorni}}",
@@ -753,5 +1557,20 @@
       "note": "Ogni link pubblica il tuo testo con un link alla tua scheda, e X, Facebook, LinkedIn e gli altri mostrano la scheda nell'anteprima del link. Per Instagram o ovunque serva il file dell'immagine, scaricalo o copialo prima.",
       "newTab": "(si apre in una nuova scheda)"
     }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Pagina non trovata",
+      "heading": "Questa pagina non esiste.",
+      "body": "Il link potrebbe essere vecchio o l’indirizzo potrebbe contenere un errore di battitura. Puoi giocare una partita o tornare alla home page."
+    },
+    "error": {
+      "title": "Qualcosa è andato storto",
+      "heading": "Qualcosa è andato storto in questa pagina.",
+      "body": "Le tue partite e le impostazioni sono salvate in questo browser e non sono state toccate. Riprova o torna alla home page.",
+      "retry": "Riprova"
+    },
+    "play": "Gioca una partita",
+    "home": "Vai alla home page"
   }
 }

@@ -111,15 +111,15 @@ function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData;
   return (
     <section aria-labelledby="result-lab-title" className={`${RESULT_LAB_FRAME} flex flex-col gap-2`}>
       <header className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <h3 id="result-lab-title" className="text-base font-semibold text-text-primary">
+        <h3 id="result-lab-title" className="text-base font-semibold text-[var(--lp-ink)]">
           {t("title")}
         </h3>
-        <p className="text-xs text-text-secondary">{t("device")}</p>
+        <p className="text-xs text-[var(--lp-ink-2)]">{t("device")}</p>
       </header>
-      <ul aria-label={t("lines")} className="space-y-1 text-sm text-text-primary">
+      <ul aria-label={t("lines")} className="space-y-1 text-sm text-[var(--lp-ink)]">
         {linesOf(t, card).map((line) => (
           <li key={line} className="flex gap-2">
-            <span aria-hidden="true" className="text-peach-500">
+            <span aria-hidden="true" className="text-[var(--lp-accent)]">
               ·
             </span>
             {line}
@@ -127,8 +127,8 @@ function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData;
         ))}
       </ul>
       {next && (
-        <p className="border-t border-bg-light pt-3 text-sm text-text-secondary">
-          <span className="font-semibold text-text-primary">{t("next.label")}.</span>
+        <p className="border-t border-[var(--lp-line)] pt-3 text-sm text-[var(--lp-ink-2)]">
+          <span className="font-semibold text-[var(--lp-ink)]">{t("next.label")}.</span>
           {why && ` ${why}`} <NextAction t={t} next={next} onPlay={onPlay} />
         </p>
       )}

@@ -65,6 +65,8 @@
         "bishop-color-complex": "Puolen molemmat lähetit eivät koskaan seiso samanvärisillä ruuduilla.",
         "simultaneous-check": "Molemmat kuninkaat eivät koskaan ole shakissa yhtä aikaa.",
         "checked-side-not-to-move": "Jos toinen kuningas on shakissa, siirtovuoro on aina shakissa olevalla puolella.",
+        "home-rank-pawn-check": "Sotilas, joka ei ole koskaan lähtenyt aloitusriviltään, ei koskaan shakkaa.",
+        "impossible-double-check": "Kuningasta ei koskaan shakkaa useampi kuin kaksi nappulaa, ja kaksoisshakissa on aina mukana lähetti, torni tai kuningatar.",
         "piece-count": "Laudalla on täsmälleen se määrä nappuloita, jonka vaikeustaso pyysi.",
         "invalid-fen": "Asema on laillinen shakkiasema, joka voidaan asettaa laudalle."
       },

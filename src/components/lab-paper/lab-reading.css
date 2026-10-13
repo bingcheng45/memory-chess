@@ -6,12 +6,24 @@
 .lab-paper .lab-read-head { padding-bottom: 48px; border-bottom: 1px solid var(--lp-line); }
 .lab-paper .lab-read-head h1 { font: 650 48px/1.08 var(--lp-ui); letter-spacing: -0.025em; }
 .lab-paper .lab-read-head .lab-lede { margin-top: 16px; }
+.lab-paper .lab-read-updated { margin-top: 16px; font: 500 15px/1.4 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lab-read-updated time { color: var(--lp-ink); font-variant-numeric: tabular-nums; }
+.lab-paper .lab-read-contents { margin-top: 32px; }
+.lab-paper .lab-read-contents-label { font: 600 13px/1.4 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lab-read-contents ul { margin-top: 8px; columns: 2; column-gap: 32px; list-style: none; padding: 0; }
+.lab-paper .lab-read-contents li { break-inside: avoid; }
+.lab-paper .lab-read-contents a { display: inline-block; padding: 6px 0; font: 500 15px/1.4 var(--lp-ui); text-decoration: none; }
+.lab-paper .lab-read-contents a:hover { text-decoration: underline; }
 
 .lab-paper .lab-read-sec { padding-top: 48px; }
 .lab-paper .lab-read-sec h2 { font: 650 28px/1.2 var(--lp-ui); letter-spacing: -0.015em; }
 .lab-paper .lab-prose { margin-top: 16px; font-size: 18px; line-height: 1.7; color: var(--lp-ink-2); }
 .lab-paper .lab-prose > * + * { margin-top: 20px; }
 .lab-paper .lab-prose a, .lab-paper .lab-changes a { text-decoration-line: underline; }
+.lab-paper .lab-prose ul { padding-left: 20px; list-style: disc; }
+.lab-paper .lab-prose li + li { margin-top: 12px; }
+.lab-paper .lab-prose li::marker { color: var(--lp-muted); }
+.lab-paper .lab-prose strong { font-weight: 600; color: var(--lp-ink); }
 
 /* changelog: a release is a meta line (version, date, tag), its title and summary, then its groups of changes */
 .lab-paper .lab-release { padding: 48px 0; border-bottom: 1px solid var(--lp-line); }
@@ -39,12 +51,46 @@
 .lab-paper .lab-change-table tbody tr { border-top: 1px solid var(--lp-line); }
 .lab-paper .lab-change-table td { font-family: var(--lp-data); font-variant-numeric: tabular-nums; }
 
+/* changelog release index (ReleaseIndex): a "Jump to a release" disclosure above the releases, and from 1120px a
+   sticky rail to their right. The active release carries an accent bar as well as its colour. */
+.lab-paper .lab-log-index { margin-top: 32px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
+.lab-paper .lab-log-index-label { display: none; }
+.lab-paper .lab-log-jump { display: flex; align-items: center; gap: 12px; width: 100%; min-height: 48px; padding: 0 16px; border: 0; border-radius: inherit; background: none; font: 600 16px/1.3 var(--lp-ui); color: var(--lp-ink); text-align: left; cursor: pointer; }
+.lab-paper .lab-log-jump:hover { background: var(--lp-surface-2); }
+.lab-paper .lab-log-jump-count { margin-left: auto; font-size: 14px; font-weight: 400; color: var(--lp-muted); }
+.lab-paper .lab-log-jump[aria-expanded="true"] .lab-chev { transform: rotate(180deg); }
+.lab-paper .lab-log-index:not([data-open]) .lab-log-list { display: none; }
+.lab-paper .lab-log-list { margin: 0; padding: 8px; list-style: none; border-top: 1px solid var(--lp-line); }
+.lab-paper .lab-log-list a { display: block; padding: 10px 12px 10px 14px; border-left: 2px solid transparent; border-radius: 0 var(--lp-r-sm) var(--lp-r-sm) 0; color: var(--lp-ink-2); text-decoration: none; }
+.lab-paper .lab-log-list a:hover { background: var(--lp-surface-2); color: var(--lp-ink); }
+.lab-paper .lab-log-list a[aria-current="true"] { border-left-color: var(--lp-accent); background: var(--lp-accent-soft); color: var(--lp-ink); }
+.lab-paper .lab-log-meta { display: flex; flex-wrap: wrap; gap: 0 8px; font: 400 13px/1.4 var(--lp-ui); color: var(--lp-muted); font-variant-numeric: tabular-nums; }
+.lab-paper .lab-log-version { font-weight: 600; color: var(--lp-ink); }
+.lab-paper .lab-log-list a[aria-current="true"] .lab-log-version { color: var(--lp-accent); }
+.lab-paper .lab-log-title { display: block; margin-top: 2px; font: 500 15px/1.35 var(--lp-ui); }
+
+@media (min-width: 1120px) {
+  .lab-paper .lab-read > .lab-log { display: grid; grid-template-columns: minmax(0, 704px) 256px; justify-content: space-between; column-gap: 64px; max-width: none; }
+  .lab-paper .lab-log-releases { grid-row: 1; grid-column: 1; }
+  .lab-paper .lab-log-index {
+    grid-row: 1; grid-column: 2; align-self: start; position: sticky; top: calc(var(--lp-header-h) + 32px);
+    max-height: calc(100dvh - var(--lp-header-h) - 64px); overflow-y: auto; overscroll-behavior: contain;
+    margin-top: 48px; padding: 0 0 8px; background: none; border: 0; border-radius: 0;
+  }
+  .lab-paper .lab-log-index-label { display: block; padding: 0 0 8px 16px; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); }
+  .lab-paper .lab-log-jump { display: none; }
+  .lab-paper .lab-log-index:not([data-open]) .lab-log-list { display: block; }
+  .lab-paper .lab-log-list { padding: 0; border-top: 0; border-left: 1px solid var(--lp-line); }
+  .lab-paper .lab-log-list a { margin-left: -1px; padding: 8px 12px 8px 15px; }
+}
+
 @media (max-width: 767px) {
   .lab-paper .lab-read { padding-top: 40px; padding-bottom: 64px; }
   .lab-paper .lab-read-head { padding-bottom: 32px; }
   .lab-paper .lab-read-head h1 { font-size: 36px; line-height: 1.1; }
   .lab-paper .lab-read-sec { padding-top: 40px; }
   .lab-paper .lab-read-sec h2 { font-size: 24px; }
+  .lab-paper .lab-read-contents ul { columns: 1; }
   .lab-paper .lab-prose { font-size: 17px; line-height: 1.65; }
   .lab-paper .lab-release { padding: 40px 0; }
   .lab-paper .lab-release-title { font-size: 22px; }

@@ -65,6 +65,8 @@
         "bishop-color-complex": "同一方的兩個主教，絕不會落在同色的格子上。",
         "simultaneous-check": "兩個國王絕不會同時被將軍。",
         "checked-side-not-to-move": "只要有一方的國王被將軍，輪到走棋的必定是那一方。",
+        "home-rank-pawn-check": "從未離開初始橫線的兵絕不會將軍。",
+        "impossible-double-check": "國王絕不會同時被兩個以上的棋子將軍，雙將中總有一個主教、城堡或皇后。",
         "piece-count": "棋盤上的棋子數，恰好等於該預設要求的數量。",
         "invalid-fen": "這個局面是合法的西洋棋局面，可以照樣擺上棋盤。"
       },

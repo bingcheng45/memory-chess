@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { buildAlternates } from '@/lib/seo/alternates';
+import { coordinatesPrefillScript } from '@/lib/settings/coordinatesPrefill';
 
 export async function generateMetadata({
   params,
@@ -33,5 +34,11 @@ export async function generateMetadata({
 }
 
 export default function SettingsLayout({ children }: { children: ReactNode }) {
-  return children;
+  return (
+    <>
+      {children}
+      {/* Runs once the switch above is parsed and before hydration, so a player who turned coordinates off never sees it on. */}
+      <script dangerouslySetInnerHTML={{ __html: coordinatesPrefillScript() }} />
+    </>
+  );
 }

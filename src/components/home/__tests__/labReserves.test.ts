@@ -25,19 +25,34 @@ const BOXES = {
   tools: ".lab-tools-slot",
 } as const;
 type Box = keyof typeof BOXES;
+type Tier = "wide" | "medium" | "narrow";
+type Heights = Partial<Record<Box, number>>;
+type Set = { max: Record<string, Heights>; empty: Record<string, Heights> };
 
-function tokensIn(pattern: RegExp): Partial<Record<Box, number>> {
-  const block = css.match(pattern)?.[1] ?? "";
-  return Object.fromEntries([...block.matchAll(/--lab-h-(\w+):\s*(\d+)px/g)].map(([, box, px]) => [box, Number(px)]));
+const escape = (text: string) => text.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+/** The reserves one selector sets at each tier: its plain block, then the 1000px and 640px blocks layered on. */
+function reservesOf(selector: string): Record<Tier, Heights> {
+  const tokensIn = (pattern: RegExp): Heights => {
+    const block = css.match(pattern)?.[1] ?? "";
+    return Object.fromEntries([...block.matchAll(/--lab-h-(\w+):\s*(\d+)px/g)].map(([, box, px]) => [box, Number(px)]));
+  };
+  const plain = escape(selector);
+  const wide = tokensIn(new RegExp(`^${plain} \\{([^}]*)\\}`, "m"));
+  const medium = { ...wide, ...tokensIn(new RegExp(`@media \\(max-width: 1000px\\) \\{\\s*${plain} \\{([^}]*)\\}`)) };
+  const narrow = { ...medium, ...tokensIn(new RegExp(`@media \\(max-width: 640px\\) \\{\\s*${plain} \\{([^}]*)\\}`)) };
+  return { wide, medium, narrow };
 }
 
-const wide = tokensIn(/^\.lab-paper \{([^}]*)\}/m);
-const medium = { ...wide, ...tokensIn(/@media \(max-width: 1000px\) \{\s*\.lab-paper \{([^}]*)\}/) };
-const narrow = { ...medium, ...tokensIn(/@media \(max-width: 640px\) \{\s*\.lab-paper \{([^}]*)\}/) };
-const reserves = { wide, medium, narrow };
+const ENGLISH = reservesOf(".lab-paper");
+const TRANSLATED = reservesOf(".lab-paper:not(:lang(en))");
+const SETS: [string, Set, Record<Tier, Heights>][] = [
+  ["English", measured.english, ENGLISH],
+  ["translated", measured.translated, TRANSLATED],
+];
 
 /** The widths at which the reserves change: each `@media (max-width: Npx)` block that sets them. */
-const BREAKPOINTS = [...css.matchAll(/@media \(max-width: (\d+)px\) \{\s*\.lab-paper \{/g)].map(([, px]) => Number(px));
+const BREAKPOINTS = [...new Set([...css.matchAll(/@media \(max-width: (\d+)px\) \{\s*\.lab-paper[^{]*\{/g)].map(([, px]) => Number(px)))];
 
 describe("lab record reserved heights", () => {
   it("were measured on both sides of every breakpoint the reserves change at", () => {
@@ -47,20 +62,22 @@ describe("lab record reserved heights", () => {
     expect(uncovered).toEqual([]);
   });
 
-  it("hold every box above its tallest measured state, with room to spare, at every layout width", () => {
-    const short = Object.entries(measured.max).flatMap(([tier, heights]) =>
-      Object.entries(heights).flatMap(([box, height]) => {
-        const reserve = reserves[tier as keyof typeof reserves][box as Box] ?? 0;
-        return reserve - height >= SLACK_PX ? [] : [`${tier} ${box}: reserve ${reserve}px, measured ${height}px`];
-      }),
+  it("hold every box above its tallest measured state, with room to spare, at every layout width, in English and in translation", () => {
+    const short = SETS.flatMap(([name, set, reserves]) =>
+      Object.entries(set.max).flatMap(([tier, heights]) =>
+        Object.entries(heights).flatMap(([box, height]) => {
+          const reserve = reserves[tier as Tier][box as Box] ?? 0;
+          return reserve - height >= SLACK_PX ? [] : [`${name} ${tier} ${box}: reserve ${reserve}px, measured ${height}px`];
+        }),
+      ),
     );
 
     expect(short).toEqual([]);
   });
 
-  it("leave no more than about 220px blank under any empty or Sample panel on phones", () => {
-    const blank = Object.entries(measured.empty.narrow).flatMap(([box, height]) => {
-      const gap = (reserves.narrow[box as Box] ?? 0) - height;
+  it("leave no more than about 220px blank under any empty or Sample panel on English phones", () => {
+    const blank = Object.entries(measured.english.empty.narrow).flatMap(([box, height]) => {
+      const gap = (ENGLISH.narrow[box as Box] ?? 0) - height;
       return gap > EMPTY_GAP_PX ? [`${box}: ${gap}px`] : [];
     });
 

@@ -89,6 +89,44 @@ describe("validateMemorizationPosition", () => {
     expect(result.violations).toContain("simultaneous-check");
   });
 
+  it("rejects the reported board where a pawn and a bishop check both kings", () => {
+    expect(
+      validateMemorizationPosition("7k/1p6/2K2B2/8/8/8/8/8 w - - 0 1")
+        .violations,
+    ).toEqual(["simultaneous-check", "home-rank-pawn-check"]);
+  });
+
+  it.each([
+    "7k/1p6/2K5/8/8/8/8/8 w - - 0 1",
+    "8/8/8/8/8/2k5/1P6/7K b - - 0 1",
+  ])("rejects a check from a pawn that never left its starting rank", (fen) => {
+    expect(validateMemorizationPosition(fen).violations).toEqual([
+      "home-rank-pawn-check",
+    ]);
+  });
+
+  it("accepts a check from a pawn that has advanced", () => {
+    expect(
+      validateMemorizationPosition("7k/8/1p6/2K5/8/8/8/8 w - - 0 1"),
+    ).toMatchObject({ valid: true, whiteInCheck: true });
+  });
+
+  it.each([
+    ["a pawn and a knight", "8/8/8/4k3/3P4/5N2/8/7K b - - 0 1"],
+    ["two knights", "8/8/8/4k3/8/3N1N2/8/7K b - - 0 1"],
+    ["three pieces", "8/8/8/4k3/8/5N2/1B6/4R2K b - - 0 1"],
+  ])("rejects a double check from %s", (_, fen) => {
+    expect(validateMemorizationPosition(fen).violations).toEqual([
+      "impossible-double-check",
+    ]);
+  });
+
+  it("accepts a double check from a rook and a knight", () => {
+    expect(
+      validateMemorizationPosition("8/8/8/4k3/8/5N2/8/4R2K b - - 0 1"),
+    ).toMatchObject({ valid: true, blackInCheck: true });
+  });
+
   it("checks material inventory and exact piece count", () => {
     const result = validateMemorizationPosition(
       "4k3/8/8/8/8/8/8/Q2QK3 w - - 0 1",

@@ -8,7 +8,6 @@
 
 
 /* header: the streak chip the homepage adds beside Play */
-.lab-paper .lab-streak-chip { display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 999px; font: 600 13px/1 var(--lp-ui); background: var(--lp-accent-soft); color: var(--lp-accent); text-decoration: none; white-space: nowrap; }
 
 /* sections */
 .lab-sec { padding: 96px 0; scroll-margin-top: var(--lp-header-h); }

@@ -30,7 +30,7 @@ describe("ChangelogPage", () => {
     ).toBeInTheDocument();
     expect(screen.getByText(/over 32,000 games played/)).toBeInTheDocument();
     expect(
-      screen.getByRole("link", { name: "Contact Us page" }),
+      screen.getByRole("link", { name: "Contact us page" }),
     ).toHaveAttribute("href", "/contact-us");
 
     expect(
@@ -44,8 +44,8 @@ describe("ChangelogPage", () => {
     });
     expect(within(speedTable).getByText("15.88s")).toBeInTheDocument();
     expect(within(speedTable).getByText("17.60s")).toBeInTheDocument();
-    expect(screen.getByText("August 16, 2026", { selector: "time" })).toBeInTheDocument();
-    expect(screen.getByText("August 15, 2026", { selector: "time" })).toBeInTheDocument();
+    expect(screen.getByText("August 16, 2026", { selector: "article time" })).toBeInTheDocument();
+    expect(screen.getByText("August 15, 2026", { selector: "article time" })).toBeInTheDocument();
   });
 
   it("says under 1.2.2 that the guides and changelog went back to English", () => {
@@ -82,6 +82,24 @@ describe("ChangelogPage", () => {
     expect(within(newest).getByText("October 5, 2026")).toHaveAttribute("datetime", "2026-10-05T14:40:00.000+08:00");
     expect(within(newest).getByText("Latest")).toBeInTheDocument();
     expect(screen.getAllByText("Latest")).toHaveLength(1);
+  });
+
+  it("lists every release with its version, date and title in a Releases navigation, each linking to its anchor", () => {
+    render(<ChangelogPage />);
+
+    const index = screen.getByRole("navigation", { name: "Releases" });
+    const links = within(index).getAllByRole("link");
+    expect(links).toHaveLength(CHANGELOG_ENTRIES.length);
+    expect(links[0]).toHaveAttribute("href", "#v1-2-5");
+    expect(links[0]).toHaveTextContent("v1.2.5October 5, 2026New: articles about the people behind chess memory");
+    expect(within(links[0]).getByText("October 5, 2026")).toHaveAttribute("datetime", "2026-10-05T14:40:00.000+08:00");
+    expect(links.map((link) => link.getAttribute("href"))).toEqual(
+      CHANGELOG_ENTRIES.map((entry) => `#v${entry.version.replaceAll(".", "-")}`),
+    );
+    expect(within(index).getByRole("button", { name: `Jump to a release ${CHANGELOG_ENTRIES.length} releases` })).toHaveAttribute(
+      "aria-expanded",
+      "false",
+    );
   });
 
   it("renders the English release notes", () => {

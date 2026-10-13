@@ -13,6 +13,7 @@
   --lp-mark-correct: color-mix(in srgb, var(--lp-correct) 26%, transparent);
   --lp-mark-wrong: color-mix(in srgb, var(--lp-wrong) 30%, transparent);
   --lp-pop-shadow: 0 12px 32px rgba(13, 27, 36, 0.12);
+  --lp-scrim: rgba(13, 27, 36, 0.48);
   --lp-r-sm: 6px; --lp-r-md: 8px; --lp-r-lg: 12px;
   --lp-gutter: clamp(16px, 4vw, 48px);
   --lp-header-h: 64px;
@@ -40,6 +41,8 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper h1, .lab-paper h2, .lab-paper h3, .lab-paper h4 { font-family: var(--lp-ui); color: var(--lp-ink); }
 .lab-paper .lab-wrap { max-width: 1200px; margin: 0 auto; padding: 0 var(--lp-gutter); }
 .lab-paper .lab-mono { font-family: var(--lp-data); font-variant-numeric: tabular-nums; }
+/* Geist Mono gives a comma, point or thin space a whole digit cell; pulling both sides in keeps "5,2" one number. */
+.lab-paper .lab-num-sep { margin-inline: -0.12em; }
 .lab-paper .lab-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 .lab-paper .lab-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 44px; padding: 0 20px; border-radius: var(--lp-r-md); font: 600 16px/1.2 var(--lp-ui); text-align: center; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background-color 0.15s, border-color 0.15s, color 0.15s; }
@@ -56,6 +59,18 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-lede { font: 400 19px/1.6 var(--lp-body); color: var(--lp-ink-2); }
 .lab-paper .lab-tag { display: inline-flex; align-items: center; height: 24px; padding: 0 8px; border-radius: 999px; font: 600 12px/1 var(--lp-ui); background: var(--lp-surface-2); color: var(--lp-ink-2); white-space: nowrap; }
 .lab-paper .lab-tag-accent { background: var(--lp-accent-soft); color: var(--lp-accent); }
+
+/* a labelled on/off switch with helper text (/settings and the game's setup card); the state is also written as a word */
+.lab-paper .lab-switch-row { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.lab-paper .lab-switch-label { min-width: 0; font: 600 16px/1.4 var(--lp-ui); color: var(--lp-ink); cursor: pointer; }
+.lab-paper .lab-switch-help { margin: 4px 0 0; font: 400 14px/1.55 var(--lp-body); color: var(--lp-muted); }
+.lab-paper .lab-switch { display: inline-flex; flex: none; align-items: center; gap: 10px; min-height: 44px; padding: 0 4px; border: 0; border-radius: var(--lp-r-sm); background: none; font: 500 15px/1 var(--lp-ui); color: var(--lp-ink-2); cursor: pointer; }
+.lab-paper .lab-switch-track { position: relative; width: 44px; height: 26px; border-radius: 999px; background: var(--lp-surface-2); box-shadow: inset 0 0 0 1px var(--lp-line-strong); transition: background-color 0.15s; }
+.lab-paper .lab-switch-thumb { position: absolute; top: 3px; left: 3px; width: 20px; height: 20px; border-radius: 50%; background: var(--lp-surface); box-shadow: 0 0 0 1px var(--lp-line-strong); transition: transform 0.15s; }
+.lab-paper .lab-switch[aria-checked="true"] .lab-switch-track { background: var(--lp-accent); box-shadow: none; }
+.lab-paper .lab-switch[aria-checked="true"] .lab-switch-thumb { transform: translateX(18px); box-shadow: none; }
+/* Wide enough for either word, so the track never moves when the state changes. */
+.lab-paper .lab-switch-state { min-width: 6.5ch; text-align: left; }
 
 /* changelog banner: a quiet line above the header that scrolls away with the page */
 .lab-paper .lab-banner { background: var(--lp-surface); border-bottom: 1px solid var(--lp-line); }
@@ -75,7 +90,7 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-wordmark:hover { color: var(--lp-ink); opacity: 0.8; }
 .lab-paper .lab-wordmark-chess { color: var(--lp-wordmark); }
 .lab-paper .lab-nav { display: flex; align-items: center; gap: 2px; }
-.lab-paper .lab-nav-item { position: relative; }
+.lab-paper .lab-nav-item { position: relative; margin-left: 6px; padding-left: 8px; border-left: 1px solid var(--lp-line); }
 .lab-paper .lab-nav-link, .lab-paper .lab-nav-trigger { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 10px; border: 0; border-radius: var(--lp-r-sm); background: none; font: 500 15px/1 var(--lp-ui); color: var(--lp-ink-2); text-decoration: none; cursor: pointer; white-space: nowrap; }
 .lab-paper .lab-nav-link:hover, .lab-paper .lab-nav-trigger:hover { color: var(--lp-ink); background: var(--lp-surface-2); }
 .lab-paper .lab-nav-link[aria-current="page"] { color: var(--lp-accent); }
@@ -91,6 +106,8 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-dropdown a span { font-size: 13px; font-weight: 400; color: var(--lp-muted); }
 .lab-paper .lab-panel-label { padding: 8px 12px 4px; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .lab-header-tools { display: flex; align-items: center; gap: 8px; margin-left: auto; }
+.lab-paper .lab-streak-chip { display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 999px; font: 600 13px/1 var(--lp-ui); background: var(--lp-accent-soft); color: var(--lp-accent); text-decoration: none; white-space: nowrap; }
+.lab-paper .lab-streak-chip:hover { text-decoration: underline; }
 .lab-paper .lab-play-short { display: none; }
 .lab-paper .lab-menu-btn { display: none; }
 .lab-paper .lab-menu { padding: 16px 0 24px; border-top: 1px solid var(--lp-line); max-height: calc(100vh - var(--lp-header-h)); overflow-y: auto; }
@@ -101,13 +118,28 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-menu a { display: block; padding: 10px 0; border-bottom: 1px solid var(--lp-line); font: 500 16px/1.4 var(--lp-ui); color: var(--lp-ink); text-decoration: none; }
 .lab-paper .lab-menu a[aria-current="page"] { color: var(--lp-accent); }
 .lab-paper .lab-menu-tools { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
-@media (max-width: 1080px) { .lab-paper .lab-nav-extra { display: none; } }
+@media (max-width: 1080px) { .lab-paper .lab-nav-extra { display: none; } .lab-paper .lab-dropdown { left: auto; right: 0; } }
 @media (max-width: 860px) {
   .lab-paper .lab-nav, .lab-paper .lab-header-tools .lab-lang { display: none; }
   .lab-paper .lab-menu-btn { display: inline-flex; }
   .lab-paper .lab-header-row { gap: 12px; }
 }
-@media (max-width: 480px) { .lab-paper .lab-play-long { display: none; } .lab-paper .lab-play-short { display: inline; } }
+.lab-paper .lab-menu-icon { display: none; }
+@media (max-width: 480px) {
+  .lab-paper .lab-play-long { display: none; }
+  .lab-paper .lab-play-short { display: inline; }
+  /* Room for the streak chip beside Play: the menu folds to its icon and the row's spacing tightens. */
+  .lab-paper .lab-header-row { gap: 8px; }
+  .lab-paper .lab-header-tools { gap: 6px; }
+  .lab-paper .lab-wordmark { font-size: 18px; }
+  .lab-paper .lab-streak-chip { padding: 0 8px; }
+  .lab-paper .lab-header-tools .lab-btn-primary { padding: 0 10px; }
+  .lab-paper .lab-menu-btn { width: 36px; justify-content: center; padding: 0 !important; }
+  .lab-paper .lab-menu-icon { display: block; }
+  .lab-paper .lab-menu-label { display: none; }
+}
+/* The narrowest phones keep the chip and the menu, whose list opens with Play. */
+@media (max-width: 359px) { .lab-paper .lab-header-tools .lab-btn-primary { display: none; } }
 
 /* footer */
 .lab-paper .lab-footer { padding: 64px 0 32px; background: var(--lp-surface-2); border-top: 1px solid var(--lp-line); }

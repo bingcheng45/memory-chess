@@ -192,7 +192,7 @@ export default async function drive(page, { baseUrl }) {
     await page.waitFor(`!document.getElementById("game-feedback")`);
   }
 
-  await page.clickText("button", "Submit to Leaderboard");
+  await page.clickText("button", "Submit to leaderboard");
   await page.waitFor(`!!document.getElementById("player-name")`);
 
   const fit = {};
@@ -239,7 +239,7 @@ export default async function drive(page, { baseUrl }) {
   }
   await page.screenshot("2-country-picked-375.png");
 
-  await page.clickText("button", "Submit Score");
+  await page.clickText("button", "Submit score");
 
   const deadline = Date.now() + 15_000;
   while (posted.length === 0) {

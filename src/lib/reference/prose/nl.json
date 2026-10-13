@@ -65,6 +65,8 @@
         "bishop-color-complex": "De twee lopers van een kant staan nooit op velden van dezelfde kleur.",
         "simultaneous-check": "Beide koningen staan nooit tegelijk schaak.",
         "checked-side-not-to-move": "Staat een koning schaak, dan is die kant aan zet.",
+        "home-rank-pawn-check": "Een pion die zijn beginrij nooit heeft verlaten, geeft nooit schaak.",
+        "impossible-double-check": "Een koning staat nooit schaak door meer dan twee stukken, en bij een dubbelschaak is altijd een loper, toren of dame betrokken.",
         "piece-count": "Op het bord staat precies het aantal stukken dat de moeilijkheidsgraad vraagt.",
         "invalid-fen": "De stelling is een geldige schaakstelling die je zo op een bord kunt opzetten."
       },

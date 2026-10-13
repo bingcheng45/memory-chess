@@ -65,6 +65,8 @@
         "bishop-color-complex": "Egy oldal két futója sosem áll azonos színű mezőkön.",
         "simultaneous-check": "A két király sosem áll egyszerre sakkban.",
         "checked-side-not-to-move": "Ha az egyik király sakkban áll, éppen az az oldal van lépésre.",
+        "home-rank-pawn-check": "A kiinduló sorát soha el nem hagyó gyalog sosem ad sakkot.",
+        "impossible-double-check": "Egy királyt sosem sakkol kettőnél több figura, és a kettős sakkban mindig részt vesz egy futó, bástya vagy vezér.",
         "piece-count": "A tábla pontosan annyi bábut tartalmaz, amennyit a szint megkövetel.",
         "invalid-fen": "Az állás olyan szabályos sakkállás, amelyre a tábla beállítható."
       },

@@ -358,7 +358,7 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
             segments: [
               "A huge thank you to everyone who helped Memory Chess reach more than 800 monthly players and over 32,000 games played. We are especially grateful to everyone who shared ideas, encouragement, and bug reports through the ",
               {
-                text: "Contact Us page",
+                text: "Contact us page",
                 href: "/contact-us",
               },
               " or the end-of-game feedback form. Every game and message helps Memory Chess keep growing.",

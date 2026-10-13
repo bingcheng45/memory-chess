@@ -1,16 +1,25 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { isLabPaperRoute, type LabPaperRoute } from "@/lib/lab-paper/routes";
+import { UNKNOWN_PATH_GROUP } from "@/lib/lab-paper/useIsLabPaperRoute";
+
+it("names the route group of the catch-all that sends every unmatched path to the Lab Paper 404", () => {
+  expect(existsSync(join(process.cwd(), "src/app/[locale]", UNKNOWN_PATH_GROUP, "[...rest]/page.tsx"))).toBe(true);
+});
 
 describe("the Lab Paper route registry", () => {
-  it("draws the homepage in Lab Paper only in the locales that have its copy, and leaves unlisted routes in the site shell", () => {
+  it("draws the homepage in Lab Paper in every locale, and leaves unlisted routes in the site shell", () => {
     expect(isLabPaperRoute("/", "en")).toBe(true);
-    expect(isLabPaperRoute("/", "de")).toBe(false);
-    expect(isLabPaperRoute("/privacy", "en")).toBe(false);
-    expect(isLabPaperRoute("/contact-us", "de")).toBe(false);
+    expect(isLabPaperRoute("/", "de")).toBe(true);
+    expect(isLabPaperRoute("/", "ja")).toBe(true);
+    expect(isLabPaperRoute("/not-a-listed-page", "en")).toBe(false);
   });
 
-  it("draws the English-only changelog and about pages in Lab Paper", () => {
+  it("draws the English-only changelog, about, terms and privacy pages in Lab Paper", () => {
     expect(isLabPaperRoute("/changelog", "en")).toBe(true);
     expect(isLabPaperRoute("/about", "en")).toBe(true);
+    expect(isLabPaperRoute("/terms", "en")).toBe(true);
+    expect(isLabPaperRoute("/privacy", "en")).toBe(true);
   });
 
   it("draws the Learn hub and every guide in Lab Paper in English only", () => {
@@ -20,9 +29,16 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/learning", "en")).toBe(false);
   });
 
-  it("draws the leaderboard in Lab Paper in every locale, since every catalogue carries its copy", () => {
+  it("draws the settings page in Lab Paper in every locale", () => {
+    expect(isLabPaperRoute("/settings", "en")).toBe(true);
+    expect(isLabPaperRoute("/settings", "hu")).toBe(true);
+  });
+
+  it("draws the leaderboard and the contact page in Lab Paper in every locale, since every catalogue carries their copy", () => {
     expect(isLabPaperRoute("/leaderboard", "en")).toBe(true);
     expect(isLabPaperRoute("/leaderboard", "ja")).toBe(true);
+    expect(isLabPaperRoute("/contact-us", "en")).toBe(true);
+    expect(isLabPaperRoute("/contact-us", "de")).toBe(true);
   });
 
   it("draws both kinds of shared card page in Lab Paper at their bare English URL", () => {

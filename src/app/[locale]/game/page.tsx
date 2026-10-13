@@ -19,8 +19,6 @@ import { ROUND_PARAMS } from '@/lib/game/roundLink';
 import { GAME_CONFIG_RULES, parseGameSettings } from '@/lib/game/configPrefill';
 import '@/components/game/game-lab.css';
 
-import { useLocale } from "next-intl";
-import { hasLabCopy } from '@/lib/home/labLocales';
 import type { SetBoard } from '@/lib/types/game';
 import type { SetBoardRefusal } from '@/components/game/SetBoardNotice';
 
@@ -80,16 +78,14 @@ type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource 
 
 // The query is read off the live location rather than via useSearchParams,
 // which would bail /game out of static rendering and serve an empty page.
-function takeUrlRound(hasLab: boolean): UrlRound | null {
+function takeUrlRound(): UrlRound | null {
   const params = new URLSearchParams(window.location.search);
   const pieceCountParam = params.get(ROUND_PARAMS.pieceCount);
   const memorizeTimeParam = params.get(ROUND_PARAMS.memorizeTime);
   if (!pieceCountParam && !memorizeTimeParam) return null;
 
+  const source = roundSourceFrom(params.get(ROUND_PARAMS.source));
   // A refresh then opens the configuration screen instead of restarting the round.
-  const asked = roundSourceFrom(params.get(ROUND_PARAMS.source));
-  // The lab record's copy is English only, so elsewhere a daily or review link plays an ordinary round.
-  const source = isSetBoardSource(asked) && !hasLab ? 'link' : asked;
   Object.values(ROUND_PARAMS).forEach((name) => params.delete(name));
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
@@ -128,13 +124,12 @@ function GamePageContent() {
   // StrictMode re-runs this effect after the cleanup above has reset the store,
   // by which time the URL is cleared, so the round is kept for the second run.
   const urlRoundRef = useRef<UrlRound | null | undefined>(undefined);
-  const hasLab = hasLabCopy(useLocale());
   const [refused, setRefused] = useState<SetBoardRefusal | null>(null);
   // A round the player starts by hand wins over a set board still being read.
   const startedByHandRef = useRef(false);
 
   useEffect(() => {
-    if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound(hasLab);
+    if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound();
     const urlRound = urlRoundRef.current;
     if (!urlRound) return;
     const { source } = urlRound;
@@ -159,7 +154,7 @@ function GamePageContent() {
     return () => {
       live = false;
     };
-  }, [startGame, hasLab]);
+  }, [startGame]);
 
   useEffect(() => {
     if (round.phase !== 'study') return;

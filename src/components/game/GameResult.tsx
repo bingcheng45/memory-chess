@@ -6,7 +6,7 @@ import { GameState } from "@/lib/types/game";
 import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -19,7 +19,6 @@ import { Label } from "@/components/ui/label";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
-import { hasLabCopy } from "@/lib/home/labLocales";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
   qualifies,
@@ -78,8 +77,7 @@ function qualifiesForLeaderboard(
 export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResultProps) {
   const t = useTranslations("game.result");
   // Without IndexedDB nothing can be recorded, so no space is held for a card that could only leave again.
-  const keepsRecord = browserIndexedDB() !== undefined;
-  const showsLab = hasLabCopy(useLocale()) && keepsRecord;
+  const showsLab = browserIndexedDB() !== undefined;
   const tCountry = useTranslations("country");
   const tComparison = useTranslations("game.comparison");
   const { gameState, round } = useGameStore();
@@ -370,7 +368,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         </nav>
       </section>
 
-      <div className="lab-bridge space-y-6">
+      <div className="lab-ui-face space-y-6">
         {showsLab && labRound && (
           <ErrorBoundary key={labRound.facts.id} fallback={<ResultLabEnd />}>
             <Suspense fallback={<ResultLabSlot />}>
@@ -410,7 +408,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         open={showLeaderboardDialog}
         onOpenChange={setShowLeaderboardDialog}
       >
-        <DialogContent className={`${LAB_PAPER_CLASS} lab-bridge lab-dialog`}>
+        <DialogContent className={`${LAB_PAPER_CLASS} lab-dialog`}>
           <DialogHeader>
             <DialogTitle className="lab-dialog-title">
               {submitSuccess ? t("dialog.successTitle") : t("dialog.submitTitle")}

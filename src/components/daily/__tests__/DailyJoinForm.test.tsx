@@ -131,7 +131,9 @@ describe("joining the daily board", () => {
     fireEvent.change(screen.getByLabelText("Name"), { target: { value: "Poteto" } });
     fireEvent.click(screen.getByRole("button", { name: "Join the board" }));
 
-    expect(await screen.findByRole("alert")).toHaveTextContent("Could not join the board. Please try again.");
+    const alert = await screen.findByRole("alert");
+    expect(alert).toHaveTextContent("Could not join the board. Please try again.");
+    expect(alert).toHaveFocus();
     expect(screen.getByRole("button", { name: "Join the board" })).toBeEnabled();
     expect(onJoined).not.toHaveBeenCalled();
   });
@@ -143,5 +145,49 @@ describe("joining the daily board", () => {
 
     expect(screen.queryByRole("button", { name: "Join the board" })).not.toBeInTheDocument();
     expect(screen.getByText(/No piece was right/)).toBeInTheDocument();
+  });
+});
+
+describe("the join form's name and country descriptions", () => {
+  const name = () => screen.getByLabelText("Name");
+
+  it("marks a three-letter name invalid once the player leaves the field and says why, and a four-letter one valid", async () => {
+    serve("SG");
+    languages(["en-US"]);
+    render(<DailyJoinForm round={ROUND} onJoined={jest.fn()} />);
+    await screen.findByText("From your connection.");
+
+    fireEvent.change(name(), { target: { value: " abc " } });
+    fireEvent.blur(name());
+
+    expect(name()).toHaveAttribute("aria-invalid", "true");
+    expect(name()).toHaveAccessibleDescription("4 to 16 characters, shown with your score. Too short. Use at least 4 characters.");
+
+    fireEvent.change(name(), { target: { value: "abcd" } });
+
+    expect(name()).toHaveAttribute("aria-invalid", "false");
+    expect(screen.queryByText("Too short. Use at least 4 characters.")).toBeNull();
+  });
+
+  it("marks a seventeen-letter name invalid and says why", async () => {
+    serve("SG");
+    languages(["en-US"]);
+    render(<DailyJoinForm round={ROUND} onJoined={jest.fn()} />);
+    await screen.findByText("From your connection.");
+
+    fireEvent.change(name(), { target: { value: "abcdefghijklmnopq" } });
+
+    expect(name()).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByText("Too long. Use at most 16 characters.")).toBeVisible();
+    expect(screen.getByRole("button", { name: "Join the board" })).toBeDisabled();
+  });
+
+  it("describes the country picker with where its country came from", async () => {
+    serve("SG");
+    languages(["en-US"]);
+    render(<DailyJoinForm round={ROUND} onJoined={jest.fn()} />);
+    await screen.findByText("From your connection.");
+
+    expect(country()).toHaveAccessibleDescription("From your connection.");
   });
 });

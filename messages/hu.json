@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "A mai táblát már megnyitottad. Napi egy próbálkozás tartja tisztességesen a játékot.",
-      "resetsIn": "A következő tábla {hours} óra {minutes} perc múlva érkezik",
-      "resetsInMinutes": "A következő tábla {minutes} perc múlva érkezik",
       "seeBoard": "A mai tábla megtekintése",
       "chooseRound": "Újabb kör",
       "join": "Csatlakozás a mai táblához"

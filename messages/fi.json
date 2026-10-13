@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Olet jo avannut päivän laudan. Yksi yritys päivässä pitää pelin reiluna.",
-      "resetsIn": "Seuraava lauta {hours} h {minutes} min päästä",
-      "resetsInMinutes": "Seuraava lauta {minutes} min päästä",
       "seeBoard": "Katso päivän lauta",
       "chooseRound": "Pelaa uusi kierros",
       "join": "Osallistu päivän lautaan"

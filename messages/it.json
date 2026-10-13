@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Hai già aperto la scacchiera di oggi. Un tentativo al giorno mantiene il gioco equo.",
-      "resetsIn": "Prossima scacchiera tra {hours} h {minutes} min",
-      "resetsInMinutes": "Prossima scacchiera tra {minutes} min",
       "seeBoard": "Vedi la scacchiera di oggi",
       "chooseRound": "Gioca un altro round",
       "join": "Partecipa alla scacchiera di oggi"

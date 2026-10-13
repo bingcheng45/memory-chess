@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "你已经打开过今天的棋盘了。每天只能玩一次，这样才公平。",
-      "resetsIn": "{hours} 小时 {minutes} 分钟后开启下一张棋盘",
-      "resetsInMinutes": "{minutes} 分钟后开启下一张棋盘",
       "seeBoard": "查看今天的棋盘",
       "chooseRound": "再玩一轮",
       "join": "加入今天的棋盘"

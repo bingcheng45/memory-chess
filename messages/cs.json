@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Dnešní pozici jste už otevřeli. Jeden pokus denně udrží hru férovou.",
-      "resetsIn": "Další pozice za {hours} h {minutes} min",
-      "resetsInMinutes": "Další pozice za {minutes} min",
       "seeBoard": "Zobrazit dnešní pozici",
       "chooseRound": "Hrát další kolo",
       "join": "Zapojit se do dnešní pozice"

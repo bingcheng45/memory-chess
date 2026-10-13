@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Du hast das heutige Brett schon geöffnet. Ein Versuch pro Tag hält es fair.",
-      "resetsIn": "Nächstes Brett in {hours} Std. {minutes} Min.",
-      "resetsInMinutes": "Nächstes Brett in {minutes} Min.",
       "seeBoard": "Heutiges Brett ansehen",
       "chooseRound": "Noch eine Runde spielen",
       "join": "Dem heutigen Brett beitreten"

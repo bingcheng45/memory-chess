@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Bugünün tahtasını zaten açtın. Günde bir deneme oyunu adil tutar.",
-      "resetsIn": "Sonraki tahtaya {hours} sa {minutes} dk kaldı",
-      "resetsInMinutes": "Sonraki tahtaya {minutes} dk kaldı",
       "seeBoard": "Bugünün tahtasını gör",
       "chooseRound": "Bir tur daha oyna",
       "join": "Bugünün tahtasına katıl"

@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Du har redan öppnat dagens bräde. Ett försök per dag håller det rättvist.",
-      "resetsIn": "Nästa bräde om {hours} tim {minutes} min",
-      "resetsInMinutes": "Nästa bräde om {minutes} min",
       "seeBoard": "Se dagens bräde",
       "chooseRound": "Spela en runda till",
       "join": "Delta i dagens bräde"

@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Je hebt het bord van vandaag al geopend. Eén poging per dag houdt het eerlijk.",
-      "resetsIn": "Volgend bord over {hours} u {minutes} min",
-      "resetsInMinutes": "Volgend bord over {minutes} min",
       "seeBoard": "Bekijk het bord van vandaag",
       "chooseRound": "Speel nog een ronde",
       "join": "Doe mee met het bord van vandaag"

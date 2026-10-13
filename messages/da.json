@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Du har allerede åbnet dagens bræt. Ét forsøg om dagen holder det fair.",
-      "resetsIn": "Næste bræt om {hours} t. {minutes} min.",
-      "resetsInMinutes": "Næste bræt om {minutes} min.",
       "seeBoard": "Se dagens bræt",
       "chooseRound": "Spil en runde mere",
       "join": "Deltag i dagens bræt"

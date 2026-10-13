@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Bạn đã mở bàn cờ hôm nay rồi. Mỗi ngày chỉ một lượt để giữ sự công bằng.",
-      "resetsIn": "Bàn tiếp theo sau {hours} giờ {minutes} phút",
-      "resetsInMinutes": "Bàn tiếp theo sau {minutes} phút",
       "seeBoard": "Xem bàn cờ hôm nay",
       "chooseRound": "Chơi thêm một ván",
       "join": "Tham gia bàn cờ hôm nay"

@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Ai deschis deja tabla de azi. O singură încercare pe zi păstrează jocul corect.",
-      "resetsIn": "Următoarea tablă în {hours} h {minutes} min",
-      "resetsInMinutes": "Următoarea tablă în {minutes} min",
       "seeBoard": "Vezi tabla de azi",
       "chooseRound": "Joacă o altă rundă",
       "join": "Intră în tabla de azi"

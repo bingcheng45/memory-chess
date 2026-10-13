@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Ya has abierto el tablero de hoy. Un intento al día mantiene el juego justo.",
-      "resetsIn": "Próximo tablero en {hours} h {minutes} min",
-      "resetsInMinutes": "Próximo tablero en {minutes} min",
       "seeBoard": "Ver el tablero de hoy",
       "chooseRound": "Jugar otra ronda",
       "join": "Unirse al tablero de hoy"

@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "今日の盤面はすでに開いています。公平のため、挑戦は1日1回です。",
-      "resetsIn": "次の盤面まで{hours}時間{minutes}分",
-      "resetsInMinutes": "次の盤面まで{minutes}分",
       "seeBoard": "今日の盤面を見る",
       "chooseRound": "別のラウンドをプレイ",
       "join": "今日の盤面に参加"

@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Dzisiejsza szachownica została już otwarta. Jedna próba dziennie gwarantuje uczciwą grę.",
-      "resetsIn": "Następna szachownica za {hours} godz. {minutes} min",
-      "resetsInMinutes": "Następna szachownica za {minutes} min",
       "seeBoard": "Zobacz dzisiejszą szachownicę",
       "chooseRound": "Zagraj kolejną rundę",
       "join": "Dołącz do dzisiejszej szachownicy"

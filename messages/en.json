@@ -1622,8 +1622,6 @@
     },
     "round": {
       "locked": "You have already opened today's board. One try a day keeps it fair.",
-      "resetsIn": "Next board in {hours} h {minutes} min",
-      "resetsInMinutes": "Next board in {minutes} min",
       "seeBoard": "See today's board",
       "chooseRound": "Play another round",
       "join": "Join today's board"

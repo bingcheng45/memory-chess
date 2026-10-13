@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Du har allerede åpnet dagens brett. Ett forsøk om dagen holder det rettferdig.",
-      "resetsIn": "Neste brett om {hours} t {minutes} min",
-      "resetsInMinutes": "Neste brett om {minutes} min",
       "seeBoard": "Se dagens brett",
       "chooseRound": "Spill en ny runde",
       "join": "Bli med på dagens brett"

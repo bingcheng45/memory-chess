@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Anda sudah membuka papan hari ini. Satu kali percobaan sehari agar tetap adil.",
-      "resetsIn": "Papan berikutnya {hours} jam {minutes} menit lagi",
-      "resetsInMinutes": "Papan berikutnya {minutes} menit lagi",
       "seeBoard": "Lihat papan hari ini",
       "chooseRound": "Main ronde lagi",
       "join": "Ikut papan hari ini"

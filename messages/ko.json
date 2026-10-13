@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "오늘의 보드를 이미 열었습니다. 공정하게 하루에 한 번만 도전할 수 있어요.",
-      "resetsIn": "다음 보드까지 {hours}시간 {minutes}분",
-      "resetsInMinutes": "다음 보드까지 {minutes}분",
       "seeBoard": "오늘의 보드 보기",
       "chooseRound": "다른 라운드 플레이",
       "join": "오늘의 보드에 참가"

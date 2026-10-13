@@ -807,8 +807,6 @@
     },
     "round": {
       "locked": "Vous avez déjà ouvert le plateau du jour. Un seul essai par jour garantit l’équité.",
-      "resetsIn": "Prochain plateau dans {hours} h {minutes} min",
-      "resetsInMinutes": "Prochain plateau dans {minutes} min",
       "seeBoard": "Voir le plateau du jour",
       "chooseRound": "Jouer une autre partie",
       "join": "Rejoindre le plateau du jour"

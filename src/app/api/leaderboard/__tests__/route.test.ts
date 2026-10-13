@@ -378,6 +378,28 @@ describe("GET /api/leaderboard", () => {
     });
   });
 
+  it.each([
+    ["23:56, four minutes before midnight, for a viewer whose clock has already passed it, with 200", "2026-10-13T23:56:00Z", 200],
+    ["12:00, far from midnight, with 400", "2026-10-13T12:00:00Z", 400],
+  ])("answers a read of tomorrow's daily board at %s", async (_case, now, status) => {
+    jest.spyOn(Date, "now").mockReturnValue(Date.parse(now));
+
+    const response = await get("daily&daily_day=2026-10-14");
+    jest.mocked(Date.now).mockRestore();
+
+    expect(response.status).toBe(status);
+  });
+
+  it("still refuses a row for tomorrow's daily board at 23:56", async () => {
+    jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-13T23:56:00Z"));
+
+    const response = await post({ ...validEntry, difficulty: "daily", daily_day: "2026-10-14", piece_count: 6, memorize_time: 10, country_code: "SG" });
+    jest.mocked(Date.now).mockRestore();
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Invalid difficulty or daily day" });
+  });
+
   it.each(["weekly", "custom"])("rejects the %s board, which it does not serve", async (difficulty) => {
     const response = await get(difficulty);
 

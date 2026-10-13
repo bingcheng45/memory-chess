@@ -77,7 +77,8 @@ export type RatingResult =
 export interface RatingPreview {
   readonly phase: RatingResult["phase"];
   readonly difficultyRating: number;
-  readonly maxGain: number;
+  /** A perfect round at the full study time and the player's fastest recent rebuild pace; studying less or rebuilding faster gains more. */
+  readonly perfectGain: number;
   readonly maxLoss: number;
 }
 
@@ -349,8 +350,8 @@ export function ratingAfter(currentRating: number, history: readonly RatedRoundF
 }
 
 /**
- * The setup card's preview, by the same engine: the board's level, and the change from a perfect round at the full
- * study time with the player's fastest recent rebuild pace, and from an empty one.
+ * The setup card's preview, by the same engine: the board's level, the change from a perfect round that uses the full
+ * study time at the player's fastest recent rebuild pace, and the change from an empty board, the most a round can lose.
  */
 export function ratingPreview(
   currentRating: number,
@@ -362,7 +363,7 @@ export function ratingPreview(
   const rebuildSeconds = board.pieceCount * fastest;
   const best = ratingAfter(currentRating, history, { ...board, rebuildSeconds, accuracy: 100 });
   const worst = ratingAfter(currentRating, history, { ...board, rebuildSeconds, accuracy: 0 });
-  return { phase: best.phase, difficultyRating: bounded(boardLevel(board)), maxGain: best.change, maxLoss: worst.change };
+  return { phase: best.phase, difficultyRating: bounded(boardLevel(board)), perfectGain: best.change, maxLoss: worst.change };
 }
 
 const isFiniteIn = (value: unknown, min: number, max: number): value is number =>

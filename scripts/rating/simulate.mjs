@@ -244,14 +244,14 @@ let previewChecked = 0;
 let previewBreaches = 0;
 if (ratingPreview) {
   console.log("\n## Setup-card preview: the board's rating and this round's range\n");
-  console.log("| Player | Preset | Board rating | Max gain | Max loss | Phase |");
+  console.log("| Player | Preset | Board rating | Perfect gain | Max loss | Phase |");
   console.log("|---|---|---:|---:|---:|---|");
   const signed = (value) => (value > 0 ? `+${value}` : `${value}`);
   const players = [["1000, new", 1000, []], ["1000, Medium norm", 1000, MEDIUM_NORM], ["1200, Medium norm", 1200, MEDIUM_NORM], ["1600, Medium norm", 1600, MEDIUM_NORM]];
   for (const [label, rating, history] of players) {
     for (const [preset, pieceCount, studySeconds] of BOARD_PRESETS) {
       const p = ratingPreview(rating, history, { pieceCount, studySeconds });
-      console.log(`| ${label} | ${preset} | ${p.difficultyRating} | ${signed(p.maxGain)} | ${signed(p.maxLoss)} | ${p.phase} |`);
+      console.log(`| ${label} | ${preset} | ${p.difficultyRating} | ${signed(p.perfectGain)} | ${signed(p.maxLoss)} | ${p.phase} |`);
       const fastest = history.length > 0 ? Math.min(...history.map((round) => round.rebuildSeconds / round.pieceCount)) : 2.5;
       for (const study of [0.1, 1, 2, studySeconds / 2, studySeconds]) {
         for (const perPiece of [0.05, 0.25, 0.5, 1, 2.5, 5]) {
@@ -259,7 +259,7 @@ if (ratingPreview) {
             const { change } = ratingAfter(rating, history, { pieceCount, studySeconds: Math.min(study, studySeconds), rebuildSeconds: pieceCount * perPiece, accuracy });
             const promised = study >= studySeconds && perPiece >= fastest;
             previewChecked += 1;
-            if ((promised && change > p.maxGain) || change < p.maxLoss) previewBreaches += 1;
+            if ((promised && change > p.perfectGain) || change < p.maxLoss) previewBreaches += 1;
           }
         }
       }

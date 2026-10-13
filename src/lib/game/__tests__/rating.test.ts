@@ -126,9 +126,9 @@ describe("setup-card preview", () => {
       ratingPreview(1600, mediumNorm, { pieceCount: 12, studySeconds: 8 }),
       ratingPreview(1000, mediumNorm, { pieceCount: 2, studySeconds: 10 }),
     ]).toEqual([
-      { phase: "placement", difficultyRating: 1000, maxGain: 40, maxLoss: -40 },
-      { phase: "rated", difficultyRating: 1598, maxGain: 13, maxLoss: -12 },
-      { phase: "rated", difficultyRating: 128, maxGain: 0, maxLoss: -24 },
+      { phase: "placement", difficultyRating: 1000, perfectGain: 40, maxLoss: -40 },
+      { phase: "rated", difficultyRating: 1598, perfectGain: 13, maxLoss: -12 },
+      { phase: "rated", difficultyRating: 128, perfectGain: 0, maxLoss: -24 },
     ]);
   });
 });

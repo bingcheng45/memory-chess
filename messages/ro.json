@@ -951,15 +951,18 @@
       "lastGame": "Partida anterioară: {time} s timp de rezolvare, precizie {accuracy}%",
       "preview": {
         "label": "Previzualizare rating",
-        "placement": "Runda de plasare {round} din {of}",
+        "provisional": "Rating provizoriu",
         "rated": "Rundă cu rating",
         "board": "Ratingul tablei",
         "yours": "Ratingul tău",
+        "expected": "Precizie așteptată",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Tablă sugerată",
         "clear": "Dacă reușești",
         "miss": "Dacă greșești",
         "gain": "Până la <num>+{value}</num>",
         "loss": "Cel mult <num>−{value}</num>",
-        "announce": "Ratingul tablei {board}. Ratingul tău {rating}. Dacă reușești, până la +{gain}. Dacă greșești, cel mult −{loss}."
+        "announce": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}. Dacă greșești, cel mult −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Timp de memorare",
       "solutionTime": "Timp de rezolvare",
       "recallSpeed": "Viteză de reamintire",
-      "placement": "Plasarea ratingului: runda {round} din {total}",
+      "provisional": "Rating provizoriu",
       "freeSkip": "Sărirea gratuită a zilei: o tablă goală nu îți schimbă ratingul. Următoarea de azi îl va schimba.",
       "piecesPerSecond": "{value} piese/s",
       "actions": "Acțiuni pentru rezultat",

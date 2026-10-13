@@ -120,6 +120,10 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-preview-cell dd { margin: 2px 0 0; font: 500 15px/24px var(--lp-ui); color: var(--lp-ink); }
 .lab-game .lab-preview-num { font: 600 17px/24px var(--lp-data); font-variant-numeric: tabular-nums; }
 .lab-game .lab-preview-blank { color: var(--lp-muted); font-weight: 400; }
+/* Keeps the global 36px touch target; the negative margins hold the row at the placeholder's height, and the text lines up with the cell's. */
+.lab-game .lab-preview-suggest { display: block; min-height: 36px; margin: -6px 0; padding: 0 !important; text-align: left; border: 0; background: none; font: 600 15px/24px var(--lp-ui); color: var(--lp-accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.lab-game .lab-preview-suggest:disabled { color: var(--lp-ink-2); text-decoration: none; cursor: default; }
+.lab-game .lab-preview-suggest:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; border-radius: 4px; }
 .lab-game .lab-preview-gain { background: var(--lp-correct-soft); }
 .lab-game .lab-preview-gain dt, .lab-game .lab-preview-loss dt { color: var(--lp-ink-2); }
 .lab-game .lab-preview-gain dd { color: color-mix(in srgb, var(--lp-correct) 80%, var(--lp-ink)); }

@@ -951,15 +951,18 @@
       "lastGame": "Forrige parti: {time} s løsningstid med {accuracy} % treffsikkerhet",
       "preview": {
         "label": "Forhåndsvisning av rating",
-        "placement": "Plasseringsrunde {round} av {of}",
+        "provisional": "Foreløpig rating",
         "rated": "Ratet runde",
         "board": "Brettets rating",
         "yours": "Din rating",
+        "expected": "Forventet nøyaktighet",
+        "percent": "<num>{value} %</num>",
+        "suggested": "Foreslått brett",
         "clear": "Hvis du klarer det",
         "miss": "Hvis det går galt",
         "gain": "Opptil <num>+{value}</num>",
         "loss": "Høyst <num>−{value}</num>",
-        "announce": "Brettets rating {board}. Din rating {rating}. Hvis du klarer det, opptil +{gain}. Hvis det går galt, høyst −{loss}."
+        "announce": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}. Hvis det går galt, høyst −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Innlæringstid",
       "solutionTime": "Løsningstid",
       "recallSpeed": "Gjenkallingsfart",
-      "placement": "Plassering av rating: runde {round} av {total}",
+      "provisional": "Foreløpig rating",
       "freeSkip": "Dagens gratis hopp over: et tomt brett endrer ikke ratingen din. Det neste i dag gjør det.",
       "piecesPerSecond": "{value} brikker/s",
       "actions": "Handlinger for resultatet",

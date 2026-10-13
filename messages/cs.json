@@ -951,15 +951,18 @@
       "lastGame": "Minulá partie: {time} s na vyřešení, přesnost {accuracy} %",
       "preview": {
         "label": "Náhled hodnocení",
-        "placement": "Zařazovací kolo {round} z {of}",
+        "provisional": "Předběžné hodnocení",
         "rated": "Hodnocené kolo",
         "board": "Hodnocení desky",
         "yours": "Vaše hodnocení",
+        "expected": "Očekávaná přesnost",
+        "percent": "<num>{value} %</num>",
+        "suggested": "Doporučená deska",
         "clear": "Když to zvládnete",
         "miss": "Když to nevyjde",
         "gain": "Až <num>+{value}</num>",
         "loss": "Nejvýše <num>−{value}</num>",
-        "announce": "Hodnocení desky {board}. Vaše hodnocení {rating}. Když to zvládnete, až +{gain}. Když to nevyjde, nejvýše −{loss}."
+        "announce": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}. Když to nevyjde, nejvýše −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Čas na zapamatování",
       "solutionTime": "Čas řešení",
       "recallSpeed": "Rychlost vybavování",
-      "placement": "Zařazení hodnocení: kolo {round} z {total}",
+      "provisional": "Předběžné hodnocení",
       "freeSkip": "Dnešní volné přeskočení: prázdná šachovnice vaše hodnocení nezmění. Další prázdná dnes už ano.",
       "piecesPerSecond": "{value} figurek/s",
       "actions": "Akce k výsledku",

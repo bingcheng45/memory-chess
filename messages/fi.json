@@ -951,15 +951,18 @@
       "lastGame": "Edellinen peli: ratkaisuaika {time} s, tarkkuus {accuracy} %",
       "preview": {
         "label": "Taitoluvun esikatselu",
-        "placement": "Sijoituskierros {round}/{of}",
+        "provisional": "Alustava taitoluku",
         "rated": "Pisteytetty kierros",
         "board": "Laudan taitoluku",
         "yours": "Sinun taitolukusi",
+        "expected": "Odotettu tarkkuus",
+        "percent": "<num>{value} %</num>",
+        "suggested": "Ehdotettu lauta",
         "clear": "Jos onnistut",
         "miss": "Jos epäonnistut",
         "gain": "Enintään <num>+{value}</num>",
         "loss": "Enintään <num>−{value}</num>",
-        "announce": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Jos onnistut, enintään +{gain}. Jos epäonnistut, enintään −{loss}."
+        "announce": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}. Jos epäonnistut, enintään −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Muistiinpainamisaika",
       "solutionTime": "Ratkaisuaika",
       "recallSpeed": "Palautusnopeus",
-      "placement": "Taitoluvun sijoitus: kierros {round}/{total}",
+      "provisional": "Alustava taitoluku",
       "freeSkip": "Päivän ilmainen ohitus: tyhjä lauta ei muuta taitolukuasi. Seuraava tänään muuttaa.",
       "piecesPerSecond": "{value} nappulaa/s",
       "actions": "Tulokseen liittyvät toiminnot",

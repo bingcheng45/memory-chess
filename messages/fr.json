@@ -951,15 +951,18 @@
       "lastGame": "Dernière partie : {time} s de résolution avec {accuracy} % de précision",
       "preview": {
         "label": "Aperçu de la cote",
-        "placement": "Manche de placement {round} sur {of}",
+        "provisional": "Cote provisoire",
         "rated": "Manche classée",
         "board": "Cote du plateau",
         "yours": "Votre cote",
+        "expected": "Précision attendue",
+        "percent": "<num>{value} %</num>",
+        "suggested": "Plateau suggéré",
         "clear": "Si vous réussissez",
         "miss": "Si vous échouez",
         "gain": "Jusqu’à <num>+{value}</num>",
         "loss": "Au plus <num>−{value}</num>",
-        "announce": "Cote du plateau {board}. Votre cote {rating}. Si vous réussissez, jusqu’à +{gain}. Si vous échouez, au plus −{loss}."
+        "announce": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}. Si vous échouez, au plus −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Temps de mémorisation",
       "solutionTime": "Temps de résolution",
       "recallSpeed": "Vitesse de rappel",
-      "placement": "Placement de la cote : manche {round} sur {total}",
+      "provisional": "Cote provisoire",
       "freeSkip": "Passe gratuite du jour : un échiquier vide ne change pas votre cote. Le suivant aujourd’hui la changera.",
       "piecesPerSecond": "{value} pièces/s",
       "actions": "Actions sur le résultat",

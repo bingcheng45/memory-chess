@@ -951,15 +951,18 @@
       "lastGame": "Poprzednia partia: {time} s na rozwiązanie, celność {accuracy}%",
       "preview": {
         "label": "Podgląd oceny",
-        "placement": "Runda ustalająca {round} z {of}",
+        "provisional": "Tymczasowa ocena",
         "rated": "Runda oceniana",
         "board": "Ocena planszy",
         "yours": "Twoja ocena",
+        "expected": "Oczekiwana dokładność",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Proponowana plansza",
         "clear": "Jeśli się uda",
         "miss": "Jeśli się nie uda",
         "gain": "Do <num>+{value}</num>",
         "loss": "Najwyżej <num>−{value}</num>",
-        "announce": "Ocena planszy {board}. Twoja ocena {rating}. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}."
+        "announce": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Czas zapamiętywania",
       "solutionTime": "Czas rozwiązania",
       "recallSpeed": "Szybkość przypominania",
-      "placement": "Ustalanie oceny: runda {round} z {total}",
+      "provisional": "Tymczasowa ocena",
       "freeSkip": "Dzisiejsze darmowe pominięcie: pusta plansza nie zmienia twojej oceny. Kolejna dzisiaj już tak.",
       "piecesPerSecond": "{value} bierek/s",
       "actions": "Działania dla wyniku",

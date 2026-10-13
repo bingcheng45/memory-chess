@@ -951,15 +951,18 @@
       "lastGame": "Ván trước: {time} giây để hoàn thành, độ chính xác {accuracy}%",
       "preview": {
         "label": "Xem trước điểm kỹ năng",
-        "placement": "Vòng xếp hạng {round}/{of}",
+        "provisional": "Điểm tạm thời",
         "rated": "Ván tính điểm",
         "board": "Điểm của bàn cờ",
         "yours": "Điểm của bạn",
+        "expected": "Độ chính xác dự kiến",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Bàn cờ gợi ý",
         "clear": "Nếu bạn vượt qua",
         "miss": "Nếu bạn trượt",
         "gain": "Tối đa <num>+{value}</num>",
         "loss": "Tối đa <num>−{value}</num>",
-        "announce": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Nếu bạn vượt qua, tối đa +{gain}. Nếu bạn trượt, tối đa −{loss}."
+        "announce": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}. Nếu bạn trượt, tối đa −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Thời gian ghi nhớ",
       "solutionTime": "Thời gian hoàn thành",
       "recallSpeed": "Tốc độ nhớ lại",
-      "placement": "Xếp hạng ban đầu: vòng {round}/{total}",
+      "provisional": "Điểm tạm thời",
       "freeSkip": "Lượt bỏ qua miễn phí trong ngày: bàn cờ trống không làm đổi điểm của bạn. Bàn trống tiếp theo hôm nay sẽ tính.",
       "piecesPerSecond": "{value} quân/giây",
       "actions": "Thao tác với kết quả",

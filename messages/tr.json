@@ -951,15 +951,18 @@
       "lastGame": "Son oyun: {time} sn çözüm süresi, %{accuracy} isabet",
       "preview": {
         "label": "Puan önizlemesi",
-        "placement": "Yerleştirme turu {round}/{of}",
+        "provisional": "Geçici puan",
         "rated": "Puanlı tur",
         "board": "Tahta puanı",
         "yours": "Senin puanın",
+        "expected": "Beklenen doğruluk",
+        "percent": "<num>%{value}</num>",
+        "suggested": "Önerilen tahta",
         "clear": "Başarırsan",
         "miss": "Kaçırırsan",
         "gain": "En fazla <num>+{value}</num>",
         "loss": "En fazla <num>−{value}</num>",
-        "announce": "Tahta puanı {board}. Senin puanın {rating}. Başarırsan en fazla +{gain}. Kaçırırsan en fazla −{loss}."
+        "announce": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}. Kaçırırsan en fazla −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Ezberleme süresi",
       "solutionTime": "Çözüm süresi",
       "recallSpeed": "Hatırlama hızı",
-      "placement": "Puan yerleştirme: {total} turdan {round}. tur",
+      "provisional": "Geçici puan",
       "freeSkip": "Günün ücretsiz atlaması: boş bir tahta puanını değiştirmez. Bugünkü bir sonraki değiştirir.",
       "piecesPerSecond": "{value} taş/sn",
       "actions": "Sonuç işlemleri",

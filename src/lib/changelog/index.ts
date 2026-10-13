@@ -107,12 +107,12 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
         description:
           "The old rating only ever went up, so every player drifted toward the top. It has been rebuilt, and everyone starts again at 1000.",
         changes: [
-          "Your first ten rated rounds place you. More pieces count most, then a shorter look at the board, then a faster rebuild. A board you mostly missed earns nothing for how hard it was.",
-          "After that, each round moves your rating up or down by how you did against how hard the board was. Clear boards above your level to climb. Miss easy ones and it drops.",
-          "Your rating keeps up with your last 30 rounds. Play better than your rating and it rises faster. Play worse and it falls faster. Hold steady and it holds.",
-          "There is no ceiling at the biggest board. Once you clear all 32 pieces, a shorter look and a faster rebuild keep raising it.",
-          "A board harder than the ones you usually play earns more when you clear it and costs less when you miss it. An easier one earns little and costs more.",
-          "Review rounds are still not rated. The daily board is.",
+          "Every board has a rating. More pieces count most, then a shorter look at the board, then a faster rebuild. Your rating is the board you recall about 70% of.",
+          "Each round compares your accuracy with what your rating expects on that board. Do better and it rises. Do worse and it falls. A 90% round counts as 90%, and a round of 40% or less never raises it.",
+          "New players start at 1000 with a provisional rating that moves a lot, so it finds your level within a few rounds. It settles as the game learns you, and the setup card says Provisional rating until it has.",
+          "The setup card shows the accuracy your rating expects on the board you picked, the most a perfect round can earn and the most a miss can cost. Suggested board sets the sliders to one you should clear about three times in four, or half the time while your rating is provisional.",
+          "A harder board earns more when you clear it and costs less when you miss it. An easier one earns little and costs more. Once you clear all 32 pieces, a shorter look and a faster rebuild keep raising it.",
+          "Your first empty board each day is a free skip and leaves your rating alone. Review rounds are still not rated. The daily board is.",
         ],
       },
       {

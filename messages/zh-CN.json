@@ -951,15 +951,18 @@
       "lastGame": "上一局：还原用时 {time} 秒，准确率 {accuracy}%",
       "preview": {
         "label": "评分预览",
-        "placement": "定级第 {round} 轮，共 {of} 轮",
+        "provisional": "暂定评分",
         "rated": "计分局",
         "board": "棋盘评分",
         "yours": "你的评分",
+        "expected": "预计准确率",
+        "percent": "<num>{value}%</num>",
+        "suggested": "推荐棋盘",
         "clear": "如果全部答对",
         "miss": "如果失手",
         "gain": "最多 <num>+{value}</num>",
         "loss": "最多 <num>−{value}</num>",
-        "announce": "棋盘评分 {board}。你的评分 {rating}。如果全部答对，最多 +{gain}。如果失手，最多 −{loss}。"
+        "announce": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。如果失手，最多 −{loss}。"
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "记忆时间",
       "solutionTime": "还原用时",
       "recallSpeed": "回忆速度",
-      "placement": "定级中：第 {round} 轮，共 {total} 轮",
+      "provisional": "暂定评分",
       "freeSkip": "今日免费跳过：空棋盘不会改变你的评分。今天的下一个空棋盘会计入。",
       "piecesPerSecond": "{value} 子/秒",
       "actions": "结果操作",

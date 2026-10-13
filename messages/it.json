@@ -951,15 +951,18 @@
       "lastGame": "Ultima partita: {time} s di risoluzione con il {accuracy}% di precisione",
       "preview": {
         "label": "Anteprima del punteggio",
-        "placement": "Round di piazzamento {round} di {of}",
+        "provisional": "Punteggio provvisorio",
         "rated": "Round valutato",
         "board": "Punteggio della scacchiera",
         "yours": "Il tuo punteggio",
+        "expected": "Precisione attesa",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Scacchiera consigliata",
         "clear": "Se lo superi",
         "miss": "Se sbagli",
         "gain": "Fino a <num>+{value}</num>",
         "loss": "Al massimo <num>−{value}</num>",
-        "announce": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Se lo superi, fino a +{gain}. Se sbagli, al massimo −{loss}."
+        "announce": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}. Se sbagli, al massimo −{loss}."
       }
     },
     "presets": {
@@ -1020,7 +1023,7 @@
       "memorizationTime": "Tempo di memorizzazione",
       "solutionTime": "Tempo di risoluzione",
       "recallSpeed": "Velocità di richiamo",
-      "placement": "Piazzamento del punteggio: round {round} di {total}",
+      "provisional": "Punteggio provvisorio",
       "freeSkip": "Salto gratuito del giorno: una scacchiera vuota non cambia il tuo punteggio. La prossima di oggi sì.",
       "piecesPerSecond": "{value} pezzi/s",
       "actions": "Azioni sul risultato",

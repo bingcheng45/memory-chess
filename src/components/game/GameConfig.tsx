@@ -15,7 +15,6 @@ import {
 import {
   DEFAULT_PRESET,
   GAME_CONFIG_RULES,
-  type DifficultyPreset,
   presetIdFor,
   readPrefilledSettings,
   resolveGameSettings,
@@ -80,9 +79,9 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     setMemorizeTime(settings.memorizeTime);
   }, []);
   
-  function handlePresetSelect(preset: DifficultyPreset) {
-    setPieceCount(preset.pieceCount);
-    setMemorizeTime(preset.memorizeTime);
+  function selectBoard(pieces: number, seconds: number) {
+    setPieceCount(pieces);
+    setMemorizeTime(seconds);
     announce();
   }
   
@@ -107,7 +106,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
             <button
               key={preset.id}
               type="button"
-              onClick={() => handlePresetSelect(preset)}
+              onClick={() => selectBoard(preset.pieceCount, preset.memorizeTime)}
               className="lab-preset"
               aria-pressed={selectedPreset === preset.id}
               data-preset={preset.id}
@@ -210,7 +209,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </div>
       </div>
 
-      <RatingPreview pieceCount={pieceCount} memorizeTime={memorizeTime} announceKey={announceKey} />
+      <RatingPreview pieceCount={pieceCount} memorizeTime={memorizeTime} announceKey={announceKey} onSuggest={selectBoard} />
 
       <button type="button" onClick={handleStart} data-start-round className="lab-btn lab-btn-primary lab-config-start">
         {t('config.start')}

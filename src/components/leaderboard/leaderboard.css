@@ -14,6 +14,12 @@
 .lab-paper .lb-tab[data-state="active"]::after { content: ""; position: absolute; left: 8px; right: 8px; bottom: 0; height: 2px; border-radius: 2px; background: var(--lp-accent); }
 .lab-paper .lb-tab:focus-visible { outline-offset: -2px; }
 
+/* the daily board's setting and reset sit between the tabs and the table; the reset line keeps its height while the
+   viewer's clock fills in the local time and the countdown, so the table never jumps */
+.lab-paper .lb-daily { margin-bottom: 20px; }
+.lab-paper .lb-daily-setting { font: 600 16px/1.5 var(--lp-ui); color: var(--lp-ink); }
+.lab-paper .lb-daily-reset { min-height: 1.5em; margin-top: 4px; font: 400 15px/1.5 var(--lp-body); color: var(--lp-ink-2); font-variant-numeric: tabular-nums; }
+
 /* the ranking table: text left, numbers right in tabular mono, the head row sticks below the site header */
 .lab-paper .lb-plate { background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
 .lab-paper .lb-table { width: 100%; border-collapse: separate; border-spacing: 0; font: 400 16px/1.4 var(--lp-body); color: var(--lp-ink); }
@@ -74,6 +80,7 @@
   .lab-paper .lb-table th.lb-rank, .lab-paper .lb-table th.lb-who { z-index: 3; }
   .lab-paper .lb-table-state thead { display: none; }
   .lab-paper .lb-table td.lb-state-cell { padding: 32px 16px; }
+  .lab-paper .lb-daily-reset { min-height: 3em; }
   .lab-paper .lb-ref { padding: 48px 0 64px; }
   .lab-paper .lb-ref h2 { font-size: 26px; }
 }

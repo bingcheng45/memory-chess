@@ -371,6 +371,11 @@
       "memorizeTime": "Memorizálási idő",
       "solutionTime": "Megoldási idő",
       "date": "Dátum"
+    },
+    "daily": {
+      "tab": "Napi",
+      "resetsAtUtc": "Újraindul {utc} UTC-kor",
+      "resetsAt": "Újraindul {utc} UTC-kor (nálad {local}), {hours, plural, =0 {{minutes, plural, =0 {kevesebb mint egy perc múlva} one {# perc múlva} other {# perc múlva}}} one {# óra {minutes} perc múlva} other {# óra {minutes} perc múlva}}"
     }
   },
   "country": {

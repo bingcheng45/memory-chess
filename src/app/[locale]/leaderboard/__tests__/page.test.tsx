@@ -1,6 +1,7 @@
-import { render, screen } from "@/test-utils/intl";
+import { act, fireEvent, render, screen } from "@/test-utils/intl";
 import { getLeaderboard } from "@/lib/services/leaderboardService";
 import LeaderboardPage from "@/app/[locale]/leaderboard/page";
+import type { CountryCode } from "@/lib/leaderboard/countries";
 import enMessages from "../../../../../messages/en.json";
 
 jest.mock("@/lib/services/leaderboardService", () => ({
@@ -51,5 +52,42 @@ describe("LeaderboardPage when a board fails to load", () => {
     await renderPage();
 
     expect(screen.getByText(enMessages.leaderboard.unavailableTitle)).toBeInTheDocument();
+  });
+});
+
+describe("LeaderboardPage daily board", () => {
+  const row = (name: string, day: string) => ({
+    id: `${name}-${day}`,
+    player_name: name,
+    difficulty: "daily" as const,
+    daily_day: day,
+    country_code: "SG" as CountryCode,
+    piece_count: 6,
+    correct_pieces: 6,
+    total_wrong_pieces: 0,
+    memorize_time: 10,
+    solution_time: 20,
+    skill_rating: 1040,
+    created_at: `${day}T09:00:00Z`,
+  });
+  const DAILY_ROWS = [row("Bea Yesterday", "2026-10-12"), row("Ada Today", "2026-10-13")];
+
+  afterEach(() => jest.useRealTimers());
+
+  it("serves only the rows of the server's UTC day under the Daily tab", async () => {
+    jest.useFakeTimers({ now: new Date("2026-10-13T10:00:00Z") });
+    global.fetch = jest.fn(() => new Promise<Response>(() => {}));
+    jest.mocked(getLeaderboard).mockImplementation(async (board) => ({
+      data: board.difficulty === "daily" ? DAILY_ROWS.filter((entry) => entry.daily_day === board.daily_day) : [],
+    }));
+
+    await renderPage();
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Daily" }));
+    });
+
+    expect(jest.mocked(getLeaderboard)).toHaveBeenCalledWith({ difficulty: "daily", daily_day: "2026-10-13" });
+    expect(screen.getByText("Ada Today")).toBeInTheDocument();
+    expect(screen.queryByText("Bea Yesterday")).not.toBeInTheDocument();
   });
 });

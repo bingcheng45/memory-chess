@@ -371,6 +371,11 @@
       "memorizeTime": "Einprägezeit",
       "solutionTime": "Lösungszeit",
       "date": "Datum"
+    },
+    "daily": {
+      "tab": "Täglich",
+      "resetsAtUtc": "Wird um {utc} UTC zurückgesetzt",
+      "resetsAt": "Wird um {utc} UTC zurückgesetzt ({local} bei dir), {hours, plural, =0 {{minutes, plural, =0 {in unter einer Minute} one {in # Min.} other {in # Min.}}} one {in # Std. {minutes} Min.} other {in # Std. {minutes} Min.}}"
     }
   },
   "country": {

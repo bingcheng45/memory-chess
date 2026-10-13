@@ -371,6 +371,11 @@
       "memorizeTime": "암기 시간",
       "solutionTime": "풀이 시간",
       "date": "날짜"
+    },
+    "daily": {
+      "tab": "데일리",
+      "resetsAtUtc": "UTC {utc}에 초기화",
+      "resetsAt": "UTC {utc}(현지 시간 {local})에 초기화, {hours, plural, =0 {{minutes, plural, =0 {1분 이내} other {#분 남음}}} other {#시간 {minutes}분 남음}}"
     }
   },
   "country": {

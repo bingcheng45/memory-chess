@@ -4,21 +4,39 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import * as Tabs from '@radix-ui/react-tabs';
-import LeaderboardTable, { type EntryDetails } from '@/components/leaderboard/LeaderboardTable';
+import LeaderboardTable, { playHref, type EntryDetails } from '@/components/leaderboard/LeaderboardTable';
+import { DailyResetNote } from '@/components/leaderboard/DailyResetNote';
+import { useNow } from '@/components/home/DailyResetsIn';
 import { Link } from '@/i18n/navigation';
-import { RANKED_DIFFICULTIES, type RankedDifficulty } from '@/lib/reference/facts';
-import { LeaderboardEntry } from '@/types/leaderboard';
+import { utcDayOf } from '@/lib/lab/daily';
+import { RANKED_DIFFICULTIES } from '@/lib/reference/facts';
+import { DAILY_BOARD, type LeaderboardEntry } from '@/types/leaderboard';
 
-export type LeaderboardBoards = Record<RankedDifficulty, { data: LeaderboardEntry[]; error?: string }>;
+const LEADERBOARD_TABS = [DAILY_BOARD, ...RANKED_DIFFICULTIES] as const;
+type LeaderboardTab = (typeof LEADERBOARD_TABS)[number];
+
+/** A board's rows, and for the daily board the UTC day they belong to. */
+interface Board {
+  data: LeaderboardEntry[];
+  error?: string;
+  day?: string;
+}
+
+export type LeaderboardBoards = Record<LeaderboardTab, Board> & { daily: { day: string } };
 
 interface LeaderboardTabsProps {
   boards: LeaderboardBoards;
   entryDetails?: EntryDetails;
-  initialTab?: RankedDifficulty;
+  initialTab?: LeaderboardTab;
 }
 
-function isRankedDifficulty(value: string | null): value is RankedDifficulty {
-  return RANKED_DIFFICULTIES.includes(value as RankedDifficulty);
+function isLeaderboardTab(value: string | null): value is LeaderboardTab {
+  return LEADERBOARD_TABS.includes(value as LeaderboardTab);
+}
+
+/** A failed read keeps rows a few minutes old, but never rows of a day other than the one it asked for. */
+function settle(boards: LeaderboardBoards, tab: LeaderboardTab, read: Board): LeaderboardBoards {
+  return read.error && boards[tab].day === read.day ? boards : { ...boards, [tab]: read };
 }
 
 function parseParam(value: string | null, parse: (value: string) => number): number | null {
@@ -31,31 +49,36 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   // rather than translating "Easy" twice and letting the two drift.
   const tg = useTranslations("game");
   const [boards, setBoards] = useState(serverBoards);
-  const [activeTab, setActiveTab] = useState<RankedDifficulty>(initialTab);
+  const [activeTab, setActiveTab] = useState<LeaderboardTab>(initialTab);
+  const now = useNow();
+  const today = now === null ? null : utcDayOf(now);
+  const dailyDay = activeTab === DAILY_BOARD ? today : null;
 
   // The server boards are up to one revalidation window old. A player arriving
   // from the result screen needs the score they just submitted, so only that
-  // visit refreshes the open tab, and a failed refresh keeps the rows.
+  // visit refreshes the open tab. The daily board is read for the viewer's own
+  // UTC day whenever it is open, so it turns over at midnight without a reload.
   const isJustSubmitted = Boolean(entryDetails?.player);
 
   useEffect(() => {
-    if (!isJustSubmitted) return;
+    if (activeTab === DAILY_BOARD ? dailyDay === null : !isJustSubmitted) return;
     const controller = new AbortController();
+    const query = dailyDay === null ? `difficulty=${activeTab}` : `difficulty=${DAILY_BOARD}&daily_day=${dailyDay}`;
+    const day = dailyDay ?? undefined;
 
-    fetch(`/api/leaderboard?difficulty=${activeTab}`, { signal: controller.signal })
+    fetch(`/api/leaderboard?${query}`, { signal: controller.signal, cache: 'no-store' })
       .then((response) => response.json())
       .then(({ data, error }: { data?: LeaderboardEntry[]; error?: string }) => {
-        if (error || !data) return;
-        setBoards((current) => ({ ...current, [activeTab]: { data } }));
+        setBoards((current) => settle(current, activeTab, { data: data ?? [], error, day }));
       })
       .catch((err) => {
-        if (err.name !== 'AbortError') {
-          console.error('Error refreshing leaderboard data:', err);
-        }
+        if (err.name === 'AbortError') return;
+        console.error('Error refreshing leaderboard data:', err);
+        setBoards((current) => settle(current, activeTab, { data: [], error: String(err), day }));
       });
 
     return () => controller.abort();
-  }, [activeTab, isJustSubmitted]);
+  }, [activeTab, dailyDay, isJustSubmitted]);
 
   const activeBoard = boards[activeTab];
 
@@ -69,11 +92,11 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
       <Tabs.Root
         value={activeTab}
         onValueChange={(value) => {
-          if (isRankedDifficulty(value)) setActiveTab(value);
+          if (isLeaderboardTab(value)) setActiveTab(value);
         }}
       >
         <Tabs.List className="lb-tabs">
-          {RANKED_DIFFICULTIES.map((difficulty) => (
+          {LEADERBOARD_TABS.map((difficulty) => (
             <Tabs.Trigger
               key={difficulty}
               value={difficulty}
@@ -83,12 +106,13 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
               // Radix's arrow keys still move between the rest.
               tabIndex={difficulty === activeTab ? 0 : -1}
               className="lb-tab"
-            >{tg(`presets.${difficulty}.label`)}</Tabs.Trigger>
+            >{difficulty === DAILY_BOARD ? t("daily.tab") : tg(`presets.${difficulty}.label`)}</Tabs.Trigger>
           ))}
         </Tabs.List>
 
-        {RANKED_DIFFICULTIES.map((difficulty) => (
+        {LEADERBOARD_TABS.map((difficulty) => (
           <Tabs.Content key={difficulty} value={difficulty}>
+            {difficulty === DAILY_BOARD && <DailyResetNote day={today ?? boards.daily.day} now={now} />}
             <LeaderboardTable
               data={boards[difficulty].data}
               error={boards[difficulty].error ?? null}
@@ -103,7 +127,7 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
 
       {activeBoard.data.length > 0 && !activeBoard.error && (
         <div className="lb-cta">
-          <Link href={`/game?difficulty=${activeTab}`} className="lab-btn lab-btn-primary">
+          <Link href={playHref(activeTab)} className="lab-btn lab-btn-primary">
             {t("claimRank")}
           </Link>
         </div>
@@ -130,7 +154,7 @@ export default function LeaderboardTabsFromSearchParams({ boards }: { boards: Le
     <LeaderboardTabs
       boards={boards}
       entryDetails={entryDetails}
-      initialTab={isRankedDifficulty(difficulty) ? difficulty : 'medium'}
+      initialTab={isLeaderboardTab(difficulty) ? difficulty : 'medium'}
     />
   );
 }

@@ -371,6 +371,11 @@
       "memorizeTime": "記憶時間",
       "solutionTime": "重建用時",
       "date": "日期"
+    },
+    "daily": {
+      "tab": "每日",
+      "resetsAtUtc": "UTC {utc} 重設",
+      "resetsAt": "UTC {utc} 重設（你的時間 {local}），{hours, plural, =0 {{minutes, plural, =0 {不到一分鐘後} other {# 分鐘後}}} other {# 小時 {minutes} 分鐘後}}"
     }
   },
   "country": {

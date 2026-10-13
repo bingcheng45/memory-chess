@@ -371,6 +371,11 @@
       "memorizeTime": "記憶時間",
       "solutionTime": "解答時間",
       "date": "日付"
+    },
+    "daily": {
+      "tab": "デイリー",
+      "resetsAtUtc": "UTC {utc} にリセット",
+      "resetsAt": "UTC {utc}（あなたの時刻で {local}）にリセット、{hours, plural, =0 {{minutes, plural, =0 {あと1分未満} other {あと#分}}} other {あと#時間{minutes}分}}"
     }
   },
   "country": {

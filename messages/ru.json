@@ -371,6 +371,11 @@
       "memorizeTime": "Время запоминания",
       "solutionTime": "Время решения",
       "date": "Дата"
+    },
+    "daily": {
+      "tab": "Ежедневная",
+      "resetsAtUtc": "Сброс в {utc} UTC",
+      "resetsAt": "Сброс в {utc} UTC ({local} по вашему времени), {hours, plural, =0 {{minutes, plural, =0 {меньше чем через минуту} one {через # мин} few {через # мин} many {через # мин} other {через # мин}}} one {через # ч {minutes} мин} few {через # ч {minutes} мин} many {через # ч {minutes} мин} other {через # ч {minutes} мин}}"
     }
   },
   "country": {

@@ -1,7 +1,7 @@
 'use client';
 
 import { START_RATING } from "@/lib/game/rating";
-import type { LeaderboardEntry } from "@/types/leaderboard";
+import { DAILY_BOARD, type LeaderboardEntry } from "@/types/leaderboard";
 import { Link } from "@/i18n/navigation";
 import { useEffect, useRef, type ReactNode } from "react";
 import { CloudOff, TriangleAlert } from "lucide-react";
@@ -27,6 +27,9 @@ interface LeaderboardTableProps {
 }
 
 const COLUMN_COUNT = 7;
+
+/** Where a board's rows are earned: the daily board has its own page, the others are presets of /game. */
+export const playHref = (board: string) => (board === DAILY_BOARD ? "/daily" : `/game?difficulty=${board}`);
 const PODIUM_MEDALS = ["🏆", "🥈", "🥉"];
 
 export function TimeDisplay({ seconds }: { seconds: number }) {
@@ -143,7 +146,7 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
         <p className="lb-state-title">{t("emptyTitle")}</p>
         <p className="lb-state-body">{t("emptyBody")}</p>
         <p className="lb-state-note">{t("emptyCta")}</p>
-        <Link href={`/game?difficulty=${activeTab || 'medium'}`} className="lab-btn lab-btn-secondary">
+        <Link href={playHref(activeTab || 'medium')} className="lab-btn lab-btn-secondary">
           {t("startPlaying")}
         </Link>
       </BoardState>

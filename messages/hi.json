@@ -371,6 +371,11 @@
       "memorizeTime": "याद करने का समय",
       "solutionTime": "हल करने का समय",
       "date": "तारीख़"
+    },
+    "daily": {
+      "tab": "दैनिक",
+      "resetsAtUtc": "{utc} UTC पर रीसेट होता है",
+      "resetsAt": "{utc} UTC पर रीसेट होता है (आपके समय से {local}), {hours, plural, =0 {{minutes, plural, =0 {एक मिनट से कम में} one {# मिनट में} other {# मिनट में}}} one {# घंटा {minutes} मिनट में} other {# घंटे {minutes} मिनट में}}"
     }
   },
   "country": {

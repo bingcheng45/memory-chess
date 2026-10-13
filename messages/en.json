@@ -1186,6 +1186,11 @@
       "memorizeTime": "Memorize Time",
       "solutionTime": "Solution Time",
       "date": "Date"
+    },
+    "daily": {
+      "tab": "Daily",
+      "resetsAtUtc": "Resets at {utc} UTC",
+      "resetsAt": "Resets at {utc} UTC ({local} your time), {hours, plural, =0 {{minutes, plural, =0 {in under a minute} one {in # min} other {in # min}}} one {in # h {minutes} min} other {in # h {minutes} min}}"
     }
   },
   "country": {

@@ -371,6 +371,11 @@
       "memorizeTime": "Indlæringstid",
       "solutionTime": "Løsningstid",
       "date": "Dato"
+    },
+    "daily": {
+      "tab": "Daglig",
+      "resetsAtUtc": "Nulstilles kl. {utc} UTC",
+      "resetsAt": "Nulstilles kl. {utc} UTC ({local} din tid), {hours, plural, =0 {{minutes, plural, =0 {om under et minut} one {om # min} other {om # min}}} one {om # t {minutes} min} other {om # t {minutes} min}}"
     }
   },
   "country": {

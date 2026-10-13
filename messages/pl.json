@@ -371,6 +371,11 @@
       "memorizeTime": "Czas zapamiętywania",
       "solutionTime": "Czas rozwiązania",
       "date": "Data"
+    },
+    "daily": {
+      "tab": "Dzienna",
+      "resetsAtUtc": "Reset o {utc} UTC",
+      "resetsAt": "Reset o {utc} UTC ({local} u Ciebie), {hours, plural, =0 {{minutes, plural, =0 {za mniej niż minutę} one {za # min} few {za # min} many {za # min} other {za # min}}} one {za # godz. {minutes} min} few {za # godz. {minutes} min} many {za # godz. {minutes} min} other {za # godz. {minutes} min}}"
     }
   },
   "country": {

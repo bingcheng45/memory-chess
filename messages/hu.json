@@ -1008,6 +1008,7 @@
       "memorizationTime": "Memorizálási idő",
       "solutionTime": "Megoldási idő",
       "recallSpeed": "Felidézési sebesség",
+      "placement": "Besorolás: {round}/{total}. kör",
       "piecesPerSecond": "{value} bábu/mp",
       "actions": "Eredményhez tartozó műveletek",
       "tryAgain": "Újra",

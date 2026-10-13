@@ -1008,6 +1008,7 @@
       "memorizationTime": "Waktu menghafal",
       "solutionTime": "Waktu penyelesaian",
       "recallSpeed": "Kecepatan mengingat",
+      "placement": "Penempatan rating: ronde {round} dari {total}",
       "piecesPerSecond": "{value} bidak/dtk",
       "actions": "Tindakan untuk hasil",
       "tryAgain": "Coba lagi",

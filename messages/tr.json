@@ -1008,6 +1008,7 @@
       "memorizationTime": "Ezberleme süresi",
       "solutionTime": "Çözüm süresi",
       "recallSpeed": "Hatırlama hızı",
+      "placement": "Puan yerleştirme: {total} turdan {round}. tur",
       "piecesPerSecond": "{value} taş/sn",
       "actions": "Sonuç işlemleri",
       "tryAgain": "Tekrar dene",

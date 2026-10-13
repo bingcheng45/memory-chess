@@ -1008,6 +1008,7 @@
       "memorizationTime": "Memoreringstid",
       "solutionTime": "Lösningstid",
       "recallSpeed": "Minneshastighet",
+      "placement": "Placering av rating: runda {round} av {total}",
       "piecesPerSecond": "{value} pjäser/s",
       "actions": "Åtgärder för resultatet",
       "tryAgain": "Försök igen",

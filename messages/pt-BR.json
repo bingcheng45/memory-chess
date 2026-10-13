@@ -1008,6 +1008,7 @@
       "memorizationTime": "Tempo de memorização",
       "solutionTime": "Tempo de resolução",
       "recallSpeed": "Velocidade de recordação",
+      "placement": "Classificação do rating: rodada {round} de {total}",
       "piecesPerSecond": "{value} peças/s",
       "actions": "Ações do resultado",
       "tryAgain": "Tentar de novo",

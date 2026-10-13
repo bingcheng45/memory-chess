@@ -1008,6 +1008,7 @@
       "memorizationTime": "Thời gian ghi nhớ",
       "solutionTime": "Thời gian hoàn thành",
       "recallSpeed": "Tốc độ nhớ lại",
+      "placement": "Xếp hạng ban đầu: vòng {round}/{total}",
       "piecesPerSecond": "{value} quân/giây",
       "actions": "Thao tác với kết quả",
       "tryAgain": "Thử lại",

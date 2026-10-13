@@ -1008,6 +1008,7 @@
       "memorizationTime": "Muistiinpainamisaika",
       "solutionTime": "Ratkaisuaika",
       "recallSpeed": "Palautusnopeus",
+      "placement": "Taitoluvun sijoitus: kierros {round}/{total}",
       "piecesPerSecond": "{value} nappulaa/s",
       "actions": "Tulokseen liittyvät toiminnot",
       "tryAgain": "Yritä uudelleen",

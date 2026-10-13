@@ -1008,6 +1008,7 @@
       "memorizationTime": "Memorization time",
       "solutionTime": "Solution time",
       "recallSpeed": "Recall speed",
+      "placement": "Rating placement: round {round} of {total}",
       "piecesPerSecond": "{value} pieces/sec",
       "actions": "Result actions",
       "tryAgain": "Try again",

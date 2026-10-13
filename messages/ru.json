@@ -1008,6 +1008,7 @@
       "memorizationTime": "Время запоминания",
       "solutionTime": "Время решения",
       "recallSpeed": "Скорость припоминания",
+      "placement": "Калибровка рейтинга: раунд {round} из {total}",
       "piecesPerSecond": "{value} фиг./с",
       "actions": "Действия с результатом",
       "tryAgain": "Ещё раз",

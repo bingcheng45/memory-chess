@@ -1008,6 +1008,7 @@
       "memorizationTime": "याद करने का समय",
       "solutionTime": "हल करने का समय",
       "recallSpeed": "याद करने की गति",
+      "placement": "रेटिंग प्लेसमेंट: {total} में से राउंड {round}",
       "piecesPerSecond": "{value} मोहरे/से.",
       "actions": "नतीजे से जुड़े विकल्प",
       "tryAgain": "फिर कोशिश करें",

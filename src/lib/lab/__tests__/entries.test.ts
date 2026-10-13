@@ -75,15 +75,21 @@ describe("a daily row", () => {
     expect(entryFromRow({ ...dailyRow(ID_TODAY, "2026-10-13", 4), daily_day: null }, 7_000)).toBeNull();
   });
 
-  it("is remembered for its own day only: 2026-10-13's entry replaces 2026-10-12's better one and leaves the ranked boards alone", () => {
-    expect(rememberEntry(dailyRow(ID_YESTERDAY, "2026-10-12", 5), 1_000)?.id).toBe(ID_YESTERDAY);
-    expect(readDailyEntry("2026-10-12")?.id).toBe(ID_YESTERDAY);
-
+  it("keeps the two latest days, since a round finished after midnight still joins the day before: 2026-10-11 drops when 2026-10-13 is remembered", () => {
+    const ID_TWO_DAYS_AGO = "2b2b2b2b-0000-4000-8000-000000000002";
+    rememberEntry(dailyRow(ID_TWO_DAYS_AGO, "2026-10-11", 5), 500);
+    rememberEntry(dailyRow(ID_YESTERDAY, "2026-10-12", 5), 1_000);
     expect(rememberEntry(dailyRow(ID_TODAY, "2026-10-13", 4), 2_000)?.id).toBe(ID_TODAY);
 
-    expect([readDailyEntry("2026-10-13")?.id, readDailyEntry("2026-10-12")]).toEqual([ID_TODAY, null]);
+    expect([readDailyEntry("2026-10-13")?.id, readDailyEntry("2026-10-12")?.id, readDailyEntry("2026-10-11")]).toEqual([ID_TODAY, ID_YESTERDAY, null]);
     expect(window.localStorage.getItem(ENTRIES_KEY)).toBeNull();
-    expect(JSON.parse(window.localStorage.getItem(DAILY_ENTRY_KEY) ?? "null")).toMatchObject({ id: ID_TODAY, dailyDay: "2026-10-13" });
+  });
+
+  it("joins yesterday's board after today's without dropping today's entry", () => {
+    rememberEntry(dailyRow(ID_TODAY, "2026-10-13", 4), 1_000);
+    rememberEntry(dailyRow(ID_YESTERDAY, "2026-10-12", 5), 2_000);
+
+    expect([readDailyEntry("2026-10-13")?.id, readDailyEntry("2026-10-12")?.id]).toEqual([ID_TODAY, ID_YESTERDAY]);
   });
 });
 

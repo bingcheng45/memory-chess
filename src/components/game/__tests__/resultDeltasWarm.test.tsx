@@ -16,6 +16,7 @@ jest.mock("@/components/game/FirstGameFeedbackDialog", () => ({ __esModule: true
 const TARGET = "4k3/8/8/3q4/8/5N2/8/4K3";
 const store = () => useGameStore.getState();
 const figures = () => screen.queryByRole("region", { name: "Your dashboard after this round" });
+const savedToast = () => screen.queryByText("Round saved. Your updated stats are just below.");
 const said = (section: HTMLElement) => [...section.querySelectorAll(".lab-sr")].map((line) => line.textContent);
 
 function playRound() {
@@ -39,19 +40,21 @@ afterEach(() => {
 });
 
 describe("the dashboard figures on the result screen", () => {
-  it("are whole in the screen's first render when the round warmed them, counting the round before it is saved", async () => {
+  it("are whole in the screen's first render when the round warmed them, counting the round before it is saved, and announced below the fold", async () => {
     warmResultDeltas();
     await waitFor(() => expect(warmedResultDeltas()?.before.records.map(({ id }) => id)).toEqual(["earlier"]));
     playRound();
+    jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({ top: 1200, bottom: 1500 } as DOMRect);
 
     render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
     const section = figures();
     expect(section).not.toBeNull();
     expect(said(section as HTMLElement)).toContain("Rounds played 2 rounds, up 1 from 1 round, better");
+    expect(savedToast()).not.toBeNull();
   });
 
-  it("stay off a screen whose round ended before they were warmed, and do not arrive late", async () => {
+  it("stay off a screen whose round ended before they were warmed, do not arrive late, and announce nothing", async () => {
     warmResultDeltas();
     playRound();
 
@@ -59,5 +62,6 @@ describe("the dashboard figures on the result screen", () => {
     await waitFor(() => expect(warmedResultDeltas()).not.toBeNull());
 
     expect(figures()).toBeNull();
+    expect(savedToast()).toBeNull();
   });
 });

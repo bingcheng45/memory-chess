@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useFigureText } from "@/components/dashboard/figureText";
+import RoundSavedToast from "@/components/game/RoundSavedToast";
 import { TrendChip } from "@/components/dashboard/TrendChip";
 import { standingOf } from "@/components/dashboard/useGameStanding";
 import { useWeekGoal } from "@/components/home/useWeekGoal";
@@ -97,6 +98,7 @@ export default function ResultDeltas({ before, labRound }: ResultDeltasProps) {
   const t = useTranslations("dashboard.deltas");
   const [weekGoal] = useWeekGoal();
   const standings = useRoundStandings(labRound.facts.id);
+  const section = useRef<HTMLElement>(null);
   const deltas = useMemo(() => {
     const round = roundRecordOf(labRound.facts, new Date(labRound.endedAt));
     return roundDeltasOf({
@@ -118,7 +120,7 @@ export default function ResultDeltas({ before, labRound }: ResultDeltasProps) {
   }, [before, labRound, weekGoal, standings]);
 
   return (
-    <section aria-labelledby="result-deltas-title" className="lab-card lab-deltas">
+    <section ref={section} tabIndex={-1} aria-labelledby="result-deltas-title" className="lab-card lab-deltas">
       <h3 id="result-deltas-title" className="lab-deltas-h">
         {t("title")}
       </h3>
@@ -130,6 +132,7 @@ export default function ResultDeltas({ before, labRound }: ResultDeltasProps) {
       <Link className="lab-deltas-open" href="/dashboard">
         {t("open")} <span aria-hidden="true">→</span>
       </Link>
+      <RoundSavedToast roundId={labRound.facts.id} target={section} />
     </section>
   );
 }

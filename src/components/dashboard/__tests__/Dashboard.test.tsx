@@ -87,6 +87,13 @@ describe("Dashboard", () => {
     );
   });
 
+  it("gives each tile the fragment a Learn guide links to", () => {
+    show("twoRounds");
+
+    expect(document.getElementById("tile-recentAccuracy")?.textContent).toBe(tileText("recentAccuracy"));
+    expect(document.getElementById("tile-recentAccuracy")?.textContent).toMatch(/^Recent accuracy/);
+  });
+
   it("names what a warming figure still needs", () => {
     show("twoRounds");
 

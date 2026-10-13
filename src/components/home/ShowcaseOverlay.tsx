@@ -3,11 +3,11 @@
 import type { CSSProperties } from "react";
 import { useTranslations } from "next-intl";
 import type { SquareName } from "@/lib/game/board";
-import type { Group, Relation } from "@/lib/home/relations";
-import { groupBounds, SHOWCASE, type GroupId, type ShowcaseMove } from "@/lib/home/showcase";
+import type { Group } from "@/lib/home/relations";
+import { groupBounds, linesOf, SHOWCASE, type GroupId } from "@/lib/home/showcase";
 import type { Inspection, ShowcaseView } from "@/lib/home/showcaseView";
 import { placeLabel, segmentBetween, squaresBox, type Segment } from "@/lib/home/labelPlacement";
-import { BoardArrow } from "./BoardArrow";
+import { LineMark } from "./BoardLine";
 import { fileOf, rowOf, squareCenter } from "./boardUnits";
 
 const BOX_INSET = 0.06;
@@ -22,14 +22,6 @@ const CROSS_REACH = 0.22;
 const MOVE_DOT_RADIUS = 0.12;
 const GUARD_RADIUS = 0.4;
 const TICK_SIZE = 0.2;
-
-/** How an arrow is drawn: what a relation means, or a move a piece made. */
-type ArrowKind = Relation["kind"] | "move";
-interface DrawnArrow extends ShowcaseMove {
-  readonly kind: ArrowKind;
-}
-/** A square a piece merely covers is drawn thin and without a head. */
-const HEADLESS: ReadonlySet<ArrowKind> = new Set(["controls"]);
 
 interface GroupCircleProps {
   group: Group<GroupId>;
@@ -91,19 +83,6 @@ function SquareMark({ square, kind }: { square: SquareName; kind: string }) {
   );
 }
 
-function Arrow({ arrow, order }: { arrow: DrawnArrow; order: number }) {
-  return (
-    <BoardArrow
-      from={arrow.from}
-      to={arrow.to}
-      kind={arrow.kind}
-      headless={HEADLESS.has(arrow.kind)}
-      className="lab-sc-arrow"
-      style={{ "--order": order } as CSSProperties}
-    />
-  );
-}
-
 function Cross({ square }: { square: SquareName }) {
   const { x, y } = squareCenter(square);
   return (
@@ -153,11 +132,8 @@ export function ShowcaseOverlay({ view }: { view: ShowcaseView }) {
       .filter(([home]) => !view.board.gone.includes(home as SquareName))
       .map(([, square]) => square as SquareName),
   );
-  const arrows: DrawnArrow[] = [
-    ...annotations.moves.map((move) => ({ ...move, kind: "move" as const })),
-    ...annotations.relations,
-  ];
-  const segments = arrows.map((arrow) => segmentBetween(arrow.from, arrow.to));
+  const lines = linesOf(annotations);
+  const segments = lines.map((line) => segmentBetween(line.from, line.to));
   const circles = (part: GroupCircleProps["part"]) =>
     SHOWCASE.groups.map((group) => (
       <GroupCircle
@@ -183,8 +159,14 @@ export function ShowcaseOverlay({ view }: { view: ShowcaseView }) {
         {annotations.crosses.map((square) => (
           <Cross key={square} square={square} />
         ))}
-        {arrows.map((arrow, order) => (
-          <Arrow key={`${arrow.kind}-${arrow.from}-${arrow.to}`} arrow={arrow} order={order} />
+        {lines.map((line, order) => (
+          <LineMark
+            key={`${line.kind}-${line.from}-${line.to}`}
+            line={line}
+            occupied={occupied}
+            className="lab-sc-line"
+            style={{ "--order": order } as CSSProperties}
+          />
         ))}
         {annotations.ticks.map((square) => (
           <Tick key={square} square={square} />

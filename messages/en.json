@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory chess game · chess memory trainer",
-      "subtitle": "Memorize a chess position, rebuild it from memory, and get an instant score. Improve your board vision one round at a time.",
-      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
-      "gamesPlayed": "Games played: {count}"
+      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>."
     },
     "cta": {
-      "play": "Play Memory Chess",
       "leaderboard": "View leaderboard",
-      "playFree": "Play a Free Round",
       "chooseSettings": "Choose pieces and time"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "How to Play Memory Chess",
       "credit": "Video: “A New Way To Train Your Vision” by Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "How it works",
-      "title": "A Simple Workout for Your Chess Memory",
-      "subtitle": "Every round has three simple steps: study the position, rebuild it, and learn from your score.",
-      "steps": {
-        "observe": {
-          "title": "Observe",
-          "description": "Study where each piece sits. Look for groups, lines, and useful empty spaces."
-        },
-        "recreate": {
-          "title": "Recreate",
-          "description": "When the board clears, place every piece back on the square you remember."
-        },
-        "improve": {
-          "title": "Improve",
-          "description": "Check your score, see what you missed, and try again with more pieces or less time."
-        }
-      }
-    },
-    "board": {
-      "study": "Study the board",
-      "rebuild": "Rebuild from memory"
-    },
     "learn": {
-      "eyebrow": "Learning Center",
-      "title": "Simple Chess Guides",
-      "description": "Learn practical ways to improve board vision, visualization, calculation, and memory. Each guide includes drills you can try right away.",
-      "browseCta": "Browse chess guides",
-      "beginnerCta": "Start with the Beginner Guide"
+      "browseCta": "Browse chess guides"
     },
     "faq": {
       "title": "Questions about Memory Chess.",
@@ -174,12 +143,12 @@
         "display": "Put a number on your <em>mind's eye.</em>",
         "lede": "Memory Chess is a free memory chess game and chess memory trainer. Study a position for a few seconds, the board goes blank, then rebuild it from memory. Each round is a short memory test with an accuracy reading from 0 to 100% and a map of every square you got right or wrong.",
         "secondaryCta": "Take a calibration reading",
+        "settingsLink": "<link>{label}</link>.",
         "facts": {
           "study": "study window",
           "pieces": "pieces per round",
-          "accuracy": "accuracy reading",
-          "plays": "games played",
-          "languages": "languages"
+          "plays": "{count, plural, one {game played} other {games played}}",
+          "languages": "{count, plural, one {language} other {languages}}"
         },
         "showcase": {
           "aria": "Veselin Topalov against Alexey Shirov, Linares 1998, with a guided study of the position",
@@ -272,6 +241,15 @@
                 "caption": "Now check it. Bishops on opposite colours, c3 dark and f5 light. The c3 bishop still hits f6. Four white, six black."
               }
             }
+          },
+          "lines": {
+            "move": "Move played",
+            "path": "Road to promotion",
+            "attacks": "Attacks",
+            "defends": "Guards",
+            "controls": "Covers",
+            "chain": "Pawn chain",
+            "blocked": "Blocked"
           }
         }
       },
@@ -443,7 +421,7 @@
           "exposure": "Exposure",
           "load": "Load"
         },
-        "loadLabel": "{pieceCount} of 32 squares filled",
+        "loadLabel": "{pieceCount} of 32 pieces",
         "play": "Play",
         "custom": {
           "label": "Custom",
@@ -910,9 +888,9 @@
           "plain": "New best at {pieceCount} pieces, {studyTime}: {accuracy}%"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# point} other {# points}} above your average over your last {rounds} rounds at this setting",
-          "below": "{points, plural, one {# point} other {# points}} below your average over your last {rounds} rounds at this setting",
-          "level": "Level with your average over your last {rounds} rounds at this setting"
+          "above": "{points, plural, one {# point} other {# points}} above {rounds, plural, one {your last round} other {your average over your last # rounds}} at this setting",
+          "below": "{points, plural, one {# point} other {# points}} below {rounds, plural, one {your last round} other {your average over your last # rounds}} at this setting",
+          "level": "Level with {rounds, plural, one {your last round} other {your average over your last # rounds}} at this setting"
         },
         "span": "Span up to {pieceCount} pieces",
         "streak": "{current, plural, one {Day 1} other {Day # in a row}}{graceUsed, select, true {, grace day used} other {}}, {days} of {goal} days this week",
@@ -1074,6 +1052,10 @@
         "cta": "Can you beat it?",
         "text": "{kind, select, daily {I recalled {correct, number} of {total, number} pieces ({accuracy}) on the Memory Chess daily board for {date}.} review {I recalled {correct, number} of {total, number} pieces ({accuracy}) on a Memory Chess review board.} other {I recalled {correct, number} of {total, number} pieces ({accuracy}) on Memory Chess.}} Can you beat it?",
         "alt": "Memory Chess result card: {details}."
+      },
+      "savedToast": {
+        "message": "Round saved. Your updated stats are just below.",
+        "action": "Show me"
       }
     },
     "comparison": {
@@ -1401,7 +1383,7 @@
     },
     "context": {
       "span": "{accuracy}% or better in {rounds, plural, one {# round} other {# rounds}}, studied {memorizeSeconds} s",
-      "recent": "Average of your last {rounds, plural, one {# round} other {# rounds}}, any setting",
+      "recent": "{rounds, plural, one {From your only round so far, any setting} other {Average of your last # rounds, any setting}}",
       "setting": "{source, select, calibration {Practice rounds} other {Game rounds}} at {pieceCount} pieces, {memorizeSeconds} s, from {rounds, plural, one {# round} other {# rounds}}",
       "longest": "Longest streak: {days, plural, one {# day} other {# days}}",
       "daily": "{status, select, played {Played today} unfinished {Opened today} other {Open today}}, longest streak {longest, plural, one {# day} other {# days}}",

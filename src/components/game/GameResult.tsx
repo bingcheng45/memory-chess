@@ -6,7 +6,7 @@ import { GameState } from "@/lib/types/game";
 import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -20,7 +20,6 @@ import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
 import type { RoundSource } from "@/lib/analytics/events";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
-import { hasLabCopy } from "@/lib/home/labLocales";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
   qualifies,
@@ -80,7 +79,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const t = useTranslations("game.result");
   // Without IndexedDB nothing can be recorded, so no space is held for a card that could only leave again.
   const keepsRecord = browserIndexedDB() !== undefined;
-  const showsLab = hasLabCopy(useLocale()) && keepsRecord;
+  const showsLab = keepsRecord;
   const tCountry = useTranslations("country");
   const tComparison = useTranslations("game.comparison");
   const tDaily = useTranslations("daily.round");

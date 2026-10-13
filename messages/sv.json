@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Träna ditt schackminne och din visualisering",
-      "subtitle": "Memorera en schackställning, bygg upp den ur minnet och få poäng direkt. Förbättra din brädkänsla omgång för omgång.",
-      "freeToPlay": "Gratis att spela, inget konto behövs. Du kan också jämföra din poäng på <link>topplistan</link>.",
-      "gamesPlayed": "Spelade partier: {count}"
+      "freeToPlay": "Gratis att spela, inget konto behövs. Du kan också jämföra din poäng på <link>topplistan</link>."
     },
     "cta": {
-      "play": "Spela Memory Chess",
       "leaderboard": "Visa topplistan",
-      "playFree": "Spela en gratis omgång",
       "chooseSettings": "Välj pjäser och tid"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Så spelar du Memory Chess",
       "credit": "Video: ”A New Way To Train Your Vision” av Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Så fungerar det",
-      "title": "Ett enkelt träningspass för ditt schackminne",
-      "subtitle": "Varje omgång har tre enkla steg: studera ställningen, bygg upp den och lär av din poäng.",
-      "steps": {
-        "observe": {
-          "title": "Observera",
-          "description": "Lägg märke till var varje pjäs står. Leta efter grupper, linjer och tomma rutor du kan använda som hållpunkter."
-        },
-        "recreate": {
-          "title": "Återskapa",
-          "description": "När brädet töms placerar du varje pjäs på den ruta du minns."
-        },
-        "improve": {
-          "title": "Förbättra",
-          "description": "Titta på din poäng, se vad du missade och försök igen med fler pjäser eller kortare tid."
-        }
-      }
-    },
-    "board": {
-      "study": "Studera brädet",
-      "rebuild": "Bygg upp ur minnet"
-    },
     "learn": {
-      "eyebrow": "Lärcenter",
-      "title": "Enkla schackguider",
-      "description": "Lär dig praktiska sätt att förbättra brädkänsla, visualisering, beräkning och minne. Varje guide har övningar du kan testa direkt.",
-      "browseCta": "Bläddra bland guiderna",
-      "beginnerCta": "Börja med nybörjarguiden"
+      "browseCta": "Bläddra bland guiderna"
     },
     "faq": {
       "title": "Frågor om Memory Chess",
@@ -130,6 +99,830 @@
           "answer": "Några fokuserade omgångar med jämna mellanrum är en bra början. Håll passen så korta att du fortfarande orkar studera varje ställning noggrant."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Labb",
+        "onPage": "På den här sidan",
+        "notebook": "Anteckningsbok",
+        "method": "Metod",
+        "calibrate": "Kalibrera",
+        "tiers": "Svårighetsgrad",
+        "record": "Journal",
+        "library": "Bibliotek",
+        "hints": {
+          "notebook": "Varför mäta",
+          "method": "En runda, steg för steg",
+          "calibrate": "Gör en mätning",
+          "tiers": "Nivåer och rigg",
+          "record": "Dina mätningar",
+          "library": "Guider och övningar"
+        },
+        "play": "Spela en gratis runda"
+      },
+      "tags": {
+        "proposed": "Förslag",
+        "sample": "Exempel",
+        "illustrative": "Illustration",
+        "free": "Gratis · inget konto",
+        "rig": "Rigg"
+      },
+      "sections": {
+        "notebook": "Anteckningsbok",
+        "method": "Metod",
+        "recording": "Fältinspelning",
+        "calibrate": "Kalibrera",
+        "tiers": "Svårighetsgrad",
+        "record": "Labbjournal",
+        "library": "Bibliotek",
+        "faq": "Frågor",
+        "next": "Nästa försök"
+      },
+      "hero": {
+        "platforms": "Webbläsare · dator · mobil",
+        "display": "Sätt en siffra på ditt <em>inre öga.</em>",
+        "lede": "Memory Chess är ett gratis minnesspel i schack och en tränare för schackminnet. Studera en ställning i några sekunder, brädet töms, och sedan bygger du upp den ur minnet. Varje runda är ett kort minnestest med en träffsäkerhet från 0 till 100 % och en karta över varje ruta du fick rätt eller fel.",
+        "secondaryCta": "Gör en kalibreringsmätning",
+        "settingsLink": "<link>{label}</link>.",
+        "facts": {
+          "study": "studietid",
+          "pieces": "pjäser per runda",
+          "plays": "{count, plural, one {spelat parti} other {spelade partier}}",
+          "languages": "{count, plural, one {språk} other {språk}}"
+        },
+        "showcase": {
+          "aria": "Veselin Topalov mot Alexey Shirov, Linares 1998, med en guidad genomgång av ställningen",
+          "event": "Linares · rond 10",
+          "venue": "4 mars 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "mot",
+          "pieceLabel": "{piece} på {square}",
+          "tags": {
+            "study": "Studera",
+            "trap": "Fällan",
+            "sacrifice": "Offret",
+            "walk": "Vandringen",
+            "runners": "Två fribönder",
+            "rebuild": "Bygg upp",
+            "inspect": "Räckvidd"
+          },
+          "counter": {
+            "study": "Studie {n}/{total}",
+            "game": "Parti {n}/{total}",
+            "resume": "Klicka igen för att fortsätta"
+          },
+          "controls": {
+            "steps": "Steg",
+            "step": "Steg {n} av {total}: {tag}",
+            "previous": "Föregående steg",
+            "next": "Nästa steg",
+            "play": "Spela upp",
+            "pause": "Pausa"
+          },
+          "inspect": {
+            "title": "{piece} på {square}.",
+            "reach": "{moves, plural, =0 {Inga drag} one {# drag} other {# drag}}, {captures, plural, =0 {inga slag} one {# slag} other {# slag}}.",
+            "checks": "Schackar: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "Vits hörn",
+            "longDiagonal": "Långa diagonalen",
+            "blackWall": "Svarts mur",
+            "runner": "Fribonden"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Shirov, som spelar svart, har två bönder mer, men olikfärgade löpare håller ofta remi. Tio pjäser."
+              },
+              "whiteCorner": {
+                "caption": "Vits kung på g1 skyddar bonden på g2. h-bonden har gått fram till h4."
+              },
+              "longDiagonal": {
+                "caption": "Vits löpare på c3 behärskar den långa diagonalen och angriper bonden på f6.",
+                "thought": "Svartfältslöpare, c3 mot f6."
+              },
+              "blackWall": {
+                "caption": "Svarts kung på e6, hans löpare på f5, bönder på d5, f6 och g6.",
+                "thought": "Kungen skyddar f6 och d5. Bonden på g6 skyddar löparen."
+              },
+              "runner": {
+                "caption": "En ensam svart bonde på a4, långt från allt annat."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "Svarts kung kan inte gå framåt. På d5 och f5 står hans egna pjäser, och löparen på c3 bevakar e5.",
+                "thought": "Bara Kd6, Kd7, Ke7 och Kf7. Alla går bakåt eller åt sidan."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! Löparen offrar sig på en ruta där g-bonden kan slå den. Den stod i vägen för kungen.",
+                "thought": "Nu är f5 tom. Där är dörren."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Genom dörren som löparen öppnade når kungen centrum."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. En löpare kan inte stoppa två fribönder.",
+                "thought": "Topalov slog löparen och gav upp efter 53...Kb3."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "Brädet töms. Bygg upp utgångsställningen: Vits hörn, den långa diagonalen, Svarts mur, fribonden."
+              },
+              "back": {
+                "caption": "Grupp för grupp går varje pjäs tillbaka till sin ruta."
+              },
+              "check": {
+                "caption": "Kontrollera nu. Olikfärgade löpare, c3 är mörk och f5 är ljus. Löparen på c3 angriper fortfarande f6. Fyra vita, sex svarta."
+              }
+            }
+          },
+          "lines": {
+            "move": "Spelat drag",
+            "path": "Väg till förvandling",
+            "attacks": "Angriper",
+            "defends": "Skyddar",
+            "controls": "Kontrollerar",
+            "chain": "Bondekedja",
+            "blocked": "Blockerat"
+          }
+        }
+      },
+      "notebook": {
+        "title": "Det du aldrig mäter kan du inte förbättra.",
+        "lede": "Den mesta schackträningen övar beslut. Mycket lite av den kontrollerar om du faktiskt kan hålla brädet i huvudet. Den förmågan ligger under beräkning, blindspel och att se taktik, och den lämnas oftast åt slumpen.",
+        "observation": {
+          "kicker": "Observation",
+          "title": "Spelare tappar bort pjäser mitt i beräkningen.",
+          "body": "Tre drag in i varianten försvinner en löpare på den långa diagonalen tyst ur bilden i ditt huvud. Brädet framför dig var rätt. Det i ditt huvud var det inte."
+        },
+        "hypothesis": {
+          "kicker": "Hypotes",
+          "title": "Brädminne är en förmåga som går att träna och testa.",
+          "body": "Håll en ställning en kort stund, bygg upp den och kontrollera resultatet. Upprepa med fler pjäser och kortare tid. <hl>Vi påstår ingenting om din hjärna.</hl> Vi ger dig ett mätvärde du kan följa."
+        },
+        "method": {
+          "kicker": "Metod",
+          "title": "En runda, en tydlig siffra.",
+          "body": "Studera, tomt bräde, bygg upp, poäng. Rätta rutor markeras, fel rutor markeras, inget döljs. En runda tar under en minut, så du kan köra många."
+        }
+      },
+      "method": {
+        "title": "En runda under mikroskopet.",
+        "lede": "Skrolla igenom en runda med en riktig ställning: slutet på Kasparovs odödliga, Kasparov mot Topalov i Wijk aan Zee 1999. Markeringarna visar ett sätt att memorera den, inte en inspelning av någons uppmärksamhet.",
+        "status": "Fas {number} · {name}",
+        "clock": "t = {seconds} s",
+        "scoreChip": "{correct} av {total} rutor",
+        "countChip": "Vit {white} · Svart {black}",
+        "groups": {
+          "standoff": {
+            "name": "Dödläge",
+            "sentence": "Vits kung angriper d2. Svarts kung och c3 skyddar den."
+          },
+          "mirror": {
+            "name": "Trappor",
+            "sentence": "Spegelvända trappor, h2 upp till f4, h7 ned till f5."
+          },
+          "longShots": {
+            "name": "Långskott",
+            "sentence": "Damen på a7 siktar på h7. Tornet på d2 siktar på h2."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "Studera",
+            "title": "Elva pjäser, tio sekunder.",
+            "body": "Slutställningen i Kasparovs odödliga, efter 44.Qa7. Här gav Topalov upp. Ta in hela brädet, inte ruta för ruta. I de Groots experiment återgav mästare en kort visad partiställning mycket bättre än svagare spelare.",
+            "note": "Fig. Vit: kung c1, dam a7, bönder f4, g3, h2. Svart: kung e1, torn d2, bönder c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Ankare",
+            "title": "Börja med kungarna.",
+            "body": "Fäst två punkter först. Båda kungarna står på första raden, två linjer isär, och Svarts kung har tagit sig ända till e1. Placera allt annat i förhållande till dem.",
+            "note": "Fig. de två kungarna inringade. Allt annat får vänta."
+          },
+          "chunk": {
+            "name": "Gruppera",
+            "title": "Elva pjäser blir tre idéer.",
+            "body": "Gruppera pjäserna efter vad de gör med varandra. Kungarna slåss om d2. Två bondetrappor möts. Damen och tornet siktar var för sig på en oskyddad h-bonde. Chase och Simon (1973) fann att starka spelare minns ställningar i grupper av sammanhörande pjäser.",
+            "note": "Fig. orange angriper, blått skyddar, grått binder ihop en bondekedja, strecket markerar ett blockerat par. Tornet på d2 ingår i två grupper."
+          },
+          "encode": {
+            "name": "Koda",
+            "title": "Gör varje grupp till en mening.",
+            "body": "Namnge varje grupp efter dess uppgift. Gobet och Simon (1996) beskriver hur starka spelare håller större, schemaliknande strukturer i minnet. Själva meningarna är en teknik, inte ett forskningsresultat.",
+            "note": "Fig. de tre grupperna med namn. Deras meningar:"
+          },
+          "blank": {
+            "name": "Tomt",
+            "title": "Brädet töms.",
+            "body": "Inga pjäser, inga ledtrådar. Bygg upp utifrån meningarna, inte utifrån en bild. Säg dem i ordning: kungarna först, sedan varje grupp.",
+            "note": "Här finns inget att göra utom att hålla kvar tre meningar."
+          },
+          "rebuild": {
+            "name": "Bygg upp",
+            "title": "Bygg upp grupp för grupp.",
+            "body": "Kungarna. Dödläget. Trapporna. Långskotten. Placera varje grupp med dess mening innan du börjar på nästa.",
+            "note": "Fig. uppbyggnaden innan den kontrolleras. En bonde står på fel ruta. Ser du vilken?"
+          },
+          "score": {
+            "name": "Poäng",
+            "title": "Kontrollera mot dina meningar och räkna sedan poäng.",
+            "body": "Kontrollera varje relation igen på det uppbyggda brädet. Skyddas tornet fortfarande två gånger? Från c2 skyddar bonden d1, inte d2. Antalet, fem och sex, stämmer fortfarande, så bara kontrollen av relationerna fångar misstaget.",
+            "note": "Fig. bockarna håller fortfarande, det röda krysset brast. Orange fyllning är fel ruta (c2), ringen visar var den hörde hemma (c3). {correct} av {total} rutor är {accuracy} %."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Gör en kalibreringsmätning.",
+        "lede": "Medel-rundan från det riktiga partiet: {pieceCount} pjäser, två kungar bland dem, {memorizeSeconds} sekunder. Sedan töms brädet och du bygger upp det igen. Du får ett resultatkort med din träffsäkerhet och ditt minne per pjästyp. Det fungerar med mus, pekskärm och tangentbord.",
+        "phaseReady": "Redo · {pieceCount} pjäser · {memorizeSeconds} s visning",
+        "phaseLabel": "Fas {number} · {name}",
+        "start": "Starta kalibrering",
+        "restart": "Börja om",
+        "again": "Kör igen",
+        "done": "Klar",
+        "submit": "Skicka in mätningen",
+        "clear": "Töm brädet",
+        "controlsLabel": "Rundans kontroller",
+        "boardLabel": "Kalibreringsbräde. Använd piltangenterna för att flytta mellan rutorna.",
+        "paletteLabel": "Pjäspalett",
+        "paletteItem": "{piece}, {count} kvar",
+        "usedUp": {
+          "white": {
+            "king": "Den vita kungen står redan på brädet.",
+            "queen": "Den vita damen står redan på brädet.",
+            "rook": "Båda de vita tornen står på brädet.",
+            "bishop": "Båda de vita löparna står på brädet.",
+            "knight": "Båda de vita springarna står på brädet.",
+            "pawn": "Alla åtta vita bönder står på brädet."
+          },
+          "black": {
+            "king": "Den svarta kungen står redan på brädet.",
+            "queen": "Den svarta damen står redan på brädet.",
+            "rook": "Båda de svarta tornen står på brädet.",
+            "bishop": "Båda de svarta löparna står på brädet.",
+            "knight": "Båda de svarta springarna står på brädet.",
+            "pawn": "Alla åtta svarta bönder står på brädet."
+          }
+        },
+        "squareEmpty": "{square}, tom",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Studera ställningen. {memorizeSeconds} sekunder.",
+        "liveRebuild": "Brädet är tömt. Välj en pjäs och sedan en ruta.",
+        "liveScore": "Träffsäkerhet {accuracy} procent. {correct} av {total} rutor rätt.",
+        "startFailed": "Det gick inte att ladda en ställning. Kontrollera din anslutning och försök igen.",
+        "steps": [
+          "Tryck på start. Studera ställningen tills mätaren är tom.",
+          "Välj en pjäs i paletten och tryck sedan på en ruta. Tryck på en placerad pjäs för att ta bort den.",
+          "Skicka in. Om du placerar fler pjäser än ställningen hade sjunker din träffsäkerhet, så placera bara det du minns."
+        ],
+        "readout": {
+          "title": "Resultatkort",
+          "statusIdle": "Väntar på körning",
+          "statusRecording": "Registrerar",
+          "statusDone": "Körningen klar",
+          "correct": "Rätta rutor",
+          "time": "Placeringstid",
+          "wrong": "Fel pjäser",
+          "exposure": "Visningstid",
+          "byType": "Minne per pjästyp",
+          "byTypeEmpty": "Minne per pjästyp visas här efter din första körning.",
+          "nextEmpty": "En föreslagen svårighetsgrad visas efter mätningen.",
+          "suggested": "Förslag:",
+          "stepUp": "gå upp till {tier}, {pieceCount} pjäser på {memorizeSeconds} s. Bekräfta först med två felfria rundor till.",
+          "stay": "stanna på {tier}, {pieceCount} pjäser på {memorizeSeconds} s. Kör tre rundor och följ trenden.",
+          "start": "börja på {tier}, {pieceCount} pjäser på {memorizeSeconds} s. Gruppera pjäserna i par medan du studerar.",
+          "playTier": "Spela {tier}",
+          "legendCorrect": "rätt",
+          "legendWrong": "fel placering",
+          "legendMissed": "missad ruta"
+        },
+        "pieceTypes": {
+          "king": "Kung",
+          "queen": "Dam",
+          "rook": "Torn",
+          "bishop": "Löpare",
+          "knight": "Springare",
+          "pawn": "Bonde"
+        }
+      },
+      "tiers": {
+        "title": "Fyra nivåer. En egen rigg.",
+        "lede": "Belastningen ökar, visningstiden minskar. Gå upp en nivå när dina mätningar håller sig stabila, inte efter en enda lyckosam runda.",
+        "columns": {
+          "tier": "Svårighetsgrad",
+          "pieces": "Pjäser",
+          "exposure": "Visning",
+          "load": "Belastning"
+        },
+        "loadLabel": "{pieceCount} av 32 pjäser",
+        "play": "Spela",
+        "custom": {
+          "label": "Egen",
+          "description": "Ställ in dina egna variabler för att isolera en svaghet."
+        }
+      },
+      "record": {
+        "title": "Kom tillbaka för trendlinjen.",
+        "lede": "En mätning är en ögonblicksbild. Tio mätningar är en mätserie. Varje runda du spelar sparas på den här enheten, och panelerna fylls i från dina egna rundor. Före din första runda visar panelerna värden märkta <tag>Exempel</tag>, inte riktiga spelare. Därefter säger en panel som ännu inte kan läsa din journal vad den fortfarande behöver.",
+        "span": {
+          "fig": "Fig. {number} · Minnesspann",
+          "title": "Hur många pjäser du kan hålla.",
+          "figure": "{pieceCount, plural, one {# pjäs} other {# pjäser}}",
+          "held": "{accuracy} procent eller bättre i {count, plural, one {# runda} other {# rundor}}. Kortaste studietiden bland dem {studyTime}.",
+          "up": "Upp {count, plural, one {# pjäs} other {# pjäser}} sedan förra veckan",
+          "same": "Ingen förändring sedan förra veckan",
+          "aria": "Exempeltrappa över minnesspann under 12 pass, som stiger från 4 till 8 pjäser.",
+          "note": "Exempeljournal · 12 pass",
+          "realAria": "Ditt minnesspann {sessions, plural, one {under passet då det först nåddes} other {under de # passen sedan det först nåddes}}, {shape, select, flat {kvar på {now} pjäser} other {stigande från {first} till {now} pjäser}}.",
+          "need": "Nå {accuracy} procent eller bättre {count, plural, =2 {två gånger} one {en gång till} other {# gånger till}} med en och samma storlek på {minPieces} pjäser eller fler.",
+          "onlyKings": "Dina rundor hittills har bara haft de två kungarna, och ett spann kräver fler pjäser.",
+          "first": "Spannet nåddes först",
+          "last": "Senast"
+        },
+        "held": {
+          "fig": "Fig. {number} · Hållna pjäser",
+          "title": "Pjäser du placerar rätt, oavsett inställning.",
+          "aria": "Exempellinje över hållna pjäser under 12 rundor, ett glidande medelvärde över 5 rundor som stiger från 4,0 till 7,0 pjäser.",
+          "note": "Exempeljournal · 12 rundor · alla inställningar",
+          "partial": "Streckad linje: medelvärde över färre än {window} rundor",
+          "realAria": "Dina hållna pjäser under {count, plural, one {din senaste runda} other {dina senaste # rundor}} oavsett inställning, som medelvärde över {window} rundor, senast {latest} pjäser.",
+          "average": "Senaste snitt {average} pjäser",
+          "up": "upp {change} mot de {window} rundorna före",
+          "down": "ned {change} mot de {window} rundorna före",
+          "flat": "oförändrat mot de {window} rundorna före",
+          "realNote": "Alla inställningar · Från {count, plural, one {# runda} other {# rundor}}",
+          "needRounds": "{count, plural, one {# runda till ritar} other {# rundor till ritar}} din linje.",
+          "needRoundsAndDay": "{count, plural, one {# runda till, spelad en annan dag, ritar} other {# rundor till, minst en av dem en annan dag, ritar}} din linje.",
+          "needDay": "Spela en dag till för att rita din linje.",
+          "first": "Äldst",
+          "last": "Senast"
+        },
+        "speed": {
+          "fig": "Fig. {number} · Tempo",
+          "title": "Sekunder per pjäs du bygger upp.",
+          "aria": "Exempellinje över sekunder per rätt pjäs vid uppbyggnaden under 12 rundor, som sjunker från 4,1 till 2,6 sekunder.",
+          "note": "Exempeljournal · 12 rundor · Medel",
+          "realAria": "Dina sekunder per rätt pjäs vid uppbyggnaden under dina senaste {count} {source, select, calibration {övningsrundor} other {rundor i partier}} med {pieceCount} pjäser och {memorizeSeconds} sekunder, senast {latest} sekunder.",
+          "average": "Senaste snitt {average} per pjäs",
+          "down": "{change} snabbare än de {window} rundorna före",
+          "up": "{change} långsammare än de {window} rundorna före",
+          "flat": "samma tempo som de {window} rundorna före",
+          "accuracy": "Träffsäkerhet i samma rundor {average} %",
+          "accuracyChange": {
+            "up": "upp {change, plural, one {# procentenhet} other {# procentenheter}}",
+            "down": "ned {change, plural, one {# procentenhet} other {# procentenheter}}",
+            "flat": "oförändrat"
+          },
+          "fastWrong": "Snabbt och fel är ingen förbättring.",
+          "config": "{source, select, calibration {Övning} other {Parti}} · {pieceCount} pjäser · {studyTime}, din mest spelade inställning på sistone · Från {count, plural, one {# runda} other {# rundor}}",
+          "need": "{count, plural, one {# runda till} other {# rundor till}} med {pieceCount} pjäser, {studyTime} {source, select, calibration {i övning} other {i partier}} ritar din tempolinje.",
+          "needRight": "Tempot räknar bara rundor med minst en rätt pjäs. Spela {count, plural, one {# sådan runda} other {# sådana rundor}} för att starta din linje.",
+          "first": "Äldst",
+          "last": "Senast"
+        },
+        "curve": {
+          "fig": "Fig. {number} · Glömskekurva",
+          "title": "Korta repetitioner med mellanrum slår ett långt pass.",
+          "desc": "Bräden där du får under 80 % kommer tillbaka för repetition 1, 3, 7 och 14 dagar efter att du först såg dem. Din kurva visar hur mycket du minns efter varje uppehåll.",
+          "aria": "Illustrativt diagram: minnet sjunker snabbt utan repetition och avtar långsammare efter varje utspridd repetition dag 1, 3 och 7.",
+          "note": "Illustrativ modell av spridningseffekten. Inte uppmätta data.",
+          "noReview": "ingen repetition",
+          "spaced": "utspridda rundor",
+          "review": "repetition",
+          "day": "d{day}",
+          "warming": "{reviews, plural, one {# repetition till efter samma uppehåll ritar} other {# repetitioner till efter samma uppehåll ritar}} din första uppmätta punkt.",
+          "measuredAria": "Ditt minne på bräden du har repeterat: {points}.",
+          "pointFirst": "första gången {accuracy} % från {count, plural, one {# bräde} other {# bräden}}",
+          "pointAfter": "efter {day, plural, one {# dag} other {# dagar}} {accuracy} % från {count, plural, one {# repetition} other {# repetitioner}}",
+          "count": "n={count}",
+          "measuredNote": "Från {reviews, plural, one {# repetition} other {# repetitioner}} av {boards, plural, one {# bräde} other {# bräden}}. En punkt kräver {min} repetitioner efter sitt uppehåll.",
+          "due": "Repetition {number} av {cap} i dag",
+          "capped": "Dagens repetitioner är klara",
+          "play": "Spela en repetition",
+          "waiting": "Nästa repetition {days, plural, one {i morgon} other {om # dagar}}. {queued, plural, one {# bräde} other {# bräden}} i din kö.",
+          "empty": "Inga bräden att repetera ännu. Ett bräde där du får under 80 % kommer tillbaka hit dagen därpå."
+        },
+        "spark": {
+          "fig": "Fig. {number} · Träffsäkerhet över tid",
+          "title": "Din linje, runda för runda.",
+          "titleSessions": "Din linje, pass för pass.",
+          "aria": "Exempelkurva över träffsäkerhet under 12 rundor, som stiger från 52 till 79 procent.",
+          "note": "Exempeljournal · 12 rundor · Medel",
+          "first": "R01",
+          "last": "R12",
+          "needRounds": "{count, plural, one {# runda till} other {# rundor till}} med {pieceCount} pjäser, {studyTime} ritar din trend för {source, select, calibration {övning} other {partier}}.",
+          "needRoundsAndDay": "{count, plural, one {# runda till med {pieceCount} pjäser, {studyTime}, spelad en annan dag,} other {# rundor till med {pieceCount} pjäser, {studyTime}, minst en av dem en annan dag,}} ritar din trend för {source, select, calibration {övning} other {partier}}.",
+          "needDay": "Spela {pieceCount} pjäser, {studyTime} {source, select, calibration {i övning} other {i ett parti}} en dag till för att rita din trend.",
+          "config": "{source, select, calibration {Övning} other {Parti}} · {pieceCount} pjäser · {studyTime}, din mest spelade inställning med en trend",
+          "realAria": "Din träffsäkerhet under dina senaste {count} {source, select, calibration {övningsrundor} other {rundor i partier}} med {pieceCount} pjäser och {memorizeSeconds} sekunder, senast {latest} procent.",
+          "realAriaSessions": "Din träffsäkerhet under {count, plural, one {ditt senaste pass} other {dina senaste # pass}} med {source, select, calibration {övningsrundor} other {rundor i partier}} med {pieceCount} pjäser och {memorizeSeconds} sekunder, senast {latest} procent.",
+          "sessions": "{count, plural, one {# pass} other {# pass}}",
+          "realFirst": "Äldst",
+          "realLast": "Senast"
+        },
+        "heat": {
+          "fig": "Fig. {number} · Karta över missar",
+          "title": "Var dina rutor glider undan.",
+          "aria": "Exempel på värmekarta över missade rutor: mörkast längs h-linjen och runt h1, med heta punkter på b7 och f7, ljusast i centrum.",
+          "note": "Exempel: missarna hopar sig på h-linjen och runt kungens hörn på h1. Träna den kanten härnäst.",
+          "need": "Ungefär {count, plural, one {# runda till} other {# rundor till}} tills varje linje och rad har 10 pjäser att läsa av.",
+          "needStart": "Spela några rundor till för att starta din karta över missar.",
+          "files": "Linjer",
+          "ranks": "Rader",
+          "line": "{line}: {missed} av {shown} missade",
+          "lineThin": "{line}: {shown} sedda, för få för att läsa av",
+          "realAria": "Din andel missar på varje ruta. Grå rutor har färre än 10 sedda pjäser.",
+          "realNote": "Mörkare betyder oftare missad. Grå rutor har under 10 sedda pjäser."
+        },
+        "daily": {
+          "fig": "Fig. {number} · Dagens bräde",
+          "title": "Ett bräde om dagen, samma för alla.",
+          "desc": "En ny ställning öppnas varje dag vid midnatt UTC. Alla får samma 6 pjäser och 10 sekunder att studera, och du har ett försök.",
+          "play": "Spela dagens bräde",
+          "open": "Du har inte spelat dagens bräde ännu.",
+          "played": "Du placerade {correct} av {pieceCount, plural, one {# pjäs} other {# pjäser}} rätt, {accuracy} procent.",
+          "unfinished": "Du öppnade dagens bräde och lämnade det före resultatet. Ett försök per dag på den här enheten.",
+          "streak": "Dagssvit {current, plural, one {# dag} other {# dagar}}{forgiven, plural, =0 {} one {, # missad dag förlåten} other {, # missade dagar förlåtna}} · längsta {longest, plural, one {# dag} other {# dagar}}",
+          "streakLongest": "Längsta dagssvit {longest, plural, one {# dag} other {# dagar}}",
+          "gridAria": "Ditt resultat på varje ruta, a8 först: {correct} rätt, {wrong, plural, one {# fel pjäs} other {# fel pjäser}}, {missed} missade, {extra} extra.",
+          "key": {
+            "c": "rätt",
+            "w": "fel pjäs",
+            "m": "missad",
+            "x": "extra"
+          },
+          "share": "Memory Chess dagens bräde {day}\n{correct} av {pieceCount} rätt, {accuracy} %\n{row}\nthememorychess.com",
+          "copy": "Kopiera resultatet",
+          "showGrid": "Visa rutnätet",
+          "copied": "Kopierat. Klistra in det var du vill.",
+          "copyFailed": "Kopieringen fungerade inte här. Resultatet är markerat nedan, så kopiera det själv."
+        },
+        "streak": {
+          "fig": "Fig. {number} · Dagar i rad",
+          "title": "En runda om dagen bygger en svit.",
+          "desc": "Varje avslutad runda, i parti eller övning, räknas för sin dag. En missad dag på 7 dagar förlåts.",
+          "aria": "Exempel på rutnät för en svit på två veckor",
+          "note": "Exempel · den streckade rutan är dagens runda, som ännu väntar",
+          "realDesc": "Varje avslutad runda räknas för sin dag. En missad dag på 7 dagar förlåts.",
+          "need": "Spela {days, plural, one {# dag till} other {# dagar till}} för att läsa av din svit.",
+          "realAria": "Dina senaste 14 dagar: {count, plural, one {# dag} other {# dagar}} spelade{forgiven, plural, =0 {} one {, # förlåten} other {, # förlåtna}}.",
+          "realNote": "Nuvarande svit {current, plural, one {# dag} other {# dagar}}{forgiven, plural, =0 {} one { spelade, # missad dag förlåten} other { spelade, # missade dagar förlåtna}} · längsta {longest, plural, one {# dag} other {# dagar}}",
+          "key": {
+            "played": "spelad",
+            "forgiven": "förlåten",
+            "missed": "missad",
+            "today": "i dag"
+          }
+        },
+        "week": {
+          "ring": "{played} av {goal} dagar den här veckan",
+          "ringOver": "Målet nått, {played} dagar den här veckan",
+          "sampleRing": "Exempelvecka · {played} av {goal} dagar",
+          "left": "{remaining, plural, =0 {Målet nått den här veckan.} one {# dag till för att nå ditt mål.} other {# dagar till för att nå ditt mål.}}",
+          "outOfReach": "Målet kan inte nås med {daysLeft, plural, =0 {inga dagar} one {# dag} other {# dagar}} kvar. En ny vecka börjar på måndag.",
+          "goal": "Dagar i veckan",
+          "option": "{days} dagar i veckan"
+        },
+        "welcome": {
+          "line": "Välkommen tillbaka. Dag {day} i din journal. Förra gången {accuracy} % med {pieceCount} pjäser, {studyTime}.",
+          "lineNoDay": "Välkommen tillbaka. Förra gången {accuracy} % med {pieceCount} pjäser, {studyTime}."
+        },
+        "board": {
+          "fig": "Fig. {number} · Topplista",
+          "title": "Jämför mätningar över hela världen.",
+          "desc": "Varje svårighetsgrad rankas efter rätta pjäser, sedan färre fel pjäser, sedan kortare memoreringstid och sedan kortare lösningstid. Varje rad visar spelarens land.",
+          "howTo": "Skicka in ett resultat från resultatskärmen och se sedan var det placerar sig, i världen eller i ditt land.",
+          "sketchPieces": "{count} pjäser",
+          "open": "Öppna topplistan",
+          "difficulty": "Svårighetsgrad",
+          "scope": "Rankas bland",
+          "world": "Världen",
+          "entry": "Ditt bästa bidrag på {difficulty}: {correct, plural, one {# rätt pjäs} other {# rätta pjäser}}, skickat {date}.",
+          "check": "Visa min placering",
+          "checking": "Kontrollerar ...",
+          "ranked": "Plats {rank, number} av {total, plural, one {# bidrag} other {# bidrag}} på {difficulty}, i världen.",
+          "rankedIn": "Plats {rank, number} av {total, plural, one {# bidrag} other {# bidrag}} på {difficulty} i {country}.",
+          "checkedAt": "Kontrollerat {time}.",
+          "boardSize": "Den publika listan visar de {limit} bästa.",
+          "up": "Upp {places, plural, one {# plats} other {# platser}} sedan {time}.",
+          "down": "Ned {places, plural, one {# plats} other {# platser}} sedan {time}.",
+          "same": "Samma plats som {time}.",
+          "missing": "Ditt bidrag på {difficulty} finns inte längre på topplistan, så den här enheten sparar det inte längre. Listorna rensas eller nollställs ibland. Kontrollerat {time}.",
+          "limited": "För många kontroller från din anslutning. Försök igen om {wait, plural, one {# sekund} other {# sekunder}}.",
+          "noCountry": "Topplistan har inget land för det här bidraget, så det kan bara rankas i världen.",
+          "offline": "Du är offline, så inget skickades. Anslut och försök igen.",
+          "failed": "Det gick inte att nå topplistan, så ingen placering kunde läsas. Försök igen senare."
+        },
+        "plans": {
+          "fig": "Fig. {number} · Program",
+          "title": "Välj en plan och fullfölj den.",
+          "desc": "En plan i taget. Framstegen räknas från dina rundor, så att avbryta en plan raderar aldrig någon runda.",
+          "baseline": {
+            "kicker": "Plan A · 7 dagar",
+            "title": "Baslinjevecka",
+            "steps": [
+              "En runda på Medel om dagen.",
+              "Notera mätningen och stå emot frestelsen att försöka igen.",
+              "Dag 7: jämför med dag 1."
+            ],
+            "progress": "{played} av {days} dagar med en runda på Medel",
+            "compare": "Dag {firstDay} {first} %, dag {lastDay} {latest} %: {direction, select, up {upp {change, plural, one {# procentenhet} other {# procentenheter}}} down {ned {change, plural, one {# procentenhet} other {# procentenheter}}} other {oförändrat}}.",
+            "compareNone": "Ingen runda på Medel sedan planen startade, så det finns inget att jämföra.",
+            "compareOne": "En runda på Medel sedan planen startade, så det finns inget att jämföra ännu."
+          },
+          "edge": {
+            "kicker": "Plan B · 14 dagar",
+            "title": "Kantlinjeövning",
+            "steps": [
+              "Egen rigg: 8 pjäser, 15 s.",
+              "Gå igenom din karta över missar var 3:e dag.",
+              "Kombinera med guiden om brädseende."
+            ],
+            "progress": "Riggen spelad {played, plural, one {# dag} other {# dagar}} av {elapsed}. Mål: {target} dagar av {days}.",
+            "share": "Missar på kantlinjerna: {before} % i {beforeRounds, plural, one {# runda} other {# rundor}} före planen, {now} % i {nowRounds, plural, one {# runda} other {# rundor}} sedan dess.",
+            "shareMissing": "Missarna på kantlinjerna jämförs när båda sidor har {needed} rundor med en pjäs på a- eller h-linjen. Hittills {before} före planen, {now} sedan dess.",
+            "guide": "Läs hur du ser hela brädet"
+          },
+          "ladder": {
+            "kicker": "Plan C · utan slutdatum",
+            "title": "Nedtrappningsstege",
+            "steps": [
+              "Håll 90 % i tre rundor i rad.",
+              "Korta sedan studietiden med 2 sekunder.",
+              "När studietiden är nere på botten lägger du till pjäser."
+            ],
+            "rung": "Steg: {pieceCount} pjäser, {studyTime}.",
+            "run": "{run} av {needed} rundor i rad på {accuracy} procent eller bättre.",
+            "climbed": "Klarat: {needed} rundor i rad på {accuracy} procent eller bättre.",
+            "next": "Nästa steg: {pieceCount} pjäser, {studyTime}.",
+            "top": "Högst upp på stegen: inget bräde har fler än {pieceCount} pjäser."
+          },
+          "status": {
+            "day": "Dag {day}",
+            "dayOf": "Dag {day} av {length}",
+            "overtime": "Dag {day}, efter de planerade {length}",
+            "done": "Klar dag {day}.",
+            "finished": "Avslutad i förtid dag {day}.",
+            "stopped": "Avbruten dag {day}."
+          },
+          "start": "Starta {title}",
+          "again": "Starta {title} igen",
+          "busy": "En plan i taget. Avbryt {title} för att starta den här.",
+          "stop": "Avbryt planen",
+          "confirmStop": "Vill du verkligen avbryta?",
+          "keep": "Fortsätt",
+          "finish": "Avsluta i förtid",
+          "play": "Spela {pieceCount} pjäser, {studyTime}"
+        },
+        "goal": {
+          "fig": "Fig. {number} · Mål",
+          "title": "Sikta på en mätning.",
+          "desc": "Välj ett antal pjäser och en träffsäkerhet. Stapeln fylls från din bästa runda med det antalet eller fler sedan du satte målet.",
+          "sample": "Exempelmål: {pieceCount} pjäser på {accuracy} procent. Bäst hittills {best} procent, {percent} % av vägen.",
+          "target": "Mål: {pieceCount} eller fler pjäser på {accuracy, select, 100 {100 procent} other {{accuracy} procent eller bättre}}, satt {date}.",
+          "progress": "Bäst sedan dess: {best} procent med {pieceCount} pjäser, {percent} % av vägen.",
+          "bar": "{percent} % av vägen till målet",
+          "need": "Ingen runda med {pieceCount} eller fler pjäser sedan du satte det här målet.",
+          "reached": "Nått {date}: {accuracy} procent med {pieceCount} pjäser.",
+          "form": "Nytt mål",
+          "pieces": "Pjäser, minst",
+          "accuracy": "Träffsäkerhet, minst",
+          "percent": "{value} %",
+          "set": "Sätt mål",
+          "newGoal": "Sätt ett nytt mål",
+          "clear": "Ta bort målet",
+          "cancel": "Avbryt",
+          "saved": "Målet är satt.",
+          "cleared": "Målet är borttaget."
+        },
+        "mine": "Din journal",
+        "fromRounds": "Från {count, plural, one {# runda} other {# rundor}}",
+        "dashboardLink": "Öppna din översikt",
+        "play": "Spela en runda",
+        "tomorrow": "Kom tillbaka i morgon.",
+        "stale": "Senast spelat för {count, plural, one {# dag} other {# dagar}} sedan.",
+        "unlock": {
+          "label": "Kvar att låsa upp",
+          "count": "{unlocked} av {total} figurer upplåsta",
+          "done": "Alla figurer nedan är upplåsta.",
+          "showAll": "Visa alla {count} figurer",
+          "showFewer": "Visa färre",
+          "span": "{qualifyingRounds, plural, one {# runda} other {# rundor}} på {accuracy} %+ med {minPieces}+ pjäser",
+          "piecesHeld": "{rounds, plural, one {# runda} other {# rundor}} under {days, plural, one {# dag} other {# dagar}}",
+          "trend": "{rounds, plural, one {# runda} other {# rundor}} med en och samma inställning under {days, plural, one {# dag} other {# dagar}}",
+          "speed": "{rounds, plural, one {# runda} other {# rundor}} med en och samma inställning",
+          "streak": "{days, plural, one {# dag} other {# dagar}} spelade",
+          "curve": "{reviews, plural, one {# repetition} other {# repetitioner}} efter samma uppehåll",
+          "typeRecall": "{exposures, plural, one {# sedd pjäs} other {# sedda pjäser}} utöver kungarna",
+          "missMap": "{exposures, plural, one {# sedd pjäs} other {# sedda pjäser}} per linje och rad",
+          "trendRounds": "{rounds} {rounds, plural, one {runda} other {rundor}} till {source, select, calibration {i övning} other {i partier}} med {pieceCount} pjäser, {studyTime}",
+          "trendDays": "{days, plural, one {# dag till} other {# dagar till}} med {source, select, calibration {övningsrundor} other {rundor i partier}} med {pieceCount} pjäser, {studyTime}",
+          "trendRoundsDays": "{rounds} {rounds, plural, one {runda} other {rundor}} till {source, select, calibration {i övning} other {i partier}} med {pieceCount} pjäser, {studyTime}, {days, plural, one {# dag till} other {# dagar till}}",
+          "spanLeft": "{qualifyingRounds, plural, one {# runda till} other {# rundor till}} på {accuracy} %+ med {minPieces}+ pjäser",
+          "spanLarger": "{largerRounds, plural, one {# runda} other {# rundor}} med {minPieces}+ pjäser",
+          "piecesHeldRounds": "{rounds, plural, one {# runda till} other {# rundor till}}",
+          "piecesHeldDays": "{days, plural, one {# dag till} other {# dagar till}}",
+          "piecesHeldRoundsDays": "{rounds, plural, one {# runda till} other {# rundor till}}, {days, plural, one {# dag till} other {# dagar till}}",
+          "speedRounds": "{rounds} {rounds, plural, one {runda} other {rundor}} till {source, select, calibration {i övning} other {i partier}} med {pieceCount} pjäser, {studyTime}",
+          "speedRight": "{rightRounds, plural, one {# runda} other {# rundor}} med en rätt pjäs",
+          "streakLeft": "{days, plural, one {# speldag till} other {# speldagar till}}",
+          "curveLeft": "{reviews, plural, one {# repetition till} other {# repetitioner till}} efter samma uppehåll",
+          "typeRecallLeft": "{exposures, plural, one {# sedd pjäs till} other {# sedda pjäser till}} utöver kungarna",
+          "missMapLeft": "{exposures, plural, one {# sedd pjäs till} other {# sedda pjäser till}} på den minst sedda linjen eller raden",
+          "insights": "{rounds, plural, one {# runda} other {# rundor}}",
+          "insightsLeft": "{rounds, plural, one {# runda till} other {# rundor till}}",
+          "notebook": "{rounds, plural, one {# runda} other {# rundor}}"
+        },
+        "bests": {
+          "fig": "Fig. {number} · Personbästa",
+          "title": "Ditt bästa resultat per inställning.",
+          "desc": "Personbästa sparas per inställning, eftersom 6 pjäser och 20 pjäser är olika test. Övningsmätningar på den här sidan hålls isär från partier.",
+          "empty": "Ditt bästa resultat för varje inställning visas efter din första runda.",
+          "setting": "{source, select, calibration {Övning} other {Parti}} · {pieceCount} pjäser · {studyTime}",
+          "first": "första mätningen",
+          "showAll": "Visa alla {count} inställningar",
+          "showFewer": "Visa färre",
+          "reading": "{accuracy} % · uppbyggt på {time}"
+        },
+        "types": {
+          "fig": "Fig. {number} · Minne per pjästyp",
+          "title": "Vilka pjäser som glider undan.",
+          "need": "Ungefär {count, plural, one {# runda till} other {# rundor till}} tills en annan pjäs än kungen har setts 20 gånger.",
+          "needStart": "Minne per pjästyp visas efter din första runda.",
+          "onlyKings": "Dina rundor hittills har bara haft de två kungarna, och minne per pjästyp kräver fler pjäser.",
+          "thin": "{shown}/20 sedda",
+          "baseline": "baslinje",
+          "kings": "Kungarna finns i varje runda, så de är en baslinje. {recalled} av {shown} ihågkomna.",
+          "sampleNote": "Exempel: bönder och springare glider undan först."
+        },
+        "insights": {
+          "fig": "Fig. {number} · Insikter",
+          "title": "Vad som sticker ut, och vad du kan prova.",
+          "desc": "Ett fynd visas först när siffrorna bakom det når ett minsta urval, och det anger antalen det bygger på.",
+          "sample": "Exempel från en exempeljournal: a- och h-linjen missades {times, select, 2 {ungefär dubbelt så ofta} other {ungefär {times} gånger så ofta}} som centrumlinjerna d och e, {edge} % av pjäserna mot {centre} %.",
+          "sampleList": "Exempelfynd",
+          "sampleNote": "Exempelfynd, inte från dina rundor.",
+          "list": "Fynd från din journal",
+          "need": "Insikterna läser din journal från {threshold} rundor. {count, plural, one {# runda kvar} other {# rundor kvar}}.",
+          "none": "Inget sticker ut ännu. Fortsätt spela.",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {Du missar {edge, select, 0 {under 1 %} other {{edge} %}} av {edgeShown} pjäser på a- och h-linjen och ingen av {centreShown} på centrumlinjerna d och e.} 2 {Du missar a- och h-linjen ungefär dubbelt så ofta som centrumlinjerna d och e: {edge, select, 0 {under 1 %} other {{edge} %}} av {edgeShown} pjäser mot {centre, select, 0 {under 1 %} other {{centre} %}} av {centreShown}.} other {Du missar a- och h-linjen ungefär {times} gånger så ofta som centrumlinjerna d och e: {edge, select, 0 {under 1 %} other {{edge} %}} av {edgeShown} pjäser mot {centre, select, 0 {under 1 %} other {{centre} %}} av {centreShown}.}}",
+            "weakType": "Av pjäserna utom kungar som setts {minimum} gånger eller fler glider {type, select, q {damerna} r {tornen} b {löparna} n {springarna} other {bönderna}} undan mest: du kom ihåg {recalled} av {shown}, {percent} %.",
+            "fasterLessAccurate": "Med {pieceCount} pjäser, {studyTime}, tog dina senaste {window} rundor {fasterTime} mindre per rätt pjäs än de {window} före, och träffsäkerheten föll {fell} procentenheter.",
+            "colourGap": "Du kommer ihåg {weaker, select, w {vita} other {svarta}} pjäser mer sällan än {weaker, select, w {svarta} other {vita}}: {weakerPercent} % av {weakerShown} mot {strongerPercent} % av {strongerShown}, kungar ej medräknade.",
+            "plateau": "Med {pieceCount} pjäser, {studyTime}, låg dina senaste {window} rundor i snitt på {last} % och de {window} före på {before} %, och ditt spann har legat kvar på {span} pjäser under din senaste veckas spel. En pjäs till kan flytta det."
+          },
+          "actions": {
+            "rig": "Spela {pieceCount} pjäser, {studyTime}",
+            "patterns": "Läs övningarna i mönsterigenkänning",
+            "vision": "Läs hur du ser hela brädet"
+          }
+        },
+        "notebook": {
+          "fig": "Fig. {number} · Labbanteckningar",
+          "title": "Vad som hände, och när.",
+          "empty": "Anteckningar dyker upp när du spelar.",
+          "sampleList": "Exempel på anteckningar",
+          "list": "Din anteckningsbok, nyast först",
+          "new": "Ny",
+          "newNote": "”Ny” markerar anteckningar sedan ditt senaste besök.",
+          "showAll": "Visa alla {count} anteckningar",
+          "showFewer": "Visa färre",
+          "day": "Dag {day}.",
+          "olderBefore": "Anteckningar före {date} sparas inte i den här webbläsaren.",
+          "older": "Äldre anteckningar sparas inte i den här webbläsaren.",
+          "entries": {
+            "firstRound": "Första rundan: {accuracy} procent med {pieceCount} pjäser.",
+            "rounds": "Runda {count, number} spelad.",
+            "first90": "Första gången {threshold} procent eller bättre med {pieceCount} pjäser.",
+            "best": "Nytt personbästa {source, select, calibration {i övning} other {i parti}} med {pieceCount} pjäser, {studyTime}: {by, select, time {{accuracy} procent igen, uppbyggt på {solveTime}} other {{accuracy} procent, upp från {previous}}}.",
+            "span": "{from, select, 0 {Minnesspannet nådde {to} pjäser} other {Minnesspannet gick från {from} till {to} pjäser}}.",
+            "streak": "{forgiven, plural, =0 {{days} dagar i rad.} one {{days} dagar i en svit, # missad dag förlåten.} other {{days} dagar i en svit, # missade dagar förlåtna.}}",
+            "rungUp": "Ett steg upp: {pieceCount} pjäser på {studyTime}.",
+            "goalReached": "Målet nått: {accuracy} procent med {pieceCount} pjäser eller fler."
+          }
+        },
+        "tools": {
+          "title": "Sparas på den här enheten",
+          "body": "Inget konto och ingen server. Ladda ned en kopia för att flytta den till en annan webbläsare eller för att ha den i säkert förvar.",
+          "download": "Ladda ned min labbjournal",
+          "import": "Importera",
+          "lastBackup": "Export startad {date}",
+          "neverBackedUp": "Inte exporterad ännu",
+          "imported": "{added, plural, =0 {Inget nytt att importera. De rundorna finns redan här.} one {Importerade # runda.} other {Importerade # rundor.}}",
+          "skipped": "{count, plural, one {# runda i filen kunde inte läsas och hoppades över.} other {# rundor i filen kunde inte läsas och hoppades över.}}",
+          "importFailed": "Den filen är ingen labbjournal från Memory Chess.",
+          "tooLarge": "Filen är större än 5 MB, större än någon labbjournal, så inget importerades.",
+          "overCap": "{count, plural, one {# äldre runda lämnades} other {# äldre rundor lämnades}} utanför för att hålla gränsen på 5 000 rundor.",
+          "summaryIgnored": "Den här webbläsaren hade redan rundor, så bara nya rundor slogs samman, inte filens totaler över tid.",
+          "summaryDropped": "Filens totaler över tid gick inte att läsa eller kom från en äldre version, så bara dess rundor importerades.",
+          "safari": "I Safari sparar en privat flik inte den här journalen när den stängs, och Safari raderar en webbplats sparade data efter ungefär 7 dagar utan besök. Exportera en kopia för att behålla den.",
+          "unavailable": "Sparas inte i privata fönster. Det här webbläsarfönstret sparar inte dina rundor.",
+          "backup": "Säkerhetskopiera mellan enheter (kommer snart)",
+          "backupNoted": "Säkerhetskopiering mellan enheter finns inte ännu. Tack, ditt intresse är registrerat.",
+          "card": {
+            "open": "Dela min mätning",
+            "title": "Min mätning i Memory Chess",
+            "span": "Minnesspann: {pieceCount, plural, one {# pjäs} other {# pjäser}}, {accuracy} % eller bättre i {count, plural, one {# runda} other {# rundor}}",
+            "held": "Hållna pjäser: senaste snitt {average}, från {count, plural, one {# runda} other {# rundor}}",
+            "speed": "Tempo: senaste snitt {average} per pjäs {source, select, calibration {i övning} other {i partier}} med {pieceCount} pjäser, {studyTime}, från {count, plural, one {# runda} other {# rundor}}",
+            "site": "thememorychess.com",
+            "copy": "Kopiera min mätning",
+            "copied": "Kopierat. Klistra in det var du vill.",
+            "copyFailed": "Kopieringen fungerade inte här. Mätningen är markerad ovan, så kopiera den själv."
+          },
+          "nudge": {
+            "title": "Din journal finns i den här webbläsaren",
+            "body": "Om du rensar webbläsardata raderas den. Bokmärk den här webbplatsen så att du kommer tillbaka till samma webbläsare, och använd ”Ladda ned min labbjournal” ovan för att behålla en kopia.",
+            "safari": "På iPhone och iPad sparar ”Lägg till på hemskärmen” webbplatsen som en app med en egen journal, som Safaris 7-dagarsregel inte raderar. Den börjar tom, så importera din nedladdade kopia där.",
+            "dismiss": "Stäng"
+          }
+        }
+      },
+      "library": {
+        "title": "Referensbibliotek.",
+        "lede": "Lärcentret kombinerar korta guider med övningar, så att varje mätning pekar mot något du kan öva på.",
+        "ref": "Ref. {number}",
+        "read": "Läs guiden",
+        "vision": {
+          "title": "Brädseende",
+          "body": "Se hela brädet på en gång i stället för ett hörn i taget."
+        },
+        "visualization": {
+          "title": "Visualisering",
+          "body": "Håll en ställning i rörelse i huvudet medan pjäserna flyttas."
+        },
+        "calculation": {
+          "title": "Beräkning",
+          "body": "Se längre framåt utan att tappa bort brädet."
+        },
+        "memory": {
+          "title": "Minne",
+          "body": "Gruppering och mönstertekniker som höjer dina mätningar."
+        },
+        "blindfold": {
+          "title": "Träning i blindschack",
+          "body": "En plan i fyra steg, från brädminne till hela partier i blindo."
+        },
+        "blundering": "Så slutar du göra bortsättningar"
+      },
+      "final": {
+        "title": "Din första mätning tar under en minut.",
+        "body": "Inget konto, ingen nedladdning, ingen registrering. Öppna en runda, studera, bygg upp, läs av siffran. Bestäm sedan om du vill ha en till."
+      },
+      "resultCard": {
+        "title": "Din labbjournal",
+        "device": "Sparas på den här enheten",
+        "lines": "Den här rundan i din journal",
+        "unshown": "Din labbjournal kunde inte visas för den här rundan.",
+        "newBest": {
+          "up": "Nytt personbästa med {pieceCount} pjäser, {studyTime}: {accuracy} %, upp från {previous} %",
+          "faster": "Nytt personbästa med {pieceCount} pjäser, {studyTime}: {accuracy} % igen, {fasterTime} snabbare",
+          "plain": "Nytt personbästa med {pieceCount} pjäser, {studyTime}: {accuracy} %"
+        },
+        "vsRecent": {
+          "above": "{points, plural, one {# procentenhet} other {# procentenheter}} över {rounds, plural, one {din senaste runda} other {ditt snitt för dina senaste # rundor}} med den här inställningen",
+          "below": "{points, plural, one {# procentenhet} other {# procentenheter}} under {rounds, plural, one {din senaste runda} other {ditt snitt för dina senaste # rundor}} med den här inställningen",
+          "level": "I nivå med {rounds, plural, one {din senaste runda} other {ditt snitt för dina senaste # rundor}} med den här inställningen"
+        },
+        "span": "Spannet upp till {pieceCount} pjäser",
+        "streak": "{current, plural, one {Dag 1} other {Dag # i rad}}{graceUsed, select, true {, en förlåten dag använd} other {}}, {days} av {goal} dagar den här veckan",
+        "next": {
+          "label": "Nästa",
+          "why": {
+            "more": "90 % eller bättre, så en pjäs till med samma studietid.",
+            "fewer": "Under 50 %, så en pjäs färre med samma studietid.",
+            "edgeFiles": "Du missar a- och h-linjen oftare än centrumlinjerna.",
+            "weakType": "{type, select, q {Damerna} r {Tornen} b {Löparna} n {Springarna} other {Bönderna}} glider undan mest: du kom ihåg {recalled} av {shown}.",
+            "fasterLessAccurate": "Med {pieceCount} pjäser, {studyTime}, blev du snabbare per rätt pjäs och träffsäkerheten föll {fell} procentenheter.",
+            "colourGap": "Du kommer ihåg {weaker, select, w {vita} other {svarta}} pjäser mer sällan: {weakerPercent} % mot {strongerPercent} %.",
+            "plateau": "Ditt spann har legat kvar på {span} pjäser."
+          },
+          "play": "Spela {pieceCount} pjäser, {studyTime}",
+          "again": "Spela igen med {pieceCount} pjäser, {studyTime}",
+          "patterns": "Läs övningarna i mönsterigenkänning",
+          "vision": "Läs hur du ser hela brädet"
+        }
+      },
+      "daily": {
+        "locked": "Du har redan öppnat dagens bräde. Ett försök per dag på den här enheten.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Nollställs om under en minut} one {Nollställs om # min} other {Nollställs om # min}}} one {Nollställs om # h {minutes} min} other {Nollställs om # h {minutes} min}}",
+        "seeRecord": "Öppna din labbjournal",
+        "chooseRound": "Spela en annan runda"
+      },
+      "review": {
+        "none": "Inget bräde ska repeteras på den här enheten just nu.",
+        "capped": "Dagens {cap} repetitioner är klara på den här enheten.",
+        "cappedNext": "Bräden som fortfarande väntar kommer tillbaka i morgon, de som väntat längst först.",
+        "schedule": "Bräden där du får under 80 % kommer tillbaka 1, 3, 7 och 14 dagar efter att du först såg dem."
+      }
     }
   },
   "game": {
@@ -259,6 +1052,10 @@
         "cta": "Kan du slå det?",
         "text": "{kind, select, daily {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) på dagens bräde i Memory Chess den {date}.} review {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) på ett repetitionsbräde i Memory Chess.} other {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) i Memory Chess.}} Kan du slå det?",
         "alt": "Resultatkort från Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Rundan är sparad. Din uppdaterade statistik finns strax nedanför.",
+        "action": "Visa"
       }
     },
     "comparison": {
@@ -586,7 +1383,7 @@
     },
     "context": {
       "span": "{accuracy} % eller bättre i {rounds, plural, one {# runda} other {# rundor}}, studerat {memorizeSeconds} s",
-      "recent": "Snitt av dina senaste {rounds, plural, one {# runda} other {# rundor}}, alla inställningar",
+      "recent": "{rounds, plural, one {Från din enda runda hittills, alla inställningar} other {Snitt av dina senaste # rundor, alla inställningar}}",
       "setting": "{source, select, calibration {Övningsrundor} other {Rundor i partier}} med {pieceCount} pjäser, {memorizeSeconds} s, från {rounds, plural, one {# runda} other {# rundor}}",
       "longest": "Längsta svit: {days, plural, one {# dag} other {# dagar}}",
       "daily": "{status, select, played {Spelat i dag} unfinished {Öppnat i dag} other {Öppet i dag}}, längsta svit {longest, plural, one {# dag} other {# dagar}}",

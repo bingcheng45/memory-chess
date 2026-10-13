@@ -57,6 +57,8 @@ export default function ContactUs() {
   const onSubmit = async (data: FormValues) => {
     setIsSubmitting(true);
     setFormError(null);
+    // What the status line says if the send fails: the generic words unless a step below knows better.
+    let failure = t('errors.generic');
     try {
       // Explicitly check that inquiry type is selected
       if (!data.type || data.type.trim() === '') {
@@ -64,7 +66,7 @@ export default function ContactUs() {
           type: 'manual',
           message: t('validation.typeRequired')
         });
-        setFormError(t('validation.typeRequired'));
+        failure = t('validation.typeRequired');
         throw new Error('Inquiry type is required');
       }
 
@@ -80,9 +82,7 @@ export default function ContactUs() {
       const result = await response.json();
 
       if (!response.ok) {
-        // Get detailed error information from response if available
-        const errorDetails = result.details ? `: ${result.details}` : '';
-        setFormError(t('errors.submitFailed', { details: errorDetails }));
+        if (result.details) failure = t('errors.submitFailed', { details: `: ${result.details}` });
 
         // Log additional debug info if available
         if (result.debug) {
@@ -103,10 +103,7 @@ export default function ContactUs() {
       }, 3000);
     } catch (error) {
       console.error('Error submitting form:', error);
-      // If no specific error was set, set a generic one
-      if (!formError) {
-        setFormError(t('errors.generic'));
-      }
+      setFormError(failure);
     } finally {
       setIsSubmitting(false);
     }

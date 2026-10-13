@@ -102,8 +102,8 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     priority: 0.8,
   },
   ...EN_LEARN_PAGES.map((page) => ({
-    path: `/learn/${page.slug}`,
-    lastModified: page.updatedAt,
+    path: `/learn/${page.meta.slug}`,
+    lastModified: page.meta.updatedAt,
     changeFrequency: "weekly" as const,
     priority: 0.7,
   })),

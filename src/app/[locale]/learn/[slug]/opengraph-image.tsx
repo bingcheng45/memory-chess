@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
-import { EN_LEARN_GOALS, EN_LEARN_PAGES } from "@/lib/seo/learn";
+import { findLearnPage } from "@/lib/seo/learn";
+import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/copy";
 
 export const size = {
   width: 1200,
@@ -18,7 +19,7 @@ export default async function LearnOpenGraphImage({
   params,
 }: LearnOpenGraphImageProps) {
   const { slug } = await params;
-  const page = EN_LEARN_PAGES.find((entry) => entry.slug === slug);
+  const page = findLearnPage(slug);
 
   if (!page) {
     return new ImageResponse(
@@ -41,8 +42,6 @@ export default async function LearnOpenGraphImage({
       size,
     );
   }
-
-  const goal = EN_LEARN_GOALS.find((entry) => entry.id === page.goal);
 
   return new ImageResponse(
     (
@@ -80,7 +79,7 @@ export default async function LearnOpenGraphImage({
               textTransform: "none",
             }}
           >
-            {goal?.label}
+            {page.group.label}
           </div>
           <div>Memory Chess guide</div>
         </div>
@@ -100,7 +99,7 @@ export default async function LearnOpenGraphImage({
               lineHeight: 1.06,
             }}
           >
-            {page.title}
+            {page.meta.title}
           </div>
           <div
             style={{
@@ -109,7 +108,7 @@ export default async function LearnOpenGraphImage({
               lineHeight: 1.4,
             }}
           >
-            {page.quickAnswer}
+            {page.intro.quickAnswer}
           </div>
         </div>
         <div
@@ -124,7 +123,7 @@ export default async function LearnOpenGraphImage({
           }}
         >
           <div>thememorychess.com</div>
-          <div>{page.timeToRead}</div>
+          <div>{LEARN_GUIDE_COPY.minRead(page.readingMinutes)}</div>
         </div>
       </div>
     ),

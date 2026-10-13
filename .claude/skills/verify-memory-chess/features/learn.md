@@ -1,11 +1,12 @@
 # Learn hub and articles
 
-`/learn` is the SEO content hub: a goal-based index over 14 long-form chess-training articles at `/learn/<slug>`, English-only and statically generated for the default locale (`generateStaticParams` in `src/app/[locale]/learn/[slug]/page.tsx`). A locale-prefixed Learn URL answers 308 to the bare URL (`src/middleware.ts`, route list in `src/lib/seo/englishOnly.ts`). This surface exists to carry the site's crawlable content, so the crawler view matters as much as the browser view.
+`/learn` is the SEO content hub: an index of 14 long-form chess-training guides at `/learn/<slug>`, grouped by topic (`LEARN_GROUPS` in `src/lib/seo/learn/schema.ts`), drawn in Lab Paper, English-only and statically generated for the default locale (`generateStaticParams` in `src/app/[locale]/learn/[slug]/page.tsx`). A locale-prefixed Learn URL answers 308 to the bare URL (`src/middleware.ts`, route list in `src/lib/seo/englishOnly.ts`). This surface exists to carry the site's crawlable content, so the crawler view matters as much as the browser view.
 
 ## Sub-features
 
-- `learn-hub` lists the articles grouped by training goal.
-- `learn-article` renders one article with rich prose, internal links to related slugs, and metadata.
+- `learn-hub` is the Path: a stage map that jumps to `/learn#<group>`, then each topic group as a numbered stage of numbered guides (`2.3`), stage calls to action, and a closing routine block.
+- `learn-article` renders one guide (`LearnGuidePage`): a reading column, a numbered contents rail that marks the section being read (`aria-current="location"` on `[data-toc]`) and fills a progress line (`--lg-read`), server-rendered boards (`.lg-board`), calls to action, the FAQ in native `<details>`, and JSON-LD.
+- `learn-search` ranks guides against a reader's question: a combobox on the hub that loads `/api/learn/search-index` on first focus, and `/learn/search?q=` that ranks on the server with no JavaScript and is `noindex, follow`. `helpers/drive-learn-search.mjs` drives it with real key events at 1440 and 390 wide.
 - `learn-english-only` redirects `/<locale>/learn[/slug]` to the bare URL and renders the bare URL in English for every visitor.
 - `learn-404` unknown slugs return the not-found page.
 
@@ -17,6 +18,12 @@
 - Follow an old locale-prefixed link, e.g. `/es/learn/chess-visualization-exercises`, and land on the bare English URL.
 
 ## Driving it with cdp.mjs
+
+`helpers/drive-learn.mjs` does the browser pass in one run: the hub and two guides at 390 and 1440 wide, screenshots, horizontal overflow, console errors, JSON-LD types, layout shift, and the rail following a scroll. It writes `learn-report.json` into the evidence directory.
+
+```bash
+node .claude/skills/verify-memory-chess/helpers/cdp.mjs .claude/skills/verify-memory-chess/helpers/drive-learn.mjs --evidence .verify-evidence/<run> --base http://127.0.0.1:4517
+```
 
 Preconditions:
 
@@ -31,6 +38,6 @@ Preconditions:
 
 ## Gotchas
 
-- A green build plus one rendered article is strong coverage; the 14 articles share one component.
+- A green build plus one rendered guide is strong coverage; the 14 guides share one renderer (`LearnBlockView`).
 - Two retired slugs, `chess-board-vision-drills` and `working-memory-exercises-for-chess`, answer one 308 to the guide that absorbed each, with or without a locale prefix (`src/lib/seo/learn/retired.ts`).
 - Article pages are SSG; after editing prose you must rebuild before the served page changes. `npm run dev` reflects edits live but is not the production check.

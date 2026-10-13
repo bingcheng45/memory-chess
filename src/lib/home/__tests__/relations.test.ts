@@ -143,6 +143,36 @@ describe("the hero: Topalov against Shirov, Linares 1998", () => {
     });
   });
 
+  it("draws each pawn's road straight down its file to promotion, over empty squares, where the stretch ends", () => {
+    const roads = SHOWCASE.scenes.flatMap((scene) =>
+      scene.annotations.paths.map((path) => {
+        const game = new Chess(SHOWCASE_FRAMES[scene.plies.to].fen);
+        const pawn = game.get(path.from as Square);
+        const step = pawn?.color === "w" ? 1 : -1;
+        const squares = [];
+        for (let rank = rankOf(path.from) + step; rank !== rankOf(path.to) + step; rank += step) squares.push(`${path.from[0]}${rank}`);
+        return {
+          road: `${path.from}-${path.to}`,
+          pawn: pawn && `${pawn.color}${pawn.type}`,
+          sameFile: path.from[0] === path.to[0],
+          promotes: rankOf(path.to) === (pawn?.color === "w" ? 8 : 1),
+          clear: squares.every((square) => !game.get(square as Square)),
+        };
+      }),
+    );
+    expect(roads).toEqual([
+      { road: "a4-a1", pawn: "bp", sameFile: true, promotes: true, clear: true },
+      { road: "d4-d1", pawn: "bp", sameFile: true, promotes: true, clear: true },
+    ]);
+  });
+
+  it("shows the two runners against the one diagonal the bishop holds", () => {
+    const runners = SHOWCASE.scenes.find((scene) => scene.id === "runners")!;
+    expect(runners.annotations.relations).toEqual([{ kind: "controls", from: "e7", to: "a3" }]);
+    expect(runners.annotations.paths.map((path) => path.from)).toEqual(["a4", "d4"]);
+    expect(hero.game.runners.caption).toContain("53.Be7 Kb3");
+  });
+
   it("puts every piece in exactly one group", () => {
     const grouped = SHOWCASE.groups.flatMap((group) => group.squares);
     expect([...grouped].sort()).toEqual(Object.keys(SHOWCASE.position).sort());

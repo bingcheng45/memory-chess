@@ -45,6 +45,17 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-delta-from { font: 400 14px/1.4 var(--lp-body); color: var(--lp-muted); }
 .lab-game .lab-delta .lab-tag { align-self: center; }
 .lab-game .lab-deltas-open { display: inline-block; margin-top: 16px; font: 500 15px/1.4 var(--lp-ui); }
+.lab-game .lab-deltas:focus { outline: none; }
+.lab-game .lab-deltas:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
+
+/* "Round saved": the sound toast's chip, laid over the site header. The header is the one band that is never the score
+   or the board; at the foot of a 390 by 844 phone the chip covered the readout's score, and on a shorter screen the board. */
+.lab-game .lab-saved-toast-region { position: fixed; left: 50%; top: calc(8px + env(safe-area-inset-top)); z-index: 60; width: max-content; max-width: min(560px, calc(100vw - 32px)); transform: translateX(-50%); pointer-events: none; }
+.lab-game .lab-saved-toast { display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 20px; border: 1px solid var(--lp-line); border-radius: 999px; background: var(--lp-surface); box-shadow: var(--lp-pop-shadow); font: 500 14px/1.4 var(--lp-ui); color: var(--lp-ink); pointer-events: auto; animation: lab-saved-toast-in 200ms ease-out; }
+.lab-game .lab-saved-toast-action { flex: none; min-height: 32px; padding: 0 12px; border: 0; border-radius: 999px; background: var(--lp-accent-soft); font: 600 14px/1 var(--lp-ui); color: var(--lp-accent); cursor: pointer; }
+.lab-game .lab-saved-toast-action:hover { background: var(--lp-accent); color: var(--lp-on-accent); }
+@keyframes lab-saved-toast-in { from { opacity: 0; transform: translateY(-8px); } }
+@media (prefers-reduced-motion: reduce) { .lab-game .lab-saved-toast { animation: none; } }
 @media (max-width: 639px) {
   .lab-game .lab-deltas-list { grid-template-columns: minmax(0, 1fr); }
 }

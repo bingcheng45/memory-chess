@@ -18,18 +18,22 @@
 .lab-ov-cell[data-group="longShots"] { stroke: var(--lp-mk-attack); fill: color-mix(in srgb, var(--lp-mk-attack) 10%, transparent); }
 .lab-ov-pill rect { fill: var(--lp-mk-ink); }
 .lab-ov-ring { fill: none; stroke: var(--lp-mk-defend); stroke-width: 0.09; }
-.lab-ov-rel line { stroke-width: 0.09; stroke-linecap: round; fill: none; }
-.lab-ov-rel[data-kind="attacks"] line { stroke: var(--lp-mk-attack); }
-.lab-ov-rel[data-kind="attacks"] polygon { fill: var(--lp-mk-attack); }
-.lab-ov-rel[data-kind="defends"] line { stroke: var(--lp-mk-defend); stroke-dasharray: 0.16 0.12; }
-.lab-ov-rel[data-kind="defends"] polygon { fill: var(--lp-mk-defend); }
-.lab-ov-rel[data-kind="chain"] line { stroke: var(--lp-mk-chain); stroke-width: 0.07; }
-.lab-ov-rel[data-kind="controls"] line { stroke: var(--lp-mk-chain); stroke-width: 0.05; stroke-dasharray: 0.12 0.1; }
-.lab-ov-rel[data-kind="blocked"] line { stroke: var(--lp-mk-ink); stroke-width: 0.12; }
-[data-holds="true"] > .lab-ov-checked line { stroke: var(--lp-correct); stroke-dasharray: none; }
-[data-holds="true"] > .lab-ov-checked polygon { fill: var(--lp-correct); }
-[data-holds="false"] > .lab-ov-checked line { stroke: var(--lp-wrong); stroke-dasharray: 0.12 0.09; }
-[data-holds="false"] > .lab-ov-checked polygon { fill: var(--lp-wrong); }
+/* Board lines: one look per kind, set by LINE_GRAMMAR in src/lib/home/lineGrammar.ts. */
+.lab-line line { fill: none; stroke: currentColor; stroke-width: 0.09; stroke-linecap: round; }
+.lab-line polygon { fill: currentColor; }
+.lab-line[data-weight="thin"] line { stroke-width: 0.06; }
+.lab-line[data-stroke="dashed"] line { stroke-dasharray: 0.18 0.13; }
+.lab-line[data-stroke="dotted"] line { stroke-dasharray: 0.001 0.13; }
+.lab-line .lab-line-bar { stroke-width: 0.12; stroke-dasharray: none; }
+.lab-line[data-tone="ink"] { color: var(--lp-mk-ink); }
+.lab-line[data-tone="attack"] { color: var(--lp-mk-attack); }
+.lab-line[data-tone="defend"] { color: var(--lp-mk-defend); }
+.lab-line[data-tone="neutral"] { color: var(--lp-mk-chain); }
+[data-holds="true"] > .lab-ov-checked { color: var(--lp-correct); }
+[data-holds="true"] > .lab-ov-checked line { stroke-dasharray: none; }
+[data-holds="false"] > .lab-ov-checked { color: var(--lp-wrong); }
+[data-holds="false"] > .lab-ov-checked line:not(.lab-line-bar) { stroke-dasharray: 0.12 0.09; }
+.lab-line-swatch { width: 30px; height: 12.5px; flex: none; overflow: visible; }
 .lab-ov-verdict circle { stroke: var(--lp-surface); stroke-width: 0.03; }
 .lab-ov-verdict[data-holds="true"] circle { fill: var(--lp-correct); }
 .lab-ov-verdict[data-holds="false"] circle { fill: var(--lp-wrong); }
@@ -102,6 +106,29 @@
     --lab-h-heat: 600px; --lab-h-streak: 616px; --lab-h-bests: 536px; --lab-h-types: 632px; --lab-h-tools: 432px;
     --lab-h-insights: 624px; --lab-h-notebook: 656px; --lab-h-plans: 1312px; --lab-h-goal: 480px; --lab-h-daily: 560px;
     --lab-h-curve: 632px; --lab-h-board: 664px;
+  }
+}
+/* The translations run longer than English, Russian and Finnish most of all, so they get their own reserves. */
+.lab-paper:not(:lang(en)) {
+  --lab-h-unlock: 360px; --lab-h-span: 560px; --lab-h-held: 560px; --lab-h-spark: 520px; --lab-h-speed: 568px;
+  --lab-h-heat: 600px; --lab-h-streak: 672px; --lab-h-bests: 408px; --lab-h-types: 608px; --lab-h-tools: 480px;
+  --lab-h-insights: 456px; --lab-h-notebook: 472px; --lab-h-plans: 584px; --lab-h-goal: 352px; --lab-h-daily: 400px;
+  --lab-h-curve: 696px; --lab-h-board: 776px;
+}
+@media (max-width: 1000px) {
+  .lab-paper:not(:lang(en)) {
+    --lab-h-unlock: 536px; --lab-h-span: 560px; --lab-h-held: 608px; --lab-h-spark: 528px; --lab-h-speed: 608px;
+    --lab-h-heat: 688px; --lab-h-streak: 816px; --lab-h-bests: 648px; --lab-h-types: 760px; --lab-h-tools: 800px;
+    --lab-h-insights: 464px; --lab-h-notebook: 496px; --lab-h-plans: 1032px; --lab-h-goal: 400px; --lab-h-daily: 424px;
+    --lab-h-curve: 696px; --lab-h-board: 960px;
+  }
+}
+@media (max-width: 640px) {
+  .lab-paper:not(:lang(en)) {
+    --lab-h-unlock: 424px; --lab-h-span: 584px; --lab-h-held: 592px; --lab-h-spark: 528px; --lab-h-speed: 608px;
+    --lab-h-heat: 696px; --lab-h-streak: 696px; --lab-h-bests: 616px; --lab-h-types: 736px; --lab-h-tools: 448px;
+    --lab-h-insights: 768px; --lab-h-notebook: 784px; --lab-h-plans: 1560px; --lab-h-goal: 600px; --lab-h-daily: 608px;
+    --lab-h-curve: 800px; --lab-h-board: 792px;
   }
 }
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
@@ -324,14 +351,7 @@
 .lab-sc-group text { font-family: var(--lp-ui); font-weight: 700; fill: var(--lp-mk-on); }
 
 /* Marks start from their drawn state, so they still show where animation is switched off. */
-.lab-sc-arrow line { fill: none; stroke: var(--lp-mk-defend); stroke-width: 0.08; stroke-linecap: round; stroke-dasharray: 1 1; animation: lab-sc-draw 0.55s ease backwards calc(var(--order) * 0.08s); }
-.lab-sc-arrow polygon { fill: var(--lp-mk-defend); animation: lab-sc-fade 0.2s ease backwards calc(var(--order) * 0.08s + 0.4s); }
-.lab-sc-arrow[data-kind="controls"] line { stroke-width: 0.05; opacity: 0.7; }
-.lab-sc-arrow[data-kind="attacks"] line { stroke: var(--lp-mk-attack); }
-.lab-sc-arrow[data-kind="attacks"] polygon { fill: var(--lp-mk-attack); }
-.lab-sc-arrow[data-kind="chain"] line { stroke: var(--lp-mk-chain); }
-.lab-sc-arrow[data-kind="move"] line { stroke: var(--lp-mk-ink); stroke-width: 0.08; stroke-dasharray: 0.16 0.12; animation: lab-sc-fade 0.4s ease backwards calc(var(--order) * 0.25s); }
-.lab-sc-arrow[data-kind="move"] polygon { fill: var(--lp-mk-ink); animation-delay: calc(var(--order) * 0.25s + 0.2s); }
+.lab-sc-line { animation: lab-sc-fade 0.4s ease backwards calc(var(--order) * 0.2s); }
 .lab-sc-tick circle { fill: var(--lp-correct); animation: lab-sc-fade 0.3s ease 0.3s backwards; }
 .lab-sc-tick polyline { fill: none; stroke: var(--lp-mk-on); stroke-width: 0.05; stroke-linecap: round; stroke-linejoin: round; animation: lab-sc-fade 0.3s ease 0.3s backwards; }
 .lab-sc-ring { fill: none; stroke-width: 0.08; animation: lab-sc-fade 0.3s ease 0.15s backwards; }
@@ -342,11 +362,12 @@
 .lab-sc-cross line { stroke: var(--lp-wrong); stroke-width: 0.1; stroke-linecap: round; animation: lab-sc-fade 0.3s ease 0.4s backwards; }
 .lab-sc-dot { fill: var(--lp-mk-defend); opacity: 0.55; }
 .lab-sc-guard { fill: none; stroke: var(--lp-mk-chain); stroke-width: 0.05; stroke-dasharray: 0.12 0.1; opacity: 0.8; }
-@keyframes lab-sc-draw { from { stroke-dashoffset: 1; } }
 @keyframes lab-sc-fade { from { opacity: 0; } }
 @keyframes lab-sc-pulse { 50% { stroke-opacity: 0.35; } }
 
 .lab-sc-cap { margin-top: 12px; display: grid; gap: 8px; }
+.lab-sc-key { --lab-sc-key-lines: 1; display: flex; flex-wrap: wrap; align-content: flex-start; gap: 4px 16px; height: calc(18px * var(--lab-sc-key-lines) + 4px * (var(--lab-sc-key-lines) - 1)); overflow: hidden; margin: 0; padding: 0; list-style: none; font: 500 13px/18px var(--lp-ui); color: var(--lp-ink-2); }
+.lab-sc-key li { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
 .lab-sc-cap-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .lab-sc-cap-top .lab-k { font-size: 13px; color: var(--lp-muted); }
 .lab-showcase .lab-sc-caption, .lab-showcase .lab-sc-thought { display: -webkit-box; -webkit-box-orient: vertical; overflow: hidden; }
@@ -369,7 +390,7 @@
 .lab-sc-bar[data-state="past"]::after { opacity: 0.4; }
 
 /* Reserve the lines the longest caption and thought need, so the card is as tall on every step. */
-@media (max-width: 520px) { .lab-showcase { --lab-sc-caption-lines: 3; --lab-sc-thought-lines: 2; } }
+@media (max-width: 520px) { .lab-showcase { --lab-sc-caption-lines: 3; --lab-sc-thought-lines: 2; } .lab-sc-key { --lab-sc-key-lines: 2; } }
 @media (max-width: 360px) { .lab-showcase { --lab-sc-caption-lines: 4; --lab-sc-thought-lines: 3; } }
 /* globals.css gives every button on a phone a 36px minimum and side padding, which a board square and a step bar cannot afford. */
 @media (max-width: 640px) { .lab-paper .lab-sc-piece, .lab-paper .lab-sc-bar { min-width: 0; min-height: 0; padding: 0 !important; } }

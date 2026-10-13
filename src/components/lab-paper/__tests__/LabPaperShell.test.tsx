@@ -62,14 +62,14 @@ describe("the footer the locale layout renders", () => {
   });
 
   it("is the dark site footer on a route outside the registry, and in a locale the route does not list", () => {
-    mockPathname = "/learn";
+    mockPathname = "/not-a-listed-page";
     const { unmount } = renderWithIntl(<SiteFooter />);
 
     expect(screen.getByRole("contentinfo").closest(".lab-paper")).toBeNull();
     expect(screen.queryByText("Recognition")).toBeNull();
     unmount();
 
-    mockPathname = "/";
+    mockPathname = "/about";
     renderWithIntl(<SiteFooter />, { locale: "de", messages: deMessages });
     expect(screen.getByRole("contentinfo").closest(".lab-paper")).toBeNull();
   });
@@ -107,7 +107,7 @@ describe("the changelog banner", () => {
   });
 
   it("keeps the dark banner, outside any Lab Paper block, on a route outside the registry", () => {
-    mockPathname = "/learn";
+    mockPathname = "/not-a-listed-page";
     renderWithIntl(<ChangelogBanner announce />);
     const banner = screen.getByRole("complementary", { name: "Memory Chess update" });
 

@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Trainiere dein Schachgedächtnis und deine Vorstellungskraft",
-      "subtitle": "Präge dir eine Schachstellung ein, baue sie aus dem Gedächtnis wieder auf und erhalte sofort eine Bewertung. Verbessere dein Brettgefühl Runde für Runde.",
-      "freeToPlay": "Kostenlos und ohne Konto. Deinen Punktestand kannst du auch in der <link>Bestenliste</link> vergleichen.",
-      "gamesPlayed": "Gespielte Partien: {count}"
+      "freeToPlay": "Kostenlos und ohne Konto. Deinen Punktestand kannst du auch in der <link>Bestenliste</link> vergleichen."
     },
     "cta": {
-      "play": "Memory Chess spielen",
       "leaderboard": "Bestenliste ansehen",
-      "playFree": "Kostenlose Runde spielen",
       "chooseSettings": "Figuren und Zeit wählen"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Wie man Memory Chess spielt",
       "credit": "Video: „A New Way To Train Your Vision“ von Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "So funktioniert es",
-      "title": "Ein einfaches Workout für dein Schachgedächtnis",
-      "subtitle": "Jede Runde hat drei einfache Schritte: Stellung einprägen, wieder aufbauen und aus dem Ergebnis lernen.",
-      "steps": {
-        "observe": {
-          "title": "Beobachten",
-          "description": "Präge dir ein, wo jede Figur steht. Achte auf Gruppen, Linien und hilfreiche leere Felder."
-        },
-        "recreate": {
-          "title": "Nachbauen",
-          "description": "Wenn das Brett leer ist, stelle jede Figur auf das Feld zurück, an das du dich erinnerst."
-        },
-        "improve": {
-          "title": "Verbessern",
-          "description": "Sieh dir dein Ergebnis an, prüfe, was gefehlt hat, und versuch es erneut – mit mehr Figuren oder weniger Zeit."
-        }
-      }
-    },
-    "board": {
-      "study": "Brett einprägen",
-      "rebuild": "Aus dem Gedächtnis aufbauen"
-    },
     "learn": {
-      "eyebrow": "Lernbereich",
-      "title": "Verständliche Schach-Guides",
-      "description": "Lerne praktische Wege, um Brettgefühl, Vorstellungskraft, Berechnung und Gedächtnis zu verbessern. Jeder Guide enthält Übungen, die du sofort ausprobieren kannst.",
-      "browseCta": "Schach-Guides ansehen",
-      "beginnerCta": "Mit dem Einsteiger-Guide starten"
+      "browseCta": "Schach-Guides ansehen"
     },
     "faq": {
       "title": "Fragen zu Memory Chess",
@@ -130,6 +99,830 @@
           "answer": "Ein paar konzentrierte Runden in regelmäßigen Abständen sind ein guter Anfang. Halte die Einheiten kurz genug, dass du jede Stellung noch sorgfältig studieren kannst."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Labor",
+        "onPage": "Auf dieser Seite",
+        "notebook": "Notizbuch",
+        "method": "Methode",
+        "calibrate": "Kalibrieren",
+        "tiers": "Schwierigkeit",
+        "record": "Bericht",
+        "library": "Bibliothek",
+        "hints": {
+          "notebook": "Warum messen",
+          "method": "Eine Runde, Schritt für Schritt",
+          "calibrate": "Eine Messung machen",
+          "tiers": "Stufen und Aufbau",
+          "record": "Deine Messwerte",
+          "library": "Guides und Übungen"
+        },
+        "play": "Kostenlose Runde spielen"
+      },
+      "tags": {
+        "proposed": "Vorschlag",
+        "sample": "Beispiel",
+        "illustrative": "Schematisch",
+        "free": "Kostenlos · ohne Konto",
+        "rig": "Aufbau"
+      },
+      "sections": {
+        "notebook": "Notizbuch",
+        "method": "Methode",
+        "recording": "Aufnahme",
+        "calibrate": "Kalibrieren",
+        "tiers": "Schwierigkeit",
+        "record": "Laborbericht",
+        "library": "Bibliothek",
+        "faq": "Fragen",
+        "next": "Nächster Durchlauf"
+      },
+      "hero": {
+        "platforms": "Browser · Desktop · Mobil",
+        "display": "Eine Zahl für dein <em>inneres Auge.</em>",
+        "lede": "Memory Chess ist ein kostenloses Schach-Gedächtnisspiel und Gedächtnistrainer für Schach. Präge dir eine Stellung ein paar Sekunden lang ein, dann wird das Brett leer und du baust sie aus dem Gedächtnis wieder auf. Jede Runde ist ein kurzer Gedächtnistest mit einer Genauigkeit von 0 bis 100 % und einer Karte, die jedes richtige und falsche Feld zeigt.",
+        "secondaryCta": "Kalibriermessung machen",
+        "settingsLink": "<link>{label}</link>.",
+        "facts": {
+          "study": "Einprägezeit",
+          "pieces": "Figuren pro Runde",
+          "plays": "{count, plural, one {gespielte Partie} other {gespielte Partien}}",
+          "languages": "{count, plural, one {Sprache} other {Sprachen}}"
+        },
+        "showcase": {
+          "aria": "Veselin Topalov gegen Alexey Shirov, Linares 1998, mit einer geführten Betrachtung der Stellung",
+          "event": "Linares · Runde 10",
+          "venue": "4. März 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "gegen",
+          "pieceLabel": "{piece} auf {square}",
+          "tags": {
+            "study": "Einprägen",
+            "trap": "Die Falle",
+            "sacrifice": "Das Opfer",
+            "walk": "Der Marsch",
+            "runners": "Zwei Freibauern",
+            "rebuild": "Aufbauen",
+            "inspect": "Reichweite"
+          },
+          "counter": {
+            "study": "Einprägen {n}/{total}",
+            "game": "Partie {n}/{total}",
+            "resume": "Zum Fortsetzen erneut klicken"
+          },
+          "controls": {
+            "steps": "Schritte",
+            "step": "Schritt {n} von {total}: {tag}",
+            "previous": "Vorheriger Schritt",
+            "next": "Nächster Schritt",
+            "play": "Abspielen",
+            "pause": "Anhalten"
+          },
+          "inspect": {
+            "title": "{piece} auf {square}.",
+            "reach": "{moves, plural, =0 {Keine Züge} one {# Zug} other {# Züge}}, {captures, plural, =0 {keine Schlagzüge} one {# Schlagzug} other {# Schlagzüge}}.",
+            "checks": "Schachgebote: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "Weiße Ecke",
+            "longDiagonal": "Lange Diagonale",
+            "blackWall": "Schwarze Mauer",
+            "runner": "Der Ausreißer"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Shirov hat mit Schwarz zwei Bauern mehr, aber ungleichfarbige Läufer halten oft das Remis. Zehn Figuren."
+              },
+              "whiteCorner": {
+                "caption": "Der weiße König auf g1 deckt den Bauern g2. Der h-Bauer ist bis h4 gelaufen."
+              },
+              "longDiagonal": {
+                "caption": "Der weiße Läufer auf c3 beherrscht die lange Diagonale und greift den Bauern f6 an.",
+                "thought": "Schwarzfeldriger Läufer, c3 auf f6."
+              },
+              "blackWall": {
+                "caption": "Der schwarze König auf e6, sein Läufer auf f5, Bauern auf d5, f6 und g6.",
+                "thought": "Der König deckt f6 und d5. Der Bauer g6 deckt den Läufer."
+              },
+              "runner": {
+                "caption": "Ein schwarzer Bauer auf a4, weit weg von allem."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "Der schwarze König kann nicht nach vorn. Auf d5 und f5 stehen seine eigenen Figuren, und der Läufer c3 deckt e5.",
+                "thought": "Nur Kd6, Kd7, Ke7 und Kf7. Jeder dieser Züge geht zurück oder zur Seite."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! Der Läufer opfert sich auf einem Feld, auf dem ihn der g-Bauer schlagen kann. Er stand dem König im Weg.",
+                "thought": "Jetzt ist f5 frei. Das ist die Tür."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Durch die Tür, die der Läufer geöffnet hat, erreicht der König das Zentrum."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Ein Läufer kann zwei Freibauern nicht aufhalten.",
+                "thought": "Topalov nahm den Läufer und gab nach 53...Kb3 auf."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "Das Brett wird leer. Baue die Ausgangsstellung wieder auf: die weiße Ecke, die lange Diagonale, die schwarze Mauer, den Ausreißer."
+              },
+              "back": {
+                "caption": "Gruppe für Gruppe kommt jede Figur zurück auf ihr Feld."
+              },
+              "check": {
+                "caption": "Jetzt prüfen. Ungleichfarbige Läufer, c3 dunkel und f5 hell. Der Läufer c3 greift immer noch f6 an. Vier weiße, sechs schwarze."
+              }
+            }
+          },
+          "lines": {
+            "move": "Gespielter Zug",
+            "path": "Weg zur Umwandlung",
+            "attacks": "Greift an",
+            "defends": "Deckt",
+            "controls": "Kontrolliert",
+            "chain": "Bauernkette",
+            "blocked": "Blockiert"
+          }
+        }
+      },
+      "notebook": {
+        "title": "Was du nie misst, kannst du nicht verbessern.",
+        "lede": "Das meiste Schachtraining schult Entscheidungen. Kaum etwas davon prüft, ob du das Brett wirklich im Kopf behalten kannst. Diese Fähigkeit liegt dem Rechnen, dem Blindspiel und dem Erkennen von Taktik zugrunde, und meist bleibt sie dem Zufall überlassen.",
+        "observation": {
+          "kicker": "Beobachtung",
+          "title": "Beim Rechnen verlieren Spieler Figuren aus dem Blick.",
+          "body": "Drei Züge tief verschwindet ein Läufer auf der langen Diagonale still aus dem Bild in deinem Kopf. Das Brett vor dir war richtig. Das in deinem Kopf nicht."
+        },
+        "hypothesis": {
+          "kicker": "Hypothese",
+          "title": "Brettgedächtnis lässt sich trainieren und testen.",
+          "body": "Halte eine Stellung kurz fest, baue sie wieder auf, prüfe das Ergebnis. Wiederhole das mit mehr Figuren und weniger Zeit. <hl>Über dein Gehirn behaupten wir nichts.</hl> Wir geben dir einen Messwert, den du verfolgen kannst."
+        },
+        "method": {
+          "kicker": "Methode",
+          "title": "Eine Runde, eine klare Zahl.",
+          "body": "Einprägen, leeres Brett, aufbauen, auswerten. Richtige Felder werden markiert, falsche auch, nichts bleibt verborgen. Eine Runde dauert keine Minute, also kannst du viele spielen."
+        }
+      },
+      "method": {
+        "title": "Eine Runde unter dem Mikroskop.",
+        "lede": "Scrolle durch eine Runde mit einer echten Stellung: dem Ende von Kasparovs Unsterblicher, Kasparov gegen Topalov in Wijk aan Zee 1999. Die Einblendungen zeigen eine Möglichkeit, sie sich einzuprägen, keine Aufzeichnung davon, worauf jemand geachtet hat.",
+        "status": "Phase {number} · {name}",
+        "clock": "t = {seconds} s",
+        "scoreChip": "{correct} von {total} Feldern",
+        "countChip": "Weiß {white} · Schwarz {black}",
+        "groups": {
+          "standoff": {
+            "name": "Kräftemessen",
+            "sentence": "Der weiße König greift d2 an. Der schwarze König und c3 decken es."
+          },
+          "mirror": {
+            "name": "Treppen",
+            "sentence": "Spiegeltreppen, h2 hinauf bis f4, h7 hinab bis f5."
+          },
+          "longShots": {
+            "name": "Fernschüsse",
+            "sentence": "Die Dame a7 zielt auf h7. Der Turm d2 zielt auf h2."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "Einprägen",
+            "title": "Elf Figuren, zehn Sekunden.",
+            "body": "Die Schlussstellung von Kasparovs Unsterblicher, nach 44.Qa7. Hier gab Topalov auf. Erfasse das ganze Brett, nicht Feld für Feld. In den Experimenten von de Groot bauten Meister eine kurz gezeigte Partiestellung weit besser nach als schwächere Spieler.",
+            "note": "Abb. Weiß: König c1, Dame a7, Bauern f4, g3, h2. Schwarz: König e1, Turm d2, Bauern c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Anker",
+            "title": "Fang mit den Königen an.",
+            "body": "Lege zuerst zwei Punkte fest. Beide Könige stehen auf der ersten Reihe, zwei Linien voneinander entfernt, und der schwarze König ist bis nach e1 gelaufen. Stelle alles andere im Verhältnis zu ihnen auf.",
+            "note": "Abb. die beiden Könige eingekreist. Alles andere wartet."
+          },
+          "chunk": {
+            "name": "Chunking",
+            "title": "Aus elf Figuren werden drei Ideen.",
+            "body": "Gruppiere die Figuren danach, was sie miteinander tun. Die Könige kämpfen um d2. Zwei Bauerntreppen treffen aufeinander. Dame und Turm zielen jeweils auf einen ungedeckten h-Bauern. Chase und Simon (1973) fanden heraus, dass starke Spieler Stellungen in Chunks zusammengehöriger Figuren erinnern.",
+            "note": "Abb. Orange greift an, Blau verteidigt, Grau gehört zu einer Bauernkette, der Balken markiert ein blockiertes Paar. Der Turm auf d2 gehört zu zwei Gruppen."
+          },
+          "encode": {
+            "name": "Kodieren",
+            "title": "Mach aus jeder Gruppe einen Satz.",
+            "body": "Benenne jede Gruppe nach ihrer Aufgabe. Gobet und Simon (1996) beschreiben, wie starke Spieler größere, schemaartige Strukturen im Kopf behalten. Die Sätze selbst sind eine Technik, kein Forschungsergebnis.",
+            "note": "Abb. die drei Gruppen mit Namen. Ihre Sätze:"
+          },
+          "blank": {
+            "name": "Leer",
+            "title": "Das Brett wird leer.",
+            "body": "Keine Figuren, keine Hinweise. Baue aus den Sätzen auf, nicht aus einem Bild. Sag sie der Reihe nach auf: zuerst die Könige, dann jede Gruppe.",
+            "note": "Hier gibt es nichts zu tun, außer drei Sätze im Kopf zu behalten."
+          },
+          "rebuild": {
+            "name": "Aufbauen",
+            "title": "Baue Gruppe für Gruppe auf.",
+            "body": "Die Könige. Das Kräftemessen. Die Treppen. Die Fernschüsse. Stelle jede Gruppe mit ihrem Satz auf, bevor du mit der nächsten beginnst.",
+            "note": "Abb. der Aufbau vor der Prüfung. Ein Bauer steht auf dem falschen Feld. Siehst du, welcher?"
+          },
+          "score": {
+            "name": "Auswerten",
+            "title": "Prüfe mit deinen Sätzen, dann werte aus.",
+            "body": "Prüfe auf dem aufgebauten Brett jede Beziehung noch einmal. Ist der Turm noch doppelt gedeckt? Von c2 aus deckt der Bauer d1, nicht d2. Die Anzahl, fünf und sechs, stimmt noch, also fängt nur die Prüfung der Beziehungen den Fehler ab.",
+            "note": "Abb. Die Häkchen halten noch, das rote Kreuz ist gebrochen. Orange gefüllt ist das falsche Feld (c2), der Ring zeigt, wo der Bauer hingehörte (c3). {correct} von {total} Feldern sind {accuracy} %."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Mach eine Kalibriermessung.",
+        "lede": "Die Runde der Stufe Mittel aus der echten Partie: {pieceCount} Figuren, darunter zwei Könige, {memorizeSeconds} Sekunden. Dann wird das Brett leer und du baust es wieder auf. Du bekommst eine Auswertung mit deiner Genauigkeit und deiner Erinnerung nach Figurentyp. Das funktioniert mit Maus, Touch und Tastatur.",
+        "phaseReady": "Bereit · {pieceCount} Figuren · {memorizeSeconds} s Einprägezeit",
+        "phaseLabel": "Phase {number} · {name}",
+        "start": "Kalibrierung starten",
+        "restart": "Neu starten",
+        "again": "Noch einmal",
+        "done": "Fertig",
+        "submit": "Messwert abgeben",
+        "clear": "Brett leeren",
+        "controlsLabel": "Rundensteuerung",
+        "boardLabel": "Kalibrierbrett. Mit den Pfeiltasten zwischen den Feldern wechseln.",
+        "paletteLabel": "Figurenauswahl",
+        "paletteItem": "{piece}, noch {count}",
+        "usedUp": {
+          "white": {
+            "king": "Der weiße König steht schon auf dem Brett.",
+            "queen": "Die weiße Dame steht schon auf dem Brett.",
+            "rook": "Beide weißen Türme stehen auf dem Brett.",
+            "bishop": "Beide weißen Läufer stehen auf dem Brett.",
+            "knight": "Beide weißen Springer stehen auf dem Brett.",
+            "pawn": "Alle acht weißen Bauern stehen auf dem Brett."
+          },
+          "black": {
+            "king": "Der schwarze König steht schon auf dem Brett.",
+            "queen": "Die schwarze Dame steht schon auf dem Brett.",
+            "rook": "Beide schwarzen Türme stehen auf dem Brett.",
+            "bishop": "Beide schwarzen Läufer stehen auf dem Brett.",
+            "knight": "Beide schwarzen Springer stehen auf dem Brett.",
+            "pawn": "Alle acht schwarzen Bauern stehen auf dem Brett."
+          }
+        },
+        "squareEmpty": "{square}, leer",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Präge dir die Stellung ein. {memorizeSeconds} Sekunden.",
+        "liveRebuild": "Brett geleert. Wähle eine Figur, dann ein Feld.",
+        "liveScore": "Genauigkeit {accuracy} Prozent. {correct} von {total} Feldern richtig.",
+        "startFailed": "Die Stellung konnte nicht geladen werden. Prüfe deine Verbindung und versuch es noch einmal.",
+        "steps": [
+          "Drück auf Start. Präge dir die Stellung ein, bis die Anzeige leer ist.",
+          "Wähle eine Figur aus der Auswahl und tippe dann auf ein Feld. Tippe auf eine gesetzte Figur, um sie zu entfernen.",
+          "Gib ab. Mehr Figuren, als die Stellung hatte, senken deine Genauigkeit, also setz nur, woran du dich erinnerst."
+        ],
+        "readout": {
+          "title": "Auswertung",
+          "statusIdle": "Wartet auf Durchlauf",
+          "statusRecording": "Läuft",
+          "statusDone": "Durchlauf beendet",
+          "correct": "Richtige Felder",
+          "time": "Aufbauzeit",
+          "wrong": "Falsche Figuren",
+          "exposure": "Einprägezeit",
+          "byType": "Erinnerung nach Figurentyp",
+          "byTypeEmpty": "Die Erinnerung nach Figurentyp erscheint hier nach deinem ersten Durchlauf.",
+          "nextEmpty": "Nach der Messung erscheint hier eine empfohlene Schwierigkeit.",
+          "suggested": "Empfehlung:",
+          "stepUp": "steig auf {tier} auf, {pieceCount} Figuren mit {memorizeSeconds} s. Bestätige das vorher mit zwei weiteren sauberen Runden.",
+          "stay": "bleib bei {tier}, {pieceCount} Figuren mit {memorizeSeconds} s. Spiel drei Runden und beobachte den Trend.",
+          "start": "fang mit {tier} an, {pieceCount} Figuren mit {memorizeSeconds} s. Fasse beim Einprägen Figuren zu Paaren zusammen.",
+          "playTier": "{tier} spielen",
+          "legendCorrect": "richtig",
+          "legendWrong": "falsch platziert",
+          "legendMissed": "verpasstes Feld"
+        },
+        "pieceTypes": {
+          "king": "König",
+          "queen": "Dame",
+          "rook": "Turm",
+          "bishop": "Läufer",
+          "knight": "Springer",
+          "pawn": "Bauer"
+        }
+      },
+      "tiers": {
+        "title": "Vier Stufen. Ein eigener Aufbau.",
+        "lede": "Die Belegung steigt, die Einprägezeit sinkt. Steig eine Stufe auf, wenn deine Messwerte stabil bleiben, nicht nach einer glücklichen Runde.",
+        "columns": {
+          "tier": "Schwierigkeit",
+          "pieces": "Figuren",
+          "exposure": "Einprägezeit",
+          "load": "Belegung"
+        },
+        "loadLabel": "{pieceCount} von 32 Figuren",
+        "play": "Spielen",
+        "custom": {
+          "label": "Eigene",
+          "description": "Lege deine eigenen Variablen fest, um gezielt eine Schwäche zu isolieren."
+        }
+      },
+      "record": {
+        "title": "Komm wieder, damit eine Trendlinie entsteht.",
+        "lede": "Ein Messwert ist eine Momentaufnahme. Zehn Messwerte sind eine Messung. Jede Runde, die du spielst, wird auf diesem Gerät gespeichert, und diese Tafeln füllen sich mit deinen eigenen Runden. Vor deiner ersten Runde zeigen die Tafeln Werte mit dem Etikett <tag>Beispiel</tag>, keine echten Spieler. Danach sagt eine Tafel, die deinen Bericht noch nicht auswerten kann, was ihr noch fehlt.",
+        "span": {
+          "fig": "Abb. {number} · Gedächtnisspanne",
+          "title": "Wie viele Figuren du halten kannst.",
+          "figure": "{pieceCount, plural, one {# Figur} other {# Figuren}}",
+          "held": "Mit {accuracy} Prozent oder besser in {count, plural, one {# Runde} other {# Runden}}. Kürzeste Einprägezeit darunter: {studyTime}.",
+          "up": "Plus {count, plural, one {# Figur} other {# Figuren}} seit letzter Woche",
+          "same": "Keine Änderung seit letzter Woche",
+          "aria": "Beispieltreppe der Gedächtnisspanne über 12 Einheiten, die von 4 auf 8 Figuren steigt.",
+          "note": "Beispielbericht · 12 Einheiten",
+          "realAria": "Deine Gedächtnisspanne {sessions, plural, one {in der Einheit, in der sie zuerst erreicht wurde} other {über die # Einheiten, seit sie zuerst erreicht wurde}}, {shape, select, flat {stabil bei {now} Figuren} other {steigend von {first} auf {now} Figuren}}.",
+          "need": "Erreiche {accuracy} Prozent oder mehr {count, plural, =2 {zweimal} one {noch einmal} other {noch #-mal}} mit derselben Figurenzahl, mindestens {minPieces} Figuren.",
+          "onlyKings": "Deine bisherigen Runden hatten nur die beiden Könige, und eine Spanne braucht mehr Figuren.",
+          "first": "Spanne zuerst erreicht",
+          "last": "Neueste"
+        },
+        "held": {
+          "fig": "Abb. {number} · Gehaltene Figuren",
+          "title": "Figuren, die du richtig setzt, in jeder Einstellung.",
+          "aria": "Beispiellinie der gehaltenen Figuren über 12 Runden, ein Schnitt über 5 Runden, der von 4,0 auf 7,0 Figuren steigt.",
+          "note": "Beispielbericht · 12 Runden · jede Einstellung",
+          "partial": "Gestrichelte Linie: Schnitt über weniger als {window} Runden",
+          "realAria": "Deine gehaltenen Figuren in deinen letzten {count, plural, one {# Runde} other {# Runden}} in jeder Einstellung, als Schnitt über {window} Runden, zuletzt {latest} Figuren.",
+          "average": "Aktueller Schnitt {average} Figuren",
+          "up": "plus {change} gegenüber den {window} Runden davor",
+          "down": "minus {change} gegenüber den {window} Runden davor",
+          "flat": "keine Änderung gegenüber den {window} Runden davor",
+          "realNote": "Jede Einstellung · Aus {count, plural, one {# Runde} other {# Runden}}",
+          "needRounds": "Mit {count, plural, one {# weiteren Runde} other {# weiteren Runden}} entsteht deine Kurve.",
+          "needRoundsAndDay": "Mit {count, plural, one {# weiteren Runde, an einem anderen Tag gespielt,} other {# weiteren Runden, mindestens eine an einem anderen Tag,}} entsteht deine Kurve.",
+          "needDay": "Spiel an einem weiteren Tag, damit deine Kurve entsteht.",
+          "first": "Älteste",
+          "last": "Neueste"
+        },
+        "speed": {
+          "fig": "Abb. {number} · Tempo",
+          "title": "Sekunden pro Figur beim Aufbauen.",
+          "aria": "Beispiellinie der Aufbausekunden pro richtiger Figur über 12 Runden, die von 4,1 auf 2,6 Sekunden fällt.",
+          "note": "Beispielbericht · 12 Runden · Mittel",
+          "realAria": "Deine Aufbausekunden pro richtiger Figur in deinen letzten {count} {source, select, calibration {Übungsrunden} other {Runden in Partien}} mit {pieceCount} Figuren und {memorizeSeconds} Sekunden, zuletzt {latest} Sekunden.",
+          "average": "Aktueller Schnitt {average} pro Figur",
+          "down": "{change} schneller als die {window} Runden davor",
+          "up": "{change} langsamer als die {window} Runden davor",
+          "flat": "gleiches Tempo wie die {window} Runden davor",
+          "accuracy": "Genauigkeit in denselben Runden {average} %",
+          "accuracyChange": {
+            "up": "plus {change, plural, one {# Punkt} other {# Punkte}}",
+            "down": "minus {change, plural, one {# Punkt} other {# Punkte}}",
+            "flat": "keine Änderung"
+          },
+          "fastWrong": "Schnell und falsch ist keine Verbesserung.",
+          "config": "{source, select, calibration {Übung} other {Partie}} · {pieceCount} Figuren · {studyTime}, deine zuletzt meistgespielte Einstellung · Aus {count, plural, one {# Runde} other {# Runden}}",
+          "need": "Mit {count, plural, one {# weiteren Runde} other {# weiteren Runden}} bei {pieceCount} Figuren, {studyTime} {source, select, calibration {in der Übung} other {in Partien}} entsteht deine Tempokurve.",
+          "needRight": "Das Tempo zählt nur Runden mit mindestens einer richtigen Figur. Spiel {count, plural, one {# solche Runde} other {# solche Runden}}, damit deine Kurve entsteht.",
+          "first": "Älteste",
+          "last": "Neueste"
+        },
+        "curve": {
+          "fig": "Abb. {number} · Vergessenskurve",
+          "title": "Kurze, verteilte Wiederholungen schlagen eine lange Einheit.",
+          "desc": "Bretter, bei denen du unter 80 % bleibst, kommen 1, 3, 7 und 14 Tage nach dem ersten Sehen zur Wiederholung zurück. Deine Kurve zeigt, wie viel du nach jedem Abstand noch erinnerst.",
+          "aria": "Schematisches Diagramm: Ohne Wiederholung fällt das Behalten schnell ab, nach jeder verteilten Wiederholung an Tag 1, 3 und 7 langsamer.",
+          "note": "Schematisches Modell des Spacing-Effekts. Keine gemessenen Daten.",
+          "noReview": "ohne Wiederholung",
+          "spaced": "verteilte Runden",
+          "review": "Wiederholung",
+          "day": "T{day}",
+          "warming": "Mit {reviews, plural, one {# weiteren Wiederholung} other {# weiteren Wiederholungen}} nach demselben Abstand entsteht dein erster gemessener Punkt.",
+          "measuredAria": "Deine Erinnerung an wiederholte Bretter: {points}.",
+          "pointFirst": "beim ersten Sehen {accuracy} % aus {count, plural, one {# Brett} other {# Brettern}}",
+          "pointAfter": "nach {day, plural, one {# Tag} other {# Tagen}} {accuracy} % aus {count, plural, one {# Wiederholung} other {# Wiederholungen}}",
+          "count": "n={count}",
+          "measuredNote": "Aus {reviews, plural, one {# Wiederholung} other {# Wiederholungen}} von {boards, plural, one {# Brett} other {# Brettern}}. Ein Punkt braucht {min} Wiederholungen nach seinem Abstand.",
+          "due": "Wiederholung {number} von {cap} heute",
+          "capped": "Wiederholungen für heute erledigt",
+          "play": "Wiederholung spielen",
+          "waiting": "Nächste Wiederholung {days, plural, one {morgen} other {in # Tagen}}. {queued, plural, one {# Brett} other {# Bretter}} in deiner Warteschlange.",
+          "empty": "Noch keine Bretter zum Wiederholen. Ein Brett, bei dem du unter 80 % bleibst, kommt am nächsten Tag hierher zurück."
+        },
+        "spark": {
+          "fig": "Abb. {number} · Genauigkeit im Verlauf",
+          "title": "Deine Kurve, Runde für Runde.",
+          "titleSessions": "Deine Kurve, Einheit für Einheit.",
+          "aria": "Beispielverlauf der Genauigkeit über 12 Runden, der von 52 auf 79 Prozent steigt.",
+          "note": "Beispielbericht · 12 Runden · Mittel",
+          "first": "R01",
+          "last": "R12",
+          "needRounds": "Mit {count, plural, one {# weiteren Runde} other {# weiteren Runden}} bei {pieceCount} Figuren, {studyTime} entsteht dein Trend {source, select, calibration {in der Übung} other {in Partien}}.",
+          "needRoundsAndDay": "{count, plural, one {Mit # weiteren Runde bei {pieceCount} Figuren, {studyTime}, an einem anderen Tag gespielt,} other {Mit # weiteren Runden bei {pieceCount} Figuren, {studyTime}, mindestens eine an einem anderen Tag,}} entsteht dein Trend {source, select, calibration {in der Übung} other {in Partien}}.",
+          "needDay": "Spiel {pieceCount} Figuren, {studyTime} {source, select, calibration {in der Übung} other {in einer Partie}} an einem weiteren Tag, damit dein Trend entsteht.",
+          "config": "{source, select, calibration {Übung} other {Partie}} · {pieceCount} Figuren · {studyTime}, deine meistgespielte Einstellung mit Trend",
+          "realAria": "Deine Genauigkeit in deinen letzten {count} {source, select, calibration {Übungsrunden} other {Runden in Partien}} mit {pieceCount} Figuren und {memorizeSeconds} Sekunden, zuletzt {latest} Prozent.",
+          "realAriaSessions": "Deine Genauigkeit über deine letzten {count, plural, one {# Einheit} other {# Einheiten}} mit {source, select, calibration {Übungsrunden} other {Runden in Partien}} bei {pieceCount} Figuren und {memorizeSeconds} Sekunden, zuletzt {latest} Prozent.",
+          "sessions": "{count, plural, one {# Einheit} other {# Einheiten}}",
+          "realFirst": "Älteste",
+          "realLast": "Neueste"
+        },
+        "heat": {
+          "fig": "Abb. {number} · Fehlerkarte",
+          "title": "Wo dir Felder entgleiten.",
+          "aria": "Beispiel-Heatmap verfehlter Felder: am dunkelsten entlang der h-Linie und um h1, mit Brennpunkten auf b7 und f7, am hellsten im Zentrum.",
+          "note": "Beispiel: Fehler häufen sich auf der h-Linie und rund um die Königsecke bei h1. Trainiere als Nächstes diesen Rand.",
+          "need": "Noch etwa {count, plural, one {# Runde} other {# Runden}}, bis jede Linie und Reihe 10 Figuren zum Auswerten hat.",
+          "needStart": "Spiel noch ein paar Runden, damit deine Fehlerkarte entsteht.",
+          "files": "Linien",
+          "ranks": "Reihen",
+          "line": "{line}: {missed} von {shown} verfehlt",
+          "lineThin": "{line}: {shown} gesehen, zu wenig für eine Aussage",
+          "realAria": "Dein Fehleranteil auf jedem Feld. Graue Felder haben weniger als 10 gesehene Figuren.",
+          "realNote": "Dunkler heißt öfter verfehlt. Grau heißt weniger als 10 gesehene Figuren."
+        },
+        "daily": {
+          "fig": "Abb. {number} · Tagesbrett",
+          "title": "Ein Brett pro Tag, für alle gleich.",
+          "desc": "Jeden Tag um Mitternacht UTC öffnet sich eine neue Stellung. Alle bekommen dieselben 6 Figuren und 10 Sekunden zum Einprägen, und du hast einen Versuch.",
+          "play": "Heutiges Brett spielen",
+          "open": "Du hast das heutige Brett noch nicht gespielt.",
+          "played": "Du hast {correct} von {pieceCount, plural, one {# Figur} other {# Figuren}} richtig gesetzt, {accuracy} Prozent.",
+          "unfinished": "Du hast das heutige Brett geöffnet und vor dem Ergebnis verlassen. Ein Versuch pro Tag auf diesem Gerät.",
+          "streak": "Tagesserie {current, plural, one {# Tag} other {# Tage}}{forgiven, plural, =0 {} one {, # verpasster Tag verziehen} other {, # verpasste Tage verziehen}} · längste {longest, plural, one {# Tag} other {# Tage}}",
+          "streakLongest": "Längste Tagesserie {longest, plural, one {# Tag} other {# Tage}}",
+          "gridAria": "Dein Ergebnis auf jedem Feld, a8 zuerst: {correct} richtig, {wrong, plural, one {# falsche Figur} other {# falsche Figuren}}, {missed} verpasst, {extra} zusätzlich.",
+          "key": {
+            "c": "richtig",
+            "w": "falsche Figur",
+            "m": "verpasst",
+            "x": "zusätzlich"
+          },
+          "share": "Memory Chess Tagesbrett {day}\n{correct} von {pieceCount} richtig, {accuracy} %\n{row}\nthememorychess.com",
+          "copy": "Ergebnis kopieren",
+          "showGrid": "Raster zeigen",
+          "copied": "Kopiert. Füge es ein, wo du willst.",
+          "copyFailed": "Kopieren hat hier nicht funktioniert. Das Ergebnis ist unten markiert, kopiere es selbst."
+        },
+        "streak": {
+          "fig": "Abb. {number} · Tage in Folge",
+          "title": "Eine Runde pro Tag ergibt eine Serie.",
+          "desc": "Jede beendete Runde, ob Partie oder Übung, zählt für ihren Tag. Ein verpasster Tag in je 7 Tagen wird verziehen.",
+          "aria": "Beispielraster einer Serie über zwei Wochen",
+          "note": "Beispiel · das gestrichelte Feld ist der heutige Durchlauf, noch offen",
+          "realDesc": "Jede beendete Runde zählt für ihren Tag. Ein verpasster Tag in je 7 Tagen wird verziehen.",
+          "need": "Spiel an {days, plural, one {# weiteren Tag} other {# weiteren Tagen}}, damit deine Serie lesbar wird.",
+          "realAria": "Deine letzten 14 Tage: {count, plural, one {# Tag} other {# Tage}} gespielt{forgiven, plural, =0 {} one {, # verziehen} other {, # verziehen}}.",
+          "realNote": "Aktuelle Serie {current, plural, one {# Tag} other {# Tage}}{forgiven, plural, =0 {} one { gespielt, # verpasster Tag verziehen} other { gespielt, # verpasste Tage verziehen}} · längste {longest, plural, one {# Tag} other {# Tage}}",
+          "key": {
+            "played": "gespielt",
+            "forgiven": "verziehen",
+            "missed": "verpasst",
+            "today": "heute"
+          }
+        },
+        "week": {
+          "ring": "{played} von {goal} Tagen diese Woche",
+          "ringOver": "Ziel erreicht, {played} Tage diese Woche",
+          "sampleRing": "Beispielwoche · {played} von {goal} Tagen",
+          "left": "{remaining, plural, =0 {Ziel diese Woche erreicht.} one {Noch # Tag bis zu deinem Ziel.} other {Noch # Tage bis zu deinem Ziel.}}",
+          "outOfReach": "Mit {daysLeft, plural, =0 {keinem verbleibenden Tag} one {# verbleibenden Tag} other {# verbleibenden Tagen}} ist das Ziel nicht mehr zu schaffen. Am Montag beginnt eine neue Woche.",
+          "goal": "Tage pro Woche",
+          "option": "{days} Tage pro Woche"
+        },
+        "welcome": {
+          "line": "Willkommen zurück. Tag {day} deines Berichts. Zuletzt {accuracy} % bei {pieceCount} Figuren, {studyTime}.",
+          "lineNoDay": "Willkommen zurück. Zuletzt {accuracy} % bei {pieceCount} Figuren, {studyTime}."
+        },
+        "board": {
+          "fig": "Abb. {number} · Bestenliste",
+          "title": "Vergleiche Messwerte weltweit.",
+          "desc": "Jede Schwierigkeitsstufe wird nach richtigen Figuren sortiert, dann nach weniger falschen Figuren, dann nach kürzerer Einprägezeit, dann nach kürzerer Lösungszeit. Jede Zeile zeigt das Land des Spielers.",
+          "howTo": "Trag ein Ergebnis über den Ergebnisbildschirm ein und sieh dann nach, wo es steht, weltweit oder in deinem Land.",
+          "sketchPieces": "{count} Figuren",
+          "open": "Bestenliste öffnen",
+          "difficulty": "Schwierigkeit",
+          "scope": "Rang unter",
+          "world": "Welt",
+          "entry": "Dein bester Eintrag in der Stufe {difficulty}: {correct, plural, one {# richtige Figur} other {# richtige Figuren}}, gesendet am {date}.",
+          "check": "Meine Platzierung prüfen",
+          "checking": "Wird geprüft...",
+          "ranked": "Platz {rank, number} von {total, plural, one {# Eintrag} other {# Einträgen}} in der Stufe {difficulty}, weltweit.",
+          "rankedIn": "Platz {rank, number} von {total, plural, one {# Eintrag} other {# Einträgen}} in der Stufe {difficulty} in {country}.",
+          "checkedAt": "Geprüft um {time}.",
+          "boardSize": "Die öffentliche Liste zeigt die besten {limit}.",
+          "up": "Seit {time} {places, plural, one {# Platz} other {# Plätze}} nach oben.",
+          "down": "Seit {time} {places, plural, one {# Platz} other {# Plätze}} nach unten.",
+          "same": "Gleicher Platz wie um {time}.",
+          "missing": "Dein Eintrag in der Stufe {difficulty} steht nicht mehr in der Bestenliste, deshalb speichert dieses Gerät ihn nicht mehr. Listen werden manchmal bereinigt oder zurückgesetzt. Geprüft um {time}.",
+          "limited": "Zu viele Abfragen von deiner Verbindung. Versuch es in {wait, plural, one {# Sekunde} other {# Sekunden}} noch einmal.",
+          "noCountry": "Die Bestenliste kennt für diesen Eintrag kein Land, deshalb kann er nur weltweit eingeordnet werden.",
+          "offline": "Du bist offline, also wurde nichts gesendet. Stell eine Verbindung her und versuch es noch einmal.",
+          "failed": "Die Bestenliste war nicht erreichbar, daher wurde keine Platzierung abgerufen. Versuch es später noch einmal."
+        },
+        "plans": {
+          "fig": "Abb. {number} · Programme",
+          "title": "Wähle einen Plan und zieh ihn durch.",
+          "desc": "Immer nur ein Plan. Der Fortschritt wird aus deinen Runden gezählt, deshalb löscht das Abbrechen eines Plans nie eine Runde.",
+          "baseline": {
+            "kicker": "Plan A · 7 Tage",
+            "title": "Basiswoche",
+            "steps": [
+              "Eine Runde der Stufe Mittel pro Tag.",
+              "Notiere den Messwert und widersteh dem Drang, es noch einmal zu versuchen.",
+              "Tag 7: mit Tag 1 vergleichen."
+            ],
+            "progress": "{played} von {days} Tagen mit einer Runde der Stufe Mittel",
+            "compare": "Tag {firstDay} {first} %, Tag {lastDay} {latest} %: {direction, select, up {plus {change, plural, one {# Punkt} other {# Punkte}}} down {minus {change, plural, one {# Punkt} other {# Punkte}}} other {keine Änderung}}.",
+            "compareNone": "Seit Planbeginn keine Runde der Stufe Mittel, also gibt es nichts zu vergleichen.",
+            "compareOne": "Seit Planbeginn eine Runde der Stufe Mittel, also gibt es noch nichts zu vergleichen."
+          },
+          "edge": {
+            "kicker": "Plan B · 14 Tage",
+            "title": "Randlinien-Training",
+            "steps": [
+              "Eigener Aufbau: 8 Figuren, 15 s.",
+              "Sieh dir alle 3 Tage deine Fehlerkarte an.",
+              "Nimm den Guide zur Brettübersicht dazu."
+            ],
+            "progress": "Aufbau an {played, plural, one {# Tag} other {# Tagen}} von {elapsed} gespielt. Ziel: {target} Tage in {days}.",
+            "share": "Verfehlte Randlinien: {before} % in {beforeRounds, plural, one {# Runde} other {# Runden}} vor dem Plan, {now} % in {nowRounds, plural, one {# Runde} other {# Runden}} seitdem.",
+            "shareMissing": "Die Fehler auf den Randlinien werden verglichen, sobald jede Seite {needed} Runden mit einer Figur auf der a- oder h-Linie hat. Bisher {before} vor dem Plan, {now} seitdem.",
+            "guide": "Lesen, wie du das ganze Brett siehst"
+          },
+          "ladder": {
+            "kicker": "Plan C · offen",
+            "title": "Stufenleiter",
+            "steps": [
+              "Halte 90 % in drei Runden hintereinander.",
+              "Kürze dann die Einprägezeit um 2 Sekunden.",
+              "Wenn die Einprägezeit am Minimum ist, nimm Figuren dazu."
+            ],
+            "rung": "Stufe: {pieceCount} Figuren, {studyTime}.",
+            "run": "{run} von {needed} Runden in Folge mit {accuracy} Prozent oder besser.",
+            "climbed": "Geschafft: {needed} Runden in Folge mit {accuracy} Prozent oder besser.",
+            "next": "Nächste Stufe: {pieceCount} Figuren, {studyTime}.",
+            "top": "Ende der Leiter: Kein Brett hat mehr als {pieceCount} Figuren."
+          },
+          "status": {
+            "day": "Tag {day}",
+            "dayOf": "Tag {day} von {length}",
+            "overtime": "Tag {day}, über die geplanten {length} hinaus",
+            "done": "Abgeschlossen an Tag {day}.",
+            "finished": "Vorzeitig beendet an Tag {day}.",
+            "stopped": "Abgebrochen an Tag {day}."
+          },
+          "start": "{title} starten",
+          "again": "{title} erneut starten",
+          "busy": "Immer nur ein Plan. Brich {title} ab, um diesen zu starten.",
+          "stop": "Plan abbrechen",
+          "confirmStop": "Wirklich abbrechen?",
+          "keep": "Weitermachen",
+          "finish": "Vorzeitig beenden",
+          "play": "{pieceCount} Figuren, {studyTime} spielen"
+        },
+        "goal": {
+          "fig": "Abb. {number} · Ziel",
+          "title": "Nimm dir einen Messwert vor.",
+          "desc": "Wähle eine Figurenzahl und eine Genauigkeit. Der Balken füllt sich mit deiner besten Runde bei dieser Zahl oder mehr, seit du das Ziel gesetzt hast.",
+          "sample": "Beispielziel: {pieceCount} Figuren mit {accuracy} Prozent. Bisher bestes Ergebnis {best} Prozent, {percent} % des Weges.",
+          "target": "Ziel: {pieceCount} oder mehr Figuren mit {accuracy, select, 100 {100 Prozent} other {{accuracy} Prozent oder besser}}, gesetzt am {date}.",
+          "progress": "Bestes Ergebnis seitdem: {best} Prozent bei {pieceCount} Figuren, {percent} % des Weges.",
+          "bar": "{percent} % des Weges zum Ziel",
+          "need": "Seit du dieses Ziel gesetzt hast, gab es keine Runde mit {pieceCount} oder mehr Figuren.",
+          "reached": "Erreicht am {date}: {accuracy} Prozent bei {pieceCount} Figuren.",
+          "form": "Neues Ziel",
+          "pieces": "Figuren, mindestens",
+          "accuracy": "Genauigkeit, mindestens",
+          "percent": "{value} %",
+          "set": "Ziel setzen",
+          "newGoal": "Neues Ziel setzen",
+          "clear": "Ziel löschen",
+          "cancel": "Abbrechen",
+          "saved": "Ziel gesetzt.",
+          "cleared": "Ziel gelöscht."
+        },
+        "mine": "Dein Bericht",
+        "fromRounds": "Aus {count, plural, one {# Runde} other {# Runden}}",
+        "dashboardLink": "Dashboard öffnen",
+        "play": "Eine Runde spielen",
+        "tomorrow": "Komm morgen wieder.",
+        "stale": "Zuletzt gespielt vor {count, plural, one {# Tag} other {# Tagen}}.",
+        "unlock": {
+          "label": "Noch freizuschalten",
+          "count": "{unlocked} von {total} Abbildungen freigeschaltet",
+          "done": "Alle Abbildungen unten sind freigeschaltet.",
+          "showAll": "Alle {count} Abbildungen zeigen",
+          "showFewer": "Weniger zeigen",
+          "span": "{qualifyingRounds, plural, one {# Runde} other {# Runden}} mit {accuracy} %+ und {minPieces}+ Figuren",
+          "piecesHeld": "{rounds, plural, one {# Runde} other {# Runden}} an {days, plural, one {# Tag} other {# Tagen}}",
+          "trend": "{rounds, plural, one {# Runde} other {# Runden}} in einer Einstellung an {days, plural, one {# Tag} other {# Tagen}}",
+          "speed": "{rounds, plural, one {# Runde} other {# Runden}} in einer Einstellung",
+          "streak": "{days, plural, one {# Tag} other {# Tage}} gespielt",
+          "curve": "{reviews, plural, one {# Wiederholung} other {# Wiederholungen}} nach demselben Abstand",
+          "typeRecall": "{exposures, plural, one {# gesehene Figur} other {# gesehene Figuren}} außer Königen",
+          "missMap": "{exposures, plural, one {# gesehene Figur} other {# gesehene Figuren}} pro Linie und Reihe",
+          "trendRounds": "{rounds, plural, one {# weitere Runde} other {# weitere Runden}} {source, select, calibration {in der Übung} other {in Partien}} mit {pieceCount} Figuren, {studyTime}",
+          "trendDays": "{days, plural, one {# weiterer Tag} other {# weitere Tage}} mit {source, select, calibration {Übungsrunden} other {Runden in Partien}} bei {pieceCount} Figuren, {studyTime}",
+          "trendRoundsDays": "{rounds, plural, one {# weitere Runde} other {# weitere Runden}} {source, select, calibration {in der Übung} other {in Partien}} mit {pieceCount} Figuren, {studyTime}, {days, plural, one {# weiterer Tag} other {# weitere Tage}}",
+          "spanLeft": "{qualifyingRounds, plural, one {# weitere Runde} other {# weitere Runden}} mit {accuracy} %+ und {minPieces}+ Figuren",
+          "spanLarger": "{largerRounds, plural, one {# Runde} other {# Runden}} mit {minPieces}+ Figuren",
+          "piecesHeldRounds": "{rounds, plural, one {# weitere Runde} other {# weitere Runden}}",
+          "piecesHeldDays": "{days, plural, one {# weiterer Tag} other {# weitere Tage}}",
+          "piecesHeldRoundsDays": "{rounds, plural, one {# weitere Runde} other {# weitere Runden}}, {days, plural, one {# weiterer Tag} other {# weitere Tage}}",
+          "speedRounds": "{rounds, plural, one {# weitere Runde} other {# weitere Runden}} {source, select, calibration {in der Übung} other {in Partien}} mit {pieceCount} Figuren, {studyTime}",
+          "speedRight": "{rightRounds, plural, one {# Runde} other {# Runden}} mit einer richtigen Figur",
+          "streakLeft": "{days, plural, one {# weiterer Tag} other {# weitere Tage}} gespielt",
+          "curveLeft": "{reviews, plural, one {# weitere Wiederholung} other {# weitere Wiederholungen}} nach demselben Abstand",
+          "typeRecallLeft": "{exposures, plural, one {# weitere gesehene Figur} other {# weitere gesehene Figuren}} außer Königen",
+          "missMapLeft": "{exposures, plural, one {# weitere gesehene Figur} other {# weitere gesehene Figuren}} auf der am wenigsten gesehenen Linie oder Reihe",
+          "insights": "{rounds, plural, one {# Runde} other {# Runden}}",
+          "insightsLeft": "{rounds, plural, one {# weitere Runde} other {# weitere Runden}}",
+          "notebook": "{rounds, plural, one {# Runde} other {# Runden}}"
+        },
+        "bests": {
+          "fig": "Abb. {number} · Bestwerte",
+          "title": "Dein bester Messwert pro Einstellung.",
+          "desc": "Bestwerte gelten pro Einstellung, denn 6 Figuren und 20 Figuren sind verschiedene Tests. Übungsmesswerte auf dieser Seite bleiben von Partien getrennt.",
+          "empty": "Dein bester Messwert für jede Einstellung erscheint nach deiner ersten Runde.",
+          "setting": "{source, select, calibration {Übung} other {Partie}} · {pieceCount} Figuren · {studyTime}",
+          "first": "erster Messwert",
+          "showAll": "Alle {count} Einstellungen zeigen",
+          "showFewer": "Weniger zeigen",
+          "reading": "{accuracy} % · aufgebaut in {time}"
+        },
+        "types": {
+          "fig": "Abb. {number} · Erinnerung nach Figurentyp",
+          "title": "Welche Figuren dir entgleiten.",
+          "need": "Noch etwa {count, plural, one {# Runde} other {# Runden}}, bis eine Figur außer dem König 20-mal gesehen wurde.",
+          "needStart": "Die Erinnerung nach Figurentyp erscheint nach deiner ersten Runde.",
+          "onlyKings": "Deine bisherigen Runden hatten nur die beiden Könige, und die Erinnerung nach Figurentyp braucht mehr Figuren.",
+          "thin": "{shown}/20 gesehen",
+          "baseline": "Basiswert",
+          "kings": "Könige stehen in jeder Runde, deshalb dienen sie als Basiswert. {recalled} von {shown} erinnert.",
+          "sampleNote": "Beispiel: Bauern und Springer entgleiten zuerst."
+        },
+        "insights": {
+          "fig": "Abb. {number} · Erkenntnisse",
+          "title": "Was auffällt, und was du versuchen kannst.",
+          "desc": "Eine Erkenntnis erscheint erst, wenn ihre Zahlen eine Mindeststichprobe erreichen, und sie nennt die Zahlen dahinter.",
+          "sample": "Aus einem Beispielbericht: Die a- und h-Linie wurden {times, select, 2 {etwa doppelt} other {etwa {times}-mal}} so oft verfehlt wie die Zentrumslinien d und e, {edge} % der Figuren gegenüber {centre} %.",
+          "sampleList": "Beispielerkenntnis",
+          "sampleNote": "Beispielerkenntnis, nicht aus deinen Runden.",
+          "list": "Erkenntnisse aus deinem Bericht",
+          "need": "Erkenntnisse werten deinen Bericht ab {threshold} Runden aus. Noch {count, plural, one {# Runde} other {# Runden}}.",
+          "none": "Noch fällt nichts auf. Spiel weiter.",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {Du verfehlst {edge, select, 0 {unter 1 %} other {{edge} %}} von {edgeShown} Figuren auf der a- und h-Linie und keine von {centreShown} auf den Zentrumslinien d und e.} 2 {Du verfehlst die a- und h-Linie etwa doppelt so oft wie die Zentrumslinien d und e: {edge, select, 0 {unter 1 %} other {{edge} %}} von {edgeShown} Figuren gegenüber {centre, select, 0 {unter 1 %} other {{centre} %}} von {centreShown}.} other {Du verfehlst die a- und h-Linie etwa {times}-mal so oft wie die Zentrumslinien d und e: {edge, select, 0 {unter 1 %} other {{edge} %}} von {edgeShown} Figuren gegenüber {centre, select, 0 {unter 1 %} other {{centre} %}} von {centreShown}.}}",
+            "weakType": "Von den Figuren außer Königen, die du {minimum}-mal oder öfter gesehen hast, entgleiten dir {type, select, q {Damen} r {Türme} b {Läufer} n {Springer} other {Bauern}} am häufigsten: {recalled} von {shown} erinnert, {percent} %.",
+            "fasterLessAccurate": "Bei {pieceCount} Figuren, {studyTime}, brauchten deine letzten {window} Runden {fasterTime} weniger pro richtiger Figur als die {window} davor, und die Genauigkeit sank um {fell} Punkte.",
+            "colourGap": "Du erinnerst {weaker, select, w {weiße} other {schwarze}} Figuren seltener als {weaker, select, w {schwarze} other {weiße}}: {weakerPercent} % von {weakerShown} gegenüber {strongerPercent} % von {strongerShown}, ohne Könige.",
+            "plateau": "Bei {pieceCount} Figuren, {studyTime}, lagen deine letzten {window} Runden im Schnitt bei {last} % und die {window} davor bei {before} %, und deine Spanne blieb in deiner letzten Spielwoche bei {span} Figuren. Eine Figur mehr könnte sie bewegen."
+          },
+          "actions": {
+            "rig": "{pieceCount} Figuren, {studyTime} spielen",
+            "patterns": "Übungen zur Mustererkennung lesen",
+            "vision": "Lesen, wie du das ganze Brett siehst"
+          }
+        },
+        "notebook": {
+          "fig": "Abb. {number} · Labornotizbuch",
+          "title": "Was passiert ist, und wann.",
+          "empty": "Einträge erscheinen, während du spielst.",
+          "sampleList": "Beispieleinträge im Notizbuch",
+          "list": "Dein Notizbuch, neueste zuerst",
+          "new": "Neu",
+          "newNote": "Neu markiert Einträge seit deinem letzten Besuch.",
+          "showAll": "Alle {count} Einträge zeigen",
+          "showFewer": "Weniger zeigen",
+          "day": "Tag {day}.",
+          "olderBefore": "Einträge vor dem {date} werden in diesem Browser nicht gespeichert.",
+          "older": "Ältere Einträge werden in diesem Browser nicht gespeichert.",
+          "entries": {
+            "firstRound": "Erste Runde: {accuracy} Prozent bei {pieceCount} Figuren.",
+            "rounds": "Runde {count, number} gespielt.",
+            "first90": "Zum ersten Mal {threshold} Prozent oder besser bei {pieceCount} Figuren.",
+            "best": "Neuer Bestwert {source, select, calibration {in der Übung} other {in Partien}} bei {pieceCount} Figuren, {studyTime}: {by, select, time {wieder {accuracy} Prozent, aufgebaut in {solveTime}} other {{accuracy} Prozent, vorher {previous}}}.",
+            "span": "{from, select, 0 {Gedächtnisspanne erreicht {to} Figuren} other {Gedächtnisspanne von {from} auf {to} Figuren gestiegen}}.",
+            "streak": "{forgiven, plural, =0 {{days} Tage in Folge.} one {{days} Tage in einer Serie, # verpasster Tag verziehen.} other {{days} Tage in einer Serie, # verpasste Tage verziehen.}}",
+            "rungUp": "Neue Stufe: {pieceCount} Figuren mit {studyTime}.",
+            "goalReached": "Ziel erreicht: {accuracy} Prozent bei {pieceCount} oder mehr Figuren."
+          }
+        },
+        "tools": {
+          "title": "Auf diesem Gerät gespeichert",
+          "body": "Kein Konto und kein Server. Lade eine Kopie herunter, um sie in einen anderen Browser mitzunehmen oder sicher aufzubewahren.",
+          "download": "Meinen Laborbericht herunterladen",
+          "import": "Importieren",
+          "lastBackup": "Export gestartet am {date}",
+          "neverBackedUp": "Noch nicht exportiert",
+          "imported": "{added, plural, =0 {Nichts Neues zu importieren. Diese Runden sind schon da.} one {# Runde importiert.} other {# Runden importiert.}}",
+          "skipped": "{count, plural, one {# Runde in der Datei konnte nicht gelesen werden und wurde übersprungen.} other {# Runden in der Datei konnten nicht gelesen werden und wurden übersprungen.}}",
+          "importFailed": "Diese Datei ist kein Laborbericht von Memory Chess.",
+          "tooLarge": "Diese Datei ist größer als 5 MB und damit größer als jeder Laborbericht, daher wurde nichts importiert.",
+          "overCap": "{count, plural, one {# ältere Runde wurde} other {# ältere Runden wurden}} weggelassen, um im Limit von 5.000 Runden zu bleiben.",
+          "summaryIgnored": "Dieser Browser hatte schon Runden, daher wurden nur neue Runden zusammengeführt, nicht die Gesamtwerte aus der Datei.",
+          "summaryDropped": "Die Gesamtwerte aus der Datei waren unlesbar oder stammen aus einer älteren Version, daher wurden nur ihre Runden importiert.",
+          "safari": "In Safari behält ein privater Tab diesen Bericht nach dem Schließen nicht, und Safari löscht die gespeicherten Daten einer Website nach etwa 7 Tagen ohne Besuch. Exportiere eine Kopie, um ihn zu behalten.",
+          "unavailable": "In privaten Fenstern wird nichts gespeichert. Dieses Browserfenster speichert deine Runden nicht.",
+          "backup": "Geräteübergreifend sichern (bald verfügbar)",
+          "backupNoted": "Die geräteübergreifende Sicherung gibt es noch nicht. Danke, dein Interesse ist vermerkt.",
+          "card": {
+            "open": "Meinen Messwert teilen",
+            "title": "Mein Messwert bei Memory Chess",
+            "span": "Gedächtnisspanne: {pieceCount, plural, one {# Figur} other {# Figuren}}, {accuracy} % oder besser in {count, plural, one {# Runde} other {# Runden}}",
+            "held": "Gehaltene Figuren: aktueller Schnitt {average}, aus {count, plural, one {# Runde} other {# Runden}}",
+            "speed": "Tempo: aktueller Schnitt {average} pro Figur {source, select, calibration {in der Übung} other {in Partien}} bei {pieceCount} Figuren, {studyTime}, aus {count, plural, one {# Runde} other {# Runden}}",
+            "site": "thememorychess.com",
+            "copy": "Meinen Messwert kopieren",
+            "copied": "Kopiert. Füge es ein, wo du willst.",
+            "copyFailed": "Kopieren hat hier nicht funktioniert. Der Messwert ist oben markiert, kopiere ihn selbst."
+          },
+          "nudge": {
+            "title": "Dein Bericht lebt in diesem Browser",
+            "body": "Wenn du die Browserdaten löschst, ist er weg. Setz ein Lesezeichen für diese Seite, damit du im selben Browser zurückkommst, und nutze oben „Meinen Laborbericht herunterladen“, um eine Kopie zu behalten.",
+            "safari": "Auf iPhone und iPad behält „Zum Home-Bildschirm“ die Seite als App mit eigenem Bericht, den die 7-Tage-Regel von Safari nicht löscht. Sie startet leer, also importiere dort deine heruntergeladene Kopie.",
+            "dismiss": "Schließen"
+          }
+        }
+      },
+      "library": {
+        "title": "Referenzbibliothek.",
+        "lede": "Das Lernzentrum verbindet kurze Guides mit Übungen, sodass jeder Messwert auf etwas zeigt, das du üben kannst.",
+        "ref": "Nr. {number}",
+        "read": "Guide lesen",
+        "vision": {
+          "title": "Brettübersicht",
+          "body": "Das ganze Brett auf einmal sehen statt immer nur eine Ecke."
+        },
+        "visualization": {
+          "title": "Visualisierung",
+          "body": "Eine Stellung im Kopf behalten, während sich die Figuren bewegen."
+        },
+        "calculation": {
+          "title": "Berechnung",
+          "body": "Weiter vorausrechnen, ohne das Brett aus dem Blick zu verlieren."
+        },
+        "memory": {
+          "title": "Gedächtnis",
+          "body": "Chunking- und Mustertechniken, die deine Messwerte steigern."
+        },
+        "blindfold": {
+          "title": "Blindschach-Training",
+          "body": "Ein Plan in vier Stufen, vom Brettgedächtnis bis zu ganzen Blindpartien."
+        },
+        "blundering": "Wie du Patzer vermeidest"
+      },
+      "final": {
+        "title": "Dein erster Messwert dauert keine Minute.",
+        "body": "Kein Konto, kein Download, keine Anmeldung. Öffne eine Runde, präg dir die Stellung ein, baue sie auf, lies die Zahl ab. Dann entscheide, ob du eine zweite willst."
+      },
+      "resultCard": {
+        "title": "Dein Laborbericht",
+        "device": "Auf diesem Gerät gespeichert",
+        "lines": "Diese Runde in deinem Bericht",
+        "unshown": "Dein Laborbericht konnte für diese Runde nicht angezeigt werden.",
+        "newBest": {
+          "up": "Neuer Bestwert bei {pieceCount} Figuren, {studyTime}: {accuracy} %, vorher {previous} %",
+          "faster": "Neuer Bestwert bei {pieceCount} Figuren, {studyTime}: wieder {accuracy} %, {fasterTime} schneller",
+          "plain": "Neuer Bestwert bei {pieceCount} Figuren, {studyTime}: {accuracy} %"
+        },
+        "vsRecent": {
+          "above": "{points, plural, one {# Punkt} other {# Punkte}} über {rounds, plural, one {deiner letzten Runde} other {deinem Schnitt der letzten # Runden}} in dieser Einstellung",
+          "below": "{points, plural, one {# Punkt} other {# Punkte}} unter {rounds, plural, one {deiner letzten Runde} other {deinem Schnitt der letzten # Runden}} in dieser Einstellung",
+          "level": "Gleichauf mit {rounds, plural, one {deiner letzten Runde} other {deinem Schnitt der letzten # Runden}} in dieser Einstellung"
+        },
+        "span": "Spanne bis {pieceCount} Figuren",
+        "streak": "{current, plural, one {Tag 1} other {Tag # in Folge}}{graceUsed, select, true {, Jokertag genutzt} other {}}, {days} von {goal} Tagen diese Woche",
+        "next": {
+          "label": "Als Nächstes",
+          "why": {
+            "more": "90 % oder besser, also eine Figur mehr bei gleicher Einprägezeit.",
+            "fewer": "Unter 50 %, also eine Figur weniger bei gleicher Einprägezeit.",
+            "edgeFiles": "Du verfehlst die a- und h-Linie öfter als die Zentrumslinien.",
+            "weakType": "{type, select, q {Damen} r {Türme} b {Läufer} n {Springer} other {Bauern}} entgleiten dir am häufigsten: {recalled} von {shown} erinnert.",
+            "fasterLessAccurate": "Bei {pieceCount} Figuren, {studyTime}, warst du pro richtiger Figur schneller, und die Genauigkeit sank um {fell} Punkte.",
+            "colourGap": "Du erinnerst {weaker, select, w {weiße} other {schwarze}} Figuren seltener: {weakerPercent} % gegenüber {strongerPercent} %.",
+            "plateau": "Deine Spanne bleibt bei {span} Figuren stehen."
+          },
+          "play": "{pieceCount} Figuren, {studyTime} spielen",
+          "again": "Noch einmal mit {pieceCount} Figuren, {studyTime}",
+          "patterns": "Übungen zur Mustererkennung lesen",
+          "vision": "Lesen, wie du das ganze Brett siehst"
+        }
+      },
+      "daily": {
+        "locked": "Du hast das heutige Brett schon geöffnet. Ein Versuch pro Tag auf diesem Gerät.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Neues Brett in weniger als einer Minute} one {Neues Brett in # Min.} other {Neues Brett in # Min.}}} one {Neues Brett in # Std. {minutes} Min.} other {Neues Brett in # Std. {minutes} Min.}}",
+        "seeRecord": "Laborbericht öffnen",
+        "chooseRound": "Weitere Runde spielen"
+      },
+      "review": {
+        "none": "Auf diesem Gerät ist gerade kein Brett zur Wiederholung fällig.",
+        "capped": "Die {cap} Wiederholungen für heute sind auf diesem Gerät erledigt.",
+        "cappedNext": "Jedes noch fällige Brett kommt morgen wieder, das am längsten wartende zuerst.",
+        "schedule": "Bretter, bei denen du unter 80 % bleibst, kommen 1, 3, 7 und 14 Tage nach dem ersten Sehen wieder."
+      }
     }
   },
   "game": {
@@ -259,6 +1052,10 @@
         "cta": "Schaffst du das?",
         "text": "{kind, select, daily {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) auf dem Tagesbrett von Memory Chess vom {date} gemerkt.} review {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) auf einem Wiederholungsbrett von Memory Chess gemerkt.} other {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) bei Memory Chess gemerkt.}} Schaffst du das?",
         "alt": "Ergebniskarte von Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Runde gespeichert. Deine neuen Werte stehen gleich darunter.",
+        "action": "Zeigen"
       }
     },
     "comparison": {
@@ -586,7 +1383,7 @@
     },
     "context": {
       "span": "{accuracy} % oder mehr in {rounds, plural, one {# Runde} other {# Runden}}, {memorizeSeconds} s eingeprägt",
-      "recent": "Schnitt deiner letzten {rounds, plural, one {# Runde} other {# Runden}}, jede Einstellung",
+      "recent": "{rounds, plural, one {Aus deiner bisher einzigen Runde, jede Einstellung} other {Schnitt deiner letzten # Runden, jede Einstellung}}",
       "setting": "{source, select, calibration {Übungsrunden} other {Runden in Partien}} mit {pieceCount} Figuren, {memorizeSeconds} s, aus {rounds, plural, one {# Runde} other {# Runden}}",
       "longest": "Längste Serie: {days, plural, one {# Tag} other {# Tage}}",
       "daily": "{status, select, played {Heute gespielt} unfinished {Heute geöffnet} other {Heute offen}}, längste Serie {longest, plural, one {# Tag} other {# Tage}}",

@@ -48,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Harjoita shakkimuistiasi ja hahmotustasi",
-      "subtitle": "Paina mieleen shakkiasema, rakenna se uudelleen muistista ja saat pisteet heti. Paranna laudan hahmotusta kierros kerrallaan.",
-      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>.",
-      "gamesPlayed": "Pelattuja pelejä: {count}"
+      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>."
     },
     "cta": {
-      "play": "Pelaa Memory Chessiä",
       "leaderboard": "Katso tulostaulukko",
-      "playFree": "Pelaa ilmainen kierros",
       "chooseSettings": "Valitse nappulat ja aika"
     },
     "video": {
@@ -64,35 +60,8 @@
       "iframeTitle": "Näin pelaat Memory Chessiä",
       "credit": "Video: ”A New Way To Train Your Vision”, Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Näin se toimii",
-      "title": "Yksinkertainen treeni shakkimuistille",
-      "subtitle": "Jokaisessa kierroksessa on kolme yksinkertaista vaihetta: tutki asema, rakenna se uudelleen ja opi tuloksesta.",
-      "steps": {
-        "observe": {
-          "title": "Havainnoi",
-          "description": "Huomaa, missä kukin nappula on. Etsi ryhmiä, linjoja ja tyhjiä ruutuja, jotka toimivat kiintopisteinä."
-        },
-        "recreate": {
-          "title": "Rakenna uudelleen",
-          "description": "Kun lauta tyhjenee, aseta jokainen nappula muistamaasi ruutuun."
-        },
-        "improve": {
-          "title": "Kehity",
-          "description": "Katso tuloksesi, selvitä mikä meni ohi, ja yritä uudelleen useammalla nappulalla tai lyhyemmällä ajalla."
-        }
-      }
-    },
-    "board": {
-      "study": "Tutki lautaa",
-      "rebuild": "Rakenna muistista"
-    },
     "learn": {
-      "eyebrow": "Oppimiskeskus",
-      "title": "Selkeät shakkioppaat",
-      "description": "Opi käytännön keinoja parantaa laudan hahmotusta, mielikuvitusta, laskentaa ja muistia. Jokaisessa oppaassa on harjoituksia, jotka voit kokeilla heti.",
-      "browseCta": "Selaa shakkioppaita",
-      "beginnerCta": "Aloita aloittelijan oppaasta"
+      "browseCta": "Selaa shakkioppaita"
     },
     "faq": {
       "title": "Kysymyksiä Memory Chessistä",
@@ -130,6 +99,830 @@
           "answer": "Muutama keskittynyt kierros säännöllisesti on hyvä alku. Pidä harjoitukset niin lyhyinä, että jaksat yhä tutkia jokaisen aseman huolellisesti."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Laboratorio",
+        "onPage": "Tällä sivulla",
+        "notebook": "Muistikirja",
+        "method": "Menetelmä",
+        "calibrate": "Kalibrointi",
+        "tiers": "Vaikeustaso",
+        "record": "Päiväkirja",
+        "library": "Kirjasto",
+        "hints": {
+          "notebook": "Miksi mitata",
+          "method": "Yksi kierros vaihe vaiheelta",
+          "calibrate": "Tee mittaus",
+          "tiers": "Tasot ja oma asetelma",
+          "record": "Mittauksesi",
+          "library": "Oppaat ja harjoitukset"
+        },
+        "play": "Pelaa ilmainen kierros"
+      },
+      "tags": {
+        "proposed": "Ehdotus",
+        "sample": "Esimerkki",
+        "illustrative": "Havainnollistus",
+        "free": "Ilmainen · ei tiliä",
+        "rig": "Asetelma"
+      },
+      "sections": {
+        "notebook": "Muistikirja",
+        "method": "Menetelmä",
+        "recording": "Kenttätallenne",
+        "calibrate": "Kalibrointi",
+        "tiers": "Vaikeustaso",
+        "record": "Laboratoriopäiväkirja",
+        "library": "Kirjasto",
+        "faq": "Kysymyksiä",
+        "next": "Seuraava koe"
+      },
+      "hero": {
+        "platforms": "Selain · tietokone · mobiili",
+        "display": "Mittaa, mitä <em>mielesi silmä näkee.</em>",
+        "lede": "Memory Chess on ilmainen shakkimuistipeli ja shakkimuistin harjoitusväline. Tutki asemaa muutaman sekunnin ajan, lauta tyhjenee, ja sitten rakennat sen uudelleen muistista. Jokainen kierros on lyhyt muistitesti, josta saat tarkkuuslukeman 0 ja 100 %:n väliltä sekä kartan jokaisesta ruudusta, jonka sait oikein tai väärin.",
+        "secondaryCta": "Tee kalibrointimittaus",
+        "settingsLink": "<link>{label}</link>.",
+        "facts": {
+          "study": "tutkimisaika",
+          "pieces": "nappulaa kierroksella",
+          "plays": "{count, plural, one {pelattu peli} other {pelattua peliä}}",
+          "languages": "{count, plural, one {kieli} other {kieltä}}"
+        },
+        "showcase": {
+          "aria": "Veselin Topalovin ja Alexey Shirovin peli, Linares 1998, ja aseman opastettu läpikäynti",
+          "event": "Linares · 10. kierros",
+          "venue": "4. maaliskuuta 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "vs",
+          "pieceLabel": "{piece} ruudulla {square}",
+          "tags": {
+            "study": "Tutki",
+            "trap": "Ansa",
+            "sacrifice": "Uhraus",
+            "walk": "Marssi",
+            "runners": "Kaksi vapaasotilasta",
+            "rebuild": "Rakenna",
+            "inspect": "Ulottuvuus"
+          },
+          "counter": {
+            "study": "Tutkiminen {n}/{total}",
+            "game": "Peli {n}/{total}",
+            "resume": "Jatka napsauttamalla uudelleen"
+          },
+          "controls": {
+            "steps": "Vaiheet",
+            "step": "Vaihe {n}/{total}: {tag}",
+            "previous": "Edellinen vaihe",
+            "next": "Seuraava vaihe",
+            "play": "Toista",
+            "pause": "Tauko"
+          },
+          "inspect": {
+            "title": "{piece} ruudulla {square}.",
+            "reach": "{moves, plural, =0 {Ei siirtoja} one {# siirto} other {# siirtoa}}, {captures, plural, =0 {ei lyöntejä} one {# lyönti} other {# lyöntiä}}.",
+            "checks": "Shakit: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "Valkoisen kulma",
+            "longDiagonal": "Pitkä diagonaali",
+            "blackWall": "Mustan muuri",
+            "runner": "Karkuri"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Mustilla pelaavalla Shirovilla on kahden sotilaan etu, mutta eriväriset lähetit johtavat usein tasapeliin. Kymmenen nappulaa."
+              },
+              "whiteCorner": {
+                "caption": "Valkoisen kuningas g1:ssä suojaa g2:n sotilasta. Valkoisen h-sotilas on edennyt h4:ään."
+              },
+              "longDiagonal": {
+                "caption": "Valkoisen lähetti c3:ssa hallitsee pitkää diagonaalia ja uhkaa f6:n sotilasta.",
+                "thought": "Tummaruutuinen lähetti, c3:sta f6:een."
+              },
+              "blackWall": {
+                "caption": "Mustan kuningas e6:ssa, sen lähetti f5:ssä, sotilaat d5:ssä, f6:ssa ja g6:ssa.",
+                "thought": "Kuningas suojaa f6:ta ja d5:tä. Sotilas g6:ssa suojaa lähettiä."
+              },
+              "runner": {
+                "caption": "Yksi musta sotilas a4:ssä, kaukana kaikesta muusta."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "Mustan kuningas ei pääse eteenpäin. Ruuduissa d5 ja f5 ovat sen omat nappulat, ja c3:n lähetti vartioi e5:tä.",
+                "thought": "Vain Kd6, Kd7, Ke7 ja Kf7. Jokainen vie taaksepäin tai sivulle."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! Lähetti uhrautuu ruutuun, jossa g-sotilas voi lyödä sen. Se oli kuninkaan tiellä.",
+                "thought": "Nyt f5 on tyhjä. Siinä on ovi."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Lähetin avaamasta ovesta kuningas pääsee keskustaan."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Yksi lähetti ei pysty pysäyttämään kahta vapaasotilasta.",
+                "thought": "Topalov löi lähetin ja luovutti siirron 53...Kb3 jälkeen."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "Lauta tyhjenee. Rakenna alkuasema: Valkoisen kulma, pitkä diagonaali, Mustan muuri, karkuri."
+              },
+              "back": {
+                "caption": "Ryhmä kerrallaan jokainen nappula palaa ruutuunsa."
+              },
+              "check": {
+                "caption": "Tarkista nyt. Eriväriset lähetit, c3 on tumma ja f5 vaalea. Lähetti c3:ssa uhkaa yhä f6:ta. Neljä valkoista, kuusi mustaa."
+              }
+            }
+          },
+          "lines": {
+            "move": "Pelattu siirto",
+            "path": "Tie korotukseen",
+            "attacks": "Hyökkää",
+            "defends": "Suojaa",
+            "controls": "Hallitsee",
+            "chain": "Sotilasketju",
+            "blocked": "Tukossa"
+          }
+        }
+      },
+      "notebook": {
+        "title": "Mitä et koskaan mittaa, sitä et voi parantaa.",
+        "lede": "Suurin osa shakkiharjoittelusta harjoittaa päätöksentekoa. Hyvin vähän siitä tarkistaa, pystytkö todella pitämään laudan päässäsi. Tämä taito on laskemisen, sokkoshakin ja taktiikan näkemisen pohjalla, ja se jätetään yleensä sattuman varaan.",
+        "observation": {
+          "kicker": "Havainto",
+          "title": "Pelaajat kadottavat nappuloita kesken laskemisen.",
+          "body": "Kolmen siirron syvyydessä pitkän diagonaalin lähetti katoaa hiljaa päässäsi olevasta kuvasta. Edessäsi oleva lauta oli oikein. Mielessäsi oleva ei ollut."
+        },
+        "hypothesis": {
+          "kicker": "Hypoteesi",
+          "title": "Laudan muistaminen on taito, jota voi harjoitella ja testata.",
+          "body": "Pidä asema hetken mielessä, rakenna se uudelleen ja tarkista tulos. Toista useammalla nappulalla ja lyhyemmällä ajalla. <hl>Emme väitä mitään aivoistasi.</hl> Annamme sinulle lukeman, jota voit seurata."
+        },
+        "method": {
+          "kicker": "Menetelmä",
+          "title": "Yksi kierros, yksi selkeä luku.",
+          "body": "Tutki, tyhjä lauta, rakenna, pisteytä. Oikeat ruudut merkitään, väärät ruudut merkitään, mitään ei piiloteta. Kierros kestää alle minuutin, joten voit tehdä niitä monta."
+        }
+      },
+      "method": {
+        "title": "Kierros mikroskoopin alla.",
+        "lede": "Selaa läpi yksi kierros todellisesta asemasta: Kasparovin kuolemattoman loppu, Kasparovin ja Topalovin peli Wijk aan Zeessä vuonna 1999. Merkinnät näyttävät yhden tavan painaa asema mieleen, eivät tallennetta kenenkään huomiosta.",
+        "status": "Vaihe {number} · {name}",
+        "clock": "t = {seconds} s",
+        "scoreChip": "{correct}/{total} ruutua",
+        "countChip": "Valkoinen {white} · Musta {black}",
+        "groups": {
+          "standoff": {
+            "name": "Vastakkain",
+            "sentence": "Valkoisen kuningas uhkaa d2:ta. Mustan kuningas ja c3 suojaavat sitä."
+          },
+          "mirror": {
+            "name": "Portaat",
+            "sentence": "Peilikuvaportaat, h2:sta ylös f4:ään, h7:stä alas f5:een."
+          },
+          "longShots": {
+            "name": "Kaukolaukaukset",
+            "sentence": "Kuningatar a7:ssä tähtää h7:ään. Torni d2:ssa tähtää h2:een."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "Tutki",
+            "title": "Yksitoista nappulaa, kymmenen sekuntia.",
+            "body": "Kasparovin kuolemattoman loppuasema siirron 44.Qa7 jälkeen. Tähän Topalov luovutti. Katso koko lautaa kerralla, älä ruutu ruudulta. Tutkija de Grootin kokeissa mestarit toistivat hetken näytetyn pelin aseman paljon heikompia pelaajia paremmin.",
+            "note": "Kuva. Valkoinen: kuningas c1, kuningatar a7, sotilaat f4, g3, h2. Musta: kuningas e1, torni d2, sotilaat c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Ankkurit",
+            "title": "Aloita kuninkaista.",
+            "body": "Kiinnitä ensin kaksi pistettä. Molemmat kuninkaat ovat ensimmäisellä rivillä kahden linjan päässä toisistaan, ja mustan kuningas on edennyt aina e1:een asti. Sijoita kaikki muu suhteessa niihin.",
+            "note": "Kuva. Kaksi kuningasta ympyröitynä. Kaikki muu odottaa."
+          },
+          "chunk": {
+            "name": "Ryhmittele",
+            "title": "Yhdestätoista nappulasta tulee kolme ideaa.",
+            "body": "Ryhmittele nappulat sen mukaan, mitä ne tekevät toisilleen. Kuninkaat kamppailevat d2:sta. Kaksi sotilasporrasta kohtaa. Kuningatar ja torni tähtäävät kumpikin suojaamattomaan h-sotilaaseen. Chase ja Simon (1973) havaitsivat, että vahvat pelaajat muistavat asemat toisiinsa liittyvien nappuloiden ryhminä.",
+            "note": "Kuva. Oranssi hyökkää, sininen puolustaa, harmaa liittyy sotilasketjuun, palkki merkitsee tukkeutunutta paria. Torni d2:ssa kuuluu kahteen ryhmään."
+          },
+          "encode": {
+            "name": "Koodaa",
+            "title": "Tee jokaisesta ryhmästä lause.",
+            "body": "Nimeä jokainen ryhmä sen tehtävän mukaan. Gobet ja Simon (1996) kuvaavat, miten vahvat pelaajat pitävät mielessään suurempia, skeeman kaltaisia rakenteita. Lauseet itsessään ovat tekniikka, eivät tutkimustulos.",
+            "note": "Kuva. Kolme ryhmää nimettyinä. Niiden lauseet:"
+          },
+          "blank": {
+            "name": "Tyhjä",
+            "title": "Lauta tyhjenee.",
+            "body": "Ei nappuloita, ei vihjeitä. Rakenna lauseiden pohjalta, älä kuvan. Sano ne järjestyksessä: ensin kuninkaat, sitten jokainen ryhmä.",
+            "note": "Tässä ei ole muuta tehtävää kuin pitää kolme lausetta mielessä."
+          },
+          "rebuild": {
+            "name": "Rakenna",
+            "title": "Rakenna ryhmä kerrallaan.",
+            "body": "Kuninkaat. Vastakkain. Portaat. Kaukolaukaukset. Sijoita jokainen ryhmä lauseensa avulla ennen kuin aloitat seuraavan.",
+            "note": "Kuva. Rakennelma ennen tarkistusta. Yksi sotilas on väärässä ruudussa. Huomaatko minkä?"
+          },
+          "score": {
+            "name": "Pisteet",
+            "title": "Tarkista lauseitasi vasten ja pisteytä sitten.",
+            "body": "Tarkista jokainen suhde uudelleen rakennetulla laudalla. Onko torni yhä kahdesti suojattu? Ruudusta c2 sotilas suojaa d1:tä, ei d2:ta. Määrä, viisi ja kuusi, täsmää yhä, joten vain suhteiden tarkistus paljastaa virheen.",
+            "note": "Kuva. Väkäset pitävät yhä, punainen risti petti. Oranssi täyttö on väärä ruutu (c2), rengas näyttää, mihin sotilas kuului (c3). {correct}/{total} ruutua on {accuracy} %."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Tee kalibrointimittaus.",
+        "lede": "Keskitaso-kierros todellisesta pelistä: {pieceCount} nappulaa, niiden joukossa kaksi kuningasta, {memorizeSeconds} sekuntia. Sitten lauta tyhjenee ja rakennat sen uudelleen. Saat tuloskortin, jossa on tarkkuutesi ja muistamisesi nappulatyypeittäin. Toimii hiirellä, kosketuksella ja näppäimistöllä.",
+        "phaseReady": "Valmis · {pieceCount} nappulaa · {memorizeSeconds} s näkyvillä",
+        "phaseLabel": "Vaihe {number} · {name}",
+        "start": "Aloita kalibrointi",
+        "restart": "Aloita alusta",
+        "again": "Uudelleen",
+        "done": "Valmis",
+        "submit": "Lähetä mittaus",
+        "clear": "Tyhjennä lauta",
+        "controlsLabel": "Kierroksen ohjaimet",
+        "boardLabel": "Kalibrointilauta. Liiku ruutujen välillä nuolinäppäimillä.",
+        "paletteLabel": "Nappulavalikoima",
+        "paletteItem": "{piece}, jäljellä {count}",
+        "usedUp": {
+          "white": {
+            "king": "Valkoinen kuningas on jo laudalla.",
+            "queen": "Valkoinen kuningatar on jo laudalla.",
+            "rook": "Molemmat valkoiset tornit ovat laudalla.",
+            "bishop": "Molemmat valkoiset lähetit ovat laudalla.",
+            "knight": "Molemmat valkoiset ratsut ovat laudalla.",
+            "pawn": "Kaikki kahdeksan valkoista sotilasta ovat laudalla."
+          },
+          "black": {
+            "king": "Musta kuningas on jo laudalla.",
+            "queen": "Musta kuningatar on jo laudalla.",
+            "rook": "Molemmat mustat tornit ovat laudalla.",
+            "bishop": "Molemmat mustat lähetit ovat laudalla.",
+            "knight": "Molemmat mustat ratsut ovat laudalla.",
+            "pawn": "Kaikki kahdeksan mustaa sotilasta ovat laudalla."
+          }
+        },
+        "squareEmpty": "{square}, tyhjä",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Tutki asemaa. {memorizeSeconds} sekuntia.",
+        "liveRebuild": "Lauta tyhjennetty. Valitse nappula ja sitten ruutu.",
+        "liveScore": "Tarkkuus {accuracy} prosenttia. {correct}/{total} ruutua oikein.",
+        "startFailed": "Asemaa ei voitu ladata. Tarkista yhteytesi ja yritä uudelleen.",
+        "steps": [
+          "Paina aloita. Tutki asemaa, kunnes mittari tyhjenee.",
+          "Valitse nappula valikoimasta ja napauta sitten ruutua. Poista asetettu nappula napauttamalla sitä.",
+          "Lähetä. Jos asetat enemmän nappuloita kuin asemassa oli, tarkkuutesi laskee, joten aseta vain se, minkä muistat."
+        ],
+        "readout": {
+          "title": "Tuloskortti",
+          "statusIdle": "Odottaa ajoa",
+          "statusRecording": "Tallentaa",
+          "statusDone": "Ajo valmis",
+          "correct": "Oikeat ruudut",
+          "time": "Asetteluaika",
+          "wrong": "Väärät nappulat",
+          "exposure": "Tutkimisaika",
+          "byType": "Muistaminen nappulatyypeittäin",
+          "byTypeEmpty": "Muistaminen nappulatyypeittäin näkyy tässä ensimmäisen ajosi jälkeen.",
+          "nextEmpty": "Ehdotettu vaikeustaso näkyy mittauksen jälkeen.",
+          "suggested": "Ehdotus:",
+          "stepUp": "nouse tasolle {tier}, {pieceCount} nappulaa ja {memorizeSeconds} s. Varmista ensin kahdella virheettömällä kierroksella lisää.",
+          "stay": "pysy tasolla {tier}, {pieceCount} nappulaa ja {memorizeSeconds} s. Pelaa kolme kierrosta ja seuraa suuntaa.",
+          "start": "aloita tasolta {tier}, {pieceCount} nappulaa ja {memorizeSeconds} s. Ryhmittele nappulat pareiksi tutkiessasi.",
+          "playTier": "Pelaa: {tier}",
+          "legendCorrect": "oikein",
+          "legendWrong": "väärä sijoitus",
+          "legendMissed": "puuttuva ruutu"
+        },
+        "pieceTypes": {
+          "king": "Kuningas",
+          "queen": "Kuningatar",
+          "rook": "Torni",
+          "bishop": "Lähetti",
+          "knight": "Ratsu",
+          "pawn": "Sotilas"
+        }
+      },
+      "tiers": {
+        "title": "Neljä valmista tasoa. Yksi oma asetelma.",
+        "lede": "Kuorma kasvaa, tutkimisaika lyhenee. Siirry tasoa ylemmäs, kun mittauksesi pysyvät vakaina, älä yhden onnekkaan kierroksen jälkeen.",
+        "columns": {
+          "tier": "Vaikeustaso",
+          "pieces": "Nappulat",
+          "exposure": "Tutkimisaika",
+          "load": "Kuorma"
+        },
+        "loadLabel": "{pieceCount}/32 nappulaa",
+        "play": "Pelaa",
+        "custom": {
+          "label": "Oma",
+          "description": "Säädä omat muuttujasi ja eristä yksi heikkous."
+        }
+      },
+      "record": {
+        "title": "Palaa katsomaan trendiä.",
+        "lede": "Yksi mittaus on tilannekuva. Kymmenen mittausta on mittaussarja. Jokainen pelaamasi kierros tallennetaan tälle laitteelle, ja paneelit täyttyvät omista kierroksistasi. Ennen ensimmäistä kierrostasi paneeleissa näkyy merkinnällä <tag>Esimerkki</tag> varustettuja arvoja, ei oikeita pelaajia. Sen jälkeen paneeli, joka ei vielä pysty lukemaan päiväkirjaasi, kertoo, mitä se vielä tarvitsee.",
+        "span": {
+          "fig": "Kuva {number} · Muistijänne",
+          "title": "Kuinka monta nappulaa pystyt pitämään mielessä.",
+          "figure": "{pieceCount, plural, one {# nappula} other {# nappulaa}}",
+          "held": "Vähintään {accuracy} prosenttia {count, plural, one {# kierroksella} other {# kierroksella}}. Lyhin tutkimisaika niistä {studyTime}.",
+          "up": "Nousua {count, plural, one {# nappula} other {# nappulaa}} viime viikosta",
+          "same": "Ei muutosta viime viikosta",
+          "aria": "Esimerkkiportaikko muistijänteestä 12 harjoituskerran aikana, nousee 4 nappulasta 8 nappulaan.",
+          "note": "Esimerkkipäiväkirja · 12 harjoituskertaa",
+          "realAria": "Muistijänteesi {sessions, plural, one {harjoituskerralla, jolla se saavutettiin ensimmäisen kerran} other {# harjoituskerran aikana siitä, kun se saavutettiin ensimmäisen kerran}}, {shape, select, flat {pysyy {now} nappulassa} other {nousee {first} nappulasta {now} nappulaan}}.",
+          "need": "Saavuta vähintään {accuracy} prosenttia {count, plural, =2 {kahdesti} one {vielä kerran} other {vielä # kertaa}} samalla, vähintään {minPieces} nappulan koolla.",
+          "onlyKings": "Tähänastisilla kierroksillasi oli vain kaksi kuningasta, ja jänne tarvitsee enemmän nappuloita.",
+          "first": "Jänne ensi kerran",
+          "last": "Uusin"
+        },
+        "held": {
+          "fig": "Kuva {number} · Muistetut nappulat",
+          "title": "Oikein asettamasi nappulat millä tahansa asetuksella.",
+          "aria": "Esimerkkiviiva muistetuista nappuloista 12 kierroksen aikana, 5 kierroksen liukuva keskiarvo nousee 4,0 nappulasta 7,0 nappulaan.",
+          "note": "Esimerkkipäiväkirja · 12 kierrosta · kaikki asetukset",
+          "partial": "Katkoviiva: keskiarvo alle {window} kierroksesta",
+          "realAria": "Muistetut nappulasi {count, plural, one {viimeisellä kierroksellasi} other {viimeisillä # kierroksellasi}} millä tahansa asetuksella, {window} kierroksen keskiarvona, viimeisin {latest} nappulaa.",
+          "average": "Viimeaikainen keskiarvo {average} nappulaa",
+          "up": "nousua {change} edellisiin {window} kierrokseen verrattuna",
+          "down": "laskua {change} edellisiin {window} kierrokseen verrattuna",
+          "flat": "ei muutosta edellisiin {window} kierrokseen verrattuna",
+          "realNote": "Kaikki asetukset · {count, plural, one {# kierroksesta} other {# kierroksesta}}",
+          "needRounds": "{count, plural, one {Vielä # kierros piirtää} other {Vielä # kierrosta piirtää}} viivasi.",
+          "needRoundsAndDay": "{count, plural, one {Vielä # kierros toisena päivänä pelattuna piirtää} other {Vielä # kierrosta, joista vähintään yksi toisena päivänä, piirtää}} viivasi.",
+          "needDay": "Pelaa vielä yhtenä päivänä, niin viivasi piirtyy.",
+          "first": "Vanhin",
+          "last": "Uusin"
+        },
+        "speed": {
+          "fig": "Kuva {number} · Nopeus",
+          "title": "Sekuntia rakentamaasi nappulaa kohden.",
+          "aria": "Esimerkkiviiva rakennussekunneista oikeaa nappulaa kohden 12 kierroksen aikana, laskee 4,1 sekunnista 2,6 sekuntiin.",
+          "note": "Esimerkkipäiväkirja · 12 kierrosta · Keskitaso",
+          "realAria": "Rakennussekuntisi oikeaa nappulaa kohden viimeisillä {count} {source, select, calibration {harjoituskierroksellasi} other {pelikierroksellasi}}, {pieceCount} nappulaa ja {memorizeSeconds} sekuntia, viimeisin {latest} sekuntia.",
+          "average": "Viimeaikainen keskiarvo {average} nappulaa kohden",
+          "down": "{change} nopeampi kuin edelliset {window} kierrosta",
+          "up": "{change} hitaampi kuin edelliset {window} kierrosta",
+          "flat": "sama tahti kuin edellisillä {window} kierroksella",
+          "accuracy": "Tarkkuus samoilla kierroksilla {average} %",
+          "accuracyChange": {
+            "up": "nousua {change, plural, one {# prosenttiyksikkö} other {# prosenttiyksikköä}}",
+            "down": "laskua {change, plural, one {# prosenttiyksikkö} other {# prosenttiyksikköä}}",
+            "flat": "ei muutosta"
+          },
+          "fastWrong": "Nopea ja väärä ei ole kehitystä.",
+          "config": "{source, select, calibration {Harjoitus} other {Peli}} · {pieceCount} nappulaa · {studyTime}, viime aikoina eniten pelaamasi asetus · {count, plural, one {# kierroksesta} other {# kierroksesta}}",
+          "need": "{count, plural, one {Vielä # kierros} other {Vielä # kierrosta}} asetuksella {pieceCount} nappulaa, {studyTime} {source, select, calibration {harjoituksessa} other {peleissä}} piirtää nopeusviivasi.",
+          "needRight": "Nopeus lukee vain kierroksia, joilla vähintään yksi nappula on oikein. Pelaa {count, plural, one {# tällainen kierros} other {# tällaista kierrosta}} aloittaaksesi viivasi.",
+          "first": "Vanhin",
+          "last": "Uusin"
+        },
+        "curve": {
+          "fig": "Kuva {number} · Unohtamiskäyrä",
+          "title": "Lyhyet, väliajoin tehdyt kertaukset voittavat yhden pitkän harjoituksen.",
+          "desc": "Laudat, joilla saat alle 80 %, palaavat kerrattaviksi 1, 3, 7 ja 14 päivää sen jälkeen, kun näit ne ensimmäisen kerran. Käyräsi näyttää, kuinka paljon muistat kunkin tauon jälkeen.",
+          "aria": "Havainnollistava kaavio: muistaminen heikkenee nopeasti ilman kertausta ja hitaammin jokaisen väliajoin tehdyn kertauksen jälkeen päivinä 1, 3 ja 7.",
+          "note": "Havainnollistava malli hajautusvaikutuksesta. Ei mitattua dataa.",
+          "noReview": "ei kertausta",
+          "spaced": "väliajoin tehdyt kierrokset",
+          "review": "kertaus",
+          "day": "p{day}",
+          "warming": "{reviews, plural, one {Vielä # kertaus saman tauon jälkeen piirtää} other {Vielä # kertausta saman tauon jälkeen piirtää}} ensimmäisen mitatun pisteesi.",
+          "measuredAria": "Muistamisesi kertaamillasi laudoilla: {points}.",
+          "pointFirst": "ensinäkemältä {accuracy} % {count, plural, one {# laudasta} other {# laudasta}}",
+          "pointAfter": "{day, plural, one {# päivän} other {# päivän}} jälkeen {accuracy} % {count, plural, one {# kertauksesta} other {# kertauksesta}}",
+          "count": "n={count}",
+          "measuredNote": "Perustuu {reviews, plural, one {# kertaukseen} other {# kertaukseen}} {boards, plural, one {# laudalla} other {# laudalla}}. Piste tarvitsee {min} kertausta taukonsa jälkeen.",
+          "due": "Kertaus {number}/{cap} tänään",
+          "capped": "Tämän päivän kertaukset tehty",
+          "play": "Pelaa kertaus",
+          "waiting": "Seuraava kertaus {days, plural, one {huomenna} other {# päivän päästä}}. Jonossasi {queued, plural, one {# lauta} other {# lautaa}}.",
+          "empty": "Ei vielä kerrattavia lautoja. Lauta, jolla saat alle 80 %, palaa tänne seuraavana päivänä."
+        },
+        "spark": {
+          "fig": "Kuva {number} · Tarkkuus ajan mittaan",
+          "title": "Viivasi, kierros kierrokselta.",
+          "titleSessions": "Viivasi, harjoituskerta kerralta.",
+          "aria": "Esimerkkikäyrä tarkkuudesta 12 kierroksen aikana, nousee 52 prosentista 79 prosenttiin.",
+          "note": "Esimerkkipäiväkirja · 12 kierrosta · Keskitaso",
+          "first": "K01",
+          "last": "K12",
+          "needRounds": "{count, plural, one {Vielä # kierros} other {Vielä # kierrosta}} asetuksella {pieceCount} nappulaa, {studyTime} piirtää {source, select, calibration {harjoituksen} other {pelien}} trendisi.",
+          "needRoundsAndDay": "{count, plural, one {Vielä # kierros asetuksella {pieceCount} nappulaa, {studyTime}, toisena päivänä pelattuna,} other {Vielä # kierrosta asetuksella {pieceCount} nappulaa, {studyTime}, joista vähintään yksi toisena päivänä,}} piirtää {source, select, calibration {harjoituksen} other {pelien}} trendisi.",
+          "needDay": "Pelaa {pieceCount} nappulaa, {studyTime} {source, select, calibration {harjoituksessa} other {pelissä}} vielä yhtenä päivänä, niin trendisi piirtyy.",
+          "config": "{source, select, calibration {Harjoitus} other {Peli}} · {pieceCount} nappulaa · {studyTime}, eniten pelaamasi asetus, jolla on trendi",
+          "realAria": "Tarkkuutesi viimeisillä {count} {source, select, calibration {harjoituskierroksellasi} other {pelikierroksellasi}}, {pieceCount} nappulaa ja {memorizeSeconds} sekuntia, viimeisin {latest} prosenttia.",
+          "realAriaSessions": "Tarkkuutesi {count, plural, one {viimeisellä harjoituskerrallasi} other {viimeisillä # harjoituskerrallasi}}, joilla oli {source, select, calibration {harjoituskierroksia} other {pelikierroksia}} asetuksella {pieceCount} nappulaa ja {memorizeSeconds} sekuntia, viimeisin {latest} prosenttia.",
+          "sessions": "{count, plural, one {# harjoituskerta} other {# harjoituskertaa}}",
+          "realFirst": "Vanhin",
+          "realLast": "Uusin"
+        },
+        "heat": {
+          "fig": "Kuva {number} · Virhekartta",
+          "title": "Missä ruutusi lipsuvat.",
+          "aria": "Esimerkki ohi menneiden ruutujen lämpökartasta: tummin h-linjalla ja h1:n ympärillä, kuumat kohdat b7:ssä ja f7:ssä, vaalein keskustassa.",
+          "note": "Esimerkki: virheet kasautuvat h-linjalle ja kuninkaan kulmaan h1:n ympärille. Harjoittele sitä reunaa seuraavaksi.",
+          "need": "Noin {count, plural, one {vielä # kierros} other {vielä # kierrosta}}, kunnes jokaisella linjalla ja rivillä on 10 nappulaa luettavaksi.",
+          "needStart": "Pelaa vielä muutama kierros, niin virhekarttasi alkaa täyttyä.",
+          "files": "Linjat",
+          "ranks": "Rivit",
+          "line": "{line}: {missed}/{shown} ohi",
+          "lineThin": "{line}: {shown} nähty, liian vähän tulkittavaksi",
+          "realAria": "Ohi menneiden osuus kullakin ruudulla. Harmailla ruuduilla on nähty alle 10 nappulaa.",
+          "realNote": "Tummempi tarkoittaa useammin ohi mennyttä. Harmailla ruuduilla on nähty alle 10 nappulaa."
+        },
+        "daily": {
+          "fig": "Kuva {number} · Päivän lauta",
+          "title": "Yksi lauta päivässä, sama kaikille.",
+          "desc": "Uusi asema avautuu joka päivä keskiyöllä UTC-aikaa. Kaikki saavat samat 6 nappulaa ja 10 sekuntia aikaa tutkia, ja sinulla on yksi yritys.",
+          "play": "Pelaa päivän lauta",
+          "open": "Et ole vielä pelannut päivän lautaa.",
+          "played": "Asetit oikein {correct} {pieceCount, plural, one {# nappulasta} other {# nappulasta}}, eli {accuracy} prosenttia.",
+          "unfinished": "Avasit päivän laudan ja poistuit ennen tulosta. Yksi yritys päivässä tällä laitteella.",
+          "streak": "Päiväputki {current, plural, one {# päivä} other {# päivää}}{forgiven, plural, =0 {} one {, # väliin jäänyt päivä annettu anteeksi} other {, # väliin jäänyttä päivää annettu anteeksi}} · pisin {longest, plural, one {# päivä} other {# päivää}}",
+          "streakLongest": "Pisin päiväputki {longest, plural, one {# päivä} other {# päivää}}",
+          "gridAria": "Tuloksesi kullakin ruudulla, a8 ensin: {correct} oikein, {wrong, plural, one {# väärä nappula} other {# väärää nappulaa}}, {missed} puuttuu, {extra} ylimääräistä.",
+          "key": {
+            "c": "oikein",
+            "w": "väärä nappula",
+            "m": "puuttuu",
+            "x": "ylimääräinen"
+          },
+          "share": "Memory Chess, päivän lauta {day}\n{correct}/{pieceCount} oikein, {accuracy} %\n{row}\nthememorychess.com",
+          "copy": "Kopioi tulos",
+          "showGrid": "Näytä ruudukko",
+          "copied": "Kopioitu. Liitä se minne haluat.",
+          "copyFailed": "Kopiointi ei toiminut tässä. Tulos on valittuna alla, joten kopioi se itse."
+        },
+        "streak": {
+          "fig": "Kuva {number} · Päiviä putkeen",
+          "title": "Yksi kierros päivässä kasvattaa putkea.",
+          "desc": "Jokainen päättynyt kierros, peli tai harjoitus, lasketaan omalle päivälleen. Yksi väliin jäänyt päivä minkä tahansa 7 päivän aikana annetaan anteeksi.",
+          "aria": "Esimerkki kahden viikon putkiruudukosta",
+          "note": "Esimerkki · katkoviivainen ruutu on tämän päivän kierros, joka odottaa vielä",
+          "realDesc": "Jokainen päättynyt kierros lasketaan omalle päivälleen. Yksi väliin jäänyt päivä minkä tahansa 7 päivän aikana annetaan anteeksi.",
+          "need": "Pelaa {days, plural, one {vielä # päivänä} other {vielä # päivänä}}, niin putkesi voidaan lukea.",
+          "realAria": "Viimeiset 14 päivääsi: {count, plural, one {# päivä} other {# päivää}} pelattu{forgiven, plural, =0 {} one {, # annettu anteeksi} other {, # annettu anteeksi}}.",
+          "realNote": "Nykyinen putki {current, plural, one {# päivä} other {# päivää}}{forgiven, plural, =0 {} one { pelattu, # väliin jäänyt päivä annettu anteeksi} other { pelattu, # väliin jäänyttä päivää annettu anteeksi}} · pisin {longest, plural, one {# päivä} other {# päivää}}",
+          "key": {
+            "played": "pelattu",
+            "forgiven": "anteeksi annettu",
+            "missed": "väliin jäänyt",
+            "today": "tänään"
+          }
+        },
+        "week": {
+          "ring": "{played}/{goal} päivää tällä viikolla",
+          "ringOver": "Tavoite saavutettu, {played} päivää tällä viikolla",
+          "sampleRing": "Esimerkkiviikko · {played}/{goal} päivää",
+          "left": "{remaining, plural, =0 {Tavoite saavutettu tällä viikolla.} one {Vielä # päivä tavoitteeseesi.} other {Vielä # päivää tavoitteeseesi.}}",
+          "outOfReach": "Tavoitetta ei voi enää saavuttaa: jäljellä {daysLeft, plural, =0 {ei yhtään päivää} one {# päivä} other {# päivää}}. Uusi viikko alkaa maanantaina.",
+          "goal": "Päiviä viikossa",
+          "option": "{days} päivää viikossa"
+        },
+        "welcome": {
+          "line": "Tervetuloa takaisin. Päiväkirjasi päivä {day}. Viimeksi {accuracy} % asetuksella {pieceCount} nappulaa, {studyTime}.",
+          "lineNoDay": "Tervetuloa takaisin. Viimeksi {accuracy} % asetuksella {pieceCount} nappulaa, {studyTime}."
+        },
+        "board": {
+          "fig": "Kuva {number} · Tulostaulukko",
+          "title": "Vertaa mittauksia koko maailmassa.",
+          "desc": "Jokainen vaikeustaso järjestetään oikeiden nappuloiden mukaan, sitten vähempien väärien nappuloiden, sitten nopeamman muistiinpainamisajan ja lopuksi nopeamman ratkaisuajan mukaan. Jokaisella rivillä näkyy pelaajan maa.",
+          "howTo": "Lähetä tulos tulosnäytöltä ja katso sitten, mihin se sijoittuu, koko maailmassa tai omassa maassasi.",
+          "sketchPieces": "{count} nappulaa",
+          "open": "Avaa tulostaulukko",
+          "difficulty": "Vaikeustaso",
+          "scope": "Vertailuryhmä",
+          "world": "Maailma",
+          "entry": "Paras merkintäsi tasolla {difficulty}: {correct, plural, one {# oikea nappula} other {# oikeaa nappulaa}}, lähetetty {date}.",
+          "check": "Tarkista sijoitukseni",
+          "checking": "Tarkistetaan...",
+          "ranked": "Sija {rank, number} {total, plural, one {# merkinnästä} other {# merkinnästä}} tasolla {difficulty}, koko maailmassa.",
+          "rankedIn": "Sija {rank, number} {total, plural, one {# merkinnästä} other {# merkinnästä}} tasolla {difficulty}, maa: {country}.",
+          "checkedAt": "Tarkistettu {time}.",
+          "boardSize": "Julkinen taulukko näyttää {limit} parasta.",
+          "up": "Nousua {places, plural, one {# sija} other {# sijaa}} ajankohdasta {time}.",
+          "down": "Laskua {places, plural, one {# sija} other {# sijaa}} ajankohdasta {time}.",
+          "same": "Sama sija kuin ajankohtana {time}.",
+          "missing": "Merkintäsi tasolla {difficulty} ei ole enää tulostaulukossa, joten tämä laite ei enää säilytä sitä. Taulukoita siivotaan tai nollataan joskus. Tarkistettu {time}.",
+          "limited": "Liikaa tarkistuksia yhteydestäsi. Yritä uudelleen {wait, plural, one {# sekunnin} other {# sekunnin}} kuluttua.",
+          "noCountry": "Tulostaulukossa ei ole maata tälle merkinnälle, joten sen voi sijoittaa vain koko maailman listalle.",
+          "offline": "Olet offline-tilassa, joten mitään ei lähetetty. Muodosta yhteys ja yritä uudelleen.",
+          "failed": "Tulostaulukkoon ei saatu yhteyttä, joten sijoitusta ei luettu. Yritä myöhemmin uudelleen."
+        },
+        "plans": {
+          "fig": "Kuva {number} · Ohjelmat",
+          "title": "Valitse suunnitelma ja vie se loppuun.",
+          "desc": "Yksi suunnitelma kerrallaan. Edistyminen lasketaan kierroksistasi, joten suunnitelman keskeyttäminen ei koskaan poista yhtään kierrosta.",
+          "baseline": {
+            "kicker": "Suunnitelma A · 7 päivää",
+            "title": "Lähtötasoviikko",
+            "steps": [
+              "Yksi Keskitaso-kierros päivässä.",
+              "Kirjaa mittaus ja vastusta halua yrittää uudelleen.",
+              "Päivä 7: vertaa päivään 1."
+            ],
+            "progress": "{played}/{days} päivää, joina pelattu Keskitaso-kierros",
+            "compare": "Päivä {firstDay} {first} %, päivä {lastDay} {latest} %: {direction, select, up {nousua {change, plural, one {# prosenttiyksikkö} other {# prosenttiyksikköä}}} down {laskua {change, plural, one {# prosenttiyksikkö} other {# prosenttiyksikköä}}} other {ei muutosta}}.",
+            "compareNone": "Ei Keskitaso-kierrosta suunnitelman alun jälkeen, joten vertailtavaa ei ole.",
+            "compareOne": "Yksi Keskitaso-kierros suunnitelman alun jälkeen, joten vertailtavaa ei vielä ole."
+          },
+          "edge": {
+            "kicker": "Suunnitelma B · 14 päivää",
+            "title": "Reunalinjaharjoitus",
+            "steps": [
+              "Oma asetelma: 8 nappulaa, 15 s.",
+              "Käy virhekarttasi läpi 3 päivän välein.",
+              "Yhdistä laudan hahmotuksen oppaaseen."
+            ],
+            "progress": "Asetelmaa pelattu {played, plural, one {# päivänä} other {# päivänä}} {elapsed} päivästä. Tavoite: {target} päivää {days} päivästä.",
+            "share": "Reunalinjoilla ohi: {before} % {beforeRounds, plural, one {# kierroksella} other {# kierroksella}} ennen suunnitelmaa, {now} % {nowRounds, plural, one {# kierroksella} other {# kierroksella}} sen jälkeen.",
+            "shareMissing": "Reunalinjojen virheitä verrataan, kun kummallakin puolella on {needed} kierrosta, joilla on nappula a- tai h-linjalla. Tähän mennessä {before} ennen suunnitelmaa, {now} sen jälkeen.",
+            "guide": "Lue, miten näet koko laudan"
+          },
+          "ladder": {
+            "kicker": "Suunnitelma C · ei päättymispäivää",
+            "title": "Laskevat tikkaat",
+            "steps": [
+              "Pidä 90 % kolmella kierroksella peräkkäin.",
+              "Lyhennä sitten tutkimisaikaa 2 sekunnilla.",
+              "Kun tutkimisaika on lyhimmillään, lisää nappuloita."
+            ],
+            "rung": "Askelma: {pieceCount} nappulaa, {studyTime}.",
+            "run": "{run}/{needed} kierrosta peräkkäin vähintään {accuracy} prosentin tarkkuudella.",
+            "climbed": "Noustu: {needed} kierrosta peräkkäin vähintään {accuracy} prosentin tarkkuudella.",
+            "next": "Seuraava askelma: {pieceCount} nappulaa, {studyTime}.",
+            "top": "Tikkaiden huipulla: missään laudassa ei ole yli {pieceCount} nappulaa."
+          },
+          "status": {
+            "day": "Päivä {day}",
+            "dayOf": "Päivä {day}/{length}",
+            "overtime": "Päivä {day}, yli suunnitellun {length} päivän",
+            "done": "Valmis päivänä {day}.",
+            "finished": "Lopetettu etuajassa päivänä {day}.",
+            "stopped": "Keskeytetty päivänä {day}."
+          },
+          "start": "Aloita: {title}",
+          "again": "Aloita uudelleen: {title}",
+          "busy": "Yksi suunnitelma kerrallaan. Keskeytä {title}, jotta voit aloittaa tämän.",
+          "stop": "Keskeytä suunnitelma",
+          "confirmStop": "Keskeytetäänkö varmasti?",
+          "keep": "Jatka",
+          "finish": "Lopeta etuajassa",
+          "play": "Pelaa {pieceCount} nappulaa, {studyTime}"
+        },
+        "goal": {
+          "fig": "Kuva {number} · Tavoite",
+          "title": "Tähtää mittaukseen.",
+          "desc": "Valitse nappuloiden määrä ja tarkkuus. Palkki täyttyy parhaasta kierroksestasi, jolla oli vähintään sama määrä nappuloita tavoitteen asettamisen jälkeen.",
+          "sample": "Esimerkkitavoite: {pieceCount} nappulaa {accuracy} prosentin tarkkuudella. Paras tähän mennessä {best} prosenttia, {percent} % matkasta.",
+          "target": "Tavoite: vähintään {pieceCount} nappulaa {accuracy, select, 100 {100 prosentin tarkkuudella} other {vähintään {accuracy} prosentin tarkkuudella}}, asetettu {date}.",
+          "progress": "Paras sen jälkeen: {best} prosenttia {pieceCount} nappulalla, {percent} % matkasta.",
+          "bar": "{percent} % matkasta tavoitteeseen",
+          "need": "Ei kierrosta vähintään {pieceCount} nappulalla tämän tavoitteen asettamisen jälkeen.",
+          "reached": "Saavutettu {date}: {accuracy} prosenttia {pieceCount} nappulalla.",
+          "form": "Uusi tavoite",
+          "pieces": "Nappuloita vähintään",
+          "accuracy": "Tarkkuus vähintään",
+          "percent": "{value} %",
+          "set": "Aseta tavoite",
+          "newGoal": "Aseta uusi tavoite",
+          "clear": "Poista tavoite",
+          "cancel": "Peruuta",
+          "saved": "Tavoite asetettu.",
+          "cleared": "Tavoite poistettu."
+        },
+        "mine": "Päiväkirjasi",
+        "fromRounds": "{count, plural, one {# kierroksesta} other {# kierroksesta}}",
+        "dashboardLink": "Avaa koontinäyttö",
+        "play": "Pelaa kierros",
+        "tomorrow": "Palaa huomenna.",
+        "stale": "Pelattu viimeksi {count, plural, one {# päivä} other {# päivää}} sitten.",
+        "unlock": {
+          "label": "Vielä avaamatta",
+          "count": "{unlocked}/{total} kuvaa avattu",
+          "done": "Kaikki alla olevat kuvat on avattu.",
+          "showAll": "Näytä kaikki {count} kuvaa",
+          "showFewer": "Näytä vähemmän",
+          "span": "{qualifyingRounds, plural, one {# kierros} other {# kierrosta}}, {accuracy} %+, {minPieces}+ nappulaa",
+          "piecesHeld": "{rounds, plural, one {# kierros} other {# kierrosta}} {days, plural, one {# päivän} other {# päivän}} aikana",
+          "trend": "{rounds, plural, one {# kierros} other {# kierrosta}} samalla asetuksella {days, plural, one {# päivän} other {# päivän}} aikana",
+          "speed": "{rounds, plural, one {# kierros} other {# kierrosta}} samalla asetuksella",
+          "streak": "{days, plural, one {# päivä} other {# päivää}} pelattu",
+          "curve": "{reviews, plural, one {# kertaus} other {# kertausta}} saman tauon jälkeen",
+          "typeRecall": "{exposures, plural, one {# nähty nappula} other {# nähtyä nappulaa}} muita kuin kuninkaita",
+          "missMap": "{exposures, plural, one {# nähty nappula} other {# nähtyä nappulaa}} linjaa ja riviä kohden",
+          "trendRounds": "vielä {rounds} {rounds, plural, one {kierros} other {kierrosta}} {source, select, calibration {harjoituksessa} other {peleissä}} asetuksella {pieceCount} nappulaa, {studyTime}",
+          "trendDays": "{days, plural, one {vielä # päivä} other {vielä # päivää}} {source, select, calibration {harjoituskierroksia} other {pelikierroksia}} asetuksella {pieceCount} nappulaa, {studyTime}",
+          "trendRoundsDays": "vielä {rounds} {rounds, plural, one {kierros} other {kierrosta}} {source, select, calibration {harjoituksessa} other {peleissä}} asetuksella {pieceCount} nappulaa, {studyTime}, {days, plural, one {vielä # päivä} other {vielä # päivää}}",
+          "spanLeft": "{qualifyingRounds, plural, one {vielä # kierros} other {vielä # kierrosta}}, {accuracy} %+, {minPieces}+ nappulaa",
+          "spanLarger": "{largerRounds, plural, one {# kierros} other {# kierrosta}}, {minPieces}+ nappulaa",
+          "piecesHeldRounds": "{rounds, plural, one {vielä # kierros} other {vielä # kierrosta}}",
+          "piecesHeldDays": "{days, plural, one {vielä # päivä} other {vielä # päivää}}",
+          "piecesHeldRoundsDays": "{rounds, plural, one {vielä # kierros} other {vielä # kierrosta}}, {days, plural, one {vielä # päivä} other {vielä # päivää}}",
+          "speedRounds": "vielä {rounds} {rounds, plural, one {kierros} other {kierrosta}} {source, select, calibration {harjoituksessa} other {peleissä}} asetuksella {pieceCount} nappulaa, {studyTime}",
+          "speedRight": "{rightRounds, plural, one {# kierros} other {# kierrosta}}, joilla yksi nappula oikein",
+          "streakLeft": "{days, plural, one {vielä # pelipäivä} other {vielä # pelipäivää}}",
+          "curveLeft": "{reviews, plural, one {vielä # kertaus} other {vielä # kertausta}} saman tauon jälkeen",
+          "typeRecallLeft": "{exposures, plural, one {vielä # nähty nappula} other {vielä # nähtyä nappulaa}} muita kuin kuninkaita",
+          "missMapLeft": "{exposures, plural, one {vielä # nähty nappula} other {vielä # nähtyä nappulaa}} vähiten nähdyllä linjalla tai rivillä",
+          "insights": "{rounds, plural, one {# kierros} other {# kierrosta}}",
+          "insightsLeft": "{rounds, plural, one {vielä # kierros} other {vielä # kierrosta}}",
+          "notebook": "{rounds, plural, one {# kierros} other {# kierrosta}}"
+        },
+        "bests": {
+          "fig": "Kuva {number} · Ennätykset",
+          "title": "Paras mittauksesi asetuksittain.",
+          "desc": "Ennätykset pidetään asetuksittain, koska 6 nappulaa ja 20 nappulaa ovat eri testejä. Tämän sivun harjoitusmittaukset pidetään erillään peleistä.",
+          "empty": "Paras mittauksesi kullekin asetukselle näkyy ensimmäisen kierroksesi jälkeen.",
+          "setting": "{source, select, calibration {Harjoitus} other {Peli}} · {pieceCount} nappulaa · {studyTime}",
+          "first": "ensimmäinen mittaus",
+          "showAll": "Näytä kaikki {count} asetusta",
+          "showFewer": "Näytä vähemmän",
+          "reading": "{accuracy} % · rakennettu ajassa {time}"
+        },
+        "types": {
+          "fig": "Kuva {number} · Muistaminen nappulatyypeittäin",
+          "title": "Mitkä nappulat lipsuvat.",
+          "need": "Noin {count, plural, one {vielä # kierros} other {vielä # kierrosta}}, kunnes jokin muu nappula kuin kuningas on nähty 20 kertaa.",
+          "needStart": "Muistaminen nappulatyypeittäin näkyy ensimmäisen kierroksesi jälkeen.",
+          "onlyKings": "Tähänastisilla kierroksillasi oli vain kaksi kuningasta, ja muistaminen nappulatyypeittäin tarvitsee enemmän nappuloita.",
+          "thin": "{shown}/20 nähty",
+          "baseline": "vertailukohta",
+          "kings": "Kuninkaat ovat jokaisella kierroksella, joten ne ovat vertailukohta. Muistettu {recalled}/{shown}.",
+          "sampleNote": "Esimerkki: sotilaat ja ratsut lipsuvat ensin."
+        },
+        "insights": {
+          "fig": "Kuva {number} · Havainnot",
+          "title": "Mikä erottuu ja mitä kannattaa kokeilla.",
+          "desc": "Havainto näytetään vasta, kun sen luvut ylittävät vähimmäisotoksen, ja se kertoo luvut, joihin se perustuu.",
+          "sample": "Esimerkki esimerkkipäiväkirjasta: a- ja h-linjoilla meni ohi {times, select, 2 {noin kaksi kertaa niin usein} other {noin {times} kertaa niin usein}} kuin keskilinjoilla d ja e, {edge} % nappuloista vastaan {centre} %.",
+          "sampleList": "Esimerkkihavainto",
+          "sampleNote": "Esimerkkihavainto, ei sinun kierroksistasi.",
+          "list": "Havainnot päiväkirjastasi",
+          "need": "Havainnot lukevat päiväkirjaasi {threshold} kierroksesta alkaen. {count, plural, one {Vielä # kierros} other {Vielä # kierrosta}}.",
+          "none": "Mikään ei vielä erotu. Jatka pelaamista.",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {Sinulta menee ohi {edge, select, 0 {vähemmän kuin 1 %} other {{edge} %}} a- ja h-linjojen {edgeShown} nappulasta eikä yhtään keskilinjojen d ja e {centreShown} nappulasta.} 2 {Sinulta menee a- ja h-linjoilla ohi noin kaksi kertaa niin usein kuin keskilinjoilla d ja e: {edge, select, 0 {vähemmän kuin 1 %} other {{edge} %}} {edgeShown} nappulasta vastaan {centre, select, 0 {vähemmän kuin 1 %} other {{centre} %}} {centreShown} nappulasta.} other {Sinulta menee a- ja h-linjoilla ohi noin {times} kertaa niin usein kuin keskilinjoilla d ja e: {edge, select, 0 {vähemmän kuin 1 %} other {{edge} %}} {edgeShown} nappulasta vastaan {centre, select, 0 {vähemmän kuin 1 %} other {{centre} %}} {centreShown} nappulasta.}}",
+            "weakType": "Muista kuin kuninkaista, jotka olet nähnyt vähintään {minimum} kertaa, {type, select, q {kuningattaret} r {tornit} b {lähetit} n {ratsut} other {sotilaat}} lipsuvat useimmin: muistit {recalled}/{shown}, {percent} %.",
+            "fasterLessAccurate": "Asetuksella {pieceCount} nappulaa, {studyTime}, viimeiset {window} kierrostasi veivät {fasterTime} vähemmän oikeaa nappulaa kohden kuin edelliset {window}, ja tarkkuus laski {fell} prosenttiyksikköä.",
+            "colourGap": "Muistat {weaker, select, w {valkoiset} other {mustat}} nappulat harvemmin kuin {weaker, select, w {mustat} other {valkoiset}}: {weakerPercent} % {weakerShown} nappulasta vastaan {strongerPercent} % {strongerShown} nappulasta, kuninkaita lukuun ottamatta.",
+            "plateau": "Asetuksella {pieceCount} nappulaa, {studyTime}, viimeisten {window} kierroksesi keskiarvo oli {last} % ja edellisten {window} {before} %, ja jänteesi pysyi {span} nappulassa viimeisen peliviikkosi ajan. Yksi nappula lisää voi saada sen liikkeelle."
+          },
+          "actions": {
+            "rig": "Pelaa {pieceCount} nappulaa, {studyTime}",
+            "patterns": "Lue hahmontunnistuksen harjoitukset",
+            "vision": "Lue, miten näet koko laudan"
+          }
+        },
+        "notebook": {
+          "fig": "Kuva {number} · Laboratoriomuistikirja",
+          "title": "Mitä tapahtui ja milloin.",
+          "empty": "Merkintöjä ilmestyy, kun pelaat.",
+          "sampleList": "Esimerkkimerkinnät",
+          "list": "Muistikirjasi, uusin ensin",
+          "new": "Uusi",
+          "newNote": "”Uusi” merkitsee edellisen käyntisi jälkeen tulleet merkinnät.",
+          "showAll": "Näytä kaikki {count} merkintää",
+          "showFewer": "Näytä vähemmän",
+          "day": "Päivä {day}.",
+          "olderBefore": "Ennen {date} tehtyjä merkintöjä ei säilytetä tässä selaimessa.",
+          "older": "Vanhempia merkintöjä ei säilytetä tässä selaimessa.",
+          "entries": {
+            "firstRound": "Ensimmäinen kierros: {accuracy} prosenttia {pieceCount} nappulalla.",
+            "rounds": "Kierros {count, number} pelattu.",
+            "first90": "Ensimmäistä kertaa vähintään {threshold} prosenttia {pieceCount} nappulalla.",
+            "best": "Uusi {source, select, calibration {harjoitusennätys} other {peliennätys}} asetuksella {pieceCount} nappulaa, {studyTime}: {by, select, time {jälleen {accuracy} prosenttia, rakennettu ajassa {solveTime}} other {{accuracy} prosenttia, aiemmin {previous}}}.",
+            "span": "{from, select, 0 {Muistijänne saavutti {to} nappulaa} other {Muistijänne nousi {from} nappulasta {to} nappulaan}}.",
+            "streak": "{forgiven, plural, =0 {{days} päivää putkeen.} one {{days} päivää putkessa, # väliin jäänyt päivä annettu anteeksi.} other {{days} päivää putkessa, # väliin jäänyttä päivää annettu anteeksi.}}",
+            "rungUp": "Askelma ylös: {pieceCount} nappulaa, {studyTime}.",
+            "goalReached": "Tavoite saavutettu: {accuracy} prosenttia vähintään {pieceCount} nappulalla."
+          }
+        },
+        "tools": {
+          "title": "Tallennettu tälle laitteelle",
+          "body": "Ei tiliä eikä palvelinta. Lataa kopio, jos haluat siirtää sen toiseen selaimeen tai pitää sen tallessa.",
+          "download": "Lataa laboratoriopäiväkirjani",
+          "import": "Tuo",
+          "lastBackup": "Vienti aloitettu {date}",
+          "neverBackedUp": "Ei vielä viety",
+          "imported": "{added, plural, =0 {Ei mitään uutta tuotavaa. Nuo kierrokset ovat jo täällä.} one {Tuotiin # kierros.} other {Tuotiin # kierrosta.}}",
+          "skipped": "{count, plural, one {Tiedostossa oli # kierros, jota ei voitu lukea, joten se ohitettiin.} other {Tiedostossa oli # kierrosta, joita ei voitu lukea, joten ne ohitettiin.}}",
+          "importFailed": "Tiedosto ei ole Memory Chessin laboratoriopäiväkirja.",
+          "tooLarge": "Tiedosto on yli 5 Mt, suurempi kuin yksikään laboratoriopäiväkirja, joten mitään ei tuotu.",
+          "overCap": "{count, plural, one {# vanhempi kierros jätettiin} other {# vanhempaa kierrosta jätettiin}} pois, jotta 5 000 kierroksen raja ei ylity.",
+          "summaryIgnored": "Tässä selaimessa oli jo kierroksia, joten vain uudet kierrokset yhdistettiin, ei tiedoston kaikkien aikojen yhteismääriä.",
+          "summaryDropped": "Tiedoston kaikkien aikojen yhteismääriä ei voitu lukea tai ne olivat vanhemmasta versiosta, joten vain sen kierrokset tuotiin.",
+          "safari": "Safarissa yksityinen välilehti ei säilytä tätä päiväkirjaa sulkemisen jälkeen, ja Safari poistaa sivuston tallentamat tiedot noin 7 päivän kuluttua, jos sivustolla ei käydä. Vie kopio, niin se säilyy.",
+          "unavailable": "Ei tallenneta yksityisissä ikkunoissa. Tämä selainikkuna ei säilytä kierroksiasi.",
+          "backup": "Varmuuskopiointi laitteiden välillä (tulossa pian)",
+          "backupNoted": "Laitteiden välistä varmuuskopiointia ei ole vielä rakennettu. Kiitos, kiinnostuksesi on kirjattu.",
+          "card": {
+            "open": "Jaa mittaukseni",
+            "title": "Memory Chess -mittaukseni",
+            "span": "Muistijänne: {pieceCount, plural, one {# nappula} other {# nappulaa}}, vähintään {accuracy} % {count, plural, one {# kierroksella} other {# kierroksella}}",
+            "held": "Muistetut nappulat: viimeaikainen keskiarvo {average}, {count, plural, one {# kierroksesta} other {# kierroksesta}}",
+            "speed": "Nopeus: viimeaikainen keskiarvo {average} nappulaa kohden {source, select, calibration {harjoituksessa} other {peleissä}} asetuksella {pieceCount} nappulaa, {studyTime}, {count, plural, one {# kierroksesta} other {# kierroksesta}}",
+            "site": "thememorychess.com",
+            "copy": "Kopioi mittaukseni",
+            "copied": "Kopioitu. Liitä se minne haluat.",
+            "copyFailed": "Kopiointi ei toiminut tässä. Mittaus on valittuna yllä, joten kopioi se itse."
+          },
+          "nudge": {
+            "title": "Päiväkirjasi asuu tässä selaimessa",
+            "body": "Selaimen tietojen tyhjentäminen poistaa sen. Lisää tämä sivusto kirjanmerkkeihin, jotta palaat samaan selaimeen, ja tallenna kopio yllä olevalla painikkeella ”Lataa laboratoriopäiväkirjani”.",
+            "safari": "iPhonessa ja iPadissa ”Lisää Koti-valikkoon” tallentaa sivuston sovelluksena, jolla on oma päiväkirjansa, eikä Safarin 7 päivän sääntö poista sitä. Se alkaa tyhjänä, joten tuo ladattu kopiosi sinne.",
+            "dismiss": "Sulje"
+          }
+        }
+      },
+      "library": {
+        "title": "Lähdekirjasto.",
+        "lede": "Oppimiskeskus yhdistää lyhyet oppaat harjoituksiin, joten jokainen mittaus johdattaa johonkin, mitä voit harjoitella.",
+        "ref": "Viite {number}",
+        "read": "Lue opas",
+        "vision": {
+          "title": "Laudan hahmotus",
+          "body": "Näe koko lauta kerralla, älä kulma kerrallaan."
+        },
+        "visualization": {
+          "title": "Visualisointi",
+          "body": "Pidä liikkuva asema mielessäsi nappuloiden siirtyessä."
+        },
+        "calculation": {
+          "title": "Laskeminen",
+          "body": "Katso pidemmälle eteenpäin kadottamatta lautaa mielestäsi."
+        },
+        "memory": {
+          "title": "Muisti",
+          "body": "Ryhmittely- ja kuviotekniikoita, jotka nostavat mittauksiasi."
+        },
+        "blindfold": {
+          "title": "Sokkoshakkiharjoittelu",
+          "body": "Nelivaiheinen suunnitelma laudan muistamisesta täysiin sokkopeleihin."
+        },
+        "blundering": "Näin lopetat möhläilyn"
+      },
+      "final": {
+        "title": "Ensimmäinen mittauksesi vie alle minuutin.",
+        "body": "Ei tiliä, ei latausta, ei rekisteröitymistä. Avaa kierros, tutki, rakenna, lue luku. Päätä sitten, haluatko toisen."
+      },
+      "resultCard": {
+        "title": "Laboratoriopäiväkirjasi",
+        "device": "Tallennettu tälle laitteelle",
+        "lines": "Tämä kierros päiväkirjassasi",
+        "unshown": "Laboratoriopäiväkirjaasi ei voitu näyttää tälle kierrokselle.",
+        "newBest": {
+          "up": "Uusi ennätys asetuksella {pieceCount} nappulaa, {studyTime}: {accuracy} %, aiemmin {previous} %",
+          "faster": "Uusi ennätys asetuksella {pieceCount} nappulaa, {studyTime}: jälleen {accuracy} %, {fasterTime} nopeammin",
+          "plain": "Uusi ennätys asetuksella {pieceCount} nappulaa, {studyTime}: {accuracy} %"
+        },
+        "vsRecent": {
+          "above": "{points, plural, one {# prosenttiyksikkö} other {# prosenttiyksikköä}} yli {rounds, plural, one {viimeisen kierroksesi} other {keskiarvosi viimeisillä # kierroksellasi}} tällä asetuksella",
+          "below": "{points, plural, one {# prosenttiyksikkö} other {# prosenttiyksikköä}} alle {rounds, plural, one {viimeisen kierroksesi} other {keskiarvosi viimeisillä # kierroksellasi}} tällä asetuksella",
+          "level": "{rounds, plural, one {Viimeisen kierroksesi tasolla} other {Keskiarvosi tasolla viimeisillä # kierroksellasi}} tällä asetuksella"
+        },
+        "span": "Jänne nousi {pieceCount} nappulaan",
+        "streak": "{current, plural, one {Päivä 1} other {Päivä # putkeen}}{graceUsed, select, true {, armopäivä käytetty} other {}}, {days}/{goal} päivää tällä viikolla",
+        "next": {
+          "label": "Seuraavaksi",
+          "why": {
+            "more": "Vähintään 90 %, joten yksi nappula lisää samalla tutkimisajalla.",
+            "fewer": "Alle 50 %, joten yksi nappula vähemmän samalla tutkimisajalla.",
+            "edgeFiles": "Sinulta menee a- ja h-linjoilla ohi useammin kuin keskilinjoilla.",
+            "weakType": "{type, select, q {Kuningattaret} r {Tornit} b {Lähetit} n {Ratsut} other {Sotilaat}} lipsuvat useimmin: muistit {recalled}/{shown}.",
+            "fasterLessAccurate": "Asetuksella {pieceCount} nappulaa, {studyTime}, nopeuduit oikeaa nappulaa kohden ja tarkkuus laski {fell} prosenttiyksikköä.",
+            "colourGap": "Muistat {weaker, select, w {valkoiset} other {mustat}} nappulat harvemmin: {weakerPercent} % vastaan {strongerPercent} %.",
+            "plateau": "Jänteesi on pysynyt {span} nappulassa."
+          },
+          "play": "Pelaa {pieceCount} nappulaa, {studyTime}",
+          "again": "Pelaa uudelleen {pieceCount} nappulaa, {studyTime}",
+          "patterns": "Lue hahmontunnistuksen harjoitukset",
+          "vision": "Lue, miten näet koko laudan"
+        }
+      },
+      "daily": {
+        "locked": "Olet jo avannut päivän laudan. Yksi yritys päivässä tällä laitteella.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Nollautuu alle minuutissa} one {Nollautuu # min kuluttua} other {Nollautuu # min kuluttua}}} one {Nollautuu # h {minutes} min kuluttua} other {Nollautuu # h {minutes} min kuluttua}}",
+        "seeRecord": "Avaa laboratoriopäiväkirjasi",
+        "chooseRound": "Pelaa toinen kierros"
+      },
+      "review": {
+        "none": "Tällä laitteella ei ole juuri nyt kerrattavaa lautaa.",
+        "capped": "Tämän päivän {cap} kertausta on tehty tällä laitteella.",
+        "cappedNext": "Vielä kerrattavat laudat palaavat huomenna, pisimpään odottaneet ensin.",
+        "schedule": "Laudat, joilla saat alle 80 %, palaavat 1, 3, 7 ja 14 päivää sen jälkeen, kun näit ne ensimmäisen kerran."
+      }
     }
   },
   "game": {
@@ -259,6 +1052,10 @@
         "cta": "Pystytkö parempaan?",
         "text": "{kind, select, daily {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessin päivän laudalla {date}.} review {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessin kertauslaudalla.} other {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessissä.}} Pystytkö parempaan?",
         "alt": "Memory Chessin tuloskortti: {details}."
+      },
+      "savedToast": {
+        "message": "Kierros tallennettu. Päivitetyt tilastosi ovat heti alla.",
+        "action": "Näytä"
       }
     },
     "comparison": {
@@ -586,7 +1383,7 @@
     },
     "context": {
       "span": "Vähintään {accuracy} % {rounds, plural, one {# kierroksella} other {# kierroksella}}, tutkittu {memorizeSeconds} s",
-      "recent": "Viimeisten {rounds, plural, one {# kierroksen} other {# kierroksen}} keskiarvo, kaikki asetukset",
+      "recent": "{rounds, plural, one {Ainoasta kierroksestasi tähän mennessä, kaikki asetukset} other {Viimeisten # kierroksen keskiarvo, kaikki asetukset}}",
       "setting": "{source, select, calibration {Harjoituksen kierrokset} other {Pelien kierrokset}}, {pieceCount} nappulaa, {memorizeSeconds} s, {rounds, plural, one {# kierroksesta} other {# kierroksesta}}",
       "longest": "Pisin putki: {days, plural, one {# päivä} other {# päivää}}",
       "daily": "{status, select, played {Pelattu tänään} unfinished {Avattu tänään} other {Avoinna tänään}}, pisin putki {longest, plural, one {# päivä} other {# päivää}}",

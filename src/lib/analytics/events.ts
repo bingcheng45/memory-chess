@@ -1,4 +1,5 @@
 import type { DAILY_BOARD, LeaderboardDifficulty } from "@/types/leaderboard";
+import type { SearchOutcome } from "@/lib/seo/learn/search";
 import type { ShareNetwork } from "@/lib/shareIntents";
 
 /** Where a round was started from. `link` is a round link that names no known source. */
@@ -114,11 +115,22 @@ export type FunnelEvent =
       name: "lab_dashboard_share";
       params: ShareParams;
     }
+  /** One settled Learn search. Never the words typed, only how many characters, as the privacy page promises. */
+  | {
+      name: "learn_search";
+      params: { query_length: number; results: number; top: string; outcome: SearchOutcome; surface: LearnSearchSurface };
+    }
+  | {
+      name: "learn_search_select";
+      params: { slug: string; rank: number; matched_question: boolean; surface: LearnSearchSurface };
+    }
   /** The same for a round's result card on /game. Never the round's score or position. */
   | {
       name: "result_share";
       params: ShareParams;
     };
+
+export type LearnSearchSurface = "hub" | "server";
 
 export type ShareMethod = "native" | "download" | "copy_image" | "copy" | "post";
 

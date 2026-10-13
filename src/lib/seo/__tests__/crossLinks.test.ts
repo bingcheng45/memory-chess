@@ -4,7 +4,11 @@ import { EN_LEARN_PAGES, LEARN_SLUGS } from "@/lib/seo/learn";
 const TITLE_SUFFIX = " | Memory Chess";
 const MAX_TITLE_WITH_SUFFIX = 64;
 
-const guide = (slug: string) => EN_LEARN_PAGES.find((page) => page.slug === slug)!;
+const guide = (slug: string) => EN_LEARN_PAGES.find((page) => page.meta.slug === slug)!;
+const guideLinks = (slug: string) =>
+  guide(slug).end.flatMap((block) => (block.kind === "furtherReading" ? block.items.map((item) => item.slug) : []));
+const articleCtas = (page: (typeof EN_LEARN_PAGES)[number]) =>
+  page.end.flatMap((block) => (block.kind === "cta" && block.target.kind === "article" ? [block.target] : []));
 const article = (slug: string) => ARTICLES.find((entry) => entry.slug === slug)!;
 
 describe("links from guides to other guides", () => {
@@ -14,23 +18,25 @@ describe("links from guides to other guides", () => {
     ["how-to-get-better-at-chess-for-beginners", "20-minute-daily-chess-study-plan"],
     ["chess-pattern-recognition-drills", "how-many-chess-puzzles-a-day"],
   ])("%s links %s", (source, target) => {
-    expect(guide(source).relatedArticles.map((entry) => entry.slug)).toContain(target);
+    expect(guideLinks(source)).toContain(target);
   });
 });
 
 describe("links between guides and articles", () => {
-  it("sends each guide's readers on to its article with a descriptive anchor", () => {
-    const furtherReading = Object.fromEntries(
-      EN_LEARN_PAGES.filter((page) => page.furtherReading).map((page) => [page.slug, page.furtherReading]),
+  it("sends each guide's readers on to its article with a call to action named for it", () => {
+    const ctas = Object.fromEntries(
+      EN_LEARN_PAGES.filter((page) => articleCtas(page).length > 0).map((page) => [page.meta.slug, articleCtas(page)]),
     );
 
-    expect(furtherReading).toEqual({
-      "chess-memory-training": [{ slug: "adriaan-de-groot", anchor: "de Groot's 1944 memory test" }],
-      "chess-pattern-recognition-drills": [
-        { slug: "magnus-carlsen", anchor: "how Carlsen names a game from one position" },
-      ],
+    expect(ctas).toEqual({
       "blindfold-chess-training-for-beginners": [
-        { slug: "judit-polgar", anchor: "how Judit Polgár played blindfold at seven" },
+        { kind: "article", slug: "judit-polgar", label: "How Judit Polgár played blindfold chess at age seven" },
+      ],
+      "chess-memory-training": [
+        { kind: "article", slug: "adriaan-de-groot", label: "Adriaan de Groot's 1944 test of chess memory, by the numbers" },
+      ],
+      "chess-pattern-recognition-drills": [
+        { kind: "article", slug: "magnus-carlsen", label: "How Magnus Carlsen names a famous game from one position" },
       ],
     });
   });
@@ -51,7 +57,7 @@ describe("links between guides and articles", () => {
 
   it("points every cross-link at a page that exists", () => {
     const guideTargets = ARTICLES.flatMap((entry) => entry.relatedGuides ?? []).map((link) => link.slug);
-    const articleTargets = EN_LEARN_PAGES.flatMap((page) => page.furtherReading ?? []).map((link) => link.slug);
+    const articleTargets = EN_LEARN_PAGES.flatMap(articleCtas).map((target) => target.slug);
 
     expect(guideTargets.filter((slug) => !LEARN_SLUGS.includes(slug))).toEqual([]);
     expect(articleTargets.filter((slug) => !ARTICLE_SLUGS.includes(slug))).toEqual([]);
@@ -66,7 +72,7 @@ describe("trimmed search titles", () => {
     ["blindfold-chess-training-for-beginners", "Blindfold Chess Training: A 4-Stage Beginner Plan"],
     ["chess-visualization-exercises", "Chess Visualization Training: 2 Exercises"],
   ])("the %s guide is titled %p", (slug, title) => {
-    expect(guide(slug).title).toBe(title);
+    expect(guide(slug).meta.title).toBe(title);
     expect((title + TITLE_SUFFIX).length).toBeLessThanOrEqual(MAX_TITLE_WITH_SUFFIX);
   });
 

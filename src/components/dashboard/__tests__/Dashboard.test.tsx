@@ -117,6 +117,16 @@ describe("Dashboard", () => {
     expect(within(document.querySelector('[data-tile="piecesHeld"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
   });
 
+  it("holds the stale note's row open before the record loads, so the note fills it instead of arriving", () => {
+    labData = { ...persona("stale"), storage: "loading", records: [], today: "" };
+    const { rerender } = renderWithIntl(<Dashboard />);
+    expect(document.querySelector("header .lab-dash-notes")?.textContent).toBe("");
+
+    labData = persona("stale");
+    rerender(<Dashboard />);
+    expect(document.querySelector("header .lab-dash-notes")?.textContent).toBe("Last played 20 days ago. Figures marked so are from then.");
+  });
+
   it.each([
     ["en", "Longest streak: 3 days"],
     ["cs", "Nejdelší série: 3 dny"],

@@ -2,6 +2,7 @@ import { createTranslator } from "next-intl";
 import { captionWithLink } from "@/components/share/shareLink";
 import { rebuildOrder, resultCaption, resultCardCopy, roundShareOf, type ResultTranslate } from "@/components/game/roundShare";
 import { MAX_PLACEMENTS } from "@/lib/lab/placements";
+import { parseResult, resultCode } from "@/lib/share/shareCode";
 import { labPositionFromFen, roundReducer, IDLE_ROUND, type RoundAction, type RoundState } from "@/lib/round/round";
 import type { SetBoard } from "@/lib/types/game";
 import en from "../../../../messages/en.json";
@@ -53,6 +54,27 @@ describe("roundShareOf", () => {
       board: undefined,
     });
     expect(share.kind === "game" && [share.board.target.d5, share.board.placed.a1]).toEqual([BLACK_QUEEN, WHITE_ROOK]);
+  });
+
+  it("caps a rebuild over an hour at an hour, so its share link still opens", () => {
+    const target = labPositionFromFen("4k3/8/8/3q4/8/8/4P3/4K3");
+    const actions = [
+      { type: "start", config: { pieceCount: 4, studyMs: 10_000, source: "game_form" }, target, now: 0 },
+      { type: "studyEnded", now: 8_400 },
+      { type: "place", piece: WHITE_KING, square: "e1", now: 10_000 },
+      { type: "place", piece: WHITE_ROOK, square: "a1", now: 5_000_000 },
+      { type: "submit", now: 7_208_400 },
+    ] as const;
+    const round = actions.reduce<RoundState>((state, action) => roundReducer(state, action), IDLE_ROUND);
+    if (round.phase !== "scored") throw new Error("round did not score");
+    const share = roundShareOf(round, STANDING);
+
+    expect(share.rebuildSeconds).toBe(3600);
+    expect(share.kind === "game" && share.board.order).toEqual([
+      { square: "e1", seconds: 1.6 },
+      { square: "a1", seconds: 3600 },
+    ]);
+    expect(parseResult(resultCode(share))).toEqual(share);
   });
 
   it("drops a win streak under two", () => {

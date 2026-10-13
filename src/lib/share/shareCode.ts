@@ -124,7 +124,9 @@ const KIND_LETTER = { game: "g", daily: "d", review: "v" } as const satisfies Re
 const MIN_PIECES = 2;
 const MAX_PIECES = 32;
 const MAX_STUDY_TENTHS = MEMORIZE_SECONDS_RANGE.max * 10;
-const MAX_REBUILD_TENTHS = 36000;
+/** The longest rebuild a code carries; a longer one is shared as this long. */
+export const MAX_REBUILD_SECONDS = 3600;
+const MAX_REBUILD_TENTHS = MAX_REBUILD_SECONDS * 10;
 const MAX_STREAK = 99999;
 const MIN_SHOWN_STREAK = 2;
 const RANK = /^[pnbrqkPNBRQK1-8]{1,8}$/;

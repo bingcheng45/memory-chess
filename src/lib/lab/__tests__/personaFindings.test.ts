@@ -3,6 +3,9 @@ import { IDBFactory } from "fake-indexeddb";
 import { deriveLab } from "@/lib/lab/metrics";
 import { exportPersona, memoryLabStore, PERSONA_TODAY, type PersonaName } from "@/lib/lab/personas";
 
+// The heavy persona's thousands of rounds take up to 4 s alone through fake IndexedDB, past 5 s under a parallel run.
+jest.setTimeout(20_000);
+
 /**
  * Expected values were counted from the exported persona files by a separate script that shares no code with the
  * app: thirtyDays misses 103 of 151 pieces on the a and h files and 17 of 138 on d and e, and 14 of 26 queens; colourSkew misses 7 of 120 white and 36 of 120 black pieces; plateau averages

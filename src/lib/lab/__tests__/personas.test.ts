@@ -6,6 +6,9 @@ import { positionId } from "@/lib/lab/record";
 import { PLACEMENT_KEEP } from "@/lib/lab/storage";
 import { parseImport } from "@/lib/lab/transfer";
 
+// The heavy persona's thousands of rounds take up to 4 s alone through fake IndexedDB, past 5 s under a parallel run.
+jest.setTimeout(20_000);
+
 const NOW = Date.UTC(2026, 9, 8, 12);
 
 const exportOf = (name: PersonaName) => exportPersona(name, memoryLabStore(new IDBFactory()));

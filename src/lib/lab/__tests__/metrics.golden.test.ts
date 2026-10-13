@@ -6,6 +6,9 @@ import { DAILY_PERSONAS, exportPersona, memoryLabStore, PERSONA_NAMES, PERSONA_T
 import { hasFigure, type ReadinessState } from "@/lib/lab/readiness";
 import golden from "./__golden__/derive-personas.json";
 
+// The heavy persona's thousands of rounds take up to 4 s alone through fake IndexedDB, past 5 s under a parallel run.
+jest.setTimeout(20_000);
+
 /**
  * The golden file holds what the five derive functions this engine replaced
  * returned for each persona at c489d37. The engine splits each old result

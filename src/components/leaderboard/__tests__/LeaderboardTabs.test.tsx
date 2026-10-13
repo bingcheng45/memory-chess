@@ -1,7 +1,7 @@
 import { act, render, screen, fireEvent, waitFor } from "@/test-utils/intl";
 import LeaderboardTabsFromSearchParams, { LeaderboardTabs, type LeaderboardBoards } from "@/components/leaderboard/LeaderboardTabs";
 import type { CountryCode } from "@/lib/leaderboard/countries";
-import type { LeaderboardEntry } from "@/types/leaderboard";
+import { LEADERBOARD_UNAVAILABLE, type LeaderboardEntry } from "@/types/leaderboard";
 import { splitClientMessages } from "@/lib/articles/messageScope";
 import type { AbstractIntlMessages } from "next-intl";
 import enMessages from "../../../../messages/en.json";
@@ -43,7 +43,7 @@ type ReadBody = { data?: LeaderboardEntry[]; error?: string };
 
 const notYet = () => Promise.resolve({ json: () => Promise.resolve<ReadBody>({ error: "Invalid difficulty level" }) });
 const offline = () =>
-  Promise.resolve({ json: () => Promise.resolve<ReadBody>({ data: [], error: "Database connection unavailable. Please check the application configuration." }) });
+  Promise.resolve({ json: () => Promise.resolve<ReadBody>({ data: [], error: LEADERBOARD_UNAVAILABLE }) });
 const mediumRow: LeaderboardEntry = { ...dailyRow("Mo Medium", "2026-10-13"), difficulty: "medium", daily_day: null };
 
 const readByDay = (input: string): Promise<{ json: () => Promise<ReadBody> }> => {

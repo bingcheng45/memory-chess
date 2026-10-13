@@ -3,6 +3,20 @@ import { useDailyRows } from "@/components/daily/useDailyRows";
 
 const ROW = { id: "3c3c3c3c-0000-4000-8000-000000000003", player_name: "Poteto", difficulty: "daily", daily_day: "2026-10-13" };
 
+describe("today's rows when the database is down", () => {
+  it("reads a 503 with the API's message as a failed read", async () => {
+    global.fetch = jest.fn(async () => ({
+      ok: false,
+      status: 503,
+      json: async () => ({ data: [], error: "The leaderboard is unavailable. Please try again shortly." }),
+    })) as unknown as typeof fetch;
+
+    const { result } = renderHook(() => useDailyRows("2026-10-13", 0));
+
+    await waitFor(() => expect(result.current).toEqual({ state: "failed" }));
+  });
+});
+
 describe("today's rows when the device's clock is off", () => {
   it("asks for the server's today when the server refuses the device's day", async () => {
     const asked: string[] = [];

@@ -7,10 +7,10 @@ import { joinableDays, readableDays, readBoard } from '@/lib/leaderboard/board';
 import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { utcDayOf } from '@/lib/lab/daily';
 import { dailySettingOf } from '@/lib/daily/schedule';
-import { DAILY_BOARD, type LeaderboardBoard } from '@/types/leaderboard';
+import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardBoard } from '@/types/leaderboard';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
 
-const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
+const SUBMISSION_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
 
 /** A round takes longer than ten seconds to play, so more scores than this from one address are a script. */
 const SCORES_PER_MINUTE = 5;
@@ -63,37 +63,20 @@ export async function GET(request: NextRequest) {
     );
   }
   
+  // getLeaderboard logs the cause of its own failures; a reader only learns the board is unavailable.
+  const unavailable = () => NextResponse.json({ data: [], error: LEADERBOARD_UNAVAILABLE }, { status: 503 });
   try {
-    // First check if Supabase is configured properly
     const connectionStatus = await checkSupabaseConnection();
     if (!connectionStatus.connected) {
       console.warn('Supabase connection issue:', connectionStatus.error);
-      // Return empty data with a connection error message
-      return NextResponse.json({ 
-        data: [], 
-        error: 'Database connection unavailable. Please check the application configuration.'
-      });
+      return unavailable();
     }
 
     const result = await getLeaderboard(board);
-    
-    if (result.error) {
-      // Return a more detailed error message but still with empty data
-      return NextResponse.json({ 
-        data: [], 
-        error: result.error 
-      });
-    }
-    
-    return NextResponse.json({ data: result.data });
+    return result.error ? unavailable() : NextResponse.json({ data: result.data });
   } catch (err) {
     console.error('Unexpected API error:', err);
-    return NextResponse.json(
-      { 
-        data: [],
-        error: err instanceof Error ? err.message : 'An unexpected error occurred' 
-      }
-    );
+    return unavailable();
   }
 }
 
@@ -169,7 +152,7 @@ export async function POST(request: NextRequest) {
     const connectionStatus = await checkSupabaseConnection();
     if (!connectionStatus.connected) {
       console.error('Leaderboard submission unavailable:', connectionStatus.error);
-      return NextResponse.json({ error: LEADERBOARD_UNAVAILABLE }, { status: 503 });
+      return NextResponse.json({ error: SUBMISSION_UNAVAILABLE }, { status: 503 });
     }
     
     const result = await submitLeaderboardEntry({
@@ -191,7 +174,7 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: result.message }, { status: 400 });
       case 'unavailable':
         console.error('Leaderboard submission unavailable:', result.cause);
-        return NextResponse.json({ error: LEADERBOARD_UNAVAILABLE }, { status: 503 });
+        return NextResponse.json({ error: SUBMISSION_UNAVAILABLE }, { status: 503 });
       case 'failed':
         console.error('Leaderboard submission failed:', result.cause);
         return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });

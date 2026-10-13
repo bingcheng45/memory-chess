@@ -3,7 +3,7 @@
  * Loads /dashboard on a 4x slower CPU, so the record arrives from IndexedDB after the first paint, and records every
  * layout shift until the page settles, naming each node that moved with its box before and after. Fonts are left out:
  * each width loads once to warm the cache, and only the second load is measured. Runs for a new visitor and the
- * thirtyDays and twoRounds players, in English and Russian, at WIDTHS. Reports CLS as the largest session window
+ * twoRounds, thirtyDays, stale and heavy players, in English and Russian, at WIDTHS. Reports CLS as the largest session window
  * (sessionWindowCls in cls.mjs) and fails when it is over MAX_CLS.
  *
  *   npm run lab:personas && npm run lab:cls-dashboard -- --base http://localhost:4531 --out <dir> [--only <case>]
@@ -19,7 +19,7 @@ const WIDTHS = [1440, 1024, 768, 390];
 const SETTLE_MS = 4000;
 const CASE_ENV = "LAB_CLS_DASHBOARD_CASE";
 const RESULT_FILE = "cls.json";
-const CASES = ["newVisitor", "thirtyDays", "twoRounds"].flatMap((persona) => [
+const CASES = ["newVisitor", "twoRounds", "thirtyDays", "stale", "heavy"].flatMap((persona) => [
   { name: `${persona}-en`, persona, path: "/dashboard" },
   { name: `${persona}-ru`, persona, path: "/ru/dashboard" },
 ]);

@@ -371,6 +371,12 @@
       "memorizeTime": "记忆时间",
       "solutionTime": "还原用时",
       "date": "日期"
+    },
+    "daily": {
+      "tab": "每日",
+      "setting": "{pieces, plural, other {# 个棋子}} · 记忆 {seconds} 秒",
+      "resetsAtUtc": "UTC {utc} 重置",
+      "resetsAt": "UTC {utc} 重置（你的时间 {local}），{timeLeft}后"
     }
   },
   "country": {
@@ -784,5 +790,119 @@
     },
     "play": "开始一局",
     "home": "返回首页"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} 分钟",
+    "hoursLeft": "{hours} 小时 {minutes} 分钟",
+    "underMinute": "不到 1 分钟",
+    "ready": "今日棋局 · {pieceCount} 子 · {seconds} 秒 · 剩余 {timeLeft}",
+    "next": "{timeLeft}后开放下一局",
+    "pending": "今日棋局",
+    "navReady": "{label}，今日每日棋局已就绪",
+    "cardTitle": "今日每日棋局已就绪",
+    "cardSetting": "{pieceCount} 子，记忆时间 {seconds} 秒。",
+    "cardNote": "今天所有人玩同一局，你只有一次机会。",
+    "play": "开始今日棋局"
+  },
+  "daily": {
+    "meta": {
+      "title": "每日记忆棋盘：人人同一局面",
+      "description": "每天一张国际象棋记忆棋盘，所有玩家的局面都相同。记一遍，再还原出来，加入今天的前 10 名。新棋盘在 UTC 午夜开启。",
+      "socialTitle": "Memory Chess 每日棋盘",
+      "socialDescription": "今天所有人的局面都一样。记住它，还原它，看看你排第几。"
+    },
+    "round": {
+      "locked": "你已经打开过今天的棋盘了。每天只能玩一次，这样才公平。",
+      "seeBoard": "查看今天的棋盘",
+      "chooseRound": "再玩一轮",
+      "join": "加入今天的棋盘"
+    },
+    "page": {
+      "fig": "每日棋盘 · {date}",
+      "title": "同一张棋盘，人人相同",
+      "lede": "每天，所有玩家都会拿到同一个局面。记住它，凭记忆还原，再加入当天的棋盘，看看你的排名。",
+      "resets": "新棋盘在 UTC 午夜开启",
+      "open": "今天的棋盘已开放",
+      "pieces": "{count, plural, other {# 个棋子}}",
+      "seconds": "记忆 {count} 秒",
+      "oneTry": "仅限一次",
+      "hidden": "开始前不公开",
+      "play": "玩今天的棋盘",
+      "streak": "{count, plural, other {连续每日挑战：# 天}}",
+      "unfinishedTitle": "今天的机会已用掉",
+      "unfinished": "你打开了今天的棋盘，但没有看到结果就离开了。每天只能玩一次，这样棋盘才公平，请明天再来。",
+      "result": "你的结果",
+      "score": "{pieceCount} 子中答对 {correct} 子",
+      "rebuild": "{seconds} 秒还原",
+      "gridAria": "你的格子：{correct} 个正确，{wrong} 个放错棋子，{missed} 个遗漏，{extra} 个多放",
+      "key": {
+        "c": "正确",
+        "w": "放错棋子",
+        "m": "遗漏",
+        "x": "多放"
+      },
+      "shareLabel": "分享结果，不泄露棋盘",
+      "shareText": "Memory Chess 每日棋盘 {day}\n{row} {correct}/{pieceCount}",
+      "copy": "复制结果",
+      "copied": "已复制",
+      "copyFailed": "剪贴板被拒绝访问。请选中下面的文字并手动复制。",
+      "joined": "你已加入今天的棋盘",
+      "rank": "今天第 {rank} 名，共 {total} 人",
+      "lateNote": "你玩了昨天的棋盘，但还没有加入。",
+      "lateJoined": "你已加入那一天的棋盘"
+    },
+    "join": {
+      "title": "加入今天的棋盘",
+      "lateTitle": "加入那一天的棋盘",
+      "name": "名字",
+      "nameHint": "4 到 16 个字符，会和你的成绩一起显示。",
+      "nameShort": "太短了，至少需要 4 个字符。",
+      "nameLong": "太长了，最多 16 个字符。",
+      "country": "国家/地区",
+      "chooseCountry": "选择国家/地区",
+      "from": {
+        "saved": "已保存在此设备上。",
+        "connection": "根据你的网络连接得出。",
+        "language": "根据你的浏览器语言得出。",
+        "none": "请选择你代表的国家/地区。"
+      },
+      "change": "更改",
+      "submit": "加入棋盘",
+      "submitting": "加入中…",
+      "public": "你的名字、国家/地区、成绩和评分会公开显示。",
+      "failed": "无法加入棋盘，请重试。",
+      "noneRight": "没有一个棋子答对，所以这次不计入排名。下一张棋盘在 UTC 午夜开启。"
+    },
+    "board": {
+      "title": "今日前 10 名",
+      "rank": "排名",
+      "player": "玩家",
+      "right": "答对",
+      "wrong": "答错",
+      "time": "用时（秒）",
+      "rating": "{rating} Elo",
+      "you": "你",
+      "empty": "今天还没有人加入棋盘。快来玩，做第一个吧。",
+      "error": "无法加载今天的棋盘，请稍后重试。",
+      "joinToRank": "加入棋盘后，你的排名会显示在这里。",
+      "order": "先按答对的棋子数排名，再按答错最少，最后按还原最快。",
+      "all": "查看所有棋盘"
+    },
+    "reference": {
+      "title": "每日棋盘如何运作",
+      "shared": "每天 UTC 午夜会生成一个新局面，全世界的玩家拿到的都是同一个。局面来自由日期生成的种子，所以每个人的棋盘都一样，也没人会拿到更简单的版本。棋盘是共享的，因此当天所有玩家的成绩含义相同。",
+      "oneTry": "你只有一次机会。打开棋盘就算用掉这次机会，所以在记忆阶段离开再回来，也不会让你再看一遍。你的设备会记住这次挑战，直到下一张棋盘开启。",
+      "grid": "还原局面后，你可以看到哪些格子答对了，哪些格子放错了棋子，哪些被遗漏，以及哪里多放了棋子。分享行里每个棋子对应一格，按结果排序，不包含棋子所在的位置，所以发出去也不会把棋盘泄露给还没玩的人。",
+      "join": "要加入棋盘，请填写 4 到 16 个字符的名字，并选择你代表的国家/地区。国家/地区会先采用你之前的选择，其次根据网络连接，再其次根据浏览器语言，你随时可以更改。你加入时的评分会显示在名字旁边。",
+      "ranking": "排名先看正确放置的棋子数，再看放错的棋子数（越少越好），最后看还原速度（越快越好）。所有人的记忆时间相同，所以在每日棋盘上，记忆时间不会决定两位玩家的名次。",
+      "arcTitle": "一周内的棋子数与记忆时间",
+      "arcIntro": "难度设置遵循一周的节奏。周一从轻松开始，这样周末休息不会中断连续记录；负荷在一周里逐渐增加；周六是只能看几秒的闪现棋盘；周日是最难的棋盘。在每天的范围内，由日期选出一种设置，所有玩家相同。",
+      "day": "星期",
+      "pieces": "棋子数",
+      "seconds": "记忆时间",
+      "range": "{min} 至 {max}",
+      "secondsRange": "{min} 至 {max} 秒",
+      "secondsExact": "{count} 秒"
+    }
   }
 }

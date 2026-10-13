@@ -2,7 +2,7 @@ import type { SetBoard } from "@/lib/types/game";
 import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
 import { seededRandom } from "@/lib/utils/seededRandom";
 import { dailySeed, dailySettingOf } from "@/lib/daily/schedule";
-import { DAILY_OPENED_KEY, dailyBoardOf, readDailyOpened, utcDayOf } from "./daily";
+import { DAILY_OPENED_EVENT, DAILY_OPENED_KEY, dailyBoardOf, readDailyOpened, utcDayOf } from "./daily";
 import type { RoundRecord } from "./record";
 import { labStore } from "./storage";
 
@@ -36,4 +36,5 @@ export function markDailyOpened(day: string): void {
   } catch {
     // Without storage the record alone limits the day to one result.
   }
+  window.dispatchEvent(new Event(DAILY_OPENED_EVENT));
 }

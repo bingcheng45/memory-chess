@@ -265,7 +265,7 @@ describe("GameResult", () => {
     });
 
     it("fires once when the server accepts the score", async () => {
-      global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200 });
+      global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });
 
       submitScore();
 
@@ -333,6 +333,19 @@ describe("GameResult", () => {
       });
     });
 
+    it("links the leaderboard to the name the board stored, without the spaces typed around it", async () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      fireEvent.click(screen.getByRole("button", { name: "Submit to leaderboard" }));
+      fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "  Poteto  " } });
+      fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
+
+      const dialog = await screen.findByRole("dialog");
+      await waitFor(() => expect(within(dialog).getByRole("heading", { name: "Score submitted!" })).toBeInTheDocument());
+
+      expect(within(dialog).getByRole("link", { name: "View leaderboard" }).getAttribute("href")).toMatch(/[?&]player=Poteto&/);
+    });
+
     it("still says the score was submitted when the reply carries no entry it can keep", async () => {
       window.localStorage.clear();
       global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });
@@ -392,6 +405,27 @@ describe("GameResult", () => {
 
       expect(screen.queryByRole("button", { name: "Submit to leaderboard" })).not.toBeInTheDocument();
       expect(screen.getByRole("button", { name: "Try again" })).toBeInTheDocument();
+    } finally {
+      mockGameState = baseGameState;
+    }
+  });
+
+  it("sends a daily round to join its own day's board on /daily where the round is recorded, and a review or an unrecorded round nowhere", () => {
+    const joinLinks = (board: SetBoard, recorded = true) => {
+      mockGameState = { ...baseGameState, board };
+      if (recorded) Object.defineProperty(window, "indexedDB", { value: {}, configurable: true });
+      else Reflect.deleteProperty(window, "indexedDB");
+      const { unmount } = render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      const hrefs = screen.queryAllByRole("link", { name: "Join today's board" }).map((link) => link.getAttribute("href"));
+      unmount();
+      Reflect.deleteProperty(window, "indexedDB");
+      return hrefs;
+    };
+
+    try {
+      expect(joinLinks({ kind: "daily", day: "2026-10-13", fen: baseGameState.originalPosition })).toEqual(["/daily"]);
+      expect(joinLinks({ kind: "daily", day: "2026-10-13", fen: baseGameState.originalPosition }, false)).toEqual([]);
+      expect(joinLinks({ kind: "review", fen: baseGameState.originalPosition, reviewOf: "first-round", firstDay: "2026-10-06", step: 1 })).toEqual([]);
     } finally {
       mockGameState = baseGameState;
     }

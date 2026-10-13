@@ -3,10 +3,29 @@ import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboa
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 import { isSkillRating, MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
-import { readBoard } from '@/lib/leaderboard/board';
-import { isLeaderboardDifficulty } from '@/types/leaderboard';
+import { joinableDays, readableDays, readBoard } from '@/lib/leaderboard/board';
+import { playerNameProblem } from '@/lib/leaderboard/playerName';
+import { utcDayOf } from '@/lib/lab/daily';
+import { dailySettingOf } from '@/lib/daily/schedule';
+import { DAILY_BOARD, type LeaderboardBoard } from '@/types/leaderboard';
 
 const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
+
+/** The board is public in the repo, so a script could post a perfect row; no person rebuilds a piece faster than this. */
+const DAILY_SECONDS_PER_PIECE = 0.25;
+
+function dailyRowMismatch(board: LeaderboardBoard, pieceCount: unknown, memorizeTime: unknown, solutionTime: unknown, country: unknown): string | null {
+  if (board.difficulty !== DAILY_BOARD) return null;
+  const code = parseCountryCode(country);
+  if (code === null || code === WORLD_CODE) return 'A daily row needs a country';
+  const setting = dailySettingOf(board.daily_day);
+  if (pieceCount !== setting.pieceCount || memorizeTime !== setting.memorizeTime) {
+    return `The daily board for ${board.daily_day} is ${setting.pieceCount} pieces and ${setting.memorizeTime} seconds`;
+  }
+  const floor = setting.pieceCount * DAILY_SECONDS_PER_PIECE;
+  if (typeof solutionTime !== 'number' || solutionTime < floor) return `A daily rebuild of ${setting.pieceCount} pieces takes at least ${floor} seconds`;
+  return null;
+}
 
 function parseSkillRating(value: unknown): number | null {
   if (value === undefined) return START_RATING;
@@ -16,9 +35,10 @@ function parseSkillRating(value: unknown): number | null {
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const difficulty = searchParams.get('difficulty') || 'medium';
-  
-  // Validate difficulty
-  if (!isLeaderboardDifficulty(difficulty)) {
+  const now = Date.now();
+  const board = readBoard(difficulty, difficulty === DAILY_BOARD ? (searchParams.get('daily_day') ?? utcDayOf(now)) : null, readableDays(now));
+
+  if (board === null) {
     return NextResponse.json(
       { error: 'Invalid difficulty level' },
       { status: 400 }
@@ -37,7 +57,7 @@ export async function GET(request: NextRequest) {
       });
     }
 
-    const result = await getLeaderboard(difficulty);
+    const result = await getLeaderboard(board);
     
     if (result.error) {
       // Return a more detailed error message but still with empty data
@@ -74,17 +94,25 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Validate player name length
-    if (typeof player_name === 'string' && (player_name.length < 4 || player_name.length > 16)) {
+    if (typeof player_name !== 'string') {
+      return NextResponse.json({ error: 'Player name must be text' }, { status: 400 });
+    }
+    const playerName = player_name.trim();
+    if (playerNameProblem(playerName) !== null) {
       return NextResponse.json(
         { error: 'Player name must be between 4 and 16 characters' },
         { status: 400 }
       );
     }
     
-    const board = readBoard(difficulty, daily_day, Date.now());
+    const board = readBoard(difficulty, daily_day, joinableDays(Date.now()));
     if (board === null) {
       return NextResponse.json({ error: 'Invalid difficulty or daily day' }, { status: 400 });
+    }
+
+    const mismatch = dailyRowMismatch(board, piece_count, memorize_time, solution_time, country_code);
+    if (mismatch !== null) {
+      return NextResponse.json({ error: mismatch }, { status: 400 });
     }
 
     const parsedSkillRating = parseSkillRating(skill_rating);
@@ -122,7 +150,7 @@ export async function POST(request: NextRequest) {
     }
     
     const result = await submitLeaderboardEntry({
-      player_name,
+      player_name: playerName,
       ...board,
       piece_count,
       correct_pieces,

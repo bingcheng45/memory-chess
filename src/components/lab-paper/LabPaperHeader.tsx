@@ -6,6 +6,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import LanguageSettings from "@/components/ui/LanguageSettings";
 import SiteLink from "@/components/ui/SiteLink";
 import { QUICK_START_HREF } from "@/components/home/links";
+import { useDailyState } from "@/hooks/useDailyState";
 import { HeaderStreakChip } from "./HeaderStreakChip";
 import "./lab-paper.css";
 
@@ -103,17 +104,43 @@ function SectionLinks({ links, withHints, onPick }: { links: readonly PageSectio
   ));
 }
 
+type SiteLinkItem = (typeof SITE_LINKS)[number] | (typeof MENU_ONLY_LINKS)[number];
+
+interface SiteLinkWithDailyDotProps {
+  readonly link: SiteLinkItem;
+  readonly dailyReady: boolean;
+  readonly className?: string;
+  readonly onClick?: () => void;
+  readonly "aria-current"?: "page";
+}
+
+function SiteLinkWithDailyDot({ link, dailyReady, ...props }: SiteLinkWithDailyDotProps) {
+  const nav = useTranslations("common.nav");
+  const entry = useTranslations("dailyEntry");
+  const label = nav(link.key);
+  if (link.href !== "/dashboard" || !dailyReady) return <SiteLink href={link.href} label={label} {...props} />;
+  return (
+    <Link href={link.href} {...props} aria-label={entry("navReady", { label })}>
+      {label}
+      <span className="lab-daily-dot" aria-hidden="true" />
+    </Link>
+  );
+}
+
 function isCurrent(pathname: string, href: string): boolean {
   return pathname === href || pathname.startsWith(`${href}/`);
 }
 
 export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: LabPaperHeaderProps) {
   const nav = useTranslations("common.nav");
+  const entry = useTranslations("dailyEntry");
   const pathname = usePathname();
+  const dailyReady = useDailyState()?.status === "ready";
   const pageMenu = useDisclosure();
   const menu = useDisclosure();
   const pagePanelId = useId();
   const menuPanelId = useId();
+  const dailyHintId = useId();
   const currentOf = (href: string) => (isCurrent(pathname, href) ? ("page" as const) : undefined);
 
   return (
@@ -125,11 +152,11 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
           </Link>
           <nav className="lab-nav" aria-label="Main">
             {SITE_LINKS.map((link) => (
-              <SiteLink
+              <SiteLinkWithDailyDot
                 key={link.href}
+                link={link}
+                dailyReady={dailyReady}
                 className={`lab-nav-link${"extra" in link ? " lab-nav-extra" : ""}`}
-                href={link.href}
-                label={nav(link.key)}
                 aria-current={currentOf(link.href)}
               />
             ))}
@@ -173,11 +200,20 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
               aria-controls={menuPanelId}
               onClick={menu.toggle}
               aria-label={nav("menu")}
+              aria-describedby={dailyReady ? dailyHintId : undefined}
             >
               <svg className="lab-menu-icon" viewBox="0 0 16 16" width="16" height="16" aria-hidden="true" focusable="false">
                 <path d="M2 4h12M2 8h12M2 12h12" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" />
               </svg>
               <span className="lab-menu-label">{nav("menu")}</span>
+              {dailyReady && (
+                <>
+                  <span className="lab-daily-dot" aria-hidden="true" />
+                  <span id={dailyHintId} className="sr-only">
+                    {entry("navReady", { label: nav("dashboard") })}
+                  </span>
+                </>
+              )}
             </button>
           </div>
         </div>
@@ -196,7 +232,7 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
               <ul>
                 {[...SITE_LINKS, ...MENU_ONLY_LINKS].map((link) => (
                   <li key={link.href}>
-                    <SiteLink href={link.href} label={nav(link.key)} onClick={menu.close} aria-current={currentOf(link.href)} />
+                    <SiteLinkWithDailyDot link={link} dailyReady={dailyReady} onClick={menu.close} aria-current={currentOf(link.href)} />
                   </li>
                 ))}
               </ul>

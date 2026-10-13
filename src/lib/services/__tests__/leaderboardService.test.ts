@@ -208,6 +208,25 @@ describe("submitLeaderboardEntry", () => {
     expect(warn).not.toHaveBeenCalled();
   });
 
+  it("counts a name of three emoji as three characters, as Postgres does, and refuses it before touching the database", async () => {
+    const result = await submitLeaderboardEntry({ ...entry, player_name: "\u{1F600}\u{1F600}\u{1F600}" });
+
+    expect(result).toEqual({
+      status: "invalid",
+      message: "Player name must be between 4 and 16 characters",
+    });
+    expect(mockInsert).not.toHaveBeenCalled();
+  });
+
+  it("counts a name of nine emoji as nine characters and inserts it", async () => {
+    mockSingle.mockResolvedValueOnce({ data: { id: 1 }, error: null });
+
+    const result = await submitLeaderboardEntry({ ...entry, player_name: "\u{1F600}".repeat(9) });
+
+    expect(result).toEqual({ status: "stored", entry: { id: 1 } });
+    expect(mockInsert).toHaveBeenCalledWith(expect.objectContaining({ player_name: "\u{1F600}".repeat(9) }));
+  });
+
   it("rejects a name outside the allowed length before touching the database", async () => {
     const result = await submitLeaderboardEntry({ ...entry, player_name: "Po" });
 

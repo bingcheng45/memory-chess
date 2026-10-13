@@ -44,6 +44,28 @@ describe("parseStanding", () => {
     });
   });
 
+  it("reads a daily standing with the one UTC day it ranks, 2026-10-13 apart from 2026-10-12", () => {
+    expect(
+      [
+        { difficulty: "daily", daily_day: "2026-10-13", country: null, rank: 3, total: 4 },
+        { difficulty: "daily", daily_day: "2026-10-12", country: "SG", rank: 1, total: 2 },
+      ].map(parseStanding),
+    ).toEqual([
+      { difficulty: "daily", daily_day: "2026-10-13", country: null, rank: 3, total: 4 },
+      { difficulty: "daily", daily_day: "2026-10-12", country: "SG", rank: 1, total: 2 },
+    ]);
+  });
+
+  it("refuses a daily standing without a real day, and a board standing that names one", () => {
+    expect(
+      [
+        { difficulty: "daily", country: null, rank: 3, total: 4 },
+        { difficulty: "daily", daily_day: "2026-02-30", country: null, rank: 3, total: 4 },
+        { difficulty: "medium", daily_day: "2026-10-13", country: null, rank: 3, total: 4 },
+      ].map(parseStanding),
+    ).toEqual([null, null, null]);
+  });
+
   it("refuses a reply that cannot be a rank", () => {
     expect(
       [

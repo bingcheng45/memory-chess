@@ -371,6 +371,12 @@
       "memorizeTime": "Tempo di memorizzazione",
       "solutionTime": "Tempo di risoluzione",
       "date": "Data"
+    },
+    "daily": {
+      "tab": "Giornaliera",
+      "setting": "{pieces, plural, one {# pezzo} many {# pezzi} other {# pezzi}} · {seconds} s per studiare",
+      "resetsAtUtc": "Si azzera alle {utc} UTC",
+      "resetsAt": "Si azzera alle {utc} UTC (le {local} da te), tra {timeLeft}"
     }
   },
   "country": {
@@ -784,5 +790,119 @@
     },
     "play": "Gioca una partita",
     "home": "Vai alla home page"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} h {minutes} min",
+    "underMinute": "< 1 min",
+    "ready": "Scacchiera di oggi · {pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}} · {seconds} s · mancano {timeLeft}",
+    "next": "Prossima scacchiera tra {timeLeft}",
+    "pending": "Scacchiera di oggi",
+    "navReady": "{label}, la scacchiera del giorno è pronta",
+    "cardTitle": "La scacchiera del giorno è pronta",
+    "cardSetting": "{pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}} e {seconds, plural, one {# secondo} many {# secondi} other {# secondi}} per memorizzare.",
+    "cardNote": "Oggi tutti giocano la stessa scacchiera e hai un solo tentativo.",
+    "play": "Gioca la scacchiera di oggi"
+  },
+  "daily": {
+    "meta": {
+      "title": "Scacchiera quotidiana di memoria: una posizione per tutti",
+      "description": "Una scacchiera di memoria al giorno, la stessa posizione per tutti i giocatori. Studiala una volta, ricostruiscila ed entra nella top 10 di oggi. Una nuova scacchiera si apre a mezzanotte UTC.",
+      "socialTitle": "La scacchiera del giorno di Memory Chess",
+      "socialDescription": "Oggi tutti ricevono la stessa posizione. Studiala, ricostruiscila e scopri la tua posizione in classifica."
+    },
+    "round": {
+      "locked": "Hai già aperto la scacchiera di oggi. Un tentativo al giorno mantiene il gioco equo.",
+      "seeBoard": "Vedi la scacchiera di oggi",
+      "chooseRound": "Gioca un altro round",
+      "join": "Partecipa alla scacchiera di oggi"
+    },
+    "page": {
+      "fig": "Scacchiera del giorno · {date}",
+      "title": "Una scacchiera, uguale per tutti",
+      "lede": "Ogni giorno c'è una posizione per tutti i giocatori. Studiala una volta, ricostruiscila a memoria e poi partecipa alla scacchiera del giorno per vedere come te la cavi.",
+      "resets": "Nuova scacchiera a mezzanotte UTC",
+      "open": "La scacchiera di oggi è aperta",
+      "pieces": "{count, plural, one {# pezzo} many {# pezzi} other {# pezzi}}",
+      "seconds": "{count} s per studiare",
+      "oneTry": "Un solo tentativo",
+      "hidden": "Nascosta finché non giochi",
+      "play": "Gioca la scacchiera di oggi",
+      "streak": "{count, plural, one {Serie giornaliera: # giorno} many {Serie giornaliera: # giorni} other {Serie giornaliera: # giorni}}",
+      "unfinishedTitle": "Il tentativo di oggi è stato usato",
+      "unfinished": "Hai aperto la scacchiera di oggi e sei uscito prima del risultato. Un tentativo al giorno mantiene il gioco equo, quindi torna per la prossima.",
+      "result": "Il tuo risultato",
+      "score": "{correct} su {pieceCount} corretti",
+      "rebuild": "ricostruita in {seconds} s",
+      "gridAria": "Le tue case: {correct} corrette, {wrong} con pezzo sbagliato, {missed} mancate, {extra} in più",
+      "key": {
+        "c": "Corretto",
+        "w": "Pezzo sbagliato",
+        "m": "Mancato",
+        "x": "In più"
+      },
+      "shareLabel": "Condividi senza svelare la scacchiera",
+      "shareText": "Scacchiera del giorno Memory Chess {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Copia il risultato",
+      "copied": "Copiato",
+      "copyFailed": "Gli appunti hanno rifiutato la copia. Seleziona il testo qui sotto e copialo.",
+      "joined": "Sei nella scacchiera di oggi",
+      "rank": "Posizione {rank} su {total} oggi",
+      "lateNote": "Hai giocato la scacchiera di ieri, ma il tuo risultato non è ancora in classifica.",
+      "lateJoined": "Sei nella scacchiera di quel giorno"
+    },
+    "join": {
+      "title": "Partecipa alla scacchiera di oggi",
+      "lateTitle": "Unisciti alla scacchiera di quel giorno",
+      "name": "Nome",
+      "nameHint": "Da 4 a 16 caratteri, mostrato insieme al tuo punteggio.",
+      "nameShort": "Troppo corto. Usa almeno 4 caratteri.",
+      "nameLong": "Troppo lungo. Usa al massimo 16 caratteri.",
+      "country": "Paese",
+      "chooseCountry": "Scegli un paese",
+      "from": {
+        "saved": "Salvato su questo dispositivo.",
+        "connection": "Dalla tua connessione.",
+        "language": "Dalla lingua del tuo browser.",
+        "none": "Scegli il paese per cui giochi."
+      },
+      "change": "Cambia",
+      "submit": "Partecipa",
+      "submitting": "Iscrizione…",
+      "public": "Il tuo nome, paese, punteggio e rating sono mostrati pubblicamente.",
+      "failed": "Impossibile partecipare alla scacchiera. Riprova.",
+      "noneRight": "Nessun pezzo era corretto, quindi questo tentativo non ha nulla da classificare. La prossima scacchiera si apre a mezzanotte UTC."
+    },
+    "board": {
+      "title": "La top 10 di oggi",
+      "rank": "Posizione",
+      "player": "Giocatore",
+      "right": "Corretti",
+      "wrong": "Sbagliati",
+      "time": "Tempo (s)",
+      "rating": "{rating} Elo",
+      "you": "Tu",
+      "empty": "Nessuno ha ancora partecipato alla scacchiera di oggi. Giocala e sii il primo.",
+      "error": "Non è stato possibile caricare la scacchiera di oggi. Riprova tra poco.",
+      "joinToRank": "Partecipa alla scacchiera per vedere qui la tua posizione.",
+      "order": "In ordine di pezzi corretti, poi meno errori, poi ricostruzione più veloce.",
+      "all": "Vedi tutte le scacchiere"
+    },
+    "reference": {
+      "title": "Come funziona la scacchiera del giorno",
+      "shared": "Ogni giorno a mezzanotte UTC viene estratta una nuova posizione, e tutti i giocatori del mondo ricevono la stessa. La posizione nasce da un seme creato a partire dalla data, quindi la scacchiera è la stessa per tutti e nessuno ottiene una versione più facile. Poiché la scacchiera è condivisa, un punteggio ha lo stesso significato per tutti quelli che l'hanno giocata quel giorno.",
+      "oneTry": "Hai un solo tentativo. Aprire la scacchiera conta come il tentativo, quindi se esci durante la fase di studio e torni, non te la mostriamo una seconda volta. Il tuo dispositivo ricorda il tentativo fino all'apertura della scacchiera successiva.",
+      "grid": "Dopo aver ricostruito la posizione vedi quali case hai azzeccato, quali avevano il pezzo sbagliato, quali hai mancato e dove hai messo un pezzo in più. La riga da condividere mostra un quadratino per pezzo, ordinato per esito e senza indicare dove si trovava, quindi pubblicarla non svela la scacchiera a chi non ha ancora giocato.",
+      "join": "Per partecipare, scegli un nome da 4 a 16 caratteri e il paese per cui giochi. Il paese parte da quello scelto in precedenza, poi dalla tua connessione, poi dalla lingua del browser, e puoi sempre cambiarlo. Il tuo rating nel momento in cui partecipi appare accanto al tuo nome.",
+      "ranking": "Le righe sono ordinate per numero di pezzi posizionati correttamente, poi per il minor numero di pezzi sbagliati, poi per la ricostruzione più veloce. Tutti studiano per lo stesso numero di secondi, quindi il tempo di studio non decide mai tra due giocatori nella scacchiera del giorno.",
+      "arcTitle": "Pezzi e tempo di studio nel corso della settimana",
+      "arcIntro": "L'impostazione segue un arco settimanale. Il lunedì parte con calma, così una pausa nel fine settimana non interrompe una serie, il carico cresce durante la settimana, il sabato è una scacchiera lampo che vedi solo per pochi secondi e la domenica è la scacchiera più difficile di tutte. Dentro l'intervallo di ogni giorno, la data sceglie un'impostazione, la stessa per tutti i giocatori.",
+      "day": "Giorno",
+      "pieces": "Pezzi",
+      "seconds": "Tempo di studio",
+      "range": "Da {min} a {max}",
+      "secondsRange": "Da {min} a {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

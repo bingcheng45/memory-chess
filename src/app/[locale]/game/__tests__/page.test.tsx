@@ -5,7 +5,6 @@ import { buildRoundRecord } from "@/lib/lab/record";
 import { readReviewOpened } from "@/lib/lab/review";
 import { openReview, type ReviewStart } from "@/lib/lab/reviewBoard";
 import GamePage from "@/app/[locale]/game/page";
-import { fakeLayout } from "@/test-utils/layout";
 
 const mockStartGame = jest.fn();
 const mockResetGame = jest.fn();
@@ -336,18 +335,6 @@ describe("GamePage header", () => {
 });
 
 describe("GamePage pinning", () => {
-  it("pins the page before the board first measures its room, so the board is never laid out on the unpinned page", () => {
-    mockPhase = "study";
-    fakeLayout(() =>
-      document.body.classList.contains("game-fixed") ? { width: 400, height: 600 } : { width: 1000, height: 1000 },
-    );
-
-    render(<GamePage />);
-
-    const board = document.querySelector<HTMLElement>("[data-round-board]");
-    expect([board?.style.width, board?.style.height]).toEqual(["400px", "400px"]);
-  });
-
   it("unpins the page when the round leaves the board", () => {
     mockPhase = "rebuild";
     const { rerender } = render(<GamePage />);

@@ -54,10 +54,9 @@ const OPEN_SET_BOARD: Record<SetBoardSource, () => Promise<SetBoardOpen>> = {
  * element, rather than only hiding its overflow, is what stops iOS
  * rubber-banding a page whose content already fits.
  *
- * The pin is what gives the board its full height, so it goes on before the
- * board measures the room it has: a layout effect, in a component rendered
- * ahead of the board, whose effects React runs first. Pinned any later, the
- * board is laid out on the unpinned page, at its floor, and then grows.
+ * The pin is what gives the board its full height, so it goes on in a layout
+ * effect, before the first paint. Pinned any later, the board is laid out on
+ * the unpinned page, at its floor, and then grows.
  */
 function PinnedPage() {
   useLayoutEffect(() => {

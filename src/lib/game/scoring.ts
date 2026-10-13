@@ -36,15 +36,20 @@ export function countWrong({ total, correct, extra }: { total: number; correct: 
   return total - correct + extra;
 }
 
+/** 0 to 100: the share of the pieces placed right, less a penalty for each piece placed beyond the count. */
+export function accuracyOf({ total, correct, extra }: { total: number; correct: number; extra: number }): number {
+  const base = total === 0 ? 0 : Math.round((correct / total) * 100);
+  return Math.max(0, base - extra * EXTRA_PIECE_PENALTY);
+}
+
 export function scorePlacement(target: Placement, placed: Placement): PlacementScore {
   const targetSquares = Object.keys(target);
   const total = targetSquares.length;
   const correct = targetSquares.filter((square) => placed[square] === target[square]).length;
   const extra = Math.max(0, Object.keys(placed).length - total);
-  const base = total === 0 ? 0 : Math.round((correct / total) * 100);
 
   return {
-    accuracy: Math.max(0, base - extra * EXTRA_PIECE_PENALTY),
+    accuracy: accuracyOf({ total, correct, extra }),
     correct,
     total,
     extra,

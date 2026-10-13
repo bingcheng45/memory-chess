@@ -41,10 +41,16 @@ const ROWS_BY_DAY: Record<string, LeaderboardEntry[]> = {
 
 type ReadBody = { data?: LeaderboardEntry[]; error?: string };
 
-const fetchMock = jest.fn((input: string): Promise<{ json: () => Promise<ReadBody> }> => {
+const notYet = () => Promise.resolve({ json: () => Promise.resolve<ReadBody>({ error: "Invalid difficulty level" }) });
+const offline = () =>
+  Promise.resolve({ json: () => Promise.resolve<ReadBody>({ data: [], error: "Database connection unavailable. Please check the application configuration." }) });
+const mediumRow: LeaderboardEntry = { ...dailyRow("Mo Medium", "2026-10-13"), difficulty: "medium", daily_day: null };
+
+const readByDay = (input: string): Promise<{ json: () => Promise<ReadBody> }> => {
   const day = new URL(input, "http://localhost").searchParams.get("daily_day") ?? "";
   return Promise.resolve({ json: () => Promise.resolve({ data: ROWS_BY_DAY[day] ?? [] }) });
-});
+};
+const fetchMock = jest.fn(readByDay);
 
 const SystemDateTimeFormat = Intl.DateTimeFormat;
 
@@ -57,7 +63,7 @@ function emulateTimeZone(timeZone: string) {
 
 beforeEach(() => {
   searchParams = new URLSearchParams();
-  fetchMock.mockClear();
+  fetchMock.mockReset().mockImplementation(readByDay);
   global.fetch = fetchMock as unknown as typeof fetch;
 });
 
@@ -155,28 +161,94 @@ describe("the Daily tab", () => {
     expect(screen.getByText("Resets at 00:00 UTC (00:00 your time), in 23 h 59 min")).toBeInTheDocument();
   });
 
-  it("reads the day again on the next tick when the server has not reached the viewer's day yet", async () => {
-    const notYet = () => Promise.resolve({ json: () => Promise.resolve({ error: "Invalid difficulty level" }) });
-    fetchMock.mockImplementationOnce(notYet).mockImplementationOnce(notYet);
+  it("keeps the new day's board on screen while a read the server is not ready for is retried a few seconds later", async () => {
+    fetchMock.mockImplementationOnce(notYet);
     await renderDailyAt("2026-10-14T00:00:05Z", "UTC");
 
-    expect(screen.getByText("Error loading leaderboard: Invalid difficulty level")).toBeInTheDocument();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(screen.getByText("Be the First Champion!")).toBeInTheDocument();
+    expect(screen.queryByText(/Invalid difficulty level/)).not.toBeInTheDocument();
 
     await act(async () => {
-      jest.advanceTimersByTime(60_000);
+      jest.advanceTimersByTime(5_000);
     });
 
+    expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=daily&daily_day=2026-10-14", expect.anything());
     expect(screen.getByText("Be the First Champion!")).toBeInTheDocument();
   });
 
+  it("shows the unavailable state, not the server's message, only once the day's reads have failed for over a minute", async () => {
+    fetchMock.mockImplementation(notYet);
+    await renderDailyAt("2026-10-14T00:00:05Z", "UTC");
+
+    await act(async () => {
+      jest.advanceTimersByTime(55_000);
+    });
+    expect(screen.queryByText("Leaderboard Temporarily Unavailable")).not.toBeInTheDocument();
+
+    await act(async () => {
+      jest.advanceTimersByTime(10_000);
+    });
+    expect(screen.getByText("Leaderboard Temporarily Unavailable")).toBeInTheDocument();
+    expect(screen.queryByText(/Invalid difficulty level/)).not.toBeInTheDocument();
+  });
+
   it("shows the unavailable state when the daily read has no database", async () => {
-    const offline = () =>
-      Promise.resolve({ json: () => Promise.resolve({ data: [], error: "Database connection unavailable. Please check the application configuration." }) });
-    fetchMock.mockImplementationOnce(offline).mockImplementationOnce(offline);
+    fetchMock.mockImplementation(offline);
     await renderDailyAt("2026-10-14T10:00:00Z", "UTC");
 
+    await act(async () => {
+      jest.advanceTimersByTime(65_000);
+    });
+
     expect(screen.getByText("Leaderboard Temporarily Unavailable")).toBeInTheDocument();
+  });
+
+  it("does not show yesterday's rows under today's reset line before today's read returns", async () => {
+    fetchMock.mockImplementation(() => new Promise(() => {}));
+    emulateTimeZone("UTC");
+    jest.useFakeTimers({ now: new Date("2026-10-14T00:00:05Z") });
+    render(<LeaderboardTabs boards={{ ...boards, daily: { data: ROWS_BY_DAY["2026-10-13"], day: "2026-10-13" } }} initialTab="daily" />, {
+      messages: pageMessages,
+    });
+    await act(async () => {});
+
+    expect(screen.getByText("Resets at 00:00 UTC (00:00 your time), in 23 h 59 min")).toBeInTheDocument();
+    expect(screen.queryByText("Ada Today")).not.toBeInTheDocument();
+  });
+
+  it("stops retrying the daily read once the viewer leaves the Daily tab", async () => {
+    fetchMock.mockImplementation(notYet);
+    await renderDailyAt("2026-10-14T00:00:05Z", "UTC");
+
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Medium" }));
+    });
+    await act(async () => {
+      jest.advanceTimersByTime(120_000);
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("leaves Medium untouched when a slow daily read lands after the viewer switched to it", async () => {
+    let land: (body: ReadBody) => void = () => {};
+    fetchMock.mockImplementationOnce(() => new Promise((resolve) => (land = (body) => resolve({ json: () => Promise.resolve(body) }))));
+    emulateTimeZone("UTC");
+    jest.useFakeTimers({ now: new Date("2026-10-13T10:00:00Z") });
+    render(<LeaderboardTabs boards={{ ...boards, medium: { data: [mediumRow] } }} initialTab="daily" />, { messages: pageMessages });
+    await act(async () => {});
+
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Medium" }));
+    });
+    await act(async () => {
+      land({ data: ROWS_BY_DAY["2026-10-13"] });
+    });
+
+    expect(screen.getByText("Mo Medium")).toBeInTheDocument();
+    expect(screen.queryByText("Ada Today")).not.toBeInTheDocument();
   });
 
   it("points the empty daily board at /daily rather than a /game preset", async () => {

@@ -12,8 +12,11 @@ const mockAppend = jest.mocked(appendGoogleSheetRow);
 
 const validBody = { name: "Verify Run", email: "verify@example.com", type: "feedback", message: "verification probe, please ignore" };
 
-const post = (body: string) =>
-  POST(new Request("http://localhost/api/contact", { method: "POST", headers: { "Content-Type": "application/json" }, body }));
+let nextAddress = 0;
+const freshAddress = () => `192.0.2.${(nextAddress += 1)}`;
+
+const post = (body: string, address = freshAddress()) =>
+  POST(new Request("http://localhost/api/contact", { method: "POST", headers: { "Content-Type": "application/json", "x-forwarded-for": address }, body }));
 
 describe("POST /api/contact", () => {
   let consoleError: jest.SpyInstance;
@@ -35,6 +38,31 @@ describe("POST /api/contact", () => {
       row: [expect.any(String), "Verify Run", "verify@example.com", "feedback", "verification probe, please ignore"],
       valueInputOption: "USER_ENTERED",
     });
+  });
+
+  it("writes a business inquiry with a 100-character name and a 5000-character message", async () => {
+    const [name, message] = ["n".repeat(100), "m".repeat(5000)];
+    const response = await post(JSON.stringify({ ...validBody, type: "business", name, message }));
+
+    expect(response.status).toBe(200);
+    expect(mockAppend).toHaveBeenCalledWith(expect.objectContaining({ row: [expect.any(String), name, "verify@example.com", "business", message] }));
+  });
+
+  it("takes five messages in ten minutes from one address and refuses the sixth with a Retry-After", async () => {
+    const address = freshAddress();
+    const statuses = [];
+    for (let sent = 0; sent < 5; sent += 1) statuses.push((await post(JSON.stringify(validBody), address)).status);
+    const refused = await post(JSON.stringify(validBody), address);
+    const other = await post(JSON.stringify(validBody));
+
+    expect(statuses).toEqual([200, 200, 200, 200, 200]);
+    expect([refused.status, refused.headers.get("Retry-After"), await refused.json(), other.status]).toEqual([
+      429,
+      "600",
+      { error: "Failed to send message", reason: "unavailable", details: "Messages can't be sent right now. Please try again later." },
+      200,
+    ]);
+    expect(mockAppend).toHaveBeenCalledTimes(6);
   });
 
   it("keeps a visitor's text that would start a spreadsheet formula as plain text", async () => {
@@ -82,6 +110,10 @@ describe("POST /api/contact", () => {
     ["a bad email", JSON.stringify({ ...validBody, email: "not-an-email" })],
     ["no inquiry type", JSON.stringify({ ...validBody, type: "" })],
     ["a short message", JSON.stringify({ ...validBody, message: "too short" })],
+    ["an inquiry type the form does not offer", JSON.stringify({ ...validBody, type: "=HYPERLINK(\"https://example.com\")" })],
+    ["a name over 100 characters", JSON.stringify({ ...validBody, name: "n".repeat(101) })],
+    ["an email over 254 characters", JSON.stringify({ ...validBody, email: `${"e".repeat(243)}@example.com` })],
+    ["a message over 5000 characters", JSON.stringify({ ...validBody, message: "m".repeat(5001) })],
   ])("refuses %s without writing a row", async (_case, body) => {
     const response = await post(body);
 

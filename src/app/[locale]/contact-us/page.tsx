@@ -6,7 +6,7 @@ import { z } from 'zod';
 import { useForm, ControllerRenderProps } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
-import { isContactFailure } from '@/lib/contact';
+import { CONTACT_MAX_LENGTH, CONTACT_TYPES, isContactFailure } from '@/lib/contact';
 import {
   Form,
   FormControl,
@@ -134,7 +134,7 @@ export default function ContactUs() {
                   <FormLabel>{t("name")}</FormLabel>
                   <FormDescription className="lab-hint">{t("hints.name")}</FormDescription>
                   <FormControl>
-                    <input className="lab-input" autoComplete="name" placeholder={t("namePlaceholder")} {...field} />
+                    <input className="lab-input" autoComplete="name" maxLength={CONTACT_MAX_LENGTH.name} placeholder={t("namePlaceholder")} {...field} />
                   </FormControl>
                   <FormMessage className="lab-field-error" />
                 </FormItem>
@@ -154,6 +154,7 @@ export default function ContactUs() {
                       type="email"
                       autoComplete="email"
                       spellCheck={false}
+                      maxLength={CONTACT_MAX_LENGTH.email}
                       placeholder={t("emailPlaceholder")}
                       {...field}
                     />
@@ -173,10 +174,9 @@ export default function ContactUs() {
                   <FormControl>
                     <select className="lab-input lab-select" {...field}>
                       <option value="" disabled>{t("inquiryPlaceholder")}</option>
-                      <option value="feedback">{t("types.feedback")}</option>
-                      <option value="feature">{t("types.featureRequest")}</option>
-                      <option value="inquiry">{t("types.general")}</option>
-                      <option value="business">{t("types.business")}</option>
+                      {Object.entries(CONTACT_TYPES).map(([value, label]) => (
+                        <option key={value} value={value}>{t(`types.${label}`)}</option>
+                      ))}
                     </select>
                   </FormControl>
                   <FormMessage className="lab-field-error" />
@@ -192,7 +192,7 @@ export default function ContactUs() {
                   <FormLabel>{t("message")}</FormLabel>
                   <FormDescription className="lab-hint">{t("hints.message")}</FormDescription>
                   <FormControl>
-                    <textarea className="lab-input lab-textarea" rows={6} placeholder={t("messagePlaceholder")} {...field} />
+                    <textarea className="lab-input lab-textarea" rows={6} maxLength={CONTACT_MAX_LENGTH.message} placeholder={t("messagePlaceholder")} {...field} />
                   </FormControl>
                   <FormMessage className="lab-field-error" />
                 </FormItem>

@@ -12,7 +12,7 @@ import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
 import { round, sessionWindowCls } from "./cls.mjs";
-import { argsOf, loadPersona, PERSONA_ENV, runPersona, sized } from "./drive.mjs";
+import { argsOf, blockAds, loadPersona, PERSONA_ENV, runPersona, sized } from "./drive.mjs";
 
 const MAX_CLS = 0.02;
 const WIDTHS = [1440, 1024, 768, 390];
@@ -44,6 +44,7 @@ new PerformanceObserver((list) => {
 
 export default async function measure(page, { baseUrl, evidenceDir }) {
   const { path } = JSON.parse(process.env[CASE_ENV]);
+  await blockAds(page);
   await loadPersona(page, baseUrl, process.env[PERSONA_ENV]);
   await page.send("Page.addScriptToEvaluateOnNewDocument", { source: OBSERVE });
   await page.send("Emulation.setCPUThrottlingRate", { rate: 4 });

@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Chess pattern recognition drills should start with four patterns, the knight fork, back-rank mate, bishop pin and smothered mate, each learned as squares plus one condition. Set the shape up at a board, clear it and rebuild it from memory. Then add one black piece that breaks it, watch the tactic fail, and look for the shape in your own games.",
+    quickAnswer: "Start chess pattern recognition drills with four patterns, the knight fork, back-rank mate, bishop pin and smothered mate, each a shape plus one condition. Set up the shape on a board, clear it and rebuild it from memory. Then add one black piece that breaks the condition, watch the tactic fail, and look for the shape in your own games.",
     takeaways: [
       "A knight fork on c7 is three squares, e8, a8 and c7, plus one condition, that nothing black can take on c7.",
       "Rebuild each shape from an empty board until you can place it without the table, then look for it in your own games.",
@@ -181,8 +181,17 @@ const guide: LearnDocument = {
             "Clear the board completely and set the shape up again from memory. Check it against the table. A piece on the wrong square counts as wrong, the same rule Memory Chess uses.",
             "Shift the whole shape one file to the right: king f8, rook b8, knight e5. The fork square is now d7. Play Nd7+ and confirm the knight hits both, then say why aloud. Nothing black guards d7.",
             "Break the condition. Put a black bishop on c8 and play Nd7+ again. Bxd7 takes the knight, so the fork fails. That bishop is the piece to look for in a game.",
-            "Steps 3 and 4 use the fork. For the other three patterns, skip the shift and add one black piece or pawn that breaks the condition. Back-rank mate: a black rook on a8, so Re8+ is met by Rxe8. Smothered mate: a black queen on d7 guarding f7, so Nf7+ is met by Qxf7. Bishop pin: a black pawn on d7, so the c6 knight can move again, for example to e5.",
+            "For the other three patterns, skip the shift. Add the black piece or pawn listed below that breaks the condition, play the tactic and watch it fail.",
             "Drill one pattern per session. Once all four rebuild cleanly, open your last three games and look for each shape, even where it never happened. A knight two jumps from a fork square is the shape in its early form.",
+          ],
+        },
+        {
+          kind: "list",
+          ordered: false,
+          items: [
+            "Back-rank mate: a black rook on a8, so Re8+ is met by Rxe8.",
+            "Smothered mate: a black queen on d7 guarding f7, so Nf7+ is met by Qxf7.",
+            "Bishop pin: a black pawn on d7, so the c6 knight can move again, for example to e5.",
           ],
         },
         {

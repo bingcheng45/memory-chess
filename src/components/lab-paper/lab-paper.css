@@ -118,14 +118,11 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-menu a { display: block; padding: 10px 0; border-bottom: 1px solid var(--lp-line); font: 500 16px/1.4 var(--lp-ui); color: var(--lp-ink); text-decoration: none; }
 .lab-paper .lab-menu a[aria-current="page"] { color: var(--lp-accent); }
 .lab-paper .lab-menu-tools { display: flex; align-items: center; gap: 8px; margin-top: 16px; }
-@media (max-width: 1080px) { .lab-paper .lab-nav-extra { display: none; } .lab-paper .lab-dropdown { left: auto; right: 0; } }
-@media (max-width: 860px) {
-  .lab-paper .lab-nav, .lab-paper .lab-header-tools .lab-lang { display: none; }
-  .lab-paper .lab-menu-btn { display: inline-flex; }
-  .lab-paper .lab-header-row { gap: 12px; }
-}
+/* Above phones, each locale's long label, About link and nav fold at the widths in lab-header-fit.css. */
 .lab-paper .lab-menu-icon { display: none; }
 @media (max-width: 480px) {
+  .lab-paper .lab-nav, .lab-paper .lab-header-tools .lab-lang { display: none; }
+  .lab-paper .lab-menu-btn { display: inline-flex; }
   .lab-paper .lab-play-long { display: none; }
   .lab-paper .lab-play-short { display: inline; }
   /* Room for the streak chip beside Play: the menu folds to its icon and the row's spacing tightens. */
@@ -139,7 +136,12 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
   .lab-paper .lab-menu-label { display: none; }
 }
 /* The narrowest phones keep the chip and the menu, whose list opens with Play. */
-@media (max-width: 359px) { .lab-paper .lab-header-tools .lab-btn-primary { display: none; } }
+@media (max-width: 359px) {
+  .lab-paper .lab-header-tools .lab-btn-primary { display: none; }
+  /* Room for a long streak chip beside the game's sound toggle. */
+  .lab-paper .lab-wordmark { font-size: 16px; }
+  .lab-paper .lab-streak-chip { padding: 0 6px; }
+}
 
 /* footer */
 .lab-paper .lab-footer { padding: 64px 0 32px; background: var(--lp-surface-2); border-top: 1px solid var(--lp-line); }

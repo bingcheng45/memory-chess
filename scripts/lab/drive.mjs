@@ -230,6 +230,35 @@ export function runPersona(name, file, { base, out }, script = import.meta.url) 
   });
 }
 
+/** Refuses the ad and consent requests, which can hold a page's load event past the harness's 20 s timeout. */
+export async function blockAds(page) {
+  await page.send("Network.enable");
+  await page.send("Network.setBlockedURLs", { urls: ["*doubleclick.net*", "*googlesyndication.com*", "*adtrafficquality.google*", "*google.com/recaptcha*", "*fundingchoicesmessages.google.com*"] });
+}
+
+/**
+ * Runs each `{ name, persona, testCase }` through runPersona, `concurrency` at a time, with its testCase as JSON in
+ * `caseEnv`, and returns each with its run. A failed run is tried once more: with several Chromes on one machine a
+ * load can miss the harness's 20 s timeout.
+ */
+export async function runPersonaPool(runs, { args, script, caseEnv, concurrency }) {
+  const attempt = ({ name, persona, testCase }) => {
+    process.env[caseEnv] = JSON.stringify(testCase);
+    return runPersona(name, join(args.personas, `${persona}.json`), args, script);
+  };
+  const results = [];
+  let next = 0;
+  const worker = async () => {
+    while (next < runs.length) {
+      const index = next++;
+      const first = await attempt(runs[index]);
+      results[index] = { ...runs[index], run: first.ok ? first : await attempt(runs[index]) };
+    }
+  };
+  await Promise.all(Array.from({ length: concurrency }, worker));
+  return results;
+}
+
 function differences(baseline, snapshot, personas) {
   const keys = (a, b) => [...new Set([...Object.keys(a ?? {}), ...Object.keys(b ?? {})])];
   return personas.flatMap((persona) =>

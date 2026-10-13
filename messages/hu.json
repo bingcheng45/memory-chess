@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "A mai top 10",
+      "playedLike": "A mai tábla {rating} erősségűnek bizonyult",
+      "playedLikeNote": "A mai játékosok eredményeiből becsülve.",
       "rank": "Helyezés",
       "player": "Játékos",
       "right": "Helyes",

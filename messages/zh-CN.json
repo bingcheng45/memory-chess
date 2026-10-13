@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "今日前 10 名",
+      "playedLike": "今天的棋盘难度相当于 {rating}",
+      "playedLikeNote": "根据今天玩家的成绩估算。",
       "rank": "排名",
       "player": "玩家",
       "right": "答对",

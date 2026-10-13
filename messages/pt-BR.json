@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "Top 10 de hoje",
+      "playedLike": "O tabuleiro de hoje jogou como {rating}",
+      "playedLikeNote": "Estimado a partir dos jogadores de hoje.",
       "rank": "Posição",
       "player": "Jogador",
       "right": "Corretas",

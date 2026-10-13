@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "Dagens topp 10",
+      "playedLike": "Dagens bräde spelade som {rating}",
+      "playedLikeNote": "Uppskattat utifrån dagens spelare.",
       "rank": "Plats",
       "player": "Spelare",
       "right": "Rätt",

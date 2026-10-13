@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "Le top 10 du jour",
+      "playedLike": "Le plateau du jour a joué comme {rating}",
+      "playedLikeNote": "Estimation tirée des joueurs du jour.",
       "rank": "Rang",
       "player": "Joueur",
       "right": "Correctes",

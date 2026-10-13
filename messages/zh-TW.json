@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "今日前 10 名",
+      "playedLike": "今天的棋盤難度相當於 {rating}",
+      "playedLikeNote": "根據今天玩家的成績估算。",
       "rank": "名次",
       "player": "玩家",
       "right": "答對",

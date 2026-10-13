@@ -60,7 +60,9 @@ function Row({ entry, rank, you }: { entry: LeaderboardEntry; rank: number; you:
 
 export function DailyTopTen({ rows, joined, played }: DailyTopTenProps) {
   const t = useTranslations("daily.board");
+  const format = useFormatter();
   const all = rows.state === "ready" ? rows.rows : [];
+  const playedLike = rows.state === "ready" ? rows.playedLike : null;
   const ranks = ranksOf(all);
   const ownIndex = joined ? all.findIndex((entry) => entry.id === joined.id) : -1;
   const own = ownIndex >= TOP ? all[ownIndex] : null;
@@ -68,6 +70,16 @@ export function DailyTopTen({ rows, joined, played }: DailyTopTenProps) {
   return (
     <section className="daily-card daily-top" aria-labelledby="daily-top-title">
       <h2 id="daily-top-title" className="daily-card-title">{t("title")}</h2>
+      {/* Always rendered, so the line holds its place before 25 players have joined and the table never moves. */}
+      <p className="daily-played">
+        {playedLike !== null && (
+          <>
+            <strong>{t("playedLike", { rating: format.number(playedLike) })}</strong>
+            <span aria-hidden="true"> · </span>
+            <span className="daily-hint">{t("playedLikeNote")}</span>
+          </>
+        )}
+      </p>
       <div className="daily-table-wrap">
         <table className="daily-table">
           <thead>

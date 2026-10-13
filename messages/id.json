@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "10 besar hari ini",
+      "playedLike": "Papan hari ini bermain seperti {rating}",
+      "playedLikeNote": "Diperkirakan dari pemain hari ini.",
       "rank": "Peringkat",
       "player": "Pemain",
       "right": "Benar",

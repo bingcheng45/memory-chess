@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "Die heutigen Top 10",
+      "playedLike": "Das heutige Brett spielte sich wie {rating}",
+      "playedLikeNote": "Geschätzt aus den Ergebnissen der heutigen Spieler.",
       "rank": "Platz",
       "player": "Spieler",
       "right": "Richtig",

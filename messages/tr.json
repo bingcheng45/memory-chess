@@ -1238,8 +1238,12 @@
       "message": "En az 10 karakter."
     },
     "errors": {
-      "submitFailed": "Form gönderilemedi{details}",
-      "generic": "Form gönderilirken bir hata oluştu. Lütfen tekrar dene."
+      "generic": "Form gönderilirken bir hata oluştu. Lütfen tekrar dene.",
+      "reasons": {
+        "invalid": "Bazı bilgiler kabul edilmedi. Formu kontrol edip tekrar dene.",
+        "unavailable": "Şu anda mesaj gönderilemiyor. Lütfen daha sonra tekrar dene.",
+        "notDelivered": "Mesajın iletilemedi. Lütfen tekrar dene."
+      }
     }
   },
   "changelog": {

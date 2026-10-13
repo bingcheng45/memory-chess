@@ -1238,8 +1238,12 @@
       "message": "Minst 10 tegn."
     },
     "errors": {
-      "submitFailed": "Kunne ikke sende skjemaet{details}",
-      "generic": "Det oppsto en feil da skjemaet ble sendt. Prøv igjen."
+      "generic": "Det oppsto en feil da skjemaet ble sendt. Prøv igjen.",
+      "reasons": {
+        "invalid": "Noen opplysninger ble ikke godtatt. Sjekk skjemaet og prøv igjen.",
+        "unavailable": "Meldinger kan ikke sendes akkurat nå. Prøv igjen senere.",
+        "notDelivered": "Meldingen din kunne ikke leveres. Prøv igjen."
+      }
     }
   },
   "changelog": {

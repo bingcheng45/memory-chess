@@ -27,7 +27,7 @@ import {
 } from "@/lib/ahrefs";
 import { routing, type Locale } from "@/i18n/routing";
 import { splitClientMessages } from "@/lib/articles/messageScope";
-import { getSansFontClass, geistMono } from "@/lib/fonts";
+import { fontRequestScript, getSansFontClass, geistMono } from "@/lib/fonts";
 import { buildAlternates, localizedUrl } from "@/lib/seo/alternates";
 import { socialMetadata } from "@/lib/seo/brand";
 
@@ -153,10 +153,12 @@ export default async function LocaleLayout({
 
   // The articles, home and game layouts add their own groups, so no other page carries them.
   const { shared: messages } = splitClientMessages(await getMessages({ locale }));
+  const fontRequest = fontRequestScript(locale as Locale);
 
   return (
     <html lang={locale}>
       <head>
+        {fontRequest && <script dangerouslySetInnerHTML={{ __html: fontRequest }} />}
         <script async src={ADSENSE_SCRIPT_URL} crossOrigin="anonymous" />
         {countsVisitors && (
           <script

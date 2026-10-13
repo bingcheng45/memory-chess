@@ -1238,8 +1238,12 @@
       "message": "Minstens 10 tekens."
     },
     "errors": {
-      "submitFailed": "Het formulier kon niet worden verzonden{details}",
-      "generic": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw."
+      "generic": "Er is een fout opgetreden bij het verzenden van het formulier. Probeer het opnieuw.",
+      "reasons": {
+        "invalid": "Sommige gegevens zijn niet geaccepteerd. Controleer het formulier en probeer het opnieuw.",
+        "unavailable": "Berichten kunnen nu niet worden verzonden. Probeer het later opnieuw.",
+        "notDelivered": "Je bericht kon niet worden afgeleverd. Probeer het opnieuw."
+      }
     }
   },
   "changelog": {

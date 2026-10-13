@@ -1238,8 +1238,12 @@
       "message": "Al menos 10 caracteres."
     },
     "errors": {
-      "submitFailed": "No se pudo enviar el formulario{details}",
-      "generic": "Se ha producido un error al enviar el formulario. Inténtalo de nuevo."
+      "generic": "Se ha producido un error al enviar el formulario. Inténtalo de nuevo.",
+      "reasons": {
+        "invalid": "Algunos datos no se aceptaron. Revisa el formulario e inténtalo de nuevo.",
+        "unavailable": "Ahora mismo no se pueden enviar mensajes. Inténtalo más tarde.",
+        "notDelivered": "No se pudo entregar tu mensaje. Inténtalo de nuevo."
+      }
     }
   },
   "changelog": {

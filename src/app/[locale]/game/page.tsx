@@ -18,6 +18,9 @@ import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
 import { ROUND_PARAMS } from '@/lib/game/roundLink';
 import { GAME_CONFIG_RULES, parseGameSettings } from '@/lib/game/configPrefill';
 import '@/components/game/game-lab.css';
+// Loaded with the page, not with the result figures the round warms: Next commits a stylesheet a lazy chunk brings
+// through React, which holds the round's next render, the one that sizes the board, until the file arrives.
+import '@/components/dashboard/trend.css';
 
 import type { SetBoard } from '@/lib/types/game';
 import type { SetBoardRefusal } from '@/components/game/SetBoardNotice';

@@ -9,6 +9,7 @@ import { QUICK_START_HREF } from "@/components/home/links";
 import { useDailyState } from "@/hooks/useDailyState";
 import { HeaderStreakChip } from "./HeaderStreakChip";
 import "./lab-paper.css";
+import "./lab-header-fit.css";
 
 /** `extra` links leave the desktop row first and stay in the phone menu. Changelog lives in the footer and the phone menu only. */
 const SITE_LINKS = [

@@ -48,3 +48,6 @@ next-env.d.ts
 .lab-personas/
 .lab-drive/
 .lab-fit/
+.lab-header-fit/
+.lab-dash-heights/
+.lab-cls-dashboard/

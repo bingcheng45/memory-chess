@@ -78,8 +78,10 @@ export function Dashboard() {
         <h1>{t("title")}</h1>
         <DashboardDailyCard records={loaded ? data.records : "loading"} />
         <p className="lab-lede">{t("lede")}</p>
-        {data.storage === "unavailable" && <p className="lab-dash-warn">{t("unavailable")}</p>}
-        {staleFor !== null && <p className="lab-dash-warn">{t("staleNote", { count: staleFor })}</p>}
+        <div className="lab-dash-notes">
+          {data.storage === "unavailable" && <p className="lab-dash-warn">{t("unavailable")}</p>}
+          {staleFor !== null && <p className="lab-dash-warn">{t("staleNote", { count: staleFor })}</p>}
+        </div>
       </header>
       {data.storage !== "unavailable" && (
         <>

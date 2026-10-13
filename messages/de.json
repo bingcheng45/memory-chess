@@ -1238,8 +1238,12 @@
       "message": "Mindestens 10 Zeichen."
     },
     "errors": {
-      "submitFailed": "Das Formular konnte nicht gesendet werden{details}",
-      "generic": "Beim Senden des Formulars ist ein Fehler aufgetreten. Bitte versuche es erneut."
+      "generic": "Beim Senden des Formulars ist ein Fehler aufgetreten. Bitte versuche es erneut.",
+      "reasons": {
+        "invalid": "Einige Angaben wurden nicht akzeptiert. Prüfe das Formular und versuche es erneut.",
+        "unavailable": "Nachrichten können gerade nicht gesendet werden. Bitte versuche es später erneut.",
+        "notDelivered": "Deine Nachricht konnte nicht zugestellt werden. Bitte versuche es erneut."
+      }
     }
   },
   "changelog": {

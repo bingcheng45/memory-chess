@@ -546,7 +546,7 @@
           "title": "Günde bir tahta, herkes için aynı.",
           "desc": "Her gün UTC gece yarısında yeni bir konum açılır. Herkes aynı 6 taşı ve incelemek için 10 saniye alır. Senin de tek bir hakkın var.",
           "play": "Günün tahtasını oyna",
-          "open": "Günün tahtasını henüz oynamadın.",
+          "open": "Bugünün tahtasında {pieceCount, plural, one {# taş} other {# taş}} var ve incelemek için {memorizeSeconds, plural, one {# saniye} other {# saniye}} süren var. Günün tahtasını henüz oynamadın.",
           "played": "{pieceCount, plural, one {# taştan} other {# taştan}} {correct} tanesini doğru yerleştirdin, yüzde {accuracy}.",
           "unfinished": "Günün tahtasını açtın ve sonucu görmeden ayrıldın. Bu cihazda günde tek hak var.",
           "streak": "Günlük seri {current, plural, one {# gün} other {# gün}}{forgiven, plural, =0 {} one {, # kaçırılan gün affedildi} other {, # kaçırılan gün affedildi}} · en uzun {longest, plural, one {# gün} other {# gün}}",
@@ -1163,10 +1163,17 @@
     "columns": {
       "rank": "Sıra",
       "player": "Oyuncu",
+      "elo": "ELO",
       "pieces": "Taş",
       "memorizeTime": "Ezberleme süresi",
       "solutionTime": "Çözüm süresi",
       "date": "Tarih"
+    },
+    "daily": {
+      "tab": "Günlük",
+      "setting": "{pieces, plural, one {# taş} other {# taş}} · İncelemek için {seconds} sn",
+      "resetsAtUtc": "{utc} UTC itibarıyla sıfırlanır",
+      "resetsAt": "{utc} UTC itibarıyla sıfırlanır (sizin saatinizle {local}), {timeLeft} sonra"
     }
   },
   "country": {
@@ -1584,5 +1591,119 @@
     },
     "play": "Bir tur oyna",
     "home": "Ana sayfaya git"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} dk",
+    "hoursLeft": "{hours} sa {minutes} dk",
+    "underMinute": "< 1 dk",
+    "ready": "Bugünün tahtası · {pieceCount} taş · {seconds} sn · {timeLeft} kaldı",
+    "next": "Sonraki tahta {timeLeft} sonra",
+    "pending": "Bugünün tahtası",
+    "navReady": "{label}, bugünün günlük tahtası hazır",
+    "cardTitle": "Bugünün günlük tahtası hazır",
+    "cardSetting": "{pieceCount} taş ve ezberlemek için {seconds} saniye.",
+    "cardNote": "Bugün herkes aynı tahtayı oynuyor ve tek bir deneme hakkın var.",
+    "play": "Bugünün tahtasını oyna"
+  },
+  "daily": {
+    "meta": {
+      "title": "Günlük Satranç Hafıza Tahtası: Herkes İçin Tek Konum",
+      "description": "Günde bir satranç hafıza tahtası, her oyuncu için aynı konum. Bir kez incele, yeniden kur ve bugünün ilk 10'una gir. Yeni tahta UTC gece yarısı açılır.",
+      "socialTitle": "Memory Chess Günlük Tahta",
+      "socialDescription": "Bugün herkes aynı konumu alıyor. İncele, yeniden kur ve kaçıncı olduğuna bak."
+    },
+    "round": {
+      "locked": "Bugünün tahtasını zaten açtın. Günde bir deneme oyunu adil tutar.",
+      "seeBoard": "Bugünün tahtasını gör",
+      "chooseRound": "Bir tur daha oyna",
+      "join": "Bugünün tahtasına katıl"
+    },
+    "page": {
+      "fig": "Günlük tahta · {date}",
+      "title": "Tek tahta, herkes için aynı",
+      "lede": "Her gün tüm oyunculara tek bir konum verilir. Bir kez incele, hafızandan yeniden kur, sonra nerede olduğunu görmek için günün tahtasına katıl.",
+      "resets": "Yeni tahta UTC gece yarısı",
+      "open": "Bugünün tahtası açık",
+      "pieces": "{count, plural, one {# taş} other {# taş}}",
+      "seconds": "İncelemek için {count} sn",
+      "oneTry": "Tek deneme",
+      "hidden": "Oynayana kadar gizli",
+      "play": "Bugünün tahtasını oyna",
+      "streak": "{count, plural, one {Günlük seri: # gün} other {Günlük seri: # gün}}",
+      "unfinishedTitle": "Bugünkü hakkın kullanıldı",
+      "unfinished": "Bugünün tahtasını açtın ama sonuçtan önce ayrıldın. Günde bir deneme tahtayı adil tutar, o yüzden sıradaki tahta için tekrar gel.",
+      "result": "Sonucun",
+      "score": "{pieceCount} taşın {correct} tanesi doğru",
+      "rebuild": "{seconds} sn'de kuruldu",
+      "gridAria": "Karelerin: {correct} doğru, {wrong} yanlış taş, {missed} kaçırılan, {extra} fazla",
+      "key": {
+        "c": "Doğru",
+        "w": "Yanlış taş",
+        "m": "Kaçırılan",
+        "x": "Fazla"
+      },
+      "shareLabel": "Tahtayı belli etmeden paylaş",
+      "shareText": "Memory Chess günlük tahta {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Sonucu kopyala",
+      "copied": "Kopyalandı",
+      "copyFailed": "Pano izin vermedi. Aşağıdaki metni seçip kopyala.",
+      "joined": "Bugünün tahtasındasın",
+      "rank": "Bugün {total} kişi arasında {rank}. sıra",
+      "lateNote": "Dünün tahtasını oynadın ama henüz katılmadın.",
+      "lateJoined": "O günün tahtasındasın"
+    },
+    "join": {
+      "title": "Bugünün tahtasına katıl",
+      "lateTitle": "O günün tahtasına katıl",
+      "name": "Ad",
+      "nameHint": "4 ila 16 karakter, skorunla birlikte gösterilir.",
+      "nameShort": "Çok kısa. En az 4 karakter kullan.",
+      "nameLong": "Çok uzun. En fazla 16 karakter kullan.",
+      "country": "Ülke",
+      "chooseCountry": "Bir ülke seç",
+      "from": {
+        "saved": "Bu cihazda kayıtlı.",
+        "connection": "Bağlantına göre.",
+        "language": "Tarayıcı dilinden.",
+        "none": "Adına oynadığın ülkeyi seç."
+      },
+      "change": "Değiştir",
+      "submit": "Tahtaya katıl",
+      "submitting": "Katılıyor...",
+      "public": "Adın, ülken, skorun ve puanın herkese açık gösterilir.",
+      "failed": "Tahtaya katılınamadı. Lütfen tekrar dene.",
+      "noneRight": "Hiçbir taş doğru değildi, bu yüzden bu denemenin sıralanacak bir skoru yok. Sonraki tahta UTC gece yarısı açılır."
+    },
+    "board": {
+      "title": "Bugünün ilk 10'u",
+      "rank": "Sıra",
+      "player": "Oyuncu",
+      "right": "Doğru",
+      "wrong": "Yanlış",
+      "time": "Süre (sn)",
+      "rating": "{rating} Elo",
+      "you": "Sen",
+      "empty": "Bugünün tahtasına henüz kimse katılmadı. Oyna ve ilk sen ol.",
+      "error": "Bugünün tahtası yüklenemedi. Lütfen birazdan tekrar dene.",
+      "joinToRank": "Sıranı burada görmek için tahtaya katıl.",
+      "order": "Sıralama: en çok doğru taş, sonra en az yanlış, sonra en hızlı kurulum.",
+      "all": "Tüm tahtaları gör"
+    },
+    "reference": {
+      "title": "Günlük tahta nasıl çalışır",
+      "shared": "Her gün UTC gece yarısında yeni bir konum belirlenir ve dünyadaki her oyuncu aynısını alır. Konum, tarihten üretilen bir tohumdan gelir; bu yüzden tahta herkes için aynıdır ve kimse daha kolay bir kopya almaz. Tahta ortak olduğu için, o gün oynayan herkes için bir skor aynı anlama gelir.",
+      "oneTry": "Tek deneme hakkın var. Tahtayı açmak denemeyi kullanmış sayılır; bu yüzden inceleme sırasında ayrılıp geri gelirsen tahta sana ikinci kez gösterilmez. Cihazın, sonraki tahta açılana kadar denemeyi hatırlar.",
+      "grid": "Konumu yeniden kurduktan sonra hangi kareleri doğru bildiğini, hangisinde yanlış taş olduğunu, hangisini kaçırdığını ve nereye fazla taş koyduğunu görürsün. Paylaşım satırında her taş için bir kare bulunur ve kareler sonuca göre sıralanır; taşın nerede durduğuna dair hiçbir bilgi yoktur. Bu yüzden paylaşmak, henüz oynamamış birine tahtayı belli etmez.",
+      "join": "Tahtaya katılmak için 4 ila 16 karakterlik bir ad ve adına oynadığın ülkeyi seç. Ülke önce daha önce seçtiğinden, sonra bağlantından, sonra tarayıcı dilinden gelir ve istediğin zaman değiştirebilirsin. Katıldığın andaki puanın adının yanında gösterilir.",
+      "ranking": "Satırlar doğru yerleştirilen taş sayısına, sonra en az yanlış taşa, sonra en hızlı kurulum süresine göre sıralanır. Herkes aynı sayıda saniye inceler; bu yüzden günlük tahtada inceleme süresi iki oyuncuyu asla birbirinden ayırmaz.",
+      "arcTitle": "Hafta boyunca taşlar ve inceleme süresi",
+      "arcIntro": "Ayar haftalık bir eğriyi izler. Pazartesi hafif başlar; böylece hafta sonu molası bir seriyi bozmaz, yük hafta boyunca artar, cumartesi yalnızca birkaç saniye gördüğün bir flaş tahtadır, pazar ise hepsinin en zorudur. Her günün aralığı içinde tarih tek bir ayar seçer ve bu ayar tüm oyuncular için aynıdır.",
+      "day": "Gün",
+      "pieces": "Taş",
+      "seconds": "İnceleme süresi",
+      "range": "{min} ila {max}",
+      "secondsRange": "{min} ila {max} sn",
+      "secondsExact": "{count} sn"
+    }
   }
 }

@@ -59,12 +59,19 @@ CREATE OR REPLACE FUNCTION uuid_generate_v4() RETURNS uuid
 LANGUAGE sql VOLATILE AS 'SELECT gen_random_uuid()';
 `;
 
-/**
- * Drops country_code to reach the pre-migration shape. Spelled out here rather
- * than reused from the rollback file: if setup ran the rollback, a rollback
- * that silently did nothing would still produce a green rehearsal.
- */
-const STRIP_NEW_COLUMN = `
+const STRIP_LATER_MIGRATIONS = `
+DROP INDEX idx_leaderboard_daily_ranking;
+DROP TRIGGER leaderboard_daily_created_at ON leaderboard_entries;
+DROP FUNCTION leaderboard_daily_created_at();
+ALTER TABLE leaderboard_entries DROP CONSTRAINT check_daily_day_matches_board;
+ALTER TABLE leaderboard_entries DROP CONSTRAINT check_daily_day_recent;
+ALTER TABLE leaderboard_entries DROP CONSTRAINT check_skill_rating_range;
+ALTER TABLE leaderboard_entries DROP CONSTRAINT check_difficulty_board;
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT leaderboard_entries_difficulty_check
+  CHECK (difficulty IN ('easy', 'medium', 'hard', 'grandmaster'));
+ALTER TABLE leaderboard_entries DROP COLUMN daily_day;
+ALTER TABLE leaderboard_entries DROP COLUMN skill_rating;
 ALTER TABLE leaderboard_entries DROP CONSTRAINT check_country_code_format;
 ALTER TABLE leaderboard_entries DROP COLUMN country_code;
 `;
@@ -177,7 +184,7 @@ async function main() {
 
   await db.exec(UUID_SHIM);
   await db.exec(schemaSql);
-  await db.exec(STRIP_NEW_COLUMN);
+  await db.exec(STRIP_LATER_MIGRATIONS);
 
   const columnsBefore = await columnsOf(db);
   check(

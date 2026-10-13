@@ -1,7 +1,7 @@
 import { splitClientMessages, tileGroupOf } from "@/lib/articles/messageScope";
 
 describe("splitClientMessages", () => {
-  it("parts the articles namespace, the dashboard, the home lab group and the lab and dashboard groups /game prints from every other string", () => {
+  it("parts the articles namespace, the dashboard, the daily page, the home lab group and the lab, dashboard and daily groups /game prints from every other string", () => {
     const catalogue = {
       common: { nav: { articles: "Articles" } },
       articles: { like: { button: "Recommend this article" } },
@@ -11,6 +11,7 @@ describe("splitClientMessages", () => {
       },
       game: { skip: "Skip" },
       dashboard: { title: "Your progress", label: { span: "Memory span" }, unit: { rating: "<n>{value}</n>" }, deltas: { new: "New" } },
+      daily: { meta: { title: "Daily board" }, round: { locked: "You have played today's board." }, join: { name: "Name" }, reference: { title: "How it works" } },
     };
 
     expect(splitClientMessages(catalogue)).toEqual({
@@ -20,8 +21,10 @@ describe("splitClientMessages", () => {
       game: {
         home: { lab: { resultCard: { title: "Your lab record" }, daily: { locked: "One try per day." }, review: { none: "Nothing due." } } },
         dashboard: { label: { span: "Memory span" }, unit: { rating: "<n>{value}</n>" }, deltas: { new: "New" } },
+        daily: { round: { locked: "You have played today's board." } },
       },
       dashboard: { dashboard: { title: "Your progress", label: { span: "Memory span" }, unit: { rating: "<n>{value}</n>" }, deltas: { new: "New" } } },
+      daily: { daily: { round: { locked: "You have played today's board." }, join: { name: "Name" } } },
     });
   });
 
@@ -40,6 +43,7 @@ describe("splitClientMessages", () => {
       lab: {},
       game: {},
       dashboard: {},
+      daily: {},
     });
   });
 });

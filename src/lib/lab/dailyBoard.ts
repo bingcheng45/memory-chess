@@ -1,16 +1,14 @@
 import type { SetBoard } from "@/lib/types/game";
 import { generateMemorizationPosition } from "@/lib/utils/memorizationPosition";
 import { seededRandom } from "@/lib/utils/seededRandom";
-import { DAILY_OPENED_KEY, DAILY_SETTING, dailyBoardOf, readDailyOpened, utcDayOf } from "./daily";
-import { positionId, type RoundRecord } from "./record";
+import { dailySeed, dailySettingOf } from "@/lib/daily/schedule";
+import { DAILY_OPENED_EVENT, DAILY_OPENED_KEY, dailyBoardOf, readDailyOpened, utcDayOf } from "./daily";
+import type { RoundRecord } from "./record";
 import { labStore } from "./storage";
 
-/** The day's seed from the stable position-id hash, so the board never changes for a day once it is out. */
-const dailySeed = (day: string) => Number.parseInt(positionId(`daily ${day}`).slice(-8), 16);
-
 /** The real game's generator with a seeded random source: the same board for the same UTC day in every browser. */
-export function dailyFen(day: string): string | null {
-  return generateMemorizationPosition(DAILY_SETTING.pieceCount, seededRandom(dailySeed(day)))?.fen() ?? null;
+export function dailyFen(day: string, pieceCount = dailySettingOf(day).pieceCount): string | null {
+  return generateMemorizationPosition(pieceCount, seededRandom(dailySeed(day)))?.fen() ?? null;
 }
 
 export type DailyStart =
@@ -20,8 +18,9 @@ export type DailyStart =
 export function dailyStart(records: readonly RoundRecord[], at: number, openedDay: string | null): DailyStart | null {
   const day = utcDayOf(at);
   if (dailyBoardOf(records, day, openedDay).status !== "open") return { kind: "played" };
-  const fen = dailyFen(day);
-  return fen === null ? null : { kind: "play", ...DAILY_SETTING, board: { kind: "daily", day, fen } };
+  const setting = dailySettingOf(day);
+  const fen = dailyFen(day, setting.pieceCount);
+  return fen === null ? null : { kind: "play", ...setting, board: { kind: "daily", day, fen } };
 }
 
 /** Reads the record on this device first, so a second attempt on the same UTC day is refused. Marks nothing: only the caller that starts the round knows it is the try. */
@@ -37,4 +36,5 @@ export function markDailyOpened(day: string): void {
   } catch {
     // Without storage the record alone limits the day to one result.
   }
+  window.dispatchEvent(new Event(DAILY_OPENED_EVENT));
 }

@@ -1,7 +1,8 @@
 "use client";
 
 import { useMemo } from "react";
-import { START_RATING, useGameStore } from "@/lib/store/gameStore";
+import { START_RATING } from "@/lib/game/rating";
+import { useGameStore } from "@/lib/store/gameStore";
 import type { GameStanding } from "@/lib/lab/dashboard";
 import type { RatedRound } from "@/lib/lab/history";
 

@@ -1,29 +1,39 @@
 #!/usr/bin/env node
 import { createServer } from "node:http";
 import { readFileSync } from "node:fs";
+import { randomUUID } from "node:crypto";
 
 const [fixturePath, portArg = "54321"] = process.argv.slice(2);
 if (!fixturePath) {
   console.error("usage: fake-supabase.mjs <fixture.json> [port]");
   console.error("fixture: an array of leaderboard_entries rows, or { leaderboard_entries: [...], article_stats: [{ slug, views, likes }] }");
-  console.error("env: FAKE_SUPABASE_MISSING_COUNTRY=1 rejects inserts carrying country_code with PGRST204");
+  console.error("env: FAKE_SUPABASE_MISSING_RATING=1 serves the table before migration 0004: no skill_rating or daily_day, no daily board");
+  console.error("env: FAKE_SUPABASE_MISSING_COUNTRY=1 serves the table before migration 0001 as well: no country_code either");
   process.exit(1);
 }
 
 const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
-const rows = Array.isArray(fixture) ? fixture : (fixture.leaderboard_entries ?? []);
-let articleStats = Array.isArray(fixture) ? [] : (fixture.article_stats ?? []);
 
-// Opt-in: stand in for a database whose country_code migration has not been
-// applied, so a driver can see what a player gets from the real server.
-const rejectCountryInserts = process.env.FAKE_SUPABASE_MISSING_COUNTRY === "1";
-
-const MISSING_COUNTRY_COLUMN = {
-  code: "PGRST204",
-  details: null,
-  hint: null,
-  message: "Could not find the 'country_code' column of 'leaderboard_entries' in the schema cache",
+const DEFAULTS = { country_code: "ZZ", skill_rating: 1000, daily_day: null };
+const SCHEMAS = {
+  MISSING_COUNTRY: {
+    label: ", without migrations 0001 and 0004 (no country_code, skill_rating or daily_day)",
+    absent: ["skill_rating", "daily_day", "country_code"],
+  },
+  MISSING_RATING: {
+    label: ", without migration 0004 (no skill_rating or daily_day)",
+    absent: ["skill_rating", "daily_day"],
+  },
 };
+const mode = Object.keys(SCHEMAS).find((name) => process.env[`FAKE_SUPABASE_${name}`] === "1");
+const schema = mode ? SCHEMAS[mode] : { label: "", absent: [] };
+const has = (column) => !schema.absent.includes(column);
+const present = (row) => Object.fromEntries(Object.entries(row).filter(([column]) => has(column)));
+const boards = ["easy", "medium", "hard", "grandmaster", ...(has("daily_day") ? ["daily"] : [])];
+
+const fixtureRows = Array.isArray(fixture) ? fixture : (fixture.leaderboard_entries ?? []);
+const rows = fixtureRows.map(present);
+let articleStats = Array.isArray(fixture) ? [] : (fixture.article_stats ?? []);
 
 const RECORD_EVENT_PATH = "/rest/v1/rpc/record_article_event";
 const SLUG_PATTERN = /^[a-z0-9]+(-[a-z0-9]+)*$/;
@@ -59,9 +69,55 @@ function sendCannotAnswer(res, unsupported) {
   });
 }
 
-function carriesCountryCode(body) {
-  const inserted = Array.isArray(body) ? body : [body];
-  return inserted.some((row) => row && typeof row === "object" && "country_code" in row);
+const missingColumn = (column) => ({
+  code: "PGRST204",
+  details: null,
+  hint: null,
+  message: `Could not find the '${column}' column of 'leaderboard_entries' in the schema cache`,
+});
+
+const checkViolation = (constraint) => ({
+  code: "23514",
+  details: null,
+  hint: null,
+  message: `new row for relation "leaderboard_entries" violates check constraint "${constraint}"`,
+});
+
+const CHECKS = [
+  ["check_difficulty_board", "difficulty", (row) => boards.includes(row.difficulty)],
+  ["check_daily_day_matches_board", "daily_day", (row) => (row.difficulty === "daily") === (row.daily_day != null)],
+  [
+    "check_daily_day_recent",
+    "daily_day",
+    (row) => {
+      if (row.daily_day == null) return true;
+      const stored = Date.parse(row.created_at.slice(0, 10));
+      const day = Date.parse(row.daily_day);
+      return day === stored || day === stored - 86_400_000;
+    },
+  ],
+  [
+    "check_skill_rating_range",
+    "skill_rating",
+    (row) => Number.isInteger(row.skill_rating) && row.skill_rating >= 0 && row.skill_rating <= 5000,
+  ],
+].filter(([, column]) => has(column));
+
+function rejectInsert(body) {
+  console.log(`insert rejected ${body.code}: ${body.message}`);
+  return { status: 400, body };
+}
+
+function insertRow(body) {
+  const unknown = Object.keys(body).find((column) => !has(column));
+  if (unknown) return rejectInsert(missingColumn(unknown));
+  const stamped = { id: randomUUID(), created_at: new Date().toISOString(), total_wrong_pieces: null, ...present(DEFAULTS), ...body };
+  const row = stamped.daily_day == null ? stamped : { ...stamped, created_at: new Date().toISOString() };
+  const broken = CHECKS.find(([, , holds]) => !holds(row));
+  if (broken) return rejectInsert(checkViolation(broken[0]));
+  rows.push(row);
+  console.log(`insert ${row.difficulty} ${row.player_name} skill_rating=${row.skill_rating ?? "(no column)"} -> ${rows.length} rows`);
+  return { status: 201, body: row };
 }
 
 function compare(order) {
@@ -107,6 +163,46 @@ function recordArticleEvent(body) {
   articleStats = [...articleStats.filter((row) => row.slug !== slug), after];
   console.log(`rpc record_article_event slug=${slug} event=${body.p_event} -> views=${after.views} likes=${after.likes}`);
   return { status: 200, body: [{ views: after.views, likes: after.likes }] };
+}
+
+function splitTopLevel(list) {
+  const parts = [];
+  let depth = 0;
+  let start = 0;
+  [...list].forEach((char, index) => {
+    if (char === "(") depth += 1;
+    if (char === ")") depth -= 1;
+    if (char === "," && depth === 0) {
+      parts.push(list.slice(start, index));
+      start = index + 1;
+    }
+  });
+  return [...parts, list.slice(start)];
+}
+
+const COMPARE = {
+  eq: (x, y) => String(x) === y,
+  gt: (x, y) => x != null && Number(x) > Number(y),
+  lt: (x, y) => x != null && Number(x) < Number(y),
+};
+
+function condition(column, test) {
+  if (test === "is.null") return (row) => row[column] == null;
+  if (test === "not.is.null") return (row) => row[column] != null;
+  const [name, ...value] = test.split(".");
+  return (row) => COMPARE[name](row[column], value.join("."));
+}
+
+const CONTROL_PARAMS = new Set(["select", "order", "limit", "offset"]);
+const anyOf = (tests) => (row) => tests.some((test) => test(row));
+
+function logicTest(clause) {
+  if (clause.startsWith("and(")) {
+    const tests = splitTopLevel(clause.slice("and(".length, -1)).map(logicTest);
+    return (row) => tests.every((test) => test(row));
+  }
+  const [column, ...test] = clause.split(".");
+  return condition(column, test.join("."));
 }
 
 const OPERATOR_THE_FIXTURE_CANNOT_RUN = Symbol("operator the fixture cannot run");
@@ -170,28 +266,22 @@ createServer(async (req, res) => {
     res.end(JSON.stringify({ code: "PGRST205", message: `no fixture for ${url.pathname}` }));
     return;
   }
-  if (rejectCountryInserts && req.method === "POST" && carriesCountryCode(await readJson(req))) {
-    res.writeHead(400, { "content-type": "application/json" });
-    res.end(JSON.stringify(MISSING_COUNTRY_COLUMN));
+  if (req.method === "POST") {
+    const answer = insertRow((await readJson(req)) ?? {});
+    const single = (req.headers.accept ?? "").includes("vnd.pgrst.object");
+    sendJson(res, answer.status, answer.status === 201 && !single ? [answer.body] : answer.body);
     return;
   }
-  const unsupported = [...url.searchParams].filter(
-    ([key, value]) =>
-      !["select", "order", "limit", "offset"].includes(key) && !/^(eq|gt)\./.test(value),
-  );
+  const filters = [...url.searchParams].filter(([key]) => !CONTROL_PARAMS.has(key));
+  const unsupported = filters.filter(([key, value]) => key !== "or" && !/^(eq|gt|lt)\./.test(value));
   if (unsupported.length) {
     sendCannotAnswer(res, unsupported);
     return;
   }
-  const ranked = rows
-    .filter((row) =>
-      [...url.searchParams].every(([column, value]) => {
-        if (value.startsWith("eq.")) return String(row[column]) === value.slice(3);
-        if (value.startsWith("gt.")) return row[column] != null && Number(row[column]) > Number(value.slice(3));
-        return true;
-      }),
-    )
-    .sort(compare(url.searchParams.get("order") ?? "id"));
+  const tests = filters.map(([column, value]) =>
+    column === "or" ? anyOf(splitTopLevel(value.slice(1, -1)).map(logicTest)) : condition(column, value),
+  );
+  const ranked = rows.filter((row) => tests.every((test) => test(row))).sort(compare(url.searchParams.get("order") ?? "id"));
   // `.range(from, to)` reaches PostgREST as offset plus limit, not as a Range header.
   const offset = Number(url.searchParams.get("offset") ?? 0);
   const limit = Number(url.searchParams.get("limit") ?? ranked.length);
@@ -204,7 +294,6 @@ createServer(async (req, res) => {
   });
   res.end(req.method === "HEAD" ? undefined : JSON.stringify(page));
 }).listen(Number(portArg), "127.0.0.1", () => {
-  const mode = rejectCountryInserts ? ", rejecting country_code inserts with PGRST204" : "";
-  console.log(`fake supabase on http://127.0.0.1:${portArg} serving ${rows.length} rows${mode}`);
+  console.log(`fake supabase on http://127.0.0.1:${portArg} serving ${rows.length} rows${schema.label}`);
   console.log(`article_stats holds ${articleStats.length} rows`);
 });

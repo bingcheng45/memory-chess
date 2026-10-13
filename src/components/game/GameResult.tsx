@@ -18,7 +18,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
-import { trackEvent, type RoundSource } from "@/lib/analytics/events";
+import type { RoundSource } from "@/lib/analytics/events";
+import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
   qualifies,
@@ -39,7 +40,7 @@ import { warmedResultDeltas } from "@/components/game/resultDeltasWarm";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import ShareResult from "@/components/game/ShareResult";
 import { roundShareOf } from "@/components/game/roundShare";
-import { START_RATING } from "@/lib/store/gameStore";
+import { START_RATING } from "@/lib/game/rating";
 
 // Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
 // never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.
@@ -77,9 +78,11 @@ function qualifiesForLeaderboard(
 export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResultProps) {
   const t = useTranslations("game.result");
   // Without IndexedDB nothing can be recorded, so no space is held for a card that could only leave again.
-  const showsLab = browserIndexedDB() !== undefined;
+  const keepsRecord = browserIndexedDB() !== undefined;
+  const showsLab = keepsRecord;
   const tCountry = useTranslations("country");
   const tComparison = useTranslations("game.comparison");
+  const tDaily = useTranslations("daily.round");
   const { gameState, round } = useGameStore();
   const { labRound } = gameState;
   const { countryCode, setCountryCode, showCoordinates } = useSettingsStore();
@@ -233,6 +236,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       memorize_time: memorizeTime,
       solution_time: gameState.completionTime || 0,
       total_wrong_pieces: piecesInfo.totalWrong,
+      skill_rating: gameState.skillRating || START_RATING,
     };
   };
 
@@ -244,32 +248,9 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     setSubmitError(null);
 
     try {
-      const leaderboardEntry = prepareLeaderboardEntry(playerName.trim());
-
-      const response = await fetch("/api/leaderboard", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(leaderboardEntry),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || t("dialog.submitFailed"));
-      }
-
-      trackEvent({
-        name: "score_submit",
-        params: {
-          difficulty: leaderboardEntry.difficulty,
-          piece_count: leaderboardEntry.piece_count,
-        },
-      });
+      const posted = await postLeaderboardEntry(prepareLeaderboardEntry(playerName.trim()));
+      if (!posted.ok) throw new Error(posted.message ?? t("dialog.submitFailed"));
       setSubmitSuccess(true);
-      void import("@/lib/lab/entries")
-        .then(async ({ rememberEntry }) => rememberEntry((await response.json())?.data, Date.now()))
-        .catch(() => undefined);
     } catch (err) {
       console.error("Error submitting to leaderboard:", err);
       setSubmitError(
@@ -347,6 +328,11 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <button type="button" onClick={onNewGame} className={`lab-btn ${tryAgainFirst ? "lab-btn-secondary" : "lab-btn-primary"}`}>
             {t("newGame")}
           </button>
+          {gameState.board?.kind === "daily" && keepsRecord && (
+            <Link href="/daily" className="lab-btn lab-btn-secondary lab-result-submit">
+              {tDaily("join")}
+            </Link>
+          )}
           {leaderboardEligible && (
             <button type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
               {t("submitToLeaderboard")}
@@ -356,7 +342,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
             <ShareResult
               key={labRound?.facts.id}
               share={roundShareOf(round, {
-                rating: gameState.skillRating ?? START_RATING,
+                rating: gameState.skillRating || START_RATING,
                 change: extendedGameState.skillRatingChange ?? 0,
                 winStreak: gameState.streak ?? 0,
               })}
@@ -504,7 +490,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
               <div className="flex justify-center gap-2">
                 <Link
                   className="lab-btn lab-btn-primary"
-                  href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${(() => {
+                  href={`/leaderboard?player=${encodeURIComponent(playerName.trim())}&difficulty=${(() => {
                     const difficulty = determineDifficulty(
                       gameState.pieceCount,
                     );

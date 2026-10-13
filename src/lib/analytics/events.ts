@@ -1,4 +1,4 @@
-import type { LeaderboardDifficulty } from "@/types/leaderboard";
+import type { DAILY_BOARD, LeaderboardDifficulty } from "@/types/leaderboard";
 import type { SearchOutcome } from "@/lib/seo/learn/search";
 import type { ShareNetwork } from "@/lib/shareIntents";
 
@@ -79,7 +79,7 @@ export type FunnelEvent =
     }
   | {
       name: "score_submit";
-      params: { difficulty: LeaderboardDifficulty; piece_count: number };
+      params: { difficulty: LeaderboardDifficulty | typeof DAILY_BOARD; piece_count: number };
     }
   | {
       name: "article_like";

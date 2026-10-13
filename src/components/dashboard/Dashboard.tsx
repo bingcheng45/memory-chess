@@ -13,6 +13,7 @@ import { entriesChoice, planChoice, targetChoice } from "@/components/home/labCh
 import { LAB_SECTIONS } from "@/components/home/SectionHeading";
 import { useWeekGoal } from "@/components/home/useWeekGoal";
 import { DashboardAnalysis } from "./DashboardAnalysis";
+import { DashboardDailyCard } from "./DashboardDailyCard";
 import { DashboardHistory } from "./DashboardHistory";
 import { DashboardShare } from "./DashboardShare";
 import { TileList } from "./DashboardTiles";
@@ -75,6 +76,7 @@ export function Dashboard() {
     <main className="lab-wrap lab-dashboard">
       <header className="lab-dash-head">
         <h1>{t("title")}</h1>
+        <DashboardDailyCard records={loaded ? data.records : "loading"} />
         <p className="lab-lede">{t("lede")}</p>
         {data.storage === "unavailable" && <p className="lab-dash-warn">{t("unavailable")}</p>}
         {staleFor !== null && <p className="lab-dash-warn">{t("staleNote", { count: staleFor })}</p>}

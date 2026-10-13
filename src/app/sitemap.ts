@@ -54,6 +54,12 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     priority: 0.9,
   },
   {
+    path: "/daily",
+    lastModified: "2026-10-12T00:00:00.000Z",
+    changeFrequency: "daily",
+    priority: 0.8,
+  },
+  {
     path: "/leaderboard",
     lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "daily",

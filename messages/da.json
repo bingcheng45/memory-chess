@@ -546,7 +546,7 @@
           "title": "Ét bræt om dagen, det samme for alle.",
           "desc": "En ny stilling åbner hver dag ved midnat UTC. Alle får de samme 6 brikker og 10 sekunders husketid, og du har ét forsøg.",
           "play": "Spil dagens bræt",
-          "open": "Du har ikke spillet dagens bræt endnu.",
+          "open": "Dagens bræt har {pieceCount, plural, one {# brik} other {# brikker}} og {memorizeSeconds, plural, one {# sekund} other {# sekunder}} til at studere. Du har ikke spillet dagens bræt endnu.",
           "played": "Du placerede {correct} af {pieceCount, plural, one {# brik} other {# brikker}} rigtigt, {accuracy} procent.",
           "unfinished": "Du åbnede dagens bræt og gik, før resultatet kom. Ét forsøg om dagen på denne enhed.",
           "streak": "Daglig stime {current, plural, one {# dag} other {# dage}}{forgiven, plural, =0 {} one {, # mistet dag tilgivet} other {, # mistede dage tilgivet}} · længste {longest, plural, one {# dag} other {# dage}}",

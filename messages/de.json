@@ -546,7 +546,7 @@
           "title": "Ein Brett pro Tag, für alle gleich.",
           "desc": "Jeden Tag um Mitternacht UTC öffnet sich eine neue Stellung. Alle bekommen dieselben 6 Figuren und 10 Sekunden zum Einprägen, und du hast einen Versuch.",
           "play": "Heutiges Brett spielen",
-          "open": "Du hast das heutige Brett noch nicht gespielt.",
+          "open": "Das heutige Brett hat {pieceCount, plural, one {# Figur} other {# Figuren}} und {memorizeSeconds, plural, one {# Sekunde} other {# Sekunden}} zum Einprägen. Du hast das heutige Brett noch nicht gespielt.",
           "played": "Du hast {correct} von {pieceCount, plural, one {# Figur} other {# Figuren}} richtig gesetzt, {accuracy} Prozent.",
           "unfinished": "Du hast das heutige Brett geöffnet und vor dem Ergebnis verlassen. Ein Versuch pro Tag auf diesem Gerät.",
           "streak": "Tagesserie {current, plural, one {# Tag} other {# Tage}}{forgiven, plural, =0 {} one {, # verpasster Tag verziehen} other {, # verpasste Tage verziehen}} · längste {longest, plural, one {# Tag} other {# Tage}}",

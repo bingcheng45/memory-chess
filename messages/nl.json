@@ -546,7 +546,7 @@
           "title": "Eén bord per dag, voor iedereen hetzelfde.",
           "desc": "Elke dag om middernacht UTC komt er een nieuwe stelling. Iedereen krijgt dezelfde 6 stukken en 10 seconden kijktijd, en je hebt één poging.",
           "play": "Speel het bord van vandaag",
-          "open": "Je hebt het bord van vandaag nog niet gespeeld.",
+          "open": "Het bord van vandaag heeft {pieceCount, plural, one {# stuk} other {# stukken}} en {memorizeSeconds, plural, one {# seconde} other {# seconden}} om te bestuderen. Je hebt het bord van vandaag nog niet gespeeld.",
           "played": "Je zette {correct} van {pieceCount, plural, one {# stuk} other {# stukken}} goed, {accuracy} procent.",
           "unfinished": "Je opende het bord van vandaag en ging weg voor de uitslag. Eén poging per dag op dit apparaat.",
           "streak": "Dagreeks {current, plural, one {# dag} other {# dagen}}{forgiven, plural, =0 {} one {, # gemiste dag vergeven} other {, # gemiste dagen vergeven}} · langste {longest, plural, one {# dag} other {# dagen}}",

@@ -546,7 +546,7 @@
           "title": "Une position par jour, la même pour tout le monde.",
           "desc": "Une nouvelle position s’ouvre chaque jour à minuit UTC. Tout le monde reçoit les mêmes 6 pièces et 10 secondes d’étude, et vous n’avez qu’un essai.",
           "play": "Jouer l’échiquier du jour",
-          "open": "Vous n’avez pas encore joué l’échiquier du jour.",
+          "open": "Le plateau du jour compte {pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}}, avec {memorizeSeconds, plural, one {# seconde} many {# secondes} other {# secondes}} pour l’étudier. Vous n’avez pas encore joué l’échiquier du jour.",
           "played": "Vous avez bien placé {correct} sur {pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}}, soit {accuracy} pour cent.",
           "unfinished": "Vous avez ouvert l’échiquier du jour et l’avez quitté avant le résultat. Un essai par jour sur cet appareil.",
           "streak": "Série quotidienne : {current, plural, one {# jour} many {# jours} other {# jours}}{forgiven, plural, =0 {} one {, # jour manqué toléré} many {, # jours manqués tolérés} other {, # jours manqués tolérés}} · plus longue : {longest, plural, one {# jour} many {# jours} other {# jours}}",

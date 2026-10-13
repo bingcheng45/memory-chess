@@ -546,7 +546,7 @@
           "title": "Mỗi ngày một bàn cờ, giống nhau cho tất cả.",
           "desc": "Một thế cờ mới mở ra mỗi ngày vào nửa đêm giờ UTC. Ai cũng nhận cùng 6 quân và 10 giây để quan sát, và bạn chỉ có một lần thử.",
           "play": "Chơi bàn cờ hôm nay",
-          "open": "Bạn chưa chơi bàn cờ hôm nay.",
+          "open": "Bàn cờ hôm nay có {pieceCount, plural, other {# quân}} và {memorizeSeconds, plural, other {# giây}} để ghi nhớ. Bạn chưa chơi bàn cờ hôm nay.",
           "played": "Bạn đặt đúng {correct} trên {pieceCount, plural, other {# quân}}, đạt {accuracy} phần trăm.",
           "unfinished": "Bạn đã mở bàn cờ hôm nay và rời đi trước khi có kết quả. Mỗi ngày chỉ có một lần thử trên thiết bị này.",
           "streak": "Chuỗi ngày {current, plural, other {# ngày}}{forgiven, plural, =0 {} other {, bỏ qua # ngày lỡ}} · dài nhất {longest, plural, other {# ngày}}",

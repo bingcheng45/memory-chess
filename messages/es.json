@@ -546,7 +546,7 @@
           "title": "Un tablero al día, el mismo para todos.",
           "desc": "Cada día a medianoche UTC se abre una posición nueva. Todos reciben las mismas 6 piezas y 10 segundos de estudio, y tienes un solo intento.",
           "play": "Jugar el tablero del día",
-          "open": "Todavía no has jugado el tablero de hoy.",
+          "open": "El tablero de hoy tiene {pieceCount, plural, one {# pieza} many {# piezas} other {# piezas}} y {memorizeSeconds, plural, one {# segundo} many {# segundos} other {# segundos}} para estudiarlo. Todavía no has jugado el tablero de hoy.",
           "played": "Colocaste bien {correct} de {pieceCount, plural, one {# pieza} many {# piezas} other {# piezas}}, un {accuracy} por ciento.",
           "unfinished": "Abriste el tablero de hoy y saliste antes del resultado. Un intento al día en este dispositivo.",
           "streak": "Racha diaria: {current, plural, one {# día} many {# días} other {# días}}{forgiven, plural, =0 {} one {, # día perdido perdonado} many {, # días perdidos perdonados} other {, # días perdidos perdonados}} · la más larga: {longest, plural, one {# día} many {# días} other {# días}}",

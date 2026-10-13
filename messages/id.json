@@ -546,7 +546,7 @@
           "title": "Satu papan sehari, sama untuk semua orang.",
           "desc": "Posisi baru dibuka setiap hari pukul 00.00 UTC. Semua orang mendapat 6 bidak yang sama dan 10 detik untuk mengamatinya, dan kamu hanya punya satu kesempatan.",
           "play": "Mainkan papan hari ini",
-          "open": "Kamu belum memainkan papan hari ini.",
+          "open": "Papan hari ini berisi {pieceCount, plural, other {# bidak}} dengan {memorizeSeconds, plural, other {# detik}} untuk mempelajarinya. Kamu belum memainkan papan hari ini.",
           "played": "Kamu meletakkan {correct} dari {pieceCount, plural, other {# bidak}} dengan benar, {accuracy} persen.",
           "unfinished": "Kamu membuka papan hari ini dan pergi sebelum hasilnya keluar. Satu kesempatan per hari di perangkat ini.",
           "streak": "Beruntun harian {current, plural, other {# hari}}{forgiven, plural, =0 {} other {, # hari terlewat dimaafkan}} · terpanjang {longest, plural, other {# hari}}",

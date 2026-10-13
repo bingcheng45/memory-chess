@@ -546,7 +546,7 @@
           "title": "Yksi lauta päivässä, sama kaikille.",
           "desc": "Uusi asema avautuu joka päivä keskiyöllä UTC-aikaa. Kaikki saavat samat 6 nappulaa ja 10 sekuntia aikaa tutkia, ja sinulla on yksi yritys.",
           "play": "Pelaa päivän lauta",
-          "open": "Et ole vielä pelannut päivän lautaa.",
+          "open": "Tämän päivän laudalla on {pieceCount, plural, one {# nappula} other {# nappulaa}}, ja tutkimiseen on {memorizeSeconds, plural, one {# sekunti} other {# sekuntia}}. Et ole vielä pelannut päivän lautaa.",
           "played": "Asetit oikein {correct} {pieceCount, plural, one {# nappulasta} other {# nappulasta}}, eli {accuracy} prosenttia.",
           "unfinished": "Avasit päivän laudan ja poistuit ennen tulosta. Yksi yritys päivässä tällä laitteella.",
           "streak": "Päiväputki {current, plural, one {# päivä} other {# päivää}}{forgiven, plural, =0 {} one {, # väliin jäänyt päivä annettu anteeksi} other {, # väliin jäänyttä päivää annettu anteeksi}} · pisin {longest, plural, one {# päivä} other {# päivää}}",

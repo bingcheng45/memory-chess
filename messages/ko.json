@@ -546,7 +546,7 @@
           "title": "하루에 보드 하나, 모두에게 같은 보드.",
           "desc": "매일 UTC 자정에 새 국면이 열립니다. 모두가 같은 기물 6개와 10초의 암기 시간을 받고, 기회는 한 번입니다.",
           "play": "오늘의 보드 플레이",
-          "open": "오늘의 보드를 아직 플레이하지 않았습니다.",
+          "open": "오늘의 보드는 기물 {pieceCount, plural, other {#개}}, 외울 시간은 {memorizeSeconds, plural, other {#초}}입니다.오늘의 보드를 아직 플레이하지 않았습니다.",
           "played": "기물 {pieceCount, plural, other {#개}} 중 {correct}개를 바르게 놓았습니다. {accuracy}퍼센트입니다.",
           "unfinished": "오늘의 보드를 열었지만 결과가 나오기 전에 나갔습니다. 이 기기에서는 하루에 한 번만 도전할 수 있습니다.",
           "streak": "데일리 연속 {current, plural, other {#일}}{forgiven, plural, =0 {} other {, 놓친 #일 면제}} · 최장 {longest, plural, other {#일}}",

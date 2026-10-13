@@ -546,7 +546,7 @@
           "title": "Günde bir tahta, herkes için aynı.",
           "desc": "Her gün UTC gece yarısında yeni bir konum açılır. Herkes aynı 6 taşı ve incelemek için 10 saniye alır. Senin de tek bir hakkın var.",
           "play": "Günün tahtasını oyna",
-          "open": "Günün tahtasını henüz oynamadın.",
+          "open": "Bugünün tahtasında {pieceCount, plural, one {# taş} other {# taş}} var ve incelemek için {memorizeSeconds, plural, one {# saniye} other {# saniye}} süren var. Günün tahtasını henüz oynamadın.",
           "played": "{pieceCount, plural, one {# taştan} other {# taştan}} {correct} tanesini doğru yerleştirdin, yüzde {accuracy}.",
           "unfinished": "Günün tahtasını açtın ve sonucu görmeden ayrıldın. Bu cihazda günde tek hak var.",
           "streak": "Günlük seri {current, plural, one {# gün} other {# gün}}{forgiven, plural, =0 {} one {, # kaçırılan gün affedildi} other {, # kaçırılan gün affedildi}} · en uzun {longest, plural, one {# gün} other {# gün}}",

@@ -546,7 +546,7 @@
           "title": "Jedna deska denně, pro všechny stejná.",
           "desc": "Nová pozice se otevírá každý den o půlnoci UTC. Všichni dostanou stejných 6 figur a 10 sekund na prohlížení a máte jeden pokus.",
           "play": "Zahrát desku dne",
-          "open": "Dnešní desku jste ještě nehráli.",
+          "open": "Dnešní deska má {pieceCount, plural, one {# figurku} few {# figurky} many {# figurky} other {# figurek}} a {memorizeSeconds, plural, one {# sekundu} few {# sekundy} many {# sekundy} other {# sekund}} na zapamatování. Dnešní desku jste ještě nehráli.",
           "played": "Správně jste umístili {correct} z {pieceCount, plural, one {# figury} few {# figur} many {# figury} other {# figur}}, tedy {accuracy} %.",
           "unfinished": "Dnešní desku jste otevřeli a odešli před výsledkem. Na tomto zařízení máte jeden pokus denně.",
           "streak": "Denní série {current, plural, one {# den} few {# dny} many {# dne} other {# dní}}{forgiven, plural, =0 {} one {, # vynechaný den odpuštěn} few {, # vynechané dny odpuštěny} many {, # vynechaného dne odpuštěno} other {, # vynechaných dní odpuštěno}} · nejdelší {longest, plural, one {# den} few {# dny} many {# dne} other {# dní}}",

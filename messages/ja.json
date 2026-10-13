@@ -546,7 +546,7 @@
           "title": "1日1つ、全員に同じ盤面。",
           "desc": "毎日 UTC の午前0時に、新しい局面が公開されます。全員に同じ6個の駒と10秒の記憶時間が与えられ、挑戦は1回だけです。",
           "play": "今日の盤面をプレイ",
-          "open": "今日の盤面はまだプレイしていません。",
+          "open": "今日の盤面は駒が{pieceCount, plural, other {#個}}、覚える時間は{memorizeSeconds, plural, other {#秒}}です。今日の盤面はまだプレイしていません。",
           "played": "{pieceCount, plural, other {#駒}}中{correct}駒を正しく置けました。{accuracy}パーセントです。",
           "unfinished": "今日の盤面を開きましたが、結果が出る前に離れました。このデバイスでは1日1回の挑戦です。",
           "streak": "デイリー連続{current, plural, other {#日}}{forgiven, plural, =0 {} other {（ミスした#日を免除）}} · 最長{longest, plural, other {#日}}",

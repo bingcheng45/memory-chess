@@ -26,11 +26,14 @@ const validEntry = {
   skill_rating: 1240,
 };
 
-function post(body: object) {
+let nextAddress = 0;
+const freshAddress = () => `198.51.100.${(nextAddress += 1)}`;
+
+function post(body: object, address = freshAddress()) {
   return POST(
     new NextRequest("http://localhost/api/leaderboard", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-forwarded-for": address },
       body: JSON.stringify(body),
     }),
   );
@@ -59,6 +62,23 @@ describe("POST /api/leaderboard", () => {
 
     expect(response.status).toBe(200);
     expect(submitLeaderboardEntry).toHaveBeenCalledWith({ ...validEntry, country_code: WORLD_CODE });
+  });
+
+  it("takes five scores a minute from one address and refuses the sixth with a Retry-After", async () => {
+    const address = freshAddress();
+    const statuses = [];
+    for (let score = 0; score < 5; score += 1) statuses.push((await post(validEntry, address)).status);
+    const refused = await post(validEntry, address);
+    const other = await post(validEntry);
+
+    expect(statuses).toEqual([200, 200, 200, 200, 200]);
+    expect([refused.status, refused.headers.get("Retry-After"), await refused.json(), other.status]).toEqual([
+      429,
+      "60",
+      { error: "Too many scores submitted. Please wait a minute." },
+      200,
+    ]);
+    expect(submitLeaderboardEntry).toHaveBeenCalledTimes(6);
   });
 
   it("rejects a round with no correct piece, which the board would never show", async () => {

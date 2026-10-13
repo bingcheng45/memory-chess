@@ -8,8 +8,13 @@ import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { utcDayOf } from '@/lib/lab/daily';
 import { dailySettingOf } from '@/lib/daily/schedule';
 import { DAILY_BOARD, type LeaderboardBoard } from '@/types/leaderboard';
+import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
 
 const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
+
+/** A round takes longer than ten seconds to play, so more scores than this from one address are a script. */
+const SCORES_PER_MINUTE = 5;
+const allowScore = fixedWindowLimiter({ limit: SCORES_PER_MINUTE, windowMs: 60_000, maxKeys: 5_000 });
 
 /** The board is public in the repo, so a script could post a perfect row; no person rebuilds a piece faster than this. */
 const DAILY_SECONDS_PER_PIECE = 0.25;
@@ -93,6 +98,14 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
+  const verdict = allowScore(clientAddress(request.headers), Date.now());
+  if (!verdict.allowed) {
+    return NextResponse.json(
+      { error: 'Too many scores submitted. Please wait a minute.' },
+      { status: 429, headers: { 'Retry-After': String(verdict.retryAfterSeconds) } },
+    );
+  }
+
   try {
     const body = await request.json();
     

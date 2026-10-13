@@ -21,7 +21,20 @@
 .lab-paper .lab-tiles[data-size="summary"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .lab-paper .lab-tiles[data-size="more"] { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 .lab-paper .lab-tile { display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 140px; padding: 20px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
-.lab-paper .lab-tiles[data-size="lead"] .lab-tile { min-height: 168px; }
+/* The lead and summary tiles reserve the tallest row a record draws at each width, measured by
+   `npm run lab:dash-heights`, so the summary under them stays put when the figures arrive. Rerun it after a copy or layout change. */
+.lab-paper { --lab-h-dash-lead: 176px; --lab-h-dash-summary: 160px; }
+@media (max-width: 1023px) { .lab-paper { --lab-h-dash-lead: 168px; } }
+@media (max-width: 767px) { .lab-paper { --lab-h-dash-lead: 160px; --lab-h-dash-summary: 144px; } }
+@media (max-width: 479px) { .lab-paper { --lab-h-dash-lead: 184px; --lab-h-dash-summary: 160px; } }
+@media (max-width: 359px) { .lab-paper { --lab-h-dash-lead: 224px; --lab-h-dash-summary: 184px; } }
+.lab-paper:not(:lang(en)) { --lab-h-dash-lead: 216px; --lab-h-dash-summary: 160px; }
+@media (max-width: 1023px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 176px; --lab-h-dash-summary: 176px; } }
+@media (max-width: 767px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 184px; --lab-h-dash-summary: 160px; } }
+@media (max-width: 479px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 248px; --lab-h-dash-summary: 224px; } }
+@media (max-width: 359px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 280px; --lab-h-dash-summary: 248px; } }
+.lab-paper .lab-tiles[data-size="lead"] .lab-tile { min-height: var(--lab-h-dash-lead); }
+.lab-paper .lab-tiles[data-size="summary"] .lab-tile { min-height: var(--lab-h-dash-summary); }
 .lab-paper .lab-tile-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
 .lab-paper .lab-tile-label { font: 600 14px/1.3 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .lab-tile-figure { font: 500 15px/1.1 var(--lp-ui); color: var(--lp-ink-2); overflow-wrap: anywhere; }
@@ -143,7 +156,6 @@
   .lab-paper .lab-tiles { gap: 12px; }
   .lab-paper .lab-tiles[data-size="summary"], .lab-paper .lab-tiles[data-size="more"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .lab-paper .lab-tile { padding: 16px; min-height: 124px; }
-  .lab-paper .lab-tiles[data-size="lead"] .lab-tile { min-height: 148px; }
   .lab-paper .lab-tile-value { font-size: 28px; }
   .lab-paper .lab-tiles[data-size="lead"] .lab-tile-value { font-size: 34px; }
   .lab-paper .lab-tile-need, .lab-paper .lab-tile-note { font-size: 14px; }

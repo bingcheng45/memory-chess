@@ -1009,6 +1009,7 @@
       "solutionTime": "Temps de résolution",
       "recallSpeed": "Vitesse de rappel",
       "placement": "Placement de la cote : manche {round} sur {total}",
+      "freeSkip": "Passe gratuite du jour : un échiquier vide ne change pas votre cote. Le suivant aujourd’hui la changera.",
       "piecesPerSecond": "{value} pièces/s",
       "actions": "Actions sur le résultat",
       "tryAgain": "Réessayer",

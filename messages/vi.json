@@ -1009,6 +1009,7 @@
       "solutionTime": "Thời gian hoàn thành",
       "recallSpeed": "Tốc độ nhớ lại",
       "placement": "Xếp hạng ban đầu: vòng {round}/{total}",
+      "freeSkip": "Lượt bỏ qua miễn phí trong ngày: bàn cờ trống không làm đổi điểm của bạn. Bàn trống tiếp theo hôm nay sẽ tính.",
       "piecesPerSecond": "{value} quân/giây",
       "actions": "Thao tác với kết quả",
       "tryAgain": "Thử lại",

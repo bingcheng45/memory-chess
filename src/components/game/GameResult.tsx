@@ -41,6 +41,7 @@ import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import ShareResult from "@/components/game/ShareResult";
 import { roundShareOf } from "@/components/game/roundShare";
 import { START_RATING } from "@/lib/game/rating";
+import type { RoundOutcome } from "@/lib/game/roundOutcome";
 
 // Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
 // never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.
@@ -57,6 +58,18 @@ type GameStateWithRating = GameState & {
   extraPieces?: number;
   totalPiecesPlaced?: number;
 };
+
+/** The line under the score that says why the rating moved as it did, or null when the change says it all. */
+function ratingNoteOf(outcome: RoundOutcome | undefined, t: ReturnType<typeof useTranslations<"game.result">>): string | null {
+  switch (outcome?.phase) {
+    case "placement":
+      return t("placement", { round: outcome.breakdown.round, total: outcome.breakdown.of });
+    case "freeSkip":
+      return t("freeSkip");
+    default:
+      return null;
+  }
+}
 
 interface GameResultProps {
   readonly onTryAgain: () => void;
@@ -289,6 +302,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     );
   // A perfect round makes trying again the next step; otherwise a new setting is.
   const tryAgainFirst = accuracy === 100;
+  const ratingNote = ratingNoteOf(gameState.rating, t);
 
   return (
     <div className="lab-result w-full space-y-6 pb-4">
@@ -304,9 +318,9 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <span aria-hidden="true"> · </span>
           <span>{t("recallSpeed")}</span> <span className="lab-mono">{recallSpeed}</span>
         </p>
-        {gameState.rating?.phase === "placement" && (
-          <p className="lab-result-sub" data-rating-phase="placement">
-            {t("placement", { round: gameState.rating.breakdown.round, total: gameState.rating.breakdown.of })}
+        {ratingNote && (
+          <p className="lab-result-sub" data-rating-phase={gameState.rating?.phase}>
+            {ratingNote}
           </p>
         )}
 

@@ -1009,6 +1009,7 @@
       "solutionTime": "Lösungszeit",
       "recallSpeed": "Abruftempo",
       "placement": "Einstufung der Wertungszahl: Runde {round} von {total}",
+      "freeSkip": "Freies Überspringen des Tages: Ein leeres Brett ändert deine Wertungszahl nicht. Das nächste heute schon.",
       "piecesPerSecond": "{value} Figuren/s",
       "actions": "Aktionen zum Ergebnis",
       "tryAgain": "Nochmal",

@@ -1009,6 +1009,7 @@
       "solutionTime": "Çözüm süresi",
       "recallSpeed": "Hatırlama hızı",
       "placement": "Puan yerleştirme: {total} turdan {round}. tur",
+      "freeSkip": "Günün ücretsiz atlaması: boş bir tahta puanını değiştirmez. Bugünkü bir sonraki değiştirir.",
       "piecesPerSecond": "{value} taş/sn",
       "actions": "Sonuç işlemleri",
       "tryAgain": "Tekrar dene",

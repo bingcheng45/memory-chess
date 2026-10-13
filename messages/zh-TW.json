@@ -1009,6 +1009,7 @@
       "solutionTime": "重建用時",
       "recallSpeed": "回想速度",
       "placement": "定級中：第 {round} 輪，共 {total} 輪",
+      "freeSkip": "今日免費跳過：空棋盤不會改變你的評分。今天的下一個空棋盤會計入。",
       "piecesPerSecond": "{value} 子/秒",
       "actions": "結果操作",
       "tryAgain": "再來一局",

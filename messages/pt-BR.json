@@ -1009,6 +1009,7 @@
       "solutionTime": "Tempo de resolução",
       "recallSpeed": "Velocidade de recordação",
       "placement": "Classificação do rating: rodada {round} de {total}",
+      "freeSkip": "Pulo grátis do dia: um tabuleiro vazio não muda seu rating. O próximo de hoje muda.",
       "piecesPerSecond": "{value} peças/s",
       "actions": "Ações do resultado",
       "tryAgain": "Tentar de novo",

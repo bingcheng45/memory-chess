@@ -91,6 +91,18 @@ describe("ResultDeltas", () => {
     expect(row(section, "bestAccuracy").querySelector(".lab-trend")).toBeNull();
   });
 
+  it("shows the rating and the win streak unchanged after the day's free skip, which stays out of the rated history", () => {
+    const earlier = [roundV2({ id: "a", ...at("2026-10-06", 9) }), roundV2({ id: "b", ...at(TODAY, 9) }), roundV2({ id: "c", ...at(TODAY, 10) })];
+    const record = [...earlier, roundV2({ id: "d", ...at(TODAY, 12), placedFen: "8/8/8/8/8/8/8/8" })];
+
+    const section = afterRound(record, { rating: 1100, streak: 3, before: { skillRating: 1100, streak: 3 }, history: [rated("c", 9)] });
+
+    expect([row(section, "rating"), row(section, "winStreak")].map((item) => item.querySelector(".lab-sr")?.textContent)).toEqual([
+      "Skill rating 1,100, no change",
+      "Win streak 3 rounds, no change",
+    ]);
+  });
+
   it("shows faster rebuilding as better in green with a down arrow and the size of its fall", () => {
     const earlier = [9, 10, 11, 12, 13].map((hour) => roundV2({ id: `s${hour}`, ...at(TODAY, hour), solveMs: 20000 }));
     const record = [...earlier, roundV2({ id: "fast", ...at(TODAY, 14), solveMs: 8000 })];

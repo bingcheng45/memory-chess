@@ -1009,6 +1009,7 @@
       "solutionTime": "Waktu penyelesaian",
       "recallSpeed": "Kecepatan mengingat",
       "placement": "Penempatan rating: ronde {round} dari {total}",
+      "freeSkip": "Lewati gratis hari ini: papan kosong tidak mengubah rating Anda. Papan kosong berikutnya hari ini akan mengubahnya.",
       "piecesPerSecond": "{value} bidak/dtk",
       "actions": "Tindakan untuk hasil",
       "tryAgain": "Coba lagi",

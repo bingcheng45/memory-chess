@@ -147,13 +147,22 @@ describe("GameResult", () => {
       phase: "placement",
       rating: 1080,
       change: 40,
-      breakdown: { round: 3, of: 10, boardLevel: 1000, gate: 1, performance: 1400 },
+      breakdown: { round: 3, of: 10, boardLevel: 1000, challenge: 1000, estimate: 1400 },
     };
     const rated: RatingResult = {
       phase: "rated",
       rating: 1208,
       change: 8,
-      breakdown: { boardLevel: 1000, expected: 0.76, outcome: 1, base: 7.7, risk: { direction: "normal", sigmas: 0, multiplier: 1 }, speed: 1 },
+      breakdown: {
+        boardLevel: 1000,
+        challenge: 1000,
+        expected: 0.76,
+        outcome: 1,
+        base: 7.7,
+        risk: { direction: "normal", sigmas: 0, multiplier: 1 },
+        form: { surprise: 0, multiplier: 1 },
+        speed: 1,
+      },
     };
 
     mockGameState = { ...baseGameState, rating: placement };

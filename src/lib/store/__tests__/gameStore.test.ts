@@ -323,7 +323,7 @@ describe("saving finished rounds to the history", () => {
         totalPlacements: 6,
         perfectScore: false,
         level: 1,
-        skillRatingChange: -28,
+        skillRatingChange: -4,
         streak: 0,
         facts: { pieceCount: 6, studySeconds: 10, rebuildSeconds: 15, accuracy: 50 },
       },
@@ -340,7 +340,7 @@ describe("saving finished rounds to the history", () => {
         totalPlacements: 2,
         perfectScore: true,
         level: 1,
-        skillRatingChange: -45,
+        skillRatingChange: 0,
         streak: 1,
         facts: { pieceCount: 2, studySeconds: 10, rebuildSeconds: 4, accuracy: 100 },
       },
@@ -351,7 +351,7 @@ describe("saving finished rounds to the history", () => {
     playRound({ pieceCount: 2, solveMs: 4000 });
 
     const stored: { accuracy: number; skillRatingChange: number }[] = storedState().history;
-    expect(stored.map(({ accuracy, skillRatingChange }) => [accuracy, skillRatingChange])).toEqual([[100, -45]]);
+    expect(stored.map(({ accuracy, skillRatingChange }) => [accuracy, skillRatingChange])).toEqual([[100, 0]]);
   });
 
   it("keeps the 30 newest rounds", () => {
@@ -411,7 +411,7 @@ describe("placement and rated rounds", () => {
 
     const won = playRound({ pieceCount: 6, solveMs: 4000 });
 
-    expect([won.rating?.phase, won.skillRatingChange, won.skillRating]).toEqual(["rated", 8, 1208]);
+    expect([won.rating?.phase, won.skillRatingChange, won.skillRating]).toEqual(["rated", 11, 1211]);
   });
 
   it("starts placement over rows saved without rated facts", () => {
@@ -450,7 +450,7 @@ describe("keeping the win streak across visits", () => {
   it("stores the win streak with the rating", () => {
     playRound({ pieceCount: 2, solveMs: 4000 });
 
-    expect(storedState().gameState).toEqual({ pieceCount: 2, memorizeTime: 10, level: 1, skillRating: 955, streak: 1 });
+    expect(storedState().gameState).toEqual({ pieceCount: 2, memorizeTime: 10, level: 1, skillRating: 1000, streak: 1 });
   });
 
   it("starts a rating stored before the placement and Elo rating again at 1000, keeping the streak and the rows", async () => {
@@ -516,15 +516,15 @@ describe("how a placement round moves the skill rating", () => {
     const firstRating = first.skillRating;
     const second = playRound({ pieceCount: 6, correct: 0, solveMs: 1 });
 
-    expect([first.accuracy, first.skillRatingChange, firstRating, second.skillRatingChange, second.skillRating]).toEqual([0, -40, 960, -40, 920]);
+    expect([first.accuracy, first.skillRatingChange, firstRating, second.skillRatingChange, second.skillRating]).toEqual([0, -100, 900, -100, 800]);
   });
 
   it("gives an instant perfect round no more rebuild credit than one at 1.25 s a piece", () => {
-    const instant = playRound({ pieceCount: 2, solveMs: 100 }).skillRatingChange;
+    const instant = playRound({ pieceCount: 6, solveMs: 100 }).skillRatingChange;
     freshPlayer();
-    const quick = playRound({ pieceCount: 2, solveMs: 2500 }).skillRatingChange;
+    const quick = playRound({ pieceCount: 6, solveMs: 7500 }).skillRatingChange;
 
-    expect([instant, quick]).toEqual([-41, -41]);
+    expect([instant, quick]).toEqual([46, 46]);
   });
 
   it("lowers the rating for a half-recalled board", () => {
@@ -577,9 +577,9 @@ describe("the standing a round started from", () => {
 
     expect([wonBefore, [won.skillRating, won.streak], lost.standingBefore, [lost.skillRating, lost.streak]]).toEqual([
       { skillRating: 1000, streak: 0 },
-      [955, 1],
-      { skillRating: 955, streak: 1 },
-      [915, 0],
+      [1000, 1],
+      { skillRating: 1000, streak: 1 },
+      [955, 0],
     ]);
   });
 });

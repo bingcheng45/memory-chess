@@ -7,7 +7,12 @@ import { msToNextUtcDay } from '@/lib/lab/daily';
 const clockOf = (locale: string, at: number, timeZone?: string) =>
   new Intl.DateTimeFormat(locale, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone }).format(at);
 
-/** The day's setting and its reset. The local time and the time left need the viewer's clock, so the line holds its height until they arrive. */
+function countdownFrom(locale: string, now: number) {
+  const left = msToNextUtcDay(now);
+  const minutes = Math.floor(left / 60_000);
+  return { local: clockOf(locale, now + left), hours: Math.floor(minutes / 60), minutes: minutes % 60 };
+}
+
 export function DailyResetNote({ day, now }: { day: string; now: number | null }) {
   const t = useTranslations('leaderboard.daily');
   const td = useTranslations('daily.page');
@@ -15,12 +20,7 @@ export function DailyResetNote({ day, now }: { day: string; now: number | null }
   const setting = dailySettingOf(day);
   const utc = clockOf(locale, Date.parse(day), 'UTC');
 
-  let reset = t('resetsAtUtc', { utc });
-  if (now !== null) {
-    const left = msToNextUtcDay(now);
-    const minutes = Math.floor(left / 60_000);
-    reset = t('resetsAt', { utc, local: clockOf(locale, now + left), hours: Math.floor(minutes / 60), minutes: minutes % 60 });
-  }
+  const reset = now === null ? t('resetsAtUtc', { utc }) : t('resetsAt', { utc, ...countdownFrom(locale, now) });
 
   return (
     <div className="lb-daily">

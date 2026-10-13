@@ -4,25 +4,24 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import * as Tabs from '@radix-ui/react-tabs';
-import LeaderboardTable, { playHref, type EntryDetails } from '@/components/leaderboard/LeaderboardTable';
+import LeaderboardTable, { playHrefOf, type EntryDetails } from '@/components/leaderboard/LeaderboardTable';
 import { DailyResetNote } from '@/components/leaderboard/DailyResetNote';
 import { useNow } from '@/components/home/DailyResetsIn';
 import { Link } from '@/i18n/navigation';
 import { utcDayOf } from '@/lib/lab/daily';
-import { RANKED_DIFFICULTIES } from '@/lib/reference/facts';
+import { RANKED_DIFFICULTIES, type RankedDifficulty } from '@/lib/reference/facts';
 import { DAILY_BOARD, type LeaderboardEntry } from '@/types/leaderboard';
 
 const LEADERBOARD_TABS = [DAILY_BOARD, ...RANKED_DIFFICULTIES] as const;
 type LeaderboardTab = (typeof LEADERBOARD_TABS)[number];
 
-/** A board's rows, and for the daily board the UTC day they belong to. */
 interface Board {
   data: LeaderboardEntry[];
   error?: string;
   day?: string;
 }
 
-export type LeaderboardBoards = Record<LeaderboardTab, Board> & { daily: { day: string } };
+export type LeaderboardBoards = Record<RankedDifficulty, Board> & { daily: Board & { day: string } };
 
 interface LeaderboardTabsProps {
   boards: LeaderboardBoards;
@@ -34,9 +33,9 @@ function isLeaderboardTab(value: string | null): value is LeaderboardTab {
   return LEADERBOARD_TABS.includes(value as LeaderboardTab);
 }
 
-/** A failed read keeps rows a few minutes old, but never rows of a day other than the one it asked for. */
-function settle(boards: LeaderboardBoards, tab: LeaderboardTab, read: Board): LeaderboardBoards {
-  return read.error && boards[tab].day === read.day ? boards : { ...boards, [tab]: read };
+function applyRead(boards: LeaderboardBoards, tab: LeaderboardTab, read: Board): LeaderboardBoards {
+  const isFailedReadOfSameDay = read.error !== undefined && boards[tab].day === read.day;
+  return isFailedReadOfSameDay ? boards : { ...boards, [tab]: read };
 }
 
 function parseParam(value: string | null, parse: (value: string) => number): number | null {
@@ -56,12 +55,13 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
 
   // The server boards are up to one revalidation window old. A player arriving
   // from the result screen needs the score they just submitted, so only that
-  // visit refreshes the open tab. The daily board is read for the viewer's own
-  // UTC day whenever it is open, so it turns over at midnight without a reload.
+  // visit refreshes the open tab.
   const isJustSubmitted = Boolean(entryDetails?.player);
 
+  const isRefreshing = activeTab === DAILY_BOARD ? dailyDay !== null : isJustSubmitted;
+
   useEffect(() => {
-    if (activeTab === DAILY_BOARD ? dailyDay === null : !isJustSubmitted) return;
+    if (!isRefreshing) return;
     const controller = new AbortController();
     const query = dailyDay === null ? `difficulty=${activeTab}` : `difficulty=${DAILY_BOARD}&daily_day=${dailyDay}`;
     const day = dailyDay ?? undefined;
@@ -69,16 +69,16 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
     fetch(`/api/leaderboard?${query}`, { signal: controller.signal, cache: 'no-store' })
       .then((response) => response.json())
       .then(({ data, error }: { data?: LeaderboardEntry[]; error?: string }) => {
-        setBoards((current) => settle(current, activeTab, { data: data ?? [], error, day }));
+        setBoards((current) => applyRead(current, activeTab, { data: data ?? [], error, day }));
       })
       .catch((err) => {
         if (err.name === 'AbortError') return;
         console.error('Error refreshing leaderboard data:', err);
-        setBoards((current) => settle(current, activeTab, { data: [], error: String(err), day }));
+        setBoards((current) => applyRead(current, activeTab, { data: [], error: String(err), day }));
       });
 
     return () => controller.abort();
-  }, [activeTab, dailyDay, isJustSubmitted]);
+  }, [activeTab, dailyDay, isRefreshing]);
 
   const activeBoard = boards[activeTab];
 
@@ -127,7 +127,7 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
 
       {activeBoard.data.length > 0 && !activeBoard.error && (
         <div className="lb-cta">
-          <Link href={playHref(activeTab)} className="lab-btn lab-btn-primary">
+          <Link href={playHrefOf(activeTab)} className="lab-btn lab-btn-primary">
             {t("claimRank")}
           </Link>
         </div>

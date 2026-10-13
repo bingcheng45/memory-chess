@@ -13,15 +13,16 @@ export const revalidate = 300;
 
 export default async function LeaderboardPage() {
   const day = utcDayOf(Date.now());
-  const [daily, ...results] = await Promise.all([
+  const all = await Promise.all([
     getLeaderboard({ difficulty: DAILY_BOARD, daily_day: day }),
     ...RANKED_DIFFICULTIES.map((difficulty) => getLeaderboard({ difficulty })),
   ]);
+  const [daily, ...results] = all;
   // A failed revalidation that throws keeps serving the last good page; one that
   // renders would cache the error for the whole window. A build has no last
   // good page and `next dev` caches nothing, so both render the unavailable
   // state instead.
-  const failure = [daily, ...results].find((result) => result.error);
+  const failure = all.find((result) => result.error);
   if (
     failure &&
     process.env.NODE_ENV === 'production' &&

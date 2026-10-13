@@ -477,6 +477,15 @@ describe("how solve speed moves the skill rating", () => {
     expect([top.skillRating, top.skillRatingChange]).toEqual([5000, 10]);
   });
 
+  it("plays on from a rating of 0 rather than the starting rating, through a reset", () => {
+    useGameStore.setState(({ gameState }) => ({ gameState: { ...gameState, skillRating: 0 } }));
+    store().resetGame();
+    const held = store().getSkillRating();
+    const won = playRound({ pieceCount: 2, solveMs: 4000 });
+
+    expect([held, won.standingBefore?.skillRating, won.skillRating]).toEqual([0, 0, 114]);
+  });
+
   it("leaves a slow perfect round as it was", () => {
     const slow = playRound({ pieceCount: 6, solveMs: 60000 });
 

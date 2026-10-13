@@ -1231,8 +1231,12 @@
       "message": "Almeno 10 caratteri."
     },
     "errors": {
-      "submitFailed": "Impossibile inviare il modulo{details}",
-      "generic": "Si è verificato un errore durante l’invio del modulo. Riprova."
+      "generic": "Si è verificato un errore durante l’invio del modulo. Riprova.",
+      "reasons": {
+        "invalid": "Alcuni dati non sono stati accettati. Controlla il modulo e riprova.",
+        "unavailable": "Al momento non è possibile inviare messaggi. Riprova più tardi.",
+        "notDelivered": "Non è stato possibile consegnare il tuo messaggio. Riprova."
+      }
     }
   },
   "changelog": {

@@ -1231,8 +1231,12 @@
       "message": "Pelo menos 10 caracteres."
     },
     "errors": {
-      "submitFailed": "Não foi possível enviar o formulário{details}",
-      "generic": "Ocorreu um erro ao enviar o formulário. Tente novamente."
+      "generic": "Ocorreu um erro ao enviar o formulário. Tente novamente.",
+      "reasons": {
+        "invalid": "Alguns dados não foram aceitos. Confira o formulário e tente novamente.",
+        "unavailable": "Não é possível enviar mensagens agora. Tente novamente mais tarde.",
+        "notDelivered": "Não foi possível entregar sua mensagem. Tente novamente."
+      }
     }
   },
   "changelog": {

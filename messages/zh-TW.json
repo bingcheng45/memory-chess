@@ -1231,8 +1231,12 @@
       "message": "至少 10 個字元。"
     },
     "errors": {
-      "submitFailed": "表單送出失敗{details}",
-      "generic": "送出表單時發生錯誤，請再試一次。"
+      "generic": "送出表單時發生錯誤，請再試一次。",
+      "reasons": {
+        "invalid": "部分資料未被接受，請檢查表單後再試一次。",
+        "unavailable": "目前無法傳送訊息，請稍後再試。",
+        "notDelivered": "你的訊息未能送達，請再試一次。"
+      }
     }
   },
   "changelog": {

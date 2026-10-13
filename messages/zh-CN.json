@@ -1231,8 +1231,12 @@
       "message": "至少 10 个字符。"
     },
     "errors": {
-      "submitFailed": "表单提交失败{details}",
-      "generic": "提交表单时出错，请再试一次。"
+      "generic": "提交表单时出错，请再试一次。",
+      "reasons": {
+        "invalid": "部分信息未被接受，请检查表单后重试。",
+        "unavailable": "目前无法发送消息，请稍后再试。",
+        "notDelivered": "你的消息未能送达，请再试一次。"
+      }
     }
   },
   "changelog": {

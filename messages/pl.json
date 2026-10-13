@@ -1231,8 +1231,12 @@
       "message": "Co najmniej 10 znaków."
     },
     "errors": {
-      "submitFailed": "Nie udało się wysłać formularza{details}",
-      "generic": "Podczas wysyłania formularza wystąpił błąd. Spróbuj ponownie."
+      "generic": "Podczas wysyłania formularza wystąpił błąd. Spróbuj ponownie.",
+      "reasons": {
+        "invalid": "Niektóre dane nie zostały przyjęte. Sprawdź formularz i spróbuj ponownie.",
+        "unavailable": "Wiadomości nie można teraz wysłać. Spróbuj ponownie później.",
+        "notDelivered": "Nie udało się dostarczyć Twojej wiadomości. Spróbuj ponownie."
+      }
     }
   },
   "changelog": {

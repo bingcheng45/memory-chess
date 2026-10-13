@@ -374,6 +374,7 @@
     },
     "daily": {
       "tab": "Dagelijks",
+      "setting": "{pieces, plural, one {# stuk} other {# stukken}} · {seconds} s kijktijd",
       "resetsAtUtc": "Reset om {utc} UTC",
       "resetsAt": "Reset om {utc} UTC ({local} bij jou), {hours, plural, =0 {{minutes, plural, =0 {over minder dan een minuut} one {over # min} other {over # min}}} one {over # u {minutes} min} other {over # u {minutes} min}}"
     }

@@ -15,7 +15,6 @@ function countdownFrom(locale: string, now: number) {
 
 export function DailyResetNote({ day, now }: { day: string; now: number | null }) {
   const t = useTranslations('leaderboard.daily');
-  const td = useTranslations('daily.page');
   const locale = useLocale();
   const setting = dailySettingOf(day);
   const utc = clockOf(locale, Date.parse(day), 'UTC');
@@ -24,9 +23,7 @@ export function DailyResetNote({ day, now }: { day: string; now: number | null }
 
   return (
     <div className="lb-daily">
-      <p className="lb-daily-setting">
-        {td('pieces', { count: setting.pieceCount })} · {td('seconds', { count: setting.memorizeTime })}
-      </p>
+      <p className="lb-daily-setting">{t('setting', { pieces: setting.pieceCount, seconds: setting.memorizeTime })}</p>
       <p className="lb-daily-reset">{reset}</p>
     </div>
   );

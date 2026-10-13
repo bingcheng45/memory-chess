@@ -374,6 +374,7 @@
     },
     "daily": {
       "tab": "Quotidien",
+      "setting": "{pieces, plural, one {# pièce} many {# pièces} other {# pièces}} · {seconds} s pour mémoriser",
       "resetsAtUtc": "Réinitialisation à {utc} UTC",
       "resetsAt": "Réinitialisation à {utc} UTC ({local} chez vous), {hours, plural, =0 {{minutes, plural, =0 {dans moins d’une minute} one {dans # min} many {dans # min} other {dans # min}}} one {dans # h {minutes} min} many {dans # h {minutes} min} other {dans # h {minutes} min}}"
     }

@@ -374,6 +374,7 @@
     },
     "daily": {
       "tab": "Harian",
+      "setting": "{pieces, plural, other {# bidak}} · {seconds} dtk untuk menghafal",
       "resetsAtUtc": "Direset pukul {utc} UTC",
       "resetsAt": "Direset pukul {utc} UTC ({local} waktu Anda), {hours, plural, =0 {{minutes, plural, =0 {dalam kurang dari semenit} other {dalam # mnt}}} other {dalam # j {minutes} mnt}}"
     }

@@ -2,6 +2,9 @@ import { act, render, screen, fireEvent, waitFor } from "@/test-utils/intl";
 import LeaderboardTabsFromSearchParams, { LeaderboardTabs, type LeaderboardBoards } from "@/components/leaderboard/LeaderboardTabs";
 import type { CountryCode } from "@/lib/leaderboard/countries";
 import type { LeaderboardEntry } from "@/types/leaderboard";
+import { splitClientMessages } from "@/lib/articles/messageScope";
+import type { AbstractIntlMessages } from "next-intl";
+import enMessages from "../../../../messages/en.json";
 
 let searchParams = new URLSearchParams();
 jest.mock("next/navigation", () => ({
@@ -63,10 +66,13 @@ afterEach(() => {
   jest.restoreAllMocks();
 });
 
+// The leaderboard page receives only the shared groups; the daily page groups stay on /daily.
+const pageMessages = splitClientMessages(enMessages as unknown as AbstractIntlMessages).shared;
+
 async function renderDailyAt(iso: string, timeZone: string) {
   emulateTimeZone(timeZone);
   jest.useFakeTimers({ now: new Date(iso) });
-  render(<LeaderboardTabs boards={boards} initialTab="daily" />);
+  render(<LeaderboardTabs boards={boards} initialTab="daily" />, { messages: pageMessages });
   await act(async () => {});
 }
 

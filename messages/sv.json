@@ -374,6 +374,7 @@
     },
     "daily": {
       "tab": "Daglig",
+      "setting": "{pieces, plural, one {# pjäs} other {# pjäser}} · {seconds} s att studera",
       "resetsAtUtc": "Nollställs kl. {utc} UTC",
       "resetsAt": "Nollställs kl. {utc} UTC ({local} hos dig), {hours, plural, =0 {{minutes, plural, =0 {om under en minut} one {om # min} other {om # min}}} one {om # h {minutes} min} other {om # h {minutes} min}}"
     }

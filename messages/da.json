@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Sådan virker dagens bræt",
-      "shared": "Hver dag ved midnat UTC trækkes en ny stilling, og alle spillere i hele verden får den samme. Stillingen kommer fra et frø, der laves ud fra datoen, så ingen kan se den på forhånd, og ingen får en nemmere udgave. Fordi brættet er fælles, betyder en score på det det samme for alle, der spillede det den dag.",
+      "shared": "Hver dag ved midnat UTC trækkes en ny stilling, og alle spillere i hele verden får den samme. Stillingen kommer fra et frø, der laves ud fra datoen, så brættet er det samme for alle, og ingen får en nemmere udgave. Fordi brættet er fælles, betyder en score på det det samme for alle, der spillede det den dag.",
       "oneTry": "Du har ét forsøg. At åbne brættet tæller som forsøget, så hvis du går under husketiden og kommer tilbage, får du det ikke vist en gang til. Din enhed husker forsøget, indtil det næste bræt åbner.",
       "grid": "Når du har bygget stillingen igen, kan du se, hvilke felter du ramte rigtigt, hvilke der havde den forkerte brik, hvilke du overså, og hvor du placerede en ekstra brik. Delingsrækken viser ét felt pr. brik, sorteret efter udfald og uden at afsløre, hvor den stod, så du ikke afslører brættet for en, der endnu ikke har spillet, når du deler den.",
       "join": "For at deltage vælger du et navn på 4 til 16 tegn og det land, du spiller for. Landet kommer først fra dit tidligere valg, derefter fra din forbindelse og derefter fra din browsers sprog, og du kan altid ændre det. Din rating på det tidspunkt, du deltager, vises ved siden af dit navn.",

@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Så fungerar dagens bräde",
-      "shared": "Varje dag vid midnatt UTC lottas en ny ställning, och alla spelare i världen får samma. Ställningen kommer från ett frö som skapas av datumet, så ingen kan se den i förväg och ingen får en lättare version. Eftersom brädet är gemensamt betyder ett resultat på det samma sak för alla som spelade det den dagen.",
+      "shared": "Varje dag vid midnatt UTC lottas en ny ställning, och alla spelare i världen får samma. Ställningen kommer från ett frö som skapas av datumet, så brädet är detsamma för alla och ingen får en lättare version. Eftersom brädet är gemensamt betyder ett resultat på det samma sak för alla som spelade det den dagen.",
       "oneTry": "Du har ett försök. Att öppna brädet räknas som försöket, så om du lämnar under studietiden och kommer tillbaka får du inte se det en gång till. Din enhet minns försöket tills nästa bräde öppnar.",
       "grid": "När du har byggt upp ställningen ser du vilka rutor du hade rätt på, vilka som hade fel pjäs, vilka du missade och var du placerade en extra pjäs. Delningsraden visar en ruta per pjäs, sorterad efter utfall och utan att visa var den stod, så att du inte avslöjar brädet för någon som inte har spelat ännu när du delar den.",
       "join": "För att delta väljer du ett namn på 4 till 16 tecken och landet du spelar för. Landet utgår först från ditt tidigare val, sedan från din anslutning och sedan från webbläsarens språk, och du kan alltid ändra det. Din rating när du går med visas bredvid ditt namn.",

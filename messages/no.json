@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Slik fungerer dagens brett",
-      "shared": "Hver dag ved midnatt UTC trekkes en ny stilling, og alle spillere i verden får den samme. Stillingen kommer fra et frø laget av datoen, så ingen kan se den på forhånd, og ingen får en enklere versjon. Fordi brettet er delt, betyr en poengsum det samme for alle som spilte det den dagen.",
+      "shared": "Hver dag ved midnatt UTC trekkes en ny stilling, og alle spillere i verden får den samme. Stillingen kommer fra et frø laget av datoen, så brettet er det samme for alle, og ingen får en enklere versjon. Fordi brettet er delt, betyr en poengsum det samme for alle som spilte det den dagen.",
       "oneTry": "Du får ett forsøk. Å åpne brettet teller som forsøket, så du får ikke se det to ganger ved å forlate siden under studiefasen og komme tilbake. Enheten din husker forsøket til neste brett åpner.",
       "grid": "Når du har bygd opp stillingen, ser du hvilke ruter du fikk riktig, hvilke som hadde feil brikke, hvilke du glemte og hvor du satte en ekstra brikke. Delingsraden viser én rute per brikke, sortert etter utfall, uten noe om hvor brikken sto, så du røper ikke brettet for noen som ikke har spilt det ennå.",
       "join": "For å bli med på brettet velger du et navn på 4 til 16 tegn og landet du spiller for. Landet hentes først fra det du valgte sist, så fra tilkoblingen din og så fra nettleserspråket, og du kan alltid endre det. Ratingen din når du blir med, vises ved siden av navnet.",

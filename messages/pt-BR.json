@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Como funciona o tabuleiro diário",
-      "shared": "Todo dia à meia-noite UTC uma nova posição é sorteada, e todos os jogadores do mundo recebem a mesma. A posição vem de uma semente criada a partir da data, então ninguém pode vê-la antes e ninguém recebe uma versão mais fácil. Como o tabuleiro é compartilhado, uma pontuação nele significa a mesma coisa para todos que o jogaram naquele dia.",
+      "shared": "Todo dia à meia-noite UTC uma nova posição é sorteada, e todos os jogadores do mundo recebem a mesma. A posição vem de uma semente criada a partir da data, então o tabuleiro é o mesmo para todos e ninguém recebe uma versão mais fácil. Como o tabuleiro é compartilhado, uma pontuação nele significa a mesma coisa para todos que o jogaram naquele dia.",
       "oneTry": "Você tem uma tentativa. Abrir o tabuleiro conta como a tentativa, então sair durante a fase de estudo e voltar não mostra o tabuleiro de novo. Seu dispositivo lembra da tentativa até o próximo tabuleiro abrir.",
       "grid": "Depois de reconstruir a posição, você vê quais casas acertou, quais tinham a peça errada, quais esqueceu e onde colocou uma peça a mais. A linha para compartilhar mostra um quadradinho por peça, ordenado por resultado e sem indicar onde ela estava, então publicá-la não revela o tabuleiro para quem ainda não jogou.",
       "join": "Para entrar no tabuleiro, escolha um nome de 4 a 16 caracteres e o país que você representa. O país começa pelo que você escolheu antes, depois pela sua conexão e depois pelo idioma do navegador, e você sempre pode alterá-lo. Seu rating no momento em que você entra aparece ao lado do seu nome.",

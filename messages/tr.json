@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Günlük tahta nasıl çalışır",
-      "shared": "Her gün UTC gece yarısında yeni bir konum belirlenir ve dünyadaki her oyuncu aynısını alır. Konum, tarihten üretilen bir tohumdan gelir; bu yüzden kimse onu önceden göremez ve kimse daha kolay bir kopya almaz. Tahta ortak olduğu için, o gün oynayan herkes için bir skor aynı anlama gelir.",
+      "shared": "Her gün UTC gece yarısında yeni bir konum belirlenir ve dünyadaki her oyuncu aynısını alır. Konum, tarihten üretilen bir tohumdan gelir; bu yüzden tahta herkes için aynıdır ve kimse daha kolay bir kopya almaz. Tahta ortak olduğu için, o gün oynayan herkes için bir skor aynı anlama gelir.",
       "oneTry": "Tek deneme hakkın var. Tahtayı açmak denemeyi kullanmış sayılır; bu yüzden inceleme sırasında ayrılıp geri gelirsen tahta sana ikinci kez gösterilmez. Cihazın, sonraki tahta açılana kadar denemeyi hatırlar.",
       "grid": "Konumu yeniden kurduktan sonra hangi kareleri doğru bildiğini, hangisinde yanlış taş olduğunu, hangisini kaçırdığını ve nereye fazla taş koyduğunu görürsün. Paylaşım satırında her taş için bir kare bulunur ve kareler sonuca göre sıralanır; taşın nerede durduğuna dair hiçbir bilgi yoktur. Bu yüzden paylaşmak, henüz oynamamış birine tahtayı belli etmez.",
       "join": "Tahtaya katılmak için 4 ila 16 karakterlik bir ad ve adına oynadığın ülkeyi seç. Ülke önce daha önce seçtiğinden, sonra bağlantından, sonra tarayıcı dilinden gelir ve istediğin zaman değiştirebilirsin. Katıldığın andaki puanın adının yanında gösterilir.",

@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Cómo funciona el tablero diario",
-      "shared": "Cada día a medianoche UTC se sortea una posición nueva y todos los jugadores del mundo reciben la misma. La posición sale de una semilla creada a partir de la fecha, así que nadie puede verla antes y nadie recibe una versión más fácil. Como el tablero es compartido, una puntuación en él significa lo mismo para todos los que lo jugaron ese día.",
+      "shared": "Cada día a medianoche UTC se sortea una posición nueva y todos los jugadores del mundo reciben la misma. La posición sale de una semilla creada a partir de la fecha, así que el tablero es el mismo para todos y nadie recibe una versión más fácil. Como el tablero es compartido, una puntuación en él significa lo mismo para todos los que lo jugaron ese día.",
       "oneTry": "Tienes un intento. Abrir el tablero cuenta como el intento, así que si sales durante la fase de memorización y vuelves, no se te muestra otra vez. Tu dispositivo recuerda el intento hasta que se abre el siguiente tablero.",
       "grid": "Después de reconstruir la posición ves qué casillas acertaste, cuáles tenían la pieza equivocada, cuáles omitiste y dónde pusiste una pieza de más. La fila para compartir muestra un cuadro por pieza, ordenado por resultado y sin indicar dónde estaba, así que publicarla no revela el tablero a quien aún no ha jugado.",
       "join": "Para unirte al tablero, elige un nombre de 4 a 16 caracteres y el país por el que juegas. El país se toma primero del que elegiste antes, luego de tu conexión y luego del idioma de tu navegador, y siempre puedes cambiarlo. Tu rating en el momento de unirte aparece junto a tu nombre.",

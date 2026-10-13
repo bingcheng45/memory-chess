@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Jak denní pozice funguje",
-      "shared": "Každý den o půlnoci UTC se vylosuje nová pozice a každý hráč na světě dostane tu samou. Pozice vzniká ze semínka vytvořeného z data, takže ji nikdo nevidí předem a nikdo nedostane jednodušší verzi. Protože je pozice společná, skóre znamená totéž pro všechny, kdo ji ten den hráli.",
+      "shared": "Každý den o půlnoci UTC se vylosuje nová pozice a každý hráč na světě dostane tu samou. Pozice vzniká ze semínka vytvořeného z data, takže je pro všechny stejná a nikdo nedostane jednodušší verzi. Protože je pozice společná, skóre znamená totéž pro všechny, kdo ji ten den hráli.",
       "oneTry": "Máte jeden pokus. Otevření pozice se počítá jako pokus, takže odchod během studia a návrat vám ji neukáže podruhé. Vaše zařízení si pokus pamatuje, dokud se neotevře další pozice.",
       "grid": "Po postavení pozice uvidíte, která pole jste trefili, na kterých byla špatná figurka, která jste vynechali a kam jste umístili figurku navíc. Řádek ke sdílení obsahuje jedno pole na figurku, seřazené podle výsledku, bez informace, kde figurka stála, takže jeho zveřejnění neprozradí pozici nikomu, kdo ještě nehrál.",
       "join": "Pro zapojení si zvolte jméno o 4 až 16 znacích a zemi, za kterou hrajete. Země se nejprve předvyplní podle vaší dřívější volby, pak podle připojení a nakonec podle jazyka prohlížeče, a můžete ji kdykoli změnit. Vaše hodnocení v okamžiku zapojení se zobrazí u jména.",

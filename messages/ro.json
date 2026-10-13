@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Cum funcționează tabla zilei",
-      "shared": "În fiecare zi, la miezul nopții UTC, se alege o poziție nouă, iar fiecare jucător din lume o primește pe aceeași. Poziția provine dintr-un seed creat din dată, așa că nimeni nu o poate vedea mai devreme și nimeni nu primește o variantă mai ușoară. Fiindcă tabla este comună, un scor înseamnă același lucru pentru toți cei care au jucat-o în ziua respectivă.",
+      "shared": "În fiecare zi, la miezul nopții UTC, se alege o poziție nouă, iar fiecare jucător din lume o primește pe aceeași. Poziția provine dintr-un seed creat din dată, așa că tabla este aceeași pentru toți și nimeni nu primește o variantă mai ușoară. Fiindcă tabla este comună, un scor înseamnă același lucru pentru toți cei care au jucat-o în ziua respectivă.",
       "oneTry": "Ai o singură încercare. Deschiderea tablei se numără ca încercare, așa că dacă pleci în timpul studiului și revii, nu ți-o mai arătăm a doua oară. Dispozitivul tău ține minte încercarea până se deschide următoarea tablă.",
       "grid": "După ce reconstruiești poziția, vezi ce pătrate ai nimerit, care aveau o piesă greșită, pe care le-ai ratat și unde ai pus o piesă în plus. Rândul de distribuit are un pătrat pentru fiecare piesă, sortat după rezultat, fără nicio informație despre locul piesei, așa că postarea lui nu dezvăluie tabla cuiva care nu a jucat încă.",
       "join": "Ca să intri în tablă, alege un nume de 4 până la 16 caractere și țara pe care o reprezinți. Țara pornește de la cea aleasă anterior, apoi de la conexiunea ta, apoi de la limba browserului, și o poți schimba oricând. Ratingul tău de la momentul intrării apare lângă nume.",

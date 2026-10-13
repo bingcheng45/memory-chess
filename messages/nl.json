@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Zo werkt het dagbord",
-      "shared": "Elke dag om middernacht UTC wordt een nieuwe stelling getrokken, en elke speler ter wereld krijgt dezelfde. De stelling komt uit een seed die uit de datum wordt gemaakt, dus niemand kan hem vooraf zien en niemand krijgt een makkelijkere versie. Omdat het bord gedeeld wordt, betekent een score erop voor iedereen die het die dag speelde hetzelfde.",
+      "shared": "Elke dag om middernacht UTC wordt een nieuwe stelling getrokken, en elke speler ter wereld krijgt dezelfde. De stelling komt uit een seed die uit de datum wordt gemaakt, dus het bord is voor iedereen hetzelfde en niemand krijgt een makkelijkere versie. Omdat het bord gedeeld wordt, betekent een score erop voor iedereen die het die dag speelde hetzelfde.",
       "oneTry": "Je hebt één poging. Het openen van het bord telt al als poging. Als je tijdens de kijkfase weggaat en terugkomt, zie je het dus niet nog een keer. Je apparaat onthoudt de poging tot het volgende bord opent.",
       "grid": "Nadat je de stelling hebt nagebouwd, zie je welke velden goed waren, op welke het verkeerde stuk stond, welke je hebt gemist en waar je een extra stuk hebt geplaatst. De deelregel toont één vakje per stuk, gesorteerd op uitkomst en zonder te laten zien waar het stond. Door hem te delen verklap je het bord dus niet aan iemand die nog niet heeft gespeeld.",
       "join": "Om mee te doen kies je een naam van 4 tot 16 tekens en het land waarvoor je speelt. Het land komt eerst uit je eerdere keuze, dan uit je verbinding en dan uit de taal van je browser, en je kunt het altijd wijzigen. Je rating op het moment dat je meedoet staat naast je naam.",

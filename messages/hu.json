@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Hogyan működik a napi tábla",
-      "shared": "Minden nap éjfélkor, UTC szerint új állást sorsolunk, és a világ minden játékosa ugyanazt kapja. Az állás a dátumból képzett kezdőértékből jön létre, így senki nem láthatja előre, és senki nem kap könnyebb változatot. Mivel a tábla közös, a pontszám ugyanazt jelenti mindenkinek, aki aznap játszott vele.",
+      "shared": "Minden nap éjfélkor, UTC szerint új állást sorsolunk, és a világ minden játékosa ugyanazt kapja. Az állás a dátumból képzett kezdőértékből jön létre, így a tábla mindenkinek ugyanaz, és senki nem kap könnyebb változatot. Mivel a tábla közös, a pontszám ugyanazt jelenti mindenkinek, aki aznap játszott vele.",
       "oneTry": "Egy próbálkozásod van. A tábla megnyitása már próbálkozásnak számít, ezért ha a tanulás közben kilépsz, majd visszatérsz, nem látod újra. Az eszközöd megjegyzi a próbálkozást a következő tábla megnyitásáig.",
       "grid": "Az állás újraépítése után látod, mely mezőket találtad el, melyiken állt rossz bábu, melyiket hagytad ki, és hova tettél felesleges bábut. A megosztható sor bábunként egy mezőt mutat, eredmény szerint rendezve, anélkül, hogy a bábu helyére utalna, így a közzététel nem árulja el a táblát annak, aki még nem játszott.",
       "join": "A csatlakozáshoz válassz egy 4–16 karakteres nevet és azt az országot, amelyet képviselsz. Az ország először a korábbi választásodból töltődik ki, aztán a kapcsolatodból, végül a böngésző nyelvéből, és bármikor módosíthatod. A csatlakozáskori értékszámod a neved mellett jelenik meg.",

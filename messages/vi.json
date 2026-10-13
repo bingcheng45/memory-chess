@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Bàn cờ hằng ngày hoạt động thế nào",
-      "shared": "Mỗi ngày vào nửa đêm UTC, một thế cờ mới được chọn, và mọi người chơi trên thế giới nhận cùng một thế cờ. Thế cờ đến từ một hạt giống tạo ra từ ngày, nên không ai xem được trước và không ai nhận bản dễ hơn. Vì bàn cờ dùng chung, điểm trên bàn đó có ý nghĩa như nhau với mọi người đã chơi trong ngày.",
+      "shared": "Mỗi ngày vào nửa đêm UTC, một thế cờ mới được chọn, và mọi người chơi trên thế giới nhận cùng một thế cờ. Thế cờ đến từ một hạt giống tạo ra từ ngày, nên bàn cờ giống nhau với mọi người và không ai nhận bản dễ hơn. Vì bàn cờ dùng chung, điểm trên bàn đó có ý nghĩa như nhau với mọi người đã chơi trong ngày.",
       "oneTry": "Bạn chỉ có một lượt. Việc mở bàn cờ đã tính là một lượt, nên rời đi trong giai đoạn ghi nhớ rồi quay lại sẽ không cho bạn xem lại bàn cờ lần nữa. Thiết bị của bạn nhớ lượt chơi này cho đến khi bàn tiếp theo mở.",
       "grid": "Sau khi dựng lại thế cờ, bạn sẽ thấy ô nào đúng, ô nào đặt sai quân, ô nào bị sót và chỗ nào bạn đặt thừa quân. Dòng chia sẻ liệt kê mỗi quân một ô, sắp xếp theo kết quả, không cho biết quân đứng ở đâu, nên đăng lên cũng không làm lộ bàn cờ cho người chưa chơi.",
       "join": "Để tham gia bàn cờ, hãy chọn tên từ 4 đến 16 ký tự và quốc gia mà bạn thi đấu cho. Quốc gia được điền sẵn từ lựa chọn trước đó của bạn, rồi đến kết nối của bạn, rồi đến ngôn ngữ trình duyệt, và bạn luôn có thể đổi. Điểm xếp hạng của bạn tại thời điểm tham gia được hiển thị bên cạnh tên.",

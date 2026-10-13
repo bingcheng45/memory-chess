@@ -884,7 +884,7 @@
     },
     "reference": {
       "title": "Jak działa szachownica dnia",
-      "shared": "Każdego dnia o północy UTC losowana jest nowa pozycja i każdy gracz na świecie dostaje tę samą. Pozycja powstaje z ziarna utworzonego z daty, więc nikt nie zobaczy jej wcześniej i nikt nie dostanie łatwiejszej wersji. Ponieważ szachownica jest wspólna, wynik oznacza to samo dla wszystkich, którzy zagrali ją tego dnia.",
+      "shared": "Każdego dnia o północy UTC losowana jest nowa pozycja i każdy gracz na świecie dostaje tę samą. Pozycja powstaje z ziarna utworzonego z daty, więc szachownica jest taka sama dla wszystkich i nikt nie dostanie łatwiejszej wersji. Ponieważ szachownica jest wspólna, wynik oznacza to samo dla wszystkich, którzy zagrali ją tego dnia.",
       "oneTry": "Masz jedną próbę. Otwarcie szachownicy liczy się jako próba, więc wyjście w trakcie nauki i powrót nie pokaże jej drugi raz. Twoje urządzenie pamięta próbę do czasu otwarcia następnej szachownicy.",
       "grid": "Po odtworzeniu pozycji zobaczysz, które pola trafiłeś, na których stała zła bierka, które pominąłeś i gdzie postawiłeś dodatkową bierkę. Wiersz do udostępnienia zawiera jedno pole na bierkę, ułożone według wyniku, bez informacji o tym, gdzie stała, więc jego wklejenie nie zdradza szachownicy komuś, kto jeszcze nie grał.",
       "join": "Aby dołączyć do rankingu, wybierz nazwę od 4 do 16 znaków i kraj, który reprezentujesz. Kraj jest ustawiany najpierw na podstawie poprzedniego wyboru, potem połączenia, a na końcu języka przeglądarki, i zawsze możesz go zmienić. Twój ranking w chwili dołączenia widać obok nazwy.",

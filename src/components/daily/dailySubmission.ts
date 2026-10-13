@@ -3,10 +3,7 @@ import type { DailyRound } from "@/lib/lab/daily";
 import type { CountryCode } from "@/lib/leaderboard/countries";
 import { DAILY_BOARD, type LeaderboardSubmission } from "@/types/leaderboard";
 
-/**
- * The row a daily round joins the board with. Pieces and study seconds are the day's setting, which the server checks,
- * rather than the seconds actually studied: a player who ends the study early still played that day's board.
- */
+/** Pieces and study seconds are the day's setting, not the seconds actually studied: a player who ends the study early still played that day's board. */
 export function dailySubmission(round: DailyRound, playerName: string, country: CountryCode, skillRating: number): LeaderboardSubmission {
   const setting = dailySettingOf(round.dailyDay);
   return {

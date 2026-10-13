@@ -14,13 +14,11 @@ import { DailyJoinForm } from "./DailyJoinForm";
 
 type Translate = ReturnType<typeof useTranslations<"daily.page">>;
 
-/** The link works before the clock is read: /game reads today's setting itself when it opens the daily board. */
 const PLAY_BEFORE_CLOCK = playHref(DEFAULT_PRESET.pieceCount, DEFAULT_PRESET.memorizeTime, "daily");
 
 const BOARD_CELLS = Array.from({ length: 64 }, (_, index) => (Math.floor(index / 8) + index) % 2);
 
 interface DailyCardProps {
-  /** Null on the server and until the clock and the record are read. */
   readonly board: DailyBoard | null;
   readonly setting: DailySetting | null;
   readonly joined: DailyEntry | null;

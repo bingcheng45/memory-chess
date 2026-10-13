@@ -2,7 +2,6 @@ import { getTranslations } from "next-intl/server";
 import { WEEKLY_ARC, type Band } from "@/lib/daily/schedule";
 import { DAY_MS } from "@/lib/lab/readiness";
 
-/** 2026-10-12 is a Monday; the table reads the week from there, the way the arc is told. */
 const MONDAY = Date.UTC(2026, 9, 12);
 const WEEK = ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"] as const;
 

@@ -1,5 +1,3 @@
-/* The daily board in Lab Paper (docs/design/brand-directions/lab-paper.md). The shell supplies the tokens, the page
-   base and the buttons; these rules draw the page head, the board card, the join form, the top ten and the explainer. */
 .lab-paper main.daily-main {
   --daily-c: var(--lp-correct);
   --daily-w: #a86b00;

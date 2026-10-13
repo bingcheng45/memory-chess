@@ -10,7 +10,6 @@ import { DAILY_BOARD, type LeaderboardBoard } from '@/types/leaderboard';
 
 const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
 
-/** The daily board ranks countries, never the world, and one setting a day. */
 function dailyRowMismatch(board: LeaderboardBoard, pieceCount: unknown, memorizeTime: unknown, country: unknown): string | null {
   if (board.difficulty !== DAILY_BOARD) return null;
   const code = parseCountryCode(country);
@@ -28,7 +27,6 @@ function parseSkillRating(value: unknown): number | null {
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const difficulty = searchParams.get('difficulty') || 'medium';
-  // A daily board is the day the player's clock names, within the window a submission is accepted for; no day is today.
   const now = Date.now();
   const board = readBoard(difficulty, difficulty === DAILY_BOARD ? (searchParams.get('daily_day') ?? utcDayOf(now)) : null, now);
 

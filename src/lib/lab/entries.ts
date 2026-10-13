@@ -99,7 +99,6 @@ function parseDailyEntry(text: string | null): DailyEntry | null {
   return { id: raw.id, difficulty: DAILY_BOARD, dailyDay, country, score, submittedAt: raw.submittedAt as number };
 }
 
-/** This device's entry on the daily board of `day`, or null when it joined no board that day. */
 export function readDailyEntry(day: string): DailyEntry | null {
   try {
     const entry = parseDailyEntry(window.localStorage.getItem(DAILY_ENTRY_KEY));
@@ -109,7 +108,7 @@ export function readDailyEntry(day: string): DailyEntry | null {
   }
 }
 
-/** The entry the reply carries, or null when it carries none. Storage refusing the write keeps nothing; the score is on the board either way. */
+/** Storage refusing the write keeps nothing; the score is on the board either way. */
 export function rememberEntry(row: unknown, now: number): StoredEntry | DailyEntry | null {
   const entry = entryFromRow(row, now);
   if (entry === null) return null;

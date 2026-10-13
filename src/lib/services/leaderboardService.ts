@@ -42,10 +42,7 @@ function orderByRanking<T extends OrderableQuery<T>>(query: T): T {
   );
 }
 
-/**
- * A board's rows that the leaderboard shows. A daily board is one UTC day, and filtering on both columns is also what
- * lets the query read the partial daily index.
- */
+/** Filtering on both columns is what lets the query read the partial daily index. */
 function rankedRows<Columns extends '*' | 'id'>(client: SupabaseClient, board: LeaderboardBoard, columns: Columns, options?: { count: 'exact'; head: true }) {
   const rows = client.from('leaderboard_entries').select(columns, options).eq('difficulty', board.difficulty).gt('correct_pieces', 0);
   return board.difficulty === DAILY_BOARD ? rows.eq('daily_day', board.daily_day) : rows;

@@ -8,7 +8,6 @@ import type { LeaderboardEntry } from "@/types/leaderboard";
 
 export type DailyRows = { readonly state: "loading" } | { readonly state: "ready"; readonly rows: readonly LeaderboardEntry[] } | { readonly state: "failed" };
 
-/** Today's daily rows, best first, read again for each new UTC day and whenever `version` moves, as it does when this device joins. */
 export function useDailyRows(day: string | null, version: number): DailyRows {
   const [rows, setRows] = useState<DailyRows>({ state: "loading" });
 
@@ -31,7 +30,6 @@ export function useDailyRows(day: string | null, version: number): DailyRows {
   return rows;
 }
 
-/** The joined entry's rank among its own day's entries, or null until it is known. */
 export function useDailyStanding(joined: DailyEntry | null): Standing | null {
   const [standing, setStanding] = useState<Standing | null>(null);
   const id = joined?.id ?? null;

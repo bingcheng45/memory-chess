@@ -9,11 +9,8 @@ export interface CountryGuess {
 }
 
 interface CountrySignals {
-  /** The country this device remembers. The world code means none was picked. */
   readonly saved: CountryCode;
-  /** The edge's reading of the connection, unparsed. */
   readonly geo: string | null;
-  /** `navigator.languages`, preferred first. */
   readonly languages: readonly string[];
 }
 

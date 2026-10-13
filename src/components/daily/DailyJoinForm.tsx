@@ -19,7 +19,6 @@ const NAME_LENGTH = { min: 4, max: 16 } as const;
 
 const GEO_TIMEOUT_MS = 3_000;
 
-/** Undefined while /api/geo is asked; null when it names no country, cannot be reached, or is not needed. */
 function useGeoCountry(needed: boolean): string | null | undefined {
   const [geo, setGeo] = useState<string | null | undefined>(needed ? undefined : null);
   useEffect(() => {
@@ -50,7 +49,6 @@ export function DailyJoinForm({ round, onJoined }: { round: DailyRound; onJoined
   const [name, setName] = useState("");
   const [submit, setSubmit] = useState<Submit>("idle");
 
-  // The connection outranks the browser's language, so the language waits for the connection's answer.
   const guess = guessCountry({ saved, geo: geo ?? null, languages: geo === undefined ? [] : navigator.languages });
   const trimmed = name.trim();
   const nameFits = trimmed.length >= NAME_LENGTH.min && trimmed.length <= NAME_LENGTH.max;

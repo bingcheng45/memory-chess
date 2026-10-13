@@ -11,13 +11,11 @@ interface CountryOption {
 }
 
 interface CountryPickerProps {
-  /** Null shows `placeholder` until a country is picked. */
   readonly value: CountryCode | null;
   readonly onChange: (code: CountryCode) => void;
   readonly id: string;
   readonly disabled?: boolean;
   readonly placeholder?: string;
-  /** False on a board that ranks countries only, such as the daily board. */
   readonly withWorld?: boolean;
 }
 

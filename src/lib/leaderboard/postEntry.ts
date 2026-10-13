@@ -3,12 +3,10 @@ import type { DailyEntry, StoredEntry } from "@/lib/lab/entries";
 import { isObject } from "@/lib/lab/guards";
 import type { LeaderboardSubmission } from "@/types/leaderboard";
 
-/** `entry` is the stored row as this device remembers it, or null when the reply carried no row it can read. */
 export type PostedEntry =
   | { readonly ok: true; readonly entry: StoredEntry | DailyEntry | null }
   | { readonly ok: false; readonly message: string | null };
 
-/** Every leaderboard submission goes through here, a ranked round's from the result screen and a daily board's from /daily. */
 export async function postLeaderboardEntry(entry: LeaderboardSubmission): Promise<PostedEntry> {
   const response = await fetch("/api/leaderboard", {
     method: "POST",

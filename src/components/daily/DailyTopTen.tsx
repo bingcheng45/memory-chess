@@ -58,7 +58,6 @@ function Row({ entry, rank, you }: { entry: LeaderboardEntry; rank: number; you:
   );
 }
 
-/** The day's best ten, and this device's own row under them when it ranks lower. */
 export function DailyTopTen({ rows, joined, played }: DailyTopTenProps) {
   const t = useTranslations("daily.board");
   const all = rows.state === "ready" ? rows.rows : [];

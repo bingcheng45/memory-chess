@@ -13,10 +13,6 @@ import { DailyTopTen } from "./DailyTopTen";
 import { useDailyRows, useDailyStanding } from "./useDailyRows";
 import "./daily.css";
 
-/**
- * Today's board for this device. Everything on it is the client's: the UTC day comes from the browser clock, the try
- * from the lab record, and the entry from storage, so the server renders only what is the same for everyone.
- */
 export function DailyBoard() {
   const t = useTranslations("daily.page");
   const format = useFormatter();

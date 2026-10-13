@@ -6,6 +6,7 @@ import { z } from 'zod';
 import { useForm, ControllerRenderProps } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useTranslations } from 'next-intl';
+import { isContactFailure } from '@/lib/contact';
 import {
   Form,
   FormControl,
@@ -82,7 +83,7 @@ export default function ContactUs() {
       const result = await response.json();
 
       if (!response.ok) {
-        if (result.details) failure = t('errors.submitFailed', { details: `: ${result.details}` });
+        if (isContactFailure(result.reason)) failure = t(`errors.reasons.${result.reason}`);
 
         // Log additional debug info if available
         if (result.debug) {

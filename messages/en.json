@@ -1223,8 +1223,12 @@
       "message": "At least 10 characters."
     },
     "errors": {
-      "submitFailed": "Failed to submit form{details}",
-      "generic": "An error occurred while submitting the form. Please try again."
+      "generic": "An error occurred while submitting the form. Please try again.",
+      "reasons": {
+        "invalid": "Some details were not accepted. Check the form and try again.",
+        "unavailable": "Messages can't be sent right now. Please try again later.",
+        "notDelivered": "Your message could not be delivered. Please try again."
+      }
     }
   },
   "changelog": {

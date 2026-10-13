@@ -1223,8 +1223,12 @@
       "message": "Mindst 10 tegn."
     },
     "errors": {
-      "submitFailed": "Formularen kunne ikke sendes{details}",
-      "generic": "Der opstod en fejl, da formularen blev sendt. Prøv igen."
+      "generic": "Der opstod en fejl, da formularen blev sendt. Prøv igen.",
+      "reasons": {
+        "invalid": "Nogle oplysninger blev ikke godkendt. Tjek formularen, og prøv igen.",
+        "unavailable": "Beskeder kan ikke sendes lige nu. Prøv igen senere.",
+        "notDelivered": "Din besked kunne ikke leveres. Prøv igen."
+      }
     }
   },
   "changelog": {

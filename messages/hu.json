@@ -1223,8 +1223,12 @@
       "message": "Legalább 10 karakter."
     },
     "errors": {
-      "submitFailed": "Az űrlapot nem sikerült elküldeni{details}",
-      "generic": "Hiba történt az űrlap elküldésekor. Próbáld újra."
+      "generic": "Hiba történt az űrlap elküldésekor. Próbáld újra.",
+      "reasons": {
+        "invalid": "Néhány adatot nem fogadtunk el. Ellenőrizd az űrlapot, és próbáld újra.",
+        "unavailable": "Most nem lehet üzenetet küldeni. Próbáld újra később.",
+        "notDelivered": "Az üzenetedet nem sikerült kézbesíteni. Próbáld újra."
+      }
     }
   },
   "changelog": {

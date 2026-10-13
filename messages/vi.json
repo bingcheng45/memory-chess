@@ -1223,8 +1223,12 @@
       "message": "Ít nhất 10 ký tự."
     },
     "errors": {
-      "submitFailed": "Không thể gửi biểu mẫu{details}",
-      "generic": "Đã xảy ra lỗi khi gửi biểu mẫu. Vui lòng thử lại."
+      "generic": "Đã xảy ra lỗi khi gửi biểu mẫu. Vui lòng thử lại.",
+      "reasons": {
+        "invalid": "Một số thông tin không được chấp nhận. Hãy kiểm tra biểu mẫu và thử lại.",
+        "unavailable": "Hiện không thể gửi tin nhắn. Vui lòng thử lại sau.",
+        "notDelivered": "Không thể chuyển tin nhắn của bạn. Vui lòng thử lại."
+      }
     }
   },
   "changelog": {

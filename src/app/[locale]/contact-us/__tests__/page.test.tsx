@@ -84,20 +84,22 @@ describe("ContactUs", () => {
     expect(document.querySelector("form")).toHaveAttribute("inert");
   });
 
-  it("keeps the form and reports the server's reason for a failed send in the status line", async () => {
-    answerWith(500, { error: "Failed to send message", details: "no credentials" });
+  it("keeps the form and reports the server's reason for a failed send in the reader's words", async () => {
+    answerWith(503, { error: "Failed to send message", reason: "unavailable", details: "server words" });
     render(<ContactUs />);
 
     fillValidForm();
     fireEvent.click(screen.getByRole("button", { name: "Send message" }));
 
-    await waitFor(() => expect(screen.getByRole("status")).toHaveTextContent("Failed to submit form: no credentials"));
+    await waitFor(() =>
+      expect(screen.getByRole("status")).toHaveTextContent("Messages can't be sent right now. Please try again later."),
+    );
     expect(screen.getByRole("button", { name: "Send message" })).toBeEnabled();
     expect(screen.queryByRole("heading", { name: "Message sent" })).not.toBeInTheDocument();
   });
 
-  it("reports a failed send with no reason, or one that never answered, in the generic words", async () => {
-    answerWith(500, { error: "Failed to send message" });
+  it("reports a failed send with no reason it knows, or one that never answered, in the generic words", async () => {
+    answerWith(500, { error: "Failed to send message", reason: "somethingNew", details: "Google service account key is missing" });
     render(<ContactUs />);
 
     fillValidForm();

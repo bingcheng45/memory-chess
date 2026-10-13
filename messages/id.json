@@ -1223,8 +1223,12 @@
       "message": "Minimal 10 karakter."
     },
     "errors": {
-      "submitFailed": "Gagal mengirim formulir{details}",
-      "generic": "Terjadi kesalahan saat mengirim formulir. Silakan coba lagi."
+      "generic": "Terjadi kesalahan saat mengirim formulir. Silakan coba lagi.",
+      "reasons": {
+        "invalid": "Beberapa data tidak diterima. Periksa formulir lalu coba lagi.",
+        "unavailable": "Pesan tidak dapat dikirim saat ini. Silakan coba lagi nanti.",
+        "notDelivered": "Pesan Anda tidak dapat terkirim. Silakan coba lagi."
+      }
     }
   },
   "changelog": {

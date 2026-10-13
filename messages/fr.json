@@ -1223,8 +1223,12 @@
       "message": "Au moins 10 caractères."
     },
     "errors": {
-      "submitFailed": "Impossible d’envoyer le formulaire{details}",
-      "generic": "Une erreur s’est produite lors de l’envoi du formulaire. Veuillez réessayer."
+      "generic": "Une erreur s’est produite lors de l’envoi du formulaire. Veuillez réessayer.",
+      "reasons": {
+        "invalid": "Certaines informations n’ont pas été acceptées. Vérifiez le formulaire et réessayez.",
+        "unavailable": "Les messages ne peuvent pas être envoyés pour le moment. Veuillez réessayer plus tard.",
+        "notDelivered": "Votre message n’a pas pu être transmis. Veuillez réessayer."
+      }
     }
   },
   "changelog": {

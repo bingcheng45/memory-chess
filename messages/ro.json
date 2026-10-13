@@ -1223,8 +1223,12 @@
       "message": "Cel puțin 10 caractere."
     },
     "errors": {
-      "submitFailed": "Formularul nu a putut fi trimis{details}",
-      "generic": "A apărut o eroare la trimiterea formularului. Încearcă din nou."
+      "generic": "A apărut o eroare la trimiterea formularului. Încearcă din nou.",
+      "reasons": {
+        "invalid": "Unele date nu au fost acceptate. Verifică formularul și încearcă din nou.",
+        "unavailable": "Mesajele nu pot fi trimise acum. Încearcă din nou mai târziu.",
+        "notDelivered": "Mesajul tău nu a putut fi livrat. Încearcă din nou."
+      }
     }
   },
   "changelog": {

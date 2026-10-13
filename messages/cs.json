@@ -1223,8 +1223,12 @@
       "message": "Alespoň 10 znaků."
     },
     "errors": {
-      "submitFailed": "Formulář se nepodařilo odeslat{details}",
-      "generic": "Při odesílání formuláře došlo k chybě. Zkuste to prosím znovu."
+      "generic": "Při odesílání formuláře došlo k chybě. Zkuste to prosím znovu.",
+      "reasons": {
+        "invalid": "Některé údaje nebyly přijaty. Zkontrolujte formulář a zkuste to znovu.",
+        "unavailable": "Zprávy teď nelze odesílat. Zkuste to prosím později.",
+        "notDelivered": "Vaši zprávu se nepodařilo doručit. Zkuste to prosím znovu."
+      }
     }
   },
   "changelog": {

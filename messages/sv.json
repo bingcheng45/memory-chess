@@ -1223,8 +1223,12 @@
       "message": "Minst 10 tecken."
     },
     "errors": {
-      "submitFailed": "Det gick inte att skicka formuläret{details}",
-      "generic": "Ett fel inträffade när formuläret skickades. Försök igen."
+      "generic": "Ett fel inträffade när formuläret skickades. Försök igen.",
+      "reasons": {
+        "invalid": "Vissa uppgifter godtogs inte. Kontrollera formuläret och försök igen.",
+        "unavailable": "Det går inte att skicka meddelanden just nu. Försök igen senare.",
+        "notDelivered": "Ditt meddelande kunde inte levereras. Försök igen."
+      }
     }
   },
   "changelog": {

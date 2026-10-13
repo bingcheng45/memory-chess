@@ -1223,8 +1223,12 @@
       "message": "Vähintään 10 merkkiä."
     },
     "errors": {
-      "submitFailed": "Lomakkeen lähettäminen epäonnistui{details}",
-      "generic": "Lomaketta lähetettäessä tapahtui virhe. Yritä uudelleen."
+      "generic": "Lomaketta lähetettäessä tapahtui virhe. Yritä uudelleen.",
+      "reasons": {
+        "invalid": "Joitakin tietoja ei hyväksytty. Tarkista lomake ja yritä uudelleen.",
+        "unavailable": "Viestejä ei voi lähettää juuri nyt. Yritä myöhemmin uudelleen.",
+        "notDelivered": "Viestiäsi ei voitu toimittaa. Yritä uudelleen."
+      }
     }
   },
   "changelog": {

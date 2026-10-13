@@ -121,14 +121,14 @@ describe("the Daily tab", () => {
   });
 
   it("shows the day's setting and a reset at 08:00 for a viewer in Singapore", async () => {
-    await renderDailyAt("2026-10-13T19:48:00Z", "Asia/Singapore");
+    await renderDailyAt("2026-10-13T19:47:30Z", "Asia/Singapore");
 
     expect(screen.getByText("6 pieces · 10 s to study")).toBeInTheDocument();
     expect(screen.getByText("Resets at 00:00 UTC (08:00 your time), in 4 h 12 min")).toBeInTheDocument();
   });
 
   it("shows the same reset at 20:00 the evening before for a viewer in New York", async () => {
-    await renderDailyAt("2026-10-13T19:48:00Z", "America/New_York");
+    await renderDailyAt("2026-10-13T19:47:30Z", "America/New_York");
 
     expect(screen.getByText("Resets at 00:00 UTC (20:00 your time), in 4 h 12 min")).toBeInTheDocument();
   });
@@ -163,7 +163,7 @@ describe("the Daily tab", () => {
     expect(screen.getByText("Error loading leaderboard: Invalid difficulty level")).toBeInTheDocument();
 
     await act(async () => {
-      jest.advanceTimersByTime(30_000);
+      jest.advanceTimersByTime(60_000);
     });
 
     expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=daily&daily_day=2026-10-14", expect.anything());

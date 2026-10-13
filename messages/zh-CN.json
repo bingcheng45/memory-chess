@@ -376,7 +376,7 @@
       "tab": "每日",
       "setting": "{pieces, plural, other {# 个棋子}} · 记忆 {seconds} 秒",
       "resetsAtUtc": "UTC {utc} 重置",
-      "resetsAt": "UTC {utc} 重置（你的时间 {local}），{hours, plural, =0 {{minutes, plural, =0 {不到一分钟后} other {# 分钟后}}} other {# 小时 {minutes} 分钟后}}"
+      "resetsAt": "UTC {utc} 重置（你的时间 {local}），{timeLeft}后"
     }
   },
   "country": {

@@ -376,7 +376,7 @@
       "tab": "Zilnic",
       "setting": "{pieces, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s de studiu",
       "resetsAtUtc": "Se resetează la {utc} UTC",
-      "resetsAt": "Se resetează la {utc} UTC ({local} la tine), {hours, plural, =0 {{minutes, plural, =0 {în mai puțin de un minut} one {în # min} few {în # min} other {în # min}}} one {în # h {minutes} min} few {în # h {minutes} min} other {în # h {minutes} min}}"
+      "resetsAt": "Se resetează la {utc} UTC ({local} la tine), în {timeLeft}"
     }
   },
   "country": {

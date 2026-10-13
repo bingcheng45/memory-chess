@@ -376,7 +376,7 @@
       "tab": "दैनिक",
       "setting": "{pieces, plural, one {# मोहरा} other {# मोहरे}} · याद करने के लिए {seconds} से.",
       "resetsAtUtc": "{utc} UTC पर रीसेट होता है",
-      "resetsAt": "{utc} UTC पर रीसेट होता है (आपके समय से {local}), {hours, plural, =0 {{minutes, plural, =0 {एक मिनट से कम में} one {# मिनट में} other {# मिनट में}}} one {# घंटा {minutes} मिनट में} other {# घंटे {minutes} मिनट में}}"
+      "resetsAt": "{utc} UTC पर रीसेट होता है (आपके समय से {local}), {timeLeft} में"
     }
   },
   "country": {

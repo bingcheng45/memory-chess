@@ -376,7 +376,7 @@
       "tab": "Napi",
       "setting": "{pieces, plural, one {# bábu} other {# bábu}} · {seconds} mp tanulásra",
       "resetsAtUtc": "Újraindul {utc} UTC-kor",
-      "resetsAt": "Újraindul {utc} UTC-kor (nálad {local}), {hours, plural, =0 {{minutes, plural, =0 {kevesebb mint egy perc múlva} one {# perc múlva} other {# perc múlva}}} one {# óra {minutes} perc múlva} other {# óra {minutes} perc múlva}}"
+      "resetsAt": "Újraindul {utc} UTC-kor (nálad {local}), {timeLeft} múlva"
     }
   },
   "country": {

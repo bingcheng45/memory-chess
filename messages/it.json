@@ -376,7 +376,7 @@
       "tab": "Giornaliera",
       "setting": "{pieces, plural, one {# pezzo} many {# pezzi} other {# pezzi}} · {seconds} s per studiare",
       "resetsAtUtc": "Si azzera alle {utc} UTC",
-      "resetsAt": "Si azzera alle {utc} UTC (le {local} da te), {hours, plural, =0 {{minutes, plural, =0 {tra meno di un minuto} one {tra # min} many {tra # min} other {tra # min}}} one {tra # h {minutes} min} many {tra # h {minutes} min} other {tra # h {minutes} min}}"
+      "resetsAt": "Si azzera alle {utc} UTC (le {local} da te), tra {timeLeft}"
     }
   },
   "country": {

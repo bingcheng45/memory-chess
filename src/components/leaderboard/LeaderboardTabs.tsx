@@ -6,9 +6,8 @@ import { useTranslations } from 'next-intl';
 import * as Tabs from '@radix-ui/react-tabs';
 import LeaderboardTable, { playHrefOf, type EntryDetails } from '@/components/leaderboard/LeaderboardTable';
 import { DailyResetNote } from '@/components/leaderboard/DailyResetNote';
-import { useNow } from '@/components/home/DailyResetsIn';
+import { useDailyState } from '@/hooks/useDailyState';
 import { Link } from '@/i18n/navigation';
-import { utcDayOf } from '@/lib/lab/daily';
 import { RANKED_DIFFICULTIES, type RankedDifficulty } from '@/lib/reference/facts';
 import { DAILY_BOARD, type LeaderboardEntry } from '@/types/leaderboard';
 
@@ -49,8 +48,8 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   const tg = useTranslations("game");
   const [boards, setBoards] = useState(serverBoards);
   const [activeTab, setActiveTab] = useState<LeaderboardTab>(initialTab);
-  const now = useNow();
-  const today = now === null ? null : utcDayOf(now);
+  const daily = useDailyState();
+  const today = daily?.day ?? null;
   const dailyDay = activeTab === DAILY_BOARD ? today : null;
 
   // The server boards are up to one revalidation window old. A player arriving
@@ -61,7 +60,7 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   const isRefreshing = activeTab === DAILY_BOARD ? dailyDay !== null : isJustSubmitted;
   // A viewer's clock a little ahead of the server asks for a day the server
   // does not serve yet, so a failed daily read tries again on every tick.
-  const dailyRetry = dailyDay !== null && boards.daily.error ? now : null;
+  const dailyRetry = dailyDay !== null && boards.daily.error && daily ? daily.left.hours * 60 + daily.left.minutes : null;
 
   useEffect(() => {
     if (!isRefreshing) return;
@@ -115,7 +114,7 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
 
         {LEADERBOARD_TABS.map((difficulty) => (
           <Tabs.Content key={difficulty} value={difficulty}>
-            {difficulty === DAILY_BOARD && <DailyResetNote day={today ?? boards.daily.day} now={now} />}
+            {difficulty === DAILY_BOARD && <DailyResetNote day={today ?? boards.daily.day} left={daily?.left ?? null} />}
             <LeaderboardTable
               data={boards[difficulty].data}
               error={boards[difficulty].error ?? null}

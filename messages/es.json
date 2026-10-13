@@ -376,7 +376,7 @@
       "tab": "Diario",
       "setting": "{pieces, plural, one {# pieza} many {# piezas} other {# piezas}} · {seconds} s para memorizar",
       "resetsAtUtc": "Se reinicia a las {utc} UTC",
-      "resetsAt": "Se reinicia a las {utc} UTC ({local} en tu hora), {hours, plural, =0 {{minutes, plural, =0 {en menos de un minuto} one {en # min} many {en # min} other {en # min}}} one {en # h {minutes} min} many {en # h {minutes} min} other {en # h {minutes} min}}"
+      "resetsAt": "Se reinicia a las {utc} UTC ({local} en tu hora), en {timeLeft}"
     }
   },
   "country": {

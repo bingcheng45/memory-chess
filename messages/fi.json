@@ -376,7 +376,7 @@
       "tab": "Päivittäinen",
       "setting": "{pieces, plural, one {# nappula} other {# nappulaa}} · {seconds} s opetteluun",
       "resetsAtUtc": "Nollautuu klo {utc} UTC",
-      "resetsAt": "Nollautuu klo {utc} UTC (sinun aikaasi {local}), {hours, plural, =0 {{minutes, plural, =0 {alle minuutin päästä} one {# min päästä} other {# min päästä}}} one {# h {minutes} min päästä} other {# h {minutes} min päästä}}"
+      "resetsAt": "Nollautuu klo {utc} UTC (sinun aikaasi {local}), {timeLeft} päästä"
     }
   },
   "country": {

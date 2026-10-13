@@ -376,7 +376,7 @@
       "tab": "Günlük",
       "setting": "{pieces, plural, one {# taş} other {# taş}} · İncelemek için {seconds} sn",
       "resetsAtUtc": "{utc} UTC itibarıyla sıfırlanır",
-      "resetsAt": "{utc} UTC itibarıyla sıfırlanır (sizin saatinizle {local}), {hours, plural, =0 {{minutes, plural, =0 {bir dakikadan kısa sürede} one {# dk içinde} other {# dk içinde}}} one {# sa {minutes} dk içinde} other {# sa {minutes} dk içinde}}"
+      "resetsAt": "{utc} UTC itibarıyla sıfırlanır (sizin saatinizle {local}), {timeLeft} sonra"
     }
   },
   "country": {

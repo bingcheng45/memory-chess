@@ -376,7 +376,7 @@
       "tab": "Daglig",
       "setting": "{pieces, plural, one {# brik} other {# brikker}} · {seconds} s husketid",
       "resetsAtUtc": "Nulstilles kl. {utc} UTC",
-      "resetsAt": "Nulstilles kl. {utc} UTC ({local} din tid), {hours, plural, =0 {{minutes, plural, =0 {om under et minut} one {om # min} other {om # min}}} one {om # t {minutes} min} other {om # t {minutes} min}}"
+      "resetsAt": "Nulstilles kl. {utc} UTC ({local} din tid), om {timeLeft}"
     }
   },
   "country": {

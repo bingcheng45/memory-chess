@@ -1191,7 +1191,7 @@
       "tab": "Daily",
       "setting": "{pieces, plural, one {# piece} other {# pieces}} · {seconds} s to study",
       "resetsAtUtc": "Resets at {utc} UTC",
-      "resetsAt": "Resets at {utc} UTC ({local} your time), {hours, plural, =0 {{minutes, plural, =0 {in under a minute} one {in # min} other {in # min}}} one {in # h {minutes} min} other {in # h {minutes} min}}"
+      "resetsAt": "Resets at {utc} UTC ({local} your time), in {timeLeft}"
     }
   },
   "country": {

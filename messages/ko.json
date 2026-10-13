@@ -376,7 +376,7 @@
       "tab": "데일리",
       "setting": "{pieces, plural, other {기물 #개}} · 암기 {seconds}초",
       "resetsAtUtc": "UTC {utc}에 초기화",
-      "resetsAt": "UTC {utc}(현지 시간 {local})에 초기화, {hours, plural, =0 {{minutes, plural, =0 {1분 이내} other {#분 남음}}} other {#시간 {minutes}분 남음}}"
+      "resetsAt": "UTC {utc}(현지 시간 {local})에 초기화, {timeLeft} 남음"
     }
   },
   "country": {

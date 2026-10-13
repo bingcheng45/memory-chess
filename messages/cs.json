@@ -376,7 +376,7 @@
       "tab": "Denní",
       "setting": "{pieces, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} · {seconds} s na studium",
       "resetsAtUtc": "Obnoví se v {utc} UTC",
-      "resetsAt": "Obnoví se v {utc} UTC ({local} u vás), {hours, plural, =0 {{minutes, plural, =0 {za méně než minutu} one {za # min} few {za # min} many {za # min} other {za # min}}} one {za # h {minutes} min} few {za # h {minutes} min} many {za # h {minutes} min} other {za # h {minutes} min}}"
+      "resetsAt": "Obnoví se v {utc} UTC ({local} u vás), za {timeLeft}"
     }
   },
   "country": {

@@ -28,6 +28,11 @@ const EVENTS: FunnelEvent[] = [
   { name: "lab_panel_action", params: { panel: "plans", action: "play" } },
   { name: "lab_panel_action", params: { panel: "goal", action: "setGoal" } },
   { name: "lab_panel_action", params: { panel: "goal", action: "clearGoal" } },
+  {
+    name: "learn_search",
+    params: { query_length: 28, results: 2, top: "how-to-stop-blundering-in-chess", outcome: "strong", surface: "hub" },
+  },
+  { name: "learn_search_select", params: { slug: "chess-memory-training", rank: 1, matched_question: false, surface: "server" } },
 ];
 
 afterEach(() => {

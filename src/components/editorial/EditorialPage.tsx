@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Link } from "@/i18n/navigation";
 import PageHeader from "@/components/ui/PageHeader";
 import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 
@@ -14,14 +13,6 @@ type EditorialHeroProps = {
   description: string;
   children?: ReactNode;
   align?: "center" | "left";
-};
-
-type EditorialActionLinkProps = {
-  href: string;
-  children: ReactNode;
-  variant?: "primary" | "secondary";
-  className?: string;
-  trackingName?: string;
 };
 
 export function EditorialPageShell({
@@ -84,27 +75,5 @@ export function EditorialSection({
         {children}
       </div>
     </section>
-  );
-}
-
-export function EditorialActionLink({
-  href,
-  children,
-  variant = "primary",
-  className = "",
-  trackingName,
-}: EditorialActionLinkProps) {
-  return (
-    <Link
-      href={href}
-      className={`${
-        variant === "primary"
-          ? EDITORIAL_STYLES.primaryAction
-          : EDITORIAL_STYLES.secondaryAction
-      } ${className}`}
-      {...(trackingName ? { "data-learn-cta": trackingName } : {})}
-    >
-      {children}
-    </Link>
   );
 }

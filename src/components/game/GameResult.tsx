@@ -329,7 +329,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <button type="button" onClick={onNewGame} className={`lab-btn ${tryAgainFirst ? "lab-btn-secondary" : "lab-btn-primary"}`}>
             {t("newGame")}
           </button>
-          {gameState.board?.kind === "daily" && (
+          {gameState.board?.kind === "daily" && keepsRecord && (
             <Link href="/daily" className="lab-btn lab-btn-secondary lab-result-submit">
               {tDaily("join")}
             </Link>

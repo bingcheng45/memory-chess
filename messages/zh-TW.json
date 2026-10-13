@@ -544,9 +544,9 @@
         "daily": {
           "fig": "圖 {number} · 今日棋盤",
           "title": "每天一個棋盤，每個人都一樣。",
-          "desc": "每天 UTC 午夜開放一個新局面。每個人都拿到同樣的 6 個棋子和 10 秒觀察時間，而你只有一次機會。",
+          "desc": "每天 UTC 午夜開放一個新局面。每個人都拿到同樣的棋盤和同樣的觀察時間，而你只有一次機會。",
           "play": "玩今日棋盤",
-          "open": "今天的棋盤有{pieceCount, plural, other {# 個棋子}}，記憶時間為{memorizeSeconds, plural, other {# 秒}}。你還沒玩今天的棋盤。",
+          "open": "今天的棋盤有{pieceCount, plural, other {#個棋子}}，記憶時間為{memorizeSeconds, plural, other {#秒}}。你還沒玩今天的棋盤。",
           "played": "你擺對了 {pieceCount, plural, other {# 子}}中的 {correct} 子，準確率 {accuracy}%。",
           "unfinished": "你開啟了今天的棋盤，但在結果出來前離開了。這台裝置每天只有一次機會。",
           "streak": "每日連續 {current, plural, other {# 天}}{forgiven, plural, =0 {} other {，寬限漏玩 # 天}} · 最長 {longest, plural, other {# 天}}",

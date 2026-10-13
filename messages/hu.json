@@ -544,7 +544,7 @@
         "daily": {
           "fig": "{number}. ábra · A nap táblája",
           "title": "Napi egy tábla, mindenkinek ugyanaz.",
-          "desc": "Minden nap éjfélkor (UTC) új állás nyílik. Mindenki ugyanazt a 6 bábut és 10 másodperc megfigyelési időt kapja, és egy próbálkozásod van.",
+          "desc": "Minden nap éjfélkor (UTC) új állás nyílik. Mindenki ugyanazt a táblát és ugyanannyi megfigyelési időt kapja, és egy próbálkozásod van.",
           "play": "A nap táblájának indítása",
           "open": "A mai táblán {pieceCount, plural, one {# bábu} other {# bábu}} van, és {memorizeSeconds, plural, one {# másodperc} other {# másodperc}} jut a megjegyzésére. A mai táblát még nem játszottad le.",
           "played": "{pieceCount, plural, one {# bábuból} other {# bábuból}} {correct} helyére tetted, ez {accuracy}%.",

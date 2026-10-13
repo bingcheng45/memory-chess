@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Fig. {number} · Bord van de dag",
           "title": "Eén bord per dag, voor iedereen hetzelfde.",
-          "desc": "Elke dag om middernacht UTC komt er een nieuwe stelling. Iedereen krijgt dezelfde 6 stukken en 10 seconden kijktijd, en je hebt één poging.",
+          "desc": "Elke dag om middernacht UTC komt er een nieuwe stelling. Iedereen krijgt hetzelfde bord en dezelfde kijktijd, en je hebt één poging.",
           "play": "Speel het bord van vandaag",
           "open": "Het bord van vandaag heeft {pieceCount, plural, one {# stuk} other {# stukken}} en {memorizeSeconds, plural, one {# seconde} other {# seconden}} om te bestuderen. Je hebt het bord van vandaag nog niet gespeeld.",
           "played": "Je zette {correct} van {pieceCount, plural, one {# stuk} other {# stukken}} goed, {accuracy} procent.",

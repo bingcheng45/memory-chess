@@ -27,6 +27,19 @@ function dailyRowMismatch(board: LeaderboardBoard, pieceCount: unknown, memorize
   return null;
 }
 
+const BOARD_SQUARE_COUNT = 64;
+
+/**
+ * A round's counts as the scorer writes them: wrong is the pieces missed plus any extra placed, so it is at least
+ * piece_count - correct and at most the squares left beside the correct ones. The board lists only rows with a
+ * correct piece; accepting 0 would store a score nobody can see.
+ */
+function countsAreScored(pieceCount: unknown, correct: unknown, wrong: unknown): boolean {
+  if (typeof pieceCount !== 'number' || typeof correct !== 'number' || typeof wrong !== 'number') return false;
+  if (![pieceCount, correct, wrong].every(Number.isInteger)) return false;
+  return correct >= 1 && correct <= pieceCount && wrong >= pieceCount - correct && wrong <= BOARD_SQUARE_COUNT - correct;
+}
+
 function parseSkillRating(value: unknown): number | null {
   if (value === undefined) return START_RATING;
   return isSkillRating(value) ? Math.min(value, MAX_SKILL_RATING) : null;
@@ -132,10 +145,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Additional validation
-    // The board lists only rows with a correct piece; accepting 0 would store
-    // a score nobody can see.
-    if (correct_pieces < 1 || correct_pieces > piece_count || memorize_time <= 0 || solution_time <= 0) {
+    if (!countsAreScored(piece_count, correct_pieces, total_wrong_pieces) || memorize_time <= 0 || solution_time <= 0) {
       return NextResponse.json(
         { error: 'Invalid data values' },
         { status: 400 }

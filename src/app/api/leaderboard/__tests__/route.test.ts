@@ -69,6 +69,35 @@ describe("POST /api/leaderboard", () => {
     expect(submitLeaderboardEntry).not.toHaveBeenCalled();
   });
 
+  it.each([
+    ["a negative wrong count", { total_wrong_pieces: -5 }],
+    ["no wrong count", { total_wrong_pieces: undefined }],
+    ["a null wrong count", { total_wrong_pieces: null }],
+    ["a fractional wrong count", { total_wrong_pieces: 2.5 }],
+    ["a wrong count as text", { total_wrong_pieces: "2" }],
+    ["fewer wrong than the 2 pieces it missed", { total_wrong_pieces: 1 }],
+    ["more wrong than 64 squares leave beside 4 correct", { total_wrong_pieces: 61 }],
+    ["a fractional correct count", { correct_pieces: 3.5 }],
+    ["a correct count as text", { correct_pieces: "4" }],
+    ["more correct than the board's 6 pieces", { correct_pieces: 7, total_wrong_pieces: 0 }],
+  ])("rejects a round with %s", async (_case, counts) => {
+    const response = await post({ ...validEntry, ...counts });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Invalid data values" });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["only the 2 pieces it missed", 2],
+    ["a piece on every other square of the board", 60],
+  ])("stores a round of 4 correct out of 6 with %s wrong", async (_case, total_wrong_pieces) => {
+    const response = await post({ ...validEntry, total_wrong_pieces });
+
+    expect(response.status).toBe(200);
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ total_wrong_pieces }));
+  });
+
   it("forwards a known country code to the service", async () => {
     const response = await post({ ...validEntry, country_code: "SG" });
 
@@ -303,6 +332,14 @@ describe("POST /api/leaderboard", () => {
 
       expect(response.status).toBe(400);
       expect(await response.json()).toEqual({ error: "The daily board for 2026-10-13 is 6 pieces and 10 seconds" });
+      expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+    });
+
+    it("rejects a daily row with a negative wrong count, which would top the board", async () => {
+      const response = await post({ ...todaysRow, total_wrong_pieces: -1 });
+
+      expect(response.status).toBe(400);
+      expect(await response.json()).toEqual({ error: "Invalid data values" });
       expect(submitLeaderboardEntry).not.toHaveBeenCalled();
     });
 

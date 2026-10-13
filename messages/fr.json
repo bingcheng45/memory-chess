@@ -843,10 +843,13 @@
       "copied": "Copié",
       "copyFailed": "Le presse-papiers a refusé la copie. Sélectionnez le texte ci-dessous et copiez-le.",
       "joined": "Vous êtes sur le plateau du jour",
-      "rank": "Rang {rank} sur {total} aujourd’hui"
+      "rank": "Rang {rank} sur {total} aujourd’hui",
+      "lateNote": "Votre essai a commencé avant minuit UTC et s’est terminé après, il compte donc pour le plateau de ce jour-là.",
+      "lateJoined": "Vous êtes sur le plateau de ce jour-là"
     },
     "join": {
       "title": "Rejoindre le plateau du jour",
+      "lateTitle": "Rejoindre le plateau de ce jour-là",
       "name": "Nom",
       "nameHint": "De 4 à 16 caractères, affiché avec votre score.",
       "country": "Pays",

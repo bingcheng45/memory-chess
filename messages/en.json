@@ -1658,10 +1658,13 @@
       "copied": "Copied",
       "copyFailed": "The clipboard was refused. Select the text below and copy it.",
       "joined": "You are on today's board",
-      "rank": "Rank {rank} of {total} today"
+      "rank": "Rank {rank} of {total} today",
+      "lateNote": "Your try began before midnight UTC and ended after it, so it joins that day's board.",
+      "lateJoined": "You are on the board for that day"
     },
     "join": {
       "title": "Join today's board",
+      "lateTitle": "Join that day's board",
       "name": "Name",
       "nameHint": "4 to 16 characters, shown with your score.",
       "country": "Country",

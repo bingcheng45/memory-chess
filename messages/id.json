@@ -843,10 +843,13 @@
       "copied": "Tersalin",
       "copyFailed": "Papan klip menolak akses. Pilih teks di bawah lalu salin.",
       "joined": "Anda ada di papan hari ini",
-      "rank": "Peringkat {rank} dari {total} hari ini"
+      "rank": "Peringkat {rank} dari {total} hari ini",
+      "lateNote": "Percobaan Anda dimulai sebelum tengah malam UTC dan selesai sesudahnya, jadi masuk ke papan hari itu.",
+      "lateJoined": "Anda ada di papan hari itu"
     },
     "join": {
       "title": "Ikut papan hari ini",
+      "lateTitle": "Gabung ke papan hari itu",
       "name": "Nama",
       "nameHint": "4 sampai 16 karakter, ditampilkan bersama skor Anda.",
       "country": "Negara",

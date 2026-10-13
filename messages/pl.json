@@ -843,10 +843,13 @@
       "copied": "Skopiowano",
       "copyFailed": "Schowek odmówił dostępu. Zaznacz tekst poniżej i skopiuj go ręcznie.",
       "joined": "Jesteś w dzisiejszej szachownicy",
-      "rank": "Miejsce {rank} z {total} dzisiaj"
+      "rank": "Miejsce {rank} z {total} dzisiaj",
+      "lateNote": "Twoja próba zaczęła się przed północą UTC i skończyła po niej, więc liczy się do szachownicy z tamtego dnia.",
+      "lateJoined": "Jesteś w szachownicy z tamtego dnia"
     },
     "join": {
       "title": "Dołącz do dzisiejszej szachownicy",
+      "lateTitle": "Dołącz do szachownicy z tamtego dnia",
       "name": "Nazwa",
       "nameHint": "Od 4 do 16 znaków, widoczna przy Twoim wyniku.",
       "country": "Kraj",

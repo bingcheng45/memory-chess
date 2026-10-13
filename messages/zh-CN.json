@@ -843,10 +843,13 @@
       "copied": "已复制",
       "copyFailed": "剪贴板被拒绝访问。请选中下面的文字并手动复制。",
       "joined": "你已加入今天的棋盘",
-      "rank": "今天第 {rank} 名，共 {total} 人"
+      "rank": "今天第 {rank} 名，共 {total} 人",
+      "lateNote": "你的这次尝试在 UTC 午夜前开始、午夜后结束，所以计入那一天的棋盘。",
+      "lateJoined": "你已加入那一天的棋盘"
     },
     "join": {
       "title": "加入今天的棋盘",
+      "lateTitle": "加入那一天的棋盘",
       "name": "名字",
       "nameHint": "4 到 16 个字符，会和你的成绩一起显示。",
       "country": "国家/地区",

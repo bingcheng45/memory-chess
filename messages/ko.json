@@ -843,10 +843,13 @@
       "copied": "복사했습니다",
       "copyFailed": "클립보드 접근이 거부되었습니다. 아래 텍스트를 선택해 복사하세요.",
       "joined": "오늘의 보드에 참가했습니다",
-      "rank": "오늘 {total}명 중 {rank}위"
+      "rank": "오늘 {total}명 중 {rank}위",
+      "lateNote": "UTC 자정 전에 시작해 자정 후에 끝난 도전이라 그날의 보드에 참가합니다.",
+      "lateJoined": "그날의 보드에 참가했습니다"
     },
     "join": {
       "title": "오늘의 보드에 참가",
+      "lateTitle": "그날의 보드에 참가하기",
       "name": "이름",
       "nameHint": "4~16자, 점수와 함께 표시됩니다.",
       "country": "국가",

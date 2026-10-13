@@ -843,10 +843,13 @@
       "copied": "Másolva",
       "copyFailed": "A vágólap elutasította a másolást. Jelöld ki az alábbi szöveget, és másold ki.",
       "joined": "Rajta vagy a mai táblán",
-      "rank": "{rank}. hely a mai {total} közül"
+      "rank": "{rank}. hely a mai {total} közül",
+      "lateNote": "A próbálkozásod UTC szerint éjfél előtt kezdődött és utána ért véget, ezért annak a napnak a táblájához tartozik.",
+      "lateJoined": "Rajta vagy annak a napnak a tábláján"
     },
     "join": {
       "title": "Csatlakozás a mai táblához",
+      "lateTitle": "Csatlakozz annak a napnak a táblájához",
       "name": "Név",
       "nameHint": "4–16 karakter, a pontszámod mellett jelenik meg.",
       "country": "Ország",

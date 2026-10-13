@@ -843,10 +843,13 @@
       "copied": "Copiato",
       "copyFailed": "Gli appunti hanno rifiutato la copia. Seleziona il testo qui sotto e copialo.",
       "joined": "Sei nella scacchiera di oggi",
-      "rank": "Posizione {rank} su {total} oggi"
+      "rank": "Posizione {rank} su {total} oggi",
+      "lateNote": "Il tuo tentativo è iniziato prima della mezzanotte UTC ed è finito dopo, quindi conta per la scacchiera di quel giorno.",
+      "lateJoined": "Sei nella scacchiera di quel giorno"
     },
     "join": {
       "title": "Partecipa alla scacchiera di oggi",
+      "lateTitle": "Unisciti alla scacchiera di quel giorno",
       "name": "Nome",
       "nameHint": "Da 4 a 16 caratteri, mostrato insieme al tuo punteggio.",
       "country": "Paese",

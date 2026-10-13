@@ -5,9 +5,11 @@ import { useFormatter, useTranslations } from "next-intl";
 import { useNow } from "@/components/home/DailyResetsIn";
 import { useLabData } from "@/hooks/useLabData";
 import { dailySettingOf } from "@/lib/daily/schedule";
-import { dailyBoardOf, readDailyOpened, utcDayOf } from "@/lib/lab/daily";
+import { dailyBoardOf, readDailyOpened, utcDayOf, type DailyRound } from "@/lib/lab/daily";
+import { DAY_MS } from "@/lib/lab/readiness";
 import { readDailyEntry, type DailyEntry } from "@/lib/lab/entries";
 import { DailyCard } from "./DailyCard";
+import { DailyJoinForm } from "./DailyJoinForm";
 import { DailyResetLine } from "./DailyResetLine";
 import { DailyTopTen } from "./DailyTopTen";
 import { useDailyRows, useDailyStanding } from "./useDailyRows";
@@ -19,7 +21,9 @@ export function DailyBoard() {
   const now = useNow();
   const lab = useLabData();
   const day = now === null ? null : utcDayOf(now);
+  const yesterday = now === null ? null : utcDayOf(now - DAY_MS);
   const board = day === null || lab.storage === "loading" ? null : dailyBoardOf(lab.records, day, readDailyOpened());
+  const late = yesterday === null || lab.storage === "loading" ? null : dailyBoardOf(lab.records, yesterday, null);
   const [joined, setJoined] = useState<DailyEntry | null>(null);
   const [rowsVersion, setRowsVersion] = useState(0);
   const rows = useDailyRows(day, rowsVersion);
@@ -44,10 +48,43 @@ export function DailyBoard() {
         </div>
         <DailyResetLine now={now} />
       </header>
+      {late?.status === "played" && <LateJoin key={late.day} round={late.round} />}
       <div className="daily-grid">
         <DailyCard board={board} setting={day === null ? null : dailySettingOf(day)} joined={joined} standing={standing} onJoined={onJoined} />
         <DailyTopTen rows={rows} joined={joined} played={board?.status === "played"} />
       </div>
     </>
+  );
+}
+
+/** A round opened before midnight UTC and finished after it still joins the board of the day it was opened on. */
+function LateJoin({ round }: { round: DailyRound }) {
+  const t = useTranslations("daily.page");
+  const tJoin = useTranslations("daily.join");
+  const format = useFormatter();
+  const [joined, setJoined] = useState<DailyEntry | "before" | null>(null);
+
+  useEffect(() => {
+    if (readDailyEntry(round.dailyDay)) setJoined("before");
+  }, [round.dailyDay]);
+
+  if (joined === "before") return null;
+  const date = format.dateTime(Date.parse(`${round.dailyDay}T00:00:00Z`), { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" });
+  return (
+    <section className="daily-card daily-late" aria-labelledby="daily-late-title">
+      <h2 id="daily-late-title" className="daily-kicker">
+        {t("fig", { date })}
+      </h2>
+      <p className="daily-note">
+        <strong>{t("score", { correct: round.correct, pieceCount: round.config.pieceCount })}</strong> {t("lateNote")}
+      </p>
+      {joined ? (
+        <p className="daily-joined-title" role="status">
+          {t("lateJoined")}
+        </p>
+      ) : (
+        <DailyJoinForm round={round} onJoined={setJoined} title={tJoin("lateTitle")} />
+      )}
+    </section>
   );
 }

@@ -843,10 +843,13 @@
       "copied": "Kopyalandı",
       "copyFailed": "Pano izin vermedi. Aşağıdaki metni seçip kopyala.",
       "joined": "Bugünün tahtasındasın",
-      "rank": "Bugün {total} kişi arasında {rank}. sıra"
+      "rank": "Bugün {total} kişi arasında {rank}. sıra",
+      "lateNote": "Denemen UTC gece yarısından önce başlayıp sonra bittiği için o günün tahtasına sayılır.",
+      "lateJoined": "O günün tahtasındasın"
     },
     "join": {
       "title": "Bugünün tahtasına katıl",
+      "lateTitle": "O günün tahtasına katıl",
       "name": "Ad",
       "nameHint": "4 ila 16 karakter, skorunla birlikte gösterilir.",
       "country": "Ülke",

@@ -843,10 +843,13 @@
       "copied": "Kopiert",
       "copyFailed": "Utklippstavlen ble nektet tilgang. Merk teksten under og kopier den.",
       "joined": "Du er med på dagens brett",
-      "rank": "Plass {rank} av {total} i dag"
+      "rank": "Plass {rank} av {total} i dag",
+      "lateNote": "Forsøket ditt begynte før midnatt UTC og sluttet etter, så det hører til brettet for den dagen.",
+      "lateJoined": "Du er med på brettet for den dagen"
     },
     "join": {
       "title": "Bli med på dagens brett",
+      "lateTitle": "Bli med på brettet for den dagen",
       "name": "Navn",
       "nameHint": "4 til 16 tegn, vises sammen med poengsummen din.",
       "country": "Land",

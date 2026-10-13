@@ -843,10 +843,13 @@
       "copied": "Zkopírováno",
       "copyFailed": "Schránka kopírování odmítla. Označte text níže a zkopírujte ho ručně.",
       "joined": "Jste v dnešním žebříčku",
-      "rank": "{rank}. místo z {total} dnes"
+      "rank": "{rank}. místo z {total} dnes",
+      "lateNote": "Váš pokus začal před půlnocí UTC a skončil po ní, takže patří do žebříčku toho dne.",
+      "lateJoined": "Jste v žebříčku toho dne"
     },
     "join": {
       "title": "Zapojit se do dnešní pozice",
+      "lateTitle": "Připojte se k žebříčku toho dne",
       "name": "Jméno",
       "nameHint": "4 až 16 znaků, zobrazí se u vašeho skóre.",
       "country": "Země",

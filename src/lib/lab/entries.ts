@@ -8,7 +8,10 @@ import { DAILY_BOARD, LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } fro
 
 export const ENTRIES_KEY = "memory-chess-lab-entries";
 
-/** One entry, the latest day's: each daily board is its own day, so an entry from another day never competes with it. */
+/**
+ * One entry per day for the two latest days: each daily board is its own day, and a round finished after midnight UTC
+ * still joins the board of the day before.
+ */
 export const DAILY_ENTRY_KEY = "memory-chess-daily-entry";
 
 interface EntryFacts {
@@ -66,14 +69,9 @@ export function withoutEntry(entries: StoredEntries | null, { id, difficulty }: 
   return orNothing(Object.fromEntries(Object.entries(entries).filter(([kept]) => kept !== difficulty)));
 }
 
-function parseDailyEntry(text: string | null): DailyEntry | null {
-  if (text === null) return null;
-  let raw: unknown;
-  try {
-    raw = JSON.parse(text);
-  } catch {
-    return null;
-  }
+const DAILY_DAYS_KEPT = 2;
+
+function parseDailyEntry(raw: unknown): DailyEntry | null {
   if (!isObject(raw) || !isEntryId(raw.id) || raw.difficulty !== DAILY_BOARD) return null;
   const dailyDay = parseUtcDay(raw.dailyDay);
   const score = parseScore(raw.score);
@@ -82,10 +80,23 @@ function parseDailyEntry(text: string | null): DailyEntry | null {
   return { id: raw.id, difficulty: DAILY_BOARD, dailyDay, country, score, submittedAt: raw.submittedAt as number };
 }
 
+function parseDailyEntries(text: string | null): readonly DailyEntry[] {
+  if (text === null) return [];
+  let raw: unknown;
+  try {
+    raw = JSON.parse(text);
+  } catch {
+    return [];
+  }
+  return Array.isArray(raw) ? raw.flatMap((item) => parseDailyEntry(item) ?? []) : [];
+}
+
+const withDailyEntry = (entries: readonly DailyEntry[], entry: DailyEntry): readonly DailyEntry[] =>
+  [entry, ...entries.filter(({ dailyDay }) => dailyDay !== entry.dailyDay)].sort((a, b) => b.dailyDay.localeCompare(a.dailyDay)).slice(0, DAILY_DAYS_KEPT);
+
 export function readDailyEntry(day: string): DailyEntry | null {
   try {
-    const entry = parseDailyEntry(window.localStorage.getItem(DAILY_ENTRY_KEY));
-    return entry?.dailyDay === day ? entry : null;
+    return parseDailyEntries(window.localStorage.getItem(DAILY_ENTRY_KEY)).find(({ dailyDay }) => dailyDay === day) ?? null;
   } catch {
     return null;
   }
@@ -97,7 +108,9 @@ export function rememberEntry(row: unknown, now: number): StoredEntry | DailyEnt
   if (entry === null) return null;
   try {
     const [key, value] =
-      entry.difficulty === DAILY_BOARD ? [DAILY_ENTRY_KEY, entry] : [ENTRIES_KEY, withEntry(parseEntries(window.localStorage.getItem(ENTRIES_KEY)), entry)];
+      entry.difficulty === DAILY_BOARD
+        ? [DAILY_ENTRY_KEY, withDailyEntry(parseDailyEntries(window.localStorage.getItem(DAILY_ENTRY_KEY)), entry)]
+        : [ENTRIES_KEY, withEntry(parseEntries(window.localStorage.getItem(ENTRIES_KEY)), entry)];
     window.localStorage.setItem(key, JSON.stringify(value));
   } catch {
     // Kept for this page only.

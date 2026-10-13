@@ -843,10 +843,13 @@
       "copied": "Copiado",
       "copyFailed": "El portapapeles lo ha rechazado. Selecciona el texto de abajo y cópialo.",
       "joined": "Estás en el tablero de hoy",
-      "rank": "Puesto {rank} de {total} hoy"
+      "rank": "Puesto {rank} de {total} hoy",
+      "lateNote": "Tu intento empezó antes de la medianoche UTC y terminó después, así que cuenta para el tablero de ese día.",
+      "lateJoined": "Estás en el tablero de ese día"
     },
     "join": {
       "title": "Unirse al tablero de hoy",
+      "lateTitle": "Únete al tablero de ese día",
       "name": "Nombre",
       "nameHint": "De 4 a 16 caracteres, se muestra junto a tu puntuación.",
       "country": "País",

@@ -843,10 +843,13 @@
       "copied": "Kopierat",
       "copyFailed": "Urklippet nekade kopieringen. Markera texten nedan och kopiera den.",
       "joined": "Du är med på dagens bräde",
-      "rank": "Plats {rank} av {total} i dag"
+      "rank": "Plats {rank} av {total} i dag",
+      "lateNote": "Ditt försök började före midnatt UTC och slutade efter, så det räknas till brädet för den dagen.",
+      "lateJoined": "Du är med på brädet för den dagen"
     },
     "join": {
       "title": "Delta i dagens bräde",
+      "lateTitle": "Gå med på brädet för den dagen",
       "name": "Namn",
       "nameHint": "4 till 16 tecken, visas tillsammans med ditt resultat.",
       "country": "Land",

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useId, useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { WORLD_CODE } from "@/lib/leaderboard/countries";
@@ -15,7 +15,6 @@ import { useSettingsStore } from "@/stores/settingsStore";
 import { guessCountry } from "./countryGuess";
 import { dailySubmission } from "./dailySubmission";
 
-const COUNTRY_ID = "daily-country";
 const NAME_LENGTH = { min: 4, max: 16 } as const;
 
 const GEO_TIMEOUT_MS = 3_000;
@@ -42,8 +41,16 @@ function useGeoCountry(needed: boolean): string | null | undefined {
 
 type Submit = "idle" | "sending" | "failed";
 
-export function DailyJoinForm({ round, onJoined }: { round: DailyRound; onJoined: (entry: DailyEntry) => void }) {
+interface DailyJoinFormProps {
+  readonly round: DailyRound;
+  readonly onJoined: (entry: DailyEntry) => void;
+  readonly title?: string;
+}
+
+export function DailyJoinForm({ round, onJoined, title }: DailyJoinFormProps) {
   const t = useTranslations("daily.join");
+  const id = useId();
+  const ids = { name: `${id}-name`, nameHint: `${id}-name-hint`, country: `${id}-country` };
   const { countryCode: saved, setCountryCode } = useSettingsStore();
   const rating = useGameStore((state) => state.gameState.skillRating) ?? START_RATING;
   const geo = useGeoCountry(saved === WORLD_CODE && round.correct > 0);
@@ -70,28 +77,28 @@ export function DailyJoinForm({ round, onJoined }: { round: DailyRound; onJoined
 
   return (
     <form className="daily-join" onSubmit={join} noValidate>
-      <h3 className="daily-join-title">{t("title")}</h3>
+      <h3 className="daily-join-title">{title ?? t("title")}</h3>
       <div className="daily-field">
-        <label htmlFor="daily-name">{t("name")}</label>
+        <label htmlFor={ids.name}>{t("name")}</label>
         <input
-          id="daily-name"
+          id={ids.name}
           value={name}
           onChange={(event) => setName(event.target.value)}
           maxLength={NAME_LENGTH.max}
           autoComplete="nickname"
-          aria-describedby="daily-name-hint"
+          aria-describedby={ids.nameHint}
           disabled={sending}
           required
         />
-        <p id="daily-name-hint" className="daily-hint">{t("nameHint")}</p>
+        <p id={ids.nameHint} className="daily-hint">{t("nameHint")}</p>
       </div>
       <div className="daily-field">
-        <label htmlFor={COUNTRY_ID}>{t("country")}</label>
-        <CountryPicker id={COUNTRY_ID} value={guess?.code ?? null} onChange={setCountryCode} disabled={sending} placeholder={t("chooseCountry")} withWorld={false} />
+        <label htmlFor={ids.country}>{t("country")}</label>
+        <CountryPicker id={ids.country} value={guess?.code ?? null} onChange={setCountryCode} disabled={sending} placeholder={t("chooseCountry")} withWorld={false} />
         <p className="daily-hint">
           {t(`from.${guess?.source ?? "none"}`)}{" "}
           {guess && (
-            <button type="button" className="daily-change" onClick={() => document.getElementById(COUNTRY_ID)?.click()} disabled={sending}>
+            <button type="button" className="daily-change" onClick={() => document.getElementById(ids.country)?.click()} disabled={sending}>
               {t("change")}
             </button>
           )}

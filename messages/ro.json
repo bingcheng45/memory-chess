@@ -843,10 +843,13 @@
       "copied": "Copiat",
       "copyFailed": "Clipboardul a refuzat copierea. Selectează textul de mai jos și copiază-l.",
       "joined": "Ești în tabla de azi",
-      "rank": "Locul {rank} din {total} azi"
+      "rank": "Locul {rank} din {total} azi",
+      "lateNote": "Încercarea ta a început înainte de miezul nopții UTC și s-a încheiat după, așa că se numără pentru tabla din ziua aceea.",
+      "lateJoined": "Ești în tabla din ziua aceea"
     },
     "join": {
       "title": "Intră în tabla de azi",
+      "lateTitle": "Intră în tabla din ziua aceea",
       "name": "Nume",
       "nameHint": "Între 4 și 16 caractere, afișat alături de scorul tău.",
       "country": "Țară",

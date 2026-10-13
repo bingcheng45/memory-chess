@@ -843,10 +843,13 @@
       "copied": "Copiado",
       "copyFailed": "A área de transferência recusou a cópia. Selecione o texto abaixo e copie.",
       "joined": "Você está no tabuleiro de hoje",
-      "rank": "Posição {rank} de {total} hoje"
+      "rank": "Posição {rank} de {total} hoje",
+      "lateNote": "Sua tentativa começou antes da meia-noite UTC e terminou depois, então conta para o tabuleiro daquele dia.",
+      "lateJoined": "Você está no tabuleiro daquele dia"
     },
     "join": {
       "title": "Entrar no tabuleiro de hoje",
+      "lateTitle": "Entre no tabuleiro daquele dia",
       "name": "Nome",
       "nameHint": "De 4 a 16 caracteres, exibido junto com sua pontuação.",
       "country": "País",

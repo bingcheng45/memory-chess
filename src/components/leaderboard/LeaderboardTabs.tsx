@@ -59,6 +59,9 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   const isJustSubmitted = Boolean(entryDetails?.player);
 
   const isRefreshing = activeTab === DAILY_BOARD ? dailyDay !== null : isJustSubmitted;
+  // A viewer's clock a little ahead of the server asks for a day the server
+  // does not serve yet, so a failed daily read tries again on every tick.
+  const dailyRetry = dailyDay !== null && boards.daily.error ? now : null;
 
   useEffect(() => {
     if (!isRefreshing) return;
@@ -78,7 +81,7 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
       });
 
     return () => controller.abort();
-  }, [activeTab, dailyDay, isRefreshing]);
+  }, [activeTab, dailyDay, isRefreshing, dailyRetry]);
 
   const activeBoard = boards[activeTab];
 

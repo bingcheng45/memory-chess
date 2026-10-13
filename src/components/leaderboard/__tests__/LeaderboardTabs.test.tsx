@@ -36,7 +36,9 @@ const ROWS_BY_DAY: Record<string, LeaderboardEntry[]> = {
   "2026-10-14": [],
 };
 
-const fetchMock = jest.fn((input: string) => {
+type ReadBody = { data?: LeaderboardEntry[]; error?: string };
+
+const fetchMock = jest.fn((input: string): Promise<{ json: () => Promise<ReadBody> }> => {
   const day = new URL(input, "http://localhost").searchParams.get("daily_day") ?? "";
   return Promise.resolve({ json: () => Promise.resolve({ data: ROWS_BY_DAY[day] ?? [] }) });
 });
@@ -147,10 +149,25 @@ describe("the Daily tab", () => {
     expect(screen.getByText("Resets at 00:00 UTC (00:00 your time), in 23 h 59 min")).toBeInTheDocument();
   });
 
+  it("reads the day again on the next tick when the server has not reached the viewer's day yet", async () => {
+    const notYet = () => Promise.resolve({ json: () => Promise.resolve({ error: "Invalid difficulty level" }) });
+    fetchMock.mockImplementationOnce(notYet).mockImplementationOnce(notYet);
+    await renderDailyAt("2026-10-14T00:00:05Z", "UTC");
+
+    expect(screen.getByText("Error loading leaderboard: Invalid difficulty level")).toBeInTheDocument();
+
+    await act(async () => {
+      jest.advanceTimersByTime(30_000);
+    });
+
+    expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=daily&daily_day=2026-10-14", expect.anything());
+    expect(screen.getByText("Be the First Champion!")).toBeInTheDocument();
+  });
+
   it("shows the unavailable state when the daily read has no database", async () => {
-    fetchMock.mockImplementationOnce(() =>
-      Promise.resolve({ json: () => Promise.resolve({ data: [], error: "Database connection unavailable. Please check the application configuration." }) }),
-    );
+    const offline = () =>
+      Promise.resolve({ json: () => Promise.resolve({ data: [], error: "Database connection unavailable. Please check the application configuration." }) });
+    fetchMock.mockImplementationOnce(offline).mockImplementationOnce(offline);
     await renderDailyAt("2026-10-14T10:00:00Z", "UTC");
 
     expect(screen.getByText("Leaderboard Temporarily Unavailable")).toBeInTheDocument();

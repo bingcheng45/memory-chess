@@ -10,13 +10,20 @@ import { DAILY_BOARD, type LeaderboardBoard } from '@/types/leaderboard';
 
 const LEADERBOARD_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
 
-function dailyRowMismatch(board: LeaderboardBoard, pieceCount: unknown, memorizeTime: unknown, country: unknown): string | null {
+/** The board is public in the repo, so a script could post a perfect row; no person rebuilds a piece faster than this. */
+const DAILY_SECONDS_PER_PIECE = 0.25;
+
+function dailyRowMismatch(board: LeaderboardBoard, pieceCount: unknown, memorizeTime: unknown, solutionTime: unknown, country: unknown): string | null {
   if (board.difficulty !== DAILY_BOARD) return null;
   const code = parseCountryCode(country);
   if (code === null || code === WORLD_CODE) return 'A daily row needs a country';
   const setting = dailySettingOf(board.daily_day);
-  if (pieceCount === setting.pieceCount && memorizeTime === setting.memorizeTime) return null;
-  return `The daily board for ${board.daily_day} is ${setting.pieceCount} pieces and ${setting.memorizeTime} seconds`;
+  if (pieceCount !== setting.pieceCount || memorizeTime !== setting.memorizeTime) {
+    return `The daily board for ${board.daily_day} is ${setting.pieceCount} pieces and ${setting.memorizeTime} seconds`;
+  }
+  const floor = setting.pieceCount * DAILY_SECONDS_PER_PIECE;
+  if (typeof solutionTime === 'number' && solutionTime < floor) return `A daily rebuild of ${setting.pieceCount} pieces takes at least ${floor} seconds`;
+  return null;
 }
 
 function parseSkillRating(value: unknown): number | null {
@@ -86,8 +93,11 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Validate player name length
-    if (typeof player_name === 'string' && (player_name.length < 4 || player_name.length > 16)) {
+    if (typeof player_name !== 'string') {
+      return NextResponse.json({ error: 'Player name must be text' }, { status: 400 });
+    }
+    const playerName = player_name.trim();
+    if (playerName.length < 4 || playerName.length > 16) {
       return NextResponse.json(
         { error: 'Player name must be between 4 and 16 characters' },
         { status: 400 }
@@ -99,7 +109,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid difficulty or daily day' }, { status: 400 });
     }
 
-    const mismatch = dailyRowMismatch(board, piece_count, memorize_time, country_code);
+    const mismatch = dailyRowMismatch(board, piece_count, memorize_time, solution_time, country_code);
     if (mismatch !== null) {
       return NextResponse.json({ error: mismatch }, { status: 400 });
     }
@@ -139,7 +149,7 @@ export async function POST(request: NextRequest) {
     }
     
     const result = await submitLeaderboardEntry({
-      player_name,
+      player_name: playerName,
       ...board,
       piece_count,
       correct_pieces,

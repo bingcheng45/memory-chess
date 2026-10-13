@@ -333,6 +333,19 @@ describe("GameResult", () => {
       });
     });
 
+    it("links the leaderboard to the name the board stored, without the spaces typed around it", async () => {
+      global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      fireEvent.click(screen.getByRole("button", { name: "Submit to leaderboard" }));
+      fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "  Poteto  " } });
+      fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
+
+      const dialog = await screen.findByRole("dialog");
+      await waitFor(() => expect(within(dialog).getByRole("heading", { name: "Score submitted!" })).toBeInTheDocument());
+
+      expect(within(dialog).getByRole("link", { name: "View leaderboard" }).getAttribute("href")).toMatch(/[?&]player=Poteto&/);
+    });
+
     it("still says the score was submitted when the reply carries no entry it can keep", async () => {
       window.localStorage.clear();
       global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });

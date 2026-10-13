@@ -89,7 +89,7 @@ describe("MicroscopeSection", () => {
     const { container } = renderScrollable();
 
     expect(pieces(container, "on")).toBe(11);
-    expect(count(container, ".lab-ov-rel, .lab-ov-cell, .lab-ov-ring")).toBe(0);
+    expect(count(container, ".lab-line, .lab-ov-cell, .lab-ov-ring")).toBe(0);
   });
 
   it("rings the two kings and dims the rest for the anchors", () => {
@@ -106,10 +106,10 @@ describe("MicroscopeSection", () => {
     scrollTo(container, STEP.chunk);
 
     expect(count(container, ".lab-ov-cell")).toBe(14);
-    expect(count(container, ".lab-ov-rel[data-kind='attacks']")).toBe(3);
-    expect(count(container, ".lab-ov-rel[data-kind='defends']")).toBe(2);
-    expect(count(container, ".lab-ov-rel[data-kind='chain']")).toBe(4);
-    expect(count(container, ".lab-ov-rel[data-kind='blocked']")).toBe(1);
+    expect(count(container, ".lab-line[data-kind='attacks']")).toBe(3);
+    expect(count(container, ".lab-line[data-kind='defends']")).toBe(2);
+    expect(count(container, ".lab-line[data-kind='chain']")).toBe(4);
+    expect(count(container, ".lab-line[data-kind='blocked']")).toBe(1);
   });
 
   it("names the groups on the board and lists their sentences", () => {

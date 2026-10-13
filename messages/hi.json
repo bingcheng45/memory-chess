@@ -147,9 +147,8 @@
         "facts": {
           "study": "याद करने का समय",
           "pieces": "मोहरे प्रति राउंड",
-          "accuracy": "सटीकता रीडिंग",
-          "plays": "खेले गए गेम",
-          "languages": "भाषाएँ"
+          "plays": "{count, plural, one {खेला गया गेम} other {खेले गए गेम}}",
+          "languages": "{count, plural, one {भाषा} other {भाषाएँ}}"
         },
         "showcase": {
           "aria": "Veselin Topalov बनाम Alexey Shirov, Linares 1998, स्थिति के निर्देशित अध्ययन के साथ",
@@ -242,6 +241,15 @@
                 "caption": "अब जाँचें। विपरीत रंग के ऊँट, c3 काला खाना और f5 सफ़ेद खाना। c3 का ऊँट अब भी f6 पर निशाना साधे है। चार सफ़ेद, छह काले।"
               }
             }
+          },
+          "lines": {
+            "move": "चली गई चाल",
+            "path": "प्रमोशन का रास्ता",
+            "attacks": "हमला",
+            "defends": "बचाव",
+            "controls": "नियंत्रण",
+            "chain": "प्यादों की कड़ी",
+            "blocked": "रुका हुआ"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "समय",
           "load": "भार"
         },
-        "loadLabel": "32 में से {pieceCount} खाने भरे",
+        "loadLabel": "32 में से {pieceCount} मोहरे",
         "play": "खेलें",
         "custom": {
           "label": "कस्टम",
@@ -880,9 +888,9 @@
           "plain": "{pieceCount} मोहरे, {studyTime} पर नया रिकॉर्ड: {accuracy}%"
         },
         "vsRecent": {
-          "above": "इस सेटिंग पर आपके पिछले {rounds} राउंड के औसत से {points, plural, one {# अंक} other {# अंक}} ऊपर",
-          "below": "इस सेटिंग पर आपके पिछले {rounds} राउंड के औसत से {points, plural, one {# अंक} other {# अंक}} नीचे",
-          "level": "इस सेटिंग पर आपके पिछले {rounds} राउंड के औसत के बराबर"
+          "above": "इस सेटिंग पर {rounds, plural, one {आपके पिछले राउंड} other {आपके पिछले # राउंड के औसत}} से {points, plural, one {# अंक} other {# अंक}} ऊपर",
+          "below": "इस सेटिंग पर {rounds, plural, one {आपके पिछले राउंड} other {आपके पिछले # राउंड के औसत}} से {points, plural, one {# अंक} other {# अंक}} नीचे",
+          "level": "इस सेटिंग पर {rounds, plural, one {आपके पिछले राउंड} other {आपके पिछले # राउंड के औसत}} के बराबर"
         },
         "span": "क्षमता बढ़कर {pieceCount} मोहरे",
         "streak": "{current, plural, one {दिन 1} other {लगातार दिन #}}{graceUsed, select, true {, छूट का दिन इस्तेमाल हुआ} other {}}, इस हफ़्ते {goal} में से {days} दिन",

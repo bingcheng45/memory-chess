@@ -147,9 +147,8 @@
         "facts": {
           "study": "husketid",
           "pieces": "brikker pr. runde",
-          "accuracy": "præcision",
-          "plays": "spillede partier",
-          "languages": "sprog"
+          "plays": "{count, plural, one {spillet parti} other {spillede partier}}",
+          "languages": "{count, plural, one {sprog} other {sprog}}"
         },
         "showcase": {
           "aria": "Veselin Topalov mod Alexey Shirov, Linares 1998, med en guidet gennemgang af stillingen",
@@ -242,6 +241,15 @@
                 "caption": "Tjek det nu. Uligefarvede løbere, c3 mørkt og f5 lyst. Løberen på c3 angriber stadig f6. Fire hvide, seks sorte."
               }
             }
+          },
+          "lines": {
+            "move": "Spillet træk",
+            "path": "Vej til forvandling",
+            "attacks": "Angriber",
+            "defends": "Dækker",
+            "controls": "Kontrollerer",
+            "chain": "Bondekæde",
+            "blocked": "Blokeret"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "Husketid",
           "load": "Belægning"
         },
-        "loadLabel": "{pieceCount} af 32 felter optaget",
+        "loadLabel": "{pieceCount} af 32 brikker",
         "play": "Spil",
         "custom": {
           "label": "Egen",
@@ -880,9 +888,9 @@
           "plain": "Ny rekord med {pieceCount} brikker, {studyTime}: {accuracy} %"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# point} other {# point}} over dit gennemsnit for dine seneste {rounds} runder med denne indstilling",
-          "below": "{points, plural, one {# point} other {# point}} under dit gennemsnit for dine seneste {rounds} runder med denne indstilling",
-          "level": "På niveau med dit gennemsnit for dine seneste {rounds} runder med denne indstilling"
+          "above": "{points, plural, one {# point} other {# point}} over {rounds, plural, one {din seneste runde} other {dit gennemsnit for dine seneste # runder}} med denne indstilling",
+          "below": "{points, plural, one {# point} other {# point}} under {rounds, plural, one {din seneste runde} other {dit gennemsnit for dine seneste # runder}} med denne indstilling",
+          "level": "På niveau med {rounds, plural, one {din seneste runde} other {dit gennemsnit for dine seneste # runder}} med denne indstilling"
         },
         "span": "Spænd op til {pieceCount} brikker",
         "streak": "{current, plural, one {Dag 1} other {Dag # i træk}}{graceUsed, select, true {, fridag brugt} other {}}, {days} af {goal} dage i denne uge",

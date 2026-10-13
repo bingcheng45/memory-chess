@@ -147,9 +147,8 @@
         "facts": {
           "study": "temps d’étude",
           "pieces": "pièces par partie",
-          "accuracy": "mesure de précision",
-          "plays": "parties jouées",
-          "languages": "langues"
+          "plays": "{count, plural, one {partie jouée} many {parties jouées} other {parties jouées}}",
+          "languages": "{count, plural, one {langue} many {langues} other {langues}}"
         },
         "showcase": {
           "aria": "Veselin Topalov contre Alexey Shirov, Linares 1998, avec une étude guidée de la position",
@@ -242,6 +241,15 @@
                 "caption": "Vérifiez maintenant. Fous de couleurs opposées, c3 sur case noire et f5 sur case blanche. Le fou c3 vise toujours f6. Quatre pièces blanches, six noires."
               }
             }
+          },
+          "lines": {
+            "move": "Coup joué",
+            "path": "Route vers la promotion",
+            "attacks": "Attaque",
+            "defends": "Protège",
+            "controls": "Contrôle",
+            "chain": "Chaîne de pions",
+            "blocked": "Bloqué"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "Étude",
           "load": "Charge"
         },
-        "loadLabel": "{pieceCount} cases occupées sur 32",
+        "loadLabel": "{pieceCount} pièces sur 32",
         "play": "Jouer",
         "custom": {
           "label": "Personnalisé",
@@ -880,9 +888,9 @@
           "plain": "Nouveau record à {pieceCount} pièces, {studyTime} : {accuracy} %"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# point} many {# points} other {# points}} au-dessus de votre moyenne sur vos {rounds} dernières parties à ce réglage",
-          "below": "{points, plural, one {# point} many {# points} other {# points}} en dessous de votre moyenne sur vos {rounds} dernières parties à ce réglage",
-          "level": "Au niveau de votre moyenne sur vos {rounds} dernières parties à ce réglage"
+          "above": "{points, plural, one {# point} many {# points} other {# points}} au-dessus de {rounds, plural, one {votre dernière partie} many {votre moyenne sur vos # dernières parties} other {votre moyenne sur vos # dernières parties}} à ce réglage",
+          "below": "{points, plural, one {# point} many {# points} other {# points}} en dessous de {rounds, plural, one {votre dernière partie} many {votre moyenne sur vos # dernières parties} other {votre moyenne sur vos # dernières parties}} à ce réglage",
+          "level": "Au niveau de {rounds, plural, one {votre dernière partie} many {votre moyenne sur vos # dernières parties} other {votre moyenne sur vos # dernières parties}} à ce réglage"
         },
         "span": "Empan porté à {pieceCount} pièces",
         "streak": "{current, plural, one {Jour 1} many {Jour # d’affilée} other {Jour # d’affilée}}{graceUsed, select, true {, jour de grâce utilisé} other {}}, {days} jours sur {goal} cette semaine",

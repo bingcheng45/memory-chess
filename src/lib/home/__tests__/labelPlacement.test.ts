@@ -1,5 +1,5 @@
 import type { SquareName } from "@/lib/game/board";
-import { SHOWCASE } from "@/lib/home/showcase";
+import { linesOf, SHOWCASE } from "@/lib/home/showcase";
 import { SHOWCASE_STEPS } from "@/lib/home/showcaseTour";
 import { SPECIMEN_GROUPS, SPECIMEN, SPECIMEN_RECALL } from "@/lib/home/specimen";
 import {
@@ -70,8 +70,7 @@ describe("placing a group label", () => {
   describe("keeping off the arrows drawn in the same step", () => {
     const widths: Record<string, number> = { whiteCorner: 2.7, longDiagonal: 2.9, blackWall: 2.3, runner: 1.4 };
     const heroArrows = (step: (typeof SHOWCASE_STEPS)[number]): Segment[] => [
-      ...step.annotations.moves.map((move) => segmentBetween(move.from, move.to)),
-      ...step.annotations.relations.map((item) => segmentBetween(item.from, item.to)),
+      ...linesOf(step.annotations).map((line) => segmentBetween(line.from, line.to)),
     ];
     const heroOccupied = (step: (typeof SHOWCASE_STEPS)[number]) => {
       const board = step.boards[step.boards.length - 1];
@@ -99,11 +98,12 @@ describe("placing a group label", () => {
       expect(coveredSquares(rect, occupied)).toEqual([]);
     });
 
-    it("clears every piece, and every arrow where an arrow-free spot exists, for every hero step and group", () => {
+    it("clears every piece and every arrow for each group's pill, in the step that shows it", () => {
       SHOWCASE_STEPS.forEach((step) => {
         const occupied = heroOccupied(step);
         const arrows = heroArrows(step);
-        SHOWCASE.groups.forEach((group) => {
+        const shown = SHOWCASE.groups.filter((group) => step.phase === "study" && step.active === group.id);
+        shown.forEach((group) => {
           const size = { width: widths[group.id], height: 0.36 };
           const rect = placeLabel(squaresBox(group.squares), size, occupied, arrows);
           expect(coveredSquares(rect, occupied)).toEqual([]);

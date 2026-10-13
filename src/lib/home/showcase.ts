@@ -1,5 +1,6 @@
 import type { SquareName } from "@/lib/game/board";
 import { labPositionFromFen, type LabPosition } from "@/lib/round/round";
+import type { BoardLine } from "./lineGrammar";
 import { relation, type Group, type Relation } from "./relations";
 
 export type GroupId = "whiteCorner" | "longDiagonal" | "blackWall" | "runner";
@@ -45,13 +46,24 @@ export interface Annotations {
   readonly relations: readonly Relation[];
   /** The path a piece took. */
   readonly moves: readonly ShowcaseMove[];
+  /** A passed pawn's road to its promotion square, still to run. */
+  readonly paths: readonly ShowcaseMove[];
   readonly rings: readonly ShowcaseRing[];
   readonly crosses: readonly SquareName[];
   /** Squares a rebuild check has confirmed. */
   readonly ticks: readonly SquareName[];
 }
 
-export const NO_ANNOTATIONS: Annotations = { focus: null, relations: [], moves: [], rings: [], crosses: [], ticks: [] };
+export const NO_ANNOTATIONS: Annotations = { focus: null, relations: [], moves: [], paths: [], rings: [], crosses: [], ticks: [] };
+
+/** Every line a step draws, each tagged with the kind that decides how it looks. */
+export function linesOf(annotations: Annotations): readonly BoardLine[] {
+  return [
+    ...annotations.moves.map((move) => ({ ...move, kind: "move" as const })),
+    ...annotations.paths.map((path) => ({ ...path, kind: "path" as const })),
+    ...annotations.relations,
+  ];
+}
 
 const marks = (partial: Partial<Annotations>): Annotations => ({ ...NO_ANNOTATIONS, ...partial });
 
@@ -97,7 +109,7 @@ export const SHOWCASE: Showcase = {
   ],
   trap: marks({
     focus: "c3",
-    relations: [relation("controls", "c3", "e5"), relation("attacks", "c3", "f6")],
+    relations: [relation("controls", "c3", "e5")],
     rings: [{ square: "e6", kind: "king" }],
     crosses: ["d5", "e5", "f5"],
   }),
@@ -128,11 +140,11 @@ export const SHOWCASE: Showcase = {
       plies: { from: 5, to: 12 },
       annotations: marks({
         focus: "b3",
-        relations: [relation("controls", "e7", "a3"), relation("controls", "b3", "a2")],
-        rings: [
-          { square: "a4", kind: "target" },
-          { square: "d4", kind: "target" },
+        paths: [
+          { from: "a4", to: "a1" },
+          { from: "d4", to: "d1" },
         ],
+        relations: [relation("controls", "e7", "a3")],
       }),
     },
   ],

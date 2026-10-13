@@ -147,9 +147,8 @@
         "facts": {
           "study": "tempo di studio",
           "pieces": "pezzi per partita",
-          "accuracy": "misurazione di precisione",
-          "plays": "partite giocate",
-          "languages": "lingue"
+          "plays": "{count, plural, one {partita giocata} many {partite giocate} other {partite giocate}}",
+          "languages": "{count, plural, one {lingua} many {lingue} other {lingue}}"
         },
         "showcase": {
           "aria": "Veselin Topalov contro Alexey Shirov, Linares 1998, con uno studio guidato della posizione",
@@ -242,6 +241,15 @@
                 "caption": "Ora controlla. Alfieri di colore contrario, c3 casa scura e f5 casa chiara. L’alfiere c3 attacca ancora f6. Quattro pezzi bianchi, sei neri."
               }
             }
+          },
+          "lines": {
+            "move": "Mossa giocata",
+            "path": "Strada verso la promozione",
+            "attacks": "Attacca",
+            "defends": "Protegge",
+            "controls": "Controlla",
+            "chain": "Catena di pedoni",
+            "blocked": "Bloccato"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "Studio",
           "load": "Carico"
         },
-        "loadLabel": "{pieceCount} case occupate su 32",
+        "loadLabel": "{pieceCount} pezzi su 32",
         "play": "Gioca",
         "custom": {
           "label": "Personalizzato",
@@ -880,9 +888,9 @@
           "plain": "Nuovo record a {pieceCount} pezzi, {studyTime}: {accuracy}%"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# punto} many {# punti} other {# punti}} sopra la tua media delle ultime {rounds} partite con questa impostazione",
-          "below": "{points, plural, one {# punto} many {# punti} other {# punti}} sotto la tua media delle ultime {rounds} partite con questa impostazione",
-          "level": "In linea con la tua media delle ultime {rounds} partite con questa impostazione"
+          "above": "{points, plural, one {# punto} many {# punti} other {# punti}} sopra {rounds, plural, one {la tua ultima partita} many {la tua media delle ultime # partite} other {la tua media delle ultime # partite}} con questa impostazione",
+          "below": "{points, plural, one {# punto} many {# punti} other {# punti}} sotto {rounds, plural, one {la tua ultima partita} many {la tua media delle ultime # partite} other {la tua media delle ultime # partite}} con questa impostazione",
+          "level": "In linea con {rounds, plural, one {la tua ultima partita} many {la tua media delle ultime # partite} other {la tua media delle ultime # partite}} con questa impostazione"
         },
         "span": "Span salito a {pieceCount} pezzi",
         "streak": "{current, plural, one {Giorno 1} many {Giorno # di fila} other {Giorno # di fila}}{graceUsed, select, true {, giorno di tolleranza usato} other {}}, {days} giorni su {goal} questa settimana",

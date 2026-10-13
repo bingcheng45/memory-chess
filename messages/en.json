@@ -147,9 +147,8 @@
         "facts": {
           "study": "study window",
           "pieces": "pieces per round",
-          "accuracy": "accuracy reading",
-          "plays": "games played",
-          "languages": "languages"
+          "plays": "{count, plural, one {game played} other {games played}}",
+          "languages": "{count, plural, one {language} other {languages}}"
         },
         "showcase": {
           "aria": "Veselin Topalov against Alexey Shirov, Linares 1998, with a guided study of the position",
@@ -242,6 +241,15 @@
                 "caption": "Now check it. Bishops on opposite colours, c3 dark and f5 light. The c3 bishop still hits f6. Four white, six black."
               }
             }
+          },
+          "lines": {
+            "move": "Move played",
+            "path": "Road to promotion",
+            "attacks": "Attacks",
+            "defends": "Guards",
+            "controls": "Covers",
+            "chain": "Pawn chain",
+            "blocked": "Blocked"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "Exposure",
           "load": "Load"
         },
-        "loadLabel": "{pieceCount} of 32 squares filled",
+        "loadLabel": "{pieceCount} of 32 pieces",
         "play": "Play",
         "custom": {
           "label": "Custom",
@@ -880,9 +888,9 @@
           "plain": "New best at {pieceCount} pieces, {studyTime}: {accuracy}%"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# point} other {# points}} above your average over your last {rounds} rounds at this setting",
-          "below": "{points, plural, one {# point} other {# points}} below your average over your last {rounds} rounds at this setting",
-          "level": "Level with your average over your last {rounds} rounds at this setting"
+          "above": "{points, plural, one {# point} other {# points}} above {rounds, plural, one {your last round} other {your average over your last # rounds}} at this setting",
+          "below": "{points, plural, one {# point} other {# points}} below {rounds, plural, one {your last round} other {your average over your last # rounds}} at this setting",
+          "level": "Level with {rounds, plural, one {your last round} other {your average over your last # rounds}} at this setting"
         },
         "span": "Span up to {pieceCount} pieces",
         "streak": "{current, plural, one {Day 1} other {Day # in a row}}{graceUsed, select, true {, grace day used} other {}}, {days} of {goal} days this week",

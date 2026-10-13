@@ -147,9 +147,8 @@
         "facts": {
           "study": "timp de studiu",
           "pieces": "piese pe rundă",
-          "accuracy": "citirea preciziei",
-          "plays": "partide jucate",
-          "languages": "limbi"
+          "plays": "{count, plural, one {partidă jucată} few {partide jucate} other {de partide jucate}}",
+          "languages": "{count, plural, one {limbă} few {limbi} other {de limbi}}"
         },
         "showcase": {
           "aria": "Veselin Topalov contra Alexey Shirov, Linares 1998, cu un studiu ghidat al poziției",
@@ -242,6 +241,15 @@
                 "caption": "Acum verifică. Nebuni de culori diferite, c3 negru și f5 alb. Nebunul de pe c3 atacă în continuare f6. Patru albe, șase negre."
               }
             }
+          },
+          "lines": {
+            "move": "Mutare jucată",
+            "path": "Drum spre transformare",
+            "attacks": "Atacă",
+            "defends": "Apără",
+            "controls": "Controlează",
+            "chain": "Lanț de pioni",
+            "blocked": "Blocat"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "Studiu",
           "load": "Încărcare"
         },
-        "loadLabel": "{pieceCount} din 32 de câmpuri ocupate",
+        "loadLabel": "{pieceCount} din 32 de piese",
         "play": "Joacă",
         "custom": {
           "label": "Personalizat",
@@ -880,9 +888,9 @@
           "plain": "Nou record la {pieceCount} piese, {studyTime}: {accuracy}%"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# punct} few {# puncte} other {# de puncte}} peste media ta din ultimele {rounds} runde la această setare",
-          "below": "{points, plural, one {# punct} few {# puncte} other {# de puncte}} sub media ta din ultimele {rounds} runde la această setare",
-          "level": "La nivelul mediei tale din ultimele {rounds} runde la această setare"
+          "above": "{points, plural, one {# punct} few {# puncte} other {# de puncte}} peste {rounds, plural, one {ultima ta rundă} few {media ta din ultimele # runde} other {media ta din ultimele # de runde}} la această setare",
+          "below": "{points, plural, one {# punct} few {# puncte} other {# de puncte}} sub {rounds, plural, one {ultima ta rundă} few {media ta din ultimele # runde} other {media ta din ultimele # de runde}} la această setare",
+          "level": "La nivelul {rounds, plural, one {ultimei tale runde} few {mediei tale din ultimele # runde} other {mediei tale din ultimele # de runde}} la această setare"
         },
         "span": "Capacitatea a urcat la {pieceCount} piese",
         "streak": "{current, plural, one {Ziua 1} few {# zile la rând} other {# de zile la rând}}{graceUsed, select, true {, zi de grație folosită} other {}}, {days} din {goal} zile săptămâna aceasta",

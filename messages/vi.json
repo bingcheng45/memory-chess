@@ -147,9 +147,8 @@
         "facts": {
           "study": "thời gian quan sát",
           "pieces": "quân mỗi ván",
-          "accuracy": "số đo độ chính xác",
-          "plays": "ván đã chơi",
-          "languages": "ngôn ngữ"
+          "plays": "{count, plural, other {ván đã chơi}}",
+          "languages": "{count, plural, other {ngôn ngữ}}"
         },
         "showcase": {
           "aria": "Veselin Topalov gặp Alexey Shirov, Linares 1998, kèm phần phân tích thế cờ theo từng bước",
@@ -242,6 +241,15 @@
                 "caption": "Giờ hãy kiểm tra. Tượng khác màu, c3 là ô đen, f5 là ô trắng. Tượng c3 vẫn nhắm vào f6. Bốn quân Trắng, sáu quân Đen."
               }
             }
+          },
+          "lines": {
+            "move": "Nước đã đi",
+            "path": "Đường phong cấp",
+            "attacks": "Tấn công",
+            "defends": "Bảo vệ",
+            "controls": "Khống chế",
+            "chain": "Chuỗi tốt",
+            "blocked": "Bị chặn"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "Quan sát",
           "load": "Mật độ"
         },
-        "loadLabel": "{pieceCount} trên 32 ô có quân",
+        "loadLabel": "{pieceCount} trên 32 quân",
         "play": "Chơi",
         "custom": {
           "label": "Tùy chỉnh",
@@ -880,9 +888,9 @@
           "plain": "Kỷ lục mới với {pieceCount} quân, {studyTime}: {accuracy}%"
         },
         "vsRecent": {
-          "above": "Cao hơn {points, plural, other {# điểm}} so với trung bình {rounds} ván gần nhất của bạn ở thiết lập này",
-          "below": "Thấp hơn {points, plural, other {# điểm}} so với trung bình {rounds} ván gần nhất của bạn ở thiết lập này",
-          "level": "Bằng trung bình {rounds} ván gần nhất của bạn ở thiết lập này"
+          "above": "Cao hơn {points, plural, other {# điểm}} so với {rounds, plural, =1 {ván gần nhất của bạn} other {trung bình # ván gần nhất của bạn}} ở thiết lập này",
+          "below": "Thấp hơn {points, plural, other {# điểm}} so với {rounds, plural, =1 {ván gần nhất của bạn} other {trung bình # ván gần nhất của bạn}} ở thiết lập này",
+          "level": "Bằng {rounds, plural, =1 {ván gần nhất của bạn} other {trung bình # ván gần nhất của bạn}} ở thiết lập này"
         },
         "span": "Tầm nhớ tăng lên {pieceCount} quân",
         "streak": "{current, plural, =1 {Ngày 1} other {Ngày thứ # liên tiếp}}{graceUsed, select, true {, đã dùng ngày bỏ qua} other {}}, {days} trên {goal} ngày trong tuần này",

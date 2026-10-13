@@ -147,9 +147,8 @@
         "facts": {
           "study": "암기 시간",
           "pieces": "라운드당 기물 수",
-          "accuracy": "정확도 측정값",
-          "plays": "플레이한 게임 수",
-          "languages": "지원 언어"
+          "plays": "{count, plural, other {플레이한 게임 수}}",
+          "languages": "{count, plural, other {지원 언어}}"
         },
         "showcase": {
           "aria": "Linares 1998, Veselin Topalov 대 Alexey Shirov의 국면과 그 국면을 따라가는 안내",
@@ -242,6 +241,15 @@
                 "caption": "이제 확인해 봅시다. 반대 색 비숍으로, 하나는 검은 칸 c3, 하나는 흰 칸 f5에 있습니다. c3 비숍은 여전히 f6을 노립니다. 백 4개, 흑 6개."
               }
             }
+          },
+          "lines": {
+            "move": "둔 수",
+            "path": "프로모션까지의 길",
+            "attacks": "공격",
+            "defends": "보호",
+            "controls": "통제",
+            "chain": "폰 사슬",
+            "blocked": "막힘"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "암기 시간",
           "load": "부하"
         },
-        "loadLabel": "32칸 중 {pieceCount}칸 채움",
+        "loadLabel": "기물 32개 중 {pieceCount}개",
         "play": "플레이",
         "custom": {
           "label": "사용자 설정",
@@ -880,9 +888,9 @@
           "plain": "기물 {pieceCount}개, {studyTime} 새 최고 기록: {accuracy}%"
         },
         "vsRecent": {
-          "above": "이 설정의 최근 {rounds}라운드 평균보다 {points, plural, other {#포인트}} 높음",
-          "below": "이 설정의 최근 {rounds}라운드 평균보다 {points, plural, other {#포인트}} 낮음",
-          "level": "이 설정의 최근 {rounds}라운드 평균과 같음"
+          "above": "이 설정의 {rounds, plural, =1 {최근 라운드} other {최근 #라운드 평균}}보다 {points, plural, other {#포인트}} 높음",
+          "below": "이 설정의 {rounds, plural, =1 {최근 라운드} other {최근 #라운드 평균}}보다 {points, plural, other {#포인트}} 낮음",
+          "level": "이 설정의 {rounds, plural, =1 {최근 라운드와} other {최근 #라운드 평균과}} 같음"
         },
         "span": "기억 범위가 기물 {pieceCount}개로 상승",
         "streak": "{current, plural, =1 {1일째} other {#일 연속}}{graceUsed, select, true {, 유예일 사용} other {}}, 이번 주 {goal}일 중 {days}일",

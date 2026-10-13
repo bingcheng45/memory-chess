@@ -147,9 +147,8 @@
         "facts": {
           "study": "记忆时间",
           "pieces": "每回合棋子数",
-          "accuracy": "准确率读数",
-          "plays": "已玩局数",
-          "languages": "种语言"
+          "plays": "{count, plural, other {已玩局数}}",
+          "languages": "{count, plural, other {种语言}}"
         },
         "showcase": {
           "aria": "Veselin Topalov 对 Alexey Shirov，1998 年 Linares，附该局面的分步讲解",
@@ -242,6 +241,15 @@
                 "caption": "现在检查一遍。异色象，c3 是黑格，f5 是白格。c3 象仍然攻击 f6。白方四子，黑方六子。"
               }
             }
+          },
+          "lines": {
+            "move": "已走的一步",
+            "path": "升变之路",
+            "attacks": "攻击",
+            "defends": "保护",
+            "controls": "控制",
+            "chain": "兵链",
+            "blocked": "互相堵住"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "记忆时间",
           "load": "负载"
         },
-        "loadLabel": "32 格中占用 {pieceCount} 格",
+        "loadLabel": "32 枚棋子中的 {pieceCount} 枚",
         "play": "开始",
         "custom": {
           "label": "自定义",
@@ -880,9 +888,9 @@
           "plain": "{pieceCount} 子、{studyTime} 新纪录：{accuracy}%"
         },
         "vsRecent": {
-          "above": "比你在此设置下最近 {rounds} 回合的平均值高 {points, plural, other {# 个百分点}}",
-          "below": "比你在此设置下最近 {rounds} 回合的平均值低 {points, plural, other {# 个百分点}}",
-          "level": "与你在此设置下最近 {rounds} 回合的平均值持平"
+          "above": "比你在此设置下{rounds, plural, =1 {最近一回合} other {最近 # 回合的平均值}}高 {points, plural, other {# 个百分点}}",
+          "below": "比你在此设置下{rounds, plural, =1 {最近一回合} other {最近 # 回合的平均值}}低 {points, plural, other {# 个百分点}}",
+          "level": "与你在此设置下{rounds, plural, =1 {最近一回合} other {最近 # 回合的平均值}}持平"
         },
         "span": "记忆广度升到 {pieceCount} 子",
         "streak": "{current, plural, =1 {第 1 天} other {连续第 # 天}}{graceUsed, select, true {，用掉了一天豁免} other {}}，本周 {goal} 天中已玩 {days} 天",

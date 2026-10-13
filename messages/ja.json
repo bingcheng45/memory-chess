@@ -147,9 +147,8 @@
         "facts": {
           "study": "記憶時間",
           "pieces": "1ラウンドの駒数",
-          "accuracy": "正解率",
-          "plays": "プレイ回数",
-          "languages": "対応言語"
+          "plays": "{count, plural, other {プレイ回数}}",
+          "languages": "{count, plural, other {対応言語}}"
         },
         "showcase": {
           "aria": "Linares 1998 での Veselin Topalov 対 Alexey Shirov の局面と、その局面をたどるガイド",
@@ -242,6 +241,15 @@
                 "caption": "では確かめましょう。異色ビショップで、c3は黒マス、f5は白マス。c3のビショップはまだf6を狙っています。白が4つ、黒が6つ。"
               }
             }
+          },
+          "lines": {
+            "move": "指した手",
+            "path": "プロモーションへの道",
+            "attacks": "攻撃",
+            "defends": "守り",
+            "controls": "利き",
+            "chain": "ポーンの鎖",
+            "blocked": "ブロック"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "記憶時間",
           "load": "負荷"
         },
-        "loadLabel": "32マス中{pieceCount}マスが埋まる",
+        "loadLabel": "32駒中{pieceCount}駒",
         "play": "プレイ",
         "custom": {
           "label": "カスタム",
@@ -880,9 +888,9 @@
           "plain": "{pieceCount}駒・{studyTime}で自己ベスト：{accuracy}%"
         },
         "vsRecent": {
-          "above": "この設定の直近{rounds}ラウンドの平均より{points, plural, other {#ポイント}}上",
-          "below": "この設定の直近{rounds}ラウンドの平均より{points, plural, other {#ポイント}}下",
-          "level": "この設定の直近{rounds}ラウンドの平均と同じ"
+          "above": "この設定の{rounds, plural, =1 {直近のラウンド} other {直近#ラウンドの平均}}より{points, plural, other {#ポイント}}上",
+          "below": "この設定の{rounds, plural, =1 {直近のラウンド} other {直近#ラウンドの平均}}より{points, plural, other {#ポイント}}下",
+          "level": "この設定の{rounds, plural, =1 {直近のラウンド} other {直近#ラウンドの平均}}と同じ"
         },
         "span": "記憶スパンが{pieceCount}駒に上昇",
         "streak": "{current, plural, =1 {1日目} other {#日連続}}{graceUsed, select, true {、猶予日を使用} other {}}、今週{goal}日中{days}日",

@@ -147,9 +147,8 @@
         "facts": {
           "study": "kijktijd",
           "pieces": "stukken per ronde",
-          "accuracy": "nauwkeurigheid",
-          "plays": "gespeelde partijen",
-          "languages": "talen"
+          "plays": "{count, plural, one {gespeelde partij} other {gespeelde partijen}}",
+          "languages": "{count, plural, one {taal} other {talen}}"
         },
         "showcase": {
           "aria": "Veselin Topalov tegen Alexey Shirov, Linares 1998, met een begeleide bespreking van de stelling",
@@ -242,6 +241,15 @@
                 "caption": "Controleer het nu. Ongelijke lopers, c3 donker en f5 licht. De loper op c3 valt f6 nog steeds aan. Vier witte, zes zwarte."
               }
             }
+          },
+          "lines": {
+            "move": "Gespeelde zet",
+            "path": "Weg naar promotie",
+            "attacks": "Valt aan",
+            "defends": "Dekt",
+            "controls": "Bestrijkt",
+            "chain": "Pionnenketen",
+            "blocked": "Geblokkeerd"
           }
         }
       },
@@ -413,7 +421,7 @@
           "exposure": "Kijktijd",
           "load": "Bezetting"
         },
-        "loadLabel": "{pieceCount} van 32 velden bezet",
+        "loadLabel": "{pieceCount} van 32 stukken",
         "play": "Speel",
         "custom": {
           "label": "Eigen",
@@ -880,9 +888,9 @@
           "plain": "Nieuw record bij {pieceCount} stukken, {studyTime}: {accuracy}%"
         },
         "vsRecent": {
-          "above": "{points, plural, one {# punt} other {# punten}} boven je gemiddelde over je laatste {rounds} rondes met deze instelling",
-          "below": "{points, plural, one {# punt} other {# punten}} onder je gemiddelde over je laatste {rounds} rondes met deze instelling",
-          "level": "Gelijk aan je gemiddelde over je laatste {rounds} rondes met deze instelling"
+          "above": "{points, plural, one {# punt} other {# punten}} boven {rounds, plural, one {je laatste ronde} other {je gemiddelde over je laatste # rondes}} met deze instelling",
+          "below": "{points, plural, one {# punt} other {# punten}} onder {rounds, plural, one {je laatste ronde} other {je gemiddelde over je laatste # rondes}} met deze instelling",
+          "level": "Gelijk aan {rounds, plural, one {je laatste ronde} other {je gemiddelde over je laatste # rondes}} met deze instelling"
         },
         "span": "Spanne tot {pieceCount} stukken",
         "streak": "{current, plural, one {Dag 1} other {Dag # op rij}}{graceUsed, select, true {, vrije dag gebruikt} other {}}, {days} van {goal} dagen deze week",

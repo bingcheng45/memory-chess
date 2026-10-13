@@ -1,6 +1,7 @@
 import { renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabHero } from "@/components/home/LabHero";
 import { useTotalPlays } from "@/components/home/useLabEffects";
+import de from "../../../../messages/de.json";
 
 function HeroWithLivePlays() {
   return <LabHero totalPlays={useTotalPlays()} />;
@@ -10,7 +11,7 @@ const statsRow = () => within(screen.getByText("study window").closest(".lab-fac
 
 describe("LabHero", () => {
   it("shows the matchup and the date of the position it walks through", () => {
-    renderWithIntl(<LabHero totalPlays={null} />);
+    renderWithIntl(<LabHero totalPlays={{ status: "loading" }} />);
 
     expect(screen.getByText("Veselin Topalov")).toBeInTheDocument();
     expect(screen.getByText("Alexey Shirov")).toBeInTheDocument();
@@ -19,8 +20,11 @@ describe("LabHero", () => {
   });
 });
 
+const factTexts = () =>
+  Array.from(document.querySelectorAll(".lab-facts > div"), (fact) => [fact.querySelector("b")?.textContent, fact.textContent]);
+
 describe("LabHero games-played stat", () => {
-  it("shows the live count in the stats row once it loads", async () => {
+  it("leads the stats row with the live count once it loads, and drops the accuracy reading", async () => {
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,
       json: async () => ({ data: { metric_name: "total_plays", metric_value: 46543 } }),
@@ -28,17 +32,40 @@ describe("LabHero games-played stat", () => {
     renderWithIntl(<HeroWithLivePlays />);
 
     expect(await statsRow().findByText("46,543")).toBeInTheDocument();
-    expect(statsRow().getByText("games played")).toBeInTheDocument();
-    expect(statsRow().queryByText("accuracy reading")).not.toBeInTheDocument();
+    expect(factTexts()).toEqual([
+      ["46,543", "46,543games played"],
+      ["2–60s", "2–60sstudy window"],
+      ["2–32", "2–32pieces per round"],
+      ["24", "24languages"],
+    ]);
   });
 
-  it("keeps the accuracy reading while the count is unavailable", async () => {
+  it("holds the slot with the label and a placeholder while the count loads", () => {
+    renderWithIntl(<LabHero totalPlays={{ status: "loading" }} />);
+
+    expect(factTexts()[0]).toEqual(["–", "–games played"]);
+    expect(document.querySelector(".lab-fact-lead")).toHaveAttribute("aria-busy", "true");
+  });
+
+  it("keeps the placeholder when the count is unavailable", async () => {
     global.fetch = jest.fn().mockResolvedValue({ ok: false });
     renderWithIntl(<HeroWithLivePlays />);
 
-    expect(await statsRow().findByText("accuracy reading")).toBeInTheDocument();
-    expect(statsRow().getByText("0–100%")).toBeInTheDocument();
-    expect(statsRow().queryByText("games played")).not.toBeInTheDocument();
-    expect(statsRow().getAllByText(/./, { selector: "b" })).toHaveLength(4);
+    await statsRow().findByText("games played");
+    await screen.findByText((_, element) => element?.getAttribute("data-status") === "unavailable");
+    expect(factTexts()[0]).toEqual(["–", "–games played"]);
+    expect(factTexts()).toHaveLength(4);
+  });
+
+  it("words a count of one in the singular", () => {
+    renderWithIntl(<LabHero totalPlays={{ status: "known", plays: 1 }} />);
+
+    expect(factTexts()[0]).toEqual(["1", "1game played"]);
+  });
+
+  it("writes the count the way the page's language writes numbers", () => {
+    renderWithIntl(<LabHero totalPlays={{ status: "known", plays: 46543 }} />, { locale: "de", messages: de });
+
+    expect(factTexts()[0]).toEqual(["46.543", "46.543gespielte Partien"]);
   });
 });

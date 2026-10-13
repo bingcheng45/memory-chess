@@ -948,7 +948,19 @@
       "memorizeTime": "Einprägezeit",
       "seconds": "{seconds} s",
       "start": "Runde starten",
-      "lastGame": "Letzte Partie: {time} s Lösungszeit bei {accuracy} % Genauigkeit"
+      "lastGame": "Letzte Partie: {time} s Lösungszeit bei {accuracy} % Genauigkeit",
+      "preview": {
+        "label": "Vorschau der Wertungszahl",
+        "placement": "Einstufungsrunde {round} von {of}",
+        "rated": "Gewertete Runde",
+        "board": "Wertung des Bretts",
+        "yours": "Deine Wertungszahl",
+        "clear": "Wenn du es schaffst",
+        "miss": "Wenn es misslingt",
+        "gain": "Bis zu <num>+{value}</num>",
+        "loss": "Höchstens <num>−{value}</num>",
+        "announce": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Wenn du es schaffst, bis zu +{gain}. Wenn es misslingt, höchstens −{loss}."
+      }
     },
     "presets": {
       "easy": {

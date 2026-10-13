@@ -107,7 +107,7 @@ const calculateTimeBonus = (completionTime: number, memorizeTime: number, actual
 };
 
 /** The held rated rounds that carry the facts the rating reads, newest first. Rows saved before them are left out. */
-const ratedFactsOf = (history: readonly GameHistory[]): RatedRoundFacts[] =>
+export const ratedFactsOf = (history: readonly GameHistory[]): RatedRoundFacts[] =>
   history.flatMap(({ facts }) => {
     const parsed = parseRatedRoundFacts(facts);
     return parsed ? [parsed] : [];

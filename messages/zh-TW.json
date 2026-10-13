@@ -948,7 +948,19 @@
       "memorizeTime": "記憶時間",
       "seconds": "{seconds} 秒",
       "start": "開始一局",
-      "lastGame": "上一局：重建用時 {time} 秒，準確率 {accuracy}%"
+      "lastGame": "上一局：重建用時 {time} 秒，準確率 {accuracy}%",
+      "preview": {
+        "label": "評分預覽",
+        "placement": "定級第 {round} 輪，共 {of} 輪",
+        "rated": "計分局",
+        "board": "棋盤評分",
+        "yours": "你的評分",
+        "clear": "如果全部答對",
+        "miss": "如果失手",
+        "gain": "最多 <num>+{value}</num>",
+        "loss": "最多 <num>−{value}</num>",
+        "announce": "棋盤評分 {board}。你的評分 {rating}。如果全部答對，最多 +{gain}。如果失手，最多 −{loss}。"
+      }
     },
     "presets": {
       "easy": {

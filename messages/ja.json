@@ -948,7 +948,19 @@
       "memorizeTime": "記憶時間",
       "seconds": "{seconds} 秒",
       "start": "ラウンドを開始",
-      "lastGame": "前回：解答時間 {time} 秒、正答率 {accuracy}%"
+      "lastGame": "前回：解答時間 {time} 秒、正答率 {accuracy}%",
+      "preview": {
+        "label": "レーティングの見込み",
+        "placement": "判定ラウンド {round}/{of}",
+        "rated": "レーティング対象ラウンド",
+        "board": "盤面のレーティング",
+        "yours": "あなたのレーティング",
+        "clear": "クリアした場合",
+        "miss": "失敗した場合",
+        "gain": "最大 <num>+{value}</num>",
+        "loss": "最大 <num>−{value}</num>",
+        "announce": "盤面のレーティング {board}。あなたのレーティング {rating}。クリアした場合は最大 +{gain}。失敗した場合は最大 −{loss}。"
+      }
     },
     "presets": {
       "easy": {

@@ -5,6 +5,7 @@ import { useGameStore } from '@/lib/store/gameStore';
 import type { RoundSource } from '@/lib/analytics/events';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
+import RatingPreview from './RatingPreview';
 import { useDailyState, type DailyState } from '@/hooks/useDailyState';
 import { useTimeLeftText } from '@/hooks/useTimeLeftText';
 import {
@@ -57,6 +58,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   const [memorizeTime, setMemorizeTime] = useState(() => readPrefilledSettings().memorizeTime);
   const selectedPreset = presetIdFor({ pieceCount, memorizeTime }, DIFFICULTY_PRESETS);
   const formRef = useRef<HTMLDivElement>(null);
+  const [announceKey, setAnnounceKey] = useState(0);
+  const announce = () => setAnnounceKey((key) => key + 1);
 
   // The first render starts from what the served form shows, Medium or the
   // layout script's prefill, so hydration matches the page as painted. The
@@ -80,6 +83,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   function handlePresetSelect(preset: DifficultyPreset) {
     setPieceCount(preset.pieceCount);
     setMemorizeTime(preset.memorizeTime);
+    announce();
   }
   
   const handleStart = () => (onStart ?? startGame)(pieceCount, memorizeTime, 'game_form');
@@ -156,6 +160,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           onChange={(e) => {
             setPieceCount(parseInt(e.target.value));
           }}
+          onPointerUp={announce}
+          onKeyUp={announce}
           className="lab-range"
           style={fillOf(pieceCount, PIECE_COUNT_RANGE)}
           suppressHydrationWarning
@@ -191,6 +197,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           onChange={(e) => {
             setMemorizeTime(parseInt(e.target.value));
           }}
+          onPointerUp={announce}
+          onKeyUp={announce}
           className="lab-range"
           style={fillOf(memorizeTime, MEMORIZE_SECONDS_RANGE)}
           suppressHydrationWarning
@@ -201,6 +209,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           ))}
         </div>
       </div>
+
+      <RatingPreview pieceCount={pieceCount} memorizeTime={memorizeTime} announceKey={announceKey} />
 
       <button type="button" onClick={handleStart} data-start-round className="lab-btn lab-btn-primary lab-config-start">
         {t('config.start')}

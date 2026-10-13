@@ -948,7 +948,19 @@
       "memorizeTime": "Tiempo de memorización",
       "seconds": "{seconds} s",
       "start": "Empezar una ronda",
-      "lastGame": "Última partida: {time} s de resolución con un {accuracy} % de precisión"
+      "lastGame": "Última partida: {time} s de resolución con un {accuracy} % de precisión",
+      "preview": {
+        "label": "Vista previa de la puntuación",
+        "placement": "Ronda de clasificación {round} de {of}",
+        "rated": "Ronda puntuada",
+        "board": "Puntuación del tablero",
+        "yours": "Tu puntuación",
+        "clear": "Si lo superas",
+        "miss": "Si fallas",
+        "gain": "Hasta <num>+{value}</num>",
+        "loss": "Como máximo <num>−{value}</num>",
+        "announce": "Puntuación del tablero {board}. Tu puntuación {rating}. Si lo superas, hasta +{gain}. Si fallas, como máximo −{loss}."
+      }
     },
     "presets": {
       "easy": {

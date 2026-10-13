@@ -948,7 +948,19 @@
       "memorizeTime": "Tempo de memorização",
       "seconds": "{seconds} s",
       "start": "Começar uma rodada",
-      "lastGame": "Última partida: {time} s de resolução com {accuracy}% de precisão"
+      "lastGame": "Última partida: {time} s de resolução com {accuracy}% de precisão",
+      "preview": {
+        "label": "Prévia do rating",
+        "placement": "Rodada de classificação {round} de {of}",
+        "rated": "Rodada valendo rating",
+        "board": "Rating do tabuleiro",
+        "yours": "Seu rating",
+        "clear": "Se você acertar",
+        "miss": "Se você errar",
+        "gain": "Até <num>+{value}</num>",
+        "loss": "No máximo <num>−{value}</num>",
+        "announce": "Rating do tabuleiro {board}. Seu rating {rating}. Se você acertar, até +{gain}. Se você errar, no máximo −{loss}."
+      }
     },
     "presets": {
       "easy": {

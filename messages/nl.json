@@ -948,7 +948,19 @@
       "memorizeTime": "Kijktijd",
       "seconds": "{seconds} s",
       "start": "Start een ronde",
-      "lastGame": "Vorige partij: {time} s oplostijd met {accuracy}% nauwkeurigheid"
+      "lastGame": "Vorige partij: {time} s oplostijd met {accuracy}% nauwkeurigheid",
+      "preview": {
+        "label": "Voorbeeld van je rating",
+        "placement": "Plaatsingsronde {round} van {of}",
+        "rated": "Rated ronde",
+        "board": "Rating van het bord",
+        "yours": "Jouw rating",
+        "clear": "Als het lukt",
+        "miss": "Als het misgaat",
+        "gain": "Tot <num>+{value}</num>",
+        "loss": "Hooguit <num>−{value}</num>",
+        "announce": "Rating van het bord {board}. Jouw rating {rating}. Als het lukt, tot +{gain}. Als het misgaat, hooguit −{loss}."
+      }
     },
     "presets": {
       "easy": {

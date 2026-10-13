@@ -948,7 +948,19 @@
       "memorizeTime": "Ezberleme süresi",
       "seconds": "{seconds} sn",
       "start": "Bir tur başlat",
-      "lastGame": "Son oyun: {time} sn çözüm süresi, %{accuracy} isabet"
+      "lastGame": "Son oyun: {time} sn çözüm süresi, %{accuracy} isabet",
+      "preview": {
+        "label": "Puan önizlemesi",
+        "placement": "Yerleştirme turu {round}/{of}",
+        "rated": "Puanlı tur",
+        "board": "Tahta puanı",
+        "yours": "Senin puanın",
+        "clear": "Başarırsan",
+        "miss": "Kaçırırsan",
+        "gain": "En fazla <num>+{value}</num>",
+        "loss": "En fazla <num>−{value}</num>",
+        "announce": "Tahta puanı {board}. Senin puanın {rating}. Başarırsan en fazla +{gain}. Kaçırırsan en fazla −{loss}."
+      }
     },
     "presets": {
       "easy": {

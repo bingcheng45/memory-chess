@@ -948,7 +948,19 @@
       "memorizeTime": "Waktu menghafal",
       "seconds": "{seconds} dtk",
       "start": "Mulai satu ronde",
-      "lastGame": "Permainan terakhir: {time} dtk waktu penyelesaian dengan akurasi {accuracy}%"
+      "lastGame": "Permainan terakhir: {time} dtk waktu penyelesaian dengan akurasi {accuracy}%",
+      "preview": {
+        "label": "Pratinjau rating",
+        "placement": "Ronde penempatan {round} dari {of}",
+        "rated": "Ronde berating",
+        "board": "Rating papan",
+        "yours": "Rating kamu",
+        "clear": "Jika kamu berhasil",
+        "miss": "Jika kamu gagal",
+        "gain": "Hingga <num>+{value}</num>",
+        "loss": "Paling banyak <num>−{value}</num>",
+        "announce": "Rating papan {board}. Rating kamu {rating}. Jika kamu berhasil, hingga +{gain}. Jika kamu gagal, paling banyak −{loss}."
+      }
     },
     "presets": {
       "easy": {

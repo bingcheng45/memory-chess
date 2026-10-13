@@ -948,7 +948,19 @@
       "memorizeTime": "Temps de mémorisation",
       "seconds": "{seconds} s",
       "start": "Lancer une manche",
-      "lastGame": "Dernière partie : {time} s de résolution avec {accuracy} % de précision"
+      "lastGame": "Dernière partie : {time} s de résolution avec {accuracy} % de précision",
+      "preview": {
+        "label": "Aperçu de la cote",
+        "placement": "Manche de placement {round} sur {of}",
+        "rated": "Manche classée",
+        "board": "Cote du plateau",
+        "yours": "Votre cote",
+        "clear": "Si vous réussissez",
+        "miss": "Si vous échouez",
+        "gain": "Jusqu’à <num>+{value}</num>",
+        "loss": "Au plus <num>−{value}</num>",
+        "announce": "Cote du plateau {board}. Votre cote {rating}. Si vous réussissez, jusqu’à +{gain}. Si vous échouez, au plus −{loss}."
+      }
     },
     "presets": {
       "easy": {

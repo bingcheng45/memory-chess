@@ -68,12 +68,18 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  Reflect.deleteProperty(document, "visibilityState");
   jest.useRealTimers();
   jest.restoreAllMocks();
 });
 
 // The leaderboard page receives only the shared groups; the daily page groups stay on /daily.
 const pageMessages = splitClientMessages(enMessages as unknown as AbstractIntlMessages).shared;
+
+function setVisibility(state: "visible" | "hidden") {
+  Object.defineProperty(document, "visibilityState", { configurable: true, get: () => state });
+  document.dispatchEvent(new Event("visibilitychange"));
+}
 
 async function renderDailyAt(iso: string, timeZone: string) {
   emulateTimeZone(timeZone);
@@ -230,6 +236,35 @@ describe("the Daily tab", () => {
     });
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("retries every 5 s for the first minute of failure, then once a minute", async () => {
+    fetchMock.mockImplementation(offline);
+    await renderDailyAt("2026-10-14T10:00:00Z", "UTC");
+
+    for (let second = 0; second < 180; second++) {
+      await act(async () => {
+        jest.advanceTimersByTime(1_000);
+      });
+    }
+
+    expect(fetchMock).toHaveBeenCalledTimes(15);
+  });
+
+  it("makes no daily reads while the tab is hidden and one as soon as it is visible again", async () => {
+    fetchMock.mockImplementation(offline);
+    await renderDailyAt("2026-10-14T10:00:00Z", "UTC");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+
+    setVisibility("hidden");
+    await act(async () => {
+      jest.advanceTimersByTime(300_000);
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+
+    setVisibility("visible");
+    await act(async () => {});
+    expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
   it("leaves Medium untouched when a slow daily read lands after the viewer switched to it", async () => {

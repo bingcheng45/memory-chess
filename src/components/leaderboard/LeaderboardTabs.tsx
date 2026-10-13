@@ -46,6 +46,9 @@ interface Reads {
 
 const DAILY_RETRY_MS = 5_000;
 const DAILY_CLOCK_SKEW_GRACE_MS = 60_000;
+const DAILY_OUTAGE_RETRY_MS = 60_000;
+
+const retryDelayOf = (failedForMs: number) => (failedForMs < DAILY_CLOCK_SKEW_GRACE_MS ? DAILY_RETRY_MS : DAILY_OUTAGE_RETRY_MS);
 
 function applyRankedRead(reads: Reads, tab: RankedDifficulty, read: Board): Reads {
   return read.error === undefined ? { ...reads, boards: { ...reads.boards, [tab]: read } } : reads;
@@ -111,8 +114,23 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   const { dailyFailure } = reads;
   useEffect(() => {
     if (dailyDay === null || dailyFailure?.day !== dailyDay) return;
-    const timer = window.setTimeout(() => setRetryAttempt((attempt) => attempt + 1), DAILY_RETRY_MS);
-    return () => window.clearTimeout(timer);
+    let timer: number | undefined;
+    const retry = () => setRetryAttempt((attempt) => attempt + 1);
+    const schedule = () => {
+      if (document.visibilityState === 'hidden') return;
+      timer = window.setTimeout(retry, retryDelayOf(Date.now() - dailyFailure.since));
+    };
+    const onVisibilityChange = () => {
+      window.clearTimeout(timer);
+      if (document.visibilityState === 'visible') retry();
+    };
+
+    schedule();
+    document.addEventListener('visibilitychange', onVisibilityChange);
+    return () => {
+      window.clearTimeout(timer);
+      document.removeEventListener('visibilitychange', onVisibilityChange);
+    };
   }, [dailyDay, dailyFailure]);
 
   const boards: LeaderboardBoards =

@@ -32,9 +32,36 @@ function isLeaderboardTab(value: string | null): value is LeaderboardTab {
   return LEADERBOARD_TABS.includes(value as LeaderboardTab);
 }
 
-function applyRead(boards: LeaderboardBoards, tab: LeaderboardTab, read: Board): LeaderboardBoards {
-  const isFailedReadOfSameDay = read.error !== undefined && boards[tab].day === read.day;
-  return isFailedReadOfSameDay ? boards : { ...boards, [tab]: read };
+type DailyBoard = LeaderboardBoards[typeof DAILY_BOARD];
+
+interface DailyFailure {
+  day: string;
+  since: number;
+}
+
+interface Reads {
+  boards: LeaderboardBoards;
+  dailyFailure: DailyFailure | null;
+}
+
+// Midnight is when a viewer's clock running ahead of the server's asks for a
+// day the server does not serve yet, so a failure is retried quietly and
+// shown only once it has outlasted any such skew.
+const DAILY_RETRY_MS = 5_000;
+const DAILY_FAILURE_SHOWN_AFTER_MS = 60_000;
+
+function applyRankedRead(reads: Reads, tab: RankedDifficulty, read: Board): Reads {
+  return read.error === undefined ? { ...reads, boards: { ...reads.boards, [tab]: read } } : reads;
+}
+
+function applyDailyRead(reads: Reads, read: DailyBoard, at: number): Reads {
+  if (read.error === undefined) return { boards: { ...reads.boards, daily: read }, dailyFailure: null };
+  const shown = reads.boards.daily;
+  if (shown.day === read.day && shown.error === undefined) return { ...reads, dailyFailure: null };
+
+  const since = reads.dailyFailure?.day === read.day ? reads.dailyFailure.since : at;
+  const daily = at - since >= DAILY_FAILURE_SHOWN_AFTER_MS ? { data: [], error: read.error, day: read.day } : shown;
+  return { boards: { ...reads.boards, daily }, dailyFailure: { day: read.day, since } };
 }
 
 function parseParam(value: string | null, parse: (value: string) => number): number | null {
@@ -46,7 +73,8 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   // Difficulty names are the same strings the game config shows; reuse them
   // rather than translating "Easy" twice and letting the two drift.
   const tg = useTranslations("game");
-  const [boards, setBoards] = useState(serverBoards);
+  const [reads, setReads] = useState<Reads>({ boards: serverBoards, dailyFailure: null });
+  const [retryAttempt, setRetryAttempt] = useState(0);
   const [activeTab, setActiveTab] = useState<LeaderboardTab>(initialTab);
   const daily = useDailyState();
   const today = daily?.day ?? null;
@@ -58,30 +86,40 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   const isJustSubmitted = Boolean(entryDetails?.player);
 
   const isRefreshing = activeTab === DAILY_BOARD ? dailyDay !== null : isJustSubmitted;
-  // A viewer's clock a little ahead of the server asks for a day the server
-  // does not serve yet, so a failed daily read tries again on every tick.
-  const dailyRetry = dailyDay !== null && boards.daily.error && daily ? daily.left.hours * 60 + daily.left.minutes : null;
 
   useEffect(() => {
     if (!isRefreshing) return;
     const controller = new AbortController();
     const query = dailyDay === null ? `difficulty=${activeTab}` : `difficulty=${DAILY_BOARD}&daily_day=${dailyDay}`;
-    const day = dailyDay ?? undefined;
+    const settle = (read: Board) => {
+      if (controller.signal.aborted) return;
+      setReads((current) => {
+        if (dailyDay !== null) return applyDailyRead(current, { ...read, day: dailyDay }, Date.now());
+        return activeTab === DAILY_BOARD ? current : applyRankedRead(current, activeTab, read);
+      });
+    };
 
     fetch(`/api/leaderboard?${query}`, { signal: controller.signal, cache: 'no-store' })
       .then((response) => response.json())
-      .then(({ data, error }: { data?: LeaderboardEntry[]; error?: string }) => {
-        setBoards((current) => applyRead(current, activeTab, { data: data ?? [], error, day }));
-      })
+      .then(({ data, error }: { data?: LeaderboardEntry[]; error?: string }) => settle({ data: data ?? [], error }))
       .catch((err) => {
         if (err.name === 'AbortError') return;
         console.error('Error refreshing leaderboard data:', err);
-        setBoards((current) => applyRead(current, activeTab, { data: [], error: String(err), day }));
+        settle({ data: [], error: String(err) });
       });
 
     return () => controller.abort();
-  }, [activeTab, dailyDay, isRefreshing, dailyRetry]);
+  }, [activeTab, dailyDay, isRefreshing, retryAttempt]);
 
+  const { dailyFailure } = reads;
+  useEffect(() => {
+    if (dailyDay === null || dailyFailure?.day !== dailyDay) return;
+    const timer = window.setTimeout(() => setRetryAttempt((attempt) => attempt + 1), DAILY_RETRY_MS);
+    return () => window.clearTimeout(timer);
+  }, [dailyDay, dailyFailure]);
+
+  const boards: LeaderboardBoards =
+    today === null || reads.boards.daily.day === today ? reads.boards : { ...reads.boards, daily: { data: [], day: today } };
   const activeBoard = boards[activeTab];
 
   return (

@@ -110,12 +110,14 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
   }, [entryDetails, data]);
 
   if (error) {
-    // Check if this is a database connection error and provide a more user-friendly message
-    const isConnectionError = error.includes('Database connection unavailable') ||
-                              error.includes('Unable to connect') ||
-                              error.includes('connection issue');
+    // A daily read that keeps failing is most often a clock far ahead of the
+    // server's, whose error text is English, so the Daily tab shows this state.
+    const showsUnavailable = activeTab === DAILY_BOARD ||
+                             error.includes('Database connection unavailable') ||
+                             error.includes('Unable to connect') ||
+                             error.includes('connection issue');
 
-    if (isConnectionError) {
+    if (showsUnavailable) {
       return (
         <BoardState icon={<CloudOff size={20} strokeWidth={1.75} />}>
           <p className="lb-state-title">{t("unavailableTitle")}</p>

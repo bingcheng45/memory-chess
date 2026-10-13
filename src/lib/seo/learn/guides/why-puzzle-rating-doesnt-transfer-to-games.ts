@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "why-puzzle-rating-doesnt-transfer-to-games",
     title: "Why Puzzle Rating Doesn't Transfer to Games",
     h1: "Why your puzzle rating doesn't transfer to games",
-    description: "A puzzle hands you four things a game never does. Until you replace them yourself, the rating stays on the puzzle site.",
+    description: "Why puzzle rating doesn't transfer to games: four things a puzzle gives you that a game takes away, and a five-game test to find which one costs you.",
     group: "board-vision",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
@@ -27,10 +27,12 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "A puzzle hands you a fresh diagram, tells you whose move it is, promises there is something to find, and lets you look without cost. A game gives you none of that. The rating measures solving with those four gifts, and games test you without them.",
+    quickAnswer: "Puzzle rating doesn't transfer to games because a puzzle does half the work for you. It promises a tactic and tells you which side has it. It shows the whole position fresh, with nothing remembered to go stale, and lets you look with no opponent waiting. A game gives you none of that, so you must spot a tactic's preconditions yourself.",
     takeaways: [
-      "A game takes away all four gifts a puzzle gives, and the stale board in your head is easy to overlook.",
-      "Scan for preconditions, loose pieces and lined-up pairs, and solve only when one appears.",
+      "Puzzle and game ratings come from separate pools, so the gap between them proves nothing on its own.",
+      "Each of the four gifts a puzzle hands you needs a habit to replace it at the board.",
+      "Scan for a loose piece, a lined-up pair or a king with no flight squares, and calculate only when one appears.",
+      "Five slow games, each checked once with an engine, show whether your missed tactics are a scanning problem or a calculation problem.",
     ],
     audience: [
       "Your puzzle rating is several hundred points above your game rating.",
@@ -40,61 +42,86 @@ const guide: LearnDocument = {
   },
   sections: [
     {
-      id: "the-claim",
-      heading: "What a puzzle rating actually measures",
+      id: "two-ratings",
+      heading: "Why your puzzle rating sits above your game rating",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "Puzzle rating is a real skill. It measures how reliably you find a winning move once you know one exists. That skill is worth having.",
-            "It is also narrower than it looks. Every rated puzzle is solved under the same conditions, and the rating only ever measures you under them.",
-            "Those conditions are the problem. Every one of them is missing in a game.",
+            "A puzzle rating measures a real skill. It shows how reliably you find a winning move once you know one exists.",
+            "It is also measured in its own pool. Puzzle sites rate you against the puzzles you solve, while games rate you against other players. Puzzle ratings often sit higher because the two scales are set separately, so the gap alone does not mean you play below your level. Part of the gap is real, though. A puzzle hands you four gifts that make a tactic easier than the same tactic in a game.",
+            "The real sign of a transfer problem shows up in your games. You lose to a fork you would solve in ten seconds as a puzzle, then spot it at once on the analysis screen.",
           ],
         },
       ],
     },
     {
       id: "four-gifts",
-      heading: "Four things a puzzle gives you and a game does not",
+      heading: "Four things a puzzle gives you that a game takes away",
       blocks: [
         {
-          kind: "list",
-          ordered: false,
-          items: [
-            "A promise. Something is there. A game makes no such promise, and the skill is knowing which move is the exception.",
-            "The side to move, marked. In a game you can spend a minute on a plan and then realise the tactic was your opponent's.",
-            "A fresh diagram. The whole position, drawn once, with every piece equally visible. In a game the position arrived one move at a time over half an hour.",
-            "Looking without cost. A puzzle can run with no clock at all. In a game every second you spend scanning comes off your own time.",
+          kind: "prose",
+          paragraphs: [
+            "A game takes away all four gifts, and each one needs a habit to stand in for it.",
           ],
         },
         {
-          kind: "prose",
-          paragraphs: ["The third one is the least obvious, so the next section is about it."],
+          kind: "table",
+          columns: ["What a puzzle gives you", "What a game gives you instead", "The habit that replaces it"],
+          rows: [
+            {
+              label: "A promise that a tactic is there",
+              cells: [
+                "Most moves offer no winning tactic to either side",
+                "Look for a tactic's preconditions, and calculate only when one appears",
+              ],
+            },
+            {
+              label: "Which side has the tactic, marked",
+              cells: [
+                "Threats run both ways, and the tactic you spot may be your opponent's",
+                "Check your opponent's checks, captures and threats before your own ideas",
+              ],
+            },
+            {
+              label: "A position you see for the first time",
+              cells: [
+                "The same board you have watched for 20 moves, read through the picture you built of it",
+                "Ask what the last move changed before you trust the picture",
+              ],
+            },
+            {
+              label: "Time to look with no opponent waiting",
+              cells: [
+                "Every second of scanning comes off your own clock",
+                "Keep the scan short and in a fixed order so it fits every move",
+              ],
+            },
+          ],
         },
       ],
     },
     {
       id: "stale-board",
-      heading: "The stale board, a gift that is easy to overlook",
+      heading: "Why the board in your head goes stale by the middlegame",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "By move 25 your picture of the board can lag behind the board. It can be the board as it was a few moves ago, with the recent changes patched in, so check those changes first.",
-            "A puzzle never has this problem. The diagram is the position, complete and current. Your puzzle rating has never once been tested on a stale board.",
-            "Strong players recall a briefly seen position in chunks, familiar groups of pieces stored as one unit. They rebuild the board from those groups rather than piece by piece.",
-            "Memory Chess has a hard preset of 12 pieces with 8 seconds to look. That is two thirds of a second per piece.",
-            "Try saying white knight c3 twelve times in eight seconds. That leaves no time to spare, so try seeing groups instead.",
+            "Of the four gifts, the fresh position is the easiest to overlook. In a game the position reaches you one move at a time, over half an hour or more. You stop rereading the squares you think you already know.",
+            "By move 25 your picture can lag behind the board. It is the position from a few moves back with the recent changes patched in. The usual error sits around the last move rather than on it: the square a piece left, or the line it opened.",
+            "A puzzle never tests this. Its diagram is complete and current, so your puzzle rating has never once been measured on a stale picture.",
+            "A Memory Chess round tests the picture itself. Take a hard preset of 12 pieces with 8 seconds to look. The board goes blank and you rebuild it. The result board then marks each square you got wrong or missed, so you see where your picture split from the real one.",
           ],
         },
         {
           kind: "drills",
           drills: [
             {
-              title: "Twelve pieces, seen as shapes",
-              description: "Play 12 pieces with 8 seconds to look, 3 rounds. Do not read piece by piece. Find the two or three groups, name them, and rebuild from the groups.",
+              title: "Flag the square you doubt",
+              description: "Run 3 rounds in a row at 12 pieces and 8 seconds. Before you submit each rebuild, say aloud the one square you are least sure of. On the result board, compare that square with the squares marked wrong or missed.",
               duration: "about 5 minutes",
-              goal: "Rounds where the squares marked Missed sit inside a group you saw, not in a corner you never looked at.",
+              goal: "In each round, no square is marked wrong or missed except, at most, the one you flagged. An unflagged miss is a piece your picture lost without warning, the same slip that drops a piece in a game.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
           ],
@@ -103,30 +130,53 @@ const guide: LearnDocument = {
     },
     {
       id: "what-transfers",
-      heading: "The patterns that do cross over, and the condition attached",
+      heading: "Puzzle patterns that do transfer to games",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "Some patterns do show up in games. A knight on c7 forking a king on e8 and a rook on a8. A bishop on g5 pinning a knight on f6 to a queen on d8.",
-            "They transfer under one condition. You have to be looking at the precondition, not the tactic.",
-            "The fork works because nothing guards c7 and your knight on b5 can reach it. The pin works because the knight stands on the diagonal between the bishop and the queen, with e7 empty.",
-            "So the habit that carries puzzles into games is a scan for preconditions. Loose pieces, pieces on the same line as something valuable, a king with no flight squares.",
-            "When one of those is on the board, and only then, you solve the position like a puzzle.",
+            "Many puzzle patterns turn up in real games. Take a knight on c7 forking a king on e8 and a rook on a8. Or take a bishop on g5 pinning a knight on f6 to a queen on d8.",
+            "They transfer only if you spot the precondition first, because nothing at the board tells you a tactic is there.",
           ],
+        },
+        {
+          kind: "board",
+          position: {
+            id: "fork-on-c7",
+            white: ["Kg1", "Nb5"],
+            black: ["Ke8", "Ra8"],
+            unstated: ["g1"],
+            claims: [
+              { kind: "attackers", square: "c7", side: "b", from: [] },
+              { kind: "legal", move: "Nc7+" },
+            ],
+          },
+          arrows: [{ from: "b5", to: "c7", kind: "attack" }],
+          marks: [{ square: "c7", kind: "ring" }],
+          caption: "No Black piece guards c7 and the knight on b5 reaches it, so Nc7+ forks the king and the rook.",
+        },
+        {
+          kind: "prose",
+          paragraphs: [
+            "The fork works because nothing guards c7 and your knight on b5 can reach it. The pin works because the knight stands on the diagonal between the bishop and the queen, with e7 empty.",
+            "So the habit that carries puzzles into games is a scan for three preconditions, on both sides of the board.",
+          ],
+        },
+        {
+          kind: "list",
+          ordered: false,
+          items: [
+            "A loose piece, one that nothing defends. Any attack on it is already a threat.",
+            "A lined-up pair, like the knight on f6 in front of the queen on d8. Two pieces of one side share a file, rank or diagonal. With the more valuable one behind, a bishop, rook or queen on that line pins the front piece. With it in front, the same attack skewers them.",
+            "A king with no flight squares, where a single check can end the game.",
+          ],
+        },
+        {
+          kind: "prose",
+          paragraphs: ["When one of these is on the board, and only then, stop and solve the position like a puzzle."],
         },
       ],
       facts: [
-        {
-          id: "fork-on-c7",
-          white: ["Kg1", "Nb5"],
-          black: ["Ke8", "Ra8"],
-          unstated: ["g1"],
-          claims: [
-            { kind: "attackers", square: "c7", side: "b", from: [] },
-            { kind: "legal", move: "Nc7+" },
-          ],
-        },
         {
           id: "fork-on-c7-played",
           white: ["Kg1", "Nb5"],
@@ -156,23 +206,24 @@ const guide: LearnDocument = {
     },
     {
       id: "the-test",
-      heading: "A test to run in your next five games",
+      heading: "A five-game test for scanning or calculation misses",
       blocks: [
         {
           kind: "list",
           ordered: true,
           items: [
-            "Play five games at 15 minutes with a 10-second increment. Not blitz, or the test measures your clock.",
-            "Before each of your moves, say the squares your opponent's last move newly attacks and whether anything on them is loose.",
-            "When you notice a loose piece or a lined-up pair, on either side, mark the move number on paper.",
-            "After each game, run the engine once and list the tactics it found for either side. Compare that list with your marks.",
-            "The tactics you marked and still missed are a calculation problem. The ones you never marked are a scanning problem.",
+            "Play five games at 15 minutes with a 10-second increment. Blitz is too fast, and the test would measure your clock.",
+            "Before each of your moves, name the squares your opponent's last move newly attacks and whether anything on them is loose.",
+            "Whenever you notice a loose piece, a lined-up pair or a king with no flight squares, for either side, write down the move number.",
+            "After each game, run the engine once and list every tactic it found for either side. Compare that list with your notes.",
+            "A tactic on a move you noted and still missed is a calculation problem. A tactic on a move you never noted is a scanning problem.",
           ],
         },
         {
           kind: "prose",
           paragraphs: [
-            "A puzzle does the scanning for you by promising a tactic, so puzzle volume does not practise it. If most missed tactics sit on unmarked moves, more puzzles are unlikely to close the gap.",
+            "If most misses are calculation, your scan works and puzzles are the right training. Keep solving them, and check the reply before you move.",
+            "If most misses are scanning, more puzzles will not close the gap. A puzzle does the scanning for you by promising a tactic, so it never trains that step. Spend those minutes on the scan in slow games instead.",
           ],
         },
       ],
@@ -182,35 +233,43 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
-      why: "Twelve pieces in eight seconds is a fresh board with no hint about what matters, the condition a puzzle never sets.",
+      why: "The blank board after eight seconds shows where your picture of the position split from the real one, a check no puzzle diagram runs.",
+    },
+    {
+      kind: "faq",
+      items: [
+        {
+          question: "Should I stop doing chess puzzles?",
+          answer: "No. Puzzles still build the patterns your scan needs to recognise once it finds a precondition. Keep them if the five-game test points to calculation. If it points to scanning, shorten the puzzle block and spend those minutes running the scan in slow games, where the habit has to work.",
+        },
+        {
+          question: "Are Puzzle Rush and Puzzle Storm closer to a real game?",
+          answer: "They add a clock, so they remove one of the four gifts. Every position still holds a tactic and still tells you which side has it, so they train how fast you solve and leave the scan untrained. Treat them as quick pattern practice, and keep slow games for the scan.",
+        },
+      ],
     },
     {
       kind: "furtherReading",
       items: [
         {
           kind: "guide",
-          slug: "how-many-chess-puzzles-a-day",
-          reason: "How many puzzles are still worth doing once you accept this.",
+          slug: "how-to-stop-blundering-in-chess",
+          reason: "Turns the precondition scan into a full five-step check before every move.",
         },
         {
           kind: "guide",
-          slug: "how-to-stop-blundering-in-chess",
-          reason: "The precondition scan as a full pre-move checklist.",
+          slug: "how-many-chess-puzzles-a-day",
+          reason: "Sets a puzzle count from your minutes, for when the test says calculation.",
         },
         {
           kind: "guide",
           slug: "chess-pattern-recognition-drills",
-          reason: "Training the patterns that do cross over.",
+          reason: "Trains the fork and pin shapes that do carry over, square by square.",
         },
-      ],
-    },
-    {
-      kind: "sources",
-      items: [
         {
-          title: "Perception in Chess",
-          note: "Supports the claim that strong players recall a briefly seen position in chunks, familiar groups of pieces stored as one unit.",
-          url: "https://doi.org/10.1016/0010-0285(73)90004-2",
+          kind: "guide",
+          slug: "how-to-analyze-chess-games-for-beginners",
+          reason: "Shows how to review each of the five test games without drowning in engine lines.",
         },
       ],
     },

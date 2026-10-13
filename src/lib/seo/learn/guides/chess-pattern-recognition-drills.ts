@@ -4,14 +4,15 @@ const guide: LearnDocument = {
   meta: {
     slug: "chess-pattern-recognition-drills",
     title: "Chess Pattern Recognition Drills, From Memory",
-    h1: "Pattern recognition drills: learn four shapes by rebuilding them",
-    description: "Four tactical shapes with their exact squares, a rebuild routine that makes each one stick, and what a random position can and cannot teach about patterns.",
+    h1: "Chess pattern recognition drills for the first four tactics",
+    description: "Chess pattern recognition drills for four tactics: the exact squares, the one condition each needs, and a six-minute rebuild routine that makes them stick.",
     group: "memory",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
-    updatedAt: "2026-09-15T00:00:00.000Z",
+    updatedAt: "2026-10-13T00:00:00.000Z",
     questions: [
       "How do I train pattern recognition in chess?",
+      "Which chess patterns should beginners learn first?",
       "What does a knight fork look like on the board?",
     ],
     keywords: {
@@ -26,11 +27,11 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Learn a pattern as a shape with squares, not as a name. Set it up, clear the board, rebuild it, then shift it one file and check whether the idea still works.",
+    quickAnswer: "Start chess pattern recognition drills with four patterns, the knight fork, back-rank mate, bishop pin and smothered mate, each a shape plus one condition. Set up the shape on a board, clear it and rebuild it from memory. Then add one black piece that breaks the condition, watch the tactic fail, and look for the shape in your own games.",
     takeaways: [
-      "A fork on c7 is three squares, e8, a8 and c7, plus one condition: nothing black can take on c7.",
-      "Rebuild each shape from an empty board until you can place it without the list, then look for it in your own games.",
-      "Memory Chess positions are random, so use them to practise reading clusters fast, not to learn tactics.",
+      "A knight fork on c7 is three squares, e8, a8 and c7, plus one condition, that nothing black can take on c7.",
+      "Rebuild each shape from an empty board until you can place it without the table, then look for it in your own games.",
+      "Memory Chess positions are random. They train fast reading of clusters, and the tactics themselves are learned at a board.",
     ],
     audience: [
       "Players with a decent puzzle rating who still walk into forks in their own games.",
@@ -46,10 +47,10 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Start with the knight fork on c7. Black king on e8, black rook on a8, and a white knight lands on c7 and hits both.",
+            "Start with the knight fork on c7. A black king stands on e8 and a black rook on a8. A white knight lands on c7 and hits both.",
             "That is the shape. The condition is that nothing black can capture on c7. A black queen or bishop on d8 kills the fork, and so does a black knight on b5 or e6.",
-            "Puzzles hand you the shape and guarantee the condition. Games do neither, which is why a puzzle rating and a habit of noticing forks are different things.",
-            "So a pattern drill has two halves. Rebuild the shape until you can place it from memory, then break the condition on purpose and watch the fork fail.",
+            "A puzzle promises the tactic works, so it checks the condition for you. A game leaves that check to you.",
+            "So the drill below has two halves. Rebuild the shape from memory, then break the condition on purpose and watch the tactic fail.",
           ],
         },
       ],
@@ -86,23 +87,34 @@ const guide: LearnDocument = {
     },
     {
       id: "four-shapes-with-squares",
-      heading: "Four shapes, with their squares",
+      heading: "Four patterns beginners should learn first, square by square",
       blocks: [
         {
-          kind: "list",
-          ordered: false,
-          items: [
-            "Knight fork on c7. Black king e8, black rook a8, white knight on d5 or b5 ready to jump. Condition: no black piece guards c7.",
-            "Back-rank mate. Black king g8, black pawns f7, g7 and h7, white rook on e1 with the e-file open. Condition: no black piece can capture on e8 or block the eighth rank.",
-            "Bishop pin on b5. Black king e8, black knight c6, white bishop b5. Condition: d7 is empty, so the knight cannot move without exposing the king along the diagonal.",
-            "Smothered mate. Black king h8, black rook g8, black pawns g7 and h7, white knight lands on f7. Condition: nothing black covers f7. The rook and pawns take the king's flight squares themselves.",
+          kind: "table",
+          columns: ["Pattern", "The shape", "The condition"],
+          rows: [
+            {
+              label: "Knight fork on c7",
+              cells: ["Black king e8, black rook a8, white knight on b5 or d5 ready to jump", "No black piece guards c7"],
+            },
+            {
+              label: "Back-rank mate",
+              cells: ["Black king g8, black pawns f7, g7 and h7, white rook e1 on an open e-file", "No black piece can take on e8 or block on f8"],
+            },
+            {
+              label: "Bishop pin on b5",
+              cells: ["Black king e8, black knight c6, white bishop b5", "d7 is empty, so the knight cannot move without exposing the king"],
+            },
+            {
+              label: "Smothered mate",
+              cells: ["Black king h8, black rook g8, black pawns g7 and h7, white knight g5 ready for f7", "No black piece guards f7"],
+            },
           ],
         },
         {
           kind: "prose",
           paragraphs: [
-            "Four is enough for a month. Each one is a cluster of three to five pieces, and each has exactly one condition to check.",
-            "Notice that the condition is always about a piece that is not part of the shape. That piece is easy to skip if you mostly solve puzzles, because a puzzle already promises the tactic works.",
+            "Each condition concerns a square or piece outside the shape, which is why puzzle solvers skip it. In the smothered mate the king's own rook and pawns take its flight squares, so one knight is enough.",
           ],
         },
       ],
@@ -150,7 +162,7 @@ const guide: LearnDocument = {
           id: "smothered-mate",
           white: ["Kg1", "Ng5"],
           black: ["Kh8", "Rg8", "g7", "h7"],
-          unstated: ["g1", "g5"],
+          unstated: ["g1"],
           line: ["Nf7#"],
           claims: [{ kind: "mate" }, { kind: "attackers", square: "f7", side: "b", from: [] }],
         },
@@ -158,19 +170,48 @@ const guide: LearnDocument = {
     },
     {
       id: "rebuild-shift-break",
-      heading: "Rebuild it, shift it, break it",
-      summary: "The routine for one shape, about 6 minutes at a real board.",
+      heading: "The rebuild, shift and break drill",
+      summary: "One pattern, about 6 minutes at a real board.",
       blocks: [
         {
           kind: "list",
           ordered: true,
           items: [
-            "Set the shape up from the list above and look at it for ten seconds. Say the squares out loud: e8, a8, d5, c7.",
-            "Clear the board completely, kings included, and set it up again from memory. Check against the list. A piece on the wrong square is wrong, the same rule the game uses.",
-            "Shift the whole shape one file to the right: king f8, rook b8, knight e5, fork square d7. Does the knight still hit both? It does. Say why out loud before you go on.",
-            "Break the condition. Add a black bishop on c8 and ask whether the fork still works. The bishop takes on d7, so it does not, and now you know what to look for in a game.",
-            "Only then open your last three games and look for the shape, even where it never happened. A knight two jumps from a fork square is the shape in its early form.",
+            "Set up the knight fork from the table with the knight on d5. Look for ten seconds and say the squares aloud: e8, a8, d5 and c7, the square the knight jumps to.",
+            "Clear the board completely and set the shape up again from memory. Check it against the table. A piece on the wrong square counts as wrong, the same rule Memory Chess uses.",
+            "Shift the whole shape one file to the right: king f8, rook b8, knight e5. The fork square is now d7. Play Nd7+ and confirm the knight hits both, then say why aloud. Nothing black guards d7.",
+            "Break the condition. Put a black bishop on c8 and play Nd7+ again. Bxd7 takes the knight, so the fork fails. That bishop is the piece to look for in a game.",
+            "For the other three patterns, skip the shift. Add the black piece or pawn listed below that breaks the condition, play the tactic and watch it fail.",
+            "Drill one pattern per session. Once all four rebuild cleanly, open your last three games and look for each shape, even where it never happened. A knight two jumps from a fork square is the shape in its early form.",
           ],
+        },
+        {
+          kind: "list",
+          ordered: false,
+          items: [
+            "Back-rank mate: a black rook on a8, so Re8+ is met by Rxe8.",
+            "Smothered mate: a black queen on d7 guarding f7, so Nf7+ is met by Qxf7.",
+            "Bishop pin: a black pawn on d7, so the c6 knight can move again, for example to e5.",
+          ],
+        },
+        {
+          kind: "board",
+          position: {
+            id: "fork-shifted-broken",
+            white: ["Kg1", "Ne5"],
+            black: ["Kf8", "Rb8", "Bc8"],
+            unstated: ["g1"],
+            claims: [
+              { kind: "attacks", from: "c8", squares: ["d7"] },
+              { kind: "attacks", from: "e5", squares: ["d7"] },
+            ],
+          },
+          arrows: [
+            { from: "e5", to: "d7", kind: "attack" },
+            { from: "c8", to: "d7", kind: "defend" },
+          ],
+          marks: [{ square: "d7", kind: "ring" }],
+          caption: "With a black bishop on c8 guarding d7, the shifted fork Nd7+ only loses the knight.",
         },
       ],
       facts: [
@@ -183,25 +224,48 @@ const guide: LearnDocument = {
           claims: [{ kind: "check" }, { kind: "attacks", from: "d7", squares: ["b8", "f8"] }],
         },
         {
-          id: "fork-shifted-broken",
+          id: "fork-shifted-broken-played",
           white: ["Kg1", "Ne5"],
           black: ["Kf8", "Rb8", "Bc8"],
           unstated: ["g1"],
-          claims: [{ kind: "attacks", from: "c8", squares: ["d7"] }],
+          line: ["Nd7+"],
+          claims: [{ kind: "legal", move: "Bxd7" }],
+        },
+        {
+          id: "back-rank-broken-by-Ra8",
+          white: ["Kh1", "Re1"],
+          black: ["Kg8", "Ra8", "f7", "g7", "h7"],
+          unstated: ["h1", "e1", "g8", "f7", "g7", "h7"],
+          line: ["Re8+"],
+          claims: [{ kind: "legal", move: "Rxe8" }],
+        },
+        {
+          id: "smothered-broken-by-Qd7",
+          white: ["Kg1", "Ng5"],
+          black: ["Kh8", "Rg8", "Qd7", "g7", "h7"],
+          unstated: ["g1", "g5", "h8", "g8", "g7", "h7"],
+          line: ["Nf7+"],
+          claims: [{ kind: "attackers", square: "f7", side: "b", from: ["d7"] }, { kind: "legal", move: "Qxf7" }],
+        },
+        {
+          id: "pin-broken-by-d7-pawn",
+          white: ["Kg1", "Bb5"],
+          black: ["Ke8", "Nc6", "d7"],
+          toMove: "b",
+          unstated: ["g1", "b5", "e8"],
+          claims: [{ kind: "legal", move: "Ne5" }],
         },
       ],
     },
     {
       id: "random-boards-and-clusters",
-      heading: "What a random 12-piece board teaches, and what it cannot",
+      heading: "Reading a random 12-piece board in clusters",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "Memory Chess positions are generated fresh for each round and are not taken from games. A round is not built to show you a back-rank mate, so it will not teach you that pattern.",
-            "What you can practise on it is reading a cluster of pieces as one unit. Twenty pieces in five seconds is a quarter of a second per piece, too little to read square by square, so try reading clusters.",
-            "The generator draws piece types in the proportions a real set holds: eight pawns, two knights, two bishops, two rooks and one queen per side. Pawns are the most common piece you see and queens the rarest.",
-            "That is a clue you can use. On a 12-piece board the ten pieces beyond the kings are split five and five, and about half of them are pawns. Count the pawn chains first, then the odd pieces.",
+            "Memory Chess positions are random and fresh each round, so a back-rank mate shows up only by chance. What a round trains is reading a cluster, two to four pieces that touch or guard each other, as one unit. Twenty pieces in five seconds is a quarter of a second per piece, too little to read square by square.",
+            "The generator weights piece types as a real set holds them, eight pawns to one queen per side. On a 12-piece board the ten pieces beyond the kings are split five and five, and about half of them are pawns. So read the kings first, then the pawns that touch, then the odd pieces.",
             "Two more rules shrink the search. A side's two bishops never share a square colour, and no pawn ever stands on the first or eighth rank.",
           ],
         },
@@ -209,15 +273,15 @@ const guide: LearnDocument = {
           kind: "drills",
           drills: [
             {
-              title: "Chains first",
-              description: "3 rounds of 12 pieces, 8 seconds, about 5 minutes. Kings first, then each pawn chain as a single shape, then whatever is left. Say the chains as you place them, f2 g3, e6 f7.",
+              title: "Pawns before pieces",
+              description: "3 rounds of 12 pieces, 8 seconds, about 5 minutes. Place the kings, then each pair of touching pawns as one cluster, then the rest. Say each pair aloud, such as f2 g3.",
               duration: "About 5 minutes",
-              goal: "Every pawn on its square. Drop a rook before you drop a chain.",
+              goal: "Every pawn on its square in all three rounds.",
               play: { label: "Start 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
             {
               title: "The quarter-second board",
-              description: "2 rounds of 20 pieces, 5 seconds, about 4 minutes. Try it only once 12 pieces at 8 seconds gives you Excellent Memory most rounds. Before that, a round is likely to end in Keep Practicing. Even then you will not get them all. The point is to catch the moment you stop reading pieces and start reading shapes.",
+              description: "2 rounds of 20 pieces, 5 seconds, about 4 minutes. Try it only once 12 pieces at 8 seconds gives you Excellent Memory or Perfect Score, 90 percent or better, in most rounds. Before that, a round is likely to end in Keep Practicing. Watch for the moment you start reading clusters.",
               duration: "About 4 minutes",
               goal: "At least 50 percent on the second round, which the result screen calls Good Effort or better.",
               play: { label: "Try 20 pieces, 5 seconds", pieceCount: 20, memorizeTime: 5 },
@@ -228,14 +292,13 @@ const guide: LearnDocument = {
     },
     {
       id: "recognition-over-search",
-      heading: "Recognition does more of the work than search",
+      heading: "What Kasparov's simultaneous games showed about recognition",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "Gobet and Simon compared Kasparov's results in simultaneous displays, where he had a fraction of his usual time per move, with his results in normal games. The drop was small.",
-            "They read that as evidence that recognising positions, rather than searching deeply, carries most of a strong player's strength.",
-            "For a beginner the lesson is not to skip calculation. It is to rebuild the shapes from memory, so you know what to look for before you calculate.",
+            "Gobet and Simon compared Kasparov's simultaneous displays against strong players with his normal games. With a fraction of his usual time per move, his performance dropped only a little. They read that as evidence that recognition carries more of a strong player's strength than deep search.",
+            "Calculation still matters for you. The shapes you rebuild tell you which move to calculate first.",
           ],
         },
       ],
@@ -245,7 +308,7 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Open the 12-piece, 8-second round", pieceCount: 12, memorizeTime: 8 },
-      why: "A random twelve-piece board still has clusters, so look for pieces that guard each other before you place any.",
+      why: "Read the kings, then the touching pawns, then the rest, and see how many clusters a random twelve-piece board breaks into.",
     },
     {
       kind: "cta",
@@ -261,15 +324,15 @@ const guide: LearnDocument = {
       items: [
         {
           question: "Is pattern recognition the same as memorising puzzles?",
-          answer: "No. A memorised puzzle is one position. A pattern is a shape that survives being shifted a file, plus a condition you check every time you see it.",
+          answer: "No. A memorised puzzle is one position on fixed squares. A pattern has two parts. The first is a shape you still recognise when it moves a file or appears for the other colour. The second is a condition you check every time you see it.",
         },
         {
           question: "Can Memory Chess show me real tactical patterns?",
-          answer: "No. Its positions are random and made fresh every round. Use it to practise reading clusters quickly, and learn the shapes themselves at a board.",
+          answer: "No. Its positions are random and generated fresh every round, so a fork or a back-rank mate appears only by chance. Use it to read clusters of pieces quickly, and learn the tactical shapes at a real board.",
         },
         {
           question: "How many patterns should I learn at once?",
-          answer: "Four, for a month. Add a fifth when you have found each of the four in your own games.",
+          answer: "Four is enough to start. Drill one per session until you can rebuild all four from memory. Add a fifth pattern only when you have found each of the four, or its early form, in a game you played.",
         },
       ],
     },
@@ -279,12 +342,17 @@ const guide: LearnDocument = {
         {
           kind: "guide",
           slug: "chess-memory-training",
-          reason: "The ladder that gets you to 12 pieces before you try to read them as chunks.",
+          reason: "The ladder that gets you to 12 pieces before you try to read them as clusters.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-stop-blundering-in-chess",
+          reason: "Turns the condition check into a short scan you run before every move.",
         },
         {
           kind: "guide",
           slug: "why-puzzle-rating-doesnt-transfer-to-games",
-          reason: "Why the shape shows up in puzzles and not in your games.",
+          reason: "Why a shape you solve in puzzles goes unseen in your games.",
         },
         {
           kind: "guide",
@@ -298,7 +366,7 @@ const guide: LearnDocument = {
       items: [
         {
           title: "The Roles of Recognition Processes and Look-Ahead Search in Time-Constrained Expert Problem Solving: Evidence From Grand-Master-Level Chess",
-          note: "Supports the claim that Kasparov's results with far less time per move in simultaneous displays fell only slightly, read as evidence for recognition over search.",
+          note: "Supports the claim that Kasparov's performance with far less time per move in simultaneous displays fell only slightly, read as evidence for recognition over search.",
           url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
         },
       ],

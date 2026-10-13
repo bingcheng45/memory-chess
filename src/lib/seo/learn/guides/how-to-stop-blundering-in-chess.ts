@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "how-to-stop-blundering-in-chess",
     title: "How to Stop Blundering in Chess",
     h1: "How to stop blundering in chess",
-    description: "Why pieces drop in games and not in puzzles, a pre-move scan for checks, captures, threats and loose pieces, and drills built from your own losses.",
+    description: "Learn how to stop blundering in chess with a five-step scan before every move, a check for loose pieces, and drills built from your own lost games.",
     group: "board-vision",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
@@ -14,6 +14,7 @@ const guide: LearnDocument = {
       "How do I stop blundering pieces?",
       "What should I check before every move?",
       "What is a loose piece?",
+      "Why do I keep hanging pieces in chess?",
     ],
     keywords: {
       primary: "how to stop blundering in chess",
@@ -28,11 +29,11 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Before every move, run one scan in a fixed order. Ask what the last move attacks, what checks, captures and threats your opponent has, which of your pieces is loose, and what your move stops guarding.",
+    quickAnswer: "Before every move, run a five-step scan in a fixed order. Check what your opponent's last move attacks, list their checks, captures and threats, and find your loose pieces, the undefended ones. Then ask whether your move lands on a defended square and what it stops guarding, and only then look for your own checks and captures.",
     takeaways: [
       "A one-move blunder is a move that only works on the board in your head.",
-      "A loose piece is an easy target, so list your loose pieces before your opponent's check finds one.",
-      "Keep a blunder tally per game, because rating also moves with openings, endgames and pairings.",
+      "A loose piece has no defender, so list yours before your opponent's check finds one.",
+      "Measure the habit with a blunder tally per game, because rating also moves with openings, endgames and pairings.",
     ],
     audience: [
       "Players who solve puzzles well and still lose pieces to a one-move reply.",
@@ -49,9 +50,9 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "A puzzle tells you two things before you look. There is a tactic, and it is your move. A game tells you neither, so a fork you would find in a puzzle can walk past unseen.",
-            "A one-move blunder needs no deep line to avoid. It is a move that works on the board in your head but not on the board on the table.",
-            "This guide covers three ways the two boards can differ. The first is the phantom defender, a piece that looks like a guard and cannot act as one.",
-            "Put a White bishop on b5, a Black knight on c6 and the Black king on e8, with d7 empty. The knight seems to guard e5, but it is pinned and cannot legally capture there.",
+            "A one-move blunder needs no deep line to avoid. It is a move that works on the board in your head and fails on the board on the table.",
+            "The two boards differ in three common ways. The first is the phantom defender, a piece you count on to recapture that cannot legally make that capture.",
+            "Put a White bishop on b5, a Black knight on c6, the Black king on e8 and a White pawn on e5, with d7 empty. The pawn has just captured a Black piece on e5. Black counted the knight as its defender and planned to recapture. The knight is pinned to the king, so Nxe5 is illegal and the piece is simply lost.",
           ],
         },
         {
@@ -70,12 +71,12 @@ const guide: LearnDocument = {
           },
           arrows: [{ from: "b5", to: "e8", kind: "pin" }, { from: "c6", to: "e5", kind: "attack" }],
           marks: [{ square: "c6", kind: "ring" }],
-          caption: "The knight on c6 seems to guard e5, but the bishop on b5 pins it to the king on e8.",
+          caption: "Black counted on Nxe5 to recapture, but the bishop on b5 pins the knight to the king on e8.",
         },
         {
           kind: "prose",
           paragraphs: [
-            "The second is the forgotten piece, a bishop or rook that has not moved for many moves, so it is easy to stop looking at.",
+            "The second is the forgotten piece, a bishop or rook that has not moved for many moves, so you stop looking at it.",
             "The third is the abandoned job. If the pawn on d2 is the only guard of your knight on c3, pushing d2-d4 leaves the knight loose although the knight never moved.",
           ],
         },
@@ -110,7 +111,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Treat board vision as a scan run in the same order before every move, not as a talent. A fixed order means nothing depends on where your eyes happen to land.",
+            "Board vision is a scan you run in the same order before every move. A fixed order means nothing depends on where your eyes happen to land.",
           ],
         },
         {
@@ -119,8 +120,8 @@ const guide: LearnDocument = {
           items: [
             "The last move. Name every square the moved piece now attacks, and any line it opened by leaving its old square.",
             "Your opponent's forcing moves. List every check they could give, every capture they could make, and every move that would attack one of your pieces.",
-            "Your loose pieces. Find each piece with no defender, and each piece attacked more times than it is defended. Say the squares, not a feeling.",
-            "Your intended move. Picture the piece gone from its square, then ask what it was guarding and which line it was blocking.",
+            "Your loose pieces. A loose piece is one with no defender. A pinned defender counts only if it can legally recapture. Name each loose piece by its square, then name any piece attacked more times than it is defended.",
+            "Your intended move. Count the piece's defenders on its new square. Then ask what it guarded from its old square and which line it blocked.",
             "Your own forcing moves. Only now look at checks and captures for you, starting with any loose enemy piece.",
           ],
         },
@@ -164,7 +165,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Black must answer the check first. Blocking with ...c6, ...b5 or ...Bd7 does not defend b4, and neither does any king move, so Qxb4 follows.",
-            "The scan would have warned Black before the bishop ever reached b4. Run step three on the position after ...Bb4, and it finds the bishop loose, with no Black piece defending it.",
+            "Step four would have warned Black a move earlier. Count the bishop's defenders on b4 before you play it, and there are none.",
           ],
         },
       ],
@@ -190,8 +191,8 @@ const guide: LearnDocument = {
           paragraphs: [
             "A Memory Chess round checks your rebuilt board against the original, one square at a time. A piece scores only when the square, the type and the colour all match.",
             "Placing more pieces than the position held is charged twice. Each piece beyond the count is counted as wrong and also takes ten points off your accuracy.",
-            "A wrong piece inside the count costs no more than an empty square. Either way one original piece goes unreproduced, so the extra charge lands only on invented pieces.",
-            "That makes a round a clean test of one blunder habit. A seventh piece on a six-piece board is a piece your memory added, the phantom defender in miniature.",
+            "A wrong piece inside the count costs no more than an empty square, so the extra charge lands only on invented pieces.",
+            "That makes a round a clean test of one blunder habit. A seventh piece on a six-piece board is a piece your memory added, the same slip as trusting a defender the real board does not have.",
           ],
         },
         {
@@ -199,7 +200,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "No seventh piece",
-              description: "Play 4 rounds of 6 pieces with 10 seconds to look, and replay the same settings from the result screen. Before each submit, count your pieces. If there are seven, remove the one you are least sure you saw.",
+              description: "Play 4 rounds of 6 pieces with 10 seconds to look, pressing Try Again on the result screen to keep the settings. Before each submit, count your pieces. If you have more than six, remove the ones you are least sure you saw. You pass when all four rounds go in with six pieces or fewer.",
               duration: "4 rounds, about 4 minutes",
               goal: "Tell a piece you saw from a piece you assumed was there.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
@@ -215,7 +216,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Both drills use positions from your own games, because the blunders worth studying are the ones you actually make.",
+            "Both drills use your own games, because those hold the blunders you actually make.",
           ],
         },
         {
@@ -223,7 +224,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Loose-piece inventory",
-              description: "Set up a middlegame position from one of your games. For each of your pieces, write how many enemy pieces attack it and how many of yours defend it. Circle every zero.",
+              description: "Set up a middlegame position from one of your games. For each of your pieces, write two numbers: enemy attackers, then your defenders, leaving out any defender pinned so it cannot recapture. Circle each piece with no defenders. Star each piece with more attackers than defenders.",
               duration: "5 minutes",
               goal: "See your loose pieces before an opponent's check lands on one.",
             },
@@ -259,7 +260,6 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "On a low clock the full scan will not fit, so keep step one and drop the rest. A piece that just moved has fresh targets, and step one also catches any line it opened.",
-            "This is also why the advice to play slower fails on its own. Extra time is only as useful as the question you spend it on.",
           ],
         },
       ],
@@ -285,16 +285,16 @@ const guide: LearnDocument = {
       kind: "faq",
       items: [
         {
-          question: "Why do I blunder more in games than in puzzles?",
-          answer: "A puzzle announces that a tactic exists and whose move it is, so you search. A game announces nothing, so the searching has to be a habit you bring.",
+          question: "Does playing slower stop blunders?",
+          answer: "Only when you spend the extra time on a fixed question. A slow think with no checklist mostly goes on your own plan. Spend it on the scan, starting with what the last move attacks, and the extra minutes start catching the replies you used to miss.",
         },
         {
           question: "Do I have to run the whole scan on every move?",
-          answer: "Run all five steps after any capture, any check, and any pawn move that opens a line. On a quiet move, steps one and three are the minimum.",
+          answer: "Run all five steps after any capture, any check, and any pawn move that opens a line, because those moves change the most squares. On a quiet move, run at least steps one and three, the last move and your loose pieces.",
         },
         {
           question: "Should I leave a square empty in a round when I am not sure?",
-          answer: "A guess inside the piece count costs the same as an empty square, and a right guess scores. A guess that takes you past the count costs ten accuracy points on top.",
+          answer: "Place it when the guess keeps you inside the piece count. A guess inside the count costs the same as an empty square, and a right guess scores. A guess that takes you past the count is marked wrong and costs ten accuracy points on top.",
         },
       ],
     },
@@ -310,6 +310,11 @@ const guide: LearnDocument = {
           kind: "guide",
           slug: "how-to-see-the-whole-board-in-chess",
           reason: "Deals with the forgotten piece, the long-range bishop or rook that beats you from the far side.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-think-in-chess-for-beginners",
+          reason: "Gives the three questions to ask before every move, with a safety check this scan expands into named squares.",
         },
         {
           kind: "guide",

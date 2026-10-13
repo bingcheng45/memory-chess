@@ -101,6 +101,7 @@
 .lab-paper .lg-board-ranks, .lab-paper .lg-board-files { position: absolute; display: flex; font: 400 11px/1 var(--lp-data); color: var(--lp-muted); }
 .lab-paper .lg-board-ranks { top: 0; bottom: 0; left: -16px; flex-direction: column; justify-content: space-around; }
 .lab-paper .lg-board-files { left: 0; right: 0; bottom: -16px; justify-content: space-around; }
+.lab-paper [data-coord]::before { content: attr(data-coord); }
 .lab-paper .lg-board figcaption, .lab-paper .lg-image figcaption { margin-top: 10px; font: 400 15px/1.5 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .lg-board figcaption b { margin-right: 6px; color: var(--lp-ink); font-weight: 600; }
 .lab-paper .lg-image img { width: 100%; height: auto; border-radius: var(--lp-r-lg); }

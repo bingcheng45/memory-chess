@@ -199,7 +199,7 @@ const positionCases = LEARN_GUIDES.flatMap((guide) =>
 
 describe("guide chess positions", () => {
   it("replays every position the guides state, drawn or not", () => {
-    expect(positionCases.length).toBe(50);
+    expect(positionCases.length).toBe(56);
   });
 
   it.each(positionCases.map((entry) => [`${entry.guide.meta.slug} ${entry.position.id}`, entry] as const))(
@@ -228,6 +228,17 @@ describe("guide chess positions", () => {
       expect(squares.filter((square) => !namesSquare(text, square))).toEqual([]);
     },
   );
+});
+
+describe("the pinned knight the beginners guide shows", () => {
+  it("leaves White no checking reply once the pawn reaches e4", () => {
+    const entry = positionCases.find(({ position }) => position.id === "pinned-knight-after-e4");
+    const checks = chessOf(entry!.position)
+      .moves()
+      .filter((move) => /[+#]$/.test(move));
+
+    expect(checks).toEqual([]);
+  });
 });
 
 describe("board rules the coordinates guide states", () => {
@@ -337,14 +348,18 @@ function guideFacts(): Record<string, string[]> {
   return {
     "chess-memory-training": [
       `takes ${word(penalty)} points off your accuracy`,
-      `with five correct from ${at(5, 6)} percent into ${at(5, 6, 1)}`,
+      `a seventh piece drops ${at(5, 6)} percent to ${at(5, 6, 1)}`,
       `${minAccuracy("perfect")} percent is ${label("perfect")}, ${minAccuracy("excellent")} or more is ${label("excellent")}, ${minAccuracy("great")} is ${label("great")}, ${minAccuracy("wellDone")} is ${label("wellDone")} and ${minAccuracy("goodEffort")} is ${label("goodEffort")}`,
       `below ${minAccuracy("goodEffort")} the screen says ${label("keepPracticing")}`,
       `the only ${word(ACCURACY_BANDS.length)} messages`,
-      `six correct is ${at(6, 6)} percent. five is ${at(5, 6)}, ${band(at(5, 6))}. four is ${at(4, 6)}, ${band(at(4, 6))}. three is ${at(3, 6)}, one piece from ${band(at(2, 6))}`,
-      `excellent memory needs all six correct, because five correct rounds to ${at(5, 6)}`,
-      `six correct plus one invented piece also shows ${band(at(6, 6, 1))}, at ${at(6, 6, 1)}`,
-      `eleven correct is ${at(11, 12)} and ${band(at(11, 12))}. ten is ${at(10, 12)}. nine is ${at(9, 12)}, ${band(at(9, 12))}`,
+      `four out of 6 is ${at(4, 6)} percent, ${band(at(4, 6))}`,
+      `six correct plus one extra piece shows ${band(at(6, 6, 1))}, at ${at(6, 6, 1)}`,
+      `a 6-piece round goes straight from ${band(at(5, 6))} at five correct to ${label("perfect")} at six`,
+      `${at(6, 6, 1)} percent, ${band(at(6, 6, 1))}`,
+      `${at(12, 12, 1)} percent, ${band(at(12, 12, 1))}`,
+      row(6, 6),
+      `${hard.pieceCount} pieces, ${hard.memorizeTime} seconds, the hard preset`,
+      `${medium.pieceCount} pieces, ${medium.memorizeTime} seconds, the medium preset`,
       row(5, 6),
       row(11, 12),
       row(4, 6),
@@ -352,16 +367,15 @@ function guideFacts(): Record<string, string[]> {
       row(3, 6),
       row(9, 12),
       `one missed piece already costs ${at(6, 6) - at(5, 6)} points`,
-      `${label("excellent")}, which at this count means at least ${fewestForExcellent} of the 12`,
+      `${label("excellent")} or ${label("perfect")}, which at this count means at least ${fewestForExcellent} of the 12`,
       `the piece slider runs from ${PIECE_COUNT_RANGE.min} to ${PIECE_COUNT_RANGE.max}`,
       `counts other than ${easy.pieceCount}, ${medium.pieceCount}, ${hard.pieceCount} and ${grandmaster.pieceCount}`,
       `below ${label("wellDone")}, which is ${minAccuracy("wellDone")} percent`,
       `the look slider runs from ${MEMORIZE_SECONDS_RANGE.min} to ${MEMORIZE_SECONDS_RANGE.max} seconds`,
       `${word(grandmaster.pieceCount)} pieces in ${word(grandmaster.memorizeTime)} seconds`,
       `until ${hard.pieceCount} pieces at ${hard.memorizeTime} seconds`,
-      `${word(hard.pieceCount)} pieces in ${word(hard.memorizeTime)} seconds leaves two thirds of a second per piece`,
       `piece by piece, ${hard.pieceCount} pieces in ${hard.memorizeTime} seconds leaves two thirds of a second each`,
-      `in three or four chunks it leaves ${word(hard.memorizeTime / 4)} seconds or more each`,
+      `in three or four groups it leaves ${word(hard.memorizeTime / 4)} seconds or more each`,
     ],
     "how-many-chess-puzzles-a-day": [
       `one missed piece turns a ${label("perfect")} into ${band(at(5, 6))} at ${at(5, 6)} percent, and a second miss gives ${band(at(4, 6))} at ${at(4, 6)} percent`,
@@ -380,14 +394,14 @@ function guideFacts(): Record<string, string[]> {
       `at ${at(4, 6)}% on six pieces`,
     ],
     "chess-calculation-exercises-for-beginners": [
-      `each extra piece costs ${word(penalty)} accuracy points`,
+      `each piece past the count costs ${word(penalty)} accuracy points`,
       `${word(hard.pieceCount - 1)} pieces, one short of the hard preset`,
     ],
     "chess-pattern-recognition-drills": [
       `${word(grandmaster.pieceCount)} pieces in ${word(grandmaster.memorizeTime)} seconds is a quarter of a second per piece`,
       `at least ${minAccuracy("goodEffort")} percent on the second round, which the result screen calls ${label("goodEffort")}`,
       `on a ${hard.pieceCount}-piece board the ${word(hard.pieceCount - 2)} pieces beyond the kings`,
-      `once ${hard.pieceCount} pieces at ${hard.memorizeTime} seconds gives you ${label("excellent")} most rounds`,
+      `once ${hard.pieceCount} pieces at ${hard.memorizeTime} seconds gives you ${label("excellent")} or ${label("perfect")}, ${minAccuracy("excellent")} percent or better, in most rounds`,
       `likely to end in ${label("keepPracticing")}`,
     ],
     "why-puzzle-rating-doesnt-transfer-to-games": [

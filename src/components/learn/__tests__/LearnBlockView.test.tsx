@@ -63,6 +63,10 @@ describe("LearnBlockView", () => {
     expect(box.querySelector("[data-kind='pin'] line")?.getAttribute("x1")).toBe("1.5");
     expect(box.querySelector(".lg-ring")?.getAttribute("x")).toBe("2.06");
     expect(box.querySelector("figure")?.id).toBe("pin");
+    expect([...box.querySelectorAll(".lg-board-ranks [data-coord]")].map((label) => label.getAttribute("data-coord")).join("")).toBe("87654321");
+    expect([...box.querySelectorAll(".lg-board-files [data-coord]")].map((label) => label.getAttribute("data-coord")).join("")).toBe("abcdefgh");
+    expect(box.querySelector(".lg-board-ranks")?.textContent).toBe("");
+    expect(box.querySelector(".lg-board-files")?.textContent).toBe("");
   });
 
   it("draws an image with its size and credit", () => {

@@ -48,19 +48,19 @@ describe("derived page values", () => {
 
   it("gives every live guide its derived read time", () => {
     expect(Object.fromEntries(EN_LEARN_PAGES.map((page) => [page.meta.slug, page.readingMinutes]))).toEqual({
-      "how-to-get-better-at-chess-for-beginners": 6,
+      "how-to-get-better-at-chess-for-beginners": 7,
       "how-to-stop-blundering-in-chess": 6,
-      "why-puzzle-rating-doesnt-transfer-to-games": 4,
+      "why-puzzle-rating-doesnt-transfer-to-games": 6,
       "chess-coordinates-practice": 5,
       "chess-visualization-exercises": 5,
       "how-to-see-the-whole-board-in-chess": 5,
-      "chess-calculation-exercises-for-beginners": 6,
-      "blindfold-chess-training-for-beginners": 6,
+      "chess-calculation-exercises-for-beginners": 7,
+      "blindfold-chess-training-for-beginners": 7,
       "chess-memory-training": 7,
-      "chess-pattern-recognition-drills": 5,
+      "chess-pattern-recognition-drills": 6,
       "how-to-think-in-chess-for-beginners": 5,
-      "20-minute-daily-chess-study-plan": 4,
-      "how-to-analyze-chess-games-for-beginners": 5,
+      "20-minute-daily-chess-study-plan": 5,
+      "how-to-analyze-chess-games-for-beginners": 6,
       "how-many-chess-puzzles-a-day": 4,
     });
   });

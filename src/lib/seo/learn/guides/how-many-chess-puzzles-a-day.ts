@@ -4,12 +4,12 @@ const guide: LearnDocument = {
   meta: {
     slug: "how-many-chess-puzzles-a-day",
     title: "How Many Chess Puzzles a Day Should Beginners Do?",
-    h1: "How many chess puzzles should beginners do each day?",
-    description: "Set the minutes first and the count follows. How long a checked puzzle takes, a count for each kind of session, and a recall check for a long block.",
+    h1: "How many chess puzzles a day should a beginner do?",
+    description: "Work out how many chess puzzles a day to do from your minutes. Get a count for each kind of session, four signs of too many, and a check for when to stop.",
     group: "practice",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
-    updatedAt: "2026-09-15T00:00:00.000Z",
+    updatedAt: "2026-10-13T00:00:00.000Z",
     questions: [
       "How many chess puzzles should I do a day?",
       "Is one puzzle a day enough?",
@@ -28,10 +28,10 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Choose the minutes first, then give each puzzle about a minute with the reply checked. Ten minutes is about ten puzzles and fifteen minutes about fifteen. Stop sooner once you start clicking instead of checking.",
+    quickAnswer: "Most beginners should do 10 to 15 chess puzzles a day, at about one a minute in a 10- to 15-minute block. Before each move, look for the opponent's reply that would refute it. Stop sooner once you start playing moves just to see whether they work.",
     takeaways: [
-      "The count comes from your minutes divided by the pace of a checked puzzle.",
-      "The count is a cap, not a target. Stop earlier when solving turns into clicking.",
+      "Your daily count is your minutes at one checked puzzle a minute.",
+      "Treat the count as a ceiling. Stop earlier when you start guessing moves.",
       "Three 6-piece memory rounds before and after the block show whether it ran too long.",
     ],
     audience: [
@@ -43,29 +43,40 @@ const guide: LearnDocument = {
   sections: [
     {
       id: "minutes-first",
-      heading: "Start from minutes, not from a puzzle count",
+      heading: "Work out your daily puzzle count from your minutes",
       blocks: [
         {
           kind: "prose",
+          paragraphs: ["A checked puzzle has three steps."],
+        },
+        {
+          kind: "list",
+          ordered: true,
+          items: [
+            "Find a move.",
+            "Look for the opponent's reply that would refute it.",
+            "Confirm that reply is not there, then play the move.",
+          ],
+        },
+        {
+          kind: "prose",
           paragraphs: [
-            "This guide gives no fixed daily number, because a useful count depends on your minutes. What you can control is how many minutes you have and how each puzzle is done.",
-            "A checked puzzle has three parts. You find the move, you look for the reply that would refute it, and you confirm that reply is not there.",
-            "Give that about a minute. Then the count is arithmetic. A 10-minute block is about ten puzzles and a 15-minute block about fifteen.",
-            "Fifty puzzles in twenty minutes is under half a minute each. That leaves no time for the reply check, so it is a different activity with the same name.",
+            "Give each checked puzzle about a minute. Then the count is arithmetic. A 10-minute block is about ten puzzles and a 15-minute block about fifteen.",
+            "Fifty puzzles in twenty minutes is under half a minute each. That leaves no time for the reply check, so you are practising speed on patterns you already know.",
           ],
         },
       ],
     },
     {
       id: "cap-not-target",
-      heading: "Why the count works as a cap",
+      heading: "Why your puzzle count is a ceiling",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "The useful puzzles are the ones where your first move fails the check. You had a move, you looked for the reply, and the reply was there.",
-            "A puzzle you solve at a glance only confirms a pattern you already had. It is fine to meet those, but they are not what the minutes are for.",
-            "So stop at the count your minutes allow, and stop earlier the moment a puzzle gets clicked instead of checked.",
+            "The puzzles that teach you most are the ones where your first move fails the check. You had a move, you looked for the reply, and the reply was there.",
+            "A puzzle you solve at a glance only confirms a pattern you already had. Those are fine to meet, but the minutes are for the ones that catch you.",
+            "So stop at the count your minutes allow, and stop earlier once you play a move without checking the reply.",
           ],
         },
       ],
@@ -89,7 +100,7 @@ const guide: LearnDocument = {
               label: "Main study block",
               cells: [
                 "10 to 15 minutes, one puzzle a minute",
-                "Learning patterns. Mixed puzzles, the reply checked before every move.",
+                "Learning patterns. Themed puzzles while a pattern is new, mixed once you can name it on sight. Check the reply before every move.",
               ],
             },
             {
@@ -120,7 +131,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Any one of these means cut the minutes, not the difficulty. Take five minutes off the block, keep the minute per puzzle, and watch whether the last five improve.",
+            "Any one of these means the block runs too long. Keep the difficulty and the minute per puzzle, and take five minutes off the block. Then watch whether the last five puzzles improve.",
           ],
         },
       ],
@@ -132,8 +143,8 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Memory Chess gives you a quick way to see whether the block wore you out. Play three rounds of 6 pieces with 10 seconds to look, before puzzles and again after.",
-            "Count pieces, not result messages. Three rounds give you 18 pieces to place, so each total is a number out of 18.",
+            "Memory Chess gives you a quick way to see whether the block wore you out. Play three rounds of 6 pieces with 10 seconds to look, before your puzzles and again after.",
+            "Write down how many pieces you placed correctly. Three rounds give you 18 pieces to place, so each total is a number out of 18.",
             "A single round is too coarse for this. At 6 pieces, one missed piece turns a Perfect Score into Great Job at 83 percent, and a second miss gives Good Effort at 67 percent.",
             "The check does not measure puzzle skill. It shows whether you can still take in a whole board after the block, which the last puzzles needed too.",
           ],
@@ -160,7 +171,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Add minutes only when two things hold. Your games have stopped losing to patterns you already solve, and the recall check stays level after the block.",
-            "Add five minutes at a time, not double. Hold the new length for two weeks before judging it, and go back if the after-block total starts dropping.",
+            "Add five minutes at a time. Hold the new length for two weeks before judging it, and go back if the after-block total starts dropping.",
           ],
         },
       ],
@@ -170,18 +181,18 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
-      why: "Run one round before the puzzles and one after; a lower score afterwards says the block went on too long.",
+      why: "Play three rounds before your puzzles and three after. If the second total is two or more pieces lower out of 18, cut five minutes from tomorrow's block.",
     },
     {
       kind: "faq",
       items: [
         {
           question: "Is one puzzle a day worth anything?",
-          answer: "Yes, if it is the position from your own game where you missed the tactic. It is the one puzzle guaranteed to be about your games.",
+          answer: "Yes, if it is the position from your own game where you missed a tactic. Set up the position where the tactic was there to play and solve it from your side of the board. It is the one puzzle certain to be about your games.",
         },
         {
           question: "Puzzles before or after games?",
-          answer: "A few easy ones before, to get your eyes onto a board. Do the main block on its own, and not straight after a loss when you are annoyed.",
+          answer: "Before a game, solve three to five easy puzzles in about five minutes to get your eyes onto a board. Keep the main block apart from your games. Straight after a loss, solve only the tactic you missed and save the full block for a calmer moment.",
         },
         {
           question: "Should the puzzles be themed or mixed?",
@@ -189,7 +200,7 @@ const guide: LearnDocument = {
         },
         {
           question: "What if I enjoy doing fifty?",
-          answer: "Then do fifty and call it play. Count only the checked ones as study, and do those first while you are fresh.",
+          answer: "Then do fifty and treat them as play. Do the checked block first while you are fresh, and count only those puzzles as study. Fast solving skips the reply check, so it cannot replace the slow block.",
         },
       ],
     },
@@ -205,6 +216,11 @@ const guide: LearnDocument = {
           kind: "guide",
           slug: "20-minute-daily-chess-study-plan",
           reason: "Where a six-puzzle block sits inside a full short session.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-analyze-chess-games-for-beginners",
+          reason: "How to find the missed tactic that becomes your one puzzle after a loss.",
         },
         {
           kind: "guide",

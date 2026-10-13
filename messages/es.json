@@ -850,6 +850,8 @@
       "lateTitle": "Únete al tablero de ese día",
       "name": "Nombre",
       "nameHint": "De 4 a 16 caracteres, se muestra junto a tu puntuación.",
+      "nameShort": "Demasiado corto. Usa al menos 4 caracteres.",
+      "nameLong": "Demasiado largo. Usa como máximo 16 caracteres.",
       "country": "País",
       "chooseCountry": "Elige un país",
       "from": {

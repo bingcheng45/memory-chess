@@ -850,6 +850,8 @@
       "lateTitle": "O günün tahtasına katıl",
       "name": "Ad",
       "nameHint": "4 ila 16 karakter, skorunla birlikte gösterilir.",
+      "nameShort": "Çok kısa. En az 4 karakter kullan.",
+      "nameLong": "Çok uzun. En fazla 16 karakter kullan.",
       "country": "Ülke",
       "chooseCountry": "Bir ülke seç",
       "from": {

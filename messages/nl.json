@@ -850,6 +850,8 @@
       "lateTitle": "Doe mee op het bord van die dag",
       "name": "Naam",
       "nameHint": "4 tot 16 tekens, wordt getoond bij je score.",
+      "nameShort": "Te kort. Gebruik minstens 4 tekens.",
+      "nameLong": "Te lang. Gebruik hoogstens 16 tekens.",
       "country": "Land",
       "chooseCountry": "Kies een land",
       "from": {

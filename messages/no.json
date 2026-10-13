@@ -850,6 +850,8 @@
       "lateTitle": "Bli med på brettet for den dagen",
       "name": "Navn",
       "nameHint": "4 til 16 tegn, vises sammen med poengsummen din.",
+      "nameShort": "For kort. Bruk minst 4 tegn.",
+      "nameLong": "For langt. Bruk høyst 16 tegn.",
       "country": "Land",
       "chooseCountry": "Velg et land",
       "from": {

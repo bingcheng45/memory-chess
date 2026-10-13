@@ -1665,6 +1665,8 @@
       "lateTitle": "Join that day's board",
       "name": "Name",
       "nameHint": "4 to 16 characters, shown with your score.",
+      "nameShort": "Too short. Use at least 4 characters.",
+      "nameLong": "Too long. Use at most 16 characters.",
       "country": "Country",
       "chooseCountry": "Choose a country",
       "from": {

@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useId, useState, type FormEvent } from "react";
+import { useEffect, useId, useRef, useState, type FormEvent } from "react";
 import { useTranslations } from "next-intl";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { WORLD_CODE } from "@/lib/leaderboard/countries";
@@ -50,15 +50,22 @@ interface DailyJoinFormProps {
 export function DailyJoinForm({ round, onJoined, title }: DailyJoinFormProps) {
   const t = useTranslations("daily.join");
   const id = useId();
-  const ids = { name: `${id}-name`, nameHint: `${id}-name-hint`, country: `${id}-country` };
+  const ids = { name: `${id}-name`, nameHint: `${id}-name-hint`, nameError: `${id}-name-error`, country: `${id}-country`, countrySource: `${id}-country-source` };
   const { countryCode: saved, setCountryCode } = useSettingsStore();
   const rating = useGameStore((state) => state.gameState.skillRating) ?? START_RATING;
   const geo = useGeoCountry(saved === WORLD_CODE && round.correct > 0);
   const [name, setName] = useState("");
   const [submit, setSubmit] = useState<Submit>("idle");
+  const [nameLeft, setNameLeft] = useState(false);
+  const failure = useRef<HTMLParagraphElement>(null);
+
+  useEffect(() => {
+    if (submit === "failed") failure.current?.focus();
+  }, [submit]);
 
   const guess = guessCountry({ saved, geo: geo ?? null, languages: geo === undefined ? [] : navigator.languages });
   const trimmed = name.trim();
+  const nameProblem = trimmed.length > NAME_LENGTH.max ? "nameLong" : nameLeft && trimmed.length > 0 && trimmed.length < NAME_LENGTH.min ? "nameShort" : null;
   const nameFits = trimmed.length >= NAME_LENGTH.min && trimmed.length <= NAME_LENGTH.max;
   const sending = submit === "sending";
 
@@ -84,19 +91,25 @@ export function DailyJoinForm({ round, onJoined, title }: DailyJoinFormProps) {
           id={ids.name}
           value={name}
           onChange={(event) => setName(event.target.value)}
-          maxLength={NAME_LENGTH.max}
+          onBlur={() => setNameLeft(true)}
           autoComplete="nickname"
-          aria-describedby={ids.nameHint}
+          aria-invalid={nameProblem !== null}
+          aria-describedby={nameProblem ? `${ids.nameHint} ${ids.nameError}` : ids.nameHint}
           disabled={sending}
           required
         />
         <p id={ids.nameHint} className="daily-hint">{t("nameHint")}</p>
+        {nameProblem && (
+          <p id={ids.nameError} className="daily-hint daily-error">
+            {t(nameProblem)}
+          </p>
+        )}
       </div>
       <div className="daily-field">
         <label htmlFor={ids.country}>{t("country")}</label>
-        <CountryPicker id={ids.country} value={guess?.code ?? null} onChange={setCountryCode} disabled={sending} placeholder={t("chooseCountry")} withWorld={false} />
+        <CountryPicker id={ids.country} value={guess?.code ?? null} onChange={setCountryCode} disabled={sending} placeholder={t("chooseCountry")} withWorld={false} describedBy={ids.countrySource} />
         <p className="daily-hint">
-          {t(`from.${guess?.source ?? "none"}`)}{" "}
+          <span id={ids.countrySource}>{t(`from.${guess?.source ?? "none"}`)}</span>{" "}
           {guess && (
             <button type="button" className="daily-change" onClick={() => document.getElementById(ids.country)?.click()} disabled={sending}>
               {t("change")}
@@ -105,7 +118,7 @@ export function DailyJoinForm({ round, onJoined, title }: DailyJoinFormProps) {
         </p>
       </div>
       {submit === "failed" && (
-        <p role="alert" className="daily-error">
+        <p ref={failure} role="alert" tabIndex={-1} className="daily-error">
           {t("failed")}
         </p>
       )}

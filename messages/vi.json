@@ -850,6 +850,8 @@
       "lateTitle": "Tham gia bàn cờ của ngày đó",
       "name": "Tên",
       "nameHint": "Từ 4 đến 16 ký tự, hiển thị cùng điểm của bạn.",
+      "nameShort": "Quá ngắn. Hãy dùng ít nhất 4 ký tự.",
+      "nameLong": "Quá dài. Hãy dùng tối đa 16 ký tự.",
       "country": "Quốc gia",
       "chooseCountry": "Chọn quốc gia",
       "from": {

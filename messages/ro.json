@@ -850,6 +850,8 @@
       "lateTitle": "Intră în tabla din ziua aceea",
       "name": "Nume",
       "nameHint": "Între 4 și 16 caractere, afișat alături de scorul tău.",
+      "nameShort": "Prea scurt. Folosește cel puțin 4 caractere.",
+      "nameLong": "Prea lung. Folosește cel mult 16 caractere.",
       "country": "Țară",
       "chooseCountry": "Alege o țară",
       "from": {

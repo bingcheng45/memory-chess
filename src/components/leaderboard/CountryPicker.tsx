@@ -17,6 +17,7 @@ interface CountryPickerProps {
   readonly disabled?: boolean;
   readonly placeholder?: string;
   readonly withWorld?: boolean;
+  readonly describedBy?: string;
 }
 
 const fold = (text: string): string =>
@@ -61,7 +62,7 @@ const MOVES = new Map<string, (index: number, count: number) => number>([
   ["End", (_index, count) => count - 1],
 ]);
 
-export default function CountryPicker({ value, onChange, id, disabled, placeholder, withWorld = true }: CountryPickerProps) {
+export default function CountryPicker({ value, onChange, id, disabled, placeholder, withWorld = true, describedBy }: CountryPickerProps) {
   const t = useTranslations("country");
   const locale = useLocale();
   const worldLabel = t("world");
@@ -186,6 +187,7 @@ export default function CountryPicker({ value, onChange, id, disabled, placehold
         disabled={disabled}
         aria-haspopup="listbox"
         aria-expanded={open}
+        aria-describedby={describedBy}
         onClick={() => (open ? close() : openList())}
         onKeyDown={handleTriggerKeyDown}
         className="flex h-10 w-full items-center gap-2 rounded-md border border-[var(--lp-line)] bg-transparent px-3 text-left text-base shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50 md:text-sm"

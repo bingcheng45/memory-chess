@@ -850,6 +850,8 @@
       "lateTitle": "Dołącz do szachownicy z tamtego dnia",
       "name": "Nazwa",
       "nameHint": "Od 4 do 16 znaków, widoczna przy Twoim wyniku.",
+      "nameShort": "Za krótka. Użyj co najmniej 4 znaków.",
+      "nameLong": "Za długa. Użyj najwyżej 16 znaków.",
       "country": "Kraj",
       "chooseCountry": "Wybierz kraj",
       "from": {

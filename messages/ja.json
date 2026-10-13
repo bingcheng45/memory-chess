@@ -850,6 +850,8 @@
       "lateTitle": "その日の盤面に参加",
       "name": "名前",
       "nameHint": "4〜16文字。スコアと一緒に表示されます。",
+      "nameShort": "短すぎます。4文字以上にしてください。",
+      "nameLong": "長すぎます。16文字以内にしてください。",
       "country": "国",
       "chooseCountry": "国を選択",
       "from": {

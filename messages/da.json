@@ -850,6 +850,8 @@
       "lateTitle": "Kom med på den dags bræt",
       "name": "Navn",
       "nameHint": "4 til 16 tegn, vises sammen med din score.",
+      "nameShort": "For kort. Brug mindst 4 tegn.",
+      "nameLong": "For langt. Brug højst 16 tegn.",
       "country": "Land",
       "chooseCountry": "Vælg et land",
       "from": {

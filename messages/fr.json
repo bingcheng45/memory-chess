@@ -850,6 +850,8 @@
       "lateTitle": "Rejoindre le plateau de ce jour-là",
       "name": "Nom",
       "nameHint": "De 4 à 16 caractères, affiché avec votre score.",
+      "nameShort": "Trop court. Utilisez au moins 4 caractères.",
+      "nameLong": "Trop long. Utilisez au plus 16 caractères.",
       "country": "Pays",
       "chooseCountry": "Choisissez un pays",
       "from": {

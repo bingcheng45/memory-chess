@@ -850,6 +850,8 @@
       "lateTitle": "Gabung ke papan hari itu",
       "name": "Nama",
       "nameHint": "4 sampai 16 karakter, ditampilkan bersama skor Anda.",
+      "nameShort": "Terlalu pendek. Gunakan minimal 4 karakter.",
+      "nameLong": "Terlalu panjang. Gunakan maksimal 16 karakter.",
       "country": "Negara",
       "chooseCountry": "Pilih negara",
       "from": {

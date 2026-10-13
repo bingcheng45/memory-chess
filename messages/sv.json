@@ -850,6 +850,8 @@
       "lateTitle": "Gå med på brädet för den dagen",
       "name": "Namn",
       "nameHint": "4 till 16 tecken, visas tillsammans med ditt resultat.",
+      "nameShort": "För kort. Använd minst 4 tecken.",
+      "nameLong": "För långt. Använd högst 16 tecken.",
       "country": "Land",
       "chooseCountry": "Välj ett land",
       "from": {

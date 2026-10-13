@@ -37,6 +37,17 @@ describe("POST /api/contact", () => {
     });
   });
 
+  it("keeps a visitor's text that would start a spreadsheet formula as plain text", async () => {
+    const response = await post(JSON.stringify({ ...validBody, name: "=HYPERLINK(1)", message: "+1 this is a message" }));
+
+    expect(response.status).toBe(200);
+    expect(mockAppend).toHaveBeenCalledWith(
+      expect.objectContaining({
+        row: [expect.any(String), "'=HYPERLINK(1)", "verify@example.com", "feedback", "'+1 this is a message"],
+      }),
+    );
+  });
+
   it("names a missing configuration in user words and logs the technical cause", async () => {
     mockAppend.mockRejectedValueOnce(new SheetsConfigError("Google service account key is missing"));
 

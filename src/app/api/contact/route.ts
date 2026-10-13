@@ -25,6 +25,11 @@ function failure(reason: ContactFailure, cause?: string) {
   );
 }
 
+/** The sheet reads cells as typed so the timestamp stays a date; a visitor's text that would start a formula is kept as text. */
+function asPlainText(value: string): string {
+  return /^[=+\-@\t\r]/.test(value) ? `'${value}` : value;
+}
+
 export async function POST(request: Request) {
   let body: unknown;
   try {
@@ -37,10 +42,11 @@ export async function POST(request: Request) {
   if (!parsed.success) return failure("invalid");
 
   const { name, email, type, message } = parsed.data;
+  const [safeName, safeEmail, safeMessage] = [name, email, message].map(asPlainText);
   try {
     await appendGoogleSheetRow({
       range: "Sheet1!A:E",
-      row: [new Date().toISOString(), name, email, type, message],
+      row: [new Date().toISOString(), safeName, safeEmail, type, safeMessage],
       valueInputOption: "USER_ENTERED",
     });
   } catch (error: unknown) {

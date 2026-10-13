@@ -99,7 +99,18 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
         changes: [
           "After each round, the result screen lists your dashboard figures before and after, with a green arrow when a number got better and a red one when it slipped.",
           "A short note at the top tells you your updated stats are waiting just below, with a button that takes you straight there.",
-          "Your win streak now counts properly, your round history is kept, and submitting very fast no longer pushes your rating up by mistake.",
+          "Your win streak now counts properly and your round history is kept.",
+        ],
+      },
+      {
+        title: "A skill rating that moves both ways",
+        description:
+          "The old rating only ever went up, so every player drifted toward the top. It has been rebuilt, and everyone starts again at 1000.",
+        changes: [
+          "Your first ten rated rounds place you. More pieces count most, then a shorter look at the board, then a faster rebuild. A board you mostly missed earns nothing for how hard it was.",
+          "After that, each round moves your rating up or down by how you did against how hard the board was. Clear boards above your level to climb. Miss easy ones and it drops.",
+          "A board harder than the ones you usually play earns more when you clear it and costs less when you miss it. An easier one earns little and costs more.",
+          "Review rounds are still not rated. The daily board is.",
         ],
       },
       {

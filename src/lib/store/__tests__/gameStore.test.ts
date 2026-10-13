@@ -419,11 +419,11 @@ describe("keeping the win streak across visits", () => {
     expect([restored.skillRating, restored.streak]).toEqual([1000, 2]);
   });
 
-  it("keeps a stored rating of 0 and one above the leaderboard's bound", async () => {
+  it("keeps a stored rating of 0 and lowers one above the 5000 ceiling to 5000", async () => {
     const zero = (await rehydrateFrom({ pieceCount: 6, memorizeTime: 10, level: 1, skillRating: 0 })).skillRating;
-    const high = (await rehydrateFrom({ pieceCount: 6, memorizeTime: 10, level: 1, skillRating: 5200 })).skillRating;
+    const high = (await rehydrateFrom({ pieceCount: 6, memorizeTime: 10, level: 1, skillRating: 52000 })).skillRating;
 
-    expect([zero, high]).toEqual([0, 5200]);
+    expect([zero, high]).toEqual([0, 5000]);
   });
 
   it("loads state stored before the streak was kept with a streak of 0 and its rating intact", async () => {
@@ -468,6 +468,22 @@ describe("how solve speed moves the skill rating", () => {
     const half = playRound({ pieceCount: 6, correct: 3, solveMs: 5000 });
 
     expect([half.accuracy, half.skillRatingChange]).toEqual([50, 27]);
+  });
+
+  it("stops the rating at the 5000 ceiling and reports the change it made", () => {
+    useGameStore.setState(({ gameState }) => ({ gameState: { ...gameState, skillRating: 4990 } }));
+    const top = playRound({ pieceCount: 2, solveMs: 4000 });
+
+    expect([top.skillRating, top.skillRatingChange]).toEqual([5000, 10]);
+  });
+
+  it("plays on from a rating of 0 rather than the starting rating, through a reset", () => {
+    useGameStore.setState(({ gameState }) => ({ gameState: { ...gameState, skillRating: 0 } }));
+    store().resetGame();
+    const held = store().getSkillRating();
+    const won = playRound({ pieceCount: 2, solveMs: 4000 });
+
+    expect([held, won.standingBefore?.skillRating, won.skillRating]).toEqual([0, 0, 114]);
   });
 
   it("leaves a slow perfect round as it was", () => {

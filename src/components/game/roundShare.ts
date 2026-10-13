@@ -1,7 +1,7 @@
 import type { useTranslations } from "next-intl";
 import { SITE, type CardFrame, type CardTrend } from "@/components/share/cardCanvas";
 import { sharePageUrl } from "@/components/share/shareLink";
-import { resultCode } from "@/lib/share/shareCode";
+import { MAX_REBUILD_SECONDS, resultCode } from "@/lib/share/shareCode";
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import type { LabPosition, RoundState } from "@/lib/round/round";
 import { pieceTypeToFenChar } from "@/utils/chessPieces";
@@ -83,9 +83,10 @@ export function roundShareOf(round: ScoredRound, { rating, change, winStreak }: 
     pieceCount: round.config.pieceCount,
     memorizeSeconds: round.config.studyMs / 1000,
     studySeconds: tenths(round.studyMs),
-    rebuildSeconds: tenths(round.rebuildMs),
+    rebuildSeconds: Math.min(tenths(round.rebuildMs), MAX_REBUILD_SECONDS),
   };
-  const board: ScoredBoard = { target: round.target, placed: round.placed, order: rebuildOrder(round.placed, round.log) };
+  const order = rebuildOrder(round.placed, round.log)?.map((piece) => ({ ...piece, seconds: Math.min(piece.seconds, MAX_REBUILD_SECONDS) })) ?? null;
+  const board: ScoredBoard = { target: round.target, placed: round.placed, order };
   const set = round.config.board;
   if (set?.kind === "review") return { ...facts, kind: "review", board };
   const rated = { rating: { rating, change }, winStreak: winStreak >= SHOWN_STREAK ? winStreak : null };

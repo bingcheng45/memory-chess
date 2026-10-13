@@ -4,6 +4,9 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { startPostgres, type Database, type Postgres, type SqlResult } from "./database";
 
+// Each test opens a PGlite database: about 0.3 s alone, many times that when the whole suite runs in parallel.
+jest.setTimeout(20_000);
+
 const readSql = (file: string) => readFileSync(path.join(__dirname, "..", file), "utf8");
 const MIGRATION = readSql("migrations/0003_lab_backups.sql");
 const ROLLBACK = readSql("migrations/0003_lab_backups_rollback.sql");

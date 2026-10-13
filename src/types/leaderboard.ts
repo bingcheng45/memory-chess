@@ -5,6 +5,9 @@ export type LeaderboardDifficulty = (typeof LEADERBOARD_DIFFICULTIES)[number];
 
 export const DAILY_BOARD = 'daily';
 
+/** What a reader is told when a board cannot be read; the cause is logged on the server, never sent. */
+export const LEADERBOARD_UNAVAILABLE = 'The leaderboard is unavailable. Please try again shortly.';
+
 export const isLeaderboardDifficulty = (value: unknown): value is LeaderboardDifficulty =>
   LEADERBOARD_DIFFICULTIES.includes(value as LeaderboardDifficulty);
 

@@ -5,6 +5,9 @@ import path from "node:path";
 import type { Database, SqlResult } from "./database";
 import { MIGRATION, articleStatsDatabases } from "./articleStatsDatabase";
 
+// Each test opens a PGlite database: about 0.3 s alone, many times that when the whole suite runs in parallel.
+jest.setTimeout(20_000);
+
 const RUNBOOK = readFileSync(
   path.join(__dirname, "..", "..", "docs", "migrations", "2026-10-article-stats.md"),
   "utf8",

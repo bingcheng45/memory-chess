@@ -9,6 +9,7 @@ import { WORLD_CODE } from '@/lib/leaderboard/countries';
 import {
   DAILY_BOARD,
   LEADERBOARD_DIFFICULTIES,
+  LEADERBOARD_UNAVAILABLE,
   type LeaderboardBoard,
   type LeaderboardDifficulty,
   type LeaderboardEntry,
@@ -60,40 +61,21 @@ export type LeaderboardSubmitResult =
   | { status: 'failed'; cause: unknown };
 
 export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: LeaderboardEntry[], error?: string}> {
+  const unavailable = (what: string, cause: unknown) => {
+    console.error(what, cause);
+    return { data: [], error: LEADERBOARD_UNAVAILABLE };
+  };
   try {
-    // First check the Supabase connection
     const connectionStatus = await checkSupabaseConnection();
-    if (!connectionStatus.connected) {
-      console.error('Supabase connection failed:', connectionStatus.error);
-      return { 
-        data: [], 
-        error: `Database connection issue: ${connectionStatus.error || 'Unable to connect to the database'}` 
-      };
-    }
-    if (!supabase) {
-      return {
-        data: [],
-        error: 'Database connection issue: Supabase is not configured'
-      };
-    }
-    
+    if (!connectionStatus.connected) return unavailable('Supabase connection failed:', connectionStatus.error);
+    if (!supabase) return unavailable('Leaderboard read failed:', 'Supabase is not configured');
+
     const { data, error } = await orderByRanking(rankedRows(supabase, board, '*')).limit(LEADERBOARD_ROW_LIMIT);
-      
-    if (error) {
-      console.error('Supabase query error:', error);
-      return { 
-        data: [], 
-        error: `Database query failed: ${error.message}` 
-      };
-    }
-    
+    if (error) return unavailable('Supabase query error:', error);
+
     return { data: data || [] };
   } catch (err) {
-    console.error('Unexpected error in getLeaderboard:', err);
-    return { 
-      data: [], 
-      error: err instanceof Error ? err.message : 'An unexpected error occurred while retrieving leaderboard data' 
-    };
+    return unavailable('Unexpected error in getLeaderboard:', err);
   }
 }
 

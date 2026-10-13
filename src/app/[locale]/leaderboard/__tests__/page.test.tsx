@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen } from "@/test-utils/intl";
 import { getLeaderboard } from "@/lib/services/leaderboardService";
 import LeaderboardPage from "@/app/[locale]/leaderboard/page";
 import type { CountryCode } from "@/lib/leaderboard/countries";
+import { LEADERBOARD_UNAVAILABLE } from "@/types/leaderboard";
 import enMessages from "../../../../../messages/en.json";
 
 jest.mock("@/lib/services/leaderboardService", () => ({
@@ -22,7 +23,7 @@ afterEach(() => {
 });
 
 beforeEach(() => {
-  jest.mocked(getLeaderboard).mockResolvedValue({ data: [], error: "Database connection issue" });
+  jest.mocked(getLeaderboard).mockResolvedValue({ data: [], error: LEADERBOARD_UNAVAILABLE });
 });
 
 async function renderPage() {
@@ -41,7 +42,7 @@ describe("LeaderboardPage when a board fails to load", () => {
     env.NODE_ENV = "production";
     delete env.NEXT_PHASE;
     jest.mocked(getLeaderboard).mockImplementation(async (board) =>
-      board.difficulty === "medium" ? { data: [], error: "Database connection issue" } : { data: [] },
+      board.difficulty === "medium" ? { data: [], error: LEADERBOARD_UNAVAILABLE } : { data: [] },
     );
 
     await expect(LeaderboardPage()).rejects.toThrow("Leaderboard refresh failed");

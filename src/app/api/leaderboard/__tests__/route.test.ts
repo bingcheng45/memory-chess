@@ -26,11 +26,14 @@ const validEntry = {
   skill_rating: 1240,
 };
 
-function post(body: object) {
+let nextAddress = 0;
+const freshAddress = () => `198.51.100.${(nextAddress += 1)}`;
+
+function post(body: object, address = freshAddress()) {
   return POST(
     new NextRequest("http://localhost/api/leaderboard", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json", "x-forwarded-for": address },
       body: JSON.stringify(body),
     }),
   );
@@ -61,12 +64,58 @@ describe("POST /api/leaderboard", () => {
     expect(submitLeaderboardEntry).toHaveBeenCalledWith({ ...validEntry, country_code: WORLD_CODE });
   });
 
+  it("takes five scores a minute from one address and refuses the sixth with a Retry-After", async () => {
+    const address = freshAddress();
+    const statuses = [];
+    for (let score = 0; score < 5; score += 1) statuses.push((await post(validEntry, address)).status);
+    const refused = await post(validEntry, address);
+    const other = await post(validEntry);
+
+    expect(statuses).toEqual([200, 200, 200, 200, 200]);
+    expect([refused.status, refused.headers.get("Retry-After"), await refused.json(), other.status]).toEqual([
+      429,
+      "60",
+      { error: "Too many scores submitted. Please wait a minute." },
+      200,
+    ]);
+    expect(submitLeaderboardEntry).toHaveBeenCalledTimes(6);
+  });
+
   it("rejects a round with no correct piece, which the board would never show", async () => {
     const response = await post({ ...validEntry, correct_pieces: 0 });
 
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({ error: "Invalid data values" });
     expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["a negative wrong count", { total_wrong_pieces: -5 }],
+    ["no wrong count", { total_wrong_pieces: undefined }],
+    ["a null wrong count", { total_wrong_pieces: null }],
+    ["a fractional wrong count", { total_wrong_pieces: 2.5 }],
+    ["a wrong count as text", { total_wrong_pieces: "2" }],
+    ["fewer wrong than the 2 pieces it missed", { total_wrong_pieces: 1 }],
+    ["more wrong than 64 squares leave beside 4 correct", { total_wrong_pieces: 61 }],
+    ["a fractional correct count", { correct_pieces: 3.5 }],
+    ["a correct count as text", { correct_pieces: "4" }],
+    ["more correct than the board's 6 pieces", { correct_pieces: 7, total_wrong_pieces: 0 }],
+  ])("rejects a round with %s", async (_case, counts) => {
+    const response = await post({ ...validEntry, ...counts });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Invalid data values" });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["only the 2 pieces it missed", 2],
+    ["a piece on every other square of the board", 60],
+  ])("stores a round of 4 correct out of 6 with %s wrong", async (_case, total_wrong_pieces) => {
+    const response = await post({ ...validEntry, total_wrong_pieces });
+
+    expect(response.status).toBe(200);
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ total_wrong_pieces }));
   });
 
   it("forwards a known country code to the service", async () => {
@@ -306,6 +355,14 @@ describe("POST /api/leaderboard", () => {
       expect(submitLeaderboardEntry).not.toHaveBeenCalled();
     });
 
+    it("rejects a daily row with a negative wrong count, which would top the board", async () => {
+      const response = await post({ ...todaysRow, total_wrong_pieces: -1 });
+
+      expect(response.status).toBe(400);
+      expect(await response.json()).toEqual({ error: "Invalid data values" });
+      expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+    });
+
     it("stores a daily rebuild of 6 pieces in 1.5 s, exactly a quarter second a piece", async () => {
       const response = await post({ ...todaysRow, solution_time: 1.5 });
 
@@ -421,5 +478,43 @@ describe("GET /api/leaderboard", () => {
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({ error: "Invalid difficulty level" });
     expect(getLeaderboard).not.toHaveBeenCalled();
+  });
+
+  describe("when the database fails", () => {
+    let logged: jest.SpyInstance;
+    beforeEach(() => {
+      logged = jest.spyOn(console, "error").mockImplementation(() => {});
+      jest.spyOn(console, "warn").mockImplementation(() => {});
+    });
+    afterEach(() => jest.restoreAllMocks());
+
+    const unavailable = { data: [], error: "The leaderboard is unavailable. Please try again shortly." };
+
+    it("answers a failed query with 503 and a generic message, not the database's words", async () => {
+      jest.mocked(getLeaderboard).mockResolvedValue({ data: [], error: 'Database query failed: relation "leaderboard_entries" does not exist' });
+
+      const response = await get("medium");
+
+      expect([response.status, await response.json()]).toEqual([503, unavailable]);
+    });
+
+    it("answers a refused connection with 503 and logs its cause", async () => {
+      jest.mocked(checkSupabaseConnection).mockResolvedValue({ connected: false, error: "password authentication failed for user app" });
+
+      const response = await get("medium");
+
+      expect([response.status, await response.json()]).toEqual([503, unavailable]);
+      expect(console.warn).toHaveBeenCalledWith("Supabase connection issue:", "password authentication failed for user app");
+    });
+
+    it("answers a thrown read with 503 and logs the error", async () => {
+      const thrown = new Error("connect ECONNREFUSED 10.0.0.3:5432");
+      jest.mocked(getLeaderboard).mockRejectedValue(thrown);
+
+      const response = await get("medium");
+
+      expect([response.status, await response.json()]).toEqual([503, unavailable]);
+      expect(logged).toHaveBeenCalledWith("Unexpected API error:", thrown);
+    });
   });
 });

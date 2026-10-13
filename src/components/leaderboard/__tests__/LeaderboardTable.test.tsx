@@ -174,6 +174,15 @@ describe("LeaderboardTable ELO column", () => {
     expect(deMessages.leaderboard.columns.player).not.toBe("Player");
   });
 
+  it("shows a ranked board the API reports unavailable as unavailable, without an error message", () => {
+    const { getByText, queryByText } = render(
+      <LeaderboardTable error="The leaderboard is unavailable. Please try again shortly." activeTab="medium" data={[]} />,
+    );
+
+    expect(getByText("Leaderboard Temporarily Unavailable")).toBeInTheDocument();
+    expect(queryByText(/Error loading leaderboard/)).not.toBeInTheDocument();
+  });
+
   it("spans every column in an empty board's message", () => {
     const { container } = render(<LeaderboardTable error={null} activeTab="medium" data={[]} />);
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { START_RATING } from "@/lib/game/rating";
-import { DAILY_BOARD, type LeaderboardEntry } from "@/types/leaderboard";
+import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardEntry } from "@/types/leaderboard";
 import { Link } from "@/i18n/navigation";
 import { useEffect, useRef, type ReactNode } from "react";
 import { CloudOff, TriangleAlert } from "lucide-react";
@@ -111,11 +111,7 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
 
   if (error) {
     const isDailyBoard = activeTab === DAILY_BOARD;
-    const isConnectionError = error.includes('Database connection unavailable') ||
-                              error.includes('Unable to connect') ||
-                              error.includes('connection issue');
-
-    if (isDailyBoard || isConnectionError) {
+    if (isDailyBoard || error === LEADERBOARD_UNAVAILABLE) {
       return (
         <BoardState icon={<CloudOff size={20} strokeWidth={1.75} />}>
           <p className="lb-state-title">{t("unavailableTitle")}</p>

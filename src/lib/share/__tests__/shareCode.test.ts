@@ -73,6 +73,7 @@ describe("progressCode", () => {
     ["a leading zero", "1_s08"],
     ["a trend on a figure that has none", "1_s8u2"],
     ["a trend of nothing", "1_r1000u0"],
+    ["a rating above the 5000 ceiling", "1_r5001"],
     ["a lead figure of zero", "1_w0_s8"],
     ["a sign", "1_r-5"],
     ["a decimal point", "1_h6.4"],
@@ -103,6 +104,14 @@ describe("resultCode", () => {
     expect(parseResult(code)).toEqual(longest);
   });
 
+  it("reads back a round at the 5000 rating ceiling", () => {
+    const top: RoundShare = { ...DAILY, rating: { rating: 5000, change: 10 } };
+    const code = "1_d_4_100_84_383_75_3_4_5000_u10_0_20261012";
+
+    expect(resultCode(top)).toBe(code);
+    expect(parseResult(code)).toEqual(top);
+  });
+
   it("scores a round with a board from the board itself, so its figures always match the board it draws", () => {
     expect(parseResult(GAME_CODE)).toMatchObject({ accuracy: 50, correct: 2, total: 4 });
   });
@@ -124,7 +133,7 @@ describe("resultCode", () => {
     const sparse = "p1p1p1p1/1p1p1p1p/p1p1p1p1/1p1p1p1p/P1P1P1P1/1P1P1P1P/P1P1P1P1/1P1P1P1P";
     const board = labPositionFromFen(sparse);
     const order = BOARD_SQUARES.filter((square) => board[square]).map((square, index) => ({ square, seconds: ((index + 1) * 1124) / 10 }));
-    const widest: RoundShare = { ...GAME, pieceCount: 32, memorizeSeconds: 60, studySeconds: 60, rebuildSeconds: 3599.9, board: { target: board, placed: board, order }, rating: { rating: 9999, change: -9999 }, winStreak: 99999 };
+    const widest: RoundShare = { ...GAME, pieceCount: 32, memorizeSeconds: 60, studySeconds: 60, rebuildSeconds: 3599.9, board: { target: board, placed: board, order }, rating: { rating: 5000, change: -5000 }, winStreak: 99999 };
     const code = resultCode(widest);
 
     expect(code).toHaveLength(374);
@@ -139,6 +148,7 @@ describe("resultCode", () => {
     ["a day that does not exist", "1_d_4_100_84_383_75_3_4_1000_0_0_20260230"],
     ["a win streak of one, which the card never shows", "1_d_4_100_84_383_75_3_4_1000_0_1_20261012"],
     ["a change with no direction", "1_d_4_100_84_383_75_3_4_1000_14_0_20261012"],
+    ["a rating above the 5000 ceiling", "1_d_4_100_84_383_75_3_4_5001_0_0_20261012"],
     ["a study time longer than the setting allows", "1_g_4_100_101_383_1214_d14_3_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3"],
     ["a board row of nine squares", "1_v_4_100_84_383_4k4-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3"],
     ["a board of seven rows", "1_v_4_100_84_383_4k3-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3"],

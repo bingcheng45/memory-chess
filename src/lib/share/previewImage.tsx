@@ -106,9 +106,9 @@ function Frame({ kicker, cta, site, children }: { kicker: string; cta: string; s
   );
 }
 
-function Figure({ figure, size, width }: { figure: PreviewFigure; size: number; width: number }) {
+function Figure({ figure, size, width, tight = false }: { figure: PreviewFigure; size: number; width: number; tight?: boolean }) {
   return (
-    <div style={column({ width, gap: 4 })}>
+    <div style={column({ width, ...(tight ? { gap: 0, lineHeight: 1.1 } : { gap: 4 }) })}>
       <span style={{ fontSize: fit(figure.label, size > 100 ? 32 : size > 50 ? 28 : SMALLEST, width), fontWeight: 600, color: INK.muted }}>{figure.label}</span>
       <Value segments={figure.segments} trend={figure.trend} size={size} width={width} />
     </div>
@@ -121,14 +121,16 @@ function ProgressBody({ copy }: { copy: ProgressPreview }) {
   const columns = copy.grid.length <= 4 ? 2 : 3;
   const cellWidth = (gridWidth - (columns - 1) * 24) / columns;
   const rows = Math.ceil(copy.grid.length / columns);
+  // A fourth row of three is set tighter so it still ends above the footer.
+  const cell = rows > 3 ? { size: 36, pad: 6, rowGap: 6, tight: true } : { size: rows > 2 ? 44 : 64, pad: 10, rowGap: rows > 2 ? 8 : 20, tight: false };
   return (
     <div style={row({ flex: 1, gap: 40, alignItems: "flex-start" })}>
       <Figure figure={copy.lead} size={150} width={leadWidth} />
       {copy.grid.length > 0 && (
-        <div style={row({ width: gridWidth, flexWrap: "wrap", columnGap: 24, rowGap: rows > 2 ? 8 : 20 })}>
+        <div style={row({ width: gridWidth, flexWrap: "wrap", columnGap: 24, rowGap: cell.rowGap })}>
           {copy.grid.map((figure, index) => (
-            <div key={index} style={column({ paddingTop: 10, borderTop: `2px solid ${INK.rule}` })}>
-              <Figure figure={figure} size={rows > 2 ? 44 : 64} width={cellWidth} />
+            <div key={index} style={column({ paddingTop: cell.pad, borderTop: `2px solid ${INK.rule}` })}>
+              <Figure figure={figure} size={cell.size} width={cellWidth} tight={cell.tight} />
             </div>
           ))}
         </div>

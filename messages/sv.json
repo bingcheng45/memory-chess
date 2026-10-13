@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Fig. {number} · Dagens bräde",
           "title": "Ett bräde om dagen, samma för alla.",
-          "desc": "En ny ställning öppnas varje dag vid midnatt UTC. Alla får samma 6 pjäser och 10 sekunder att studera, och du har ett försök.",
+          "desc": "En ny ställning öppnas varje dag vid midnatt UTC. Alla får samma bräde och samma tid att studera, och du har ett försök.",
           "play": "Spela dagens bräde",
           "open": "Dagens bräde har {pieceCount, plural, one {# pjäs} other {# pjäser}} och {memorizeSeconds, plural, one {# sekund} other {# sekunder}} att studera. Du har inte spelat dagens bräde ännu.",
           "played": "Du placerade {correct} av {pieceCount, plural, one {# pjäs} other {# pjäser}} rätt, {accuracy} procent.",

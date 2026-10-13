@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Kuva {number} · Päivän lauta",
           "title": "Yksi lauta päivässä, sama kaikille.",
-          "desc": "Uusi asema avautuu joka päivä keskiyöllä UTC-aikaa. Kaikki saavat samat 6 nappulaa ja 10 sekuntia aikaa tutkia, ja sinulla on yksi yritys.",
+          "desc": "Uusi asema avautuu joka päivä keskiyöllä UTC-aikaa. Kaikki saavat saman laudan ja saman ajan tutkia, ja sinulla on yksi yritys.",
           "play": "Pelaa päivän lauta",
           "open": "Tämän päivän laudalla on {pieceCount, plural, one {# nappula} other {# nappulaa}}, ja tutkimiseen on {memorizeSeconds, plural, one {# sekunti} other {# sekuntia}}. Et ole vielä pelannut päivän lautaa.",
           "played": "Asetit oikein {correct} {pieceCount, plural, one {# nappulasta} other {# nappulasta}}, eli {accuracy} prosenttia.",

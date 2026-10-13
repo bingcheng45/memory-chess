@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Fig. {number} · Tabuleiro do dia",
           "title": "Um tabuleiro por dia, o mesmo para todos.",
-          "desc": "Uma posição nova abre todo dia à meia-noite UTC. Todo mundo recebe as mesmas 6 peças e 10 segundos para estudar, e você tem uma tentativa.",
+          "desc": "Uma posição nova abre todo dia à meia-noite UTC. Todo mundo recebe o mesmo tabuleiro e o mesmo tempo para estudar, e você tem uma tentativa.",
           "play": "Jogar o tabuleiro de hoje",
           "open": "O tabuleiro de hoje tem {pieceCount, plural, one {# peça} many {# peças} other {# peças}} e {memorizeSeconds, plural, one {# segundo} many {# segundos} other {# segundos}} para estudar. Você ainda não jogou o tabuleiro de hoje.",
           "played": "Você acertou {correct} de {pieceCount, plural, one {# peça} many {# peças} other {# peças}}, {accuracy} por cento.",

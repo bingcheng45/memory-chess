@@ -544,7 +544,7 @@
         "daily": {
           "fig": "図{number} · 今日の盤面",
           "title": "1日1つ、全員に同じ盤面。",
-          "desc": "毎日 UTC の午前0時に、新しい局面が公開されます。全員に同じ6個の駒と10秒の記憶時間が与えられ、挑戦は1回だけです。",
+          "desc": "毎日 UTC の午前0時に、新しい局面が公開されます。全員に同じ盤面と同じ記憶時間が与えられ、挑戦は一度だけです。",
           "play": "今日の盤面をプレイ",
           "open": "今日の盤面は駒が{pieceCount, plural, other {#個}}、覚える時間は{memorizeSeconds, plural, other {#秒}}です。今日の盤面はまだプレイしていません。",
           "played": "{pieceCount, plural, other {#駒}}中{correct}駒を正しく置けました。{accuracy}パーセントです。",

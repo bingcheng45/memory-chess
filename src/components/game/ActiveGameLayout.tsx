@@ -1,22 +1,9 @@
 'use client';
 
-import { useRef, type ReactNode } from 'react';
+import type { CSSProperties, ReactNode } from 'react';
 import { useTranslations } from "next-intl";
 
-import { useElementSize } from '@/hooks/useElementSize';
 import { MAX_BOARD_SIZE, MIN_BOARD_SIZE, MIN_ROW_WIDTH } from '@/lib/layout';
-
-/**
- * The size of the board that fits an area.
- *
- * A square cannot be expressed with `aspect-ratio` alone here: a block told to
- * fill its width keeps that width when `max-height` clamps it, and comes out
- * oblong. Taking the smaller of the two sides gives a square that fits either
- * way. Where the area has no height of its own, width is the only constraint.
- */
-export function boardSizeForArea(area: { width: number; height: number }) {
-  return Math.min(area.width, area.height > 0 ? area.height : area.width, MAX_BOARD_SIZE);
-}
 
 /**
  * Height of the row above the board: the phase, the clock, the eraser and the
@@ -47,19 +34,51 @@ const CONTROLS_ROW_PX = { base: 156, sm: 156 } as const;
 const COLUMN_GAP_PX = 8;
 const COLUMN_GAP_COUNT = 2;
 
+const rowsHeight = (breakpoint: 'base' | 'sm') =>
+  STATUS_ROW_PX[breakpoint] + CONTROLS_ROW_PX[breakpoint] + COLUMN_GAP_PX * COLUMN_GAP_COUNT;
+
 /**
  * The height the column needs to seat both rows and a board worth playing on.
  *
  * Exported so the test can derive it rather than restate it.
  */
 export function activeColumnMinHeight(breakpoint: 'base' | 'sm') {
-  return (
-    STATUS_ROW_PX[breakpoint] +
-    CONTROLS_ROW_PX[breakpoint] +
-    COLUMN_GAP_PX * COLUMN_GAP_COUNT +
-    MIN_BOARD_SIZE
-  );
+  return rowsHeight(breakpoint) + MIN_BOARD_SIZE;
 }
+
+/**
+ * What surrounds the column on the page, read only where container units are
+ * unsupported: the page's side padding, and the banner (41px), header (65px)
+ * and page padding (16px) above and below it. A banner that wraps on a narrow
+ * phone is 15px taller, but there the screen's width sets the board's side.
+ */
+const PAGE_GUTTERS_PX = 32;
+const PAGE_CHROME_PX = 122;
+
+/**
+ * The figures the board's side is worked out from, handed to game-lab.css.
+ *
+ * The stylesheet turns them into `--board-size`, the largest square the column
+ * fits under both rows. It uses container units rather than a measured size,
+ * so the board has its size on the first frame the browser paints. A measured
+ * size lives in React state, and on a slow phone the update after the first
+ * commit reached the screen frames late, painting the board at zero. Both
+ * breakpoints share one row height, so one expression serves them.
+ *
+ * The expression lives in the stylesheet because a browser without container
+ * units needs a viewport-based size in its place, which an inline style
+ * cannot express.
+ */
+const BOARD_SIZE_INPUTS = {
+  containerType: 'size',
+  '--board-rows': `${rowsHeight('base')}px`,
+  '--board-min': `${MIN_BOARD_SIZE}px`,
+  '--board-max': `${MAX_BOARD_SIZE}px`,
+  '--page-gutters': `${PAGE_GUTTERS_PX}px`,
+  '--page-chrome': `${PAGE_CHROME_PX}px`,
+} as CSSProperties;
+
+const BOARD_SIZE = 'var(--board-size)';
 
 /**
  * The floor under the column, as classes.
@@ -88,7 +107,6 @@ interface ActiveGameLayoutProps {
  *
  * It fills the height it is given and hands the board whatever the two fixed
  * rows leave over, so nothing has to state how tall the rest of the screen is.
- * The board reads its own size from the space it lands in.
  */
 export default function ActiveGameLayout({
   status,
@@ -102,15 +120,9 @@ export default function ActiveGameLayout({
    * line up with the squares they act on. Left to fill the column they run
    * far wider than the board on a desktop, which reads as the screen having
    * drifted apart.
-   *
-   * The width comes from measuring the same area the board measures, through
-   * the same rule, so the two cannot disagree.
    */
-  const boardAreaRef = useRef<HTMLDivElement>(null);
-  const boardArea = useElementSize(boardAreaRef);
-  const boardSize = boardSizeForArea(boardArea);
   const rowStyle = {
-    width: `${boardSize}px`,
+    width: BOARD_SIZE,
     // Follow the board down only as far as the rows' own contents allow. The
     // `min()` keeps the floor from becoming an overflow of its own on a
     // viewport narrower than it.
@@ -118,33 +130,10 @@ export default function ActiveGameLayout({
     maxWidth: '100%',
   };
 
-  /**
-   * Hold the board's area to the board itself.
-   *
-   * The area takes the height the two rows leave over, and the board fits a
-   * square inside it. On a tall screen that square runs out of width first, so
-   * the area is left taller than the board -- and, the board being centred in
-   * it, the surplus lands as equal bands above and below, pushing the timer
-   * and the palette away from the board they describe. On a tall phone that
-   * was 70px either side.
-   *
-   * Capping the area at the board collects the surplus outside the group
-   * instead, where the column's centring shares it above and below the whole
-   * thing.
-   *
-   * The cap is the area's width, the most a square there can use, not the
-   * board's last measured size. That size came from the previous height, so
-   * the area could follow the screen down but never grow back after a
-   * rotation. `contain: size` likewise keeps the board's own pixel height from
-   * holding the area open when the screen gets shorter.
-   */
-  const boardAreaStyle = boardArea.width
-    ? { maxHeight: `${Math.min(boardArea.width, MAX_BOARD_SIZE)}px` }
-    : undefined;
-
   return (
     <div
-      className={`flex h-full w-full flex-col items-center justify-center gap-2 ${COLUMN_MIN_HEIGHT}`}
+      className={`lab-active-column flex h-full w-full flex-col items-center justify-center gap-2 ${COLUMN_MIN_HEIGHT}`}
+      style={BOARD_SIZE_INPUTS}
     >
       {/*
         The two rows are a fixed height rather than being sized by their
@@ -162,15 +151,10 @@ export default function ActiveGameLayout({
         {status}
       </section>
 
-      {/* min-h-0 lets this shrink below its content's natural size, which is
-          what allows the board to be bounded by the space left over rather
-          than pushing the page taller. */}
-      <div
-        ref={boardAreaRef}
-        className="flex min-h-0 w-full flex-1 items-center justify-center [contain:size]"
-        style={boardAreaStyle}
-      >
-        <div data-round-board style={{ width: boardSize, height: boardSize }}>
+      {/* As tall as the board, so the column's spare height collects above
+          and below the whole group rather than between the board and its rows. */}
+      <div className="flex w-full shrink-0 items-center justify-center" style={{ height: BOARD_SIZE }}>
+        <div data-round-board style={{ width: BOARD_SIZE, height: BOARD_SIZE }}>
           {board}
         </div>
       </div>

@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Fig. {number} · Échiquier du jour",
           "title": "Une position par jour, la même pour tout le monde.",
-          "desc": "Une nouvelle position s’ouvre chaque jour à minuit UTC. Tout le monde reçoit les mêmes 6 pièces et 10 secondes d’étude, et vous n’avez qu’un essai.",
+          "desc": "Une nouvelle position s’ouvre chaque jour à minuit UTC. Tout le monde reçoit la même position et le même temps d’étude, et vous n’avez qu’un essai.",
           "play": "Jouer l’échiquier du jour",
           "open": "Le plateau du jour compte {pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}}, avec {memorizeSeconds, plural, one {# seconde} many {# secondes} other {# secondes}} pour l’étudier. Vous n’avez pas encore joué l’échiquier du jour.",
           "played": "Vous avez bien placé {correct} sur {pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}}, soit {accuracy} pour cent.",

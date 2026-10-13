@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Gbr. {number} · Papan hari ini",
           "title": "Satu papan sehari, sama untuk semua orang.",
-          "desc": "Posisi baru dibuka setiap hari pukul 00.00 UTC. Semua orang mendapat 6 bidak yang sama dan 10 detik untuk mengamatinya, dan kamu hanya punya satu kesempatan.",
+          "desc": "Posisi baru dibuka setiap hari pukul 00.00 UTC. Semua orang mendapat papan yang sama dan waktu mengamati yang sama, dan kamu hanya punya satu kesempatan.",
           "play": "Mainkan papan hari ini",
           "open": "Papan hari ini berisi {pieceCount, plural, other {# bidak}} dengan {memorizeSeconds, plural, other {# detik}} untuk mempelajarinya. Kamu belum memainkan papan hari ini.",
           "played": "Kamu meletakkan {correct} dari {pieceCount, plural, other {# bidak}} dengan benar, {accuracy} persen.",

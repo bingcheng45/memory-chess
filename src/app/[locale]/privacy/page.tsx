@@ -127,7 +127,8 @@ export default function PrivacyPage() {
           draw your streak, personal bests, accuracy trend, miss map,
           today&apos;s board, review queue and forgetting curve on this
           device. The record itself, with its positions, squares,
-          placements and history, never leaves this device. Local storage
+          placements and history, never leaves this device. A round you
+          choose to share is the one exception, described below. Local storage
           also keeps the UTC day you last opened today&apos;s board, so it
           offers you one try a day, and which review steps you opened, so a
           board left before its result is not shown twice at one delay. Google
@@ -163,15 +164,51 @@ export default function PrivacyPage() {
         <p>
           The progress page reads the same record in your browser and
           sends nothing. Only when you press Share my progress does your
-          browser draw a picture of your memory span, pieces held, speed,
-          streak and rounds played, the figures the record can read, and
-          hand it with a short caption and a link to your device&apos;s
-          share sheet. Where there is no share sheet, the picture is saved
-          as a file and the caption is copied to your clipboard. Neither is
-          sent to Memory Chess. Google Analytics receives an event that
-          names only how the card left the page, through the share sheet,
-          as a saved picture or as a copied caption, with none of its
-          figures.
+          browser draw a picture of the figures the record can read: your
+          memory span, skill rating, pieces held, speed, best and recent
+          accuracy, win streak, days in a row, rounds played and days
+          played. Only when you press Share result on the game&apos;s
+          result screen does your browser draw a picture of that round:
+          its accuracy, the pieces you recalled, the number of pieces, the
+          study time allowed and taken, the rebuild time, and, except on a
+          review, your rating, its change and any win streak, and, except
+          on today&apos;s board, the board you studied and the board you
+          rebuilt.
+        </p>
+        <p>
+          Either button opens a share window, and nothing leaves your
+          browser until you choose one of its actions: hand the picture, a
+          short caption and a link to your device&apos;s share sheet,
+          download the picture, copy the picture, copy the caption with its
+          link, or open the post page of X, Facebook, LinkedIn, Reddit,
+          WhatsApp, Threads or Bluesky with the link, and on all but
+          Facebook and LinkedIn the caption, filled in.
+          What you send there is handled under that service&apos;s own
+          privacy terms.
+        </p>
+        <p>
+          The link in the caption opens the card&apos;s own page on Memory
+          Chess, and the card&apos;s figures are written into the link
+          itself. A shared result link, under /share/result/, also carries
+          the board you studied, the board you rebuilt, and the order and
+          timing of each piece you placed, unless the round was
+          today&apos;s board, whose link carries no position. Anyone who
+          opens the link can read them, and Memory Chess reads them from the
+          link to draw the page and its preview. A link is made only when
+          you share a card, and Memory Chess does not save it. Like any
+          page on the site, the analytics tools named above record the
+          page&apos;s address, link included, when someone opens it.
+        </p>
+        <p>
+          Google Analytics receives a lab_dashboard_share event when a
+          progress card leaves the page and a result_share event when a
+          result card does. Each names only how it left, as its method:
+          native for the share sheet, download for a downloaded picture,
+          copy_image for a copied picture, copy for a copied caption, or
+          post for a network&apos;s post page, with that network named as
+          x, facebook, linkedin, reddit, whatsapp, threads or bluesky.
+          Neither event carries the card&apos;s figures, its boards or its
+          link.
         </p>
         <p>
           When you submit a score to the leaderboard, local storage on this

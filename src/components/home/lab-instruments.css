@@ -104,6 +104,29 @@
     --lab-h-curve: 632px; --lab-h-board: 664px;
   }
 }
+/* The translations run longer than English, Russian and Finnish most of all, so they get their own reserves. */
+.lab-paper:not(:lang(en)) {
+  --lab-h-unlock: 360px; --lab-h-span: 560px; --lab-h-held: 560px; --lab-h-spark: 520px; --lab-h-speed: 568px;
+  --lab-h-heat: 600px; --lab-h-streak: 672px; --lab-h-bests: 408px; --lab-h-types: 608px; --lab-h-tools: 480px;
+  --lab-h-insights: 456px; --lab-h-notebook: 472px; --lab-h-plans: 584px; --lab-h-goal: 352px; --lab-h-daily: 400px;
+  --lab-h-curve: 696px; --lab-h-board: 776px;
+}
+@media (max-width: 1000px) {
+  .lab-paper:not(:lang(en)) {
+    --lab-h-unlock: 536px; --lab-h-span: 560px; --lab-h-held: 608px; --lab-h-spark: 528px; --lab-h-speed: 608px;
+    --lab-h-heat: 688px; --lab-h-streak: 816px; --lab-h-bests: 648px; --lab-h-types: 760px; --lab-h-tools: 800px;
+    --lab-h-insights: 464px; --lab-h-notebook: 496px; --lab-h-plans: 1032px; --lab-h-goal: 400px; --lab-h-daily: 424px;
+    --lab-h-curve: 696px; --lab-h-board: 960px;
+  }
+}
+@media (max-width: 640px) {
+  .lab-paper:not(:lang(en)) {
+    --lab-h-unlock: 424px; --lab-h-span: 584px; --lab-h-held: 592px; --lab-h-spark: 528px; --lab-h-speed: 608px;
+    --lab-h-heat: 696px; --lab-h-streak: 696px; --lab-h-bests: 616px; --lab-h-types: 736px; --lab-h-tools: 448px;
+    --lab-h-insights: 768px; --lab-h-notebook: 784px; --lab-h-plans: 1560px; --lab-h-goal: 600px; --lab-h-daily: 608px;
+    --lab-h-curve: 800px; --lab-h-board: 792px;
+  }
+}
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
 .lab-tag-slot { display: inline-flex; justify-content: flex-end; font: 600 12px/1 var(--lp-ui); min-width: 8.8em; min-height: 24px; }
 .lab-tag-slot .lab-tag { min-width: 8.8em; text-align: center; justify-content: center; }

@@ -144,7 +144,8 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     if (shows && !(await page.eval(`!!document.querySelector(${JSON.stringify(shows)})`))) throw new Error(`at ${width}: ${shows} never appeared`);
     if (hides && (await page.eval(`!!document.querySelector(${JSON.stringify(hides)})`))) throw new Error(`at ${width}: ${hides} appeared`);
     if (held.length === 0) throw new Error(`at ${width}: no Geist Mono request was held, so the fallback face may never have painted`);
-    if (held.some(({ statusWhileHeld }) => statusWhileHeld?.includes("loaded"))) throw new Error(`at ${width}: Geist Mono was already loaded while its file was held`);
+    // A page with Cyrillic text asks for a second subset file after the Latin one, so only the first hold proves the fallback painted first.
+    if (held[0].statusWhileHeld?.includes("loaded")) throw new Error(`at ${width}: Geist Mono was already loaded while its file was held`);
     if (!statusAfter.includes("loaded")) throw new Error(`at ${width}: Geist Mono did not load after release, status ${JSON.stringify(statusAfter)}`);
     result[width] = {
       cls: round(sessionWindowCls(shifts)),

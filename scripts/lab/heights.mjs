@@ -7,7 +7,10 @@
  * labReserves.test.ts holds the CSS reserves above those heights. The file is
  * a snapshot: rerun this after a copy or layout change to §06, and the test
  * then fails if a box outgrew its reserve. `--locales en,de,ru` measures each
- * of those homes, since a translation can run longer than English.
+ * of those homes. English and the translations are written as two sets, since
+ * lab-instruments.css reserves for `.lab-paper:not(:lang(en))` separately; a run
+ * that measures only one set keeps the other from the file. A drive script has
+ * 180 s, so measure the translations about four locales per run.
  * The welcome back line shares the unlock strip's box, which the <name>Away
  * personas from lab:personas cover.
  *
@@ -40,6 +43,14 @@ const MEASURE = `(() => {
   return result;
 })()`;
 
+// Waits for the parsed document, not the load event, which the ad frames can hold past the harness's 20 s on a slow network.
+async function open(page, url) {
+  await page.send("Page.navigate", { url: "about:blank" });
+  await page.waitFor(`location.href === "about:blank"`, 5_000);
+  await page.send("Page.navigate", { url });
+  await page.waitFor(`location.href === ${JSON.stringify(url)} && document.readyState !== "loading"`, 20_000);
+}
+
 export default async function measure(page, { baseUrl, evidenceDir }) {
   const rounds = await loadPersona(page, baseUrl, process.env[PERSONA_ENV]);
 
@@ -49,7 +60,7 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     client[locale] = {};
     for (const width of WIDTHS) {
       await sized(page, width);
-      await page.goto(`${baseUrl}${homeOf(locale)}`);
+      await open(page, `${baseUrl}${homeOf(locale)}`);
       await page.waitFor(`!!document.querySelector(".lab-tools")`, 20_000);
       await page.sleep(800);
       client[locale][width] = await page.eval(MEASURE);
@@ -61,7 +72,7 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     server[locale] = {};
     for (const width of WIDTHS) {
       await sized(page, width);
-      await page.goto(`${baseUrl}${homeOf(locale)}`);
+      await open(page, `${baseUrl}${homeOf(locale)}`);
       server[locale][width] = await page.eval(MEASURE);
     }
   }
@@ -85,12 +96,32 @@ async function main() {
     console.log(`measured ${name}`);
   }
 
+  const previous = JSON.parse(readFileSync(DATA_FILE, "utf8"));
+  const english = locales.filter((locale) => locale === ENGLISH);
+  const translated = locales.filter((locale) => locale !== ENGLISH);
+  const data = {
+    widths: WIDTHS,
+    personas: names,
+    english: english.length > 0 ? aggregate(measured, english) : previous.english,
+    translated: translated.length > 0 ? aggregate(measured, translated) : previous.translated,
+  };
+  writeFileSync(DATA_FILE, `${JSON.stringify(data, null, 2)}\n`);
+  writeFileSync(join(out, "measured.json"), JSON.stringify(measured, null, 2));
+  console.log(`wrote ${DATA_FILE}`);
+}
+
+/**
+ * The tallest height of each box per layout tier over `locales`, which persona set it, and the tallest empty state a
+ * new visitor's server render shows. English and the translations get one each, since lab-instruments.css reserves
+ * for them separately.
+ */
+export function aggregate(measured, locales) {
   const max = {};
   const tallest = {};
   for (const [name, { client, server }] of Object.entries(measured)) {
     for (const [view, byLocale] of [["client", client], ["server", server]]) {
-      for (const [locale, byWidth] of Object.entries(byLocale)) {
-        for (const [width, heights] of Object.entries(byWidth)) {
+      for (const locale of locales) {
+        for (const [width, heights] of Object.entries(byLocale[locale] ?? {})) {
           const tier = (max[tierOf(Number(width))] ??= {});
           for (const box of BOXES) {
             if ((heights[box] ?? 0) <= (tier[box] ?? 0)) continue;
@@ -102,15 +133,13 @@ async function main() {
     }
   }
   const empty = {};
-  for (const byWidth of Object.values(measured.newVisitor?.server ?? {})) {
-    for (const [width, heights] of Object.entries(byWidth)) {
+  for (const locale of locales) {
+    for (const [width, heights] of Object.entries(measured.newVisitor?.server[locale] ?? {})) {
       const tier = (empty[tierOf(Number(width))] ??= {});
       for (const box of BOXES) tier[box] = Math.max(tier[box] ?? 0, heights[box] ?? 0);
     }
   }
-  writeFileSync(DATA_FILE, `${JSON.stringify({ widths: WIDTHS, locales, personas: names, max, tallest, empty }, null, 2)}\n`);
-  writeFileSync(join(out, "measured.json"), JSON.stringify(measured, null, 2));
-  console.log(`wrote ${DATA_FILE}`);
+  return { locales, max, tallest, empty };
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();

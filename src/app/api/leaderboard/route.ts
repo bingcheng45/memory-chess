@@ -22,7 +22,7 @@ function dailyRowMismatch(board: LeaderboardBoard, pieceCount: unknown, memorize
     return `The daily board for ${board.daily_day} is ${setting.pieceCount} pieces and ${setting.memorizeTime} seconds`;
   }
   const floor = setting.pieceCount * DAILY_SECONDS_PER_PIECE;
-  if (typeof solutionTime === 'number' && solutionTime < floor) return `A daily rebuild of ${setting.pieceCount} pieces takes at least ${floor} seconds`;
+  if (typeof solutionTime !== 'number' || solutionTime < floor) return `A daily rebuild of ${setting.pieceCount} pieces takes at least ${floor} seconds`;
   return null;
 }
 

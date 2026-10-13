@@ -4,6 +4,7 @@ import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 import { isSkillRating, MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
 import { joinableDays, readableDays, readBoard } from '@/lib/leaderboard/board';
+import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { utcDayOf } from '@/lib/lab/daily';
 import { dailySettingOf } from '@/lib/daily/schedule';
 import { DAILY_BOARD, type LeaderboardBoard } from '@/types/leaderboard';
@@ -97,7 +98,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Player name must be text' }, { status: 400 });
     }
     const playerName = player_name.trim();
-    if (playerName.length < 4 || playerName.length > 16) {
+    if (playerNameProblem(playerName) !== null) {
       return NextResponse.json(
         { error: 'Player name must be between 4 and 16 characters' },
         { status: 400 }

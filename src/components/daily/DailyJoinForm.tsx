@@ -10,12 +10,11 @@ import type { DailyEntry } from "@/lib/lab/entries";
 import { DAILY_BOARD } from "@/types/leaderboard";
 import { entryFromRow } from "@/lib/leaderboard/entryRow";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
+import { playerNameProblem } from "@/lib/leaderboard/playerName";
 import { useGameStore } from "@/lib/store/gameStore";
 import { useSettingsStore } from "@/stores/settingsStore";
 import { guessCountry } from "./countryGuess";
 import { dailySubmission } from "./dailySubmission";
-
-const NAME_LENGTH = { min: 4, max: 16 } as const;
 
 const GEO_TIMEOUT_MS = 3_000;
 
@@ -65,8 +64,9 @@ export function DailyJoinForm({ round, onJoined, title }: DailyJoinFormProps) {
 
   const guess = guessCountry({ saved, geo: geo ?? null, languages: geo === undefined ? [] : navigator.languages });
   const trimmed = name.trim();
-  const nameProblem = trimmed.length > NAME_LENGTH.max ? "nameLong" : nameLeft && trimmed.length > 0 && trimmed.length < NAME_LENGTH.min ? "nameShort" : null;
-  const nameFits = trimmed.length >= NAME_LENGTH.min && trimmed.length <= NAME_LENGTH.max;
+  const lengthProblem = playerNameProblem(trimmed);
+  const nameProblem = lengthProblem === "long" ? "nameLong" : lengthProblem === "short" && nameLeft && trimmed.length > 0 ? "nameShort" : null;
+  const nameFits = lengthProblem === null;
   const sending = submit === "sending";
 
   if (round.correct === 0) return <p className="daily-note daily-join">{t("noneRight")}</p>;

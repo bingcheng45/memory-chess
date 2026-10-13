@@ -3,6 +3,7 @@ import { supabase, checkSupabaseConnection } from '@/lib/supabase';
 import { LEADERBOARD_ROW_LIMIT } from '@/lib/reference/facts';
 import { RANKING_ORDER, type BoardCutoff, type LeaderboardCutoffs } from '@/lib/leaderboard/ranking';
 import { parseBoard } from '@/lib/leaderboard/board';
+import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { rankedAboveFilter, type Standing, type StandingScope } from '@/lib/leaderboard/standing';
 import { WORLD_CODE } from '@/lib/leaderboard/countries';
 import {
@@ -224,7 +225,7 @@ const DAILY_DAY_CHECK = 'check_daily_day_recent';
 export async function submitLeaderboardEntry(
   entry: LeaderboardSubmission,
 ): Promise<LeaderboardSubmitResult> {
-  if (entry.player_name.length < 4 || entry.player_name.length > 16) {
+  if (playerNameProblem(entry.player_name) !== null) {
     return { status: 'invalid', message: 'Player name must be between 4 and 16 characters' };
   }
   if (!supabase) {

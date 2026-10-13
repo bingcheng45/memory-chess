@@ -10,7 +10,7 @@ export function DailyResetLine({ now }: { now: number | null }) {
 
   return (
     <p className="daily-reset">
-      {resetsIn && <strong data-clock="">{resetsIn}</strong>}
+      <strong data-clock="">{resetsIn}</strong>
       <span>{t("resets")}</span>
     </p>
   );

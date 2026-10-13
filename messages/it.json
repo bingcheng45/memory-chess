@@ -842,7 +842,6 @@
       "copy": "Copia il risultato",
       "copied": "Copiato",
       "copyFailed": "Gli appunti hanno rifiutato la copia. Seleziona il testo qui sotto e copialo.",
-      "noneRight": "Nessun pezzo era corretto, quindi questo tentativo non ha nulla da classificare. La prossima scacchiera si apre a mezzanotte UTC.",
       "joined": "Sei nella scacchiera di oggi",
       "rank": "Posizione {rank} su {total} oggi"
     },
@@ -862,7 +861,8 @@
       "submit": "Partecipa",
       "submitting": "Iscrizione…",
       "public": "Il tuo nome, paese, punteggio e rating sono mostrati pubblicamente.",
-      "failed": "Impossibile partecipare alla scacchiera. Riprova."
+      "failed": "Impossibile partecipare alla scacchiera. Riprova.",
+      "noneRight": "Nessun pezzo era corretto, quindi questo tentativo non ha nulla da classificare. La prossima scacchiera si apre a mezzanotte UTC."
     },
     "board": {
       "title": "La top 10 di oggi",

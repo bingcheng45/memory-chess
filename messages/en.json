@@ -1657,7 +1657,6 @@
       "copy": "Copy result",
       "copied": "Copied",
       "copyFailed": "The clipboard was refused. Select the text below and copy it.",
-      "noneRight": "No piece was right, so this try has nothing to rank. The next board opens at midnight UTC.",
       "joined": "You are on today's board",
       "rank": "Rank {rank} of {total} today"
     },
@@ -1677,7 +1676,8 @@
       "submit": "Join the board",
       "submitting": "Joining…",
       "public": "Your name, country, score and rating are shown publicly.",
-      "failed": "Could not join the board. Please try again."
+      "failed": "Could not join the board. Please try again.",
+      "noneRight": "No piece was right, so this try has nothing to rank. The next board opens at midnight UTC."
     },
     "board": {
       "title": "Today's top 10",

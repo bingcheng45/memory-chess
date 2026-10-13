@@ -842,7 +842,6 @@
       "copy": "Kopier resultatet",
       "copied": "Kopiert",
       "copyFailed": "Utklippstavlen ble nektet tilgang. Merk teksten under og kopier den.",
-      "noneRight": "Ingen brikker var riktige, så dette forsøket kommer ikke på listen. Neste brett åpner ved midnatt UTC.",
       "joined": "Du er med på dagens brett",
       "rank": "Plass {rank} av {total} i dag"
     },
@@ -862,7 +861,8 @@
       "submit": "Bli med på brettet",
       "submitting": "Blir med …",
       "public": "Navnet, landet, poengsummen og ratingen din vises offentlig.",
-      "failed": "Kunne ikke bli med på brettet. Prøv igjen."
+      "failed": "Kunne ikke bli med på brettet. Prøv igjen.",
+      "noneRight": "Ingen brikker var riktige, så dette forsøket kommer ikke på listen. Neste brett åpner ved midnatt UTC."
     },
     "board": {
       "title": "Dagens topp 10",

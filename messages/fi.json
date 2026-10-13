@@ -842,7 +842,6 @@
       "copy": "Kopioi tulos",
       "copied": "Kopioitu",
       "copyFailed": "Leikepöytä ei sallinut kopiointia. Valitse alla oleva teksti ja kopioi se.",
-      "noneRight": "Yksikään nappula ei ollut oikein, joten tästä yrityksestä ei synny sijoitusta. Seuraava lauta aukeaa keskiyöllä UTC.",
       "joined": "Olet mukana päivän laudalla",
       "rank": "Sija {rank} / {total} tänään"
     },
@@ -862,7 +861,8 @@
       "submit": "Liity lautaan",
       "submitting": "Liitytään…",
       "public": "Nimesi, maasi, pistemääräsi ja luokituksesi näkyvät julkisesti.",
-      "failed": "Lautaan liittyminen epäonnistui. Yritä uudelleen."
+      "failed": "Lautaan liittyminen epäonnistui. Yritä uudelleen.",
+      "noneRight": "Yksikään nappula ei ollut oikein, joten tästä yrityksestä ei synny sijoitusta. Seuraava lauta aukeaa keskiyöllä UTC."
     },
     "board": {
       "title": "Päivän kymmenen parasta",

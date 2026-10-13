@@ -842,7 +842,6 @@
       "copy": "Resultaat kopiëren",
       "copied": "Gekopieerd",
       "copyFailed": "Het klembord weigerde de tekst. Selecteer de tekst hieronder en kopieer hem zelf.",
-      "noneRight": "Geen enkel stuk was goed, dus er valt niets te ranglijsten. Het volgende bord komt om middernacht UTC.",
       "joined": "Je staat op het bord van vandaag",
       "rank": "Plek {rank} van {total} vandaag"
     },
@@ -862,7 +861,8 @@
       "submit": "Meedoen",
       "submitting": "Bezig met meedoen…",
       "public": "Je naam, land, score en rating zijn openbaar zichtbaar.",
-      "failed": "Meedoen met het bord is mislukt. Probeer het opnieuw."
+      "failed": "Meedoen met het bord is mislukt. Probeer het opnieuw.",
+      "noneRight": "Geen enkel stuk was goed, dus er valt niets te ranglijsten. Het volgende bord komt om middernacht UTC."
     },
     "board": {
       "title": "De top 10 van vandaag",

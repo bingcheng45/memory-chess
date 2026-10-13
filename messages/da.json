@@ -842,7 +842,6 @@
       "copy": "Kopiér resultat",
       "copied": "Kopieret",
       "copyFailed": "Udklipsholderen afviste det. Markér teksten nedenfor og kopiér den.",
-      "noneRight": "Ingen brik var rigtig, så dette forsøg har intet at placere på ranglisten. Det næste bræt åbner ved midnat UTC.",
       "joined": "Du er med på dagens bræt",
       "rank": "Plads {rank} af {total} i dag"
     },
@@ -862,7 +861,8 @@
       "submit": "Deltag i brættet",
       "submitting": "Tilmelder …",
       "public": "Dit navn, land, din score og rating vises offentligt.",
-      "failed": "Du kunne ikke deltage i brættet. Prøv igen."
+      "failed": "Du kunne ikke deltage i brættet. Prøv igen.",
+      "noneRight": "Ingen brik var rigtig, så dette forsøg har intet at placere på ranglisten. Det næste bræt åbner ved midnat UTC."
     },
     "board": {
       "title": "Dagens top 10",

@@ -842,7 +842,6 @@
       "copy": "Copiar resultado",
       "copied": "Copiado",
       "copyFailed": "A área de transferência recusou a cópia. Selecione o texto abaixo e copie.",
-      "noneRight": "Nenhuma peça estava correta, então esta tentativa não entra no ranking. O próximo tabuleiro abre à meia-noite UTC.",
       "joined": "Você está no tabuleiro de hoje",
       "rank": "Posição {rank} de {total} hoje"
     },
@@ -862,7 +861,8 @@
       "submit": "Entrar no tabuleiro",
       "submitting": "Entrando…",
       "public": "Seu nome, país, pontuação e rating são exibidos publicamente.",
-      "failed": "Não foi possível entrar no tabuleiro. Tente novamente."
+      "failed": "Não foi possível entrar no tabuleiro. Tente novamente.",
+      "noneRight": "Nenhuma peça estava correta, então esta tentativa não entra no ranking. O próximo tabuleiro abre à meia-noite UTC."
     },
     "board": {
       "title": "Top 10 de hoje",

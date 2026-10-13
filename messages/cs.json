@@ -842,7 +842,6 @@
       "copy": "Zkopírovat výsledek",
       "copied": "Zkopírováno",
       "copyFailed": "Schránka kopírování odmítla. Označte text níže a zkopírujte ho ručně.",
-      "noneRight": "Žádná figurka nebyla správně, takže tento pokus nemá co zařadit do žebříčku. Další pozice se otevře o půlnoci UTC.",
       "joined": "Jste v dnešním žebříčku",
       "rank": "{rank}. místo z {total} dnes"
     },
@@ -862,7 +861,8 @@
       "submit": "Zapojit se",
       "submitting": "Připojování…",
       "public": "Vaše jméno, země, skóre a hodnocení jsou veřejně vidět.",
-      "failed": "Zapojení se nepodařilo. Zkuste to prosím znovu."
+      "failed": "Zapojení se nepodařilo. Zkuste to prosím znovu.",
+      "noneRight": "Žádná figurka nebyla správně, takže tento pokus nemá co zařadit do žebříčku. Další pozice se otevře o půlnoci UTC."
     },
     "board": {
       "title": "Dnešní desítka nejlepších",

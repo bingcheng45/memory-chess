@@ -842,7 +842,6 @@
       "copy": "Kopiera resultat",
       "copied": "Kopierat",
       "copyFailed": "Urklippet nekade kopieringen. Markera texten nedan och kopiera den.",
-      "noneRight": "Ingen pjäs var rätt, så det här försöket har inget att ranka. Nästa bräde öppnar vid midnatt UTC.",
       "joined": "Du är med på dagens bräde",
       "rank": "Plats {rank} av {total} i dag"
     },
@@ -862,7 +861,8 @@
       "submit": "Delta i brädet",
       "submitting": "Ansluter ...",
       "public": "Ditt namn, land, resultat och din rating visas offentligt.",
-      "failed": "Det gick inte att delta i brädet. Försök igen."
+      "failed": "Det gick inte att delta i brädet. Försök igen.",
+      "noneRight": "Ingen pjäs var rätt, så det här försöket har inget att ranka. Nästa bräde öppnar vid midnatt UTC."
     },
     "board": {
       "title": "Dagens topp 10",

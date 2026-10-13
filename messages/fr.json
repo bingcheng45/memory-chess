@@ -842,7 +842,6 @@
       "copy": "Copier le résultat",
       "copied": "Copié",
       "copyFailed": "Le presse-papiers a refusé la copie. Sélectionnez le texte ci-dessous et copiez-le.",
-      "noneRight": "Aucune pièce n’était correcte, cet essai n’a donc rien à classer. Le prochain plateau s’ouvre à minuit UTC.",
       "joined": "Vous êtes sur le plateau du jour",
       "rank": "Rang {rank} sur {total} aujourd’hui"
     },
@@ -862,7 +861,8 @@
       "submit": "Rejoindre le plateau",
       "submitting": "Inscription…",
       "public": "Votre nom, votre pays, votre score et votre cote sont affichés publiquement.",
-      "failed": "Impossible de rejoindre le plateau. Veuillez réessayer."
+      "failed": "Impossible de rejoindre le plateau. Veuillez réessayer.",
+      "noneRight": "Aucune pièce n’était correcte, cet essai n’a donc rien à classer. Le prochain plateau s’ouvre à minuit UTC."
     },
     "board": {
       "title": "Le top 10 du jour",

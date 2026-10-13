@@ -842,7 +842,6 @@
       "copy": "Sao chép kết quả",
       "copied": "Đã sao chép",
       "copyFailed": "Bộ nhớ tạm đã từ chối. Hãy chọn đoạn văn bản bên dưới và sao chép.",
-      "noneRight": "Không có quân nào đúng nên lượt này không được xếp hạng. Bàn tiếp theo mở lúc nửa đêm UTC.",
       "joined": "Bạn đã có tên trên bàn cờ hôm nay",
       "rank": "Hạng {rank} trên {total} hôm nay"
     },
@@ -862,7 +861,8 @@
       "submit": "Tham gia bàn cờ",
       "submitting": "Đang tham gia…",
       "public": "Tên, quốc gia, điểm và điểm xếp hạng của bạn được hiển thị công khai.",
-      "failed": "Không tham gia được bàn cờ. Vui lòng thử lại."
+      "failed": "Không tham gia được bàn cờ. Vui lòng thử lại.",
+      "noneRight": "Không có quân nào đúng nên lượt này không được xếp hạng. Bàn tiếp theo mở lúc nửa đêm UTC."
     },
     "board": {
       "title": "Top 10 hôm nay",

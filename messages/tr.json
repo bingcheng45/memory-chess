@@ -842,7 +842,6 @@
       "copy": "Sonucu kopyala",
       "copied": "Kopyalandı",
       "copyFailed": "Pano izin vermedi. Aşağıdaki metni seçip kopyala.",
-      "noneRight": "Hiçbir taş doğru değildi, bu yüzden bu denemenin sıralanacak bir skoru yok. Sonraki tahta UTC gece yarısı açılır.",
       "joined": "Bugünün tahtasındasın",
       "rank": "Bugün {total} kişi arasında {rank}. sıra"
     },
@@ -862,7 +861,8 @@
       "submit": "Tahtaya katıl",
       "submitting": "Katılıyor...",
       "public": "Adın, ülken, skorun ve puanın herkese açık gösterilir.",
-      "failed": "Tahtaya katılınamadı. Lütfen tekrar dene."
+      "failed": "Tahtaya katılınamadı. Lütfen tekrar dene.",
+      "noneRight": "Hiçbir taş doğru değildi, bu yüzden bu denemenin sıralanacak bir skoru yok. Sonraki tahta UTC gece yarısı açılır."
     },
     "board": {
       "title": "Bugünün ilk 10'u",

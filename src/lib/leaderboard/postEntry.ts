@@ -1,5 +1,6 @@
 import { trackEvent } from "@/lib/analytics/events";
 import type { DailyEntry, StoredEntry } from "@/lib/lab/entries";
+import { isObject } from "@/lib/lab/guards";
 import type { LeaderboardSubmission } from "@/types/leaderboard";
 
 /** `entry` is the stored row as this device remembers it, or null when the reply carried no row it can read. */
@@ -15,17 +16,11 @@ export async function postLeaderboardEntry(entry: LeaderboardSubmission): Promis
     body: JSON.stringify(entry),
   });
   const body: unknown = await response.json().catch(() => null);
-  const reply = typeof body === "object" && body !== null ? (body as Record<string, unknown>) : {};
+  const reply = isObject(body) ? body : {};
   if (!response.ok) return { ok: false, message: typeof reply.error === "string" ? reply.error : null };
 
   trackEvent({ name: "score_submit", params: { difficulty: entry.difficulty, piece_count: entry.piece_count } });
   // Loaded only once a score is sent, so the result screen pays nothing for the stored entries before then.
-  const stored = await import("@/lib/lab/entries")
-    .then(({ entryFromRow, rememberEntry }) => {
-      const now = Date.now();
-      rememberEntry(reply.data, now);
-      return entryFromRow(reply.data, now);
-    })
-    .catch(() => null);
-  return { ok: true, entry: stored };
+  const { rememberEntry } = await import("@/lib/lab/entries");
+  return { ok: true, entry: rememberEntry(reply.data, Date.now()) };
 }

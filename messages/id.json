@@ -842,7 +842,6 @@
       "copy": "Salin hasil",
       "copied": "Tersalin",
       "copyFailed": "Papan klip menolak akses. Pilih teks di bawah lalu salin.",
-      "noneRight": "Tidak ada bidak yang benar, jadi percobaan ini tidak masuk peringkat. Papan berikutnya dibuka tengah malam UTC.",
       "joined": "Anda ada di papan hari ini",
       "rank": "Peringkat {rank} dari {total} hari ini"
     },
@@ -862,7 +861,8 @@
       "submit": "Ikut papan",
       "submitting": "Bergabung…",
       "public": "Nama, negara, skor, dan rating Anda ditampilkan secara publik.",
-      "failed": "Gagal bergabung ke papan. Silakan coba lagi."
+      "failed": "Gagal bergabung ke papan. Silakan coba lagi.",
+      "noneRight": "Tidak ada bidak yang benar, jadi percobaan ini tidak masuk peringkat. Papan berikutnya dibuka tengah malam UTC."
     },
     "board": {
       "title": "10 besar hari ini",

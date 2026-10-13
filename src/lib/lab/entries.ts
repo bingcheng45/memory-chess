@@ -109,19 +109,16 @@ export function readDailyEntry(day: string): DailyEntry | null {
   }
 }
 
-/** False when the reply carries no entry or storage refuses the write; the score is on the board either way. */
-export function rememberEntry(row: unknown, now: number): boolean {
+/** The entry the reply carries, or null when it carries none. Storage refusing the write keeps nothing; the score is on the board either way. */
+export function rememberEntry(row: unknown, now: number): StoredEntry | DailyEntry | null {
   const entry = entryFromRow(row, now);
-  if (entry === null) return false;
+  if (entry === null) return null;
   try {
-    if (entry.difficulty === DAILY_BOARD) {
-      window.localStorage.setItem(DAILY_ENTRY_KEY, JSON.stringify(entry));
-      return true;
-    }
-    const stored = parseEntries(window.localStorage.getItem(ENTRIES_KEY));
-    window.localStorage.setItem(ENTRIES_KEY, JSON.stringify(withEntry(stored, entry)));
-    return true;
+    const [key, value] =
+      entry.difficulty === DAILY_BOARD ? [DAILY_ENTRY_KEY, entry] : [ENTRIES_KEY, withEntry(parseEntries(window.localStorage.getItem(ENTRIES_KEY)), entry)];
+    window.localStorage.setItem(key, JSON.stringify(value));
   } catch {
-    return false;
+    // Kept for this page only.
   }
+  return entry;
 }

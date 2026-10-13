@@ -842,7 +842,6 @@
       "copy": "Eredmény másolása",
       "copied": "Másolva",
       "copyFailed": "A vágólap elutasította a másolást. Jelöld ki az alábbi szöveget, és másold ki.",
-      "noneRight": "Egyetlen bábu sem volt jó, így ennek a próbálkozásnak nincs helyezése. A következő tábla éjfélkor nyílik, UTC szerint.",
       "joined": "Rajta vagy a mai táblán",
       "rank": "{rank}. hely a mai {total} közül"
     },
@@ -862,7 +861,8 @@
       "submit": "Csatlakozás a táblához",
       "submitting": "Csatlakozás…",
       "public": "A neved, az országod, a pontszámod és az értékszámod nyilvánosan látható.",
-      "failed": "Nem sikerült csatlakozni a táblához. Próbáld újra."
+      "failed": "Nem sikerült csatlakozni a táblához. Próbáld újra.",
+      "noneRight": "Egyetlen bábu sem volt jó, így ennek a próbálkozásnak nincs helyezése. A következő tábla éjfélkor nyílik, UTC szerint."
     },
     "board": {
       "title": "A mai top 10",

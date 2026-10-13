@@ -842,7 +842,6 @@
       "copy": "Copiază rezultatul",
       "copied": "Copiat",
       "copyFailed": "Clipboardul a refuzat copierea. Selectează textul de mai jos și copiază-l.",
-      "noneRight": "Nicio piesă nu a fost corectă, așa că această încercare nu are ce să intre în clasament. Următoarea tablă se deschide la miezul nopții UTC.",
       "joined": "Ești în tabla de azi",
       "rank": "Locul {rank} din {total} azi"
     },
@@ -862,7 +861,8 @@
       "submit": "Intră în tablă",
       "submitting": "Se intră…",
       "public": "Numele, țara, scorul și ratingul tău sunt afișate public.",
-      "failed": "Nu s-a putut intra în tablă. Încearcă din nou."
+      "failed": "Nu s-a putut intra în tablă. Încearcă din nou.",
+      "noneRight": "Nicio piesă nu a fost corectă, așa că această încercare nu are ce să intre în clasament. Următoarea tablă se deschide la miezul nopții UTC."
     },
     "board": {
       "title": "Top 10 de azi",

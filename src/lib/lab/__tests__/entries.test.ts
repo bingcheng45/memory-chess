@@ -75,10 +75,10 @@ describe("a daily row", () => {
   });
 
   it("is remembered for its own day only: 2026-10-13's entry replaces 2026-10-12's better one and leaves the ranked boards alone", () => {
-    expect(rememberEntry(dailyRow(ID_YESTERDAY, "2026-10-12", 5), 1_000)).toBe(true);
+    expect(rememberEntry(dailyRow(ID_YESTERDAY, "2026-10-12", 5), 1_000)?.id).toBe(ID_YESTERDAY);
     expect(readDailyEntry("2026-10-12")?.id).toBe(ID_YESTERDAY);
 
-    expect(rememberEntry(dailyRow(ID_TODAY, "2026-10-13", 4), 2_000)).toBe(true);
+    expect(rememberEntry(dailyRow(ID_TODAY, "2026-10-13", 4), 2_000)?.id).toBe(ID_TODAY);
 
     expect([readDailyEntry("2026-10-13")?.id, readDailyEntry("2026-10-12")]).toEqual([ID_TODAY, null]);
     expect(window.localStorage.getItem(ENTRIES_KEY)).toBeNull();
@@ -133,14 +133,14 @@ describe("rememberEntry", () => {
   it("stores the submitted entry beside any kept for other difficulties", () => {
     window.localStorage.setItem(ENTRIES_KEY, JSON.stringify({ hard: { ...medium, id: ID_B, difficulty: "hard" } }));
 
-    expect(rememberEntry(row, 1_000)).toBe(true);
+    expect(rememberEntry(row, 1_000)).toEqual(medium);
     expect(JSON.parse(window.localStorage.getItem(ENTRIES_KEY) ?? "null")).toEqual({
       hard: { ...medium, id: ID_B, difficulty: "hard" },
       medium,
     });
   });
 
-  it("stores nothing for a reply it cannot read, and survives storage refusing the write", () => {
+  it("stores nothing for a reply it cannot read, and still hands back the entry when storage refuses the write", () => {
     const unreadable = rememberEntry({ success: true }, 1_000);
     const refuse = jest.spyOn(Storage.prototype, "setItem").mockImplementation(() => {
       throw new DOMException("full", "QuotaExceededError");
@@ -148,6 +148,6 @@ describe("rememberEntry", () => {
     const refused = rememberEntry(row, 1_000);
     refuse.mockRestore();
 
-    expect([unreadable, refused, window.localStorage.getItem(ENTRIES_KEY)]).toEqual([false, false, null]);
+    expect([unreadable, refused, window.localStorage.getItem(ENTRIES_KEY)]).toEqual([null, medium, null]);
   });
 });

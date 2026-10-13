@@ -842,7 +842,6 @@
       "copy": "Ergebnis kopieren",
       "copied": "Kopiert",
       "copyFailed": "Die Zwischenablage hat den Zugriff abgelehnt. Markiere den Text unten und kopiere ihn.",
-      "noneRight": "Keine Figur war richtig, deshalb gibt es für diesen Versuch nichts zu werten. Das nächste Brett startet um Mitternacht UTC.",
       "joined": "Du stehst auf dem heutigen Brett",
       "rank": "Platz {rank} von {total} heute"
     },
@@ -862,7 +861,8 @@
       "submit": "Dem Brett beitreten",
       "submitting": "Wird eingetragen…",
       "public": "Dein Name, dein Land, dein Ergebnis und deine Wertung sind öffentlich sichtbar.",
-      "failed": "Der Beitritt zum Brett hat nicht geklappt. Bitte versuche es noch einmal."
+      "failed": "Der Beitritt zum Brett hat nicht geklappt. Bitte versuche es noch einmal.",
+      "noneRight": "Keine Figur war richtig, deshalb gibt es für diesen Versuch nichts zu werten. Das nächste Brett startet um Mitternacht UTC."
     },
     "board": {
       "title": "Die heutigen Top 10",

@@ -842,7 +842,6 @@
       "copy": "Copiar resultado",
       "copied": "Copiado",
       "copyFailed": "El portapapeles lo ha rechazado. Selecciona el texto de abajo y cópialo.",
-      "noneRight": "Ninguna pieza fue correcta, así que este intento no entra en la clasificación. El próximo tablero se abre a medianoche UTC.",
       "joined": "Estás en el tablero de hoy",
       "rank": "Puesto {rank} de {total} hoy"
     },
@@ -862,7 +861,8 @@
       "submit": "Unirme al tablero",
       "submitting": "Uniéndote…",
       "public": "Tu nombre, país, puntuación y rating se muestran públicamente.",
-      "failed": "No se pudo unir al tablero. Inténtalo de nuevo."
+      "failed": "No se pudo unir al tablero. Inténtalo de nuevo.",
+      "noneRight": "Ninguna pieza fue correcta, así que este intento no entra en la clasificación. El próximo tablero se abre a medianoche UTC."
     },
     "board": {
       "title": "Top 10 de hoy",

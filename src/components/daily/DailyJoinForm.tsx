@@ -44,10 +44,9 @@ type Submit = "idle" | "sending" | "failed";
 
 export function DailyJoinForm({ round, onJoined }: { round: DailyRound; onJoined: (entry: DailyEntry) => void }) {
   const t = useTranslations("daily.join");
-  const page = useTranslations("daily.page");
   const { countryCode: saved, setCountryCode } = useSettingsStore();
   const rating = useGameStore((state) => state.gameState.skillRating) ?? START_RATING;
-  const geo = useGeoCountry(saved === WORLD_CODE);
+  const geo = useGeoCountry(saved === WORLD_CODE && round.correct > 0);
   const [name, setName] = useState("");
   const [submit, setSubmit] = useState<Submit>("idle");
 
@@ -57,7 +56,7 @@ export function DailyJoinForm({ round, onJoined }: { round: DailyRound; onJoined
   const nameFits = trimmed.length >= NAME_LENGTH.min && trimmed.length <= NAME_LENGTH.max;
   const sending = submit === "sending";
 
-  if (round.correct === 0) return <p className="daily-note daily-join">{page("noneRight")}</p>;
+  if (round.correct === 0) return <p className="daily-note daily-join">{t("noneRight")}</p>;
 
   const join = async (event: FormEvent) => {
     event.preventDefault();

@@ -842,7 +842,6 @@
       "copy": "Skopiuj wynik",
       "copied": "Skopiowano",
       "copyFailed": "Schowek odmówił dostępu. Zaznacz tekst poniżej i skopiuj go ręcznie.",
-      "noneRight": "Żadna bierka nie była na właściwym miejscu, więc ta próba nie trafi do rankingu. Następna szachownica pojawi się o północy UTC.",
       "joined": "Jesteś w dzisiejszej szachownicy",
       "rank": "Miejsce {rank} z {total} dzisiaj"
     },
@@ -862,7 +861,8 @@
       "submit": "Dołącz do rankingu",
       "submitting": "Dołączanie…",
       "public": "Twoja nazwa, kraj, wynik i ranking są widoczne publicznie.",
-      "failed": "Nie udało się dołączyć do rankingu. Spróbuj ponownie."
+      "failed": "Nie udało się dołączyć do rankingu. Spróbuj ponownie.",
+      "noneRight": "Żadna bierka nie była na właściwym miejscu, więc ta próba nie trafi do rankingu. Następna szachownica pojawi się o północy UTC."
     },
     "board": {
       "title": "Dzisiejsza dziesiątka",

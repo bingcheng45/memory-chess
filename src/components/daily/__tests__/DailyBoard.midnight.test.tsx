@@ -65,6 +65,16 @@ describe("a daily round finished after midnight UTC", () => {
     expect(posts).toMatchObject([{ difficulty: "daily", daily_day: "2026-10-13", piece_count: 6, memorize_time: 10 }]);
   });
 
+  it("tells a player who played the 13th's board at 10:00 and did not join that they can still join it the next morning", async () => {
+    jest.useFakeTimers({ now: Date.parse("2026-10-14T09:00:00Z"), doNotFake: ["queueMicrotask", "nextTick"] });
+    mockRecords = [{ ...ROUND_ON_13, endedAt: Date.parse("2026-10-13T10:00:00Z") }];
+
+    render(<DailyBoard />);
+    await act(async () => {});
+
+    expect(within(lateSection()).getByText("You played yesterday's board and have not joined it yet.")).toBeInTheDocument();
+  });
+
   it("keeps the form for a round finished at 23:58 when the clock passes midnight before the player joins", async () => {
     jest.useFakeTimers({ now: Date.parse("2026-10-13T23:58:30Z"), doNotFake: ["queueMicrotask", "nextTick"] });
 

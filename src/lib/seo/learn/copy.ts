@@ -26,6 +26,9 @@ export const LEARN_GUIDE_COPY = {
   ctaTag: { article: "Article", stat: "Dashboard" },
 } as const;
 
+const COUNT_WORDS = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
+const countWord = (n: number) => COUNT_WORDS[n] ?? String(n);
+
 export const LEARN_HUB_COPY = {
   meta: {
     title: "Learn Chess One Clear Step at a Time",
@@ -33,7 +36,38 @@ export const LEARN_HUB_COPY = {
       "Practical beginner chess guides for board vision, visualization, memory, calculation, blunder prevention, and daily practice.",
   },
   kicker: "Learn",
-  title: "Learn chess one clear step at a time",
-  lede: "Short guides grouped by what you want to fix. Each one explains one idea in plain language and ends with a round to play.",
+  title: "A path from your first game to a daily routine",
+  lede: (stages: number) =>
+    `${countWord(stages)} stages, each a few short guides. Read them in order, or start at the stage that matches your problem.`,
+  stageMap: "Stages",
+  stageOf: (n: number, total: number) => `Stage ${n} of ${total}`,
   guideCount: (count: number) => `${count} ${count === 1 ? "guide" : "guides"}`,
+  endsWith: ({ pieceCount, memorizeTime }: { pieceCount: number; memorizeTime: number }) =>
+    `ends with ${pieceCount} pieces, ${memorizeTime} seconds`,
+  closing: {
+    title: "Then keep the routine going",
+    body: "Play a round most days, and read how strong players and researchers describe the same skill.",
+    play: "Play a 6-piece round",
+    articles: "Read the articles",
+    stat: "Count your days played on the dashboard",
+  },
+};
+
+export const LEARN_SEARCH_COPY = {
+  label: "Ask a question",
+  placeholder: "e.g. why do I keep hanging pieces",
+  submit: "Search",
+  peopleAsk: "People ask",
+  results: "Results",
+  closest: "Closest guides",
+  answers: "Answers:",
+  article: "Article",
+  matches: (count: number) => (count === 0 ? "No guide matches" : `${count} ${count === 1 ? "guide matches" : "guides match"}`),
+  none: (query: string) => `No guide answers "${query}" yet.`,
+  noneHint: "Browse a stage, or play a round while the guide is written.",
+  playRound: "Play a 6-piece round",
+  serverTitle: "Search the Learn guides",
+  serverLede: "Type a question the way you would ask it. The guides that answer it come first.",
+  serverResults: (query: string) => `Guides for "${query}"`,
+  stages: "Stages",
 };

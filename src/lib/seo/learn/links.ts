@@ -21,3 +21,8 @@ export function ctaHref(target: CtaTarget): string {
       return dashboardTileHref(target.tile);
   }
 }
+
+export const LEARN_SEARCH_PATH = "/learn/search";
+export const LEARN_SEARCH_INDEX_PATH = "/api/learn/search-index";
+
+export const learnSearchHref = (query: string) => `${LEARN_SEARCH_PATH}?${new URLSearchParams({ q: query })}`;

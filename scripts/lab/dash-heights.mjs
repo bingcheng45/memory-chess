@@ -16,9 +16,8 @@ import "./ts-hooks.mjs";
 const { LOCALES } = await import(pathToFileURL(join(process.cwd(), "src/i18n/routing.ts")).href);
 const CASE_ENV = "LAB_DASH_HEIGHTS_CASE";
 const RESULT_FILE = "heights.json";
-// Empty, warming, ready with trends, and a long record. A stale record is left out: its note above the tiles moves
-// them whatever they reserve.
-const PERSONAS = ["newVisitor", "twoRounds", "thirtyDays", "heavy"];
+// Empty, warming, ready with trends, stale figures with their tags, and a long record.
+const PERSONAS = ["newVisitor", "twoRounds", "thirtyDays", "stale", "heavy"];
 // Both sides of each width dashboard.css changes the tiles' columns or reserves at; each tier's narrowest width is its tallest.
 const WIDTHS = [1440, 1024, 1023, 768, 767, 480, 479, 390, 360, 359, 320];
 const LISTS = ["lead", "summary"];

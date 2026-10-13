@@ -1183,22 +1183,6 @@
     "searchPlaceholder": "Országok keresése",
     "noResults": "Nem található ország"
   },
-  "settings": {
-    "meta": {
-      "title": "Memory Chess beállítások",
-      "description": "Szabd testre a Memory Chess játékod beállításait és preferenciáit."
-    },
-    "title": "Beállítások",
-    "intro": "Ezek a beállítások minden körre érvényesek, amelyet ebben a böngészőben játszol.",
-    "showCoordinates": "Tábla koordinátáinak mutatása",
-    "coordinatesHelp": "Betűk és számok a tábla szélén, amíg megjegyzed az állást és lerakod a bábukat. Az eredményképernyő mindig mutatja őket.",
-    "on": "Be",
-    "off": "Ki",
-    "savedOn": "Mentve. A tábla mutatja a koordinátákat.",
-    "savedOff": "Mentve. A tábla elrejti a koordinátákat.",
-    "home": "Főoldal",
-    "playGame": "Játék"
-  },
   "contact": {
     "meta": {
       "title": "Kapcsolat a Memory Chess-szel",

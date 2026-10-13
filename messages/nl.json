@@ -1183,22 +1183,6 @@
     "searchPlaceholder": "Zoek landen",
     "noResults": "Geen landen gevonden"
   },
-  "settings": {
-    "meta": {
-      "title": "Memory Chess-instellingen",
-      "description": "Pas de instellingen en voorkeuren van je Memory Chess-spel aan."
-    },
-    "title": "Instellingen",
-    "intro": "Deze instellingen gelden voor elke ronde die je in deze browser speelt.",
-    "showCoordinates": "Bordcoördinaten tonen",
-    "coordinatesHelp": "Letters en cijfers langs de randen van het bord terwijl je de stelling onthoudt en de stukken plaatst. Het resultaatscherm toont ze altijd.",
-    "on": "Aan",
-    "off": "Uit",
-    "savedOn": "Opgeslagen. Het bord toont zijn coördinaten.",
-    "savedOff": "Opgeslagen. Het bord verbergt zijn coördinaten.",
-    "home": "Home",
-    "playGame": "Spelen"
-  },
   "contact": {
     "meta": {
       "title": "Contact met Memory Chess",

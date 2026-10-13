@@ -1183,22 +1183,6 @@
     "searchPlaceholder": "Cari negara",
     "noResults": "Negara tidak ditemukan"
   },
-  "settings": {
-    "meta": {
-      "title": "Pengaturan Memory Chess",
-      "description": "Sesuaikan pengaturan dan preferensi permainan Memory Chess kamu."
-    },
-    "title": "Pengaturan",
-    "intro": "Pengaturan ini berlaku untuk setiap ronde yang dimainkan di browser ini.",
-    "showCoordinates": "Tampilkan koordinat papan",
-    "coordinatesHelp": "Huruf dan angka di tepi papan saat menghafal dan menempatkan bidak. Layar hasil selalu menampilkannya.",
-    "on": "Aktif",
-    "off": "Mati",
-    "savedOn": "Tersimpan. Papan akan menampilkan koordinat.",
-    "savedOff": "Tersimpan. Papan akan menyembunyikan koordinat.",
-    "home": "Beranda",
-    "playGame": "Main"
-  },
   "contact": {
     "meta": {
       "title": "Hubungi Memory Chess",

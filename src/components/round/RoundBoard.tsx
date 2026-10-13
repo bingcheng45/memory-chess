@@ -61,11 +61,10 @@ interface RoundBoardProps {
   readonly state: RoundState;
   readonly dispatch: (action: BoardAction) => void;
   readonly copy: RoundCopy;
-  readonly coordinates?: boolean;
 }
 
 // Memoized: the round's clock ticks every frame, and the board changes only with the round.
-export const RoundBoard = memo(function RoundBoard({ state, dispatch, copy, coordinates = true }: RoundBoardProps) {
+export const RoundBoard = memo(function RoundBoard({ state, dispatch, copy }: RoundBoardProps) {
   const t = useTranslations(copy);
   const pieceName = usePieceName();
   const [focusIndex, setFocusIndex] = useState(0);
@@ -93,7 +92,7 @@ export const RoundBoard = memo(function RoundBoard({ state, dispatch, copy, coor
   };
 
   return (
-    <BoardFigure coordinates={coordinates}>
+    <BoardFigure>
       <div
         className="lab-board lab-cal-grid"
         role="group"

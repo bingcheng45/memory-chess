@@ -1183,22 +1183,6 @@
     "searchPlaceholder": "搜尋國家/地區",
     "noResults": "找不到國家/地區"
   },
-  "settings": {
-    "meta": {
-      "title": "Memory Chess 設定",
-      "description": "自訂你的 Memory Chess 遊戲設定與偏好。"
-    },
-    "title": "設定",
-    "intro": "這些設定適用於你在此瀏覽器中玩的每一局。",
-    "showCoordinates": "顯示棋盤座標",
-    "coordinatesHelp": "記憶與擺放棋子時，棋盤邊緣顯示的字母與數字。結果畫面一律會顯示座標。",
-    "on": "開",
-    "off": "關",
-    "savedOn": "已儲存。棋盤將顯示座標。",
-    "savedOff": "已儲存。棋盤將隱藏座標。",
-    "home": "首頁",
-    "playGame": "開始遊戲"
-  },
   "contact": {
     "meta": {
       "title": "聯絡 Memory Chess",

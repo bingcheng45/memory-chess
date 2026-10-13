@@ -2,81 +2,60 @@ import { WORLD_CODE } from "@/lib/leaderboard/countries";
 
 const STORAGE_KEY = "memory-chess-settings";
 
+async function loadWith(stored: unknown) {
+  window.localStorage.setItem(STORAGE_KEY, JSON.stringify(stored));
+  const { useSettingsStore } = await import("../settingsStore");
+  return useSettingsStore;
+}
+
+const persisted = () => JSON.parse(window.localStorage.getItem(STORAGE_KEY) ?? "{}");
+
 describe("settingsStore migration", () => {
   beforeEach(() => {
     window.localStorage.clear();
     jest.resetModules();
   });
 
-  it("loads a v0 stored object with showCoordinates and drops the dead keys", async () => {
-    window.localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({
-        state: { difficulty: "hard", memorizationTime: 20, showCoordinates: false },
-        version: 0,
-      }),
-    );
+  it("loads a v0 stored object and drops every dead key", async () => {
+    const store = await loadWith({
+      state: { difficulty: "hard", memorizationTime: 20, showCoordinates: false },
+      version: 0,
+    });
 
-    const { useSettingsStore } = await import("../settingsStore");
-    const state = useSettingsStore.getState();
-
-    expect(state.showCoordinates).toBe(false);
-    expect(state).not.toHaveProperty("difficulty");
-    expect(state).not.toHaveProperty("memorizationTime");
-
-    const persisted = JSON.parse(window.localStorage.getItem(STORAGE_KEY) ?? "{}");
-    expect(persisted.state).toEqual({ showCoordinates: false, countryCode: WORLD_CODE });
+    expect(store.getState().countryCode).toBe(WORLD_CODE);
+    expect(store.getState()).not.toHaveProperty("showCoordinates");
+    expect(persisted()).toEqual({ state: { countryCode: WORLD_CODE }, version: 3 });
   });
 
-  it("defaults showCoordinates to true when nothing is stored", async () => {
-    const { useSettingsStore } = await import("../settingsStore");
+  it("ignores a v2 player's stored showCoordinates false and keeps their country", async () => {
+    const store = await loadWith({ state: { showCoordinates: false, countryCode: "SG" }, version: 2 });
 
-    expect(useSettingsStore.getState().showCoordinates).toBe(true);
+    expect(store.getState()).not.toHaveProperty("showCoordinates");
+    expect(store.getState().countryCode).toBe("SG");
+    expect(persisted()).toEqual({ state: { countryCode: "SG" }, version: 3 });
   });
 
-  it("reads a v1 value back with showCoordinates kept and the default country added", async () => {
-    window.localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ state: { showCoordinates: false }, version: 1 }),
-    );
-
-    const { useSettingsStore } = await import("../settingsStore");
-    const state = useSettingsStore.getState();
-
-    expect(state.showCoordinates).toBe(false);
-    expect(state.countryCode).toBe(WORLD_CODE);
-  });
-
-  it("falls back to the world code when a stored v2 country is not a known code", async () => {
-    window.localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ state: { showCoordinates: true, countryCode: "xx" }, version: 2 }),
-    );
-
+  it("defaults the country to the world code when nothing is stored", async () => {
     const { useSettingsStore } = await import("../settingsStore");
 
     expect(useSettingsStore.getState().countryCode).toBe(WORLD_CODE);
   });
 
-  it("falls back to the world code when a stored v2 country is not a string", async () => {
-    window.localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ state: { showCoordinates: true, countryCode: 42 }, version: 2 }),
-    );
+  it("falls back to the world code when a stored country is not a known code", async () => {
+    const store = await loadWith({ state: { countryCode: "xx" }, version: 3 });
 
-    const { useSettingsStore } = await import("../settingsStore");
-
-    expect(useSettingsStore.getState().countryCode).toBe(WORLD_CODE);
+    expect(store.getState().countryCode).toBe(WORLD_CODE);
   });
 
-  it("keeps a stored v2 country that is a known code", async () => {
-    window.localStorage.setItem(
-      STORAGE_KEY,
-      JSON.stringify({ state: { showCoordinates: true, countryCode: "SG" }, version: 2 }),
-    );
+  it("falls back to the world code when a stored country is not a string", async () => {
+    const store = await loadWith({ state: { countryCode: 42 }, version: 3 });
 
-    const { useSettingsStore } = await import("../settingsStore");
+    expect(store.getState().countryCode).toBe(WORLD_CODE);
+  });
 
-    expect(useSettingsStore.getState().countryCode).toBe("SG");
+  it("keeps a stored country that is a known code", async () => {
+    const store = await loadWith({ state: { countryCode: "SG" }, version: 3 });
+
+    expect(store.getState().countryCode).toBe("SG");
   });
 });

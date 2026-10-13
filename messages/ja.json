@@ -1183,22 +1183,6 @@
     "searchPlaceholder": "国を検索",
     "noResults": "国が見つかりません"
   },
-  "settings": {
-    "meta": {
-      "title": "Memory Chess の設定",
-      "description": "Memory Chess のゲーム設定と好みを調整できます。"
-    },
-    "title": "設定",
-    "intro": "この設定は、このブラウザでプレイするすべてのラウンドに適用されます。",
-    "showCoordinates": "盤面の座標を表示",
-    "coordinatesHelp": "局面を覚えるときと駒を置くときに、盤の端に表示される文字と数字です。結果画面では常に表示されます。",
-    "on": "オン",
-    "off": "オフ",
-    "savedOn": "保存しました。盤に座標を表示します。",
-    "savedOff": "保存しました。盤の座標を非表示にします。",
-    "home": "ホーム",
-    "playGame": "プレイする"
-  },
   "contact": {
     "meta": {
       "title": "Memory Chess へのお問い合わせ",

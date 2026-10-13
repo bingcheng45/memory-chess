@@ -948,7 +948,19 @@
       "memorizeTime": "Innlæringstid",
       "seconds": "{seconds} s",
       "start": "Start en runde",
-      "lastGame": "Forrige parti: {time} s løsningstid med {accuracy} % treffsikkerhet"
+      "lastGame": "Forrige parti: {time} s løsningstid med {accuracy} % treffsikkerhet",
+      "preview": {
+        "label": "Forhåndsvisning av rating",
+        "placement": "Plasseringsrunde {round} av {of}",
+        "rated": "Ratet runde",
+        "board": "Brettets rating",
+        "yours": "Din rating",
+        "clear": "Hvis du klarer det",
+        "miss": "Hvis det går galt",
+        "gain": "Opptil <num>+{value}</num>",
+        "loss": "Høyst <num>−{value}</num>",
+        "announce": "Brettets rating {board}. Din rating {rating}. Hvis du klarer det, opptil +{gain}. Hvis det går galt, høyst −{loss}."
+      }
     },
     "presets": {
       "easy": {

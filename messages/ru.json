@@ -948,7 +948,19 @@
       "memorizeTime": "Время на запоминание",
       "seconds": "{seconds} с",
       "start": "Начать раунд",
-      "lastGame": "Прошлая партия: {time} с на решение, точность {accuracy} %"
+      "lastGame": "Прошлая партия: {time} с на решение, точность {accuracy} %",
+      "preview": {
+        "label": "Прогноз рейтинга",
+        "placement": "Калибровочный раунд {round} из {of}",
+        "rated": "Рейтинговый раунд",
+        "board": "Рейтинг доски",
+        "yours": "Ваш рейтинг",
+        "clear": "Если справитесь",
+        "miss": "Если не выйдет",
+        "gain": "До <num>+{value}</num>",
+        "loss": "Не более <num>−{value}</num>",
+        "announce": "Рейтинг доски {board}. Ваш рейтинг {rating}. Если справитесь, до +{gain}. Если не выйдет, не более −{loss}."
+      }
     },
     "presets": {
       "easy": {

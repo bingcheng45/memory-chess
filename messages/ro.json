@@ -948,7 +948,19 @@
       "memorizeTime": "Timp de memorare",
       "seconds": "{seconds} s",
       "start": "Începe o rundă",
-      "lastGame": "Partida anterioară: {time} s timp de rezolvare, precizie {accuracy}%"
+      "lastGame": "Partida anterioară: {time} s timp de rezolvare, precizie {accuracy}%",
+      "preview": {
+        "label": "Previzualizare rating",
+        "placement": "Runda de plasare {round} din {of}",
+        "rated": "Rundă cu rating",
+        "board": "Ratingul tablei",
+        "yours": "Ratingul tău",
+        "clear": "Dacă reușești",
+        "miss": "Dacă greșești",
+        "gain": "Până la <num>+{value}</num>",
+        "loss": "Cel mult <num>−{value}</num>",
+        "announce": "Ratingul tablei {board}. Ratingul tău {rating}. Dacă reușești, până la +{gain}. Dacă greșești, cel mult −{loss}."
+      }
     },
     "presets": {
       "easy": {

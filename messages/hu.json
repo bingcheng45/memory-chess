@@ -948,7 +948,19 @@
       "memorizeTime": "Memorizálási idő",
       "seconds": "{seconds} mp",
       "start": "Kör indítása",
-      "lastGame": "Előző játszma: {time} mp megoldási idő, {accuracy}% pontosság"
+      "lastGame": "Előző játszma: {time} mp megoldási idő, {accuracy}% pontosság",
+      "preview": {
+        "label": "Pontszám-előnézet",
+        "placement": "Besorolás: {round}/{of}. kör",
+        "rated": "Pontozott kör",
+        "board": "A tábla pontszáma",
+        "yours": "A te pontszámod",
+        "clear": "Ha sikerül",
+        "miss": "Ha nem sikerül",
+        "gain": "Legfeljebb <num>+{value}</num>",
+        "loss": "Legfeljebb <num>−{value}</num>",
+        "announce": "A tábla pontszáma {board}. A te pontszámod {rating}. Ha sikerül, legfeljebb +{gain}. Ha nem sikerül, legfeljebb −{loss}."
+      }
     },
     "presets": {
       "easy": {

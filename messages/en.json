@@ -948,7 +948,19 @@
       "memorizeTime": "Memorization time",
       "seconds": "{seconds}s",
       "start": "Start round",
-      "lastGame": "Last game: {time}s solution time with {accuracy}% accuracy"
+      "lastGame": "Last game: {time}s solution time with {accuracy}% accuracy",
+      "preview": {
+        "label": "Rating preview",
+        "placement": "Placement round {round} of {of}",
+        "rated": "Rated round",
+        "board": "Board rating",
+        "yours": "Your rating",
+        "clear": "If you clear it",
+        "miss": "If you miss",
+        "gain": "Up to <num>+{value}</num>",
+        "loss": "At most <num>−{value}</num>",
+        "announce": "Board rating {board}. Your rating {rating}. If you clear it, up to +{gain}. If you miss, at most −{loss}."
+      }
     },
     "presets": {
       "easy": {

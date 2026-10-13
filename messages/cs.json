@@ -948,7 +948,19 @@
       "memorizeTime": "Čas na zapamatování",
       "seconds": "{seconds} s",
       "start": "Začít kolo",
-      "lastGame": "Minulá partie: {time} s na vyřešení, přesnost {accuracy} %"
+      "lastGame": "Minulá partie: {time} s na vyřešení, přesnost {accuracy} %",
+      "preview": {
+        "label": "Náhled hodnocení",
+        "placement": "Zařazovací kolo {round} z {of}",
+        "rated": "Hodnocené kolo",
+        "board": "Hodnocení desky",
+        "yours": "Vaše hodnocení",
+        "clear": "Když to zvládnete",
+        "miss": "Když to nevyjde",
+        "gain": "Až <num>+{value}</num>",
+        "loss": "Nejvýše <num>−{value}</num>",
+        "announce": "Hodnocení desky {board}. Vaše hodnocení {rating}. Když to zvládnete, až +{gain}. Když to nevyjde, nejvýše −{loss}."
+      }
     },
     "presets": {
       "easy": {

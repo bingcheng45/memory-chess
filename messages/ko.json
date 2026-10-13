@@ -948,7 +948,19 @@
       "memorizeTime": "암기 시간",
       "seconds": "{seconds}초",
       "start": "라운드 시작",
-      "lastGame": "지난 게임: 풀이 시간 {time}초, 정확도 {accuracy}%"
+      "lastGame": "지난 게임: 풀이 시간 {time}초, 정확도 {accuracy}%",
+      "preview": {
+        "label": "레이팅 미리보기",
+        "placement": "배치 라운드 {round}/{of}",
+        "rated": "레이팅 라운드",
+        "board": "보드 레이팅",
+        "yours": "내 레이팅",
+        "clear": "성공하면",
+        "miss": "실패하면",
+        "gain": "최대 <num>+{value}</num>",
+        "loss": "최대 <num>−{value}</num>",
+        "announce": "보드 레이팅 {board}. 내 레이팅 {rating}. 성공하면 최대 +{gain}. 실패하면 최대 −{loss}."
+      }
     },
     "presets": {
       "easy": {

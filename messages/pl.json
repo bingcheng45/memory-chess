@@ -948,7 +948,19 @@
       "memorizeTime": "Czas na zapamiętanie",
       "seconds": "{seconds} s",
       "start": "Rozpocznij rundę",
-      "lastGame": "Poprzednia partia: {time} s na rozwiązanie, celność {accuracy}%"
+      "lastGame": "Poprzednia partia: {time} s na rozwiązanie, celność {accuracy}%",
+      "preview": {
+        "label": "Podgląd oceny",
+        "placement": "Runda ustalająca {round} z {of}",
+        "rated": "Runda oceniana",
+        "board": "Ocena planszy",
+        "yours": "Twoja ocena",
+        "clear": "Jeśli się uda",
+        "miss": "Jeśli się nie uda",
+        "gain": "Do <num>+{value}</num>",
+        "loss": "Najwyżej <num>−{value}</num>",
+        "announce": "Ocena planszy {board}. Twoja ocena {rating}. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}."
+      }
     },
     "presets": {
       "easy": {

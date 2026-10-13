@@ -948,7 +948,19 @@
       "memorizeTime": "Thời gian ghi nhớ",
       "seconds": "{seconds} giây",
       "start": "Bắt đầu một ván",
-      "lastGame": "Ván trước: {time} giây để hoàn thành, độ chính xác {accuracy}%"
+      "lastGame": "Ván trước: {time} giây để hoàn thành, độ chính xác {accuracy}%",
+      "preview": {
+        "label": "Xem trước điểm kỹ năng",
+        "placement": "Vòng xếp hạng {round}/{of}",
+        "rated": "Ván tính điểm",
+        "board": "Điểm của bàn cờ",
+        "yours": "Điểm của bạn",
+        "clear": "Nếu bạn vượt qua",
+        "miss": "Nếu bạn trượt",
+        "gain": "Tối đa <num>+{value}</num>",
+        "loss": "Tối đa <num>−{value}</num>",
+        "announce": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Nếu bạn vượt qua, tối đa +{gain}. Nếu bạn trượt, tối đa −{loss}."
+      }
     },
     "presets": {
       "easy": {

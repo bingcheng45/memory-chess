@@ -948,7 +948,19 @@
       "memorizeTime": "Memoreringstid",
       "seconds": "{seconds} s",
       "start": "Starta en runda",
-      "lastGame": "Senaste partiet: {time} s lösningstid med {accuracy} % träffsäkerhet"
+      "lastGame": "Senaste partiet: {time} s lösningstid med {accuracy} % träffsäkerhet",
+      "preview": {
+        "label": "Förhandsvisning av rating",
+        "placement": "Placeringsrunda {round} av {of}",
+        "rated": "Ratad runda",
+        "board": "Brädets rating",
+        "yours": "Din rating",
+        "clear": "Om du klarar den",
+        "miss": "Om det går fel",
+        "gain": "Upp till <num>+{value}</num>",
+        "loss": "Högst <num>−{value}</num>",
+        "announce": "Brädets rating {board}. Din rating {rating}. Om du klarar den, upp till +{gain}. Om det går fel, högst −{loss}."
+      }
     },
     "presets": {
       "easy": {

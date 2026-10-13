@@ -948,7 +948,19 @@
       "memorizeTime": "याद करने का समय",
       "seconds": "{seconds} से.",
       "start": "एक राउंड शुरू करें",
-      "lastGame": "पिछला गेम: {time} से. में हल, {accuracy}% सटीकता के साथ"
+      "lastGame": "पिछला गेम: {time} से. में हल, {accuracy}% सटीकता के साथ",
+      "preview": {
+        "label": "रेटिंग पूर्वावलोकन",
+        "placement": "प्लेसमेंट राउंड {of} में से {round}",
+        "rated": "रेटेड राउंड",
+        "board": "बोर्ड रेटिंग",
+        "yours": "आपकी रेटिंग",
+        "clear": "अगर आप इसे पूरा करें",
+        "miss": "अगर चूक जाएँ",
+        "gain": "अधिकतम <num>+{value}</num>",
+        "loss": "अधिकतम <num>−{value}</num>",
+        "announce": "बोर्ड रेटिंग {board}। आपकी रेटिंग {rating}। अगर आप इसे पूरा करें, तो अधिकतम +{gain}। अगर चूक जाएँ, तो अधिकतम −{loss}।"
+      }
     },
     "presets": {
       "easy": {

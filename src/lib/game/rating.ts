@@ -110,9 +110,18 @@ const HARDER_GAP_CAP = 400;
 const NO_GAIN_GAP = 500;
 const MAX_RATED_CHANGE = 50;
 
-/** Perfect rounds place a player at most this far above the hardest challenge they scored on, as in Elo's performance rating. */
-const PERFECT_MARGIN = 400;
-const MAX_PLACEMENT_CHANGE = 250;
+/** A placement round reads as at most this far above or below its challenge, as in Elo's linear performance rating. */
+const PERFORMANCE_SPREAD = 400;
+/**
+ * In placement a board counts as at most BOARD_CREDIT_BASE above START_RATING, plus BOARD_CREDIT_PER_POINT for each
+ * accuracy point above FLOOR_ACCURACY, so a near-empty round on the hardest board reads as a loss to a modest board.
+ * The base stays under PERFORMANCE_SPREAD so failed rounds alone always place below the start, which keeps a failed
+ * round from raising the rating when it lifts the placement estimate's floor.
+ */
+const BOARD_CREDIT_BASE = 200;
+const BOARD_CREDIT_PER_POINT = 60;
+/** Accuracy points over which a placement round's pull grows from none, at a failed or a perfect round, to a full round's. */
+const PLACEMENT_WEIGHT_RAMP = 5;
 
 /** ±5% of the player's usual effective piece count is their normal range. */
 const NORMAL_BAND = (PIECE_WEIGHT + STUDY_WEIGHT) * Math.log2(1.05);
@@ -167,30 +176,50 @@ function rebuildHalvings({ pieceCount, rebuildSeconds }: RatedRoundFacts): numbe
  * allows. A full board studied for a second is the most the board offers; a faster rebuild keeps raising it.
  */
 export function challengeOf(round: RatedRoundFacts, maxHalvings = Infinity): number {
-  return boardLevel(round) + gateOf(round.accuracy) * REBUILD_WEIGHT * Math.min(rebuildHalvings(round), maxHalvings);
+  return boardLevel(round) + rebuildCredit(round, maxHalvings);
 }
 
-/** Elo's expected score at this rating against this challenge. */
-const expectedAt = (rating: number, challenge: number): number =>
-  1 / (1 + 10 ** (Math.min(challenge - rating, HARDER_GAP_CAP) / ELO_SCALE));
+function rebuildCredit(round: RatedRoundFacts, maxHalvings: number): number {
+  return gateOf(round.accuracy) * REBUILD_WEIGHT * Math.min(rebuildHalvings(round), maxHalvings);
+}
 
 /**
- * The rating at which the rounds' outcomes match Elo's expectation, found by bisection: the score falls as the rating
- * rises. Rounds that were all perfect have no such rating, so they stop PERFECT_MARGIN above the hardest one.
+ * A placement round's challenge. A board above START_RATING counts only as far as the accuracy earns it, so a
+ * near-empty round on the hardest board says little more than one on the start's board.
+ */
+function placementChallenge(round: RatedRoundFacts): number {
+  const earned = START_RATING + BOARD_CREDIT_BASE + BOARD_CREDIT_PER_POINT * Math.max(round.accuracy - FLOOR_ACCURACY, 0);
+  return Math.min(boardLevel(round), earned) + rebuildCredit(round, PLACEMENT_REBUILD_HALVINGS);
+}
+
+const eloExpected = (rating: number, challenge: number): number => 1 / (1 + 10 ** ((challenge - rating) / ELO_SCALE));
+
+/** Elo's expected score at this rating against this challenge, with the challenge at most HARDER_GAP_CAP above. */
+const expectedAt = (rating: number, challenge: number): number => eloExpected(rating, Math.min(challenge, rating + HARDER_GAP_CAP));
+
+/**
+ * Elo's performance rating over the placement rounds: the rating at which their scores match Elo's expectation, found
+ * by bisection. It is held at most PERFORMANCE_SPREAD above the hardest challenge scored on and below the easiest one
+ * missed on, which is where rounds all perfect or all failed stop, having no such rating. The floor is applied last,
+ * so a failed round never raises the placed rating and a perfect one never lowers it.
  */
 function placementEstimate(rounds: readonly RatedRoundFacts[]): number {
-  const challenges = rounds.map((round) => challengeOf(round, PLACEMENT_REBUILD_HALVINGS));
-  const surplus = (rating: number): number =>
-    rounds.reduce((sum, round, i) => sum + outcomeOf(round.accuracy) - expectedAt(rating, challenges[i]), 0);
-  let low = -MAX_SKILL_RATING;
-  let high = 2 * MAX_SKILL_RATING;
-  for (let step = 0; step < 50; step += 1) {
+  const challenges = rounds.map(placementChallenge);
+  const scores = rounds.map((round) => outcomeOf(round.accuracy));
+  const scored = challenges.filter((_, i) => scores[i] > 0);
+  const missed = challenges.filter((_, i) => scores[i] < 1);
+  const ceiling = Math.max(...scored) + PERFORMANCE_SPREAD;
+  const floor = Math.min(...missed) - PERFORMANCE_SPREAD;
+  if (scored.length === 0 || missed.length === 0) return clamp(scored.length === 0 ? floor : ceiling, 0, MAX_SKILL_RATING);
+  const surplus = (rating: number): number => challenges.reduce((sum, challenge, i) => sum + scores[i] - eloExpected(rating, challenge), 0);
+  let low = Math.min(...challenges) - PERFORMANCE_SPREAD;
+  let high = Math.max(...challenges) + PERFORMANCE_SPREAD;
+  for (let step = 0; step < 40; step += 1) {
     const middle = (low + high) / 2;
     if (surplus(middle) > 0) low = middle;
     else high = middle;
   }
-  const ceiling = Math.max(...challenges.filter((_, i) => outcomeOf(rounds[i].accuracy) > 0)) + PERFECT_MARGIN;
-  return clamp(Math.min((low + high) / 2, ceiling), 0, MAX_SKILL_RATING);
+  return clamp(Math.max(Math.min((low + high) / 2, ceiling), floor), 0, MAX_SKILL_RATING);
 }
 
 /** Null with no rounds. */
@@ -254,27 +283,39 @@ function speedOf(round: RatedRoundFacts, norm: PlayerNorm): number {
 
 const bounded = (rating: number): number => clamp(Math.round(rating), 0, MAX_SKILL_RATING);
 
-/** How far n placement rounds have moved a player from the start: a tenth of their estimate's distance per round. */
-const placedShift = (rounds: readonly RatedRoundFacts[]): number =>
-  rounds.length === 0 ? 0 : ((placementEstimate(rounds) - START_RATING) * rounds.length) / PLACEMENT_ROUNDS;
+/**
+ * How much of its tenth a placement round pulls toward the estimate: up, as far as it scored above FLOOR_ACCURACY,
+ * so none when failed; down, as far as it fell short of 100%, so none when perfect.
+ */
+const pullOf = (accuracy: number, up: boolean): number =>
+  clamp((up ? accuracy - FLOOR_ACCURACY : 100 - accuracy) / PLACEMENT_WEIGHT_RAMP, 0, 1);
 
 /**
- * A placement round moves the rating by how much it changes the placed shift, so a player who starts at START_RATING
- * stands at the estimate from all ten rounds once placement ends. The move is at most MAX_PLACEMENT_CHANGE and never
- * against the round's own result: a round below what the rating expected never raises it, and one above never lowers it.
+ * How far placement rounds move a player from where placement began: each round a tenth of the way to the estimate
+ * from all of them, as far as it pulls that way. A failed round only lowers the estimate and adds no pull up, so it
+ * never raises the rating; a perfect round never lowers it. Rounded, so the moves add up to it exactly.
+ */
+function placedShift(rounds: readonly RatedRoundFacts[], estimate = placementEstimate(rounds)): number {
+  if (rounds.length === 0) return 0;
+  const distance = estimate - START_RATING;
+  const pull = rounds.reduce((sum, round) => sum + pullOf(round.accuracy, distance > 0), 0);
+  return Math.round((distance * pull) / PLACEMENT_ROUNDS);
+}
+
+/**
+ * A placement round moves the rating by how much it changes the placed shift. The shift depends only on which rounds
+ * were played, not their order, so a player who starts at START_RATING stands at the estimate once placement ends,
+ * unless failed rounds would have lifted it or perfect ones dropped it there.
  */
 function placementRound(currentRating: number, history: readonly RatedRoundFacts[], round: RatedRoundFacts): RatingResult {
   const rounds = [round, ...history];
   const estimate = placementEstimate(rounds);
-  const challenge = challengeOf(round, PLACEMENT_REBUILD_HALVINGS);
-  const surprise = outcomeOf(round.accuracy) - expectedAt(currentRating, challenge);
-  const shift = clamp(placedShift(rounds) - placedShift(history), -MAX_PLACEMENT_CHANGE, MAX_PLACEMENT_CHANGE);
-  const rating = bounded(currentRating + (Math.sign(shift) === Math.sign(surprise) ? shift : 0));
+  const rating = bounded(currentRating + placedShift(rounds, estimate) - placedShift(history));
   return {
     phase: "placement",
     rating,
     change: rating - currentRating,
-    breakdown: { round: history.length + 1, of: PLACEMENT_ROUNDS, boardLevel: boardLevel(round), challenge, estimate },
+    breakdown: { round: rounds.length, of: PLACEMENT_ROUNDS, boardLevel: boardLevel(round), challenge: placementChallenge(round), estimate },
   };
 }
 

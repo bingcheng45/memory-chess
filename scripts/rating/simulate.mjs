@@ -24,6 +24,7 @@ function mulberry32(seed) {
 const LEVEL = (pieces, study) => 1000 + 550 * Math.log2(pieces / 6) + 150 * Math.log2(10 / Math.min(60, Math.max(1, study)));
 const recallChance = (skill, pieces, study) => 1 / (1 + (3 / 7) * 10 ** ((LEVEL(pieces, study) - skill) / 400));
 const MAX_PIECES = 32;
+const BOARD_PRESETS = [["Easy", 2, 10], ["Medium", 6, 10], ["Hard", 12, 8], ["Grandmaster", 20, 5], ["32 pcs, 1 s", MAX_PIECES, 1]];
 
 function playRound(rng, { skill, pieces, study, pace = 2.5, accuracy }) {
   let correct = 0;
@@ -110,7 +111,7 @@ const personas = {
   },
 };
 
-const SEEDS = 20;
+const SEEDS = 100;
 const mean = (values) => values.reduce((a, b) => a + b, 0) / values.length;
 const windowMean = (ratings, from, to) => mean(ratings.slice(from, to));
 const seeded = (name, rounds = 500) => Array.from({ length: SEEDS }, (_, seed) => run(personas[name], rounds, seed + 1));
@@ -237,23 +238,46 @@ console.log(
     (nearCap >= 0 ? `first reaching ${MAX_SKILL_RATING * 0.9} at round ${nearCap + 1}.` : `never reaching ${MAX_SKILL_RATING * 0.9} (highest ${Math.max(...long)}).`),
 );
 
+// The preview's promises: no round at the full study time and a rebuild pace no faster than the player's fastest
+// recent one gains more than the perfect gain, and no round at all loses more than the max loss.
+let previewChecked = 0;
+let previewBreaches = 0;
 if (ratingPreview) {
   console.log("\n## Setup-card preview: the board's rating and this round's range\n");
   console.log("| Player | Preset | Board rating | Max gain | Max loss | Phase |");
   console.log("|---|---|---:|---:|---:|---|");
-  const presets = [["Easy", 2, 10], ["Medium", 6, 10], ["Hard", 12, 8], ["Grandmaster", 20, 5]];
-  for (const [label, rating, history] of [["1000, new", 1000, []], ["1000, Medium norm", 1000, MEDIUM_NORM], ["1600, Medium norm", 1600, MEDIUM_NORM]]) {
-    for (const [preset, pieceCount, studySeconds] of presets) {
+  const signed = (value) => (value > 0 ? `+${value}` : `${value}`);
+  const players = [["1000, new", 1000, []], ["1000, Medium norm", 1000, MEDIUM_NORM], ["1200, Medium norm", 1200, MEDIUM_NORM], ["1600, Medium norm", 1600, MEDIUM_NORM]];
+  for (const [label, rating, history] of players) {
+    for (const [preset, pieceCount, studySeconds] of BOARD_PRESETS) {
       const p = ratingPreview(rating, history, { pieceCount, studySeconds });
-      console.log(`| ${label} | ${preset} | ${p.difficultyRating} | +${p.maxGain} | ${p.maxLoss} | ${p.phase} |`);
+      console.log(`| ${label} | ${preset} | ${p.difficultyRating} | ${signed(p.maxGain)} | ${signed(p.maxLoss)} | ${p.phase} |`);
+      const fastest = history.length > 0 ? Math.min(...history.map((round) => round.rebuildSeconds / round.pieceCount)) : 2.5;
+      for (const study of [0.1, 1, 2, studySeconds / 2, studySeconds]) {
+        for (const perPiece of [0.05, 0.25, 0.5, 1, 2.5, 5]) {
+          for (const accuracy of [0, 40, 46, 70, 90, 100]) {
+            const { change } = ratingAfter(rating, history, { pieceCount, studySeconds: Math.min(study, studySeconds), rebuildSeconds: pieceCount * perPiece, accuracy });
+            const promised = study >= studySeconds && perPiece >= fastest;
+            previewChecked += 1;
+            if ((promised && change > p.maxGain) || change < p.maxLoss) previewBreaches += 1;
+          }
+        }
+      }
     }
   }
 }
 
 // The hardest board, 32 pieces studied for 1 s and rebuilt in 8 s, at accuracies from barely above empty to a coin flip.
 const hardest = (accuracy) => ({ pieceCount: 32, studySeconds: 1, rebuildSeconds: 8, accuracy });
-const placeAll = (rounds) =>
-  rounds.reduce(({ rating, history }, round) => ({ rating: ratingAfter(rating, history, round).rating, history: [round, ...history] }), { rating: START_RATING, history: [] }).rating;
+const playAll = (rounds) =>
+  rounds.reduce(
+    ({ rating, history, changes }, round) => {
+      const { change } = ratingAfter(rating, history, round);
+      return { rating: rating + change, history: [round, ...history], changes: [...changes, change] };
+    },
+    { rating: START_RATING, history: [], changes: [] },
+  );
+const placeAll = (rounds) => playAll(rounds).rating;
 const hardestAccuracies = [41, 43, 44, 45, 46, 47, 48, 50, 52, 55];
 const hardestPlaced = hardestAccuracies.map((accuracy) => placeAll(Array.from({ length: 10 }, () => hardest(accuracy))));
 const hardestRated = hardestAccuracies.map((accuracy) => ratingAfter(1000, MEDIUM_NORM, hardest(accuracy)).change);
@@ -280,6 +304,29 @@ console.log("\n## Placement order (hardest board unless mixed)\n");
 console.log("| Ten placement rounds | Placed |");
 console.log("|---|---:|");
 for (const [label, rating] of Object.entries(orders)) console.log(`| ${label} | ${rating} |`);
+
+// Placements by players of random skill on random boards, each played forward and reversed, and the same rounds with
+// every third one emptied or made perfect: a failed placement round must never raise the rating, a perfect one never lower it.
+const orderRng = mulberry32(99);
+const PLACEMENT_SAMPLES = 300;
+let orderBroken = 0;
+let againstResult = 0;
+let largestPlacementMove = 0;
+for (let i = 0; i < PLACEMENT_SAMPLES; i += 1) {
+  const skill = 300 + 2700 * orderRng();
+  const rounds = Array.from({ length: 10 }, () => {
+    const [, pieces, study] = BOARD_PRESETS[Math.floor(orderRng() * BOARD_PRESETS.length)];
+    return playRound(orderRng, { skill, pieces, study });
+  });
+  if (Math.abs(placeAll(rounds) - placeAll([...rounds].reverse())) > 1) orderBroken += 1;
+  for (const extreme of [0, 100]) {
+    const altered = rounds.map((round, k) => (k % 3 === 2 ? { ...round, accuracy: extreme } : round));
+    playAll(altered).changes.forEach((change, k) => {
+      if ((altered[k].accuracy <= 40 && change > 0) || (altered[k].accuracy === 100 && change < 0)) againstResult += 1;
+      largestPlacementMove = Math.max(largestPlacementMove, Math.abs(change));
+    });
+  }
+}
 
 const grinderName = "Hardest-board grinder (Medium at 1000 for 30 rounds, then 32 pcs, 1 s, 46-55%)";
 const grinderRuns = seeded(grinderName);
@@ -338,9 +385,11 @@ const properties = [
   [`9a. Placement on the hardest board rises with accuracy without a jump: ${hardestPlaced.join(", ")} for ${hardestAccuracies.join(", ")}% (never falls, at most 100 per point)`,
     hardestSteps.every((step) => step >= 0 && step <= 100)],
   [`9b. Barely above empty (41-46%) on the hardest board places below an honest Hard player (${barelyAboveEmpty} < ${honestHard.toFixed(0)})`, barelyAboveEmpty < honestHard],
-  [`9c. Placement does not depend on round order: ${Object.values(orders).join(", ")} (each pair within 1)`,
-    Math.abs(orders["100% first, then 9 at 0%"] - orders["9 at 0%, then 100%"]) <= 1 && Math.abs(orders["Ten mixed boards"] - orders["The same ten reversed"]) <= 1],
+  [`9c. Placement does not depend on round order: ${Object.values(orders).join(", ")} (each pair within 1); ${orderBroken} of ${PLACEMENT_SAMPLES} random placements end elsewhere when reversed (largest single move ${largestPlacementMove})`,
+    Math.abs(orders["100% first, then 9 at 0%"] - orders["9 at 0%, then 100%"]) <= 1 && Math.abs(orders["Ten mixed boards"] - orders["The same ten reversed"]) <= 1 && orderBroken === 0],
+  [`9f. In those placements no failed round raises the rating and no perfect round lowers it (${againstResult} do)`, againstResult === 0],
   [`9d. The hardest-board grinder at 46-55% ends no higher than an honest player of the same true skill (${grinder.toFixed(0)} <= ${grinderHonest.toFixed(0)})`, grinder <= grinderHonest],
+  [`9e. The preview holds: ${previewBreaches} of ${previewChecked} rounds lose more than its max loss, or gain more than its perfect gain at the full study time and the player's fastest pace`, previewBreaches === 0],
   [`7. Placement ranks pieces > study > rebuild > baseline (${placement.pieces} > ${placement.study} > ${placement.rebuild} > ${placement.base})`,
     placement.pieces > placement.study && placement.study > placement.rebuild && placement.rebuild > placement.base],
   [`8. Ratings stay within 0..${MAX_SKILL_RATING} (seen ${Math.min(...allRatings)}..${Math.max(...allRatings)})`,

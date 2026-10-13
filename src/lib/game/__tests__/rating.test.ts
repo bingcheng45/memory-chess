@@ -7,6 +7,13 @@ const round = (pieceCount: number, studySeconds: number, accuracy: number, rebui
   accuracy,
 });
 
+/** Plays rounds from the start rating, oldest first. */
+const play = (rounds: readonly RatedRoundFacts[]) =>
+  rounds.reduce(
+    ({ rating, history }, next) => ({ rating: ratingAfter(rating, history, next).rating, history: [next, ...history] }),
+    { rating: 1000, history: [] as RatedRoundFacts[] },
+  );
+
 /** Thirty rated rounds of Medium, newest first, at a mix of 83%, 100% and 67%. */
 const mediumNorm: RatedRoundFacts[] = Array.from({ length: 30 }, (_, i) => round(6, 9 + (i % 3) * 0.5, [83, 100, 67][i % 3], 15));
 
@@ -44,10 +51,7 @@ describe("placement", () => {
   });
 
   it("stands at the estimate from all ten rounds once placement ends", () => {
-    const tenth = Array.from({ length: 9 }, () => round(6, 10, 90)).reduce(
-      ({ rating, history }, next) => ({ rating: ratingAfter(rating, history, next).rating, history: [next, ...history] }),
-      { rating: 1000, history: [] as RatedRoundFacts[] },
-    );
+    const tenth = play(Array.from({ length: 9 }, () => round(6, 10, 90)));
     expect(ratingAfter(tenth.rating, tenth.history, round(6, 10, 90))).toMatchObject({ phase: "placement", rating: 1280, breakdown: { round: 10 } });
   });
 
@@ -59,7 +63,26 @@ describe("placement", () => {
   });
 
   it("lowers the rating for an empty board however hard it was", () => {
-    expect([ratingAfter(1000, [], round(32, 1, 0, 0.2)).change, ratingAfter(1000, [], round(6, 10, 0)).change]).toEqual([-100, -100]);
+    expect([ratingAfter(1000, [], round(32, 1, 0, 0.2)).change, ratingAfter(1000, [], round(6, 10, 0)).change]).toEqual([-20, -40]);
+  });
+
+  it("places ten rounds on the hardest board higher the more they scored, with no jump above the floor", () => {
+    const placed = (accuracy: number) => play(Array.from({ length: 10 }, () => round(32, 1, accuracy, 8))).rating;
+    expect([44, 45, 46, 47].map(placed)).toEqual([1038, 1110, 1190, 1282]);
+  });
+
+  it("places the same rounds the same in either order", () => {
+    const rounds = [round(32, 1, 100, 8), ...Array.from({ length: 9 }, () => round(32, 1, 0, 8))];
+    expect([play(rounds).rating, play([...rounds].reverse()).rating]).toEqual([855, 855]);
+  });
+
+  it("never raises the rating for a failed round or lowers it for a perfect one", () => {
+    const strong = play(Array.from({ length: 5 }, () => round(20, 5, 85)));
+    expect([
+      ratingAfter(strong.rating, strong.history, round(6, 10, 0)).change,
+      ratingAfter(1000, [], round(2, 10, 100)).change,
+      play(Array.from({ length: 10 }, () => round(2, 10, 100))).rating,
+    ]).toEqual([-78, 0, 1000]);
   });
 
   it("weighs pieces over study time over rebuild time", () => {
@@ -103,7 +126,7 @@ describe("setup-card preview", () => {
       ratingPreview(1600, mediumNorm, { pieceCount: 12, studySeconds: 8 }),
       ratingPreview(1000, mediumNorm, { pieceCount: 2, studySeconds: 10 }),
     ]).toEqual([
-      { phase: "placement", difficultyRating: 1000, maxGain: 40, maxLoss: -100 },
+      { phase: "placement", difficultyRating: 1000, maxGain: 40, maxLoss: -40 },
       { phase: "rated", difficultyRating: 1598, maxGain: 13, maxLoss: -12 },
       { phase: "rated", difficultyRating: 128, maxGain: 0, maxLoss: -24 },
     ]);

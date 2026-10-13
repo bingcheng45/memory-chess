@@ -100,14 +100,14 @@ const guide: LearnDocument = {
             { from: "g5", to: "f6", kind: "attack" },
           ],
           marks: [{ square: "d8", kind: "ring" }],
-          caption: "Your bishop on g5 aims through the knight at an empty d8, so the knight on f6 is free to take the queen on h5.",
+          caption: "Your bishop on g5 hits the knight on f6, but nothing stands behind it on d8, so Nxh5 wins your queen for nothing.",
         },
         {
           kind: "list",
           ordered: false,
           items: [
             "Never looked. You did not check what the knight on f6 attacked. It had stood there for ten moves and your eyes never went to it.",
-            "Looked and misjudged. You saw the knight but counted it as pinned by your bishop. Black's queen had left d8 for d7 a move earlier, so nothing stood behind it.",
+            "Looked and misjudged. You saw the knight but counted it as pinned to a queen on d8. The queen had gone to d7 a move earlier. Even on d8 it would not have saved you, because after Nxh5 Bxd8 Kxd8 Black is still a bishop up.",
             "Knew and rushed. You saw the knight could take on h5, had 30 seconds on the clock, and played the move anyway. Treat this as a clock problem, and play longer games before you study more.",
           ],
         },

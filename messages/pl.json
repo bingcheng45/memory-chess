@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "Dzisiejsza dziesiątka",
+      "playedLike": "Dzisiejsza plansza grała jak {rating}",
+      "playedLikeNote": "Szacunek na podstawie wyników dzisiejszych graczy.",
       "rank": "Miejsce",
       "player": "Gracz",
       "right": "Dobrze",

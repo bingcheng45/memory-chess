@@ -29,7 +29,21 @@ describe("today's rows when the device's clock is off", () => {
 
     const { result } = renderHook(() => useDailyRows("2026-10-20", 0));
 
-    await waitFor(() => expect(result.current).toEqual({ state: "ready", rows: [ROW] }));
+    await waitFor(() => expect(result.current).toEqual({ state: "ready", rows: [ROW], playedLike: null }));
     expect(asked).toEqual(["/api/leaderboard?difficulty=daily&daily_day=2026-10-20", "/api/leaderboard?difficulty=daily"]);
+  });
+});
+
+describe("how today's board played", () => {
+  it.each([
+    ["a rating", 1340, 1340],
+    ["no rating yet", null, null],
+    ["something that is not a number", "1340", null],
+  ])("reads %s from the board's answer", async (_case, playedLike, expected) => {
+    global.fetch = jest.fn(async () => ({ ok: true, status: 200, json: async () => ({ data: [ROW], playedLike }) })) as unknown as typeof fetch;
+
+    const { result } = renderHook(() => useDailyRows("2026-10-13", 0));
+
+    await waitFor(() => expect(result.current).toEqual({ state: "ready", rows: [ROW], playedLike: expected }));
   });
 });

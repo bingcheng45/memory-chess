@@ -58,6 +58,8 @@
 .lab-paper .daily-change { padding: 0; border: 0; background: none; font: inherit; color: var(--lp-accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 
 .lab-paper .daily-top { min-height: 420px; }
+.lab-paper .daily-played { min-height: 1.55em; margin-top: -8px; font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .daily-played strong { font: 600 15px/1.55 var(--lp-ui); color: var(--lp-ink); font-variant-numeric: tabular-nums; }
 .lab-paper .daily-table-wrap { overflow-x: auto; }
 .lab-paper .daily-table { width: 100%; border-collapse: collapse; font: 400 15px/1.35 var(--lp-body); color: var(--lp-ink); }
 .lab-paper .daily-table th { padding: 8px; text-align: left; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); border-bottom: 1px solid var(--lp-line); white-space: nowrap; }

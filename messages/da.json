@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "Dagens top 10",
+      "playedLike": "Dagens bræt spillede som {rating}",
+      "playedLikeNote": "Anslået ud fra dagens spillere.",
       "rank": "Plads",
       "player": "Spiller",
       "right": "Rigtige",

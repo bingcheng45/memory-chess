@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "Top 10 de azi",
+      "playedLike": "Tabla de azi a jucat ca {rating}",
+      "playedLikeNote": "Estimare din rezultatele jucătorilor de azi.",
       "rank": "Loc",
       "player": "Jucător",
       "right": "Corecte",

@@ -2,11 +2,12 @@
 
 import { NextRequest } from "next/server";
 import { GET, POST } from "@/app/api/leaderboard/route";
-import { getLeaderboard, submitLeaderboardEntry } from "@/lib/services/leaderboardService";
+import { getDailyResults, getLeaderboard, submitLeaderboardEntry } from "@/lib/services/leaderboardService";
 import { checkSupabaseConnection } from "@/lib/supabase";
 import { WORLD_CODE } from "@/lib/leaderboard/countries";
 
 jest.mock("@/lib/services/leaderboardService", () => ({
+  getDailyResults: jest.fn(),
   getLeaderboard: jest.fn(),
   submitLeaderboardEntry: jest.fn(),
 }));
@@ -411,6 +412,7 @@ describe("GET /api/leaderboard", () => {
   beforeEach(() => {
     jest.mocked(checkSupabaseConnection).mockResolvedValue({ connected: true });
     jest.mocked(getLeaderboard).mockResolvedValue({ data: [] });
+    jest.mocked(getDailyResults).mockResolvedValue([]);
   });
 
   afterEach(() => {
@@ -424,6 +426,7 @@ describe("GET /api/leaderboard", () => {
     const response = await get(difficulty);
 
     expect(response.status).toBe(200);
+    expect(await response.json()).toEqual({ data: [] });
     expect(getLeaderboard).toHaveBeenCalledWith({ difficulty });
   });
 
@@ -440,6 +443,37 @@ describe("GET /api/leaderboard", () => {
 
       expect(response.status).toBe(200);
       expect(getLeaderboard).toHaveBeenCalledWith({ difficulty: "daily", daily_day: day });
+    });
+
+    const results = (count: number) =>
+      Array.from({ length: count }, (_, index) =>
+        index % 2
+          ? { piece_count: 6, correct_pieces: 5, total_wrong_pieces: 1, skill_rating: 1400 }
+          : { piece_count: 6, correct_pieces: 4, total_wrong_pieces: 2, skill_rating: 1400 },
+      );
+
+    it("says how today's board played once 25 players have joined it", async () => {
+      jest.mocked(getDailyResults).mockResolvedValue(results(30));
+
+      const response = await get("daily");
+
+      expect(await response.json()).toEqual({ data: [], playedLike: 1180 });
+      expect(getDailyResults).toHaveBeenCalledWith("2026-10-13");
+    });
+
+    it("says nothing of how the board played before 25 players have joined it", async () => {
+      jest.mocked(getDailyResults).mockResolvedValue(results(24));
+
+      expect(await (await get("daily")).json()).toEqual({ data: [], playedLike: null });
+    });
+
+    it("still answers with the board when the results cannot be read", async () => {
+      jest.mocked(getDailyResults).mockResolvedValue(null);
+
+      const response = await get("daily");
+
+      expect(response.status).toBe(200);
+      expect(await response.json()).toEqual({ data: [], playedLike: null });
     });
 
     it.each(["2026-10-11", "2026-10-14", "2026-02-30"])("refuses the daily board of %s, outside the days a row can join", async (day) => {

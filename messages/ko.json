@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "오늘의 TOP 10",
+      "playedLike": "오늘의 보드는 {rating} 수준으로 플레이됐습니다",
+      "playedLikeNote": "오늘 플레이어들의 결과로 추정한 값입니다.",
       "rank": "순위",
       "player": "플레이어",
       "right": "정답",

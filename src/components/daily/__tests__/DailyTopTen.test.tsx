@@ -33,7 +33,7 @@ describe("today's top 10", () => {
   it("shows ten rows, then this device's own twelfth row highlighted with its rating", () => {
     const joined = { id: ROWS[11].id, difficulty: "daily", dailyDay: "2026-10-13" } as DailyEntry;
 
-    render(<DailyTopTen rows={{ state: "ready", rows: ROWS }} joined={joined} played />);
+    render(<DailyTopTen rows={{ state: "ready", rows: ROWS, playedLike: null }} joined={joined} played />);
 
     const body = screen.getAllByRole("rowgroup")[1];
     const shown = within(body).getAllByRole("row").filter((tr) => !tr.classList.contains("daily-gap"));
@@ -44,9 +44,17 @@ describe("today's top 10", () => {
   });
 
   it("asks a player who has played but not joined to join, and says so when no one has", () => {
-    render(<DailyTopTen rows={{ state: "ready", rows: [] }} joined={null} played />);
+    render(<DailyTopTen rows={{ state: "ready", rows: [], playedLike: null }} joined={null} played />);
 
     expect(screen.getByText("No one has joined today's board yet. Play it and be the first.")).toBeInTheDocument();
     expect(screen.getByText("Join the board to see your rank here.")).toBeInTheDocument();
+  });
+
+  it("says how today's board played once the read carries it, and keeps the line empty before", () => {
+    const { container, rerender } = render(<DailyTopTen rows={{ state: "ready", rows: ROWS, playedLike: null }} joined={null} played={false} />);
+    expect(container.querySelector(".daily-played")).toHaveTextContent(/^$/);
+
+    rerender(<DailyTopTen rows={{ state: "ready", rows: ROWS, playedLike: 1340 }} joined={null} played={false} />);
+    expect(container.querySelector(".daily-played")).toHaveTextContent("Today's board played like 1,340 · Estimated from today's players.");
   });
 });

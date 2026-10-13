@@ -1681,6 +1681,8 @@
     },
     "board": {
       "title": "Top 10 hôm nay",
+      "playedLike": "Bàn cờ hôm nay chơi như {rating}",
+      "playedLikeNote": "Ước tính từ kết quả của người chơi hôm nay.",
       "rank": "Hạng",
       "player": "Người chơi",
       "right": "Đúng",

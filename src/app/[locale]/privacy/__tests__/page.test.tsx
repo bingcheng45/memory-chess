@@ -100,12 +100,42 @@ describe("PrivacyPage", () => {
     expect(screen.queryByText(/never sent to Memory Chess or to analytics/)).not.toBeInTheDocument();
   });
 
-  it("says the progress card leaves only on a press and analytics hear only how it left", () => {
+  it("says what the progress and result cards draw, and that nothing leaves the device until the player picks a way to share", () => {
     render(<PrivacyPage />);
 
     expect(
       screen.getByText(
-        /The progress page reads the same record in your browser and sends nothing\. Only when you press Share my progress does your browser draw a picture of your memory span, pieces held, speed, streak and rounds played.*Google Analytics receives an event that names only how the card left the page, through the share sheet, as a saved picture or as a copied caption, with none of its figures\./,
+        /The progress page reads the same record in your browser and sends nothing\. Only when you press Share my progress does your browser draw a picture of the figures the record can read: your memory span, skill rating, pieces held, speed, best and recent accuracy, win streak, days in a row, rounds played and days played\. Only when you press Share result on the game's result screen does your browser draw a picture of that round: its accuracy, the pieces you recalled, the number of pieces, the study time allowed and taken, the rebuild time, and, except on a review, your rating, its change and any win streak, and, except on today's board, the board you studied and the board you rebuilt\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Either button opens a share window, and nothing leaves your browser until you choose one of its actions: hand the picture, a short caption and a link to your device's share sheet, download the picture, copy the picture, copy the caption with its link, or open the post page of X, Facebook, LinkedIn, Reddit, WhatsApp, Threads or Bluesky with the link, and on all but Facebook and LinkedIn the caption, filled in\. What you send there is handled under that service's own privacy terms\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("says a shared link carries its card in the URL, a result link both boards and the placement order, only when the player shares it", () => {
+    render(<PrivacyPage />);
+
+    expect(
+      screen.getByText(
+        /The record itself, with its positions, squares, placements and history, never leaves this device\. A round you choose to share is the one exception, described below\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /The link in the caption opens the card's own page on Memory Chess, and the card's figures are written into the link itself\. A shared result link, under \/share\/result\/, also carries the board you studied, the board you rebuilt, and the order and timing of each piece you placed, unless the round was today's board, whose link carries no position\. Anyone who opens the link can read them, and Memory Chess reads them from the link to draw the page and its preview\. A link is made only when you share a card, and Memory Chess does not save it\. Like any page on the site, the analytics tools named above record the page's address, link included, when someone opens it\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("names both share events, every method they report and every network, and what they never carry", () => {
+    render(<PrivacyPage />);
+
+    expect(
+      screen.getByText(
+        /Google Analytics receives a lab_dashboard_share event when a progress card leaves the page and a result_share event when a result card does\. Each names only how it left, as its method: native for the share sheet, download for a downloaded picture, copy_image for a copied picture, copy for a copied caption, or post for a network's post page, with that network named as x, facebook, linkedin, reddit, whatsapp, threads or bluesky\. Neither event carries the card's figures, its boards or its link\./,
       ),
     ).toBeInTheDocument();
   });

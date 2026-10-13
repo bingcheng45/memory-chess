@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Fig. {number} · Dagens brett",
           "title": "Ett brett om dagen, det samme for alle.",
-          "desc": "En ny stilling åpner hver dag ved midnatt UTC. Alle får de samme 6 brikkene og 10 sekunder til å studere, og du får ett forsøk.",
+          "desc": "En ny stilling åpner hver dag ved midnatt UTC. Alle får det samme brettet og den samme tiden til å studere, og du får ett forsøk.",
           "play": "Spill dagens brett",
           "open": "Dagens brett har {pieceCount, plural, one {# brikke} other {# brikker}} og {memorizeSeconds, plural, one {# sekund} other {# sekunder}} til å studere. Du har ikke spilt dagens brett ennå.",
           "played": "Du plasserte {correct} av {pieceCount, plural, one {# brikke} other {# brikker}} riktig, {accuracy} prosent.",

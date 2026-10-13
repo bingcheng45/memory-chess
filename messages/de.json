@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Abb. {number} · Tagesbrett",
           "title": "Ein Brett pro Tag, für alle gleich.",
-          "desc": "Jeden Tag um Mitternacht UTC öffnet sich eine neue Stellung. Alle bekommen dieselben 6 Figuren und 10 Sekunden zum Einprägen, und du hast einen Versuch.",
+          "desc": "Jeden Tag um Mitternacht UTC öffnet sich eine neue Stellung. Alle bekommen dasselbe Brett und dieselbe Zeit zum Einprägen, und du hast einen Versuch.",
           "play": "Heutiges Brett spielen",
           "open": "Das heutige Brett hat {pieceCount, plural, one {# Figur} other {# Figuren}} und {memorizeSeconds, plural, one {# Sekunde} other {# Sekunden}} zum Einprägen. Du hast das heutige Brett noch nicht gespielt.",
           "played": "Du hast {correct} von {pieceCount, plural, one {# Figur} other {# Figuren}} richtig gesetzt, {accuracy} Prozent.",

@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Ryc. {number} · Plansza dnia",
           "title": "Jedna plansza dziennie, ta sama dla wszystkich.",
-          "desc": "Nowa pozycja otwiera się codziennie o północy UTC. Każdy dostaje te same 6 figur i 10 sekund na zapamiętanie, a ty masz jedną próbę.",
+          "desc": "Nowa pozycja otwiera się codziennie o północy UTC. Każdy dostaje tę samą planszę i tyle samo czasu na zapamiętanie, a ty masz jedną próbę.",
           "play": "Zagraj dzisiejszą planszę",
           "open": "Dzisiejsza plansza ma {pieceCount, plural, one {# bierkę} few {# bierki} many {# bierek} other {# bierki}} i {memorizeSeconds, plural, one {# sekundę} few {# sekundy} many {# sekund} other {# sekundy}} na zapamiętanie. Dzisiejsza plansza jeszcze na ciebie czeka.",
           "played": "Poprawnie ustawione: {correct} z {pieceCount, plural, one {# figury} few {# figur} many {# figur} other {# figury}}, {accuracy} procent.",

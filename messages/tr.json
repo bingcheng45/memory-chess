@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Şek. {number} · Günün tahtası",
           "title": "Günde bir tahta, herkes için aynı.",
-          "desc": "Her gün UTC gece yarısında yeni bir konum açılır. Herkes aynı 6 taşı ve incelemek için 10 saniye alır. Senin de tek bir hakkın var.",
+          "desc": "Her gün UTC gece yarısında yeni bir konum açılır. Herkes aynı tahtayı ve incelemek için aynı süreyi alır. Senin de tek bir hakkın var.",
           "play": "Günün tahtasını oyna",
           "open": "Bugünün tahtasında {pieceCount, plural, one {# taş} other {# taş}} var ve incelemek için {memorizeSeconds, plural, one {# saniye} other {# saniye}} süren var. Günün tahtasını henüz oynamadın.",
           "played": "{pieceCount, plural, one {# taştan} other {# taştan}} {correct} tanesini doğru yerleştirdin, yüzde {accuracy}.",

@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Fig. {number} · Scacchiera del giorno",
           "title": "Una scacchiera al giorno, uguale per tutti.",
-          "desc": "Ogni giorno a mezzanotte UTC si apre una nuova posizione. Tutti hanno gli stessi 6 pezzi e 10 secondi di studio, e hai un solo tentativo.",
+          "desc": "Ogni giorno a mezzanotte UTC si apre una nuova posizione. Tutti hanno la stessa scacchiera e lo stesso tempo di studio, e hai un solo tentativo.",
           "play": "Gioca la scacchiera del giorno",
           "open": "La scacchiera di oggi ha {pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}} e {memorizeSeconds, plural, one {# secondo} many {# secondi} other {# secondi}} per studiarla. Non hai ancora giocato la scacchiera di oggi.",
           "played": "Hai piazzato correttamente {correct} su {pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}}, il {accuracy} percento.",

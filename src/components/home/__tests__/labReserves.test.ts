@@ -5,23 +5,24 @@ import measured from "../lab-heights.json";
 const css = readFileSync(join(__dirname, "../lab-instruments.css"), "utf8");
 const SLACK_PX = 12;
 const EMPTY_GAP_PX = 220;
+const RECORD_ONLY = "[data-lab-record] ~ .lab-paper ";
 const BOXES = {
   unlock: ".lab-unlock",
-  span: ".lab-p-span",
-  held: ".lab-p-held",
-  spark: ".lab-p-spark",
-  speed: ".lab-p-speed",
-  heat: ".lab-p-heat",
-  streak: ".lab-p-streak",
-  bests: ".lab-p-bests",
-  types: ".lab-p-types",
-  insights: ".lab-p-insights",
-  notebook: ".lab-p-notebook",
-  plans: ".lab-p-plans",
-  goal: ".lab-p-goal",
-  daily: ".lab-p-daily",
-  curve: ".lab-p-curve",
-  board: ".lab-p-board",
+  span: `${RECORD_ONLY}.lab-p-span`,
+  held: `${RECORD_ONLY}.lab-p-held`,
+  spark: `${RECORD_ONLY}.lab-p-spark`,
+  speed: `${RECORD_ONLY}.lab-p-speed`,
+  heat: `${RECORD_ONLY}.lab-p-heat`,
+  streak: `${RECORD_ONLY}.lab-p-streak`,
+  bests: `${RECORD_ONLY}.lab-p-bests`,
+  types: `${RECORD_ONLY}.lab-p-types`,
+  insights: `${RECORD_ONLY}.lab-p-insights`,
+  notebook: `${RECORD_ONLY}.lab-p-notebook`,
+  plans: `${RECORD_ONLY}.lab-p-plans`,
+  goal: `${RECORD_ONLY}.lab-p-goal`,
+  daily: `${RECORD_ONLY}.lab-p-daily`,
+  curve: `${RECORD_ONLY}.lab-p-curve`,
+  board: `${RECORD_ONLY}.lab-p-board`,
   tools: ".lab-tools-slot",
 } as const;
 type Box = keyof typeof BOXES;
@@ -75,8 +76,9 @@ describe("lab record reserved heights", () => {
     expect(short).toEqual([]);
   });
 
-  it("leave no more than about 220px blank under any empty or Sample panel on English phones", () => {
+  it("leave no more than about 220px blank under any box a browser without a record still reserves, on English phones", () => {
     const blank = Object.entries(measured.english.empty.narrow).flatMap(([box, height]) => {
+      if (BOXES[box as Box].startsWith(RECORD_ONLY)) return [];
       const gap = (ENGLISH.narrow[box as Box] ?? 0) - height;
       return gap > EMPTY_GAP_PX ? [`${box}: ${gap}px`] : [];
     });
@@ -87,7 +89,7 @@ describe("lab record reserved heights", () => {
 
   it("give each box its reserve as a minimum height", () => {
     const unreserved = Object.entries(BOXES).filter(
-      ([box, selector]) => !new RegExp(`^${selector.replace(".", "\\.")} \\{[^}]*min-height: var\\(--lab-h-${box}\\)`, "m").test(css),
+      ([box, selector]) => !new RegExp(`^${escape(selector)} \\{[^}]*min-height: var\\(--lab-h-${box}\\)`, "m").test(css),
     );
 
     expect(unreserved).toEqual([]);

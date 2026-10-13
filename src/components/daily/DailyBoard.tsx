@@ -62,11 +62,7 @@ function LateJoin({ round }: { round: DailyRound }) {
   const t = useTranslations("daily.page");
   const tJoin = useTranslations("daily.join");
   const format = useFormatter();
-  const [joined, setJoined] = useState<DailyEntry | "before" | null>(null);
-
-  useEffect(() => {
-    if (readDailyEntry(round.dailyDay)) setJoined("before");
-  }, [round.dailyDay]);
+  const [joined, setJoined] = useState<DailyEntry | "before" | null>(() => (readDailyEntry(round.dailyDay) ? "before" : null));
 
   if (joined === "before") return null;
   const date = format.dateTime(Date.parse(`${round.dailyDay}T00:00:00Z`), { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" });

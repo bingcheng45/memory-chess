@@ -1,5 +1,8 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import { act, fireEvent, render, screen } from "@/test-utils/intl";
 import { DailyPanel } from "@/components/home/LabDailyPanel";
+import { routing } from "@/i18n/routing";
 import { buildRoundRecord, type RoundRecord } from "@/lib/lab/record";
 
 const BOARD = "8/8/8/1pQ4k/P2p4/8/8/1K6";
@@ -106,5 +109,29 @@ describe("today's board panel", () => {
     expect(playLink()).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=2&source=daily");
     expect(screen.getByText("Daily streak 1 day · longest 1 day")).toBeInTheDocument();
     expect(screen.getByText("Resets in 23 h 59 min")).toBeInTheDocument();
+  });
+
+  describe.each(routing.locales)("in %s", (locale) => {
+    const renderIn = () => {
+      const catalogue = JSON.parse(readFileSync(join(process.cwd(), "messages", `${locale}.json`), "utf8"));
+      return render(<DailyPanel records={[]} ready />, { locale, messages: catalogue });
+    };
+    const counts = (text: string | null | undefined) => (text?.match(/\d+/g) ?? []).map(Number).filter((n) => n > 0);
+
+    it("states today's piece count and study time once, in the status line and not in the description", () => {
+      const { container } = renderIn();
+
+      const desc = container.querySelector(".lab-panel-desc")?.textContent;
+      const status = container.querySelector(".lab-daily-status")?.textContent;
+      expect({ desc: counts(desc), status: counts(status) }).toEqual({ desc: [], status: [9, 8] });
+    });
+
+    if (["ja", "zh-CN", "zh-TW"].includes(locale)) {
+      it("sets each number flush against its counter word", () => {
+        const { container } = renderIn();
+
+        expect(container.querySelector(".lab-daily-status")?.textContent).not.toMatch(/\d\s/);
+      });
+    }
   });
 });

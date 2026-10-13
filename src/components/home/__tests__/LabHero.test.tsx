@@ -1,6 +1,7 @@
 import { renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabHero } from "@/components/home/LabHero";
 import { useTotalPlays } from "@/components/home/useLabEffects";
+import de from "../../../../messages/de.json";
 
 function HeroWithLivePlays() {
   return <LabHero totalPlays={useTotalPlays()} />;
@@ -60,5 +61,11 @@ describe("LabHero games-played stat", () => {
     renderWithIntl(<LabHero totalPlays={{ status: "known", plays: 1 }} />);
 
     expect(factTexts()[0]).toEqual(["1", "1game played"]);
+  });
+
+  it("writes the count the way the page's language writes numbers", () => {
+    renderWithIntl(<LabHero totalPlays={{ status: "known", plays: 46543 }} />, { locale: "de", messages: de });
+
+    expect(factTexts()[0]).toEqual(["46.543", "46.543gespielte Partien"]);
   });
 });

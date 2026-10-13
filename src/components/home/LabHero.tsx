@@ -1,9 +1,8 @@
 "use client";
 
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { LOCALES } from "@/i18n/routing";
-import { formatNumber } from "@/lib/utils";
 import { MEMORIZE_SECONDS_RANGE, PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import { LAB_SECTIONS } from "./SectionHeading";
 import { ShowcaseBoard } from "./ShowcaseBoard";
@@ -22,6 +21,7 @@ function range(min: number, max: number, unit = ""): string {
 export function LabHero({ totalPlays }: { totalPlays: TotalPlays }) {
   const t = useTranslations("home");
   const lab = useTranslations("home.lab");
+  const format = useFormatter();
 
   const plays = totalPlays.status === "known" ? totalPlays.plays : null;
   const facts = [
@@ -62,7 +62,7 @@ export function LabHero({ totalPlays }: { totalPlays: TotalPlays }) {
           </p>
           <div className="lab-facts">
             <div className="lab-fact-lead" data-status={totalPlays.status} aria-busy={totalPlays.status === "loading"}>
-              <b>{plays === null ? PLAYS_PENDING : formatNumber(plays)}</b>
+              <b>{plays === null ? PLAYS_PENDING : format.number(plays)}</b>
               {lab("hero.facts.plays", { count: plays ?? GENERAL_COUNT })}
             </div>
             {facts.map((fact) => (

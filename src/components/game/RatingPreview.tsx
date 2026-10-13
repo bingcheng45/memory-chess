@@ -78,18 +78,14 @@ export default function RatingPreview({ pieceCount, memorizeTime, announceKey, o
         <div className="lab-preview-cell">
           <dt>{t('suggested')}</dt>
           <dd data-preview="suggested">
-            {shown ? (
-              <button
-                type="button"
-                className="lab-preview-suggest"
-                disabled={onSuggested}
-                onClick={() => onSuggest(shown.suggested.pieceCount, shown.suggested.studySeconds)}
-              >
-                {tConfig('presetSummary', { pieces: shown.suggested.pieceCount, seconds: shown.suggested.studySeconds })}
-              </button>
-            ) : (
-              blank
-            )}
+            <button
+              type="button"
+              className="lab-preview-suggest"
+              disabled={!shown || onSuggested}
+              onClick={() => shown && onSuggest(shown.suggested.pieceCount, shown.suggested.studySeconds)}
+            >
+              {shown ? tConfig('presetSummary', { pieces: shown.suggested.pieceCount, seconds: shown.suggested.studySeconds }) : blank}
+            </button>
           </dd>
         </div>
         <div className="lab-preview-cell lab-preview-gain">

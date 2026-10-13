@@ -33,16 +33,16 @@
 .lab-paper .lab-tile { display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 140px; padding: 20px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
 /* The lead and summary tiles reserve the tallest row a record draws at each width, measured by
    `npm run lab:dash-heights`, so the summary under them stays put when the figures arrive. Rerun it after a copy or layout change. */
-.lab-paper { --lab-h-dash-lead: 200px; --lab-h-dash-summary: 160px; }
+.lab-paper { --lab-h-dash-lead: 176px; --lab-h-dash-summary: 160px; }
 @media (max-width: 1023px) { .lab-paper { --lab-h-dash-lead: 176px; --lab-h-dash-summary: 168px; } }
 @media (max-width: 767px) { .lab-paper { --lab-h-dash-lead: 184px; --lab-h-dash-summary: 152px; } }
 @media (max-width: 479px) { .lab-paper { --lab-h-dash-lead: 232px; --lab-h-dash-summary: 192px; } }
 @media (max-width: 359px) { .lab-paper { --lab-h-dash-lead: 256px; --lab-h-dash-summary: 192px; } }
-.lab-paper:not(:lang(en)) { --lab-h-dash-lead: 240px; --lab-h-dash-summary: 168px; }
+.lab-paper:not(:lang(en)) { --lab-h-dash-lead: 200px; --lab-h-dash-summary: 168px; }
 @media (max-width: 1023px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 200px; --lab-h-dash-summary: 208px; } }
 @media (max-width: 767px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 216px; --lab-h-dash-summary: 192px; } }
 @media (max-width: 479px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 288px; --lab-h-dash-summary: 224px; } }
-@media (max-width: 359px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 312px; --lab-h-dash-summary: 248px; } }
+@media (max-width: 359px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 328px; --lab-h-dash-summary: 248px; } }
 .lab-paper .lab-tiles[data-size="lead"] .lab-tile { min-height: var(--lab-h-dash-lead); }
 .lab-paper .lab-tiles[data-size="summary"] .lab-tile { min-height: var(--lab-h-dash-summary); }
 .lab-paper .lab-tile-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }

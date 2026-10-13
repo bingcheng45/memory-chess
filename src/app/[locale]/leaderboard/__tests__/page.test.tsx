@@ -16,6 +16,7 @@ const env = process.env as Record<string, string | undefined>;
 const original = { NODE_ENV: env.NODE_ENV, NEXT_PHASE: env.NEXT_PHASE };
 
 afterEach(() => {
+  jest.useRealTimers();
   env.NODE_ENV = original.NODE_ENV;
   env.NEXT_PHASE = original.NEXT_PHASE;
 });
@@ -34,6 +35,34 @@ describe("LeaderboardPage when a board fails to load", () => {
     delete env.NEXT_PHASE;
 
     await expect(LeaderboardPage()).rejects.toThrow("Leaderboard refresh failed");
+  });
+
+  it("still throws in a production revalidation when only a difficulty board fails", async () => {
+    env.NODE_ENV = "production";
+    delete env.NEXT_PHASE;
+    jest.mocked(getLeaderboard).mockImplementation(async (board) =>
+      board.difficulty === "medium" ? { data: [], error: "Database connection issue" } : { data: [] },
+    );
+
+    await expect(LeaderboardPage()).rejects.toThrow("Leaderboard refresh failed");
+  });
+
+  it("renders a production revalidation whose only failure is the daily read, with that failure on the Daily tab", async () => {
+    env.NODE_ENV = "production";
+    delete env.NEXT_PHASE;
+    jest.useFakeTimers({ now: new Date("2026-10-13T10:00:00Z") });
+    global.fetch = jest.fn(() => new Promise<Response>(() => {}));
+    jest.mocked(getLeaderboard).mockImplementation(async (board) =>
+      board.difficulty === "daily" ? { data: [], error: "relation \"leaderboard\" does not exist" } : { data: [] },
+    );
+
+    await renderPage();
+    expect(screen.getByText(enMessages.leaderboard.emptyTitle)).toBeInTheDocument();
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Daily" }));
+    });
+
+    expect(screen.getByText(enMessages.leaderboard.unavailableTitle)).toBeInTheDocument();
   });
 
   it("renders the unavailable state during the production build", async () => {
@@ -71,8 +100,6 @@ describe("LeaderboardPage daily board", () => {
     created_at: `${day}T09:00:00Z`,
   });
   const DAILY_ROWS = [row("Bea Yesterday", "2026-10-12"), row("Ada Today", "2026-10-13")];
-
-  afterEach(() => jest.useRealTimers());
 
   it("serves only the rows of the server's UTC day under the Daily tab", async () => {
     jest.useFakeTimers({ now: new Date("2026-10-13T10:00:00Z") });

@@ -1,7 +1,6 @@
 import { fireEvent, render, screen } from "@/test-utils/intl";
 import GameConfig from "@/components/game/GameConfig";
 import { useGameStore } from "@/lib/store/gameStore";
-import { useSettingsStore } from "@/stores/settingsStore";
 
 const pristineGameState = useGameStore.getState().gameState;
 
@@ -153,18 +152,3 @@ describe("GameConfig start", () => {
   });
 });
 
-describe("GameConfig coordinates switch", () => {
-  afterEach(() => {
-    useSettingsStore.setState({ showCoordinates: true });
-  });
-
-  it("hides the next round's coordinates through the same setting the settings page writes", () => {
-    useSettingsStore.setState({ showCoordinates: true });
-    render(<GameConfig />);
-
-    fireEvent.click(screen.getByRole("switch", { name: "Show board coordinates" }));
-
-    expect(screen.getByRole("switch", { name: "Show board coordinates" })).toHaveAttribute("aria-checked", "false");
-    expect(useSettingsStore.getState().showCoordinates).toBe(false);
-  });
-});

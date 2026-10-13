@@ -98,7 +98,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const tDaily = useTranslations("daily.round");
   const { gameState, round } = useGameStore();
   const { labRound } = gameState;
-  const { countryCode, setCountryCode, showCoordinates } = useSettingsStore();
+  const { countryCode, setCountryCode } = useSettingsStore();
 
   // Leaderboard submission state
   const [showLeaderboardDialog, setShowLeaderboardDialog] = useState(false);
@@ -334,7 +334,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <div className="lab-result-grid">
             <figure data-result-board="scored" className="lab-plate lab-plate-grid lab-result-board">
               <figcaption className="lab-k">{tComparison("title")}</figcaption>
-              <RoundBoard state={round} dispatch={ignoreBoard} copy="game.round" coordinates={showCoordinates} />
+              <RoundBoard state={round} dispatch={ignoreBoard} copy="game.round" />
             </figure>
             <ReadoutCard state={round} copy="game.round" expected={round.config} />
           </div>

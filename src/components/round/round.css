@@ -11,7 +11,6 @@
 .lab-files, .lab-ranks { position: absolute; display: flex; font: 400 11px/1 var(--lp-data); color: var(--lp-muted); }
 .lab-files { left: 22px; right: 22px; bottom: 6px; justify-content: space-around; }
 .lab-ranks { top: 22px; bottom: 22px; left: 6px; flex-direction: column; justify-content: space-around; }
-.lab-figure[data-bare] { padding: 0; }
 .lab-board { display: grid; grid-template-columns: repeat(8, 1fr); aspect-ratio: 1; width: 100%; border: 1px solid var(--lp-line-strong); position: relative; background: var(--lp-sq-light); user-select: none; -webkit-user-select: none; }
 .lab-cell { position: relative; display: flex; align-items: center; justify-content: center; aspect-ratio: 1; background-color: var(--lp-sq-light); border: 0; padding: 0; font: inherit; color: inherit; transition: background-color 0.2s, box-shadow 0.2s; }
 .lab-cell[data-dark] { background-color: var(--lp-sq-dark); }

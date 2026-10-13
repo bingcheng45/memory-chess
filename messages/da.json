@@ -1184,22 +1184,6 @@
     "searchPlaceholder": "Søg efter lande",
     "noResults": "Ingen lande fundet"
   },
-  "settings": {
-    "meta": {
-      "title": "Memory Chess-indstillinger",
-      "description": "Tilpas indstillinger og præferencer for dit Memory Chess-spil."
-    },
-    "title": "Indstillinger",
-    "intro": "Indstillingerne gælder hver runde, du spiller i denne browser.",
-    "showCoordinates": "Vis brættets koordinater",
-    "coordinatesHelp": "Bogstaver og tal langs brættets kanter, mens du husker stillingen og placerer brikkerne. Resultatskærmen viser dem altid.",
-    "on": "Til",
-    "off": "Fra",
-    "savedOn": "Gemt. Brættet viser sine koordinater.",
-    "savedOff": "Gemt. Brættet skjuler sine koordinater.",
-    "home": "Forside",
-    "playGame": "Spil"
-  },
   "contact": {
     "meta": {
       "title": "Kontakt Memory Chess",

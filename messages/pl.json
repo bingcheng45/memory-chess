@@ -1184,22 +1184,6 @@
     "searchPlaceholder": "Szukaj krajów",
     "noResults": "Nie znaleziono krajów"
   },
-  "settings": {
-    "meta": {
-      "title": "Ustawienia Memory Chess",
-      "description": "Dostosuj ustawienia i preferencje swojej gry w Memory Chess."
-    },
-    "title": "Ustawienia",
-    "intro": "Te ustawienia obowiązują w każdej rundzie rozgrywanej w tej przeglądarce.",
-    "showCoordinates": "Pokaż współrzędne szachownicy",
-    "coordinatesHelp": "Litery i cyfry wzdłuż krawędzi szachownicy podczas zapamiętywania i ustawiania bierek. Ekran wyniku zawsze je pokazuje.",
-    "on": "Wł.",
-    "off": "Wył.",
-    "savedOn": "Zapisano. Szachownica będzie pokazywać współrzędne.",
-    "savedOff": "Zapisano. Szachownica będzie ukrywać współrzędne.",
-    "home": "Strona główna",
-    "playGame": "Graj"
-  },
   "contact": {
     "meta": {
       "title": "Kontakt z Memory Chess",

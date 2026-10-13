@@ -128,14 +128,6 @@ describe("sitemap", () => {
     }
   });
 
-  it("leaves settings out, the one route that asks not to be indexed", async () => {
-    const entries = await sitemap();
-
-    expect(
-      entries.filter((entry) => entry.url.includes("/settings")),
-    ).toHaveLength(0);
-  });
-
   it("leaves the progress dashboard out, since its figures live only in the visitor's browser", async () => {
     const entries = await sitemap();
 

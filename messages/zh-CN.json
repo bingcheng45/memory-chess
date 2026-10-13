@@ -1184,22 +1184,6 @@
     "searchPlaceholder": "搜索国家/地区",
     "noResults": "未找到国家/地区"
   },
-  "settings": {
-    "meta": {
-      "title": "Memory Chess 设置",
-      "description": "自定义你的 Memory Chess 游戏设置和偏好。"
-    },
-    "title": "设置",
-    "intro": "这些设置适用于你在此浏览器中玩的每一局。",
-    "showCoordinates": "显示棋盘坐标",
-    "coordinatesHelp": "记忆和摆放棋子时，棋盘边缘显示的字母和数字。结果页面始终显示坐标。",
-    "on": "开",
-    "off": "关",
-    "savedOn": "已保存。棋盘将显示坐标。",
-    "savedOff": "已保存。棋盘将隐藏坐标。",
-    "home": "首页",
-    "playGame": "开始游戏"
-  },
   "contact": {
     "meta": {
       "title": "联系 Memory Chess",

@@ -4,6 +4,7 @@ import { routing, LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
 import { isIndexedInDefaultLocaleOnly, isServedAtBareEnglishUrl, unprefixedPath } from "@/lib/seo/englishOnly";
 import { resolveRetiredLearnPath } from "@/lib/seo/learn/retired";
+import { localizedPath } from "@/lib/seo/alternates";
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -79,15 +80,28 @@ export default function middleware(request: NextRequest) {
   return response;
 }
 
+/** Pages taken down, by unprefixed path, each sent to its replacement in the reader's locale. */
+const RETIRED_PAGES: Readonly<Record<string, string>> = {
+  // It held only the board coordinates switch, and coordinates are now always shown.
+  "/settings": "/game",
+};
+
+function retiredPagePath(pathname: string): string | null {
+  const bare = unprefixedPath(pathname);
+  const target = RETIRED_PAGES[bare];
+  if (!target) return null;
+  return localizedPath(target, bare === pathname ? DEFAULT_LOCALE : pathname.split("/")[1]);
+}
+
 /**
- * The one URL a path should answer at: no trailing slash, a retired guide's
+ * The one URL a path should answer at: no trailing slash, a retired page's or guide's
  * replacement, and no locale prefix on a page that prefix's readers get at
  * its bare English URL. Resolving all three together keeps every redirect to
  * a single hop.
  */
 function canonicalPath(pathname: string): string {
   const trimmed = pathname.replace(/\/+$/, "") || "/";
-  return resolveRetiredLearnPath(trimmed) ?? bareEnglishPath(trimmed) ?? trimmed;
+  return retiredPagePath(trimmed) ?? resolveRetiredLearnPath(trimmed) ?? bareEnglishPath(trimmed) ?? trimmed;
 }
 
 function route(request: NextRequest) {

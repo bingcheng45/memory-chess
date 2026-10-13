@@ -3,7 +3,6 @@
 import { useCallback } from 'react';
 import { useTranslations } from 'next-intl';
 import { useGameStore } from '@/lib/store/gameStore';
-import { useSettingsStore } from '@/stores/settingsStore';
 import type { RoundState } from '@/lib/round/round';
 import { ROUND_CONTROLS } from '@/lib/round/controls';
 import { RefusalAnnouncement, RoundBoard, RoundPalette } from '@/components/round/RoundBoard';
@@ -26,7 +25,6 @@ interface ActiveRoundProps {
 export default function ActiveRound({ round, onRestart, onSubmit }: ActiveRoundProps) {
   const t = useTranslations(COPY);
   const dispatch = useGameStore((state) => state.dispatch);
-  const showCoordinates = useSettingsStore((state) => state.showCoordinates);
   const onStudyEnded = useCallback((now: number) => dispatch({ type: 'studyEnded', now }), [dispatch]);
   useStudyDeadline(round, onStudyEnded);
   const studySeconds = round.config.studyMs / 1000;
@@ -43,7 +41,7 @@ export default function ActiveRound({ round, onRestart, onSubmit }: ActiveRoundP
             copy={COPY}
           />
         }
-        board={<RoundBoard state={round} dispatch={dispatch} copy={COPY} coordinates={showCoordinates} />}
+        board={<RoundBoard state={round} dispatch={dispatch} copy={COPY} />}
         controls={
           <>
             <RoundPalette state={round} dispatch={dispatch} copy={COPY} />

@@ -1184,22 +1184,6 @@
     "searchPlaceholder": "Cerca paesi",
     "noResults": "Nessun paese trovato"
   },
-  "settings": {
-    "meta": {
-      "title": "Impostazioni di Memory Chess",
-      "description": "Personalizza le impostazioni e le preferenze della tua partita a Memory Chess."
-    },
-    "title": "Impostazioni",
-    "intro": "Queste impostazioni valgono per ogni partita che giochi in questo browser.",
-    "showCoordinates": "Mostra le coordinate della scacchiera",
-    "coordinatesHelp": "Lettere e numeri lungo i bordi della scacchiera mentre memorizzi e posizioni i pezzi. La schermata del risultato li mostra sempre.",
-    "on": "Sì",
-    "off": "No",
-    "savedOn": "Salvato. La scacchiera mostrerà le coordinate.",
-    "savedOff": "Salvato. La scacchiera nasconderà le coordinate.",
-    "home": "Home",
-    "playGame": "Gioca"
-  },
   "contact": {
     "meta": {
       "title": "Contatta Memory Chess",

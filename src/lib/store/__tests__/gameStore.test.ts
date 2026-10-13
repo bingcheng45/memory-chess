@@ -291,7 +291,7 @@ const DAY_MS = 24 * 60 * 60 * 1000;
 
 const NEW_CERTAINTY = { rd: 350, rounds: 0 };
 /** The uncertainty of a player the game is sure of. */
-const SETTLED = { rd: 57, rounds: 100 };
+const SETTLED = { rd: 47, rounds: 100 };
 
 const freshPlayer = () =>
   useGameStore.setState({
@@ -334,7 +334,7 @@ describe("saving finished rounds to the history", () => {
         totalPlacements: 6,
         perfectScore: false,
         level: 1,
-        skillRatingChange: -123,
+        skillRatingChange: -122,
         streak: 0,
         facts: { pieceCount: 6, studySeconds: 10, rebuildSeconds: 15, accuracy: 50 },
       },
@@ -424,7 +424,7 @@ describe("provisional and rated rounds", () => {
     const won = playRound({ pieceCount: 6, solveMs: 4000 });
     const missed = playRound({ pieceCount: 6, correct: 1, solveMs: 4000 });
 
-    expect([won.rating?.phase, won.skillRatingChange, won.skillRating, missed.skillRatingChange]).toEqual(["rated", 8, 1208, -23]);
+    expect([won.rating?.phase, won.skillRatingChange, won.skillRating, missed.skillRatingChange]).toEqual(["rated", 5, 1205, -14]);
   });
 
   it("keeps the rating's uncertainty, narrowing it with each rated round, in the store and in storage", () => {
@@ -655,8 +655,8 @@ describe("the day's free skip", () => {
 
     expect([second.rating?.phase, second.skillRatingChange, second.skillRating, second.streak, store().history.length]).toEqual([
       "rated",
-      -28,
-      1172,
+      -18,
+      1182,
       0,
       2,
     ]);
@@ -674,7 +674,7 @@ describe("the day's free skip", () => {
 
     expect([one.rating?.phase, one.skillRatingChange, one.streak, store().history.length, store().freeSkipDay]).toEqual([
       "rated",
-      -22,
+      -14,
       0,
       2,
       null,
@@ -744,7 +744,7 @@ describe("giving a stored rating its uncertainty", () => {
   it("replays the stored rated rounds, oldest first, from the stored rating", async () => {
     const newestFirst = [row(2, 100), row(1, 67), row(0, 83)];
 
-    await expect(rehydrateFrom(1300, newestFirst)).resolves.toEqual({ rating: 1248, certainty: { rd: expect.closeTo(215, 0), rounds: 3 }, history: 3 });
+    await expect(rehydrateFrom(1300, newestFirst)).resolves.toEqual({ rating: 1247, certainty: { rd: expect.closeTo(215, 0), rounds: 3 }, history: 3 });
   });
 
   it("starts a player with no rated rounds as a new player", async () => {

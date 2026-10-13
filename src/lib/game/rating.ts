@@ -35,7 +35,7 @@ export const RATING_MODEL = {
   noiseFloor: 0.02,
 
   startRd: 350,
-  driftRd: 15,
+  driftRd: 6,
   /** RD stays at least startRd / (1 + rounds / this), so the first rounds keep moving the rating. */
   rdFloorRounds: 3,
   /** Provisional while RD is above this many steady-state RDs. */

@@ -5,7 +5,7 @@ import { useGameStore } from "@/lib/store/gameStore";
 const pristine = useGameStore.getState();
 
 /** A player the game is sure of, and a new one. */
-const SETTLED = { rd: 74, rounds: 100 };
+const SETTLED = { rd: 47, rounds: 100 };
 const NEW = { rd: 350, rounds: 0 };
 
 const seed = (skillRating: number, certainty: { rd: number; rounds: number }) =>
@@ -60,7 +60,7 @@ describe("rating preview on the setup card", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
 
-    expect(shown()).toEqual(["Rated round", "1,598", "1,200", "37%", "7 pcs / 10s", "Up to +50", "At most −36"]);
+    expect(shown()).toEqual(["Rated round", "1,598", "1,200", "37%", "7 pcs / 10s", "Up to +25", "At most −15"]);
   });
 
   it("sets the sliders to the suggested board and marks it as chosen", () => {
@@ -82,6 +82,6 @@ describe("rating preview on the setup card", () => {
 
     fireEvent.pointerUp(slider);
 
-    expect(announced()).toBe("Board rating 2,105. Your rating 1,200. Expected accuracy 9%. If you clear it, up to +50. If you miss, at most −14.");
+    expect(announced()).toBe("Board rating 2,105. Your rating 1,200. Expected accuracy 9%. If you clear it, up to +50. If you miss, at most −6.");
   });
 });

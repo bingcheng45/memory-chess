@@ -55,11 +55,11 @@ describe("an established player's round", () => {
 
   it("gains more on harder boards and loses more on easier ones, for a 1200 player", () => {
     expect([changes(2, 10), changes(6, 10), changes(7, 10), changes(12, 8), changes(20, 5)]).toEqual([
-      [0, -2, -11, -27, -50],
-      [10, 7, -1, -18, -45],
-      [15, 12, 3, -16, -47],
-      [50, 50, 42, 13, -36],
-      [50, 50, 50, 50, -15],
+      [0, -1, -4, -11, -22],
+      [4, 3, -1, -7, -18],
+      [6, 5, 1, -6, -19],
+      [26, 24, 17, 5, -15],
+      [50, 50, 45, 26, -6],
     ]);
   });
 
@@ -94,7 +94,7 @@ describe("a new player", () => {
 
   it("is no longer provisional once the rounds have taught the game their level", () => {
     const after = (n: number) => replay(NEW_PLAYER, Array.from({ length: n }, () => round(6, 10, 70)));
-    expect([1, 5, 10, 20].map((n) => isProvisional(after(n)))).toEqual([true, true, false, false]);
+    expect([1, 5, 10, 20].map((n) => isProvisional(after(n)))).toEqual([true, true, true, false]);
   });
 
   it("never gains on an empty or near-empty board however hard it was", () => {
@@ -137,14 +137,14 @@ describe("setup-card preview", () => {
       ratingPreview(established, [], { pieceCount: 2, studySeconds: 10 }),
     ]).toEqual([
       { phase: "provisional", difficultyRating: 1000, expectedAccuracy: 70, perfectGain: 192, maxLoss: -400 },
-      { phase: "rated", difficultyRating: 1598, expectedAccuracy: 37, perfectGain: 50, maxLoss: -36 },
-      { phase: "rated", difficultyRating: 128, expectedAccuracy: 99, perfectGain: 0, maxLoss: -50 },
+      { phase: "rated", difficultyRating: 1598, expectedAccuracy: 37, perfectGain: 26, maxLoss: -15 },
+      { phase: "rated", difficultyRating: 128, expectedAccuracy: 99, perfectGain: 0, maxLoss: -22 },
     ]);
   });
 
   it("reads the perfect gain at the player's fastest recent rebuild pace", () => {
     const fast = [round(6, 10, 90, 3)];
-    expect(ratingPreview({ ...established, rating: 1000 }, fast, { pieceCount: 6, studySeconds: 10 }).perfectGain).toBe(22);
+    expect(ratingPreview({ ...established, rating: 1000 }, fast, { pieceCount: 6, studySeconds: 10 }).perfectGain).toBe(9);
   });
 });
 

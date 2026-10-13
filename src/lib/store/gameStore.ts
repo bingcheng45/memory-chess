@@ -13,7 +13,7 @@ import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
 import { trackEvent, type RoundSource } from '@/lib/analytics/events';
 import type { LabRound } from '@/lib/lab/recordRound';
 import { now as monotonicNow } from '@/lib/game/clock';
-import { isSkillRating, START_RATING } from "@/lib/game/rating";
+import { isSkillRating, MAX_SKILL_RATING, START_RATING } from "@/lib/game/rating";
 import { isSoundEnabled } from '@/lib/utils/soundEffects';
 import {
   IDLE_ROUND,
@@ -222,7 +222,7 @@ export const useGameStore = create<GameStore>()(
 
         // Calculate skill rating change
         const currentRating = gameState.skillRating || START_RATING;
-        const skillRatingChange = rated ? calculateSkillRatingChange(
+        const ratingChange = rated ? calculateSkillRatingChange(
           score.accuracy,
           gameState.pieceCount,
           completionTime,
@@ -237,8 +237,8 @@ export const useGameStore = create<GameStore>()(
           streak = success ? streak + 1 : 0;
         }
 
-        // Update skill rating
-        const newSkillRating = Math.max(0, currentRating + skillRatingChange);
+        const newSkillRating = Math.min(MAX_SKILL_RATING, Math.max(0, currentRating + ratingChange));
+        const skillRatingChange = newSkillRating - currentRating;
 
         const labRoundId = uuidv4();
         const endedAt = Date.now();
@@ -382,7 +382,7 @@ export const useGameStore = create<GameStore>()(
           gameState: {
             ...current.gameState,
             ...storedGameState,
-            skillRating: isSkillRating(storedGameState.skillRating) ? storedGameState.skillRating : START_RATING,
+            skillRating: isSkillRating(storedGameState.skillRating) ? Math.min(storedGameState.skillRating, MAX_SKILL_RATING) : START_RATING,
           },
           lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
         };

@@ -2,6 +2,7 @@ import type { PlacedPiece, RoundShare, ScoredBoard } from "@/components/game/rou
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import { MEMORIZE_SECONDS_RANGE } from "@/lib/reference/facts";
 import { SHARE_TILES, type DashboardUnit, type Figure, type ShareFigure, type ShareFigureId, type Trend } from "@/lib/lab/dashboard";
+import { MAX_SKILL_RATING } from "@/lib/game/rating";
 import { labPositionFromFen, labPositionToFen, scoreReading, type LabPosition } from "@/lib/round/round";
 
 /**
@@ -46,7 +47,7 @@ interface FigureSpec {
 
 const FIGURES: { readonly [K in ShareFigureId]: FigureSpec } = {
   span: { letter: "s", unit: "pieces", digits: 0, max: 32 },
-  rating: { letter: "r", unit: "rating", digits: 0, max: 9999 },
+  rating: { letter: "r", unit: "rating", digits: 0, max: MAX_SKILL_RATING },
   piecesHeld: { letter: "h", unit: "pieces", digits: 1, max: 320 },
   speed: { letter: "v", unit: "secondsPerPiece", digits: 1, max: 9999 },
   bestAccuracy: { letter: "b", unit: "percent", digits: 0, max: 100 },
@@ -57,7 +58,7 @@ const FIGURES: { readonly [K in ShareFigureId]: FigureSpec } = {
   days: { letter: "d", unit: "days", digits: 0, max: 99999 },
 };
 const FIGURE_BY_LETTER = new Map(SHARE_TILES.map((id) => [FIGURES[id].letter, id]));
-const MAX_CHANGE = 9999;
+const MAX_CHANGE = MAX_SKILL_RATING;
 
 const NUMBER = /^(?:0|[1-9]\d{0,5})$/;
 const FIGURE = /^([a-z])(0|[1-9]\d{0,5})(?:([ud])([1-9]\d{0,3}))?$/;
@@ -179,7 +180,7 @@ function parseSetting([pieces, memorize, study, rebuild]: readonly string[]): Se
 type Rated = Pick<Extract<RoundShare, { kind: "game" }>, "rating" | "winStreak">;
 
 function parseRated([rating, change, streak]: readonly string[]): Rated | null {
-  const score = count(rating, 9999);
+  const score = count(rating, MAX_SKILL_RATING);
   const moved = /^[ud]/.test(change ?? "") ? count(change.slice(1), MAX_CHANGE, 1) : change === "0" ? 0 : null;
   const run = count(streak, MAX_STREAK);
   if (score === null || moved === null || run === null || run === 1) return null;

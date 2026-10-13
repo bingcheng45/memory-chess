@@ -2,6 +2,7 @@
 
 import { useEffect, useState, type RefObject } from "react";
 import { useTranslations } from "next-intl";
+import { feedbackPromptDue } from "@/components/game/feedbackSchedule";
 
 export const ROUND_SAVED_TOAST_MS = 3000;
 
@@ -30,7 +31,7 @@ export default function RoundSavedToast({ roundId, target }: RoundSavedToastProp
     const section = target.current;
     if (!section || announced.has(roundId)) return;
     announced.add(roundId);
-    if (!inView(section)) setOpen(true);
+    if (!inView(section) && !feedbackPromptDue()) setOpen(true);
   }, [roundId, target]);
 
   useEffect(() => {

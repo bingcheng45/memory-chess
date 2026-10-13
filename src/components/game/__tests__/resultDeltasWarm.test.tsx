@@ -2,6 +2,7 @@ import "fake-indexeddb/auto";
 import { deserialize, serialize } from "node:v8";
 import { render, screen, waitFor } from "@/test-utils/intl";
 import GameResult from "@/components/game/GameResult";
+import { FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY } from "@/components/game/feedbackSchedule";
 import { warmedResultDeltas, warmResultDeltas } from "@/components/game/resultDeltasWarm";
 import { recordLabRound } from "@/lib/lab/recordRound";
 import { useGameStore } from "@/lib/store/gameStore";
@@ -30,6 +31,7 @@ beforeAll(async () => {
 });
 
 beforeEach(() => {
+  window.localStorage.setItem(FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY, String(Date.now() + 60 * 60 * 1000));
   global.fetch = jest.fn().mockResolvedValue({ ok: true, json: async () => ({ data: { value: 1 } }) });
   jest.spyOn(console, "log").mockImplementation(() => {});
 });

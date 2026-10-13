@@ -1,6 +1,7 @@
 import { useRef } from "react";
 import { act, fireEvent, render, screen } from "@/test-utils/intl";
 import RoundSavedToast, { ROUND_SAVED_TOAST_MS } from "@/components/game/RoundSavedToast";
+import { FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY } from "@/components/game/feedbackSchedule";
 
 const MESSAGE = "Round saved. Your updated stats are just below.";
 
@@ -20,7 +21,10 @@ function Result({ roundId }: { roundId: string }) {
 let scrolled: jest.Mock;
 let reducedMotion: boolean;
 
+const feedbackAskedAt = (time: number) => window.localStorage.setItem(FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY, String(time));
+
 beforeEach(() => {
+  feedbackAskedAt(Date.now() + 60 * 60 * 1000);
   jest.useFakeTimers();
   scrolled = jest.fn();
   reducedMotion = false;
@@ -29,6 +33,7 @@ beforeEach(() => {
 });
 
 afterEach(() => {
+  window.localStorage.clear();
   jest.useRealTimers();
   jest.restoreAllMocks();
 });
@@ -39,6 +44,14 @@ describe("RoundSavedToast", () => {
     render(<Result roundId="shown" />);
 
     expect(screen.getByRole("status")).toHaveTextContent(`${MESSAGE}Show me`);
+  });
+
+  it("stays quiet when the first-game feedback prompt is about to open, so the two never stack", () => {
+    feedbackAskedAt(0);
+    placeSections(1200);
+    render(<Result roundId="feedback-due" />);
+
+    expect(screen.getByRole("status")).toBeEmptyDOMElement();
   });
 
   it("leaves after three seconds", () => {

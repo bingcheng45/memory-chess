@@ -14,14 +14,11 @@ import {
 import { Textarea } from "@/components/ui/textarea";
 import { FEEDBACK_MAX_LENGTH, type FeedbackSubmission } from "@/lib/feedback";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
+import { readNextEligibleAt, writeNextEligibleAt } from "./feedbackSchedule";
 
 import { useTranslations } from "next-intl";
 export const FEEDBACK_PROMPT_DELAY_MS = 800;
-export const FEEDBACK_COOLDOWN_MS = 24 * 60 * 60 * 1_000;
-export const FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY =
-  "memory-chess-feedback-next-eligible-at";
-
-let inMemoryNextEligibleAt = 0;
+export { FEEDBACK_COOLDOWN_MS, FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY } from "./feedbackSchedule";
 
 export type FeedbackGameContext = Omit<
   FeedbackSubmission,
@@ -30,37 +27,6 @@ export type FeedbackGameContext = Omit<
 
 interface FirstGameFeedbackDialogProps {
   game: FeedbackGameContext;
-}
-
-function readNextEligibleAt(): number {
-  try {
-    const storedValue = window.localStorage.getItem(
-      FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY,
-    );
-
-    if (storedValue === null) {
-      return 0;
-    }
-
-    const parsedValue = Number(storedValue);
-    return Number.isFinite(parsedValue) ? parsedValue : 0;
-  } catch {
-    return inMemoryNextEligibleAt;
-  }
-}
-
-function writeNextEligibleAt(fromTime = Date.now()): void {
-  const nextEligibleAt = fromTime + FEEDBACK_COOLDOWN_MS;
-  inMemoryNextEligibleAt = nextEligibleAt;
-
-  try {
-    window.localStorage.setItem(
-      FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY,
-      String(nextEligibleAt),
-    );
-  } catch {
-    // The in-memory value still prevents repeated prompts during this session.
-  }
 }
 
 export default function FirstGameFeedbackDialog({

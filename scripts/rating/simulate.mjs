@@ -78,6 +78,10 @@ const sandbagger = (tank) => ({
   round: (n, _r, rng) => ((n - 1) % SANDBAG_CYCLE < SANDBAG_CYCLE / 2 && n > 100 ? tank(rng) : playRound(rng, { skill: 1800, pieces: 12, study: 8 })),
 });
 
+// The skill at which the truth model expects this accuracy on a board: what a player scoring it honestly is worth.
+const skillFor = (accuracy, pieces, study) => LEVEL(pieces, study) - 400 * Math.log10((100 / accuracy - 1) * (7 / 3));
+const GRINDER_SKILL = skillFor(50.5, MAX_PIECES, 1);
+
 const personas = {
   "Steady Easy (2 pcs, 10 s, skill 500)": fixed(500, 2, 10),
   "Steady Medium (6 pcs, 10 s, skill 1200)": fixed(1200, 6, 10),
@@ -97,6 +101,10 @@ const personas = {
   "Steady Medium at skill 1450": fixed(1450, 6, 10),
   "Easy farmer (2 pcs, 2 s, always 100%)": fixed(0, 2, 2, { accuracy: 100 }),
   "Empty-board spammer (32 pcs, 60 s, 0%)": fixed(0, 32, 60, { accuracy: 0, pace: 0.05 }),
+  "Hardest-board grinder (Medium at 1000 for 30 rounds, then 32 pcs, 1 s, 46-55%)": {
+    round: (n, _r, rng) => n <= 30 ? playRound(rng, { skill: 1000, pieces: 6, study: 10 }) : ({ pieceCount: 32, studySeconds: 1, rebuildSeconds: 32 * 2.5 * (0.75 + 0.5 * rng()), accuracy: 46 + Math.floor(rng() * 10) }),
+  },
+  [`Honest at the grinder's true skill (${Math.round(GRINDER_SKILL)})`]: improving(() => GRINDER_SKILL),
   "Instant-submit cheater (32 pcs, 0.1 s, 0-6%)": {
     round: (_n, _r, rng) => ({ pieceCount: 32, studySeconds: 0.1, rebuildSeconds: 0.2, accuracy: rng() < 0.5 ? 0 : 6 }),
   },
@@ -242,6 +250,47 @@ if (ratingPreview) {
   }
 }
 
+// The hardest board, 32 pieces studied for 1 s and rebuilt in 8 s, at accuracies from barely above empty to a coin flip.
+const hardest = (accuracy) => ({ pieceCount: 32, studySeconds: 1, rebuildSeconds: 8, accuracy });
+const placeAll = (rounds) =>
+  rounds.reduce(({ rating, history }, round) => ({ rating: ratingAfter(rating, history, round).rating, history: [round, ...history] }), { rating: START_RATING, history: [] }).rating;
+const hardestAccuracies = [41, 43, 44, 45, 46, 47, 48, 50, 52, 55];
+const hardestPlaced = hardestAccuracies.map((accuracy) => placeAll(Array.from({ length: 10 }, () => hardest(accuracy))));
+const hardestRated = hardestAccuracies.map((accuracy) => ratingAfter(1000, MEDIUM_NORM, hardest(accuracy)).change);
+console.log("\n## The hardest board (32 pcs, 1 s study, 8 s rebuild) at 41-55%\n");
+console.log(`| Accuracy | ${hardestAccuracies.map((a) => `${a}%`).join(" | ")} |`);
+console.log(`|---|${hardestAccuracies.map(() => "---:").join("|")}|`);
+console.log(`| Placed after 10 such rounds | ${hardestPlaced.join(" | ")} |`);
+console.log(`| One rated round at 1000, Medium norm | ${hardestRated.join(" | ")} |`);
+const hardestSteps = hardestPlaced.slice(1).map((rating, i) => (rating - hardestPlaced[i]) / (hardestAccuracies[i + 1] - hardestAccuracies[i]));
+const barelyAboveEmpty = Math.max(...hardestPlaced.slice(0, hardestAccuracies.indexOf(46) + 1));
+
+// The same ten placement rounds in two orders.
+const lucky = hardest(100);
+const misses = Array.from({ length: 9 }, () => hardest(0));
+const mixed = [[6, 10, 100], [12, 8, 55], [2, 10, 100], [20, 5, 40], [32, 1, 70], [6, 10, 0], [12, 8, 90], [20, 5, 100], [32, 1, 46], [6, 10, 83]]
+  .map(([pieceCount, studySeconds, accuracy]) => ({ pieceCount, studySeconds, rebuildSeconds: pieceCount * 2, accuracy }));
+const orders = {
+  "100% first, then 9 at 0%": placeAll([lucky, ...misses]),
+  "9 at 0%, then 100%": placeAll([...misses, lucky]),
+  "Ten mixed boards": placeAll(mixed),
+  "The same ten reversed": placeAll([...mixed].reverse()),
+};
+console.log("\n## Placement order (hardest board unless mixed)\n");
+console.log("| Ten placement rounds | Placed |");
+console.log("|---|---:|");
+for (const [label, rating] of Object.entries(orders)) console.log(`| ${label} | ${rating} |`);
+
+const grinderName = "Hardest-board grinder (Medium at 1000 for 30 rounds, then 32 pcs, 1 s, 46-55%)";
+const grinderRuns = seeded(grinderName);
+const grinderAt = (n) => mean(grinderRuns.map(({ ratings }) => ratings[n - 1]));
+const grinder = finalMean(grinderName);
+const grinderHonest = finalMean(`Honest at the grinder's true skill (${Math.round(GRINDER_SKILL)})`);
+console.log(
+  `\nThe grinder stands at ${grinderAt(30).toFixed(0)} after its Medium rounds, ${grinderAt(100).toFixed(0)} after 100 rounds, ${grinderAt(300).toFixed(0)} after 300 and ${grinder.toFixed(0)} over rounds 401-500; ` +
+    `an honest player of the same true skill (${GRINDER_SKILL.toFixed(0)}) ends at ${grinderHonest.toFixed(0)}.`,
+);
+
 const allChanges = Object.values(trajectories).flatMap(({ changes }) => changes);
 const maxRated = Math.max(...allChanges.filter(({ phase }) => phase === "rated").map(({ change }) => Math.abs(change)));
 const maxPlacement = Math.max(...allChanges.filter(({ phase }) => phase === "placement").map(({ change }) => Math.abs(change)));
@@ -286,6 +335,12 @@ const properties = [
     alternatorDrift < DRIFT && riskDrift < DRIFT && alternator < sameSkill + 60 && riskTaker < sameSkill + 60],
   [`6e. Easy farming at 100% (${farmer.toFixed(0)}) stays below an honest Hard player (${honestHard.toFixed(0)})`, farmer < honestHard],
   [`6f. No rated round moves the rating more than 50 (largest ${maxRated}); no placement round more than 250 (largest ${maxPlacement})`, maxRated <= 50 && maxPlacement <= 250],
+  [`9a. Placement on the hardest board rises with accuracy without a jump: ${hardestPlaced.join(", ")} for ${hardestAccuracies.join(", ")}% (never falls, at most 100 per point)`,
+    hardestSteps.every((step) => step >= 0 && step <= 100)],
+  [`9b. Barely above empty (41-46%) on the hardest board places below an honest Hard player (${barelyAboveEmpty} < ${honestHard.toFixed(0)})`, barelyAboveEmpty < honestHard],
+  [`9c. Placement does not depend on round order: ${Object.values(orders).join(", ")} (each pair within 1)`,
+    Math.abs(orders["100% first, then 9 at 0%"] - orders["9 at 0%, then 100%"]) <= 1 && Math.abs(orders["Ten mixed boards"] - orders["The same ten reversed"]) <= 1],
+  [`9d. The hardest-board grinder at 46-55% ends no higher than an honest player of the same true skill (${grinder.toFixed(0)} <= ${grinderHonest.toFixed(0)})`, grinder <= grinderHonest],
   [`7. Placement ranks pieces > study > rebuild > baseline (${placement.pieces} > ${placement.study} > ${placement.rebuild} > ${placement.base})`,
     placement.pieces > placement.study && placement.study > placement.rebuild && placement.rebuild > placement.base],
   [`8. Ratings stay within 0..${MAX_SKILL_RATING} (seen ${Math.min(...allRatings)}..${Math.max(...allRatings)})`,

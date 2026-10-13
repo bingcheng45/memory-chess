@@ -92,20 +92,26 @@ function drawFigure(ctx: Ctx, { label, segments, note, trend }: CardFigure, slot
   });
 }
 
-/** Up to four figures share two wide columns; more take three, so ten figures still fit above the footer. */
+/**
+ * Up to four figures share two wide columns; more take three. A fourth row of three, eleven figures in all, sets each
+ * figure smaller over one line of context, so the rows still fit above the footer.
+ */
 function drawGrid(ctx: Ctx, grid: readonly CardFigure[], fonts: CardFonts, locale: string) {
   if (grid.length === 0) return;
   const columns = grid.length <= 4 ? 2 : 3;
   const rows = Math.ceil(grid.length / columns);
   const width = (INNER - COLUMN_GAP * (columns - 1)) / columns;
   const rowHeight = (BODY_BOTTOM - GRID_TOP) / Math.max(rows, columns === 2 ? 2 : 3);
-  const sizes = columns === 2 ? { labelSize: 28, valueSize: 96, noteSize: SMALLEST_TEXT } : { labelSize: SMALLEST_TEXT, valueSize: 60, noteSize: SMALLEST_TEXT };
+  const sizes =
+    columns === 2
+      ? { labelSize: 28, valueSize: 96, noteSize: SMALLEST_TEXT, noteLines: 2 }
+      : { labelSize: SMALLEST_TEXT, valueSize: rows > 3 ? 44 : 60, noteSize: SMALLEST_TEXT, noteLines: rows > 3 ? 1 : 2 };
   grid.forEach((figure, index) => {
     const x = PAD + (index % columns) * (width + COLUMN_GAP);
     const y = GRID_TOP + Math.floor(index / columns) * rowHeight;
     ctx.fillStyle = INK.rule;
     ctx.fillRect(x, y, width, 2);
-    drawFigure(ctx, figure, { x, y: y + 20, width, ...sizes, noteLines: 2 }, fonts, locale);
+    drawFigure(ctx, figure, { x, y: y + 20, width, ...sizes }, fonts, locale);
   });
 }
 

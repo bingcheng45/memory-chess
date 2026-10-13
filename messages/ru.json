@@ -1367,6 +1367,8 @@
       "span": "Объём памяти",
       "piecesHeld": "Запомненные фигуры",
       "speed": "Скорость",
+      "studyTime": "Время на запоминание",
+      "rebuildTime": "Время расстановки",
       "streak": "Серия дней",
       "rounds": "Сыграно раундов",
       "days": "Игровые дни",
@@ -1381,6 +1383,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> фигура} few {<n>{value}</n> фигуры} many {<n>{value}</n> фигур} other {<n>{value}</n> фигуры}}",
       "secondsPerPiece": "<n>{value}</n> с на фигуру",
+      "seconds": "<n>{value}</n> с",
       "days": "{count, plural, one {<n>{value}</n> день} few {<n>{value}</n> дня} many {<n>{value}</n> дней} other {<n>{value}</n> дня}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> раунд} few {<n>{value}</n> раунда} many {<n>{value}</n> раундов} other {<n>{value}</n> раунда}}",
@@ -1426,6 +1429,7 @@
         "setting": "Настройка",
         "accuracy": "Точность",
         "correct": "Верно",
+        "study": "Время на запоминание",
         "time": "Время расстановки",
         "rating": "Рейтинг",
         "board": "Доска"
@@ -1526,6 +1530,8 @@
         "streak": "{value, plural, one {# день} few {# дня} many {# дней} other {# дня}} подряд",
         "bestAccuracy": "лучшая точность {value, number} %",
         "recentAccuracy": "недавняя точность {value, number} %",
+        "studyTime": "время на запоминание {value, number} с",
+        "rebuildTime": "время расстановки {value, number} с",
         "winStreak": "серия побед: {value, plural, one {# раунд} few {# раунда} many {# раундов} other {# раунда}}",
         "rounds": "сыграно {value, plural, one {# раунд} few {# раунда} many {# раундов} other {# раунда}}",
         "days": "{value, plural, one {# игровой день} few {# игровых дня} many {# игровых дней} other {# игрового дня}}"

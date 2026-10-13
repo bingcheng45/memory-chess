@@ -30,9 +30,11 @@ describe("Dashboard", () => {
 
     await act(async () => fireEvent.click(screen.getByRole("button", { name: "Share my progress" })));
     expect(within(screen.getByRole("dialog")).getByText(/^My Memory Chess progress/).textContent).toBe(
-      "My Memory Chess progress: memory span 6 pieces, 5.2 pieces held, 4.6 s per piece, 100% best accuracy. Can you beat it? https://thememorychess.com/share/progress/1_s6_h52_v46_b100_a87_k3_n12_d3?utm_source=share&utm_medium=dashboard",
+      "My Memory Chess progress: memory span 6 pieces, 5.3 pieces held, 4.6 s per piece, 100% best accuracy. Can you beat it? https://thememorychess.com/share/progress/1_s6_h53_v46_b100_a89_m75_t243_k3_n12_d3?utm_source=share&utm_medium=dashboard",
     );
     expect(tileText("span")).toBe("Memory span6 pieces80% or better in 11 rounds, studied 10 s");
+    expect(tileText("studyTime")).toBe("Study time7.5 sAverage of your last 12 rounds, any setting");
+    expect(tileText("rebuildTime")).toBe("Rebuild time24.3 sAverage of your last 12 rounds, any setting");
   });
 
   it("lists every round of the record, newest first, and opens a round's scored board", () => {
@@ -42,6 +44,11 @@ describe("Dashboard", () => {
     const rows = document.querySelectorAll("[data-history-row]");
     expect(rows).toHaveLength(12);
     const first = within(rows[0] as HTMLElement);
+    expect([...rows[0].querySelectorAll("td[data-label]")].map((cell) => `${cell.getAttribute("data-label")}: ${cell.textContent}`).slice(4, 7)).toEqual([
+      "Correct: 5 of 6",
+      "Study time: 10.0 s",
+      "Rebuild time: 26.8 s",
+    ]);
     fireEvent.click(first.getByRole("button", { name: "Show board" }));
     expect(first.getByRole("button", { name: "Hide board" })).toHaveAttribute("aria-expanded", "true");
     expect(screen.getByRole("figure", { name: /^Scored board: \d+ of \d+ pieces right\.$/ })).toBeInTheDocument();
@@ -83,7 +90,7 @@ describe("Dashboard", () => {
 
     await act(async () => fireEvent.click(screen.getByRole("button", { name: "Share my progress" })));
     expect(within(screen.getByRole("dialog")).getByText(/^My Memory Chess progress/).textContent).toBe(
-      "My Memory Chess progress: 83% best accuracy, 67% recent accuracy, 2 rounds played, 1 day played. Can you beat it? https://thememorychess.com/share/progress/1_b83_a67_n2_d1?utm_source=share&utm_medium=dashboard",
+      "My Memory Chess progress: 83% best accuracy, 67% recent accuracy, study time 6.9 s, rebuild time 28.8 s. Can you beat it? https://thememorychess.com/share/progress/1_b83_a67_m69_t288_n2_d1?utm_source=share&utm_medium=dashboard",
     );
   });
 

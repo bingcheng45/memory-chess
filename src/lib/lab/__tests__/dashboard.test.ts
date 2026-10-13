@@ -1,15 +1,16 @@
 import { dashboardOf, shareCardOf, type DashboardTile, type DashboardTileId, type GameStanding } from "@/lib/lab/dashboard";
 import { dayDate } from "@/lib/lab/engine";
 import { deriveLab } from "@/lib/lab/metrics";
+import type { RoundInput, RoundRecord } from "@/lib/lab/record";
 import { personaChoices, personaEntries, personaRounds, PERSONA_TODAY, type PersonaName } from "@/lib/lab/personas";
 import { EMPTY_SUMMARY, summarize } from "@/lib/lab/summary";
+import { roundV2 } from "./fixtures";
 
 const QUICK = "/game?pieceCount=6&memorizeTime=10&source=dashboard";
 
 const BEST_ACCURACY = 100;
 const BEST_AT = { source: "game", pieceCount: 14, memorizeSeconds: 10 };
-// Pieces held over the same ten rounds is 13.8 of 14, the same reading.
-const RECENT_ACCURACY = 99;
+const RECENT_ACCURACY = 94;
 const NO_GAME = { game: null, winAccuracy: 70 } as const;
 
 function tilesFor(name: PersonaName, { today = PERSONA_TODAY, chooseHref = "/#record" as string | null, game = null as GameStanding | null } = {}) {
@@ -20,6 +21,12 @@ function tilesFor(name: PersonaName, { today = PERSONA_TODAY, chooseHref = "/#re
   return dashboardOf({ results, summary, records, weekGoal: 5, entries: personaEntries(name), today, utcDay: PERSONA_TODAY, dailyOpened: null, chooseHref, game, winAccuracy: 70 });
 }
 
+function tilesOfRecords(records: readonly RoundRecord[]) {
+  const summary = summarize(records);
+  const results = deriveLab({ records, summary, today: "2026-10-07" });
+  return dashboardOf({ results, summary, records, weekGoal: 5, entries: null, today: "2026-10-07", utcDay: "2026-10-07", dailyOpened: null, chooseHref: null, ...NO_GAME });
+}
+
 const tile = (tiles: readonly DashboardTile[], id: DashboardTileId) => tiles.find((candidate) => candidate.id === id);
 
 describe("dashboardOf", () => {
@@ -28,7 +35,7 @@ describe("dashboardOf", () => {
 
     expect(["span", "piecesHeld", "speed", "streak", "rounds", "days"].map((id) => tile(tiles, id as DashboardTileId))).toEqual([
       { id: "span", state: "ready", figure: { value: 14, unit: "pieces", digits: 0 }, context: { kind: "span", values: { rounds: 19, accuracy: 80, memorizeSeconds: 10 } } },
-      { id: "piecesHeld", state: "ready", figure: { value: 13.8, unit: "pieces", digits: 1 }, context: { kind: "recent", values: { rounds: 10 } } },
+      { id: "piecesHeld", state: "ready", figure: { value: 12.1, unit: "pieces", digits: 1 }, context: { kind: "recent", values: { rounds: 30 } } },
       {
         id: "speed",
         state: "ready",
@@ -76,6 +83,8 @@ describe("dashboardOf", () => {
       ["span", "empty", QUICK],
       ["piecesHeld", "empty", QUICK],
       ["speed", "empty", QUICK],
+      ["studyTime", "empty", QUICK],
+      ["rebuildTime", "empty", QUICK],
       ["bestAccuracy", "empty", QUICK],
       ["recentAccuracy", "empty", QUICK],
       ["winStreak", "empty", QUICK],
@@ -127,20 +136,46 @@ describe("dashboardOf", () => {
       id: "recentAccuracy",
       state: "ready",
       figure: { value: RECENT_ACCURACY, unit: "percent", digits: 0 },
-      context: { kind: "recent", values: { rounds: 10 } },
+      context: { kind: "recent", values: { rounds: 30 } },
     });
   });
 
-  it("reads the rating with its change over the last ten rated rounds, and the win streak, from the game store", () => {
-    const changes = [12, -4, 20, 8, 0, 6, 9, -2, 15, 11, 40];
+  it("averages the study time used and the rebuild time over the newest 30 fresh rounds, at any setting", () => {
+    const at = (index: number): Partial<RoundInput> => ({ id: `r${index}`, endedAt: Date.UTC(2026, 9, 7, 12, index) });
+    const records = [
+      roundV2({ ...at(0), memorizeMs: 9000, solveMs: 90_000 }),
+      ...Array.from({ length: 29 }, (_, index) => roundV2({ ...at(index + 1), pieceCount: index % 2 ? 4 : 2, memorizeMs: 5000, solveMs: 12_000 })),
+      roundV2({ ...at(30), memorizeMs: 15_000, solveMs: 700_000 }),
+      roundV2({ ...at(31), memorizeMs: 1000, solveMs: 1000 }, { kind: "review", startSource: "review" }),
+    ];
+    const tiles = tilesOfRecords(records);
+
+    expect([tile(tiles, "studyTime"), tile(tiles, "rebuildTime")]).toEqual([
+      { id: "studyTime", state: "ready", figure: { value: 5.2, unit: "seconds", digits: 1 }, context: { kind: "recent", values: { rounds: 30 } } },
+      { id: "rebuildTime", state: "ready", figure: { value: 31.6, unit: "seconds", digits: 1 }, context: { kind: "recent", values: { rounds: 30 } } },
+    ]);
+  });
+
+  it("reads the times from the only round that measured them, and invites a round when none did", () => {
+    const timed = [roundV2({ id: "a", memorizeMs: 0, solveMs: 0 }), roundV2({ id: "b", endedAt: Date.UTC(2026, 9, 7, 13), memorizeMs: 6400, solveMs: 0 })];
+    const tiles = tilesOfRecords(timed);
+
+    expect([tile(tiles, "studyTime"), tile(tiles, "rebuildTime")]).toEqual([
+      { id: "studyTime", state: "ready", figure: { value: 6.4, unit: "seconds", digits: 1 }, context: { kind: "recent", values: { rounds: 1 } } },
+      { id: "rebuildTime", state: "empty", href: QUICK, cta: "play" },
+    ]);
+  });
+
+  it("reads the rating with its change over the last 30 rated rounds, and the win streak, from the game store", () => {
+    const changes = [...Array.from({ length: 30 }, () => 3), 40];
     const tiles = tilesFor("threeDays", { game: { rating: 1240, winStreak: 4, changes } });
 
     expect(tile(tiles, "rating")).toEqual({
       id: "rating",
       state: "ready",
       figure: { value: 1240, unit: "rating", digits: 0 },
-      context: { kind: "rating", values: { sign: "up", change: 75, rounds: 10 } },
-      trend: { direction: "up", amount: 75 },
+      context: { kind: "rating", values: { sign: "up", change: 90, rounds: 30 } },
+      trend: { direction: "up", amount: 90 },
     });
     expect(tile(tiles, "winStreak")).toEqual({
       id: "winStreak",
@@ -185,7 +220,20 @@ describe("shareCardOf", () => {
   it("carries every ready figure of the lead row and the totals, each with what stands behind it, and the rounds played", () => {
     const card = shareCardOf(tilesFor("threeDays", { game: { rating: 1102, winStreak: 2, changes: [30] } }), 12);
 
-    expect(ids(card)).toEqual(["span 6", "rating 1102", "piecesHeld 5.2", "speed 4.6", "bestAccuracy 100", "recentAccuracy 87", "winStreak 2", "streak 3", "rounds 12", "days 3"]);
+    expect(ids(card)).toEqual([
+      "span 6",
+      "rating 1102",
+      "piecesHeld 5.3",
+      "speed 4.6",
+      "bestAccuracy 100",
+      "recentAccuracy 89",
+      "studyTime 7.5",
+      "rebuildTime 24.3",
+      "winStreak 2",
+      "streak 3",
+      "rounds 12",
+      "days 3",
+    ]);
     expect(card?.figures[1]).toEqual({
       id: "rating",
       figure: { value: 1102, unit: "rating", digits: 0 },

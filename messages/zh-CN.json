@@ -1367,6 +1367,8 @@
       "span": "记忆广度",
       "piecesHeld": "记住的棋子",
       "speed": "速度",
+      "studyTime": "记忆用时",
+      "rebuildTime": "摆放用时",
       "streak": "连续天数",
       "rounds": "已玩回合",
       "days": "游戏天数",
@@ -1381,6 +1383,7 @@
     "unit": {
       "pieces": "{count, plural, other {<n>{value}</n> 子}}",
       "secondsPerPiece": "<n>{value}</n> 秒/子",
+      "seconds": "<n>{value}</n> 秒",
       "days": "{count, plural, other {<n>{value}</n> 天}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, other {<n>{value}</n> 回合}}",
@@ -1426,6 +1429,7 @@
         "setting": "设置",
         "accuracy": "准确率",
         "correct": "正确",
+        "study": "记忆用时",
         "time": "摆放用时",
         "rating": "评分",
         "board": "棋盘"
@@ -1526,6 +1530,8 @@
         "streak": "连续 {value, plural, other {# 天}}",
         "bestAccuracy": "最佳准确率 {value, number}%",
         "recentAccuracy": "近期准确率 {value, number}%",
+        "studyTime": "记忆用时 {value, number} 秒",
+        "rebuildTime": "摆放用时 {value, number} 秒",
         "winStreak": "{value, plural, other {# 回合连胜}}",
         "rounds": "{value, plural, other {已玩 # 回合}}",
         "days": "{value, plural, other {已玩 # 天}}"

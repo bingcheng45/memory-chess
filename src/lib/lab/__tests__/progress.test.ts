@@ -197,7 +197,7 @@ describe("pieces held", () => {
     expect(held(rounds(3, () => ({}))).readiness).toEqual({ state: "warming", sampleSize: 3, need: { rounds: 2, days: 1 } });
   });
 
-  it("averages correct pieces across settings and compares the last 10 rounds with the 10 before", () => {
+  it("averages correct pieces across settings over the last 30 rounds, and compares the last 10 with the 10 before", () => {
     const records = rounds(20, (index) =>
       index < 10 ? { placedFen: HALF, localDay: "2026-10-06" } : { pieceCount: 12, localDay: TODAY },
     );
@@ -208,6 +208,7 @@ describe("pieces held", () => {
         points: [...Array(10).fill(2), ...Array(10).fill(4)],
         movingAverage: [...Array(10).fill(2), 2.4, 2.8, 3.2, 3.6, ...Array(6).fill(4)].map((value, index) => ({ value, partial: index < 4 })),
         recent: { average: 4, previous: 2, change: 2 },
+        average: 3,
       },
     });
   });
@@ -284,6 +285,7 @@ describe("speed", () => {
         setting: { source: "game", pieceCount: 4, memorizeSeconds: 10 },
         points: [4, 6, 4, 6, 4],
         recent: { average: 4.8, previous: null, change: null },
+        average: 4.8,
         accuracyAtSameRounds: { points: [75, 50, 75, 50, 75], recent: { average: 65, previous: null, change: null } },
       },
     });
@@ -310,10 +312,11 @@ describe("speed", () => {
     expect(LAB_METRICS.trend.compute(input(records)).value?.setting).toEqual({ source: "game", pieceCount: 4, memorizeSeconds: 10 });
   });
 
-  it("compares the last 10 rounds with the 10 before", () => {
+  it("averages the last 30 rounds, and compares the last 10 rounds with the 10 before", () => {
     const records = rounds(20, (index) => ({ solveMs: index < 10 ? 20_000 : 8_000 }));
 
     expect(speed(records).value?.recent).toEqual({ average: 2, previous: 5, change: -3 });
+    expect(speed(records).value?.average).toBe(3.5);
   });
 
   it("turns stale two weeks after the last round", () => {

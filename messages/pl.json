@@ -1367,6 +1367,8 @@
       "span": "Zakres pamięci",
       "piecesHeld": "Zapamiętane figury",
       "speed": "Tempo",
+      "studyTime": "Czas na zapamiętanie",
+      "rebuildTime": "Czas ustawiania",
       "streak": "Seria dni",
       "rounds": "Rozegrane rundy",
       "days": "Dni gry",
@@ -1381,6 +1383,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> figura} few {<n>{value}</n> figury} many {<n>{value}</n> figur} other {<n>{value}</n> figury}}",
       "secondsPerPiece": "<n>{value}</n> s na figurę",
+      "seconds": "<n>{value}</n> s",
       "days": "{count, plural, one {<n>{value}</n> dzień} few {<n>{value}</n> dni} many {<n>{value}</n> dni} other {<n>{value}</n> dnia}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> runda} few {<n>{value}</n> rundy} many {<n>{value}</n> rund} other {<n>{value}</n> rundy}}",
@@ -1426,6 +1429,7 @@
         "setting": "Ustawienie",
         "accuracy": "Dokładność",
         "correct": "Poprawne",
+        "study": "Czas na zapamiętanie",
         "time": "Czas ustawiania",
         "rating": "Ocena",
         "board": "Plansza"
@@ -1526,6 +1530,8 @@
         "streak": "{value, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} z rzędu",
         "bestAccuracy": "najlepsza dokładność {value, number}%",
         "recentAccuracy": "ostatnia dokładność {value, number}%",
+        "studyTime": "czas na zapamiętanie {value, number} s",
+        "rebuildTime": "czas ustawiania {value, number} s",
         "winStreak": "seria wygranych: {value, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}",
         "rounds": "{value, plural, one {# rozegrana runda} few {# rozegrane rundy} many {# rozegranych rund} other {# rozegranej rundy}}",
         "days": "{value, plural, one {# dzień gry} few {# dni gry} many {# dni gry} other {# dnia gry}}"

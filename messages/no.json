@@ -1367,6 +1367,8 @@
       "span": "Hukommelsesspenn",
       "piecesHeld": "Husket brikker",
       "speed": "Tempo",
+      "studyTime": "Studietid",
+      "rebuildTime": "Plasseringstid",
       "streak": "Dager på rad",
       "rounds": "Spilte runder",
       "days": "Spilledager",
@@ -1381,6 +1383,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> brikke} other {<n>{value}</n> brikker}}",
       "secondsPerPiece": "<n>{value}</n> s per brikke",
+      "seconds": "<n>{value}</n> s",
       "days": "{count, plural, one {<n>{value}</n> dag} other {<n>{value}</n> dager}}",
       "percent": "<n>{value}</n> %",
       "rounds": "{count, plural, one {<n>{value}</n> runde} other {<n>{value}</n> runder}}",
@@ -1426,6 +1429,7 @@
         "setting": "Innstilling",
         "accuracy": "Presisjon",
         "correct": "Riktige",
+        "study": "Studietid",
         "time": "Plasseringstid",
         "rating": "Rating",
         "board": "Brett"
@@ -1526,6 +1530,8 @@
         "streak": "{value, plural, one {# dag} other {# dager}} på rad",
         "bestAccuracy": "{value, number} % beste presisjon",
         "recentAccuracy": "{value, number} % nylig presisjon",
+        "studyTime": "studietid {value, number} s",
+        "rebuildTime": "plasseringstid {value, number} s",
         "winStreak": "en seiersrekke på {value, plural, one {# runde} other {# runder}}",
         "rounds": "{value, plural, one {# runde} other {# runder}} spilt",
         "days": "{value, plural, one {# dag} other {# dager}} spilt"

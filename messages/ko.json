@@ -1367,6 +1367,8 @@
       "span": "기억 범위",
       "piecesHeld": "기억한 말",
       "speed": "속도",
+      "studyTime": "암기 시간",
+      "rebuildTime": "배치 시간",
       "streak": "연속 일수",
       "rounds": "플레이한 라운드",
       "days": "플레이한 날",
@@ -1381,6 +1383,7 @@
     "unit": {
       "pieces": "{count, plural, other {<n>{value}</n>개}}",
       "secondsPerPiece": "<n>{value}</n>초/말",
+      "seconds": "<n>{value}</n>초",
       "days": "{count, plural, other {<n>{value}</n>일}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, other {<n>{value}</n>라운드}}",
@@ -1426,6 +1429,7 @@
         "setting": "설정",
         "accuracy": "정확도",
         "correct": "정답",
+        "study": "암기 시간",
         "time": "배치 시간",
         "rating": "레이팅",
         "board": "보드"
@@ -1526,6 +1530,8 @@
         "streak": "{value, plural, other {#일}} 연속",
         "bestAccuracy": "최고 정확도 {value, number}%",
         "recentAccuracy": "최근 정확도 {value, number}%",
+        "studyTime": "암기 시간 {value, number}초",
+        "rebuildTime": "배치 시간 {value, number}초",
         "winStreak": "{value, plural, other {#연승}}",
         "rounds": "{value, plural, other {#라운드 플레이}}",
         "days": "{value, plural, other {#일 플레이}}"

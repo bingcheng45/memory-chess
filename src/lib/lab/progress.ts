@@ -27,6 +27,9 @@ export interface RecentChange {
   readonly change: number | null;
 }
 
+/** The mean of the newest values a dashboard figure reads. */
+export const recentAverage = (values: readonly number[]) => hundredths(mean(values.slice(-LAB_THRESHOLDS.recentRounds)));
+
 function recentChange(values: readonly number[]): RecentChange {
   const { rollingWindow } = LAB_THRESHOLDS;
   const average = mean(values.slice(-rollingWindow));
@@ -140,6 +143,8 @@ export interface PiecesHeldValue {
   /** For each point, the mean of that round and the four before it. */
   readonly movingAverage: readonly MovingAveragePoint[];
   readonly recent: RecentChange;
+  /** The dashboard's figure: the mean of the last 30 rounds, or of every round when there are fewer. */
+  readonly average: number;
 }
 
 export const PIECES_THRESHOLDS = TREND_THRESHOLDS;
@@ -163,6 +168,7 @@ export function computePiecesHeld(input: LabInput): MetricResult<PiecesHeldValue
         return { value: hundredths(mean(window)), partial: window.length < LAB_THRESHOLDS.movingAverage };
       }),
       recent: recentChange(correct),
+      average: recentAverage(correct),
     };
   });
 }
@@ -172,6 +178,8 @@ export interface SpeedValue {
   /** Rebuild seconds per correct piece in each of the last 30 rounds at the setting, oldest first. */
   readonly points: readonly number[];
   readonly recent: RecentChange;
+  /** The dashboard's figure: seconds per correct piece over the last 30 rounds at the setting, or every round when fewer. */
+  readonly average: number;
   /** The same rounds' accuracy, since a faster rebuild that places fewer pieces right is not progress. */
   readonly accuracyAtSameRounds: { readonly points: readonly number[]; readonly recent: RecentChange };
 }
@@ -179,7 +187,7 @@ export interface SpeedValue {
 export const SPEED_THRESHOLDS = { rounds: LAB_THRESHOLDS.trendRounds };
 
 /** A rebuild longer than this was a board left open, so it counts as this long and cannot swamp the average. */
-const MAX_SOLVE_MS = 600_000;
+export const MAX_SOLVE_MS = 600_000;
 
 const secondsPerPiece = ({ solveMs, correct }: RoundRecord) => Math.min(solveMs, MAX_SOLVE_MS) / correct / 1000;
 
@@ -198,13 +206,14 @@ export function computeSpeed(input: LabInput): MetricResult<SpeedValue> {
   const { rounds, readiness } = busiestSetting(input, usable, SPEED_THRESHOLDS, LAB_THRESHOLDS.speedSettingRounds);
 
   return measured(readiness, () => {
-    const shown = rounds.slice(-Math.max(LAB_THRESHOLDS.trendPoints, 2 * LAB_THRESHOLDS.rollingWindow));
+    const shown = rounds.slice(-Math.max(LAB_THRESHOLDS.trendPoints, 2 * LAB_THRESHOLDS.rollingWindow, LAB_THRESHOLDS.recentRounds));
     const perPiece = shown.map(secondsPerPiece);
     const accuracy = shown.map((record) => record.accuracy);
     return {
       setting: settingOf(rounds[0]),
       points: perPiece.slice(-LAB_THRESHOLDS.trendPoints).map(hundredths),
       recent: recentChange(perPiece),
+      average: recentAverage(perPiece),
       accuracyAtSameRounds: { points: accuracy.slice(-LAB_THRESHOLDS.trendPoints), recent: recentChange(accuracy) },
     };
   });

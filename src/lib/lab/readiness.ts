@@ -15,7 +15,10 @@ export const LAB_THRESHOLDS = {
   spanRounds: 2,
   spanMinPieces: 3,
   speedSettingRounds: 20,
+  /** Rounds in each of the two windows a change compares: the home panels' change lines and the findings. */
   rollingWindow: 10,
+  /** The newest rounds a dashboard figure averages; a figure reads every round it has until there are this many. */
+  recentRounds: 30,
   movingAverage: 5,
   /** Recall under this share marks a piece type weak, in the chart and in the insights. */
   weakRecall: 0.5,

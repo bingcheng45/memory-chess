@@ -1367,6 +1367,8 @@
       "span": "Tầm nhớ",
       "piecesHeld": "Số quân nhớ được",
       "speed": "Tốc độ",
+      "studyTime": "Thời gian ghi nhớ",
+      "rebuildTime": "Thời gian xếp",
       "streak": "Chuỗi ngày",
       "rounds": "Số ván đã chơi",
       "days": "Số ngày đã chơi",
@@ -1381,6 +1383,7 @@
     "unit": {
       "pieces": "{count, plural, other {<n>{value}</n> quân}}",
       "secondsPerPiece": "<n>{value}</n> giây mỗi quân",
+      "seconds": "<n>{value}</n> giây",
       "days": "{count, plural, other {<n>{value}</n> ngày}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, other {<n>{value}</n> ván}}",
@@ -1426,6 +1429,7 @@
         "setting": "Thiết lập",
         "accuracy": "Độ chính xác",
         "correct": "Đúng",
+        "study": "Thời gian ghi nhớ",
         "time": "Thời gian xếp",
         "rating": "Điểm",
         "board": "Bàn cờ"
@@ -1526,6 +1530,8 @@
         "streak": "{value, plural, other {# ngày}} liên tiếp",
         "bestAccuracy": "độ chính xác cao nhất {value, number}%",
         "recentAccuracy": "độ chính xác gần đây {value, number}%",
+        "studyTime": "thời gian ghi nhớ {value, number} giây",
+        "rebuildTime": "thời gian xếp {value, number} giây",
         "winStreak": "chuỗi thắng {value, plural, other {# ván}}",
         "rounds": "{value, plural, other {# ván đã chơi}}",
         "days": "{value, plural, other {# ngày đã chơi}}"

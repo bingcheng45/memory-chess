@@ -1367,6 +1367,8 @@
       "span": "Memóriaterjedelem",
       "piecesHeld": "Megjegyzett bábuk",
       "speed": "Sebesség",
+      "studyTime": "Megfigyelési idő",
+      "rebuildTime": "Kirakási idő",
       "streak": "Napi sorozat",
       "rounds": "Lejátszott körök",
       "days": "Játéknapok",
@@ -1381,6 +1383,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> bábu} other {<n>{value}</n> bábu}}",
       "secondsPerPiece": "<n>{value}</n> mp bábunként",
+      "seconds": "<n>{value}</n> mp",
       "days": "{count, plural, one {<n>{value}</n> nap} other {<n>{value}</n> nap}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> kör} other {<n>{value}</n> kör}}",
@@ -1426,6 +1429,7 @@
         "setting": "Beállítás",
         "accuracy": "Pontosság",
         "correct": "Helyes",
+        "study": "Megfigyelési idő",
         "time": "Kirakási idő",
         "rating": "Pontszám",
         "board": "Tábla"
@@ -1526,6 +1530,8 @@
         "streak": "{value, plural, one {# nap} other {# nap}} egymás után",
         "bestAccuracy": "{value, number}% legjobb pontosság",
         "recentAccuracy": "{value, number}% legutóbbi pontosság",
+        "studyTime": "megfigyelési idő: {value, number} mp",
+        "rebuildTime": "kirakási idő: {value, number} mp",
         "winStreak": "{value, plural, one {# körös} other {# körös}} győzelmi sorozat",
         "rounds": "{value, plural, one {# lejátszott kör} other {# lejátszott kör}}",
         "days": "{value, plural, one {# játéknap} other {# játéknap}}"

@@ -1367,6 +1367,8 @@
       "span": "Memory span",
       "piecesHeld": "Pieces held",
       "speed": "Speed",
+      "studyTime": "Study time",
+      "rebuildTime": "Rebuild time",
       "streak": "Day streak",
       "rounds": "Rounds played",
       "days": "Days played",
@@ -1381,6 +1383,7 @@
     "unit": {
       "pieces": "{count, plural, one {<n>{value}</n> piece} other {<n>{value}</n> pieces}}",
       "secondsPerPiece": "<n>{value}</n> s per piece",
+      "seconds": "<n>{value}</n> s",
       "days": "{count, plural, one {<n>{value}</n> day} other {<n>{value}</n> days}}",
       "percent": "<n>{value}</n>%",
       "rounds": "{count, plural, one {<n>{value}</n> round} other {<n>{value}</n> rounds}}",
@@ -1426,6 +1429,7 @@
         "setting": "Setting",
         "accuracy": "Accuracy",
         "correct": "Correct",
+        "study": "Study time",
         "time": "Rebuild time",
         "rating": "Rating",
         "board": "Board"
@@ -1526,6 +1530,8 @@
         "streak": "{value, plural, one {# day} other {# days}} in a row",
         "bestAccuracy": "{value, number}% best accuracy",
         "recentAccuracy": "{value, number}% recent accuracy",
+        "studyTime": "study time {value, number} s",
+        "rebuildTime": "rebuild time {value, number} s",
         "winStreak": "a win streak of {value, plural, one {# round} other {# rounds}}",
         "rounds": "{value, plural, one {# round} other {# rounds}} played",
         "days": "{value, plural, one {# day} other {# days}} played"

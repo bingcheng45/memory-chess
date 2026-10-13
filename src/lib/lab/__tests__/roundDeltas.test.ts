@@ -39,6 +39,8 @@ describe("roundDeltasOf", () => {
 
     expect(deltas).toEqual([
       { id: "rating", betterWhen: "higher", direction: "new", before: null, after: { value: 1015, unit: "rating", digits: 0 }, delta: null },
+      { id: "studyTime", betterWhen: "lower", direction: "new", before: null, after: { value: 10, unit: "seconds", digits: 1 }, delta: null },
+      { id: "rebuildTime", betterWhen: "lower", direction: "new", before: null, after: { value: 20, unit: "seconds", digits: 1 }, delta: null },
       { id: "bestAccuracy", betterWhen: "higher", direction: "new", before: null, after: { value: 100, unit: "percent", digits: 0 }, delta: null },
       { id: "recentAccuracy", betterWhen: "higher", direction: "new", before: null, after: { value: 100, unit: "percent", digits: 0 }, delta: null },
       { id: "winStreak", betterWhen: "higher", direction: "new", before: null, after: { value: 1, unit: "rounds", digits: 0 }, delta: null },
@@ -47,19 +49,21 @@ describe("roundDeltasOf", () => {
     ]);
   });
 
-  it("reads a round that holds one more piece twice as a span and a rating up, both better", () => {
+  it("reads a quicker round that holds one more piece twice as a span and a rating up and both times down, all better", () => {
     const earlier = [
       roundV2({ id: "a", ...at("2026-10-06", 9) }),
       roundV2({ id: "b", ...at("2026-10-06", 10) }),
       roundV2({ id: "c", ...at("2026-10-06", 11), pieceCount: 5, targetFen: FIVE, placedFen: FIVE }),
     ];
-    const round = roundV2({ id: "d", ...at(TODAY, 12), pieceCount: 5, targetFen: FIVE, placedFen: FIVE });
+    const round = roundV2({ id: "d", ...at(TODAY, 12), pieceCount: 5, targetFen: FIVE, placedFen: FIVE, memorizeMs: 4000, solveMs: 14_000 });
 
     const deltas = deltasAfter(earlier, round, { before: { rating: 1040, winStreak: 2, changes: [12, 10] }, after: { rating: 1058, winStreak: 3, changes: [18, 12, 10] } });
 
     expect(deltas).toEqual([
       { id: "rating", betterWhen: "higher", direction: "up", before: { value: 1040, unit: "rating", digits: 0 }, after: { value: 1058, unit: "rating", digits: 0 }, delta: 18 },
       { id: "span", betterWhen: "higher", direction: "up", before: { value: 4, unit: "pieces", digits: 0 }, after: { value: 5, unit: "pieces", digits: 0 }, delta: 1 },
+      { id: "studyTime", betterWhen: "lower", direction: "down", before: { value: 10, unit: "seconds", digits: 1 }, after: { value: 8.5, unit: "seconds", digits: 1 }, delta: -1.5 },
+      { id: "rebuildTime", betterWhen: "lower", direction: "down", before: { value: 20, unit: "seconds", digits: 1 }, after: { value: 18.5, unit: "seconds", digits: 1 }, delta: -1.5 },
       { id: "bestAccuracy", betterWhen: "higher", direction: "level", before: { value: 100, unit: "percent", digits: 0 }, after: { value: 100, unit: "percent", digits: 0 }, delta: 0 },
       { id: "recentAccuracy", betterWhen: "higher", direction: "level", before: { value: 100, unit: "percent", digits: 0 }, after: { value: 100, unit: "percent", digits: 0 }, delta: 0 },
       { id: "winStreak", betterWhen: "higher", direction: "up", before: { value: 2, unit: "rounds", digits: 0 }, after: { value: 3, unit: "rounds", digits: 0 }, delta: 1 },
@@ -67,7 +71,21 @@ describe("roundDeltasOf", () => {
       { id: "rounds", betterWhen: "higher", direction: "up", before: { value: 3, unit: "rounds", digits: 0 }, after: { value: 4, unit: "rounds", digits: 0 }, delta: 1 },
       { id: "days", betterWhen: "higher", direction: "up", before: { value: 1, unit: "days", digits: 0 }, after: { value: 2, unit: "days", digits: 0 }, delta: 1 },
     ]);
-    expect(pick(deltas, "rating", "span").map(verdictOf)).toEqual(["better", "better"]);
+    expect(pick(deltas, "rating", "span", "studyTime", "rebuildTime").map(verdictOf)).toEqual(["better", "better", "better", "better"]);
+  });
+
+  it("reads a slower round as both times up, worse", () => {
+    const earlier = [roundV2({ id: "a", ...at(TODAY, 9) }), roundV2({ id: "b", ...at(TODAY, 10) })];
+    const round = roundV2({ id: "c", ...at(TODAY, 12), memorizeMs: 10_000, solveMs: 50_000 });
+    const earlierQuick = earlier.map((record) => ({ ...record, memorizeMs: 7000 }));
+
+    const deltas = pick(deltasAfter(earlierQuick, round, { before: null, after: null }), "studyTime", "rebuildTime");
+
+    expect(deltas).toEqual([
+      { id: "studyTime", betterWhen: "lower", direction: "up", before: { value: 7, unit: "seconds", digits: 1 }, after: { value: 8, unit: "seconds", digits: 1 }, delta: 1 },
+      { id: "rebuildTime", betterWhen: "lower", direction: "up", before: { value: 20, unit: "seconds", digits: 1 }, after: { value: 30, unit: "seconds", digits: 1 }, delta: 10 },
+    ]);
+    expect(deltas.map(verdictOf)).toEqual(["worse", "worse"]);
   });
 
   it("reads an empty board as recent accuracy, rating and win streak down, all worse", () => {

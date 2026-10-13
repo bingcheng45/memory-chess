@@ -82,7 +82,8 @@ function ScoredBoard({ round }: { round: HistoryRound }) {
   );
 }
 
-const COLUMNS = ["date", "source", "setting", "accuracy", "correct", "time", "rating", "board"] as const;
+const COLUMNS = ["date", "source", "setting", "accuracy", "correct", "study", "time", "rating", "board"] as const;
+const NUMERIC: readonly (typeof COLUMNS)[number][] = ["accuracy", "correct", "study", "time", "rating"];
 
 function Row({ round, open, onToggle }: { round: HistoryRound; open: boolean; onToggle: () => void }) {
   const t = useTranslations("dashboard.history");
@@ -114,6 +115,9 @@ function Row({ round, open, onToggle }: { round: HistoryRound; open: boolean; on
         </td>
         <td data-label={col("correct")} className="lab-hist-num">
           {t("correctValue", { correct: record.correct, total: record.config.pieceCount })}
+        </td>
+        <td data-label={col("study")} className="lab-hist-num">
+          {seconds(record.memorizeMs)}
         </td>
         <td data-label={col("time")} className="lab-hist-num">
           {seconds(record.solveMs)}
@@ -223,7 +227,7 @@ export function DashboardHistory({ rounds, total }: HistoryProps) {
             <thead>
               <tr>
                 {COLUMNS.map((key) => (
-                  <th key={key} scope="col" className={key === "board" ? "lab-hist-end" : ["accuracy", "correct", "time", "rating"].includes(key) ? "lab-hist-num" : undefined}>
+                  <th key={key} scope="col" className={key === "board" ? "lab-hist-end" : NUMERIC.includes(key) ? "lab-hist-num" : undefined}>
                     {key === "board" ? <span className="lab-sr">{t(`col.${key}`)}</span> : t(`col.${key}`)}
                   </th>
                 ))}

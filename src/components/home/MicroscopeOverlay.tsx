@@ -2,10 +2,10 @@
 
 import { useTranslations } from "next-intl";
 import type { SquareName } from "@/lib/game/board";
-import type { Relation, RelationCheck } from "@/lib/home/relations";
+import type { RelationCheck } from "@/lib/home/relations";
 import { SPECIMEN, SPECIMEN_GROUPS, SPECIMEN_RECALL, type MicroscopePhase } from "@/lib/home/specimen";
 import { placeLabel, segmentBetween, squaresBox } from "@/lib/home/labelPlacement";
-import { BoardArrow, direction } from "./BoardArrow";
+import { LineMark, direction } from "./BoardLine";
 import { fileOf, rowOf } from "./boardUnits";
 
 const CELL_INSET = 0.05;
@@ -14,7 +14,6 @@ const PILL_FONT = 0.24;
 const PILL_HEIGHT = 0.36;
 // Geist Mono advances about 0.6em per character.
 const pillWidth = (label: string) => 0.24 + label.length * PILL_FONT * 0.6;
-const BAR_HALF = 0.32;
 const VERDICT_RADIUS = 0.17;
 
 /** The squares holding a piece in this phase, which a label must not cover. */
@@ -71,28 +70,6 @@ function GroupMarks({ phase }: { phase: MicroscopePhase }) {
   );
 }
 
-/** Two pawns nose to nose: a bar across the border between their squares. */
-function BlockBar({ from, to }: { from: SquareName; to: SquareName }) {
-  const { ux, uy, mid } = direction(from, to);
-  return (
-    <g className="lab-ov-rel" data-kind="blocked">
-      <line x1={mid.x - uy * BAR_HALF} y1={mid.y + ux * BAR_HALF} x2={mid.x + uy * BAR_HALF} y2={mid.y - ux * BAR_HALF} />
-    </g>
-  );
-}
-
-function RelationMark({ relation, verdict }: { relation: Relation; verdict?: boolean }) {
-  if (relation.kind === "blocked") return <BlockBar from={relation.from} to={relation.to} />;
-  return (
-    <BoardArrow
-      from={relation.from}
-      to={relation.to}
-      kind={relation.kind}
-      headless={relation.kind === "chain" || relation.kind === "controls"}
-      className={verdict === undefined ? "lab-ov-rel" : "lab-ov-rel lab-ov-checked"}
-    />
-  );
-}
 
 /** A tick or a cross at the middle of a re-derived relation. */
 function Verdict({ check }: { check: RelationCheck }) {
@@ -112,6 +89,7 @@ function Verdict({ check }: { check: RelationCheck }) {
 
 /** What the microscope draws over the board for one phase, all of it from the phase's data. */
 export function MicroscopeOverlay({ phase }: { phase: MicroscopePhase }) {
+  const occupied = occupiedIn(phase);
   return (
     <svg className="lab-ov" viewBox="0 0 8 8" aria-hidden="true">
       <g key={phase.id}>
@@ -128,11 +106,11 @@ export function MicroscopeOverlay({ phase }: { phase: MicroscopePhase }) {
           />
         ))}
         {phase.relations.map((relation) => (
-          <RelationMark key={`${relation.kind}-${relation.from}-${relation.to}`} relation={relation} />
+          <LineMark key={`${relation.kind}-${relation.from}-${relation.to}`} line={relation} occupied={occupied} />
         ))}
         {phase.checks.map((check) => (
           <g key={`${check.relation.kind}-${check.relation.from}-${check.relation.to}`} data-holds={check.holds}>
-            <RelationMark relation={check.relation} verdict={check.holds} />
+            <LineMark line={check.relation} occupied={occupied} className="lab-ov-checked" />
             <Verdict check={check} />
           </g>
         ))}

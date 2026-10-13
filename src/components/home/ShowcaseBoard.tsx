@@ -3,10 +3,12 @@
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import type { SquareName } from "@/lib/game/board";
-import { SHOWCASE } from "@/lib/home/showcase";
+import { LINE_KINDS, type LineKind } from "@/lib/home/lineGrammar";
+import { linesOf, SHOWCASE } from "@/lib/home/showcase";
 import { SHOWCASE_STEPS, STEP_MS, type ShowcaseStep, type StepTone } from "@/lib/home/showcaseTour";
 import { inspect, viewOfInspection, viewOfStep } from "@/lib/home/showcaseView";
 import { usePieceName } from "@/components/round/BoardFigure";
+import { LineSwatch } from "./BoardLine";
 import { ShowcaseControls } from "./ShowcaseControls";
 import { ShowcaseFigure } from "./ShowcaseFigure";
 import { useReducedMotion } from "./useLabEffects";
@@ -28,6 +30,21 @@ function useInspectedKeys(inspected: SquareName | null, onLeave: () => void) {
     document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [inspected, onLeave]);
+}
+
+/** Names each kind of line on the board, so a line is never left to be guessed. Empty, it keeps its height. */
+function LineKey({ kinds }: { kinds: readonly LineKind[] }) {
+  const t = useTranslations("home.lab.hero.showcase.lines");
+  return (
+    <ul className="lab-sc-key" aria-hidden="true">
+      {kinds.map((kind) => (
+        <li key={kind}>
+          <LineSwatch kind={kind} />
+          {t(kind)}
+        </li>
+      ))}
+    </ul>
+  );
 }
 
 /**
@@ -74,6 +91,8 @@ export function ShowcaseBoard() {
   };
   useInspectedKeys(inspected, resume);
 
+  const drawn = linesOf(view.annotations);
+  const kinds = LINE_KINDS.filter((kind) => drawn.some((line) => line.kind === kind));
   const thoughtKey = `steps.${step.key}.thought`;
   const thought = !inspection && t.has(thoughtKey) ? t(thoughtKey) : "";
   const counter = inspection
@@ -114,6 +133,7 @@ export function ShowcaseBoard() {
         onInspect={(square) => (inspected === square ? resume() : setInspected(square))}
       />
       <div className="lab-sc-cap">
+        <LineKey kinds={kinds} />
         <div className="lab-sc-cap-top">
           <span className={TAG_CLASS[inspection ? (inspection.color === "white" ? "white" : "black") : step.tone]}>
             {t(inspection ? "tags.inspect" : `tags.${step.tag}`)}

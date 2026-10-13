@@ -241,6 +241,15 @@
                 "caption": "Kontroller nå. Ulikefargede løpere, c3 er mørkt og f5 er lyst. Løperen på c3 angriper fortsatt f6. Fire hvite, seks svarte."
               }
             }
+          },
+          "lines": {
+            "move": "Spilt trekk",
+            "path": "Vei til forvandling",
+            "attacks": "Angriper",
+            "defends": "Dekker",
+            "controls": "Kontrollerer",
+            "chain": "Bondekjede",
+            "blocked": "Blokkert"
           }
         }
       },

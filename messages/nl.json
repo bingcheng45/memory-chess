@@ -241,6 +241,15 @@
                 "caption": "Controleer het nu. Ongelijke lopers, c3 donker en f5 licht. De loper op c3 valt f6 nog steeds aan. Vier witte, zes zwarte."
               }
             }
+          },
+          "lines": {
+            "move": "Gespeelde zet",
+            "path": "Weg naar promotie",
+            "attacks": "Valt aan",
+            "defends": "Dekt",
+            "controls": "Bestrijkt",
+            "chain": "Pionnenketen",
+            "blocked": "Geblokkeerd"
           }
         }
       },

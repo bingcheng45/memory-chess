@@ -241,6 +241,15 @@
                 "caption": "Tarkista nyt. Eriväriset lähetit, c3 on tumma ja f5 vaalea. Lähetti c3:ssa uhkaa yhä f6:ta. Neljä valkoista, kuusi mustaa."
               }
             }
+          },
+          "lines": {
+            "move": "Pelattu siirto",
+            "path": "Tie korotukseen",
+            "attacks": "Hyökkää",
+            "defends": "Suojaa",
+            "controls": "Hallitsee",
+            "chain": "Sotilasketju",
+            "blocked": "Tukossa"
           }
         }
       },

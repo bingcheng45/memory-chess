@@ -54,7 +54,7 @@ describe("the showcase tour", () => {
   it("dims every piece the trap is not about", () => {
     const trap = stepOf("trap.king");
     if (trap.phase !== "trap") throw new Error("expected the trap");
-    expect([...trap.dimmed].sort()).toEqual(["a4", "g1", "g2", "g6", "h4"]);
+    expect([...trap.dimmed].sort()).toEqual(["a4", "f6", "g1", "g2", "g6", "h4"]);
   });
 
   it("blanks the board where the game ended, then puts every piece back on its study square", () => {

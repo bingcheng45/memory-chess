@@ -241,6 +241,15 @@
                 "caption": "Giờ hãy kiểm tra. Tượng khác màu, c3 là ô đen, f5 là ô trắng. Tượng c3 vẫn nhắm vào f6. Bốn quân Trắng, sáu quân Đen."
               }
             }
+          },
+          "lines": {
+            "move": "Nước đã đi",
+            "path": "Đường phong cấp",
+            "attacks": "Tấn công",
+            "defends": "Bảo vệ",
+            "controls": "Khống chế",
+            "chain": "Chuỗi tốt",
+            "blocked": "Bị chặn"
           }
         }
       },

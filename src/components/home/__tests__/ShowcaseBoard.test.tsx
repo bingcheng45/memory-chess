@@ -54,24 +54,36 @@ describe("ShowcaseBoard", () => {
     next();
     expect(screen.getByText("White's king on g1 guards the g2 pawn. The h-pawn has run to h4.")).toBeInTheDocument();
     expect(circled()).toBe(1);
-    expect(container.querySelectorAll(".lab-sc-arrow[data-kind='defends']")).toHaveLength(1);
+    expect(container.querySelectorAll(".lab-sc-line[data-kind='defends']")).toHaveLength(1);
     next();
     expect(circled()).toBe(2);
     expect(container.querySelectorAll(".lab-sc-group[data-active] .lab-sc-box")).toHaveLength(1);
     expect(screen.getByText("Study 2/4")).toBeInTheDocument();
-    expect(container.querySelectorAll(".lab-sc-arrow[data-kind='attacks']")).toHaveLength(1);
-    expect(container.querySelectorAll(".lab-sc-arrow[data-kind='controls']")).toHaveLength(1);
+    expect(container.querySelectorAll(".lab-sc-line[data-kind='attacks']")).toHaveLength(1);
+    expect(container.querySelectorAll(".lab-sc-line[data-kind='controls']")).toHaveLength(1);
   });
 
-  it("boxes in the black king: crosses on d5, e5 and f5, the bishop's two lines, the rest dimmed", () => {
+  it("boxes in the black king: crosses on d5, e5 and f5, the bishop's line to e5, the rest dimmed", () => {
     const { container } = renderWithIntl(<ShowcaseBoard />);
     goTo("trap.king");
 
     expect(screen.getAllByText("The trap")).toHaveLength(2);
     expect(screen.getByText(/Only Kd6, Kd7, Ke7 and Kf7/)).toBeInTheDocument();
     expect(container.querySelectorAll(".lab-sc-cross")).toHaveLength(3);
-    expect(container.querySelectorAll(".lab-sc-arrow")).toHaveLength(2);
-    expect(container.querySelectorAll(".lab-piece[data-state='ghost']")).toHaveLength(5);
+    expect(container.querySelectorAll(".lab-sc-line[data-kind='controls']")).toHaveLength(1);
+    expect(container.querySelectorAll(".lab-piece[data-state='ghost']")).toHaveLength(6);
+    expect(within(container.querySelector(".lab-sc-key") as HTMLElement).getByText("Covers")).toBeInTheDocument();
+  });
+
+  it("ends on the two runners: each pawn's road to promotion against the one diagonal the bishop holds", () => {
+    const { container } = renderWithIntl(<ShowcaseBoard />);
+    goTo("game.runners");
+    playPlies(8);
+
+    const lines = [...container.querySelectorAll(".lab-sc-line")].map((line) => line.getAttribute("data-kind"));
+    expect(lines).toEqual(["path", "path", "controls"]);
+    const key = [...container.querySelectorAll(".lab-sc-key li")].map((item) => item.textContent);
+    expect(key).toEqual(["Road to promotion", "Covers"]);
   });
 
   it("plays the walk ply by ply, takes the bishop off, and draws the king's path at the end", () => {
@@ -82,12 +94,12 @@ describe("ShowcaseBoard", () => {
     expect(square("white pawn on h3")).toEqual({ file: 7, row: 5 });
     expect(piece("black bishop on h3")).toBeDisabled();
     expect(square("black king on e6")).toEqual({ file: 4, row: 2 });
-    expect(container.querySelectorAll(".lab-sc-arrow[data-kind='move']")).toHaveLength(0);
+    expect(container.querySelectorAll(".lab-sc-line[data-kind='move']")).toHaveLength(0);
 
     playPlies(3);
     expect(square("black king on e4")).toEqual({ file: 4, row: 4 });
     expect(square("white king on f2")).toEqual({ file: 5, row: 6 });
-    expect(container.querySelectorAll(".lab-sc-arrow[data-kind='move']")).toHaveLength(2);
+    expect(container.querySelectorAll(".lab-sc-line[data-kind='move']")).toHaveLength(2);
     expect(screen.getByText("Game 2/3")).toBeInTheDocument();
   });
 

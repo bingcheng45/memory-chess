@@ -241,6 +241,15 @@
                 "caption": "Now check it. Bishops on opposite colours, c3 dark and f5 light. The c3 bishop still hits f6. Four white, six black."
               }
             }
+          },
+          "lines": {
+            "move": "Move played",
+            "path": "Road to promotion",
+            "attacks": "Attacks",
+            "defends": "Guards",
+            "controls": "Covers",
+            "chain": "Pawn chain",
+            "blocked": "Blocked"
           }
         }
       },

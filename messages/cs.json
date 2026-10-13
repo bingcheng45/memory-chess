@@ -241,6 +241,15 @@
                 "caption": "Teď to zkontrolujte. Nestejnobarevní střelci, c3 je tmavé pole a f5 světlé. Střelec c3 stále napadá f6. Čtyři bílé figury, šest černých."
               }
             }
+          },
+          "lines": {
+            "move": "Odehraný tah",
+            "path": "Cesta k proměně",
+            "attacks": "Útočí",
+            "defends": "Kryje",
+            "controls": "Ovládá pole",
+            "chain": "Pěšcový řetěz",
+            "blocked": "Zablokováno"
           }
         }
       },

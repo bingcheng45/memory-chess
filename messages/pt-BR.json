@@ -241,6 +241,15 @@
                 "caption": "Agora confira. Bispos de cores opostas, c3 escura e f5 clara. O bispo de c3 ainda ataca f6. Quatro brancas, seis pretas."
               }
             }
+          },
+          "lines": {
+            "move": "Lance jogado",
+            "path": "Caminho até a promoção",
+            "attacks": "Ataca",
+            "defends": "Protege",
+            "controls": "Controla",
+            "chain": "Cadeia de peões",
+            "blocked": "Bloqueado"
           }
         }
       },

@@ -241,6 +241,15 @@
                 "caption": "Most ellenőrizd. Ellentétes színű futók, a c3 sötét, az f5 világos mező. A c3-as futó még mindig támadja f6-ot. Négy világos, hat sötét bábu."
               }
             }
+          },
+          "lines": {
+            "move": "Megtett lépés",
+            "path": "Út az átváltozásig",
+            "attacks": "Támad",
+            "defends": "Véd",
+            "controls": "Ellenőriz",
+            "chain": "Gyaloglánc",
+            "blocked": "Blokkolva"
           }
         }
       },

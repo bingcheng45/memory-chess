@@ -241,6 +241,15 @@
                 "caption": "Şimdi kontrol et. Zıt renkli filler, c3 kara kare, f5 beyaz kare. c3'teki fil hâlâ f6'yı hedef alıyor. Dört beyaz, altı siyah."
               }
             }
+          },
+          "lines": {
+            "move": "Oynanan hamle",
+            "path": "Terfi yolu",
+            "attacks": "Saldırır",
+            "defends": "Korur",
+            "controls": "Kontrol eder",
+            "chain": "Piyon zinciri",
+            "blocked": "Kilitli"
           }
         }
       },

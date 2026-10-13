@@ -241,6 +241,15 @@
                 "caption": "Sekarang periksa. Gajah berlainan warna, c3 petak hitam dan f5 petak putih. Gajah c3 masih mengincar f6. Empat putih, enam hitam."
               }
             }
+          },
+          "lines": {
+            "move": "Langkah yang dimainkan",
+            "path": "Jalan menuju promosi",
+            "attacks": "Menyerang",
+            "defends": "Melindungi",
+            "controls": "Menguasai",
+            "chain": "Rantai pion",
+            "blocked": "Terhadang"
           }
         }
       },

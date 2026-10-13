@@ -241,6 +241,15 @@
                 "caption": "Acum verifică. Nebuni de culori diferite, c3 negru și f5 alb. Nebunul de pe c3 atacă în continuare f6. Patru albe, șase negre."
               }
             }
+          },
+          "lines": {
+            "move": "Mutare jucată",
+            "path": "Drum spre transformare",
+            "attacks": "Atacă",
+            "defends": "Apără",
+            "controls": "Controlează",
+            "chain": "Lanț de pioni",
+            "blocked": "Blocat"
           }
         }
       },

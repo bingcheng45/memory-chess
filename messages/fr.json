@@ -241,6 +241,15 @@
                 "caption": "Vérifiez maintenant. Fous de couleurs opposées, c3 sur case noire et f5 sur case blanche. Le fou c3 vise toujours f6. Quatre pièces blanches, six noires."
               }
             }
+          },
+          "lines": {
+            "move": "Coup joué",
+            "path": "Route vers la promotion",
+            "attacks": "Attaque",
+            "defends": "Protège",
+            "controls": "Contrôle",
+            "chain": "Chaîne de pions",
+            "blocked": "Bloqué"
           }
         }
       },

@@ -241,6 +241,15 @@
                 "caption": "Tjek det nu. Uligefarvede løbere, c3 mørkt og f5 lyst. Løberen på c3 angriber stadig f6. Fire hvide, seks sorte."
               }
             }
+          },
+          "lines": {
+            "move": "Spillet træk",
+            "path": "Vej til forvandling",
+            "attacks": "Angriber",
+            "defends": "Dækker",
+            "controls": "Kontrollerer",
+            "chain": "Bondekæde",
+            "blocked": "Blokeret"
           }
         }
       },

@@ -241,6 +241,15 @@
                 "caption": "Jetzt prüfen. Ungleichfarbige Läufer, c3 dunkel und f5 hell. Der Läufer c3 greift immer noch f6 an. Vier weiße, sechs schwarze."
               }
             }
+          },
+          "lines": {
+            "move": "Gespielter Zug",
+            "path": "Weg zur Umwandlung",
+            "attacks": "Greift an",
+            "defends": "Deckt",
+            "controls": "Kontrolliert",
+            "chain": "Bauernkette",
+            "blocked": "Blockiert"
           }
         }
       },

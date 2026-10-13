@@ -241,6 +241,15 @@
                 "caption": "Teraz sprawdź. Gońce różnopolowe, c3 ciemne, a f5 jasne. Goniec z c3 wciąż atakuje f6. Cztery białe, sześć czarnych."
               }
             }
+          },
+          "lines": {
+            "move": "Zagrany ruch",
+            "path": "Droga do promocji",
+            "attacks": "Atakuje",
+            "defends": "Broni",
+            "controls": "Kontroluje",
+            "chain": "Łańcuch pionków",
+            "blocked": "Zablokowane"
           }
         }
       },

@@ -241,6 +241,15 @@
                 "caption": "Ora controlla. Alfieri di colore contrario, c3 casa scura e f5 casa chiara. L’alfiere c3 attacca ancora f6. Quattro pezzi bianchi, sei neri."
               }
             }
+          },
+          "lines": {
+            "move": "Mossa giocata",
+            "path": "Strada verso la promozione",
+            "attacks": "Attacca",
+            "defends": "Protegge",
+            "controls": "Controlla",
+            "chain": "Catena di pedoni",
+            "blocked": "Bloccato"
           }
         }
       },

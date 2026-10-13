@@ -241,6 +241,15 @@
                 "caption": "Kontrollera nu. Olikfärgade löpare, c3 är mörk och f5 är ljus. Löparen på c3 angriper fortfarande f6. Fyra vita, sex svarta."
               }
             }
+          },
+          "lines": {
+            "move": "Spelat drag",
+            "path": "Väg till förvandling",
+            "attacks": "Angriper",
+            "defends": "Skyddar",
+            "controls": "Kontrollerar",
+            "chain": "Bondekedja",
+            "blocked": "Blockerat"
           }
         }
       },

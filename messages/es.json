@@ -241,6 +241,15 @@
                 "caption": "Ahora compruébalo. Alfiles de distinto color, c3 en casilla negra y f5 en casilla blanca. El alfil de c3 sigue atacando f6. Cuatro piezas blancas, seis negras."
               }
             }
+          },
+          "lines": {
+            "move": "Jugada hecha",
+            "path": "Camino a la coronación",
+            "attacks": "Ataca",
+            "defends": "Protege",
+            "controls": "Controla",
+            "chain": "Cadena de peones",
+            "blocked": "Bloqueado"
           }
         }
       },

@@ -94,6 +94,9 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-nav-link, .lab-paper .lab-nav-trigger { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 10px; border: 0; border-radius: var(--lp-r-sm); background: none; font: 500 15px/1 var(--lp-ui); color: var(--lp-ink-2); text-decoration: none; cursor: pointer; white-space: nowrap; }
 .lab-paper .lab-nav-link:hover, .lab-paper .lab-nav-trigger:hover { color: var(--lp-ink); background: var(--lp-surface-2); }
 .lab-paper .lab-nav-link[aria-current="page"] { color: var(--lp-accent); }
+.lab-paper .lab-nav-link, .lab-paper .lab-menu-btn { position: relative; }
+.lab-paper .lab-daily-dot { position: absolute; top: 7px; right: 3px; width: 7px; height: 7px; border-radius: 50%; background: var(--lp-wordmark); }
+.lab-paper .lab-menu .lab-daily-dot { position: static; display: inline-block; margin-left: 8px; vertical-align: middle; }
 .lab-paper .lab-nav-trigger { color: var(--lp-ink); }
 .lab-paper .lab-nav-trigger::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--lp-accent); }
 .lab-paper .lab-chev { width: 10px; height: 10px; transition: transform 0.15s; }

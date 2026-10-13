@@ -546,7 +546,7 @@
           "title": "Ett bräde om dagen, samma för alla.",
           "desc": "En ny ställning öppnas varje dag vid midnatt UTC. Alla får samma 6 pjäser och 10 sekunder att studera, och du har ett försök.",
           "play": "Spela dagens bräde",
-          "open": "Du har inte spelat dagens bräde ännu.",
+          "open": "Dagens bräde har {pieceCount, plural, one {# pjäs} other {# pjäser}} och {memorizeSeconds, plural, one {# sekund} other {# sekunder}} att studera. Du har inte spelat dagens bräde ännu.",
           "played": "Du placerade {correct} av {pieceCount, plural, one {# pjäs} other {# pjäser}} rätt, {accuracy} procent.",
           "unfinished": "Du öppnade dagens bräde och lämnade det före resultatet. Ett försök per dag på den här enheten.",
           "streak": "Dagssvit {current, plural, one {# dag} other {# dagar}}{forgiven, plural, =0 {} one {, # missad dag förlåten} other {, # missade dagar förlåtna}} · längsta {longest, plural, one {# dag} other {# dagar}}",
@@ -1163,10 +1163,17 @@
     "columns": {
       "rank": "Plats",
       "player": "Spelare",
+      "elo": "ELO",
       "pieces": "Pjäser",
       "memorizeTime": "Memoreringstid",
       "solutionTime": "Lösningstid",
       "date": "Datum"
+    },
+    "daily": {
+      "tab": "Daglig",
+      "setting": "{pieces, plural, one {# pjäs} other {# pjäser}} · {seconds} s att studera",
+      "resetsAtUtc": "Nollställs kl. {utc} UTC",
+      "resetsAt": "Nollställs kl. {utc} UTC ({local} hos dig), om {timeLeft}"
     }
   },
   "country": {
@@ -1584,5 +1591,119 @@
     },
     "play": "Spela en runda",
     "home": "Till startsidan"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} tim {minutes} min",
+    "underMinute": "under en minut",
+    "ready": "Dagens bräde · {pieceCount, plural, one {# pjäs} other {# pjäser}} · {seconds} s · {timeLeft} kvar",
+    "next": "Nästa bräde om {timeLeft}",
+    "pending": "Dagens bräde",
+    "navReady": "{label}, dagens bräde är redo",
+    "cardTitle": "Dagens bräde är redo",
+    "cardSetting": "{pieceCount, plural, one {# pjäs} other {# pjäser}} och {seconds, plural, one {# sekund} other {# sekunder}} att memorera.",
+    "cardNote": "Alla spelar samma bräde i dag, och du får ett försök.",
+    "play": "Spela dagens bräde"
+  },
+  "daily": {
+    "meta": {
+      "title": "Dagens minnesbräde i schack: en ställning för alla",
+      "description": "Ett schackbräde för minnet varje dag, samma ställning för alla spelare. Studera det en gång, bygg upp det igen och kom med bland dagens topp 10. Ett nytt bräde öppnar vid midnatt UTC.",
+      "socialTitle": "Dagens bräde i Memory Chess",
+      "socialDescription": "I dag får alla samma ställning. Memorera den, bygg upp den igen och se var du hamnar."
+    },
+    "round": {
+      "locked": "Du har redan öppnat dagens bräde. Ett försök per dag håller det rättvist.",
+      "seeBoard": "Se dagens bräde",
+      "chooseRound": "Spela en runda till",
+      "join": "Delta i dagens bräde"
+    },
+    "page": {
+      "fig": "Dagens bräde · {date}",
+      "title": "Ett bräde, lika för alla",
+      "lede": "Varje dag ger en ställning till alla spelare. Studera den en gång, bygg upp den ur minnet och delta sedan i dagens bräde för att se var du står.",
+      "resets": "Nytt bräde vid midnatt UTC",
+      "open": "Dagens bräde är öppet",
+      "pieces": "{count, plural, one {# pjäs} other {# pjäser}}",
+      "seconds": "{count} s att studera",
+      "oneTry": "Ett försök",
+      "hidden": "Dolt tills du spelar",
+      "play": "Spela dagens bräde",
+      "streak": "{count, plural, one {Dagssvit: # dag} other {Dagssvit: # dagar}}",
+      "unfinishedTitle": "Dagens försök är förbrukat",
+      "unfinished": "Du öppnade dagens bräde och lämnade det innan resultatet. Ett försök per dag håller brädet rättvist, så kom tillbaka för nästa.",
+      "result": "Ditt resultat",
+      "score": "{correct} av {pieceCount} rätt",
+      "rebuild": "uppbyggt på {seconds} s",
+      "gridAria": "Dina rutor: {correct} rätt, {wrong, plural, one {# fel pjäs} other {# fel pjäser}}, {missed} missade, {extra} extra",
+      "key": {
+        "c": "Rätt",
+        "w": "Fel pjäs",
+        "m": "Missad",
+        "x": "Extra"
+      },
+      "shareLabel": "Dela utan att avslöja brädet",
+      "shareText": "Memory Chess dagens bräde {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Kopiera resultat",
+      "copied": "Kopierat",
+      "copyFailed": "Urklippet nekade kopieringen. Markera texten nedan och kopiera den.",
+      "joined": "Du är med på dagens bräde",
+      "rank": "Plats {rank} av {total} i dag",
+      "lateNote": "Du spelade gårdagens bräde och är inte med på det än.",
+      "lateJoined": "Du är med på brädet för den dagen"
+    },
+    "join": {
+      "title": "Delta i dagens bräde",
+      "lateTitle": "Gå med på brädet för den dagen",
+      "name": "Namn",
+      "nameHint": "4 till 16 tecken, visas tillsammans med ditt resultat.",
+      "nameShort": "För kort. Använd minst 4 tecken.",
+      "nameLong": "För långt. Använd högst 16 tecken.",
+      "country": "Land",
+      "chooseCountry": "Välj ett land",
+      "from": {
+        "saved": "Sparat på den här enheten.",
+        "connection": "Från din anslutning.",
+        "language": "Från webbläsarens språk.",
+        "none": "Välj landet du spelar för."
+      },
+      "change": "Ändra",
+      "submit": "Delta i brädet",
+      "submitting": "Ansluter ...",
+      "public": "Ditt namn, land, resultat och din rating visas offentligt.",
+      "failed": "Det gick inte att delta i brädet. Försök igen.",
+      "noneRight": "Ingen pjäs var rätt, så det här försöket har inget att ranka. Nästa bräde öppnar vid midnatt UTC."
+    },
+    "board": {
+      "title": "Dagens topp 10",
+      "rank": "Plats",
+      "player": "Spelare",
+      "right": "Rätt",
+      "wrong": "Fel",
+      "time": "Tid (s)",
+      "rating": "{rating} Elo",
+      "you": "Du",
+      "empty": "Ingen har deltagit i dagens bräde ännu. Spela det och bli först.",
+      "error": "Dagens bräde kunde inte laddas. Försök igen om en stund.",
+      "joinToRank": "Delta i brädet för att se din plats här.",
+      "order": "Rankat efter rätta pjäser, sedan minst fel, sedan snabbast uppbyggnad.",
+      "all": "Se alla bräden"
+    },
+    "reference": {
+      "title": "Så fungerar dagens bräde",
+      "shared": "Varje dag vid midnatt UTC lottas en ny ställning, och alla spelare i världen får samma. Ställningen kommer från ett frö som skapas av datumet, så brädet är detsamma för alla och ingen får en lättare version. Eftersom brädet är gemensamt betyder ett resultat på det samma sak för alla som spelade det den dagen.",
+      "oneTry": "Du har ett försök. Att öppna brädet räknas som försöket, så om du lämnar under studietiden och kommer tillbaka får du inte se det en gång till. Din enhet minns försöket tills nästa bräde öppnar.",
+      "grid": "När du har byggt upp ställningen ser du vilka rutor du hade rätt på, vilka som hade fel pjäs, vilka du missade och var du placerade en extra pjäs. Delningsraden visar en ruta per pjäs, sorterad efter utfall och utan att visa var den stod, så att du inte avslöjar brädet för någon som inte har spelat ännu när du delar den.",
+      "join": "För att delta väljer du ett namn på 4 till 16 tecken och landet du spelar för. Landet utgår först från ditt tidigare val, sedan från din anslutning och sedan från webbläsarens språk, och du kan alltid ändra det. Din rating när du går med visas bredvid ditt namn.",
+      "ranking": "Raderna rankas efter antal rätt placerade pjäser, sedan minst antal felaktiga pjäser och sedan snabbast uppbyggnad. Alla studerar lika många sekunder, så studietiden avgör aldrig mellan två spelare på dagens bräde.",
+      "arcTitle": "Pjäser och studietid under veckan",
+      "arcIntro": "Inställningen följer en veckobåge. Måndagen börjar lugnt så att ett helguppehåll inte bryter en svit, belastningen ökar under veckan, lördagen är ett blixtbräde som du bara ser några sekunder, och söndagen är det svåraste brädet av alla. Inom varje dags intervall väljer datumet en inställning, densamma för alla spelare.",
+      "day": "Dag",
+      "pieces": "Pjäser",
+      "seconds": "Studietid",
+      "range": "{min} till {max}",
+      "secondsRange": "{min} till {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

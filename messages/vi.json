@@ -546,7 +546,7 @@
           "title": "Mỗi ngày một bàn cờ, giống nhau cho tất cả.",
           "desc": "Một thế cờ mới mở ra mỗi ngày vào nửa đêm giờ UTC. Ai cũng nhận cùng 6 quân và 10 giây để quan sát, và bạn chỉ có một lần thử.",
           "play": "Chơi bàn cờ hôm nay",
-          "open": "Bạn chưa chơi bàn cờ hôm nay.",
+          "open": "Bàn cờ hôm nay có {pieceCount, plural, other {# quân}} và {memorizeSeconds, plural, other {# giây}} để ghi nhớ. Bạn chưa chơi bàn cờ hôm nay.",
           "played": "Bạn đặt đúng {correct} trên {pieceCount, plural, other {# quân}}, đạt {accuracy} phần trăm.",
           "unfinished": "Bạn đã mở bàn cờ hôm nay và rời đi trước khi có kết quả. Mỗi ngày chỉ có một lần thử trên thiết bị này.",
           "streak": "Chuỗi ngày {current, plural, other {# ngày}}{forgiven, plural, =0 {} other {, bỏ qua # ngày lỡ}} · dài nhất {longest, plural, other {# ngày}}",
@@ -1163,10 +1163,17 @@
     "columns": {
       "rank": "Hạng",
       "player": "Người chơi",
+      "elo": "ELO",
       "pieces": "Quân cờ",
       "memorizeTime": "Thời gian ghi nhớ",
       "solutionTime": "Thời gian hoàn thành",
       "date": "Ngày"
+    },
+    "daily": {
+      "tab": "Hằng ngày",
+      "setting": "{pieces, plural, other {# quân}} · {seconds} giây để ghi nhớ",
+      "resetsAtUtc": "Đặt lại lúc {utc} UTC",
+      "resetsAt": "Đặt lại lúc {utc} UTC ({local} giờ của bạn), còn {timeLeft}"
     }
   },
   "country": {
@@ -1584,5 +1591,119 @@
     },
     "play": "Chơi một ván",
     "home": "Về trang chủ"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} phút",
+    "hoursLeft": "{hours} giờ {minutes} phút",
+    "underMinute": "< 1 phút",
+    "ready": "Bàn cờ hôm nay · {pieceCount} quân · {seconds} giây · còn {timeLeft}",
+    "next": "Bàn cờ tiếp theo sau {timeLeft}",
+    "pending": "Bàn cờ hôm nay",
+    "navReady": "{label}, bàn cờ hằng ngày hôm nay đã sẵn sàng",
+    "cardTitle": "Bàn cờ hằng ngày hôm nay đã sẵn sàng",
+    "cardSetting": "{pieceCount} quân và {seconds} giây để ghi nhớ.",
+    "cardNote": "Hôm nay mọi người cùng chơi một bàn cờ, và bạn có một lượt thử.",
+    "play": "Chơi bàn cờ hôm nay"
+  },
+  "daily": {
+    "meta": {
+      "title": "Bàn Cờ Ghi Nhớ Hằng Ngày: Một Thế Cờ Cho Mọi Người",
+      "description": "Mỗi ngày một bàn cờ ghi nhớ, cùng một thế cờ cho mọi người chơi. Xem một lần, dựng lại và vào top 10 hôm nay. Bàn mới mở lúc nửa đêm UTC.",
+      "socialTitle": "Bàn cờ hằng ngày của Memory Chess",
+      "socialDescription": "Hôm nay mọi người có cùng một thế cờ. Ghi nhớ, dựng lại và xem bạn đứng hạng mấy."
+    },
+    "round": {
+      "locked": "Bạn đã mở bàn cờ hôm nay rồi. Mỗi ngày chỉ một lượt để giữ sự công bằng.",
+      "seeBoard": "Xem bàn cờ hôm nay",
+      "chooseRound": "Chơi thêm một ván",
+      "join": "Tham gia bàn cờ hôm nay"
+    },
+    "page": {
+      "fig": "Bàn cờ hằng ngày · {date}",
+      "title": "Một bàn cờ, giống nhau cho mọi người",
+      "lede": "Mỗi ngày, mọi người chơi nhận cùng một thế cờ. Xem một lần, dựng lại từ trí nhớ, rồi tham gia bàn cờ trong ngày để xem bạn đứng ở đâu.",
+      "resets": "Bàn mới lúc nửa đêm UTC",
+      "open": "Bàn cờ hôm nay đã mở",
+      "pieces": "{count, plural, other {# quân}}",
+      "seconds": "{count} giây để ghi nhớ",
+      "oneTry": "Một lượt",
+      "hidden": "Ẩn cho đến khi bạn chơi",
+      "play": "Chơi bàn cờ hôm nay",
+      "streak": "{count, plural, other {Chuỗi hằng ngày: # ngày}}",
+      "unfinishedTitle": "Đã dùng lượt chơi hôm nay",
+      "unfinished": "Bạn đã mở bàn cờ hôm nay và rời đi trước khi có kết quả. Mỗi ngày chỉ một lượt để bàn cờ công bằng, hãy quay lại vào bàn tiếp theo.",
+      "result": "Kết quả của bạn",
+      "score": "Đúng {correct} trên {pieceCount}",
+      "rebuild": "dựng lại trong {seconds} giây",
+      "gridAria": "Các ô của bạn: {correct} đúng, {wrong} sai quân, {missed} sót, {extra} thừa",
+      "key": {
+        "c": "Đúng",
+        "w": "Sai quân",
+        "m": "Sót",
+        "x": "Thừa"
+      },
+      "shareLabel": "Chia sẻ mà không lộ bàn cờ",
+      "shareText": "Bàn cờ hằng ngày Memory Chess {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Sao chép kết quả",
+      "copied": "Đã sao chép",
+      "copyFailed": "Bộ nhớ tạm đã từ chối. Hãy chọn đoạn văn bản bên dưới và sao chép.",
+      "joined": "Bạn đã có tên trên bàn cờ hôm nay",
+      "rank": "Hạng {rank} trên {total} hôm nay",
+      "lateNote": "Bạn đã chơi bàn cờ hôm qua nhưng chưa tham gia.",
+      "lateJoined": "Bạn đã có tên trên bàn cờ của ngày đó"
+    },
+    "join": {
+      "title": "Tham gia bàn cờ hôm nay",
+      "lateTitle": "Tham gia bàn cờ của ngày đó",
+      "name": "Tên",
+      "nameHint": "Từ 4 đến 16 ký tự, hiển thị cùng điểm của bạn.",
+      "nameShort": "Quá ngắn. Hãy dùng ít nhất 4 ký tự.",
+      "nameLong": "Quá dài. Hãy dùng tối đa 16 ký tự.",
+      "country": "Quốc gia",
+      "chooseCountry": "Chọn quốc gia",
+      "from": {
+        "saved": "Đã lưu trên thiết bị này.",
+        "connection": "Theo kết nối của bạn.",
+        "language": "Theo ngôn ngữ trình duyệt của bạn.",
+        "none": "Chọn quốc gia mà bạn thi đấu cho."
+      },
+      "change": "Thay đổi",
+      "submit": "Tham gia bàn cờ",
+      "submitting": "Đang tham gia…",
+      "public": "Tên, quốc gia, điểm và điểm xếp hạng của bạn được hiển thị công khai.",
+      "failed": "Không tham gia được bàn cờ. Vui lòng thử lại.",
+      "noneRight": "Không có quân nào đúng nên lượt này không được xếp hạng. Bàn tiếp theo mở lúc nửa đêm UTC."
+    },
+    "board": {
+      "title": "Top 10 hôm nay",
+      "rank": "Hạng",
+      "player": "Người chơi",
+      "right": "Đúng",
+      "wrong": "Sai",
+      "time": "Thời gian (giây)",
+      "rating": "{rating} Elo",
+      "you": "Bạn",
+      "empty": "Chưa có ai tham gia bàn cờ hôm nay. Hãy chơi và là người đầu tiên.",
+      "error": "Không tải được bàn cờ hôm nay. Vui lòng thử lại sau ít phút.",
+      "joinToRank": "Hãy tham gia bàn cờ để xem hạng của bạn ở đây.",
+      "order": "Xếp hạng theo số quân đúng, rồi ít quân sai nhất, rồi dựng lại nhanh nhất.",
+      "all": "Xem mọi bàn cờ"
+    },
+    "reference": {
+      "title": "Bàn cờ hằng ngày hoạt động thế nào",
+      "shared": "Mỗi ngày vào nửa đêm UTC, một thế cờ mới được chọn, và mọi người chơi trên thế giới nhận cùng một thế cờ. Thế cờ đến từ một hạt giống tạo ra từ ngày, nên bàn cờ giống nhau với mọi người và không ai nhận bản dễ hơn. Vì bàn cờ dùng chung, điểm trên bàn đó có ý nghĩa như nhau với mọi người đã chơi trong ngày.",
+      "oneTry": "Bạn chỉ có một lượt. Việc mở bàn cờ đã tính là một lượt, nên rời đi trong giai đoạn ghi nhớ rồi quay lại sẽ không cho bạn xem lại bàn cờ lần nữa. Thiết bị của bạn nhớ lượt chơi này cho đến khi bàn tiếp theo mở.",
+      "grid": "Sau khi dựng lại thế cờ, bạn sẽ thấy ô nào đúng, ô nào đặt sai quân, ô nào bị sót và chỗ nào bạn đặt thừa quân. Dòng chia sẻ liệt kê mỗi quân một ô, sắp xếp theo kết quả, không cho biết quân đứng ở đâu, nên đăng lên cũng không làm lộ bàn cờ cho người chưa chơi.",
+      "join": "Để tham gia bàn cờ, hãy chọn tên từ 4 đến 16 ký tự và quốc gia mà bạn thi đấu cho. Quốc gia được điền sẵn từ lựa chọn trước đó của bạn, rồi đến kết nối của bạn, rồi đến ngôn ngữ trình duyệt, và bạn luôn có thể đổi. Điểm xếp hạng của bạn tại thời điểm tham gia được hiển thị bên cạnh tên.",
+      "ranking": "Các dòng được xếp theo số quân đặt đúng, rồi đến ít quân sai nhất, rồi đến dựng lại nhanh nhất. Mọi người ghi nhớ trong cùng số giây, nên thời gian ghi nhớ không bao giờ tạo ra khác biệt giữa hai người chơi trên bàn cờ hằng ngày.",
+      "arcTitle": "Số quân và thời gian ghi nhớ trong tuần",
+      "arcIntro": "Thiết lập theo nhịp của cả tuần. Thứ Hai bắt đầu nhẹ nhàng để kỳ nghỉ cuối tuần không làm đứt chuỗi, độ khó tăng dần qua tuần, thứ Bảy là bàn chớp nhoáng chỉ xem được vài giây, và Chủ Nhật là bàn khó nhất. Trong phạm vi của mỗi ngày, ngày tháng chọn ra một thiết lập, giống nhau cho mọi người chơi.",
+      "day": "Ngày",
+      "pieces": "Quân cờ",
+      "seconds": "Thời gian ghi nhớ",
+      "range": "{min} đến {max}",
+      "secondsRange": "{min} đến {max} giây",
+      "secondsExact": "{count} giây"
+    }
   }
 }

@@ -408,6 +408,24 @@ describe("keeping the win streak across visits", () => {
     expect([restored, store().gameState.streak]).toEqual([3, 4]);
   });
 
+  it.each([
+    ["a NaN saved as null", null],
+    ["a string", "1300"],
+    ["a negative rating", -5],
+    ["a fraction", 1300.5],
+  ])("loads the starting rating in place of %s", async (_case, skillRating) => {
+    const restored = await rehydrateFrom({ pieceCount: 6, memorizeTime: 10, level: 1, skillRating, streak: 2 });
+
+    expect([restored.skillRating, restored.streak]).toEqual([1000, 2]);
+  });
+
+  it("keeps a stored rating of 0 and one above the leaderboard's bound", async () => {
+    const zero = (await rehydrateFrom({ pieceCount: 6, memorizeTime: 10, level: 1, skillRating: 0 })).skillRating;
+    const high = (await rehydrateFrom({ pieceCount: 6, memorizeTime: 10, level: 1, skillRating: 5200 })).skillRating;
+
+    expect([zero, high]).toEqual([0, 5200]);
+  });
+
   it("loads state stored before the streak was kept with a streak of 0 and its rating intact", async () => {
     await expect(rehydrateFrom({ pieceCount: 6, memorizeTime: 10, level: 1, skillRating: 1300 })).resolves.toEqual({
       pieceCount: 6,

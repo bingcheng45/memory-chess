@@ -546,7 +546,7 @@
           "title": "Ett brett om dagen, det samme for alle.",
           "desc": "En ny stilling åpner hver dag ved midnatt UTC. Alle får de samme 6 brikkene og 10 sekunder til å studere, og du får ett forsøk.",
           "play": "Spill dagens brett",
-          "open": "Du har ikke spilt dagens brett ennå.",
+          "open": "Dagens brett har {pieceCount, plural, one {# brikke} other {# brikker}} og {memorizeSeconds, plural, one {# sekund} other {# sekunder}} til å studere. Du har ikke spilt dagens brett ennå.",
           "played": "Du plasserte {correct} av {pieceCount, plural, one {# brikke} other {# brikker}} riktig, {accuracy} prosent.",
           "unfinished": "Du åpnet dagens brett og gikk før resultatet. Ett forsøk per dag på denne enheten.",
           "streak": "Rekke på {current, plural, one {# dag} other {# dager}}{forgiven, plural, =0 {} one {, # tapt dag tilgitt} other {, # tapte dager tilgitt}} · lengste {longest, plural, one {# dag} other {# dager}}",
@@ -1163,10 +1163,17 @@
     "columns": {
       "rank": "Plass",
       "player": "Spiller",
+      "elo": "ELO",
       "pieces": "Brikker",
       "memorizeTime": "Innlæringstid",
       "solutionTime": "Løsningstid",
       "date": "Dato"
+    },
+    "daily": {
+      "tab": "Daglig",
+      "setting": "{pieces, plural, one {# brikke} other {# brikker}} · {seconds} s innlæring",
+      "resetsAtUtc": "Nullstilles kl. {utc} UTC",
+      "resetsAt": "Nullstilles kl. {utc} UTC ({local} hos deg), om {timeLeft}"
     }
   },
   "country": {
@@ -1584,5 +1591,119 @@
     },
     "play": "Spill en runde",
     "home": "Til forsiden"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} t {minutes} min",
+    "underMinute": "under ett minutt",
+    "ready": "Dagens brett · {pieceCount, plural, one {# brikke} other {# brikker}} · {seconds} s · {timeLeft} igjen",
+    "next": "Neste brett om {timeLeft}",
+    "pending": "Dagens brett",
+    "navReady": "{label}, dagens brett er klart",
+    "cardTitle": "Dagens brett er klart",
+    "cardSetting": "{pieceCount, plural, one {# brikke} other {# brikker}} og {seconds, plural, one {# sekund} other {# sekunder}} til å huske.",
+    "cardNote": "Alle spiller det samme brettet i dag, og du får ett forsøk.",
+    "play": "Spill dagens brett"
+  },
+  "daily": {
+    "meta": {
+      "title": "Daglig sjakkminnebrett: én stilling for alle",
+      "description": "Ett sjakkminnebrett om dagen, med samme stilling for alle spillere. Studer det én gang, bygg det opp igjen og kom med på dagens topp 10. Et nytt brett åpner ved midnatt UTC.",
+      "socialTitle": "Dagens brett i Memory Chess",
+      "socialDescription": "Alle får samme stilling i dag. Studer den, bygg den opp igjen og se hvor du havner."
+    },
+    "round": {
+      "locked": "Du har allerede åpnet dagens brett. Ett forsøk om dagen holder det rettferdig.",
+      "seeBoard": "Se dagens brett",
+      "chooseRound": "Spill en ny runde",
+      "join": "Bli med på dagens brett"
+    },
+    "page": {
+      "fig": "Dagens brett · {date}",
+      "title": "Ett brett, likt for alle",
+      "lede": "Hver dag får alle spillere én stilling. Studer den én gang, bygg den opp igjen fra hukommelsen og bli med på dagens brett for å se hvor du ligger an.",
+      "resets": "Nytt brett ved midnatt UTC",
+      "open": "Dagens brett er åpent",
+      "pieces": "{count, plural, one {# brikke} other {# brikker}}",
+      "seconds": "{count} s innlæring",
+      "oneTry": "Ett forsøk",
+      "hidden": "Skjult til du spiller",
+      "play": "Spill dagens brett",
+      "streak": "{count, plural, one {Daglig rekke: # dag} other {Daglig rekke: # dager}}",
+      "unfinishedTitle": "Dagens forsøk er brukt",
+      "unfinished": "Du åpnet dagens brett og gikk før du fikk resultatet. Ett forsøk om dagen holder brettet rettferdig, så kom tilbake til neste brett.",
+      "result": "Resultatet ditt",
+      "score": "{correct} av {pieceCount} riktige",
+      "rebuild": "bygd opp på {seconds} s",
+      "gridAria": "Rutene dine: {correct} riktige, {wrong, plural, one {# feil brikke} other {# feil brikker}}, {missed} glemt, {extra} ekstra",
+      "key": {
+        "c": "Riktig",
+        "w": "Feil brikke",
+        "m": "Glemt",
+        "x": "Ekstra"
+      },
+      "shareLabel": "Del uten å avsløre brettet",
+      "shareText": "Memory Chess dagens brett {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Kopier resultatet",
+      "copied": "Kopiert",
+      "copyFailed": "Utklippstavlen ble nektet tilgang. Merk teksten under og kopier den.",
+      "joined": "Du er med på dagens brett",
+      "rank": "Plass {rank} av {total} i dag",
+      "lateNote": "Du spilte gårsdagens brett og er ikke med på det ennå.",
+      "lateJoined": "Du er med på brettet for den dagen"
+    },
+    "join": {
+      "title": "Bli med på dagens brett",
+      "lateTitle": "Bli med på brettet for den dagen",
+      "name": "Navn",
+      "nameHint": "4 til 16 tegn, vises sammen med poengsummen din.",
+      "nameShort": "For kort. Bruk minst 4 tegn.",
+      "nameLong": "For langt. Bruk høyst 16 tegn.",
+      "country": "Land",
+      "chooseCountry": "Velg et land",
+      "from": {
+        "saved": "Lagret på denne enheten.",
+        "connection": "Fra tilkoblingen din.",
+        "language": "Fra nettleserspråket ditt.",
+        "none": "Velg landet du spiller for."
+      },
+      "change": "Endre",
+      "submit": "Bli med på brettet",
+      "submitting": "Blir med …",
+      "public": "Navnet, landet, poengsummen og ratingen din vises offentlig.",
+      "failed": "Kunne ikke bli med på brettet. Prøv igjen.",
+      "noneRight": "Ingen brikker var riktige, så dette forsøket kommer ikke på listen. Neste brett åpner ved midnatt UTC."
+    },
+    "board": {
+      "title": "Dagens topp 10",
+      "rank": "Plass",
+      "player": "Spiller",
+      "right": "Riktige",
+      "wrong": "Feil",
+      "time": "Tid (s)",
+      "rating": "{rating} Elo",
+      "you": "Du",
+      "empty": "Ingen har blitt med på dagens brett ennå. Spill det og bli den første.",
+      "error": "Dagens brett kunne ikke lastes. Prøv igjen om litt.",
+      "joinToRank": "Bli med på brettet for å se plasseringen din her.",
+      "order": "Rangert etter flest riktige brikker, så færrest feil, så raskest oppbygging.",
+      "all": "Se alle brett"
+    },
+    "reference": {
+      "title": "Slik fungerer dagens brett",
+      "shared": "Hver dag ved midnatt UTC trekkes en ny stilling, og alle spillere i verden får den samme. Stillingen kommer fra et frø laget av datoen, så brettet er det samme for alle, og ingen får en enklere versjon. Fordi brettet er delt, betyr en poengsum det samme for alle som spilte det den dagen.",
+      "oneTry": "Du får ett forsøk. Å åpne brettet teller som forsøket, så du får ikke se det to ganger ved å forlate siden under studiefasen og komme tilbake. Enheten din husker forsøket til neste brett åpner.",
+      "grid": "Når du har bygd opp stillingen, ser du hvilke ruter du fikk riktig, hvilke som hadde feil brikke, hvilke du glemte og hvor du satte en ekstra brikke. Delingsraden viser én rute per brikke, sortert etter utfall, uten noe om hvor brikken sto, så du røper ikke brettet for noen som ikke har spilt det ennå.",
+      "join": "For å bli med på brettet velger du et navn på 4 til 16 tegn og landet du spiller for. Landet hentes først fra det du valgte sist, så fra tilkoblingen din og så fra nettleserspråket, og du kan alltid endre det. Ratingen din når du blir med, vises ved siden av navnet.",
+      "ranking": "Radene rangeres etter antall riktig plasserte brikker, så færrest feil brikker, så raskest oppbygging. Alle studerer like mange sekunder, så studietiden skiller aldri to spillere på dagens brett.",
+      "arcTitle": "Brikker og studietid gjennom uken",
+      "arcIntro": "Innstillingen følger en ukentlig kurve. Mandag starter rolig, slik at en pause i helgen ikke ødelegger rekken, belastningen øker gjennom uken, lørdag er et lynbrett du bare ser i noen få sekunder, og søndag er det vanskeligste brettet av alle. Innenfor hver dags område velger datoen én innstilling, lik for alle spillere.",
+      "day": "Dag",
+      "pieces": "Brikker",
+      "seconds": "Studietid",
+      "range": "{min} til {max}",
+      "secondsRange": "{min} til {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

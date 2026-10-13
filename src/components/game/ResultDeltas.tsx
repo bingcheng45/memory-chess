@@ -15,7 +15,8 @@ import { roundRecordOf, type LabRound } from "@/lib/lab/recordRound";
 import { labStore } from "@/lib/lab/storage";
 import { addToSummary, type LabSummary } from "@/lib/lab/summary";
 import { roundDeltasOf, verdictOf, type FigureDelta } from "@/lib/lab/roundDeltas";
-import { START_RATING, useGameStore, WIN_ACCURACY } from "@/lib/store/gameStore";
+import { START_RATING } from "@/lib/game/rating";
+import { useGameStore, WIN_ACCURACY } from "@/lib/store/gameStore";
 
 /** The game standing after the round and the one it started from; a review moves neither, so both are the same. */
 function useRoundStandings(roundId: string): { readonly before: GameStanding | null; readonly after: GameStanding | null } {

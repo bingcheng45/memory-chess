@@ -1,34 +1,33 @@
-import { parseCountryCode, WORLD_CODE, type CountryCode } from "@/lib/leaderboard/countries";
+import { parseCountryCode, type CountryCode } from "@/lib/leaderboard/countries";
 import { compareRanking, parseScore, type RankingScore } from "@/lib/leaderboard/ranking";
+import { entryFromRow } from "@/lib/leaderboard/entryRow";
 import { isEntryId } from "@/lib/leaderboard/standing";
+import { parseUtcDay } from "./daily";
 import { isObject } from "./guards";
-import { isLeaderboardDifficulty, LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } from "@/types/leaderboard";
+import { DAILY_BOARD, LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } from "@/types/leaderboard";
 
 export const ENTRIES_KEY = "memory-chess-lab-entries";
 
-export interface StoredEntry {
+/** One entry per day: a round finished after midnight UTC still joins the board of the day before. */
+export const DAILY_ENTRY_KEY = "memory-chess-daily-entry";
+
+interface EntryFacts {
   readonly id: string;
-  readonly difficulty: LeaderboardDifficulty;
   readonly country: CountryCode;
   readonly score: RankingScore;
   readonly submittedAt: number;
 }
 
-export type StoredEntries = Readonly<Partial<Record<LeaderboardDifficulty, StoredEntry>>>;
-
-export function entryFromRow(row: unknown, submittedAt: number): StoredEntry | null {
-  if (!isObject(row) || !isEntryId(row.id) || !isLeaderboardDifficulty(row.difficulty)) return null;
-  const score = parseScore({
-    correctPieces: row.correct_pieces,
-    totalWrongPieces: row.total_wrong_pieces ?? null,
-    memorizeTime: row.memorize_time,
-    solutionTime: row.solution_time,
-  });
-  if (score === null) return null;
-  const country = row.country_code === undefined ? WORLD_CODE : parseCountryCode(row.country_code);
-  if (country === null) return null;
-  return { id: row.id, difficulty: row.difficulty, country, score, submittedAt };
+export interface StoredEntry extends EntryFacts {
+  readonly difficulty: LeaderboardDifficulty;
 }
+
+export interface DailyEntry extends EntryFacts {
+  readonly difficulty: typeof DAILY_BOARD;
+  readonly dailyDay: string;
+}
+
+export type StoredEntries = Readonly<Partial<Record<LeaderboardDifficulty, StoredEntry>>>;
 
 function parseEntry(raw: unknown, difficulty: LeaderboardDifficulty): StoredEntry | null {
   if (!isObject(raw) || !isEntryId(raw.id) || raw.difficulty !== difficulty) return null;
@@ -67,15 +66,51 @@ export function withoutEntry(entries: StoredEntries | null, { id, difficulty }: 
   return orNothing(Object.fromEntries(Object.entries(entries).filter(([kept]) => kept !== difficulty)));
 }
 
-/** False when the reply carries no entry or storage refuses the write; the score is on the board either way. */
-export function rememberEntry(row: unknown, now: number): boolean {
-  const entry = entryFromRow(row, now);
-  if (entry === null) return false;
+const DAILY_DAYS_KEPT = 2;
+
+function parseDailyEntry(raw: unknown): DailyEntry | null {
+  if (!isObject(raw) || !isEntryId(raw.id) || raw.difficulty !== DAILY_BOARD) return null;
+  const dailyDay = parseUtcDay(raw.dailyDay);
+  const score = parseScore(raw.score);
+  const country = parseCountryCode(raw.country);
+  if (dailyDay === null || score === null || country === null || !Number.isSafeInteger(raw.submittedAt)) return null;
+  return { id: raw.id, difficulty: DAILY_BOARD, dailyDay, country, score, submittedAt: raw.submittedAt as number };
+}
+
+function parseDailyEntries(text: string | null): readonly DailyEntry[] {
+  if (text === null) return [];
+  let raw: unknown;
   try {
-    const stored = parseEntries(window.localStorage.getItem(ENTRIES_KEY));
-    window.localStorage.setItem(ENTRIES_KEY, JSON.stringify(withEntry(stored, entry)));
-    return true;
+    raw = JSON.parse(text);
   } catch {
-    return false;
+    return [];
   }
+  return Array.isArray(raw) ? raw.flatMap((item) => parseDailyEntry(item) ?? []) : [];
+}
+
+const withDailyEntry = (entries: readonly DailyEntry[], entry: DailyEntry): readonly DailyEntry[] =>
+  [entry, ...entries.filter(({ dailyDay }) => dailyDay !== entry.dailyDay)].sort((a, b) => b.dailyDay.localeCompare(a.dailyDay)).slice(0, DAILY_DAYS_KEPT);
+
+export function readDailyEntry(day: string): DailyEntry | null {
+  try {
+    return parseDailyEntries(window.localStorage.getItem(DAILY_ENTRY_KEY)).find(({ dailyDay }) => dailyDay === day) ?? null;
+  } catch {
+    return null;
+  }
+}
+
+/** Storage refusing the write keeps nothing; the score is on the board either way. */
+export function rememberEntry(row: unknown, now: number): StoredEntry | DailyEntry | null {
+  const entry = entryFromRow(row, now);
+  if (entry === null) return null;
+  try {
+    const [key, value] =
+      entry.difficulty === DAILY_BOARD
+        ? [DAILY_ENTRY_KEY, withDailyEntry(parseDailyEntries(window.localStorage.getItem(DAILY_ENTRY_KEY)), entry)]
+        : [ENTRIES_KEY, withEntry(parseEntries(window.localStorage.getItem(ENTRIES_KEY)), entry)];
+    window.localStorage.setItem(key, JSON.stringify(value));
+  } catch {
+    // Kept for this page only.
+  }
+  return entry;
 }

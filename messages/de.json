@@ -546,7 +546,7 @@
           "title": "Ein Brett pro Tag, für alle gleich.",
           "desc": "Jeden Tag um Mitternacht UTC öffnet sich eine neue Stellung. Alle bekommen dieselben 6 Figuren und 10 Sekunden zum Einprägen, und du hast einen Versuch.",
           "play": "Heutiges Brett spielen",
-          "open": "Du hast das heutige Brett noch nicht gespielt.",
+          "open": "Das heutige Brett hat {pieceCount, plural, one {# Figur} other {# Figuren}} und {memorizeSeconds, plural, one {# Sekunde} other {# Sekunden}} zum Einprägen. Du hast das heutige Brett noch nicht gespielt.",
           "played": "Du hast {correct} von {pieceCount, plural, one {# Figur} other {# Figuren}} richtig gesetzt, {accuracy} Prozent.",
           "unfinished": "Du hast das heutige Brett geöffnet und vor dem Ergebnis verlassen. Ein Versuch pro Tag auf diesem Gerät.",
           "streak": "Tagesserie {current, plural, one {# Tag} other {# Tage}}{forgiven, plural, =0 {} one {, # verpasster Tag verziehen} other {, # verpasste Tage verziehen}} · längste {longest, plural, one {# Tag} other {# Tage}}",
@@ -1163,10 +1163,17 @@
     "columns": {
       "rank": "Platz",
       "player": "Spieler",
+      "elo": "ELO",
       "pieces": "Figuren",
       "memorizeTime": "Einprägezeit",
       "solutionTime": "Lösungszeit",
       "date": "Datum"
+    },
+    "daily": {
+      "tab": "Täglich",
+      "setting": "{pieces, plural, one {# Figur} other {# Figuren}} · {seconds} s zum Einprägen",
+      "resetsAtUtc": "Wird um {utc} UTC zurückgesetzt",
+      "resetsAt": "Wird um {utc} UTC zurückgesetzt ({local} bei dir), in {timeLeft}"
     }
   },
   "country": {
@@ -1584,5 +1591,119 @@
     },
     "play": "Eine Runde spielen",
     "home": "Zur Startseite"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} Min.",
+    "hoursLeft": "{hours} Std. {minutes} Min.",
+    "underMinute": "< 1 Min.",
+    "ready": "Heutiges Brett · {pieceCount, plural, one {# Figur} other {# Figuren}} · {seconds} s · noch {timeLeft}",
+    "next": "Nächstes Brett in {timeLeft}",
+    "pending": "Heutiges Brett",
+    "navReady": "{label}, das heutige Tagesbrett ist bereit",
+    "cardTitle": "Das heutige Tagesbrett ist bereit",
+    "cardSetting": "{pieceCount, plural, one {# Figur} other {# Figuren}} und {seconds, plural, one {# Sekunde} other {# Sekunden}} zum Einprägen.",
+    "cardNote": "Heute spielen alle dasselbe Brett, und du hast einen Versuch.",
+    "play": "Heutiges Brett spielen"
+  },
+  "daily": {
+    "meta": {
+      "title": "Tägliches Schach-Gedächtnisbrett: eine Stellung für alle",
+      "description": "Jeden Tag ein Gedächtnisbrett, für alle Spieler dieselbe Stellung. Einmal einprägen, nachbauen und in die heutigen Top 10 kommen. Ein neues Brett startet um Mitternacht UTC.",
+      "socialTitle": "Das Memory Chess Tagesbrett",
+      "socialDescription": "Heute bekommen alle dieselbe Stellung. Präge sie dir ein, baue sie nach und sieh, wo du stehst."
+    },
+    "round": {
+      "locked": "Du hast das heutige Brett schon geöffnet. Ein Versuch pro Tag hält es fair.",
+      "seeBoard": "Heutiges Brett ansehen",
+      "chooseRound": "Noch eine Runde spielen",
+      "join": "Dem heutigen Brett beitreten"
+    },
+    "page": {
+      "fig": "Tagesbrett · {date}",
+      "title": "Ein Brett, für alle gleich",
+      "lede": "Jeden Tag gibt es eine Stellung für alle Spieler. Präge sie dir einmal ein, baue sie aus dem Gedächtnis nach und trag dich dann in die Tageswertung ein, um zu sehen, wo du stehst.",
+      "resets": "Neues Brett um Mitternacht UTC",
+      "open": "Das heutige Brett ist offen",
+      "pieces": "{count, plural, one {# Figur} other {# Figuren}}",
+      "seconds": "{count} s zum Einprägen",
+      "oneTry": "Ein Versuch",
+      "hidden": "Verborgen, bis du spielst",
+      "play": "Heutiges Brett spielen",
+      "streak": "{count, plural, one {Tagesserie: # Tag} other {Tagesserie: # Tage}}",
+      "unfinishedTitle": "Der heutige Versuch ist verbraucht",
+      "unfinished": "Du hast das heutige Brett geöffnet und die Seite vor dem Ergebnis verlassen. Ein Versuch pro Tag hält das Brett fair, komm also morgen für das nächste wieder.",
+      "result": "Dein Ergebnis",
+      "score": "{correct} von {pieceCount} richtig",
+      "rebuild": "in {seconds} s nachgebaut",
+      "gridAria": "Deine Felder: {correct} richtig, {wrong, plural, one {# falsche Figur} other {# falsche Figuren}}, {missed} verpasst, {extra} zusätzlich",
+      "key": {
+        "c": "Richtig",
+        "w": "Falsche Figur",
+        "m": "Verpasst",
+        "x": "Zusätzlich"
+      },
+      "shareLabel": "Teilen, ohne das Brett zu verraten",
+      "shareText": "Memory Chess Tagesbrett {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Ergebnis kopieren",
+      "copied": "Kopiert",
+      "copyFailed": "Die Zwischenablage hat den Zugriff abgelehnt. Markiere den Text unten und kopiere ihn.",
+      "joined": "Du stehst auf dem heutigen Brett",
+      "rank": "Platz {rank} von {total} heute",
+      "lateNote": "Du hast das gestrige Brett gespielt und bist ihm noch nicht beigetreten.",
+      "lateJoined": "Du stehst auf dem Brett dieses Tages"
+    },
+    "join": {
+      "title": "Dem heutigen Brett beitreten",
+      "lateTitle": "Tritt dem Brett dieses Tages bei",
+      "name": "Name",
+      "nameHint": "4 bis 16 Zeichen, wird mit deinem Ergebnis angezeigt.",
+      "nameShort": "Zu kurz. Verwende mindestens 4 Zeichen.",
+      "nameLong": "Zu lang. Verwende höchstens 16 Zeichen.",
+      "country": "Land",
+      "chooseCountry": "Land auswählen",
+      "from": {
+        "saved": "Auf diesem Gerät gespeichert.",
+        "connection": "Aus deiner Verbindung ermittelt.",
+        "language": "Aus deiner Browsersprache ermittelt.",
+        "none": "Wähle das Land, für das du spielst."
+      },
+      "change": "Ändern",
+      "submit": "Dem Brett beitreten",
+      "submitting": "Wird eingetragen…",
+      "public": "Dein Name, dein Land, dein Ergebnis und deine Wertung sind öffentlich sichtbar.",
+      "failed": "Der Beitritt zum Brett hat nicht geklappt. Bitte versuche es noch einmal.",
+      "noneRight": "Keine Figur war richtig, deshalb gibt es für diesen Versuch nichts zu werten. Das nächste Brett startet um Mitternacht UTC."
+    },
+    "board": {
+      "title": "Die heutigen Top 10",
+      "rank": "Platz",
+      "player": "Spieler",
+      "right": "Richtig",
+      "wrong": "Falsch",
+      "time": "Zeit (s)",
+      "rating": "{rating} Elo",
+      "you": "Du",
+      "empty": "Noch hat niemand das heutige Brett gespielt. Sei die erste Person.",
+      "error": "Das heutige Brett konnte nicht geladen werden. Bitte versuche es gleich noch einmal.",
+      "joinToRank": "Tritt dem Brett bei, um hier deinen Platz zu sehen.",
+      "order": "Sortiert nach richtigen Figuren, dann nach den wenigsten falschen, dann nach dem schnellsten Nachbau.",
+      "all": "Alle Bretter ansehen"
+    },
+    "reference": {
+      "title": "So funktioniert das Tagesbrett",
+      "shared": "Jeden Tag um Mitternacht UTC wird eine neue Stellung ausgelost, und alle Spieler weltweit bekommen dieselbe. Die Stellung entsteht aus einem Startwert, der aus dem Datum gebildet wird. So ist das Brett für alle gleich, und niemand bekommt eine leichtere Version. Weil das Brett für alle gleich ist, bedeutet ein Ergebnis darauf für alle, die es an diesem Tag gespielt haben, dasselbe.",
+      "oneTry": "Du hast einen Versuch. Schon das Öffnen des Bretts zählt als Versuch. Wenn du in der Einprägephase gehst und zurückkommst, siehst du es also nicht noch einmal. Dein Gerät merkt sich den Versuch, bis das nächste Brett startet.",
+      "grid": "Nach dem Nachbauen siehst du, welche Felder richtig waren, auf welchen die falsche Figur stand, welche du verpasst hast und wo du eine zusätzliche Figur gesetzt hast. Die Teilen-Zeile zeigt ein Feld pro Figur, nach Ergebnis sortiert und ohne Hinweis darauf, wo die Figur stand. So verrät dein Beitrag das Brett nicht an jemanden, der noch nicht gespielt hat.",
+      "join": "Um beizutreten, wähle einen Namen mit 4 bis 16 Zeichen und das Land, für das du spielst. Das Land stammt zuerst aus deiner früheren Auswahl, dann aus deiner Verbindung, dann aus der Sprache deines Browsers, und du kannst es jederzeit ändern. Deine Wertung zum Zeitpunkt des Beitritts steht neben deinem Namen.",
+      "ranking": "Die Reihenfolge richtet sich nach der Zahl der richtig gesetzten Figuren, dann nach den wenigsten falschen Figuren, dann nach dem schnellsten Nachbau. Alle haben gleich viele Sekunden zum Einprägen, deshalb entscheidet die Einprägezeit beim Tagesbrett nie zwischen zwei Spielern.",
+      "arcTitle": "Figuren und Einprägezeit im Wochenverlauf",
+      "arcIntro": "Die Einstellung folgt einem Wochenbogen. Der Montag beginnt sanft, damit eine Pause am Wochenende keine Serie beendet, die Last steigt im Lauf der Woche, der Samstag ist ein Blitzbrett, das du nur wenige Sekunden siehst, und der Sonntag ist das schwerste Brett von allen. Innerhalb der Spanne eines Tages wählt das Datum eine Einstellung aus, für alle Spieler dieselbe.",
+      "day": "Tag",
+      "pieces": "Figuren",
+      "seconds": "Einprägezeit",
+      "range": "{min} bis {max}",
+      "secondsRange": "{min} bis {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

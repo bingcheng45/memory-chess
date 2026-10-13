@@ -1,16 +1,17 @@
-import { isLeaderboardDifficulty, type LeaderboardDifficulty } from "@/types/leaderboard";
+import type { LeaderboardBoard } from "@/types/leaderboard";
+import { parseBoard } from "./board";
 import { parseCountryCode, type CountryCode } from "./countries";
 import { RANKING_ORDER, type RankingScore } from "./ranking";
 
 export const STANDING_SCOPES = ["world", "country"] as const;
 export type StandingScope = (typeof STANDING_SCOPES)[number];
 
-export interface Standing {
-  readonly difficulty: LeaderboardDifficulty;
+/** A daily standing names its UTC day: each day is its own board, ranked apart from every other day. */
+export type Standing = LeaderboardBoard & {
   readonly country: CountryCode | null;
   readonly rank: number;
   readonly total: number;
-}
+};
 
 const ENTRY_ID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
 
@@ -35,10 +36,11 @@ const isCount = (value: unknown, min: number): value is number => Number.isSafeI
 
 export function parseStanding(value: unknown): Standing | null {
   if (typeof value !== "object" || value === null) return null;
-  const { difficulty, country, rank, total } = value as Record<string, unknown>;
-  if (!isLeaderboardDifficulty(difficulty)) return null;
+  const { difficulty, daily_day, country, rank, total } = value as Record<string, unknown>;
+  const board = parseBoard(difficulty, daily_day);
+  if (board === null) return null;
   if (!isCount(rank, 1) || !isCount(total, 1) || rank > total) return null;
   const code = country === null ? null : parseCountryCode(country);
   if (code === null && country !== null) return null;
-  return { difficulty, country: code, rank, total };
+  return { ...board, country: code, rank, total };
 }

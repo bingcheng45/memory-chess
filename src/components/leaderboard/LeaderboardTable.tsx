@@ -1,6 +1,7 @@
 'use client';
 
-import { LeaderboardEntry } from '@/types/leaderboard';
+import { START_RATING } from "@/lib/game/rating";
+import { DAILY_BOARD, type LeaderboardEntry } from "@/types/leaderboard";
 import { Link } from "@/i18n/navigation";
 import { useEffect, useRef, type ReactNode } from "react";
 import { CloudOff, TriangleAlert } from "lucide-react";
@@ -25,7 +26,9 @@ interface LeaderboardTableProps {
   activeTab?: string;
 }
 
-const COLUMN_COUNT = 6;
+const COLUMN_COUNT = 7;
+
+export const playHrefOf = (board: string) => (board === DAILY_BOARD ? "/daily" : `/game?difficulty=${board}`);
 const PODIUM_MEDALS = ["🏆", "🥈", "🥉"];
 
 export function TimeDisplay({ seconds }: { seconds: number }) {
@@ -56,6 +59,7 @@ function BoardFrame({ isState, children }: { isState: boolean; children: ReactNo
             <tr>
               <th scope="col" className="lb-num lb-rank">{t("columns.rank")}</th>
               <th scope="col" className="lb-who">{t("columns.player")}</th>
+              <th scope="col" className="lb-num">{t("columns.elo")}</th>
               <th scope="col" className="lb-num">{t("columns.pieces")}</th>
               <th scope="col" className="lb-num">{t("columns.memorizeTime")}</th>
               <th scope="col" className="lb-num">{t("columns.solutionTime")}</th>
@@ -106,12 +110,12 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
   }, [entryDetails, data]);
 
   if (error) {
-    // Check if this is a database connection error and provide a more user-friendly message
+    const isDailyBoard = activeTab === DAILY_BOARD;
     const isConnectionError = error.includes('Database connection unavailable') ||
                               error.includes('Unable to connect') ||
                               error.includes('connection issue');
 
-    if (isConnectionError) {
+    if (isDailyBoard || isConnectionError) {
       return (
         <BoardState icon={<CloudOff size={20} strokeWidth={1.75} />}>
           <p className="lb-state-title">{t("unavailableTitle")}</p>
@@ -141,7 +145,7 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
         <p className="lb-state-title">{t("emptyTitle")}</p>
         <p className="lb-state-body">{t("emptyBody")}</p>
         <p className="lb-state-note">{t("emptyCta")}</p>
-        <Link href={`/game?difficulty=${activeTab || 'medium'}`} className="lab-btn lab-btn-secondary">
+        <Link href={playHrefOf(activeTab || 'medium')} className="lab-btn lab-btn-secondary">
           {t("startPlaying")}
         </Link>
       </BoardState>
@@ -189,6 +193,7 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
                 {isHighlighted && <span className="lb-you">{t("you")}</span>}
               </div>
             </td>
+            <td className="lb-num">{entry.skill_rating ?? START_RATING}</td>
             <td className="lb-num">
               {entry.correct_pieces}
               {entry.total_wrong_pieces !== undefined &&

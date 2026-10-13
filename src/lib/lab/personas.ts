@@ -136,7 +136,7 @@ const THREE_DAYS: PersonaPlan = { seed: 3, rounds: daily(countdown(2, 0), (_, sl
 const EDGE_RIG_SETTING: Setting = { source: "game", ...EDGE_RIG };
 const MEDIUM_8S: Setting = { ...MEDIUM, memorizeSeconds: 8 };
 const at = (setting: Setting, daysAgo: number, miss?: number): PlannedRound => ({ ...setting, daysAgo, ...(miss !== undefined && { miss }) });
-const dailyBoardOn = (daysAgo: number): PlannedRound => ({ ...MEDIUM, daysAgo, dailyBoard: true });
+const mediumDailyBoardOn = (daysAgo: number): PlannedRound => ({ ...MEDIUM, daysAgo, dailyBoard: true });
 
 /** Medium games placed back in full, so the only boards in a review persona's queue are the ones it misses on purpose. */
 const cleanGames = (from: number) => countdown(from, 0).flatMap((daysAgo) => [at(MEDIUM, daysAgo, 0), at(MEDIUM, daysAgo, 0)]);
@@ -216,11 +216,11 @@ const PLANS: Record<PersonaName, PersonaPlan> = {
     missChance: steady,
   },
   // Today's board still open, after the board on each of the last three days among two Medium games a day.
-  dailyOpen: { seed: 101, rounds: [...daily(countdown(3, 0), () => MEDIUM, 2), ...[3, 2, 1].map(dailyBoardOn)], missChance: steady },
+  dailyOpen: { seed: 101, rounds: [...daily(countdown(3, 0), () => MEDIUM, 2), ...[3, 2, 1].map(mediumDailyBoardOn)], missChance: steady },
   // Medium games yesterday and today, and today's board played: its first daily round.
-  dailyPlayed: { seed: 102, rounds: [...daily([1, 0], () => MEDIUM, 2), dailyBoardOn(0)], missChance: steady },
+  dailyPlayed: { seed: 102, rounds: [...daily([1, 0], () => MEDIUM, 2), mediumDailyBoardOn(0)], missChance: steady },
   // The board on nine of the last ten days, today included, with five days ago missed and forgiven.
-  dailyStreak: { seed: 103, rounds: countdown(9, 0).filter((daysAgo) => daysAgo !== 5).map(dailyBoardOn), missChance: steady },
+  dailyStreak: { seed: 103, rounds: countdown(9, 0).filter((daysAgo) => daysAgo !== 5).map(mediumDailyBoardOn), missChance: steady },
   // A board missed yesterday and reviewed today: the next review is in two days.
   reviewNone: { seed: 111, rounds: [...cleanGames(2), at(MEDIUM, 1, MISSED), reviewOn(0, 6, 0.2)], missChance: steady },
   // A board missed yesterday is due today; one missed today comes back tomorrow.
@@ -315,7 +315,7 @@ export function personaRounds(name: PersonaName, today: string = PERSONA_TODAY):
     const playedAt = noonUtc(today, -planned.daysAgo);
     const day = utcDayOf(playedAt);
     const reviewed = planned.reviewOf === undefined ? undefined : built[planned.reviewOf];
-    const fen = reviewed ? reviewed.targetFen : planned.dailyBoard ? dailyFen(day) : generateMemorizationPosition(planned.pieceCount, random, RULES_AFTER_PERSONAS)?.fen();
+    const fen = reviewed ? reviewed.targetFen : planned.dailyBoard ? dailyFen(day, planned.pieceCount) : generateMemorizationPosition(planned.pieceCount, random, RULES_AFTER_PERSONAS)?.fen();
     const target = placementFromFen(fen ?? "8/8/8/8/8/8/8/8");
     const progress = index / rounds.length;
     const placed = Object.fromEntries(Object.entries(target).filter(([square, piece]) => random() >= (planned.miss ?? missChance(square, piece, progress))));

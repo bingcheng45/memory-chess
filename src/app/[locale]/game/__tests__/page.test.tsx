@@ -173,8 +173,8 @@ describe("GamePage daily board link", () => {
 
     render(<GamePage />);
 
-    expect(await screen.findByText("You have already opened today's board. One try per day on this device.")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Open your lab record" })).toHaveAttribute("href", "/#record");
+    expect(await screen.findByText("You have already opened today's board. One try a day keeps it fair.")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "See today's board" })).toHaveAttribute("href", "/daily");
     expect(document.querySelector("[data-game-config]")).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Play another round" }));
     expect(document.querySelector("[data-game-config]")).not.toBeNull();
@@ -270,14 +270,14 @@ describe("GamePage URL-driven start under StrictMode", () => {
     jest.mocked(openDaily).mockImplementation(actual.openDaily);
     jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-09T12:00:00Z"));
     window.localStorage.removeItem("memory-chess-lab-daily-opened");
-    window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10&source=daily");
+    window.history.pushState({}, "", "/game?pieceCount=9&memorizeTime=8&source=daily");
 
     render(<GamePage />, { reactStrictMode: true });
 
     await waitFor(() =>
-      expect(mockStartGame).toHaveBeenCalledWith(6, 10, "daily", { kind: "daily", day: "2026-10-09", fen: "8/8/8/1pQ4k/P2p4/8/8/1K6 b - - 0 1" }),
+      expect(mockStartGame).toHaveBeenCalledWith(9, 8, "daily", { kind: "daily", day: "2026-10-09", fen: "8/8/8/1pQB3k/P2p1p2/3P4/8/1K6 w - - 0 1" }),
     );
-    expect(screen.queryByText("You have already opened today's board. One try per day on this device.")).toBeNull();
+    expect(screen.queryByText("You have already opened today's board. One try a day keeps it fair.")).toBeNull();
     expect(window.localStorage.getItem("memory-chess-lab-daily-opened")).toBe("2026-10-09");
   });
 

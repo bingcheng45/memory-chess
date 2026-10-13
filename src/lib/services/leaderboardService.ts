@@ -2,10 +2,14 @@ import type { PostgrestError } from '@supabase/supabase-js';
 import { supabase, checkSupabaseConnection } from '@/lib/supabase';
 import { LEADERBOARD_ROW_LIMIT } from '@/lib/reference/facts';
 import { RANKING_ORDER, type BoardCutoff, type LeaderboardCutoffs } from '@/lib/leaderboard/ranking';
+import { parseBoard } from '@/lib/leaderboard/board';
+import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { rankedAboveFilter, type Standing, type StandingScope } from '@/lib/leaderboard/standing';
 import { WORLD_CODE } from '@/lib/leaderboard/countries';
 import {
+  DAILY_BOARD,
   LEADERBOARD_DIFFICULTIES,
+  type LeaderboardBoard,
   type LeaderboardDifficulty,
   type LeaderboardEntry,
   type LeaderboardSubmission,
@@ -39,6 +43,12 @@ function orderByRanking<T extends OrderableQuery<T>>(query: T): T {
   );
 }
 
+/** Filtering on both columns is what lets the query read the partial daily index. */
+function rankedRows<Columns extends '*' | 'id'>(client: SupabaseClient, board: LeaderboardBoard, columns: Columns, options?: { count: 'exact'; head: true }) {
+  const rows = client.from('leaderboard_entries').select(columns, options).eq('difficulty', board.difficulty).gt('correct_pieces', 0);
+  return board.difficulty === DAILY_BOARD ? rows.eq('daily_day', board.daily_day) : rows;
+}
+
 /**
  * What became of a submission, in terms the route can map to a status code.
  * `cause` is for the operator reading logs, never for the player.
@@ -49,7 +59,7 @@ export type LeaderboardSubmitResult =
   | { status: 'unavailable'; cause: unknown }
   | { status: 'failed'; cause: unknown };
 
-export async function getLeaderboard(difficulty: string = 'medium'): Promise<{data: LeaderboardEntry[], error?: string}> {
+export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: LeaderboardEntry[], error?: string}> {
   try {
     // First check the Supabase connection
     const connectionStatus = await checkSupabaseConnection();
@@ -67,13 +77,7 @@ export async function getLeaderboard(difficulty: string = 'medium'): Promise<{da
       };
     }
     
-    const { data, error } = await orderByRanking(
-      supabase
-        .from('leaderboard_entries')
-        .select('*')
-        .eq('difficulty', difficulty)
-        .gt('correct_pieces', 0),
-    ).limit(LEADERBOARD_ROW_LIMIT);
+    const { data, error } = await orderByRanking(rankedRows(supabase, board, '*')).limit(LEADERBOARD_ROW_LIMIT);
       
     if (error) {
       console.error('Supabase query error:', error);
@@ -190,12 +194,38 @@ function isMissingColumn(error: PostgrestError): boolean {
   return MISSING_COLUMN_CODES.includes(error.code);
 }
 
-type SubmissionRow = LeaderboardSubmission | Omit<LeaderboardSubmission, 'country_code'>;
+type BoardSubmission = Extract<LeaderboardSubmission, { difficulty: LeaderboardDifficulty }>;
+
+const DROPPABLE_COLUMNS = [
+  { column: 'skill_rating', migration: 'the rating and daily migration (0004)' },
+  { column: 'country_code', migration: 'the country migration (0001)' },
+] as const;
+type Droppable = (typeof DROPPABLE_COLUMNS)[number];
+type SubmissionRow = Omit<BoardSubmission, Droppable['column']> &
+  Partial<Pick<BoardSubmission, Droppable['column']>>;
+
+/** PGRST204 says "the 'x' column"; Postgres's 42703 says 'column "x"'. */
+const NAMED_COLUMN = /the '(\w+)' column|column "(\w+)"/;
+
+function columnNamedBy(error: PostgrestError): string | null {
+  const named = NAMED_COLUMN.exec(error.message);
+  return named?.[1] ?? named?.[2] ?? null;
+}
+
+function withoutColumn(row: SubmissionRow, column: Droppable['column']): SubmissionRow {
+  const rest = { ...row };
+  delete rest[column];
+  return rest;
+}
+
+const INVALID_DIFFICULTY_OR_DAY = 'Invalid difficulty or daily day';
+
+const DAILY_DAY_CHECK = 'check_daily_day_recent';
 
 export async function submitLeaderboardEntry(
   entry: LeaderboardSubmission,
 ): Promise<LeaderboardSubmitResult> {
-  if (entry.player_name.length < 4 || entry.player_name.length > 16) {
+  if (playerNameProblem(entry.player_name) !== null) {
     return { status: 'invalid', message: 'Player name must be between 4 and 16 characters' };
   }
   if (!supabase) {
@@ -203,29 +233,47 @@ export async function submitLeaderboardEntry(
   }
 
   const client = supabase;
-  const insertRow = (row: SubmissionRow) =>
+  const insertRow = (row: LeaderboardSubmission | SubmissionRow) =>
     client.from('leaderboard_entries').insert(row).select().single();
 
   const first = await insertRow(entry);
   if (!first.error) {
     return { status: 'stored', entry: first.data };
   }
+  if (first.error.code === '23514' && first.error.message.includes(DAILY_DAY_CHECK)) {
+    return { status: 'invalid', message: INVALID_DIFFICULTY_OR_DAY };
+  }
   if (!isMissingColumn(first.error)) {
     return { status: 'failed', cause: first.error };
   }
-
-  // Transition shim. Delete it, and this whole retry branch, once the
-  // country_code migration is applied in every environment. A player's score
-  // outlives their flag, so the score is kept and the country dropped.
-  const { country_code: dropped, ...withoutCountry } = entry;
-  console.warn(
-    `Leaderboard insert rejected country_code ${dropped} (${first.error.code}); the country migration is outstanding. Retrying without it.`,
-  );
-  const retry = await insertRow(withoutCountry);
-  if (retry.error) {
-    return { status: 'unavailable', cause: retry.error };
+  if (entry.difficulty === DAILY_BOARD) {
+    return { status: 'unavailable', cause: first.error };
   }
-  return { status: 'stored', entry: retry.data };
+
+  let row: SubmissionRow = entry;
+  let rejection = first.error;
+  let left: readonly Droppable[] = DROPPABLE_COLUMNS;
+  for (;;) {
+    const named = columnNamedBy(rejection);
+    const drop = named === null ? left[0] : left.find(({ column }) => column === named);
+    if (drop === undefined) {
+      return { status: 'unavailable', cause: rejection };
+    }
+    console.warn(
+      `Leaderboard insert rejected ${drop.column} ${row[drop.column]} (${rejection.code}: ${rejection.message}); ${drop.migration} is outstanding. Retrying without it.`,
+    );
+    row = withoutColumn(row, drop.column);
+    left = left.filter((candidate) => candidate !== drop);
+
+    const retry = await insertRow(row);
+    if (!retry.error) {
+      return { status: 'stored', entry: retry.data };
+    }
+    if (!isMissingColumn(retry.error)) {
+      return { status: 'failed', cause: retry.error };
+    }
+    rejection = retry.error;
+  }
 }
 
 export type StandingResult =
@@ -248,17 +296,17 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
   if (entry === null) {
     return { status: 'missing' };
   }
+  const board = parseBoard(entry.difficulty, entry.daily_day);
+  if (board === null) {
+    return { status: 'unavailable', cause: `entry ${id} names no board: ${entry.difficulty} ${entry.daily_day}` };
+  }
   const country = scope === 'country' ? entry.country_code ?? WORLD_CODE : null;
   if (country === WORLD_CODE) {
     return { status: 'noCountry' };
   }
 
   const bucket = () => {
-    const ranked = client
-      .from('leaderboard_entries')
-      .select('id', { count: 'exact', head: true })
-      .eq('difficulty', entry.difficulty)
-      .gt('correct_pieces', 0);
+    const ranked = rankedRows(client, board, 'id', { count: 'exact', head: true });
     return country === null ? ranked : ranked.eq('country_code', country);
   };
   const score = {
@@ -273,6 +321,6 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
   }
   return {
     status: 'ranked',
-    standing: { difficulty: entry.difficulty, country, rank: above.count + 1, total: total.count },
+    standing: { ...board, country, rank: above.count + 1, total: total.count },
   };
 }

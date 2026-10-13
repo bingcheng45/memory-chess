@@ -17,7 +17,7 @@ function tilesFor(name: PersonaName, { today = PERSONA_TODAY, chooseHref = "/#re
   const summary = records.length ? summarize(records) : EMPTY_SUMMARY;
   const choices = personaChoices(name);
   const results = deriveLab({ records, summary, today, ...choices });
-  return dashboardOf({ results, summary, records, weekGoal: 5, entries: personaEntries(name), today, utcDay: today, dailyOpened: null, chooseHref, game, winAccuracy: 70 });
+  return dashboardOf({ results, summary, records, weekGoal: 5, entries: personaEntries(name), today, utcDay: PERSONA_TODAY, dailyOpened: null, chooseHref, game, winAccuracy: 70 });
 }
 
 const tile = (tiles: readonly DashboardTile[], id: DashboardTileId) => tiles.find((candidate) => candidate.id === id);
@@ -82,7 +82,7 @@ describe("dashboardOf", () => {
       ["streak", "empty", QUICK],
       ["rounds", "empty", QUICK],
       ["days", "empty", QUICK],
-      ["daily", "empty", "/game?pieceCount=6&memorizeTime=10&source=daily"],
+      ["daily", "empty", "/game?pieceCount=7&memorizeTime=9&source=daily"],
       ["week", "empty", QUICK],
       ["curve", "empty", QUICK],
       ["notebook", "empty", QUICK],

@@ -4,15 +4,17 @@ import { Fragment } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { trackEvent } from "@/lib/analytics/events";
+import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
 import { playHref } from "@/lib/game/roundLink";
-import { boardGrid, DAILY_SETTING, dailyBoardOf, OUTCOME_CELLS, readDailyOpened, SHARE_ORDER, shareRow, utcDayOf, type DailyRound } from "@/lib/lab/daily";
+import { dailySettingOf } from "@/lib/daily/schedule";
+import { boardGrid, dailyBoardOf, OUTCOME_CELLS, readDailyOpened, SHARE_ORDER, shareRow, utcDayOf, type DailyRound } from "@/lib/lab/daily";
 import type { RoundRecord, SquareOutcome } from "@/lib/lab/record";
 import type { StreakValue } from "@/lib/lab/streak";
 import { DailyResetsIn, useNow } from "./DailyResetsIn";
 import { figureOf, PanelHead, useTags } from "./LabRecordPanels";
 import { useCopyText } from "./useCopyText";
 
-const DAILY_HREF = playHref(DAILY_SETTING.pieceCount, DAILY_SETTING.memorizeTime, "daily");
+const DAILY_HREF_BEFORE_CLOCK = playHref(DEFAULT_PRESET.pieceCount, DEFAULT_PRESET.memorizeTime, "daily");
 
 type Translate = ReturnType<typeof useTranslations<"home.lab.record.daily">>;
 
@@ -80,7 +82,9 @@ export function DailyPanel({ records, ready }: DailyPanelProps) {
   const tags = useTags();
   const now = useNow();
   // Read again on each tick, which also picks up the board being opened in another tab.
-  const board = ready && now !== null ? dailyBoardOf(records, utcDayOf(now), readDailyOpened()) : null;
+  const day = now === null ? null : utcDayOf(now);
+  const setting = day === null ? null : dailySettingOf(day);
+  const board = ready && day !== null ? dailyBoardOf(records, day, readDailyOpened()) : null;
   const played = board?.status === "played" ? board : null;
 
   return (
@@ -97,12 +101,12 @@ export function DailyPanel({ records, ready }: DailyPanelProps) {
           </>
         ) : (
           <>
-            <p className="lab-daily-status">{board && t(board.status === "unfinished" ? "unfinished" : "open")}</p>
+            <p className="lab-daily-status">{board && setting && (board.status === "unfinished" ? t("unfinished") : t("open", { pieceCount: setting.pieceCount, memorizeSeconds: setting.memorizeTime }))}</p>
             <StreakLine t={t} streak={board?.streak ?? null} />
             {board?.status !== "unfinished" && (
               <Link
                 className="lab-btn lab-btn-secondary lab-daily-play"
-                href={DAILY_HREF}
+                href={setting ? playHref(setting.pieceCount, setting.memorizeTime, "daily") : DAILY_HREF_BEFORE_CLOCK}
                 onClick={() => trackEvent({ name: "lab_panel_action", params: { panel: "daily", action: "play" } })}
               >
                 {t("play")} →

@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "chess-calculation-exercises-for-beginners",
-    title: "Chess Calculation Exercises for Beginners: Two Plies Deep",
+    title: "Chess Calculation Exercises for Beginners",
     h1: "Chess calculation exercises for beginners who lose the board after two moves",
     description: "Chess calculation exercises for beginners: compare two candidate moves two plies deep, ask who can capture on each landing square, then check on a board.",
     group: "visualization",

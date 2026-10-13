@@ -32,7 +32,7 @@ const guide: LearnDocument = {
       "A square you count takes two lookups, the file and then the rank. A square you recognise takes one.",
       "Add the file number to the rank number. An even total is a dark square, an odd total is light.",
       "A knight always lands on the other colour, so the colour rule checks every knight move you name.",
-      "Turn off Show board coordinates on the Memory Chess settings page to hide the labels on every board in a round, which turns any round into a coordinates drill.",
+      "Turn off Show board coordinates on the Memory Chess settings page to hide the labels on every board in a round. That turns any round into a coordinates drill.",
     ],
     audience: [
       "Players who still find c3 by running a finger along the bottom edge.",
@@ -252,7 +252,7 @@ const guide: LearnDocument = {
         },
         {
           question: "Do I need to learn the board from Black's side?",
-          answer: "Not for reading notation, since the square names never change. For playing Black over the board, do the same anchor drill with the board turned round, so a1 sits at your top right and h8 at your bottom left.",
+          answer: "Not for reading notation, since the square names never change. For playing Black over the board, do the same anchor drill with the board turned round. Then a1 sits at your top right and h8 at your bottom left.",
         },
       ],
     },

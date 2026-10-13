@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "chess-memory-training",
-    title: "Chess Memory Training: A Scored Ladder From 6 to 12 Pieces",
+    title: "Chess Memory Training: A Scored Ladder",
     h1: "Chess memory training with a score that tells you when to move up",
     description: "Chess memory training you can score. Rebuild boards from 6 pieces to 12, with a clear rule for when to add pieces and what each result message means.",
     group: "memory",
@@ -69,7 +69,7 @@ const guide: LearnDocument = {
           paragraphs: [
             "The message on the result screen comes straight from your accuracy. 100 percent is Perfect Score, 90 or more is Excellent Memory, 80 is Great Job, 70 is Well Done and 50 is Good Effort. Below 50 the screen says Keep Practicing. Those are the only six messages, and the thresholds are the same at every piece count.",
             "At 6 pieces each piece is worth about 17 points, so the steps are steep. Four out of 6 is 67 percent, Good Effort. It means two pieces were missing or wrong. Before you press Try Again, find those two pieces on the result board and note what kind of piece each was.",
-            "With no extra pieces on the board, a 6-piece round goes straight from Great Job at five correct to Perfect Score at six, so it never shows Excellent Memory. Six correct plus one extra piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message. The table shows how much one miss costs at 6 pieces against 12.",
+            "With no extra pieces on the board, a 6-piece round goes straight from Great Job at five correct to Perfect Score at six. So it never shows Excellent Memory. Six correct plus one extra piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message. The table shows how much one miss costs at 6 pieces against 12.",
           ],
         },
         {

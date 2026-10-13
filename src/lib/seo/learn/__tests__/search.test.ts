@@ -40,6 +40,7 @@ describe("Learn search", () => {
       "how-to-see-the-whole-board-in-chess",
       "how-to-stop-blundering-in-chess",
       "chess-coordinates-practice",
+      "why-puzzle-rating-doesnt-transfer-to-games",
     ]);
     expect(search("why do i keep hanging pieces", browser).map((result) => result.slug)).toEqual([
       "how-to-stop-blundering-in-chess",

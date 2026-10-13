@@ -3,9 +3,9 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "how-to-get-better-at-chess-for-beginners",
-    title: "How to Get Better at Chess: A 4-Week Beginner Plan",
+    title: "How to Get Better at Chess for Beginners",
     h1: "How to get better at chess for beginners",
-    description: "A four-week plan for how to get better at chess as a beginner. Read the whole board, ask one safety question per move, play slow games and log each loss.",
+    description: "A four-week beginner chess plan for how to get better at chess. Read the whole board, ask one safety question per move, play slow games and log each loss.",
     group: "foundations",
     level: "beginner",
     publishedAt: "2026-03-06T00:00:00.000Z",
@@ -357,6 +357,11 @@ const guide: LearnDocument = {
           kind: "guide",
           slug: "how-many-chess-puzzles-a-day",
           reason: "How to size the puzzle habit that sits beside these stages.",
+        },
+        {
+          kind: "guide",
+          slug: "20-minute-daily-chess-study-plan",
+          reason: "Fits the four stages into one fixed twenty-minute session for days with no time for a slow game.",
         },
       ],
     },

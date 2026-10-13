@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "how-to-think-in-chess-for-beginners",
-    title: "How to Think in Chess: 3 Questions Before Every Move",
+    title: "How to Think in Chess for Beginners",
     h1: "How to think in chess for beginners",
     description: "Learn how to think in chess with three questions asked in a fixed order, a one-sentence rule for when to move, and a clock budget for 10-minute games.",
     group: "foundations",

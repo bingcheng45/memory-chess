@@ -3,9 +3,9 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "how-to-see-the-whole-board-in-chess",
-    title: "How to See the Whole Board in Chess and Stop Tunnel Vision",
+    title: "How to See the Whole Board in Chess",
     h1: "How to see the whole board in chess",
-    description: "Learn how to see the whole board in chess with a sweep that starts at the edges, why a bishop that never moved wins material, and a 12-piece drill.",
+    description: "Learn how to see the whole board in chess with a sweep that starts at the edges. See why an unmoved bishop wins material, then try a 12-piece drill.",
     group: "board-vision",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",

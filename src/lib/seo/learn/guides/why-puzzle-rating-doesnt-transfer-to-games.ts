@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Puzzle rating doesn't transfer to games because a puzzle does half the work for you. It promises a tactic, tells you which side has it, shows the whole position fresh with nothing remembered to go stale, and lets you look with no opponent waiting. A game gives you none of that, so you must spot a tactic's preconditions yourself.",
+    quickAnswer: "Puzzle rating doesn't transfer to games because a puzzle does half the work for you. It promises a tactic and tells you which side has it. It shows the whole position fresh, with nothing remembered to go stale, and lets you look with no opponent waiting. A game gives you none of that, so you must spot a tactic's preconditions yourself.",
     takeaways: [
       "Puzzle and game ratings come from separate pools, so the gap between them proves nothing on its own.",
       "Each of the four gifts a puzzle hands you needs a habit to replace it at the board.",
@@ -111,7 +111,7 @@ const guide: LearnDocument = {
             "Of the four gifts, the fresh position is the easiest to overlook. In a game the position reaches you one move at a time, over half an hour or more. You stop rereading the squares you think you already know.",
             "By move 25 your picture can lag behind the board. It is the position from a few moves back with the recent changes patched in. The usual error sits around the last move rather than on it: the square a piece left, or the line it opened.",
             "A puzzle never tests this. Its diagram is complete and current, so your puzzle rating has never once been measured on a stale picture.",
-            "A Memory Chess round tests the picture itself. Take a hard preset of 12 pieces with 8 seconds to look. The board goes blank, you rebuild it, and the result board marks each square you got wrong or missed, so you see where your picture split from the real one.",
+            "A Memory Chess round tests the picture itself. Take a hard preset of 12 pieces with 8 seconds to look. The board goes blank and you rebuild it. The result board then marks each square you got wrong or missed, so you see where your picture split from the real one.",
           ],
         },
         {
@@ -135,7 +135,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Many puzzle patterns turn up in real games. Take a knight on c7 forking a king on e8 and a rook on a8, or a bishop on g5 pinning a knight on f6 to a queen on d8.",
+            "Many puzzle patterns turn up in real games. Take a knight on c7 forking a king on e8 and a rook on a8. Or take a bishop on g5 pinning a knight on f6 to a queen on d8.",
             "They transfer only if you spot the precondition first, because nothing at the board tells you a tactic is there.",
           ],
         },

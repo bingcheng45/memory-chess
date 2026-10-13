@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "chess-pattern-recognition-drills",
-    title: "Chess Pattern Recognition Drills: 4 Shapes to Rebuild",
+    title: "Chess Pattern Recognition Drills, From Memory",
     h1: "Chess pattern recognition drills for the first four tactics",
     description: "Chess pattern recognition drills for four tactics: the exact squares, the one condition each needs, and a six-minute rebuild routine that makes them stick.",
     group: "memory",
@@ -324,7 +324,7 @@ const guide: LearnDocument = {
       items: [
         {
           question: "Is pattern recognition the same as memorising puzzles?",
-          answer: "No. A memorised puzzle is one position on fixed squares. A pattern is a shape you still recognise when it moves a file or appears for the other colour, plus a condition you check every time you see it.",
+          answer: "No. A memorised puzzle is one position on fixed squares. A pattern has two parts. The first is a shape you still recognise when it moves a file or appears for the other colour. The second is a condition you check every time you see it.",
         },
         {
           question: "Can Memory Chess show me real tactical patterns?",

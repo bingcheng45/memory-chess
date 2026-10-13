@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "how-many-chess-puzzles-a-day",
-    title: "How Many Chess Puzzles a Day Should a Beginner Do?",
+    title: "How Many Chess Puzzles a Day Should Beginners Do?",
     h1: "How many chess puzzles a day should a beginner do?",
     description: "Work out how many chess puzzles a day to do from your minutes. Get a count for each kind of session, four signs of too many, and a check for when to stop.",
     group: "practice",

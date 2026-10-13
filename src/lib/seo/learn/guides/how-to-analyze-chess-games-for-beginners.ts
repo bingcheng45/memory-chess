@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "how-to-analyze-chess-games-for-beginners",
-    title: "How to Analyze Chess Games for Beginners in 10 Minutes",
+    title: "How to Analyze Chess Games for Beginners",
     h1: "How to analyze chess games for beginners",
     description: "Learn how to analyze chess games for beginners in ten minutes. Find the move that decided the game, explain it before the engine does, and label the mistake.",
     group: "practice",
@@ -63,7 +63,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Set the position up, on a board or on screen, and write one sentence about why the move was bad. Do this before you switch the engine on.",
-            "The engine will tell you the move was bad. It will not tell you which of your habits produced it. Only you can, and only if you answer first, because once the engine line is on screen it is hard to recall what you would have said without it.",
+            "The engine will tell you the move was bad. It will not tell you which of your habits produced it. Only you can, and only if you answer first. Once the engine line is on screen, it is hard to recall what you would have said without it.",
             "Then run the engine, once, on that single position. If it agrees with your sentence, good. If it names something you did not see, write a second sentence about it.",
           ],
         },

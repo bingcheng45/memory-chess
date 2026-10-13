@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the whole board from memory and scoring it square by square. Start at 6 pieces and 10 seconds, and add two pieces after three perfect rounds in a row. Keep the look at 10 seconds until 12 pieces comes back perfect three times, then lower it to 8.",
+    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the whole board from memory and scoring it square by square. Start at 6 pieces and 10 seconds. Add two pieces after three perfect rounds in a row. Keep the look at 10 seconds until 12 pieces comes back perfect three times, then lower it to 8.",
     takeaways: [
       "A piece scores only when its square, type and colour all match, so a near miss is a miss.",
       "At 6 pieces one missed piece already costs 17 points, so the result messages are blunt at low counts.",
@@ -68,8 +68,8 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "The message on the result screen comes straight from your accuracy. 100 percent is Perfect Score, 90 or more is Excellent Memory, 80 is Great Job, 70 is Well Done and 50 is Good Effort. Below 50 the screen says Keep Practicing. Those are the only six messages, and the thresholds are the same at every piece count.",
-            "At 6 pieces each piece is worth about 17 points, so the steps are steep. Four out of 6 is 67 percent, Good Effort. It means two pieces were missing or wrong, and the next round is about finding which two.",
-            "With no extra pieces on the board, a 6-piece round goes straight from Great Job at five correct to Perfect Score at six, so it never shows Excellent Memory. Six correct plus one extra piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message.",
+            "At 6 pieces each piece is worth about 17 points, so the steps are steep. Four out of 6 is 67 percent, Good Effort. It means two pieces were missing or wrong. Before you press Try Again, find those two pieces on the result board and note what kind of piece each was.",
+            "With no extra pieces on the board, a 6-piece round goes straight from Great Job at five correct to Perfect Score at six, so it never shows Excellent Memory. Six correct plus one extra piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message. The table shows how much one miss costs at 6 pieces against 12.",
           ],
         },
         {
@@ -92,7 +92,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "If you have never played, start with one round of the 2-piece preset. It holds only the two kings and teaches the controls: pick a type and colour, tap a square, tap again to remove. After that round it has nothing left to teach, so the ladder starts at 6.",
+            "If you have never played, start with one round of the 2-piece preset. It holds only the two kings and teaches the controls: pick a type and colour, tap a square, tap again to remove. After that round it has nothing left to teach, so the ladder starts at 6. The table shows the five rungs and the result that moves you up from each.",
           ],
         },
         {
@@ -136,7 +136,7 @@ const guide: LearnDocument = {
             },
             {
               title: "The hard preset",
-              description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Play these once 12 pieces at 10 seconds gives three Perfect Score rounds in a row. Read the board in three or four groups of three or four pieces, starting with the kings.",
+              description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Play these once 12 pieces at 10 seconds gives three Perfect Score rounds in a row. Read the board in three or four groups of three or four pieces, starting with the kings. A group is pieces that touch or share a rank or file, such as a pawn pair on f2 and g2.",
               duration: "About 6 minutes",
               goal: "Excellent Memory or Perfect Score, which at this count means at least 11 of the 12, in three of four rounds. Then try the 20-piece preset.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
@@ -154,7 +154,7 @@ const guide: LearnDocument = {
           paragraphs: [
             "Skip ends the look early. The game records how long you actually looked, and the result screen and the leaderboard use that number. So once you have the board, skip.",
             "Try Again keeps your piece count and look time and deals a new position. You never see the same board twice. That suits training, and it means one perfect round might be an easy draw. Three perfect rounds in a row at the same settings is a signal.",
-            "The result screen shows correct pieces out of the total, a red superscript for any extra pieces, your look time and your solution time. On your submitted board, a piece you placed is marked Correct or Incorrect, and an original square you left empty is marked Missed.",
+            "On the result board under Review Your Position, a piece you placed is marked correct or wrong placement. An original square you left empty is marked missed square and shows the piece that stood there.",
           ],
         },
       ],
@@ -169,7 +169,7 @@ const guide: LearnDocument = {
             "Rebuilding from an empty board is a recall test, and recall tests help a memory last. Roediger and Karpicke had students study a prose passage, then either reread it or write down what they recalled. A week later the tested students remembered more.",
             "That study used prose passages, so it says nothing about how long to look at a board. Skipping once you have the board is this guide's own advice.",
             "Gobet and Simon showed strong players several boards in a row for a few seconds each, and the players still recalled much of each one. The authors explain it with templates, large familiar patterns held in long-term memory.",
-            "Memory Chess positions are random, so the groups you find are plain shapes on the board. A pawn pair on f2 and g2. A king tucked in a corner. Three pieces on one rank.",
+            "Memory Chess positions are random, so you rarely meet a familiar template. The plain groups from the hard-preset drill, pieces that touch or share a rank or file, take their place.",
             "Groups are what make the hard preset possible. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four groups it leaves two seconds or more each.",
           ],
         },

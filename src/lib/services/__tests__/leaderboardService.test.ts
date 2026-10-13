@@ -10,8 +10,11 @@ if (SINGAPORE === null) throw new Error("SG is not a known country code");
 jest.mock("@/lib/supabase", () => {
   const single = jest.fn();
   const insert = jest.fn(() => ({ select: () => ({ single }) }));
+  const client = { from: () => ({ insert }) };
   return {
-    supabase: { from: () => ({ insert }) },
+    supabase: client,
+    supabaseWriter: client,
+    SUPABASE_WRITES_OFF_REASON: "Supabase is not configured",
     checkSupabaseConnection: jest.fn(),
     mockInsert: insert,
     mockSingle: single,

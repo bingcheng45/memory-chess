@@ -17,6 +17,15 @@ if (!supabaseUrl && !supabaseAnonKey) {
 // Create a single supabase client for the entire app
 export const supabase = environmentError ? null : createClient(supabaseUrl, supabaseAnonKey);
 
+const readOnly = process.env.SUPABASE_READ_ONLY === 'true';
+
+// Local runs against the production project set SUPABASE_READ_ONLY so no write can reach it
+export const supabaseWriter = readOnly ? null : supabase;
+
+export const SUPABASE_WRITES_OFF_REASON = readOnly
+  ? 'Supabase is read-only (SUPABASE_READ_ONLY=true)'
+  : 'Supabase is not configured';
+
 // Helper to check Supabase connection
 export async function checkSupabaseConnection() {
   // First check if environment variables are set

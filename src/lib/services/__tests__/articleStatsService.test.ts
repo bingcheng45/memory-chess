@@ -16,6 +16,10 @@ jest.mock("@/lib/supabase", () => {
     get supabase() {
       return stub.isConfigured ? { from, rpc } : null;
     },
+    get supabaseWriter() {
+      return stub.isConfigured ? { from, rpc } : null;
+    },
+    SUPABASE_WRITES_OFF_REASON: "Supabase is not configured",
     stub,
   };
 });

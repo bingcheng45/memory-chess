@@ -188,6 +188,32 @@ describe("POST /api/leaderboard", () => {
     });
   });
 
+  it.each([
+    ["a number", 123],
+    ["an array", []],
+    ["an object", {}],
+  ])("rejects a player name that is %s, not text", async (_case, player_name) => {
+    const response = await post({ ...validEntry, player_name });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Player name must be text" });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it("measures the name without its spaces, so \"  ab  \" is two characters and refused", async () => {
+    const response = await post({ ...validEntry, player_name: "  ab  " });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Player name must be between 4 and 16 characters" });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it("stores the name without its surrounding spaces", async () => {
+    await post({ ...validEntry, player_name: "  Poteto  " });
+
+    expect(jest.mocked(submitLeaderboardEntry).mock.calls[0][0]).toMatchObject({ player_name: "Poteto" });
+  });
+
   describe("on 2026-10-13 at 00:30 UTC", () => {
     beforeEach(() => {
       jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-13T00:30:00Z"));
@@ -230,6 +256,23 @@ describe("POST /api/leaderboard", () => {
       expect(response.status).toBe(400);
       expect(await response.json()).toEqual({ error: "A daily row needs a country" });
       expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+    });
+
+    const todaysRow = { ...validEntry, difficulty: "daily", daily_day: "2026-10-13", piece_count: 6, memorize_time: 10, country_code: "SG" };
+
+    it("rejects a daily rebuild of 6 pieces in 1.49 s, under a quarter second a piece", async () => {
+      const response = await post({ ...todaysRow, solution_time: 1.49 });
+
+      expect(response.status).toBe(400);
+      expect(await response.json()).toEqual({ error: "A daily rebuild of 6 pieces takes at least 1.5 seconds" });
+      expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+    });
+
+    it("stores a daily rebuild of 6 pieces in 1.5 s, exactly a quarter second a piece", async () => {
+      const response = await post({ ...todaysRow, solution_time: 1.5 });
+
+      expect(response.status).toBe(200);
+      expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ daily_day: "2026-10-13", solution_time: 1.5 }));
     });
 
     it.each(["2026-10-14", "2026-10-11", "9999-12-31", "0000-01-01"])("rejects a daily row for %s", async (day) => {

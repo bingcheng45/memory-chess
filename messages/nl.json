@@ -371,6 +371,12 @@
       "memorizeTime": "Kijktijd",
       "solutionTime": "Oplostijd",
       "date": "Datum"
+    },
+    "daily": {
+      "tab": "Dagelijks",
+      "setting": "{pieces, plural, one {# stuk} other {# stukken}} · {seconds} s kijktijd",
+      "resetsAtUtc": "Reset om {utc} UTC",
+      "resetsAt": "Reset om {utc} UTC ({local} bij jou), over {timeLeft}"
     }
   },
   "country": {

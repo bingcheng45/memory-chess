@@ -371,6 +371,12 @@
       "memorizeTime": "याद करने का समय",
       "solutionTime": "हल करने का समय",
       "date": "तारीख़"
+    },
+    "daily": {
+      "tab": "दैनिक",
+      "setting": "{pieces, plural, one {# मोहरा} other {# मोहरे}} · याद करने के लिए {seconds} से.",
+      "resetsAtUtc": "{utc} UTC पर रीसेट होता है",
+      "resetsAt": "{utc} UTC पर रीसेट होता है (आपके समय से {local}), {timeLeft} में"
     }
   },
   "country": {

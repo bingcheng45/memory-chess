@@ -371,6 +371,12 @@
       "memorizeTime": "Timp de memorare",
       "solutionTime": "Timp de rezolvare",
       "date": "Data"
+    },
+    "daily": {
+      "tab": "Zilnic",
+      "setting": "{pieces, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s de studiu",
+      "resetsAtUtc": "Se resetează la {utc} UTC",
+      "resetsAt": "Se resetează la {utc} UTC ({local} la tine), în {timeLeft}"
     }
   },
   "country": {

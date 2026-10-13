@@ -371,6 +371,12 @@
       "memorizeTime": "Waktu menghafal",
       "solutionTime": "Waktu penyelesaian",
       "date": "Tanggal"
+    },
+    "daily": {
+      "tab": "Harian",
+      "setting": "{pieces, plural, other {# bidak}} · {seconds} dtk untuk menghafal",
+      "resetsAtUtc": "Direset pukul {utc} UTC",
+      "resetsAt": "Direset pukul {utc} UTC ({local} waktu Anda), dalam {timeLeft}"
     }
   },
   "country": {

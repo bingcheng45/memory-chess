@@ -371,6 +371,12 @@
       "memorizeTime": "Muistiinpainamisaika",
       "solutionTime": "Ratkaisuaika",
       "date": "Päivä"
+    },
+    "daily": {
+      "tab": "Päivittäinen",
+      "setting": "{pieces, plural, one {# nappula} other {# nappulaa}} · {seconds} s opetteluun",
+      "resetsAtUtc": "Nollautuu klo {utc} UTC",
+      "resetsAt": "Nollautuu klo {utc} UTC (sinun aikaasi {local}), {timeLeft} päästä"
     }
   },
   "country": {

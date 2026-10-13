@@ -371,6 +371,12 @@
       "memorizeTime": "Tempo de memorização",
       "solutionTime": "Tempo de resolução",
       "date": "Data"
+    },
+    "daily": {
+      "tab": "Diário",
+      "setting": "{pieces, plural, one {# peça} many {# peças} other {# peças}} · {seconds} s para estudar",
+      "resetsAtUtc": "Reinicia às {utc} UTC",
+      "resetsAt": "Reinicia às {utc} UTC ({local} no seu horário), em {timeLeft}"
     }
   },
   "country": {

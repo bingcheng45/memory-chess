@@ -371,6 +371,12 @@
       "memorizeTime": "记忆时间",
       "solutionTime": "还原用时",
       "date": "日期"
+    },
+    "daily": {
+      "tab": "每日",
+      "setting": "{pieces, plural, other {# 个棋子}} · 记忆 {seconds} 秒",
+      "resetsAtUtc": "UTC {utc} 重置",
+      "resetsAt": "UTC {utc} 重置（你的时间 {local}），{timeLeft}后"
     }
   },
   "country": {

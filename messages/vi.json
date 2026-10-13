@@ -371,6 +371,12 @@
       "memorizeTime": "Thời gian ghi nhớ",
       "solutionTime": "Thời gian hoàn thành",
       "date": "Ngày"
+    },
+    "daily": {
+      "tab": "Hằng ngày",
+      "setting": "{pieces, plural, other {# quân}} · {seconds} giây để ghi nhớ",
+      "resetsAtUtc": "Đặt lại lúc {utc} UTC",
+      "resetsAt": "Đặt lại lúc {utc} UTC ({local} giờ của bạn), còn {timeLeft}"
     }
   },
   "country": {

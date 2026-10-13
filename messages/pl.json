@@ -371,6 +371,12 @@
       "memorizeTime": "Czas zapamiętywania",
       "solutionTime": "Czas rozwiązania",
       "date": "Data"
+    },
+    "daily": {
+      "tab": "Dzienna",
+      "setting": "{pieces, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} · {seconds} s na naukę",
+      "resetsAtUtc": "Reset o {utc} UTC",
+      "resetsAt": "Reset o {utc} UTC ({local} u Ciebie), za {timeLeft}"
     }
   },
   "country": {

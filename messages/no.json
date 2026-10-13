@@ -371,6 +371,12 @@
       "memorizeTime": "Innlæringstid",
       "solutionTime": "Løsningstid",
       "date": "Dato"
+    },
+    "daily": {
+      "tab": "Daglig",
+      "setting": "{pieces, plural, one {# brikke} other {# brikker}} · {seconds} s innlæring",
+      "resetsAtUtc": "Nullstilles kl. {utc} UTC",
+      "resetsAt": "Nullstilles kl. {utc} UTC ({local} hos deg), om {timeLeft}"
     }
   },
   "country": {

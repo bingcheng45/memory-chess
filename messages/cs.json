@@ -371,6 +371,12 @@
       "memorizeTime": "Čas na zapamatování",
       "solutionTime": "Čas řešení",
       "date": "Datum"
+    },
+    "daily": {
+      "tab": "Denní",
+      "setting": "{pieces, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} · {seconds} s na studium",
+      "resetsAtUtc": "Obnoví se v {utc} UTC",
+      "resetsAt": "Obnoví se v {utc} UTC ({local} u vás), za {timeLeft}"
     }
   },
   "country": {

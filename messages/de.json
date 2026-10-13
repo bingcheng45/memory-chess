@@ -371,6 +371,12 @@
       "memorizeTime": "Einprägezeit",
       "solutionTime": "Lösungszeit",
       "date": "Datum"
+    },
+    "daily": {
+      "tab": "Täglich",
+      "setting": "{pieces, plural, one {# Figur} other {# Figuren}} · {seconds} s zum Einprägen",
+      "resetsAtUtc": "Wird um {utc} UTC zurückgesetzt",
+      "resetsAt": "Wird um {utc} UTC zurückgesetzt ({local} bei dir), in {timeLeft}"
     }
   },
   "country": {

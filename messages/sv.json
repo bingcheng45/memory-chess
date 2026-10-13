@@ -371,6 +371,12 @@
       "memorizeTime": "Memoreringstid",
       "solutionTime": "Lösningstid",
       "date": "Datum"
+    },
+    "daily": {
+      "tab": "Daglig",
+      "setting": "{pieces, plural, one {# pjäs} other {# pjäser}} · {seconds} s att studera",
+      "resetsAtUtc": "Nollställs kl. {utc} UTC",
+      "resetsAt": "Nollställs kl. {utc} UTC ({local} hos dig), om {timeLeft}"
     }
   },
   "country": {

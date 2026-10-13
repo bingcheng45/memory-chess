@@ -371,6 +371,12 @@
       "memorizeTime": "Ezberleme süresi",
       "solutionTime": "Çözüm süresi",
       "date": "Tarih"
+    },
+    "daily": {
+      "tab": "Günlük",
+      "setting": "{pieces, plural, one {# taş} other {# taş}} · İncelemek için {seconds} sn",
+      "resetsAtUtc": "{utc} UTC itibarıyla sıfırlanır",
+      "resetsAt": "{utc} UTC itibarıyla sıfırlanır (sizin saatinizle {local}), {timeLeft} sonra"
     }
   },
   "country": {

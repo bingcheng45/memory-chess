@@ -1,7 +1,7 @@
 'use client';
 
 import { START_RATING } from "@/lib/game/rating";
-import type { LeaderboardEntry } from "@/types/leaderboard";
+import { DAILY_BOARD, type LeaderboardEntry } from "@/types/leaderboard";
 import { Link } from "@/i18n/navigation";
 import { useEffect, useRef, type ReactNode } from "react";
 import { CloudOff, TriangleAlert } from "lucide-react";
@@ -27,6 +27,8 @@ interface LeaderboardTableProps {
 }
 
 const COLUMN_COUNT = 7;
+
+export const playHrefOf = (board: string) => (board === DAILY_BOARD ? "/daily" : `/game?difficulty=${board}`);
 const PODIUM_MEDALS = ["🏆", "🥈", "🥉"];
 
 export function TimeDisplay({ seconds }: { seconds: number }) {
@@ -108,12 +110,12 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
   }, [entryDetails, data]);
 
   if (error) {
-    // Check if this is a database connection error and provide a more user-friendly message
+    const isDailyBoard = activeTab === DAILY_BOARD;
     const isConnectionError = error.includes('Database connection unavailable') ||
                               error.includes('Unable to connect') ||
                               error.includes('connection issue');
 
-    if (isConnectionError) {
+    if (isDailyBoard || isConnectionError) {
       return (
         <BoardState icon={<CloudOff size={20} strokeWidth={1.75} />}>
           <p className="lb-state-title">{t("unavailableTitle")}</p>
@@ -143,7 +145,7 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
         <p className="lb-state-title">{t("emptyTitle")}</p>
         <p className="lb-state-body">{t("emptyBody")}</p>
         <p className="lb-state-note">{t("emptyCta")}</p>
-        <Link href={`/game?difficulty=${activeTab || 'medium'}`} className="lab-btn lab-btn-secondary">
+        <Link href={playHrefOf(activeTab || 'medium')} className="lab-btn lab-btn-secondary">
           {t("startPlaying")}
         </Link>
       </BoardState>

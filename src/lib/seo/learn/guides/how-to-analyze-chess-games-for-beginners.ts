@@ -168,7 +168,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Do not skip minutes 2 to 4. A piece you cannot place from memory is a lead. Check whether it was one of the pieces that decided the move.",
-            "If it was, the label is probably never looked. If the piece you lost stood far from the action, it tells you little about this mistake, so choose the label from your sentence and the engine check instead.",
+            "If it was, the label is probably never looked. If the piece you could not place stood far from the action, it tells you little about this mistake. Choose the label from your sentence and the engine check instead.",
             "Memory Chess trains the same rebuild on positions from outside your games. A position appears for a fixed number of seconds, the board clears, and you put the pieces back.",
             "The result screen marks each square as correct, wrong placement or missed square. A missed square is any square where your board lacks the piece that stood there. A piece you put on the wrong square counts twice: wrong placement where you put it, and missed square where it belonged.",
             "Start at 8 pieces with 10 seconds. That is two more pieces than the 6-piece medium preset, with the same time to look.",
@@ -203,7 +203,7 @@ const guide: LearnDocument = {
           ordered: false,
           items: [
             "Never looked. Three rounds of the 8-piece drill above before tomorrow's game. In the game, say what the last move newly attacks before each of yours.",
-            "Looked and misjudged. Set the position up again and calculate the line to the end, twice, with the pieces still. Then five slow puzzles.",
+            "Looked and misjudged. Set the deciding position up again. Without moving a piece, calculate your move and the reply you misjudged until no capture is left. Compare your line with the engine line from minute 7, and repeat until they match. Then solve five puzzles with no clock, naming the opponent's best reply before each move.",
             "Knew and rushed. Play the next game at 15 minutes plus 10 seconds, and nothing faster for a week.",
           ],
         },

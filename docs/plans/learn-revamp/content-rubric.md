@@ -31,7 +31,7 @@ Approve only when all of these hold:
 
 Approve only when all of these hold:
 - The guide matches the search intent of `keywords.primary` and owns it. No sibling guide targets the same primary keyword or answers the same main question (check `node scripts/learn/guide-report.mjs --all` and the siblings).
-- `title` is 60 characters or fewer and contains the primary keyword or its natural form. `description` is 120 to 160 characters, says what the reader gets, and contains the primary keyword naturally. `h1` reads naturally and matches the intent.
+- `title` is 49 characters or fewer (the site appends " | Memory Chess" and the full title must fit 64), keeps any title pinned in `src/lib/seo/__tests__/crossLinks.test.ts`, and contains the primary keyword or its natural form. `description` is 120 to 160 characters, says what the reader gets, and contains the primary keyword naturally. `h1` reads naturally and matches the intent.
 - The quick answer works as a featured snippet: self-contained, 40 to 60 words, answers the query.
 - Section headings are descriptive and specific to this guide, phrased the way a reader would search where it fits. None is shared with another guide (`headingsSharedWithOtherGuides` is empty).
 - `meta.questions` are real queries a reader types, 2 to 6, each answered on the page. FAQ answers are self-contained, 30 to 70 words, and do not repeat the quick answer.
@@ -44,7 +44,7 @@ Approve only when all of these hold:
 
 Approve only when all of these hold:
 - A reader on a phone can skim the headings, takeaways and lists and get the method.
-- Average sentence length under 16 words. No sentence over 30 words without a reason.
+- Average sentence length under 16 words. No sentence over 28 words (`learnPages.test.ts` enforces it).
 - No paragraph over 5 sentences. Steps are numbered lists. Comparisons are tables.
 - Visuals are used minimally and only when they explain something faster than words: a `board` for a position the text discusses, a `table` for a comparison, a `plan` for a timed routine. Roughly one visual per 400 to 600 words at most. No decorative visual.
 - Every visual has a caption that states its point in one sentence. Every board's position is in `guideFacts.test.ts`.
@@ -54,7 +54,7 @@ Approve only when all of these hold:
 
 ```bash
 node scripts/learn/guide-report.mjs <slug>
-npx jest src/lib/seo/learn src/components/learn --testPathIgnorePatterns=/node_modules/
+npx jest src/lib/seo src/components/learn --testPathIgnorePatterns=/node_modules/
 npx tsc --noEmit
 ```
 

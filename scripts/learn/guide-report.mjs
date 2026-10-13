@@ -13,6 +13,9 @@ const { blockText, sectionText, richText, readingMinutes } = await load("src/lib
 
 const VISUAL_KINDS = new Set(["board", "image", "table", "plan"]);
 const SHARED_SENTENCE_WORDS = 6;
+/** The site appends " | Memory Chess" and a full title must fit 64 characters. */
+const MAX_TITLE = 49;
+const MAX_SENTENCE_WORDS = 28;
 
 const words = (text) => text.split(/\s+/).filter(Boolean);
 const sentences = (text) =>
@@ -79,7 +82,7 @@ function report(page) {
 
   return {
     slug: meta.slug,
-    title: `${meta.title} (${meta.title.length} chars)`,
+    title: `${meta.title} (${meta.title.length} chars${meta.title.length > MAX_TITLE ? `, over ${MAX_TITLE}` : ""})`,
     h1: meta.h1,
     description: `${meta.description.length} chars`,
     primaryKeyword: meta.keywords.primary,
@@ -95,7 +98,7 @@ function report(page) {
     readingMinutes: readingMinutes(page),
     sentences: bodySentences.length,
     avgSentenceWords: Number((lengths.reduce((a, b) => a + b, 0) / Math.max(1, lengths.length)).toFixed(1)),
-    sentencesOver30Words: bodySentences.filter((s) => words(s).length > 30),
+    sentencesOverLimit: bodySentences.filter((s) => words(s).length > MAX_SENTENCE_WORDS),
     paragraphsOver5Sentences: longParagraphs,
     headings: sections.map((section) => section.heading),
     headingsSharedWithOtherGuides: sharedHeadings.map((section) => section.heading),

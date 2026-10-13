@@ -88,8 +88,8 @@ function takeUrlRound(hasLab: boolean): UrlRound | null {
 
   // A refresh then opens the configuration screen instead of restarting the round.
   const asked = roundSourceFrom(params.get(ROUND_PARAMS.source));
-  // The lab record's copy is English only, so elsewhere a daily or review link plays an ordinary round.
-  const source = isSetBoardSource(asked) && !hasLab ? 'link' : asked;
+  // A review's copy is the lab record's, English only, so elsewhere its link plays an ordinary round. A daily round's is translated.
+  const source = asked === 'review' && !hasLab ? 'link' : asked;
   Object.values(ROUND_PARAMS).forEach((name) => params.delete(name));
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);

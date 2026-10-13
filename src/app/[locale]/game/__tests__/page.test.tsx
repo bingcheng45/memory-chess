@@ -173,8 +173,8 @@ describe("GamePage daily board link", () => {
 
     render(<GamePage />);
 
-    expect(await screen.findByText("You have already opened today's board. One try per day on this device.")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Open your lab record" })).toHaveAttribute("href", "/#record");
+    expect(await screen.findByText("You have already opened today's board. One try a day keeps it fair.")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "See today's board" })).toHaveAttribute("href", "/daily");
     expect(document.querySelector("[data-game-config]")).toBeNull();
     fireEvent.click(screen.getByRole("button", { name: "Play another round" }));
     expect(document.querySelector("[data-game-config]")).not.toBeNull();
@@ -193,13 +193,13 @@ describe("GamePage daily board link", () => {
     expect(mockStartGame.mock.calls.map(([, , source]) => source)).toEqual(["game_form"]);
   });
 
-  it("plays an ordinary round from the link in a language without the daily board's copy", () => {
+  it("plays today's set board from the link in German too, whose catalogue carries the daily copy", async () => {
+    opens({ kind: "play", pieceCount: 6, memorizeTime: 10, board: BOARD });
     window.history.pushState({}, "", "/de/game?pieceCount=6&memorizeTime=10&source=daily");
 
     render(<GamePage />, { locale: "de" });
 
-    expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link");
-    expect(openDaily).not.toHaveBeenCalled();
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(6, 10, "daily", BOARD));
   });
 });
 
@@ -275,7 +275,7 @@ describe("GamePage URL-driven start under StrictMode", () => {
     await waitFor(() =>
       expect(mockStartGame).toHaveBeenCalledWith(9, 8, "daily", { kind: "daily", day: "2026-10-09", fen: "8/8/8/1pQB3k/P2p1p2/3P4/8/1K6 w - - 0 1" }),
     );
-    expect(screen.queryByText("You have already opened today's board. One try per day on this device.")).toBeNull();
+    expect(screen.queryByText("You have already opened today's board. One try a day keeps it fair.")).toBeNull();
     expect(window.localStorage.getItem("memory-chess-lab-daily-opened")).toBe("2026-10-09");
   });
 

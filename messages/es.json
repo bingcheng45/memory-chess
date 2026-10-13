@@ -371,6 +371,12 @@
       "memorizeTime": "Tiempo de memorización",
       "solutionTime": "Tiempo de resolución",
       "date": "Fecha"
+    },
+    "daily": {
+      "tab": "Diario",
+      "setting": "{pieces, plural, one {# pieza} many {# piezas} other {# piezas}} · {seconds} s para memorizar",
+      "resetsAtUtc": "Se reinicia a las {utc} UTC",
+      "resetsAt": "Se reinicia a las {utc} UTC ({local} en tu hora), en {timeLeft}"
     }
   },
   "country": {
@@ -797,5 +803,106 @@
     "cardSetting": "{pieceCount, plural, one {# pieza} many {# piezas} other {# piezas}} y {seconds, plural, one {# segundo} many {# segundos} other {# segundos}} para memorizar.",
     "cardNote": "Hoy todos juegan el mismo tablero y tienes un solo intento.",
     "play": "Jugar el tablero de hoy"
+  },
+  "daily": {
+    "meta": {
+      "title": "Tablero diario de memoria de ajedrez: una posición para todos",
+      "description": "Un tablero de memoria de ajedrez al día, la misma posición para todos los jugadores. Memorízalo una vez, reconstrúyelo y entra en el top 10 de hoy. Un tablero nuevo se abre a medianoche UTC.",
+      "socialTitle": "El tablero diario de Memory Chess",
+      "socialDescription": "Hoy todos reciben la misma posición. Memorízala, reconstrúyela y mira en qué puesto quedas."
+    },
+    "round": {
+      "locked": "Ya has abierto el tablero de hoy. Un intento al día mantiene el juego justo.",
+      "seeBoard": "Ver el tablero de hoy",
+      "chooseRound": "Jugar otra ronda",
+      "join": "Unirse al tablero de hoy"
+    },
+    "page": {
+      "fig": "Tablero diario · {date}",
+      "title": "Un tablero, igual para todos",
+      "lede": "Cada día hay una posición para todos los jugadores. Memorízala una vez, reconstrúyela de memoria y únete al tablero del día para ver cómo te va.",
+      "resets": "Tablero nuevo a medianoche UTC",
+      "open": "El tablero de hoy está abierto",
+      "pieces": "{count, plural, one {# pieza} many {# piezas} other {# piezas}}",
+      "seconds": "{count} s para memorizar",
+      "oneTry": "Un intento",
+      "hidden": "Oculto hasta que juegues",
+      "play": "Jugar el tablero de hoy",
+      "streak": "{count, plural, one {Racha diaria: # día} many {Racha diaria: # días} other {Racha diaria: # días}}",
+      "unfinishedTitle": "El intento de hoy ya se ha usado",
+      "unfinished": "Abriste el tablero de hoy y te fuiste antes del resultado. Un intento al día mantiene el tablero justo, así que vuelve para el siguiente.",
+      "result": "Tu resultado",
+      "score": "{correct} de {pieceCount} correctas",
+      "rebuild": "reconstruido en {seconds} s",
+      "gridAria": "Tus casillas: {correct} correctas, {wrong} con pieza errónea, {missed} omitidas, {extra} de más",
+      "key": {
+        "c": "Correcta",
+        "w": "Pieza errónea",
+        "m": "Omitida",
+        "x": "De más"
+      },
+      "shareLabel": "Comparte sin revelar el tablero",
+      "shareText": "Tablero diario de Memory Chess {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Copiar resultado",
+      "copied": "Copiado",
+      "copyFailed": "El portapapeles lo ha rechazado. Selecciona el texto de abajo y cópialo.",
+      "joined": "Estás en el tablero de hoy",
+      "rank": "Puesto {rank} de {total} hoy",
+      "lateNote": "Jugaste el tablero de ayer y todavía no te has unido.",
+      "lateJoined": "Estás en el tablero de ese día"
+    },
+    "join": {
+      "title": "Unirse al tablero de hoy",
+      "lateTitle": "Únete al tablero de ese día",
+      "name": "Nombre",
+      "nameHint": "De 4 a 16 caracteres, se muestra junto a tu puntuación.",
+      "nameShort": "Demasiado corto. Usa al menos 4 caracteres.",
+      "nameLong": "Demasiado largo. Usa como máximo 16 caracteres.",
+      "country": "País",
+      "chooseCountry": "Elige un país",
+      "from": {
+        "saved": "Guardado en este dispositivo.",
+        "connection": "Según tu conexión.",
+        "language": "Según el idioma de tu navegador.",
+        "none": "Elige el país por el que juegas."
+      },
+      "change": "Cambiar",
+      "submit": "Unirme al tablero",
+      "submitting": "Uniéndote…",
+      "public": "Tu nombre, país, puntuación y rating se muestran públicamente.",
+      "failed": "No se pudo unir al tablero. Inténtalo de nuevo.",
+      "noneRight": "Ninguna pieza fue correcta, así que este intento no entra en la clasificación. El próximo tablero se abre a medianoche UTC."
+    },
+    "board": {
+      "title": "Top 10 de hoy",
+      "rank": "Puesto",
+      "player": "Jugador",
+      "right": "Correctas",
+      "wrong": "Erróneas",
+      "time": "Tiempo (s)",
+      "rating": "{rating} Elo",
+      "you": "Tú",
+      "empty": "Nadie se ha unido todavía al tablero de hoy. Juégalo y sé el primero.",
+      "error": "No se pudo cargar el tablero de hoy. Inténtalo de nuevo en un momento.",
+      "joinToRank": "Únete al tablero para ver aquí tu puesto.",
+      "order": "Ordenado por piezas correctas, luego por menos erróneas y después por la reconstrucción más rápida.",
+      "all": "Ver todos los tableros"
+    },
+    "reference": {
+      "title": "Cómo funciona el tablero diario",
+      "shared": "Cada día a medianoche UTC se sortea una posición nueva y todos los jugadores del mundo reciben la misma. La posición sale de una semilla creada a partir de la fecha, así que el tablero es el mismo para todos y nadie recibe una versión más fácil. Como el tablero es compartido, una puntuación en él significa lo mismo para todos los que lo jugaron ese día.",
+      "oneTry": "Tienes un intento. Abrir el tablero cuenta como el intento, así que si sales durante la fase de memorización y vuelves, no se te muestra otra vez. Tu dispositivo recuerda el intento hasta que se abre el siguiente tablero.",
+      "grid": "Después de reconstruir la posición ves qué casillas acertaste, cuáles tenían la pieza equivocada, cuáles omitiste y dónde pusiste una pieza de más. La fila para compartir muestra un cuadro por pieza, ordenado por resultado y sin indicar dónde estaba, así que publicarla no revela el tablero a quien aún no ha jugado.",
+      "join": "Para unirte al tablero, elige un nombre de 4 a 16 caracteres y el país por el que juegas. El país se toma primero del que elegiste antes, luego de tu conexión y luego del idioma de tu navegador, y siempre puedes cambiarlo. Tu rating en el momento de unirte aparece junto a tu nombre.",
+      "ranking": "Las filas se ordenan por el número de piezas bien colocadas, luego por el menor número de piezas erróneas y después por la reconstrucción más rápida. Todos estudian durante los mismos segundos, así que el tiempo de estudio nunca desempata a dos jugadores en el tablero diario.",
+      "arcTitle": "Piezas y tiempo de estudio a lo largo de la semana",
+      "arcIntro": "La configuración sigue un arco semanal. El lunes empieza con suavidad para que un descanso de fin de semana no rompa una racha, la carga sube durante la semana, el sábado es un tablero relámpago que ves solo unos segundos y el domingo es el tablero más difícil de todos. Dentro del rango de cada día, la fecha elige una configuración, la misma para todos los jugadores.",
+      "day": "Día",
+      "pieces": "Piezas",
+      "seconds": "Tiempo de estudio",
+      "range": "De {min} a {max}",
+      "secondsRange": "De {min} a {max} s",
+      "secondsExact": "{count} s"
+    }
   }
 }

@@ -17,7 +17,7 @@ export type DailyState =
 
 const msToNextMinuteTick = (at: number) => msToNextUtcDay(at) % MINUTE_MS || MINUTE_MS;
 
-const timeLeftOf = (at: number): TimeLeft => {
+export const timeLeftOf = (at: number): TimeLeft => {
   const minutesAfterTheCurrentOne = Math.ceil(msToNextUtcDay(at) / MINUTE_MS) - 1;
   return { hours: Math.floor(minutesAfterTheCurrentOne / 60), minutes: minutesAfterTheCurrentOne % 60 };
 };

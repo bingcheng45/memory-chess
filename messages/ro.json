@@ -544,7 +544,7 @@
         "daily": {
           "fig": "Fig. {number} · Tabla zilei",
           "title": "O tablă pe zi, aceeași pentru toți.",
-          "desc": "O poziție nouă se deschide în fiecare zi la miezul nopții UTC. Toată lumea primește aceleași 6 piese și 10 secunde de studiu, iar tu ai o singură încercare.",
+          "desc": "O poziție nouă se deschide în fiecare zi la miezul nopții UTC. Toată lumea primește aceeași tablă și același timp de studiu, iar tu ai o singură încercare.",
           "play": "Joacă tabla de azi",
           "open": "Tabla de azi are {pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} și {memorizeSeconds, plural, one {# secundă} few {# secunde} other {# de secunde}} pentru studiu. Încă nu ai jucat tabla de azi.",
           "played": "Ai așezat corect {correct} din {pieceCount, plural, one {# piesă} few {# piese} other {# de piese}}, {accuracy} la sută.",

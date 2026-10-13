@@ -7,6 +7,16 @@
 body.game-fixed .lab-game { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
 html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow-x: hidden; }
 
+/* The board's side, from the figures ActiveGameLayout sets on the column: the largest square the column fits under
+   both rows. A browser without container units (Safari before 16, Chrome before 105, Firefox before 110) keeps the
+   custom property whatever it holds and then fails every width that reads it, so it gets the viewport-based size below. */
+.lab-active-column { --board-size: min(100cqw, 100cqh - var(--board-rows), var(--board-max)); }
+@supports not (width: 1cqw) {
+  .lab-active-column {
+    --board-size: min(100vw - var(--page-gutters), max(var(--board-min), 100vh - var(--page-chrome) - var(--board-rows)), var(--board-max));
+  }
+}
+
 .lab-game [data-round-board] { flex: none; }
 .lab-game [data-round-board] .lab-figure { height: 100%; padding: 16px; }
 .lab-game [data-round-board] .lab-figure[data-bare] { padding: 0; }

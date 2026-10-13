@@ -84,7 +84,9 @@
 /*
  * Each box is at least 16px taller than its tallest state in any persona file,
  * measured by npm run lab:heights into lab-heights.json, so real data swaps in
- * for the Sample state without moving anything below it.
+ * for the Sample state without moving anything below it. The panels reserve
+ * only behind the mark recordHint.ts sets in a browser holding a record; with
+ * none, the Sample panels stay as they are and keep their own height.
  */
 .lab-paper {
   --lab-h-unlock: 344px; --lab-h-span: 560px; --lab-h-held: 528px; --lab-h-spark: 496px; --lab-h-speed: 560px;
@@ -139,21 +141,21 @@
 .lab-heat-pair > :first-child { margin-top: 0; }
 /* Three lines; the em line covers browsers without lh units, such as Safari before 16.4. */
 .lab-p-streak .lab-panel-desc { min-height: 4.65em; min-height: 3lh; }
-.lab-p-span { min-height: var(--lab-h-span); }
-.lab-p-held { min-height: var(--lab-h-held); }
-.lab-p-spark { min-height: var(--lab-h-spark); }
-.lab-p-speed { min-height: var(--lab-h-speed); }
-.lab-p-heat { min-height: var(--lab-h-heat); }
-.lab-p-streak { min-height: var(--lab-h-streak); }
-.lab-p-bests { min-height: var(--lab-h-bests); }
-.lab-p-types { min-height: var(--lab-h-types); }
-.lab-p-insights { min-height: var(--lab-h-insights); }
-.lab-p-notebook { min-height: var(--lab-h-notebook); }
-.lab-p-plans { min-height: var(--lab-h-plans); }
-.lab-p-goal { min-height: var(--lab-h-goal); }
-.lab-p-daily { min-height: var(--lab-h-daily); }
-.lab-p-curve { min-height: var(--lab-h-curve); }
-.lab-p-board { min-height: var(--lab-h-board); }
+[data-lab-record] ~ .lab-paper .lab-p-span { min-height: var(--lab-h-span); }
+[data-lab-record] ~ .lab-paper .lab-p-held { min-height: var(--lab-h-held); }
+[data-lab-record] ~ .lab-paper .lab-p-spark { min-height: var(--lab-h-spark); }
+[data-lab-record] ~ .lab-paper .lab-p-speed { min-height: var(--lab-h-speed); }
+[data-lab-record] ~ .lab-paper .lab-p-heat { min-height: var(--lab-h-heat); }
+[data-lab-record] ~ .lab-paper .lab-p-streak { min-height: var(--lab-h-streak); }
+[data-lab-record] ~ .lab-paper .lab-p-bests { min-height: var(--lab-h-bests); }
+[data-lab-record] ~ .lab-paper .lab-p-types { min-height: var(--lab-h-types); }
+[data-lab-record] ~ .lab-paper .lab-p-insights { min-height: var(--lab-h-insights); }
+[data-lab-record] ~ .lab-paper .lab-p-notebook { min-height: var(--lab-h-notebook); }
+[data-lab-record] ~ .lab-paper .lab-p-plans { min-height: var(--lab-h-plans); }
+[data-lab-record] ~ .lab-paper .lab-p-goal { min-height: var(--lab-h-goal); }
+[data-lab-record] ~ .lab-paper .lab-p-daily { min-height: var(--lab-h-daily); }
+[data-lab-record] ~ .lab-paper .lab-p-curve { min-height: var(--lab-h-curve); }
+[data-lab-record] ~ .lab-paper .lab-p-board { min-height: var(--lab-h-board); }
 .lab-tools-slot { display: flow-root; min-height: var(--lab-h-tools); }
 .lab-welcome { margin: 0 0 8px; font: 500 16px/1.45 var(--lp-ui); color: var(--lp-ink); }
 .lab-unlock { min-height: var(--lab-h-unlock); margin-bottom: 24px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); padding: 16px 24px; }

@@ -44,11 +44,8 @@ interface Reads {
   dailyFailure: DailyFailure | null;
 }
 
-// Midnight is when a viewer's clock running ahead of the server's asks for a
-// day the server does not serve yet, so a failure is retried quietly and
-// shown only once it has outlasted any such skew.
 const DAILY_RETRY_MS = 5_000;
-const DAILY_FAILURE_SHOWN_AFTER_MS = 60_000;
+const DAILY_CLOCK_SKEW_GRACE_MS = 60_000;
 
 function applyRankedRead(reads: Reads, tab: RankedDifficulty, read: Board): Reads {
   return read.error === undefined ? { ...reads, boards: { ...reads.boards, [tab]: read } } : reads;
@@ -60,7 +57,7 @@ function applyDailyRead(reads: Reads, read: DailyBoard, at: number): Reads {
   if (shown.day === read.day && shown.error === undefined) return { ...reads, dailyFailure: null };
 
   const since = reads.dailyFailure?.day === read.day ? reads.dailyFailure.since : at;
-  const daily = at - since >= DAILY_FAILURE_SHOWN_AFTER_MS ? { data: [], error: read.error, day: read.day } : shown;
+  const daily = at - since >= DAILY_CLOCK_SKEW_GRACE_MS ? { data: [], error: read.error, day: read.day } : shown;
   return { boards: { ...reads.boards, daily }, dailyFailure: { day: read.day, since } };
 }
 

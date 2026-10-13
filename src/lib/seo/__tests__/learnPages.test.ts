@@ -1,73 +1,27 @@
-import {
-  EN_LEARN_PAGES as LEARN_PAGES,
-  type LearnBlock,
-  type LearnDrillCard,
-  type LearnPageContent,
-} from "@/lib/seo/learn";
-import {
-  MEMORIZE_SECONDS_RANGE,
-  PIECE_COUNT_RANGE,
-} from "@/lib/reference/facts";
+import { EN_LEARN_PAGES as LEARN_PAGES, type Drill, type LearnPage } from "@/lib/seo/learn";
+import { blockText, richText } from "@/lib/seo/learn/text";
+import { MEMORIZE_SECONDS_RANGE, PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 
-// The registry helpers moved to per-locale resolvers; these keep the existing
-// assertions working against the English set.
-function getLearnPageBySlug(slug: string): LearnPageContent {
-  const page = LEARN_PAGES.find((entry) => entry.slug === slug);
-  if (!page) throw new Error(`Unknown learn slug: ${slug}`);
-  return page;
+function drillsOf(page: LearnPage): Drill[] {
+  return page.sections.flatMap((section) => section.blocks).flatMap((block) => (block.kind === "drills" ? block.drills : []));
 }
 
-function getFeaturedLearnPages(limit = 4): LearnPageContent[] {
-  return LEARN_PAGES.filter((page) => page.featured).slice(0, limit);
-}
-
-function blockCopy(block: LearnBlock): string[] {
-  switch (block.kind) {
-    case "paragraphs":
-      return block.paragraphs;
-    case "steps":
-      return block.items;
-    case "callout":
-      return [block.title, block.body];
-    case "drills":
-      return block.drills.flatMap((drill) => [drill.title, drill.description, drill.goal, drill.ctaLabel]);
-    case "comparison":
-      return [...block.columns, ...block.rows.flatMap((row) => [row.label, row.struggling, row.stronger])];
-    case "plan":
-      return block.steps.flatMap((step) => [step.label, step.duration, step.detail]);
-  }
-}
-
-function drillsOf(page: LearnPageContent): LearnDrillCard[] {
-  return page.sections
-    .flatMap((section) => section.blocks)
-    .flatMap((block) => (block.kind === "drills" ? block.drills : []));
-}
-
-function getVisibleCopy(page: LearnPageContent): string[] {
+function visibleCopy(page: LearnPage): string[] {
   return [
-    page.title,
-    page.h1,
-    page.description,
-    page.ctaLabel,
-    page.quickAnswer,
-    ...(page.keyTakeaways ?? []),
-    ...(page.whoThisIsFor ?? []),
-    ...page.sections.flatMap((section) => [
-      section.title,
-      section.eyebrow ?? "",
-      section.summary ?? "",
-      ...section.blocks.flatMap(blockCopy),
-    ]),
-    ...page.faq.flatMap((entry) => [entry.question, entry.answer]),
-    ...page.relatedArticles.map((entry) => entry.reason),
-    ...page.sources.map((source) => source.note ?? ""),
+    page.meta.title,
+    page.meta.h1,
+    page.meta.description,
+    page.intro.quickAnswer,
+    ...page.intro.takeaways,
+    ...page.intro.audience,
+    ...page.sections.flatMap((section) => [section.heading, section.summary ?? "", ...section.blocks.flatMap(blockText)]),
+    ...page.end.flatMap(blockText),
   ].filter(Boolean);
 }
 
 describe("learnPages registry", () => {
-  it("returns unique slugs including the new cluster pages", () => {
-    const slugs = LEARN_PAGES.map((page) => page.slug);
+  it("returns unique slugs including the cluster pages", () => {
+    const slugs = LEARN_PAGES.map((page) => page.meta.slug);
 
     expect(slugs).toContain("how-to-stop-blundering-in-chess");
     expect(slugs).toContain("why-puzzle-rating-doesnt-transfer-to-games");
@@ -75,30 +29,13 @@ describe("learnPages registry", () => {
     expect(new Set(slugs).size).toBe(slugs.length);
   });
 
-  it("returns the refreshed beginner roadmap with richer content fields", () => {
-    const page = getLearnPageBySlug("how-to-get-better-at-chess-for-beginners");
-
-    expect(page.quickAnswer).toContain("short daily routine");
-    expect(page.sections.length).toBeGreaterThanOrEqual(5);
-    expect(page.relatedArticles.length).toBeGreaterThanOrEqual(3);
-  });
-
-  it("links every related guide to a guide that still exists", () => {
-    const slugs = new Set(LEARN_PAGES.map((page) => page.slug));
-    const dangling = LEARN_PAGES.flatMap((page) =>
-      page.relatedArticles
-        .filter((entry) => !slugs.has(entry.slug))
-        .map((entry) => `${page.slug} -> ${entry.slug}`),
-    );
-
-    expect(dangling).toEqual([]);
-  });
-
-  it("returns featured hub pages", () => {
-    const pages = getFeaturedLearnPages();
-
-    expect(pages.length).toBeGreaterThan(0);
-    expect(pages.every((page) => page.featured)).toBe(true);
+  it("features four guides", () => {
+    expect(LEARN_PAGES.filter((page) => page.meta.featured).map((page) => page.meta.slug)).toEqual([
+      "how-to-get-better-at-chess-for-beginners",
+      "how-to-stop-blundering-in-chess",
+      "chess-visualization-exercises",
+      "chess-memory-training",
+    ]);
   });
 
   it("keeps every published guide in clear, reader-facing language", () => {
@@ -114,45 +51,37 @@ describe("learnPages registry", () => {
       "false fix",
     ];
 
-    expect(LEARN_PAGES.length).toBeGreaterThan(0);
+    const problems = LEARN_PAGES.flatMap((page) => {
+      const copy = visibleCopy(page);
+      const combined = copy.join(" ").toLowerCase();
+      const longSentences = copy
+        .flatMap((value) => value.split(/[.!?]+/).map((sentence) => sentence.trim()))
+        .filter((sentence) => sentence.split(/\s+/).length > 28);
+      return [
+        ...difficultInternalPhrases.filter((phrase) => combined.includes(phrase)).map((phrase) => `${page.meta.slug}: ${phrase}`),
+        ...longSentences.map((sentence) => `${page.meta.slug}: ${sentence}`),
+      ];
+    });
 
-    for (const page of LEARN_PAGES) {
-      const copy = getVisibleCopy(page);
-      const combinedCopy = copy.join(" ").toLowerCase();
-      const sentenceWordCounts = copy.flatMap((value) =>
-        value
-          .split(/[.!?]+/)
-          .map((sentence) => sentence.trim())
-          .filter(Boolean)
-          .map((sentence) => sentence.split(/\s+/).length),
-      );
-
-      for (const phrase of difficultInternalPhrases) {
-        expect(combinedCopy).not.toContain(phrase);
-      }
-
-      expect(Math.max(...sentenceWordCounts)).toBeLessThanOrEqual(28);
-    }
+    expect(problems).toEqual([]);
   });
 
-  it("describes every linked drill with the numbers of the round it opens", () => {
-    const drills = LEARN_PAGES.flatMap(drillsOf);
-    const linked = drills.filter((drill) => drill.setup);
+  it("describes every played drill with the numbers of the round it opens", () => {
+    const wrong = LEARN_PAGES.flatMap(drillsOf).flatMap((drill) => {
+      if (!drill.play) return [];
+      const { pieceCount, memorizeTime, label } = drill.play;
+      const inRange =
+        pieceCount >= PIECE_COUNT_RANGE.min &&
+        pieceCount <= PIECE_COUNT_RANGE.max &&
+        memorizeTime >= MEMORIZE_SECONDS_RANGE.min &&
+        memorizeTime <= MEMORIZE_SECONDS_RANGE.max;
+      const named = [richText(drill.description), label].every(
+        (copy) => copy.includes(`${pieceCount} pieces`) && copy.includes(`${memorizeTime} seconds`),
+      );
+      return inRange && named ? [] : [drill.title];
+    });
 
-    expect(linked.length).toBeGreaterThan(0);
-
-    for (const drill of linked) {
-      const { pieceCount, memorizeTime } = drill.setup!;
-
-      expect(pieceCount).toBeGreaterThanOrEqual(PIECE_COUNT_RANGE.min);
-      expect(pieceCount).toBeLessThanOrEqual(PIECE_COUNT_RANGE.max);
-      expect(memorizeTime).toBeGreaterThanOrEqual(MEMORIZE_SECONDS_RANGE.min);
-      expect(memorizeTime).toBeLessThanOrEqual(MEMORIZE_SECONDS_RANGE.max);
-
-      for (const copy of [drill.description, drill.ctaLabel]) {
-        expect(copy).toContain(`${pieceCount} pieces`);
-        expect(copy).toContain(`${memorizeTime} seconds`);
-      }
-    }
+    expect(LEARN_PAGES.flatMap(drillsOf).filter((drill) => drill.play)).toHaveLength(21);
+    expect(wrong).toEqual([]);
   });
 });

@@ -26,7 +26,8 @@ import type {
 } from "@/lib/articles/schema";
 import type { ArticleCounts } from "@/lib/articles/stats";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
-import { gameHref, LEARN_AUTHOR } from "@/lib/seo/learn/schema";
+import { playHref } from "@/lib/game/roundLink";
+import { LEARN_AUTHOR } from "@/lib/seo/learn/schema";
 import "./articlePage.css";
 
 type ArticlePageProps = {
@@ -134,7 +135,7 @@ function Drill({ drill }: { drill: ArticleDrill }) {
   return (
     <aside className="mt-10 max-w-[720px]">
       <Link
-        href={gameHref(drill, "article_cta")}
+        href={playHref(drill.pieceCount, drill.memorizeTime, "article_cta")}
         data-article-drill
         aria-label={action}
         aria-describedby={DRILL_WHY_ID}

@@ -12,8 +12,7 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/", "en")).toBe(true);
     expect(isLabPaperRoute("/", "de")).toBe(true);
     expect(isLabPaperRoute("/", "ja")).toBe(true);
-    expect(isLabPaperRoute("/learn", "en")).toBe(false);
-    expect(isLabPaperRoute("/learn/chess-memory-training", "en")).toBe(false);
+    expect(isLabPaperRoute("/not-a-listed-page", "en")).toBe(false);
   });
 
   it("draws the English-only changelog, about, terms and privacy pages in Lab Paper", () => {
@@ -21,6 +20,13 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/about", "en")).toBe(true);
     expect(isLabPaperRoute("/terms", "en")).toBe(true);
     expect(isLabPaperRoute("/privacy", "en")).toBe(true);
+  });
+
+  it("draws the Learn hub and every guide in Lab Paper in English only", () => {
+    expect(isLabPaperRoute("/learn", "en")).toBe(true);
+    expect(isLabPaperRoute("/learn/how-to-stop-blundering-in-chess", "en")).toBe(true);
+    expect(isLabPaperRoute("/learn", "de")).toBe(false);
+    expect(isLabPaperRoute("/learning", "en")).toBe(false);
   });
 
   it("draws the settings page in Lab Paper in every locale", () => {

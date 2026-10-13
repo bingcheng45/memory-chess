@@ -1,7 +1,8 @@
 import { PieceSymbol, Square } from 'chess.js';
 import type { RoundSource } from '@/lib/analytics/events';
 import type { LabRound } from '@/lib/lab/recordRound';
-import type { RatedRoundFacts, RatingResult } from '@/lib/game/rating';
+import type { RatedRoundFacts } from '@/lib/game/rating';
+import type { RoundOutcome } from '@/lib/game/roundOutcome';
 
 /** A round on a set position instead of a random one: today's shared daily board, or a board from the lab record come back for review. */
 export type SetBoard =
@@ -38,8 +39,8 @@ export interface GameState {
   streak?: number;           // Current streak of successful games
   /** The rating and streak the scored round started from, so the result screen can show what it moved. Never persisted. */
   standingBefore?: { readonly skillRating: number; readonly streak: number };
-  /** How the scored round moved the rating, with its phase; absent for an unrated round. Never persisted. */
-  rating?: RatingResult;
+  /** What the scored round did to the rating: placed it, rated it, a free skip, or an unrated review. Never persisted. */
+  rating?: RoundOutcome;
 
   // Game data
   originalPosition?: string; // FEN string of position to memorize

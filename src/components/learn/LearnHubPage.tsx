@@ -2,10 +2,11 @@ import { Link } from "@/i18n/navigation";
 import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { ARTICLES_PATH } from "@/lib/articles/paths";
-import { LEARN_GUIDE_COPY, LEARN_HUB_COPY as COPY } from "@/lib/seo/learn/copy";
-import { dashboardTileHref, guidePath, guideRoundHref } from "@/lib/seo/learn/links";
+import { LEARN_GUIDE_COPY, LEARN_HUB_COPY as COPY, LEARN_SEARCH_COPY } from "@/lib/seo/learn/copy";
+import { dashboardTileHref, guidePath, guideRoundHref, learnSearchHref } from "@/lib/seo/learn/links";
 import { stageGuideNumber, type LearnStage } from "@/lib/seo/learn/path";
 import { hubStructuredData } from "@/lib/seo/learn/structuredData";
+import LearnSearch from "./LearnSearch";
 import "./learn.css";
 
 const CLOSING_ROUND = { pieceCount: 6, memorizeTime: 10 } as const;
@@ -65,6 +66,7 @@ function Stage({ stage, total }: { readonly stage: LearnStage; readonly total: n
 
 export default function LearnHubPage({ stages }: { readonly stages: readonly LearnStage[] }) {
   const pages = stages.flatMap((stage) => stage.pages);
+  const asked = pages.filter((page) => page.meta.featured).map((page) => page.meta.questions[0]);
 
   return (
     <div className={LAB_PAPER_CLASS}>
@@ -75,6 +77,21 @@ export default function LearnHubPage({ stages }: { readonly stages: readonly Lea
           <h1>{COPY.title}</h1>
           <p className="lab-lede">{COPY.lede(stages.length)}</p>
         </header>
+        <div className="lh-search">
+          <LearnSearch stages={stages.map(({ group }) => ({ id: group.id, label: group.label }))} />
+          {asked.length > 0 ? (
+            <div className="lh-ask">
+              <p className="lh-ask-label">{LEARN_SEARCH_COPY.peopleAsk}</p>
+              <ul>
+                {asked.map((question) => (
+                  <li key={question}>
+                    <Link href={learnSearchHref(question)}>{question}</Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </div>
         <StageMap stages={stages} />
         <div className="lh-path">
           {stages.map((stage) => (

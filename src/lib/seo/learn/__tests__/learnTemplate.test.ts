@@ -1,6 +1,8 @@
+import { existsSync } from "node:fs";
+import { join } from "node:path";
 import { ARTICLE_SLUGS } from "@/lib/articles";
 import { LEARN_GUIDES } from "../guides";
-import { EN_LEARN_PAGES, LEARN_SLUGS, groupPages, toPage } from "..";
+import { EN_LEARN_PAGES, LEARN_SLUGS, RESERVED_LEARN_SLUGS, groupPages, toPage } from "..";
 import type { BodyBlock, InlineLink, LearnDocument, Rich } from "../schema";
 import { readingMinutes } from "../text";
 
@@ -194,6 +196,11 @@ describe("rules the types cannot hold", () => {
     const repeats = LEARN_GUIDES.filter((doc) => doc.end.some((block) => block.kind === "cta" && block.why === doc.intro.quickAnswer));
 
     expect(repeats.map((doc) => doc.meta.slug)).toEqual([]);
+  });
+
+  it("gives no guide a slug a /learn route already uses", () => {
+    expect(LEARN_SLUGS.filter((slug) => RESERVED_LEARN_SLUGS.includes(slug))).toEqual([]);
+    expect(RESERVED_LEARN_SLUGS.filter((slug) => !existsSync(join(process.cwd(), "src/app/[locale]/learn", slug, "page.tsx")))).toEqual([]);
   });
 
   it("lists a guide after the guide it tells readers to do first", () => {

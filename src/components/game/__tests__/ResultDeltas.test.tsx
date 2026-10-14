@@ -59,8 +59,8 @@ describe("ResultDeltas", () => {
     expect(said(section)).toEqual([
       "Skill rating 1,058, up 18 from 1,040, better",
       "Memory span 5 pieces, up 1 from 4 pieces, better",
-      "Study time 8.5 s, down 1.5 from 10.0 s, better",
-      "Rebuild time 18.5 s, down 1.5 from 20.0 s, better",
+      "Study time 2.0 s per piece, down 0.3 from 2.3 s per piece, better",
+      "Rebuild time 4.2 s per piece, down 0.5 from 4.7 s per piece, better",
       "Best accuracy 100%, no change",
       "Recent accuracy 100%, no change",
       "Win streak 3 rounds, up 1 from 2 rounds, better",
@@ -70,7 +70,7 @@ describe("ResultDeltas", () => {
     ]);
     expect(row(section, "span").querySelector('[data-tone="better"] [data-arrow="up"]')).not.toBeNull();
     expect(row(section, "studyTime").querySelector('[data-tone="better"] [data-arrow="down"]')).not.toBeNull();
-    expect(shown(section, "rebuildTime")).toBe("Rebuild time18.5 s1.5from 20.0 s");
+    expect(shown(section, "rebuildTime")).toBe("Rebuild time4.2 s per piece0.5from 4.7 s per piece");
     expect(shown(section, "streak")).toBe("Day streak2 daysNew");
     expect(within(section).getByRole("link", { name: "Open your dashboard" })).toHaveAttribute("href", "/dashboard");
   });

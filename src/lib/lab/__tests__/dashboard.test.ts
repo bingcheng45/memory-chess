@@ -140,7 +140,7 @@ describe("dashboardOf", () => {
     });
   });
 
-  it("averages the study time used and the rebuild time over the newest 30 fresh rounds, at any setting", () => {
+  it("averages the study time used and the rebuild time per piece over the newest 30 fresh rounds, at any setting, with the last 10 against the 10 before", () => {
     const at = (index: number): Partial<RoundInput> => ({ id: `r${index}`, endedAt: Date.UTC(2026, 9, 7, 12, index) });
     const records = [
       roundV2({ ...at(0), memorizeMs: 9000, solveMs: 90_000 }),
@@ -151,8 +151,20 @@ describe("dashboardOf", () => {
     const tiles = tilesOfRecords(records);
 
     expect([tile(tiles, "studyTime"), tile(tiles, "rebuildTime")]).toEqual([
-      { id: "studyTime", state: "ready", figure: { value: 5.2, unit: "seconds", digits: 1 }, context: { kind: "recent", values: { rounds: 30 } } },
-      { id: "rebuildTime", state: "ready", figure: { value: 31.6, unit: "seconds", digits: 1 }, context: { kind: "recent", values: { rounds: 30 } } },
+      {
+        id: "studyTime",
+        state: "ready",
+        figure: { value: 1.9, unit: "secondsPerPiece", digits: 1 },
+        context: { kind: "recent", values: { rounds: 30 } },
+        trend: { direction: "up", amount: 0.1 },
+      },
+      {
+        id: "rebuildTime",
+        state: "ready",
+        figure: { value: 9.4, unit: "secondsPerPiece", digits: 1 },
+        context: { kind: "recent", values: { rounds: 30 } },
+        trend: { direction: "up", amount: 14.7 },
+      },
     ]);
   });
 
@@ -161,9 +173,17 @@ describe("dashboardOf", () => {
     const tiles = tilesOfRecords(timed);
 
     expect([tile(tiles, "studyTime"), tile(tiles, "rebuildTime")]).toEqual([
-      { id: "studyTime", state: "ready", figure: { value: 6.4, unit: "seconds", digits: 1 }, context: { kind: "recent", values: { rounds: 1 } } },
+      { id: "studyTime", state: "ready", figure: { value: 1.6, unit: "secondsPerPiece", digits: 1 }, context: { kind: "recent", values: { rounds: 1 } } },
       { id: "rebuildTime", state: "empty", href: QUICK, cta: "play" },
     ]);
+  });
+
+  it("reads a faster last 10 rounds as the time per piece trending down", () => {
+    const at = (index: number, solveMs: number) => roundV2({ id: `r${index}`, endedAt: Date.UTC(2026, 9, 7, 12, index), memorizeMs: 8000, solveMs });
+    const tiles = tilesOfRecords([...Array.from({ length: 10 }, (_, index) => at(index, 12_000)), ...Array.from({ length: 10 }, (_, index) => at(index + 10, 8000))]);
+
+    expect(tile(tiles, "rebuildTime")).toMatchObject({ figure: { value: 2.5, unit: "secondsPerPiece", digits: 1 }, trend: { direction: "down", amount: 1 } });
+    expect(tile(tiles, "studyTime")).toMatchObject({ figure: { value: 2, unit: "secondsPerPiece", digits: 1 }, trend: { direction: "level", amount: 0 } });
   });
 
   it("reads the rating with its change over the last 30 rated rounds, and the win streak, from the game store", () => {
@@ -227,8 +247,8 @@ describe("shareCardOf", () => {
       "speed 4.6",
       "bestAccuracy 100",
       "recentAccuracy 89",
-      "studyTime 7.5",
-      "rebuildTime 24.3",
+      "studyTime 1.3",
+      "rebuildTime 4.1",
       "winStreak 2",
       "streak 3",
       "rounds 12",

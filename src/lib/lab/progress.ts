@@ -30,7 +30,7 @@ export interface RecentChange {
 /** The mean of the newest values a dashboard figure reads. */
 export const recentAverage = (values: readonly number[]) => hundredths(mean(values.slice(-LAB_THRESHOLDS.recentRounds)));
 
-function recentChange(values: readonly number[]): RecentChange {
+export function recentChange(values: readonly number[]): RecentChange {
   const { rollingWindow } = LAB_THRESHOLDS;
   const average = mean(values.slice(-rollingWindow));
   const earlier = values.slice(-2 * rollingWindow, -rollingWindow);

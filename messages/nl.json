@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, one {# dag} other {# dagen}} op rij",
         "bestAccuracy": "{value, number}% beste nauwkeurigheid",
         "recentAccuracy": "{value, number}% recente nauwkeurigheid",
-        "studyTime": "kijktijd {value, number} s",
-        "rebuildTime": "opbouwtijd {value, number} s",
+        "studyTime": "kijktijd {value, number} s per stuk",
+        "rebuildTime": "opbouwtijd {value, number} s per stuk",
         "winStreak": "een winstreeks van {value, plural, one {# ronde} other {# rondes}}",
         "rounds": "{value, plural, one {# ronde} other {# rondes}} gespeeld",
         "days": "{value, plural, one {# dag} other {# dagen}} gespeeld"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, ongewijzigd",
         "new": "{label} {after}, nieuw"
       }
-    }
+    },
+    "trend": "{amount} {direction, select, up {omhoog} other {omlaag}} over je laatste {window} rondes tegenover de {window} ervoor"
   },
   "share": {
     "intro": "Deel de kaart, sla hem op of kopieer hem in een bericht.",

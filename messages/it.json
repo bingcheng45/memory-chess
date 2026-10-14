@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, one {# giorno} many {# giorni} other {# giorni}} di fila",
         "bestAccuracy": "miglior precisione del {value, number}%",
         "recentAccuracy": "precisione recente del {value, number}%",
-        "studyTime": "tempo di studio {value, number} s",
-        "rebuildTime": "tempo di ricostruzione {value, number} s",
+        "studyTime": "tempo di studio {value, number} s per pezzo",
+        "rebuildTime": "tempo di ricostruzione {value, number} s per pezzo",
         "winStreak": "una serie di {value, plural, one {# vittoria} many {# vittorie} other {# vittorie}}",
         "rounds": "{value, plural, one {# partita giocata} many {# partite giocate} other {# partite giocate}}",
         "days": "{value, plural, one {# giorno giocato} many {# giorni giocati} other {# giorni giocati}}"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, invariato",
         "new": "{label} {after}, nuovo"
       }
-    }
+    },
+    "trend": "{direction, select, up {In salita} other {In calo}} di {amount} nelle ultime {window} partite rispetto alle {window} precedenti"
   },
   "share": {
     "intro": "Condividi la scheda, salvala o copiala in un post.",

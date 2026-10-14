@@ -41,7 +41,7 @@ describe("rating preview on the setup card", () => {
 
     render(<GameConfig />);
 
-    expect(shown()).toEqual(["Provisional rating", "1,000", "1,000", "70%", "8 pcs / 10s", "Up to +192", "At most −400"]);
+    expect(shown()).toEqual(["Provisional rating", "1,000", "1,000", "70%", "8 pcs / 10s", "Up to +196", "At most −400"]);
   });
 
   it("follows the sliders for a new player", () => {
@@ -51,7 +51,7 @@ describe("rating preview on the setup card", () => {
     drag("Number of pieces", 20);
     drag("Memorization time", 5);
 
-    expect(shown()).toEqual(["Provisional rating", "2,105", "1,000", "5%", "8 pcs / 10s", "Up to +400", "At most −109"]);
+    expect(shown()).toEqual(["Provisional rating", "2,088", "1,000", "5%", "8 pcs / 10s", "Up to +400", "At most −113"]);
   });
 
   it("previews Hard for an established 1200 player and suggests a 75% board", () => {
@@ -60,7 +60,7 @@ describe("rating preview on the setup card", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
 
-    expect(shown()).toEqual(["Rated round", "1,598", "1,200", "37%", "7 pcs / 10s", "Up to +25", "At most −15"]);
+    expect(shown()).toEqual(["Rated round", "1,597", "1,200", "37%", "7 pcs / 10s", "Up to +26", "At most −15"]);
   });
 
   it("sets the sliders to the suggested board and marks it as chosen", () => {
@@ -82,6 +82,6 @@ describe("rating preview on the setup card", () => {
 
     fireEvent.pointerUp(slider);
 
-    expect(announced()).toBe("Board rating 2,105. Your rating 1,200. Expected accuracy 9%. If you clear it, up to +50. If you miss, at most −6.");
+    expect(announced()).toBe("Board rating 2,088. Your rating 1,200. Expected accuracy 10%. If you clear it, up to +50. If you miss, at most −6.");
   });
 });

@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, other {#日}}連続",
         "bestAccuracy": "最高正解率{value, number}%",
         "recentAccuracy": "最近の正解率{value, number}%",
-        "studyTime": "記憶時間{value, number}秒",
-        "rebuildTime": "配置時間{value, number}秒",
+        "studyTime": "記憶時間{value, number}秒/駒",
+        "rebuildTime": "配置時間{value, number}秒/駒",
         "winStreak": "{value, plural, other {#連勝}}",
         "rounds": "{value, plural, other {#ラウンドプレイ}}",
         "days": "{value, plural, other {#日プレイ}}"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}、変化なし",
         "new": "{label} {after}、新規"
       }
-    }
+    },
+    "trend": "直近{window}ラウンドはその前の{window}ラウンドより{amount}{direction, select, up {増加} other {減少}}"
   },
   "share": {
     "intro": "カードをシェア、保存、または投稿にコピーできます。",

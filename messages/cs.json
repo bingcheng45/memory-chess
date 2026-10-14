@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, one {# den} few {# dny} many {# dne} other {# dní}} v řadě",
         "bestAccuracy": "nejlepší přesnost {value, number} %",
         "recentAccuracy": "nedávná přesnost {value, number} %",
-        "studyTime": "čas na zapamatování {value, number} s",
-        "rebuildTime": "čas rozestavení {value, number} s",
+        "studyTime": "zapamatování {value, number} s na figuru",
+        "rebuildTime": "rozestavení {value, number} s na figuru",
         "winStreak": "vítězná série {value, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
         "rounds": "odehráno {value, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
         "days": "{value, plural, one {# den hraní} few {# dny hraní} many {# dne hraní} other {# dní hraní}}"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, beze změny",
         "new": "{label} {after}, nové"
       }
-    }
+    },
+    "trend": "{direction, select, up {Nahoru} other {Dolů}} o {amount} za posledních {window} kol oproti {window} předchozím"
   },
   "share": {
     "intro": "Kartu sdílej, ulož nebo zkopíruj do příspěvku.",

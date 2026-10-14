@@ -7,6 +7,8 @@
 //     Never writes to the database. Player names are replaced by an anonymous per-file player number.
 //   node scripts/rating/calibrate.mjs fit <rows.json> [--ability player|pool|board] [--rated-since 2026-10-13]
 //     [--boot 1000] [--seed 1] [--plays N] [--json]
+// The report also gives the leaderboard's look and rebuild seconds per piece, the population pace the rating's look and
+// rebuild credits are measured from (src/lib/game/rating.ts referenceStudySeconds and referenceRebuildPerPiece).
 //
 // A row's skill_rating is a real ability only when the row was written after the rating column existed (migration
 // 0004) and is not the column default. Every other row gets a free ability, shared per --ability group:
@@ -75,6 +77,8 @@ export function roundOf(row, { ratedSince, ability }) {
     xp: Math.log2(pieces / REFERENCE_PIECES),
     xs: Math.log2(REFERENCE_STUDY_SECONDS / study),
     rating: rated ? row.skill_rating : null,
+    lookPerPiece: row.memorize_time / pieces,
+    rebuildPerPiece: row.solution_time / pieces,
   };
 }
 
@@ -300,6 +304,15 @@ export function describeBoards(rounds) {
   });
 }
 
+/** Quartiles of the look and rebuild seconds per piece. */
+export function pacesOf(rounds) {
+  const quartiles = (values) => {
+    const sorted = values.filter(Number.isFinite).sort((a, b) => a - b);
+    return { q25: quantile(sorted, 0.25), median: quantile(sorted, 0.5), q75: quantile(sorted, 0.75) };
+  };
+  return { look: quartiles(rounds.map((r) => r.lookPerPiece)), rebuild: quartiles(rounds.map((r) => r.rebuildPerPiece)) };
+}
+
 /** Observed and predicted accuracy, piece-weighted, by the fitted board level. */
 export function fitTable(input, params, binWidth = 200) {
   const rounds = informative(input).filter((r) => predict(params, r) !== null);
@@ -327,7 +340,7 @@ const SCALE_NOTE = {
   "default-kappa": "no rated rows and no piece contrast: kappa held at its default, only w_s fitted",
 };
 
-function printReport({ rounds, options, params, boot, selection, boards }) {
+function printReport({ rounds, options, params, boot, selection, boards, paces }) {
   const log = (line = "") => console.log(line);
   const rated = rounds.filter((r) => r.rating !== null);
   log(`Rows: ${rounds.length} with a correct piece, from ${new Set(rounds.map((r) => r.player)).size} player names`);
@@ -338,6 +351,11 @@ function printReport({ rounds, options, params, boot, selection, boards }) {
   log("Board               rows rated cutoff  mean  q25 median perfect  <70% <=40%");
   for (const b of boards) {
     log(`${b.board.padEnd(18)} ${String(b.rows).padStart(5)} ${String(b.rated).padStart(5)} ${b.cutoff.padStart(6)}  ${pct(b.mean)} ${pct(b.q25)}   ${pct(b.median)}    ${pct(b.perfect)}  ${pct(b.under70)}  ${pct(b.atMost40)}`);
+  }
+  log();
+  log("Seconds per piece      q25  median   q75");
+  for (const [name, q] of [["look", paces.look], ["rebuild", paces.rebuild]]) {
+    log(`  ${name.padEnd(18)} ${fmt(q.q25, 2).padStart(5)}   ${fmt(q.median, 2).padStart(5)} ${fmt(q.q75, 2).padStart(5)}`);
   }
   log();
   log(`Fit (${SCALE_NOTE[params.scale]})`);
@@ -384,7 +402,7 @@ export function calibrate(rows, options) {
   const params = fit(rounds);
   const boot = bootstrap(rounds, { samples: options.boot, seed: options.seed });
   const selection = selectionCheck(rounds, params, { picks: [1, 3, 10, 30], seed: options.seed });
-  return { rounds, options, params, boot, selection, boards: describeBoards(rounds) };
+  return { rounds, options, params, boot, selection, boards: describeBoards(rounds), paces: pacesOf(rounds) };
 }
 
 async function main([command, path, ...rest]) {
@@ -401,9 +419,9 @@ async function main([command, path, ...rest]) {
     const options = parseOptions(rest);
     const result = calibrate(JSON.parse(readFileSync(path, "utf8")), options);
     if (options.json) {
-      const { params, boot, selection, boards } = result;
+      const { params, boot, selection, boards, paces } = result;
       const { ability, ...constants } = params;
-      console.log(JSON.stringify({ options, params: constants, boot, selection, boards }));
+      console.log(JSON.stringify({ options, params: constants, boot, selection, boards, paces }));
     } else {
       printReport(result);
     }

@@ -166,8 +166,8 @@ describe("scoring and the skill rating", () => {
       correctPlacements: 6,
       extraPieces: 0,
       totalPiecesPlaced: 6,
-      skillRatingChange: 235,
-      skillRating: 1235,
+      skillRatingChange: 225,
+      skillRating: 1225,
       streak: 1,
       rating: { phase: "provisional" },
     });
@@ -334,7 +334,7 @@ describe("saving finished rounds to the history", () => {
         totalPlacements: 6,
         perfectScore: false,
         level: 1,
-        skillRatingChange: -122,
+        skillRatingChange: -120,
         streak: 0,
         facts: { pieceCount: 6, studySeconds: 10, rebuildSeconds: 15, accuracy: 50 },
       },
@@ -434,8 +434,8 @@ describe("provisional and rated rounds", () => {
 
     expect([first.rating?.phase, first.skillRating, store().certainty, storedState().certainty]).toEqual([
       "provisional",
-      1235,
-      { rd: expect.closeTo(248, 0), rounds: 1 },
+      1225,
+      { rd: expect.closeTo(249, 0), rounds: 1 },
       store().certainty,
     ]);
   });
@@ -535,18 +535,18 @@ describe("how a provisional round moves the skill rating", () => {
     expect([first.accuracy, first.skillRatingChange, firstRating, second.skillRatingChange, second.skillRating]).toEqual([0, -400, 600, -161, 439]);
   });
 
-  it("gives an instant perfect round no more rebuild credit than one at a quarter second a piece", () => {
+  it("gives an instant perfect round no more rebuild credit than one at three quarters of a second a piece", () => {
     const instant = playRound({ pieceCount: 6, solveMs: 100 }).skillRatingChange;
     freshPlayer();
-    const quick = playRound({ pieceCount: 6, solveMs: 1500 }).skillRatingChange;
+    const quick = playRound({ pieceCount: 6, solveMs: 4500 }).skillRatingChange;
 
-    expect([instant, quick]).toEqual([272, 272]);
+    expect([instant, quick]).toEqual([225, 225]);
   });
 
   it("lowers the rating for a half-recalled board", () => {
     const half = playRound({ pieceCount: 6, correct: 3, solveMs: 5000 });
 
-    expect([half.accuracy, half.skillRatingChange]).toEqual([50, -111]);
+    expect([half.accuracy, half.skillRatingChange]).toEqual([50, -113]);
   });
 
   it("gains nothing from a board 500 or more below the rating", () => {
@@ -570,7 +570,7 @@ describe("how a provisional round moves the skill rating", () => {
     freshPlayer();
     const quick = playRound({ pieceCount: 6, solveMs: 4000 }).skillRatingChange;
 
-    expect([slow, quick]).toEqual([173, 235]);
+    expect([slow, quick]).toEqual([192, 225]);
   });
 });
 
@@ -744,7 +744,7 @@ describe("giving a stored rating its uncertainty", () => {
   it("replays the stored rated rounds, oldest first, from the stored rating", async () => {
     const newestFirst = [row(2, 100), row(1, 67), row(0, 83)];
 
-    await expect(rehydrateFrom(1300, newestFirst)).resolves.toEqual({ rating: 1247, certainty: { rd: expect.closeTo(215, 0), rounds: 3 }, history: 3 });
+    await expect(rehydrateFrom(1300, newestFirst)).resolves.toEqual({ rating: 1254, certainty: { rd: expect.closeTo(214, 0), rounds: 3 }, history: 3 });
   });
 
   it("starts a player with no rated rounds as a new player", async () => {

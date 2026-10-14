@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, one {# day} other {# days}} in a row",
         "bestAccuracy": "{value, number}% best accuracy",
         "recentAccuracy": "{value, number}% recent accuracy",
-        "studyTime": "study time {value, number} s",
-        "rebuildTime": "rebuild time {value, number} s",
+        "studyTime": "study time {value, number} s per piece",
+        "rebuildTime": "rebuild time {value, number} s per piece",
         "winStreak": "a win streak of {value, plural, one {# round} other {# rounds}}",
         "rounds": "{value, plural, one {# round} other {# rounds}} played",
         "days": "{value, plural, one {# day} other {# days}} played"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, no change",
         "new": "{label} {after}, new"
       }
-    }
+    },
+    "trend": "{direction, select, up {Up} other {Down}} {amount} over your last {window} rounds against the {window} before"
   },
   "share": {
     "intro": "Share the card, save it, or copy it into a post.",

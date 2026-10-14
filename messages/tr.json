@@ -1530,8 +1530,8 @@
         "streak": "üst üste {value, plural, one {# gün} other {# gün}}",
         "bestAccuracy": "%{value, number} en iyi isabet",
         "recentAccuracy": "%{value, number} son isabet",
-        "studyTime": "inceleme süresi {value, number} sn",
-        "rebuildTime": "yerleştirme süresi {value, number} sn",
+        "studyTime": "inceleme süresi {value, number} sn / taş",
+        "rebuildTime": "yerleştirme süresi {value, number} sn / taş",
         "winStreak": "{value, plural, one {# turluk} other {# turluk}} galibiyet serisi",
         "rounds": "{value, plural, one {# tur oynandı} other {# tur oynandı}}",
         "days": "{value, plural, one {# gün oynandı} other {# gün oynandı}}"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, değişmedi",
         "new": "{label} {after}, yeni"
       }
-    }
+    },
+    "trend": "Son {window} turda önceki {window} tura göre {amount} {direction, select, up {arttı} other {düştü}}"
   },
   "share": {
     "intro": "Kartı paylaş, kaydet ya da bir gönderiye kopyala.",

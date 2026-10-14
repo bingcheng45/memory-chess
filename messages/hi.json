@@ -1530,8 +1530,8 @@
         "streak": "लगातार {value, plural, one {# दिन} other {# दिन}}",
         "bestAccuracy": "{value, number}% सबसे अच्छी सटीकता",
         "recentAccuracy": "{value, number}% हाल की सटीकता",
-        "studyTime": "याद करने का समय {value, number} से.",
-        "rebuildTime": "रखने का समय {value, number} से.",
+        "studyTime": "याद करने का समय {value, number} से. प्रति मोहरा",
+        "rebuildTime": "रखने का समय {value, number} से. प्रति मोहरा",
         "winStreak": "लगातार {value, plural, one {# राउंड} other {# राउंड}} की जीत",
         "rounds": "{value, plural, one {# राउंड} other {# राउंड}} खेले",
         "days": "{value, plural, one {# दिन} other {# दिन}} खेले"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, कोई बदलाव नहीं",
         "new": "{label} {after}, नया"
       }
-    }
+    },
+    "trend": "पिछले {window} राउंड में उससे पहले के {window} राउंड की तुलना में {amount} {direction, select, up {ऊपर} other {नीचे}}"
   },
   "share": {
     "intro": "कार्ड साझा करें, सहेजें या किसी पोस्ट में कॉपी करें।",

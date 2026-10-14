@@ -1530,8 +1530,8 @@
         "streak": "连续 {value, plural, other {# 天}}",
         "bestAccuracy": "最佳准确率 {value, number}%",
         "recentAccuracy": "近期准确率 {value, number}%",
-        "studyTime": "记忆用时 {value, number} 秒",
-        "rebuildTime": "摆放用时 {value, number} 秒",
+        "studyTime": "记忆用时 {value, number} 秒/子",
+        "rebuildTime": "摆放用时 {value, number} 秒/子",
         "winStreak": "{value, plural, other {# 回合连胜}}",
         "rounds": "{value, plural, other {已玩 # 回合}}",
         "days": "{value, plural, other {已玩 # 天}}"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}，不变",
         "new": "{label} {after}，新"
       }
-    }
+    },
+    "trend": "最近 {window} 回合比之前 {window} 回合{direction, select, up {上升} other {下降}} {amount}"
   },
   "share": {
     "intro": "分享卡片、保存，或复制到帖子里。",

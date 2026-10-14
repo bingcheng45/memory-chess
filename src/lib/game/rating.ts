@@ -14,7 +14,9 @@ export const WIN_ACCURACY = 70;
 
 /**
  * Every tunable number of the rating. Calibration from real rounds replaces these values and nothing else.
- * Board level: pieces per doubling, study per halving, rebuild credit per halving of the time per piece.
+ * Board level: pieces per doubling; a look longer than the reference study time costs studyWeight per doubling, and a
+ * shorter look earns studyWeight per halving of the look per piece at first, at most lookCreditPerPiece per piece.
+ * Rebuild credit: rebuildWeight per halving under the reference pace plus its buffer, times √(pieces / reference pieces).
  * Expectation: E = 1 / (1 + (1 − even) / even · e^(−κ(R − b))), so a board at the player's rating expects `evenAccuracy`.
  * Noise: φ = chunk / max(pieces, minPieces) + noiseFloor, the variance of a round's accuracy around E.
  */
@@ -24,9 +26,12 @@ export const RATING_MODEL = {
   pieceWeight: 550,
   studyWeight: 150,
   studySecondsRange: { min: 1, max: 60 },
-  rebuildWeight: 60,
+  lookCreditPerPiece: 12,
+  /** The leaderboard's median rebuild time per piece. */
   referenceRebuildPerPiece: 2.5,
-  rebuildFloorPerPiece: 0.25,
+  rebuildBuffer: 0.2,
+  rebuildWeight: 45,
+  rebuildMaxHalvings: 2,
 
   kappa: Math.LN2 / 200,
   evenAccuracy: 0.7,
@@ -130,27 +135,42 @@ export const isProvisional = (player: PlayerRating): boolean => player.rd > PROV
 
 const phaseOf = (player: PlayerRating): RatingPhase => (isProvisional(player) ? "provisional" : "rated");
 
-/** The board on the rating scale: pieces weigh most, then a shorter look. */
-export function boardLevel({ pieceCount, studySeconds }: BoardSetting): number {
-  return (
-    START_RATING +
-    M.pieceWeight * Math.log2(pieceCount / M.referencePieces) +
-    M.studyWeight * Math.log2(M.referenceStudySeconds / studied(studySeconds))
-  );
+/**
+ * What the look adds to the board: a look longer than the reference study time costs, and a shorter one earns by the
+ * halvings of its look per piece against the reference time shared by as many pieces, each halving less than the one
+ * before, up to a ceiling that grows with the pieces, so a glance at a small board cannot outscore a full one.
+ */
+function lookCredit({ pieceCount, studySeconds }: BoardSetting): number {
+  const seconds = studied(studySeconds);
+  const long = -M.studyWeight * Math.log2(Math.max(seconds, M.referenceStudySeconds) / M.referenceStudySeconds);
+  const lookPerPiece = seconds / pieceCount;
+  const referencePerPiece = M.referenceStudySeconds / pieceCount;
+  const halvings = Math.max(0, Math.log2(referencePerPiece / lookPerPiece));
+  const ceiling = M.lookCreditPerPiece * pieceCount;
+  return long + ceiling * Math.tanh((M.studyWeight * halvings) / ceiling);
+}
+
+/** The board on the rating scale: pieces weigh most, then a shorter look per piece. */
+export function boardLevel(board: BoardSetting): number {
+  return START_RATING + M.pieceWeight * Math.log2(board.pieceCount / M.referencePieces) + lookCredit(board);
 }
 
 /** How much of the rebuild speed the accuracy earns: none at the floor accuracy or under, all of it from a win. */
 const gateOf = (accuracy: number): number => clamp((accuracy - M.floorAccuracy) / (WIN_ACCURACY - M.floorAccuracy), 0, 1);
 
-/** Halvings of the rebuild time per piece against the reference: up to one slower, and faster down to the floor. */
-function rebuildHalvings({ pieceCount, rebuildSeconds }: RatedRoundFacts): number {
-  const perPiece = Math.max(rebuildSeconds / pieceCount, M.rebuildFloorPerPiece);
-  return Math.max(Math.log2(M.referenceRebuildPerPiece / perPiece), -1);
+/**
+ * What the rebuild speed earns: nothing at or slower than an everyday pace (the reference plus its buffer), then more
+ * the faster it is, up to a ceiling, and more the more pieces were rebuilt at that pace.
+ */
+function rebuildCredit({ pieceCount, rebuildSeconds }: RatedRoundFacts): number {
+  const everyday = M.referenceRebuildPerPiece * (1 + M.rebuildBuffer);
+  const faster = clamp(Math.log2((everyday * pieceCount) / rebuildSeconds), 0, M.rebuildMaxHalvings);
+  return M.rebuildWeight * faster * Math.sqrt(pieceCount / M.referencePieces);
 }
 
 /** The rating this round is a 70% board for: its board, plus what the rebuild speed earned as far as the accuracy allows. */
 export function challengeOf(round: RatedRoundFacts): number {
-  return boardLevel(round) + gateOf(round.accuracy) * M.rebuildWeight * rebuildHalvings(round);
+  return boardLevel(round) + gateOf(round.accuracy) * rebuildCredit(round);
 }
 
 /** The accuracy, 0 to 1, a player of this rating is expected to reach on a board of this challenge. */

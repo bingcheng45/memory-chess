@@ -1,4 +1,4 @@
-import { DASHBOARD_GROUPS, dashboardOf, type DashboardInput, type DashboardTile, type Figure, type GameStanding } from "./dashboard";
+import { BETTER_WHEN, DASHBOARD_GROUPS, dashboardOf, type DashboardInput, type DashboardTile, type Figure, type GameStanding } from "./dashboard";
 import { deriveLab } from "./metrics";
 import type { RoundRecord } from "./record";
 import { removeFromSummary } from "./summary";
@@ -7,22 +7,6 @@ import { removeFromSummary } from "./summary";
 export const DELTA_FIGURES = [...DASHBOARD_GROUPS.lead, ...DASHBOARD_GROUPS.summary] as const;
 
 export type DeltaFigureId = (typeof DELTA_FIGURES)[number];
-
-/** Which way of a figure's number is progress. Speed and the two times are seconds, so they improve as they fall. */
-export const BETTER_WHEN: { readonly [K in DeltaFigureId]: "higher" | "lower" } = {
-  rating: "higher",
-  span: "higher",
-  piecesHeld: "higher",
-  speed: "lower",
-  studyTime: "lower",
-  rebuildTime: "lower",
-  bestAccuracy: "higher",
-  recentAccuracy: "higher",
-  winStreak: "higher",
-  streak: "higher",
-  rounds: "higher",
-  days: "higher",
-};
 
 interface DeltaBase {
   readonly id: DeltaFigureId;

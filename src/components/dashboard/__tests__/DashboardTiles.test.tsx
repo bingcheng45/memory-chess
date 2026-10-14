@@ -46,6 +46,37 @@ describe("rating tile trend", () => {
   });
 });
 
+describe("time per piece tile trend", () => {
+  const timeTile = (trend: Trend): DashboardTile => ({
+    id: "rebuildTime",
+    state: "ready",
+    figure: { value: 2.4, unit: "secondsPerPiece", digits: 1 },
+    context: { kind: "recent", values: { rounds: 30 } },
+    trend,
+  });
+  const showTime = (trend: Trend) => {
+    renderWithIntl(<TileList ids={["rebuildTime"]} tiles={[timeTile(trend)]} size="lead" />);
+    return document.querySelector('[data-tile="rebuildTime"]') as HTMLElement;
+  };
+
+  it("draws a fall in seconds per piece as progress, and says what it compares", () => {
+    const chip = within(showTime({ direction: "down", amount: 0.3 })).getByRole("img", {
+      name: "Down 0.3 s per piece over your last 10 rounds against the 10 before",
+    });
+
+    expect(chip).toHaveAttribute("data-tone", "better");
+    expect(chip.querySelector("svg")).toHaveAttribute("data-arrow", "down");
+  });
+
+  it("draws a rise in seconds per piece as a slip", () => {
+    const chip = within(showTime({ direction: "up", amount: 0.5 })).getByRole("img", {
+      name: "Up 0.5 s per piece over your last 10 rounds against the 10 before",
+    });
+
+    expect(chip).toHaveAttribute("data-tone", "worse");
+  });
+});
+
 describe("rating sentence", () => {
   const sentence = (change: number, rounds: number) => {
     const values = { sign: change > 0 ? "up" : change < 0 ? "down" : "level", change: Math.abs(change), rounds };

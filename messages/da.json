@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, one {# dag} other {# dage}} i træk",
         "bestAccuracy": "{value, number} % bedste præcision",
         "recentAccuracy": "{value, number} % seneste præcision",
-        "studyTime": "husketid {value, number} s",
-        "rebuildTime": "placeringstid {value, number} s",
+        "studyTime": "husketid {value, number} s pr. brik",
+        "rebuildTime": "placeringstid {value, number} s pr. brik",
         "winStreak": "en stime på {value, plural, one {# sejr} other {# sejre}} i træk",
         "rounds": "{value, plural, one {# runde} other {# runder}} spillet",
         "days": "{value, plural, one {# dag} other {# dage}} spillet"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, uændret",
         "new": "{label} {after}, ny"
       }
-    }
+    },
+    "trend": "{direction, select, up {Op} other {Ned}} {amount} over dine seneste {window} runder mod de {window} før"
   },
   "share": {
     "intro": "Del kortet, gem det, eller kopiér det ind i et opslag.",

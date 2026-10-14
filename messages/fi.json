@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, one {# päivä} other {# päivää}} putkeen",
         "bestAccuracy": "paras tarkkuus {value, number} %",
         "recentAccuracy": "viimeaikainen tarkkuus {value, number} %",
-        "studyTime": "tutkimisaika {value, number} s",
-        "rebuildTime": "asetteluaika {value, number} s",
+        "studyTime": "tutkimisaika {value, number} s / nappula",
+        "rebuildTime": "asetteluaika {value, number} s / nappula",
         "winStreak": "voittoputki {value, plural, one {# kierros} other {# kierrosta}}",
         "rounds": "{value, plural, one {# kierros} other {# kierrosta}} pelattu",
         "days": "{value, plural, one {# päivä} other {# päivää}} pelattu"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, ennallaan",
         "new": "{label} {after}, uusi"
       }
-    }
+    },
+    "trend": "{direction, select, up {Nousua} other {Laskua}} {amount} viimeisillä {window} kierroksella edellisiin {window} verrattuna"
   },
   "share": {
     "intro": "Jaa kortti, tallenna se tai kopioi se julkaisuun.",

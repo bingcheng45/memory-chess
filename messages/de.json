@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, one {# Tag} other {# Tage}} in Folge",
         "bestAccuracy": "{value, number} % beste Genauigkeit",
         "recentAccuracy": "{value, number} % aktuelle Genauigkeit",
-        "studyTime": "Einprägezeit {value, number} s",
-        "rebuildTime": "Aufbauzeit {value, number} s",
+        "studyTime": "Einprägezeit {value, number} s pro Figur",
+        "rebuildTime": "Aufbauzeit {value, number} s pro Figur",
         "winStreak": "eine Siegesserie von {value, plural, one {# Runde} other {# Runden}}",
         "rounds": "{value, plural, one {# Runde} other {# Runden}} gespielt",
         "days": "{value, plural, one {# Tag} other {# Tage}} gespielt"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, unverändert",
         "new": "{label} {after}, neu"
       }
-    }
+    },
+    "trend": "{direction, select, up {Plus} other {Minus}} {amount} in deinen letzten {window} Runden gegenüber den {window} davor"
   },
   "share": {
     "intro": "Teile die Karte, speichere sie oder kopiere sie in einen Beitrag.",

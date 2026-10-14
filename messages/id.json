@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, other {# hari}} beruntun",
         "bestAccuracy": "akurasi terbaik {value, number}%",
         "recentAccuracy": "akurasi terbaru {value, number}%",
-        "studyTime": "waktu menghafal {value, number} dtk",
-        "rebuildTime": "waktu menyusun {value, number} dtk",
+        "studyTime": "waktu menghafal {value, number} dtk per bidak",
+        "rebuildTime": "waktu menyusun {value, number} dtk per bidak",
         "winStreak": "kemenangan beruntun {value, plural, other {# ronde}}",
         "rounds": "{value, plural, other {# ronde dimainkan}}",
         "days": "{value, plural, other {# hari bermain}}"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, tetap",
         "new": "{label} {after}, baru"
       }
-    }
+    },
+    "trend": "{direction, select, up {Naik} other {Turun}} {amount} dalam {window} ronde terakhirmu dibanding {window} ronde sebelumnya"
   },
   "share": {
     "intro": "Bagikan kartunya, simpan, atau salin ke dalam unggahan.",

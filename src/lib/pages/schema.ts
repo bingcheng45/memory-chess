@@ -30,4 +30,6 @@ export interface ReadingChrome {
   readonly contents: string;
   readonly onThisPage: string;
   readonly lastUpdated: string;
+  /** What a translated page says it is: `legal` on the privacy policy and the terms, `general` on any other page. */
+  readonly note: { readonly general: string; readonly legal: string; readonly readInEnglish: string };
 }

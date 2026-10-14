@@ -20,6 +20,8 @@ interface LabReadingPageProps {
   readonly kicker: string;
   readonly title: string;
   readonly lede: ReactNode;
+  /** A line under the lede, such as the note that the page is a translation. */
+  readonly notice?: ReactNode;
   readonly sections?: PageSections;
   /** The page's sections in order: listed under the lede and in the header's "Contents" menu. */
   readonly contents?: readonly ReadingSection[];
@@ -51,6 +53,7 @@ export function LabReadingPage({
   kicker,
   title,
   lede,
+  notice,
   sections,
   contents,
   updated,
@@ -64,6 +67,7 @@ export function LabReadingPage({
           <p className="lab-kicker">{kicker}</p>
           <h1>{title}</h1>
           <p className="lab-lede">{lede}</p>
+          {notice}
           {updated && (
             <p className="lab-read-updated">
               {richText(chrome.lastUpdated, locale, {

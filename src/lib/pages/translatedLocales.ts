@@ -12,6 +12,9 @@ export type PageName = (typeof PAGE_NAMES)[number];
 
 export const PAGE_ROUTES = PAGE_NAMES.map((name) => `/${name}` as const);
 
+/** The pages whose translation says that the English version governs. `scripts/audit-adsense` reads this too. */
+export const LEGAL_PAGE_NAMES: readonly PageName[] = ["privacy", "terms"];
+
 /** The files a translation of the trust pages has: one per page, and one for the reading chrome they share. */
 export const PAGE_UNITS = [...PAGE_NAMES, "chrome"] as const;
 

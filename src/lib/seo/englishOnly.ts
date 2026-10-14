@@ -25,16 +25,10 @@ function isUnder(path: string, route: string): boolean {
  * each once, and links from localized pages point straight at the bare URL.
  * A route here covers every path beneath it.
  *
- * The articles are not here. They are translated, so they are in
- * `DEFAULT_LOCALE_INDEXED_ROUTES`.
+ * The articles and the trust pages (/about, /privacy, /terms) are not here.
+ * They are translated, so they are in `DEFAULT_LOCALE_INDEXED_ROUTES`.
  */
-export const ENGLISH_ONLY_ROUTES = [
-  "/about",
-  "/privacy",
-  "/terms",
-  "/changelog",
-  "/learn",
-] as const;
+export const ENGLISH_ONLY_ROUTES = ["/changelog", "/learn"] as const;
 
 /**
  * Routes served only at their bare English URL but kept out of search and the footer: a shared card's page exists
@@ -52,9 +46,10 @@ export const UNLISTED_ROUTES = ["/share"] as const;
  * A translated article is an AI-assisted translation that a reviewer checked.
  * It is there for readers and is never offered to search, because unreviewed
  * machine translations in the sitemap got the site rejected by AdSense once.
- * `TRANSLATED_ARTICLE_LOCALES` says which locales have translated articles.
+ * `TRANSLATED_ARTICLE_LOCALES` says which locales have translated articles,
+ * and `TRANSLATED_PAGE_LOCALES` which have the trust pages.
  */
-export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", ARTICLES_PATH] as const;
+export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", ARTICLES_PATH, ...PAGE_ROUTES] as const;
 
 /** Whether an unprefixed path is served in translation but indexed only in English. */
 export function isIndexedInDefaultLocaleOnly(path: string): boolean {
@@ -75,8 +70,10 @@ export function englishOnlyLinkSuffix(locale: string): string {
   return locale === "en" ? "" : ` (${LOCALE_LABELS.en})`;
 }
 
+/** Whether a path is read in English alone: an English-only route, or a translated route no locale serves yet. */
 export function isEnglishOnlyPath(path: string): boolean {
-  return ENGLISH_ONLY_ROUTES.some((route) => isUnder(path, route));
+  if (ENGLISH_ONLY_ROUTES.some((route) => isUnder(path, route))) return true;
+  return TRANSLATED_ROUTES.some(([route, locales]) => isUnder(path, route) && locales.length === 0);
 }
 
 /**

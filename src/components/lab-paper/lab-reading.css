@@ -6,6 +6,8 @@
 .lab-paper .lab-read-head { padding-bottom: 48px; border-bottom: 1px solid var(--lp-line); }
 .lab-paper .lab-read-head h1 { font: 650 48px/1.08 var(--lp-ui); letter-spacing: -0.025em; }
 .lab-paper .lab-read-head .lab-lede { margin-top: 16px; }
+.lab-paper .lab-read-note { margin-top: 16px; max-width: 64ch; font: 400 15px/1.5 var(--lp-body); color: var(--lp-muted); }
+.lab-paper .lab-read-note a { color: var(--lp-ink); }
 .lab-paper .lab-read-updated { margin-top: 16px; font: 500 15px/1.4 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .lab-read-updated time { color: var(--lp-ink); font-variant-numeric: tabular-nums; }
 .lab-paper .lab-read-contents { margin-top: 32px; }

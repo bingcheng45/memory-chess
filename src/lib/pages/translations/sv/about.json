@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "91235b979c8fb721be151d979837a730da15c26bac92215c0dea1dd41618484b",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -31,7 +31,7 @@
         "title": "Varför spelet finns",
         "blocks": [
           {
-            "p": "De flesta råd om hur man blir bättre i schack skickar nybörjare till öppningar, problem och kurser. Enligt min erfarenhet ligger det tidigare problemet under allt det där. Nybörjare tappar bort brädet. De missar en försvarare, glömmer en pjäs som flyttades för två drag sedan och går rakt in i slag som de genast skulle se på ett diagram."
+            "p": "De flesta råd om hur man blir bättre i schack skickar nybörjare till öppningar, taktikpussel och kurser. Enligt min erfarenhet ligger det tidigare problemet under allt det där. Nybörjare tappar överblicken över brädet. De missar en försvarare, glömmer en pjäs som flyttades för två drag sedan och går rakt in i slag som de genast skulle se på ett diagram."
           },
           {
             "p": "Att hålla en ställning i huvudet är en färdighet som går att träna, och det fanns få ställen där man kunde öva på den direkt. Så jag byggde ett. Memory Chess plockar ut just den färdigheten och ger den en poäng, så att du kan se den bli bättre. Vill du ha något att spela om kan du lägga upp ett valfritt namn på den offentliga topplistan och mäta dig mot alla andra."
@@ -62,7 +62,7 @@
             "p": "<learn>Biblioteket i Lär dig</learn> innehåller {count, plural, one {# guide} other {# guider}} om brädseende, visualisering och minnesträning. De är skrivna med hjälp av AI. Varje schackställning i dem kontrolleras av ett skript när det gäller antalet pjäser, att ställningen är tillåten och varje angrepp som texten påstår. Varje påstående om hur Memory Chess fungerar har spårats till spelets kod. Varje guide har övningar. Vissa öppnar en runda i spelet med rätt inställningar. Resten är tänkta för ett riktigt bräde."
           },
           {
-            "p": "Där guiderna påstår något om minne och inlärning hänvisar de till publicerad forskning, bland annat Gobets och Simons arbete om schackminne och den experimentella litteraturen om återhämtning ur minnet och spridd övning. Varje hänvisning länkar till sin källa. Jag har inte bedrivit någon egen forskning, och guiderna låtsas inte något annat."
+            "p": "Där guiderna påstår något om minne och inlärning hänvisar de till publicerad forskning, bland annat Gobets och Simons arbete om schackminne och den experimentella litteraturen om återkallande ur minnet och spridd övning. Varje hänvisning länkar till sin källa. Jag har inte bedrivit någon egen forskning, och guiderna låtsas inte något annat."
           }
         ]
       },

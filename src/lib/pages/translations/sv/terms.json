@@ -1,13 +1,13 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "426cd0464d5e12eb05b568c2674269487c40f5e44772fad868f31f42f848ffdd",
   "sameAsEnglish": [],
   "text": {
     "meta": {
       "title": "Användarvillkor",
-      "description": "Villkoren i klartext för att spela Memory Chess, skicka in resultat till topplistan och använda webbplatsens innehåll.",
+      "description": "Villkoren på enkel svenska för att spela Memory Chess, skicka in resultat till topplistan och använda webbplatsens innehåll.",
       "socialTitle": "Användarvillkor för Memory Chess",
-      "socialDescription": "Villkoren i klartext för att spela Memory Chess och använda webbplatsen."
+      "socialDescription": "Villkoren på enkel svenska för att spela Memory Chess och använda webbplatsen."
     },
     "kicker": "Det finstilta",
     "title": "Användarvillkor",
@@ -42,7 +42,7 @@
         "title": "Topplistan",
         "blocks": [
           {
-            "p": "Det är valfritt att skicka in ett resultat till topplistan. Allt du skickar in där är offentligt. Namnet som hör till ett resultat är det du skriver in, så välj något som du gärna ser publicerat, och använd inte ditt riktiga namn eller någon annans personuppgifter om du hellre vill hålla dem privata."
+            "p": "Det är valfritt att skicka in ett resultat till topplistan. Allt du skickar in där är offentligt. Namnet som hör till ett resultat är det du skriver in, så välj något som du gärna ser publicerat, och använd inte ditt riktiga namn eller några personuppgifter om du hellre vill hålla dem privata."
           },
           {
             "p": "Ett inskickat bidrag innehåller namnet du valde och uppgifterna om rundan, till exempel träffsäkerhet, svårighetsgrad och tid. När det väl har publicerats ligger det kvar på topplistan tills det trängs undan av bättre resultat eller tas bort."

@@ -13,4 +13,11 @@ describe("the translations this repo serves", () => {
     expect({ stderr: run.stderr, status: run.status }).toEqual({ stderr: "", status: 0 });
     expect(run.stdout).toMatch(/^ok verify: /);
   });
+
+  it("pass the lever's verify of the trust pages, so every locale that serves them has reviewed, current translations", () => {
+    const run = spawnSync(process.execPath, [LEVER_PATH, "--pages", "verify"], { cwd: REPO_ROOT, encoding: "utf8" });
+
+    expect({ stderr: run.stderr, status: run.status }).toEqual({ stderr: "", status: 0 });
+    expect(run.stdout).toMatch(/^ok verify --pages: /);
+  });
 });

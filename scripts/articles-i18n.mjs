@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * The one tool that writes an article translation into the repo, and the one
- * definition of "this translation is acceptable". A translator, a reviewer,
+ * The one tool that writes an article or trust page translation into the repo,
+ * and the one definition of "this translation is acceptable". A translator, a reviewer,
  * the integrator and a Jest test all run it.
  *
  * Failures go to stderr, one per line. A summary goes to stdout, and it starts
@@ -10,6 +10,7 @@
  */
 import { approve, check, exportSources, importTranslation, seed, verify } from "./articles-i18n/commands.mjs";
 import { ENGLISH } from "./articles-i18n/names.mjs";
+import { PAGE_COMMANDS, loadPagesRepo } from "./articles-i18n/pages.mjs";
 import { UsageError, loadRepo } from "./articles-i18n/repo.mjs";
 
 const USAGE = `Usage: node scripts/articles-i18n.mjs <command>
@@ -20,6 +21,14 @@ const USAGE = `Usage: node scripts/articles-i18n.mjs <command>
   approve <locale>         check the installed files, then record the hash of the text as approved
   seed                     give every locale without a translation the English chrome strings
   verify                   check every locale that serves articles and require the approval of its text as it stands
+
+With --pages first, the same commands but seed act on the translation of /about, /privacy and /terms:
+
+  --pages export <outDir>         write the English sources of the three pages and their chrome
+  --pages check <locale> [dir]    check a translator's directory, or the installed files
+  --pages import <locale> <dir>   check a directory, then install it, not yet approved
+  --pages approve <locale>        check the installed files, then record the hash of the text as approved
+  --pages verify                  check every locale that serves the pages and require its approval
 
 Run it from the repo root. Every path must stay inside the repo.
 `;
@@ -38,13 +47,18 @@ const COMMANDS = {
 
 const oneLine = (text) => text.replace(/\s*\n\s*/g, " ");
 
-async function run([name = "", ...args]) {
-  const command = Object.hasOwn(COMMANDS, name) ? COMMANDS[name] : undefined;
+const PAGES_FLAG = "--pages";
+
+async function run(argv) {
+  const isPages = argv[0] === PAGES_FLAG;
+  const [name = "", ...args] = isPages ? argv.slice(1) : argv;
+  const commands = isPages ? PAGE_COMMANDS : COMMANDS;
+  const command = Object.hasOwn(commands, name) ? commands[name] : undefined;
   if (!command || args.length < command.minArgs || args.length > command.maxArgs) {
     process.stderr.write(USAGE);
     return EXIT_USAGE;
   }
-  const repo = await loadRepo(process.cwd());
+  const repo = await (isPages ? loadPagesRepo : loadRepo)(process.cwd());
   if (command.takesLocale && (args[0] === ENGLISH || !repo.locales.includes(args[0]))) {
     throw new UsageError(`"${args[0]}" is not a shipped locale other than ${ENGLISH}`);
   }

@@ -12,6 +12,14 @@ export type PageName = (typeof PAGE_NAMES)[number];
 
 export const PAGE_ROUTES = PAGE_NAMES.map((name) => `/${name}` as const);
 
+/** The files a translation of the trust pages has: one per page, and one for the reading chrome they share. */
+export const PAGE_UNITS = [...PAGE_NAMES, "chrome"] as const;
+
+export type PageUnit = (typeof PAGE_UNITS)[number];
+
+/** The place an approval of a page unit names, apart from every article's, so no approval carries over between the two. */
+export const approvalNameOf = (unit: PageUnit): string => `pages/${unit}`;
+
 /**
  * The locales that serve the trust pages in translation. English is the original and is not here.
  *

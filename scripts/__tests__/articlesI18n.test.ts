@@ -38,6 +38,14 @@ const USAGE = `Usage: node scripts/articles-i18n.mjs <command>
   seed                     give every locale without a translation the English chrome strings
   verify                   check every locale that serves articles and require the approval of its text as it stands
 
+With --pages first, the same commands but seed act on the translation of /about, /privacy and /terms:
+
+  --pages export <outDir>         write the English sources of the three pages and their chrome
+  --pages check <locale> [dir]    check a translator's directory, or the installed files
+  --pages import <locale> <dir>   check a directory, then install it, not yet approved
+  --pages approve <locale>        check the installed files, then record the hash of the text as approved
+  --pages verify                  check every locale that serves the pages and require its approval
+
 Run it from the repo root. Every path must stay inside the repo.
 `;
 

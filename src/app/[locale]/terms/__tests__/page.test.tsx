@@ -2,6 +2,8 @@ import type { AnchorHTMLAttributes } from "react";
 import { render, screen, within } from "@/test-utils/intl";
 import TermsPage from "@/app/[locale]/terms/page";
 
+const IN_ENGLISH = { params: Promise.resolve({ locale: "en" }) };
+
 jest.mock("@/i18n/navigation", () => ({
   Link: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => <a href={href} {...props} />,
   usePathname: () => "/terms",
@@ -10,8 +12,8 @@ jest.mock("@/i18n/navigation", () => ({
 jest.mock("@/lib/articles/translatedLocales");
 
 describe("TermsPage", () => {
-  it("states the deal plainly and links the privacy policy", () => {
-    render(<TermsPage />);
+  it("states the deal plainly and links the privacy policy", async () => {
+    render(await TermsPage(IN_ENGLISH));
 
     expect(
       screen.getByRole("heading", { name: "Terms of Service", level: 1 }),
@@ -27,8 +29,8 @@ describe("TermsPage", () => {
     ).toHaveAttribute("href", "/privacy");
   });
 
-  it("is a Lab Paper page that prints the date the sitemap reads", () => {
-    const { container } = render(<TermsPage />);
+  it("is a Lab Paper page that prints the date the sitemap reads", async () => {
+    const { container } = render(await TermsPage(IN_ENGLISH));
 
     expect(container.firstElementChild).toHaveClass("lab-paper");
     const updated = screen.getByText("September 3, 2026");
@@ -36,8 +38,8 @@ describe("TermsPage", () => {
     expect(updated).toHaveAttribute("dateTime", "2026-09-03");
   });
 
-  it("lists every section near the top, each link landing on its heading", () => {
-    const { container } = render(<TermsPage />);
+  it("lists every section near the top, each link landing on its heading", async () => {
+    const { container } = render(await TermsPage(IN_ENGLISH));
 
     const contents = within(screen.getByRole("navigation", { name: "On this page" })).getAllByRole("link");
     expect(contents.map((link) => link.textContent)).toEqual([

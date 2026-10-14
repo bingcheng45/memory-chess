@@ -1,0 +1,97 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [
+    "sections.contact.title"
+  ],
+  "text": {
+    "meta": {
+      "title": "Conditions d’utilisation",
+      "description": "Les conditions, en langage clair, pour jouer à Memory Chess, soumettre des scores au classement et utiliser le contenu du site.",
+      "socialTitle": "Conditions d’utilisation de Memory Chess",
+      "socialDescription": "Les conditions, en langage clair, pour jouer à Memory Chess et utiliser le site."
+    },
+    "kicker": "Les petits caractères",
+    "title": "Conditions d’utilisation",
+    "lede": "Memory Chess est un jeu gratuit géré par une seule personne. Ces conditions sont courtes parce que l’accord est simple, et elles sont rédigées pour être lues.",
+    "sections": {
+      "service": {
+        "title": "Le service",
+        "blocks": [
+          {
+            "p": "Memory Chess est un jeu gratuit sur navigateur pour entraîner la mémoire de l’échiquier. Je le fournis tel quel et selon sa disponibilité, sans garantie d’aucune sorte. Je m’efforce de le garder rapide, exact et en ligne, mais je ne promets ni un service ininterrompu, ni une notation sans erreur, ni qu’une fonctionnalité restera toujours la même. Je peux modifier, suspendre ou arrêter n’importe quel élément du site à tout moment."
+          },
+          {
+            "p": "Dans la mesure permise par la loi, je ne suis pas responsable des dommages résultant de votre utilisation du site. C’est un jeu de mémoire. Le pire qui puisse raisonnablement arriver ici est de perdre un score auquel vous teniez, et je fais quand même tout mon possible pour l’éviter."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Utilisation acceptable",
+        "blocks": [
+          {
+            "p": "Jouez loyalement et laissez le site fonctionner pour tous les autres. N’attaquez pas le service, ne le surchargez pas et ne le sondez pas, ne l’aspirez pas en masse et n’essayez pas de fausser son système de score. Ne soumettez pas de scores générés par des bots, des scripts ou toute autre forme d’automatisation. N’utilisez pas le formulaire de contact ni le classement pour envoyer du spam, harceler qui que ce soit ou vous faire passer pour quelqu’un d’autre."
+          },
+          {
+            "p": "Le formulaire de contact sert à de vrais messages adressés à une vraie personne. Utilisez-le pour signaler des bugs, poser des questions ou proposer des idées, et votre message sera lu."
+          },
+          {
+            "p": "Je peux bloquer le trafic ou restreindre l’accès qui enfreint ces règles. Faute de comptes à bannir, supprimer les mauvaises entrées et bloquer les abus en bordure de réseau sont les moyens de faire respecter ces règles dont je dispose, et je les utilise."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Le classement",
+        "blocks": [
+          {
+            "p": "Soumettre un score au classement est facultatif. Tout ce que vous y soumettez est public. Le nom associé à un score est celui que vous saisissez, alors choisissez un nom que vous acceptez de voir publié, et n’utilisez ni votre vrai nom ni les informations personnelles de qui que ce soit si vous préférez les garder privés."
+          },
+          {
+            "p": "Une entrée soumise contient le nom que vous avez choisi et les détails de la partie, comme la précision, la difficulté et le temps de réalisation. Une fois publiée, elle reste au classement jusqu’à ce qu’elle soit évincée par de meilleurs scores ou supprimée."
+          },
+          {
+            "p": "Je peux supprimer les entrées du classement qui sont abusives, qui usurpent l’identité de quelqu’un, qui semblent automatisées ou qui n’ont manifestement pas été produites par une personne jouant au jeu. Je supprime des entrées pour garder le classement honnête, pas pour choisir qui gagne."
+          }
+        ]
+      },
+      "content": {
+        "title": "Contenu et propriété intellectuelle",
+        "blocks": [
+          {
+            "p": "Le contenu propre du site, y compris le jeu, les guides Apprendre, le design et le code qui le fait fonctionner, m’appartient. Vous pouvez librement créer un lien vers n’importe quelle page, citer des extraits raisonnables en indiquant leur source et partager vos scores où vous le souhaitez. Ne republiez pas de guides entiers et ne faites pas passer le contenu du site pour le vôtre."
+          },
+          {
+            "p": "Les échecs eux-mêmes n’appartiennent à personne. Les positions, les règles et la notation sont libres pour tous, ici comme ailleurs."
+          },
+          {
+            "p": "Si vous envoyez des avis ou des suggestions, vous acceptez que je puisse les utiliser pour améliorer le site sans vous devoir de rémunération ni de mention. Les avis des joueurs ont déjà façonné de vraies versions, et le journal des nouveautés consigne ce qui en est ressorti."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Services tiers",
+        "blocks": [
+          {
+            "p": "Le site repose sur un petit ensemble de services externes. Google AdSense diffuse les publicités qui permettent au site de rester gratuit. Google Analytics, Vercel Analytics, Vercel Speed Insights et Ahrefs Analytics mesurent le trafic et les performances. Supabase stocke les statistiques de jeu et les entrées du classement. Chacun a ses propres conditions, et la <privacy>politique de confidentialité</privacy> explique à quelles données chacun touche et quels choix vous avez."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Modifications de ces conditions",
+        "blocks": [
+          {
+            "p": "Je peux mettre à jour ces conditions lorsque le site ou ses services changent. La version en vigueur se trouve toujours à cette adresse, et continuer à utiliser le site après une modification signifie que vous acceptez les conditions mises à jour. Pour tout ce qui touche sensiblement les joueurs, comme un changement dans le fonctionnement du classement, je le signale aussi dans le journal des nouveautés."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Contact",
+        "blocks": [
+          {
+            "p": "Les questions sur ces conditions, ou une entrée du classement que vous souhaitez faire examiner ou supprimer, sont à adresser à <mail>{email}</mail>. J’y réponds moi-même."
+          }
+        ]
+      }
+    }
+  }
+}

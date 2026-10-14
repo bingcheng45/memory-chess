@@ -1625,7 +1625,14 @@
       "locked": "오늘의 보드를 이미 열었습니다. 공정하게 하루에 한 번만 도전할 수 있어요.",
       "seeBoard": "오늘의 보드 보기",
       "chooseRound": "다른 라운드 플레이",
-      "join": "오늘의 보드에 참가"
+      "join": "오늘의 보드에 참가",
+      "fig": "데일리 보드 · {date}",
+      "pieces": "{count, plural, other {기물 #개}}",
+      "seconds": "암기 {count}초",
+      "rule": "한 번만 도전할 수 있어요. '게임 시작'을 누르면 사용됩니다.",
+      "start": "게임 시작",
+      "countdown": "{count}초 후 시작",
+      "saving": "결과를 저장하는 중…"
     },
     "page": {
       "fig": "데일리 보드 · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "오늘의 보드에 참가했습니다",
       "rank": "오늘 {total}명 중 {rank}위",
       "lateNote": "어제 보드를 플레이했지만 아직 참가하지 않았습니다.",
-      "lateJoined": "그날의 보드에 참가했습니다"
+      "lateJoined": "그날의 보드에 참가했습니다",
+      "justPlayed": "오늘의 보드에 점수를 올려 보세요."
     },
     "join": {
       "title": "오늘의 보드에 참가",

@@ -1625,7 +1625,14 @@
       "locked": "Ai deschis deja tabla de azi. O singură încercare pe zi păstrează jocul corect.",
       "seeBoard": "Vezi tabla de azi",
       "chooseRound": "Joacă o altă rundă",
-      "join": "Intră în tabla de azi"
+      "join": "Intră în tabla de azi",
+      "fig": "Tabla zilei · {date}",
+      "pieces": "{count, plural, one {# piesă} few {# piese} other {# de piese}}",
+      "seconds": "{count} s de studiu",
+      "rule": "O singură încercare. Contează când apeși Începe jocul.",
+      "start": "Începe jocul",
+      "countdown": "Începe în {count}",
+      "saving": "Se salvează rezultatul…"
     },
     "page": {
       "fig": "Tabla zilei · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Ești în tabla de azi",
       "rank": "Locul {rank} din {total} azi",
       "lateNote": "Ai jucat tabla de ieri și încă nu ai intrat în ea.",
-      "lateJoined": "Ești în tabla din ziua aceea"
+      "lateJoined": "Ești în tabla din ziua aceea",
+      "justPlayed": "Pune-ți scorul pe tabla de azi."
     },
     "join": {
       "title": "Intră în tabla de azi",

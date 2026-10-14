@@ -1625,7 +1625,14 @@
       "locked": "Vous avez déjà ouvert le plateau du jour. Un seul essai par jour garantit l’équité.",
       "seeBoard": "Voir le plateau du jour",
       "chooseRound": "Jouer une autre partie",
-      "join": "Rejoindre le plateau du jour"
+      "join": "Rejoindre le plateau du jour",
+      "fig": "Plateau du jour · {date}",
+      "pieces": "{count, plural, one {# pièce} many {# pièces} other {# pièces}}",
+      "seconds": "{count} s pour mémoriser",
+      "rule": "Un seul essai. Il compte dès que vous appuyez sur Lancer la partie.",
+      "start": "Lancer la partie",
+      "countdown": "Début dans {count}",
+      "saving": "Enregistrement du résultat…"
     },
     "page": {
       "fig": "Plateau du jour · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Vous êtes sur le plateau du jour",
       "rank": "Rang {rank} sur {total} aujourd’hui",
       "lateNote": "Vous avez joué le plateau d’hier sans l’avoir encore rejoint.",
-      "lateJoined": "Vous êtes sur le plateau de ce jour-là"
+      "lateJoined": "Vous êtes sur le plateau de ce jour-là",
+      "justPlayed": "Inscrivez votre score sur le plateau du jour."
     },
     "join": {
       "title": "Rejoindre le plateau du jour",

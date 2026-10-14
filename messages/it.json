@@ -1625,7 +1625,14 @@
       "locked": "Hai già aperto la scacchiera di oggi. Un tentativo al giorno mantiene il gioco equo.",
       "seeBoard": "Vedi la scacchiera di oggi",
       "chooseRound": "Gioca un altro round",
-      "join": "Partecipa alla scacchiera di oggi"
+      "join": "Partecipa alla scacchiera di oggi",
+      "fig": "Scacchiera del giorno · {date}",
+      "pieces": "{count, plural, one {# pezzo} many {# pezzi} other {# pezzi}}",
+      "seconds": "{count} s per studiare",
+      "rule": "Un solo tentativo. Conta quando premi Inizia la partita.",
+      "start": "Inizia la partita",
+      "countdown": "Si parte tra {count}",
+      "saving": "Salvataggio del risultato…"
     },
     "page": {
       "fig": "Scacchiera del giorno · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Sei nella scacchiera di oggi",
       "rank": "Posizione {rank} su {total} oggi",
       "lateNote": "Hai giocato la scacchiera di ieri, ma il tuo risultato non è ancora in classifica.",
-      "lateJoined": "Sei nella scacchiera di quel giorno"
+      "lateJoined": "Sei nella scacchiera di quel giorno",
+      "justPlayed": "Metti il tuo punteggio sulla scacchiera di oggi."
     },
     "join": {
       "title": "Partecipa alla scacchiera di oggi",

@@ -1625,7 +1625,14 @@
       "locked": "Du har redan öppnat dagens bräde. Ett försök per dag håller det rättvist.",
       "seeBoard": "Se dagens bräde",
       "chooseRound": "Spela en runda till",
-      "join": "Delta i dagens bräde"
+      "join": "Delta i dagens bräde",
+      "fig": "Dagens bräde · {date}",
+      "pieces": "{count, plural, one {# pjäs} other {# pjäser}}",
+      "seconds": "{count} s att studera",
+      "rule": "Ett försök. Det räknas när du trycker på Starta spelet.",
+      "start": "Starta spelet",
+      "countdown": "Startar om {count}",
+      "saving": "Sparar ditt resultat…"
     },
     "page": {
       "fig": "Dagens bräde · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Du är med på dagens bräde",
       "rank": "Plats {rank} av {total} i dag",
       "lateNote": "Du spelade gårdagens bräde och är inte med på det än.",
-      "lateJoined": "Du är med på brädet för den dagen"
+      "lateJoined": "Du är med på brädet för den dagen",
+      "justPlayed": "Lägg upp ditt resultat på dagens bräde."
     },
     "join": {
       "title": "Delta i dagens bräde",

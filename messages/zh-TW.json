@@ -1625,7 +1625,14 @@
       "locked": "你已經打開過今天的棋盤了。每天只能玩一次，這樣才公平。",
       "seeBoard": "查看今天的棋盤",
       "chooseRound": "再玩一輪",
-      "join": "加入今天的棋盤"
+      "join": "加入今天的棋盤",
+      "fig": "每日棋盤 · {date}",
+      "pieces": "{count, plural, other {# 個棋子}}",
+      "seconds": "記憶 {count} 秒",
+      "rule": "僅限一次。按下「開始遊戲」即算一次。",
+      "start": "開始遊戲",
+      "countdown": "{count} 秒後開始",
+      "saving": "正在儲存結果…"
     },
     "page": {
       "fig": "每日棋盤 · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "你已加入今天的棋盤",
       "rank": "今天第 {rank} 名，共 {total} 人",
       "lateNote": "你玩了昨天的棋盤，但還沒有加入。",
-      "lateJoined": "你已加入那一天的棋盤"
+      "lateJoined": "你已加入那一天的棋盤",
+      "justPlayed": "把你的成績加入今天的棋盤吧。"
     },
     "join": {
       "title": "加入今天的棋盤",

@@ -1625,7 +1625,14 @@
       "locked": "Você já abriu o tabuleiro de hoje. Uma tentativa por dia mantém o jogo justo.",
       "seeBoard": "Ver o tabuleiro de hoje",
       "chooseRound": "Jogar outra rodada",
-      "join": "Entrar no tabuleiro de hoje"
+      "join": "Entrar no tabuleiro de hoje",
+      "fig": "Tabuleiro diário · {date}",
+      "pieces": "{count, plural, one {# peça} many {# peças} other {# peças}}",
+      "seconds": "{count} s para estudar",
+      "rule": "Uma tentativa. Ela conta ao pressionar Começar o jogo.",
+      "start": "Começar o jogo",
+      "countdown": "Começa em {count}",
+      "saving": "Salvando seu resultado…"
     },
     "page": {
       "fig": "Tabuleiro diário · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Você está no tabuleiro de hoje",
       "rank": "Posição {rank} de {total} hoje",
       "lateNote": "Você jogou o tabuleiro de ontem e ainda não entrou nele.",
-      "lateJoined": "Você está no tabuleiro daquele dia"
+      "lateJoined": "Você está no tabuleiro daquele dia",
+      "justPlayed": "Coloque sua pontuação no tabuleiro de hoje."
     },
     "join": {
       "title": "Entrar no tabuleiro de hoje",

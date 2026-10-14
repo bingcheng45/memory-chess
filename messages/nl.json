@@ -1625,7 +1625,14 @@
       "locked": "Je hebt het bord van vandaag al geopend. Eén poging per dag houdt het eerlijk.",
       "seeBoard": "Bekijk het bord van vandaag",
       "chooseRound": "Speel nog een ronde",
-      "join": "Doe mee met het bord van vandaag"
+      "join": "Doe mee met het bord van vandaag",
+      "fig": "Dagbord · {date}",
+      "pieces": "{count, plural, one {# stuk} other {# stukken}}",
+      "seconds": "{count} s kijktijd",
+      "rule": "Eén poging. Die telt zodra je op Start het spel drukt.",
+      "start": "Start het spel",
+      "countdown": "Start over {count}",
+      "saving": "Je resultaat wordt opgeslagen…"
     },
     "page": {
       "fig": "Dagbord · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Je staat op het bord van vandaag",
       "rank": "Plek {rank} van {total} vandaag",
       "lateNote": "Je speelde het bord van gisteren, maar staat er nog niet op.",
-      "lateJoined": "Je staat op het bord van die dag"
+      "lateJoined": "Je staat op het bord van die dag",
+      "justPlayed": "Zet je score op het bord van vandaag."
     },
     "join": {
       "title": "Doe mee met het bord van vandaag",

@@ -1625,7 +1625,14 @@
       "locked": "Anda sudah membuka papan hari ini. Satu kali percobaan sehari agar tetap adil.",
       "seeBoard": "Lihat papan hari ini",
       "chooseRound": "Main ronde lagi",
-      "join": "Ikut papan hari ini"
+      "join": "Ikut papan hari ini",
+      "fig": "Papan harian · {date}",
+      "pieces": "{count, plural, other {# bidak}}",
+      "seconds": "{count} dtk untuk menghafal",
+      "rule": "Satu percobaan. Terpakai saat Anda menekan Mulai permainan.",
+      "start": "Mulai permainan",
+      "countdown": "Mulai dalam {count}",
+      "saving": "Menyimpan hasil Anda…"
     },
     "page": {
       "fig": "Papan harian · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Anda ada di papan hari ini",
       "rank": "Peringkat {rank} dari {total} hari ini",
       "lateNote": "Anda sudah memainkan papan kemarin, tetapi belum bergabung ke papan itu.",
-      "lateJoined": "Anda ada di papan hari itu"
+      "lateJoined": "Anda ada di papan hari itu",
+      "justPlayed": "Masukkan skor Anda ke papan hari ini."
     },
     "join": {
       "title": "Ikut papan hari ini",

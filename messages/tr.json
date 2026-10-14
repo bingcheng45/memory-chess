@@ -1625,7 +1625,14 @@
       "locked": "Bugünün tahtasını zaten açtın. Günde bir deneme oyunu adil tutar.",
       "seeBoard": "Bugünün tahtasını gör",
       "chooseRound": "Bir tur daha oyna",
-      "join": "Bugünün tahtasına katıl"
+      "join": "Bugünün tahtasına katıl",
+      "fig": "Günlük tahta · {date}",
+      "pieces": "{count, plural, one {# taş} other {# taş}}",
+      "seconds": "İncelemek için {count} sn",
+      "rule": "Tek deneme. Oyunu başlat'a bastığında kullanılır.",
+      "start": "Oyunu başlat",
+      "countdown": "Başlıyor: {count}",
+      "saving": "Sonucun kaydediliyor…"
     },
     "page": {
       "fig": "Günlük tahta · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Bugünün tahtasındasın",
       "rank": "Bugün {total} kişi arasında {rank}. sıra",
       "lateNote": "Dünün tahtasını oynadın ama henüz katılmadın.",
-      "lateJoined": "O günün tahtasındasın"
+      "lateJoined": "O günün tahtasındasın",
+      "justPlayed": "Skorunu bugünün tahtasına ekle."
     },
     "join": {
       "title": "Bugünün tahtasına katıl",

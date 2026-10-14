@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "8b0cd2204a755dd9681f7141185ae093c9ee5b6e065e59cda230043d4ad93e9b",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -31,7 +31,7 @@
         "title": "Pourquoi ce jeu existe",
         "blocks": [
           {
-            "p": "La plupart des conseils pour progresser aux échecs orientent les débutants vers les ouvertures, les exercices tactiques et les cours. D’après mon expérience, un problème plus précoce se cache sous tout cela. Les débutants perdent le fil de l’échiquier. Ils ne voient plus un défenseur, oublient qu’une pièce a bougé deux coups plus tôt et laissent passer des prises qu’ils repéreraient aussitôt sur un diagramme."
+            "p": "La plupart des conseils pour progresser aux échecs orientent les débutants vers les ouvertures, les exercices tactiques et les cours. D’après mon expérience, un problème plus précoce se cache sous tout cela. Les débutants perdent le fil de l’échiquier. Ils ne voient plus un défenseur, oublient qu’une pièce a bougé deux coups plus tôt et tombent dans des prises qu’ils repéreraient aussitôt sur un diagramme."
           },
           {
             "p": "Garder une position en tête est une compétence qui s’entraîne, et il existait peu d’endroits pour la travailler directement. Alors j’en ai créé un. Memory Chess isole cette seule compétence et lui attribue un score, pour que vous puissiez la voir progresser. Si vous voulez un enjeu, vous pouvez inscrire le nom de votre choix au classement public et vous mesurer à tous les autres."
@@ -70,7 +70,7 @@
         "title": "Le parcours du site",
         "blocks": [
           {
-            "p": "La première version a été mise en ligne en mars 2025, sous la forme d’une version minimale du jeu. Le jeu sur mobile et la sélection des pièces ont suivi en quelques semaines. La bibliothèque Apprendre a été lancée en mars 2026, et en août 2026 le jeu lui-même est devenu jouable en 24 langues. Les guides et le journal des nouveautés sont en anglais. Le <changelog>journal des nouveautés</changelog> consigne chaque version publiée, corrections de bugs comprises. Je le tiens avec honnêteté, car je m’en sers moi-même pour me rappeler ce qui a changé et quand."
+            "p": "La première version a été mise en ligne en mars 2025, sous la forme d’une version minimale du jeu. Le jeu sur mobile et la sélection des pièces ont suivi en quelques semaines. La bibliothèque Apprendre a été lancée en mars 2026, et en août 2026 le jeu lui-même est devenu jouable en 24 langues. Les guides et le journal des nouveautés sont en anglais. Le <changelog>journal des nouveautés</changelog> consigne chaque version publiée, corrections de bugs comprises. Je veille à ce qu’il reste honnête, car je m’en sers moi-même pour me rappeler ce qui a changé et quand."
           }
         ]
       },

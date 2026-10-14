@@ -1,13 +1,13 @@
 {
   "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
-  "approvedHash": null,
+  "approvedHash": "dac7d3ba53ef4a6f2c1c341da6d84642f94dfaf322874917076600eb42c8786f",
   "sameAsEnglish": [],
   "text": {
     "contents": "Sommaire",
     "onThisPage": "Sur cette page",
     "lastUpdated": "Dernière mise à jour : <time>{date}</time>",
     "note": {
-      "general": "Cette page a été traduite de l’anglais avec l’aide de l’IA. La page en anglais fait référence.",
+      "general": "Cette page a été traduite de l’anglais avec l’aide de l’IA. La page en anglais sert de référence.",
       "legal": "Cette traduction a été réalisée avec l’aide de l’IA et vous est fournie pour plus de commodité. En cas de divergence avec la version anglaise, la version anglaise prévaut.",
       "readInEnglish": "La lire en anglais"
     }

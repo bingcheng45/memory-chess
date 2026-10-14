@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "42bac8360e53ff7f72652250a3e1a365830254adcfd11ac9a7d7e246f5c99bd7",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -31,7 +31,7 @@
         "title": "Por qué existe el juego",
         "blocks": [
           {
-            "p": "La mayoría de los consejos para mejorar en ajedrez dirigen a los principiantes hacia las aperturas, los ejercicios tácticos y los cursos. Según mi experiencia, el problema anterior está debajo de todo eso. Los principiantes pierden la pista del tablero. Se les pasa un defensor, olvidan una pieza que se movió hace dos jugadas y caen en capturas que verían al instante en un diagrama."
+            "p": "La mayoría de los consejos para mejorar en ajedrez dirigen a los principiantes hacia las aperturas, los ejercicios tácticos y los cursos. En mi experiencia, hay un problema previo debajo de todo eso. Los principiantes pierden la pista del tablero. Se les pasa un defensor, olvidan una pieza que se movió hace dos jugadas y caen en capturas que verían al instante en un diagrama."
           },
           {
             "p": "Retener una posición en la cabeza es una habilidad que se puede entrenar, y había pocos sitios donde practicarla directamente. Así que creé uno. Memory Chess aísla esa única habilidad y le da una puntuación, para que puedas ver cómo mejora. Si quieres algo en juego, puedes poner un nombre que elijas en la clasificación pública y medirte con todos los demás."
@@ -59,7 +59,7 @@
         "title": "Cómo se escriben las guías de Aprender",
         "blocks": [
           {
-            "p": "La <learn>biblioteca de Aprender</learn> reúne {count, plural, one {# guía} many {# guías} other {# guías}} sobre visión del tablero, visualización y entrenamiento de la memoria. Están escritas con ayuda de IA. Un script comprueba en cada posición de ajedrez que contienen el número de piezas, la legalidad y cada ataque que afirma el texto. Cada afirmación sobre cómo funciona Memory Chess se contrasta con el código del juego. Cada guía tiene ejercicios. Algunos abren una ronda en el juego con los ajustes adecuados. Los demás están pensados para un tablero real."
+            "p": "La <learn>biblioteca de Aprender</learn> reúne {count, plural, one {# guía} many {# guías} other {# guías}} sobre visión del tablero, visualización y entrenamiento de la memoria. Están escritas con ayuda de IA. Un script comprueba cada posición de ajedrez que contienen: el número de piezas, la legalidad y cada ataque que afirma el texto. Cada afirmación sobre cómo funciona Memory Chess se contrasta con el código del juego. Cada guía tiene ejercicios. Algunos abren una ronda en el juego con los ajustes adecuados. Los demás están pensados para un tablero real."
           },
           {
             "p": "Cuando las guías hacen afirmaciones sobre la memoria y el aprendizaje, citan investigación publicada, como el trabajo de Gobet y Simon sobre la memoria en el ajedrez y la literatura experimental sobre la recuperación y la práctica espaciada. Cada cita enlaza a su fuente. No he realizado ninguna investigación propia, y las guías no fingen lo contrario."

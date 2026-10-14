@@ -1,0 +1,15 @@
+{
+  "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "contents": "Spis treści",
+    "onThisPage": "Na tej stronie",
+    "lastUpdated": "Ostatnia aktualizacja: <time>{date}</time>",
+    "note": {
+      "general": "Ta strona została przetłumaczona z angielskiego z pomocą AI. Punktem odniesienia jest strona w języku angielskim.",
+      "legal": "To tłumaczenie powstało z pomocą AI i jest udostępniane dla wygody. Jeśli różni się od wersji angielskiej, rozstrzygająca jest wersja angielska.",
+      "readInEnglish": "Przeczytaj po angielsku"
+    }
+  }
+}

@@ -256,7 +256,7 @@ describe("remembering the last settings played", () => {
   it.each([
     ["1 piece", { pieceCount: 1, memorizeTime: 10 }],
     ["33 pieces", { pieceCount: 33, memorizeTime: 10 }],
-    ["1 second", { pieceCount: 6, memorizeTime: 1 }],
+    ["0 seconds", { pieceCount: 6, memorizeTime: 0 }],
     ["61 seconds", { pieceCount: 6, memorizeTime: 61 }],
     ["an out-of-range piece count", { pieceCount: 999, memorizeTime: 8 }],
     ["a missing memorize time", { pieceCount: 12 }],

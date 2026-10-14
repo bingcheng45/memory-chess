@@ -34,7 +34,7 @@ describe("LabHero games-played stat", () => {
     expect(await statsRow().findByText("46,543")).toBeInTheDocument();
     expect(factTexts()).toEqual([
       ["46,543", "46,543games played"],
-      ["2–60s", "2–60sstudy window"],
+      ["1–60s", "1–60sstudy window"],
       ["2–32", "2–32pieces per round"],
       ["24", "24languages"],
     ]);

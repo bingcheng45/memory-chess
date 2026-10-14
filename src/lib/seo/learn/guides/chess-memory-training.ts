@@ -114,7 +114,7 @@ const guide: LearnDocument = {
             "Two rounds in a row below Well Done, which is 70 percent: take two pieces away and rebuild the streak there.",
             "Change one setting at a time. Hold the look at 10 seconds until 12 pieces gives three Perfect Score rounds in a row, then drop it to 8. If you change both at once, you cannot tell which one broke.",
             "Rungs 2 and 3 use 8 and 10 pieces. Counts other than 2, 6, 12 and 20 are not preset counts, so those rounds are custom games and stay off the leaderboard. While you climb, that does not matter.",
-            "The look slider runs from 2 to 60 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
+            "The look slider runs from 1 to 60 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
           ],
         },
         {

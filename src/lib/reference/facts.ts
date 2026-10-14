@@ -22,7 +22,7 @@ export const PRESET_FACTS = RANKED_DIFFICULTIES.map((difficulty) => ({
 
 /** Bounds of the custom sliders, enforced by the position generator's clamp. */
 export const PIECE_COUNT_RANGE = { min: 2, max: 32 } as const;
-export const MEMORIZE_SECONDS_RANGE = { min: 2, max: 60 } as const;
+export const MEMORIZE_SECONDS_RANGE = { min: 1, max: 60 } as const;
 
 /** Rows the leaderboard query fetches per difficulty. */
 export const LEADERBOARD_ROW_LIMIT = 200;

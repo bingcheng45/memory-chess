@@ -1,0 +1,97 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": "dd86c4c570e2662883ac9ccb1de0412cf575a490fe7251e1276a39bf6107354a",
+  "sameAsEnglish": [
+    "sections.contact.title"
+  ],
+  "text": {
+    "meta": {
+      "title": "Termeni și condiții",
+      "description": "Termenii, pe înțelesul tuturor, pentru a juca Memory Chess, a trimite scoruri în clasament și a folosi conținutul site-ului.",
+      "socialTitle": "Termeni și condiții Memory Chess",
+      "socialDescription": "Termenii, pe înțelesul tuturor, pentru a juca Memory Chess și a folosi site-ul."
+    },
+    "kicker": "Scrisul mic",
+    "title": "Termeni și condiții",
+    "lede": "Memory Chess este un joc gratuit administrat de o singură persoană. Acești termeni sunt scurți pentru că înțelegerea este simplă și sunt scriși ca să fie citiți.",
+    "sections": {
+      "service": {
+        "title": "Serviciul",
+        "blocks": [
+          {
+            "p": "Memory Chess este un joc gratuit în browser pentru antrenarea memoriei tablei. Îl ofer „ca atare” și „în măsura disponibilității”, fără niciun fel de garanție. Mă străduiesc să fie rapid, corect și online, dar nu promit un serviciu neîntrerupt, o punctare fără erori sau că vreo funcție va rămâne neschimbată pentru totdeauna. Pot modifica, suspenda sau întrerupe definitiv orice parte a site-ului în orice moment."
+          },
+          {
+            "p": "În măsura permisă de lege, nu răspund pentru daunele care decurg din folosirea site-ului. Este un joc de memorie. Limita rezonabilă a ceea ce poate merge prost aici este pierderea unui scor la care țineai, și chiar și așa încerc din greu să previn asta."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Utilizare acceptabilă",
+        "blocks": [
+          {
+            "p": "Joacă cinstit și lasă site-ul funcțional pentru toți ceilalți. Nu ataca, nu supraîncărca și nu sonda serviciul, nu extrage date din el în volum mare și nu încerca să îi strici punctarea. Nu trimite scoruri generate de boți, scripturi sau orice fel de automatizare. Nu folosi formularul de contact sau clasamentul pentru spam, pentru a hărțui pe cineva sau pentru a te da drept altcineva."
+          },
+          {
+            "p": "Formularul de contact este pentru mesaje reale către o persoană reală. Folosește-l pentru rapoarte de erori, întrebări și idei, iar mesajul tău va fi citit."
+          },
+          {
+            "p": "Pot bloca traficul sau restricționa accesul care încalcă aceste reguli. Neexistând conturi de suspendat, eliminarea intrărilor necorespunzătoare și blocarea abuzurilor la marginea rețelei sunt mijloacele de aplicare pe care le am, și le folosesc."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Clasamentul",
+        "blocks": [
+          {
+            "p": "Trimiterea unui scor în clasament este opțională. Tot ce trimiți acolo este public. Numele atașat unui scor este cel pe care îl tastezi, așa că alege ceva ce nu te deranjează să vezi publicat și nu folosi numele tău real sau informațiile personale ale cuiva dacă preferi să rămână private."
+          },
+          {
+            "p": "O intrare trimisă conține numele ales de tine și detaliile rundei, precum precizia, dificultatea și timpul de finalizare. Odată publicată, rămâne în clasament până când este depășită de scoruri mai bune sau eliminată."
+          },
+          {
+            "p": "Pot elimina intrările din clasament care sunt abuzive, care se dau drept altcineva, care par automatizate sau care în mod clar nu au fost obținute de o persoană care joacă jocul. Elimin intrări ca să păstrez clasamentul onest, nu ca să aleg cine câștigă."
+          }
+        ]
+      },
+      "content": {
+        "title": "Conținut și proprietate intelectuală",
+        "blocks": [
+          {
+            "p": "Conținutul propriu al site-ului, inclusiv jocul, ghidurile din Învață, designul și codul care îl face să funcționeze, îmi aparține. Poți oricând să pui link către orice pagină, să citezi fragmente rezonabile cu menționarea sursei și să îți distribui scorurile oriunde dorești. Nu republica ghiduri întregi și nu prezenta conținutul site-ului ca fiind al tău."
+          },
+          {
+            "p": "Șahul în sine nu aparține nimănui. Pozițiile, regulile și notația sunt libere pentru toată lumea, aici și oriunde altundeva."
+          },
+          {
+            "p": "Dacă trimiți păreri sau sugestii, ești de acord că le pot folosi pentru a îmbunătăți site-ul fără să îți datorez vreo compensație sau vreo mențiune. Părerile jucătorilor au influențat deja versiuni reale, iar pagina de noutăți consemnează ce a rezultat din ele."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Servicii terțe",
+        "blocks": [
+          {
+            "p": "Site-ul funcționează cu ajutorul unui set mic de servicii externe. Google AdSense afișează reclamele care îl mențin gratuit. Google Analytics, Vercel Analytics, Vercel Speed Insights și Ahrefs Analytics măsoară traficul și performanța. Supabase stochează statisticile jocului și intrările din clasament. Fiecare are propriii termeni, iar <privacy>politica de confidențialitate</privacy> explică ce date atinge fiecare și ce opțiuni ai."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Modificări ale acestor termeni",
+        "blocks": [
+          {
+            "p": "Pot actualiza acești termeni atunci când se schimbă site-ul sau serviciile lui. Versiunea curentă se află întotdeauna la această adresă, iar dacă continui să folosești site-ul după o modificare, înseamnă că accepți termenii actualizați. Pentru orice afectează în mod semnificativ jucătorii, cum ar fi o schimbare în modul de funcționare a clasamentului, notez asta și în pagina de noutăți."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Contact",
+        "blocks": [
+          {
+            "p": "Întrebările despre acești termeni sau o intrare din clasament pe care vrei să fie verificată sau eliminată se trimit la <mail>{email}</mail>. Le răspund chiar eu."
+          }
+        ]
+      }
+    }
+  }
+}

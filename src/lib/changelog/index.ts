@@ -41,7 +41,7 @@ export interface ChangelogTable {
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
     version: "2.0.0",
-    publishedAt: "2026-10-13T23:15:00.000+08:00",
+    publishedAt: "2026-10-14T20:45:00.000+08:00",
     title: "Memory Chess 2.0: a daily board, your own dashboard, and a whole new look",
     summary:
       "The biggest update since launch. There is a new board every day that everyone plays, a dashboard that shows how your memory is changing, a result screen that tells you what each round did to your numbers, and a fresh design in all 24 languages.",

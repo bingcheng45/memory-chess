@@ -43,13 +43,13 @@ type SitemapEntryConfig = {
 const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   {
     path: "/",
-    lastModified: "2026-10-13T00:00:00.000Z",
+    lastModified: "2026-10-14T00:00:00.000Z",
     changeFrequency: "weekly",
     priority: 1.0,
   },
   {
     path: "/game",
-    lastModified: "2026-10-13T00:00:00.000Z",
+    lastModified: "2026-10-14T00:00:00.000Z",
     changeFrequency: "weekly",
     priority: 0.9,
   },

@@ -69,7 +69,7 @@ describe("ChangelogPage", () => {
     const menu = screen.getByRole("button", { name: "Releases" }).parentElement as HTMLElement;
     const links = within(menu).getAllByRole("link", { hidden: true });
     expect(links[0]).toHaveAttribute("href", "#v2-0-0");
-    expect(links[0]).toHaveTextContent("v2.0.0October 13, 2026");
+    expect(links[0]).toHaveTextContent("v2.0.0October 14, 2026");
     expect(links.map((link) => link.getAttribute("href"))).toEqual(
       CHANGELOG_ENTRIES.map((entry) => `#v${entry.version.replaceAll(".", "-")}`),
     );
@@ -79,7 +79,7 @@ describe("ChangelogPage", () => {
     const { container } = render(<ChangelogPage />);
 
     const newest = container.querySelector("article#v2-0-0") as HTMLElement;
-    expect(within(newest).getByText("October 13, 2026")).toHaveAttribute("datetime", "2026-10-13T23:15:00.000+08:00");
+    expect(within(newest).getByText("October 14, 2026")).toHaveAttribute("datetime", "2026-10-14T20:45:00.000+08:00");
     expect(within(newest).getByText("Latest")).toBeInTheDocument();
     expect(screen.getAllByText("Latest")).toHaveLength(1);
   });
@@ -91,8 +91,8 @@ describe("ChangelogPage", () => {
     const links = within(index).getAllByRole("link");
     expect(links).toHaveLength(CHANGELOG_ENTRIES.length);
     expect(links[0]).toHaveAttribute("href", "#v2-0-0");
-    expect(links[0]).toHaveTextContent("v2.0.0October 13, 2026Memory Chess 2.0: a daily board, your own dashboard, and a whole new look");
-    expect(within(links[0]).getByText("October 13, 2026")).toHaveAttribute("datetime", "2026-10-13T23:15:00.000+08:00");
+    expect(links[0]).toHaveTextContent("v2.0.0October 14, 2026Memory Chess 2.0: a daily board, your own dashboard, and a whole new look");
+    expect(within(links[0]).getByText("October 14, 2026")).toHaveAttribute("datetime", "2026-10-14T20:45:00.000+08:00");
     expect(links.map((link) => link.getAttribute("href"))).toEqual(
       CHANGELOG_ENTRIES.map((entry) => `#v${entry.version.replaceAll(".", "-")}`),
     );

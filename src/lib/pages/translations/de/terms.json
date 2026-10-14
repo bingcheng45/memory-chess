@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Nutzungsbedingungen",
+      "description": "Die verständlich formulierten Bedingungen für das Spielen von Memory Chess, das Eintragen von Ergebnissen in die Bestenliste und die Nutzung der Inhalte der Website.",
+      "socialTitle": "Nutzungsbedingungen von Memory Chess",
+      "socialDescription": "Die verständlich formulierten Bedingungen für das Spielen von Memory Chess und die Nutzung der Website."
+    },
+    "kicker": "Das Kleingedruckte",
+    "title": "Nutzungsbedingungen",
+    "lede": "Memory Chess ist ein kostenloses Spiel, das eine einzige Person betreibt. Diese Bedingungen sind kurz, weil die Vereinbarung einfach ist, und sie sind dafür geschrieben, gelesen zu werden.",
+    "sections": {
+      "service": {
+        "title": "Das Angebot",
+        "blocks": [
+          {
+            "p": "Memory Chess ist ein kostenloses Browserspiel zum Training des Brettgedächtnisses. Ich stelle es so bereit, wie es ist und wie es verfügbar ist, ohne jegliche Gewährleistung. Ich arbeite daran, es schnell, genau und online zu halten, aber ich verspreche weder einen unterbrechungsfreien Betrieb noch eine fehlerfreie Wertung, noch dass irgendeine Funktion für immer gleich bleibt. Ich kann jeden Teil der Website jederzeit ändern, aussetzen oder einstellen."
+          },
+          {
+            "p": "Soweit gesetzlich zulässig, hafte ich nicht für Schäden, die aus deiner Nutzung der Website entstehen. Es ist ein Gedächtnisspiel. Das Schlimmste, was hier vernünftigerweise passieren kann, ist, dass du ein Ergebnis verlierst, das dir wichtig war, und auch das versuche ich mit aller Kraft zu verhindern."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Zulässige Nutzung",
+        "blocks": [
+          {
+            "p": "Spiel fair und lass die Website für alle anderen funktionsfähig. Greif den Dienst nicht an, überlaste ihn nicht und taste ihn nicht ab, lies ihn nicht in großem Umfang automatisiert aus und versuche nicht, seine Wertung auszuhebeln. Reiche keine Ergebnisse ein, die von Bots, Skripten oder irgendeiner Art von Automatisierung erzeugt wurden. Nutze das Kontaktformular oder die Bestenliste nicht, um jemanden zuzuspammen, zu belästigen oder dich als jemand anderes auszugeben."
+          },
+          {
+            "p": "Das Kontaktformular ist für echte Nachrichten an einen echten Menschen da. Nutze es für Fehlermeldungen, Fragen und Ideen, und es wird gelesen."
+          },
+          {
+            "p": "Ich kann Datenverkehr blockieren oder den Zugang einschränken, wenn er gegen diese Regeln verstößt. Da es keine Konten zum Sperren gibt, sind das Entfernen unzulässiger Einträge und das Blockieren von Missbrauch an der Netzwerkgrenze die Mittel, die ich zur Durchsetzung habe, und ich setze sie ein."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Die Bestenliste",
+        "blocks": [
+          {
+            "p": "Ein Ergebnis in die Bestenliste einzutragen ist freiwillig. Alles, was du dort einreichst, ist öffentlich. Der Name zu einem Ergebnis ist genau das, was du eintippst. Wähle also etwas, das du gern veröffentlicht siehst, und verwende weder deinen echten Namen noch personenbezogene Daten anderer, wenn du sie lieber für dich behalten möchtest."
+          },
+          {
+            "p": "Ein eingereichter Eintrag enthält den Namen, den du gewählt hast, und die Angaben zur Runde, etwa Genauigkeit, Schwierigkeitsstufe und Lösungszeit. Einmal veröffentlicht, bleibt er in der Bestenliste, bis er von besseren Ergebnissen verdrängt oder entfernt wird."
+          },
+          {
+            "p": "Ich kann Einträge aus der Bestenliste entfernen, die beleidigend sind, die sich als jemand anderes ausgeben, die automatisiert erscheinen oder die eindeutig nicht von einem Menschen beim Spielen erzielt wurden. Ich entferne Einträge, um die Bestenliste ehrlich zu halten, nicht um auszuwählen, wer gewinnt."
+          }
+        ]
+      },
+      "content": {
+        "title": "Inhalte und geistiges Eigentum",
+        "blocks": [
+          {
+            "p": "Die eigenen Inhalte der Website, einschließlich des Spiels, der Lern-Guides, des Designs und des Codes, mit dem sie läuft, gehören mir. Du darfst gern auf jede Seite verlinken, angemessene Auszüge mit Quellenangabe zitieren und deine Ergebnisse teilen, wo immer du möchtest. Veröffentliche keine ganzen Guides erneut und gib die Inhalte der Website nicht als deine eigenen aus."
+          },
+          {
+            "p": "Das Schachspiel selbst gehört niemandem. Stellungen, Regeln und Notation sind für alle frei, hier und überall sonst."
+          },
+          {
+            "p": "Wenn du Feedback oder Vorschläge sendest, erklärst du dich damit einverstanden, dass ich sie zur Verbesserung der Website nutzen darf, ohne dir dafür eine Vergütung oder Nennung zu schulden. Feedback von Spielern hat schon echte Veröffentlichungen geprägt, und das Änderungsprotokoll hält fest, was daraus wurde."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Dienste von Drittanbietern",
+        "blocks": [
+          {
+            "p": "Die Website läuft auf einer kleinen Zahl externer Dienste. Google AdSense liefert die Anzeigen aus, die sie kostenlos halten. Google Analytics, Vercel Analytics, Vercel Speed Insights und Ahrefs Analytics messen Besucherzahlen und Leistung. Supabase speichert Spielstatistiken und Einträge in der Bestenliste. Jeder dieser Dienste hat eigene Bedingungen, und die <privacy>Datenschutzerklärung</privacy> erklärt, mit welchen Daten jeder von ihnen in Berührung kommt und welche Wahlmöglichkeiten du hast."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Änderungen dieser Bedingungen",
+        "blocks": [
+          {
+            "p": "Ich kann diese Bedingungen aktualisieren, wenn sich die Website oder ihre Dienste ändern. Die aktuelle Fassung steht immer unter dieser Adresse, und wenn du die Website nach einer Änderung weiter nutzt, akzeptierst du die aktualisierten Bedingungen. Alles, was Spieler spürbar betrifft, etwa eine Änderung an der Funktionsweise der Bestenliste, vermerke ich zusätzlich im Änderungsprotokoll."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Kontakt",
+        "blocks": [
+          {
+            "p": "Fragen zu diesen Bedingungen oder einen Eintrag in der Bestenliste, den du prüfen oder entfernen lassen möchtest, schick an <mail>{email}</mail>. Ich beantworte sie selbst."
+          }
+        ]
+      }
+    }
+  }
+}

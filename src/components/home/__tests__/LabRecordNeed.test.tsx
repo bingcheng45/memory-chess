@@ -50,26 +50,26 @@ describe("a warming record panel", () => {
     showRounds("game", 8, 15);
 
     expect(playLinks("Accuracy over time")).toEqual(["/game?pieceCount=8&memorizeTime=15&source=home_quick"]);
-    expect(playLinks("Speed")).toEqual(["/game?pieceCount=8&memorizeTime=15&source=home_quick"]);
+    expect(playLinks("Recall pace")).toEqual(["/game?pieceCount=8&memorizeTime=15&source=home_quick"]);
   });
 
   it("sends a practice trend and speed line to the practice rounds on the home page", () => {
     showRounds("calibration", 6, 10);
 
     expect(playLinks("Accuracy over time")).toEqual(["/#calibrate"]);
-    expect(playLinks("Speed")).toEqual(["/#calibrate"]);
+    expect(playLinks("Recall pace")).toEqual(["/#calibrate"]);
   });
 
   it("records which panel the round was started from", () => {
     showRounds("game", 8, 15);
-    fireEvent.click(within(panel("Speed")).getByRole("link", { name: "Play a round →" }));
+    fireEvent.click(within(panel("Recall pace")).getByRole("link", { name: "Play a round →" }));
 
     expect(trackEvent).toHaveBeenCalledWith({ name: "lab_panel_action", params: { panel: "speed", action: "play" } });
   });
 
   it("leaves the Sample panels of a new visitor without one", () => {
     renderWithIntl(<LabRecordSection record={persona("newVisitor")} />);
-    const sample = ["Memory span", "Pieces held", "Accuracy over time", "Speed", "Miss map", "Recall by piece type", "Insights", "Days in a row"].flatMap(playLinks);
+    const sample = ["Memory span", "Pieces held", "Accuracy over time", "Recall pace", "Miss map", "Recall by piece type", "Insights", "Days in a row"].flatMap(playLinks);
     expect(sample).toEqual([]);
   });
 

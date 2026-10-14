@@ -30,7 +30,7 @@ describe("unlock strip", () => {
       ["Fig. 1 · Memory span", "2 rounds at 80%+ with 3+ pieces"],
       ["Fig. 2 · Pieces held", "5 rounds over 2 days"],
       ["Fig. 3 · Accuracy over time", "5 rounds at one setting over 2 days"],
-      ["Fig. 4 · Speed", "5 rounds at one setting"],
+      ["Fig. 4 · Recall pace", "5 rounds at one setting"],
       ["Fig. 6 · Days in a row", "2 days played"],
       ["Fig. 7 · Forgetting curve", "3 reviews after the same gap"],
       ["Fig. 8 · Lab notebook", "1 round"],
@@ -49,7 +49,7 @@ describe("unlock strip", () => {
       ["Fig. 1 · Memory span", "1 more round at 80%+ with 3+ pieces"],
       ["Fig. 2 · Pieces held", "3 more rounds, 1 more day"],
       ["Fig. 3 · Accuracy over time", "4 more game rounds at 6 pieces, 10\u00a0s, 1 more day"],
-      ["Fig. 4 · Speed", "4 more game rounds at 6 pieces, 10\u00a0s"],
+      ["Fig. 4 · Recall pace", "4 more game rounds at 6 pieces, 10\u00a0s"],
       ["Fig. 6 · Days in a row", "1 more day played"],
       ["Fig. 7 · Forgetting curve", "3 more reviews after the same gap"],
       ["Fig. 9 · Miss map", "10 more sightings on the least seen file or rank"],
@@ -155,7 +155,7 @@ describe("unlock strip", () => {
     );
     renderWithIntl(<LabRecordSection record={{ ...persona("newVisitor"), records, summary: summarize(records) }} />);
 
-    expect(rows()).toContainEqual(["Fig. 4 · Speed", "1 round with a piece right"]);
+    expect(rows()).toContainEqual(["Fig. 4 · Recall pace", "1 round with a piece right"]);
   });
 
   it("drops the streak and piece recall lines exactly when their copy says they unlock", () => {

@@ -465,7 +465,7 @@
           "last": "Najnowsze"
         },
         "speed": {
-          "fig": "Ryc. {number} · Tempo",
+          "fig": "Ryc. {number} · Tempo odtwarzania",
           "title": "Sekundy na każdą odtworzoną figurę.",
           "aria": "Przykładowa linia sekund odtwarzania na poprawną figurę w 12 rundach, spadająca od 4,1 do 2,6 sekundy.",
           "note": "Przykładowy dziennik · 12 rund · Średni",
@@ -483,7 +483,7 @@
           "fastWrong": "Szybko i źle to nie postęp.",
           "config": "{source, select, calibration {Trening} other {Partia}} · figury: {pieceCount} · {studyTime}, twoje najczęstsze ustawienie w ostatnim czasie · Z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
           "need": "{count, plural, one {Jeszcze # runda} few {Jeszcze # rundy} many {Jeszcze # rund} other {Jeszcze # rundy}} z {pieceCount} figurami, {studyTime}, {source, select, calibration {w treningu} other {w partiach}} {count, plural, one {narysuje} few {narysują} many {narysuje} other {narysuje}} twoją linię tempa.",
-          "needRight": "Tempo bierze pod uwagę tylko rundy z co najmniej jedną poprawną figurą. Zagraj {count, plural, one {# taką rundę} few {# takie rundy} many {# takich rund} other {# takiej rundy}}, aby zacząć swoją linię.",
+          "needRight": "Tempo odtwarzania bierze pod uwagę tylko rundy z co najmniej jedną poprawną figurą. Zagraj {count, plural, one {# taką rundę} few {# takie rundy} many {# takich rund} other {# takiej rundy}}, aby zacząć swoją linię.",
           "first": "Najstarsze",
           "last": "Najnowsze"
         },
@@ -832,7 +832,7 @@
             "title": "Mój odczyt w Memory Chess",
             "span": "Zakres pamięci: {pieceCount, plural, one {# figura} few {# figury} many {# figur} other {# figury}}, {accuracy}% lub więcej w {count, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}}",
             "held": "Zapamiętane figury: ostatnia średnia {average}, z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
-            "speed": "Tempo: ostatnia średnia {average} na figurę {source, select, calibration {w treningu} other {w partiach}} przy {pieceCount} figurach, {studyTime}, z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+            "speed": "Tempo odtwarzania: ostatnia średnia {average} na figurę {source, select, calibration {w treningu} other {w partiach}} przy {pieceCount} figurach, {studyTime}, z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
             "site": "thememorychess.com",
             "copy": "Kopiuj mój odczyt",
             "copied": "Skopiowano. Wklej, gdzie chcesz.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Ostatnia dokładność",
       "span": "Zakres pamięci",
       "piecesHeld": "Zapamiętane figury",
-      "speed": "Tempo",
+      "speed": "Tempo odtwarzania",
       "studyTime": "Czas na zapamiętanie",
       "rebuildTime": "Czas ustawiania",
       "streak": "Seria dni",
@@ -1463,7 +1463,7 @@
         "aria": "Dokładność w ostatnich rundach ({count}) z {pieceCount} figurami, {memorizeSeconds} s, w skali od 0 do 100 procent, ostatnio {latest} procent."
       },
       "speed": {
-        "title": "Tempo w czasie",
+        "title": "Tempo odtwarzania w czasie",
         "unit": "Sekundy na poprawną figurę. Mniej znaczy szybciej.",
         "note": "{source, select, calibration {Rundy treningowe} other {Rundy w partiach}} z {pieceCount} figurami, {memorizeSeconds} s. Ostatnie rundy: {count, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}.",
         "aria": "Sekundy na poprawną figurę w ostatnich rundach ({count}) z {pieceCount} figurami, {memorizeSeconds} s, ostatnio {latest}."

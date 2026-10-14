@@ -465,7 +465,7 @@
           "last": "Uusin"
         },
         "speed": {
-          "fig": "Kuva {number} · Nopeus",
+          "fig": "Kuva {number} · Muistamistahti",
           "title": "Sekuntia rakentamaasi nappulaa kohden.",
           "aria": "Esimerkkiviiva rakennussekunneista oikeaa nappulaa kohden 12 kierroksen aikana, laskee 4,1 sekunnista 2,6 sekuntiin.",
           "note": "Esimerkkipäiväkirja · 12 kierrosta · Keskitaso",
@@ -483,7 +483,7 @@
           "fastWrong": "Nopea ja väärä ei ole kehitystä.",
           "config": "{source, select, calibration {Harjoitus} other {Peli}} · {pieceCount} nappulaa · {studyTime}, viime aikoina eniten pelaamasi asetus · {count, plural, one {# kierroksesta} other {# kierroksesta}}",
           "need": "{count, plural, one {Vielä # kierros} other {Vielä # kierrosta}} asetuksella {pieceCount} nappulaa, {studyTime} {source, select, calibration {harjoituksessa} other {peleissä}} piirtää nopeusviivasi.",
-          "needRight": "Nopeus lukee vain kierroksia, joilla vähintään yksi nappula on oikein. Pelaa {count, plural, one {# tällainen kierros} other {# tällaista kierrosta}} aloittaaksesi viivasi.",
+          "needRight": "Muistamistahti lukee vain kierroksia, joilla vähintään yksi nappula on oikein. Pelaa {count, plural, one {# tällainen kierros} other {# tällaista kierrosta}} aloittaaksesi viivasi.",
           "first": "Vanhin",
           "last": "Uusin"
         },
@@ -832,7 +832,7 @@
             "title": "Memory Chess -mittaukseni",
             "span": "Muistijänne: {pieceCount, plural, one {# nappula} other {# nappulaa}}, vähintään {accuracy} % {count, plural, one {# kierroksella} other {# kierroksella}}",
             "held": "Muistetut nappulat: viimeaikainen keskiarvo {average}, {count, plural, one {# kierroksesta} other {# kierroksesta}}",
-            "speed": "Nopeus: viimeaikainen keskiarvo {average} nappulaa kohden {source, select, calibration {harjoituksessa} other {peleissä}} asetuksella {pieceCount} nappulaa, {studyTime}, {count, plural, one {# kierroksesta} other {# kierroksesta}}",
+            "speed": "Muistamistahti: viimeaikainen keskiarvo {average} nappulaa kohden {source, select, calibration {harjoituksessa} other {peleissä}} asetuksella {pieceCount} nappulaa, {studyTime}, {count, plural, one {# kierroksesta} other {# kierroksesta}}",
             "site": "thememorychess.com",
             "copy": "Kopioi mittaukseni",
             "copied": "Kopioitu. Liitä se minne haluat.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Viimeaikainen tarkkuus",
       "span": "Muistijänne",
       "piecesHeld": "Muistetut nappulat",
-      "speed": "Nopeus",
+      "speed": "Muistamistahti",
       "studyTime": "Tutkimisaika",
       "rebuildTime": "Asetteluaika",
       "streak": "Päiväputki",
@@ -1463,7 +1463,7 @@
         "aria": "Tarkkuus viimeisillä {count} kierroksellasi, {pieceCount} nappulaa, {memorizeSeconds} s, asteikolla 0–100 prosenttia, viimeisin {latest} prosenttia."
       },
       "speed": {
-        "title": "Nopeus ajan mittaan",
+        "title": "Muistamistahti ajan mittaan",
         "unit": "Sekuntia oikeaa nappulaa kohden. Pienempi on nopeampi.",
         "note": "{source, select, calibration {Harjoituksen kierrokset} other {Pelien kierrokset}}, {pieceCount} nappulaa, {memorizeSeconds} s. {count, plural, one {Viimeinen # kierros} other {Viimeiset # kierrosta}}.",
         "aria": "Sekuntia oikeaa nappulaa kohden viimeisillä {count} kierroksellasi, {pieceCount} nappulaa, {memorizeSeconds} s, viimeisin {latest}."

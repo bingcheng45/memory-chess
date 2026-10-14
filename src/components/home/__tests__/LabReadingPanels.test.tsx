@@ -145,7 +145,7 @@ describe("pieces held", () => {
 describe("speed", () => {
   it("shows an example line, tagged Sample, before any round", () => {
     show("newVisitor", "");
-    const speed = panel("Speed");
+    const speed = panel("Recall pace");
 
     expect(tagOf(speed)).toBe("Sample");
     expect(texts(speed, ".lab-reading-stat")).toEqual(["Recent average 3.1\u00a0s per piece", "Accuracy on the same rounds 88%"]);
@@ -155,7 +155,7 @@ describe("speed", () => {
 
   it("prints accuracy over the same rounds beside a faster pace", () => {
     show("spanClimber");
-    const speed = panel("Speed");
+    const speed = panel("Recall pace");
 
     expect(texts(speed, ".lab-reading-stat")).toEqual([
       "Recent average 1.6\u00a0s per piece · 0.1\u00a0s faster than the 10 rounds before",
@@ -169,7 +169,7 @@ describe("speed", () => {
 
   it("warns that fast and wrong is not improvement when accuracy fell as the pace quickened", () => {
     show("stale");
-    const speed = panel("Speed");
+    const speed = panel("Recall pace");
 
     expect(texts(speed, ".lab-reading-stat")).toEqual([
       "Recent average 3.4\u00a0s per piece · 0.5\u00a0s faster than the 10 rounds before",
@@ -181,7 +181,7 @@ describe("speed", () => {
 
   it("gives no warning when the pace slowed", () => {
     show("thirtyDays");
-    const speed = panel("Speed");
+    const speed = panel("Recall pace");
 
     expect(texts(speed, ".lab-reading-stat")).toEqual([
       "Recent average 1.8\u00a0s per piece · 0.1\u00a0s slower than the 10 rounds before",
@@ -193,22 +193,22 @@ describe("speed", () => {
   it("prints only the averages before there are 20 rounds to compare", () => {
     show("threeDays");
 
-    expect(texts(panel("Speed"), ".lab-reading-stat")).toEqual(["Recent average 4.6\u00a0s per piece", "Accuracy on the same rounds 92%"]);
+    expect(texts(panel("Recall pace"), ".lab-reading-stat")).toEqual(["Recent average 4.6\u00a0s per piece", "Accuracy on the same rounds 92%"]);
   });
 
   it("says how many more rounds at the setting draw the line", () => {
     show("twoRounds");
 
-    expect(texts(panel("Speed"), ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10\u00a0s in games draw your speed line. Play a round →"]);
+    expect(texts(panel("Recall pace"), ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10\u00a0s in games draw your recall pace line. Play a round →"]);
   });
 
   it("tags the sample chart as a Sample, and still says what is needed, when no round so far had a piece right", () => {
     showNothingRight();
-    const speed = panel("Speed");
+    const speed = panel("Recall pace");
 
     expect(tagOf(speed)).toBe("Sample");
     expect(within(speed).getByText("Sample record · 12 rounds · Medium")).toBeInTheDocument();
-    expect(texts(speed, ".lab-empty")).toEqual(["Speed reads only rounds with at least one piece right. Play 1 such round to start your line. Play a round →"]);
+    expect(texts(speed, ".lab-empty")).toEqual(["Recall pace reads only rounds with at least one piece right. Play 1 such round to start your line. Play a round →"]);
   });
 });
 
@@ -288,7 +288,7 @@ describe("chart labels", () => {
 
 
 describe("a panel that is still warming up", () => {
-  const READING_PANELS = ["Memory span", "Pieces held", "Accuracy over time", "Speed"];
+  const READING_PANELS = ["Memory span", "Pieces held", "Accuracy over time", "Recall pace"];
 
   it.each(PERSONA_NAMES)("never leaves its reserved chart space empty for %s", (name) => {
     show(name);
@@ -303,8 +303,8 @@ describe("a panel that is still warming up", () => {
   it("covers a player who has played but not enough for any line", () => {
     show("twoRounds");
 
-    const speed = panel("Speed");
-    expect(texts(speed, ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10 s in games draw your speed line. Play a round →"]);
+    const speed = panel("Recall pace");
+    expect(texts(speed, ".lab-empty")).toEqual(["4 more rounds at 6 pieces, 10 s in games draw your recall pace line. Play a round →"]);
     expect(within(speed).getByRole("img")).toBeInTheDocument();
     expect(tagOf(speed)).toBe("Sample");
   });

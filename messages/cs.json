@@ -465,7 +465,7 @@
           "last": "Nejnovější"
         },
         "speed": {
-          "fig": "Obr. {number} · Rychlost",
+          "fig": "Obr. {number} · Tempo vybavování",
           "title": "Sekundy na každou rozestavenou figuru.",
           "aria": "Ukázková křivka sekund rozestavení na správnou figuru za 12 kol, klesá ze 4,1 na 2,6 sekundy.",
           "note": "Ukázkový záznam · 12 kol · Střední",
@@ -483,7 +483,7 @@
           "fastWrong": "Rychle a špatně není zlepšení.",
           "config": "{source, select, calibration {Trénink} other {Partie}} · figury: {pieceCount} · {studyTime}, vaše poslední dobou nejčastější nastavení · Z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
           "need": "Ještě {count, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} s {pieceCount} figurami, {studyTime} {source, select, calibration {v tréninku} other {v partiích}} a {count, plural, one {vykreslí} few {vykreslí} many {vykreslí} other {vykreslí}} se vaše křivka rychlosti.",
-          "needRight": "Rychlost počítá jen kola, kde je aspoň jedna figura správně. Odehrajte {count, plural, one {# takové kolo} few {# taková kola} many {# takového kola} other {# takových kol}} a vaše křivka začne.",
+          "needRight": "Tempo vybavování počítá jen kola, kde je aspoň jedna figura správně. Odehrajte {count, plural, one {# takové kolo} few {# taková kola} many {# takového kola} other {# takových kol}} a vaše křivka začne.",
           "first": "Nejstarší",
           "last": "Nejnovější"
         },
@@ -832,7 +832,7 @@
             "title": "Moje měření v Memory Chess",
             "span": "Paměťový rozsah: {pieceCount, plural, one {# figura} few {# figury} many {# figury} other {# figur}}, {accuracy} % nebo víc v {count, plural, one {# kole} few {# kolech} many {# kola} other {# kolech}}",
             "held": "Zapamatované figury: nedávný průměr {average}, z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
-            "speed": "Rychlost: nedávný průměr {average} na figuru {source, select, calibration {v tréninku} other {v partiích}} při {pieceCount} figurách, {studyTime}, z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
+            "speed": "Tempo vybavování: nedávný průměr {average} na figuru {source, select, calibration {v tréninku} other {v partiích}} při {pieceCount} figurách, {studyTime}, z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
             "site": "thememorychess.com",
             "copy": "Zkopírovat moje měření",
             "copied": "Zkopírováno. Vložte to kamkoli.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Nedávná přesnost",
       "span": "Paměťový rozsah",
       "piecesHeld": "Zapamatované figury",
-      "speed": "Rychlost",
+      "speed": "Tempo vybavování",
       "studyTime": "Čas na zapamatování",
       "rebuildTime": "Čas rozestavení",
       "streak": "Denní série",
@@ -1463,7 +1463,7 @@
         "aria": "Přesnost v tvých posledních {count} kolech při {pieceCount} figurách, {memorizeSeconds} s, na stupnici od 0 do 100 procent, naposledy {latest} procent."
       },
       "speed": {
-        "title": "Rychlost v čase",
+        "title": "Tempo vybavování v čase",
         "unit": "Sekundy na správnou figuru. Méně znamená rychleji.",
         "note": "{source, select, calibration {Tréninková kola} other {Kola v partiích}} při {pieceCount} figurách, {memorizeSeconds} s. {count, plural, one {Poslední # kolo} few {Poslední # kola} many {Posledního # kola} other {Posledních # kol}}.",
         "aria": "Sekundy na správnou figuru v tvých posledních {count} kolech při {pieceCount} figurách, {memorizeSeconds} s, naposledy {latest}."

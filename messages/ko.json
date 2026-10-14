@@ -465,7 +465,7 @@
           "last": "최신"
         },
         "speed": {
-          "fig": "그림 {number} · 속도",
+          "fig": "그림 {number} · 회상 페이스",
           "title": "다시 세울 때 기물 하나에 걸리는 초.",
           "aria": "12라운드 동안 맞힌 기물 하나당 배치 시간을 보여 주는 샘플 선 그래프. 4.1초에서 2.6초로 줄어듭니다.",
           "note": "샘플 기록 · 12라운드 · 보통",
@@ -483,7 +483,7 @@
           "fastWrong": "빠르지만 틀린다면 실력이 는 것이 아닙니다.",
           "config": "{source, select, calibration {연습} other {게임}} · 기물 {pieceCount}개 · {studyTime}, 최근 가장 많이 한 설정 · {count, plural, other {#라운드}} 기준",
           "need": "기물 {pieceCount}개, {studyTime}의 {source, select, calibration {연습} other {게임}}으로 {count, plural, other {#라운드}} 더 하면 속도 선이 그려집니다.",
-          "needRight": "속도는 기물을 하나 이상 맞힌 라운드만 읽습니다. 그런 라운드를 {count, plural, other {#번}} 하면 선이 시작됩니다.",
+          "needRight": "회상 페이스는 기물을 하나 이상 맞힌 라운드만 읽습니다. 그런 라운드를 {count, plural, other {#번}} 하면 선이 시작됩니다.",
           "first": "가장 오래됨",
           "last": "최신"
         },
@@ -832,7 +832,7 @@
             "title": "내 Memory Chess 측정값",
             "span": "기억 범위: {pieceCount, plural, other {기물 #개}}, {count, plural, other {#라운드}}에서 {accuracy}% 이상",
             "held": "기억한 기물: 최근 평균 {average}, {count, plural, other {#라운드}} 기준",
-            "speed": "속도: 기물 {pieceCount}개, {studyTime} 설정의 {source, select, calibration {연습} other {게임}}에서 최근 평균 기물당 {average}, {count, plural, other {#라운드}} 기준",
+            "speed": "회상 페이스: 기물 {pieceCount}개, {studyTime} 설정의 {source, select, calibration {연습} other {게임}}에서 최근 평균 기물당 {average}, {count, plural, other {#라운드}} 기준",
             "site": "thememorychess.com",
             "copy": "내 측정값 복사",
             "copied": "복사했습니다. 어디든 붙여 넣으세요.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "최근 정확도",
       "span": "기억 범위",
       "piecesHeld": "기억한 말",
-      "speed": "속도",
+      "speed": "회상 페이스",
       "studyTime": "암기 시간",
       "rebuildTime": "배치 시간",
       "streak": "연속 일수",
@@ -1463,7 +1463,7 @@
         "aria": "{pieceCount}개, {memorizeSeconds}초로 플레이한 최근 {count}라운드의 정확도, 0~100퍼센트 척도, 최신 {latest}퍼센트."
       },
       "speed": {
-        "title": "시간에 따른 속도",
+        "title": "시간에 따른 회상 페이스",
         "unit": "맞힌 말 하나당 초. 낮을수록 빠릅니다.",
         "note": "{source, select, calibration {연습} other {게임}} 라운드 {pieceCount}개, {memorizeSeconds}초. 최근 {count, plural, other {#라운드}}.",
         "aria": "{pieceCount}개, {memorizeSeconds}초로 플레이한 최근 {count}라운드의 맞힌 말 하나당 초, 최신 {latest}."

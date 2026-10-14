@@ -465,7 +465,7 @@
           "last": "En yeni"
         },
         "speed": {
-          "fig": "Şek. {number} · Hız",
+          "fig": "Şek. {number} · Hatırlama temposu",
           "title": "Yeniden kurduğun taş başına saniye.",
           "aria": "12 tur boyunca doğru taş başına yeniden kurma süresini gösteren örnek çizgi, 4,1 saniyeden 2,6 saniyeye iniyor.",
           "note": "Örnek kayıt · 12 tur · Orta",
@@ -483,7 +483,7 @@
           "fastWrong": "Hızlı ama yanlış olmak gelişme değildir.",
           "config": "{source, select, calibration {Alıştırma} other {Oyun}} · {pieceCount} taş · {studyTime}, son zamanlarda en çok oynadığın ayar · {count, plural, one {# turdan} other {# turdan}}",
           "need": "{source, select, calibration {Alıştırmada} other {Oyunlarda}} {pieceCount} taş, {studyTime} ile {count, plural, one {# tur daha} other {# tur daha}} {count, plural, one {oynayınca} other {oynayınca}} hız çizgin çizilir.",
-          "needRight": "Hız yalnızca en az bir taşın doğru olduğu turları okur. Çizgini başlatmak için {count, plural, one {böyle # tur} other {böyle # tur}} oyna.",
+          "needRight": "Hatırlama temposu yalnızca en az bir taşın doğru olduğu turları okur. Çizgini başlatmak için {count, plural, one {böyle # tur} other {böyle # tur}} oyna.",
           "first": "En eski",
           "last": "En yeni"
         },
@@ -832,7 +832,7 @@
             "title": "Memory Chess ölçümüm",
             "span": "Bellek kapasitesi: {pieceCount, plural, one {# taş} other {# taş}}, {count, plural, one {# turda} other {# turda}} %{accuracy} veya üzeri",
             "held": "Akılda tutulan taşlar: son ortalama {average}, {count, plural, one {# turdan} other {# turdan}}",
-            "speed": "Hız: {source, select, calibration {alıştırmada} other {oyunlarda}} {pieceCount} taş, {studyTime} ile taş başına son ortalama {average}, {count, plural, one {# turdan} other {# turdan}}",
+            "speed": "Hatırlama temposu: {source, select, calibration {alıştırmada} other {oyunlarda}} {pieceCount} taş, {studyTime} ile taş başına son ortalama {average}, {count, plural, one {# turdan} other {# turdan}}",
             "site": "thememorychess.com",
             "copy": "Ölçümümü kopyala",
             "copied": "Kopyalandı. İstediğin yere yapıştır.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Son isabet",
       "span": "Bellek kapasitesi",
       "piecesHeld": "Akılda tutulan taşlar",
-      "speed": "Hız",
+      "speed": "Hatırlama temposu",
       "studyTime": "İnceleme süresi",
       "rebuildTime": "Yerleştirme süresi",
       "streak": "Gün serisi",
@@ -1463,7 +1463,7 @@
         "aria": "{pieceCount} taş, {memorizeSeconds} sn ile son {count} turundaki isabet, yüzde 0 ile 100 arasında bir ölçekte, en son yüzde {latest}."
       },
       "speed": {
-        "title": "Zaman içinde hız",
+        "title": "Zaman içinde hatırlama temposu",
         "unit": "Doğru taş başına saniye. Düşük olan daha hızlıdır.",
         "note": "{pieceCount} taş, {memorizeSeconds} sn ile {source, select, calibration {alıştırma turları} other {oyun turları}}. Son {count, plural, one {# tur} other {# tur}}.",
         "aria": "{pieceCount} taş, {memorizeSeconds} sn ile son {count} turunda doğru taş başına saniye, en son {latest}."

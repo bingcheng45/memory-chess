@@ -10,7 +10,7 @@ const SPAN_CLIMBER_CARD = [
   "My Memory Chess reading",
   "Memory span: 14 pieces, 80% or better in 19 rounds",
   "Pieces held: recent average 13.8, from 135 rounds",
-  "Speed: recent average 1.6 s per piece in games at 14 pieces, 10 s, from 21 rounds",
+  "Recall pace: recent average 1.6 s per piece in games at 14 pieces, 10 s, from 21 rounds",
   "thememorychess.com",
 ].join("\n");
 

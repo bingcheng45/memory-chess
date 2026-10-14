@@ -465,7 +465,7 @@
           "last": "Nieuwste"
         },
         "speed": {
-          "fig": "Fig. {number} · Snelheid",
+          "fig": "Fig. {number} · Herinneringstempo",
           "title": "Seconden per stuk dat je opbouwt.",
           "aria": "Voorbeeldlijn van opbouwseconden per goed stuk over 12 rondes, dalend van 4,1 naar 2,6 seconden.",
           "note": "Voorbeeldverslag · 12 rondes · Gemiddeld",
@@ -483,7 +483,7 @@
           "fastWrong": "Snel en fout is geen vooruitgang.",
           "config": "{source, select, calibration {Oefening} other {Partij}} · {pieceCount} stukken · {studyTime}, je meest gespeelde instelling van de laatste tijd · Uit {count, plural, one {# ronde} other {# rondes}}",
           "need": "Nog {count, plural, one {# ronde} other {# rondes}} met {pieceCount} stukken, {studyTime} {source, select, calibration {als oefening} other {in partijen}} en je snelheidslijn verschijnt.",
-          "needRight": "Snelheid telt alleen rondes met minstens één goed stuk. Speel {count, plural, one {# zo'n ronde} other {# zulke rondes}} om je lijn te beginnen.",
+          "needRight": "Herinneringstempo telt alleen rondes met minstens één goed stuk. Speel {count, plural, one {# zo'n ronde} other {# zulke rondes}} om je lijn te beginnen.",
           "first": "Oudste",
           "last": "Nieuwste"
         },
@@ -832,7 +832,7 @@
             "title": "Mijn Memory Chess-meting",
             "span": "Geheugenspanne: {pieceCount, plural, one {# stuk} other {# stukken}}, {accuracy}% of beter in {count, plural, one {# ronde} other {# rondes}}",
             "held": "Onthouden stukken: recent gemiddelde {average}, uit {count, plural, one {# ronde} other {# rondes}}",
-            "speed": "Snelheid: recent gemiddelde {average} per stuk {source, select, calibration {als oefening} other {in partijen}} bij {pieceCount} stukken, {studyTime}, uit {count, plural, one {# ronde} other {# rondes}}",
+            "speed": "Herinneringstempo: recent gemiddelde {average} per stuk {source, select, calibration {als oefening} other {in partijen}} bij {pieceCount} stukken, {studyTime}, uit {count, plural, one {# ronde} other {# rondes}}",
             "site": "thememorychess.com",
             "copy": "Kopieer mijn meting",
             "copied": "Gekopieerd. Plak het waar je wilt.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Recente nauwkeurigheid",
       "span": "Geheugenspanne",
       "piecesHeld": "Onthouden stukken",
-      "speed": "Snelheid",
+      "speed": "Herinneringstempo",
       "studyTime": "Kijktijd",
       "rebuildTime": "Opbouwtijd",
       "streak": "Dagreeks",
@@ -1463,7 +1463,7 @@
         "aria": "Nauwkeurigheid over je laatste {count} rondes met {pieceCount} stukken, {memorizeSeconds} s, op een schaal van 0 tot 100 procent, laatste {latest} procent."
       },
       "speed": {
-        "title": "Snelheid door de tijd",
+        "title": "Herinneringstempo door de tijd",
         "unit": "Seconden per goed stuk. Lager is sneller.",
         "note": "{source, select, calibration {Oefenrondes} other {Rondes in partijen}} met {pieceCount} stukken, {memorizeSeconds} s. Laatste {count, plural, one {# ronde} other {# rondes}}.",
         "aria": "Seconden per goed stuk over je laatste {count} rondes met {pieceCount} stukken, {memorizeSeconds} s, laatste {latest}."

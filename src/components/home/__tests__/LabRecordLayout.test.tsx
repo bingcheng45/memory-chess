@@ -34,7 +34,7 @@ describe("§06 layout", () => {
       "Fig. 1 · Memory span",
       "Fig. 2 · Pieces held",
       "Fig. 3 · Accuracy over time",
-      "Fig. 4 · Speed",
+      "Fig. 4 · Recall pace",
       "Fig. 5 · Today's board",
       "Fig. 6 · Days in a row",
       "Fig. 7 · Forgetting curve",

@@ -109,7 +109,7 @@ describe("ResultDeltas", () => {
 
     const speed = row(afterRound(record, { rating: 1100, streak: 6, before: { skillRating: 1090, streak: 5 }, history: [rated("fast", 10)] }), "speed");
 
-    expect(speed.querySelector(".lab-sr")?.textContent).toBe("Speed 4.5 s per piece, down 0.5 from 5.0 s per piece, better");
+    expect(speed.querySelector(".lab-sr")?.textContent).toBe("Recall pace 4.5 s per piece, down 0.5 from 5.0 s per piece, better");
     expect(speed.dataset.verdict).toBe("better");
     expect(speed.querySelector(".lab-trend")?.getAttribute("data-tone")).toBe("better");
     expect(speed.querySelector(".lab-trend")?.textContent).toBe("0.5");

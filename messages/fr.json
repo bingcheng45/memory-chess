@@ -465,7 +465,7 @@
           "last": "Plus récente"
         },
         "speed": {
-          "fig": "Fig. {number} · Vitesse",
+          "fig": "Fig. {number} · Rythme de rappel",
           "title": "Secondes par pièce reconstituée.",
           "aria": "Exemple de courbe des secondes de reconstitution par pièce correcte sur 12 parties, qui descend de 4,1 à 2,6 secondes.",
           "note": "Registre d’exemple · 12 parties · Moyen",
@@ -483,7 +483,7 @@
           "fastWrong": "Rapide et faux, ce n’est pas un progrès.",
           "config": "{source, select, calibration {Entraînement} other {Jeu}} · pièces : {pieceCount} · {studyTime}, votre réglage le plus joué ces derniers temps · Sur {count, plural, one {# partie} many {# parties} other {# parties}}",
           "need": "Encore {count, plural, one {# partie} many {# parties} other {# parties}} à {pieceCount} pièces, {studyTime} {source, select, calibration {en entraînement} other {en jeu}} {count, plural, one {pour tracer} many {pour tracer} other {pour tracer}} votre courbe de vitesse.",
-          "needRight": "La vitesse ne lit que les parties avec au moins une pièce juste. Jouez {count, plural, one {# partie de ce type} many {# parties de ce type} other {# parties de ce type}} pour commencer votre courbe.",
+          "needRight": "Le rythme de rappel ne lit que les parties avec au moins une pièce juste. Jouez {count, plural, one {# partie de ce type} many {# parties de ce type} other {# parties de ce type}} pour commencer votre courbe.",
           "first": "Plus ancienne",
           "last": "Plus récente"
         },
@@ -832,7 +832,7 @@
             "title": "Ma mesure Memory Chess",
             "span": "Empan mémoriel : {pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}}, {accuracy} % ou mieux sur {count, plural, one {# partie} many {# parties} other {# parties}}",
             "held": "Pièces retenues : moyenne récente {average}, sur {count, plural, one {# partie} many {# parties} other {# parties}}",
-            "speed": "Vitesse : moyenne récente {average} par pièce {source, select, calibration {en entraînement} other {en jeu}} à {pieceCount} pièces, {studyTime}, sur {count, plural, one {# partie} many {# parties} other {# parties}}",
+            "speed": "Rythme de rappel : moyenne récente {average} par pièce {source, select, calibration {en entraînement} other {en jeu}} à {pieceCount} pièces, {studyTime}, sur {count, plural, one {# partie} many {# parties} other {# parties}}",
             "site": "thememorychess.com",
             "copy": "Copier ma mesure",
             "copied": "Copié. Collez-le où vous voulez.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Précision récente",
       "span": "Empan mémoriel",
       "piecesHeld": "Pièces retenues",
-      "speed": "Vitesse",
+      "speed": "Rythme de rappel",
       "studyTime": "Temps d’étude",
       "rebuildTime": "Temps de placement",
       "streak": "Série de jours",
@@ -1463,7 +1463,7 @@
         "aria": "Précision sur vos {count} dernières parties à {pieceCount} pièces, {memorizeSeconds} s, sur une échelle de 0 à 100 pour cent, la plus récente à {latest} pour cent."
       },
       "speed": {
-        "title": "Vitesse dans le temps",
+        "title": "Rythme de rappel dans le temps",
         "unit": "Secondes par pièce correcte. Plus bas, c’est plus rapide.",
         "note": "{source, select, calibration {Parties d’entraînement} other {Parties de jeu}} à {pieceCount} pièces, {memorizeSeconds} s. {count, plural, one {Dernière # partie} many {# dernières parties} other {# dernières parties}}.",
         "aria": "Secondes par pièce correcte sur vos {count} dernières parties à {pieceCount} pièces, {memorizeSeconds} s, la plus récente à {latest}."

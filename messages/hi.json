@@ -465,7 +465,7 @@
           "last": "नवीनतम"
         },
         "speed": {
-          "fig": "चित्र {number} · गति",
+          "fig": "चित्र {number} · याद करने की गति",
           "title": "दोबारा बनाए गए हर मोहरे पर सेकंड।",
           "aria": "12 राउंड में प्रति सही मोहरा दोबारा बनाने के सेकंड की नमूना रेखा, 4.1 से घटकर 2.6 सेकंड।",
           "note": "नमूना रिकॉर्ड · 12 राउंड · मध्यम",
@@ -483,7 +483,7 @@
           "fastWrong": "तेज़ लेकिन गलत होना सुधार नहीं है।",
           "config": "{source, select, calibration {अभ्यास} other {गेम}} · {pieceCount} मोहरे · {studyTime}, हाल में आपकी सबसे ज़्यादा खेली गई सेटिंग · {count, plural, one {# राउंड} other {# राउंड}} से",
           "need": "{source, select, calibration {अभ्यास में} other {गेम में}} {pieceCount} मोहरे, {studyTime} पर {count, plural, one {# और राउंड} other {# और राउंड}} {count, plural, one {से} other {से}} आपकी गति रेखा बनेगी।",
-          "needRight": "गति सिर्फ़ उन राउंड को पढ़ती है जिनमें कम से कम एक मोहरा सही हो। अपनी रेखा शुरू करने के लिए {count, plural, one {ऐसा # राउंड} other {ऐसे # राउंड}} खेलें।",
+          "needRight": "याद करने की गति सिर्फ़ उन राउंड को पढ़ती है जिनमें कम से कम एक मोहरा सही हो। अपनी रेखा शुरू करने के लिए {count, plural, one {ऐसा # राउंड} other {ऐसे # राउंड}} खेलें।",
           "first": "सबसे पुराना",
           "last": "नवीनतम"
         },
@@ -832,7 +832,7 @@
             "title": "मेरी Memory Chess रीडिंग",
             "span": "स्मृति क्षमता: {pieceCount, plural, one {# मोहरा} other {# मोहरे}}, {count, plural, one {# राउंड} other {# राउंड}} में {accuracy}% या बेहतर",
             "held": "याद रखे मोहरे: हाल का औसत {average}, {count, plural, one {# राउंड} other {# राउंड}} से",
-            "speed": "गति: {pieceCount} मोहरे, {studyTime} पर {source, select, calibration {अभ्यास में} other {गेम में}} हाल का औसत {average} प्रति मोहरा, {count, plural, one {# राउंड} other {# राउंड}} से",
+            "speed": "याद करने की गति: {pieceCount} मोहरे, {studyTime} पर {source, select, calibration {अभ्यास में} other {गेम में}} हाल का औसत {average} प्रति मोहरा, {count, plural, one {# राउंड} other {# राउंड}} से",
             "site": "thememorychess.com",
             "copy": "मेरी रीडिंग कॉपी करें",
             "copied": "कॉपी हो गया। कहीं भी पेस्ट करें।",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "हाल की सटीकता",
       "span": "स्मृति क्षमता",
       "piecesHeld": "याद रखे मोहरे",
-      "speed": "गति",
+      "speed": "याद करने की गति",
       "studyTime": "याद करने का समय",
       "rebuildTime": "रखने का समय",
       "streak": "लगातार दिन",
@@ -1463,7 +1463,7 @@
         "aria": "{pieceCount} मोहरे, {memorizeSeconds} से. पर आपके पिछले {count} राउंड की सटीकता, 0 से 100 प्रतिशत के पैमाने पर, नवीनतम {latest} प्रतिशत।"
       },
       "speed": {
-        "title": "समय के साथ गति",
+        "title": "समय के साथ याद करने की गति",
         "unit": "प्रति सही मोहरा सेकंड। कम का मतलब तेज़।",
         "note": "{pieceCount} मोहरे, {memorizeSeconds} से. पर {source, select, calibration {अभ्यास} other {गेम}} राउंड। पिछले {count, plural, one {# राउंड} other {# राउंड}}।",
         "aria": "{pieceCount} मोहरे, {memorizeSeconds} से. पर आपके पिछले {count} राउंड में प्रति सही मोहरा सेकंड, नवीनतम {latest}।"

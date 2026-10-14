@@ -465,7 +465,7 @@
           "last": "Neueste"
         },
         "speed": {
-          "fig": "Abb. {number} · Tempo",
+          "fig": "Abb. {number} · Abruftempo",
           "title": "Sekunden pro Figur beim Aufbauen.",
           "aria": "Beispiellinie der Aufbausekunden pro richtiger Figur über 12 Runden, die von 4,1 auf 2,6 Sekunden fällt.",
           "note": "Beispielbericht · 12 Runden · Mittel",
@@ -483,7 +483,7 @@
           "fastWrong": "Schnell und falsch ist keine Verbesserung.",
           "config": "{source, select, calibration {Übung} other {Partie}} · {pieceCount} Figuren · {studyTime}, deine zuletzt meistgespielte Einstellung · Aus {count, plural, one {# Runde} other {# Runden}}",
           "need": "Mit {count, plural, one {# weiteren Runde} other {# weiteren Runden}} bei {pieceCount} Figuren, {studyTime} {source, select, calibration {in der Übung} other {in Partien}} entsteht deine Tempokurve.",
-          "needRight": "Das Tempo zählt nur Runden mit mindestens einer richtigen Figur. Spiel {count, plural, one {# solche Runde} other {# solche Runden}}, damit deine Kurve entsteht.",
+          "needRight": "Das Abruftempo zählt nur Runden mit mindestens einer richtigen Figur. Spiel {count, plural, one {# solche Runde} other {# solche Runden}}, damit deine Kurve entsteht.",
           "first": "Älteste",
           "last": "Neueste"
         },
@@ -832,7 +832,7 @@
             "title": "Mein Messwert bei Memory Chess",
             "span": "Gedächtnisspanne: {pieceCount, plural, one {# Figur} other {# Figuren}}, {accuracy} % oder besser in {count, plural, one {# Runde} other {# Runden}}",
             "held": "Gehaltene Figuren: aktueller Schnitt {average}, aus {count, plural, one {# Runde} other {# Runden}}",
-            "speed": "Tempo: aktueller Schnitt {average} pro Figur {source, select, calibration {in der Übung} other {in Partien}} bei {pieceCount} Figuren, {studyTime}, aus {count, plural, one {# Runde} other {# Runden}}",
+            "speed": "Abruftempo: aktueller Schnitt {average} pro Figur {source, select, calibration {in der Übung} other {in Partien}} bei {pieceCount} Figuren, {studyTime}, aus {count, plural, one {# Runde} other {# Runden}}",
             "site": "thememorychess.com",
             "copy": "Meinen Messwert kopieren",
             "copied": "Kopiert. Füge es ein, wo du willst.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Aktuelle Genauigkeit",
       "span": "Gedächtnisspanne",
       "piecesHeld": "Gehaltene Figuren",
-      "speed": "Tempo",
+      "speed": "Abruftempo",
       "studyTime": "Einprägezeit",
       "rebuildTime": "Aufbauzeit",
       "streak": "Tagesserie",
@@ -1463,7 +1463,7 @@
         "aria": "Genauigkeit in deinen letzten {count} Runden mit {pieceCount} Figuren, {memorizeSeconds} s, auf einer Skala von 0 bis 100 Prozent, zuletzt {latest} Prozent."
       },
       "speed": {
-        "title": "Tempo im Verlauf",
+        "title": "Abruftempo im Verlauf",
         "unit": "Sekunden pro richtiger Figur. Weniger ist schneller.",
         "note": "{source, select, calibration {Übungsrunden} other {Runden in Partien}} mit {pieceCount} Figuren, {memorizeSeconds} s. {count, plural, one {Letzte # Runde} other {Letzte # Runden}}.",
         "aria": "Sekunden pro richtiger Figur in deinen letzten {count} Runden mit {pieceCount} Figuren, {memorizeSeconds} s, zuletzt {latest}."

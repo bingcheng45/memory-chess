@@ -86,7 +86,7 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
             segments: [
               "The new ",
               { text: "Dashboard", href: "/dashboard" },
-              " shows your skill rating and which way it is heading, your memory span, how many pieces you hold, your speed, your accuracy, your win streak, the days you have played and your recent rounds.",
+              " shows your skill rating and which way it is heading, your memory span, how many pieces you hold, your recall pace, your accuracy, your win streak, the days you have played and your recent rounds.",
             ],
           },
           "Figures that need a few more rounds say exactly what they are waiting for, with a button to play the round that unlocks them.",

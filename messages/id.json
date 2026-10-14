@@ -465,7 +465,7 @@
           "last": "Terbaru"
         },
         "speed": {
-          "fig": "Gbr. {number} · Kecepatan",
+          "fig": "Gbr. {number} · Laju mengingat",
           "title": "Detik per bidak yang kamu susun ulang.",
           "aria": "Contoh garis detik menyusun per bidak benar selama 12 ronde, turun dari 4,1 menjadi 2,6 detik.",
           "note": "Contoh catatan · 12 ronde · Sedang",
@@ -483,7 +483,7 @@
           "fastWrong": "Cepat tapi salah bukanlah kemajuan.",
           "config": "{source, select, calibration {Latihan} other {Permainan}} · {pieceCount} bidak · {studyTime}, pengaturan yang paling sering kamu mainkan akhir-akhir ini · Dari {count, plural, other {# ronde}}",
           "need": "{count, plural, other {# ronde lagi}} dengan {pieceCount} bidak, {studyTime} {source, select, calibration {dalam latihan} other {dalam permainan}} {count, plural, other {untuk menggambar}} garis kecepatanmu.",
-          "needRight": "Kecepatan hanya membaca ronde dengan setidaknya satu bidak benar. Mainkan {count, plural, other {# ronde seperti itu}} untuk memulai garismu.",
+          "needRight": "Laju mengingat hanya membaca ronde dengan setidaknya satu bidak benar. Mainkan {count, plural, other {# ronde seperti itu}} untuk memulai garismu.",
           "first": "Terlama",
           "last": "Terbaru"
         },
@@ -832,7 +832,7 @@
             "title": "Pembacaan Memory Chess-ku",
             "span": "Rentang memori: {pieceCount, plural, other {# bidak}}, {accuracy}% atau lebih dalam {count, plural, other {# ronde}}",
             "held": "Bidak diingat: rata-rata terbaru {average}, dari {count, plural, other {# ronde}}",
-            "speed": "Kecepatan: rata-rata terbaru {average} per bidak {source, select, calibration {dalam latihan} other {dalam permainan}} dengan {pieceCount} bidak, {studyTime}, dari {count, plural, other {# ronde}}",
+            "speed": "Laju mengingat: rata-rata terbaru {average} per bidak {source, select, calibration {dalam latihan} other {dalam permainan}} dengan {pieceCount} bidak, {studyTime}, dari {count, plural, other {# ronde}}",
             "site": "thememorychess.com",
             "copy": "Salin pembacaanku",
             "copied": "Tersalin. Tempel di mana saja.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Akurasi terbaru",
       "span": "Rentang memori",
       "piecesHeld": "Bidak diingat",
-      "speed": "Kecepatan",
+      "speed": "Laju mengingat",
       "studyTime": "Waktu menghafal",
       "rebuildTime": "Waktu menyusun",
       "streak": "Hari beruntun",
@@ -1463,7 +1463,7 @@
         "aria": "Akurasi dalam {count} ronde terakhirmu dengan {pieceCount} bidak, {memorizeSeconds} dtk, pada skala 0 sampai 100 persen, terbaru {latest} persen."
       },
       "speed": {
-        "title": "Kecepatan dari waktu ke waktu",
+        "title": "Laju mengingat dari waktu ke waktu",
         "unit": "Detik per bidak benar. Makin rendah makin cepat.",
         "note": "Ronde {source, select, calibration {latihan} other {permainan}} dengan {pieceCount} bidak, {memorizeSeconds} dtk. {count, plural, other {# ronde}} terakhir.",
         "aria": "Detik per bidak benar dalam {count} ronde terakhirmu dengan {pieceCount} bidak, {memorizeSeconds} dtk, terbaru {latest}."

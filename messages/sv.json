@@ -465,7 +465,7 @@
           "last": "Senast"
         },
         "speed": {
-          "fig": "Fig. {number} · Tempo",
+          "fig": "Fig. {number} · Återkallningstempo",
           "title": "Sekunder per pjäs du bygger upp.",
           "aria": "Exempellinje över sekunder per rätt pjäs vid uppbyggnaden under 12 rundor, som sjunker från 4,1 till 2,6 sekunder.",
           "note": "Exempeljournal · 12 rundor · Medel",
@@ -483,7 +483,7 @@
           "fastWrong": "Snabbt och fel är ingen förbättring.",
           "config": "{source, select, calibration {Övning} other {Parti}} · {pieceCount} pjäser · {studyTime}, din mest spelade inställning på sistone · Från {count, plural, one {# runda} other {# rundor}}",
           "need": "{count, plural, one {# runda till} other {# rundor till}} med {pieceCount} pjäser, {studyTime} {source, select, calibration {i övning} other {i partier}} ritar din tempolinje.",
-          "needRight": "Tempot räknar bara rundor med minst en rätt pjäs. Spela {count, plural, one {# sådan runda} other {# sådana rundor}} för att starta din linje.",
+          "needRight": "Återkallningstempot räknar bara rundor med minst en rätt pjäs. Spela {count, plural, one {# sådan runda} other {# sådana rundor}} för att starta din linje.",
           "first": "Äldst",
           "last": "Senast"
         },
@@ -832,7 +832,7 @@
             "title": "Min mätning i Memory Chess",
             "span": "Minnesspann: {pieceCount, plural, one {# pjäs} other {# pjäser}}, {accuracy} % eller bättre i {count, plural, one {# runda} other {# rundor}}",
             "held": "Hållna pjäser: senaste snitt {average}, från {count, plural, one {# runda} other {# rundor}}",
-            "speed": "Tempo: senaste snitt {average} per pjäs {source, select, calibration {i övning} other {i partier}} med {pieceCount} pjäser, {studyTime}, från {count, plural, one {# runda} other {# rundor}}",
+            "speed": "Återkallningstempo: senaste snitt {average} per pjäs {source, select, calibration {i övning} other {i partier}} med {pieceCount} pjäser, {studyTime}, från {count, plural, one {# runda} other {# rundor}}",
             "site": "thememorychess.com",
             "copy": "Kopiera min mätning",
             "copied": "Kopierat. Klistra in det var du vill.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Senaste träffsäkerhet",
       "span": "Minnesspann",
       "piecesHeld": "Hållna pjäser",
-      "speed": "Tempo",
+      "speed": "Återkallningstempo",
       "studyTime": "Studietid",
       "rebuildTime": "Placeringstid",
       "streak": "Dagssvit",
@@ -1463,7 +1463,7 @@
         "aria": "Träffsäkerhet under dina senaste {count} rundor med {pieceCount} pjäser, {memorizeSeconds} s, på en skala från 0 till 100 procent, senast {latest} procent."
       },
       "speed": {
-        "title": "Tempo över tid",
+        "title": "Återkallningstempo över tid",
         "unit": "Sekunder per rätt pjäs. Lägre är snabbare.",
         "note": "{source, select, calibration {Övningsrundor} other {Rundor i partier}} med {pieceCount} pjäser, {memorizeSeconds} s. {count, plural, one {Senaste # runda} other {Senaste # rundor}}.",
         "aria": "Sekunder per rätt pjäs under dina senaste {count} rundor med {pieceCount} pjäser, {memorizeSeconds} s, senast {latest}."

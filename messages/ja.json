@@ -465,7 +465,7 @@
           "last": "最新"
         },
         "speed": {
-          "fig": "図{number} · スピード",
+          "fig": "図{number} · 想起ペース",
           "title": "並べ直しにかかる、1駒あたりの秒数。",
           "aria": "12ラウンドにわたる、正解1駒あたりの配置秒数のサンプル折れ線。4.1秒から2.6秒へ下がっていきます。",
           "note": "サンプル記録 · 12ラウンド · ふつう",
@@ -483,7 +483,7 @@
           "fastWrong": "速くても間違っていては、上達とはいえません。",
           "config": "{source, select, calibration {練習} other {ゲーム}} · {pieceCount}駒 · {studyTime}、最近いちばんよくプレイする設定 · {count, plural, other {#ラウンド}}から",
           "need": "{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}であと{count, plural, other {#ラウンド}}プレイすると、スピードの折れ線が描かれます。",
-          "needRight": "スピードは、1駒以上正解したラウンドだけを読み取ります。そうしたラウンドを{count, plural, other {#回}}プレイすると、折れ線が始まります。",
+          "needRight": "想起ペースは、1駒以上正解したラウンドだけを読み取ります。そうしたラウンドを{count, plural, other {#回}}プレイすると、折れ線が始まります。",
           "first": "最古",
           "last": "最新"
         },
@@ -832,7 +832,7 @@
             "title": "私の Memory Chess 測定値",
             "span": "記憶スパン：{pieceCount, plural, other {#駒}}、{count, plural, other {#ラウンド}}で{accuracy}%以上",
             "held": "記憶できた駒：最近の平均{average}、{count, plural, other {#ラウンド}}から",
-            "speed": "スピード：{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}で最近の平均は1駒あたり{average}、{count, plural, other {#ラウンド}}から",
+            "speed": "想起ペース：{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}で最近の平均は1駒あたり{average}、{count, plural, other {#ラウンド}}から",
             "site": "thememorychess.com",
             "copy": "測定値をコピー",
             "copied": "コピーしました。どこにでも貼り付けられます。",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "最近の正解率",
       "span": "記憶スパン",
       "piecesHeld": "記憶できた駒",
-      "speed": "スピード",
+      "speed": "想起ペース",
       "studyTime": "記憶時間",
       "rebuildTime": "配置時間",
       "streak": "連続日数",
@@ -1463,7 +1463,7 @@
         "aria": "{pieceCount}駒・{memorizeSeconds}秒での直近{count}ラウンドの正解率。0から100パーセントの目盛りで、最新は{latest}パーセント。"
       },
       "speed": {
-        "title": "スピードの推移",
+        "title": "想起ペースの推移",
         "unit": "正解1駒あたりの秒数。低いほど速い。",
         "note": "{source, select, calibration {練習} other {ゲーム}}ラウンド・{pieceCount}駒・{memorizeSeconds}秒。直近{count, plural, other {#ラウンド}}。",
         "aria": "{pieceCount}駒・{memorizeSeconds}秒での直近{count}ラウンドの正解1駒あたりの秒数。最新は{latest}。"

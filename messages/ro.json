@@ -465,7 +465,7 @@
           "last": "Cea mai nouă"
         },
         "speed": {
-          "fig": "Fig. {number} · Viteză",
+          "fig": "Fig. {number} · Ritm de reamintire",
           "title": "Secunde pentru fiecare piesă reconstruită.",
           "aria": "Linie de exemplu a secundelor de reconstruire pe piesă corectă în 12 runde, scăzând de la 4,1 la 2,6 secunde.",
           "note": "Jurnal de exemplu · 12 runde · Mediu",
@@ -483,7 +483,7 @@
           "fastWrong": "Repede și greșit nu înseamnă progres.",
           "config": "{source, select, calibration {Exercițiu} other {Partidă}} · {pieceCount} piese · {studyTime}, setarea pe care ai jucat-o cel mai des în ultima vreme · Din {count, plural, one {# rundă} few {# runde} other {# de runde}}",
           "need": "{count, plural, one {Încă # rundă} few {Încă # runde} other {Încă # de runde}} cu {pieceCount} piese, {studyTime} {source, select, calibration {la exerciții} other {în partide}} îți {count, plural, one {desenează} few {desenează} other {desenează}} linia de viteză.",
-          "needRight": "Viteza citește doar rundele cu cel puțin o piesă corectă. Joacă {count, plural, one {# astfel de rundă} few {# astfel de runde} other {# de astfel de runde}} ca să-ți începi linia.",
+          "needRight": "Ritmul de reamintire citește doar rundele cu cel puțin o piesă corectă. Joacă {count, plural, one {# astfel de rundă} few {# astfel de runde} other {# de astfel de runde}} ca să-ți începi linia.",
           "first": "Cea mai veche",
           "last": "Cea mai nouă"
         },
@@ -832,7 +832,7 @@
             "title": "Citirea mea Memory Chess",
             "span": "Capacitate de memorie: {pieceCount, plural, one {# piesă} few {# piese} other {# de piese}}, {accuracy}% sau mai mult în {count, plural, one {# rundă} few {# runde} other {# de runde}}",
             "held": "Piese reținute: medie recentă {average}, din {count, plural, one {# rundă} few {# runde} other {# de runde}}",
-            "speed": "Viteză: medie recentă {average} pe piesă {source, select, calibration {la exerciții} other {în partide}} la {pieceCount} piese, {studyTime}, din {count, plural, one {# rundă} few {# runde} other {# de runde}}",
+            "speed": "Ritm de reamintire: medie recentă {average} pe piesă {source, select, calibration {la exerciții} other {în partide}} la {pieceCount} piese, {studyTime}, din {count, plural, one {# rundă} few {# runde} other {# de runde}}",
             "site": "thememorychess.com",
             "copy": "Copiază citirea mea",
             "copied": "Copiat. Lipește-o oriunde.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Precizie recentă",
       "span": "Capacitate de memorie",
       "piecesHeld": "Piese reținute",
-      "speed": "Viteză",
+      "speed": "Ritm de reamintire",
       "studyTime": "Timp de studiu",
       "rebuildTime": "Timp de reconstruire",
       "streak": "Serie de zile",
@@ -1463,7 +1463,7 @@
         "aria": "Precizia în ultimele tale {count} runde cu {pieceCount} piese, {memorizeSeconds} s, pe o scară de la 0 la 100 la sută, cea mai recentă {latest} la sută."
       },
       "speed": {
-        "title": "Viteza în timp",
+        "title": "Ritmul de reamintire în timp",
         "unit": "Secunde pe piesă corectă. Mai puțin înseamnă mai rapid.",
         "note": "{source, select, calibration {Runde de exercițiu} other {Runde din partide}} cu {pieceCount} piese, {memorizeSeconds} s. {count, plural, one {Ultima # rundă} few {Ultimele # runde} other {Ultimele # de runde}}.",
         "aria": "Secunde pe piesă corectă în ultimele tale {count} runde cu {pieceCount} piese, {memorizeSeconds} s, cea mai recentă {latest}."

@@ -465,7 +465,7 @@
           "last": "Mais recente"
         },
         "speed": {
-          "fig": "Fig. {number} · Velocidade",
+          "fig": "Fig. {number} · Ritmo de recordação",
           "title": "Segundos por peça que você reconstrói.",
           "aria": "Linha de exemplo dos segundos de reconstrução por peça certa em 12 rodadas, caindo de 4,1 para 2,6 segundos.",
           "note": "Registro de exemplo · 12 rodadas · Médio",
@@ -483,7 +483,7 @@
           "fastWrong": "Rápido e errado não é progresso.",
           "config": "{source, select, calibration {Treino} other {Partida}} · {pieceCount} peças · {studyTime}, a configuração que você mais jogou ultimamente · De {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
           "need": "{count, plural, one {Falta # rodada} many {Faltam # rodadas} other {Faltam # rodadas}} com {pieceCount} peças, {studyTime} {source, select, calibration {no treino} other {em partidas}} para desenhar a sua linha de velocidade.",
-          "needRight": "A velocidade só lê rodadas com pelo menos uma peça certa. Jogue {count, plural, one {# rodada assim} many {# rodadas assim} other {# rodadas assim}} para começar a sua linha.",
+          "needRight": "O ritmo de recordação só lê rodadas com pelo menos uma peça certa. Jogue {count, plural, one {# rodada assim} many {# rodadas assim} other {# rodadas assim}} para começar a sua linha.",
           "first": "Mais antiga",
           "last": "Mais recente"
         },
@@ -832,7 +832,7 @@
             "title": "Minha leitura no Memory Chess",
             "span": "Amplitude de memória: {pieceCount, plural, one {# peça} many {# peças} other {# peças}}, {accuracy}% ou mais em {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
             "held": "Peças retidas: média recente de {average}, de {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
-            "speed": "Velocidade: média recente de {average} por peça {source, select, calibration {no treino} other {em partidas}} com {pieceCount} peças, {studyTime}, de {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
+            "speed": "Ritmo de recordação: média recente de {average} por peça {source, select, calibration {no treino} other {em partidas}} com {pieceCount} peças, {studyTime}, de {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
             "site": "thememorychess.com",
             "copy": "Copiar minha leitura",
             "copied": "Copiado. Cole onde quiser.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Precisão recente",
       "span": "Amplitude de memória",
       "piecesHeld": "Peças retidas",
-      "speed": "Velocidade",
+      "speed": "Ritmo de recordação",
       "studyTime": "Tempo de estudo",
       "rebuildTime": "Tempo de montagem",
       "streak": "Sequência de dias",
@@ -1463,7 +1463,7 @@
         "aria": "Precisão nas suas últimas {count} rodadas com {pieceCount} peças, {memorizeSeconds} s, numa escala de 0 a 100 por cento, a mais recente {latest} por cento."
       },
       "speed": {
-        "title": "Velocidade ao longo do tempo",
+        "title": "Ritmo de recordação ao longo do tempo",
         "unit": "Segundos por peça certa. Menor é mais rápido.",
         "note": "{source, select, calibration {Rodadas de treino} other {Rodadas de partida}} com {pieceCount} peças, {memorizeSeconds} s. {count, plural, one {Última # rodada} many {Últimas # rodadas} other {Últimas # rodadas}}.",
         "aria": "Segundos por peça certa nas suas últimas {count} rodadas com {pieceCount} peças, {memorizeSeconds} s, a mais recente {latest}."

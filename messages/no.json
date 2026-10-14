@@ -465,7 +465,7 @@
           "last": "Nyeste"
         },
         "speed": {
-          "fig": "Fig. {number} · Tempo",
+          "fig": "Fig. {number} · Gjenkallingstempo",
           "title": "Sekunder per brikke du bygger opp.",
           "aria": "Eksempellinje over sekunder per riktig brikke ved gjenoppbygging gjennom 12 runder, som faller fra 4,1 til 2,6 sekunder.",
           "note": "Eksempeljournal · 12 runder · Middels",
@@ -483,7 +483,7 @@
           "fastWrong": "Raskt og feil er ingen forbedring.",
           "config": "{source, select, calibration {Øving} other {Parti}} · {pieceCount} brikker · {studyTime}, innstillingen du har spilt mest i det siste · Fra {count, plural, one {# runde} other {# runder}}",
           "need": "{count, plural, one {# runde til} other {# runder til}} med {pieceCount} brikker, {studyTime} {source, select, calibration {i øving} other {i partier}} tegner tempolinjen din.",
-          "needRight": "Tempo leser bare runder med minst én riktig brikke. Spill {count, plural, one {# slik runde} other {# slike runder}} for å starte linjen din.",
+          "needRight": "Gjenkallingstempo leser bare runder med minst én riktig brikke. Spill {count, plural, one {# slik runde} other {# slike runder}} for å starte linjen din.",
           "first": "Eldste",
           "last": "Nyeste"
         },
@@ -832,7 +832,7 @@
             "title": "Min måling i Memory Chess",
             "span": "Hukommelsesspenn: {pieceCount, plural, one {# brikke} other {# brikker}}, {accuracy} % eller bedre i {count, plural, one {# runde} other {# runder}}",
             "held": "Husket brikker: nylig snitt {average}, fra {count, plural, one {# runde} other {# runder}}",
-            "speed": "Tempo: nylig snitt {average} per brikke {source, select, calibration {i øving} other {i partier}} med {pieceCount} brikker, {studyTime}, fra {count, plural, one {# runde} other {# runder}}",
+            "speed": "Gjenkallingstempo: nylig snitt {average} per brikke {source, select, calibration {i øving} other {i partier}} med {pieceCount} brikker, {studyTime}, fra {count, plural, one {# runde} other {# runder}}",
             "site": "thememorychess.com",
             "copy": "Kopier målingen min",
             "copied": "Kopiert. Lim det inn hvor du vil.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Nylig presisjon",
       "span": "Hukommelsesspenn",
       "piecesHeld": "Husket brikker",
-      "speed": "Tempo",
+      "speed": "Gjenkallingstempo",
       "studyTime": "Studietid",
       "rebuildTime": "Plasseringstid",
       "streak": "Dager på rad",
@@ -1463,7 +1463,7 @@
         "aria": "Presisjon over de siste {count} rundene dine med {pieceCount} brikker, {memorizeSeconds} s, på en skala fra 0 til 100 prosent, siste {latest} prosent."
       },
       "speed": {
-        "title": "Tempo over tid",
+        "title": "Gjenkallingstempo over tid",
         "unit": "Sekunder per riktig brikke. Lavere er raskere.",
         "note": "{source, select, calibration {Øvingsrunder} other {Runder i partier}} med {pieceCount} brikker, {memorizeSeconds} s. Siste {count, plural, one {# runde} other {# runder}}.",
         "aria": "Sekunder per riktig brikke over de siste {count} rundene dine med {pieceCount} brikker, {memorizeSeconds} s, siste {latest}."

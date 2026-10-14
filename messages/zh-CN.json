@@ -465,7 +465,7 @@
           "last": "最新"
         },
         "speed": {
-          "fig": "图 {number} · 速度",
+          "fig": "图 {number} · 回忆节奏",
           "title": "还原每个棋子所用的秒数。",
           "aria": "每个正确棋子还原秒数的示例折线，共 12 回合，从 4.1 秒降到 2.6 秒。",
           "note": "示例记录 · 12 回合 · 中等",
@@ -483,7 +483,7 @@
           "fastWrong": "又快又错不算进步。",
           "config": "{source, select, calibration {练习} other {对局}} · {pieceCount} 子 · {studyTime}，你最近最常玩的设置 · 基于 {count, plural, other {# 回合}}",
           "need": "{source, select, calibration {在练习中} other {在对局中}}以 {pieceCount} 子、{studyTime} 再玩 {count, plural, other {# 回合}}，即可画出你的速度曲线。",
-          "needRight": "速度只统计至少摆对一个棋子的回合。玩 {count, plural, other {# 个这样的回合}}，即可开始画出你的曲线。",
+          "needRight": "回忆节奏只统计至少摆对一个棋子的回合。玩 {count, plural, other {# 个这样的回合}}，即可开始画出你的曲线。",
           "first": "最早",
           "last": "最新"
         },
@@ -832,7 +832,7 @@
             "title": "我的 Memory Chess 读数",
             "span": "记忆广度：{pieceCount, plural, other {# 子}}，在 {count, plural, other {# 回合}}中达到 {accuracy}% 或以上",
             "held": "记住的棋子：近期平均 {average}，基于 {count, plural, other {# 回合}}",
-            "speed": "速度：{source, select, calibration {练习中} other {对局中}}在 {pieceCount} 子、{studyTime} 下近期平均每子 {average}，基于 {count, plural, other {# 回合}}",
+            "speed": "回忆节奏：{source, select, calibration {练习中} other {对局中}}在 {pieceCount} 子、{studyTime} 下近期平均每子 {average}，基于 {count, plural, other {# 回合}}",
             "site": "thememorychess.com",
             "copy": "复制我的读数",
             "copied": "已复制，可以粘贴到任何地方。",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "近期准确率",
       "span": "记忆广度",
       "piecesHeld": "记住的棋子",
-      "speed": "速度",
+      "speed": "回忆节奏",
       "studyTime": "记忆用时",
       "rebuildTime": "摆放用时",
       "streak": "连续天数",
@@ -1463,7 +1463,7 @@
         "aria": "你最近 {count} 回合在 {pieceCount} 子、{memorizeSeconds} 秒下的准确率，刻度从 0 到 100%，最新为 {latest}%。"
       },
       "speed": {
-        "title": "速度变化",
+        "title": "回忆节奏变化",
         "unit": "每个正确棋子所用秒数。越低越快。",
         "note": "{source, select, calibration {练习} other {对局}}回合，{pieceCount} 子、{memorizeSeconds} 秒。最近 {count, plural, other {# 回合}}。",
         "aria": "你最近 {count} 回合在 {pieceCount} 子、{memorizeSeconds} 秒下每个正确棋子所用秒数，最新为 {latest}。"

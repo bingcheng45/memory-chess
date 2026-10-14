@@ -465,7 +465,7 @@
           "last": "Más reciente"
         },
         "speed": {
-          "fig": "Fig. {number} · Velocidad",
+          "fig": "Fig. {number} · Ritmo de recuerdo",
           "title": "Segundos por pieza reconstruida.",
           "aria": "Línea de ejemplo de segundos de reconstrucción por pieza correcta en 12 rondas, que baja de 4,1 a 2,6 segundos.",
           "note": "Registro de ejemplo · 12 rondas · Medio",
@@ -483,7 +483,7 @@
           "fastWrong": "Rápido y mal no es mejorar.",
           "config": "{source, select, calibration {Práctica} other {Partida}} · piezas: {pieceCount} · {studyTime}, tu ajuste más jugado últimamente · De {count, plural, one {# ronda} many {# rondas} other {# rondas}}",
           "need": "{count, plural, one {# ronda más} many {# rondas más} other {# rondas más}} con {pieceCount} piezas, {studyTime} {source, select, calibration {en práctica} other {en partidas}} {count, plural, one {dibuja} many {dibujan} other {dibujan}} tu línea de velocidad.",
-          "needRight": "La velocidad solo cuenta rondas con al menos una pieza bien colocada. Juega {count, plural, one {# ronda así} many {# rondas así} other {# rondas así}} para empezar tu línea.",
+          "needRight": "El ritmo de recuerdo solo cuenta rondas con al menos una pieza bien colocada. Juega {count, plural, one {# ronda así} many {# rondas así} other {# rondas así}} para empezar tu línea.",
           "first": "Más antigua",
           "last": "Más reciente"
         },
@@ -832,7 +832,7 @@
             "title": "Mi medición de Memory Chess",
             "span": "Amplitud de memoria: {pieceCount, plural, one {# pieza} many {# piezas} other {# piezas}}, {accuracy} % o más en {count, plural, one {# ronda} many {# rondas} other {# rondas}}",
             "held": "Piezas retenidas: media reciente {average}, de {count, plural, one {# ronda} many {# rondas} other {# rondas}}",
-            "speed": "Velocidad: media reciente {average} por pieza {source, select, calibration {en práctica} other {en partidas}} con {pieceCount} piezas, {studyTime}, de {count, plural, one {# ronda} many {# rondas} other {# rondas}}",
+            "speed": "Ritmo de recuerdo: media reciente {average} por pieza {source, select, calibration {en práctica} other {en partidas}} con {pieceCount} piezas, {studyTime}, de {count, plural, one {# ronda} many {# rondas} other {# rondas}}",
             "site": "thememorychess.com",
             "copy": "Copiar mi medición",
             "copied": "Copiado. Pégalo donde quieras.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Precisión reciente",
       "span": "Amplitud de memoria",
       "piecesHeld": "Piezas retenidas",
-      "speed": "Velocidad",
+      "speed": "Ritmo de recuerdo",
       "studyTime": "Tiempo de estudio",
       "rebuildTime": "Tiempo de colocación",
       "streak": "Racha de días",
@@ -1463,7 +1463,7 @@
         "aria": "Precisión en tus últimas {count} rondas con {pieceCount} piezas, {memorizeSeconds} s, en una escala de 0 a 100 por ciento, la más reciente {latest} por ciento."
       },
       "speed": {
-        "title": "Velocidad a lo largo del tiempo",
+        "title": "Ritmo de recuerdo a lo largo del tiempo",
         "unit": "Segundos por pieza correcta. Menos es más rápido.",
         "note": "{source, select, calibration {Rondas de práctica} other {Rondas de partida}} con {pieceCount} piezas, {memorizeSeconds} s. {count, plural, one {Última # ronda} many {Últimas # rondas} other {Últimas # rondas}}.",
         "aria": "Segundos por pieza correcta en tus últimas {count} rondas con {pieceCount} piezas, {memorizeSeconds} s, la más reciente {latest}."

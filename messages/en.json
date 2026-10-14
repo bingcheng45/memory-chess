@@ -465,7 +465,7 @@
           "last": "Latest"
         },
         "speed": {
-          "fig": "Fig. {number} · Speed",
+          "fig": "Fig. {number} · Recall pace",
           "title": "Seconds per piece you rebuild.",
           "aria": "Sample line of rebuild seconds per correct piece over 12 rounds, falling from 4.1 to 2.6 seconds.",
           "note": "Sample record · 12 rounds · Medium",
@@ -482,8 +482,8 @@
           },
           "fastWrong": "Fast and wrong is not improvement.",
           "config": "{source, select, calibration {Practice} other {Game}} · {pieceCount} pieces · {studyTime}, your most played setting lately · From {count, plural, one {# round} other {# rounds}}",
-          "need": "{count, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {studyTime} {source, select, calibration {in practice} other {in games}} {count, plural, one {draws} other {draw}} your speed line.",
-          "needRight": "Speed reads only rounds with at least one piece right. Play {count, plural, one {# such round} other {# such rounds}} to start your line.",
+          "need": "{count, plural, one {# more round} other {# more rounds}} at {pieceCount} pieces, {studyTime} {source, select, calibration {in practice} other {in games}} {count, plural, one {draws} other {draw}} your recall pace line.",
+          "needRight": "Recall pace reads only rounds with at least one piece right. Play {count, plural, one {# such round} other {# such rounds}} to start your line.",
           "first": "Oldest",
           "last": "Latest"
         },
@@ -832,7 +832,7 @@
             "title": "My Memory Chess reading",
             "span": "Memory span: {pieceCount, plural, one {# piece} other {# pieces}}, {accuracy}% or better in {count, plural, one {# round} other {# rounds}}",
             "held": "Pieces held: recent average {average}, from {count, plural, one {# round} other {# rounds}}",
-            "speed": "Speed: recent average {average} per piece {source, select, calibration {in practice} other {in games}} at {pieceCount} pieces, {studyTime}, from {count, plural, one {# round} other {# rounds}}",
+            "speed": "Recall pace: recent average {average} per piece {source, select, calibration {in practice} other {in games}} at {pieceCount} pieces, {studyTime}, from {count, plural, one {# round} other {# rounds}}",
             "site": "thememorychess.com",
             "copy": "Copy my reading",
             "copied": "Copied. Paste it anywhere.",
@@ -1339,7 +1339,7 @@
       "more": "More figures"
     },
     "historyLede": "Newest first. Open a round to see its scored board.",
-    "analysisLede": "How your accuracy and speed move over time, and where pieces slip.",
+    "analysisLede": "How your accuracy and recall pace move over time, and where pieces slip.",
     "stale": "As of your last round",
     "staleNote": "Last played {count, plural, one {# day} other {# days}} ago. Figures marked so are from then.",
     "play": "Play a round",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Recent accuracy",
       "span": "Memory span",
       "piecesHeld": "Pieces held",
-      "speed": "Speed",
+      "speed": "Recall pace",
       "studyTime": "Study time",
       "rebuildTime": "Rebuild time",
       "streak": "Day streak",
@@ -1463,7 +1463,7 @@
         "aria": "Accuracy over your last {count} rounds at {pieceCount} pieces, {memorizeSeconds} s, on a scale from 0 to 100 percent, latest {latest} percent."
       },
       "speed": {
-        "title": "Speed over time",
+        "title": "Recall pace over time",
         "unit": "Seconds per correct piece. Lower is faster.",
         "note": "{source, select, calibration {Practice} other {Game}} rounds at {pieceCount} pieces, {memorizeSeconds} s. Last {count, plural, one {# round} other {# rounds}}.",
         "aria": "Seconds per correct piece over your last {count} rounds at {pieceCount} pieces, {memorizeSeconds} s, latest {latest}."

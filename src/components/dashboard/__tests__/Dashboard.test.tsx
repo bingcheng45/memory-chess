@@ -105,7 +105,7 @@ describe("Dashboard", () => {
     show("twoRounds");
 
     const speed = document.querySelector<HTMLElement>('[data-tile="speed"]');
-    expect(speed?.textContent).toBe("SpeedUnlocks with 4 more rounds at 6 pieces, 10 s.Play 6 pieces, 10 s →");
+    expect(speed?.textContent).toBe("Recall paceUnlocks with 4 more rounds at 6 pieces, 10 s.Play 6 pieces, 10 s →");
     expect(within(speed as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
   });
 

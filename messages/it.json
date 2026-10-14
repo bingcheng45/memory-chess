@@ -465,7 +465,7 @@
           "last": "Più recente"
         },
         "speed": {
-          "fig": "Fig. {number} · Velocità",
+          "fig": "Fig. {number} · Ritmo di richiamo",
           "title": "Secondi per pezzo ricostruito.",
           "aria": "Linea di esempio dei secondi di ricostruzione per pezzo corretto su 12 partite, che scende da 4,1 a 2,6 secondi.",
           "note": "Registro di esempio · 12 partite · Medio",
@@ -483,7 +483,7 @@
           "fastWrong": "Veloce e sbagliato non è un miglioramento.",
           "config": "{source, select, calibration {Allenamento} other {Gioco}} · pezzi: {pieceCount} · {studyTime}, l’impostazione che giochi di più ultimamente · Da {count, plural, one {# partita} many {# partite} other {# partite}}",
           "need": "{count, plural, one {Ancora # partita} many {Ancora # partite} other {Ancora # partite}} a {pieceCount} pezzi, {studyTime} {source, select, calibration {in allenamento} other {in gioco}} {count, plural, one {e compare} many {e compare} other {e compare}} la tua linea della velocità.",
-          "needRight": "La velocità conta solo le partite con almeno un pezzo giusto. Gioca {count, plural, one {# partita così} many {# partite così} other {# partite così}} per iniziare la tua linea.",
+          "needRight": "Il ritmo di richiamo conta solo le partite con almeno un pezzo giusto. Gioca {count, plural, one {# partita così} many {# partite così} other {# partite così}} per iniziare la tua linea.",
           "first": "Meno recente",
           "last": "Più recente"
         },
@@ -832,7 +832,7 @@
             "title": "La mia misurazione su Memory Chess",
             "span": "Span di memoria: {pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}}, {accuracy}% o meglio in {count, plural, one {# partita} many {# partite} other {# partite}}",
             "held": "Pezzi ricordati: media recente {average}, da {count, plural, one {# partita} many {# partite} other {# partite}}",
-            "speed": "Velocità: media recente {average} per pezzo {source, select, calibration {in allenamento} other {in gioco}} a {pieceCount} pezzi, {studyTime}, da {count, plural, one {# partita} many {# partite} other {# partite}}",
+            "speed": "Ritmo di richiamo: media recente {average} per pezzo {source, select, calibration {in allenamento} other {in gioco}} a {pieceCount} pezzi, {studyTime}, da {count, plural, one {# partita} many {# partite} other {# partite}}",
             "site": "thememorychess.com",
             "copy": "Copia la mia misurazione",
             "copied": "Copiato. Incollalo dove vuoi.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Precisione recente",
       "span": "Span di memoria",
       "piecesHeld": "Pezzi ricordati",
-      "speed": "Velocità",
+      "speed": "Ritmo di richiamo",
       "studyTime": "Tempo di studio",
       "rebuildTime": "Tempo di ricostruzione",
       "streak": "Giorni di fila",
@@ -1463,7 +1463,7 @@
         "aria": "Precisione nelle tue ultime {count} partite a {pieceCount} pezzi, {memorizeSeconds} s, su una scala da 0 a 100 per cento, ultima {latest} per cento."
       },
       "speed": {
-        "title": "Velocità nel tempo",
+        "title": "Ritmo di richiamo nel tempo",
         "unit": "Secondi per pezzo corretto. Meno è più veloce.",
         "note": "Partite di {source, select, calibration {allenamento} other {gioco}} a {pieceCount} pezzi, {memorizeSeconds} s. Le più recenti: {count, plural, one {# partita} many {# partite} other {# partite}}.",
         "aria": "Secondi per pezzo corretto nelle tue ultime {count} partite a {pieceCount} pezzi, {memorizeSeconds} s, ultima {latest}."

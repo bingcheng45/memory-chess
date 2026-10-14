@@ -465,7 +465,7 @@
           "last": "Mới nhất"
         },
         "speed": {
-          "fig": "Hình {number} · Tốc độ",
+          "fig": "Hình {number} · Nhịp nhớ lại",
           "title": "Số giây cho mỗi quân bạn dựng lại.",
           "aria": "Đường mẫu của số giây dựng lại cho mỗi quân đúng qua 12 ván, giảm từ 4,1 xuống 2,6 giây.",
           "note": "Hồ sơ mẫu · 12 ván · Trung bình",
@@ -483,7 +483,7 @@
           "fastWrong": "Nhanh mà sai thì không phải là tiến bộ.",
           "config": "{source, select, calibration {Luyện tập} other {Ván đấu}} · {pieceCount} quân · {studyTime}, thiết lập bạn chơi nhiều nhất gần đây · Từ {count, plural, other {# ván}}",
           "need": "Chơi thêm {count, plural, other {# ván}} với {pieceCount} quân, {studyTime} {source, select, calibration {ở chế độ luyện tập} other {ở ván đấu}} để vẽ đường tốc độ của bạn.",
-          "needRight": "Tốc độ chỉ tính những ván có ít nhất một quân đúng. Chơi {count, plural, other {# ván như vậy}} để bắt đầu đường của bạn.",
+          "needRight": "Nhịp nhớ lại chỉ tính những ván có ít nhất một quân đúng. Chơi {count, plural, other {# ván như vậy}} để bắt đầu đường của bạn.",
           "first": "Cũ nhất",
           "last": "Mới nhất"
         },
@@ -832,7 +832,7 @@
             "title": "Số đo Memory Chess của tôi",
             "span": "Tầm nhớ: {pieceCount, plural, other {# quân}}, đạt {accuracy}% trở lên trong {count, plural, other {# ván}}",
             "held": "Số quân nhớ được: trung bình gần đây {average}, từ {count, plural, other {# ván}}",
-            "speed": "Tốc độ: trung bình gần đây {average} mỗi quân {source, select, calibration {khi luyện tập} other {trong ván đấu}} với {pieceCount} quân, {studyTime}, từ {count, plural, other {# ván}}",
+            "speed": "Nhịp nhớ lại: trung bình gần đây {average} mỗi quân {source, select, calibration {khi luyện tập} other {trong ván đấu}} với {pieceCount} quân, {studyTime}, từ {count, plural, other {# ván}}",
             "site": "thememorychess.com",
             "copy": "Sao chép số đo của tôi",
             "copied": "Đã sao chép. Dán vào bất cứ đâu.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Độ chính xác gần đây",
       "span": "Tầm nhớ",
       "piecesHeld": "Số quân nhớ được",
-      "speed": "Tốc độ",
+      "speed": "Nhịp nhớ lại",
       "studyTime": "Thời gian ghi nhớ",
       "rebuildTime": "Thời gian xếp",
       "streak": "Chuỗi ngày",
@@ -1463,7 +1463,7 @@
         "aria": "Độ chính xác trong {count} ván gần nhất với {pieceCount} quân, {memorizeSeconds} giây, trên thang từ 0 đến 100 phần trăm, gần nhất {latest} phần trăm."
       },
       "speed": {
-        "title": "Tốc độ theo thời gian",
+        "title": "Nhịp nhớ lại theo thời gian",
         "unit": "Số giây cho mỗi quân đúng. Càng thấp càng nhanh.",
         "note": "{source, select, calibration {Ván luyện tập} other {Ván đấu}} {pieceCount} quân, {memorizeSeconds} giây. {count, plural, other {# ván}} gần nhất.",
         "aria": "Số giây cho mỗi quân đúng trong {count} ván gần nhất với {pieceCount} quân, {memorizeSeconds} giây, gần nhất {latest}."

@@ -465,7 +465,7 @@
           "last": "Legutóbbi"
         },
         "speed": {
-          "fig": "{number}. ábra · Sebesség",
+          "fig": "{number}. ábra · Felidézési tempó",
           "title": "Másodperc bábunként az újraépítéskor.",
           "aria": "Minta görbe az újraépítés helyes bábunkénti másodperceiről 12 kör alatt, 4,1 másodpercről 2,6 másodpercre csökken.",
           "note": "Minta jegyzőkönyv · 12 kör · Közepes",
@@ -483,7 +483,7 @@
           "fastWrong": "A gyors, de hibás nem fejlődés.",
           "config": "{source, select, calibration {Gyakorlás} other {Játszma}} · {pieceCount} bábu · {studyTime}, mostanában ez a leggyakoribb beállításod · {count, plural, one {# kör alapján} other {# kör alapján}}",
           "need": "Még {count, plural, one {# kör} other {# kör}} {pieceCount} bábuval, {studyTime} idővel {source, select, calibration {gyakorlásban} other {játszmákban}}, és {count, plural, one {kirajzolódik} other {kirajzolódik}} a sebességgörbéd.",
-          "needRight": "A sebesség csak azokat a köröket számolja, amelyekben legalább egy bábu helyes. Játssz {count, plural, one {# ilyen kört} other {# ilyen kört}}, hogy elinduljon a görbéd.",
+          "needRight": "A felidézési tempó csak azokat a köröket számolja, amelyekben legalább egy bábu helyes. Játssz {count, plural, one {# ilyen kört} other {# ilyen kört}}, hogy elinduljon a görbéd.",
           "first": "Legrégebbi",
           "last": "Legutóbbi"
         },
@@ -832,7 +832,7 @@
             "title": "A Memory Chess mérésem",
             "span": "Memóriaterjedelem: {pieceCount, plural, one {# bábu} other {# bábu}}, legalább {accuracy}% {count, plural, one {# körben} other {# körben}}",
             "held": "Megjegyzett bábuk: friss átlag {average}, {count, plural, one {# kör alapján} other {# kör alapján}}",
-            "speed": "Sebesség: friss átlag {average} bábunként {source, select, calibration {gyakorlásban} other {játszmákban}}, {pieceCount} bábu, {studyTime}, {count, plural, one {# kör alapján} other {# kör alapján}}",
+            "speed": "Felidézési tempó: friss átlag {average} bábunként {source, select, calibration {gyakorlásban} other {játszmákban}}, {pieceCount} bábu, {studyTime}, {count, plural, one {# kör alapján} other {# kör alapján}}",
             "site": "thememorychess.com",
             "copy": "Mérésem másolása",
             "copied": "Kimásolva. Illeszd be bárhová.",
@@ -1366,7 +1366,7 @@
       "recentAccuracy": "Legutóbbi pontosság",
       "span": "Memóriaterjedelem",
       "piecesHeld": "Megjegyzett bábuk",
-      "speed": "Sebesség",
+      "speed": "Felidézési tempó",
       "studyTime": "Megfigyelési idő",
       "rebuildTime": "Kirakási idő",
       "streak": "Napi sorozat",
@@ -1463,7 +1463,7 @@
         "aria": "Pontosság az utolsó {count} körödben, {pieceCount} bábu, {memorizeSeconds} mp, 0 és 100 százalék közötti skálán, legutóbb {latest} százalék."
       },
       "speed": {
-        "title": "Sebesség az idő során",
+        "title": "Felidézési tempó az idő során",
         "unit": "Másodperc helyes bábunként. A kevesebb gyorsabb.",
         "note": "{source, select, calibration {Gyakorló körök} other {Játékkörök}}, {pieceCount} bábu, {memorizeSeconds} mp. Utolsó {count, plural, one {# kör} other {# kör}}.",
         "aria": "Másodperc helyes bábunként az utolsó {count} körödben, {pieceCount} bábu, {memorizeSeconds} mp, legutóbb {latest}."

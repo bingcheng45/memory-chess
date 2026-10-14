@@ -35,6 +35,15 @@
       "current": "Språk: {language}",
       "select": "Välj språk",
       "englishOnly": "Den här sidan finns bara på engelska."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Gå med i Telegram-gruppen",
+      "resultLine": "Dela dina vinster och minnestrick med andra spelare.",
+      "dailyLine": "Prata om dagens bräde med andra spelare. Dölj svaren i en spoiler.",
+      "dashboardLine": "Jämför erfarenheter med andra spelare.",
+      "leaderboardLine": "Prata med spelarna på den här topplistan.",
+      "aboutLine": "Föredrar du chatt?"
     }
   },
   "home": {

@@ -35,6 +35,15 @@
       "current": "Langue : {language}",
       "select": "Choisir une langue",
       "englishOnly": "Cette page est disponible uniquement en anglais."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Rejoindre le groupe Telegram",
+      "resultLine": "Partagez vos victoires et vos astuces de mémoire avec les autres joueurs.",
+      "dailyLine": "Parlez du plateau du jour avec les autres joueurs. Masquez les réponses dans un spoiler.",
+      "dashboardLine": "Comparez vos astuces avec les autres joueurs.",
+      "leaderboardLine": "Discutez avec les joueurs de ce classement.",
+      "aboutLine": "Vous préférez discuter ?"
     }
   },
   "home": {

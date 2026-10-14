@@ -35,6 +35,15 @@
       "current": "Ngôn ngữ: {language}",
       "select": "Chọn ngôn ngữ",
       "englishOnly": "Trang này chỉ có bằng tiếng Anh."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Tham gia nhóm Telegram",
+      "resultLine": "Chia sẻ chiến thắng và mẹo ghi nhớ với những người chơi khác.",
+      "dailyLine": "Trao đổi về bàn cờ hôm nay với những người chơi khác. Hãy giấu đáp án trong spoiler.",
+      "dashboardLine": "Trao đổi kinh nghiệm với những người chơi khác.",
+      "leaderboardLine": "Trò chuyện với những người chơi trên bảng xếp hạng này.",
+      "aboutLine": "Thích trò chuyện hơn?"
     }
   },
   "home": {

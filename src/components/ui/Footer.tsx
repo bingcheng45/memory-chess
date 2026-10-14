@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 
+import { CommunityLink } from "@/components/community/CommunityLink";
 import SiteLink from "@/components/ui/SiteLink";
 
 export const FOOTER_LINKS = [
@@ -97,6 +98,9 @@ export default function Footer() {
           {FOOTER_LINKS.map((link) => (
             <SiteLink key={link.href} href={link.href} label={t(link.labelKey)} className={FOOTER_LINK_CLASS} />
           ))}
+          <CommunityLink placement="footer" className={FOOTER_LINK_CLASS}>
+            {t("community.footer")}
+          </CommunityLink>
         </div>
 
         {/* Product Hunt Badges */}

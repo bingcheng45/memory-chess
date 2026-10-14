@@ -10,6 +10,7 @@ jest.mock("@/components/game/FirstGameFeedbackDialog", () => ({ __esModule: true
 jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: jest.fn(() => Promise.resolve(null)), readCachedCutoffs: jest.fn(() => null) }));
 
 const mockStore = {
+  history: [],
   round: scoredRound("4k3/8/8/8/3q4/8/PP6/4K3", "4k3/8/8/8/8/8/PP6/4K3"),
   gameState: { pieceCount: 5, memorizeTime: 10, accuracy: 80, correctPlacements: 4, skillRating: 1042, skillRatingChange: 12, streak: 3, labRound: { facts: { id: "r1" }, endedAt: 0 } },
 };

@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 import * as Tabs from '@radix-ui/react-tabs';
 import LeaderboardTable, { playHrefOf, type EntryDetails } from '@/components/leaderboard/LeaderboardTable';
 import { DailyResetNote } from '@/components/leaderboard/DailyResetNote';
+import { CommunityInvite } from '@/components/community/CommunityLink';
 import { useDailyState } from '@/hooks/useDailyState';
 import { Link } from '@/i18n/navigation';
 import { RANKED_DIFFICULTIES, type RankedDifficulty } from '@/lib/reference/facts';
@@ -73,6 +74,7 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   // Difficulty names are the same strings the game config shows; reuse them
   // rather than translating "Easy" twice and letting the two drift.
   const tg = useTranslations("game");
+  const tCommunity = useTranslations('common.community');
   const [reads, setReads] = useState<Reads>({ boards: serverBoards, dailyFailure: null });
   const [retryAttempt, setRetryAttempt] = useState(0);
   const [activeTab, setActiveTab] = useState<LeaderboardTab>(initialTab);
@@ -179,6 +181,7 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
       </Tabs.Root>
 
       <p className="lb-note">{t("footnote")}</p>
+      <CommunityInvite placement="leaderboard" line={tCommunity('leaderboardLine')} link={tCommunity('link')} />
 
       {activeBoard.data.length > 0 && !activeBoard.error && (
         <div className="lb-cta">

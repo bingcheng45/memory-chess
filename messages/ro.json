@@ -35,6 +35,15 @@
       "current": "Limbă: {language}",
       "select": "Alege limba",
       "englishOnly": "Această pagină este disponibilă doar în limba engleză."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Intră în grupul de Telegram",
+      "resultLine": "Împărtășește-ți victoriile și trucurile de memorie cu alți jucători.",
+      "dailyLine": "Vorbește despre tabla de azi cu alți jucători. Ascunde răspunsurile într-un spoiler.",
+      "dashboardLine": "Schimbă păreri cu alți jucători.",
+      "leaderboardLine": "Discută cu jucătorii din acest clasament.",
+      "aboutLine": "Preferi un chat?"
     }
   },
   "home": {

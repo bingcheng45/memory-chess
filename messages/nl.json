@@ -35,6 +35,15 @@
       "current": "Taal: {language}",
       "select": "Kies een taal",
       "englishOnly": "Deze pagina is alleen in het Engels beschikbaar."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Word lid van de Telegram-groep",
+      "resultLine": "Deel je winsten en geheugentrucs met andere spelers.",
+      "dailyLine": "Praat over het bord van vandaag met andere spelers. Zet antwoorden in een spoiler.",
+      "dashboardLine": "Vergelijk ervaringen met andere spelers.",
+      "leaderboardLine": "Praat mee met de spelers van dit klassement.",
+      "aboutLine": "Liever chatten?"
     }
   },
   "home": {

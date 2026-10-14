@@ -35,6 +35,15 @@
       "current": "Dil: {language}",
       "select": "Dil seçin",
       "englishOnly": "Bu sayfa yalnızca İngilizce olarak mevcuttur."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Telegram grubuna katıl",
+      "resultLine": "Kazandıklarını ve hafıza ipuçlarını diğer oyuncularla paylaş.",
+      "dailyLine": "Bugünün tahtasını diğer oyuncularla konuş. Cevapları spoiler içinde gizle.",
+      "dashboardLine": "Diğer oyuncularla notlarını karşılaştır.",
+      "leaderboardLine": "Bu sıralamadaki oyuncularla sohbet et.",
+      "aboutLine": "Sohbeti mi tercih edersin?"
     }
   },
   "home": {

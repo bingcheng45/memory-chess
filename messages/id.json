@@ -35,6 +35,15 @@
       "current": "Bahasa: {language}",
       "select": "Pilih bahasa",
       "englishOnly": "Halaman ini hanya tersedia dalam bahasa Inggris."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Gabung grup Telegram",
+      "resultLine": "Bagikan kemenangan dan trik mengingat papan bersama pemain lain.",
+      "dailyLine": "Bahas papan hari ini bersama pemain lain. Sembunyikan jawaban di dalam spoiler.",
+      "dashboardLine": "Bertukar catatan dengan pemain lain.",
+      "leaderboardLine": "Ngobrol dengan para pemain di papan peringkat ini.",
+      "aboutLine": "Lebih suka mengobrol?"
     }
   },
   "home": {

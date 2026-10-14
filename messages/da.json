@@ -35,6 +35,15 @@
       "current": "Sprog: {language}",
       "select": "Vælg sprog",
       "englishOnly": "Denne side findes kun på engelsk."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Kom med i Telegram-gruppen",
+      "resultLine": "Del dine sejre og huskeknep med andre spillere.",
+      "dailyLine": "Snak om dagens bræt med andre spillere. Skjul svar i en spoiler.",
+      "dashboardLine": "Sammenlign erfaringer med andre spillere.",
+      "leaderboardLine": "Snak med spillerne på denne rangliste.",
+      "aboutLine": "Foretrækker du chat?"
     }
   },
   "home": {

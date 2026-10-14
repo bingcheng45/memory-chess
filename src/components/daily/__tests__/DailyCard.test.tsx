@@ -33,3 +33,24 @@ describe("the daily result grid's description", () => {
     expect(screen.getByRole("img", { name: label })).toBeInTheDocument();
   });
 });
+
+describe("the Telegram line", () => {
+  const squares = "cccc" + "w" + "m" + ".".repeat(58);
+  const line = /Talk about today's board with other players\. Hide any answers in a spoiler\./;
+
+  it("is not shown before the player has joined today's board", () => {
+    render(<DailyCard board={playedWith(squares)} setting={null} joined={null} standing={null} onJoined={jest.fn()} />);
+
+    expect(screen.queryByText(line)).not.toBeInTheDocument();
+    expect(screen.queryByRole("link", { name: "Join the Telegram group" })).not.toBeInTheDocument();
+  });
+
+  it("is shown once the player has joined", () => {
+    render(<DailyCard board={playedWith(squares)} setting={null} joined={{} as never} standing={null} onJoined={jest.fn()} />);
+
+    expect(screen.getByText(line)).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: "Join the Telegram group" });
+    expect(link).toHaveAttribute("href", "https://t.me/TheMemoryChess");
+    expect(link).toHaveAttribute("id", "community-daily");
+  });
+});

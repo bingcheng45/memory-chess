@@ -35,6 +35,15 @@
       "current": "Language: {language}",
       "select": "Select language",
       "englishOnly": "This page is only available in English."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Join the Telegram group",
+      "resultLine": "Share your wins and memory tricks with other players.",
+      "dailyLine": "Talk about today's board with other players. Hide any answers in a spoiler.",
+      "dashboardLine": "Compare notes with other players.",
+      "leaderboardLine": "Talk with the players on this leaderboard.",
+      "aboutLine": "Prefer chat?"
     }
   },
   "home": {

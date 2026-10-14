@@ -292,3 +292,16 @@ describe("the Daily tab", () => {
     expect(screen.getByRole("link", { name: "Start Playing Now" })).toHaveAttribute("href", "/daily");
   });
 });
+
+describe("the Telegram line", () => {
+  it("sits under the table as a plain outbound link", () => {
+    render(<LeaderboardTabs boards={boards} initialTab="medium" />);
+
+    expect(screen.getByText(/Talk with the players on this leaderboard\./)).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: "Join the Telegram group" });
+    expect(link).toHaveAttribute("href", "https://t.me/TheMemoryChess");
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    expect(link).toHaveAttribute("id", "community-leaderboard");
+  });
+});

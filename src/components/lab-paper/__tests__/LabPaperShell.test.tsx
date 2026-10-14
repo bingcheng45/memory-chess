@@ -51,6 +51,7 @@ describe("the footer the locale layout renders", () => {
       ["Contact us", "/contact-us"],
       ["Privacy", "/privacy"],
       ["Terms", "/terms"],
+      ["Telegram", "https://t.me/TheMemoryChess"],
     ]);
     expect(within(footer).getByText("Recognition")).toBeInTheDocument();
     expect(within(footer).getAllByRole("img").map((badge) => new URL(badge.getAttribute("src")!).searchParams.get("theme"))).toEqual([

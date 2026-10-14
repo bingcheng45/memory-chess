@@ -1,0 +1,15 @@
+{
+  "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "contents": "Innehåll",
+    "onThisPage": "På den här sidan",
+    "lastUpdated": "Senast uppdaterad: <time>{date}</time>",
+    "note": {
+      "general": "Den här sidan har översatts från engelska med hjälp av AI. Den engelska sidan är förlagan.",
+      "legal": "Den här översättningen har gjorts med hjälp av AI och tillhandahålls för enkelhetens skull. Om den skiljer sig från den engelska versionen gäller den engelska versionen.",
+      "readInEnglish": "Läs den på engelska"
+    }
+  }
+}

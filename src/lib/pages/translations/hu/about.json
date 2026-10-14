@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Névjegy",
+      "description": "Ki készíti a Memory Chess-t, miért létezik a játék, hogyan születik egy kör pontszáma, és hogyan készülnek a Tanulás útmutatói.",
+      "socialTitle": "A Memory Chess-ről",
+      "socialDescription": "Ki készíti a Memory Chess-t, miért létezik a játék, és hogyan működik."
+    },
+    "kicker": "Névjegy",
+    "title": "A Memory Chess-ről",
+    "lede": "A Memory Chess egy ingyenes táblamemória-játék, amelyet egyetlen ember készít és üzemeltet. Ez az oldal elmondja, ki ez az ember, miért létezik a játék, és hogyan működik valójában.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Ki üzemelteti ezt az oldalt",
+        "blocks": [
+          {
+            "p": "Bing Cheng vagyok, egyedül dolgozó fejlesztő. A Memory Chess-t egyedül üzemeltetem, a kódhoz és az oldal szövegeihez AI segítségét veszem igénybe. Nincs mögötte se csapat, se cég. Emellett a <tont>Tont</tont> is az én munkám, az oldallal kapcsolatos újdonságokat pedig a <x>@TheMemoryChess</x> fiókon teszem közzé."
+          },
+          {
+            "p": "Mivel az egészet egyetlen ember viszi, az oldal szándékosan kicsi marad. Egy játék, egy sor edzési útmutató, egy ranglista és egy változásnapló, amely azt rögzíti, ami ténylegesen megjelent."
+          },
+          {
+            "p": "A játék ingyenes, és nem kell hozzá fiók. A Google AdSense-en keresztül megjelenő hirdetések segítenek fedezni a tárhely költségeit, és az oldalon semmi sincs fizetéshez vagy regisztrációhoz kötve."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Miért létezik a játék",
+        "blocks": [
+          {
+            "p": "A sakkfejlődésről szóló tanácsok többsége a kezdőket a megnyitások, a feladványok és a tanfolyamok felé tereli. Tapasztalatom szerint mindezek alatt egy korábbi probléma húzódik. A kezdők szem elől tévesztik, mi van a táblán. Nem vesznek észre egy védőt, elfelejtik, hogy egy bábu két lépéssel korábban elmozdult, és olyan ütésekbe sétálnak bele, amelyeket egy diagramon azonnal észrevennének."
+          },
+          {
+            "p": "Egy állást fejben tartani fejleszthető képesség, és kevés helyen lehetett közvetlenül gyakorolni. Ezért építettem egyet. A Memory Chess ezt az egy képességet emeli ki, és pontszámot ad rá, hogy láthasd, ahogy fejlődik. Ha tétet is szeretnél, egy általad választott névvel felkerülhetsz a nyilvános ranglistára, és összemérheted magad mindenki mással."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Hogyan zajlik egy kör",
+        "blocks": [
+          {
+            "p": "Te választod meg, hány bábuval nézel szembe, és mennyi ideig figyelheted meg őket. Az előbeállítások a Könnyű szinttől (két bábu, tíz másodperc) a Nagymester szintig (húsz bábu, öt másodperc) terjednek, és bármilyen egyéni kombinációt is beállíthatsz. Ezután a kör három szakaszban zajlik."
+          },
+          {
+            "p": "Először megjegyzed. A tábla a választott ideig mutat egy állást, aztán eltűnik. Ezután újraépíted. Emlékezetből bábukat helyezel el egy üres táblán. Végül megkapod az eredményed. A játék mezőről mezőre összeveti a tábládat az eredetivel."
+          },
+          {
+            "p": "A pontozás szigorú. Egy bábu csak akkor számít helyesnek, ha a megfelelő színű megfelelő bábu pontosan azon a mezőn áll, amelyet az eredeti állásban elfoglalt. Egy bástya ott, ahol egy huszárnak kellene állnia, kétszeresen hibás. Rossz helyre tett bábunak számít, a helyéről kiszorított huszár pedig hiányzónak. A pontosságod az eredeti bábuk azon aránya, amelyet pontosan visszaállítottál."
+          },
+          {
+            "p": "Az eredményképernyő mindhárom csoportot mutatja: a helyes elhelyezéseket, a hibásakat és a teljesen elfelejtett bábukat, így minden kör megmondja, min dolgozz legközelebb. <game>Kipróbálhatsz egy kört</game> kevesebb mint egy perc alatt."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Hogyan készülnek a Tanulás útmutatói",
+        "blocks": [
+          {
+            "p": "A <learn>Tanulás könyvtár</learn> {count, plural, one {# útmutatót} other {# útmutatót}} tartalmaz a táblalátásról, a vizualizációról és a memóriaedzésről. AI segítségével készülnek. Bennük minden sakkállást egy szkript ellenőriz a bábuk száma, a szabályosság és a szöveg által állított minden támadás szempontjából. Minden állítás arról, hogyan működik a Memory Chess, a játék kódjára vezethető vissza. Minden útmutatóhoz tartoznak gyakorlatok. Némelyik a megfelelő beállításokkal nyit meg egy kört a játékban. A többi valódi táblára készült."
+          },
+          {
+            "p": "Ahol az útmutatók a memóriáról és a tanulásról tesznek állításokat, publikált kutatásokra hivatkoznak, köztük Gobet és Simon sakkmemóriáról szóló munkáira, valamint a felidézésről és az elosztott gyakorlásról szóló kísérleti szakirodalomra. Minden hivatkozás a forrására mutat. Saját kutatást nem végeztem, és az útmutatók sem állítanak mást."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Az oldal eddigi útja",
+        "blocks": [
+          {
+            "p": "Az első kiadás 2025 márciusában jelent meg, a játék egy puszta alapváltozataként. A mobilos játék és a bábuválasztás heteken belül követte. A Tanulás könyvtár 2026 márciusában indult, 2026 augusztusában pedig maga a játék 24 nyelven vált játszhatóvá. Az útmutatók és a változásnapló angol nyelvűek. A <changelog>változásnapló</changelog> minden verziószámmal ellátott kiadást rögzít, a hibajavításokat is beleértve. Azért tartom hitelesnek, mert magam is ebből idézem fel, mi és mikor változott."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Írj nekem",
+        "blocks": [
+          {
+            "p": "Írj nekem ide: <mail>{email}</mail>, vagy használd a <contact>kapcsolatfelvételi űrlapot</contact>. Mindent elolvasok, és a játékosok jelzései már korábban is valódi hibák kijavításához vezettek. Ha az apró betűs részre is kíváncsi vagy, az <privacy>adatvédelmi tájékoztató</privacy> és a <terms>felhasználási feltételek</terms> leírják, hogyan kezeli az oldal az adatokat, és mit fogadsz el azzal, hogy játszol."
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "fad930c9213a8e24da3dac2f58427a5dafcb7b29762f7cc963ca607d92efec4b",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -17,7 +17,7 @@
         "title": "Layanan",
         "blocks": [
           {
-            "p": "Memory Chess adalah permainan peramban gratis untuk melatih ingatan papan. Saya menyediakannya sebagaimana adanya dan sebagaimana tersedia, tanpa jaminan dalam bentuk apa pun. Saya berupaya menjaganya tetap cepat, akurat, dan daring, tetapi saya tidak menjanjikan layanan tanpa gangguan, penilaian tanpa kesalahan, atau bahwa fitur apa pun akan tetap sama selamanya. Saya dapat mengubah, menangguhkan, atau menghentikan bagian mana pun dari situs ini kapan saja."
+            "p": "Memory Chess adalah permainan browser gratis untuk melatih ingatan papan. Saya menyediakannya sebagaimana adanya dan sebagaimana tersedia, tanpa jaminan dalam bentuk apa pun. Saya berupaya menjaganya tetap cepat, akurat, dan daring, tetapi saya tidak menjanjikan layanan tanpa gangguan, penilaian tanpa kesalahan, atau bahwa fitur apa pun akan tetap sama selamanya. Saya dapat mengubah, menangguhkan, atau menghentikan bagian mana pun dari situs ini kapan saja."
           },
           {
             "p": "Sejauh diizinkan oleh hukum, saya tidak bertanggung jawab atas kerugian yang timbul dari penggunaan situs ini oleh Anda. Ini permainan ingatan. Batas wajar dari hal terburuk yang bisa terjadi di sini adalah kehilangan skor yang Anda pedulikan, dan saya tetap berusaha keras untuk mencegahnya."
@@ -34,7 +34,7 @@
             "p": "Formulir kontak ditujukan untuk pesan sungguhan kepada orang sungguhan. Gunakan untuk laporan bug, pertanyaan, dan ide, dan pesan Anda akan dibaca."
           },
           {
-            "p": "Saya dapat memblokir lalu lintas atau membatasi akses yang melanggar aturan ini. Karena tidak ada akun yang bisa diblokir, menghapus entri yang buruk dan memblokir penyalahgunaan di tepi jaringan adalah cara penegakan yang saya miliki, dan saya menggunakannya."
+            "p": "Saya dapat memblokir lalu lintas atau membatasi akses yang melanggar aturan ini. Karena tidak ada akun yang bisa diblokir, menghapus entri yang buruk dan memblokir penyalahgunaan di edge jaringan adalah cara penegakan yang saya miliki, dan saya menggunakannya."
           }
         ]
       },
@@ -62,7 +62,7 @@
             "p": "Catur itu sendiri bukan milik siapa pun. Posisi, aturan, dan notasi bebas digunakan semua orang, di sini maupun di tempat lain."
           },
           {
-            "p": "Jika Anda mengirim masukan atau saran, Anda setuju bahwa saya dapat menggunakannya untuk meningkatkan situs ini tanpa berutang kompensasi atau penghargaan kepada Anda. Masukan pemain sudah pernah membentuk rilis sungguhan, dan catatan perubahan merekam hasilnya."
+            "p": "Jika Anda mengirim masukan atau saran, Anda setuju bahwa saya dapat menggunakannya untuk meningkatkan situs ini tanpa berutang kompensasi atau pencantuman nama kepada Anda. Masukan pemain sudah pernah membentuk rilis sungguhan, dan catatan perubahan merekam hasilnya."
           }
         ]
       },

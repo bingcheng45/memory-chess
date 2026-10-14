@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "89b4c521d61012e1e0cc3dcc926dfe9cef7522674eab50ed283cb28f6afc02a7",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -20,7 +20,7 @@
             "p": "Saya Bing Cheng, seorang pengembang tunggal. Saya menjalankan Memory Chess sendiri, dengan bantuan AI untuk kode dan teks situs. Tidak ada tim maupun perusahaan di baliknya. Saya juga membangun <tont>Tont</tont>, dan saya membagikan kabar terbaru tentang situs ini di <x>@TheMemoryChess</x>."
           },
           {
-            "p": "Karena semuanya dijalankan oleh satu orang, situs ini sengaja dibuat kecil. Satu permainan, sekumpulan panduan latihan, satu papan peringkat, dan catatan perubahan yang merekam apa yang benar-benar dirilis."
+            "p": "Karena semuanya dijalankan oleh satu orang, situs ini sengaja dibuat kecil. Satu permainan, sekumpulan panduan latihan, satu papan peringkat, dan catatan perubahan (halaman Yang Baru) yang merekam apa yang benar-benar dirilis."
           },
           {
             "p": "Permainan ini gratis dan tidak memerlukan akun. Iklan melalui Google AdSense membantu menutup biaya hosting, dan tidak ada apa pun di situs ini yang dikunci di balik pembayaran atau pendaftaran."
@@ -78,7 +78,7 @@
         "title": "Hubungi saya",
         "blocks": [
           {
-            "p": "Kirimi saya surel di <mail>{email}</mail> atau gunakan <contact>formulir kontak</contact>. Saya membaca semuanya, dan laporan dari pemain sudah pernah memperbaiki bug sungguhan. Jika Anda ingin membaca ketentuan rincinya, <privacy>kebijakan privasi</privacy> dan <terms>ketentuan layanan</terms> menjelaskan cara situs ini menangani data dan apa yang Anda setujui dengan bermain."
+            "p": "Kirimi saya email di <mail>{email}</mail> atau gunakan <contact>formulir kontak</contact>. Saya membaca semuanya, dan laporan dari pemain sudah pernah memperbaiki bug sungguhan. Jika Anda ingin membaca ketentuan rincinya, <privacy>kebijakan privasi</privacy> dan <terms>ketentuan layanan</terms> menjelaskan cara situs ini menangani data dan apa yang Anda setujui dengan bermain."
           }
         ]
       }

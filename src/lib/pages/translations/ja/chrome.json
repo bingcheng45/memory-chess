@@ -1,0 +1,15 @@
+{
+  "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "contents": "目次",
+    "onThisPage": "このページの内容",
+    "lastUpdated": "最終更新日：<time>{date}</time>",
+    "note": {
+      "general": "このページは AI の支援を受けて英語から翻訳されました。英語のページが基準です。",
+      "legal": "この翻訳は AI の支援を受けて作成されたもので、便宜のために提供しています。英語版と内容が異なる場合は、英語版が優先します。",
+      "readInEnglish": "英語で読む"
+    }
+  }
+}

@@ -131,6 +131,23 @@ test("scores accuracy as the game does, ten points off per extra piece", () => {
   expect(boards).toEqual([expect.objectContaining({ board: "medium:6", rows: 2, cutoff: "open", mean: 0.7, perfect: 0 })]);
 });
 
+test("reports the look and rebuild seconds per piece the rating's credits are measured from", () => {
+  const row = (correct: number, study: number, rebuild: number): Row => ({
+    player: 1,
+    difficulty: "medium",
+    piece_count: 6,
+    correct_pieces: correct,
+    total_wrong_pieces: 6 - correct,
+    memorize_time: study,
+    solution_time: rebuild,
+    skill_rating: 1000,
+    created_at: "2026-01-01T00:00:00Z",
+  });
+  const { paces } = fit([row(6, 6, 12), row(3, 12, 30), row(4, 3, 3), row(5, 9, 6), row(2, 6, 24)], "--ability", "board");
+
+  expect(paces).toEqual({ look: { q25: 1, median: 1, q75: 1.5 }, rebuild: { q25: 1, median: 2, q75: 4 } });
+});
+
 test("rejects an unknown ability grouping", () => {
   const run = spawnSync(process.execPath, [SCRIPT, "fit", "missing.json", "--ability", "team"], { encoding: "utf8" });
 

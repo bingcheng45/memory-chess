@@ -130,6 +130,13 @@ const personas = {
     round: (n, c) => playRound(c.rng, c.truth, { skill: 1450, ...(n % 2 === 0 ? { pieces: 12, study: 8 } : { pieces: 2, study: 10 }) }),
   },
   "Easy farmer (2 pcs, 2 s, always 100%)": fixed(null, 2, 2, { accuracy: 100 }),
+  "Done-early glance (6 pcs, Done at 1 s, 1 s a piece, always 100%)": { skill: () => null, round: () => ({ pieceCount: 6, studySeconds: 1, rebuildSeconds: 6, accuracy: 100 }) },
+  "Perfect Hard (12 pcs, 8 s, 1 s a piece, always 100%)": { skill: () => null, round: () => ({ pieceCount: 12, studySeconds: 8, rebuildSeconds: 12, accuracy: 100 }) },
+  "Honest early Done (6 pcs, Done at 6 s, 2 s a piece, skill 1450)": fixed(1450, 6, 6, { pace: 2 }),
+  "Slow-round sandbagger (every other round the full 10 s and 4 s a piece, skill 1450)": {
+    skill: () => 1450,
+    round: (n, c) => playRound(c.rng, c.truth, n % 2 === 1 ? { skill: 1450, pieces: 6, study: 10, pace: 4 } : { skill: 1450, pieces: 6, study: 6, pace: 2 }),
+  },
   "Empty-board spammer (32 pcs, 60 s, 0%)": fixed(null, 32, 60, { accuracy: 0, pace: 0.05 }),
   "Instant-submit cheater (32 pcs, 0.1 s, 0-6%)": {
     skill: () => null,
@@ -327,8 +334,9 @@ for (let i = 0; i < SIGN_SAMPLES; i += 1) {
 // The highest rating reachable: the hardest board's challenge (32 pieces, 1 s study, the fastest counted rebuild, a
 // perfect score) plus the no-gain gap, plus the last perfect round from just under that gap, at the steady RD and at
 // the widest RD a player can reach by playing rounds that teach the game nothing.
-const topChallenge = challengeOf({ pieceCount: 32, studySeconds: 1, rebuildSeconds: 32 * RATING_MODEL.rebuildFloorPerPiece, accuracy: 100 });
-const topRound = { pieceCount: 32, studySeconds: 1, rebuildSeconds: 32 * RATING_MODEL.rebuildFloorPerPiece, accuracy: 100 };
+const fastestPace = (RATING_MODEL.referenceRebuildPerPiece * (1 + RATING_MODEL.rebuildBuffer)) / 2 ** RATING_MODEL.rebuildMaxHalvings;
+const topRound = { pieceCount: 32, studySeconds: 1, rebuildSeconds: 32 * fastestPace, accuracy: 100 };
+const topChallenge = challengeOf(topRound);
 const highestFrom = (rd) => {
   let best = 0;
   for (let rating = Math.floor(topChallenge); rating < topChallenge + RATING_MODEL.noGainGap; rating += 1) {
@@ -378,6 +386,9 @@ function propertiesUnder(t) {
   const grinderSkill = skillFor(TRUTHS[t], 50.5, MAX_PIECES, 1);
   const barelySkill = skillFor(TRUTHS[t], 46, MAX_PIECES, 1);
   const biases = STEADY.map((name) => finalMean(name, t) - personas[name].skill(1));
+  const glance = finalMean("Done-early glance (6 pcs, Done at 1 s, 1 s a piece, always 100%)", t);
+  const perfectHard = finalMean("Perfect Hard (12 pcs, 8 s, 1 s a piece, always 100%)", t);
+  const slowRounds = finalMean("Slow-round sandbagger (every other round the full 10 s and 4 s a piece, skill 1450)", t) - finalMean("Honest early Done (6 pcs, Done at 6 s, 2 s a piece, skill 1450)", t);
   const DRIFT = 15;
   const BIAS_BAND = 50;
   return [
@@ -410,6 +421,9 @@ function propertiesUnder(t) {
     [`9d. The hardest-board grinder at 46-55% ends no higher than the skill 50.5% honestly shows (${grinder.toFixed(0)} <= ${grinderSkill.toFixed(0)} + ${BIAS_BAND})`, grinder <= grinderSkill + BIAS_BAND],
     [`9e. The preview holds: ${previewBreaches} of ${previewChecked} rounds lose more than its max loss, or gain more than its perfect gain at the full study time and 2.5 s a piece or slower`, previewBreaches === 0],
     [`9f. No round at 40% or under raises the rating and no perfect round lowers it (${againstResult} of ${SIGN_SAMPLES} random states and rounds do)`, againstResult === 0],
+    [`11a. A perfect glance at 6 pieces, Done at 1 s, settles at ${glance.toFixed(0)}: at most 1700 and at least 400 under a perfect Hard player (${perfectHard.toFixed(0)})`,
+      glance <= 1700 && glance <= perfectHard - 400],
+    [`11b. Slow rounds buy nothing: alternating the full look and 4 s a piece with honest rounds ends ${slowRounds.toFixed(0)} from always honest (at most +25)`, slowRounds <= 25],
     [`10. Steady players end near their true skill: bias over rounds 401-500 is ${biases.map((b) => b.toFixed(0)).join(", ")} (each within ±${BIAS_BAND})`, biases.every((b) => Math.abs(b) <= BIAS_BAND)],
   ];
 }

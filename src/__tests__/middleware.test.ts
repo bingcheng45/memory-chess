@@ -59,7 +59,7 @@ beforeEach(() => {
 
 describe("middleware on English-only routes", () => {
   it.each([
-    ["https://thememorychess.com/de/about", "https://thememorychess.com/about"],
+    ["https://thememorychess.com/de/changelog", "https://thememorychess.com/changelog"],
     ["https://thememorychess.com/ja/learn", "https://thememorychess.com/learn"],
     [
       "https://thememorychess.com/pt-BR/learn/chess-memory-training?ref=x",
@@ -89,6 +89,25 @@ describe("middleware on English-only routes", () => {
     run("https://thememorychess.com/de/learning");
 
     expect(mockForwarded).toHaveLength(2);
+  });
+
+  it.each(["about", "privacy", "terms"])("serves the translated trust page /de/%s itself", (page) => {
+    const response = run(`https://thememorychess.com/de/${page}`);
+
+    expect(response.status).not.toBe(308);
+    expect(mockForwarded).toHaveLength(1);
+  });
+
+  it("answers the bare English URL of a translated trust page in English whatever the visitor prefers", () => {
+    run(
+      "https://thememorychess.com/privacy",
+      { "accept-language": "de-DE,de;q=0.9", "user-agent": BROWSER },
+      "de",
+    );
+
+    expect(mockForwarded).toHaveLength(1);
+    expect(mockForwarded[0].headers.get("accept-language")).toBe("en");
+    expect(mockForwarded[0].cookies.has("NEXT_LOCALE")).toBe(false);
   });
 
   it("negotiates a bare English-only route as English whatever the visitor prefers", () => {
@@ -173,7 +192,7 @@ describe("middleware on the retired settings page", () => {
 describe("middleware on a trailing slash", () => {
   it.each([
     ["https://thememorychess.com/fr/learn/?utm=1", "https://thememorychess.com/learn?utm=1"],
-    ["https://thememorychess.com/de/about/", "https://thememorychess.com/about"],
+    ["https://thememorychess.com/de/changelog/", "https://thememorychess.com/changelog"],
     [
       "https://thememorychess.com/de/learn/chess-board-vision-drills/?utm=xyz",
       "https://thememorychess.com/learn/how-to-see-the-whole-board-in-chess?utm=xyz",

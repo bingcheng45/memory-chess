@@ -47,7 +47,7 @@ function inPagesSandbox<T>(body: (root: string) => T): T {
 
 function servePagesIn(root: string, locales: readonly string[]): void {
   const source = read(root, LOCALES_FILE).replace(
-    /TRANSLATED_PAGE_LOCALES: readonly Locale\[\] = \[\];/,
+    /TRANSLATED_PAGE_LOCALES: readonly Locale\[\] = \[[^\]]*\];/,
     `TRANSLATED_PAGE_LOCALES: readonly Locale[] = ${JSON.stringify(locales)};`,
   );
   put(root, LOCALES_FILE, source);
@@ -221,7 +221,12 @@ describe("--pages check and import", () => {
 
 describe("--pages verify", () => {
   it("has nothing to verify while English is the only locale that serves the pages", () => {
-    expect(inPagesSandbox((root) => runLever(root, "--pages", "verify"))).toEqual({
+    const run = inPagesSandbox((root) => {
+      servePagesIn(root, []);
+      return runLever(root, "--pages", "verify");
+    });
+
+    expect(run).toEqual({
       status: 0,
       stdout: "ok verify --pages: nothing to verify, en is the only locale that serves the pages\n",
       failures: [],

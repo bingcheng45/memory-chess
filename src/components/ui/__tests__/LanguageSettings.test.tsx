@@ -68,7 +68,7 @@ describe("LanguageSettings", () => {
     expect(replace).toHaveBeenCalledWith("/#faq", { locale: "es" });
   });
 
-  it.each(["/about", "/changelog", "/privacy", "/terms", "/learn", "/learn/chess-memory-training"])(
+  it.each(["/changelog", "/learn", "/learn/chess-memory-training"])(
     "on %s, offers no other language and writes no cookie",
     (path) => {
       mockPathname = path;
@@ -84,6 +84,22 @@ describe("LanguageSettings", () => {
       expect(screen.getByRole("menuitemradio", { name: /English/ })).toBeEnabled();
       expect(replace).not.toHaveBeenCalled();
       expect(document.cookie).not.toContain("NEXT_LOCALE");
+    },
+  );
+
+  it.each(["/about", "/privacy", "/terms"])(
+    "on the translated trust page %s, every language stays selectable and no note shows",
+    (path) => {
+      mockPathname = path;
+      window.history.replaceState({}, "", path);
+
+      render(<LanguageSettings />);
+      fireEvent.click(screen.getByRole("button", { name: /change language/i }));
+
+      expect(screen.queryByText("This page is only available in English.")).not.toBeInTheDocument();
+      for (const item of screen.getAllByRole("menuitemradio")) {
+        expect(item).toBeEnabled();
+      }
     },
   );
 

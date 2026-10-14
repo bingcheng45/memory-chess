@@ -43,6 +43,7 @@ export function ProductHuntBadges({ theme, className }: { theme: BadgeTheme; cla
     <div className={className}>
       {PRODUCT_HUNT_BADGES.map((badge) => (
         <a key={badge.href} href={badge.href} target="_blank" rel="noopener noreferrer">
+          {/* eslint-disable-next-line @next/next/no-img-element -- Product Hunt's own SVG, which next/image would pass through unoptimized */}
           <img
             alt={t("footer.productHuntAlt")}
             width="250"

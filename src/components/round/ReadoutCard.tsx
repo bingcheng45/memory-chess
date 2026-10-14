@@ -10,10 +10,12 @@ import "./round.css";
 
 const STATUS = {
   idle: { key: "statusIdle", state: "idle" },
+  ready: { key: "statusIdle", state: "idle" },
+  countdown: { key: "statusIdle", state: "idle" },
   study: { key: "statusRecording", state: "recording" },
   rebuild: { key: "statusRecording", state: "recording" },
   scored: { key: "statusDone", state: "done" },
-} as const;
+} as const satisfies Record<RoundState["phase"], { key: string; state: string }>;
 
 interface ReadoutCardProps {
   readonly state: RoundState;

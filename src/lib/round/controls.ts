@@ -17,6 +17,14 @@ export interface PhaseControls {
 
 const SUBMIT_OFF: RoundControl = { label: "submit", intent: "submit", enabled: false };
 
+/** Before study the board's own Start button leads; the round's buttons wait, as they will read in study. */
+const WAITING: PhaseControls = {
+  first: { label: "done", intent: "endStudy", enabled: false },
+  second: SUBMIT_OFF,
+  primary: "first",
+  clearEnabled: false,
+};
+
 /** The round's two buttons in each phase, which of them is primary, and whether the board can be cleared. */
 export const ROUND_CONTROLS = {
   idle: {
@@ -25,6 +33,8 @@ export const ROUND_CONTROLS = {
     primary: "first",
     clearEnabled: false,
   },
+  ready: WAITING,
+  countdown: WAITING,
   study: {
     first: { label: "done", intent: "endStudy", enabled: true },
     second: SUBMIT_OFF,

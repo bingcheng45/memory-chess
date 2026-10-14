@@ -43,6 +43,8 @@ function nextIndex(from: number, key: string): number | null {
 function squareView(state: RoundState, square: SquareName) {
   switch (state.phase) {
     case "idle":
+    case "ready":
+    case "countdown":
       return { piece: undefined, ghost: undefined, mark: undefined };
     case "study":
       return { piece: state.target[square], ghost: undefined, mark: undefined };

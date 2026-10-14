@@ -126,8 +126,16 @@ export interface Refusal {
   readonly attempt: number;
 }
 
+/** A round on a set board, the only kind that waits for the player to press Start. */
+export type SetBoardConfig = RoundConfig & { readonly board: SetBoard };
+
+/** The three seconds between Start and the board appearing. */
+export const COUNTDOWN_MS = 3000;
+
 export type RoundState =
   | { readonly phase: "idle" }
+  | { readonly phase: "ready"; readonly config: SetBoardConfig }
+  | { readonly phase: "countdown"; readonly config: SetBoardConfig; readonly endsAt: number }
   | { readonly phase: "study"; readonly config: RoundConfig; readonly target: LabPosition; readonly startedAt: number }
   | {
       readonly phase: "rebuild";
@@ -154,6 +162,9 @@ export type RoundPhase = RoundState["phase"];
 
 export type RoundAction =
   | { readonly type: "start"; readonly config: RoundConfig; readonly target: LabPosition; readonly now: number }
+  | { readonly type: "prepare"; readonly config: SetBoardConfig }
+  | { readonly type: "begin"; readonly now: number }
+  | { readonly type: "countdownEnded"; readonly now: number }
   | { readonly type: "studyEnded"; readonly now: number }
   | { readonly type: "select"; readonly piece: LabPiece }
   | { readonly type: "tapSquare"; readonly square: SquareName; readonly now: number }
@@ -196,7 +207,7 @@ function put(state: RebuildState, piece: LabPiece, square: SquareName, now: numb
 
 function rebuildReducer(
   state: RebuildState,
-  action: Exclude<RoundAction, { type: "start" | "studyEnded" | "submit" }>,
+  action: Exclude<RoundAction, { type: "start" | "prepare" | "begin" | "countdownEnded" | "studyEnded" | "submit" }>,
 ): RebuildState {
   switch (action.type) {
     case "select": {
@@ -232,6 +243,15 @@ function rebuildReducer(
 export function roundReducer(state: RoundState, action: RoundAction): RoundState {
   if (action.type === "start") {
     return { phase: "study", config: action.config, target: action.target, startedAt: action.now };
+  }
+  if (action.type === "prepare") return state.phase === "idle" ? { phase: "ready", config: action.config } : state;
+  if (action.type === "begin") {
+    return state.phase === "ready" ? { phase: "countdown", config: state.config, endsAt: action.now + COUNTDOWN_MS } : state;
+  }
+  if (action.type === "countdownEnded") {
+    return state.phase === "countdown"
+      ? { phase: "study", config: state.config, target: labPositionFromFen(state.config.board.fen), startedAt: action.now }
+      : state;
   }
   if (action.type === "studyEnded") {
     return state.phase === "study"

@@ -16,7 +16,7 @@ import { RoundGate, useGateDate, type GateFacts } from './RoundGate';
 
 const COPY = 'game.round';
 
-/** `idle` only while a set board is being read behind its Start button. */
+/** `idle` only while a set board is being read behind its Start button; a replay counts in without one. */
 export type ActiveRoundState = Extract<RoundState, { phase: 'idle' | 'ready' | 'countdown' | 'study' | 'rebuild' }>;
 
 interface ActiveRoundProps {
@@ -38,12 +38,12 @@ export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit 
   const onStudyEnded = useCallback((now: number) => dispatch({ type: 'studyEnded', now }), [dispatch]);
   useStudyDeadline(round, onStudyEnded);
   const count = useCountdown(round.phase === 'countdown' ? round.endsAt : null, endCountdown);
-  usePreloadPieces(round.phase === 'ready' || round.phase === 'countdown' ? round.config.board.fen : null);
+  usePreloadPieces(round.phase === 'ready' ? round.config.board.fen : round.phase === 'countdown' ? round.fen : null);
   const veiled = round.phase === 'idle' || round.phase === 'ready' || round.phase === 'countdown';
   const studyMs = round.phase === 'idle' ? (gate?.memorizeTime ?? 0) * 1000 : round.config.studyMs;
   const controlsPhase = round.phase === 'idle' ? 'ready' : round.phase;
 
-  const heading = veiled ? gateDate : round.phase === 'study' ? t('phaseStudy') : t('phaseRebuild');
+  const heading = veiled ? (gateDate ?? t('phaseStudy')) : round.phase === 'study' ? t('phaseStudy') : t('phaseRebuild');
   const announcement =
     round.phase === 'countdown' && count !== null
       ? tDaily('countdown', { count })
@@ -71,7 +71,7 @@ export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit 
             <div className="round-stage-board" aria-hidden={veiled || undefined} inert={veiled || undefined}>
               <RoundBoard state={round} dispatch={dispatch} copy={COPY} />
             </div>
-            {veiled && gate && <RoundGate facts={gate} count={round.phase === 'countdown' ? count : null} ready={round.phase === 'ready'} onStart={onStart} />}
+            {veiled && <RoundGate facts={gate} count={round.phase === 'countdown' ? count : null} ready={round.phase === 'ready'} onStart={onStart} />}
           </div>
         }
         controls={

@@ -441,7 +441,7 @@ describe("a set board's start", () => {
     const study = roundReducer(countdown, { type: "countdownEnded", now: 4_020 });
 
     expect(ready).toEqual({ phase: "ready", config: DAILY });
-    expect(countdown).toEqual({ phase: "countdown", config: DAILY, endsAt: 4_000 });
+    expect(countdown).toEqual({ phase: "countdown", config: DAILY, fen: "4k3/8/8/8/8/8/8/R3K3 w - - 0 1", endsAt: 4_000 });
     expect(study).toEqual({
       phase: "study",
       config: DAILY,
@@ -458,5 +458,40 @@ describe("a set board's start", () => {
     expect(roundReducer(ready, { type: "countdownEnded", now: 0 })).toBe(ready);
     expect(roundReducer(ready, { type: "studyEnded", now: 0 })).toBe(ready);
     expect(roundReducer(ready, { type: "select", piece: WK })).toBe(ready);
+  });
+});
+
+describe("a replay's count-in", () => {
+  const REPLAY: RoundConfig = { pieceCount: 2, studyMs: 10_000, source: "try_again" };
+  const FEN = "4k3/8/8/8/8/8/8/4K3 w - - 0 1";
+  const countIn = (now: number): RoundAction => ({ type: "countIn", config: REPLAY, fen: FEN, now });
+
+  it("counts three seconds over the veil without the position, then studies the board it was given from the moment it ends", () => {
+    const countdown = roundReducer({ phase: "idle" }, countIn(1_000));
+    const study = roundReducer(countdown, { type: "countdownEnded", now: 4_020 });
+
+    expect(countdown).toEqual({ phase: "countdown", config: REPLAY, fen: FEN, endsAt: 4_000 });
+    expect(study).toEqual({
+      phase: "study",
+      config: { pieceCount: 2, studyMs: 10_000, source: "try_again" },
+      target: { e8: { color: "black", type: "king" }, e1: { color: "white", type: "king" } },
+      startedAt: 4_020,
+    });
+  });
+
+  it("counts in again from any phase, a running count-in included", () => {
+    const studying = roundReducer({ phase: "idle" }, { type: "start", config: CONFIG, target: { e1: WK }, now: 0 });
+    const counting = roundReducer(studying, countIn(500));
+
+    expect(roundReducer(counting, countIn(2_000))).toEqual({ phase: "countdown", config: REPLAY, fen: FEN, endsAt: 5_000 });
+    expect(counting).toEqual({ phase: "countdown", config: REPLAY, fen: FEN, endsAt: 3_500 });
+  });
+
+  it("ignores the study deadline and the board during the count-in", () => {
+    const counting = roundReducer({ phase: "idle" }, countIn(0));
+
+    expect(roundReducer(counting, { type: "studyEnded", now: 1_000 })).toBe(counting);
+    expect(roundReducer(counting, { type: "begin", now: 1_000 })).toBe(counting);
+    expect(roundReducer(counting, { type: "place", piece: WK, square: "e1", now: 1_000 })).toBe(counting);
   });
 });

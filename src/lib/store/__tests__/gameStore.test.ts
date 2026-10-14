@@ -42,6 +42,49 @@ describe("starting a round", () => {
   });
 });
 
+describe("counting a replay in", () => {
+  afterEach(() => {
+    store().resetGame();
+    Reflect.deleteProperty(window, "gtag");
+    jest.restoreAllMocks();
+  });
+
+  it("holds the position and the study clock until the count-in ends, then studies a random board with no set board behind it", () => {
+    const gtag = jest.fn();
+    window.gtag = gtag;
+    let clock = 1_000;
+    jest.spyOn(performance, "now").mockImplementation(() => clock);
+
+    store().countInGame(6, 10, "try_again");
+    const counting = store().round;
+    const during = { phase: counting.phase, endsAt: counting.phase === "countdown" ? counting.endsAt : null, target: "target" in counting, position: store().gameState.originalPosition, starts: gtag.mock.calls.length };
+    clock = 4_050;
+    store().endCountdown();
+
+    const { gameState, round } = store();
+    expect(during).toEqual({ phase: "countdown", endsAt: 4_000, target: false, position: undefined, starts: 0 });
+    expect(round.phase === "study" && [round.startedAt, round.config]).toEqual([4_050, { pieceCount: 6, studyMs: 10_000, source: "try_again" }]);
+    expect([gameState.board, gameState.startSource, gameState.pieceCount, gameState.memorizeTime]).toEqual([undefined, "try_again", 6, 10]);
+    expect(counting.phase === "countdown" && counting.fen).toBe(gameState.originalPosition);
+    expect(boardPlacement(gameState.originalPosition!)).toBe(labPositionToFen(target()));
+    expect(validateMemorizationPosition(gameState.originalPosition!, 6)).toMatchObject({ valid: true, violations: [] });
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "try_again" }]]);
+  });
+
+  it("rates a replay as an ordinary round, not as a set board", () => {
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    useGameStore.setState(({ gameState }) => ({ history: [], certainty: { rd: 350, rounds: 0 }, gameState: { ...gameState, skillRating: 1000, streak: 0 } }));
+    store().countInGame(6, 10, "try_again");
+    store().endCountdown(3000);
+    store().dispatch({ type: "studyEnded", now: 13000 });
+    for (const [square, piece] of Object.entries(target()) as [SquareName, LabPiece][]) place(square, piece.type, piece.color, 14000);
+    store().submitSolution(17000);
+
+    expect(store().gameState).toMatchObject({ accuracy: 100, skillRating: 1225, skillRatingChange: 225, streak: 1, rating: { phase: "provisional" } });
+    expect(store().history.map(({ pieceCount, accuracy }) => [pieceCount, accuracy])).toEqual([[6, 100]]);
+  });
+});
+
 describe("reporting a round", () => {
   afterEach(() => {
     store().resetGame();
@@ -173,14 +216,16 @@ describe("scoring and the skill rating", () => {
     });
   });
 
-  it("restarts a placement with a new position at the same settings, rating untouched", () => {
+  it("restarts a placement with a new position at the same settings after a count-in, rating untouched", () => {
     useGameStore.setState(({ gameState }) => ({ gameState: { ...gameState, skillRating: 1234, streak: 3 } }));
     store().startGame(6, 10, "game_form");
     store().dispatch({ type: "studyEnded", now: performance.now() });
-    store().startGame(6, 10, "try_again");
+    store().countInGame(6, 10, "try_again");
+    const counting = store().round.phase;
+    store().endCountdown();
 
     const { gameState, round } = store();
-    expect(round.phase).toBe("study");
+    expect([counting, round.phase]).toEqual(["countdown", "study"]);
     expect([gameState.skillRating, gameState.streak, gameState.startSource]).toEqual([1234, 3, "try_again"]);
   });
 });

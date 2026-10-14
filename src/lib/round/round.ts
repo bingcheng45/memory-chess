@@ -129,13 +129,13 @@ export interface Refusal {
 /** A round on a set board, the only kind that waits for the player to press Start. */
 export type SetBoardConfig = RoundConfig & { readonly board: SetBoard };
 
-/** The three seconds between Start and the board appearing. */
+/** The three seconds between Start, or a replay, and the board appearing. */
 export const COUNTDOWN_MS = 3000;
 
 export type RoundState =
   | { readonly phase: "idle" }
   | { readonly phase: "ready"; readonly config: SetBoardConfig }
-  | { readonly phase: "countdown"; readonly config: SetBoardConfig; readonly endsAt: number }
+  | { readonly phase: "countdown"; readonly config: RoundConfig; readonly fen: string; readonly endsAt: number }
   | { readonly phase: "study"; readonly config: RoundConfig; readonly target: LabPosition; readonly startedAt: number }
   | {
       readonly phase: "rebuild";
@@ -164,6 +164,7 @@ export type RoundAction =
   | { readonly type: "start"; readonly config: RoundConfig; readonly target: LabPosition; readonly now: number }
   | { readonly type: "prepare"; readonly config: SetBoardConfig }
   | { readonly type: "begin"; readonly now: number }
+  | { readonly type: "countIn"; readonly config: RoundConfig; readonly fen: string; readonly now: number }
   | { readonly type: "countdownEnded"; readonly now: number }
   | { readonly type: "studyEnded"; readonly now: number }
   | { readonly type: "select"; readonly piece: LabPiece }
@@ -207,7 +208,7 @@ function put(state: RebuildState, piece: LabPiece, square: SquareName, now: numb
 
 function rebuildReducer(
   state: RebuildState,
-  action: Exclude<RoundAction, { type: "start" | "prepare" | "begin" | "countdownEnded" | "studyEnded" | "submit" }>,
+  action: Exclude<RoundAction, { type: "start" | "prepare" | "begin" | "countIn" | "countdownEnded" | "studyEnded" | "submit" }>,
 ): RebuildState {
   switch (action.type) {
     case "select": {
@@ -246,11 +247,16 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
   }
   if (action.type === "prepare") return state.phase === "idle" ? { phase: "ready", config: action.config } : state;
   if (action.type === "begin") {
-    return state.phase === "ready" ? { phase: "countdown", config: state.config, endsAt: action.now + COUNTDOWN_MS } : state;
+    return state.phase === "ready"
+      ? { phase: "countdown", config: state.config, fen: state.config.board.fen, endsAt: action.now + COUNTDOWN_MS }
+      : state;
+  }
+  if (action.type === "countIn") {
+    return { phase: "countdown", config: action.config, fen: action.fen, endsAt: action.now + COUNTDOWN_MS };
   }
   if (action.type === "countdownEnded") {
     return state.phase === "countdown"
-      ? { phase: "study", config: state.config, target: labPositionFromFen(state.config.board.fen), startedAt: action.now }
+      ? { phase: "study", config: state.config, target: labPositionFromFen(state.fen), startedAt: action.now }
       : state;
   }
   if (action.type === "studyEnded") {

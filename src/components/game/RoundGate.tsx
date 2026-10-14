@@ -20,7 +20,8 @@ export function useGateDate(gate: GateFacts | null): string | null {
 }
 
 interface RoundGateProps {
-  readonly facts: GateFacts;
+  /** Null for a replay, which counts in without the card or Start. */
+  readonly facts: GateFacts | null;
   /** The second showing during the countdown; null before Start. */
   readonly count: number | null;
   /** False while the board is still being read, which holds Start. */
@@ -47,6 +48,8 @@ export function RoundGate({ facts, count, ready, onStart }: RoundGateProps) {
       </div>
     );
   }
+
+  if (!facts) return null;
 
   return (
     <div className="round-gate">

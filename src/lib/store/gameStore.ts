@@ -81,9 +81,11 @@ interface GameStore {
   startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
   /** Sets a board out behind its Start button. Start is `dispatch({ type: 'begin' })`; the round studies on endCountdown. */
   prepareGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board: SetBoard) => void;
+  /** Counts a new random board in over the veil, without a Start button; the round studies on endCountdown. */
+  countInGame: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
   endCountdown: (now?: number) => void;
   /** Start, done, the study deadline, the palette, the board and the eraser. Submit goes through submitSolution. */
-  dispatch: (action: Exclude<RoundAction, { type: 'start' | 'prepare' | 'countdownEnded' | 'submit' }>) => void;
+  dispatch: (action: Exclude<RoundAction, { type: 'start' | 'prepare' | 'countIn' | 'countdownEnded' | 'submit' }>) => void;
   /** Scores the round; resolves once the lab record has kept it, to whether it did. */
   submitSolution: (now?: number) => Promise<boolean>;
   resetGame: () => void;
@@ -199,6 +201,22 @@ export const useGameStore = create<GameStore>()(
       prepareGame: (pieceCount, memorizeTime, source, board) =>
         set({ round: roundReducer(get().round, { type: 'prepare', config: { pieceCount, studyMs: memorizeTime * 1000, source, board } }) }),
 
+      countInGame: (pieceCount, memorizeTime, source) => {
+        const fen = generateMemorizationPosition(pieceCount)?.fen();
+        if (!fen) {
+          console.error('Failed to generate random position');
+          return;
+        }
+        set({
+          round: roundReducer(get().round, {
+            type: 'countIn',
+            config: { pieceCount, studyMs: memorizeTime * 1000, source },
+            fen,
+            now: monotonicNow(),
+          }),
+        });
+      },
+
       endCountdown: (now = monotonicNow()) => {
         const counting = get().round;
         if (counting.phase !== 'countdown') return;
@@ -206,7 +224,7 @@ export const useGameStore = create<GameStore>()(
         const memorizeTime = studyMs / 1000;
         set({
           round: roundReducer(counting, { type: 'countdownEnded', now }),
-          gameState: studyGameState(get().gameState, { pieceCount, memorizeTime, source, board, originalPosition: board.fen }),
+          gameState: studyGameState(get().gameState, { pieceCount, memorizeTime, source, board, originalPosition: counting.fen }),
           lastSettings: { pieceCount, memorizeTime },
         });
         trackRoundStart(pieceCount, memorizeTime, source);

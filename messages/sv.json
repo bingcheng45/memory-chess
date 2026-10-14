@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, one {# dag} other {# dagar}} i rad",
         "bestAccuracy": "{value, number} % bästa träffsäkerhet",
         "recentAccuracy": "{value, number} % senaste träffsäkerhet",
-        "studyTime": "studietid {value, number} s",
-        "rebuildTime": "placeringstid {value, number} s",
+        "studyTime": "studietid {value, number} s per pjäs",
+        "rebuildTime": "placeringstid {value, number} s per pjäs",
         "winStreak": "en vinstsvit på {value, plural, one {# runda} other {# rundor}}",
         "rounds": "{value, plural, one {# runda} other {# rundor}} spelade",
         "days": "{value, plural, one {# dag} other {# dagar}} spelade"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, oförändrad",
         "new": "{label} {after}, ny"
       }
-    }
+    },
+    "trend": "{direction, select, up {Upp} other {Ned}} {amount} under dina senaste {window} rundor mot de {window} innan"
   },
   "share": {
     "intro": "Dela kortet, spara det eller kopiera in det i ett inlägg.",

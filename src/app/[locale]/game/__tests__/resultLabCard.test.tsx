@@ -69,8 +69,8 @@ describe("the lab card on the result screen", () => {
     expect(within(card).getByRole("link").getAttribute("href")).toBe("/game?pieceCount=5&memorizeTime=10&source=result_next");
     const figures = await screen.findByRole("region", { name: "Your dashboard after this round" });
     expect(said(figures)).toEqual([
-      "Study time 10.0 s, new",
-      "Rebuild time 9.0 s, new",
+      "Study time 2.5 s per piece, new",
+      "Rebuild time 2.3 s per piece, new",
       "Best accuracy 100%, new",
       "Recent accuracy 100%, new",
       "Rounds played 1 round, new",
@@ -86,8 +86,8 @@ describe("the lab card on the result screen", () => {
     expect(screen.queryByRole("region", { name: "Your lab record" })).toBeNull();
     const figures = await screen.findByRole("region", { name: "Dein Dashboard nach dieser Runde" });
     expect(said(figures)).toEqual([
-      "Einprägezeit 10,0 s, neu",
-      "Aufbauzeit 9,0 s, neu",
+      "Einprägezeit 2,5 s pro Figur, neu",
+      "Aufbauzeit 2,3 s pro Figur, neu",
       "Beste Genauigkeit 100 %, neu",
       "Aktuelle Genauigkeit 100 %, neu",
       "Gespielte Runden 1 Runde, neu",

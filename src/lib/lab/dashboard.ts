@@ -7,7 +7,7 @@ import { dailyBoardOf } from "./daily";
 import { dayDate, mean, type TrendSetting } from "./engine";
 import type { BestEntry, LabResults } from "./metrics";
 import { hasFigure, LAB_THRESHOLDS, type Need, type Readiness } from "./readiness";
-import { MAX_SOLVE_MS, recentAverage } from "./progress";
+import { MAX_SOLVE_MS, recentAverage, recentChange } from "./progress";
 import { isFreshReading, type RoundRecord } from "./record";
 import { byEndedAt } from "./sessions";
 import type { LabSummary } from "./summary";
@@ -101,6 +101,22 @@ export const SHARE_TILES = [
   | (typeof DASHBOARD_GROUPS.summary)[number]
 )[];
 
+/** Which way of a figure's number is progress. Speed and the two times are seconds, so they improve as they fall. */
+export const BETTER_WHEN: { readonly [K in (typeof DASHBOARD_GROUPS.lead)[number] | (typeof DASHBOARD_GROUPS.summary)[number]]: "higher" | "lower" } = {
+  rating: "higher",
+  span: "higher",
+  piecesHeld: "higher",
+  speed: "lower",
+  studyTime: "lower",
+  rebuildTime: "lower",
+  bestAccuracy: "higher",
+  recentAccuracy: "higher",
+  winStreak: "higher",
+  streak: "higher",
+  rounds: "higher",
+  days: "higher",
+};
+
 /**
  * What only the game store knows: the skill rating, the run of rounds at WIN_ACCURACY or better, and the rating change
  * of each round it still holds, newest first. Null before the first rated /game round.
@@ -172,14 +188,20 @@ function topBest(entries: readonly BestEntry[]): BestEntry | null {
 const sumOf = (values: readonly number[]) => values.reduce((sum, value) => sum + value, 0);
 
 /**
- * The mean of a time over the newest fresh rounds that measured it, in seconds, at any setting, from the first such
- * round. Study time counts what was used, never more than the setting allowed.
+ * The mean of a time per piece on the board over the newest fresh rounds that measured it, at any setting, from the
+ * first such round, with how the last rounds moved against the ones before once there are enough of both. Study time
+ * counts what was used, never more than the setting allowed.
  */
-function timeTile(records: readonly RoundRecord[], msOf: (record: RoundRecord) => number): TileState {
-  const times = byEndedAt(records.filter(isFreshReading)).map(msOf).filter((ms) => ms > 0);
-  if (times.length === 0) return emptyPlay();
-  const rounds = Math.min(times.length, LAB_THRESHOLDS.recentRounds);
-  return ready(figure(tenths(recentAverage(times) / 1000), "seconds", 1), context("recent", { rounds }));
+function perPieceTile(records: readonly RoundRecord[], msOf: (record: RoundRecord) => number): TileState {
+  const perPiece = byEndedAt(records.filter(isFreshReading)).flatMap((record) => {
+    const ms = msOf(record);
+    return ms > 0 ? [ms / 1000 / record.config.pieceCount] : [];
+  });
+  if (perPiece.length === 0) return emptyPlay();
+  const rounds = Math.min(perPiece.length, LAB_THRESHOLDS.recentRounds);
+  const { change } = recentChange(perPiece);
+  const trend = change === null ? undefined : trendOf(tenths(change));
+  return ready(figure(tenths(recentAverage(perPiece)), "secondsPerPiece", 1), context("recent", { rounds }), trend);
 }
 
 /** Null leaves the tile off the page: a figure of nothing found is not progress to show. */
@@ -232,8 +254,8 @@ const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
         },
       gameRig(speed.value?.setting),
     ),
-  studyTime: ({ records }) => timeTile(records, ({ memorizeMs, config }) => Math.min(memorizeMs, config.memorizeSeconds * 1000)),
-  rebuildTime: ({ records }) => timeTile(records, ({ solveMs }) => Math.min(solveMs, MAX_SOLVE_MS)),
+  studyTime: ({ records }) => perPieceTile(records, ({ memorizeMs, config }) => Math.min(memorizeMs, config.memorizeSeconds * 1000)),
+  rebuildTime: ({ records }) => perPieceTile(records, ({ solveMs }) => Math.min(solveMs, MAX_SOLVE_MS)),
   streak: ({ results: { streak } }) =>
     fromReadiness(streak.readiness, () => streak.value && { figure: figure(streak.value.current, "days"), context: context("longest", { days: streak.value.longest }) }),
   rounds: ({ summary }) => (summary.rounds === 0 ? emptyPlay() : ready(figure(summary.rounds, "rounds"), context("overDays", { days: summary.days.length }))),
@@ -313,7 +335,10 @@ export interface ShareCard {
 export function shareCardOf(tiles: readonly DashboardTile[], rounds: number): ShareCard | null {
   const figures = SHARE_TILES.flatMap((id): ShareFigure[] => {
     const tile = tiles.find((candidate) => candidate.id === id);
-    return tile?.state === "ready" ? [{ id, figure: tile.figure, context: tile.context, ...(tile.trend && { trend: tile.trend }) }] : [];
+    // Only the rating's trend travels: a share link carries no other, so the card and its link preview agree.
+    if (tile?.state !== "ready") return [];
+    const trend = id === "rating" ? tile.trend : undefined;
+    return [{ id, figure: tile.figure, context: tile.context, ...(trend && { trend }) }];
   });
   const lead = figures.find(({ figure }) => figure.value > 0);
   if (!lead) return null;

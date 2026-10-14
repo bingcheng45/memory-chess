@@ -58,8 +58,8 @@ describe("sharePageOf", () => {
   });
 
   it("names the study and rebuild times a progress card carries", () => {
-    expect(sharePageOf("progress", "1_s8_b100_m63_t417")?.alt).toBe(
-      "Memory Chess progress card: memory span 8 pieces, 100% best accuracy, study time 6.3 s, rebuild time 41.7 s.",
+    expect(sharePageOf("progress", "1_s8_b100_m11_t70")?.alt).toBe(
+      "Memory Chess progress card: memory span 8 pieces, 100% best accuracy, study time 1.1 s per piece, rebuild time 7 s per piece.",
     );
   });
 

@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, other {#일}} 연속",
         "bestAccuracy": "최고 정확도 {value, number}%",
         "recentAccuracy": "최근 정확도 {value, number}%",
-        "studyTime": "암기 시간 {value, number}초",
-        "rebuildTime": "배치 시간 {value, number}초",
+        "studyTime": "암기 시간 {value, number}초/말",
+        "rebuildTime": "배치 시간 {value, number}초/말",
         "winStreak": "{value, plural, other {#연승}}",
         "rounds": "{value, plural, other {#라운드 플레이}}",
         "days": "{value, plural, other {#일 플레이}}"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, 변동 없음",
         "new": "{label} {after}, 신규"
       }
-    }
+    },
+    "trend": "최근 {window}라운드가 그 전 {window}라운드보다 {amount} {direction, select, up {증가} other {감소}}"
   },
   "share": {
     "intro": "카드를 공유하거나 저장하거나 게시물에 복사하세요.",

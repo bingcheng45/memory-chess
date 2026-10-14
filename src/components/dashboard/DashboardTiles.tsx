@@ -2,7 +2,7 @@
 
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import type { DashboardTile, DashboardTileId, Rig } from "@/lib/lab/dashboard";
+import { BETTER_WHEN, type DashboardTile, type DashboardTileId, type DashboardUnit, type Rig, type Trend } from "@/lib/lab/dashboard";
 import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
 import { useContextText, useFigureText } from "./figureText";
 import { TrendChip } from "./TrendChip";
@@ -20,6 +20,20 @@ export function useNeedText() {
   };
 }
 
+const betterWhenOf = (id: DashboardTileId) => (id in BETTER_WHEN ? BETTER_WHEN[id as keyof typeof BETTER_WHEN] : "higher");
+
+/** A time's trend compares its last rounds with the ones before, so it says so; the rating's sums its changes and keeps the chip's own words. */
+function TileTrend({ id, trend, unit }: { id: DashboardTileId; trend: Trend; unit: DashboardUnit }) {
+  const t = useTranslations("dashboard");
+  const figureText = useFigureText();
+  const betterWhen = betterWhenOf(id);
+  const label =
+    betterWhen === "lower"
+      ? t("trend", { direction: trend.direction, amount: figureText.plain({ value: trend.amount, unit, digits: 1 }), window: LAB_THRESHOLDS.rollingWindow })
+      : undefined;
+  return <TrendChip trend={trend} betterWhen={betterWhen} label={label} />;
+}
+
 function TileBody({ tile }: { tile: DashboardTile }) {
   const t = useTranslations("dashboard");
   const figureText = useFigureText();
@@ -33,7 +47,7 @@ function TileBody({ tile }: { tile: DashboardTile }) {
         <>
           <div className="lab-tile-figure-row">
             <p className="lab-tile-figure">{figureText.rich(tile.figure)}</p>
-            {tile.trend && <TrendChip trend={tile.trend} />}
+            {tile.trend && <TileTrend id={tile.id} trend={tile.trend} unit={tile.figure.unit} />}
           </div>
           <p className="lab-tile-note">{contextText(tile.context)}</p>
         </>

@@ -39,8 +39,8 @@ describe("roundDeltasOf", () => {
 
     expect(deltas).toEqual([
       { id: "rating", betterWhen: "higher", direction: "new", before: null, after: { value: 1015, unit: "rating", digits: 0 }, delta: null },
-      { id: "studyTime", betterWhen: "lower", direction: "new", before: null, after: { value: 10, unit: "seconds", digits: 1 }, delta: null },
-      { id: "rebuildTime", betterWhen: "lower", direction: "new", before: null, after: { value: 20, unit: "seconds", digits: 1 }, delta: null },
+      { id: "studyTime", betterWhen: "lower", direction: "new", before: null, after: { value: 2.5, unit: "secondsPerPiece", digits: 1 }, delta: null },
+      { id: "rebuildTime", betterWhen: "lower", direction: "new", before: null, after: { value: 5, unit: "secondsPerPiece", digits: 1 }, delta: null },
       { id: "bestAccuracy", betterWhen: "higher", direction: "new", before: null, after: { value: 100, unit: "percent", digits: 0 }, delta: null },
       { id: "recentAccuracy", betterWhen: "higher", direction: "new", before: null, after: { value: 100, unit: "percent", digits: 0 }, delta: null },
       { id: "winStreak", betterWhen: "higher", direction: "new", before: null, after: { value: 1, unit: "rounds", digits: 0 }, delta: null },
@@ -62,8 +62,8 @@ describe("roundDeltasOf", () => {
     expect(deltas).toEqual([
       { id: "rating", betterWhen: "higher", direction: "up", before: { value: 1040, unit: "rating", digits: 0 }, after: { value: 1058, unit: "rating", digits: 0 }, delta: 18 },
       { id: "span", betterWhen: "higher", direction: "up", before: { value: 4, unit: "pieces", digits: 0 }, after: { value: 5, unit: "pieces", digits: 0 }, delta: 1 },
-      { id: "studyTime", betterWhen: "lower", direction: "down", before: { value: 10, unit: "seconds", digits: 1 }, after: { value: 8.5, unit: "seconds", digits: 1 }, delta: -1.5 },
-      { id: "rebuildTime", betterWhen: "lower", direction: "down", before: { value: 20, unit: "seconds", digits: 1 }, after: { value: 18.5, unit: "seconds", digits: 1 }, delta: -1.5 },
+      { id: "studyTime", betterWhen: "lower", direction: "down", before: { value: 2.3, unit: "secondsPerPiece", digits: 1 }, after: { value: 2, unit: "secondsPerPiece", digits: 1 }, delta: -0.3 },
+      { id: "rebuildTime", betterWhen: "lower", direction: "down", before: { value: 4.7, unit: "secondsPerPiece", digits: 1 }, after: { value: 4.2, unit: "secondsPerPiece", digits: 1 }, delta: -0.5 },
       { id: "bestAccuracy", betterWhen: "higher", direction: "level", before: { value: 100, unit: "percent", digits: 0 }, after: { value: 100, unit: "percent", digits: 0 }, delta: 0 },
       { id: "recentAccuracy", betterWhen: "higher", direction: "level", before: { value: 100, unit: "percent", digits: 0 }, after: { value: 100, unit: "percent", digits: 0 }, delta: 0 },
       { id: "winStreak", betterWhen: "higher", direction: "up", before: { value: 2, unit: "rounds", digits: 0 }, after: { value: 3, unit: "rounds", digits: 0 }, delta: 1 },
@@ -82,8 +82,8 @@ describe("roundDeltasOf", () => {
     const deltas = pick(deltasAfter(earlierQuick, round, { before: null, after: null }), "studyTime", "rebuildTime");
 
     expect(deltas).toEqual([
-      { id: "studyTime", betterWhen: "lower", direction: "up", before: { value: 7, unit: "seconds", digits: 1 }, after: { value: 8, unit: "seconds", digits: 1 }, delta: 1 },
-      { id: "rebuildTime", betterWhen: "lower", direction: "up", before: { value: 20, unit: "seconds", digits: 1 }, after: { value: 30, unit: "seconds", digits: 1 }, delta: 10 },
+      { id: "studyTime", betterWhen: "lower", direction: "up", before: { value: 1.8, unit: "secondsPerPiece", digits: 1 }, after: { value: 2, unit: "secondsPerPiece", digits: 1 }, delta: 0.2 },
+      { id: "rebuildTime", betterWhen: "lower", direction: "up", before: { value: 5, unit: "secondsPerPiece", digits: 1 }, after: { value: 7.5, unit: "secondsPerPiece", digits: 1 }, delta: 2.5 },
     ]);
     expect(deltas.map(verdictOf)).toEqual(["worse", "worse"]);
   });

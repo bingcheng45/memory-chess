@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, one {# dia} many {# dias} other {# dias}} seguidos",
         "bestAccuracy": "melhor precisão de {value, number}%",
         "recentAccuracy": "precisão recente de {value, number}%",
-        "studyTime": "tempo de estudo {value, number} s",
-        "rebuildTime": "tempo de montagem {value, number} s",
+        "studyTime": "tempo de estudo {value, number} s por peça",
+        "rebuildTime": "tempo de montagem {value, number} s por peça",
         "winStreak": "uma sequência de {value, plural, one {# vitória} many {# vitórias} other {# vitórias}}",
         "rounds": "{value, plural, one {# rodada jogada} many {# rodadas jogadas} other {# rodadas jogadas}}",
         "days": "{value, plural, one {# dia jogado} many {# dias jogados} other {# dias jogados}}"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, sem mudança",
         "new": "{label} {after}, novo"
       }
-    }
+    },
+    "trend": "{direction, select, up {Subiu} other {Caiu}} {amount} nas suas {window} últimas rodadas em relação às {window} anteriores"
   },
   "share": {
     "intro": "Compartilhe o cartão, salve-o ou copie-o em uma publicação.",

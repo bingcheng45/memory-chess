@@ -1530,8 +1530,8 @@
         "streak": "{value, plural, one {# zi} few {# zile} other {# de zile}} la rând",
         "bestAccuracy": "cea mai bună precizie: {value, number}%",
         "recentAccuracy": "precizie recentă: {value, number}%",
-        "studyTime": "timp de studiu {value, number} s",
-        "rebuildTime": "timp de reconstruire {value, number} s",
+        "studyTime": "timp de studiu {value, number} s pe piesă",
+        "rebuildTime": "timp de reconstruire {value, number} s pe piesă",
         "winStreak": "serie de victorii: {value, plural, one {# rundă} few {# runde} other {# de runde}}",
         "rounds": "{value, plural, one {# rundă jucată} few {# runde jucate} other {# de runde jucate}}",
         "days": "{value, plural, one {# zi de joc} few {# zile de joc} other {# de zile de joc}}"
@@ -1557,7 +1557,8 @@
         "level": "{label} {after}, neschimbat",
         "new": "{label} {after}, nou"
       }
-    }
+    },
+    "trend": "{direction, select, up {Crește} other {Scade}} cu {amount} în ultimele tale {window} runde față de cele {window} dinainte"
   },
   "share": {
     "intro": "Distribuie cardul, salvează-l sau copiază-l într-o postare.",

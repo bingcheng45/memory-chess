@@ -1,6 +1,6 @@
 import type { PlacedPiece, RoundShare, ScoredBoard } from "@/components/game/roundShare";
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
-import { MEMORIZE_SECONDS_RANGE } from "@/lib/reference/facts";
+import { MEMORIZE_SECONDS_RANGE, PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import { SHARE_TILES, type DashboardUnit, type Figure, type ShareFigure, type ShareFigureId, type Trend } from "@/lib/lab/dashboard";
 import { MAX_SKILL_RATING } from "@/lib/game/rating";
 import { MAX_SOLVE_MS } from "@/lib/lab/progress";
@@ -53,8 +53,8 @@ const FIGURES: { readonly [K in ShareFigureId]: FigureSpec } = {
   speed: { letter: "v", unit: "secondsPerPiece", digits: 1, max: 9999 },
   bestAccuracy: { letter: "b", unit: "percent", digits: 0, max: 100 },
   recentAccuracy: { letter: "a", unit: "percent", digits: 0, max: 100 },
-  studyTime: { letter: "m", unit: "seconds", digits: 1, max: MEMORIZE_SECONDS_RANGE.max * 10 },
-  rebuildTime: { letter: "t", unit: "seconds", digits: 1, max: MAX_SOLVE_MS / 100 },
+  studyTime: { letter: "m", unit: "secondsPerPiece", digits: 1, max: (MEMORIZE_SECONDS_RANGE.max * 10) / PIECE_COUNT_RANGE.min },
+  rebuildTime: { letter: "t", unit: "secondsPerPiece", digits: 1, max: MAX_SOLVE_MS / 100 / PIECE_COUNT_RANGE.min },
   winStreak: { letter: "w", unit: "rounds", digits: 0, max: 99999 },
   streak: { letter: "k", unit: "days", digits: 0, max: 99999 },
   rounds: { letter: "n", unit: "rounds", digits: 0, max: 999999 },

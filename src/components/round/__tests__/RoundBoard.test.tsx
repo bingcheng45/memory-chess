@@ -128,6 +128,32 @@ describe("drag and drop", () => {
     expect(palette("white knight")).toHaveAccessibleName("white knight, 1 left");
   });
 
+  it("places a palette piece released on a square before any move was heard", () => {
+    renderWithIntl(<Round initial={rebuilding()} />);
+    const init = { pointerId: 7, isPrimary: true, button: 0, pointerType: "mouse" };
+
+    fireEvent.pointerDown(palette("white knight"), { ...init, clientX: 300, clientY: 600 });
+    fireEvent.pointerUp(palette("white knight"), { ...init, ...pointOf("f3") });
+    fireEvent.click(palette("white knight"));
+
+    expect(cell("f3")).toHaveAccessibleName("f3, white knight");
+    expect(palette("white knight")).toHaveAccessibleName("white knight, 1 left");
+    expect(palette("white knight")).toHaveAttribute("aria-pressed", "false");
+  });
+
+  it("moves a board piece released on another square before any move was heard", () => {
+    renderWithIntl(<Round initial={rebuilding({ type: "place", piece: { color: "white", type: "king" }, square: "a8", now: 2000 })} />);
+    const init = { pointerId: 7, isPrimary: true, button: 0, pointerType: "mouse" };
+
+    fireEvent.pointerDown(cell("a8"), { ...init, ...pointOf("a8") });
+    fireEvent.pointerUp(cell("a8"), { ...init, ...pointOf("d8") });
+    fireEvent.click(cell("a8"));
+
+    expect(cell("d8")).toHaveAccessibleName("d8, white king");
+    expect(cell("a8")).toHaveAccessibleName("a8, empty");
+    expect(palette("white king")).toHaveAttribute("aria-pressed", "false");
+  });
+
   it("refuses to drag a used-up piece and says why", () => {
     const initial = rebuilding(
       { type: "place", piece: { color: "white", type: "king" }, square: "e1", now: 2000 },

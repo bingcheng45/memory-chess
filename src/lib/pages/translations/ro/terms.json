@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "dd86c4c570e2662883ac9ccb1de0412cf575a490fe7251e1276a39bf6107354a",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "36ef8e7863aa7956a2be035acbd3223e1dd4f72dbba6c91e251cde549c124d95",
   "sameAsEnglish": [
     "sections.contact.title"
   ],
@@ -72,7 +72,7 @@
         "title": "Servicii terțe",
         "blocks": [
           {
-            "p": "Site-ul funcționează cu ajutorul unui set mic de servicii externe. Google AdSense afișează reclamele care îl mențin gratuit. Google Analytics, Vercel Analytics, Vercel Speed Insights și Ahrefs Analytics măsoară traficul și performanța. Supabase stochează statisticile jocului și intrările din clasament. Fiecare are propriii termeni, iar <privacy>politica de confidențialitate</privacy> explică ce date atinge fiecare și ce opțiuni ai."
+            "p": "Site-ul funcționează cu ajutorul unui set mic de servicii externe. Google AdSense afișează reclamele care îl mențin gratuit. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics și Databuddy măsoară traficul și performanța. Supabase stochează statisticile jocului și intrările din clasament. Fiecare are propriii termeni, iar <privacy>politica de confidențialitate</privacy> explică ce date atinge fiecare și ce opțiuni ai."
           }
         ]
       },

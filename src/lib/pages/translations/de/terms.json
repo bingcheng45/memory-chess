@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "c4d3dbdee0810a61b3465bafda1a1041eb809a71eea6be12ca86774a0bc0b449",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "6b2d8c09f14e660a442cc557e666202f0593bea246a9ea69d19fd86eac03cf23",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "Dienste von Drittanbietern",
         "blocks": [
           {
-            "p": "Die Website läuft auf einer kleinen Zahl externer Dienste. Google AdSense liefert die Anzeigen aus, die die Website kostenlos halten. Google Analytics, Vercel Analytics, Vercel Speed Insights und Ahrefs Analytics messen Besucherzahlen und Leistung. Supabase speichert Spielstatistiken und Einträge in der Bestenliste. Jeder dieser Dienste hat eigene Bedingungen, und die <privacy>Datenschutzerklärung</privacy> erklärt, mit welchen Daten jeder von ihnen in Berührung kommt und welche Wahlmöglichkeiten du hast."
+            "p": "Die Website läuft auf einer kleinen Zahl externer Dienste. Google AdSense liefert die Anzeigen aus, die die Website kostenlos halten. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics und Databuddy messen Besucherzahlen und Leistung. Supabase speichert Spielstatistiken und Einträge in der Bestenliste. Jeder dieser Dienste hat eigene Bedingungen, und die <privacy>Datenschutzerklärung</privacy> erklärt, mit welchen Daten jeder von ihnen in Berührung kommt und welche Wahlmöglichkeiten du hast."
           }
         ]
       },

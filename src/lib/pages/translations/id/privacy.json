@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "b75bc9ecef1fceb1f7200a91fdee974a258683b1425717f4a148761b97b3993b",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "ca747e5560c5cb8fadc3b65c69bef098f00aefc830358509f7806f0648d86adc",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Informasi yang dikumpulkan secara otomatis",
         "blocks": [
           {
-            "p": "Penyedia pengukuran kami dapat menerima informasi teknis dan penggunaan, seperti halaman yang dilihat, perkiraan lokasi, jenis browser dan perangkat, halaman perujuk, alamat IP, dan catatan waktu kinerja. Memory Chess menggunakan Google Analytics, Vercel Analytics, Vercel Speed Insights, dan Ahrefs Analytics untuk memahami lalu lintas serta menjaga situs tetap cepat dan andal."
+            "p": "Penyedia pengukuran kami dapat menerima informasi teknis dan penggunaan, seperti halaman yang dilihat, perkiraan lokasi, jenis browser dan perangkat, halaman perujuk, alamat IP, dan catatan waktu kinerja. Memory Chess menggunakan Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics, dan Databuddy untuk memahami lalu lintas serta menjaga situs tetap cepat dan andal."
+          },
+          {
+            "p": "Databuddy tidak menggunakan cookie. Databuddy menyimpan id pengunjung acak di penyimpanan lokal browser Anda dan id sesi di penyimpanan sesinya. Databuddy mencatat halaman yang Anda lihat, catatan waktu kinerja, kesalahan JavaScript, klik pada tautan yang keluar dari situs, klik yang diulang atau tidak mendapat respons, serta formulir yang ditinggalkan sebelum dikirim. Databuddy juga menerima sebuah peristiwa ketika ronde dimulai atau selesai, berisi jumlah bidak, waktu menghafal, dan tempat ronde dimulai, serta sebuah peristiwa ketika skor dikirim ke papan peringkat atau papan harian, berisi tingkat kesulitan dan jumlah bidaknya. Peristiwa-peristiwa ini tidak pernah membawa akurasi Anda, nama pemain Anda, atau posisi yang Anda mainkan."
           },
           {
             "p": "Kami tidak meminta alat-alat ini untuk mengumpulkan isi pesan kontak atau komentar masukan permainan Anda."
@@ -119,7 +122,7 @@
             "p": "Kami menggunakan informasi untuk menyediakan dan mengamankan Memory Chess, menghitung hasil, memublikasikan skor papan peringkat yang dikirim, membalas pesan kontak, meninjau masukan, mengukur kinerja situs, mencegah penyalahgunaan, dan mendukung situs dengan iklan. Kami tidak menjual detail kontak atau masukan yang Anda kirim."
           },
           {
-            "p": "Data ditangani oleh penyedia layanan hanya jika diperlukan: Google Sheets untuk pesan kontak dan masukan permainan, Supabase untuk statistik permainan, entri papan peringkat, serta total tayangan dan suka artikel, Vercel untuk hosting dan pengukuran kinerja, Ahrefs untuk analitik, dan Google untuk analitik, persetujuan, dan iklan. Penyedia ini dapat memproses data di negara lain berdasarkan ketentuan privasi mereka sendiri."
+            "p": "Data ditangani oleh penyedia layanan hanya jika diperlukan: Google Sheets untuk pesan kontak dan masukan permainan, Supabase untuk statistik permainan, entri papan peringkat, serta total tayangan dan suka artikel, Vercel untuk hosting dan pengukuran kinerja, Ahrefs dan Databuddy untuk analitik, dan Google untuk analitik, persetujuan, dan iklan. Penyedia ini dapat memproses data di negara lain berdasarkan ketentuan privasi mereka sendiri."
           },
           {
             "p": "Ketika Anda membuka atau menyukai sebuah artikel, Supabase hanya menyimpan total tayangan dan total suka untuk setiap artikel, beserta waktu perubahan terakhir dan tanpa pengenal pengunjung."

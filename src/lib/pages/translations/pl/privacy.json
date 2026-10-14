@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "f587b8fd571915f6f31f056ad85faf92bce3d6fdbf1b072639a1d25f67ca11d7",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "b4f0ae904c38ba27c83d87f61825d59547c7d5a7c3f29bf6f32c0e9a381a97c9",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Informacje zbierane automatycznie",
         "blocks": [
           {
-            "p": "Nasi dostawcy usług pomiarowych mogą otrzymywać informacje techniczne i dotyczące korzystania ze strony, takie jak wyświetlone strony, przybliżona lokalizacja, typ przeglądarki i urządzenia, strona odsyłająca, adres IP i czasy wczytywania. Memory Chess korzysta z Google Analytics, Vercel Analytics, Vercel Speed Insights i Ahrefs Analytics, żeby rozumieć ruch na stronie i dbać o to, by była szybka i niezawodna."
+            "p": "Nasi dostawcy usług pomiarowych mogą otrzymywać informacje techniczne i dotyczące korzystania ze strony, takie jak wyświetlone strony, przybliżona lokalizacja, typ przeglądarki i urządzenia, strona odsyłająca, adres IP i czasy wczytywania. Memory Chess korzysta z Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics i Databuddy, żeby rozumieć ruch na stronie i dbać o to, by była szybka i niezawodna."
+          },
+          {
+            "p": "Databuddy nie używa plików cookie. Przechowuje losowy identyfikator odwiedzającego w pamięci lokalnej twojej przeglądarki i identyfikator sesji w jej pamięci sesji. Rejestruje wyświetlane przez ciebie strony, czasy wczytywania, błędy JavaScript, kliknięcia linków prowadzących poza stronę, kliknięcia powtarzane lub pozostające bez reakcji oraz formularze porzucone przed wysłaniem. Otrzymuje też zdarzenie, gdy runda się zaczyna lub kończy, z liczbą figur, czasem na zapamiętanie i miejscem rozpoczęcia rundy, oraz zdarzenie, gdy wynik zostaje wysłany do rankingu lub planszy dnia, z jego poziomem trudności i liczbą figur. Te zdarzenia nigdy nie zawierają twojej celności, twojej nazwy gracza ani rozegranych przez ciebie pozycji."
           },
           {
             "p": "Nie prosimy tych narzędzi o zbieranie treści twoich wiadomości kontaktowych ani komentarzy w opiniach o grze."
@@ -119,7 +122,7 @@
             "p": "Korzystamy z informacji, żeby udostępniać i zabezpieczać Memory Chess, obliczać wyniki, publikować przesłane wyniki w rankingu, odpowiadać na wiadomości kontaktowe, przeglądać opinie, mierzyć wydajność strony, zapobiegać nadużyciom i utrzymywać stronę dzięki reklamom. Nie sprzedajemy przesłanych przez ciebie danych kontaktowych ani opinii."
           },
           {
-            "p": "Dostawcy usług przetwarzają dane tylko tam, gdzie jest to potrzebne: Google Sheets w przypadku wiadomości kontaktowych i opinii o grze, Supabase w przypadku statystyk gier, wpisów w rankingu oraz łącznej liczby wyświetleń i polubień artykułów, Vercel w zakresie hostingu i pomiaru wydajności, Ahrefs w zakresie analityki, a Google w zakresie analityki, zgód i reklam. Ci dostawcy mogą przetwarzać dane w innych krajach zgodnie z własnymi zasadami prywatności."
+            "p": "Dostawcy usług przetwarzają dane tylko tam, gdzie jest to potrzebne: Google Sheets w przypadku wiadomości kontaktowych i opinii o grze, Supabase w przypadku statystyk gier, wpisów w rankingu oraz łącznej liczby wyświetleń i polubień artykułów, Vercel w zakresie hostingu i pomiaru wydajności, Ahrefs i Databuddy w zakresie analityki, a Google w zakresie analityki, zgód i reklam. Ci dostawcy mogą przetwarzać dane w innych krajach zgodnie z własnymi zasadami prywatności."
           },
           {
             "p": "Gdy otworzysz lub polubisz artykuł, Supabase przechowuje dla każdego artykułu tylko łączną liczbę wyświetleń i łączną liczbę polubień, z czasem ostatniej zmiany i bez żadnego identyfikatora odwiedzającego."

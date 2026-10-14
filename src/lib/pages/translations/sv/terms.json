@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "426cd0464d5e12eb05b568c2674269487c40f5e44772fad868f31f42f848ffdd",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "f2eb60d3b34caf8c2c23a740b066f5d2b3ec7a37d95e8734f2ae2212fa0d068c",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "Tjänster från tredje part",
         "blocks": [
           {
-            "p": "Webbplatsen bygger på ett litet antal externa tjänster. Google AdSense visar annonserna som håller den gratis. Google Analytics, Vercel Analytics, Vercel Speed Insights och Ahrefs Analytics mäter trafik och prestanda. Supabase lagrar spelstatistik och bidrag till topplistan. Var och en har sina egna villkor, och <privacy>integritetspolicyn</privacy> förklarar vilka uppgifter var och en kommer åt och vilka val du har."
+            "p": "Webbplatsen bygger på ett litet antal externa tjänster. Google AdSense visar annonserna som håller den gratis. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics och Databuddy mäter trafik och prestanda. Supabase lagrar spelstatistik och bidrag till topplistan. Var och en har sina egna villkor, och <privacy>integritetspolicyn</privacy> förklarar vilka uppgifter var och en kommer åt och vilka val du har."
           }
         ]
       },

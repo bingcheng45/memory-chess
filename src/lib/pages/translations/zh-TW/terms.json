@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "6a6ef605a740a09e23235b004c9fd885c965e515b2d0047b3ec245531a5652c4",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "175cef4a4acbd17337e0acbd08e76026632e6bd6354c7a62e58578a6022747af",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "第三方服務",
         "blocks": [
           {
-            "p": "本網站仰賴少量外部服務運作。Google AdSense 刊登讓網站維持免費的廣告。Google Analytics、Vercel Analytics、Vercel Speed Insights 和 Ahrefs Analytics 衡量流量與效能。Supabase 儲存遊戲統計資料和排行榜紀錄。它們各有自己的條款，<privacy>隱私權政策</privacy>說明了每項服務涉及哪些資料，以及你有哪些選擇。"
+            "p": "本網站仰賴少量外部服務運作。Google AdSense 刊登讓網站維持免費的廣告。Google Analytics、Vercel Analytics、Vercel Speed Insights、Ahrefs Analytics 和 Databuddy 衡量流量與效能。Supabase 儲存遊戲統計資料和排行榜紀錄。它們各有自己的條款，<privacy>隱私權政策</privacy>說明了每項服務涉及哪些資料，以及你有哪些選擇。"
           }
         ]
       },

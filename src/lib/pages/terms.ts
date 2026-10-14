@@ -69,7 +69,7 @@ const terms: PageText = {
       title: "Third-party services",
       blocks: [
         {
-          p: "The site runs on a small set of external services. Google AdSense serves the ads that keep it free. Google Analytics, Vercel Analytics, Vercel Speed Insights, and Ahrefs Analytics measure traffic and performance. Supabase stores game statistics and leaderboard entries. Each has its own terms, and the <privacy>privacy policy</privacy> explains what data each one touches and the choices you have.",
+          p: "The site runs on a small set of external services. Google AdSense serves the ads that keep it free. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics, and Databuddy measure traffic and performance. Supabase stores game statistics and leaderboard entries. Each has its own terms, and the <privacy>privacy policy</privacy> explains what data each one touches and the choices you have.",
         },
       ],
     },

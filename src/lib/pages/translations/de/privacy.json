@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "47dc5fcb38db562ff6b927e93be0fba60efada892af77e409e57802bc3bc16ed",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "0ea104b4ef5fc6daa0b008700ce797aff059bf5ecce6059c55ccb517899b5c2f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Automatisch erhobene Daten",
         "blocks": [
           {
-            "p": "Unsere Messdienste können technische Daten und Nutzungsdaten erhalten, etwa aufgerufene Seiten, den ungefähren Standort, Browser- und Gerätetyp, die verweisende Seite, die IP-Adresse und Ladezeiten. Memory Chess nutzt Google Analytics, Vercel Analytics, Vercel Speed Insights und Ahrefs Analytics, um die Besucherzahlen zu verstehen und die Website schnell und zuverlässig zu halten."
+            "p": "Unsere Messdienste können technische Daten und Nutzungsdaten erhalten, etwa aufgerufene Seiten, den ungefähren Standort, Browser- und Gerätetyp, die verweisende Seite, die IP-Adresse und Ladezeiten. Memory Chess nutzt Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics und Databuddy, um die Besucherzahlen zu verstehen und die Website schnell und zuverlässig zu halten."
+          },
+          {
+            "p": "Databuddy verwendet keine Cookies. Es speichert eine zufällige Besucherkennung im lokalen Speicher deines Browsers und eine Sitzungskennung in seinem Sitzungsspeicher. Es erfasst die Seiten, die du aufrufst, Ladezeiten, JavaScript-Fehler, Klicks auf Links, die die Website verlassen, Klicks, die wiederholt werden oder ohne Reaktion bleiben, sowie Formulare, die verlassen werden, bevor sie abgeschickt sind. Außerdem erhält es ein Ereignis, wenn eine Runde beginnt oder endet, mit der Anzahl der Figuren, der Einprägezeit und dem Ort, an dem die Runde gestartet wurde, und ein Ereignis, wenn ein Ergebnis an eine Bestenliste oder das Tagesbrett gesendet wird, mit dessen Schwierigkeit und Anzahl der Figuren. Diese Ereignisse enthalten nie deine Genauigkeit, deinen Spielernamen oder die Stellungen, die du gespielt hast."
           },
           {
             "p": "Wir beauftragen diese Dienste nicht damit, den Inhalt deiner Kontaktnachrichten oder deiner Kommentare im Spiel-Feedback zu erheben."
@@ -119,7 +122,7 @@
             "p": "Wir verwenden Daten, um Memory Chess bereitzustellen und abzusichern, Ergebnisse zu berechnen, eingereichte Ergebnisse in der Bestenliste zu veröffentlichen, auf Kontaktnachrichten zu antworten, Feedback auszuwerten, die Leistung der Website zu messen, Missbrauch zu verhindern und die Website durch Werbung zu finanzieren. Wir verkaufen die Kontaktdaten und das Feedback, die du übermittelst, nicht."
           },
           {
-            "p": "Daten werden nur dort von Dienstleistern verarbeitet, wo es nötig ist: Google Sheets für Kontaktnachrichten und Spiel-Feedback, Supabase für Spielstatistiken, Einträge in der Bestenliste sowie die Summen der Aufrufe und Likes von Artikeln, Vercel für Hosting und Leistungsmessung, Ahrefs für Analysen und Google für Analysen, Einwilligung und Werbung. Diese Dienstleister können Daten in anderen Ländern nach ihren eigenen Datenschutzbestimmungen verarbeiten."
+            "p": "Daten werden nur dort von Dienstleistern verarbeitet, wo es nötig ist: Google Sheets für Kontaktnachrichten und Spiel-Feedback, Supabase für Spielstatistiken, Einträge in der Bestenliste sowie die Summen der Aufrufe und Likes von Artikeln, Vercel für Hosting und Leistungsmessung, Ahrefs und Databuddy für Analysen und Google für Analysen, Einwilligung und Werbung. Diese Dienstleister können Daten in anderen Ländern nach ihren eigenen Datenschutzbestimmungen verarbeiten."
           },
           {
             "p": "Wenn du einen Artikel öffnest oder mit „Gefällt mir“ markierst, speichert Supabase für jeden Artikel nur eine Summe der Aufrufe und eine Summe der Likes, mit dem Zeitpunkt der letzten Änderung und ohne Kennung des Besuchers."

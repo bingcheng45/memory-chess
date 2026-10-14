@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "b934beca2f0aedbe73a17e07d82d404abbe89bf0fffe7297df42cbd8207bc6b8",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "02682f5363f1b70d3d5dcaf325492f548a320289a5599ad5101e664769960db1",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "Servicios de terceros",
         "blocks": [
           {
-            "p": "El sitio funciona con un pequeño conjunto de servicios externos. Google AdSense sirve los anuncios que lo mantienen gratuito. Google Analytics, Vercel Analytics, Vercel Speed Insights y Ahrefs Analytics miden el tráfico y el rendimiento. Supabase almacena las estadísticas del juego y las entradas de la clasificación. Cada uno tiene sus propios términos, y la <privacy>política de privacidad</privacy> explica qué datos toca cada uno y qué opciones tienes."
+            "p": "El sitio funciona con un pequeño conjunto de servicios externos. Google AdSense sirve los anuncios que lo mantienen gratuito. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics y Databuddy miden el tráfico y el rendimiento. Supabase almacena las estadísticas del juego y las entradas de la clasificación. Cada uno tiene sus propios términos, y la <privacy>política de privacidad</privacy> explica qué datos toca cada uno y qué opciones tienes."
           }
         ]
       },

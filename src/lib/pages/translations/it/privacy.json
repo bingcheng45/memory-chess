@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "3e3625c1829510412f7fb940f518c20571b2d9af38952cb7c86fac6c9df7093a",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "b5da1b1115e1a3c2f0c08e5394b96d8b9367cee152d2bbe31b10358b018ad47c",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Informazioni raccolte automaticamente",
         "blocks": [
           {
-            "p": "I nostri fornitori di misurazione possono ricevere informazioni tecniche e di utilizzo, come le pagine visitate, la posizione approssimativa, il tipo di browser e di dispositivo, la pagina di provenienza, l’indirizzo IP e i dati di temporizzazione delle prestazioni. Memory Chess usa Google Analytics, Vercel Analytics, Vercel Speed Insights e Ahrefs Analytics per capire il traffico e mantenere il sito veloce e affidabile."
+            "p": "I nostri fornitori di misurazione possono ricevere informazioni tecniche e di utilizzo, come le pagine visitate, la posizione approssimativa, il tipo di browser e di dispositivo, la pagina di provenienza, l’indirizzo IP e i dati di temporizzazione delle prestazioni. Memory Chess usa Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics e Databuddy per capire il traffico e mantenere il sito veloce e affidabile."
+          },
+          {
+            "p": "Databuddy non usa alcun cookie. Conserva un identificativo casuale del visitatore nell’archiviazione locale del tuo browser e un identificativo di sessione nella sua archiviazione di sessione. Registra le pagine che visiti, i dati di temporizzazione delle prestazioni, gli errori JavaScript, i clic sui link che portano fuori dal sito, i clic ripetuti o che non ottengono risposta e i moduli abbandonati prima dell’invio. Riceve anche un evento quando una partita inizia o finisce, con il numero di pezzi, il tempo di studio e il punto da cui è iniziata la partita, e un evento quando un punteggio viene inviato a una classifica o alla scacchiera del giorno, con la sua difficoltà e il numero di pezzi. Questi eventi non contengono mai la tua precisione, il tuo nome da giocatore né le posizioni che hai giocato."
           },
           {
             "p": "Non chiediamo a questi strumenti di raccogliere il contenuto dei tuoi messaggi di contatto o dei tuoi commenti di feedback sul gioco."
@@ -119,7 +122,7 @@
             "p": "Usiamo le informazioni per fornire e proteggere Memory Chess, calcolare i risultati, pubblicare i punteggi inviati alla classifica, rispondere ai messaggi di contatto, esaminare il feedback, misurare le prestazioni del sito, prevenire gli abusi e sostenere il sito con la pubblicità. Non vendiamo i dati di contatto né il feedback che invii."
           },
           {
-            "p": "I dati sono trattati da fornitori di servizi solo dove necessario: Google Sheets per i messaggi di contatto e il feedback sul gioco, Supabase per le statistiche di gioco, le voci della classifica e i totali di visualizzazioni e mi piace degli articoli, Vercel per l’hosting e la misurazione delle prestazioni, Ahrefs per l’analisi e Google per l’analisi, il consenso e la pubblicità. Questi fornitori possono trattare i dati in altri paesi secondo i propri termini sulla privacy."
+            "p": "I dati sono trattati da fornitori di servizi solo dove necessario: Google Sheets per i messaggi di contatto e il feedback sul gioco, Supabase per le statistiche di gioco, le voci della classifica e i totali di visualizzazioni e mi piace degli articoli, Vercel per l’hosting e la misurazione delle prestazioni, Ahrefs e Databuddy per l’analisi e Google per l’analisi, il consenso e la pubblicità. Questi fornitori possono trattare i dati in altri paesi secondo i propri termini sulla privacy."
           },
           {
             "p": "Quando apri un articolo o metti mi piace, Supabase conserva solo un totale di visualizzazioni e un totale di mi piace per ogni articolo, con l’ora dell’ultima modifica e nessun identificativo del visitatore."

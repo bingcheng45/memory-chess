@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "21724aa52354495ae78cf1ddbbd6f53d6b247eaa41740a013e134d46cc79aac2",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "b1edd65f00a7615306cbcad3ebb71dc211df3854c3fc51f4f495c9ec0bd009e4",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "自動蒐集的資訊",
         "blocks": [
           {
-            "p": "我們的流量統計服務商可能會收到技術與使用資訊，例如瀏覽的頁面、大致位置、瀏覽器和裝置類型、來源頁面、IP 位址以及效能計時。Memory Chess 使用 Google Analytics、Vercel Analytics、Vercel Speed Insights 和 Ahrefs Analytics 來了解流量，並讓網站保持快速、可靠。"
+            "p": "我們的流量統計服務商可能會收到技術與使用資訊，例如瀏覽的頁面、大致位置、瀏覽器和裝置類型、來源頁面、IP 位址以及效能計時。Memory Chess 使用 Google Analytics、Vercel Analytics、Vercel Speed Insights、Ahrefs Analytics 和 Databuddy 來了解流量，並讓網站保持快速、可靠。"
+          },
+          {
+            "p": "Databuddy 不使用 Cookie。它會在你瀏覽器的本機儲存空間中保存一個隨機的訪客 ID，並在瀏覽器的工作階段儲存空間中保存一個工作階段 ID。它會記錄你瀏覽的頁面、效能計時、JavaScript 錯誤、對離開本網站的連結的點擊、重複的點擊或沒有得到回應的點擊，以及在送出前就離開的表單。回合開始或結束時，它也會收到一個事件，包含棋子數、記憶用時和回合從哪裡開始；成績送出到排行榜或今日棋局時，它會收到一個事件，包含該成績的難度和棋子數。這些事件絕不會包含你的準確率、你的玩家名稱或你玩過的局面。"
           },
           {
             "p": "我們不會要求這些工具蒐集你的聯絡訊息或遊戲回饋意見的內容。"
@@ -119,7 +122,7 @@
             "p": "我們使用資訊來提供 Memory Chess 並確保其安全、計算結果、公布提交的排行榜成績、回覆聯絡訊息、檢視回饋、衡量網站效能、防止濫用，以及透過廣告支持網站營運。我們不會出售你提交的聯絡資料或回饋。"
           },
           {
-            "p": "資料僅在需要時由服務供應商處理：Google Sheets 用於聯絡訊息和遊戲回饋，Supabase 用於遊戲統計、排行榜紀錄以及文章瀏覽次數和按讚總數，Vercel 用於主機代管和效能衡量，Ahrefs 用於分析，Google 用於分析、同意管理和廣告。這些服務供應商可能會依據各自的隱私條款在其他國家處理資料。"
+            "p": "資料僅在需要時由服務供應商處理：Google Sheets 用於聯絡訊息和遊戲回饋，Supabase 用於遊戲統計、排行榜紀錄以及文章瀏覽次數和按讚總數，Vercel 用於主機代管和效能衡量，Ahrefs 和 Databuddy 用於分析，Google 用於分析、同意管理和廣告。這些服務供應商可能會依據各自的隱私條款在其他國家處理資料。"
           },
           {
             "p": "當你開啟一篇文章或按讚時，Supabase 只為每篇文章儲存瀏覽總數和按讚總數，以及最後一次變更的時間，不儲存任何訪客識別碼。"

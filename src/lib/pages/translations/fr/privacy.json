@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "83ca522adfedf2b2a72d5837a0557d1eb3344e2abc267ada6576d5690541e6d4",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "27f2269e07a71a0f117ff2cefe859914fc5afc58f9d4fec1da1c934ae3a3109c",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Les informations collectées automatiquement",
         "blocks": [
           {
-            "p": "Nos fournisseurs de mesure d’audience peuvent recevoir des informations techniques et d’utilisation, telles que les pages consultées, la localisation approximative, le type de navigateur et d’appareil, la page de provenance, l’adresse IP et des mesures de performance. Memory Chess utilise Google Analytics, Vercel Analytics, Vercel Speed Insights et Ahrefs Analytics pour comprendre le trafic et garder le site rapide et fiable."
+            "p": "Nos fournisseurs de mesure d’audience peuvent recevoir des informations techniques et d’utilisation, telles que les pages consultées, la localisation approximative, le type de navigateur et d’appareil, la page de provenance, l’adresse IP et des mesures de performance. Memory Chess utilise Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics et Databuddy pour comprendre le trafic et garder le site rapide et fiable."
+          },
+          {
+            "p": "Databuddy n’utilise aucun cookie. Il conserve un identifiant de visiteur aléatoire dans le stockage local de votre navigateur et un identifiant de session dans son stockage de session. Il enregistre les pages que vous consultez, les mesures de performance, les erreurs JavaScript, les clics sur des liens qui quittent le site, les clics répétés ou restés sans réponse, et les formulaires abandonnés avant d’être envoyés. Il reçoit aussi un événement lorsqu’une partie commence ou se termine, avec le nombre de pièces, le temps d’étude et l’endroit où la partie a commencé, et un événement lorsqu’un score est envoyé à un classement ou au plateau du jour, avec sa difficulté et son nombre de pièces. Ces événements ne contiennent jamais votre précision, votre nom de joueur ni les positions que vous avez jouées."
           },
           {
             "p": "Nous ne demandons pas à ces outils de collecter le contenu de vos messages de contact ni de vos commentaires sur le jeu."
@@ -119,7 +122,7 @@
             "p": "Nous utilisons les informations pour fournir et sécuriser Memory Chess, calculer les résultats, publier les scores soumis au classement, répondre aux messages de contact, examiner les avis, mesurer les performances du site, prévenir les abus et soutenir le site grâce à la publicité. Nous ne vendons pas les coordonnées ni les avis que vous soumettez."
           },
           {
-            "p": "Les données ne sont traitées par des prestataires que lorsque c’est nécessaire : Google Sheets pour les messages de contact et les avis sur le jeu, Supabase pour les statistiques de jeu, les entrées du classement et les totaux de vues et de « j’aime » des articles, Vercel pour l’hébergement et la mesure des performances, Ahrefs pour l’analyse d’audience, et Google pour l’analyse d’audience, le consentement et la publicité. Ces prestataires peuvent traiter des données dans d’autres pays, selon leurs propres conditions de confidentialité."
+            "p": "Les données ne sont traitées par des prestataires que lorsque c’est nécessaire : Google Sheets pour les messages de contact et les avis sur le jeu, Supabase pour les statistiques de jeu, les entrées du classement et les totaux de vues et de « j’aime » des articles, Vercel pour l’hébergement et la mesure des performances, Ahrefs et Databuddy pour l’analyse d’audience, et Google pour l’analyse d’audience, le consentement et la publicité. Ces prestataires peuvent traiter des données dans d’autres pays, selon leurs propres conditions de confidentialité."
           },
           {
             "p": "Lorsque vous ouvrez ou aimez un article, Supabase stocke uniquement un total de vues et un total de « j’aime » pour chaque article, avec l’heure de la dernière modification et sans aucun identifiant de visiteur."

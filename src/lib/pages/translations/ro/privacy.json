@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "8559b0759da831e11eb08e58dd0f0dd8ada297c06f157f6ca0101006d913474b",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "f18b5a5a473f1c395adb795b8bf1d08a74f3d1a92cc1edd6eb8f9182dd243d47",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Informații colectate automat",
         "blocks": [
           {
-            "p": "Furnizorii noștri de măsurare pot primi informații tehnice și de utilizare, precum paginile vizualizate, locația aproximativă, tipul de browser și de dispozitiv, pagina de proveniență, adresa IP și timpii de performanță. Memory Chess folosește Google Analytics, Vercel Analytics, Vercel Speed Insights și Ahrefs Analytics ca să înțeleagă traficul și să mențină site-ul rapid și fiabil."
+            "p": "Furnizorii noștri de măsurare pot primi informații tehnice și de utilizare, precum paginile vizualizate, locația aproximativă, tipul de browser și de dispozitiv, pagina de proveniență, adresa IP și timpii de performanță. Memory Chess folosește Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics și Databuddy ca să înțeleagă traficul și să mențină site-ul rapid și fiabil."
+          },
+          {
+            "p": "Databuddy nu folosește cookie-uri. Păstrează un identificator aleatoriu de vizitator în stocarea locală a browserului tău și un identificator de sesiune în stocarea de sesiune a browserului. Înregistrează paginile pe care le vizualizezi, timpii de performanță, erorile JavaScript, clicurile pe linkuri care duc în afara site-ului, clicurile care sunt repetate sau nu primesc niciun răspuns și formularele părăsite înainte de a fi trimise. Mai primește un eveniment când o rundă pornește sau se termină, cu numărul de piese, timpul de studiu și locul de unde a pornit runda, și un eveniment când un scor este trimis într-un clasament sau la tabla zilei, cu dificultatea și numărul de piese ale acestuia. Aceste evenimente nu conțin niciodată precizia ta, numele tău de jucător sau pozițiile pe care le-ai jucat."
           },
           {
             "p": "Nu le cerem acestor instrumente să colecteze conținutul mesajelor tale de contact sau al comentariilor tale despre joc."
@@ -119,7 +122,7 @@
             "p": "Folosim informațiile pentru a oferi și a securiza Memory Chess, a calcula rezultatele, a publica scorurile trimise în clasament, a răspunde la mesajele de contact, a analiza părerile primite, a măsura performanța site-ului, a preveni abuzurile și a susține site-ul prin publicitate. Nu vindem datele de contact sau părerile pe care ni le trimiți."
           },
           {
-            "p": "Datele sunt gestionate de furnizori de servicii doar acolo unde este nevoie: Google Sheets pentru mesajele de contact și părerile despre joc, Supabase pentru statisticile jocului, intrările din clasament și totalurile de vizualizări și aprecieri ale articolelor, Vercel pentru găzduire și măsurarea performanței, Ahrefs pentru analiza traficului și Google pentru analiza traficului, consimțământ și publicitate. Acești furnizori pot prelucra date în alte țări, conform propriilor termeni de confidențialitate."
+            "p": "Datele sunt gestionate de furnizori de servicii doar acolo unde este nevoie: Google Sheets pentru mesajele de contact și părerile despre joc, Supabase pentru statisticile jocului, intrările din clasament și totalurile de vizualizări și aprecieri ale articolelor, Vercel pentru găzduire și măsurarea performanței, Ahrefs și Databuddy pentru analiza traficului și Google pentru analiza traficului, consimțământ și publicitate. Acești furnizori pot prelucra date în alte țări, conform propriilor termeni de confidențialitate."
           },
           {
             "p": "Când deschizi sau apreciezi un articol, Supabase stochează doar un total al vizualizărilor și un total al aprecierilor pentru fiecare articol, cu momentul ultimei modificări și fără niciun identificator al vizitatorului."

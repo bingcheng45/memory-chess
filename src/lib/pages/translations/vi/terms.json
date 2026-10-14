@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "175ff0d7a3852048c456229070ad227300c6ccbba00eb701eb8140abd65500af",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "382352fb804e12b9949dcc2027a5031bc58f8d723583b7952edabf5afbc47ebd",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "Dịch vụ của bên thứ ba",
         "blocks": [
           {
-            "p": "Trang web chạy trên một số ít dịch vụ bên ngoài. Google AdSense hiển thị quảng cáo giúp trang luôn miễn phí. Google Analytics, Vercel Analytics, Vercel Speed Insights và Ahrefs Analytics đo lường lưu lượng truy cập và hiệu năng. Supabase lưu trữ số liệu thống kê trò chơi và các lượt gửi trên bảng xếp hạng. Mỗi dịch vụ có điều khoản riêng, và <privacy>chính sách quyền riêng tư</privacy> giải thích mỗi dịch vụ chạm đến dữ liệu nào và bạn có những lựa chọn gì."
+            "p": "Trang web chạy trên một số ít dịch vụ bên ngoài. Google AdSense hiển thị quảng cáo giúp trang luôn miễn phí. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics và Databuddy đo lường lưu lượng truy cập và hiệu năng. Supabase lưu trữ số liệu thống kê trò chơi và các lượt gửi trên bảng xếp hạng. Mỗi dịch vụ có điều khoản riêng, và <privacy>chính sách quyền riêng tư</privacy> giải thích mỗi dịch vụ chạm đến dữ liệu nào và bạn có những lựa chọn gì."
           }
         ]
       },

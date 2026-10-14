@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "dac269aba985517724e186773bfceb614627b128a6cd2fcfe6fc3aafa7450640",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "f63eacc84a93868b597abac3ade9cfa8792bc6ead2593ee23c122fd5b98e542b",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "Kolmannen osapuolen palvelut",
         "blocks": [
           {
-            "p": "Sivusto toimii pienen joukon ulkoisten palveluiden varassa. Google AdSense näyttää mainokset, jotka pitävät sen ilmaisena. Google Analytics, Vercel Analytics, Vercel Speed Insights ja Ahrefs Analytics mittaavat liikennettä ja suorituskykyä. Supabase tallentaa pelitilastot ja tulostaulukon merkinnät. Jokaisella on omat ehtonsa, ja <privacy>tietosuojaseloste</privacy> kertoo, mitä tietoja kukin niistä käsittelee ja mitä valintoja sinulla on."
+            "p": "Sivusto toimii pienen joukon ulkoisten palveluiden varassa. Google AdSense näyttää mainokset, jotka pitävät sen ilmaisena. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics ja Databuddy mittaavat liikennettä ja suorituskykyä. Supabase tallentaa pelitilastot ja tulostaulukon merkinnät. Jokaisella on omat ehtonsa, ja <privacy>tietosuojaseloste</privacy> kertoo, mitä tietoja kukin niistä käsittelee ja mitä valintoja sinulla on."
           }
         ]
       },

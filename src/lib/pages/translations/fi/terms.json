@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "dac269aba985517724e186773bfceb614627b128a6cd2fcfe6fc3aafa7450640",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -17,7 +17,7 @@
         "title": "Palvelu",
         "blocks": [
           {
-            "p": "Memory Chess on ilmainen selainpeli laudan muistamisen harjoitteluun. Tarjoan sen sellaisena kuin se on ja sellaisena kuin se on saatavilla, ilman minkäänlaista takuuta. Teen työtä pitääkseni sen nopeana, tarkkana ja verkossa, mutta en lupaa keskeytyksetöntä palvelua, virheetöntä pisteytystä enkä sitä, että mikään ominaisuus pysyy samanlaisena ikuisesti. Voin muuttaa, keskeyttää tai lopettaa minkä tahansa sivuston osan milloin tahansa."
+            "p": "Memory Chess on ilmainen selainpeli laudan muistamisen harjoitteluun. Tarjoan sen sellaisenaan ja saatavuuden mukaan, ilman minkäänlaista takuuta. Teen työtä pitääkseni sen nopeana, tarkkana ja verkossa, mutta en lupaa keskeytyksetöntä palvelua, virheetöntä pisteytystä enkä sitä, että mikään ominaisuus pysyy samanlaisena ikuisesti. Voin muuttaa, keskeyttää tai lopettaa minkä tahansa sivuston osan milloin tahansa."
           },
           {
             "p": "Siinä määrin kuin laki sallii, en ole vastuussa vahingoista, jotka aiheutuvat sivuston käytöstäsi. Tämä on muistipeli. Järkevä yläraja sille, mikä tässä voi mennä pieleen, on se, että menetät sinulle tärkeän pistemäärän, ja yritän silti kovasti estää sen."
@@ -28,7 +28,7 @@
         "title": "Hyväksyttävä käyttö",
         "blocks": [
           {
-            "p": "Pelaa reilusti ja anna sivuston toimia kaikille muillekin. Älä hyökkää palveluun, ylikuormita sitä tai tutki sitä heikkouksien varalta, älä kaavi sitä suuressa mittakaavassa äläkä yritä rikkoa sen pisteytystä. Älä lähetä botin, skriptin tai minkäänlaisen automaation tuottamia pisteitä. Älä käytä yhteydenottolomaketta tai tulostaulukkoa roskapostiin, häirintään tai kenenkään muuna esiintymiseen."
+            "p": "Pelaa reilusti ja anna sivuston toimia kaikille muillekin. Älä hyökkää palveluun, ylikuormita sitä tai skannaa sitä heikkouksien löytämiseksi, älä kaavi sitä suuressa mittakaavassa äläkä yritä rikkoa sen pisteytystä. Älä lähetä botin, skriptin tai minkäänlaisen automaation tuottamia pisteitä. Älä käytä yhteydenottolomaketta tai tulostaulukkoa roskapostiin, häirintään tai kenenkään muuna esiintymiseen."
           },
           {
             "p": "Yhteydenottolomake on tarkoitettu oikeille viesteille oikealle ihmiselle. Käytä sitä virheilmoituksiin, kysymyksiin ja ideoihin, niin se luetaan."
@@ -70,7 +70,7 @@
         "title": "Kolmannen osapuolen palvelut",
         "blocks": [
           {
-            "p": "Sivusto toimii pienen joukon ulkoisia palveluita varassa. Google AdSense näyttää mainokset, jotka pitävät sen ilmaisena. Google Analytics, Vercel Analytics, Vercel Speed Insights ja Ahrefs Analytics mittaavat liikennettä ja suorituskykyä. Supabase tallentaa pelitilastot ja tulostaulukon merkinnät. Jokaisella on omat ehtonsa, ja <privacy>tietosuojaseloste</privacy> kertoo, mitä tietoja kukin niistä käsittelee ja mitä valintoja sinulla on."
+            "p": "Sivusto toimii pienen joukon ulkoisten palveluiden varassa. Google AdSense näyttää mainokset, jotka pitävät sen ilmaisena. Google Analytics, Vercel Analytics, Vercel Speed Insights ja Ahrefs Analytics mittaavat liikennettä ja suorituskykyä. Supabase tallentaa pelitilastot ja tulostaulukon merkinnät. Jokaisella on omat ehtonsa, ja <privacy>tietosuojaseloste</privacy> kertoo, mitä tietoja kukin niistä käsittelee ja mitä valintoja sinulla on."
           }
         ]
       },

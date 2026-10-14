@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "c4d3dbdee0810a61b3465bafda1a1041eb809a71eea6be12ca86774a0bc0b449",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -34,7 +34,7 @@
             "p": "Das Kontaktformular ist für echte Nachrichten an einen echten Menschen da. Nutze es für Fehlermeldungen, Fragen und Ideen, und es wird gelesen."
           },
           {
-            "p": "Ich kann Datenverkehr blockieren oder den Zugang einschränken, wenn er gegen diese Regeln verstößt. Da es keine Konten zum Sperren gibt, sind das Entfernen unzulässiger Einträge und das Blockieren von Missbrauch an der Netzwerkgrenze die Mittel, die ich zur Durchsetzung habe, und ich setze sie ein."
+            "p": "Ich kann Datenverkehr blockieren oder den Zugang einschränken, wenn er gegen diese Regeln verstößt. Da es keine Konten zum Sperren gibt, sind das Entfernen unzulässiger Einträge und das Blockieren von Missbrauch auf Netzwerkebene die Mittel, die ich zur Durchsetzung habe, und ich setze sie ein."
           }
         ]
       },
@@ -42,7 +42,7 @@
         "title": "Die Bestenliste",
         "blocks": [
           {
-            "p": "Ein Ergebnis in die Bestenliste einzutragen ist freiwillig. Alles, was du dort einreichst, ist öffentlich. Der Name zu einem Ergebnis ist genau das, was du eintippst. Wähle also etwas, das du gern veröffentlicht siehst, und verwende weder deinen echten Namen noch personenbezogene Daten anderer, wenn du sie lieber für dich behalten möchtest."
+            "p": "Ein Ergebnis in die Bestenliste einzutragen ist freiwillig. Alles, was du dort einreichst, ist öffentlich. Der Name zu einem Ergebnis ist genau das, was du eintippst. Wähle also etwas, das du gern veröffentlicht siehst, und verwende weder deinen echten Namen noch irgendwelche personenbezogenen Daten, wenn du sie lieber für dich behalten möchtest."
           },
           {
             "p": "Ein eingereichter Eintrag enthält den Namen, den du gewählt hast, und die Angaben zur Runde, etwa Genauigkeit, Schwierigkeitsstufe und Lösungszeit. Einmal veröffentlicht, bleibt er in der Bestenliste, bis er von besseren Ergebnissen verdrängt oder entfernt wird."
@@ -70,7 +70,7 @@
         "title": "Dienste von Drittanbietern",
         "blocks": [
           {
-            "p": "Die Website läuft auf einer kleinen Zahl externer Dienste. Google AdSense liefert die Anzeigen aus, die sie kostenlos halten. Google Analytics, Vercel Analytics, Vercel Speed Insights und Ahrefs Analytics messen Besucherzahlen und Leistung. Supabase speichert Spielstatistiken und Einträge in der Bestenliste. Jeder dieser Dienste hat eigene Bedingungen, und die <privacy>Datenschutzerklärung</privacy> erklärt, mit welchen Daten jeder von ihnen in Berührung kommt und welche Wahlmöglichkeiten du hast."
+            "p": "Die Website läuft auf einer kleinen Zahl externer Dienste. Google AdSense liefert die Anzeigen aus, die die Website kostenlos halten. Google Analytics, Vercel Analytics, Vercel Speed Insights und Ahrefs Analytics messen Besucherzahlen und Leistung. Supabase speichert Spielstatistiken und Einträge in der Bestenliste. Jeder dieser Dienste hat eigene Bedingungen, und die <privacy>Datenschutzerklärung</privacy> erklärt, mit welchen Daten jeder von ihnen in Berührung kommt und welche Wahlmöglichkeiten du hast."
           }
         ]
       },

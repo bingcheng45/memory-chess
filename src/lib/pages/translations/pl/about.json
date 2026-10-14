@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": "f39a043ffe2b2498edde5eab5143c832476cf8ddf3f75f629c3a63112e11039a",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "O stronie",
+      "description": "Kto tworzy Memory Chess, po co powstała ta gra, jak punktowana jest runda i jak powstają poradniki z działu Nauka.",
+      "socialTitle": "O Memory Chess",
+      "socialDescription": "Kto tworzy Memory Chess, po co powstała ta gra i jak działa."
+    },
+    "kicker": "O stronie",
+    "title": "O Memory Chess",
+    "lede": "Memory Chess to darmowa gra w zapamiętywanie szachownicy, którą zbudowała i prowadzi jedna osoba. Ta strona wyjaśnia, kim jest ta osoba, po co powstała gra i jak naprawdę działa.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Kto prowadzi tę stronę",
+        "blocks": [
+          {
+            "p": "Nazywam się Bing Cheng i samodzielnie tworzę oprogramowanie. Prowadzę Memory Chess na własną rękę, a przy kodzie i tekstach na stronie pomaga mi AI. Nie stoi za tym żaden zespół ani żadna firma. Tworzę też <tont>Tont</tont>, a informacje o tej stronie publikuję na <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Ponieważ wszystko prowadzi jedna osoba, strona jest celowo niewielka. Jedna gra, zestaw poradników treningowych, ranking i dziennik zmian, który zapisuje, co naprawdę zostało wydane."
+          },
+          {
+            "p": "Gra jest darmowa i nie wymaga konta. Reklamy Google AdSense pomagają pokryć koszty hostingu, a nic na stronie nie jest ukryte za płatnością ani rejestracją."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Po co powstała ta gra",
+        "blocks": [
+          {
+            "p": "Większość porad dotyczących poprawy gry w szachy kieruje początkujących do debiutów, zadań i kursów. Z mojego doświadczenia wcześniejszy problem leży pod tym wszystkim. Początkujący tracą orientację na szachownicy. Przeoczają obrońcę, zapominają o figurze, która ruszyła się dwa posunięcia temu, i podstawiają figury pod bicia, które na diagramie zauważyliby od razu."
+          },
+          {
+            "p": "Utrzymywanie pozycji w głowie to umiejętność, którą można wytrenować, a miejsc, w których można ją ćwiczyć bezpośrednio, było niewiele. Więc takie miejsce powstało. Memory Chess wyodrębnia tę jedną umiejętność i daje jej wynik, żeby było widać, jak się poprawia. Jeśli chcesz, żeby coś było na szali, możesz umieścić wybraną nazwę w publicznym rankingu i zmierzyć się ze wszystkimi innymi."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Jak działa runda",
+        "blocks": [
+          {
+            "p": "Wybierasz, z iloma figurami się zmierzysz i jak długo możesz je oglądać. Gotowe ustawienia sięgają od poziomu Łatwy, czyli dwóch figur na dziesięć sekund, do poziomu Arcymistrz, czyli dwudziestu figur na pięć sekund, a do tego możesz ustawić dowolną własną kombinację. Potem runda przebiega w trzech fazach."
+          },
+          {
+            "p": "Najpierw zapamiętujesz. Szachownica pokazuje pozycję przez wybrany przez ciebie czas, a potem pozycja znika. Następnie odtwarzasz. Ustawiasz figury na pustej szachownicy z pamięci. Na koniec dostajesz wynik. Gra porównuje twoją szachownicę z oryginałem, pole po polu."
+          },
+          {
+            "p": "Punktacja jest surowa. Figura liczy się jako poprawna tylko wtedy, gdy właściwa figura właściwego koloru stoi dokładnie na tym polu, które zajmowała w pierwotnej pozycji. Wieża tam, gdzie powinien stać skoczek, to podwójny błąd. Liczy się jako źle ustawiona figura, a skoczek, którego wyparła, liczy się jako brakujący. Twoja celność to odsetek pierwotnych figur odtworzonych przez ciebie dokładnie."
+          },
+          {
+            "p": "Ekran wyników pokazuje wszystkie trzy grupy: ustawienia, które ci się udały, te, które ci się nie udały, i figury, które całkiem wypadły ci z pamięci, więc każda runda mówi ci, czym zająć się następnym razem. Możesz <game>zagrać rundę</game> w niecałą minutę."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Jak powstają poradniki z działu Nauka",
+        "blocks": [
+          {
+            "p": "<learn>Biblioteka Nauka</learn> zawiera {count, plural, one {# poradnik} few {# poradniki} many {# poradników} other {# poradnika}} o widzeniu szachownicy, wizualizacji i treningu pamięci. Są pisane z pomocą AI. Każdą pozycję szachową w nich sprawdza skrypt pod kątem liczby figur, zgodności z przepisami i każdego ataku, o którym mówi tekst. Każde stwierdzenie o tym, jak działa Memory Chess, zostało sprawdzone w kodzie gry. Każdy poradnik ma ćwiczenia. Niektóre otwierają rundę w grze z właściwymi ustawieniami. Pozostałe są przeznaczone na prawdziwą szachownicę."
+          },
+          {
+            "p": "Tam, gdzie poradniki formułują twierdzenia o pamięci i uczeniu się, powołują się na opublikowane badania, w tym prace Gobeta i Simona o pamięci szachowej oraz literaturę eksperymentalną o przywoływaniu z pamięci i praktyce rozłożonej w czasie. Każdy przypis prowadzi do swojego źródła. Nie mam na koncie własnych badań, a poradniki nie udają, że jest inaczej."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Historia strony",
+        "blocks": [
+          {
+            "p": "Pierwsze wydanie trafiło do sieci w marcu 2025 roku jako podstawowa wersja gry. Gra na telefonach i wybór figur pojawiły się w ciągu kilku tygodni. Biblioteka Nauka wystartowała w marcu 2026 roku, a w sierpniu 2026 roku sama gra zaczęła działać w 24 językach. Poradniki i dziennik zmian są po angielsku. <changelog>Dziennik zmian</changelog> zapisuje każde wydanie z numerem wersji, łącznie z poprawkami błędów. Dbam o jego rzetelność, bo korzystam z niego osobiście, żeby pamiętać, co i kiedy się zmieniło."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Kontakt",
+        "blocks": [
+          {
+            "p": "Napisz do mnie na <mail>{email}</mail> albo skorzystaj z <contact>formularza kontaktowego</contact>. Czytam wszystko, a zgłoszenia graczy nieraz pomogły naprawić prawdziwe błędy. Jeśli chcesz poznać szczegóły, <privacy>polityka prywatności</privacy> i <terms>regulamin</terms> opisują, jak strona obchodzi się z danymi i na co się zgadzasz, grając."
+          }
+        ]
+      }
+    }
+  }
+}

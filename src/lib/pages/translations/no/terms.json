@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": "4b5ff64dbfbf8e86d6013493e14bfc506239a6decee01430d4d78a565f1fdb1c",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Vilkår for bruk",
+      "description": "Vilkårene i klartekst for å spille Memory Chess, sende inn poengsummer til topplisten og bruke innholdet på nettstedet.",
+      "socialTitle": "Vilkår for bruk av Memory Chess",
+      "socialDescription": "Vilkårene i klartekst for å spille Memory Chess og bruke nettstedet."
+    },
+    "kicker": "Det med liten skrift",
+    "title": "Vilkår for bruk",
+    "lede": "Memory Chess er et gratis spill drevet av én person. Vilkårene er korte fordi avtalen er enkel, og de er skrevet for å bli lest.",
+    "sections": {
+      "service": {
+        "title": "Tjenesten",
+        "blocks": [
+          {
+            "p": "Memory Chess er et gratis nettleserspill for å trene brettminne. Jeg tilbyr det som det er og når det er tilgjengelig, uten noen form for garanti. Jeg jobber for å holde det raskt, nøyaktig og tilgjengelig, men jeg lover ikke uavbrutt drift, feilfri poengsetting eller at noen funksjon forblir den samme for alltid. Jeg kan endre, stanse midlertidig eller avvikle hvilken som helst del av nettstedet når som helst."
+          },
+          {
+            "p": "I den grad loven tillater det, er jeg ikke ansvarlig for skader som oppstår ved din bruk av nettstedet. Det er et hukommelsesspill. Det verste som med rimelighet kan gå galt her, er at du mister en poengsum du brydde deg om, og jeg gjør likevel mye for å hindre det."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Akseptabel bruk",
+        "blocks": [
+          {
+            "p": "Spill rettferdig, og la nettstedet fungere for alle andre. Ikke angrip eller overbelast tjenesten, ikke skann den for svakheter, ikke skrap den i stort omfang, og ikke prøv å ødelegge poengsettingen. Ikke send inn poengsummer laget av boter, skript eller noen form for automatisering. Ikke bruk kontaktskjemaet eller topplisten til å spamme, trakassere eller utgi deg for å være noen andre."
+          },
+          {
+            "p": "Kontaktskjemaet er for ekte meldinger til en ekte person. Bruk det til feilrapporter, spørsmål og ideer, så blir det lest."
+          },
+          {
+            "p": "Jeg kan blokkere trafikk eller begrense tilgang som bryter disse reglene. Når det ikke finnes kontoer å utestenge, er fjerning av uønskede oppføringer og blokkering av misbruk ved kanten av nettverket den håndhevingen jeg har, og den bruker jeg."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Topplisten",
+        "blocks": [
+          {
+            "p": "Det er valgfritt å sende inn en poengsum til topplisten. Alt du sender inn der, er offentlig. Navnet knyttet til en poengsum er det du skriver inn, så velg noe du er komfortabel med å se publisert, og ikke bruk ditt ekte navn eller noens personopplysninger hvis du heller vil holde det privat."
+          },
+          {
+            "p": "En innsendt oppføring inneholder navnet du valgte og detaljene om runden, som treffsikkerhet, vanskelighetsgrad og tid brukt. Når den er publisert, blir den stående på listen til den blir fortrengt av bedre poengsummer eller fjernet."
+          },
+          {
+            "p": "Jeg kan fjerne oppføringer på topplisten som er krenkende, som utgir seg for å være noen, som ser automatiserte ut, eller som tydelig ikke ble laget av en person som spilte spillet. Jeg fjerner oppføringer for å holde listen ærlig, ikke for å bestemme hvem som vinner."
+          }
+        ]
+      },
+      "content": {
+        "title": "Innhold og immaterielle rettigheter",
+        "blocks": [
+          {
+            "p": "Nettstedets eget innhold, inkludert spillet, Lær-guidene, designet og koden som driver det, tilhører meg. Du må gjerne lenke til hvilken som helst side, sitere rimelige utdrag med kildehenvisning og dele poengsummene dine hvor du vil. Ikke publiser hele guider på nytt, og ikke gi ut nettstedets innhold som ditt eget."
+          },
+          {
+            "p": "Selve sjakken tilhører ingen. Stillinger, regler og notasjon er fritt tilgjengelige for alle, her og alle andre steder."
+          },
+          {
+            "p": "Hvis du sender tilbakemeldinger eller forslag, godtar du at jeg kan bruke dem til å forbedre nettstedet uten å skylde deg kompensasjon eller kreditering. Tilbakemeldinger fra spillere har formet ekte utgivelser før, og endringsloggen viser hva det førte til."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Tredjepartstjenester",
+        "blocks": [
+          {
+            "p": "Nettstedet kjører på et lite utvalg eksterne tjenester. Google AdSense viser annonsene som holder det gratis. Google Analytics, Vercel Analytics, Vercel Speed Insights og Ahrefs Analytics måler trafikk og ytelse. Supabase lagrer spillstatistikk og oppføringer på topplisten. Hver av dem har egne vilkår, og <privacy>personvernerklæringen</privacy> forklarer hvilke data hver av dem berører og hvilke valg du har."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Endringer i vilkårene",
+        "blocks": [
+          {
+            "p": "Jeg kan oppdatere disse vilkårene når nettstedet eller tjenestene det bruker, endres. Gjeldende versjon ligger alltid på denne adressen, og hvis du fortsetter å bruke nettstedet etter en endring, betyr det at du godtar de oppdaterte vilkårene. Alt som har vesentlig betydning for spillerne, for eksempel en endring i hvordan topplisten fungerer, noterer jeg også i endringsloggen."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Kontakt",
+        "blocks": [
+          {
+            "p": "Spørsmål om disse vilkårene, eller en oppføring på topplisten du vil ha vurdert eller fjernet, sendes til <mail>{email}</mail>. Jeg svarer selv."
+          }
+        ]
+      }
+    }
+  }
+}

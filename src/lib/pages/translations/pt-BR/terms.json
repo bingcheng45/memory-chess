@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Termos de serviço",
+      "description": "Os termos, em linguagem simples, para jogar Memory Chess, enviar pontuações ao ranking e usar o conteúdo do site.",
+      "socialTitle": "Termos de serviço do Memory Chess",
+      "socialDescription": "Os termos, em linguagem simples, para jogar Memory Chess e usar o site."
+    },
+    "kicker": "As letras miúdas",
+    "title": "Termos de serviço",
+    "lede": "O Memory Chess é um jogo gratuito mantido por uma única pessoa. Estes termos são curtos porque o acordo é simples, e foram escritos para serem lidos.",
+    "sections": {
+      "service": {
+        "title": "O serviço",
+        "blocks": [
+          {
+            "p": "O Memory Chess é um jogo gratuito de navegador para treinar a memória do tabuleiro. Eu o ofereço no estado em que se encontra e conforme a disponibilidade, sem garantia de nenhum tipo. Trabalho para mantê-lo rápido, preciso e no ar, mas não prometo serviço ininterrupto, pontuação sem erros nem que qualquer recurso continue igual para sempre. Posso alterar, suspender ou descontinuar qualquer parte do site a qualquer momento."
+          },
+          {
+            "p": "Na medida permitida por lei, não sou responsável por danos decorrentes do seu uso do site. É um jogo de memória. O pior que razoavelmente pode acontecer aqui é perder uma pontuação que importava para você, e mesmo assim eu me esforço muito para evitar isso."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Uso aceitável",
+        "blocks": [
+          {
+            "p": "Jogue limpo e deixe o site funcionando para todos os outros. Não ataque, sobrecarregue nem sonde o serviço, não faça raspagem dele em grande volume e não tente burlar a pontuação. Não envie pontuações geradas por bots, scripts ou qualquer tipo de automação. Não use o formulário de contato nem o ranking para enviar spam, assediar ou se passar por outra pessoa."
+          },
+          {
+            "p": "O formulário de contato é para mensagens reais a uma pessoa real. Use-o para relatar bugs, tirar dúvidas e sugerir ideias, e a mensagem será lida."
+          },
+          {
+            "p": "Posso bloquear o tráfego ou restringir o acesso que viole estas regras. Como não há contas para banir, remover entradas indevidas e bloquear abusos na borda da rede é a forma de fazer valer as regras que eu tenho, e eu a uso."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "O ranking",
+        "blocks": [
+          {
+            "p": "Enviar uma pontuação ao ranking é opcional. Tudo o que você envia para lá é público. O nome associado a uma pontuação é o que você digitar, então escolha algo que você não se importe de ver publicado, e não use o seu nome real nem informações pessoais de ninguém se preferir mantê-los privados."
+          },
+          {
+            "p": "Uma entrada enviada contém o nome que você escolheu e os detalhes da rodada, como precisão, dificuldade e tempo de conclusão. Depois de publicada, ela fica no ranking até ser superada por pontuações melhores ou removida."
+          },
+          {
+            "p": "Posso remover entradas do ranking que sejam abusivas, que se passem por outra pessoa, que pareçam automatizadas ou que claramente não tenham sido produzidas por uma pessoa jogando. Removo entradas para manter o ranking honesto, não para escolher quem vence."
+          }
+        ]
+      },
+      "content": {
+        "title": "Conteúdo e propriedade intelectual",
+        "blocks": [
+          {
+            "p": "O conteúdo próprio do site, incluindo o jogo, os guias do Aprender, o design e o código que o faz funcionar, pertence a mim. Você pode colocar links para qualquer página, citar trechos razoáveis com a devida atribuição e compartilhar as suas pontuações onde quiser. Não republique guias inteiros nem apresente o conteúdo do site como se fosse seu."
+          },
+          {
+            "p": "O xadrez em si não pertence a ninguém. Posições, regras e notação são livres para todos, aqui e em qualquer outro lugar."
+          },
+          {
+            "p": "Se você enviar comentários ou sugestões, concorda que eu posso usá-los para melhorar o site sem lhe dever compensação ou crédito. O feedback dos jogadores já moldou versões reais, e o registro de novidades documenta o que resultou disso."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Serviços de terceiros",
+        "blocks": [
+          {
+            "p": "O site funciona com um pequeno conjunto de serviços externos. O Google AdSense exibe os anúncios que o mantêm gratuito. Google Analytics, Vercel Analytics, Vercel Speed Insights e Ahrefs Analytics medem o tráfego e o desempenho. O Supabase armazena as estatísticas do jogo e as entradas do ranking. Cada um tem os próprios termos, e a <privacy>política de privacidade</privacy> explica quais dados cada um acessa e quais escolhas você tem."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Alterações nestes termos",
+        "blocks": [
+          {
+            "p": "Posso atualizar estes termos quando o site ou os seus serviços mudarem. A versão vigente fica sempre neste endereço, e continuar usando o site depois de uma alteração significa que você aceita os termos atualizados. Para qualquer coisa que afete significativamente os jogadores, como uma mudança no funcionamento do ranking, também registro a alteração no registro de novidades."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Contato",
+        "blocks": [
+          {
+            "p": "Dúvidas sobre estes termos, ou uma entrada do ranking que você queira que seja revisada ou removida, devem ser enviadas para <mail>{email}</mail>. Eu mesmo respondo."
+          }
+        ]
+      }
+    }
+  }
+}

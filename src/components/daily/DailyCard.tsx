@@ -11,6 +11,7 @@ import { SHARE_ORDER, shareRow, type DailyBoard, type DailyRound } from "@/lib/l
 import type { DailyEntry } from "@/lib/lab/entries";
 import type { Standing } from "@/lib/leaderboard/standing";
 import type { SquareOutcome } from "@/lib/lab/record";
+import { CommunityInvite } from "@/components/community/CommunityLink";
 import { DailyJoinForm } from "./DailyJoinForm";
 
 type Translate = ReturnType<typeof useTranslations<"daily.page">>;
@@ -151,10 +152,12 @@ function Result({ t, round, titleId }: { t: Translate; round: DailyRound; titleI
 }
 
 function Joined({ t, standing }: { t: Translate; standing: Standing | null }) {
+  const tCommunity = useTranslations("common.community");
   return (
     <div className="daily-joined" role="status">
       <p className="daily-joined-title">{t("joined")}</p>
       <p className="daily-note">{standing && t("rank", { rank: standing.rank, total: standing.total })}</p>
+      <CommunityInvite placement="daily" line={tCommunity("dailyLine")} link={tCommunity("link")} />
     </div>
   );
 }

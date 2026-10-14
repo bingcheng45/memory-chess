@@ -35,6 +35,15 @@
       "current": "語言：{language}",
       "select": "選擇語言",
       "englishOnly": "此頁面僅提供英文版。"
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "加入 Telegram 群組",
+      "resultLine": "和其他玩家分享你的勝績與記憶技巧。",
+      "dailyLine": "和其他玩家聊聊今天的棋盤。請用劇透標記隱藏答案。",
+      "dashboardLine": "和其他玩家交流心得。",
+      "leaderboardLine": "和這個排行榜上的玩家聊聊。",
+      "aboutLine": "比較喜歡聊天嗎？"
     }
   },
   "home": {

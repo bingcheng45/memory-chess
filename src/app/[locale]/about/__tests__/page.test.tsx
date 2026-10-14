@@ -30,6 +30,16 @@ describe("AboutPage", () => {
     ]);
   });
 
+  it("offers the Telegram group after the contact section, outside the page text", async () => {
+    render(await AboutPage(IN_ENGLISH));
+
+    const link = screen.getByRole("link", { name: "Join the Telegram group" });
+    expect(link).toHaveAttribute("href", "https://t.me/TheMemoryChess");
+    expect(link).toHaveAttribute("id", "community-about");
+    const contact = screen.getByRole("heading", { name: "Get in touch" });
+    expect(contact.compareDocumentPosition(link) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
   it("names the developer and links the site's real pages", async () => {
     render(await AboutPage(IN_ENGLISH));
 

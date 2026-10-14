@@ -35,6 +35,15 @@
       "current": "Język: {language}",
       "select": "Wybierz język",
       "englishOnly": "Ta strona jest dostępna tylko po angielsku."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Dołącz do grupy na Telegramie",
+      "resultLine": "Dziel się wygranymi i sposobami na zapamiętywanie z innymi graczami.",
+      "dailyLine": "Porozmawiaj o dzisiejszej szachownicy z innymi graczami. Odpowiedzi ukrywaj w spoilerze.",
+      "dashboardLine": "Wymień się spostrzeżeniami z innymi graczami.",
+      "leaderboardLine": "Porozmawiaj z graczami z tego rankingu.",
+      "aboutLine": "Wolisz czat?"
     }
   },
   "home": {

@@ -35,6 +35,15 @@
       "current": "언어: {language}",
       "select": "언어 선택",
       "englishOnly": "이 페이지는 영어로만 제공됩니다."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Telegram 그룹 참여하기",
+      "resultLine": "승리 기록과 기억 요령을 다른 플레이어와 나눠 보세요.",
+      "dailyLine": "오늘의 보드에 대해 다른 플레이어와 이야기해 보세요. 정답은 스포일러로 가려 주세요.",
+      "dashboardLine": "다른 플레이어와 노하우를 나눠 보세요.",
+      "leaderboardLine": "이 순위표의 플레이어들과 이야기해 보세요.",
+      "aboutLine": "채팅이 더 편하신가요?"
     }
   },
   "home": {

@@ -167,3 +167,21 @@ describe("Dashboard", () => {
     expect(document.querySelector('[data-tile="streak"] .lab-tile-note')?.textContent).toBe(longest);
   });
 });
+
+describe("the Telegram line", () => {
+  const link = () => screen.queryByRole("link", { name: "Join the Telegram group" });
+
+  it.each<PersonaName>(["newVisitor", "twoRounds"])("is not shown to the %s persona, who has fewer than 3 rounds", (name) => {
+    show(name);
+
+    expect(link()).toBeNull();
+  });
+
+  it("is shown to a returning player, as a plain outbound link", () => {
+    show("threeDays");
+
+    expect(screen.getByText(/Compare notes with other players\./)).toBeInTheDocument();
+    expect(link()).toHaveAttribute("href", "https://t.me/TheMemoryChess");
+    expect(link()).toHaveAttribute("id", "community-dashboard");
+  });
+});

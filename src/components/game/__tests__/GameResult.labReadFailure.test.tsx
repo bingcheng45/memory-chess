@@ -11,6 +11,7 @@ const mockRound = scoredRound("4k3/8/8/8/3q4/8/PP6/4K3", "4k3/8/8/8/8/8/PP6/4K3"
 jest.mock("@/lib/store/gameStore", () => ({
   useGameStore: () => ({
     round: mockRound,
+    history: [],
     gameState: {
       pieceCount: 6,
       memorizeTime: 10,

@@ -38,6 +38,8 @@ import { countWrong } from "@/lib/game/scoring";
 import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
 import { warmedResultDeltas } from "@/components/game/resultDeltasWarm";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
+import { CommunityInvite } from "@/components/community/CommunityLink";
+import { isReturningPlayer } from "@/lib/community";
 import ShareResult from "@/components/game/ShareResult";
 import { roundShareOf } from "@/components/game/roundShare";
 import { START_RATING } from "@/lib/game/rating";
@@ -93,10 +95,11 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   // Without IndexedDB nothing can be recorded, so no space is held for a card that could only leave again.
   const keepsRecord = browserIndexedDB() !== undefined;
   const showsLab = keepsRecord;
+  const tCommunity = useTranslations("common.community");
   const tCountry = useTranslations("country");
   const tComparison = useTranslations("game.comparison");
   const tDaily = useTranslations("daily.round");
-  const { gameState, round } = useGameStore();
+  const { gameState, round, history } = useGameStore();
   const { labRound } = gameState;
   const { countryCode, setCountryCode } = useSettingsStore();
 
@@ -371,6 +374,9 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
             {t("viewLeaderboard")}
           </Link>
         </nav>
+        {isReturningPlayer(history.length) && (
+          <CommunityInvite placement="result" line={tCommunity("resultLine")} link={tCommunity("link")} />
+        )}
       </section>
 
       <div className="lab-ui-face space-y-6">

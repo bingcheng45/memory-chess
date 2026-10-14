@@ -35,6 +35,15 @@
       "current": "Lingua: {language}",
       "select": "Scegli la lingua",
       "englishOnly": "Questa pagina è disponibile solo in inglese."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Unisciti al gruppo Telegram",
+      "resultLine": "Condividi le tue vittorie e i tuoi trucchi di memoria con gli altri giocatori.",
+      "dailyLine": "Parla della scacchiera di oggi con gli altri giocatori. Nascondi le risposte in uno spoiler.",
+      "dashboardLine": "Confronta i tuoi appunti con gli altri giocatori.",
+      "leaderboardLine": "Chiacchiera con i giocatori di questa classifica.",
+      "aboutLine": "Preferisci chattare?"
     }
   },
   "home": {

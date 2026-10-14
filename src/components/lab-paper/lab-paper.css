@@ -145,6 +145,7 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-awards { display: grid; gap: 12px; }
 .lab-paper .lab-foot-base { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 48px; padding-top: 24px; border-top: 1px solid var(--lp-line); font: 400 14px/1.4 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .lab-foot-social a { display: inline-flex; padding: 8px; color: var(--lp-ink-2); }
+.lab-paper .lab-community { margin: 16px 0 0; max-width: 64ch; font: 400 14px/1.55 var(--lp-body); color: var(--lp-muted); }
 @media (max-width: 1023px) {
   .lab-paper .lab-foot-grid { grid-template-columns: 1fr 1fr; }
   .lab-paper .lab-foot-grid > :first-child { grid-column: 1 / -1; }

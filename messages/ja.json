@@ -35,6 +35,15 @@
       "current": "言語：{language}",
       "select": "言語を選択",
       "englishOnly": "このページは英語でのみご覧いただけます。"
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Telegramグループに参加する",
+      "resultLine": "勝った記録や記憶のコツを、ほかのプレイヤーと共有しましょう。",
+      "dailyLine": "今日の盤面について、ほかのプレイヤーと話しましょう。答えはネタバレ表示にして隠してください。",
+      "dashboardLine": "ほかのプレイヤーと情報交換しましょう。",
+      "leaderboardLine": "このランキングのプレイヤーと話しましょう。",
+      "aboutLine": "チャットがお好みですか？"
     }
   },
   "home": {

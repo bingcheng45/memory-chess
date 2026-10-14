@@ -32,9 +32,11 @@ const baseGameState = {
 const mockRound = scoredRound("4k3/8/8/8/3q4/8/PP6/4K3", "4k3/8/8/8/8/8/PP6/4K3");
 
 let mockGameState: typeof baseGameState & { board?: SetBoard; rating?: RoundOutcome } = baseGameState;
+let mockHistory: readonly { readonly id: string }[] = [];
+const historyOf = (rounds: number) => Array.from({ length: rounds }, (_, index) => ({ id: `round-${index}` }));
 
 jest.mock("@/lib/store/gameStore", () => ({
-  useGameStore: () => ({ gameState: mockGameState, round: mockRound }),
+  useGameStore: () => ({ gameState: mockGameState, round: mockRound, history: mockHistory }),
 }));
 
 jest.mock("@/lib/leaderboard/cutoffsClient", () => ({
@@ -104,6 +106,28 @@ describe("GameResult", () => {
   afterEach(() => {
     jest.restoreAllMocks();
     mockGameState = baseGameState;
+    mockHistory = [];
+  });
+
+  describe("the Telegram invite", () => {
+    const invite = () => screen.queryByRole("link", { name: "Join the Telegram group" });
+
+    it.each([0, 1, 2])("is not shown to a player with %i finished rounds", (rounds) => {
+      mockHistory = historyOf(rounds);
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      expect(invite()).not.toBeInTheDocument();
+      expect(screen.queryByText("Share your wins and memory tricks with other players.")).not.toBeInTheDocument();
+    });
+
+    it("is shown, as a plain outbound link, at 3 finished rounds", () => {
+      mockHistory = historyOf(3);
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      expect(screen.getByText(/Share your wins and memory tricks with other players\./)).toBeInTheDocument();
+      expect(invite()).toHaveAttribute("href", "https://t.me/TheMemoryChess");
+      expect(invite()).toHaveAttribute("id", "community-result");
+    });
   });
 
   it("renders the compact summary, both board positions, and working replay actions", () => {

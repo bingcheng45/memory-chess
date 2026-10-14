@@ -17,13 +17,14 @@ const TARGET = "4k3/8/8/8/3q4/8/PP6/4K3";
 const PNG = new Blob(["png"], { type: "image/png" });
 const DAILY: SetBoard = { kind: "daily", day: "2026-10-12", fen: TARGET };
 
-let mockStore: { gameState: Record<string, unknown>; round: ReturnType<typeof scoredRound> };
+let mockStore: { history?: unknown[]; gameState: Record<string, unknown>; round: ReturnType<typeof scoredRound> };
 jest.mock("@/lib/store/gameStore", () => ({ useGameStore: () => mockStore }));
 
 function show(board?: SetBoard) {
   const round = scoredRound(TARGET, "4k3/8/8/8/8/8/PP6/4K3", { pieceCount: 5, studyMs: 10000, source: board ? "daily" : "game_form", board });
   mockStore = {
     round,
+    history: [],
     gameState: { pieceCount: 5, memorizeTime: 10, accuracy: 80, correctPlacements: 4, skillRating: 1042, skillRatingChange: 12, streak: 3, labRound: { facts: { id: "r1" }, endedAt: 0 }, board },
   };
   render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);

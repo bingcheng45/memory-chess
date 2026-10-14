@@ -3,6 +3,8 @@
 import { useMemo, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { CommunityInvite } from "@/components/community/CommunityLink";
+import { isReturningPlayer } from "@/lib/community";
 import { useLabData, useLabResults } from "@/hooks/useLabData";
 import { readDailyOpened, utcDayOf } from "@/lib/lab/daily";
 import { DASHBOARD_GROUPS, dashboardOf, shareCardOf } from "@/lib/lab/dashboard";
@@ -41,6 +43,7 @@ function Section({ id, title, lede, children }: { id: string; title: string; led
  */
 export function Dashboard() {
   const t = useTranslations("dashboard");
+  const tCommunity = useTranslations("common.community");
   const data = useLabData();
   const storedPlan = planChoice.useValue();
   const storedTarget = targetChoice.useValue();
@@ -104,6 +107,9 @@ export function Dashboard() {
               {t("fullRecord")} →
             </Link>
           </Section>
+          {isReturningPlayer(data.summary.rounds) && (
+            <CommunityInvite placement="dashboard" line={tCommunity("dashboardLine")} link={tCommunity("link")} />
+          )}
         </>
       )}
     </main>

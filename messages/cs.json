@@ -35,6 +35,15 @@
       "current": "Jazyk: {language}",
       "select": "Vyberte jazyk",
       "englishOnly": "Tato stránka je dostupná pouze v angličtině."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Připojit se ke skupině na Telegramu",
+      "resultLine": "Sdílejte své výhry a paměťové triky s dalšími hráči.",
+      "dailyLine": "Pobavte se o dnešní pozici s ostatními hráči. Odpovědi schovejte do spoileru.",
+      "dashboardLine": "Porovnejte postřehy s dalšími hráči.",
+      "leaderboardLine": "Popovídejte si s hráči z tohoto žebříčku.",
+      "aboutLine": "Raději chat?"
     }
   },
   "home": {

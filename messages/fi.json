@@ -35,6 +35,15 @@
       "current": "Kieli: {language}",
       "select": "Valitse kieli",
       "englishOnly": "Tämä sivu on saatavilla vain englanniksi."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Liity Telegram-ryhmään",
+      "resultLine": "Jaa voittosi ja muistivinkkisi muiden pelaajien kanssa.",
+      "dailyLine": "Keskustele päivän laudasta muiden pelaajien kanssa. Piilota vastaukset spoileriin.",
+      "dashboardLine": "Vertaile kokemuksia muiden pelaajien kanssa.",
+      "leaderboardLine": "Keskustele tämän tulostaulun pelaajien kanssa.",
+      "aboutLine": "Haluatko mieluummin jutella?"
     }
   },
   "home": {

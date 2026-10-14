@@ -35,6 +35,15 @@
       "current": "Nyelv: {language}",
       "select": "Válassz nyelvet",
       "englishOnly": "Ez az oldal csak angol nyelven érhető el."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Csatlakozz a Telegram-csoporthoz",
+      "resultLine": "Oszd meg a győzelmeidet és a memóriatrükkjeidet a többi játékossal.",
+      "dailyLine": "Beszélgess a mai tábláról a többi játékossal. A válaszokat rejtsd spoiler mögé.",
+      "dashboardLine": "Vesd össze a tapasztalataidat a többi játékossal.",
+      "leaderboardLine": "Beszélgess a ranglista játékosaival.",
+      "aboutLine": "Inkább csevegnél?"
     }
   },
   "home": {

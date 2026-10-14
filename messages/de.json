@@ -35,6 +35,15 @@
       "current": "Sprache: {language}",
       "select": "Sprache auswählen",
       "englishOnly": "Diese Seite ist nur auf Englisch verfügbar."
+    },
+    "community": {
+      "footer": "Telegram",
+      "link": "Der Telegram-Gruppe beitreten",
+      "resultLine": "Teile deine Erfolge und Merktricks mit anderen Spielenden.",
+      "dailyLine": "Sprich mit anderen Spielenden über das heutige Brett. Verstecke Antworten in einem Spoiler.",
+      "dashboardLine": "Tausche dich mit anderen Spielenden aus.",
+      "leaderboardLine": "Unterhalte dich mit den Spielenden dieser Rangliste.",
+      "aboutLine": "Lieber chatten?"
     }
   },
   "home": {

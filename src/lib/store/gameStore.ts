@@ -79,9 +79,13 @@ interface GameStore {
   round: RoundState;
 
   startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
-  /** Done, the study deadline, the palette, the board and the eraser. Submit goes through submitSolution. */
-  dispatch: (action: Exclude<RoundAction, { type: 'start' } | { type: 'submit' }>) => void;
-  submitSolution: (now?: number) => void;
+  /** Sets a board out behind its Start button. Start is `dispatch({ type: 'begin' })`; the round studies on endCountdown. */
+  prepareGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board: SetBoard) => void;
+  endCountdown: (now?: number) => void;
+  /** Start, done, the study deadline, the palette, the board and the eraser. Submit goes through submitSolution. */
+  dispatch: (action: Exclude<RoundAction, { type: 'start' | 'prepare' | 'countdownEnded' | 'submit' }>) => void;
+  /** Scores the round; resolves once the lab record has kept it, to whether it did. */
+  submitSolution: (now?: number) => Promise<boolean>;
   resetGame: () => void;
 
   getSkillRating: () => number;
@@ -137,6 +141,29 @@ function withCertainty(persisted: Record<string, unknown>, version: number): Rec
   return { ...persisted, gameState: { ...gameState, skillRating: rating }, certainty };
 }
 
+interface StudyStart {
+  readonly pieceCount: number;
+  readonly memorizeTime: number;
+  readonly source: RoundSource;
+  readonly board?: SetBoard;
+  readonly originalPosition: string;
+}
+
+/** The game state a round studies under, carried over the player's standing. */
+const studyGameState = (previous: GameState, { pieceCount, memorizeTime, source, board, originalPosition }: StudyStart): GameState => ({
+  ...initialGameState,
+  pieceCount,
+  memorizeTime,
+  startSource: source,
+  board,
+  originalPosition,
+  skillRating: previous.skillRating ?? START_RATING,
+  streak: previous.streak || 0,
+});
+
+const trackRoundStart = (pieceCount: number, memorizeTime: number, source: RoundSource) =>
+  trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime, source } });
+
 // Initialize the store
 export const useGameStore = create<GameStore>()(
   persist(
@@ -163,19 +190,26 @@ export const useGameStore = create<GameStore>()(
             target: labPositionFromFen(originalPosition),
             now: monotonicNow(),
           }),
-          gameState: {
-            ...initialGameState,
-            pieceCount,
-            memorizeTime,
-            startSource: source,
-            board,
-            originalPosition,
-            skillRating: get().gameState.skillRating ?? START_RATING,
-            streak: get().gameState.streak || 0,
-          },
+          gameState: studyGameState(get().gameState, { pieceCount, memorizeTime, source, board, originalPosition }),
           lastSettings: { pieceCount, memorizeTime },
         });
-        trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime, source } });
+        trackRoundStart(pieceCount, memorizeTime, source);
+      },
+
+      prepareGame: (pieceCount, memorizeTime, source, board) =>
+        set({ round: roundReducer(get().round, { type: 'prepare', config: { pieceCount, studyMs: memorizeTime * 1000, source, board } }) }),
+
+      endCountdown: (now = monotonicNow()) => {
+        const counting = get().round;
+        if (counting.phase !== 'countdown') return;
+        const { pieceCount, studyMs, source, board } = counting.config;
+        const memorizeTime = studyMs / 1000;
+        set({
+          round: roundReducer(counting, { type: 'countdownEnded', now }),
+          gameState: studyGameState(get().gameState, { pieceCount, memorizeTime, source, board, originalPosition: board.fen }),
+          lastSettings: { pieceCount, memorizeTime },
+        });
+        trackRoundStart(pieceCount, memorizeTime, source);
       },
 
       dispatch: (action) => set({ round: roundReducer(get().round, action) }),
@@ -198,9 +232,9 @@ export const useGameStore = create<GameStore>()(
       submitSolution: (now = monotonicNow()) => {
         const { gameState } = get();
         const playing = get().round;
-        if (playing.phase !== 'rebuild' || !gameState.originalPosition) return;
+        if (playing.phase !== 'rebuild' || !gameState.originalPosition) return Promise.resolve(false);
         const round = roundReducer(playing, { type: 'submit', now });
-        if (round.phase !== 'scored') return;
+        if (round.phase !== 'scored') return Promise.resolve(false);
 
         const userPosition = `${labPositionToFen(round.placed)}${SOLUTION_FEN_SUFFIX}`;
         const placed = placementFromFen(userPosition);
@@ -324,7 +358,9 @@ export const useGameStore = create<GameStore>()(
         });
 
         // Loaded on demand so the lab storage stays out of the /game bundle until a round ends.
-        void import('@/lib/lab/recordRound').then(({ recordLabRound }) => recordLabRound(labRound.facts, new Date(endedAt))).catch(() => {});
+        return import('@/lib/lab/recordRound')
+          .then(({ recordLabRound }) => recordLabRound(labRound.facts, new Date(endedAt)))
+          .catch(() => false);
       },
 
       // Stats and progression

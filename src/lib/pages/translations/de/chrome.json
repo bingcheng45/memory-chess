@@ -1,0 +1,15 @@
+{
+  "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "contents": "Inhalt",
+    "onThisPage": "Auf dieser Seite",
+    "lastUpdated": "Zuletzt aktualisiert: <time>{date}</time>",
+    "note": {
+      "general": "Diese Seite wurde mit KI-Unterstützung aus dem Englischen übersetzt. Maßgeblich ist die englische Seite.",
+      "legal": "Diese Übersetzung wurde mit KI-Unterstützung erstellt und wird der Einfachheit halber bereitgestellt. Weicht sie von der englischen Fassung ab, ist die englische Fassung maßgeblich.",
+      "readInEnglish": "Auf Englisch lesen"
+    }
+  }
+}

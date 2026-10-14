@@ -1,0 +1,15 @@
+{
+  "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "contents": "Contenido",
+    "onThisPage": "En esta página",
+    "lastUpdated": "Última actualización: <time>{date}</time>",
+    "note": {
+      "general": "Esta página se tradujo del inglés con ayuda de IA. La página en inglés es la referencia.",
+      "legal": "Esta traducción se hizo con ayuda de IA y se ofrece por comodidad. Si difiere de la versión en inglés, prevalece la versión en inglés.",
+      "readInEnglish": "Leerla en inglés"
+    }
+  }
+}

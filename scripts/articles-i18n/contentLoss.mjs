@@ -13,14 +13,14 @@ function medianOf(numbers) {
   return sorted.length % 2 === 1 ? sorted[middle] : (sorted[middle - 1] + sorted[middle]) / 2;
 }
 
-function measuredLeaves(articles, units) {
+function measuredLeaves(articles, units, isBody) {
   return articles.flatMap(({ slug, text }) => {
     const translated = new Map(leavesOf(units[slug]?.text));
 
     return leavesOf(text).flatMap(([path, english]) => {
       const value = translated.get(path);
       const isMeasured =
-        BODY_PATH.test(path) && english.length > MAX_UNMEASURED_ENGLISH_LENGTH && typeof value === "string" && value.trim() !== "";
+        isBody(path) && english.length > MAX_UNMEASURED_ENGLISH_LENGTH && typeof value === "string" && value.trim() !== "";
       return isMeasured ? [{ slug, path, english: english.length, length: value.length, ratio: value.length / english.length }] : [];
     });
   });
@@ -32,12 +32,13 @@ function measuredLeaves(articles, units) {
  * or a paragraph replaced by a word. Each language has its own usual ratio, so
  * the measure is the median over every article in `units`.
  *
- * @param {{ slug: string, text: object }[]} articles the English articles
+ * @param {{ slug: string, text: object }[]} articles the English articles, or pages with their name as slug
  * @param {Record<string, { text?: unknown }>} units the translation of each, by slug
+ * @param {(path: string) => boolean} isBody which leaves are running text, an article's by default
  * @returns {string[]}
  */
-export function contentLossFailures(articles, units) {
-  const leaves = measuredLeaves(articles, units);
+export function contentLossFailures(articles, units, isBody = (path) => BODY_PATH.test(path)) {
+  const leaves = measuredLeaves(articles, units, isBody);
   if (leaves.length < MIN_LEAVES_FOR_A_MEDIAN) return [];
   const usual = medianOf(leaves.map((leaf) => leaf.ratio));
 

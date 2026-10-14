@@ -30,4 +30,28 @@ export const approvalNameOf = (unit: PageUnit): string => `pages/${unit}`;
  * English text, so a locale serves all of them or none. `npm run build` runs
  * `node scripts/articles-i18n.mjs --pages verify`, which fails on a page that is missing, stale or unreviewed.
  */
-export const TRANSLATED_PAGE_LOCALES: readonly Locale[] = [];
+export const TRANSLATED_PAGE_LOCALES: readonly Locale[] = [
+  "es",
+  "ru",
+  "pt-BR",
+  "de",
+  "fr",
+  "hi",
+  "it",
+  "zh-CN",
+  "tr",
+  "sv",
+  "nl",
+  "pl",
+  "id",
+  "no",
+  "fi",
+  "ro",
+  "vi",
+  "cs",
+  "ja",
+  "ko",
+  "zh-TW",
+  "da",
+  "hu",
+];

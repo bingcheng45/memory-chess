@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": "252c8323df6f7bbf0a5b7c5c932db5790d6f6af7a7d1dcb631f21232e3fd25a7",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Adatvédelmi tájékoztató",
+      "description": "Tudd meg, hogyan használja a Memory Chess az adatokat, a böngészőtárhelyet, az analitikát, a sütiket és a hirdetési szolgáltatásokat.",
+      "socialTitle": "A Memory Chess adatvédelmi tájékoztatója",
+      "socialDescription": "Tudd meg, hogyan kezeli a Memory Chess az adatokat, a sütiket, az analitikát és a hirdetéseket."
+    },
+    "kicker": "Az adataid védelme",
+    "title": "Adatvédelmi tájékoztató",
+    "lede": "Egyszerű útmutató arról, mit gyűjt a Memory Chess, miért használjuk, és milyen lehetőségeid vannak.",
+    "sections": {
+      "short-version": {
+        "title": "Röviden",
+        "blocks": [
+          {
+            "p": "A Memory Chess fiók létrehozása nélkül is játszható. Kis mennyiségű adatot használunk arra, hogy működtessük a játékot, megjegyezzük a beállításaidat, megértsük, hogyan teljesít az oldal, válaszoljunk az üzenetekre, karbantartsuk a ranglistát, és javítsuk az élményt. A Google AdSense-t is használjuk, amely sütiket és hasonló technológiát használhat a hirdetésekhez, amikor a hirdetések be vannak kapcsolva."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Ki felel az adataidért",
+        "blocks": [
+          {
+            "p": "A Memory Chess-t Bing Cheng független fejlesztő üzemelteti, aki az ebben a tájékoztatóban leírt személyes adatok adatkezelőjeként jár el. Bármilyen adatvédelmi kérdéssel vagy kéréssel írj ide: <mail>{email}</mail>, vagy használd a kapcsolatfelvételi űrlapot."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Az általad megadott adatok",
+        "blocks": [
+          {
+            "ul": [
+              "<b>Kapcsolatfelvételi üzenetek:</b> a neved, az e-mail-címed, a megkeresés típusa és az üzeneted, amikor a kapcsolatfelvételi űrlapot használod.",
+              "<b>Visszajelzés a játékról:</b> a csillagos értékelésed, a nem kötelező megjegyzéseid és a játék adatai, például a pontosság, a nehézség, a bábuk száma és a teljesítési idők. Ez a visszajelzési űrlap nem kéri a neved vagy az e-mail-címed.",
+              "<b>Ranglista-bejegyzések:</b> a választott játékosneved, a beküldött pontszám adatai, az akkori képességpontszámod és a választott ország, ha választasz. Ezek nyilvánosan megjelennek, ezért kérjük, ne használd a valódi neved, ha inkább titokban tartanád. Amikor csatlakozol a napi táblához, az űrlap országot javasol abból az országból, ahonnan a kapcsolatod érkezik, és amelyet a tárhelyszolgáltatónk jelez; ezt a becslést nem tároljuk, és az általad választott ország kerül mentésre."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Automatikusan gyűjtött adatok",
+        "blocks": [
+          {
+            "p": "Mérési szolgáltatóink műszaki és használati adatokat kaphatnak, például a megtekintett oldalakat, a hozzávetőleges helyet, a böngésző és az eszköz típusát, a hivatkozó oldalt, az IP-címet és a teljesítményidőket. A Memory Chess a Google Analytics, a Vercel Analytics, a Vercel Speed Insights és az Ahrefs Analytics szolgáltatást használja, hogy megértse a forgalmat, és gyorsan és megbízhatóan tartsa működésben az oldalt."
+          },
+          {
+            "p": "Nem kérjük ezeket az eszközöket arra, hogy gyűjtsék a kapcsolatfelvételi üzeneteid vagy a játékról írt megjegyzéseid tartalmát."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Sütik és böngészőtárhely",
+        "blocks": [
+          {
+            "p": "A Memory Chess a böngészőtárhelyet arra használja, hogy az eszközödön tartsa a játékelőzményeket és a beállításokat, megjegyezze a hangbeállításaidat, ne mutassa újra a már bezárt frissítési sávot, és időzítse, mikor jelenhet meg újra a visszajelzéskérés. A böngészőadatok törlése visszaállítja ezeket a választásokat."
+          },
+          {
+            "p": "A főoldali laborjegyzőkönyv minden befejezett körödet megőrzi, a főoldali gyakorló mérést is beleértve, a böngésződ IndexedDB-jében és helyi tárhelyén: a megfigyelt állást, az általad újraépítettet, az időidet, a pontszámaidat, az időzóna-eltolásodat, azt, hogy honnan indítottad a kört (például a főoldalról vagy egy útmutatóból), valamint minden elhelyezett bábu sorrendjét és időzítését. Kizárólag arra szolgál, hogy ezen az eszközön megjelenítse a sorozatodat, az egyéni csúcsaidat, a pontosságod alakulását, a hibatérképet, a mai táblát, az ismétlési sort és a felejtési görbét. Maga a jegyzőkönyv, az állásaival, mezőivel, elhelyezéseivel és előzményeivel, soha nem hagyja el ezt az eszközt. Az egyetlen kivétel egy olyan kör, amelyet úgy döntesz, hogy megosztasz; erről lent olvashatsz. A helyi tárhely azt az UTC szerinti napot is megőrzi, amikor utoljára megnyitottad a mai táblát, hogy naponta egy próbálkozást kínáljon, valamint azt, hogy mely ismétlési lépéseket nyitottad meg, hogy az eredmény előtt elhagyott táblát ne mutassa kétszer ugyanannál a késleltetésnél. A Google Analytics minden befejezett körödről kap egy eseményt, a főoldalon vagy a játékban, a bábuk számával, a megfigyelési idővel, azzal, hány bábut idéztél fel, a pontosságoddal és azzal, honnan indult a kör, ami lehet a mai tábla, egy ismétlés vagy egy terv. Akkor is kap egy eseményt, amikor egy kör elindul, a bábuk számával, a megfigyelési idővel és azzal, honnan indult. Emellett néhány laboreseményt is kap: amikor a labor szakasza láthatóvá válik, amikor követed valamelyik játéklinkjét, a körök számát, amikor letöltöd a jegyzőkönyvet vagy eszközök közötti biztonsági mentést kérsz, valamint a hozzáadott és kihagyott körök számát, amikor importálsz. Ezen események egyike sem tartalmaz állásokat, mezőket, körazonosítókat vagy sorozatokat. Amikor elindítasz, leállítasz vagy befejezel egy tervet, vagy beállítasz vagy törölsz egy célt, a Google Analytics olyan eseményt kap, amely csak azt a műveletet nevezi meg, terv neve és számok nélkül. A választott tervet és célt a böngésződ helyi tárhelye őrzi ezen az eszközön, ahogy azt is, hány napot szeretnél játszani hetente, ami semmilyen eseményt nem küld. A „Laborjegyzőkönyvem letöltése” egy általad kezelt fájlként ment el egy másolatot, a böngészőadatok törlése pedig törli a jegyzőkönyvet. A privát ablakok nem őrzik meg. Csak amikor megnyomod a „Mérésem másolása” gombot, akkor tesz a böngésződ egy rövid szöveget a vágólapra a memóriaterjedelmeddel, valamint, ha a jegyzőkönyv ki tudja olvasni őket, a megjegyzett bábuiddal és a sebességeddel, mindegyiket a hozzá tartozó körök számával. A szöveg nem nevez meg állásokat, mezőket vagy dátumokat, és nem kerül elküldésre sehová. A helyi tárhely azt is megőrzi, mikor vált először láthatóvá a jegyzőkönyv ebben a böngészőben való megőrzéséről szóló megjegyzés, hogy a megjegyzés csak egyszer jelenjen meg, mikor nézted meg utoljára a jegyzetfüzetedet, hogy az újabb bejegyzések újként legyenek jelölve, és mikor töltötted le utoljára a jegyzőkönyvet. Néhány kör után az oldal egyszer megkéri a böngésződet, hogy tartsa meg a jegyzőkönyvet, ha fogy a hely, és a helyi tárhely feljegyzi, hogy ezt kérte."
+          },
+          {
+            "p": "A fejlődési oldal ugyanezt a jegyzőkönyvet olvassa a böngésződben, és semmit sem küld el. Csak amikor megnyomod a „Fejlődésem megosztása” gombot, akkor rajzol a böngésződ egy képet azokból az adatokból, amelyeket a jegyzőkönyv ki tud olvasni: a memóriaterjedelmed, a képességpontszámod, a megjegyzett bábuk, a sebesség, a legjobb és a legutóbbi pontosság, a győzelmi sorozat, az egymást követő napok, a lejátszott körök és a játéknapok. Csak amikor a játék eredményképernyőjén megnyomod az „Eredmény megosztása” gombot, akkor rajzol a böngésződ egy képet arról a körről: a pontosságáról, a felidézett bábukról, a bábuk számáról, a megengedett és a felhasznált megfigyelési időről, az újraépítési időről, ismétlés kivételével a képességpontszámodról, annak változásáról és az esetleges győzelmi sorozatról, a mai tábla kivételével pedig a megfigyelt és az újraépített tábláról."
+          },
+          {
+            "p": "Bármelyik gomb megnyit egy megosztási ablakot, és semmi sem hagyja el a böngésződet, amíg nem választod ki valamelyik műveletét: átadhatod a képet, egy rövid képaláírást és egy linket az eszközöd megosztási menüjének, letöltheted a képet, kimásolhatod a képet, kimásolhatod a képaláírást a linkjével együtt, vagy megnyithatod az X, a Facebook, a LinkedIn, a Reddit, a WhatsApp, a Threads vagy a Bluesky bejegyzésoldalát kitöltött linkkel, a Facebook és a LinkedIn kivételével pedig kitöltött képaláírással is. Amit oda elküldesz, azt az adott szolgáltatás saját adatvédelmi feltételei szerint kezelik."
+          },
+          {
+            "p": "A képaláírásban lévő link a kártya saját oldalát nyitja meg a Memory Chess-en, és a kártya adatai magába a linkbe vannak írva. Egy megosztott eredménylink, a /share/result/ alatt, a megfigyelt táblát, az újraépített táblát, valamint minden elhelyezett bábu sorrendjét és időzítését is tartalmazza, kivéve, ha a kör a mai tábla volt, amelynek linkje nem tartalmaz állást. Bárki, aki megnyitja a linket, el tudja olvasni ezeket, és a Memory Chess a linkből olvassa ki őket az oldal és az előnézete megjelenítéséhez. Link csak akkor készül, ha megosztasz egy kártyát, és a Memory Chess nem menti el. Mint az oldal bármely lapjánál, a fent említett analitikai eszközök rögzítik a lap címét, a linket is beleértve, amikor valaki megnyitja."
+          },
+          {
+            "p": "A Google Analytics lab_dashboard_share eseményt kap, amikor egy fejlődési kártya elhagyja az oldalt, és result_share eseményt, amikor egy eredménykártya. Mindegyik módszerként csak azt nevezi meg, hogyan távozott: native a megosztási menünél, download letöltött képnél, copy_image másolt képnél, copy másolt képaláírásnál, vagy post egy hálózat bejegyzésoldalánál, az adott hálózatot x, facebook, linkedin, reddit, whatsapp, threads vagy bluesky néven megnevezve. Egyik esemény sem tartalmazza a kártya adatait, tábláit vagy linkjét."
+          },
+          {
+            "p": "Amikor beküldesz egy pontszámot a ranglistára, a helyi tárhely ezen az eszközön azt az azonosítót is megőrzi, amelyet a ranglista a bejegyzésnek ad, a nehézséggel, az országgal, a pontszámmal és a beküldés időpontjával együtt, minden nehézségi szinten a legjobb bejegyzésedhez. Csak amikor a laborjegyzőkönyvben megnyomod a „Helyezésem ellenőrzése” gombot, akkor küldi el a böngésződ ezt a bejegyzésazonosítót a Memory Chess-nek, azzal együtt, hogy világszerte vagy a bejegyzés saját országán belül rangsorolja-e. A Memory Chess kiolvassa a bejegyzést a ranglistából, és a helyezésével, valamint azon bejegyzések számával válaszol, amelyekhez képest rangsorolta. A válasz nem kerül tárolásra. Hogy korlátozza, milyen gyakran lehet helyezést ellenőrizni, a szerver egy percig a memóriájában számolja az egyes IP-címekről érkező ellenőrzéseket, és egy címet a perce letelte utáni első ellenőrzéskor töröl. Ha a ranglistán már nincs meg a bejegyzés, az azonosítója törlődik erről az eszközről. A Google Analytics olyan eseményt kap, amely azt jelzi, hogy helyezésellenőrzés történt, bejegyzésazonosító és helyezés nélkül."
+          },
+          {
+            "p": "Egy cikk kedvelésekor a böngésződ helyi tárhelye elmenti a cikk azonosítóját és az abban a pillanatban látható kedvelésszámot, hogy a kedvelés gomb lenyomva maradjon, és a száma ne csökkenjen, amikor visszatérsz. A munkamenet-tárhely megjegyzi, mely cikkeket nyitottad meg az aktuális lapon, hogy ha ott újra megnyitsz egyet, az ne számítson új megtekintésnek. Mindkét lista a böngésződben marad. Amikor kedvelsz egy cikket, a Google Analytics egy kedvelési eseményt is kap, amely megnevezi a cikket."
+          },
+          {
+            "p": "A Tanulás keresője a böngésződben rangsorolja az útmutatókat, vagy a szerveren, ha a keresőoldalról keresel. A Google Analytics egy keresésről olyan eseményt kap, amely tartalmazza, hány karaktert írtál be, hány útmutató felelt meg, melyik a legjobb találat, és hogy az csak hozzávetőleges egyezés volt-e, valamint egy eseményt, amikor megnyitsz egy találatot, az adott útmutatóval és a listában elfoglalt helyével. Egyik esemény sem tartalmazza a beírt szavakat. Ha magáról a keresőoldalról keresel, a szavaid bekerülnek az oldal címébe, az analitikai eszközök pedig minden megtekintett oldal címét rögzítik, így ezek a szavak eljuthatnak hozzájuk."
+          },
+          {
+            "p": "A Google Analytics és a hirdetési szolgáltatások sütiket vagy hasonló azonosítókat használhatnak. A sütiket letilthatod vagy törölheted a böngésződben, bár ekkor egyes beállítások esetleg nem a várt módon működnek."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Hirdetések és Google AdSense",
+        "blocks": [
+          {
+            "p": "A Memory Chess a Google AdSense-t használja az oldal fenntartásához. Harmadik fél szolgáltatók, köztük a Google, sütiket helyezhetnek el vagy olvashatnak, webjelzőket használhatnak, vagy IP-címeket kezelhetnek, amikor hirdetési szolgáltatások vagy hirdetéscímkék vannak használatban."
+          },
+          {
+            "p": "A Google és hirdetési partnerei hirdetési sütiket használhatnak, hogy a Memory Chess-en és más webhelyeken tett látogatásaid alapján jelenítsenek meg hirdetéseket. A tartózkodási helyedtől, a választásaidtól és a beállításaidtól függően a hirdetések lehetnek személyre szabottak vagy nem személyre szabottak. Más, a Google által tanúsított hirdetésszolgáltatók is részt vehetnek a hirdetések megjelenítésében és mérésében."
+          },
+          {
+            "p": "A Google ezen szolgáltatók egyike, és a DoubleClick sütit, más néven DART sütit használja, hogy az ezen az oldalon és az internet más oldalain tett látogatásaid alapján jelenítsen meg hirdetéseket. A DART sütit a lent hivatkozott Google-hirdetésbeállításokban tilthatod le."
+          },
+          {
+            "p": "További információ arról, <partnerSites>hogyan használja a Google a partnerwebhelyekről származó információkat</partnerSites>. A személyre szabott hirdetéseket a <adCenter>My Ad Center</adCenter> felületen kezelheted, néhány más szolgáltatót pedig a <adChoices>YourAdChoices</adChoices> oldalon tilthatsz le."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Hozzájárulási lehetőségek",
+        "blocks": [
+          {
+            "p": "Ahol ez kötelező, a látogatók hozzájárulási üzenetet látnak, mielőtt az érintett hirdetési adatok felhasználásra kerülnének. Az Európai Gazdasági Térségben, az Egyesült Királyságban és Svájcban élő látogatók a Google hozzájáruláskezelő platformján hozzájárulhatnak, elutasíthatják a hozzájárulást, vagy egyenként kezelhetik a választásaikat. A böngésződben is módosíthatod a sütibeállításokat, a Google hirdetési preferenciáit pedig a My Ad Center felületen állíthatod be."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Hogyan használjuk és osztjuk meg az adatokat",
+        "blocks": [
+          {
+            "p": "Az adatokat arra használjuk, hogy biztosítsuk és védjük a Memory Chess-t, kiszámítsuk az eredményeket, közzétegyük a ranglistára beküldött pontszámokat, válaszoljunk a kapcsolatfelvételi üzenetekre, áttekintsük a visszajelzéseket, mérjük az oldal teljesítményét, megelőzzük a visszaéléseket, és hirdetésekkel támogassuk az oldalt. Az általad beküldött elérhetőségeket és visszajelzéseket nem adjuk el."
+          },
+          {
+            "p": "Az adatokat szolgáltatók csak ott kezelik, ahol szükséges: a Google Sheets a kapcsolatfelvételi üzenetekhez és a játékról szóló visszajelzésekhez, a Supabase a játékstatisztikákhoz, a ranglista-bejegyzésekhez, valamint a cikkek megtekintési és kedvelési összesítéseihez, a Vercel a tárhelyszolgáltatáshoz és a teljesítményméréshez, az Ahrefs az analitikához, a Google pedig az analitikához, a hozzájárulás kezeléséhez és a hirdetésekhez. Ezek a szolgáltatók más országokban is kezelhetnek adatokat, saját adatvédelmi feltételeik szerint."
+          },
+          {
+            "p": "Amikor megnyitsz vagy kedvelsz egy cikket, a Supabase cikkenként csak a megtekintések és a kedvelések összesített számát tárolja, az utolsó változás időpontjával, látogatóazonosító nélkül."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Megőrzés és biztonság",
+        "blocks": [
+          {
+            "p": "A beküldött adatokat csak addig őrizzük meg, amíg a fent leírt célokra hasznosak maradnak, beleértve a nyilvános ranglista fenntartását és az üzenetek megválaszolását, vagy ameddig a jogszabályok előírják. Egyetlen online szolgáltatás sem tökéletesen biztonságos, de korlátozzuk a hozzáférést, és észszerű védelmi intézkedéseket alkalmazunk az általunk felügyelt rendszereknél."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "A lehetőségeid",
+        "blocks": [
+          {
+            "ul": [
+              "Játssz anélkül, hogy ranglistanevet vagy visszajelzést küldenél be.",
+              "Töröld a tárolt játékadatokat és beállításokat a böngésződben.",
+              "Kezeld a sütiket, a hozzájárulási választásokat és a személyre szabott hirdetéseket.",
+              "Érdeklődj nálunk az általad beküldött adatokról, javítsd ki őket, vagy kérd a törlésüket, az alkalmazandó jogszabályoktól függően és attól függően, hogy ellenőrizni tudjuk-e a kérést."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "A GDPR és a CCPA szerinti jogaid",
+        "blocks": [
+          {
+            "p": "Ha az Európai Gazdasági Térségben vagy az Egyesült Királyságban tartózkodsz, a GDPR biztosítja számodra a hozzáféréshez, a helyesbítéshez, a törléshez, az adatkezelés korlátozásához, az adatkezelés elleni tiltakozáshoz és az adathordozhatósághoz való jogot. Az általunk alkalmazott jogalapok a hozzájárulásod (a személyre szabott hirdetésekhez és az analitikai sütikhez, ahol hozzájárulás szükséges) és jogos érdekünk (az oldal működtetéséhez és védelméhez, az általad beküldött ranglista-pontszámok közzétételéhez és az általad küldött üzenetek megválaszolásához). A hozzájárulásodat bármikor visszavonhatod a hozzájárulási üzeneten vagy a böngésződ beállításain keresztül, és panaszt tehetsz a helyi felügyeleti hatóságnál."
+          },
+          {
+            "p": "Ha kaliforniai lakos vagy, a CCPA jogot ad arra, hogy megtudd, milyen személyes adatok kerülnek gyűjtésre, kérd azok törlését, és letiltsd azok eladását vagy megosztását. A személyes adataidat nem adjuk el. A személyre szabott hirdetésekhez használt sütik a CCPA szerint megosztásnak minősülhetnek, és ezt letilthatod a hozzájárulási üzenetben, a My Ad Center felületen és a fent hivatkozott YourAdChoices oldalon. Ez a „Ne adják el és ne osszák meg a személyes adataimat” („Do Not Sell or Share My Personal Information”) tájékoztatónk. Ezen jogok bármelyikének gyakorlásához írj ide: <mail>{email}</mail>."
+          }
+        ]
+      },
+      "children": {
+        "title": "Gyermekek adatainak védelme",
+        "blocks": [
+          {
+            "p": "A Memory Chess általános közönségnek szóló edzőjáték, és nem arra tervezték, hogy gyermekektől gyűjtsön személyes adatokat. Ha szülő vagy gondviselő vagy, és úgy gondolod, hogy egy gyermek személyes adatokat küldött be, kérjük, lépj velünk kapcsolatba, hogy áttekinthessük, és szükség esetén eltávolíthassuk azokat."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Változások és kapcsolat",
+        "blocks": [
+          {
+            "p": "Ezt a tájékoztatót frissíthetjük, amikor az oldal vagy a szolgáltatóink változnak. A lap tetején lévő dátum a legutóbbi módosítást mutatja. Adatvédelmi kérdésekkel vagy kérésekkel fordulj hozzánk a <contact>Memory Chess kapcsolatfelvételi űrlapján</contact>."
+          }
+        ]
+      }
+    }
+  }
+}

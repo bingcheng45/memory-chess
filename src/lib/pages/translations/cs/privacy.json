@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": "a042fa3eada9d240bfca373fbec74483175658be07113a9f0a85d8686c013e01",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Zásady ochrany osobních údajů",
+      "description": "Zjistěte, jak Memory Chess používá data, úložiště prohlížeče, analytiku, soubory cookie a reklamní služby.",
+      "socialTitle": "Zásady ochrany osobních údajů Memory Chess",
+      "socialDescription": "Zjistěte, jak Memory Chess nakládá s daty, soubory cookie, analytikou a reklamou."
+    },
+    "kicker": "Vaše soukromí",
+    "title": "Zásady ochrany osobních údajů",
+    "lede": "Jednoduchý průvodce tím, co Memory Chess shromažďuje, proč to používáme a jaké máte možnosti volby.",
+    "sections": {
+      "short-version": {
+        "title": "Ve zkratce",
+        "blocks": [
+          {
+            "p": "Memory Chess můžete hrát bez vytvoření účtu. Malé množství dat používáme k provozu hry, zapamatování vašeho nastavení, pochopení toho, jak web funguje, odpovídání na zprávy, správě žebříčku a zlepšování dojmu z používání. Používáme také Google AdSense, který může pro reklamy používat soubory cookie a podobné technologie, když je reklama zapnutá."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Kdo odpovídá za vaše údaje",
+        "blocks": [
+          {
+            "p": "Memory Chess provozuje Bing Cheng, osoba vyvíjející software na vlastní pěst, která je správcem osobních údajů popsaných v těchto zásadách. S jakýmkoli dotazem nebo žádostí týkající se soukromí pište na <mail>{email}</mail> nebo použijte kontaktní formulář."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Informace, které nám poskytujete",
+        "blocks": [
+          {
+            "ul": [
+              "<b>Kontaktní zprávy:</b> vaše jméno, e-mailová adresa, typ dotazu a zpráva, když použijete kontaktní formulář.",
+              "<b>Zpětná vazba ke hře:</b> vaše hodnocení hvězdičkami, nepovinné komentáře a údaje o hře, například přesnost, obtížnost, počet figur a časy dokončení. Tento formulář pro zpětnou vazbu nežádá vaše jméno ani e-mailovou adresu.",
+              "<b>Záznamy v žebříčku:</b> hráčské jméno, které si zvolíte, údaje o výsledku, které odešlete, vaše hodnocení dovednosti v danou chvíli a země, kterou vyberete, pokud nějakou vyberete. Tyto údaje se zobrazují veřejně, proto prosím nepoužívejte své skutečné jméno, pokud si ho chcete ponechat v soukromí. Když se připojíte k desce dne, formulář navrhne zemi podle země, ze které pochází vaše připojení a kterou hlásí náš poskytovatel hostingu; tento odhad neukládáme a uloží se země, kterou zvolíte."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Informace shromažďované automaticky",
+        "blocks": [
+          {
+            "p": "Naši poskytovatelé měřicích služeb mohou získávat technické údaje a údaje o používání, například zobrazené stránky, přibližnou polohu, typ prohlížeče a zařízení, odkazující stránku, IP adresu a časy načítání. Memory Chess používá Google Analytics, Vercel Analytics, Vercel Speed Insights a Ahrefs Analytics, aby porozuměl návštěvnosti a udržel web rychlý a spolehlivý."
+          },
+          {
+            "p": "Tyto nástroje nežádáme, aby shromažďovaly obsah vašich kontaktních zpráv ani komentářů ve zpětné vazbě ke hře."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Soubory cookie a úložiště prohlížeče",
+        "blocks": [
+          {
+            "p": "Memory Chess používá úložiště prohlížeče k uchování historie her a nastavení ve vašem zařízení, k zapamatování nastavení zvuku, k tomu, aby se znovu nezobrazoval zavřený banner s aktualizací, a k načasování, kdy se může znovu objevit výzva ke zpětné vazbě. Vymazáním dat prohlížeče tyto volby resetujete."
+          },
+          {
+            "p": "Laboratorní záznam na domovské stránce ukládá každé dokončené kolo, včetně cvičného měření na domovské stránce, do IndexedDB a místního úložiště vašeho prohlížeče: pozici, kterou jste si prohlíželi, pozici, kterou jste poskládali, vaše časy, vaše výsledky, posun vašeho časového pásma, místo, kde jste kolo začali (například domovská stránka nebo návod), a pořadí a načasování každé figury, kterou jste umístili. Používá se pouze k vykreslení vaší série, osobních rekordů, vývoje přesnosti, mapy chyb, desky dne, fronty opakování a křivky zapomínání v tomto zařízení. Samotný záznam s pozicemi, poli, umístěními a historií toto zařízení nikdy neopustí. Jedinou výjimkou je kolo, které se rozhodnete sdílet, jak je popsáno níže. Místní úložiště také uchovává den podle UTC, kdy jste naposledy otevřeli desku dne, abyste měli jeden pokus denně, a to, které kroky opakování jste otevřeli, aby se deska opuštěná před výsledkem nezobrazila dvakrát se stejným odstupem. Google Analytics dostává událost za každé dokončené kolo, na domovské stránce nebo ve hře, s počtem figur, dobou na zapamatování, počtem figur, které jste si vybavili, vaší přesností a místem, kde kolo začalo, což může být deska dne, opakování nebo plán. Dostává také událost při začátku kola, s počtem figur, dobou na zapamatování a místem, kde kolo začalo. Dostává také několik událostí z laboratoře: když se sekce laboratoře zobrazí, když kliknete na některý z jejích odkazů na hru, počet kol, když záznam stahujete nebo žádáte o zálohu mezi zařízeními, a počet přidaných a přeskočených kol, když importujete. Žádná z těchto událostí neobsahuje pozice, pole, identifikátory kol ani série. Když spustíte, zastavíte nebo dokončíte plán, případně nastavíte nebo zrušíte cíl, Google Analytics dostane událost, která uvádí jen tuto akci, bez názvu plánu a bez čísel. Plán a cíl, které zvolíte, se uchovávají v místním úložišti vašeho prohlížeče v tomto zařízení, stejně jako počet dní v týdnu, kolik chcete hrát, což neodesílá žádnou událost. Stáhnout můj laboratorní záznam uloží kopii jako soubor, který máte pod kontrolou, a vymazáním dat prohlížeče se záznam smaže. Anonymní okna ho neuchovávají. Pouze když stisknete Zkopírovat moje měření, vloží prohlížeč do schránky krátký text s vaším paměťovým rozsahem a také se zapamatovanými figurami a rychlostí, pokud je záznam dokáže vyčíst, u každého s počtem kol. Text neuvádí žádné pozice, pole ani data a nikam se neodesílá. Místní úložiště také uchovává čas, kdy se upozornění na uchování záznamu v tomto prohlížeči poprvé zobrazilo, aby se upozornění ukázalo jen jednou, čas, kdy jste naposledy viděli svůj zápisník, aby se novější položky označily jako nové, a čas, kdy jste záznam naposledy stáhli. Po několika kolech web jednou požádá prohlížeč, aby záznam zachoval, až bude docházet místo, a místní úložiště si poznamená, že o to požádal."
+          },
+          {
+            "p": "Stránka pokroku čte stejný záznam ve vašem prohlížeči a nic neodesílá. Pouze když stisknete Sdílet můj pokrok, vykreslí prohlížeč obrázek s údaji, které záznam dokáže vyčíst: paměťový rozsah, hodnocení dovednosti, zapamatované figury, rychlost, nejlepší a nedávná přesnost, vítězná série, dny za sebou, odehraná kola a herní dny. Pouze když na obrazovce s výsledkem hry stisknete Sdílet výsledek, vykreslí prohlížeč obrázek daného kola: jeho přesnost, figury, které jste si vybavili, počet figur, povolenou a využitou dobu na zapamatování, dobu skládání a, kromě opakování, vaše hodnocení, jeho změnu a případnou vítěznou sérii, a kromě desky dne také šachovnici, kterou jste si prohlíželi, a šachovnici, kterou jste poskládali."
+          },
+          {
+            "p": "Každé z tlačítek otevře okno sdílení a nic neopustí váš prohlížeč, dokud nezvolíte jednu z jeho akcí: předat obrázek, krátký popisek a odkaz do nabídky sdílení vašeho zařízení, stáhnout obrázek, zkopírovat obrázek, zkopírovat popisek s odkazem, nebo otevřít stránku pro publikování na X, Facebooku, LinkedInu, Redditu, WhatsAppu, Threads nebo Bluesky s vyplněným odkazem a u všech kromě Facebooku a LinkedInu i s vyplněným popiskem. S tím, co tam odešlete, se nakládá podle vlastních zásad ochrany soukromí dané služby."
+          },
+          {
+            "p": "Odkaz v popisku otevře vlastní stránku karty na Memory Chess a údaje z karty jsou zapsané přímo v odkazu. Sdílený odkaz na výsledek, pod adresou /share/result/, obsahuje také šachovnici, kterou jste si prohlíželi, šachovnici, kterou jste poskládali, a pořadí a načasování každé figury, kterou jste umístili, ledaže šlo o desku dne, jejíž odkaz žádnou pozici neobsahuje. Kdokoli, kdo odkaz otevře, je může přečíst, a Memory Chess je z odkazu čte, aby vykreslil stránku a její náhled. Odkaz vzniká pouze tehdy, když kartu sdílíte, a Memory Chess ho neukládá. Stejně jako u každé stránky webu zaznamenávají výše uvedené analytické nástroje adresu stránky, včetně odkazu, když ji někdo otevře."
+          },
+          {
+            "p": "Google Analytics dostává událost lab_dashboard_share, když karta pokroku opustí stránku, a událost result_share, když ji opustí karta výsledku. Každá z nich uvádí jako metodu jen to, jakým způsobem karta odešla: native pro nabídku sdílení, download pro stažený obrázek, copy_image pro zkopírovaný obrázek, copy pro zkopírovaný popisek nebo post pro stránku pro publikování v síti, přičemž síť je uvedena jako x, facebook, linkedin, reddit, whatsapp, threads nebo bluesky. Žádná z událostí neobsahuje údaje z karty, její šachovnice ani její odkaz."
+          },
+          {
+            "p": "Když odešlete výsledek do žebříčku, místní úložiště v tomto zařízení uchová také identifikátor, který žebříček záznamu přidělí, spolu s obtížností, zemí, výsledkem a časem odeslání, a to pro váš nejlepší záznam v každé obtížnosti. Pouze když v laboratorním záznamu stisknete Zjistit moje pořadí, odešle prohlížeč tento identifikátor záznamu do Memory Chess spolu s tím, zda se má pořadí určit celosvětově, nebo v rámci země záznamu. Memory Chess přečte záznam ze žebříčku a odpoví jeho pořadím a počtem záznamů, mezi kterými byl seřazen. Odpověď se neukládá. Aby bylo omezeno, jak často lze pořadí zjišťovat, server ve své paměti po dobu jedné minuty počítá dotazy z každé IP adresy a adresu vyřadí při prvním dotazu po uplynutí její minuty. Pokud žebříček záznam už nemá, jeho identifikátor se z tohoto zařízení odstraní. Google Analytics dostane událost o tom, že bylo pořadí zjišťováno, bez identifikátoru záznamu a bez pořadí."
+          },
+          {
+            "p": "Když dáte článku lajk, uloží se do místního úložiště vašeho prohlížeče identifikátor článku a počet lajků zobrazený v tu chvíli, aby tlačítko pro lajk zůstalo stisknuté a jeho počet po návratu neklesl. Úložiště relace si pamatuje, které články jste otevřeli v aktuální kartě, aby jejich opětovné otevření v ní nepřidalo zobrazení. Oba seznamy zůstávají ve vašem prohlížeči. Když dáte článku lajk, Google Analytics dostane také událost lajku, která daný článek uvádí."
+          },
+          {
+            "p": "Vyhledávání v sekci Výuka řadí návody ve vašem prohlížeči, nebo na serveru, když hledáte ze stránky vyhledávání. Google Analytics dostává událost za vyhledávání s počtem napsaných znaků, počtem odpovídajících návodů, nejvýše umístěným návodem a informací, zda byla nejlepší shoda jen přibližná, a událost při otevření výsledku s daným návodem a jeho místem v seznamu. Žádná z událostí neobsahuje slova, která jste napsali. Vyhledávání provedené přímo ze stránky vyhledávání vloží vaše slova do adresy této stránky a analytické nástroje zaznamenávají adresu každé zobrazené stránky, takže se k nim tato slova mohou dostat."
+          },
+          {
+            "p": "Google Analytics a reklamní služby mohou používat soubory cookie nebo podobné identifikátory. Soubory cookie můžete ve svém prohlížeči blokovat nebo mazat, i když některá nastavení pak nemusí fungovat podle očekávání."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Reklama a Google AdSense",
+        "blocks": [
+          {
+            "p": "Memory Chess používá Google AdSense k podpoře webu. Externí dodavatelé, včetně společnosti Google, mohou při použití reklamních služeb nebo reklamních značek umisťovat nebo číst soubory cookie, používat webové majáky nebo zpracovávat IP adresy."
+          },
+          {
+            "p": "Google a jeho reklamní partneři mohou používat reklamní soubory cookie k zobrazování reklam na základě vašich návštěv Memory Chess a dalších webů. V závislosti na vaší poloze, volbách a nastavení mohou být reklamy personalizované nebo nepersonalizované. Na zobrazování a měření reklam se mohou podílet i další reklamní dodavatelé certifikovaní společností Google."
+          },
+          {
+            "p": "Google je jedním z těchto dodavatelů a používá soubor cookie DoubleClick, známý také jako soubor cookie DART, k zobrazování reklam na základě vašich návštěv tohoto webu a dalších webů na internetu. Soubor cookie DART můžete odmítnout v nastavení reklam Google, na které odkazujeme níže."
+          },
+          {
+            "p": "Zjistěte více o tom, <partnerSites>jak Google používá informace z partnerských webů</partnerSites>. Personalizovanou reklamu můžete spravovat v <adCenter>My Ad Center</adCenter> a reklamu některých dalších dodavatelů můžete odmítnout prostřednictvím <adChoices>YourAdChoices</adChoices>."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Volby souhlasu",
+        "blocks": [
+          {
+            "p": "Tam, kde je to vyžadováno, se návštěvníkům před použitím příslušných reklamních dat zobrazí zpráva o souhlasu. Návštěvníci z Evropského hospodářského prostoru, Spojeného království a Švýcarska mohou prostřednictvím platformy pro správu souhlasu od společnosti Google souhlas udělit, odmítnout nebo spravovat jednotlivé volby. Nastavení souborů cookie můžete změnit i ve svém prohlížeči a předvolby reklam Google můžete upravit v My Ad Center."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Jak informace používáme a sdílíme",
+        "blocks": [
+          {
+            "p": "Informace používáme k poskytování a zabezpečení Memory Chess, výpočtu výsledků, zveřejňování odeslaných výsledků v žebříčku, odpovídání na kontaktní zprávy, posuzování zpětné vazby, měření výkonu webu, předcházení zneužívání a podpoře webu reklamou. Kontaktní údaje ani zpětnou vazbu, které odešlete, neprodáváme."
+          },
+          {
+            "p": "S daty pracují poskytovatelé služeb pouze tam, kde je to potřeba: Google Sheets u kontaktních zpráv a zpětné vazby ke hře, Supabase u herních statistik, záznamů v žebříčku a celkových počtů zobrazení a lajků u článků, Vercel u hostingu a měření výkonu, Ahrefs u analytiky a Google u analytiky, souhlasu a reklamy. Tito poskytovatelé mohou zpracovávat data v jiných zemích podle svých vlastních zásad ochrany soukromí."
+          },
+          {
+            "p": "Když článek otevřete nebo mu dáte lajk, Supabase ukládá u každého článku pouze celkový počet zobrazení a celkový počet lajků, s časem poslední změny a bez jakéhokoli identifikátoru návštěvníka."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Uchovávání a zabezpečení",
+        "blocks": [
+          {
+            "p": "Odeslané informace uchováváme jen tak dlouho, dokud jsou užitečné pro výše popsané účely, včetně správy veřejného žebříčku a odpovídání na zprávy, nebo tak dlouho, jak vyžaduje zákon. Žádná online služba není dokonale bezpečná, ale omezujeme přístup a u systémů, které spravujeme, používáme přiměřená ochranná opatření."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "Vaše možnosti volby",
+        "blocks": [
+          {
+            "ul": [
+              "Hrajte bez odeslání jména do žebříčku a bez zpětné vazby.",
+              "Vymažte uložená herní data a předvolby ve svém prohlížeči.",
+              "Spravujte soubory cookie, volby souhlasu a personalizované reklamy.",
+              "Zeptejte se nás na informace, které jste odeslali, opravte je nebo požádejte o jejich výmaz, a to v souladu s platnými právními předpisy a s ohledem na to, zda dokážeme žádost ověřit."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "Vaše práva podle GDPR a CCPA",
+        "blocks": [
+          {
+            "p": "Pokud se nacházíte v Evropském hospodářském prostoru nebo ve Spojeném království, dává vám obecné nařízení o ochraně osobních údajů (GDPR) právo na přístup, opravu, výmaz, omezení zpracování, vznesení námitky proti zpracování a přenositelnost údajů. Právní základy, o které se opíráme, jsou váš souhlas, u personalizované reklamy a analytických souborů cookie tam, kde je souhlas vyžadován, a naše oprávněné zájmy, u provozu a zabezpečení webu, zveřejňování výsledků, které odešlete do žebříčku, a odpovídání na zprávy, které pošlete. Souhlas můžete kdykoli odvolat prostřednictvím zprávy o souhlasu nebo nastavení prohlížeče a můžete podat stížnost u svého místního dozorového úřadu."
+          },
+          {
+            "p": "Pokud jste obyvatelem Kalifornie, dává vám CCPA právo vědět, jaké osobní údaje se shromažďují, požádat o jejich výmaz a odmítnout jejich prodej nebo sdílení. Vaše osobní údaje neprodáváme. Soubory cookie používané pro personalizovanou reklamu se mohou podle CCPA považovat za sdílení a můžete to odmítnout prostřednictvím zprávy o souhlasu, My Ad Center a YourAdChoices, na které odkazujeme výše. Toto je naše oznámení „Neprodávejte ani nesdílejte mé osobní údaje“ (Do Not Sell or Share My Personal Information). Chcete-li uplatnit kterékoli z těchto práv, napište na <mail>{email}</mail>."
+          }
+        ]
+      },
+      "children": {
+        "title": "Soukromí dětí",
+        "blocks": [
+          {
+            "p": "Memory Chess je tréninková hra pro širokou veřejnost a není určena ke shromažďování osobních údajů od dětí. Pokud jste rodič nebo opatrovník a domníváte se, že dítě odeslalo osobní údaje, kontaktujte nás prosím, abychom je mohli posoudit a případně odstranit."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Změny a kontakt",
+        "blocks": [
+          {
+            "p": "Tyto zásady můžeme aktualizovat, když se změní web nebo naši poskytovatelé služeb. Datum nahoře ukazuje poslední revizi. S dotazy nebo žádostmi týkajícími se soukromí použijte <contact>kontaktní formulář Memory Chess</contact>."
+          }
+        ]
+      }
+    }
+  }
+}

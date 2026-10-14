@@ -93,7 +93,12 @@ describe("SiteNav", () => {
     expect(container.querySelector('a[href="/de/game"]')).toHaveTextContent(deMessages.common.nav.play);
     expect(container.querySelector('a[href="/de/leaderboard"]')).not.toHaveAttribute("hreflang");
 
-    for (const route of ["/learn", "/about"]) {
+    const about = container.querySelector('a[href="/de/about"]');
+    expect(about).toHaveTextContent(/^Über$/);
+    expect(about).not.toHaveAttribute("hreflang");
+    expect(container.querySelector('a[href="/about"]')).not.toBeInTheDocument();
+
+    for (const route of ["/learn"]) {
       const link = container.querySelector(`a[href="${route}"]`);
       expect(link).toHaveAttribute("hreflang", "en");
       // A compact marker stands in for the footer's " (English)" suffix,

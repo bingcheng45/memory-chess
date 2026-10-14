@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Om",
+      "description": "Hvem som lager Memory Chess, hvorfor spillet finnes, hvordan en runde får poeng, og hvordan Lær-guidene skrives.",
+      "socialTitle": "Om Memory Chess",
+      "socialDescription": "Hvem som lager Memory Chess, hvorfor spillet finnes, og hvordan det fungerer."
+    },
+    "kicker": "Om",
+    "title": "Om Memory Chess",
+    "lede": "Memory Chess er et gratis spill for brettminne, laget og drevet av én person. Denne siden forteller hvem det er, hvorfor spillet finnes, og hvordan det faktisk fungerer.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Hvem som driver nettstedet",
+        "blocks": [
+          {
+            "p": "Jeg heter Bing Cheng og er en selvstendig utvikler. Jeg driver Memory Chess alene, med hjelp fra AI til koden og tekstene på nettstedet. Det finnes ikke noe team og ikke noe selskap bak. Jeg lager også <tont>Tont</tont>, og jeg legger ut oppdateringer om nettstedet på <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Fordi én person driver alt sammen, er nettstedet bevisst lite. Ett spill, en samling treningsguider, en toppliste og en endringslogg som viser hva som faktisk ble lansert."
+          },
+          {
+            "p": "Spillet er gratis og krever ingen konto. Annonser gjennom Google AdSense bidrar til å dekke kostnadene til hosting, og ingenting på nettstedet er låst bak betaling eller registrering."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Hvorfor spillet finnes",
+        "blocks": [
+          {
+            "p": "De fleste råd om å bli bedre i sjakk sender nybegynnere til åpninger, oppgaver og kurs. Min erfaring er at det første problemet ligger under alt dette. Nybegynnere mister oversikten over brettet. De overser en forsvarer, glemmer en brikke som flyttet for to trekk siden, og gjør tabber som gir bort brikker de ville sett med én gang på et diagram."
+          },
+          {
+            "p": "Å holde en stilling i hodet er en ferdighet som kan trenes, og det fantes få steder å øve på den direkte. Så jeg laget ett. Memory Chess skiller ut denne ene ferdigheten og gir den en poengsum, så du kan se den bli bedre. Vil du ha noe på spill, kan du sette et navn du velger selv på den offentlige topplisten og måle deg mot alle andre."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Slik fungerer en runde",
+        "blocks": [
+          {
+            "p": "Du velger hvor mange brikker du vil møte og hvor lenge du får studere dem. Forhåndsinnstillingene går fra Lett, to brikker på ti sekunder, opp til Stormester, tjue brikker på fem sekunder, og du kan stille inn hvilken som helst egen kombinasjon. Deretter går runden i tre faser."
+          },
+          {
+            "p": "Først husker du. Brettet viser en stilling i den tiden du valgte, og så forsvinner den. Deretter bygger du opp igjen. Du plasserer brikker på et tomt brett fra hukommelsen. Til slutt får du resultatet. Spillet sammenligner brettet ditt med originalen, felt for felt."
+          },
+          {
+            "p": "Poengsettingen er streng. En brikke regnes som riktig bare når riktig brikke med riktig farge står på nøyaktig det feltet den sto på i den opprinnelige stillingen. Et tårn der en springer hører hjemme, er feil to ganger. Det regnes som en feilplassert brikke, og springeren den fortrengte, regnes som manglende. Treffsikkerheten din er andelen av de opprinnelige brikkene du gjenskapte nøyaktig."
+          },
+          {
+            "p": "Resultatskjermen viser alle tre gruppene, plasseringene du fikk riktig, de du fikk feil, og brikkene du glemte helt, så hver runde forteller deg hva du bør ta tak i neste gang. Du kan <game>prøve en runde</game> på under ett minutt."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Slik skrives Lær-guidene",
+        "blocks": [
+          {
+            "p": "<learn>Lær-biblioteket</learn> har {count, plural, one {# guide} other {# guider}} om brettsyn, visualisering og hukommelsestrening. De er skrevet med hjelp fra AI. Hver sjakkstilling i dem kontrolleres av et skript for antall brikker, lovlighet og hvert angrep teksten påstår. Hver påstand om hvordan Memory Chess fungerer, er sporet tilbake til spillets kode. Hver guide har øvelser. Noen åpner en runde i spillet med riktige innstillinger. Resten er ment for et ekte brett."
+          },
+          {
+            "p": "Der guidene kommer med påstander om hukommelse og læring, viser de til publisert forskning, blant annet Gobet og Simons arbeid om sjakkhukommelse og den eksperimentelle litteraturen om gjenhenting og spredt øving. Hver kildehenvisning lenker til kilden. Jeg har ikke gjort egen forskning, og guidene later ikke som noe annet."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Nettstedets historie",
+        "blocks": [
+          {
+            "p": "Den første utgaven gikk live i mars 2025 som en enkel versjon av spillet. Spill på mobil og valg av brikker kom i løpet av få uker. Lær-biblioteket ble lansert i mars 2026, og i august 2026 begynte selve spillet å kunne spilles på 24 språk. Guidene og endringsloggen er på engelsk. <changelog>Endringsloggen</changelog> fører opp hver versjonerte utgave, også feilrettingene. Jeg holder den ærlig fordi jeg selv bruker den til å huske hva som ble endret og når."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Ta kontakt",
+        "blocks": [
+          {
+            "p": "Skriv til meg på <mail>{email}</mail> eller bruk <contact>kontaktskjemaet</contact>. Jeg leser alt, og rapporter fra spillere har rettet ekte feil før. Vil du lese det med liten skrift, forklarer <privacy>personvernerklæringen</privacy> og <terms>vilkårene for bruk</terms> hvordan nettstedet håndterer data og hva du godtar ved å spille."
+          }
+        ]
+      }
+    }
+  }
+}

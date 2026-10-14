@@ -1,6 +1,6 @@
 {
   "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "71365d8008109da4b1fa5be21f2c2286eb788ccd62f49fc0e8c839c278241796",
+  "approvedHash": "83ca522adfedf2b2a72d5837a0557d1eb3344e2abc267ada6576d5690541e6d4",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -80,7 +80,7 @@
             "p": "Aimer un article enregistre l’identifiant de cet article et le nombre de « j’aime » affiché à ce moment-là dans le stockage local de votre navigateur, afin que le bouton « j’aime » reste enfoncé et que son compteur ne baisse pas quand vous revenez. Le stockage de session mémorise les articles que vous avez ouverts dans l’onglet en cours, afin qu’en rouvrir un dans cet onglet n’ajoute pas de vue. Les deux listes restent dans votre navigateur. Lorsque vous aimez un article, Google Analytics reçoit aussi un événement « j’aime » qui nomme l’article."
           },
           {
-            "p": "La recherche de la rubrique Apprendre classe les guides dans votre navigateur, ou sur le serveur lorsque vous cherchez depuis la page de recherche. Google Analytics reçoit, pour une recherche, un événement indiquant le nombre de caractères saisis, le nombre de guides correspondants, le premier guide et si la correspondance était proche, ainsi qu’un événement lorsque vous ouvrez un résultat, avec ce guide et sa place dans la liste. Aucun de ces événements ne contient les mots que vous avez saisis. Une recherche effectuée depuis la page de recherche elle-même place vos mots dans l’adresse de cette page, et les outils d’analyse enregistrent l’adresse de chaque page consultée, si bien que ces mots peuvent leur parvenir."
+            "p": "La recherche de la rubrique Apprendre classe les guides dans votre navigateur, ou sur le serveur lorsque vous cherchez depuis la page de recherche. Google Analytics reçoit, pour une recherche, un événement indiquant le nombre de caractères saisis, le nombre de guides correspondants, le premier guide et si ce premier résultat n’était qu’une correspondance approximative, ainsi qu’un événement lorsque vous ouvrez un résultat, avec ce guide et sa place dans la liste. Aucun de ces événements ne contient les mots que vous avez saisis. Une recherche effectuée depuis la page de recherche elle-même place vos mots dans l’adresse de cette page, et les outils d’analyse enregistrent l’adresse de chaque page consultée, si bien que ces mots peuvent leur parvenir."
           },
           {
             "p": "Google Analytics et les services publicitaires peuvent utiliser des cookies ou des identifiants similaires. Vous pouvez bloquer ou supprimer les cookies dans votre navigateur, mais certaines préférences risquent alors de ne plus fonctionner comme prévu."

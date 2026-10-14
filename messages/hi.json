@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, खाली",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, सही: {answer}",
         "liveStudy": "स्थिति को ध्यान से देखें। {memorizeSeconds} सेकंड।",
         "liveRebuild": "बोर्ड साफ़ हो गया। एक मोहरा चुनें, फिर एक खाना।",
         "liveScore": "सटीकता {accuracy} प्रतिशत। {total} में से {correct} खाने सही।",
@@ -401,7 +402,8 @@
           "playTier": "{tier} खेलें",
           "legendCorrect": "सही",
           "legendWrong": "गलत जगह",
-          "legendMissed": "छूटा हुआ खाना"
+          "legendMissed": "छूटा हुआ खाना",
+          "legendSplit": "गलत मोहरा: आपका ऊपर बाएँ, सही नीचे दाएँ"
         },
         "pieceTypes": {
           "king": "राजा",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, खाली",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, सही: {answer}",
       "phaseStudy": "स्थिति याद करें",
       "phaseRebuild": "मोहरे रखें",
       "liveStudy": "स्थिति को ध्यान से देखें। {memorizeSeconds} सेकंड।",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "मोहरे के प्रकार के अनुसार याददाश्त राउंड के बाद यहाँ दिखेगी।",
         "legendCorrect": "सही",
         "legendWrong": "गलत जगह",
-        "legendMissed": "छूटा हुआ खाना"
+        "legendMissed": "छूटा हुआ खाना",
+        "legendSplit": "गलत मोहरा: आपका ऊपर बाएँ, सही नीचे दाएँ"
       },
       "pieceTypes": {
         "king": "राजा",

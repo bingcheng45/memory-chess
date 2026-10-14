@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}，空",
         "squareWith": "{square}，{piece}",
+        "squareSwapped": "{square}，{piece}，應為{answer}",
         "liveStudy": "觀察局面。{memorizeSeconds} 秒。",
         "liveRebuild": "棋盤已清空。先選一個棋子，再選一個格子。",
         "liveScore": "準確率 {accuracy}%。{total} 個格子中答對 {correct} 個。",
@@ -401,7 +402,8 @@
           "playTier": "玩{tier}",
           "legendCorrect": "正確",
           "legendWrong": "放錯",
-          "legendMissed": "漏掉的格子"
+          "legendMissed": "漏掉的格子",
+          "legendSplit": "棋子放錯：左上是你放的，右下是正確的"
         },
         "pieceTypes": {
           "king": "國王",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}，空",
       "squareWith": "{square}，{piece}",
+      "squareSwapped": "{square}，{piece}，應為{answer}",
       "phaseStudy": "記住這個棋局",
       "phaseRebuild": "擺放棋子",
       "liveStudy": "觀察棋局。{memorizeSeconds} 秒。",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "本輪結束後，這裡會顯示各類棋子的記憶情況。",
         "legendCorrect": "正確",
         "legendWrong": "放錯",
-        "legendMissed": "漏掉的格子"
+        "legendMissed": "漏掉的格子",
+        "legendSplit": "棋子放錯：左上是你放的，右下是正確的"
       },
       "pieceTypes": {
         "king": "國王",

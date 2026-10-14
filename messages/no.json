@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, tomt",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, riktig: {answer}",
         "liveStudy": "Studer stillingen. {memorizeSeconds} sekunder.",
         "liveRebuild": "Brettet er tømt. Velg en brikke og deretter et felt.",
         "liveScore": "Treffsikkerhet {accuracy} prosent. {correct} av {total} felt riktige.",
@@ -401,7 +402,8 @@
           "playTier": "Spill {tier}",
           "legendCorrect": "riktig",
           "legendWrong": "feil plassering",
-          "legendMissed": "oversett felt"
+          "legendMissed": "oversett felt",
+          "legendSplit": "feil brikke: din øverst til venstre, riktig nederst til høyre"
         },
         "pieceTypes": {
           "king": "Konge",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, tomt",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, riktig: {answer}",
       "phaseStudy": "Husk stillingen",
       "phaseRebuild": "Plasser brikkene",
       "liveStudy": "Studer stillingen. {memorizeSeconds} sekunder.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Hukommelse per brikketype vises her etter runden.",
         "legendCorrect": "riktig",
         "legendWrong": "feil plassering",
-        "legendMissed": "oversett felt"
+        "legendMissed": "oversett felt",
+        "legendSplit": "feil brikke: din øverst til venstre, riktig nederst til høyre"
       },
       "pieceTypes": {
         "king": "Konge",

@@ -4,6 +4,7 @@ import { memo, useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { useTranslations } from "next-intl";
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import {
+  hiddenAnswer,
   isDarkSquare,
   PIECE_TYPE_ORDER,
   remainingOf,
@@ -40,7 +41,15 @@ function nextIndex(from: number, key: string): number | null {
   return to < 0 || to > 63 || leavesRow ? null : to;
 }
 
-function squareView(state: RoundState, square: SquareName) {
+interface SquareView {
+  readonly piece?: LabPiece;
+  readonly ghost?: LabPiece;
+  /** The piece that belonged under a wrong one, which the square shows beside it. */
+  readonly answer?: LabPiece;
+  readonly mark?: string;
+}
+
+function squareView(state: RoundState, square: SquareName): SquareView {
   switch (state.phase) {
     case "idle":
     case "ready":
@@ -54,6 +63,7 @@ function squareView(state: RoundState, square: SquareName) {
       return {
         piece: state.placed[square],
         ghost: state.placed[square] ? undefined : state.target[square],
+        answer: hiddenAnswer(state.target, state.placed, square),
         mark: squareVerdict(state.target, state.placed, square),
       };
   }
@@ -118,19 +128,25 @@ export const RoundBoard = memo(function RoundBoard({ state, dispatch, copy }: Ro
               data-coordinate={square}
               data-dark={isDarkSquare(index) || undefined}
               data-mark={view.mark}
+              data-split={view.answer ? "" : undefined}
               data-draggable={draggable ? "" : undefined}
               data-lifted={drag.dragging?.kind === "board" && drag.dragging.square === square ? "" : undefined}
               {...(draggable ? drag.bind({ kind: "board", square, piece: occupant }) : undefined)}
               tabIndex={navigable && index === focusIndex ? 0 : -1}
               aria-disabled={!live}
               aria-label={
-                occupant ? t("squareWith", { square, piece: pieceName(occupant) }) : t("squareEmpty", { square })
+                occupant && view.answer
+                  ? t("squareSwapped", { square, piece: pieceName(occupant), answer: pieceName(view.answer) })
+                  : occupant
+                    ? t("squareWith", { square, piece: pieceName(occupant) })
+                    : t("squareEmpty", { square })
               }
               onFocus={() => setFocusIndex(index)}
               onClick={() => live && dispatch({ type: "tapSquare", square, now: performance.now() })}
             >
-              {occupant && <PieceImage piece={occupant} />}
+              {occupant && <PieceImage piece={occupant} state={view.answer ? "placed" : "on"} />}
               {view.ghost && <PieceImage piece={view.ghost} state="ghost" />}
+              {view.answer && <PieceImage piece={view.answer} state="answer" />}
             </button>
           );
         })}

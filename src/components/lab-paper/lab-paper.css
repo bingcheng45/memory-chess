@@ -10,8 +10,9 @@
   --lp-correct: #0f7a55; --lp-correct-soft: #cfeadf; --lp-wrong: #c63f12; --lp-wrong-soft: #f8dccf;
   --lp-sq-light: #eef2f2; --lp-sq-dark: #c4cfd4;
   --lp-mk-attack: #a8320b; --lp-mk-defend: #1a3fc0; --lp-mk-chain: #3d4d58; --lp-mk-ink: #0d1b24; --lp-mk-on: #ffffff;
-  --lp-mark-correct: color-mix(in srgb, var(--lp-correct) 26%, transparent);
-  --lp-mark-wrong: color-mix(in srgb, var(--lp-wrong) 30%, transparent);
+  /* Solid, so a mark is the same colour on a light square and a dark one. */
+  --lp-mark-correct: color-mix(in srgb, var(--lp-correct) 26%, var(--lp-sq-light));
+  --lp-mark-wrong: color-mix(in srgb, var(--lp-wrong) 30%, var(--lp-sq-light));
   --lp-pop-shadow: 0 12px 32px rgba(13, 27, 36, 0.12);
   --lp-scrim: rgba(13, 27, 36, 0.48);
   --lp-r-sm: 6px; --lp-r-md: 8px; --lp-r-lg: 12px;

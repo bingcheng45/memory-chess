@@ -7,7 +7,8 @@ import { getPieceImageUrl } from "@/utils/chessPieces";
 import { BOARD_SQUARES, FILES, RANKS, type SquareName } from "@/lib/game/board";
 import { isDarkSquare, type LabPiece, type LabPosition } from "@/lib/round/round";
 
-export type PieceState = "on" | "off" | "ghost";
+/** `placed` and `answer` share a split square: the piece put there and the one that belonged. */
+export type PieceState = "on" | "off" | "ghost" | "placed" | "answer";
 
 interface PieceImageProps {
   piece: LabPiece;

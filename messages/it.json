@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, vuota",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, corretto: {answer}",
         "liveStudy": "Studia la posizione. {memorizeSeconds} secondi.",
         "liveRebuild": "Scacchiera svuotata. Scegli un pezzo, poi una casa.",
         "liveScore": "Precisione {accuracy} percento. {correct} case corrette su {total}.",
@@ -401,7 +402,8 @@
           "playTier": "Gioca {tier}",
           "legendCorrect": "corretta",
           "legendWrong": "posizione errata",
-          "legendMissed": "casa mancata"
+          "legendMissed": "casa mancata",
+          "legendSplit": "pezzo sbagliato: il tuo in alto a sinistra, quello giusto in basso a destra"
         },
         "pieceTypes": {
           "king": "Re",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, vuota",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, corretto: {answer}",
       "phaseStudy": "Memorizza la posizione",
       "phaseRebuild": "Posiziona i pezzi",
       "liveStudy": "Studia la posizione. {memorizeSeconds} secondi.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "La memoria per tipo di pezzo compare qui dopo il round.",
         "legendCorrect": "corretta",
         "legendWrong": "posizione errata",
-        "legendMissed": "casa mancata"
+        "legendMissed": "casa mancata",
+        "legendSplit": "pezzo sbagliato: il tuo in alto a sinistra, quello giusto in basso a destra"
       },
       "pieceTypes": {
         "king": "Re",

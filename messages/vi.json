@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, trống",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, đúng phải là {answer}",
         "liveStudy": "Quan sát thế cờ. {memorizeSeconds} giây.",
         "liveRebuild": "Bàn cờ đã được xóa. Chọn một quân, rồi chọn một ô.",
         "liveScore": "Độ chính xác {accuracy} phần trăm. Đúng {correct} trên {total} ô.",
@@ -401,7 +402,8 @@
           "playTier": "Chơi mức {tier}",
           "legendCorrect": "đúng",
           "legendWrong": "đặt sai",
-          "legendMissed": "ô bị bỏ sót"
+          "legendMissed": "ô bị bỏ sót",
+          "legendSplit": "sai quân: của bạn ở góc trên trái, quân đúng ở góc dưới phải"
         },
         "pieceTypes": {
           "king": "Vua",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, trống",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, đúng phải là {answer}",
       "phaseStudy": "Ghi nhớ thế cờ",
       "phaseRebuild": "Đặt quân cờ",
       "liveStudy": "Quan sát thế cờ. {memorizeSeconds} giây.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Kết quả ghi nhớ theo loại quân sẽ hiện ở đây sau vòng chơi.",
         "legendCorrect": "đúng",
         "legendWrong": "đặt sai",
-        "legendMissed": "ô bị bỏ sót"
+        "legendMissed": "ô bị bỏ sót",
+        "legendSplit": "sai quân: của bạn ở góc trên trái, quân đúng ở góc dưới phải"
       },
       "pieceTypes": {
         "king": "Vua",

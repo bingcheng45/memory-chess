@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, empty",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, should be {answer}",
         "liveStudy": "Study the position. {memorizeSeconds} seconds.",
         "liveRebuild": "Board cleared. Pick a piece, then a square.",
         "liveScore": "Accuracy {accuracy} percent. {correct} of {total} squares correct.",
@@ -401,7 +402,8 @@
           "playTier": "Play {tier}",
           "legendCorrect": "correct",
           "legendWrong": "wrong placement",
-          "legendMissed": "missed square"
+          "legendMissed": "missed square",
+          "legendSplit": "wrong piece: yours top left, correct bottom right"
         },
         "pieceTypes": {
           "king": "King",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, empty",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, should be {answer}",
       "phaseStudy": "Memorize the position",
       "phaseRebuild": "Place the pieces",
       "liveStudy": "Study the position. {memorizeSeconds} seconds.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Recall by piece type appears here after the round.",
         "legendCorrect": "correct",
         "legendWrong": "wrong placement",
-        "legendMissed": "missed square"
+        "legendMissed": "missed square",
+        "legendSplit": "wrong piece: yours top left, correct bottom right"
       },
       "pieceTypes": {
         "king": "King",

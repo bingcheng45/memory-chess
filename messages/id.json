@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, kosong",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, seharusnya {answer}",
         "liveStudy": "Pelajari posisinya. {memorizeSeconds} detik.",
         "liveRebuild": "Papan dikosongkan. Pilih bidak, lalu petak.",
         "liveScore": "Akurasi {accuracy} persen. {correct} dari {total} petak benar.",
@@ -401,7 +402,8 @@
           "playTier": "Main {tier}",
           "legendCorrect": "benar",
           "legendWrong": "salah tempat",
-          "legendMissed": "petak terlewat"
+          "legendMissed": "petak terlewat",
+          "legendSplit": "bidak salah: milik Anda kiri atas, yang benar kanan bawah"
         },
         "pieceTypes": {
           "king": "Raja",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, kosong",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, seharusnya {answer}",
       "phaseStudy": "Hafalkan posisinya",
       "phaseRebuild": "Letakkan bidak",
       "liveStudy": "Pelajari posisinya. {memorizeSeconds} detik.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Ingatan per jenis bidak muncul di sini setelah ronde.",
         "legendCorrect": "benar",
         "legendWrong": "salah tempat",
-        "legendMissed": "petak terlewat"
+        "legendMissed": "petak terlewat",
+        "legendSplit": "bidak salah: milik Anda kiri atas, yang benar kanan bawah"
       },
       "pieceTypes": {
         "king": "Raja",

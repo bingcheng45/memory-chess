@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, leer",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, richtig: {answer}",
         "liveStudy": "Präge dir die Stellung ein. {memorizeSeconds} Sekunden.",
         "liveRebuild": "Brett geleert. Wähle eine Figur, dann ein Feld.",
         "liveScore": "Genauigkeit {accuracy} Prozent. {correct} von {total} Feldern richtig.",
@@ -401,7 +402,8 @@
           "playTier": "{tier} spielen",
           "legendCorrect": "richtig",
           "legendWrong": "falsch platziert",
-          "legendMissed": "verpasstes Feld"
+          "legendMissed": "verpasstes Feld",
+          "legendSplit": "falsche Figur: deine oben links, richtige unten rechts"
         },
         "pieceTypes": {
           "king": "König",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, leer",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, richtig: {answer}",
       "phaseStudy": "Präge dir die Stellung ein",
       "phaseRebuild": "Figuren setzen",
       "liveStudy": "Präge dir die Stellung ein. {memorizeSeconds} Sekunden.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Die Erinnerung nach Figurentyp erscheint hier nach der Runde.",
         "legendCorrect": "richtig",
         "legendWrong": "falsch platziert",
-        "legendMissed": "verpasstes Feld"
+        "legendMissed": "verpasstes Feld",
+        "legendSplit": "falsche Figur: deine oben links, richtige unten rechts"
       },
       "pieceTypes": {
         "king": "König",

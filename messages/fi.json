@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, tyhjä",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, oikein: {answer}",
         "liveStudy": "Tutki asemaa. {memorizeSeconds} sekuntia.",
         "liveRebuild": "Lauta tyhjennetty. Valitse nappula ja sitten ruutu.",
         "liveScore": "Tarkkuus {accuracy} prosenttia. {correct}/{total} ruutua oikein.",
@@ -401,7 +402,8 @@
           "playTier": "Pelaa: {tier}",
           "legendCorrect": "oikein",
           "legendWrong": "väärä sijoitus",
-          "legendMissed": "puuttuva ruutu"
+          "legendMissed": "puuttuva ruutu",
+          "legendSplit": "väärä nappula: sinun ylhäällä vasemmalla, oikea alhaalla oikealla"
         },
         "pieceTypes": {
           "king": "Kuningas",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, tyhjä",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, oikein: {answer}",
       "phaseStudy": "Paina asema mieleen",
       "phaseRebuild": "Aseta nappulat",
       "liveStudy": "Tutki asemaa. {memorizeSeconds} sekuntia.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Muistaminen nappulatyypeittäin näkyy tässä kierroksen jälkeen.",
         "legendCorrect": "oikein",
         "legendWrong": "väärä sijoitus",
-        "legendMissed": "puuttuva ruutu"
+        "legendMissed": "puuttuva ruutu",
+        "legendSplit": "väärä nappula: sinun ylhäällä vasemmalla, oikea alhaalla oikealla"
       },
       "pieceTypes": {
         "king": "Kuningas",

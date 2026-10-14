@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
+import { Check, X } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { useCopyText } from "@/components/home/useCopyText";
@@ -11,6 +11,7 @@ import { saveBlob } from "@/lib/saveBlob";
 import { SHARE_NETWORKS, type ShareNetwork, type SharePost } from "@/lib/shareIntents";
 import { captionWithLink } from "./shareLink";
 import type { CardImage } from "./useCardImage";
+import { useCopyFeedback } from "./useCopyFeedback";
 import "./share.css";
 
 const isCancel = (error: unknown) => error instanceof DOMException && error.name === "AbortError";
@@ -57,6 +58,8 @@ export function ShareDialog({ surface, title, caption, image, alt, fileName }: S
   const t = useTranslations("share");
   const [status, setStatus] = useState("");
   const { copy, textRef } = useCopyText(captionWithLink(caption));
+  const [captionCopy, settleCaptionCopy] = useCopyFeedback();
+  const [imageCopy, settleImageCopy] = useCopyFeedback();
   const blob = image.state === "ready" ? image.blob : null;
   const pending = image.state === "rendering";
   const hasImage = image.state !== "failed";
@@ -84,8 +87,10 @@ export function ShareDialog({ surface, title, caption, image, alt, fileName }: S
     try {
       await navigator.clipboard.write([new ClipboardItem({ "image/png": png })]);
       track({ method: "copy_image" });
+      settleImageCopy(true);
       setStatus(t("imageCopied"));
     } catch {
+      settleImageCopy(false);
       setStatus(t("imageCopyFailed"));
     }
   };
@@ -93,6 +98,7 @@ export function ShareDialog({ surface, title, caption, image, alt, fileName }: S
   const copyCaption = async () => {
     const copied = await copy();
     if (copied) track({ method: "copy" });
+    settleCaptionCopy(copied);
     setStatus(t(copied ? "copied" : "copyFailed"));
   };
 
@@ -130,7 +136,8 @@ export function ShareDialog({ surface, title, caption, image, alt, fileName }: S
                   </button>
                 )}
                 {copyImage && (
-                  <button type="button" className="lab-btn lab-btn-secondary" disabled={pending} onClick={() => blob && void copyPng(blob)}>
+                  <button type="button" className="lab-btn lab-btn-secondary lab-share-copy" data-state={imageCopy} disabled={pending} onClick={() => blob && void copyPng(blob)}>
+                    {imageCopy === "copied" && <Check aria-hidden size={18} />}
                     {t("actions.copyImage")}
                   </button>
                 )}
@@ -142,8 +149,9 @@ export function ShareDialog({ surface, title, caption, image, alt, fileName }: S
             <figure className="lab-share-caption">
               <figcaption className="lab-share-label">{t("caption")}</figcaption>
               <pre ref={textRef}>{captionWithLink(caption)}</pre>
-              <button type="button" className="lab-btn lab-btn-secondary" onClick={() => void copyCaption()}>
-                {t("copy")}
+              <button type="button" className="lab-btn lab-btn-secondary lab-share-copy" data-state={captionCopy} onClick={() => void copyCaption()}>
+                {captionCopy === "copied" && <Check aria-hidden size={18} />}
+                {t(captionCopy === "copied" ? "copied" : "copy")}
               </button>
             </figure>
             <section className="lab-share-post" aria-labelledby="lab-share-post-title">

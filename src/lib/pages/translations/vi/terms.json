@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Điều khoản dịch vụ",
+      "description": "Các điều khoản bằng ngôn ngữ dễ hiểu về việc chơi Memory Chess, gửi điểm lên bảng xếp hạng và sử dụng nội dung của trang.",
+      "socialTitle": "Điều khoản dịch vụ của Memory Chess",
+      "socialDescription": "Các điều khoản bằng ngôn ngữ dễ hiểu về việc chơi Memory Chess và sử dụng trang web."
+    },
+    "kicker": "Điều khoản chi tiết",
+    "title": "Điều khoản dịch vụ",
+    "lede": "Memory Chess là một trò chơi miễn phí do một người vận hành. Các điều khoản này ngắn gọn vì thỏa thuận rất đơn giản, và chúng được viết ra để người ta thực sự đọc.",
+    "sections": {
+      "service": {
+        "title": "Dịch vụ",
+        "blocks": [
+          {
+            "p": "Memory Chess là một trò chơi miễn phí trên trình duyệt để luyện trí nhớ bàn cờ. Tôi cung cấp nó theo hiện trạng và theo khả năng sẵn có, không kèm bất kỳ hình thức bảo đảm nào. Tôi cố gắng giữ cho nó nhanh, chính xác và trực tuyến, nhưng tôi không hứa hẹn dịch vụ không bị gián đoạn, việc chấm điểm không có lỗi, hay việc bất kỳ tính năng nào sẽ giữ nguyên mãi mãi. Tôi có thể thay đổi, tạm ngừng hoặc ngừng hẳn bất kỳ phần nào của trang web vào bất kỳ lúc nào."
+          },
+          {
+            "p": "Trong phạm vi pháp luật cho phép, tôi không chịu trách nhiệm đối với những thiệt hại phát sinh từ việc bạn sử dụng trang web. Đây là một trò chơi trí nhớ. Giới hạn hợp lý cho điều tệ nhất có thể xảy ra ở đây là mất một điểm số mà bạn quan tâm, và tôi vẫn cố hết sức để ngăn điều đó."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Sử dụng hợp lệ",
+        "blocks": [
+          {
+            "p": "Hãy chơi công bằng và giữ cho trang web hoạt động tốt cho mọi người khác. Không tấn công, làm quá tải hay dò tìm lỗ hổng của dịch vụ, không thu thập dữ liệu hàng loạt từ dịch vụ, và không tìm cách phá cơ chế chấm điểm. Không gửi điểm được tạo ra bởi bot, đoạn mã hay bất kỳ hình thức tự động hóa nào. Không dùng biểu mẫu liên hệ hoặc bảng xếp hạng để gửi thư rác, quấy rối hay mạo danh bất kỳ ai."
+          },
+          {
+            "p": "Biểu mẫu liên hệ dành cho những tin nhắn thật gửi đến một người thật. Hãy dùng nó để báo lỗi, đặt câu hỏi và chia sẻ ý tưởng, và tin nhắn của bạn sẽ được đọc."
+          },
+          {
+            "p": "Tôi có thể chặn lưu lượng truy cập hoặc hạn chế quyền truy cập vi phạm các quy tắc này. Vì không có tài khoản nào để cấm, việc xóa các mục không hợp lệ và chặn hành vi lạm dụng ngay ở rìa mạng là cách thực thi mà tôi có, và tôi sử dụng nó."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Bảng xếp hạng",
+        "blocks": [
+          {
+            "p": "Việc gửi điểm lên bảng xếp hạng là tùy chọn. Mọi thứ bạn gửi lên đó đều công khai. Tên gắn với một điểm số là bất cứ thứ gì bạn nhập vào, vì vậy hãy chọn một cái tên mà bạn vui lòng thấy được công bố, và đừng dùng tên thật của bạn hay thông tin cá nhân của bất kỳ ai nếu bạn muốn giữ kín."
+          },
+          {
+            "p": "Một lượt gửi chứa tên bạn đã chọn và thông tin chi tiết của ván chơi, như độ chính xác, độ khó và thời gian hoàn thành. Sau khi được công bố, lượt gửi đó sẽ ở lại trên bảng cho đến khi bị những điểm số tốt hơn đẩy ra hoặc bị xóa."
+          },
+          {
+            "p": "Tôi có thể xóa những lượt gửi trên bảng xếp hạng có tính xúc phạm, mạo danh người khác, có vẻ được tự động hóa, hoặc rõ ràng không phải do một người thật chơi trò chơi tạo ra. Tôi xóa các lượt gửi để giữ cho bảng trung thực, chứ không phải để chọn ai là người thắng."
+          }
+        ]
+      },
+      "content": {
+        "title": "Nội dung và sở hữu trí tuệ",
+        "blocks": [
+          {
+            "p": "Nội dung riêng của trang web, bao gồm trò chơi, các bài hướng dẫn trong mục Học, thiết kế và mã nguồn vận hành nó, thuộc về tôi. Bạn được hoan nghênh liên kết đến bất kỳ trang nào, trích dẫn những đoạn hợp lý có ghi nguồn, và chia sẻ điểm số của mình ở bất cứ đâu bạn muốn. Không đăng lại toàn bộ bài hướng dẫn hoặc nhận nội dung của trang là của mình."
+          },
+          {
+            "p": "Bản thân cờ vua không thuộc về ai cả. Thế cờ, luật chơi và ký hiệu là của chung mọi người, ở đây và ở mọi nơi khác."
+          },
+          {
+            "p": "Nếu bạn gửi góp ý hoặc đề xuất, bạn đồng ý rằng tôi có thể dùng chúng để cải thiện trang web mà không nợ bạn khoản bồi hoàn hay sự ghi công nào. Góp ý của người chơi đã từng định hình những bản phát hành thật, và nhật ký thay đổi ghi lại kết quả của chúng."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Dịch vụ của bên thứ ba",
+        "blocks": [
+          {
+            "p": "Trang web chạy trên một số ít dịch vụ bên ngoài. Google AdSense hiển thị quảng cáo giúp trang luôn miễn phí. Google Analytics, Vercel Analytics, Vercel Speed Insights và Ahrefs Analytics đo lường lưu lượng truy cập và hiệu năng. Supabase lưu trữ số liệu thống kê trò chơi và các lượt gửi trên bảng xếp hạng. Mỗi dịch vụ có điều khoản riêng, và <privacy>chính sách quyền riêng tư</privacy> giải thích mỗi dịch vụ chạm đến dữ liệu nào và bạn có những lựa chọn gì."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Thay đổi đối với các điều khoản này",
+        "blocks": [
+          {
+            "p": "Tôi có thể cập nhật các điều khoản này khi trang web hoặc các dịch vụ của nó thay đổi. Phiên bản hiện hành luôn nằm tại địa chỉ này, và việc tiếp tục sử dụng trang web sau một thay đổi có nghĩa là bạn chấp nhận các điều khoản đã cập nhật. Với bất kỳ điều gì ảnh hưởng đáng kể đến người chơi, chẳng hạn một thay đổi về cách bảng xếp hạng hoạt động, tôi cũng ghi chú lại trong nhật ký thay đổi."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Liên hệ",
+        "blocks": [
+          {
+            "p": "Câu hỏi về các điều khoản này, hoặc một lượt gửi trên bảng xếp hạng mà bạn muốn được xem xét hay xóa, hãy gửi đến <mail>{email}</mail>. Tôi tự mình trả lời."
+          }
+        ]
+      }
+    }
+  }
+}

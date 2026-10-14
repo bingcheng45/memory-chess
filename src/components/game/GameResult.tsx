@@ -401,7 +401,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           accuracy: gameState.accuracy || 0,
           correctPieces: piecesInfo.correctPieces,
           pieceCount: gameState.pieceCount,
-          difficulty: determineDifficulty(gameState.pieceCount),
+          difficulty: gameState.board?.kind === "daily" ? "daily" : determineDifficulty(gameState.pieceCount),
           memorizationTime:
             gameState.actualMemorizeTime || gameState.memorizeTime,
           solutionTime: gameState.completionTime || 0,

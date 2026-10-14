@@ -171,6 +171,22 @@ describe("GamePage daily board link", () => {
     expect(window.location.search).toBe("");
   });
 
+  it("shows neither the board nor the form on a day already tried here, only the refusal once the record answers", async () => {
+    let answer: (daily: DailyStart) => void = () => {};
+    jest.mocked(openDaily).mockReturnValue(new Promise((resolve) => (answer = resolve)));
+    jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-09T12:00:00Z"));
+    window.localStorage.setItem("memory-chess-lab-daily-opened", "2026-10-09");
+    window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10&source=daily");
+
+    render(<GamePage />);
+    const whileReading = [screen.queryByRole("button", { name: "Start game" }), document.querySelector("[data-round-phase]"), document.querySelector("[data-game-config]")];
+    await act(async () => answer({ kind: "played" }));
+
+    expect(whileReading).toEqual([null, null, null]);
+    expect(await screen.findByText("You have already opened today's board. One try a day keeps it fair.")).toBeInTheDocument();
+    window.localStorage.removeItem("memory-chess-lab-daily-opened");
+  });
+
   it("refuses a second attempt today with a message in the form's place, until the player chooses a round", async () => {
     opens({ kind: "played" });
     window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10&source=daily");

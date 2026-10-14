@@ -9,7 +9,7 @@ import GameResult from '@/components/game/GameResult';
 import ActiveRound, { type ActiveRoundState } from '@/components/game/ActiveRound';
 import type { GateFacts } from '@/components/game/RoundGate';
 import { dailySettingOf } from '@/lib/daily/schedule';
-import { DAILY_PLAYED_PARAM, utcDayOf } from '@/lib/lab/daily';
+import { DAILY_PLAYED_PARAM, readDailyOpened, utcDayOf } from '@/lib/lab/daily';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
 import SoundSettings from '@/components/ui/SoundSettings';
 import { LabPaperHeader } from '@/components/lab-paper/LabPaperHeader';
@@ -86,7 +86,6 @@ type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource 
 // The query is read off the live location rather than via useSearchParams,
 // which would bail /game out of static rendering and serve an empty page.
 function readUrlRound(): UrlRound | null {
-  if (typeof window === 'undefined') return null;
   const params = new URLSearchParams(window.location.search);
   const pieceCountParam = params.get(ROUND_PARAMS.pieceCount);
   const memorizeTimeParam = params.get(ROUND_PARAMS.memorizeTime);
@@ -120,9 +119,6 @@ const todayGate = (): GateFacts => {
   return { day, ...dailySettingOf(day) };
 };
 
-/** After a daily round's submit: its record being written before /daily takes over, or kept here as it was not saved. */
-type DailyReturn = 'saving' | 'stayed' | null;
-
 function GamePageContent() {
   const t = useTranslations('daily.round');
   const router = useRouter();
@@ -136,19 +132,26 @@ function GamePageContent() {
   useRoundSounds(round);
 
   // The server has no address, so the first render matches its HTML and the board a daily link names follows at once;
-  // on a navigation inside the app there is nothing to hydrate and the board is the first thing drawn.
+  // on a navigation inside the app there is nothing to hydrate and the board is the first thing painted.
   const hydrated = useSyncExternalStore(subscribeNothing, () => true, () => false);
-  // Read once, before the effect below clears the address. StrictMode's second run of that effect keeps it.
-  const [urlRound] = useState(readUrlRound);
+  // undefined until read. A navigation inside the app moves the address only as it commits the page, so it is read in a
+  // layout effect, which still lands before the first paint. The ref keeps the read over StrictMode's second mount.
+  const [urlRound, setUrlRound] = useState<UrlRound | null | undefined>(undefined);
+  const urlRoundRef = useRef<UrlRound | null | undefined>(undefined);
   const [refused, setRefused] = useState<SetBoardRefusal | null>(null);
   // Until today's board is read, a daily link shows the veiled board with Start held, never the configuration form.
-  const [dailyOpening, setDailyOpening] = useState(urlRound?.source === 'daily');
-  const [dailyReturn, setDailyReturn] = useState<DailyReturn>(null);
+  const [dailyRead, setDailyRead] = useState(false);
+  const [triedToday, setTriedToday] = useState(false);
+  // A daily round's record being written, before /daily takes over.
+  const [savingDaily, setSavingDaily] = useState(false);
   // A round the player starts by hand wins over a set board still being read.
   const startedByHandRef = useRef(false);
   // The day's try is spent on Start, not on opening the page.
   const markOpenedRef = useRef<(() => void) | null>(null);
-  const opening = hydrated && dailyOpening && round.phase === 'idle' && !refused;
+  const addressUnread = hydrated && urlRound === undefined;
+  const dailyPending = hydrated && urlRound?.source === 'daily' && !dailyRead && round.phase === 'idle' && !refused;
+  // A try already spent today is refused whatever the record says, so the board is never shown before the notice.
+  const opening = dailyPending && !triedToday;
 
   // Memorising and placing are played without scrolling: the board is sized
   // from the room that is actually left, so the screen holds exactly what
@@ -156,8 +159,14 @@ function GamePageContent() {
   const isActivePhase = opening || round.phase === 'ready' || round.phase === 'countdown' || round.phase === 'study' || round.phase === 'rebuild';
 
   useLayoutEffect(() => {
-    if (hydrated) delete document.documentElement.dataset.roundEntry;
-  }, [hydrated]);
+    if (urlRoundRef.current === undefined) urlRoundRef.current = readUrlRound();
+    setUrlRound(urlRoundRef.current);
+    setTriedToday(readDailyOpened() === utcDayOf(Date.now()));
+  }, []);
+
+  useLayoutEffect(() => {
+    if (hydrated && urlRound !== undefined) delete document.documentElement.dataset.roundEntry;
+  }, [hydrated, urlRound]);
 
   useEffect(() => {
     // Clean up game state when leaving
@@ -168,6 +177,7 @@ function GamePageContent() {
   }, [resetGame]);
 
   useEffect(() => {
+    if (urlRound === undefined) return;
     clearRoundParams();
     if (!urlRound) return;
     const { source } = urlRound;
@@ -181,7 +191,7 @@ function GamePageContent() {
     OPEN_SET_BOARD[source]()
       .then((opened) => {
         if (!live || startedByHandRef.current) return;
-        setDailyOpening(false);
+        setDailyRead(true);
         if (!opened) return;
         if (opened.kind === 'refused') {
           setRefused(opened.reason);
@@ -196,7 +206,7 @@ function GamePageContent() {
         startGame(opened.pieceCount, opened.memorizeTime, source, opened.board);
       })
       .catch((error) => {
-        if (live) setDailyOpening(false);
+        if (live) setDailyRead(true);
         console.error(`Could not open the ${source} board`, error);
       });
     return () => {
@@ -221,19 +231,19 @@ function GamePageContent() {
     stopTimerSound();
     playSound('click');
     const daily = gameState.board?.kind === 'daily';
-    if (daily) setDailyReturn('saving');
+    setSavingDaily(daily);
     void submitSolution().then((kept) => {
       if (!daily) return;
       // Without a saved round /daily has nothing to show or join, so the result stays here.
       if (kept) router.replace({ pathname: '/daily', query: { [DAILY_PLAYED_PARAM]: '1' } });
-      else setDailyReturn('stayed');
+      else setSavingDaily(false);
     });
   };
 
   const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
     startedByHandRef.current = true;
     setRefused(null);
-    setDailyReturn(null);
+    setSavingDaily(false);
     stopTimerSound();
     playSound('click');
     resetGame();
@@ -245,7 +255,7 @@ function GamePageContent() {
   const handleNewGame = () => {
     stopTimerSound(); // Stop any playing timer sound
     playSound('click');
-    setDailyReturn(null);
+    setSavingDaily(false);
     resetGame();
   };
 
@@ -273,6 +283,8 @@ function GamePageContent() {
     switch (round.phase) {
       case 'idle': {
         if (opening) return activeRound(round, todayGate());
+        // Before the address is read this is one commit that never paints; on a day already tried it waits for the notice.
+        if (addressUnread || dailyPending) return <div className={containerClass} />;
         // A daily link's notice waits on nothing rather than flashing the form it replaces.
         const noticeFallback = refused === 'daily' ? null : <GameConfig onStart={handleStartGame} />;
         return (
@@ -307,7 +319,7 @@ function GamePageContent() {
       case 'scored':
         return (
           <div className={containerClass}>
-            {dailyReturn === 'saving' ? (
+            {savingDaily ? (
               <p className="lab-note" role="status">
                 {t('saving')}
               </p>

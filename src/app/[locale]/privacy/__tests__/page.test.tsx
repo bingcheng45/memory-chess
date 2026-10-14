@@ -2,6 +2,8 @@ import type { AnchorHTMLAttributes } from "react";
 import { render, screen, within } from "@/test-utils/intl";
 import PrivacyPage from "@/app/[locale]/privacy/page";
 
+const IN_ENGLISH = { params: Promise.resolve({ locale: "en" }) };
+
 jest.mock("@/i18n/navigation", () => ({
   Link: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => <a href={href} {...props} />,
   usePathname: () => "/privacy",
@@ -10,8 +12,8 @@ jest.mock("@/i18n/navigation", () => ({
 jest.mock("@/lib/articles/translatedLocales");
 
 describe("PrivacyPage", () => {
-  it("explains data use, cookies, advertising, and user choices", () => {
-    render(<PrivacyPage />);
+  it("explains data use, cookies, advertising, and user choices", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByRole("heading", { name: "Privacy Policy" }),
@@ -35,8 +37,8 @@ describe("PrivacyPage", () => {
     ).toHaveAttribute("href", "/contact-us");
   });
 
-  it("says what article likes and views keep in the browser and in Supabase", () => {
-    render(<PrivacyPage />);
+  it("says what article likes and views keep in the browser and in Supabase", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByText(
@@ -56,8 +58,8 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("lists every fact the lab record keeps and says the record itself never leaves the device", () => {
-    render(<PrivacyPage />);
+  it("lists every fact the lab record keeps and says the record itself never leaves the device", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByText(
@@ -79,8 +81,8 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("names what analytics receive about rounds and the lab, and what they never receive", () => {
-    render(<PrivacyPage />);
+  it("names what analytics receive about rounds and the lab, and what they never receive", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByText(
@@ -100,8 +102,8 @@ describe("PrivacyPage", () => {
     expect(screen.queryByText(/never sent to Memory Chess or to analytics/)).not.toBeInTheDocument();
   });
 
-  it("says what the progress and result cards draw, and that nothing leaves the device until the player picks a way to share", () => {
-    render(<PrivacyPage />);
+  it("says what the progress and result cards draw, and that nothing leaves the device until the player picks a way to share", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByText(
@@ -115,8 +117,8 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("says a shared link carries its card in the URL, a result link both boards and the placement order, only when the player shares it", () => {
-    render(<PrivacyPage />);
+  it("says a shared link carries its card in the URL, a result link both boards and the placement order, only when the player shares it", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByText(
@@ -130,8 +132,8 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("names both share events, every method they report and every network, and what they never carry", () => {
-    render(<PrivacyPage />);
+  it("names both share events, every method they report and every network, and what they never carry", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByText(
@@ -140,8 +142,8 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("says the reading card goes only to the clipboard and the record note is kept as seen", () => {
-    render(<PrivacyPage />);
+  it("says the reading card goes only to the clipboard and the record note is kept as seen", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByText(
@@ -155,8 +157,8 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("says what a leaderboard standing check keeps on the device and sends, and only on a press", () => {
-    render(<PrivacyPage />);
+  it("says what a leaderboard standing check keeps on the device and sends, and only on a press", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByText(
@@ -175,8 +177,8 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("says Learn search events carry counts and the top guide, and that the search page's address can carry the words", () => {
-    render(<PrivacyPage />);
+  it("says Learn search events carry counts and the top guide, and that the search page's address can carry the words", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByText(/The Learn search ranks guides in your browser/).textContent?.replace(/\s+/g, " ").trim(),
@@ -185,15 +187,15 @@ describe("PrivacyPage", () => {
     );
   });
 
-  it("claims no identifier the site does not create", () => {
-    render(<PrivacyPage />);
+  it("claims no identifier the site does not create", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(screen.getByText(/Clearing your browser data resets these choices/)).toBeInTheDocument();
     expect(screen.queryByText(/local identifier/)).not.toBeInTheDocument();
   });
 
-  it("names the controller, the DART cookie, and GDPR and CCPA rights", () => {
-    render(<PrivacyPage />);
+  it("names the controller, the DART cookie, and GDPR and CCPA rights", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByRole("heading", { name: "Who is responsible for your data" }),
@@ -217,8 +219,8 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("is a Lab Paper page whose contents list lands on each of its thirteen sections", () => {
-    const { container } = render(<PrivacyPage />);
+  it("is a Lab Paper page whose contents list lands on each of its thirteen sections", async () => {
+    const { container } = render(await PrivacyPage(IN_ENGLISH));
 
     expect(container.firstElementChild).toHaveClass("lab-paper");
     const contents = within(screen.getByRole("navigation", { name: "On this page" })).getAllByRole("link");

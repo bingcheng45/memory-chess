@@ -1,0 +1,15 @@
+{
+  "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "contents": "Tartalom",
+    "onThisPage": "Ezen az oldalon",
+    "lastUpdated": "Utolsó frissítés: <time>{date}</time>",
+    "note": {
+      "general": "Ezt az oldalt AI segítségével fordítottuk angolról. Az angol oldal a mérvadó.",
+      "legal": "Ez a fordítás AI segítségével készült, és a kényelmedet szolgálja. Ha eltér az angol változattól, az angol változat az irányadó.",
+      "readInEnglish": "Olvasd el angolul"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Felhasználási feltételek",
+      "description": "Közérthető feltételek a Memory Chess játékhoz, a ranglista-pontszámok beküldéséhez és az oldal tartalmának használatához.",
+      "socialTitle": "A Memory Chess felhasználási feltételei",
+      "socialDescription": "Közérthető feltételek a Memory Chess játékhoz és az oldal használatához."
+    },
+    "kicker": "Az apró betűs rész",
+    "title": "Felhasználási feltételek",
+    "lede": "A Memory Chess egy ingyenes játék, amelyet egyetlen ember üzemeltet. Ezek a feltételek azért rövidek, mert a megállapodás egyszerű, és arra készültek, hogy elolvasd őket.",
+    "sections": {
+      "service": {
+        "title": "A szolgáltatás",
+        "blocks": [
+          {
+            "p": "A Memory Chess egy ingyenes böngészős játék a táblamemória edzésére. „Ahogy van” és „ahogy elérhető” alapon nyújtom, mindenféle garancia nélkül. Azon dolgozom, hogy gyors, pontos és elérhető legyen, de nem ígérek megszakítás nélküli szolgáltatást, hibátlan pontozást, sem azt, hogy bármely funkció örökre ugyanolyan marad. Az oldal bármely részét bármikor módosíthatom, felfüggeszthetem vagy megszüntethetem."
+          },
+          {
+            "p": "A jogszabályok által megengedett mértékben nem vállalok felelősséget az oldal használatából eredő károkért. Ez egy memóriajáték. Az észszerű felső határa annak, ami itt rosszul sülhet el, egy számodra fontos pontszám elvesztése, és még ennek megelőzésére is nagyon igyekszem."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Elfogadható használat",
+        "blocks": [
+          {
+            "p": "Játssz tisztességesen, és hagyd működni az oldalt mindenki más számára. Ne támadd, ne terheld túl és ne fürkészd a szolgáltatást, ne gyűjts róla tömegesen adatokat, és ne próbáld kijátszani a pontozását. Ne küldj be botok, szkriptek vagy bármilyen automatizálás által generált pontszámokat. Ne használd a kapcsolatfelvételi űrlapot vagy a ranglistát spamelésre, zaklatásra vagy bárki megszemélyesítésére."
+          },
+          {
+            "p": "A kapcsolatfelvételi űrlap valódi üzeneteknek szól, egy valódi embernek. Használd hibabejelentésekhez, kérdésekhez és ötletekhez, és el fogom olvasni."
+          },
+          {
+            "p": "Letilthatom azt a forgalmat, vagy korlátozhatom azt a hozzáférést, amely megsérti ezeket a szabályokat. Mivel nincsenek tiltható fiókok, a rossz bejegyzések eltávolítása és a visszaélések hálózati peremen történő blokkolása az az eszköz, amellyel a szabályokat érvényesíteni tudom, és élek is vele."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "A ranglista",
+        "blocks": [
+          {
+            "p": "A pontszám beküldése a ranglistára nem kötelező. Bármi, amit oda beküldesz, nyilvános. A pontszámhoz tartozó név az, amit beírsz, ezért olyat válassz, amelyet szívesen látsz nyilvánosan, és ne használd a valódi neved vagy bárki személyes adatait, ha inkább titokban tartanád."
+          },
+          {
+            "p": "A beküldött bejegyzés a választott nevet és a kör adatait tartalmazza, például a pontosságot, a nehézséget és a teljesítési időt. Közzététel után a ranglistán marad, amíg jobb pontszámok ki nem szorítják, vagy el nem távolítják."
+          },
+          {
+            "p": "Eltávolíthatom azokat a ranglista-bejegyzéseket, amelyek visszaélésszerűek, valaki másnak adják ki magukat, automatizáltnak tűnnek, vagy egyértelműen nem egy, a játékkal játszó ember hozta létre őket. A bejegyzéseket azért távolítom el, hogy a ranglista hiteles maradjon, nem azért, hogy megválogassam, ki nyer."
+          }
+        ]
+      },
+      "content": {
+        "title": "Tartalom és szellemi tulajdon",
+        "blocks": [
+          {
+            "p": "Az oldal saját tartalma, beleértve a játékot, a Tanulás útmutatóit, a dizájnt és az oldalt működtető kódot, az enyém. Bármelyik oldalra szabadon hivatkozhatsz, észszerű terjedelmű részleteket idézhetsz a forrás megjelölésével, és bárhol megoszthatod a pontszámaidat. Ne tegyél közzé újra teljes útmutatókat, és ne add ki az oldal tartalmát a sajátodként."
+          },
+          {
+            "p": "Maga a sakk senkié. Az állások, a szabályok és a lejegyzés mindenki számára szabadon használhatók, itt és bárhol máshol."
+          },
+          {
+            "p": "Ha visszajelzést vagy javaslatot küldesz, elfogadod, hogy felhasználhatom őket az oldal fejlesztésére anélkül, hogy ellenszolgáltatással vagy említéssel tartoznék neked. A játékosok visszajelzései már korábban is valódi kiadásokat formáltak, és a változásnapló rögzíti, mi lett belőlük."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Harmadik féltől származó szolgáltatások",
+        "blocks": [
+          {
+            "p": "Az oldal néhány külső szolgáltatásra épül. A Google AdSense jeleníti meg a hirdetéseket, amelyek az oldalt ingyenesen tartják. A Google Analytics, a Vercel Analytics, a Vercel Speed Insights és az Ahrefs Analytics a forgalmat és a teljesítményt méri. A Supabase tárolja a játékstatisztikákat és a ranglista-bejegyzéseket. Mindegyiknek saját feltételei vannak, az <privacy>adatvédelmi tájékoztató</privacy> pedig elmagyarázza, melyik milyen adatokhoz fér hozzá, és milyen lehetőségeid vannak."
+          }
+        ]
+      },
+      "changes": {
+        "title": "A feltételek módosítása",
+        "blocks": [
+          {
+            "p": "Ezeket a feltételeket frissíthetem, amikor az oldal vagy a szolgáltatásai változnak. Az aktuális változat mindig ezen a címen érhető el, és ha egy módosítás után tovább használod az oldalt, azzal elfogadod a frissített feltételeket. Mindent, ami érdemben érinti a játékosokat, például a ranglista működésének változását, a változásnaplóban is feljegyzek."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Kapcsolat",
+        "blocks": [
+          {
+            "p": "Az ezekkel a feltételekkel kapcsolatos kérdéseidet, vagy ha egy ranglista-bejegyzést felülvizsgáltatnál vagy eltávolíttatnál, ide küldd: <mail>{email}</mail>. Magam válaszolok rájuk."
+          }
+        ]
+      }
+    }
+  }
+}

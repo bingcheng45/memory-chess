@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "b0356f076e9137bf4de43efbad5a8afcc2cc53cf286b779ebea3c864071a5bf6",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -28,7 +28,7 @@
         "title": "Přijatelné používání",
         "blocks": [
           {
-            "p": "Hrajte férově a nechte web fungovat i pro všechny ostatní. Neútočte na službu, nepřetěžujte ji ani ji neproklepávejte, nestahujte z ní data ve velkém a nesnažte se prolomit její bodování. Neodesílejte výsledky vytvořené boty, skripty ani jakoukoli jinou automatizací. Nepoužívejte kontaktní formulář ani žebříček k rozesílání spamu, obtěžování ani vydávání se za kohokoli jiného."
+            "p": "Hrajte férově a nechte web fungovat i pro všechny ostatní. Neútočte na službu, nepřetěžujte ji ani ji neskenujte kvůli hledání slabin, nestahujte z ní data ve velkém a nesnažte se prolomit její bodování. Neodesílejte výsledky vytvořené boty, skripty ani jakoukoli jinou automatizací. Nepoužívejte kontaktní formulář ani žebříček k rozesílání spamu, obtěžování ani vydávání se za kohokoli jiného."
           },
           {
             "p": "Kontaktní formulář je určený pro skutečné zprávy skutečnému člověku. Používejte ho pro hlášení chyb, otázky a nápady a zpráva bude přečtena."
@@ -48,7 +48,7 @@
             "p": "Odeslaný záznam obsahuje jméno, které jste zvolili, a údaje o kole, například přesnost, obtížnost a čas dokončení. Po zveřejnění zůstává v žebříčku, dokud ho nevytlačí lepší výsledky nebo dokud není odstraněn."
           },
           {
-            "p": "Mohu odstranit záznamy v žebříčku, které jsou urážlivé, vydávají se za někoho jiného, vypadají jako automatizované nebo zjevně nevznikly tak, že by hru hrál člověk. Záznamy odstraňuji proto, aby žebříček zůstal poctivý, ne proto, abych určoval, kdo vyhraje."
+            "p": "Mohu odstranit záznamy v žebříčku, které jsou urážlivé, vydávají se za někoho jiného, vypadají jako automatizované nebo zjevně nevznikly tak, že by hru hrál člověk. Záznamy odstraňuji proto, aby žebříček zůstal poctivý, ne ve snaze řídit to, kdo vyhraje."
           }
         ]
       },
@@ -56,13 +56,13 @@
         "title": "Obsah a duševní vlastnictví",
         "blocks": [
           {
-            "p": "Vlastní obsah webu, včetně hry, průvodců v sekci Výuka, designu a kódu, na kterém web běží, patří mně. Můžete odkazovat na kteroukoli stránku, citovat přiměřené úryvky s uvedením zdroje a sdílet své výsledky, kde chcete. Nepřebírejte celé průvodce a nevydávejte obsah webu za svůj."
+            "p": "Vlastní obsah webu, včetně hry, návodů v sekci Výuka, designu a kódu, na kterém web běží, patří mně. Můžete odkazovat na kteroukoli stránku, citovat přiměřené úryvky s uvedením zdroje a sdílet své výsledky, kde chcete. Nepřebírejte celé návody a nevydávejte obsah webu za svůj."
           },
           {
             "p": "Samotné šachy nepatří nikomu. Pozice, pravidla a notace jsou volně k dispozici všem, tady i kdekoli jinde."
           },
           {
-            "p": "Pokud pošlete zpětnou vazbu nebo návrhy, souhlasíte s tím, že je mohu použít ke zlepšení webu, aniž bych vám dlužil odměnu nebo uvedení autorství. Zpětná vazba od hráčů už ovlivnila skutečná vydání a seznam změn zaznamenává, co z ní vzešlo."
+            "p": "Pokud pošlete zpětnou vazbu nebo návrhy, souhlasíte s tím, že je mohu použít ke zlepšení webu, aniž by vám tím vznikl nárok na odměnu nebo uvedení autorství. Zpětná vazba od hráčů už ovlivnila skutečná vydání a seznam změn zaznamenává, co z ní vzešlo."
           }
         ]
       },

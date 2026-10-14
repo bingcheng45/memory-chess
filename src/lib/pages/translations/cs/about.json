@@ -1,11 +1,11 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "b7c8ac4b218bc9f983314f4294c6c9030617cfcc521a92d565001545bdd6891d",
   "sameAsEnglish": [],
   "text": {
     "meta": {
       "title": "O webu",
-      "description": "Kdo tvoří Memory Chess, proč hra vznikla, jak se boduje kolo a jak se píšou průvodce v sekci Výuka.",
+      "description": "Kdo tvoří Memory Chess, proč hra vznikla, jak se boduje kolo a jak se píšou návody v sekci Výuka.",
       "socialTitle": "O Memory Chess",
       "socialDescription": "Kdo tvoří Memory Chess, proč hra vznikla a jak funguje."
     },
@@ -17,10 +17,10 @@
         "title": "Kdo tento web provozuje",
         "blocks": [
           {
-            "p": "Jsem Bing Cheng, samostatný vývojář. Memory Chess provozuji sám a s kódem a texty na webu mi pomáhá AI. Nestojí za tím žádný tým ani žádná firma. Vyvíjím také <tont>Tont</tont> a novinky o tomto webu zveřejňuji na <x>@TheMemoryChess</x>."
+            "p": "Jsem Bing Cheng a vyvíjím web na vlastní pěst. Memory Chess provozuji samostatně a s kódem a texty na webu mi pomáhá AI. Nestojí za tím žádný tým ani žádná firma. Vyvíjím také <tont>Tont</tont> a novinky o tomto webu zveřejňuji na <x>@TheMemoryChess</x>."
           },
           {
-            "p": "Protože všechno obstarává jeden člověk, je web záměrně malý. Jedna hra, sada tréninkových průvodců, žebříček a seznam změn, který zaznamenává, co skutečně vyšlo."
+            "p": "Protože všechno obstarává jeden člověk, je web záměrně malý. Jedna hra, sada tréninkových návodů, žebříček a seznam změn, který zaznamenává, co skutečně vyšlo."
           },
           {
             "p": "Hra je zdarma a nevyžaduje účet. Reklamy přes Google AdSense pomáhají pokrýt náklady na hosting a nic na webu není skryté za platbou ani registrací."
@@ -34,7 +34,7 @@
             "p": "Většina rad, jak se zlepšit v šachu, posílá začátečníky k zahájením, úlohám a kurzům. Podle mé zkušenosti leží dřívější problém pod tím vším. Začátečníci ztrácejí přehled o šachovnici. Přehlédnou obránce, zapomenou na figuru, která táhla před dvěma tahy, a nechají si brát figury, což by na diagramu okamžitě viděli."
           },
           {
-            "p": "Udržet pozici v hlavě je dovednost, kterou lze trénovat, a míst, kde ji procvičovat přímo, bylo málo. Tak jsem jedno postavil. Memory Chess vyčleňuje tuto jedinou dovednost a dává jí skóre, abyste mohli sledovat, jak se zlepšuje. Pokud chcete, aby o něco šlo, můžete do veřejného žebříčku zapsat zvolené jméno a poměřit se se všemi ostatními."
+            "p": "Udržet pozici v hlavě je dovednost, kterou lze trénovat, a míst, kde ji procvičovat přímo, bylo málo. Tak jedno vzniklo. Memory Chess vyčleňuje tuto jedinou dovednost a dává jí skóre, abyste mohli sledovat, jak se zlepšuje. Pokud chcete, aby o něco šlo, můžete do veřejného žebříčku zapsat zvolené jméno a poměřit se se všemi ostatními."
           }
         ]
       },
@@ -56,13 +56,13 @@
         ]
       },
       "how-the-guides-are-written": {
-        "title": "Jak se píšou průvodce v sekci Výuka",
+        "title": "Jak se píšou návody v sekci Výuka",
         "blocks": [
           {
-            "p": "<learn>Knihovna Výuka</learn> obsahuje {count, plural, one {# průvodce} few {# průvodci} many {# průvodce} other {# průvodců}} o vidění šachovnice, vizualizaci a tréninku paměti. Jsou psané s pomocí AI. Každou šachovou pozici v nich kontroluje skript, a to počet figur, přípustnost a každý útok, který text uvádí. Každé tvrzení o tom, jak Memory Chess funguje, je ověřené v kódu hry. Každý průvodce obsahuje cvičení. Některá otevřou kolo ve hře se správným nastavením. Ostatní jsou určená pro skutečnou šachovnici."
+            "p": "<learn>Knihovna Výuka</learn> obsahuje {count, plural, one {# návod} few {# návody} many {# návodu} other {# návodů}} o vidění šachovnice, vizualizaci a tréninku paměti. Jsou psané s pomocí AI. Každou šachovou pozici v nich kontroluje skript, a to počet figur, přípustnost a každý útok, který text uvádí. Každé tvrzení o tom, jak Memory Chess funguje, je ověřené v kódu hry. Každý návod obsahuje cvičení. Některá otevřou kolo ve hře se správným nastavením. Ostatní jsou určená pro skutečnou šachovnici."
           },
           {
-            "p": "Tam, kde průvodce tvrdí něco o paměti a učení, citují publikovaný výzkum, mimo jiné práci Gobeta a Simona o šachové paměti a experimentální literaturu o vybavování a rozloženém procvičování. Každá citace odkazuje na svůj zdroj. Vlastní výzkum jsem neprováděl a průvodce nepředstírají opak."
+            "p": "Tam, kde návody tvrdí něco o paměti a učení, citují publikovaný výzkum, mimo jiné práci Gobeta a Simona o šachové paměti a experimentální literaturu o vybavování a rozloženém procvičování. Každá citace odkazuje na svůj zdroj. Žádný vlastní výzkum za sebou nemám a návody nepředstírají opak."
           }
         ]
       },
@@ -70,7 +70,7 @@
         "title": "Historie webu",
         "blocks": [
           {
-            "p": "První vydání se dostalo na web v březnu 2025 jako holá verze hry. Hraní na mobilu a výběr figur následovaly během několika týdnů. Knihovna Výuka byla spuštěna v březnu 2026 a v srpnu 2026 se samotná hra začala hrát ve 24 jazycích. Průvodce a seznam změn jsou v angličtině. <changelog>Seznam změn</changelog> zaznamenává každé vydání s číslem verze, včetně oprav chyb. Udržuji ho poctivý, protože ho sám používám, abych si pamatoval, co se kdy změnilo."
+            "p": "První vydání se dostalo na web v březnu 2025 jako holá verze hry. Hraní na mobilu a výběr figur následovaly během několika týdnů. Knihovna Výuka byla spuštěna v březnu 2026 a v srpnu 2026 se samotná hra začala hrát ve 24 jazycích. Návody a seznam změn jsou v angličtině. <changelog>Seznam změn</changelog> zaznamenává každé vydání s číslem verze, včetně oprav chyb. Udržuji ho poctivý, protože ho používám i pro vlastní potřebu: v něm si dohledávám, co se kdy změnilo."
           }
         ]
       },

@@ -1,6 +1,6 @@
 {
   "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": null,
+  "approvedHash": "8559b0759da831e11eb08e58dd0f0dd8ada297c06f157f6ca0101006d913474b",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -25,7 +25,7 @@
         "title": "Cine răspunde de datele tale",
         "blocks": [
           {
-            "p": "Memory Chess este administrat de Bing Cheng, dezvoltator independent, care acționează ca operator de date pentru informațiile personale descrise în această politică. Pentru orice întrebare sau solicitare privind confidențialitatea, scrie la <mail>{email}</mail> sau folosește formularul de contact."
+            "p": "Memory Chess este administrat de Bing Cheng, care lucrează independent și acționează ca operator de date pentru informațiile personale descrise în această politică. Pentru orice întrebare sau solicitare privind confidențialitatea, scrie la <mail>{email}</mail> sau folosește formularul de contact."
           }
         ]
       },
@@ -80,7 +80,7 @@
             "p": "Aprecierea unui articol salvează identificatorul acelui articol și numărul de aprecieri afișat în acel moment în stocarea locală a browserului tău, astfel încât butonul de apreciere să rămână apăsat și numărul lui să nu scadă când revii. Stocarea sesiunii reține ce articole ai deschis în fila curentă, astfel încât redeschiderea unuia acolo să nu adauge o vizualizare. Ambele liste rămân în browserul tău. Când apreciezi un articol, Google Analytics primește și un eveniment de apreciere care numește articolul."
           },
           {
-            "p": "Căutarea din Învață ordonează ghidurile în browserul tău sau pe server când cauți de pe pagina de căutare. Google Analytics primește un eveniment pentru o căutare, cu numărul de caractere pe care le-ai tastat, câte ghiduri s-au potrivit, primul ghid și dacă potrivirea a fost apropiată, și un eveniment când deschizi un rezultat, cu acel ghid și locul lui în listă. Niciunul dintre evenimente nu conține cuvintele pe care le-ai tastat. O căutare făcută chiar de pe pagina de căutare îți pune cuvintele în adresa acelei pagini, iar instrumentele de analiză înregistrează adresa fiecărei pagini vizualizate, așa că acele cuvinte pot ajunge la ele."
+            "p": "Căutarea din Învață ordonează ghidurile în browserul tău sau pe server când cauți de pe pagina de căutare. Google Analytics primește un eveniment pentru o căutare, cu numărul de caractere pe care le-ai tastat, câte ghiduri s-au potrivit, primul ghid și dacă primul rezultat a fost doar o potrivire aproximativă, și un eveniment când deschizi un rezultat, cu acel ghid și locul lui în listă. Niciunul dintre evenimente nu conține cuvintele pe care le-ai tastat. O căutare făcută chiar de pe pagina de căutare îți pune cuvintele în adresa acelei pagini, iar instrumentele de analiză înregistrează adresa fiecărei pagini vizualizate, așa că acele cuvinte pot ajunge la ele."
           },
           {
             "p": "Google Analytics și serviciile de publicitate pot folosi cookie-uri sau identificatori similari. Poți bloca sau șterge cookie-urile din browser, deși unele preferințe s-ar putea să nu mai funcționeze cum te aștepți."
@@ -154,7 +154,7 @@
             "p": "Dacă te afli în Spațiul Economic European sau în Regatul Unit, GDPR îți oferă dreptul de acces, de rectificare, de ștergere, de restricționare a prelucrării, de opoziție la prelucrare și dreptul la portabilitatea datelor. Temeiurile legale pe care ne bazăm sunt consimțământul tău, pentru publicitatea personalizată și cookie-urile de analiză acolo unde consimțământul este necesar, și interesele noastre legitime, pentru funcționarea și securizarea site-ului, publicarea scorurilor pe care le trimiți în clasament și răspunsul la mesajele pe care ni le trimiți. Îți poți retrage consimțământul în orice moment prin mesajul de consimțământ sau prin setările browserului și poți depune o plângere la autoritatea de supraveghere locală."
           },
           {
-            "p": "Dacă ești rezident în California, CCPA îți oferă dreptul de a ști ce informații personale sunt colectate, de a cere ștergerea lor și de a renunța la vânzarea sau partajarea lor. Nu îți vindem informațiile personale. Cookie-urile folosite pentru publicitatea personalizată pot fi considerate partajare conform CCPA, iar tu poți renunța prin mesajul de consimțământ, My Ad Center și YourAdChoices, indicate mai sus. Aceasta este notificarea noastră „Nu vindeți și nu partajați informațiile mele personale” („Do Not Sell or Share My Personal Information”). Pentru a-ți exercita oricare dintre aceste drepturi, scrie la <mail>{email}</mail>."
+            "p": "Dacă ești rezident în California, CCPA îți oferă dreptul de a ști ce informații personale sunt colectate, de a cere ștergerea lor și de a renunța la vânzarea sau partajarea lor. Nu îți vindem informațiile personale. Cookie-urile folosite pentru publicitatea personalizată pot fi considerate partajare conform CCPA, iar tu poți renunța prin mesajul de consimțământ, My Ad Center și YourAdChoices, indicate mai sus. Aceasta este notificarea noastră „Nu vinde și nu partaja informațiile mele personale” („Do Not Sell or Share My Personal Information”). Pentru a-ți exercita oricare dintre aceste drepturi, scrie la <mail>{email}</mail>."
           }
         ]
       },

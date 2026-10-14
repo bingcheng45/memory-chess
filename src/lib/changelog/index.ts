@@ -168,6 +168,17 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
         changes: [
           "The home page is now the Brain Lab. Take a quick calibration round right there, then watch two famous games broken down the way a strong player remembers them: Topalov against Shirov in 1998 and Kasparov's Immortal from 1999.",
           "Every page has a clean, light design that is easier to read, and it is the same in all 24 languages.",
+          {
+            segments: [
+              "The ",
+              { text: "About", href: "/about" },
+              " page, the ",
+              { text: "privacy policy", href: "/privacy" },
+              " and the ",
+              { text: "terms of service", href: "/terms" },
+              " are now in all 24 languages. Each translation says it was made with AI help and links to the English page. On the privacy policy and the terms, the English page is the one that counts.",
+            ],
+          },
           "Pages load without jumping around, including in Russian, Vietnamese and Hindi.",
         ],
       },

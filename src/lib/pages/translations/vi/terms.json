@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "175ff0d7a3852048c456229070ad227300c6ccbba00eb701eb8140abd65500af",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -17,7 +17,7 @@
         "title": "Dịch vụ",
         "blocks": [
           {
-            "p": "Memory Chess là một trò chơi miễn phí trên trình duyệt để luyện trí nhớ bàn cờ. Tôi cung cấp nó theo hiện trạng và theo khả năng sẵn có, không kèm bất kỳ hình thức bảo đảm nào. Tôi cố gắng giữ cho nó nhanh, chính xác và trực tuyến, nhưng tôi không hứa hẹn dịch vụ không bị gián đoạn, việc chấm điểm không có lỗi, hay việc bất kỳ tính năng nào sẽ giữ nguyên mãi mãi. Tôi có thể thay đổi, tạm ngừng hoặc ngừng hẳn bất kỳ phần nào của trang web vào bất kỳ lúc nào."
+            "p": "Memory Chess là một trò chơi miễn phí trên trình duyệt để luyện trí nhớ bàn cờ. Tôi cung cấp nó trên cơ sở “nguyên trạng” và “như hiện có”, không kèm bất kỳ hình thức bảo đảm nào. Tôi cố gắng giữ cho nó nhanh, chính xác và trực tuyến, nhưng tôi không hứa hẹn dịch vụ không bị gián đoạn, việc chấm điểm không có lỗi, hay việc bất kỳ tính năng nào sẽ giữ nguyên mãi mãi. Tôi có thể thay đổi, tạm ngừng hoặc ngừng hẳn bất kỳ phần nào của trang web vào bất kỳ lúc nào."
           },
           {
             "p": "Trong phạm vi pháp luật cho phép, tôi không chịu trách nhiệm đối với những thiệt hại phát sinh từ việc bạn sử dụng trang web. Đây là một trò chơi trí nhớ. Giới hạn hợp lý cho điều tệ nhất có thể xảy ra ở đây là mất một điểm số mà bạn quan tâm, và tôi vẫn cố hết sức để ngăn điều đó."
@@ -34,7 +34,7 @@
             "p": "Biểu mẫu liên hệ dành cho những tin nhắn thật gửi đến một người thật. Hãy dùng nó để báo lỗi, đặt câu hỏi và chia sẻ ý tưởng, và tin nhắn của bạn sẽ được đọc."
           },
           {
-            "p": "Tôi có thể chặn lưu lượng truy cập hoặc hạn chế quyền truy cập vi phạm các quy tắc này. Vì không có tài khoản nào để cấm, việc xóa các mục không hợp lệ và chặn hành vi lạm dụng ngay ở rìa mạng là cách thực thi mà tôi có, và tôi sử dụng nó."
+            "p": "Tôi có thể chặn lưu lượng truy cập hoặc hạn chế quyền truy cập vi phạm các quy tắc này. Vì không có tài khoản nào để cấm, việc xóa các mục không hợp lệ và chặn hành vi lạm dụng ngay ở tầng edge của mạng là cách thực thi mà tôi có, và tôi sử dụng nó."
           }
         ]
       },
@@ -42,7 +42,7 @@
         "title": "Bảng xếp hạng",
         "blocks": [
           {
-            "p": "Việc gửi điểm lên bảng xếp hạng là tùy chọn. Mọi thứ bạn gửi lên đó đều công khai. Tên gắn với một điểm số là bất cứ thứ gì bạn nhập vào, vì vậy hãy chọn một cái tên mà bạn vui lòng thấy được công bố, và đừng dùng tên thật của bạn hay thông tin cá nhân của bất kỳ ai nếu bạn muốn giữ kín."
+            "p": "Việc gửi điểm lên bảng xếp hạng là tùy chọn. Mọi thứ bạn gửi lên đó đều công khai. Tên gắn với một điểm số là bất cứ thứ gì bạn nhập vào, vì vậy hãy chọn một cái tên mà bạn thấy thoải mái khi nó được công bố, và đừng dùng tên thật của bạn hay thông tin cá nhân của bất kỳ ai nếu bạn muốn giữ kín."
           },
           {
             "p": "Một lượt gửi chứa tên bạn đã chọn và thông tin chi tiết của ván chơi, như độ chính xác, độ khó và thời gian hoàn thành. Sau khi được công bố, lượt gửi đó sẽ ở lại trên bảng cho đến khi bị những điểm số tốt hơn đẩy ra hoặc bị xóa."
@@ -62,7 +62,7 @@
             "p": "Bản thân cờ vua không thuộc về ai cả. Thế cờ, luật chơi và ký hiệu là của chung mọi người, ở đây và ở mọi nơi khác."
           },
           {
-            "p": "Nếu bạn gửi góp ý hoặc đề xuất, bạn đồng ý rằng tôi có thể dùng chúng để cải thiện trang web mà không nợ bạn khoản bồi hoàn hay sự ghi công nào. Góp ý của người chơi đã từng định hình những bản phát hành thật, và nhật ký thay đổi ghi lại kết quả của chúng."
+            "p": "Nếu bạn gửi góp ý hoặc đề xuất, bạn đồng ý rằng tôi có thể dùng chúng để cải thiện trang web mà không nợ bạn khoản thù lao hay sự ghi công nào. Góp ý của người chơi đã từng định hình những bản phát hành thật, và nhật ký thay đổi ghi lại kết quả của chúng."
           }
         ]
       },

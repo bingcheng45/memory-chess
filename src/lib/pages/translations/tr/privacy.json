@@ -1,6 +1,6 @@
 {
   "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": null,
+  "approvedHash": "adf79d0f327a732c36fd8b7084afee360a037c8eba66551588da61931d0a06e1",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -80,7 +80,7 @@
             "p": "Bir makaleyi beğenmek, o makalenin kimliğini ve o anda gösterilen beğeni sayısını tarayıcının yerel depolamasına kaydeder; böylece geri döndüğünde beğeni düğmesi basılı kalır ve sayısı düşmez. Oturum depolaması, geçerli sekmede hangi makaleleri açtığını hatırlar; böylece orada birini yeniden açmak bir görüntüleme eklemez. İki liste de tarayıcında kalır. Bir makaleyi beğendiğinde Google Analytics ayrıca makaleyi adlandıran bir beğeni olayı alır."
           },
           {
-            "p": "Öğren araması rehberleri tarayıcında sıralar; arama sayfasından arama yaptığında ise sunucuda sıralar. Google Analytics bir arama için kaç karakter yazdığını, kaç rehberin eşleştiğini, en üstteki rehberi ve eşleşmenin yakın olup olmadığını içeren bir olay; bir sonucu açtığında ise o rehberi ve listedeki yerini içeren bir olay alır. İki olay da yazdığın kelimeleri taşımaz. Doğrudan arama sayfasından yapılan bir arama kelimelerini o sayfanın adresine koyar ve analitik araçları görüntülenen her sayfanın adresini kaydeder; bu yüzden bu kelimeler onlara ulaşabilir."
+            "p": "Öğren araması rehberleri tarayıcında sıralar; arama sayfasından arama yaptığında ise sunucuda sıralar. Google Analytics bir arama için kaç karakter yazdığını, kaç rehberin eşleştiğini, en üstteki rehberi ve en üstteki sonucun yalnızca yaklaşık bir eşleşme olup olmadığını içeren bir olay; bir sonucu açtığında ise o rehberi ve listedeki yerini içeren bir olay alır. İki olay da yazdığın kelimeleri taşımaz. Doğrudan arama sayfasından yapılan bir arama kelimelerini o sayfanın adresine koyar ve analitik araçları görüntülenen her sayfanın adresini kaydeder; bu yüzden bu kelimeler onlara ulaşabilir."
           },
           {
             "p": "Google Analytics ve reklam hizmetleri çerezler veya benzer tanımlayıcılar kullanabilir. Çerezleri tarayıcında engelleyebilir veya silebilirsin, ancak bu durumda bazı tercihler beklendiği gibi çalışmayabilir."

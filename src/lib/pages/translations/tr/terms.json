@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "3f382dbd7c1b573393c6d3957c40ca9cd4557f20ad50ee7ecd1682abe798a28b",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -9,7 +9,7 @@
       "socialTitle": "Memory Chess Kullanım Koşulları",
       "socialDescription": "Memory Chess oynamak ve siteyi kullanmak için sade bir dille yazılmış koşullar."
     },
-    "kicker": "İnce ayrıntılar",
+    "kicker": "Küçük puntolu kısım",
     "title": "Kullanım Koşulları",
     "lede": "Memory Chess, tek bir kişinin yönettiği ücretsiz bir oyundur. Anlaşma basit olduğu için bu koşullar kısa ve okunmak için yazıldı.",
     "sections": {
@@ -62,7 +62,7 @@
             "p": "Satrancın kendisi kimseye ait değildir. Konumlar, kurallar ve notasyon burada ve başka her yerde herkes için serbesttir."
           },
           {
-            "p": "Görüş veya öneri gönderirsen, sana herhangi bir ücret ödemek veya seni anmak zorunda olmadan bunları siteyi geliştirmek için kullanabileceğimi kabul etmiş olursun. Oyuncu görüşleri daha önce gerçek sürümleri şekillendirdi ve bunlardan ne çıktığını değişiklik günlüğü kaydediyor."
+            "p": "Görüş veya öneri gönderirsen, sana herhangi bir ücret ödemek veya adını belirtmek zorunda olmadan bunları siteyi geliştirmek için kullanabileceğimi kabul etmiş olursun. Oyuncu görüşleri daha önce gerçek sürümleri şekillendirdi ve bunlardan ne çıktığını değişiklik günlüğü kaydediyor."
           }
         ]
       },

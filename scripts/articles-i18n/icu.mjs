@@ -1,5 +1,5 @@
 import { IntlMessageFormat } from "intl-messageformat";
-import { CHROME } from "./names.mjs";
+import { isIcuKind } from "./names.mjs";
 
 // Element types of the tree `IntlMessageFormat.getAst()` returns.
 const LITERAL = 0;
@@ -79,5 +79,5 @@ function literalTextOf(message, locale) {
   return parts.error === undefined ? parts.literalText : message;
 }
 
-/** The words a reader sees in a leaf: an article leaf as it is, a chrome message without its ICU syntax. */
-export const textOf = (kind, message, locale) => (kind === CHROME ? literalTextOf(message, locale) : message);
+/** The words a reader sees in a leaf: an article leaf as it is, an ICU message without its syntax. */
+export const textOf = (kind, message, locale) => (isIcuKind(kind) ? literalTextOf(message, locale) : message);

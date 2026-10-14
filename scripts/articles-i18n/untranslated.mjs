@@ -1,6 +1,6 @@
 import { textOf } from "./icu.mjs";
 import { LANGUAGE_LIMITS, englishLead, wordsOf } from "./language.mjs";
-import { ARTICLE, ENGLISH } from "./names.mjs";
+import { CHROME, ENGLISH } from "./names.mjs";
 import { MAY_EQUAL_ENGLISH, wordsThatMayStay } from "./paths.mjs";
 
 const COPY_SHARE = 0.8;
@@ -18,12 +18,12 @@ function keptCount(english, translated) {
   );
 }
 
-/** Fails an article leaf that keeps four in five of the words of its English leaf. */
-export function copyProblems({ kind, path, english, value }) {
-  if (kind !== ARTICLE || value === english || MAY_EQUAL_ENGLISH.test(path)) return [];
-  const source = wordsOf(english);
+/** Fails an article or page leaf that keeps four in five of the words of its English leaf. */
+export function copyProblems({ kind, locale, path, english, value }) {
+  if (kind === CHROME || value === english || MAY_EQUAL_ENGLISH.test(path)) return [];
+  const source = wordsOf(textOf(kind, english, ENGLISH));
   if (source.length <= wordsThatMayStay(path)) return [];
-  const kept = keptCount(source, wordsOf(value));
+  const kept = keptCount(source, wordsOf(textOf(kind, value, locale)));
   if (kept / source.length < COPY_SHARE) return [];
   return [`${kept} of ${source.length} English words are still here, the text looks untranslated`];
 }
@@ -90,7 +90,7 @@ function sentencesRead({ kind, locale, english, value }) {
  */
 export function englishProseProblems(leaf) {
   const { kind, path, locale } = leaf;
-  if (kind === ARTICLE && MAY_EQUAL_ENGLISH.test(path)) return [];
+  if (kind !== CHROME && MAY_EQUAL_ENGLISH.test(path)) return [];
   const { maxLead } = LANGUAGE_LIMITS;
   const leadOf = ({ words, counted }) => englishLead(locale, words, counted);
   const sentences = sentencesRead(leaf);

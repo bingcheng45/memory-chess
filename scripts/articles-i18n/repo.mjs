@@ -6,7 +6,7 @@ import { CHROME, ENGLISH } from "./names.mjs";
 
 export class UsageError extends Error {}
 
-const SAME_AS_ENGLISH = "same-as-english";
+export const SAME_AS_ENGLISH = "same-as-english";
 const MESSAGES_DIR = "messages";
 const ARTICLES_DIR = "src/lib/articles";
 const ENTRIES_DIR = `${ARTICLES_DIR}/entries`;
@@ -40,7 +40,7 @@ export const shown = (root, path) => relative(root, inside(root, path)) || ".";
 
 const readText = (root, file) => readFileSync(inside(root, file), "utf8");
 
-function parsed(root, file) {
+export function parsed(root, file) {
   try {
     return { value: JSON.parse(readText(root, file)) };
   } catch (error) {
@@ -56,15 +56,15 @@ function readMessages(root, locale) {
 
 // The repo's package.json has no "type", so Node warns on stderr about the
 // first .ts file it loads. Stderr carries one line per failure and nothing else.
-function muteTypelessPackageWarning() {
+export function muteTypelessPackageWarning() {
   const emitWarning = process.emitWarning;
   process.emitWarning = (warning, ...rest) =>
     rest[0]?.code === TYPELESS_PACKAGE_WARNING ? undefined : emitWarning.call(process, warning, ...rest);
 }
 
-const importTypeScript = (root, file) => import(pathToFileURL(inside(root, file)).href);
+export const importTypeScript = (root, file) => import(pathToFileURL(inside(root, file)).href);
 
-function shippedLocales(root) {
+export function shippedLocales(root) {
   const block = readText(root, ROUTING_FILE).match(/export const LOCALES = \[([\s\S]*?)\] as const;/);
   if (!block) throw new UsageError(`${ROUTING_FILE} has no LOCALES list`);
   return [...block[1].matchAll(/"([\w-]+)"/g)].map((match) => match[1]);
@@ -127,7 +127,7 @@ export async function loadRepo(cwd) {
   };
 }
 
-function jsonNames(root, dir) {
+export function jsonNames(root, dir) {
   if (!statSync(inside(root, dir), { throwIfNoEntry: false })?.isDirectory()) return [];
   return readdirSync(inside(root, dir))
     .filter((name) => name.endsWith(".json"))

@@ -2,7 +2,7 @@ import { contentLossFailures } from "./contentLoss.mjs";
 import { formatError, partsOf, textOf } from "./icu.mjs";
 import { languageFailures, missingLanguageRuleProblems } from "./language.mjs";
 import { leavesOf } from "./leaves.mjs";
-import { ARTICLE, CHROME, ENGLISH } from "./names.mjs";
+import { ARTICLE, CHROME, ENGLISH, PAGE, isIcuKind } from "./names.mjs";
 import { BODY_PATH, MAX_WORDS_THAT_MAY_STAY, MAY_EQUAL_ENGLISH, TITLE_PATH } from "./paths.mjs";
 import { copyProblems, englishProseProblems } from "./untranslated.mjs";
 
@@ -106,7 +106,7 @@ function pluralProblems(locale, english, translated) {
 }
 
 function icuProblems({ kind, locale, english, value }) {
-  if (kind !== CHROME) return [];
+  if (!isIcuKind(kind)) return [];
   const source = partsOf(english, ENGLISH);
   const parts = partsOf(value, locale);
   if (parts.error !== undefined) return [`ICU error, ${parts.error}`];
@@ -247,7 +247,7 @@ function listedFailures({ kind, name, english, unit }, listed) {
 /** The leaves a reader reads as prose: the running text of an article, every string of the section. */
 function proseLeaves({ locale, kind, unit }) {
   return leavesOf(unit.text)
-    .filter(([path, leaf]) => typeof leaf === "string" && (kind === CHROME || BODY_PATH.test(path)))
+    .filter(([path, leaf]) => typeof leaf === "string" && (isIcuKind(kind) || BODY_PATH.test(path)))
     .map(([path, leaf]) => [path, textOf(kind, leaf, locale)]);
 }
 
@@ -322,4 +322,49 @@ export function unreviewedOf({ approvalProblems }, locale, bundle) {
   return [...Object.entries(bundle.articles), [CHROME, bundle.chrome]]
     .filter(([, unit]) => unit !== undefined && unit.error === undefined)
     .flatMap(([name, unit]) => approvalProblems(unit, unit.approvedText, { locale, name }).map((problem) => `${name}: ${problem}`));
+}
+
+const PAGE_BODY_PATH = /^(lede|sections\..+\.blocks\[\d+\]\.(p|ul\[\d+\]))$/;
+
+/**
+ * Every reason the translation of the trust pages in `bundle` may not be installed or published, one line each,
+ * naming the unit (`about`, `privacy`, `terms` or `chrome`), the leaf path and the reason. The rules are the
+ * articles' rules for prose of ICU messages, and a long paragraph much shorter than the rest of the translation fails.
+ *
+ * `source` is `{ lib, units: [{ name, text, sourceHash }] }`. `bundle` is `{ installed, problems,
+ * sameAsEnglishKeys, units: { [name]: unit } }`, a unit as `failuresOf` describes it.
+ *
+ * @param {string} locale
+ * @returns {string[]}
+ */
+export function pageFailuresOf(locale, source, bundle) {
+  const names = source.units.map((unit) => unit.name);
+  const isUnknown = (name) => !names.includes(name);
+
+  return [
+    ...missingScriptRuleProblems(locale),
+    ...missingLanguageRuleProblems(locale),
+    ...bundle.problems,
+    ...bundle.sameAsEnglishKeys.filter(isUnknown).map((key) => `same-as-english.json: "${key}" is not a page or chrome`),
+    ...source.units.flatMap(({ name, text, sourceHash }) =>
+      unitFailures({ locale, kind: PAGE, name, english: text, sourceHash, unit: bundle.units[name] }, bundle.installed, source.lib),
+    ),
+    ...contentLossFailures(
+      source.units.map(({ name, text }) => ({ slug: name, text })),
+      bundle.units,
+      (path) => PAGE_BODY_PATH.test(path),
+    ),
+    ...Object.keys(bundle.units)
+      .filter(isUnknown)
+      .map((name) => `${name}: no English page has this name`),
+  ];
+}
+
+/** The installed page units of `bundle` whose text is not the text a reviewer approved for `locale`. */
+export function pageUnreviewedOf({ approvalProblems }, approvalNameOf, locale, bundle) {
+  return Object.entries(bundle.units)
+    .filter(([, unit]) => unit.error === undefined)
+    .flatMap(([name, unit]) =>
+      approvalProblems(unit, unit.text, { locale, name: approvalNameOf(name) }).map((problem) => `${name}: ${problem}`),
+    );
 }

@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "62d762b659c67321e10dc060ba380b543cc161c92e814a5675a553a0029e34cb",
   "sameAsEnglish": [
     "sections.contact.title"
   ],
@@ -22,7 +22,7 @@
             "p": "Memory Chess est un jeu gratuit sur navigateur pour entraîner la mémoire de l’échiquier. Je le fournis tel quel et selon sa disponibilité, sans garantie d’aucune sorte. Je m’efforce de le garder rapide, exact et en ligne, mais je ne promets ni un service ininterrompu, ni une notation sans erreur, ni qu’une fonctionnalité restera toujours la même. Je peux modifier, suspendre ou arrêter n’importe quel élément du site à tout moment."
           },
           {
-            "p": "Dans la mesure permise par la loi, je ne suis pas responsable des dommages résultant de votre utilisation du site. C’est un jeu de mémoire. Le pire qui puisse raisonnablement arriver ici est de perdre un score auquel vous teniez, et je fais quand même tout mon possible pour l’éviter."
+            "p": "Dans la mesure permise par la loi, je ne suis pas responsable des dommages résultant de votre utilisation du site. C’est un jeu de mémoire. Le pire qui puisse raisonnablement arriver ici est de perdre un score auquel vous teniez, et je m’efforce quand même de l’éviter."
           }
         ]
       },
@@ -30,7 +30,7 @@
         "title": "Utilisation acceptable",
         "blocks": [
           {
-            "p": "Jouez loyalement et laissez le site fonctionner pour tous les autres. N’attaquez pas le service, ne le surchargez pas et ne le sondez pas, ne l’aspirez pas en masse et n’essayez pas de fausser son système de score. Ne soumettez pas de scores générés par des bots, des scripts ou toute autre forme d’automatisation. N’utilisez pas le formulaire de contact ni le classement pour envoyer du spam, harceler qui que ce soit ou vous faire passer pour quelqu’un d’autre."
+            "p": "Jouez loyalement et laissez le site fonctionner pour tous les autres. N’attaquez pas le service, ne le surchargez pas et n’y cherchez pas de failles, ne l’aspirez pas en masse et n’essayez pas de fausser son système de score. Ne soumettez pas de scores générés par des bots, des scripts ou toute autre forme d’automatisation. N’utilisez pas le formulaire de contact ni le classement pour envoyer du spam, harceler qui que ce soit ou vous faire passer pour quelqu’un d’autre."
           },
           {
             "p": "Le formulaire de contact sert à de vrais messages adressés à une vraie personne. Utilisez-le pour signaler des bugs, poser des questions ou proposer des idées, et votre message sera lu."

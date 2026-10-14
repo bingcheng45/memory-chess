@@ -1,6 +1,6 @@
 {
   "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": null,
+  "approvedHash": "71365d8008109da4b1fa5be21f2c2286eb788ccd62f49fc0e8c839c278241796",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -116,7 +116,7 @@
         "title": "Comment nous utilisons et partageons les informations",
         "blocks": [
           {
-            "p": "Nous utilisons les informations pour fournir et sécuriser Memory Chess, calculer les résultats, publier les scores soumis au classement, répondre aux messages de contact, examiner les avis, mesurer les performances du site, prévenir les abus et financer le site grâce à la publicité. Nous ne vendons pas les coordonnées ni les avis que vous soumettez."
+            "p": "Nous utilisons les informations pour fournir et sécuriser Memory Chess, calculer les résultats, publier les scores soumis au classement, répondre aux messages de contact, examiner les avis, mesurer les performances du site, prévenir les abus et soutenir le site grâce à la publicité. Nous ne vendons pas les coordonnées ni les avis que vous soumettez."
           },
           {
             "p": "Les données ne sont traitées par des prestataires que lorsque c’est nécessaire : Google Sheets pour les messages de contact et les avis sur le jeu, Supabase pour les statistiques de jeu, les entrées du classement et les totaux de vues et de « j’aime » des articles, Vercel pour l’hébergement et la mesure des performances, Ahrefs pour l’analyse d’audience, et Google pour l’analyse d’audience, le consentement et la publicité. Ces prestataires peuvent traiter des données dans d’autres pays, selon leurs propres conditions de confidentialité."

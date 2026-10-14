@@ -18,7 +18,7 @@
 .lab-paper .lab-share-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .lab-paper .lab-share-status { min-height: 1.55em; margin: 8px 0 0; font: 400 14px/1.55 var(--lp-body); color: var(--lp-ink-2); }
 .lab-paper .lab-share-caption { display: grid; gap: 8px; justify-items: start; margin: 0; padding: 12px 16px 16px; background: var(--lp-paper); border: 1px solid var(--lp-line); border-radius: var(--lp-r-md); }
-.lab-paper .lab-share-copy { min-width: 172px; }
+.lab-paper .lab-share-caption .lab-share-copy { min-width: 192px; }
 .lab-paper .lab-share-copy[data-state="copied"] { color: var(--lp-correct); border-color: var(--lp-correct); }
 .lab-paper .lab-share-label { margin: 0; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .lab-share-caption pre { margin: 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 400 14px/1.55 var(--lp-body); color: var(--lp-ink-2); }

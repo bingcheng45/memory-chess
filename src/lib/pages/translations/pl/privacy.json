@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Polityka prywatności",
+      "description": "Dowiedz się, jak Memory Chess korzysta z danych, pamięci przeglądarki, analityki, plików cookie i usług reklamowych.",
+      "socialTitle": "Polityka prywatności Memory Chess",
+      "socialDescription": "Dowiedz się, jak Memory Chess obchodzi się z danymi, plikami cookie, analityką i reklamami."
+    },
+    "kicker": "Twoja prywatność",
+    "title": "Polityka prywatności",
+    "lede": "Prosty przewodnik po tym, co zbiera Memory Chess, dlaczego z tego korzystamy i jakie masz możliwości wyboru.",
+    "sections": {
+      "short-version": {
+        "title": "W skrócie",
+        "blocks": [
+          {
+            "p": "W Memory Chess możesz grać bez zakładania konta. Korzystamy z niewielkiej ilości danych, żeby prowadzić grę, zapamiętywać twoje ustawienia, rozumieć, jak działa strona, odpowiadać na wiadomości, prowadzić ranking i ulepszać wrażenia z korzystania ze strony. Korzystamy też z Google AdSense, które może używać plików cookie i podobnych technologii do reklam, gdy reklamy są włączone."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Kto odpowiada za twoje dane",
+        "blocks": [
+          {
+            "p": "Memory Chess prowadzi Bing Cheng, niezależny programista, który jest administratorem danych osobowych opisanych w tej polityce. W każdej sprawie lub z każdym żądaniem dotyczącym prywatności napisz na <mail>{email}</mail> albo skorzystaj z formularza kontaktowego."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Informacje, które nam przekazujesz",
+        "blocks": [
+          {
+            "ul": [
+              "<b>Wiadomości kontaktowe:</b> twoje imię, adres e-mail, rodzaj zapytania i treść wiadomości, gdy korzystasz z formularza kontaktowego.",
+              "<b>Opinie o grze:</b> twoja ocena w gwiazdkach, opcjonalne komentarze i szczegóły gry, takie jak celność, poziom trudności, liczba figur i czasy ukończenia. Ten formularz opinii nie prosi o imię ani adres e-mail.",
+              "<b>Wpisy w rankingu:</b> wybrana przez ciebie nazwa gracza, przesyłane szczegóły wyniku, twoja ocena umiejętności w danym momencie i wybrany kraj, jeśli go wybierzesz. Są one wyświetlane publicznie, więc nie używaj swojego prawdziwego imienia i nazwiska, jeśli wolisz zachować je dla siebie. Gdy dołączasz do szachownicy dnia, formularz podpowiada kraj na podstawie kraju, z którego pochodzi twoje połączenie, a który podaje nasz dostawca hostingu; nie zapisujemy tego przypuszczenia, a zapisywany jest kraj, który wybierzesz."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Informacje zbierane automatycznie",
+        "blocks": [
+          {
+            "p": "Nasi dostawcy usług pomiarowych mogą otrzymywać informacje techniczne i dotyczące korzystania ze strony, takie jak wyświetlone strony, przybliżona lokalizacja, typ przeglądarki i urządzenia, strona odsyłająca, adres IP i czasy wczytywania. Memory Chess korzysta z Google Analytics, Vercel Analytics, Vercel Speed Insights i Ahrefs Analytics, żeby rozumieć ruch na stronie i dbać o to, by była szybka i niezawodna."
+          },
+          {
+            "p": "Nie prosimy tych narzędzi o zbieranie treści twoich wiadomości kontaktowych ani komentarzy w opiniach o grze."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Pliki cookie i pamięć przeglądarki",
+        "blocks": [
+          {
+            "p": "Memory Chess korzysta z pamięci przeglądarki, żeby przechowywać historię gier i ustawienia na twoim urządzeniu, pamiętać ustawienia dźwięku, nie pokazywać ponownie zamkniętego baneru z aktualizacją i wyznaczać, kiedy prośba o opinię może wrócić. Wyczyszczenie danych przeglądarki resetuje te wybory."
+          },
+          {
+            "p": "Dziennik laboratorium na stronie głównej zapisuje każdą ukończoną rundę, w tym próbny odczyt na stronie głównej, w IndexedDB i pamięci lokalnej twojej przeglądarki: pozycję, którą oglądasz, pozycję, którą odtwarzasz, twoje czasy, twoje wyniki, przesunięcie twojej strefy czasowej, miejsce, w którym zaczynasz rundę (na przykład strona główna lub poradnik), oraz kolejność i czas ustawienia każdej figury. Służy wyłącznie do rysowania na tym urządzeniu twojej serii, rekordów osobistych, trendu celności, mapy pomyłek, szachownicy dnia, kolejki powtórek i krzywej zapominania. Sam dziennik, z pozycjami, polami, ustawieniami i historią, nigdy nie opuszcza tego urządzenia. Jedynym wyjątkiem jest runda, którą zdecydujesz się udostępnić, opisana poniżej. Pamięć lokalna przechowuje też dzień według UTC, w którym ostatnio otwarto szachownicę dnia, dzięki czemu masz jedną próbę dziennie, oraz informację, które etapy powtórek zostały otwarte, żeby plansza porzucona przed wynikiem nie pojawiła się dwa razy przy tym samym odstępie. Google Analytics otrzymuje zdarzenie za każdą ukończoną rundę, na stronie głównej lub w grze, z liczbą figur, czasem na zapamiętanie, liczbą zapamiętanych figur, twoją celnością i miejscem rozpoczęcia rundy, którym może być szachownica dnia, powtórka lub plan. Otrzymuje też zdarzenie, gdy runda się zaczyna, z liczbą figur, czasem na zapamiętanie i miejscem rozpoczęcia. Otrzymuje również kilka zdarzeń z laboratorium: gdy sekcja laboratorium pojawia się na ekranie, gdy klikasz jeden z jej linków do gry, liczbę rund, gdy pobierasz dziennik lub prosisz o kopię zapasową między urządzeniami, oraz liczbę rund dodanych i pominiętych podczas importu. Żadne z tych zdarzeń nie zawiera pozycji, pól, identyfikatorów rund ani serii. Gdy zaczynasz, zatrzymujesz lub kończysz plan albo ustawiasz lub usuwasz cel, Google Analytics otrzymuje zdarzenie, które podaje tylko to działanie, bez nazwy planu i bez liczb. Wybrany plan i cel są przechowywane w pamięci lokalnej twojej przeglądarki na tym urządzeniu, podobnie jak liczba dni w tygodniu, w które zamierzasz grać, co nie wysyła żadnego zdarzenia. Pobierz mój dziennik laboratorium zapisuje kopię jako plik, nad którym masz kontrolę, a wyczyszczenie danych przeglądarki usuwa dziennik. Okna prywatne go nie przechowują. Dopiero gdy naciśniesz Kopiuj mój odczyt, przeglądarka umieszcza w schowku krótki tekst z twoim zakresem pamięci, a także zapamiętanymi figurami i tempem, gdy dziennik może je odczytać, każde z liczbą rund. Tekst nie zawiera żadnych pozycji, pól ani dat i nie jest nigdzie wysyłany. Pamięć lokalna przechowuje też czas, w którym informacja o przechowywaniu dziennika w tej przeglądarce po raz pierwszy pojawiła się na ekranie, żeby pokazać ją tylko raz, czas ostatniego zajrzenia do notatnika, żeby nowsze wpisy były oznaczone jako nowe, oraz czas ostatniego pobrania dziennika. Po kilku rundach strona jeden raz prosi przeglądarkę o zachowanie dziennika, gdy zacznie brakować miejsca, a pamięć lokalna odnotowuje, że ta prośba padła."
+          },
+          {
+            "p": "Strona postępów odczytuje ten sam dziennik w twojej przeglądarce i niczego nie wysyła. Dopiero gdy naciśniesz Udostępnij moje postępy, przeglądarka rysuje obraz z danymi, które dziennik może odczytać: zakresem pamięci, oceną umiejętności, zapamiętanymi figurami, tempem, najlepszą i ostatnią celnością, serią wygranych, dniami z rzędu, rozegranymi rundami i dniami gry. Dopiero gdy naciśniesz Udostępnij wynik na ekranie wyników gry, przeglądarka rysuje obraz tej rundy: jej celność, zapamiętane figury, liczbę figur, dozwolony i wykorzystany czas na zapamiętanie, czas odtwarzania oraz, z wyjątkiem powtórki, twoją ocenę, jej zmianę i ewentualną serię wygranych, a z wyjątkiem szachownicy dnia także pozycję, którą oglądano, i pozycję, którą odtworzono."
+          },
+          {
+            "p": "Każdy z tych przycisków otwiera okno udostępniania i nic nie opuszcza twojej przeglądarki, dopóki nie wybierzesz jednej z jego opcji: przekazania obrazu, krótkiego opisu i linku do systemowego menu udostępniania urządzenia, pobrania obrazu, skopiowania obrazu, skopiowania opisu z linkiem albo otwarcia strony publikowania w X, Facebooku, LinkedIn, Reddicie, WhatsAppie, Threads lub Bluesky z wypełnionym linkiem, a we wszystkich poza Facebookiem i LinkedIn także z wypełnionym opisem. To, co tam wyślesz, podlega własnym zasadom prywatności danego serwisu."
+          },
+          {
+            "p": "Link w opisie otwiera własną stronę karty w Memory Chess, a dane z karty są zapisane w samym linku. Udostępniony link do wyniku, pod adresem /share/result/, zawiera też pozycję, którą oglądano, pozycję, którą odtworzono, oraz kolejność i czas ustawienia każdej figury, chyba że runda była szachownicą dnia, której link nie zawiera żadnej pozycji. Każdy, kto otworzy link, może je odczytać, a Memory Chess odczytuje je z linku, żeby narysować stronę i jej podgląd. Link powstaje tylko wtedy, gdy udostępniasz kartę, a Memory Chess go nie zapisuje. Tak jak w przypadku każdej strony serwisu, wymienione wyżej narzędzia analityczne rejestrują adres strony, łącznie z linkiem, gdy ktoś ją otwiera."
+          },
+          {
+            "p": "Google Analytics otrzymuje zdarzenie lab_dashboard_share, gdy karta postępów opuszcza stronę, i zdarzenie result_share, gdy robi to karta wyniku. Każde z nich podaje jako metodę tylko sposób, w jaki karta opuściła stronę: native dla menu udostępniania, download dla pobranego obrazu, copy_image dla skopiowanego obrazu, copy dla skopiowanego opisu lub post dla strony publikowania w serwisie, przy czym serwis jest podawany jako x, facebook, linkedin, reddit, whatsapp, threads lub bluesky. Żadne z tych zdarzeń nie zawiera danych z karty, jej pozycji ani jej linku."
+          },
+          {
+            "p": "Gdy przesyłasz wynik do rankingu, pamięć lokalna na tym urządzeniu przechowuje też identyfikator, który ranking nadaje temu wpisowi, wraz z poziomem trudności, krajem, wynikiem i czasem wysłania, dla twojego najlepszego wpisu na każdym poziomie trudności. Dopiero gdy naciśniesz Sprawdź moje miejsce w dzienniku laboratorium, przeglądarka wysyła ten identyfikator wpisu do Memory Chess wraz z informacją, czy ma on zostać sklasyfikowany na świecie, czy w obrębie kraju wpisu. Memory Chess odczytuje wpis z rankingu i odpowiada jego miejscem oraz liczbą wpisów, wśród których został sklasyfikowany. Odpowiedź nie jest przechowywana. Aby ograniczyć częstotliwość sprawdzania miejsca, serwer przez jedną minutę liczy w swojej pamięci sprawdzenia z każdego adresu IP i usuwa adres przy pierwszym sprawdzeniu po upływie tej minuty. Jeśli wpisu nie ma już w rankingu, jego identyfikator jest usuwany z tego urządzenia. Google Analytics otrzymuje zdarzenie informujące, że sprawdzono miejsce, bez identyfikatora wpisu i bez miejsca."
+          },
+          {
+            "p": "Polubienie artykułu zapisuje w pamięci lokalnej twojej przeglądarki identyfikator tego artykułu i liczbę polubień widoczną w tej chwili, dzięki czemu przycisk polubienia pozostaje wciśnięty, a jego licznik nie spada, gdy wracasz. Pamięć sesji zapamiętuje, które artykuły otwarto w bieżącej karcie, żeby ponowne otwarcie jednego z nich w tej karcie nie dodawało wyświetlenia. Obie listy pozostają w twojej przeglądarce. Gdy polubisz artykuł, Google Analytics otrzymuje też zdarzenie polubienia, które podaje ten artykuł."
+          },
+          {
+            "p": "Wyszukiwarka w dziale Nauka szereguje poradniki w twojej przeglądarce albo na serwerze, gdy szukasz ze strony wyszukiwania. Google Analytics otrzymuje zdarzenie dla wyszukiwania z liczbą wpisanych znaków, liczbą pasujących poradników, najwyżej ocenionym poradnikiem i informacją, czy dopasowanie było bliskie, oraz zdarzenie przy otwarciu wyniku z tym poradnikiem i jego miejscem na liście. Żadne z tych zdarzeń nie zawiera wpisanych słów. Wyszukiwanie wykonane z samej strony wyszukiwania umieszcza twoje słowa w adresie tej strony, a narzędzia analityczne rejestrują adres każdej wyświetlonej strony, więc te słowa mogą do nich trafić."
+          },
+          {
+            "p": "Google Analytics i usługi reklamowe mogą używać plików cookie lub podobnych identyfikatorów. Możesz blokować lub usuwać pliki cookie w przeglądarce, choć niektóre ustawienia mogą wtedy przestać działać zgodnie z oczekiwaniami."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Reklamy i Google AdSense",
+        "blocks": [
+          {
+            "p": "Memory Chess korzysta z Google AdSense, żeby utrzymać stronę. Zewnętrzni dostawcy, w tym Google, mogą umieszczać lub odczytywać pliki cookie, używać sygnalizatorów WWW lub przetwarzać adresy IP, gdy używane są usługi reklamowe lub tagi reklamowe."
+          },
+          {
+            "p": "Google i jego partnerzy reklamowi mogą używać reklamowych plików cookie do wyświetlania reklam na podstawie twoich wizyt w Memory Chess i na innych stronach internetowych. W zależności od twojej lokalizacji, wyborów i ustawień reklamy mogą być spersonalizowane lub niespersonalizowane. W wyświetlaniu i mierzeniu reklam mogą też uczestniczyć inni dostawcy reklam certyfikowani przez Google."
+          },
+          {
+            "p": "Google jest jednym z tych dostawców i używa pliku cookie DoubleClick, znanego też jako plik cookie DART, do wyświetlania reklam na podstawie twoich wizyt na tej stronie i innych stronach w internecie. Możesz zrezygnować z pliku cookie DART w ustawieniach reklam Google, do których link znajduje się poniżej."
+          },
+          {
+            "p": "Dowiedz się więcej o tym, <partnerSites>jak Google wykorzystuje informacje ze stron partnerów</partnerSites>. Reklamami spersonalizowanymi możesz zarządzać w <adCenter>My Ad Center</adCenter>, a z reklam niektórych innych dostawców możesz zrezygnować przez <adChoices>YourAdChoices</adChoices>."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Wybory dotyczące zgody",
+        "blocks": [
+          {
+            "p": "Tam, gdzie jest to wymagane, odwiedzającym wyświetlany jest komunikat o zgodzie, zanim zostaną użyte odpowiednie dane reklamowe. Odwiedzający z Europejskiego Obszaru Gospodarczego, Wielkiej Brytanii i Szwajcarii mogą wyrazić zgodę, odmówić jej lub zarządzać poszczególnymi wyborami za pośrednictwem platformy zgód Google. Możesz też zmienić ustawienia plików cookie w przeglądarce i dostosować preferencje reklam Google w My Ad Center."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Jak korzystamy z informacji i komu je udostępniamy",
+        "blocks": [
+          {
+            "p": "Korzystamy z informacji, żeby udostępniać i zabezpieczać Memory Chess, obliczać wyniki, publikować przesłane wyniki w rankingu, odpowiadać na wiadomości kontaktowe, przeglądać opinie, mierzyć wydajność strony, zapobiegać nadużyciom i utrzymywać stronę dzięki reklamom. Nie sprzedajemy przesłanych przez ciebie danych kontaktowych ani opinii."
+          },
+          {
+            "p": "Dostawcy usług przetwarzają dane tylko tam, gdzie jest to potrzebne: Google Sheets w przypadku wiadomości kontaktowych i opinii o grze, Supabase w przypadku statystyk gier, wpisów w rankingu oraz łącznej liczby wyświetleń i polubień artykułów, Vercel w zakresie hostingu i pomiaru wydajności, Ahrefs w zakresie analityki, a Google w zakresie analityki, zgód i reklam. Ci dostawcy mogą przetwarzać dane w innych krajach zgodnie z własnymi zasadami prywatności."
+          },
+          {
+            "p": "Gdy otworzysz lub polubisz artykuł, Supabase przechowuje dla każdego artykułu tylko łączną liczbę wyświetleń i łączną liczbę polubień, z czasem ostatniej zmiany i bez żadnego identyfikatora odwiedzającego."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Przechowywanie i bezpieczeństwo",
+        "blocks": [
+          {
+            "p": "Przechowujemy przesłane informacje tylko tak długo, jak są przydatne do celów opisanych powyżej, w tym do prowadzenia publicznego rankingu i odpowiadania na wiadomości, lub tak długo, jak wymaga tego prawo. Żadna usługa internetowa nie jest w pełni bezpieczna, ale ograniczamy dostęp i stosujemy rozsądne zabezpieczenia w systemach, które kontrolujemy."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "Twoje możliwości wyboru",
+        "blocks": [
+          {
+            "ul": [
+              "Graj bez podawania nazwy w rankingu i bez przesyłania opinii.",
+              "Usuń zapisane dane gry i ustawienia w przeglądarce.",
+              "Zarządzaj plikami cookie, wyborami dotyczącymi zgody i reklamami spersonalizowanymi.",
+              "Zapytaj nas o przesłane przez ciebie informacje, popraw je lub zażądaj ich usunięcia, z zastrzeżeniem obowiązujących przepisów i naszej możliwości zweryfikowania żądania."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "Twoje prawa wynikające z RODO (GDPR) i CCPA",
+        "blocks": [
+          {
+            "p": "Jeśli przebywasz w Europejskim Obszarze Gospodarczym lub w Wielkiej Brytanii, RODO (GDPR) daje ci prawo dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania, sprzeciwu wobec przetwarzania oraz przenoszenia danych. Podstawami prawnymi, na których się opieramy, są twoja zgoda, w przypadku reklam spersonalizowanych i analitycznych plików cookie tam, gdzie zgoda jest wymagana, oraz nasze prawnie uzasadnione interesy, w przypadku prowadzenia i zabezpieczania strony, publikowania przesyłanych przez ciebie wyników w rankingu i odpowiadania na wysyłane przez ciebie wiadomości. Możesz w każdej chwili wycofać zgodę za pomocą komunikatu o zgodzie lub ustawień przeglądarki i możesz wnieść skargę do lokalnego organu nadzorczego."
+          },
+          {
+            "p": "Jeśli mieszkasz w Kalifornii, CCPA daje ci prawo do informacji o tym, jakie dane osobowe są zbierane, do żądania ich usunięcia oraz do sprzeciwu wobec ich sprzedaży lub udostępniania. Nie sprzedajemy twoich danych osobowych. Pliki cookie używane do reklam spersonalizowanych mogą być uznane za udostępnianie w rozumieniu CCPA, a zrezygnować z tego możesz za pomocą komunikatu o zgodzie, My Ad Center i YourAdChoices, do których linki znajdują się powyżej. To jest nasza informacja „Nie sprzedawaj ani nie udostępniaj moich danych osobowych” (Do Not Sell or Share My Personal Information). Aby skorzystać z któregokolwiek z tych praw, napisz na <mail>{email}</mail>."
+          }
+        ]
+      },
+      "children": {
+        "title": "Prywatność dzieci",
+        "blocks": [
+          {
+            "p": "Memory Chess to gra treningowa dla ogółu odbiorców i nie jest przeznaczona do zbierania danych osobowych dzieci. Jeśli jesteś rodzicem lub opiekunem i uważasz, że dziecko przesłało dane osobowe, skontaktuj się z nami, abyśmy mogli to sprawdzić i w razie potrzeby usunąć te dane."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Zmiany i kontakt",
+        "blocks": [
+          {
+            "p": "Możemy aktualizować tę politykę, gdy zmienia się strona lub nasi dostawcy usług. Data na górze strony wskazuje ostatnią wersję. W sprawie pytań lub żądań dotyczących prywatności skorzystaj z <contact>formularza kontaktowego Memory Chess</contact>."
+          }
+        ]
+      }
+    }
+  }
+}

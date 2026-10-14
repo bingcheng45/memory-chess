@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Regulamin",
+      "description": "Napisane prostym językiem zasady gry w Memory Chess, przesyłania wyników do rankingu i korzystania z treści strony.",
+      "socialTitle": "Regulamin Memory Chess",
+      "socialDescription": "Napisane prostym językiem zasady gry w Memory Chess i korzystania ze strony."
+    },
+    "kicker": "Drobnym drukiem",
+    "title": "Regulamin",
+    "lede": "Memory Chess to darmowa gra prowadzona przez jedną osobę. Ten regulamin jest krótki, bo umowa jest prosta, i został napisany po to, żeby go przeczytać.",
+    "sections": {
+      "service": {
+        "title": "Usługa",
+        "blocks": [
+          {
+            "p": "Memory Chess to darmowa gra przeglądarkowa do treningu zapamiętywania szachownicy. Udostępniam ją w stanie, w jakim jest, i w takim zakresie, w jakim jest dostępna, bez jakiejkolwiek gwarancji. Staram się, żeby działała szybko, dokładnie i bez przerw, ale nie obiecuję nieprzerwanego działania, bezbłędnej punktacji ani tego, że jakakolwiek funkcja pozostanie taka sama na zawsze. Mogę w dowolnym momencie zmienić, zawiesić lub zakończyć działanie dowolnej części strony."
+          },
+          {
+            "p": "W zakresie dozwolonym przez prawo nie odpowiadam za szkody wynikające z korzystania przez ciebie ze strony. To gra pamięciowa. Rozsądną granicą tego, co może tu pójść nie tak, jest utrata wyniku, na którym ci zależało, a i tak bardzo się staram, żeby do tego nie doszło."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Dozwolone korzystanie",
+        "blocks": [
+          {
+            "p": "Graj uczciwie i pozwól, żeby strona działała dla wszystkich innych. Nie atakuj usługi, nie przeciążaj jej ani nie sonduj, nie pobieraj z niej danych masowo i nie próbuj złamać jej punktacji. Nie przesyłaj wyników wygenerowanych przez boty, skrypty ani jakąkolwiek automatyzację. Nie używaj formularza kontaktowego ani rankingu do spamowania, nękania ani podszywania się pod kogokolwiek."
+          },
+          {
+            "p": "Formularz kontaktowy służy do prawdziwych wiadomości do prawdziwej osoby. Używaj go do zgłaszania błędów, pytań i pomysłów, a wiadomość zostanie przeczytana."
+          },
+          {
+            "p": "Mogę blokować ruch lub ograniczać dostęp, który narusza te zasady. Skoro nie ma kont, które można by zablokować, usuwanie nieuczciwych wpisów i blokowanie nadużyć na brzegu sieci to środki egzekwowania, jakie mam, i z nich korzystam."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Ranking",
+        "blocks": [
+          {
+            "p": "Przesłanie wyniku do rankingu jest dobrowolne. Wszystko, co tam przesyłasz, jest publiczne. Nazwa przypisana do wyniku to to, co wpiszesz, więc wybierz coś, co chętnie zobaczysz opublikowane, i nie używaj swojego prawdziwego imienia i nazwiska ani niczyich danych osobowych, jeśli wolisz zachować je dla siebie."
+          },
+          {
+            "p": "Przesłany wpis zawiera wybraną przez ciebie nazwę i szczegóły rundy, takie jak celność, poziom trudności i czas ukończenia. Po opublikowaniu pozostaje w rankingu, dopóki nie wyprą go lepsze wyniki albo nie zostanie usunięty."
+          },
+          {
+            "p": "Mogę usuwać wpisy w rankingu, które są obraźliwe, podszywają się pod kogoś, wyglądają na zautomatyzowane lub wyraźnie nie zostały uzyskane przez osobę grającą w grę. Usuwam wpisy, żeby ranking był uczciwy, a nie po to, żeby decydować, kto wygrywa."
+          }
+        ]
+      },
+      "content": {
+        "title": "Treści i własność intelektualna",
+        "blocks": [
+          {
+            "p": "Własne treści strony, w tym gra, poradniki z działu Nauka, projekt graficzny i kod, który ją napędza, należą do mnie. Możesz linkować do dowolnej strony, cytować rozsądne fragmenty z podaniem źródła i udostępniać swoje wyniki, gdzie tylko chcesz. Nie publikuj ponownie całych poradników i nie podawaj treści strony jako własnych."
+          },
+          {
+            "p": "Same szachy nie należą do nikogo. Pozycje, przepisy i notacja są wolne dla wszystkich, tutaj i wszędzie indziej."
+          },
+          {
+            "p": "Jeśli przesyłasz opinie lub sugestie, zgadzasz się, że mogę ich używać do ulepszania strony bez obowiązku wynagrodzenia ani wymienienia cię jako autora. Opinie graczy już nieraz kształtowały prawdziwe wydania, a dziennik zmian zapisuje, co z nich wynikło."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Usługi zewnętrzne",
+        "blocks": [
+          {
+            "p": "Strona działa w oparciu o niewielki zestaw usług zewnętrznych. Google AdSense wyświetla reklamy, dzięki którym strona jest darmowa. Google Analytics, Vercel Analytics, Vercel Speed Insights i Ahrefs Analytics mierzą ruch i wydajność. Supabase przechowuje statystyki gier i wpisy w rankingu. Każda z tych usług ma własne warunki, a <privacy>polityka prywatności</privacy> wyjaśnia, z jakimi danymi ma do czynienia każda z nich i jakie masz możliwości wyboru."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Zmiany regulaminu",
+        "blocks": [
+          {
+            "p": "Mogę aktualizować ten regulamin, gdy zmienia się strona lub jej usługi. Aktualna wersja zawsze znajduje się pod tym adresem, a dalsze korzystanie ze strony po zmianie oznacza akceptację zaktualizowanego regulaminu. Wszystko, co w istotny sposób dotyczy graczy, na przykład zmianę działania rankingu, odnotowuję także w dzienniku zmian."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Kontakt",
+        "blocks": [
+          {
+            "p": "Pytania o ten regulamin albo wpis w rankingu, który chcesz zgłosić do sprawdzenia lub usunięcia, kieruj na <mail>{email}</mail>. Odpowiadam na nie osobiście."
+          }
+        ]
+      }
+    }
+  }
+}

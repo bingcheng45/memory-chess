@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": "1e24656af7b65d199338b35031786eb6986a2d6b68c3d5eb71efbc7ad5b13bfb",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Om",
+      "description": "Hvem der bygger Memory Chess, hvorfor spillet findes, hvordan en runde får point, og hvordan guiderne i Lær bliver skrevet.",
+      "socialTitle": "Om Memory Chess",
+      "socialDescription": "Hvem der bygger Memory Chess, hvorfor spillet findes, og hvordan det virker."
+    },
+    "kicker": "Om",
+    "title": "Om Memory Chess",
+    "lede": "Memory Chess er et gratis spil til hukommelse af skakbrættet, bygget og drevet af én person. Denne side forklarer, hvem det er, hvorfor spillet findes, og hvordan det faktisk virker.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Hvem der driver siden",
+        "blocks": [
+          {
+            "p": "Jeg hedder Bing Cheng og er soloudvikler. Jeg driver Memory Chess alene, med hjælp fra AI til koden og teksterne på siden. Der står intet team og intet firma bag. Jeg bygger også <tont>Tont</tont>, og jeg lægger nyheder om siden ud på <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Fordi én person driver det hele, holdes siden bevidst lille. Ét spil, en række træningsguider, en rangliste og en ændringslog, der viser, hvad der faktisk er blevet udgivet."
+          },
+          {
+            "p": "Spillet er gratis og kræver ingen konto. Annoncer via Google AdSense hjælper med at dække udgifterne til hosting, og intet på siden er låst bag en betaling eller en tilmelding."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Hvorfor spillet findes",
+        "blocks": [
+          {
+            "p": "De fleste råd om at blive bedre til skak sender begyndere hen til åbninger, opgaver og kurser. Efter min erfaring ligger det tidligere problem under alt det. Begyndere mister overblikket over brættet. De overser en forsvarer, glemmer en brik, der flyttede for to træk siden, og går lige ind i slag, som de straks ville se på et diagram."
+          },
+          {
+            "p": "At holde en stilling i hovedet er en færdighed, man kan træne, og der var få steder, hvor man kunne øve den direkte. Så jeg byggede et. Memory Chess skiller netop den ene færdighed ud og giver den en score, så du kan se den blive bedre. Vil du have noget på spil, kan du sætte et selvvalgt navn på den offentlige rangliste og måle dig med alle andre."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Sådan foregår en runde",
+        "blocks": [
+          {
+            "p": "Du vælger, hvor mange brikker du vil møde, og hvor længe du må studere dem. Forudindstillingerne går fra Let, to brikker med ti sekunder, op til Stormester, tyve brikker med fem sekunder, og du kan indstille enhver egen kombination. Derefter forløber runden i tre faser."
+          },
+          {
+            "p": "Først husker du. Brættet viser en stilling i den tid, du valgte, og så forsvinder den. Dernæst genopbygger du. Du sætter brikker på et tomt bræt efter hukommelsen. Til sidst får du dit resultat. Spillet sammenligner dit bræt med originalen, felt for felt."
+          },
+          {
+            "p": "Pointgivningen er streng. En brik tæller kun som rigtig, når den rigtige brik i den rigtige farve står på præcis det felt, den stod på i den oprindelige stilling. Et tårn, hvor en springer hører til, er forkert to gange. Det tæller som en fejlplaceret brik, og springeren, som det fortrængte, tæller som manglende. Din præcision er andelen af de oprindelige brikker, som du gengav præcist."
+          },
+          {
+            "p": "Resultatskærmen viser alle tre grupper, de placeringer du fik rigtigt, dem du fik forkert, og de brikker du helt glemte, så hver runde fortæller dig, hvad du skal tage fat på næste gang. Du kan <game>prøve en runde</game> på under et minut."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Sådan bliver guiderne i Lær skrevet",
+        "blocks": [
+          {
+            "p": "<learn>Biblioteket i Lær</learn> rummer {count, plural, one {# guide} other {# guider}} om brætsyn, visualisering og hukommelsestræning. De er skrevet med hjælp fra AI. Hver skakstilling i dem bliver kontrolleret af et script for antallet af brikker, lovlighed og hvert angreb, teksten påstår. Hver påstand om, hvordan Memory Chess virker, er sporet tilbage til spillets kode. Hver guide har øvelser. Nogle åbner en runde i spillet med de rigtige indstillinger. Resten er beregnet til et rigtigt bræt."
+          },
+          {
+            "p": "Hvor guiderne påstår noget om hukommelse og læring, henviser de til offentliggjort forskning, blandt andet Gobets og Simons arbejde om skakhukommelse og den eksperimentelle litteratur om genkaldelse og spredt øvelse. Hver henvisning linker til sin kilde. Jeg har ikke selv udført forskning, og guiderne lader heller ikke som om."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Sidens historie",
+        "blocks": [
+          {
+            "p": "Den første udgave gik i luften i marts 2025 som en enkel version af spillet. Spil på mobil og valg af brikker fulgte inden for få uger. Biblioteket i Lær blev lanceret i marts 2026, og i august 2026 begyndte selve spillet at findes på 24 sprog. Guiderne og ændringsloggen er på engelsk. <changelog>Ændringsloggen</changelog> registrerer hver udgivelse med versionsnummer, inklusive fejlrettelserne. Jeg holder den ærlig, fordi jeg selv bruger den til at huske, hvad der blev ændret og hvornår."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Kontakt mig",
+        "blocks": [
+          {
+            "p": "Skriv til mig på <mail>{email}</mail>, eller brug <contact>kontaktformularen</contact>. Jeg læser alt, og rapporter fra spillere har før ført til, at rigtige fejl er blevet rettet. Vil du læse det med småt, beskriver <privacy>privatlivspolitikken</privacy> og <terms>brugsbetingelserne</terms>, hvordan siden håndterer data, og hvad du accepterer ved at spille."
+          }
+        ]
+      }
+    }
+  }
+}

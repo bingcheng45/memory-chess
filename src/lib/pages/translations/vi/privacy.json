@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": "5dc262d65d2b226524fcb8878b64c9a640389fa8bff9c38c5ab0d58f0238e324",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Chính sách quyền riêng tư",
+      "description": "Tìm hiểu cách Memory Chess sử dụng dữ liệu, bộ nhớ trình duyệt, công cụ phân tích, cookie và các dịch vụ quảng cáo.",
+      "socialTitle": "Chính sách quyền riêng tư của Memory Chess",
+      "socialDescription": "Tìm hiểu cách Memory Chess xử lý dữ liệu, cookie, công cụ phân tích và quảng cáo."
+    },
+    "kicker": "Quyền riêng tư của bạn",
+    "title": "Chính sách quyền riêng tư",
+    "lede": "Hướng dẫn đơn giản về những gì Memory Chess thu thập, lý do chúng tôi sử dụng chúng và những lựa chọn bạn có.",
+    "sections": {
+      "short-version": {
+        "title": "Tóm tắt",
+        "blocks": [
+          {
+            "p": "Bạn có thể chơi Memory Chess mà không cần tạo tài khoản. Chúng tôi sử dụng một lượng nhỏ dữ liệu để vận hành trò chơi, ghi nhớ thiết lập của bạn, hiểu hiệu năng của trang web, trả lời tin nhắn, duy trì bảng xếp hạng và cải thiện trải nghiệm. Chúng tôi cũng sử dụng Google AdSense, dịch vụ này có thể dùng cookie và công nghệ tương tự cho quảng cáo khi quảng cáo được bật."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Ai chịu trách nhiệm về dữ liệu của bạn",
+        "blocks": [
+          {
+            "p": "Memory Chess do Bing Cheng, một lập trình viên độc lập, vận hành. Bing Cheng là bên kiểm soát dữ liệu đối với thông tin cá nhân được mô tả trong chính sách này. Với mọi câu hỏi hoặc yêu cầu về quyền riêng tư, hãy gửi email đến <mail>{email}</mail> hoặc dùng biểu mẫu liên hệ."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Thông tin bạn cung cấp cho chúng tôi",
+        "blocks": [
+          {
+            "ul": [
+              "<b>Tin nhắn liên hệ:</b> tên, địa chỉ email, loại yêu cầu và nội dung tin nhắn của bạn khi bạn dùng biểu mẫu liên hệ.",
+              "<b>Góp ý về trò chơi:</b> số sao bạn đánh giá, nhận xét không bắt buộc và thông tin chi tiết về ván chơi như độ chính xác, độ khó, số quân và thời gian hoàn thành. Biểu mẫu góp ý này không hỏi tên hay địa chỉ email của bạn.",
+              "<b>Lượt gửi lên bảng xếp hạng:</b> tên người chơi bạn chọn, thông tin điểm số bạn gửi, điểm kỹ năng của bạn tại thời điểm đó và quốc gia bạn chọn, nếu có. Những thông tin này được hiển thị công khai, vì vậy xin đừng dùng tên thật nếu bạn muốn giữ kín tên mình. Khi bạn tham gia bàn cờ hằng ngày, biểu mẫu sẽ gợi ý một quốc gia dựa trên quốc gia nơi kết nối của bạn xuất phát, do nhà cung cấp dịch vụ lưu trữ của chúng tôi báo lại; chúng tôi không lưu phỏng đoán đó, và quốc gia bạn chọn mới là quốc gia được lưu."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Thông tin được thu thập tự động",
+        "blocks": [
+          {
+            "p": "Các nhà cung cấp dịch vụ đo lường của chúng tôi có thể nhận thông tin kỹ thuật và thông tin sử dụng như các trang đã xem, vị trí gần đúng, loại trình duyệt và thiết bị, trang nguồn đã dẫn bạn đến, địa chỉ IP và các số đo thời gian về hiệu năng. Memory Chess sử dụng Google Analytics, Vercel Analytics, Vercel Speed Insights và Ahrefs Analytics để hiểu lưu lượng truy cập và giữ cho trang web nhanh và ổn định."
+          },
+          {
+            "p": "Chúng tôi không yêu cầu các công cụ này thu thập nội dung tin nhắn liên hệ hay nhận xét góp ý về trò chơi của bạn."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Cookie và bộ nhớ trình duyệt",
+        "blocks": [
+          {
+            "p": "Memory Chess dùng bộ nhớ trình duyệt để lưu lịch sử và thiết lập trò chơi trên thiết bị của bạn, ghi nhớ tùy chọn âm thanh, tránh hiện lại biểu ngữ cập nhật mà bạn đã đóng, và tính thời điểm lời mời góp ý có thể xuất hiện trở lại. Xóa dữ liệu trình duyệt sẽ đặt lại các lựa chọn này."
+          },
+          {
+            "p": "Hồ sơ phòng lab trên trang chủ lưu mọi ván bạn chơi xong, kể cả lượt đo luyện tập trên trang chủ, trong IndexedDB và bộ nhớ cục bộ của trình duyệt: thế cờ bạn đã quan sát, thế cờ bạn đã dựng lại, các số đo thời gian, điểm số, độ lệch múi giờ của bạn, nơi bạn bắt đầu ván (chẳng hạn trang chủ hoặc một bài hướng dẫn), cùng thứ tự và thời điểm đặt từng quân. Hồ sơ này chỉ được dùng để vẽ chuỗi ngày, kỷ lục cá nhân, xu hướng độ chính xác, bản đồ sai, bàn cờ hôm nay, hàng đợi ôn tập và đường cong lãng quên của bạn trên thiết bị này. Bản thân hồ sơ, với các thế cờ, ô, vị trí đặt quân và lịch sử của nó, không bao giờ rời khỏi thiết bị này. Ván mà bạn chọn chia sẻ là ngoại lệ duy nhất, được mô tả bên dưới. Bộ nhớ cục bộ cũng lưu ngày UTC gần nhất bạn mở bàn cờ hôm nay, để mỗi ngày bạn chỉ có một lần thử, và những bước ôn tập bạn đã mở, để một bàn cờ bị bỏ dở trước khi có kết quả không bị hiện hai lần ở cùng một khoảng giãn cách. Google Analytics nhận một sự kiện cho mỗi ván bạn chơi xong, trên trang chủ hoặc trong trò chơi, gồm số quân, thời gian ghi nhớ, số quân bạn nhớ được, độ chính xác của bạn và nơi ván bắt đầu, có thể là bàn cờ hôm nay, một lượt ôn tập hoặc một kế hoạch. Google Analytics cũng nhận một sự kiện khi một ván bắt đầu, gồm số quân, thời gian ghi nhớ và nơi ván bắt đầu. Google Analytics còn nhận một vài sự kiện phòng lab: khi phần phòng lab hiện vào khung nhìn, khi bạn theo một trong các liên kết chơi của nó, số ván khi bạn tải xuống hoặc yêu cầu sao lưu giữa các thiết bị, và số ván được thêm và bị bỏ qua khi bạn nhập. Không sự kiện nào trong số này mang theo thế cờ, ô, mã ván hay chuỗi ngày. Khi bạn bắt đầu, dừng hoặc hoàn thành một kế hoạch, hoặc đặt hay xóa một mục tiêu, Google Analytics nhận một sự kiện chỉ nêu tên hành động đó, không có tên kế hoạch và không có con số nào. Kế hoạch và mục tiêu bạn chọn được lưu trong bộ nhớ cục bộ của trình duyệt trên thiết bị này, cũng như số ngày mỗi tuần bạn đặt mục tiêu chơi, vốn không gửi sự kiện nào. “Tải xuống hồ sơ phòng lab của tôi” lưu một bản sao thành tệp do bạn kiểm soát, và xóa dữ liệu trình duyệt sẽ xóa hồ sơ. Cửa sổ ẩn danh không giữ hồ sơ này. Chỉ khi bạn nhấn “Sao chép số đo của tôi”, trình duyệt của bạn mới đặt một đoạn văn bản ngắn vào bộ nhớ tạm, gồm tầm nhớ của bạn, cùng số quân nhớ được và tốc độ khi hồ sơ đọc được chúng, mỗi mục kèm số ván của nó. Đoạn văn bản này không nêu thế cờ, ô hay ngày nào và không được gửi đi đâu cả. Bộ nhớ cục bộ cũng lưu thời điểm ghi chú về việc giữ hồ sơ trong trình duyệt này lần đầu hiện vào khung nhìn, để ghi chú chỉ hiện một lần; thời điểm gần nhất bạn xem sổ ghi chép, để các mục mới hơn được đánh dấu là mới; và thời điểm gần nhất bạn tải hồ sơ xuống. Sau vài ván, trang web yêu cầu trình duyệt của bạn một lần để giữ lại hồ sơ khi dung lượng sắp hết, và bộ nhớ cục bộ ghi nhận rằng yêu cầu đó đã được gửi."
+          },
+          {
+            "p": "Trang tiến bộ đọc cùng hồ sơ đó trong trình duyệt của bạn và không gửi gì đi. Chỉ khi bạn nhấn “Chia sẻ tiến bộ của tôi”, trình duyệt của bạn mới vẽ một hình ảnh gồm các số liệu mà hồ sơ đọc được: tầm nhớ, điểm kỹ năng, số quân nhớ được, tốc độ, độ chính xác tốt nhất và gần đây, chuỗi thắng, số ngày liên tiếp, số ván đã chơi và số ngày đã chơi của bạn. Chỉ khi bạn nhấn “Chia sẻ kết quả” trên màn hình kết quả của trò chơi, trình duyệt của bạn mới vẽ một hình ảnh của ván đó: độ chính xác, số quân bạn nhớ được, số quân, thời gian ghi nhớ được cho và đã dùng, thời gian dựng lại, và, trừ khi là ván ôn tập, điểm kỹ năng của bạn, mức thay đổi của nó và chuỗi thắng nếu có, và, trừ khi là bàn cờ hôm nay, bàn cờ bạn đã quan sát và bàn cờ bạn đã dựng lại."
+          },
+          {
+            "p": "Cả hai nút đều mở một cửa sổ chia sẻ, và không có gì rời khỏi trình duyệt của bạn cho đến khi bạn chọn một trong các thao tác của nó: chuyển hình ảnh, một chú thích ngắn và một liên kết cho bảng chia sẻ của thiết bị, tải hình ảnh xuống, sao chép hình ảnh, sao chép chú thích kèm liên kết, hoặc mở trang đăng bài của X, Facebook, LinkedIn, Reddit, WhatsApp, Threads hoặc Bluesky với liên kết được điền sẵn, và với tất cả trừ Facebook và LinkedIn thì cả chú thích cũng được điền sẵn. Những gì bạn gửi ở đó được xử lý theo điều khoản quyền riêng tư của chính dịch vụ đó."
+          },
+          {
+            "p": "Liên kết trong chú thích mở trang riêng của thẻ trên Memory Chess, và các số liệu của thẻ được ghi ngay trong liên kết. Một liên kết kết quả được chia sẻ, nằm dưới /share/result/, còn mang theo bàn cờ bạn đã quan sát, bàn cờ bạn đã dựng lại, cùng thứ tự và thời điểm đặt từng quân, trừ khi ván đó là bàn cờ hôm nay, vì liên kết của nó không mang thế cờ nào. Bất kỳ ai mở liên kết đều có thể đọc được những thông tin này, và Memory Chess đọc chúng từ liên kết để vẽ trang và bản xem trước của trang. Liên kết chỉ được tạo khi bạn chia sẻ một thẻ, và Memory Chess không lưu liên kết đó. Như với mọi trang khác trên trang web, các công cụ phân tích nêu ở trên ghi lại địa chỉ của trang, bao gồm cả liên kết, khi có người mở nó."
+          },
+          {
+            "p": "Google Analytics nhận một sự kiện lab_dashboard_share khi một thẻ tiến bộ rời khỏi trang và một sự kiện result_share khi một thẻ kết quả rời khỏi trang. Mỗi sự kiện chỉ nêu cách thẻ rời đi, dưới dạng method của nó: native cho bảng chia sẻ, download cho hình ảnh được tải xuống, copy_image cho hình ảnh được sao chép, copy cho chú thích được sao chép, hoặc post cho trang đăng bài của một mạng xã hội, với tên mạng đó là x, facebook, linkedin, reddit, whatsapp, threads hoặc bluesky. Không sự kiện nào mang theo số liệu, bàn cờ hay liên kết của thẻ."
+          },
+          {
+            "p": "Khi bạn gửi điểm lên bảng xếp hạng, bộ nhớ cục bộ trên thiết bị này cũng lưu mã mà bảng xếp hạng cấp cho lượt gửi đó, cùng độ khó, quốc gia, điểm số và thời điểm bạn gửi, cho lượt gửi tốt nhất của bạn ở mỗi độ khó. Chỉ khi bạn nhấn “Xem thứ hạng của tôi” trong hồ sơ phòng lab, trình duyệt của bạn mới gửi mã lượt gửi đó đến Memory Chess, kèm theo việc xếp hạng nó trên toàn thế giới hay trong quốc gia của chính lượt gửi đó. Memory Chess đọc lượt gửi từ bảng xếp hạng và trả lời bằng thứ hạng của nó cùng số lượt gửi được dùng để so sánh. Câu trả lời không được lưu lại. Để giới hạn tần suất kiểm tra thứ hạng, máy chủ đếm số lần kiểm tra từ mỗi địa chỉ IP trong bộ nhớ của nó trong một phút, và bỏ một địa chỉ ở lần kiểm tra đầu tiên sau khi một phút của địa chỉ đó đã hết. Nếu bảng xếp hạng không còn lượt gửi đó, mã của nó sẽ bị xóa khỏi thiết bị này. Google Analytics nhận một sự kiện cho biết một lần kiểm tra thứ hạng đã được thực hiện, không kèm mã lượt gửi và không kèm thứ hạng."
+          },
+          {
+            "p": "Khi bạn thích một bài viết, mã của bài viết đó và số lượt thích hiển thị tại thời điểm đó được lưu trong bộ nhớ cục bộ của trình duyệt, để nút thích vẫn ở trạng thái đã nhấn và số đếm không giảm khi bạn quay lại. Bộ nhớ phiên ghi nhớ những bài viết bạn đã mở trong tab trình duyệt hiện tại, để việc mở lại một bài ở đó không cộng thêm lượt xem. Cả hai danh sách đều ở lại trong trình duyệt của bạn. Khi bạn thích một bài viết, Google Analytics cũng nhận một sự kiện thích có nêu tên bài viết đó."
+          },
+          {
+            "p": "Tính năng tìm kiếm của mục Học xếp hạng các bài hướng dẫn trong trình duyệt của bạn, hoặc trên máy chủ khi bạn tìm từ trang tìm kiếm. Google Analytics nhận một sự kiện cho mỗi lần tìm kiếm, gồm số ký tự bạn đã gõ, số bài hướng dẫn khớp, bài hướng dẫn đứng đầu và liệu mức khớp của bài đó chỉ là gần đúng, và một sự kiện khi bạn mở một kết quả, gồm bài hướng dẫn đó và vị trí của nó trong danh sách. Không sự kiện nào mang theo những từ bạn đã gõ. Một lần tìm kiếm thực hiện ngay từ trang tìm kiếm sẽ đưa các từ của bạn vào địa chỉ của trang đó, và các công cụ phân tích ghi lại địa chỉ của mọi trang được xem, nên những từ đó có thể đến được các công cụ này."
+          },
+          {
+            "p": "Google Analytics và các dịch vụ quảng cáo có thể dùng cookie hoặc các mã nhận dạng tương tự. Bạn có thể chặn hoặc xóa cookie trong trình duyệt, tuy nhiên một số tùy chọn có thể không còn hoạt động như mong đợi."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Quảng cáo và Google AdSense",
+        "blocks": [
+          {
+            "p": "Memory Chess sử dụng Google AdSense để hỗ trợ trang web. Các nhà cung cấp bên thứ ba, bao gồm Google, có thể đặt hoặc đọc cookie, dùng web beacon hoặc xử lý địa chỉ IP khi các dịch vụ quảng cáo hoặc thẻ quảng cáo được sử dụng."
+          },
+          {
+            "p": "Google và các đối tác quảng cáo của Google có thể dùng cookie quảng cáo để hiển thị quảng cáo dựa trên các lần bạn truy cập Memory Chess và các trang web khác. Tùy theo vị trí, lựa chọn và thiết lập của bạn, quảng cáo có thể được cá nhân hóa hoặc không được cá nhân hóa. Các nhà cung cấp quảng cáo khác được Google chứng nhận cũng có thể tham gia vào việc hiển thị và đo lường quảng cáo."
+          },
+          {
+            "p": "Google là một trong các nhà cung cấp đó và dùng cookie DoubleClick, còn gọi là cookie DART, để hiển thị quảng cáo dựa trên các lần bạn truy cập trang web này và các trang khác trên internet. Bạn có thể chọn không dùng cookie DART thông qua phần cài đặt quảng cáo của Google được liên kết bên dưới."
+          },
+          {
+            "p": "Tìm hiểu thêm về <partnerSites>cách Google sử dụng thông tin từ các trang web đối tác</partnerSites>. Bạn có thể quản lý quảng cáo được cá nhân hóa trong <adCenter>My Ad Center</adCenter> và chọn không tham gia với một số nhà cung cấp khác thông qua <adChoices>YourAdChoices</adChoices>."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Lựa chọn về sự đồng ý",
+        "blocks": [
+          {
+            "p": "Trong những trường hợp bắt buộc, khách truy cập sẽ thấy một thông báo xin sự đồng ý trước khi dữ liệu quảng cáo thuộc diện áp dụng được sử dụng. Khách truy cập ở Khu vực Kinh tế Châu Âu, Vương quốc Anh và Thụy Sĩ có thể đồng ý, từ chối hoặc quản lý từng lựa chọn riêng thông qua nền tảng quản lý sự đồng ý của Google. Bạn cũng có thể thay đổi các tùy chọn kiểm soát cookie trong trình duyệt và điều chỉnh tùy chọn quảng cáo của Google trong My Ad Center."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Cách chúng tôi sử dụng và chia sẻ thông tin",
+        "blocks": [
+          {
+            "p": "Chúng tôi sử dụng thông tin để cung cấp và bảo mật Memory Chess, tính kết quả, công bố điểm đã gửi lên bảng xếp hạng, trả lời tin nhắn liên hệ, xem xét góp ý, đo lường hiệu năng trang web, ngăn chặn lạm dụng và hỗ trợ trang web bằng quảng cáo. Chúng tôi không bán thông tin liên hệ hay góp ý mà bạn gửi."
+          },
+          {
+            "p": "Dữ liệu chỉ được các nhà cung cấp dịch vụ xử lý khi cần thiết: Google Sheets cho tin nhắn liên hệ và góp ý về trò chơi, Supabase cho số liệu thống kê trò chơi, các lượt gửi lên bảng xếp hạng và tổng số lượt xem và lượt thích của bài viết, Vercel cho lưu trữ và đo lường hiệu năng, Ahrefs cho phân tích, và Google cho phân tích, sự đồng ý và quảng cáo. Các nhà cung cấp này có thể xử lý dữ liệu ở các quốc gia khác theo điều khoản quyền riêng tư của riêng họ."
+          },
+          {
+            "p": "Khi bạn mở hoặc thích một bài viết, Supabase chỉ lưu tổng số lượt xem và tổng số lượt thích cho mỗi bài viết, cùng thời điểm thay đổi gần nhất và không có mã nhận dạng khách truy cập nào."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Lưu giữ và bảo mật",
+        "blocks": [
+          {
+            "p": "Chúng tôi chỉ giữ thông tin đã gửi trong thời gian thông tin đó còn hữu ích cho các mục đích nêu trên, bao gồm duy trì bảng xếp hạng công khai và trả lời tin nhắn, hoặc theo yêu cầu của pháp luật. Không dịch vụ trực tuyến nào an toàn tuyệt đối, nhưng chúng tôi hạn chế quyền truy cập và áp dụng các biện pháp bảo vệ hợp lý cho những hệ thống mà chúng tôi kiểm soát."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "Lựa chọn của bạn",
+        "blocks": [
+          {
+            "ul": [
+              "Chơi mà không gửi tên lên bảng xếp hạng hay gửi góp ý.",
+              "Xóa dữ liệu trò chơi và tùy chọn đã lưu trong trình duyệt.",
+              "Quản lý cookie, lựa chọn về sự đồng ý và quảng cáo được cá nhân hóa.",
+              "Hỏi chúng tôi về thông tin bạn đã gửi, chỉnh sửa thông tin đó hoặc yêu cầu xóa thông tin đó, tùy thuộc vào pháp luật hiện hành và khả năng xác minh yêu cầu của chúng tôi."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "Quyền của bạn theo GDPR và CCPA",
+        "blocks": [
+          {
+            "p": "Nếu bạn ở Khu vực Kinh tế Châu Âu hoặc Vương quốc Anh, GDPR trao cho bạn quyền truy cập, quyền chỉnh sửa, quyền xóa, quyền hạn chế xử lý, quyền phản đối việc xử lý và quyền di chuyển dữ liệu. Các cơ sở pháp lý mà chúng tôi dựa vào là sự đồng ý của bạn, đối với quảng cáo được cá nhân hóa và cookie phân tích khi cần có sự đồng ý, và lợi ích hợp pháp của chúng tôi, đối với việc vận hành và bảo mật trang web, công bố điểm bạn gửi lên bảng xếp hạng và trả lời tin nhắn bạn gửi. Bạn có thể rút lại sự đồng ý bất kỳ lúc nào thông qua thông báo xin sự đồng ý hoặc phần cài đặt trình duyệt, và bạn có thể khiếu nại với cơ quan giám sát tại địa phương của bạn."
+          },
+          {
+            "p": "Nếu bạn là cư dân California, CCPA trao cho bạn quyền được biết thông tin cá nhân nào được thu thập, quyền yêu cầu xóa thông tin đó và quyền chọn không cho phép bán hoặc chia sẻ thông tin đó. Chúng tôi không bán thông tin cá nhân của bạn. Cookie dùng cho quảng cáo được cá nhân hóa có thể được coi là chia sẻ theo CCPA, và bạn có thể chọn không tham gia thông qua thông báo xin sự đồng ý, My Ad Center và YourAdChoices được liên kết ở trên. Đây là thông báo “Không bán hoặc chia sẻ thông tin cá nhân của tôi” (Do Not Sell or Share My Personal Information) của chúng tôi. Để thực hiện bất kỳ quyền nào trong số này, hãy gửi email đến <mail>{email}</mail>."
+          }
+        ]
+      },
+      "children": {
+        "title": "Quyền riêng tư của trẻ em",
+        "blocks": [
+          {
+            "p": "Memory Chess là một trò chơi luyện tập dành cho công chúng nói chung và không được thiết kế để thu thập thông tin cá nhân của trẻ em. Nếu bạn là cha mẹ hoặc người giám hộ và cho rằng một đứa trẻ đã gửi thông tin cá nhân, vui lòng liên hệ với chúng tôi để chúng tôi xem xét và xóa thông tin đó khi thích hợp."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Thay đổi và liên hệ",
+        "blocks": [
+          {
+            "p": "Chúng tôi có thể cập nhật chính sách này khi trang web hoặc các nhà cung cấp dịch vụ của chúng tôi thay đổi. Ngày ở đầu trang cho biết lần sửa đổi gần nhất. Với các câu hỏi hoặc yêu cầu về quyền riêng tư, hãy dùng <contact>biểu mẫu liên hệ của Memory Chess</contact>."
+          }
+        ]
+      }
+    }
+  }
+}

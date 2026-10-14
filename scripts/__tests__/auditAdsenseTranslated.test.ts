@@ -323,3 +323,23 @@ describe("audit-adsense translated report lines", () => {
     expect(JSON.parse(runAudit(`JSON.stringify(audit.translatedLines([]))`))).toEqual(["translated pages (noindex under a locale prefix): none served, so none checked"]);
   });
 });
+
+describe("audit-adsense translated trust pages", () => {
+  const legalNote = (href: string) =>
+    `<p data-translation-note data-authorship-note data-english-governs>Die englische Fassung ist maßgeblich. <a hrefLang="en" href="${href}">Auf Englisch lesen</a></p>`;
+  const trustPage = (path: string, note?: string) => audit(translatedPage(`/de${path}`, path, { note }), englishPage(path, ""));
+
+  it("owes a note on a trust page, though the English page declares no schema.org prose type", () => {
+    expect(trustPage("/about", "").findings).toEqual([
+      { rule: "translation-note", message: "no translation note (data-translation-note), though /about is a trust page" },
+    ]);
+    expect(trustPage("/about").findings).toEqual([]);
+  });
+
+  it("fails a translated privacy policy or terms whose note does not say the English version governs", () => {
+    expect(trustPage("/privacy").findings).toEqual([
+      { rule: "translation-note-legal", message: "the translation note does not say the English version governs" },
+    ]);
+    expect(trustPage("/terms", legalNote("/terms")).findings).toEqual([]);
+  });
+});

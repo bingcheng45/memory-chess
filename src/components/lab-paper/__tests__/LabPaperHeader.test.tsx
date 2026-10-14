@@ -96,7 +96,7 @@ describe("the Lab Paper header", () => {
     expect(within(panel).getByRole("link", { name: "Play" })).toHaveAttribute("aria-current", "page");
   });
 
-  it("speaks the reader's language and sends English-only pages to their bare English URL", () => {
+  it("speaks the reader's language, keeps the translated pages under its prefix and sends English-only ones to their bare English URL", () => {
     renderWithIntl(<LabPaperHeader />, { locale: "de", messages: deMessages });
     const nav = screen.getByRole("navigation", { name: "Main" });
 
@@ -106,7 +106,7 @@ describe("the Lab Paper header", () => {
       ["Artikel", null],
       ["Bestenliste", null],
       ["Dashboard", null],
-      ["Über (English)", "en"],
+      ["Über", null],
     ]);
     expect(screen.getByRole("button", { name: "Menü" })).toBeInTheDocument();
   });

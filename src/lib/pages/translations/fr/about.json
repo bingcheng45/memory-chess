@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": "8b0cd2204a755dd9681f7141185ae093c9ee5b6e065e59cda230043d4ad93e9b",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "À propos",
+      "description": "Qui développe Memory Chess, pourquoi le jeu existe, comment une partie est notée et comment sont rédigés les guides de la rubrique Apprendre.",
+      "socialTitle": "À propos de Memory Chess",
+      "socialDescription": "Qui développe Memory Chess, pourquoi le jeu existe et comment il fonctionne."
+    },
+    "kicker": "À propos",
+    "title": "À propos de Memory Chess",
+    "lede": "Memory Chess est un jeu gratuit de mémoire de l’échiquier, conçu et géré par une seule personne. Cette page explique qui elle est, pourquoi le jeu existe et comment il fonctionne réellement.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Qui gère ce site",
+        "blocks": [
+          {
+            "p": "Je suis Bing Cheng, développeur en solo. Je gère Memory Chess seul, avec l’aide de l’IA pour le code et les textes du site. Il n’y a ni équipe ni entreprise derrière. Je développe aussi <tont>Tont</tont>, et je publie des nouvelles de ce site sur <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Comme une seule personne s’occupe de tout, le site reste volontairement modeste. Un jeu, une série de guides d’entraînement, un classement et un journal des nouveautés qui consigne ce qui a réellement été publié."
+          },
+          {
+            "p": "Le jeu est gratuit et ne demande aucun compte. Les publicités diffusées par Google AdSense aident à couvrir les frais d’hébergement, et rien sur le site n’est réservé à un paiement ou à une inscription."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Pourquoi ce jeu existe",
+        "blocks": [
+          {
+            "p": "La plupart des conseils pour progresser aux échecs orientent les débutants vers les ouvertures, les exercices tactiques et les cours. D’après mon expérience, un problème plus précoce se cache sous tout cela. Les débutants perdent le fil de l’échiquier. Ils ne voient plus un défenseur, oublient qu’une pièce a bougé deux coups plus tôt et tombent dans des prises qu’ils repéreraient aussitôt sur un diagramme."
+          },
+          {
+            "p": "Garder une position en tête est une compétence qui s’entraîne, et il existait peu d’endroits pour la travailler directement. Alors j’en ai créé un. Memory Chess isole cette seule compétence et lui attribue un score, pour que vous puissiez la voir progresser. Si vous voulez un enjeu, vous pouvez inscrire le nom de votre choix au classement public et vous mesurer à tous les autres."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Comment se déroule une partie",
+        "blocks": [
+          {
+            "p": "Vous choisissez le nombre de pièces à affronter et le temps dont vous disposez pour les étudier. Les préréglages vont de Facile, deux pièces et dix secondes, jusqu’à Grand maître, vingt pièces et cinq secondes, et vous pouvez définir n’importe quelle combinaison personnalisée. La partie se déroule ensuite en trois phases."
+          },
+          {
+            "p": "D’abord, vous mémorisez. L’échiquier affiche une position pendant la durée choisie, puis elle disparaît. Ensuite, vous reconstruisez. Vous placez les pièces de mémoire sur un échiquier vide. Enfin, vous obtenez votre résultat. Le jeu compare votre échiquier à l’original, case par case."
+          },
+          {
+            "p": "La notation est stricte. Une pièce n’est comptée comme juste que si la bonne pièce, de la bonne couleur, se trouve exactement sur la case qu’elle occupait dans la position d’origine. Une tour à la place d’un cavalier est doublement fausse. Elle compte comme une pièce mal placée, et le cavalier qu’elle a remplacé compte comme manquant. Votre précision est la part des pièces d’origine que vous avez reproduites exactement."
+          },
+          {
+            "p": "L’écran de résultat affiche les trois groupes, les placements justes, les placements faux et les pièces complètement oubliées, si bien que chaque partie vous indique sur quoi porter vos efforts la prochaine fois. Vous pouvez <game>essayer une partie</game> en moins d’une minute."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Comment sont rédigés les guides Apprendre",
+        "blocks": [
+          {
+            "p": "La <learn>bibliothèque Apprendre</learn> réunit {count, plural, one {# guide} many {# guides} other {# guides}} sur la vision de l’échiquier, la visualisation et l’entraînement de la mémoire. Ils sont rédigés avec l’aide de l’IA. Chaque position d’échecs qu’ils contiennent est vérifiée par un script : le nombre de pièces, la légalité et chaque attaque que le texte affirme. Chaque affirmation sur le fonctionnement de Memory Chess est vérifiée dans le code du jeu. Chaque guide propose des exercices. Certains ouvrent une partie dans le jeu avec les bons réglages. Les autres sont prévus pour un vrai échiquier."
+          },
+          {
+            "p": "Lorsque les guides avancent des affirmations sur la mémoire et l’apprentissage, ils citent des recherches publiées, notamment les travaux de Gobet et Simon sur la mémoire aux échecs et la littérature expérimentale sur la récupération en mémoire et la pratique espacée. Chaque citation renvoie à sa source. Je n’ai mené aucune recherche de mon côté, et les guides ne prétendent pas le contraire."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Le parcours du site",
+        "blocks": [
+          {
+            "p": "La première version a été mise en ligne en mars 2025, sous la forme d’une version minimale du jeu. Le jeu sur mobile et la sélection des pièces ont suivi en quelques semaines. La bibliothèque Apprendre a été lancée en mars 2026, et en août 2026 le jeu lui-même est devenu jouable en 24 langues. Les guides et le journal des nouveautés sont en anglais. Le <changelog>journal des nouveautés</changelog> consigne chaque version publiée, corrections de bugs comprises. Je veille à ce qu’il reste honnête, car je m’en sers moi-même pour me rappeler ce qui a changé et quand."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Me contacter",
+        "blocks": [
+          {
+            "p": "Écrivez-moi à <mail>{email}</mail> ou utilisez le <contact>formulaire de contact</contact>. Je lis tout, et des signalements de joueurs ont déjà permis de corriger de vrais bugs. Pour les détails, la <privacy>politique de confidentialité</privacy> et les <terms>conditions d’utilisation</terms> expliquent comment le site traite les données et ce que vous acceptez en jouant."
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": "9c115383dae0ef2dc75d7f363088d2509190091e28483e79c71ebe6fdf581fcb",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Über",
+      "description": "Wer Memory Chess entwickelt, warum es das Spiel gibt, wie eine Runde gewertet wird und wie die Lern-Guides entstehen.",
+      "socialTitle": "Über Memory Chess",
+      "socialDescription": "Wer Memory Chess entwickelt, warum es das Spiel gibt und wie es funktioniert."
+    },
+    "kicker": "Über",
+    "title": "Über Memory Chess",
+    "lede": "Memory Chess ist ein kostenloses Brett-Gedächtnisspiel, das eine einzige Person entwickelt und betreibt. Diese Seite erklärt, wer das ist, warum es das Spiel gibt und wie es tatsächlich funktioniert.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Wer diese Website betreibt",
+        "blocks": [
+          {
+            "p": "Ich bin Bing Cheng, ein Einzelentwickler. Ich betreibe Memory Chess allein, mit KI-Unterstützung für den Code und die Texte der Website. Es gibt kein Team und keine Firma dahinter. Ich entwickle auch <tont>Tont</tont>, und Neuigkeiten zu dieser Website poste ich unter <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Weil eine Person alles betreibt, bleibt die Website absichtlich klein. Ein Spiel, eine Reihe von Trainings-Guides, eine Bestenliste und ein Änderungsprotokoll, das festhält, was tatsächlich veröffentlicht wurde."
+          },
+          {
+            "p": "Das Spiel ist kostenlos und braucht kein Konto. Werbung über Google AdSense hilft, die Hostingkosten zu decken, und nichts auf der Website ist hinter einer Zahlung oder einer Registrierung verschlossen."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Warum es das Spiel gibt",
+        "blocks": [
+          {
+            "p": "Die meisten Ratschläge, wie man im Schach besser wird, schicken Anfänger zu Eröffnungen, Taktikaufgaben und Kursen. Meiner Erfahrung nach liegt unter alldem ein früheres Problem. Anfänger verlieren den Überblick über das Brett. Sie übersehen einen Verteidiger, vergessen eine Figur, die vor zwei Zügen gezogen hat, und laufen in Schlagzüge hinein, die sie auf einem Diagramm sofort erkennen würden."
+          },
+          {
+            "p": "Eine Stellung im Kopf zu behalten ist eine trainierbare Fähigkeit, und es gab kaum Orte, an denen man sie direkt üben konnte. Also habe ich einen gebaut. Memory Chess nimmt genau diese eine Fähigkeit heraus und gibt ihr eine Wertung, damit du verfolgen kannst, wie sie besser wird. Wenn du etwas auf dem Spiel haben willst, kannst du einen selbst gewählten Namen in die öffentliche Bestenliste eintragen und dich mit allen anderen messen."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Wie eine Runde abläuft",
+        "blocks": [
+          {
+            "p": "Du wählst, wie viele Figuren du vor dir haben willst und wie lange du sie studieren darfst. Die Schwierigkeitsstufen reichen von Leicht, zwei Figuren mit zehn Sekunden, bis Großmeister, zwanzig Figuren mit fünf Sekunden, und du kannst jede eigene Kombination einstellen. Dann läuft die Runde in drei Phasen ab."
+          },
+          {
+            "p": "Zuerst prägst du dir die Stellung ein. Das Brett zeigt eine Stellung für die gewählte Zeit, dann verschwindet sie. Danach baust du sie auf. Du setzt die Figuren aus dem Gedächtnis auf ein leeres Brett. Zum Schluss bekommst du dein Ergebnis. Das Spiel vergleicht dein Brett Feld für Feld mit dem Original."
+          },
+          {
+            "p": "Die Wertung ist streng. Eine Figur zählt nur dann als richtig, wenn die richtige Figur in der richtigen Farbe genau auf dem Feld steht, das sie in der ursprünglichen Stellung besetzt hat. Ein Turm, wo ein Springer hingehört, ist doppelt falsch. Er zählt als falsch gesetzte Figur, und der Springer, den er verdrängt hat, zählt als fehlend. Deine Genauigkeit ist der Anteil der ursprünglichen Figuren, die du genau wiedergegeben hast."
+          },
+          {
+            "p": "Der Ergebnisbildschirm zeigt alle drei Gruppen, die richtig gesetzten Figuren, die falsch gesetzten und die Figuren, die du ganz vergessen hast, sodass dir jede Runde sagt, woran du beim nächsten Mal arbeiten solltest. Du kannst in weniger als einer Minute <game>eine Runde ausprobieren</game>."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Wie die Lern-Guides entstehen",
+        "blocks": [
+          {
+            "p": "Die <learn>Lernbibliothek</learn> enthält {count, plural, one {# Guide} other {# Guides}} zu Brettübersicht, Visualisierung und Gedächtnistraining. Sie sind mit KI-Unterstützung geschrieben. Jede Schachstellung darin wird von einem Skript auf Figurenzahl, Regelkonformität und jeden Angriff geprüft, den der Text behauptet. Jede Aussage darüber, wie Memory Chess funktioniert, ist auf den Code des Spiels zurückgeführt. Jeder Guide hat Übungen. Manche öffnen eine Runde im Spiel mit den passenden Einstellungen. Die übrigen sind für ein echtes Brett gedacht."
+          },
+          {
+            "p": "Wo die Guides etwas über Gedächtnis und Lernen behaupten, zitieren sie veröffentlichte Forschung, darunter die Arbeiten von Gobet und Simon zum Schachgedächtnis und die experimentelle Literatur zum Abrufen und zum verteilten Üben. Jedes Zitat verlinkt seine Quelle. Ich habe keine eigene Forschung betrieben, und die Guides geben auch nichts anderes vor."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Wie sich die Website entwickelt hat",
+        "blocks": [
+          {
+            "p": "Die erste Version ging im März 2025 als schlichte Fassung des Spiels online. Spielen auf dem Smartphone und die Auswahl der Figuren folgten innerhalb weniger Wochen. Die Lernbibliothek startete im März 2026, und seit August 2026 läuft das Spiel selbst in 24 Sprachen. Die Guides und das Änderungsprotokoll sind auf Englisch. Das <changelog>Änderungsprotokoll</changelog> verzeichnet jede versionierte Veröffentlichung, einschließlich der Fehlerbehebungen. Ich halte es ehrlich, weil ich es selbst nutze, um mich zu erinnern, was sich wann geändert hat."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Kontakt",
+        "blocks": [
+          {
+            "p": "Schreib mir an <mail>{email}</mail> oder nutze das <contact>Kontaktformular</contact>. Ich lese alles, und Meldungen von Spielern haben schon echte Fehler behoben. Wenn du das Kleingedruckte lesen willst, erklären die <privacy>Datenschutzerklärung</privacy> und die <terms>Nutzungsbedingungen</terms>, wie die Website mit Daten umgeht und womit du dich durch das Spielen einverstanden erklärst."
+          }
+        ]
+      }
+    }
+  }
+}

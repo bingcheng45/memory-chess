@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": "10a9dede11cddd09a0e813ddcc45a8e4f718fac039c6761d4425c07d1c1d662e",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Giới thiệu",
+      "description": "Ai làm ra Memory Chess, vì sao trò chơi này ra đời, một ván được chấm điểm thế nào, và các bài hướng dẫn trong mục Học được viết ra sao.",
+      "socialTitle": "Giới thiệu Memory Chess",
+      "socialDescription": "Ai làm ra Memory Chess, vì sao trò chơi này ra đời, và nó hoạt động thế nào."
+    },
+    "kicker": "Giới thiệu",
+    "title": "Giới thiệu Memory Chess",
+    "lede": "Memory Chess là một trò chơi ghi nhớ bàn cờ miễn phí do một người duy nhất xây dựng và vận hành. Trang này cho biết người đó là ai, vì sao trò chơi ra đời, và nó thực sự hoạt động thế nào.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Ai vận hành trang web này",
+        "blocks": [
+          {
+            "p": "Tôi là Bing Cheng, một lập trình viên độc lập làm việc một mình. Tôi tự vận hành Memory Chess, với sự hỗ trợ của AI cho phần mã nguồn và nội dung chữ trên trang. Không có đội ngũ nào và cũng không có công ty nào đứng sau. Tôi cũng làm <tont>Tont</tont>, và tôi đăng thông tin cập nhật về trang này tại <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Vì chỉ một người vận hành tất cả, trang web được cố ý giữ ở quy mô nhỏ. Một trò chơi, một bộ bài hướng dẫn luyện tập, một bảng xếp hạng, và một nhật ký thay đổi (trang Có gì mới) ghi lại những gì đã thực sự được phát hành."
+          },
+          {
+            "p": "Trò chơi miễn phí và không cần tài khoản. Quảng cáo qua Google AdSense giúp trang trải chi phí lưu trữ, và không có gì trên trang bị khóa sau một khoản thanh toán hay một bước đăng ký."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Vì sao trò chơi này ra đời",
+        "blocks": [
+          {
+            "p": "Phần lớn lời khuyên để tiến bộ trong cờ vua hướng người mới chơi đến khai cuộc, bài tập chiến thuật và các khóa học. Theo kinh nghiệm của tôi, bên dưới tất cả những điều đó còn có một vấn đề đến sớm hơn. Người mới chơi không theo dõi được bàn cờ. Họ bỏ sót một quân đang phòng thủ, quên một quân đã đi từ hai nước trước, và đi hớ để bị bắt quân, trong khi nếu nhìn trên một sơ đồ thì họ sẽ nhận ra ngay."
+          },
+          {
+            "p": "Giữ một thế cờ trong đầu là một kỹ năng có thể luyện được, nhưng lại có rất ít nơi để luyện trực tiếp kỹ năng đó. Vì vậy tôi đã tạo ra một nơi như thế. Memory Chess tách riêng đúng kỹ năng đó và chấm điểm cho nó, để bạn có thể thấy nó tiến bộ. Nếu bạn muốn có chút thử thách, bạn có thể đưa một cái tên do bạn chọn lên bảng xếp hạng công khai và so sánh mình với tất cả mọi người."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Một ván diễn ra thế nào",
+        "blocks": [
+          {
+            "p": "Bạn chọn số quân muốn đối mặt và thời gian bạn được phép quan sát chúng. Các mức có sẵn trải từ Dễ, hai quân với mười giây, đến Đại kiện tướng, hai mươi quân với năm giây, và bạn có thể đặt bất kỳ tổ hợp tùy chỉnh nào. Sau đó ván chơi diễn ra qua ba giai đoạn."
+          },
+          {
+            "p": "Đầu tiên, bạn ghi nhớ. Bàn cờ hiện một thế cờ trong khoảng thời gian bạn đã chọn, rồi thế cờ biến mất. Tiếp theo, bạn dựng lại. Bạn đặt các quân lên một bàn cờ trống theo trí nhớ. Cuối cùng, bạn nhận kết quả. Trò chơi so sánh bàn cờ của bạn với bàn cờ gốc, từng ô một."
+          },
+          {
+            "p": "Cách chấm điểm rất nghiêm ngặt. Một quân chỉ được tính là đúng khi đúng loại quân, đúng màu, đứng đúng ô mà nó chiếm trong thế cờ gốc. Đặt một quân xe vào chỗ của quân mã là sai hai lần. Quân xe bị tính là quân đặt sai chỗ, và quân mã bị nó chiếm chỗ bị tính là quân bị thiếu. Độ chính xác của bạn là tỷ lệ số quân trong thế cờ gốc mà bạn tái hiện chính xác."
+          },
+          {
+            "p": "Màn hình kết quả hiển thị cả ba nhóm: những quân bạn đặt đúng, những quân bạn đặt sai, và những quân bạn quên hẳn, để mỗi ván đều cho bạn biết lần sau cần tập trung vào đâu. Bạn có thể <game>thử một ván</game> trong chưa đầy một phút."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Các bài hướng dẫn trong mục Học được viết thế nào",
+        "blocks": [
+          {
+            "p": "<learn>Thư viện Học</learn> có {count, plural, other {# bài hướng dẫn}} về tầm nhìn bàn cờ, hình dung và luyện trí nhớ. Các bài này được viết với sự hỗ trợ của AI. Mọi thế cờ trong đó đều được một đoạn mã kiểm tra về số quân, tính hợp lệ và từng đòn tấn công mà bài viết nêu ra. Mọi nhận định về cách Memory Chess hoạt động đều được đối chiếu với mã nguồn của trò chơi. Mỗi bài hướng dẫn đều có bài luyện. Một số bài luyện mở một ván trong trò chơi với thiết lập phù hợp. Số còn lại dành cho bàn cờ thật."
+          },
+          {
+            "p": "Khi các bài hướng dẫn đưa ra nhận định về trí nhớ và việc học, chúng trích dẫn các nghiên cứu đã công bố, bao gồm công trình của Gobet và Simon về trí nhớ trong cờ vua và các tài liệu thực nghiệm về việc gợi nhớ (retrieval) và luyện tập giãn cách. Mỗi trích dẫn đều có liên kết đến nguồn. Tôi chưa tự thực hiện nghiên cứu nào, và các bài hướng dẫn không giả vờ là có."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Chặng đường của trang web",
+        "blocks": [
+          {
+            "p": "Bản phát hành đầu tiên ra mắt vào tháng 3 năm 2025, là một phiên bản trò chơi tối giản. Chơi trên điện thoại và chọn quân được bổ sung chỉ vài tuần sau đó. Thư viện Học ra mắt vào tháng 3 năm 2026, và vào tháng 8 năm 2026, bản thân trò chơi bắt đầu có 24 ngôn ngữ. Các bài hướng dẫn và nhật ký thay đổi được viết bằng tiếng Anh. <changelog>Nhật ký thay đổi</changelog> ghi lại mọi bản phát hành có số phiên bản, kể cả các bản sửa lỗi. Tôi giữ cho nó trung thực vì chính tôi dùng nó để nhớ những gì đã thay đổi và vào lúc nào."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Liên hệ",
+        "blocks": [
+          {
+            "p": "Hãy viết cho tôi tại <mail>{email}</mail> hoặc dùng <contact>biểu mẫu liên hệ</contact>. Tôi đọc mọi thư, và báo cáo của người chơi đã từng giúp sửa những lỗi thật. Nếu bạn muốn đọc các điều khoản chi tiết, <privacy>chính sách quyền riêng tư</privacy> và <terms>điều khoản dịch vụ</terms> giải thích cách trang web xử lý dữ liệu và những gì bạn đồng ý khi chơi."
+          }
+        ]
+      }
+    }
+  }
+}

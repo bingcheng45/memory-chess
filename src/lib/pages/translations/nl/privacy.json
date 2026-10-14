@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": "b86f3f13f33e762e68ed882bf3b21112c2499f72f56a4752b52e4684d3026d1f",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Privacybeleid",
+      "description": "Lees hoe Memory Chess gegevens, browseropslag, analyse, cookies en advertentiediensten gebruikt.",
+      "socialTitle": "Privacybeleid van Memory Chess",
+      "socialDescription": "Lees hoe Memory Chess omgaat met gegevens, cookies, analyse en advertenties."
+    },
+    "kicker": "Je privacy",
+    "title": "Privacybeleid",
+    "lede": "Een eenvoudige uitleg van wat Memory Chess verzamelt, waarom we het gebruiken en welke keuzes je hebt.",
+    "sections": {
+      "short-version": {
+        "title": "In het kort",
+        "blocks": [
+          {
+            "p": "Je kunt Memory Chess spelen zonder een account aan te maken. We gebruiken een kleine hoeveelheid gegevens om het spel te laten werken, je instellingen te onthouden, te begrijpen hoe de site presteert, op berichten te reageren, de ranglijst bij te houden en de ervaring te verbeteren. We gebruiken ook Google AdSense, dat cookies en vergelijkbare technologie voor advertenties kan gebruiken wanneer advertenties zijn ingeschakeld."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Wie verantwoordelijk is voor je gegevens",
+        "blocks": [
+          {
+            "p": "Memory Chess wordt beheerd door Bing Cheng, een onafhankelijke ontwikkelaar, die optreedt als verwerkingsverantwoordelijke voor de persoonsgegevens die in dit beleid worden beschreven. Voor elke vraag of elk verzoek over privacy kun je mailen naar <mail>{email}</mail> of het contactformulier gebruiken."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Gegevens die je ons geeft",
+        "blocks": [
+          {
+            "ul": [
+              "<b>Contactberichten:</b> je naam, e-mailadres, soort vraag en bericht wanneer je het contactformulier gebruikt.",
+              "<b>Feedback over het spel:</b> je beoordeling in sterren, optionele opmerkingen en spelgegevens zoals nauwkeurigheid, moeilijkheidsgraad, aantal stukken en voltooiingstijden. Dit feedbackformulier vraagt niet naar je naam of e-mailadres.",
+              "<b>Inzendingen voor de ranglijst:</b> de spelersnaam die je kiest, de scoregegevens die je inzendt, je vaardigheidsrating op dat moment en het land dat je kiest, als je er een kiest. Deze worden openbaar getoond, dus gebruik alsjeblieft niet je echte naam als je die liever privé houdt. Wanneer je meedoet aan het bord van de dag, stelt het formulier een land voor op basis van het land waar je verbinding vandaan komt, zoals onze hostingprovider dat doorgeeft; die schatting slaan we niet op, en het land dat je kiest is het land dat wordt opgeslagen."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Automatisch verzamelde gegevens",
+        "blocks": [
+          {
+            "p": "Onze meetdiensten kunnen technische en gebruiksgegevens ontvangen, zoals bekeken pagina's, je geschatte locatie, het type browser en apparaat, de verwijzende pagina, je IP-adres en laadtijden. Memory Chess gebruikt Google Analytics, Vercel Analytics, Vercel Speed Insights en Ahrefs Analytics om het verkeer te begrijpen en de site snel en betrouwbaar te houden."
+          },
+          {
+            "p": "We vragen deze tools niet om de inhoud van je contactberichten of je opmerkingen bij de spelfeedback te verzamelen."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Cookies en browseropslag",
+        "blocks": [
+          {
+            "p": "Memory Chess gebruikt browseropslag om spelgeschiedenis en instellingen op je apparaat te bewaren, je geluidsvoorkeuren te onthouden, te voorkomen dat een weggeklikte updatebanner opnieuw verschijnt, en te bepalen wanneer het verzoek om feedback mag terugkomen. Als je je browsergegevens wist, worden deze keuzes teruggezet."
+          },
+          {
+            "p": "Het labverslag op de homepage bewaart elke ronde die je afrondt, ook de oefenmeting op de homepage, in IndexedDB en de lokale opslag van je browser: de stelling die je bestudeerde, de stelling die je opbouwde, je tijden, je scores, je tijdzoneverschil, waar je de ronde begon (zoals de homepage of een gids) en de volgorde en timing van elk stuk dat je plaatste. Het wordt alleen gebruikt om op dit apparaat je reeks, persoonlijke records, nauwkeurigheidstrend, foutenkaart, het bord van de dag, de herhaalwachtrij en de vergeetcurve te tekenen. Het verslag zelf, met zijn stellingen, velden, plaatsingen en geschiedenis, verlaat dit apparaat nooit. Een ronde die je zelf deelt is de enige uitzondering, die hieronder wordt beschreven. De lokale opslag bewaart ook de UTC-dag waarop je het bord van de dag het laatst opende, zodat het je één poging per dag geeft, en welke herhaalstappen je opende, zodat een bord dat je vóór het resultaat verliet niet twee keer met dezelfde tussenpoos wordt getoond. Google Analytics ontvangt voor elke ronde die je afrondt, op de homepage of in het spel, een gebeurtenis met het aantal stukken, de studietijd, hoeveel stukken je je herinnerde, je nauwkeurigheid en waar de ronde begon, wat het bord van de dag, een herhaling of een plan kan zijn. Het ontvangt ook een gebeurtenis wanneer een ronde begint, met het aantal stukken, de studietijd en waar ze begon. Het ontvangt daarnaast enkele labgebeurtenissen: wanneer het labgedeelte in beeld komt, wanneer je een van de speellinks ervan volgt, het aantal rondes wanneer je downloadt of om een back-up voor meerdere apparaten vraagt, en het aantal toegevoegde en overgeslagen rondes wanneer je importeert. Geen van deze gebeurtenissen bevat stellingen, velden, ronde-id's of reeksen. Wanneer je een plan start, stopt of afrondt, of een doel instelt of wist, ontvangt Google Analytics een gebeurtenis die alleen die handeling noemt, zonder naam van het plan en zonder getallen. Het plan en het doel die je kiest worden in de lokale opslag van je browser op dit apparaat bewaard, net als het aantal dagen per week dat je wilt spelen, waarvoor geen gebeurtenis wordt verstuurd. Download mijn labverslag slaat een kopie op als een bestand dat je zelf beheert, en als je je browsergegevens wist, wordt het verslag verwijderd. Privévensters bewaren het niet. Alleen wanneer je op Kopieer mijn meting drukt, zet je browser een korte tekst op je klembord met je geheugenspanne, en je onthouden stukken en snelheid wanneer het verslag die kan aflezen, elk met het bijbehorende aantal rondes. De tekst noemt geen stellingen, velden of datums en wordt nergens naartoe gestuurd. De lokale opslag bewaart ook het moment waarop de melding over het bewaren van je verslag in deze browser voor het eerst in beeld kwam, zodat de melding één keer wordt getoond, het moment waarop je je notitieboek het laatst bekeek, zodat nieuwere items als nieuw worden gemarkeerd, en het moment waarop je het verslag het laatst downloadde. Na een paar rondes vraagt de site je browser één keer om het verslag te bewaren wanneer de ruimte opraakt, en de lokale opslag noteert dat dit gevraagd is."
+          },
+          {
+            "p": "De voortgangspagina leest hetzelfde verslag in je browser en verstuurt niets. Alleen wanneer je op Deel mijn voortgang drukt, tekent je browser een afbeelding van de cijfers die het verslag kan aflezen: je geheugenspanne, vaardigheidsrating, onthouden stukken, snelheid, beste en recente nauwkeurigheid, winstreeks, dagen op rij, gespeelde rondes en gespeelde dagen. Alleen wanneer je op het resultatenscherm van het spel op Resultaat delen drukt, tekent je browser een afbeelding van die ronde: de nauwkeurigheid, de stukken die je je herinnerde, het aantal stukken, de toegestane en gebruikte studietijd, de opbouwtijd en, behalve bij een herhaling, je rating, de verandering ervan en een eventuele winstreeks, en, behalve bij het bord van de dag, het bord dat je bestudeerde en het bord dat je opbouwde."
+          },
+          {
+            "p": "Beide knoppen openen een deelvenster, en niets verlaat je browser totdat je een van de acties daarin kiest: de afbeelding, een kort bijschrift en een link doorgeven aan het deelmenu van je apparaat, de afbeelding downloaden, de afbeelding kopiëren, het bijschrift met de link kopiëren, of de plaatsingspagina van X, Facebook, LinkedIn, Reddit, WhatsApp, Threads of Bluesky openen met de link, en bij alle behalve Facebook en LinkedIn ook het bijschrift, al ingevuld. Wat je daar verstuurt, valt onder de eigen privacyvoorwaarden van die dienst."
+          },
+          {
+            "p": "De link in het bijschrift opent de eigen pagina van de kaart op Memory Chess, en de cijfers van de kaart staan in de link zelf. Een gedeelde resultaatlink, onder /share/result/, bevat ook het bord dat je bestudeerde, het bord dat je opbouwde en de volgorde en timing van elk stuk dat je plaatste, tenzij de ronde het bord van de dag was, waarvan de link geen stelling bevat. Iedereen die de link opent, kan ze lezen, en Memory Chess leest ze uit de link om de pagina en de voorvertoning ervan te tekenen. Een link wordt alleen gemaakt wanneer je een kaart deelt, en Memory Chess slaat hem niet op. Zoals bij elke pagina van de site registreren de hierboven genoemde analysetools het adres van de pagina, inclusief de link, wanneer iemand die opent."
+          },
+          {
+            "p": "Google Analytics ontvangt een gebeurtenis lab_dashboard_share wanneer een voortgangskaart de pagina verlaat en een gebeurtenis result_share wanneer een resultaatkaart dat doet. Elke gebeurtenis noemt alleen hoe de kaart vertrok, als methode: native voor het deelmenu, download voor een gedownloade afbeelding, copy_image voor een gekopieerde afbeelding, copy voor een gekopieerd bijschrift, of post voor de plaatsingspagina van een netwerk, waarbij dat netwerk wordt genoemd als x, facebook, linkedin, reddit, whatsapp, threads of bluesky. Geen van beide gebeurtenissen bevat de cijfers van de kaart, de borden of de link."
+          },
+          {
+            "p": "Wanneer je een score naar de ranglijst stuurt, bewaart de lokale opslag op dit apparaat ook de id die de ranglijst aan die inzending geeft, met de moeilijkheidsgraad, het land, de score en het moment waarop je hem verstuurde, voor je beste inzending op elke moeilijkheidsgraad. Alleen wanneer je in het labverslag op Bekijk mijn positie drukt, stuurt je browser die inzendings-id naar Memory Chess, samen met de keuze of de inzending wereldwijd of binnen het eigen land van de inzending moet worden gerangschikt. Memory Chess leest de inzending uit de ranglijst en antwoordt met de positie en het aantal inzendingen waartegen ze is gerangschikt. Het antwoord wordt niet opgeslagen. Om te beperken hoe vaak de positie kan worden opgevraagd, telt de server de controles per IP-adres één minuut lang in zijn geheugen en laat hij een adres vallen bij de eerste controle nadat de minuut voorbij is. Als de ranglijst de inzending niet meer heeft, wordt de id ervan van dit apparaat verwijderd. Google Analytics ontvangt een gebeurtenis die meldt dat er een positie is opgevraagd, zonder inzendings-id en zonder positie."
+          },
+          {
+            "p": "Als je een artikel leuk vindt, worden de id van dat artikel en het aantal likes dat op dat moment wordt getoond opgeslagen in de lokale opslag van je browser, zodat de likeknop ingedrukt blijft en het aantal niet daalt wanneer je terugkomt. De sessieopslag onthoudt welke artikelen je in het huidige tabblad hebt geopend, zodat een artikel daar opnieuw openen geen extra weergave toevoegt. Beide lijsten blijven in je browser. Als je een artikel leuk vindt, ontvangt Google Analytics ook een likegebeurtenis die het artikel noemt."
+          },
+          {
+            "p": "De zoekfunctie van Leren rangschikt gidsen in je browser, of op de server wanneer je zoekt vanaf de zoekpagina. Google Analytics ontvangt bij een zoekopdracht een gebeurtenis met hoeveel tekens je typte, hoeveel gidsen overeenkwamen, de bovenste gids en of het om een benaderende overeenkomst ging, en een gebeurtenis wanneer je een resultaat opent, met die gids en zijn plaats in de lijst. Geen van beide gebeurtenissen bevat de woorden die je typte. Een zoekopdracht vanaf de zoekpagina zelf zet je woorden in het adres van die pagina, en de analysetools registreren het adres van elke bekeken pagina, dus die woorden kunnen hen bereiken."
+          },
+          {
+            "p": "Google Analytics en advertentiediensten kunnen cookies of vergelijkbare identificatoren gebruiken. Je kunt cookies in je browser blokkeren of verwijderen, al kunnen sommige voorkeuren dan niet meer werken zoals verwacht."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Advertenties en Google AdSense",
+        "blocks": [
+          {
+            "p": "Memory Chess gebruikt Google AdSense om de site te ondersteunen. Externe leveranciers, waaronder Google, kunnen cookies plaatsen of lezen, webbeacons gebruiken of IP-adressen verwerken wanneer advertentiediensten of advertentietags worden gebruikt."
+          },
+          {
+            "p": "Google en zijn advertentiepartners kunnen advertentiecookies gebruiken om advertenties te tonen op basis van je bezoeken aan Memory Chess en andere websites. Afhankelijk van je locatie, keuzes en instellingen kunnen advertenties gepersonaliseerd of niet-gepersonaliseerd zijn. Andere door Google gecertificeerde advertentieleveranciers kunnen ook meewerken aan het tonen en meten van advertenties."
+          },
+          {
+            "p": "Google is een van deze leveranciers en gebruikt de DoubleClick-cookie, ook wel de DART-cookie genoemd, om advertenties te tonen op basis van je bezoeken aan deze site en andere sites op internet. Je kunt je afmelden voor de DART-cookie via de advertentie-instellingen van Google die hieronder zijn gelinkt."
+          },
+          {
+            "p": "Lees meer over <partnerSites>hoe Google informatie van partnersites gebruikt</partnerSites>. Je kunt gepersonaliseerde advertenties beheren in <adCenter>My Ad Center</adCenter> en je voor sommige andere leveranciers afmelden via <adChoices>YourAdChoices</adChoices>."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Toestemmingskeuzes",
+        "blocks": [
+          {
+            "p": "Waar dat vereist is, krijgen bezoekers een toestemmingsmelding te zien voordat in aanmerking komende advertentiegegevens worden gebruikt. Bezoekers in de Europese Economische Ruimte, het Verenigd Koninkrijk en Zwitserland kunnen via het toestemmingsplatform van Google toestemming geven, weigeren of afzonderlijke keuzes beheren. Je kunt ook de cookie-instellingen in je browser wijzigen en je advertentievoorkeuren bij Google aanpassen in My Ad Center."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Hoe we gegevens gebruiken en delen",
+        "blocks": [
+          {
+            "p": "We gebruiken gegevens om Memory Chess aan te bieden en te beveiligen, resultaten te berekenen, ingezonden scores op de ranglijst te publiceren, contactberichten te beantwoorden, feedback te bekijken, de prestaties van de site te meten, misbruik te voorkomen en de site met advertenties te ondersteunen. We verkopen de contactgegevens of feedback die je inzendt niet."
+          },
+          {
+            "p": "Gegevens worden alleen door dienstverleners verwerkt waar dat nodig is: Google Sheets voor contactberichten en spelfeedback, Supabase voor spelstatistieken, inzendingen voor de ranglijst en de totalen van weergaven en likes van artikelen, Vercel voor hosting en prestatiemeting, Ahrefs voor analyse, en Google voor analyse, toestemming en advertenties. Deze dienstverleners kunnen gegevens in andere landen verwerken onder hun eigen privacyvoorwaarden."
+          },
+          {
+            "p": "Wanneer je een artikel opent of leuk vindt, slaat Supabase per artikel alleen een totaal aantal weergaven en een totaal aantal likes op, met het tijdstip van de laatste wijziging en zonder identificatie van de bezoeker."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Bewaartermijn en beveiliging",
+        "blocks": [
+          {
+            "p": "We bewaren ingezonden gegevens alleen zolang ze nuttig blijven voor de hierboven beschreven doeleinden, waaronder het bijhouden van de openbare ranglijst en het beantwoorden van berichten, of zolang de wet dat vereist. Geen enkele onlinedienst is volledig veilig, maar we beperken de toegang en nemen redelijke beveiligingsmaatregelen voor de systemen die we beheren."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "Je keuzes",
+        "blocks": [
+          {
+            "ul": [
+              "Spelen zonder een naam voor de ranglijst of feedback in te zenden.",
+              "Opgeslagen spelgegevens en voorkeuren in je browser wissen.",
+              "Cookies, toestemmingskeuzes en gepersonaliseerde advertenties beheren.",
+              "Ons vragen naar gegevens die je hebt ingezonden, ze laten corrigeren of om verwijdering ervan verzoeken, met inachtneming van het toepasselijke recht en onze mogelijkheid om het verzoek te verifiëren."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "Je rechten onder de AVG (GDPR) en de CCPA",
+        "blocks": [
+          {
+            "p": "Als je in de Europese Economische Ruimte of het Verenigd Koninkrijk bent, geeft de AVG (GDPR) je het recht op inzage, rectificatie, wissing, beperking van de verwerking, bezwaar tegen de verwerking en overdraagbaarheid van gegevens. De rechtsgronden waarop we ons baseren zijn je toestemming, voor gepersonaliseerde advertenties en analysecookies waar toestemming vereist is, en onze gerechtvaardigde belangen, voor het laten werken en beveiligen van de site, het publiceren van de ranglijstscores die je inzendt en het beantwoorden van de berichten die je stuurt. Je kunt je toestemming op elk moment intrekken via de toestemmingsmelding of je browserinstellingen, en je kunt een klacht indienen bij je lokale toezichthoudende autoriteit."
+          },
+          {
+            "p": "Als je in Californië woont, geeft de CCPA je het recht om te weten welke persoonsgegevens worden verzameld, om verwijdering ervan te vragen en om je af te melden voor de verkoop of het delen ervan. We verkopen je persoonsgegevens niet. Cookies die worden gebruikt voor gepersonaliseerde advertenties kunnen onder de CCPA als delen gelden, en je kunt je daarvoor afmelden via de toestemmingsmelding, My Ad Center en YourAdChoices, die hierboven zijn gelinkt. Dit is onze kennisgeving „Mijn persoonsgegevens niet verkopen of delen” (Do Not Sell or Share My Personal Information). Mail naar <mail>{email}</mail> om een van deze rechten uit te oefenen."
+          }
+        ]
+      },
+      "children": {
+        "title": "Privacy van kinderen",
+        "blocks": [
+          {
+            "p": "Memory Chess is een trainingsspel voor een algemeen publiek en is niet ontworpen om persoonsgegevens van kinderen te verzamelen. Ben je ouder of voogd en denk je dat een kind persoonsgegevens heeft ingezonden, neem dan contact met ons op, zodat we die kunnen bekijken en, waar dat passend is, verwijderen."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Wijzigingen en contact",
+        "blocks": [
+          {
+            "p": "We kunnen dit beleid bijwerken wanneer de site of onze dienstverleners veranderen. De datum bovenaan toont de laatste herziening. Gebruik voor vragen of verzoeken over privacy het <contact>contactformulier van Memory Chess</contact>."
+          }
+        ]
+      }
+    }
+  }
+}

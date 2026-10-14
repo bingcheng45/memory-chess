@@ -60,7 +60,9 @@ test("in a locale the articles are translated into, Articles keeps the locale an
   expect(articles).toHaveTextContent(/^Artikel$/);
   expect(articles).not.toHaveAttribute("hreflang");
   expect(container.querySelector('a[href="/articles"]')).not.toBeInTheDocument();
-  expect(container.querySelector('a[href="/about"]')).toHaveTextContent(/^Über \(English\)$/);
+  expect(container.querySelector('a[href="/de/about"]')).toHaveTextContent(/^Über$/);
+  expect(container.querySelector('a[href="/de/about"]')).not.toHaveAttribute("hreflang");
+  expect(container.querySelector('a[href="/about"]')).not.toBeInTheDocument();
 });
 
 test("on an English page, English-only links and Articles carry no marker", () => {

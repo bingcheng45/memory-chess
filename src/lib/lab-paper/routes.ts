@@ -1,3 +1,5 @@
+import { servedLocalesOf } from "@/lib/seo/englishOnly";
+
 /**
  * A route drawn in the Lab Paper shell (docs/design/brand-directions/lab-paper.md, "Using the shell on a page").
  * `path` is unprefixed, as next-intl's usePathname returns it. `scope: "subtree"` also covers every path beneath it.
@@ -12,9 +14,9 @@ export interface LabPaperRoute {
 export const LAB_PAPER_ROUTES: readonly LabPaperRoute[] = [
   { path: "/", scope: "page", locales: "all" },
   { path: "/changelog", scope: "page", locales: ["en"] },
-  { path: "/about", scope: "page", locales: ["en"] },
-  { path: "/terms", scope: "page", locales: ["en"] },
-  { path: "/privacy", scope: "page", locales: ["en"] },
+  { path: "/about", scope: "page", locales: servedLocalesOf("/about") },
+  { path: "/terms", scope: "page", locales: servedLocalesOf("/terms") },
+  { path: "/privacy", scope: "page", locales: servedLocalesOf("/privacy") },
   { path: "/contact-us", scope: "page", locales: "all" },
   { path: "/leaderboard", scope: "page", locales: "all" },
   { path: "/articles", scope: "subtree", locales: "all" },

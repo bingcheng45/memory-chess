@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": "91235b979c8fb721be151d979837a730da15c26bac92215c0dea1dd41618484b",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Om",
+      "description": "Vem som bygger Memory Chess, varför spelet finns, hur en runda poängsätts och hur guiderna i Lär dig skrivs.",
+      "socialTitle": "Om Memory Chess",
+      "socialDescription": "Vem som bygger Memory Chess, varför spelet finns och hur det fungerar."
+    },
+    "kicker": "Om",
+    "title": "Om Memory Chess",
+    "lede": "Memory Chess är ett gratis spel för brädminne som byggs och drivs av en enda person. Den här sidan förklarar vem det är, varför spelet finns och hur det faktiskt fungerar.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Vem som driver webbplatsen",
+        "blocks": [
+          {
+            "p": "Jag heter Bing Cheng och är soloutvecklare. Jag driver Memory Chess på egen hand, med hjälp av AI för koden och webbplatsens texter. Det finns inget team och inget företag bakom. Jag bygger också <tont>Tont</tont>, och jag lägger upp nyheter om webbplatsen på <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Eftersom en person driver allt hålls webbplatsen liten med avsikt. Ett spel, en samling träningsguider, en topplista och en ändringslogg som visar vad som faktiskt har släppts."
+          },
+          {
+            "p": "Spelet är gratis och kräver inget konto. Annonser via Google AdSense hjälper till att täcka hostingkostnaderna, och ingenting på webbplatsen är låst bakom en betalning eller en registrering."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Varför spelet finns",
+        "blocks": [
+          {
+            "p": "De flesta råd om hur man blir bättre i schack skickar nybörjare till öppningar, taktikpussel och kurser. Enligt min erfarenhet ligger det tidigare problemet under allt det där. Nybörjare tappar överblicken över brädet. De missar en försvarare, glömmer en pjäs som flyttades för två drag sedan och går rakt in i slag som de genast skulle se på ett diagram."
+          },
+          {
+            "p": "Att hålla en ställning i huvudet är en färdighet som går att träna, och det fanns få ställen där man kunde öva på den direkt. Så jag byggde ett. Memory Chess plockar ut just den färdigheten och ger den en poäng, så att du kan se den bli bättre. Vill du ha något att spela om kan du lägga upp ett valfritt namn på den offentliga topplistan och mäta dig mot alla andra."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Så fungerar en runda",
+        "blocks": [
+          {
+            "p": "Du väljer hur många pjäser du vill möta och hur länge du får studera dem. Förinställningarna går från Lätt, två pjäser med tio sekunder, upp till Stormästare, tjugo pjäser med fem sekunder, och du kan ställa in vilken egen kombination som helst. Sedan går rundan i tre faser."
+          },
+          {
+            "p": "Först memorerar du. Brädet visar en ställning under den tid du valde, och sedan försvinner den. Därefter bygger du upp den. Du ställer ut pjäser på ett tomt bräde ur minnet. Till sist får du ditt resultat. Spelet jämför ditt bräde med originalet, ruta för ruta."
+          },
+          {
+            "p": "Poängsättningen är sträng. En pjäs räknas som rätt bara när rätt pjäs i rätt färg står på exakt den ruta den stod på i den ursprungliga ställningen. Ett torn där en springare hör hemma är fel två gånger om. Det räknas som en felplacerad pjäs, och springaren som det trängde undan räknas som saknad. Din träffsäkerhet är andelen av de ursprungliga pjäserna som du återskapade exakt."
+          },
+          {
+            "p": "Resultatskärmen visar alla tre grupperna, placeringarna du fick rätt, de du fick fel och pjäserna du glömde helt, så att varje runda visar vad du ska ta itu med nästa gång. Du kan <game>prova en runda</game> på under en minut."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Så skrivs guiderna i Lär dig",
+        "blocks": [
+          {
+            "p": "<learn>Biblioteket i Lär dig</learn> innehåller {count, plural, one {# guide} other {# guider}} om brädseende, visualisering och minnesträning. De är skrivna med hjälp av AI. Varje schackställning i dem kontrolleras av ett skript när det gäller antalet pjäser, att ställningen är tillåten och varje angrepp som texten påstår. Varje påstående om hur Memory Chess fungerar har spårats till spelets kod. Varje guide har övningar. Vissa öppnar en runda i spelet med rätt inställningar. Resten är tänkta för ett riktigt bräde."
+          },
+          {
+            "p": "Där guiderna påstår något om minne och inlärning hänvisar de till publicerad forskning, bland annat Gobets och Simons arbete om schackminne och den experimentella litteraturen om återkallande ur minnet och spridd övning. Varje hänvisning länkar till sin källa. Jag har inte bedrivit någon egen forskning, och guiderna låtsas inte något annat."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Webbplatsens historia",
+        "blocks": [
+          {
+            "p": "Den första versionen gick live i mars 2025 som en enkel version av spelet. Spel i mobilen och val av pjäser följde inom några veckor. Biblioteket i Lär dig lanserades i mars 2026, och i augusti 2026 började själva spelet finnas på 24 språk. Guiderna och ändringsloggen är på engelska. <changelog>Ändringsloggen</changelog> registrerar varje versionerad release, inklusive buggfixarna. Jag håller den ärlig eftersom jag själv använder den för att minnas vad som ändrades och när."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Hör av dig",
+        "blocks": [
+          {
+            "p": "Skriv till mig på <mail>{email}</mail> eller använd <contact>kontaktformuläret</contact>. Jag läser allt, och rapporter från spelare har redan tidigare lett till att riktiga buggar har rättats. Vill du läsa det finstilta beskriver <privacy>integritetspolicyn</privacy> och <terms>användarvillkoren</terms> hur webbplatsen hanterar data och vad du går med på genom att spela."
+          }
+        ]
+      }
+    }
+  }
+}

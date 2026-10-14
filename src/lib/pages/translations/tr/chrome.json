@@ -1,0 +1,15 @@
+{
+  "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
+  "approvedHash": "deeb9bf8acbd1d4fb18da02c6e77ebeea0a87cca08f34d3b0bdf88414ccd9474",
+  "sameAsEnglish": [],
+  "text": {
+    "contents": "İçindekiler",
+    "onThisPage": "Bu sayfada",
+    "lastUpdated": "Son güncelleme: <time>{date}</time>",
+    "note": {
+      "general": "Bu sayfa yapay zekâ desteğiyle İngilizceden çevrildi. Esas alınan sayfa İngilizce sayfadır.",
+      "legal": "Bu çeviri yapay zekâ desteğiyle hazırlanmıştır ve kolaylık sağlamak amacıyla sunulmaktadır. İngilizce sürümden farklı olması durumunda İngilizce sürüm geçerlidir.",
+      "readInEnglish": "İngilizcesini oku"
+    }
+  }
+}

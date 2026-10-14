@@ -80,9 +80,13 @@ jest.mock("@/lib/utils/soundEffects", () => ({
   playSound: jest.fn(),
 }));
 
+let mockFeedbackGame: { difficulty: string } | null = null;
 jest.mock("@/components/game/FirstGameFeedbackDialog", () => ({
   __esModule: true,
-  default: () => null,
+  default: ({ game }: { game: { difficulty: string } }) => {
+    mockFeedbackGame = game;
+    return null;
+  },
 }));
 
 describe("GameResult", () => {
@@ -431,6 +435,21 @@ describe("GameResult", () => {
 
       expect(screen.queryByRole("button", { name: "Submit to leaderboard" })).not.toBeInTheDocument();
       expect(screen.getByRole("button", { name: "Try again" })).toBeInTheDocument();
+    } finally {
+      mockGameState = baseGameState;
+    }
+  });
+
+  it.each([
+    ["a daily board", { kind: "daily", day: "2026-10-14", fen: baseGameState.originalPosition }, "daily"],
+    ["a free round of the same size", undefined, "custom"],
+  ] as const)("labels the feedback for %s by what was played", (_, board: SetBoard | undefined, difficulty) => {
+    mockGameState = { ...baseGameState, pieceCount: 7, board };
+
+    try {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      expect(mockFeedbackGame?.difficulty).toBe(difficulty);
     } finally {
       mockGameState = baseGameState;
     }

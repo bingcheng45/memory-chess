@@ -56,6 +56,19 @@ describe("POST /api/feedback", () => {
     });
   });
 
+  it("records a daily board's feedback as daily", async () => {
+    const response = await POST(
+      new Request("http://localhost/api/feedback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...validBody, pieceCount: 7, correctPieces: 5, difficulty: "daily" }),
+      }),
+    );
+
+    expect(response.status).toBe(200);
+    expect(mockAppendGoogleSheetRow.mock.calls[0][0].row[6]).toBe("daily");
+  });
+
   it("rejects invalid feedback without writing a row", async () => {
     const response = await POST(
       new Request("http://localhost/api/feedback", {

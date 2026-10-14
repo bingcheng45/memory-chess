@@ -1,6 +1,6 @@
 {
   "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
-  "approvedHash": null,
+  "approvedHash": "bd6d7e909fb230438ffdf925b2a7c2eb0f7ade6016e3317f9fafe96acb1470ea",
   "sameAsEnglish": [],
   "text": {
     "contents": "Sisältö",
@@ -8,7 +8,7 @@
     "lastUpdated": "Päivitetty viimeksi: <time>{date}</time>",
     "note": {
       "general": "Tämä sivu on käännetty englannista tekoälyn avustuksella. Englanninkielinen sivu on viiteversio.",
-      "legal": "Tämä käännös on tehty tekoälyn avustuksella, ja se tarjotaan helpottamaan lukemista. Jos se poikkeaa englanninkielisestä versiosta, englanninkielinen versio on ratkaiseva.",
+      "legal": "Tämä käännös on tehty tekoälyn avustuksella, ja se tarjotaan helpottamaan lukemista. Jos se poikkeaa englanninkielisestä versiosta, englanninkielinen versio on ensisijainen.",
       "readInEnglish": "Lue englanniksi"
     }
   }

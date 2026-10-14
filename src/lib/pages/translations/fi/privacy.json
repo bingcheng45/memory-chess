@@ -1,6 +1,6 @@
 {
   "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": null,
+  "approvedHash": "6d13b6c81515904b903ba96c2831f6a884951bc4c763e80e2c67aa57617c7064",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -80,7 +80,7 @@
             "p": "Artikkelista tykkääminen tallentaa artikkelin tunnisteen ja sillä hetkellä näkyvän tykkäysmäärän selaimesi paikalliseen tallennustilaan, jotta tykkäyspainike pysyy painettuna eikä sen luku laske, kun palaat. Istuntotallennus muistaa, mitkä artikkelit olet avannut nykyisessä välilehdessä, jotta artikkelin avaaminen siellä uudelleen ei lisää katselukertaa. Molemmat luettelot pysyvät selaimessasi. Kun tykkäät artikkelista, Google Analytics saa myös tykkäystapahtuman, joka nimeää artikkelin."
           },
           {
-            "p": "Opi-osion haku järjestää oppaat selaimessasi tai palvelimella, kun haet hakusivulta. Google Analytics saa hausta tapahtuman, jossa on kirjoittamiesi merkkien määrä, osumien määrä, ylin opas ja se, oliko osuma läheinen, sekä tapahtuman, kun avaat tuloksen, jossa on kyseinen opas ja sen sija luettelossa. Kumpikaan tapahtuma ei sisällä kirjoittamiasi sanoja. Itse hakusivulta tehty haku lisää sanasi kyseisen sivun osoitteeseen, ja analytiikkatyökalut tallentavat jokaisen katsotun sivun osoitteen, joten nuo sanat voivat päätyä niille."
+            "p": "Opi-osion haku järjestää oppaat selaimessasi tai palvelimella, kun haet hakusivulta. Google Analytics saa hausta tapahtuman, jossa on kirjoittamiesi merkkien määrä, osumien määrä, ylin opas ja se, oliko ylin osuma vain likimääräinen, sekä tapahtuman, kun avaat tuloksen, jossa on kyseinen opas ja sen sija luettelossa. Kumpikaan tapahtuma ei sisällä kirjoittamiasi sanoja. Itse hakusivulta tehty haku lisää sanasi kyseisen sivun osoitteeseen, ja analytiikkatyökalut tallentavat jokaisen katsotun sivun osoitteen, joten nuo sanat voivat päätyä niille."
           },
           {
             "p": "Google Analytics ja mainospalvelut voivat käyttää evästeitä tai vastaavia tunnisteita. Voit estää tai poistaa evästeitä selaimessasi, mutta jotkin asetukset voivat lakata toimimasta odotetusti."
@@ -151,7 +151,7 @@
         "title": "Oikeutesi GDPR:n ja CCPA:n mukaan",
         "blocks": [
           {
-            "p": "Jos olet Euroopan talousalueella tai Yhdistyneessä kuningaskunnassa, yleinen tietosuoja-asetus (GDPR) antaa sinulle oikeuden saada pääsy tietoihin, oikaista ja poistaa tietoja, rajoittaa käsittelyä, vastustaa käsittelyä sekä siirtää tiedot järjestelmästä toiseen. Käsittelyperusteemme ovat suostumuksesi personoidun mainonnan ja analytiikkaevästeiden osalta silloin, kun suostumusta edellytetään, sekä oikeutettu etumme sivuston ylläpidon ja suojaamisen, lähettämiesi tulostaulukon pisteiden julkaisemisen ja lähettämiisi viesteihin vastaamisen osalta. Voit peruuttaa suostumuksesi milloin tahansa suostumusviestin tai selaimesi asetusten kautta, ja voit tehdä valituksen paikalliselle valvontaviranomaiselle."
+            "p": "Jos olet Euroopan talousalueella tai Yhdistyneessä kuningaskunnassa, yleinen tietosuoja-asetus (GDPR) antaa sinulle oikeuden tutustua tietoihin, oikaista ja poistaa tietoja, rajoittaa käsittelyä, vastustaa käsittelyä sekä siirtää tiedot järjestelmästä toiseen. Käsittelyperusteemme ovat suostumuksesi personoidun mainonnan ja analytiikkaevästeiden osalta silloin, kun suostumusta edellytetään, sekä oikeutettu etumme sivuston ylläpidon ja suojaamisen, lähettämiesi tulostaulukon pisteiden julkaisemisen ja lähettämiisi viesteihin vastaamisen osalta. Voit peruuttaa suostumuksesi milloin tahansa suostumusviestin tai selaimesi asetusten kautta, ja voit tehdä valituksen paikalliselle valvontaviranomaiselle."
           },
           {
             "p": "Jos asut Kaliforniassa, CCPA antaa sinulle oikeuden tietää, mitä henkilötietoja kerätään, pyytää niiden poistamista ja kieltää niiden myynti tai jakaminen. Emme myy henkilötietojasi. Personoituun mainontaan käytettävät evästeet voidaan katsoa CCPA:n mukaiseksi jakamiseksi, ja voit kieltää sen suostumusviestin, My Ad Centerin ja edellä linkitetyn YourAdChoicesin kautta. Tämä on ”Älä myy tai jaa henkilötietojani” (Do Not Sell or Share My Personal Information) -ilmoituksemme. Voit käyttää mitä tahansa näistä oikeuksista lähettämällä sähköpostia osoitteeseen <mail>{email}</mail>."

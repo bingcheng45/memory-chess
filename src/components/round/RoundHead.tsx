@@ -13,6 +13,9 @@ export function clockFace(state: RoundState, idleStudyMs: number): ClockFace {
   switch (state.phase) {
     case "idle":
       return { kind: "still", text: `${formatSecondsMs(idleStudyMs)}s` };
+    case "ready":
+    case "countdown":
+      return { kind: "still", text: `${formatSecondsMs(state.config.studyMs)}s` };
     case "study":
       return { kind: "countdown", startedAt: state.startedAt, totalMs: state.config.studyMs };
     case "rebuild":

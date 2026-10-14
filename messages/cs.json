@@ -1625,7 +1625,14 @@
       "locked": "Dnešní pozici jste už otevřeli. Jeden pokus denně udrží hru férovou.",
       "seeBoard": "Zobrazit dnešní pozici",
       "chooseRound": "Hrát další kolo",
-      "join": "Zapojit se do dnešní pozice"
+      "join": "Zapojit se do dnešní pozice",
+      "fig": "Denní pozice · {date}",
+      "pieces": "{count, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}}",
+      "seconds": "{count} s na studium",
+      "rule": "Jeden pokus. Spotřebuje se stisknutím Spustit hru.",
+      "start": "Spustit hru",
+      "countdown": "Začátek za {count}",
+      "saving": "Ukládání výsledku…"
     },
     "page": {
       "fig": "Denní pozice · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Jste v dnešním žebříčku",
       "rank": "{rank}. místo z {total} dnes",
       "lateNote": "Včerejší pozici máte odehranou, ale v jejím žebříčku ještě nejste.",
-      "lateJoined": "Jste v žebříčku toho dne"
+      "lateJoined": "Jste v žebříčku toho dne",
+      "justPlayed": "Přidejte své skóre do dnešní pozice."
     },
     "join": {
       "title": "Zapojit se do dnešní pozice",

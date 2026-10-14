@@ -1625,7 +1625,14 @@
       "locked": "Du har allerede åpnet dagens brett. Ett forsøk om dagen holder det rettferdig.",
       "seeBoard": "Se dagens brett",
       "chooseRound": "Spill en ny runde",
-      "join": "Bli med på dagens brett"
+      "join": "Bli med på dagens brett",
+      "fig": "Dagens brett · {date}",
+      "pieces": "{count, plural, one {# brikke} other {# brikker}}",
+      "seconds": "{count} s innlæring",
+      "rule": "Ett forsøk. Det brukes når du trykker Start spillet.",
+      "start": "Start spillet",
+      "countdown": "Starter om {count}",
+      "saving": "Lagrer resultatet ditt…"
     },
     "page": {
       "fig": "Dagens brett · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Du er med på dagens brett",
       "rank": "Plass {rank} av {total} i dag",
       "lateNote": "Du spilte gårsdagens brett og er ikke med på det ennå.",
-      "lateJoined": "Du er med på brettet for den dagen"
+      "lateJoined": "Du er med på brettet for den dagen",
+      "justPlayed": "Legg poengsummen din på dagens brett."
     },
     "join": {
       "title": "Bli med på dagens brett",

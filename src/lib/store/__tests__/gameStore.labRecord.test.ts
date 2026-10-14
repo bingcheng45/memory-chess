@@ -155,6 +155,31 @@ describe("lab record from a finished game round", () => {
     expect([again.startSource, again.board]).toEqual(["try_again", undefined]);
   });
 
+  it("starts a daily board only when its countdown ends, sending round_start then, and resolves the submit once the record kept it", async () => {
+    const fen = "8/8/8/1pQ4k/P2p4/8/8/1K6 b - - 0 1";
+    const board = { kind: "daily", day: "2026-10-09", fen } as const;
+    const gtag = jest.fn();
+    window.gtag = gtag;
+    jest.mocked(recordLabRound).mockResolvedValueOnce(false);
+
+    store().prepareGame(6, 10, "daily", board);
+    store().dispatch({ type: "begin", now: 1000 });
+    const before = { phase: store().round.phase, starts: gtag.mock.calls.length, shown: store().gameState.originalPosition };
+    store().endCountdown(4000);
+    const study = store().round;
+    store().dispatch({ type: "studyEnded", now: 14000 });
+    const kept = await store().submitSolution(20000);
+
+    expect(before).toEqual({ phase: "countdown", starts: 0, shown: undefined });
+    expect(study.phase === "study" && [study.startedAt, Object.keys(study.target).length]).toEqual([4000, 6]);
+    expect(store().gameState).toMatchObject({ originalPosition: fen, startSource: "daily", board, memorizeTime: 10, pieceCount: 6 });
+    expect(gtag.mock.calls.filter(([, name]) => name === "round_start")).toEqual([
+      ["event", "round_start", { piece_count: 6, memorize_time: 10, source: "daily" }],
+    ]);
+    expect(kept).toBe(false);
+    Reflect.deleteProperty(window, "gtag");
+  });
+
   it("replays a board from the lab record for review and hands the review's link to the record", async () => {
     const board = { kind: "review", fen: "4k3/8/8/3q4/8/5N2/8/4K3 w - - 0 1", reviewOf: "first-round", firstDay: "2026-10-06", step: 1 } as const;
     store().startGame(4, 10, "review", board);

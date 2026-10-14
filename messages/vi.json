@@ -1625,7 +1625,14 @@
       "locked": "Bạn đã mở bàn cờ hôm nay rồi. Mỗi ngày chỉ một lượt để giữ sự công bằng.",
       "seeBoard": "Xem bàn cờ hôm nay",
       "chooseRound": "Chơi thêm một ván",
-      "join": "Tham gia bàn cờ hôm nay"
+      "join": "Tham gia bàn cờ hôm nay",
+      "fig": "Bàn cờ hằng ngày · {date}",
+      "pieces": "{count, plural, other {# quân}}",
+      "seconds": "{count} giây để ghi nhớ",
+      "rule": "Một lượt. Lượt được tính khi bạn nhấn Bắt đầu chơi.",
+      "start": "Bắt đầu chơi",
+      "countdown": "Bắt đầu sau {count}",
+      "saving": "Đang lưu kết quả…"
     },
     "page": {
       "fig": "Bàn cờ hằng ngày · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Bạn đã có tên trên bàn cờ hôm nay",
       "rank": "Hạng {rank} trên {total} hôm nay",
       "lateNote": "Bạn đã chơi bàn cờ hôm qua nhưng chưa tham gia.",
-      "lateJoined": "Bạn đã có tên trên bàn cờ của ngày đó"
+      "lateJoined": "Bạn đã có tên trên bàn cờ của ngày đó",
+      "justPlayed": "Hãy đưa điểm của bạn lên bàn cờ hôm nay."
     },
     "join": {
       "title": "Tham gia bàn cờ hôm nay",

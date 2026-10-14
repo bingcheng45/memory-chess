@@ -1625,7 +1625,14 @@
       "locked": "Ya has abierto el tablero de hoy. Un intento al día mantiene el juego justo.",
       "seeBoard": "Ver el tablero de hoy",
       "chooseRound": "Jugar otra ronda",
-      "join": "Unirse al tablero de hoy"
+      "join": "Unirse al tablero de hoy",
+      "fig": "Tablero diario · {date}",
+      "pieces": "{count, plural, one {# pieza} many {# piezas} other {# piezas}}",
+      "seconds": "{count} s para memorizar",
+      "rule": "Un intento. Cuenta al pulsar Empezar partida.",
+      "start": "Empezar partida",
+      "countdown": "Empieza en {count}",
+      "saving": "Guardando tu resultado…"
     },
     "page": {
       "fig": "Tablero diario · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Estás en el tablero de hoy",
       "rank": "Puesto {rank} de {total} hoy",
       "lateNote": "Jugaste el tablero de ayer y todavía no te has unido.",
-      "lateJoined": "Estás en el tablero de ese día"
+      "lateJoined": "Estás en el tablero de ese día",
+      "justPlayed": "Pon tu puntuación en el tablero de hoy."
     },
     "join": {
       "title": "Unirse al tablero de hoy",

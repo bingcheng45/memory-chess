@@ -1625,7 +1625,14 @@
       "locked": "Du hast das heutige Brett schon geöffnet. Ein Versuch pro Tag hält es fair.",
       "seeBoard": "Heutiges Brett ansehen",
       "chooseRound": "Noch eine Runde spielen",
-      "join": "Dem heutigen Brett beitreten"
+      "join": "Dem heutigen Brett beitreten",
+      "fig": "Tagesbrett · {date}",
+      "pieces": "{count, plural, one {# Figur} other {# Figuren}}",
+      "seconds": "{count} s zum Einprägen",
+      "rule": "Ein Versuch. Er zählt, sobald du Spiel starten drückst.",
+      "start": "Spiel starten",
+      "countdown": "Start in {count}",
+      "saving": "Ergebnis wird gespeichert…"
     },
     "page": {
       "fig": "Tagesbrett · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Du stehst auf dem heutigen Brett",
       "rank": "Platz {rank} von {total} heute",
       "lateNote": "Du hast das gestrige Brett gespielt und bist ihm noch nicht beigetreten.",
-      "lateJoined": "Du stehst auf dem Brett dieses Tages"
+      "lateJoined": "Du stehst auf dem Brett dieses Tages",
+      "justPlayed": "Trag dein Ergebnis auf dem heutigen Brett ein."
     },
     "join": {
       "title": "Dem heutigen Brett beitreten",

@@ -24,7 +24,7 @@ function placed(): LabPosition {
 
 const target = (): LabPosition => {
   const { round } = store();
-  return round.phase === "idle" ? {} : round.target;
+  return "target" in round ? round.target : {};
 };
 
 describe("starting a round", () => {

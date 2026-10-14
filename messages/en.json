@@ -1625,7 +1625,14 @@
       "locked": "You have already opened today's board. One try a day keeps it fair.",
       "seeBoard": "See today's board",
       "chooseRound": "Play another round",
-      "join": "Join today's board"
+      "join": "Join today's board",
+      "fig": "Daily board · {date}",
+      "pieces": "{count, plural, one {# piece} other {# pieces}}",
+      "seconds": "{count} s to study",
+      "rule": "One try. Pressing Start game uses it.",
+      "start": "Start game",
+      "countdown": "Starting in {count}",
+      "saving": "Saving your result…"
     },
     "page": {
       "fig": "Daily board · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "You are on today's board",
       "rank": "Rank {rank} of {total} today",
       "lateNote": "You played yesterday's board and have not joined it yet.",
-      "lateJoined": "You are on the board for that day"
+      "lateJoined": "You are on the board for that day",
+      "justPlayed": "Put your score on today's board."
     },
     "join": {
       "title": "Join today's board",

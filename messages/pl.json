@@ -1625,7 +1625,14 @@
       "locked": "Dzisiejsza szachownica została już otwarta. Jedna próba dziennie gwarantuje uczciwą grę.",
       "seeBoard": "Zobacz dzisiejszą szachownicę",
       "chooseRound": "Zagraj kolejną rundę",
-      "join": "Dołącz do dzisiejszej szachownicy"
+      "join": "Dołącz do dzisiejszej szachownicy",
+      "fig": "Szachownica dnia · {date}",
+      "pieces": "{count, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}}",
+      "seconds": "{count} s na naukę",
+      "rule": "Jedna próba. Liczy się od naciśnięcia Rozpocznij grę.",
+      "start": "Rozpocznij grę",
+      "countdown": "Start za {count}",
+      "saving": "Zapisywanie wyniku…"
     },
     "page": {
       "fig": "Szachownica dnia · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Jesteś w dzisiejszej szachownicy",
       "rank": "Miejsce {rank} z {total} dzisiaj",
       "lateNote": "Twój wynik z wczorajszej szachownicy nie został jeszcze do niej dodany.",
-      "lateJoined": "Jesteś w szachownicy z tamtego dnia"
+      "lateJoined": "Jesteś w szachownicy z tamtego dnia",
+      "justPlayed": "Dodaj swój wynik do dzisiejszej szachownicy."
     },
     "join": {
       "title": "Dołącz do dzisiejszej szachownicy",

@@ -1625,7 +1625,14 @@
       "locked": "Olet jo avannut päivän laudan. Yksi yritys päivässä pitää pelin reiluna.",
       "seeBoard": "Katso päivän lauta",
       "chooseRound": "Pelaa uusi kierros",
-      "join": "Osallistu päivän lautaan"
+      "join": "Osallistu päivän lautaan",
+      "fig": "Päivän lauta · {date}",
+      "pieces": "{count, plural, one {# nappula} other {# nappulaa}}",
+      "seconds": "{count} s opetteluun",
+      "rule": "Yksi yritys. Se käytetään, kun painat Aloita peli.",
+      "start": "Aloita peli",
+      "countdown": "Alkaa: {count}",
+      "saving": "Tulosta tallennetaan…"
     },
     "page": {
       "fig": "Päivän lauta · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Olet mukana päivän laudalla",
       "rank": "Sija {rank} / {total} tänään",
       "lateNote": "Pelasit eilisen laudan etkä ole vielä liittynyt sille.",
-      "lateJoined": "Olet mukana sen päivän laudalla"
+      "lateJoined": "Olet mukana sen päivän laudalla",
+      "justPlayed": "Lisää tuloksesi päivän lautaan."
     },
     "join": {
       "title": "Osallistu päivän lautaan",

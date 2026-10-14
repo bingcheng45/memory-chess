@@ -1625,7 +1625,14 @@
       "locked": "A mai táblát már megnyitottad. Napi egy próbálkozás tartja tisztességesen a játékot.",
       "seeBoard": "A mai tábla megtekintése",
       "chooseRound": "Újabb kör",
-      "join": "Csatlakozás a mai táblához"
+      "join": "Csatlakozás a mai táblához",
+      "fig": "Napi tábla · {date}",
+      "pieces": "{count, plural, one {# bábu} other {# bábu}}",
+      "seconds": "{count} mp tanulásra",
+      "rule": "Egy próbálkozás. A Játék indítása gombbal használod fel.",
+      "start": "Játék indítása",
+      "countdown": "Indulás: {count}",
+      "saving": "Az eredmény mentése…"
     },
     "page": {
       "fig": "Napi tábla · {date}",
@@ -1659,7 +1666,8 @@
       "joined": "Rajta vagy a mai táblán",
       "rank": "{rank}. hely a mai {total} közül",
       "lateNote": "Játszottál a tegnapi táblán, de még nem csatlakoztál hozzá.",
-      "lateJoined": "Rajta vagy annak a napnak a tábláján"
+      "lateJoined": "Rajta vagy annak a napnak a tábláján",
+      "justPlayed": "Tedd fel az eredményed a mai táblára."
     },
     "join": {
       "title": "Csatlakozás a mai táblához",

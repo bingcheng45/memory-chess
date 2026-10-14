@@ -20,6 +20,8 @@ const STUDY_SECONDS = CALIBRATION_RULES.studyMs / 1000;
 const COPY = "home.lab.calibrate";
 
 const ROUND_PHASE_ID = {
+  ready: "study",
+  countdown: "study",
   study: "study",
   rebuild: "rebuild",
   scored: "score",

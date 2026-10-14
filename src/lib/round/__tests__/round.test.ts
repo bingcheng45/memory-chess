@@ -10,6 +10,7 @@ import {
   type RoundAction,
   type RoundConfig,
   type RoundState,
+  type SetBoardConfig,
 } from "@/lib/round/round";
 
 
@@ -423,5 +424,39 @@ describe("the palette inventory", () => {
 
     expect(roundReducer(studying, { type: "place", piece: WN, square: "f3", now: 10 })).toBe(studying);
     expect(roundReducer(studying, { type: "remove", square: "g1" })).toBe(studying);
+  });
+});
+
+describe("a set board's start", () => {
+  const DAILY: SetBoardConfig = {
+    pieceCount: 3,
+    studyMs: 10_000,
+    source: "daily",
+    board: { kind: "daily", day: "2026-10-14", fen: "4k3/8/8/8/8/8/8/R3K3 w - - 0 1" },
+  };
+
+  it("waits on Start without the position, counts three seconds, then studies the board from the moment it ends", () => {
+    const ready = roundReducer({ phase: "idle" }, { type: "prepare", config: DAILY });
+    const countdown = roundReducer(ready, { type: "begin", now: 1_000 });
+    const study = roundReducer(countdown, { type: "countdownEnded", now: 4_020 });
+
+    expect(ready).toEqual({ phase: "ready", config: DAILY });
+    expect(countdown).toEqual({ phase: "countdown", config: DAILY, endsAt: 4_000 });
+    expect(study).toEqual({
+      phase: "study",
+      config: DAILY,
+      target: { e8: { color: "black", type: "king" }, a1: { color: "white", type: "rook" }, e1: { color: "white", type: "king" } },
+      startedAt: 4_020,
+    });
+  });
+
+  it("ignores Start and the countdown's end out of turn", () => {
+    const ready = roundReducer({ phase: "idle" }, { type: "prepare", config: DAILY });
+    const idle: RoundState = { phase: "idle" };
+
+    expect(roundReducer(idle, { type: "begin", now: 0 })).toBe(idle);
+    expect(roundReducer(ready, { type: "countdownEnded", now: 0 })).toBe(ready);
+    expect(roundReducer(ready, { type: "studyEnded", now: 0 })).toBe(ready);
+    expect(roundReducer(ready, { type: "select", piece: WK })).toBe(ready);
   });
 });

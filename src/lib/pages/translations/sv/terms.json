@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Användarvillkor",
+      "description": "Villkoren i klartext för att spela Memory Chess, skicka in resultat till topplistan och använda webbplatsens innehåll.",
+      "socialTitle": "Användarvillkor för Memory Chess",
+      "socialDescription": "Villkoren i klartext för att spela Memory Chess och använda webbplatsen."
+    },
+    "kicker": "Det finstilta",
+    "title": "Användarvillkor",
+    "lede": "Memory Chess är ett gratis spel som drivs av en enda person. Villkoren är korta eftersom överenskommelsen är enkel, och de är skrivna för att läsas.",
+    "sections": {
+      "service": {
+        "title": "Tjänsten",
+        "blocks": [
+          {
+            "p": "Memory Chess är ett gratis webbläsarspel för att träna brädminnet. Jag tillhandahåller det i befintligt skick och i den mån det är tillgängligt, utan några garantier av något slag. Jag arbetar för att hålla det snabbt, korrekt och tillgängligt, men jag lovar inte en oavbruten tjänst, felfri poängsättning eller att någon funktion förblir likadan för alltid. Jag kan när som helst ändra, tillfälligt stänga av eller avveckla vilken del av webbplatsen som helst."
+          },
+          {
+            "p": "I den utsträckning lagen tillåter ansvarar jag inte för skador som uppstår genom din användning av webbplatsen. Det är ett minnesspel. Det rimliga taket för vad som kan gå fel här är att du förlorar ett resultat som du brydde dig om, och även det anstränger jag mig för att förhindra."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Godtagbar användning",
+        "blocks": [
+          {
+            "p": "Spela schysst och låt webbplatsen fungera för alla andra. Angrip, överbelasta eller sondera inte tjänsten, skrapa den inte i stor skala och försök inte knäcka dess poängsättning. Skicka inte in resultat som har skapats av botar, skript eller någon form av automatisering. Använd inte kontaktformuläret eller topplistan för att spamma, trakassera eller utge dig för att vara någon annan."
+          },
+          {
+            "p": "Kontaktformuläret är till för riktiga meddelanden till en riktig människa. Använd det för buggrapporter, frågor och idéer, så blir det läst."
+          },
+          {
+            "p": "Jag kan blockera trafik eller begränsa åtkomst som bryter mot de här reglerna. Eftersom det inte finns några konton att stänga av är borttagning av olämpliga bidrag och blockering av missbruk vid nätverkskanten de verktyg jag har för att upprätthålla reglerna, och dem använder jag."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Topplistan",
+        "blocks": [
+          {
+            "p": "Det är valfritt att skicka in ett resultat till topplistan. Allt du skickar in där är offentligt. Namnet som hör till ett resultat är det du skriver in, så välj något som du gärna ser publicerat, och använd inte ditt riktiga namn eller någon annans personuppgifter om du hellre vill hålla dem privata."
+          },
+          {
+            "p": "Ett inskickat bidrag innehåller namnet du valde och uppgifterna om rundan, till exempel träffsäkerhet, svårighetsgrad och tid. När det väl har publicerats ligger det kvar på topplistan tills det trängs undan av bättre resultat eller tas bort."
+          },
+          {
+            "p": "Jag kan ta bort bidrag från topplistan som är kränkande, som utger sig för att vara någon annan, som verkar automatiserade eller som tydligt inte har skapats av en person som spelar spelet. Jag tar bort bidrag för att hålla topplistan ärlig, inte för att välja ut vem som vinner."
+          }
+        ]
+      },
+      "content": {
+        "title": "Innehåll och immateriella rättigheter",
+        "blocks": [
+          {
+            "p": "Webbplatsens eget innehåll, däribland spelet, guiderna i Lär dig, designen och koden som driver den, tillhör mig. Du får gärna länka till vilken sida som helst, citera rimliga utdrag med källangivelse och dela dina resultat var du vill. Publicera inte hela guider på nytt och utge inte webbplatsens innehåll för att vara ditt eget."
+          },
+          {
+            "p": "Själva schacket tillhör ingen. Ställningar, regler och notation är fria för alla, här och överallt annars."
+          },
+          {
+            "p": "Om du skickar feedback eller förslag godkänner du att jag får använda dem för att förbättra webbplatsen utan att vara skyldig dig ersättning eller omnämnande. Feedback från spelare har redan tidigare format riktiga releaser, och ändringsloggen visar vad som blev av den."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Tjänster från tredje part",
+        "blocks": [
+          {
+            "p": "Webbplatsen bygger på ett litet antal externa tjänster. Google AdSense visar annonserna som håller den gratis. Google Analytics, Vercel Analytics, Vercel Speed Insights och Ahrefs Analytics mäter trafik och prestanda. Supabase lagrar spelstatistik och bidrag till topplistan. Var och en har sina egna villkor, och <privacy>integritetspolicyn</privacy> förklarar vilka uppgifter var och en kommer åt och vilka val du har."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Ändringar av villkoren",
+        "blocks": [
+          {
+            "p": "Jag kan uppdatera de här villkoren när webbplatsen eller dess tjänster ändras. Den aktuella versionen finns alltid på den här adressen, och om du fortsätter att använda webbplatsen efter en ändring innebär det att du godtar de uppdaterade villkoren. Sådant som påverkar spelarna på ett märkbart sätt, till exempel en ändring av hur topplistan fungerar, noterar jag även i ändringsloggen."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Kontakt",
+        "blocks": [
+          {
+            "p": "Frågor om de här villkoren, eller ett bidrag på topplistan som du vill få granskat eller borttaget, skickar du till <mail>{email}</mail>. Jag svarar på dem själv."
+          }
+        ]
+      }
+    }
+  }
+}

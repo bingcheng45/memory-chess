@@ -1,6 +1,6 @@
 {
   "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": null,
+  "approvedHash": "5dc262d65d2b226524fcb8878b64c9a640389fa8bff9c38c5ab0d58f0238e324",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,7 @@
         "title": "Thông tin được thu thập tự động",
         "blocks": [
           {
-            "p": "Các nhà cung cấp dịch vụ đo lường của chúng tôi có thể nhận thông tin kỹ thuật và thông tin sử dụng như các trang đã xem, vị trí gần đúng, loại trình duyệt và thiết bị, trang giới thiệu, địa chỉ IP và các số đo thời gian về hiệu năng. Memory Chess sử dụng Google Analytics, Vercel Analytics, Vercel Speed Insights và Ahrefs Analytics để hiểu lưu lượng truy cập và giữ cho trang web nhanh và ổn định."
+            "p": "Các nhà cung cấp dịch vụ đo lường của chúng tôi có thể nhận thông tin kỹ thuật và thông tin sử dụng như các trang đã xem, vị trí gần đúng, loại trình duyệt và thiết bị, trang nguồn đã dẫn bạn đến, địa chỉ IP và các số đo thời gian về hiệu năng. Memory Chess sử dụng Google Analytics, Vercel Analytics, Vercel Speed Insights và Ahrefs Analytics để hiểu lưu lượng truy cập và giữ cho trang web nhanh và ổn định."
           },
           {
             "p": "Chúng tôi không yêu cầu các công cụ này thu thập nội dung tin nhắn liên hệ hay nhận xét góp ý về trò chơi của bạn."
@@ -77,10 +77,10 @@
             "p": "Khi bạn gửi điểm lên bảng xếp hạng, bộ nhớ cục bộ trên thiết bị này cũng lưu mã mà bảng xếp hạng cấp cho lượt gửi đó, cùng độ khó, quốc gia, điểm số và thời điểm bạn gửi, cho lượt gửi tốt nhất của bạn ở mỗi độ khó. Chỉ khi bạn nhấn “Xem thứ hạng của tôi” trong hồ sơ phòng lab, trình duyệt của bạn mới gửi mã lượt gửi đó đến Memory Chess, kèm theo việc xếp hạng nó trên toàn thế giới hay trong quốc gia của chính lượt gửi đó. Memory Chess đọc lượt gửi từ bảng xếp hạng và trả lời bằng thứ hạng của nó cùng số lượt gửi được dùng để so sánh. Câu trả lời không được lưu lại. Để giới hạn tần suất kiểm tra thứ hạng, máy chủ đếm số lần kiểm tra từ mỗi địa chỉ IP trong bộ nhớ của nó trong một phút, và bỏ một địa chỉ ở lần kiểm tra đầu tiên sau khi một phút của địa chỉ đó đã hết. Nếu bảng xếp hạng không còn lượt gửi đó, mã của nó sẽ bị xóa khỏi thiết bị này. Google Analytics nhận một sự kiện cho biết một lần kiểm tra thứ hạng đã được thực hiện, không kèm mã lượt gửi và không kèm thứ hạng."
           },
           {
-            "p": "Khi bạn thích một bài viết, mã của bài viết đó và số lượt thích hiển thị tại thời điểm đó được lưu trong bộ nhớ cục bộ của trình duyệt, để nút thích vẫn ở trạng thái đã nhấn và số đếm không giảm khi bạn quay lại. Bộ nhớ phiên ghi nhớ những bài viết bạn đã mở trong thẻ hiện tại, để việc mở lại một bài ở đó không cộng thêm lượt xem. Cả hai danh sách đều ở lại trong trình duyệt của bạn. Khi bạn thích một bài viết, Google Analytics cũng nhận một sự kiện thích có nêu tên bài viết đó."
+            "p": "Khi bạn thích một bài viết, mã của bài viết đó và số lượt thích hiển thị tại thời điểm đó được lưu trong bộ nhớ cục bộ của trình duyệt, để nút thích vẫn ở trạng thái đã nhấn và số đếm không giảm khi bạn quay lại. Bộ nhớ phiên ghi nhớ những bài viết bạn đã mở trong tab trình duyệt hiện tại, để việc mở lại một bài ở đó không cộng thêm lượt xem. Cả hai danh sách đều ở lại trong trình duyệt của bạn. Khi bạn thích một bài viết, Google Analytics cũng nhận một sự kiện thích có nêu tên bài viết đó."
           },
           {
-            "p": "Tính năng tìm kiếm của mục Học xếp hạng các bài hướng dẫn trong trình duyệt của bạn, hoặc trên máy chủ khi bạn tìm từ trang tìm kiếm. Google Analytics nhận một sự kiện cho mỗi lần tìm kiếm, gồm số ký tự bạn đã gõ, số bài hướng dẫn khớp, bài hướng dẫn đứng đầu và độ khớp có sát hay không, và một sự kiện khi bạn mở một kết quả, gồm bài hướng dẫn đó và vị trí của nó trong danh sách. Không sự kiện nào mang theo những từ bạn đã gõ. Một lần tìm kiếm thực hiện ngay từ trang tìm kiếm sẽ đưa các từ của bạn vào địa chỉ của trang đó, và các công cụ phân tích ghi lại địa chỉ của mọi trang được xem, nên những từ đó có thể đến được các công cụ này."
+            "p": "Tính năng tìm kiếm của mục Học xếp hạng các bài hướng dẫn trong trình duyệt của bạn, hoặc trên máy chủ khi bạn tìm từ trang tìm kiếm. Google Analytics nhận một sự kiện cho mỗi lần tìm kiếm, gồm số ký tự bạn đã gõ, số bài hướng dẫn khớp, bài hướng dẫn đứng đầu và liệu mức khớp của bài đó chỉ là gần đúng, và một sự kiện khi bạn mở một kết quả, gồm bài hướng dẫn đó và vị trí của nó trong danh sách. Không sự kiện nào mang theo những từ bạn đã gõ. Một lần tìm kiếm thực hiện ngay từ trang tìm kiếm sẽ đưa các từ của bạn vào địa chỉ của trang đó, và các công cụ phân tích ghi lại địa chỉ của mọi trang được xem, nên những từ đó có thể đến được các công cụ này."
           },
           {
             "p": "Google Analytics và các dịch vụ quảng cáo có thể dùng cookie hoặc các mã nhận dạng tương tự. Bạn có thể chặn hoặc xóa cookie trong trình duyệt, tuy nhiên một số tùy chọn có thể không còn hoạt động như mong đợi."

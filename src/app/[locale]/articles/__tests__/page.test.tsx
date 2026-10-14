@@ -49,13 +49,7 @@ jest.mock("@/components/articles/ArticleList", () => ({
   )),
 }));
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>PageHeader</div>;
-  }
-
-  return MockPageHeader;
-});
+jest.mock("@/components/lab-paper/LabPaperHeader", () => ({ LabPaperHeader: () => <div>LabPaperHeader</div> }));
 
 const STATS: ArticleStats = {
   "magnus-carlsen": { views: 120, likes: 7 },

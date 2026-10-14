@@ -2,6 +2,11 @@ import "server-only";
 
 type SheetCell = string | number | boolean;
 
+/** The sheet cannot be written because the server is not set up for it, as opposed to a write that was tried and failed. */
+export class SheetsConfigError extends Error {
+  name = "SheetsConfigError";
+}
+
 interface AppendGoogleSheetRowOptions {
   range: string;
   row: readonly SheetCell[];
@@ -17,18 +22,18 @@ export async function appendGoogleSheetRow({
   const spreadsheetId = process.env.GOOGLE_SHEET_ID;
 
   if (!serviceAccountKey) {
-    throw new Error("Google service account key is missing");
+    throw new SheetsConfigError("Google service account key is missing");
   }
 
   if (!spreadsheetId) {
-    throw new Error("Google Sheet ID is missing");
+    throw new SheetsConfigError("Google Sheet ID is missing");
   }
 
   let credentials: object;
   try {
     credentials = JSON.parse(serviceAccountKey) as object;
   } catch {
-    throw new Error("Invalid Google service account key format");
+    throw new SheetsConfigError("Invalid Google service account key format");
   }
 
   const { GoogleAuth } = await import("google-auth-library");

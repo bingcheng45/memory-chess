@@ -43,3 +43,11 @@ next-env.d.ts
 # verification runs (verify-memory-chess skill)
 .verify/
 .verify-evidence/
+
+# lab persona exports and drive output (scripts/lab)
+.lab-personas/
+.lab-drive/
+.lab-fit/
+.lab-header-fit/
+.lab-dash-heights/
+.lab-cls-dashboard/

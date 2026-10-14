@@ -1,6 +1,6 @@
 import sitemap from "@/app/sitemap";
 import { LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
-import { DEFAULT_LOCALE_INDEXED_ROUTES, ENGLISH_ONLY_ROUTES } from "@/lib/seo/englishOnly";
+import { DEFAULT_LOCALE_INDEXED_ROUTES, ENGLISH_ONLY_ROUTES, UNLISTED_ROUTES } from "@/lib/seo/englishOnly";
 import { ARTICLE_SLUGS } from "@/lib/articles";
 import { EN_LEARN_PAGES } from "@/lib/seo/learn";
 
@@ -25,13 +25,19 @@ describe("locale coverage", () => {
     const urls = (await sitemap()).map((entry) => entry.url);
     const englishUrls = [
       ...LISTED_IN_ENGLISH_ONLY,
-      ...EN_LEARN_PAGES.map((page) => `/learn/${page.slug}`),
+      ...EN_LEARN_PAGES.map((page) => `/learn/${page.meta.slug}`),
       ...ARTICLE_SLUGS.map((slug) => `/articles/${slug}`),
     ].map((path) => `${SITE_URL}${path}`);
 
     for (const url of englishUrls) {
       expect(urls.filter((candidate) => candidate === url)).toHaveLength(1);
     }
+  });
+
+  it("lists no shared card's page in any locale", async () => {
+    const urls = (await sitemap()).map((entry) => entry.url);
+
+    expect(urls.filter((url) => UNLISTED_ROUTES.some((route) => new URL(url).pathname.includes(route)))).toEqual([]);
   });
 
   it("lists no locale-prefixed URL of a route indexed only in English, translated or not", async () => {

@@ -6,15 +6,15 @@
       "heading": "Trzy fazy rundy",
       "memorize": {
         "title": "Zapamiętywanie",
-        "body": "Pozycja pojawia się na pełnej szachownicy na ustaloną liczbę sekund. Nic się nie rusza i nic nie jest ukryte. Fazę możesz zakończyć wcześniej przyciskiem Pomiń, a zegar zapisuje czas, przez który faktycznie patrzyłeś, a nie czas, który dostałeś."
+        "body": "Pozycja pojawia się na pełnej szachownicy na ustaloną liczbę sekund. Nic się nie rusza i nic nie jest ukryte. Fazę możesz zakończyć wcześniej przyciskiem Gotowe, a zegar zapisuje czas, przez który faktycznie patrzyłeś, a nie czas, który dostałeś."
       },
       "place": {
         "title": "Ustawianie",
-        "body": "Szachownica się czyści. Wybierasz typ i kolor figury, a potem stukasz w pole, by postawić bierkę, albo stukasz ponownie, by ją zabrać. Nie ma tu limitu czasu, ale zegar biegnie od momentu wyczyszczenia szachownicy do momentu przesłania odpowiedzi."
+        "body": "Szachownica się czyści. Wybierasz bierkę z palety, a potem stukasz w pole, by ją postawić, albo stukasz ponownie, by ją zabrać. Nie ma tu limitu czasu, ale zegar biegnie od momentu wyczyszczenia szachownicy do momentu przesłania odpowiedzi."
       },
       "score": {
         "title": "Ocena",
-        "body": "Twoja szachownica jest porównywana pole po polu z oryginałem. Widzisz, które bierki były dobre, które złe, a które pominąłeś, razem z pozycją, która została ci pokazana, obok siebie na szerokich ekranach i jedna pod drugą na wąskich."
+        "body": "Twoja szachownica jest porównywana pole po polu z oryginałem. Dobre pola i złe bierki są zaznaczone na szachownicy, a bierki, które pominąłeś, widać blado tam, gdzie stały, obok wyników z twoją dokładnością i zapamiętaniem według typu bierki."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "Dwaj gońce jednej strony nigdy nie stoją na polach tego samego koloru.",
         "simultaneous-check": "Obaj królowie nigdy nie są w szachu jednocześnie.",
         "checked-side-not-to-move": "Jeśli król jest w szachu, to właśnie ta strona ma teraz ruch.",
+        "home-rank-pawn-check": "Pionek, który nigdy nie opuścił swojego rzędu wyjściowego, nigdy nie daje szacha.",
+        "impossible-double-check": "Króla nigdy nie szachują więcej niż dwie bierki, a w podwójnym szachu zawsze bierze udział goniec, wieża lub hetman.",
         "piece-count": "Szachownica zawiera dokładnie tyle bierek, ile wymaga wybrany poziom.",
         "invalid-fen": "Pozycja jest legalną pozycją szachową, którą można ustawić na szachownicy."
       },

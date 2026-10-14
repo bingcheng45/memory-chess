@@ -6,15 +6,15 @@
       "heading": "Rundens tre faser",
       "memorize": {
         "title": "Husk",
-        "body": "En stilling vises på et fuldt bræt i et fast antal sekunder. Intet flytter sig, og intet er skjult. Du kan afslutte fasen før tid med Spring over, og uret registrerer, hvor længe du faktisk kiggede, ikke hvor lang tid du fik."
+        "body": "En stilling vises på et fuldt bræt i et fast antal sekunder. Intet flytter sig, og intet er skjult. Du kan afslutte fasen før tid med Færdig, og uret registrerer, hvor længe du faktisk kiggede, ikke hvor lang tid du fik."
       },
       "place": {
         "title": "Placér",
-        "body": "Brættet tømmes. Du vælger briktype og farve og trykker så på et felt for at sætte en brik, eller trykker igen for at fjerne den. Der er ingen tidsgrænse her, men uret løber fra det øjeblik, brættet tømmes, og indtil du sender dit svar."
+        "body": "Brættet tømmes. Du vælger en brik fra paletten og trykker så på et felt for at sætte den, eller trykker igen for at fjerne den. Der er ingen tidsgrænse her, men uret løber fra det øjeblik, brættet tømmes, og indtil du sender dit svar."
       },
       "score": {
         "title": "Resultat",
-        "body": "Dit bræt sammenlignes felt for felt med originalen. Du ser, hvilke brikker der var rigtige, hvilke der var forkerte, og hvilke du manglede, sammen med den stilling, du fik vist, side om side på brede skærme og under hinanden på smalle."
+        "body": "Dit bræt sammenlignes felt for felt med originalen. Rigtige felter og forkerte brikker markeres på brættet, og de brikker, du manglede, vises svagt, hvor de stod, ved siden af et resultat med din nøjagtighed og din genkaldelse for hver briktype."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "En sides to løbere står aldrig på felter af samme farve.",
         "simultaneous-check": "Begge konger står aldrig i skak på samme tid.",
         "checked-side-not-to-move": "Hvis en konge står i skak, er det den sides tur til at trække.",
+        "home-rank-pawn-check": "En bonde, der aldrig har forladt sin startrække, giver aldrig skak.",
+        "impossible-double-check": "En konge står aldrig i skak fra mere end to brikker, og i en dobbeltskak indgår altid en løber, et tårn eller en dronning.",
         "piece-count": "Brættet indeholder præcis det antal brikker, sværhedsgraden beder om.",
         "invalid-fen": "Stillingen er en lovlig skakstilling, som et bræt kan stilles op i."
       },

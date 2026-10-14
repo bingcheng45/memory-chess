@@ -71,11 +71,11 @@ export default function ArticleList({ articles, stats, heading }: ArticleListPro
       <Suspense fallback={null}>
         <AddressWatcher />
       </Suspense>
-      <div className="mb-[26px] mt-[22px] flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
+      <div className="art-list-head flex flex-wrap items-end justify-between gap-x-6 gap-y-4">
         {heading}
         {hasCountsToSortBy(articles, stats) ? <SortControl current={sort} onChoose={chooseSort} /> : null}
       </div>
-      <ol ref={list} data-article-list onClickCapture={finishSlides} className="grid gap-3.5">
+      <ol ref={list} data-article-list onClickCapture={finishSlides} className="grid gap-4">
         {current.items.map((article, index) => (
           <ArticleCard
             key={article.slug}

@@ -29,3 +29,18 @@ describe("leaderboard metadata", () => {
     expect(metadata.alternates).toEqual({ canonical: `/${locale}/leaderboard` });
   });
 });
+
+describe("leaderboard social card", () => {
+  it("gives the leaderboard a large social card on its own URL", async () => {
+    const metadata = await metadataFor("en");
+
+    expect(metadata.openGraph).toMatchObject({
+      url: "https://thememorychess.com/leaderboard",
+      images: [expect.objectContaining({ url: "https://thememorychess.com/social-preview.png", width: 1200, height: 630 })],
+    });
+    expect(metadata.twitter).toMatchObject({
+      card: "summary_large_image",
+      images: [expect.objectContaining({ url: "https://thememorychess.com/social-preview.png" })],
+    });
+  });
+});

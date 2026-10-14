@@ -15,11 +15,11 @@ describe("sitemap", () => {
     );
 
     for (const page of LEARN_PAGES) {
-      expect(urls).toContain(`https://thememorychess.com/learn/${page.slug}`);
+      expect(urls).toContain(`https://thememorychess.com/learn/${page.meta.slug}`);
     }
     expect(urls).toContain("https://thememorychess.com/changelog");
     expect(urls).toContain("https://thememorychess.com/privacy");
-    const newestGuide = Math.max(...LEARN_PAGES.map((page) => new Date(page.updatedAt).getTime()));
+    const newestGuide = Math.max(...LEARN_PAGES.map((page) => new Date(page.meta.updatedAt).getTime()));
     expect(new Date(learnHubEntry?.lastModified ?? 0).getTime()).toBe(newestGuide);
   });
 
@@ -128,11 +128,10 @@ describe("sitemap", () => {
     }
   });
 
-  it("leaves settings out, the one route that asks not to be indexed", async () => {
+  it("leaves the progress dashboard out, since its figures live only in the visitor's browser", async () => {
     const entries = await sitemap();
 
-    expect(
-      entries.filter((entry) => entry.url.includes("/settings")),
-    ).toHaveLength(0);
+    expect(entries.filter((entry) => entry.url.includes("/dashboard"))).toEqual([]);
+    expect(entries.some((entry) => entry.url.includes("/leaderboard"))).toBe(true);
   });
 });

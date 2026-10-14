@@ -1,4 +1,4 @@
-import { supabase, checkSupabaseConnection } from '@/lib/supabase';
+import { supabase, supabaseWriter, SUPABASE_WRITES_OFF_REASON, checkSupabaseConnection } from '@/lib/supabase';
 
 export interface GameMetric {
   id: string;
@@ -121,15 +121,15 @@ export async function incrementGameMetric(metricName: string, increment: number 
         error: `Database connection issue: ${connectionStatus.error || 'Unable to connect to the database'}`
       };
     }
-    if (!supabase) {
+    if (!supabaseWriter) {
       return {
         success: false,
-        error: 'Database connection issue: Supabase is not configured'
+        error: `Database connection issue: ${SUPABASE_WRITES_OFF_REASON}`
       };
     }
 
     // Using the PostgreSQL function we created
-    const { data, error } = await supabase
+    const { data, error } = await supabaseWriter
       .rpc('increment_metric', {
         p_metric_name: metricName,
         p_increment: increment
@@ -142,7 +142,7 @@ export async function incrementGameMetric(metricName: string, increment: number 
       const { data: metric } = await getGameMetric(metricName);
       
       if (metric) {
-        const { data: updateData, error: updateError } = await supabase
+        const { data: updateData, error: updateError } = await supabaseWriter
           .from('game_stats')
           .update({ 
             metric_value: metric.metric_value + increment,
@@ -165,7 +165,7 @@ export async function incrementGameMetric(metricName: string, increment: number 
         };
       } else {
         // If metric doesn't exist, create it
-        const { data: insertData, error: insertError } = await supabase
+        const { data: insertData, error: insertError } = await supabaseWriter
           .from('game_stats')
           .insert({
             metric_name: metricName,

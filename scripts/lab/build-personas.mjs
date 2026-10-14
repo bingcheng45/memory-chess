@@ -1,0 +1,55 @@
+#!/usr/bin/env node
+/**
+ * Writes each lab persona (src/lib/lab/personas.ts) as the v2 export the app
+ * would produce, so a browser can load it through the real Import control.
+ * Days count back from today, so streaks and staleness read the same on any day.
+ * The players in AWAY also get a <name>Away copy built as if their last day were
+ * one day past the welcome back threshold, so the greeting is measured and driven.
+ * A persona with a chosen plan or goal, or kept leaderboard entries, carries them under
+ * `local`, the localStorage entries the drivers write before loading the page. A daily board persona carries
+ * `clock`, noon UTC on its day, which the drivers set the browser's clock to, so its
+ * board is today's in any time zone on any day. Import ignores both fields, and the
+ * app's own export never writes them.
+ *
+ *   npm run lab:personas -- [--today YYYY-MM-DD] [--out dir]...   (default out: .lab-personas)
+ */
+import { mkdirSync, writeFileSync } from "node:fs";
+import { join, resolve } from "node:path";
+import { pathToFileURL } from "node:url";
+import { IDBFactory } from "fake-indexeddb";
+import "./ts-hooks.mjs";
+
+const fromSrc = (path) => import(pathToFileURL(join(process.cwd(), "src", path)).href);
+const { DAILY_PERSONAS, exportPersona, memoryLabStore, PERSONA_NAMES, personaChoices, personaEntries } = await fromSrc("lib/lab/personas.ts");
+const { ENTRIES_KEY } = await fromSrc("lib/lab/entries.ts");
+const { PLAN_KEY, TARGET_KEY } = await fromSrc("lib/lab/choices.ts");
+const { localDayOf } = await fromSrc("lib/lab/record.ts");
+const { isCalendarDay } = await fromSrc("lib/lab/transfer.ts");
+const { shiftDay } = await fromSrc("lib/lab/engine.ts");
+const { LAB_THRESHOLDS } = await fromSrc("lib/lab/readiness.ts");
+
+const AWAY = ["colourSkew", "easyOnly", "spanClimber", "thirtyDays", "threeDays", "twoRounds"];
+
+const args = process.argv.slice(2);
+const valuesOf = (flag) => args.flatMap((arg, index) => (arg === flag && args[index + 1] ? [args[index + 1]] : []));
+const today = valuesOf("--today")[0] ?? localDayOf(new Date());
+if (!isCalendarDay(today)) {
+  console.error(`--today must be a real calendar day as YYYY-MM-DD, got "${today}".`);
+  process.exit(2);
+}
+const outs = valuesOf("--out");
+const outDirs = outs.length > 0 ? outs : [".lab-personas"];
+
+for (const dir of outDirs) mkdirSync(resolve(dir), { recursive: true });
+const awayToday = shiftDay(today, -(LAB_THRESHOLDS.awayDays + 1));
+const builds = [...PERSONA_NAMES.map((name) => [name, name, today]), ...AWAY.map((name) => [`${name}Away`, name, awayToday])];
+for (const [fileName, name, day] of builds) {
+  const file = await exportPersona(name, memoryLabStore(new IDBFactory()), day, Date.now());
+  const { plan, target } = personaChoices(name, day);
+  const local = Object.fromEntries([[PLAN_KEY, plan], [TARGET_KEY, target], [ENTRIES_KEY, personaEntries(name, day)]].flatMap(([key, value]) => (value ? [[key, JSON.stringify(value)]] : [])));
+  const clock = DAILY_PERSONAS.includes(name) ? { clock: Date.parse(`${day}T12:00:00Z`) } : {};
+  const text = JSON.stringify({ ...file, ...(Object.keys(local).length > 0 && { local }), ...clock });
+  for (const dir of outDirs) writeFileSync(join(resolve(dir), `${fileName}.json`), text);
+  console.log(`${fileName}: ${file.rounds.length} rounds, summary ${file.summary?.rounds ?? 0}`);
+}
+console.log(`personas for ${today} in ${outDirs.join(", ")}`);

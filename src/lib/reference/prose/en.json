@@ -6,15 +6,15 @@
       "heading": "The three phases of a round",
       "memorize": {
         "title": "Memorize",
-        "body": "A position appears on a full board for a fixed number of seconds. Nothing moves and nothing is hidden. You can end the phase early with Skip, and the clock records how long you actually looked rather than the time you were given."
+        "body": "A position appears on a full board for a fixed number of seconds. Nothing moves and nothing is hidden. You can end the phase early with Done, and the clock records how long you actually looked rather than the time you were given."
       },
       "place": {
         "title": "Place",
-        "body": "The board clears. You pick a piece type and color, then tap a square to put a piece down or tap it again to take it back. There is no time limit here, but the clock runs from the moment the board clears until you submit."
+        "body": "The board clears. You pick a piece from the palette, then tap a square to put it down or tap it again to take it back. There is no time limit here, but the clock runs from the moment the board clears until you submit."
       },
       "score": {
         "title": "Score",
-        "body": "Your board is compared square by square with the original. You see which pieces were right, which were wrong, and which you missed, next to the position you were shown, side by side on wide screens and stacked on narrow ones."
+        "body": "Your board is compared square by square with the original. Correct squares and wrong pieces are marked on the board, and the pieces you missed show faintly where they stood, beside a readout of your accuracy and your recall by piece type."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "A side's two bishops never sit on same-colored squares.",
         "simultaneous-check": "Both kings are never in check at the same time.",
         "checked-side-not-to-move": "If one king is in check, it is that side's turn to move.",
+        "home-rank-pawn-check": "A pawn that has never left its starting rank never gives check.",
+        "impossible-double-check": "No king is ever checked by more than two pieces, and a double check always includes a bishop, rook or queen.",
         "piece-count": "The board holds exactly the number of pieces the preset asked for.",
         "invalid-fen": "The position is a legal chess position that a board can be set to."
       },

@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": "9c7df5ea18f36c47f129302238f84a58925190956eb98d1236bf3696bad720cd",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Informazioni",
+      "description": "Chi sviluppa Memory Chess, perché esiste il gioco, come viene calcolato il punteggio di una partita e come vengono scritte le guide di Impara.",
+      "socialTitle": "Informazioni su Memory Chess",
+      "socialDescription": "Chi sviluppa Memory Chess, perché esiste il gioco e come funziona."
+    },
+    "kicker": "Informazioni",
+    "title": "Informazioni su Memory Chess",
+    "lede": "Memory Chess è un gioco gratuito di memoria della scacchiera creato e gestito da una sola persona. Questa pagina spiega chi è, perché esiste il gioco e come funziona davvero.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Chi gestisce questo sito",
+        "blocks": [
+          {
+            "p": "Sono Bing Cheng, uno sviluppatore che lavora da solo. Gestisco Memory Chess per conto mio, con l’aiuto dell’IA per il codice e per i testi del sito. Non c’è nessun team né alcuna azienda dietro. Sviluppo anche <tont>Tont</tont>, e pubblico aggiornamenti su questo sito su <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Dato che una sola persona si occupa di tutto, il sito resta piccolo di proposito. Un gioco, una serie di guide di allenamento, una classifica e un registro delle novità che documenta ciò che è stato davvero rilasciato."
+          },
+          {
+            "p": "Il gioco è gratuito e non richiede un account. Gli annunci di Google AdSense aiutano a coprire i costi di hosting, e niente sul sito è bloccato dietro un pagamento o una registrazione."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Perché esiste il gioco",
+        "blocks": [
+          {
+            "p": "La maggior parte dei consigli per migliorare a scacchi indirizza i principianti verso aperture, esercizi tattici e corsi. Nella mia esperienza, il problema che viene prima si trova sotto tutto questo. I principianti perdono il filo della scacchiera. Non vedono un difensore, dimenticano un pezzo mosso due turni prima e cadono in catture che noterebbero subito su un diagramma."
+          },
+          {
+            "p": "Tenere una posizione a mente è un’abilità che si può allenare, e c’erano pochi posti dove esercitarla direttamente. Così ne ho creato uno. Memory Chess isola quell’unica abilità e le assegna un punteggio, così puoi vederla migliorare. Se vuoi una posta in gioco, puoi inserire un nome a tua scelta nella classifica pubblica e misurarti con tutti gli altri."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Come funziona una partita",
+        "blocks": [
+          {
+            "p": "Scegli quanti pezzi affrontare e per quanto tempo puoi studiarli. Le impostazioni predefinite vanno da Facile, due pezzi con dieci secondi, fino a Gran maestro, venti pezzi con cinque secondi, e puoi impostare qualsiasi combinazione personalizzata. Poi la partita si svolge in tre fasi."
+          },
+          {
+            "p": "Prima memorizzi. La scacchiera mostra una posizione per il tempo che hai scelto, poi scompare. Poi ricostruisci. Posizioni i pezzi a memoria su una scacchiera vuota. Infine ricevi il risultato. Il gioco confronta la tua scacchiera con l’originale, casa per casa."
+          },
+          {
+            "p": "Il punteggio è rigoroso. Un pezzo conta come corretto solo quando il pezzo giusto del colore giusto si trova esattamente sulla casa che occupava nella posizione originale. Una torre al posto di un cavallo è doppiamente sbagliata. Conta come pezzo fuori posto, e il cavallo che ha sostituito conta come mancante. La tua precisione è la quota dei pezzi originali che hai riprodotto esattamente."
+          },
+          {
+            "p": "La schermata dei risultati mostra tutti e tre i gruppi, i posizionamenti giusti, quelli sbagliati e i pezzi che hai dimenticato del tutto, così ogni partita ti dice su cosa lavorare la prossima volta. Puoi <game>provare una partita</game> in meno di un minuto."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Come vengono scritte le guide di Impara",
+        "blocks": [
+          {
+            "p": "La <learn>biblioteca di Impara</learn> raccoglie {count, plural, one {# guida} many {# guide} other {# guide}} su visione della scacchiera, visualizzazione e allenamento della memoria. Sono scritte con l’aiuto dell’IA. Ogni posizione di scacchi al loro interno viene verificata da uno script per numero di pezzi, legalità e ogni attacco che il testo afferma. Ogni affermazione su come funziona Memory Chess viene ricondotta al codice del gioco. Ogni guida ha degli esercizi. Alcuni aprono una partita nel gioco con le impostazioni giuste. Gli altri sono pensati per una scacchiera vera."
+          },
+          {
+            "p": "Quando le guide fanno affermazioni sulla memoria e sull’apprendimento, citano ricerche pubblicate, tra cui il lavoro di Gobet e Simon sulla memoria negli scacchi e la letteratura sperimentale sul recupero dalla memoria e sulla pratica distribuita. Ogni citazione rimanda alla sua fonte. Non ho condotto ricerche mie, e le guide non fingono il contrario."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "La storia del sito",
+        "blocks": [
+          {
+            "p": "La prima versione è andata online a marzo 2025 come versione essenziale del gioco. Il gioco su mobile e la scelta dei pezzi sono arrivati nel giro di poche settimane. La biblioteca di Impara è stata lanciata a marzo 2026, e ad agosto 2026 il gioco stesso ha iniziato a essere disponibile in 24 lingue. Le guide e il registro delle novità sono in inglese. Il <changelog>registro delle novità</changelog> documenta ogni versione rilasciata, comprese le correzioni di bug. Lo tengo onesto perché lo uso io stesso per ricordare cosa è cambiato e quando."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Contatti",
+        "blocks": [
+          {
+            "p": "Scrivimi a <mail>{email}</mail> oppure usa il <contact>modulo di contatto</contact>. Leggo tutto, e le segnalazioni dei giocatori hanno già permesso di correggere bug reali. Se vuoi i dettagli, l’<privacy>informativa sulla privacy</privacy> e i <terms>termini di servizio</terms> spiegano come il sito tratta i dati e cosa accetti giocando."
+          }
+        ]
+      }
+    }
+  }
+}

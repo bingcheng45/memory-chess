@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import ArticleList from "@/components/articles/ArticleList";
+import ArticlePaperShell from "@/components/articles/ArticlePaperShell";
 import TranslationNote from "@/components/articles/TranslationNote";
 import { ARTICLE_LINK } from "@/components/articles/articleStyles";
 import { sortedFirstPaintInlineScript } from "@/components/articles/sortedFirstPaint";
-import { EditorialPageShell } from "@/components/editorial/EditorialPage";
 import { Link } from "@/i18n/navigation";
 import type { Locale } from "@/i18n/routing";
 import { ARTICLE_SLUGS, getArticleSummaries, type ArticleListMeta } from "@/lib/articles";
@@ -19,7 +19,7 @@ import { getArticleStats } from "@/lib/services/articleStatsService";
 export const revalidate = 300;
 
 const ABOUT_HEADING_ID = "articles-about-heading";
-const ABOUT_PARAGRAPH_CLASS = "mt-4 text-base leading-7 text-text-secondary";
+const ABOUT_PARAGRAPH_CLASS = "art-prose";
 const ABOUT_PARAGRAPHS = ["about1", "about2", "about3"] as const;
 const CORRECTIONS_PATH = "/contact-us";
 
@@ -47,11 +47,8 @@ function About() {
   const t = useTranslations("articles.list");
 
   return (
-    <section
-      aria-labelledby={ABOUT_HEADING_ID}
-      className="mt-14 max-w-[66ch] border-t border-white/10 pt-10"
-    >
-      <h2 id={ABOUT_HEADING_ID} className="text-xl font-semibold tracking-tight text-white">
+    <section aria-labelledby={ABOUT_HEADING_ID} className="art-about">
+      <h2 id={ABOUT_HEADING_ID} className="art-h2">
         {t("aboutHeading")}
       </h2>
       {ABOUT_PARAGRAPHS.map((paragraph) => (
@@ -68,7 +65,7 @@ function About() {
           ),
         })}
       </p>
-      <TranslationNote englishPath={ARTICLES_PATH} className={ABOUT_PARAGRAPH_CLASS} />
+      <TranslationNote englishPath={ARTICLES_PATH} className="art-note" />
     </section>
   );
 }
@@ -86,17 +83,15 @@ export default async function ArticlesPage({ params }: ArticlesRouteProps) {
   ]);
 
   return (
-    <EditorialPageShell>
+    <ArticlePaperShell layout="list">
       <script dangerouslySetInnerHTML={{ __html: sortedFirstPaintInlineScript() }} />
       <ArticleList
         articles={articles}
         stats={stats}
         heading={
           <header>
-            <h1 className="text-[clamp(30px,5vw,44px)] font-bold leading-[1.05] tracking-[-0.02em] text-white">
-              {copy.heading}
-            </h1>
-            <p className="mt-2 text-text-muted">{copy.sub}</p>
+            <h1 className="art-h1">{copy.heading}</h1>
+            <p className="art-lede">{copy.sub}</p>
           </header>
         }
       />
@@ -107,6 +102,6 @@ export default async function ArticlesPage({ params }: ArticlesRouteProps) {
           __html: JSON.stringify(buildArticleListStructuredData(articles, locale, copy.meta)),
         }}
       />
-    </EditorialPageShell>
+    </ArticlePaperShell>
   );
 }

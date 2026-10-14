@@ -52,10 +52,10 @@ export default async function drive(page, { baseUrl }) {
     `fetch("/api/leaderboard/cutoffs").then(r => r.json()).then(b => JSON.stringify(b.data))`,
   );
   await page.waitFor(
-    `[...document.querySelectorAll("button")].some(b => b.textContent.includes("Start Training"))`,
+    `[...document.querySelectorAll("button")].some(b => b.textContent.includes("Start round"))`,
   );
   await page.clickText("button", "Easy");
-  await page.clickText("button", "Start Training");
+  await page.clickText("button", "Start round");
 
   await page.waitFor(
     `[...document.querySelectorAll("button")].some(b => b.textContent.trim() === "Skip")`,
@@ -88,7 +88,7 @@ export default async function drive(page, { baseUrl }) {
 
   await page.waitFor(`!!document.getElementById("game-result-heading")`, 20_000);
   await page.waitFor(
-    `[...document.querySelectorAll("button")].some(b => b.textContent.includes("Submit to Leaderboard"))`,
+    `[...document.querySelectorAll("button")].some(b => b.textContent.includes("Submit to leaderboard"))`,
     10_000,
   );
 
@@ -107,8 +107,8 @@ export default async function drive(page, { baseUrl }) {
            return dt ? dt.parentElement.querySelector("dd").textContent : null;
          };
          return JSON.stringify({
-           piecesCorrect: read("Pieces Correct"),
-           memorizeTime: seconds(read("Memorization Time")),
+           piecesCorrect: read("Pieces correct"),
+           memorizeTime: seconds(read("Memorization time")),
            solutionTime: seconds(read("Solution Time")),
          });
        })()`,
@@ -152,7 +152,7 @@ export default async function drive(page, { baseUrl }) {
     );
   }
 
-  await page.clickText("button", "Submit to Leaderboard");
+  await page.clickText("button", "Submit to leaderboard");
   await page.waitFor(`!!document.querySelector('input')`);
   await page.eval(
     `(() => {
@@ -163,11 +163,11 @@ export default async function drive(page, { baseUrl }) {
        return input.value;
      })()`,
   );
-  await page.clickText("button", "Submit Score");
+  await page.clickText("button", "Submit score");
   await page.sleep(1500);
 
   const stillShown = await sentenceShown(page);
-  const submitted = await page.eval(`document.body.innerText.includes("Score Submitted")`);
+  const submitted = await page.eval(`document.body.innerText.includes("Score submitted")`);
   await page.screenshot("3-after-submit.png");
 
   if (submitted && stillShown) {

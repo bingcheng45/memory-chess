@@ -6,15 +6,15 @@
       "heading": "De tre fasene i en runde",
       "memorize": {
         "title": "Husk",
-        "body": "En stilling vises på et fullt brett i et fast antall sekunder. Ingenting flytter seg, og ingenting er skjult. Du kan avslutte fasen tidlig med Hopp over, og klokken registrerer hvor lenge du faktisk så på brettet, ikke hvor lang tid du fikk."
+        "body": "En stilling vises på et fullt brett i et fast antall sekunder. Ingenting flytter seg, og ingenting er skjult. Du kan avslutte fasen tidlig med Ferdig, og klokken registrerer hvor lenge du faktisk så på brettet, ikke hvor lang tid du fikk."
       },
       "place": {
         "title": "Plasser",
-        "body": "Brettet tømmes. Du velger brikketype og farge, og trykker så på en rute for å sette ut en brikke eller trykker på den igjen for å ta den tilbake. Det er ingen tidsgrense her, men klokken går fra brettet tømmes til du sender inn."
+        "body": "Brettet tømmes. Du velger en brikke fra paletten, og trykker så på en rute for å sette den ut eller trykker på den igjen for å ta den tilbake. Det er ingen tidsgrense her, men klokken går fra brettet tømmes til du sender inn."
       },
       "score": {
         "title": "Resultat",
-        "body": "Brettet ditt sammenlignes rute for rute med originalen. Du ser hvilke brikker som var riktige, hvilke som var feil, og hvilke du bommet på, sammen med stillingen du ble vist, side om side på brede skjermer og under hverandre på smale."
+        "body": "Brettet ditt sammenlignes rute for rute med originalen. Riktige ruter og feil brikker markeres på brettet, og brikkene du bommet på vises svakt der de sto, ved siden av et resultat med nøyaktigheten din og hvor godt du husket hver brikketype."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "De to løperne til en side står aldri på ruter med lik farge.",
         "simultaneous-check": "Begge kongene står aldri i sjakk samtidig.",
         "checked-side-not-to-move": "Hvis en konge står i sjakk, er det den siden som skal trekke.",
+        "home-rank-pawn-check": "En bonde som aldri har forlatt startraden sin, gir aldri sjakk.",
+        "impossible-double-check": "En konge står aldri i sjakk fra mer enn to brikker, og i en dobbeltsjakk inngår alltid en løper, et tårn eller en dronning.",
         "piece-count": "Brettet har nøyaktig så mange brikker som vanskelighetsgraden ba om.",
         "invalid-fen": "Stillingen er en lovlig sjakkstilling som kan settes opp på et brett."
       },

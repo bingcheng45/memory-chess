@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": "85dfd8fa062417039f9e1d76219357e27e71d2f8ba12e31f865a82e25feaec08",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Over",
+      "description": "Wie Memory Chess maakt, waarom het spel bestaat, hoe een ronde wordt gescoord en hoe de gidsen van Leren worden geschreven.",
+      "socialTitle": "Over Memory Chess",
+      "socialDescription": "Wie Memory Chess maakt, waarom het spel bestaat en hoe het werkt."
+    },
+    "kicker": "Over",
+    "title": "Over Memory Chess",
+    "lede": "Memory Chess is een gratis geheugenspel voor het schaakbord, gemaakt en beheerd door één persoon. Deze pagina legt uit wie dat is, waarom het spel bestaat en hoe het echt werkt.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Wie deze site beheert",
+        "blocks": [
+          {
+            "p": "Ik ben Bing Cheng, een zelfstandige ontwikkelaar. Ik beheer Memory Chess in mijn eentje, met hulp van AI voor de code en de teksten van de site. Er zit geen team en geen bedrijf achter. Ik maak ook <tont>Tont</tont>, en updates over deze site plaats ik op <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Omdat één persoon alles doet, blijft de site met opzet klein. Eén spel, een reeks trainingsgidsen, een ranglijst en een wijzigingslogboek dat bijhoudt wat er echt is uitgebracht."
+          },
+          {
+            "p": "Het spel is gratis en je hebt geen account nodig. Advertenties via Google AdSense helpen de hostingkosten te dekken, en niets op de site zit achter een betaling of een registratie."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Waarom het spel bestaat",
+        "blocks": [
+          {
+            "p": "De meeste adviezen om beter te worden in schaken sturen beginners naar openingen, puzzels en cursussen. In mijn ervaring zit het eerdere probleem onder dat alles. Beginners verliezen het overzicht over het bord. Ze zien een verdediger over het hoofd, vergeten een stuk dat twee zetten geleden is verplaatst en lopen blindelings in slagen die ze op een diagram meteen zouden zien."
+          },
+          {
+            "p": "Een stelling in je hoofd vasthouden is een vaardigheid die je kunt trainen, en er waren weinig plekken om die rechtstreeks te oefenen. Dus heb ik er een gebouwd. Memory Chess haalt die ene vaardigheid eruit en geeft haar een score, zodat je kunt zien hoe ze beter wordt. Wil je iets op het spel zetten, dan kun je een zelfgekozen naam op de openbare ranglijst zetten en je met iedereen meten."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Hoe een ronde werkt",
+        "blocks": [
+          {
+            "p": "Je kiest met hoeveel stukken je het opneemt en hoe lang je ze mag bestuderen. De voorinstellingen lopen van Makkelijk, twee stukken met tien seconden, tot Grootmeester, twintig stukken met vijf seconden, en je kunt elke eigen combinatie instellen. Daarna verloopt de ronde in drie fasen."
+          },
+          {
+            "p": "Eerst onthoud je. Het bord toont een stelling gedurende de tijd die je koos, en daarna verdwijnt ze. Dan bouw je op. Je zet de stukken uit je geheugen op een leeg bord. Ten slotte krijg je je resultaat. Het spel vergelijkt jouw bord veld voor veld met het origineel."
+          },
+          {
+            "p": "Er wordt streng gescoord. Een stuk telt alleen als goed wanneer het juiste stuk van de juiste kleur op precies het veld staat dat het in de oorspronkelijke stelling bezette. Een toren waar een paard hoort, is dubbel fout. Hij telt als verkeerd geplaatst stuk, en het paard dat hij verdrong telt als ontbrekend. Je nauwkeurigheid is het deel van de oorspronkelijke stukken dat je precies hebt nagebouwd."
+          },
+          {
+            "p": "Het resultatenscherm toont alle drie de groepen: de plaatsingen die je goed had, die je fout had, en de stukken die je helemaal vergat, zodat elke ronde je vertelt waar je de volgende keer op moet letten. Je kunt in minder dan een minuut <game>een ronde proberen</game>."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Hoe de gidsen van Leren worden geschreven",
+        "blocks": [
+          {
+            "p": "De <learn>bibliotheek van Leren</learn> bevat {count, plural, one {# gids} other {# gidsen}} over bordvisie, visualisatie en geheugentraining. Ze zijn geschreven met hulp van AI. Elke schaakstelling erin wordt door een script gecontroleerd op het aantal stukken, de geldigheid en elke aanval die de tekst noemt. Elke bewering over hoe Memory Chess werkt, is herleid tot de code van het spel. Elke gids heeft oefeningen. Sommige openen een ronde in het spel met de juiste instellingen. De rest is bedoeld voor een echt bord."
+          },
+          {
+            "p": "Waar de gidsen iets beweren over geheugen en leren, verwijzen ze naar gepubliceerd onderzoek, waaronder het werk van Gobet en Simon over schaakgeheugen en de experimentele literatuur over ophalen uit het geheugen en gespreid oefenen. Elke bronvermelding linkt naar haar bron. Ik heb zelf geen onderzoek gedaan, en de gidsen doen ook niet alsof."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Hoe de site zich heeft ontwikkeld",
+        "blocks": [
+          {
+            "p": "De eerste versie ging in maart 2025 online als een kale versie van het spel. Spelen op mobiel en het kiezen van stukken volgden binnen enkele weken. De bibliotheek van Leren startte in maart 2026, en in augustus 2026 werd het spel zelf beschikbaar in 24 talen. De gidsen en het wijzigingslogboek zijn in het Engels. Het <changelog>wijzigingslogboek</changelog> legt elke release met versienummer vast, inclusief de bugfixes. Ik houd het eerlijk, omdat ik het zelf gebruik om te onthouden wat er wanneer veranderde."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Neem contact op",
+        "blocks": [
+          {
+            "p": "Schrijf me op <mail>{email}</mail> of gebruik het <contact>contactformulier</contact>. Ik lees alles, en meldingen van spelers hebben al eerder echte bugs opgelost. Wil je de kleine lettertjes lezen, dan beschrijven het <privacy>privacybeleid</privacy> en de <terms>gebruiksvoorwaarden</terms> hoe de site met gegevens omgaat en waarmee je instemt door te spelen."
+          }
+        ]
+      }
+    }
+  }
+}

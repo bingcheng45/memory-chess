@@ -237,12 +237,12 @@ describe("which article the tile shows", () => {
 describe("the tile's actions", () => {
   it("starts a round with the article's piece count and viewing time", () => {
     render(tile({ random: first }));
-    expect(useGameStore.getState().gameState.isPlaying).toBe(false);
+    expect(useGameStore.getState().round.phase).toBe("idle");
 
     fireEvent.click(screen.getByRole("button", { name: "Try that drill" }));
 
-    const { gameState, lastSettings } = useGameStore.getState();
-    expect(gameState).toMatchObject({ isPlaying: true, pieceCount: 20, memorizeTime: 3 });
+    const { gameState, lastSettings, round } = useGameStore.getState();
+    expect([round.phase, gameState.pieceCount, gameState.memorizeTime]).toEqual(["study", 20, 3]);
     expect(lastSettings).toEqual({ pieceCount: 20, memorizeTime: 3 });
   });
 
@@ -251,7 +251,10 @@ describe("the tile's actions", () => {
 
     fireEvent.click(screen.getByRole("button", { name: "Try that drill" }));
 
-    expect(gtag.mock.calls).toEqual([["event", "article_tile_click", { slug: "alder-fixture", action: "drill" }]]);
+    expect(gtag.mock.calls).toEqual([
+      ["event", "article_tile_click", { slug: "alder-fixture", action: "drill" }],
+      ["event", "round_start", { piece_count: 20, memorize_time: 3, source: "tile_drill" }],
+    ]);
   });
 
   it("reports the read once, with the slug, and starts no round", () => {
@@ -262,7 +265,7 @@ describe("the tile's actions", () => {
     fireEvent.click(read);
 
     expect(gtag.mock.calls).toEqual([["event", "article_tile_click", { slug: "cedar-fixture", action: "read" }]]);
-    expect(useGameStore.getState().gameState.isPlaying).toBe(false);
+    expect(useGameStore.getState().round.phase).toBe("idle");
     expect(peekArrival("cedar-fixture")).toBeNull();
   });
 });

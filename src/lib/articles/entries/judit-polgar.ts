@@ -5,6 +5,9 @@ const article: Article = {
   publishedAt: "2026-10-05T00:00:00.000Z",
   updatedAt: "2026-10-05T00:00:00.000Z",
   title: "How Judit Polgár played blindfold chess at age seven",
+  relatedGuides: [
+    { slug: "blindfold-chess-training-for-beginners", anchor: "train blindfold chess in four stages" },
+  ],
   description: "Judit Polgár played chess blindfold at 7 and was a grandmaster at 15. Her blindfold results, what she says about patterns, and a drill to try.",
   person: {
     name: "Judit Polgár",

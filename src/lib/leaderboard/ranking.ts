@@ -74,7 +74,7 @@ function isFiniteNumber(value: unknown): value is number {
   return typeof value === "number" && Number.isFinite(value);
 }
 
-function parseScore(value: unknown): RankingScore | null {
+export function parseScore(value: unknown): RankingScore | null {
   if (typeof value !== "object" || value === null) {
     return null;
   }

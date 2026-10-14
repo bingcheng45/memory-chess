@@ -1,27 +1,15 @@
-import { render } from "@/test-utils/intl";
-import HomePage from "@/app/[locale]/page";
+import { render, screen } from "@/test-utils/intl";
+import HomePage from "@/app/[locale]/(home)/page";
+import english from "../../../messages/en.json";
 
 const ORGANIZATION_ID = "https://thememorychess.com/#organization";
 const WEBSITE_ID = "https://thememorychess.com/#website";
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>PageHeader</div>;
-  }
+jest.mock("@/i18n/navigation", () => ({ ...jest.requireActual("@/i18n/navigation"), usePathname: () => "/" }));
 
-  MockPageHeader.displayName = "MockPageHeader";
-
-  return MockPageHeader;
-});
-
-jest.mock("@/components/ui/VideoSection", () => {
-  function MockVideoSection() {
-    return null;
-  }
-
-  MockVideoSection.displayName = "MockVideoSection";
-
-  return MockVideoSection;
+// The switcher needs a mounted app router, which a test render does not have.
+jest.mock("@/components/ui/LanguageSettings", () => function MockLanguageSettings() {
+  return null;
 });
 
 type SchemaNode = Record<string, unknown> & { "@type": string; "@id"?: string };
@@ -31,6 +19,12 @@ function jsonLdScripts(container: HTMLElement): Schema[] {
   return Array.from(
     container.querySelectorAll('script[type="application/ld+json"]'),
   ).map((script) => JSON.parse(script.textContent ?? "{}"));
+}
+
+async function renderHome() {
+  const rendered = render(HomePage());
+  await screen.findByRole("heading", { level: 1 });
+  return rendered;
 }
 
 function brandGraph(container: HTMLElement): SchemaNode[] {
@@ -46,8 +40,8 @@ describe("home page structured data", () => {
     global.fetch = jest.fn().mockResolvedValue({ ok: false });
   });
 
-  it("declares the Organization the way search engines should name the brand", () => {
-    const { container } = render(<HomePage />);
+  it("declares the Organization the way search engines should name the brand", async () => {
+    const { container } = await renderHome();
     const organization = brandGraph(container).find(
       (node) => node["@type"] === "Organization",
     );
@@ -61,26 +55,34 @@ describe("home page structured data", () => {
     });
   });
 
-  it("links the WebSite to the Organization as its publisher", () => {
-    const { container } = render(<HomePage />);
+  it("links the WebSite to the Organization as its publisher", async () => {
+    const { container } = await renderHome();
     const website = brandGraph(container).find(
       (node) => node["@type"] === "WebSite",
     );
 
     expect(website?.["@id"]).toBe(WEBSITE_ID);
     expect(website?.publisher).toEqual({ "@id": ORGANIZATION_ID });
+    expect(website?.alternateName).toEqual(["MemoryChess", "The Memory Chess"]);
   });
 
-  it("emits exactly one Organization and one WebSite", () => {
-    const { container } = render(<HomePage />);
+  it("describes the Organization with the English home meta description", async () => {
+    const { container } = await renderHome();
+    const organization = brandGraph(container).find((node) => node["@type"] === "Organization");
+
+    expect(organization?.description).toBe(english.home.meta.description);
+  });
+
+  it("emits exactly one Organization and one WebSite", async () => {
+    const { container } = await renderHome();
     const types = brandGraph(container).map((node) => node["@type"]);
 
     expect(types.filter((type) => type === "Organization")).toHaveLength(1);
     expect(types.filter((type) => type === "WebSite")).toHaveLength(1);
   });
 
-  it("keeps the FAQ structured data as a separate script", () => {
-    const { container } = render(<HomePage />);
+  it("keeps the FAQ structured data as a separate script", async () => {
+    const { container } = await renderHome();
     const scripts = jsonLdScripts(container);
 
     expect(scripts.some((schema) => schema["@type"] === "FAQPage")).toBe(true);

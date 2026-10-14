@@ -7,10 +7,13 @@
  * "Games played: {count}". Neither fails a build, so this runs as its own gate
  * for every locale on every translation pass.
  *
- * Usage: node scripts/validate-messages.mjs
+ * Usage, from the repo root: npm run validate:messages
  */
 import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 import { IntlMessageFormat } from "intl-messageformat";
+
+const fromRoot = (path) => join(process.cwd(), path);
 
 /**
  * The locale list is read from src/i18n/routing.ts rather than duplicated
@@ -19,10 +22,7 @@ import { IntlMessageFormat } from "intl-messageformat";
  * reported success the whole time.
  */
 function readLocalesFromRouting() {
-  const source = readFileSync(
-    new URL("../src/i18n/routing.ts", import.meta.url),
-    "utf8",
-  );
+  const source = readFileSync(fromRoot("src/i18n/routing.ts"), "utf8");
   const block = source.match(/export const LOCALES = \[([\s\S]*?)\] as const;/);
   if (!block) {
     throw new Error("Could not find LOCALES in src/i18n/routing.ts");
@@ -35,7 +35,7 @@ const DEFAULT_LOCALE = "en";
 
 // A catalogue with no locale, or a locale with no catalogue, is a broken build
 // either way -- both directions are checked before anything else runs.
-const catalogueFiles = readdirSync(new URL("../messages/", import.meta.url))
+const catalogueFiles = readdirSync(fromRoot("messages"))
   .filter((name) => name.endsWith(".json"))
   .map((name) => name.replace(/\.json$/, ""));
 
@@ -80,19 +80,29 @@ function flatten(value, prefix = "", out = {}) {
   return out;
 }
 
-/** ICU arguments ({count}) and rich-text tags (<link>). */
-function placeholders(text) {
-  const found = new Set();
-  for (const m of String(text).matchAll(/\{(\w+)[,}]|<(\w+)>/g)) {
-    found.add(m[1] ?? m[2]);
+/** Argument and tag names in a parsed message, branch text excluded: `{source, select, other {Game}}` names only `source`. */
+function namesIn(elements, found) {
+  for (const element of elements) {
+    if ("value" in element && element.type !== 0 && element.type !== 7) found.add(element.value);
+    if (element.options) Object.values(element.options).forEach((option) => namesIn(option.value, found));
+    if (element.children) namesIn(element.children, found);
   }
-  return [...found].sort();
+  return found;
+}
+
+/** ICU arguments ({count}) and rich-text tags (<link>). A message that does not parse is reported by the syntax check below. */
+function placeholders(text) {
+  try {
+    return [...namesIn(new IntlMessageFormat(String(text), DEFAULT_LOCALE).getAst(), new Set())].sort();
+  } catch {
+    return [...new Set([...String(text).matchAll(/\{(\w+)[,}]|<(\w+)>/g)].map((m) => m[1] ?? m[2]))].sort();
+  }
 }
 
 const catalogues = Object.fromEntries(
   LOCALES.map((locale) => [
     locale,
-    JSON.parse(readFileSync(new URL(`../messages/${locale}.json`, import.meta.url), "utf8")),
+    JSON.parse(readFileSync(fromRoot(`messages/${locale}.json`), "utf8")),
   ]),
 );
 
@@ -104,7 +114,9 @@ for (const locale of LOCALES) {
   const current = flatten(catalogues[locale]);
 
   for (const key of Object.keys(base)) {
-    if (!(key in current)) problems.push(`[${locale}] missing key: ${key}`);
+    if (!(key in current)) {
+      problems.push(`[${locale}] missing key: ${key}`);
+    }
   }
   for (const key of Object.keys(current)) {
     if (!(key in base)) problems.push(`[${locale}] unknown key: ${key}`);

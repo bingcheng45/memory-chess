@@ -22,7 +22,7 @@ jest.mock("@/components/reference/GameReference", () => {
   return MockGameReference;
 });
 
-jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: jest.fn(async () => null) }));
+jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: jest.fn(async () => null), readCachedCutoffs: () => null }));
 jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn() }));
 
 const FINISHED_ROUND = {
@@ -48,7 +48,7 @@ async function renderResultScreen(locale: string) {
   const missing: string[] = [];
   const rootMessages = await localeLayoutClientMessages(locale);
   const gameLayout = await GameLayout({
-    children: <GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} />,
+    children: <GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />,
     params: Promise.resolve({ locale }),
   });
 

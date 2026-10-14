@@ -9,12 +9,19 @@
       "privacy": "Prywatność",
       "terms": "Regulamin",
       "play": "Graj",
-      "leaderboard": "Ranking"
+      "leaderboard": "Ranking",
+      "dashboard": "Panel",
+      "menu": "Menu",
+      "site": "Serwis",
+      "streakChip": "Dzień {count}",
+      "streakChipLabel": "Dzień {count} Twojej serii{forgiven, plural, =0 {} one {, # opuszczony dzień wybaczony} few {, # opuszczone dni wybaczone} many {, # opuszczonych dni wybaczonych} other {, # opuszczonego dnia wybaczone}}. Otwórz panel."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Wszelkie prawa zastrzeżone.",
       "followOnX": "Obserwuj nas na Twitterze/X",
-      "productHuntAlt": "Memory Chess - Trenuj wyobraźnię przestrzenną przy pomocy szachów | Product Hunt"
+      "productHuntAlt": "Memory Chess - Trenuj wyobraźnię przestrzenną przy pomocy szachów | Product Hunt",
+      "tagline": "Darmowa gra pamięciowa na szachownicy. Zapamiętaj pozycję, odtwórz ją i odczytaj wynik.",
+      "recognition": "Wyróżnienia"
     },
     "sound": {
       "mute": "Wyłącz dźwięk",
@@ -41,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Trenuj szachową pamięć i wyobraźnię",
-      "subtitle": "Zapamiętaj pozycję szachową, odtwórz ją z pamięci i od razu otrzymaj wynik. Poprawiaj widzenie szachownicy runda po rundzie.",
-      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>.",
-      "gamesPlayed": "Rozegrane partie: {count}"
+      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>."
     },
     "cta": {
-      "play": "Zagraj w Memory Chess",
       "leaderboard": "Zobacz ranking",
-      "playFree": "Zagraj darmową rundę",
       "chooseSettings": "Wybierz figury i czas"
     },
     "video": {
@@ -57,35 +60,8 @@
       "iframeTitle": "Jak grać w Memory Chess",
       "credit": "Wideo: „A New Way To Train Your Vision”, Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Jak to działa",
-      "title": "Prosty trening szachowej pamięci",
-      "subtitle": "Każda runda ma trzy proste kroki: przeanalizuj pozycję, odtwórz ją i wyciągnij wnioski z wyniku.",
-      "steps": {
-        "observe": {
-          "title": "Obserwuj",
-          "description": "Zapamiętaj, gdzie stoi każda bierka. Szukaj grup, linii i pustych pól, które posłużą za punkty odniesienia."
-        },
-        "recreate": {
-          "title": "Odtwórz",
-          "description": "Gdy szachownica opustoszeje, ustaw każdą bierkę na polu, które pamiętasz."
-        },
-        "improve": {
-          "title": "Poprawiaj się",
-          "description": "Sprawdź wynik, zobacz, co ci umknęło, i spróbuj ponownie z większą liczbą bierek albo krótszym czasem."
-        }
-      }
-    },
-    "board": {
-      "study": "Przeanalizuj szachownicę",
-      "rebuild": "Odtwórz z pamięci"
-    },
     "learn": {
-      "eyebrow": "Centrum nauki",
-      "title": "Przystępne poradniki szachowe",
-      "description": "Poznaj praktyczne sposoby na lepsze widzenie szachownicy, wyobraźnię, liczenie wariantów i pamięć. Każdy poradnik zawiera ćwiczenia do wypróbowania od razu.",
-      "browseCta": "Przeglądaj poradniki",
-      "beginnerCta": "Zacznij od poradnika dla początkujących"
+      "browseCta": "Przeglądaj poradniki"
     },
     "faq": {
       "title": "Pytania o Memory Chess",
@@ -123,6 +99,830 @@
           "answer": "Kilka skupionych rund w regularnym rytmie to dobry początek. Sesje powinny być na tyle krótkie, żebyś wciąż uważnie analizował każdą pozycję."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Laboratorium",
+        "onPage": "Na tej stronie",
+        "notebook": "Notatnik",
+        "method": "Metoda",
+        "calibrate": "Kalibracja",
+        "tiers": "Poziomy",
+        "record": "Dziennik",
+        "library": "Biblioteka",
+        "hints": {
+          "notebook": "Po co mierzyć",
+          "method": "Jedna runda krok po kroku",
+          "calibrate": "Zrób odczyt",
+          "tiers": "Poziomy i własne ustawienie",
+          "record": "Twoje odczyty",
+          "library": "Poradniki i ćwiczenia"
+        },
+        "play": "Zagraj darmową rundę"
+      },
+      "tags": {
+        "proposed": "Propozycja",
+        "sample": "Przykład",
+        "illustrative": "Poglądowe",
+        "free": "Za darmo · bez konta",
+        "rig": "Własne ustawienie"
+      },
+      "sections": {
+        "notebook": "Notatnik",
+        "method": "Metoda",
+        "recording": "Zapis z terenu",
+        "calibrate": "Kalibracja",
+        "tiers": "Poziomy",
+        "record": "Dziennik laboratorium",
+        "library": "Biblioteka",
+        "faq": "Pytania",
+        "next": "Następny pomiar"
+      },
+      "hero": {
+        "platforms": "Przeglądarka · komputer · telefon",
+        "display": "Zmierz liczbą to, co widzisz <em>oczami wyobraźni.</em>",
+        "lede": "Memory Chess to darmowa gra pamięciowa w szachy i trener pamięci szachowej. Przez kilka sekund przyglądasz się pozycji, szachownica pustoszeje, a ty odtwarzasz ją z pamięci. Każda runda to krótki test pamięci z odczytem dokładności od 0 do 100% i mapą wszystkich pól, trafionych i pomylonych.",
+        "secondaryCta": "Zrób odczyt kalibracyjny",
+        "settingsLink": "<link>{label}</link>.",
+        "facts": {
+          "study": "czas na zapamiętanie",
+          "pieces": "figur w rundzie",
+          "plays": "{count, plural, one {rozegrana gra} few {rozegrane gry} many {rozegranych gier} other {rozegranej gry}}",
+          "languages": "{count, plural, one {język} few {języki} many {języków} other {języka}}"
+        },
+        "showcase": {
+          "aria": "Veselin Topalov kontra Alexey Shirov, Linares 1998, z prowadzoną analizą pozycji",
+          "event": "Linares · runda 10",
+          "venue": "4 marca 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "kontra",
+          "pieceLabel": "{piece} na {square}",
+          "tags": {
+            "study": "Analiza",
+            "trap": "Pułapka",
+            "sacrifice": "Ofiara",
+            "walk": "Marsz",
+            "runners": "Dwa wolne pionki",
+            "rebuild": "Odtworzenie",
+            "inspect": "Zasięg"
+          },
+          "counter": {
+            "study": "Analiza {n}/{total}",
+            "game": "Partia {n}/{total}",
+            "resume": "Kliknij ponownie, aby wznowić"
+          },
+          "controls": {
+            "steps": "Kroki",
+            "step": "Krok {n} z {total}: {tag}",
+            "previous": "Poprzedni krok",
+            "next": "Następny krok",
+            "play": "Odtwórz",
+            "pause": "Pauza"
+          },
+          "inspect": {
+            "title": "{piece} na {square}.",
+            "reach": "{moves, plural, =0 {Brak ruchów} one {# ruch} few {# ruchy} many {# ruchów} other {# ruchu}}, {captures, plural, =0 {brak bić} one {# bicie} few {# bicia} many {# bić} other {# bicia}}.",
+            "checks": "Szachy: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "Narożnik białych",
+            "longDiagonal": "Długa przekątna",
+            "blackWall": "Mur czarnych",
+            "runner": "Uciekinier"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Shirov, grający czarnymi, ma dwa pionki więcej, ale gońce różnopolowe często pozwalają utrzymać remis. Dziesięć figur."
+              },
+              "whiteCorner": {
+                "caption": "Biały król na g1 broni pionka g2. Pionek z linii h dobiegł już do h4."
+              },
+              "longDiagonal": {
+                "caption": "Biały goniec na c3 panuje na długiej przekątnej i atakuje pionka f6.",
+                "thought": "Goniec czarnopolowy, od c3 do f6."
+              },
+              "blackWall": {
+                "caption": "Czarny król na e6, jego goniec na f5, pionki na d5, f6 i g6.",
+                "thought": "Król broni f6 i d5. Pionek g6 broni gońca."
+              },
+              "runner": {
+                "caption": "Jeden czarny pionek na a4, daleko od wszystkiego."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "Czarny król nie może pójść do przodu. Na d5 i f5 stoją jego własne figury, a goniec z c3 pilnuje e5.",
+                "thought": "Tylko Kd6, Kd7, Ke7 i Kf7. Każde z tych pól prowadzi do tyłu albo w bok."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! Goniec oddaje się na polu, na którym może go zbić pionek g. Stał królowi na drodze.",
+                "thought": "Teraz f5 jest wolne. To są drzwi."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Przez drzwi otwarte przez gońca król dociera do centrum."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Jeden goniec nie zatrzyma dwóch wolnych pionków.",
+                "thought": "Topalov zabrał gońca i poddał się po 53...Kb3."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "Szachownica pustoszeje. Odtwórz pozycję wyjściową: narożnik białych, długą przekątną, mur czarnych, uciekiniera."
+              },
+              "back": {
+                "caption": "Grupa po grupie każda figura wraca na swoje pole."
+              },
+              "check": {
+                "caption": "Teraz sprawdź. Gońce różnopolowe, c3 ciemne, a f5 jasne. Goniec z c3 wciąż atakuje f6. Cztery białe, sześć czarnych."
+              }
+            }
+          },
+          "lines": {
+            "move": "Zagrany ruch",
+            "path": "Droga do promocji",
+            "attacks": "Atakuje",
+            "defends": "Broni",
+            "controls": "Kontroluje",
+            "chain": "Łańcuch pionków",
+            "blocked": "Zablokowane"
+          }
+        }
+      },
+      "notebook": {
+        "title": "Nie poprawisz tego, czego nigdy nie mierzysz.",
+        "lede": "Większość treningu szachowego ćwiczy decyzje. Bardzo mało sprawdza, czy naprawdę potrafisz utrzymać szachownicę w głowie. Ta umiejętność leży u podstaw liczenia wariantów, gry na ślepo i dostrzegania taktyki, a zwykle zostawia się ją przypadkowi.",
+        "observation": {
+          "kicker": "Obserwacja",
+          "title": "Gracze gubią figury w trakcie liczenia wariantów.",
+          "body": "Trzy posunięcia w głąb goniec na długiej przekątnej po cichu znika z obrazu w twojej głowie. Szachownica przed tobą była poprawna. Ta w twojej głowie nie."
+        },
+        "hypothesis": {
+          "kicker": "Hipoteza",
+          "title": "Pamięć szachownicy da się ćwiczyć i mierzyć.",
+          "body": "Zapamiętaj pozycję na chwilę, odtwórz ją, sprawdź wynik. Powtórz z większą liczbą figur i w krótszym czasie. <hl>Niczego nie obiecujemy w sprawie twojego mózgu.</hl> Dajemy ci odczyt, który możesz śledzić."
+        },
+        "method": {
+          "kicker": "Metoda",
+          "title": "Jedna runda, jedna czysta liczba.",
+          "body": "Zapamiętanie, pusta szachownica, odtworzenie, wynik. Poprawne pola są zaznaczone, błędne też, nic nie jest ukryte. Runda trwa niecałą minutę, więc możesz zrobić ich wiele."
+        }
+      },
+      "method": {
+        "title": "Runda pod mikroskopem.",
+        "lede": "Przewiń jedną rundę na prawdziwej pozycji: końcówkę Nieśmiertelnej Kasparova, partii Kasparov kontra Topalov w Wijk aan Zee w 1999 roku. Nakładki pokazują jeden ze sposobów zapamiętania jej, a nie zapis czyjejś uwagi.",
+        "status": "Faza {number} · {name}",
+        "clock": "t = {seconds} s",
+        "scoreChip": "{correct} z {total} pól",
+        "countChip": "Białe {white} · Czarne {black}",
+        "groups": {
+          "standoff": {
+            "name": "Starcie",
+            "sentence": "Biały król atakuje d2. Czarny król i c3 go bronią."
+          },
+          "mirror": {
+            "name": "Schodki",
+            "sentence": "Lustrzane schodki, od h2 w górę do f4, od h7 w dół do f5."
+          },
+          "longShots": {
+            "name": "Dalekie strzały",
+            "sentence": "Hetman z a7 celuje w h7. Wieża z d2 celuje w h2."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "Zapamiętanie",
+            "title": "Jedenaście figur, dziesięć sekund.",
+            "body": "Końcowa pozycja Nieśmiertelnej Kasparova, po 44.Qa7. Tu Topalov się poddał. Ogarnij wzrokiem całą szachownicę, a nie pole po polu. W eksperymentach de Groota mistrzowie odtwarzali krótko pokazaną pozycję z partii znacznie lepiej niż słabsi gracze.",
+            "note": "Ryc. Białe: król c1, hetman a7, pionki f4, g3, h2. Czarne: król e1, wieża d2, pionki c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Kotwice",
+            "title": "Zacznij od królów.",
+            "body": "Najpierw ustal dwa punkty. Oba króle stoją na pierwszym rzędzie, dwie kolumny od siebie, a czarny król dobiegł aż na e1. Wszystko inne ustawiaj względem nich.",
+            "note": "Ryc. oba króle w kółkach. Reszta czeka."
+          },
+          "chunk": {
+            "name": "Grupowanie",
+            "title": "Jedenaście figur staje się trzema pomysłami.",
+            "body": "Grupuj figury według tego, co robią sobie nawzajem. Króle walczą o d2. Spotykają się dwa schodki pionków. Hetman i wieża celują każde w niebronionego pionka z linii h. Chase i Simon (1973) wykazali, że silni gracze zapamiętują pozycje w blokach powiązanych figur.",
+            "note": "Ryc. pomarańczowy atakuje, niebieski broni, szary łączy łańcuch pionków, kreska oznacza zablokowaną parę. Wieża na d2 należy do dwóch grup."
+          },
+          "encode": {
+            "name": "Kodowanie",
+            "title": "Zamień każdą grupę w zdanie.",
+            "body": "Nazwij każdą grupę według jej zadania. Gobet i Simon (1996) opisują silnych graczy, którzy przechowują większe struktury, podobne do schematów. Same zdania to technika, a nie wynik badań.",
+            "note": "Ryc. trzy grupy z nazwami. Ich zdania:"
+          },
+          "blank": {
+            "name": "Pustka",
+            "title": "Szachownica pustoszeje.",
+            "body": "Żadnych figur, żadnych podpowiedzi. Odtwarzaj ze zdań, a nie z obrazu. Wypowiedz je po kolei: najpierw króle, potem każda grupa.",
+            "note": "Nie ma tu nic do zrobienia poza utrzymaniem w pamięci trzech zdań."
+          },
+          "rebuild": {
+            "name": "Odtworzenie",
+            "title": "Odtwarzaj grupa po grupie.",
+            "body": "Króle. Starcie. Schodki. Dalekie strzały. Ustaw każdą grupę razem z jej zdaniem, zanim zaczniesz następną.",
+            "note": "Ryc. odtworzenie przed sprawdzeniem. Jeden pionek stoi na złym polu. Widzisz który?"
+          },
+          "score": {
+            "name": "Wynik",
+            "title": "Sprawdź ze zdaniami, potem policz wynik.",
+            "body": "Sprawdź jeszcze raz każdą relację na odtworzonej szachownicy. Czy wieża wciąż jest broniona dwa razy? Z c2 pionek broni d1, a nie d2. Liczba figur, pięć i sześć, wciąż się zgadza, więc tylko sprawdzenie relacji wyłapuje pomyłkę.",
+            "note": "Ryc. ptaszki wciąż się zgadzają, czerwony krzyżyk pękł. Pomarańczowe wypełnienie to złe pole (c2), kółko pokazuje, gdzie pionek powinien stać (c3). {correct} z {total} pól to {accuracy}%."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Zrób odczyt kalibracyjny.",
+        "lede": "Runda na poziomie Średnim z prawdziwej partii: liczba figur {pieceCount}, w tym oba króle, czas {memorizeSeconds} s. Potem szachownica pustoszeje, a ty ją odtwarzasz. Dostaniesz kartę odczytu z twoją dokładnością i pamięcią według rodzaju figury. Działa z myszą, dotykiem i klawiaturą.",
+        "phaseReady": "Gotowe · figury: {pieceCount} · {memorizeSeconds} s na zapamiętanie",
+        "phaseLabel": "Faza {number} · {name}",
+        "start": "Rozpocznij kalibrację",
+        "restart": "Od nowa",
+        "again": "Jeszcze raz",
+        "done": "Gotowe",
+        "submit": "Wyślij odczyt",
+        "clear": "Wyczyść szachownicę",
+        "controlsLabel": "Sterowanie rundą",
+        "boardLabel": "Szachownica kalibracyjna. Poruszaj się między polami klawiszami strzałek.",
+        "paletteLabel": "Paleta figur",
+        "paletteItem": "{piece}, pozostało: {count}",
+        "usedUp": {
+          "white": {
+            "king": "Biały król jest już na szachownicy.",
+            "queen": "Biały hetman jest już na szachownicy.",
+            "rook": "Obie białe wieże są na szachownicy.",
+            "bishop": "Oba białe gońce są na szachownicy.",
+            "knight": "Oba białe skoczki są na szachownicy.",
+            "pawn": "Wszystkie osiem białych pionków jest na szachownicy."
+          },
+          "black": {
+            "king": "Czarny król jest już na szachownicy.",
+            "queen": "Czarny hetman jest już na szachownicy.",
+            "rook": "Obie czarne wieże są na szachownicy.",
+            "bishop": "Oba czarne gońce są na szachownicy.",
+            "knight": "Oba czarne skoczki są na szachownicy.",
+            "pawn": "Wszystkie osiem czarnych pionków jest na szachownicy."
+          }
+        },
+        "squareEmpty": "{square}, puste",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Przyjrzyj się pozycji. Czas: {memorizeSeconds} s.",
+        "liveRebuild": "Szachownica wyczyszczona. Wybierz figurę, a potem pole.",
+        "liveScore": "Dokładność {accuracy} procent. Poprawne pola: {correct} z {total}.",
+        "startFailed": "Nie udało się wczytać pozycji. Sprawdź połączenie i spróbuj ponownie.",
+        "steps": [
+          "Naciśnij start. Przyglądaj się pozycji, aż wskaźnik się opróżni.",
+          "Wybierz figurę z palety, a potem dotknij pola. Dotknij ustawionej figury, aby ją usunąć.",
+          "Wyślij. Ustawienie większej liczby figur, niż było w pozycji, obniża dokładność, więc stawiaj tylko to, co pamiętasz."
+        ],
+        "readout": {
+          "title": "Karta odczytu",
+          "statusIdle": "Czeka na rundę",
+          "statusRecording": "Rejestrowanie",
+          "statusDone": "Runda zakończona",
+          "correct": "Poprawne pola",
+          "time": "Czas ustawiania",
+          "wrong": "Błędne figury",
+          "exposure": "Czas na zapamiętanie",
+          "byType": "Pamięć według rodzaju figury",
+          "byTypeEmpty": "Pamięć według rodzaju figury pojawi się tu po twojej pierwszej rundzie.",
+          "nextEmpty": "Po odczycie pojawi się sugerowany poziom trudności.",
+          "suggested": "Sugestia:",
+          "stepUp": "przejdź na poziom {tier}, figury: {pieceCount}, czas {memorizeSeconds} s. Najpierw potwierdź to dwiema kolejnymi czystymi rundami.",
+          "stay": "zostań na poziomie {tier}, figury: {pieceCount}, czas {memorizeSeconds} s. Zagraj trzy rundy i obserwuj trend.",
+          "start": "zacznij od poziomu {tier}, figury: {pieceCount}, czas {memorizeSeconds} s. Podczas zapamiętywania łącz figury w pary.",
+          "playTier": "Zagraj: {tier}",
+          "legendCorrect": "poprawne",
+          "legendWrong": "złe ustawienie",
+          "legendMissed": "pominięte pole"
+        },
+        "pieceTypes": {
+          "king": "Król",
+          "queen": "Hetman",
+          "rook": "Wieża",
+          "bishop": "Goniec",
+          "knight": "Skoczek",
+          "pawn": "Pionek"
+        }
+      },
+      "tiers": {
+        "title": "Cztery poziomy. Jedno własne ustawienie.",
+        "lede": "Obciążenie rośnie, czas na zapamiętanie maleje. Przechodź poziom wyżej, gdy twoje odczyty są stabilne, a nie po jednej szczęśliwej rundzie.",
+        "columns": {
+          "tier": "Poziom",
+          "pieces": "Figury",
+          "exposure": "Czas",
+          "load": "Obciążenie"
+        },
+        "loadLabel": "Figury: {pieceCount} z 32",
+        "play": "Graj",
+        "custom": {
+          "label": "Własne",
+          "description": "Ustaw własne parametry, aby wyizolować jedną słabość."
+        }
+      },
+      "record": {
+        "title": "Wracaj po linię trendu.",
+        "lede": "Jeden odczyt to migawka. Dziesięć odczytów to pomiar. Każda rozegrana runda zostaje na tym urządzeniu, a te panele wypełniają się twoimi własnymi rundami. Przed pierwszą rundą panele pokazują wartości <tag>Przykład</tag>, a nie prawdziwych graczy. Potem panel, który nie może jeszcze odczytać twojego dziennika, mówi, czego mu brakuje.",
+        "span": {
+          "fig": "Ryc. {number} · Zakres pamięci",
+          "title": "Ile figur potrafisz utrzymać w pamięci.",
+          "figure": "{pieceCount, plural, one {# figura} few {# figury} many {# figur} other {# figury}}",
+          "held": "Wynik {accuracy} procent lub lepszy w {count, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}}. Najkrótszy czas na zapamiętanie wśród nich: {studyTime}.",
+          "up": "Więcej o {count, plural, one {# figurę} few {# figury} many {# figur} other {# figury}} niż w zeszłym tygodniu",
+          "same": "Bez zmian od zeszłego tygodnia",
+          "aria": "Przykładowe schodki zakresu pamięci w 12 sesjach, rosnące od 4 do 8 figur.",
+          "note": "Przykładowy dziennik · 12 sesji",
+          "realAria": "Twój zakres pamięci {sessions, plural, one {w sesji, w której został osiągnięty po raz pierwszy} few {w # sesjach od chwili, gdy został osiągnięty po raz pierwszy} many {w # sesjach od chwili, gdy został osiągnięty po raz pierwszy} other {w # sesji od chwili, gdy został osiągnięty po raz pierwszy}}, {shape, select, flat {stały przy {now} figurach} other {rosnący od {first} do {now} figur}}.",
+          "need": "Uzyskaj {accuracy} procent lub więcej {count, plural, =2 {dwa razy} one {jeszcze raz} few {jeszcze # razy} many {jeszcze # razy} other {jeszcze # razy}} przy jednej wielkości pozycji, od {minPieces} figur w górę.",
+          "onlyKings": "Twoje dotychczasowe rundy miały tylko dwa króle, a zakres pamięci wymaga więcej figur.",
+          "first": "Pierwsze osiągnięcie zakresu",
+          "last": "Najnowsze"
+        },
+        "held": {
+          "fig": "Ryc. {number} · Zapamiętane figury",
+          "title": "Figury, które stawiasz poprawnie, przy dowolnym ustawieniu.",
+          "aria": "Przykładowa linia zapamiętanych figur w 12 rundach, średnia z 5 rund rośnie od 4,0 do 7,0 figury.",
+          "note": "Przykładowy dziennik · 12 rund · dowolne ustawienie",
+          "partial": "Linia przerywana: średnia z mniej niż {window} rund",
+          "realAria": "Twoje zapamiętane figury w {count, plural, one {ostatniej rundzie} few {ostatnich # rundach} many {ostatnich # rundach} other {ostatnich # rundy}} przy dowolnym ustawieniu, jako średnia z {window} rund, ostatnia wartość {latest}.",
+          "average": "Ostatnia średnia zapamiętanych figur: {average}",
+          "up": "o {change} więcej niż w {window} wcześniejszych rundach",
+          "down": "o {change} mniej niż w {window} wcześniejszych rundach",
+          "flat": "bez zmian względem {window} wcześniejszych rund",
+          "realNote": "Dowolne ustawienie · Z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+          "needRounds": "{count, plural, one {Jeszcze # runda narysuje} few {Jeszcze # rundy narysują} many {Jeszcze # rund narysuje} other {Jeszcze # rundy narysuje}} twoją linię.",
+          "needRoundsAndDay": "{count, plural, one {Jeszcze # runda, rozegrana innego dnia, narysuje} few {Jeszcze # rundy, w tym co najmniej jedna innego dnia, narysują} many {Jeszcze # rund, w tym co najmniej jedna innego dnia, narysuje} other {Jeszcze # rundy, w tym co najmniej jedna innego dnia, narysuje}} twoją linię.",
+          "needDay": "Zagraj jeszcze jednego dnia, aby narysować swoją linię.",
+          "first": "Najstarsze",
+          "last": "Najnowsze"
+        },
+        "speed": {
+          "fig": "Ryc. {number} · Tempo odtwarzania",
+          "title": "Sekundy na każdą odtworzoną figurę.",
+          "aria": "Przykładowa linia sekund odtwarzania na poprawną figurę w 12 rundach, spadająca od 4,1 do 2,6 sekundy.",
+          "note": "Przykładowy dziennik · 12 rund · Średni",
+          "realAria": "Twoje sekundy odtwarzania na poprawną figurę w ostatnich {source, select, calibration {rundach treningowych} other {rundach w partiach}} ({count}) z {pieceCount} figurami i {memorizeSeconds} s na zapamiętanie, ostatnio {latest} s.",
+          "average": "Ostatnia średnia: {average} na figurę",
+          "down": "o {change} szybciej niż w {window} wcześniejszych rundach",
+          "up": "o {change} wolniej niż w {window} wcześniejszych rundach",
+          "flat": "to samo tempo co w {window} wcześniejszych rundach",
+          "accuracy": "Dokładność w tych samych rundach: {average}%",
+          "accuracyChange": {
+            "up": "w górę o {change, plural, one {# punkt} few {# punkty} many {# punktów} other {# punktu}}",
+            "down": "w dół o {change, plural, one {# punkt} few {# punkty} many {# punktów} other {# punktu}}",
+            "flat": "bez zmian"
+          },
+          "fastWrong": "Szybko i źle to nie postęp.",
+          "config": "{source, select, calibration {Trening} other {Partia}} · figury: {pieceCount} · {studyTime}, twoje najczęstsze ustawienie w ostatnim czasie · Z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+          "need": "{count, plural, one {Jeszcze # runda} few {Jeszcze # rundy} many {Jeszcze # rund} other {Jeszcze # rundy}} z {pieceCount} figurami, {studyTime}, {source, select, calibration {w treningu} other {w partiach}} {count, plural, one {narysuje} few {narysują} many {narysuje} other {narysuje}} twoją linię tempa odtwarzania.",
+          "needRight": "Tempo odtwarzania bierze pod uwagę tylko rundy z co najmniej jedną poprawną figurą. Zagraj {count, plural, one {# taką rundę} few {# takie rundy} many {# takich rund} other {# takiej rundy}}, aby zacząć swoją linię.",
+          "first": "Najstarsze",
+          "last": "Najnowsze"
+        },
+        "curve": {
+          "fig": "Ryc. {number} · Krzywa zapominania",
+          "title": "Krótkie powtórki w odstępach wygrywają z jedną długą sesją.",
+          "desc": "Plansze, na których masz poniżej 80%, wracają do powtórki 1, 3, 7 i 14 dni po tym, jak zobaczysz je pierwszy raz. Twoja krzywa pokazuje, ile pamiętasz po każdej przerwie.",
+          "aria": "Wykres poglądowy: bez powtórek pamięć szybko spada, a po każdej powtórce w odstępach słabnie wolniej, w dniach 1, 3 i 7.",
+          "note": "Poglądowy model efektu rozłożenia w czasie. To nie są zmierzone dane.",
+          "noReview": "bez powtórek",
+          "spaced": "rundy w odstępach",
+          "review": "powtórka",
+          "day": "d{day}",
+          "warming": "{reviews, plural, one {Jeszcze # powtórka po tej samej przerwie narysuje} few {Jeszcze # powtórki po tej samej przerwie narysują} many {Jeszcze # powtórek po tej samej przerwie narysuje} other {Jeszcze # powtórki po tej samej przerwie narysuje}} twój pierwszy zmierzony punkt.",
+          "measuredAria": "Twoja pamięć na powtórzonych planszach: {points}.",
+          "pointFirst": "za pierwszym razem {accuracy}% z {count, plural, one {# planszy} few {# plansz} many {# plansz} other {# planszy}}",
+          "pointAfter": "po {day, plural, one {# dniu} few {# dniach} many {# dniach} other {# dnia}} {accuracy}% z {count, plural, one {# powtórki} few {# powtórek} many {# powtórek} other {# powtórki}}",
+          "count": "n={count}",
+          "measuredNote": "Z {reviews, plural, one {# powtórki} few {# powtórek} many {# powtórek} other {# powtórki}} na {boards, plural, one {# planszy} few {# planszach} many {# planszach} other {# planszy}}. Punkt wymaga {min} powtórek po swojej przerwie.",
+          "due": "Powtórka {number} z {cap} na dziś",
+          "capped": "Dzisiejsze powtórki zrobione",
+          "play": "Zagraj powtórkę",
+          "waiting": "Następna powtórka {days, plural, one {jutro} few {za # dni} many {za # dni} other {za # dnia}}. W kolejce: {queued, plural, one {# plansza} few {# plansze} many {# plansz} other {# planszy}}.",
+          "empty": "Na razie nie ma plansz do powtórki. Plansza, na której masz poniżej 80%, wraca tu następnego dnia."
+        },
+        "spark": {
+          "fig": "Ryc. {number} · Dokładność w czasie",
+          "title": "Twoja linia, runda po rundzie.",
+          "titleSessions": "Twoja linia, sesja po sesji.",
+          "aria": "Przykładowy mikrowykres dokładności w 12 rundach, rosnący od 52 do 79 procent.",
+          "note": "Przykładowy dziennik · 12 rund · Średni",
+          "first": "R01",
+          "last": "R12",
+          "needRounds": "{count, plural, one {Jeszcze # runda} few {Jeszcze # rundy} many {Jeszcze # rund} other {Jeszcze # rundy}} z {pieceCount} figurami, {studyTime}, i narysujesz swój trend {source, select, calibration {treningowy} other {z partii}}.",
+          "needRoundsAndDay": "{count, plural, one {Jeszcze # runda z {pieceCount} figurami, {studyTime}, rozegrana innego dnia,} few {Jeszcze # rundy z {pieceCount} figurami, {studyTime}, w tym co najmniej jedna innego dnia,} many {Jeszcze # rund z {pieceCount} figurami, {studyTime}, w tym co najmniej jedna innego dnia,} other {Jeszcze # rundy z {pieceCount} figurami, {studyTime}, w tym co najmniej jedna innego dnia,}} i narysujesz swój trend {source, select, calibration {treningowy} other {z partii}}.",
+          "needDay": "Zagraj z {pieceCount} figurami, {studyTime}, {source, select, calibration {w treningu} other {w partii}} jeszcze jednego dnia, aby narysować swój trend.",
+          "config": "{source, select, calibration {Trening} other {Partia}} · figury: {pieceCount} · {studyTime}, twoje najczęstsze ustawienie z trendem",
+          "realAria": "Twoja dokładność w ostatnich {source, select, calibration {rundach treningowych} other {rundach w partiach}} ({count}) z {pieceCount} figurami i {memorizeSeconds} s na zapamiętanie, ostatnio {latest} procent.",
+          "realAriaSessions": "Twoja dokładność w {count, plural, one {ostatniej sesji} few {ostatnich # sesjach} many {ostatnich # sesjach} other {ostatnich # sesji}} z {source, select, calibration {rundami treningowymi} other {rundami w partiach}} z {pieceCount} figurami i {memorizeSeconds} s na zapamiętanie, ostatnio {latest} procent.",
+          "sessions": "{count, plural, one {# sesja} few {# sesje} many {# sesji} other {# sesji}}",
+          "realFirst": "Najstarsze",
+          "realLast": "Najnowsze"
+        },
+        "heat": {
+          "fig": "Ryc. {number} · Mapa pomyłek",
+          "title": "Gdzie umykają ci pola.",
+          "aria": "Przykładowa mapa cieplna pomylonych pól: najciemniejsza wzdłuż kolumny h i wokół h1, z gorącymi punktami na b7 i f7, najjaśniejsza w centrum.",
+          "note": "Przykład: pomyłki gromadzą się na kolumnie h i wokół narożnika króla na h1. Ten brzeg ćwicz w następnej kolejności.",
+          "need": "Jeszcze około {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}, aż każda kolumna i każdy rząd będą mieć 10 figur do odczytu.",
+          "needStart": "Zagraj jeszcze kilka rund, aby zacząć swoją mapę pomyłek.",
+          "files": "Kolumny",
+          "ranks": "Rzędy",
+          "line": "{line}: pomyłki w {missed} z {shown}",
+          "lineThin": "{line}: zobaczono {shown}, za mało do oceny",
+          "realAria": "Udział pomyłek na każdym polu. Szare pola mają mniej niż 10 zobaczonych figur.",
+          "realNote": "Ciemniej znaczy częstsze pomyłki. Szare pola mają mniej niż 10 zobaczonych figur."
+        },
+        "daily": {
+          "fig": "Ryc. {number} · Plansza dnia",
+          "title": "Jedna plansza dziennie, ta sama dla wszystkich.",
+          "desc": "Nowa pozycja otwiera się codziennie o północy UTC. Każdy dostaje tę samą planszę i tyle samo czasu na zapamiętanie, a ty masz jedną próbę.",
+          "play": "Zagraj dzisiejszą planszę",
+          "open": "Dzisiejsza plansza ma {pieceCount, plural, one {# bierkę} few {# bierki} many {# bierek} other {# bierki}} i {memorizeSeconds, plural, one {# sekundę} few {# sekundy} many {# sekund} other {# sekundy}} na zapamiętanie. Dzisiejsza plansza jeszcze na ciebie czeka.",
+          "played": "Poprawnie ustawione: {correct} z {pieceCount, plural, one {# figury} few {# figur} many {# figur} other {# figury}}, {accuracy} procent.",
+          "unfinished": "Dzisiejsza plansza została otwarta, ale runda nie doszła do wyniku. Jedna próba dziennie na tym urządzeniu.",
+          "streak": "Seria dzienna: {current, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}{forgiven, plural, =0 {} one {, # opuszczony dzień wybaczony} few {, # opuszczone dni wybaczone} many {, # opuszczonych dni wybaczonych} other {, # opuszczonego dnia wybaczone}} · najdłuższa {longest, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
+          "streakLongest": "Najdłuższa seria dzienna: {longest, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
+          "gridAria": "Twój wynik na każdym polu, od a8: poprawne {correct}, {wrong, plural, one {# błędna figura} few {# błędne figury} many {# błędnych figur} other {# błędnej figury}}, pominięte {missed}, nadmiarowe {extra}.",
+          "key": {
+            "c": "poprawne",
+            "w": "błędna figura",
+            "m": "pominięte",
+            "x": "nadmiarowe"
+          },
+          "share": "Plansza dnia Memory Chess {day}\nPoprawnie {correct} z {pieceCount}, {accuracy}%\n{row}\nthememorychess.com",
+          "copy": "Kopiuj wynik",
+          "showGrid": "Pokaż siatkę",
+          "copied": "Skopiowano. Wklej, gdzie chcesz.",
+          "copyFailed": "Kopiowanie tu nie zadziałało. Wynik jest zaznaczony poniżej, więc skopiuj go ręcznie."
+        },
+        "streak": {
+          "fig": "Ryc. {number} · Dni z rzędu",
+          "title": "Jedna runda dziennie buduje serię.",
+          "desc": "Każda ukończona runda, z partii czy z treningu, liczy się do swojego dnia. Jeden opuszczony dzień na każde 7 jest wybaczany.",
+          "aria": "Przykładowa siatka dwutygodniowej serii",
+          "note": "Przykład · przerywany kwadrat to dzisiejsza runda, jeszcze w toku",
+          "realDesc": "Każda ukończona runda liczy się do swojego dnia. Jeden opuszczony dzień na każde 7 jest wybaczany.",
+          "need": "Zagraj jeszcze przez {days, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}, aby odczytać swoją serię.",
+          "realAria": "Twoje ostatnie 14 dni: {count, plural, one {# dzień gry} few {# dni gry} many {# dni gry} other {# dnia gry}}{forgiven, plural, =0 {} one {, # wybaczony} few {, # wybaczone} many {, # wybaczonych} other {, # wybaczonego}}.",
+          "realNote": "Obecna seria: {current, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}{forgiven, plural, =0 {} one {, # opuszczony dzień wybaczony} few {, # opuszczone dni wybaczone} many {, # opuszczonych dni wybaczonych} other {, # opuszczonego dnia wybaczone}} · najdłuższa {longest, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
+          "key": {
+            "played": "zagrany",
+            "forgiven": "wybaczony",
+            "missed": "opuszczony",
+            "today": "dziś"
+          }
+        },
+        "week": {
+          "ring": "{played} z {goal} dni w tym tygodniu",
+          "ringOver": "Cel osiągnięty, dni gry w tym tygodniu: {played}",
+          "sampleRing": "Przykładowy tydzień · {played} z {goal} dni",
+          "left": "{remaining, plural, =0 {Cel na ten tydzień osiągnięty.} one {Jeszcze # dzień do celu.} few {Jeszcze # dni do celu.} many {Jeszcze # dni do celu.} other {Jeszcze # dnia do celu.}}",
+          "outOfReach": "Celu nie da się już osiągnąć, {daysLeft, plural, =0 {gdy nie zostały żadne dni} one {gdy został # dzień} few {gdy zostały # dni} many {gdy zostało # dni} other {gdy zostało # dnia}}. Nowy tydzień zaczyna się w poniedziałek.",
+          "goal": "Dni w tygodniu",
+          "option": "{days} dni w tygodniu"
+        },
+        "welcome": {
+          "line": "Witaj z powrotem. Dzień {day} twojego dziennika. Ostatnio {accuracy}% przy {pieceCount} figurach, {studyTime}.",
+          "lineNoDay": "Witaj z powrotem. Ostatnio {accuracy}% przy {pieceCount} figurach, {studyTime}."
+        },
+        "board": {
+          "fig": "Ryc. {number} · Ranking",
+          "title": "Porównaj odczyty z całym światem.",
+          "desc": "Każdy poziom jest uszeregowany według poprawnych figur, potem mniejszej liczby błędnych figur, potem krótszego czasu zapamiętywania, a na końcu krótszego czasu rozwiązania. Każdy wiersz pokazuje kraj gracza.",
+          "howTo": "Wyślij wynik z ekranu rezultatu, a potem sprawdź, gdzie się plasuje, na świecie lub w twoim kraju.",
+          "sketchPieces": "Figury: {count}",
+          "open": "Otwórz ranking",
+          "difficulty": "Poziom",
+          "scope": "Miejsce wśród",
+          "world": "Świat",
+          "entry": "Twój najlepszy wpis na poziomie {difficulty}: {correct, plural, one {# poprawna figura} few {# poprawne figury} many {# poprawnych figur} other {# poprawnej figury}}, wysłany {date}.",
+          "check": "Sprawdź moje miejsce",
+          "checking": "Sprawdzanie...",
+          "ranked": "Miejsce {rank, number} z {total, plural, one {# wpisu} few {# wpisów} many {# wpisów} other {# wpisu}} na poziomie {difficulty}, na świecie.",
+          "rankedIn": "Miejsce {rank, number} z {total, plural, one {# wpisu} few {# wpisów} many {# wpisów} other {# wpisu}} na poziomie {difficulty}. Kraj: {country}.",
+          "checkedAt": "Sprawdzono o {time}.",
+          "boardSize": "Publiczny ranking pokazuje pierwsze {limit} miejsc.",
+          "up": "W górę o {places, plural, one {# miejsce} few {# miejsca} many {# miejsc} other {# miejsca}} od {time}.",
+          "down": "W dół o {places, plural, one {# miejsce} few {# miejsca} many {# miejsc} other {# miejsca}} od {time}.",
+          "same": "To samo miejsce co o {time}.",
+          "missing": "Twojego wpisu na poziomie {difficulty} nie ma już w rankingu, więc to urządzenie go nie przechowuje. Rankingi są czasem czyszczone lub resetowane. Sprawdzono o {time}.",
+          "limited": "Za dużo sprawdzeń z twojego połączenia. Spróbuj ponownie za {wait, plural, one {# sekundę} few {# sekundy} many {# sekund} other {# sekundy}}.",
+          "noCountry": "Ranking nie zna kraju dla tego wpisu, więc może on być klasyfikowany tylko na świecie.",
+          "offline": "Jesteś offline, więc nic nie zostało wysłane. Połącz się i spróbuj ponownie.",
+          "failed": "Nie udało się połączyć z rankingiem, więc nie odczytano miejsca. Spróbuj ponownie później."
+        },
+        "plans": {
+          "fig": "Ryc. {number} · Programy",
+          "title": "Wybierz plan i doprowadź go do końca.",
+          "desc": "Jeden plan naraz. Postęp liczy się z twoich rund, więc zatrzymanie planu nigdy nie usuwa żadnej rundy.",
+          "baseline": {
+            "kicker": "Plan A · 7 dni",
+            "title": "Tydzień odniesienia",
+            "steps": [
+              "Jedna runda na poziomie Średnim dziennie.",
+              "Zapisz odczyt i nie ulegaj pokusie powtórki.",
+              "Dzień 7: porównaj z dniem 1."
+            ],
+            "progress": "{played} z {days} dni z rundą na poziomie Średnim",
+            "compare": "Dzień {firstDay} {first}%, dzień {lastDay} {latest}%: {direction, select, up {w górę o {change, plural, one {# punkt} few {# punkty} many {# punktów} other {# punktu}}} down {w dół o {change, plural, one {# punkt} few {# punkty} many {# punktów} other {# punktu}}} other {bez zmian}}.",
+            "compareNone": "Od startu planu nie było żadnej rundy na poziomie Średnim, więc nie ma czego porównać.",
+            "compareOne": "Od startu planu była jedna runda na poziomie Średnim, więc na razie nie ma czego porównać."
+          },
+          "edge": {
+            "kicker": "Plan B · 14 dni",
+            "title": "Ćwiczenie skrajnych kolumn",
+            "steps": [
+              "Własne ustawienie: 8 figur, 15 s.",
+              "Co 3 dni przejrzyj swoją mapę pomyłek.",
+              "Połącz z poradnikiem o widzeniu szachownicy."
+            ],
+            "progress": "To ustawienie zagrane w {played, plural, one {# dniu} few {# dniach} many {# dniach} other {# dnia}} z {elapsed}. Cel: {target} dni na {days}.",
+            "share": "Pomyłki na skrajnych kolumnach: {before}% w {beforeRounds, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}} przed planem, {now}% w {nowRounds, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}} od tego czasu.",
+            "shareMissing": "Pomyłki na skrajnych kolumnach porównamy, gdy obie strony będą opierać się na {needed} rundach z figurą na kolumnie a lub h. Na razie przed planem: {before}, od tego czasu: {now}.",
+            "guide": "Przeczytaj, jak widzieć całą planszę"
+          },
+          "ladder": {
+            "kicker": "Plan C · bez końca",
+            "title": "Drabina w dół",
+            "steps": [
+              "Utrzymaj 90% przez trzy rundy z rzędu.",
+              "Potem skróć czas na zapamiętanie o 2 sekundy.",
+              "Gdy czas na zapamiętanie dojdzie do minimum, dodaj figury."
+            ],
+            "rung": "Szczebel: figury: {pieceCount}, {studyTime}.",
+            "run": "{run} z {needed} rund z rzędu z wynikiem {accuracy} procent lub lepszym.",
+            "climbed": "Zaliczone: rundy z rzędu z wynikiem {accuracy} procent lub lepszym, łącznie {needed}.",
+            "next": "Następny szczebel: figury: {pieceCount}, {studyTime}.",
+            "top": "Szczyt drabiny: żadna plansza nie ma więcej figur niż {pieceCount}."
+          },
+          "status": {
+            "day": "Dzień {day}",
+            "dayOf": "Dzień {day} z {length}",
+            "overtime": "Dzień {day}, ponad zaplanowane {length}",
+            "done": "Ukończono w dniu {day}.",
+            "finished": "Zakończono wcześniej, w dniu {day}.",
+            "stopped": "Przerwano w dniu {day}."
+          },
+          "start": "Zacznij: {title}",
+          "again": "Zacznij ponownie: {title}",
+          "busy": "Jeden plan naraz. Zatrzymaj plan {title}, aby zacząć ten.",
+          "stop": "Zatrzymaj plan",
+          "confirmStop": "Na pewno zatrzymać?",
+          "keep": "Kontynuuj",
+          "finish": "Zakończ wcześniej",
+          "play": "Zagraj z {pieceCount} figurami, {studyTime}"
+        },
+        "goal": {
+          "fig": "Ryc. {number} · Cel",
+          "title": "Wyceluj w odczyt.",
+          "desc": "Wybierz liczbę figur i dokładność. Pasek wypełnia się twoją najlepszą rundą przy tej liczbie figur lub większej od chwili ustawienia celu.",
+          "sample": "Przykładowy cel: {accuracy} procent przy {pieceCount} figurach. Najlepszy dotąd wynik {best} procent, {percent}% drogi.",
+          "target": "Cel: {accuracy, select, 100 {100 procent} other {{accuracy} procent lub więcej}} przy {pieceCount} lub więcej figurach, ustawiony {date}.",
+          "progress": "Najlepszy wynik od tamtej pory: {best} procent przy {pieceCount} figurach, {percent}% drogi.",
+          "bar": "{percent}% drogi do celu",
+          "need": "Od ustawienia tego celu nie było rundy z {pieceCount} lub więcej figurami.",
+          "reached": "Osiągnięty {date}: {accuracy} procent przy {pieceCount} figurach.",
+          "form": "Nowy cel",
+          "pieces": "Figury, co najmniej",
+          "accuracy": "Dokładność, co najmniej",
+          "percent": "{value}%",
+          "set": "Ustaw cel",
+          "newGoal": "Ustaw nowy cel",
+          "clear": "Usuń cel",
+          "cancel": "Anuluj",
+          "saved": "Cel ustawiony.",
+          "cleared": "Cel usunięty."
+        },
+        "mine": "Twój dziennik",
+        "fromRounds": "Z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+        "dashboardLink": "Otwórz swój panel",
+        "play": "Zagraj rundę",
+        "tomorrow": "Wróć jutro.",
+        "stale": "Ostatnia gra {count, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} temu.",
+        "unlock": {
+          "label": "Do odblokowania",
+          "count": "Odblokowane ryciny: {unlocked} z {total}",
+          "done": "Wszystkie ryciny poniżej są odblokowane.",
+          "showAll": "Pokaż wszystkie ryciny ({count})",
+          "showFewer": "Pokaż mniej",
+          "span": "{qualifyingRounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}} z wynikiem {accuracy}%+ przy {minPieces}+ figurach",
+          "piecesHeld": "{rounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}} w ciągu {days, plural, one {# dnia} few {# dni} many {# dni} other {# dnia}}",
+          "trend": "{rounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}} przy jednym ustawieniu w ciągu {days, plural, one {# dnia} few {# dni} many {# dni} other {# dnia}}",
+          "speed": "{rounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}} przy jednym ustawieniu",
+          "streak": "{days, plural, one {# dzień gry} few {# dni gry} many {# dni gry} other {# dnia gry}}",
+          "curve": "{reviews, plural, one {# powtórka} few {# powtórki} many {# powtórek} other {# powtórki}} po tej samej przerwie",
+          "typeRecall": "{exposures, plural, one {# wystąpienie} few {# wystąpienia} many {# wystąpień} other {# wystąpienia}} figury innej niż król",
+          "missMap": "{exposures, plural, one {# wystąpienie} few {# wystąpienia} many {# wystąpień} other {# wystąpienia}} na każdą kolumnę i rząd",
+          "trendRounds": "jeszcze {rounds} {rounds, plural, one {runda} few {rundy} many {rund} other {rundy}} {source, select, calibration {w treningu} other {w partiach}} z {pieceCount} figurami, {studyTime}",
+          "trendDays": "jeszcze {days, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} z rundami {source, select, calibration {treningowymi} other {w partiach}} z {pieceCount} figurami, {studyTime}",
+          "trendRoundsDays": "jeszcze {rounds} {rounds, plural, one {runda} few {rundy} many {rund} other {rundy}} {source, select, calibration {w treningu} other {w partiach}} z {pieceCount} figurami, {studyTime}, {days, plural, one {jeszcze # dzień} few {jeszcze # dni} many {jeszcze # dni} other {jeszcze # dnia}}",
+          "spanLeft": "{qualifyingRounds, plural, one {jeszcze # runda} few {jeszcze # rundy} many {jeszcze # rund} other {jeszcze # rundy}} z wynikiem {accuracy}%+ przy {minPieces}+ figurach",
+          "spanLarger": "{largerRounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}} przy {minPieces}+ figurach",
+          "piecesHeldRounds": "{rounds, plural, one {jeszcze # runda} few {jeszcze # rundy} many {jeszcze # rund} other {jeszcze # rundy}}",
+          "piecesHeldDays": "{days, plural, one {jeszcze # dzień} few {jeszcze # dni} many {jeszcze # dni} other {jeszcze # dnia}}",
+          "piecesHeldRoundsDays": "{rounds, plural, one {jeszcze # runda} few {jeszcze # rundy} many {jeszcze # rund} other {jeszcze # rundy}}, {days, plural, one {jeszcze # dzień} few {jeszcze # dni} many {jeszcze # dni} other {jeszcze # dnia}}",
+          "speedRounds": "jeszcze {rounds} {rounds, plural, one {runda} few {rundy} many {rund} other {rundy}} {source, select, calibration {w treningu} other {w partiach}} z {pieceCount} figurami, {studyTime}",
+          "speedRight": "{rightRounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}} z poprawną figurą",
+          "streakLeft": "{days, plural, one {jeszcze # dzień gry} few {jeszcze # dni gry} many {jeszcze # dni gry} other {jeszcze # dnia gry}}",
+          "curveLeft": "{reviews, plural, one {jeszcze # powtórka} few {jeszcze # powtórki} many {jeszcze # powtórek} other {jeszcze # powtórki}} po tej samej przerwie",
+          "typeRecallLeft": "{exposures, plural, one {jeszcze # wystąpienie} few {jeszcze # wystąpienia} many {jeszcze # wystąpień} other {jeszcze # wystąpienia}} figury innej niż król",
+          "missMapLeft": "{exposures, plural, one {jeszcze # wystąpienie} few {jeszcze # wystąpienia} many {jeszcze # wystąpień} other {jeszcze # wystąpienia}} na najrzadziej widzianej kolumnie lub rzędzie",
+          "insights": "{rounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}",
+          "insightsLeft": "{rounds, plural, one {jeszcze # runda} few {jeszcze # rundy} many {jeszcze # rund} other {jeszcze # rundy}}",
+          "notebook": "{rounds, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}"
+        },
+        "bests": {
+          "fig": "Ryc. {number} · Rekordy osobiste",
+          "title": "Twój najlepszy odczyt w każdym ustawieniu.",
+          "desc": "Rekordy są zapisywane osobno dla każdego ustawienia, bo 6 figur i 20 figur to różne testy. Odczyty treningowe z tej strony są trzymane osobno od partii.",
+          "empty": "Twój najlepszy odczyt dla każdego ustawienia pojawi się po pierwszej rundzie.",
+          "setting": "{source, select, calibration {Trening} other {Partia}} · figury: {pieceCount} · {studyTime}",
+          "first": "pierwszy odczyt",
+          "showAll": "Pokaż wszystkie ustawienia ({count})",
+          "showFewer": "Pokaż mniej",
+          "reading": "{accuracy}% · odtworzone w {time}"
+        },
+        "types": {
+          "fig": "Ryc. {number} · Pamięć według rodzaju figury",
+          "title": "Które figury umykają.",
+          "need": "Jeszcze około {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}, aż figura inna niż król będzie mieć 20 wystąpień.",
+          "needStart": "Pamięć według rodzaju figury pojawi się po pierwszej rundzie.",
+          "onlyKings": "Twoje dotychczasowe rundy miały tylko dwa króle, a pamięć według rodzaju figury wymaga więcej figur.",
+          "thin": "zobaczono {shown}/20",
+          "baseline": "punkt odniesienia",
+          "kings": "Króle są w każdej rundzie, więc stanowią punkt odniesienia. Zapamiętano {recalled} z {shown}.",
+          "sampleNote": "Przykład: najpierw umykają pionki i skoczki."
+        },
+        "insights": {
+          "fig": "Ryc. {number} · Spostrzeżenia",
+          "title": "Co się wyróżnia i co warto spróbować.",
+          "desc": "Spostrzeżenie pojawia się dopiero wtedy, gdy jego liczby przekroczą minimalną próbę, i podaje liczby, na których się opiera.",
+          "sample": "Przykład z przykładowego dziennika: kolumny a i h były mylone {times, select, 2 {mniej więcej dwa razy} other {mniej więcej {times} razy}} częściej niż kolumny centralne, d i e, {edge}% figur wobec {centre}%.",
+          "sampleList": "Przykładowe spostrzeżenie",
+          "sampleNote": "Przykładowe spostrzeżenie, nie z twoich rund.",
+          "list": "Spostrzeżenia z twojego dziennika",
+          "need": "Spostrzeżenia czytają twój dziennik od {threshold} rund. {count, plural, one {Została jeszcze # runda} few {Zostały jeszcze # rundy} many {Zostało jeszcze # rund} other {Zostało jeszcze # rundy}}.",
+          "none": "Na razie nic się nie wyróżnia. Graj dalej.",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {W kolumnach a i h mylisz {edge, select, 0 {poniżej 1%} other {{edge}%}} z {edgeShown} figur, a w kolumnach centralnych, d i e, żadnej z {centreShown}.} 2 {Mylisz się w kolumnach a i h mniej więcej dwa razy częściej niż w kolumnach centralnych, d i e: {edge, select, 0 {poniżej 1%} other {{edge}%}} z {edgeShown} figur wobec {centre, select, 0 {poniżej 1%} other {{centre}%}} z {centreShown}.} other {Mylisz się w kolumnach a i h mniej więcej {times} razy częściej niż w kolumnach centralnych, d i e: {edge, select, 0 {poniżej 1%} other {{edge}%}} z {edgeShown} figur wobec {centre, select, 0 {poniżej 1%} other {{centre}%}} z {centreShown}.}}",
+            "weakType": "Spośród figur innych niż króle, widzianych co najmniej {minimum} razy, najczęściej umykają ci {type, select, q {hetmany} r {wieże} b {gońce} n {skoczki} other {pionki}}: zapamiętano {recalled} z {shown}, {percent}%.",
+            "fasterLessAccurate": "Przy {pieceCount} figurach, {studyTime}, ostatnie rundy ({window}) zajęły ci o {fasterTime} mniej na poprawną figurę niż {window} wcześniejszych, a dokładność spadła o {fell} pkt.",
+            "colourGap": "{weaker, select, w {Białe} other {Czarne}} figury zapamiętujesz rzadziej niż {weaker, select, w {czarne} other {białe}}: {weakerPercent}% z {weakerShown} wobec {strongerPercent}% z {strongerShown}, bez królów.",
+            "plateau": "Przy {pieceCount} figurach, {studyTime}, ostatnie rundy ({window}) dały średnio {last}%, a {window} wcześniejszych {before}%, a twój zakres utrzymał się na {span} figurach przez ostatni tydzień gry. Jedna figura więcej może go ruszyć."
+          },
+          "actions": {
+            "rig": "Zagraj z {pieceCount} figurami, {studyTime}",
+            "patterns": "Przeczytaj ćwiczenia z rozpoznawania wzorców",
+            "vision": "Przeczytaj, jak widzieć całą planszę"
+          }
+        },
+        "notebook": {
+          "fig": "Ryc. {number} · Notatnik laboratorium",
+          "title": "Co się wydarzyło i kiedy.",
+          "empty": "Wpisy pojawiają się w trakcie gry.",
+          "sampleList": "Przykładowe wpisy w notatniku",
+          "list": "Twój notatnik, od najnowszych",
+          "new": "Nowe",
+          "newNote": "„Nowe” oznacza wpisy od twojej ostatniej wizyty.",
+          "showAll": "Pokaż wszystkie wpisy ({count})",
+          "showFewer": "Pokaż mniej",
+          "day": "Dzień {day}.",
+          "olderBefore": "Wpisy sprzed {date} nie są przechowywane w tej przeglądarce.",
+          "older": "Starsze wpisy nie są przechowywane w tej przeglądarce.",
+          "entries": {
+            "firstRound": "Pierwsza runda: {accuracy} procent przy {pieceCount} figurach.",
+            "rounds": "Rozegrana runda nr {count, number}.",
+            "first90": "Pierwszy raz {threshold} procent lub więcej przy {pieceCount} figurach.",
+            "best": "Nowy rekord {source, select, calibration {treningowy} other {w partii}} przy {pieceCount} figurach, {studyTime}: {by, select, time {znów {accuracy} procent, odtworzone w {solveTime}} other {{accuracy} procent, wcześniej {previous}}}.",
+            "span": "{from, select, 0 {Zakres pamięci doszedł do {to} figur} other {Zakres pamięci wzrósł z {from} do {to} figur}}.",
+            "streak": "{forgiven, plural, =0 {{days} dni z rzędu.} one {{days} dni serii, # opuszczony dzień wybaczony.} few {{days} dni serii, # opuszczone dni wybaczone.} many {{days} dni serii, # opuszczonych dni wybaczonych.} other {{days} dni serii, # opuszczonego dnia wybaczone.}}",
+            "rungUp": "Szczebel wyżej: figury: {pieceCount}, {studyTime}.",
+            "goalReached": "Cel osiągnięty: {accuracy} procent przy {pieceCount} lub więcej figurach."
+          }
+        },
+        "tools": {
+          "title": "Przechowywane na tym urządzeniu",
+          "body": "Bez konta i bez serwera. Pobierz kopię, aby przenieść dziennik do innej przeglądarki albo bezpiecznie go zachować.",
+          "download": "Pobierz mój dziennik laboratorium",
+          "import": "Importuj",
+          "lastBackup": "Eksport rozpoczęty {date}",
+          "neverBackedUp": "Jeszcze nie wyeksportowano",
+          "imported": "{added, plural, =0 {Nie ma nic nowego do importu. Te rundy już tu są.} one {Zaimportowano # rundę.} few {Zaimportowano # rundy.} many {Zaimportowano # rund.} other {Zaimportowano # rundy.}}",
+          "skipped": "{count, plural, one {# runda z pliku była nieczytelna i została pominięta.} few {# rundy z pliku były nieczytelne i zostały pominięte.} many {# rund z pliku było nieczytelnych i zostało pominiętych.} other {# rundy z pliku było nieczytelne i zostało pominięte.}}",
+          "importFailed": "Ten plik nie jest dziennikiem laboratorium Memory Chess.",
+          "tooLarge": "Ten plik ma ponad 5 MB, więcej niż jakikolwiek dziennik laboratorium, więc nic nie zostało zaimportowane.",
+          "overCap": "{count, plural, one {# starsza runda została pominięta} few {# starsze rundy zostały pominięte} many {# starszych rund zostało pominiętych} other {# starszej rundy zostało pominięte}}, aby zmieścić się w limicie 5000 rund.",
+          "summaryIgnored": "Ta przeglądarka miała już rundy, więc dołączono tylko nowe rundy, bez łącznych sum z pliku.",
+          "summaryDropped": "Łączne sumy z pliku były nieczytelne albo pochodziły ze starszej wersji, więc zaimportowano tylko jego rundy.",
+          "safari": "W Safari karta prywatna nie zachowuje tego dziennika po zamknięciu, a Safari usuwa zapisane dane strony po około 7 dniach bez wizyty. Wyeksportuj kopię, aby go zachować.",
+          "unavailable": "W oknach prywatnych nic się nie zapisuje. To okno przeglądarki nie przechowuje twoich rund.",
+          "backup": "Kopia zapasowa między urządzeniami (wkrótce)",
+          "backupNoted": "Kopii zapasowej między urządzeniami jeszcze nie ma. Dziękujemy, twoje zainteresowanie zostało odnotowane.",
+          "card": {
+            "open": "Udostępnij mój odczyt",
+            "title": "Mój odczyt w Memory Chess",
+            "span": "Zakres pamięci: {pieceCount, plural, one {# figura} few {# figury} many {# figur} other {# figury}}, {accuracy}% lub więcej w {count, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}}",
+            "held": "Zapamiętane figury: ostatnia średnia {average}, z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+            "speed": "Tempo odtwarzania: ostatnia średnia {average} na figurę {source, select, calibration {w treningu} other {w partiach}} przy {pieceCount} figurach, {studyTime}, z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+            "site": "thememorychess.com",
+            "copy": "Kopiuj mój odczyt",
+            "copied": "Skopiowano. Wklej, gdzie chcesz.",
+            "copyFailed": "Kopiowanie tu nie zadziałało. Odczyt jest zaznaczony powyżej, więc skopiuj go ręcznie."
+          },
+          "nudge": {
+            "title": "Twój dziennik mieszka w tej przeglądarce",
+            "body": "Wyczyszczenie danych przeglądarki go usuwa. Dodaj tę stronę do zakładek, aby wracać do tej samej przeglądarki, i użyj powyżej opcji Pobierz mój dziennik laboratorium, aby zachować kopię.",
+            "safari": "Na urządzeniach iPhone i iPad opcja Do ekranu początkowego zachowuje stronę jako aplikację z własnym dziennikiem, którego 7-dniowa reguła Safari nie usuwa. Zaczyna się pusta, więc zaimportuj tam pobraną kopię.",
+            "dismiss": "Zamknij"
+          }
+        }
+      },
+      "library": {
+        "title": "Biblioteka podręczna.",
+        "lede": "Centrum nauki łączy krótkie poradniki z ćwiczeniami, więc każdy odczyt wskazuje coś, co możesz przećwiczyć.",
+        "ref": "Poz. {number}",
+        "read": "Czytaj poradnik",
+        "vision": {
+          "title": "Widzenie szachownicy",
+          "body": "Widź całą szachownicę naraz, a nie po jednym rogu."
+        },
+        "visualization": {
+          "title": "Wizualizacja",
+          "body": "Utrzymaj w głowie zmieniającą się pozycję, gdy figury się przesuwają."
+        },
+        "calculation": {
+          "title": "Liczenie wariantów",
+          "body": "Patrz dalej w przód, nie tracąc z oczu szachownicy."
+        },
+        "memory": {
+          "title": "Pamięć",
+          "body": "Techniki grupowania i wzorców, które podnoszą twoje odczyty."
+        },
+        "blindfold": {
+          "title": "Trening gry na ślepo",
+          "body": "Czteroetapowy plan, od pamięci szachownicy do pełnych partii na ślepo."
+        },
+        "blundering": "Jak przestać podstawiać figury"
+      },
+      "final": {
+        "title": "Twój pierwszy odczyt zajmie niecałą minutę.",
+        "body": "Bez konta, bez pobierania, bez rejestracji. Otwórz rundę, zapamiętaj, odtwórz, odczytaj liczbę. Potem zdecyduj, czy chcesz drugi."
+      },
+      "resultCard": {
+        "title": "Twój dziennik laboratorium",
+        "device": "Przechowywany na tym urządzeniu",
+        "lines": "Ta runda w twoim dzienniku",
+        "unshown": "Nie udało się pokazać twojego dziennika laboratorium dla tej rundy.",
+        "newBest": {
+          "up": "Nowy rekord przy {pieceCount} figurach, {studyTime}: {accuracy}%, wcześniej {previous}%",
+          "faster": "Nowy rekord przy {pieceCount} figurach, {studyTime}: znów {accuracy}%, o {fasterTime} szybciej",
+          "plain": "Nowy rekord przy {pieceCount} figurach, {studyTime}: {accuracy}%"
+        },
+        "vsRecent": {
+          "above": "{points, plural, one {# punkt} few {# punkty} many {# punktów} other {# punktu}} powyżej {rounds, plural, one {twojej ostatniej rundy} few {twojej średniej z ostatnich # rund} many {twojej średniej z ostatnich # rund} other {twojej średniej z ostatnich # rundy}} przy tym ustawieniu",
+          "below": "{points, plural, one {# punkt} few {# punkty} many {# punktów} other {# punktu}} poniżej {rounds, plural, one {twojej ostatniej rundy} few {twojej średniej z ostatnich # rund} many {twojej średniej z ostatnich # rund} other {twojej średniej z ostatnich # rundy}} przy tym ustawieniu",
+          "level": "Na poziomie {rounds, plural, one {twojej ostatniej rundy} few {twojej średniej z ostatnich # rund} many {twojej średniej z ostatnich # rund} other {twojej średniej z ostatnich # rundy}} przy tym ustawieniu"
+        },
+        "span": "Zakres wzrósł do {pieceCount} figur",
+        "streak": "{current, plural, one {Dzień 1} few {# dni z rzędu} many {# dni z rzędu} other {# dnia z rzędu}}{graceUsed, select, true {, wykorzystany dzień ulgi} other {}}, {days} z {goal} dni w tym tygodniu",
+        "next": {
+          "label": "Co dalej",
+          "why": {
+            "more": "90% lub więcej, więc jedna figura więcej przy tym samym czasie na zapamiętanie.",
+            "fewer": "Poniżej 50%, więc jedna figura mniej przy tym samym czasie na zapamiętanie.",
+            "edgeFiles": "Częściej mylisz się w kolumnach a i h niż w kolumnach centralnych.",
+            "weakType": "Najczęściej umykają ci {type, select, q {hetmany} r {wieże} b {gońce} n {skoczki} other {pionki}}: zapamiętano {recalled} z {shown}.",
+            "fasterLessAccurate": "Przy {pieceCount} figurach, {studyTime}, przyspieszyło twoje tempo na poprawną figurę, a dokładność spadła o {fell} pkt.",
+            "colourGap": "{weaker, select, w {Białe} other {Czarne}} figury zapamiętujesz rzadziej: {weakerPercent}% wobec {strongerPercent}%.",
+            "plateau": "Twój zakres utrzymuje się na {span} figurach."
+          },
+          "play": "Zagraj z {pieceCount} figurami, {studyTime}",
+          "again": "Zagraj znów z {pieceCount} figurami, {studyTime}",
+          "patterns": "Przeczytaj ćwiczenia z rozpoznawania wzorców",
+          "vision": "Przeczytaj, jak widzieć całą planszę"
+        }
+      },
+      "daily": {
+        "locked": "Dzisiejsza plansza została już otwarta. Jedna próba dziennie na tym urządzeniu.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Reset za niecałą minutę} one {Reset za # min} few {Reset za # min} many {Reset za # min} other {Reset za # min}}} one {Reset za # godz. {minutes} min} few {Reset za # godz. {minutes} min} many {Reset za # godz. {minutes} min} other {Reset za # godz. {minutes} min}}",
+        "seeRecord": "Otwórz swój dziennik laboratorium",
+        "chooseRound": "Zagraj kolejną rundę"
+      },
+      "review": {
+        "none": "Na tym urządzeniu żadna plansza nie czeka teraz na powtórkę.",
+        "capped": "Dzisiejsze powtórki ({cap}) na tym urządzeniu są zrobione.",
+        "cappedNext": "Każda plansza, która wciąż czeka, wróci jutro, zaczynając od tej, która czeka najdłużej.",
+        "schedule": "Plansze, na których masz poniżej 80%, wracają 1, 3, 7 i 14 dni po tym, jak zobaczysz je pierwszy raz."
+      }
     }
   },
   "game": {
@@ -137,19 +937,33 @@
       "submit": "Wyślij",
       "status": "Stan partii",
       "controls": "Sterowanie grą",
-      "complete": "Partia zakończona",
-      "flash": "GOTOWE!"
+      "complete": "Partia zakończona"
     },
     "config": {
-      "title": "Ustawienia partii",
+      "title": "Szachowa gra pamięciowa",
       "presetsLabel": "Poziomy trudności",
       "presetSummary": "{pieces} bierek / {seconds} s",
       "customLabel": "Ustawienia własne",
       "pieceCount": "Liczba bierek",
       "memorizeTime": "Czas na zapamiętanie",
       "seconds": "{seconds} s",
-      "start": "Rozpocznij trening",
-      "lastGame": "Poprzednia partia: {time} s na rozwiązanie, celność {accuracy}%"
+      "start": "Rozpocznij rundę",
+      "lastGame": "Poprzednia partia: {time} s na rozwiązanie, celność {accuracy}%",
+      "preview": {
+        "label": "Podgląd oceny",
+        "provisional": "Tymczasowa ocena",
+        "rated": "Runda oceniana",
+        "board": "Ocena planszy",
+        "yours": "Twoja ocena",
+        "expected": "Oczekiwana dokładność",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Proponowana plansza",
+        "clear": "Jeśli się uda",
+        "miss": "Jeśli się nie uda",
+        "gain": "Do <num>+{value}</num>",
+        "loss": "Najwyżej <num>−{value}</num>",
+        "announce": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}."
+      }
     },
     "presets": {
       "easy": {
@@ -171,18 +985,7 @@
     },
     "memorize": {
       "title": "Zapamiętaj pozycję",
-      "skip": "Pomiń",
-      "hint": "Szachownica opustoszeje, gdy skończy się czas",
-      "rememberPieces": "{count, plural, one {Zapamiętaj bierkę} few {Zapamiętaj wszystkie # bierki} many {Zapamiętaj wszystkich # bierek} other {Zapamiętaj # bierki}}"
-    },
-    "place": {
-      "title": "Ustaw bierki",
-      "subtitle": "Wybierz rodzaj i kolor",
-      "whitePieces": "Białe bierki",
-      "blackPieces": "Czarne bierki",
-      "selectWhite": "Wybierz białe bierki",
-      "selectBlack": "Wybierz czarne bierki",
-      "hint": "Dotknij pola, aby postawić lub usunąć bierkę"
+      "hint": "Szachownica opustoszeje, gdy skończy się czas"
     },
     "board": {
       "pieces": {
@@ -203,20 +1006,7 @@
           "king": "czarny król"
         }
       },
-      "feedback": {
-        "correct": "poprawnie",
-        "incorrect": "niepoprawnie",
-        "missing": "brak"
-      },
-      "squareWithPiece": "{square}: {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Wybierz: {piece}"
-    },
-    "stats": {
-      "title": "Statystyki",
-      "currentTime": "Bieżący czas",
-      "piecesToMemorize": "Bierki do zapamiętania",
-      "averageAccuracy": "Średnia celność"
+      "squareWithPiece": "{square}: {piece}"
     },
     "result": {
       "messages": {
@@ -232,7 +1022,9 @@
       "piecesCorrect": "Poprawne bierki",
       "memorizationTime": "Czas zapamiętywania",
       "solutionTime": "Czas rozwiązania",
-      "recallSpeed": "Szybkość przypominania",
+      "recallSpeed": "Szybkość układania",
+      "provisional": "Tymczasowa ocena",
+      "freeSkip": "Dzisiejsze darmowe pominięcie: pusta plansza nie zmienia twojej oceny. Kolejna dzisiaj już tak.",
       "piecesPerSecond": "{value} bierek/s",
       "actions": "Działania dla wyniku",
       "tryAgain": "Spróbuj ponownie",
@@ -253,18 +1045,38 @@
         "submit": "Wyślij wynik",
         "submitting": "Wysyłanie…",
         "thanks": "Dziękujemy za udział, {name}!"
+      },
+      "share": {
+        "button": "Udostępnij wynik",
+        "title": "Udostępnij swój wynik",
+        "kicker": "{kind, select, daily {Szachownica dnia · {date}} review {Runda powtórkowa} other {Wynik rundy}}",
+        "accuracy": "Celność",
+        "pieces": "{correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}}",
+        "setting": "Ustawienie",
+        "settingValue": "{pieceCount, plural, one {# figura} few {# figury} many {# figur} other {# figury}}, {seconds} s na zapamiętanie",
+        "study": "Czas na zapamiętanie",
+        "rebuild": "Czas rozwiązania",
+        "seconds": "{seconds} s",
+        "rating": "Ocena",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Seria wygranych",
+        "winStreakValue": "{count, plural, one {# runda z rzędu} few {# rundy z rzędu} many {# rund z rzędu} other {# rundy z rzędu}}",
+        "legend": {
+          "correct": "Dobrze",
+          "missed": "Pominięta",
+          "wrong": "Źle"
+        },
+        "cta": "Pobijesz to?",
+        "text": "{kind, select, daily {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na dziennej szachownicy Memory Chess z dnia {date}.} review {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na szachownicy powtórkowej Memory Chess.} other {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) w Memory Chess.}} Pobijesz to?",
+        "alt": "Karta wyniku Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Runda zapisana. Zaktualizowane statystyki są tuż poniżej.",
+        "action": "Pokaż"
       }
     },
     "comparison": {
-      "title": "Przejrzyj swoją pozycję",
-      "subtitle": "Porównaj to, co zapamiętałeś, z tym, co wysłałeś.",
-      "unavailable": "Porównanie szachownic jest niedostępne.",
-      "ariaLabel": "Porównanie szachownic",
-      "correct": "Poprawnie",
-      "incorrect": "Błędnie",
-      "missed": "Pominięte",
-      "originalBoard": "Pozycja do zapamiętania",
-      "submittedBoard": "Twoja wysłana pozycja"
+      "title": "Przejrzyj swoją pozycję"
     },
     "feedback": {
       "title": "Dziękujemy za grę w Memory Chess!",
@@ -282,6 +1094,66 @@
       "sendFailed": "Nie udało się wysłać opinii. Spróbuj ponownie albo wybierz „Nie teraz”.",
       "send": "Wyślij opinię",
       "sending": "Wysyłanie…"
+    },
+    "round": {
+      "start": "Start",
+      "done": "Gotowe",
+      "restart": "Od nowa",
+      "again": "Jeszcze raz",
+      "submit": "Wyślij",
+      "clear": "Wyczyść szachownicę",
+      "controlsLabel": "Sterowanie rundą",
+      "boardLabel": "Szachownica. Poruszaj się między polami klawiszami strzałek.",
+      "paletteLabel": "Paleta bierek",
+      "paletteItem": "{piece}, pozostało: {count}",
+      "usedUp": {
+        "white": {
+          "king": "Biały król jest już na szachownicy.",
+          "queen": "Biały hetman jest już na szachownicy.",
+          "rook": "Obie białe wieże są na szachownicy.",
+          "bishop": "Oba białe gońce są na szachownicy.",
+          "knight": "Oba białe skoczki są na szachownicy.",
+          "pawn": "Wszystkie osiem białych pionków jest na szachownicy."
+        },
+        "black": {
+          "king": "Czarny król jest już na szachownicy.",
+          "queen": "Czarny hetman jest już na szachownicy.",
+          "rook": "Obie czarne wieże są na szachownicy.",
+          "bishop": "Oba czarne gońce są na szachownicy.",
+          "knight": "Oba czarne skoczki są na szachownicy.",
+          "pawn": "Wszystkie osiem czarnych pionków jest na szachownicy."
+        }
+      },
+      "squareEmpty": "{square}, puste",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Zapamiętaj pozycję",
+      "phaseRebuild": "Ustaw bierki",
+      "liveStudy": "Przyjrzyj się pozycji. Czas: {memorizeSeconds} s.",
+      "liveRebuild": "Szachownica wyczyszczona. Wybierz bierkę, a potem pole.",
+      "liveScore": "Celność {accuracy} procent. Poprawne pola: {correct} z {total}.",
+      "readout": {
+        "title": "Wyniki",
+        "statusIdle": "Czeka na rundę",
+        "statusRecording": "Rejestrowanie",
+        "statusDone": "Runda zakończona",
+        "correct": "Poprawne pola",
+        "time": "Czas ustawiania",
+        "wrong": "Błędne bierki",
+        "exposure": "Czas na zapamiętanie",
+        "byType": "Pamięć według rodzaju bierki",
+        "byTypeEmpty": "Pamięć według rodzaju bierki pojawi się tu po rundzie.",
+        "legendCorrect": "poprawne",
+        "legendWrong": "złe ustawienie",
+        "legendMissed": "pominięte pole"
+      },
+      "pieceTypes": {
+        "king": "Król",
+        "queen": "Hetman",
+        "rook": "Wieża",
+        "bishop": "Goniec",
+        "knight": "Skoczek",
+        "pawn": "Pionek"
+      }
     }
   },
   "leaderboard": {
@@ -308,10 +1180,17 @@
     "columns": {
       "rank": "Miejsce",
       "player": "Gracz",
+      "elo": "ELO",
       "pieces": "Bierki",
       "memorizeTime": "Czas zapamiętywania",
       "solutionTime": "Czas rozwiązania",
       "date": "Data"
+    },
+    "daily": {
+      "tab": "Dzienna",
+      "setting": "{pieces, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} · {seconds} s na naukę",
+      "resetsAtUtc": "Reset o {utc} UTC",
+      "resetsAt": "Reset o {utc} UTC ({local} u Ciebie), za {timeLeft}"
     }
   },
   "country": {
@@ -319,15 +1198,6 @@
     "world": "Świat",
     "searchPlaceholder": "Szukaj krajów",
     "noResults": "Nie znaleziono krajów"
-  },
-  "settings": {
-    "meta": {
-      "title": "Ustawienia Memory Chess",
-      "description": "Dostosuj ustawienia i preferencje swojej gry w Memory Chess."
-    },
-    "showCoordinates": "Pokaż współrzędne szachownicy",
-    "home": "Strona główna",
-    "playGame": "Graj"
   },
   "contact": {
     "meta": {
@@ -362,14 +1232,25 @@
       "typeRequired": "Wybierz rodzaj sprawy.",
       "messageTooShort": "Wiadomość musi mieć co najmniej 10 znaków."
     },
+    "hints": {
+      "name": "Co najmniej 2 znaki.",
+      "email": "Odpowiedź przyjdzie na ten adres.",
+      "type": "Każdy rodzaj jest opisany pod formularzem.",
+      "message": "Co najmniej 10 znaków."
+    },
     "errors": {
-      "submitFailed": "Nie udało się wysłać formularza{details}",
-      "generic": "Podczas wysyłania formularza wystąpił błąd. Spróbuj ponownie."
+      "generic": "Podczas wysyłania formularza wystąpił błąd. Spróbuj ponownie.",
+      "reasons": {
+        "invalid": "Niektóre dane nie zostały przyjęte. Sprawdź formularz i spróbuj ponownie.",
+        "unavailable": "Wiadomości nie można teraz wysłać. Spróbuj ponownie później.",
+        "notDelivered": "Nie udało się dostarczyć Twojej wiadomości. Spróbuj ponownie."
+      }
     }
   },
   "changelog": {
     "bannerCta": "Zobacz nowości",
-    "bannerLabel": "Aktualizacja Memory Chess"
+    "bannerLabel": "Aktualizacja Memory Chess",
+    "bannerLead": "Memory Chess v{version} już jest."
   },
   "articles": {
     "meta": {
@@ -440,6 +1321,400 @@
       "roundSize": "{pieces, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}}, {seconds, plural, one {# sekunda} few {# sekundy} many {# sekund} other {# sekundy}}",
       "read": "Przeczytaj artykuł",
       "tryDrill": "Wypróbuj to ćwiczenie"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Panel",
+      "description": "Twój panel w Memory Chess: ocena umiejętności, zakres pamięci, każda runda rozegrana na tym urządzeniu, dokładność i tempo w czasie, rekordy osobiste oraz karta do ich udostępnienia."
+    },
+    "title": "Panel",
+    "lede": "Każda runda rozegrana na tym urządzeniu, co mówi o twojej pamięci, i karta do udostępnienia. Nic stąd nie opuszcza twojej przeglądarki, chyba że to udostępnisz.",
+    "unavailable": "Ta przeglądarka nie przechowuje dziennika, więc nie ma postępów do pokazania. Okna prywatne niczego nie zapisują.",
+    "fullRecord": "Zobacz pełny dziennik",
+    "sections": {
+      "summary": "Podsumowanie",
+      "history": "Historia gier",
+      "analysis": "Analiza",
+      "more": "Więcej liczb"
+    },
+    "historyLede": "Najnowsze na górze. Otwórz rundę, aby zobaczyć jej ocenioną planszę.",
+    "analysisLede": "Jak zmieniają się w czasie twoja dokładność i tempo odtwarzania oraz gdzie umykają figury.",
+    "stale": "Z ostatniej rundy",
+    "staleNote": "Ostatnia gra {count, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} temu. Tak oznaczone liczby pochodzą z tamtego czasu.",
+    "play": "Zagraj rundę",
+    "playAt": "Zagraj {pieceCount} figur, {memorizeSeconds} s",
+    "tomorrow": "Wróć jutro.",
+    "choose": "Wybierz go w pełnym dzienniku",
+    "notYet": "Jeszcze nic.",
+    "notSet": "Jeszcze nie ustawiono.",
+    "needs": "Odblokuje się po {need}.",
+    "needsAt": "Odblokuje się po {need} przy {pieceCount} figurach, {memorizeSeconds} s.",
+    "need": {
+      "rounds": "{count, plural, one {# kolejnej rundzie} few {# kolejnych rundach} many {# kolejnych rundach} other {# kolejnej rundy}}",
+      "days": "{count, plural, one {# kolejnym dniu gry} few {# kolejnych dniach gry} many {# kolejnych dniach gry} other {# kolejnego dnia gry}}",
+      "exposures": "{count, plural, one {# kolejnej zobaczonej figurze} few {# kolejnych zobaczonych figurach} many {# kolejnych zobaczonych figurach} other {# kolejnej zobaczonej figury}}",
+      "qualifyingRounds": "{count, plural, one {# kolejnej rundzie} few {# kolejnych rundach} many {# kolejnych rundach} other {# kolejnej rundy}} z wynikiem {accuracy}% lub lepszym i co najmniej {minPieces} figurami",
+      "largerRounds": "{count, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}} z co najmniej {minPieces} figurami",
+      "rightRounds": "{count, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}} z jedną poprawną figurą",
+      "reviews": "{count, plural, one {# kolejnej powtórce} few {# kolejnych powtórkach} many {# kolejnych powtórkach} other {# kolejnej powtórki}} po tej samej przerwie"
+    },
+    "label": {
+      "rating": "Ocena umiejętności",
+      "winStreak": "Seria wygranych",
+      "bestAccuracy": "Najlepsza dokładność",
+      "recentAccuracy": "Ostatnia dokładność",
+      "span": "Zakres pamięci",
+      "piecesHeld": "Zapamiętane figury",
+      "speed": "Tempo odtwarzania",
+      "studyTime": "Czas na zapamiętanie",
+      "rebuildTime": "Czas ustawiania",
+      "streak": "Seria dni",
+      "rounds": "Rozegrane rundy",
+      "days": "Dni gry",
+      "daily": "Plansza dnia",
+      "week": "Ten tydzień",
+      "curve": "Pamięć po powtórce",
+      "notebook": "Notatnik",
+      "plans": "Plan",
+      "goal": "Cel",
+      "board": "Ranking"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> figura} few {<n>{value}</n> figury} many {<n>{value}</n> figur} other {<n>{value}</n> figury}}",
+      "secondsPerPiece": "<n>{value}</n> s na figurę",
+      "seconds": "<n>{value}</n> s",
+      "days": "{count, plural, one {<n>{value}</n> dzień} few {<n>{value}</n> dni} many {<n>{value}</n> dni} other {<n>{value}</n> dnia}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, one {<n>{value}</n> runda} few {<n>{value}</n> rundy} many {<n>{value}</n> rund} other {<n>{value}</n> rundy}}",
+      "entries": "{count, plural, one {<n>{value}</n> wpis} few {<n>{value}</n> wpisy} many {<n>{value}</n> wpisów} other {<n>{value}</n> wpisu}}",
+      "rating": "<n>{value}</n>"
+    },
+    "context": {
+      "span": "{accuracy}% lub lepiej w {rounds, plural, one {# rundzie} few {# rundach} many {# rundach} other {# rundy}}, zapamiętywanie {memorizeSeconds} s",
+      "recent": "{rounds, plural, one {Z jedynej dotąd rundy, dowolne ustawienie} few {Średnia z ostatnich rund: # rundy, dowolne ustawienie} many {Średnia z ostatnich rund: # rund, dowolne ustawienie} other {Średnia z ostatnich rund: # rundy, dowolne ustawienie}}",
+      "setting": "{source, select, calibration {Rundy treningowe} other {Rundy w partiach}} z {pieceCount} figurami, {memorizeSeconds} s, z {rounds, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+      "longest": "Najdłuższa seria: {days, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
+      "daily": "{status, select, played {Zagrane dziś} unfinished {Otwarte dziś} other {Dostępne dziś}}, najdłuższa seria {longest, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}}",
+      "curve": "Zapamiętane po {day, plural, one {# dniu} few {# dniach} many {# dniach} other {# dnia}}, z {reviews, plural, one {# powtórki} few {# powtórek} many {# powtórek} other {# powtórki}}",
+      "rounds": "Z {rounds, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+      "plan": "{planId, select, baseline {Plan Punkt odniesienia} edge {Plan Krawędzie} other {Plan Drabina}}, {status, select, active {wciąż w toku} done {już ukończony} other {już przerwany}}",
+      "goal": "W drodze do {pieceCount} figur z dokładnością {accuracy}%",
+      "week": "Cel tygodniowy {goal} dni",
+      "entry": "Poprawne figury w twoim najlepszym wpisie, {difficulty, select, easy {poziom Łatwy} medium {poziom Średni} hard {poziom Trudny} other {poziom Arcymistrz}}",
+      "overDays": "W ciągu {days, plural, one {# dnia} few {# dni} many {# dni} other {# dnia}}",
+      "firstDay": "Od {date}",
+      "rating": "{sign, select, up {Wzrost o {change}} down {Spadek o {change}} other {Bez zmian}} {rounds, plural, one {w ostatniej rundzie liczonej do oceny} few {w ostatnich rundach liczonych do oceny: # rundy} many {w ostatnich rundach liczonych do oceny: # rund} other {w ostatnich rundach liczonych do oceny: # rundy}}",
+      "ratingSince": "Z twoich rund w partiach liczonych do oceny",
+      "winStreak": "Rundy w partiach z rzędu z wynikiem {accuracy}% lub lepszym",
+      "bestAt": "{source, select, calibration {Trening} other {Partia}} przy {pieceCount} figurach, {memorizeSeconds} s"
+    },
+    "history": {
+      "count": "Wyświetlono {shown} z {total, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+      "filterSource": "Źródło",
+      "filterSetting": "Ustawienie",
+      "allSources": "Wszystkie źródła",
+      "allSettings": "Wszystkie ustawienia",
+      "sources": {
+        "game": "Partia",
+        "daily": "Plansza dnia",
+        "plan": "Plan",
+        "review": "Powtórka",
+        "practice": "Trening"
+      },
+      "settingValue": "{pieceCount} figur, {memorizeSeconds} s",
+      "col": {
+        "date": "Rozegrano",
+        "source": "Źródło",
+        "setting": "Ustawienie",
+        "accuracy": "Dokładność",
+        "correct": "Poprawne",
+        "study": "Czas na zapamiętanie",
+        "time": "Czas ustawiania",
+        "rating": "Ocena",
+        "board": "Plansza"
+      },
+      "correctValue": "{correct} z {total}",
+      "seconds": "{value} s",
+      "ratingUp": "Ocena w górę o {change}",
+      "ratingDown": "Ocena w dół o {change}",
+      "ratingLevel": "Ocena bez zmian",
+      "unrated": "Bez oceny",
+      "show": "Pokaż planszę",
+      "hide": "Ukryj planszę",
+      "boardLabel": "Oceniona plansza: {correct} z {total} figur poprawnie.",
+      "detail": "Zapamiętywanie {studied} s z {memorizeSeconds} s. {wrong, plural, =0 {Brak błędnych figur} one {# błędna figura} few {# błędne figury} many {# błędnych figur} other {# błędnej figury}}, {extra, plural, =0 {brak dodatkowych figur} one {# dodatkowa figura} few {# dodatkowe figury} many {# dodatkowych figur} other {# dodatkowej figury}}.",
+      "more": "Pokaż jeszcze {count}",
+      "ratingNote": "Zmiany oceny są zapisywane dla 30 najnowszych rund w partiach liczonych do oceny. Rundy treningowe i powtórki nie są oceniane.",
+      "kept": "Twój dziennik przechowuje szczegółowo {kept} najnowszych z {total} rund. Starsze rundy nadal liczą się do sum i rekordów.",
+      "emptyTitle": "Jeszcze brak rund.",
+      "empty": "Każda runda rozegrana na tym urządzeniu pojawi się tutaj, od najnowszej, z ustawieniem, dokładnością i czasem ustawiania. Otwórz ją, aby zobaczyć ocenioną planszę.",
+      "noMatch": "Żadna runda nie pasuje do tych filtrów.",
+      "clear": "Wyczyść filtry"
+    },
+    "analysis": {
+      "fromRounds": "Z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
+      "oldest": "Najstarsze",
+      "latest": "Najnowsze",
+      "accuracy": {
+        "title": "Dokładność w czasie",
+        "desc": "Twoja dokładność runda po rundzie w twoim najczęstszym ustawieniu, w skali od 0 do 100%.",
+        "note": "{source, select, calibration {Rundy treningowe} other {Rundy w partiach}} z {pieceCount} figurami, {memorizeSeconds} s, twoje najczęstsze ustawienie. Ostatnie rundy: {count, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}.",
+        "aria": "Dokładność w ostatnich rundach ({count}) z {pieceCount} figurami, {memorizeSeconds} s, w skali od 0 do 100 procent, ostatnio {latest} procent."
+      },
+      "speed": {
+        "title": "Tempo odtwarzania w czasie",
+        "unit": "Sekundy na poprawną figurę. Mniej znaczy szybciej.",
+        "note": "{source, select, calibration {Rundy treningowe} other {Rundy w partiach}} z {pieceCount} figurami, {memorizeSeconds} s. Ostatnie rundy: {count, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}.",
+        "aria": "Sekundy na poprawną figurę w ostatnich rundach ({count}) z {pieceCount} figurami, {memorizeSeconds} s, ostatnio {latest}."
+      },
+      "bests": {
+        "title": "Rekordy osobiste według ustawienia",
+        "desc": "Rekordy są zapisywane osobno dla każdego ustawienia, bo 6 figur i 20 figur to różne testy.",
+        "setting": "{source, select, calibration {Trening} other {Partia}} · {pieceCount} figur, {memorizeSeconds} s",
+        "col": {
+          "setting": "Ustawienie",
+          "accuracy": "Najlepsza dokładność",
+          "correct": "Poprawne",
+          "time": "Czas ustawiania",
+          "rounds": "Rundy",
+          "date": "Ustanowiono"
+        }
+      },
+      "types": {
+        "title": "Zapamiętywanie według rodzaju figury",
+        "desc": "Jak często odstawiasz każdy rodzaj figury na pole, na którym stał.",
+        "value": "{recalled} z {shown}",
+        "thin": "Zobaczono {shown} z {minimum}",
+        "baseline": "Króle są w każdej rundzie, więc stanowią punkt odniesienia: zapamiętano {recalled} z {shown}.",
+        "onlyKings": "Twoje dotychczasowe rundy zawierały tylko dwa króle. Zapamiętywanie według rodzaju figury wymaga więcej figur."
+      },
+      "miss": {
+        "title": "Mapa pomyłek",
+        "desc": "Które pola i linie mylisz najczęściej, we wszystkich rundach.",
+        "aria": "Udział pomyłek na każdym polu. Ciemniejsze oznacza częstsze pomyłki. Szare pola mają mniej niż {minimum} zobaczonych figur.",
+        "note": "Na ciemniejszych polach mylisz się częściej. Szare pola mają mniej niż {minimum} zobaczonych figur.",
+        "lines": "Dopóki każde pole nie ma {minimum} zobaczonych figur, mapa pokazuje całe kolumny i rzędy.",
+        "files": "Kolumny",
+        "ranks": "Rzędy",
+        "line": "{line}: pomyłki w {missed} z {shown}",
+        "lineThin": "{line}: zobaczono {shown}, za mało do oceny"
+      },
+      "insights": {
+        "title": "Spostrzeżenia",
+        "desc": "Wzorce w twoich wynikach, nad którymi warto popracować, każdy z liczbami, które za nim stoją.",
+        "none": "Na razie nic się nie wyróżnia. Graj dalej.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {W kolumnach a i h mylisz {edge, select, 0 {poniżej 1%} other {{edge}%}} z {edgeShown} figur, a w kolumnach centralnych, d i e, żadnej z {centreShown}.} 2 {Mylisz się w kolumnach a i h mniej więcej dwa razy częściej niż w kolumnach centralnych, d i e: {edge, select, 0 {poniżej 1%} other {{edge}%}} z {edgeShown} figur wobec {centre, select, 0 {poniżej 1%} other {{centre}%}} z {centreShown}.} other {Mylisz się w kolumnach a i h mniej więcej {times} razy częściej niż w kolumnach centralnych, d i e: {edge, select, 0 {poniżej 1%} other {{edge}%}} z {edgeShown} figur wobec {centre, select, 0 {poniżej 1%} other {{centre}%}} z {centreShown}.}}",
+          "weakType": "Spośród figur innych niż króle, widzianych co najmniej {minimum} razy, najczęściej umykają ci {type, select, q {hetmany} r {wieże} b {gońce} n {skoczki} other {pionki}}: zapamiętano {recalled} z {shown}, {percent}%.",
+          "fasterLessAccurate": "Przy {pieceCount} figurach, {studyTime}, ostatnie rundy ({window}) zajęły ci o {fasterTime} mniej na poprawną figurę niż {window} wcześniejszych, a dokładność spadła o {fell} pkt.",
+          "colourGap": "{weaker, select, w {Białe} other {Czarne}} figury zapamiętujesz rzadziej niż {weaker, select, w {czarne} other {białe}}: {weakerPercent}% z {weakerShown} wobec {strongerPercent}% z {strongerShown}, bez królów.",
+          "plateau": "Przy {pieceCount} figurach, {studyTime}, ostatnie rundy ({window}) dały średnio {last}%, a {window} wcześniejszych {before}%, a twój zakres utrzymał się na {span} figurach przez ostatni tydzień gry. Jedna figura więcej może go ruszyć."
+        },
+        "actions": {
+          "rig": "Zagraj {pieceCount} figur, {studyTime}",
+          "patterns": "Przeczytaj ćwiczenia z rozpoznawania wzorców",
+          "vision": "Przeczytaj, jak widzieć całą planszę"
+        }
+      }
+    },
+    "share": {
+      "button": "Udostępnij moje postępy",
+      "locked": "Po pierwszej rundzie Twoja karta pokaże tutaj Twoje najlepsze wyniki.",
+      "text": "Moje postępy w Memory Chess: {figures}. Pobijesz to?",
+      "figure": {
+        "span": "zakres pamięci {value, plural, one {# figura} few {# figury} many {# figur} other {# figury}}",
+        "rating": "ocena umiejętności {value, number}",
+        "piecesHeld": "{value, number} figury w pamięci",
+        "speed": "{value, number} s na figurę",
+        "streak": "{value, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} z rzędu",
+        "bestAccuracy": "najlepsza dokładność {value, number}%",
+        "recentAccuracy": "ostatnia dokładność {value, number}%",
+        "studyTime": "czas na zapamiętanie {value, number} s na figurę",
+        "rebuildTime": "czas ustawiania {value, number} s na figurę",
+        "winStreak": "seria wygranych: {value, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}",
+        "rounds": "{value, plural, one {# rozegrana runda} few {# rozegrane rundy} many {# rozegranych rund} other {# rozegranej rundy}}",
+        "days": "{value, plural, one {# dzień gry} few {# dni gry} many {# dni gry} other {# dnia gry}}"
+      },
+      "card": {
+        "kicker": "Dziennik laboratorium",
+        "rounds": "{count, plural, one {# rozegrana runda} few {# rozegrane rundy} many {# rozegranych rund} other {# rozegranej rundy}}",
+        "cta": "Pobijesz to?"
+      },
+      "lede": "Zrób obraz swojego dziennika, aby go opublikować, zapisać lub wysłać.",
+      "title": "Udostępnij swoje postępy",
+      "alt": "Karta postępów Memory Chess: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Twój panel po tej rundzie",
+      "from": "z {before}",
+      "new": "Nowe",
+      "level": "Bez zmian",
+      "open": "Otwórz swój panel",
+      "say": {
+        "up": "{label} {after}, w górę o {amount} z {before}, {verdict, select, better {lepiej} other {gorzej}}",
+        "down": "{label} {after}, w dół o {amount} z {before}, {verdict, select, better {lepiej} other {gorzej}}",
+        "level": "{label} {after}, bez zmian",
+        "new": "{label} {after}, nowe"
+      }
+    },
+    "trend": "{direction, select, up {Wzrost} other {Spadek}} o {amount} w ostatnich {window} rundach względem {window} wcześniejszych"
+  },
+  "share": {
+    "intro": "Udostępnij kartę, zapisz ją albo skopiuj do posta.",
+    "working": "Tworzenie karty.",
+    "shared": "Udostępniono.",
+    "failed": "Nie udało się tu utworzyć karty. Skopiuj zamiast tego tekst poniżej.",
+    "caption": "Tekst",
+    "copy": "Kopiuj tekst",
+    "copied": "Tekst skopiowany.",
+    "copyFailed": "Kopiowanie tu nie zadziałało. Tekst jest zaznaczony, skopiuj go samodzielnie.",
+    "close": "Zamknij",
+    "shareFailed": "Udostępnianie tu nie zadziałało. Pobierz lub skopiuj obraz.",
+    "downloaded": "Obraz pobrany.",
+    "imageCopied": "Obraz skopiowany. Wklej go do posta.",
+    "imageCopyFailed": "Ta przeglądarka nie skopiowała obrazu. Pobierz go zamiast tego.",
+    "opened": "Otwarto {network} w nowej karcie. Twoja karta pojawi się w podglądzie linku.",
+    "actions": {
+      "share": "Udostępnij",
+      "download": "Pobierz obraz",
+      "copyImage": "Kopiuj obraz"
+    },
+    "post": {
+      "title": "Opublikuj w",
+      "note": "Każdy link publikuje Twój tekst wraz z linkiem do karty, a X, Facebook, LinkedIn i pozostałe pokazują kartę w podglądzie linku. W przypadku Instagrama lub innych miejsc, które wymagają pliku obrazu, najpierw go pobierz lub skopiuj.",
+      "newTab": "(otwiera się w nowej karcie)"
+    }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Nie znaleziono strony",
+      "heading": "Ta strona nie istnieje.",
+      "body": "Link może być nieaktualny albo w adresie jest literówka. Możesz zagrać rundę lub wrócić na stronę główną."
+    },
+    "error": {
+      "title": "Coś poszło nie tak",
+      "heading": "Na tej stronie coś poszło nie tak.",
+      "body": "Twoje rundy i ustawienia są zapisane w tej przeglądarce i nic im się nie stało. Spróbuj ponownie lub wróć na stronę główną.",
+      "retry": "Spróbuj ponownie"
+    },
+    "play": "Zagraj rundę",
+    "home": "Przejdź na stronę główną"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} min",
+    "hoursLeft": "{hours} godz. {minutes} min",
+    "underMinute": "< 1 min",
+    "ready": "Dzisiejsza plansza · {pieceCount, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} · {seconds} s · zostało {timeLeft}",
+    "next": "Następna plansza za {timeLeft}",
+    "pending": "Dzisiejsza plansza",
+    "navReady": "{label}, dzisiejsza plansza dnia jest gotowa",
+    "cardTitle": "Dzisiejsza plansza dnia jest gotowa",
+    "cardSetting": "{pieceCount, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} i {seconds, plural, one {# sekunda} few {# sekundy} many {# sekund} other {# sekundy}} na zapamiętanie.",
+    "cardNote": "Dziś wszyscy grają na tej samej planszy, a ty masz jedną próbę.",
+    "play": "Zagraj dzisiejszą planszę"
+  },
+  "daily": {
+    "meta": {
+      "title": "Szachownica dnia do zapamiętania: jedna pozycja dla wszystkich",
+      "description": "Jedna szachowa pozycja do zapamiętania dziennie, taka sama dla każdego gracza. Przestudiuj ją raz, odtwórz i wskocz do dzisiejszej dziesiątki. Nowa szachownica pojawia się o północy UTC.",
+      "socialTitle": "Szachownica dnia w Memory Chess",
+      "socialDescription": "Dziś wszyscy dostają tę samą pozycję. Przestudiuj ją, odtwórz i sprawdź, które miejsce zajmiesz."
+    },
+    "round": {
+      "locked": "Dzisiejsza szachownica została już otwarta. Jedna próba dziennie gwarantuje uczciwą grę.",
+      "seeBoard": "Zobacz dzisiejszą szachownicę",
+      "chooseRound": "Zagraj kolejną rundę",
+      "join": "Dołącz do dzisiejszej szachownicy"
+    },
+    "page": {
+      "fig": "Szachownica dnia · {date}",
+      "title": "Jedna szachownica, taka sama dla wszystkich",
+      "lede": "Każdego dnia wszyscy gracze dostają jedną pozycję. Przestudiuj ją raz, odtwórz z pamięci, a potem dołącz do szachownicy dnia, żeby zobaczyć swoje miejsce.",
+      "resets": "Nowa szachownica o północy UTC",
+      "open": "Dzisiejsza szachownica jest otwarta",
+      "pieces": "{count, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}}",
+      "seconds": "{count} s na naukę",
+      "oneTry": "Jedna próba",
+      "hidden": "Ukryta, dopóki nie zagrasz",
+      "play": "Zagraj dzisiejszą szachownicę",
+      "streak": "{count, plural, one {Seria dzienna: # dzień} few {Seria dzienna: # dni} many {Seria dzienna: # dni} other {Seria dzienna: # dnia}}",
+      "unfinishedTitle": "Dzisiejsza próba została wykorzystana",
+      "unfinished": "Otwarto dzisiejszą szachownicę i opuszczono ją przed wynikiem. Jedna próba dziennie gwarantuje uczciwą grę, więc wróć po następną szachownicę.",
+      "result": "Twój wynik",
+      "score": "{correct} z {pieceCount} poprawnie",
+      "rebuild": "odtworzono w {seconds} s",
+      "gridAria": "Twoje pola: {correct} poprawnych, {wrong} ze złą bierką, {missed} pominiętych, {extra} dodatkowych",
+      "key": {
+        "c": "Dobrze",
+        "w": "Zła bierka",
+        "m": "Pominięta",
+        "x": "Dodatkowa"
+      },
+      "shareLabel": "Udostępnij bez zdradzania szachownicy",
+      "shareText": "Memory Chess, szachownica dnia {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Skopiuj wynik",
+      "copied": "Skopiowano",
+      "copyFailed": "Schowek odmówił dostępu. Zaznacz tekst poniżej i skopiuj go ręcznie.",
+      "joined": "Jesteś w dzisiejszej szachownicy",
+      "rank": "Miejsce {rank} z {total} dzisiaj",
+      "lateNote": "Twój wynik z wczorajszej szachownicy nie został jeszcze do niej dodany.",
+      "lateJoined": "Jesteś w szachownicy z tamtego dnia"
+    },
+    "join": {
+      "title": "Dołącz do dzisiejszej szachownicy",
+      "lateTitle": "Dołącz do szachownicy z tamtego dnia",
+      "name": "Nazwa",
+      "nameHint": "Od 4 do 16 znaków, widoczna przy Twoim wyniku.",
+      "nameShort": "Za krótka. Użyj co najmniej 4 znaków.",
+      "nameLong": "Za długa. Użyj najwyżej 16 znaków.",
+      "country": "Kraj",
+      "chooseCountry": "Wybierz kraj",
+      "from": {
+        "saved": "Zapisano na tym urządzeniu.",
+        "connection": "Na podstawie Twojego połączenia.",
+        "language": "Na podstawie języka przeglądarki.",
+        "none": "Wybierz kraj, który reprezentujesz."
+      },
+      "change": "Zmień",
+      "submit": "Dołącz do rankingu",
+      "submitting": "Dołączanie…",
+      "public": "Twoja nazwa, kraj, wynik i ranking są widoczne publicznie.",
+      "failed": "Nie udało się dołączyć do rankingu. Spróbuj ponownie.",
+      "noneRight": "Żadna bierka nie była na właściwym miejscu, więc ta próba nie trafi do rankingu. Następna szachownica pojawi się o północy UTC."
+    },
+    "board": {
+      "title": "Dzisiejsza dziesiątka",
+      "playedLike": "Dzisiejsza plansza grała jak {rating}",
+      "playedLikeNote": "Szacunek na podstawie wyników dzisiejszych graczy.",
+      "rank": "Miejsce",
+      "player": "Gracz",
+      "right": "Dobrze",
+      "wrong": "Źle",
+      "time": "Czas (s)",
+      "rating": "{rating} Elo",
+      "you": "Ty",
+      "empty": "Nikt jeszcze nie dołączył do dzisiejszej szachownicy. Zagraj i bądź pierwszy.",
+      "error": "Nie udało się wczytać dzisiejszej szachownicy. Spróbuj ponownie za chwilę.",
+      "joinToRank": "Dołącz do rankingu, żeby zobaczyć tutaj swoje miejsce.",
+      "order": "Kolejność: najwięcej poprawnych bierek, potem najmniej błędnych, potem najszybsze odtworzenie.",
+      "all": "Zobacz wszystkie szachownice"
+    },
+    "reference": {
+      "title": "Jak działa szachownica dnia",
+      "shared": "Każdego dnia o północy UTC losowana jest nowa pozycja i każdy gracz na świecie dostaje tę samą. Pozycja powstaje z ziarna utworzonego z daty, więc szachownica jest taka sama dla wszystkich i nikt nie dostanie łatwiejszej wersji. Ponieważ szachownica jest wspólna, wynik oznacza to samo dla wszystkich, którzy zagrali ją tego dnia.",
+      "oneTry": "Masz jedną próbę. Otwarcie szachownicy liczy się jako próba, więc wyjście w trakcie nauki i powrót nie pokaże jej drugi raz. Twoje urządzenie pamięta próbę do czasu otwarcia następnej szachownicy.",
+      "grid": "Po odtworzeniu pozycji zobaczysz, które pola trafiłeś, na których stała zła bierka, które pominąłeś i gdzie postawiłeś dodatkową bierkę. Wiersz do udostępnienia zawiera jedno pole na bierkę, ułożone według wyniku, bez informacji o tym, gdzie stała, więc jego wklejenie nie zdradza szachownicy komuś, kto jeszcze nie grał.",
+      "join": "Aby dołączyć do rankingu, wybierz nazwę od 4 do 16 znaków i kraj, który reprezentujesz. Kraj jest ustawiany najpierw na podstawie poprzedniego wyboru, potem połączenia, a na końcu języka przeglądarki, i zawsze możesz go zmienić. Twój ranking w chwili dołączenia widać obok nazwy.",
+      "ranking": "Wiersze są uporządkowane według liczby poprawnie ustawionych bierek, potem najmniejszej liczby błędnych bierek, a na końcu najszybszego odtworzenia. Wszyscy uczą się przez tyle samo sekund, więc czas nauki nigdy nie rozstrzyga między dwoma graczami na szachownicy dnia.",
+      "arcTitle": "Bierki i czas nauki w ciągu tygodnia",
+      "arcIntro": "Ustawienia zmieniają się według tygodniowego schematu. Poniedziałek zaczyna się łagodnie, żeby weekendowa przerwa nie kończyła serii, trudność rośnie przez cały tydzień, sobota to szybka szachownica widoczna tylko przez kilka sekund, a niedziela to najtrudniejsza szachownica ze wszystkich. W zakresie każdego dnia data wybiera jedno ustawienie, takie samo dla wszystkich graczy.",
+      "day": "Dzień",
+      "pieces": "Bierki",
+      "seconds": "Czas nauki",
+      "range": "od {min} do {max}",
+      "secondsRange": "od {min} do {max} s",
+      "secondsExact": "{count} s"
     }
   }
 }

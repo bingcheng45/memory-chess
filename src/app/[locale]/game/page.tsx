@@ -1,95 +1,68 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
-import { useRouter } from "@/i18n/navigation";
+import { lazy, Suspense, useState, useEffect, useLayoutEffect, useRef } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
-import { GamePhase } from '@/lib/types/game';
 import GameConfig from '@/components/game/GameConfig';
 import GameResult from '@/components/game/GameResult';
-import GameStats from '@/components/game/GameStats';
+import ActiveRound from '@/components/game/ActiveRound';
 import ErrorBoundary from '@/components/ui/ErrorBoundary';
+import SoundSettings from '@/components/ui/SoundSettings';
+import { LabPaperHeader } from '@/components/lab-paper/LabPaperHeader';
+import { LAB_PAPER_CLASS } from '@/components/lab-paper/shell';
 import { playSound, stopTimerSound } from '@/lib/utils/soundEffects';
-import { useSoundEffects } from '@/hooks/useSoundEffects';
-import { Chess } from 'chess.js';
-import { v4 as uuidv4 } from 'uuid';
-import { ChessPiece, PieceType } from '@/types/chess';
-import { pieceTypeToFenChar } from '@/utils/chessPieces';
-import { Button } from "@/components/ui/button";
-import ResponsiveMemorizationBoard from '@/components/game/ResponsiveMemorizationBoard';
-import ResponsiveInteractiveBoard from '@/components/game/ResponsiveInteractiveBoard';
-import { formatTimeWithMilliseconds } from '@/utils/timer';
-import { elapsedMs, now, subscribe, type Monotonic } from '@/lib/game/clock';
-import PageHeader from '@/components/ui/PageHeader';
-import { MAX_BOARD_SIZE_PX, PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
-import GameSubmissionFlash, { GAME_SUBMISSION_FLASH_DURATION_MS } from '@/components/game/GameSubmissionFlash';
+import { useRoundSounds } from '@/hooks/useRoundSounds';
+import { PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
-import { trackEvent } from '@/lib/analytics/events';
+import { warmResultDeltas } from '@/components/game/resultDeltasWarm';
+import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
+import { ROUND_PARAMS } from '@/lib/game/roundLink';
+import { GAME_CONFIG_RULES, parseGameSettings } from '@/lib/game/configPrefill';
+import '@/components/game/game-lab.css';
+// Loaded with the page, not with the result figures the round warms: Next commits a stylesheet a lazy chunk brings
+// through React, which holds the round's next render, the one that sizes the board, until the file arrives.
+import '@/components/dashboard/trend.css';
 
-import { useTranslations } from "next-intl";
+import type { SetBoard } from '@/lib/types/game';
+import type { SetBoardRefusal } from '@/components/game/SetBoardNotice';
 
-const TIMER_CUE_DELAY_MS = 500;
+const SetBoardNotice = lazy(() => import('@/components/game/SetBoardNotice'));
 
-type UrlRound = { pieceCount: number; memorizeTime: number };
+type SetBoardSource = 'daily' | 'review';
+const isSetBoardSource = (source: RoundSource): source is SetBoardSource => source === 'daily' || source === 'review';
 
-// The query is read off the live location rather than via useSearchParams,
-// which would bail /game out of static rendering and serve an empty page.
-function takeUrlRound(): UrlRound | null {
-  const params = new URLSearchParams(window.location.search);
-  const pieceCountParam = params.get('pieceCount');
-  const memorizeTimeParam = params.get('memorizeTime');
-  if (!pieceCountParam && !memorizeTimeParam) return null;
+/** What a set board's link opens: its round, with the marker to write once that round starts, or a refusal. */
+type SetBoardOpen =
+  | { kind: 'play'; pieceCount: number; memorizeTime: number; board: SetBoard; markOpened: () => void }
+  | { kind: 'refused'; reason: SetBoardRefusal }
+  | null;
 
-  // A refresh then opens the configuration screen instead of restarting the round.
-  params.delete('pieceCount');
-  params.delete('memorizeTime');
-  const query = params.toString();
-  window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
+// Each reads the lab record before the round, and is loaded only for its own link.
+const OPEN_SET_BOARD: Record<SetBoardSource, () => Promise<SetBoardOpen>> = {
+  daily: () =>
+    import('@/lib/lab/dailyBoard').then(async ({ openDaily, markDailyOpened }) => {
+      const daily = await openDaily(Date.now());
+      if (!daily) return null;
+      return daily.kind === 'played' ? { kind: 'refused', reason: 'daily' } : { ...daily, markOpened: () => markDailyOpened(daily.board.day) };
+    }),
+  review: () =>
+    import('@/lib/lab/reviewBoard').then(async ({ openReview, markReviewOpened }) => {
+      const review = await openReview(Date.now());
+      if (review.kind !== 'play') return { kind: 'refused', reason: review.kind === 'capped' ? 'reviewCap' : 'review' };
+      return { ...review, markOpened: () => markReviewOpened(review.board) };
+    }),
+};
 
-  return {
-    pieceCount: pieceCountParam ? parseInt(pieceCountParam) : 8,
-    memorizeTime: memorizeTimeParam ? parseInt(memorizeTimeParam) : 10,
-  };
-}
-
-// Component to handle URL parameters
-function GamePageContent() {
-  const t = useTranslations("game");
-  const router = useRouter();
-
-  // Initialize sound effects hook to handle sound based on game state changes
-  useSoundEffects();
-
-  const {
-    gameState, 
-    gamePhase, 
-    startGame, 
-    resetGame, 
-    startMemorizationPhase,
-    submitSolution,
-    placePiece,
-    removePiece,
-    chess
-  } = useGameStore();
-  
-  const [solutionPieces, setSolutionPieces] = useState<ChessPiece[]>([]);
-  const [isSubmissionFlashVisible, setIsSubmissionFlashVisible] = useState(false);
-  const solutionStartRef = useRef<Monotonic | null>(null);
-  const countUpRef = useRef<HTMLDivElement>(null);
-  const timerWarningPlayedRef = useRef(false);
-  const timerCuePlayedRef = useRef(false);
-  const submissionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  // Memorising and placing are played without scrolling: the board is sized
-  // from the room that is actually left, so the screen holds exactly what
-  // fits. Configuration and the result page are ordinary scrolling pages.
-  const isActivePhase =
-    gamePhase === GamePhase.MEMORIZATION || gamePhase === GamePhase.SOLUTION;
-
-  useEffect(() => {
-    if (!isActivePhase) return;
-
-    // Pinning the scrolling element, rather than only hiding its overflow,
-    // is what stops iOS rubber-banding a page whose content already fits.
+/**
+ * Pins the page while a round is memorised or placed. Pinning the scrolling
+ * element, rather than only hiding its overflow, is what stops iOS
+ * rubber-banding a page whose content already fits.
+ *
+ * The pin is what gives the board its full height, so it goes on in a layout
+ * effect, before the first paint. Pinned any later, the board is laid out on
+ * the unpinned page, at its floor, and then grows.
+ */
+function PinnedPage() {
+  useLayoutEffect(() => {
     const { documentElement, body } = document;
     documentElement.classList.add('game-fixed');
     body.classList.add('game-fixed');
@@ -98,342 +71,218 @@ function GamePageContent() {
       documentElement.classList.remove('game-fixed');
       body.classList.remove('game-fixed');
     };
-  }, [isActivePhase]);
+  }, []);
+
+  return null;
+}
+
+type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource };
+
+// The query is read off the live location rather than via useSearchParams,
+// which would bail /game out of static rendering and serve an empty page.
+function takeUrlRound(): UrlRound | null {
+  const params = new URLSearchParams(window.location.search);
+  const pieceCountParam = params.get(ROUND_PARAMS.pieceCount);
+  const memorizeTimeParam = params.get(ROUND_PARAMS.memorizeTime);
+  if (!pieceCountParam && !memorizeTimeParam) return null;
+
+  const source = roundSourceFrom(params.get(ROUND_PARAMS.source));
+  // A refresh then opens the configuration screen instead of restarting the round.
+  Object.values(ROUND_PARAMS).forEach((name) => params.delete(name));
+  const query = params.toString();
+  window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
+
+  const settings = parseGameSettings(
+    {
+      pieceCount: pieceCountParam ? parseInt(pieceCountParam) : 8,
+      memorizeTime: memorizeTimeParam ? parseInt(memorizeTimeParam) : 10,
+    },
+    GAME_CONFIG_RULES,
+  );
+  return settings && { ...settings, source };
+}
+
+function GamePageContent() {
+  const round = useGameStore((state) => state.round);
+  const gameState = useGameStore((state) => state.gameState);
+  const startGame = useGameStore((state) => state.startGame);
+  const resetGame = useGameStore((state) => state.resetGame);
+  const submitSolution = useGameStore((state) => state.submitSolution);
+  useRoundSounds(round);
+
+  // Memorising and placing are played without scrolling: the board is sized
+  // from the room that is actually left, so the screen holds exactly what
+  // fits. Configuration and the result page are ordinary scrolling pages.
+  const isActivePhase = round.phase === 'study' || round.phase === 'rebuild';
 
   useEffect(() => {
     // Clean up game state when leaving
     return () => {
       stopTimerSound(); // Stop any timer sound when leaving the page
-      if (submissionTimeoutRef.current) {
-        clearTimeout(submissionTimeoutRef.current);
-      }
       resetGame();
     };
   }, [resetGame]);
-  
+
   // StrictMode re-runs this effect after the cleanup above has reset the store,
   // by which time the URL is cleared, so the round is kept for the second run.
   const urlRoundRef = useRef<UrlRound | null | undefined>(undefined);
+  const [refused, setRefused] = useState<SetBoardRefusal | null>(null);
+  // A round the player starts by hand wins over a set board still being read.
+  const startedByHandRef = useRef(false);
 
   useEffect(() => {
     if (urlRoundRef.current === undefined) urlRoundRef.current = takeUrlRound();
-    const round = urlRoundRef.current;
-    if (round) startGame(round.pieceCount, round.memorizeTime);
-  }, [startGame]);
-  
-  useEffect(() => {
-    if (gamePhase === GamePhase.MEMORIZATION) {
-      warmLeaderboardCutoffs();
-      const { pieceCount, memorizeTime } = useGameStore.getState().gameState;
-      trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime } });
-    }
-  }, [gamePhase]);
-  
-  // Start memorization phase when game is started
-  useEffect(() => {
-    if (gameState.isPlaying && gamePhase === GamePhase.CONFIGURATION) {
-      playSound('success');
-      startMemorizationPhase();
-      timerCuePlayedRef.current = false;
-    }
-  }, [gameState.isPlaying, gamePhase, startMemorizationPhase]);
-
-  // The memorization deadline belongs to ResponsiveMemorizationBoard, which ends
-  // the phase from the same frame that paints the countdown's last value. Only
-  // the opening sound cue is left here.
-  useEffect(() => {
-    if (!gameState.isMemorizationPhase) return;
-
-    timerWarningPlayedRef.current = false;
-    if (timerCuePlayedRef.current) return;
-
-    // Late enough that the success sound has finished.
-    const cue = setTimeout(() => {
-      playSound('timer');
-      timerCuePlayedRef.current = true;
-    }, TIMER_CUE_DELAY_MS);
-
-    return () => {
-      clearTimeout(cue);
-    };
-  }, [gameState.isMemorizationPhase]);
-
-  // Reset solution pieces when entering solution phase
-  useEffect(() => {
-    if (gamePhase === GamePhase.SOLUTION) {
-      setSolutionPieces([]);
-    }
-  }, [gamePhase]);
-  
-  // Track elapsed time during solution phase. The flash pause simply drops the
-  // subscription, which leaves the last painted value on screen.
-  useEffect(() => {
-    if (!gameState.isSolutionPhase) {
-      stopTimerSound();
-      solutionStartRef.current = null;
+    const urlRound = urlRoundRef.current;
+    if (!urlRound) return;
+    const { source } = urlRound;
+    if (!isSetBoardSource(source)) {
+      startGame(urlRound.pieceCount, urlRound.memorizeTime, source);
       return;
     }
-    if (isSubmissionFlashVisible) return;
 
-    if (solutionStartRef.current === null) solutionStartRef.current = now();
-    const startedAt = solutionStartRef.current;
-    const warnAtMs = Math.floor(gameState.memorizeTime * 0.75) * 1000;
-
-    return subscribe((at) => {
-      const elapsed = elapsedMs(startedAt, at);
-
-      if (countUpRef.current) {
-        countUpRef.current.textContent = formatTimeWithMilliseconds(elapsed / 1000);
-      }
-      if (!timerWarningPlayedRef.current && elapsed >= warnAtMs) {
-        timerWarningPlayedRef.current = true;
-        playSound('timer');
-      }
-    });
-  }, [gameState.isSolutionPhase, gameState.memorizeTime, isSubmissionFlashVisible]);
-
-  // Handle submitting the solution
-  const handleSubmitSolution = () => {
-    if (isSubmissionFlashVisible) return;
-
-    stopTimerSound(); // Stop any playing timer sound
-    playSound('click');
-    const startedAt = solutionStartRef.current;
-    const frozenElapsedTime = startedAt === null ? 0 : elapsedMs(startedAt, now()) / 1000;
-    if (countUpRef.current) {
-      countUpRef.current.textContent = formatTimeWithMilliseconds(frozenElapsedTime);
-    }
-    setIsSubmissionFlashVisible(true);
-
-    submissionTimeoutRef.current = setTimeout(() => {
-      submissionTimeoutRef.current = null;
-      submitSolution(frozenElapsedTime);
-      setIsSubmissionFlashVisible(false);
-    }, GAME_SUBMISSION_FLASH_DURATION_MS);
-  };
-  
-  // Handle trying again with the same configuration
-  const handleTryAgain = () => {
-    console.log('Trying again with same configuration');
-    stopTimerSound(); // Stop any playing timer sound
-    playSound('click');
-    resetGame();
-    startGame(gameState.pieceCount, gameState.memorizeTime);
-  };
-  
-  // Handle starting a new game with different configuration
-  const handleNewGame = () => {
-    console.log('Starting new game with different configuration');
-    stopTimerSound(); // Stop any playing timer sound
-    playSound('click');
-    resetGame();
-  };
-  
-  // Handle starting the game from configuration
-  const handleStartGame = (pieceCount: number, memorizeTime: number) => {
-    console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
-    playSound('click');
-    startGame(pieceCount, memorizeTime);
-  };
-  
-  // Handle back button
-  const handleBack = () => {
-    stopTimerSound(); // Stop any playing timer sound
-    router.push('/');
-  };
-  
-  // Add this helper function to convert chess.js board to ChessPiece array
-  // Currently not used as we start with an empty board in solution phase,
-  // but kept for future reference if we need to pre-populate the board
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  function chessToPieces(chess: Chess | null): ChessPiece[] {
-    if (!chess) return [];
-    
-    const pieces: ChessPiece[] = [];
-    const board = chess.board();
-    
-    for (let rank = 0; rank < 8; rank++) {
-      for (let file = 0; file < 8; file++) {
-        const square = board[rank][file];
-        if (square) {
-          pieces.push({
-            id: uuidv4(),
-            type: square.type as PieceType,
-            color: square.color === 'w' ? 'white' : 'black',
-            position: { file, rank }
-          });
+    // StrictMode runs this twice; only the live run marks the board opened, or the second read would refuse it.
+    let live = true;
+    OPEN_SET_BOARD[source]()
+      .then((opened) => {
+        if (!live || !opened || startedByHandRef.current) return;
+        if (opened.kind === 'refused') {
+          setRefused(opened.reason);
+          return;
         }
-      }
-    }
-    
-    return pieces;
-  }
-  
-  // Add a useEffect to log the chess instance when it changes
+        opened.markOpened();
+        startGame(opened.pieceCount, opened.memorizeTime, source, opened.board);
+      })
+      .catch((error) => console.error(`Could not open the ${source} board`, error));
+    return () => {
+      live = false;
+    };
+  }, [startGame]);
+
   useEffect(() => {
-    console.log('Chess instance updated:', chess);
-  }, [chess]);
-  
-  // Render the appropriate content based on game phase
+    if (round.phase !== 'study') return;
+    warmLeaderboardCutoffs();
+    warmResultDeltas();
+  }, [round.phase]);
+
+  const handleSubmitSolution = () => {
+    stopTimerSound();
+    playSound('click');
+    submitSolution();
+  };
+
+  const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
+    startedByHandRef.current = true;
+    setRefused(null);
+    stopTimerSound();
+    playSound('click');
+    resetGame();
+    startGame(pieceCount, memorizeTime, source);
+  };
+
+  const handleTryAgain = () => handlePlay(gameState.pieceCount, gameState.memorizeTime, 'try_again');
+
+  const handleNewGame = () => {
+    stopTimerSound(); // Stop any playing timer sound
+    playSound('click');
+    resetGame();
+  };
+
+  const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
+    playSound('click');
+    startedByHandRef.current = true;
+    startGame(pieceCount, memorizeTime, source);
+  };
+
   const renderGameContent = () => {
-    console.log('Rendering game content for phase:', gamePhase);
-    
-    // Shared container for consistent width and centering across all phases.
-    // The active phases also take the full height they are given, so the board
-    // can be sized from the space left over instead of from a guess at how
-    // tall everything else is.
     const containerClass = "w-full max-w-4xl mx-auto flex flex-col items-center justify-center";
     // `flex-1` without `min-h-0`: the wrapper still takes the leftover
     // height, but no longer shrinks below what ActiveGameLayout says the
     // board needs. On a viewport too short for that floor it overflows, and
     // `main` below scrolls to it.
     const activePhaseClass = `${containerClass} flex-1`;
-    
-    switch (gamePhase) {
-      case GamePhase.CONFIGURATION:
+
+    switch (round.phase) {
+      case 'idle':
         return (
           <div className={containerClass}>
-            <ErrorBoundary>
-              <GameConfig onStart={handleStartGame} />
-            </ErrorBoundary>
-            {gameState.completionTime !== undefined && (
-              <div className="mt-8 w-full max-w-md md:max-w-lg mx-auto">
-                <ErrorBoundary>
-                  <GameStats />
-                </ErrorBoundary>
-              </div>
+            {/* In the configuration form's place, so nothing above or beside it moves when it appears. */}
+            {refused ? (
+              <ErrorBoundary fallback={<GameConfig onStart={handleStartGame} />}>
+                <Suspense fallback={<GameConfig onStart={handleStartGame} />}>
+                  <SetBoardNotice reason={refused} onChoose={() => setRefused(null)} />
+                </Suspense>
+              </ErrorBoundary>
+            ) : (
+              <ErrorBoundary>
+                <GameConfig onStart={handleStartGame} />
+              </ErrorBoundary>
             )}
           </div>
         );
-        
-      case GamePhase.MEMORIZATION:
-        return (
-          <div className={activePhaseClass}>
-            <ErrorBoundary>
-              <ResponsiveMemorizationBoard />
-            </ErrorBoundary>
-          </div>
-        );
-        
-      case GamePhase.SOLUTION:
-        return (
-          <div className={activePhaseClass}>
-            <ErrorBoundary>
-              <ResponsiveInteractiveBoard
-                status={
-                  <div className="relative flex h-full items-center justify-center px-3 sm:px-4">
-                    <div className="text-center text-sm font-medium sm:text-base">{t("hud.time")}<div
-                        ref={countUpRef}
-                        className="font-mono text-2xl font-bold leading-tight sm:text-3xl"
-                      >
-                        {formatTimeWithMilliseconds(0)}
-                      </div>
-                    </div>
 
-                    <Button
-                      onClick={handleSubmitSolution}
-                      disabled={isSubmissionFlashVisible}
-                      variant="outline"
-                      size="sm"
-                      className="absolute right-0 top-1/2 h-9 -translate-y-1/2 border-peach-500/30 bg-peach-500/10 px-3 text-sm text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
-                    >{t("hud.submit")}</Button>
-                  </div>
-                }
-                playerSolution={solutionPieces}
-                onPlacePiece={(piece) => {
-                  setSolutionPieces(prev => [...prev, piece]);
-                  // Convert ChessPiece to chess.js format for the game store
-                  const square = `${String.fromCharCode(97 + piece.position.file)}${piece.position.rank + 1}`;
-                  const pieceCode = pieceTypeToFenChar(piece.type, piece.color);
-                  placePiece(square, pieceCode);
-                }}
-                onRemovePiece={(position) => {
-                  setSolutionPieces(prev =>
-                    prev.filter(p =>
-                      p.position.file !== position.file || p.position.rank !== position.rank
-                    )
-                  );
-                  // Convert Position to chess.js format
-                  const square = `${String.fromCharCode(97 + position.file)}${position.rank + 1}`;
-                  removePiece(square);
-                }}
-              />
+      case 'study':
+      case 'rebuild':
+        return (
+          <div className={activePhaseClass}>
+            <ErrorBoundary>
+              <ActiveRound round={round} onRestart={handleTryAgain} onSubmit={handleSubmitSolution} />
             </ErrorBoundary>
           </div>
         );
 
-      case GamePhase.RESULT:
+      case 'scored':
         return (
           <div className={containerClass}>
             <ErrorBoundary>
-              <GameResult onTryAgain={handleTryAgain} onNewGame={handleNewGame} />
-            </ErrorBoundary>
-          </div>
-        );
-        
-      default:
-        return (
-          <div className={containerClass}>
-            <ErrorBoundary>
-              <GameConfig onStart={handleStartGame} />
+              <GameResult onTryAgain={handleTryAgain} onNewGame={handleNewGame} onPlay={handlePlay} />
             </ErrorBoundary>
           </div>
         );
     }
   };
-  
+
   return (
-    <main
-      className={`bg-bg-dark text-text-primary ${
-        isActivePhase
-          ? // Where the game fits, this scrolls no more than the clipped
-            // version did -- there is nothing to scroll to. Where it does not
-            // fit, this is the only way to reach the board.
-            //
-            // `main` is the scrolling element, so a drag inside it is settled
-            // by the touch-action stated here: the browser intersects
-            // touch-action from the touched node up to the first containing
-            // scroller and stops there, leaving the document's own refusal
-            // (globals.css) intact for everything outside. `overscroll-contain`
-            // keeps the bounce from chaining out to that document.
-            'min-h-0 flex-1 overflow-y-auto overscroll-contain [touch-action:pan-y_pinch-zoom]'
-          : PAGE_BELOW_BANNER_MIN_HEIGHT
-      }`}
-    >
-      {isSubmissionFlashVisible && <GameSubmissionFlash />}
-
-      {/*
-        `h-full`, not `min-h-full`. A minimum does not make a height definite,
-        and everything below here asks for a percentage of it: the column's
-        own `h-full`, and the board area it hands the board. Under a minimum
-        those resolve to `auto`, the column falls to its floor, and the board
-        area lands on exactly MIN_BOARD_SIZE however much room the screen has
-        -- which then sets the width of the timer and palette rows.
-
-        A viewport too short for the column is still reachable: the column
-        overflows this box and `main` above scrolls to it.
-      */}
-      <div
-        className={`container mx-auto flex flex-col items-center justify-start px-2 py-2 sm:px-4 sm:py-4 ${
-          isActivePhase ? 'h-full' : PAGE_BELOW_BANNER_MIN_HEIGHT
-        }`}
+    <div className={`${LAB_PAPER_CLASS} lab-game`}>
+      {isActivePhase && <PinnedPage />}
+      <LabPaperHeader showPlay={false} tools={<SoundSettings className="lab-sound" />} />
+      <main
+        className={
+          isActivePhase
+            ? // Where the game fits, this scrolls no more than the clipped
+              // version did -- there is nothing to scroll to. Where it does not
+              // fit, this is the only way to reach the board.
+              //
+              // `main` is the scrolling element, so a drag inside it is settled
+              // by the touch-action stated here: the browser intersects
+              // touch-action from the touched node up to the first containing
+              // scroller and stops there, leaving the document's own refusal
+              // (globals.css) intact for everything outside. `overscroll-contain`
+              // keeps the bounce from chaining out to that document.
+              'min-h-0 flex-1 overflow-y-auto overscroll-contain [touch-action:pan-y_pinch-zoom]'
+            : PAGE_BELOW_BANNER_MIN_HEIGHT
+        }
       >
-        <PageHeader
-          onBackClick={handleBack}
-          // 'other', not 'game-config' or 'game-result': those move the
-          // controls inward, and this header is already held to the board's width.
-          pageType={isActivePhase ? 'game-memorize-solution' : 'other'}
-          className="!mb-3"
-          style={{
-            maxWidth: MAX_BOARD_SIZE_PX
-          }}
-        />
+        {/*
+          `h-full`, not `min-h-full`. A minimum does not make a height definite,
+          and everything below here asks for a percentage of it: the column's
+          own `h-full`, and the board area it hands the board. Under a minimum
+          those resolve to `auto`, the column falls to its floor, and the board
+          area lands on exactly MIN_BOARD_SIZE however much room the screen has.
 
-        <ErrorBoundary>
-          {renderGameContent()}
-        </ErrorBoundary>
-      </div>
-    </main>
+          A viewport too short for the column is still reachable: the column
+          overflows this box and `main` above scrolls to it.
+        */}
+        <div
+          className={`container mx-auto flex flex-col items-center justify-start ${
+            isActivePhase ? 'h-full px-4 py-2' : `${PAGE_BELOW_BANNER_MIN_HEIGHT} px-4 py-8 sm:py-12`
+          }`}
+        >
+          <ErrorBoundary>
+            {renderGameContent()}
+          </ErrorBoundary>
+        </div>
+      </main>
+    </div>
   );
 }
 

@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { persist } from 'zustand/middleware';
-import { Chess, PieceSymbol, Square } from 'chess.js';
-import { GameState, GameHistory, GamePhase, DIFFICULTY_LEVELS, DifficultyLevel } from '@/lib/types/game';
+import { GameState, GameHistory, DIFFICULTY_LEVELS, DifficultyLevel, type SetBoard } from '@/lib/types/game';
 import { generateMemorizationPosition } from '@/lib/utils/memorizationPosition';
 import { v4 as uuidv4 } from 'uuid';
 import {
@@ -10,9 +9,36 @@ import {
   parseGameSettings,
   type GameSettings,
 } from '@/lib/game/configPrefill';
+import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
+import { trackEvent, type RoundSource } from '@/lib/analytics/events';
+import type { LabRound } from '@/lib/lab/recordRound';
+import { now as monotonicNow } from '@/lib/game/clock';
+import {
+  isSkillRating,
+  MAX_SKILL_RATING,
+  NEW_PLAYER,
+  parseCertainty,
+  parseRatedRoundFacts,
+  replay,
+  START_RATING,
+  WIN_ACCURACY,
+  type PlayerRating,
+  type RatedRoundFacts,
+} from "@/lib/game/rating";
+import { outcomeEffects, roundOutcomeOf } from "@/lib/game/roundOutcome";
+import { localDayOf } from "@/lib/lab/record";
+import { isSoundEnabled } from '@/lib/utils/soundEffects';
+import {
+  IDLE_ROUND,
+  labPositionFromFen,
+  labPositionToFen,
+  roundReducer,
+  type RoundAction,
+  type RoundState,
+} from '@/lib/round/round';
 
 // Extended GameState type with skillRatingChange
-type GameStateWithRating = GameState & { 
+type GameStateWithRating = GameState & {
   skillRatingChange?: number;
   wrongPieces?: number;
   extraPieces?: number;
@@ -20,162 +46,57 @@ type GameStateWithRating = GameState & {
   correctPlacements?: number;
 };
 
+/** The suffix chess.js gave the solution board's FEN, kept so the lab record's placed FEN reads as it always has. */
+const SOLUTION_FEN_SUFFIX = ' w - - 0 1';
+
+/** The newest rated rounds kept in the persisted history. A review or a free skip is left out, as it is from the rating and the streak. */
+const HISTORY_LIMIT = 30;
+
+/**
+ * The persisted shape's version. Version 1 replaced a rating that only went up with an Elo rating, so a rating stored
+ * before it starts again from START_RATING. Version 2 added the free-skip day, which starts unspent. Version 3 gave the
+ * rating its uncertainty, found by replaying the stored rated rounds.
+ */
+const STORE_VERSION = 3;
+const RATING_RESET_VERSION = 1;
+
+const LOCAL_DAY = /^\d{4}-\d{2}-\d{2}$/;
+const parseLocalDay = (value: unknown): string | null => (typeof value === 'string' && LOCAL_DAY.test(value) ? value : null);
+
+export { WIN_ACCURACY };
+
+const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
+
 interface GameStore {
-  // Game state
   gameState: GameState;
   lastSettings: GameSettings | null;
-  gamePhase: GamePhase;
   history: GameHistory[];
-  chess: Chess | null;
-  memorizationChess: Chess | null; // Chess instance for the position to memorize
-  
-  // Actions
-  startGame: (pieceCount: number, memorizeTime: number) => void;
-  stopGame: () => void;
-  makeMove: (move: string) => boolean;
+  /** The local day the last free skip was used: that day's first empty board, which leaves the rating alone. */
+  freeSkipDay: string | null;
+  /** How sure the game is of `gameState.skillRating`, which together with it is the player's rating. */
+  certainty: Omit<PlayerRating, 'rating'>;
+  /** The round being played, run by the shared round reducer. Never persisted. */
+  round: RoundState;
+
+  startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
+  /** Done, the study deadline, the palette, the board and the eraser. Submit goes through submitSolution. */
+  dispatch: (action: Exclude<RoundAction, { type: 'start' } | { type: 'submit' }>) => void;
+  submitSolution: (now?: number) => void;
   resetGame: () => void;
-  addToHistory: (game: Omit<GameHistory, 'id'>) => void;
-  
-  // Memory game specific actions
-  startMemorizationPhase: () => void;
-  endMemorizationPhase: (actualMemorizeTimeOverride?: number) => void;
-  startSolutionPhase: () => void;
-  submitSolution: (completionTimeOverride?: number) => void;
-  placePiece: (square: string, piece: string) => void;
-  removePiece: (square: string) => void;
-  
-  // Stats and progression (kept because they're used in game components)
-  getTotalGames: () => number;
-  getBestTime: () => number;
-  getAverageAccuracy: () => number;
-  getHighestLevel: () => number;
+
   getSkillRating: () => number;
   getCurrentStreak: () => number;
-  getLongestStreak: () => number;
   getRecommendedDifficulty: () => DifficultyLevel;
-  calculateSkillRatingChange: (accuracy: number, pieceCount: number, completionTime: number) => number;
 }
 
 // Initial game state
 const initialGameState: GameState = {
-  isPlaying: false,
-  isMemorizationPhase: false,
-  isSolutionPhase: false,
   pieceCount: 8, // Default to 8 pieces
   memorizeTime: 10, // Default to 10 seconds
-  timeElapsed: 0,
   currentLevel: 1,
   level: 1,
-  skillRating: 1000, // Starting skill rating
+  skillRating: START_RATING,
   streak: 0,
-  moves: [], // Initialize empty moves array
-};
-
-// Initialize a chess instance outside the store to ensure it's created correctly
-let initialChess: Chess | null = null;
-try {
-  // Initialize with a minimal valid board (just kings)
-  initialChess = new Chess('4k3/8/8/8/8/8/8/4K3 w - - 0 1');
-} catch (error) {
-  console.error('Failed to initialize chess instance:', error);
-  initialChess = null;
-}
-
-// Define a type for chess.js move objects
-interface ChessMove {
-  from: string;
-  to: string;
-  promotion?: string;
-}
-
-// Function to calculate accuracy between two positions
-const calculateAccuracy = (originalFen: string, userFen: string): {
-  accuracy: number;
-  extraPieces: number;
-  totalPiecesPlaced: number;
-  correctPlacements: number;
-} => {
-  try {
-    // Extract piece placement part from FEN strings
-    const originalPieces = originalFen.split(' ')[0];
-    const userPieces = userFen.split(' ')[0];
-    
-    // Convert FEN to a map of pieces on squares
-    const getSquaresMap = (fen: string): Map<string, string> => {
-      const map = new Map<string, string>();
-      const rows = fen.split('/');
-      
-      rows.forEach((row, rowIndex) => {
-        let colIndex = 0;
-        for (let i = 0; i < row.length; i++) {
-          const char = row[i];
-          if (isNaN(parseInt(char))) {
-            // It's a piece
-            const square = `${String.fromCharCode(97 + colIndex)}${8 - rowIndex}`;
-            map.set(square, char);
-            colIndex++;
-          } else {
-            // It's a number, skip that many squares
-            colIndex += parseInt(char);
-          }
-        }
-      });
-      
-      return map;
-    };
-    
-    const originalMap = getSquaresMap(originalPieces);
-    const userMap = getSquaresMap(userPieces);
-    
-    // Count correct placements and total pieces
-    let correctPlacements = 0;
-    const totalOriginalPieces = originalMap.size;
-    const totalPiecesPlaced = userMap.size;
-    
-    // Check user placements against original
-    originalMap.forEach((piece, square) => {
-      if (userMap.get(square) === piece) {
-        correctPlacements++;
-      }
-    });
-    
-    // Calculate extra pieces (only count excess pieces)
-    const extraPieces = Math.max(0, totalPiecesPlaced - totalOriginalPieces);
-    
-    // Calculate base accuracy as a percentage
-    const baseAccuracy = Math.round((correctPlacements / totalOriginalPieces) * 100);
-    
-    // Apply penalty for extra pieces: -10% for each extra piece
-    const extraPiecesPenalty = extraPieces * 10;
-    
-    // Ensure accuracy doesn't go below 0%
-    const accuracy = Math.max(0, baseAccuracy - extraPiecesPenalty);
-    
-    console.log('Accuracy calculation:', {
-      totalOriginalPieces,
-      totalPiecesPlaced,
-      correctPlacements,
-      extraPieces,
-      baseAccuracy,
-      extraPiecesPenalty,
-      finalAccuracy: accuracy
-    });
-    
-    return {
-      accuracy,
-      extraPieces,
-      totalPiecesPlaced,
-      correctPlacements
-    };
-  } catch (error) {
-    console.error('Error calculating accuracy:', error);
-    return {
-      accuracy: 0,
-      extraPieces: 0,
-      totalPiecesPlaced: 0,
-      correctPlacements: 0
-    };
-  }
 };
 
 // Calculate time bonus based on completion time and actual memorize time
@@ -190,526 +111,229 @@ const calculateTimeBonus = (completionTime: number, memorizeTime: number, actual
   return 0;
 };
 
-// Calculate skill rating change based on performance
-const calculateSkillRatingChange = (
-  accuracy: number, 
-  pieceCount: number, 
-  completionTime: number, 
-  memorizeTime: number,
-  currentRating: number,
-  actualMemorizeTime?: number
-): number => {
-  // Base points for accuracy
-  let points = 0;
-  
-  // Points for accuracy (0-100 scale)
-  if (accuracy >= 100) {
-    points += 50; // Perfect score bonus
-  } else if (accuracy >= 90) {
-    points += 30;
-  } else if (accuracy >= 80) {
-    points += 20;
-  } else if (accuracy >= 70) {
-    points += 10;
-  } else if (accuracy >= 50) {
-    points += 5;
-  } else if (accuracy < 30) {
-    points -= 10; // Penalty for very low accuracy
-  }
-  
-  // Points for piece count (more pieces = more points)
-  points += Math.floor(pieceCount / 2);
-  
-  // Use actual memorize time if available, otherwise fall back to configured time
-  const timeToCompare = actualMemorizeTime || memorizeTime;
-  
-  // Time efficiency bonus
-  const timeRatio = timeToCompare / completionTime;
-  if (timeRatio >= 1) {
-    // Completed faster than memorize time
-    points += Math.floor(timeRatio * 10);
-  }
-  
-  // Scale based on current rating (higher rated players gain/lose more slowly)
-  const scaleFactor = Math.max(0.5, Math.min(1.5, 2000 / currentRating));
-  
-  return Math.round(points * scaleFactor);
-};
+/** The held rated rounds that carry the facts the rating reads, newest first. Rows saved before them are left out. */
+export const ratedFactsOf = (history: readonly Pick<GameHistory, 'facts'>[]): RatedRoundFacts[] =>
+  history.flatMap(({ facts }) => {
+    const parsed = parseRatedRoundFacts(facts);
+    return parsed ? [parsed] : [];
+  });
+
+export const playerRatingOf = ({ gameState, certainty }: Pick<GameStore, 'gameState' | 'certainty'>): PlayerRating => ({
+  rating: gameState.skillRating ?? START_RATING,
+  ...certainty,
+});
+
+/**
+ * A rating stored before version 3 has no uncertainty, so its stored rated rounds are replayed, oldest first, from it
+ * as a new player's uncertainty. With no rounds to replay the player starts as a new player.
+ */
+function withCertainty(persisted: Record<string, unknown>, version: number): Record<string, unknown> {
+  const gameState = isRecord(persisted.gameState) ? persisted.gameState : {};
+  const rows = Array.isArray(persisted.history) ? persisted.history.filter(isRecord) : [];
+  const rounds = ratedFactsOf(rows).reverse();
+  const stored = version < RATING_RESET_VERSION ? START_RATING : gameState.skillRating;
+  const from = rounds.length > 0 && isSkillRating(stored) ? Math.min(stored, MAX_SKILL_RATING) : START_RATING;
+  const { rating, ...certainty } = replay({ ...NEW_PLAYER, rating: from }, rounds);
+  return { ...persisted, gameState: { ...gameState, skillRating: rating }, certainty };
+}
 
 // Initialize the store
 export const useGameStore = create<GameStore>()(
   persist(
     (set, get) => ({
-      // State initialization
       gameState: initialGameState,
-      gamePhase: 'configuration' as GamePhase,
       history: [], // Empty history array
+      freeSkipDay: null,
+      certainty: { rd: NEW_PLAYER.rd, rounds: NEW_PLAYER.rounds },
       lastSettings: null,
-      chess: initialChess, // Use the initialized chess instance
-      memorizationChess: null,
-      
-      // Actions
-      startGame: (pieceCount, memorizeTime) => {
-        console.log(`Starting game with ${pieceCount} pieces and ${memorizeTime}s memorize time`);
-        
-        // Generate a random position for memorization
-        const memorizationPosition = generateMemorizationPosition(pieceCount);
-        
-        if (!memorizationPosition) {
+      round: IDLE_ROUND,
+
+      startGame: (pieceCount, memorizeTime, source, board) => {
+        const generated = board ? null : generateMemorizationPosition(pieceCount);
+        const originalPosition = board ? board.fen : generated?.fen();
+        if (!originalPosition) {
           console.error('Failed to generate random position');
           return;
         }
-        
-        console.log('Random position generated:', memorizationPosition.fen());
-        
+
         set({
-          chess: memorizationPosition, // Use the random position for the current board
-          memorizationChess: memorizationPosition,
+          round: roundReducer(get().round, {
+            type: 'start',
+            config: { pieceCount, studyMs: memorizeTime * 1000, source, board },
+            target: labPositionFromFen(originalPosition),
+            now: monotonicNow(),
+          }),
           gameState: {
             ...initialGameState,
-            isPlaying: true,
             pieceCount,
             memorizeTime,
-            originalPosition: memorizationPosition.fen(),
-            skillRating: get().gameState.skillRating || 1000,
+            startSource: source,
+            board,
+            originalPosition,
+            skillRating: get().gameState.skillRating ?? START_RATING,
             streak: get().gameState.streak || 0,
           },
-          gamePhase: GamePhase.CONFIGURATION,
           lastSettings: { pieceCount, memorizeTime },
         });
+        trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime, source } });
       },
 
-      stopGame: () => {
-        const currentState = get().gameState;
-        set({ 
-          gameState: { ...currentState, isPlaying: false },
-          gamePhase: GamePhase.CONFIGURATION,
-        });
-        
-        // Only add to history if the game was completed
-        if (currentState.completionTime && currentState.accuracy !== undefined) {
-          // Use the extended type to access skillRatingChange
-          const gameStateWithRating = currentState as GameStateWithRating;
-          
-          get().addToHistory({
-            timestamp: new Date().getTime(),
-            completionTime: currentState.completionTime,
-            accuracy: currentState.accuracy,
-            pieceCount: currentState.pieceCount,
-            memorizeTime: currentState.memorizeTime,
-            actualMemorizeTime: currentState.actualMemorizeTime,
-            level: currentState.level || currentState.currentLevel || 1,
-            skillRatingChange: gameStateWithRating.skillRatingChange,
-            streak: currentState.streak,
-            perfectScore: currentState.perfectScore,
-            correctPlacements: Math.round((currentState.accuracy || 0) * currentState.pieceCount / 100),
-            totalPlacements: currentState.pieceCount,
-            duration: currentState.completionTime || 0,
-          });
-        }
-      },
-      
-      makeMove: (move) => {
-        const chess = get().chess;
-        if (!chess) {
-          console.error('Chess object is null in makeMove');
-          return false;
-        }
-        
-        try {
-          // Check if the move is in the standard algebraic notation (e.g., "e2e4")
-          // If so, convert it to an object format that chess.js can understand
-          let moveObj: string | ChessMove;
-          if (move.length === 4) {
-            moveObj = {
-              from: move.substring(0, 2),
-              to: move.substring(2, 4),
-            };
-          } else {
-            moveObj = move;
-          }
-          
-          // Try to make the move directly
-          const result = chess.move(moveObj);
-          
-          if (result) {
-            // Move was successful
-            set((state) => ({
-              gameState: {
-                ...state.gameState,
-                moves: [
-                  ...(state.gameState.moves || []), 
-                  typeof moveObj === 'string' ? moveObj : `${moveObj.from}${moveObj.to}`
-                ],
-              },
-            }));
-            return true;
-          } else {
-            console.log(`Move failed: ${JSON.stringify(moveObj)}`);
-            return false;
-          }
-        } catch (error) {
-          console.error('Invalid move:', error);
-          return false;
-        }
-      },
-      
+      dispatch: (action) => set({ round: roundReducer(get().round, action) }),
+
       resetGame: () => {
-        let newChess: Chess | null = null;
-        try {
-          // Initialize with a minimal valid board (just kings)
-          newChess = new Chess('4k3/8/8/8/8/8/8/4K3 w - - 0 1');
-          
-          // Clear the board by removing all pieces
-          const squares = [
-            'a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1',
-            'a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2',
-            'a3', 'b3', 'c3', 'd3', 'e3', 'f3', 'g3', 'h3',
-            'a4', 'b4', 'c4', 'd4', 'e4', 'f4', 'g4', 'h4',
-            'a5', 'b5', 'c5', 'd5', 'e5', 'f5', 'g5', 'h5',
-            'a6', 'b6', 'c6', 'd6', 'e6', 'f6', 'g6', 'h6',
-            'a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7',
-            'a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'
-          ];
-          
-          // Remove all pieces from the board
-          squares.forEach(square => {
-            if (newChess?.get(square as Square)) {
-              newChess?.remove(square as Square);
-            }
-          });
-        } catch (error) {
-          console.error('Failed to create Chess instance in resetGame:', error);
-        }
-        
         // Preserve skill rating and streak when resetting
-        const currentSkillRating = get().gameState.skillRating || 1000;
+        const currentSkillRating = get().gameState.skillRating ?? START_RATING;
         const currentStreak = get().gameState.streak || 0;
-        
+
         set({
-          chess: newChess,
-          memorizationChess: null,
-          gameState: { 
+          round: IDLE_ROUND,
+          gameState: {
             ...initialGameState,
             skillRating: currentSkillRating,
             streak: currentStreak,
           },
-          gamePhase: GamePhase.CONFIGURATION,
         });
       },
-      
-      addToHistory: (game) => {
-        set((state) => ({
-          history: [
-            {
-              ...game,
-              id: uuidv4(),
-            },
-            ...state.history,
-          ].slice(0, 20), // Keep only the last 20 games (reduced from 100)
-        }));
-      },
-      
-      // Memory game specific actions
-      startMemorizationPhase: () => {
-        const now = Date.now();
-        set((state) => ({
-          gameState: {
-            ...state.gameState,
-            isMemorizationPhase: true,
-            isSolutionPhase: false,
-            memorizeStartTime: now,
-          },
-          gamePhase: GamePhase.MEMORIZATION,
-        }));
-      },
-      
-      endMemorizationPhase: (actualMemorizeTimeOverride) => {
-        // The board always passes the override, measured on the monotonic
-        // clock and clamped to the configured duration. The wall-clock
-        // fallback below only serves callers that pass nothing, which is tests.
-        const now = Date.now();
-        const state = get().gameState;
-        const memorizeStartTime = state.memorizeStartTime || now;
-        const actualMemorizeTime =
-          actualMemorizeTimeOverride ?? (now - memorizeStartTime) / 1000;
 
-        set((state) => ({
-          gameState: {
-            ...state.gameState,
-            isMemorizationPhase: false,
-            actualMemorizeTime,
-          },
-        }));
-      },
-      
-      startSolutionPhase: () => {
-        // Reset the chess board for the user to recreate the position
-        let solutionChess: Chess | null = null;
-        try {
-          // Start with an empty board
-          solutionChess = new Chess('4k3/8/8/8/8/8/8/4K3 w - - 0 1');
-          
-          // Clear the board by removing all pieces
-          const squares = [
-            'a1', 'b1', 'c1', 'd1', 'e1', 'f1', 'g1', 'h1',
-            'a2', 'b2', 'c2', 'd2', 'e2', 'f2', 'g2', 'h2',
-            'a3', 'b3', 'c3', 'd3', 'e3', 'f3', 'g3', 'h3',
-            'a4', 'b4', 'c4', 'd4', 'e4', 'f4', 'g4', 'h4',
-            'a5', 'b5', 'c5', 'd5', 'e5', 'f5', 'g5', 'h5',
-            'a6', 'b6', 'c6', 'd6', 'e6', 'f6', 'g6', 'h6',
-            'a7', 'b7', 'c7', 'd7', 'e7', 'f7', 'g7', 'h7',
-            'a8', 'b8', 'c8', 'd8', 'e8', 'f8', 'g8', 'h8'
-          ];
-          
-          // Remove all pieces from the board
-          squares.forEach(square => {
-            if (solutionChess?.get(square as Square)) {
-              solutionChess?.remove(square as Square);
-            }
-          });
-        } catch (error) {
-          console.error('Failed to create solution chess instance:', error);
-        }
-        
-        const now = Date.now();
-        set((state) => ({
-          chess: solutionChess,
-          gameState: {
-            ...state.gameState,
-            isMemorizationPhase: false,
-            isSolutionPhase: true,
-            timeElapsed: 0, // Reset timer for solution phase
-            solutionStartTime: now,
-          },
-          gamePhase: GamePhase.SOLUTION,
-        }));
-      },
-      
-      submitSolution: (completionTimeOverride) => {
-        const { gameState, chess } = get();
-        
-        if (!chess || !gameState.originalPosition) {
-          console.error('Cannot submit solution: missing chess instance or original position');
-          return;
-        }
-        
-        // Get the user's solution
-        const userPosition = chess.fen();
-        
-        // Calculate accuracy
-        const accuracyResult = calculateAccuracy(gameState.originalPosition, userPosition);
-        
-        // Calculate completion time with millisecond precision
-        const now = Date.now();
-        const solutionStartTime = gameState.solutionStartTime || now;
-        const completionTime = completionTimeOverride ?? (now - solutionStartTime) / 1000;
-        
+      submitSolution: (now = monotonicNow()) => {
+        const { gameState } = get();
+        const playing = get().round;
+        if (playing.phase !== 'rebuild' || !gameState.originalPosition) return;
+        const round = roundReducer(playing, { type: 'submit', now });
+        if (round.phase !== 'scored') return;
+
+        const userPosition = `${labPositionToFen(round.placed)}${SOLUTION_FEN_SUFFIX}`;
+        const placed = placementFromFen(userPosition);
+        const score = scorePlacement(placementFromFen(gameState.originalPosition), placed);
+        const completionTime = round.rebuildMs / 1000;
+        const actualMemorizeTime = round.studyMs / 1000;
+
         // Calculate time bonus using actual memorize time if available
-        const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime, gameState.actualMemorizeTime);
-        
+        const timeBonus = calculateTimeBonus(completionTime, gameState.memorizeTime, actualMemorizeTime);
+
         // Determine if this is a perfect score
-        const perfectScore = accuracyResult.accuracy === 100 && accuracyResult.extraPieces === 0;
-        
+        const perfectScore = score.accuracy === 100 && score.extra === 0;
+
         // Determine success (e.g., accuracy >= 70%)
-        const success = accuracyResult.accuracy >= 70;
-        
-        // Calculate skill rating change
-        const currentRating = gameState.skillRating || 1000;
-        const skillRatingChange = calculateSkillRatingChange(
-          accuracyResult.accuracy, 
-          gameState.pieceCount, 
-          completionTime, 
-          gameState.memorizeTime,
-          currentRating,
-          gameState.actualMemorizeTime
-        );
-        
-        // Update streak
-        let streak = gameState.streak || 0;
-        if (success) {
-          streak += 1;
-        } else {
-          streak = 0;
-        }
-        
-        // Update skill rating
-        const newSkillRating = Math.max(0, currentRating + skillRatingChange);
-        
-        // Create a type that extends GameState with skillRatingChange
-        type GameStateWithRating = GameState & { 
-          skillRatingChange?: number;
-          wrongPieces?: number;
-          extraPieces?: number;
-          totalPiecesPlaced?: number;
-          correctPlacements?: number;
+        const success = score.accuracy >= WIN_ACCURACY;
+
+        const labRoundId = uuidv4();
+        const endedAt = Date.now();
+        const day = localDayOf(new Date(endedAt));
+
+        const currentRating = gameState.skillRating ?? START_RATING;
+        const facts: RatedRoundFacts = {
+          pieceCount: gameState.pieceCount,
+          studySeconds: actualMemorizeTime,
+          rebuildSeconds: completionTime,
+          accuracy: score.accuracy,
         };
-        
+        const rating = roundOutcomeOf(playerRatingOf(get()), {
+          review: gameState.board?.kind === 'review',
+          placedPieces: Object.keys(placed).length,
+          day,
+          freeSkipDay: get().freeSkipDay,
+          facts,
+        });
+        const effects = outcomeEffects[rating.phase];
+
+        const previousStreak = gameState.streak || 0;
+        const streak = effects.rated ? (success ? previousStreak + 1 : 0) : previousStreak;
+        const newSkillRating = rating.rating;
+        const skillRatingChange = rating.change;
+
+        const labRound: LabRound = {
+          endedAt,
+          facts: {
+            id: labRoundId,
+            source: 'game',
+            startSource: gameState.startSource,
+            pieceCount: gameState.pieceCount,
+            memorizeSeconds: gameState.memorizeTime,
+            targetFen: gameState.originalPosition,
+            placedFen: userPosition,
+            memorizeMs: Math.round(round.studyMs),
+            solveMs: Math.round(round.rebuildMs),
+            placements: round.log.placements,
+            removals: round.log.removals,
+            board: gameState.board,
+          },
+        };
+
         // Update game state with results
         const updatedGameState: GameStateWithRating = {
           ...gameState,
-          isSolutionPhase: false,
+          labRound,
+          standingBefore: { skillRating: currentRating, streak: gameState.streak || 0 },
           userPosition,
-          accuracy: accuracyResult.accuracy,
+          accuracy: score.accuracy,
           completionTime,
+          actualMemorizeTime,
           success,
           perfectScore,
           timeBonusEarned: timeBonus,
           skillRating: newSkillRating,
           streak,
           skillRatingChange,
-          extraPieces: accuracyResult.extraPieces,
-          totalPiecesPlaced: accuracyResult.totalPiecesPlaced,
-          correctPlacements: accuracyResult.correctPlacements
+          rating,
+          extraPieces: score.extra,
+          totalPiecesPlaced: Object.keys(placed).length,
+          correctPlacements: score.correct
         };
-        
-        set({
+
+        const played: GameHistory = {
+          id: labRoundId,
+          timestamp: Date.now(),
+          pieceCount: gameState.pieceCount,
+          memorizeTime: gameState.memorizeTime,
+          actualMemorizeTime,
+          completionTime,
+          duration: completionTime,
+          accuracy: score.accuracy,
+          correctPlacements: score.correct,
+          totalPlacements: gameState.pieceCount,
+          perfectScore,
+          level: gameState.level || gameState.currentLevel || 1,
+          skillRatingChange,
+          streak,
+          facts,
+        };
+        set(({ history, freeSkipDay, certainty }) => ({
+          round,
           gameState: updatedGameState as GameState,
-          gamePhase: GamePhase.RESULT,
+          history: effects.rated ? [played, ...history].slice(0, HISTORY_LIMIT) : history,
+          freeSkipDay: effects.spendsFreeSkip ? day : freeSkipDay,
+          certainty: 'player' in rating ? { rd: rating.player.rd, rounds: rating.player.rounds } : certainty,
+        }));
+
+        const soundEnabled = isSoundEnabled();
+        window.gtag?.('event', 'sound_settings', {
+          event_category: 'user_preferences',
+          event_label: soundEnabled ? 'sound_on' : 'sound_off',
+          value: soundEnabled ? 1 : 0,
         });
-      },
-      
-      placePiece: (square, piece) => {
-        const { chess } = get();
-        console.log('placePiece called with square:', square, 'piece:', piece, 'chess instance:', chess);
-        if (!chess) {
-          console.error('Chess instance is null in placePiece');
-          return;
-        }
-        
-        try {
-          // Determine piece color and type
-          const color = piece === piece.toLowerCase() ? 'b' : 'w';
-          const type = piece.toLowerCase() as PieceSymbol;
-          
-          console.log(`Placing ${color} ${type} on ${square}`);
-          
-          // Place the piece. chess.put returns false instead of throwing when
-          // the placement is rejected (for example a second king of one color),
-          // so the result has to be checked or the piece is dropped silently.
-          const placed = chess.put({ type, color }, square as Square);
+        trackEvent({
+          name: 'round_complete',
+          params: {
+            piece_count: gameState.pieceCount,
+            memorize_time: gameState.memorizeTime,
+            correct_pieces: score.correct,
+            accuracy: score.accuracy,
+            source: gameState.startSource ?? 'link',
+          },
+        });
 
-          if (!placed) {
-            console.error(
-              `Rejected placement of ${color} ${type} on ${square}: the board did not accept the piece`
-            );
-            return;
-          }
+        // Loaded on demand so the lab storage stays out of the /game bundle until a round ends.
+        void import('@/lib/lab/recordRound').then(({ recordLabRound }) => recordLabRound(labRound.facts, new Date(endedAt))).catch(() => {});
+      },
 
-          // Update the state
-          set((state) => {
-            const newState = {
-              gameState: {
-                ...state.gameState,
-                userPosition: chess.fen(),
-              },
-            };
-            console.log('Updated state after placing piece:', newState);
-            return newState;
-          });
-        } catch (error) {
-          console.error(`Failed to place piece ${piece} on ${square}:`, error);
-        }
-      },
-      
-      removePiece: (square) => {
-        const { chess } = get();
-        console.log('removePiece called with square:', square, 'chess instance:', chess);
-        if (!chess) {
-          console.error('Chess instance is null in removePiece');
-          return;
-        }
-        
-        try {
-          console.log(`Removing piece from ${square}`);
-          
-          // Remove the piece
-          chess.remove(square as Square);
-          
-          // Update the state
-          set((state) => {
-            const newState = {
-              gameState: {
-                ...state.gameState,
-                userPosition: chess.fen(),
-              },
-            };
-            console.log('Updated state after removing piece:', newState);
-            return newState;
-          });
-        } catch (error) {
-          console.error(`Failed to remove piece from ${square}:`, error);
-        }
-      },
-      
       // Stats and progression
-      getTotalGames: () => get().history.length,
-      
-      getBestTime: () => {
-        const history = get().history;
-        if (history.length === 0) return 0;
-        
-        // Find the fastest completion time for each piece count
-        const bestTimes = new Map<number, number>();
-        
-        history.forEach(game => {
-          const currentBest = bestTimes.get(game.pieceCount) || Infinity;
-          if (game.completionTime !== undefined && game.completionTime < currentBest && game.accuracy >= 80) {
-            bestTimes.set(game.pieceCount, game.completionTime);
-          }
-        });
-        
-        // Return the best time for the current piece count or overall best
-        const currentPieceCount = get().gameState.pieceCount;
-        return bestTimes.get(currentPieceCount) || 
-               Math.min(...Array.from(bestTimes.values()), Infinity) || 
-               0;
-      },
-      
-      getAverageAccuracy: () => {
-        const history = get().history;
-        if (history.length === 0) return 0;
-        return Math.round(
-          history.reduce((acc, game) => acc + game.accuracy, 0) / history.length
-        );
-      },
-      
-      getHighestLevel: () => {
-        const history = get().history;
-        if (history.length === 0) return 1;
-        return Math.max(...history.map((game) => game.level));
-      },
-      
       getSkillRating: () => {
-        return get().gameState.skillRating || 1000;
+        return get().gameState.skillRating ?? START_RATING;
       },
       
       getCurrentStreak: () => {
         return get().gameState.streak || 0;
-      },
-      
-      getLongestStreak: () => {
-        const history = get().history;
-        if (history.length === 0) return 0;
-        
-        let longestStreak = 0;
-        let currentStreak = 0;
-        
-        // Sort history by timestamp
-        const sortedHistory = [...history].sort((a, b) => 
-          a.timestamp - b.timestamp
-        );
-        
-        sortedHistory.forEach(game => {
-          if (game.accuracy >= 70) {
-            currentStreak++;
-            longestStreak = Math.max(longestStreak, currentStreak);
-          } else {
-            currentStreak = 0;
-          }
-        });
-        
-        return Math.max(longestStreak, get().gameState.streak || 0);
       },
       
       getRecommendedDifficulty: () => {
@@ -722,38 +346,45 @@ export const useGameStore = create<GameStore>()(
         
         return recommendedLevel;
       },
-      
-      calculateSkillRatingChange: (accuracy, pieceCount, completionTime) => {
-        const { gameState } = get();
-        return calculateSkillRatingChange(
-          accuracy, 
-          pieceCount, 
-          completionTime, 
-          gameState.memorizeTime,
-          gameState.skillRating || 1000,
-          gameState.actualMemorizeTime
-        );
-      }
     }),
     {
       name: GAME_STORAGE_KEY,
+      version: STORE_VERSION,
+      // A rating stored before version 1 was earned under a formula that only went up, so it starts again. The win
+      // streak and the history rows stay; rows without rated facts are shown but are not replayed.
+      migrate: (persisted, version) => (isRecord(persisted) ? withCertainty(persisted, version) : persisted),
       partialize: (state) => ({
         gameState: {
           pieceCount: state.gameState.pieceCount,
           memorizeTime: state.gameState.memorizeTime,
           level: state.gameState.level,
           skillRating: state.gameState.skillRating,
+          streak: state.gameState.streak,
         },
         history: state.history,
         lastSettings: state.lastSettings,
+        freeSkipDay: state.freeSkipDay,
+        certainty: state.certainty,
       }),
       // localStorage is user-editable and outlives app versions, so a stored
       // value that would put the configuration form out of range is dropped.
+      // The stored game state is laid over the defaults, so a field saved only
+      // by a later version, such as the streak, starts from its default.
       merge: (persisted, current) => {
-        const stored = (typeof persisted === 'object' && persisted !== null
-          ? persisted
-          : {}) as Partial<GameStore>;
-        return { ...current, ...stored, lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES) };
+        const stored = (isRecord(persisted) ? persisted : {}) as Partial<GameStore>;
+        const storedGameState: Record<string, unknown> = isRecord(stored.gameState) ? stored.gameState : {};
+        return {
+          ...current,
+          ...stored,
+          gameState: {
+            ...current.gameState,
+            ...storedGameState,
+            skillRating: isSkillRating(storedGameState.skillRating) ? Math.min(storedGameState.skillRating, MAX_SKILL_RATING) : START_RATING,
+          },
+          lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
+          freeSkipDay: parseLocalDay(stored.freeSkipDay),
+          certainty: parseCertainty(stored.certainty),
+        };
       },
     }
   )

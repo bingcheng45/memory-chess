@@ -41,16 +41,11 @@ jest.mock("@/components/articles/ArticlePage", () => ({
   default: jest.fn(() => <div />),
 }));
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>PageHeader</div>;
-  }
-
-  return MockPageHeader;
-});
+jest.mock("@/components/lab-paper/LabPaperHeader", () => ({ LabPaperHeader: () => <div>LabPaperHeader</div> }));
 
 const SLUG = "magnus-carlsen";
 const ENGLISH_TITLE = "How Magnus Carlsen names a famous game from one position";
+const ENGLISH_SEARCH_TITLE = "How Magnus Carlsen names a game from one position";
 
 const listParams = (locale: string) => ({ params: Promise.resolve({ locale }) });
 const articleParams = (locale: string) => ({ params: Promise.resolve({ slug: SLUG, locale }) });
@@ -74,7 +69,7 @@ describe("the English articles when no locale has a translation", () => {
     render(await ArticleRoute(articleParams("en")));
 
     expect(jest.mocked(ArticlePage).mock.calls[0][0].article.title).toBe(ENGLISH_TITLE);
-    expect((await articleMetadata(articleParams("en"))).title).toBe(ENGLISH_TITLE);
+    expect((await articleMetadata(articleParams("en"))).title).toBe(ENGLISH_SEARCH_TITLE);
     await expect(ArticleRoute(articleParams("de"))).rejects.toThrow("NEXT_NOT_FOUND");
     await expect(articleMetadata(articleParams("de"))).rejects.toThrow("NEXT_NOT_FOUND");
   });

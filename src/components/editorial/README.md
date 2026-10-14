@@ -1,8 +1,9 @@
 # Memory Chess editorial style
 
-The changelog is the visual reference for editorial pages. The reusable rules
-live in `editorialStyles.ts`, and the shared page shell, hero, and actions live
-in `EditorialPage.tsx`.
+These are the dark site's editorial rules, for pages not yet drawn in Lab Paper
+(the changelog and about pages use `LabReadingPage` in `src/components/lab-paper/`).
+The reusable rules live in `editorialStyles.ts`, and the shared page shell, hero,
+and actions live in `EditorialPage.tsx`.
 
 - Use a near-black canvas and one peach accent.
 - Keep prose in a narrow reading column (`max-w-2xl` or `max-w-3xl`).
@@ -17,6 +18,5 @@ in `EditorialPage.tsx`.
   and nothing else. The portrait is information, so it has alt text, and its
   credit prints the author, the licence and a link to the source inside a
   `<cite>`.
-- An Articles body is set in Literata, declared in
-  `src/lib/articles/readingFont.ts` so only article pages load it. Geist stays
-  the face for everything else.
+- Articles do not use this style. They are drawn in Lab Paper
+  (`src/components/articles/ArticlePaperShell.tsx`), with the body in Open Sans.

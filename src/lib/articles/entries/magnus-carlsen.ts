@@ -5,6 +5,11 @@ const article: Article = {
   publishedAt: "2026-10-05T00:00:00.000Z",
   updatedAt: "2026-10-05T00:00:00.000Z",
   title: "How Magnus Carlsen names a famous game from one position",
+  searchTitle: "How Magnus Carlsen names a game from one position",
+  relatedGuides: [
+    { slug: "chess-pattern-recognition-drills", anchor: "pattern recognition drills" },
+    { slug: "chess-visualization-exercises", anchor: "visualization exercises" },
+  ],
   description: "Filmed tests and blindfold displays show what Magnus Carlsen's chess memory can do, and chunk research suggests it rests on studied games.",
   person: {
     name: "Magnus Carlsen",

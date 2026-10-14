@@ -22,7 +22,21 @@ beforeEach(() => {
 });
 
 describe("SiteNav", () => {
-  it("links Play, Learn, Articles, Leaderboard and About in that order", () => {
+  it("hides About below the sm breakpoint, where the footer still links it, and shows every other link", () => {
+    render(<SiteNav />);
+
+    const items = within(nav()).getAllByRole("listitem");
+    expect(items.map((item) => [item.textContent, item.className])).toEqual([
+      ["Play", ""],
+      ["Learn", ""],
+      ["Articles", ""],
+      ["Leaderboard", ""],
+      ["Dashboard", ""],
+      ["About", "hidden sm:list-item"],
+    ]);
+  });
+
+  it("links Play, Learn, Articles, Leaderboard, Dashboard and About in that order", () => {
     render(<SiteNav />);
 
     const links = within(nav()).getAllByRole("link");
@@ -31,6 +45,7 @@ describe("SiteNav", () => {
       "Learn",
       "Articles",
       "Leaderboard",
+      "Dashboard",
       "About",
     ]);
     expect(links.map((link) => link.getAttribute("href"))).toEqual([
@@ -38,6 +53,7 @@ describe("SiteNav", () => {
       "/learn",
       "/articles",
       "/leaderboard",
+      "/dashboard",
       "/about",
     ]);
   });
@@ -77,7 +93,12 @@ describe("SiteNav", () => {
     expect(container.querySelector('a[href="/de/game"]')).toHaveTextContent(deMessages.common.nav.play);
     expect(container.querySelector('a[href="/de/leaderboard"]')).not.toHaveAttribute("hreflang");
 
-    for (const route of ["/learn", "/about"]) {
+    const about = container.querySelector('a[href="/de/about"]');
+    expect(about).toHaveTextContent(/^Über$/);
+    expect(about).not.toHaveAttribute("hreflang");
+    expect(container.querySelector('a[href="/about"]')).not.toBeInTheDocument();
+
+    for (const route of ["/learn"]) {
       const link = container.querySelector(`a[href="${route}"]`);
       expect(link).toHaveAttribute("hreflang", "en");
       // A compact marker stands in for the footer's " (English)" suffix,
@@ -127,7 +148,7 @@ describe("PageHeader navigation", () => {
   it("renders the nav on ordinary pages", () => {
     renderHeader();
 
-    expect(within(nav()).getAllByRole("link")).toHaveLength(5);
+    expect(within(nav()).getAllByRole("link")).toHaveLength(6);
   });
 
   it("leaves the nav out while a round is being memorised or placed", () => {

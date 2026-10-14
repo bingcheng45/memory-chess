@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": "a5019fcf236b67e170f97ea43b5f7ecc1cdf67131d5a090329a76ddd2441528f",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Sobre",
+      "description": "Quem cria o Memory Chess, por que o jogo existe, como uma rodada é pontuada e como os guias do Aprender são escritos.",
+      "socialTitle": "Sobre o Memory Chess",
+      "socialDescription": "Quem cria o Memory Chess, por que o jogo existe e como ele funciona."
+    },
+    "kicker": "Sobre",
+    "title": "Sobre o Memory Chess",
+    "lede": "O Memory Chess é um jogo gratuito de memória do tabuleiro criado e mantido por uma única pessoa. Esta página explica quem é essa pessoa, por que o jogo existe e como ele funciona de verdade.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Quem mantém este site",
+        "blocks": [
+          {
+            "p": "Eu sou Bing Cheng, um desenvolvedor que trabalha sozinho. Mantenho o Memory Chess por conta própria, com a ajuda de IA no código e nos textos do site. Não há equipe nem empresa por trás dele. Também crio o <tont>Tont</tont>, e publico novidades sobre este site em <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Como uma só pessoa cuida de tudo, o site continua pequeno de propósito. Um jogo, um conjunto de guias de treino, um ranking e um registro de novidades que documenta o que de fato foi lançado."
+          },
+          {
+            "p": "O jogo é gratuito e não exige conta. Os anúncios do Google AdSense ajudam a cobrir os custos de hospedagem, e nada no site fica bloqueado por pagamento ou cadastro."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Por que o jogo existe",
+        "blocks": [
+          {
+            "p": "A maioria dos conselhos para evoluir no xadrez aponta os iniciantes para aberturas, exercícios táticos e cursos. Na minha experiência, há um problema anterior por baixo de tudo isso. Os iniciantes perdem a noção do tabuleiro. Deixam passar um defensor, esquecem uma peça que se moveu dois lances antes e caem em capturas que veriam na hora em um diagrama."
+          },
+          {
+            "p": "Manter uma posição na cabeça é uma habilidade que se pode treinar, e havia poucos lugares para praticá-la diretamente. Então eu criei um. O Memory Chess isola essa única habilidade e dá a ela uma pontuação, para que você possa vê-la melhorar. Se quiser algo em jogo, você pode colocar um nome à sua escolha no ranking público e se comparar com todos os outros."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Como funciona uma rodada",
+        "blocks": [
+          {
+            "p": "Você escolhe quantas peças enfrentar e por quanto tempo pode estudá-las. As predefinições vão de Fácil, duas peças com dez segundos, até Grande mestre, vinte peças com cinco segundos, e você pode definir qualquer combinação personalizada. Depois, a rodada acontece em três fases."
+          },
+          {
+            "p": "Primeiro você memoriza. O tabuleiro mostra uma posição pelo tempo que você escolheu e depois ela desaparece. Em seguida você reconstrói. Você coloca as peças de memória em um tabuleiro vazio. Por fim, você recebe o resultado. O jogo compara o seu tabuleiro com o original, casa por casa."
+          },
+          {
+            "p": "A pontuação é rigorosa. Uma peça só conta como correta quando a peça certa, da cor certa, está exatamente na casa que ocupava na posição original. Uma torre onde deveria estar um cavalo está errada duas vezes. Ela conta como peça fora do lugar, e o cavalo que ela substituiu conta como peça faltando. A sua precisão é a proporção das peças originais que você reproduziu exatamente."
+          },
+          {
+            "p": "A tela de resultado mostra os três grupos, as colocações que você acertou, as que errou e as peças que esqueceu por completo, então cada rodada mostra o que atacar na próxima vez. Você pode <game>experimentar uma rodada</game> em menos de um minuto."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Como os guias do Aprender são escritos",
+        "blocks": [
+          {
+            "p": "A <learn>biblioteca do Aprender</learn> reúne {count, plural, one {# guia} many {# guias} other {# guias}} sobre visão do tabuleiro, visualização e treino de memória. Eles são escritos com a ajuda de IA. Cada posição de xadrez neles é verificada por um script quanto ao número de peças, à legalidade e a cada ataque que o texto afirma. Cada afirmação sobre como o Memory Chess funciona é conferida no código do jogo. Cada guia tem exercícios. Alguns abrem uma rodada no jogo com as configurações certas. Os outros são pensados para um tabuleiro de verdade."
+          },
+          {
+            "p": "Quando os guias fazem afirmações sobre memória e aprendizagem, eles citam pesquisas publicadas, incluindo o trabalho de Gobet e Simon sobre memória no xadrez e a literatura experimental sobre evocação e prática espaçada. Cada citação traz o link para a sua fonte. Eu não conduzi nenhuma pesquisa própria, e os guias não fingem o contrário."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "A trajetória do site",
+        "blocks": [
+          {
+            "p": "A primeira versão entrou no ar em março de 2025 como uma versão simples do jogo. O jogo no celular e a seleção de peças vieram em poucas semanas. A biblioteca do Aprender foi lançada em março de 2026, e em agosto de 2026 o próprio jogo passou a funcionar em 24 idiomas. Os guias e o registro de novidades estão em inglês. O <changelog>registro de novidades</changelog> documenta cada versão lançada, incluindo as correções de bugs. Eu o mantenho honesto porque eu mesmo o uso para lembrar o que mudou e quando."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Fale comigo",
+        "blocks": [
+          {
+            "p": "Escreva para mim em <mail>{email}</mail> ou use o <contact>formulário de contato</contact>. Eu leio tudo, e relatos de jogadores já ajudaram a corrigir bugs reais. Se quiser os detalhes, a <privacy>política de privacidade</privacy> e os <terms>termos de serviço</terms> explicam como o site trata os dados e com o que você concorda ao jogar."
+          }
+        ]
+      }
+    }
+  }
+}

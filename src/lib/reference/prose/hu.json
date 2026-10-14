@@ -6,15 +6,15 @@
       "heading": "A kör három szakasza",
       "memorize": {
         "title": "Megjegyzés",
-        "body": "Egy állás jelenik meg a teljes táblán, egy rögzített másodpercig. Semmi sem mozdul, és semmi sincs elrejtve. A szakaszt korábban is befejezheted a Kihagyással, és az óra azt rögzíti, mennyi ideig néztél ténylegesen, nem azt, mennyi időt kaptál."
+        "body": "Egy állás jelenik meg a teljes táblán, egy rögzített másodpercig. Semmi sem mozdul, és semmi sincs elrejtve. A szakaszt korábban is befejezheted a Kész gombbal, és az óra azt rögzíti, mennyi ideig néztél ténylegesen, nem azt, mennyi időt kaptál."
       },
       "place": {
         "title": "Elhelyezés",
-        "body": "A tábla kiürül. Kiválasztod egy bábu típusát és színét, majd egy mezőre koppintva leteszed, vagy újra koppintva visszaveszed. Itt nincs időkorlát, de az óra a tábla kiürülésétől a beküldésig fut."
+        "body": "A tábla kiürül. Kiválasztasz egy bábut a palettáról, majd egy mezőre koppintva leteszed, vagy újra koppintva visszaveszed. Itt nincs időkorlát, de az óra a tábla kiürülésétől a beküldésig fut."
       },
       "score": {
         "title": "Értékelés",
-        "body": "A táblád mezőnként kerül összehasonlításra az eredetivel. Látod, mely bábuk voltak helyesek, melyek helytelenek, és melyeket hagytál ki, a neked mutatott állással együtt, széles képernyőn egymás mellett, keskeny képernyőn egymás alatt."
+        "body": "A táblád mezőnként kerül összehasonlításra az eredetivel. A helyes mezők és a hibás bábuk a táblán vannak megjelölve, a kihagyott bábuk pedig halványan látszanak ott, ahol álltak, egy eredményösszesítő mellett, amely a pontosságodat és a bábutípusonkénti felidézésedet mutatja."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "Egy oldal két futója sosem áll azonos színű mezőkön.",
         "simultaneous-check": "A két király sosem áll egyszerre sakkban.",
         "checked-side-not-to-move": "Ha az egyik király sakkban áll, éppen az az oldal van lépésre.",
+        "home-rank-pawn-check": "A kiinduló sorát soha el nem hagyó gyalog sosem ad sakkot.",
+        "impossible-double-check": "Egy királyt sosem sakkol kettőnél több figura, és a kettős sakkban mindig részt vesz egy futó, bástya vagy vezér.",
         "piece-count": "A tábla pontosan annyi bábut tartalmaz, amennyit a szint megkövetel.",
         "invalid-fen": "Az állás olyan szabályos sakkállás, amelyre a tábla beállítható."
       },

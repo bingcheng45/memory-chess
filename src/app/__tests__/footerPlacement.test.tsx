@@ -2,10 +2,10 @@ import type { ReactElement, ReactNode } from "react";
 import { isValidElement } from "react";
 import { render } from "@/test-utils/intl";
 import LocaleLayout from "@/app/[locale]/layout";
-import HomePage from "@/app/[locale]/page";
+import HomePage from "@/app/[locale]/(home)/page";
 import PrivacyPage from "@/app/[locale]/privacy/page";
 import ContactUsPage from "@/app/[locale]/contact-us/page";
-import Footer from "@/components/ui/Footer";
+import SiteFooter from "@/components/lab-paper/SiteFooter";
 
 jest.mock("next-intl/server", () => ({
   ...jest.requireActual("next-intl/server"),
@@ -42,23 +42,23 @@ describe("footer placement", () => {
   // The locale layout is the footer's single render site: it is what puts a
   // footer on /game and /leaderboard, which used to be navigational dead
   // ends, without any page rendering a second one.
-  it("renders Footer exactly once, from the locale layout", async () => {
+  it("renders the site footer exactly once, from the locale layout", async () => {
     const tree = await LocaleLayout({
       children: <div />,
       params: Promise.resolve({ locale: "en" }),
     });
 
-    expect(countComponent(tree, Footer)).toBe(1);
+    expect(countComponent(tree, SiteFooter)).toBe(1);
   });
 
-  const pages: Array<[string, () => ReactElement]> = [
-    ["home", () => <HomePage />],
-    ["privacy", () => <PrivacyPage />],
+  const pages: Array<[string, () => ReactElement | Promise<ReactElement>]> = [
+    ["home", () => HomePage()],
+    ["privacy", () => PrivacyPage({ params: Promise.resolve({ locale: "en" }) })],
     ["contact-us", () => <ContactUsPage />],
   ];
 
-  it.each(pages)("the %s page renders no footer of its own", (_name, page) => {
-    const { container } = render(page());
+  it.each(pages)("the %s page renders no footer of its own", async (_name, page) => {
+    const { container } = render(await page());
 
     expect(container.querySelectorAll("footer")).toHaveLength(0);
   });

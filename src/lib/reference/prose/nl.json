@@ -6,15 +6,15 @@
       "heading": "De 3 fasen van een ronde",
       "memorize": {
         "title": "Onthouden",
-        "body": "Een stelling verschijnt een vast aantal seconden op een volledig bord. Er beweegt niets en er is niets verborgen. Met Overslaan kun je de fase eerder beëindigen; de klok registreert hoelang je echt hebt gekeken, niet hoeveel tijd je kreeg."
+        "body": "Een stelling verschijnt een vast aantal seconden op een volledig bord. Er beweegt niets en er is niets verborgen. Met Klaar kun je de fase eerder beëindigen; de klok registreert hoelang je echt hebt gekeken, niet hoeveel tijd je kreeg."
       },
       "place": {
         "title": "Plaatsen",
-        "body": "Het bord wordt leeggemaakt. Je kiest een stuksoort en een kleur, tikt op een veld om een stuk neer te zetten en tikt nogmaals om het weer weg te halen. Hier is geen tijdslimiet, maar de klok loopt vanaf het moment dat het bord leeg is tot je je oplossing verstuurt."
+        "body": "Het bord wordt leeggemaakt. Je kiest een stuk uit het palet, tikt op een veld om het neer te zetten en tikt nogmaals om het weer weg te halen. Hier is geen tijdslimiet, maar de klok loopt vanaf het moment dat het bord leeg is tot je je oplossing verstuurt."
       },
       "score": {
         "title": "Score",
-        "body": "Jouw bord wordt veld voor veld vergeleken met het origineel. Je ziet welke stukken goed waren, welke fout en welke je hebt gemist, samen met de stelling die je te zien kreeg, naast elkaar op brede schermen en onder elkaar op smalle."
+        "body": "Jouw bord wordt veld voor veld vergeleken met het origineel. Goede velden en foute stukken worden op het bord gemarkeerd, en de stukken die je hebt gemist staan vaag op hun plek, naast een uitslag met je nauwkeurigheid en hoe goed je elke soort stuk onthield."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "De twee lopers van een kant staan nooit op velden van dezelfde kleur.",
         "simultaneous-check": "Beide koningen staan nooit tegelijk schaak.",
         "checked-side-not-to-move": "Staat een koning schaak, dan is die kant aan zet.",
+        "home-rank-pawn-check": "Een pion die zijn beginrij nooit heeft verlaten, geeft nooit schaak.",
+        "impossible-double-check": "Een koning staat nooit schaak door meer dan twee stukken, en bij een dubbelschaak is altijd een loper, toren of dame betrokken.",
         "piece-count": "Op het bord staat precies het aantal stukken dat de moeilijkheidsgraad vraagt.",
         "invalid-fen": "De stelling is een geldige schaakstelling die je zo op een bord kunt opzetten."
       },

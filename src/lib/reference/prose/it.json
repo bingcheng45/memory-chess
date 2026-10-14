@@ -6,15 +6,15 @@
       "heading": "Le tre fasi di un turno",
       "memorize": {
         "title": "Memorizza",
-        "body": "Una posizione appare su una scacchiera completa per un numero fisso di secondi. Niente si muove e niente è nascosto. Puoi chiudere la fase in anticipo con Salta, e il cronometro registra quanto hai guardato davvero, non il tempo che ti era stato concesso."
+        "body": "Una posizione appare su una scacchiera completa per un numero fisso di secondi. Niente si muove e niente è nascosto. Puoi chiudere la fase in anticipo con Fatto, e il cronometro registra quanto hai guardato davvero, non il tempo che ti era stato concesso."
       },
       "place": {
         "title": "Posiziona",
-        "body": "La scacchiera si svuota. Scegli tipo e colore di un pezzo, poi tocchi una casa per metterlo giù o la tocchi di nuovo per toglierlo. Qui non c'è limite di tempo, ma il cronometro corre dal momento in cui la scacchiera si svuota fino all'invio."
+        "body": "La scacchiera si svuota. Scegli un pezzo dalla tavolozza, poi tocchi una casa per metterlo giù o la tocchi di nuovo per toglierlo. Qui non c'è limite di tempo, ma il cronometro corre dal momento in cui la scacchiera si svuota fino all'invio."
       },
       "score": {
         "title": "Punteggio",
-        "body": "La tua scacchiera viene confrontata casa per casa con l'originale. Vedi quali pezzi erano giusti, quali sbagliati e quali ti sono sfuggiti, insieme alla posizione che ti era stata mostrata, affiancate sugli schermi larghi e una sopra l'altra su quelli stretti."
+        "body": "La tua scacchiera viene confrontata casa per casa con l'originale. Le case giuste e i pezzi sbagliati vengono segnati sulla scacchiera, e i pezzi che ti sono sfuggiti compaiono in trasparenza dove si trovavano, accanto a un resoconto della tua precisione e del tuo ricordo per tipo di pezzo."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "I due alfieri di uno stesso schieramento non stanno mai su case dello stesso colore.",
         "simultaneous-check": "I due re non sono mai sotto scacco contemporaneamente.",
         "checked-side-not-to-move": "Se un re è sotto scacco, tocca a quel colore muovere.",
+        "home-rank-pawn-check": "Un pedone che non ha mai lasciato la sua traversa di partenza non dà mai scacco.",
+        "impossible-double-check": "Nessun re è sotto scacco da più di due pezzi, e uno scacco doppio coinvolge sempre un alfiere, una torre o una donna.",
         "piece-count": "La scacchiera contiene esattamente il numero di pezzi richiesto dal livello.",
         "invalid-fen": "La posizione è una posizione di scacchi legale, che si può disporre su una scacchiera."
       },

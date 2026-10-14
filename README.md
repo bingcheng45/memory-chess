@@ -2,17 +2,9 @@
 
 A web-based memory training application that challenges players to memorize and recreate chess positions. Built with Next.js, TypeScript, and Tailwind CSS.
 
-## Latest Release - v1.2.1
+## Latest Release - v2.0.0
 
-Our latest release keeps the board steady between gameplay phases, improves random positions, and makes game results easier to review. Visit `/changelog` in the app to see the full release history.
-
-### What's New in v1.2.1
-
-- Kept the board in the same place between memorization and placement after helpful player feedback
-- Improved random positions after a player reported invalid setups on Reddit
-- Added a target-versus-submitted board comparison to the result screen
-- Grouped accuracy, replay, and leaderboard actions at the top of the results
-- Paused briefly after submission so players can see their locked-in time and final board
+Memory Chess 2.0 adds a daily board that every player shares, a dashboard of your memory figures kept on your device, a result screen that shows what each round changed, shareable result cards with a replay link, rebuilt Learn guides, and a new light design in all 24 languages. Visit `/changelog` in the app to see the full release history.
 
 ## Overview
 
@@ -59,10 +51,8 @@ Memory Chess combines chess knowledge with memory skills, offering a unique and 
 ### Planned Features 📋
 
 - Advanced features
-  - Daily challenges
   - Achievement system
 - Social features
-  - Share results
   - Multiplayer mode
 
 ## Getting Started
@@ -77,13 +67,13 @@ cd memory-chess
 2. Install dependencies:
 
 ```bash
-bun install
+npm install
 ```
 
 3. Run the development server:
 
 ```bash
-bun run dev
+npm run dev
 ```
 
 4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.

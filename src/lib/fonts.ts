@@ -36,6 +36,12 @@ export const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin", "latin-ext"],
   preload: false,
+  // next/font's own fallback is Arial size-adjusted to Geist Mono's average
+  // advance, which still set the lab's uppercase mono labels about 26 percent
+  // wider (measured in Chrome), so they wrapped onto extra lines until the
+  // webfont swapped in and the home page shifted. globals.css defines this face.
+  adjustFontFallback: false,
+  fallback: ["Geist Mono Local", "ui-monospace", "monospace"],
 });
 
 const notoSansCyrillic = Noto_Sans({
@@ -88,4 +94,25 @@ export function getSansFontClass(locale: Locale): string {
     default:
       return geistSans.variable;
   }
+}
+
+/**
+ * The faces a locale's text needs that no page preloads, each with letters that select its subsets. The arrow,
+ * which the home draws, sits in the symbol subsets Open Sans splits out.
+ *
+ * A face that is not preloaded is fetched only once layout first draws a letter in it, which on these locales
+ * landed after first paint: the fallback drew the page, the face swapped in, and lines rewrapped and moved
+ * everything under them. Asking for the face from <head> starts the fetch as soon as the stylesheet is parsed,
+ * so it is usually there by the first paint, and only this locale pays for it.
+ */
+const LOCALE_FACES: Partial<Record<Locale, ReadonlyArray<readonly [family: string, text: string]>>> = {
+  ru: [["Noto Sans", "AЖ"], ["Open Sans", "AЖ→"]],
+  vi: [["Noto Sans", "Aệ"], ["Open Sans", "Aệ→"]],
+  hi: [["Noto Sans Devanagari", "Aक"], ["Open Sans", "A→"]],
+};
+
+export function fontRequestScript(locale: Locale): string | null {
+  const faces = LOCALE_FACES[locale];
+  if (!faces) return null;
+  return `document.fonts&&${JSON.stringify(faces)}.forEach(function(f){document.fonts.load('1em "'+f[0]+'"',f[1]).catch(function(){})})`;
 }

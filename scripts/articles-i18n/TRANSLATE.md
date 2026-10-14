@@ -36,7 +36,7 @@ in your report.
 
 2. Read `messages/<locale>.json` for the words the game already uses in your language, and for how it
    addresses the player. Use the same words and the same form of address in the articles. These keys hold
-   the words: `game.config.pieceCount` (pieces), `home.cta.playFree` (round), `game.memorize.title`
+   the words: `game.config.pieceCount` (pieces), `home.lab.index.play` (round), `game.memorize.title`
    (memorize, position), `leaderboard.columns.memorizeTime` (memorize time), `game.memorize.hint` (board),
    `game.presets.grandmaster.label` (grandmaster). The game writes seconds in a short form on its buttons
    (`game.config.seconds`). In the articles, write the full word.

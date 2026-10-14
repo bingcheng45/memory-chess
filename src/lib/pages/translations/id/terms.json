@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": "fad930c9213a8e24da3dac2f58427a5dafcb7b29762f7cc963ca607d92efec4b",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Ketentuan Layanan",
+      "description": "Ketentuan dalam bahasa sederhana untuk memainkan Memory Chess, mengirim skor ke papan peringkat, dan menggunakan konten situs.",
+      "socialTitle": "Ketentuan Layanan Memory Chess",
+      "socialDescription": "Ketentuan dalam bahasa sederhana untuk memainkan Memory Chess dan menggunakan situsnya."
+    },
+    "kicker": "Ketentuan rinci",
+    "title": "Ketentuan Layanan",
+    "lede": "Memory Chess adalah permainan gratis yang dijalankan oleh satu orang. Ketentuan ini singkat karena kesepakatannya sederhana, dan ketentuan ini ditulis untuk benar-benar dibaca.",
+    "sections": {
+      "service": {
+        "title": "Layanan",
+        "blocks": [
+          {
+            "p": "Memory Chess adalah permainan browser gratis untuk melatih ingatan papan. Saya menyediakannya sebagaimana adanya dan sebagaimana tersedia, tanpa jaminan dalam bentuk apa pun. Saya berupaya menjaganya tetap cepat, akurat, dan daring, tetapi saya tidak menjanjikan layanan tanpa gangguan, penilaian tanpa kesalahan, atau bahwa fitur apa pun akan tetap sama selamanya. Saya dapat mengubah, menangguhkan, atau menghentikan bagian mana pun dari situs ini kapan saja."
+          },
+          {
+            "p": "Sejauh diizinkan oleh hukum, saya tidak bertanggung jawab atas kerugian yang timbul dari penggunaan situs ini oleh Anda. Ini permainan ingatan. Batas wajar dari hal terburuk yang bisa terjadi di sini adalah kehilangan skor yang Anda pedulikan, dan saya tetap berusaha keras untuk mencegahnya."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Penggunaan yang dapat diterima",
+        "blocks": [
+          {
+            "p": "Bermainlah dengan jujur dan biarkan situs ini tetap berfungsi untuk semua orang. Jangan menyerang, membebani secara berlebihan, atau menyelidiki celah layanan ini, jangan mengambil datanya secara massal, dan jangan mencoba merusak penilaiannya. Jangan mengirim skor yang dihasilkan oleh bot, skrip, atau otomatisasi dalam bentuk apa pun. Jangan gunakan formulir kontak atau papan peringkat untuk mengirim spam, melecehkan, atau menyamar sebagai siapa pun."
+          },
+          {
+            "p": "Formulir kontak ditujukan untuk pesan sungguhan kepada orang sungguhan. Gunakan untuk laporan bug, pertanyaan, dan ide, dan pesan Anda akan dibaca."
+          },
+          {
+            "p": "Saya dapat memblokir lalu lintas atau membatasi akses yang melanggar aturan ini. Karena tidak ada akun yang bisa diblokir, menghapus entri yang buruk dan memblokir penyalahgunaan di edge jaringan adalah cara penegakan yang saya miliki, dan saya menggunakannya."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Papan peringkat",
+        "blocks": [
+          {
+            "p": "Mengirim skor ke papan peringkat bersifat opsional. Apa pun yang Anda kirim ke sana bersifat publik. Nama yang menyertai sebuah skor adalah apa pun yang Anda ketikkan, jadi pilihlah nama yang Anda senang melihatnya dipublikasikan, dan jangan gunakan nama asli Anda atau informasi pribadi siapa pun jika Anda lebih suka merahasiakannya."
+          },
+          {
+            "p": "Entri yang dikirim memuat nama yang Anda pilih dan rincian ronde, seperti akurasi, tingkat kesulitan, dan waktu penyelesaian. Setelah dipublikasikan, entri itu tetap berada di papan sampai tergeser oleh skor yang lebih baik atau dihapus."
+          },
+          {
+            "p": "Saya dapat menghapus entri papan peringkat yang kasar, yang menyamar sebagai seseorang, yang tampak otomatis, atau yang jelas tidak dihasilkan oleh orang yang memainkan permainan ini. Saya menghapus entri untuk menjaga papan tetap jujur, bukan untuk mengatur siapa yang menang."
+          }
+        ]
+      },
+      "content": {
+        "title": "Konten dan kekayaan intelektual",
+        "blocks": [
+          {
+            "p": "Konten milik situs ini, termasuk permainannya, panduan Belajar, desainnya, dan kode yang menjalankannya, adalah milik saya. Anda dipersilakan menautkan ke halaman mana pun, mengutip cuplikan yang wajar dengan menyebutkan sumbernya, dan membagikan skor Anda di mana pun Anda mau. Jangan menerbitkan ulang panduan secara utuh atau mengakui konten situs ini sebagai milik Anda."
+          },
+          {
+            "p": "Catur itu sendiri bukan milik siapa pun. Posisi, aturan, dan notasi bebas digunakan semua orang, di sini maupun di tempat lain."
+          },
+          {
+            "p": "Jika Anda mengirim masukan atau saran, Anda setuju bahwa saya dapat menggunakannya untuk meningkatkan situs ini tanpa berutang kompensasi atau pencantuman nama kepada Anda. Masukan pemain sudah pernah membentuk rilis sungguhan, dan catatan perubahan merekam hasilnya."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Layanan pihak ketiga",
+        "blocks": [
+          {
+            "p": "Situs ini berjalan di atas sejumlah kecil layanan eksternal. Google AdSense menayangkan iklan yang membuatnya tetap gratis. Google Analytics, Vercel Analytics, Vercel Speed Insights, dan Ahrefs Analytics mengukur lalu lintas dan kinerja. Supabase menyimpan statistik permainan dan entri papan peringkat. Masing-masing memiliki ketentuannya sendiri, dan <privacy>kebijakan privasi</privacy> menjelaskan data apa yang disentuh oleh masing-masing layanan dan pilihan yang Anda miliki."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Perubahan pada ketentuan ini",
+        "blocks": [
+          {
+            "p": "Saya dapat memperbarui ketentuan ini ketika situs atau layanannya berubah. Versi terbaru selalu ada di alamat ini, dan terus menggunakan situs setelah ada perubahan berarti Anda menerima ketentuan yang diperbarui. Untuk apa pun yang berdampak berarti bagi pemain, seperti perubahan cara kerja papan peringkat, saya juga mencatatnya di catatan perubahan."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Kontak",
+        "blocks": [
+          {
+            "p": "Pertanyaan tentang ketentuan ini, atau entri papan peringkat yang ingin Anda minta untuk ditinjau atau dihapus, kirimkan ke <mail>{email}</mail>. Saya sendiri yang menjawabnya."
+          }
+        ]
+      }
+    }
+  }
+}

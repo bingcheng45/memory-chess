@@ -6,7 +6,7 @@ import {
   type ArticleEvent,
   type ArticleStats,
 } from "@/lib/articles/stats";
-import { supabase } from "@/lib/supabase";
+import { supabase, supabaseWriter, SUPABASE_WRITES_OFF_REASON } from "@/lib/supabase";
 
 const ARTICLE_STATS_TABLE = "article_stats";
 const ARTICLE_STATS_COLUMNS = "slug,views,likes";
@@ -45,12 +45,12 @@ export async function recordArticleEvent(
   slug: string,
   event: ArticleEvent,
 ): Promise<RecordArticleEventResult> {
-  if (!supabase) {
-    return { status: "unavailable", cause: "Supabase is not configured" };
+  if (!supabaseWriter) {
+    return { status: "unavailable", cause: SUPABASE_WRITES_OFF_REASON };
   }
 
   try {
-    const { data, error } = await supabase
+    const { data, error } = await supabaseWriter
       .rpc(RECORD_ARTICLE_EVENT_FUNCTION, { p_slug: slug, p_event: event })
       .abortSignal(AbortSignal.timeout(SUPABASE_TIMEOUT_MS));
 

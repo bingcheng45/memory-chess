@@ -49,7 +49,7 @@ describe("the leaderboard ranking order on the wire", () => {
   });
 
   it("sends the board's ranking order unchanged when listing a difficulty", async () => {
-    const result = await getLeaderboard("hard");
+    const result = await getLeaderboard({ difficulty: "hard" });
 
     expect(result.error).toBeUndefined();
     expect(mockRequestUrls).toHaveLength(1);

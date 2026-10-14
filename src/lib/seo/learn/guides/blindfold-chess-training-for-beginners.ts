@@ -1,60 +1,66 @@
-import type { LearnPosition } from "../positions";
-import type { LearnGuide } from "../schema";
+import type { LearnDocument } from "../schema";
 
-const guide: LearnGuide = {
-  slug: "blindfold-chess-training-for-beginners",
-  goal: "visualization",
-  title: "Blindfold Chess Training for Beginners",
-  h1: "Blindfold chess training for beginners, in four stages with a pass mark each",
-  description:
-    "A four-stage route into blindfold chess, from holding two kings without a board to a full game with the score sheet in view.",
-  primaryKeyword: "blindfold chess training",
-  secondaryKeywords: [
-    "blindfold chess for beginners",
-    "how to play blindfold chess",
-    "mental board training",
-    "replay a game without a board",
-    "chess focus exercises",
-  ],
-  ctaLabel: "Play 2 pieces, 10 seconds, kings only",
-  quickAnswer:
-    "Do not start with a game. Hold two kings without a board, learn the rules a mental board must obey, then replay a short game covered. Play blind only when each stage passes its test.",
-  keyTakeaways: [
-    "Each stage has a pass mark, so you know when to move on and when to repeat.",
-    "The position rules the game enforces double as a checklist for a drifting mental board.",
-    "The score sheet is allowed at first. Rebuilding the board from it is the skill.",
-    "Scholar's mate is the first replay, because four moves end in a position you can check from memory.",
-  ],
-  whoThisIsFor: [
-    "Players who tried a blindfold game and lost the bishops by move ten.",
-    "Players who can follow a game from notation with a board, but not without one.",
-  ],
-  timeToRead: "8 min read",
-  difficulty: "Beginner to Intermediate",
-  publishedAt: "2026-03-06T00:00:00.000Z",
-  updatedAt: "2026-09-15T00:00:00.000Z",
+const guide: LearnDocument = {
+  meta: {
+    slug: "blindfold-chess-training-for-beginners",
+    title: "Blindfold Chess Training: A 4-Stage Beginner Plan",
+    h1: "Blindfold chess training for beginners in four stages, each with a pass mark",
+    description: "Blindfold chess training in four stages, from two kings held without a board to a full game. Each stage has a pass mark that tells you when to move on.",
+    group: "visualization",
+    level: "improver",
+    publishedAt: "2026-03-06T00:00:00.000Z",
+    updatedAt: "2026-10-13T00:00:00.000Z",
+    questions: [
+      "How do I start playing blindfold chess?",
+      "How long does it take to learn blindfold chess?",
+      "How do I know my mental chess board is wrong?",
+    ],
+    keywords: {
+      primary: "blindfold chess training",
+      secondary: [
+        "blindfold chess for beginners",
+        "how to play blindfold chess",
+        "mental board training",
+        "replay a game without a board",
+        "chess focus exercises",
+      ],
+    },
+  },
+  intro: {
+    quickAnswer: "Blindfold chess training for beginners starts with two kings held without a board, not a game. Next, learn six checks that catch the worst errors in your mental picture, then replay ten moves of your own games from the move list alone. Play a full game blind only after each stage passes its test.",
+    takeaways: [
+      "Each stage has a pass mark, so you know when to move on and when to repeat.",
+      "Six checks that every Memory Chess position passes also catch the worst errors in a mental board that has drifted.",
+      "From stage two on, each test makes you name the pieces that never moved, the ones you lose.",
+      "Keep the move list in view until a full game comes out clean. Rebuilding from it is the skill.",
+    ],
+    audience: [
+      "Players who tried a blindfold game and lost the bishops by move ten.",
+      "Players who can follow a game from notation with a board, but not without one.",
+    ],
+  },
   sections: [
     {
       id: "why-games-collapse",
-      title: "Why a first blindfold game collapses",
+      heading: "Why a first blindfold game collapses",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
-            "A blindfold game does not fail all at once. It can fail on a single piece, and a piece that has not moved is easy to lose track of. You know where the knights are because you moved them. The bishop on c1 sat still for twelve moves, so it fell out of the picture, and you play as if it is not there.",
-            "So the training has to build the board, not the move list. The four stages below go from two pieces to a full game, and each has a test you either pass or repeat.",
+            "A blindfold game often fails on a single piece that has not moved. You know where the knights are because you moved them. The bishop on c1 sat still for twelve moves, so it fell out of the picture, and you play as if it is not there.",
+            "So the training builds the whole board, including the pieces that never move. Each of the four stages below has a test you pass or repeat.",
           ],
         },
       ],
     },
     {
       id: "stage-one-two-kings",
-      title: "Stage one, two kings and nothing else",
+      heading: "Stage one, two kings and nothing else",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
-            "The easiest preset in Memory Chess is 2 pieces, and the position rules guarantee those two are the kings, one of each colour, never on adjacent squares. That makes it the smallest blindfold exercise there is. Two squares, both named, held without a board.",
+            "The easiest preset in Memory Chess is 2 pieces, and the position rules make those two the kings, never on adjacent squares.",
           ],
         },
         {
@@ -62,22 +68,17 @@ const guide: LearnGuide = {
           drills: [
             {
               title: "Two kings, eyes shut",
-              description:
-                "Play 6 rounds of 2 pieces with 10 seconds to look. Say both squares aloud, shut your eyes, name the colour of each square, then open them and place the kings.",
+              description: "Play 6 rounds of 2 pieces with 10 seconds to look. Say both squares aloud, shut your eyes, name the colour of each square, then open them and place the kings.",
               duration: "About 3 minutes",
               goal: "Hold two named squares without the board in front of you.",
-              ctaLabel: "Play 2 pieces, 10 seconds, kings only",
-              setup: {
-                pieceCount: 2,
-                memorizeTime: 10,
-              },
+              play: { label: "Play 2 pieces, 10 seconds, kings only", pieceCount: 2, memorizeTime: 10 },
             },
           ],
         },
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
-            "The pass mark is six perfect rounds in a row on two separate days, with both square colours right as well. Do not skip the colours. They let you test your picture in a blindfold game later, because a bishop only ever lives on one colour.",
+            "The pass mark is six perfect rounds in a row on two separate days, with both square colours right as well. Do not skip the colours. A bishop only ever lives on one colour, so colours let you test your picture later.",
             "If you cannot name a square's colour without thinking, do the coordinates guide first and come back.",
           ],
         },
@@ -85,86 +86,148 @@ const guide: LearnGuide = {
     },
     {
       id: "stage-two-sanity-rules",
-      title: "Stage two, rules a mental board must obey",
+      heading: "Stage two, six checks that catch a drifting mental board",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
-            "Every position Memory Chess shows passes a fixed set of checks before it reaches the screen. The same checks catch a drifting mental board. When your imagined position breaks one, the picture is wrong, and you rebuild from the last move you are sure of.",
+            "Every position Memory Chess shows passes a fixed set of checks. The same checks catch a drifting mental board. When your imagined position breaks one, the picture is wrong, and you rebuild from the last move you are sure of.",
+            "Passing all six does not prove the picture is right. A knight one square off breaks none of them. They catch the gross errors, and stages three and four catch the rest by comparing with the real board.",
           ],
         },
         {
-          kind: "steps",
+          kind: "list",
           ordered: false,
           items: [
             "Exactly one king of each colour.",
             "The two kings never stand on adjacent squares.",
             "No pawn on the first rank or the eighth. A pawn you picture on e1 is a pawn you lost track of.",
-            "A side's two bishops never stand on squares of the same colour. If both of Black's bishops are on dark squares in your head, one of them sits on a wrong square. A bishop never changes colour.",
+            "A side's two bishops never stand on squares of the same colour. If you picture both of Black's bishops on dark squares, one is misplaced.",
             "No side has more of a piece than a set holds. Eight pawns, two knights, two bishops, two rooks, one queen. If you count three black knights, your picture has invented one.",
             "Both kings are never in check at once, and a king in check belongs to the side to move.",
-          ],
-        },
-        {
-          kind: "paragraphs",
-          paragraphs: [
-            "Practise the checks on a game you have played. Read the first ten moves from the score, cover the board, and run all six on your picture. Then uncover and count how many pieces sat on the wrong square. The pass mark is a count of zero on two different days.",
-            "Real games have one exception to the bishop and piece-count checks, promotion. A promoted pawn can become a second queen, a third knight, or a bishop on its partner's colour. Look for promotions in the move list before you trust those two checks.",
-          ],
-        },
-      ],
-    },
-    {
-      id: "stage-three-covered-replay",
-      title: "Stage three, replay a short game under a cloth",
-      blocks: [
-        {
-          kind: "paragraphs",
-          paragraphs: [
-            "The first game to replay blind is Scholar's mate, because it is four moves long and ends in a position you can check from memory. 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7 mate.",
-            "Say each move, then say where every piece that has moved now stands. After move four, White has a queen on f7, a bishop on c4 and a pawn on e4. Black has knights on c6 and f6, a pawn on e5, and a king on e8 with no way out.",
-            "Now say why it is mate. The king cannot take on f7 because the bishop on c4 covers that square. d8 holds Black's queen, f8 the bishop and d7 a pawn, and the queen on f7 covers e7. If you can explain that without a board, stage three has started.",
           ],
         },
         {
           kind: "drills",
           drills: [
             {
-              title: "Ten moves under the cloth",
-              description:
-                "Read ten moves of a game you played with the board covered. Name the square of every piece still on the board, then run the stage-two checks before you uncover.",
-              duration: "About 6 minutes",
-              goal: "Rebuild a full board from a move list with no pieces in front of you.",
-              ctaLabel: "Replay ten moves covered",
+              title: "Scholar's mate with no board",
+              description: "Stop scrolling here, so the diagram below stays out of sight, and keep no board in front of you. Say 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7# aloud, one move at a time. Name the square of all 31 pieces left, run the six checks and say why Black is mated. Then scroll down and compare with the diagram.",
+              duration: "About 5 minutes",
+              goal: "Every piece named on its square and the mate explained before you look at the diagram.",
             },
           ],
         },
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
-            "The pass mark is two clean replays of ten moves on different days. Clean means every piece on its square, not most of them. A single misplaced pawn in a covered replay can become a lost piece in a blind game.",
+            "Scholar's mate is the right first game because it is four moves long and only six pieces move. The other 25 still stand where they started, and those are the ones a blind player drops.",
+            "Now say why it is mate. The king on e8 cannot take on f7, because the bishop on c4 covers that square. It cannot step to e7, because the queen on f7 covers it. Black's own queen, bishop and pawn fill d8, f8 and d7. Black's king is in check and it is Black's move, so the last item on the list holds.",
+            "The pass mark is a clean run on two different days. Clean means every piece on its square and the mate explained before you look at the diagram.",
+          ],
+        },
+        {
+          kind: "board",
+          position: {
+            id: "scholars-mate",
+            line: ["e4", "e5", "Bc4", "Nc6", "Qh5", "Nf6", "Qxf7#"],
+            claims: [
+              { kind: "pieceCount", count: 31 },
+              { kind: "check" },
+              { kind: "mate" },
+              { kind: "occupant", square: "f7", piece: "wq" },
+              { kind: "occupant", square: "c4", piece: "wb" },
+              { kind: "occupant", square: "e4", piece: "wp" },
+              { kind: "occupant", square: "c6", piece: "bn" },
+              { kind: "occupant", square: "f6", piece: "bn" },
+              { kind: "occupant", square: "e5", piece: "bp" },
+              { kind: "occupant", square: "e8", piece: "bk" },
+              { kind: "occupant", square: "d8", piece: "bq" },
+              { kind: "occupant", square: "f8", piece: "bb" },
+              { kind: "occupant", square: "d7", piece: "bp" },
+              { kind: "occupant", square: "e7", piece: null },
+              { kind: "attacks", from: "c4", squares: ["f7"] },
+              { kind: "attacks", from: "f7", squares: ["e7"] },
+            ],
+          },
+          caption: "After 4.Qxf7#, 31 pieces remain and 25 of them never moved, so check those first.",
+        },
+        {
+          kind: "prose",
+          paragraphs: [
+            "Promotion can break the bishop and piece-count checks in a real game. A pawn can become a third knight or a bishop on its partner's colour, so look for promotions in the move list first.",
           ],
         },
       ],
     },
     {
-      id: "stage-four-with-score-sheet",
-      title: "Stage four, a game with the score sheet in view",
+      id: "stage-three-covered-replay",
+      heading: "Stage three, ten moves of your own game from the move list",
       blocks: [
         {
-          kind: "paragraphs",
+          kind: "prose",
           paragraphs: [
-            "Play against a friend or an engine with the board hidden and the move list visible. The list is not cheating. It is the tool you rebuild from. The rule is that you may read the list only to rebuild after a checklist failure, never to find your next move.",
-            "Stop at move 15 the first few times, whatever the position, and set the final position up on a real board from memory. Count the pieces on the wrong square. The pass mark is two games in a row with every piece right at move 15.",
-            "After that, play to the end, and only then take the sheet away.",
+            "Scholar's mate can be learned by heart. Your own games cannot, so they test whether you rebuild the board from the moves alone.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
+            {
+              title: "Ten moves from the move list",
+              description: "Open one of your own games on the site you played it on. Cover the board with a sheet of paper or a sticky note, so only the move list shows. Read the first ten moves for each side, 20 in all. Name the square of every piece still on the board and run the six checks. Then step the site's board to Black's tenth move and count the pieces you placed on a wrong square.",
+              duration: "About 6 minutes",
+              goal: "Zero pieces on a wrong square after ten moves each, with nothing in front of you but the move list.",
+            },
+          ],
+        },
+        {
+          kind: "prose",
+          paragraphs: [
+            "The pass mark is two clean replays on different days, from different games. One misplaced pawn in a replay can become a lost piece in a blind game.",
+          ],
+        },
+      ],
+    },
+    {
+      id: "stage-four-with-move-list",
+      heading: "Stage four, a game with the move list in view",
+      blocks: [
+        {
+          kind: "prose",
+          paragraphs: [
+            "You rebuild from the list, so keeping it in view is part of the drill.",
+          ],
+        },
+        {
+          kind: "drills",
+          drills: [
+            {
+              title: "Fifteen moves with the move list in view",
+              description: "Play a friend or an engine. Cover the game board with paper, or turn on the site's blindfold or hidden-pieces setting if it has one. Read the move list after your picture breaks one of the six checks or when unsure where a piece stands, never to find a move. At move 15, set the position up on a real board from memory. Uncover the game board and count the pieces on your real board that stand on a different square.",
+              duration: "One game every other day",
+              goal: "Every piece on its square at move 15, two games in a row.",
+            },
+          ],
+        },
+        {
+          kind: "prose",
+          paragraphs: [
+            "Once two games pass at move 15, play your next games to the end with the list still in view. Check the final position on a real board the same way. When one full game comes out clean, play the next one with the list hidden. That is your first full blind game.",
           ],
         },
       ],
     },
     {
       id: "how-long-each-stage-takes",
-      title: "How long each stage takes",
+      heading: "How long blindfold chess training takes",
       blocks: [
+        {
+          kind: "prose",
+          paragraphs: [
+            "The first three stages take about four weeks. Stage four takes at least another week. You need two clean 15-move games and then one clean full game, playing one game every other day. That puts your first full blind game, a whole game with the list hidden, about five weeks from today. Repeat a stage you fail instead of skipping ahead.",
+          ],
+        },
         {
           kind: "plan",
           steps: [
@@ -176,79 +239,81 @@ const guide: LearnGuide = {
             {
               label: "Stage two",
               duration: "5 minutes a day for a week",
-              detail: "Run the six checks on ten covered moves of a game each day until the count of wrong squares reaches zero twice.",
+              detail: "Replay Scholar's mate with no board, name all 31 pieces and run the six checks, until two days come out clean.",
             },
             {
               label: "Stage three",
               duration: "6 minutes a day for two weeks",
-              detail: "Scholar's mate first, then ten moves of your own games. Two clean replays on different days to pass.",
+              detail: "Ten moves each from one of your own games a day, until two different games pass on different days.",
             },
             {
               label: "Stage four",
-              duration: "One game every other day",
-              detail: "Fifteen moves with the sheet in view, checked on a real board, until two games in a row come out clean.",
+              duration: "One game every other day, a week or more",
+              detail: "Fifteen moves with the move list in view until two games in a row come out clean, then one clean full game with the list still in view.",
             },
           ],
         },
       ],
     },
   ],
-  faq: [
+  end: [
     {
-      question: "Should I also train with the 6-piece or 12-piece presets?",
-      answer:
-        "Not for blindfold. A game hands you every piece's location through moves you chose, while a random 12-piece position hands you nothing, so it trains recall rather than tracking. Stage one uses 2 pieces because two named squares is the smallest board you can hold, and the rules guarantee they are the kings.",
+      kind: "cta",
+      target: {
+        kind: "game",
+        label: "Play 2 pieces, 10 seconds, kings only",
+        pieceCount: 2,
+        memorizeTime: 10,
+      },
+      why: "Two kings and ten seconds is stage one of the plan: hold both squares with nothing else on the board.",
     },
     {
-      question: "Do I need to be a strong player first?",
-      answer:
-        "No. You need to know how every piece moves and the square names without counting. Stage one assumes nothing else. Stage four assumes you can read notation at reading speed.",
+      kind: "cta",
+      target: {
+        kind: "article",
+        slug: "judit-polgar",
+        label: "How Judit Polgár played blindfold chess at age seven",
+      },
+      why: "Read how Judit Polgár played blindfold at seven, the skill this plan builds one stage at a time.",
     },
     {
-      question: "What if I picture the board from Black's side?",
-      answer:
-        "Pick one orientation and keep it, even when you play Black. White at the bottom matches the way diagrams print, which makes it the easier default. Switching mid-game is an easy way to lose track of a bishop.",
+      kind: "faq",
+      items: [
+        {
+          question: "Should I also train with the 6-piece or 12-piece presets?",
+          answer: "Not for blindfold. In a game you track pieces through moves you chose. A random 12-piece position has no moves to follow, so it trains recall instead. Stage one uses 2 pieces because the rules make them the kings, the smallest board you can hold.",
+        },
+        {
+          question: "Do I need to be a strong player first?",
+          answer: "No. You need to know how every piece moves and the square names without counting. Stage one assumes nothing else. Stage four assumes you can read notation at reading speed.",
+        },
+        {
+          question: "What if I picture the board from Black's side?",
+          answer: "Pick one orientation and keep it, even when you play Black. White at the bottom matches the way diagrams print, which makes it the easier default. Switching mid-game is an easy way to lose track of a bishop.",
+        },
+      ],
+    },
+    {
+      kind: "furtherReading",
+      items: [
+        {
+          kind: "guide",
+          slug: "chess-visualization-exercises",
+          reason: "Start there if a covered board loses pieces after a single move.",
+        },
+        {
+          kind: "guide",
+          slug: "chess-coordinates-practice",
+          reason: "Square colours and names without counting, which stage one assumes.",
+        },
+        {
+          kind: "guide",
+          slug: "chess-calculation-exercises-for-beginners",
+          reason: "For keeping the starting position steady two moves into a line.",
+        },
+      ],
     },
   ],
-  relatedArticles: [
-    {
-      slug: "chess-visualization-exercises",
-      reason: "Start there if a covered board loses pieces after a single move.",
-    },
-    {
-      slug: "chess-coordinates-practice",
-      reason: "Square colours and names without counting, which stage one assumes.",
-    },
-    {
-      slug: "chess-calculation-exercises-for-beginners",
-      reason: "For keeping the starting position steady two moves into a line.",
-    },
-  ],
-  sources: [],
 };
-
-export const positions: LearnPosition[] = [
-  {
-    id: "scholars-mate",
-    sectionId: "stage-three-covered-replay",
-    line: ["e4", "e5", "Bc4", "Nc6", "Qh5", "Nf6", "Qxf7#"],
-    claims: [
-      { kind: "mate" },
-      { kind: "occupant", square: "f7", piece: "wq" },
-      { kind: "occupant", square: "c4", piece: "wb" },
-      { kind: "occupant", square: "e4", piece: "wp" },
-      { kind: "occupant", square: "c6", piece: "bn" },
-      { kind: "occupant", square: "f6", piece: "bn" },
-      { kind: "occupant", square: "e5", piece: "bp" },
-      { kind: "occupant", square: "e8", piece: "bk" },
-      { kind: "occupant", square: "d8", piece: "bq" },
-      { kind: "occupant", square: "f8", piece: "bb" },
-      { kind: "occupant", square: "d7", piece: "bp" },
-      { kind: "occupant", square: "e7", piece: null },
-      { kind: "attacks", from: "c4", squares: ["f7"] },
-      { kind: "attacks", from: "f7", squares: ["e7"] },
-    ],
-  },
-];
 
 export default guide;

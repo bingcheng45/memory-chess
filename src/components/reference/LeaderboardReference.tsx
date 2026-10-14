@@ -1,4 +1,3 @@
-import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
 import { LEADERBOARD_ROW_LIMIT } from "@/lib/reference/facts";
 import { getReferenceProse, interpolate } from "@/lib/reference/prose";
 
@@ -13,30 +12,18 @@ export default function LeaderboardReference({ locale }: { locale: string }) {
   const prose = getReferenceProse(locale).leaderboard;
 
   return (
-    <section
-      aria-labelledby="leaderboard-reference-title"
-      className="bg-bg-dark text-text-primary"
-    >
-      <div className="container mx-auto max-w-4xl px-2 sm:px-4 pb-4 pt-6">
-        <div
-          className={`${EDITORIAL_STYLES.readingColumn} border-t border-white/10 pt-10`}
-        >
-          <h2
-            id="leaderboard-reference-title"
-            className={EDITORIAL_STYLES.sectionTitle}
-          >
-            {prose.heading}
-          </h2>
-          <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-4`}>
-            <p>{prose.body}</p>
-            <p>{prose.order}</p>
-            <p>{prose.columnsNote}</p>
-            <p>
-              {interpolate(prose.sectionIntro, {
-                limit: LEADERBOARD_ROW_LIMIT,
-              })}
-            </p>
-          </div>
+    <section aria-labelledby="leaderboard-reference-title" className="lb-ref">
+      <div className="lab-wrap">
+        <div className="lb-ref-body">
+          <h2 id="leaderboard-reference-title">{prose.heading}</h2>
+          <p>{prose.body}</p>
+          <p>{prose.order}</p>
+          <p>{prose.columnsNote}</p>
+          <p>
+            {interpolate(prose.sectionIntro, {
+              limit: LEADERBOARD_ROW_LIMIT,
+            })}
+          </p>
         </div>
       </div>
     </section>

@@ -24,13 +24,7 @@ jest.mock("@/i18n/navigation", () => ({
   usePathname: () => "/articles/alder-fixture",
 }));
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>PageHeader</div>;
-  }
-
-  return MockPageHeader;
-});
+jest.mock("@/components/lab-paper/LabPaperHeader", () => ({ LabPaperHeader: () => <div>LabPaperHeader</div> }));
 
 const ENGLISH_CHROME = [
   "All articles",

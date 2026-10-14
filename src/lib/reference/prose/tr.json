@@ -6,15 +6,15 @@
       "heading": "Bir turun üç aşaması",
       "memorize": {
         "title": "Ezberleme",
-        "body": "Bir konum, sabit bir saniye boyunca tam tahtada görünür. Hiçbir şey hareket etmez ve hiçbir şey gizlenmez. Bu aşamayı Atla ile erken bitirebilirsiniz ve saat, size verilen süreyi değil, gerçekten baktığınız süreyi kaydeder."
+        "body": "Bir konum, sabit bir saniye boyunca tam tahtada görünür. Hiçbir şey hareket etmez ve hiçbir şey gizlenmez. Bu aşamayı Bitti ile erken bitirebilirsiniz ve saat, size verilen süreyi değil, gerçekten baktığınız süreyi kaydeder."
       },
       "place": {
         "title": "Yerleştirme",
-        "body": "Tahta temizlenir. Bir taş türü ve rengi seçer, ardından bir kareye dokunarak taş koyar ya da tekrar dokunarak geri alırsınız. Burada süre sınırı yoktur, ama saat tahtanın temizlendiği andan gönderdiğiniz ana kadar işler."
+        "body": "Tahta temizlenir. Paletten bir taş seçer, ardından bir kareye dokunarak onu koyar ya da tekrar dokunarak geri alırsınız. Burada süre sınırı yoktur, ama saat tahtanın temizlendiği andan gönderdiğiniz ana kadar işler."
       },
       "score": {
         "title": "Puanlama",
-        "body": "Tahtanız orijinaliyle kare kare karşılaştırılır. Hangi taşların doğru, hangilerinin yanlış olduğunu ve hangilerini atladığınızı, size gösterilen konumla birlikte görürsünüz. Geniş ekranlarda iki tahta yan yana, dar ekranlarda alt alta durur."
+        "body": "Tahtanız orijinaliyle kare kare karşılaştırılır. Doğru kareler ve yanlış taşlar tahtada işaretlenir, atladığınız taşlar ise durdukları yerde soluk olarak görünür. Yanında doğruluğunuzu ve taş türüne göre ne kadar hatırladığınızı gösteren sonuçlar yer alır."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "Bir tarafın iki fili asla aynı renkteki karelerde durmaz.",
         "simultaneous-check": "İki şah asla aynı anda şah altında olmaz.",
         "checked-side-not-to-move": "Bir şah şahtaysa, sıra o tarafın hamlesindedir.",
+        "home-rank-pawn-check": "Başlangıç yatayından hiç ayrılmamış bir piyon asla şah çekmez.",
+        "impossible-double-check": "Bir şaha asla ikiden fazla taş aynı anda şah çekmez ve çifte şahta her zaman bir fil, kale ya da vezir yer alır.",
         "piece-count": "Tahta, seçilen seviyenin istediği kadar taş içerir.",
         "invalid-fen": "Konum, bir tahtanın kurulabileceği yasal bir satranç konumudur."
       },

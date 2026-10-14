@@ -1,4 +1,4 @@
-import { render, screen } from "@/test-utils/intl";
+import { fireEvent, render, screen } from "@/test-utils/intl";
 import GameConfig from "@/components/game/GameConfig";
 import { useGameStore } from "@/lib/store/gameStore";
 
@@ -18,8 +18,8 @@ const expectPressed = (label: RegExp) => {
 };
 
 const expectSliders = (pieceCount: number, memorizeTime: number) => {
-  expect(screen.getByLabelText("Number of Pieces")).toHaveValue(String(pieceCount));
-  expect(screen.getByLabelText("Memorization Time")).toHaveValue(String(memorizeTime));
+  expect(screen.getByLabelText("Number of pieces")).toHaveValue(String(pieceCount));
+  expect(screen.getByLabelText("Memorization time")).toHaveValue(String(memorizeTime));
 };
 
 beforeEach(() => {
@@ -39,7 +39,7 @@ describe("GameConfig ?difficulty= deep link", () => {
 
     expect(screen.getByRole("button", { name: /Hard/ })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: /Medium/ })).toHaveAttribute("aria-pressed", "false");
-    expect(screen.getByLabelText("Number of Pieces")).toHaveValue("12");
+    expect(screen.getByLabelText("Number of pieces")).toHaveValue("12");
   });
 
   it("keeps the Medium default for an unknown difficulty", () => {
@@ -117,3 +117,38 @@ describe("GameConfig last-game line", () => {
     expect(screen.queryByText(/12\.1000s/)).not.toBeInTheDocument();
   });
 });
+
+describe("GameConfig start", () => {
+  afterEach(() => {
+    Reflect.deleteProperty(window, "gtag");
+  });
+
+  it("offers one start button", () => {
+    render(<GameConfig />);
+
+    expect(screen.getAllByRole("button", { name: /start/i }).map((button) => button.textContent)).toEqual(["Start round"]);
+  });
+
+  it("starts the preset the form is set to", () => {
+    const onStart = jest.fn();
+    render(<GameConfig onStart={onStart} />);
+
+    fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Start round" }));
+
+    expect(onStart).toHaveBeenCalledWith(12, 8, "game_form");
+  });
+
+  it("starts a 60 second round from the slider and reports it as a form start", () => {
+    const gtag = jest.fn();
+    window.gtag = gtag;
+    render(<GameConfig />);
+
+    fireEvent.change(screen.getByLabelText("Memorization time"), { target: { value: "60" } });
+    fireEvent.click(screen.getByRole("button", { name: "Start round" }));
+
+    expect(useGameStore.getState().round).toMatchObject({ phase: "study", config: { pieceCount: 6, studyMs: 60000, source: "game_form" } });
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 60, source: "game_form" }]]);
+  });
+});
+

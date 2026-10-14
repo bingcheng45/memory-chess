@@ -1,9 +1,9 @@
 import { buildLearnPageMetadata } from "@/lib/seo/learnMetadata";
 import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
-import type { LearnPageContent } from "@/lib/seo/learn/schema";
+import type { LearnPage } from "@/lib/seo/learn";
 
-function pageFor(slug: string): LearnPageContent {
-  const page = LEARN_PAGES.find((entry) => entry.slug === slug);
+function pageFor(slug: string): LearnPage {
+  const page = LEARN_PAGES.find((entry) => entry.meta.slug === slug);
   if (!page) throw new Error(`Unknown learn slug: ${slug}`);
   return page;
 }
@@ -51,10 +51,10 @@ describe("buildLearnPageMetadata", () => {
       "https://thememorychess.com/learn/how-to-stop-blundering-in-chess/opengraph-image";
 
     expect(openGraph.publishedTime).toBe(
-      pageFor("how-to-stop-blundering-in-chess").publishedAt,
+      pageFor("how-to-stop-blundering-in-chess").meta.publishedAt,
     );
     expect(openGraph.modifiedTime).toBe(
-      pageFor("how-to-stop-blundering-in-chess").updatedAt,
+      pageFor("how-to-stop-blundering-in-chess").meta.updatedAt,
     );
     expect(images[0]).toMatchObject({ url: cardUrl });
     expect(twitterImages[0]).toBe(cardUrl);
@@ -67,16 +67,16 @@ describe("buildLearnPageMetadata", () => {
       const openGraph = metadata.openGraph;
       const twitter = metadata.twitter;
 
-      expect(metadata.title).toBe(page.title);
-      expect(metadata.description).toBe(page.description);
-      expect(metadata.alternates).toEqual({ canonical: `/learn/${page.slug}` });
+      expect(metadata.title).toBe(page.meta.title);
+      expect(metadata.description).toBe(page.meta.description);
+      expect(metadata.alternates).toEqual({ canonical: `/learn/${page.meta.slug}` });
       expect(openGraph && "url" in openGraph ? openGraph.url : undefined).toBe(
-        `https://thememorychess.com/learn/${page.slug}`,
+        `https://thememorychess.com/learn/${page.meta.slug}`,
       );
-      expect(openGraph?.title).toBe(page.title);
-      expect(openGraph?.description).toBe(page.description);
-      expect(twitter?.title).toBe(page.title);
-      expect(twitter?.description).toBe(page.description);
+      expect(openGraph?.title).toBe(page.meta.title);
+      expect(openGraph?.description).toBe(page.meta.description);
+      expect(twitter?.title).toBe(page.meta.title);
+      expect(twitter?.description).toBe(page.meta.description);
     }
   });
 });

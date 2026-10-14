@@ -7,6 +7,7 @@ import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
 import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly } from "@/lib/seo/englishOnly";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
+import { TERMS_LAST_UPDATED } from "@/lib/seo/termsOfService";
 
 const SITE_URL = "https://thememorychess.com";
 
@@ -42,15 +43,21 @@ type SitemapEntryConfig = {
 const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   {
     path: "/",
-    lastModified: "2026-08-28T00:00:00.000Z",
+    lastModified: "2026-10-14T00:00:00.000Z",
     changeFrequency: "weekly",
     priority: 1.0,
   },
   {
     path: "/game",
-    lastModified: "2026-08-28T00:00:00.000Z",
+    lastModified: "2026-10-14T00:00:00.000Z",
     changeFrequency: "weekly",
     priority: 0.9,
+  },
+  {
+    path: "/daily",
+    lastModified: "2026-10-12T00:00:00.000Z",
+    changeFrequency: "daily",
+    priority: 0.8,
   },
   {
     path: "/leaderboard",
@@ -84,7 +91,7 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   },
   {
     path: "/terms",
-    lastModified: "2026-09-03T00:00:00.000Z",
+    lastModified: TERMS_LAST_UPDATED,
     changeFrequency: "yearly",
     priority: 0.3,
   },
@@ -95,8 +102,8 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     priority: 0.8,
   },
   ...EN_LEARN_PAGES.map((page) => ({
-    path: `/learn/${page.slug}`,
-    lastModified: page.updatedAt,
+    path: `/learn/${page.meta.slug}`,
+    lastModified: page.meta.updatedAt,
     changeFrequency: "weekly" as const,
     priority: 0.7,
   })),

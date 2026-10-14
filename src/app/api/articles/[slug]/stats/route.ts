@@ -6,9 +6,9 @@ import {
   recordArticleEvent,
   type RecordArticleEventResult,
 } from "@/lib/services/articleStatsService";
+import { isJson, readBodyWithinLimit } from "@/lib/server/requestBody";
 
 const MAX_BODY_BYTES = 64;
-const JSON_MEDIA_TYPE = "application/json";
 
 const ERRORS = {
   unknownArticle: { status: 404, error: "Unknown article" },
@@ -24,32 +24,6 @@ type RouteContext = { params: Promise<{ slug: string }> };
 function errorResponse(kind: keyof typeof ERRORS): NextResponse {
   const { status, error } = ERRORS[kind];
   return NextResponse.json({ error }, { status });
-}
-
-function isJson(contentType: string | null): boolean {
-  return contentType?.split(";")[0].trim().toLowerCase() === JSON_MEDIA_TYPE;
-}
-
-async function readBodyWithinLimit(request: Request): Promise<string | null> {
-  if (Number(request.headers.get("content-length")) > MAX_BODY_BYTES) return null;
-  if (request.body === null) return "";
-
-  const reader = request.body.getReader();
-  const decoder = new TextDecoder();
-  let received = 0;
-  let text = "";
-
-  for (;;) {
-    const { done, value } = await reader.read();
-    if (done) return text + decoder.decode();
-
-    received += value.byteLength;
-    if (received > MAX_BODY_BYTES) {
-      await reader.cancel();
-      return null;
-    }
-    text += decoder.decode(value, { stream: true });
-  }
 }
 
 function parseEvent(body: string): ArticleEvent | null {
@@ -87,7 +61,7 @@ export async function POST(request: Request, { params }: RouteContext) {
     // Without a preflight another site can only POST text/plain or a form type, so this stops it spending its visitors' browsers on likes.
     if (!isJson(request.headers.get("content-type"))) return errorResponse("notJson");
 
-    const body = await readBodyWithinLimit(request);
+    const body = await readBodyWithinLimit(request, MAX_BODY_BYTES);
     if (body === null) return errorResponse("bodyTooLarge");
 
     const event = parseEvent(body);

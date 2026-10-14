@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": "81b1f3a5232113b0caafd72a8cb7b8c728490de51c559ea415a1bfd3c26d1d66",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Tietoa",
+      "description": "Kuka tekee Memory Chessin, miksi peli on olemassa, miten kierros pisteytetään ja miten Opi-oppaat kirjoitetaan.",
+      "socialTitle": "Tietoa Memory Chessistä",
+      "socialDescription": "Kuka tekee Memory Chessin, miksi peli on olemassa ja miten se toimii."
+    },
+    "kicker": "Tietoa",
+    "title": "Tietoa Memory Chessistä",
+    "lede": "Memory Chess on ilmainen laudan muistamisen peli, jonka on tehnyt ja jota ylläpitää yksi ihminen. Tällä sivulla kerrotaan, kuka hän on, miksi peli on olemassa ja miten se oikeasti toimii.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Kuka sivustoa ylläpitää",
+        "blocks": [
+          {
+            "p": "Olen Bing Cheng, itsenäinen kehittäjä. Ylläpidän Memory Chessiä yksin, ja koodissa ja sivuston teksteissä minulla on apuna tekoäly. Taustalla ei ole tiimiä eikä yritystä. Teen myös <tont>Tontia</tont>, ja julkaisen tätä sivustoa koskevia päivityksiä tilillä <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Koska yksi ihminen hoitaa kaiken, sivusto pidetään tarkoituksella pienenä. Yksi peli, joukko harjoitusoppaita, tulostaulukko ja muutosloki, joka kertoo, mitä oikeasti julkaistiin."
+          },
+          {
+            "p": "Peli on ilmainen eikä vaadi tiliä. Google AdSensen kautta näytettävät mainokset auttavat kattamaan palvelinkulut, eikä mitään sivuston sisältöä ole lukittu maksun tai rekisteröitymisen taakse."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Miksi peli on olemassa",
+        "blocks": [
+          {
+            "p": "Useimmat shakissa kehittymisen neuvot ohjaavat aloittelijat avausten, tehtävien ja kurssien pariin. Oman kokemukseni mukaan varhaisempi ongelma on kaiken tämän alla. Aloittelijat kadottavat laudan tilanteen. He eivät huomaa puolustajaa, unohtavat kaksi siirtoa sitten liikkuneen nappulan ja menettävät nappuloita lyönteihin, jotka he huomaisivat heti kaaviosta."
+          },
+          {
+            "p": "Aseman pitäminen mielessä on taito, jota voi harjoitella, ja paikkoja harjoitella sitä suoraan oli vähän. Joten tein sellaisen. Memory Chess erottaa tämän yhden taidon muista ja antaa sille pistemäärän, jotta näet sen kehittyvän. Jos haluat peliin panoksia, voit lisätä valitsemasi nimen julkiseen tulostaulukkoon ja verrata itseäsi kaikkiin muihin."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Näin kierros toimii",
+        "blocks": [
+          {
+            "p": "Valitset, kuinka monta nappulaa haluat kohdata ja kuinka kauan saat tutkia niitä. Valmiit asetukset ulottuvat Helposta, kaksi nappulaa kymmenessä sekunnissa, Suurmestariin, kaksikymmentä nappulaa viidessä sekunnissa, ja voit asettaa minkä tahansa oman yhdistelmän. Sen jälkeen kierros etenee kolmessa vaiheessa."
+          },
+          {
+            "p": "Ensin painat mieleesi. Lauta näyttää aseman valitsemasi ajan, ja sitten asema katoaa. Seuraavaksi rakennat sen uudelleen. Asetat nappulat tyhjälle laudalle muistin varassa. Lopuksi saat tuloksesi. Peli vertaa lautaasi alkuperäiseen ruutu ruudulta."
+          },
+          {
+            "p": "Pisteytys on tiukka. Nappula lasketaan oikeaksi vain, kun oikea nappula oikeaa väriä on täsmälleen siinä ruudussa, jossa se oli alkuperäisessä asemassa. Torni ratsun paikalla on väärin kahdesti. Se lasketaan väärin sijoitetuksi nappulaksi, ja sen syrjäyttämä ratsu lasketaan puuttuvaksi. Tarkkuutesi on se osuus alkuperäisistä nappuloista, jotka toistit täsmälleen."
+          },
+          {
+            "p": "Tulosnäkymä näyttää kaikki kolme ryhmää, oikein menneet sijoitukset, väärin menneet ja kokonaan unohtamasi nappulat, joten jokainen kierros kertoo, mihin kannattaa tarttua seuraavalla kerralla. Voit <game>kokeilla kierrosta</game> alle minuutissa."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Näin Opi-oppaat kirjoitetaan",
+        "blocks": [
+          {
+            "p": "<learn>Opi-kirjastossa</learn> on {count, plural, one {# opas} other {# opasta}} laudan hahmottamisesta, visualisoinnista ja muistin harjoittamisesta. Ne on kirjoitettu tekoälyn avustuksella. Skripti tarkistaa jokaisesta niiden shakkiasemasta nappuloiden määrän, laillisuuden ja jokaisen hyökkäyksen, jonka teksti väittää. Jokainen väite siitä, miten Memory Chess toimii, on jäljitetty pelin koodiin. Jokaisessa oppaassa on harjoituksia. Osa avaa pelissä kierroksen oikeilla asetuksilla. Loput on tarkoitettu oikealle laudalle."
+          },
+          {
+            "p": "Kun oppaat esittävät väitteitä muistista ja oppimisesta, ne viittaavat julkaistuun tutkimukseen, muun muassa Gobetin ja Simonin työhön shakkimuistista sekä kokeelliseen kirjallisuuteen mieleen palauttamisesta ja jaksotetusta harjoittelusta. Jokainen lähdeviite linkittää lähteeseensä. En ole tehnyt omaa tutkimusta, eivätkä oppaat väitä muuta."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Sivuston vaiheet",
+        "blocks": [
+          {
+            "p": "Ensimmäinen julkaisu tuli verkkoon maaliskuussa 2025 pelin riisuttuna versiona. Mobiilipelaaminen ja nappuloiden valinta seurasivat muutaman viikon sisällä. Opi-kirjasto avattiin maaliskuussa 2026, ja elokuussa 2026 itse peliä alettiin pelata 24 kielellä. Oppaat ja muutosloki ovat englanniksi. <changelog>Muutosloki</changelog> kirjaa jokaisen versioidun julkaisun, myös virhekorjaukset. Pidän sen rehellisenä, koska käytän sitä itse muistaakseni, mitä muuttui ja milloin."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Ota yhteyttä",
+        "blocks": [
+          {
+            "p": "Kirjoita minulle osoitteeseen <mail>{email}</mail> tai käytä <contact>yhteydenottolomaketta</contact>. Luen kaiken, ja pelaajien ilmoitukset ovat ennenkin korjanneet oikeita virheitä. Jos haluat lukea pienellä präntätyn, <privacy>tietosuojaseloste</privacy> ja <terms>käyttöehdot</terms> kertovat, miten sivusto käsittelee tietoja ja mihin sitoudut pelaamalla."
+          }
+        ]
+      }
+    }
+  }
+}

@@ -15,30 +15,24 @@ const SpeedInsights = dynamic(() =>
 import { GoogleAnalytics } from "@next/third-parties/google";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
-import Footer from "@/components/ui/Footer";
+import {
+  isChangelogAnnouncementActive,
+  LATEST_CHANGELOG_ENTRY,
+} from "@/lib/changelog";
+import SiteFooter from "@/components/lab-paper/SiteFooter";
 import { ADSENSE_CLIENT_ID, ADSENSE_SCRIPT_URL } from "@/lib/adsense";
 import {
   AHREFS_ANALYTICS_KEY,
   AHREFS_ANALYTICS_SCRIPT_URL,
 } from "@/lib/ahrefs";
 import { routing, type Locale } from "@/i18n/routing";
-import { splitArticlesNamespace } from "@/lib/articles/messageScope";
-import { getSansFontClass, geistMono } from "@/lib/fonts";
-import { buildAlternates } from "@/lib/seo/alternates";
+import { splitClientMessages } from "@/lib/articles/messageScope";
+import { fontRequestScript, getSansFontClass, geistMono } from "@/lib/fonts";
+import { buildAlternates, localizedUrl } from "@/lib/seo/alternates";
+import { socialMetadata } from "@/lib/seo/brand";
 
 // Define your site URL for canonical and OG URLs
 const siteUrl = "https://thememorychess.com";
-
-// Social preview artwork. Served as a static file from /public rather than a
-// dynamic `opengraph-image` route: X's card crawler is noticeably more reliable
-// against a plain PNG with no query string and no Next.js `Vary` headers.
-const socialImage = {
-  url: `${siteUrl}/social-preview.png`,
-  width: 1200,
-  height: 630,
-  type: "image/png",
-  alt: "Memory Chess knight and brain logo — thememorychess.com",
-};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -50,9 +44,14 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }): Promise<Metadata> {
   const { locale } = await params;
-  // The home route is a client component, so its copy comes from the layout
-  // defaults. Every other route overrides both in its own generateMetadata.
+  // The home route sets no metadata of its own, so its copy comes from the
+  // layout defaults. Every other route overrides both in its own generateMetadata.
   const t = await getTranslations({ locale, namespace: "home.meta" });
+  const social = socialMetadata({
+    title: t("socialTitle"),
+    description: t("socialDescription"),
+    url: localizedUrl("/", locale),
+  });
 
   return {
     // Basic Metadata
@@ -72,24 +71,15 @@ export async function generateMetadata({
     },
 
     // Open Graph (Facebook, LinkedIn) metadata
-    openGraph: {
-      type: "website",
-      url: siteUrl,
-      title: t("socialTitle"),
-      description: t("socialDescription"),
-      siteName: "Memory Chess",
-      images: [socialImage],
-    },
+    openGraph: { ...social.openGraph, type: "website", siteName: "Memory Chess" },
 
-    // Twitter metadata
+    // X caches cards against the *page* URL, not the image URL, so a
+    // query-string bump on the artwork does nothing -- share a fresh URL
+    // variant (e.g. ?s=x) to force a re-crawl after artwork changes.
     twitter: {
-      card: "summary_large_image",
+      ...social.twitter,
       title: t("twitterTitle"),
       description: t("twitterDescription"),
-      // Must match the Open Graph URL exactly. X caches cards against the *page*
-      // URL, not the image URL, so a query-string bump here does nothing -- share
-      // a fresh URL variant (e.g. ?s=x) to force a re-crawl after artwork changes.
-      images: [socialImage],
       creator: "@TheMemoryChess",
       site: "@TheMemoryChess",
     },
@@ -121,7 +111,7 @@ export async function generateMetadata({
     applicationName: "Memory Chess",
     appleWebApp: {
       title: "Memory Chess",
-      statusBarStyle: "black-translucent",
+      statusBarStyle: "default",
       capable: true,
     },
 
@@ -132,12 +122,13 @@ export async function generateMetadata({
   };
 }
 
+/** The browser chrome takes the Lab Paper page colour (--lp-paper), the site's light paper. */
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
-  themeColor: "#1D1C20",
-  colorScheme: "dark",
+  themeColor: "#f5f8f7",
+  colorScheme: "light",
 };
 
 export default async function LocaleLayout({
@@ -160,12 +151,14 @@ export default async function LocaleLayout({
   // Local and preview builds would otherwise count test runs as real visitors.
   const countsVisitors = process.env.VERCEL_ENV === "production";
 
-  // The articles layout adds its own namespace and the game layout the tile's group, so no other page carries them.
-  const { shared: messages } = splitArticlesNamespace(await getMessages({ locale }));
+  // The articles, home and game layouts add their own groups, so no other page carries them.
+  const { shared: messages } = splitClientMessages(await getMessages({ locale }));
+  const fontRequest = fontRequestScript(locale as Locale);
 
   return (
     <html lang={locale}>
       <head>
+        {fontRequest && <script dangerouslySetInnerHTML={{ __html: fontRequest }} />}
         <script async src={ADSENSE_SCRIPT_URL} crossOrigin="anonymous" />
         {countsVisitors && (
           <script
@@ -179,9 +172,11 @@ export default async function LocaleLayout({
         className={`${getSansFontClass(locale as Locale)} ${geistMono.variable} min-h-screen bg-bg-dark text-text-primary antialiased`}
       >
         <NextIntlClientProvider messages={messages}>
-          <ChangelogBanner />
+          <ChangelogBanner
+            announce={isChangelogAnnouncementActive(LATEST_CHANGELOG_ENTRY)}
+          />
           {children}
-          <Footer />
+          <SiteFooter />
           <Analytics />
           <SpeedInsights />
           {countsVisitors && <GoogleAnalytics gaId="G-R8BM9EMY9J" />}

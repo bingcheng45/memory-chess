@@ -136,7 +136,9 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
     paragraph fails. That count leaves out the translation note and the view and like counts, and the audit
     does not compare the blocks of the leaderboard. Both depend on live data, and each locale's copy of a page
     is cached by itself for 300 seconds, so a count of them failed 46 pages with no defect in the first audit
-    after a data change. The audit still has to print 96 sitemap URLs and PASS.
+    after a data change. The audit still has to print every sitemap URL and PASS. That was 96 URLs on
+    2026-10-05. From PR 42 on it is 120, because /daily is indexed in all 24 languages. Expect the count to grow
+    with each new indexed route; a drop with no route removed is a finding.
   - What the approval hash is. It is tamper evidence, not access control. It shows that a text is the one
     `approve` saw, in the place where it saw it, and it catches an accident or a careless edit. The recipe is in
     `src/lib/articles/articleText.ts`, so anyone who can write the repository can compute a hash that matches any
@@ -151,6 +153,31 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
     All of that rests on the AI review alone. The reviewers' open doubts for each language are in the
     body of PR 39. Until a native reader has checked a language, treat its articles as unverified text that an
     AdSense reviewer can open.
+- About, Privacy and Terms are readable in all 24 languages and indexed only in English, decided 2026-10-14 at the
+  operator's request (PR 77 and PR 78, merged into PR 42). They follow the articles' model above, with these
+  differences:
+  - Why these three. They are trust pages, not content, so they are not what the "Low value content" judgement
+    weighs. A privacy notice in the reader's language is ordinary practice. A reviewer browsing in another
+    language now reads them in that language instead of being sent to English.
+  - Who wrote the text. Opus agents translated, and a Sonnet agent reviewed each language and fixed 197 strings.
+    For ro, hu, tr, ru, ja, ko, zh-CN and zh-TW the reviewer back-translated blind before comparing. For the other
+    15 languages the reviewer compared sentence by sentence with the English open, which is weaker. An independent
+    agent then spot-checked de, fr, es and ja and found one narrowed GDPR sentence in ja, now fixed. No native
+    speaker has read any of it.
+  - What the reader sees. A note under the lede says the page was translated with AI assistance and links to the
+    English page. On Privacy and Terms it also says that the English version governs where the two differ.
+  - What search sees. Each translation is `noindex, follow` with a self canonical, no `hreflang` and no sitemap
+    entry. The sitemap lists the three English URLs once each, and their `lastmod` dates track the English text
+    only.
+  - The gates. `node scripts/articles-i18n.mjs --pages` runs the articles' checks on these pages, and `npm run
+    build` runs `--pages verify`. The audit applies its note, legal-note and dropped-paragraph rules to them. The
+    gates' limits are the articles' limits above. A German stand-in made of German function words passed `check`.
+  - What an edit costs. Any change to the English text of these pages fails the build until every listed locale is
+    retranslated and approved again, or is removed from `TRANSLATED_PAGE_LOCALES`.
+  - The owner's gender is not stated. First-person sentences in pl, cs, ru, ro and hi use forms that carry no
+    gender, and the operator confirmed on 2026-10-14 that they stay that way.
+  - What stays English. /changelog, because every release would wait on 23 translations. /learn, because it is
+    the content removed after the first rejections. Revisit /learn only after AdSense approves the site.
 
 ## Follow-ups
 

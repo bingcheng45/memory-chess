@@ -1,9 +1,9 @@
 /**
- * A chess position a guide states in its prose, and what the prose claims
- * about it. guideFacts.test.ts replays each one with chess.js.
+ * A chess position a guide section states, and what its prose claims about
+ * it. guideFacts.test.ts replays each one with chess.js.
  */
 
-import type { Square } from "chess.js";
+import { Chess, type PieceSymbol, type Square } from "chess.js";
 
 export type Side = "w" | "b";
 
@@ -48,8 +48,6 @@ export type PositionClaim =
 
 export type LearnPosition = {
   id: string;
-  /** The guide section whose text states the position. */
-  sectionId: string;
   /** Absent for the starting position. */
   white?: PieceToken[];
   black?: PieceToken[];
@@ -63,3 +61,32 @@ export type LearnPosition = {
   line?: string[];
   claims: PositionClaim[];
 };
+
+const PIECE_TYPES: Record<string, PieceSymbol> = { K: "k", Q: "q", R: "r", B: "b", N: "n" };
+
+export const tokenSquare = (token: PieceToken): Square => token.slice(-2) as Square;
+
+export function chessOf(position: LearnPosition): Chess {
+  let chess: Chess;
+  if (!position.white && !position.black) {
+    chess = new Chess();
+  } else {
+    const board = new Chess();
+    board.clear();
+    for (const [color, tokens] of [
+      ["w", position.white ?? []],
+      ["b", position.black ?? []],
+    ] as const) {
+      for (const token of tokens) {
+        const type = token.length === 2 ? "p" : PIECE_TYPES[token[0]];
+        if (!board.put({ type, color }, tokenSquare(token))) {
+          throw new Error(`${position.id}: cannot put ${color}${token}`);
+        }
+      }
+    }
+    const placement = board.fen().split(" ")[0];
+    chess = new Chess(`${placement} ${position.toMove ?? "w"} - - 0 1`, { skipValidation: true });
+  }
+  for (const move of position.line ?? []) chess.move(move);
+  return chess;
+}

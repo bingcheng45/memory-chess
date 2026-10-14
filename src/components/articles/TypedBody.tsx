@@ -1,10 +1,9 @@
 "use client";
 
-import { useLocale, useTranslations } from "next-intl";
+import { useTranslations } from "next-intl";
 import { useCallback, useEffect, useMemo, useReducer, useRef, type Dispatch, type RefObject } from "react";
 import { clearArrival, peekArrival } from "@/components/articles/articleArrival";
 import { prefersReducedMotion } from "@/components/articles/articleFlight";
-import { ARTICLE_FOCUS_RING } from "@/components/articles/articleStyles";
 import {
   BLOCK_START,
   DEFAULT_CHARS_PER_SECOND,
@@ -14,7 +13,6 @@ import {
   placementOf,
   type BlockKind,
 } from "@/components/articles/typingPace";
-import { readingFaceClass } from "@/lib/articles/readingFont";
 import type { ArticleSection } from "@/lib/articles/schema";
 import "./typedBody.css";
 
@@ -37,17 +35,12 @@ const IDLE: TypingState = { phase: "idle" };
 const DONE: TypingState = { phase: "done" };
 const UNTYPED_CLASS = "article-untyped";
 const CARET_CLASS = "article-caret";
-const BODY_CLASS = `mt-[34px] outline-none max-w-[66ch] text-[18.5px] leading-[1.75] text-text-secondary min-[561px]:text-xl`;
+const BODY_CLASS = "art-body mt-10 outline-none";
 const BLOCK_TAG = { heading: "h2", paragraph: "p" } as const;
-const BLOCK_CLASS = {
-  heading:
-    "mb-[0.55em] mt-[1.8em] text-[22px] font-bold leading-tight tracking-[-0.01em] text-white [font-family:var(--font-geist-sans)] first:mt-0",
-  paragraph: "mb-[1.3em]",
-} as const;
+const BLOCK_CLASS = { heading: "art-body-h", paragraph: "art-body-p" } as const;
 const SHOW_ALL_CLASS =
   "fixed bottom-[max(1.25rem,env(safe-area-inset-bottom))] left-1/2 z-40 inline-flex min-h-11 -translate-x-1/2 " +
-  "items-center rounded-full border border-peach-500/35 bg-bg-card px-5 text-sm font-medium text-text-secondary " +
-  `shadow-lg shadow-black/50 hover:border-peach-400/60 hover:text-white active:bg-bg-light ${ARTICLE_FOCUS_RING}`;
+  "art-show-all items-center px-5";
 
 function blocksOf(sections: readonly ArticleSection[]): readonly Block[] {
   return sections.flatMap<Block>((section) => [
@@ -181,7 +174,6 @@ function useShowAllWhenHidden(isTyping: boolean, dispatch: Dispatch<TypingEvent>
 
 export default function TypedBody({ slug, sections, charsPerSecond = DEFAULT_CHARS_PER_SECOND }: TypedBodyProps) {
   const t = useTranslations("articles.page");
-  const readingFace = readingFaceClass(useLocale());
   const blocks = useMemo(() => blocksOf(sections), [sections]);
   const [state, dispatch] = useReducer(
     (current: TypingState, event: TypingEvent) => nextState(current, event, blocks.length),
@@ -221,7 +213,7 @@ export default function TypedBody({ slug, sections, charsPerSecond = DEFAULT_CHA
         tabIndex={-1}
         data-article-body
         data-article-typing={state.phase}
-        className={`${readingFace} ${BODY_CLASS}`}
+        className={BODY_CLASS}
       >
         {blocks.map((block, index) => {
           const Tag = BLOCK_TAG[block.kind];

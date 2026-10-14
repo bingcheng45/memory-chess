@@ -1,17 +1,19 @@
-import { render, screen } from "@/test-utils/intl";
+import type { AnchorHTMLAttributes } from "react";
+import { render, screen, within } from "@/test-utils/intl";
 import PrivacyPage from "@/app/[locale]/privacy/page";
 
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader() {
-    return <div>Memory Chess header</div>;
-  }
+const IN_ENGLISH = { params: Promise.resolve({ locale: "en" }) };
 
-  return MockPageHeader;
-});
+jest.mock("@/i18n/navigation", () => ({
+  Link: ({ href, ...props }: AnchorHTMLAttributes<HTMLAnchorElement>) => <a href={href} {...props} />,
+  usePathname: () => "/privacy",
+  useRouter: () => ({ replace: jest.fn() }),
+}));
+jest.mock("@/lib/articles/translatedLocales");
 
 describe("PrivacyPage", () => {
-  it("explains data use, cookies, advertising, and user choices", () => {
-    render(<PrivacyPage />);
+  it("explains data use, cookies, advertising, and user choices", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByRole("heading", { name: "Privacy Policy" }),
@@ -35,8 +37,8 @@ describe("PrivacyPage", () => {
     ).toHaveAttribute("href", "/contact-us");
   });
 
-  it("says what article likes and views keep in the browser and in Supabase", () => {
-    render(<PrivacyPage />);
+  it("says what article likes and views keep in the browser and in Supabase", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByText(
@@ -56,15 +58,144 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
-  it("claims no identifier the site does not create", () => {
-    render(<PrivacyPage />);
+  it("lists every fact the lab record keeps and says the record itself never leaves the device", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(
+        /the position you studied, the one you rebuilt, your timings, your scores, your time zone offset, where you started the round \(such as the homepage or a guide\), and the order and timing of each piece you placed\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /The record itself, with its positions, squares, placements and history, never leaves this device\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/draw your streak, personal bests, accuracy trend, miss map, today's board, review queue and forgetting curve on this device\./),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Local storage also keeps the UTC day you last opened today's board, so it offers you one try a day, and which review steps you opened, so a board left before its result is not shown twice at one delay\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("names what analytics receive about rounds and the lab, and what they never receive", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(
+        /Google Analytics receives an event for each round you finish, on the homepage or in the game, with the number of pieces, the study time, how many pieces you recalled, your accuracy and where the round started, which can name today's board, a review or a plan\. It receives an event when a round starts too, with the number of pieces, the study time and where it started\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /when the lab section comes into view, when you follow one of its play links, the number of rounds when you download or ask for cross-device backup, and the number of rounds added and skipped when you import\. None of these events carry positions, squares, round ids or streaks\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /When you start, stop or finish a plan, or set or clear a goal, Google Analytics receives an event that names only that action, with no plan name and no numbers\. The plan and goal you choose are kept in your browser's local storage on this device, as is the number of days a week you aim to play, which sends no event\./,
+      ),
+    ).toBeInTheDocument();
+    expect(screen.queryByText(/never sent to Memory Chess or to analytics/)).not.toBeInTheDocument();
+  });
+
+  it("says what the progress and result cards draw, and that nothing leaves the device until the player picks a way to share", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(
+        /The progress page reads the same record in your browser and sends nothing\. Only when you press Share my progress does your browser draw a picture of the figures the record can read: your memory span, skill rating, pieces held, speed, best and recent accuracy, win streak, days in a row, rounds played and days played\. Only when you press Share result on the game's result screen does your browser draw a picture of that round: its accuracy, the pieces you recalled, the number of pieces, the study time allowed and taken, the rebuild time, and, except on a review, your rating, its change and any win streak, and, except on today's board, the board you studied and the board you rebuilt\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Either button opens a share window, and nothing leaves your browser until you choose one of its actions: hand the picture, a short caption and a link to your device's share sheet, download the picture, copy the picture, copy the caption with its link, or open the post page of X, Facebook, LinkedIn, Reddit, WhatsApp, Threads or Bluesky with the link, and on all but Facebook and LinkedIn the caption, filled in\. What you send there is handled under that service's own privacy terms\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("says a shared link carries its card in the URL, a result link both boards and the placement order, only when the player shares it", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(
+        /The record itself, with its positions, squares, placements and history, never leaves this device\. A round you choose to share is the one exception, described below\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /The link in the caption opens the card's own page on Memory Chess, and the card's figures are written into the link itself\. A shared result link, under \/share\/result\/, also carries the board you studied, the board you rebuilt, and the order and timing of each piece you placed, unless the round was today's board, whose link carries no position\. Anyone who opens the link can read them, and Memory Chess reads them from the link to draw the page and its preview\. A link is made only when you share a card, and Memory Chess does not save it\. Like any page on the site, the analytics tools named above record the page's address, link included, when someone opens it\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("names both share events, every method they report and every network, and what they never carry", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(
+        /Google Analytics receives a lab_dashboard_share event when a progress card leaves the page and a result_share event when a result card does\. Each names only how it left, as its method: native for the share sheet, download for a downloaded picture, copy_image for a copied picture, copy for a copied caption, or post for a network's post page, with that network named as x, facebook, linkedin, reddit, whatsapp, threads or bluesky\. Neither event carries the card's figures, its boards or its link\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("says the reading card goes only to the clipboard and the record note is kept as seen", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(
+        /Only when you press Copy my reading does your browser put a short text on your clipboard with your memory span, and your pieces held and speed when the record can read them, each with its number of rounds\. It names no positions, squares or dates and is not sent anywhere\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Local storage also keeps the time the note about keeping your record in this browser first came into view, so the note is shown once, the time you last saw your notebook, so newer entries are marked as new, and the time you last downloaded the record\. After a few rounds the site asks your browser once to keep the record when space runs low, and local storage notes that it asked\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("says what a leaderboard standing check keeps on the device and sends, and only on a press", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(
+        /When you submit a score to the leaderboard, local storage on this device also keeps the id the leaderboard gives that entry, with its difficulty, country, score and the time you sent it, for your best entry on each difficulty\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /Only when you press Check my standing in the lab record does your browser send that entry id to Memory Chess, with whether to rank it worldwide or within the entry's own country\. Memory Chess reads the entry from the leaderboard and replies with its rank and the number of entries it was ranked against\. The reply is not stored\./,
+      ),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(
+        /To limit how often standing can be checked, the server counts checks from each IP address in its memory for one minute, and drops an address at the first check after its minute is up\. If the leaderboard no longer has the entry, its id is removed from this device\. Google Analytics receives an event that says a standing check was made, with no entry id and no rank\./,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("says Learn search events carry counts and the top guide, and that the search page's address can carry the words", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(/The Learn search ranks guides in your browser/).textContent?.replace(/\s+/g, " ").trim(),
+    ).toBe(
+      "The Learn search ranks guides in your browser, or on the server when you search from the search page. Google Analytics receives an event for a search with how many characters you typed, how many guides matched, the top guide and whether the match was close, and an event when you open a result with that guide and its place in the list. Neither event carries the words you typed. A search made from the search page itself puts your words in that page's address, and the analytics tools record the address of every page viewed, so those words can reach them.",
+    );
+  });
+
+  it("claims no identifier the site does not create", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(screen.getByText(/Clearing your browser data resets these choices/)).toBeInTheDocument();
     expect(screen.queryByText(/local identifier/)).not.toBeInTheDocument();
   });
 
-  it("names the controller, the DART cookie, and GDPR and CCPA rights", () => {
-    render(<PrivacyPage />);
+  it("names the controller, the DART cookie, and GDPR and CCPA rights", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
 
     expect(
       screen.getByRole("heading", { name: "Who is responsible for your data" }),
@@ -86,5 +217,20 @@ describe("PrivacyPage", () => {
     expect(
       screen.getByText(/Do Not Sell or Share My Personal Information/),
     ).toBeInTheDocument();
+  });
+
+  it("is a Lab Paper page whose contents list lands on each of its thirteen sections", async () => {
+    const { container } = render(await PrivacyPage(IN_ENGLISH));
+
+    expect(container.firstElementChild).toHaveClass("lab-paper");
+    const contents = within(screen.getByRole("navigation", { name: "On this page" })).getAllByRole("link");
+    expect(contents).toHaveLength(13);
+    expect(contents.map((link) => link.textContent)).toEqual(
+      screen.getAllByRole("heading", { level: 2 }).map((heading) => heading.textContent),
+    );
+    for (const link of contents) {
+      const target = container.querySelector(link.getAttribute("href") ?? "");
+      expect(target?.querySelector("h2")?.textContent).toBe(link.textContent);
+    }
   });
 });

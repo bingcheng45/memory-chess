@@ -3,8 +3,7 @@
 import { useGameStore } from "@/lib/store/gameStore";
 import { accuracyBandKey } from "@/lib/reference/facts";
 import { GameState } from "@/lib/types/game";
-import { Button } from "@/components/ui/button";
-import { useState, useEffect, useRef } from "react";
+import { lazy, Suspense, useState, useEffect, useRef } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -18,8 +17,10 @@ import {
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
-import { loadLeaderboardCutoffs } from "@/lib/leaderboard/cutoffsClient";
-import { trackEvent } from "@/lib/analytics/events";
+import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
+import type { RoundSource } from "@/lib/analytics/events";
+import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
+import { browserIndexedDB } from "@/lib/lab/support";
 import {
   qualifies,
   type LeaderboardCutoffs,
@@ -28,8 +29,26 @@ import {
 import type { LeaderboardDifficulty } from "@/types/leaderboard";
 import { useSettingsStore } from "@/stores/settingsStore";
 import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
-import ResultBoardComparison from "@/components/game/ResultBoardComparison";
+import { RoundBoard } from "@/components/round/RoundBoard";
+import { ReadoutCard } from "@/components/round/ReadoutCard";
+import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
+import type { BoardAction } from "@/lib/round/round";
 import ArticleTile from "@/components/game/ArticleTile";
+import { countWrong } from "@/lib/game/scoring";
+import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
+import { warmedResultDeltas } from "@/components/game/resultDeltasWarm";
+import ErrorBoundary from "@/components/ui/ErrorBoundary";
+import ShareResult from "@/components/game/ShareResult";
+import { roundShareOf } from "@/components/game/roundShare";
+import { START_RATING } from "@/lib/game/rating";
+import type { RoundOutcome } from "@/lib/game/roundOutcome";
+
+// Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
+// never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.
+const ResultLabCard = lazy(() => import("@/components/game/ResultLabCard"));
+
+// The scored board only shows the round: it takes no input.
+const ignoreBoard: (action: BoardAction) => void = () => {};
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & {
@@ -40,9 +59,22 @@ type GameStateWithRating = GameState & {
   totalPiecesPlaced?: number;
 };
 
+/** The line under the score that says why the rating moved as it did, or null when the change says it all. */
+function ratingNoteOf(outcome: RoundOutcome | undefined, t: ReturnType<typeof useTranslations<"game.result">>): string | null {
+  switch (outcome?.phase) {
+    case "provisional":
+      return t("provisional");
+    case "freeSkip":
+      return t("freeSkip");
+    default:
+      return null;
+  }
+}
+
 interface GameResultProps {
   readonly onTryAgain: () => void;
   readonly onNewGame: () => void;
+  readonly onPlay: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
 }
 
 function qualifiesForLeaderboard(
@@ -56,10 +88,16 @@ function qualifiesForLeaderboard(
   return qualifies(score, cutoffs[difficulty]);
 }
 
-export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
+export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResultProps) {
   const t = useTranslations("game.result");
+  // Without IndexedDB nothing can be recorded, so no space is held for a card that could only leave again.
+  const keepsRecord = browserIndexedDB() !== undefined;
+  const showsLab = keepsRecord;
   const tCountry = useTranslations("country");
-  const { gameState } = useGameStore();
+  const tComparison = useTranslations("game.comparison");
+  const tDaily = useTranslations("daily.round");
+  const { gameState, round } = useGameStore();
+  const { labRound } = gameState;
   const { countryCode, setCountryCode } = useSettingsStore();
 
   // Leaderboard submission state
@@ -68,7 +106,11 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(null);
+  // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
+  // effect below would insert it a frame later and push down everything under it.
+  const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(readCachedCutoffs);
+  // Likewise the dashboard figures: their code and the record were loaded during the round, or they are not shown.
+  const [deltas] = useState(warmedResultDeltas);
 
   // Use a ref instead of state to prevent double increments due to StrictMode
   const playsCountedRef = useRef(false);
@@ -140,13 +182,8 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     correctPieces: extendedGameState.correctPlacements || 0,
     // Extra pieces are only counted if more pieces were placed than required
     extraPieces: extendedGameState.extraPieces || 0,
-    // Total wrong is the sum of missed original pieces and any extra pieces
     get totalWrong() {
-      // By default, wrong pieces is the inverse of correct pieces
-      const basicWrongPieces = this.totalPieces - this.correctPieces;
-
-      // Add any extra pieces that were placed but not in the original position
-      return basicWrongPieces + this.extraPieces;
+      return countWrong({ total: this.totalPieces, correct: this.correctPieces, extra: this.extraPieces });
     },
   };
 
@@ -177,64 +214,16 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     }
   }, [gameState.accuracy]);
 
-  // Time formatting helper
-  const formatTimeParts = (
-    seconds: number,
-  ): { minutes: string; seconds: string; milliseconds: string } => {
-    const wholeSeconds = Math.floor(seconds);
-    const minutes = Math.floor(wholeSeconds / 60)
-      .toString()
-      .padStart(2, "0");
-    const remainingSeconds = (wholeSeconds % 60).toString().padStart(2, "0");
-    const ms = Math.floor((seconds - wholeSeconds) * 1000)
-      .toString()
-      .padStart(3, "0");
-
-    return {
-      minutes,
-      seconds: remainingSeconds,
-      milliseconds: ms,
-    };
-  };
-
-  // Consistent time display component
-  const TimeDisplay = ({
-    minutes,
-    seconds,
-    milliseconds,
-  }: {
-    minutes: string;
-    seconds: string;
-    milliseconds: string;
-  }) => {
-    return (
-      <div className="inline-flex items-baseline font-mono">
-        <span>{minutes}</span>
-        <span>:</span>
-        <span>{seconds}</span>
-        <span>:</span>
-        <span className="text-xs">{milliseconds}</span>
-      </div>
-    );
-  };
-
   const getResultMessage = () =>
     t(`messages.${accuracyBandKey(gameState.accuracy || 0)}`);
-
-  // Get color class based on accuracy
-  const getAccuracyColor = (accuracy: number) => {
-    if (accuracy >= 90) return "text-green-500";
-    if (accuracy >= 70) return "text-peach-500";
-    if (accuracy >= 50) return "text-yellow-500";
-    return "text-red-500";
-  };
 
   // Check if the score is eligible for the leaderboard
   const isEligibleForLeaderboard = () => {
     // Only standard difficulties are eligible (not custom games). The board
     // hides rows with no correct piece, so such a round is not submittable.
+    // A set board is not ranked: the daily board is the same position for every player, and a review is one the player has seen.
     const difficulty = determineDifficulty(gameState.pieceCount);
-    return difficulty !== "custom" && (extendedGameState.correctPlacements ?? 0) > 0;
+    return difficulty !== "custom" && (extendedGameState.correctPlacements ?? 0) > 0 && gameState.board === undefined;
   };
 
   // Prepare leaderboard entry data
@@ -260,6 +249,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       memorize_time: memorizeTime,
       solution_time: gameState.completionTime || 0,
       total_wrong_pieces: piecesInfo.totalWrong,
+      skill_rating: gameState.skillRating ?? START_RATING,
     };
   };
 
@@ -271,28 +261,8 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
     setSubmitError(null);
 
     try {
-      const leaderboardEntry = prepareLeaderboardEntry(playerName.trim());
-
-      const response = await fetch("/api/leaderboard", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(leaderboardEntry),
-      });
-
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || t("dialog.submitFailed"));
-      }
-
-      trackEvent({
-        name: "score_submit",
-        params: {
-          difficulty: leaderboardEntry.difficulty,
-          piece_count: leaderboardEntry.piece_count,
-        },
-      });
+      const posted = await postLeaderboardEntry(prepareLeaderboardEntry(playerName.trim()));
+      if (!posted.ok) throw new Error(posted.message ?? t("dialog.submitFailed"));
       setSubmitSuccess(true);
     } catch (err) {
       console.error("Error submitting to leaderboard:", err);
@@ -307,8 +277,6 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
   const accuracy = gameState.accuracy || 0;
   const memorizationTime =
     gameState.actualMemorizeTime || gameState.memorizeTime;
-  const memorizationTimeParts = formatTimeParts(memorizationTime);
-  const solutionTimeParts = formatTimeParts(gameState.completionTime || 0);
   const recallSpeed =
     gameState.completionTime && gameState.completionTime > 0
       ? t("piecesPerSecond", {
@@ -332,159 +300,101 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
       },
       cutoffs,
     );
+  // A perfect round makes trying again the next step; otherwise a new setting is.
+  const tryAgainFirst = accuracy === 100;
+  const ratingNote = ratingNoteOf(gameState.rating, t);
 
   return (
-    <div className="w-full max-w-4xl space-y-6 pb-4">
-      <section
-        aria-labelledby="game-result-heading"
-        className="w-full rounded-xl border border-bg-light bg-bg-card p-4 shadow-xl sm:p-6"
-      >
-        <h2
-          id="game-result-heading"
-          className={`text-center text-2xl font-bold sm:text-3xl ${getAccuracyColor(accuracy)}`}
-        >
+    <div className="lab-result w-full space-y-6 pb-4">
+      <section aria-labelledby="game-result-heading" className="lab-card lab-result-card">
+        <h2 id="game-result-heading" className="lab-result-h">
           {getResultMessage()}
         </h2>
-
-        <div className="mt-4 flex items-end justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.16em] text-text-secondary">
-              {t("accuracy")}
-            </p>
-            <p
-              className={`text-4xl font-bold leading-none sm:text-5xl ${getAccuracyColor(accuracy)}`}
-            >
-              {accuracy}%
-            </p>
-          </div>
-          <p className="text-right text-sm text-text-secondary">
-            <span className="block font-semibold text-text-primary">
-              {piecesInfo.correctPieces}
-              {piecesInfo.extraPieces > 0 && (
-                <sup className="ml-1 text-xs font-bold text-red-500">
-                  -{piecesInfo.extraPieces}
-                </sup>
-              )}{" "}
-              / {piecesInfo.totalPieces}
-            </span>
-            {t("piecesCorrectCaption")}
+        <p className="lab-result-sub">
+          <span className="lab-mono">
+            {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
+          </span>{" "}
+          {t("piecesCorrectCaption")}
+          <span aria-hidden="true"> · </span>
+          <span>{t("recallSpeed")}</span> <span className="lab-mono">{recallSpeed}</span>
+        </p>
+        {ratingNote && (
+          <p className="lab-result-sub" data-rating-phase={gameState.rating?.phase}>
+            {ratingNote}
           </p>
-        </div>
-
-        <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-bg-light">
-          <div
-            className={`h-full transition-all ${
-              accuracy >= 90
-                ? "bg-green-400"
-                : accuracy >= 70
-                  ? "bg-peach-400"
-                  : accuracy >= 50
-                    ? "bg-peach-500"
-                    : "bg-peach-600"
-            }`}
-            style={{ width: `${accuracy}%` }}
-          />
-        </div>
-
-        <dl className="mt-5 grid grid-cols-2 gap-2 lg:grid-cols-4">
-          <div className="rounded-lg bg-bg-light/45 p-3">
-            <dt className="text-xs text-text-secondary">{t("piecesCorrect")}</dt>
-            <dd className="mt-1 font-semibold text-text-primary">
-              {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
-            </dd>
-          </div>
-          <div className="rounded-lg bg-bg-light/45 p-3">
-            <dt className="text-xs text-text-secondary">{t("memorizationTime")}</dt>
-            <dd className="mt-1 font-semibold text-text-primary">
-              <TimeDisplay {...memorizationTimeParts} />
-            </dd>
-          </div>
-          <div className="rounded-lg bg-bg-light/45 p-3">
-            <dt className="text-xs text-text-secondary">{t("solutionTime")}</dt>
-            <dd className="mt-1 font-semibold text-text-primary">
-              <TimeDisplay {...solutionTimeParts} />
-            </dd>
-          </div>
-          <div className="rounded-lg bg-bg-light/45 p-3">
-            <dt className="text-xs text-text-secondary">{t("recallSpeed")}</dt>
-            <dd className="mt-1 text-sm font-semibold text-text-primary sm:text-base">
-              {recallSpeed}
-            </dd>
-          </div>
-        </dl>
+        )}
 
         {showLeaderboardQualifier && (
-          <p
-            role="status"
-            className="mt-5 rounded-lg border border-green-500/30 bg-green-500/10 px-4 py-3 text-sm font-semibold text-green-500"
-          >
+          <p role="status" className="lab-result-qualifies">
             {t("leaderboardQualifies")}
           </p>
         )}
 
-        <nav
-          aria-label={t("actions")}
-          className="mt-5 grid grid-cols-2 gap-2 border-t border-bg-light pt-5 lg:grid-cols-4"
-        >
-          <Button
-            onClick={onTryAgain}
-            variant={accuracy === 100 ? "outline" : "secondary"}
-            className={
-              accuracy === 100
-                ? "h-10 w-full border-peach-500/30 bg-peach-500/10 px-3 text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
-                : "h-10 w-full border border-gray-600 px-3"
-            }
-          >
+        {round.phase === "scored" && (
+          <div className="lab-result-grid">
+            <figure data-result-board="scored" className="lab-plate lab-plate-grid lab-result-board">
+              <figcaption className="lab-k">{tComparison("title")}</figcaption>
+              <RoundBoard state={round} dispatch={ignoreBoard} copy="game.round" />
+            </figure>
+            <ReadoutCard state={round} copy="game.round" expected={round.config} />
+          </div>
+        )}
+
+        <nav aria-label={t("actions")} className="lab-result-actions">
+          <button type="button" onClick={onTryAgain} className={`lab-btn ${tryAgainFirst ? "lab-btn-primary" : "lab-btn-secondary"}`}>
             {t("tryAgain")}
-          </Button>
-
-          <Button
-            onClick={onNewGame}
-            variant={accuracy === 100 ? "secondary" : "outline"}
-            className={
-              accuracy === 100
-                ? "h-10 w-full border border-gray-600 px-3"
-                : "h-10 w-full border-peach-500/30 bg-peach-500/10 px-3 text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
-            }
-          >
+          </button>
+          <button type="button" onClick={onNewGame} className={`lab-btn ${tryAgainFirst ? "lab-btn-secondary" : "lab-btn-primary"}`}>
             {t("newGame")}
-          </Button>
-
-          {leaderboardEligible && (
-            <Button
-              onClick={() => setShowLeaderboardDialog(true)}
-              variant="outline"
-              className="h-10 w-full border-green-500/30 bg-green-500/10 px-3 text-green-500 hover:bg-green-500/20 hover:text-green-500"
-            >
-              {t("submitToLeaderboard")}
-            </Button>
+          </button>
+          {gameState.board?.kind === "daily" && keepsRecord && (
+            <Link href="/daily" className="lab-btn lab-btn-secondary lab-result-submit">
+              {tDaily("join")}
+            </Link>
           )}
-
-          <Link
-            href="/leaderboard"
-            className={leaderboardEligible ? "w-full" : "col-span-2 w-full"}
-          >
-            <Button
-              variant="ghost"
-              className="h-10 w-full border-0 px-3 text-peach-500 hover:bg-peach-500/20 hover:text-peach-500"
-            >
-              {t("viewLeaderboard")}
-            </Button>
+          {leaderboardEligible && (
+            <button type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
+              {t("submitToLeaderboard")}
+            </button>
+          )}
+          {round.phase === "scored" && (
+            <ShareResult
+              key={labRound?.facts.id}
+              share={roundShareOf(round, {
+                rating: gameState.skillRating ?? START_RATING,
+                change: extendedGameState.skillRatingChange ?? 0,
+                winStreak: gameState.streak ?? 0,
+              })}
+            />
+          )}
+          <Link href="/leaderboard" className="lab-result-link">
+            {t("viewLeaderboard")}
           </Link>
         </nav>
       </section>
 
-      <ResultBoardComparison
-        originalPosition={gameState.originalPosition}
-        userPosition={gameState.userPosition}
-      />
+      <div className="lab-ui-face space-y-6">
+        {showsLab && labRound && (
+          <ErrorBoundary key={labRound.facts.id} fallback={<ResultLabEnd />}>
+            <Suspense fallback={<ResultLabSlot />}>
+              <ResultLabCard roundId={labRound.facts.id} onPlay={onPlay} />
+            </Suspense>
+          </ErrorBoundary>
+        )}
 
-      <ArticleTile
-        round={{
-          pieceCount: gameState.pieceCount,
-          memorizeTime: gameState.memorizeTime,
-        }}
-      />
+        {deltas && labRound && (
+          <ErrorBoundary key={labRound.facts.id} fallback={<></>}>
+            <deltas.Deltas before={deltas.before} labRound={labRound} />
+          </ErrorBoundary>
+        )}
+
+        <ArticleTile
+          round={{
+            pieceCount: gameState.pieceCount,
+            memorizeTime: gameState.memorizeTime,
+          }}
+        />
+      </div>
 
       <FirstGameFeedbackDialog
         game={{
@@ -503,12 +413,12 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
         open={showLeaderboardDialog}
         onOpenChange={setShowLeaderboardDialog}
       >
-        <DialogContent className="bg-bg-card border border-bg-light text-text-primary">
+        <DialogContent className={`${LAB_PAPER_CLASS} lab-dialog`}>
           <DialogHeader>
-            <DialogTitle className="text-text-primary">
+            <DialogTitle className="lab-dialog-title">
               {submitSuccess ? t("dialog.successTitle") : t("dialog.submitTitle")}
             </DialogTitle>
-            <DialogDescription className="text-text-secondary">
+            <DialogDescription className="lab-dialog-text">
               {submitSuccess
                 ? t("dialog.successDescription")
                 : t("dialog.submitDescription")}
@@ -518,7 +428,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
           {!submitSuccess ? (
             <div className="space-y-4 py-4">
               <div className="space-y-2">
-                <Label htmlFor="player-name" className="text-text-secondary">
+                <Label htmlFor="player-name" className="lab-dialog-label">
                   {t("dialog.playerName")}
                 </Label>
                 <Input
@@ -527,12 +437,12 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                   onChange={(e) => setPlayerName(e.target.value)}
                   placeholder={t("dialog.playerNamePlaceholder")}
                   disabled={isSubmitting}
-                  className="bg-bg-light border-bg-light text-text-primary focus:border-green-500/50 focus:ring-green-500/30"
+                  className="lab-dialog-input"
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="player-country" className="text-text-secondary">
+                <Label htmlFor="player-country" className="lab-dialog-label">
                   {tCountry("label")}
                 </Label>
                 <CountryPicker
@@ -544,39 +454,41 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               </div>
 
               {submitError && (
-                <div className="text-sm text-red-500">
+                <p role="alert" className="lab-dialog-error">
                   {t("dialog.error", { message: submitError })}
-                </div>
+                </p>
               )}
 
               <div className="flex justify-end gap-2">
-                <Button
-                  variant="outline"
+                <button
+                  type="button"
                   onClick={() => setShowLeaderboardDialog(false)}
                   disabled={isSubmitting}
-                  className="bg-bg-light text-text-secondary border-bg-light hover:bg-bg-light/80 hover:text-text-primary"
+                  className="lab-btn lab-btn-secondary"
                 >
                   {t("dialog.cancel")}
-                </Button>
-                <Button
+                </button>
+                <button
+                  type="button"
                   onClick={submitToLeaderboard}
                   disabled={!playerName.trim() || isSubmitting}
-                  className="bg-green-500 text-white hover:text-white hover:bg-green-600"
+                  className="lab-btn lab-btn-primary"
                 >
                   {isSubmitting ? t("dialog.submitting") : t("dialog.submit")}
-                </Button>
+                </button>
               </div>
             </div>
           ) : (
             <div className="space-y-4 py-4">
               <div className="flex justify-center">
-                <div className="rounded-full bg-green-500/20 p-3">
+                <div className="lab-dialog-done">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-green-500"
+                    className="h-6 w-6"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
+                    aria-hidden="true"
                   >
                     <path
                       strokeLinecap="round"
@@ -589,14 +501,15 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
               </div>
 
               <div className="text-center">
-                <p className="text-text-primary">
+                <p className="lab-dialog-text">
                   {t("dialog.thanks", { name: playerName })}
                 </p>
               </div>
 
               <div className="flex justify-center gap-2">
                 <Link
-                  href={`/leaderboard?player=${encodeURIComponent(playerName)}&difficulty=${(() => {
+                  className="lab-btn lab-btn-primary"
+                  href={`/leaderboard?player=${encodeURIComponent(playerName.trim())}&difficulty=${(() => {
                     const difficulty = determineDifficulty(
                       gameState.pieceCount,
                     );
@@ -605,9 +518,7 @@ export default function GameResult({ onTryAgain, onNewGame }: GameResultProps) {
                     );
                   })()}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round(((gameState.accuracy || 0) * gameState.pieceCount) / 100)}&totalWrongPieces=${piecesInfo.totalWrong}`}
                 >
-                  <Button className="bg-green-500 text-white hover:text-white hover:bg-green-600">
-                    {t("viewLeaderboard")}
-                  </Button>
+                  {t("viewLeaderboard")}
                 </Link>
               </div>
             </div>

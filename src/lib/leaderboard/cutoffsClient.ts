@@ -34,7 +34,7 @@ function writeStoredEntry(cutoffs: LeaderboardCutoffs): void {
   }
 }
 
-function readCachedCutoffs(): LeaderboardCutoffs | null {
+export function readCachedCutoffs(): LeaderboardCutoffs | null {
   const raw = readStoredEntry();
   if (raw === null) {
     return null;

@@ -9,12 +9,19 @@
       "privacy": "Gizlilik",
       "terms": "Koşullar",
       "play": "Oyna",
-      "leaderboard": "Sıralama"
+      "leaderboard": "Sıralama",
+      "dashboard": "Panel",
+      "menu": "Menü",
+      "site": "Site",
+      "streakChip": "{count}. gün",
+      "streakChipLabel": "Serinin {count}. günü{forgiven, plural, =0 {} one {, # kaçırılan gün affedildi} other {, # kaçırılan gün affedildi}}. Panonu aç."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tüm hakları saklıdır.",
       "followOnX": "Bizi Twitter/X’te takip edin",
-      "productHuntAlt": "Memory Chess - Satrançla uzamsal görselleştirmeni geliştir | Product Hunt"
+      "productHuntAlt": "Memory Chess - Satrançla uzamsal görselleştirmeni geliştir | Product Hunt",
+      "tagline": "Ücretsiz bir tahta hafıza oyunu. Bir pozisyonu inceleyin, yeniden kurun, skorunuzu görün.",
+      "recognition": "Ödüller"
     },
     "sound": {
       "mute": "Sesi kapat",
@@ -41,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Satranç hafızanı ve görselleştirmeni geliştir",
-      "subtitle": "Bir satranç konumunu ezberle, hafızandan yeniden kur ve anında puan al. Tahta görüşünü her turda biraz daha güçlendir.",
-      "freeToPlay": "Ücretsiz, hesap açmaya gerek yok. Puanını <link>sıralama tablosunda</link> da karşılaştırabilirsin.",
-      "gamesPlayed": "Oynanan oyun: {count}"
+      "freeToPlay": "Ücretsiz, hesap açmaya gerek yok. Puanını <link>sıralama tablosunda</link> da karşılaştırabilirsin."
     },
     "cta": {
-      "play": "Memory Chess oyna",
       "leaderboard": "Sıralamayı gör",
-      "playFree": "Ücretsiz bir tur oyna",
       "chooseSettings": "Taş sayısı ve süreyi seç"
     },
     "video": {
@@ -57,35 +60,8 @@
       "iframeTitle": "Memory Chess nasıl oynanır",
       "credit": "Video: “A New Way To Train Your Vision”, Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Nasıl çalışır",
-      "title": "Satranç hafızan için basit bir antrenman",
-      "subtitle": "Her tur üç basit adımdan oluşur: konumu incele, yeniden kur ve puanından ders çıkar.",
-      "steps": {
-        "observe": {
-          "title": "Gözlemle",
-          "description": "Her taşın nerede durduğuna dikkat et. Grupları, hatları ve işine yarayacak boş kareleri ara."
-        },
-        "recreate": {
-          "title": "Yeniden kur",
-          "description": "Tahta boşaldığında her taşı hatırladığın kareye geri koy."
-        },
-        "improve": {
-          "title": "Geliştir",
-          "description": "Puanına bak, neyi kaçırdığını gör ve daha çok taşla ya da daha az süreyle yeniden dene."
-        }
-      }
-    },
-    "board": {
-      "study": "Tahtayı incele",
-      "rebuild": "Hafızandan yeniden kur"
-    },
     "learn": {
-      "eyebrow": "Öğrenme merkezi",
-      "title": "Sade satranç rehberleri",
-      "description": "Tahta görüşünü, görselleştirmeni, hesaplamanı ve hafızanı geliştirmenin pratik yollarını öğren. Her rehberde hemen deneyebileceğin alıştırmalar var.",
-      "browseCta": "Satranç rehberlerine göz at",
-      "beginnerCta": "Yeni başlayanlar rehberiyle başla"
+      "browseCta": "Satranç rehberlerine göz at"
     },
     "faq": {
       "title": "Memory Chess hakkında sorular",
@@ -123,6 +99,830 @@
           "answer": "Düzenli aralıklarla birkaç odaklı tur iyi bir başlangıçtır. Her konumu dikkatle inceleyebilecek kadar kısa seanslar tut."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Laboratuvar",
+        "onPage": "Bu sayfada",
+        "notebook": "Defter",
+        "method": "Yöntem",
+        "calibrate": "Kalibrasyon",
+        "tiers": "Zorluk",
+        "record": "Kayıt",
+        "library": "Kütüphane",
+        "hints": {
+          "notebook": "Neden ölçmeli",
+          "method": "Adım adım bir tur",
+          "calibrate": "Ölçüm yap",
+          "tiers": "Seviyeler ve düzenek",
+          "record": "Ölçümlerin",
+          "library": "Rehberler ve alıştırmalar"
+        },
+        "play": "Ücretsiz bir tur oyna"
+      },
+      "tags": {
+        "proposed": "Önerilen",
+        "sample": "Örnek",
+        "illustrative": "Temsilî",
+        "free": "Ücretsiz · hesap yok",
+        "rig": "Düzenek"
+      },
+      "sections": {
+        "notebook": "Defter",
+        "method": "Yöntem",
+        "recording": "Saha kaydı",
+        "calibrate": "Kalibrasyon",
+        "tiers": "Zorluk",
+        "record": "Laboratuvar kaydı",
+        "library": "Kütüphane",
+        "faq": "Sorular",
+        "next": "Sıradaki deney"
+      },
+      "hero": {
+        "platforms": "Tarayıcı · masaüstü · mobil",
+        "display": "Zihninde gördüğünü <em>bir sayıyla ölç.</em>",
+        "lede": "Memory Chess, ücretsiz bir satranç hafıza oyunu ve satranç hafızası antrenörüdür. Bir konumu birkaç saniye incele, tahta boşalsın, sonra konumu hafızandan yeniden kur. Her tur kısa bir hafıza testidir. Sonunda 0 ile %100 arasında bir isabet ölçümü ve doğru ya da yanlış bildiğin her kareyi gösteren bir harita alırsın.",
+        "secondaryCta": "Kalibrasyon ölçümü yap",
+        "settingsLink": "<link>{label}</link>.",
+        "facts": {
+          "study": "inceleme süresi",
+          "pieces": "tur başına taş",
+          "plays": "{count, plural, one {oynanan oyun} other {oynanan oyun}}",
+          "languages": "{count, plural, one {dil} other {dil}}"
+        },
+        "showcase": {
+          "aria": "Veselin Topalov ile Alexey Shirov arasındaki oyun, Linares 1998, konumun rehberli incelemesiyle",
+          "event": "Linares · 10. tur",
+          "venue": "4 Mart 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "vs",
+          "pieceLabel": "{square} karesinde {piece}",
+          "tags": {
+            "study": "İnceleme",
+            "trap": "Tuzak",
+            "sacrifice": "Feda",
+            "walk": "Yürüyüş",
+            "runners": "İki geçer piyon",
+            "rebuild": "Yeniden kur",
+            "inspect": "Menzil"
+          },
+          "counter": {
+            "study": "İnceleme {n}/{total}",
+            "game": "Oyun {n}/{total}",
+            "resume": "Devam etmek için yine tıkla"
+          },
+          "controls": {
+            "steps": "Adımlar",
+            "step": "Adım {n}/{total}: {tag}",
+            "previous": "Önceki adım",
+            "next": "Sonraki adım",
+            "play": "Oynat",
+            "pause": "Duraklat"
+          },
+          "inspect": {
+            "title": "{square} karesinde {piece}.",
+            "reach": "{moves, plural, =0 {Hamle yok} one {# hamle} other {# hamle}}, {captures, plural, =0 {taş alma yok} one {# taş alma} other {# taş alma}}.",
+            "checks": "Şah çekmeler: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "Beyazın köşesi",
+            "longDiagonal": "Uzun çapraz",
+            "blackWall": "Siyahın duvarı",
+            "runner": "Koşucu piyon"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Siyah taşlarla oynayan Shirov iki piyon önde, ama zıt renkli filler çoğu zaman beraberliği kurtarır. On taş."
+              },
+              "whiteCorner": {
+                "caption": "Beyazın g1'deki şahı g2 piyonunu koruyor. h piyonu h4'e kadar ilerlemiş."
+              },
+              "longDiagonal": {
+                "caption": "Beyazın c3'teki fili uzun çaprazı tutuyor ve f6 piyonunu hedef alıyor.",
+                "thought": "Kara kareli fil, c3'ten f6'ya."
+              },
+              "blackWall": {
+                "caption": "Siyahın şahı e6'da, fili f5'te, piyonları d5, f6 ve g6'da.",
+                "thought": "Şah f6 ve d5'i koruyor. g6 piyonu da fili koruyor."
+              },
+              "runner": {
+                "caption": "a4'te tek bir siyah piyon, her şeyden uzakta."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "Siyah şah ileri çıkamıyor. d5 ve f5'te kendi taşları duruyor, e5'i de c3'teki fil tutuyor.",
+                "thought": "Yalnızca Kd6, Kd7, Ke7 ve Kf7. Hepsi geriye ya da yana gidiyor."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! Fil, g piyonunun alabileceği bir karede kendini feda ediyor. Şahın yolunu kapatıyordu.",
+                "thought": "f5 artık boş. Kapı orası."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Filin açtığı kapıdan geçen şah merkeze ulaşıyor."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Tek bir fil iki geçer piyonu durduramaz.",
+                "thought": "Topalov fili aldı ve 53...Kb3'ten sonra terk etti."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "Tahta boşalıyor. Başlangıç konumunu yeniden kur: Beyazın köşesi, uzun çapraz, Siyahın duvarı, koşucu piyon."
+              },
+              "back": {
+                "caption": "Grup grup, her taş kendi karesine dönüyor."
+              },
+              "check": {
+                "caption": "Şimdi kontrol et. Zıt renkli filler, c3 kara kare, f5 beyaz kare. c3'teki fil hâlâ f6'yı hedef alıyor. Dört beyaz, altı siyah."
+              }
+            }
+          },
+          "lines": {
+            "move": "Oynanan hamle",
+            "path": "Terfi yolu",
+            "attacks": "Saldırır",
+            "defends": "Korur",
+            "controls": "Kontrol eder",
+            "chain": "Piyon zinciri",
+            "blocked": "Kilitli"
+          }
+        }
+      },
+      "notebook": {
+        "title": "Hiç ölçmediğin şeyi geliştiremezsin.",
+        "lede": "Satranç çalışmalarının çoğu karar vermeyi çalıştırır. Tahtayı gerçekten kafanda tutup tutamadığını ise pek azı kontrol eder. Bu beceri hesaplamanın, körleme oyunun ve taktik görmenin temelinde yatar ve genellikle şansa bırakılır.",
+        "observation": {
+          "kicker": "Gözlem",
+          "title": "Oyuncular hesap yaparken taşların yerini unutur.",
+          "body": "Üç hamle derinde, uzun çaprazdaki bir fil kafandaki resimden sessizce kaybolur. Önündeki tahta doğruydu. Zihnindeki değildi."
+        },
+        "hypothesis": {
+          "kicker": "Hipotez",
+          "title": "Tahtayı hatırlamak, çalışılabilen ve test edilebilen bir beceridir.",
+          "body": "Bir konumu kısa süre aklında tut, yeniden kur, sonucu kontrol et. Daha çok taşla ve daha az süreyle tekrarla. <hl>Beynin hakkında hiçbir iddiada bulunmuyoruz.</hl> Sana takip edebileceğin bir ölçüm veriyoruz."
+        },
+        "method": {
+          "kicker": "Yöntem",
+          "title": "Bir tur, tek bir net sayı.",
+          "body": "İncele, tahta boşalsın, yeniden kur, puanını al. Doğru kareler de yanlış kareler de işaretlenir, hiçbir şey gizlenmez. Bir tur bir dakikadan kısa sürer, böylece çok sayıda deneme yapabilirsin."
+        }
+      },
+      "method": {
+        "title": "Mikroskop altında bir tur.",
+        "lede": "Gerçek bir konum üzerinde bir turu kaydırarak izle: Kasparov'un Ölümsüz Oyunu'nun sonu, 1999'da Wijk aan Zee'de Kasparov ile Topalov arasında oynanan oyun. Katmanlar bu konumu ezberlemenin yollarından birini gösterir. Kimsenin dikkatinin kaydı değildir.",
+        "status": "Aşama {number} · {name}",
+        "clock": "t = {seconds} sn",
+        "scoreChip": "{total} kareden {correct} doğru",
+        "countChip": "Beyaz {white} · Siyah {black}",
+        "groups": {
+          "standoff": {
+            "name": "Karşı karşıya",
+            "sentence": "Beyaz şah d2'yi hedef alıyor. Siyah şah ve c3 orayı koruyor."
+          },
+          "mirror": {
+            "name": "Merdivenler",
+            "sentence": "Ayna merdivenler, h2'den f4'e çıkar, h7'den f5'e iner."
+          },
+          "longShots": {
+            "name": "Uzak atışlar",
+            "sentence": "a7'deki vezir h7'ye bakıyor. d2'deki kale h2'ye bakıyor."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "İnceleme",
+            "title": "On bir taş, on saniye.",
+            "body": "Kasparov'un Ölümsüz Oyunu'nun 44.Qa7'den sonraki son konumu. Topalov burada terk etti. Tahtayı kare kare değil, bir bütün olarak gör. de Groot'un deneylerinde ustalar, kısa süre gösterilen bir oyun konumunu zayıf oyunculardan çok daha iyi yeniden kurdu.",
+            "note": "Şek. Beyaz: şah c1, vezir a7, piyonlar f4, g3, h2. Siyah: şah e1, kale d2, piyonlar c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Dayanaklar",
+            "title": "Şahlardan başla.",
+            "body": "Önce iki noktayı sabitle. İki şah da birinci sırada, aralarında iki sütun var. Siyah şah e1'e kadar inmiş. Geri kalan her şeyi onlara göre yerleştir.",
+            "note": "Şek. iki şah halkayla işaretli. Geri kalan her şey sırasını bekliyor."
+          },
+          "chunk": {
+            "name": "Öbekleme",
+            "title": "On bir taş üç fikre dönüşür.",
+            "body": "Taşları birbirlerine ne yaptıklarına göre grupla. Şahlar d2 için çekişiyor. İki piyon merdiveni karşılaşıyor. Vezir ve kale, her biri korumasız bir h piyonunu hedefliyor. Chase ve Simon (1973), güçlü oyuncuların konumları birbiriyle ilişkili taşlardan oluşan öbekler hâlinde hatırladığını buldu.",
+            "note": "Şek. turuncu saldırır, mavi savunur, gri bir piyon zincirine katılır, çubuk kilitlenmiş bir çifti gösterir. d2'deki kale iki grupta birden yer alıyor."
+          },
+          "encode": {
+            "name": "Kodla",
+            "title": "Her grubu bir cümleye dönüştür.",
+            "body": "Her grubu yaptığı işle adlandır. Gobet ve Simon (1996), güçlü oyuncuların daha büyük, şema benzeri yapıları akılda tuttuğunu anlatır. Cümlelerin kendisi bir tekniktir, bir araştırma bulgusu değil.",
+            "note": "Şek. adlandırılmış üç grup. Cümleleri:"
+          },
+          "blank": {
+            "name": "Boş tahta",
+            "title": "Tahta temizlenir.",
+            "body": "Taş yok, ipucu yok. Bir resimden değil, cümlelerden yeniden kur. Onları sırayla söyle: önce şahlar, sonra her grup.",
+            "note": "Burada yapacak tek şey üç cümleyi aklında tutmak."
+          },
+          "rebuild": {
+            "name": "Yeniden kur",
+            "title": "Grup grup yeniden kur.",
+            "body": "Şahlar. Karşı karşıya. Merdivenler. Uzak atışlar. Bir sonrakine geçmeden önce her grubu kendi cümlesiyle yerleştir.",
+            "note": "Şek. kontrolden önceki yeniden kurulum. Bir piyon yanlış karede. Hangisi olduğunu görebiliyor musun?"
+          },
+          "score": {
+            "name": "Puan",
+            "title": "Önce cümlelerinle karşılaştır, sonra puanla.",
+            "body": "Yeniden kurduğun tahtada her ilişkiyi tekrar kontrol et. Kale hâlâ iki kez korunuyor mu? c2'deki piyon d2'yi değil, d1'i korur. Taş sayısı, beş ve altı, hâlâ tutuyor. Bu yüzden hatayı yalnızca ilişki kontrolü yakalar.",
+            "note": "Şek. tikler hâlâ geçerli, kırmızı çarpı bozuldu. Turuncu dolgu yanlış kareyi (c2), halka olması gereken yeri (c3) gösterir. {total} kareden {correct} doğru, yani %{accuracy}."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Kalibrasyon ölçümü yap.",
+        "lede": "Gerçek oyundan alınmış Orta seviye tur: aralarında iki şahın da bulunduğu {pieceCount} taş, {memorizeSeconds} saniye. Sonra tahta temizlenir ve konumu yeniden kurarsın. İsabetini ve taş türüne göre hatırlamanı gösteren bir sonuç kartı alırsın. Fare, dokunmatik ekran ve klavyeyle çalışır.",
+        "phaseReady": "Hazır · {pieceCount} taş · {memorizeSeconds} sn inceleme",
+        "phaseLabel": "Aşama {number} · {name}",
+        "start": "Kalibrasyonu başlat",
+        "restart": "Yeniden başla",
+        "again": "Yeniden dene",
+        "done": "Bitti",
+        "submit": "Ölçümü gönder",
+        "clear": "Tahtayı temizle",
+        "controlsLabel": "Tur kontrolleri",
+        "boardLabel": "Kalibrasyon tahtası. Kareler arasında gezinmek için ok tuşlarını kullan.",
+        "paletteLabel": "Taş paleti",
+        "paletteItem": "{piece}, {count} kaldı",
+        "usedUp": {
+          "white": {
+            "king": "Beyaz şah zaten tahtada.",
+            "queen": "Beyaz vezir zaten tahtada.",
+            "rook": "İki beyaz kale de tahtada.",
+            "bishop": "İki beyaz fil de tahtada.",
+            "knight": "İki beyaz at da tahtada.",
+            "pawn": "Sekiz beyaz piyonun hepsi tahtada."
+          },
+          "black": {
+            "king": "Siyah şah zaten tahtada.",
+            "queen": "Siyah vezir zaten tahtada.",
+            "rook": "İki siyah kale de tahtada.",
+            "bishop": "İki siyah fil de tahtada.",
+            "knight": "İki siyah at da tahtada.",
+            "pawn": "Sekiz siyah piyonun hepsi tahtada."
+          }
+        },
+        "squareEmpty": "{square}, boş",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Konumu incele. {memorizeSeconds} saniye.",
+        "liveRebuild": "Tahta temizlendi. Bir taş, ardından bir kare seç.",
+        "liveScore": "İsabet yüzde {accuracy}. {total} karenin {correct} tanesi doğru.",
+        "startFailed": "Konum yüklenemedi. Bağlantını kontrol edip tekrar dene.",
+        "steps": [
+          "Başlat'a bas. Gösterge boşalana kadar konumu incele.",
+          "Paletten bir taş seç, sonra bir kareye dokun. Yerleştirdiğin bir taşı kaldırmak için ona dokun.",
+          "Gönder. Konumda olandan fazla taş yerleştirmek isabetini düşürür, bu yüzden yalnızca hatırladıklarını yerleştir."
+        ],
+        "readout": {
+          "title": "Sonuç kartı",
+          "statusIdle": "Deney bekleniyor",
+          "statusRecording": "Kaydediliyor",
+          "statusDone": "Deney tamamlandı",
+          "correct": "Doğru kareler",
+          "time": "Yerleştirme süresi",
+          "wrong": "Yanlış taşlar",
+          "exposure": "İnceleme süresi",
+          "byType": "Taş türüne göre hatırlama",
+          "byTypeEmpty": "Taş türüne göre hatırlama ilk denemenden sonra burada görünür.",
+          "nextEmpty": "Ölçümden sonra burada önerilen bir zorluk görünür.",
+          "suggested": "Öneri:",
+          "stepUp": "{tier} seviyesine geç, {memorizeSeconds} sn'de {pieceCount} taş. Önce iki temiz turla daha doğrula.",
+          "stay": "{tier} seviyesinde kal, {memorizeSeconds} sn'de {pieceCount} taş. Üç tur oyna ve gidişatı izle.",
+          "start": "{tier} seviyesinden başla, {memorizeSeconds} sn'de {pieceCount} taş. İncelerken taşları ikişerli gruplara ayır.",
+          "playTier": "{tier} seviyesini oyna",
+          "legendCorrect": "doğru",
+          "legendWrong": "yanlış yerleşim",
+          "legendMissed": "atlanan kare"
+        },
+        "pieceTypes": {
+          "king": "Şah",
+          "queen": "Vezir",
+          "rook": "Kale",
+          "bishop": "Fil",
+          "knight": "At",
+          "pawn": "Piyon"
+        }
+      },
+      "tiers": {
+        "title": "Dört seviye. Bir özel düzenek.",
+        "lede": "Yük artar, inceleme süresi kısalır. Tek bir şanslı turdan sonra değil, ölçümlerin istikrarlı hâle geldiğinde bir üst seviyeye geç.",
+        "columns": {
+          "tier": "Zorluk",
+          "pieces": "Taş",
+          "exposure": "Süre",
+          "load": "Yük"
+        },
+        "loadLabel": "32 taşın {pieceCount} tanesi",
+        "play": "Oyna",
+        "custom": {
+          "label": "Özel",
+          "description": "Tek bir zayıflığı ayırmak için kendi değişkenlerini belirle."
+        }
+      },
+      "record": {
+        "title": "Gidişatı görmek için geri gel.",
+        "lede": "Tek bir ölçüm anlık bir görüntüdür. On ölçüm ise gerçek bir ölçmedir. Oynadığın her tur bu cihazda saklanır ve bu paneller kendi turlarınla dolar. İlk turundan önce paneller gerçek oyuncuları değil, <tag>Örnek</tag> değerleri gösterir. Sonrasında, kaydını henüz okuyamayan bir panel neye ihtiyacı olduğunu söyler.",
+        "span": {
+          "fig": "Şek. {number} · Bellek kapasitesi",
+          "title": "Kaç taşı aklında tutabildiğin.",
+          "figure": "{pieceCount, plural, one {# taş} other {# taş}}",
+          "held": "{count, plural, one {# turda} other {# turda}} yüzde {accuracy} veya üzeri puan aldın. Bunlar arasındaki en kısa inceleme süresi {studyTime}.",
+          "up": "Geçen haftadan beri {count, plural, one {# taş} other {# taş}} arttı",
+          "same": "Geçen haftadan beri değişiklik yok",
+          "aria": "12 seans boyunca bellek kapasitesini gösteren örnek merdiven grafiği, 4 taştan 8 taşa yükseliyor.",
+          "note": "Örnek kayıt · 12 seans",
+          "realAria": "{sessions, plural, one {İlk ulaşıldığı seansta} other {İlk ulaşıldığından beri geçen # seans boyunca}} bellek kapasiten, {shape, select, flat {{now} taşta sabit} other {{first} taştan {now} taşa yükseliyor}}.",
+          "need": "Tek bir taş sayısında, en az {minPieces} taşla, {count, plural, =2 {iki kez} one {bir kez daha} other {# kez daha}} yüzde {accuracy} veya üzeri puan al.",
+          "onlyKings": "Şimdiye kadarki turların yalnızca iki şahtan oluşuyordu. Bellek kapasitesi için daha fazla taş gerekir.",
+          "first": "Kapasiteye ilk ulaşma",
+          "last": "En son"
+        },
+        "held": {
+          "fig": "Şek. {number} · Akılda tutulan taşlar",
+          "title": "Her ayarda doğru yerleştirdiğin taşlar.",
+          "aria": "12 tur boyunca akılda tutulan taşları gösteren örnek çizgi, 5 turluk ortalama 4,0 taştan 7,0 taşa yükseliyor.",
+          "note": "Örnek kayıt · 12 tur · her ayar",
+          "partial": "Kesikli çizgi: {window} turdan az turun ortalaması",
+          "realAria": "Her ayarda son {count, plural, one {# turunda} other {# turunda}} akılda tuttuğun taşlar, {window} turluk ortalama olarak, en son {latest} taş.",
+          "average": "Son ortalama {average} taş",
+          "up": "önceki {window} tura göre {change} arttı",
+          "down": "önceki {window} tura göre {change} azaldı",
+          "flat": "önceki {window} tura göre değişmedi",
+          "realNote": "Her ayar · {count, plural, one {# turdan} other {# turdan}}",
+          "needRounds": "{count, plural, one {# tur daha} other {# tur daha}} oynayınca çizgin çizilir.",
+          "needRoundsAndDay": "{count, plural, one {Başka bir günde oynanan # tur daha} other {En az biri başka bir günde olmak üzere # tur daha}} oynayınca çizgin çizilir.",
+          "needDay": "Çizgini çizmek için bir gün daha oyna.",
+          "first": "En eski",
+          "last": "En yeni"
+        },
+        "speed": {
+          "fig": "Şek. {number} · Hatırlama temposu",
+          "title": "Yeniden kurduğun taş başına saniye.",
+          "aria": "12 tur boyunca doğru taş başına yeniden kurma süresini gösteren örnek çizgi, 4,1 saniyeden 2,6 saniyeye iniyor.",
+          "note": "Örnek kayıt · 12 tur · Orta",
+          "realAria": "{pieceCount} taş ve {memorizeSeconds} saniyeyle oynadığın son {count} {source, select, calibration {alıştırma} other {oyun}} turunda doğru taş başına yeniden kurma süren, en son {latest} saniye.",
+          "average": "Son ortalama taş başına {average}",
+          "down": "önceki {window} turdan {change} daha hızlı",
+          "up": "önceki {window} turdan {change} daha yavaş",
+          "flat": "önceki {window} turla aynı tempo",
+          "accuracy": "Aynı turlarda isabet %{average}",
+          "accuracyChange": {
+            "up": "{change, plural, one {# puan} other {# puan}} arttı",
+            "down": "{change, plural, one {# puan} other {# puan}} azaldı",
+            "flat": "değişmedi"
+          },
+          "fastWrong": "Hızlı ama yanlış olmak gelişme değildir.",
+          "config": "{source, select, calibration {Alıştırma} other {Oyun}} · {pieceCount} taş · {studyTime}, son zamanlarda en çok oynadığın ayar · {count, plural, one {# turdan} other {# turdan}}",
+          "need": "{source, select, calibration {Alıştırmada} other {Oyunlarda}} {pieceCount} taş, {studyTime} ile {count, plural, one {# tur daha} other {# tur daha}} {count, plural, one {oynayınca} other {oynayınca}} hatırlama temposunun çizgisi çizilir.",
+          "needRight": "Hatırlama temposu yalnızca en az bir taşın doğru olduğu turları okur. Çizgini başlatmak için {count, plural, one {böyle # tur} other {böyle # tur}} oyna.",
+          "first": "En eski",
+          "last": "En yeni"
+        },
+        "curve": {
+          "fig": "Şek. {number} · Unutma eğrisi",
+          "title": "Kısa, aralıklı tekrarlar tek bir uzun seanstan iyidir.",
+          "desc": "%80'in altında puan aldığın tahtalar, onları ilk gördükten 1, 3, 7 ve 14 gün sonra tekrar için geri gelir. Eğrin, her aralıkta ne kadarını hatırladığını gösterir.",
+          "aria": "Temsilî grafik: tekrar olmadan akılda tutma hızla düşer, 1., 3. ve 7. günlerdeki her aralıklı tekrardan sonra daha yavaş azalır.",
+          "note": "Aralıklı tekrar etkisinin temsilî modeli. Ölçülmüş veri değildir.",
+          "noReview": "tekrar yok",
+          "spaced": "aralıklı turlar",
+          "review": "tekrar",
+          "day": "{day}. gün",
+          "warming": "Aynı aralıktan sonra {reviews, plural, one {# tekrar daha} other {# tekrar daha}} yapınca ilk ölçülen noktan çizilir.",
+          "measuredAria": "Tekrar ettiğin tahtalardaki hatırlaman: {points}.",
+          "pointFirst": "ilk görüşte %{accuracy}, {count, plural, one {# tahtadan} other {# tahtadan}}",
+          "pointAfter": "{day, plural, one {# gün} other {# gün}} sonra %{accuracy}, {count, plural, one {# tekrardan} other {# tekrardan}}",
+          "count": "n={count}",
+          "measuredNote": "{boards, plural, one {# tahtanın} other {# tahtanın}} {reviews, plural, one {# tekrarından} other {# tekrarından}}. Bir nokta için aralığından sonra {min} tekrar gerekir.",
+          "due": "Bugünkü tekrar {number}/{cap}",
+          "capped": "Bugünün tekrarları bitti",
+          "play": "Bir tekrar oyna",
+          "waiting": "Sonraki tekrar {days, plural, one {yarın} other {# gün sonra}}. Sıranda {queued, plural, one {# tahta} other {# tahta}} var.",
+          "empty": "Henüz tekrar edilecek tahta yok. %80'in altında puan aldığın bir tahta ertesi gün buraya geri gelir."
+        },
+        "spark": {
+          "fig": "Şek. {number} · Zaman içinde isabet",
+          "title": "Tur tur çizgin.",
+          "titleSessions": "Seans seans çizgin.",
+          "aria": "12 tur boyunca isabeti gösteren örnek mini grafik, yüzde 52'den 79'a yükseliyor.",
+          "note": "Örnek kayıt · 12 tur · Orta",
+          "first": "T01",
+          "last": "T12",
+          "needRounds": "{pieceCount} taş, {studyTime} ile {count, plural, one {# tur daha} other {# tur daha}} oynayınca {source, select, calibration {alıştırma} other {oyun}} gidişatın çizilir.",
+          "needRoundsAndDay": "{count, plural, one {{pieceCount} taş, {studyTime} ile başka bir günde # tur daha} other {{pieceCount} taş, {studyTime} ile, en az biri başka bir günde olmak üzere # tur daha}} oynayınca {source, select, calibration {alıştırma} other {oyun}} gidişatın çizilir.",
+          "needDay": "{source, select, calibration {Alıştırmada} other {Bir oyunda}} {pieceCount} taş, {studyTime} ile bir gün daha oyna, gidişatın çizilsin.",
+          "config": "{source, select, calibration {Alıştırma} other {Oyun}} · {pieceCount} taş · {studyTime}, gidişatı çıkan ayarların içinde en çok oynadığın",
+          "realAria": "{pieceCount} taş ve {memorizeSeconds} saniyeyle oynadığın son {count} {source, select, calibration {alıştırma} other {oyun}} turundaki isabetin, en son yüzde {latest}.",
+          "realAriaSessions": "{pieceCount} taş ve {memorizeSeconds} saniyeyle {source, select, calibration {alıştırma} other {oyun}} turu oynadığın son {count, plural, one {# seanstaki} other {# seanstaki}} isabetin, en son yüzde {latest}.",
+          "sessions": "{count, plural, one {# seans} other {# seans}}",
+          "realFirst": "En eski",
+          "realLast": "En yeni"
+        },
+        "heat": {
+          "fig": "Şek. {number} · Kaçırma haritası",
+          "title": "Hangi kareler aklından kayıyor.",
+          "aria": "Kaçırılan kareleri gösteren örnek ısı haritası: en koyu bölge h sütunu boyunca ve h1 çevresinde, b7 ve f7'de sıcak noktalar var, en açık bölge merkezde.",
+          "note": "Örnek: kaçırmalar h sütununda ve h1'deki şah köşesinin çevresinde birikiyor. Sırada o kenarı çalış.",
+          "need": "Her sütun ve sırada okunacak 10 taş olana kadar yaklaşık {count, plural, one {# tur daha} other {# tur daha}}.",
+          "needStart": "Kaçırma haritanı başlatmak için birkaç tur daha oyna.",
+          "files": "Sütunlar",
+          "ranks": "Sıralar",
+          "line": "{line}: {shown} taştan {missed} tanesi kaçırıldı",
+          "lineThin": "{line}: {shown} taş görüldü, okumak için yetersiz",
+          "realAria": "Her karedeki kaçırma oranın. Gri karelerde görülen taş sayısı 10'un altında.",
+          "realNote": "Koyu renk daha sık kaçırılan demek. Gri karelerde görülen taş sayısı 10'un altında."
+        },
+        "daily": {
+          "fig": "Şek. {number} · Günün tahtası",
+          "title": "Günde bir tahta, herkes için aynı.",
+          "desc": "Her gün UTC gece yarısında yeni bir konum açılır. Herkes aynı tahtayı ve incelemek için aynı süreyi alır. Senin de tek bir hakkın var.",
+          "play": "Günün tahtasını oyna",
+          "open": "Bugünün tahtasında {pieceCount, plural, one {# taş} other {# taş}} var ve incelemek için {memorizeSeconds, plural, one {# saniye} other {# saniye}} süren var. Günün tahtasını henüz oynamadın.",
+          "played": "{pieceCount, plural, one {# taştan} other {# taştan}} {correct} tanesini doğru yerleştirdin, yüzde {accuracy}.",
+          "unfinished": "Günün tahtasını açtın ve sonucu görmeden ayrıldın. Bu cihazda günde tek hak var.",
+          "streak": "Günlük seri {current, plural, one {# gün} other {# gün}}{forgiven, plural, =0 {} one {, # kaçırılan gün affedildi} other {, # kaçırılan gün affedildi}} · en uzun {longest, plural, one {# gün} other {# gün}}",
+          "streakLongest": "En uzun günlük seri {longest, plural, one {# gün} other {# gün}}",
+          "gridAria": "Her karedeki sonucun, a8'den başlayarak: {correct} doğru, {wrong, plural, one {# yanlış taş} other {# yanlış taş}}, {missed} kaçırılan, {extra} fazla.",
+          "key": {
+            "c": "doğru",
+            "w": "yanlış taş",
+            "m": "kaçırılan",
+            "x": "fazla"
+          },
+          "share": "Memory Chess günün tahtası {day}\n{pieceCount} taştan {correct} doğru, %{accuracy}\n{row}\nthememorychess.com",
+          "copy": "Sonucu kopyala",
+          "showGrid": "Izgarayı göster",
+          "copied": "Kopyalandı. İstediğin yere yapıştır.",
+          "copyFailed": "Kopyalama burada çalışmadı. Sonuç aşağıda seçili, kendin kopyala."
+        },
+        "streak": {
+          "fig": "Şek. {number} · Üst üste günler",
+          "title": "Günde bir tur bir seri oluşturur.",
+          "desc": "Oyun ya da alıştırma, bitirdiğin her tur kendi günü için sayılır. Herhangi 7 gün içinde bir kaçırılan gün affedilir.",
+          "aria": "Örnek iki haftalık seri ızgarası",
+          "note": "Örnek · kesikli kare bugünün denemesi, hâlâ bekliyor",
+          "realDesc": "Bitirdiğin her tur kendi günü için sayılır. Herhangi 7 gün içinde bir kaçırılan gün affedilir.",
+          "need": "Serini okumak için {days, plural, one {# gün daha} other {# gün daha}} oyna.",
+          "realAria": "Son 14 günün: {count, plural, one {# gün} other {# gün}} oynandı{forgiven, plural, =0 {} one {, # gün affedildi} other {, # gün affedildi}}.",
+          "realNote": "Mevcut seri {current, plural, one {# gün} other {# gün}}{forgiven, plural, =0 {} one { oynandı, # kaçırılan gün affedildi} other { oynandı, # kaçırılan gün affedildi}} · en uzun {longest, plural, one {# gün} other {# gün}}",
+          "key": {
+            "played": "oynandı",
+            "forgiven": "affedildi",
+            "missed": "kaçırıldı",
+            "today": "bugün"
+          }
+        },
+        "week": {
+          "ring": "Bu hafta {goal} günden {played} gün",
+          "ringOver": "Hedefe ulaşıldı, bu hafta {played} gün",
+          "sampleRing": "Örnek hafta · {goal} günden {played} gün",
+          "left": "{remaining, plural, =0 {Bu haftanın hedefine ulaşıldı.} one {Hedefine ulaşmak için # gün daha.} other {Hedefine ulaşmak için # gün daha.}}",
+          "outOfReach": "Hedefe ulaşılamıyor, {daysLeft, plural, =0 {hiç gün kalmadı} one {yalnızca # gün kaldı} other {yalnızca # gün kaldı}}. Yeni hafta pazartesi başlar.",
+          "goal": "Haftada gün",
+          "option": "Haftada {days} gün"
+        },
+        "welcome": {
+          "line": "Tekrar hoş geldin. Kaydının {day}. günü. Geçen sefer {pieceCount} taş, {studyTime} ile %{accuracy}.",
+          "lineNoDay": "Tekrar hoş geldin. Geçen sefer {pieceCount} taş, {studyTime} ile %{accuracy}."
+        },
+        "board": {
+          "fig": "Şek. {number} · Sıralama",
+          "title": "Ölçümlerini dünyayla karşılaştır.",
+          "desc": "Her zorluk seviyesi önce doğru taş sayısına, sonra daha az yanlış taşa, sonra daha kısa ezberleme süresine, en son da daha kısa çözüm süresine göre sıralanır. Her satırda oyuncunun ülkesi görünür.",
+          "howTo": "Sonuç ekranından bir skor gönder, sonra dünya genelinde ya da ülkende nerede durduğuna bak.",
+          "sketchPieces": "{count} taş",
+          "open": "Sıralamayı aç",
+          "difficulty": "Zorluk",
+          "scope": "Sıralama kapsamı",
+          "world": "Dünya",
+          "entry": "{difficulty} seviyesindeki en iyi kaydın: {correct, plural, one {# doğru taş} other {# doğru taş}}, gönderildiği tarih {date}.",
+          "check": "Sıramı kontrol et",
+          "checking": "Kontrol ediliyor...",
+          "ranked": "{difficulty} seviyesinde dünya genelinde {total, plural, one {# kayıt} other {# kayıt}} arasında {rank, number}. sıradasın.",
+          "rankedIn": "{country} içinde {difficulty} seviyesinde {total, plural, one {# kayıt} other {# kayıt}} arasında {rank, number}. sıradasın.",
+          "checkedAt": "Kontrol zamanı: {time}.",
+          "boardSize": "Herkese açık tablo ilk {limit} kaydı gösterir.",
+          "up": "{time} kontrolünden beri {places, plural, one {# sıra} other {# sıra}} yükseldin.",
+          "down": "{time} kontrolünden beri {places, plural, one {# sıra} other {# sıra}} düştün.",
+          "same": "{time} kontrolündeki sıranla aynı.",
+          "missing": "{difficulty} kaydın artık sıralamada değil, bu yüzden bu cihaz onu artık saklamıyor. Tablolar zaman zaman temizlenir ya da sıfırlanır. Kontrol zamanı: {time}.",
+          "limited": "Bağlantından çok fazla kontrol yapıldı. {wait, plural, one {# saniye} other {# saniye}} sonra tekrar dene.",
+          "noCountry": "Sıralamada bu kayıt için bir ülke yok, bu yüzden yalnızca dünya genelinde sıralanabilir.",
+          "offline": "Çevrimdışısın, bu yüzden hiçbir şey gönderilmedi. Bağlanıp tekrar dene.",
+          "failed": "Sıralamaya ulaşılamadı, bu yüzden sıran okunamadı. Daha sonra tekrar dene."
+        },
+        "plans": {
+          "fig": "Şek. {number} · Programlar",
+          "title": "Bir plan seç ve sonuna kadar götür.",
+          "desc": "Aynı anda tek plan. İlerleme turlarından sayılır, bu yüzden bir planı durdurmak hiçbir turu silmez.",
+          "baseline": {
+            "kicker": "Plan A · 7 gün",
+            "title": "Başlangıç haftası",
+            "steps": [
+              "Günde bir Orta tur.",
+              "Ölçümü not et, yeniden deneme isteğine kulak asma.",
+              "7. gün: 1. günle karşılaştır."
+            ],
+            "progress": "{days} günün {played} gününde Orta tur oynandı",
+            "compare": "{firstDay}. gün %{first}, {lastDay}. gün %{latest}: {direction, select, up {{change, plural, one {# puan} other {# puan}} artış} down {{change, plural, one {# puan} other {# puan}} düşüş} other {değişiklik yok}}.",
+            "compareNone": "Plan başladığından beri Orta tur yok, bu yüzden karşılaştırılacak bir şey yok.",
+            "compareOne": "Plan başladığından beri yalnızca bir Orta tur var, bu yüzden henüz karşılaştırılacak bir şey yok."
+          },
+          "edge": {
+            "kicker": "Plan B · 14 gün",
+            "title": "Kenar sütun alıştırması",
+            "steps": [
+              "Özel düzenek: 8 taş, 15 sn.",
+              "Kaçırma haritanı her 3 günde bir incele.",
+              "Tahta görüşü rehberiyle birlikte çalış."
+            ],
+            "progress": "Düzeneği {elapsed} günün {played, plural, one {# gününde} other {# gününde}} oynadın. Hedef: {days} günde {target} gün.",
+            "share": "Kaçırılan kenar sütunlar: plandan önce {beforeRounds, plural, one {# turda} other {# turda}} %{before}, sonra {nowRounds, plural, one {# turda} other {# turda}} %{now}.",
+            "shareMissing": "Kenar sütun kaçırmaları, iki tarafta da a ya da h sütununda taş bulunan {needed} tur olunca karşılaştırılır. Şimdiye kadar plandan önce {before}, sonra {now}.",
+            "guide": "Tahtanın tamamını nasıl göreceğini oku"
+          },
+          "ladder": {
+            "kicker": "Plan C · süresiz",
+            "title": "Kademeli merdiven",
+            "steps": [
+              "Üst üste üç turda %90'ı koru.",
+              "Sonra inceleme süresini 2 saniye kısalt.",
+              "İnceleme süresi en alta inince taş ekle."
+            ],
+            "rung": "Basamak: {pieceCount} taş, {studyTime}.",
+            "run": "Yüzde {accuracy} veya üzeriyle üst üste {run}/{needed} tur.",
+            "climbed": "Tamamlandı: yüzde {accuracy} veya üzeriyle üst üste {needed} tur.",
+            "next": "Sonraki basamak: {pieceCount} taş, {studyTime}.",
+            "top": "Merdivenin tepesi: hiçbir tahtada {pieceCount} taştan fazlası yok."
+          },
+          "status": {
+            "day": "{day}. gün",
+            "dayOf": "{length} günün {day}. günü",
+            "overtime": "{day}. gün, planlanan {length} gün aşıldı",
+            "done": "{day}. günde tamamlandı.",
+            "finished": "{day}. günde erken bitirildi.",
+            "stopped": "{day}. günde durduruldu."
+          },
+          "start": "Başlat: {title}",
+          "again": "Yeniden başlat: {title}",
+          "busy": "Aynı anda tek plan. Bunu başlatmak için şu planı durdur: {title}.",
+          "stop": "Planı durdur",
+          "confirmStop": "Gerçekten durdurulsun mu?",
+          "keep": "Devam et",
+          "finish": "Erken bitir",
+          "play": "{pieceCount} taş, {studyTime} oyna"
+        },
+        "goal": {
+          "fig": "Şek. {number} · Hedef",
+          "title": "Bir ölçümü hedefle.",
+          "desc": "Bir taş sayısı ve bir isabet seç. Çubuk, hedefi koyduğundan beri o sayıda ya da daha fazla taşla oynadığın en iyi tura göre dolar.",
+          "sample": "Örnek hedef: {pieceCount} taşta yüzde {accuracy}. Şimdiye kadarki en iyi yüzde {best}, yolun %{percent} kadarı.",
+          "target": "Hedef: {pieceCount} veya daha fazla taşta {accuracy, select, 100 {yüzde 100} other {yüzde {accuracy} veya üzeri}}, konulduğu tarih {date}.",
+          "progress": "O zamandan beri en iyi: {pieceCount} taşta yüzde {best}, yolun %{percent} kadarı.",
+          "bar": "Hedefe giden yolun %{percent} kadarı",
+          "need": "Bu hedefi koyduğundan beri {pieceCount} veya daha fazla taşla oynanmış tur yok.",
+          "reached": "{date} tarihinde ulaşıldı: {pieceCount} taşta yüzde {accuracy}.",
+          "form": "Yeni hedef",
+          "pieces": "Taş, en az",
+          "accuracy": "İsabet, en az",
+          "percent": "%{value}",
+          "set": "Hedefi koy",
+          "newGoal": "Yeni bir hedef koy",
+          "clear": "Hedefi temizle",
+          "cancel": "Vazgeç",
+          "saved": "Hedef kaydedildi.",
+          "cleared": "Hedef temizlendi."
+        },
+        "mine": "Kaydın",
+        "fromRounds": "{count, plural, one {# turdan} other {# turdan}}",
+        "dashboardLink": "Panelini aç",
+        "play": "Bir tur oyna",
+        "tomorrow": "Yarın tekrar gel.",
+        "stale": "En son {count, plural, one {# gün} other {# gün}} önce oynandı.",
+        "unlock": {
+          "label": "Açılmayı bekleyenler",
+          "count": "{total} şeklin {unlocked} tanesi açıldı",
+          "done": "Aşağıdaki şekillerin hepsi açıldı.",
+          "showAll": "{count} şeklin tümünü göster",
+          "showFewer": "Daha az göster",
+          "span": "%{accuracy}+ isabet ve {minPieces}+ taşla {qualifyingRounds, plural, one {# tur} other {# tur}}",
+          "piecesHeld": "{days, plural, one {# güne} other {# güne}} yayılan {rounds, plural, one {# tur} other {# tur}}",
+          "trend": "Tek bir ayarda, {days, plural, one {# güne} other {# güne}} yayılan {rounds, plural, one {# tur} other {# tur}}",
+          "speed": "Tek bir ayarda {rounds, plural, one {# tur} other {# tur}}",
+          "streak": "{days, plural, one {# gün} other {# gün}} oynanmış",
+          "curve": "Aynı aralıktan sonra {reviews, plural, one {# tekrar} other {# tekrar}}",
+          "typeRecall": "Şah dışındaki bir taşın {exposures, plural, one {# kez} other {# kez}} görülmesi",
+          "missMap": "Sütun ve sıra başına {exposures, plural, one {# görülme} other {# görülme}}",
+          "trendRounds": "{pieceCount} taş, {studyTime} ile {rounds} {source, select, calibration {alıştırma} other {oyun}} {rounds, plural, one {turu} other {turu}} daha",
+          "trendDays": "{pieceCount} taş, {studyTime} ile {source, select, calibration {alıştırma} other {oyun}} turlarında {days, plural, one {# gün daha} other {# gün daha}}",
+          "trendRoundsDays": "{pieceCount} taş, {studyTime} ile {rounds} {source, select, calibration {alıştırma} other {oyun}} {rounds, plural, one {turu} other {turu}} daha, {days, plural, one {# gün daha} other {# gün daha}}",
+          "spanLeft": "%{accuracy}+ isabet ve {minPieces}+ taşla {qualifyingRounds, plural, one {# tur daha} other {# tur daha}}",
+          "spanLarger": "{minPieces}+ taşla {largerRounds, plural, one {# tur} other {# tur}}",
+          "piecesHeldRounds": "{rounds, plural, one {# tur daha} other {# tur daha}}",
+          "piecesHeldDays": "{days, plural, one {# gün daha} other {# gün daha}}",
+          "piecesHeldRoundsDays": "{rounds, plural, one {# tur daha} other {# tur daha}}, {days, plural, one {# gün daha} other {# gün daha}}",
+          "speedRounds": "{pieceCount} taş, {studyTime} ile {rounds} {source, select, calibration {alıştırma} other {oyun}} {rounds, plural, one {turu} other {turu}} daha",
+          "speedRight": "Bir taşı doğru olan {rightRounds, plural, one {# tur} other {# tur}}",
+          "streakLeft": "{days, plural, one {# gün daha} other {# gün daha}} oyna",
+          "curveLeft": "Aynı aralıktan sonra {reviews, plural, one {# tekrar daha} other {# tekrar daha}}",
+          "typeRecallLeft": "Şah dışındaki bir taşın {exposures, plural, one {# kez daha} other {# kez daha}} görülmesi",
+          "missMapLeft": "En az görülen sütun ya da sırada {exposures, plural, one {# görülme daha} other {# görülme daha}}",
+          "insights": "{rounds, plural, one {# tur} other {# tur}}",
+          "insightsLeft": "{rounds, plural, one {# tur daha} other {# tur daha}}",
+          "notebook": "{rounds, plural, one {# tur} other {# tur}}"
+        },
+        "bests": {
+          "fig": "Şek. {number} · Kişisel rekorlar",
+          "title": "Her ayardaki en iyi ölçümün.",
+          "desc": "Rekorlar her ayar için ayrı tutulur, çünkü 6 taş ile 20 taş farklı testlerdir. Bu sayfadaki alıştırma ölçümleri oyunlardan ayrı tutulur.",
+          "empty": "Her ayar için en iyi ölçümün ilk turundan sonra burada görünür.",
+          "setting": "{source, select, calibration {Alıştırma} other {Oyun}} · {pieceCount} taş · {studyTime}",
+          "first": "ilk ölçüm",
+          "showAll": "{count} ayarın tümünü göster",
+          "showFewer": "Daha az göster",
+          "reading": "%{accuracy} · {time} içinde yeniden kuruldu"
+        },
+        "types": {
+          "fig": "Şek. {number} · Taş türüne göre hatırlama",
+          "title": "Hangi taşlar aklından kayıyor.",
+          "need": "Şah dışındaki bir taş 20 kez görülene kadar yaklaşık {count, plural, one {# tur daha} other {# tur daha}}.",
+          "needStart": "Taş türüne göre hatırlama ilk turundan sonra görünür.",
+          "onlyKings": "Şimdiye kadarki turların yalnızca iki şahtan oluşuyordu. Taş türüne göre hatırlama için daha fazla taş gerekir.",
+          "thin": "{shown}/20 görüldü",
+          "baseline": "referans",
+          "kings": "Şahlar her turda bulunur, bu yüzden bir referans noktasıdır. {shown} şahtan {recalled} tanesi hatırlandı.",
+          "sampleNote": "Örnek: önce piyonlar ve atlar aklından kayıyor."
+        },
+        "insights": {
+          "fig": "Şek. {number} · Bulgular",
+          "title": "Öne çıkanlar ve denenecekler.",
+          "desc": "Bir bulgu, sayıları en küçük örneklemi geçtiğinde görünür ve dayandığı sayıları belirtir.",
+          "sample": "Örnek bir kayıttan: a ve h sütunları, d ve e merkez sütunlarından {times, select, 2 {yaklaşık iki kat} other {yaklaşık {times} kat}} daha sık kaçırılmış. Kenarda taşların %{edge} kadarı, merkezde %{centre} kadarı.",
+          "sampleList": "Örnek bulgu",
+          "sampleNote": "Örnek bulgu, senin turlarından değil.",
+          "list": "Kaydından bulgular",
+          "need": "Bulgular kaydını {threshold} turdan itibaren okur. {count, plural, one {# tur daha} other {# tur daha}} kaldı.",
+          "none": "Henüz öne çıkan bir şey yok. Oynamaya devam et.",
+          "rules": {
+            "edgeFiles": "a ve h kenar sütunlarını d ve e merkez sütunlarıyla karşılaştırınca: {times, select, 0 {kenardaki {edgeShown} taşın {edge, select, 0 {%1'den azını} other {%{edge} kadarını}} kaçırıyorsun, merkezdeki {centreShown} taşın ise hiçbirini kaçırmadın.} 2 {kenarları yaklaşık iki kat daha sık kaçırıyorsun, {edgeShown} taşta {edge, select, 0 {%1'in altında} other {%{edge}}}, buna karşılık {centreShown} taşta {centre, select, 0 {%1'in altında} other {%{centre}}}.} other {kenarları yaklaşık {times} kat daha sık kaçırıyorsun, {edgeShown} taşta {edge, select, 0 {%1'in altında} other {%{edge}}}, buna karşılık {centreShown} taşta {centre, select, 0 {%1'in altında} other {%{centre}}}.}}",
+            "weakType": "Şahlar dışında en az {minimum} kez görülen taşlar arasında en çok {type, select, q {vezirler} r {kaleler} b {filler} n {atlar} other {piyonlar}} kaçıyor: {shown} taştan {recalled} tanesini hatırladın, %{percent}.",
+            "fasterLessAccurate": "{pieceCount} taş, {studyTime} ile son {window} turun, önceki {window} tura göre doğru taş başına {fasterTime} daha kısa sürdü ve isabet {fell} puan düştü.",
+            "colourGap": "{weaker, select, w {Beyaz} other {Siyah}} taşları {weaker, select, w {siyah} other {beyaz}} taşlardan daha az hatırlıyorsun: {weakerShown} taşta %{weakerPercent}, buna karşılık {strongerShown} taşta %{strongerPercent}, şahlar hariç.",
+            "plateau": "{pieceCount} taş, {studyTime} ile son {window} turunun ortalaması %{last}, önceki {window} turun ortalaması %{before} oldu ve bellek kapasiten son bir haftalık oyununda {span} taşta kaldı. Bir taş daha onu ilerletebilir."
+          },
+          "actions": {
+            "rig": "{pieceCount} taş, {studyTime} oyna",
+            "patterns": "Örüntü tanıma alıştırmalarını oku",
+            "vision": "Tahtanın tamamını nasıl göreceğini oku"
+          }
+        },
+        "notebook": {
+          "fig": "Şek. {number} · Laboratuvar defteri",
+          "title": "Ne oldu, ne zaman oldu.",
+          "empty": "Oynadıkça kayıtlar burada görünür.",
+          "sampleList": "Örnek defter kayıtları",
+          "list": "Defterin, en yenisi önce",
+          "new": "Yeni",
+          "newNote": "Yeni etiketi, son ziyaretinden bu yana eklenen kayıtları gösterir.",
+          "showAll": "{count} kaydın tümünü göster",
+          "showFewer": "Daha az göster",
+          "day": "{day}. gün.",
+          "olderBefore": "{date} öncesindeki kayıtlar bu tarayıcıda saklanmaz.",
+          "older": "Daha eski kayıtlar bu tarayıcıda saklanmaz.",
+          "entries": {
+            "firstRound": "İlk tur: {pieceCount} taşta yüzde {accuracy}.",
+            "rounds": "{count, number}. tur oynandı.",
+            "first90": "{pieceCount} taşta ilk kez yüzde {threshold} veya üzeri.",
+            "best": "{pieceCount} taş, {studyTime} ile yeni {source, select, calibration {alıştırma} other {oyun}} rekoru: {by, select, time {yine yüzde {accuracy}, {solveTime} içinde yeniden kuruldu} other {yüzde {accuracy}, önceki yüzde {previous}}}.",
+            "span": "{from, select, 0 {Bellek kapasitesi {to} taşa ulaştı} other {Bellek kapasitesi {from} taştan {to} taşa çıktı}}.",
+            "streak": "{forgiven, plural, =0 {Üst üste {days} gün.} one {Seride {days} gün, # kaçırılan gün affedildi.} other {Seride {days} gün, # kaçırılan gün affedildi.}}",
+            "rungUp": "Bir basamak yükseldin: {pieceCount} taş, {studyTime}.",
+            "goalReached": "Hedefe ulaşıldı: {pieceCount} veya daha fazla taşta yüzde {accuracy}."
+          }
+        },
+        "tools": {
+          "title": "Bu cihazda saklanır",
+          "body": "Hesap yok, sunucu yok. Kaydını başka bir tarayıcıya taşımak ya da güvende tutmak için bir kopyasını indir.",
+          "download": "Laboratuvar kaydımı indir",
+          "import": "İçe aktar",
+          "lastBackup": "Dışa aktarma başlatıldı: {date}",
+          "neverBackedUp": "Henüz dışa aktarılmadı",
+          "imported": "{added, plural, =0 {İçe aktarılacak yeni bir şey yok. Bu turlar zaten burada.} one {# tur içe aktarıldı.} other {# tur içe aktarıldı.}}",
+          "skipped": "{count, plural, one {Dosyadaki # tur okunamadı ve atlandı.} other {Dosyadaki # tur okunamadı ve atlandı.}}",
+          "importFailed": "Bu dosya bir Memory Chess laboratuvar kaydı değil.",
+          "tooLarge": "Bu dosya 5 MB'tan büyük, yani herhangi bir laboratuvar kaydından daha büyük. Bu yüzden hiçbir şey içe aktarılmadı.",
+          "overCap": "5.000 turluk sınırın içinde kalmak için {count, plural, one {# eski tur} other {# eski tur}} dışarıda bırakıldı.",
+          "summaryIgnored": "Bu tarayıcıda zaten turlar vardı, bu yüzden dosyadaki tüm zamanların toplamları değil, yalnızca yeni turlar birleştirildi.",
+          "summaryDropped": "Dosyadaki tüm zamanların toplamları okunamadı ya da eski bir sürüme aitti, bu yüzden yalnızca turlar içe aktarıldı.",
+          "safari": "Safari'de gizli bir sekme kapandıktan sonra bu kaydı saklamaz. Safari ayrıca yaklaşık 7 gün ziyaret edilmeyen bir sitenin saklanan verilerini siler. Kaydını korumak için bir kopyasını dışa aktar.",
+          "unavailable": "Gizli pencerelerde kaydedilmez. Bu tarayıcı penceresi turlarını saklamıyor.",
+          "backup": "Cihazlar arası yedekleme (yakında)",
+          "backupNoted": "Cihazlar arası yedekleme henüz hazır değil. Teşekkürler, ilgin not edildi.",
+          "card": {
+            "open": "Ölçümümü paylaş",
+            "title": "Memory Chess ölçümüm",
+            "span": "Bellek kapasitesi: {pieceCount, plural, one {# taş} other {# taş}}, {count, plural, one {# turda} other {# turda}} %{accuracy} veya üzeri",
+            "held": "Akılda tutulan taşlar: son ortalama {average}, {count, plural, one {# turdan} other {# turdan}}",
+            "speed": "Hatırlama temposu: {source, select, calibration {alıştırmada} other {oyunlarda}} {pieceCount} taş, {studyTime} ile taş başına son ortalama {average}, {count, plural, one {# turdan} other {# turdan}}",
+            "site": "thememorychess.com",
+            "copy": "Ölçümümü kopyala",
+            "copied": "Kopyalandı. İstediğin yere yapıştır.",
+            "copyFailed": "Kopyalama burada çalışmadı. Ölçüm yukarıda seçili, kendin kopyala."
+          },
+          "nudge": {
+            "title": "Kaydın bu tarayıcıda duruyor",
+            "body": "Tarayıcı verilerini temizlemek kaydını siler. Aynı tarayıcıya geri dönmek için bu siteyi yer imlerine ekle ve bir kopya saklamak için yukarıdaki Laboratuvar kaydımı indir düğmesini kullan.",
+            "safari": "iPhone ve iPad'de Ana Ekrana Ekle, siteyi kendi kaydı olan bir uygulama olarak saklar. Safari'nin 7 gün kuralı bu kaydı silmez. Uygulama boş başlar, bu yüzden indirdiğin kopyayı oraya içe aktar.",
+            "dismiss": "Kapat"
+          }
+        }
+      },
+      "library": {
+        "title": "Başvuru kütüphanesi.",
+        "lede": "Öğrenme Merkezi kısa rehberleri alıştırmalarla bir araya getirir, böylece her ölçüm seni çalışabileceğin bir şeye yönlendirir.",
+        "ref": "Kaynak {number}",
+        "read": "Rehberi oku",
+        "vision": {
+          "title": "Tahta görüşü",
+          "body": "Tahtayı köşe köşe değil, tek seferde bütün olarak gör."
+        },
+        "visualization": {
+          "title": "Görselleştirme",
+          "body": "Taşlar yer değiştirirken hareket eden bir konumu kafanda tut."
+        },
+        "calculation": {
+          "title": "Hesaplama",
+          "body": "Tahtanın izini kaybetmeden daha ileriyi gör."
+        },
+        "memory": {
+          "title": "Hafıza",
+          "body": "Ölçümlerini yükselten öbekleme ve örüntü teknikleri."
+        },
+        "blindfold": {
+          "title": "Körleme satranç antrenmanı",
+          "body": "Tahtayı hatırlamaktan tam körleme oyunlara uzanan dört aşamalı bir plan."
+        },
+        "blundering": "Kaba hatalar nasıl önlenir"
+      },
+      "final": {
+        "title": "İlk ölçümün bir dakikadan kısa sürer.",
+        "body": "Hesap yok, indirme yok, kayıt olmak yok. Bir tur aç, incele, yeniden kur, sayını oku. Sonra ikincisini isteyip istemediğine karar ver."
+      },
+      "resultCard": {
+        "title": "Laboratuvar kaydın",
+        "device": "Bu cihazda saklanır",
+        "lines": "Bu tur kaydında",
+        "unshown": "Laboratuvar kaydın bu tur için gösterilemedi.",
+        "newBest": {
+          "up": "{pieceCount} taş, {studyTime} ile yeni rekor: %{accuracy}, önceki %{previous}",
+          "faster": "{pieceCount} taş, {studyTime} ile yeni rekor: yine %{accuracy}, {fasterTime} daha hızlı",
+          "plain": "{pieceCount} taş, {studyTime} ile yeni rekor: %{accuracy}"
+        },
+        "vsRecent": {
+          "above": "Bu ayardaki {rounds, plural, one {son turunun} other {son # turunun ortalamasının}} {points, plural, one {# puan} other {# puan}} üstünde",
+          "below": "Bu ayardaki {rounds, plural, one {son turunun} other {son # turunun ortalamasının}} {points, plural, one {# puan} other {# puan}} altında",
+          "level": "Bu ayardaki {rounds, plural, one {son turunla} other {son # turunun ortalamasıyla}} aynı"
+        },
+        "span": "Kapasite {pieceCount} taşa çıktı",
+        "streak": "{current, plural, one {1. gün} other {Üst üste #. gün}}{graceUsed, select, true {, telafi günü kullanıldı} other {}}, bu hafta {goal} günden {days} gün",
+        "next": {
+          "label": "Sıradaki",
+          "why": {
+            "more": "%90 veya üzeri, bu yüzden aynı inceleme süresiyle bir taş fazla.",
+            "fewer": "%50'nin altında, bu yüzden aynı inceleme süresiyle bir taş eksik.",
+            "edgeFiles": "a ve h sütunlarını merkez sütunlardan daha sık kaçırıyorsun.",
+            "weakType": "En çok {type, select, q {vezirler} r {kaleler} b {filler} n {atlar} other {piyonlar}} kaçıyor: {shown} taştan {recalled} tanesini hatırladın.",
+            "fasterLessAccurate": "{pieceCount} taş, {studyTime} ile doğru taş başına hızlandın ama isabet {fell} puan düştü.",
+            "colourGap": "{weaker, select, w {Beyaz} other {Siyah}} taşları daha az hatırlıyorsun: %{weakerPercent}, buna karşılık %{strongerPercent}.",
+            "plateau": "Kapasiten {span} taşta sabit kaldı."
+          },
+          "play": "{pieceCount} taş, {studyTime} oyna",
+          "again": "{pieceCount} taş, {studyTime} ile tekrar oyna",
+          "patterns": "Örüntü tanıma alıştırmalarını oku",
+          "vision": "Tahtanın tamamını nasıl göreceğini oku"
+        }
+      },
+      "daily": {
+        "locked": "Günün tahtasını zaten açtın. Bu cihazda günde tek hak var.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Bir dakikadan kısa sürede sıfırlanır} one {# dk sonra sıfırlanır} other {# dk sonra sıfırlanır}}} one {# sa {minutes} dk sonra sıfırlanır} other {# sa {minutes} dk sonra sıfırlanır}}",
+        "seeRecord": "Laboratuvar kaydını aç",
+        "chooseRound": "Başka bir tur oyna"
+      },
+      "review": {
+        "none": "Şu anda bu cihazda tekrar sırası gelen tahta yok.",
+        "capped": "Bugünün {cap} tekrarı bu cihazda tamamlandı.",
+        "cappedNext": "Sırası gelmiş tahtalar yarın geri gelir, en uzun bekleyen önce.",
+        "schedule": "%80'in altında puan aldığın tahtalar, onları ilk gördükten 1, 3, 7 ve 14 gün sonra geri gelir."
+      }
     }
   },
   "game": {
@@ -137,19 +937,33 @@
       "submit": "Gönder",
       "status": "Oyun durumu",
       "controls": "Oyun kontrolleri",
-      "complete": "Oyun tamamlandı",
-      "flash": "BİTTİ!"
+      "complete": "Oyun tamamlandı"
     },
     "config": {
-      "title": "Oyun ayarları",
+      "title": "Satranç hafıza oyunu",
       "presetsLabel": "Zorluk seviyeleri",
       "presetSummary": "{pieces} taş / {seconds} sn",
       "customLabel": "Özel ayarlar",
       "pieceCount": "Taş sayısı",
       "memorizeTime": "Ezberleme süresi",
       "seconds": "{seconds} sn",
-      "start": "Antrenmana başla",
-      "lastGame": "Son oyun: {time} sn çözüm süresi, %{accuracy} isabet"
+      "start": "Bir tur başlat",
+      "lastGame": "Son oyun: {time} sn çözüm süresi, %{accuracy} isabet",
+      "preview": {
+        "label": "Puan önizlemesi",
+        "provisional": "Geçici puan",
+        "rated": "Puanlı tur",
+        "board": "Tahta puanı",
+        "yours": "Senin puanın",
+        "expected": "Beklenen doğruluk",
+        "percent": "<num>%{value}</num>",
+        "suggested": "Önerilen tahta",
+        "clear": "Başarırsan",
+        "miss": "Kaçırırsan",
+        "gain": "En fazla <num>+{value}</num>",
+        "loss": "En fazla <num>−{value}</num>",
+        "announce": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}. Kaçırırsan en fazla −{loss}."
+      }
     },
     "presets": {
       "easy": {
@@ -171,18 +985,7 @@
     },
     "memorize": {
       "title": "Konumu ezberle",
-      "skip": "Atla",
-      "hint": "Süre bittiğinde tahta boşalacak",
-      "rememberPieces": "{count, plural, one {Taşı ezberle} other {# taşın hepsini ezberle}}"
-    },
-    "place": {
-      "title": "Taşları yerleştir",
-      "subtitle": "Tür ve renk seç",
-      "whitePieces": "Beyaz taşlar",
-      "blackPieces": "Siyah taşlar",
-      "selectWhite": "Beyaz taşları seç",
-      "selectBlack": "Siyah taşları seç",
-      "hint": "Taş eklemek ya da kaldırmak için bir kareye dokun"
+      "hint": "Süre bittiğinde tahta boşalacak"
     },
     "board": {
       "pieces": {
@@ -203,20 +1006,7 @@
           "king": "siyah şah"
         }
       },
-      "feedback": {
-        "correct": "doğru",
-        "incorrect": "yanlış",
-        "missing": "eksik"
-      },
-      "squareWithPiece": "{square}: {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Seç: {piece}"
-    },
-    "stats": {
-      "title": "İstatistikler",
-      "currentTime": "Geçen süre",
-      "piecesToMemorize": "Ezberlenecek taş",
-      "averageAccuracy": "Ortalama isabet"
+      "squareWithPiece": "{square}: {piece}"
     },
     "result": {
       "messages": {
@@ -232,7 +1022,9 @@
       "piecesCorrect": "Doğru taş",
       "memorizationTime": "Ezberleme süresi",
       "solutionTime": "Çözüm süresi",
-      "recallSpeed": "Hatırlama hızı",
+      "recallSpeed": "Yerleştirme hızı",
+      "provisional": "Geçici puan",
+      "freeSkip": "Günün ücretsiz atlaması: boş bir tahta puanını değiştirmez. Bugünkü bir sonraki değiştirir.",
       "piecesPerSecond": "{value} taş/sn",
       "actions": "Sonuç işlemleri",
       "tryAgain": "Tekrar dene",
@@ -253,18 +1045,38 @@
         "submit": "Skoru gönder",
         "submitting": "Gönderiliyor...",
         "thanks": "Katıldığın için teşekkürler, {name}!"
+      },
+      "share": {
+        "button": "Sonucu paylaş",
+        "title": "Sonucunu paylaş",
+        "kicker": "{kind, select, daily {Günlük tahta · {date}} review {Tekrar turu} other {Tur sonucu}}",
+        "accuracy": "İsabet",
+        "pieces": "{total, plural, one {# taş} other {# taş}} içinden {correct, number}",
+        "setting": "Ayar",
+        "settingValue": "{pieceCount, plural, one {# taş} other {# taş}}, {seconds} sn ezberleme",
+        "study": "İnceleme süresi",
+        "rebuild": "Çözüm süresi",
+        "seconds": "{seconds} sn",
+        "rating": "Puan",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Galibiyet serisi",
+        "winStreakValue": "{count, plural, one {üst üste # tur} other {üst üste # tur}}",
+        "legend": {
+          "correct": "Doğru",
+          "missed": "Kaçırılan",
+          "wrong": "Yanlış"
+        },
+        "cta": "Geçebilir misin?",
+        "text": "{kind, select, daily {Memory Chess günlük tahtasında ({date}) {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} review {Memory Chess tekrar tahtasında {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} other {Memory Chess'te {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.}} Geçebilir misin?",
+        "alt": "Memory Chess sonuç kartı: {details}."
+      },
+      "savedToast": {
+        "message": "Tur kaydedildi. Güncel istatistiklerin hemen aşağıda.",
+        "action": "Göster"
       }
     },
     "comparison": {
-      "title": "Konumunu incele",
-      "subtitle": "Ezberlediğinle gönderdiğini karşılaştır.",
-      "unavailable": "Tahta karşılaştırması kullanılamıyor.",
-      "ariaLabel": "Tahta karşılaştırması",
-      "correct": "Doğru",
-      "incorrect": "Yanlış",
-      "missed": "Atlanan",
-      "originalBoard": "Hatırlanacak konum",
-      "submittedBoard": "Gönderdiğin konum"
+      "title": "Konumunu incele"
     },
     "feedback": {
       "title": "Memory Chess oynadığın için teşekkürler!",
@@ -282,6 +1094,66 @@
       "sendFailed": "Görüşünü gönderemedik. Tekrar dene ya da “Şimdi değil”i seç.",
       "send": "Görüşünü gönder",
       "sending": "Gönderiliyor..."
+    },
+    "round": {
+      "start": "Başla",
+      "done": "Bitti",
+      "restart": "Yeniden başla",
+      "again": "Tekrar oyna",
+      "submit": "Gönder",
+      "clear": "Tahtayı temizle",
+      "controlsLabel": "Tur kontrolleri",
+      "boardLabel": "Tahta. Kareler arasında gezinmek için ok tuşlarını kullan.",
+      "paletteLabel": "Taş paleti",
+      "paletteItem": "{piece}, {count} kaldı",
+      "usedUp": {
+        "white": {
+          "king": "Beyaz şah zaten tahtada.",
+          "queen": "Beyaz vezir zaten tahtada.",
+          "rook": "İki beyaz kale de tahtada.",
+          "bishop": "İki beyaz fil de tahtada.",
+          "knight": "İki beyaz at da tahtada.",
+          "pawn": "Sekiz beyaz piyonun hepsi tahtada."
+        },
+        "black": {
+          "king": "Siyah şah zaten tahtada.",
+          "queen": "Siyah vezir zaten tahtada.",
+          "rook": "İki siyah kale de tahtada.",
+          "bishop": "İki siyah fil de tahtada.",
+          "knight": "İki siyah at da tahtada.",
+          "pawn": "Sekiz siyah piyonun hepsi tahtada."
+        }
+      },
+      "squareEmpty": "{square}, boş",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Konumu ezberle",
+      "phaseRebuild": "Taşları yerleştir",
+      "liveStudy": "Konumu incele. {memorizeSeconds} saniye.",
+      "liveRebuild": "Tahta temizlendi. Bir taş, ardından bir kare seç.",
+      "liveScore": "İsabet yüzde {accuracy}. {total} karenin {correct} tanesi doğru.",
+      "readout": {
+        "title": "Sonuçlar",
+        "statusIdle": "Tur bekleniyor",
+        "statusRecording": "Kaydediliyor",
+        "statusDone": "Tur tamamlandı",
+        "correct": "Doğru kareler",
+        "time": "Yerleştirme süresi",
+        "wrong": "Yanlış taşlar",
+        "exposure": "İnceleme süresi",
+        "byType": "Taş türüne göre hatırlama",
+        "byTypeEmpty": "Taş türüne göre hatırlama tur bitince burada görünür.",
+        "legendCorrect": "doğru",
+        "legendWrong": "yanlış yerleşim",
+        "legendMissed": "atlanan kare"
+      },
+      "pieceTypes": {
+        "king": "Şah",
+        "queen": "Vezir",
+        "rook": "Kale",
+        "bishop": "Fil",
+        "knight": "At",
+        "pawn": "Piyon"
+      }
     }
   },
   "leaderboard": {
@@ -308,10 +1180,17 @@
     "columns": {
       "rank": "Sıra",
       "player": "Oyuncu",
+      "elo": "ELO",
       "pieces": "Taş",
       "memorizeTime": "Ezberleme süresi",
       "solutionTime": "Çözüm süresi",
       "date": "Tarih"
+    },
+    "daily": {
+      "tab": "Günlük",
+      "setting": "{pieces, plural, one {# taş} other {# taş}} · İncelemek için {seconds} sn",
+      "resetsAtUtc": "{utc} UTC itibarıyla sıfırlanır",
+      "resetsAt": "{utc} UTC itibarıyla sıfırlanır (sizin saatinizle {local}), {timeLeft} sonra"
     }
   },
   "country": {
@@ -319,15 +1198,6 @@
     "world": "Dünya",
     "searchPlaceholder": "Ülke ara",
     "noResults": "Ülke bulunamadı"
-  },
-  "settings": {
-    "meta": {
-      "title": "Memory Chess ayarları",
-      "description": "Memory Chess oyununun ayarlarını ve tercihlerini özelleştir."
-    },
-    "showCoordinates": "Tahta koordinatlarını göster",
-    "home": "Ana sayfa",
-    "playGame": "Oyna"
   },
   "contact": {
     "meta": {
@@ -362,14 +1232,25 @@
       "typeRequired": "Bir konu türü seç.",
       "messageTooShort": "Mesaj en az 10 karakter olmalı."
     },
+    "hints": {
+      "name": "En az 2 karakter.",
+      "email": "Yanıtlar bu adrese gelir.",
+      "type": "Her tür formun altında açıklanıyor.",
+      "message": "En az 10 karakter."
+    },
     "errors": {
-      "submitFailed": "Form gönderilemedi{details}",
-      "generic": "Form gönderilirken bir hata oluştu. Lütfen tekrar dene."
+      "generic": "Form gönderilirken bir hata oluştu. Lütfen tekrar dene.",
+      "reasons": {
+        "invalid": "Bazı bilgiler kabul edilmedi. Formu kontrol edip tekrar dene.",
+        "unavailable": "Şu anda mesaj gönderilemiyor. Lütfen daha sonra tekrar dene.",
+        "notDelivered": "Mesajın iletilemedi. Lütfen tekrar dene."
+      }
     }
   },
   "changelog": {
     "bannerCta": "Yenilikleri gör",
-    "bannerLabel": "Memory Chess güncellemesi"
+    "bannerLabel": "Memory Chess güncellemesi",
+    "bannerLead": "Memory Chess v{version} yayında."
   },
   "articles": {
     "meta": {
@@ -440,6 +1321,400 @@
       "roundSize": "{pieces, plural, one {# taş} other {# taş}}, {seconds, plural, one {# saniye} other {# saniye}}",
       "read": "Makaleyi oku",
       "tryDrill": "Alıştırmayı dene"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Panel",
+      "description": "Memory Chess panelin: beceri puanı, bellek kapasitesi, bu cihazda oynadığın her tur, zaman içinde isabet ve hız, kişisel rekorlar ve bunları paylaşmak için bir kart."
+    },
+    "title": "Panel",
+    "lede": "Bu cihazda oynadığın her tur, bunların belleğin hakkında söyledikleri ve paylaşmak için bir kart. Sen paylaşmadıkça buradaki hiçbir şey tarayıcından çıkmaz.",
+    "unavailable": "Bu tarayıcı kayıt tutmuyor, bu yüzden gösterilecek ilerleme yok. Gizli pencereler hiçbir şey saklamaz.",
+    "fullRecord": "Kaydın tamamını gör",
+    "sections": {
+      "summary": "Özet",
+      "history": "Oyun geçmişi",
+      "analysis": "Analiz",
+      "more": "Diğer değerler"
+    },
+    "historyLede": "En yenisi önce. Puanlanmış tahtasını görmek için bir turu aç.",
+    "analysisLede": "İsabetin ve hatırlama temposun zamanla nasıl değişiyor, taşlar nerede kaçıyor.",
+    "stale": "Son turuna göre",
+    "staleNote": "En son {count, plural, one {# gün} other {# gün}} önce oynadın. Böyle işaretlenen değerler o zamana ait.",
+    "play": "Bir tur oyna",
+    "playAt": "{pieceCount} taş, {memorizeSeconds} sn oyna",
+    "tomorrow": "Yarın tekrar gel.",
+    "choose": "Kaydın tamamında birini seç",
+    "notYet": "Henüz bir şey yok.",
+    "notSet": "Henüz ayarlanmadı.",
+    "needs": "Açılması için: {need}.",
+    "needsAt": "Açılması için: {need}, {pieceCount} taş, {memorizeSeconds} sn.",
+    "need": {
+      "rounds": "{count, plural, one {# tur daha} other {# tur daha}}",
+      "days": "{count, plural, one {# oyun günü daha} other {# oyun günü daha}}",
+      "exposures": "{count, plural, one {# görülen taş daha} other {# görülen taş daha}}",
+      "qualifyingRounds": "%{accuracy} veya üzeri ve en az {minPieces} taşla {count, plural, one {# tur daha} other {# tur daha}}",
+      "largerRounds": "En az {minPieces} taşla {count, plural, one {# tur} other {# tur}}",
+      "rightRounds": "Bir taşı doğru olan {count, plural, one {# tur} other {# tur}}",
+      "reviews": "Aynı aralıktan sonra {count, plural, one {# tekrar daha} other {# tekrar daha}}"
+    },
+    "label": {
+      "rating": "Beceri puanı",
+      "winStreak": "Galibiyet serisi",
+      "bestAccuracy": "En iyi isabet",
+      "recentAccuracy": "Son isabet",
+      "span": "Bellek kapasitesi",
+      "piecesHeld": "Akılda tutulan taşlar",
+      "speed": "Hatırlama temposu",
+      "studyTime": "İnceleme süresi",
+      "rebuildTime": "Yerleştirme süresi",
+      "streak": "Gün serisi",
+      "rounds": "Oynanan turlar",
+      "days": "Oynanan günler",
+      "daily": "Günün tahtası",
+      "week": "Bu hafta",
+      "curve": "Tekrardan sonra hatırlama",
+      "notebook": "Defter",
+      "plans": "Plan",
+      "goal": "Hedef",
+      "board": "Sıralama"
+    },
+    "unit": {
+      "pieces": "{count, plural, one {<n>{value}</n> taş} other {<n>{value}</n> taş}}",
+      "secondsPerPiece": "<n>{value}</n> sn / taş",
+      "seconds": "<n>{value}</n> sn",
+      "days": "{count, plural, one {<n>{value}</n> gün} other {<n>{value}</n> gün}}",
+      "percent": "%<n>{value}</n>",
+      "rounds": "{count, plural, one {<n>{value}</n> tur} other {<n>{value}</n> tur}}",
+      "entries": "{count, plural, one {<n>{value}</n> not} other {<n>{value}</n> not}}",
+      "rating": "<n>{value}</n>"
+    },
+    "context": {
+      "span": "{rounds, plural, one {# turda} other {# turda}} %{accuracy} veya üzeri, {memorizeSeconds} sn ezber",
+      "recent": "{rounds, plural, one {Şimdiye kadarki tek turundan, her ayar} other {Son # turunun ortalaması, her ayar}}",
+      "setting": "{pieceCount} taş, {memorizeSeconds} sn {source, select, calibration {alıştırma turları} other {oyun turları}}, {rounds, plural, one {# turdan} other {# turdan}}",
+      "longest": "En uzun seri: {days, plural, one {# gün} other {# gün}}",
+      "daily": "{status, select, played {Bugün oynandı} unfinished {Bugün açıldı} other {Bugün açık}}, en uzun seri {longest, plural, one {# gün} other {# gün}}",
+      "curve": "{day, plural, one {# gün} other {# gün}} sonra hatırlanan, {reviews, plural, one {# tekrardan} other {# tekrardan}}",
+      "rounds": "{rounds, plural, one {# turdan} other {# turdan}}",
+      "plan": "{planId, select, baseline {Başlangıç planı} edge {Kenarlar planı} other {Merdiven planı}}, {status, select, active {hâlâ sürüyor} done {artık tamamlandı} other {artık durduruldu}}",
+      "goal": "%{accuracy} ile {pieceCount} taşa doğru",
+      "week": "Haftalık hedef {goal} gün",
+      "entry": "En iyi kaydındaki doğru taşlar, {difficulty, select, easy {Kolay seviye} medium {Orta seviye} hard {Zor seviye} other {Büyükusta seviyesi}}",
+      "overDays": "{days, plural, one {# günde} other {# günde}}",
+      "firstDay": "{date} tarihinden beri",
+      "rating": "Son {rounds, plural, one {puanlı turda} other {# puanlı turda}} {sign, select, up {{change} arttı} down {{change} düştü} other {değişmedi}}",
+      "ratingSince": "Puanlı oyun turlarından",
+      "winStreak": "Üst üste %{accuracy} veya üzeri oyun turları",
+      "bestAt": "{source, select, calibration {Alıştırma} other {Oyun}}, {pieceCount} taş, {memorizeSeconds} sn"
+    },
+    "history": {
+      "count": "{total, plural, one {# turdan} other {# turdan}} {shown} tanesi gösteriliyor",
+      "filterSource": "Kaynak",
+      "filterSetting": "Ayar",
+      "allSources": "Tüm kaynaklar",
+      "allSettings": "Tüm ayarlar",
+      "sources": {
+        "game": "Oyun",
+        "daily": "Günün tahtası",
+        "plan": "Plan",
+        "review": "Tekrar",
+        "practice": "Alıştırma"
+      },
+      "settingValue": "{pieceCount} taş, {memorizeSeconds} sn",
+      "col": {
+        "date": "Tarih",
+        "source": "Kaynak",
+        "setting": "Ayar",
+        "accuracy": "İsabet",
+        "correct": "Doğru",
+        "study": "İnceleme süresi",
+        "time": "Yerleştirme süresi",
+        "rating": "Puan",
+        "board": "Tahta"
+      },
+      "correctValue": "{total} taştan {correct}",
+      "seconds": "{value} sn",
+      "ratingUp": "Puan {change} arttı",
+      "ratingDown": "Puan {change} düştü",
+      "ratingLevel": "Puan değişmedi",
+      "unrated": "Puanlanmadı",
+      "show": "Tahtayı göster",
+      "hide": "Tahtayı gizle",
+      "boardLabel": "Puanlanmış tahta: {total} taştan {correct} tanesi doğru.",
+      "detail": "{memorizeSeconds} sn içinde {studied} sn çalıştın. {wrong, plural, =0 {Yanlış taş yok} one {# yanlış taş} other {# yanlış taş}}, {extra, plural, =0 {fazla taş yok} one {# fazla taş} other {# fazla taş}}.",
+      "more": "{count} tane daha göster",
+      "ratingNote": "Puan değişiklikleri en yeni 30 puanlı oyun turun için saklanır. Alıştırma ve tekrar turları puanlanmaz.",
+      "kept": "Kaydın, {total} turunun en yeni {kept} tanesini tur tur saklar. Daha eski turlar toplamlarında ve rekorlarında hâlâ sayılır.",
+      "emptyTitle": "Henüz tur yok.",
+      "empty": "Bu cihazda oynadığın her tur ayarı, isabeti ve yerleştirme süresiyle birlikte burada görünür, en yenisi önce. Puanlanmış tahtasını görmek için birini aç.",
+      "noMatch": "Bu filtrelere uyan tur yok.",
+      "clear": "Filtreleri temizle"
+    },
+    "analysis": {
+      "fromRounds": "{count, plural, one {# turdan} other {# turdan}}",
+      "oldest": "En eski",
+      "latest": "En yeni",
+      "accuracy": {
+        "title": "Zaman içinde isabet",
+        "desc": "En çok oynadığın ayarda tur tur isabetin, 0 ile %100 arasındaki bir ölçekte.",
+        "note": "En çok oynadığın ayar olan {pieceCount} taş, {memorizeSeconds} sn ile {source, select, calibration {alıştırma turları} other {oyun turları}}. Son {count, plural, one {# tur} other {# tur}}.",
+        "aria": "{pieceCount} taş, {memorizeSeconds} sn ile son {count} turundaki isabet, yüzde 0 ile 100 arasında bir ölçekte, en son yüzde {latest}."
+      },
+      "speed": {
+        "title": "Zaman içinde hatırlama temposu",
+        "unit": "Doğru taş başına saniye. Düşük olan daha hızlıdır.",
+        "note": "{pieceCount} taş, {memorizeSeconds} sn ile {source, select, calibration {alıştırma turları} other {oyun turları}}. Son {count, plural, one {# tur} other {# tur}}.",
+        "aria": "{pieceCount} taş, {memorizeSeconds} sn ile son {count} turunda doğru taş başına saniye, en son {latest}."
+      },
+      "bests": {
+        "title": "Ayara göre kişisel rekorlar",
+        "desc": "Rekorlar her ayar için ayrı tutulur, çünkü 6 taş ile 20 taş farklı testlerdir.",
+        "setting": "{source, select, calibration {Alıştırma} other {Oyun}} · {pieceCount} taş, {memorizeSeconds} sn",
+        "col": {
+          "setting": "Ayar",
+          "accuracy": "En iyi isabet",
+          "correct": "Doğru",
+          "time": "Yerleştirme süresi",
+          "rounds": "Tur",
+          "date": "Tarih"
+        }
+      },
+      "types": {
+        "title": "Taş türüne göre hatırlama",
+        "desc": "Her taş türünü ne sıklıkla durduğu kareye geri koyduğun.",
+        "value": "{shown} taştan {recalled}",
+        "thin": "{minimum} taştan {shown} tanesi görüldü",
+        "baseline": "Şahlar her turda bulunur, bu yüzden bir referans noktasıdır: {shown} şahtan {recalled} tanesi hatırlandı.",
+        "onlyKings": "Şimdiye kadarki turlarında yalnızca iki şah yerleştirildi. Taş türüne göre hatırlama için daha fazla taş gerekir."
+      },
+      "miss": {
+        "title": "Kaçırma haritası",
+        "desc": "Tüm turlar boyunca en çok hangi kareleri ve hatları kaçırdığın.",
+        "aria": "Her karedeki kaçırma oranın. Koyu kareler daha sık kaçırılır. Gri karelerde görülen taş sayısı {minimum} altındadır.",
+        "note": "Koyu kareler daha sık kaçırılır. Gri karelerde görülen taş sayısı {minimum} altındadır.",
+        "lines": "Her karede {minimum} taş görülene kadar harita tüm sütunları ve sıraları okur.",
+        "files": "Sütunlar",
+        "ranks": "Sıralar",
+        "line": "{line}: {shown} taştan {missed} tanesi kaçırıldı",
+        "lineThin": "{line}: {shown} taş görüldü, okumak için yetersiz"
+      },
+      "insights": {
+        "title": "Bulgular",
+        "desc": "Kayıtlarında üzerinde durmaya değer örüntüler, her biri dayandığı sayılarla.",
+        "none": "Henüz öne çıkan bir şey yok. Oynamaya devam et.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Kenardaki a ve h sütunlarında {edgeShown} taşta kaçırma oranın {edge, select, 0 {%1'in altında} other {%{edge}}}, d ve e merkez sütunlarındaki {centreShown} taşın ise hiçbirini kaçırmadın.} 2 {Kenardaki a ve h sütunlarını d ve e merkez sütunlarından yaklaşık iki kat daha sık kaçırıyorsun: {edgeShown} taşta {edge, select, 0 {%1'in altında} other {%{edge}}}, buna karşılık {centreShown} taşta {centre, select, 0 {%1'in altında} other {%{centre}}}.} other {Kenardaki a ve h sütunlarını d ve e merkez sütunlarından yaklaşık {times} kat daha sık kaçırıyorsun: {edgeShown} taşta {edge, select, 0 {%1'in altında} other {%{edge}}}, buna karşılık {centreShown} taşta {centre, select, 0 {%1'in altında} other {%{centre}}}.}}",
+          "weakType": "Şahlar dışında en az {minimum} kez görülen taşlar arasında en çok {type, select, q {vezirler} r {kaleler} b {filler} n {atlar} other {piyonlar}} kaçıyor: {shown} taştan {recalled} tanesini hatırladın, %{percent}.",
+          "fasterLessAccurate": "{pieceCount} taş, {studyTime} ile son {window} turun, önceki {window} tura göre doğru taş başına {fasterTime} daha kısa sürdü ve isabet {fell} puan düştü.",
+          "colourGap": "{weaker, select, w {Beyaz} other {Siyah}} taşları {weaker, select, w {siyah} other {beyaz}} taşlardan daha az hatırlıyorsun: {weakerShown} taşta %{weakerPercent}, buna karşılık {strongerShown} taşta %{strongerPercent}, şahlar hariç.",
+          "plateau": "{pieceCount} taş, {studyTime} ile son {window} turunun ortalaması %{last}, önceki {window} turun ortalaması %{before} oldu ve bellek kapasiten son bir haftalık oyununda {span} taşta kaldı. Bir taş daha onu ilerletebilir."
+        },
+        "actions": {
+          "rig": "{pieceCount} taş, {studyTime} oyna",
+          "patterns": "Örüntü tanıma alıştırmalarını oku",
+          "vision": "Tahtanın tamamını nasıl göreceğini oku"
+        }
+      }
+    },
+    "share": {
+      "button": "İlerlememi paylaş",
+      "locked": "İlk turunuzdan sonra kartınız en iyi rakamlarınızı burada gösterir.",
+      "text": "Memory Chess ilerlemem: {figures}. Geçebilir misin?",
+      "figure": {
+        "span": "{value, plural, one {# taşlık} other {# taşlık}} bellek kapasitesi",
+        "rating": "beceri puanı {value, number}",
+        "piecesHeld": "akılda tutulan {value, number} taş",
+        "speed": "taş başına {value, number} sn",
+        "streak": "üst üste {value, plural, one {# gün} other {# gün}}",
+        "bestAccuracy": "%{value, number} en iyi isabet",
+        "recentAccuracy": "%{value, number} son isabet",
+        "studyTime": "inceleme süresi {value, number} sn / taş",
+        "rebuildTime": "yerleştirme süresi {value, number} sn / taş",
+        "winStreak": "{value, plural, one {# turluk} other {# turluk}} galibiyet serisi",
+        "rounds": "{value, plural, one {# tur oynandı} other {# tur oynandı}}",
+        "days": "{value, plural, one {# gün oynandı} other {# gün oynandı}}"
+      },
+      "card": {
+        "kicker": "Laboratuvar kaydı",
+        "rounds": "{count, plural, one {# tur oynandı} other {# tur oynandı}}",
+        "cta": "Geçebilir misin?"
+      },
+      "lede": "Kaydının bir görselini oluştur; paylaş, kaydet ya da gönder.",
+      "title": "İlerlemeni paylaş",
+      "alt": "Memory Chess ilerleme kartı: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Bu turdan sonra panelin",
+      "from": "önceki {before}",
+      "new": "Yeni",
+      "level": "Değişmedi",
+      "open": "Panelini aç",
+      "say": {
+        "up": "{label} {after}, {before} değerinden {amount} arttı, {verdict, select, better {daha iyi} other {daha kötü}}",
+        "down": "{label} {after}, {before} değerinden {amount} azaldı, {verdict, select, better {daha iyi} other {daha kötü}}",
+        "level": "{label} {after}, değişmedi",
+        "new": "{label} {after}, yeni"
+      }
+    },
+    "trend": "Son {window} turda önceki {window} tura göre {amount} {direction, select, up {arttı} other {düştü}}"
+  },
+  "share": {
+    "intro": "Kartı paylaş, kaydet ya da bir gönderiye kopyala.",
+    "working": "Kartın hazırlanıyor.",
+    "shared": "Paylaşıldı.",
+    "failed": "Kart burada oluşturulamadı. Bunun yerine aşağıdaki metni kopyala.",
+    "caption": "Metin",
+    "copy": "Metni kopyala",
+    "copied": "Metin kopyalandı.",
+    "copyFailed": "Kopyalama burada çalışmadı. Metin seçili, kendin kopyala.",
+    "close": "Kapat",
+    "shareFailed": "Paylaşım burada çalışmadı. Bunun yerine görseli indir ya da kopyala.",
+    "downloaded": "Görsel indirildi.",
+    "imageCopied": "Görsel kopyalandı. Gönderine yapıştır.",
+    "imageCopyFailed": "Bu tarayıcı görseli kopyalamadı. Bunun yerine indir.",
+    "opened": "{network} yeni sekmede açıldı. Kartın bağlantı önizlemesinde görünür.",
+    "actions": {
+      "share": "Paylaş",
+      "download": "Görseli indir",
+      "copyImage": "Görseli kopyala"
+    },
+    "post": {
+      "title": "Şurada paylaş",
+      "note": "Her bağlantı metnini ve kartına giden bir bağlantıyı paylaşır; X, Facebook, LinkedIn ve diğerleri kartı bağlantı önizlemesinde gösterir. Instagram için ya da görsel dosyasının gerektiği başka yerlerde önce görseli indir veya kopyala.",
+      "newTab": "(yeni sekmede açılır)"
+    }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Sayfa bulunamadı",
+      "heading": "Bu sayfa yok.",
+      "body": "Bağlantı eskimiş ya da adreste bir yazım hatası olabilir. Bir tur oynayabilir ya da ana sayfaya dönebilirsin."
+    },
+    "error": {
+      "title": "Bir şeyler ters gitti",
+      "heading": "Bu sayfada bir şeyler ters gitti.",
+      "body": "Turların ve ayarların bu tarayıcıda kayıtlı ve etkilenmedi. Tekrar dene ya da ana sayfaya dön.",
+      "retry": "Tekrar dene"
+    },
+    "play": "Bir tur oyna",
+    "home": "Ana sayfaya git"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} dk",
+    "hoursLeft": "{hours} sa {minutes} dk",
+    "underMinute": "< 1 dk",
+    "ready": "Bugünün tahtası · {pieceCount} taş · {seconds} sn · {timeLeft} kaldı",
+    "next": "Sonraki tahta {timeLeft} sonra",
+    "pending": "Bugünün tahtası",
+    "navReady": "{label}, bugünün günlük tahtası hazır",
+    "cardTitle": "Bugünün günlük tahtası hazır",
+    "cardSetting": "{pieceCount} taş ve ezberlemek için {seconds} saniye.",
+    "cardNote": "Bugün herkes aynı tahtayı oynuyor ve tek bir deneme hakkın var.",
+    "play": "Bugünün tahtasını oyna"
+  },
+  "daily": {
+    "meta": {
+      "title": "Günlük Satranç Hafıza Tahtası: Herkes İçin Tek Konum",
+      "description": "Günde bir satranç hafıza tahtası, her oyuncu için aynı konum. Bir kez incele, yeniden kur ve bugünün ilk 10'una gir. Yeni tahta UTC gece yarısı açılır.",
+      "socialTitle": "Memory Chess Günlük Tahta",
+      "socialDescription": "Bugün herkes aynı konumu alıyor. İncele, yeniden kur ve kaçıncı olduğuna bak."
+    },
+    "round": {
+      "locked": "Bugünün tahtasını zaten açtın. Günde bir deneme oyunu adil tutar.",
+      "seeBoard": "Bugünün tahtasını gör",
+      "chooseRound": "Bir tur daha oyna",
+      "join": "Bugünün tahtasına katıl"
+    },
+    "page": {
+      "fig": "Günlük tahta · {date}",
+      "title": "Tek tahta, herkes için aynı",
+      "lede": "Her gün tüm oyunculara tek bir konum verilir. Bir kez incele, hafızandan yeniden kur, sonra nerede olduğunu görmek için günün tahtasına katıl.",
+      "resets": "Yeni tahta UTC gece yarısı",
+      "open": "Bugünün tahtası açık",
+      "pieces": "{count, plural, one {# taş} other {# taş}}",
+      "seconds": "İncelemek için {count} sn",
+      "oneTry": "Tek deneme",
+      "hidden": "Oynayana kadar gizli",
+      "play": "Bugünün tahtasını oyna",
+      "streak": "{count, plural, one {Günlük seri: # gün} other {Günlük seri: # gün}}",
+      "unfinishedTitle": "Bugünkü hakkın kullanıldı",
+      "unfinished": "Bugünün tahtasını açtın ama sonuçtan önce ayrıldın. Günde bir deneme tahtayı adil tutar, o yüzden sıradaki tahta için tekrar gel.",
+      "result": "Sonucun",
+      "score": "{pieceCount} taşın {correct} tanesi doğru",
+      "rebuild": "{seconds} sn'de kuruldu",
+      "gridAria": "Karelerin: {correct} doğru, {wrong} yanlış taş, {missed} kaçırılan, {extra} fazla",
+      "key": {
+        "c": "Doğru",
+        "w": "Yanlış taş",
+        "m": "Kaçırılan",
+        "x": "Fazla"
+      },
+      "shareLabel": "Tahtayı belli etmeden paylaş",
+      "shareText": "Memory Chess günlük tahta {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Sonucu kopyala",
+      "copied": "Kopyalandı",
+      "copyFailed": "Pano izin vermedi. Aşağıdaki metni seçip kopyala.",
+      "joined": "Bugünün tahtasındasın",
+      "rank": "Bugün {total} kişi arasında {rank}. sıra",
+      "lateNote": "Dünün tahtasını oynadın ama henüz katılmadın.",
+      "lateJoined": "O günün tahtasındasın"
+    },
+    "join": {
+      "title": "Bugünün tahtasına katıl",
+      "lateTitle": "O günün tahtasına katıl",
+      "name": "Ad",
+      "nameHint": "4 ila 16 karakter, skorunla birlikte gösterilir.",
+      "nameShort": "Çok kısa. En az 4 karakter kullan.",
+      "nameLong": "Çok uzun. En fazla 16 karakter kullan.",
+      "country": "Ülke",
+      "chooseCountry": "Bir ülke seç",
+      "from": {
+        "saved": "Bu cihazda kayıtlı.",
+        "connection": "Bağlantına göre.",
+        "language": "Tarayıcı dilinden.",
+        "none": "Adına oynadığın ülkeyi seç."
+      },
+      "change": "Değiştir",
+      "submit": "Tahtaya katıl",
+      "submitting": "Katılıyor...",
+      "public": "Adın, ülken, skorun ve puanın herkese açık gösterilir.",
+      "failed": "Tahtaya katılınamadı. Lütfen tekrar dene.",
+      "noneRight": "Hiçbir taş doğru değildi, bu yüzden bu denemenin sıralanacak bir skoru yok. Sonraki tahta UTC gece yarısı açılır."
+    },
+    "board": {
+      "title": "Bugünün ilk 10'u",
+      "playedLike": "Bugünün tahtası {rating} gibi oynadı",
+      "playedLikeNote": "Bugünkü oyuncuların sonuçlarından tahmin edildi.",
+      "rank": "Sıra",
+      "player": "Oyuncu",
+      "right": "Doğru",
+      "wrong": "Yanlış",
+      "time": "Süre (sn)",
+      "rating": "{rating} Elo",
+      "you": "Sen",
+      "empty": "Bugünün tahtasına henüz kimse katılmadı. Oyna ve ilk sen ol.",
+      "error": "Bugünün tahtası yüklenemedi. Lütfen birazdan tekrar dene.",
+      "joinToRank": "Sıranı burada görmek için tahtaya katıl.",
+      "order": "Sıralama: en çok doğru taş, sonra en az yanlış, sonra en hızlı kurulum.",
+      "all": "Tüm tahtaları gör"
+    },
+    "reference": {
+      "title": "Günlük tahta nasıl çalışır",
+      "shared": "Her gün UTC gece yarısında yeni bir konum belirlenir ve dünyadaki her oyuncu aynısını alır. Konum, tarihten üretilen bir tohumdan gelir; bu yüzden tahta herkes için aynıdır ve kimse daha kolay bir kopya almaz. Tahta ortak olduğu için, o gün oynayan herkes için bir skor aynı anlama gelir.",
+      "oneTry": "Tek deneme hakkın var. Tahtayı açmak denemeyi kullanmış sayılır; bu yüzden inceleme sırasında ayrılıp geri gelirsen tahta sana ikinci kez gösterilmez. Cihazın, sonraki tahta açılana kadar denemeyi hatırlar.",
+      "grid": "Konumu yeniden kurduktan sonra hangi kareleri doğru bildiğini, hangisinde yanlış taş olduğunu, hangisini kaçırdığını ve nereye fazla taş koyduğunu görürsün. Paylaşım satırında her taş için bir kare bulunur ve kareler sonuca göre sıralanır; taşın nerede durduğuna dair hiçbir bilgi yoktur. Bu yüzden paylaşmak, henüz oynamamış birine tahtayı belli etmez.",
+      "join": "Tahtaya katılmak için 4 ila 16 karakterlik bir ad ve adına oynadığın ülkeyi seç. Ülke önce daha önce seçtiğinden, sonra bağlantından, sonra tarayıcı dilinden gelir ve istediğin zaman değiştirebilirsin. Katıldığın andaki puanın adının yanında gösterilir.",
+      "ranking": "Satırlar doğru yerleştirilen taş sayısına, sonra en az yanlış taşa, sonra en hızlı kurulum süresine göre sıralanır. Herkes aynı sayıda saniye inceler; bu yüzden günlük tahtada inceleme süresi iki oyuncuyu asla birbirinden ayırmaz.",
+      "arcTitle": "Hafta boyunca taşlar ve inceleme süresi",
+      "arcIntro": "Ayar haftalık bir eğriyi izler. Pazartesi hafif başlar; böylece hafta sonu molası bir seriyi bozmaz, yük hafta boyunca artar, cumartesi yalnızca birkaç saniye gördüğün bir flaş tahtadır, pazar ise hepsinin en zorudur. Her günün aralığı içinde tarih tek bir ayar seçer ve bu ayar tüm oyuncular için aynıdır.",
+      "day": "Gün",
+      "pieces": "Taş",
+      "seconds": "İnceleme süresi",
+      "range": "{min} ila {max}",
+      "secondsRange": "{min} ila {max} sn",
+      "secondsExact": "{count} sn"
     }
   }
 }

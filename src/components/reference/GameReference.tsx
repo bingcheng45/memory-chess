@@ -1,6 +1,8 @@
+import Link from "next/link";
 import { getTranslations } from "next-intl/server";
 
-import { EDITORIAL_STYLES } from "@/components/editorial/editorialStyles";
+import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
+import "./game-reference.css";
 import {
   ACCURACY_BANDS,
   MEMORIZE_SECONDS_RANGE,
@@ -8,13 +10,28 @@ import {
   PRESET_FACTS,
 } from "@/lib/reference/facts";
 import { getReferenceProse, interpolate } from "@/lib/reference/prose";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
+
+/**
+ * The Learn guides are English-only, so the list that links them is too: a
+ * translated game page would otherwise carry an English section.
+ */
+const TRAINING_GUIDES = {
+  heading: "Train between rounds",
+  links: [
+    { slug: "chess-visualization-exercises", before: "Hold the picture longer with these ", anchor: "chess visualization exercises", after: "." },
+    { slug: "blindfold-chess-training-for-beginners", before: "Work through a four-stage ", anchor: "blindfold chess training plan", after: "." },
+    { slug: "chess-memory-training", before: "Climb the ", anchor: "chess memory training ladder", after: " one preset at a time." },
+    { slug: "how-to-see-the-whole-board-in-chess", before: "Learn to ", anchor: "see the whole board", after: " before you move." },
+  ],
+} as const;
 
 /**
  * Rendered by the game route's layout, not its page: the page wraps the game
  * in a Suspense boundary whose child calls useSearchParams, so during static
  * prerender only the fallback serialises and nothing inside the page reaches
- * the served HTML. This block is also the route's sole h1; the game UI has
- * none.
+ * the served HTML. The route's h1 is the configuration card's, which comes
+ * first in the document, so this block starts at h2.
  */
 export default async function GameReference({ locale }: { locale: string }) {
   const prose = getReferenceProse(locale).game;
@@ -43,7 +60,7 @@ export default async function GameReference({ locale }: { locale: string }) {
     <section
       data-below-game
       aria-labelledby="game-reference-title"
-      className="bg-bg-dark text-text-primary"
+      className={`${LAB_PAPER_CLASS} lab-ref`}
     >
       {/*
         Plain script tag, not next/script: `strategy="afterInteractive"` keeps
@@ -56,73 +73,65 @@ export default async function GameReference({ locale }: { locale: string }) {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
       />
 
-      <div className="container mx-auto max-w-4xl px-2 sm:px-4 pb-4 pt-10 sm:pt-12">
-        <div className={EDITORIAL_STYLES.readingColumn}>
-          <h1
-            id="game-reference-title"
-            className={EDITORIAL_STYLES.pageTitle}
-          >
+      <div className="lab-wrap">
+        <div className="lab-ref-col">
+          <h2 id="game-reference-title" className="lab-ref-title">
             {prose.title}
-          </h1>
-          <p className={`${EDITORIAL_STYLES.body} mt-4`}>{prose.intro}</p>
+          </h2>
+          <p className="lab-ref-lede">{prose.intro}</p>
 
-          <section className={EDITORIAL_STYLES.section}>
-            <h2 className={EDITORIAL_STYLES.sectionTitle}>
+          <section className="lab-ref-sec">
+            <h2>
               {prose.phases.heading}
             </h2>
             {phases.map((phase) => (
-              <div key={phase.title} className="mt-5">
-                <h3 className={EDITORIAL_STYLES.subsectionTitle}>
-                  {phase.title}
-                </h3>
-                <p className={`${EDITORIAL_STYLES.body} mt-2`}>{phase.body}</p>
+              <div key={phase.title} className="lab-ref-phase">
+                <h3>{phase.title}</h3>
+                <p>{phase.body}</p>
               </div>
             ))}
           </section>
 
-          <section className={EDITORIAL_STYLES.section}>
-            <h2 className={EDITORIAL_STYLES.sectionTitle}>
+          <section className="lab-ref-sec">
+            <h2>
               {prose.presets.heading}
             </h2>
-            <p className={`${EDITORIAL_STYLES.body} mt-5`}>
+            <p>
               {prose.presets.intro}
             </p>
-            <div className={`${EDITORIAL_STYLES.tableFrame} mt-4`}>
-              <table className="w-full min-w-[34rem] border-collapse text-left text-sm">
-                <thead className="bg-white/[0.025] text-xs uppercase tracking-wide text-text-muted">
+            <div className="lab-ref-table">
+              <table>
+                <thead>
                   <tr>
-                    <th scope="col" className="px-4 py-3 font-medium">
+                    <th scope="col">
                       {prose.presets.columns.preset}
                     </th>
-                    <th scope="col" className="px-4 py-3 font-medium">
+                    <th scope="col">
                       {prose.presets.columns.pieces}
                     </th>
-                    <th scope="col" className="px-4 py-3 font-medium">
+                    <th scope="col">
                       {prose.presets.columns.time}
                     </th>
-                    <th scope="col" className="px-4 py-3 font-medium w-1/2">
+                    <th scope="col" className="lab-ref-wide">
                       {prose.presets.columns.trains}
                     </th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-white/10 text-text-secondary">
+                <tbody>
                   {PRESET_FACTS.map((preset) => (
                     <tr key={preset.difficulty}>
-                      <th
-                        scope="row"
-                        className="px-4 py-3 font-medium text-text-primary"
-                      >
+                      <th scope="row">
                         {t(`presets.${preset.difficulty}.label`)}
                       </th>
-                      <td className="px-4 py-3 font-mono tabular-nums">
+                      <td className="lab-mono">
                         {preset.pieceCount}
                       </td>
-                      <td className="px-4 py-3 font-mono tabular-nums">
+                      <td className="lab-mono">
                         {interpolate(prose.presets.seconds, {
                           seconds: preset.memorizeSeconds,
                         })}
                       </td>
-                      <td className="px-4 py-3 leading-6">
+                      <td>
                         {prose.presets.trains[preset.difficulty]}
                       </td>
                     </tr>
@@ -130,11 +139,11 @@ export default async function GameReference({ locale }: { locale: string }) {
                 </tbody>
               </table>
             </div>
-            <div className="mt-6">
-              <h3 className={EDITORIAL_STYLES.subsectionTitle}>
+            <div className="lab-ref-phase">
+              <h3>
                 {prose.presets.custom.title}
               </h3>
-              <p className={`${EDITORIAL_STYLES.body} mt-2`}>
+              <p>
                 {interpolate(prose.presets.custom.body, {
                   minPieces: PIECE_COUNT_RANGE.min,
                   maxPieces: PIECE_COUNT_RANGE.max,
@@ -145,22 +154,22 @@ export default async function GameReference({ locale }: { locale: string }) {
             </div>
           </section>
 
-          <section className={EDITORIAL_STYLES.section}>
-            <h2 className={EDITORIAL_STYLES.sectionTitle}>
+          <section className="lab-ref-sec">
+            <h2>
               {prose.scoring.heading}
             </h2>
-            <div className={`${EDITORIAL_STYLES.body} mt-5 space-y-4`}>
+            <div className="lab-ref-paras">
               <p>{prose.scoring.match}</p>
               <p>{prose.scoring.accuracy}</p>
               <p>{prose.scoring.wrong}</p>
               <p>{prose.scoring.bandsIntro}</p>
             </div>
-            <ul className={`${EDITORIAL_STYLES.body} mt-4 space-y-2`}>
+            <ul className="lab-ref-bands">
               {ACCURACY_BANDS.map((band, index) => (
                 <li key={band.key}>
-                  <span className="font-medium text-text-primary">
+                  <b>
                     {t(`result.messages.${band.key}`)}
-                  </span>{" "}
+                  </b>{" "}
                   {interpolate(prose.scoring.bands[band.key], {
                     // keepPracticing is "below X", where X is the floor of
                     // the band above it; every other band states its own.
@@ -172,30 +181,47 @@ export default async function GameReference({ locale }: { locale: string }) {
                 </li>
               ))}
             </ul>
-            <p className={`${EDITORIAL_STYLES.body} mt-4`}>
+            <p>
               {prose.scoring.ranking}
             </p>
           </section>
 
-          <section className={EDITORIAL_STYLES.section}>
-            <h2 className={EDITORIAL_STYLES.sectionTitle}>
+          <section className="lab-ref-sec">
+            <h2>
               {prose.positions.heading}
             </h2>
-            <p className={`${EDITORIAL_STYLES.body} mt-5`}>
+            <p>
               {prose.positions.intro}
             </p>
-            <ul
-              className={`${EDITORIAL_STYLES.body} mt-4 list-disc space-y-2 pl-5`}
-            >
+            <ul className="lab-ref-list">
               {Object.values(prose.positions.rules).map((rule) => (
                 <li key={rule}>{rule}</li>
               ))}
             </ul>
-            <div className={`${EDITORIAL_STYLES.body} mt-4 space-y-4`}>
+            <div className="lab-ref-paras">
               <p>{prose.positions.distribution}</p>
               <p>{prose.positions.outro}</p>
             </div>
           </section>
+
+          {locale === DEFAULT_LOCALE ? (
+            <section className="lab-ref-sec">
+              <h2>
+                {TRAINING_GUIDES.heading}
+              </h2>
+              <ul className="lab-ref-list">
+                {TRAINING_GUIDES.links.map((link) => (
+                  <li key={link.slug}>
+                    {link.before}
+                    <Link href={`/learn/${link.slug}`}>
+                      {link.anchor}
+                    </Link>
+                    {link.after}
+                  </li>
+                ))}
+              </ul>
+            </section>
+          ) : null}
         </div>
       </div>
     </section>

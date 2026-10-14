@@ -27,10 +27,16 @@ export function textOf(article: Article): ArticleText {
   };
 }
 
-/** `text` must have the shape of `textOf(english)`. */
+/**
+ * `text` must have the shape of `textOf(english)`. The English-only fields,
+ * `searchTitle` and `relatedGuides`, are left off the translation.
+ */
 export function withText(english: Article, text: ArticleText): Article {
+  const shared = { ...english };
+  delete shared.searchTitle;
+  delete shared.relatedGuides;
   return {
-    ...english,
+    ...shared,
     title: text.title,
     description: text.description,
     person: text.person,
@@ -96,6 +102,7 @@ export function approvalProblems(file: Tree, text: unknown, place: ApprovedPlace
 const INSTALLED_FILE_KEYS = {
   article: ["sourceHash", "approvedHash", "sameAsEnglish", "text"],
   chrome: ["sourceHash", "approvedHash", "sameAsEnglish"],
+  page: ["sourceHash", "approvedHash", "sameAsEnglish", "text"],
 } as const;
 
 /**
@@ -148,7 +155,8 @@ export function shapeProblems(english: unknown, candidate: unknown, path: string
   return leafProblems(candidate, label);
 }
 
-export function translationProblems(file: unknown, english: ArticleText, { locale, slug }: { locale: string; slug: string }): string[] {
+/** Why an installed file of an article, or of any text kept in a file of its own, cannot be published. */
+export function translationProblems(file: unknown, english: unknown, { locale, slug }: { locale: string; slug: string }): string[] {
   if (!isTree(file)) return ["the file is not an object"];
 
   return [

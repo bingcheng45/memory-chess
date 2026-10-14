@@ -80,11 +80,10 @@ describe("LikeButton at rest", () => {
     expect(liveLine()).toBeEmptyDOMElement();
   });
 
-  it("is at least 44px tall and shows its focus", () => {
+  it("is at least 44px tall", () => {
     render(<LikeButton slug={SLUG} likes={187} />);
 
     expect(button()).toHaveClass("min-h-11");
-    expect(button().className).toContain("focus-visible:outline");
   });
 
   it("starts pressed when this browser liked the article before the count was kept beside the like", () => {

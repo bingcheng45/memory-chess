@@ -6,15 +6,15 @@
       "heading": "Las tres fases de una ronda",
       "memorize": {
         "title": "Memorización",
-        "body": "Una posición aparece en un tablero completo durante un número fijo de segundos. Nada se mueve y nada está oculto. Puedes terminar la fase antes de tiempo con el botón Saltar, y el reloj registra cuánto miraste en realidad, no el tiempo que se te dio."
+        "body": "Una posición aparece en un tablero completo durante un número fijo de segundos. Nada se mueve y nada está oculto. Puedes terminar la fase antes de tiempo con el botón Listo, y el reloj registra cuánto miraste en realidad, no el tiempo que se te dio."
       },
       "place": {
         "title": "Colocación",
-        "body": "El tablero se vacía. Eliges un tipo de pieza y un color, y luego tocas una casilla para poner una pieza o la vuelves a tocar para retirarla. Aquí no hay límite de tiempo, pero el reloj corre desde que el tablero se vacía hasta que envías tu respuesta."
+        "body": "El tablero se vacía. Eliges una pieza de la paleta, y luego tocas una casilla para ponerla o la vuelves a tocar para retirarla. Aquí no hay límite de tiempo, pero el reloj corre desde que el tablero se vacía hasta que envías tu respuesta."
       },
       "score": {
         "title": "Puntuación",
-        "body": "Tu tablero se compara casilla por casilla con el original. Ves qué piezas fueron correctas, cuáles incorrectas y cuáles olvidaste, junto a la posición que se te mostró, una al lado de la otra en pantallas anchas y una encima de la otra en pantallas estrechas."
+        "body": "Tu tablero se compara casilla por casilla con el original. Las casillas correctas y las piezas incorrectas se marcan en el tablero, y las piezas que olvidaste aparecen tenues donde estaban, junto a un resumen de resultados con tu precisión y tu recuerdo por tipo de pieza."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "Los dos alfiles de un bando nunca están en casillas del mismo color.",
         "simultaneous-check": "Los dos reyes nunca están en jaque a la vez.",
         "checked-side-not-to-move": "Si un rey está en jaque, le toca mover a ese bando.",
+        "home-rank-pawn-check": "Un peón que nunca ha salido de su fila inicial nunca da jaque.",
+        "impossible-double-check": "Ningún rey recibe jaque de más de dos piezas, y un jaque doble siempre incluye un alfil, una torre o una dama.",
         "piece-count": "El tablero tiene exactamente el número de piezas que pidió la dificultad.",
         "invalid-fen": "La posición es una posición legal de ajedrez que se puede montar en un tablero."
       },

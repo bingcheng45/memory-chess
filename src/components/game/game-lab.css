@@ -1,0 +1,135 @@
+/* /game in the Lab Paper shell. The round's own rules are components/round/round.css; these fit it to the pinned
+   layout, where ActiveGameLayout fixes the rows' heights and hands the board an exact size. */
+
+/* While pinned, globals.css makes body a fixed flex column. The page's block is its flex item and passes the column
+   on, so main takes what the banner and the header leave. The shell's visible root overflow is for its sticky
+   header, and nothing scrolls the document while pinned. */
+body.game-fixed .lab-game { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
+html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow-x: hidden; }
+
+/* The board's side, from the figures ActiveGameLayout sets on the column: the largest square the column fits under
+   both rows. A browser without container units (Safari before 16, Chrome before 105, Firefox before 110) keeps the
+   custom property whatever it holds and then fails every width that reads it, so it gets the viewport-based size below. */
+.lab-active-column { --board-size: min(100cqw, 100cqh - var(--board-rows), var(--board-max)); }
+@supports not (width: 1cqw) {
+  .lab-active-column {
+    --board-size: min(100vw - var(--page-gutters), max(var(--board-min), 100vh - var(--page-chrome) - var(--board-rows)), var(--board-max));
+  }
+}
+
+.lab-game [data-round-board] { flex: none; }
+.lab-game [data-round-board] .lab-figure { height: 100%; padding: 16px; }
+.lab-game [data-round-board] .lab-files { left: 16px; right: 16px; bottom: 1px; }
+.lab-game [data-round-board] .lab-ranks { top: 16px; bottom: 16px; left: 3px; }
+
+.lab-game .lab-cal-head { padding: 0 0 8px; }
+.lab-game .lab-meter { margin: 0; }
+.lab-game .lab-palette { margin-top: 0; }
+.lab-game .lab-palette button { aspect-ratio: auto; height: 44px; max-height: none; }
+.lab-game .lab-cal-actions { margin-top: 8px; }
+.lab-game .lab-cal-main .lab-btn { min-height: 44px; height: 44px; padding: 0 8px; font-size: 15px; line-height: 1.15; white-space: normal; }
+
+/* result screen */
+.lab-game .lab-result { max-width: 1000px; }
+.lab-game .lab-result-card { padding: clamp(16px, 3vw, 32px); }
+.lab-game .lab-result-h { font: 650 clamp(28px, 4vw, 36px)/1.15 var(--lp-ui); letter-spacing: -0.02em; margin: 0; }
+.lab-game .lab-result-sub { margin-top: 8px; font: 400 16px/1.5 var(--lp-body); color: var(--lp-ink-2); }
+.lab-game .lab-result-sub .lab-mono { color: var(--lp-ink); font-weight: 500; }
+.lab-game .lab-result-qualifies { margin-top: 16px; padding: 12px 16px; border-radius: var(--lp-r-md); background: var(--lp-correct-soft); color: var(--lp-correct); font: 600 15px/1.45 var(--lp-ui); }
+.lab-game .lab-result-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 24px; align-items: start; margin-top: 24px; }
+.lab-game .lab-result-board { margin: 0; padding: 16px; }
+.lab-game .lab-result-board figcaption { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: var(--lp-ink); }
+.lab-game .lab-result-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--lp-line); }
+.lab-game .lab-result-link { font: 500 15px/1.4 var(--lp-ui); }
+
+/* the dashboard figures after the round: two columns of label over value, one on a phone */
+.lab-game .lab-deltas { padding: clamp(16px, 3vw, 24px); }
+.lab-game .lab-deltas-h { margin: 0 0 12px; font: 650 18px/1.3 var(--lp-ui); }
+.lab-game .lab-deltas-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 32px; margin: 0; padding: 0; list-style: none; }
+.lab-game .lab-delta { min-width: 0; padding: 12px 0; border-top: 1px solid var(--lp-line); }
+.lab-game .lab-delta-label { display: block; font: 600 14px/1.3 var(--lp-ui); color: var(--lp-muted); }
+.lab-game .lab-delta-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; margin-top: 4px; }
+.lab-game .lab-delta-value { font: 500 15px/1.2 var(--lp-ui); color: var(--lp-ink-2); overflow-wrap: anywhere; }
+.lab-game .lab-delta-value .lab-tile-value { font: 500 22px/1.1 var(--lp-data); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--lp-ink); }
+.lab-game .lab-delta-from { font: 400 14px/1.4 var(--lp-body); color: var(--lp-muted); }
+.lab-game .lab-delta .lab-tag { align-self: center; }
+.lab-game .lab-deltas-open { display: inline-block; margin-top: 16px; font: 500 15px/1.4 var(--lp-ui); }
+.lab-game .lab-deltas:focus { outline: none; }
+.lab-game .lab-deltas:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
+
+/* "Round saved": the sound toast's chip, laid over the site header. The header is the one band that is never the score
+   or the board; at the foot of a 390 by 844 phone the chip covered the readout's score, and on a shorter screen the board. */
+.lab-game .lab-saved-toast-region { position: fixed; left: 50%; top: calc(8px + env(safe-area-inset-top)); z-index: 60; width: max-content; max-width: min(560px, calc(100vw - 32px)); transform: translateX(-50%); pointer-events: none; }
+.lab-game .lab-saved-toast { display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 20px; border: 1px solid var(--lp-line); border-radius: 999px; background: var(--lp-surface); box-shadow: var(--lp-pop-shadow); font: 500 14px/1.4 var(--lp-ui); color: var(--lp-ink); pointer-events: auto; animation: lab-saved-toast-in 200ms ease-out; }
+.lab-game .lab-saved-toast-action { flex: none; min-height: 32px; padding: 0 12px; border: 0; border-radius: 999px; background: var(--lp-accent-soft); font: 600 14px/1 var(--lp-ui); color: var(--lp-accent); cursor: pointer; }
+.lab-game .lab-saved-toast-action:hover { background: var(--lp-accent); color: var(--lp-on-accent); }
+@keyframes lab-saved-toast-in { from { opacity: 0; transform: translateY(-8px); } }
+@media (prefers-reduced-motion: reduce) { .lab-game .lab-saved-toast { animation: none; } }
+@media (max-width: 639px) {
+  .lab-game .lab-deltas-list { grid-template-columns: minmax(0, 1fr); }
+}
+@media (max-width: 767px) {
+  .lab-game .lab-result-grid { grid-template-columns: minmax(0, 1fr); }
+  .lab-game .lab-result-actions .lab-btn { flex: 1 1 calc(50% - 6px); }
+  /* Sharing is not the next step: it keeps its own width beside the leaderboard link, under a full-width Submit, so Try again and New game stay the wide pair. */
+  .lab-game .lab-result-actions .lab-result-submit { flex-basis: 100%; }
+  .lab-game .lab-result-actions .lab-result-share { flex: none; }
+}
+
+/* Text in the lab card, the article tile and the set-board notice is set in Geist, the face the lab card's height reserve was measured in. */
+.lab-game .lab-ui-face { font-family: var(--lp-ui); color: var(--lp-ink); }
+
+/* dialogs: portalled to body, so each carries its own Lab Paper block */
+.lab-paper.lab-dialog { font-family: var(--lp-ui); background-color: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); box-shadow: var(--lp-pop-shadow); color: var(--lp-ink); }
+.lab-paper.lab-dialog > button { color: var(--lp-ink-2); }
+.lab-dialog .lab-dialog-title { font: 650 20px/1.3 var(--lp-ui); color: var(--lp-ink); }
+.lab-dialog .lab-dialog-text { font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
+.lab-dialog .lab-dialog-label { font: 600 14px/1.4 var(--lp-ui); color: var(--lp-ink); }
+.lab-dialog .lab-dialog-input { height: 44px; border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-md); background: var(--lp-surface); color: var(--lp-ink); }
+.lab-dialog .lab-dialog-error { font: 400 14px/1.45 var(--lp-body); color: var(--lp-wrong); }
+.lab-dialog .lab-dialog-done { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--lp-correct-soft); color: var(--lp-correct); }
+.lab-dialog .lab-btn { min-height: 44px; }
+
+/* configuration form */
+.lab-game .lab-config { width: 100%; max-width: 560px; margin: 0 auto; padding: clamp(20px, 4vw, 32px); }
+.lab-game .lab-config-h { margin: 0 0 20px; font: 650 clamp(30px, 4vw, 40px)/1.12 var(--lp-ui); letter-spacing: -0.02em; }
+.lab-game .lab-config-group { margin-top: 24px; }
+.lab-game .lab-config-label { display: block; margin: 0 0 10px; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-ink); }
+.lab-game .lab-config-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
+.lab-game .lab-config-row .lab-config-label { margin: 0; }
+.lab-game .lab-config-value { min-width: 48px; padding: 4px 10px; border-radius: 999px; background: var(--lp-accent-soft); color: var(--lp-accent); text-align: center; font: 600 15px/1.3 var(--lp-data); font-variant-numeric: tabular-nums; }
+.lab-game .lab-config-presets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
+.lab-game .lab-preset { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 56px; padding: 8px 6px; border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-md); background: var(--lp-surface); color: var(--lp-ink); cursor: pointer; transition: background-color 0.15s, border-color 0.15s; }
+.lab-game .lab-preset:hover { border-color: var(--lp-ink-2); }
+.lab-game .lab-preset[aria-pressed="true"] { background: var(--lp-accent-soft); border-color: var(--lp-accent); box-shadow: inset 0 0 0 1px var(--lp-accent); }
+.lab-game .lab-preset-name { font: 600 15px/1.25 var(--lp-ui); }
+.lab-game .lab-preset-meta { font: 400 12px/1.3 var(--lp-data); color: var(--lp-muted); font-variant-numeric: tabular-nums; }
+.lab-game .lab-config-description { margin-top: 8px; min-height: 1.55em; }
+.lab-game .lab-range { width: 100%; height: 24px; margin: 0; background: transparent; cursor: pointer; appearance: none; -webkit-appearance: none; }
+.lab-game .lab-range::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: linear-gradient(to right, var(--lp-accent) var(--fill, 0%), var(--lp-surface-2) var(--fill, 0%)); box-shadow: inset 0 0 0 1px var(--lp-line); }
+.lab-game .lab-range::-moz-range-track { height: 6px; border-radius: 3px; background: linear-gradient(to right, var(--lp-accent) var(--fill, 0%), var(--lp-surface-2) var(--fill, 0%)); }
+.lab-game .lab-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: -8px; border: 2px solid var(--lp-surface); border-radius: 50%; background: var(--lp-accent); box-shadow: 0 0 0 1px var(--lp-accent); }
+.lab-game .lab-range::-moz-range-thumb { width: 18px; height: 18px; border: 2px solid var(--lp-surface); border-radius: 50%; background: var(--lp-accent); }
+.lab-game .lab-range:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 4px; }
+.lab-game .lab-range-scale { display: flex; justify-content: space-between; margin-top: 6px; font: 400 12px/1.3 var(--lp-data); color: var(--lp-muted); }
+.lab-game .lab-config-preview { margin-top: 24px; padding: 12px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); background: var(--lp-paper); }
+.lab-game .lab-preview-phase { min-height: 1.4em; margin: 0 0 8px; font: 600 13px/1.4 var(--lp-ui); color: var(--lp-ink-2); }
+.lab-game .lab-preview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; }
+.lab-game .lab-preview-cell { padding: 8px 10px; border-radius: var(--lp-r-md); }
+.lab-game .lab-preview-cell dt { font: 400 13px/1.35 var(--lp-ui); color: var(--lp-muted); }
+.lab-game .lab-preview-cell dd { margin: 2px 0 0; font: 500 15px/24px var(--lp-ui); color: var(--lp-ink); }
+.lab-game .lab-preview-num { font: 600 17px/24px var(--lp-data); font-variant-numeric: tabular-nums; }
+.lab-game .lab-preview-blank { color: var(--lp-muted); font-weight: 400; }
+/* Keeps the global 36px touch target; the negative margins hold the row at the placeholder's height, and the text lines up with the cell's. */
+.lab-game .lab-preview-suggest { display: block; min-height: 36px; margin: -6px 0; padding: 0 !important; text-align: left; border: 0; background: none; font: 600 15px/24px var(--lp-ui); color: var(--lp-accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.lab-game .lab-preview-suggest:disabled { color: var(--lp-ink-2); text-decoration: none; cursor: default; }
+.lab-game .lab-preview-suggest:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; border-radius: 4px; }
+.lab-game .lab-preview-gain { background: var(--lp-correct-soft); }
+.lab-game .lab-preview-gain dt, .lab-game .lab-preview-loss dt { color: var(--lp-ink-2); }
+.lab-game .lab-preview-gain dd { color: color-mix(in srgb, var(--lp-correct) 80%, var(--lp-ink)); }
+.lab-game .lab-preview-loss { background: var(--lp-wrong-soft); }
+.lab-game .lab-preview-loss dd { color: color-mix(in srgb, var(--lp-wrong) 80%, var(--lp-ink)); }
+.lab-game .lab-config-start { width: 100%; margin-top: 24px; }
+.lab-game .lab-config-daily { width: 100%; min-height: 52px; margin-top: 12px; padding: 6px 16px; font-size: 15px; font-weight: 500; line-height: 1.25; font-variant-numeric: tabular-nums; text-wrap: balance; }
+.lab-game .lab-config-last { margin-top: 16px; text-align: center; }
+@media (max-width: 520px) { .lab-game .lab-config-presets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

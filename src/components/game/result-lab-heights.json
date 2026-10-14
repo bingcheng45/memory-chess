@@ -1,0 +1,13 @@
+{
+  "source": "cls-result.mjs: the tallest card the copy can make, laid out in the real card at each width",
+  "worst": {
+    "1440": 215,
+    "1024": 215,
+    "1000": 235,
+    "768": 235,
+    "640": 235,
+    "390": 299,
+    "360": 299,
+    "320": 299
+  }
+}

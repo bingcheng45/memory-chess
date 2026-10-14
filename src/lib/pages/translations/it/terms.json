@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": "f1c690d0deb770fb73ee32eeab6a0683bceb41cd49670e4cd7f37f101a09c5e2",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Termini di servizio",
+      "description": "I termini, in linguaggio semplice, per giocare a Memory Chess, inviare punteggi alla classifica e usare i contenuti del sito.",
+      "socialTitle": "Termini di servizio di Memory Chess",
+      "socialDescription": "I termini, in linguaggio semplice, per giocare a Memory Chess e usare il sito."
+    },
+    "kicker": "Le clausole",
+    "title": "Termini di servizio",
+    "lede": "Memory Chess è un gioco gratuito gestito da una sola persona. Questi termini sono brevi perché l’accordo è semplice, e sono scritti per essere letti.",
+    "sections": {
+      "service": {
+        "title": "Il servizio",
+        "blocks": [
+          {
+            "p": "Memory Chess è un gioco gratuito per browser che allena la memoria della scacchiera. Lo fornisco così com’è e secondo disponibilità, senza garanzie di alcun tipo. Mi impegno a mantenerlo veloce, accurato e online, ma non prometto un servizio ininterrotto, un punteggio privo di errori né che una qualsiasi funzione resti uguale per sempre. Posso modificare, sospendere o interrompere qualsiasi parte del sito in qualsiasi momento."
+          },
+          {
+            "p": "Nei limiti consentiti dalla legge, non sono responsabile dei danni derivanti dal tuo uso del sito. È un gioco di memoria. Il peggio che ragionevolmente può succedere qui è perdere un punteggio a cui tenevi, e mi impegno comunque molto per evitarlo."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Uso consentito",
+        "blocks": [
+          {
+            "p": "Gioca correttamente e lascia che il sito funzioni per tutti gli altri. Non attaccare, sovraccaricare o sondare il servizio, non estrarne i contenuti in massa e non cercare di manomettere il suo sistema di punteggio. Non inviare punteggi generati da bot, script o automazioni di qualsiasi tipo. Non usare il modulo di contatto o la classifica per inviare spam, molestare o spacciarti per qualcun altro."
+          },
+          {
+            "p": "Il modulo di contatto serve per messaggi veri rivolti a una persona vera. Usalo per segnalare bug, fare domande e proporre idee, e verrà letto."
+          },
+          {
+            "p": "Posso bloccare il traffico o limitare l’accesso che viola queste regole. Non essendoci account da bannare, rimuovere le voci scorrette e bloccare gli abusi al perimetro della rete è lo strumento di controllo che ho, e lo uso."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "La classifica",
+        "blocks": [
+          {
+            "p": "Inviare un punteggio alla classifica è facoltativo. Tutto ciò che invii lì è pubblico. Il nome associato a un punteggio è quello che scrivi tu, quindi scegline uno che non ti dispiace vedere pubblicato, e non usare il tuo vero nome né informazioni personali di nessuno se preferisci mantenerli privati."
+          },
+          {
+            "p": "Una voce inviata contiene il nome che hai scelto e i dettagli della partita, come precisione, difficoltà e tempo impiegato. Una volta pubblicata, resta in classifica finché non viene superata da punteggi migliori o rimossa."
+          },
+          {
+            "p": "Posso rimuovere le voci della classifica offensive, che si spacciano per qualcun altro, che sembrano automatizzate o che chiaramente non sono state prodotte da una persona che gioca. Rimuovo le voci per mantenere la classifica onesta, non per scegliere chi vince."
+          }
+        ]
+      },
+      "content": {
+        "title": "Contenuti e proprietà intellettuale",
+        "blocks": [
+          {
+            "p": "I contenuti propri del sito, inclusi il gioco, le guide di Impara, il design e il codice che lo fa funzionare, appartengono a me. Puoi inserire un link a qualsiasi pagina, citare estratti ragionevoli indicandone la fonte e condividere i tuoi punteggi dove vuoi. Non ripubblicare guide intere e non spacciare i contenuti del sito per tuoi."
+          },
+          {
+            "p": "Gli scacchi in sé non appartengono a nessuno. Posizioni, regole e notazione sono libere per tutti, qui come altrove."
+          },
+          {
+            "p": "Se invii feedback o suggerimenti, accetti che io possa usarli per migliorare il sito senza doverti alcun compenso o riconoscimento. Il feedback dei giocatori ha già dato forma a versioni reali, e il registro delle novità documenta cosa ne è venuto fuori."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Servizi di terze parti",
+        "blocks": [
+          {
+            "p": "Il sito si appoggia a un piccolo insieme di servizi esterni. Google AdSense pubblica gli annunci che lo mantengono gratuito. Google Analytics, Vercel Analytics, Vercel Speed Insights e Ahrefs Analytics misurano traffico e prestazioni. Supabase archivia le statistiche di gioco e le voci della classifica. Ognuno ha i propri termini, e l’<privacy>informativa sulla privacy</privacy> spiega quali dati tocca ciascuno e quali scelte hai."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Modifiche a questi termini",
+        "blocks": [
+          {
+            "p": "Posso aggiornare questi termini quando il sito o i suoi servizi cambiano. La versione in vigore si trova sempre a questo indirizzo, e continuare a usare il sito dopo una modifica significa accettare i termini aggiornati. Per tutto ciò che riguarda in modo significativo i giocatori, come un cambiamento nel funzionamento della classifica, lo segnalo anche nel registro delle novità."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Contatti",
+        "blocks": [
+          {
+            "p": "Le domande su questi termini, o una voce della classifica che vuoi far esaminare o rimuovere, vanno inviate a <mail>{email}</mail>. Rispondo personalmente."
+          }
+        ]
+      }
+    }
+  }
+}

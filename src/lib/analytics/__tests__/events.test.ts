@@ -1,15 +1,38 @@
-import { trackEvent, type FunnelEvent } from "@/lib/analytics/events";
+import { roundSourceFrom, trackEvent, type FunnelEvent } from "@/lib/analytics/events";
 
 const EVENTS: FunnelEvent[] = [
-  { name: "round_start", params: { piece_count: 6, memorize_time: 10 } },
+  { name: "round_start", params: { piece_count: 6, memorize_time: 10, source: "home_quick" } },
   {
     name: "round_complete",
-    params: { piece_count: 6, memorize_time: 10, correct_pieces: 4, accuracy: 67 },
+    params: { piece_count: 6, memorize_time: 10, correct_pieces: 4, accuracy: 67, source: "try_again" },
+  },
+  {
+    name: "round_complete",
+    params: { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, source: "calibration" },
   },
   { name: "score_submit", params: { difficulty: "medium", piece_count: 6 } },
   { name: "article_like", params: { slug: "magnus-carlsen" } },
   { name: "article_tile_click", params: { slug: "judit-polgar", action: "read" } },
   { name: "article_tile_click", params: { slug: "judit-polgar", action: "drill" } },
+  { name: "lab_export", params: { rounds: 42 } },
+  { name: "lab_import", params: { added: 40, rejected: 2 } },
+  { name: "lab_backup_interest", params: { rounds: 42 } },
+  { name: "lab_section_view", params: {} },
+  { name: "lab_panel_action", params: { panel: "unlock", action: "play" } },
+  { name: "lab_panel_action", params: { panel: "trend", action: "play" } },
+  { name: "lab_panel_action", params: { panel: "insights", action: "guide" } },
+  { name: "lab_panel_action", params: { panel: "resultCard", action: "next" } },
+  { name: "lab_panel_action", params: { panel: "plans", action: "start" } },
+  { name: "lab_panel_action", params: { panel: "plans", action: "stop" } },
+  { name: "lab_panel_action", params: { panel: "plans", action: "finish" } },
+  { name: "lab_panel_action", params: { panel: "plans", action: "play" } },
+  { name: "lab_panel_action", params: { panel: "goal", action: "setGoal" } },
+  { name: "lab_panel_action", params: { panel: "goal", action: "clearGoal" } },
+  {
+    name: "learn_search",
+    params: { query_length: 28, results: 2, top: "how-to-stop-blundering-in-chess", outcome: "strong", surface: "hub" },
+  },
+  { name: "learn_search_select", params: { slug: "chess-memory-training", rank: 1, matched_question: false, surface: "server" } },
 ];
 
 afterEach(() => {
@@ -25,6 +48,18 @@ it.each(EVENTS)("forwards $name to gtag with exactly its params", (event) => {
 
   expect(gtag).toHaveBeenCalledTimes(1);
   expect(gtag).toHaveBeenCalledWith("event", event.name, event.params);
+});
+
+it.each([
+  ["insight", "insight"],
+  ["tile_drill", "tile_drill"],
+  ["result_next", "result_next"],
+  ["plan", "plan"],
+  ["share", "share"],
+  ["server", "link"],
+  [null, "link"],
+])("reads the round link source %p as %p", (value, source) => {
+  expect(roundSourceFrom(value)).toBe(source);
 });
 
 it("does nothing when gtag is absent", () => {

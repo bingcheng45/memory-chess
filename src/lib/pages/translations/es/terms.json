@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": "b934beca2f0aedbe73a17e07d82d404abbe89bf0fffe7297df42cbd8207bc6b8",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Términos del servicio",
+      "description": "Los términos, en lenguaje claro, para jugar a Memory Chess, enviar puntuaciones a la clasificación y usar el contenido del sitio.",
+      "socialTitle": "Términos del servicio de Memory Chess",
+      "socialDescription": "Los términos, en lenguaje claro, para jugar a Memory Chess y usar el sitio."
+    },
+    "kicker": "La letra pequeña",
+    "title": "Términos del servicio",
+    "lede": "Memory Chess es un juego gratuito gestionado por una sola persona. Estos términos son breves porque el acuerdo es sencillo, y están escritos para leerse.",
+    "sections": {
+      "service": {
+        "title": "El servicio",
+        "blocks": [
+          {
+            "p": "Memory Chess es un juego gratuito para el navegador que entrena la memoria del tablero. Lo ofrezco tal cual y según disponibilidad, sin garantía de ningún tipo. Trabajo para que sea rápido, preciso y esté en línea, pero no prometo un servicio ininterrumpido, una puntuación sin errores ni que ninguna función vaya a seguir igual para siempre. Puedo cambiar, suspender o retirar cualquier parte del sitio en cualquier momento."
+          },
+          {
+            "p": "En la medida en que lo permita la ley, no soy responsable de los daños derivados de tu uso del sitio. Es un juego de memoria. Lo peor que razonablemente puede pasar aquí es perder una puntuación que te importaba, y aun así me esfuerzo mucho por evitarlo."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Uso aceptable",
+        "blocks": [
+          {
+            "p": "Juega limpio y deja que el sitio siga funcionando para todos los demás. No ataques ni sobrecargues el servicio, no lo sondees en busca de fallos, no lo extraigas de forma masiva y no intentes romper su sistema de puntuación. No envíes puntuaciones generadas por bots, scripts ni ningún tipo de automatización. No uses el formulario de contacto ni la clasificación para enviar spam, acosar o suplantar a nadie."
+          },
+          {
+            "p": "El formulario de contacto es para mensajes reales dirigidos a una persona real. Úsalo para informar de errores, hacer preguntas y proponer ideas, y se leerá."
+          },
+          {
+            "p": "Puedo bloquear el tráfico o restringir el acceso que incumpla estas normas. Sin cuentas que vetar, eliminar las entradas indebidas y bloquear los abusos en el borde de la red es la forma de hacer cumplir las normas que tengo, y la uso."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "La clasificación",
+        "blocks": [
+          {
+            "p": "Enviar una puntuación a la clasificación es opcional. Todo lo que envíes allí es público. El nombre asociado a una puntuación es el que escribas, así que elige algo que no te importe ver publicado, y no uses tu nombre real ni datos personales de nadie si prefieres mantenerlos en privado."
+          },
+          {
+            "p": "Una entrada enviada contiene el nombre que elegiste y los detalles de la ronda, como la precisión, la dificultad y el tiempo empleado. Una vez publicada, permanece en la clasificación hasta que la desplacen mejores puntuaciones o se elimine."
+          },
+          {
+            "p": "Puedo eliminar entradas de la clasificación que sean abusivas, que suplanten a alguien, que parezcan automatizadas o que claramente no sean obra de una persona que juega al juego. Elimino entradas para que la clasificación sea honesta, no para decidir quién gana."
+          }
+        ]
+      },
+      "content": {
+        "title": "Contenido y propiedad intelectual",
+        "blocks": [
+          {
+            "p": "El contenido propio del sitio, incluidos el juego, las guías de Aprender, el diseño y el código que lo hace funcionar, me pertenece. Puedes enlazar a cualquier página, citar fragmentos razonables indicando la fuente y compartir tus puntuaciones donde quieras. No vuelvas a publicar guías completas ni hagas pasar el contenido del sitio por tuyo."
+          },
+          {
+            "p": "El ajedrez en sí no pertenece a nadie. Las posiciones, las reglas y la notación son libres para todos, aquí y en cualquier otro lugar."
+          },
+          {
+            "p": "Si envías comentarios o sugerencias, aceptas que pueda usarlos para mejorar el sitio sin deberte compensación ni reconocimiento. Los comentarios de los jugadores ya han dado forma a versiones reales, y el registro de novedades recoge lo que salió de ellos."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Servicios de terceros",
+        "blocks": [
+          {
+            "p": "El sitio funciona con un pequeño conjunto de servicios externos. Google AdSense sirve los anuncios que lo mantienen gratuito. Google Analytics, Vercel Analytics, Vercel Speed Insights y Ahrefs Analytics miden el tráfico y el rendimiento. Supabase almacena las estadísticas del juego y las entradas de la clasificación. Cada uno tiene sus propios términos, y la <privacy>política de privacidad</privacy> explica qué datos toca cada uno y qué opciones tienes."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Cambios en estos términos",
+        "blocks": [
+          {
+            "p": "Puedo actualizar estos términos cuando cambien el sitio o sus servicios. La versión vigente siempre está en esta dirección, y seguir usando el sitio después de un cambio significa que aceptas los términos actualizados. Cuando algo afecte de forma importante a los jugadores, como un cambio en el funcionamiento de la clasificación, también lo indico en el registro de novedades."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Contacto",
+        "blocks": [
+          {
+            "p": "Las preguntas sobre estos términos, o una entrada de la clasificación que quieras que se revise o se elimine, van a <mail>{email}</mail>. Las respondo yo mismo."
+          }
+        ]
+      }
+    }
+  }
+}

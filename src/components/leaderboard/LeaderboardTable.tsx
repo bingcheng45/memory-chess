@@ -1,17 +1,10 @@
 'use client';
 
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
-import { LeaderboardEntry } from '@/types/leaderboard';
-import { Button } from "@/components/ui/button";
+import { START_RATING } from "@/lib/game/rating";
+import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardEntry } from "@/types/leaderboard";
 import { Link } from "@/i18n/navigation";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, type ReactNode } from "react";
+import { CloudOff, TriangleAlert } from "lucide-react";
 
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { countryName, flagEmoji, parseCountryCode, WORLD_CODE } from "@/lib/leaderboard/countries";
@@ -33,6 +26,11 @@ interface LeaderboardTableProps {
   activeTab?: string;
 }
 
+const COLUMN_COUNT = 7;
+
+export const playHrefOf = (board: string) => (board === DAILY_BOARD ? "/daily" : `/game?difficulty=${board}`);
+const PODIUM_MEDALS = ["🏆", "🥈", "🥉"];
+
 export function TimeDisplay({ seconds }: { seconds: number }) {
   const totalMs = Math.round(seconds * 1000);
   const minutes = String(Math.floor(totalMs / 60000)).padStart(2, "0");
@@ -40,13 +38,53 @@ export function TimeDisplay({ seconds }: { seconds: number }) {
   const milliseconds = String(totalMs % 1000).padStart(3, "0");
 
   return (
-    <div className="inline-flex items-baseline font-mono">
+    <span className="lb-time">
       <span>{minutes}</span>
       <span>:</span>
       <span>{wholeSeconds}</span>
       <span>:</span>
-      <span className="text-xs">{milliseconds}</span>
+      <span className="lb-ms">{milliseconds}</span>
+    </span>
+  );
+}
+
+/** Every state of a board draws the same frame and column head, so switching tabs or failing to load keeps the page's shape. */
+function BoardFrame({ isState, children }: { isState: boolean; children: ReactNode }) {
+  const t = useTranslations("leaderboard");
+  return (
+    <div className="lb-plate">
+      <div className="lb-scroll">
+        <table className={isState ? "lb-table lb-table-state" : "lb-table"}>
+          <thead>
+            <tr>
+              <th scope="col" className="lb-num lb-rank">{t("columns.rank")}</th>
+              <th scope="col" className="lb-who">{t("columns.player")}</th>
+              <th scope="col" className="lb-num">{t("columns.elo")}</th>
+              <th scope="col" className="lb-num">{t("columns.pieces")}</th>
+              <th scope="col" className="lb-num">{t("columns.memorizeTime")}</th>
+              <th scope="col" className="lb-num">{t("columns.solutionTime")}</th>
+              <th scope="col" className="lb-end">{t("columns.date")}</th>
+            </tr>
+          </thead>
+          <tbody>{children}</tbody>
+        </table>
+      </div>
     </div>
+  );
+}
+
+function BoardState({ icon, children }: { icon: ReactNode; children: ReactNode }) {
+  return (
+    <BoardFrame isState>
+      <tr>
+        <td colSpan={COLUMN_COUNT} className="lb-state-cell">
+          <div className="lb-state">
+            <span className="lb-state-icon" aria-hidden="true">{icon}</span>
+            <div>{children}</div>
+          </div>
+        </td>
+      </tr>
+    </BoardFrame>
   );
 }
 
@@ -72,138 +110,109 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
   }, [entryDetails, data]);
 
   if (error) {
-    // Check if this is a database connection error and provide a more user-friendly message
-    const isConnectionError = error.includes('Database connection unavailable') || 
-                              error.includes('Unable to connect') ||
-                              error.includes('connection issue');
-    
+    const isDailyBoard = activeTab === DAILY_BOARD;
+    if (isDailyBoard || error === LEADERBOARD_UNAVAILABLE) {
+      return (
+        <BoardState icon={<CloudOff size={20} strokeWidth={1.75} />}>
+          <p className="lb-state-title">{t("unavailableTitle")}</p>
+          <p className="lb-state-body">{t("unavailableBody")}</p>
+          <p className="lb-state-note">{t("unavailableNote")}</p>
+        </BoardState>
+      );
+    }
+
     return (
-      <div className="text-center p-8 border border-red-500/30 rounded-lg bg-red-500/10">
-        {isConnectionError ? (
-          <>
-            <p className="text-amber-400 font-semibold mb-2">{t("unavailableTitle")}</p>
-            <p className="text-text-secondary">{t("unavailableBody")}</p>
-            <p className="mt-4 text-text-muted text-sm">{t("unavailableNote")}</p>
-          </>
-        ) : (
-          <>
-            <p className="text-red-400">{t("errorLoading", { error })}</p>
-            <p className="mt-2 text-text-secondary">{t("retryLater")}</p>
-          </>
-        )}
-      </div>
+      <BoardState icon={<TriangleAlert size={20} strokeWidth={1.75} />}>
+        <p className="lb-state-title lb-state-error">{t("errorLoading", { error })}</p>
+        <p className="lb-state-body">{t("retryLater")}</p>
+      </BoardState>
     );
   }
-  
+
   if (data.length === 0) {
     return (
-      <div className="text-center p-8 border border-bg-light rounded-lg bg-bg-card">
-        <div className="flex justify-center mb-4">
-          <div className="rounded-full p-3 bg-indigo-500/10">
-            <svg 
-              xmlns="http://www.w3.org/2000/svg" 
-              className="h-8 w-8 text-indigo-400" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-            </svg>
-          </div>
-        </div>
-        <h3 className="text-xl font-bold text-peach-400 mb-2">{t("emptyTitle")}</h3>
-        <p className="text-lg text-text-secondary mb-2">{t("emptyBody")}</p>
-        <p className="text-text-muted mb-4">{t("emptyCta")}</p>
-        <Link href={`/game?difficulty=${activeTab || 'medium'}`} className="inline-block">
-          <Button 
-            variant="outline"
-            className="bg-peach-500/10 text-peach-500 hover:text-peach-500 border-peach-500/30 hover:bg-peach-500/20 mt-2"
-          >{t("startPlaying")}</Button>
+      <BoardState
+        icon={
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+        }
+      >
+        <p className="lb-state-title">{t("emptyTitle")}</p>
+        <p className="lb-state-body">{t("emptyBody")}</p>
+        <p className="lb-state-note">{t("emptyCta")}</p>
+        <Link href={playHrefOf(activeTab || 'medium')} className="lab-btn lab-btn-secondary">
+          {t("startPlaying")}
         </Link>
-      </div>
+      </BoardState>
     );
   }
-  
+
   return (
-    <div className="rounded-lg border border-bg-light overflow-hidden">
-      <Table>
-        <TableHeader className="bg-bg-card">
-          <TableRow className="hover:bg-transparent">
-            <TableHead className="w-16 text-center">{t("columns.rank")}</TableHead>
-            <TableHead>{t("columns.player")}</TableHead>
-            <TableHead className="text-center">{t("columns.pieces")}</TableHead>
-            <TableHead className="text-center">{t("columns.memorizeTime")}</TableHead>
-            <TableHead className="text-center">{t("columns.solutionTime")}</TableHead>
-            <TableHead className="text-right">{t("columns.date")}</TableHead>
-          </TableRow>
-        </TableHeader>
-        <TableBody>
-          {data.map((entry, index) => {
-            // A name alone matches every round that player submitted, so a row is
-            // only highlighted when the link also carries that round's times.
-            const isHighlighted =
-              entryDetails?.player != null &&
-              entryDetails.memorizeTime != null &&
-              entryDetails.solutionTime != null &&
-              entry.player_name === entryDetails.player &&
-              Math.abs(entry.memorize_time - entryDetails.memorizeTime) < 0.001 &&
-              Math.abs(entry.solution_time - entryDetails.solutionTime) < 0.001 &&
-              (entryDetails.pieceCount === null || entry.piece_count === entryDetails.pieceCount) &&
-              (entryDetails.correctPieces === null || entry.correct_pieces === entryDetails.correctPieces) &&
-              (entryDetails.totalWrongPieces === null ||
-                entry.total_wrong_pieces === undefined ||
-                entry.total_wrong_pieces === entryDetails.totalWrongPieces);
+    <BoardFrame isState={false}>
+      {data.map((entry, index) => {
+        // A name alone matches every round that player submitted, so a row is
+        // only highlighted when the link also carries that round's times.
+        const isHighlighted =
+          entryDetails?.player != null &&
+          entryDetails.memorizeTime != null &&
+          entryDetails.solutionTime != null &&
+          entry.player_name === entryDetails.player &&
+          Math.abs(entry.memorize_time - entryDetails.memorizeTime) < 0.001 &&
+          Math.abs(entry.solution_time - entryDetails.solutionTime) < 0.001 &&
+          (entryDetails.pieceCount === null || entry.piece_count === entryDetails.pieceCount) &&
+          (entryDetails.correctPieces === null || entry.correct_pieces === entryDetails.correctPieces) &&
+          (entryDetails.totalWrongPieces === null ||
+            entry.total_wrong_pieces === undefined ||
+            entry.total_wrong_pieces === entryDetails.totalWrongPieces);
 
-            const code = parseCountryCode(entry.country_code) ?? WORLD_CODE;
-            const name = code === WORLD_CODE ? tCountry("world") : countryName(code, locale);
+        const code = parseCountryCode(entry.country_code) ?? WORLD_CODE;
+        const name = code === WORLD_CODE ? tCountry("world") : countryName(code, locale);
+        const medal = PODIUM_MEDALS[index];
 
-            return (
-              <TableRow 
-                key={entry.id} 
-                className={`
-                  ${index < 3 ? "bg-peach-500/5" : ""}
-                  ${isHighlighted ? "bg-peach-500/20 animate-pulse" : ""}
-                `}
-                ref={isHighlighted ? highlightedRowRef : null}
-              >
-                <TableCell className="text-center font-bold">
-                  {index === 0 && <span className="text-yellow-400">🏆</span>}
-                  {index === 1 && <span className="text-gray-300">🥈</span>}
-                  {index === 2 && <span className="text-amber-700">🥉</span>}
-                  {index > 2 && index + 1}
-                </TableCell>
-                <TableCell className={`font-medium ${isHighlighted ? "text-peach-500" : ""}`}>
-                  <span role="img" aria-label={name} title={name} className="mr-2">{flagEmoji(code)}</span>
-                  {entry.player_name}
-                  {isHighlighted && <span className="ml-2 text-xs bg-peach-500/20 text-peach-500 px-2 py-0.5 rounded-full">{t("you")}</span>}
-                </TableCell>
-                <TableCell className="text-center">
-                  <span className="font-medium">
-                    {entry.correct_pieces}
-                    {entry.total_wrong_pieces !== undefined && 
-                     entry.total_wrong_pieces > (entry.piece_count - entry.correct_pieces) ? (
-                      <sup className="text-xs ml-1 text-red-500 font-bold">
-                        -{entry.total_wrong_pieces - (entry.piece_count - entry.correct_pieces)}
-                      </sup>
-                    ) : (
-                      " "
-                    )}/ {entry.piece_count}
-                  </span>
-                </TableCell>
-                <TableCell className="text-center">
-                  <TimeDisplay seconds={entry.memorize_time} />
-                </TableCell>
-                <TableCell className="text-center">
-                  <TimeDisplay seconds={entry.solution_time} />
-                </TableCell>
-                <TableCell className="text-right text-text-muted">
-                  {format.dateTime(new Date(entry.created_at), { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
-                </TableCell>
-              </TableRow>
-            );
-          })}
-        </TableBody>
-      </Table>
-    </div>
+        return (
+          <tr
+            key={entry.id}
+            data-podium={medal ? "" : undefined}
+            data-highlighted={isHighlighted ? "" : undefined}
+            className={isHighlighted ? "animate-pulse" : undefined}
+            ref={isHighlighted ? highlightedRowRef : null}
+          >
+            <td className="lb-num lb-rank">
+              {medal && <span className="lb-medal" aria-hidden="true">{medal}</span>}
+              {index + 1}
+            </td>
+            <td className="lb-who">
+              <div className="lb-player">
+                <span role="img" aria-label={name} title={name} className="lb-flag">{flagEmoji(code)}</span>
+                <span className="lb-name">{entry.player_name}</span>
+                {isHighlighted && <span className="lb-you">{t("you")}</span>}
+              </div>
+            </td>
+            <td className="lb-num">{entry.skill_rating ?? START_RATING}</td>
+            <td className="lb-num">
+              {entry.correct_pieces}
+              {entry.total_wrong_pieces !== undefined &&
+               entry.total_wrong_pieces > (entry.piece_count - entry.correct_pieces) ? (
+                <sup className="lb-penalty">
+                  -{entry.total_wrong_pieces - (entry.piece_count - entry.correct_pieces)}
+                </sup>
+              ) : (
+                " "
+              )}/ {entry.piece_count}
+            </td>
+            <td className="lb-num">
+              <TimeDisplay seconds={entry.memorize_time} />
+            </td>
+            <td className="lb-num">
+              <TimeDisplay seconds={entry.solution_time} />
+            </td>
+            <td className="lb-end lb-date">
+              {format.dateTime(new Date(entry.created_at), { month: "short", day: "numeric", year: "numeric", timeZone: "UTC" })}
+            </td>
+          </tr>
+        );
+      })}
+    </BoardFrame>
   );
-} 
+}

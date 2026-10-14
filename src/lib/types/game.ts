@@ -1,21 +1,34 @@
 import { PieceSymbol, Square } from 'chess.js';
+import type { RoundSource } from '@/lib/analytics/events';
+import type { LabRound } from '@/lib/lab/recordRound';
+import type { RatedRoundFacts } from '@/lib/game/rating';
+import type { RoundOutcome } from '@/lib/game/roundOutcome';
+
+/** A round on a set position instead of a random one: today's shared daily board, or a board from the lab record come back for review. */
+export type SetBoard =
+  | {
+      readonly kind: 'daily';
+      /** The UTC day the board belongs to. */
+      readonly day: string;
+      readonly fen: string;
+    }
+  | {
+      readonly kind: 'review';
+      readonly fen: string;
+      /** The round that first showed the board, and the local day it ended, from which the review's delay is counted. */
+      readonly reviewOf: string;
+      readonly firstDay: string;
+      /** The review step this round plays, an index into the review schedule. */
+      readonly step: number;
+    };
 
 export interface GameState {
-  // Game status
-  isPlaying: boolean;
-  
-  // Game phases
-  isMemorizationPhase: boolean;
-  isSolutionPhase: boolean;
-  
   // Configuration
   pieceCount: number;
   memorizeTime: number;
+  startSource?: RoundSource;
   
   // Timing
-  timeElapsed: number;
-  memorizeStartTime?: number;
-  solutionStartTime?: number;
   completionTime?: number;
   actualMemorizeTime?: number; // Actual time spent in memorization phase
   
@@ -24,11 +37,18 @@ export interface GameState {
   level?: number;
   skillRating?: number;      // Player's skill rating (ELO-like system)
   streak?: number;           // Current streak of successful games
-  
+  /** The rating and streak the scored round started from, so the result screen can show what it moved. Never persisted. */
+  standingBefore?: { readonly skillRating: number; readonly streak: number };
+  /** What the scored round did to the rating: placed it, rated it, a free skip, or an unrated review. Never persisted. */
+  rating?: RoundOutcome;
+
   // Game data
-  moves: string[];
   originalPosition?: string; // FEN string of position to memorize
   userPosition?: string;     // FEN string of user's solution
+  /** The scored round as the lab record saves it, so the result screen can find it and count it. Never persisted. */
+  labRound?: LabRound;
+  /** Set when the round plays a set position; absent for a random one. */
+  board?: SetBoard;
   
   // Results
   accuracy?: number;         // Percentage of correct piece placements
@@ -58,6 +78,8 @@ export type GameHistory = {
   skillRatingChange?: number; // Change in skill rating from this game
   streak?: number; // Current streak at the time of this game
   perfectScore?: boolean; // Whether the user achieved 100% accuracy
+  /** What the rating read from the round. Absent on rows saved before the placement and Elo rating, which it ignores. */
+  facts?: RatedRoundFacts;
 };
 
 export type GameSettings = {
@@ -129,13 +151,6 @@ export interface GameResult {
   streak?: number;
   perfectScore?: boolean;
   timeBonusEarned?: number;
-}
-
-export enum GamePhase {
-  CONFIGURATION = 'configuration',
-  MEMORIZATION = 'memorization',
-  SOLUTION = 'solution',
-  RESULT = 'result'
 }
 
 export interface DifficultyLevel {

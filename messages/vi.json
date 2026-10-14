@@ -9,12 +9,19 @@
       "privacy": "Quyền riêng tư",
       "terms": "Điều khoản",
       "play": "Chơi",
-      "leaderboard": "Bảng xếp hạng"
+      "leaderboard": "Bảng xếp hạng",
+      "dashboard": "Bảng thống kê",
+      "menu": "Menu",
+      "site": "Trang web",
+      "streakChip": "Ngày {count}",
+      "streakChipLabel": "Ngày {count} trong chuỗi của bạn{forgiven, plural, =0 {} other {, # ngày bỏ lỡ được bỏ qua}}. Mở bảng điều khiển."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Bảo lưu mọi quyền.",
       "followOnX": "Theo dõi chúng tôi trên Twitter/X",
-      "productHuntAlt": "Memory Chess - Rèn khả năng hình dung không gian bằng cờ vua | Product Hunt"
+      "productHuntAlt": "Memory Chess - Rèn khả năng hình dung không gian bằng cờ vua | Product Hunt",
+      "tagline": "Trò chơi ghi nhớ bàn cờ miễn phí. Xem một thế cờ, xếp lại nó và xem điểm số của bạn.",
+      "recognition": "Ghi nhận"
     },
     "sound": {
       "mute": "Tắt âm thanh",
@@ -41,14 +48,10 @@
     },
     "hero": {
       "title": "Memory Chess: Rèn trí nhớ và khả năng hình dung bàn cờ",
-      "subtitle": "Ghi nhớ một thế cờ, dựng lại từ trí nhớ và nhận điểm ngay. Cải thiện khả năng bao quát bàn cờ qua từng vòng.",
-      "freeToPlay": "Chơi miễn phí, không cần tài khoản. Bạn cũng có thể so điểm trên <link>bảng xếp hạng</link>.",
-      "gamesPlayed": "Số ván đã chơi: {count}"
+      "freeToPlay": "Chơi miễn phí, không cần tài khoản. Bạn cũng có thể so điểm trên <link>bảng xếp hạng</link>."
     },
     "cta": {
-      "play": "Chơi Memory Chess",
       "leaderboard": "Xem bảng xếp hạng",
-      "playFree": "Chơi thử một vòng miễn phí",
       "chooseSettings": "Chọn số quân và thời gian"
     },
     "video": {
@@ -57,35 +60,8 @@
       "iframeTitle": "Cách chơi Memory Chess",
       "credit": "Video: “A New Way To Train Your Vision” của Colin Galen"
     },
-    "howItWorks": {
-      "eyebrow": "Cách hoạt động",
-      "title": "Bài tập đơn giản cho trí nhớ cờ vua",
-      "subtitle": "Mỗi vòng có ba bước đơn giản: quan sát thế cờ, dựng lại nó và rút kinh nghiệm từ điểm số.",
-      "steps": {
-        "observe": {
-          "title": "Quan sát",
-          "description": "Để ý vị trí của từng quân cờ. Tìm các cụm quân, các hàng và những ô trống có thể làm mốc."
-        },
-        "recreate": {
-          "title": "Dựng lại",
-          "description": "Khi bàn cờ trống, hãy đặt từng quân về đúng ô mà bạn nhớ."
-        },
-        "improve": {
-          "title": "Tiến bộ",
-          "description": "Xem điểm số, tìm chỗ bị sót, rồi thử lại với nhiều quân hơn hoặc ít thời gian hơn."
-        }
-      }
-    },
-    "board": {
-      "study": "Quan sát bàn cờ",
-      "rebuild": "Dựng lại từ trí nhớ"
-    },
     "learn": {
-      "eyebrow": "Trung tâm học tập",
-      "title": "Hướng dẫn cờ vua dễ hiểu",
-      "description": "Học những cách thiết thực để cải thiện khả năng bao quát bàn cờ, hình dung, tính toán và ghi nhớ. Mỗi bài đều có bài tập bạn thử được ngay.",
-      "browseCta": "Xem các hướng dẫn",
-      "beginnerCta": "Bắt đầu với hướng dẫn cho người mới"
+      "browseCta": "Xem các hướng dẫn"
     },
     "faq": {
       "title": "Câu hỏi về Memory Chess",
@@ -123,6 +99,830 @@
           "answer": "Vài vòng chơi tập trung một cách đều đặn là khởi đầu tốt. Giữ mỗi buổi đủ ngắn để bạn vẫn quan sát kỹ từng thế cờ."
         }
       ]
+    },
+    "lab": {
+      "index": {
+        "label": "Phòng lab",
+        "onPage": "Trên trang này",
+        "notebook": "Sổ ghi chép",
+        "method": "Phương pháp",
+        "calibrate": "Hiệu chuẩn",
+        "tiers": "Độ khó",
+        "record": "Hồ sơ",
+        "library": "Thư viện",
+        "hints": {
+          "notebook": "Vì sao cần đo",
+          "method": "Một ván, từng bước",
+          "calibrate": "Lấy một số đo",
+          "tiers": "Mức có sẵn và tùy chỉnh",
+          "record": "Số đo của bạn",
+          "library": "Hướng dẫn và bài luyện"
+        },
+        "play": "Chơi miễn phí một ván"
+      },
+      "tags": {
+        "proposed": "Đề xuất",
+        "sample": "Mẫu",
+        "illustrative": "Minh họa",
+        "free": "Miễn phí · không cần tài khoản",
+        "rig": "Tùy chỉnh"
+      },
+      "sections": {
+        "notebook": "Sổ ghi chép",
+        "method": "Phương pháp",
+        "recording": "Ghi chép thực địa",
+        "calibrate": "Hiệu chuẩn",
+        "tiers": "Độ khó",
+        "record": "Hồ sơ phòng lab",
+        "library": "Thư viện",
+        "faq": "Câu hỏi",
+        "next": "Lần đo tiếp theo"
+      },
+      "hero": {
+        "platforms": "Trình duyệt · máy tính · điện thoại",
+        "display": "Gắn một con số cho <em>bàn cờ trong tâm trí bạn.</em>",
+        "lede": "Memory Chess là trò chơi trí nhớ cờ vua miễn phí và là công cụ luyện trí nhớ bàn cờ. Quan sát một thế cờ trong vài giây, bàn cờ trống đi, rồi bạn dựng lại nó từ trí nhớ. Mỗi ván là một bài kiểm tra trí nhớ ngắn, cho một số đo độ chính xác từ 0 đến 100% và một bản đồ đánh dấu mọi ô bạn đặt đúng hay sai.",
+        "secondaryCta": "Lấy một số đo hiệu chuẩn",
+        "settingsLink": "<link>{label}</link>.",
+        "facts": {
+          "study": "thời gian quan sát",
+          "pieces": "quân mỗi ván",
+          "plays": "{count, plural, other {ván đã chơi}}",
+          "languages": "{count, plural, other {ngôn ngữ}}"
+        },
+        "showcase": {
+          "aria": "Veselin Topalov gặp Alexey Shirov, Linares 1998, kèm phần phân tích thế cờ theo từng bước",
+          "event": "Linares · Vòng 10",
+          "venue": "4 tháng 3 năm 1998",
+          "white": "Veselin Topalov",
+          "black": "Alexey Shirov",
+          "versus": "gặp",
+          "pieceLabel": "{piece} ở {square}",
+          "tags": {
+            "study": "Quan sát",
+            "trap": "Cái bẫy",
+            "sacrifice": "Thí quân",
+            "walk": "Vua tiến quân",
+            "runners": "Hai tốt thông",
+            "rebuild": "Dựng lại",
+            "inspect": "Tầm hoạt động"
+          },
+          "counter": {
+            "study": "Quan sát {n}/{total}",
+            "game": "Ván đấu {n}/{total}",
+            "resume": "Bấm lần nữa để tiếp tục"
+          },
+          "controls": {
+            "steps": "Các bước",
+            "step": "Bước {n} trên {total}: {tag}",
+            "previous": "Bước trước",
+            "next": "Bước tiếp",
+            "play": "Phát",
+            "pause": "Tạm dừng"
+          },
+          "inspect": {
+            "title": "{piece} ở {square}.",
+            "reach": "{moves, plural, =0 {Không có nước đi} other {# nước đi}}, {captures, plural, =0 {không bắt được quân nào} other {bắt được # quân}}.",
+            "checks": "Chiếu: {moves}."
+          },
+          "groups": {
+            "whiteCorner": "Góc của Trắng",
+            "longDiagonal": "Đường chéo dài",
+            "blackWall": "Bức tường của Đen",
+            "runner": "Tốt thông"
+          },
+          "steps": {
+            "study": {
+              "intro": {
+                "caption": "Shirov cầm quân Đen, hơn hai tốt, nhưng thế cờ tượng khác màu thường giữ được hòa. Mười quân."
+              },
+              "whiteCorner": {
+                "caption": "Vua Trắng ở g1 bảo vệ tốt g2. Tốt h đã chạy lên h4."
+              },
+              "longDiagonal": {
+                "caption": "Tượng Trắng ở c3 làm chủ đường chéo dài và nhắm vào tốt f6.",
+                "thought": "Tượng ô đen, từ c3 đến f6."
+              },
+              "blackWall": {
+                "caption": "Vua Đen ở e6, tượng Đen ở f5, các tốt ở d5, f6 và g6.",
+                "thought": "Vua bảo vệ f6 và d5. Tốt g6 bảo vệ tượng."
+              },
+              "runner": {
+                "caption": "Một tốt Đen ở a4, nằm xa mọi quân khác."
+              }
+            },
+            "trap": {
+              "king": {
+                "caption": "Vua Đen không thể tiến lên. d5 và f5 đang có quân của chính Đen, còn tượng c3 khống chế e5.",
+                "thought": "Chỉ còn Kd6, Kd7, Ke7 và Kf7. Nước nào cũng là lùi hoặc đi ngang."
+              }
+            },
+            "game": {
+              "sacrifice": {
+                "caption": "47...Bh3!! Tượng tự hiến mình trên một ô mà tốt g có thể bắt. Nó đang chắn đường vua.",
+                "thought": "Giờ f5 đã trống. Đó chính là cánh cửa."
+              },
+              "walk": {
+                "caption": "48.gxh3 Kf5 49.Kf2 Ke4. Qua cánh cửa mà tượng vừa mở, vua tiến vào trung tâm."
+              },
+              "runners": {
+                "caption": "50.Bxf6 d4 51.Be7 Kd3 52.Bc5 Kc4 53.Be7 Kb3. Một tượng không thể chặn hai tốt thông.",
+                "thought": "Topalov bắt tượng và xin thua sau 53...Kb3."
+              }
+            },
+            "rebuild": {
+              "blank": {
+                "caption": "Bàn cờ trống đi. Dựng lại thế cờ ban đầu: góc của Trắng, đường chéo dài, bức tường của Đen, tốt thông."
+              },
+              "back": {
+                "caption": "Từng nhóm một, mỗi quân trở về ô của nó."
+              },
+              "check": {
+                "caption": "Giờ hãy kiểm tra. Tượng khác màu, c3 là ô đen, f5 là ô trắng. Tượng c3 vẫn nhắm vào f6. Bốn quân Trắng, sáu quân Đen."
+              }
+            }
+          },
+          "lines": {
+            "move": "Nước đã đi",
+            "path": "Đường phong cấp",
+            "attacks": "Tấn công",
+            "defends": "Bảo vệ",
+            "controls": "Khống chế",
+            "chain": "Chuỗi tốt",
+            "blocked": "Bị chặn"
+          }
+        }
+      },
+      "notebook": {
+        "title": "Không đo thì không thể tiến bộ.",
+        "lede": "Phần lớn việc luyện cờ là luyện ra quyết định. Rất ít bài luyện kiểm tra xem bạn có thật sự giữ được bàn cờ trong đầu hay không. Kỹ năng ấy nằm bên dưới khả năng tính toán, chơi cờ mù và phát hiện chiến thuật, nhưng thường bị bỏ mặc cho may rủi.",
+        "observation": {
+          "kicker": "Quan sát",
+          "title": "Kỳ thủ để lạc mất quân cờ giữa lúc tính toán.",
+          "body": "Tính sâu ba nước, một quân tượng trên đường chéo dài lặng lẽ biến mất khỏi hình ảnh trong đầu bạn. Bàn cờ trước mặt bạn vẫn đúng. Bàn cờ trong tâm trí thì không."
+        },
+        "hypothesis": {
+          "kicker": "Giả thuyết",
+          "title": "Nhớ bàn cờ là kỹ năng có thể luyện và có thể kiểm tra.",
+          "body": "Giữ một thế cờ trong chốc lát, dựng lại nó, rồi kiểm tra kết quả. Lặp lại với nhiều quân hơn và ít thời gian hơn. <hl>Chúng tôi không khẳng định điều gì về bộ não của bạn.</hl> Chúng tôi cho bạn một số đo để theo dõi."
+        },
+        "method": {
+          "kicker": "Phương pháp",
+          "title": "Một ván, một con số rõ ràng.",
+          "body": "Quan sát, bàn cờ trống, dựng lại, chấm điểm. Ô đúng được đánh dấu, ô sai cũng được đánh dấu, không có gì bị giấu. Mỗi ván chưa đến một phút, nên bạn có thể chơi rất nhiều ván."
+        }
+      },
+      "method": {
+        "title": "Một ván cờ dưới kính hiển vi.",
+        "lede": "Cuộn qua một ván trên một thế cờ thật: đoạn kết của ván cờ bất tử của Kasparov, Kasparov gặp Topalov tại Wijk aan Zee năm 1999. Các lớp đánh dấu cho thấy một cách để ghi nhớ thế cờ, không phải bản ghi sự chú ý của bất kỳ ai.",
+        "status": "Giai đoạn {number} · {name}",
+        "clock": "t = {seconds} giây",
+        "scoreChip": "{correct} trên {total} ô",
+        "countChip": "Trắng {white} · Đen {black}",
+        "groups": {
+          "standoff": {
+            "name": "Thế giằng co",
+            "sentence": "Vua Trắng nhắm vào d2. Vua Đen và tốt c3 bảo vệ ô đó."
+          },
+          "mirror": {
+            "name": "Bậc thang",
+            "sentence": "Hai bậc thang soi gương, h2 đi lên f4, h7 đi xuống f5."
+          },
+          "longShots": {
+            "name": "Đòn tầm xa",
+            "sentence": "Hậu a7 nhắm vào h7. Xe d2 nhắm vào h2."
+          }
+        },
+        "phases": {
+          "study": {
+            "name": "Quan sát",
+            "title": "Mười một quân, mười giây.",
+            "body": "Thế cờ cuối cùng của ván cờ bất tử của Kasparov, sau 44.Qa7. Topalov xin thua tại đây. Hãy thu cả bàn cờ vào mắt, đừng nhìn từng ô một. Trong các thí nghiệm của de Groot, các kiện tướng tái hiện một thế cờ thực chiến được cho xem trong chốc lát tốt hơn hẳn những kỳ thủ yếu hơn.",
+            "note": "Hình. Trắng: vua c1, hậu a7, tốt f4, g3, h2. Đen: vua e1, xe d2, tốt c3, f5, g6, h7."
+          },
+          "anchors": {
+            "name": "Điểm neo",
+            "title": "Bắt đầu từ hai quân vua.",
+            "body": "Cố định hai điểm trước. Cả hai vua đều nằm trên hàng thứ nhất, cách nhau hai cột, và vua Đen đã chạy tới tận e1. Đặt mọi quân khác theo vị trí của chúng.",
+            "note": "Hình. Hai quân vua được khoanh tròn. Mọi quân khác chờ sau."
+          },
+          "chunk": {
+            "name": "Gom nhóm",
+            "title": "Mười một quân trở thành ba ý.",
+            "body": "Gom các quân theo tác động giữa chúng với nhau. Hai vua tranh nhau ô d2. Hai bậc thang tốt gặp nhau. Hậu và xe mỗi quân nhắm vào một tốt h không được bảo vệ. Chase và Simon (1973) phát hiện rằng kỳ thủ mạnh nhớ thế cờ theo từng cụm quân có liên quan với nhau.",
+            "note": "Hình. Màu cam là tấn công, màu xanh là bảo vệ, màu xám nối vào chuỗi tốt, vạch ngang đánh dấu một cặp chặn nhau. Xe d2 thuộc cả hai nhóm."
+          },
+          "encode": {
+            "name": "Mã hóa",
+            "title": "Biến mỗi nhóm thành một câu.",
+            "body": "Đặt tên cho mỗi nhóm theo nhiệm vụ của nó. Gobet và Simon (1996) mô tả việc kỳ thủ mạnh ghi nhớ những cấu trúc lớn hơn, giống như lược đồ. Bản thân các câu chỉ là một kỹ thuật, không phải kết quả nghiên cứu.",
+            "note": "Hình. Ba nhóm đã được đặt tên. Các câu của chúng:"
+          },
+          "blank": {
+            "name": "Bàn trống",
+            "title": "Bàn cờ được xóa trắng.",
+            "body": "Không quân, không gợi ý. Dựng lại từ các câu, không phải từ hình ảnh. Đọc chúng theo thứ tự: hai vua trước, rồi đến từng nhóm.",
+            "note": "Ở bước này chỉ cần giữ ba câu trong đầu."
+          },
+          "rebuild": {
+            "name": "Dựng lại",
+            "title": "Dựng lại từng nhóm một.",
+            "body": "Hai vua. Thế giằng co. Bậc thang. Đòn tầm xa. Đặt xong mỗi nhóm cùng câu của nó rồi mới bắt đầu nhóm tiếp theo.",
+            "note": "Hình. Bàn cờ dựng lại trước khi kiểm tra. Một quân tốt nằm sai ô. Bạn có nhận ra quân nào không?"
+          },
+          "score": {
+            "name": "Chấm điểm",
+            "title": "Đối chiếu với các câu, rồi chấm điểm.",
+            "body": "Kiểm tra lại từng mối quan hệ trên bàn cờ vừa dựng. Xe vẫn được bảo vệ hai lần chứ? Ở c2, tốt bảo vệ d1 chứ không phải d2. Số quân, năm và sáu, vẫn khớp, nên chỉ có bước kiểm tra quan hệ mới bắt được lỗi này.",
+            "note": "Hình. Dấu tích là quan hệ vẫn đúng, dấu chéo đỏ là quan hệ đã gãy. Ô tô cam là ô sai (c2), vòng tròn là nơi quân đó thuộc về (c3). {correct} trên {total} ô là {accuracy}%."
+          }
+        }
+      },
+      "calibrate": {
+        "title": "Lấy một số đo hiệu chuẩn.",
+        "lede": "Ván mức Trung bình lấy từ ván đấu thật: {pieceCount} quân, trong đó có hai vua, {memorizeSeconds} giây. Sau đó bàn cờ trống đi và bạn dựng lại nó. Bạn sẽ nhận được một thẻ kết quả với độ chính xác và mức ghi nhớ theo loại quân. Có thể dùng chuột, cảm ứng hoặc bàn phím.",
+        "phaseReady": "Sẵn sàng · {pieceCount} quân · quan sát {memorizeSeconds} giây",
+        "phaseLabel": "Giai đoạn {number} · {name}",
+        "start": "Bắt đầu hiệu chuẩn",
+        "restart": "Làm lại",
+        "again": "Đo lại",
+        "done": "Xong",
+        "submit": "Gửi số đo",
+        "clear": "Xóa bàn cờ",
+        "controlsLabel": "Điều khiển ván",
+        "boardLabel": "Bàn cờ hiệu chuẩn. Dùng phím mũi tên để di chuyển giữa các ô.",
+        "paletteLabel": "Bảng quân cờ",
+        "paletteItem": "{piece}, còn {count}",
+        "usedUp": {
+          "white": {
+            "king": "Vua trắng đã ở trên bàn cờ.",
+            "queen": "Hậu trắng đã ở trên bàn cờ.",
+            "rook": "Cả hai xe trắng đều đã ở trên bàn cờ.",
+            "bishop": "Cả hai tượng trắng đều đã ở trên bàn cờ.",
+            "knight": "Cả hai mã trắng đều đã ở trên bàn cờ.",
+            "pawn": "Cả tám tốt trắng đều đã ở trên bàn cờ."
+          },
+          "black": {
+            "king": "Vua đen đã ở trên bàn cờ.",
+            "queen": "Hậu đen đã ở trên bàn cờ.",
+            "rook": "Cả hai xe đen đều đã ở trên bàn cờ.",
+            "bishop": "Cả hai tượng đen đều đã ở trên bàn cờ.",
+            "knight": "Cả hai mã đen đều đã ở trên bàn cờ.",
+            "pawn": "Cả tám tốt đen đều đã ở trên bàn cờ."
+          }
+        },
+        "squareEmpty": "{square}, trống",
+        "squareWith": "{square}, {piece}",
+        "liveStudy": "Quan sát thế cờ. {memorizeSeconds} giây.",
+        "liveRebuild": "Bàn cờ đã được xóa. Chọn một quân, rồi chọn một ô.",
+        "liveScore": "Độ chính xác {accuracy} phần trăm. Đúng {correct} trên {total} ô.",
+        "startFailed": "Không tải được thế cờ. Hãy kiểm tra kết nối rồi thử lại.",
+        "steps": [
+          "Bấm bắt đầu. Quan sát thế cờ cho đến khi thanh thời gian cạn.",
+          "Chọn một quân trong bảng quân cờ, rồi chạm vào một ô. Chạm vào quân đã đặt để bỏ nó đi.",
+          "Gửi kết quả. Đặt nhiều quân hơn số quân trong thế cờ sẽ làm giảm độ chính xác, nên chỉ đặt những gì bạn nhớ."
+        ],
+        "readout": {
+          "title": "Thẻ kết quả",
+          "statusIdle": "Đang chờ lượt đo",
+          "statusRecording": "Đang ghi",
+          "statusDone": "Đã đo xong",
+          "correct": "Ô đúng",
+          "time": "Thời gian dựng lại",
+          "wrong": "Quân sai",
+          "exposure": "Thời gian quan sát",
+          "byType": "Ghi nhớ theo loại quân",
+          "byTypeEmpty": "Mức ghi nhớ theo loại quân sẽ hiện ở đây sau lượt đo đầu tiên.",
+          "nextEmpty": "Độ khó gợi ý sẽ hiện sau khi có số đo.",
+          "suggested": "Gợi ý:",
+          "stepUp": "lên mức {tier}, {pieceCount} quân trong {memorizeSeconds} giây. Hãy xác nhận bằng hai ván sạch nữa trước đã.",
+          "stay": "giữ mức {tier}, {pieceCount} quân trong {memorizeSeconds} giây. Chơi ba ván và theo dõi xu hướng.",
+          "start": "bắt đầu ở mức {tier}, {pieceCount} quân trong {memorizeSeconds} giây. Gom các quân thành từng cặp khi quan sát.",
+          "playTier": "Chơi mức {tier}",
+          "legendCorrect": "đúng",
+          "legendWrong": "đặt sai",
+          "legendMissed": "ô bị bỏ sót"
+        },
+        "pieceTypes": {
+          "king": "Vua",
+          "queen": "Hậu",
+          "rook": "Xe",
+          "bishop": "Tượng",
+          "knight": "Mã",
+          "pawn": "Tốt"
+        }
+      },
+      "tiers": {
+        "title": "Bốn mức có sẵn. Một thiết lập riêng.",
+        "lede": "Số quân tăng, thời gian quan sát giảm. Hãy lên mức khi số đo của bạn ổn định, đừng lên chỉ sau một ván may mắn.",
+        "columns": {
+          "tier": "Độ khó",
+          "pieces": "Số quân",
+          "exposure": "Quan sát",
+          "load": "Mật độ"
+        },
+        "loadLabel": "{pieceCount} trên 32 quân",
+        "play": "Chơi",
+        "custom": {
+          "label": "Tùy chỉnh",
+          "description": "Tự đặt các thông số để tách riêng một điểm yếu."
+        }
+      },
+      "record": {
+        "title": "Quay lại để thấy đường xu hướng.",
+        "lede": "Một số đo chỉ là một bức ảnh chụp nhanh. Mười số đo mới là một phép đo. Mọi ván bạn chơi đều được lưu trên thiết bị này, và các bảng này được lấp đầy từ chính các ván của bạn. Trước ván đầu tiên, các bảng hiển thị giá trị <tag>Mẫu</tag>, không phải người chơi thật. Sau đó, bảng nào chưa đọc được hồ sơ của bạn sẽ cho biết nó còn cần gì.",
+        "span": {
+          "fig": "Hình {number} · Tầm nhớ",
+          "title": "Bạn giữ được bao nhiêu quân.",
+          "figure": "{pieceCount, plural, other {# quân}}",
+          "held": "Đạt {accuracy}% trở lên trong {count, plural, other {# ván}}. Thời gian quan sát ngắn nhất trong số đó là {studyTime}.",
+          "up": "Tăng {count, plural, other {# quân}} so với tuần trước",
+          "same": "Không đổi so với tuần trước",
+          "aria": "Biểu đồ bậc thang mẫu của tầm nhớ qua 12 buổi chơi, tăng dần từ 4 lên 8 quân.",
+          "note": "Hồ sơ mẫu · 12 buổi chơi",
+          "realAria": "Tầm nhớ của bạn {sessions, plural, =1 {trong buổi chơi lần đầu đạt được nó} other {qua # buổi chơi kể từ lần đầu đạt được}}, {shape, select, flat {giữ ở {now} quân} other {tăng từ {first} lên {now} quân}}.",
+          "need": "Đạt {accuracy}% trở lên {count, plural, =2 {hai lần} other {thêm # lần}} ở cùng một số quân từ {minPieces} quân trở lên.",
+          "onlyKings": "Các ván của bạn đến nay chỉ có hai quân vua, mà tầm nhớ cần nhiều quân hơn.",
+          "first": "Lần đầu đạt tầm nhớ",
+          "last": "Mới nhất"
+        },
+        "held": {
+          "fig": "Hình {number} · Số quân nhớ được",
+          "title": "Số quân bạn đặt đúng, ở mọi thiết lập.",
+          "aria": "Đường mẫu của số quân nhớ được qua 12 ván, trung bình 5 ván tăng từ 4,0 lên 7,0 quân.",
+          "note": "Hồ sơ mẫu · 12 ván · mọi thiết lập",
+          "partial": "Đường nét đứt: trung bình của ít hơn {window} ván",
+          "realAria": "Số quân bạn nhớ được trong {count, plural, other {# ván}} gần nhất ở mọi thiết lập, tính trung bình {window} ván, gần nhất là {latest} quân.",
+          "average": "Trung bình gần đây {average} quân",
+          "up": "tăng {change} so với {window} ván trước đó",
+          "down": "giảm {change} so với {window} ván trước đó",
+          "flat": "không đổi so với {window} ván trước đó",
+          "realNote": "Mọi thiết lập · Từ {count, plural, other {# ván}}",
+          "needRounds": "Chơi thêm {count, plural, other {# ván}} để vẽ đường của bạn.",
+          "needRoundsAndDay": "Chơi thêm {count, plural, =1 {1 ván vào một ngày khác} other {# ván, ít nhất một ván vào một ngày khác,}} để vẽ đường của bạn.",
+          "needDay": "Chơi thêm vào một ngày nữa để vẽ đường của bạn.",
+          "first": "Cũ nhất",
+          "last": "Mới nhất"
+        },
+        "speed": {
+          "fig": "Hình {number} · Nhịp nhớ lại",
+          "title": "Số giây cho mỗi quân bạn dựng lại.",
+          "aria": "Đường mẫu của số giây dựng lại cho mỗi quân đúng qua 12 ván, giảm từ 4,1 xuống 2,6 giây.",
+          "note": "Hồ sơ mẫu · 12 ván · Trung bình",
+          "realAria": "Số giây dựng lại cho mỗi quân đúng trong {count} ván {source, select, calibration {luyện tập} other {đấu}} gần nhất với {pieceCount} quân và {memorizeSeconds} giây, gần nhất là {latest} giây.",
+          "average": "Trung bình gần đây {average} mỗi quân",
+          "down": "nhanh hơn {change} so với {window} ván trước đó",
+          "up": "chậm hơn {change} so với {window} ván trước đó",
+          "flat": "cùng nhịp với {window} ván trước đó",
+          "accuracy": "Độ chính xác trong cùng các ván {average}%",
+          "accuracyChange": {
+            "up": "tăng {change, plural, other {# điểm}}",
+            "down": "giảm {change, plural, other {# điểm}}",
+            "flat": "không đổi"
+          },
+          "fastWrong": "Nhanh mà sai thì không phải là tiến bộ.",
+          "config": "{source, select, calibration {Luyện tập} other {Ván đấu}} · {pieceCount} quân · {studyTime}, thiết lập bạn chơi nhiều nhất gần đây · Từ {count, plural, other {# ván}}",
+          "need": "Chơi thêm {count, plural, other {# ván}} với {pieceCount} quân, {studyTime} {source, select, calibration {ở chế độ luyện tập} other {ở ván đấu}} để vẽ đường nhịp nhớ lại của bạn.",
+          "needRight": "Nhịp nhớ lại chỉ tính những ván có ít nhất một quân đúng. Chơi {count, plural, other {# ván như vậy}} để bắt đầu đường của bạn.",
+          "first": "Cũ nhất",
+          "last": "Mới nhất"
+        },
+        "curve": {
+          "fig": "Hình {number} · Đường cong lãng quên",
+          "title": "Ôn ngắn và giãn cách hiệu quả hơn một buổi ôn dài.",
+          "desc": "Những bàn cờ bạn đạt dưới 80% sẽ quay lại để ôn sau 1, 3, 7 và 14 ngày kể từ lần đầu bạn thấy chúng. Đường cong của bạn cho thấy bạn nhớ được bao nhiêu sau mỗi khoảng cách.",
+          "aria": "Biểu đồ minh họa: khả năng ghi nhớ giảm nhanh nếu không ôn và suy giảm chậm hơn sau mỗi lần ôn giãn cách vào ngày 1, 3 và 7.",
+          "note": "Mô hình minh họa hiệu ứng giãn cách. Không phải dữ liệu đo được.",
+          "noReview": "không ôn",
+          "spaced": "ôn giãn cách",
+          "review": "ôn",
+          "day": "N{day}",
+          "warming": "Thêm {reviews, plural, other {# lần ôn}} sau cùng một khoảng cách sẽ vẽ được điểm đo đầu tiên của bạn.",
+          "measuredAria": "Mức ghi nhớ của bạn trên các bàn cờ đã ôn: {points}.",
+          "pointFirst": "lần đầu thấy {accuracy}% từ {count, plural, other {# bàn cờ}}",
+          "pointAfter": "sau {day, plural, other {# ngày}} {accuracy}% từ {count, plural, other {# lần ôn}}",
+          "count": "n={count}",
+          "measuredNote": "Từ {reviews, plural, other {# lần ôn}} trên {boards, plural, other {# bàn cờ}}. Mỗi điểm cần {min} lần ôn sau khoảng cách của nó.",
+          "due": "Lần ôn {number} trên {cap} hôm nay",
+          "capped": "Đã ôn xong hôm nay",
+          "play": "Chơi một lần ôn",
+          "waiting": "Lần ôn tiếp theo {days, plural, =1 {vào ngày mai} other {sau # ngày}}. {queued, plural, other {# bàn cờ}} đang chờ.",
+          "empty": "Chưa có bàn cờ nào để ôn. Bàn cờ nào bạn đạt dưới 80% sẽ quay lại đây vào ngày hôm sau."
+        },
+        "spark": {
+          "fig": "Hình {number} · Độ chính xác theo thời gian",
+          "title": "Đường của bạn, qua từng ván.",
+          "titleSessions": "Đường của bạn, qua từng buổi chơi.",
+          "aria": "Đường nhỏ mẫu của độ chính xác qua 12 ván, tăng từ 52 lên 79 phần trăm.",
+          "note": "Hồ sơ mẫu · 12 ván · Trung bình",
+          "first": "V01",
+          "last": "V12",
+          "needRounds": "Thêm {count, plural, other {# ván}} với {pieceCount} quân, {studyTime} sẽ vẽ được xu hướng {source, select, calibration {luyện tập} other {ván đấu}} của bạn.",
+          "needRoundsAndDay": "{count, plural, =1 {Thêm 1 ván với {pieceCount} quân, {studyTime}, chơi vào một ngày khác,} other {Thêm # ván với {pieceCount} quân, {studyTime}, ít nhất một ván vào một ngày khác,}} sẽ vẽ được xu hướng {source, select, calibration {luyện tập} other {ván đấu}} của bạn.",
+          "needDay": "Chơi {pieceCount} quân, {studyTime} {source, select, calibration {ở chế độ luyện tập} other {trong một ván đấu}} vào thêm một ngày nữa để vẽ xu hướng của bạn.",
+          "config": "{source, select, calibration {Luyện tập} other {Ván đấu}} · {pieceCount} quân · {studyTime}, thiết lập bạn chơi nhiều nhất có xu hướng",
+          "realAria": "Độ chính xác của bạn trong {count} ván {source, select, calibration {luyện tập} other {đấu}} gần nhất với {pieceCount} quân và {memorizeSeconds} giây, gần nhất là {latest} phần trăm.",
+          "realAriaSessions": "Độ chính xác của bạn qua {count, plural, other {# buổi chơi}} gần nhất có ván {source, select, calibration {luyện tập} other {đấu}} với {pieceCount} quân và {memorizeSeconds} giây, gần nhất là {latest} phần trăm.",
+          "sessions": "{count, plural, other {# buổi chơi}}",
+          "realFirst": "Cũ nhất",
+          "realLast": "Mới nhất"
+        },
+        "heat": {
+          "fig": "Hình {number} · Bản đồ sai",
+          "title": "Những ô bạn hay để sót.",
+          "aria": "Bản đồ nhiệt mẫu của các ô bị sót: đậm nhất dọc cột h và quanh h1, có điểm nóng ở b7 và f7, nhạt nhất ở trung tâm.",
+          "note": "Mẫu: lỗi sót dồn ở cột h và quanh góc vua ở h1. Hãy luyện cạnh đó tiếp theo.",
+          "need": "Khoảng {count, plural, other {# ván}} nữa thì mỗi cột và mỗi hàng sẽ có 10 quân để đọc.",
+          "needStart": "Chơi thêm vài ván để bắt đầu bản đồ sai của bạn.",
+          "files": "Cột",
+          "ranks": "Hàng",
+          "line": "{line}: sót {missed} trên {shown}",
+          "lineThin": "{line}: đã thấy {shown}, chưa đủ để đọc",
+          "realAria": "Tỷ lệ sót của bạn trên từng ô. Ô xám có ít hơn 10 quân đã thấy.",
+          "realNote": "Càng đậm nghĩa là càng hay sót. Ô xám có dưới 10 quân đã thấy."
+        },
+        "daily": {
+          "fig": "Hình {number} · Bàn cờ hôm nay",
+          "title": "Mỗi ngày một bàn cờ, giống nhau cho tất cả.",
+          "desc": "Một thế cờ mới mở ra mỗi ngày vào nửa đêm giờ UTC. Ai cũng nhận cùng một bàn cờ và cùng thời gian quan sát, và bạn chỉ có một lần thử.",
+          "play": "Chơi bàn cờ hôm nay",
+          "open": "Bàn cờ hôm nay có {pieceCount, plural, other {# quân}} và {memorizeSeconds, plural, other {# giây}} để ghi nhớ. Bạn chưa chơi bàn cờ hôm nay.",
+          "played": "Bạn đặt đúng {correct} trên {pieceCount, plural, other {# quân}}, đạt {accuracy} phần trăm.",
+          "unfinished": "Bạn đã mở bàn cờ hôm nay và rời đi trước khi có kết quả. Mỗi ngày chỉ có một lần thử trên thiết bị này.",
+          "streak": "Chuỗi ngày {current, plural, other {# ngày}}{forgiven, plural, =0 {} other {, bỏ qua # ngày lỡ}} · dài nhất {longest, plural, other {# ngày}}",
+          "streakLongest": "Chuỗi ngày dài nhất {longest, plural, other {# ngày}}",
+          "gridAria": "Kết quả của bạn trên từng ô, bắt đầu từ a8: {correct} đúng, {wrong, plural, other {# quân sai}}, {missed} bị sót, {extra} thừa.",
+          "key": {
+            "c": "đúng",
+            "w": "quân sai",
+            "m": "bị sót",
+            "x": "thừa"
+          },
+          "share": "Bàn cờ hôm nay của Memory Chess {day}\nĐúng {correct} trên {pieceCount}, {accuracy}%\n{row}\nthememorychess.com",
+          "copy": "Sao chép kết quả",
+          "showGrid": "Hiện lưới",
+          "copied": "Đã sao chép. Dán vào bất cứ đâu.",
+          "copyFailed": "Không sao chép được ở đây. Kết quả đã được chọn bên dưới, bạn hãy tự sao chép."
+        },
+        "streak": {
+          "fig": "Hình {number} · Ngày liên tiếp",
+          "title": "Mỗi ngày một ván sẽ tạo nên chuỗi ngày.",
+          "desc": "Bất kỳ ván nào chơi xong, ván đấu hay luyện tập, đều được tính cho ngày đó. Trong mỗi 7 ngày, một ngày lỡ được bỏ qua.",
+          "aria": "Lưới chuỗi ngày mẫu trong hai tuần",
+          "note": "Mẫu · ô nét đứt là lượt chơi hôm nay, vẫn đang chờ",
+          "realDesc": "Bất kỳ ván nào chơi xong đều được tính cho ngày đó. Trong mỗi 7 ngày, một ngày lỡ được bỏ qua.",
+          "need": "Chơi thêm {days, plural, other {# ngày}} để đọc được chuỗi ngày của bạn.",
+          "realAria": "14 ngày gần nhất của bạn: đã chơi {count, plural, other {# ngày}}{forgiven, plural, =0 {} other {, bỏ qua # ngày}}.",
+          "realNote": "Chuỗi hiện tại {current, plural, other {# ngày}}{forgiven, plural, =0 {} other { đã chơi, bỏ qua # ngày lỡ}} · dài nhất {longest, plural, other {# ngày}}",
+          "key": {
+            "played": "đã chơi",
+            "forgiven": "bỏ qua",
+            "missed": "lỡ",
+            "today": "hôm nay"
+          }
+        },
+        "week": {
+          "ring": "{played} trên {goal} ngày trong tuần này",
+          "ringOver": "Đã đạt mục tiêu, {played} ngày trong tuần này",
+          "sampleRing": "Tuần mẫu · {played} trên {goal} ngày",
+          "left": "{remaining, plural, =0 {Đã đạt mục tiêu tuần này.} other {Còn # ngày nữa để đạt mục tiêu.}}",
+          "outOfReach": "Không thể đạt mục tiêu khi {daysLeft, plural, =0 {không còn ngày nào} other {chỉ còn # ngày}}. Tuần mới bắt đầu vào thứ Hai.",
+          "goal": "Số ngày mỗi tuần",
+          "option": "{days} ngày mỗi tuần"
+        },
+        "welcome": {
+          "line": "Chào mừng bạn quay lại. Ngày thứ {day} trong hồ sơ của bạn. Lần trước {accuracy}% với {pieceCount} quân, {studyTime}.",
+          "lineNoDay": "Chào mừng bạn quay lại. Lần trước {accuracy}% với {pieceCount} quân, {studyTime}."
+        },
+        "board": {
+          "fig": "Hình {number} · Bảng xếp hạng",
+          "title": "So số đo với người chơi khắp thế giới.",
+          "desc": "Mỗi mức độ khó được xếp hạng theo số quân đúng, rồi đến ít quân sai hơn, rồi thời gian ghi nhớ nhanh hơn, rồi thời gian giải nhanh hơn. Mỗi dòng đều hiện quốc gia của người chơi.",
+          "howTo": "Gửi điểm từ màn hình kết quả, rồi xem điểm đó đứng ở đâu, trên toàn thế giới hay trong quốc gia của bạn.",
+          "sketchPieces": "{count} quân",
+          "open": "Mở bảng xếp hạng",
+          "difficulty": "Độ khó",
+          "scope": "Xếp hạng trong",
+          "world": "Thế giới",
+          "entry": "Lượt gửi tốt nhất của bạn ở mức {difficulty}: {correct, plural, other {# quân đúng}}, gửi ngày {date}.",
+          "check": "Xem thứ hạng của tôi",
+          "checking": "Đang kiểm tra...",
+          "ranked": "Hạng {rank, number} trên {total, plural, other {# lượt gửi}} ở mức {difficulty}, trên toàn thế giới.",
+          "rankedIn": "Hạng {rank, number} trên {total, plural, other {# lượt gửi}} ở mức {difficulty} tại {country}.",
+          "checkedAt": "Kiểm tra lúc {time}.",
+          "boardSize": "Bảng công khai hiển thị {limit} người đứng đầu.",
+          "up": "Tăng {places, plural, other {# hạng}} kể từ {time}.",
+          "down": "Giảm {places, plural, other {# hạng}} kể từ {time}.",
+          "same": "Giữ nguyên thứ hạng so với lúc {time}.",
+          "missing": "Lượt gửi mức {difficulty} của bạn không còn trên bảng xếp hạng, nên thiết bị này không giữ nó nữa. Bảng xếp hạng đôi khi được dọn dẹp hoặc đặt lại. Kiểm tra lúc {time}.",
+          "limited": "Có quá nhiều lượt kiểm tra từ kết nối của bạn. Hãy thử lại sau {wait, plural, other {# giây}}.",
+          "noCountry": "Bảng xếp hạng không có quốc gia cho lượt gửi này, nên nó chỉ được xếp hạng trên toàn thế giới.",
+          "offline": "Bạn đang ngoại tuyến nên chưa có gì được gửi đi. Hãy kết nối mạng rồi thử lại.",
+          "failed": "Không kết nối được bảng xếp hạng nên chưa đọc được thứ hạng. Hãy thử lại sau."
+        },
+        "plans": {
+          "fig": "Hình {number} · Chương trình",
+          "title": "Chọn một kế hoạch và theo đến cùng.",
+          "desc": "Mỗi lần một kế hoạch. Tiến độ được tính từ các ván của bạn, nên dừng một kế hoạch không bao giờ xóa ván nào.",
+          "baseline": {
+            "kicker": "Kế hoạch A · 7 ngày",
+            "title": "Tuần mốc chuẩn",
+            "steps": [
+              "Mỗi ngày một ván mức Trung bình.",
+              "Ghi lại số đo, cưỡng lại ý muốn chơi lại.",
+              "Ngày 7: so sánh với ngày 1."
+            ],
+            "progress": "{played} trên {days} ngày có ván mức Trung bình",
+            "compare": "Ngày {firstDay} {first}%, ngày {lastDay} {latest}%: {direction, select, up {tăng {change, plural, other {# điểm}}} down {giảm {change, plural, other {# điểm}}} other {không đổi}}.",
+            "compareNone": "Chưa có ván mức Trung bình nào kể từ khi bắt đầu kế hoạch, nên chưa có gì để so sánh.",
+            "compareOne": "Mới có một ván mức Trung bình kể từ khi bắt đầu kế hoạch, nên chưa thể so sánh."
+          },
+          "edge": {
+            "kicker": "Kế hoạch B · 14 ngày",
+            "title": "Luyện cột rìa",
+            "steps": [
+              "Thiết lập riêng: 8 quân, 15 giây.",
+              "Xem lại bản đồ sai mỗi 3 ngày.",
+              "Kết hợp với hướng dẫn “Tầm nhìn bàn cờ”."
+            ],
+            "progress": "Đã chơi thiết lập này {played, plural, other {# ngày}} trong {elapsed} ngày. Mục tiêu: {target} ngày trong {days} ngày.",
+            "share": "Tỷ lệ sót ở cột rìa: {before}% trong {beforeRounds, plural, other {# ván}} trước kế hoạch, {now}% trong {nowRounds, plural, other {# ván}} từ khi bắt đầu.",
+            "shareMissing": "Có thể so sánh lỗi sót ở cột rìa khi mỗi bên có {needed} ván có quân ở cột a hoặc h. Đến nay có {before} ván trước kế hoạch, {now} ván từ khi bắt đầu.",
+            "guide": "Đọc cách nhìn toàn bộ bàn cờ"
+          },
+          "ladder": {
+            "kicker": "Kế hoạch C · không giới hạn",
+            "title": "Bậc thang giảm dần",
+            "steps": [
+              "Giữ 90% trong ba ván liên tiếp.",
+              "Rồi giảm thời gian quan sát 2 giây.",
+              "Khi thời gian quan sát đã xuống mức thấp nhất, thêm quân."
+            ],
+            "rung": "Bậc hiện tại: {pieceCount} quân, {studyTime}.",
+            "run": "{run} trên {needed} ván liên tiếp đạt {accuracy}% trở lên.",
+            "climbed": "Đã lên bậc: {needed} ván liên tiếp đạt {accuracy}% trở lên.",
+            "next": "Bậc tiếp theo: {pieceCount} quân, {studyTime}.",
+            "top": "Đỉnh bậc thang: không bàn cờ nào có hơn {pieceCount} quân."
+          },
+          "status": {
+            "day": "Ngày {day}",
+            "dayOf": "Ngày {day} trên {length}",
+            "overtime": "Ngày {day}, đã quá {length} ngày dự kiến",
+            "done": "Hoàn thành vào ngày {day}.",
+            "finished": "Kết thúc sớm vào ngày {day}.",
+            "stopped": "Đã dừng vào ngày {day}."
+          },
+          "start": "Bắt đầu {title}",
+          "again": "Bắt đầu lại {title}",
+          "busy": "Mỗi lần một kế hoạch. Hãy dừng {title} để bắt đầu kế hoạch này.",
+          "stop": "Dừng kế hoạch",
+          "confirmStop": "Chắc chắn dừng?",
+          "keep": "Tiếp tục",
+          "finish": "Kết thúc sớm",
+          "play": "Chơi {pieceCount} quân, {studyTime}"
+        },
+        "goal": {
+          "fig": "Hình {number} · Mục tiêu",
+          "title": "Đặt mục tiêu cho số đo.",
+          "desc": "Chọn số quân và độ chính xác. Thanh tiến độ được lấp đầy theo ván tốt nhất của bạn ở số quân đó hoặc nhiều hơn kể từ khi bạn đặt mục tiêu.",
+          "sample": "Mục tiêu mẫu: {pieceCount} quân với {accuracy} phần trăm. Tốt nhất đến nay {best} phần trăm, được {percent}% chặng đường.",
+          "target": "Mục tiêu: từ {pieceCount} quân trở lên với {accuracy, select, 100 {100 phần trăm} other {{accuracy} phần trăm trở lên}}, đặt ngày {date}.",
+          "progress": "Tốt nhất từ đó: {best} phần trăm với {pieceCount} quân, được {percent}% chặng đường.",
+          "bar": "Được {percent}% chặng đường tới mục tiêu",
+          "need": "Chưa có ván nào từ {pieceCount} quân trở lên kể từ khi bạn đặt mục tiêu này.",
+          "reached": "Đạt được ngày {date}: {accuracy} phần trăm với {pieceCount} quân.",
+          "form": "Mục tiêu mới",
+          "pieces": "Số quân, ít nhất",
+          "accuracy": "Độ chính xác, ít nhất",
+          "percent": "{value}%",
+          "set": "Đặt mục tiêu",
+          "newGoal": "Đặt mục tiêu mới",
+          "clear": "Xóa mục tiêu",
+          "cancel": "Hủy",
+          "saved": "Đã đặt mục tiêu.",
+          "cleared": "Đã xóa mục tiêu."
+        },
+        "mine": "Hồ sơ của bạn",
+        "fromRounds": "Từ {count, plural, other {# ván}}",
+        "dashboardLink": "Mở bảng thống kê của bạn",
+        "play": "Chơi một ván",
+        "tomorrow": "Hãy quay lại vào ngày mai.",
+        "stale": "Lần chơi gần nhất cách đây {count, plural, other {# ngày}}.",
+        "unlock": {
+          "label": "Còn chờ mở khóa",
+          "count": "Đã mở khóa {unlocked} trên {total} biểu đồ",
+          "done": "Mọi biểu đồ bên dưới đều đã mở khóa.",
+          "showAll": "Hiện tất cả {count} biểu đồ",
+          "showFewer": "Thu gọn",
+          "span": "{qualifyingRounds, plural, other {# ván}} đạt {accuracy}%+ với {minPieces}+ quân",
+          "piecesHeld": "{rounds, plural, other {# ván}} trong {days, plural, other {# ngày}}",
+          "trend": "{rounds, plural, other {# ván}} ở cùng một thiết lập trong {days, plural, other {# ngày}}",
+          "speed": "{rounds, plural, other {# ván}} ở cùng một thiết lập",
+          "streak": "Chơi {days, plural, other {# ngày}}",
+          "curve": "{reviews, plural, other {# lần ôn}} sau cùng một khoảng cách",
+          "typeRecall": "{exposures, plural, other {# lần thấy}} một quân không phải vua",
+          "missMap": "{exposures, plural, other {# lần thấy}} mỗi cột và mỗi hàng",
+          "trendRounds": "Thêm {rounds} {rounds, plural, other {ván}} {source, select, calibration {luyện tập} other {đấu}} với {pieceCount} quân, {studyTime}",
+          "trendDays": "Thêm {days, plural, other {# ngày}} chơi ván {source, select, calibration {luyện tập} other {đấu}} với {pieceCount} quân, {studyTime}",
+          "trendRoundsDays": "Thêm {rounds} {rounds, plural, other {ván}} {source, select, calibration {luyện tập} other {đấu}} với {pieceCount} quân, {studyTime}, thêm {days, plural, other {# ngày}}",
+          "spanLeft": "Thêm {qualifyingRounds, plural, other {# ván}} đạt {accuracy}%+ với {minPieces}+ quân",
+          "spanLarger": "{largerRounds, plural, other {# ván}} với {minPieces}+ quân",
+          "piecesHeldRounds": "Thêm {rounds, plural, other {# ván}}",
+          "piecesHeldDays": "Thêm {days, plural, other {# ngày}}",
+          "piecesHeldRoundsDays": "Thêm {rounds, plural, other {# ván}}, thêm {days, plural, other {# ngày}}",
+          "speedRounds": "Thêm {rounds} {rounds, plural, other {ván}} {source, select, calibration {luyện tập} other {đấu}} với {pieceCount} quân, {studyTime}",
+          "speedRight": "{rightRounds, plural, other {# ván}} có một quân đúng",
+          "streakLeft": "Chơi thêm {days, plural, other {# ngày}}",
+          "curveLeft": "Thêm {reviews, plural, other {# lần ôn}} sau cùng một khoảng cách",
+          "typeRecallLeft": "Thêm {exposures, plural, other {# lần thấy}} một quân không phải vua",
+          "missMapLeft": "Thêm {exposures, plural, other {# lần thấy}} ở cột hoặc hàng ít được thấy nhất",
+          "insights": "{rounds, plural, other {# ván}}",
+          "insightsLeft": "Thêm {rounds, plural, other {# ván}}",
+          "notebook": "{rounds, plural, other {# ván}}"
+        },
+        "bests": {
+          "fig": "Hình {number} · Kỷ lục cá nhân",
+          "title": "Số đo tốt nhất của bạn theo từng thiết lập.",
+          "desc": "Kỷ lục được lưu theo từng thiết lập, vì 6 quân và 20 quân là hai bài kiểm tra khác nhau. Số đo luyện tập trên trang này được tách riêng khỏi ván đấu.",
+          "empty": "Số đo tốt nhất của bạn cho mỗi thiết lập sẽ hiện ra sau ván đầu tiên.",
+          "setting": "{source, select, calibration {Luyện tập} other {Ván đấu}} · {pieceCount} quân · {studyTime}",
+          "first": "số đo đầu tiên",
+          "showAll": "Hiện tất cả {count} thiết lập",
+          "showFewer": "Thu gọn",
+          "reading": "{accuracy}% · dựng lại trong {time}"
+        },
+        "types": {
+          "fig": "Hình {number} · Ghi nhớ theo loại quân",
+          "title": "Quân nào hay bị sót.",
+          "need": "Khoảng {count, plural, other {# ván}} nữa thì một loại quân không phải vua sẽ có 20 lần được thấy.",
+          "needStart": "Mức ghi nhớ theo loại quân sẽ hiện ra sau ván đầu tiên.",
+          "onlyKings": "Các ván của bạn đến nay chỉ có hai quân vua, mà ghi nhớ theo loại quân cần nhiều quân hơn.",
+          "thin": "đã thấy {shown}/20",
+          "baseline": "mốc chuẩn",
+          "kings": "Vua có trong mọi ván, nên chúng là mốc chuẩn. Nhớ được {recalled} trên {shown}.",
+          "sampleNote": "Mẫu: tốt và mã bị sót trước tiên."
+        },
+        "insights": {
+          "fig": "Hình {number} · Nhận xét",
+          "title": "Điều gì nổi bật, và nên thử gì.",
+          "desc": "Một nhận xét chỉ hiện ra khi số liệu của nó vượt qua một cỡ mẫu tối thiểu, và nó nêu rõ các con số làm căn cứ.",
+          "sample": "Ví dụ từ một hồ sơ mẫu: cột a và h bị sót nhiều gấp {times, select, 2 {khoảng hai lần} other {khoảng {times} lần}} so với các cột trung tâm d và e, {edge}% số quân so với {centre}%.",
+          "sampleList": "Nhận xét mẫu",
+          "sampleNote": "Nhận xét mẫu, không lấy từ các ván của bạn.",
+          "list": "Nhận xét từ hồ sơ của bạn",
+          "need": "Nhận xét bắt đầu đọc hồ sơ của bạn từ {threshold} ván. Còn {count, plural, other {# ván}} nữa.",
+          "none": "Chưa có gì nổi bật. Hãy tiếp tục chơi.",
+          "rules": {
+            "edgeFiles": "{times, select, 0 {Bạn sót {edge, select, 0 {dưới 1%} other {{edge}%}} trong {edgeShown} quân ở cột a và h, và không sót quân nào trong {centreShown} quân ở các cột trung tâm d và e.} 2 {Bạn sót ở cột a và h nhiều gấp khoảng hai lần so với các cột trung tâm d và e: {edge, select, 0 {dưới 1%} other {{edge}%}} trong {edgeShown} quân so với {centre, select, 0 {dưới 1%} other {{centre}%}} trong {centreShown} quân.} other {Bạn sót ở cột a và h nhiều gấp khoảng {times} lần so với các cột trung tâm d và e: {edge, select, 0 {dưới 1%} other {{edge}%}} trong {edgeShown} quân so với {centre, select, 0 {dưới 1%} other {{centre}%}} trong {centreShown} quân.}}",
+            "weakType": "Trong các quân không phải vua đã thấy từ {minimum} lần trở lên, quân {type, select, q {hậu} r {xe} b {tượng} n {mã} other {tốt}} bị sót nhiều nhất: bạn nhớ được {recalled} trên {shown}, đạt {percent}%.",
+            "fasterLessAccurate": "Với {pieceCount} quân, {studyTime}, {window} ván gần nhất của bạn mất ít hơn {fasterTime} cho mỗi quân đúng so với {window} ván trước đó, và độ chính xác giảm {fell} điểm.",
+            "colourGap": "Bạn nhớ quân {weaker, select, w {trắng} other {đen}} kém hơn quân {weaker, select, w {đen} other {trắng}}: {weakerPercent}% trong {weakerShown} so với {strongerPercent}% trong {strongerShown}, không tính vua.",
+            "plateau": "Với {pieceCount} quân, {studyTime}, {window} ván gần nhất của bạn đạt trung bình {last}% và {window} ván trước đó đạt {before}%, còn tầm nhớ giữ ở {span} quân trong tuần chơi gần nhất. Thêm một quân có thể giúp nó tăng lên."
+          },
+          "actions": {
+            "rig": "Chơi {pieceCount} quân, {studyTime}",
+            "patterns": "Đọc các bài luyện nhận diện mẫu hình",
+            "vision": "Đọc cách nhìn toàn bộ bàn cờ"
+          }
+        },
+        "notebook": {
+          "fig": "Hình {number} · Sổ ghi chép phòng lab",
+          "title": "Điều gì đã xảy ra, và khi nào.",
+          "empty": "Các mục sẽ xuất hiện khi bạn chơi.",
+          "sampleList": "Các mục ghi chép mẫu",
+          "list": "Sổ ghi chép của bạn, mới nhất ở trên",
+          "new": "Mới",
+          "newNote": "“Mới” đánh dấu các mục kể từ lần bạn ghé gần nhất.",
+          "showAll": "Hiện tất cả {count} mục",
+          "showFewer": "Thu gọn",
+          "day": "Ngày {day}.",
+          "olderBefore": "Các mục trước {date} không được lưu trong trình duyệt này.",
+          "older": "Các mục cũ hơn không được lưu trong trình duyệt này.",
+          "entries": {
+            "firstRound": "Ván đầu tiên: {accuracy} phần trăm với {pieceCount} quân.",
+            "rounds": "Đã chơi ván thứ {count, number}.",
+            "first90": "Lần đầu đạt {threshold} phần trăm trở lên với {pieceCount} quân.",
+            "best": "Kỷ lục {source, select, calibration {luyện tập} other {ván đấu}} mới với {pieceCount} quân, {studyTime}: {by, select, time {lại {accuracy} phần trăm, dựng lại trong {solveTime}} other {{accuracy} phần trăm, tăng từ {previous}}}.",
+            "span": "{from, select, 0 {Tầm nhớ đạt {to} quân} other {Tầm nhớ tăng từ {from} lên {to} quân}}.",
+            "streak": "{forgiven, plural, =0 {{days} ngày liên tiếp.} other {Chuỗi {days} ngày, bỏ qua # ngày lỡ.}}",
+            "rungUp": "Lên bậc: {pieceCount} quân, {studyTime}.",
+            "goalReached": "Đạt mục tiêu: {accuracy} phần trăm với từ {pieceCount} quân trở lên."
+          }
+        },
+        "tools": {
+          "title": "Lưu trên thiết bị này",
+          "body": "Không tài khoản, không máy chủ. Tải xuống một bản sao để chuyển sang trình duyệt khác hoặc để giữ an toàn.",
+          "download": "Tải xuống hồ sơ phòng lab của tôi",
+          "import": "Nhập",
+          "lastBackup": "Đã bắt đầu xuất ngày {date}",
+          "neverBackedUp": "Chưa xuất lần nào",
+          "imported": "{added, plural, =0 {Không có gì mới để nhập. Các ván đó đã có ở đây.} other {Đã nhập # ván.}}",
+          "skipped": "{count, plural, other {# ván trong tệp không đọc được và đã bị bỏ qua.}}",
+          "importFailed": "Tệp đó không phải là hồ sơ phòng lab của Memory Chess.",
+          "tooLarge": "Tệp đó lớn hơn 5 MB, lớn hơn mọi hồ sơ phòng lab, nên không có gì được nhập.",
+          "overCap": "{count, plural, other {# ván cũ hơn đã}} bị bỏ ra để không vượt quá giới hạn 5.000 ván.",
+          "summaryIgnored": "Trình duyệt này đã có sẵn các ván, nên chỉ các ván mới được gộp vào, không gộp tổng số tích lũy của tệp.",
+          "summaryDropped": "Tổng số tích lũy của tệp không đọc được hoặc thuộc phiên bản cũ hơn, nên chỉ các ván của nó được nhập.",
+          "safari": "Trên Safari, thẻ riêng tư không giữ hồ sơ này sau khi đóng, và Safari xóa dữ liệu đã lưu của một trang web sau khoảng 7 ngày không ghé thăm. Hãy xuất một bản sao để giữ lại.",
+          "unavailable": "Không lưu trong cửa sổ ẩn danh. Cửa sổ trình duyệt này không giữ các ván của bạn.",
+          "backup": "Sao lưu giữa các thiết bị (sắp có)",
+          "backupNoted": "Tính năng sao lưu giữa các thiết bị chưa được xây dựng. Cảm ơn bạn, sự quan tâm của bạn đã được ghi nhận.",
+          "card": {
+            "open": "Chia sẻ số đo của tôi",
+            "title": "Số đo Memory Chess của tôi",
+            "span": "Tầm nhớ: {pieceCount, plural, other {# quân}}, đạt {accuracy}% trở lên trong {count, plural, other {# ván}}",
+            "held": "Số quân nhớ được: trung bình gần đây {average}, từ {count, plural, other {# ván}}",
+            "speed": "Nhịp nhớ lại: trung bình gần đây {average} mỗi quân {source, select, calibration {khi luyện tập} other {trong ván đấu}} với {pieceCount} quân, {studyTime}, từ {count, plural, other {# ván}}",
+            "site": "thememorychess.com",
+            "copy": "Sao chép số đo của tôi",
+            "copied": "Đã sao chép. Dán vào bất cứ đâu.",
+            "copyFailed": "Không sao chép được ở đây. Số đo đã được chọn ở trên, bạn hãy tự sao chép."
+          },
+          "nudge": {
+            "title": "Hồ sơ của bạn nằm trong trình duyệt này",
+            "body": "Xóa dữ liệu trình duyệt sẽ xóa luôn hồ sơ. Hãy đánh dấu trang này để quay lại đúng trình duyệt đó, và dùng nút “Tải xuống hồ sơ phòng lab của tôi” ở trên để giữ một bản sao.",
+            "safari": "Trên iPhone và iPad, “Thêm vào MH chính” sẽ giữ trang này như một ứng dụng với hồ sơ riêng, và quy tắc 7 ngày của Safari không xóa được nó. Ứng dụng bắt đầu trống, nên hãy nhập bản sao bạn đã tải xuống vào đó.",
+            "dismiss": "Đóng"
+          }
+        }
+      },
+      "library": {
+        "title": "Thư viện tham khảo.",
+        "lede": "Trung tâm học tập ghép các hướng dẫn ngắn với bài luyện, để mỗi số đo đều dẫn tới một điều bạn có thể luyện tập.",
+        "ref": "Tham khảo {number}",
+        "read": "Đọc hướng dẫn",
+        "vision": {
+          "title": "Tầm nhìn bàn cờ",
+          "body": "Nhìn cả bàn cờ cùng lúc thay vì từng góc một."
+        },
+        "visualization": {
+          "title": "Hình dung",
+          "body": "Giữ một thế cờ đang thay đổi trong đầu khi các quân di chuyển."
+        },
+        "calculation": {
+          "title": "Tính toán",
+          "body": "Nhìn xa hơn mà không để mất dấu bàn cờ."
+        },
+        "memory": {
+          "title": "Trí nhớ",
+          "body": "Các kỹ thuật gom nhóm và mẫu hình giúp nâng số đo của bạn."
+        },
+        "blindfold": {
+          "title": "Luyện cờ mù",
+          "body": "Kế hoạch bốn giai đoạn, từ nhớ bàn cờ đến chơi trọn ván cờ mù."
+        },
+        "blundering": "Cách ngừng đi nước hớ"
+      },
+      "final": {
+        "title": "Số đo đầu tiên của bạn chưa tới một phút.",
+        "body": "Không tài khoản, không tải xuống, không đăng ký. Mở một ván, quan sát, dựng lại, đọc con số. Rồi quyết định xem bạn có muốn đo lần thứ hai không."
+      },
+      "resultCard": {
+        "title": "Hồ sơ phòng lab của bạn",
+        "device": "Lưu trên thiết bị này",
+        "lines": "Ván này trong hồ sơ của bạn",
+        "unshown": "Không thể hiển thị hồ sơ phòng lab của bạn cho ván này.",
+        "newBest": {
+          "up": "Kỷ lục mới với {pieceCount} quân, {studyTime}: {accuracy}%, tăng từ {previous}%",
+          "faster": "Kỷ lục mới với {pieceCount} quân, {studyTime}: lại {accuracy}%, nhanh hơn {fasterTime}",
+          "plain": "Kỷ lục mới với {pieceCount} quân, {studyTime}: {accuracy}%"
+        },
+        "vsRecent": {
+          "above": "Cao hơn {points, plural, other {# điểm}} so với {rounds, plural, =1 {ván gần nhất của bạn} other {trung bình # ván gần nhất của bạn}} ở thiết lập này",
+          "below": "Thấp hơn {points, plural, other {# điểm}} so với {rounds, plural, =1 {ván gần nhất của bạn} other {trung bình # ván gần nhất của bạn}} ở thiết lập này",
+          "level": "Bằng {rounds, plural, =1 {ván gần nhất của bạn} other {trung bình # ván gần nhất của bạn}} ở thiết lập này"
+        },
+        "span": "Tầm nhớ tăng lên {pieceCount} quân",
+        "streak": "{current, plural, =1 {Ngày 1} other {Ngày thứ # liên tiếp}}{graceUsed, select, true {, đã dùng ngày bỏ qua} other {}}, {days} trên {goal} ngày trong tuần này",
+        "next": {
+          "label": "Tiếp theo",
+          "why": {
+            "more": "Đạt 90% trở lên, nên thêm một quân với cùng thời gian quan sát.",
+            "fewer": "Dưới 50%, nên bớt một quân với cùng thời gian quan sát.",
+            "edgeFiles": "Bạn sót ở cột a và h nhiều hơn các cột trung tâm.",
+            "weakType": "Quân {type, select, q {hậu} r {xe} b {tượng} n {mã} other {tốt}} bị sót nhiều nhất: bạn nhớ được {recalled} trên {shown}.",
+            "fasterLessAccurate": "Với {pieceCount} quân, {studyTime}, bạn nhanh hơn trên mỗi quân đúng nhưng độ chính xác giảm {fell} điểm.",
+            "colourGap": "Bạn nhớ quân {weaker, select, w {trắng} other {đen}} kém hơn: {weakerPercent}% so với {strongerPercent}%.",
+            "plateau": "Tầm nhớ của bạn đang giữ ở {span} quân."
+          },
+          "play": "Chơi {pieceCount} quân, {studyTime}",
+          "again": "Chơi lại với {pieceCount} quân, {studyTime}",
+          "patterns": "Đọc các bài luyện nhận diện mẫu hình",
+          "vision": "Đọc cách nhìn toàn bộ bàn cờ"
+        }
+      },
+      "daily": {
+        "locked": "Bạn đã mở bàn cờ hôm nay rồi. Mỗi ngày chỉ có một lần thử trên thiết bị này.",
+        "resetsIn": "{hours, plural, =0 {{minutes, plural, =0 {Đặt lại sau chưa đầy một phút} other {Đặt lại sau # phút}}} other {Đặt lại sau # giờ {minutes} phút}}",
+        "seeRecord": "Mở hồ sơ phòng lab của bạn",
+        "chooseRound": "Chơi ván khác"
+      },
+      "review": {
+        "none": "Hiện không có bàn cờ nào cần ôn trên thiết bị này.",
+        "capped": "Đã xong {cap} lần ôn hôm nay trên thiết bị này.",
+        "cappedNext": "Bàn cờ nào còn đến hạn sẽ quay lại vào ngày mai, bàn chờ lâu nhất trước.",
+        "schedule": "Những bàn cờ bạn đạt dưới 80% sẽ quay lại sau 1, 3, 7 và 14 ngày kể từ lần đầu bạn thấy chúng."
+      }
     }
   },
   "game": {
@@ -137,19 +937,33 @@
       "submit": "Gửi",
       "status": "Trạng thái ván đấu",
       "controls": "Điều khiển ván đấu",
-      "complete": "Ván đấu kết thúc",
-      "flash": "XONG!"
+      "complete": "Ván đấu kết thúc"
     },
     "config": {
-      "title": "Thiết lập ván đấu",
+      "title": "Trò chơi trí nhớ cờ vua",
       "presetsLabel": "Mức độ khó",
       "presetSummary": "{pieces} quân / {seconds} giây",
       "customLabel": "Thiết lập riêng",
       "pieceCount": "Số quân cờ",
       "memorizeTime": "Thời gian ghi nhớ",
       "seconds": "{seconds} giây",
-      "start": "Bắt đầu luyện tập",
-      "lastGame": "Ván trước: {time} giây để hoàn thành, độ chính xác {accuracy}%"
+      "start": "Bắt đầu một ván",
+      "lastGame": "Ván trước: {time} giây để hoàn thành, độ chính xác {accuracy}%",
+      "preview": {
+        "label": "Xem trước điểm kỹ năng",
+        "provisional": "Điểm tạm thời",
+        "rated": "Ván tính điểm",
+        "board": "Điểm của bàn cờ",
+        "yours": "Điểm của bạn",
+        "expected": "Độ chính xác dự kiến",
+        "percent": "<num>{value}%</num>",
+        "suggested": "Bàn cờ gợi ý",
+        "clear": "Nếu bạn vượt qua",
+        "miss": "Nếu bạn trượt",
+        "gain": "Tối đa <num>+{value}</num>",
+        "loss": "Tối đa <num>−{value}</num>",
+        "announce": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}. Nếu bạn trượt, tối đa −{loss}."
+      }
     },
     "presets": {
       "easy": {
@@ -171,18 +985,7 @@
     },
     "memorize": {
       "title": "Ghi nhớ thế cờ",
-      "skip": "Bỏ qua",
-      "hint": "Bàn cờ sẽ trống khi hết giờ",
-      "rememberPieces": "{count, plural, other {Ghi nhớ tất cả # quân cờ}}"
-    },
-    "place": {
-      "title": "Đặt quân cờ",
-      "subtitle": "Chọn loại quân và màu",
-      "whitePieces": "Quân trắng",
-      "blackPieces": "Quân đen",
-      "selectWhite": "Chọn quân trắng",
-      "selectBlack": "Chọn quân đen",
-      "hint": "Chạm vào một ô để đặt hoặc gỡ quân cờ"
+      "hint": "Bàn cờ sẽ trống khi hết giờ"
     },
     "board": {
       "pieces": {
@@ -203,20 +1006,7 @@
           "king": "vua đen"
         }
       },
-      "feedback": {
-        "correct": "đúng",
-        "incorrect": "sai",
-        "missing": "thiếu"
-      },
-      "squareWithPiece": "{square} có {piece}",
-      "squareWithFeedback": "{label}, {feedback}",
-      "selectPiece": "Chọn {piece}"
-    },
-    "stats": {
-      "title": "Thống kê",
-      "currentTime": "Thời gian hiện tại",
-      "piecesToMemorize": "Số quân cần nhớ",
-      "averageAccuracy": "Độ chính xác trung bình"
+      "squareWithPiece": "{square} có {piece}"
     },
     "result": {
       "messages": {
@@ -232,7 +1022,9 @@
       "piecesCorrect": "Quân đúng",
       "memorizationTime": "Thời gian ghi nhớ",
       "solutionTime": "Thời gian hoàn thành",
-      "recallSpeed": "Tốc độ nhớ lại",
+      "recallSpeed": "Tốc độ đặt quân",
+      "provisional": "Điểm tạm thời",
+      "freeSkip": "Lượt bỏ qua miễn phí trong ngày: bàn cờ trống không làm đổi điểm của bạn. Bàn trống tiếp theo hôm nay sẽ tính.",
       "piecesPerSecond": "{value} quân/giây",
       "actions": "Thao tác với kết quả",
       "tryAgain": "Thử lại",
@@ -253,18 +1045,38 @@
         "submit": "Gửi điểm",
         "submitting": "Đang gửi…",
         "thanks": "Cảm ơn bạn đã tham gia, {name}!"
+      },
+      "share": {
+        "button": "Chia sẻ kết quả",
+        "title": "Chia sẻ kết quả của bạn",
+        "kicker": "{kind, select, daily {Bàn cờ hằng ngày · {date}} review {Ván ôn tập} other {Kết quả ván}}",
+        "accuracy": "Độ chính xác",
+        "pieces": "{correct, number} trên {total, plural, other {# quân}}",
+        "setting": "Thiết lập",
+        "settingValue": "{pieceCount, plural, other {# quân}}, ghi nhớ {seconds} giây",
+        "study": "Thời gian ghi nhớ",
+        "rebuild": "Thời gian hoàn thành",
+        "seconds": "{seconds} giây",
+        "rating": "Điểm",
+        "ratingValue": "{rating} ({change})",
+        "winStreak": "Chuỗi thắng",
+        "winStreakValue": "{count, plural, other {# ván liên tiếp}}",
+        "legend": {
+          "correct": "Đúng",
+          "missed": "Sót",
+          "wrong": "Sai"
+        },
+        "cta": "Bạn có vượt được không?",
+        "text": "{kind, select, daily {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở bàn cờ hằng ngày của Memory Chess ngày {date}.} review {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở một bàn cờ ôn tập của Memory Chess.} other {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) trên Memory Chess.}} Bạn có vượt được không?",
+        "alt": "Thẻ kết quả Memory Chess: {details}."
+      },
+      "savedToast": {
+        "message": "Đã lưu ván. Số liệu mới của bạn ở ngay bên dưới.",
+        "action": "Xem"
       }
     },
     "comparison": {
-      "title": "Xem lại thế cờ của bạn",
-      "subtitle": "So sánh những gì bạn đã nhớ với những gì bạn đã gửi.",
-      "unavailable": "Không thể so sánh bàn cờ.",
-      "ariaLabel": "So sánh bàn cờ",
-      "correct": "Đúng",
-      "incorrect": "Sai",
-      "missed": "Bỏ sót",
-      "originalBoard": "Thế cờ cần nhớ",
-      "submittedBoard": "Thế cờ bạn đã gửi"
+      "title": "Xem lại thế cờ của bạn"
     },
     "feedback": {
       "title": "Cảm ơn bạn đã chơi Memory Chess!",
@@ -282,6 +1094,66 @@
       "sendFailed": "Chúng tôi không gửi được góp ý của bạn. Hãy thử lại hoặc chọn Để sau.",
       "send": "Gửi góp ý",
       "sending": "Đang gửi…"
+    },
+    "round": {
+      "start": "Bắt đầu",
+      "done": "Xong",
+      "restart": "Làm lại",
+      "again": "Chơi lại",
+      "submit": "Gửi",
+      "clear": "Xóa bàn cờ",
+      "controlsLabel": "Điều khiển vòng chơi",
+      "boardLabel": "Bàn cờ. Dùng phím mũi tên để di chuyển giữa các ô.",
+      "paletteLabel": "Bảng quân cờ",
+      "paletteItem": "{piece}, còn {count}",
+      "usedUp": {
+        "white": {
+          "king": "Vua trắng đã ở trên bàn cờ.",
+          "queen": "Hậu trắng đã ở trên bàn cờ.",
+          "rook": "Cả hai xe trắng đều đã ở trên bàn cờ.",
+          "bishop": "Cả hai tượng trắng đều đã ở trên bàn cờ.",
+          "knight": "Cả hai mã trắng đều đã ở trên bàn cờ.",
+          "pawn": "Cả tám tốt trắng đều đã ở trên bàn cờ."
+        },
+        "black": {
+          "king": "Vua đen đã ở trên bàn cờ.",
+          "queen": "Hậu đen đã ở trên bàn cờ.",
+          "rook": "Cả hai xe đen đều đã ở trên bàn cờ.",
+          "bishop": "Cả hai tượng đen đều đã ở trên bàn cờ.",
+          "knight": "Cả hai mã đen đều đã ở trên bàn cờ.",
+          "pawn": "Cả tám tốt đen đều đã ở trên bàn cờ."
+        }
+      },
+      "squareEmpty": "{square}, trống",
+      "squareWith": "{square}, {piece}",
+      "phaseStudy": "Ghi nhớ thế cờ",
+      "phaseRebuild": "Đặt quân cờ",
+      "liveStudy": "Quan sát thế cờ. {memorizeSeconds} giây.",
+      "liveRebuild": "Bàn cờ đã được xóa. Chọn một quân, rồi chọn một ô.",
+      "liveScore": "Độ chính xác {accuracy} phần trăm. Đúng {correct} trên {total} ô.",
+      "readout": {
+        "title": "Kết quả",
+        "statusIdle": "Đang chờ vòng chơi",
+        "statusRecording": "Đang ghi",
+        "statusDone": "Hoàn thành vòng",
+        "correct": "Ô đúng",
+        "time": "Thời gian xếp",
+        "wrong": "Quân sai",
+        "exposure": "Thời gian ghi nhớ",
+        "byType": "Ghi nhớ theo loại quân",
+        "byTypeEmpty": "Kết quả ghi nhớ theo loại quân sẽ hiện ở đây sau vòng chơi.",
+        "legendCorrect": "đúng",
+        "legendWrong": "đặt sai",
+        "legendMissed": "ô bị bỏ sót"
+      },
+      "pieceTypes": {
+        "king": "Vua",
+        "queen": "Hậu",
+        "rook": "Xe",
+        "bishop": "Tượng",
+        "knight": "Mã",
+        "pawn": "Tốt"
+      }
     }
   },
   "leaderboard": {
@@ -308,10 +1180,17 @@
     "columns": {
       "rank": "Hạng",
       "player": "Người chơi",
+      "elo": "ELO",
       "pieces": "Quân cờ",
       "memorizeTime": "Thời gian ghi nhớ",
       "solutionTime": "Thời gian hoàn thành",
       "date": "Ngày"
+    },
+    "daily": {
+      "tab": "Hằng ngày",
+      "setting": "{pieces, plural, other {# quân}} · {seconds} giây để ghi nhớ",
+      "resetsAtUtc": "Đặt lại lúc {utc} UTC",
+      "resetsAt": "Đặt lại lúc {utc} UTC ({local} giờ của bạn), còn {timeLeft}"
     }
   },
   "country": {
@@ -319,15 +1198,6 @@
     "world": "Thế giới",
     "searchPlaceholder": "Tìm quốc gia",
     "noResults": "Không tìm thấy quốc gia"
-  },
-  "settings": {
-    "meta": {
-      "title": "Cài đặt Memory Chess",
-      "description": "Tùy chỉnh cài đặt và tùy chọn cho ván Memory Chess của bạn."
-    },
-    "showCoordinates": "Hiện tọa độ bàn cờ",
-    "home": "Trang chủ",
-    "playGame": "Chơi"
   },
   "contact": {
     "meta": {
@@ -362,14 +1232,25 @@
       "typeRequired": "Vui lòng chọn loại liên hệ.",
       "messageTooShort": "Nội dung phải có ít nhất 10 ký tự."
     },
+    "hints": {
+      "name": "Ít nhất 2 ký tự.",
+      "email": "Phản hồi sẽ được gửi đến địa chỉ này.",
+      "type": "Từng loại được giải thích bên dưới biểu mẫu.",
+      "message": "Ít nhất 10 ký tự."
+    },
     "errors": {
-      "submitFailed": "Không thể gửi biểu mẫu{details}",
-      "generic": "Đã xảy ra lỗi khi gửi biểu mẫu. Vui lòng thử lại."
+      "generic": "Đã xảy ra lỗi khi gửi biểu mẫu. Vui lòng thử lại.",
+      "reasons": {
+        "invalid": "Một số thông tin không được chấp nhận. Hãy kiểm tra biểu mẫu và thử lại.",
+        "unavailable": "Hiện không thể gửi tin nhắn. Vui lòng thử lại sau.",
+        "notDelivered": "Không thể chuyển tin nhắn của bạn. Vui lòng thử lại."
+      }
     }
   },
   "changelog": {
     "bannerCta": "Xem có gì mới",
-    "bannerLabel": "Cập nhật Memory Chess"
+    "bannerLabel": "Cập nhật Memory Chess",
+    "bannerLead": "Memory Chess v{version} đã ra mắt."
   },
   "articles": {
     "meta": {
@@ -440,6 +1321,400 @@
       "roundSize": "{pieces, plural, other {# quân}}, {seconds, plural, other {# giây}}",
       "read": "Đọc bài viết",
       "tryDrill": "Thử bài tập đó"
+    }
+  },
+  "dashboard": {
+    "meta": {
+      "title": "Bảng thống kê",
+      "description": "Bảng thống kê Memory Chess của bạn: điểm kỹ năng, tầm nhớ, mọi ván bạn đã chơi trên thiết bị này, độ chính xác và tốc độ theo thời gian, kỷ lục cá nhân và một thẻ để chia sẻ."
+    },
+    "title": "Bảng thống kê",
+    "lede": "Mọi ván bạn đã chơi trên thiết bị này, điều chúng cho thấy về trí nhớ của bạn và một thẻ để chia sẻ. Không gì ở đây rời khỏi trình duyệt trừ khi bạn chia sẻ.",
+    "unavailable": "Trình duyệt này không lưu hồ sơ, nên không có tiến bộ nào để hiển thị. Cửa sổ ẩn danh không lưu gì.",
+    "fullRecord": "Xem toàn bộ hồ sơ",
+    "sections": {
+      "summary": "Tóm tắt",
+      "history": "Lịch sử ván",
+      "analysis": "Phân tích",
+      "more": "Chỉ số khác"
+    },
+    "historyLede": "Mới nhất ở trên. Mở một ván để xem bàn cờ đã chấm.",
+    "analysisLede": "Độ chính xác và nhịp nhớ lại của bạn thay đổi thế nào theo thời gian, và quân hay bị sót ở đâu.",
+    "stale": "Theo ván gần nhất",
+    "staleNote": "Lần chơi gần nhất cách đây {count, plural, other {# ngày}}. Các chỉ số được đánh dấu như vậy là từ lúc đó.",
+    "play": "Chơi một ván",
+    "playAt": "Chơi {pieceCount} quân, {memorizeSeconds} giây",
+    "tomorrow": "Hãy quay lại vào ngày mai.",
+    "choose": "Chọn trong toàn bộ hồ sơ",
+    "notYet": "Chưa có gì.",
+    "notSet": "Chưa đặt.",
+    "needs": "Mở khóa sau {need}.",
+    "needsAt": "Mở khóa sau {need} với {pieceCount} quân, {memorizeSeconds} giây.",
+    "need": {
+      "rounds": "{count, plural, other {thêm # ván}}",
+      "days": "{count, plural, other {thêm # ngày chơi}}",
+      "exposures": "{count, plural, other {thêm # quân được thấy}}",
+      "qualifyingRounds": "{count, plural, other {thêm # ván}} đạt {accuracy}% trở lên với ít nhất {minPieces} quân",
+      "largerRounds": "{count, plural, other {# ván}} với ít nhất {minPieces} quân",
+      "rightRounds": "{count, plural, other {# ván}} có một quân đúng",
+      "reviews": "{count, plural, other {thêm # lần ôn}} sau cùng một khoảng cách"
+    },
+    "label": {
+      "rating": "Điểm kỹ năng",
+      "winStreak": "Chuỗi thắng",
+      "bestAccuracy": "Độ chính xác cao nhất",
+      "recentAccuracy": "Độ chính xác gần đây",
+      "span": "Tầm nhớ",
+      "piecesHeld": "Số quân nhớ được",
+      "speed": "Nhịp nhớ lại",
+      "studyTime": "Thời gian ghi nhớ",
+      "rebuildTime": "Thời gian xếp",
+      "streak": "Chuỗi ngày",
+      "rounds": "Số ván đã chơi",
+      "days": "Số ngày đã chơi",
+      "daily": "Bàn cờ hôm nay",
+      "week": "Tuần này",
+      "curve": "Ghi nhớ sau khi ôn",
+      "notebook": "Sổ ghi chép",
+      "plans": "Kế hoạch",
+      "goal": "Mục tiêu",
+      "board": "Bảng xếp hạng"
+    },
+    "unit": {
+      "pieces": "{count, plural, other {<n>{value}</n> quân}}",
+      "secondsPerPiece": "<n>{value}</n> giây mỗi quân",
+      "seconds": "<n>{value}</n> giây",
+      "days": "{count, plural, other {<n>{value}</n> ngày}}",
+      "percent": "<n>{value}</n>%",
+      "rounds": "{count, plural, other {<n>{value}</n> ván}}",
+      "entries": "{count, plural, other {<n>{value}</n> mục}}",
+      "rating": "<n>{value}</n>"
+    },
+    "context": {
+      "span": "{accuracy}% trở lên trong {rounds, plural, other {# ván}}, ghi nhớ {memorizeSeconds} giây",
+      "recent": "{rounds, plural, =1 {Từ ván duy nhất của bạn đến nay, mọi thiết lập} other {Trung bình # ván gần nhất, mọi thiết lập}}",
+      "setting": "{source, select, calibration {Ván luyện tập} other {Ván đấu}} {pieceCount} quân, {memorizeSeconds} giây, từ {rounds, plural, other {# ván}}",
+      "longest": "Chuỗi dài nhất: {days, plural, other {# ngày}}",
+      "daily": "{status, select, played {Đã chơi hôm nay} unfinished {Đã mở hôm nay} other {Đang mở hôm nay}}, chuỗi dài nhất {longest, plural, other {# ngày}}",
+      "curve": "Nhớ sau {day, plural, other {# ngày}}, từ {reviews, plural, other {# lần ôn}}",
+      "rounds": "Từ {rounds, plural, other {# ván}}",
+      "plan": "{planId, select, baseline {Kế hoạch Mốc chuẩn} edge {Kế hoạch Rìa bàn} other {Kế hoạch Bậc thang}}, {status, select, active {đang chạy} done {đã xong} other {đã dừng}}",
+      "goal": "Hướng tới {pieceCount} quân với {accuracy}%",
+      "week": "Mục tiêu tuần {goal} ngày",
+      "entry": "Số quân đúng trong lượt gửi tốt nhất, {difficulty, select, easy {mức Dễ} medium {mức Trung bình} hard {mức Khó} other {mức Đại kiện tướng}}",
+      "overDays": "Trong {days, plural, other {# ngày}}",
+      "firstDay": "Từ {date}",
+      "rating": "{sign, select, up {Tăng {change}} down {Giảm {change}} other {Không đổi}} qua {rounds, plural, other {# ván tính điểm}} gần nhất",
+      "ratingSince": "Từ các ván đấu tính điểm của bạn",
+      "winStreak": "Số ván đấu liên tiếp đạt {accuracy}% trở lên",
+      "bestAt": "{source, select, calibration {Luyện tập} other {Ván đấu}} với {pieceCount} quân, {memorizeSeconds} giây"
+    },
+    "history": {
+      "count": "Đang hiển thị {shown} trên {total, plural, other {# ván}}",
+      "filterSource": "Nguồn",
+      "filterSetting": "Thiết lập",
+      "allSources": "Mọi nguồn",
+      "allSettings": "Mọi thiết lập",
+      "sources": {
+        "game": "Ván đấu",
+        "daily": "Bàn cờ hôm nay",
+        "plan": "Kế hoạch",
+        "review": "Ôn tập",
+        "practice": "Luyện tập"
+      },
+      "settingValue": "{pieceCount} quân, {memorizeSeconds} giây",
+      "col": {
+        "date": "Ngày chơi",
+        "source": "Nguồn",
+        "setting": "Thiết lập",
+        "accuracy": "Độ chính xác",
+        "correct": "Đúng",
+        "study": "Thời gian ghi nhớ",
+        "time": "Thời gian xếp",
+        "rating": "Điểm",
+        "board": "Bàn cờ"
+      },
+      "correctValue": "{correct} trên {total}",
+      "seconds": "{value} giây",
+      "ratingUp": "Điểm tăng {change}",
+      "ratingDown": "Điểm giảm {change}",
+      "ratingLevel": "Điểm không đổi",
+      "unrated": "Không tính điểm",
+      "show": "Xem bàn cờ",
+      "hide": "Ẩn bàn cờ",
+      "boardLabel": "Bàn cờ đã chấm: đúng {correct} trên {total} quân.",
+      "detail": "Đã ghi nhớ {studied} giây trên {memorizeSeconds} giây. {wrong, plural, =0 {Không có quân sai} other {# quân sai}}, {extra, plural, =0 {không có quân thừa} other {# quân thừa}}.",
+      "more": "Xem thêm {count}",
+      "ratingNote": "Thay đổi điểm được lưu cho 30 ván đấu tính điểm gần nhất. Ván luyện tập và ôn tập không tính điểm.",
+      "kept": "Hồ sơ của bạn lưu chi tiết từng ván cho {kept} ván mới nhất trong tổng số {total} ván. Các ván cũ hơn vẫn được tính vào tổng số và kỷ lục.",
+      "emptyTitle": "Chưa có ván nào.",
+      "empty": "Mọi ván bạn chơi trên thiết bị này sẽ hiện ở đây, mới nhất ở trên, kèm thiết lập, độ chính xác và thời gian xếp. Mở một ván để xem bàn cờ đã chấm.",
+      "noMatch": "Không có ván nào khớp với bộ lọc.",
+      "clear": "Xóa bộ lọc"
+    },
+    "analysis": {
+      "fromRounds": "Từ {count, plural, other {# ván}}",
+      "oldest": "Cũ nhất",
+      "latest": "Mới nhất",
+      "accuracy": {
+        "title": "Độ chính xác theo thời gian",
+        "desc": "Độ chính xác của bạn qua từng ván ở thiết lập bạn chơi nhiều nhất, trên thang từ 0 đến 100%.",
+        "note": "{source, select, calibration {Ván luyện tập} other {Ván đấu}} {pieceCount} quân, {memorizeSeconds} giây, thiết lập bạn chơi nhiều nhất. {count, plural, other {# ván}} gần nhất.",
+        "aria": "Độ chính xác trong {count} ván gần nhất với {pieceCount} quân, {memorizeSeconds} giây, trên thang từ 0 đến 100 phần trăm, gần nhất {latest} phần trăm."
+      },
+      "speed": {
+        "title": "Nhịp nhớ lại theo thời gian",
+        "unit": "Số giây cho mỗi quân đúng. Càng thấp càng nhanh.",
+        "note": "{source, select, calibration {Ván luyện tập} other {Ván đấu}} {pieceCount} quân, {memorizeSeconds} giây. {count, plural, other {# ván}} gần nhất.",
+        "aria": "Số giây cho mỗi quân đúng trong {count} ván gần nhất với {pieceCount} quân, {memorizeSeconds} giây, gần nhất {latest}."
+      },
+      "bests": {
+        "title": "Kỷ lục cá nhân theo thiết lập",
+        "desc": "Kỷ lục được lưu theo từng thiết lập, vì 6 quân và 20 quân là hai bài kiểm tra khác nhau.",
+        "setting": "{source, select, calibration {Luyện tập} other {Ván đấu}} · {pieceCount} quân, {memorizeSeconds} giây",
+        "col": {
+          "setting": "Thiết lập",
+          "accuracy": "Độ chính xác cao nhất",
+          "correct": "Đúng",
+          "time": "Thời gian xếp",
+          "rounds": "Số ván",
+          "date": "Ngày đạt"
+        }
+      },
+      "types": {
+        "title": "Ghi nhớ theo loại quân",
+        "desc": "Tần suất bạn đặt lại từng loại quân về đúng ô ban đầu.",
+        "value": "{recalled} trên {shown}",
+        "thin": "Đã thấy {shown} trên {minimum}",
+        "baseline": "Vua có trong mọi ván nên là mốc chuẩn: nhớ được {recalled} trên {shown}.",
+        "onlyKings": "Các ván của bạn đến nay chỉ đặt hai quân vua. Ghi nhớ theo loại quân cần nhiều quân hơn."
+      },
+      "miss": {
+        "title": "Bản đồ sai",
+        "desc": "Những ô và đường bạn hay sai nhất, tính trên mọi ván.",
+        "aria": "Tỷ lệ sai của bạn trên từng ô. Ô càng đậm càng hay sai. Ô xám có ít hơn {minimum} quân đã thấy.",
+        "note": "Ô càng đậm càng hay sai. Ô xám có ít hơn {minimum} quân đã thấy.",
+        "lines": "Cho đến khi mỗi ô có {minimum} quân đã thấy, bản đồ sẽ đọc theo cả cột và hàng.",
+        "files": "Cột",
+        "ranks": "Hàng",
+        "line": "{line}: sai {missed} trên {shown}",
+        "lineThin": "{line}: đã thấy {shown}, chưa đủ để đọc"
+      },
+      "insights": {
+        "title": "Nhận xét",
+        "desc": "Những quy luật đáng để hành động trong kết quả của bạn, kèm theo số liệu làm căn cứ.",
+        "none": "Chưa có gì nổi bật. Hãy tiếp tục chơi.",
+        "rules": {
+          "edgeFiles": "{times, select, 0 {Bạn sai {edge, select, 0 {dưới 1%} other {{edge}%}} trong {edgeShown} quân ở cột a và h, và không sai quân nào trong {centreShown} quân ở các cột trung tâm d và e.} 2 {Bạn sai ở cột a và h nhiều gấp khoảng hai lần so với các cột trung tâm d và e: {edge, select, 0 {dưới 1%} other {{edge}%}} trong {edgeShown} quân so với {centre, select, 0 {dưới 1%} other {{centre}%}} trong {centreShown} quân.} other {Bạn sai ở cột a và h nhiều gấp khoảng {times} lần so với các cột trung tâm d và e: {edge, select, 0 {dưới 1%} other {{edge}%}} trong {edgeShown} quân so với {centre, select, 0 {dưới 1%} other {{centre}%}} trong {centreShown} quân.}}",
+          "weakType": "Trong các quân không phải vua đã thấy từ {minimum} lần trở lên, quân {type, select, q {hậu} r {xe} b {tượng} n {mã} other {tốt}} bị sót nhiều nhất: bạn nhớ được {recalled} trên {shown}, đạt {percent}%.",
+          "fasterLessAccurate": "Với {pieceCount} quân, {studyTime}, {window} ván gần nhất của bạn mất ít hơn {fasterTime} cho mỗi quân đúng so với {window} ván trước đó, và độ chính xác giảm {fell} điểm.",
+          "colourGap": "Bạn nhớ quân {weaker, select, w {trắng} other {đen}} kém hơn quân {weaker, select, w {đen} other {trắng}}: {weakerPercent}% trong {weakerShown} so với {strongerPercent}% trong {strongerShown}, không tính vua.",
+          "plateau": "Với {pieceCount} quân, {studyTime}, {window} ván gần nhất của bạn đạt trung bình {last}% và {window} ván trước đó đạt {before}%, còn tầm nhớ giữ ở {span} quân trong tuần chơi gần nhất. Thêm một quân có thể giúp nó tăng lên."
+        },
+        "actions": {
+          "rig": "Chơi {pieceCount} quân, {studyTime}",
+          "patterns": "Đọc các bài luyện nhận diện mẫu hình",
+          "vision": "Đọc cách nhìn toàn bộ bàn cờ"
+        }
+      }
+    },
+    "share": {
+      "button": "Chia sẻ tiến bộ của tôi",
+      "locked": "Sau ván đầu tiên, thẻ của bạn sẽ hiện những chỉ số tốt nhất của bạn tại đây.",
+      "text": "Tiến bộ của tôi trên Memory Chess: {figures}. Bạn có vượt được không?",
+      "figure": {
+        "span": "tầm nhớ {value, plural, other {# quân}}",
+        "rating": "điểm kỹ năng {value, number}",
+        "piecesHeld": "nhớ được {value, number} quân",
+        "speed": "{value, number} giây mỗi quân",
+        "streak": "{value, plural, other {# ngày}} liên tiếp",
+        "bestAccuracy": "độ chính xác cao nhất {value, number}%",
+        "recentAccuracy": "độ chính xác gần đây {value, number}%",
+        "studyTime": "thời gian ghi nhớ {value, number} giây mỗi quân",
+        "rebuildTime": "thời gian xếp {value, number} giây mỗi quân",
+        "winStreak": "chuỗi thắng {value, plural, other {# ván}}",
+        "rounds": "{value, plural, other {# ván đã chơi}}",
+        "days": "{value, plural, other {# ngày đã chơi}}"
+      },
+      "card": {
+        "kicker": "Hồ sơ phòng lab",
+        "rounds": "{count, plural, other {đã chơi # ván}}",
+        "cta": "Bạn có vượt được không?"
+      },
+      "lede": "Tạo hình ảnh hồ sơ của bạn để đăng, lưu hoặc gửi.",
+      "title": "Chia sẻ tiến bộ của bạn",
+      "alt": "Thẻ tiến bộ Memory Chess: {figures}. {rounds}."
+    },
+    "deltas": {
+      "title": "Bảng thống kê của bạn sau ván này",
+      "from": "từ {before}",
+      "new": "Mới",
+      "level": "Không đổi",
+      "open": "Mở bảng thống kê",
+      "say": {
+        "up": "{label} {after}, tăng {amount} từ {before}, {verdict, select, better {tốt hơn} other {kém hơn}}",
+        "down": "{label} {after}, giảm {amount} từ {before}, {verdict, select, better {tốt hơn} other {kém hơn}}",
+        "level": "{label} {after}, không đổi",
+        "new": "{label} {after}, mới"
+      }
+    },
+    "trend": "{direction, select, up {Tăng} other {Giảm}} {amount} qua {window} ván gần nhất so với {window} ván trước đó"
+  },
+  "share": {
+    "intro": "Chia sẻ thẻ, lưu lại hoặc sao chép vào bài đăng.",
+    "working": "Đang tạo thẻ của bạn.",
+    "shared": "Đã chia sẻ.",
+    "failed": "Không thể tạo thẻ ở đây. Hãy sao chép chú thích bên dưới.",
+    "caption": "Chú thích",
+    "copy": "Sao chép chú thích",
+    "copied": "Đã sao chép chú thích.",
+    "copyFailed": "Sao chép không hoạt động ở đây. Chú thích đã được chọn, hãy tự sao chép.",
+    "close": "Đóng",
+    "shareFailed": "Không chia sẻ được ở đây. Hãy tải xuống hoặc sao chép hình ảnh.",
+    "downloaded": "Đã tải hình ảnh xuống.",
+    "imageCopied": "Đã sao chép hình ảnh. Dán vào bài đăng của bạn.",
+    "imageCopyFailed": "Trình duyệt này không sao chép được hình ảnh. Hãy tải xuống.",
+    "opened": "Đã mở {network} trong thẻ mới. Thẻ của bạn hiển thị trong bản xem trước liên kết.",
+    "actions": {
+      "share": "Chia sẻ",
+      "download": "Tải hình ảnh",
+      "copyImage": "Sao chép hình ảnh"
+    },
+    "post": {
+      "title": "Đăng lên",
+      "note": "Mỗi liên kết đăng chú thích của bạn kèm liên kết đến thẻ, và X, Facebook, LinkedIn cùng các nền tảng khác hiển thị thẻ trong bản xem trước liên kết. Với Instagram hoặc nơi nào cần tệp hình ảnh, hãy tải xuống hoặc sao chép hình ảnh trước.",
+      "newTab": "(mở trong thẻ mới)"
+    }
+  },
+  "errorPages": {
+    "notFound": {
+      "title": "Không tìm thấy trang",
+      "heading": "Trang này không tồn tại.",
+      "body": "Liên kết có thể đã cũ hoặc địa chỉ bị gõ sai. Bạn có thể chơi một ván hoặc quay lại trang chủ."
+    },
+    "error": {
+      "title": "Đã xảy ra lỗi",
+      "heading": "Trang này đã gặp lỗi.",
+      "body": "Các ván chơi và cài đặt của bạn được lưu trong trình duyệt này và không bị ảnh hưởng. Hãy thử lại hoặc quay về trang chủ.",
+      "retry": "Thử lại"
+    },
+    "play": "Chơi một ván",
+    "home": "Về trang chủ"
+  },
+  "dailyEntry": {
+    "minutesLeft": "{minutes} phút",
+    "hoursLeft": "{hours} giờ {minutes} phút",
+    "underMinute": "< 1 phút",
+    "ready": "Bàn cờ hôm nay · {pieceCount} quân · {seconds} giây · còn {timeLeft}",
+    "next": "Bàn cờ tiếp theo sau {timeLeft}",
+    "pending": "Bàn cờ hôm nay",
+    "navReady": "{label}, bàn cờ hằng ngày hôm nay đã sẵn sàng",
+    "cardTitle": "Bàn cờ hằng ngày hôm nay đã sẵn sàng",
+    "cardSetting": "{pieceCount} quân và {seconds} giây để ghi nhớ.",
+    "cardNote": "Hôm nay mọi người cùng chơi một bàn cờ, và bạn có một lượt thử.",
+    "play": "Chơi bàn cờ hôm nay"
+  },
+  "daily": {
+    "meta": {
+      "title": "Bàn Cờ Ghi Nhớ Hằng Ngày: Một Thế Cờ Cho Mọi Người",
+      "description": "Mỗi ngày một bàn cờ ghi nhớ, cùng một thế cờ cho mọi người chơi. Xem một lần, dựng lại và vào top 10 hôm nay. Bàn mới mở lúc nửa đêm UTC.",
+      "socialTitle": "Bàn cờ hằng ngày của Memory Chess",
+      "socialDescription": "Hôm nay mọi người có cùng một thế cờ. Ghi nhớ, dựng lại và xem bạn đứng hạng mấy."
+    },
+    "round": {
+      "locked": "Bạn đã mở bàn cờ hôm nay rồi. Mỗi ngày chỉ một lượt để giữ sự công bằng.",
+      "seeBoard": "Xem bàn cờ hôm nay",
+      "chooseRound": "Chơi thêm một ván",
+      "join": "Tham gia bàn cờ hôm nay"
+    },
+    "page": {
+      "fig": "Bàn cờ hằng ngày · {date}",
+      "title": "Một bàn cờ, giống nhau cho mọi người",
+      "lede": "Mỗi ngày, mọi người chơi nhận cùng một thế cờ. Xem một lần, dựng lại từ trí nhớ, rồi tham gia bàn cờ trong ngày để xem bạn đứng ở đâu.",
+      "resets": "Bàn mới lúc nửa đêm UTC",
+      "open": "Bàn cờ hôm nay đã mở",
+      "pieces": "{count, plural, other {# quân}}",
+      "seconds": "{count} giây để ghi nhớ",
+      "oneTry": "Một lượt",
+      "hidden": "Ẩn cho đến khi bạn chơi",
+      "play": "Chơi bàn cờ hôm nay",
+      "streak": "{count, plural, other {Chuỗi hằng ngày: # ngày}}",
+      "unfinishedTitle": "Đã dùng lượt chơi hôm nay",
+      "unfinished": "Bạn đã mở bàn cờ hôm nay và rời đi trước khi có kết quả. Mỗi ngày chỉ một lượt để bàn cờ công bằng, hãy quay lại vào bàn tiếp theo.",
+      "result": "Kết quả của bạn",
+      "score": "Đúng {correct} trên {pieceCount}",
+      "rebuild": "dựng lại trong {seconds} giây",
+      "gridAria": "Các ô của bạn: {correct} đúng, {wrong} sai quân, {missed} sót, {extra} thừa",
+      "key": {
+        "c": "Đúng",
+        "w": "Sai quân",
+        "m": "Sót",
+        "x": "Thừa"
+      },
+      "shareLabel": "Chia sẻ mà không lộ bàn cờ",
+      "shareText": "Bàn cờ hằng ngày Memory Chess {day}\n{row} {correct}/{pieceCount}",
+      "copy": "Sao chép kết quả",
+      "copied": "Đã sao chép",
+      "copyFailed": "Bộ nhớ tạm đã từ chối. Hãy chọn đoạn văn bản bên dưới và sao chép.",
+      "joined": "Bạn đã có tên trên bàn cờ hôm nay",
+      "rank": "Hạng {rank} trên {total} hôm nay",
+      "lateNote": "Bạn đã chơi bàn cờ hôm qua nhưng chưa tham gia.",
+      "lateJoined": "Bạn đã có tên trên bàn cờ của ngày đó"
+    },
+    "join": {
+      "title": "Tham gia bàn cờ hôm nay",
+      "lateTitle": "Tham gia bàn cờ của ngày đó",
+      "name": "Tên",
+      "nameHint": "Từ 4 đến 16 ký tự, hiển thị cùng điểm của bạn.",
+      "nameShort": "Quá ngắn. Hãy dùng ít nhất 4 ký tự.",
+      "nameLong": "Quá dài. Hãy dùng tối đa 16 ký tự.",
+      "country": "Quốc gia",
+      "chooseCountry": "Chọn quốc gia",
+      "from": {
+        "saved": "Đã lưu trên thiết bị này.",
+        "connection": "Theo kết nối của bạn.",
+        "language": "Theo ngôn ngữ trình duyệt của bạn.",
+        "none": "Chọn quốc gia mà bạn thi đấu cho."
+      },
+      "change": "Thay đổi",
+      "submit": "Tham gia bàn cờ",
+      "submitting": "Đang tham gia…",
+      "public": "Tên, quốc gia, điểm và điểm xếp hạng của bạn được hiển thị công khai.",
+      "failed": "Không tham gia được bàn cờ. Vui lòng thử lại.",
+      "noneRight": "Không có quân nào đúng nên lượt này không được xếp hạng. Bàn tiếp theo mở lúc nửa đêm UTC."
+    },
+    "board": {
+      "title": "Top 10 hôm nay",
+      "playedLike": "Bàn cờ hôm nay chơi như {rating}",
+      "playedLikeNote": "Ước tính từ kết quả của người chơi hôm nay.",
+      "rank": "Hạng",
+      "player": "Người chơi",
+      "right": "Đúng",
+      "wrong": "Sai",
+      "time": "Thời gian (giây)",
+      "rating": "{rating} Elo",
+      "you": "Bạn",
+      "empty": "Chưa có ai tham gia bàn cờ hôm nay. Hãy chơi và là người đầu tiên.",
+      "error": "Không tải được bàn cờ hôm nay. Vui lòng thử lại sau ít phút.",
+      "joinToRank": "Hãy tham gia bàn cờ để xem hạng của bạn ở đây.",
+      "order": "Xếp hạng theo số quân đúng, rồi ít quân sai nhất, rồi dựng lại nhanh nhất.",
+      "all": "Xem mọi bàn cờ"
+    },
+    "reference": {
+      "title": "Bàn cờ hằng ngày hoạt động thế nào",
+      "shared": "Mỗi ngày vào nửa đêm UTC, một thế cờ mới được chọn, và mọi người chơi trên thế giới nhận cùng một thế cờ. Thế cờ đến từ một hạt giống tạo ra từ ngày, nên bàn cờ giống nhau với mọi người và không ai nhận bản dễ hơn. Vì bàn cờ dùng chung, điểm trên bàn đó có ý nghĩa như nhau với mọi người đã chơi trong ngày.",
+      "oneTry": "Bạn chỉ có một lượt. Việc mở bàn cờ đã tính là một lượt, nên rời đi trong giai đoạn ghi nhớ rồi quay lại sẽ không cho bạn xem lại bàn cờ lần nữa. Thiết bị của bạn nhớ lượt chơi này cho đến khi bàn tiếp theo mở.",
+      "grid": "Sau khi dựng lại thế cờ, bạn sẽ thấy ô nào đúng, ô nào đặt sai quân, ô nào bị sót và chỗ nào bạn đặt thừa quân. Dòng chia sẻ liệt kê mỗi quân một ô, sắp xếp theo kết quả, không cho biết quân đứng ở đâu, nên đăng lên cũng không làm lộ bàn cờ cho người chưa chơi.",
+      "join": "Để tham gia bàn cờ, hãy chọn tên từ 4 đến 16 ký tự và quốc gia mà bạn thi đấu cho. Quốc gia được điền sẵn từ lựa chọn trước đó của bạn, rồi đến kết nối của bạn, rồi đến ngôn ngữ trình duyệt, và bạn luôn có thể đổi. Điểm xếp hạng của bạn tại thời điểm tham gia được hiển thị bên cạnh tên.",
+      "ranking": "Các dòng được xếp theo số quân đặt đúng, rồi đến ít quân sai nhất, rồi đến dựng lại nhanh nhất. Mọi người ghi nhớ trong cùng số giây, nên thời gian ghi nhớ không bao giờ tạo ra khác biệt giữa hai người chơi trên bàn cờ hằng ngày.",
+      "arcTitle": "Số quân và thời gian ghi nhớ trong tuần",
+      "arcIntro": "Thiết lập theo nhịp của cả tuần. Thứ Hai bắt đầu nhẹ nhàng để kỳ nghỉ cuối tuần không làm đứt chuỗi, độ khó tăng dần qua tuần, thứ Bảy là bàn chớp nhoáng chỉ xem được vài giây, và Chủ Nhật là bàn khó nhất. Trong phạm vi của mỗi ngày, ngày tháng chọn ra một thiết lập, giống nhau cho mọi người chơi.",
+      "day": "Ngày",
+      "pieces": "Quân cờ",
+      "seconds": "Thời gian ghi nhớ",
+      "range": "{min} đến {max}",
+      "secondsRange": "{min} đến {max} giây",
+      "secondsExact": "{count} giây"
     }
   }
 }

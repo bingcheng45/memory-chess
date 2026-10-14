@@ -1,52 +1,73 @@
-import {
-  gameHref,
-  LEARN_GOAL_HREFS,
-  LEARN_GOAL_IDS,
-  type LearnGoalId,
-  type LearnGuide,
-  type LearnPageContent,
-} from "./schema";
 import { LEARN_GUIDES } from "./guides";
-import { LEARN_ARTICLE_COPY, LEARN_GOAL_COPY } from "./copy";
+import { LEARN_GROUPS, type FaqItem, type GameSetup, type LearnDocument, type LearnGroup } from "./schema";
+import { readingMinutes } from "./text";
 
 export * from "./schema";
 
-export type LearnGoal = {
-  id: LearnGoalId;
-  label: string;
-  description: string;
-  accent: string;
-  href: string;
+export type TableOfContentsEntry = { readonly id: string; readonly label: string };
+
+export type LearnPage = LearnDocument & {
+  readonly group: LearnGroup;
+  readonly readingMinutes: number;
+  readonly tableOfContents: readonly TableOfContentsEntry[];
+  /** The round the guide sends a reader to: its first game call to action, or else its first drill played on the site. */
+  readonly primaryCta: GameSetup & { readonly label: string };
+  readonly faq: readonly FaqItem[];
 };
 
-function toPage(guide: LearnGuide): LearnPageContent {
-  const firstRound = guide.sections
-    .flatMap((section) => section.blocks)
-    .flatMap((block) => (block.kind === "drills" ? block.drills : []))
-    .find((drill) => drill.setup)?.setup;
+export const FAQ_ANCHOR = "faq";
+export const FAQ_LABEL = "Questions";
+
+function primaryCtaOf(doc: LearnDocument): LearnPage["primaryCta"] {
+  for (const block of doc.end) {
+    if (block.kind === "cta" && block.target.kind === "game") {
+      const { label, pieceCount, memorizeTime } = block.target;
+      return { label, pieceCount, memorizeTime };
+    }
+  }
+  for (const block of doc.sections.flatMap((section) => section.blocks)) {
+    const play = block.kind === "drills" ? block.drills.find((drill) => drill.play)?.play : undefined;
+    if (play) return play;
+  }
+  throw new Error(`${doc.meta.slug} has nothing to play`);
+}
+
+export function toPage(doc: LearnDocument): LearnPage {
+  const group = LEARN_GROUPS.find(({ id }) => id === doc.meta.group);
+  if (!group) throw new Error(`${doc.meta.slug} names no group ${doc.meta.group}`);
+  const faq = doc.end.flatMap((block) => (block.kind === "faq" ? block.items : []));
 
   return {
-    ...guide,
-    ctaHref: gameHref(firstRound),
+    ...doc,
+    group,
+    readingMinutes: readingMinutes(doc),
     tableOfContents: [
-      ...guide.sections.map((section) => ({ id: section.id, label: section.title })),
-      ...(guide.faq.length > 0
-        ? [{ id: "faq", label: LEARN_ARTICLE_COPY.faqLabel }]
-        : []),
+      ...doc.sections.map(({ id, heading }) => ({ id, label: heading })),
+      ...(faq.length > 0 ? [{ id: FAQ_ANCHOR, label: FAQ_LABEL }] : []),
     ],
+    primaryCta: primaryCtaOf(doc),
+    faq,
   };
 }
 
-export const EN_LEARN_PAGES: LearnPageContent[] = LEARN_GUIDES.map(toPage);
+export const EN_LEARN_PAGES: readonly LearnPage[] = LEARN_GUIDES.map(toPage);
 
-export const EN_LEARN_GOALS: LearnGoal[] = LEARN_GOAL_IDS.map((id) => ({
-  id,
-  ...LEARN_GOAL_COPY[id],
-  href: LEARN_GOAL_HREFS[id],
-}));
+export const LEARN_SLUGS: readonly string[] = EN_LEARN_PAGES.map((page) => page.meta.slug);
 
-/** Slugs, needed by the sitemap and generateStaticParams. */
-export const LEARN_SLUGS = LEARN_GUIDES.map((guide) => guide.slug);
+/** Paths under /learn that are not guides, so no guide may take their slug. */
+export const RESERVED_LEARN_SLUGS: readonly string[] = ["search"];
+
+export function findLearnPage(slug: string): LearnPage | undefined {
+  return EN_LEARN_PAGES.find((page) => page.meta.slug === slug);
+}
 
 /** The most recent guide edit, which is when the hub last changed. */
-export const LEARN_LAST_UPDATED = LEARN_GUIDES.map((guide) => guide.updatedAt).sort().at(-1)!;
+export const LEARN_LAST_UPDATED: string = EN_LEARN_PAGES.map((page) => page.meta.updatedAt).sort().at(-1) ?? "";
+
+export type LearnGroupPages = { readonly group: LearnGroup; readonly pages: readonly LearnPage[] };
+
+export function groupPages(pages: readonly LearnPage[]): LearnGroupPages[] {
+  return LEARN_GROUPS.map((group) => ({ group, pages: pages.filter((page) => page.group.id === group.id) })).filter(
+    ({ pages: inGroup }) => inGroup.length > 0,
+  );
+}

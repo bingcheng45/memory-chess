@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": "b0356f076e9137bf4de43efbad5a8afcc2cc53cf286b779ebea3c864071a5bf6",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Podmínky používání",
+      "description": "Srozumitelné podmínky pro hraní Memory Chess, odesílání výsledků do žebříčku a používání obsahu webu.",
+      "socialTitle": "Podmínky používání Memory Chess",
+      "socialDescription": "Srozumitelné podmínky pro hraní Memory Chess a používání webu."
+    },
+    "kicker": "Drobným písmem",
+    "title": "Podmínky používání",
+    "lede": "Memory Chess je bezplatná hra, kterou provozuje jeden člověk. Tyto podmínky jsou krátké, protože dohoda je jednoduchá, a jsou napsané tak, aby se daly přečíst.",
+    "sections": {
+      "service": {
+        "title": "Služba",
+        "blocks": [
+          {
+            "p": "Memory Chess je bezplatná hra v prohlížeči pro trénink paměti na šachovnici. Poskytuji ji tak, jak je, a v té míře, v jaké je dostupná, bez jakékoli záruky. Snažím se, aby byla rychlá, přesná a dostupná, ale neslibuji nepřerušený provoz, bezchybné bodování ani to, že jakákoli funkce zůstane navždy stejná. Kteroukoli část webu mohu kdykoli změnit, pozastavit nebo ukončit."
+          },
+          {
+            "p": "V rozsahu, který zákon dovoluje, neodpovídám za škody vzniklé v souvislosti s vaším používáním webu. Je to paměťová hra. Rozumnou hranicí toho, co se tu může pokazit, je ztráta výsledku, na kterém vám záleželo, a i tak se usilovně snažím tomu zabránit."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Přijatelné používání",
+        "blocks": [
+          {
+            "p": "Hrajte férově a nechte web fungovat i pro všechny ostatní. Neútočte na službu, nepřetěžujte ji ani ji neskenujte kvůli hledání slabin, nestahujte z ní data ve velkém a nesnažte se prolomit její bodování. Neodesílejte výsledky vytvořené boty, skripty ani jakoukoli jinou automatizací. Nepoužívejte kontaktní formulář ani žebříček k rozesílání spamu, obtěžování ani vydávání se za kohokoli jiného."
+          },
+          {
+            "p": "Kontaktní formulář je určený pro skutečné zprávy skutečnému člověku. Používejte ho pro hlášení chyb, otázky a nápady a zpráva bude přečtena."
+          },
+          {
+            "p": "Provoz, který tato pravidla porušuje, mohu blokovat nebo mu omezit přístup. Když neexistují účty, které by šlo zablokovat, je odstraňování nepoctivých záznamů a blokování zneužívání na okraji sítě tím vymáháním, které mám, a používám ho."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Žebříček",
+        "blocks": [
+          {
+            "p": "Odeslání výsledku do žebříčku je dobrovolné. Všechno, co tam odešlete, je veřejné. Jméno připojené k výsledku je to, co napíšete, proto zvolte něco, co rádi uvidíte zveřejněné, a nepoužívejte své skutečné jméno ani osobní údaje kohokoli jiného, pokud si je chcete ponechat v soukromí."
+          },
+          {
+            "p": "Odeslaný záznam obsahuje jméno, které jste zvolili, a údaje o kole, například přesnost, obtížnost a čas dokončení. Po zveřejnění zůstává v žebříčku, dokud ho nevytlačí lepší výsledky nebo dokud není odstraněn."
+          },
+          {
+            "p": "Mohu odstranit záznamy v žebříčku, které jsou urážlivé, vydávají se za někoho jiného, vypadají jako automatizované nebo zjevně nevznikly tak, že by hru hrál člověk. Záznamy odstraňuji proto, aby žebříček zůstal poctivý, ne ve snaze řídit to, kdo vyhraje."
+          }
+        ]
+      },
+      "content": {
+        "title": "Obsah a duševní vlastnictví",
+        "blocks": [
+          {
+            "p": "Vlastní obsah webu, včetně hry, návodů v sekci Výuka, designu a kódu, na kterém web běží, patří mně. Můžete odkazovat na kteroukoli stránku, citovat přiměřené úryvky s uvedením zdroje a sdílet své výsledky, kde chcete. Nepřebírejte celé návody a nevydávejte obsah webu za svůj."
+          },
+          {
+            "p": "Samotné šachy nepatří nikomu. Pozice, pravidla a notace jsou volně k dispozici všem, tady i kdekoli jinde."
+          },
+          {
+            "p": "Pokud pošlete zpětnou vazbu nebo návrhy, souhlasíte s tím, že je mohu použít ke zlepšení webu, aniž by vám tím vznikl nárok na odměnu nebo uvedení autorství. Zpětná vazba od hráčů už ovlivnila skutečná vydání a seznam změn zaznamenává, co z ní vzešlo."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Služby třetích stran",
+        "blocks": [
+          {
+            "p": "Web běží na malé sadě externích služeb. Google AdSense zobrazuje reklamy, díky kterým je web zdarma. Google Analytics, Vercel Analytics, Vercel Speed Insights a Ahrefs Analytics měří návštěvnost a výkon. Supabase ukládá herní statistiky a záznamy v žebříčku. Každá z nich má vlastní podmínky a <privacy>zásady ochrany osobních údajů</privacy> vysvětlují, s jakými daty která z nich pracuje a jaké máte možnosti volby."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Změny těchto podmínek",
+        "blocks": [
+          {
+            "p": "Tyto podmínky mohu aktualizovat, když se změní web nebo jeho služby. Aktuální verze je vždy na této adrese a pokračování v používání webu po změně znamená, že s aktualizovanými podmínkami souhlasíte. Cokoli, co se hráčů významně týká, například změnu fungování žebříčku, zaznamenám také v seznamu změn."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Kontakt",
+        "blocks": [
+          {
+            "p": "Dotazy k těmto podmínkám nebo záznam v žebříčku, který chcete nechat přezkoumat nebo odstranit, posílejte na <mail>{email}</mail>. Odpovídám na ně osobně."
+          }
+        ]
+      }
+    }
+  }
+}

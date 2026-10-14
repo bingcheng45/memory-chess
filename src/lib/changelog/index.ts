@@ -40,6 +40,173 @@ export interface ChangelogTable {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "2.0.0",
+    publishedAt: "2026-10-14T20:45:00.000+08:00",
+    title: "Memory Chess 2.0: a daily board, your own dashboard, and a whole new look",
+    summary:
+      "The biggest update since launch. There is a new board every day that everyone plays, a dashboard that shows how your memory is changing, a result screen that tells you what each round did to your numbers, and a fresh design in all 24 languages.",
+    groups: [
+      {
+        title: "A new board every day",
+        description:
+          "Once a day, everyone gets the same position. You get one try, and today's top scores sit on their own leaderboard.",
+        changes: [
+          {
+            segments: [
+              "Open the ",
+              { text: "daily board", href: "/daily" },
+              " to play. The position stays hidden until you start, so nobody gets a head start.",
+            ],
+          },
+          "The week has a rhythm: a gentle board on Monday, a little harder each day, a speed test on Saturday and one big board on Sunday.",
+          "The game screen shows a countdown to the next board, and your dashboard shows a dot when today's board is waiting.",
+          "The leaderboard has a new Daily tab, with the reset time shown in your own time zone.",
+        ],
+        tables: [
+          {
+            caption: "What each day asks of you",
+            columns: ["Pieces", "Time to look"],
+            rows: [
+              { label: "Monday", values: ["4 to 5", "12 seconds"] },
+              { label: "Tuesday", values: ["5 to 6", "10 seconds"] },
+              { label: "Wednesday", values: ["6 to 7", "10 seconds"] },
+              { label: "Thursday", values: ["7 to 8", "9 seconds"] },
+              { label: "Friday", values: ["8 to 9", "8 seconds"] },
+              { label: "Saturday", values: ["6 to 12", "2 to 6 seconds"] },
+              { label: "Sunday", values: ["12 to 32", "12 seconds"] },
+            ],
+          },
+        ],
+      },
+      {
+        title: "Your dashboard",
+        description: "Every number the game knows about your memory, on one page that grows as you play.",
+        changes: [
+          {
+            segments: [
+              "The new ",
+              { text: "Dashboard", href: "/dashboard" },
+              " shows your skill rating and which way it is heading, your memory span, how many pieces you hold, your recall pace, your accuracy, your win streak, the days you have played and your recent rounds.",
+            ],
+          },
+          "Figures that need a few more rounds say exactly what they are waiting for, with a button to play the round that unlocks them.",
+          "A small Day chip in the header counts your streak of days played. Tap it to open your dashboard from any page.",
+          "Everything is kept on your own device. You can download it as a file and bring it back on another browser.",
+        ],
+      },
+      {
+        title: "See what every round did",
+        changes: [
+          "After each round, the result screen lists your dashboard figures before and after, with a green arrow when a number got better and a red one when it slipped.",
+          "A short note at the top tells you your updated stats are waiting just below, with a button that takes you straight there.",
+          "Your win streak now counts properly and your round history is kept.",
+        ],
+      },
+      {
+        title: "A skill rating that moves both ways",
+        description:
+          "The old rating only ever went up, so every player drifted toward the top. It has been rebuilt, and everyone starts again at 1000.",
+        changes: [
+          "Every board has a rating. More pieces count most, then a shorter look at the board, then a faster rebuild. Your rating is the board you recall about 70% of.",
+          "Each round compares your accuracy with what your rating expects on that board. Do better and it rises. Do worse and it falls. A 90% round counts as 90%, and a round of 40% or less never raises it.",
+          "New players start at 1000 with a provisional rating that moves a lot, so it finds your level within a few rounds. It settles as the game learns you, and the setup card says Provisional rating until it has.",
+          "The setup card shows the accuracy your rating expects on the board you picked, the most a perfect round can earn and the most a miss can cost. Suggested board sets the sliders to one you should clear about three times in four, or half the time while your rating is provisional.",
+          "A harder board earns more when you clear it and costs less when you miss it. An easier one earns little and costs more. Once you clear all 32 pieces, a shorter look and a faster rebuild keep raising it.",
+          "Your first empty board each day is a free skip and leaves your rating alone. Review rounds are still not rated. The daily board is.",
+        ],
+        tables: [
+          {
+            caption: "What one round does to a settled rating of 1,200, rebuilding at an everyday pace",
+            columns: ["Board", "Expected accuracy", "Perfect", "80%", "50%", "Empty"],
+            rows: [
+              { label: "Easy, 2 pieces for 10 seconds", values: ["99%", "0", "−4", "−11", "−22"] },
+              { label: "Medium, 6 pieces for 10 seconds", values: ["82%", "+4", "0", "−7", "−18"] },
+              { label: "Suggested, 7 pieces for 10 seconds", values: ["75%", "+6", "+1", "−6", "−19"] },
+              { label: "Hard, 12 pieces for 8 seconds", values: ["36%", "+26", "+18", "+5", "−15"] },
+              { label: "Grandmaster, 20 pieces for 5 seconds", values: ["9%", "+50", "+46", "+26", "−6"] },
+            ],
+          },
+        ],
+        note: "Easy boards cost the most when you slip, because your rating already expects them. Hard boards pay the most, and a miss there costs little.",
+      },
+      {
+        title: "Share a round, and let friends watch it back",
+        changes: [
+          "Share a result or your dashboard as an image card. Post it to X, Facebook, LinkedIn, Reddit, WhatsApp, Threads or Bluesky in one tap, or download or copy it.",
+          "The link you share shows your card in the post, and opens a page that replays your round: the position you studied, then every piece going down in the order you placed it, then your score.",
+          "Friends can play the same setting straight from your link.",
+          {
+            segments: [
+              "Open ",
+              { text: "a sample shared round", href: "/share/result/1_g_8_100_74_218_1264_u18_3_6k1-5pp1-8-8-8-8-5PPP-3Q2K1_6k1-5pp1-8-8-8-8-5PPP-4Q1K1_g130f222g218h216e141g835f729g727" },
+              " to see what a friend sees when you send them yours.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Nicer to play",
+        changes: [
+          "Drag pieces onto the board as well as tapping them.",
+          "When you have placed every piece of one kind that a real set has, it greys out in the tray and tells you why.",
+          "Study a position for as little as 1 second or as long as 60, up from 32.",
+          "Turn board coordinates on or off right on the setup card.",
+          "Leaderboard scores now show each player's rating at the time they played.",
+        ],
+      },
+      {
+        title: "Fairer positions",
+        description:
+          "Thanks to a player's bug report, we found a board that looked impossible. It was really being drawn upside down.",
+        changes: [
+          "Boards now always show rank 8 at the top, in every view.",
+          "The game no longer deals checks that no real game could reach, such as a pawn giving check from its starting square.",
+        ],
+      },
+      {
+        title: "A new home, a new look, in every language",
+        changes: [
+          "The home page is now the Brain Lab. Take a quick calibration round right there, then watch two famous games broken down the way a strong player remembers them: Topalov against Shirov in 1998 and Kasparov's Immortal from 1999.",
+          "Every page has a clean, light design that is easier to read, and it is the same in all 24 languages.",
+          {
+            segments: [
+              "The ",
+              { text: "About", href: "/about" },
+              " page, the ",
+              { text: "privacy policy", href: "/privacy" },
+              " and the ",
+              { text: "terms of service", href: "/terms" },
+              " are now in all 24 languages. Each translation says it was made with AI help and links to the English page. On the privacy policy and the terms, the English page is the one that counts.",
+            ],
+          },
+          "Pages load without jumping around, including in Russian, Vietnamese and Hindi.",
+        ],
+      },
+      {
+        title: "Learn, rebuilt",
+        changes: [
+          {
+            segments: [
+              "All 14 ",
+              { text: "Learn", href: "/learn" },
+              " guides were rewritten, with boards where they help, and arranged into a five-stage path from your first round to a daily habit.",
+            ],
+          },
+          "Type a question such as \"why do I keep hanging pieces\" and Learn finds the guide that answers it.",
+        ],
+      },
+      {
+        title: "Smaller things you might notice",
+        changes: [
+          "This changelog has a list of releases on the side, so you can jump between updates.",
+          "The contact form explains clearly what went wrong if a message cannot be sent.",
+          "A page that does not exist now says so and points you back to a round.",
+        ],
+        note: "Thank you to everyone who wrote in, reported a bug or simply kept playing. Many of these changes started as one sentence in the feedback box.",
+      },
+    ],
+  },
+  {
     version: "1.2.5",
     publishedAt: "2026-10-05T14:40:00.000+08:00",
     title: "New: articles about the people behind chess memory",
@@ -358,7 +525,7 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
             segments: [
               "A huge thank you to everyone who helped Memory Chess reach more than 800 monthly players and over 32,000 games played. We are especially grateful to everyone who shared ideas, encouragement, and bug reports through the ",
               {
-                text: "Contact Us page",
+                text: "Contact us page",
                 href: "/contact-us",
               },
               " or the end-of-game feedback form. Every game and message helps Memory Chess keep growing.",

@@ -24,8 +24,10 @@ case $cmd in
       echo "no .next build in $root; run 'npm run build' first" >&2
       exit 1
     fi
-    # Probe by binding, not lsof; minimal Linux images do not ship lsof.
-    if ! node -e 'const s=require("net").createServer();s.once("error",()=>process.exit(1));s.listen(Number(process.argv[1]),"127.0.0.1",()=>s.close(()=>process.exit(0)))' "$port"; then
+    # Probe by binding, not lsof; minimal Linux images do not ship lsof. Bind
+    # every address as next start does: on macOS a 127.0.0.1 bind succeeds
+    # beside a server already listening on ::.
+    if ! node -e 'const s=require("net").createServer();s.once("error",()=>process.exit(1));s.listen(Number(process.argv[1]),()=>s.close(()=>process.exit(0)))' "$port"; then
       echo "port $port is already in use; pick another port or run doctor.sh $port" >&2
       exit 1
     fi
@@ -44,6 +46,12 @@ case $cmd in
     # would match whatever process the OS later hands the same number.
     { echo "$pid"; pid_start_time "$pid" || true; } >"$pid_file"
     for _ in $(seq 1 60); do
+      if ! kill -0 "$pid" 2>/dev/null; then
+        echo "server pid $pid exited before answering; log tail:" >&2
+        tail -20 "$log_file" >&2 || true
+        rm -f "$pid_file"
+        exit 1
+      fi
       if curl -fsS -o /dev/null "http://127.0.0.1:$port/" 2>/dev/null; then
         echo "ready on http://127.0.0.1:$port (pid $pid, log $log_file)"
         exit 0

@@ -6,15 +6,15 @@
       "heading": "As três fases de uma rodada",
       "memorize": {
         "title": "Memorizar",
-        "body": "Uma posição aparece em um tabuleiro completo por um número fixo de segundos. Nada se move e nada fica escondido. Você pode encerrar a fase antes com o botão Pular, e o cronômetro registra quanto tempo você realmente observou, não o tempo que recebeu."
+        "body": "Uma posição aparece em um tabuleiro completo por um número fixo de segundos. Nada se move e nada fica escondido. Você pode encerrar a fase antes com o botão Pronto, e o cronômetro registra quanto tempo você realmente observou, não o tempo que recebeu."
       },
       "place": {
         "title": "Montar",
-        "body": "O tabuleiro é esvaziado. Você escolhe o tipo e a cor da peça e toca em uma casa para colocá-la, ou toca de novo para retirá-la. Aqui não há limite de tempo, mas o cronômetro corre do momento em que o tabuleiro esvazia até o envio."
+        "body": "O tabuleiro é esvaziado. Você escolhe uma peça na paleta e toca em uma casa para colocá-la, ou toca de novo para retirá-la. Aqui não há limite de tempo, mas o cronômetro corre do momento em que o tabuleiro esvazia até o envio."
       },
       "score": {
         "title": "Pontuar",
-        "body": "Seu tabuleiro é comparado casa por casa com o original. Você vê quais peças estavam certas, quais estavam erradas e quais faltaram, junto com a posição que foi mostrada, lado a lado em telas largas e uma acima da outra em telas estreitas."
+        "body": "Seu tabuleiro é comparado casa por casa com o original. As casas certas e as peças erradas são marcadas no tabuleiro, e as peças que faltaram aparecem esmaecidas onde estavam, ao lado de um resultado com sua precisão e sua memória por tipo de peça."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "Os dois bispos de um mesmo lado nunca ocupam casas da mesma cor.",
         "simultaneous-check": "Os dois reis nunca estão em xeque ao mesmo tempo.",
         "checked-side-not-to-move": "Se um rei está em xeque, é a vez desse lado jogar.",
+        "home-rank-pawn-check": "Um peão que nunca saiu da sua fileira inicial nunca dá xeque.",
+        "impossible-double-check": "Nenhum rei recebe xeque de mais de duas peças, e um xeque duplo sempre envolve um bispo, uma torre ou uma dama.",
         "piece-count": "O tabuleiro contém exatamente o número de peças que o nível pediu.",
         "invalid-fen": "A posição é uma posição legal de xadrez, que pode ser montada em um tabuleiro."
       },

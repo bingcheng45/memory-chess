@@ -1,13 +1,13 @@
 -- Leaderboard database schema for Memory Chess
 --
 -- This describes leaderboard_entries as it stands after
--- schema/migrations/0001_leaderboard_country_code.sql. The column list and its
+-- schema/migrations/0004_leaderboard_rating_and_daily.sql. The column list and its
 -- order were taken from the live table, not from an earlier copy of this file:
 -- an older version omitted total_wrong_pieces for as long as that column had
 -- existed in production.
 --
--- total_wrong_pieces and country_code are declared last because both arrived
--- by ALTER TABLE, which appends. Reordering them here would make the file
+-- total_wrong_pieces, country_code, skill_rating and daily_day are declared
+-- last because they arrived by ALTER TABLE, which appends. Reordering them here would make the file
 -- disagree with what SELECT * returns.
 --
 -- Sample INSERT rows used to live at the bottom of this file. They are gone on
@@ -18,7 +18,7 @@
 CREATE TABLE leaderboard_entries (
   id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
   player_name TEXT NOT NULL,
-  difficulty TEXT NOT NULL CHECK (difficulty IN ('easy', 'medium', 'hard', 'grandmaster')),
+  difficulty TEXT NOT NULL,
   piece_count INTEGER NOT NULL,
   correct_pieces INTEGER NOT NULL,
   memorize_time DECIMAL(10, 3) NOT NULL,
@@ -29,6 +29,8 @@ CREATE TABLE leaderboard_entries (
   total_wrong_pieces INTEGER,
   -- 'ZZ' is CLDR's unknown region, used as the "world" option.
   country_code TEXT NOT NULL DEFAULT 'ZZ',
+  skill_rating INTEGER NOT NULL DEFAULT 1000,
+  daily_day DATE,
 
   CHECK (correct_pieces <= piece_count),
   CHECK (memorize_time > 0),
@@ -45,6 +47,41 @@ ALTER TABLE leaderboard_entries
   ADD CONSTRAINT check_country_code_format
   CHECK (country_code ~ '^[A-Z]{2}$');
 
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_skill_rating_range
+  CHECK (skill_rating BETWEEN 0 AND 5000);
+
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_difficulty_board
+  CHECK (difficulty IN ('easy', 'medium', 'hard', 'grandmaster', 'daily'));
+
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_daily_day_matches_board
+  CHECK ((difficulty = 'daily') = (daily_day IS NOT NULL));
+
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_daily_day_recent
+  CHECK (daily_day IS NULL OR daily_day BETWEEN (created_at AT TIME ZONE 'UTC')::date - 1 AND (created_at AT TIME ZONE 'UTC')::date);
+
+-- The anon key can insert past the API route and send its own created_at,
+-- NULL included, which would bypass check_daily_day_recent. A daily row always
+-- takes the database's clock.
+CREATE FUNCTION leaderboard_daily_created_at() RETURNS trigger
+LANGUAGE plpgsql
+SET search_path = ''
+AS $$
+BEGIN
+  NEW.created_at := now();
+  RETURN NEW;
+END
+$$;
+
+CREATE TRIGGER leaderboard_daily_created_at
+  BEFORE INSERT ON leaderboard_entries
+  FOR EACH ROW
+  WHEN (NEW.daily_day IS NOT NULL)
+  EXECUTE FUNCTION leaderboard_daily_created_at();
+
 -- Index for quick leaderboard retrieval.
 CREATE INDEX idx_leaderboard_ranking ON leaderboard_entries (
   difficulty,
@@ -52,3 +89,13 @@ CREATE INDEX idx_leaderboard_ranking ON leaderboard_entries (
   memorize_time ASC,
   solution_time ASC
 );
+
+-- Column order follows RANKING_ORDER in src/lib/leaderboard/ranking.ts after
+-- the day, so one day's board reads straight off the index.
+CREATE INDEX idx_leaderboard_daily_ranking ON leaderboard_entries (
+  daily_day,
+  correct_pieces DESC,
+  total_wrong_pieces ASC NULLS LAST,
+  memorize_time ASC,
+  solution_time ASC
+) WHERE difficulty = 'daily';

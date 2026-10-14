@@ -2,6 +2,7 @@ import { render } from "@/test-utils/intl";
 import LeaderboardTable, { TimeDisplay } from "@/components/leaderboard/LeaderboardTable";
 import type { LeaderboardEntry } from "@/types/leaderboard";
 import { parseCountryCode, WORLD_CODE, type CountryCode } from "@/lib/leaderboard/countries";
+import deMessages from "../../../../messages/de.json";
 
 const textOf = (seconds: number) =>
   render(<TimeDisplay seconds={seconds} />).container.textContent;
@@ -50,7 +51,7 @@ describe("LeaderboardTable highlight", () => {
   const highlighted = (entryDetails: ReturnType<typeof link>) =>
     render(
       <LeaderboardTable error={null} activeTab="medium" data={sameName} entryDetails={entryDetails as never} />,
-    ).container.querySelectorAll("tr.bg-peach-500\\/20");
+    ).container.querySelectorAll("tr[data-highlighted]");
 
   it("highlights nothing when a link names a player but not the round", () => {
     expect(highlighted(link({}))).toHaveLength(0);
@@ -134,3 +135,58 @@ describe("LeaderboardTable", () => {
     expect(container.textContent).toContain("00:00:648");
   });
 });
+
+describe("LeaderboardTable ELO column", () => {
+  const headers = (container: HTMLElement) =>
+    [...container.querySelectorAll("thead th")].map((cell) => cell.textContent);
+  const ratings = (container: HTMLElement) =>
+    [...container.querySelectorAll("tbody tr")].map((tr) => tr.querySelectorAll("td")[2].textContent);
+
+  it("reads Rank, Player, ELO, Pieces, Memorize Time, Solution Time, Date", () => {
+    const { container } = render(<LeaderboardTable error={null} activeTab="medium" data={[row("a", 1, 2, 6)]} />);
+
+    expect(headers(container)).toEqual(["Rank", "Player", "ELO", "Pieces", "Memorize Time", "Solution Time", "Date"]);
+  });
+
+  it("shows each row's stored rating, and 1000 for a row stored before the column existed", () => {
+    const { container } = render(
+      <LeaderboardTable
+        error={null}
+        activeTab="medium"
+        data={[{ ...row("rated", 1, 2, 6), skill_rating: 1342 }, row("older", 1, 3, 5)]}
+      />,
+    );
+
+    expect(ratings(container)).toEqual(["1342", "1000"]);
+  });
+
+  it("keeps ELO as ELO in German, between German headers", () => {
+    const { container } = render(<LeaderboardTable error={null} activeTab="medium" data={[row("a", 1, 2, 6)]} />, {
+      locale: "de",
+      messages: deMessages,
+    });
+
+    expect(headers(container).slice(1, 4)).toEqual([
+      deMessages.leaderboard.columns.player,
+      "ELO",
+      deMessages.leaderboard.columns.pieces,
+    ]);
+    expect(deMessages.leaderboard.columns.player).not.toBe("Player");
+  });
+
+  it("shows a ranked board the API reports unavailable as unavailable, without an error message", () => {
+    const { getByText, queryByText } = render(
+      <LeaderboardTable error="The leaderboard is unavailable. Please try again shortly." activeTab="medium" data={[]} />,
+    );
+
+    expect(getByText("Leaderboard Temporarily Unavailable")).toBeInTheDocument();
+    expect(queryByText(/Error loading leaderboard/)).not.toBeInTheDocument();
+  });
+
+  it("spans every column in an empty board's message", () => {
+    const { container } = render(<LeaderboardTable error={null} activeTab="medium" data={[]} />);
+
+    expect(container.querySelector("tbody td")?.getAttribute("colspan")).toBe("7");
+  });
+});
+

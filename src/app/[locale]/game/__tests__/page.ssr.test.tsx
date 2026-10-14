@@ -5,15 +5,10 @@ import GamePage from "@/app/[locale]/game/page";
 import messages from "../../../../../messages/en.json";
 
 jest.mock("@/i18n/navigation", () => ({
-  useRouter: () => ({ push: jest.fn() }),
+  usePathname: () => "/game",
+  useRouter: () => ({ push: jest.fn(), replace: jest.fn() }),
+  Link: ({ children }: { children: React.ReactNode }) => <a>{children}</a>,
 }));
-
-jest.mock("@/components/ui/PageHeader", () => {
-  function MockPageHeader({ pageType }: { pageType?: string }) {
-    return <div data-page-type={pageType} />;
-  }
-  return MockPageHeader;
-});
 
 describe("GamePage server render", () => {
   it("renders the configuration form rather than a loading fallback", () => {
@@ -25,10 +20,10 @@ describe("GamePage server render", () => {
       </NextIntlClientProvider>,
     );
 
-    expect(html).toContain("Game Configuration</h2>");
+    expect(html.match(/<h[1-6][^>]*>[^<]*/)?.[0]).toMatch(/^<h1[^>]*>Memory chess game$/);
     expect(html).toContain('aria-pressed="true"');
     expect(html).not.toContain("aria-busy");
     // The configuration screen keeps the site nav in the served HTML.
-    expect(html).toContain('data-page-type="other"');
+    expect(html).toContain("lab-header");
   });
 });

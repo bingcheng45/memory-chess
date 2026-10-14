@@ -6,15 +6,15 @@
       "heading": "Ba giai đoạn của một ván",
       "memorize": {
         "title": "Ghi nhớ",
-        "body": "Một thế cờ xuất hiện trên bàn cờ đầy đủ trong một số giây cố định. Không có gì di chuyển và không có gì bị ẩn. Bạn có thể kết thúc giai đoạn này sớm bằng nút Bỏ qua, và đồng hồ ghi lại thời gian bạn thực sự nhìn, chứ không phải thời gian bạn được cho."
+        "body": "Một thế cờ xuất hiện trên bàn cờ đầy đủ trong một số giây cố định. Không có gì di chuyển và không có gì bị ẩn. Bạn có thể kết thúc giai đoạn này sớm bằng nút Xong, và đồng hồ ghi lại thời gian bạn thực sự nhìn, chứ không phải thời gian bạn được cho."
       },
       "place": {
         "title": "Đặt quân",
-        "body": "Bàn cờ được xóa trắng. Bạn chọn loại quân và màu quân, rồi chạm vào một ô để đặt quân xuống hoặc chạm lại để lấy lại. Không có giới hạn thời gian ở đây, nhưng đồng hồ chạy từ lúc bàn cờ được xóa trắng cho đến khi bạn gửi bài."
+        "body": "Bàn cờ được xóa trắng. Bạn chọn một quân từ bảng quân cờ, rồi chạm vào một ô để đặt quân xuống hoặc chạm lại để lấy lại. Không có giới hạn thời gian ở đây, nhưng đồng hồ chạy từ lúc bàn cờ được xóa trắng cho đến khi bạn gửi bài."
       },
       "score": {
         "title": "Chấm điểm",
-        "body": "Bàn cờ của bạn được so sánh từng ô một với bản gốc. Bạn thấy quân nào đúng, quân nào sai và quân nào bị bỏ sót, cùng với thế cờ đã được cho bạn xem, đặt cạnh nhau trên màn hình rộng và xếp trên dưới trên màn hình hẹp."
+        "body": "Bàn cờ của bạn được so sánh từng ô một với bản gốc. Các ô đúng và các quân sai được đánh dấu ngay trên bàn cờ, còn những quân bị bỏ sót hiện mờ tại chỗ cũ, bên cạnh phần kết quả cho biết độ chính xác và khả năng ghi nhớ của bạn theo từng loại quân."
       }
     },
     "presets": {
@@ -65,6 +65,8 @@
         "bishop-color-complex": "Hai tượng của một bên không bao giờ đứng trên các ô cùng màu.",
         "simultaneous-check": "Hai vua không bao giờ cùng bị chiếu một lúc.",
         "checked-side-not-to-move": "Nếu một vua đang bị chiếu, đến lượt đi của chính bên đó.",
+        "home-rank-pawn-check": "Tốt chưa từng rời hàng xuất phát thì không bao giờ chiếu tướng.",
+        "impossible-double-check": "Vua không bao giờ bị chiếu bởi quá hai quân, và chiếu đôi luôn có một tượng, xe hoặc hậu.",
         "piece-count": "Bàn cờ chứa đúng số quân mà mức đã chọn yêu cầu.",
         "invalid-fen": "Thế cờ là một thế cờ hợp lệ mà một bàn cờ có thể được xếp thành."
       },

@@ -1,0 +1,226 @@
+import type { StoredPlan } from "./choices";
+import { measured, readinessFor, type LabInput, type MetricResult } from "./engine";
+import type { GoalValue } from "./goals";
+import { ladderClimbs } from "./plans";
+import type { SpanStep, SpanValue } from "./progress";
+import { daysBetween } from "./readiness";
+import { isFreshReading, settingKey, type RoundRecord } from "./record";
+import { byEndedAt } from "./sessions";
+import { runsByDay } from "./streak";
+import { beats, MAX_DAYS, type LabSummary, type PersonalBest } from "./summary";
+
+/** Entries of one moment print in this order: the sort by time is stable over this listing. */
+export const NOTEBOOK_KINDS = ["firstRound", "rounds", "first90", "best", "span", "streak", "rungUp", "goalReached"] as const;
+export type NotebookKind = (typeof NOTEBOOK_KINDS)[number];
+
+export interface NotebookEntry {
+  /** The endedAt of the round the entry is about, so a stored "seen up to" time can tell new entries from old. */
+  readonly at: number;
+  readonly kind: NotebookKind;
+  /** Interpolated into the kind's sentence under home.lab.record.notebook.entries, `day` counted from the first day played. */
+  readonly params: Readonly<Record<string, number | string>>;
+}
+
+export interface NotebookValue {
+  readonly entries: readonly NotebookEntry[];
+  /** Null when the log holds every round. `before` is the oldest round kept, or null when the gap cannot be placed. */
+  readonly older: { readonly before: number | null } | null;
+}
+
+const NOTEBOOK_LIMIT = 20;
+export const NOTEBOOK_THRESHOLDS = { rounds: 1 };
+const ROUND_MILESTONES: readonly number[] = [10, 50, 100, 500, 1000];
+const STREAK_MILESTONES: readonly number[] = [3, 7, 14, 30, 100];
+export const FIRST_READING_ACCURACY = 90;
+const BEST_ACCURACY_GAIN = 1;
+const BEST_TIME_GAIN_MS = 500;
+
+interface History {
+  /** Every round in the log, reviews included, oldest first: what the round counts and the streaks are about. */
+  readonly played: readonly RoundRecord[];
+  /** The fresh rounds of `played`, which the firsts, bests and span read. */
+  readonly rounds: readonly RoundRecord[];
+  readonly summary: LabSummary;
+  /** Rounds the summary counts that the log does not hold. */
+  readonly missing: number;
+  /** Rounds played before the log's oldest, known only when eviction, which drops the oldest, explains every missing one. */
+  readonly before: number | null;
+  /** The summary keeps the last 400 days played, so past that its first day is not the player's. */
+  readonly allDays: boolean;
+  readonly spanHistory: readonly SpanStep[];
+  readonly plan: StoredPlan | null;
+  readonly goal: GoalValue | null;
+}
+
+interface Draft {
+  readonly record: RoundRecord;
+  readonly params: NotebookEntry["params"];
+}
+
+/** A first or a best can only be known from every round, a round count from a known number before the log, a streak from every day. */
+const hasWholeLog = ({ missing }: History) => missing === 0;
+const hasRoundCount = ({ before }: History) => before !== null;
+const hasAllDays = ({ allDays }: History) => allDays;
+/** A plan or a goal reads only the rounds since it was chosen, which the log holds. */
+const sinceChosen = () => true;
+
+interface EntrySource {
+  readonly ready: (history: History) => boolean;
+  drafts(history: History): Draft[];
+}
+
+function firstsBy<K>(rounds: readonly RoundRecord[], keyOf: (record: RoundRecord) => K | null): RoundRecord[] {
+  const seen = new Set<K>();
+  return rounds.filter((record) => {
+    const key = keyOf(record);
+    if (key === null || seen.has(key)) return false;
+    seen.add(key);
+    return true;
+  });
+}
+
+const solveSeconds = (solveMs: number) => Math.round(solveMs / 100) / 10;
+
+/**
+ * A best that matches the bests panel and gained on the last best written: a point more accuracy, or the same accuracy
+ * at least half a second faster with a different printed time. Smaller gains add up until one of them passes.
+ */
+function bestImprovements(rounds: readonly RoundRecord[]): Draft[] {
+  const running = new Map<string, PersonalBest>();
+  const written = new Map<string, RoundRecord>();
+  return rounds.flatMap((record) => {
+    const key = settingKey(record.source, record.config);
+    if (!beats(record, running.get(key))) return [];
+    running.set(key, { accuracy: record.accuracy, correct: record.correct, solveMs: record.solveMs, at: record.endedAt, rounds: 0 });
+    const last = written.get(key);
+    if (!last) {
+      written.set(key, record);
+      return [];
+    }
+    const { source, config: { pieceCount, memorizeSeconds }, accuracy, solveMs } = record;
+    const by =
+      accuracy >= last.accuracy + BEST_ACCURACY_GAIN
+        ? "accuracy"
+        : accuracy === last.accuracy && last.solveMs - solveMs >= BEST_TIME_GAIN_MS && solveSeconds(solveMs) !== solveSeconds(last.solveMs)
+          ? "time"
+          : null;
+    if (!by) return [];
+    written.set(key, record);
+    return [{ record, params: { source, pieceCount, memorizeSeconds, accuracy, previous: last.accuracy, by, solveSeconds: solveSeconds(solveMs) } }];
+  });
+}
+
+function spanSteps({ rounds, spanHistory }: History): Draft[] {
+  const byEnd = new Map(rounds.map((record) => [record.endedAt, record]));
+  let held: number | null = null;
+  return spanHistory.flatMap(({ endedAt, pieceCount }) => {
+    const record = byEnd.get(endedAt);
+    if (pieceCount === null || pieceCount === held || !record) return [];
+    const from = held ?? 0;
+    held = pieceCount;
+    return [{ record, params: { from, to: pieceCount } }];
+  });
+}
+
+/**
+ * A milestone is written once per run, named by its first day, on the day that run reaches it. A new run can start
+ * below the count of the run before it, so comparing with the previous day's count would skip its milestones.
+ */
+function streakMilestones({ played, summary }: History): Draft[] {
+  const firstOnDay = new Map(firstsBy(played, ({ localDay }) => localDay).map((record) => [record.localDay, record]));
+  const written = new Set<string>();
+  return runsByDay(summary.days).flatMap(({ start, played, forgivenDays }, index) => {
+    const key = `${start} ${played}`;
+    const record = firstOnDay.get(summary.days[index]);
+    if (!STREAK_MILESTONES.includes(played) || written.has(key) || !record) return [];
+    written.add(key);
+    return [{ record, params: { days: played, forgiven: forgivenDays.length } }];
+  });
+}
+
+const SOURCES: { readonly [K in NotebookKind]: EntrySource } = {
+  firstRound: {
+    ready: hasWholeLog,
+    drafts: ({ rounds: [first] }) => (first ? [{ record: first, params: { pieceCount: first.config.pieceCount, accuracy: first.accuracy } }] : []),
+  },
+  rounds: {
+    ready: hasRoundCount,
+    drafts: ({ played, before }) =>
+      played.flatMap((record, index) => {
+        const count = (before ?? 0) + index + 1;
+        return ROUND_MILESTONES.includes(count) ? [{ record, params: { count } }] : [];
+      }),
+  },
+  first90: {
+    ready: hasWholeLog,
+    drafts: ({ rounds }) =>
+      firstsBy(rounds, ({ accuracy, config }) => (accuracy >= FIRST_READING_ACCURACY ? config.pieceCount : null))
+        .filter((record) => record !== rounds[0])
+        .map((record) => ({ record, params: { pieceCount: record.config.pieceCount } })),
+  },
+  best: { ready: hasWholeLog, drafts: ({ rounds }) => bestImprovements(rounds) },
+  span: { ready: hasWholeLog, drafts: spanSteps },
+  streak: { ready: hasAllDays, drafts: streakMilestones },
+  rungUp: {
+    ready: sinceChosen,
+    drafts: ({ rounds, plan }) =>
+      plan?.planId === "ladder"
+        ? ladderClimbs(rounds, plan).climbs.flatMap(({ record, next }) => (next ? [{ record, params: { ...next } }] : []))
+        : [],
+  },
+  goalReached: {
+    ready: sinceChosen,
+    drafts: ({ rounds, goal }) => {
+      const reached = goal?.reached;
+      const record = reached && rounds.find(({ endedAt }) => endedAt === reached.at);
+      return goal && record ? [{ record, params: { pieceCount: goal.target.pieceCount, accuracy: goal.target.accuracy } }] : [];
+    },
+  },
+};
+
+function historyOf({ records, summary, plan = null }: LabInput, span: MetricResult<SpanValue>, goal: MetricResult<GoalValue>): History {
+  const played = byEndedAt(records);
+  const missing = Math.max(0, summary.rounds - played.length);
+  const { evictedThrough } = summary;
+  const evicted = evictedThrough !== null && (played[0]?.endedAt ?? Infinity) > evictedThrough;
+  return {
+    played,
+    rounds: played.filter(isFreshReading),
+    summary,
+    missing,
+    before: missing === 0 ? 0 : evicted ? missing : null,
+    allDays: summary.days.length < MAX_DAYS,
+    spanHistory: span.value?.history ?? [],
+    plan,
+    goal: goal.value,
+  };
+}
+
+function entriesOf(history: History): NotebookEntry[] {
+  const { played, summary, allDays } = history;
+  const firstDay = summary.days[0] ?? played[0]?.localDay;
+  return NOTEBOOK_KINDS.flatMap((kind) => {
+    const source = SOURCES[kind];
+    if (!source.ready(history)) return [];
+    return source.drafts(history).map(({ record, params }): NotebookEntry => ({
+      at: record.endedAt,
+      kind,
+      params: allDays ? { day: daysBetween(firstDay, record.localDay) + 1, ...params } : params,
+    }));
+  })
+    .sort((a, b) => b.at - a.at)
+    .slice(0, NOTEBOOK_LIMIT);
+}
+
+export function computeNotebook(input: LabInput, span: MetricResult<SpanValue>, goal: MetricResult<GoalValue>): MetricResult<NotebookValue> {
+  const { rounds } = input.summary;
+  const readiness = readinessFor(input, { sampleSize: rounds, have: { rounds }, thresholds: NOTEBOOK_THRESHOLDS });
+  return measured(readiness, () => {
+    const history = historyOf(input, span, goal);
+    const oldest = history.played[0];
+    return {
+      entries: entriesOf(history),
+      older: history.missing === 0 ? null : { before: history.before !== null && oldest ? oldest.endedAt : null },
+    };
+  });
+}

@@ -1,0 +1,15 @@
+{
+  "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "contents": "Inhoud",
+    "onThisPage": "Op deze pagina",
+    "lastUpdated": "Laatst bijgewerkt: <time>{date}</time>",
+    "note": {
+      "general": "Deze pagina is met hulp van AI uit het Engels vertaald. De Engelse pagina is het referentiepunt.",
+      "legal": "Deze vertaling is met hulp van AI gemaakt en wordt voor het gemak aangeboden. Als ze afwijkt van de Engelse versie, is de Engelse versie leidend.",
+      "readInEnglish": "Lees het in het Engels"
+    }
+  }
+}

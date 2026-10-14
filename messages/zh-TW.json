@@ -482,7 +482,7 @@
           },
           "fastWrong": "又快又錯不算進步。",
           "config": "{source, select, calibration {練習} other {對局}} · {pieceCount} 子 · {studyTime}，你最近最常玩的設定 · 根據 {count, plural, other {# 回合}}",
-          "need": "{source, select, calibration {在練習中} other {在對局中}}以 {pieceCount} 子、{studyTime} 再玩 {count, plural, other {# 回合}}，就能畫出你的速度曲線。",
+          "need": "{source, select, calibration {在練習中} other {在對局中}}以 {pieceCount} 子、{studyTime} 再玩 {count, plural, other {# 回合}}，就能畫出你的回憶節奏曲線。",
           "needRight": "回憶節奏只計算至少擺對一個棋子的回合。玩 {count, plural, other {# 個這樣的回合}}，就能開始畫出你的曲線。",
           "first": "最早",
           "last": "最新"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "正確棋子",
       "memorizationTime": "記憶時間",
       "solutionTime": "重建用時",
-      "recallSpeed": "回想速度",
+      "recallSpeed": "擺放速度",
       "provisional": "暫定評分",
       "freeSkip": "今日免費跳過：空棋盤不會改變你的評分。今天的下一個空棋盤會計入。",
       "piecesPerSecond": "{value} 子/秒",
@@ -1339,7 +1339,7 @@
       "more": "更多數據"
     },
     "historyLede": "最新的在前。開啟一個回合即可查看評分後的棋盤。",
-    "analysisLede": "你的準確率和速度如何隨時間變化，以及哪些棋子容易漏記。",
+    "analysisLede": "你的準確率和回憶節奏如何隨時間變化，以及哪些棋子容易漏記。",
     "stale": "截至你上一回合",
     "staleNote": "上次遊玩是 {count, plural, other {# 天}}前。帶此標記的數據來自那時。",
     "play": "玩一回合",

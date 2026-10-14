@@ -482,7 +482,7 @@
           },
           "fastWrong": "Raskt og feil er ingen forbedring.",
           "config": "{source, select, calibration {Øving} other {Parti}} · {pieceCount} brikker · {studyTime}, innstillingen du har spilt mest i det siste · Fra {count, plural, one {# runde} other {# runder}}",
-          "need": "{count, plural, one {# runde til} other {# runder til}} med {pieceCount} brikker, {studyTime} {source, select, calibration {i øving} other {i partier}} tegner tempolinjen din.",
+          "need": "{count, plural, one {# runde til} other {# runder til}} med {pieceCount} brikker, {studyTime} {source, select, calibration {i øving} other {i partier}} tegner linjen din for gjenkallingstempo.",
           "needRight": "Gjenkallingstempo leser bare runder med minst én riktig brikke. Spill {count, plural, one {# slik runde} other {# slike runder}} for å starte linjen din.",
           "first": "Eldste",
           "last": "Nyeste"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Riktige brikker",
       "memorizationTime": "Innlæringstid",
       "solutionTime": "Løsningstid",
-      "recallSpeed": "Gjenkallingsfart",
+      "recallSpeed": "Plasseringshastighet",
       "provisional": "Foreløpig rating",
       "freeSkip": "Dagens gratis hopp over: et tomt brett endrer ikke ratingen din. Det neste i dag gjør det.",
       "piecesPerSecond": "{value} brikker/s",
@@ -1339,7 +1339,7 @@
       "more": "Flere tall"
     },
     "historyLede": "Nyeste først. Åpne en runde for å se det rettede brettet.",
-    "analysisLede": "Hvordan presisjonen og tempoet ditt endrer seg over tid, og hvor brikker glipper.",
+    "analysisLede": "Hvordan presisjonen og gjenkallingstempoet ditt endrer seg over tid, og hvor brikker glipper.",
     "stale": "Fra din siste runde",
     "staleNote": "Sist spilt for {count, plural, one {# dag} other {# dager}} siden. Tall merket slik er fra da.",
     "play": "Spill en runde",

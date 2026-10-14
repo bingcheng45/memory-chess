@@ -482,7 +482,7 @@
           },
           "fastWrong": "Rychle a špatně není zlepšení.",
           "config": "{source, select, calibration {Trénink} other {Partie}} · figury: {pieceCount} · {studyTime}, vaše poslední dobou nejčastější nastavení · Z {count, plural, one {# kola} few {# kol} many {# kola} other {# kol}}",
-          "need": "Ještě {count, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} s {pieceCount} figurami, {studyTime} {source, select, calibration {v tréninku} other {v partiích}} a {count, plural, one {vykreslí} few {vykreslí} many {vykreslí} other {vykreslí}} se vaše křivka rychlosti.",
+          "need": "Ještě {count, plural, one {# kolo} few {# kola} many {# kola} other {# kol}} s {pieceCount} figurami, {studyTime} {source, select, calibration {v tréninku} other {v partiích}} a {count, plural, one {vykreslí} few {vykreslí} many {vykreslí} other {vykreslí}} se vaše křivka tempa vybavování.",
           "needRight": "Tempo vybavování počítá jen kola, kde je aspoň jedna figura správně. Odehrajte {count, plural, one {# takové kolo} few {# taková kola} many {# takového kola} other {# takových kol}} a vaše křivka začne.",
           "first": "Nejstarší",
           "last": "Nejnovější"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Správné figurky",
       "memorizationTime": "Čas na zapamatování",
       "solutionTime": "Čas řešení",
-      "recallSpeed": "Rychlost vybavování",
+      "recallSpeed": "Rychlost pokládání",
       "provisional": "Předběžné hodnocení",
       "freeSkip": "Dnešní volné přeskočení: prázdná šachovnice vaše hodnocení nezmění. Další prázdná dnes už ano.",
       "piecesPerSecond": "{value} figurek/s",
@@ -1339,7 +1339,7 @@
       "more": "Další čísla"
     },
     "historyLede": "Nejnovější nahoře. Otevři kolo a uvidíš jeho vyhodnocenou desku.",
-    "analysisLede": "Jak se tvá přesnost a rychlost mění v čase a kde ti figury unikají.",
+    "analysisLede": "Jak se tvá přesnost a tempo vybavování mění v čase a kde ti figury unikají.",
     "stale": "Ke tvému poslednímu kolu",
     "staleNote": "Naposledy hráno před {count, plural, one {# dnem} few {# dny} many {# dne} other {# dny}}. Takto označená čísla jsou z té doby.",
     "play": "Zahrát kolo",

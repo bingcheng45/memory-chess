@@ -482,7 +482,7 @@
           },
           "fastWrong": "Szybko i źle to nie postęp.",
           "config": "{source, select, calibration {Trening} other {Partia}} · figury: {pieceCount} · {studyTime}, twoje najczęstsze ustawienie w ostatnim czasie · Z {count, plural, one {# rundy} few {# rund} many {# rund} other {# rundy}}",
-          "need": "{count, plural, one {Jeszcze # runda} few {Jeszcze # rundy} many {Jeszcze # rund} other {Jeszcze # rundy}} z {pieceCount} figurami, {studyTime}, {source, select, calibration {w treningu} other {w partiach}} {count, plural, one {narysuje} few {narysują} many {narysuje} other {narysuje}} twoją linię tempa.",
+          "need": "{count, plural, one {Jeszcze # runda} few {Jeszcze # rundy} many {Jeszcze # rund} other {Jeszcze # rundy}} z {pieceCount} figurami, {studyTime}, {source, select, calibration {w treningu} other {w partiach}} {count, plural, one {narysuje} few {narysują} many {narysuje} other {narysuje}} twoją linię tempa odtwarzania.",
           "needRight": "Tempo odtwarzania bierze pod uwagę tylko rundy z co najmniej jedną poprawną figurą. Zagraj {count, plural, one {# taką rundę} few {# takie rundy} many {# takich rund} other {# takiej rundy}}, aby zacząć swoją linię.",
           "first": "Najstarsze",
           "last": "Najnowsze"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Poprawne bierki",
       "memorizationTime": "Czas zapamiętywania",
       "solutionTime": "Czas rozwiązania",
-      "recallSpeed": "Szybkość przypominania",
+      "recallSpeed": "Szybkość układania",
       "provisional": "Tymczasowa ocena",
       "freeSkip": "Dzisiejsze darmowe pominięcie: pusta plansza nie zmienia twojej oceny. Kolejna dzisiaj już tak.",
       "piecesPerSecond": "{value} bierek/s",
@@ -1339,7 +1339,7 @@
       "more": "Więcej liczb"
     },
     "historyLede": "Najnowsze na górze. Otwórz rundę, aby zobaczyć jej ocenioną planszę.",
-    "analysisLede": "Jak zmieniają się w czasie twoja dokładność i tempo oraz gdzie umykają figury.",
+    "analysisLede": "Jak zmieniają się w czasie twoja dokładność i tempo odtwarzania oraz gdzie umykają figury.",
     "stale": "Z ostatniej rundy",
     "staleNote": "Ostatnia gra {count, plural, one {# dzień} few {# dni} many {# dni} other {# dnia}} temu. Tak oznaczone liczby pochodzą z tamtego czasu.",
     "play": "Zagraj rundę",

@@ -482,7 +482,7 @@
           },
           "fastWrong": "Rápido e errado não é progresso.",
           "config": "{source, select, calibration {Treino} other {Partida}} · {pieceCount} peças · {studyTime}, a configuração que você mais jogou ultimamente · De {count, plural, one {# rodada} many {# rodadas} other {# rodadas}}",
-          "need": "{count, plural, one {Falta # rodada} many {Faltam # rodadas} other {Faltam # rodadas}} com {pieceCount} peças, {studyTime} {source, select, calibration {no treino} other {em partidas}} para desenhar a sua linha de velocidade.",
+          "need": "{count, plural, one {Falta # rodada} many {Faltam # rodadas} other {Faltam # rodadas}} com {pieceCount} peças, {studyTime} {source, select, calibration {no treino} other {em partidas}} para desenhar a sua linha do ritmo de recordação.",
           "needRight": "O ritmo de recordação só lê rodadas com pelo menos uma peça certa. Jogue {count, plural, one {# rodada assim} many {# rodadas assim} other {# rodadas assim}} para começar a sua linha.",
           "first": "Mais antiga",
           "last": "Mais recente"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Peças corretas",
       "memorizationTime": "Tempo de memorização",
       "solutionTime": "Tempo de resolução",
-      "recallSpeed": "Velocidade de recordação",
+      "recallSpeed": "Taxa de colocação",
       "provisional": "Rating provisório",
       "freeSkip": "Pulo grátis do dia: um tabuleiro vazio não muda seu rating. O próximo de hoje muda.",
       "piecesPerSecond": "{value} peças/s",
@@ -1339,7 +1339,7 @@
       "more": "Mais números"
     },
     "historyLede": "Mais recentes primeiro. Abra uma rodada para ver o tabuleiro corrigido.",
-    "analysisLede": "Como sua precisão e velocidade mudam ao longo do tempo, e onde as peças escapam.",
+    "analysisLede": "Como sua precisão e ritmo de recordação mudam ao longo do tempo, e onde as peças escapam.",
     "stale": "Da sua última rodada",
     "staleNote": "Última partida há {count, plural, one {# dia} many {# dias} other {# dias}}. Os números marcados assim são daquela época.",
     "play": "Jogar uma rodada",

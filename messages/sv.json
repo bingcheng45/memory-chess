@@ -482,7 +482,7 @@
           },
           "fastWrong": "Snabbt och fel är ingen förbättring.",
           "config": "{source, select, calibration {Övning} other {Parti}} · {pieceCount} pjäser · {studyTime}, din mest spelade inställning på sistone · Från {count, plural, one {# runda} other {# rundor}}",
-          "need": "{count, plural, one {# runda till} other {# rundor till}} med {pieceCount} pjäser, {studyTime} {source, select, calibration {i övning} other {i partier}} ritar din tempolinje.",
+          "need": "{count, plural, one {# runda till} other {# rundor till}} med {pieceCount} pjäser, {studyTime} {source, select, calibration {i övning} other {i partier}} ritar din linje för återkallningstempo.",
           "needRight": "Återkallningstempot räknar bara rundor med minst en rätt pjäs. Spela {count, plural, one {# sådan runda} other {# sådana rundor}} för att starta din linje.",
           "first": "Äldst",
           "last": "Senast"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Rätta pjäser",
       "memorizationTime": "Memoreringstid",
       "solutionTime": "Lösningstid",
-      "recallSpeed": "Minneshastighet",
+      "recallSpeed": "Placeringshastighet",
       "provisional": "Preliminär rating",
       "freeSkip": "Dagens gratis överhoppning: ett tomt bräde ändrar inte din rating. Nästa i dag gör det.",
       "piecesPerSecond": "{value} pjäser/s",
@@ -1339,7 +1339,7 @@
       "more": "Fler siffror"
     },
     "historyLede": "Nyast först. Öppna en runda för att se dess rättade bräde.",
-    "analysisLede": "Hur din träffsäkerhet och ditt tempo förändras över tid, och var pjäserna glider undan.",
+    "analysisLede": "Hur din träffsäkerhet och ditt återkallningstempo förändras över tid, och var pjäserna glider undan.",
     "stale": "Från din senaste runda",
     "staleNote": "Senast spelat för {count, plural, one {# dag} other {# dagar}} sedan. Siffror märkta så är från då.",
     "play": "Spela en runda",

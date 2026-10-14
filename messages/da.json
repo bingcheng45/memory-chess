@@ -482,7 +482,7 @@
           },
           "fastWrong": "Hurtigt og forkert er ikke fremgang.",
           "config": "{source, select, calibration {Øvelse} other {Parti}} · {pieceCount} brikker · {studyTime}, din mest spillede indstilling for nylig · Fra {count, plural, one {# runde} other {# runder}}",
-          "need": "{count, plural, one {# runde mere} other {# runder mere}} med {pieceCount} brikker, {studyTime} {source, select, calibration {som øvelse} other {i partier}}, så tegnes din tempolinje.",
+          "need": "{count, plural, one {# runde mere} other {# runder mere}} med {pieceCount} brikker, {studyTime} {source, select, calibration {som øvelse} other {i partier}}, så tegnes din linje for genkaldstempo.",
           "needRight": "Genkaldstempo tæller kun runder med mindst én rigtig brik. Spil {count, plural, one {# sådan runde} other {# sådanne runder}} for at starte din linje.",
           "first": "Ældste",
           "last": "Seneste"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Rigtige brikker",
       "memorizationTime": "Indlæringstid",
       "solutionTime": "Løsningstid",
-      "recallSpeed": "Genkaldelseshastighed",
+      "recallSpeed": "Placeringshastighed",
       "provisional": "Foreløbig rating",
       "freeSkip": "Dagens gratis overspring: et tomt bræt ændrer ikke din rating. Det næste i dag gør.",
       "piecesPerSecond": "{value} brikker/s",
@@ -1339,7 +1339,7 @@
       "more": "Flere tal"
     },
     "historyLede": "Nyeste først. Åbn en runde for at se dens bedømte bræt.",
-    "analysisLede": "Hvordan din præcision og dit tempo udvikler sig over tid, og hvor brikkerne smutter.",
+    "analysisLede": "Hvordan din præcision og dit genkaldstempo udvikler sig over tid, og hvor brikkerne smutter.",
     "stale": "Fra din seneste runde",
     "staleNote": "Sidst spillet for {count, plural, one {# dag} other {# dage}} siden. Tal markeret sådan er fra dengang.",
     "play": "Spil en runde",

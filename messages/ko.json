@@ -482,7 +482,7 @@
           },
           "fastWrong": "빠르지만 틀린다면 실력이 는 것이 아닙니다.",
           "config": "{source, select, calibration {연습} other {게임}} · 기물 {pieceCount}개 · {studyTime}, 최근 가장 많이 한 설정 · {count, plural, other {#라운드}} 기준",
-          "need": "기물 {pieceCount}개, {studyTime}의 {source, select, calibration {연습} other {게임}}으로 {count, plural, other {#라운드}} 더 하면 속도 선이 그려집니다.",
+          "need": "기물 {pieceCount}개, {studyTime}의 {source, select, calibration {연습} other {게임}}으로 {count, plural, other {#라운드}} 더 하면 회상 페이스 선이 그려집니다.",
           "needRight": "회상 페이스는 기물을 하나 이상 맞힌 라운드만 읽습니다. 그런 라운드를 {count, plural, other {#번}} 하면 선이 시작됩니다.",
           "first": "가장 오래됨",
           "last": "최신"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "맞힌 기물",
       "memorizationTime": "암기 시간",
       "solutionTime": "풀이 시간",
-      "recallSpeed": "회상 속도",
+      "recallSpeed": "배치 속도",
       "provisional": "임시 레이팅",
       "freeSkip": "오늘의 무료 건너뛰기: 빈 보드는 레이팅을 바꾸지 않습니다. 오늘 다음 빈 보드부터는 바뀝니다.",
       "piecesPerSecond": "초당 {value}개",
@@ -1339,7 +1339,7 @@
       "more": "추가 수치"
     },
     "historyLede": "최신순입니다. 라운드를 열면 채점된 보드를 볼 수 있습니다.",
-    "analysisLede": "시간에 따라 정확도와 속도가 어떻게 변하는지, 그리고 어디서 말을 놓치는지.",
+    "analysisLede": "시간에 따라 정확도와 회상 페이스가 어떻게 변하는지, 그리고 어디서 말을 놓치는지.",
     "stale": "마지막 라운드 기준",
     "staleNote": "마지막 플레이는 {count, plural, other {#일}} 전입니다. 이렇게 표시된 수치는 그때의 것입니다.",
     "play": "한 라운드 플레이",

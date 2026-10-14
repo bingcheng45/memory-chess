@@ -482,7 +482,7 @@
           },
           "fastWrong": "Repede și greșit nu înseamnă progres.",
           "config": "{source, select, calibration {Exercițiu} other {Partidă}} · {pieceCount} piese · {studyTime}, setarea pe care ai jucat-o cel mai des în ultima vreme · Din {count, plural, one {# rundă} few {# runde} other {# de runde}}",
-          "need": "{count, plural, one {Încă # rundă} few {Încă # runde} other {Încă # de runde}} cu {pieceCount} piese, {studyTime} {source, select, calibration {la exerciții} other {în partide}} îți {count, plural, one {desenează} few {desenează} other {desenează}} linia de viteză.",
+          "need": "{count, plural, one {Încă # rundă} few {Încă # runde} other {Încă # de runde}} cu {pieceCount} piese, {studyTime} {source, select, calibration {la exerciții} other {în partide}} îți {count, plural, one {desenează} few {desenează} other {desenează}} linia ritmului de reamintire.",
           "needRight": "Ritmul de reamintire citește doar rundele cu cel puțin o piesă corectă. Joacă {count, plural, one {# astfel de rundă} few {# astfel de runde} other {# de astfel de runde}} ca să-ți începi linia.",
           "first": "Cea mai veche",
           "last": "Cea mai nouă"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Piese corecte",
       "memorizationTime": "Timp de memorare",
       "solutionTime": "Timp de rezolvare",
-      "recallSpeed": "Viteză de reamintire",
+      "recallSpeed": "Rată de plasare",
       "provisional": "Rating provizoriu",
       "freeSkip": "Sărirea gratuită a zilei: o tablă goală nu îți schimbă ratingul. Următoarea de azi îl va schimba.",
       "piecesPerSecond": "{value} piese/s",
@@ -1339,7 +1339,7 @@
       "more": "Mai multe cifre"
     },
     "historyLede": "Cele mai noi primele. Deschide o rundă ca să vezi tabla corectată.",
-    "analysisLede": "Cum evoluează în timp precizia și viteza ta și unde scapă piesele.",
+    "analysisLede": "Cum evoluează în timp precizia și ritmul tău de reamintire și unde scapă piesele.",
     "stale": "La ultima rundă",
     "staleNote": "Ultima rundă acum {count, plural, one {# zi} few {# zile} other {# de zile}}. Cifrele marcate astfel sunt de atunci.",
     "play": "Joacă o rundă",

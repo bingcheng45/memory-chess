@@ -112,7 +112,7 @@ describe("GameResult", () => {
       screen.getByRole("heading", { name: "Great job!" }),
     ).toBeInTheDocument();
     expect(screen.getByText("4 / 6")).toBeInTheDocument();
-    expect(screen.getByText("Recall speed")).toBeInTheDocument();
+    expect(screen.getByText("Placing rate")).toBeInTheDocument();
     expect(document.querySelector(".lab-rc-big")).toHaveTextContent("80%");
 
     const summary = screen.getByRole("region", { name: "Great job!" });

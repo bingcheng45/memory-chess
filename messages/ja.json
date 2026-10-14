@@ -482,7 +482,7 @@
           },
           "fastWrong": "速くても間違っていては、上達とはいえません。",
           "config": "{source, select, calibration {練習} other {ゲーム}} · {pieceCount}駒 · {studyTime}、最近いちばんよくプレイする設定 · {count, plural, other {#ラウンド}}から",
-          "need": "{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}であと{count, plural, other {#ラウンド}}プレイすると、スピードの折れ線が描かれます。",
+          "need": "{pieceCount}駒・{studyTime}の{source, select, calibration {練習} other {ゲーム}}であと{count, plural, other {#ラウンド}}プレイすると、想起ペースの折れ線が描かれます。",
           "needRight": "想起ペースは、1駒以上正解したラウンドだけを読み取ります。そうしたラウンドを{count, plural, other {#回}}プレイすると、折れ線が始まります。",
           "first": "最古",
           "last": "最新"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "正解した駒",
       "memorizationTime": "記憶時間",
       "solutionTime": "解答時間",
-      "recallSpeed": "想起スピード",
+      "recallSpeed": "配置レート",
       "provisional": "暫定レーティング",
       "freeSkip": "今日の無料スキップ: 空の盤面ではレーティングは変わりません。今日の次の空の盤面からは変わります。",
       "piecesPerSecond": "{value} 駒/秒",
@@ -1339,7 +1339,7 @@
       "more": "その他の数値"
     },
     "historyLede": "新しい順に表示。ラウンドを開くと採点済みの盤面を確認できます。",
-    "analysisLede": "正解率とスピードの推移と、駒を取りこぼしやすい場所。",
+    "analysisLede": "正解率と想起ペースの推移と、駒を取りこぼしやすい場所。",
     "stale": "最後のラウンド時点",
     "staleNote": "最後のプレイは{count, plural, other {#日}}前です。この印の数値はその時点のものです。",
     "play": "1ラウンド遊ぶ",

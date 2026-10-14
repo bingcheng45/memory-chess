@@ -482,7 +482,7 @@
           },
           "fastWrong": "Nopea ja väärä ei ole kehitystä.",
           "config": "{source, select, calibration {Harjoitus} other {Peli}} · {pieceCount} nappulaa · {studyTime}, viime aikoina eniten pelaamasi asetus · {count, plural, one {# kierroksesta} other {# kierroksesta}}",
-          "need": "{count, plural, one {Vielä # kierros} other {Vielä # kierrosta}} asetuksella {pieceCount} nappulaa, {studyTime} {source, select, calibration {harjoituksessa} other {peleissä}} piirtää nopeusviivasi.",
+          "need": "{count, plural, one {Vielä # kierros} other {Vielä # kierrosta}} asetuksella {pieceCount} nappulaa, {studyTime} {source, select, calibration {harjoituksessa} other {peleissä}} piirtää muistamistahtisi viivan.",
           "needRight": "Muistamistahti lukee vain kierroksia, joilla vähintään yksi nappula on oikein. Pelaa {count, plural, one {# tällainen kierros} other {# tällaista kierrosta}} aloittaaksesi viivasi.",
           "first": "Vanhin",
           "last": "Uusin"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Oikeat nappulat",
       "memorizationTime": "Muistiinpainamisaika",
       "solutionTime": "Ratkaisuaika",
-      "recallSpeed": "Palautusnopeus",
+      "recallSpeed": "Sijoitusnopeus",
       "provisional": "Alustava taitoluku",
       "freeSkip": "Päivän ilmainen ohitus: tyhjä lauta ei muuta taitolukuasi. Seuraava tänään muuttaa.",
       "piecesPerSecond": "{value} nappulaa/s",
@@ -1339,7 +1339,7 @@
       "more": "Lisää lukuja"
     },
     "historyLede": "Uusimmat ensin. Avaa kierros nähdäksesi sen arvioidun laudan.",
-    "analysisLede": "Miten tarkkuutesi ja nopeutesi kehittyvät ajan mittaan ja missä nappulat lipsuvat.",
+    "analysisLede": "Miten tarkkuutesi ja muistamistahtisi kehittyvät ajan mittaan ja missä nappulat lipsuvat.",
     "stale": "Viimeisimmältä kierrokselta",
     "staleNote": "Pelattu viimeksi {count, plural, one {# päivä} other {# päivää}} sitten. Näin merkityt luvut ovat silloisia.",
     "play": "Pelaa kierros",

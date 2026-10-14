@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Pieces correct",
       "memorizationTime": "Memorization time",
       "solutionTime": "Solution time",
-      "recallSpeed": "Recall speed",
+      "recallSpeed": "Placing rate",
       "provisional": "Provisional rating",
       "freeSkip": "Free skip of the day: an empty board doesn't change your rating. The next one today will.",
       "piecesPerSecond": "{value} pieces/sec",

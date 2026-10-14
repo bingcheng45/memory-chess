@@ -482,7 +482,7 @@
           },
           "fastWrong": "Snel en fout is geen vooruitgang.",
           "config": "{source, select, calibration {Oefening} other {Partij}} · {pieceCount} stukken · {studyTime}, je meest gespeelde instelling van de laatste tijd · Uit {count, plural, one {# ronde} other {# rondes}}",
-          "need": "Nog {count, plural, one {# ronde} other {# rondes}} met {pieceCount} stukken, {studyTime} {source, select, calibration {als oefening} other {in partijen}} en je snelheidslijn verschijnt.",
+          "need": "Nog {count, plural, one {# ronde} other {# rondes}} met {pieceCount} stukken, {studyTime} {source, select, calibration {als oefening} other {in partijen}} en je lijn voor herinneringstempo verschijnt.",
           "needRight": "Herinneringstempo telt alleen rondes met minstens één goed stuk. Speel {count, plural, one {# zo'n ronde} other {# zulke rondes}} om je lijn te beginnen.",
           "first": "Oudste",
           "last": "Nieuwste"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Goede stukken",
       "memorizationTime": "Kijktijd",
       "solutionTime": "Oplostijd",
-      "recallSpeed": "Herinneringssnelheid",
+      "recallSpeed": "Plaatsingssnelheid",
       "provisional": "Voorlopige rating",
       "freeSkip": "Gratis overslaan van de dag: een leeg bord verandert je rating niet. Het volgende vandaag wel.",
       "piecesPerSecond": "{value} stukken/s",
@@ -1339,7 +1339,7 @@
       "more": "Meer cijfers"
     },
     "historyLede": "Nieuwste eerst. Open een ronde om het nagekeken bord te zien.",
-    "analysisLede": "Hoe je nauwkeurigheid en snelheid zich door de tijd ontwikkelen, en waar stukken wegglippen.",
+    "analysisLede": "Hoe je nauwkeurigheid en herinneringstempo zich door de tijd ontwikkelen, en waar stukken wegglippen.",
     "stale": "Stand van je laatste ronde",
     "staleNote": "Laatst gespeeld {count, plural, one {# dag} other {# dagen}} geleden. Zo gemarkeerde cijfers zijn van toen.",
     "play": "Speel een ronde",

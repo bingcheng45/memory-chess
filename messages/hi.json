@@ -482,7 +482,7 @@
           },
           "fastWrong": "तेज़ लेकिन गलत होना सुधार नहीं है।",
           "config": "{source, select, calibration {अभ्यास} other {गेम}} · {pieceCount} मोहरे · {studyTime}, हाल में आपकी सबसे ज़्यादा खेली गई सेटिंग · {count, plural, one {# राउंड} other {# राउंड}} से",
-          "need": "{source, select, calibration {अभ्यास में} other {गेम में}} {pieceCount} मोहरे, {studyTime} पर {count, plural, one {# और राउंड} other {# और राउंड}} {count, plural, one {से} other {से}} आपकी गति रेखा बनेगी।",
+          "need": "{source, select, calibration {अभ्यास में} other {गेम में}} {pieceCount} मोहरे, {studyTime} पर {count, plural, one {# और राउंड} other {# और राउंड}} {count, plural, one {से} other {से}} आपकी याद करने की गति की रेखा बनेगी।",
           "needRight": "याद करने की गति सिर्फ़ उन राउंड को पढ़ती है जिनमें कम से कम एक मोहरा सही हो। अपनी रेखा शुरू करने के लिए {count, plural, one {ऐसा # राउंड} other {ऐसे # राउंड}} खेलें।",
           "first": "सबसे पुराना",
           "last": "नवीनतम"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "सही मोहरे",
       "memorizationTime": "याद करने का समय",
       "solutionTime": "हल करने का समय",
-      "recallSpeed": "याद करने की गति",
+      "recallSpeed": "मोहरे रखने की दर",
       "provisional": "अस्थायी रेटिंग",
       "freeSkip": "आज की मुफ़्त छूट: खाली बोर्ड से आपकी रेटिंग नहीं बदलती। आज का अगला खाली बोर्ड बदलेगा।",
       "piecesPerSecond": "{value} मोहरे/से.",
@@ -1339,7 +1339,7 @@
       "more": "और आंकड़े"
     },
     "historyLede": "सबसे नया पहले। किसी राउंड को खोलकर उसका जाँचा हुआ बोर्ड देखें।",
-    "analysisLede": "समय के साथ आपकी सटीकता और गति कैसे बदलती है, और मोहरे कहाँ छूटते हैं।",
+    "analysisLede": "समय के साथ आपकी सटीकता और याद करने की गति कैसे बदलती है, और मोहरे कहाँ छूटते हैं।",
     "stale": "आपके पिछले राउंड के अनुसार",
     "staleNote": "आखिरी बार {count, plural, one {# दिन} other {# दिन}} पहले खेला। इस तरह चिह्नित आंकड़े उसी समय के हैं।",
     "play": "एक राउंड खेलें",

@@ -482,7 +482,7 @@
           },
           "fastWrong": "Schnell und falsch ist keine Verbesserung.",
           "config": "{source, select, calibration {Übung} other {Partie}} · {pieceCount} Figuren · {studyTime}, deine zuletzt meistgespielte Einstellung · Aus {count, plural, one {# Runde} other {# Runden}}",
-          "need": "Mit {count, plural, one {# weiteren Runde} other {# weiteren Runden}} bei {pieceCount} Figuren, {studyTime} {source, select, calibration {in der Übung} other {in Partien}} entsteht deine Tempokurve.",
+          "need": "Mit {count, plural, one {# weiteren Runde} other {# weiteren Runden}} bei {pieceCount} Figuren, {studyTime} {source, select, calibration {in der Übung} other {in Partien}} entsteht deine Abruftempo-Kurve.",
           "needRight": "Das Abruftempo zählt nur Runden mit mindestens einer richtigen Figur. Spiel {count, plural, one {# solche Runde} other {# solche Runden}}, damit deine Kurve entsteht.",
           "first": "Älteste",
           "last": "Neueste"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Richtige Figuren",
       "memorizationTime": "Einprägezeit",
       "solutionTime": "Lösungszeit",
-      "recallSpeed": "Abruftempo",
+      "recallSpeed": "Setzrate",
       "provisional": "Vorläufige Wertungszahl",
       "freeSkip": "Freies Überspringen des Tages: Ein leeres Brett ändert deine Wertungszahl nicht. Das nächste heute schon.",
       "piecesPerSecond": "{value} Figuren/s",
@@ -1339,7 +1339,7 @@
       "more": "Weitere Werte"
     },
     "historyLede": "Neueste zuerst. Öffne eine Runde, um ihr ausgewertetes Brett zu sehen.",
-    "analysisLede": "Wie sich deine Genauigkeit und dein Tempo mit der Zeit entwickeln und wo dir Figuren entgleiten.",
+    "analysisLede": "Wie sich deine Genauigkeit und dein Abruftempo mit der Zeit entwickeln und wo dir Figuren entgleiten.",
     "stale": "Stand deiner letzten Runde",
     "staleNote": "Zuletzt gespielt vor {count, plural, one {# Tag} other {# Tagen}}. So markierte Werte stammen von damals.",
     "play": "Eine Runde spielen",

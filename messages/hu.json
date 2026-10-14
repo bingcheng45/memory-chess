@@ -482,7 +482,7 @@
           },
           "fastWrong": "A gyors, de hibás nem fejlődés.",
           "config": "{source, select, calibration {Gyakorlás} other {Játszma}} · {pieceCount} bábu · {studyTime}, mostanában ez a leggyakoribb beállításod · {count, plural, one {# kör alapján} other {# kör alapján}}",
-          "need": "Még {count, plural, one {# kör} other {# kör}} {pieceCount} bábuval, {studyTime} idővel {source, select, calibration {gyakorlásban} other {játszmákban}}, és {count, plural, one {kirajzolódik} other {kirajzolódik}} a sebességgörbéd.",
+          "need": "Még {count, plural, one {# kör} other {# kör}} {pieceCount} bábuval, {studyTime} idővel {source, select, calibration {gyakorlásban} other {játszmákban}}, és {count, plural, one {kirajzolódik} other {kirajzolódik}} a felidézési tempód görbéje.",
           "needRight": "A felidézési tempó csak azokat a köröket számolja, amelyekben legalább egy bábu helyes. Játssz {count, plural, one {# ilyen kört} other {# ilyen kört}}, hogy elinduljon a görbéd.",
           "first": "Legrégebbi",
           "last": "Legutóbbi"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Helyes bábuk",
       "memorizationTime": "Memorizálási idő",
       "solutionTime": "Megoldási idő",
-      "recallSpeed": "Felidézési sebesség",
+      "recallSpeed": "Lerakási sebesség",
       "provisional": "Ideiglenes pontszám",
       "freeSkip": "A nap ingyenes kihagyása: egy üres tábla nem változtat a pontszámodon. A mai következő már igen.",
       "piecesPerSecond": "{value} bábu/mp",
@@ -1339,7 +1339,7 @@
       "more": "További adatok"
     },
     "historyLede": "A legújabb elöl. Nyiss meg egy kört a kiértékelt tábla megtekintéséhez.",
-    "analysisLede": "Hogyan alakul a pontosságod és a sebességed az idő során, és hol csúsznak ki a bábuk.",
+    "analysisLede": "Hogyan alakul a pontosságod és a felidézési tempód az idő során, és hol csúsznak ki a bábuk.",
     "stale": "Az utolsó köröd szerint",
     "staleNote": "Utoljára {count, plural, one {# napja} other {# napja}} játszottál. Az így jelölt értékek akkoriak.",
     "play": "Játssz egy kört",

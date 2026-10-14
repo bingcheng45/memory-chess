@@ -482,7 +482,7 @@
           },
           "fastWrong": "Cepat tapi salah bukanlah kemajuan.",
           "config": "{source, select, calibration {Latihan} other {Permainan}} · {pieceCount} bidak · {studyTime}, pengaturan yang paling sering kamu mainkan akhir-akhir ini · Dari {count, plural, other {# ronde}}",
-          "need": "{count, plural, other {# ronde lagi}} dengan {pieceCount} bidak, {studyTime} {source, select, calibration {dalam latihan} other {dalam permainan}} {count, plural, other {untuk menggambar}} garis kecepatanmu.",
+          "need": "{count, plural, other {# ronde lagi}} dengan {pieceCount} bidak, {studyTime} {source, select, calibration {dalam latihan} other {dalam permainan}} {count, plural, other {untuk menggambar}} garis laju mengingatmu.",
           "needRight": "Laju mengingat hanya membaca ronde dengan setidaknya satu bidak benar. Mainkan {count, plural, other {# ronde seperti itu}} untuk memulai garismu.",
           "first": "Terlama",
           "last": "Terbaru"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Bidak benar",
       "memorizationTime": "Waktu menghafal",
       "solutionTime": "Waktu penyelesaian",
-      "recallSpeed": "Kecepatan mengingat",
+      "recallSpeed": "Kecepatan penempatan",
       "provisional": "Rating sementara",
       "freeSkip": "Lewati gratis hari ini: papan kosong tidak mengubah rating Anda. Papan kosong berikutnya hari ini akan mengubahnya.",
       "piecesPerSecond": "{value} bidak/dtk",
@@ -1339,7 +1339,7 @@
       "more": "Angka lainnya"
     },
     "historyLede": "Terbaru lebih dulu. Buka satu ronde untuk melihat papan yang sudah dinilai.",
-    "analysisLede": "Bagaimana akurasi dan kecepatanmu berubah dari waktu ke waktu, dan di mana bidak terlewat.",
+    "analysisLede": "Bagaimana akurasi dan laju mengingatmu berubah dari waktu ke waktu, dan di mana bidak terlewat.",
     "stale": "Per ronde terakhirmu",
     "staleNote": "Terakhir bermain {count, plural, other {# hari}} lalu. Angka yang ditandai begini berasal dari saat itu.",
     "play": "Mainkan satu ronde",

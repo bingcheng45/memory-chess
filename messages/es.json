@@ -482,7 +482,7 @@
           },
           "fastWrong": "Rápido y mal no es mejorar.",
           "config": "{source, select, calibration {Práctica} other {Partida}} · piezas: {pieceCount} · {studyTime}, tu ajuste más jugado últimamente · De {count, plural, one {# ronda} many {# rondas} other {# rondas}}",
-          "need": "{count, plural, one {# ronda más} many {# rondas más} other {# rondas más}} con {pieceCount} piezas, {studyTime} {source, select, calibration {en práctica} other {en partidas}} {count, plural, one {dibuja} many {dibujan} other {dibujan}} tu línea de velocidad.",
+          "need": "{count, plural, one {# ronda más} many {# rondas más} other {# rondas más}} con {pieceCount} piezas, {studyTime} {source, select, calibration {en práctica} other {en partidas}} {count, plural, one {dibuja} many {dibujan} other {dibujan}} tu línea del ritmo de recuerdo.",
           "needRight": "El ritmo de recuerdo solo cuenta rondas con al menos una pieza bien colocada. Juega {count, plural, one {# ronda así} many {# rondas así} other {# rondas así}} para empezar tu línea.",
           "first": "Más antigua",
           "last": "Más reciente"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Piezas correctas",
       "memorizationTime": "Tiempo de memorización",
       "solutionTime": "Tiempo de resolución",
-      "recallSpeed": "Velocidad de recuerdo",
+      "recallSpeed": "Velocidad de colocación",
       "provisional": "Puntuación provisional",
       "freeSkip": "Salto gratis del día: un tablero vacío no cambia tu puntuación. El siguiente de hoy sí.",
       "piecesPerSecond": "{value} piezas/s",
@@ -1339,7 +1339,7 @@
       "more": "Más cifras"
     },
     "historyLede": "Las más recientes primero. Abre una ronda para ver su tablero corregido.",
-    "analysisLede": "Cómo evolucionan tu precisión y tu velocidad con el tiempo, y dónde se te escapan las piezas.",
+    "analysisLede": "Cómo evolucionan tu precisión y tu ritmo de recuerdo con el tiempo, y dónde se te escapan las piezas.",
     "stale": "Según tu última ronda",
     "staleNote": "Última partida hace {count, plural, one {# día} many {# días} other {# días}}. Las cifras así marcadas son de entonces.",
     "play": "Jugar una ronda",

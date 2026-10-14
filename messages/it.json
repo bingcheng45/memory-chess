@@ -482,7 +482,7 @@
           },
           "fastWrong": "Veloce e sbagliato non è un miglioramento.",
           "config": "{source, select, calibration {Allenamento} other {Gioco}} · pezzi: {pieceCount} · {studyTime}, l’impostazione che giochi di più ultimamente · Da {count, plural, one {# partita} many {# partite} other {# partite}}",
-          "need": "{count, plural, one {Ancora # partita} many {Ancora # partite} other {Ancora # partite}} a {pieceCount} pezzi, {studyTime} {source, select, calibration {in allenamento} other {in gioco}} {count, plural, one {e compare} many {e compare} other {e compare}} la tua linea della velocità.",
+          "need": "{count, plural, one {Ancora # partita} many {Ancora # partite} other {Ancora # partite}} a {pieceCount} pezzi, {studyTime} {source, select, calibration {in allenamento} other {in gioco}} {count, plural, one {e compare} many {e compare} other {e compare}} la tua linea del ritmo di richiamo.",
           "needRight": "Il ritmo di richiamo conta solo le partite con almeno un pezzo giusto. Gioca {count, plural, one {# partita così} many {# partite così} other {# partite così}} per iniziare la tua linea.",
           "first": "Meno recente",
           "last": "Più recente"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Pezzi corretti",
       "memorizationTime": "Tempo di memorizzazione",
       "solutionTime": "Tempo di risoluzione",
-      "recallSpeed": "Velocità di richiamo",
+      "recallSpeed": "Frequenza di posizionamento",
       "provisional": "Punteggio provvisorio",
       "freeSkip": "Salto gratuito del giorno: una scacchiera vuota non cambia il tuo punteggio. La prossima di oggi sì.",
       "piecesPerSecond": "{value} pezzi/s",
@@ -1339,7 +1339,7 @@
       "more": "Altri dati"
     },
     "historyLede": "Dalla più recente. Apri una partita per vedere la sua scacchiera valutata.",
-    "analysisLede": "Come cambiano nel tempo precisione e velocità, e dove ti sfuggono i pezzi.",
+    "analysisLede": "Come cambiano nel tempo precisione e ritmo di richiamo, e dove ti sfuggono i pezzi.",
     "stale": "All’ultima partita",
     "staleNote": "Ultima partita {count, plural, one {# giorno} many {# giorni} other {# giorni}} fa. I dati così segnati risalgono ad allora.",
     "play": "Gioca una partita",

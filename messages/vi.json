@@ -482,7 +482,7 @@
           },
           "fastWrong": "Nhanh mà sai thì không phải là tiến bộ.",
           "config": "{source, select, calibration {Luyện tập} other {Ván đấu}} · {pieceCount} quân · {studyTime}, thiết lập bạn chơi nhiều nhất gần đây · Từ {count, plural, other {# ván}}",
-          "need": "Chơi thêm {count, plural, other {# ván}} với {pieceCount} quân, {studyTime} {source, select, calibration {ở chế độ luyện tập} other {ở ván đấu}} để vẽ đường tốc độ của bạn.",
+          "need": "Chơi thêm {count, plural, other {# ván}} với {pieceCount} quân, {studyTime} {source, select, calibration {ở chế độ luyện tập} other {ở ván đấu}} để vẽ đường nhịp nhớ lại của bạn.",
           "needRight": "Nhịp nhớ lại chỉ tính những ván có ít nhất một quân đúng. Chơi {count, plural, other {# ván như vậy}} để bắt đầu đường của bạn.",
           "first": "Cũ nhất",
           "last": "Mới nhất"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Quân đúng",
       "memorizationTime": "Thời gian ghi nhớ",
       "solutionTime": "Thời gian hoàn thành",
-      "recallSpeed": "Tốc độ nhớ lại",
+      "recallSpeed": "Tốc độ đặt quân",
       "provisional": "Điểm tạm thời",
       "freeSkip": "Lượt bỏ qua miễn phí trong ngày: bàn cờ trống không làm đổi điểm của bạn. Bàn trống tiếp theo hôm nay sẽ tính.",
       "piecesPerSecond": "{value} quân/giây",
@@ -1339,7 +1339,7 @@
       "more": "Chỉ số khác"
     },
     "historyLede": "Mới nhất ở trên. Mở một ván để xem bàn cờ đã chấm.",
-    "analysisLede": "Độ chính xác và tốc độ của bạn thay đổi thế nào theo thời gian, và quân hay bị sót ở đâu.",
+    "analysisLede": "Độ chính xác và nhịp nhớ lại của bạn thay đổi thế nào theo thời gian, và quân hay bị sót ở đâu.",
     "stale": "Theo ván gần nhất",
     "staleNote": "Lần chơi gần nhất cách đây {count, plural, other {# ngày}}. Các chỉ số được đánh dấu như vậy là từ lúc đó.",
     "play": "Chơi một ván",

@@ -482,7 +482,7 @@
           },
           "fastWrong": "Hızlı ama yanlış olmak gelişme değildir.",
           "config": "{source, select, calibration {Alıştırma} other {Oyun}} · {pieceCount} taş · {studyTime}, son zamanlarda en çok oynadığın ayar · {count, plural, one {# turdan} other {# turdan}}",
-          "need": "{source, select, calibration {Alıştırmada} other {Oyunlarda}} {pieceCount} taş, {studyTime} ile {count, plural, one {# tur daha} other {# tur daha}} {count, plural, one {oynayınca} other {oynayınca}} hız çizgin çizilir.",
+          "need": "{source, select, calibration {Alıştırmada} other {Oyunlarda}} {pieceCount} taş, {studyTime} ile {count, plural, one {# tur daha} other {# tur daha}} {count, plural, one {oynayınca} other {oynayınca}} hatırlama temposunun çizgisi çizilir.",
           "needRight": "Hatırlama temposu yalnızca en az bir taşın doğru olduğu turları okur. Çizgini başlatmak için {count, plural, one {böyle # tur} other {böyle # tur}} oyna.",
           "first": "En eski",
           "last": "En yeni"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Doğru taş",
       "memorizationTime": "Ezberleme süresi",
       "solutionTime": "Çözüm süresi",
-      "recallSpeed": "Hatırlama hızı",
+      "recallSpeed": "Yerleştirme hızı",
       "provisional": "Geçici puan",
       "freeSkip": "Günün ücretsiz atlaması: boş bir tahta puanını değiştirmez. Bugünkü bir sonraki değiştirir.",
       "piecesPerSecond": "{value} taş/sn",
@@ -1339,7 +1339,7 @@
       "more": "Diğer değerler"
     },
     "historyLede": "En yenisi önce. Puanlanmış tahtasını görmek için bir turu aç.",
-    "analysisLede": "İsabetin ve hızın zamanla nasıl değişiyor, taşlar nerede kaçıyor.",
+    "analysisLede": "İsabetin ve hatırlama temposun zamanla nasıl değişiyor, taşlar nerede kaçıyor.",
     "stale": "Son turuna göre",
     "staleNote": "En son {count, plural, one {# gün} other {# gün}} önce oynadın. Böyle işaretlenen değerler o zamana ait.",
     "play": "Bir tur oyna",

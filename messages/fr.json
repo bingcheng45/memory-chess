@@ -482,7 +482,7 @@
           },
           "fastWrong": "Rapide et faux, ce n’est pas un progrès.",
           "config": "{source, select, calibration {Entraînement} other {Jeu}} · pièces : {pieceCount} · {studyTime}, votre réglage le plus joué ces derniers temps · Sur {count, plural, one {# partie} many {# parties} other {# parties}}",
-          "need": "Encore {count, plural, one {# partie} many {# parties} other {# parties}} à {pieceCount} pièces, {studyTime} {source, select, calibration {en entraînement} other {en jeu}} {count, plural, one {pour tracer} many {pour tracer} other {pour tracer}} votre courbe de vitesse.",
+          "need": "Encore {count, plural, one {# partie} many {# parties} other {# parties}} à {pieceCount} pièces, {studyTime} {source, select, calibration {en entraînement} other {en jeu}} {count, plural, one {pour tracer} many {pour tracer} other {pour tracer}} votre courbe du rythme de rappel.",
           "needRight": "Le rythme de rappel ne lit que les parties avec au moins une pièce juste. Jouez {count, plural, one {# partie de ce type} many {# parties de ce type} other {# parties de ce type}} pour commencer votre courbe.",
           "first": "Plus ancienne",
           "last": "Plus récente"
@@ -1022,7 +1022,7 @@
       "piecesCorrect": "Pièces correctes",
       "memorizationTime": "Temps de mémorisation",
       "solutionTime": "Temps de résolution",
-      "recallSpeed": "Vitesse de rappel",
+      "recallSpeed": "Cadence de placement",
       "provisional": "Cote provisoire",
       "freeSkip": "Passe gratuite du jour : un échiquier vide ne change pas votre cote. Le suivant aujourd’hui la changera.",
       "piecesPerSecond": "{value} pièces/s",
@@ -1339,7 +1339,7 @@
       "more": "Autres chiffres"
     },
     "historyLede": "Les plus récentes d’abord. Ouvrez une partie pour voir son échiquier corrigé.",
-    "analysisLede": "Comment votre précision et votre vitesse évoluent dans le temps, et où les pièces vous échappent.",
+    "analysisLede": "Comment votre précision et votre rythme de rappel évoluent dans le temps, et où les pièces vous échappent.",
     "stale": "À votre dernière partie",
     "staleNote": "Dernière partie il y a {count, plural, one {# jour} many {# jours} other {# jours}}. Les chiffres ainsi marqués datent de ce moment.",
     "play": "Jouer une partie",

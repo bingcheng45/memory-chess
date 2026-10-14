@@ -114,6 +114,20 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
           "A harder board earns more when you clear it and costs less when you miss it. An easier one earns little and costs more. Once you clear all 32 pieces, a shorter look and a faster rebuild keep raising it.",
           "Your first empty board each day is a free skip and leaves your rating alone. Review rounds are still not rated. The daily board is.",
         ],
+        tables: [
+          {
+            caption: "What one round does to a settled rating of 1,200, rebuilding at an everyday pace",
+            columns: ["Board", "Expected accuracy", "Perfect", "80%", "50%", "Empty"],
+            rows: [
+              { label: "Easy, 2 pieces for 10 seconds", values: ["99%", "0", "−4", "−11", "−22"] },
+              { label: "Medium, 6 pieces for 10 seconds", values: ["82%", "+4", "−1", "−7", "−18"] },
+              { label: "Suggested, 7 pieces for 10 seconds", values: ["75%", "+6", "+1", "−6", "−19"] },
+              { label: "Hard, 12 pieces for 8 seconds", values: ["37%", "+26", "+17", "+5", "−15"] },
+              { label: "Grandmaster, 20 pieces for 5 seconds", values: ["9%", "+50", "+45", "+26", "−6"] },
+            ],
+          },
+        ],
+        note: "Easy boards cost the most when you slip, because your rating already expects them. Hard boards pay the most, and a miss there costs little.",
       },
       {
         title: "Share a round, and let friends watch it back",

@@ -72,12 +72,12 @@ export function DailyCard({ board, setting, joined, standing, onJoined, justPlay
   );
 }
 
-/** Brings the card into view and puts the cursor in the name field, once, when the card starts prompting. */
+/** Scrolls the prompt to the top, the join form under it, and puts the cursor in the name field, once, when the card starts prompting. */
 function useJoinPrompt(prompting: boolean) {
   const card = useRef<HTMLElement>(null);
   useEffect(() => {
     if (!prompting || !card.current) return;
-    card.current.scrollIntoView?.({ block: "start" });
+    card.current.querySelector(".daily-prompt")?.scrollIntoView?.({ block: "start" });
     card.current.querySelector<HTMLInputElement>("input")?.focus({ preventScroll: true });
   }, [prompting]);
   return card;

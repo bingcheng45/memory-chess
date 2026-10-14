@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "a5019fcf236b67e170f97ea43b5f7ecc1cdf67131d5a090329a76ddd2441528f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -31,7 +31,7 @@
         "title": "Por que o jogo existe",
         "blocks": [
           {
-            "p": "A maioria dos conselhos para evoluir no xadrez aponta os iniciantes para aberturas, exercícios táticos e cursos. Na minha experiência, o problema anterior fica por baixo de tudo isso. Os iniciantes perdem a noção do tabuleiro. Deixam passar um defensor, esquecem uma peça que se moveu dois lances antes e caem em capturas que veriam na hora em um diagrama."
+            "p": "A maioria dos conselhos para evoluir no xadrez aponta os iniciantes para aberturas, exercícios táticos e cursos. Na minha experiência, há um problema anterior por baixo de tudo isso. Os iniciantes perdem a noção do tabuleiro. Deixam passar um defensor, esquecem uma peça que se moveu dois lances antes e caem em capturas que veriam na hora em um diagrama."
           },
           {
             "p": "Manter uma posição na cabeça é uma habilidade que se pode treinar, e havia poucos lugares para praticá-la diretamente. Então eu criei um. O Memory Chess isola essa única habilidade e dá a ela uma pontuação, para que você possa vê-la melhorar. Se quiser algo em jogo, você pode colocar um nome à sua escolha no ranking público e se comparar com todos os outros."

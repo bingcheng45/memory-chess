@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, puste",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, poprawnie: {answer}",
         "liveStudy": "Przyjrzyj się pozycji. Czas: {memorizeSeconds} s.",
         "liveRebuild": "Szachownica wyczyszczona. Wybierz figurę, a potem pole.",
         "liveScore": "Dokładność {accuracy} procent. Poprawne pola: {correct} z {total}.",
@@ -401,7 +402,8 @@
           "playTier": "Zagraj: {tier}",
           "legendCorrect": "poprawne",
           "legendWrong": "złe ustawienie",
-          "legendMissed": "pominięte pole"
+          "legendMissed": "pominięte pole",
+          "legendSplit": "zła bierka: twoja u góry po lewej, poprawna u dołu po prawej"
         },
         "pieceTypes": {
           "king": "Król",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, puste",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, poprawnie: {answer}",
       "phaseStudy": "Zapamiętaj pozycję",
       "phaseRebuild": "Ustaw bierki",
       "liveStudy": "Przyjrzyj się pozycji. Czas: {memorizeSeconds} s.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Pamięć według rodzaju bierki pojawi się tu po rundzie.",
         "legendCorrect": "poprawne",
         "legendWrong": "złe ustawienie",
-        "legendMissed": "pominięte pole"
+        "legendMissed": "pominięte pole",
+        "legendSplit": "zła bierka: twoja u góry po lewej, poprawna u dołu po prawej"
       },
       "pieceTypes": {
         "king": "Król",

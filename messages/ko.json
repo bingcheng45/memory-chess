@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, 빈 칸",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, 정답: {answer}",
         "liveStudy": "국면을 살펴보세요. {memorizeSeconds}초입니다.",
         "liveRebuild": "보드를 비웠습니다. 기물을 고른 다음 칸을 고르세요.",
         "liveScore": "정확도 {accuracy}퍼센트. {total}칸 중 {correct}칸 정답.",
@@ -401,7 +402,8 @@
           "playTier": "{tier} 플레이",
           "legendCorrect": "정답",
           "legendWrong": "잘못 배치",
-          "legendMissed": "놓친 칸"
+          "legendMissed": "놓친 칸",
+          "legendSplit": "다른 기물: 왼쪽 위는 내 기물, 오른쪽 아래는 정답"
         },
         "pieceTypes": {
           "king": "킹",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, 빈 칸",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, 정답: {answer}",
       "phaseStudy": "국면을 외우세요",
       "phaseRebuild": "기물 배치하기",
       "liveStudy": "국면을 살펴보세요. {memorizeSeconds}초.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "기물 종류별 기억률은 라운드가 끝나면 여기에 표시됩니다.",
         "legendCorrect": "정답",
         "legendWrong": "잘못 배치",
-        "legendMissed": "놓친 칸"
+        "legendMissed": "놓친 칸",
+        "legendSplit": "다른 기물: 왼쪽 위는 내 기물, 오른쪽 아래는 정답"
       },
       "pieceTypes": {
         "king": "킹",

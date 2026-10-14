@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, vide",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, attendu : {answer}",
         "liveStudy": "Observez la position. {memorizeSeconds} secondes.",
         "liveRebuild": "Échiquier vidé. Choisissez une pièce, puis une case.",
         "liveScore": "Précision de {accuracy} pour cent. {correct} cases correctes sur {total}.",
@@ -401,7 +402,8 @@
           "playTier": "Jouer en {tier}",
           "legendCorrect": "correcte",
           "legendWrong": "mauvais placement",
-          "legendMissed": "case manquée"
+          "legendMissed": "case manquée",
+          "legendSplit": "mauvaise pièce : la vôtre en haut à gauche, la bonne en bas à droite"
         },
         "pieceTypes": {
           "king": "Roi",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, vide",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, attendu : {answer}",
       "phaseStudy": "Mémorisez la position",
       "phaseRebuild": "Placez les pièces",
       "liveStudy": "Observez la position. {memorizeSeconds} secondes.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "La mémorisation par type de pièce s’affiche ici après la manche.",
         "legendCorrect": "correcte",
         "legendWrong": "mauvais placement",
-        "legendMissed": "case manquée"
+        "legendMissed": "case manquée",
+        "legendSplit": "mauvaise pièce : la vôtre en haut à gauche, la bonne en bas à droite"
       },
       "pieceTypes": {
         "king": "Roi",

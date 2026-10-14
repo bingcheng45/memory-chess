@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, prázdné",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, správně: {answer}",
         "liveStudy": "Prohlédněte si pozici. Čas: {memorizeSeconds} s.",
         "liveRebuild": "Šachovnice je prázdná. Vyberte figuru a pak pole.",
         "liveScore": "Přesnost {accuracy} %. Správná pole: {correct} z {total}.",
@@ -401,7 +402,8 @@
           "playTier": "Hrát úroveň {tier}",
           "legendCorrect": "správně",
           "legendWrong": "špatné umístění",
-          "legendMissed": "vynechané pole"
+          "legendMissed": "vynechané pole",
+          "legendSplit": "špatná figurka: vaše vlevo nahoře, správná vpravo dole"
         },
         "pieceTypes": {
           "king": "Král",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, prázdné",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, správně: {answer}",
       "phaseStudy": "Zapamatujte si pozici",
       "phaseRebuild": "Rozestavte figurky",
       "liveStudy": "Prohlédněte si pozici. Čas: {memorizeSeconds} s.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Úspěšnost podle druhu figurky se zobrazí po skončení kola.",
         "legendCorrect": "správně",
         "legendWrong": "špatné umístění",
-        "legendMissed": "vynechané pole"
+        "legendMissed": "vynechané pole",
+        "legendSplit": "špatná figurka: vaše vlevo nahoře, správná vpravo dole"
       },
       "pieceTypes": {
         "king": "Král",

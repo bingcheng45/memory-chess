@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, gol",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, corect: {answer}",
         "liveStudy": "Studiază poziția. {memorizeSeconds} secunde.",
         "liveRebuild": "Tabla a fost golită. Alege o piesă, apoi un câmp.",
         "liveScore": "Precizie {accuracy} la sută. {correct} din {total} câmpuri corecte.",
@@ -401,7 +402,8 @@
           "playTier": "Joacă {tier}",
           "legendCorrect": "corect",
           "legendWrong": "plasare greșită",
-          "legendMissed": "câmp ratat"
+          "legendMissed": "câmp ratat",
+          "legendSplit": "piesă greșită: a ta stânga sus, cea corectă dreapta jos"
         },
         "pieceTypes": {
           "king": "Rege",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, gol",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, corect: {answer}",
       "phaseStudy": "Memorează poziția",
       "phaseRebuild": "Așază piesele",
       "liveStudy": "Studiază poziția. {memorizeSeconds} secunde.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Memorarea pe tip de piesă apare aici după rundă.",
         "legendCorrect": "corect",
         "legendWrong": "plasare greșită",
-        "legendMissed": "pătrat ratat"
+        "legendMissed": "pătrat ratat",
+        "legendSplit": "piesă greșită: a ta stânga sus, cea corectă dreapta jos"
       },
       "pieceTypes": {
         "king": "Rege",

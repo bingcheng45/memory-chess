@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, пусто",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, верно: {answer}",
         "liveStudy": "Изучите позицию. Время: {memorizeSeconds} с.",
         "liveRebuild": "Доска очищена. Выберите фигуру, затем поле.",
         "liveScore": "Точность {accuracy}%. Верных полей: {correct} из {total}.",
@@ -401,7 +402,8 @@
           "playTier": "Играть: {tier}",
           "legendCorrect": "верно",
           "legendWrong": "неверная расстановка",
-          "legendMissed": "пропущенное поле"
+          "legendMissed": "пропущенное поле",
+          "legendSplit": "не та фигура: ваша слева вверху, верная справа внизу"
         },
         "pieceTypes": {
           "king": "Король",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, пусто",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, верно: {answer}",
       "phaseStudy": "Запомните позицию",
       "phaseRebuild": "Расставьте фигуры",
       "liveStudy": "Изучите позицию. Время: {memorizeSeconds} с.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Запоминание по типам фигур появится здесь после раунда.",
         "legendCorrect": "верно",
         "legendWrong": "неверная расстановка",
-        "legendMissed": "пропущенное поле"
+        "legendMissed": "пропущенное поле",
+        "legendSplit": "не та фигура: ваша слева вверху, верная справа внизу"
       },
       "pieceTypes": {
         "king": "Король",

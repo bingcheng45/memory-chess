@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, boş",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, doğrusu: {answer}",
         "liveStudy": "Konumu incele. {memorizeSeconds} saniye.",
         "liveRebuild": "Tahta temizlendi. Bir taş, ardından bir kare seç.",
         "liveScore": "İsabet yüzde {accuracy}. {total} karenin {correct} tanesi doğru.",
@@ -401,7 +402,8 @@
           "playTier": "{tier} seviyesini oyna",
           "legendCorrect": "doğru",
           "legendWrong": "yanlış yerleşim",
-          "legendMissed": "atlanan kare"
+          "legendMissed": "atlanan kare",
+          "legendSplit": "yanlış taş: seninki sol üstte, doğrusu sağ altta"
         },
         "pieceTypes": {
           "king": "Şah",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, boş",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, doğrusu: {answer}",
       "phaseStudy": "Konumu ezberle",
       "phaseRebuild": "Taşları yerleştir",
       "liveStudy": "Konumu incele. {memorizeSeconds} saniye.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Taş türüne göre hatırlama tur bitince burada görünür.",
         "legendCorrect": "doğru",
         "legendWrong": "yanlış yerleşim",
-        "legendMissed": "atlanan kare"
+        "legendMissed": "atlanan kare",
+        "legendSplit": "yanlış taş: seninki sol üstte, doğrusu sağ altta"
       },
       "pieceTypes": {
         "king": "Şah",

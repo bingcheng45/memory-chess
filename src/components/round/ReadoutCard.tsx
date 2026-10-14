@@ -2,7 +2,8 @@
 
 import { memo, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import type { RoundState } from "@/lib/round/round";
+import { BOARD_SQUARES } from "@/lib/game/board";
+import { hiddenAnswer, type RoundState } from "@/lib/round/round";
 import { formatSecondsMs } from "@/utils/timer";
 import { RecallBar } from "@/components/home/LabCharts";
 import type { RoundCopy } from "./RoundBoard";
@@ -33,6 +34,7 @@ export const ReadoutCard = memo(function ReadoutCard({ state, copy, expected, ne
   const score = scored?.score;
   const exposure = formatSecondsMs(state.phase === "rebuild" || state.phase === "scored" ? state.studyMs : expected.studyMs);
   const pieceCount = state.phase === "idle" ? expected.pieceCount : state.config.pieceCount;
+  const hasSplit = scored ? BOARD_SQUARES.some((square) => hiddenAnswer(scored.target, scored.placed, square)) : false;
 
   return (
     <div className="lab-card">
@@ -94,6 +96,12 @@ export const ReadoutCard = memo(function ReadoutCard({ state, copy, expected, ne
           <i data-key="miss" aria-hidden="true" />
           {t("readout.legendMissed")}
         </span>
+        {hasSplit && (
+          <span>
+            <i data-key="split" aria-hidden="true" />
+            {t("readout.legendSplit")}
+          </span>
+        )}
       </div>
     </div>
   );

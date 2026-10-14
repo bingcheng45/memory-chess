@@ -3,6 +3,7 @@ import { act, fireEvent, renderWithIntl, screen } from "@/test-utils/intl";
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import { labPositionFromFen, roundReducer, type RoundAction, type RoundState } from "@/lib/round/round";
 import { RefusalAnnouncement, RoundBoard, RoundPalette } from "@/components/round/RoundBoard";
+import { ReadoutCard } from "@/components/round/ReadoutCard";
 
 if (!("PointerEvent" in window)) {
   class PointerEventPolyfill extends MouseEvent {
@@ -355,5 +356,56 @@ describe("a finger on a placed piece, with another piece selected", () => {
 
     expect(cell("e8")).toHaveAccessibleName("e8, black rook");
     expect(cell("c8")).toHaveAccessibleName("c8, empty");
+  });
+});
+
+describe("the scored board", () => {
+  function scored(...placements: [string, string, SquareName][]): RoundState {
+    const config = { pieceCount: 3, studyMs: 5000, source: "game_form" } as const;
+    const target = labPositionFromFen("8/8/b7/8/8/8/8/4K3");
+    const placing = placements.flatMap(([color, type, square]): RoundAction[] => [
+      { type: "select", piece: { color, type } } as RoundAction,
+      { type: "tapSquare", square, now: 2000 },
+    ]);
+    return [
+      { type: "start", config, target, now: 0 } as RoundAction,
+      { type: "studyEnded", now: 1000 } as RoundAction,
+      ...placing,
+      { type: "submit", now: 9000 } as RoundAction,
+    ].reduce(roundReducer, { phase: "idle" });
+  }
+
+  const pieceStates = (square: SquareName) =>
+    [...cell(square).querySelectorAll(".lab-piece")].map((piece) => piece.getAttribute("data-state"));
+
+  it("splits a square where a wrong piece covers the one that belonged, and names both", () => {
+    renderWithIntl(<RoundBoard state={scored(["white", "king", "e1"], ["black", "rook", "a6"])} dispatch={() => {}} copy="game.round" />);
+
+    expect(cell("a6")).toHaveAttribute("data-split", "");
+    expect(pieceStates("a6")).toEqual(["placed", "answer"]);
+    expect(cell("a6")).toHaveAccessibleName("a6, black rook, should be black bishop");
+    expect(cell("e1")).not.toHaveAttribute("data-split");
+    expect(pieceStates("e1")).toEqual(["on"]);
+  });
+
+  it("leaves a missed square and a piece on an empty square unsplit", () => {
+    renderWithIntl(<RoundBoard state={scored(["white", "king", "e2"])} dispatch={() => {}} copy="game.round" />);
+
+    expect(document.querySelector("[data-split]")).toBeNull();
+    expect(pieceStates("a6")).toEqual(["ghost"]);
+    expect(pieceStates("e2")).toEqual(["on"]);
+    expect(cell("e2")).toHaveAccessibleName("e2, white king");
+  });
+
+  it("adds the split square to the legend only when the board has one", () => {
+    const expected = { pieceCount: 3, studyMs: 5000 };
+    const { unmount } = renderWithIntl(
+      <ReadoutCard state={scored(["black", "rook", "a6"])} copy="game.round" expected={expected} />,
+    );
+    expect(screen.getByText("wrong piece: yours top left, correct bottom right")).toBeInTheDocument();
+    unmount();
+
+    renderWithIntl(<ReadoutCard state={scored(["white", "king", "e1"])} copy="game.round" expected={expected} />);
+    expect(screen.queryByText("wrong piece: yours top left, correct bottom right")).toBeNull();
   });
 });

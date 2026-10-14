@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, tom",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, rätt: {answer}",
         "liveStudy": "Studera ställningen. {memorizeSeconds} sekunder.",
         "liveRebuild": "Brädet är tömt. Välj en pjäs och sedan en ruta.",
         "liveScore": "Träffsäkerhet {accuracy} procent. {correct} av {total} rutor rätt.",
@@ -401,7 +402,8 @@
           "playTier": "Spela {tier}",
           "legendCorrect": "rätt",
           "legendWrong": "fel placering",
-          "legendMissed": "missad ruta"
+          "legendMissed": "missad ruta",
+          "legendSplit": "fel pjäs: din uppe till vänster, rätt nere till höger"
         },
         "pieceTypes": {
           "king": "Kung",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, tom",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, rätt: {answer}",
       "phaseStudy": "Memorera ställningen",
       "phaseRebuild": "Placera pjäserna",
       "liveStudy": "Studera ställningen. {memorizeSeconds} sekunder.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Minne per pjästyp visas här efter rundan.",
         "legendCorrect": "rätt",
         "legendWrong": "fel placering",
-        "legendMissed": "missad ruta"
+        "legendMissed": "missad ruta",
+        "legendSplit": "fel pjäs: din uppe till vänster, rätt nere till höger"
       },
       "pieceTypes": {
         "king": "Kung",

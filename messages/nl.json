@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, leeg",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, goed: {answer}",
         "liveStudy": "Bekijk de stelling. {memorizeSeconds} seconden.",
         "liveRebuild": "Bord leeggemaakt. Kies een stuk en daarna een veld.",
         "liveScore": "Nauwkeurigheid {accuracy} procent. {correct} van {total} velden goed.",
@@ -401,7 +402,8 @@
           "playTier": "Speel {tier}",
           "legendCorrect": "goed",
           "legendWrong": "verkeerd geplaatst",
-          "legendMissed": "gemist veld"
+          "legendMissed": "gemist veld",
+          "legendSplit": "verkeerd stuk: jouw stuk linksboven, het goede rechtsonder"
         },
         "pieceTypes": {
           "king": "Koning",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, leeg",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, goed: {answer}",
       "phaseStudy": "Onthoud de stelling",
       "phaseRebuild": "Plaats de stukken",
       "liveStudy": "Bekijk de stelling. {memorizeSeconds} seconden.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Herinnering per stuksoort verschijnt hier na de ronde.",
         "legendCorrect": "goed",
         "legendWrong": "verkeerd geplaatst",
-        "legendMissed": "gemist veld"
+        "legendMissed": "gemist veld",
+        "legendSplit": "verkeerd stuk: jouw stuk linksboven, het goede rechtsonder"
       },
       "pieceTypes": {
         "king": "Koning",

@@ -112,6 +112,11 @@ export function squareVerdict(
   return words.length > 0 ? words.join(" ") : undefined;
 }
 
+/** The piece that belonged on a square the player filled with a different one, which the wrong piece would hide. */
+export function hiddenAnswer(target: LabPosition, placed: LabPosition, square: SquareName): LabPiece | undefined {
+  return placed[square] && !samePiece(target[square], placed[square]) ? target[square] : undefined;
+}
+
 /** What a round is played at and where it came from. `board` is set when the round plays a set position. */
 export interface RoundConfig {
   readonly pieceCount: number;

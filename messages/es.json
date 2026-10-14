@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, vacía",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, debería ser {answer}",
         "liveStudy": "Estudia la posición. {memorizeSeconds} segundos.",
         "liveRebuild": "Tablero vacío. Elige una pieza y luego una casilla.",
         "liveScore": "Precisión del {accuracy} por ciento. {correct} de {total} casillas correctas.",
@@ -401,7 +402,8 @@
           "playTier": "Jugar {tier}",
           "legendCorrect": "correcta",
           "legendWrong": "mal colocada",
-          "legendMissed": "casilla omitida"
+          "legendMissed": "casilla omitida",
+          "legendSplit": "pieza equivocada: la tuya arriba a la izquierda, la correcta abajo a la derecha"
         },
         "pieceTypes": {
           "king": "Rey",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, vacía",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, debería ser {answer}",
       "phaseStudy": "Memoriza la posición",
       "phaseRebuild": "Coloca las piezas",
       "liveStudy": "Estudia la posición. {memorizeSeconds} segundos.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "El recuerdo por tipo de pieza aparece aquí al terminar la ronda.",
         "legendCorrect": "correcta",
         "legendWrong": "mal colocada",
-        "legendMissed": "casilla omitida"
+        "legendMissed": "casilla omitida",
+        "legendSplit": "pieza equivocada: la tuya arriba a la izquierda, la correcta abajo a la derecha"
       },
       "pieceTypes": {
         "king": "Rey",

@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, tomt",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, korrekt: {answer}",
         "liveStudy": "Se på stillingen. {memorizeSeconds} sekunder.",
         "liveRebuild": "Brættet er ryddet. Vælg en brik og derefter et felt.",
         "liveScore": "Præcision {accuracy} procent. {correct} af {total} felter korrekte.",
@@ -401,7 +402,8 @@
           "playTier": "Spil {tier}",
           "legendCorrect": "korrekt",
           "legendWrong": "forkert placering",
-          "legendMissed": "oversprunget felt"
+          "legendMissed": "oversprunget felt",
+          "legendSplit": "forkert brik: din øverst til venstre, korrekt nederst til højre"
         },
         "pieceTypes": {
           "king": "Konge",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, tomt",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, korrekt: {answer}",
       "phaseStudy": "Husk stillingen",
       "phaseRebuild": "Placér brikkerne",
       "liveStudy": "Se på stillingen. {memorizeSeconds} sekunder.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "Hukommelse pr. briktype vises her efter runden.",
         "legendCorrect": "korrekt",
         "legendWrong": "forkert placering",
-        "legendMissed": "oversprunget felt"
+        "legendMissed": "oversprunget felt",
+        "legendSplit": "forkert brik: din øverst til venstre, korrekt nederst til højre"
       },
       "pieceTypes": {
         "king": "Konge",

@@ -373,6 +373,7 @@
         },
         "squareEmpty": "{square}, vazia",
         "squareWith": "{square}, {piece}",
+        "squareSwapped": "{square}, {piece}, deveria ser {answer}",
         "liveStudy": "Estude a posição. {memorizeSeconds} segundos.",
         "liveRebuild": "Tabuleiro limpo. Escolha uma peça e depois uma casa.",
         "liveScore": "Precisão de {accuracy} por cento. {correct} de {total} casas corretas.",
@@ -401,7 +402,8 @@
           "playTier": "Jogar {tier}",
           "legendCorrect": "correta",
           "legendWrong": "posição errada",
-          "legendMissed": "casa esquecida"
+          "legendMissed": "casa esquecida",
+          "legendSplit": "peça errada: a sua no alto à esquerda, a correta embaixo à direita"
         },
         "pieceTypes": {
           "king": "Rei",
@@ -1126,6 +1128,7 @@
       },
       "squareEmpty": "{square}, vazia",
       "squareWith": "{square}, {piece}",
+      "squareSwapped": "{square}, {piece}, deveria ser {answer}",
       "phaseStudy": "Memorize a posição",
       "phaseRebuild": "Posicione as peças",
       "liveStudy": "Estude a posição. {memorizeSeconds} segundos.",
@@ -1144,7 +1147,8 @@
         "byTypeEmpty": "A memória por tipo de peça aparece aqui após a rodada.",
         "legendCorrect": "correta",
         "legendWrong": "posição errada",
-        "legendMissed": "casa esquecida"
+        "legendMissed": "casa esquecida",
+        "legendSplit": "peça errada: a sua no alto à esquerda, a correta embaixo à direita"
       },
       "pieceTypes": {
         "king": "Rei",

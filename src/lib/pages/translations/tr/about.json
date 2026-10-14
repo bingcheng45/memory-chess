@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Hakkında",
+      "description": "Memory Chess'i kimin geliştirdiği, oyunun neden var olduğu, bir turun nasıl puanlandığı ve Öğren rehberlerinin nasıl yazıldığı.",
+      "socialTitle": "Memory Chess hakkında",
+      "socialDescription": "Memory Chess'i kimin geliştirdiği, oyunun neden var olduğu ve nasıl çalıştığı."
+    },
+    "kicker": "Hakkında",
+    "title": "Memory Chess hakkında",
+    "lede": "Memory Chess, tek bir kişinin geliştirip yönettiği ücretsiz bir tahta hafızası oyunudur. Bu sayfa o kişinin kim olduğunu, oyunun neden var olduğunu ve gerçekte nasıl çalıştığını anlatıyor.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Bu siteyi kim yönetiyor",
+        "blocks": [
+          {
+            "p": "Ben Bing Cheng, tek başına çalışan bir geliştiriciyim. Memory Chess'i kendi başıma yönetiyorum; kod ve site metinleri için yapay zekâ desteği kullanıyorum. Arkasında bir ekip ya da şirket yok. <tont>Tont</tont> da benim işim ve bu siteyle ilgili güncellemeleri <x>@TheMemoryChess</x> hesabında paylaşıyorum."
+          },
+          {
+            "p": "Her şeyi tek kişi yürüttüğü için site bilerek küçük tutuluyor. Bir oyun, bir dizi antrenman rehberi, bir sıralama ve gerçekten yayımlanan şeyleri kaydeden bir değişiklik günlüğü."
+          },
+          {
+            "p": "Oyun ücretsizdir ve hesap gerektirmez. Google AdSense üzerinden gösterilen reklamlar barındırma masraflarını karşılamaya yardımcı olur ve sitedeki hiçbir şey bir ödemeye ya da üyeliğe bağlı değildir."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Oyun neden var",
+        "blocks": [
+          {
+            "p": "Satrançta gelişmeyle ilgili tavsiyelerin çoğu yeni başlayanları açılışlara, bulmacalara ve kurslara yönlendirir. Benim deneyimime göre daha önce gelen sorun tüm bunların altında yatıyor. Yeni başlayanlar tahtanın takibini kaybeder. Bir savunan taşı gözden kaçırır, iki hamle önce oynanan bir taşı unutur ve bir diyagramda hemen fark edecekleri alımlara yakalanırlar."
+          },
+          {
+            "p": "Bir konumu aklında tutmak geliştirilebilir bir beceridir ve bunu doğrudan çalışabileceğin pek az yer vardı. Ben de bir tane yaptım. Memory Chess bu tek beceriyi ayırır ve ona bir puan verir; böylece geliştiğini görebilirsin. Biraz rekabet istersen, seçtiğin bir isimle herkese açık sıralamaya girip kendini diğer herkesle ölçebilirsin."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Bir tur nasıl işler",
+        "blocks": [
+          {
+            "p": "Kaç taşla karşılaşacağını ve onları ne kadar süre inceleyebileceğini sen seçersin. Hazır ayarlar, iki taş ve on saniyelik Kolay seviyeden yirmi taş ve beş saniyelik Büyükusta seviyesine kadar uzanır ve istediğin özel bir kombinasyonu da ayarlayabilirsin. Ardından tur üç aşamada ilerler."
+          },
+          {
+            "p": "Önce ezberlersin. Tahta seçtiğin süre boyunca bir konum gösterir, sonra kaybolur. Sonra yeniden kurarsın. Taşları ezberden boş bir tahtaya yerleştirirsin. Son olarak sonucunu alırsın. Oyun senin tahtanı orijinaliyle kare kare karşılaştırır."
+          },
+          {
+            "p": "Puanlama katıdır. Bir taş, yalnızca doğru renkteki doğru taş orijinal konumda bulunduğu karenin tam üzerinde durduğunda doğru sayılır. Atın olması gereken yerdeki bir kale iki kat yanlıştır. Yanlış yerleştirilmiş taş sayılır, yerinden ettiği at da eksik sayılır. İsabetin, orijinal taşlardan tam olarak yeniden oluşturduklarının oranıdır."
+          },
+          {
+            "p": "Sonuç ekranı üç grubu da gösterir: doğru yaptığın yerleştirmeleri, yanlış yaptıklarını ve tamamen unuttuğun taşları; böylece her tur sana bir dahaki sefere neye yükleneceğini söyler. Bir dakikadan kısa sürede <game>bir tur deneyebilirsin</game>."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Öğren rehberleri nasıl yazılıyor",
+        "blocks": [
+          {
+            "p": "<learn>Öğren kitaplığı</learn>, tahta görüşü, görselleştirme ve hafıza antrenmanı üzerine {count, plural, one {# rehber} other {# rehber}} içerir. Rehberler yapay zekâ desteğiyle yazılır. İçlerindeki her satranç konumu; taş sayıları, kurallara uygunluk ve metnin iddia ettiği her saldırı açısından bir betikle kontrol edilir. Memory Chess'in nasıl çalıştığına dair her ifade oyunun koduna dayandırılır. Her rehberde alıştırmalar vardır. Bazıları oyunda doğru ayarlarla bir tur açar. Geri kalanlar gerçek bir tahta için tasarlanmıştır."
+          },
+          {
+            "p": "Rehberler hafıza ve öğrenme hakkında iddialarda bulunduğunda, Gobet ve Simon'ın satranç hafızası üzerine çalışmaları ile hatırlama ve aralıklı pratik üzerine deneysel literatür dahil olmak üzere yayımlanmış araştırmalara atıfta bulunur. Her atıf kaynağına bağlantı verir. Kendime ait bir araştırma yapmadım ve rehberler de aksini iddia etmiyor."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Sitenin şimdiye kadarki yolculuğu",
+        "blocks": [
+          {
+            "p": "İlk sürüm Mart 2025'te oyunun yalın bir hâli olarak yayına girdi. Mobilde oynama ve taş seçimi birkaç hafta içinde geldi. Öğren kitaplığı Mart 2026'da açıldı ve Ağustos 2026'da oyunun kendisi 24 dilde oynanabilir hale geldi. Rehberler ve değişiklik günlüğü İngilizcedir. <changelog>Değişiklik günlüğü</changelog>, hata düzeltmeleri dahil sürüm numarası verilen her yayını kaydeder. Onu dürüst tutuyorum, çünkü neyin ne zaman değiştiğini hatırlamak için ben de kullanıyorum."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "İletişime geç",
+        "blocks": [
+          {
+            "p": "Bana <mail>{email}</mail> adresinden yaz ya da <contact>iletişim formunu</contact> kullan. Her şeyi okuyorum ve oyuncuların bildirimleri daha önce gerçek hataların düzeltilmesini sağladı. Ayrıntıları merak ediyorsan, <privacy>gizlilik politikası</privacy> ve <terms>kullanım koşulları</terms> sitenin verileri nasıl işlediğini ve oynayarak neyi kabul ettiğini açıklar."
+          }
+        ]
+      }
+    }
+  }
+}

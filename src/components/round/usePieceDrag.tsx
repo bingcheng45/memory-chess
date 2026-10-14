@@ -40,6 +40,7 @@ type Gesture<S extends DragSource> =
       readonly phase: "dragging";
       readonly pointerId: number;
       readonly source: S;
+      readonly size: number;
       readonly lift: number;
     }
   | { readonly phase: "spent"; readonly pointerId: number };
@@ -162,22 +163,26 @@ export function usePieceDrag<S extends DragSource>({ enabled, onStart, onDrop }:
    * started on stops being draggable mid-drag.
    */
   const follow = (pointerId: number, element: HTMLElement) => {
+    /** A press that has wandered past the tap slop becomes a drag, unless onStart refuses it. */
+    const promote = (current: Extract<Gesture<S>, { phase: "pressed" }>, event: PointerEvent): Gesture<S> => {
+      const slop = event.pointerType === "mouse" ? TAP_SLOP_PX.mouse : TAP_SLOP_PX.finger;
+      if (Math.hypot(event.clientX - current.x, event.clientY - current.y) <= slop) return current;
+      if (onStart && !onStart(current.source)) return { phase: "spent", pointerId };
+      const square = document.querySelector("[data-live] > [data-coordinate]") ?? element;
+      const size = square.getBoundingClientRect().width || FALLBACK_GHOST_PX;
+      const lift = event.pointerType === "touch" ? size * TOUCH_LIFT : 0;
+      return { phase: "dragging", pointerId, source: current.source, size, lift };
+    };
     const onMove = (event: PointerEvent) => {
       const current = gesture.current;
       if (current?.pointerId !== event.pointerId) return;
       if (current.phase === "pressed") {
-        const slop = event.pointerType === "mouse" ? TAP_SLOP_PX.mouse : TAP_SLOP_PX.finger;
-        if (Math.hypot(event.clientX - current.x, event.clientY - current.y) <= slop) return;
-        if (onStart && !onStart(current.source)) {
-          gesture.current = { phase: "spent", pointerId };
-          return;
-        }
-        const square = document.querySelector("[data-live] > [data-coordinate]") ?? element;
-        const size = square.getBoundingClientRect().width || FALLBACK_GHOST_PX;
-        const lift = event.pointerType === "touch" ? size * TOUCH_LIFT : 0;
-        gesture.current = { phase: "dragging", pointerId, source: current.source, lift };
-        setGhost({ piece: current.source.piece, size, transform: ghostTransform(event.clientX, event.clientY, size, lift) });
-        setDragging(current.source);
+        const next = promote(current, event);
+        gesture.current = next;
+        if (next.phase !== "dragging") return;
+        const transform = ghostTransform(event.clientX, event.clientY, next.size, next.lift);
+        setGhost({ piece: next.source.piece, size: next.size, transform });
+        setDragging(next.source);
       } else if (current.phase === "dragging" && ghostNode.current) {
         const size = ghostNode.current.offsetWidth;
         ghostNode.current.style.transform = ghostTransform(event.clientX, event.clientY, size, current.lift);
@@ -189,11 +194,13 @@ export function usePieceDrag<S extends DragSource>({ enabled, onStart, onDrop }:
     const onUp = (event: PointerEvent) => {
       const current = gesture.current;
       if (current?.pointerId !== event.pointerId) return;
-      if (current.phase === "dragging") {
-        const square = squareAt(event.clientX, event.clientY - current.lift)?.dataset.coordinate as SquareName | undefined;
-        onDrop(current.source, square ?? null);
+      // A fast flick can be released before any move crossed the slop, so the release is judged by where it lands.
+      const released = current.phase === "pressed" ? promote(current, event) : current;
+      if (released.phase === "dragging") {
+        const square = squareAt(event.clientX, event.clientY - released.lift)?.dataset.coordinate as SquareName | undefined;
+        onDrop(released.source, square ?? null);
       }
-      if (current.phase !== "pressed") swallowNextClick();
+      if (released.phase !== "pressed") swallowNextClick();
       settle(null);
     };
     // The release clears the gesture before capture goes, so a capture lost with a gesture still open is a cancel.

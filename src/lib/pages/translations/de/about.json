@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "9c115383dae0ef2dc75d7f363088d2509190091e28483e79c71ebe6fdf581fcb",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -31,7 +31,7 @@
         "title": "Warum es das Spiel gibt",
         "blocks": [
           {
-            "p": "Die meisten Ratschläge, wie man im Schach besser wird, schicken Anfänger zu Eröffnungen, Taktikaufgaben und Kursen. Meiner Erfahrung nach liegt das frühere Problem unter alldem. Anfänger verlieren den Überblick über das Brett. Sie übersehen einen Verteidiger, vergessen eine Figur, die vor zwei Zügen gezogen hat, und tappen in Schlagzüge, die sie auf einem Diagramm sofort erkennen würden."
+            "p": "Die meisten Ratschläge, wie man im Schach besser wird, schicken Anfänger zu Eröffnungen, Taktikaufgaben und Kursen. Meiner Erfahrung nach liegt unter alldem ein früheres Problem. Anfänger verlieren den Überblick über das Brett. Sie übersehen einen Verteidiger, vergessen eine Figur, die vor zwei Zügen gezogen hat, und laufen in Schlagzüge hinein, die sie auf einem Diagramm sofort erkennen würden."
           },
           {
             "p": "Eine Stellung im Kopf zu behalten ist eine trainierbare Fähigkeit, und es gab kaum Orte, an denen man sie direkt üben konnte. Also habe ich einen gebaut. Memory Chess nimmt genau diese eine Fähigkeit heraus und gibt ihr eine Wertung, damit du verfolgen kannst, wie sie besser wird. Wenn du etwas auf dem Spiel haben willst, kannst du einen selbst gewählten Namen in die öffentliche Bestenliste eintragen und dich mit allen anderen messen."

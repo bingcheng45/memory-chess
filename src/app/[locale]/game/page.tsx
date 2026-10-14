@@ -308,6 +308,7 @@ function GamePageContent() {
       case 'ready':
       case 'countdown': {
         const { pieceCount, studyMs, board } = round.config;
+        if (!board) return activeRound(round, null);
         const day = board.kind === 'daily' ? board.day : utcDayOf(Date.now());
         return activeRound(round, { day, pieceCount, memorizeTime: studyMs / 1000 });
       }

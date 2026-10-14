@@ -38,7 +38,7 @@ export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit 
   const onStudyEnded = useCallback((now: number) => dispatch({ type: 'studyEnded', now }), [dispatch]);
   useStudyDeadline(round, onStudyEnded);
   const count = useCountdown(round.phase === 'countdown' ? round.endsAt : null, endCountdown);
-  usePreloadPieces(round.phase === 'ready' || round.phase === 'countdown' ? round.config.board.fen : null);
+  usePreloadPieces(round.phase === 'ready' ? round.config.board.fen : round.phase === 'countdown' ? round.fen : null);
   const veiled = round.phase === 'idle' || round.phase === 'ready' || round.phase === 'countdown';
   const studyMs = round.phase === 'idle' ? (gate?.memorizeTime ?? 0) * 1000 : round.config.studyMs;
   const controlsPhase = round.phase === 'idle' ? 'ready' : round.phase;

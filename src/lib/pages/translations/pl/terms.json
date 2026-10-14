@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "f92010a0582322048175c59370439da2565d5d5c23ed7f25c3658458b0297fc2",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -28,7 +28,7 @@
         "title": "Dozwolone korzystanie",
         "blocks": [
           {
-            "p": "Graj uczciwie i pozwól, żeby strona działała dla wszystkich innych. Nie atakuj usługi, nie przeciążaj jej ani nie sonduj, nie pobieraj z niej danych masowo i nie próbuj złamać jej punktacji. Nie przesyłaj wyników wygenerowanych przez boty, skrypty ani jakąkolwiek automatyzację. Nie używaj formularza kontaktowego ani rankingu do spamowania, nękania ani podszywania się pod kogokolwiek."
+            "p": "Graj uczciwie i pozwól, żeby strona działała dla wszystkich innych. Nie atakuj usługi, nie przeciążaj jej ani nie skanuj jej pod kątem słabych punktów, nie pobieraj z niej danych masowo i nie próbuj złamać jej punktacji. Nie przesyłaj wyników wygenerowanych przez boty, skrypty ani jakąkolwiek automatyzację. Nie używaj formularza kontaktowego ani rankingu do spamowania, nękania ani podszywania się pod kogokolwiek."
           },
           {
             "p": "Formularz kontaktowy służy do prawdziwych wiadomości do prawdziwej osoby. Używaj go do zgłaszania błędów, pytań i pomysłów, a wiadomość zostanie przeczytana."

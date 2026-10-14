@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "f39a043ffe2b2498edde5eab5143c832476cf8ddf3f75f629c3a63112e11039a",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -17,7 +17,7 @@
         "title": "Kto prowadzi tę stronę",
         "blocks": [
           {
-            "p": "Nazywam się Bing Cheng i jestem samodzielnym programistą. Prowadzę Memory Chess sam, a przy kodzie i tekstach na stronie pomaga mi AI. Nie stoi za tym żaden zespół ani żadna firma. Tworzę też <tont>Tont</tont>, a informacje o tej stronie publikuję na <x>@TheMemoryChess</x>."
+            "p": "Nazywam się Bing Cheng i samodzielnie tworzę oprogramowanie. Prowadzę Memory Chess na własną rękę, a przy kodzie i tekstach na stronie pomaga mi AI. Nie stoi za tym żaden zespół ani żadna firma. Tworzę też <tont>Tont</tont>, a informacje o tej stronie publikuję na <x>@TheMemoryChess</x>."
           },
           {
             "p": "Ponieważ wszystko prowadzi jedna osoba, strona jest celowo niewielka. Jedna gra, zestaw poradników treningowych, ranking i dziennik zmian, który zapisuje, co naprawdę zostało wydane."
@@ -34,7 +34,7 @@
             "p": "Większość porad dotyczących poprawy gry w szachy kieruje początkujących do debiutów, zadań i kursów. Z mojego doświadczenia wcześniejszy problem leży pod tym wszystkim. Początkujący tracą orientację na szachownicy. Przeoczają obrońcę, zapominają o figurze, która ruszyła się dwa posunięcia temu, i podstawiają figury pod bicia, które na diagramie zauważyliby od razu."
           },
           {
-            "p": "Utrzymywanie pozycji w głowie to umiejętność, którą można wytrenować, a miejsc, w których można ją ćwiczyć bezpośrednio, było niewiele. Więc zbudowałem takie miejsce. Memory Chess wyodrębnia tę jedną umiejętność i daje jej wynik, żeby było widać, jak się poprawia. Jeśli chcesz, żeby coś było na szali, możesz umieścić wybraną nazwę w publicznym rankingu i zmierzyć się ze wszystkimi innymi."
+            "p": "Utrzymywanie pozycji w głowie to umiejętność, którą można wytrenować, a miejsc, w których można ją ćwiczyć bezpośrednio, było niewiele. Więc takie miejsce powstało. Memory Chess wyodrębnia tę jedną umiejętność i daje jej wynik, żeby było widać, jak się poprawia. Jeśli chcesz, żeby coś było na szali, możesz umieścić wybraną nazwę w publicznym rankingu i zmierzyć się ze wszystkimi innymi."
           }
         ]
       },
@@ -62,7 +62,7 @@
             "p": "<learn>Biblioteka Nauka</learn> zawiera {count, plural, one {# poradnik} few {# poradniki} many {# poradników} other {# poradnika}} o widzeniu szachownicy, wizualizacji i treningu pamięci. Są pisane z pomocą AI. Każdą pozycję szachową w nich sprawdza skrypt pod kątem liczby figur, zgodności z przepisami i każdego ataku, o którym mówi tekst. Każde stwierdzenie o tym, jak działa Memory Chess, zostało sprawdzone w kodzie gry. Każdy poradnik ma ćwiczenia. Niektóre otwierają rundę w grze z właściwymi ustawieniami. Pozostałe są przeznaczone na prawdziwą szachownicę."
           },
           {
-            "p": "Tam, gdzie poradniki formułują twierdzenia o pamięci i uczeniu się, powołują się na opublikowane badania, w tym prace Gobeta i Simona o pamięci szachowej oraz literaturę eksperymentalną o przywoływaniu z pamięci i praktyce rozłożonej w czasie. Każdy przypis prowadzi do swojego źródła. Nie prowadziłem własnych badań, a poradniki nie udają, że jest inaczej."
+            "p": "Tam, gdzie poradniki formułują twierdzenia o pamięci i uczeniu się, powołują się na opublikowane badania, w tym prace Gobeta i Simona o pamięci szachowej oraz literaturę eksperymentalną o przywoływaniu z pamięci i praktyce rozłożonej w czasie. Każdy przypis prowadzi do swojego źródła. Nie mam na koncie własnych badań, a poradniki nie udają, że jest inaczej."
           }
         ]
       },
@@ -70,7 +70,7 @@
         "title": "Historia strony",
         "blocks": [
           {
-            "p": "Pierwsze wydanie trafiło do sieci w marcu 2025 roku jako podstawowa wersja gry. Gra na telefonach i wybór figur pojawiły się w ciągu kilku tygodni. Biblioteka Nauka wystartowała w marcu 2026 roku, a w sierpniu 2026 roku sama gra zaczęła działać w 24 językach. Poradniki i dziennik zmian są po angielsku. <changelog>Dziennik zmian</changelog> zapisuje każde wydanie z numerem wersji, łącznie z poprawkami błędów. Dbam o jego rzetelność, bo sam z niego korzystam, żeby pamiętać, co i kiedy się zmieniło."
+            "p": "Pierwsze wydanie trafiło do sieci w marcu 2025 roku jako podstawowa wersja gry. Gra na telefonach i wybór figur pojawiły się w ciągu kilku tygodni. Biblioteka Nauka wystartowała w marcu 2026 roku, a w sierpniu 2026 roku sama gra zaczęła działać w 24 językach. Poradniki i dziennik zmian są po angielsku. <changelog>Dziennik zmian</changelog> zapisuje każde wydanie z numerem wersji, łącznie z poprawkami błędów. Dbam o jego rzetelność, bo korzystam z niego osobiście, żeby pamiętać, co i kiedy się zmieniło."
           }
         ]
       },

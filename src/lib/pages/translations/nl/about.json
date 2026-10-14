@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "85dfd8fa062417039f9e1d76219357e27e71d2f8ba12e31f865a82e25feaec08",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -31,7 +31,7 @@
         "title": "Waarom het spel bestaat",
         "blocks": [
           {
-            "p": "De meeste adviezen om beter te worden in schaken sturen beginners naar openingen, puzzels en cursussen. In mijn ervaring zit het eerdere probleem onder dat alles. Beginners verliezen het overzicht over het bord. Ze missen een verdediger, vergeten een stuk dat twee zetten geleden is verplaatst, en lopen in slagen die ze op een diagram meteen zouden zien."
+            "p": "De meeste adviezen om beter te worden in schaken sturen beginners naar openingen, puzzels en cursussen. In mijn ervaring zit het eerdere probleem onder dat alles. Beginners verliezen het overzicht over het bord. Ze zien een verdediger over het hoofd, vergeten een stuk dat twee zetten geleden is verplaatst en lopen blindelings in slagen die ze op een diagram meteen zouden zien."
           },
           {
             "p": "Een stelling in je hoofd vasthouden is een vaardigheid die je kunt trainen, en er waren weinig plekken om die rechtstreeks te oefenen. Dus heb ik er een gebouwd. Memory Chess haalt die ene vaardigheid eruit en geeft haar een score, zodat je kunt zien hoe ze beter wordt. Wil je iets op het spel zetten, dan kun je een zelfgekozen naam op de openbare ranglijst zetten en je met iedereen meten."
@@ -48,7 +48,7 @@
             "p": "Eerst onthoud je. Het bord toont een stelling gedurende de tijd die je koos, en daarna verdwijnt ze. Dan bouw je op. Je zet de stukken uit je geheugen op een leeg bord. Ten slotte krijg je je resultaat. Het spel vergelijkt jouw bord veld voor veld met het origineel."
           },
           {
-            "p": "Er wordt streng gescoord.Een stuk telt alleen als goed wanneer het juiste stuk van de juiste kleur op precies het veld staat dat het in de oorspronkelijke stelling bezette. Een toren waar een paard hoort, is dubbel fout. Hij telt als verkeerd geplaatst stuk, en het paard dat hij verdrong telt als ontbrekend. Je nauwkeurigheid is het deel van de oorspronkelijke stukken dat je precies hebt nagebouwd."
+            "p": "Er wordt streng gescoord. Een stuk telt alleen als goed wanneer het juiste stuk van de juiste kleur op precies het veld staat dat het in de oorspronkelijke stelling bezette. Een toren waar een paard hoort, is dubbel fout. Hij telt als verkeerd geplaatst stuk, en het paard dat hij verdrong telt als ontbrekend. Je nauwkeurigheid is het deel van de oorspronkelijke stukken dat je precies hebt nagebouwd."
           },
           {
             "p": "Het resultatenscherm toont alle drie de groepen: de plaatsingen die je goed had, die je fout had, en de stukken die je helemaal vergat, zodat elke ronde je vertelt waar je de volgende keer op moet letten. Je kunt in minder dan een minuut <game>een ronde proberen</game>."

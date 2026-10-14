@@ -1,0 +1,97 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [
+    "sections.contact.title"
+  ],
+  "text": {
+    "meta": {
+      "title": "Gebruiksvoorwaarden",
+      "description": "De voorwaarden in gewone taal voor het spelen van Memory Chess, het inzenden van scores voor de ranglijst en het gebruik van de inhoud van de site.",
+      "socialTitle": "Gebruiksvoorwaarden van Memory Chess",
+      "socialDescription": "De voorwaarden in gewone taal voor het spelen van Memory Chess en het gebruik van de site."
+    },
+    "kicker": "De kleine lettertjes",
+    "title": "Gebruiksvoorwaarden",
+    "lede": "Memory Chess is een gratis spel dat door één persoon wordt beheerd. Deze voorwaarden zijn kort omdat de afspraak eenvoudig is, en ze zijn geschreven om gelezen te worden.",
+    "sections": {
+      "service": {
+        "title": "De dienst",
+        "blocks": [
+          {
+            "p": "Memory Chess is een gratis browserspel om je bordgeheugen te trainen. Ik bied het aan zoals het is en zoals het beschikbaar is, zonder enige garantie. Ik doe mijn best om het snel, nauwkeurig en online te houden, maar ik beloof geen ononderbroken dienst, foutloze scores of dat een functie voor altijd hetzelfde blijft. Ik kan elk onderdeel van de site op elk moment wijzigen, opschorten of stopzetten."
+          },
+          {
+            "p": "Voor zover de wet dat toestaat, ben ik niet aansprakelijk voor schade die voortvloeit uit je gebruik van de site. Het is een geheugenspel. Het ergste wat hier redelijkerwijs mis kan gaan, is dat je een score verliest die je belangrijk vond, en ook dat probeer ik zo goed mogelijk te voorkomen."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Toegestaan gebruik",
+        "blocks": [
+          {
+            "p": "Speel eerlijk en laat de site werken voor alle anderen. Val de dienst niet aan, overbelast hem niet en tast hem niet af, scrape hem niet op grote schaal en probeer de scoring niet te kraken. Zend geen scores in die door bots, scripts of welke vorm van automatisering dan ook zijn gegenereerd. Gebruik het contactformulier of de ranglijst niet om iemand te spammen, lastig te vallen of je als iemand anders voor te doen."
+          },
+          {
+            "p": "Het contactformulier is voor echte berichten aan een echt mens. Gebruik het voor bugmeldingen, vragen en ideeën, en het wordt gelezen."
+          },
+          {
+            "p": "Ik kan verkeer blokkeren of de toegang beperken als die deze regels schendt. Omdat er geen accounts zijn om te blokkeren, zijn het verwijderen van ongepaste inzendingen en het tegenhouden van misbruik aan de rand van het netwerk de handhaving die ik heb, en die gebruik ik."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "De ranglijst",
+        "blocks": [
+          {
+            "p": "Een score naar de ranglijst sturen is optioneel. Alles wat je daar inzendt, is openbaar. De naam bij een score is precies wat je intypt, dus kies iets wat je graag gepubliceerd ziet, en gebruik niet je echte naam of iemands persoonsgegevens als je die liever privé houdt."
+          },
+          {
+            "p": "Een inzending bevat de naam die je koos en de gegevens van de ronde, zoals nauwkeurigheid, moeilijkheidsgraad en voltooiingstijd. Eenmaal gepubliceerd blijft ze op de ranglijst staan totdat ze door betere scores wordt verdrongen of wordt verwijderd."
+          },
+          {
+            "p": "Ik kan inzendingen van de ranglijst verwijderen die beledigend zijn, die zich voordoen als iemand anders, die geautomatiseerd lijken of die duidelijk niet zijn behaald door iemand die het spel speelde. Ik verwijder inzendingen om de ranglijst eerlijk te houden, niet om te bepalen wie er wint."
+          }
+        ]
+      },
+      "content": {
+        "title": "Inhoud en intellectueel eigendom",
+        "blocks": [
+          {
+            "p": "De eigen inhoud van de site, waaronder het spel, de gidsen van Leren, het ontwerp en de code waarop alles draait, is van mij. Je mag gerust naar elke pagina linken, redelijke fragmenten met bronvermelding citeren en je scores delen waar je maar wilt. Publiceer geen volledige gidsen opnieuw en geef de inhoud van de site niet uit als die van jezelf."
+          },
+          {
+            "p": "Het schaakspel zelf is van niemand. Stellingen, regels en notatie zijn vrij voor iedereen, hier en overal elders."
+          },
+          {
+            "p": "Als je feedback of suggesties stuurt, ga je ermee akkoord dat ik ze mag gebruiken om de site te verbeteren zonder je daarvoor een vergoeding of vermelding verschuldigd te zijn. Feedback van spelers heeft al eerder echte releases gevormd, en het wijzigingslogboek legt vast wat ermee is gedaan."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Diensten van derden",
+        "blocks": [
+          {
+            "p": "De site draait op een klein aantal externe diensten. Google AdSense toont de advertenties die de site gratis houden. Google Analytics, Vercel Analytics, Vercel Speed Insights en Ahrefs Analytics meten verkeer en prestaties. Supabase slaat spelstatistieken en inzendingen voor de ranglijst op. Elke dienst heeft eigen voorwaarden, en het <privacy>privacybeleid</privacy> legt uit met welke gegevens elke dienst in aanraking komt en welke keuzes je hebt."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Wijzigingen in deze voorwaarden",
+        "blocks": [
+          {
+            "p": "Ik kan deze voorwaarden bijwerken wanneer de site of de diensten ervan veranderen. De huidige versie staat altijd op dit adres, en als je de site na een wijziging blijft gebruiken, aanvaard je de bijgewerkte voorwaarden. Alles wat spelers merkbaar raakt, zoals een wijziging in de werking van de ranglijst, vermeld ik ook in het wijzigingslogboek."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Contact",
+        "blocks": [
+          {
+            "p": "Vragen over deze voorwaarden, of een inzending op de ranglijst die je wilt laten bekijken of verwijderen, stuur je naar <mail>{email}</mail>. Ik beantwoord ze zelf."
+          }
+        ]
+      }
+    }
+  }
+}

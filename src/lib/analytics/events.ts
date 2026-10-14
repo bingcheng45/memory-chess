@@ -1,3 +1,4 @@
+import { isTrackerAvailable, track } from "@databuddy/sdk";
 import type { DAILY_BOARD, LeaderboardDifficulty } from "@/types/leaderboard";
 import type { SearchOutcome } from "@/lib/seo/learn/search";
 import type { ShareNetwork } from "@/lib/shareIntents";
@@ -141,7 +142,30 @@ export const SHARE_EVENTS = { dashboard: "lab_dashboard_share", result: "result_
 
 export type ShareSurface = keyof typeof SHARE_EVENTS;
 
-export function trackEvent({ name, params }: FunnelEvent): void {
-  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
-  window.gtag("event", name, params);
+/**
+ * The few events Databuddy builds its goals and funnel from: a round started, a round finished (its first per
+ * visitor is the first successful use), and a score sent to a leaderboard or the daily board. Accuracy and the
+ * recalled count stay with GA4 so each property keeps few values.
+ */
+function databuddyEvent(event: FunnelEvent): [string, Record<string, string | number>] | null {
+  switch (event.name) {
+    case "round_start":
+      return ["round_started", event.params];
+    case "round_complete": {
+      const { piece_count, memorize_time, source } = event.params;
+      return ["round_completed", { piece_count, memorize_time, source }];
+    }
+    case "score_submit":
+      return ["score_submitted", event.params];
+    default:
+      return null;
+  }
+}
+
+export function trackEvent(event: FunnelEvent): void {
+  if (typeof window === "undefined") return;
+  if (typeof window.gtag === "function") window.gtag("event", event.name, event.params);
+  // The tracker loads only on production; without it, track() would queue the call and poll for the script.
+  const mirrored = databuddyEvent(event);
+  if (mirrored && isTrackerAvailable()) track(...mirrored);
 }

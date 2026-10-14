@@ -1,5 +1,6 @@
+import { trackAgents } from "@databuddy/sdk/agents";
 import createMiddleware from "next-intl/middleware";
-import { NextRequest, NextResponse } from "next/server";
+import { type NextFetchEvent, NextRequest, NextResponse } from "next/server";
 import { routing, LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
 import { isIndexedInDefaultLocaleOnly, isServedAtBareEnglishUrl, unprefixedPath } from "@/lib/seo/englishOnly";
@@ -70,7 +71,14 @@ function hasSupportedLanguage(acceptLanguage: string | null): boolean {
   });
 }
 
-export default function middleware(request: NextRequest) {
+/** Markdown and text files, which AI crawlers read most. The matcher admits them only so they are counted. */
+const AGENT_FILE = /\.(?:md|txt)$/;
+
+export default function middleware(request: NextRequest, event?: NextFetchEvent) {
+  // AI crawlers run no JavaScript, so the browser tracker never sees them.
+  if (process.env.VERCEL_ENV === "production") event?.waitUntil(trackAgents(request));
+  if (AGENT_FILE.test(request.nextUrl.pathname)) return NextResponse.next();
+
   const response = route(request);
   // next-intl advertises every locale in a hreflang Link header. For a route
   // indexed only in English that would point crawlers at noindex pages.
@@ -174,7 +182,9 @@ export const config = {
    * explicitly: they are single-origin documents that already enumerate every
    * locale themselves, so a locale redirect on them would be wrong. Next
    * matches this against the path with its trailing slash removed, so a slashed
-   * skipped path is redirected in next.config.ts instead.
+   * skipped path is redirected in next.config.ts instead. The second pattern
+   * admits `.md` and `.txt` files, robots.txt included, so AI crawler reads
+   * of them are counted; the middleware passes them through untouched.
    */
-  matcher: ["/((?!api|_next|_vercel|sitemap\\.xml|robots\\.txt|.*\\..*).*)"],
+  matcher: ["/((?!api|_next|_vercel|sitemap\\.xml|robots\\.txt|.*\\..*).*)", "/((?!_next/).*\\.(?:md|txt))"],
 };

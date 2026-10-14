@@ -62,6 +62,43 @@ it.each([
   expect(roundSourceFrom(value)).toBe(source);
 });
 
+describe("Databuddy", () => {
+  const databuddyTrack = jest.fn();
+
+  beforeEach(() => {
+    databuddyTrack.mockClear();
+    Object.assign(window, { databuddy: { track: databuddyTrack } });
+  });
+
+  afterEach(() => {
+    Reflect.deleteProperty(window, "databuddy");
+  });
+
+  it.each([
+    ["round_started", EVENTS[0], { piece_count: 6, memorize_time: 10, source: "home_quick" }],
+    ["round_completed", EVENTS[1], { piece_count: 6, memorize_time: 10, source: "try_again" }],
+    ["score_submitted", EVENTS[3], { difficulty: "medium", piece_count: 6 }],
+  ])("sends %s with no accuracy or recalled count", (name, event, properties) => {
+    trackEvent(event);
+
+    expect(databuddyTrack).toHaveBeenCalledTimes(1);
+    expect(databuddyTrack).toHaveBeenCalledWith(name, properties);
+  });
+
+  it("receives no lab, article or search events", () => {
+    EVENTS.slice(4).forEach(trackEvent);
+
+    expect(databuddyTrack).not.toHaveBeenCalled();
+  });
+
+  it("is not called before its script has loaded", () => {
+    Reflect.deleteProperty(window, "databuddy");
+
+    expect(() => trackEvent(EVENTS[0])).not.toThrow();
+    expect(databuddyTrack).not.toHaveBeenCalled();
+  });
+});
+
 it("does nothing when gtag is absent", () => {
   // @ts-expect-error gtag is optional at runtime, as it is on non-production builds
   delete window.gtag;

@@ -1,6 +1,7 @@
 import type { ReactElement, ReactNode } from "react";
 import { isValidElement } from "react";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Databuddy } from "@databuddy/sdk/react";
 import LocaleLayout from "@/app/[locale]/layout";
 import { AHREFS_ANALYTICS_SCRIPT_URL } from "@/lib/ahrefs";
 import { ADSENSE_SCRIPT_URL } from "@/lib/adsense";
@@ -40,6 +41,7 @@ describe("visitor analytics", () => {
     const tree = await renderLayout();
 
     expect(collect(tree, (element) => element.type === GoogleAnalytics)).toHaveLength(1);
+    expect(collect(tree, (element) => element.type === Databuddy)).toHaveLength(1);
     expect(collect(tree, scriptWithSrc(AHREFS_ANALYTICS_SCRIPT_URL))).toHaveLength(1);
   });
 
@@ -52,6 +54,7 @@ describe("visitor analytics", () => {
     const tree = await renderLayout();
 
     expect(collect(tree, (element) => element.type === GoogleAnalytics)).toHaveLength(0);
+    expect(collect(tree, (element) => element.type === Databuddy)).toHaveLength(0);
     expect(collect(tree, scriptWithSrc(AHREFS_ANALYTICS_SCRIPT_URL))).toHaveLength(0);
   });
 

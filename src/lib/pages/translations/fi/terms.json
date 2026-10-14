@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Käyttöehdot",
+      "description": "Selkokieliset ehdot Memory Chessin pelaamiselle, pisteiden lähettämiselle tulostaulukkoon ja sivuston sisällön käytölle.",
+      "socialTitle": "Memory Chessin käyttöehdot",
+      "socialDescription": "Selkokieliset ehdot Memory Chessin pelaamiselle ja sivuston käytölle."
+    },
+    "kicker": "Pienellä präntätty",
+    "title": "Käyttöehdot",
+    "lede": "Memory Chess on yhden ihmisen ylläpitämä ilmainen peli. Nämä ehdot ovat lyhyet, koska sopimus on yksinkertainen, ja ne on kirjoitettu luettaviksi.",
+    "sections": {
+      "service": {
+        "title": "Palvelu",
+        "blocks": [
+          {
+            "p": "Memory Chess on ilmainen selainpeli laudan muistamisen harjoitteluun. Tarjoan sen sellaisena kuin se on ja sellaisena kuin se on saatavilla, ilman minkäänlaista takuuta. Teen työtä pitääkseni sen nopeana, tarkkana ja verkossa, mutta en lupaa keskeytyksetöntä palvelua, virheetöntä pisteytystä enkä sitä, että mikään ominaisuus pysyy samanlaisena ikuisesti. Voin muuttaa, keskeyttää tai lopettaa minkä tahansa sivuston osan milloin tahansa."
+          },
+          {
+            "p": "Siinä määrin kuin laki sallii, en ole vastuussa vahingoista, jotka aiheutuvat sivuston käytöstäsi. Tämä on muistipeli. Järkevä yläraja sille, mikä tässä voi mennä pieleen, on se, että menetät sinulle tärkeän pistemäärän, ja yritän silti kovasti estää sen."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Hyväksyttävä käyttö",
+        "blocks": [
+          {
+            "p": "Pelaa reilusti ja anna sivuston toimia kaikille muillekin. Älä hyökkää palveluun, ylikuormita sitä tai tutki sitä heikkouksien varalta, älä kaavi sitä suuressa mittakaavassa äläkä yritä rikkoa sen pisteytystä. Älä lähetä botin, skriptin tai minkäänlaisen automaation tuottamia pisteitä. Älä käytä yhteydenottolomaketta tai tulostaulukkoa roskapostiin, häirintään tai kenenkään muuna esiintymiseen."
+          },
+          {
+            "p": "Yhteydenottolomake on tarkoitettu oikeille viesteille oikealle ihmiselle. Käytä sitä virheilmoituksiin, kysymyksiin ja ideoihin, niin se luetaan."
+          },
+          {
+            "p": "Voin estää liikennettä tai rajoittaa pääsyä, joka rikkoo näitä sääntöjä. Koska estettäviä tilejä ei ole, huonojen merkintöjen poistaminen ja väärinkäytön estäminen verkon reunalla ovat ne valvontakeinot, jotka minulla on, ja käytän niitä."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Tulostaulukko",
+        "blocks": [
+          {
+            "p": "Pisteiden lähettäminen tulostaulukkoon on vapaaehtoista. Kaikki, mitä lähetät sinne, on julkista. Pisteisiin liitetty nimi on se, minkä kirjoitat, joten valitse jotain, jonka näet mielelläsi julkaistuna, äläkä käytä oikeaa nimeäsi tai kenenkään henkilötietoja, jos haluat mieluummin pitää ne yksityisinä."
+          },
+          {
+            "p": "Lähetetty merkintä sisältää valitsemasi nimen ja kierroksen tiedot, kuten tarkkuuden, vaikeustason ja suoritusajan. Julkaisemisen jälkeen se pysyy taulukossa, kunnes paremmat tulokset syrjäyttävät sen tai se poistetaan."
+          },
+          {
+            "p": "Voin poistaa tulostaulukon merkinnät, jotka ovat loukkaavia, jotka esiintyvät jonakin toisena, jotka vaikuttavat automatisoiduilta tai joita ei selvästikään ole tuottanut peliä pelaava ihminen. Poistan merkintöjä pitääkseni taulukon rehellisenä, en valitakseni, kuka voittaa."
+          }
+        ]
+      },
+      "content": {
+        "title": "Sisältö ja immateriaalioikeudet",
+        "blocks": [
+          {
+            "p": "Sivuston oma sisältö, mukaan lukien peli, Opi-oppaat, ulkoasu ja sivustoa pyörittävä koodi, kuuluu minulle. Saat vapaasti linkittää mille tahansa sivulle, lainata kohtuullisia otteita lähde mainiten ja jakaa tuloksiasi missä haluat. Älä julkaise kokonaisia oppaita uudelleen äläkä esitä sivuston sisältöä omanasi."
+          },
+          {
+            "p": "Itse shakki ei kuulu kenellekään. Asemat, säännöt ja notaatio ovat vapaasti kaikkien käytettävissä, täällä ja kaikkialla muualla."
+          },
+          {
+            "p": "Jos lähetät palautetta tai ehdotuksia, hyväksyt, että voin käyttää niitä sivuston parantamiseen ilman, että olen sinulle velkaa korvausta tai mainintaa. Pelaajien palaute on ennenkin muovannut oikeita julkaisuja, ja muutosloki kertoo, mitä siitä seurasi."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Kolmannen osapuolen palvelut",
+        "blocks": [
+          {
+            "p": "Sivusto toimii pienen joukon ulkoisia palveluita varassa. Google AdSense näyttää mainokset, jotka pitävät sen ilmaisena. Google Analytics, Vercel Analytics, Vercel Speed Insights ja Ahrefs Analytics mittaavat liikennettä ja suorituskykyä. Supabase tallentaa pelitilastot ja tulostaulukon merkinnät. Jokaisella on omat ehtonsa, ja <privacy>tietosuojaseloste</privacy> kertoo, mitä tietoja kukin niistä käsittelee ja mitä valintoja sinulla on."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Muutokset näihin ehtoihin",
+        "blocks": [
+          {
+            "p": "Voin päivittää näitä ehtoja, kun sivusto tai sen palvelut muuttuvat. Voimassa oleva versio on aina tässä osoitteessa, ja sivuston käytön jatkaminen muutoksen jälkeen tarkoittaa, että hyväksyt päivitetyt ehdot. Kaiken, mikä vaikuttaa pelaajiin merkittävästi, kuten muutoksen tulostaulukon toimintaan, kirjaan lisäksi muutoslokiin."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Yhteystiedot",
+        "blocks": [
+          {
+            "p": "Näitä ehtoja koskevat kysymykset tai tulostaulukon merkintä, jonka haluat tarkistettavan tai poistettavan, voi lähettää osoitteeseen <mail>{email}</mail>. Vastaan niihin itse."
+          }
+        ]
+      }
+    }
+  }
+}

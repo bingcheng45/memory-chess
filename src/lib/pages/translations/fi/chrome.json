@@ -1,0 +1,15 @@
+{
+  "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "contents": "Sisältö",
+    "onThisPage": "Tällä sivulla",
+    "lastUpdated": "Päivitetty viimeksi: <time>{date}</time>",
+    "note": {
+      "general": "Tämä sivu on käännetty englannista tekoälyn avustuksella. Englanninkielinen sivu on viiteversio.",
+      "legal": "Tämä käännös on tehty tekoälyn avustuksella, ja se tarjotaan helpottamaan lukemista. Jos se poikkeaa englanninkielisestä versiosta, englanninkielinen versio on ratkaiseva.",
+      "readInEnglish": "Lue englanniksi"
+    }
+  }
+}

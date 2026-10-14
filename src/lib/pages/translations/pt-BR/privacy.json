@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": "bd614187f860616df7fd8a042101e89198b21c9c1730027ec3d5a25217da64bf",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Política de privacidade",
+      "description": "Saiba como o Memory Chess usa dados, o armazenamento do navegador, ferramentas de análise, cookies e serviços de publicidade.",
+      "socialTitle": "Política de privacidade do Memory Chess",
+      "socialDescription": "Saiba como o Memory Chess trata dados, cookies, análise e publicidade."
+    },
+    "kicker": "Sua privacidade",
+    "title": "Política de privacidade",
+    "lede": "Um guia simples sobre o que o Memory Chess coleta, por que usamos isso e as escolhas que você tem.",
+    "sections": {
+      "short-version": {
+        "title": "Em resumo",
+        "blocks": [
+          {
+            "p": "Você pode jogar Memory Chess sem criar uma conta. Usamos uma pequena quantidade de dados para fazer o jogo funcionar, lembrar as suas configurações, entender o desempenho do site, responder mensagens, manter o ranking e melhorar a experiência. Também usamos o Google AdSense, que pode usar cookies e tecnologias semelhantes para anúncios quando a publicidade está ativada."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Quem é responsável pelos seus dados",
+        "blocks": [
+          {
+            "p": "O Memory Chess é mantido por Bing Cheng, desenvolvedor independente, que atua como controlador das informações pessoais descritas nesta política. Para qualquer dúvida ou solicitação sobre privacidade, envie um e-mail para <mail>{email}</mail> ou use o formulário de contato."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Informações que você nos fornece",
+        "blocks": [
+          {
+            "ul": [
+              "<b>Mensagens de contato:</b> o seu nome, endereço de e-mail, tipo de solicitação e mensagem quando você usa o formulário de contato.",
+              "<b>Feedback sobre o jogo:</b> a sua avaliação em estrelas, comentários opcionais e detalhes da rodada, como precisão, dificuldade, número de peças e tempos de conclusão. Este formulário de feedback não pede o seu nome nem o seu endereço de e-mail.",
+              "<b>Entradas do ranking:</b> o nome de jogador que você escolhe, os detalhes da pontuação que você envia, o seu rating de habilidade naquele momento e o país que você seleciona, se selecionar algum. Essas informações são exibidas publicamente, então, por favor, não use o seu nome real se preferir mantê-lo privado. Quando você entra no ranking diário, o formulário sugere um país com base no país de onde vem a sua conexão, informado pelo nosso provedor de hospedagem; não guardamos esse palpite, e o país salvo é o que você escolher."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Informações coletadas automaticamente",
+        "blocks": [
+          {
+            "p": "Nossos provedores de medição podem receber informações técnicas e de uso, como páginas visualizadas, localização aproximada, tipo de navegador e de dispositivo, página de origem, endereço IP e tempos de desempenho. O Memory Chess usa Google Analytics, Vercel Analytics, Vercel Speed Insights e Ahrefs Analytics para entender o tráfego e manter o site rápido e confiável."
+          },
+          {
+            "p": "Não pedimos que essas ferramentas coletem o conteúdo das suas mensagens de contato nem dos seus comentários de feedback sobre o jogo."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Cookies e armazenamento do navegador",
+        "blocks": [
+          {
+            "p": "O Memory Chess usa o armazenamento do navegador para guardar o histórico e as configurações do jogo no seu dispositivo, lembrar as preferências de som, evitar repetir um aviso de atualização que você fechou e calcular quando o convite para dar feedback pode voltar. Limpar os dados do navegador redefine essas escolhas."
+          },
+          {
+            "p": "O registro do laboratório da página inicial guarda cada rodada que você termina, incluindo a leitura de treino na página inicial, no IndexedDB e no armazenamento local do seu navegador: a posição que você estudou, a que você reconstruiu, os seus tempos, as suas pontuações, a diferença do seu fuso horário, onde você começou a rodada (como a página inicial ou um guia) e a ordem e o tempo de cada peça que você colocou. Ele é usado apenas para mostrar, neste dispositivo, a sua sequência, os seus recordes pessoais, a tendência da sua precisão, o mapa de erros, o tabuleiro de hoje, a fila de revisão e a curva do esquecimento. O registro em si, com as suas posições, casas, colocações e histórico, nunca sai deste dispositivo. Uma rodada que você escolhe compartilhar é a única exceção, descrita abaixo. O armazenamento local também guarda o dia UTC em que você abriu o tabuleiro de hoje pela última vez, para oferecer uma tentativa por dia, e quais etapas de revisão você abriu, para que um tabuleiro abandonado antes do resultado não seja mostrado duas vezes no mesmo intervalo. O Google Analytics recebe um evento para cada rodada que você termina, na página inicial ou no jogo, com o número de peças, o tempo de estudo, quantas peças você lembrou, a sua precisão e onde a rodada começou, o que pode indicar o tabuleiro de hoje, uma revisão ou um plano. Ele também recebe um evento quando uma rodada começa, com o número de peças, o tempo de estudo e onde ela começou. Ele recebe ainda alguns eventos do laboratório: quando a seção do laboratório aparece na tela, quando você segue um dos links dela para jogar, o número de rodadas quando você baixa ou pede um backup entre dispositivos, e o número de rodadas adicionadas e ignoradas quando você importa. Nenhum desses eventos leva posições, casas, ids de rodada ou sequências. Quando você inicia, interrompe ou conclui um plano, ou define ou apaga uma meta, o Google Analytics recebe um evento que informa apenas essa ação, sem nome de plano e sem números. O plano e a meta que você escolhe ficam guardados no armazenamento local do seu navegador neste dispositivo, assim como o número de dias por semana em que você pretende jogar, que não envia nenhum evento. Baixar meu registro do laboratório salva uma cópia em um arquivo que você controla, e limpar os dados do navegador apaga o registro. Janelas privadas não o guardam. Só quando você pressiona Copiar minha leitura o seu navegador coloca na área de transferência um texto curto com a sua amplitude de memória e, quando o registro consegue calculá-las, as suas peças retidas e a sua velocidade, cada uma com o seu número de rodadas. O texto não menciona posições, casas ou datas e não é enviado a lugar nenhum. O armazenamento local também guarda o momento em que o aviso sobre manter o seu registro neste navegador apareceu na tela pela primeira vez, para que o aviso seja mostrado uma vez, o momento em que você viu o seu caderno pela última vez, para que as entradas mais novas sejam marcadas como novas, e o momento em que você baixou o registro pela última vez. Depois de algumas rodadas, o site pede uma vez ao seu navegador que mantenha o registro quando o espaço estiver acabando, e o armazenamento local anota que fez esse pedido."
+          },
+          {
+            "p": "A página de progresso lê o mesmo registro no seu navegador e não envia nada. Só quando você pressiona Compartilhar meu progresso o seu navegador desenha uma imagem com os números que o registro consegue calcular: a sua amplitude de memória, o seu rating de habilidade, as suas peças retidas, a sua velocidade, a sua melhor precisão e a precisão recente, a sua sequência de vitórias, os dias seguidos, as rodadas jogadas e os dias jogados. Só quando você pressiona Compartilhar resultado na tela de resultado do jogo o seu navegador desenha uma imagem daquela rodada: a precisão, as peças que você lembrou, o número de peças, o tempo de estudo permitido e o usado, o tempo de reconstrução e, exceto em uma revisão, o seu rating, a variação dele e qualquer sequência de vitórias, e, exceto no tabuleiro de hoje, o tabuleiro que você estudou e o que você reconstruiu."
+          },
+          {
+            "p": "Qualquer um dos botões abre uma janela de compartilhamento, e nada sai do seu navegador até que você escolha uma das ações dela: entregar a imagem, uma legenda curta e um link ao menu de compartilhamento do seu dispositivo, baixar a imagem, copiar a imagem, copiar a legenda com o link, ou abrir a página de publicação do X, Facebook, LinkedIn, Reddit, WhatsApp, Threads ou Bluesky com o link e, em todos menos Facebook e LinkedIn, a legenda já preenchidos. O que você enviar ali é tratado conforme os termos de privacidade daquele serviço."
+          },
+          {
+            "p": "O link na legenda abre a página própria do cartão no Memory Chess, e os números do cartão ficam escritos no próprio link. Um link de resultado compartilhado, em /share/result/, também leva o tabuleiro que você estudou, o tabuleiro que você reconstruiu e a ordem e o tempo de cada peça que você colocou, a menos que a rodada tenha sido o tabuleiro de hoje, cujo link não leva nenhuma posição. Qualquer pessoa que abrir o link pode ler esses dados, e o Memory Chess os lê do link para desenhar a página e a sua prévia. Um link só é criado quando você compartilha um cartão, e o Memory Chess não o salva. Como em qualquer página do site, as ferramentas de análise citadas acima registram o endereço da página, link incluído, quando alguém a abre."
+          },
+          {
+            "p": "O Google Analytics recebe um evento lab_dashboard_share quando um cartão de progresso sai da página e um evento result_share quando um cartão de resultado sai. Cada um informa apenas como o cartão saiu, como o seu método: native para o menu de compartilhamento, download para uma imagem baixada, copy_image para uma imagem copiada, copy para uma legenda copiada, ou post para a página de publicação de uma rede, com essa rede indicada como x, facebook, linkedin, reddit, whatsapp, threads ou bluesky. Nenhum dos dois eventos leva os números do cartão, os seus tabuleiros ou o seu link."
+          },
+          {
+            "p": "Quando você envia uma pontuação ao ranking, o armazenamento local deste dispositivo também guarda o id que o ranking atribui a essa entrada, com a dificuldade, o país, a pontuação e o momento em que você a enviou, para a sua melhor entrada em cada dificuldade. Só quando você pressiona Ver minha posição no registro do laboratório o seu navegador envia esse id de entrada ao Memory Chess, indicando se a classificação deve ser mundial ou dentro do próprio país da entrada. O Memory Chess lê a entrada no ranking e responde com a posição dela e o número de entradas com que ela foi comparada. A resposta não é armazenada. Para limitar a frequência com que a posição pode ser consultada, o servidor conta na memória as consultas de cada endereço IP por um minuto, e descarta um endereço na primeira consulta depois que o minuto dele termina. Se o ranking não tiver mais a entrada, o id dela é removido deste dispositivo. O Google Analytics recebe um evento que informa que uma consulta de posição foi feita, sem id de entrada e sem posição."
+          },
+          {
+            "p": "Curtir um artigo salva o id desse artigo e o número de curtidas exibido naquele momento no armazenamento local do seu navegador, para que o botão de curtir continue pressionado e a contagem não caia quando você voltar. O armazenamento de sessão lembra quais artigos você abriu na aba atual, para que abrir um deles de novo ali não some uma visualização. As duas listas ficam no seu navegador. Quando você curte um artigo, o Google Analytics também recebe um evento de curtida que identifica o artigo."
+          },
+          {
+            "p": "A busca do Aprender ordena os guias no seu navegador, ou no servidor quando você busca a partir da página de busca. O Google Analytics recebe um evento para uma busca com quantos caracteres você digitou, quantos guias corresponderam, o guia principal e se a correspondência foi apenas aproximada, e um evento quando você abre um resultado com esse guia e a posição dele na lista. Nenhum dos dois eventos leva as palavras que você digitou. Uma busca feita na própria página de busca coloca as suas palavras no endereço dessa página, e as ferramentas de análise registram o endereço de toda página visualizada, então essas palavras podem chegar até elas."
+          },
+          {
+            "p": "O Google Analytics e os serviços de publicidade podem usar cookies ou identificadores semelhantes. Você pode bloquear ou excluir cookies no seu navegador, embora algumas preferências possam deixar de funcionar como esperado."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Publicidade e Google AdSense",
+        "blocks": [
+          {
+            "p": "O Memory Chess usa o Google AdSense para sustentar o site. Fornecedores terceiros, incluindo o Google, podem colocar ou ler cookies, usar web beacons ou processar endereços IP quando serviços de publicidade ou tags de anúncio são usados."
+          },
+          {
+            "p": "O Google e os seus parceiros de publicidade podem usar cookies de publicidade para exibir anúncios com base nas suas visitas ao Memory Chess e a outros sites. Dependendo da sua localização, das suas escolhas e das suas configurações, os anúncios podem ser personalizados ou não personalizados. Outros fornecedores de anúncios certificados pelo Google também podem participar da exibição e da medição de anúncios."
+          },
+          {
+            "p": "O Google é um desses fornecedores e usa o cookie DoubleClick, também conhecido como cookie DART, para exibir anúncios com base nas suas visitas a este site e a outros sites na internet. Você pode desativar o cookie DART nas configurações de anúncios do Google indicadas abaixo."
+          },
+          {
+            "p": "Saiba mais sobre <partnerSites>como o Google usa informações de sites parceiros</partnerSites>. Você pode gerenciar a publicidade personalizada no <adCenter>My Ad Center</adCenter> e desativar alguns outros fornecedores pelo <adChoices>YourAdChoices</adChoices>."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Escolhas de consentimento",
+        "blocks": [
+          {
+            "p": "Quando exigido, os visitantes veem uma mensagem de consentimento antes que os dados de publicidade elegíveis sejam usados. Visitantes do Espaço Econômico Europeu, do Reino Unido e da Suíça podem consentir, recusar ou gerenciar escolhas individuais pela plataforma de consentimento do Google. Você também pode alterar os controles de cookies no seu navegador e ajustar as preferências de publicidade do Google no My Ad Center."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Como usamos e compartilhamos informações",
+        "blocks": [
+          {
+            "p": "Usamos as informações para oferecer e proteger o Memory Chess, calcular resultados, publicar as pontuações enviadas ao ranking, responder mensagens de contato, analisar feedback, medir o desempenho do site, evitar abusos e sustentar o site com publicidade. Não vendemos os dados de contato nem o feedback que você envia."
+          },
+          {
+            "p": "Os dados são tratados por prestadores de serviço apenas quando necessário: Google Sheets para mensagens de contato e feedback sobre o jogo, Supabase para estatísticas do jogo, entradas do ranking e totais de visualizações e curtidas dos artigos, Vercel para hospedagem e medição de desempenho, Ahrefs para análise e Google para análise, consentimento e publicidade. Esses prestadores podem tratar dados em outros países conforme os próprios termos de privacidade."
+          },
+          {
+            "p": "Quando você abre ou curte um artigo, o Supabase armazena apenas um total de visualizações e um total de curtidas por artigo, com o horário da última alteração e nenhum identificador de visitante."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Retenção e segurança",
+        "blocks": [
+          {
+            "p": "Mantemos as informações enviadas apenas enquanto continuarem úteis para as finalidades descritas acima, incluindo manter o ranking público e responder mensagens, ou conforme exigido por lei. Nenhum serviço online é perfeitamente seguro, mas limitamos o acesso e usamos salvaguardas razoáveis nos sistemas que controlamos."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "Suas escolhas",
+        "blocks": [
+          {
+            "ul": [
+              "Jogar sem enviar um nome ao ranking nem feedback.",
+              "Limpar no seu navegador os dados de jogo e as preferências armazenados.",
+              "Gerenciar cookies, escolhas de consentimento e anúncios personalizados.",
+              "Fazer perguntas sobre as informações que você enviou, corrigi-las ou pedir que sejam excluídas, sujeito à legislação aplicável e à nossa capacidade de verificar a solicitação."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "Seus direitos segundo o GDPR e a CCPA",
+        "blocks": [
+          {
+            "p": "Se você está no Espaço Econômico Europeu ou no Reino Unido, o GDPR lhe dá os direitos de acesso, retificação, apagamento, limitação do tratamento, oposição ao tratamento e portabilidade dos dados. As bases legais em que nos apoiamos são o seu consentimento, para publicidade personalizada e cookies de análise quando o consentimento é exigido, e os nossos interesses legítimos, para operar e proteger o site, publicar as pontuações que você envia ao ranking e responder às mensagens que você manda. Você pode retirar o consentimento a qualquer momento pela mensagem de consentimento ou pelas configurações do navegador, e pode apresentar uma reclamação à sua autoridade de controle local."
+          },
+          {
+            "p": "Se você mora na Califórnia, a CCPA lhe dá o direito de saber quais informações pessoais são coletadas, de pedir a exclusão delas e de recusar a venda ou o compartilhamento delas. Não vendemos as suas informações pessoais. Cookies usados para publicidade personalizada podem contar como compartilhamento segundo a CCPA, e você pode recusá-lo pela mensagem de consentimento, pelo My Ad Center e pelo YourAdChoices, indicados acima. Este é o nosso aviso de \"Não vender nem compartilhar minhas informações pessoais\" (Do Not Sell or Share My Personal Information). Para exercer qualquer um desses direitos, envie um e-mail para <mail>{email}</mail>."
+          }
+        ]
+      },
+      "children": {
+        "title": "Privacidade de crianças",
+        "blocks": [
+          {
+            "p": "O Memory Chess é um jogo de treino para o público em geral e não foi feito para coletar informações pessoais de crianças. Se você é pai, mãe ou responsável e acredita que uma criança enviou informações pessoais, entre em contato conosco para que possamos analisar e remover essas informações quando for o caso."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Alterações e contato",
+        "blocks": [
+          {
+            "p": "Podemos atualizar esta política quando o site ou os nossos prestadores de serviço mudarem. A data no topo mostra a revisão mais recente. Para dúvidas ou solicitações sobre privacidade, use o <contact>formulário de contato do Memory Chess</contact>."
+          }
+        ]
+      }
+    }
+  }
+}

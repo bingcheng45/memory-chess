@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Tietosuojaseloste",
+      "description": "Lue, miten Memory Chess käyttää tietoja, selaimen tallennustilaa, analytiikkaa, evästeitä ja mainospalveluita.",
+      "socialTitle": "Memory Chessin tietosuojaseloste",
+      "socialDescription": "Lue, miten Memory Chess käsittelee tietoja, evästeitä, analytiikkaa ja mainontaa."
+    },
+    "kicker": "Yksityisyytesi",
+    "title": "Tietosuojaseloste",
+    "lede": "Yksinkertainen opas siihen, mitä Memory Chess kerää, miksi käytämme sitä ja mitä valintoja sinulla on.",
+    "sections": {
+      "short-version": {
+        "title": "Lyhyesti",
+        "blocks": [
+          {
+            "p": "Voit pelata Memory Chessiä luomatta tiliä. Käytämme pientä määrää tietoja pelin pyörittämiseen, asetustesi muistamiseen, sivuston toiminnan ymmärtämiseen, viesteihin vastaamiseen, tulostaulukon ylläpitoon ja käyttökokemuksen parantamiseen. Käytämme myös Google AdSenseä, joka voi käyttää evästeitä ja vastaavaa tekniikkaa mainoksiin, kun mainonta on käytössä."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Kuka vastaa tiedoistasi",
+        "blocks": [
+          {
+            "p": "Memory Chessiä ylläpitää itsenäinen kehittäjä Bing Cheng, joka toimii tässä selosteessa kuvattujen henkilötietojen rekisterinpitäjänä. Kaikissa tietosuojaa koskevissa kysymyksissä ja pyynnöissä voit lähettää sähköpostia osoitteeseen <mail>{email}</mail> tai käyttää yhteydenottolomaketta."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Tiedot, jotka annat meille",
+        "blocks": [
+          {
+            "ul": [
+              "<b>Yhteydenottoviestit:</b> nimesi, sähköpostiosoitteesi, yhteydenoton tyyppi ja viestisi, kun käytät yhteydenottolomaketta.",
+              "<b>Palaute pelistä:</b> tähtiarviosi, vapaaehtoiset kommentit ja pelin tiedot, kuten tarkkuus, vaikeustaso, nappuloiden määrä ja suoritusajat. Tämä palautelomake ei kysy nimeäsi eikä sähköpostiosoitettasi.",
+              "<b>Tulostaulukon merkinnät:</b> valitsemasi pelaajanimi, lähettämäsi pistetiedot, taitolukusi sillä hetkellä ja valitsemasi maa, jos valitset sellaisen. Nämä näytetään julkisesti, joten älä käytä oikeaa nimeäsi, jos haluat mieluummin pitää sen yksityisenä. Kun liityt päivän laudalle, lomake ehdottaa maata sen maan perusteella, josta yhteytesi tulee ja jonka sivustomme palvelintilan tarjoaja ilmoittaa; emme tallenna tätä arvausta, ja tallennetuksi tulee valitsemasi maa."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Automaattisesti kerättävät tiedot",
+        "blocks": [
+          {
+            "p": "Mittauspalveluiden tarjoajamme voivat saada teknisiä tietoja ja käyttötietoja, kuten katsotut sivut, likimääräisen sijainnin, selaimen ja laitteen tyypin, viittaavan sivun, IP-osoitteen ja suorituskyvyn ajoitukset. Memory Chess käyttää Google Analyticsia, Vercel Analyticsia, Vercel Speed Insightsia ja Ahrefs Analyticsia ymmärtääkseen liikennettä ja pitääkseen sivuston nopeana ja luotettavana."
+          },
+          {
+            "p": "Emme pyydä näitä työkaluja keräämään yhteydenottoviestiesi tai pelipalautteen kommenttiesi sisältöä."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Evästeet ja selaimen tallennustila",
+        "blocks": [
+          {
+            "p": "Memory Chess käyttää selaimen tallennustilaa pitääkseen pelihistorian ja asetukset laitteellasi, muistaakseen ääniasetukset, välttääkseen suljetun päivitysbannerin näyttämisen uudelleen ja ajoittaakseen, milloin palautekehote voi palata. Selaimen tietojen tyhjentäminen nollaa nämä valinnat."
+          },
+          {
+            "p": "Etusivun laboratoriopäiväkirja tallentaa jokaisen loppuun pelaamasi kierroksen, myös etusivun harjoitusmittauksen, selaimesi IndexedDB:hen ja paikalliseen tallennustilaan: tutkimasi aseman, uudelleen rakentamasi aseman, aikasi, pisteesi, aikavyöhykkeesi poikkeaman, mistä aloitit kierroksen (esimerkiksi etusivulta tai oppaasta) sekä jokaisen asettamasi nappulan järjestyksen ja ajoituksen. Sitä käytetään vain putkesi, ennätystesi, tarkkuuden kehityksen, virhekartan, päivän laudan, kertausjonon ja unohtamiskäyrän piirtämiseen tällä laitteella. Itse päiväkirja asemineen, ruutuineen, sijoituksineen ja historioineen ei koskaan poistu tältä laitteelta. Ainoa poikkeus on kierros, jonka päätät jakaa, ja se kuvataan alempana. Paikallinen tallennustila säilyttää myös UTC-päivän, jona viimeksi avasit päivän laudan, jotta saat yhden yrityksen päivässä, sekä sen, mitkä kertausvaiheet olet avannut, jotta ennen tulosta jätettyä lautaa ei näytetä kahdesti samalla viiveellä. Google Analytics saa tapahtuman jokaisesta loppuun pelaamastasi kierroksesta etusivulla tai pelissä, ja siinä on nappuloiden määrä, tutkimisaika, kuinka monta nappulaa muistit, tarkkuutesi ja mistä kierros alkoi, mikä voi olla päivän lauta, kertaus tai suunnitelma. Se saa tapahtuman myös kierroksen alkaessa, ja siinä on nappuloiden määrä, tutkimisaika ja mistä kierros alkoi. Lisäksi se saa muutaman laboratorion tapahtuman: kun laboratorio-osio tulee näkyviin, kun seuraat jotakin sen pelilinkeistä, kierrosten määrän, kun lataat päiväkirjan tai pyydät laitteiden välistä varmuuskopiota, sekä lisättyjen ja ohitettujen kierrosten määrän, kun tuot tietoja. Mikään näistä tapahtumista ei sisällä asemia, ruutuja, kierrosten tunnisteita eikä putkia. Kun aloitat, keskeytät tai suoritat loppuun suunnitelman tai asetat tai poistat tavoitteen, Google Analytics saa tapahtuman, joka nimeää vain tämän toiminnon, ilman suunnitelman nimeä ja ilman lukuja. Valitsemasi suunnitelma ja tavoite säilytetään selaimesi paikallisessa tallennustilassa tällä laitteella, kuten myös se, kuinka monena päivänä viikossa aiot pelata, mistä ei lähetetä tapahtumaa. Lataa laboratoriopäiväkirjani tallentaa kopion tiedostoksi, jota hallitset itse, ja selaimen tietojen tyhjentäminen poistaa päiväkirjan. Yksityiset ikkunat eivät säilytä sitä. Vain kun painat Kopioi mittaukseni, selaimesi kopioi leikepöydälle lyhyen tekstin, jossa on muistijänteesi sekä muistetut nappulat ja nopeutesi, kun päiväkirjasta voidaan lukea ne, kukin kierrosmäärineen. Teksti ei mainitse asemia, ruutuja eikä päivämääriä, eikä sitä lähetetä minnekään. Paikallinen tallennustila säilyttää myös ajan, jolloin huomautus päiväkirjan säilyttämisestä tässä selaimessa tuli ensimmäisen kerran näkyviin, jotta huomautus näytetään kerran, ajan, jolloin viimeksi katsoit muistikirjaasi, jotta uudemmat merkinnät merkitään uusiksi, sekä ajan, jolloin viimeksi latasit päiväkirjan. Muutaman kierroksen jälkeen sivusto pyytää selainta kerran säilyttämään päiväkirjan, kun tila käy vähiin, ja paikallinen tallennustila kirjaa, että pyyntö on tehty."
+          },
+          {
+            "p": "Edistymissivu lukee saman päiväkirjan selaimessasi eikä lähetä mitään. Vain kun painat Jaa edistymiseni, selaimesi piirtää kuvan luvuista, jotka päiväkirjasta voidaan lukea: muistijänne, taitoluku, muistetut nappulat, nopeus, paras ja viimeaikainen tarkkuus, voittoputki, päivää putkeen, pelatut kierrokset ja pelipäivät. Vain kun painat pelin tulosnäkymässä Jaa tulos, selaimesi piirtää kuvan kyseisestä kierroksesta: sen tarkkuus, muistamasi nappulat, nappuloiden määrä, sallittu ja käytetty tutkimisaika, uudelleenrakentamisen aika sekä, paitsi kertauksessa, taitolukusi, sen muutos ja mahdollinen voittoputki, ja paitsi päivän laudalla, tutkimasi lauta ja uudelleen rakentamasi lauta."
+          },
+          {
+            "p": "Kumpi tahansa painike avaa jakoikkunan, eikä mikään poistu selaimestasi ennen kuin valitset jonkin sen toiminnoista: kuvan, lyhyen saatetekstin ja linkin välittäminen laitteesi jakovalikkoon, kuvan lataaminen, kuvan kopioiminen, saatetekstin kopioiminen linkkeineen tai palvelun X, Facebook, LinkedIn, Reddit, WhatsApp, Threads tai Bluesky julkaisusivun avaaminen niin, että linkki ja muissa kuin Facebookissa ja LinkedInissä myös saateteksti on valmiiksi täytetty. Sinne lähettämääsi käsitellään kyseisen palvelun omien tietosuojaehtojen mukaisesti."
+          },
+          {
+            "p": "Saatetekstin linkki avaa kortin oman sivun Memory Chessissä, ja kortin luvut on kirjoitettu itse linkkiin. Jaettu tuloslinkki, polussa /share/result/, sisältää myös tutkimasi laudan, uudelleen rakentamasi laudan sekä jokaisen asettamasi nappulan järjestyksen ja ajoituksen, paitsi jos kierros oli päivän lauta, jolloin linkki ei sisällä asemaa. Kuka tahansa linkin avaava voi lukea ne, ja Memory Chess lukee ne linkistä piirtääkseen sivun ja sen esikatselun. Linkki luodaan vain, kun jaat kortin, eikä Memory Chess tallenna sitä. Kuten millä tahansa sivuston sivulla, edellä mainitut analytiikkatyökalut tallentavat sivun osoitteen, linkki mukaan lukien, kun joku avaa sen."
+          },
+          {
+            "p": "Google Analytics saa lab_dashboard_share-tapahtuman, kun edistymiskortti lähtee sivulta, ja result_share-tapahtuman, kun tuloskortti lähtee. Kumpikin nimeää menetelmänään vain sen, miten kortti lähti: native jakovalikolle, download ladatulle kuvalle, copy_image kopioidulle kuvalle, copy kopioidulle saatetekstille tai post verkoston julkaisusivulle, jolloin verkosto nimetään arvolla x, facebook, linkedin, reddit, whatsapp, threads tai bluesky. Kumpikaan tapahtuma ei sisällä kortin lukuja, sen lautoja eikä sen linkkiä."
+          },
+          {
+            "p": "Kun lähetät pisteet tulostaulukkoon, tämän laitteen paikallinen tallennustila säilyttää myös tunnisteen, jonka tulostaulukko antaa merkinnälle, sekä sen vaikeustason, maan, pisteet ja lähetysajan, parhaan merkintäsi osalta kullakin vaikeustasolla. Vain kun painat laboratoriopäiväkirjassa Tarkista sijoitukseni, selaimesi lähettää merkinnän tunnisteen Memory Chessille sekä tiedon siitä, sijoitetaanko se maailmanlaajuisesti vai merkinnän oman maan sisällä. Memory Chess lukee merkinnän tulostaulukosta ja vastaa sen sijoituksella ja sillä, kuinka montaa merkintää vastaan se sijoitettiin. Vastausta ei tallenneta. Rajoittaakseen sitä, kuinka usein sijoitusta voi tarkistaa, palvelin laskee kunkin IP-osoitteen tarkistukset muistissaan yhden minuutin ajan ja poistaa osoitteen ensimmäisellä tarkistuksella sen minuutin kuluttua umpeen. Jos merkintää ei enää ole tulostaulukossa, sen tunniste poistetaan tältä laitteelta. Google Analytics saa tapahtuman, joka kertoo, että sijoitus tarkistettiin, ilman merkinnän tunnistetta ja ilman sijoitusta."
+          },
+          {
+            "p": "Artikkelista tykkääminen tallentaa artikkelin tunnisteen ja sillä hetkellä näkyvän tykkäysmäärän selaimesi paikalliseen tallennustilaan, jotta tykkäyspainike pysyy painettuna eikä sen luku laske, kun palaat. Istuntotallennus muistaa, mitkä artikkelit olet avannut nykyisessä välilehdessä, jotta artikkelin avaaminen siellä uudelleen ei lisää katselukertaa. Molemmat luettelot pysyvät selaimessasi. Kun tykkäät artikkelista, Google Analytics saa myös tykkäystapahtuman, joka nimeää artikkelin."
+          },
+          {
+            "p": "Opi-osion haku järjestää oppaat selaimessasi tai palvelimella, kun haet hakusivulta. Google Analytics saa hausta tapahtuman, jossa on kirjoittamiesi merkkien määrä, osumien määrä, ylin opas ja se, oliko osuma läheinen, sekä tapahtuman, kun avaat tuloksen, jossa on kyseinen opas ja sen sija luettelossa. Kumpikaan tapahtuma ei sisällä kirjoittamiasi sanoja. Itse hakusivulta tehty haku lisää sanasi kyseisen sivun osoitteeseen, ja analytiikkatyökalut tallentavat jokaisen katsotun sivun osoitteen, joten nuo sanat voivat päätyä niille."
+          },
+          {
+            "p": "Google Analytics ja mainospalvelut voivat käyttää evästeitä tai vastaavia tunnisteita. Voit estää tai poistaa evästeitä selaimessasi, mutta jotkin asetukset voivat lakata toimimasta odotetusti."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Mainonta ja Google AdSense",
+        "blocks": [
+          {
+            "p": "Memory Chess käyttää Google AdSenseä sivuston tukemiseen. Kolmannen osapuolen toimittajat, Google mukaan lukien, voivat asettaa tai lukea evästeitä, käyttää verkkomajakoita tai käsitellä IP-osoitteita, kun mainospalveluita tai mainostageja käytetään."
+          },
+          {
+            "p": "Google ja sen mainoskumppanit voivat käyttää mainosevästeitä näyttääkseen mainoksia, jotka perustuvat käynteihisi Memory Chessissä ja muilla verkkosivustoilla. Sijaintisi, valintojesi ja asetustesi mukaan mainokset voivat olla personoituja tai personoimattomia. Myös muut Googlen sertifioimat mainostoimittajat voivat osallistua mainosten näyttämiseen ja mittaamiseen."
+          },
+          {
+            "p": "Google on yksi näistä toimittajista ja käyttää DoubleClick-evästettä, joka tunnetaan myös DART-evästeenä, näyttääkseen mainoksia, jotka perustuvat käynteihisi tällä sivustolla ja muilla internetin sivustoilla. Voit kieltäytyä DART-evästeestä alla linkitetyissä Googlen mainosasetuksissa."
+          },
+          {
+            "p": "Lue lisää siitä, <partnerSites>miten Google käyttää kumppanisivustojen tietoja</partnerSites>. Voit hallita personoitua mainontaa <adCenter>My Ad Centerissä</adCenter> ja kieltäytyä joidenkin muiden toimittajien mainonnasta <adChoices>YourAdChoicesin</adChoices> kautta."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Suostumusvalinnat",
+        "blocks": [
+          {
+            "p": "Kun sitä edellytetään, kävijöille näytetään suostumusviesti ennen kuin soveltuvia mainostietoja käytetään. Euroopan talousalueella, Yhdistyneessä kuningaskunnassa ja Sveitsissä olevat kävijät voivat antaa suostumuksen, kieltäytyä tai hallita yksittäisiä valintoja Googlen suostumusalustan kautta. Voit myös muuttaa evästeasetuksia selaimessasi ja säätää Googlen mainosasetuksia My Ad Centerissä."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Miten käytämme ja jaamme tietoja",
+        "blocks": [
+          {
+            "p": "Käytämme tietoja Memory Chessin tarjoamiseen ja suojaamiseen, tulosten laskemiseen, lähetettyjen tulostaulukon pisteiden julkaisemiseen, yhteydenottoviesteihin vastaamiseen, palautteen läpikäyntiin, sivuston suorituskyvyn mittaamiseen, väärinkäytön estämiseen ja sivuston tukemiseen mainonnalla. Emme myy lähettämiäsi yhteystietoja emmekä palautetta."
+          },
+          {
+            "p": "Palveluntarjoajat käsittelevät tietoja vain tarpeen mukaan: Google Sheets yhteydenottoviestien ja pelipalautteen osalta, Supabase pelitilastojen, tulostaulukon merkintöjen sekä artikkelien katselu- ja tykkäysmäärien osalta, Vercel palvelintilan ja suorituskyvyn mittauksen osalta, Ahrefs analytiikan osalta ja Google analytiikan, suostumusten ja mainonnan osalta. Nämä palveluntarjoajat voivat käsitellä tietoja muissa maissa omien tietosuojaehtojensa mukaisesti."
+          },
+          {
+            "p": "Kun avaat artikkelin tai tykkäät siitä, Supabase tallentaa kustakin artikkelista vain katselukertojen kokonaismäärän ja tykkäysten kokonaismäärän sekä viimeisimmän muutoksen ajan, ilman kävijän tunnistetta."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Säilytys ja tietoturva",
+        "blocks": [
+          {
+            "p": "Säilytämme lähetettyjä tietoja vain niin kauan kuin ne ovat hyödyllisiä edellä kuvattuihin tarkoituksiin, mukaan lukien julkisen tulostaulukon ylläpito ja viesteihin vastaaminen, tai niin kauan kuin laki edellyttää. Mikään verkkopalvelu ei ole täysin turvallinen, mutta rajoitamme pääsyä ja käytämme kohtuullisia suojatoimia hallitsemissamme järjestelmissä."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "Valintasi",
+        "blocks": [
+          {
+            "ul": [
+              "Pelaa lähettämättä nimeä tulostaulukkoon tai palautetta.",
+              "Tyhjennä tallennetut pelitiedot ja asetukset selaimessasi.",
+              "Hallitse evästeitä, suostumusvalintoja ja personoituja mainoksia.",
+              "Kysy meiltä lähettämistäsi tiedoista, korjaa niitä tai pyydä niiden poistamista sovellettavan lain sallimissa rajoissa ja edellyttäen, että pystymme varmentamaan pyynnön."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "Oikeutesi GDPR:n ja CCPA:n mukaan",
+        "blocks": [
+          {
+            "p": "Jos olet Euroopan talousalueella tai Yhdistyneessä kuningaskunnassa, yleinen tietosuoja-asetus (GDPR) antaa sinulle oikeuden saada pääsy tietoihin, oikaista ja poistaa tietoja, rajoittaa käsittelyä, vastustaa käsittelyä sekä siirtää tiedot järjestelmästä toiseen. Käsittelyperusteemme ovat suostumuksesi personoidun mainonnan ja analytiikkaevästeiden osalta silloin, kun suostumusta edellytetään, sekä oikeutettu etumme sivuston ylläpidon ja suojaamisen, lähettämiesi tulostaulukon pisteiden julkaisemisen ja lähettämiisi viesteihin vastaamisen osalta. Voit peruuttaa suostumuksesi milloin tahansa suostumusviestin tai selaimesi asetusten kautta, ja voit tehdä valituksen paikalliselle valvontaviranomaiselle."
+          },
+          {
+            "p": "Jos asut Kaliforniassa, CCPA antaa sinulle oikeuden tietää, mitä henkilötietoja kerätään, pyytää niiden poistamista ja kieltää niiden myynti tai jakaminen. Emme myy henkilötietojasi. Personoituun mainontaan käytettävät evästeet voidaan katsoa CCPA:n mukaiseksi jakamiseksi, ja voit kieltää sen suostumusviestin, My Ad Centerin ja edellä linkitetyn YourAdChoicesin kautta. Tämä on ”Älä myy tai jaa henkilötietojani” (Do Not Sell or Share My Personal Information) -ilmoituksemme. Voit käyttää mitä tahansa näistä oikeuksista lähettämällä sähköpostia osoitteeseen <mail>{email}</mail>."
+          }
+        ]
+      },
+      "children": {
+        "title": "Lasten yksityisyys",
+        "blocks": [
+          {
+            "p": "Memory Chess on suurelle yleisölle tarkoitettu harjoituspeli, eikä sitä ole suunniteltu keräämään henkilötietoja lapsilta. Jos olet vanhempi tai huoltaja ja uskot, että lapsi on lähettänyt henkilötietoja, ota meihin yhteyttä, jotta voimme tarkistaa tiedot ja poistaa ne tarvittaessa."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Muutokset ja yhteystiedot",
+        "blocks": [
+          {
+            "p": "Voimme päivittää tätä selostetta, kun sivusto tai palveluntarjoajamme muuttuvat. Yläreunan päivämäärä näyttää viimeisimmän muutoksen. Tietosuojaa koskevissa kysymyksissä ja pyynnöissä käytä <contact>Memory Chessin yhteydenottolomaketta</contact>."
+          }
+        ]
+      }
+    }
+  }
+}

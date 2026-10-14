@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "f1c690d0deb770fb73ee32eeab6a0683bceb41cd49670e4cd7f37f101a09c5e2",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -20,7 +20,7 @@
             "p": "Memory Chess è un gioco gratuito per browser che allena la memoria della scacchiera. Lo fornisco così com’è e secondo disponibilità, senza garanzie di alcun tipo. Mi impegno a mantenerlo veloce, accurato e online, ma non prometto un servizio ininterrotto, un punteggio privo di errori né che una qualsiasi funzione resti uguale per sempre. Posso modificare, sospendere o interrompere qualsiasi parte del sito in qualsiasi momento."
           },
           {
-            "p": "Nei limiti consentiti dalla legge, non sono responsabile dei danni derivanti dal tuo uso del sito. È un gioco di memoria. Il peggio che ragionevolmente può succedere qui è perdere un punteggio a cui tenevi, e faccio comunque di tutto per evitarlo."
+            "p": "Nei limiti consentiti dalla legge, non sono responsabile dei danni derivanti dal tuo uso del sito. È un gioco di memoria. Il peggio che ragionevolmente può succedere qui è perdere un punteggio a cui tenevi, e mi impegno comunque molto per evitarlo."
           }
         ]
       },
@@ -28,13 +28,13 @@
         "title": "Uso consentito",
         "blocks": [
           {
-            "p": "Gioca correttamente e lascia che il sito funzioni per tutti gli altri. Non attaccare, sovraccaricare o sondare il servizio, non estrarne i contenuti in massa e non cercare di manomettere il suo sistema di punteggio. Non inviare punteggi generati da bot, script o automazioni di qualsiasi tipo. Non usare il modulo di contatto o la classifica per inviare spam, molestare o impersonare qualcuno."
+            "p": "Gioca correttamente e lascia che il sito funzioni per tutti gli altri. Non attaccare, sovraccaricare o sondare il servizio, non estrarne i contenuti in massa e non cercare di manomettere il suo sistema di punteggio. Non inviare punteggi generati da bot, script o automazioni di qualsiasi tipo. Non usare il modulo di contatto o la classifica per inviare spam, molestare o spacciarti per qualcun altro."
           },
           {
             "p": "Il modulo di contatto serve per messaggi veri rivolti a una persona vera. Usalo per segnalare bug, fare domande e proporre idee, e verrà letto."
           },
           {
-            "p": "Posso bloccare il traffico o limitare l’accesso che viola queste regole. Non essendoci account da bannare, rimuovere le voci scorrette e bloccare gli abusi ai margini della rete è lo strumento di controllo che ho, e lo uso."
+            "p": "Posso bloccare il traffico o limitare l’accesso che viola queste regole. Non essendoci account da bannare, rimuovere le voci scorrette e bloccare gli abusi al perimetro della rete è lo strumento di controllo che ho, e lo uso."
           }
         ]
       },
@@ -48,7 +48,7 @@
             "p": "Una voce inviata contiene il nome che hai scelto e i dettagli della partita, come precisione, difficoltà e tempo impiegato. Una volta pubblicata, resta in classifica finché non viene superata da punteggi migliori o rimossa."
           },
           {
-            "p": "Posso rimuovere le voci della classifica offensive, che impersonano qualcuno, che sembrano automatizzate o che chiaramente non sono state prodotte da una persona che gioca. Rimuovo le voci per mantenere la classifica onesta, non per scegliere chi vince."
+            "p": "Posso rimuovere le voci della classifica offensive, che si spacciano per qualcun altro, che sembrano automatizzate o che chiaramente non sono state prodotte da una persona che gioca. Rimuovo le voci per mantenere la classifica onesta, non per scegliere chi vince."
           }
         ]
       },

@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "9c7df5ea18f36c47f129302238f84a58925190956eb98d1236bf3696bad720cd",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -31,7 +31,7 @@
         "title": "Perché esiste il gioco",
         "blocks": [
           {
-            "p": "La maggior parte dei consigli per migliorare a scacchi indirizza i principianti verso aperture, esercizi tattici e corsi. Secondo la mia esperienza, il problema che viene prima si trova sotto tutto questo. I principianti perdono il filo della scacchiera. Non vedono un difensore, dimenticano un pezzo mosso due turni prima e finiscono in catture che noterebbero subito su un diagramma."
+            "p": "La maggior parte dei consigli per migliorare a scacchi indirizza i principianti verso aperture, esercizi tattici e corsi. Nella mia esperienza, il problema che viene prima si trova sotto tutto questo. I principianti perdono il filo della scacchiera. Non vedono un difensore, dimenticano un pezzo mosso due turni prima e cadono in catture che noterebbero subito su un diagramma."
           },
           {
             "p": "Tenere una posizione a mente è un’abilità che si può allenare, e c’erano pochi posti dove esercitarla direttamente. Così ne ho creato uno. Memory Chess isola quell’unica abilità e le assegna un punteggio, così puoi vederla migliorare. Se vuoi una posta in gioco, puoi inserire un nome a tua scelta nella classifica pubblica e misurarti con tutti gli altri."

@@ -8,7 +8,7 @@ export const feedbackSubmissionSchema = z.object({
   accuracy: z.number().min(0).max(100),
   correctPieces: z.number().int().min(0).max(32),
   pieceCount: z.number().int().min(2).max(32),
-  difficulty: z.enum(["easy", "medium", "hard", "grandmaster", "custom"]),
+  difficulty: z.enum(["easy", "medium", "hard", "grandmaster", "custom", "daily"]),
   memorizationTime: z.number().min(0).max(86_400),
   solutionTime: z.number().min(0).max(86_400),
 });

@@ -5,7 +5,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import { useNow } from "@/components/home/DailyResetsIn";
 import { useLabData } from "@/hooks/useLabData";
 import { dailySettingOf } from "@/lib/daily/schedule";
-import { dailyBoardOf, readDailyOpened, utcDayOf, type DailyRound } from "@/lib/lab/daily";
+import { DAILY_PLAYED_PARAM, dailyBoardOf, readDailyOpened, utcDayOf, type DailyRound } from "@/lib/lab/daily";
 import { DAY_MS } from "@/lib/lab/readiness";
 import { readDailyEntry, type DailyEntry } from "@/lib/lab/entries";
 import { DailyCard } from "./DailyCard";
@@ -29,6 +29,8 @@ export function DailyBoard() {
   const rows = useDailyRows(day, rowsVersion);
   const standing = useDailyStanding(joined);
 
+  const justPlayed = useJustPlayed();
+
   useEffect(() => {
     if (day !== null) setJoined(readDailyEntry(day));
   }, [day]);
@@ -50,11 +52,28 @@ export function DailyBoard() {
       </header>
       {late?.status === "played" && <LateJoin key={late.day} round={late.round} />}
       <div className="daily-grid">
-        <DailyCard board={board} setting={day === null ? null : dailySettingOf(day)} joined={joined} standing={standing} onJoined={onJoined} />
+        <DailyCard board={board} setting={day === null ? null : dailySettingOf(day)} joined={joined} standing={standing} onJoined={onJoined} justPlayed={justPlayed} />
         <DailyTopTen rows={rows} joined={joined} played={board?.status === "played"} />
       </div>
     </>
   );
+}
+
+/**
+ * Whether the game sent the player here straight after today's round. The marker is taken off the address, so a
+ * refresh or a shared link reads as an ordinary visit.
+ */
+function useJustPlayed(): boolean {
+  const [justPlayed, setJustPlayed] = useState(false);
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (!params.has(DAILY_PLAYED_PARAM)) return;
+    setJustPlayed(true);
+    params.delete(DAILY_PLAYED_PARAM);
+    const query = params.toString();
+    window.history.replaceState(window.history.state, "", `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`);
+  }, []);
+  return justPlayed;
 }
 
 /** The server still takes rows for yesterday, so a round played on yesterday's board and not joined can join it here. */

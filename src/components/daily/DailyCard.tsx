@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useCopyText } from "@/components/home/useCopyText";
@@ -24,14 +25,23 @@ interface DailyCardProps {
   readonly joined: DailyEntry | null;
   readonly standing: Standing | null;
   readonly onJoined: (entry: DailyEntry) => void;
+  /** The game sent the player here straight after today's round, so the card leads them to join. */
+  readonly justPlayed?: boolean;
 }
 
-export function DailyCard({ board, setting, joined, standing, onJoined }: DailyCardProps) {
+export function DailyCard({ board, setting, joined, standing, onJoined, justPlayed = false }: DailyCardProps) {
   const t = useTranslations("daily.page");
+  const prompting = justPlayed && board?.status === "played" && !joined && board.round.correct > 0;
+  const card = useJoinPrompt(prompting);
   if (board?.status === "played") {
     return (
-      <section className="daily-card" aria-labelledby="daily-card-title" data-state={joined ? "joined" : "played"}>
+      <section ref={card} className="daily-card" aria-labelledby="daily-card-title" data-state={joined ? "joined" : "played"} data-just-played={prompting || undefined}>
         <Result t={t} round={board.round} titleId="daily-card-title" />
+        {prompting && (
+          <p className="daily-prompt">
+            <strong>{t("score", { correct: board.round.correct, pieceCount: board.round.config.pieceCount })}</strong> {t("justPlayed")}
+          </p>
+        )}
         {joined ? <Joined t={t} standing={standing} /> : <DailyJoinForm round={board.round} onJoined={onJoined} />}
       </section>
     );
@@ -60,6 +70,17 @@ export function DailyCard({ board, setting, joined, standing, onJoined }: DailyC
       {board?.streak && board.streak.current > 0 && <p className="daily-note">{t("streak", { count: board.streak.current })}</p>}
     </section>
   );
+}
+
+/** Brings the card into view and puts the cursor in the name field, once, when the card starts prompting. */
+function useJoinPrompt(prompting: boolean) {
+  const card = useRef<HTMLElement>(null);
+  useEffect(() => {
+    if (!prompting || !card.current) return;
+    card.current.scrollIntoView?.({ block: "start" });
+    card.current.querySelector<HTMLInputElement>("input")?.focus({ preventScroll: true });
+  }, [prompting]);
+  return card;
 }
 
 function HiddenBoard({ t }: { t: Translate }) {

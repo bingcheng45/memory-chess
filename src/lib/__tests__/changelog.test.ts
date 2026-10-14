@@ -8,6 +8,7 @@ import {
   isChangelogAnnouncementActive,
 } from "@/lib/changelog";
 import { ARTICLE_SLUGS } from "@/lib/articles";
+import { parseResult } from "@/lib/share/shareCode";
 
 const KNOWN_ROUTES = [
   "/articles",
@@ -55,6 +56,9 @@ describe("changelog data", () => {
     const unknown = hrefs.filter((href) => {
       if (href.startsWith("/articles/")) {
         return !ARTICLE_SLUGS.includes(href.slice("/articles/".length));
+      }
+      if (href.startsWith("/share/result/")) {
+        return parseResult(href.slice("/share/result/".length)) === null;
       }
       return !(
         KNOWN_ROUTES.includes(href) ||

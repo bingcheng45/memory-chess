@@ -135,6 +135,13 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
           "Share a result or your dashboard as an image card. Post it to X, Facebook, LinkedIn, Reddit, WhatsApp, Threads or Bluesky in one tap, or download or copy it.",
           "The link you share shows your card in the post, and opens a page that replays your round: the position you studied, then every piece going down in the order you placed it, then your score.",
           "Friends can play the same setting straight from your link.",
+          {
+            segments: [
+              "Open ",
+              { text: "a sample shared round", href: "/share/result/1_g_8_100_74_218_1264_u18_3_6k1-5pp1-8-8-8-8-5PPP-3Q2K1_6k1-5pp1-8-8-8-8-5PPP-4Q1K1_g130f222g218h216e141g835f729g727" },
+              " to see what a friend sees when you send them yours.",
+            ],
+          },
         ],
       },
       {
@@ -142,7 +149,7 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
         changes: [
           "Drag pieces onto the board as well as tapping them.",
           "When you have placed every piece of one kind that a real set has, it greys out in the tray and tells you why.",
-          "Study a position for up to 60 seconds, up from 32.",
+          "Study a position for as little as 1 second or as long as 60, up from 32.",
           "Turn board coordinates on or off right on the setup card.",
           "Leaderboard scores now show each player's rating at the time they played.",
         ],

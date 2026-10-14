@@ -271,7 +271,7 @@ function GamePageContent() {
   const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
     playSound('click');
     startedByHandRef.current = true;
-    startGame(pieceCount, memorizeTime, source);
+    countInGame(pieceCount, memorizeTime, source);
   };
 
   const renderGameContent = () => {

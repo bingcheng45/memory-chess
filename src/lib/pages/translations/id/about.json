@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Tentang",
+      "description": "Siapa yang membangun Memory Chess, mengapa permainan ini ada, bagaimana skor sebuah ronde dihitung, dan bagaimana panduan Belajar ditulis.",
+      "socialTitle": "Tentang Memory Chess",
+      "socialDescription": "Siapa yang membangun Memory Chess, mengapa permainan ini ada, dan bagaimana cara kerjanya."
+    },
+    "kicker": "Tentang",
+    "title": "Tentang Memory Chess",
+    "lede": "Memory Chess adalah permainan ingatan papan gratis yang dibangun dan dijalankan oleh satu orang. Halaman ini menjelaskan siapa orang itu, mengapa permainan ini ada, dan bagaimana permainan ini sebenarnya bekerja.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Siapa yang menjalankan situs ini",
+        "blocks": [
+          {
+            "p": "Saya Bing Cheng, seorang pengembang tunggal. Saya menjalankan Memory Chess sendiri, dengan bantuan AI untuk kode dan teks situs. Tidak ada tim maupun perusahaan di baliknya. Saya juga membangun <tont>Tont</tont>, dan saya membagikan kabar terbaru tentang situs ini di <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Karena semuanya dijalankan oleh satu orang, situs ini sengaja dibuat kecil. Satu permainan, sekumpulan panduan latihan, satu papan peringkat, dan catatan perubahan yang merekam apa yang benar-benar dirilis."
+          },
+          {
+            "p": "Permainan ini gratis dan tidak memerlukan akun. Iklan melalui Google AdSense membantu menutup biaya hosting, dan tidak ada apa pun di situs ini yang dikunci di balik pembayaran atau pendaftaran."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "Mengapa permainan ini ada",
+        "blocks": [
+          {
+            "p": "Sebagian besar saran untuk meningkatkan kemampuan catur mengarahkan pemula ke pembukaan, teka-teki, dan kursus. Menurut pengalaman saya, ada masalah yang muncul lebih awal, tersembunyi di bawah semua itu. Pemula kehilangan gambaran tentang papan. Mereka melewatkan bidak yang sedang bertahan, lupa bidak yang bergerak dua langkah sebelumnya, dan blunder sampai bidaknya dimakan, padahal di sebuah diagram mereka akan langsung melihatnya."
+          },
+          {
+            "p": "Menahan sebuah posisi di kepala adalah keterampilan yang bisa dilatih, dan hanya ada sedikit tempat untuk melatihnya secara langsung. Jadi saya membuatnya. Memory Chess memisahkan satu keterampilan itu dan memberinya skor, sehingga Anda bisa melihatnya membaik. Jika Anda ingin ada yang dipertaruhkan, Anda bisa memasang nama pilihan Anda di papan peringkat publik dan mengukur diri Anda dibandingkan semua orang lain."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Cara kerja sebuah ronde",
+        "blocks": [
+          {
+            "p": "Anda memilih berapa banyak bidak yang akan dihadapi dan berapa lama Anda boleh mengamatinya. Pilihan bawaannya berkisar dari Mudah, dua bidak dengan sepuluh detik, hingga Grandmaster, dua puluh bidak dengan lima detik, dan Anda bisa mengatur kombinasi kustom apa pun. Lalu ronde berjalan dalam tiga tahap."
+          },
+          {
+            "p": "Pertama, Anda menghafal. Papan menampilkan sebuah posisi selama waktu yang Anda pilih, lalu posisi itu menghilang. Berikutnya, Anda menyusun ulang. Anda meletakkan bidak di papan kosong berdasarkan ingatan. Terakhir, Anda mendapat hasilnya. Permainan membandingkan papan Anda dengan papan aslinya, petak demi petak."
+          },
+          {
+            "p": "Penilaiannya ketat. Sebuah bidak dihitung benar hanya jika bidak yang tepat dengan warna yang tepat berdiri tepat di petak yang ditempatinya pada posisi asli. Benteng di tempat yang seharusnya diisi kuda berarti dua kesalahan sekaligus. Benteng itu dihitung sebagai bidak yang salah tempat, dan kuda yang digantikannya dihitung sebagai bidak yang hilang. Akurasi Anda adalah porsi bidak dari posisi asli yang Anda susun ulang dengan tepat."
+          },
+          {
+            "p": "Layar hasil menampilkan ketiga kelompok, yaitu penempatan yang benar, penempatan yang salah, dan bidak yang sama sekali Anda lupakan, sehingga setiap ronde memberi tahu Anda apa yang perlu digarap lain kali. Anda bisa <game>mencoba satu ronde</game> dalam waktu kurang dari satu menit."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Bagaimana panduan Belajar ditulis",
+        "blocks": [
+          {
+            "p": "<learn>Perpustakaan Belajar</learn> berisi {count, plural, other {# panduan}} tentang penglihatan papan, visualisasi, dan latihan ingatan. Panduan-panduan itu ditulis dengan bantuan AI. Setiap posisi catur di dalamnya diperiksa oleh skrip untuk jumlah bidak, keabsahan posisi, dan setiap serangan yang disebutkan teks. Setiap pernyataan tentang cara kerja Memory Chess ditelusuri ke kode permainannya. Setiap panduan memiliki latihan. Sebagian membuka satu ronde di permainan dengan pengaturan yang sesuai. Sisanya dimaksudkan untuk papan sungguhan."
+          },
+          {
+            "p": "Ketika panduan membuat klaim tentang ingatan dan belajar, panduan itu mengutip penelitian yang telah diterbitkan, termasuk karya Gobet dan Simon tentang ingatan catur serta literatur eksperimental tentang pengambilan kembali ingatan (retrieval) dan latihan berjarak. Setiap kutipan menautkan sumbernya. Saya belum pernah melakukan penelitian sendiri, dan panduan-panduan itu tidak berpura-pura sebaliknya."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Perjalanan situs ini",
+        "blocks": [
+          {
+            "p": "Rilis pertama tayang pada Maret 2025 sebagai versi permainan yang paling dasar. Bermain di ponsel dan pemilihan bidak menyusul dalam hitungan minggu. Perpustakaan Belajar diluncurkan pada Maret 2026, dan pada Agustus 2026 permainannya sendiri mulai tersedia dalam 24 bahasa. Panduan dan catatan perubahan tersedia dalam bahasa Inggris. <changelog>Catatan perubahan</changelog> merekam setiap rilis berversi, termasuk perbaikan bug. Saya menjaganya tetap jujur karena saya sendiri memakainya untuk mengingat apa yang berubah dan kapan."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Hubungi saya",
+        "blocks": [
+          {
+            "p": "Kirimi saya surel di <mail>{email}</mail> atau gunakan <contact>formulir kontak</contact>. Saya membaca semuanya, dan laporan dari pemain sudah pernah memperbaiki bug sungguhan. Jika Anda ingin membaca ketentuan rincinya, <privacy>kebijakan privasi</privacy> dan <terms>ketentuan layanan</terms> menjelaskan cara situs ini menangani data dan apa yang Anda setujui dengan bermain."
+          }
+        ]
+      }
+    }
+  }
+}

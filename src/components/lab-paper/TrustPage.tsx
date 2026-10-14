@@ -78,14 +78,14 @@ interface TrustPageProps {
 /** A trust page in `locale`: its text and chrome as loaded, its links and values from the page registry. */
 export function TrustPage({ name, locale, page: { text, chrome } }: TrustPageProps) {
   const spec = PAGES[name];
-  const links = Object.entries(spec.links).map(([tag, href]) => {
-    const link = (chunks: ReactNode) => (
+  const links = Object.entries(spec.links).map(([tag, href]) => [
+    tag,
+    (chunks: ReactNode) => (
       <TextLink href={href} locale={locale}>
         {chunks}
       </TextLink>
-    );
-    return [tag, link] as const;
-  });
+    ),
+  ]);
   const values = { ...spec.values, ...Object.fromEntries(links), b: bold };
   const render = (message: string) => richText(message, locale, values);
   const sections = Object.entries(text.sections);

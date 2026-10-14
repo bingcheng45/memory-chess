@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "1ee1305fd68164ded281d3738a9ed89d70cc8a91c15ec1c61edb30c6699d2e25",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "59bf7f2cc13328b45d8110c5420b081183239ba211b0714db566bd9d53024d7a",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Opplysninger som samles inn automatisk",
         "blocks": [
           {
-            "p": "Leverandørene våre av måletjenester kan motta tekniske opplysninger og bruksopplysninger, som viste sider, omtrentlig plassering, nettleser- og enhetstype, henvisende side, IP-adresse og ytelsestider. Memory Chess bruker Google Analytics, Vercel Analytics, Vercel Speed Insights og Ahrefs Analytics for å forstå trafikken og holde nettstedet raskt og pålitelig."
+            "p": "Leverandørene våre av måletjenester kan motta tekniske opplysninger og bruksopplysninger, som viste sider, omtrentlig plassering, nettleser- og enhetstype, henvisende side, IP-adresse og ytelsestider. Memory Chess bruker Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics og Databuddy for å forstå trafikken og holde nettstedet raskt og pålitelig."
+          },
+          {
+            "p": "Databuddy bruker ingen informasjonskapsler. Den lagrer en tilfeldig besøkende-ID i nettleserens lokale lagring og en økt-ID i øktlagringen dens. Den registrerer sidene du ser på, ytelsestider, JavaScript-feil, klikk på lenker som fører ut av nettstedet, klikk som gjentas eller ikke får noen respons, og skjemaer som forlates før de sendes. Den mottar også en hendelse når en runde starter eller slutter, med antall brikker, studietiden og hvor runden startet, og en hendelse når en poengsum sendes til en toppliste eller dagens brett, med vanskelighetsgrad og antall brikker. Disse hendelsene inneholder aldri treffsikkerheten din, spillernavnet ditt eller stillingene du spilte."
           },
           {
             "p": "Vi ber ikke disse verktøyene om å samle inn innholdet i kontaktmeldingene dine eller kommentarene i tilbakemeldinger på spillet."
@@ -119,7 +122,7 @@
             "p": "Vi bruker opplysninger til å levere og sikre Memory Chess, beregne resultater, publisere innsendte poengsummer på topplisten, svare på kontaktmeldinger, gå gjennom tilbakemeldinger, måle nettstedets ytelse, hindre misbruk og støtte nettstedet med annonser. Vi selger ikke kontaktopplysningene eller tilbakemeldingene du sender inn."
           },
           {
-            "p": "Data håndteres av tjenesteleverandører bare der det er nødvendig: Google Sheets for kontaktmeldinger og tilbakemeldinger på spillet, Supabase for spillstatistikk, oppføringer på topplisten og totalt antall visninger og likerklikk for artikler, Vercel for hosting og ytelsesmåling, Ahrefs for analyse, og Google for analyse, samtykke og annonser. Disse leverandørene kan behandle data i andre land i henhold til sine egne personvernvilkår."
+            "p": "Data håndteres av tjenesteleverandører bare der det er nødvendig: Google Sheets for kontaktmeldinger og tilbakemeldinger på spillet, Supabase for spillstatistikk, oppføringer på topplisten og totalt antall visninger og likerklikk for artikler, Vercel for hosting og ytelsesmåling, Ahrefs og Databuddy for analyse, og Google for analyse, samtykke og annonser. Disse leverandørene kan behandle data i andre land i henhold til sine egne personvernvilkår."
           },
           {
             "p": "Når du åpner eller liker en artikkel, lagrer Supabase bare et totalt antall visninger og et totalt antall likerklikk for hver artikkel, med tidspunktet for siste endring og uten noen identifikator for den besøkende."

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "adf79d0f327a732c36fd8b7084afee360a037c8eba66551588da61931d0a06e1",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "3566504beb8801cea9e8b13380857039fb2b47ed1b5bebc2f7a48cce30f47754",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Otomatik olarak toplanan bilgiler",
         "blocks": [
           {
-            "p": "Ölçüm sağlayıcılarımız; görüntülenen sayfalar, yaklaşık konum, tarayıcı ve cihaz türü, yönlendiren sayfa, IP adresi ve performans süreleri gibi teknik ve kullanım bilgilerini alabilir. Memory Chess, trafiği anlamak ve siteyi hızlı ve güvenilir tutmak için Google Analytics, Vercel Analytics, Vercel Speed Insights ve Ahrefs Analytics kullanır."
+            "p": "Ölçüm sağlayıcılarımız; görüntülenen sayfalar, yaklaşık konum, tarayıcı ve cihaz türü, yönlendiren sayfa, IP adresi ve performans süreleri gibi teknik ve kullanım bilgilerini alabilir. Memory Chess, trafiği anlamak ve siteyi hızlı ve güvenilir tutmak için Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics ve Databuddy kullanır."
+          },
+          {
+            "p": "Databuddy çerez kullanmaz. Tarayıcının yerel depolamasında rastgele bir ziyaretçi kimliği, oturum depolamasında da bir oturum kimliği tutar. Görüntülediğin sayfaları, performans sürelerini, JavaScript hatalarını, siteden çıkan bağlantılara yapılan tıklamaları, tekrarlanan veya yanıt almayan tıklamaları ve gönderilmeden önce bırakılan formları kaydeder. Ayrıca bir tur başladığında veya bittiğinde taş sayısını, inceleme süresini ve turun nereden başladığını içeren bir olay; bir skor bir sıralamaya veya günlük tahtaya gönderildiğinde ise skorun zorluğunu ve taş sayısını içeren bir olay alır. Bu olaylar asla isabetini, oyuncu adını veya oynadığın konumları taşımaz."
           },
           {
             "p": "Bu araçlardan iletişim mesajlarının veya oyun görüşü yorumlarının içeriğini toplamalarını istemiyoruz."
@@ -119,7 +122,7 @@
             "p": "Bilgileri Memory Chess'i sunmak ve güvenliğini sağlamak, sonuçları hesaplamak, gönderilen sıralama skorlarını yayımlamak, iletişim mesajlarına yanıt vermek, görüşleri incelemek, site performansını ölçmek, kötüye kullanımı önlemek ve siteyi reklamlarla desteklemek için kullanırız. Gönderdiğin iletişim bilgilerini veya görüşleri satmayız."
           },
           {
-            "p": "Veriler yalnızca gerektiğinde hizmet sağlayıcılar tarafından işlenir: iletişim mesajları ve oyun görüşleri için Google Sheets; oyun istatistikleri, sıralama kayıtları ve makale görüntüleme ve beğeni toplamları için Supabase; barındırma ve performans ölçümü için Vercel; analitik için Ahrefs; analitik, rıza ve reklam için Google. Bu sağlayıcılar verileri kendi gizlilik koşulları kapsamında başka ülkelerde işleyebilir."
+            "p": "Veriler yalnızca gerektiğinde hizmet sağlayıcılar tarafından işlenir: iletişim mesajları ve oyun görüşleri için Google Sheets; oyun istatistikleri, sıralama kayıtları ve makale görüntüleme ve beğeni toplamları için Supabase; barındırma ve performans ölçümü için Vercel; analitik için Ahrefs ve Databuddy; analitik, rıza ve reklam için Google. Bu sağlayıcılar verileri kendi gizlilik koşulları kapsamında başka ülkelerde işleyebilir."
           },
           {
             "p": "Bir makaleyi açtığında veya beğendiğinde Supabase, her makale için yalnızca toplam görüntüleme ve toplam beğeni sayısını, son değişikliğin zamanıyla birlikte ve hiçbir ziyaretçi tanımlayıcısı olmadan saklar."

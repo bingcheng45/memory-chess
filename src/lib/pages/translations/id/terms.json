@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "fad930c9213a8e24da3dac2f58427a5dafcb7b29762f7cc963ca607d92efec4b",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "067a4c4b42d5c4ff6c6669c49cbaf582dac2260252cf7a56858f7fbc1a6b55dc",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "Layanan pihak ketiga",
         "blocks": [
           {
-            "p": "Situs ini berjalan di atas sejumlah kecil layanan eksternal. Google AdSense menayangkan iklan yang membuatnya tetap gratis. Google Analytics, Vercel Analytics, Vercel Speed Insights, dan Ahrefs Analytics mengukur lalu lintas dan kinerja. Supabase menyimpan statistik permainan dan entri papan peringkat. Masing-masing memiliki ketentuannya sendiri, dan <privacy>kebijakan privasi</privacy> menjelaskan data apa yang disentuh oleh masing-masing layanan dan pilihan yang Anda miliki."
+            "p": "Situs ini berjalan di atas sejumlah kecil layanan eksternal. Google AdSense menayangkan iklan yang membuatnya tetap gratis. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics, dan Databuddy mengukur lalu lintas dan kinerja. Supabase menyimpan statistik permainan dan entri papan peringkat. Masing-masing memiliki ketentuannya sendiri, dan <privacy>kebijakan privasi</privacy> menjelaskan data apa yang disentuh oleh masing-masing layanan dan pilihan yang Anda miliki."
           }
         ]
       },

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "b0356f076e9137bf4de43efbad5a8afcc2cc53cf286b779ebea3c864071a5bf6",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "7414374d14a3eaace6aa580d1bcb8744bf9a7176359712001a05ccd156f3bace",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "Služby třetích stran",
         "blocks": [
           {
-            "p": "Web běží na malé sadě externích služeb. Google AdSense zobrazuje reklamy, díky kterým je web zdarma. Google Analytics, Vercel Analytics, Vercel Speed Insights a Ahrefs Analytics měří návštěvnost a výkon. Supabase ukládá herní statistiky a záznamy v žebříčku. Každá z nich má vlastní podmínky a <privacy>zásady ochrany osobních údajů</privacy> vysvětlují, s jakými daty která z nich pracuje a jaké máte možnosti volby."
+            "p": "Web běží na malé sadě externích služeb. Google AdSense zobrazuje reklamy, díky kterým je web zdarma. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics a Databuddy měří návštěvnost a výkon. Supabase ukládá herní statistiky a záznamy v žebříčku. Každá z nich má vlastní podmínky a <privacy>zásady ochrany osobních údajů</privacy> vysvětlují, s jakými daty která z nich pracuje a jaké máte možnosti volby."
           }
         ]
       },

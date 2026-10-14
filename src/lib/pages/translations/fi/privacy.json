@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "6d13b6c81515904b903ba96c2831f6a884951bc4c763e80e2c67aa57617c7064",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "362801385a00eee0fdca75e74cf4a097ce4890a151c318eb1206ba6181b832ee",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Automaattisesti kerättävät tiedot",
         "blocks": [
           {
-            "p": "Mittauspalveluiden tarjoajamme voivat saada teknisiä tietoja ja käyttötietoja, kuten katsotut sivut, likimääräisen sijainnin, selaimen ja laitteen tyypin, viittaavan sivun, IP-osoitteen ja suorituskyvyn ajoitukset. Memory Chess käyttää Google Analyticsia, Vercel Analyticsia, Vercel Speed Insightsia ja Ahrefs Analyticsia ymmärtääkseen liikennettä ja pitääkseen sivuston nopeana ja luotettavana."
+            "p": "Mittauspalveluiden tarjoajamme voivat saada teknisiä tietoja ja käyttötietoja, kuten katsotut sivut, likimääräisen sijainnin, selaimen ja laitteen tyypin, viittaavan sivun, IP-osoitteen ja suorituskyvyn ajoitukset. Memory Chess käyttää Google Analyticsia, Vercel Analyticsia, Vercel Speed Insightsia, Ahrefs Analyticsia ja Databuddya ymmärtääkseen liikennettä ja pitääkseen sivuston nopeana ja luotettavana."
+          },
+          {
+            "p": "Databuddy ei käytä evästeitä. Se säilyttää satunnaisen kävijätunnisteen selaimesi paikallisessa tallennustilassa ja istuntotunnisteen sen istuntotallennuksessa. Se kirjaa katsomasi sivut, suorituskyvyn ajoitukset, JavaScript-virheet, klikkaukset linkkeihin, jotka vievät pois sivustolta, klikkaukset, jotka toistuvat tai jäävät ilman vastetta, sekä lomakkeet, jotka jätetään kesken ennen lähettämistä. Se saa myös tapahtuman, kun kierros alkaa tai päättyy, ja siinä on nappuloiden määrä, tutkimisaika ja mistä kierros alkoi, sekä tapahtuman, kun pisteet lähetetään tulostaulukkoon tai päivän laudalle, ja siinä on niiden vaikeustaso ja nappuloiden määrä. Nämä tapahtumat eivät koskaan sisällä tarkkuuttasi, pelaajanimeäsi eivätkä pelaamiasi asemia."
           },
           {
             "p": "Emme pyydä näitä työkaluja keräämään yhteydenottoviestiesi tai pelipalautteen kommenttiesi sisältöä."
@@ -119,7 +122,7 @@
             "p": "Käytämme tietoja Memory Chessin tarjoamiseen ja suojaamiseen, tulosten laskemiseen, lähetettyjen tulostaulukon pisteiden julkaisemiseen, yhteydenottoviesteihin vastaamiseen, palautteen läpikäyntiin, sivuston suorituskyvyn mittaamiseen, väärinkäytön estämiseen ja sivuston tukemiseen mainonnalla. Emme myy lähettämiäsi yhteystietoja emmekä palautetta."
           },
           {
-            "p": "Palveluntarjoajat käsittelevät tietoja vain tarpeen mukaan: Google Sheets yhteydenottoviestien ja pelipalautteen osalta, Supabase pelitilastojen, tulostaulukon merkintöjen sekä artikkelien katselu- ja tykkäysmäärien osalta, Vercel palvelintilan ja suorituskyvyn mittauksen osalta, Ahrefs analytiikan osalta ja Google analytiikan, suostumusten ja mainonnan osalta. Nämä palveluntarjoajat voivat käsitellä tietoja muissa maissa omien tietosuojaehtojensa mukaisesti."
+            "p": "Palveluntarjoajat käsittelevät tietoja vain tarpeen mukaan: Google Sheets yhteydenottoviestien ja pelipalautteen osalta, Supabase pelitilastojen, tulostaulukon merkintöjen sekä artikkelien katselu- ja tykkäysmäärien osalta, Vercel palvelintilan ja suorituskyvyn mittauksen osalta, Ahrefs ja Databuddy analytiikan osalta ja Google analytiikan, suostumusten ja mainonnan osalta. Nämä palveluntarjoajat voivat käsitellä tietoja muissa maissa omien tietosuojaehtojensa mukaisesti."
           },
           {
             "p": "Kun avaat artikkelin tai tykkäät siitä, Supabase tallentaa kustakin artikkelista vain katselukertojen kokonaismäärän ja tykkäysten kokonaismäärän sekä viimeisimmän muutoksen ajan, ilman kävijän tunnistetta."

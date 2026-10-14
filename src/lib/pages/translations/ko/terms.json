@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "536a6c6fddd489b4cb9c51155b0f5e5931942625e1768d64f87ca4b39bb73a1a",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "de9506637bcb4a86ab883d476e320675f6c9479da10dae74b6be1ca64412dba6",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "제3자 서비스",
         "blocks": [
           {
-            "p": "이 사이트는 소수의 외부 서비스 위에서 운영됩니다. Google AdSense는 사이트를 무료로 유지해 주는 광고를 게재합니다. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics는 트래픽과 성능을 측정합니다. Supabase는 게임 통계와 리더보드 기록을 저장합니다. 각 서비스에는 고유한 약관이 있으며, <privacy>개인정보처리방침</privacy>에서 각 서비스가 어떤 데이터를 다루는지와 귀하가 할 수 있는 선택을 설명합니다."
+            "p": "이 사이트는 소수의 외부 서비스 위에서 운영됩니다. Google AdSense는 사이트를 무료로 유지해 주는 광고를 게재합니다. Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics, Databuddy는 트래픽과 성능을 측정합니다. Supabase는 게임 통계와 리더보드 기록을 저장합니다. 각 서비스에는 고유한 약관이 있으며, <privacy>개인정보처리방침</privacy>에서 각 서비스가 어떤 데이터를 다루는지와 귀하가 할 수 있는 선택을 설명합니다."
           }
         ]
       },

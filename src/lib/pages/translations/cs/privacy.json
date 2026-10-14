@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "a042fa3eada9d240bfca373fbec74483175658be07113a9f0a85d8686c013e01",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "83e43cf5ad5f74985f9bf3a4124a2d4bf7c670018c62cf029008e3533cebd15f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Informace shromažďované automaticky",
         "blocks": [
           {
-            "p": "Naši poskytovatelé měřicích služeb mohou získávat technické údaje a údaje o používání, například zobrazené stránky, přibližnou polohu, typ prohlížeče a zařízení, odkazující stránku, IP adresu a časy načítání. Memory Chess používá Google Analytics, Vercel Analytics, Vercel Speed Insights a Ahrefs Analytics, aby porozuměl návštěvnosti a udržel web rychlý a spolehlivý."
+            "p": "Naši poskytovatelé měřicích služeb mohou získávat technické údaje a údaje o používání, například zobrazené stránky, přibližnou polohu, typ prohlížeče a zařízení, odkazující stránku, IP adresu a časy načítání. Memory Chess používá Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics a Databuddy, aby porozuměl návštěvnosti a udržel web rychlý a spolehlivý."
+          },
+          {
+            "p": "Databuddy nepoužívá žádné soubory cookie. Uchovává náhodný identifikátor návštěvníka v místním úložišti vašeho prohlížeče a identifikátor relace v úložišti relace prohlížeče. Zaznamenává stránky, které zobrazíte, časy načítání, chyby JavaScriptu, kliknutí na odkazy, které vedou mimo web, kliknutí, která se opakují nebo na která nic nereaguje, a formuláře opuštěné před odesláním. Dostává také událost, když kolo začne nebo skončí, s počtem figur, dobou na zapamatování a místem, kde kolo začalo, a událost, když je výsledek odeslán do žebříčku nebo na desku dne, s jeho obtížností a počtem figur. Tyto události nikdy neobsahují vaši přesnost, vaše jméno hráče ani pozice, které jste hráli."
           },
           {
             "p": "Tyto nástroje nežádáme, aby shromažďovaly obsah vašich kontaktních zpráv ani komentářů ve zpětné vazbě ke hře."
@@ -119,7 +122,7 @@
             "p": "Informace používáme k poskytování a zabezpečení Memory Chess, výpočtu výsledků, zveřejňování odeslaných výsledků v žebříčku, odpovídání na kontaktní zprávy, posuzování zpětné vazby, měření výkonu webu, předcházení zneužívání a podpoře webu reklamou. Kontaktní údaje ani zpětnou vazbu, které odešlete, neprodáváme."
           },
           {
-            "p": "S daty pracují poskytovatelé služeb pouze tam, kde je to potřeba: Google Sheets u kontaktních zpráv a zpětné vazby ke hře, Supabase u herních statistik, záznamů v žebříčku a celkových počtů zobrazení a lajků u článků, Vercel u hostingu a měření výkonu, Ahrefs u analytiky a Google u analytiky, souhlasu a reklamy. Tito poskytovatelé mohou zpracovávat data v jiných zemích podle svých vlastních zásad ochrany soukromí."
+            "p": "S daty pracují poskytovatelé služeb pouze tam, kde je to potřeba: Google Sheets u kontaktních zpráv a zpětné vazby ke hře, Supabase u herních statistik, záznamů v žebříčku a celkových počtů zobrazení a lajků u článků, Vercel u hostingu a měření výkonu, Ahrefs a Databuddy u analytiky a Google u analytiky, souhlasu a reklamy. Tito poskytovatelé mohou zpracovávat data v jiných zemích podle svých vlastních zásad ochrany soukromí."
           },
           {
             "p": "Když článek otevřete nebo mu dáte lajk, Supabase ukládá u každého článku pouze celkový počet zobrazení a celkový počet lajků, s časem poslední změny a bez jakéhokoli identifikátoru návštěvníka."

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "252c8323df6f7bbf0a5b7c5c932db5790d6f6af7a7d1dcb631f21232e3fd25a7",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "c0207fe294df19d2c45f16276a9135f3af51fed749b006516df6c8c0bba0e50b",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Automatikusan gyűjtött adatok",
         "blocks": [
           {
-            "p": "Mérési szolgáltatóink műszaki és használati adatokat kaphatnak, például a megtekintett oldalakat, a hozzávetőleges helyet, a böngésző és az eszköz típusát, a hivatkozó oldalt, az IP-címet és a teljesítményidőket. A Memory Chess a Google Analytics, a Vercel Analytics, a Vercel Speed Insights és az Ahrefs Analytics szolgáltatást használja, hogy megértse a forgalmat, és gyorsan és megbízhatóan tartsa működésben az oldalt."
+            "p": "Mérési szolgáltatóink műszaki és használati adatokat kaphatnak, például a megtekintett oldalakat, a hozzávetőleges helyet, a böngésző és az eszköz típusát, a hivatkozó oldalt, az IP-címet és a teljesítményidőket. A Memory Chess a Google Analytics, a Vercel Analytics, a Vercel Speed Insights, az Ahrefs Analytics és a Databuddy szolgáltatást használja, hogy megértse a forgalmat, és gyorsan és megbízhatóan tartsa működésben az oldalt."
+          },
+          {
+            "p": "A Databuddy nem használ sütiket. Egy véletlenszerű látogatóazonosítót tárol a böngésződ helyi tárhelyén, és egy munkamenet-azonosítót a böngésző munkamenet-tárhelyén. Rögzíti az általad megtekintett oldalakat, a teljesítményidőket, a JavaScript-hibákat, az oldalról kivezető linkekre leadott kattintásokat, az ismételt vagy válasz nélkül maradó kattintásokat, valamint az elküldésük előtt elhagyott űrlapokat. Emellett kap egy eseményt, amikor egy kör elindul vagy véget ér, a bábuk számával, a megfigyelési idővel és azzal, honnan indult a kör, valamint egy eseményt, amikor egy pontszámot beküldenek egy ranglistára vagy a napi táblára, annak nehézségével és a bábuk számával. Ezek az események soha nem tartalmazzák a pontosságodat, a játékosnevedet vagy az általad játszott állásokat."
           },
           {
             "p": "Nem kérjük ezeket az eszközöket arra, hogy gyűjtsék a kapcsolatfelvételi üzeneteid vagy a játékról írt megjegyzéseid tartalmát."
@@ -119,7 +122,7 @@
             "p": "Az adatokat arra használjuk, hogy biztosítsuk és védjük a Memory Chess-t, kiszámítsuk az eredményeket, közzétegyük a ranglistára beküldött pontszámokat, válaszoljunk a kapcsolatfelvételi üzenetekre, áttekintsük a visszajelzéseket, mérjük az oldal teljesítményét, megelőzzük a visszaéléseket, és hirdetésekkel támogassuk az oldalt. Az általad beküldött elérhetőségeket és visszajelzéseket nem adjuk el."
           },
           {
-            "p": "Az adatokat szolgáltatók csak ott kezelik, ahol szükséges: a Google Sheets a kapcsolatfelvételi üzenetekhez és a játékról szóló visszajelzésekhez, a Supabase a játékstatisztikákhoz, a ranglista-bejegyzésekhez, valamint a cikkek megtekintési és kedvelési összesítéseihez, a Vercel a tárhelyszolgáltatáshoz és a teljesítményméréshez, az Ahrefs az analitikához, a Google pedig az analitikához, a hozzájárulás kezeléséhez és a hirdetésekhez. Ezek a szolgáltatók más országokban is kezelhetnek adatokat, saját adatvédelmi feltételeik szerint."
+            "p": "Az adatokat szolgáltatók csak ott kezelik, ahol szükséges: a Google Sheets a kapcsolatfelvételi üzenetekhez és a játékról szóló visszajelzésekhez, a Supabase a játékstatisztikákhoz, a ranglista-bejegyzésekhez, valamint a cikkek megtekintési és kedvelési összesítéseihez, a Vercel a tárhelyszolgáltatáshoz és a teljesítményméréshez, az Ahrefs és a Databuddy az analitikához, a Google pedig az analitikához, a hozzájárulás kezeléséhez és a hirdetésekhez. Ezek a szolgáltatók más országokban is kezelhetnek adatokat, saját adatvédelmi feltételeik szerint."
           },
           {
             "p": "Amikor megnyitsz vagy kedvelsz egy cikket, a Supabase cikkenként csak a megtekintések és a kedvelések összesített számát tárolja, az utolsó változás időpontjával, látogatóazonosító nélkül."

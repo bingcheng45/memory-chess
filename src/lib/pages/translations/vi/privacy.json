@@ -1,6 +1,6 @@
 {
-  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": "5dc262d65d2b226524fcb8878b64c9a640389fa8bff9c38c5ab0d58f0238e324",
+  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
+  "approvedHash": "bd6130e05a7700ed0486cb43662ec476080f8794ec7ab6fd3f14eb74985c8b3f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,7 +45,10 @@
         "title": "Thông tin được thu thập tự động",
         "blocks": [
           {
-            "p": "Các nhà cung cấp dịch vụ đo lường của chúng tôi có thể nhận thông tin kỹ thuật và thông tin sử dụng như các trang đã xem, vị trí gần đúng, loại trình duyệt và thiết bị, trang nguồn đã dẫn bạn đến, địa chỉ IP và các số đo thời gian về hiệu năng. Memory Chess sử dụng Google Analytics, Vercel Analytics, Vercel Speed Insights và Ahrefs Analytics để hiểu lưu lượng truy cập và giữ cho trang web nhanh và ổn định."
+            "p": "Các nhà cung cấp dịch vụ đo lường của chúng tôi có thể nhận thông tin kỹ thuật và thông tin sử dụng như các trang đã xem, vị trí gần đúng, loại trình duyệt và thiết bị, trang nguồn đã dẫn bạn đến, địa chỉ IP và các số đo thời gian về hiệu năng. Memory Chess sử dụng Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics và Databuddy để hiểu lưu lượng truy cập và giữ cho trang web nhanh và ổn định."
+          },
+          {
+            "p": "Databuddy không sử dụng cookie. Databuddy lưu một mã khách truy cập ngẫu nhiên trong bộ nhớ cục bộ của trình duyệt và một mã phiên trong bộ nhớ phiên của trình duyệt. Databuddy ghi lại các trang bạn xem, các số đo thời gian về hiệu năng, lỗi JavaScript, các lượt nhấp vào liên kết dẫn ra khỏi trang web, các lượt nhấp bị lặp lại hoặc không nhận được phản hồi, và các biểu mẫu bị bỏ dở trước khi được gửi. Databuddy cũng nhận một sự kiện khi một ván bắt đầu hoặc kết thúc, gồm số quân, thời gian ghi nhớ và nơi ván bắt đầu, và một sự kiện khi một điểm số được gửi lên bảng xếp hạng hoặc bàn cờ hằng ngày, gồm độ khó và số quân của điểm số đó. Các sự kiện này không bao giờ mang theo độ chính xác của bạn, tên người chơi của bạn hay các thế cờ bạn đã chơi."
           },
           {
             "p": "Chúng tôi không yêu cầu các công cụ này thu thập nội dung tin nhắn liên hệ hay nhận xét góp ý về trò chơi của bạn."
@@ -119,7 +122,7 @@
             "p": "Chúng tôi sử dụng thông tin để cung cấp và bảo mật Memory Chess, tính kết quả, công bố điểm đã gửi lên bảng xếp hạng, trả lời tin nhắn liên hệ, xem xét góp ý, đo lường hiệu năng trang web, ngăn chặn lạm dụng và hỗ trợ trang web bằng quảng cáo. Chúng tôi không bán thông tin liên hệ hay góp ý mà bạn gửi."
           },
           {
-            "p": "Dữ liệu chỉ được các nhà cung cấp dịch vụ xử lý khi cần thiết: Google Sheets cho tin nhắn liên hệ và góp ý về trò chơi, Supabase cho số liệu thống kê trò chơi, các lượt gửi lên bảng xếp hạng và tổng số lượt xem và lượt thích của bài viết, Vercel cho lưu trữ và đo lường hiệu năng, Ahrefs cho phân tích, và Google cho phân tích, sự đồng ý và quảng cáo. Các nhà cung cấp này có thể xử lý dữ liệu ở các quốc gia khác theo điều khoản quyền riêng tư của riêng họ."
+            "p": "Dữ liệu chỉ được các nhà cung cấp dịch vụ xử lý khi cần thiết: Google Sheets cho tin nhắn liên hệ và góp ý về trò chơi, Supabase cho số liệu thống kê trò chơi, các lượt gửi lên bảng xếp hạng và tổng số lượt xem và lượt thích của bài viết, Vercel cho lưu trữ và đo lường hiệu năng, Ahrefs và Databuddy cho phân tích, và Google cho phân tích, sự đồng ý và quảng cáo. Các nhà cung cấp này có thể xử lý dữ liệu ở các quốc gia khác theo điều khoản quyền riêng tư của riêng họ."
           },
           {
             "p": "Khi bạn mở hoặc thích một bài viết, Supabase chỉ lưu tổng số lượt xem và tổng số lượt thích cho mỗi bài viết, cùng thời điểm thay đổi gần nhất và không có mã nhận dạng khách truy cập nào."

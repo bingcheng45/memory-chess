@@ -1,6 +1,6 @@
 {
-  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": "8a65cc94a6a6f3bae8a64e68085e75694ff18e8d325ef870dec4d0dc66c18c6b",
+  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
+  "approvedHash": "37959ddf1a14f56b37cddc65413bf23b7c67a585093adc5c83669e90e3deb74d",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "第三者のサービス",
         "blocks": [
           {
-            "p": "このサイトは少数の外部サービスの上で動いています。Google AdSense は、サイトを無料に保つ広告を配信しています。Google Analytics、Vercel Analytics、Vercel Speed Insights、Ahrefs Analytics は、アクセス状況とパフォーマンスを測定しています。Supabase は、ゲームの統計とランキングへの登録を保存しています。それぞれに独自の規約があり、<privacy>プライバシーポリシー</privacy>では、それぞれがどのデータに関わるか、そしてあなたにどんな選択肢があるかを説明しています。"
+            "p": "このサイトは少数の外部サービスの上で動いています。Google AdSense は、サイトを無料に保つ広告を配信しています。Google Analytics、Vercel Analytics、Vercel Speed Insights、Ahrefs Analytics、Databuddy は、アクセス状況とパフォーマンスを測定しています。Supabase は、ゲームの統計とランキングへの登録を保存しています。それぞれに独自の規約があり、<privacy>プライバシーポリシー</privacy>では、それぞれがどのデータに関わるか、そしてあなたにどんな選択肢があるかを説明しています。"
           }
         ]
       },

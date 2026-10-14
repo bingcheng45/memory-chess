@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@/test-utils/intl";
+import { act, fireEvent, render, screen } from "@/test-utils/intl";
 import GamePage from "@/app/[locale]/game/page";
 import { useGameStore } from "@/lib/store/gameStore";
 
@@ -31,6 +31,7 @@ describe("GamePage new game after a round", () => {
 
     fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
     fireEvent.click(screen.getByRole("button", { name: "Start round" }));
+    act(() => useGameStore.getState().endCountdown());
     fireEvent.click(screen.getByRole("button", { name: "Done" }));
     fireEvent.click(screen.getByRole("button", { name: "Submit" }));
     fireEvent.click(screen.getByRole("button", { name: "New game" }));

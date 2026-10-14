@@ -7,6 +7,7 @@ import { openReview, type ReviewStart } from "@/lib/lab/reviewBoard";
 import GamePage from "@/app/[locale]/game/page";
 
 const mockStartGame = jest.fn();
+const mockCountInGame = jest.fn();
 const mockPrepareGame = jest.fn();
 const mockResetGame = jest.fn();
 const mockConfig = { pieceCount: 2, studyMs: 10000, source: "game_form" } as const;
@@ -24,6 +25,7 @@ jest.mock("@/lib/store/gameStore", () => {
     round: ROUNDS[mockPhase],
     lastSettings: null,
     startGame: mockStartGame,
+    countInGame: mockCountInGame,
     prepareGame: mockPrepareGame,
     endCountdown: jest.fn(),
     resetGame: mockResetGame,
@@ -58,6 +60,7 @@ jest.mock("@/i18n/navigation", () => ({
 beforeEach(() => {
   jest.spyOn(console, "log").mockImplementation(() => {});
   mockStartGame.mockClear();
+  mockCountInGame.mockClear();
   mockPrepareGame.mockClear();
   mockResetGame.mockClear();
   jest.mocked(openDaily).mockReset();
@@ -248,7 +251,8 @@ describe("GamePage review link", () => {
     fireEvent.click(await screen.findByRole("button", { name: "Start round" }));
     await act(async () => answer({ kind: "play", pieceCount: 4, memorizeTime: 10, board: BOARD }));
 
-    expect(mockStartGame.mock.calls.map(([, , source]) => source)).toEqual(["game_form"]);
+    expect(mockCountInGame.mock.calls.map(([, , source]) => source)).toEqual(["game_form"]);
+    expect(mockStartGame).not.toHaveBeenCalled();
   });
 
   it("says today's reviews are done in the form's place once the daily limit is reached", async () => {

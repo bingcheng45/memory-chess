@@ -103,4 +103,21 @@ describe("GamePage replay count-in", () => {
     expect(counted.every(({ phase, pieces: shown, hidden }) => phase === "countdown" && shown === 0 && hidden === "true")).toBe(true);
     expect([view().phase, view().pieces, roundStarts()]).toEqual(["study", 3, ["link", "try_again"]]);
   });
+
+  it("counts 3, 2, 1 over the veiled empty board after the form's Start round, then studies that setting", async () => {
+    window.history.pushState({}, "", "/game");
+    render(<GamePage />);
+    await act(async () => {});
+    fireEvent.click(screen.getByRole("button", { name: /Hard/ }));
+    fireEvent.click(screen.getByRole("button", { name: "Start round" }));
+    const startsBefore = roundStarts();
+
+    const counted = await countThrough();
+
+    expect(startsBefore).toEqual([]);
+    expect(counted.map(({ count: shown }) => shown)).toEqual(["3", "2", "1"]);
+    expect(counted.every(({ phase, pieces: shown, hidden }) => phase === "countdown" && shown === 0 && hidden === "true")).toBe(true);
+    expect([view().phase, view().pieces, roundStarts()]).toEqual(["study", 12, ["game_form"]]);
+    expect(useGameStore.getState().gameState.board).toBeUndefined();
+  });
 });

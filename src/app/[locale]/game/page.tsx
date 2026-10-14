@@ -126,6 +126,7 @@ function GamePageContent() {
   const gameState = useGameStore((state) => state.gameState);
   const startGame = useGameStore((state) => state.startGame);
   const prepareGame = useGameStore((state) => state.prepareGame);
+  const countInGame = useGameStore((state) => state.countInGame);
   const dispatch = useGameStore((state) => state.dispatch);
   const resetGame = useGameStore((state) => state.resetGame);
   const submitSolution = useGameStore((state) => state.submitSolution);
@@ -240,17 +241,25 @@ function GamePageContent() {
     });
   };
 
-  const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
+  const replay = (begin: () => void) => {
     startedByHandRef.current = true;
     setRefused(null);
     setSavingDaily(false);
     stopTimerSound();
     playSound('click');
     resetGame();
-    startGame(pieceCount, memorizeTime, source);
+    begin();
   };
 
-  const handleTryAgain = () => handlePlay(gameState.pieceCount, gameState.memorizeTime, 'try_again');
+  const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) =>
+    replay(() => startGame(pieceCount, memorizeTime, source));
+
+  // The player has just pressed a button, so the new board counts in over the veil without a second one.
+  const handleTryAgain = () => {
+    if (round.phase === 'idle') return;
+    const { pieceCount, studyMs } = round.config;
+    replay(() => countInGame(pieceCount, studyMs / 1000, 'try_again'));
+  };
 
   const handleNewGame = () => {
     stopTimerSound(); // Stop any playing timer sound

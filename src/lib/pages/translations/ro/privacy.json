@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Politica de confidențialitate",
+      "description": "Află cum folosește Memory Chess datele, stocarea din browser, analiza traficului, cookie-urile și serviciile de publicitate.",
+      "socialTitle": "Politica de confidențialitate Memory Chess",
+      "socialDescription": "Află cum gestionează Memory Chess datele, cookie-urile, analiza traficului și publicitatea."
+    },
+    "kicker": "Confidențialitatea ta",
+    "title": "Politica de confidențialitate",
+    "lede": "Un ghid simplu despre ce colectează Memory Chess, de ce folosim aceste date și ce opțiuni ai.",
+    "sections": {
+      "short-version": {
+        "title": "Pe scurt",
+        "blocks": [
+          {
+            "p": "Poți juca Memory Chess fără să îți creezi un cont. Folosim o cantitate mică de date ca să facem jocul să funcționeze, să îți reținem setările, să înțelegem performanța site-ului, să răspundem la mesaje, să întreținem clasamentul și să îmbunătățim experiența. Folosim și Google AdSense, care poate folosi cookie-uri și tehnologii similare pentru reclame atunci când publicitatea este activată."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Cine răspunde de datele tale",
+        "blocks": [
+          {
+            "p": "Memory Chess este administrat de Bing Cheng, dezvoltator independent, care acționează ca operator de date pentru informațiile personale descrise în această politică. Pentru orice întrebare sau solicitare privind confidențialitatea, scrie la <mail>{email}</mail> sau folosește formularul de contact."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Informații pe care ni le oferi",
+        "blocks": [
+          {
+            "ul": [
+              "<b>Mesaje de contact:</b> numele tău, adresa de e-mail, tipul solicitării și mesajul, atunci când folosești formularul de contact.",
+              "<b>Păreri despre joc:</b> numărul de stele pe care îl acorzi, comentariile opționale și detalii despre joc, precum precizia, dificultatea, numărul de piese și timpii de finalizare. Acest formular de păreri nu îți cere numele sau adresa de e-mail.",
+              "<b>Intrări în clasament:</b> numele de jucător pe care îl alegi, detaliile scorului pe care îl trimiți, ratingul tău de abilitate din acel moment și țara pe care o alegi, dacă alegi una. Acestea sunt afișate public, așa că te rugăm să nu folosești numele tău real dacă preferi să rămână privat. Când intri în tabla zilei, formularul îți sugerează o țară pe baza țării din care provine conexiunea ta, raportată de furnizorul nostru de găzduire; nu stocăm această estimare, iar țara salvată este cea pe care o alegi tu."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Informații colectate automat",
+        "blocks": [
+          {
+            "p": "Furnizorii noștri de măsurare pot primi informații tehnice și de utilizare, precum paginile vizualizate, locația aproximativă, tipul de browser și de dispozitiv, pagina de proveniență, adresa IP și timpii de performanță. Memory Chess folosește Google Analytics, Vercel Analytics, Vercel Speed Insights și Ahrefs Analytics ca să înțeleagă traficul și să mențină site-ul rapid și fiabil."
+          },
+          {
+            "p": "Nu le cerem acestor instrumente să colecteze conținutul mesajelor tale de contact sau al comentariilor tale despre joc."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Cookie-uri și stocarea din browser",
+        "blocks": [
+          {
+            "p": "Memory Chess folosește stocarea din browser ca să păstreze istoricul jocurilor și setările pe dispozitivul tău, să rețină preferințele de sunet, să nu repete un banner de actualizare pe care l-ai închis și să stabilească momentul în care cererea de păreri poate reapărea. Ștergerea datelor din browser resetează aceste alegeri."
+          },
+          {
+            "p": "Jurnalul de laborator de pe pagina principală păstrează fiecare rundă pe care o termini, inclusiv citirea de exersare de pe pagina principală, în IndexedDB și în stocarea locală a browserului tău: poziția pe care ai studiat-o, cea pe care ai reconstruit-o, timpii tăi, scorurile tale, decalajul fusului tău orar, locul de unde ai pornit runda (de exemplu pagina principală sau un ghid) și ordinea și momentul fiecărei piese pe care ai așezat-o. Este folosit doar pentru a afișa pe acest dispozitiv seria ta, recordurile personale, evoluția preciziei, harta greșelilor, tabla de azi, coada de recapitulare și curba uitării. Jurnalul în sine, cu pozițiile, câmpurile, plasările și istoricul lui, nu părăsește niciodată acest dispozitiv. O rundă pe care alegi să o distribui este singura excepție, descrisă mai jos. Stocarea locală mai păstrează ziua UTC în care ai deschis ultima dată tabla de azi, ca să îți ofere o singură încercare pe zi, și pașii de recapitulare pe care i-ai deschis, ca o tablă părăsită înainte de rezultat să nu fie afișată de două ori la același interval. Google Analytics primește un eveniment pentru fiecare rundă pe care o termini, pe pagina principală sau în joc, cu numărul de piese, timpul de studiu, câte piese ți-ai amintit, precizia ta și locul de unde a pornit runda, care poate indica tabla de azi, o recapitulare sau un plan. Primește un eveniment și când pornește o rundă, cu numărul de piese, timpul de studiu și locul de unde a pornit. Mai primește câteva evenimente ale laboratorului: când secțiunea laboratorului devine vizibilă, când urmezi unul dintre linkurile ei de joc, numărul de runde când descarci jurnalul sau ceri backup între dispozitive și numărul de runde adăugate și omise când imporți. Niciunul dintre aceste evenimente nu conține poziții, câmpuri, identificatori de rundă sau serii. Când pornești, oprești sau termini un plan ori când setezi sau ștergi un obiectiv, Google Analytics primește un eveniment care numește doar acea acțiune, fără numele planului și fără cifre. Planul și obiectivul pe care le alegi sunt păstrate în stocarea locală a browserului tău pe acest dispozitiv, la fel ca numărul de zile pe săptămână în care îți propui să joci, care nu trimite niciun eveniment. „Descarcă jurnalul meu de laborator” salvează o copie ca fișier pe care îl controlezi tu, iar ștergerea datelor din browser șterge jurnalul. Ferestrele private nu îl păstrează. Doar când apeși „Copiază citirea mea”, browserul tău pune în clipboard un text scurt cu capacitatea ta de memorie și, când jurnalul le poate citi, piesele reținute și viteza ta, fiecare cu numărul ei de runde. Textul nu numește poziții, câmpuri sau date calendaristice și nu este trimis nicăieri. Stocarea locală mai păstrează momentul în care nota despre păstrarea jurnalului în acest browser a devenit vizibilă prima dată, ca nota să fie afișată o singură dată, momentul în care ți-ai văzut ultima dată caietul, ca însemnările mai noi să fie marcate ca noi, și momentul în care ai descărcat ultima dată jurnalul. După câteva runde, site-ul îi cere o singură dată browserului tău să păstreze jurnalul când spațiul se împuținează, iar stocarea locală notează că a cerut."
+          },
+          {
+            "p": "Pagina de progres citește același jurnal în browserul tău și nu trimite nimic. Doar când apeși „Distribuie progresul meu”, browserul tău desenează o imagine cu cifrele pe care le poate citi jurnalul: capacitatea ta de memorie, ratingul de abilitate, piesele reținute, viteza, cea mai bună precizie și precizia recentă, seria de victorii, zilele la rând, rundele jucate și zilele jucate. Doar când apeși „Distribuie rezultatul” pe ecranul de rezultat al jocului, browserul tău desenează o imagine a acelei runde: precizia ei, piesele pe care ți le-ai amintit, numărul de piese, timpul de studiu permis și cel folosit, timpul de reconstruire și, cu excepția unei recapitulări, ratingul tău, schimbarea lui și eventuala serie de victorii, iar, cu excepția tablei de azi, tabla pe care ai studiat-o și tabla pe care ai reconstruit-o."
+          },
+          {
+            "p": "Oricare dintre butoane deschide o fereastră de distribuire, iar nimic nu părăsește browserul tău până nu alegi una dintre acțiunile ei: să trimiți imaginea, o descriere scurtă și un link către meniul de distribuire al dispozitivului, să descarci imaginea, să copiezi imaginea, să copiezi descrierea cu linkul ei sau să deschizi pagina de postare a X, Facebook, LinkedIn, Reddit, WhatsApp, Threads sau Bluesky cu linkul completat și, pe toate în afară de Facebook și LinkedIn, și cu descrierea completată. Ce trimiți acolo este gestionat conform termenilor de confidențialitate proprii ai acelui serviciu."
+          },
+          {
+            "p": "Linkul din descriere deschide pagina proprie a cardului pe Memory Chess, iar cifrele cardului sunt scrise în linkul însuși. Un link de rezultat distribuit, sub /share/result/, mai conține tabla pe care ai studiat-o, tabla pe care ai reconstruit-o și ordinea și momentul fiecărei piese pe care ai așezat-o, cu excepția cazului în care runda a fost tabla de azi, al cărei link nu conține nicio poziție. Oricine deschide linkul le poate citi, iar Memory Chess le citește din link ca să afișeze pagina și previzualizarea ei. Un link este creat doar când distribui un card, iar Memory Chess nu îl salvează. Ca pentru orice pagină de pe site, instrumentele de analiză menționate mai sus înregistrează adresa paginii, inclusiv linkul, când cineva o deschide."
+          },
+          {
+            "p": "Google Analytics primește un eveniment lab_dashboard_share când un card de progres părăsește pagina și un eveniment result_share când o face un card de rezultat. Fiecare numește doar modul în care a plecat, ca metodă: native pentru meniul de distribuire, download pentru o imagine descărcată, copy_image pentru o imagine copiată, copy pentru o descriere copiată sau post pentru pagina de postare a unei rețele, cu acea rețea numită x, facebook, linkedin, reddit, whatsapp, threads sau bluesky. Niciunul dintre evenimente nu conține cifrele cardului, tablele lui sau linkul lui."
+          },
+          {
+            "p": "Când trimiți un scor în clasament, stocarea locală de pe acest dispozitiv păstrează și identificatorul pe care clasamentul îl dă acelei intrări, cu dificultatea, țara, scorul și momentul în care l-ai trimis, pentru cea mai bună intrare a ta la fiecare dificultate. Doar când apeși „Verifică-mi locul” în jurnalul de laborator, browserul tău trimite acel identificator de intrare către Memory Chess, împreună cu alegerea de a o clasa la nivel mondial sau în țara intrării. Memory Chess citește intrarea din clasament și răspunde cu locul ei și cu numărul de intrări cu care a fost comparată. Răspunsul nu este stocat. Ca să limiteze cât de des se poate verifica locul, serverul numără în memoria sa, timp de un minut, verificările de la fiecare adresă IP și elimină o adresă la prima verificare de după expirarea minutului ei. Dacă clasamentul nu mai are intrarea, identificatorul ei este șters de pe acest dispozitiv. Google Analytics primește un eveniment care spune că s-a făcut o verificare a locului, fără identificatorul intrării și fără loc."
+          },
+          {
+            "p": "Aprecierea unui articol salvează identificatorul acelui articol și numărul de aprecieri afișat în acel moment în stocarea locală a browserului tău, astfel încât butonul de apreciere să rămână apăsat și numărul lui să nu scadă când revii. Stocarea sesiunii reține ce articole ai deschis în fila curentă, astfel încât redeschiderea unuia acolo să nu adauge o vizualizare. Ambele liste rămân în browserul tău. Când apreciezi un articol, Google Analytics primește și un eveniment de apreciere care numește articolul."
+          },
+          {
+            "p": "Căutarea din Învață ordonează ghidurile în browserul tău sau pe server când cauți de pe pagina de căutare. Google Analytics primește un eveniment pentru o căutare, cu numărul de caractere pe care le-ai tastat, câte ghiduri s-au potrivit, primul ghid și dacă potrivirea a fost apropiată, și un eveniment când deschizi un rezultat, cu acel ghid și locul lui în listă. Niciunul dintre evenimente nu conține cuvintele pe care le-ai tastat. O căutare făcută chiar de pe pagina de căutare îți pune cuvintele în adresa acelei pagini, iar instrumentele de analiză înregistrează adresa fiecărei pagini vizualizate, așa că acele cuvinte pot ajunge la ele."
+          },
+          {
+            "p": "Google Analytics și serviciile de publicitate pot folosi cookie-uri sau identificatori similari. Poți bloca sau șterge cookie-urile din browser, deși unele preferințe s-ar putea să nu mai funcționeze cum te aștepți."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Publicitate și Google AdSense",
+        "blocks": [
+          {
+            "p": "Memory Chess folosește Google AdSense pentru a susține site-ul. Furnizori terți, inclusiv Google, pot plasa sau citi cookie-uri, pot folosi web beacons sau pot prelucra adrese IP atunci când sunt folosite servicii de publicitate sau etichete de reclame."
+          },
+          {
+            "p": "Google și partenerii săi de publicitate pot folosi cookie-uri de publicitate pentru a afișa reclame pe baza vizitelor tale pe Memory Chess și pe alte site-uri. În funcție de locația, alegerile și setările tale, reclamele pot fi personalizate sau nepersonalizate. Și alți furnizori de reclame certificați de Google pot participa la afișarea și măsurarea reclamelor."
+          },
+          {
+            "p": "Google este unul dintre acești furnizori și folosește cookie-ul DoubleClick, cunoscut și drept cookie-ul DART, pentru a afișa reclame pe baza vizitelor tale pe acest site și pe alte site-uri de pe internet. Poți renunța la cookie-ul DART prin setările de reclame Google indicate mai jos."
+          },
+          {
+            "p": "Află mai multe despre <partnerSites>cum folosește Google informațiile de pe site-urile partenere</partnerSites>. Poți gestiona publicitatea personalizată în <adCenter>My Ad Center</adCenter> și poți renunța la unii alți furnizori prin <adChoices>YourAdChoices</adChoices>."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Opțiuni privind consimțământul",
+        "blocks": [
+          {
+            "p": "Acolo unde este necesar, vizitatorilor li se afișează un mesaj de consimțământ înainte ca datele de publicitate eligibile să fie folosite. Vizitatorii din Spațiul Economic European, Regatul Unit și Elveția își pot da consimțământul, îl pot refuza sau pot gestiona opțiuni individuale prin platforma de consimțământ a Google. Poți, de asemenea, să modifici controalele pentru cookie-uri din browser și să ajustezi preferințele de publicitate Google în My Ad Center."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Cum folosim și cum partajăm informațiile",
+        "blocks": [
+          {
+            "p": "Folosim informațiile pentru a oferi și a securiza Memory Chess, a calcula rezultatele, a publica scorurile trimise în clasament, a răspunde la mesajele de contact, a analiza părerile primite, a măsura performanța site-ului, a preveni abuzurile și a susține site-ul prin publicitate. Nu vindem datele de contact sau părerile pe care ni le trimiți."
+          },
+          {
+            "p": "Datele sunt gestionate de furnizori de servicii doar acolo unde este nevoie: Google Sheets pentru mesajele de contact și părerile despre joc, Supabase pentru statisticile jocului, intrările din clasament și totalurile de vizualizări și aprecieri ale articolelor, Vercel pentru găzduire și măsurarea performanței, Ahrefs pentru analiza traficului și Google pentru analiza traficului, consimțământ și publicitate. Acești furnizori pot prelucra date în alte țări, conform propriilor termeni de confidențialitate."
+          },
+          {
+            "p": "Când deschizi sau apreciezi un articol, Supabase stochează doar un total al vizualizărilor și un total al aprecierilor pentru fiecare articol, cu momentul ultimei modificări și fără niciun identificator al vizitatorului."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Păstrare și securitate",
+        "blocks": [
+          {
+            "p": "Păstrăm informațiile trimise doar atât timp cât rămân utile pentru scopurile descrise mai sus, inclusiv pentru întreținerea clasamentului public și pentru a răspunde la mesaje, sau atât cât cere legea. Niciun serviciu online nu este perfect sigur, dar limităm accesul și folosim măsuri de protecție rezonabile pentru sistemele pe care le controlăm."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "Opțiunile tale",
+        "blocks": [
+          {
+            "ul": [
+              "Joacă fără să trimiți un nume în clasament sau o părere.",
+              "Șterge din browser datele de joc și preferințele stocate.",
+              "Gestionează cookie-urile, opțiunile de consimțământ și reclamele personalizate.",
+              "Întreabă-ne despre informațiile pe care le-ai trimis, corectează-le sau cere ștergerea lor, în condițiile legii aplicabile și în măsura în care putem verifica solicitarea."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "Drepturile tale conform GDPR și CCPA",
+        "blocks": [
+          {
+            "p": "Dacă te afli în Spațiul Economic European sau în Regatul Unit, GDPR îți oferă dreptul de acces, de rectificare, de ștergere, de restricționare a prelucrării, de opoziție la prelucrare și dreptul la portabilitatea datelor. Temeiurile legale pe care ne bazăm sunt consimțământul tău, pentru publicitatea personalizată și cookie-urile de analiză acolo unde consimțământul este necesar, și interesele noastre legitime, pentru funcționarea și securizarea site-ului, publicarea scorurilor pe care le trimiți în clasament și răspunsul la mesajele pe care ni le trimiți. Îți poți retrage consimțământul în orice moment prin mesajul de consimțământ sau prin setările browserului și poți depune o plângere la autoritatea de supraveghere locală."
+          },
+          {
+            "p": "Dacă ești rezident în California, CCPA îți oferă dreptul de a ști ce informații personale sunt colectate, de a cere ștergerea lor și de a renunța la vânzarea sau partajarea lor. Nu îți vindem informațiile personale. Cookie-urile folosite pentru publicitatea personalizată pot fi considerate partajare conform CCPA, iar tu poți renunța prin mesajul de consimțământ, My Ad Center și YourAdChoices, indicate mai sus. Aceasta este notificarea noastră „Nu vindeți și nu partajați informațiile mele personale” („Do Not Sell or Share My Personal Information”). Pentru a-ți exercita oricare dintre aceste drepturi, scrie la <mail>{email}</mail>."
+          }
+        ]
+      },
+      "children": {
+        "title": "Confidențialitatea copiilor",
+        "blocks": [
+          {
+            "p": "Memory Chess este un joc de antrenament pentru publicul larg și nu este conceput pentru a colecta informații personale de la copii. Dacă ești părinte sau tutore și crezi că un copil a trimis informații personale, te rugăm să ne contactezi ca să le putem analiza și elimina acolo unde este cazul."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Modificări și contact",
+        "blocks": [
+          {
+            "p": "Putem actualiza această politică atunci când se schimbă site-ul sau furnizorii noștri de servicii. Data din partea de sus arată cea mai recentă revizuire. Pentru întrebări sau solicitări privind confidențialitatea, folosește <contact>formularul de contact Memory Chess</contact>."
+          }
+        ]
+      }
+    }
+  }
+}

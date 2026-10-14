@@ -1,0 +1,87 @@
+{
+  "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Despre",
+      "description": "Cine construiește Memory Chess, de ce există jocul, cum se punctează o rundă și cum sunt scrise ghidurile din Învață.",
+      "socialTitle": "Despre Memory Chess",
+      "socialDescription": "Cine construiește Memory Chess, de ce există jocul și cum funcționează."
+    },
+    "kicker": "Despre",
+    "title": "Despre Memory Chess",
+    "lede": "Memory Chess este un joc gratuit de memorare a tablei, construit și administrat de o singură persoană. Această pagină explică cine este această persoană, de ce există jocul și cum funcționează el de fapt.",
+    "sections": {
+      "who-runs-this-site": {
+        "title": "Cine administrează acest site",
+        "blocks": [
+          {
+            "p": "Sunt Bing Cheng, dezvoltator independent. Administrez Memory Chess singur, cu ajutorul AI pentru cod și pentru textele site-ului. Nu există nicio echipă și nicio companie în spatele lui. Construiesc și <tont>Tont</tont> și public noutăți despre acest site la <x>@TheMemoryChess</x>."
+          },
+          {
+            "p": "Pentru că o singură persoană se ocupă de tot, site-ul rămâne mic în mod intenționat. Un joc, o serie de ghiduri de antrenament, un clasament și o pagină de noutăți care consemnează ce a fost lansat cu adevărat."
+          },
+          {
+            "p": "Jocul este gratuit și nu necesită cont. Reclamele prin Google AdSense ajută la acoperirea costurilor de găzduire, iar nimic de pe site nu este condiționat de o plată sau de o înregistrare."
+          }
+        ]
+      },
+      "why-the-game-exists": {
+        "title": "De ce există jocul",
+        "blocks": [
+          {
+            "p": "Majoritatea sfaturilor pentru progresul la șah îi îndreaptă pe începători spre deschideri, probleme și cursuri. Din experiența mea, problema de dinainte stă sub toate acestea. Începătorii pierd șirul a ceea ce se află pe tablă. Nu observă un apărător, uită o piesă mutată cu două mutări în urmă și fac gafe, lăsându-se capturați în moduri pe care le-ar observa imediat pe o diagramă."
+          },
+          {
+            "p": "A ține o poziție în minte este o abilitate care se poate antrena, iar locurile în care o puteai exersa direct erau puține. Așa că am construit unul. Memory Chess izolează această singură abilitate și îi dă un scor, ca să o poți vedea cum se îmbunătățește. Dacă vrei și o miză, poți pune un nume ales de tine în clasamentul public și te poți măsura cu toți ceilalți."
+          }
+        ]
+      },
+      "how-a-round-works": {
+        "title": "Cum funcționează o rundă",
+        "blocks": [
+          {
+            "p": "Tu alegi cu câte piese te confrunți și cât timp le poți studia. Presetările merg de la Ușor, două piese cu zece secunde, până la Mare maestru, douăzeci de piese cu cinci secunde, și poți seta orice combinație personalizată. Apoi runda se desfășoară în trei faze."
+          },
+          {
+            "p": "Mai întâi memorezi. Tabla arată o poziție pentru timpul ales, apoi dispare. Apoi reconstruiești. Așezi din memorie piesele pe o tablă goală. La final îți primești rezultatul. Jocul compară tabla ta cu cea originală, câmp cu câmp."
+          },
+          {
+            "p": "Punctarea este strictă. O piesă contează drept corectă doar când piesa potrivită, de culoarea potrivită, stă exact pe câmpul pe care îl ocupa în poziția originală. Un turn acolo unde trebuia un cal este o greșeală dublă. Contează ca piesă plasată greșit, iar calul pe care l-a înlocuit contează ca lipsă. Precizia ta este proporția pieselor originale pe care le-ai reprodus exact."
+          },
+          {
+            "p": "Ecranul de rezultate arată toate cele trei grupe, plasările corecte, cele greșite și piesele pe care le-ai uitat cu totul, așa că fiecare rundă îți spune ce să ataci data viitoare. Poți <game>încerca o rundă</game> în mai puțin de un minut."
+          }
+        ]
+      },
+      "how-the-guides-are-written": {
+        "title": "Cum sunt scrise ghidurile din Învață",
+        "blocks": [
+          {
+            "p": "<learn>Biblioteca Învață</learn> cuprinde {count, plural, one {# ghid} few {# ghiduri} other {# de ghiduri}} despre vederea tablei, vizualizare și antrenarea memoriei. Sunt scrise cu ajutorul AI. Fiecare poziție de șah din ele este verificată de un script pentru numărul de piese, legalitate și fiecare atac pe care îl afirmă textul. Fiecare afirmație despre cum funcționează Memory Chess este verificată în codul jocului. Fiecare ghid are exerciții. Unele deschid în joc o rundă cu setările potrivite. Restul sunt gândite pentru o tablă reală."
+          },
+          {
+            "p": "Acolo unde ghidurile fac afirmații despre memorie și învățare, citează cercetări publicate, inclusiv lucrările lui Gobet și Simon despre memoria în șah și literatura experimentală despre reamintire și exersarea spațiată. Fiecare citare are link către sursa ei. Nu am făcut cercetări proprii, iar ghidurile nu pretind altceva."
+          }
+        ]
+      },
+      "where-the-site-has-been": {
+        "title": "Parcursul site-ului",
+        "blocks": [
+          {
+            "p": "Prima versiune a apărut în martie 2025, ca o variantă minimală a jocului. Jocul pe mobil și selecția pieselor au urmat în câteva săptămâni. Biblioteca Învață a fost lansată în martie 2026, iar în august 2026 jocul propriu-zis a devenit disponibil în 24 de limbi. Ghidurile și pagina de noutăți sunt în engleză. <changelog>Pagina de noutăți</changelog> consemnează fiecare versiune lansată, inclusiv remedierile de erori. O țin onestă pentru că o folosesc și eu ca să-mi amintesc ce s-a schimbat și când."
+          }
+        ]
+      },
+      "get-in-touch": {
+        "title": "Ia legătura cu mine",
+        "blocks": [
+          {
+            "p": "Scrie-mi la <mail>{email}</mail> sau folosește <contact>formularul de contact</contact>. Citesc tot, iar rapoartele jucătorilor au dus deja la remedierea unor erori reale. Dacă vrei detaliile, <privacy>politica de confidențialitate</privacy> și <terms>termenii și condițiile</terms> explică felul în care site-ul gestionează datele și ce accepți jucând."
+          }
+        ]
+      }
+    }
+  }
+}

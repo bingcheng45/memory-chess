@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "b934beca2f0aedbe73a17e07d82d404abbe89bf0fffe7297df42cbd8207bc6b8",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -28,13 +28,13 @@
         "title": "Uso aceptable",
         "blocks": [
           {
-            "p": "Juega limpio y deja que el sitio siga funcionando para todos los demás. No ataques, sobrecargues ni sondees el servicio, no lo extraigas de forma masiva y no intentes romper su sistema de puntuación. No envíes puntuaciones generadas por bots, scripts ni ningún tipo de automatización. No uses el formulario de contacto ni la clasificación para enviar spam, acosar o suplantar a nadie."
+            "p": "Juega limpio y deja que el sitio siga funcionando para todos los demás. No ataques ni sobrecargues el servicio, no lo sondees en busca de fallos, no lo extraigas de forma masiva y no intentes romper su sistema de puntuación. No envíes puntuaciones generadas por bots, scripts ni ningún tipo de automatización. No uses el formulario de contacto ni la clasificación para enviar spam, acosar o suplantar a nadie."
           },
           {
             "p": "El formulario de contacto es para mensajes reales dirigidos a una persona real. Úsalo para informar de errores, hacer preguntas y proponer ideas, y se leerá."
           },
           {
-            "p": "Puedo bloquear el tráfico o restringir el acceso que incumpla estas normas. Sin cuentas que vetar, eliminar las entradas indebidas y bloquear los abusos en el perímetro de la red es la forma de hacer cumplir las normas que tengo, y la uso."
+            "p": "Puedo bloquear el tráfico o restringir el acceso que incumpla estas normas. Sin cuentas que vetar, eliminar las entradas indebidas y bloquear los abusos en el borde de la red es la forma de hacer cumplir las normas que tengo, y la uso."
           }
         ]
       },
@@ -48,7 +48,7 @@
             "p": "Una entrada enviada contiene el nombre que elegiste y los detalles de la ronda, como la precisión, la dificultad y el tiempo empleado. Una vez publicada, permanece en la clasificación hasta que la desplacen mejores puntuaciones o se elimine."
           },
           {
-            "p": "Puedo eliminar entradas de la clasificación que sean abusivas, que suplanten a alguien, que parezcan automatizadas o que claramente no se hayan obtenido jugando una persona. Elimino entradas para que la clasificación sea honesta, no para decidir quién gana."
+            "p": "Puedo eliminar entradas de la clasificación que sean abusivas, que suplanten a alguien, que parezcan automatizadas o que claramente no sean obra de una persona que juega al juego. Elimino entradas para que la clasificación sea honesta, no para decidir quién gana."
           }
         ]
       },

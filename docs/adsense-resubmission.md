@@ -136,7 +136,9 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
     paragraph fails. That count leaves out the translation note and the view and like counts, and the audit
     does not compare the blocks of the leaderboard. Both depend on live data, and each locale's copy of a page
     is cached by itself for 300 seconds, so a count of them failed 46 pages with no defect in the first audit
-    after a data change. The audit still has to print 96 sitemap URLs and PASS.
+    after a data change. The audit still has to print every sitemap URL and PASS. That was 96 URLs on
+    2026-10-05. From PR 42 on it is 120, because /daily is indexed in all 24 languages. Expect the count to grow
+    with each new indexed route; a drop with no route removed is a finding.
   - What the approval hash is. It is tamper evidence, not access control. It shows that a text is the one
     `approve` saw, in the place where it saw it, and it catches an accident or a careless edit. The recipe is in
     `src/lib/articles/articleText.ts`, so anyone who can write the repository can compute a hash that matches any

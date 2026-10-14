@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Privatlivspolitik",
+      "description": "Læs, hvordan Memory Chess bruger data, browserlagring, analyse, cookies og annoncetjenester.",
+      "socialTitle": "Privatlivspolitik for Memory Chess",
+      "socialDescription": "Læs, hvordan Memory Chess håndterer data, cookies, analyse og annoncer."
+    },
+    "kicker": "Dit privatliv",
+    "title": "Privatlivspolitik",
+    "lede": "En enkel gennemgang af, hvad Memory Chess indsamler, hvorfor vi bruger det, og hvilke valg du har.",
+    "sections": {
+      "short-version": {
+        "title": "Den korte version",
+        "blocks": [
+          {
+            "p": "Du kan spille Memory Chess uden at oprette en konto. Vi bruger en lille mængde data til at drive spillet, huske dine indstillinger, forstå, hvordan siden klarer sig, svare på beskeder, vedligeholde ranglisten og forbedre oplevelsen. Vi bruger også Google AdSense, som kan bruge cookies og lignende teknologi til annoncer, når annoncering er slået til."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Hvem der er ansvarlig for dine data",
+        "blocks": [
+          {
+            "p": "Memory Chess drives af Bing Cheng, en uafhængig udvikler, som er dataansvarlig for de personoplysninger, der beskrives i denne politik. Ved spørgsmål eller anmodninger om privatliv kan du skrive til <mail>{email}</mail> eller bruge kontaktformularen."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Oplysninger, du giver os",
+        "blocks": [
+          {
+            "ul": [
+              "<b>Kontaktbeskeder:</b> dit navn, din e-mailadresse, typen af henvendelse og din besked, når du bruger kontaktformularen.",
+              "<b>Feedback om spillet:</b> din bedømmelse i stjerner, valgfrie kommentarer og oplysninger om spillet som præcision, sværhedsgrad, antal brikker og tider. Denne feedbackformular spørger ikke om dit navn eller din e-mailadresse.",
+              "<b>Bidrag til ranglisten:</b> det spillernavn, du vælger, de resultatoplysninger, du indsender, din færdighedsrating på det tidspunkt og det land, du vælger, hvis du vælger et. De vises offentligt, så brug venligst ikke dit rigtige navn, hvis du hellere vil holde det privat. Når du deltager i dagens bræt, foreslår formularen et land ud fra det land, din forbindelse kommer fra, som vores hostingudbyder oplyser; det gæt gemmer vi ikke, og det land, du vælger, er det, der gemmes."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Oplysninger, der indsamles automatisk",
+        "blocks": [
+          {
+            "p": "Vores måletjenester kan modtage tekniske oplysninger og brugsoplysninger som viste sider, omtrentlig placering, type af browser og enhed, henvisende side, IP-adresse og indlæsningstider. Memory Chess bruger Google Analytics, Vercel Analytics, Vercel Speed Insights og Ahrefs Analytics til at forstå trafikken og holde siden hurtig og pålidelig."
+          },
+          {
+            "p": "Vi beder ikke disse værktøjer om at indsamle indholdet af dine kontaktbeskeder eller af dine kommentarer i spilfeedbacken."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Cookies og browserlagring",
+        "blocks": [
+          {
+            "p": "Memory Chess bruger browserlagring til at gemme spilhistorik og indstillinger på din enhed, huske lydindstillinger, undgå at vise et lukket opdateringsbanner igen og bestemme, hvornår spørgsmålet om feedback må dukke op igen. Hvis du rydder dine browserdata, nulstilles disse valg."
+          },
+          {
+            "p": "Laboratoriejournalen på forsiden gemmer hver runde, du gennemfører, også øvelsesmålingen på forsiden, i browserens IndexedDB og lokale lagring: den stilling, du studerede, den stilling, du genopbyggede, dine tider, dine scorer, din tidszoneforskydning, hvor du startede runden (for eksempel på forsiden eller i en guide) og rækkefølgen og tidspunktet for hver brik, du placerede. Den bruges kun til at vise din stime, dine personlige rekorder, udviklingen i din præcision, dit fejlkort, dagens bræt, gentagelseskøen og glemselskurven på denne enhed. Selve journalen, med dens stillinger, felter, placeringer og historik, forlader aldrig denne enhed. En runde, du vælger at dele, er den eneste undtagelse, som beskrives nedenfor. Den lokale lagring gemmer også den UTC-dag, hvor du sidst åbnede dagens bræt, så det giver dig ét forsøg om dagen, og hvilke gentagelsestrin du åbnede, så et bræt, du forlod før resultatet, ikke vises to gange med samme interval. Google Analytics modtager en hændelse for hver runde, du gennemfører, på forsiden eller i spillet, med antallet af brikker, studietiden, hvor mange brikker du huskede, din præcision og hvor runden startede, hvilket kan være dagens bræt, en gentagelse eller en plan. Det modtager også en hændelse, når en runde starter, med antallet af brikker, studietiden og hvor den startede. Det modtager desuden nogle laboratoriehændelser: når laboratorieafsnittet kommer til syne, når du følger et af dets spillinks, antallet af runder, når du downloader eller beder om sikkerhedskopiering på tværs af enheder, og antallet af tilføjede og sprungne runder, når du importerer. Ingen af disse hændelser indeholder stillinger, felter, runde-id'er eller stimer. Når du starter, stopper eller afslutter en plan, eller sætter eller fjerner et mål, modtager Google Analytics en hændelse, der kun nævner den handling, uden planens navn og uden tal. Den plan og det mål, du vælger, gemmes i browserens lokale lagring på denne enhed, ligesom antallet af dage om ugen, du sigter efter at spille, hvilket ikke sender nogen hændelse. Download min laboratoriejournal gemmer en kopi som en fil, du selv har kontrol over, og hvis du rydder dine browserdata, slettes journalen. Private vinduer gemmer den ikke. Kun når du trykker på Kopiér min måling, lægger din browser en kort tekst i din udklipsholder med dit hukommelsesspænd, og dine huskede brikker og dit tempo, når journalen kan aflæse dem, hver med sit antal runder. Teksten nævner ingen stillinger, felter eller datoer og sendes ingen steder hen. Den lokale lagring gemmer også tidspunktet, hvor beskeden om at beholde din journal i denne browser første gang kom til syne, så beskeden vises én gang, tidspunktet, hvor du sidst så din notesbog, så nyere poster markeres som nye, og tidspunktet, hvor du sidst downloadede journalen. Efter nogle runder beder siden én gang din browser om at beholde journalen, når der bliver mangel på plads, og den lokale lagring noterer, at den har spurgt."
+          },
+          {
+            "p": "Fremskridtssiden læser den samme journal i din browser og sender intet. Kun når du trykker på Del mine fremskridt, tegner din browser et billede af de tal, journalen kan aflæse: dit hukommelsesspænd, din færdighedsrating, huskede brikker, tempo, bedste og seneste præcision, sejre i træk, dage i træk, spillede runder og spillede dage. Kun når du trykker på Del resultat på spillets resultatskærm, tegner din browser et billede af den runde: dens præcision, de brikker du huskede, antallet af brikker, den tilladte og den brugte studietid, genopbygningstiden og, undtagen ved en gentagelse, din rating, dens ændring og en eventuel sejrsstime samt, undtagen ved dagens bræt, det bræt du studerede, og det bræt du genopbyggede."
+          },
+          {
+            "p": "Begge knapper åbner et delingsvindue, og intet forlader din browser, før du vælger en af dets handlinger: give billedet, en kort billedtekst og et link videre til din enheds delingsmenu, downloade billedet, kopiere billedet, kopiere billedteksten med dens link eller åbne opslagssiden hos X, Facebook, LinkedIn, Reddit, WhatsApp, Threads eller Bluesky med linket og, hos alle undtagen Facebook og LinkedIn, billedteksten udfyldt. Det, du sender der, håndteres efter den tjenestes egne privatlivsvilkår."
+          },
+          {
+            "p": "Linket i billedteksten åbner kortets egen side på Memory Chess, og kortets tal står i selve linket. Et delt resultatlink, under /share/result/, indeholder også det bræt, du studerede, det bræt, du genopbyggede, og rækkefølgen og tidspunktet for hver brik, du placerede, medmindre runden var dagens bræt, hvis link ikke indeholder nogen stilling. Alle, der åbner linket, kan læse dem, og Memory Chess læser dem fra linket for at vise siden og dens forhåndsvisning. Et link oprettes kun, når du deler et kort, og Memory Chess gemmer det ikke. Som for enhver side på sitet registrerer de analyseværktøjer, der er nævnt ovenfor, sidens adresse, linket inklusive, når nogen åbner den."
+          },
+          {
+            "p": "Google Analytics modtager en hændelse lab_dashboard_share, når et fremskridtskort forlader siden, og en hændelse result_share, når et resultatkort gør det. Hver af dem nævner kun, hvordan kortet forlod siden, som sin metode: native for delingsmenuen, download for et downloadet billede, copy_image for et kopieret billede, copy for en kopieret billedtekst eller post for et netværks opslagsside, hvor netværket nævnes som x, facebook, linkedin, reddit, whatsapp, threads eller bluesky. Ingen af hændelserne indeholder kortets tal, dets brætter eller dets link."
+          },
+          {
+            "p": "Når du indsender en score til ranglisten, gemmer den lokale lagring på denne enhed også det id, ranglisten giver bidraget, med sværhedsgrad, land, score og tidspunktet, du sendte det, for dit bedste bidrag på hver sværhedsgrad. Kun når du trykker på Tjek min placering i laboratoriejournalen, sender din browser det bidrags-id til Memory Chess, sammen med om det skal rangeres på verdensplan eller inden for bidragets eget land. Memory Chess læser bidraget fra ranglisten og svarer med dets placering og antallet af bidrag, det blev rangeret imod. Svaret gemmes ikke. For at begrænse, hvor ofte placeringen kan tjekkes, tæller serveren tjek fra hver IP-adresse i sin hukommelse i ét minut og dropper en adresse ved det første tjek, efter at dens minut er gået. Hvis ranglisten ikke længere har bidraget, fjernes dets id fra denne enhed. Google Analytics modtager en hændelse, der siger, at der er foretaget et tjek af placeringen, uden bidrags-id og uden placering."
+          },
+          {
+            "p": "Når du synes godt om en artikel, gemmes artiklens id og det antal likes, der vises i det øjeblik, i din browsers lokale lagring, så like-knappen forbliver trykket ned, og antallet ikke falder, når du kommer tilbage. Sessionslagringen husker, hvilke artikler du har åbnet i den aktuelle fane, så det ikke tæller som en ekstra visning, hvis du åbner en af dem igen der. Begge lister bliver i din browser. Når du synes godt om en artikel, modtager Google Analytics også en like-hændelse, der nævner artiklen."
+          },
+          {
+            "p": "Søgningen i Lær rangerer guider i din browser eller på serveren, når du søger fra søgesiden. Google Analytics modtager en hændelse for en søgning med, hvor mange tegn du skrev, hvor mange guider der matchede, den øverste guide og om det var et omtrentligt match, og en hændelse, når du åbner et resultat, med den guide og dens plads på listen. Ingen af hændelserne indeholder de ord, du skrev. En søgning foretaget fra selve søgesiden lægger dine ord i den sides adresse, og analyseværktøjerne registrerer adressen på hver vist side, så de ord kan nå frem til dem."
+          },
+          {
+            "p": "Google Analytics og annoncetjenester kan bruge cookies eller lignende identifikatorer. Du kan blokere eller slette cookies i din browser, men nogle indstillinger kan så holde op med at virke som forventet."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Annoncer og Google AdSense",
+        "blocks": [
+          {
+            "p": "Memory Chess bruger Google AdSense til at støtte siden. Tredjepartsleverandører, herunder Google, kan placere eller læse cookies, bruge webbeacons eller behandle IP-adresser, når annoncetjenester eller annoncetags bruges."
+          },
+          {
+            "p": "Google og dets annoncepartnere kan bruge annoncecookies til at vise annoncer baseret på dine besøg på Memory Chess og andre websites. Afhængigt af din placering, dine valg og dine indstillinger kan annoncer være personaliserede eller ikke-personaliserede. Andre Google-certificerede annonceleverandører kan også deltage i at vise og måle annoncer."
+          },
+          {
+            "p": "Google er en af disse leverandører og bruger DoubleClick-cookien, også kendt som DART-cookien, til at vise annoncer baseret på dine besøg på dette site og andre sites på internettet. Du kan fravælge DART-cookien via Googles annonceindstillinger, der er linket til nedenfor."
+          },
+          {
+            "p": "Læs mere om, <partnerSites>hvordan Google bruger oplysninger fra partnersites</partnerSites>. Du kan administrere personaliseret annoncering i <adCenter>My Ad Center</adCenter> og fravælge nogle andre leverandører via <adChoices>YourAdChoices</adChoices>."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Valg om samtykke",
+        "blocks": [
+          {
+            "p": "Hvor det er påkrævet, får besøgende vist en besked om samtykke, før relevante annoncedata bruges. Besøgende i Det Europæiske Økonomiske Samarbejdsområde, Storbritannien og Schweiz kan give samtykke, afvise eller administrere de enkelte valg via Googles samtykkeplatform. Du kan også ændre cookieindstillingerne i din browser og justere dine annoncepræferencer hos Google i My Ad Center."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Hvordan vi bruger og deler oplysninger",
+        "blocks": [
+          {
+            "p": "Vi bruger oplysninger til at levere og sikre Memory Chess, beregne resultater, offentliggøre indsendte scorer på ranglisten, svare på kontaktbeskeder, gennemgå feedback, måle sidens ydeevne, forhindre misbrug og støtte siden med annoncer. Vi sælger ikke de kontaktoplysninger eller den feedback, du indsender."
+          },
+          {
+            "p": "Data håndteres kun af tjenesteudbydere, hvor det er nødvendigt: Google Sheets til kontaktbeskeder og spilfeedback, Supabase til spilstatistik, bidrag til ranglisten og totaler for visninger og likes af artikler, Vercel til hosting og måling af ydeevne, Ahrefs til analyse og Google til analyse, samtykke og annoncering. Disse udbydere kan behandle data i andre lande efter deres egne privatlivsvilkår."
+          },
+          {
+            "p": "Når du åbner eller synes godt om en artikel, gemmer Supabase kun et samlet antal visninger og et samlet antal likes for hver artikel, med tidspunktet for den seneste ændring og uden nogen identifikator for den besøgende."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Opbevaring og sikkerhed",
+        "blocks": [
+          {
+            "p": "Vi opbevarer kun indsendte oplysninger, så længe de er nyttige til de formål, der er beskrevet ovenfor, herunder at vedligeholde den offentlige rangliste og svare på beskeder, eller så længe loven kræver det. Ingen onlinetjeneste er fuldstændig sikker, men vi begrænser adgangen og bruger rimelige sikkerhedsforanstaltninger til de systemer, vi kontrollerer."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "Dine valg",
+        "blocks": [
+          {
+            "ul": [
+              "Spil uden at indsende et navn til ranglisten eller feedback.",
+              "Ryd gemte spildata og indstillinger i din browser.",
+              "Administrer cookies, valg om samtykke og personaliserede annoncer.",
+              "Spørg os om oplysninger, du har indsendt, få dem rettet, eller anmod om at få dem slettet, med forbehold for gældende lovgivning og vores mulighed for at bekræfte anmodningen."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "Dine rettigheder efter databeskyttelsesforordningen (GDPR) og CCPA",
+        "blocks": [
+          {
+            "p": "Hvis du befinder dig i Det Europæiske Økonomiske Samarbejdsområde eller Storbritannien, giver databeskyttelsesforordningen (GDPR) dig ret til indsigt, berigtigelse, sletning, begrænsning af behandling, indsigelse mod behandling og dataportabilitet. De retsgrundlag, vi bygger på, er dit samtykke, til personaliserede annoncer og analysecookies, hvor samtykke er påkrævet, og vores legitime interesser, til at drive og sikre siden, offentliggøre de scorer på ranglisten, som du indsender, og besvare de beskeder, du sender. Du kan til enhver tid trække dit samtykke tilbage via beskeden om samtykke eller dine browserindstillinger, og du kan indgive en klage til din lokale tilsynsmyndighed."
+          },
+          {
+            "p": "Hvis du bor i Californien, giver CCPA dig ret til at vide, hvilke personoplysninger der indsamles, til at anmode om, at de slettes, og til at fravælge salg eller deling af dem. Vi sælger ikke dine personoplysninger. Cookies, der bruges til personaliserede annoncer, kan tælle som deling efter CCPA, og du kan fravælge det via beskeden om samtykke, My Ad Center og YourAdChoices, der er linket til ovenfor. Dette er vores meddelelse om „Sælg eller del ikke mine personoplysninger“ (Do Not Sell or Share My Personal Information). Skriv til <mail>{email}</mail> for at udøve nogen af disse rettigheder."
+          }
+        ]
+      },
+      "children": {
+        "title": "Børns privatliv",
+        "blocks": [
+          {
+            "p": "Memory Chess er et træningsspil for et bredt publikum og er ikke designet til at indsamle personoplysninger fra børn. Hvis du er forælder eller værge og mener, at et barn har indsendt personoplysninger, så kontakt os venligst, så vi kan gennemgå dem og fjerne dem, hvor det er passende."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Ændringer og kontakt",
+        "blocks": [
+          {
+            "p": "Vi kan opdatere denne politik, når siden eller vores tjenesteudbydere ændrer sig. Datoen øverst viser den seneste revision. Ved spørgsmål eller anmodninger om privatliv kan du bruge <contact>kontaktformularen til Memory Chess</contact>."
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "sourceHash": "0adc596fbb3b9624ebfa03fbbb72b5ddb121da051e620affb8933837f009c6a3",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "contents": "Indhold",
+    "onThisPage": "På denne side",
+    "lastUpdated": "Senest opdateret: <time>{date}</time>",
+    "note": {
+      "general": "Denne side er oversat fra engelsk med hjælp fra AI. Den engelske side er udgangspunktet.",
+      "legal": "Denne oversættelse er lavet med hjælp fra AI og stilles til rådighed for nemheds skyld. Hvis den afviger fra den engelske version, er det den engelske version, der gælder.",
+      "readInEnglish": "Læs den på engelsk"
+    }
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Brugsbetingelser",
+      "description": "Betingelserne i et klart sprog for at spille Memory Chess, indsende scorer til ranglisten og bruge sidens indhold.",
+      "socialTitle": "Brugsbetingelser for Memory Chess",
+      "socialDescription": "Betingelserne i et klart sprog for at spille Memory Chess og bruge siden."
+    },
+    "kicker": "Det med småt",
+    "title": "Brugsbetingelser",
+    "lede": "Memory Chess er et gratis spil, som drives af én person. Betingelserne er korte, fordi aftalen er enkel, og de er skrevet til at blive læst.",
+    "sections": {
+      "service": {
+        "title": "Tjenesten",
+        "blocks": [
+          {
+            "p": "Memory Chess er et gratis browserspil til træning af hukommelsen for brættet. Jeg stiller det til rådighed, som det er, og i det omfang det er tilgængeligt, uden nogen form for garanti. Jeg arbejder på at holde det hurtigt, præcist og online, men jeg lover ikke uafbrudt drift, fejlfri pointgivning eller at nogen funktion forbliver den samme for altid. Jeg kan til enhver tid ændre, midlertidigt standse eller lukke enhver del af siden."
+          },
+          {
+            "p": "I det omfang loven tillader det, er jeg ikke ansvarlig for skader, der opstår ved din brug af siden. Det er et hukommelsesspil. Det fornuftige loft for, hvad der kan gå galt her, er, at du mister en score, du holdt af, og det gør jeg stadig mit bedste for at forhindre."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Acceptabel brug",
+        "blocks": [
+          {
+            "p": "Spil fair, og lad siden virke for alle andre. Angrib, overbelast eller afsøg ikke tjenesten, skrab den ikke automatisk i stor skala, og prøv ikke at knække dens pointgivning. Indsend ikke scorer, der er skabt af bots, scripts eller nogen form for automatisering. Brug ikke kontaktformularen eller ranglisten til at spamme, chikanere eller udgive dig for at være en anden."
+          },
+          {
+            "p": "Kontaktformularen er til rigtige beskeder til et rigtigt menneske. Brug den til fejlrapporter, spørgsmål og idéer, så bliver den læst."
+          },
+          {
+            "p": "Jeg kan blokere trafik eller begrænse adgang, der overtræder disse regler. Da der ikke er nogen konti at spærre, er fjernelse af dårlige bidrag og blokering af misbrug ved netværkets kant den håndhævelse, jeg har, og den bruger jeg."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Ranglisten",
+        "blocks": [
+          {
+            "p": "Det er frivilligt at indsende en score til ranglisten. Alt, hvad du indsender der, er offentligt. Navnet ved en score er det, du skriver, så vælg noget, du gerne vil se offentliggjort, og brug ikke dit rigtige navn eller andres personoplysninger, hvis du hellere vil holde dem private."
+          },
+          {
+            "p": "Et indsendt bidrag indeholder det navn, du valgte, og oplysningerne om runden, for eksempel præcision, sværhedsgrad og tid. Når det først er offentliggjort, bliver det stående på ranglisten, indtil det bliver fortrængt af bedre scorer eller fjernet."
+          },
+          {
+            "p": "Jeg kan fjerne bidrag fra ranglisten, der er krænkende, som udgiver sig for at være en anden, som ser automatiserede ud, eller som tydeligvis ikke er skabt af en person, der spiller spillet. Jeg fjerner bidrag for at holde ranglisten ærlig, ikke for at bestemme, hvem der vinder."
+          }
+        ]
+      },
+      "content": {
+        "title": "Indhold og immaterielle rettigheder",
+        "blocks": [
+          {
+            "p": "Sidens eget indhold, herunder spillet, guiderne i Lær, designet og koden, der driver det, tilhører mig. Du er velkommen til at linke til enhver side, citere rimelige uddrag med kildeangivelse og dele dine scorer, hvor du vil. Genudgiv ikke hele guider, og udgiv ikke sidens indhold for at være dit eget."
+          },
+          {
+            "p": "Selve skakspillet tilhører ingen. Stillinger, regler og notation er frie for alle, her og alle andre steder."
+          },
+          {
+            "p": "Hvis du sender feedback eller forslag, accepterer du, at jeg må bruge dem til at forbedre siden uden at skylde dig betaling eller kreditering. Feedback fra spillere har før formet rigtige udgivelser, og ændringsloggen viser, hvad der kom ud af det."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Tredjepartstjenester",
+        "blocks": [
+          {
+            "p": "Siden kører på et lille antal eksterne tjenester. Google AdSense viser de annoncer, der holder den gratis. Google Analytics, Vercel Analytics, Vercel Speed Insights og Ahrefs Analytics måler trafik og ydeevne. Supabase gemmer spilstatistik og bidrag til ranglisten. Hver af dem har sine egne vilkår, og <privacy>privatlivspolitikken</privacy> forklarer, hvilke data hver af dem berører, og hvilke valg du har."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Ændringer af betingelserne",
+        "blocks": [
+          {
+            "p": "Jeg kan opdatere disse betingelser, når siden eller dens tjenester ændrer sig. Den gældende version findes altid på denne adresse, og hvis du fortsætter med at bruge siden efter en ændring, betyder det, at du accepterer de opdaterede betingelser. Alt, der mærkbart påvirker spillerne, for eksempel en ændring af, hvordan ranglisten fungerer, noterer jeg også i ændringsloggen."
+          }
+        ]
+      },
+      "contact": {
+        "title": "Kontakt",
+        "blocks": [
+          {
+            "p": "Spørgsmål om disse betingelser, eller et bidrag på ranglisten, som du vil have gennemgået eller fjernet, sendes til <mail>{email}</mail>. Jeg svarer selv på dem."
+          }
+        ]
+      }
+    }
+  }
+}

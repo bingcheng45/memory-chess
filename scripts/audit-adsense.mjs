@@ -196,6 +196,7 @@ export function parsePage(url, status, html, linkHeader = "") {
     headerHreflang: linkHeaderAlternates(linkHeader),
     schemaTypes: schemaTypes(html),
     translationNoteLinks: markedLinks(main, "data-translation-note"),
+    noteSaysEnglishGoverns: markedElement("data-english-governs", "i").test(main),
     blocks: blockCounts(UNCOUNTED_MARKS.reduce((html, mark) => stripMarked(html, mark), main)),
   };
 }

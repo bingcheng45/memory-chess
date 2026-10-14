@@ -77,6 +77,12 @@ describe("isEnglishOnlyPath", () => {
     }
   });
 
+  it("matches the trust pages while no locale serves them in translation", () => {
+    expect(isEnglishOnlyPath("/about")).toBe(true);
+    expect(isEnglishOnlyPath("/privacy")).toBe(true);
+    expect(isEnglishOnlyPath("/terms")).toBe(true);
+  });
+
   it("matches any path beneath a listed route", () => {
     expect(isEnglishOnlyPath("/learn/chess-memory-training")).toBe(true);
     expect(isEnglishOnlyPath("/learn/a/b")).toBe(true);
@@ -102,7 +108,7 @@ describe("isEnglishOnlyPath", () => {
 
 describe("isServedAtBareEnglishUrl", () => {
   it.each(["/about", "/privacy", "/terms", "/changelog", "/learn", "/learn/chess-memory-training"])(
-    "sends every locale to the bare URL of the English-only %s",
+    "sends every locale to the bare URL of %s, English-only or translated into no locale yet",
     (path) => {
       expect(isServedAtBareEnglishUrl(path, "en")).toBe(true);
       expect(isServedAtBareEnglishUrl(path, "de")).toBe(true);

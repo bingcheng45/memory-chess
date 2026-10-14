@@ -4,8 +4,8 @@ import { Link } from "@/i18n/navigation";
 import { DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
 import type { LoadedPage } from "@/lib/pages/load";
 import { PAGES } from "@/lib/pages/registry";
-import type { Block } from "@/lib/pages/schema";
-import type { PageName } from "@/lib/pages/translatedLocales";
+import type { Block, ReadingChrome } from "@/lib/pages/schema";
+import { LEGAL_PAGE_NAMES, type PageName } from "@/lib/pages/translatedLocales";
 import { englishOnlyLinkSuffix, isServedAtBareEnglishUrl } from "@/lib/seo/englishOnly";
 import { LabReadingPage, LabReadingSection } from "./LabReadingPage";
 import { richText } from "./richText";
@@ -38,6 +38,24 @@ function TextLink({ href, locale, children }: TextLinkProps) {
 }
 
 const bold = (chunks: ReactNode) => <strong>{chunks}</strong>;
+
+interface TranslationNoteProps {
+  readonly name: PageName;
+  readonly chrome: ReadingChrome;
+}
+
+// The note links the bare English URL, which is the English page's whole address in every locale.
+function TranslationNote({ name, chrome }: TranslationNoteProps) {
+  const isLegal = LEGAL_PAGE_NAMES.includes(name);
+  return (
+    <p className="lab-read-note" data-translation-note data-authorship-note data-english-governs={isLegal ? "" : undefined}>
+      {isLegal ? chrome.note.legal : chrome.note.general}{" "}
+      <NextLink href={PAGES[name].route} hrefLang={DEFAULT_LOCALE}>
+        {chrome.note.readInEnglish}
+      </NextLink>
+    </p>
+  );
+}
 
 function BlockOf({ block, render }: { readonly block: Block; readonly render: (message: string) => ReactNode }) {
   if ("p" in block) return <p>{render(block.p)}</p>;
@@ -79,6 +97,7 @@ export function TrustPage({ name, locale, page: { text, chrome } }: TrustPagePro
       kicker={text.kicker}
       title={text.title}
       lede={render(text.lede)}
+      notice={locale === DEFAULT_LOCALE ? undefined : <TranslationNote name={name} chrome={chrome} />}
       contents={spec.hasContents ? sections.map(([id, section]) => ({ id, title: section.title })) : undefined}
       updated={spec.updated}
     >

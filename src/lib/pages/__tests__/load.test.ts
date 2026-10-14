@@ -7,7 +7,12 @@ import type { PageUnit } from "@/lib/pages/translatedLocales";
 
 jest.mock("@/lib/pages/translatedLocales");
 
-const GERMAN_CHROME = { contents: "Inhalt", onThisPage: "Auf dieser Seite", lastUpdated: "Zuletzt geändert: <time>{date}</time>" };
+const GERMAN_CHROME = {
+  contents: "Inhalt",
+  onThisPage: "Auf dieser Seite",
+  lastUpdated: "Zuletzt geändert: <time>{date}</time>",
+  note: { general: "Aus dem Englischen übersetzt.", legal: "Die englische Fassung ist maßgeblich.", readInEnglish: "Auf Englisch lesen" },
+};
 const GERMAN_PRIVACY = { ...privacy, kicker: "Ihre Privatsphäre", title: "Datenschutzerklärung" };
 
 function approvedFile(unit: PageUnit, english: unknown, text: unknown, locale = "de") {

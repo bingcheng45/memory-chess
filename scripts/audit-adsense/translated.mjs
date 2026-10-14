@@ -1,5 +1,10 @@
 import { COUNTED_BLOCK_NAMES, differingBlocks } from "./structure.mjs";
 import { SEGMENTED_COUNTER, SPACED_COUNTER, countLocaleWords } from "./words.mjs";
+import { muteTypelessPackageWarning } from "../articles-i18n/repo.mjs";
+
+// Node warns on stderr about the first .ts file it loads, and stderr carries only the audit's own output.
+muteTypelessPackageWarning();
+const { LEGAL_PAGE_NAMES, PAGE_NAMES } = await import("../../src/lib/pages/translatedLocales.ts");
 
 const THIN_PAGE_WORDS = 300;
 
@@ -9,6 +14,12 @@ const THIN_PAGE_WORDS = 300;
  * is, declares neither and owes none.
  */
 const PROSE_SCHEMA_TYPES = ["Article", "CollectionPage"];
+
+/** What a trust page is when it declares no schema.org prose type: written text all the same, and owing a note. */
+const TRUST_PAGE = "trust page";
+const pathOf = (name) => `/${name}`;
+const TRUST_PAGE_PATHS = PAGE_NAMES.map(pathOf);
+const LEGAL_PAGE_PATHS = LEGAL_PAGE_NAMES.map(pathOf);
 
 const plural = (count, noun) => `${count} ${noun}${count === 1 ? "" : "s"}`;
 
@@ -27,7 +38,10 @@ function blockProblem({ page, english, proseType }) {
 function noteProblem({ page, english, proseType }, { sameUrl }) {
   if (!proseType) return [];
   const links = page.translationNoteLinks;
-  if (!links) return [`no translation note (data-translation-note), though ${english.path} declares a schema.org ${proseType}`];
+  if (!links) {
+    const why = proseType === TRUST_PAGE ? "is a trust page" : `declares a schema.org ${proseType}`;
+    return [`no translation note (data-translation-note), though ${english.path} ${why}`];
+  }
   return links.some((href) => sameUrl(href, english.url)) ? [] : [`the translation note links to ${links.join(", ") || "nothing"}, expected ${english.path}`];
 }
 
@@ -72,14 +86,21 @@ export const TRANSLATED_RULES = [
   },
   {
     id: "translation-note",
-    guideline: "a translated article says it is a translation and links to the English page",
+    guideline: "a translated article or trust page says it is a translation and links to the English page",
     check: noteProblem,
+  },
+  {
+    id: "translation-note-legal",
+    guideline: "a translated privacy policy or terms of service says the English version governs (data-english-governs)",
+    check: ({ page, english }) =>
+      !LEGAL_PAGE_PATHS.includes(english.path) || page.noteSaysEnglishGoverns ? [] : ["the translation note does not say the English version governs"],
   },
 ];
 
 function measure({ page, english }) {
   const { words, counter } = countLocaleWords(page.mainText, page.locale);
-  const proseType = PROSE_SCHEMA_TYPES.find((type) => english.schemaTypes.includes(type)) ?? null;
+  const proseType =
+    PROSE_SCHEMA_TYPES.find((type) => english.schemaTypes.includes(type)) ?? (TRUST_PAGE_PATHS.includes(english.path) ? TRUST_PAGE : null);
   return { page, english, words, counter, proseType };
 }
 

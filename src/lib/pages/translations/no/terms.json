@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "4b5ff64dbfbf8e86d6013493e14bfc506239a6decee01430d4d78a565f1fdb1c",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -28,7 +28,7 @@
         "title": "Akseptabel bruk",
         "blocks": [
           {
-            "p": "Spill rettferdig, og la nettstedet fungere for alle andre. Ikke angrip, overbelast eller undersøk tjenesten for svakheter, ikke skrap den i stort omfang, og ikke prøv å ødelegge poengsettingen. Ikke send inn poengsummer laget av boter, skript eller noen form for automatisering. Ikke bruk kontaktskjemaet eller topplisten til å spamme, trakassere eller utgi deg for å være noen andre."
+            "p": "Spill rettferdig, og la nettstedet fungere for alle andre. Ikke angrip eller overbelast tjenesten, ikke skann den for svakheter, ikke skrap den i stort omfang, og ikke prøv å ødelegge poengsettingen. Ikke send inn poengsummer laget av boter, skript eller noen form for automatisering. Ikke bruk kontaktskjemaet eller topplisten til å spamme, trakassere eller utgi deg for å være noen andre."
           },
           {
             "p": "Kontaktskjemaet er for ekte meldinger til en ekte person. Bruk det til feilrapporter, spørsmål og ideer, så blir det lest."

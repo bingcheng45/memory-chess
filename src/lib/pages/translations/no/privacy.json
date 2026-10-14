@@ -1,6 +1,6 @@
 {
   "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": null,
+  "approvedHash": "1ee1305fd68164ded281d3738a9ed89d70cc8a91c15ec1c61edb30c6699d2e25",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -80,7 +80,7 @@
             "p": "Når du liker en artikkel, lagres ID-en til artikkelen og antallet likerklikk som vises i det øyeblikket, i nettleserens lokale lagring, slik at liker-knappen forblir trykket og antallet ikke synker når du kommer tilbake. Øktlagringen husker hvilke artikler du har åpnet i den gjeldende fanen, slik at det ikke legges til en ny visning når du åpner en av dem igjen der. Begge listene blir værende i nettleseren din. Når du liker en artikkel, mottar Google Analytics også en liker-hendelse som navngir artikkelen."
           },
           {
-            "p": "Søket i Lær rangerer guidene i nettleseren din, eller på serveren når du søker fra søkesiden. Google Analytics mottar en hendelse for et søk med hvor mange tegn du skrev, hvor mange guider som passet, den øverste guiden og om treffet var nært, og en hendelse når du åpner et resultat, med den guiden og plassen dens i listen. Ingen av hendelsene inneholder ordene du skrev. Et søk som gjøres fra selve søkesiden, legger ordene dine i adressen til den siden, og analyseverktøyene registrerer adressen til hver side som vises, så disse ordene kan nå dem."
+            "p": "Søket i Lær rangerer guidene i nettleseren din, eller på serveren når du søker fra søkesiden. Google Analytics mottar en hendelse for et søk med hvor mange tegn du skrev, hvor mange guider som passet, den øverste guiden og om det øverste treffet bare var omtrentlig, og en hendelse når du åpner et resultat, med den guiden og plassen dens i listen. Ingen av hendelsene inneholder ordene du skrev. Et søk som gjøres fra selve søkesiden, legger ordene dine i adressen til den siden, og analyseverktøyene registrerer adressen til hver side som vises, så disse ordene kan nå dem."
           },
           {
             "p": "Google Analytics og annonsetjenester kan bruke informasjonskapsler eller lignende identifikatorer. Du kan blokkere eller slette informasjonskapsler i nettleseren din, men noen innstillinger kan da slutte å fungere som forventet."
@@ -94,7 +94,7 @@
             "p": "Memory Chess bruker Google AdSense for å støtte nettstedet. Tredjepartsleverandører, inkludert Google, kan plassere eller lese informasjonskapsler, bruke nettfyrer eller behandle IP-adresser når annonsetjenester eller annonsetagger brukes."
           },
           {
-            "p": "Google og annonsepartnerne deres kan bruke annonseinformasjonskapsler til å vise annonser basert på besøkene dine på Memory Chess og andre nettsteder. Avhengig av hvor du befinner deg, valgene dine og innstillingene dine kan annonsene være tilpassede eller ikke-tilpassede. Andre Google-sertifiserte annonseleverandører kan også delta i å vise og måle annonser."
+            "p": "Google og annonsepartnerne deres kan bruke annonseinformasjonskapsler til å vise annonser basert på besøkene dine på Memory Chess og andre nettsteder. Avhengig av hvor du befinner deg, hvilke valg du har tatt og hvilke innstillinger du har, kan annonsene være tilpassede eller ikke-tilpassede. Andre Google-sertifiserte annonseleverandører kan også delta i å vise og måle annonser."
           },
           {
             "p": "Google er en av disse leverandørene og bruker informasjonskapselen DoubleClick, også kjent som DART-informasjonskapselen, til å vise annonser basert på besøkene dine på dette nettstedet og andre nettsteder på internett. Du kan reservere deg mot DART-informasjonskapselen gjennom Googles annonseinnstillinger, som det lenkes til nedenfor."
@@ -142,7 +142,7 @@
               "Spill uten å sende inn et navn til topplisten eller en tilbakemelding.",
               "Slett lagrede spilldata og innstillinger i nettleseren din.",
               "Administrer informasjonskapsler, valg om samtykke og tilpassede annonser.",
-              "Spør oss om, rett eller be om sletting av opplysninger du har sendt inn, i samsvar med gjeldende lov og vår mulighet til å bekrefte forespørselen."
+              "Spør oss om, rett eller be om sletting av opplysninger du har sendt inn, med forbehold om gjeldende lov og vår mulighet til å bekrefte forespørselen."
             ]
           }
         ]

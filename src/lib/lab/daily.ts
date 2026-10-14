@@ -16,6 +16,9 @@ export function parseUtcDay(value: unknown): string | null {
   return !Number.isNaN(midnight) && utcDayOf(midnight) === value ? value : null;
 }
 
+/** On /daily's address after a daily round, so the page leads the player to join with the result just played. */
+export const DAILY_PLAYED_PARAM = "played";
+
 export const msToNextUtcDay = (at: number): number => DAY_MS - (at % DAY_MS);
 
 export type DailyRound = RoundRecordV2 & { readonly kind: "daily"; readonly dailyDay: string };

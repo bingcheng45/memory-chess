@@ -9,6 +9,7 @@ import GameReference from '@/components/reference/GameReference';
 import { getTileArticles } from '@/lib/articles';
 import { splitClientMessages, tileGroupOf } from '@/lib/articles/messageScope';
 import { gameConfigPrefillScript } from '@/lib/game/configPrefill';
+import { roundEntryScript } from '@/lib/game/roundLink';
 
 const siteUrl = 'https://thememorychess.com';
 
@@ -44,6 +45,7 @@ export default async function GameLayout({
 
   return (
     <>
+      <script dangerouslySetInnerHTML={{ __html: roundEntryScript() }} />
       <ScopedMessagesProvider messages={{ articles: tileGroupOf(messages), ...splitClientMessages(messages).game }}>
         <TileArticlesProvider articles={tileArticles}>{children}</TileArticlesProvider>
       </ScopedMessagesProvider>

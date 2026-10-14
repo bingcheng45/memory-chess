@@ -7,6 +7,7 @@ import { openReview, type ReviewStart } from "@/lib/lab/reviewBoard";
 import GamePage from "@/app/[locale]/game/page";
 
 const mockStartGame = jest.fn();
+const mockPrepareGame = jest.fn();
 const mockResetGame = jest.fn();
 const mockConfig = { pieceCount: 2, studyMs: 10000, source: "game_form" } as const;
 const mockTarget = { e1: { color: "white", type: "king" }, e8: { color: "black", type: "king" } } as const;
@@ -23,6 +24,8 @@ jest.mock("@/lib/store/gameStore", () => {
     round: ROUNDS[mockPhase],
     lastSettings: null,
     startGame: mockStartGame,
+    prepareGame: mockPrepareGame,
+    endCountdown: jest.fn(),
     resetGame: mockResetGame,
     dispatch: jest.fn(),
     submitSolution: jest.fn(),
@@ -55,6 +58,7 @@ jest.mock("@/i18n/navigation", () => ({
 beforeEach(() => {
   jest.spyOn(console, "log").mockImplementation(() => {});
   mockStartGame.mockClear();
+  mockPrepareGame.mockClear();
   mockResetGame.mockClear();
   jest.mocked(openDaily).mockReset();
   jest.mocked(openReview).mockReset();
@@ -156,13 +160,14 @@ describe("GamePage daily board link", () => {
   const BOARD = { kind: "daily", day: "2026-10-09", fen: "8/8/8/1pQ4k/P2p4/8/8/1K6 b - - 0 1" } as const;
   const opens = (daily: DailyStart) => jest.mocked(openDaily).mockResolvedValue(daily);
 
-  it("plays today's set board at the setting the board names, whatever the link says", async () => {
+  it("sets today's board out behind Start at the setting the board names, whatever the link says", async () => {
     opens({ kind: "play", pieceCount: 6, memorizeTime: 10, board: BOARD });
     window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=daily");
 
     render(<GamePage />);
 
-    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(6, 10, "daily", BOARD));
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(6, 10, "daily", BOARD));
+    expect(mockStartGame).not.toHaveBeenCalled();
     expect(window.location.search).toBe("");
   });
 
@@ -180,25 +185,13 @@ describe("GamePage daily board link", () => {
     expect(mockStartGame).not.toHaveBeenCalled();
   });
 
-  it("leaves a round the player started by hand alone when the daily board answers late", async () => {
-    let answer: (daily: DailyStart) => void = () => {};
-    jest.mocked(openDaily).mockReturnValue(new Promise((resolve) => (answer = resolve)));
-    window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10&source=daily");
-    render(<GamePage />);
-
-    fireEvent.click(await screen.findByRole("button", { name: "Start round" }));
-    await act(async () => answer({ kind: "play", pieceCount: 6, memorizeTime: 10, board: BOARD }));
-
-    expect(mockStartGame.mock.calls.map(([, , source]) => source)).toEqual(["game_form"]);
-  });
-
   it("plays today's set board from a link in every language", async () => {
     opens({ kind: "play", pieceCount: 6, memorizeTime: 10, board: BOARD });
     window.history.pushState({}, "", "/de/game?pieceCount=6&memorizeTime=10&source=daily");
 
     render(<GamePage />, { locale: "de" });
 
-    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(6, 10, "daily", BOARD));
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(6, 10, "daily", BOARD));
     expect(mockStartGame).not.toHaveBeenCalledWith(6, 10, "link");
   });
 });
@@ -228,6 +221,18 @@ describe("GamePage review link", () => {
     fireEvent.click(screen.getByRole("button", { name: "Play another round" }));
     expect(document.querySelector("[data-game-config]")).not.toBeNull();
     expect(mockStartGame).not.toHaveBeenCalled();
+  });
+
+  it("leaves a round the player started by hand alone when the review board answers late", async () => {
+    let answer: (review: ReviewStart) => void = () => {};
+    jest.mocked(openReview).mockReturnValue(new Promise((resolve) => (answer = resolve)));
+    window.history.pushState({}, "", "/game?pieceCount=4&memorizeTime=10&source=review");
+    render(<GamePage />);
+
+    fireEvent.click(await screen.findByRole("button", { name: "Start round" }));
+    await act(async () => answer({ kind: "play", pieceCount: 4, memorizeTime: 10, board: BOARD }));
+
+    expect(mockStartGame.mock.calls.map(([, , source]) => source)).toEqual(["game_form"]);
   });
 
   it("says today's reviews are done in the form's place once the daily limit is reached", async () => {
@@ -264,7 +269,7 @@ describe("GamePage URL-driven start under StrictMode", () => {
     expect(window.location.pathname + window.location.search).toBe("/game");
   });
 
-  it("plays today's board on the first try and marks the day opened once", async () => {
+  it("sets today's board out once, leaving the day's try for Start", async () => {
     const actual = jest.requireActual<typeof import("@/lib/lab/dailyBoard")>("@/lib/lab/dailyBoard");
     jest.mocked(openDaily).mockImplementation(actual.openDaily);
     jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-09T12:00:00Z"));
@@ -274,10 +279,11 @@ describe("GamePage URL-driven start under StrictMode", () => {
     render(<GamePage />, { reactStrictMode: true });
 
     await waitFor(() =>
-      expect(mockStartGame).toHaveBeenCalledWith(9, 8, "daily", { kind: "daily", day: "2026-10-09", fen: "8/8/8/1pQB3k/P2p1p2/3P4/8/1K6 w - - 0 1" }),
+      expect(mockPrepareGame).toHaveBeenCalledWith(9, 8, "daily", { kind: "daily", day: "2026-10-09", fen: "8/8/8/1pQB3k/P2p1p2/3P4/8/1K6 w - - 0 1" }),
     );
+    expect(mockPrepareGame).toHaveBeenCalledTimes(1);
     expect(screen.queryByText("You have already opened today's board. One try a day keeps it fair.")).toBeNull();
-    expect(window.localStorage.getItem("memory-chess-lab-daily-opened")).toBe("2026-10-09");
+    expect(window.localStorage.getItem("memory-chess-lab-daily-opened")).toBeNull();
   });
 
   it("plays the due review on the first try and marks its step opened once", async () => {

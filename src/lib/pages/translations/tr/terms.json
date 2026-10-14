@@ -1,0 +1,95 @@
+{
+  "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Kullanım Koşulları",
+      "description": "Memory Chess oynamak, sıralamaya skor göndermek ve sitenin içeriğini kullanmak için sade bir dille yazılmış koşullar.",
+      "socialTitle": "Memory Chess Kullanım Koşulları",
+      "socialDescription": "Memory Chess oynamak ve siteyi kullanmak için sade bir dille yazılmış koşullar."
+    },
+    "kicker": "İnce ayrıntılar",
+    "title": "Kullanım Koşulları",
+    "lede": "Memory Chess, tek bir kişinin yönettiği ücretsiz bir oyundur. Anlaşma basit olduğu için bu koşullar kısa ve okunmak için yazıldı.",
+    "sections": {
+      "service": {
+        "title": "Hizmet",
+        "blocks": [
+          {
+            "p": "Memory Chess, tahta hafızasını çalıştırmak için ücretsiz bir tarayıcı oyunudur. Onu hiçbir türde garanti vermeksizin “olduğu gibi” ve “mevcut olduğu ölçüde” sunuyorum. Hızlı, doğru ve çevrim içi kalması için çalışıyorum, ancak kesintisiz hizmet, hatasız puanlama ya da herhangi bir özelliğin sonsuza kadar aynı kalacağı sözünü vermiyorum. Sitenin herhangi bir bölümünü istediğim zaman değiştirebilir, askıya alabilir veya tamamen kaldırabilirim."
+          },
+          {
+            "p": "Yasaların izin verdiği ölçüde, siteyi kullanmandan doğan zararlardan sorumlu değilim. Bu bir hafıza oyunu. Burada ters gidebilecek şeylerin makul üst sınırı, önem verdiğin bir skoru kaybetmektir ve yine de bunu önlemek için çok çabalıyorum."
+          }
+        ]
+      },
+      "acceptable-use": {
+        "title": "Kabul edilebilir kullanım",
+        "blocks": [
+          {
+            "p": "Adil oyna ve siteyi diğer herkes için çalışır halde bırak. Hizmete saldırma, onu aşırı yükleme veya yoklama, ondan yüksek hacimde veri kazıma ya da puanlamasını bozmaya çalışma. Botlar, betikler veya herhangi bir türde otomasyonla üretilmiş skorlar gönderme. İletişim formunu veya sıralamayı spam göndermek, birini taciz etmek ya da başkasını taklit etmek için kullanma."
+          },
+          {
+            "p": "İletişim formu, gerçek bir kişiye gönderilen gerçek mesajlar içindir. Onu hata bildirimleri, sorular ve fikirler için kullan; okunacaktır."
+          },
+          {
+            "p": "Bu kurallara aykırı trafiği engelleyebilir veya erişimi kısıtlayabilirim. Yasaklanacak hesaplar olmadığından, kötü kayıtları kaldırmak ve kötüye kullanımı ağın kenarında engellemek elimdeki yaptırım yoludur ve bunu kullanıyorum."
+          }
+        ]
+      },
+      "leaderboard": {
+        "title": "Sıralama",
+        "blocks": [
+          {
+            "p": "Sıralamaya skor göndermek isteğe bağlıdır. Oraya gönderdiğin her şey herkese açıktır. Bir skora eklenen ad, senin yazdığın addır; bu yüzden yayımlandığını görmekten memnun olacağın bir şey seç ve gizli tutmayı tercih ediyorsan gerçek adını veya başka birinin kişisel bilgilerini kullanma."
+          },
+          {
+            "p": "Gönderilen bir kayıt, seçtiğin adı ve isabet, zorluk ve tamamlama süresi gibi tur ayrıntılarını içerir. Yayımlandıktan sonra, daha iyi skorlar onu listeden çıkarana ya da kaldırılana kadar sıralamada kalır."
+          },
+          {
+            "p": "Kötüye kullanım içeren, birini taklit eden, otomatik görünen ya da açıkça oyunu oynayan bir kişi tarafından üretilmediği belli olan sıralama kayıtlarını kaldırabilirim. Kayıtları kimin kazanacağını seçmek için değil, sıralamayı dürüst tutmak için kaldırırım."
+          }
+        ]
+      },
+      "content": {
+        "title": "İçerik ve fikrî mülkiyet",
+        "blocks": [
+          {
+            "p": "Oyun, Öğren rehberleri, tasarım ve siteyi çalıştıran kod dahil sitenin kendi içeriği bana aittir. Herhangi bir sayfaya bağlantı verebilir, kaynak göstererek makul alıntılar yapabilir ve skorlarını istediğin her yerde paylaşabilirsin. Rehberlerin tamamını yeniden yayımlama ve sitenin içeriğini kendi içeriğin gibi sunma."
+          },
+          {
+            "p": "Satrancın kendisi kimseye ait değildir. Konumlar, kurallar ve notasyon burada ve başka her yerde herkes için serbesttir."
+          },
+          {
+            "p": "Görüş veya öneri gönderirsen, sana herhangi bir ücret ödemek veya seni anmak zorunda olmadan bunları siteyi geliştirmek için kullanabileceğimi kabul etmiş olursun. Oyuncu görüşleri daha önce gerçek sürümleri şekillendirdi ve bunlardan ne çıktığını değişiklik günlüğü kaydediyor."
+          }
+        ]
+      },
+      "third-party-services": {
+        "title": "Üçüncü taraf hizmetleri",
+        "blocks": [
+          {
+            "p": "Site küçük bir dış hizmetler grubu üzerinde çalışır. Google AdSense, siteyi ücretsiz tutan reklamları sunar. Google Analytics, Vercel Analytics, Vercel Speed Insights ve Ahrefs Analytics trafiği ve performansı ölçer. Supabase oyun istatistiklerini ve sıralama kayıtlarını saklar. Her birinin kendi koşulları vardır ve <privacy>gizlilik politikası</privacy> her birinin hangi verilere dokunduğunu ve hangi seçeneklere sahip olduğunu açıklar."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Bu koşullardaki değişiklikler",
+        "blocks": [
+          {
+            "p": "Site veya hizmetleri değiştiğinde bu koşulları güncelleyebilirim. Güncel sürüm her zaman bu adreste bulunur ve bir değişiklikten sonra siteyi kullanmaya devam etmen, güncellenmiş koşulları kabul ettiğin anlamına gelir. Sıralamanın işleyişindeki bir değişiklik gibi oyuncuları önemli ölçüde etkileyen her şeyi değişiklik günlüğüne de not ederim."
+          }
+        ]
+      },
+      "contact": {
+        "title": "İletişim",
+        "blocks": [
+          {
+            "p": "Bu koşullarla ilgili sorularını ya da incelenmesini veya kaldırılmasını istediğin bir sıralama kaydını <mail>{email}</mail> adresine gönder. Onları bizzat ben yanıtlıyorum."
+          }
+        ]
+      }
+    }
+  }
+}

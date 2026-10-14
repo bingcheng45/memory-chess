@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": null,
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Gizlilik Politikası",
+      "description": "Memory Chess'in verileri, tarayıcı depolamasını, analitiği, çerezleri ve reklam hizmetlerini nasıl kullandığını öğren.",
+      "socialTitle": "Memory Chess Gizlilik Politikası",
+      "socialDescription": "Memory Chess'in verileri, çerezleri, analitiği ve reklamları nasıl ele aldığını öğren."
+    },
+    "kicker": "Gizliliğin",
+    "title": "Gizlilik Politikası",
+    "lede": "Memory Chess'in neleri topladığına, bunları neden kullandığımıza ve hangi seçeneklere sahip olduğuna dair basit bir rehber.",
+    "sections": {
+      "short-version": {
+        "title": "Kısaca",
+        "blocks": [
+          {
+            "p": "Memory Chess'i hesap oluşturmadan oynayabilirsin. Oyunu çalıştırmak, ayarlarını hatırlamak, sitenin nasıl performans gösterdiğini anlamak, mesajlara yanıt vermek, sıralamayı sürdürmek ve deneyimi iyileştirmek için az miktarda veri kullanıyoruz. Ayrıca, reklamlar etkin olduğunda reklamlar için çerezler ve benzer teknolojiler kullanabilen Google AdSense'i kullanıyoruz."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Verilerinden kim sorumlu",
+        "blocks": [
+          {
+            "p": "Memory Chess, bu politikada açıklanan kişisel bilgilerin veri sorumlusu olarak hareket eden bağımsız geliştirici Bing Cheng tarafından yönetilmektedir. Gizlilikle ilgili her türlü soru veya talep için <mail>{email}</mail> adresine e-posta gönder ya da iletişim formunu kullan."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Bize verdiğin bilgiler",
+        "blocks": [
+          {
+            "ul": [
+              "<b>İletişim mesajları:</b> iletişim formunu kullandığında adın, e-posta adresin, konu türü ve mesajın.",
+              "<b>Oyun görüşleri:</b> yıldız puanın, isteğe bağlı yorumların ve isabet, zorluk, taş sayısı ve tamamlama süreleri gibi oyun ayrıntıları. Bu görüş formu adını veya e-posta adresini istemez.",
+              "<b>Sıralama kayıtları:</b> seçtiğin oyuncu adı, gönderdiğin skor ayrıntıları, o andaki beceri puanın ve bir ülke seçtiysen seçtiğin ülke. Bunlar herkese açık olarak gösterilir; bu yüzden gizli tutmayı tercih ediyorsan lütfen gerçek adını kullanma. Günlük tahtaya katıldığında form, bağlantının geldiği ve barındırma sağlayıcımızın bildirdiği ülkeye göre bir ülke önerir; bu tahmini saklamıyoruz ve kaydedilen ülke senin seçtiğin ülkedir."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Otomatik olarak toplanan bilgiler",
+        "blocks": [
+          {
+            "p": "Ölçüm sağlayıcılarımız; görüntülenen sayfalar, yaklaşık konum, tarayıcı ve cihaz türü, yönlendiren sayfa, IP adresi ve performans süreleri gibi teknik ve kullanım bilgilerini alabilir. Memory Chess, trafiği anlamak ve siteyi hızlı ve güvenilir tutmak için Google Analytics, Vercel Analytics, Vercel Speed Insights ve Ahrefs Analytics kullanır."
+          },
+          {
+            "p": "Bu araçlardan iletişim mesajlarının veya oyun görüşü yorumlarının içeriğini toplamalarını istemiyoruz."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Çerezler ve tarayıcı depolaması",
+        "blocks": [
+          {
+            "p": "Memory Chess, oyun geçmişini ve ayarları cihazında tutmak, ses tercihlerini hatırlamak, kapattığın bir güncelleme bandını tekrar göstermemek ve görüş isteminin ne zaman yeniden çıkabileceğini zamanlamak için tarayıcı depolamasını kullanır. Tarayıcı verilerini temizlemek bu seçimleri sıfırlar."
+          },
+          {
+            "p": "Ana sayfadaki laboratuvar kaydı, ana sayfadaki deneme ölçümü dahil bitirdiğin her turu tarayıcının IndexedDB'sinde ve yerel depolamasında tutar: incelediğin konum, yeniden kurduğun konum, sürelerin, skorların, saat dilimi farkın, turu nereden başlattığın (ana sayfa veya bir rehber gibi) ve yerleştirdiğin her taşın sırası ve zamanlaması. Kayıt yalnızca bu cihazda serini, kişisel rekorlarını, isabet eğilimini, kaçırma haritanı, bugünün tahtasını, tekrar sıranı ve unutma eğrini çizmek için kullanılır. Kaydın kendisi, konumları, kareleri, yerleştirmeleri ve geçmişiyle birlikte, bu cihazdan asla çıkmaz. Paylaşmayı seçtiğin bir tur, aşağıda açıklanan tek istisnadır. Yerel depolama ayrıca bugünün tahtasını en son açtığın UTC gününü tutar; böylece sana günde bir deneme hakkı sunar. Hangi tekrar adımlarını açtığını da tutar; böylece sonuçtan önce bırakılan bir tahta aynı aralıkta iki kez gösterilmez. Google Analytics, ana sayfada veya oyunda bitirdiğin her tur için taş sayısını, inceleme süresini, kaç taşı hatırladığını, isabetini ve turun nereden başladığını içeren bir olay alır; başlangıç yeri bugünün tahtasını, bir tekrarı veya bir planı belirtebilir. Bir tur başladığında da taş sayısını, inceleme süresini ve nereden başladığını içeren bir olay alır. Ayrıca birkaç laboratuvar olayı alır: laboratuvar bölümü görünür hale geldiğinde, bölümdeki oynama bağlantılarından birini izlediğinde, kaydı indirdiğinde veya cihazlar arası yedekleme istediğinde tur sayısını ve içe aktardığında eklenen ve atlanan tur sayısını. Bu olayların hiçbiri konum, kare, tur kimliği veya seri taşımaz. Bir planı başlattığında, durdurduğunda veya bitirdiğinde ya da bir hedef belirlediğinde veya kaldırdığında Google Analytics, plan adı ve sayı içermeden yalnızca o eylemi adlandıran bir olay alır. Seçtiğin plan ve hedef bu cihazda tarayıcının yerel depolamasında tutulur; haftada kaç gün oynamayı hedeflediğin de orada tutulur ve bu bilgi hiçbir olay göndermez. “Laboratuvar kaydımı indir”, kontrolü sende olan bir dosya olarak bir kopya kaydeder ve tarayıcı verilerini temizlemek kaydı siler. Gizli pencereler kaydı tutmaz. Yalnızca “Ölçümümü kopyala” düğmesine bastığında tarayıcın panoya; bellek kapasiteni ve kayıt okuyabildiğinde akılda tutulan taşlarını ve hızını, her birini kendi tur sayısıyla birlikte içeren kısa bir metin koyar. Bu metin hiçbir konum, kare veya tarih içermez ve hiçbir yere gönderilmez. Yerel depolama ayrıca kaydını bu tarayıcıda tutmakla ilgili notun ilk kez görünür hale geldiği zamanı (not yalnızca bir kez gösterilsin diye), defterini en son gördüğün zamanı (daha yeni girdiler yeni olarak işaretlensin diye) ve kaydı en son indirdiğin zamanı da tutar. Birkaç turdan sonra site, yer azaldığında kaydı korumasını tarayıcından bir kez ister ve yerel depolama bunu istediğini not eder."
+          },
+          {
+            "p": "İlerleme sayfası aynı kaydı tarayıcında okur ve hiçbir şey göndermez. Yalnızca “İlerlememi paylaş” düğmesine bastığında tarayıcın, kaydın okuyabildiği değerlerin bir resmini çizer: bellek kapasiten, beceri puanın, akılda tutulan taşlar, hız, en iyi ve son isabet, galibiyet serisi, üst üste günler, oynanan turlar ve oynanan günler. Yalnızca oyunun sonuç ekranında “Sonucu paylaş” düğmesine bastığında tarayıcın o turun bir resmini çizer: turun isabeti, hatırladığın taşlar, taş sayısı, izin verilen ve kullanılan inceleme süresi, yerleştirme süresi; tekrar turları hariç beceri puanın, puanındaki değişim ve varsa galibiyet serin; bugünün tahtası hariç de incelediğin tahta ve yeniden kurduğun tahta."
+          },
+          {
+            "p": "Her iki düğme de bir paylaşım penceresi açar ve sen penceredeki eylemlerden birini seçene kadar hiçbir şey tarayıcından çıkmaz: resmi, kısa bir açıklamayı ve bir bağlantıyı cihazının paylaşım menüsüne vermek, resmi indirmek, resmi kopyalamak, açıklamayı bağlantısıyla birlikte kopyalamak ya da X, Facebook, LinkedIn, Reddit, WhatsApp, Threads veya Bluesky gönderi sayfasını bağlantı ve Facebook ile LinkedIn dışındakilerde açıklama doldurulmuş olarak açmak. Oraya gönderdiğin şeyler o hizmetin kendi gizlilik koşullarına göre işlenir."
+          },
+          {
+            "p": "Açıklamadaki bağlantı, kartın Memory Chess üzerindeki kendi sayfasını açar ve kartın değerleri bağlantının içine yazılıdır. /share/result/ altındaki paylaşılan bir sonuç bağlantısı ayrıca incelediğin tahtayı, yeniden kurduğun tahtayı ve yerleştirdiğin her taşın sırasını ve zamanlamasını taşır. Tur bugünün tahtasıysa bu geçerli değildir; onun bağlantısı hiçbir konum taşımaz. Bağlantıyı açan herkes bunları okuyabilir ve Memory Chess sayfayı ve önizlemesini çizmek için bunları bağlantıdan okur. Bağlantı yalnızca bir kartı paylaştığında oluşturulur ve Memory Chess onu kaydetmez. Sitedeki her sayfada olduğu gibi, yukarıda adı geçen analitik araçları, biri sayfayı açtığında bağlantı dahil sayfanın adresini kaydeder."
+          },
+          {
+            "p": "Google Analytics, bir ilerleme kartı sayfadan çıktığında lab_dashboard_share olayı, bir sonuç kartı çıktığında ise result_share olayı alır. Her biri yöntem olarak yalnızca kartın nasıl çıktığını belirtir: paylaşım menüsü için native, indirilen resim için download, kopyalanan resim için copy_image, kopyalanan açıklama için copy ya da bir ağın gönderi sayfası için post; bu durumda ağ x, facebook, linkedin, reddit, whatsapp, threads veya bluesky olarak adlandırılır. İki olay da kartın değerlerini, tahtalarını veya bağlantısını taşımaz."
+          },
+          {
+            "p": "Sıralamaya bir skor gönderdiğinde, bu cihazdaki yerel depolama, her zorluk seviyesindeki en iyi kaydın için sıralamanın o kayda verdiği kimliği de zorluk, ülke, skor ve gönderdiğin zamanla birlikte tutar. Yalnızca laboratuvar kaydında “Sıramı kontrol et” düğmesine bastığında tarayıcın o kayıt kimliğini, kaydın dünya genelinde mi yoksa kendi ülkesi içinde mi sıralanacağı bilgisiyle birlikte Memory Chess'e gönderir. Memory Chess kaydı sıralamadan okur ve sırasını ve kaç kayıt arasında sıralandığını yanıt olarak verir. Yanıt saklanmaz. Sıranın ne sıklıkla kontrol edilebileceğini sınırlamak için sunucu, her IP adresinden gelen kontrolleri bir dakika boyunca belleğinde sayar ve bir adresi, dakikası dolduktan sonraki ilk kontrolde bellekten çıkarır. Sıralamada kayıt artık yoksa kimliği bu cihazdan kaldırılır. Google Analytics, kayıt kimliği ve sıra içermeden, bir sıra kontrolü yapıldığını belirten bir olay alır."
+          },
+          {
+            "p": "Bir makaleyi beğenmek, o makalenin kimliğini ve o anda gösterilen beğeni sayısını tarayıcının yerel depolamasına kaydeder; böylece geri döndüğünde beğeni düğmesi basılı kalır ve sayısı düşmez. Oturum depolaması, geçerli sekmede hangi makaleleri açtığını hatırlar; böylece orada birini yeniden açmak bir görüntüleme eklemez. İki liste de tarayıcında kalır. Bir makaleyi beğendiğinde Google Analytics ayrıca makaleyi adlandıran bir beğeni olayı alır."
+          },
+          {
+            "p": "Öğren araması rehberleri tarayıcında sıralar; arama sayfasından arama yaptığında ise sunucuda sıralar. Google Analytics bir arama için kaç karakter yazdığını, kaç rehberin eşleştiğini, en üstteki rehberi ve eşleşmenin yakın olup olmadığını içeren bir olay; bir sonucu açtığında ise o rehberi ve listedeki yerini içeren bir olay alır. İki olay da yazdığın kelimeleri taşımaz. Doğrudan arama sayfasından yapılan bir arama kelimelerini o sayfanın adresine koyar ve analitik araçları görüntülenen her sayfanın adresini kaydeder; bu yüzden bu kelimeler onlara ulaşabilir."
+          },
+          {
+            "p": "Google Analytics ve reklam hizmetleri çerezler veya benzer tanımlayıcılar kullanabilir. Çerezleri tarayıcında engelleyebilir veya silebilirsin, ancak bu durumda bazı tercihler beklendiği gibi çalışmayabilir."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Reklamlar ve Google AdSense",
+        "blocks": [
+          {
+            "p": "Memory Chess, siteyi desteklemek için Google AdSense'i kullanır. Google dahil üçüncü taraf sağlayıcılar, reklam hizmetleri veya reklam etiketleri kullanıldığında çerez yerleştirebilir veya okuyabilir, web işaretçileri kullanabilir ya da IP adreslerini işleyebilir."
+          },
+          {
+            "p": "Google ve reklam ortakları, Memory Chess'e ve diğer web sitelerine yaptığın ziyaretlere dayalı reklamlar sunmak için reklam çerezleri kullanabilir. Konumuna, seçimlerine ve ayarlarına bağlı olarak reklamlar kişiselleştirilmiş veya kişiselleştirilmemiş olabilir. Google sertifikalı diğer reklam sağlayıcıları da reklamların sunulmasına ve ölçülmesine katılabilir."
+          },
+          {
+            "p": "Google bu sağlayıcılardan biridir ve bu siteye ve internetteki diğer sitelere yaptığın ziyaretlere dayalı reklamlar sunmak için DART çerezi olarak da bilinen DoubleClick çerezini kullanır. DART çerezini aşağıda bağlantısı verilen Google reklam ayarlarından devre dışı bırakabilirsin."
+          },
+          {
+            "p": "<partnerSites>Google'ın iş ortağı sitelerden gelen bilgileri nasıl kullandığı</partnerSites> hakkında daha fazla bilgi edin. Kişiselleştirilmiş reklamları <adCenter>My Ad Center</adCenter> üzerinden yönetebilir, diğer bazı sağlayıcıları <adChoices>YourAdChoices</adChoices> üzerinden devre dışı bırakabilirsin."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Rıza seçenekleri",
+        "blocks": [
+          {
+            "p": "Gerekli olduğunda, uygun reklam verileri kullanılmadan önce ziyaretçilere bir rıza mesajı gösterilir. Avrupa Ekonomik Alanı, Birleşik Krallık ve İsviçre'deki ziyaretçiler Google'ın rıza platformu üzerinden rıza verebilir, reddedebilir veya seçimlerini tek tek yönetebilir. Ayrıca tarayıcındaki çerez denetimlerini değiştirebilir ve Google reklam tercihlerini My Ad Center üzerinden ayarlayabilirsin."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Bilgileri nasıl kullanıyor ve paylaşıyoruz",
+        "blocks": [
+          {
+            "p": "Bilgileri Memory Chess'i sunmak ve güvenliğini sağlamak, sonuçları hesaplamak, gönderilen sıralama skorlarını yayımlamak, iletişim mesajlarına yanıt vermek, görüşleri incelemek, site performansını ölçmek, kötüye kullanımı önlemek ve siteyi reklamlarla desteklemek için kullanırız. Gönderdiğin iletişim bilgilerini veya görüşleri satmayız."
+          },
+          {
+            "p": "Veriler yalnızca gerektiğinde hizmet sağlayıcılar tarafından işlenir: iletişim mesajları ve oyun görüşleri için Google Sheets; oyun istatistikleri, sıralama kayıtları ve makale görüntüleme ve beğeni toplamları için Supabase; barındırma ve performans ölçümü için Vercel; analitik için Ahrefs; analitik, rıza ve reklam için Google. Bu sağlayıcılar verileri kendi gizlilik koşulları kapsamında başka ülkelerde işleyebilir."
+          },
+          {
+            "p": "Bir makaleyi açtığında veya beğendiğinde Supabase, her makale için yalnızca toplam görüntüleme ve toplam beğeni sayısını, son değişikliğin zamanıyla birlikte ve hiçbir ziyaretçi tanımlayıcısı olmadan saklar."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Saklama ve güvenlik",
+        "blocks": [
+          {
+            "p": "Gönderilen bilgileri yalnızca, herkese açık sıralamayı sürdürmek ve mesajlara yanıt vermek dahil yukarıda açıklanan amaçlar için yararlı olduğu sürece veya yasaların gerektirdiği süre boyunca saklarız. Hiçbir çevrim içi hizmet kusursuz derecede güvenli değildir, ancak kontrol ettiğimiz sistemlerde erişimi sınırlar ve makul güvenlik önlemleri kullanırız."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "Seçeneklerin",
+        "blocks": [
+          {
+            "ul": [
+              "Sıralamaya ad ya da görüş göndermeden oyna.",
+              "Saklanan oyun verilerini ve tercihleri tarayıcında temizle.",
+              "Çerezleri, rıza seçimlerini ve kişiselleştirilmiş reklamları yönet.",
+              "Gönderdiğin bilgiler hakkında bize soru sor, onları düzelt veya silinmelerini talep et; bu, yürürlükteki yasalara ve talebi doğrulayabilmemize bağlıdır."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "GDPR ve CCPA kapsamındaki hakların",
+        "blocks": [
+          {
+            "p": "Avrupa Ekonomik Alanı'nda veya Birleşik Krallık'taysan GDPR sana erişim, düzeltme, silme, işlemenin kısıtlanması, işlemeye itiraz ve veri taşınabilirliği haklarını tanır. Dayandığımız hukuki sebepler şunlardır: rızanın gerekli olduğu durumlarda kişiselleştirilmiş reklamlar ve analitik çerezleri için senin rızan; siteyi çalıştırmak ve güvenliğini sağlamak, gönderdiğin sıralama skorlarını yayımlamak ve gönderdiğin mesajlara yanıt vermek için ise meşru menfaatlerimiz. Rızanı istediğin zaman rıza mesajı veya tarayıcı ayarların üzerinden geri çekebilir ve yerel denetim makamına şikâyette bulunabilirsin."
+          },
+          {
+            "p": "Kaliforniya'da yaşıyorsan CCPA sana hangi kişisel bilgilerin toplandığını bilme, bunların silinmesini talep etme ve satılmasını veya paylaşılmasını reddetme hakkı tanır. Kişisel bilgilerini satmıyoruz. Kişiselleştirilmiş reklamlar için kullanılan çerezler CCPA kapsamında paylaşım sayılabilir; bunu rıza mesajı, My Ad Center ve yukarıda bağlantısı verilen YourAdChoices üzerinden reddedebilirsin. Bu, “Kişisel Bilgilerimi Satma veya Paylaşma” (“Do Not Sell or Share My Personal Information”) bildirimimizdir. Bu haklardan herhangi birini kullanmak için <mail>{email}</mail> adresine e-posta gönder."
+          }
+        ]
+      },
+      "children": {
+        "title": "Çocukların gizliliği",
+        "blocks": [
+          {
+            "p": "Memory Chess, genel kitleye yönelik bir antrenman oyunudur ve çocuklardan kişisel bilgi toplamak için tasarlanmamıştır. Ebeveyn veya vasiysen ve bir çocuğun kişisel bilgi gönderdiğini düşünüyorsan, bunu inceleyip uygun olduğu durumlarda kaldırabilmemiz için lütfen bizimle iletişime geç."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Değişiklikler ve iletişim",
+        "blocks": [
+          {
+            "p": "Site veya hizmet sağlayıcılarımız değiştiğinde bu politikayı güncelleyebiliriz. En üstteki tarih en son revizyonu gösterir. Gizlilikle ilgili sorular veya talepler için <contact>Memory Chess iletişim formunu</contact> kullan."
+          }
+        ]
+      }
+    }
+  }
+}

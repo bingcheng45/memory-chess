@@ -1,6 +1,6 @@
 {
   "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
-  "approvedHash": null,
+  "approvedHash": "252c8323df6f7bbf0a5b7c5c932db5790d6f6af7a7d1dcb631f21232e3fd25a7",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -80,7 +80,7 @@
             "p": "Egy cikk kedvelésekor a böngésződ helyi tárhelye elmenti a cikk azonosítóját és az abban a pillanatban látható kedvelésszámot, hogy a kedvelés gomb lenyomva maradjon, és a száma ne csökkenjen, amikor visszatérsz. A munkamenet-tárhely megjegyzi, mely cikkeket nyitottad meg az aktuális lapon, hogy ha ott újra megnyitsz egyet, az ne számítson új megtekintésnek. Mindkét lista a böngésződben marad. Amikor kedvelsz egy cikket, a Google Analytics egy kedvelési eseményt is kap, amely megnevezi a cikket."
           },
           {
-            "p": "A Tanulás keresője a böngésződben rangsorolja az útmutatókat, vagy a szerveren, ha a keresőoldalról keresel. A Google Analytics egy keresésről olyan eseményt kap, amely tartalmazza, hány karaktert írtál be, hány útmutató felelt meg, melyik a legjobb találat, és hogy közeli volt-e az egyezés, valamint egy eseményt, amikor megnyitsz egy találatot, az adott útmutatóval és a listában elfoglalt helyével. Egyik esemény sem tartalmazza a beírt szavakat. Ha magáról a keresőoldalról keresel, a szavaid bekerülnek az oldal címébe, az analitikai eszközök pedig minden megtekintett oldal címét rögzítik, így ezek a szavak eljuthatnak hozzájuk."
+            "p": "A Tanulás keresője a böngésződben rangsorolja az útmutatókat, vagy a szerveren, ha a keresőoldalról keresel. A Google Analytics egy keresésről olyan eseményt kap, amely tartalmazza, hány karaktert írtál be, hány útmutató felelt meg, melyik a legjobb találat, és hogy az csak hozzávetőleges egyezés volt-e, valamint egy eseményt, amikor megnyitsz egy találatot, az adott útmutatóval és a listában elfoglalt helyével. Egyik esemény sem tartalmazza a beírt szavakat. Ha magáról a keresőoldalról keresel, a szavaid bekerülnek az oldal címébe, az analitikai eszközök pedig minden megtekintett oldal címét rögzítik, így ezek a szavak eljuthatnak hozzájuk."
           },
           {
             "p": "A Google Analytics és a hirdetési szolgáltatások sütiket vagy hasonló azonosítókat használhatnak. A sütiket letilthatod vagy törölheted a böngésződben, bár ekkor egyes beállítások esetleg nem a várt módon működnek."

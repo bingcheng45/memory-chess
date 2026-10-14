@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "98871f068fb6676b5d8d7fb8e02b9200bec14b41dc29bcdccdf3291ef0a3766f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -42,13 +42,13 @@
         "title": "A ranglista",
         "blocks": [
           {
-            "p": "A pontszám beküldése a ranglistára nem kötelező. Bármi, amit oda beküldesz, nyilvános. A pontszámhoz tartozó név az, amit beírsz, ezért olyat válassz, amelyet szívesen látsz nyilvánosan, és ne használd a valódi neved vagy bárki személyes adatait, ha inkább titokban tartanád."
+            "p": "A pontszám beküldése a ranglistára nem kötelező. Bármi, amit oda beküldesz, nyilvános. A pontszámhoz tartozó név az, amit beírsz, ezért olyat válassz, aminek a közzétételével nincs problémád, és ne használd a valódi neved vagy bárki személyes adatait, ha inkább titokban tartanád."
           },
           {
             "p": "A beküldött bejegyzés a választott nevet és a kör adatait tartalmazza, például a pontosságot, a nehézséget és a teljesítési időt. Közzététel után a ranglistán marad, amíg jobb pontszámok ki nem szorítják, vagy el nem távolítják."
           },
           {
-            "p": "Eltávolíthatom azokat a ranglista-bejegyzéseket, amelyek visszaélésszerűek, valaki másnak adják ki magukat, automatizáltnak tűnnek, vagy egyértelműen nem egy, a játékkal játszó ember hozta létre őket. A bejegyzéseket azért távolítom el, hogy a ranglista hiteles maradjon, nem azért, hogy megválogassam, ki nyer."
+            "p": "Eltávolíthatom azokat a ranglista-bejegyzéseket, amelyek visszaélésszerűek, valaki másnak adják ki magukat, automatizáltnak tűnnek, vagy egyértelműen nem a játékot játszó ember hozta létre őket. A bejegyzéseket azért távolítom el, hogy a ranglista hiteles maradjon, nem azért, hogy megválogassam, ki nyer."
           }
         ]
       },
@@ -62,7 +62,7 @@
             "p": "Maga a sakk senkié. Az állások, a szabályok és a lejegyzés mindenki számára szabadon használhatók, itt és bárhol máshol."
           },
           {
-            "p": "Ha visszajelzést vagy javaslatot küldesz, elfogadod, hogy felhasználhatom őket az oldal fejlesztésére anélkül, hogy ellenszolgáltatással vagy említéssel tartoznék neked. A játékosok visszajelzései már korábban is valódi kiadásokat formáltak, és a változásnapló rögzíti, mi lett belőlük."
+            "p": "Ha visszajelzést vagy javaslatot küldesz, elfogadod, hogy felhasználhatom őket az oldal fejlesztésére anélkül, hogy ellenszolgáltatással vagy feltüntetéssel tartoznék neked. A játékosok visszajelzései már korábban is valódi kiadásokat formáltak, és a változásnapló rögzíti, mi lett belőlük."
           }
         ]
       },

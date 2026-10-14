@@ -1,6 +1,6 @@
 {
   "sourceHash": "a0f8853fb2d594c539505731539b7a046074afef21fa6457e180868df03508fd",
-  "approvedHash": null,
+  "approvedHash": "dd86c4c570e2662883ac9ccb1de0412cf575a490fe7251e1276a39bf6107354a",
   "sameAsEnglish": [
     "sections.contact.title"
   ],
@@ -11,7 +11,7 @@
       "socialTitle": "Termeni și condiții Memory Chess",
       "socialDescription": "Termenii, pe înțelesul tuturor, pentru a juca Memory Chess și a folosi site-ul."
     },
-    "kicker": "Literele mici",
+    "kicker": "Scrisul mic",
     "title": "Termeni și condiții",
     "lede": "Memory Chess este un joc gratuit administrat de o singură persoană. Acești termeni sunt scurți pentru că înțelegerea este simplă și sunt scriși ca să fie citiți.",
     "sections": {
@@ -44,7 +44,7 @@
         "title": "Clasamentul",
         "blocks": [
           {
-            "p": "Trimiterea unui scor în clasament este opțională. Tot ce trimiți acolo este public. Numele atașat unui scor este cel pe care îl tastezi, așa că alege ceva ce ești dispus să vezi publicat și nu folosi numele tău real sau informațiile personale ale cuiva dacă preferi să rămână private."
+            "p": "Trimiterea unui scor în clasament este opțională. Tot ce trimiți acolo este public. Numele atașat unui scor este cel pe care îl tastezi, așa că alege ceva ce nu te deranjează să vezi publicat și nu folosi numele tău real sau informațiile personale ale cuiva dacă preferi să rămână private."
           },
           {
             "p": "O intrare trimisă conține numele ales de tine și detaliile rundei, precum precizia, dificultatea și timpul de finalizare. Odată publicată, rămâne în clasament până când este depășită de scoruri mai bune sau eliminată."
@@ -58,7 +58,7 @@
         "title": "Conținut și proprietate intelectuală",
         "blocks": [
           {
-            "p": "Conținutul propriu al site-ului, inclusiv jocul, ghidurile din Învață, designul și codul care îl face să funcționeze, îmi aparține. Ești binevenit să pui link către orice pagină, să citezi fragmente rezonabile cu menționarea sursei și să îți distribui scorurile oriunde dorești. Nu republica ghiduri întregi și nu prezenta conținutul site-ului ca fiind al tău."
+            "p": "Conținutul propriu al site-ului, inclusiv jocul, ghidurile din Învață, designul și codul care îl face să funcționeze, îmi aparține. Poți oricând să pui link către orice pagină, să citezi fragmente rezonabile cu menționarea sursei și să îți distribui scorurile oriunde dorești. Nu republica ghiduri întregi și nu prezenta conținutul site-ului ca fiind al tău."
           },
           {
             "p": "Șahul în sine nu aparține nimănui. Pozițiile, regulile și notația sunt libere pentru toată lumea, aici și oriunde altundeva."

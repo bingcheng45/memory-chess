@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "715d60d9490ffa4ca288282925e9738cb7adca11c35ff9a30c63b26eced7e676",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -17,7 +17,7 @@
         "title": "Cine administrează acest site",
         "blocks": [
           {
-            "p": "Sunt Bing Cheng, dezvoltator independent. Administrez Memory Chess singur, cu ajutorul AI pentru cod și pentru textele site-ului. Nu există nicio echipă și nicio companie în spatele lui. Construiesc și <tont>Tont</tont> și public noutăți despre acest site la <x>@TheMemoryChess</x>."
+            "p": "Sunt Bing Cheng și dezvolt software pe cont propriu. Memory Chess îl administrez eu, cu ajutorul AI pentru cod și pentru textele site-ului. Nu există nicio echipă și nicio companie în spatele lui. Construiesc și <tont>Tont</tont> și public noutăți despre acest site la <x>@TheMemoryChess</x>."
           },
           {
             "p": "Pentru că o singură persoană se ocupă de tot, site-ul rămâne mic în mod intenționat. Un joc, o serie de ghiduri de antrenament, un clasament și o pagină de noutăți care consemnează ce a fost lansat cu adevărat."
@@ -70,7 +70,7 @@
         "title": "Parcursul site-ului",
         "blocks": [
           {
-            "p": "Prima versiune a apărut în martie 2025, ca o variantă minimală a jocului. Jocul pe mobil și selecția pieselor au urmat în câteva săptămâni. Biblioteca Învață a fost lansată în martie 2026, iar în august 2026 jocul propriu-zis a devenit disponibil în 24 de limbi. Ghidurile și pagina de noutăți sunt în engleză. <changelog>Pagina de noutăți</changelog> consemnează fiecare versiune lansată, inclusiv remedierile de erori. O țin onestă pentru că o folosesc și eu ca să-mi amintesc ce s-a schimbat și când."
+            "p": "Prima versiune a apărut în martie 2025, ca o variantă minimală a jocului. Jocul pe mobil și selecția pieselor au urmat în câteva săptămâni. Biblioteca Învață a fost lansată în martie 2026, iar în august 2026 jocul propriu-zis a devenit disponibil în 24 de limbi. Ghidurile și pagina de noutăți sunt în engleză. <changelog>Pagina de noutăți</changelog> consemnează fiecare lansare cu număr de versiune, inclusiv remedierile de erori. O țin onestă pentru că o folosesc și eu ca să-mi amintesc ce s-a schimbat și când."
           }
         ]
       },

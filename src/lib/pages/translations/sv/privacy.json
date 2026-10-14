@@ -1,0 +1,179 @@
+{
+  "sourceHash": "037caf842ec0ac7e41ea6c05dce71c2696d4ec6e05b2d545ebd4ed44e578b668",
+  "approvedHash": "922e983b7ea3b17c87b9ee7d401cc74178d3387bb8525e678728ace5a3404860",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Integritetspolicy",
+      "description": "Läs hur Memory Chess använder data, webbläsarlagring, analys, cookies och annonstjänster.",
+      "socialTitle": "Integritetspolicy för Memory Chess",
+      "socialDescription": "Läs hur Memory Chess hanterar data, cookies, analys och annonser."
+    },
+    "kicker": "Din integritet",
+    "title": "Integritetspolicy",
+    "lede": "En enkel genomgång av vad Memory Chess samlar in, varför vi använder det och vilka val du har.",
+    "sections": {
+      "short-version": {
+        "title": "Kortversionen",
+        "blocks": [
+          {
+            "p": "Du kan spela Memory Chess utan att skapa ett konto. Vi använder en liten mängd data för att driva spelet, komma ihåg dina inställningar, förstå hur webbplatsen presterar, svara på meddelanden, sköta topplistan och förbättra upplevelsen. Vi använder också Google AdSense, som kan använda cookies och liknande teknik för annonser när annonsering är aktiverad."
+          }
+        ]
+      },
+      "controller": {
+        "title": "Vem som ansvarar för dina uppgifter",
+        "blocks": [
+          {
+            "p": "Memory Chess drivs av Bing Cheng, en oberoende utvecklare, som är personuppgiftsansvarig för de personuppgifter som beskrivs i den här policyn. För alla frågor eller förfrågningar om integritet, mejla <mail>{email}</mail> eller använd kontaktformuläret."
+          }
+        ]
+      },
+      "information-you-give": {
+        "title": "Uppgifter som du ger oss",
+        "blocks": [
+          {
+            "ul": [
+              "<b>Kontaktmeddelanden:</b> ditt namn, din e-postadress, typ av ärende och ditt meddelande när du använder kontaktformuläret.",
+              "<b>Feedback om spelet:</b> ditt betyg i stjärnor, valfria kommentarer och uppgifter om spelet som träffsäkerhet, svårighetsgrad, antal pjäser och tider. Det här feedbackformuläret frågar inte efter ditt namn eller din e-postadress.",
+              "<b>Bidrag till topplistan:</b> spelarnamnet du väljer, de resultatuppgifter du skickar in, din färdighetsrating vid tillfället och det land du väljer, om du väljer något. Dessa visas offentligt, så använd inte ditt riktiga namn om du hellre vill hålla det privat. När du går med i dagens bräde föreslår formuläret ett land utifrån det land din anslutning kommer från, som vår hostingleverantör rapporterar; vi sparar inte den gissningen, och det land du väljer är det som sparas."
+            ]
+          }
+        ]
+      },
+      "collected-automatically": {
+        "title": "Uppgifter som samlas in automatiskt",
+        "blocks": [
+          {
+            "p": "Våra mättjänster kan ta emot tekniska uppgifter och användningsuppgifter, till exempel visade sidor, ungefärlig plats, typ av webbläsare och enhet, hänvisande sida, IP-adress och laddningstider. Memory Chess använder Google Analytics, Vercel Analytics, Vercel Speed Insights och Ahrefs Analytics för att förstå trafiken och hålla webbplatsen snabb och tillförlitlig."
+          },
+          {
+            "p": "Vi ber inte de här verktygen att samla in innehållet i dina kontaktmeddelanden eller i dina kommentarer i spelfeedbacken."
+          }
+        ]
+      },
+      "cookies-and-storage": {
+        "title": "Cookies och webbläsarlagring",
+        "blocks": [
+          {
+            "p": "Memory Chess använder webbläsarlagring för att spara spelhistorik och inställningar på din enhet, komma ihåg ljudinställningar, undvika att visa en uppdateringsbanner som du har stängt igen och avgöra när frågan om feedback får visas igen. Om du rensar webbläsardata återställs de här valen."
+          },
+          {
+            "p": "Labbjournalen på startsidan sparar varje runda du slutför, även övningsmätningen på startsidan, i webbläsarens IndexedDB och lokala lagring: ställningen du studerade, ställningen du byggde upp, dina tider, dina poäng, din tidszonsförskjutning, var du startade rundan (till exempel på startsidan eller i en guide) samt ordningen och tidpunkten för varje pjäs du placerade. Den används bara för att visa din svit, dina personbästa, trenden för din träffsäkerhet, din missarkarta, dagens bräde, repetitionskön och glömskekurvan på den här enheten. Själva journalen, med dess ställningar, rutor, placeringar och historik, lämnar aldrig den här enheten. En runda som du väljer att dela är det enda undantaget, som beskrivs nedan. Den lokala lagringen sparar också vilket UTC-dygn du senast öppnade dagens bräde, så att det erbjuder dig ett försök per dag, och vilka repetitionssteg du öppnade, så att ett bräde som du lämnade före resultatet inte visas två gånger med samma intervall. Google Analytics tar emot en händelse för varje runda du slutför, på startsidan eller i spelet, med antalet pjäser, studietiden, hur många pjäser du kom ihåg, din träffsäkerhet och var rundan startade, vilket kan vara dagens bräde, en repetition eller en plan. Det tar också emot en händelse när en runda startar, med antalet pjäser, studietiden och var den startade. Det tar dessutom emot några labbhändelser: när labbavsnittet kommer i bild, när du följer en av dess spellänkar, antalet rundor när du laddar ned eller ber om säkerhetskopiering mellan enheter, och antalet tillagda och överhoppade rundor när du importerar. Ingen av dessa händelser innehåller ställningar, rutor, rund-id:n eller sviter. När du startar, avbryter eller slutför en plan, eller sätter eller tar bort ett mål, tar Google Analytics emot en händelse som bara anger den åtgärden, utan planens namn och utan siffror. Planen och målet du väljer sparas i webbläsarens lokala lagring på den här enheten, liksom hur många dagar i veckan du siktar på att spela, vilket inte skickar någon händelse. Ladda ned min labbjournal sparar en kopia som en fil som du själv förfogar över, och om du rensar webbläsardata raderas journalen. Privata fönster behåller den inte. Bara när du trycker på Kopiera min mätning lägger webbläsaren en kort text i ditt urklipp med ditt minnesspann, och dina hållna pjäser och ditt tempo när journalen kan läsa av dem, var och en med sitt antal rundor. Texten anger inga ställningar, rutor eller datum och skickas ingenstans. Den lokala lagringen sparar också tidpunkten då meddelandet om att behålla journalen i den här webbläsaren först kom i bild, så att meddelandet visas en gång, tidpunkten då du senast tittade i din anteckningsbok, så att nyare poster markeras som nya, och tidpunkten då du senast laddade ned journalen. Efter några rundor ber webbplatsen en gång webbläsaren att behålla journalen när utrymmet börjar ta slut, och den lokala lagringen noterar att den har frågat."
+          },
+          {
+            "p": "Framstegssidan läser samma journal i din webbläsare och skickar ingenting. Bara när du trycker på Dela mina framsteg ritar webbläsaren en bild av de värden som journalen kan läsa av: ditt minnesspann, din färdighetsrating, hållna pjäser, tempo, bästa och senaste träffsäkerhet, vinstsvit, dagar i rad, spelade rundor och spelade dagar. Bara när du trycker på Dela resultat på spelets resultatskärm ritar webbläsaren en bild av den rundan: dess träffsäkerhet, pjäserna du kom ihåg, antalet pjäser, tillåten och använd studietid, uppbyggnadstiden och, utom vid en repetition, din rating, dess förändring och en eventuell vinstsvit, samt, utom vid dagens bräde, brädet du studerade och brädet du byggde upp."
+          },
+          {
+            "p": "Båda knapparna öppnar ett delningsfönster, och ingenting lämnar din webbläsare förrän du väljer en av dess åtgärder: lämna bilden, en kort bildtext och en länk till enhetens delningsmeny, ladda ned bilden, kopiera bilden, kopiera bildtexten med länken, eller öppna inläggssidan på X, Facebook, LinkedIn, Reddit, WhatsApp, Threads eller Bluesky med länken, och på alla utom Facebook och LinkedIn även bildtexten, ifylld. Det du skickar där hanteras enligt den tjänstens egna integritetsvillkor."
+          },
+          {
+            "p": "Länken i bildtexten öppnar kortets egen sida på Memory Chess, och kortets värden står i själva länken. En delad resultatlänk, under /share/result/, innehåller också brädet du studerade, brädet du byggde upp och ordningen och tidpunkten för varje pjäs du placerade, om inte rundan var dagens bräde, vars länk inte innehåller någon ställning. Alla som öppnar länken kan läsa dem, och Memory Chess läser dem från länken för att visa sidan och dess förhandsvisning. En länk skapas bara när du delar ett kort, och Memory Chess sparar den inte. Som för alla sidor på webbplatsen registrerar analysverktygen som nämns ovan sidans adress, inklusive länken, när någon öppnar den."
+          },
+          {
+            "p": "Google Analytics tar emot en händelse lab_dashboard_share när ett framstegskort lämnar sidan och en händelse result_share när ett resultatkort gör det. Var och en anger bara hur kortet lämnade sidan, som sin metod: native för delningsmenyn, download för en nedladdad bild, copy_image för en kopierad bild, copy för en kopierad bildtext eller post för ett nätverks inläggssida, där nätverket anges som x, facebook, linkedin, reddit, whatsapp, threads eller bluesky. Ingen av händelserna innehåller kortets värden, dess bräden eller dess länk."
+          },
+          {
+            "p": "När du skickar in ett resultat till topplistan sparar den lokala lagringen på den här enheten också det id som topplistan ger bidraget, med svårighetsgrad, land, poäng och tidpunkten då du skickade det, för ditt bästa bidrag på varje svårighetsgrad. Bara när du trycker på Visa min placering i labbjournalen skickar webbläsaren det bidrags-id:t till Memory Chess, tillsammans med om det ska rankas i hela världen eller inom bidragets eget land. Memory Chess läser bidraget från topplistan och svarar med dess placering och antalet bidrag som det rankades mot. Svaret sparas inte. För att begränsa hur ofta placeringen kan kontrolleras räknar servern kontrollerna från varje IP-adress i sitt minne under en minut och släpper en adress vid den första kontrollen efter att dess minut har gått ut. Om topplistan inte längre har bidraget tas dess id bort från den här enheten. Google Analytics tar emot en händelse som anger att en placering har kontrollerats, utan bidrags-id och utan placering."
+          },
+          {
+            "p": "När du gillar en artikel sparas artikelns id och det antal gillamarkeringar som visas i det ögonblicket i webbläsarens lokala lagring, så att gilla-knappen förblir intryckt och antalet inte sjunker när du kommer tillbaka. Sessionslagringen kommer ihåg vilka artiklar du har öppnat i den aktuella fliken, så att det inte räknas som en visning till om du öppnar en av dem igen där. Båda listorna stannar i din webbläsare. När du gillar en artikel tar Google Analytics också emot en gillahändelse som anger artikeln."
+          },
+          {
+            "p": "Sökningen i Lär dig rangordnar guider i din webbläsare, eller på servern när du söker från söksidan. Google Analytics tar emot en händelse för en sökning med hur många tecken du skrev, hur många guider som matchade, den översta guiden och om det var en ungefärlig träff, och en händelse när du öppnar ett resultat, med den guiden och dess plats i listan. Ingen av händelserna innehåller orden du skrev. En sökning som görs från själva söksidan lägger dina ord i den sidans adress, och analysverktygen registrerar adressen för varje visad sida, så de orden kan nå dem."
+          },
+          {
+            "p": "Google Analytics och annonstjänster kan använda cookies eller liknande identifierare. Du kan blockera eller radera cookies i din webbläsare, men vissa inställningar kan då sluta fungera som väntat."
+          }
+        ]
+      },
+      "advertising": {
+        "title": "Annonser och Google AdSense",
+        "blocks": [
+          {
+            "p": "Memory Chess använder Google AdSense för att stödja webbplatsen. Tredjepartsleverantörer, däribland Google, kan placera eller läsa cookies, använda webbfyrar eller behandla IP-adresser när annonstjänster eller annonstaggar används."
+          },
+          {
+            "p": "Google och dess annonspartner kan använda annonscookies för att visa annonser utifrån dina besök på Memory Chess och andra webbplatser. Beroende på var du befinner dig, dina val och dina inställningar kan annonserna vara anpassade eller icke anpassade. Andra annonsleverantörer som är certifierade av Google kan också delta i att visa och mäta annonser."
+          },
+          {
+            "p": "Google är en av dessa leverantörer och använder DoubleClick-cookien, även kallad DART-cookien, för att visa annonser utifrån dina besök på den här webbplatsen och andra webbplatser på internet. Du kan välja bort DART-cookien via Googles annonsinställningar som länkas nedan."
+          },
+          {
+            "p": "Läs mer om <partnerSites>hur Google använder information från partnerwebbplatser</partnerSites>. Du kan hantera anpassad annonsering i <adCenter>My Ad Center</adCenter> och välja bort vissa andra leverantörer via <adChoices>YourAdChoices</adChoices>."
+          }
+        ]
+      },
+      "consent": {
+        "title": "Val om samtycke",
+        "blocks": [
+          {
+            "p": "Där det krävs visas besökare ett meddelande om samtycke innan annonsdata som omfattas används. Besökare i Europeiska ekonomiska samarbetsområdet, Storbritannien och Schweiz kan samtycka, avböja eller hantera enskilda val via Googles plattform för samtycke. Du kan också ändra cookieinställningarna i din webbläsare och justera dina annonsinställningar hos Google i My Ad Center."
+          }
+        ]
+      },
+      "use-and-sharing": {
+        "title": "Hur vi använder och delar uppgifter",
+        "blocks": [
+          {
+            "p": "Vi använder uppgifter för att tillhandahålla och skydda Memory Chess, beräkna resultat, publicera inskickade resultat på topplistan, svara på kontaktmeddelanden, gå igenom feedback, mäta webbplatsens prestanda, förhindra missbruk och stödja webbplatsen med annonser. Vi säljer inte de kontaktuppgifter eller den feedback som du skickar in."
+          },
+          {
+            "p": "Uppgifter hanteras av tjänsteleverantörer bara där det behövs: Google Sheets för kontaktmeddelanden och spelfeedback, Supabase för spelstatistik, bidrag till topplistan och summor av visningar och gillamarkeringar för artiklar, Vercel för hosting och prestandamätning, Ahrefs för analys och Google för analys, samtycke och annonser. Dessa leverantörer kan behandla uppgifter i andra länder enligt sina egna integritetsvillkor."
+          },
+          {
+            "p": "När du öppnar eller gillar en artikel sparar Supabase bara en summa av visningar och en summa av gillamarkeringar för varje artikel, med tidpunkten för den senaste ändringen och ingen identifierare för besökaren."
+          }
+        ]
+      },
+      "retention": {
+        "title": "Lagring och säkerhet",
+        "blocks": [
+          {
+            "p": "Vi behåller inskickade uppgifter bara så länge de är användbara för de ändamål som beskrivs ovan, bland annat att sköta den offentliga topplistan och svara på meddelanden, eller så länge lagen kräver det. Ingen onlinetjänst är helt säker, men vi begränsar åtkomsten och använder rimliga skyddsåtgärder för de system vi kontrollerar."
+          }
+        ]
+      },
+      "your-choices": {
+        "title": "Dina val",
+        "blocks": [
+          {
+            "ul": [
+              "Spela utan att skicka in ett namn till topplistan eller lämna feedback.",
+              "Rensa sparade speldata och inställningar i din webbläsare.",
+              "Hantera cookies, val om samtycke och anpassade annonser.",
+              "Fråga oss om uppgifter du har skickat in, rätta dem eller begära att de raderas, med förbehåll för tillämplig lag och vår möjlighet att verifiera begäran."
+            ]
+          }
+        ]
+      },
+      "gdpr-ccpa": {
+        "title": "Dina rättigheter enligt dataskyddsförordningen (GDPR) och CCPA",
+        "blocks": [
+          {
+            "p": "Om du befinner dig i Europeiska ekonomiska samarbetsområdet eller Storbritannien ger dataskyddsförordningen (GDPR) dig rätt till tillgång, rättelse, radering, begränsning av behandling, invändning mot behandling och dataportabilitet. De rättsliga grunder vi stöder oss på är ditt samtycke, för anpassade annonser och analyscookies där samtycke krävs, och våra berättigade intressen, för att driva och skydda webbplatsen, publicera de resultat på topplistan som du skickar in och svara på de meddelanden du skickar. Du kan när som helst återkalla ditt samtycke via meddelandet om samtycke eller dina webbläsarinställningar, och du kan lämna in ett klagomål till din lokala tillsynsmyndighet."
+          },
+          {
+            "p": "Om du bor i Kalifornien ger CCPA dig rätt att få veta vilka personuppgifter som samlas in, att begära att de raderas och att välja bort försäljning eller delning av dem. Vi säljer inte dina personuppgifter. Cookies som används för anpassade annonser kan räknas som delning enligt CCPA, och du kan välja bort det via meddelandet om samtycke, My Ad Center och YourAdChoices som länkas ovan. Detta är vårt meddelande om ”Sälj eller dela inte mina personuppgifter” (Do Not Sell or Share My Personal Information). Mejla <mail>{email}</mail> för att utöva någon av dessa rättigheter."
+          }
+        ]
+      },
+      "children": {
+        "title": "Barns integritet",
+        "blocks": [
+          {
+            "p": "Memory Chess är ett träningsspel för en allmän publik och är inte utformat för att samla in personuppgifter från barn. Om du är förälder eller vårdnadshavare och tror att ett barn har skickat in personuppgifter, kontakta oss så att vi kan granska och, där det är lämpligt, ta bort dem."
+          }
+        ]
+      },
+      "changes": {
+        "title": "Ändringar och kontakt",
+        "blocks": [
+          {
+            "p": "Vi kan uppdatera den här policyn när webbplatsen eller våra tjänsteleverantörer ändras. Datumet högst upp visar den senaste revideringen. För frågor eller förfrågningar om integritet, använd <contact>kontaktformuläret för Memory Chess</contact>."
+          }
+        ]
+      }
+    }
+  }
+}

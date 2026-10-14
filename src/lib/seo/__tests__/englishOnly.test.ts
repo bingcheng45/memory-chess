@@ -5,6 +5,7 @@ import {
   isIndexedInDefaultLocaleOnly,
   isServedAtBareEnglishUrl,
   robotsFor,
+  servedLocalesOf,
   unprefixedPath,
 } from "@/lib/seo/englishOnly";
 
@@ -128,5 +129,32 @@ describe("isServedAtBareEnglishUrl", () => {
     expect(isServedAtBareEnglishUrl("/leaderboard", "fr")).toBe(false);
     expect(isServedAtBareEnglishUrl("/", "de")).toBe(false);
     expect(isServedAtBareEnglishUrl("/articlesx", "fr")).toBe(false);
+  });
+});
+
+describe("servedLocalesOf", () => {
+  it("serves a translated route in English and in each locale its list names", () => {
+    expect(servedLocalesOf("/articles")).toEqual(["en", "de"]);
+    expect(servedLocalesOf("/articles/magnus-carlsen")).toEqual(["en", "de"]);
+  });
+
+  it("serves the trust pages in English alone while their list is empty", () => {
+    expect(servedLocalesOf("/privacy")).toEqual(["en"]);
+    expect(servedLocalesOf("/terms")).toEqual(["en"]);
+    expect(servedLocalesOf("/about")).toEqual(["en"]);
+  });
+
+  it("reads the trust pages' locales from their own list", () => {
+    jest.isolateModules(() => {
+      jest.doMock("@/lib/pages/translatedLocales", () => ({
+        ...jest.requireActual("@/lib/pages/translatedLocales"),
+        TRANSLATED_PAGE_LOCALES: ["fr", "ja"],
+      }));
+      const isolated = jest.requireActual<typeof import("@/lib/seo/englishOnly")>("@/lib/seo/englishOnly");
+
+      expect(isolated.servedLocalesOf("/privacy")).toEqual(["en", "fr", "ja"]);
+      expect(isolated.servedLocalesOf("/articles")).toEqual(["en", "de"]);
+      expect(isolated.servedLocalesOf("/game")).toEqual(["en"]);
+    });
   });
 });

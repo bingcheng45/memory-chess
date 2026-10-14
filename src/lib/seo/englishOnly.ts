@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { DEFAULT_LOCALE, LOCALE_LABELS, LOCALES } from "@/i18n/routing";
 import { ARTICLES_PATH } from "@/lib/articles/paths";
-import { servesArticlesIn } from "@/lib/articles/articleLocales";
+import { TRANSLATED_ARTICLE_LOCALES } from "@/lib/articles/translatedLocales";
+import { PAGE_ROUTES, TRANSLATED_PAGE_LOCALES } from "@/lib/pages/translatedLocales";
 
 const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } } as const;
 
@@ -79,11 +80,28 @@ export function isEnglishOnlyPath(path: string): boolean {
 }
 
 /**
+ * The routes served in translation, each with the locales other than English that serve it. This table is the only
+ * place that says which locale reads which route in its own language; the redirects, the links, the language
+ * switcher and the Lab Paper shell all derive from it. A route here covers every path beneath it.
+ */
+const TRANSLATED_ROUTES: readonly (readonly [route: string, locales: readonly string[]])[] = [
+  [ARTICLES_PATH, TRANSLATED_ARTICLE_LOCALES],
+  ...PAGE_ROUTES.map((route) => [route, TRANSLATED_PAGE_LOCALES] as const),
+];
+
+/** The locales that serve an unprefixed path of a route in `TRANSLATED_ROUTES`, English first; English alone outside it. */
+export function servedLocalesOf(path: string): readonly string[] {
+  const translated = TRANSLATED_ROUTES.find(([route]) => isUnder(path, route));
+  return [DEFAULT_LOCALE, ...(translated?.[1] ?? [])];
+}
+
+/**
  * Whether a reader of `locale` gets this unprefixed path at its bare English
- * URL. A translated article lives only under its locale prefix, so the bare
- * article URL always answers in English.
+ * URL. A translation lives only under its locale prefix, so the bare URL of a
+ * translated route always answers in English.
  */
 export function isServedAtBareEnglishUrl(path: string, locale: string): boolean {
   if (isEnglishOnlyPath(path) || UNLISTED_ROUTES.some((route) => isUnder(path, route))) return true;
-  return isUnder(path, ARTICLES_PATH) && (locale === DEFAULT_LOCALE || !servesArticlesIn(locale));
+  const isTranslatedRoute = TRANSLATED_ROUTES.some(([route]) => isUnder(path, route));
+  return isTranslatedRoute && (locale === DEFAULT_LOCALE || !servedLocalesOf(path).includes(locale));
 }

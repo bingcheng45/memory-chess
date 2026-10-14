@@ -23,6 +23,25 @@ beforeEach(() => jest.useFakeTimers());
 afterEach(() => jest.useRealTimers());
 
 describe("Share dialog copy feedback", () => {
+  it("marks Copy image with a check for 2 seconds after the image is copied, and not when it is refused", async () => {
+    class FakeClipboardItem {
+      static supports = () => true;
+    }
+    Object.assign(globalThis, { ClipboardItem: FakeClipboardItem });
+    const write = jest.fn().mockResolvedValueOnce(undefined).mockRejectedValueOnce(new Error("denied"));
+    Object.assign(navigator, { clipboard: { writeText: jest.fn(), write } });
+    open();
+
+    await press("Copy image");
+    expect(screen.getByRole("button", { name: "Copy image" })).toHaveAttribute("data-state", "copied");
+    expect(screen.getByRole("status")).toHaveTextContent("Image copied.");
+    act(() => void jest.advanceTimersByTime(2000));
+    expect(screen.getByRole("button", { name: "Copy image" })).toHaveAttribute("data-state", "idle");
+
+    await press("Copy image");
+    expect(screen.getByRole("button", { name: "Copy image" })).toHaveAttribute("data-state", "failed");
+  });
+
   it("confirms a caption copy on the button itself, then returns the label after 2 seconds", async () => {
     const writeText = jest.fn().mockResolvedValue(undefined);
     mockClipboard(writeText);

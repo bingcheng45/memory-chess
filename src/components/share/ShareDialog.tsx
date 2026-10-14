@@ -59,6 +59,7 @@ export function ShareDialog({ surface, title, caption, image, alt, fileName }: S
   const [status, setStatus] = useState("");
   const { copy, textRef } = useCopyText(captionWithLink(caption));
   const [captionCopy, settleCaptionCopy] = useCopyFeedback();
+  const [imageCopy, settleImageCopy] = useCopyFeedback();
   const blob = image.state === "ready" ? image.blob : null;
   const pending = image.state === "rendering";
   const hasImage = image.state !== "failed";
@@ -86,8 +87,10 @@ export function ShareDialog({ surface, title, caption, image, alt, fileName }: S
     try {
       await navigator.clipboard.write([new ClipboardItem({ "image/png": png })]);
       track({ method: "copy_image" });
+      settleImageCopy(true);
       setStatus(t("imageCopied"));
     } catch {
+      settleImageCopy(false);
       setStatus(t("imageCopyFailed"));
     }
   };
@@ -133,7 +136,8 @@ export function ShareDialog({ surface, title, caption, image, alt, fileName }: S
                   </button>
                 )}
                 {copyImage && (
-                  <button type="button" className="lab-btn lab-btn-secondary" disabled={pending} onClick={() => blob && void copyPng(blob)}>
+                  <button type="button" className="lab-btn lab-btn-secondary lab-share-copy" data-state={imageCopy} disabled={pending} onClick={() => blob && void copyPng(blob)}>
+                    {imageCopy === "copied" && <Check aria-hidden size={18} />}
                     {t("actions.copyImage")}
                   </button>
                 )}

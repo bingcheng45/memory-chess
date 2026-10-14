@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": null,
+  "approvedHash": "da17961ec4acc067c9b881bdfdfe9f09811e7773f9238d4a01d7ec75d229c9cf",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "Az oldal eddigi útja",
         "blocks": [
           {
-            "p": "Az első kiadás 2025 márciusában jelent meg, a játék egy puszta alapváltozataként. A mobilos játék és a bábuválasztás heteken belül követte. A Tanulás könyvtár 2026 márciusában indult, 2026 augusztusában pedig maga a játék 24 nyelven vált játszhatóvá. Az útmutatók és a változásnapló angol nyelvűek. A <changelog>változásnapló</changelog> minden verziószámmal ellátott kiadást rögzít, a hibajavításokat is beleértve. Azért tartom hitelesnek, mert magam is ebből idézem fel, mi és mikor változott."
+            "p": "Az első kiadás 2025 márciusában jelent meg, a játék egy puszta alapváltozataként. A mobilos játék és a bábuválasztás heteken belül követte. A Tanulás könyvtár 2026 márciusában indult, 2026 augusztusában pedig maga a játék 24 nyelven vált játszhatóvá. Az útmutatók és a változásnapló angol nyelvűek. A <changelog>változásnapló</changelog> minden verziószámmal ellátott kiadást rögzít, a hibajavításokat is beleértve. Azért ügyelek a pontosságára, mert magam is ebből idézem fel, mi és mikor változott."
           }
         ]
       },

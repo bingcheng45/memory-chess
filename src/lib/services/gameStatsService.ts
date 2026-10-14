@@ -128,7 +128,6 @@ export async function incrementGameMetric(metricName: string, increment: number 
       };
     }
 
-    // Using the PostgreSQL function we created
     const { data, error } = await supabaseWriter
       .rpc('increment_metric', {
         p_metric_name: metricName,
@@ -137,60 +136,15 @@ export async function incrementGameMetric(metricName: string, increment: number 
 
     if (error) {
       console.error(`Error incrementing metric ${metricName}:`, error);
-      
-      // Fallback: If RPC fails, try direct update
-      const { data: metric } = await getGameMetric(metricName);
-      
-      if (metric) {
-        const { data: updateData, error: updateError } = await supabaseWriter
-          .from('game_stats')
-          .update({ 
-            metric_value: metric.metric_value + increment,
-            last_updated: new Date().toISOString()
-          })
-          .eq('metric_name', metricName)
-          .select('metric_value')
-          .single();
-          
-        if (updateError) {
-          return {
-            success: false,
-            error: `Failed to increment metric: ${updateError.message}`
-          };
-        }
-        
-        return { 
-          success: true, 
-          newValue: updateData?.metric_value 
-        };
-      } else {
-        // If metric doesn't exist, create it
-        const { data: insertData, error: insertError } = await supabaseWriter
-          .from('game_stats')
-          .insert({
-            metric_name: metricName,
-            metric_value: increment
-          })
-          .select('metric_value')
-          .single();
-          
-        if (insertError) {
-          return {
-            success: false,
-            error: `Failed to create metric: ${insertError.message}`
-          };
-        }
-        
-        return { 
-          success: true, 
-          newValue: insertData?.metric_value 
-        };
-      }
+      return {
+        success: false,
+        error: `Failed to increment metric: ${error.message}`
+      };
     }
 
-    return { 
-      success: true, 
-      newValue: data 
+    return {
+      success: true,
+      newValue: data
     };
   } catch (err) {
     console.error(`Unexpected error in incrementGameMetric(${metricName}):`, err);

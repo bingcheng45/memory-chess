@@ -147,10 +147,11 @@ export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
       {
         title: "Nicer to play",
         changes: [
+          "Start round, Try again and Restart count 3, 2, 1 over a blurred board before the position appears. The study clock starts with the pieces, so the countdown never takes from your study time.",
           "Drag pieces onto the board as well as tapping them.",
           "When you have placed every piece of one kind that a real set has, it greys out in the tray and tells you why.",
           "Study a position for as little as 1 second or as long as 60, up from 32.",
-          "Turn board coordinates on or off right on the setup card.",
+          "Board coordinates are always shown, on every board.",
           "Leaderboard scores now show each player's rating at the time they played.",
         ],
       },

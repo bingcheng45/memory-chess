@@ -100,7 +100,7 @@ describe("reporting a round", () => {
     expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "home_quick" }]]);
   });
 
-  it("sends round_complete once when the round is scored, with what the player got right", () => {
+  it("sends round_complete once when the round is scored, with what the player got right, and no other event", () => {
     const gtag = jest.fn();
     store().startGame(6, 10, "plan");
     const [square, piece] = Object.entries(target())[0] as [SquareName, LabPiece];
@@ -111,8 +111,7 @@ describe("reporting a round", () => {
     store().submitSolution();
     store().submitSolution();
 
-    const completes = gtag.mock.calls.filter(([, name]) => name === "round_complete");
-    expect(completes).toEqual([
+    expect(gtag.mock.calls).toEqual([
       ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, source: "plan" }],
     ]);
   });

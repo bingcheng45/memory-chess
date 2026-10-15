@@ -74,9 +74,15 @@ The round-funnel events start the day PR #33 merges. From then on production sen
 
 The clean production-only series for these events starts 2026-09-29. Read nothing earlier as comparable.
 
-`sound_settings` keeps firing once per finished round beside `round_complete` for four weeks after that merge, so the
-weekly rounds series has no gap. Then check that weekly `round_complete` counts match `sound_settings`, retire
-`sound_settings` in its own PR, and read rounds from `round_complete` only.
+`sound_settings` fired once per finished round beside `round_complete` for four weeks after that merge, so the weekly
+rounds series has no gap. It was retired in its own PR on 2026-10-16, eleven days early, because the counts already
+matched. Read rounds from `round_complete` only. The check, on `thememorychess.com`, read on 2026-10-16:
+
+| ISO week | `round_complete` | `sound_settings` | Note |
+|---|---|---|---|
+| 2026-09-28 to 10-04 | 1,034 | 1,132 | `round_complete` started on 2026-09-29, partway through the week |
+| 2026-10-05 to 10-11 | 1,263 | 1,284 | within 2% |
+| 2026-10-12 to 10-15 | 519 | 516 | partial week, within 1% |
 
 The one-tap start from the home page is measured against this baseline, taken before it deploys. Over 2026-09-01 to
 2026-09-28 on `thememorychess.com`, 23.7% of visitors finished a round (267 of 1,126), counted from `sound_settings`

@@ -27,7 +27,6 @@ import {
 } from "@/lib/game/rating";
 import { outcomeEffects, roundOutcomeOf } from "@/lib/game/roundOutcome";
 import { localDayOf } from "@/lib/lab/record";
-import { isSoundEnabled } from '@/lib/utils/soundEffects';
 import {
   IDLE_ROUND,
   labPositionFromFen,
@@ -358,12 +357,6 @@ export const useGameStore = create<GameStore>()(
           certainty: 'player' in rating ? { rd: rating.player.rd, rounds: rating.player.rounds } : certainty,
         }));
 
-        const soundEnabled = isSoundEnabled();
-        window.gtag?.('event', 'sound_settings', {
-          event_category: 'user_preferences',
-          event_label: soundEnabled ? 'sound_on' : 'sound_off',
-          value: soundEnabled ? 1 : 0,
-        });
         trackEvent({
           name: 'round_complete',
           params: {

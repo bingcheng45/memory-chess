@@ -3,10 +3,10 @@
 interface Window {
   gtag: (
     command: 'event',
-    eventName: string, // Can be 'video_interaction', 'sound_settings', etc.
+    eventName: string, // For example 'video_start' or 'video_complete'
     eventParams: {
-      event_category?: string; // Can be 'engagement', 'user_preferences', etc.
-      event_label?: string;    // Can be 'YouTube Tutorial Video', 'sound_on', 'sound_off', etc.
+      event_category?: string; // For example 'engagement'
+      event_label?: string;    // For example 'YouTube Tutorial Video'
       event_action?: string;
       value?: number;
       [key: string]: string | number | boolean | undefined;

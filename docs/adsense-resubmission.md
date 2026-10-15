@@ -75,8 +75,8 @@ The round-funnel events start the day PR #33 merges. From then on production sen
 The clean production-only series for these events starts 2026-09-29. Read nothing earlier as comparable.
 
 `sound_settings` fired once per finished round beside `round_complete` for four weeks after that merge, so the weekly
-rounds series has no gap. It is retired in its own PR, merged no earlier than 2026-10-27. Read rounds from
-`round_complete` only. The check, on `thememorychess.com`, read on 2026-10-16:
+rounds series has no gap. It was retired in its own PR on 2026-10-16, eleven days early, because the counts already
+matched. Read rounds from `round_complete` only. The check, on `thememorychess.com`, read on 2026-10-16:
 
 | ISO week | `round_complete` | `sound_settings` | Note |
 |---|---|---|---|

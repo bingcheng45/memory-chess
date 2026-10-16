@@ -1,6 +1,7 @@
 import { z } from "zod";
+import { FEEDBACK_MAX_LENGTH } from "@/lib/feedbackLimits";
 
-export const FEEDBACK_MAX_LENGTH = 2_000;
+export { FEEDBACK_MAX_LENGTH };
 
 export const feedbackSubmissionSchema = z.object({
   rating: z.number().int().min(1).max(5),

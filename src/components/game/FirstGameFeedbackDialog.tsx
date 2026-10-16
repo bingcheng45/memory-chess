@@ -12,7 +12,8 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 import { Textarea } from "@/components/ui/textarea";
-import { FEEDBACK_MAX_LENGTH, type FeedbackSubmission } from "@/lib/feedback";
+import { FEEDBACK_MAX_LENGTH } from "@/lib/feedbackLimits";
+import type { FeedbackSubmission } from "@/lib/feedback";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { readNextEligibleAt, writeNextEligibleAt } from "./feedbackSchedule";
 

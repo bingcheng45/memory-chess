@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { startTransition, useEffect, useMemo, useState } from "react";
 import type { LabInput } from "@/lib/lab/engine";
 import { deriveLab, type LabResults } from "@/lib/lab/metrics";
 import { localDayOf, type RoundRecord } from "@/lib/lab/record";
@@ -66,7 +66,8 @@ function useLabRead<T extends LabSummaryData>(readOpen: ReadOpen<T>, loading: T)
           const asked = requested;
           const next = await readLab(readOpen);
           answered = asked;
-          if (live && next && asked === requested) setData((previous) => ({ ...previous, ...next }));
+          // A transition lets React render a long record in slices that yield to input, instead of one long task.
+          if (live && next && asked === requested) startTransition(() => setData((previous) => ({ ...previous, ...next })));
         }
       } finally {
         reading = false;

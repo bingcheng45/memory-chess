@@ -13,7 +13,7 @@ const SpeedInsights = dynamic(() =>
   import("@vercel/speed-insights/next").then((mod) => mod.SpeedInsights),
 );
 import { GoogleAnalytics } from "@next/third-parties/google";
-import { Databuddy } from "@databuddy/sdk/react";
+import SiteDatabuddy from "@/components/common/SiteDatabuddy";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
 import {
@@ -181,14 +181,7 @@ export default async function LocaleLayout({
           <Analytics />
           <SpeedInsights />
           {countsVisitors && <GoogleAnalytics gaId="G-R8BM9EMY9J" />}
-          {countsVisitors && (
-            <Databuddy
-              clientId={process.env.NEXT_PUBLIC_DATABUDDY_CLIENT_ID}
-              trackWebVitals
-              trackErrors
-              trackOutgoingLinks
-            />
-          )}
+          {countsVisitors && <SiteDatabuddy />}
           <SoundStopNavigator />
         </NextIntlClientProvider>
       </body>

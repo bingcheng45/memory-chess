@@ -5,42 +5,51 @@ import type { LabInput } from "@/lib/lab/engine";
 import { deriveLab, type LabResults } from "@/lib/lab/metrics";
 import { localDayOf, type RoundRecord } from "@/lib/lab/record";
 import { onLabChange } from "@/lib/lab/recordSync";
-import { labStore } from "@/lib/lab/storage";
+import { labStore, type LabStore } from "@/lib/lab/storage";
 import { EMPTY_SUMMARY, type LabSummary } from "@/lib/lab/summary";
 
 export type LabStorageState = "loading" | "available" | "unavailable";
 
-export interface LabData {
+export interface LabSummaryData {
   readonly storage: LabStorageState;
-  readonly records: readonly RoundRecord[];
   readonly summary: LabSummary;
-  readonly lastBackup: number | null;
   /** The client's local day, "" until storage has been read, so the server never renders date-based text. */
   readonly today: string;
 }
 
-const LOADING: LabData = { storage: "loading", records: [], summary: EMPTY_SUMMARY, lastBackup: null, today: "" };
+export interface LabData extends LabSummaryData {
+  readonly records: readonly RoundRecord[];
+  readonly lastBackup: number | null;
+}
 
-async function readLab(): Promise<Partial<LabData> | null> {
+type ReadOpen<T> = (store: LabStore) => Promise<Partial<T>>;
+
+const SUMMARY_LOADING: LabSummaryData = { storage: "loading", summary: EMPTY_SUMMARY, today: "" };
+const LOADING: LabData = { ...SUMMARY_LOADING, records: [], lastBackup: null };
+
+/** Null when this browser has no store, which leaves the data loading. */
+async function readLab<T extends LabSummaryData>(readOpen: ReadOpen<T>): Promise<Partial<T> | null> {
   const store = labStore();
   if (!store) return null;
   const available = await store.isAvailable();
   const found = { storage: available ? "available" : "unavailable", today: localDayOf(new Date()) } as const;
-  if (!available) return found;
+  if (!available) return found as Partial<T>;
+  return { ...found, ...(await readOpen(store)) };
+}
+
+const readWholeRecord: ReadOpen<LabData> = async (store) => {
   // The summary is read after the rounds: a write lands in the log before the summary, so this order never sees a
   // round the summary has not counted.
   const records = await store.listRounds();
   const summary = await store.readSummary();
-  return { ...found, records, summary, lastBackup: store.readLastBackup() };
-}
+  return { records, summary, lastBackup: store.readLastBackup() };
+};
 
-/**
- * The lab record on this device, kept fresh when this tab or another one
- * changes it. Nothing here depends on the home page, so any screen can load
- * it lazily.
- */
-export function useLabData(): LabData {
-  const [data, setData] = useState<LabData>(LOADING);
+const readSummaryAlone: ReadOpen<LabSummaryData> = async (store) => ({ summary: await store.readSummary() });
+
+/** What `readOpen` reads, read again whenever this tab or another one changes the record. */
+function useLabRead<T extends LabSummaryData>(readOpen: ReadOpen<T>, loading: T): T {
+  const [data, setData] = useState<T>(loading);
 
   useEffect(() => {
     let live = true;
@@ -55,7 +64,7 @@ export function useLabData(): LabData {
       try {
         while (live && answered < requested) {
           const asked = requested;
-          const next = await readLab();
+          const next = await readLab(readOpen);
           answered = asked;
           if (live && next && asked === requested) setData((previous) => ({ ...previous, ...next }));
         }
@@ -85,9 +94,23 @@ export function useLabData(): LabData {
       stopListening();
       document.removeEventListener("visibilitychange", onVisibility);
     };
-  }, []);
+  }, [readOpen]);
 
   return data;
+}
+
+/**
+ * The lab record on this device, kept fresh when this tab or another one
+ * changes it. Nothing here depends on the home page, so any screen can load
+ * it lazily.
+ */
+export function useLabData(): LabData {
+  return useLabRead(readWholeRecord, LOADING);
+}
+
+/** The lifetime summary alone, which lives beside the log and is read without it. */
+export function useLabSummary(): LabSummaryData {
+  return useLabRead(readSummaryAlone, SUMMARY_LOADING);
 }
 
 export function useLabResults({ records, summary, today, plan = null, target = null }: LabInput): LabResults {

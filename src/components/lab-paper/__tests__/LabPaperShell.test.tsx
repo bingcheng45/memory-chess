@@ -80,7 +80,7 @@ describe("the footer the locale layout renders", () => {
     mockSegments = ["(missing)", "no-such-page"];
     renderWithIntl(
       <>
-        <ChangelogBanner announce />
+        <ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />
         <SiteFooter />
       </>,
       { locale: "de", messages: deMessages },
@@ -93,7 +93,7 @@ describe("the footer the locale layout renders", () => {
 
 describe("the changelog banner", () => {
   it("sits in its own Lab Paper block on a Lab Paper route, links the release notes, and dismisses as before", () => {
-    renderWithIntl(<ChangelogBanner announce />);
+    renderWithIntl(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
     const banner = screen.getByRole("complementary", { name: "Memory Chess update" });
 
     expect(banner).toHaveClass("lab-banner");
@@ -109,7 +109,7 @@ describe("the changelog banner", () => {
 
   it("keeps the dark banner, outside any Lab Paper block, on a route outside the registry", () => {
     mockPathname = "/not-a-listed-page";
-    renderWithIntl(<ChangelogBanner announce />);
+    renderWithIntl(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
     const banner = screen.getByRole("complementary", { name: "Memory Chess update" });
 
     expect(banner).toHaveClass("bg-bg-card");

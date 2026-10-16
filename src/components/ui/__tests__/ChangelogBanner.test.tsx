@@ -21,7 +21,7 @@ describe("ChangelogBanner", () => {
   });
 
   it("links to the latest changelog during its announcement window", async () => {
-    render(<ChangelogBanner announce />);
+    render(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
     const link = await screen.findByRole("link", {
       name: new RegExp(
@@ -34,7 +34,7 @@ describe("ChangelogBanner", () => {
   });
 
   it("stores the dismissed version and hides immediately", async () => {
-    render(<ChangelogBanner announce />);
+    render(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
     const closeButton = await screen.findByRole("button", {
       name: `Dismiss Memory Chess v${LATEST_CHANGELOG_ENTRY.version} update`,
@@ -55,7 +55,7 @@ describe("ChangelogBanner", () => {
       LATEST_CHANGELOG_ENTRY.version,
     );
 
-    render(<ChangelogBanner announce />);
+    render(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
     expect(
       screen.queryByLabelText("Memory Chess update"),
@@ -65,7 +65,7 @@ describe("ChangelogBanner", () => {
   it("shows a newer release when only an older version was dismissed", async () => {
     window.localStorage.setItem(CHANGELOG_DISMISSAL_STORAGE_KEY, "1.1.0");
 
-    render(<ChangelogBanner announce />);
+    render(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
     expect(
       await screen.findByLabelText("Memory Chess update"),
@@ -77,7 +77,7 @@ describe("ChangelogBanner", () => {
       new Date(publishedAt + CHANGELOG_ANNOUNCEMENT_DURATION_MS),
     );
 
-    render(<ChangelogBanner announce />);
+    render(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
     expect(
       screen.queryByLabelText("Memory Chess update"),
@@ -88,7 +88,7 @@ describe("ChangelogBanner", () => {
     jest.setSystemTime(
       new Date(publishedAt + CHANGELOG_ANNOUNCEMENT_DURATION_MS - 1_000),
     );
-    render(<ChangelogBanner announce />);
+    render(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
     expect(
       await screen.findByLabelText("Memory Chess update"),
@@ -108,7 +108,7 @@ describe("ChangelogBanner", () => {
       throw new Error("Storage unavailable");
     });
 
-    render(<ChangelogBanner announce />);
+    render(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
     expect(
       await screen.findByLabelText("Memory Chess update"),
@@ -138,7 +138,7 @@ describe("ChangelogBanner in the served HTML", () => {
   });
 
   it("renders nothing for a page rendered outside the release's window", () => {
-    render(<ChangelogBanner announce={false} />);
+    render(<ChangelogBanner announce={false} version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
     expect(screen.queryByLabelText("Memory Chess update")).not.toBeInTheDocument();
   });

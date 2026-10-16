@@ -175,6 +175,8 @@ export default async function LocaleLayout({
         <NextIntlClientProvider messages={messages}>
           <ChangelogBanner
             announce={isChangelogAnnouncementActive(LATEST_CHANGELOG_ENTRY)}
+            version={LATEST_CHANGELOG_ENTRY.version}
+            publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt}
           />
           {children}
           <SiteFooter />

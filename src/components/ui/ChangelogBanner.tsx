@@ -9,9 +9,8 @@ import { useIsLabPaperRoute } from "@/lib/lab-paper/useIsLabPaperRoute";
 import {
   CHANGELOG_ANNOUNCEMENT_DURATION_MS,
   CHANGELOG_DISMISSAL_STORAGE_KEY,
-  LATEST_CHANGELOG_ENTRY,
-  isChangelogAnnouncementActive,
-} from "@/lib/changelog";
+  isAnnouncementActive,
+} from "@/lib/changelog/announcement";
 
 const BANNER_ID = "changelog-banner";
 
@@ -75,16 +74,24 @@ export function hideDismissedBannerScript(version: string, expiresAt: number): s
  * `announce` is whether the release was inside its window when the page was
  * rendered. The banner is then part of the served HTML, so it takes its space
  * before first paint instead of pushing the page down after hydration.
+ * `version` and `publishedAt` come from the server so the client never loads
+ * the whole changelog.
  */
-export default function ChangelogBanner({ announce }: { announce: boolean }) {
+export default function ChangelogBanner({
+  announce,
+  version,
+  publishedAt,
+}: {
+  announce: boolean;
+  version: string;
+  publishedAt: string;
+}) {
   const t = useTranslations("changelog");
   const appearance: Appearance = useIsLabPaperRoute() ? "paper" : "site";
-  const release = LATEST_CHANGELOG_ENTRY;
-  const expiresAt =
-    Date.parse(release.publishedAt) + CHANGELOG_ANNOUNCEMENT_DURATION_MS;
+  const expiresAt = Date.parse(publishedAt) + CHANGELOG_ANNOUNCEMENT_DURATION_MS;
   // The server and the first hydration render `announce` as is, so the served HTML always matches.
   const [isVisible, setIsVisible] = useState(
-    () => announce && (!hasHydrated || shouldShow(release.version, expiresAt)),
+    () => announce && (!hasHydrated || shouldShow(version, expiresAt)),
   );
 
   useEffect(() => {
@@ -96,16 +103,16 @@ export default function ChangelogBanner({ announce }: { announce: boolean }) {
       return;
     }
 
-    if (!isChangelogAnnouncementActive(release)) {
+    if (!isAnnouncementActive(publishedAt)) {
       setIsVisible(false);
       return;
     }
 
-    setIsVisible(shouldShow(release.version, expiresAt));
+    setIsVisible(shouldShow(version, expiresAt));
 
     const handleStorage = (event: StorageEvent) => {
       if (event.key === CHANGELOG_DISMISSAL_STORAGE_KEY) {
-        setIsVisible(event.newValue !== release.version);
+        setIsVisible(event.newValue !== version);
       }
     };
 
@@ -136,13 +143,13 @@ export default function ChangelogBanner({ announce }: { announce: boolean }) {
         window.clearTimeout(expiryTimer);
       }
     };
-  }, [announce, release, expiresAt]);
+  }, [announce, version, publishedAt, expiresAt]);
 
   const handleDismiss = () => {
     try {
       window.localStorage.setItem(
         CHANGELOG_DISMISSAL_STORAGE_KEY,
-        release.version,
+        version,
       );
     } catch {
       // Dismiss for this page view even when browser storage is unavailable.
@@ -170,7 +177,7 @@ export default function ChangelogBanner({ announce }: { announce: boolean }) {
             {(suffix) => (
               <>
                 <span className={look.lead}>
-                  {t("bannerLead", { version: release.version })}
+                  {t("bannerLead", { version: version })}
                 </span>{" "}
                 <span className={look.cta}>
                   {t("bannerCta")}
@@ -183,7 +190,7 @@ export default function ChangelogBanner({ announce }: { announce: boolean }) {
           <button
             type="button"
             onClick={handleDismiss}
-            aria-label={`Dismiss Memory Chess v${release.version} update`}
+            aria-label={`Dismiss Memory Chess v${version} update`}
             className={look.close}
           >
             <X aria-hidden="true" className="h-4 w-4" />
@@ -192,7 +199,7 @@ export default function ChangelogBanner({ announce }: { announce: boolean }) {
       </aside>
       <script
         dangerouslySetInnerHTML={{
-          __html: hideDismissedBannerScript(release.version, expiresAt),
+          __html: hideDismissedBannerScript(version, expiresAt),
         }}
       />
     </>

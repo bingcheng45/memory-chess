@@ -3,11 +3,6 @@ import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
 import jaMessages from "../../../../messages/ja.json";
 
-jest.mock("@/lib/changelog", () => ({
-  ...jest.requireActual("@/lib/changelog"),
-  isChangelogAnnouncementActive: () => true,
-}));
-
 describe("EnglishOnlyLink", () => {
   it("points at the bare URL and says the page is in English on a translated page", () => {
     render(<EnglishOnlyLink href="/about">{(suffix) => <>About{suffix}</>}</EnglishOnlyLink>, {
@@ -32,7 +27,7 @@ describe("EnglishOnlyLink", () => {
 
 describe("ChangelogBanner", () => {
   it("marks its link to the English-only changelog on a translated page", async () => {
-    render(<ChangelogBanner announce />, { locale: "ja", messages: jaMessages });
+    render(<ChangelogBanner announce version="1.0.0" publishedAt={new Date().toISOString()} />, { locale: "ja", messages: jaMessages });
 
     const link = await screen.findByRole("link");
     expect(link).toHaveAttribute("href", "/changelog");

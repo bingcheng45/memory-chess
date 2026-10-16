@@ -14,7 +14,7 @@ import { useClickAway } from "@/hooks/useClickAway";
 import { usePresence } from "@/hooks/usePresence";
 import { createPortal } from "react-dom";
 
-const SLIDER_EXIT_MS = 200;
+const SLIDER_MS = 200;
 
 interface SoundSettingsProps {
   className?: string;
@@ -161,7 +161,7 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
     }
   };
 
-  const slider = usePresence(!isMobile && showSlider && soundOn, SLIDER_EXIT_MS);
+  const slider = usePresence(!isMobile && showSlider && soundOn, SLIDER_MS);
 
   return (
     <div

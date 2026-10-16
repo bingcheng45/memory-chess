@@ -64,8 +64,8 @@ interface LanguageSettingsProps {
   appearance?: Appearance;
 }
 
-const POPOVER_EXIT_MS = 180;
-const SHEET_EXIT_MS = 300;
+const POPOVER_MS = 180;
+const SHEET_MS = 300;
 
 type Anchor = { top: number; left: number };
 
@@ -105,8 +105,8 @@ export default function LanguageSettings({
 
   const isPopoverOpen = isOpen && !isMobile && anchor !== null;
   const isSheetOpen = isOpen && isMobile;
-  const popover = usePresence(isPopoverOpen, POPOVER_EXIT_MS);
-  const sheet = usePresence(isSheetOpen, SHEET_EXIT_MS);
+  const popover = usePresence(isPopoverOpen, POPOVER_MS);
+  const sheet = usePresence(isSheetOpen, SHEET_MS);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -273,7 +273,8 @@ export default function LanguageSettings({
         />
         <span
           key={locale}
-          className={`${look.code} animate-in fade-in-60 duration-[250ms] motion-reduce:animate-none`}
+          className={`${look.code} animate-in fade-in-60 motion-reduce:animate-none`}
+          style={{ animationDuration: "250ms" }}
         >
           {LOCALE_BADGES[locale]}
         </span>
@@ -293,8 +294,9 @@ export default function LanguageSettings({
                   popover.isClosing
                     ? "animate-out fade-out slide-out-to-bottom-[6px] fill-mode-forwards"
                     : "animate-in fade-in slide-in-from-bottom-[6px]"
-                } duration-[180ms] ease-out motion-reduce:animate-none`}
+                } ease-out motion-reduce:animate-none`}
                 style={{
+                  animationDuration: `${POPOVER_MS}ms`,
                   top: anchor.top,
                   left: anchor.left,
                   minWidth: "11rem",

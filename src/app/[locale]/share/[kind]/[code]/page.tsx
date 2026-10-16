@@ -12,6 +12,11 @@ import "./share-page.css";
 
 type Props = { params: Promise<{ kind: string; code: string }> };
 
+/** A card's page depends on nothing but its URL, so each is rendered on its first visit and served from the cache after. */
+export function generateStaticParams() {
+  return [];
+}
+
 /**
  * The shell's body face is not preloaded, and a caption that fits one line in Open Sans can take two in its fallback,
  * so the swap would pull the replay up under the reader. Set in a preloaded copy of the face, the lede paints once.

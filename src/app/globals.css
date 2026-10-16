@@ -8,6 +8,15 @@ html, body {
   width: 100%;
 }
 
+/*
+  A Radix modal's scroll lock sets this variable on body, and a custom property
+  inherits, so locking restyled every element on the page. Nothing here reads
+  it; declaring it on body for good means the lock changes nothing inherited.
+*/
+body {
+  --removed-body-scroll-bar-size: 0px !important;
+}
+
 body {
   font-family: var(--font-geist-sans, Arial, Helvetica, sans-serif);
   position: relative;

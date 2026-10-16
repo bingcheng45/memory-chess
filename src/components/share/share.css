@@ -1,6 +1,10 @@
 
 /* share dialog: the card large on the left, every way to send it on the right; a bottom sheet on phones, the card its full width */
 .lab-share-overlay { position: fixed; inset: 0; z-index: 60; background: var(--lp-scrim); }
+/* A Radix modal sets pointer-events: none on body, which every element inherits, so the whole page restyles. Keeping
+   auto on the page's top-level blocks stops that at them; the full-screen overlay still takes every outside click.
+   .lab-paper, not *, so the :has() change does not invalidate the whole page either. */
+body:has(> .lab-share-dialog) > .lab-paper { pointer-events: auto; }
 .lab-paper.lab-share-dialog { position: fixed; z-index: 61; top: 50%; left: 50%; translate: -50% -50%; width: min(1010px, calc(100vw - 48px)); max-height: calc(100dvh - 48px); overflow: hidden auto; overscroll-behavior: contain; padding: 24px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); box-shadow: var(--lp-pop-shadow); }
 .lab-paper .lab-share-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; }
 .lab-paper .lab-share-title { margin: 0; font: 650 22px/1.25 var(--lp-ui); color: var(--lp-ink); }

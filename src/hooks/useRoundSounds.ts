@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { playSound, stopTimerSound } from '@/lib/utils/soundEffects';
+import { playSound, stopTimerSound, warmRoundSounds } from '@/lib/utils/soundEffects';
 import type { RoundState } from '@/lib/round/round';
 
 /** Late enough that the start sound has finished. */
@@ -11,12 +11,18 @@ const WARNING_SHARE = 0.75;
  * The game's sounds, keyed on the round's phase changes: the start and the
  * timer cue when study begins, the end cue when the board clears, and a timer
  * warning once placing has taken three quarters of the study time. The result
- * screen plays its own success or failure sound.
+ * screen plays its own success or failure sound. The round's sounds start
+ * downloading once the round starts, so none of them waits on the network.
  */
 export function useRoundSounds(round: RoundState): void {
   const studyStartedAt = round.phase === 'study' ? round.startedAt : null;
   const rebuildStartedAt = round.phase === 'rebuild' ? round.log.startedAt : null;
   const studyMs = round.phase === 'idle' ? 0 : round.config.studyMs;
+  const started = round.phase === 'countdown' || round.phase === 'study';
+
+  useEffect(() => {
+    if (started) warmRoundSounds();
+  }, [started]);
 
   useEffect(() => {
     if (studyStartedAt === null) return;

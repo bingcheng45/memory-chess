@@ -257,22 +257,25 @@ describe("DashboardShare", () => {
     expect(events()).toEqual([{ name: "lab_dashboard_share", params: { method: "copy" } }]);
   });
 
-  it("links each network's post page in a new tab, carry the card's own link, says the preview shows the card, and counts the network", async () => {
+  it("opens each network's post page in a new tab from a button, carry the card's own link, says the preview shows the card, and counts the network", async () => {
+    const openWindow = jest.spyOn(window, "open").mockReturnValue(null);
     renderWithIntl(<DashboardShare card={CARD} />);
     await openDialog();
-    const x = within(dialog()).getByRole("link", { name: "X (opens in a new tab)" });
+    const x = within(dialog()).getByRole("button", { name: "X (opens in a new tab)" });
 
-    expect([x.getAttribute("href"), x.getAttribute("target"), x.getAttribute("rel")]).toEqual([
-      `https://x.com/intent/post?text=${encodeURIComponent(CAPTION)}&url=${encodeURIComponent(URL_TAGGED)}`,
-      "_blank",
-      "noopener noreferrer",
-    ]);
-    expect(within(dialog()).getAllByRole("link")).toHaveLength(7);
+    expect(within(dialog()).getAllByRole("button", { name: /\(opens in a new tab\)$/ })).toHaveLength(7);
+    expect(within(dialog()).queryAllByRole("link")).toHaveLength(0);
     expect(within(dialog()).getByText(/show the card in the link preview/)).toBeInTheDocument();
 
     await act(async () => fireEvent.click(x));
+    expect(openWindow).toHaveBeenCalledWith(
+      `https://x.com/intent/post?text=${encodeURIComponent(CAPTION)}&url=${encodeURIComponent(URL_TAGGED)}`,
+      "_blank",
+      "noopener,noreferrer",
+    );
     expect(status()).toHaveTextContent("X opened in a new tab. Your card shows in the link preview.");
     expect(events()).toEqual([{ name: "lab_dashboard_share", params: { method: "post", network: "x" } }]);
+    openWindow.mockRestore();
   });
 
   it("keeps the caption and links when the card cannot be drawn", async () => {

@@ -73,16 +73,16 @@ describe("the daily join form's country", () => {
     expect(screen.getByRole("button", { name: "Join the board" })).toBeDisabled();
   });
 
-  it("keeps Japan, picked before on this device, over Singapore from the connection", async () => {
+  it("keeps Japan, picked before on this device, without asking the connection for its country", async () => {
     serve("SG");
     languages(["en-SG"]);
     useSettingsStore.setState({ countryCode: "JP" as CountryCode });
 
     render(<DailyJoinForm round={ROUND} onJoined={jest.fn()} />);
-    await waitFor(() => expect(global.fetch).toHaveBeenCalled());
 
-    expect(screen.getByText("Saved on this device.")).toBeInTheDocument();
+    expect(await screen.findByText("Saved on this device.")).toBeInTheDocument();
     expect(country()).toHaveTextContent("Japan");
+    expect(global.fetch).not.toHaveBeenCalled();
   });
 });
 

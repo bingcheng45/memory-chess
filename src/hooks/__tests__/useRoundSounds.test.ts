@@ -1,9 +1,9 @@
 import { renderHook } from "@testing-library/react";
-import { playSound, stopTimerSound } from "@/lib/utils/soundEffects";
+import { playSound, stopTimerSound, warmRoundSounds } from "@/lib/utils/soundEffects";
 import { useRoundSounds } from "@/hooks/useRoundSounds";
 import type { RoundState } from "@/lib/round/round";
 
-jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn(), stopTimerSound: jest.fn() }));
+jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn(), stopTimerSound: jest.fn(), warmRoundSounds: jest.fn() }));
 
 const config = { pieceCount: 2, studyMs: 8000, source: "game_form" } as const;
 const target = { e1: { color: "white", type: "king" } } as const;
@@ -27,6 +27,7 @@ describe("useRoundSounds", () => {
     jest.spyOn(performance, "now").mockImplementation(() => clock);
     jest.mocked(playSound).mockClear();
     jest.mocked(stopTimerSound).mockClear();
+    jest.mocked(warmRoundSounds).mockClear();
   });
   afterEach(() => {
     jest.useRealTimers();
@@ -61,5 +62,19 @@ describe("useRoundSounds", () => {
     jest.advanceTimersByTime(10_000);
 
     expect(playSound).not.toHaveBeenCalled();
+  });
+
+  it("warms the round's sounds once as the count-in starts, and not before", () => {
+    const countdown: RoundState = { phase: "countdown", config, fen: "4k3/8/8/8/8/8/8/4K3 w - - 0 1", endsAt: 3000 };
+    const { rerender } = renderHook(({ round }) => useRoundSounds(round), {
+      initialProps: { round: { phase: "idle" } as RoundState },
+    });
+    const warmsWhileIdle = jest.mocked(warmRoundSounds).mock.calls.length;
+
+    rerender({ round: countdown });
+    rerender({ round: study(3000) });
+    rerender({ round: rebuild(8000) });
+
+    expect([warmsWhileIdle, jest.mocked(warmRoundSounds).mock.calls.length]).toEqual([0, 1]);
   });
 });

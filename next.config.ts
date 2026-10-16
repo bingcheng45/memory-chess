@@ -12,6 +12,8 @@ const SKIPPED_BY_MIDDLEWARE = "(?:api|_vercel).*|.*\\..*";
 const nextConfig: NextConfig = {
   output: "standalone",
   reactStrictMode: true,
+  /** Each page's stylesheets ship inside its HTML, so first paint waits on no stylesheet request. */
+  experimental: { inlineCss: true },
   /**
    * The middleware strips a trailing slash in the same 308 as its locale and
    * retired-guide redirects, so a URL reaches its canonical form in one hop.

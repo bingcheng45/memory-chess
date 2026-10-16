@@ -155,6 +155,9 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
   .lab-paper .lab-lede { font-size: 17px; }
   .lab-paper .lab-foot-grid { grid-template-columns: minmax(0, 1fr); gap: 32px; }
 }
+@keyframes lab-sound-pulse { 50% { transform: scale(1.2); } }
+.lab-sound-pulse { animation: lab-sound-pulse 300ms ease-in-out; }
+
 @media (prefers-reduced-motion: reduce) {
   html:has(.lab-paper) { scroll-behavior: auto; }
   .lab-paper *, .lab-paper *::before, .lab-paper *::after { animation: none !important; transition: none !important; }

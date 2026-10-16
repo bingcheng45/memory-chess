@@ -19,7 +19,7 @@ it("keeps the visit in memory for the session when storage refuses the write, so
 
   const first = renderWithIntl(<LabRecordSection record={persona("threeDays")} />);
   expect(within(notebook()).getAllByText("New")).toHaveLength(4);
-  act(() => sightings.forEach((callback) => callback([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver)));
+  act(() => sightings.forEach((callback) => callback([{ isIntersecting: true, boundingClientRect: { top: 0 } } as IntersectionObserverEntry], {} as IntersectionObserver)));
   first.unmount();
 
   renderWithIntl(<LabRecordSection record={persona("threeDays")} />);

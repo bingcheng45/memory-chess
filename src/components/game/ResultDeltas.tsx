@@ -92,7 +92,7 @@ export interface ResultDeltasProps {
 /**
  * The dashboard's lead and summary figures after the round just played, each beside what it read before. Counted
  * from the record read during the round plus the round itself, through the same tile builders as the dashboard, so
- * the list is whole in the result screen's first frame and nothing under it moves.
+ * the list is whole in the first frame it is drawn in and nothing under it moves.
  */
 export default function ResultDeltas({ before, labRound }: ResultDeltasProps) {
   const t = useTranslations("dashboard.deltas");

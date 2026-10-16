@@ -3,7 +3,7 @@
 import { useGameStore } from "@/lib/store/gameStore";
 import { accuracyBandKey } from "@/lib/reference/facts";
 import { GameState } from "@/lib/types/game";
-import { lazy, Suspense, useState, useEffect, useRef } from "react";
+import { lazy, Suspense, useDeferredValue, useState, useEffect, useRef } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
 import { useTranslations } from "next-intl";
@@ -114,6 +114,9 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(readCachedCutoffs);
   // Likewise the dashboard figures: their code and the record were loaded during the round, or they are not shown.
   const [deltas] = useState(warmedResultDeltas);
+  // False in the first commit, so the tap that ends a round paints its score at once. What sits below the score, which
+  // asks for most of the work, follows in a deferred render that yields to the next tap.
+  const painted = useDeferredValue(true, false);
 
   // Use a ref instead of state to prevent double increments due to StrictMode
   const playsCountedRef = useRef(false);
@@ -379,40 +382,44 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         )}
       </section>
 
-      <div className="lab-ui-face space-y-6">
-        {showsLab && labRound && (
-          <ErrorBoundary key={labRound.facts.id} fallback={<ResultLabEnd />}>
-            <Suspense fallback={<ResultLabSlot />}>
-              <ResultLabCard roundId={labRound.facts.id} onPlay={onPlay} />
-            </Suspense>
-          </ErrorBoundary>
-        )}
+      {painted && (
+        <div className="lab-ui-face space-y-6">
+          {showsLab && labRound && (
+            <ErrorBoundary key={labRound.facts.id} fallback={<ResultLabEnd />}>
+              <Suspense fallback={<ResultLabSlot />}>
+                <ResultLabCard roundId={labRound.facts.id} onPlay={onPlay} />
+              </Suspense>
+            </ErrorBoundary>
+          )}
 
-        {deltas && labRound && (
-          <ErrorBoundary key={labRound.facts.id} fallback={<></>}>
-            <deltas.Deltas before={deltas.before} labRound={labRound} />
-          </ErrorBoundary>
-        )}
+          {deltas && labRound && (
+            <ErrorBoundary key={labRound.facts.id} fallback={<></>}>
+              <deltas.Deltas before={deltas.before} labRound={labRound} />
+            </ErrorBoundary>
+          )}
 
-        <ArticleTile
-          round={{
+          <ArticleTile
+            round={{
+              pieceCount: gameState.pieceCount,
+              memorizeTime: gameState.memorizeTime,
+            }}
+          />
+        </div>
+      )}
+
+      {painted && (
+        <FirstGameFeedbackDialog
+          game={{
+            accuracy: gameState.accuracy || 0,
+            correctPieces: piecesInfo.correctPieces,
             pieceCount: gameState.pieceCount,
-            memorizeTime: gameState.memorizeTime,
+            difficulty: gameState.board?.kind === "daily" ? "daily" : determineDifficulty(gameState.pieceCount),
+            memorizationTime:
+              gameState.actualMemorizeTime || gameState.memorizeTime,
+            solutionTime: gameState.completionTime || 0,
           }}
         />
-      </div>
-
-      <FirstGameFeedbackDialog
-        game={{
-          accuracy: gameState.accuracy || 0,
-          correctPieces: piecesInfo.correctPieces,
-          pieceCount: gameState.pieceCount,
-          difficulty: gameState.board?.kind === "daily" ? "daily" : determineDifficulty(gameState.pieceCount),
-          memorizationTime:
-            gameState.actualMemorizeTime || gameState.memorizeTime,
-          solutionTime: gameState.completionTime || 0,
-        }}
-      />
+      )}
 
       {/* Leaderboard Submission Dialog */}
       <Dialog

@@ -41,7 +41,8 @@
 .lab-cal-head { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 0 0 12px; }
 .lab-cal-head .lab-k { min-width: 0; font-size: 14px; font-weight: 600; color: var(--lp-ink); }
 .lab-meter { height: 4px; background: var(--lp-surface-2); border-radius: 2px; overflow: hidden; margin: 0 0 16px; }
-.lab-meter i { display: block; height: 100%; width: 0; background: var(--lp-line-strong); }
+/* The clock scales the bar every frame, which the compositor draws without a layout. */
+.lab-meter i { display: block; height: 100%; background: var(--lp-line-strong); transform: scaleX(0); transform-origin: left; will-change: transform; }
 .lab-cal-grid .lab-cell { cursor: default; }
 .lab-cal-grid[data-live] .lab-cell { cursor: pointer; }
 .lab-cal-grid[data-live] .lab-cell:hover { box-shadow: inset 0 0 0 2px var(--lp-accent); }
@@ -72,6 +73,9 @@
 .lab-cal-main .lab-btn { min-width: 0; }
 .lab-cal-head-end { flex: none; display: flex; align-items: center; gap: 10px; margin-left: auto; }
 .lab-cal-head-end .lab-mono { font-size: 20px; font-weight: 500; color: var(--lp-ink); }
+/* A box of fixed size around the text the clock rewrites every frame, so that text lays out alone. Chrome lays a flex
+   item out with its line, so the box is a block inside the timer, not the timer itself. */
+.lab-cal-head-end [role="timer"] > span { display: block; contain: size layout; inline-size: 8ch; block-size: 32px; line-height: 32px; text-align: end; }
 @media (max-width: 520px) { .lab-cal-head .lab-k { min-height: 2.6em; display: flex; align-items: center; } .lab-cal-main { gap: 8px; } .lab-cal-main .lab-btn { padding: 0 8px; font-size: 15px; } }
 @media (max-width: 360px) { .lab-cal-main .lab-btn { min-height: 62px; line-height: 1.2; text-align: center; white-space: normal; } }
 .lab-icon-btn { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 40px; height: 40px; border-radius: var(--lp-r-md); border: 1px solid var(--lp-line-strong); background: var(--lp-surface); color: var(--lp-ink-2); cursor: pointer; transition: border-color 0.15s, color 0.15s; }

@@ -1,9 +1,5 @@
-import { Suspense } from 'react';
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
-import LeaderboardTabsFromSearchParams, {
-  LeaderboardTabs,
-  type LeaderboardBoards,
-} from '@/components/leaderboard/LeaderboardTabs';
+import LeaderboardTabs, { type LeaderboardBoards } from '@/components/leaderboard/LeaderboardTabs';
 import { utcDayOf } from '@/lib/lab/daily';
 import { RANKED_DIFFICULTIES } from '@/lib/reference/facts';
 import { getLeaderboard } from '@/lib/services/leaderboardService';
@@ -36,11 +32,7 @@ export default async function LeaderboardPage() {
 
   return (
     <main className="lab-wrap lb-main">
-      {/* useSearchParams makes static prerender serialise only this fallback,
-          so it carries the real rows a crawler reads. */}
-      <Suspense fallback={<LeaderboardTabs boards={boards} />}>
-        <LeaderboardTabsFromSearchParams boards={boards} />
-      </Suspense>
+      <LeaderboardTabs boards={boards} />
     </main>
   );
 }

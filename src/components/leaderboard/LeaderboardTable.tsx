@@ -3,7 +3,7 @@
 import { START_RATING } from "@/lib/game/rating";
 import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardEntry } from "@/types/leaderboard";
 import { Link } from "@/i18n/navigation";
-import { useEffect, useRef, type ReactNode } from "react";
+import { memo, useEffect, useRef, type ReactNode } from "react";
 import { CloudOff, TriangleAlert } from "lucide-react";
 
 import { useFormatter, useLocale, useTranslations } from "next-intl";
@@ -88,7 +88,7 @@ function BoardState({ icon, children }: { icon: ReactNode; children: ReactNode }
   );
 }
 
-export default function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardTableProps) {
+function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardTableProps) {
   const t = useTranslations("leaderboard");
   const tCountry = useTranslations("country");
   const locale = useLocale();
@@ -216,3 +216,6 @@ export default function LeaderboardTable({ data, error, entryDetails, activeTab 
     </BoardFrame>
   );
 }
+
+// Every opened board stays mounted, so a tab switch would otherwise redraw each one.
+export default memo(LeaderboardTable);

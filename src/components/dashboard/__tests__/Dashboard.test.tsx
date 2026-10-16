@@ -54,6 +54,21 @@ describe("Dashboard", () => {
     expect(screen.getByRole("figure", { name: /^Scored board: \d+ of \d+ pieces right\.$/ })).toBeInTheDocument();
   });
 
+  it("keeps one round's board open at a time, and closes it from its own button", () => {
+    show("threeDays");
+
+    const [first, second] = [...document.querySelectorAll<HTMLElement>("[data-history-row]")].map((row) => within(row));
+    fireEvent.click(first.getByRole("button", { name: "Show board" }));
+    fireEvent.click(second.getByRole("button", { name: "Show board" }));
+    expect(first.getByRole("button", { name: "Show board" })).toHaveAttribute("aria-expanded", "false");
+    expect(second.getByRole("button", { name: "Hide board" })).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getAllByRole("figure", { name: /^Scored board:/ })).toHaveLength(1);
+
+    fireEvent.click(second.getByRole("button", { name: "Hide board" }));
+    expect(second.getByRole("button", { name: "Show board" })).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryAllByRole("figure", { name: /^Scored board:/ })).toHaveLength(0);
+  });
+
   it("shows twenty rounds at first and twenty more on request, and filters by setting", () => {
     show("thirtyDays");
 

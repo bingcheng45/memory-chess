@@ -102,7 +102,9 @@ export function ShareDialog({ surface, title, caption, image, alt, fileName }: S
     setStatus(t(copied ? "copied" : "copyFailed"));
   };
 
-  const post = (network: ShareNetwork, name: string) => {
+  // A button, not a link: analytics click tracking records a link's address, and this one holds the caption and its score.
+  const post = (network: ShareNetwork, name: string, url: string) => {
+    window.open(url, "_blank", "noopener,noreferrer");
     track({ method: "post", network });
     setStatus(t("opened", { network: name }));
   };
@@ -162,10 +164,10 @@ export function ShareDialog({ surface, title, caption, image, alt, fileName }: S
               <ul className="lab-share-networks">
                 {SHARE_NETWORKS.map(({ id, name, intent }) => (
                   <li key={id}>
-                    <a className="lab-btn lab-btn-secondary" href={intent(caption)} target="_blank" rel="noopener noreferrer" onClick={() => post(id, name)}>
+                    <button type="button" className="lab-btn lab-btn-secondary" onClick={() => post(id, name, intent(caption))}>
                       {name}
                       <span className="lab-sr"> {t("post.newTab")}</span>
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>

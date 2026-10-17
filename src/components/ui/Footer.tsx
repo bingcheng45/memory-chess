@@ -21,55 +21,37 @@ export const PRODUCT_HUNT_DAY_URL =
   "https://www.producthunt.com/products/memory-chess/launches/memory-chess?embed=true&utm_source=badge-top-post-badge&utm_medium=badge&utm_campaign=badge-memory-chess";
 export const PRODUCT_HUNT_WEEK_URL =
   "https://www.producthunt.com/products/memory-chess/launches/memory-chess?embed=true&utm_source=badge-top-post-topic-badge&utm_medium=badge&utm_campaign=badge-memory-chess";
-export const LAUNCHSTAG_URL = "https://launchstag.com/p/memory-chess";
 export const X_URL = "https://x.com/TheMemoryChess";
 
 type BadgeTheme = "dark" | "light";
 
-// Each badge is drawn at the Product Hunt badges' 54 px height, so the row lines up.
-const LAUNCH_BADGES = [
+const PRODUCT_HUNT_BADGES = [
   {
     href: PRODUCT_HUNT_DAY_URL,
     src: (theme: BadgeTheme) =>
       `https://api.producthunt.com/widgets/embed-image/v1/top-post-badge.svg?post_id=957046&theme=${theme}&period=daily&t=1771899006529`,
-    altKey: "footer.productHuntAlt",
-    width: 250,
-    rel: "noopener noreferrer",
   },
   {
     href: PRODUCT_HUNT_WEEK_URL,
     src: (theme: BadgeTheme) =>
       `https://api.producthunt.com/widgets/embed-image/v1/top-post-topic-badge.svg?post_id=957046&theme=${theme}&period=weekly&topic_id=204&t=1771899006529`,
-    altKey: "footer.productHuntAlt",
-    width: 250,
-    rel: "noopener noreferrer",
-  },
-  {
-    href: LAUNCHSTAG_URL,
-    src: (theme: BadgeTheme) => `https://launchstag.com/badge-${theme}.svg`,
-    // A brand line, the badge image's own label, so it stays in English.
-    alt: "Featured on Launchstag",
-    width: 173,
-    rel: "noopener",
   },
 ] as const;
 
-const BADGE_HEIGHT = 54;
-
-export function LaunchBadges({ theme, className }: { theme: BadgeTheme; className?: string }) {
+export function ProductHuntBadges({ theme, className }: { theme: BadgeTheme; className?: string }) {
   const t = useTranslations("common");
   return (
     <div className={className}>
-      {LAUNCH_BADGES.map((badge) => (
-        <a key={badge.href} href={badge.href} target="_blank" rel={badge.rel}>
-          {/* eslint-disable-next-line @next/next/no-img-element -- each site's own SVG, which next/image would pass through unoptimized */}
+      {PRODUCT_HUNT_BADGES.map((badge) => (
+        <a key={badge.href} href={badge.href} target="_blank" rel="noopener noreferrer">
+          {/* eslint-disable-next-line @next/next/no-img-element -- Product Hunt's own SVG, which next/image would pass through unoptimized */}
           <img
-            alt={"alt" in badge ? badge.alt : t(badge.altKey)}
-            width={badge.width}
-            height={BADGE_HEIGHT}
+            alt={t("footer.productHuntAlt")}
+            width="250"
+            height="54"
             src={badge.src(theme)}
             loading="lazy"
-            style={{ width: `${badge.width}px`, height: `${BADGE_HEIGHT}px` }}
+            style={{ width: "250px", height: "54px" }}
           />
         </a>
       ))}
@@ -121,9 +103,9 @@ export default function Footer() {
           </CommunityLink>
         </div>
 
-        {/* Launch badges */}
+        {/* Product Hunt Badges */}
         <div className="flex justify-center mb-4">
-          <LaunchBadges theme="dark" className="flex flex-wrap items-center justify-center gap-3" />
+          <ProductHuntBadges theme="dark" className="flex flex-wrap items-center justify-center gap-3" />
         </div>
 
         {/* Twitter/X Icon */}

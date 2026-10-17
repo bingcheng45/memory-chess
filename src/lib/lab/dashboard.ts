@@ -161,7 +161,7 @@ const ready = (figureValue: Figure, tileContext: TileContext, trend?: Trend): Ti
   context: tileContext,
   ...(trend && { trend }),
 });
-const trendOf = (change: number): Trend => ({ direction: change > 0 ? "up" : change < 0 ? "down" : "level", amount: Math.abs(change) });
+export const trendOf = (change: number): Trend => ({ direction: change > 0 ? "up" : change < 0 ? "down" : "level", amount: Math.abs(change) });
 const emptyPlay = (href = DASHBOARD_PLAY_HREF): TileState => ({ state: "empty", href, cta: "play" });
 
 /** One metric's tile: its figure only once the metric can read one, else what it still needs. */

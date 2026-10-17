@@ -1471,15 +1471,15 @@
       "latest": "최신",
       "accuracy": {
         "title": "시간에 따른 정확도",
-        "desc": "가장 많이 플레이한 설정에서의 라운드별 정확도이며, 0~100% 척도로 표시됩니다.",
+        "desc": "가장 많이 플레이한 설정에서의 라운드별 정확도와 {window}라운드 평균입니다.",
         "note": "가장 많이 플레이한 설정인 {source, select, calibration {연습} other {게임}} 라운드 {pieceCount}개, {memorizeSeconds}초. 최근 {count, plural, other {#라운드}}.",
-        "aria": "{pieceCount}개, {memorizeSeconds}초로 플레이한 최근 {count}라운드의 정확도, 0~100퍼센트 척도, 최신 {latest}퍼센트."
+        "aria": "{pieceCount}개, {memorizeSeconds}초로 플레이한 최근 {count}라운드의 정확도, 최신 {latest}퍼센트, {window}라운드 평균 {average}퍼센트."
       },
       "speed": {
         "title": "시간에 따른 회상 페이스",
         "unit": "맞힌 말 하나당 초. 낮을수록 빠릅니다.",
         "note": "{source, select, calibration {연습} other {게임}} 라운드 {pieceCount}개, {memorizeSeconds}초. 최근 {count, plural, other {#라운드}}.",
-        "aria": "{pieceCount}개, {memorizeSeconds}초로 플레이한 최근 {count}라운드의 맞힌 말 하나당 초, 최신 {latest}."
+        "aria": "{pieceCount}개, {memorizeSeconds}초로 플레이한 최근 {count}라운드의 맞힌 말 하나당 초, 최신 {latest}, {window}라운드 평균 {average}."
       },
       "bests": {
         "title": "설정별 개인 최고 기록",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, 신규"
       }
     },
-    "trend": "최근 {window}라운드가 그 전 {window}라운드보다 {amount} {direction, select, up {증가} other {감소}}"
+    "trend": "최근 {window}라운드가 그 전 {window}라운드보다 {amount} {direction, select, up {증가} other {감소}}",
+    "rating": {
+      "title": "시간에 따른 실력 레이팅",
+      "desc": "이 기기에서 레이팅이 반영되는 게임 라운드를 마칠 때마다 기록된 실력 레이팅입니다.",
+      "periodDays": "{days, plural, other {최근 #일 동안}}",
+      "periodRounds": "{count, plural, other {최근 #라운드 동안}}",
+      "periodLevel": "{days, plural, other {최근 #일 동안}} 변화 없음",
+      "peak": "최고 {rating}",
+      "newPeak": "최고 기록 경신",
+      "aria": "레이팅이 반영된 최근 {count, plural, other {#라운드}}의 실력 레이팅, {start}에서 {current}, 최고 {peak}.",
+      "empty": "게임에서 레이팅 라운드를 플레이하면 레이팅 그래프가 시작됩니다."
+    },
+    "chart": {
+      "round": "{n}라운드",
+      "start": "시작",
+      "each": "각 라운드",
+      "average": "{window}라운드 평균",
+      "best": "최고 {value}",
+      "win": "승리 {accuracy}%",
+      "col": {
+        "round": "라운드",
+        "date": "날짜",
+        "rating": "레이팅",
+        "change": "변화",
+        "accuracy": "정확도",
+        "pace": "말 하나당 초",
+        "average": "평균"
+      }
+    }
   },
   "share": {
     "intro": "카드를 공유하거나 저장하거나 게시물에 복사하세요.",

@@ -1471,15 +1471,15 @@
       "latest": "Mais recente",
       "accuracy": {
         "title": "Precisão ao longo do tempo",
-        "desc": "Sua precisão rodada a rodada na sua configuração mais jogada, numa escala de 0 a 100%.",
+        "desc": "Sua precisão rodada a rodada na sua configuração mais jogada, com uma média de {window} rodadas.",
         "note": "{source, select, calibration {Rodadas de treino} other {Rodadas de partida}} com {pieceCount} peças, {memorizeSeconds} s, sua configuração mais jogada. {count, plural, one {Última # rodada} many {Últimas # rodadas} other {Últimas # rodadas}}.",
-        "aria": "Precisão nas suas últimas {count} rodadas com {pieceCount} peças, {memorizeSeconds} s, numa escala de 0 a 100 por cento, a mais recente {latest} por cento."
+        "aria": "Precisão nas suas últimas {count} rodadas com {pieceCount} peças, {memorizeSeconds} s, a mais recente {latest} por cento, média de {window} rodadas {average} por cento."
       },
       "speed": {
         "title": "Ritmo de recordação ao longo do tempo",
         "unit": "Segundos por peça certa. Menor é mais rápido.",
         "note": "{source, select, calibration {Rodadas de treino} other {Rodadas de partida}} com {pieceCount} peças, {memorizeSeconds} s. {count, plural, one {Última # rodada} many {Últimas # rodadas} other {Últimas # rodadas}}.",
-        "aria": "Segundos por peça certa nas suas últimas {count} rodadas com {pieceCount} peças, {memorizeSeconds} s, a mais recente {latest}."
+        "aria": "Segundos por peça certa nas suas últimas {count} rodadas com {pieceCount} peças, {memorizeSeconds} s, a mais recente {latest}, média de {window} rodadas {average}."
       },
       "bests": {
         "title": "Recordes pessoais por configuração",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, novo"
       }
     },
-    "trend": "{direction, select, up {Subiu} other {Caiu}} {amount} nas suas {window} últimas rodadas em relação às {window} anteriores"
+    "trend": "{direction, select, up {Subiu} other {Caiu}} {amount} nas suas {window} últimas rodadas em relação às {window} anteriores",
+    "rating": {
+      "title": "Rating ao longo do tempo",
+      "desc": "Seu rating de habilidade após cada rodada ranqueada do jogo neste dispositivo.",
+      "periodDays": "{days, plural, one {no último dia} many {nos últimos # dias} other {nos últimos # dias}}",
+      "periodRounds": "{count, plural, one {na sua última rodada} many {nas suas últimas # rodadas} other {nas suas últimas # rodadas}}",
+      "periodLevel": "Sem mudança {days, plural, one {no último dia} many {nos últimos # dias} other {nos últimos # dias}}",
+      "peak": "Pico {rating}",
+      "newPeak": "Novo pico",
+      "aria": "Rating de habilidade {count, plural, one {na sua última rodada ranqueada} many {nas suas últimas # rodadas ranqueadas} other {nas suas últimas # rodadas ranqueadas}}, de {start} para {current}, pico {peak}.",
+      "empty": "Jogue uma rodada ranqueada no jogo para começar sua linha de rating."
+    },
+    "chart": {
+      "round": "Rodada {n}",
+      "start": "Início",
+      "each": "Cada rodada",
+      "average": "Média de {window} rodadas",
+      "best": "Melhor {value}",
+      "win": "Vitória {accuracy}%",
+      "col": {
+        "round": "Rodada",
+        "date": "Data",
+        "rating": "Rating",
+        "change": "Variação",
+        "accuracy": "Precisão",
+        "pace": "Segundos por peça",
+        "average": "Média"
+      }
+    }
   },
   "share": {
     "intro": "Compartilhe o cartão, salve-o ou copie-o em uma publicação.",

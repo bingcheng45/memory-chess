@@ -1471,15 +1471,15 @@
       "latest": "Nieuwste",
       "accuracy": {
         "title": "Nauwkeurigheid door de tijd",
-        "desc": "Je nauwkeurigheid per ronde in je meest gespeelde instelling, op een schaal van 0 tot 100%.",
+        "desc": "Je nauwkeurigheid per ronde in je meest gespeelde instelling, met een gemiddelde over {window} rondes.",
         "note": "{source, select, calibration {Oefenrondes} other {Rondes in partijen}} met {pieceCount} stukken, {memorizeSeconds} s, je meest gespeelde instelling. Laatste {count, plural, one {# ronde} other {# rondes}}.",
-        "aria": "Nauwkeurigheid over je laatste {count} rondes met {pieceCount} stukken, {memorizeSeconds} s, op een schaal van 0 tot 100 procent, laatste {latest} procent."
+        "aria": "Nauwkeurigheid over je laatste {count} rondes met {pieceCount} stukken, {memorizeSeconds} s, laatste {latest} procent, gemiddelde over {window} rondes {average} procent."
       },
       "speed": {
         "title": "Herinneringstempo door de tijd",
         "unit": "Seconden per goed stuk. Lager is sneller.",
         "note": "{source, select, calibration {Oefenrondes} other {Rondes in partijen}} met {pieceCount} stukken, {memorizeSeconds} s. Laatste {count, plural, one {# ronde} other {# rondes}}.",
-        "aria": "Seconden per goed stuk over je laatste {count} rondes met {pieceCount} stukken, {memorizeSeconds} s, laatste {latest}."
+        "aria": "Seconden per goed stuk over je laatste {count} rondes met {pieceCount} stukken, {memorizeSeconds} s, laatste {latest}, gemiddelde over {window} rondes {average}."
       },
       "bests": {
         "title": "Persoonlijke records per instelling",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, nieuw"
       }
     },
-    "trend": "{amount} {direction, select, up {omhoog} other {omlaag}} over je laatste {window} rondes tegenover de {window} ervoor"
+    "trend": "{amount} {direction, select, up {omhoog} other {omlaag}} over je laatste {window} rondes tegenover de {window} ervoor",
+    "rating": {
+      "title": "Rating door de tijd",
+      "desc": "Je vaardigheidsrating na elke spelronde die meetelt voor je rating op dit apparaat.",
+      "periodDays": "{days, plural, one {in de afgelopen dag} other {in de afgelopen # dagen}}",
+      "periodRounds": "{count, plural, one {over je laatste ronde} other {over je laatste # rondes}}",
+      "periodLevel": "Geen verandering {days, plural, one {in de afgelopen dag} other {in de afgelopen # dagen}}",
+      "peak": "Piek {rating}",
+      "newPeak": "Nieuwe piek",
+      "aria": "Vaardigheidsrating over {count, plural, one {je laatste meetellende ronde} other {je laatste # meetellende rondes}}, van {start} naar {current}, piek {peak}.",
+      "empty": "Speel in het spel een ronde die meetelt om je ratinglijn te starten."
+    },
+    "chart": {
+      "round": "Ronde {n}",
+      "start": "Start",
+      "each": "Elke ronde",
+      "average": "Gemiddelde over {window} rondes",
+      "best": "Beste {value}",
+      "win": "Winst {accuracy}%",
+      "col": {
+        "round": "Ronde",
+        "date": "Datum",
+        "rating": "Rating",
+        "change": "Verandering",
+        "accuracy": "Nauwkeurigheid",
+        "pace": "Seconden per stuk",
+        "average": "Gemiddelde"
+      }
+    }
   },
   "share": {
     "intro": "Deel de kaart, sla hem op of kopieer hem in een bericht.",

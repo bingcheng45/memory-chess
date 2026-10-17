@@ -1471,15 +1471,15 @@
       "latest": "最新",
       "accuracy": {
         "title": "正解率の推移",
-        "desc": "最もよくプレイする設定での、ラウンドごとの正解率（0〜100%）。",
+        "desc": "最もよくプレイする設定での、ラウンドごとの正解率と{window}ラウンド平均。",
         "note": "最もよくプレイする設定、{source, select, calibration {練習} other {ゲーム}}ラウンド・{pieceCount}駒・{memorizeSeconds}秒。直近{count, plural, other {#ラウンド}}。",
-        "aria": "{pieceCount}駒・{memorizeSeconds}秒での直近{count}ラウンドの正解率。0から100パーセントの目盛りで、最新は{latest}パーセント。"
+        "aria": "{pieceCount}駒・{memorizeSeconds}秒での直近{count}ラウンドの正解率。最新は{latest}パーセント、{window}ラウンド平均は{average}パーセント。"
       },
       "speed": {
         "title": "想起ペースの推移",
         "unit": "正解1駒あたりの秒数。低いほど速い。",
         "note": "{source, select, calibration {練習} other {ゲーム}}ラウンド・{pieceCount}駒・{memorizeSeconds}秒。直近{count, plural, other {#ラウンド}}。",
-        "aria": "{pieceCount}駒・{memorizeSeconds}秒での直近{count}ラウンドの正解1駒あたりの秒数。最新は{latest}。"
+        "aria": "{pieceCount}駒・{memorizeSeconds}秒での直近{count}ラウンドの正解1駒あたりの秒数。最新は{latest}、{window}ラウンド平均は{average}。"
       },
       "bests": {
         "title": "設定別の自己ベスト",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}、新規"
       }
     },
-    "trend": "直近{window}ラウンドはその前の{window}ラウンドより{amount}{direction, select, up {増加} other {減少}}"
+    "trend": "直近{window}ラウンドはその前の{window}ラウンドより{amount}{direction, select, up {増加} other {減少}}",
+    "rating": {
+      "title": "スキルレーティングの推移",
+      "desc": "この端末でレーティング対象のゲームラウンドを終えるたびのスキルレーティング。",
+      "periodDays": "{days, plural, other {過去#日間}}",
+      "periodRounds": "{count, plural, other {直近#ラウンド}}",
+      "periodLevel": "{days, plural, other {過去#日間}}変化なし",
+      "peak": "最高 {rating}",
+      "newPeak": "最高を更新",
+      "aria": "直近{count, plural, other {#回のレーティング対象ラウンド}}のスキルレーティング。{start}から{current}、最高{peak}。",
+      "empty": "ゲームでレーティング対象のラウンドをプレイすると、レーティングの線が始まります。"
+    },
+    "chart": {
+      "round": "ラウンド{n}",
+      "start": "開始",
+      "each": "各ラウンド",
+      "average": "{window}ラウンド平均",
+      "best": "最高 {value}",
+      "win": "勝利 {accuracy}%",
+      "col": {
+        "round": "ラウンド",
+        "date": "日付",
+        "rating": "レーティング",
+        "change": "変化",
+        "accuracy": "正解率",
+        "pace": "1駒あたりの秒数",
+        "average": "平均"
+      }
+    }
   },
   "share": {
     "intro": "カードをシェア、保存、または投稿にコピーできます。",

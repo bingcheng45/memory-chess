@@ -1471,15 +1471,15 @@
       "latest": "Plus récente",
       "accuracy": {
         "title": "Précision dans le temps",
-        "desc": "Votre précision partie après partie dans votre réglage le plus joué, sur une échelle de 0 à 100 %.",
+        "desc": "Votre précision partie après partie dans votre réglage le plus joué, avec une moyenne sur {window} parties.",
         "note": "{source, select, calibration {Parties d’entraînement} other {Parties de jeu}} à {pieceCount} pièces, {memorizeSeconds} s, votre réglage le plus joué. {count, plural, one {Dernière # partie} many {# dernières parties} other {# dernières parties}}.",
-        "aria": "Précision sur vos {count} dernières parties à {pieceCount} pièces, {memorizeSeconds} s, sur une échelle de 0 à 100 pour cent, la plus récente à {latest} pour cent."
+        "aria": "Précision sur vos {count} dernières parties à {pieceCount} pièces, {memorizeSeconds} s, la plus récente à {latest} pour cent, moyenne sur {window} parties à {average} pour cent."
       },
       "speed": {
         "title": "Rythme de rappel dans le temps",
         "unit": "Secondes par pièce correcte. Plus bas, c’est plus rapide.",
         "note": "{source, select, calibration {Parties d’entraînement} other {Parties de jeu}} à {pieceCount} pièces, {memorizeSeconds} s. {count, plural, one {Dernière # partie} many {# dernières parties} other {# dernières parties}}.",
-        "aria": "Secondes par pièce correcte sur vos {count} dernières parties à {pieceCount} pièces, {memorizeSeconds} s, la plus récente à {latest}."
+        "aria": "Secondes par pièce correcte sur vos {count} dernières parties à {pieceCount} pièces, {memorizeSeconds} s, la plus récente à {latest}, moyenne sur {window} parties à {average}."
       },
       "bests": {
         "title": "Records personnels par réglage",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, nouveau"
       }
     },
-    "trend": "{direction, select, up {En hausse} other {En baisse}} de {amount} sur vos {window} dernières parties par rapport aux {window} précédentes"
+    "trend": "{direction, select, up {En hausse} other {En baisse}} de {amount} sur vos {window} dernières parties par rapport aux {window} précédentes",
+    "rating": {
+      "title": "Cote de niveau dans le temps",
+      "desc": "Votre cote de niveau après chaque partie classée du jeu sur cet appareil.",
+      "periodDays": "{days, plural, one {sur le dernier jour} many {sur les # derniers jours} other {sur les # derniers jours}}",
+      "periodRounds": "{count, plural, one {sur votre dernière partie} many {sur vos # dernières parties} other {sur vos # dernières parties}}",
+      "periodLevel": "Aucun changement {days, plural, one {sur le dernier jour} many {sur les # derniers jours} other {sur les # derniers jours}}",
+      "peak": "Record {rating}",
+      "newPeak": "Nouveau record",
+      "aria": "Cote de niveau sur {count, plural, one {votre dernière partie classée} many {vos # dernières parties classées} other {vos # dernières parties classées}}, de {start} à {current}, record {peak}.",
+      "empty": "Jouez une partie classée dans le jeu pour lancer votre courbe de cote."
+    },
+    "chart": {
+      "round": "Partie {n}",
+      "start": "Départ",
+      "each": "Chaque partie",
+      "average": "Moyenne sur {window} parties",
+      "best": "Meilleur {value}",
+      "win": "Victoire {accuracy} %",
+      "col": {
+        "round": "Partie",
+        "date": "Date",
+        "rating": "Cote",
+        "change": "Variation",
+        "accuracy": "Précision",
+        "pace": "Secondes par pièce",
+        "average": "Moyenne"
+      }
+    }
   },
   "share": {
     "intro": "Partagez la carte, enregistrez-la ou copiez-la dans une publication.",

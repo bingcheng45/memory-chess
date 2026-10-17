@@ -1471,15 +1471,15 @@
       "latest": "Seneste",
       "accuracy": {
         "title": "Præcision over tid",
-        "desc": "Din præcision runde for runde med din mest spillede indstilling, på en skala fra 0 til 100 %.",
+        "desc": "Din præcision runde for runde med din mest spillede indstilling, med et gennemsnit over {window} runder.",
         "note": "{source, select, calibration {Øvelsesrunder} other {Runder i partier}} med {pieceCount} brikker, {memorizeSeconds} s, din mest spillede indstilling. {count, plural, one {Seneste # runde} other {Seneste # runder}}.",
-        "aria": "Præcision over dine seneste {count} runder med {pieceCount} brikker, {memorizeSeconds} s, på en skala fra 0 til 100 procent, senest {latest} procent."
+        "aria": "Præcision over dine seneste {count} runder med {pieceCount} brikker, {memorizeSeconds} s, senest {latest} procent, gennemsnit over {window} runder {average} procent."
       },
       "speed": {
         "title": "Genkaldstempo over tid",
         "unit": "Sekunder pr. rigtig brik. Lavere er hurtigere.",
         "note": "{source, select, calibration {Øvelsesrunder} other {Runder i partier}} med {pieceCount} brikker, {memorizeSeconds} s. {count, plural, one {Seneste # runde} other {Seneste # runder}}.",
-        "aria": "Sekunder pr. rigtig brik over dine seneste {count} runder med {pieceCount} brikker, {memorizeSeconds} s, senest {latest}."
+        "aria": "Sekunder pr. rigtig brik over dine seneste {count} runder med {pieceCount} brikker, {memorizeSeconds} s, senest {latest}, gennemsnit over {window} runder {average}."
       },
       "bests": {
         "title": "Personlige rekorder pr. indstilling",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, ny"
       }
     },
-    "trend": "{direction, select, up {Op} other {Ned}} {amount} over dine seneste {window} runder mod de {window} før"
+    "trend": "{direction, select, up {Op} other {Ned}} {amount} over dine seneste {window} runder mod de {window} før",
+    "rating": {
+      "title": "Rating over tid",
+      "desc": "Din færdighedsrating efter hver ratet spilrunde på denne enhed.",
+      "periodDays": "{days, plural, one {det seneste døgn} other {de seneste # dage}}",
+      "periodRounds": "{count, plural, one {over din seneste runde} other {over dine seneste # runder}}",
+      "periodLevel": "Ingen ændring {days, plural, one {det seneste døgn} other {de seneste # dage}}",
+      "peak": "Rekord {rating}",
+      "newPeak": "Ny rekord",
+      "aria": "Færdighedsrating over {count, plural, one {din seneste ratede runde} other {dine seneste # ratede runder}}, fra {start} til {current}, rekord {peak}.",
+      "empty": "Spil en ratet runde i spillet for at starte din ratinglinje."
+    },
+    "chart": {
+      "round": "Runde {n}",
+      "start": "Start",
+      "each": "Hver runde",
+      "average": "Gennemsnit over {window} runder",
+      "best": "Bedste {value}",
+      "win": "Sejr {accuracy} %",
+      "col": {
+        "round": "Runde",
+        "date": "Dato",
+        "rating": "Rating",
+        "change": "Ændring",
+        "accuracy": "Præcision",
+        "pace": "Sekunder pr. brik",
+        "average": "Gennemsnit"
+      }
+    }
   },
   "share": {
     "intro": "Del kortet, gem det, eller kopiér det ind i et opslag.",

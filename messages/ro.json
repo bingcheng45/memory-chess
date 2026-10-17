@@ -1471,15 +1471,15 @@
       "latest": "Cea mai nouă",
       "accuracy": {
         "title": "Precizia în timp",
-        "desc": "Precizia ta rundă cu rundă la setarea pe care o joci cel mai des, pe o scară de la 0 la 100%.",
+        "desc": "Precizia ta rundă cu rundă la setarea pe care o joci cel mai des, cu media pe {window} runde.",
         "note": "{source, select, calibration {Runde de exercițiu} other {Runde din partide}} cu {pieceCount} piese, {memorizeSeconds} s, setarea pe care o joci cel mai des. {count, plural, one {Ultima # rundă} few {Ultimele # runde} other {Ultimele # de runde}}.",
-        "aria": "Precizia în ultimele tale {count} runde cu {pieceCount} piese, {memorizeSeconds} s, pe o scară de la 0 la 100 la sută, cea mai recentă {latest} la sută."
+        "aria": "Precizia în ultimele tale {count} runde cu {pieceCount} piese, {memorizeSeconds} s, cea mai recentă {latest} la sută, media pe {window} runde {average} la sută."
       },
       "speed": {
         "title": "Ritmul de reamintire în timp",
         "unit": "Secunde pe piesă corectă. Mai puțin înseamnă mai rapid.",
         "note": "{source, select, calibration {Runde de exercițiu} other {Runde din partide}} cu {pieceCount} piese, {memorizeSeconds} s. {count, plural, one {Ultima # rundă} few {Ultimele # runde} other {Ultimele # de runde}}.",
-        "aria": "Secunde pe piesă corectă în ultimele tale {count} runde cu {pieceCount} piese, {memorizeSeconds} s, cea mai recentă {latest}."
+        "aria": "Secunde pe piesă corectă în ultimele tale {count} runde cu {pieceCount} piese, {memorizeSeconds} s, cea mai recentă {latest}, media pe {window} runde {average}."
       },
       "bests": {
         "title": "Recorduri personale pe setare",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, nou"
       }
     },
-    "trend": "{direction, select, up {Crește} other {Scade}} cu {amount} în ultimele tale {window} runde față de cele {window} dinainte"
+    "trend": "{direction, select, up {Crește} other {Scade}} cu {amount} în ultimele tale {window} runde față de cele {window} dinainte",
+    "rating": {
+      "title": "Ratingul de abilitate în timp",
+      "desc": "Ratingul tău de abilitate după fiecare rundă de joc cu rating de pe acest dispozitiv.",
+      "periodDays": "{days, plural, one {în ultima zi} few {în ultimele # zile} other {în ultimele # de zile}}",
+      "periodRounds": "{count, plural, one {în ultima ta rundă} few {în ultimele tale # runde} other {în ultimele tale # de runde}}",
+      "periodLevel": "Nicio schimbare {days, plural, one {în ultima zi} few {în ultimele # zile} other {în ultimele # de zile}}",
+      "peak": "Maxim {rating}",
+      "newPeak": "Nou maxim",
+      "aria": "Rating de abilitate în {count, plural, one {ultima ta rundă cu rating} few {ultimele tale # runde cu rating} other {ultimele tale # de runde cu rating}}, de la {start} la {current}, maxim {peak}.",
+      "empty": "Joacă o rundă cu rating în joc ca să pornești linia ratingului tău."
+    },
+    "chart": {
+      "round": "Runda {n}",
+      "start": "Start",
+      "each": "Fiecare rundă",
+      "average": "Media pe {window} runde",
+      "best": "Record {value}",
+      "win": "Victorie {accuracy}%",
+      "col": {
+        "round": "Runda",
+        "date": "Data",
+        "rating": "Rating",
+        "change": "Schimbare",
+        "accuracy": "Precizie",
+        "pace": "Secunde pe piesă",
+        "average": "Medie"
+      }
+    }
   },
   "share": {
     "intro": "Distribuie cardul, salvează-l sau copiază-l într-o postare.",

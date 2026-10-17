@@ -1471,15 +1471,15 @@
       "latest": "Más reciente",
       "accuracy": {
         "title": "Precisión a lo largo del tiempo",
-        "desc": "Tu precisión ronda a ronda en tu ajuste más jugado, en una escala de 0 a 100%.",
+        "desc": "Tu precisión ronda a ronda en tu ajuste más jugado, con una media de {window} rondas.",
         "note": "{source, select, calibration {Rondas de práctica} other {Rondas de partida}} con {pieceCount} piezas, {memorizeSeconds} s, tu ajuste más jugado. {count, plural, one {Última # ronda} many {Últimas # rondas} other {Últimas # rondas}}.",
-        "aria": "Precisión en tus últimas {count} rondas con {pieceCount} piezas, {memorizeSeconds} s, en una escala de 0 a 100 por ciento, la más reciente {latest} por ciento."
+        "aria": "Precisión en tus últimas {count} rondas con {pieceCount} piezas, {memorizeSeconds} s, la más reciente {latest} por ciento, media de {window} rondas {average} por ciento."
       },
       "speed": {
         "title": "Ritmo de recuerdo a lo largo del tiempo",
         "unit": "Segundos por pieza correcta. Menos es más rápido.",
         "note": "{source, select, calibration {Rondas de práctica} other {Rondas de partida}} con {pieceCount} piezas, {memorizeSeconds} s. {count, plural, one {Última # ronda} many {Últimas # rondas} other {Últimas # rondas}}.",
-        "aria": "Segundos por pieza correcta en tus últimas {count} rondas con {pieceCount} piezas, {memorizeSeconds} s, la más reciente {latest}."
+        "aria": "Segundos por pieza correcta en tus últimas {count} rondas con {pieceCount} piezas, {memorizeSeconds} s, la más reciente {latest}, media de {window} rondas {average}."
       },
       "bests": {
         "title": "Mejores marcas por ajuste",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, nuevo"
       }
     },
-    "trend": "{direction, select, up {Sube} other {Baja}} {amount} en tus últimas {window} rondas frente a las {window} anteriores"
+    "trend": "{direction, select, up {Sube} other {Baja}} {amount} en tus últimas {window} rondas frente a las {window} anteriores",
+    "rating": {
+      "title": "Puntuación de habilidad a lo largo del tiempo",
+      "desc": "Tu puntuación de habilidad tras cada ronda puntuable del juego en este dispositivo.",
+      "periodDays": "{days, plural, one {en el último día} many {en los últimos # días} other {en los últimos # días}}",
+      "periodRounds": "{count, plural, one {en tu última ronda} many {en tus últimas # rondas} other {en tus últimas # rondas}}",
+      "periodLevel": "Sin cambios {days, plural, one {en el último día} many {en los últimos # días} other {en los últimos # días}}",
+      "peak": "Máximo {rating}",
+      "newPeak": "Nuevo máximo",
+      "aria": "Puntuación de habilidad en {count, plural, one {tu última ronda puntuable} many {tus últimas # rondas puntuables} other {tus últimas # rondas puntuables}}, de {start} a {current}, máximo {peak}.",
+      "empty": "Juega una ronda puntuable en el juego para empezar tu línea de puntuación."
+    },
+    "chart": {
+      "round": "Ronda {n}",
+      "start": "Inicio",
+      "each": "Cada ronda",
+      "average": "Media de {window} rondas",
+      "best": "Mejor {value}",
+      "win": "Victoria {accuracy}%",
+      "col": {
+        "round": "Ronda",
+        "date": "Fecha",
+        "rating": "Puntuación",
+        "change": "Cambio",
+        "accuracy": "Precisión",
+        "pace": "Segundos por pieza",
+        "average": "Media"
+      }
+    }
   },
   "share": {
     "intro": "Comparte la tarjeta, guárdala o cópiala en una publicación.",

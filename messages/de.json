@@ -1471,15 +1471,15 @@
       "latest": "Neueste",
       "accuracy": {
         "title": "Genauigkeit im Verlauf",
-        "desc": "Deine Genauigkeit Runde für Runde in deiner meistgespielten Einstellung, auf einer Skala von 0 bis 100 %.",
+        "desc": "Deine Genauigkeit Runde für Runde in deiner meistgespielten Einstellung, mit einem Durchschnitt über {window} Runden.",
         "note": "{source, select, calibration {Übungsrunden} other {Runden in Partien}} mit {pieceCount} Figuren, {memorizeSeconds} s, deine meistgespielte Einstellung. {count, plural, one {Letzte # Runde} other {Letzte # Runden}}.",
-        "aria": "Genauigkeit in deinen letzten {count} Runden mit {pieceCount} Figuren, {memorizeSeconds} s, auf einer Skala von 0 bis 100 Prozent, zuletzt {latest} Prozent."
+        "aria": "Genauigkeit in deinen letzten {count} Runden mit {pieceCount} Figuren, {memorizeSeconds} s, zuletzt {latest} Prozent, Durchschnitt über {window} Runden {average} Prozent."
       },
       "speed": {
         "title": "Abruftempo im Verlauf",
         "unit": "Sekunden pro richtiger Figur. Weniger ist schneller.",
         "note": "{source, select, calibration {Übungsrunden} other {Runden in Partien}} mit {pieceCount} Figuren, {memorizeSeconds} s. {count, plural, one {Letzte # Runde} other {Letzte # Runden}}.",
-        "aria": "Sekunden pro richtiger Figur in deinen letzten {count} Runden mit {pieceCount} Figuren, {memorizeSeconds} s, zuletzt {latest}."
+        "aria": "Sekunden pro richtiger Figur in deinen letzten {count} Runden mit {pieceCount} Figuren, {memorizeSeconds} s, zuletzt {latest}, Durchschnitt über {window} Runden {average}."
       },
       "bests": {
         "title": "Bestwerte pro Einstellung",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, neu"
       }
     },
-    "trend": "{direction, select, up {Plus} other {Minus}} {amount} in deinen letzten {window} Runden gegenüber den {window} davor"
+    "trend": "{direction, select, up {Plus} other {Minus}} {amount} in deinen letzten {window} Runden gegenüber den {window} davor",
+    "rating": {
+      "title": "Wertungszahl im Verlauf",
+      "desc": "Deine Wertungszahl nach jeder gewerteten Spielrunde auf diesem Gerät.",
+      "periodDays": "{days, plural, one {am letzten Tag} other {in den letzten # Tagen}}",
+      "periodRounds": "{count, plural, one {in deiner letzten Runde} other {in deinen letzten # Runden}}",
+      "periodLevel": "Keine Veränderung {days, plural, one {am letzten Tag} other {in den letzten # Tagen}}",
+      "peak": "Höchstwert {rating}",
+      "newPeak": "Neuer Höchstwert",
+      "aria": "Wertungszahl über {count, plural, one {deine letzte gewertete Runde} other {deine letzten # gewerteten Runden}}, von {start} auf {current}, Höchstwert {peak}.",
+      "empty": "Spiele eine gewertete Runde im Spiel, um deine Wertungslinie zu starten."
+    },
+    "chart": {
+      "round": "Runde {n}",
+      "start": "Start",
+      "each": "Jede Runde",
+      "average": "Durchschnitt über {window} Runden",
+      "best": "Bestwert {value}",
+      "win": "Sieg {accuracy} %",
+      "col": {
+        "round": "Runde",
+        "date": "Datum",
+        "rating": "Wertungszahl",
+        "change": "Änderung",
+        "accuracy": "Genauigkeit",
+        "pace": "Sekunden pro Figur",
+        "average": "Durchschnitt"
+      }
+    }
   },
   "share": {
     "intro": "Teile die Karte, speichere sie oder kopiere sie in einen Beitrag.",

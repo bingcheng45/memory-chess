@@ -1,15 +1,10 @@
-import { act, render, screen, fireEvent, waitFor } from "@/test-utils/intl";
-import LeaderboardTabsFromSearchParams, { LeaderboardTabs, type LeaderboardBoards } from "@/components/leaderboard/LeaderboardTabs";
+import { act, render, screen, fireEvent, waitFor, within } from "@/test-utils/intl";
+import LeaderboardTabs, { type LeaderboardBoards } from "@/components/leaderboard/LeaderboardTabs";
 import type { CountryCode } from "@/lib/leaderboard/countries";
 import { LEADERBOARD_UNAVAILABLE, type LeaderboardEntry } from "@/types/leaderboard";
 import { splitClientMessages } from "@/lib/articles/messageScope";
 import type { AbstractIntlMessages } from "next-intl";
 import enMessages from "../../../../messages/en.json";
-
-let searchParams = new URLSearchParams();
-jest.mock("next/navigation", () => ({
-  useSearchParams: () => searchParams,
-}));
 
 const boards: LeaderboardBoards = {
   daily: { data: [], day: "2026-10-13" },
@@ -61,8 +56,12 @@ function emulateTimeZone(timeZone: string) {
     .mockImplementation((locale, options) => new SystemDateTimeFormat(locale, { ...options, timeZone: options?.timeZone ?? timeZone }));
 }
 
+function openAt(search: string) {
+  window.history.replaceState(null, "", `/leaderboard${search}`);
+}
+
 beforeEach(() => {
-  searchParams = new URLSearchParams();
+  openAt("");
   fetchMock.mockReset().mockImplementation(readByDay);
   global.fetch = fetchMock as unknown as typeof fetch;
 });
@@ -84,13 +83,14 @@ function setVisibility(state: "visible" | "hidden") {
 async function renderDailyAt(iso: string, timeZone: string) {
   emulateTimeZone(timeZone);
   jest.useFakeTimers({ now: new Date(iso) });
-  render(<LeaderboardTabs boards={boards} initialTab="daily" />, { messages: pageMessages });
+  openAt("?difficulty=daily");
+  render(<LeaderboardTabs boards={boards} />, { messages: pageMessages });
   await act(async () => {});
 }
 
 describe("LeaderboardTabs keyboard access", () => {
   it("makes the active tab the one tab stop on first render", () => {
-    render(<LeaderboardTabs boards={boards} initialTab="medium" />);
+    render(<LeaderboardTabs boards={boards} />);
 
     const tabs = screen.getAllByRole("tab");
     expect(tabs.map((tab) => [tab.textContent, tab.getAttribute("tabindex")])).toEqual([
@@ -103,7 +103,7 @@ describe("LeaderboardTabs keyboard access", () => {
   });
 
   it("moves to the next tab with ArrowRight and makes it the tab stop", async () => {
-    render(<LeaderboardTabs boards={boards} initialTab="medium" />);
+    render(<LeaderboardTabs boards={boards} />);
     const medium = screen.getByRole("tab", { name: "Medium" });
     const hard = screen.getByRole("tab", { name: "Hard" });
 
@@ -119,15 +119,15 @@ describe("LeaderboardTabs keyboard access", () => {
 
 describe("the Daily tab", () => {
   it("sits before Easy while the page still opens on Medium", () => {
-    render(<LeaderboardTabsFromSearchParams boards={boards} />);
+    render(<LeaderboardTabs boards={boards} />);
 
     expect(screen.getAllByRole("tab").map((tab) => tab.textContent)).toEqual(["Daily", "Easy", "Medium", "Hard", "Grandmaster"]);
     expect(screen.getByRole("tab", { selected: true })).toHaveTextContent("Medium");
   });
 
   it("opens from ?difficulty=daily like the other boards", () => {
-    searchParams = new URLSearchParams("difficulty=daily");
-    render(<LeaderboardTabsFromSearchParams boards={boards} />);
+    openAt("?difficulty=daily");
+    render(<LeaderboardTabs boards={boards} />);
 
     expect(screen.getByRole("tab", { selected: true })).toHaveTextContent("Daily");
   });
@@ -163,7 +163,7 @@ describe("the Daily tab", () => {
 
     expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=daily&daily_day=2026-10-14", expect.anything());
     expect(screen.queryByText("Ada Today")).not.toBeInTheDocument();
-    expect(screen.getByText("Be the First Champion!")).toBeInTheDocument();
+    expect(within(screen.getByRole("tabpanel")).getByText("Be the First Champion!")).toBeInTheDocument();
     expect(screen.getByText("Resets at 00:00 UTC (00:00 your time), in 23 h 59 min")).toBeInTheDocument();
   });
 
@@ -172,7 +172,7 @@ describe("the Daily tab", () => {
     await renderDailyAt("2026-10-14T00:00:05Z", "UTC");
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(screen.getByText("Be the First Champion!")).toBeInTheDocument();
+    expect(within(screen.getByRole("tabpanel")).getByText("Be the First Champion!")).toBeInTheDocument();
     expect(screen.queryByText(/Invalid difficulty level/)).not.toBeInTheDocument();
 
     await act(async () => {
@@ -181,7 +181,7 @@ describe("the Daily tab", () => {
 
     expect(fetchMock).toHaveBeenCalledTimes(2);
     expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=daily&daily_day=2026-10-14", expect.anything());
-    expect(screen.getByText("Be the First Champion!")).toBeInTheDocument();
+    expect(within(screen.getByRole("tabpanel")).getByText("Be the First Champion!")).toBeInTheDocument();
   });
 
   it("shows the unavailable state, not the server's message, only once the day's reads have failed for over a minute", async () => {
@@ -215,7 +215,8 @@ describe("the Daily tab", () => {
     fetchMock.mockImplementation(() => new Promise(() => {}));
     emulateTimeZone("UTC");
     jest.useFakeTimers({ now: new Date("2026-10-14T00:00:05Z") });
-    render(<LeaderboardTabs boards={{ ...boards, daily: { data: ROWS_BY_DAY["2026-10-13"], day: "2026-10-13" } }} initialTab="daily" />, {
+    openAt("?difficulty=daily");
+    render(<LeaderboardTabs boards={{ ...boards, daily: { data: ROWS_BY_DAY["2026-10-13"], day: "2026-10-13" } }} />, {
       messages: pageMessages,
     });
     await act(async () => {});
@@ -272,7 +273,8 @@ describe("the Daily tab", () => {
     fetchMock.mockImplementationOnce(() => new Promise((resolve) => (land = (body) => resolve({ json: () => Promise.resolve(body) }))));
     emulateTimeZone("UTC");
     jest.useFakeTimers({ now: new Date("2026-10-13T10:00:00Z") });
-    render(<LeaderboardTabs boards={{ ...boards, medium: { data: [mediumRow] } }} initialTab="daily" />, { messages: pageMessages });
+    openAt("?difficulty=daily");
+    render(<LeaderboardTabs boards={{ ...boards, medium: { data: [mediumRow] } }} />, { messages: pageMessages });
     await act(async () => {});
 
     await act(async () => {
@@ -293,9 +295,47 @@ describe("the Daily tab", () => {
   });
 });
 
+describe("a link from the result screen", () => {
+  it("opens the board it names, highlights the round, and reads that board fresh", async () => {
+    const hardRow: LeaderboardEntry = { ...mediumRow, id: "hana", player_name: "Hana Hard", difficulty: "hard" };
+    fetchMock.mockImplementation(() => Promise.resolve({ json: () => Promise.resolve({ data: [hardRow] }) }));
+    Element.prototype.scrollIntoView = jest.fn();
+    openAt("?difficulty=hard&player=Hana%20Hard&memorizeTime=10&solutionTime=20&pieceCount=6&correctPieces=6&totalWrongPieces=0");
+
+    render(<LeaderboardTabs boards={boards} />);
+    await act(async () => {});
+
+    expect(screen.getByRole("tab", { selected: true })).toHaveTextContent("Hard");
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=hard", expect.anything());
+    const row = within(screen.getByRole("tabpanel")).getByText("Hana Hard").closest("tr");
+    expect(row).toHaveAttribute("data-highlighted", "");
+    expect(row).toHaveTextContent("You");
+  });
+});
+
+describe("switching boards", () => {
+  it("shows only the open board and keeps a board drawn once it has been opened", async () => {
+    render(<LeaderboardTabs boards={{ ...boards, medium: { data: [mediumRow] } }} />);
+    const mediumName = screen.getByText("Mo Medium");
+
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Hard" }));
+    });
+    expect(screen.getAllByRole("tabpanel")).toHaveLength(1);
+    expect(screen.queryByText("Mo Medium")).not.toBeVisible();
+
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Medium" }));
+    });
+    expect(screen.getByRole("tabpanel")).toContainElement(mediumName);
+    expect(mediumName).toBeVisible();
+  });
+});
+
 describe("the Telegram line", () => {
   it("sits under the table as a plain outbound link", () => {
-    render(<LeaderboardTabs boards={boards} initialTab="medium" />);
+    render(<LeaderboardTabs boards={boards} />);
 
     expect(screen.getByText(/Talk with the players on this leaderboard\./)).toBeInTheDocument();
     const link = screen.getByRole("link", { name: "Join the Telegram group" });

@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'next/navigation';
 import { useTranslations } from 'next-intl';
 import * as Tabs from '@radix-ui/react-tabs';
 import LeaderboardTable, { playHrefOf, type EntryDetails } from '@/components/leaderboard/LeaderboardTable';
@@ -23,10 +22,11 @@ interface Board {
 
 export type LeaderboardBoards = Record<RankedDifficulty, Board> & { daily: Board & { day: string } };
 
-interface LeaderboardTabsProps {
-  boards: LeaderboardBoards;
-  entryDetails?: EntryDetails;
-  initialTab?: LeaderboardTab;
+const DEFAULT_TAB: LeaderboardTab = 'medium';
+
+interface TabState {
+  active: LeaderboardTab;
+  visited: ReadonlySet<LeaderboardTab>;
 }
 
 function isLeaderboardTab(value: string | null): value is LeaderboardTab {
@@ -65,11 +65,27 @@ function applyDailyRead(reads: Reads, read: DailyBoard, at: number): Reads {
   return { boards: { ...reads.boards, daily }, dailyFailure: { day: read.day, since } };
 }
 
+const opened =
+  (tab: LeaderboardTab) =>
+  ({ visited }: TabState): TabState => ({ active: tab, visited: new Set(visited).add(tab) });
+
 function parseParam(value: string | null, parse: (value: string) => number): number | null {
   return value ? parse(value) : null;
 }
 
-export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab = 'medium' }: LeaderboardTabsProps) {
+function entryDetailsOf(searchParams: URLSearchParams): EntryDetails {
+  return {
+    player: searchParams.get('player'),
+    difficulty: searchParams.get('difficulty'),
+    memorizeTime: parseParam(searchParams.get('memorizeTime'), parseFloat),
+    solutionTime: parseParam(searchParams.get('solutionTime'), parseFloat),
+    pieceCount: parseParam(searchParams.get('pieceCount'), parseInt),
+    correctPieces: parseParam(searchParams.get('correctPieces'), parseInt),
+    totalWrongPieces: parseParam(searchParams.get('totalWrongPieces'), parseInt),
+  };
+}
+
+export default function LeaderboardTabs({ boards: serverBoards }: { boards: LeaderboardBoards }) {
   const t = useTranslations("leaderboard");
   // Difficulty names are the same strings the game config shows; reuse them
   // rather than translating "Easy" twice and letting the two drift.
@@ -77,7 +93,9 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   const tCommunity = useTranslations('common.community');
   const [reads, setReads] = useState<Reads>({ boards: serverBoards, dailyFailure: null });
   const [retryAttempt, setRetryAttempt] = useState(0);
-  const [activeTab, setActiveTab] = useState<LeaderboardTab>(initialTab);
+  const [entryDetails, setEntryDetails] = useState<EntryDetails>();
+  const [tabs, setTabs] = useState<TabState>({ active: DEFAULT_TAB, visited: new Set([DEFAULT_TAB]) });
+  const activeTab = tabs.active;
   const daily = useDailyState();
   const today = daily?.day ?? null;
   const dailyDay = activeTab === DAILY_BOARD ? today : null;
@@ -88,6 +106,16 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
   const isJustSubmitted = Boolean(entryDetails?.player);
 
   const isRefreshing = activeTab === DAILY_BOARD ? dailyDay !== null : isJustSubmitted;
+
+  // Read after mount, not through useSearchParams: that hook makes the static
+  // prerender serve only a Suspense fallback, which hydration discards and
+  // redraws, so the served table was painted twice.
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const difficulty = searchParams.get('difficulty');
+    if (isLeaderboardTab(difficulty)) setTabs(opened(difficulty));
+    if (searchParams.get('player')) setEntryDetails(entryDetailsOf(searchParams));
+  }, []);
 
   useEffect(() => {
     if (!isRefreshing) return;
@@ -149,7 +177,7 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
       <Tabs.Root
         value={activeTab}
         onValueChange={(value) => {
-          if (isLeaderboardTab(value)) setActiveTab(value);
+          if (isLeaderboardTab(value)) setTabs(opened(value));
         }}
       >
         <Tabs.List className="lb-tabs">
@@ -168,7 +196,14 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
         </Tabs.List>
 
         {LEADERBOARD_TABS.map((difficulty) => (
-          <Tabs.Content key={difficulty} value={difficulty}>
+          // A visited board stays mounted while hidden, so going back to it
+          // shows the drawn table instead of rebuilding every row.
+          <Tabs.Content
+            key={difficulty}
+            value={difficulty}
+            forceMount={tabs.visited.has(difficulty) || undefined}
+            hidden={difficulty !== activeTab}
+          >
             {difficulty === DAILY_BOARD && <DailyResetNote day={today ?? boards.daily.day} left={daily?.left ?? null} />}
             <LeaderboardTable
               data={boards[difficulty].data}
@@ -191,28 +226,5 @@ export function LeaderboardTabs({ boards: serverBoards, entryDetails, initialTab
         </div>
       )}
     </>
-  );
-}
-
-export default function LeaderboardTabsFromSearchParams({ boards }: { boards: LeaderboardBoards }) {
-  const searchParams = useSearchParams();
-  const difficulty = searchParams.get('difficulty');
-
-  const entryDetails: EntryDetails = {
-    player: searchParams.get('player'),
-    difficulty,
-    memorizeTime: parseParam(searchParams.get('memorizeTime'), parseFloat),
-    solutionTime: parseParam(searchParams.get('solutionTime'), parseFloat),
-    pieceCount: parseParam(searchParams.get('pieceCount'), parseInt),
-    correctPieces: parseParam(searchParams.get('correctPieces'), parseInt),
-    totalWrongPieces: parseParam(searchParams.get('totalWrongPieces'), parseInt),
-  };
-
-  return (
-    <LeaderboardTabs
-      boards={boards}
-      entryDetails={entryDetails}
-      initialTab={isLeaderboardTab(difficulty) ? difficulty : 'medium'}
-    />
   );
 }

@@ -1,0 +1,23 @@
+import Script from "next/script";
+
+export const GA_MEASUREMENT_ID = "G-R8BM9EMY9J";
+export const GA_SCRIPT_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+
+/** The stub gtag.js documents. Events sent before the library arrives wait in dataLayer and replay once it loads. */
+export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
+function gtag(){window.dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', '${GA_MEASUREMENT_ID}');`;
+
+/**
+ * @next/third-parties preloads the 191 KB library in <head>, where it competes with the app's own scripts.
+ * Here the library loads after the page's load event instead, and nothing is lost: page views and events queue.
+ */
+export default function SiteGoogleAnalytics() {
+  return (
+    <>
+      <script id="_ga-init" dangerouslySetInnerHTML={{ __html: GA_INIT_SNIPPET }} />
+      <Script id="_ga" src={GA_SCRIPT_URL} strategy="lazyOnload" />
+    </>
+  );
+}

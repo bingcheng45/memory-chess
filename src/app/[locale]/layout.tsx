@@ -12,7 +12,7 @@ const Analytics = dynamic(() =>
 const SpeedInsights = dynamic(() =>
   import("@vercel/speed-insights/next").then((mod) => mod.SpeedInsights),
 );
-import { GoogleAnalytics } from "@next/third-parties/google";
+import SiteGoogleAnalytics from "@/components/common/SiteGoogleAnalytics";
 import SiteDatabuddy from "@/components/common/SiteDatabuddy";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
@@ -180,7 +180,7 @@ export default async function LocaleLayout({
           <SiteFooter />
           <Analytics />
           <SpeedInsights />
-          {countsVisitors && <GoogleAnalytics gaId="G-R8BM9EMY9J" />}
+          {countsVisitors && <SiteGoogleAnalytics />}
           {countsVisitors && <SiteDatabuddy />}
           <SoundStopNavigator />
         </NextIntlClientProvider>

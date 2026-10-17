@@ -1,6 +1,7 @@
 import type { ReactElement, ReactNode } from "react";
 import { isValidElement } from "react";
-import { GoogleAnalytics } from "@next/third-parties/google";
+import Script from "next/script";
+import SiteGoogleAnalytics from "@/components/common/SiteGoogleAnalytics";
 import SiteDatabuddy from "@/components/common/SiteDatabuddy";
 import LocaleLayout from "@/app/[locale]/layout";
 import { AHREFS_ANALYTICS_SCRIPT_URL } from "@/lib/ahrefs";
@@ -40,7 +41,7 @@ describe("visitor analytics", () => {
     process.env.VERCEL_ENV = "production";
     const tree = await renderLayout();
 
-    expect(collect(tree, (element) => element.type === GoogleAnalytics)).toHaveLength(1);
+    expect(collect(tree, (element) => element.type === SiteGoogleAnalytics)).toHaveLength(1);
     expect(collect(tree, (element) => element.type === SiteDatabuddy)).toHaveLength(1);
     expect(collect(tree, scriptWithSrc(AHREFS_ANALYTICS_SCRIPT_URL))).toHaveLength(1);
   });
@@ -53,7 +54,7 @@ describe("visitor analytics", () => {
     else process.env.VERCEL_ENV = vercelEnv;
     const tree = await renderLayout();
 
-    expect(collect(tree, (element) => element.type === GoogleAnalytics)).toHaveLength(0);
+    expect(collect(tree, (element) => element.type === SiteGoogleAnalytics)).toHaveLength(0);
     expect(collect(tree, (element) => element.type === SiteDatabuddy)).toHaveLength(0);
     expect(collect(tree, scriptWithSrc(AHREFS_ANALYTICS_SCRIPT_URL))).toHaveLength(0);
   });
@@ -63,5 +64,28 @@ describe("visitor analytics", () => {
     const tree = await renderLayout();
 
     expect(collect(tree, scriptWithSrc(ADSENSE_SCRIPT_URL))).toHaveLength(1);
+  });
+});
+
+describe("Google Analytics loading", () => {
+  const tree = SiteGoogleAnalytics();
+
+  it("queues events from page load and loads gtag.js only once the page is idle", () => {
+    const [init] = collect(tree, (element) => element.type === "script");
+    const library = collect(tree, (element) => element.type === Script);
+
+    expect((init.props as { dangerouslySetInnerHTML: { __html: string } }).dangerouslySetInnerHTML.__html).toBe(
+      [
+        "window.dataLayer = window.dataLayer || [];",
+        "function gtag(){window.dataLayer.push(arguments);}",
+        "gtag('js', new Date());",
+        "gtag('config', 'G-R8BM9EMY9J');",
+      ].join("\n"),
+    );
+    expect(library).toHaveLength(1);
+    expect(library[0].props).toMatchObject({
+      src: "https://www.googletagmanager.com/gtag/js?id=G-R8BM9EMY9J",
+      strategy: "lazyOnload",
+    });
   });
 });

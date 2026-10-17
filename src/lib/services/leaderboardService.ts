@@ -67,8 +67,6 @@ export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: Le
     return { data: [], error: LEADERBOARD_UNAVAILABLE };
   };
   try {
-    const connectionStatus = await checkSupabaseConnection();
-    if (!connectionStatus.connected) return unavailable('Supabase connection failed:', connectionStatus.error);
     if (!supabase) return unavailable('Leaderboard read failed:', 'Supabase is not configured');
 
     const { data, error } = await orderByRanking(rankedRows(supabase, board, '*')).limit(LEADERBOARD_ROW_LIMIT);

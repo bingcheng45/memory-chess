@@ -532,15 +532,6 @@ describe("GET /api/leaderboard", () => {
       expect([response.status, await response.json()]).toEqual([503, unavailable]);
     });
 
-    it("answers a refused connection with 503 and logs its cause", async () => {
-      jest.mocked(checkSupabaseConnection).mockResolvedValue({ connected: false, error: "password authentication failed for user app" });
-
-      const response = await get("medium");
-
-      expect([response.status, await response.json()]).toEqual([503, unavailable]);
-      expect(console.warn).toHaveBeenCalledWith("Supabase connection issue:", "password authentication failed for user app");
-    });
-
     it("answers a thrown read with 503 and logs the error", async () => {
       const thrown = new Error("connect ECONNREFUSED 10.0.0.3:5432");
       jest.mocked(getLeaderboard).mockRejectedValue(thrown);

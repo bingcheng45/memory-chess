@@ -9,10 +9,12 @@ import {
   setVolume,
   playSound,
 } from "@/lib/utils/soundEffects";
-import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useClickAway } from "@/hooks/useClickAway";
+import { usePresence } from "@/hooks/usePresence";
 import { createPortal } from "react-dom";
+
+const SLIDER_MS = 200;
 
 interface SoundSettingsProps {
   className?: string;
@@ -159,6 +161,8 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
     }
   };
 
+  const slider = usePresence(!isMobile && showSlider && soundOn, SLIDER_MS);
+
   return (
     <div
       ref={wrapperRef}
@@ -167,19 +171,13 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
       onMouseLeave={handleMouseLeave}
     >
       {/* Sound toggle button */}
-      <motion.button
+      <button
         onClick={handleSoundToggle}
-        whileTap={{ scale: 0.9 }}
-        className={`flex h-10 w-10 items-center justify-center rounded-md transition-colors hover:bg-[var(--lp-surface-2)] hover:text-[var(--lp-ink)] ${soundOn ? "text-[var(--lp-ink-2)]" : "text-[var(--lp-muted)]"}`}
+        className={`flex h-10 w-10 items-center justify-center rounded-md transition-[color,background-color,transform] active:scale-90 hover:bg-[var(--lp-surface-2)] hover:text-[var(--lp-ink)] ${soundOn ? "text-[var(--lp-ink-2)]" : "text-[var(--lp-muted)]"}`}
         aria-label={soundOn ? t("mute") : t("unmute")}
         title={soundOn ? t("mute") : t("unmute")}
       >
-        <motion.div
-          initial={{ scale: 1 }}
-          animate={{ scale: [1, 1.2, 1] }}
-          transition={{ duration: 0.3, ease: "easeInOut" }}
-          key={soundOn ? "sound-on" : "sound-off"}
-        >
+        <div key={soundOn ? "sound-on" : "sound-off"} className="lab-sound-pulse">
           {soundOn ? (
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -213,65 +211,51 @@ export default function SoundSettings({ className = "" }: SoundSettingsProps) {
               <line x1="17" y1="9" x2="23" y2="15"></line>
             </svg>
           )}
-        </motion.div>
-      </motion.button>
+        </div>
+      </button>
 
       {/* Volume slider - Desktop Only */}
-      <AnimatePresence>
-        {!isMobile && showSlider && soundOn && (
-          <motion.div
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 10 }}
-            transition={{ duration: 0.2 }}
-            className="absolute z-10 rounded-xl border border-[var(--lp-line)] bg-[var(--lp-surface)] px-4 py-3 shadow-[var(--lp-pop-shadow)]"
-            style={{
-              top: "100%",
-              right: 0,
-              marginTop: "8px",
-              width: "max-content",
-            }}
-          >
-            <div className="flex items-center gap-3">
-              <input
-                type="range"
-                min="0"
-                max="1"
-                step="0.05"
-                value={volume}
-                onChange={handleVolumeChange}
-                className="lab-range w-28"
-                style={{ "--fill": `${volume * 100}%` } as CSSProperties}
-                aria-label={t("volume")}
-              />
-              <span className="lab-mono min-w-[4ch] text-right text-sm font-medium text-[var(--lp-ink)]">
-                {Math.round(volume * 100)}%
-              </span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {slider.isPresent && (
+        <div
+          className={`absolute z-10 rounded-xl border border-[var(--lp-line)] bg-[var(--lp-surface)] px-4 py-3 shadow-[var(--lp-pop-shadow)] duration-200 ${
+            slider.isClosing
+              ? "animate-out fade-out slide-out-to-bottom-[10px] fill-mode-forwards"
+              : "animate-in fade-in slide-in-from-bottom-[10px]"
+          }`}
+          style={{
+            top: "100%",
+            right: 0,
+            marginTop: "8px",
+            width: "max-content",
+          }}
+        >
+          <div className="flex items-center gap-3">
+            <input
+              type="range"
+              min="0"
+              max="1"
+              step="0.05"
+              value={volume}
+              onChange={handleVolumeChange}
+              className="lab-range w-28"
+              style={{ "--fill": `${volume * 100}%` } as CSSProperties}
+              aria-label={t("volume")}
+            />
+            <span className="lab-mono min-w-[4ch] text-right text-sm font-medium text-[var(--lp-ink)]">
+              {Math.round(volume * 100)}%
+            </span>
+          </div>
+        </div>
+      )}
 
       {/* Toast notification - Rendered via Portal */}
       {isMounted &&
         showToast &&
         createPortal(
           <div className="fixed left-0 top-0 w-screen h-screen flex items-center justify-center pointer-events-none z-[99999]">
-            <AnimatePresence>
-              <motion.div
-                initial={{ opacity: 0, scale: 0.85 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{
-                  type: "spring",
-                  stiffness: 300,
-                  damping: 30,
-                }}
-                className="rounded-full border border-[var(--lp-line)] bg-[var(--lp-surface)] px-5 py-2.5 text-sm font-medium text-[var(--lp-ink)] shadow-[var(--lp-pop-shadow)]"
-              >
-                {toastMessage}
-              </motion.div>
-            </AnimatePresence>
+            <div className="animate-in fade-in zoom-in-[0.85] rounded-full border border-[var(--lp-line)] bg-[var(--lp-surface)] px-5 py-2.5 text-sm font-medium text-[var(--lp-ink)] shadow-[var(--lp-pop-shadow)] duration-300 motion-reduce:animate-none">
+              {toastMessage}
+            </div>
           </div>,
           document.body,
         )}

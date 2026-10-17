@@ -1,5 +1,6 @@
 "use client";
 
+import ArrowGlyph from "@/components/ui/ArrowGlyph";
 import { Fragment, type ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
@@ -77,7 +78,7 @@ export function LabRecordSection({ record }: { record: LabRecord }) {
           lede={
             <>
               {t.rich("lede", { tag: (chunks) => <span className="lab-tag lab-tag-accent">{chunks}</span> })}{" "}
-              <Link href="/dashboard">{t("dashboardLink")} →</Link>
+              <Link href="/dashboard">{t("dashboardLink")} <ArrowGlyph /></Link>
             </>
           }
         />

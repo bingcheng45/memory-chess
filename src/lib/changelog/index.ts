@@ -1,6 +1,9 @@
-export const CHANGELOG_ANNOUNCEMENT_DURATION_MS = 30 * 24 * 60 * 60 * 1000;
-export const CHANGELOG_DISMISSAL_STORAGE_KEY =
-  "memory-chess-dismissed-changelog-version";
+import { isAnnouncementActive } from "./announcement";
+
+export {
+  CHANGELOG_ANNOUNCEMENT_DURATION_MS,
+  CHANGELOG_DISMISSAL_STORAGE_KEY,
+} from "./announcement";
 
 export interface ChangelogEntry {
   version: string;
@@ -627,15 +630,5 @@ export function isChangelogAnnouncementActive(
   entry: ChangelogEntry,
   now: Date = new Date(),
 ): boolean {
-  const publishedAt = Date.parse(entry.publishedAt);
-
-  if (Number.isNaN(publishedAt)) {
-    return false;
-  }
-
-  const currentTime = now.getTime();
-  return (
-    currentTime >= publishedAt &&
-    currentTime < publishedAt + CHANGELOG_ANNOUNCEMENT_DURATION_MS
-  );
+  return isAnnouncementActive(entry.publishedAt, now);
 }

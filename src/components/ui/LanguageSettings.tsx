@@ -9,10 +9,10 @@ import {
   useTransition,
 } from "react";
 import { useLocale, useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
 import { createPortal } from "react-dom";
 import { Globe } from "lucide-react";
 import { useClickAway } from "@/hooks/useClickAway";
+import { usePresence } from "@/hooks/usePresence";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import {
   DEFAULT_LOCALE,
@@ -29,7 +29,7 @@ type Appearance = "site" | "paper";
 const LOOKS = {
   site: {
     button:
-      "flex h-9 items-center gap-1.5 rounded-full bg-bg-card/30 px-2.5 backdrop-blur-sm transition-all hover:bg-bg-card/50 disabled:opacity-60 sm:h-10 sm:px-3",
+      "flex h-9 items-center gap-1.5 rounded-full bg-bg-card/30 px-2.5 backdrop-blur-sm transition-all hover:bg-bg-card/50 active:scale-[0.94] disabled:opacity-60 sm:h-10 sm:px-3",
     globe: "h-4 w-4 text-text-secondary sm:h-[18px] sm:w-[18px]",
     code: "text-xs font-semibold tracking-wide text-text-secondary sm:text-sm",
     menu: "fixed z-[99990] overflow-y-auto overscroll-contain rounded-lg border border-bg-light bg-bg-card p-2 shadow-2xl shadow-black/60",
@@ -44,7 +44,7 @@ const LOOKS = {
   },
   paper: {
     button:
-      "flex h-10 items-center gap-1.5 rounded-md px-2.5 text-[var(--lp-ink-2)] transition-colors hover:bg-[var(--lp-surface-2)] hover:text-[var(--lp-ink)] disabled:opacity-60",
+      "flex h-10 items-center gap-1.5 rounded-md px-2.5 text-[var(--lp-ink-2)] transition-[color,background-color,transform] hover:bg-[var(--lp-surface-2)] hover:text-[var(--lp-ink)] active:scale-[0.94] disabled:opacity-60",
     globe: "h-[18px] w-[18px]",
     code: "text-sm font-medium",
     menu: "fixed z-[99990] overflow-y-auto overscroll-contain rounded-xl border border-[var(--lp-line)] bg-[var(--lp-surface)] p-2 shadow-[var(--lp-pop-shadow)]",
@@ -63,6 +63,9 @@ interface LanguageSettingsProps {
   className?: string;
   appearance?: Appearance;
 }
+
+const POPOVER_MS = 180;
+const SHEET_MS = 300;
 
 type Anchor = { top: number; left: number };
 
@@ -99,6 +102,11 @@ export default function LanguageSettings({
   const [isMobile, setIsMobile] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [anchor, setAnchor] = useState<Anchor | null>(null);
+
+  const isPopoverOpen = isOpen && !isMobile && anchor !== null;
+  const isSheetOpen = isOpen && isMobile;
+  const popover = usePresence(isPopoverOpen, POPOVER_MS);
+  const sheet = usePresence(isSheetOpen, SHEET_MS);
 
   const wrapperRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
@@ -249,10 +257,9 @@ export default function LanguageSettings({
 
   return (
     <div ref={wrapperRef} className={`relative ${className}`}>
-      <motion.button
+      <button
         ref={buttonRef}
         onClick={() => setIsOpen((open) => !open)}
-        whileTap={{ scale: 0.94 }}
         disabled={isPending}
         className={look.button}
         aria-label={t("change", { language: LOCALE_LABELS[locale] })}
@@ -264,33 +271,32 @@ export default function LanguageSettings({
           className={look.globe}
           aria-hidden="true"
         />
-        <motion.span
+        <span
           key={locale}
-          initial={{ opacity: 0.6 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.25 }}
-          className={look.code}
+          className={`${look.code} animate-in fade-in-60 motion-reduce:animate-none`}
+          style={{ animationDuration: "250ms" }}
         >
           {LOCALE_BADGES[locale]}
-        </motion.span>
-      </motion.button>
+        </span>
+      </button>
 
       {isMounted &&
         createPortal(
-          <AnimatePresence>
-            {isOpen && !isMobile && anchor && (
-              <motion.div
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: 6 }}
-                transition={{ duration: 0.18 }}
+          <>
+            {popover.isPresent && anchor && (
+              <div
                 role="menu"
                 aria-label={t("select")}
                 aria-describedby={menuDescription}
                 // Solid, not translucent: at 90% the chess board read straight
                 // through the menu and the labels became hard to scan.
-                className={look.menu}
+                className={`${look.menu} ${
+                  popover.isClosing
+                    ? "animate-out fade-out slide-out-to-bottom-[6px] fill-mode-forwards"
+                    : "animate-in fade-in slide-in-from-bottom-[6px]"
+                } ease-out motion-reduce:animate-none`}
                 style={{
+                  animationDuration: `${POPOVER_MS}ms`,
                   top: anchor.top,
                   left: anchor.left,
                   minWidth: "11rem",
@@ -301,35 +307,35 @@ export default function LanguageSettings({
                 }}
               >
                 {menuItems}
-              </motion.div>
+              </div>
             )}
 
-            {isOpen && isMobile && (
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.2 }}
-                className={look.backdrop}
+            {sheet.isPresent && (
+              <div
+                className={`${look.backdrop} ${
+                  sheet.isClosing
+                    ? "animate-out fade-out fill-mode-forwards"
+                    : "animate-in fade-in"
+                } duration-200 motion-reduce:animate-none`}
                 onClick={() => setIsOpen(false)}
               >
-                <motion.div
-                  initial={{ y: "100%" }}
-                  animate={{ y: 0 }}
-                  exit={{ y: "100%" }}
-                  transition={{ type: "spring", stiffness: 320, damping: 32 }}
+                <div
                   role="menu"
                   aria-label={t("select")}
                   aria-describedby={menuDescription}
-                  className={look.sheet}
+                  className={`${look.sheet} ${
+                    sheet.isClosing
+                      ? "animate-out slide-out-to-bottom fill-mode-forwards"
+                      : "animate-in slide-in-from-bottom"
+                  } duration-300 ease-out motion-reduce:animate-none`}
                   onClick={(event) => event.stopPropagation()}
                 >
                   <div className={look.handle} />
                   {menuItems}
-                </motion.div>
-              </motion.div>
+                </div>
+              </div>
             )}
-          </AnimatePresence>,
+          </>,
           document.body,
         )}
     </div>

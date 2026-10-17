@@ -8,7 +8,7 @@ import messages from "../../../../messages/en.json";
 const serve = (announce: boolean) =>
   renderToString(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-      <ChangelogBanner announce={announce} />
+      <ChangelogBanner announce={announce} version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />
     </NextIntlClientProvider>,
   );
 

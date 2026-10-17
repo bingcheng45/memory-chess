@@ -17,7 +17,7 @@ const publishedAt = Date.parse(LATEST_CHANGELOG_ENTRY.publishedAt);
 const expiresAt = publishedAt + CHANGELOG_ANNOUNCEMENT_DURATION_MS;
 const page = (
   <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-    <ChangelogBanner announce />
+    <ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />
   </NextIntlClientProvider>
 );
 
@@ -62,7 +62,7 @@ describe("ChangelogBanner across a hydration and a later remount", () => {
     const observer = new MutationObserver(() => {});
     observer.observe(document.body, { childList: true, subtree: true });
 
-    render(<ChangelogBanner announce />);
+    render(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
     expect(bannersAdded(observer.takeRecords())).toBe(0);
     observer.disconnect();

@@ -97,8 +97,7 @@ export function getSansFontClass(locale: Locale): string {
 }
 
 /**
- * The faces a locale's text needs that no page preloads, each with letters that select its subsets. The arrow,
- * which the home draws, sits in the symbol subsets Open Sans splits out.
+ * The faces a locale's text needs that no page preloads, each with letters that select its subsets.
  *
  * A face that is not preloaded is fetched only once layout first draws a letter in it, which on these locales
  * landed after first paint: the fallback drew the page, the face swapped in, and lines rewrapped and moved
@@ -106,9 +105,9 @@ export function getSansFontClass(locale: Locale): string {
  * so it is usually there by the first paint, and only this locale pays for it.
  */
 const LOCALE_FACES: Partial<Record<Locale, ReadonlyArray<readonly [family: string, text: string]>>> = {
-  ru: [["Noto Sans", "AЖ"], ["Open Sans", "AЖ→"]],
-  vi: [["Noto Sans", "Aệ"], ["Open Sans", "Aệ→"]],
-  hi: [["Noto Sans Devanagari", "Aक"], ["Open Sans", "A→"]],
+  ru: [["Noto Sans", "AЖ"], ["Open Sans", "AЖ"]],
+  vi: [["Noto Sans", "Aệ"], ["Open Sans", "Aệ"]],
+  hi: [["Noto Sans Devanagari", "Aक"], ["Open Sans", "A"]],
 };
 
 export function fontRequestScript(locale: Locale): string | null {

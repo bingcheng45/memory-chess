@@ -2,6 +2,7 @@
 import type { ReactNode } from "react";
 import { render } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
+import ViewerTimeZoneProvider from "@/components/common/ViewerTimeZoneProvider";
 import { Dashboard } from "@/components/dashboard/Dashboard";
 import type { LabData } from "@/hooks/useLabData";
 import { persona } from "@/test-utils/labPersona";
@@ -27,11 +28,11 @@ function withNewestRoundAt(endedAt: number): LabData {
   return { ...base, records: base.records.map((record) => (record.endedAt === newest ? { ...record, endedAt } : record)) };
 }
 
-/** The locale layout hands every client component a provider pinned to the server's zone, which is UTC in production. */
+/** The locale layout hands every client component a provider pinned to the server's zone, which is UTC in production; the dashboard page puts the viewer's zone under it. */
 function ServerZone({ children }: { children: ReactNode }) {
   return (
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-      {children}
+      <ViewerTimeZoneProvider>{children}</ViewerTimeZoneProvider>
     </NextIntlClientProvider>
   );
 }

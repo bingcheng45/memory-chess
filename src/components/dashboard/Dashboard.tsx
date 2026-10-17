@@ -14,7 +14,6 @@ import { WIN_ACCURACY } from "@/lib/store/gameStore";
 import { entriesChoice, planChoice, targetChoice } from "@/components/home/labChoices";
 import { LAB_SECTIONS } from "@/components/home/SectionHeading";
 import { useWeekGoal } from "@/components/home/useWeekGoal";
-import ViewerTimeZoneProvider from "@/components/common/ViewerTimeZoneProvider";
 import { DashboardAnalysis } from "./DashboardAnalysis";
 import { DashboardDailyCard } from "./DashboardDailyCard";
 import { DashboardHistory } from "./DashboardHistory";
@@ -77,44 +76,42 @@ export function Dashboard() {
   const staleFor = tiles?.some(({ state }) => state === "stale") && lastDay ? daysBetween(lastDay, data.today) : null;
 
   return (
-    <ViewerTimeZoneProvider>
-      <main className="lab-wrap lab-dashboard">
-        <header className="lab-dash-head">
-          <h1>{t("title")}</h1>
-          <DashboardDailyCard records={loaded ? data.records : "loading"} />
-          <p className="lab-lede">{t("lede")}</p>
-          <div className="lab-dash-notes">
-            {data.storage === "unavailable" && <p className="lab-dash-warn">{t("unavailable")}</p>}
-            {staleFor !== null && <p className="lab-dash-warn">{t("staleNote", { count: staleFor })}</p>}
-          </div>
-        </header>
-        {data.storage !== "unavailable" && (
-          <>
-            <Section id="summary" title={t("sections.summary")}>
-              <TileList ids={DASHBOARD_GROUPS.lead} tiles={tiles} size="lead" />
-              <div className="lab-dash-summary">
-                <TileList ids={DASHBOARD_GROUPS.summary} tiles={tiles} size="summary" />
-                <DashboardShare card={tiles ? card : "pending"} />
-              </div>
-            </Section>
-            <Section id="history" title={t("sections.history")} lede={t("historyLede")}>
-              <DashboardHistory rounds={rounds} total={data.summary.rounds} />
-            </Section>
-            <Section id="analysis" title={t("sections.analysis")} lede={t("analysisLede")}>
-              <DashboardAnalysis results={loaded ? results : null} />
-            </Section>
-            <Section id="more" title={t("sections.more")}>
-              <TileList ids={DASHBOARD_GROUPS.more} tiles={tiles} size="more" />
-              <Link className="lab-dash-full" href={CHOOSE_HREF}>
-                {t("fullRecord")} →
-              </Link>
-            </Section>
-            {isReturningPlayer(data.summary.rounds) && (
-              <CommunityInvite placement="dashboard" line={tCommunity("dashboardLine")} link={tCommunity("link")} />
-            )}
-          </>
-        )}
-      </main>
-    </ViewerTimeZoneProvider>
+    <main className="lab-wrap lab-dashboard">
+      <header className="lab-dash-head">
+        <h1>{t("title")}</h1>
+        <DashboardDailyCard records={loaded ? data.records : "loading"} />
+        <p className="lab-lede">{t("lede")}</p>
+        <div className="lab-dash-notes">
+          {data.storage === "unavailable" && <p className="lab-dash-warn">{t("unavailable")}</p>}
+          {staleFor !== null && <p className="lab-dash-warn">{t("staleNote", { count: staleFor })}</p>}
+        </div>
+      </header>
+      {data.storage !== "unavailable" && (
+        <>
+          <Section id="summary" title={t("sections.summary")}>
+            <TileList ids={DASHBOARD_GROUPS.lead} tiles={tiles} size="lead" />
+            <div className="lab-dash-summary">
+              <TileList ids={DASHBOARD_GROUPS.summary} tiles={tiles} size="summary" />
+              <DashboardShare card={tiles ? card : "pending"} />
+            </div>
+          </Section>
+          <Section id="history" title={t("sections.history")} lede={t("historyLede")}>
+            <DashboardHistory rounds={rounds} total={data.summary.rounds} />
+          </Section>
+          <Section id="analysis" title={t("sections.analysis")} lede={t("analysisLede")}>
+            <DashboardAnalysis results={loaded ? results : null} />
+          </Section>
+          <Section id="more" title={t("sections.more")}>
+            <TileList ids={DASHBOARD_GROUPS.more} tiles={tiles} size="more" />
+            <Link className="lab-dash-full" href={CHOOSE_HREF}>
+              {t("fullRecord")} →
+            </Link>
+          </Section>
+          {isReturningPlayer(data.summary.rounds) && (
+            <CommunityInvite placement="dashboard" line={tCommunity("dashboardLine")} link={tCommunity("link")} />
+          )}
+        </>
+      )}
+    </main>
   );
 }

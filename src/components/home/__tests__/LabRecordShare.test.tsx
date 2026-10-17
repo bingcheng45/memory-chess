@@ -15,24 +15,33 @@ const SPAN_CLIMBER_CARD = [
 ].join("\n");
 
 const NUDGE = "Your record lives in this browser";
-const sightings: IntersectionObserverCallback[] = [];
-const seeEverything = () => act(() => sightings.forEach((callback) => callback([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver)));
+const observing = new Set<IntersectionObserverCallback>();
+const seeEverything = () => act(() => [...observing].forEach((callback) => callback([{ isIntersecting: true } as IntersectionObserverEntry], {} as IntersectionObserver)));
 const show = (name: PersonaName, today?: string) => renderWithIntl(<LabRecordSection record={persona(name, today)} />);
 const SCREEN_BOTTOM = window.innerHeight;
 /** Where the note's place starts as the record loads: jsdom lays nothing out, so every box would otherwise sit at 0. */
 const placeNoteAt = (top: number) =>
   jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockImplementation(function (this: HTMLElement) {
-    return { top: this.classList.contains("lab-nudge-place") ? top : 0 } as DOMRect;
+    return { top: this.closest(".lab-nudge-place") ? top : 0 } as DOMRect;
   });
 
 afterEach(() => jest.restoreAllMocks());
 
 beforeEach(() => {
   placeNoteAt(SCREEN_BOTTOM + 400);
-  sightings.length = 0;
+  observing.clear();
+  // Like the browser, each observer first reports where its target is now.
   window.IntersectionObserver = jest.fn((callback: IntersectionObserverCallback) => {
-    sightings.push(callback);
-    return { observe: jest.fn(), disconnect: jest.fn(), unobserve: jest.fn() };
+    const observer = {
+      observe(target: Element) {
+        observing.add(callback);
+        const box = target.getBoundingClientRect();
+        callback([{ target, boundingClientRect: box, isIntersecting: box.top < SCREEN_BOTTOM } as IntersectionObserverEntry], observer as unknown as IntersectionObserver);
+      },
+      disconnect: () => observing.delete(callback),
+      unobserve: () => observing.delete(callback),
+    };
+    return observer;
   }) as unknown as typeof IntersectionObserver;
   window.localStorage.clear();
 });

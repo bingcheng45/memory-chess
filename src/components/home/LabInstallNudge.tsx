@@ -16,15 +16,23 @@ interface Placement {
   readonly belowScreen: boolean;
 }
 
-/** Read once as the record loads; nothing reserves the note's height, so it may only appear where no one is looking. */
+/**
+ * Read once as the record loads; nothing reserves the note's height, so it may only appear where no one is looking.
+ * The observer's first report carries the box from the browser's own next layout, where reading it here would force one.
+ */
 function usePlacement(place: RefObject<HTMLDivElement | null>): Placement | null {
   const [placement, setPlacement] = useState<Placement | null>(null);
   useEffect(() => {
+    const node = place.current;
+    if (!node) return;
     const standalone = (navigator as Navigator & { standalone?: boolean }).standalone === true;
-    setPlacement({
-      installed: standalone || window.matchMedia?.("(display-mode: standalone)")?.matches === true,
-      belowScreen: (place.current?.getBoundingClientRect().top ?? 0) >= window.innerHeight,
+    const installed = standalone || window.matchMedia?.("(display-mode: standalone)")?.matches === true;
+    const observer = new IntersectionObserver((entries) => {
+      observer.disconnect();
+      setPlacement({ installed, belowScreen: entries[0].boundingClientRect.top >= window.innerHeight });
     });
+    observer.observe(node);
+    return () => observer.disconnect();
   }, [place]);
   return placement;
 }

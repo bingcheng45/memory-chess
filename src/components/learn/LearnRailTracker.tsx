@@ -5,7 +5,7 @@ import { useEffect } from "react";
 /** How far below the top of the viewport a section must start before it counts as the one being read. */
 const READING_LINE = 0.3;
 
-/** Marks the contents entry of the section being read and sets --lg-read, the share of the guide read, on the page. */
+/** Marks the contents entry of the section being read and sets --lg-read, the share of the guide read, on the two elements that draw it. */
 export default function LearnRailTracker() {
   useEffect(() => {
     const root = document.querySelector<HTMLElement>(".lg-page");
@@ -15,6 +15,8 @@ export default function LearnRailTracker() {
       const target = document.getElementById(link.dataset.toc ?? "");
       return target ? [{ link, target }] : [];
     });
+    // Written on the elements that read it: a change on the page root restyles the whole guide every scroll frame.
+    const readers = [...document.querySelectorAll<HTMLElement>(".lg-rail ol, .lg-progress span")];
     if (!root || !body || targets.length === 0) return;
 
     let frame = 0;
@@ -28,7 +30,7 @@ export default function LearnRailTracker() {
       }
       const box = body.getBoundingClientRect();
       const read = Math.min(1, Math.max(0, (line - box.top) / Math.max(1, box.height)));
-      root.style.setProperty("--lg-read", read.toFixed(3));
+      for (const reader of readers) reader.style.setProperty("--lg-read", read.toFixed(3));
     };
     const schedule = () => {
       if (!frame) frame = requestAnimationFrame(update);

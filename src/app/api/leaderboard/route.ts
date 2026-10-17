@@ -67,12 +67,6 @@ export async function GET(request: NextRequest) {
   // getLeaderboard logs the cause of its own failures; a reader only learns the board is unavailable.
   const unavailable = () => NextResponse.json({ data: [], error: LEADERBOARD_UNAVAILABLE }, { status: 503 });
   try {
-    const connectionStatus = await checkSupabaseConnection();
-    if (!connectionStatus.connected) {
-      console.warn('Supabase connection issue:', connectionStatus.error);
-      return unavailable();
-    }
-
     if (board.difficulty !== DAILY_BOARD) {
       const result = await getLeaderboard(board);
       return result.error ? unavailable() : NextResponse.json({ data: result.data });

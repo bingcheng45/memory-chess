@@ -1471,15 +1471,15 @@
       "latest": "Latest",
       "accuracy": {
         "title": "Accuracy over time",
-        "desc": "Your accuracy round by round at your most played setting, on a scale from 0 to 100%.",
+        "desc": "Your accuracy round by round at your most played setting, with a {window}-round average.",
         "note": "{source, select, calibration {Practice} other {Game}} rounds at {pieceCount} pieces, {memorizeSeconds} s, your most played setting. Last {count, plural, one {# round} other {# rounds}}.",
-        "aria": "Accuracy over your last {count} rounds at {pieceCount} pieces, {memorizeSeconds} s, on a scale from 0 to 100 percent, latest {latest} percent."
+        "aria": "Accuracy over your last {count} rounds at {pieceCount} pieces, {memorizeSeconds} s, latest {latest} percent, {window}-round average {average} percent."
       },
       "speed": {
         "title": "Recall pace over time",
         "unit": "Seconds per correct piece. Lower is faster.",
         "note": "{source, select, calibration {Practice} other {Game}} rounds at {pieceCount} pieces, {memorizeSeconds} s. Last {count, plural, one {# round} other {# rounds}}.",
-        "aria": "Seconds per correct piece over your last {count} rounds at {pieceCount} pieces, {memorizeSeconds} s, latest {latest}."
+        "aria": "Seconds per correct piece over your last {count} rounds at {pieceCount} pieces, {memorizeSeconds} s, latest {latest}, {window}-round average {average}."
       },
       "bests": {
         "title": "Personal bests per setting",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, new"
       }
     },
-    "trend": "{direction, select, up {Up} other {Down}} {amount} over your last {window} rounds against the {window} before"
+    "trend": "{direction, select, up {Up} other {Down}} {amount} over your last {window} rounds against the {window} before",
+    "rating": {
+      "title": "Rating over time",
+      "desc": "Your skill rating after each rated game round on this device.",
+      "periodDays": "in the last {days, plural, one {day} other {# days}}",
+      "periodRounds": "over your last {count, plural, one {round} other {# rounds}}",
+      "periodLevel": "No change in the last {days, plural, one {day} other {# days}}",
+      "peak": "Peak {rating}",
+      "newPeak": "New peak",
+      "aria": "Skill rating over your last {count, plural, one {# rated round} other {# rated rounds}}, from {start} to {current}, peak {peak}.",
+      "empty": "Play a rated round in the game to start your rating line."
+    },
+    "chart": {
+      "round": "Round {n}",
+      "start": "Start",
+      "each": "Each round",
+      "average": "{window}-round average",
+      "best": "Best {value}",
+      "win": "Win {accuracy}%",
+      "col": {
+        "round": "Round",
+        "date": "Date",
+        "rating": "Rating",
+        "change": "Change",
+        "accuracy": "Accuracy",
+        "pace": "Seconds per piece",
+        "average": "Average"
+      }
+    }
   },
   "share": {
     "intro": "Share the card, save it, or copy it into a post.",

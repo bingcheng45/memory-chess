@@ -26,10 +26,10 @@ describe("historyOf", () => {
 
   it("joins a rating change from the game store on the round id, and only there", () => {
     const rated = [
-      { id: "game", skillRatingChange: 14 },
-      { id: "plan", skillRatingChange: -3 },
-      { id: "gone", skillRatingChange: 9 },
-      { id: "daily" },
+      { id: "game", timestamp: 0, skillRatingChange: 14 },
+      { id: "plan", timestamp: 0, skillRatingChange: -3 },
+      { id: "gone", timestamp: 0, skillRatingChange: 9 },
+      { id: "daily", timestamp: 0 },
     ];
 
     expect(historyOf(records, rated).map(({ record, ratingChange }) => [record.id, ratingChange])).toEqual([

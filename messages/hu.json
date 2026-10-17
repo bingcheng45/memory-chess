@@ -1471,15 +1471,15 @@
       "latest": "Legújabb",
       "accuracy": {
         "title": "Pontosság az idő során",
-        "desc": "A pontosságod körről körre a leggyakrabban játszott beállításodban, 0 és 100% közötti skálán.",
+        "desc": "A pontosságod körről körre a leggyakrabban játszott beállításodban, {window} körös átlaggal.",
         "note": "{source, select, calibration {Gyakorló körök} other {Játékkörök}}, {pieceCount} bábu, {memorizeSeconds} mp, a leggyakrabban játszott beállításod. Utolsó {count, plural, one {# kör} other {# kör}}.",
-        "aria": "Pontosság az utolsó {count} körödben, {pieceCount} bábu, {memorizeSeconds} mp, 0 és 100 százalék közötti skálán, legutóbb {latest} százalék."
+        "aria": "Pontosság az utolsó {count} körödben, {pieceCount} bábu, {memorizeSeconds} mp, legutóbb {latest} százalék, {window} körös átlag {average} százalék."
       },
       "speed": {
         "title": "Felidézési tempó az idő során",
         "unit": "Másodperc helyes bábunként. A kevesebb gyorsabb.",
         "note": "{source, select, calibration {Gyakorló körök} other {Játékkörök}}, {pieceCount} bábu, {memorizeSeconds} mp. Utolsó {count, plural, one {# kör} other {# kör}}.",
-        "aria": "Másodperc helyes bábunként az utolsó {count} körödben, {pieceCount} bábu, {memorizeSeconds} mp, legutóbb {latest}."
+        "aria": "Másodperc helyes bábunként az utolsó {count} körödben, {pieceCount} bábu, {memorizeSeconds} mp, legutóbb {latest}, {window} körös átlag {average}."
       },
       "bests": {
         "title": "Egyéni csúcsok beállításonként",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, új"
       }
     },
-    "trend": "{direction, select, up {Emelkedés} other {Csökkenés}}: {amount} az utolsó {window} körben az előző {window} körhöz képest"
+    "trend": "{direction, select, up {Emelkedés} other {Csökkenés}}: {amount} az utolsó {window} körben az előző {window} körhöz képest",
+    "rating": {
+      "title": "Képességpontszám az idő során",
+      "desc": "A képességpontszámod minden pontozott játékkör után ezen az eszközön.",
+      "periodDays": "{days, plural, one {az elmúlt napban} other {az elmúlt # napban}}",
+      "periodRounds": "{count, plural, one {az utolsó körödben} other {az utolsó # körödben}}",
+      "periodLevel": "Nincs változás {days, plural, one {az elmúlt napban} other {az elmúlt # napban}}",
+      "peak": "Csúcs: {rating}",
+      "newPeak": "Új csúcs",
+      "aria": "Képességpontszám az utolsó {count, plural, one {pontozott körödben} other {# pontozott körödben}}, kezdetben {start}, most {current}, csúcs {peak}.",
+      "empty": "Játssz egy pontozott kört a játékban, és elindul a pontszámgörbéd."
+    },
+    "chart": {
+      "round": "{n}. kör",
+      "start": "Kezdet",
+      "each": "Minden kör",
+      "average": "{window} körös átlag",
+      "best": "Legjobb: {value}",
+      "win": "Győzelem: {accuracy}%",
+      "col": {
+        "round": "Kör",
+        "date": "Dátum",
+        "rating": "Pontszám",
+        "change": "Változás",
+        "accuracy": "Pontosság",
+        "pace": "Másodperc bábunként",
+        "average": "Átlag"
+      }
+    }
   },
   "share": {
     "intro": "Oszd meg a kártyát, mentsd el, vagy másold be egy bejegyzésbe.",

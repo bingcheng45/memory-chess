@@ -10,14 +10,18 @@ import { FILES, RANKS } from "@/lib/game/board";
 import { playHref } from "@/lib/game/roundLink";
 import { DASHBOARD_PLAY_HREF, type Rig } from "@/lib/lab/dashboard";
 import type { TrendSetting } from "@/lib/lab/engine";
+import { WIN_ACCURACY } from "@/lib/game/rating";
 import { INSIGHT_GUIDES, type InsightAction } from "@/lib/lab/insights";
 import type { LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
+import { PROGRESS_WINDOW, progressOf, type ProgressSeries } from "@/lib/lab/progressSeries";
 import { hasFigure, LAB_THRESHOLDS, type Readiness } from "@/lib/lab/readiness";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
-import { AccuracySparkline, MissLines, MissMap, RecallBar } from "@/components/home/LabCharts";
-import { oneDecimal, ValueLine } from "@/components/home/LabReadingCharts";
+import { MissLines, MissMap, RecallBar } from "@/components/home/LabCharts";
+import { oneDecimal } from "@/components/home/LabReadingCharts";
 import { sentenceValues } from "@/components/home/LabInsightPanels";
+import { niceTicks } from "./chartGeometry";
 import { useNeedText } from "./DashboardTiles";
+import { ProgressChart, type ProgressChartProps } from "./ProgressChart";
 
 type Translate = ReturnType<typeof useTranslations<"dashboard.analysis">>;
 
@@ -72,18 +76,98 @@ function NotYet({ readiness, rig = null }: { readiness: Readiness; rig?: Rig | n
   );
 }
 
+const ACCURACY = { betterWhen: "higher", window: PROGRESS_WINDOW, levelBand: 2 } as const;
+const PACE = { betterWhen: "lower", window: PROGRESS_WINDOW, levelBand: 0.1 } as const;
+
+interface SeriesChartProps extends Pick<ProgressChartProps, "domain" | "ticks" | "reference" | "label"> {
+  readonly series: ProgressSeries;
+  readonly show: (value: number) => string;
+  readonly valueColumn: string;
+}
+
+/** Each round faint behind its rolling average, the best round ringed: the line reads progress through the noise. */
+function SeriesChart({ series: { values, rolling, best, tone }, show, valueColumn, ...chart }: SeriesChartProps) {
+  const t = useTranslations("dashboard");
+  const average = t("chart.average", { window: PROGRESS_WINDOW });
+  return (
+    <ProgressChart
+      {...chart}
+      variant="panel"
+      tone={tone}
+      line={rolling}
+      dots={values}
+      xLabels={[t("analysis.oldest"), t("analysis.latest")]}
+      best={{ ...best, label: t("chart.best", { value: show(best.value) }) }}
+      latestLabel={show(rolling[rolling.length - 1])}
+      tips={values.map((value, index) => ({ value: show(value), label: `${t("chart.round", { n: index + 1 })} · ${average} ${show(rolling[index])}` }))}
+      legend={[t("chart.each"), average]}
+      table={{
+        head: [t("chart.col.round"), valueColumn, t("chart.col.average")],
+        rows: values.map((value, index) => [String(index + 1), show(value), show(rolling[index])]),
+      }}
+    />
+  );
+}
+
+const tickRow = (values: readonly number[], show: (value: number) => string) => values.map((value) => ({ value, label: show(value) }));
+
+function AccuracyChart({ t, trend: { points, setting } }: { t: Translate; trend: NonNullable<LabResults["trend"]["value"]> }) {
+  const format = useFormatter();
+  const chart = useTranslations("dashboard.chart");
+  const show = (accuracy: number) => `${format.number(Math.round(accuracy))}%`;
+  const series = progressOf(points, ACCURACY);
+  const low = Math.max(0, Math.floor((Math.min(...points) - 10) / 10) * 10);
+  return (
+    <SeriesChart
+      series={series}
+      show={show}
+      domain={[low, 100]}
+      ticks={tickRow(niceTicks(low, 100, 4).ticks.filter((tick) => tick >= low), show)}
+      reference={WIN_ACCURACY >= low ? { value: WIN_ACCURACY, label: chart("win", { accuracy: WIN_ACCURACY }) } : undefined}
+      valueColumn={chart("col.accuracy")}
+      label={t("accuracy.aria", {
+        ...setting,
+        count: points.length,
+        latest: Math.round(series.latest),
+        window: PROGRESS_WINDOW,
+        average: Math.round(series.rolling[series.rolling.length - 1]),
+      })}
+    />
+  );
+}
+
+function SpeedChart({ t, speed: { points, setting } }: { t: Translate; speed: NonNullable<LabResults["speed"]["value"]> }) {
+  const format = useFormatter();
+  const chart = useTranslations("dashboard.chart");
+  const history = useTranslations("dashboard.history");
+  const show = (seconds: number) => history("seconds", { value: format.number(seconds, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) });
+  const series = progressOf(points, PACE);
+  const { ticks, domain } = niceTicks(Math.min(...points), Math.max(...points), 4);
+  return (
+    <SeriesChart
+      series={series}
+      show={show}
+      domain={domain}
+      ticks={tickRow(ticks, (tick) => format.number(tick))}
+      valueColumn={chart("col.pace")}
+      label={t("speed.aria", {
+        ...setting,
+        count: points.length,
+        latest: oneDecimal(series.latest),
+        window: PROGRESS_WINDOW,
+        average: oneDecimal(series.rolling[series.rolling.length - 1]),
+      })}
+    />
+  );
+}
+
 function AccuracyPanel({ t, result: { readiness, value } }: { t: Translate; result: LabResults["trend"] }) {
   const drawn = value && hasFigure(readiness) && value.points.length > 1;
   return (
-    <Panel name="accuracy" title={t("accuracy.title")} desc={t("accuracy.desc")}>
+    <Panel name="accuracy" title={t("accuracy.title")} desc={t("accuracy.desc", { window: PROGRESS_WINDOW })}>
       {drawn ? (
         <>
-          <AccuracySparkline
-            points={value.points}
-            label={t("accuracy.aria", { count: value.points.length, latest: value.points[value.points.length - 1], ...value.setting })}
-            first={t("oldest")}
-            last={t("latest")}
-          />
+          <AccuracyChart t={t} trend={value} />
           <p className="lab-note">{t("accuracy.note", { ...value.setting, count: value.points.length })}</p>
         </>
       ) : (
@@ -99,12 +183,7 @@ function SpeedPanel({ t, result: { readiness, value } }: { t: Translate; result:
     <Panel name="speed" title={t("speed.title")} desc={t("speed.unit")}>
       {drawn ? (
         <>
-          <ValueLine
-            points={value.points}
-            label={t("speed.aria", { count: value.points.length, latest: oneDecimal(value.points[value.points.length - 1]), ...value.setting })}
-            first={t("oldest")}
-            last={t("latest")}
-          />
+          <SpeedChart t={t} speed={value} />
           <p className="lab-note">{t("speed.note", { ...value.setting, count: value.points.length })}</p>
         </>
       ) : (

@@ -1471,15 +1471,15 @@
       "latest": "Senast",
       "accuracy": {
         "title": "Träffsäkerhet över tid",
-        "desc": "Din träffsäkerhet runda för runda med din mest spelade inställning, på en skala från 0 till 100 %.",
+        "desc": "Din träffsäkerhet runda för runda med din mest spelade inställning, med ett snitt över {window} rundor.",
         "note": "{source, select, calibration {Övningsrundor} other {Rundor i partier}} med {pieceCount} pjäser, {memorizeSeconds} s, din mest spelade inställning. {count, plural, one {Senaste # runda} other {Senaste # rundor}}.",
-        "aria": "Träffsäkerhet under dina senaste {count} rundor med {pieceCount} pjäser, {memorizeSeconds} s, på en skala från 0 till 100 procent, senast {latest} procent."
+        "aria": "Träffsäkerhet under dina senaste {count} rundor med {pieceCount} pjäser, {memorizeSeconds} s, senast {latest} procent, snitt över {window} rundor {average} procent."
       },
       "speed": {
         "title": "Återkallningstempo över tid",
         "unit": "Sekunder per rätt pjäs. Lägre är snabbare.",
         "note": "{source, select, calibration {Övningsrundor} other {Rundor i partier}} med {pieceCount} pjäser, {memorizeSeconds} s. {count, plural, one {Senaste # runda} other {Senaste # rundor}}.",
-        "aria": "Sekunder per rätt pjäs under dina senaste {count} rundor med {pieceCount} pjäser, {memorizeSeconds} s, senast {latest}."
+        "aria": "Sekunder per rätt pjäs under dina senaste {count} rundor med {pieceCount} pjäser, {memorizeSeconds} s, senast {latest}, snitt över {window} rundor {average}."
       },
       "bests": {
         "title": "Personbästa per inställning",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, ny"
       }
     },
-    "trend": "{direction, select, up {Upp} other {Ned}} {amount} under dina senaste {window} rundor mot de {window} innan"
+    "trend": "{direction, select, up {Upp} other {Ned}} {amount} under dina senaste {window} rundor mot de {window} innan",
+    "rating": {
+      "title": "Rating över tid",
+      "desc": "Din färdighetsrating efter varje rankad spelrunda på den här enheten.",
+      "periodDays": "{days, plural, one {det senaste dygnet} other {de senaste # dagarna}}",
+      "periodRounds": "{count, plural, one {under din senaste runda} other {under dina senaste # rundor}}",
+      "periodLevel": "Ingen förändring {days, plural, one {det senaste dygnet} other {de senaste # dagarna}}",
+      "peak": "Rekord {rating}",
+      "newPeak": "Nytt rekord",
+      "aria": "Färdighetsrating under {count, plural, one {din senaste rankade runda} other {dina senaste # rankade rundor}}, från {start} till {current}, rekord {peak}.",
+      "empty": "Spela en rankad runda i spelet för att starta din ratinglinje."
+    },
+    "chart": {
+      "round": "Runda {n}",
+      "start": "Start",
+      "each": "Varje runda",
+      "average": "Snitt över {window} rundor",
+      "best": "Bästa {value}",
+      "win": "Vinst {accuracy} %",
+      "col": {
+        "round": "Runda",
+        "date": "Datum",
+        "rating": "Rating",
+        "change": "Förändring",
+        "accuracy": "Träffsäkerhet",
+        "pace": "Sekunder per pjäs",
+        "average": "Snitt"
+      }
+    }
   },
   "share": {
     "intro": "Dela kortet, spara det eller kopiera in det i ett inlägg.",

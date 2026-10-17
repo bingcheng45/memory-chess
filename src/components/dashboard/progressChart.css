@@ -1,0 +1,40 @@
+/* The dashboard's line chart (ProgressChart.tsx). The series takes green when the line reads better and the calm accent
+   otherwise, never red: the trend chip beside it already says which way it went in an arrow and words. Text keeps to the
+   ink tokens. The plot box has a fixed height per variant, held before the first measurement so nothing below moves. */
+.lab-paper .lab-pc { --lab-pc-series: var(--lp-accent); margin-top: 16px; }
+.lab-paper .lab-pc[data-tone="better"] { --lab-pc-series: var(--lp-correct); }
+.lab-paper .lab-pc-plot { position: relative; height: 160px; touch-action: pan-y; }
+.lab-paper .lab-pc-plot[data-variant="rating"] { height: 220px; }
+.lab-paper .lab-pc-svg { display: block; overflow: visible; }
+.lab-paper .lab-pc-svg text { font-family: var(--lp-ui); }
+.lab-paper .lab-pc-axis { font-size: 11px; font-variant-numeric: tabular-nums; fill: var(--lp-muted); }
+.lab-paper .lab-pc-mark { font-size: 12px; font-weight: 600; fill: var(--lp-ink); paint-order: stroke; stroke: var(--lp-surface); stroke-width: 3px; stroke-linejoin: round; }
+.lab-paper .lab-pc-grid { stroke: var(--lp-line); stroke-width: 1; }
+.lab-paper .lab-pc-ref { stroke: var(--lp-line-strong); stroke-width: 1; stroke-dasharray: 3 3; }
+.lab-paper .lab-pc-fill-top { stop-color: var(--lab-pc-series); stop-opacity: 0.2; }
+.lab-paper .lab-pc-fill-bottom { stop-color: var(--lab-pc-series); stop-opacity: 0; }
+.lab-paper .lab-pc-line { fill: none; stroke: var(--lab-pc-series); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+.lab-paper .lab-pc-dot { fill: var(--lp-muted); opacity: 0.45; }
+.lab-paper .lab-pc-latest, .lab-paper .lab-pc-active { fill: var(--lab-pc-series); stroke: var(--lp-surface); stroke-width: 2; }
+.lab-paper .lab-pc-best { fill: var(--lp-surface); stroke: var(--lab-pc-series); stroke-width: 2; }
+.lab-paper .lab-pc-cross { stroke: var(--lp-line-strong); stroke-width: 1; }
+.lab-paper .lab-pc-reveal { animation: lab-pc-reveal 300ms ease-out both; }
+@keyframes lab-pc-reveal { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { .lab-paper .lab-pc-reveal { animation: none; } }
+
+.lab-paper .lab-pc-tip { position: absolute; top: 0; z-index: 1; display: grid; gap: 2px; padding: 8px 10px; white-space: nowrap; pointer-events: none; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-md); box-shadow: var(--lp-pop-shadow); transform: translate(-50%, calc(-100% - 8px)); }
+.lab-paper .lab-pc-tip:not([data-open]) { visibility: hidden; }
+.lab-paper .lab-pc-tip[data-align="start"] { transform: translate(-12px, calc(-100% - 8px)); }
+.lab-paper .lab-pc-tip[data-align="end"] { transform: translate(calc(-100% + 12px), calc(-100% - 8px)); }
+.lab-paper .lab-pc-tip strong { font: 600 15px/1.2 var(--lp-ui); font-variant-numeric: tabular-nums; color: var(--lp-ink); }
+.lab-paper .lab-pc-tip span { font: 400 13px/1.35 var(--lp-body); color: var(--lp-muted); }
+
+.lab-paper .lab-pc-legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 12px 0 0; padding: 0; list-style: none; font: 500 13px/1.3 var(--lp-ui); color: var(--lp-ink-2); }
+.lab-paper .lab-pc-legend li { display: inline-flex; align-items: center; gap: 8px; }
+.lab-paper .lab-pc-key-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--lp-muted); opacity: 0.45; }
+.lab-paper .lab-pc-key-line { width: 16px; height: 2px; border-radius: 1px; background: var(--lab-pc-series); }
+
+@media (max-width: 767px) {
+  .lab-paper .lab-pc-plot { height: 140px; }
+  .lab-paper .lab-pc-plot[data-variant="rating"] { height: 180px; }
+}

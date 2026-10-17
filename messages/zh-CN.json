@@ -1471,15 +1471,15 @@
       "latest": "最新",
       "accuracy": {
         "title": "准确率变化",
-        "desc": "你在最常玩的设置下每个回合的准确率，范围为 0 到 100%。",
+        "desc": "你在最常玩的设置下每个回合的准确率，以及 {window} 回合平均值。",
         "note": "{source, select, calibration {练习} other {对局}}回合，{pieceCount} 子、{memorizeSeconds} 秒，你最常玩的设置。最近 {count, plural, other {# 回合}}。",
-        "aria": "你最近 {count} 回合在 {pieceCount} 子、{memorizeSeconds} 秒下的准确率，刻度从 0 到 100%，最新为 {latest}%。"
+        "aria": "你最近 {count} 回合在 {pieceCount} 子、{memorizeSeconds} 秒下的准确率，最新为 {latest}%，{window} 回合平均为 {average}%。"
       },
       "speed": {
         "title": "回忆节奏变化",
         "unit": "每个正确棋子所用秒数。越低越快。",
         "note": "{source, select, calibration {练习} other {对局}}回合，{pieceCount} 子、{memorizeSeconds} 秒。最近 {count, plural, other {# 回合}}。",
-        "aria": "你最近 {count} 回合在 {pieceCount} 子、{memorizeSeconds} 秒下每个正确棋子所用秒数，最新为 {latest}。"
+        "aria": "你最近 {count} 回合在 {pieceCount} 子、{memorizeSeconds} 秒下每个正确棋子所用秒数，最新为 {latest}，{window} 回合平均为 {average}。"
       },
       "bests": {
         "title": "各设置的个人最佳",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}，新"
       }
     },
-    "trend": "最近 {window} 回合比之前 {window} 回合{direction, select, up {上升} other {下降}} {amount}"
+    "trend": "最近 {window} 回合比之前 {window} 回合{direction, select, up {上升} other {下降}} {amount}",
+    "rating": {
+      "title": "技能评分变化",
+      "desc": "你在此设备上每个计分游戏回合结束后的技能评分。",
+      "periodDays": "{days, plural, other {过去 # 天}}",
+      "periodRounds": "{count, plural, other {最近 # 回合}}",
+      "periodLevel": "{days, plural, other {过去 # 天}}没有变化",
+      "peak": "峰值 {rating}",
+      "newPeak": "新峰值",
+      "aria": "你最近 {count, plural, other {# 个计分回合}}的技能评分，从 {start} 到 {current}，峰值 {peak}。",
+      "empty": "在游戏中玩一个计分回合，即可开始你的评分曲线。"
+    },
+    "chart": {
+      "round": "第 {n} 回合",
+      "start": "起点",
+      "each": "每个回合",
+      "average": "{window} 回合平均",
+      "best": "最佳 {value}",
+      "win": "获胜 {accuracy}%",
+      "col": {
+        "round": "回合",
+        "date": "日期",
+        "rating": "评分",
+        "change": "变化",
+        "accuracy": "准确率",
+        "pace": "每子秒数",
+        "average": "平均"
+      }
+    }
   },
   "share": {
     "intro": "分享卡片、保存，或复制到帖子里。",

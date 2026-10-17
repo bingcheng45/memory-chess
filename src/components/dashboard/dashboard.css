@@ -60,6 +60,13 @@
 /* Not yet a reading: dashed and unfilled, so the state shows in the shape as well as the words. */
 .lab-paper .lab-tile:is([data-state="warming"], [data-state="empty"], [data-state="loading"]) { background: transparent; border-style: dashed; border-color: var(--lp-line-strong); }
 
+/* The rating card between the lead tiles and the totals. Its hero row and plot box keep one height in every state. */
+.lab-paper .lab-rating { margin-bottom: 16px; }
+.lab-paper .lab-rating-hero { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 20px; min-height: 56px; margin-top: 16px; }
+.lab-paper .lab-rating-value { font: 600 56px/1 var(--lp-ui); letter-spacing: -0.03em; color: var(--lp-ink); }
+.lab-paper .lab-rating-period { display: inline-flex; align-items: center; gap: 8px; font: 400 15px/1.4 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .lab-rating-empty { display: grid; align-content: center; justify-items: start; gap: 8px; height: 100%; padding: 16px; border: 1px dashed var(--lp-line-strong); border-radius: var(--lp-r-md); font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
+
 /* summary: the totals beside the share panel on wide screens */
 .lab-paper .lab-dash-summary { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; align-items: start; }
 /* The card itself as the panel's picture, large enough to read without zooming, its 4:5 frame sized from the first paint so nothing moves when it is drawn. */
@@ -182,4 +189,6 @@
   .lab-paper .lab-share > .lab-share-thumb { grid-row: auto; max-width: 480px; }
   .lab-paper .lab-share > .lab-btn { grid-column: auto; }
   .lab-paper .lab-dash-lines { gap: 16px; }
+  .lab-paper .lab-rating-hero { flex-direction: column; align-items: flex-start; min-height: 76px; }
+  .lab-paper .lab-rating-value { font-size: 44px; }
 }

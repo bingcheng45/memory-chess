@@ -1471,15 +1471,15 @@
       "latest": "Najnowsze",
       "accuracy": {
         "title": "Dokładność w czasie",
-        "desc": "Twoja dokładność runda po rundzie w twoim najczęstszym ustawieniu, w skali od 0 do 100%.",
+        "desc": "Twoja dokładność runda po rundzie w twoim najczęstszym ustawieniu, ze średnią z {window} rund.",
         "note": "{source, select, calibration {Rundy treningowe} other {Rundy w partiach}} z {pieceCount} figurami, {memorizeSeconds} s, twoje najczęstsze ustawienie. Ostatnie rundy: {count, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}.",
-        "aria": "Dokładność w ostatnich rundach ({count}) z {pieceCount} figurami, {memorizeSeconds} s, w skali od 0 do 100 procent, ostatnio {latest} procent."
+        "aria": "Dokładność w ostatnich rundach ({count}) z {pieceCount} figurami, {memorizeSeconds} s, ostatnio {latest} procent, średnia z {window} rund {average} procent."
       },
       "speed": {
         "title": "Tempo odtwarzania w czasie",
         "unit": "Sekundy na poprawną figurę. Mniej znaczy szybciej.",
         "note": "{source, select, calibration {Rundy treningowe} other {Rundy w partiach}} z {pieceCount} figurami, {memorizeSeconds} s. Ostatnie rundy: {count, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}.",
-        "aria": "Sekundy na poprawną figurę w ostatnich rundach ({count}) z {pieceCount} figurami, {memorizeSeconds} s, ostatnio {latest}."
+        "aria": "Sekundy na poprawną figurę w ostatnich rundach ({count}) z {pieceCount} figurami, {memorizeSeconds} s, ostatnio {latest}, średnia z {window} rund {average}."
       },
       "bests": {
         "title": "Rekordy osobiste według ustawienia",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, nowe"
       }
     },
-    "trend": "{direction, select, up {Wzrost} other {Spadek}} o {amount} w ostatnich {window} rundach względem {window} wcześniejszych"
+    "trend": "{direction, select, up {Wzrost} other {Spadek}} o {amount} w ostatnich {window} rundach względem {window} wcześniejszych",
+    "rating": {
+      "title": "Ocena umiejętności w czasie",
+      "desc": "Twoja ocena umiejętności po każdej rankingowej rundzie gry na tym urządzeniu.",
+      "periodDays": "{days, plural, one {w ostatnim dniu} few {w ostatnich # dniach} many {w ostatnich # dniach} other {w ostatnich # dnia}}",
+      "periodRounds": "{count, plural, one {w ostatniej rundzie} few {w ostatnich # rundach} many {w ostatnich # rundach} other {w ostatnich # rundy}}",
+      "periodLevel": "Bez zmian {days, plural, one {w ostatnim dniu} few {w ostatnich # dniach} many {w ostatnich # dniach} other {w ostatnich # dnia}}",
+      "peak": "Szczyt {rating}",
+      "newPeak": "Nowy szczyt",
+      "aria": "Ocena umiejętności w {count, plural, one {ostatniej rundzie rankingowej} few {ostatnich # rundach rankingowych} many {ostatnich # rundach rankingowych} other {ostatnich # rundy rankingowej}}, od {start} do {current}, szczyt {peak}.",
+      "empty": "Zagraj rundę rankingową w grze, aby rozpocząć linię swojej oceny."
+    },
+    "chart": {
+      "round": "Runda {n}",
+      "start": "Start",
+      "each": "Każda runda",
+      "average": "Średnia z {window} rund",
+      "best": "Rekord {value}",
+      "win": "Wygrana {accuracy}%",
+      "col": {
+        "round": "Runda",
+        "date": "Data",
+        "rating": "Ocena",
+        "change": "Zmiana",
+        "accuracy": "Dokładność",
+        "pace": "Sekundy na figurę",
+        "average": "Średnia"
+      }
+    }
   },
   "share": {
     "intro": "Udostępnij kartę, zapisz ją albo skopiuj do posta.",

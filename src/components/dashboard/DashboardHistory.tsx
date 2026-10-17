@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useState } from "react";
+import { memo, useCallback, useId, useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { SquareName } from "@/lib/game/board";
@@ -85,7 +85,8 @@ function ScoredBoard({ round }: { round: HistoryRound }) {
 const COLUMNS = ["date", "source", "setting", "accuracy", "correct", "study", "time", "rating", "board"] as const;
 const NUMERIC: readonly (typeof COLUMNS)[number][] = ["accuracy", "correct", "study", "time", "rating"];
 
-function Row({ round, open, onToggle }: { round: HistoryRound; open: boolean; onToggle: () => void }) {
+/** Memoised with a stable onToggle, so opening one row or showing more redraws only the rows that changed. */
+const Row = memo(function Row({ round, open, onToggle }: { round: HistoryRound; open: boolean; onToggle: (id: string) => void }) {
   const t = useTranslations("dashboard.history");
   const format = useFormatter();
   const seconds = useSeconds();
@@ -126,7 +127,7 @@ function Row({ round, open, onToggle }: { round: HistoryRound; open: boolean; on
           <RatingCell change={round.ratingChange} />
         </td>
         <td className="lab-hist-end">
-          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" aria-expanded={open} aria-controls={detailId} onClick={onToggle}>
+          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" aria-expanded={open} aria-controls={detailId} onClick={() => onToggle(record.id)}>
             {t(open ? "hide" : "show")}
           </button>
         </td>
@@ -136,7 +137,7 @@ function Row({ round, open, onToggle }: { round: HistoryRound; open: boolean; on
       </tr>
     </>
   );
-}
+});
 
 function Filters({ rounds, filter, onChange }: { rounds: readonly HistoryRound[]; filter: HistoryFilter; onChange: (filter: HistoryFilter) => void }) {
   const t = useTranslations("dashboard.history");
@@ -184,6 +185,7 @@ export function DashboardHistory({ rounds, total }: HistoryProps) {
   const [filter, setFilter] = useState<HistoryFilter>(NO_FILTER);
   const [shown, setShown] = useState(HISTORY_PAGE);
   const [open, setOpen] = useState<string | null>(null);
+  const toggle = useCallback((id: string) => setOpen((current) => (current === id ? null : id)), []);
 
   if (rounds === null) return <div className="lab-hist-pending" aria-hidden="true" />;
 
@@ -235,7 +237,7 @@ export function DashboardHistory({ rounds, total }: HistoryProps) {
             </thead>
             <tbody>
               {visible.map((round) => (
-                <Row key={round.record.id} round={round} open={open === round.record.id} onToggle={() => setOpen(open === round.record.id ? null : round.record.id)} />
+                <Row key={round.record.id} round={round} open={open === round.record.id} onToggle={toggle} />
               ))}
             </tbody>
           </table>

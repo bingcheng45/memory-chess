@@ -2,7 +2,7 @@ import type { AnchorHTMLAttributes } from "react";
 import { fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
 import { LabHomeHeader } from "@/components/home/LabHomeHeader";
-import type { LabData } from "@/hooks/useLabData";
+import type { LabSummaryData } from "@/hooks/useLabData";
 import { EMPTY_SUMMARY } from "@/lib/lab/summary";
 import deMessages from "../../../../messages/de.json";
 
@@ -14,9 +14,9 @@ jest.mock("@/i18n/navigation", () => ({
 }));
 jest.mock("@/lib/articles/translatedLocales");
 
-const LOADED: LabData = { storage: "available", records: [], summary: EMPTY_SUMMARY, lastBackup: null, today: "2026-10-07" };
-let mockLabData: LabData = LOADED;
-jest.mock("@/hooks/useLabData", () => ({ useLabData: () => mockLabData }));
+const LOADED: LabSummaryData = { storage: "available", summary: EMPTY_SUMMARY, today: "2026-10-07" };
+let mockLabData: LabSummaryData = LOADED;
+jest.mock("@/hooks/useLabData", () => ({ useLabSummary: () => mockLabData }));
 
 beforeEach(() => {
   mockPathname = "/";
@@ -199,6 +199,13 @@ describe("streak chip in the header", () => {
 
     expect(chip).toHaveTextContent(/^Day 3$/);
     expect(chip).toHaveAttribute("href", "/dashboard");
+  });
+
+  it("names the missed days its streak forgave", () => {
+    mockLabData = days("2026-10-03", "2026-10-04", "2026-10-06", "2026-10-07");
+    renderWithIntl(<LabPaperHeader />);
+
+    expect(screen.getByRole("link", { name: /^Day/ })).toHaveAttribute("title", "Day 4 of your streak, 1 missed day forgiven. Open your dashboard.");
   });
 
   it("is absent below two days in a row and before the record is read", () => {

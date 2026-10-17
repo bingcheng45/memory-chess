@@ -1,7 +1,7 @@
 import type { AnchorHTMLAttributes } from "react";
 import { act, renderWithIntl, screen, within } from "@/test-utils/intl";
 import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
-import type { LabData } from "@/hooks/useLabData";
+import type { LabSummaryData } from "@/hooks/useLabData";
 import { DAILY_OPENED_KEY } from "@/lib/lab/daily";
 import { EMPTY_SUMMARY } from "@/lib/lab/summary";
 
@@ -11,8 +11,8 @@ jest.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ replace: jest.fn() }),
 }));
 jest.mock("@/lib/articles/translatedLocales");
-const LOADED: LabData = { storage: "available", records: [], summary: EMPTY_SUMMARY, lastBackup: null, today: "2026-10-13" };
-jest.mock("@/hooks/useLabData", () => ({ useLabData: () => LOADED }));
+const LOADED: LabSummaryData = { storage: "available", summary: EMPTY_SUMMARY, today: "2026-10-13" };
+jest.mock("@/hooks/useLabData", () => ({ useLabSummary: () => LOADED }));
 
 const mainNav = () => screen.getByRole("navigation", { name: "Main" });
 const dotsIn = (container: HTMLElement) => container.querySelectorAll(".lab-daily-dot").length;

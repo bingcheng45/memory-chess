@@ -1,5 +1,5 @@
 import { act, renderHook, waitFor } from "@testing-library/react";
-import { useLabData } from "@/hooks/useLabData";
+import { useLabData, useLabSummary } from "@/hooks/useLabData";
 import { labStore, type LabStore } from "@/lib/lab/storage";
 import { EMPTY_SUMMARY, summarize } from "@/lib/lab/summary";
 import { FakeChannel, freshSyncModule as otherTab } from "@/lib/lab/__tests__/fakeChannel";
@@ -167,5 +167,36 @@ describe("useLabData reloads", () => {
 
     await waitFor(() => expect(ids(result.current.records)).toEqual(["a", "b"]));
     expect(listRounds).toHaveBeenCalledTimes(1);
+  });
+});
+
+describe("useLabSummary", () => {
+  beforeEach(() => {
+    Object.assign(globalThis, { BroadcastChannel: FakeChannel });
+  });
+
+  it("follows the summary as another tab adds a round, and never reads the rounds", async () => {
+    const rounds = [round({ id: "a", localDay: "2026-10-07" })];
+    const store = { ...storeWith(rounds), listRounds: jest.fn(() => Promise.reject(new Error("the log is not read"))) };
+    jest.mocked(labStore).mockReturnValue(store);
+    const { result } = renderHook(() => useLabSummary());
+    expect(result.current).toEqual({ storage: "loading", summary: EMPTY_SUMMARY, today: "" });
+    await waitFor(() => expect(result.current.summary.days).toEqual(["2026-10-07"]));
+
+    rounds.push(round({ id: "b", endedAt: Date.UTC(2026, 9, 8, 9), localDay: "2026-10-08" }));
+    act(() => otherTab().tellOtherTabs());
+
+    await waitFor(() => expect(result.current.summary.days).toEqual(["2026-10-07", "2026-10-08"]));
+    expect(result.current.storage).toBe("available");
+    expect(result.current.today).toMatch(/^\d{4}-\d{2}-\d{2}$/);
+    expect(store.listRounds).not.toHaveBeenCalled();
+  });
+
+  it("reads no summary when storage will not open", async () => {
+    jest.mocked(labStore).mockReturnValue({ ...storeWith([round()]), isAvailable: () => Promise.resolve(false) });
+    const { result } = renderHook(() => useLabSummary());
+
+    await waitFor(() => expect(result.current.storage).toBe("unavailable"));
+    expect(result.current.summary.rounds).toBe(0);
   });
 });

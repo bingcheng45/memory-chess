@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
-import { FOOTER_LINKS, LaunchBadges, X_URL, XIcon } from "@/components/ui/Footer";
+import { FOOTER_LINKS, ProductHuntBadges, X_URL, XIcon } from "@/components/ui/Footer";
 import { CommunityLink } from "@/components/community/CommunityLink";
 import SiteLink from "@/components/ui/SiteLink";
 import { LAB_PAPER_CLASS } from "./shell";
@@ -42,7 +42,7 @@ export function LabPaperFooter() {
             </nav>
             <div>
               <p className="lab-foot-h">{t("footer.recognition")}</p>
-              <LaunchBadges theme="light" className="lab-awards" />
+              <ProductHuntBadges theme="light" className="lab-awards" />
             </div>
           </div>
           <div className="lab-foot-base">

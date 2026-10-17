@@ -54,10 +54,16 @@ describe("the footer the locale layout renders", () => {
       ["Telegram", "https://t.me/TheMemoryChess"],
     ]);
     expect(within(footer).getByText("Recognition")).toBeInTheDocument();
-    expect(within(footer).getAllByRole("img").map((badge) => new URL(badge.getAttribute("src")!).searchParams.get("theme"))).toEqual([
+    const [dayBadge, weekBadge, launchstagBadge] = within(footer).getAllByRole("img");
+    expect([dayBadge, weekBadge].map((badge) => new URL(badge.getAttribute("src")!).searchParams.get("theme"))).toEqual([
       "light",
       "light",
     ]);
+    expect(launchstagBadge).toHaveAttribute("src", "https://launchstag.com/badge-light.svg");
+    expect(within(footer).getByRole("link", { name: "Featured on Launchstag" })).toHaveAttribute(
+      "href",
+      "https://launchstag.com/p/memory-chess",
+    );
     expect(within(footer).getByRole("link", { name: "Follow us on Twitter/X" })).toHaveAttribute("href", "https://x.com/TheMemoryChess");
     expect(within(footer).getByText(`© ${new Date().getFullYear()} Memory Chess. All rights reserved.`)).toBeInTheDocument();
   });

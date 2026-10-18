@@ -14,13 +14,27 @@ function gtag(){window.dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
 (function () {
+  function isTypedText(pair) {
+    var key = pair.split('=')[0].replace(/\\+/g, ' ');
+    try { key = decodeURIComponent(key); } catch (e) {}
+    return key === 'player' || key === 'q';
+  }
   function withoutTypedText(address) {
     if (!address) return address;
-    var url = new URL(address);
-    if (url.origin !== location.origin || !(url.searchParams.has('player') || url.searchParams.has('q'))) return address;
-    url.searchParams.delete('player');
-    url.searchParams.delete('q');
-    return url.href;
+    try {
+      if (new URL(address).origin !== location.origin) return address;
+      var hashAt = address.indexOf('#');
+      var hash = hashAt < 0 ? '' : address.slice(hashAt);
+      var head = hashAt < 0 ? address : address.slice(0, hashAt);
+      var queryAt = head.indexOf('?');
+      if (queryAt < 0) return address;
+      var pairs = head.slice(queryAt + 1).split('&');
+      var kept = pairs.filter(function (pair) { return !isTypedText(pair); });
+      if (kept.length === pairs.length) return address;
+      return head.slice(0, queryAt) + (kept.length ? '?' + kept.join('&') : '') + hash;
+    } catch (e) {
+      return address.split('#')[0].split('?')[0];
+    }
   }
   var landing = { page_location: withoutTypedText(location.href), page_referrer: withoutTypedText(document.referrer) };
   if (document.title) landing.page_title = document.title;

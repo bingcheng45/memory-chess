@@ -142,6 +142,57 @@ describe("Google Analytics loading", () => {
     ]);
   });
 
+  it.each([
+    ["/x?player=x&name=a%20b&t=c~d&s=e,f&p=g/h", "/x?name=a%20b&t=c~d&s=e,f&p=g/h"],
+    ["/x?flag&player=x", "/x?flag"],
+    ["/x?pl%61yer=x&%71=y&keep=1#top", "/x?keep=1#top"],
+    ["/x?a=1&q=y&a=2", "/x?a=1&a=2"],
+    ["/x?player=x", "/x"],
+  ])("strips only player and q from %s and leaves every other parameter byte for byte", (landing, expected) => {
+    window.history.replaceState(null, "", landing);
+    document.title = "T";
+
+    expect(firstPageView()).toEqual([
+      "event",
+      "page_view",
+      { page_location: `http://localhost${expected}`, page_referrer: "", page_title: "T" },
+    ]);
+  });
+
+  describe("without URL or URLSearchParams", () => {
+    const realUrl = window.URL;
+    const realSearchParams = window.URLSearchParams;
+
+    beforeEach(() => {
+      Reflect.deleteProperty(window, "URL");
+      Reflect.deleteProperty(window, "URLSearchParams");
+    });
+
+    afterEach(() => {
+      Object.defineProperty(window, "URL", { configurable: true, writable: true, value: realUrl });
+      Object.defineProperty(window, "URLSearchParams", { configurable: true, writable: true, value: realSearchParams });
+    });
+
+    it("still sends the landing page view, with the query removed so typed text cannot leak", () => {
+      window.history.replaceState(null, "", "/leaderboard?player=Test+Name&utm_source=share");
+      Object.defineProperty(document, "referrer", {
+        configurable: true,
+        value: "http://localhost/learn/search?q=my+rating",
+      });
+      document.title = "Leaderboard | Memory Chess";
+
+      expect(firstPageView()).toEqual([
+        "event",
+        "page_view",
+        {
+          page_location: "http://localhost/leaderboard",
+          page_referrer: "http://localhost/learn/search",
+          page_title: "Leaderboard | Memory Chess",
+        },
+      ]);
+    });
+  });
+
   it("keeps another site's referrer as it came, query and all", () => {
     window.history.replaceState(null, "", "/?q=kept");
     Object.defineProperty(document, "referrer", {

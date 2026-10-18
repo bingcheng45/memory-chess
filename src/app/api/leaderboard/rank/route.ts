@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { getStanding } from '@/lib/services/leaderboardService';
 import { isEntryId, isStandingScope } from '@/lib/leaderboard/standing';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
+import { reportServerError } from '@/lib/server/serverErrors';
 
 const CHECKS_PER_MINUTE = 10;
 const UNAVAILABLE = 'The leaderboard is unavailable. Please try again shortly.';
@@ -38,10 +39,12 @@ export async function GET(request: NextRequest) {
         return reply({ error: 'This entry has no country' }, 400);
       case 'unavailable':
         console.error('Leaderboard standing unavailable:', result.cause);
+        reportServerError('GET /api/leaderboard/rank', 'unavailable', result.cause);
         return reply({ error: UNAVAILABLE }, 503);
     }
   } catch (err) {
     console.error('Unexpected error in GET /api/leaderboard/rank:', err);
+    reportServerError('GET /api/leaderboard/rank', 'unexpected', err);
     return reply({ error: UNAVAILABLE }, 503);
   }
 }

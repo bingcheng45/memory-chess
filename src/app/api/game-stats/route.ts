@@ -4,6 +4,7 @@ import {
   getGameMetric, 
   incrementGameMetric 
 } from '@/lib/services/gameStatsService';
+import { reportServerError } from '@/lib/server/serverErrors';
 
 const hasSupabaseConfig =
   Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL) &&
@@ -34,6 +35,7 @@ export async function GET(request: NextRequest) {
       const { data, error } = await getGameMetric(metricName);
       
       if (error) {
+        reportServerError('GET /api/game-stats', 'failed', error);
         return NextResponse.json(
           { error },
           { status: 500 }
@@ -53,6 +55,7 @@ export async function GET(request: NextRequest) {
       const { data, error } = await getAllGameMetrics();
       
       if (error) {
+        reportServerError('GET /api/game-stats', 'failed', error);
         return NextResponse.json(
           { error },
           { status: 500 }
@@ -63,6 +66,7 @@ export async function GET(request: NextRequest) {
     }
   } catch (err) {
     console.error('Unexpected error in game-stats GET route:', err);
+    reportServerError('GET /api/game-stats', 'unexpected', err);
     return NextResponse.json(
       { error: 'An unexpected error occurred' },
       { status: 500 }
@@ -88,6 +92,7 @@ export async function POST(request: NextRequest) {
     const { success, newValue, error } = await incrementGameMetric(metric, increment);
     
     if (!success) {
+      reportServerError('POST /api/game-stats', 'failed', error);
       return NextResponse.json(
         { error },
         { status: 500 }
@@ -103,6 +108,7 @@ export async function POST(request: NextRequest) {
     });
   } catch (err) {
     console.error('Unexpected error in game-stats POST route:', err);
+    reportServerError('POST /api/game-stats', 'unexpected', err);
     return NextResponse.json(
       { error: 'An unexpected error occurred' },
       { status: 500 }

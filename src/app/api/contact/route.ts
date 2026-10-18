@@ -4,6 +4,7 @@ import en from "../../../../messages/en.json";
 import { CONTACT_MAX_LENGTH, CONTACT_TYPE_VALUES, type ContactFailure } from "@/lib/contact";
 import { appendGoogleSheetRow, SheetsConfigError } from "@/lib/server/googleSheets";
 import { clientAddress, fixedWindowLimiter } from "@/lib/server/rateLimit";
+import { reportServerError } from "@/lib/server/serverErrors";
 
 export const runtime = "nodejs";
 
@@ -23,7 +24,10 @@ const STATUS: Record<ContactFailure, number> = { invalid: 400, unavailable: 503,
 
 // The form shows the reason in the reader's language; details carries the English words for any other caller.
 function failure(reason: ContactFailure, cause?: string, init: ResponseInit = { status: STATUS[reason] }) {
-  if (cause) console.error(`Contact form not sent (${reason}):`, cause);
+  if (cause) {
+    console.error(`Contact form not sent (${reason}):`, cause);
+    reportServerError("POST /api/contact", reason === "unavailable" ? "unavailable" : "failed", cause);
+  }
   return NextResponse.json({ error: "Failed to send message", reason, details: en.contact.errors.reasons[reason] }, init);
 }
 

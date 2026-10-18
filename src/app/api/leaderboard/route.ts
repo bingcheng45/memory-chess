@@ -12,6 +12,7 @@ import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardBoard, type Leade
 import { GAME_CONFIG_RULES } from '@/lib/game/configPrefill';
 import { MEMORIZE_SECONDS_RANGE } from '@/lib/reference/facts';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
+import { reportServerError } from '@/lib/server/serverErrors';
 
 const SUBMISSION_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
 
@@ -93,6 +94,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ data: result.data, playedLike });
   } catch (err) {
     console.error('Unexpected API error:', err);
+    reportServerError('GET /api/leaderboard', 'unexpected', err, { board: board.difficulty });
     return unavailable();
   }
 }
@@ -169,6 +171,7 @@ export async function POST(request: NextRequest) {
     const connectionStatus = await checkSupabaseConnection();
     if (!connectionStatus.connected) {
       console.error('Leaderboard submission unavailable:', connectionStatus.error);
+      reportServerError('POST /api/leaderboard', 'unavailable', connectionStatus.error, { board: board.difficulty });
       return NextResponse.json({ error: SUBMISSION_UNAVAILABLE }, { status: 503 });
     }
     
@@ -191,9 +194,11 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: result.message }, { status: 400 });
       case 'unavailable':
         console.error('Leaderboard submission unavailable:', result.cause);
+        reportServerError('POST /api/leaderboard', 'unavailable', result.cause, { board: board.difficulty });
         return NextResponse.json({ error: SUBMISSION_UNAVAILABLE }, { status: 503 });
       case 'failed':
         console.error('Leaderboard submission failed:', result.cause);
+        reportServerError('POST /api/leaderboard', 'failed', result.cause, { board: board.difficulty });
         return NextResponse.json({ error: 'An unexpected error occurred' }, { status: 500 });
       default: {
         const unhandled: never = result;
@@ -202,6 +207,7 @@ export async function POST(request: NextRequest) {
     }
   } catch (err) {
     console.error('Unexpected error:', err);
+    reportServerError('POST /api/leaderboard', 'unexpected', err);
     return NextResponse.json(
       { error: 'An unexpected error occurred' },
       { status: 500 }

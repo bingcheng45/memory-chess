@@ -1,6 +1,7 @@
 import type { PostgrestError } from '@supabase/supabase-js';
 import { supabase, leaderboardWriter, SUPABASE_WRITES_OFF_REASON, checkSupabaseConnection } from '@/lib/supabase';
 import { LEADERBOARD_ROW_LIMIT } from '@/lib/reference/facts';
+import { reportServerError } from '@/lib/server/serverErrors';
 import { RANKING_ORDER, type BoardCutoff, type LeaderboardCutoffs } from '@/lib/leaderboard/ranking';
 import { parseBoard } from '@/lib/leaderboard/board';
 import { playerNameProblem } from '@/lib/leaderboard/playerName';
@@ -64,6 +65,7 @@ export type LeaderboardSubmitResult =
 export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: LeaderboardEntry[], error?: string}> {
   const unavailable = (what: string, cause: unknown) => {
     console.error(what, cause);
+    reportServerError('leaderboard read', 'unavailable', cause, { board: board.difficulty });
     return { data: [], error: LEADERBOARD_UNAVAILABLE };
   };
   try {

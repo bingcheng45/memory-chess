@@ -7,6 +7,7 @@ import {
   type RecordArticleEventResult,
 } from "@/lib/services/articleStatsService";
 import { isJson, readBodyWithinLimit } from "@/lib/server/requestBody";
+import { reportServerError } from "@/lib/server/serverErrors";
 
 const MAX_BODY_BYTES = 64;
 
@@ -38,7 +39,7 @@ function isViewFromLikelyCrawler(event: ArticleEvent, userAgent: string | null):
   return event === "view" && isCrawler(userAgent);
 }
 
-function respond(result: RecordArticleEventResult): NextResponse {
+function respond(slug: string, result: RecordArticleEventResult): NextResponse {
   switch (result.status) {
     case "recorded": {
       const { views, likes } = result.counts;
@@ -46,9 +47,11 @@ function respond(result: RecordArticleEventResult): NextResponse {
     }
     case "unavailable":
       console.error("Article stats unavailable:", result.cause);
+      reportServerError("POST /api/articles/stats", "unavailable", result.cause, { slug });
       return errorResponse("unavailable");
     case "failed":
       console.error("Article stats write failed:", result.cause);
+      reportServerError("POST /api/articles/stats", "failed", result.cause, { slug });
       return errorResponse("failed");
   }
 }
@@ -71,9 +74,10 @@ export async function POST(request: Request, { params }: RouteContext) {
       return new NextResponse(null, { status: 204 });
     }
 
-    return respond(await recordArticleEvent(slug, event));
+    return respond(slug, await recordArticleEvent(slug, event));
   } catch (cause) {
     console.error("Article stats request failed:", cause);
+    reportServerError("POST /api/articles/stats", "unexpected", cause);
     return errorResponse("failed");
   }
 }

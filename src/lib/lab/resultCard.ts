@@ -1,4 +1,3 @@
-import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import { mean } from "./engine";
 import type { Insight } from "./insights";
 import type { LabResults } from "./metrics";
@@ -36,18 +35,14 @@ export interface StreakLine {
   readonly goal: WeekGoal;
 }
 
-/** Where the card points next. Every kind but a guide finding starts a round at `setting`. */
-export type NextStep =
-  | { readonly kind: "insight"; readonly insight: Insight }
-  | { readonly kind: "more" | "fewer" | "again"; readonly setting: Setting };
 
 export interface ResultCard {
   readonly newBest: NewBest | null;
   readonly vsRecent: VsRecent | null;
   readonly spanChange: SpanChange | null;
   readonly streak: StreakLine;
-  /** Null on a review, which replays a board the player has seen rather than a setting to build on. */
-  readonly next: NextStep | null;
+  /** The engine's top finding to act on; null when there is none, and on a review, which replays a board the player has seen. */
+  readonly next: Insight | null;
 }
 
 export interface ResultCardInput {
@@ -62,9 +57,6 @@ export interface ResultCardInput {
 
 const RECENT_ROUNDS = 5;
 const RECENT_MIN_ROUNDS = 3;
-const MORE_AT = 90;
-const FEWER_BELOW = 50;
-const FEWER_MIN_PIECES = 3;
 
 /** The setting's stored best is this round, under the rule the bests panel uses, and an earlier round at it existed. */
 function newBestOf(round: RoundRecord, others: readonly RoundRecord[], results: LabResults): NewBest | null {
@@ -92,15 +84,6 @@ function spanChangeOf(round: RoundRecord, records: readonly RoundRecord[]): Span
   const to = spanOfRounds(records);
   const from = spanOfRounds(records.filter(({ id }) => id !== round.id));
   return to !== null && (from === null || to > from) ? { to } : null;
-}
-
-function nextOf(round: RoundRecord, results: LabResults): NextStep {
-  const insight = results.insights.value?.insights[0];
-  if (insight) return { kind: "insight", insight };
-  const { pieceCount, memorizeSeconds } = round.config;
-  if (round.accuracy >= MORE_AT && pieceCount < PIECE_COUNT_RANGE.max) return { kind: "more", setting: { pieceCount: pieceCount + 1, memorizeSeconds } };
-  if (round.accuracy < FEWER_BELOW && pieceCount > FEWER_MIN_PIECES) return { kind: "fewer", setting: { pieceCount: pieceCount - 1, memorizeSeconds } };
-  return { kind: "again", setting: { pieceCount, memorizeSeconds } };
 }
 
 /**
@@ -133,6 +116,6 @@ export function resultCardFor({ round, records, results, goal, days, today }: Re
       daysThisWeek: weekProgress(days, today, goal).daysPlayed,
       goal,
     },
-    next: fresh ? nextOf(round, results) : null,
+    next: (fresh && results.insights.value?.insights[0]) || null,
   };
 }

@@ -45,8 +45,27 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-result-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 24px; align-items: start; margin-top: 24px; }
 .lab-game .lab-result-board { margin: 0; padding: 16px; }
 .lab-game .lab-result-board figcaption { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: var(--lp-ink); }
-.lab-game .lab-result-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--lp-line); }
+.lab-game .lab-result-next { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--lp-line); }
+.lab-game .lab-result-next .lab-btn { min-height: 52px; min-width: min(320px, 100%); padding: 0 28px; font-size: 17px; }
+.lab-game .lab-result-next-board { font-weight: 500; opacity: 0.85; font-variant-numeric: tabular-nums; }
+.lab-game .lab-result-actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px; margin-top: 16px; }
 .lab-game .lab-result-link { font: 500 15px/1.4 var(--lp-ui); }
+.lab-game .lab-result-more { flex: 1 1 100%; }
+.lab-game .lab-result-more-toggle { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 4px; border-radius: var(--lp-r-md); font: 500 15px/1.4 var(--lp-ui); color: var(--lp-ink-2); cursor: pointer; list-style: none; }
+.lab-game .lab-result-more-toggle::-webkit-details-marker { display: none; }
+.lab-game .lab-result-more-toggle::after { content: ""; width: 7px; height: 7px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform 0.15s; }
+.lab-game .lab-result-more[open] > .lab-result-more-toggle::after { margin-top: 3px; transform: rotate(-135deg); }
+.lab-game .lab-result-more-toggle:hover { color: var(--lp-ink); }
+.lab-game .lab-result-more-toggle:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
+.lab-game .lab-result-more-list { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-top: 8px; }
+@media (prefers-reduced-motion: reduce) { .lab-game .lab-result-more-toggle::after { transition: none; } }
+
+/* tomorrow's daily board, under the lab card */
+.lab-game .lab-tomorrow { padding: clamp(16px, 3vw, 24px); }
+.lab-game .lab-tomorrow-h { margin: 0; font: 650 18px/1.3 var(--lp-ui); }
+.lab-game .lab-tomorrow-text { margin: 8px 0 0; font: 400 16px/1.5 var(--lp-body); color: var(--lp-ink-2); }
+.lab-game .lab-tomorrow-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-accent); text-underline-offset: 4px; }
+.lab-game .lab-tomorrow-link:hover { text-decoration: underline; }
 
 /* the dashboard figures after the round: two columns of label over value, one on a phone */
 .lab-game .lab-deltas { padding: clamp(16px, 3vw, 24px); }
@@ -76,10 +95,12 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 }
 @media (max-width: 767px) {
   .lab-game .lab-result-grid { grid-template-columns: minmax(0, 1fr); }
-  .lab-game .lab-result-actions .lab-btn { flex: 1 1 calc(50% - 6px); }
-  /* Sharing is not the next step: it keeps its own width beside the leaderboard link, under a full-width Submit, so Try again and New game stay the wide pair. */
-  .lab-game .lab-result-actions .lab-result-submit { flex-basis: 100%; }
-  .lab-game .lab-result-actions .lab-result-share { flex: none; }
+  .lab-game .lab-result-actions > .lab-btn { flex: 1 1 calc(50% - 6px); }
+  .lab-game .lab-result-actions > .lab-result-submit { flex-basis: 100%; }
+  /* The next round stays one tap away: pinned to the foot of the screen while the card runs past it, over a band of the
+     card's own paper so the board slides under it cleanly. Sticky keeps its place in the flow, so nothing moves. */
+  .lab-game .lab-result-next { position: sticky; bottom: 0; z-index: 5; margin: 24px calc(-1 * clamp(16px, 3vw, 32px)) 0; padding: 12px clamp(16px, 3vw, 32px) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
+  .lab-game .lab-result-next .lab-btn { width: 100%; }
 }
 
 /* Text in the lab card, the article tile and the set-board notice is set in Geist, the face the lab card's height reserve was measured in. */

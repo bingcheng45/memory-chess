@@ -909,8 +909,6 @@
         "next": {
           "label": "Berikutnya",
           "why": {
-            "more": "90% atau lebih, jadi tambah satu bidak dengan waktu menghafal yang sama.",
-            "fewer": "Di bawah 50%, jadi kurangi satu bidak dengan waktu menghafal yang sama.",
             "edgeFiles": "Kamu lebih sering meleset di kolom a dan h daripada di kolom tengah.",
             "weakType": "{type, select, q {Menteri} r {Benteng} b {Gajah} n {Kuda} other {Pion}} paling sering terlewat: kamu mengingat {recalled} dari {shown}.",
             "fasterLessAccurate": "Dengan {pieceCount} bidak, {studyTime}, kamu makin cepat per bidak benar tetapi akurasi turun {fell} poin.",
@@ -918,7 +916,6 @@
             "plateau": "Rentangmu bertahan di {span} bidak."
           },
           "play": "Main {pieceCount} bidak, {studyTime}",
-          "again": "Main lagi dengan {pieceCount} bidak, {studyTime}",
           "patterns": "Baca latihan pengenalan pola",
           "vision": "Baca cara melihat seluruh papan"
         }
@@ -974,7 +971,8 @@
         "miss": "Jika kamu gagal",
         "gain": "Hingga <num>+{value}</num>",
         "loss": "Paling banyak <num>−{value}</num>",
-        "announce": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}. Jika kamu gagal, paling banyak −{loss}."
+        "announce": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}. Jika kamu gagal, paling banyak −{loss}.",
+        "announceProvisional": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,10 @@
       "piecesPerSecond": "{value} bidak/dtk",
       "actions": "Tindakan untuk hasil",
       "tryAgain": "Coba lagi",
-      "newGame": "Permainan baru",
+      "nextRound": "Ronde berikutnya",
+      "changeSettings": "Ubah pengaturan",
+      "moreOptions": "Opsi lainnya",
+      "tileDrill": "Latihan ini di levelmu",
       "submitToLeaderboard": "Kirim ke papan peringkat",
       "leaderboardQualifies": "Skor Anda masuk papan peringkat. Kirim sekarang sebelum terlewat.",
       "viewLeaderboard": "Lihat papan peringkat",
@@ -1655,7 +1656,10 @@
     "cardTitle": "Papan harian hari ini sudah siap",
     "cardSetting": "{pieceCount} bidak dan {seconds} detik untuk menghafal.",
     "cardNote": "Semua orang memainkan papan yang sama hari ini, dan kamu punya satu kesempatan.",
-    "play": "Mainkan papan hari ini"
+    "play": "Mainkan papan hari ini",
+    "tomorrowTitle": "Papan besok",
+    "tomorrowOpens": "Dibuka dalam {timeLeft}.",
+    "seeToday": "Lihat papan hari ini"
   },
   "daily": {
     "meta": {

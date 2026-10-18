@@ -1,4 +1,4 @@
-import { bandsOverlap, dailySettingOf, InvalidDayError, isUtcDay, scheduleOf, settingsIn, MAX_LOOKBACK_DAYS, WEEKLY_ARC, type Band, type WeeklyArc } from "@/lib/daily/schedule";
+import { bandsOverlap, dailySettingOf, InvalidDayError, nextDailySettingOf, isUtcDay, scheduleOf, settingsIn, MAX_LOOKBACK_DAYS, WEEKLY_ARC, type Band, type WeeklyArc } from "@/lib/daily/schedule";
 import { utcDayOf } from "@/lib/lab/daily";
 import { DAY_MS } from "@/lib/lab/readiness";
 
@@ -13,6 +13,13 @@ const EXPECTED_WEEKLY_ARC: Record<number, { pieces: [number, number]; seconds: [
   6: { pieces: [6, 12], seconds: [2, 6] },
   0: { pieces: [12, 32], seconds: [12, 12] },
 };
+
+describe("the next day's setting", () => {
+  it("is the board the schedule sets for the following UTC day, across a month's end", () => {
+    expect([nextDailySettingOf("2026-10-13"), nextDailySettingOf("2026-10-31")]).toEqual([dailySettingOf("2026-10-14"), dailySettingOf("2026-11-01")]);
+    expect(nextDailySettingOf("2026-10-13")).toEqual({ pieceCount: 7, memorizeTime: 10 });
+  });
+});
 
 describe("the daily setting", () => {
   it("is the same pinned setting for each day of one week", () => {

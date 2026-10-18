@@ -52,6 +52,6 @@ describe("the result screen when the lab card's code fails to load", () => {
     expect(document.querySelector(".lab-rc-big")).toHaveTextContent("80%");
     screen.getByRole("button", { name: "Try again" }).click();
     expect(onTryAgain).toHaveBeenCalledTimes(1);
-    expect(screen.getByRole("button", { name: "New game" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Change settings" })).toBeInTheDocument();
   });
 });

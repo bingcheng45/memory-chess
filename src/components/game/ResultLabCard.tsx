@@ -9,7 +9,8 @@ import { useWeekGoal } from "@/components/home/useWeekGoal";
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { playHref } from "@/lib/game/roundLink";
 import { INSIGHT_GUIDES } from "@/lib/lab/insights";
-import { resultCardFor, type NewBest, type NextStep, type ResultCard, type Setting, type VsRecent } from "@/lib/lab/resultCard";
+import type { Insight } from "@/lib/lab/insights";
+import { resultCardFor, type NewBest, type ResultCard, type Setting, type VsRecent } from "@/lib/lab/resultCard";
 import type { RoundRecord } from "@/lib/lab/record";
 import ResultLabSlot, { RESULT_LAB_FRAME, RESULT_LAB_LINK, ResultLabEnd } from "./ResultLabSlot";
 import { useSavedRound } from "./useSavedRound";
@@ -54,10 +55,7 @@ function linesOf(t: Translate, { newBest, vsRecent, spanChange, streak }: Result
   ].filter((line): line is string => Boolean(line));
 }
 
-function whyOf(t: Translate, next: NextStep): string | null {
-  if (next.kind === "again") return null;
-  if (next.kind !== "insight") return t(`next.why.${next.kind}`);
-  const { ruleId, params } = next.insight;
+function whyOf(t: Translate, { ruleId, params }: Insight): string {
   const { memorizeSeconds } = params;
   return t(`next.why.${ruleId}`, memorizeSeconds === undefined ? params : { ...params, studyTime: seconds(memorizeSeconds) });
 }
@@ -74,7 +72,7 @@ function GuideLink({ t, guide }: { t: Translate; guide: keyof typeof INSIGHT_GUI
   );
 }
 
-function PlayLink({ t, label, setting, onPlay }: { t: Translate; label: "again" | "play"; setting: Setting; onPlay: ResultLabCardProps["onPlay"] }) {
+function PlayLink({ t, setting, onPlay }: { t: Translate; setting: Setting; onPlay: ResultLabCardProps["onPlay"] }) {
   const { pieceCount, memorizeSeconds } = setting;
   const play = (event: MouseEvent) => {
     trackNext();
@@ -84,15 +82,13 @@ function PlayLink({ t, label, setting, onPlay }: { t: Translate; label: "again" 
   };
   return (
     <Link className={RESULT_LAB_LINK} href={playHref(pieceCount, memorizeSeconds, SOURCE)} onClick={play}>
-      {t(`next.${label}`, { pieceCount, studyTime: seconds(memorizeSeconds) })} <span aria-hidden="true">→</span>
+      {t("next.play", { pieceCount, studyTime: seconds(memorizeSeconds) })} <span aria-hidden="true">→</span>
     </Link>
   );
 }
 
-function NextAction({ t, next, onPlay }: { t: Translate; next: NextStep; onPlay: ResultLabCardProps["onPlay"] }) {
-  if (next.kind !== "insight") return <PlayLink t={t} label={next.kind === "again" ? "again" : "play"} setting={next.setting} onPlay={onPlay} />;
-  const { action } = next.insight;
-  return action.kind === "guide" ? <GuideLink t={t} guide={action.guide} /> : <PlayLink t={t} label="play" setting={action} onPlay={onPlay} />;
+function NextAction({ t, insight: { action }, onPlay }: { t: Translate; insight: Insight; onPlay: ResultLabCardProps["onPlay"] }) {
+  return action.kind === "guide" ? <GuideLink t={t} guide={action.guide} /> : <PlayLink t={t} setting={action} onPlay={onPlay} />;
 }
 
 function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData; onPlay: ResultLabCardProps["onPlay"] }) {
@@ -107,7 +103,6 @@ function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData;
   if (!card) return <ResultLabEnd />;
 
   const { next } = card;
-  const why = next && whyOf(t, next);
   return (
     <section aria-labelledby="result-lab-title" className={`${RESULT_LAB_FRAME} flex flex-col gap-2`}>
       <header className="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
@@ -129,7 +124,7 @@ function FoundCard({ round, data, onPlay }: { round: RoundRecord; data: LabData;
       {next && (
         <p className="border-t border-[var(--lp-line)] pt-3 text-sm text-[var(--lp-ink-2)]">
           <span className="font-semibold text-[var(--lp-ink)]">{t("next.label")}.</span>
-          {why && ` ${why}`} <NextAction t={t} next={next} onPlay={onPlay} />
+          {` ${whyOf(t, next)}`} <NextAction t={t} insight={next} onPlay={onPlay} />
         </p>
       )}
     </section>

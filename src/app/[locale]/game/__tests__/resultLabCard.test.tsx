@@ -66,7 +66,8 @@ describe("the lab card on the result screen", () => {
     const card = await screen.findByRole("region", { name: "Your lab record" });
 
     expect(within(card).getAllByRole("listitem").map((item) => item.textContent)).toEqual(["·Day 1, 1 of 5 days this week"]);
-    expect(within(card).getByRole("link").getAttribute("href")).toBe("/game?pieceCount=5&memorizeTime=10&source=result_next");
+    expect(within(card).queryAllByRole("link")).toEqual([]);
+    expect(screen.getByRole("button", { name: "Next round 5 pcs / 10s" })).toBeInTheDocument();
     const figures = await screen.findByRole("region", { name: "Your dashboard after this round" });
     expect(said(figures)).toEqual([
       "Study time 2.5 s per piece, new",

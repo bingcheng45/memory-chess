@@ -84,6 +84,8 @@ function TileHeader({ article }: { article: TileArticle }) {
 
 function ShownTile({ article, round }: { article: TileArticle; round: RoundSize }) {
   const t = useTranslations("articles.tile");
+  // Outside the articles namespace, whose translations are approved per locale and would need a fresh review.
+  const tResult = useTranslations("game.result");
   const { startGame } = useGameStore();
   const drillRound = useReaderRound();
   const { slug, drill } = article;
@@ -106,7 +108,7 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
       <TileHeader article={article} />
       <dl className="mb-3 mt-3.5 grid grid-cols-2 gap-2">
         <RoundBox label={t("yourRound")} size={round} />
-        <RoundBox label={t("yourDrill")} size={drillRound} />
+        <RoundBox label={tResult("tileDrill")} size={drillRound} />
       </dl>
       <p className={`mb-3.5 text-[14.5px] leading-normal text-[var(--lp-ink-2)] ${ARTICLE_LONG_WORDS}`}>{drill.why}</p>
       <div className="flex flex-wrap gap-2">

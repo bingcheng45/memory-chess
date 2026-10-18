@@ -909,8 +909,6 @@
         "next": {
           "label": "Következő",
           "why": {
-            "more": "Legalább 90%, ezért eggyel több bábu ugyanannyi megfigyelési idővel.",
-            "fewer": "50% alatt, ezért eggyel kevesebb bábu ugyanannyi megfigyelési idővel.",
             "edgeFiles": "Az a- és h-vonalat gyakrabban hibázod el, mint a középső vonalakat.",
             "weakType": "{type, select, q {A vezérek} r {A bástyák} b {A futók} n {A huszárok} other {A gyalogok}} csúsznak ki a leggyakrabban: {shown} közül {recalled} felidézve.",
             "fasterLessAccurate": "{pieceCount} bábu, {studyTime} beállításnál helyes bábunként gyorsabb lettél, a pontosság viszont {fell} ponttal esett.",
@@ -918,7 +916,6 @@
             "plateau": "A terjedelmed {span} bábunál megállt."
           },
           "play": "Játék: {pieceCount} bábu, {studyTime}",
-          "again": "Újra: {pieceCount} bábu, {studyTime}",
           "patterns": "Olvasd el a mintafelismerő gyakorlatokat",
           "vision": "Olvasd el, hogyan lásd az egész táblát"
         }
@@ -974,7 +971,8 @@
         "miss": "Ha nem sikerül",
         "gain": "Legfeljebb <num>+{value}</num>",
         "loss": "Legfeljebb <num>−{value}</num>",
-        "announce": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}. Ha nem sikerül, legfeljebb −{loss}."
+        "announce": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}. Ha nem sikerül, legfeljebb −{loss}.",
+        "announceProvisional": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,10 @@
       "piecesPerSecond": "{value} bábu/mp",
       "actions": "Eredményhez tartozó műveletek",
       "tryAgain": "Újra",
-      "newGame": "Új játszma",
+      "nextRound": "Következő kör",
+      "changeSettings": "Beállítások módosítása",
+      "moreOptions": "További lehetőségek",
+      "tileDrill": "Ez a gyakorlat a te szintedre",
       "submitToLeaderboard": "Beküldés a ranglistára",
       "leaderboardQualifies": "Az eredményed felfér a ranglistára. Küldd be, mielőtt lecsúszik.",
       "viewLeaderboard": "Ranglista megtekintése",
@@ -1655,7 +1656,10 @@
     "cardTitle": "A mai napi tábla elérhető",
     "cardSetting": "{pieceCount} bábu és {seconds} mp a megjegyzésre.",
     "cardNote": "Ma mindenki ugyanazt a táblát játssza, és egy próbálkozásod van.",
-    "play": "Játszd a mai táblát"
+    "play": "Játszd a mai táblát",
+    "tomorrowTitle": "A holnapi tábla",
+    "tomorrowOpens": "{timeLeft} múlva nyílik.",
+    "seeToday": "A mai tábla megtekintése"
   },
   "daily": {
     "meta": {

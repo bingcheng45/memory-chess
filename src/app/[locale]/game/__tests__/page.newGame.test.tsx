@@ -34,7 +34,7 @@ describe("GamePage new game after a round", () => {
     act(() => useGameStore.getState().endCountdown());
     fireEvent.click(screen.getByRole("button", { name: "Hide board" }));
     fireEvent.click(screen.getByRole("button", { name: "Submit" }));
-    fireEvent.click(screen.getByRole("button", { name: "New game" }));
+    fireEvent.click(screen.getByRole("button", { name: "Change settings" }));
 
     expect(screen.getByRole("button", { name: /Hard/ })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: /Medium/ })).toHaveAttribute("aria-pressed", "false");

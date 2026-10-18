@@ -18,7 +18,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
-import type { RoundSource } from "@/lib/analytics/events";
+import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
@@ -32,12 +32,14 @@ import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
 import { feedbackDue, isSessionFirstResult } from "@/components/game/feedbackSchedule";
 import { localDayOf } from "@/lib/lab/record";
 import type { LabRound } from "@/lib/lab/recordRound";
+import { nextBoardOf } from "@/lib/game/nextBoard";
 import type { RecordBefore } from "@/components/game/ResultDeltas";
 import { RoundBoard } from "@/components/round/RoundBoard";
 import { ReadoutCard } from "@/components/round/ReadoutCard";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import type { BoardAction } from "@/lib/round/round";
 import ArticleTile from "@/components/game/ArticleTile";
+import TomorrowBoardCard from "@/components/game/TomorrowBoardCard";
 import { countWrong } from "@/lib/game/scoring";
 import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
 import { recordReadDuringRound, warmedResultDeltas } from "@/components/game/resultDeltasWarm";
@@ -108,6 +110,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const tCountry = useTranslations("country");
   const tComparison = useTranslations("game.comparison");
   const tDaily = useTranslations("daily.round");
+  const tConfig = useTranslations("game.config");
   const { gameState, round, history } = useGameStore();
   const { labRound } = gameState;
   const { countryCode, setCountryCode } = useSettingsStore();
@@ -327,9 +330,17 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       },
       cutoffs,
     );
-  // A perfect round makes trying again the next step; otherwise a new setting is.
-  const tryAgainFirst = accuracy === 100;
   const ratingNote = ratingNoteOf(gameState.rating, t);
+  const next = nextBoardOf({ pieceCount: gameState.pieceCount, memorizeSeconds: gameState.memorizeTime }, accuracy);
+  const playNext = () => {
+    trackEvent({ name: "lab_panel_action", params: { panel: "resultCard", action: "next" } });
+    onPlay(next.pieceCount, next.memorizeSeconds, "result_next");
+  };
+  const submitButton = leaderboardEligible && (
+    <button type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
+      {t("submitToLeaderboard")}
+    </button>
+  );
 
   return (
     <div className="lab-result w-full space-y-6 pb-4">
@@ -367,36 +378,46 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           </div>
         )}
 
+        {/* On a phone this sticks to the foot of the screen until the player scrolls to it, so the next round is one tap from the score. */}
+        <div className="lab-result-next">
+          <button type="button" onClick={playNext} className="lab-btn lab-btn-primary">
+            {t("nextRound")}
+            <span className="lab-result-next-board">{tConfig("presetSummary", { pieces: next.pieceCount, seconds: next.memorizeSeconds })}</span>
+          </button>
+        </div>
+
         <nav aria-label={t("actions")} className="lab-result-actions">
-          <button type="button" onClick={onTryAgain} className={`lab-btn ${tryAgainFirst ? "lab-btn-primary" : "lab-btn-secondary"}`}>
+          <button type="button" onClick={onTryAgain} className="lab-btn lab-btn-secondary">
             {t("tryAgain")}
           </button>
-          <button type="button" onClick={onNewGame} className={`lab-btn ${tryAgainFirst ? "lab-btn-secondary" : "lab-btn-primary"}`}>
-            {t("newGame")}
+          <button type="button" onClick={onNewGame} className="lab-btn lab-btn-secondary">
+            {t("changeSettings")}
           </button>
-          {gameState.board?.kind === "daily" && keepsRecord && (
-            <Link href="/daily" className="lab-btn lab-btn-secondary lab-result-submit">
-              {tDaily("join")}
-            </Link>
-          )}
-          {leaderboardEligible && (
-            <button type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
-              {t("submitToLeaderboard")}
-            </button>
-          )}
-          {round.phase === "scored" && (
-            <ShareResult
-              key={labRound?.facts.id}
-              share={roundShareOf(round, {
-                rating: gameState.skillRating ?? START_RATING,
-                change: extendedGameState.skillRatingChange ?? 0,
-                winStreak: gameState.streak ?? 0,
-              })}
-            />
-          )}
-          <Link href="/leaderboard" className="lab-result-link">
-            {t("viewLeaderboard")}
-          </Link>
+          {showLeaderboardQualifier && submitButton}
+          <details className="lab-result-more">
+            <summary className="lab-result-more-toggle">{t("moreOptions")}</summary>
+            <div className="lab-result-more-list">
+              {gameState.board?.kind === "daily" && keepsRecord && (
+                <Link href="/daily" className="lab-btn lab-btn-secondary">
+                  {tDaily("join")}
+                </Link>
+              )}
+              {!showLeaderboardQualifier && submitButton}
+              {round.phase === "scored" && (
+                <ShareResult
+                  key={labRound?.facts.id}
+                  share={roundShareOf(round, {
+                    rating: gameState.skillRating ?? START_RATING,
+                    change: extendedGameState.skillRatingChange ?? 0,
+                    winStreak: gameState.streak ?? 0,
+                  })}
+                />
+              )}
+              <Link href="/leaderboard" className="lab-result-link">
+                {t("viewLeaderboard")}
+              </Link>
+            </div>
+          </details>
         </nav>
         {isReturningPlayer(history.length) && (
           <CommunityInvite placement="result" line={tCommunity("resultLine")} link={tCommunity("link")} />
@@ -412,6 +433,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
               </Suspense>
             </ErrorBoundary>
           )}
+
+          <TomorrowBoardCard />
 
           {deltas && labRound && (
             <ErrorBoundary key={labRound.facts.id} fallback={<></>}>

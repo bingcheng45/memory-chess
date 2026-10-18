@@ -909,8 +909,6 @@
         "next": {
           "label": "下一步",
           "why": {
-            "more": "达到 90% 或以上，所以在相同记忆时间下多加一子。",
-            "fewer": "低于 50%，所以在相同记忆时间下减少一子。",
             "edgeFiles": "你在 a、h 列的失误比中心列更多。",
             "weakType": "{type, select, q {后} r {车} b {象} n {马} other {兵}}最容易漏记：你记住了 {shown} 个中的 {recalled} 个。",
             "fasterLessAccurate": "在 {pieceCount} 子、{studyTime} 下，你每个正确棋子用时更短了，但准确率下降了 {fell} 个百分点。",
@@ -918,7 +916,6 @@
             "plateau": "你的记忆广度停在了 {span} 子。"
           },
           "play": "玩 {pieceCount} 子、{studyTime}",
-          "again": "以 {pieceCount} 子、{studyTime} 再玩一次",
           "patterns": "阅读模式识别练习",
           "vision": "阅读如何纵观全盘"
         }
@@ -974,7 +971,8 @@
         "miss": "如果失手",
         "gain": "最多 <num>+{value}</num>",
         "loss": "最多 <num>−{value}</num>",
-        "announce": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。如果失手，最多 −{loss}。"
+        "announce": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。如果失手，最多 −{loss}。",
+        "announceProvisional": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。"
       }
     },
     "presets": {
@@ -1040,7 +1038,10 @@
       "piecesPerSecond": "{value} 子/秒",
       "actions": "结果操作",
       "tryAgain": "再来一局",
-      "newGame": "新对局",
+      "nextRound": "下一轮",
+      "changeSettings": "更改设置",
+      "moreOptions": "更多选项",
+      "tileDrill": "适合你水平的这道练习",
       "submitToLeaderboard": "提交到排行榜",
       "leaderboardQualifies": "你的成绩能上排行榜，趁还有机会赶紧提交。",
       "viewLeaderboard": "查看排行榜",
@@ -1655,7 +1656,10 @@
     "cardTitle": "今日每日棋局已就绪",
     "cardSetting": "{pieceCount} 子，记忆时间 {seconds} 秒。",
     "cardNote": "今天所有人玩同一局，你只有一次机会。",
-    "play": "开始今日棋局"
+    "play": "开始今日棋局",
+    "tomorrowTitle": "明日棋局",
+    "tomorrowOpens": "{timeLeft}后开放。",
+    "seeToday": "查看今日棋局"
   },
   "daily": {
     "meta": {

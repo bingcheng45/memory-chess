@@ -909,8 +909,6 @@
         "next": {
           "label": "Sıradaki",
           "why": {
-            "more": "%90 veya üzeri, bu yüzden aynı inceleme süresiyle bir taş fazla.",
-            "fewer": "%50'nin altında, bu yüzden aynı inceleme süresiyle bir taş eksik.",
             "edgeFiles": "a ve h sütunlarını merkez sütunlardan daha sık kaçırıyorsun.",
             "weakType": "En çok {type, select, q {vezirler} r {kaleler} b {filler} n {atlar} other {piyonlar}} kaçıyor: {shown} taştan {recalled} tanesini hatırladın.",
             "fasterLessAccurate": "{pieceCount} taş, {studyTime} ile doğru taş başına hızlandın ama isabet {fell} puan düştü.",
@@ -918,7 +916,6 @@
             "plateau": "Kapasiten {span} taşta sabit kaldı."
           },
           "play": "{pieceCount} taş, {studyTime} oyna",
-          "again": "{pieceCount} taş, {studyTime} ile tekrar oyna",
           "patterns": "Örüntü tanıma alıştırmalarını oku",
           "vision": "Tahtanın tamamını nasıl göreceğini oku"
         }
@@ -974,7 +971,8 @@
         "miss": "Kaçırırsan",
         "gain": "En fazla <num>+{value}</num>",
         "loss": "En fazla <num>−{value}</num>",
-        "announce": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}. Kaçırırsan en fazla −{loss}."
+        "announce": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}. Kaçırırsan en fazla −{loss}.",
+        "announceProvisional": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,10 @@
       "piecesPerSecond": "{value} taş/sn",
       "actions": "Sonuç işlemleri",
       "tryAgain": "Tekrar dene",
-      "newGame": "Yeni oyun",
+      "nextRound": "Sonraki tur",
+      "changeSettings": "Ayarları değiştir",
+      "moreOptions": "Daha fazla seçenek",
+      "tileDrill": "Bu alıştırma senin seviyende",
       "submitToLeaderboard": "Sıralamaya gönder",
       "leaderboardQualifies": "Skorun sıralamaya giriyor. Fırsatı kaçırmadan hemen gönder.",
       "viewLeaderboard": "Sıralamayı gör",
@@ -1655,7 +1656,10 @@
     "cardTitle": "Bugünün günlük tahtası hazır",
     "cardSetting": "{pieceCount} taş ve ezberlemek için {seconds} saniye.",
     "cardNote": "Bugün herkes aynı tahtayı oynuyor ve tek bir deneme hakkın var.",
-    "play": "Bugünün tahtasını oyna"
+    "play": "Bugünün tahtasını oyna",
+    "tomorrowTitle": "Yarının tahtası",
+    "tomorrowOpens": "{timeLeft} sonra açılır.",
+    "seeToday": "Bugünün tahtasını gör"
   },
   "daily": {
     "meta": {

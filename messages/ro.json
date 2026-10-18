@@ -909,8 +909,6 @@
         "next": {
           "label": "Următorul pas",
           "why": {
-            "more": "90% sau mai mult, așa că o piesă în plus la același timp de studiu.",
-            "fewer": "Sub 50%, așa că o piesă în minus la același timp de studiu.",
             "edgeFiles": "Greșești pe coloanele a și h mai des decât pe coloanele din centru.",
             "weakType": "{type, select, q {Damele} r {Turnurile} b {Nebunii} n {Caii} other {Pionii}} îți scapă cel mai des: ai reținut {recalled} din {shown}.",
             "fasterLessAccurate": "La {pieceCount} piese, {studyTime}, ai devenit mai rapid pe piesă corectă, iar precizia a scăzut cu {fell} puncte.",
@@ -918,7 +916,6 @@
             "plateau": "Capacitatea ta a rămas la {span} piese."
           },
           "play": "Joacă {pieceCount} piese, {studyTime}",
-          "again": "Joacă din nou {pieceCount} piese, {studyTime}",
           "patterns": "Citește exercițiile de recunoaștere a tiparelor",
           "vision": "Citește cum să vezi toată tabla"
         }
@@ -974,7 +971,8 @@
         "miss": "Dacă greșești",
         "gain": "Până la <num>+{value}</num>",
         "loss": "Cel mult <num>−{value}</num>",
-        "announce": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}. Dacă greșești, cel mult −{loss}."
+        "announce": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}. Dacă greșești, cel mult −{loss}.",
+        "announceProvisional": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,10 @@
       "piecesPerSecond": "{value} piese/s",
       "actions": "Acțiuni pentru rezultat",
       "tryAgain": "Încearcă din nou",
-      "newGame": "Partidă nouă",
+      "nextRound": "Runda următoare",
+      "changeSettings": "Schimbă setările",
+      "moreOptions": "Mai multe opțiuni",
+      "tileDrill": "Acest exercițiu la nivelul tău",
       "submitToLeaderboard": "Trimite în clasament",
       "leaderboardQualifies": "Rezultatul tău intră în clasament. Trimite-l până nu e prea târziu.",
       "viewLeaderboard": "Vezi clasamentul",
@@ -1655,7 +1656,10 @@
     "cardTitle": "Tabla zilei de azi este gata",
     "cardSetting": "{pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} și {seconds, plural, one {# secundă} few {# secunde} other {# de secunde}} pentru memorare.",
     "cardNote": "Azi toată lumea joacă aceeași tablă și ai o singură încercare.",
-    "play": "Joacă tabla de azi"
+    "play": "Joacă tabla de azi",
+    "tomorrowTitle": "Tabla de mâine",
+    "tomorrowOpens": "Se deschide în {timeLeft}.",
+    "seeToday": "Vezi tabla de azi"
   },
   "daily": {
     "meta": {

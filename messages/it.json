@@ -909,8 +909,6 @@
         "next": {
           "label": "Prossimo passo",
           "why": {
-            "more": "90% o meglio, quindi un pezzo in più con lo stesso tempo di studio.",
-            "fewer": "Sotto il 50%, quindi un pezzo in meno con lo stesso tempo di studio.",
             "edgeFiles": "Sbagli le colonne a e h più spesso delle colonne centrali.",
             "weakType": "{type, select, q {Le donne} r {Le torri} b {Gli alfieri} n {I cavalli} other {I pedoni}} sfuggono di più: ne hai ricordati {recalled} su {shown}.",
             "fasterLessAccurate": "A {pieceCount} pezzi, {studyTime}, hai guadagnato velocità per pezzo corretto e la precisione è scesa di {fell} punti.",
@@ -918,7 +916,6 @@
             "plateau": "Il tuo span è fermo a {span} pezzi."
           },
           "play": "Gioca {pieceCount} pezzi, {studyTime}",
-          "again": "Gioca di nuovo a {pieceCount} pezzi, {studyTime}",
           "patterns": "Leggi gli esercizi di riconoscimento degli schemi",
           "vision": "Leggi come vedere tutta la scacchiera"
         }
@@ -974,7 +971,8 @@
         "miss": "Se sbagli",
         "gain": "Fino a <num>+{value}</num>",
         "loss": "Al massimo <num>−{value}</num>",
-        "announce": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}. Se sbagli, al massimo −{loss}."
+        "announce": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}. Se sbagli, al massimo −{loss}.",
+        "announceProvisional": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,10 @@
       "piecesPerSecond": "{value} pezzi/s",
       "actions": "Azioni sul risultato",
       "tryAgain": "Riprova",
-      "newGame": "Nuova partita",
+      "nextRound": "Round successivo",
+      "changeSettings": "Cambia impostazioni",
+      "moreOptions": "Altre opzioni",
+      "tileDrill": "Questo esercizio al tuo livello",
       "submitToLeaderboard": "Invia alla classifica",
       "leaderboardQualifies": "Il tuo punteggio entra in classifica. Invialo prima che sfumi.",
       "viewLeaderboard": "Vedi la classifica",
@@ -1655,7 +1656,10 @@
     "cardTitle": "La scacchiera del giorno è pronta",
     "cardSetting": "{pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}} e {seconds, plural, one {# secondo} many {# secondi} other {# secondi}} per memorizzare.",
     "cardNote": "Oggi tutti giocano la stessa scacchiera e hai un solo tentativo.",
-    "play": "Gioca la scacchiera di oggi"
+    "play": "Gioca la scacchiera di oggi",
+    "tomorrowTitle": "Scacchiera di domani",
+    "tomorrowOpens": "Si apre tra {timeLeft}.",
+    "seeToday": "Vedi la scacchiera di oggi"
   },
   "daily": {
     "meta": {

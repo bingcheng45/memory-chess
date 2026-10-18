@@ -909,8 +909,6 @@
         "next": {
           "label": "Als Nächstes",
           "why": {
-            "more": "90 % oder besser, also eine Figur mehr bei gleicher Einprägezeit.",
-            "fewer": "Unter 50 %, also eine Figur weniger bei gleicher Einprägezeit.",
             "edgeFiles": "Du verfehlst die a- und h-Linie öfter als die Zentrumslinien.",
             "weakType": "{type, select, q {Damen} r {Türme} b {Läufer} n {Springer} other {Bauern}} entgleiten dir am häufigsten: {recalled} von {shown} erinnert.",
             "fasterLessAccurate": "Bei {pieceCount} Figuren, {studyTime}, warst du pro richtiger Figur schneller, und die Genauigkeit sank um {fell} Punkte.",
@@ -918,7 +916,6 @@
             "plateau": "Deine Spanne bleibt bei {span} Figuren stehen."
           },
           "play": "{pieceCount} Figuren, {studyTime} spielen",
-          "again": "Noch einmal mit {pieceCount} Figuren, {studyTime}",
           "patterns": "Übungen zur Mustererkennung lesen",
           "vision": "Lesen, wie du das ganze Brett siehst"
         }
@@ -974,7 +971,8 @@
         "miss": "Wenn es misslingt",
         "gain": "Bis zu <num>+{value}</num>",
         "loss": "Höchstens <num>−{value}</num>",
-        "announce": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}. Wenn es misslingt, höchstens −{loss}."
+        "announce": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}. Wenn es misslingt, höchstens −{loss}.",
+        "announceProvisional": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,10 @@
       "piecesPerSecond": "{value} Figuren/s",
       "actions": "Aktionen zum Ergebnis",
       "tryAgain": "Nochmal",
-      "newGame": "Neue Partie",
+      "nextRound": "Nächste Runde",
+      "changeSettings": "Einstellungen ändern",
+      "moreOptions": "Weitere Optionen",
+      "tileDrill": "Diese Übung auf deinem Niveau",
       "submitToLeaderboard": "In die Bestenliste eintragen",
       "leaderboardQualifies": "Dein Ergebnis schafft es in die Bestenliste. Trag es gleich ein.",
       "viewLeaderboard": "Bestenliste ansehen",
@@ -1655,7 +1656,10 @@
     "cardTitle": "Das heutige Tagesbrett ist bereit",
     "cardSetting": "{pieceCount, plural, one {# Figur} other {# Figuren}} und {seconds, plural, one {# Sekunde} other {# Sekunden}} zum Einprägen.",
     "cardNote": "Heute spielen alle dasselbe Brett, und du hast einen Versuch.",
-    "play": "Heutiges Brett spielen"
+    "play": "Heutiges Brett spielen",
+    "tomorrowTitle": "Morgiges Brett",
+    "tomorrowOpens": "Öffnet in {timeLeft}.",
+    "seeToday": "Heutiges Brett ansehen"
   },
   "daily": {
     "meta": {

@@ -909,8 +909,6 @@
         "next": {
           "label": "आगे",
           "why": {
-            "more": "90% या बेहतर, इसलिए उतने ही समय में एक मोहरा और।",
-            "fewer": "50% से कम, इसलिए उतने ही समय में एक मोहरा कम।",
             "edgeFiles": "आप a और h फ़ाइलें बीच की फ़ाइलों से ज़्यादा बार चूकते हैं।",
             "weakType": "{type, select, q {वज़ीर} r {हाथी} b {ऊँट} n {घोड़े} other {प्यादे}} सबसे ज़्यादा फिसलते हैं: आपको {shown} में से {recalled} याद रहे।",
             "fasterLessAccurate": "{pieceCount} मोहरे, {studyTime} पर आप प्रति सही मोहरा तेज़ हुए, लेकिन सटीकता {fell} अंक गिरी।",
@@ -918,7 +916,6 @@
             "plateau": "आपकी क्षमता {span} मोहरों पर टिकी है।"
           },
           "play": "{pieceCount} मोहरे, {studyTime} खेलें",
-          "again": "{pieceCount} मोहरे, {studyTime} पर फिर खेलें",
           "patterns": "पैटर्न पहचानने के अभ्यास पढ़ें",
           "vision": "पढ़ें कि पूरा बोर्ड एक साथ कैसे देखें"
         }
@@ -974,7 +971,8 @@
         "miss": "अगर चूक जाएँ",
         "gain": "अधिकतम <num>+{value}</num>",
         "loss": "अधिकतम <num>−{value}</num>",
-        "announce": "बोर्ड रेटिंग {board}। आपकी रेटिंग {rating}। अपेक्षित सटीकता {expected}%। अगर आप इसे पूरा करें, तो अधिकतम +{gain}। अगर चूक जाएँ, तो अधिकतम −{loss}।"
+        "announce": "बोर्ड रेटिंग {board}। आपकी रेटिंग {rating}। अपेक्षित सटीकता {expected}%। अगर आप इसे पूरा करें, तो अधिकतम +{gain}। अगर चूक जाएँ, तो अधिकतम −{loss}।",
+        "announceProvisional": "बोर्ड रेटिंग {board}। आपकी रेटिंग {rating}। अपेक्षित सटीकता {expected}%। अगर आप इसे पूरा करें, तो अधिकतम +{gain}।"
       }
     },
     "presets": {
@@ -1040,7 +1038,10 @@
       "piecesPerSecond": "{value} मोहरे/से.",
       "actions": "नतीजे से जुड़े विकल्प",
       "tryAgain": "फिर कोशिश करें",
-      "newGame": "नया गेम",
+      "nextRound": "अगला राउंड",
+      "changeSettings": "सेटिंग बदलें",
+      "moreOptions": "और विकल्प",
+      "tileDrill": "आपके स्तर पर यह अभ्यास",
       "submitToLeaderboard": "लीडरबोर्ड पर भेजें",
       "leaderboardQualifies": "आपका स्कोर लीडरबोर्ड में आने लायक है। मौका निकलने से पहले भेजें।",
       "viewLeaderboard": "लीडरबोर्ड देखें",
@@ -1655,7 +1656,10 @@
     "cardTitle": "आज का दैनिक बोर्ड तैयार है",
     "cardSetting": "{pieceCount, plural, one {# मोहरा} other {# मोहरे}} और याद करने के लिए {seconds, plural, one {# सेकंड} other {# सेकंड}}।",
     "cardNote": "आज सभी एक ही बोर्ड खेलते हैं, और आपको एक ही मौका मिलता है।",
-    "play": "आज का बोर्ड खेलें"
+    "play": "आज का बोर्ड खेलें",
+    "tomorrowTitle": "कल का बोर्ड",
+    "tomorrowOpens": "{timeLeft} में खुलेगा।",
+    "seeToday": "आज का बोर्ड देखें"
   },
   "daily": {
     "meta": {

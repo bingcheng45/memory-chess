@@ -64,10 +64,10 @@
       "chooseSettings": "Velg brikker og tid"
     },
     "video": {
-      "title": "Se hvordan Memory Chess fungerer",
-      "subtitle": "En kjapp guide til å studere brettet, bygge opp stillingen og tolke poengsummen.",
-      "iframeTitle": "Slik spiller du Memory Chess",
-      "credit": "Video: «A New Way To Train Your Vision» av Colin Galen"
+      "title": "Tren ferdigheten bak spillet",
+      "subtitle": "En kort video av Colin Galen om visualisering, som hver runde trener.",
+      "iframeTitle": "YouTube-video: {title}",
+      "credit": "Video: «{title}» av Colin Galen"
     },
     "learn": {
       "browseCta": "Bla gjennom guidene"

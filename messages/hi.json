@@ -64,10 +64,10 @@
       "chooseSettings": "मोहरे और समय चुनें"
     },
     "video": {
-      "title": "देखें Memory Chess कैसे काम करता है",
-      "subtitle": "बोर्ड को देखने, स्थिति दोबारा बनाने और स्कोर परखने की एक छोटी गाइड।",
-      "iframeTitle": "Memory Chess कैसे खेलें",
-      "credit": "वीडियो: “A New Way To Train Your Vision”, Colin Galen द्वारा"
+      "title": "वह कौशल निखारें जिस पर यह खेल टिका है",
+      "subtitle": "विज़ुअलाइज़ेशन पर Colin Galen का छोटा वीडियो, वही कौशल जिसे हर राउंड निखारता है।",
+      "iframeTitle": "YouTube वीडियो: {title}",
+      "credit": "वीडियो: “{title}”, Colin Galen द्वारा"
     },
     "learn": {
       "browseCta": "शतरंज गाइड देखें"

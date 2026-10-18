@@ -64,10 +64,10 @@
       "chooseSettings": "Wybierz figury i czas"
     },
     "video": {
-      "title": "Zobacz, jak działa Memory Chess",
-      "subtitle": "Krótki przewodnik: jak studiować szachownicę, odtwarzać pozycję i czytać swój wynik.",
-      "iframeTitle": "Jak grać w Memory Chess",
-      "credit": "Wideo: „A New Way To Train Your Vision”, Colin Galen"
+      "title": "Ćwicz umiejętność, na której opiera się gra",
+      "subtitle": "Krótki film Colina Galena o wizualizacji, umiejętności, którą ćwiczy każda runda.",
+      "iframeTitle": "Film na YouTube: {title}",
+      "credit": "Wideo: „{title}”, Colin Galen"
     },
     "learn": {
       "browseCta": "Przeglądaj poradniki"

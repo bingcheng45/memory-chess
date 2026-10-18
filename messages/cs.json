@@ -64,10 +64,10 @@
       "chooseSettings": "Zvolte počet figur a čas"
     },
     "video": {
-      "title": "Podívejte se, jak Memory Chess funguje",
-      "subtitle": "Krátký průvodce: jak si prohlédnout šachovnici, poskládat pozici a přečíst si své skóre.",
-      "iframeTitle": "Jak hrát Memory Chess",
-      "credit": "Video: „A New Way To Train Your Vision“ od Colina Galena"
+      "title": "Trénujte dovednost, na které hra stojí",
+      "subtitle": "Krátké video Colina Galena o vizualizaci, dovednosti, kterou trénuje každé kolo.",
+      "iframeTitle": "Video na YouTube: {title}",
+      "credit": "Video: „{title}“ od Colina Galena"
     },
     "learn": {
       "browseCta": "Procházet návody"

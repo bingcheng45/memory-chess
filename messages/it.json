@@ -64,10 +64,10 @@
       "chooseSettings": "Scegli pezzi e tempo"
     },
     "video": {
-      "title": "Guarda come funziona Memory Chess",
-      "subtitle": "Una guida veloce per studiare la scacchiera, ricostruire la posizione e leggere il tuo punteggio.",
-      "iframeTitle": "Come giocare a Memory Chess",
-      "credit": "Video: «A New Way To Train Your Vision», di Colin Galen"
+      "title": "Allena l’abilità alla base del gioco",
+      "subtitle": "Un breve video di Colin Galen sulla visualizzazione, l’abilità che ogni partita allena.",
+      "iframeTitle": "Video YouTube: {title}",
+      "credit": "Video: «{title}», di Colin Galen"
     },
     "learn": {
       "browseCta": "Sfoglia le guide"

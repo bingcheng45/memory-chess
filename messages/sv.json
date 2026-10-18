@@ -64,10 +64,10 @@
       "chooseSettings": "Välj pjäser och tid"
     },
     "video": {
-      "title": "Se hur Memory Chess fungerar",
-      "subtitle": "En snabb guide till att studera brädet, bygga upp ställningen och tolka din poäng.",
-      "iframeTitle": "Så spelar du Memory Chess",
-      "credit": "Video: ”A New Way To Train Your Vision” av Colin Galen"
+      "title": "Träna förmågan bakom spelet",
+      "subtitle": "En kort video av Colin Galen om visualisering, som varje runda tränar.",
+      "iframeTitle": "YouTube-video: {title}",
+      "credit": "Video: ”{title}” av Colin Galen"
     },
     "learn": {
       "browseCta": "Bläddra bland guiderna"

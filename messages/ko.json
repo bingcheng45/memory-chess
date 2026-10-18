@@ -64,10 +64,10 @@
       "chooseSettings": "기물 수와 시간 선택"
     },
     "video": {
-      "title": "Memory Chess가 어떻게 동작하는지 보기",
-      "subtitle": "판을 살펴보고, 국면을 다시 세우고, 점수를 읽는 방법을 짧게 안내합니다.",
-      "iframeTitle": "Memory Chess 하는 방법",
-      "credit": "영상: Colin Galen의 “A New Way To Train Your Vision”"
+      "title": "게임의 바탕이 되는 능력을 기르세요",
+      "subtitle": "매 라운드가 훈련하는 시각화 능력에 관한 Colin Galen의 짧은 영상입니다.",
+      "iframeTitle": "YouTube 동영상: {title}",
+      "credit": "영상: Colin Galen의 “{title}”"
     },
     "learn": {
       "browseCta": "체스 가이드 둘러보기"

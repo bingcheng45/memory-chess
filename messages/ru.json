@@ -64,10 +64,10 @@
       "chooseSettings": "Выбрать фигуры и время"
     },
     "video": {
-      "title": "Посмотрите, как работает Memory Chess",
-      "subtitle": "Короткое руководство: как изучать доску, восстанавливать позицию и разбирать свой результат.",
-      "iframeTitle": "Как играть в Memory Chess",
-      "credit": "Видео: «A New Way To Train Your Vision», автор Colin Galen"
+      "title": "Тренируйте навык, на котором строится игра",
+      "subtitle": "Короткое видео Colin Galen о визуализации, навыке, который тренирует каждый раунд.",
+      "iframeTitle": "Видео на YouTube: {title}",
+      "credit": "Видео: «{title}», Colin Galen"
     },
     "learn": {
       "browseCta": "Смотреть руководства"

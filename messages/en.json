@@ -64,10 +64,10 @@
       "chooseSettings": "Choose pieces and time"
     },
     "video": {
-      "title": "See how Memory Chess works.",
-      "subtitle": "Watch a quick guide to studying the board, rebuilding the position, and checking your score.",
-      "iframeTitle": "How to Play Memory Chess",
-      "credit": "Video: “A New Way To Train Your Vision” by Colin Galen"
+      "title": "Train the skill the game uses.",
+      "subtitle": "A short video by Colin Galen on visualization, the skill every round trains.",
+      "iframeTitle": "YouTube video: {title}",
+      "credit": "Video: “{title}” by Colin Galen"
     },
     "learn": {
       "browseCta": "Browse chess guides"

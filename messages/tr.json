@@ -64,10 +64,10 @@
       "chooseSettings": "Taş sayısı ve süreyi seç"
     },
     "video": {
-      "title": "Memory Chess nasıl çalışıyor?",
-      "subtitle": "Tahtayı incelemek, konumu yeniden kurmak ve puanını değerlendirmek için kısa bir rehber.",
-      "iframeTitle": "Memory Chess nasıl oynanır",
-      "credit": "Video: “A New Way To Train Your Vision”, Colin Galen"
+      "title": "Oyunun dayandığı beceriyi çalıştır",
+      "subtitle": "Colin Galen’dan görselleştirme üzerine kısa bir video: her turun çalıştırdığı beceri.",
+      "iframeTitle": "YouTube videosu: {title}",
+      "credit": "Video: “{title}”, Colin Galen"
     },
     "learn": {
       "browseCta": "Satranç rehberlerine göz at"

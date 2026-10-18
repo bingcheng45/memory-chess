@@ -64,10 +64,10 @@
       "chooseSettings": "Pilih bidak dan waktu"
     },
     "video": {
-      "title": "Lihat cara kerja Memory Chess",
-      "subtitle": "Panduan singkat untuk mengamati papan, menyusun ulang posisi, dan membaca skor Anda.",
-      "iframeTitle": "Cara bermain Memory Chess",
-      "credit": "Video: “A New Way To Train Your Vision” oleh Colin Galen"
+      "title": "Latih kemampuan di balik permainan ini",
+      "subtitle": "Video singkat Colin Galen tentang visualisasi, kemampuan yang dilatih setiap ronde.",
+      "iframeTitle": "Video YouTube: {title}",
+      "credit": "Video: “{title}” oleh Colin Galen"
     },
     "learn": {
       "browseCta": "Jelajahi panduan catur"

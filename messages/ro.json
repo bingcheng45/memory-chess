@@ -64,10 +64,10 @@
       "chooseSettings": "Alege piesele și timpul"
     },
     "video": {
-      "title": "Vezi cum funcționează Memory Chess",
-      "subtitle": "Un ghid scurt despre cum studiezi tabla, reconstruiești poziția și îți citești punctajul.",
-      "iframeTitle": "Cum se joacă Memory Chess",
-      "credit": "Video: „A New Way To Train Your Vision”, de Colin Galen"
+      "title": "Antrenează abilitatea din spatele jocului",
+      "subtitle": "Un videoclip scurt de Colin Galen despre vizualizare, ce antrenează fiecare rundă.",
+      "iframeTitle": "Videoclip YouTube: {title}",
+      "credit": "Video: „{title}”, de Colin Galen"
     },
     "learn": {
       "browseCta": "Răsfoiește ghidurile"

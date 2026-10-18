@@ -64,10 +64,10 @@
       "chooseSettings": "Valitse nappulat ja aika"
     },
     "video": {
-      "title": "Katso, miten Memory Chess toimii",
-      "subtitle": "Lyhyt opas laudan tutkimiseen, aseman rakentamiseen ja tuloksen tulkintaan.",
-      "iframeTitle": "Näin pelaat Memory Chessiä",
-      "credit": "Video: ”A New Way To Train Your Vision”, Colin Galen"
+      "title": "Harjoita taitoa, jota peli vaatii",
+      "subtitle": "Colin Galenin lyhyt video visualisoinnista, jota jokainen kierros harjoittaa.",
+      "iframeTitle": "YouTube-video: {title}",
+      "credit": "Video: ”{title}”, Colin Galen"
     },
     "learn": {
       "browseCta": "Selaa shakkioppaita"

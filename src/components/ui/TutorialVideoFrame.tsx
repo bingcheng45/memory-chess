@@ -250,7 +250,7 @@ export default function TutorialVideoFrame({ className }: { className?: string }
       ref={iframeRef}
       className={className}
       src={`${TUTORIAL_VIDEO.embedUrl}?enablejsapi=1&origin=https://thememorychess.com&playsinline=1&modestbranding=1&rel=0&controls=1`}
-      title={t("iframeTitle")}
+      title={t("iframeTitle", { title: TUTORIAL_VIDEO.name })}
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
       allowFullScreen

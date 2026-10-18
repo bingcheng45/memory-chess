@@ -64,10 +64,10 @@
       "chooseSettings": "自選棋子數與時間"
     },
     "video": {
-      "title": "看看 Memory Chess 怎麼玩",
-      "subtitle": "一段簡短導覽：如何觀察棋盤、重建棋局，以及看懂你的分數。",
-      "iframeTitle": "Memory Chess 玩法介紹",
-      "credit": "影片：Colin Galen《A New Way To Train Your Vision》"
+      "title": "鍛鍊遊戲背後的那項能力",
+      "subtitle": "Colin Galen 的短片，談視覺化想像，也就是每局都在訓練的能力。",
+      "iframeTitle": "YouTube 影片：{title}",
+      "credit": "影片：Colin Galen《{title}》"
     },
     "learn": {
       "browseCta": "瀏覽西洋棋指南"

@@ -64,10 +64,10 @@
       "chooseSettings": "Figuren und Zeit wählen"
     },
     "video": {
-      "title": "So funktioniert Memory Chess",
-      "subtitle": "Eine kurze Anleitung: das Brett einprägen, die Stellung wieder aufbauen und den Punktestand auswerten.",
-      "iframeTitle": "Wie man Memory Chess spielt",
-      "credit": "Video: „A New Way To Train Your Vision“ von Colin Galen"
+      "title": "Trainiere die Fähigkeit hinter dem Spiel",
+      "subtitle": "Ein kurzes Video von Colin Galen über Visualisierung, die Fähigkeit, die jede Runde trainiert.",
+      "iframeTitle": "YouTube-Video: {title}",
+      "credit": "Video: „{title}“ von Colin Galen"
     },
     "learn": {
       "browseCta": "Schach-Guides ansehen"

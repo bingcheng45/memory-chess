@@ -64,10 +64,10 @@
       "chooseSettings": "駒の数と時間を選ぶ"
     },
     "video": {
-      "title": "Memory Chess の遊び方を見る",
-      "subtitle": "盤面の見方、局面の並べ直し方、スコアの読み方を短い動画で説明します。",
-      "iframeTitle": "Memory Chess の遊び方",
-      "credit": "動画：Colin Galen「A New Way To Train Your Vision」"
+      "title": "ゲームの土台にある力を鍛える",
+      "subtitle": "毎ラウンドで鍛える「思い描く力」についての、Colin Galen の短い動画です。",
+      "iframeTitle": "YouTube 動画：{title}",
+      "credit": "動画：Colin Galen「{title}」"
     },
     "learn": {
       "browseCta": "チェスガイドを見る"

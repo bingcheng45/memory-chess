@@ -64,10 +64,10 @@
       "chooseSettings": "Válassz bábukat és időt"
     },
     "video": {
-      "title": "Nézd meg, hogyan működik a Memory Chess",
-      "subtitle": "Rövid útmutató a tábla tanulmányozásához, az állás felépítéséhez és az eredményed értelmezéséhez.",
-      "iframeTitle": "Így játszd a Memory Chesst",
-      "credit": "Videó: „A New Way To Train Your Vision”, Colin Galen"
+      "title": "Edzd a képességet, amelyre a játék épül",
+      "subtitle": "Colin Galen rövid videója a vizualizációról, arról a képességről, amelyet minden kör edz.",
+      "iframeTitle": "YouTube-videó: {title}",
+      "credit": "Videó: „{title}”, Colin Galen"
     },
     "learn": {
       "browseCta": "Útmutatók böngészése"

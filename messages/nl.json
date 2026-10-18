@@ -64,10 +64,10 @@
       "chooseSettings": "Kies stukken en tijd"
     },
     "video": {
-      "title": "Zo werkt Memory Chess",
-      "subtitle": "Een korte uitleg over het bestuderen van het bord, het opnieuw opbouwen van de stelling en het lezen van je score.",
-      "iframeTitle": "Zo speel je Memory Chess",
-      "credit": "Video: ‘A New Way To Train Your Vision’ van Colin Galen"
+      "title": "Train het zien in je hoofd",
+      "subtitle": "Een korte video van Colin Galen over visualisatie, de vaardigheid die elke ronde traint.",
+      "iframeTitle": "YouTube-video: {title}",
+      "credit": "Video: ‘{title}’ van Colin Galen"
     },
     "learn": {
       "browseCta": "Bekijk de schaakgidsen"

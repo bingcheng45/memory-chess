@@ -64,10 +64,10 @@
       "chooseSettings": "Escolha peças e tempo"
     },
     "video": {
-      "title": "Veja como o Memory Chess funciona",
-      "subtitle": "Um guia rápido para estudar o tabuleiro, reconstruir a posição e conferir sua pontuação.",
-      "iframeTitle": "Como jogar Memory Chess",
-      "credit": "Vídeo: “A New Way To Train Your Vision”, de Colin Galen"
+      "title": "Treine a habilidade por trás do jogo",
+      "subtitle": "Um vídeo curto de Colin Galen sobre visualização, a habilidade que cada rodada treina.",
+      "iframeTitle": "Vídeo do YouTube: {title}",
+      "credit": "Vídeo: “{title}”, de Colin Galen"
     },
     "learn": {
       "browseCta": "Ver os guias de xadrez"

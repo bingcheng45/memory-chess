@@ -81,7 +81,7 @@ describe("home page structured data", () => {
     expect(types.filter((type) => type === "WebSite")).toHaveLength(1);
   });
 
-  it("describes the tutorial video with its YouTube title, thumbnail, upload date and embed URL", async () => {
+  it("describes the video with its YouTube title, thumbnail, upload date, duration and embed URL", async () => {
     const { container } = await renderHome();
     const video = brandGraph(container).find((node) => node["@type"] === "VideoObject");
 
@@ -93,7 +93,7 @@ describe("home page structured data", () => {
         "Colin Galen explains why mental imagery helps you play out chess moves and solve problems in your head, and shares six tips and habits for getting better at it.",
       thumbnailUrl: "https://i.ytimg.com/vi/p4xFVJTyJZg/hqdefault.jpg",
       uploadDate: "2023-02-13T23:00:03-08:00",
-      duration: "PT10M34S",
+      duration: "PT10M35S",
       embedUrl: "https://www.youtube.com/embed/p4xFVJTyJZg",
       inLanguage: "en",
       creator: { "@type": "Person", name: "Colin Galen", url: "https://www.youtube.com/@ColinGalen" },

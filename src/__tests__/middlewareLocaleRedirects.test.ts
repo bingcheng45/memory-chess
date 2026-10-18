@@ -100,6 +100,22 @@ describe("the language a visitor picked by the prefix they used", () => {
   });
 });
 
+describe("a crawler that opens a prefixed URL", () => {
+  const GOOGLEBOT = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
+
+  it.each([
+    ["/en/game", "/game"],
+    ["/zh/game", "/zh-CN/game"],
+    ["/pt/game", "/pt-BR/game"],
+  ])("is redirected from %s to %s without a cookie", (from, to) => {
+    const response = run(from, { "user-agent": GOOGLEBOT });
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(`${ORIGIN}${to}`);
+    expect(response.headers.get("set-cookie")).toBeNull();
+  });
+});
+
 describe("/zh picks the Chinese the visitor asked for", () => {
   it.each([
     ["zh-TW,zh;q=0.9,en;q=0.8", "/zh-TW/game"],
@@ -123,7 +139,7 @@ describe("/zh picks the Chinese the visitor asked for", () => {
     expect(response.headers.get("set-cookie")).toBeNull();
   });
 
-  it("remembers Traditional Chinese", () => {
+  it("follows a zh-TW header to Traditional Chinese and sets no cookie because it already matches", () => {
     const response = run("/zh", { "accept-language": "zh-TW" });
 
     expect(response.headers.get("location")).toBe(`${ORIGIN}/zh-TW`);

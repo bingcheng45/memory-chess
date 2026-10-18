@@ -145,6 +145,7 @@ function withLocaleChoice(redirect: NextResponse, request: NextRequest, locale: 
 }
 
 function route(request: NextRequest) {
+  const crawler = isCrawler(request.headers.get("user-agent"));
   const prefixLocale = localeOfPrefix(request);
   const canonical = canonicalPath(request.nextUrl.pathname, prefixLocale);
   if (canonical !== request.nextUrl.pathname) {
@@ -152,7 +153,7 @@ function route(request: NextRequest) {
     const url = new URL(request.url);
     url.pathname = canonical;
     const redirect = NextResponse.redirect(url, 308);
-    return prefixLocale ? withLocaleChoice(redirect, request, prefixLocale) : redirect;
+    return prefixLocale && !crawler ? withLocaleChoice(redirect, request, prefixLocale) : redirect;
   }
 
   if (isServedAtBareEnglishUrl(request.nextUrl.pathname, DEFAULT_LOCALE)) {
@@ -165,7 +166,6 @@ function route(request: NextRequest) {
   // gap when both are silent.
   const hasExplicitChoice = request.cookies.has(LOCALE_COOKIE);
   const acceptLanguage = request.headers.get("accept-language");
-  const crawler = isCrawler(request.headers.get("user-agent"));
 
   // Crawlers get the URL they asked for. Google's guidance for locale-adaptive
   // sites is to let hreflang do the routing rather than redirect on a header,

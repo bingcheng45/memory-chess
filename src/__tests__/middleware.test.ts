@@ -53,6 +53,14 @@ function run(url: string, headers: Record<string, string> = {}, cookie?: string)
   return middleware(request);
 }
 
+const PROBED_PATH_BY_PREFIX: Record<string, string> = { en: "/en", pt: "/pt-BR", zh: "/zh-CN" };
+
+/** next-intl is asked about the prefix itself for /en, /pt and /zh redirects, and for no other. */
+function expectedProbe(from: string): string[] {
+  const probed = PROBED_PATH_BY_PREFIX[new URL(from).pathname.split("/")[1]];
+  return probed ? [probed] : [];
+}
+
 beforeEach(() => {
   mockForwarded.length = 0;
 });
@@ -71,6 +79,7 @@ describe("middleware on English-only routes", () => {
 
     expect(response.status).toBe(308);
     expect(response.headers.get("location")).toBe(to);
+    expect(mockForwarded.map((forwarded) => forwarded.nextUrl.pathname)).toEqual(expectedProbe(from));
   });
 
   it("sends a prefixed retired guide straight to the guide that absorbed it in one 308", () => {
@@ -138,6 +147,7 @@ describe("middleware on articles, translated into German and not into French or 
 
     expect(response.status).toBe(308);
     expect(response.headers.get("location")).toBe(to);
+    expect(mockForwarded.map((forwarded) => forwarded.nextUrl.pathname)).toEqual(expectedProbe(from));
   });
 
   it.each([
@@ -183,6 +193,7 @@ describe("middleware on the retired settings page", () => {
 
     expect(response.status).toBe(308);
     expect(response.headers.get("location")).toBe(to);
+    expect(mockForwarded.map((forwarded) => forwarded.nextUrl.pathname)).toEqual(expectedProbe(from));
   });
 });
 
@@ -211,6 +222,7 @@ describe("middleware on a trailing slash", () => {
 
     expect(response.status).toBe(308);
     expect(response.headers.get("location")).toBe(to);
+    expect(mockForwarded.map((forwarded) => forwarded.nextUrl.pathname)).toEqual(expectedProbe(from));
   });
 
   it("leaves the root path to next-intl", () => {

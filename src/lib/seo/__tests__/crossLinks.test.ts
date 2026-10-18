@@ -2,7 +2,7 @@ import { ARTICLES, ARTICLE_SLUGS } from "@/lib/articles";
 import { EN_LEARN_PAGES, LEARN_SLUGS } from "@/lib/seo/learn";
 
 const TITLE_SUFFIX = " | Memory Chess";
-const MAX_TITLE_WITH_SUFFIX = 72;
+const MAX_TITLE_WITH_SUFFIX = 64;
 
 const guide = (slug: string) => EN_LEARN_PAGES.find((page) => page.meta.slug === slug)!;
 const guideLinks = (slug: string) =>
@@ -68,9 +68,9 @@ describe("trimmed search titles", () => {
   it.each([
     ["chess-calculation-exercises-for-beginners", "Chess Calculation Exercises for Beginners"],
     ["chess-pattern-recognition-drills", "Chess Pattern Recognition Drills, From Memory"],
-    ["chess-memory-training", "Chess Memory Training: A Scored 6-to-12 Piece Ladder"],
-    ["blindfold-chess-training-for-beginners", "How to Learn Blindfold Chess: A 4-Stage Training Plan"],
-    ["chess-visualization-exercises", "Chess Visualization Training: See the Board in Your Head"],
+    ["chess-memory-training", "Chess Memory Training: A 6-to-12 Piece Ladder"],
+    ["blindfold-chess-training-for-beginners", "How to Learn Blindfold Chess: 4-Stage Training"],
+    ["chess-visualization-exercises", "Chess Visualization Training: See the Board"],
   ])("the %s guide is titled %p", (slug, title) => {
     expect(guide(slug).meta.title).toBe(title);
     expect((title + TITLE_SUFFIX).length).toBeLessThanOrEqual(MAX_TITLE_WITH_SUFFIX);

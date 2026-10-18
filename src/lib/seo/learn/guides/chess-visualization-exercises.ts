@@ -3,18 +3,19 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "chess-visualization-exercises",
-    title: "Chess Visualization Training: 2 Exercises",
+    title: "Chess Visualization Training: See the Board in Your Head",
     h1: "Chess visualization exercises that find and fix your weak spot",
     description: "Chess visualization exercises built on a four-minute test that shows whether pieces vanish, drift or change identity, and a cover-and-move drill to fix it.",
     group: "visualization",
     level: "beginner",
     publishedAt: "2026-03-06T00:00:00.000Z",
-    updatedAt: "2026-10-13T00:00:00.000Z",
+    updatedAt: "2026-10-18T00:00:00.000Z",
     questions: [
       "What are the best chess visualization exercises?",
       "How do I improve my chess visualization?",
       "Why do pieces disappear when I visualize a chess line?",
       "How long does it take to improve chess visualization?",
+      "How do I visualize the chess board in my head?",
     ],
     keywords: {
       primary: "chess visualization exercises",

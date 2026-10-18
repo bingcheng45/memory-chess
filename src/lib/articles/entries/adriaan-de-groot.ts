@@ -3,7 +3,7 @@ import type { Article } from "../schema";
 const article: Article = {
   slug: "adriaan-de-groot",
   publishedAt: "2026-10-05T00:00:00.000Z",
-  updatedAt: "2026-10-05T00:00:00.000Z",
+  updatedAt: "2026-10-18T00:00:00.000Z",
   title: "Adriaan de Groot's 1944 test of chess memory, by the numbers",
   searchTitle: "De Groot's 1944 chess memory test, in numbers",
   relatedGuides: [
@@ -86,6 +86,13 @@ const article: Article = {
         "Textbooks took that result to mean a master has no advantage at all on meaningless boards. In 1996 Fernand Gobet and Herbert Simon checked that reading against thirteen experiments with exposures of 10 seconds or less. In twelve of the thirteen, the strongest group recalled more random pieces than the weakest. The exception was Chase and Simon's own study, where the master did worst.",
         "The advantage is small. Gobet and Simon put it at about one extra piece per 400 Elo points on random boards, against about five extra pieces on game positions. In a 1998 review, Gobet gave the averages at 5 seconds as 5.5 random pieces for masters and 2.6 for players below class B.",
         "The explanation leaves de Groot's idea standing. A player with a very large store of patterns sometimes finds one by accident in a jumble. Random boards shrink the expert's edge without removing it. Gobet and Simon added that small samples hide so small an effect, and the 1973 study had three subjects.",
+      ],
+    },
+    {
+      heading: "Is chess a memory game?",
+      paragraphs: [
+        "Memory matters in chess, but a strong player is not storing positions square by square. By de Groot's counts, grandmasters did not look further ahead or examine more moves than experts. The gap showed in recall instead. After a look of a few seconds, Euwe and de Groot scored 93%, Fast 68% and Hauer 51%.",
+        "That recall comes from knowing chess. Gobet and Simon put the master's edge on random boards at about one extra piece per 400 Elo points, against about five extra pieces on positions from games. A master sees familiar groups of pieces, the chunks described above, so there are fewer separate things to hold.",
       ],
     },
     {

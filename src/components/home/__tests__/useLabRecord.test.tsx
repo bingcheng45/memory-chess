@@ -58,6 +58,8 @@ describe("useLabRecord download", () => {
 });
 
 describe("useLabRecord identity", () => {
+  afterEach(() => jest.restoreAllMocks());
+
   it("hands back the same record on a rerender until the record or its backup time changes", async () => {
     jest.mocked(labStore).mockReturnValue(fakeStore());
     URL.createObjectURL = jest.fn(() => "blob:lab");
@@ -73,7 +75,6 @@ describe("useLabRecord identity", () => {
 
     await act(() => result.current.download());
     expect([result.current === loaded, result.current.lastBackup]).toEqual([false, 1_700_000_000_000]);
-    jest.restoreAllMocks();
   });
 });
 

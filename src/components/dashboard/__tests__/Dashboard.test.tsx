@@ -134,22 +134,60 @@ describe("Dashboard", () => {
     });
   });
 
-  it("opens the Learn link's fragment once the record loads, when it was not drawn before", () => {
-    const scrolled: string[] = [];
-    Element.prototype.scrollIntoView = function (this: Element) {
-      scrolled.push(this.id);
-    };
-    window.history.replaceState(null, "", "/dashboard#tile-days");
-    labData = { ...persona("newVisitor"), storage: "loading", records: [], today: "" };
-    const { rerender } = renderWithIntl(<Dashboard />);
-    expect(document.getElementById("tile-days")).toBeNull();
+  describe("a Learn link's fragment that the first paint could not draw", () => {
+    const original = Element.prototype.scrollIntoView;
+    let scrolled: { id: string; historyRows: number; analysis: boolean }[];
+    beforeEach(() => {
+      URL.createObjectURL = jest.fn(() => "blob:card");
+      URL.revokeObjectURL = jest.fn();
+      scrolled = [];
+      Element.prototype.scrollIntoView = function (this: Element) {
+        scrolled.push({
+          id: this.id,
+          historyRows: document.querySelectorAll("[data-history-row]").length,
+          analysis: document.querySelector("#analysis .lab-dash-panels:not(.lab-dash-pending)") !== null,
+        });
+      };
+      window.history.replaceState(null, "", "/dashboard#tile-days");
+    });
+    afterEach(() => {
+      Element.prototype.scrollIntoView = original;
+      window.history.replaceState(null, "", "/");
+    });
 
-    labData = persona("newVisitor");
-    rerender(<Dashboard />);
-    expect(scrolled).toEqual(["tile-days"]);
-    expect(document.getElementById("tile-days")?.textContent).toBe("Days playedNothing yet.Play a round →");
-    window.history.replaceState(null, "", "/");
+    it.each([
+      ["nothing", () => undefined, [{ id: "tile-days", historyRows: 20, analysis: true }]],
+      ["a wheel turn", () => fireEvent.wheel(window), []],
+      ["a key press", () => fireEvent.keyDown(window, { key: "PageDown" }), []],
+      ["a touch", () => fireEvent.touchStart(window), []],
+    ])("is scrolled to once the sections below it are in place, after %s from the player while the record loads", async (_, input, expected) => {
+      labData = { ...persona("thirtyDays"), storage: "loading", records: [], today: "" };
+      const { rerender } = renderWithIntl(<Dashboard />);
+      expect(document.getElementById("tile-days")).toBeNull();
+      input();
+
+      labData = persona("thirtyDays");
+      rerender(<Dashboard />);
+      expect(await historyRows()).toHaveLength(20);
+      await waitFor(() => expect(scrolled).toEqual(expected));
+      expect(tileText("days")).toBe("Days played30 daysSince Sep 9, 2026");
+    }, 15_000);
   });
+
+  it("asks the browser whether it keeps the record, and offers a copy when it does not", async () => {
+    const storage = Object.getOwnPropertyDescriptor(navigator, "storage");
+    Object.defineProperty(navigator, "storage", { configurable: true, value: { persisted: () => Promise.resolve(false) } });
+    URL.createObjectURL = jest.fn(() => "blob:card");
+    URL.revokeObjectURL = jest.fn();
+    try {
+      show("thirtyDays");
+
+      expect((await screen.findByRole("heading", { name: "Keep a copy of your record" }, { timeout: 10_000 })).closest("aside")?.getAttribute("data-note")).toBe("backup");
+    } finally {
+      if (storage) Object.defineProperty(navigator, "storage", storage);
+      else delete (navigator as { storage?: unknown }).storage;
+    }
+  }, 15_000);
 
   it("lists the figures still to unlock in one list, nearest first, in place of a card each", () => {
     show("twoRounds");

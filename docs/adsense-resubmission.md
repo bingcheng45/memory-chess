@@ -80,7 +80,8 @@ one-line rule and Start. That round's `round_start` fires when Start is pressed,
 `round_start` counts mean "players who pressed Start", not "visitors who landed". Visitors who leave at the rule
 send only `round_intro_view`. GA4 cannot tell an intro round's `round_start` from a later round's, so read the
 `round_start` series as broken on the merge date, and `round_intro_view` against `round_start` as the intro's own
-start rate. Daily boards, replays and later rounds are unchanged.
+start rate. Daily boards, replays and later rounds are unchanged. Databuddy's `round_started` (the mirror of
+`round_start`) shifts on the same merge date, and `round_intro_view` is not mirrored to Databuddy.
 
 `sound_settings` fired once per finished round beside `round_complete` for four weeks after that merge, so the weekly
 rounds series has no gap. It was retired in its own PR on 2026-10-16, eleven days early, because the counts already

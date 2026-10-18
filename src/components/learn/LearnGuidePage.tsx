@@ -7,6 +7,7 @@ import { groupAnchor, guidePath } from "@/lib/seo/learn/links";
 import { guideStructuredData } from "@/lib/seo/learn/structuredData";
 import type { BodyBlock, EndBlock, LearnSection } from "@/lib/seo/learn/schema";
 import LearnBlockView, { type TitleLookup } from "./LearnBlockView";
+import LearnQuickPlay from "./LearnQuickPlay";
 import LearnRailTracker from "./LearnRailTracker";
 import "./learn.css";
 
@@ -134,6 +135,7 @@ export default function LearnGuidePage({ page, siblings, titles }: LearnGuidePag
           </nav>
 
           <div className="lg-main">
+            <LearnQuickPlay />
             <section className="lg-answer" aria-labelledby="lg-answer-label">
               <p id="lg-answer-label" className="lg-answer-label">
                 {COPY.quickAnswer}

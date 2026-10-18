@@ -3,14 +3,24 @@ import { isValidElement } from "react";
 import Script from "next/script";
 import SiteGoogleAnalytics from "@/components/common/SiteGoogleAnalytics";
 import SiteDatabuddy from "@/components/common/SiteDatabuddy";
-import LocaleLayout from "@/app/[locale]/layout";
+import LocaleLayout, { generateMetadata } from "@/app/[locale]/layout";
 import { AHREFS_ANALYTICS_SCRIPT_URL } from "@/lib/ahrefs";
 import { ADSENSE_SCRIPT_URL } from "@/lib/adsense";
+
+const mockAdsenseFlag = { enabled: false };
+
+jest.mock("@/lib/adsense", () => ({
+  ...jest.requireActual("@/lib/adsense"),
+  get ADSENSE_SCRIPT_ENABLED() {
+    return mockAdsenseFlag.enabled;
+  },
+}));
 
 jest.mock("next-intl/server", () => ({
   ...jest.requireActual("next-intl/server"),
   setRequestLocale: jest.fn(),
   getMessages: jest.fn(async () => ({})),
+  getTranslations: async () => (key: string) => key,
 }));
 
 function collect(node: ReactNode, match: (element: ReactElement) => boolean): ReactElement[] {
@@ -58,12 +68,33 @@ describe("visitor analytics", () => {
     expect(collect(tree, (element) => element.type === SiteDatabuddy)).toHaveLength(0);
     expect(collect(tree, scriptWithSrc(AHREFS_ANALYTICS_SCRIPT_URL))).toHaveLength(0);
   });
+});
 
-  it("leave the AdSense script on every build", async () => {
-    delete process.env.VERCEL_ENV;
+describe("AdSense", () => {
+  const accountMeta = async () => {
+    const metadata = await generateMetadata({ params: Promise.resolve({ locale: "en" }) });
+    return metadata.verification?.other?.["google-adsense-account"];
+  };
+
+  afterEach(() => {
+    mockAdsenseFlag.enabled = false;
+  });
+
+  it("keeps the site verification tag and loads no script while the flag is off", async () => {
+    process.env.VERCEL_ENV = "production";
+    const tree = await renderLayout();
+
+    expect(collect(tree, scriptWithSrc(ADSENSE_SCRIPT_URL))).toHaveLength(0);
+    expect(await accountMeta()).toBe("ca-pub-9048170183399377");
+  });
+
+  it("loads the script, beside the verification tag, once the flag is on", async () => {
+    mockAdsenseFlag.enabled = true;
+    process.env.VERCEL_ENV = "production";
     const tree = await renderLayout();
 
     expect(collect(tree, scriptWithSrc(ADSENSE_SCRIPT_URL))).toHaveLength(1);
+    expect(await accountMeta()).toBe("ca-pub-9048170183399377");
   });
 });
 

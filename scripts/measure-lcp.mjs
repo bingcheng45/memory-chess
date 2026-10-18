@@ -119,7 +119,13 @@ async function measureOnce(url) {
     const cdp = await connect(wsUrl);
     await Promise.all([cdp.send("Page.enable"), cdp.send("Network.enable"), cdp.send("Runtime.enable")]);
     await cdp.send("Network.setCacheDisabled", { cacheDisabled: true });
-    await cdp.send("Network.emulateNetworkConditions", SLOW_4G);
+    await cdp.send("Network.emulateNetworkConditions", { ...SLOW_4G, latency: 0 });
+    // Network.emulateNetworkConditions leaves the first document request at full speed in current Chrome, so every request waits for the latency here instead.
+    cdp.on("Fetch.requestPaused", async ({ requestId }) => {
+      await sleep(SLOW_4G.latency);
+      await cdp.send("Fetch.continueRequest", { requestId }).catch(() => {});
+    });
+    await cdp.send("Fetch.enable", { patterns: [{ urlPattern: "*" }] });
     await cdp.send("Emulation.setCPUThrottlingRate", { rate: CPU_SLOWDOWN });
     await cdp.send("Emulation.setDeviceMetricsOverride", MOBILE);
     await cdp.send("Emulation.setUserAgentOverride", { userAgent: MOBILE.userAgent });
@@ -170,9 +176,10 @@ for (const url of args.urls) {
   const runs = [];
   for (let i = 0; i < args.runs; i++) runs.push(await measureOnce(url));
   const lcps = runs.map((r) => r.lcp?.time).filter((t) => t != null);
-  report.urls[url] = { medianLcp: median(lcps), medianFcp: median(runs.map((r) => r.fcp).filter((t) => t != null)), lcps, lcpElement: runs.at(-1).lcp, runs };
+  const medianTtfb = median(runs.map((r) => r.ttfb));
+  report.urls[url] = { medianTtfb, medianLcp: median(lcps), medianFcp: median(runs.map((r) => r.fcp).filter((t) => t != null)), lcps, lcpElement: runs.at(-1).lcp, runs };
   const last = runs.at(-1);
-  console.log(`${url}\n  LCP median ${median(lcps)}ms runs [${lcps.join(", ")}]  FCP median ${report.urls[url].medianFcp}ms  TTFB ${last.ttfb}ms`);
+  console.log(`${url}\n  LCP median ${median(lcps)}ms runs [${lcps.join(", ")}]  FCP median ${report.urls[url].medianFcp}ms  TTFB median ${medianTtfb}ms`);
   console.log(`  LCP element: <${last.lcp?.tag}> "${last.lcp?.text}" ${last.lcp?.url ?? ""}`);
   const fonts = last.fontsAndCss.filter((r) => /woff2/.test(r.name));
   const css = last.fontsAndCss.filter((r) => /\.css/.test(r.name));

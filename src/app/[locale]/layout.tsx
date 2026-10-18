@@ -21,7 +21,7 @@ import {
   LATEST_CHANGELOG_ENTRY,
 } from "@/lib/changelog";
 import SiteFooter from "@/components/lab-paper/SiteFooter";
-import { ADSENSE_CLIENT_ID, ADSENSE_SCRIPT_URL } from "@/lib/adsense";
+import { ADSENSE_CLIENT_ID, ADSENSE_SCRIPT_ENABLED, ADSENSE_SCRIPT_URL } from "@/lib/adsense";
 import {
   AHREFS_ANALYTICS_KEY,
   AHREFS_ANALYTICS_SCRIPT_URL,
@@ -160,7 +160,7 @@ export default async function LocaleLayout({
     <html lang={locale}>
       <head>
         {fontRequest && <script dangerouslySetInnerHTML={{ __html: fontRequest }} />}
-        <script async src={ADSENSE_SCRIPT_URL} crossOrigin="anonymous" />
+        {ADSENSE_SCRIPT_ENABLED && <script async src={ADSENSE_SCRIPT_URL} crossOrigin="anonymous" />}
         {countsVisitors && (
           <script
             async

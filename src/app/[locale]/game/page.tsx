@@ -57,6 +57,9 @@ const OPEN_SET_BOARD: Record<SetBoardSource, () => Promise<SetBoardOpen>> = {
     }),
 };
 
+/** How long a link's round waits on the record before it starts as a later round would, so a stuck read never leaves the page blank. */
+const FIRST_ROUND_READ_LIMIT_MS = 1_500;
+
 const isFirstEverRound = (): Promise<boolean> =>
   import('@/lib/lab/storage').then(async ({ labStore }) => {
     const store = labStore();
@@ -193,15 +196,18 @@ function GamePageContent() {
     // StrictMode runs this twice; only the live run starts the board, or the second read would refuse it.
     let live = true;
     if (!isSetBoardSource(source)) {
-      void isFirstEverRound()
-        .catch(() => false)
-        .then((first) => {
-          if (!live) return;
-          setFirstRoundKnown(true);
-          (first ? prepareGame : startGame)(urlRound.pieceCount, urlRound.memorizeTime, source);
-        });
+      const open = (first: boolean) => {
+        if (!live) return;
+        live = false;
+        window.clearTimeout(limit);
+        setFirstRoundKnown(true);
+        (first ? prepareGame : startGame)(urlRound.pieceCount, urlRound.memorizeTime, source);
+      };
+      const limit = window.setTimeout(() => open(false), FIRST_ROUND_READ_LIMIT_MS);
+      void isFirstEverRound().catch(() => false).then(open);
       return () => {
         live = false;
+        window.clearTimeout(limit);
       };
     }
 

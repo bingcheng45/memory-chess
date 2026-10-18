@@ -14,6 +14,11 @@ jest.mock("@/lib/utils/soundEffects", () => ({
   playSound: jest.fn(),
   stopTimerSound: jest.fn(),
 }));
+let mockRecordStuck = false;
+jest.mock("@/lib/lab/storage", () => {
+  const actual = jest.requireActual("@/lib/lab/storage");
+  return { ...actual, labStore: () => (mockRecordStuck ? { isAvailable: () => new Promise(() => {}) } : actual.labStore()) };
+});
 jest.mock("@/i18n/navigation", () => ({
   usePathname: () => "/game",
   useRouter: () => ({ push: jest.fn(), replace: jest.fn() }),
@@ -37,6 +42,7 @@ beforeEach(async () => {
 });
 
 afterEach(() => {
+  mockRecordStuck = false;
   act(() => useGameStore.getState().resetGame());
   jest.useRealTimers();
   jest.restoreAllMocks();
@@ -57,6 +63,19 @@ describe("GamePage round a link starts", () => {
     expect(afterWaiting).toEqual({ phase: "ready", pieces: 0, count: undefined });
     expect(view()).toEqual({ phase: "study", pieces: 3, count: undefined });
     expect(screen.getByRole("button", { name: "Hide board" })).toBeEnabled();
+  });
+
+  it("starts the round as before when the record read never settles, after 1.5 s at most", async () => {
+    mockRecordStuck = true;
+
+    render(<GamePage />);
+    await advance(1_400);
+    const waiting = view();
+    await advance(100);
+
+    expect(waiting).toEqual({ phase: undefined, pieces: undefined, count: undefined });
+    expect(view()).toEqual({ phase: "study", pieces: 3, count: undefined });
+    expect(screen.queryByRole("button", { name: "Start" })).toBeNull();
   });
 
   it("starts every later round at once, without the rule or Start", async () => {

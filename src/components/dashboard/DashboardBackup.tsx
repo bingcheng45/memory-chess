@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import type { LabRecord } from "@/components/home/useLabRecord";
 import { choiceStore } from "@/components/home/labChoices";
+import { useFirstSight } from "@/components/home/useFirstSight";
 import { BACKUP_SNOOZE_KEY, backupStatusOf, CAP_NOTICE_KEY, parseStoredTime, snoozeUntil } from "@/lib/lab/backup";
 import { ROUND_CAP } from "@/lib/lab/storage";
 
@@ -34,12 +35,12 @@ function BackupCard({ record }: { record: BackupRecord }) {
   const snoozedUntil = snooze.useValue();
   const [now] = useState(() => Date.now());
   const [started, setStarted] = useState(false);
-  const status = backupStatusOf({ persisted, lastBackup: record.lastBackup, records: record.records, rounds: record.summary.rounds, snoozedUntil, now });
+  const status = backupStatusOf({ persisted, lastBackup: record.lastBackup, records: record.records, lifetimeRounds: record.summary.rounds, snoozedUntil, now });
   if (status.kind === "quiet" && !started) return null;
 
   const download = () => {
     setStarted(true);
-    void record.download();
+    record.download().catch(() => setStarted(false));
   };
 
   return (
@@ -68,26 +69,29 @@ function BackupCard({ record }: { record: BackupRecord }) {
   );
 }
 
-/** Said once, on the first visit after the log starts dropping its oldest rounds to stay within ROUND_CAP. */
 function CapNotice({ evicting }: { evicting: boolean }) {
   const t = useTranslations("dashboard.backup");
   const seenAt = capSeen.useValue();
   const [seenHere, setSeenHere] = useState(false);
-  useEffect(() => {
-    if (!evicting || seenAt !== null) return;
+  const onSight = useCallback(() => {
     setSeenHere(true);
-    capSeen.set(Date.now());
-  }, [evicting, seenAt]);
+    capSeen.update((current) => current ?? Date.now());
+  }, []);
+  const ref = useFirstSight<HTMLElement>(onSight);
+  const dismissCap = () => {
+    setSeenHere(false);
+    capSeen.update((current) => current ?? Date.now());
+  };
   if (!evicting || !(seenAt === null || seenHere)) return null;
 
   return (
-    <aside className="lab-dash-note-card" data-note="cap" aria-labelledby="lab-dash-cap-title">
+    <aside className="lab-dash-note-card" data-note="cap" aria-labelledby="lab-dash-cap-title" ref={ref}>
       <div className="lab-dash-note-text">
         <h2 id="lab-dash-cap-title">{t("capTitle")}</h2>
         <p>{t("cap", { cap: ROUND_CAP })}</p>
       </div>
       <div className="lab-dash-note-actions">
-        <button type="button" className="lab-btn lab-btn-secondary" onClick={() => setSeenHere(false)}>
+        <button type="button" className="lab-btn lab-btn-secondary" onClick={dismissCap}>
           {t("gotIt")}
         </button>
       </div>
@@ -95,7 +99,6 @@ function CapNotice({ evicting }: { evicting: boolean }) {
   );
 }
 
-/** Where the record is at risk of loss: kept only by this browser and not copied lately, or past the round cap. */
 export function DashboardBackup({ record }: { record: BackupRecord }) {
   return (
     <>

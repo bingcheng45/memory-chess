@@ -19,7 +19,7 @@
 .lab-paper .lab-dash-warn { font: 400 15px/1.55 var(--lp-body); color: var(--lp-wrong); }
 
 /* sections: a plain heading, a hairline between them */
-.lab-paper .lab-dash-sec + .lab-dash-sec { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--lp-line); }
+.lab-paper :is(.lab-dash-sec, .lab-dash-note-card) + .lab-dash-sec { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--lp-line); }
 .lab-paper .lab-dash-sec { scroll-margin-top: calc(var(--lp-header-h) + 16px); }
 .lab-paper .lab-dash-sec-h { max-width: 760px; margin-bottom: 24px; }
 .lab-paper .lab-dash-sec-h h2 { font: 650 30px/1.15 var(--lp-ui); letter-spacing: -0.02em; }
@@ -63,7 +63,6 @@
 /* Not yet a reading: dashed and unfilled, so the state shows in the shape as well as the words. */
 .lab-paper .lab-tile:is([data-state="warming"], [data-state="empty"], [data-state="loading"]) { background: transparent; border-style: dashed; border-color: var(--lp-line-strong); }
 
-/* What is still to unlock: one list, a figure's name over what it needs and where to play it. */
 .lab-paper .lab-dash-unlocks { margin-bottom: 16px; padding: 16px 20px; border: 1px dashed var(--lp-line-strong); border-radius: var(--lp-r-lg); }
 .lab-paper .lab-dash-unlocks h3 { font: 600 14px/1.3 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .lab-dash-unlocks ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; margin: 12px 0 0; padding: 0; list-style: none; }
@@ -75,7 +74,7 @@
 .lab-paper .lab-dash-unlock-toggle { display: block; min-height: 44px; margin-top: 4px; padding: 0; font: 600 14px/1.45 var(--lp-ui); color: var(--lp-accent); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
 .lab-paper .lab-dash-unlock-toggle:hover, .lab-paper .lab-dash-unlock-go:hover { text-decoration-thickness: 2px; }
 
-/* A quiet note between the summary and the history: a backup reminder or the round cap, with its actions beside it. */
+.lab-paper .lab-dash-note-card + .lab-dash-note-card { margin-top: 16px; }
 .lab-paper .lab-dash-note-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-top: 32px; padding: 20px 24px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
 .lab-paper .lab-dash-note-text { flex: 1 1 360px; min-width: 0; }
 .lab-paper .lab-dash-note-card h2 { font: 600 18px/1.35 var(--lp-ui); color: var(--lp-ink); }

@@ -277,21 +277,21 @@ describe("shareCardOf", () => {
 });
 
 describe("unlocksOf", () => {
-  it("lists a warming player's locked figures outside today's row, what one round opens first and a choice last", () => {
+  it("lists a warming player's locked figures outside today's row, the fewest rounds left first and a choice last", () => {
     expect(unlocksOf(tilesFor("twoRounds")).map((locked) => [locked.id, locked.state === "warming" ? locked.need : locked.cta])).toEqual([
-      ["rating", "play"],
       ["span", { qualifyingRounds: 1 }],
-      ["winStreak", "play"],
-      ["board", "play"],
       ["piecesHeld", { rounds: 3, days: 1 }],
       ["curve", { reviews: 3 }],
       ["speed", { rounds: 4 }],
+      ["rating", "play"],
+      ["winStreak", "play"],
+      ["board", "play"],
       ["plans", "choose"],
       ["goal", "choose"],
     ]);
   });
 
   it("leaves out every figure a long record can read", () => {
-    expect(unlocksOf(tilesFor("spanClimber", { game: { rating: 1240, winStreak: 2, changes: [8] } })).map(({ id }) => id)).toEqual(["board", "curve", "plans", "goal"]);
+    expect(unlocksOf(tilesFor("spanClimber", { game: { rating: 1240, winStreak: 2, changes: [8] } })).map(({ id }) => id)).toEqual(["curve", "board", "plans", "goal"]);
   });
 });

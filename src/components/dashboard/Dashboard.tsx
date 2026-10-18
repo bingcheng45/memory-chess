@@ -9,7 +9,7 @@ import { isReturningPlayer } from "@/lib/community";
 import { useLabResults } from "@/hooks/useLabData";
 import { useLabRecord } from "@/components/home/useLabRecord";
 import { readDailyOpened, utcDayOf } from "@/lib/lab/daily";
-import { DASHBOARD_GROUPS, dashboardOf, figuresOf, shareCardOf, unlocksOf } from "@/lib/lab/dashboard";
+import { DASHBOARD_GROUPS, dashboardOf, drawnTilesOf, shareCardOf, unlocksOf } from "@/lib/lab/dashboard";
 import { historyOf } from "@/lib/lab/history";
 import { ratingHistoryOf } from "@/lib/lab/ratingHistory";
 import { daysBetween } from "@/lib/lab/readiness";
@@ -100,7 +100,7 @@ export function Dashboard() {
   );
   const ratingLine = useMemo(() => (loaded ? standing && ratingHistoryOf(standing.rating, rated, Date.now()) : "pending"), [loaded, standing, rated]);
   const rounds = useMemo(() => (later ? historyOf(data.records, rated) : null), [later, data.records, rated]);
-  const figures = useMemo(() => tiles && figuresOf(tiles), [tiles]);
+  const figures = useMemo(() => tiles && drawnTilesOf(tiles), [tiles]);
   const unlocks = useMemo(() => tiles && unlocksOf(tiles), [tiles]);
   const card = tiles && shareCardOf(tiles, data.summary.rounds);
   const lastDay = data.summary.days.at(-1);
@@ -121,10 +121,8 @@ export function Dashboard() {
         <>
           <Section id="summary" title={t("sections.summary")}>
             <TileList ids={DASHBOARD_GROUPS.today} tiles={figures} size="today" />
-            {/* Keyed apart: which tiles have figures is known only once the record is read, so the summary mounts whole
-                into a box that held the rest of the screen, rather than moving tiles that were drawn before it. */}
             {figures && unlocks ? (
-              <div key="read">
+              <div>
                 <DashboardUnlocks unlocks={unlocks} />
                 <TileList ids={DASHBOARD_GROUPS.lead} tiles={figures} size="lead" />
                 <DashboardRating history={ratingLine} />
@@ -134,7 +132,7 @@ export function Dashboard() {
                 </div>
               </div>
             ) : (
-              <div key="reading" className="lab-dash-summary-pending" aria-hidden="true" />
+              <div className="lab-dash-summary-pending" aria-hidden="true" />
             )}
           </Section>
           {later && <DashboardBackup record={data} />}

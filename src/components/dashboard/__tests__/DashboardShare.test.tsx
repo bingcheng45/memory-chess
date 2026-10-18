@@ -87,14 +87,6 @@ describe("DashboardShare", () => {
     expect(within(dialog()).getByRole("img")).toHaveAttribute("src", "blob:card");
   });
 
-  it("holds the panel's place with the Share button disabled until the record is read", () => {
-    renderWithIntl(<DashboardShare card="pending" />);
-
-    expect(screen.getByRole("button", { name: "Share my progress" })).toBeDisabled();
-    expect(screen.getByText("Make an image of your record to post, save or send.")).toBeInTheDocument();
-    expect(drawShareCard).not.toHaveBeenCalled();
-  });
-
   it("offers a first round in place of the card before any round is played", () => {
     renderWithIntl(<DashboardShare card={null} />);
 

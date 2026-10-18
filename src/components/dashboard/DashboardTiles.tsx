@@ -9,7 +9,6 @@ import { TrendChip } from "./TrendChip";
 
 const NEED_VALUES = { accuracy: LAB_THRESHOLDS.spanAccuracy, minPieces: LAB_THRESHOLDS.spanMinPieces };
 
-/** What a figure still needs, as one list. */
 export function useNeedList() {
   const t = useTranslations("dashboard");
   const format = useFormatter();
@@ -20,7 +19,6 @@ export function useNeedList() {
     );
 }
 
-/** What a warming figure still needs, at the setting it reads when it reads one. */
 export function useNeedText() {
   const t = useTranslations("dashboard");
   const needList = useNeedList();
@@ -115,7 +113,6 @@ interface TileListProps {
   readonly size: "today" | "lead" | "summary" | "more";
 }
 
-/** Before the record is read, a placeholder for each of `ids`; after, a tile for each of them `tiles` holds, and nothing when it holds none. */
 export function TileList({ ids, tiles, size }: TileListProps) {
   if (tiles && !ids.some((id) => tiles.some((tile) => tile.id === id))) return null;
   return (

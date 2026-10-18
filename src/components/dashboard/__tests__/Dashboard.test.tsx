@@ -127,10 +127,10 @@ describe("Dashboard", () => {
 
     const list = screen.getByRole("region", { name: "Unlocks next" });
     expect([...list.querySelectorAll("li")].map((item) => item.textContent)).toEqual([
-      "Skill rating1 more roundPlay a round →",
       "Memory span1 more round at 80% or better with 3 or more piecesPlay a round →",
-      "Win streak1 more roundPlay a round →",
-      "Leaderboard1 more roundPlay a round →",
+      "Pieces held3 more rounds and 1 more day of playPlay a round →",
+      "Recall after review3 more reviews after the same gapPlay a round →",
+      "Recall pace4 more rounds at 6 pieces, 10 sPlay 6 pieces, 10 s →",
     ]);
     expect([...document.querySelectorAll('.lab-tile:is([data-state="warming"], [data-state="empty"])')].map((tile) => tile.getAttribute("data-tile"))).toEqual(["streak", "daily"]);
     expect(tileText("speed")).toBeUndefined();
@@ -138,7 +138,7 @@ describe("Dashboard", () => {
     fireEvent.click(within(list).getByRole("button", { name: "Show all 9" }));
     expect(unlockText("speed")).toBe("Recall pace4 more rounds at 6 pieces, 10 sPlay 6 pieces, 10 s →");
     expect(within(document.querySelector('[data-unlock="speed"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
-    expect(unlockText("piecesHeld")).toBe("Pieces held3 more rounds and 1 more day of playPlay a round →");
+    expect(unlockText("rating")).toBe("Skill ratingNothing yet.Play a round →");
     expect(unlockText("plans")).toBe("PlanNot set yet.Choose one in the full record →");
     expect(within(document.querySelector('[data-unlock="plans"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/#record");
     expect(within(list).getByRole("button", { name: "Show fewer" })).toHaveAttribute("aria-expanded", "true");

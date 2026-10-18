@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Measures the dashboard's today tiles, the only ones drawn before the record is read, with their reserved height switched off, for every locale and the personas in
+ * Measures the dashboard's today tiles with their reserved height switched off, for every locale and the personas in
  * PERSONAS, at the narrowest width of each layout in WIDTHS, and fails when a row of tiles is taller than the
  * min-height its tiles reserve before the record is read. A row that outgrows its reserve pushes everything under it
  * down when the figures arrive, a layout shift. Prints the tallest row per tile list and width, with who drew it.

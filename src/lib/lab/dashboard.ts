@@ -64,11 +64,6 @@ export type TileState =
   | { readonly state: "warming"; readonly need: Need; readonly rig: Rig | null; readonly href: string | null }
   | { readonly state: "empty"; readonly href: string; readonly cta: "play" | "choose" };
 
-/**
- * The page's figure tiles by where they sit: today's row of the day streak and the daily board, which shows even
- * before either can read a figure, the lead row a player checks first, the totals and records under it, and the
- * figures of the record's other parts at the foot. The charts and tables between them read the metrics whole.
- */
 export const DASHBOARD_GROUPS = {
   today: ["streak", "daily"],
   lead: ["rating", "span", "piecesHeld", "speed", "studyTime", "rebuildTime"],
@@ -348,27 +343,26 @@ export function shareCardOf(tiles: readonly DashboardTile[], rounds: number): Sh
   return { figures: [lead, ...figures.filter((candidate) => candidate !== lead)], rounds };
 }
 
-/** A tile with no figure yet: what it still needs and where to play it, or a first round or a choice. */
 export type LockedTile = DashboardTile & { readonly state: "warming" | "empty" };
 
 const isLocked = (tile: DashboardTile): tile is LockedTile => tile.state === "warming" || tile.state === "empty";
 
-/** Playable now, then only tomorrow, then a choice; within each, the fewest rounds or days left first. */
-function distanceOf(tile: LockedTile): readonly [number, number] {
-  if (tile.state === "empty") return tile.cta === "choose" ? [2, 0] : [0, 1];
-  return [tile.href === null ? 1 : 0, Math.max(...Object.values(tile.need))];
+const WHEN = { counted: 0, uncounted: 1, tomorrow: 2, choose: 3 } as const;
+
+/** A warming tile counts what it lacks; an empty one may need a kind of round the record cannot count down to. */
+function distanceOf(tile: LockedTile): { readonly when: number; readonly left: number } {
+  if (tile.state === "empty") return { when: tile.cta === "choose" ? WHEN.choose : WHEN.uncounted, left: 0 };
+  return { when: tile.href === null ? WHEN.tomorrow : WHEN.counted, left: Math.max(...Object.values(tile.need)) };
 }
 
 const TODAY: ReadonlySet<DashboardTileId> = new Set(DASHBOARD_GROUPS.today);
 
-/** The tiles the page draws: every one with a figure, and today's row whatever its state. */
-export const figuresOf = (tiles: readonly DashboardTile[]) => tiles.filter((tile) => TODAY.has(tile.id) || !isLocked(tile));
+export const drawnTilesOf = (tiles: readonly DashboardTile[]) => tiles.filter((tile) => TODAY.has(tile.id) || !isLocked(tile));
 
-/** The locked tiles outside today's row, nearest to unlocking first, keeping page order on a tie. */
 export function unlocksOf(tiles: readonly DashboardTile[]): readonly LockedTile[] {
   return tiles
     .filter((tile): tile is LockedTile => !TODAY.has(tile.id) && isLocked(tile))
     .map((tile, order) => ({ tile, order, distance: distanceOf(tile) }))
-    .sort((a, b) => a.distance[0] - b.distance[0] || a.distance[1] - b.distance[1] || a.order - b.order)
+    .sort((a, b) => a.distance.when - b.distance.when || a.distance.left - b.distance.left || a.order - b.order)
     .map(({ tile }) => tile);
 }

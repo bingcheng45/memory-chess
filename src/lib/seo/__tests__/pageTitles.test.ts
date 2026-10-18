@@ -1,5 +1,6 @@
 import { generateMetadata as gameMetadata } from "@/app/[locale]/game/layout";
 import { generateMetadata as leaderboardMetadata } from "@/app/[locale]/leaderboard/layout";
+import { generateMetadata as contactMetadata } from "@/app/[locale]/contact-us/layout";
 
 jest.mock("next-intl/server", () => {
   const read = (locale: string, path: string) =>
@@ -13,6 +14,7 @@ jest.mock("next-intl/server", () => {
 
 jest.mock("@/components/reference/GameReference", () => () => null);
 jest.mock("@/components/reference/LeaderboardReference", () => () => null);
+jest.mock("@/components/reference/ContactReference", () => () => null);
 
 const params = (locale: string) => ({ params: Promise.resolve({ locale }) });
 
@@ -34,6 +36,14 @@ describe("page titles name the brand once", () => {
     ["de", "Bestenliste von Memory Chess"],
   ])("serves the %s leaderboard title without a second brand suffix", async (locale, title) => {
     expect((await leaderboardMetadata(params(locale))).title).toEqual({ absolute: title });
+  });
+
+  it.each([
+    ["en", "Contact Memory Chess"],
+    ["de", "Memory Chess kontaktieren"],
+    ["ja", "Memory Chess へのお問い合わせ"],
+  ])("serves the %s contact title without a second brand suffix", async (locale, title) => {
+    expect((await contactMetadata(params(locale))).title).toEqual({ absolute: title });
   });
 
   it("gives the English leaderboard a description between 120 and 155 characters", async () => {

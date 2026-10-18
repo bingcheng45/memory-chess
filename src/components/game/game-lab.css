@@ -60,7 +60,7 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 
 .lab-game .lab-tomorrow { padding: clamp(16px, 3vw, 24px); }
 .lab-game .lab-tomorrow-h { margin: 0; font: 650 18px/1.3 var(--lp-ui); }
-.lab-game .lab-tomorrow-text { margin: 8px 0 0; font: 400 16px/1.5 var(--lp-body); color: var(--lp-ink-2); }
+.lab-game .lab-tomorrow-text { min-height: 3em; margin: 8px 0 0; font: 400 16px/1.5 var(--lp-body); color: var(--lp-ink-2); }
 .lab-game .lab-tomorrow-link { display: inline-flex; align-items: center; min-height: 44px; margin-top: 4px; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-accent); text-underline-offset: 4px; }
 .lab-game .lab-tomorrow-link:hover { text-decoration: underline; }
 

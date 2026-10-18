@@ -43,7 +43,7 @@ export default function RatingPreview({ pieceCount, memorizeTime, announceKey, o
         };
   const onSuggested = shown?.suggested.pieceCount === pieceCount && shown.suggested.studySeconds === memorizeTime;
 
-  const showsLoss = shown?.phase !== 'provisional';
+  const showsLoss = shown !== null && shown.phase !== 'provisional';
   const figures = shown && {
     board: format.number(shown.difficultyRating),
     rating: format.number(shown.rating),

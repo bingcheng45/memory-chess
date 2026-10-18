@@ -4,7 +4,7 @@ import { NextIntlClientProvider } from "next-intl";
 import GameConfig from "@/components/game/GameConfig";
 import messages from "../../../../messages/en.json";
 
-it("serves the rating preview's labels with placeholders, since the rating lives in the browser", () => {
+it("serves the rating preview's labels with placeholders, and no downside until the browser shows the rating is not provisional", () => {
   const html = renderToString(
     <NextIntlClientProvider locale="en" messages={messages}>
       <GameConfig />
@@ -23,8 +23,6 @@ it("serves the rating preview's labels with placeholders, since the rating lives
     "Suggested board",
     "—",
     "If you clear it",
-    "—",
-    "If you miss",
     "—",
   ]);
 });

@@ -317,9 +317,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         })
       : t("piecesPerSecond", { value: "0.0" });
   const leaderboardEligible = isEligibleForLeaderboard();
-  const showLeaderboardQualifier =
+  const ranks =
     leaderboardEligible &&
-    !submitSuccess &&
     qualifiesForLeaderboard(
       determineDifficulty(gameState.pieceCount),
       {
@@ -330,6 +329,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       },
       cutoffs,
     );
+  const showLeaderboardQualifier = ranks && !submitSuccess;
   const ratingNote = ratingNoteOf(gameState.rating, t);
   const next = nextBoardOf({ pieceCount: gameState.pieceCount, memorizeSeconds: gameState.memorizeTime }, accuracy);
   const playNext = () => {
@@ -392,7 +392,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <button type="button" onClick={onNewGame} className="lab-btn lab-btn-secondary">
             {t("changeSettings")}
           </button>
-          {showLeaderboardQualifier && submitButton}
+          {ranks && submitButton}
           <details className="lab-result-more">
             <summary className="lab-result-more-toggle">{t("moreOptions")}</summary>
             <div className="lab-result-more-list">
@@ -401,7 +401,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                   {tDaily("join")}
                 </Link>
               )}
-              {!showLeaderboardQualifier && submitButton}
+              {!ranks && submitButton}
               {round.phase === "scored" && (
                 <ShareResult
                   key={labRound?.facts.id}

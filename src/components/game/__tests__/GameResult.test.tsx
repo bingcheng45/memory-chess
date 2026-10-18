@@ -649,6 +649,21 @@ describe("GameResult", () => {
       ]);
     });
 
+    it("keeps Submit in the row after the score is submitted, so focus can return to it when the dialog closes", async () => {
+      mockGameState = perfectEasyGame;
+      loadCutoffsMock.mockResolvedValue(CUTOFFS);
+      await renderSettled();
+      const actions = screen.getByRole("navigation", { name: "Result actions" });
+      const submit = within(actions).getByRole("button", { name: "Submit to leaderboard" });
+
+      fireEvent.click(submit);
+      fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
+      fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
+      await screen.findByRole("heading", { name: "Score submitted!" });
+
+      expect([submit.isConnected, submit.parentElement === actions]).toEqual([true, true]);
+    });
+
     it("drops the nudge once the score has been submitted", async () => {
       mockGameState = perfectEasyGame;
       loadCutoffsMock.mockResolvedValue(CUTOFFS);

@@ -2,16 +2,19 @@ import { after } from "next/server";
 import { serviceRoleWriter } from "@/lib/supabase";
 import { fixedWindowLimiter } from "@/lib/server/rateLimit";
 
-export type ServerErrorRoute =
-  | "leaderboard read"
-  | "GET /api/leaderboard"
-  | "POST /api/leaderboard"
-  | "GET /api/leaderboard/rank"
-  | "POST /api/feedback"
-  | "POST /api/contact"
-  | "GET /api/game-stats"
-  | "POST /api/game-stats"
-  | "POST /api/articles/stats";
+const ROUTES = [
+  "leaderboard read",
+  "GET /api/leaderboard",
+  "POST /api/leaderboard",
+  "GET /api/leaderboard/rank",
+  "POST /api/feedback",
+  "POST /api/contact",
+  "GET /api/game-stats",
+  "POST /api/game-stats",
+  "POST /api/articles/stats",
+] as const;
+
+export type ServerErrorRoute = (typeof ROUTES)[number];
 
 export type ServerErrorKind = "unavailable" | "failed" | "unexpected";
 
@@ -29,9 +32,14 @@ const TABLE = "server_errors";
 const MESSAGE_LENGTH = 500;
 const DETAIL_TEXT_LENGTH = 100;
 const WRITE_TIMEOUT_MS = 2000;
-const REPORTS_PER_MINUTE = 20;
-const WHOLE_INSTANCE = "instance";
-const allowInstanceReport = fixedWindowLimiter({ limit: REPORTS_PER_MINUTE, windowMs: 60_000, maxKeys: 1 });
+const REPORTS_PER_ROUTE_PER_MINUTE = 20;
+const allowReport = fixedWindowLimiter({ limit: REPORTS_PER_ROUTE_PER_MINUTE, windowMs: 60_000, maxKeys: ROUTES.length });
+const HEX_GROUP = "[0-9a-f]{1,4}";
+const HEX_GROUPS = `${HEX_GROUP}(?::${HEX_GROUP}){0,6}`;
+const IPV6 = new RegExp(
+  `(?<![\\w:])(?:${HEX_GROUP}(?::${HEX_GROUP}){7}|${HEX_GROUPS}::(?:${HEX_GROUPS})?|::${HEX_GROUPS})(?![\\w:])`,
+  "gi",
+);
 
 const REDACTIONS: readonly (readonly [RegExp, string])[] = [
   [/-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?-----END [A-Z ]*PRIVATE KEY-----/g, "[private key]"],
@@ -41,13 +49,14 @@ const REDACTIONS: readonly (readonly [RegExp, string])[] = [
   [/(https?:\/\/[^\s?#]+)\?\S*/g, "$1?[query]"],
   [/[\w.+-]+@[\w-]+(?:\.[\w-]+)+/g, "[email]"],
   [/\b\d{1,3}(?:\.\d{1,3}){3}\b/g, "[ip]"],
-  [/\b[0-9a-f]{1,4}(?::[0-9a-f]{0,4}){3,7}\b/gi, "[ip]"],
+  [IPV6, "[ip]"],
   [/\b[\w-]{32,}\b/g, "[token]"],
 ];
 
 function clean(text: string, length: number): string {
   const redacted = REDACTIONS.reduce((current, [pattern, replacement]) => current.replace(pattern, replacement), text);
-  return redacted.length > length ? `${redacted.slice(0, length - 1)}…` : redacted;
+  const characters = Array.from(redacted);
+  return characters.length > length ? `${characters.slice(0, length - 1).join("")}…` : redacted;
 }
 
 function summarize(error: unknown): { message: string; detail: Detail } {
@@ -91,7 +100,7 @@ async function store(writer: NonNullable<typeof serviceRoleWriter>, row: ServerE
 export function reportServerError(route: ServerErrorRoute, kind: ServerErrorKind, error: unknown, detail: Detail = {}): void {
   try {
     const writer = serviceRoleWriter;
-    if (!writer || !allowInstanceReport(WHOLE_INSTANCE, Date.now()).allowed) return;
+    if (!writer || !allowReport(route, Date.now()).allowed) return;
     const row = rowOf(route, kind, error, detail);
     const task = () => store(writer, row);
     try {

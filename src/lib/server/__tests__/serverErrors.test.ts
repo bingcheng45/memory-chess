@@ -163,6 +163,49 @@ describe("reportServerError", () => {
     expect(rows()).toEqual([expect.objectContaining({ message: "timeout at 12:30:45 on port 5432 for (60)::numeric" })]);
   });
 
+  it.each([
+    ["a full IPv6 address", "from 2001:db8:85a3:0:0:8a2e:370:7334 refused", "from [ip] refused"],
+    ["a compressed link-local address", "connect fe80::1 failed", "connect [ip] failed"],
+    ["the IPv6 loopback with a port", "connect ECONNREFUSED ::1:5432", "connect ECONNREFUSED [ip]"],
+    ["a compressed address with a zone", "via fe80::1ff:fe23:4567:890a%eth0", "via [ip]%eth0"],
+    ["a compressed address in brackets", "GET http://[2001:db8::7]/rest failed", "GET http://[[ip]]/rest failed"],
+  ])("redacts %s", async (_, text, stored) => {
+    const report = await freshReporter();
+
+    report("GET /api/leaderboard", "unavailable", new Error(text));
+    await settle();
+
+    expect(rows()).toEqual([expect.objectContaining({ message: stored })]);
+  });
+
+  it.each([
+    ["a time with four parts", "retry at 12:30:45:10 today"],
+    ["a Postgres cast after a number", "cannot cast 60::bigint"],
+    ["a Postgres cast to a date", "value '2026-10-19'::date is out of range"],
+    ["a Postgres cast after a bracket", "(60)::numeric overflow"],
+  ])("keeps %s", async (_, text) => {
+    const report = await freshReporter();
+
+    report("GET /api/leaderboard", "unavailable", new Error(text));
+    await settle();
+
+    expect(rows()).toEqual([expect.objectContaining({ message: text })]);
+  });
+
+  it("cuts by character, so an emoji at the cut is kept whole", async () => {
+    const report = await freshReporter();
+
+    report("POST /api/feedback", "failed", new Error(`${"a ".repeat(249)}😀😀😀`), { note: `${"b ".repeat(49)}😀😀😀` });
+    await settle();
+
+    expect(rows()).toEqual([
+      expect.objectContaining({
+        message: `${"a ".repeat(249)}😀…`,
+        detail: { name: "Error", note: `${"b ".repeat(49)}😀…` },
+      }),
+    ]);
+  });
+
   it("cuts the message to 500 characters and each detail text to 100, the last one an ellipsis", async () => {
     const report = await freshReporter();
 
@@ -230,5 +273,17 @@ describe("reportServerError", () => {
 
     expect([firstMinute, inserts.length]).toEqual([20, 21]);
     expect(rows().at(-1)).toEqual(expect.objectContaining({ message: "outage 25" }));
+  });
+
+  it("keeps a separate budget for each route, so a flood on one route does not hide a failure on another", async () => {
+    jest.useFakeTimers({ doNotFake: ["setImmediate", "nextTick"], now: new Date("2026-10-18T12:00:00Z") });
+    const report = await freshReporter();
+
+    for (let n = 0; n < 30; n += 1) report("POST /api/feedback", "failed", new Error(`sheet ${n}`));
+    report("leaderboard read", "unavailable", new Error("read timeout"));
+    await settle();
+
+    expect(rows().filter((row) => (row as { route: string }).route === "POST /api/feedback")).toHaveLength(20);
+    expect(rows().at(-1)).toEqual(expect.objectContaining({ route: "leaderboard read", message: "read timeout" }));
   });
 });

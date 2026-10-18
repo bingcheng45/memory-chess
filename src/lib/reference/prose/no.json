@@ -1,12 +1,12 @@
 {
   "game": {
-    "title": "Slik fungerer Memory Chess",
+    "title": "Slik spiller du Memory Chess",
     "intro": "Hver runde er de samme tre stegene.",
     "phases": {
-      "heading": "De tre fasene i en runde",
+      "heading": "Regler for Memory Chess: de tre fasene i en runde",
       "memorize": {
         "title": "Husk",
-        "body": "En stilling vises på et fullt brett i et fast antall sekunder. Ingenting flytter seg, og ingenting er skjult. Du kan avslutte fasen tidlig med Ferdig, og klokken registrerer hvor lenge du faktisk så på brettet, ikke hvor lang tid du fikk."
+        "body": "En stilling vises på et fullt brett i et fast antall sekunder. Ingenting flytter seg, og ingenting er skjult. Du kan avslutte fasen tidlig med Skjul brettet, og klokken registrerer hvor lenge du faktisk så på brettet, ikke hvor lang tid du fikk."
       },
       "place": {
         "title": "Plasser",

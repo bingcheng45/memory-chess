@@ -64,10 +64,10 @@
       "chooseSettings": "기물 수와 시간 선택"
     },
     "video": {
-      "title": "Memory Chess가 어떻게 동작하는지 보기",
-      "subtitle": "판을 살펴보고, 국면을 다시 세우고, 점수를 읽는 방법을 짧게 안내합니다.",
-      "iframeTitle": "Memory Chess 하는 방법",
-      "credit": "영상: Colin Galen의 “A New Way To Train Your Vision”"
+      "title": "게임의 바탕이 되는 능력을 기르세요",
+      "subtitle": "매 라운드가 훈련하는 시각화 능력에 관한 Colin Galen의 짧은 영상입니다.",
+      "iframeTitle": "YouTube 동영상: {title}",
+      "credit": "영상: Colin Galen의 “{title}”"
     },
     "learn": {
       "browseCta": "체스 가이드 둘러보기"
@@ -80,8 +80,8 @@
           "answer": "Memory Chess는 무료 판 기억 게임입니다. 체스 국면을 짧게 살펴본 뒤 기억만으로 다시 배치하면, 올바르게 놓은 기물 수에 따라 점수가 매겨집니다."
         },
         {
-          "question": "어떻게 플레이하나요?",
-          "answer": "기물 수와 판을 살펴볼 시간을 고르세요. 국면이 사라지면 기억나는 칸에 기물을 되돌려 놓습니다. 답을 제출하면 정확도와 소요 시간을 확인할 수 있습니다."
+          "question": "Memory Chess는 어떻게 플레이하나요?",
+          "answer": "각 라운드는 세 단계로 진행됩니다. 보여줄 기물 수와 암기할 시간(초)을 고르거나 난이도 프리셋으로 시작하세요. 시간이 다 되거나 “보드 가리기”를 누를 때까지 국면을 살펴봅니다. 그다음 보드가 비워지면 팔레트에서 기물을 골라 원래 있던 칸을 탭하세요. “제출”을 누르면 정확도, 맞게 놓은 기물과 틀리게 놓은 기물, 걸린 시간을 확인할 수 있습니다."
         },
         {
           "question": "초보자도 Memory Chess를 할 수 있나요?",
@@ -260,7 +260,8 @@
             "chain": "폰 사슬",
             "blocked": "막힘"
           }
-        }
+        },
+        "dailyLink": "또는 모든 플레이어가 같은 포지션을 푸는 <link>오늘의 보드</link>를 플레이하세요."
       },
       "notebook": {
         "title": "측정하지 않는 것은 나아지지 않습니다.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Memory Chess 리더보드",
-      "description": "난이도, 정확도, 암기 속도, 풀이 시간별로 Memory Chess 상위 플레이어를 확인하세요.",
+      "description": "오늘의 보드와 네 가지 난이도에서 Memory Chess 상위 플레이어를 확인하세요. 기억한 기물 수, 실수, 암기 시간, 풀이 시간으로 순위를 매깁니다.",
       "socialTitle": "Memory Chess 리더보드",
       "socialDescription": "기억력과 시각화 과제에서 플레이어들이 어떻게 순위에 오르는지 확인하세요."
     },

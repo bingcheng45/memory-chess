@@ -13,7 +13,7 @@ const MAX_TITLE = 64;
 
 const GAME_TITLE = "Chess Memory Game: Rebuild the Position | Memory Chess";
 const GAME_DESCRIPTION =
-  "Start a chess memory game in one tap. Memorize a position, rebuild it square by square, and see your accuracy. Pick 2 to 32 pieces and 2 to 60 seconds.";
+  "Start a chess memory game in one tap. Memorize a position, rebuild it square by square, and see your accuracy. Pick 2 to 32 pieces and 1 to 60 seconds.";
 
 const TRIMMED_TITLES = {
   "/learn/chess-calculation-exercises-for-beginners": "Chess Calculation Exercises for Beginners | Memory Chess",
@@ -23,6 +23,10 @@ const TRIMMED_TITLES = {
   "/articles/magnus-carlsen": "How Magnus Carlsen names a game from one position | Memory Chess",
   "/learn/blindfold-chess-training-for-beginners": "How to Learn Blindfold Chess: 4-Stage Training | Memory Chess",
   "/learn/chess-visualization-exercises": "Chess Visualization Training: See the Board | Memory Chess",
+  "/learn/chess-coordinates-practice": "Chess Coordinates Practice: Name Squares Faster | Memory Chess",
+  "/articles/judit-polgar": "How Judit Polgár played blindfold chess at seven | Memory Chess",
+  "/de/game": "Memory Chess online spielen",
+  "/leaderboard": "Memory Chess Leaderboard",
 };
 
 const ANCHORS = [
@@ -35,13 +39,15 @@ const ANCHORS = [
   ["/articles/adriaan-de-groot", "/learn/how-to-see-the-whole-board-in-chess", "how to see the whole board"],
   ["/articles/magnus-carlsen", "/learn/chess-pattern-recognition-drills", "pattern recognition drills"],
   ["/articles/magnus-carlsen", "/learn/chess-visualization-exercises", "visualization exercises"],
-  ["/learn/blindfold-chess-training-for-beginners", "/articles/judit-polgar", "how Judit Polgár played blindfold at seven"],
-  ["/learn/chess-memory-training", "/articles/adriaan-de-groot", "de Groot's 1944 memory test"],
-  ["/learn/chess-pattern-recognition-drills", "/articles/magnus-carlsen", "how Carlsen names a game from one position"],
+  ["/learn/blindfold-chess-training-for-beginners", "/articles/judit-polgar", "How Judit Polgár played blindfold chess at age seven"],
+  ["/learn/chess-memory-training", "/articles/adriaan-de-groot", "Adriaan de Groot's 1944 test of chess memory, by the numbers"],
+  ["/learn/chess-pattern-recognition-drills", "/articles/magnus-carlsen", "How Magnus Carlsen names a famous game from one position"],
   ["/learn/chess-calculation-exercises-for-beginners", "/learn/how-to-stop-blundering-in-chess", null],
   ["/learn/chess-visualization-exercises", "/learn/how-to-see-the-whole-board-in-chess", null],
   ["/learn/how-to-get-better-at-chess-for-beginners", "/learn/20-minute-daily-chess-study-plan", null],
   ["/learn/chess-pattern-recognition-drills", "/learn/how-many-chess-puzzles-a-day", null],
+  ["/", "/daily", "today's daily board"],
+  ["/de", "/de/daily", null],
 ];
 
 const decode = (text) =>
@@ -71,12 +77,19 @@ const firstHeading = (html) => {
   const match = html.match(/<(h[1-6])\b[^>]*>([\s\S]*?)<\/\1>/);
   return match ? [match[1], decode(match[2].replace(/<[^>]+>/g, "")).trim()] : [null, ""];
 };
+const textOf = (fragment) => decode(fragment.replace(/<[^>]+>/g, "")).trim();
+const ctaLabelOf = (body) => textOf(body.match(/<b>([\s\S]*?)<\/b>/)?.[1] ?? "");
 const hasAnchor = (html, href, anchor) =>
   [...html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)].some(
     ([, attributes, body]) =>
       attributes.includes(`href="${href}"`) &&
-      (anchor === null || decode(body.replace(/<[^>]+>/g, "")).trim() === anchor),
+      (anchor === null || textOf(body) === anchor || ctaLabelOf(body) === anchor),
   );
+const jsonLdTypes = (html) =>
+  [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap(([, json]) => {
+    const data = JSON.parse(json);
+    return (data["@graph"] ?? [data]).map((node) => [node["@type"]].flat().join("+"));
+  });
 
 const rows = [];
 const check = (name, ok, detail = "") => rows.push({ name, ok, detail });
@@ -98,10 +111,13 @@ check("/ og:url", metaOf((await fetchPage("/")).html, "og:url") === SITE, metaOf
 
 await fetch(`${BASE}/learn`, { headers: { "user-agent": UA } });
 const learnAgain = await fetch(`${BASE}/learn`, { headers: { "user-agent": UA } });
+// next start sends x-nextjs-prerender twice; Vercel answers from its own cache, named in x-vercel-cache.
+const prerender = learnAgain.headers.get("x-nextjs-prerender");
+const cacheState = learnAgain.headers.get("x-nextjs-cache") ?? learnAgain.headers.get("x-vercel-cache");
 check(
   "/learn prerendered and cached",
-  learnAgain.headers.get("x-nextjs-prerender") === "1" && learnAgain.headers.get("x-nextjs-cache") === "HIT",
-  `x-nextjs-prerender=${learnAgain.headers.get("x-nextjs-prerender")} x-nextjs-cache=${learnAgain.headers.get("x-nextjs-cache")}`,
+  prerender?.split(",").every((value) => value.trim() === "1") && ["HIT", "PRERENDER", "STALE"].includes(cacheState),
+  `x-nextjs-prerender=${prerender} cache=${cacheState}`,
 );
 
 for (const [path, expected] of Object.entries(TRIMMED_TITLES)) {
@@ -114,7 +130,7 @@ const guides = [...sitemap.matchAll(/<loc>https:\/\/thememorychess\.com(\/learn\
 check("sitemap lists guides", guides.length > 0, `${guides.length} guides`);
 for (const path of guides) {
   const { html } = await fetchPage(path);
-  const closing = html.indexOf('data-learn-cta="closing-primary"');
+  const closing = html.lastIndexOf('data-cta-kind="game"');
   const lastSection = Math.max(
     ...[...html.matchAll(/<section id="([^"]+)"/g)].filter((m) => m[1] !== "faq").map((m) => m.index),
   );
@@ -125,6 +141,21 @@ for (const [source, href, anchor] of ANCHORS) {
   const { html } = await fetchPage(source);
   check(`${source} -> ${href}${anchor ? ` "${anchor}"` : ""}`, hasAnchor(html, href, anchor));
 }
+
+for (const [path, types] of [
+  ["/", ["Organization", "WebSite", "SoftwareApplication+WebApplication", "VideoObject", "FAQPage"]],
+  ["/daily", ["WebPage", "BreadcrumbList"]],
+  ["/de/daily", ["WebPage", "BreadcrumbList"]],
+]) {
+  const found = jsonLdTypes((await fetchPage(path)).html);
+  check(`${path} JSON-LD has ${types.join(", ")}`, types.every((type) => found.includes(type)), found.join(", "));
+}
+
+const leaderboardDescription = metaOf((await fetchPage("/leaderboard")).html, "description");
+check("/leaderboard description 120 to 155 chars", leaderboardDescription.length >= 120 && leaderboardDescription.length <= 155, `${leaderboardDescription.length} chars`);
+
+const contactUrls = [...sitemap.matchAll(/<loc>([^<]*\/contact-us)<\/loc>/g)].map((m) => m[1]);
+check("sitemap lists /contact-us once, in English", contactUrls.join() === `${SITE}/contact-us`, contactUrls.join(" "));
 
 for (const row of rows) console.log(`${row.ok ? "PASS" : "FAIL"}  ${row.name}${row.detail ? `  [${row.detail}]` : ""}`);
 const failed = rows.filter((row) => !row.ok).length;

@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { localizedPath } from '@/lib/seo/alternates';
-import { socialMetadata } from '@/lib/seo/brand';
+import { socialMetadata, titleNamingBrandOnce } from '@/lib/seo/brand';
 import { robotsFor } from '@/lib/seo/englishOnly';
 import LeaderboardReference from '@/components/reference/LeaderboardReference';
 import { LabPaperHeader } from '@/components/lab-paper/LabPaperHeader';
@@ -20,7 +20,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'leaderboard.meta' });
 
   return {
-    title: t('title'),
+    title: titleNamingBrandOnce(t('title')),
     description: t('description'),
     // Translated boards are served to readers but indexed only in English, so
     // no locale advertises another and each canonical points at itself.

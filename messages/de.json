@@ -64,10 +64,10 @@
       "chooseSettings": "Figuren und Zeit wählen"
     },
     "video": {
-      "title": "So funktioniert Memory Chess",
-      "subtitle": "Eine kurze Anleitung: das Brett einprägen, die Stellung wieder aufbauen und den Punktestand auswerten.",
-      "iframeTitle": "Wie man Memory Chess spielt",
-      "credit": "Video: „A New Way To Train Your Vision“ von Colin Galen"
+      "title": "Trainiere die Fähigkeit hinter dem Spiel",
+      "subtitle": "Ein kurzes Video von Colin Galen über Visualisierung, die Fähigkeit, die jede Runde trainiert.",
+      "iframeTitle": "YouTube-Video: {title}",
+      "credit": "Video: „{title}“ von Colin Galen"
     },
     "learn": {
       "browseCta": "Schach-Guides ansehen"
@@ -80,8 +80,8 @@
           "answer": "Memory Chess ist ein kostenloses Gedächtnisspiel rund ums Schachbrett. Du prägst dir eine Stellung kurz ein, baust sie aus dem Gedächtnis wieder auf und bekommst eine Bewertung danach, wie viele Figuren richtig standen."
         },
         {
-          "question": "Wie spiele ich?",
-          "answer": "Wähle, wie viele Figuren du möchtest und wie lange du das Brett studieren willst. Wenn die Stellung verschwindet, setze die Figuren auf die Felder zurück, an die du dich erinnerst. Schicke deine Lösung ab, um Genauigkeit und Zeit zu sehen."
+          "question": "Wie spielt man Memory Chess?",
+          "answer": "Jede Runde hat drei Schritte. Wähle, wie viele Figuren gezeigt werden und wie viele Sekunden du zum Einprägen hast, oder starte eine der Schwierigkeitsstufen. Präge dir die Stellung ein, bis die Zeit abläuft oder du auf „Brett ausblenden“ tippst. Dann wird das Brett geleert: Wähle Figuren aus der Figurenauswahl und tippe auf die Felder, auf denen sie standen. Tippe auf „Abgeben“, um deine Genauigkeit, die richtig und falsch gesetzten Figuren und deine benötigte Zeit zu sehen."
         },
         {
           "question": "Können auch Anfänger Memory Chess spielen?",
@@ -260,7 +260,8 @@
             "chain": "Bauernkette",
             "blocked": "Blockiert"
           }
-        }
+        },
+        "dailyLink": "Oder spiel <link>das heutige Tagesbrett</link>, dieselbe Stellung für alle."
       },
       "notebook": {
         "title": "Was du nie misst, kannst du nicht verbessern.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Bestenliste von Memory Chess",
-      "description": "Sieh dir die besten Spieler von Memory Chess nach Schwierigkeit, Genauigkeit, Einprägetempo und Lösungszeit an.",
+      "description": "Bestenliste von Memory Chess: das heutige Tagesbrett und vier Schwierigkeitsstufen, sortiert nach gemerkten Figuren, Fehlern, Einpräge- und Lösungszeit.",
       "socialTitle": "Bestenliste von Memory Chess",
       "socialDescription": "Sieh, wie sich Spielerinnen und Spieler in den Gedächtnis- und Vorstellungsaufgaben schlagen."
     },

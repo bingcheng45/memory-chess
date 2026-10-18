@@ -34,4 +34,19 @@ describe("LabFaq", () => {
       expect(text).toContain(faq.answer);
     }
   });
+
+  it("answers how to play Memory Chess in the page and in its FAQPage data", () => {
+    const { container } = render(<LabFaq />);
+    const faqPage = JSON.parse(container.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
+    const answer =
+      "Each round has three steps. Pick how many pieces to show and how many seconds to study, or start a preset. Study the position until the time runs out or you press Hide board. The board then clears: choose pieces from the palette and tap the squares where they stood. Submit to see your accuracy, the pieces you placed right and wrong, and how long you took.";
+
+    expect(screen.getByText("How do you play Memory Chess?")).toBeInTheDocument();
+    expect(screen.getByText(answer)).toBeInTheDocument();
+    expect(faqPage.mainEntity[1]).toEqual({
+      "@type": "Question",
+      name: "How do you play Memory Chess?",
+      acceptedAnswer: { "@type": "Answer", text: answer },
+    });
+  });
 });

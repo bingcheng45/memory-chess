@@ -1,12 +1,12 @@
 {
   "game": {
-    "title": "Zo werkt Memory Chess",
+    "title": "Zo speel je Memory Chess",
     "intro": "Elke ronde bestaat uit dezelfde 3 stappen.",
     "phases": {
-      "heading": "De 3 fasen van een ronde",
+      "heading": "Regels van Memory Chess: de drie fasen van een ronde",
       "memorize": {
         "title": "Onthouden",
-        "body": "Een stelling verschijnt een vast aantal seconden op een volledig bord. Er beweegt niets en er is niets verborgen. Met Klaar kun je de fase eerder beëindigen; de klok registreert hoelang je echt hebt gekeken, niet hoeveel tijd je kreeg."
+        "body": "Een stelling verschijnt een vast aantal seconden op een volledig bord. Er beweegt niets en er is niets verborgen. Met Bord verbergen kun je de fase eerder beëindigen; de klok registreert hoelang je echt hebt gekeken, niet hoeveel tijd je kreeg."
       },
       "place": {
         "title": "Plaatsen",

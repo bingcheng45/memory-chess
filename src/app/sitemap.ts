@@ -38,6 +38,7 @@ type SitemapEntryConfig = {
     MetadataRoute.Sitemap[number]["changeFrequency"]
   >;
   priority: number;
+  sitemapEnglishUrlOnly?: true;
 };
 
 const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
@@ -70,6 +71,7 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "monthly",
     priority: 0.5,
+    sitemapEnglishUrlOnly: true,
   },
   {
     path: "/changelog",
@@ -150,7 +152,7 @@ function entryFor(
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return SITEMAP_ENTRIES.flatMap((entry) =>
-    isEnglishOnlyPath(entry.path) || isIndexedInDefaultLocaleOnly(entry.path)
+    entry.sitemapEnglishUrlOnly || isEnglishOnlyPath(entry.path) || isIndexedInDefaultLocaleOnly(entry.path)
       ? [entryFor(entry, DEFAULT_LOCALE)]
       : LOCALES.map((locale) => ({
           ...entryFor(entry, locale),

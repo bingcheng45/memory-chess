@@ -64,10 +64,10 @@
       "chooseSettings": "Vælg brikker og tid"
     },
     "video": {
-      "title": "Se hvordan Memory Chess fungerer",
-      "subtitle": "En hurtig guide til at studere brættet, genskabe stillingen og læse din score.",
-      "iframeTitle": "Sådan spiller du Memory Chess",
-      "credit": "Video: “A New Way To Train Your Vision” af Colin Galen"
+      "title": "Træn evnen bag spillet",
+      "subtitle": "En kort video af Colin Galen om visualisering, den evne hver runde træner.",
+      "iframeTitle": "YouTube-video: {title}",
+      "credit": "Video: “{title}” af Colin Galen"
     },
     "learn": {
       "browseCta": "Se skakguiderne"
@@ -80,8 +80,8 @@
           "answer": "Memory Chess er et gratis hukommelsesspil på skakbrættet. Du studerer en stilling kort, genskaber den fra hukommelsen og får point ud fra, hvor mange brikker du placerede rigtigt."
         },
         {
-          "question": "Hvordan spiller jeg?",
-          "answer": "Vælg hvor mange brikker du vil have, og hvor længe du vil studere brættet. Når stillingen forsvinder, sætter du brikkerne tilbage på de felter, du husker. Send dit svar for at se præcision og tid."
+          "question": "Hvordan spiller man Memory Chess?",
+          "answer": "Hver runde har tre trin. Vælg hvor mange brikker der skal vises, og hvor mange sekunder du vil studere, eller start en af sværhedsgraderne. Studér stillingen, til tiden løber ud, eller du trykker på Skjul brættet. Derefter tømmes brættet: vælg brikker fra paletten, og tryk på de felter, hvor de stod. Tryk på Send for at se din præcision, hvilke brikker du placerede rigtigt og forkert, og hvor lang tid du brugte."
         },
         {
           "question": "Kan begyndere spille Memory Chess?",
@@ -260,7 +260,8 @@
             "chain": "Bondekæde",
             "blocked": "Blokeret"
           }
-        }
+        },
+        "dailyLink": "Eller spil <link>dagens bræt</link>, den samme stilling for alle spillere."
       },
       "notebook": {
         "title": "Du kan ikke forbedre det, du aldrig måler.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Memory Chess-rangliste",
-      "description": "Se de bedste Memory Chess-spillere efter sværhedsgrad, præcision, indlæringstempo og løsningstid.",
+      "description": "Se de bedste Memory Chess-spillere på dagens bræt og i fire sværhedsgrader, rangeret efter huskede brikker, fejl, studietid og løsningstid.",
       "socialTitle": "Memory Chess-rangliste",
       "socialDescription": "Se hvordan spillere placerer sig i hukommelses- og visualiseringsudfordringerne."
     },

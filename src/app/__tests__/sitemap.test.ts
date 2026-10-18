@@ -3,6 +3,7 @@ import { ARTICLES, ARTICLES_LAST_UPDATED } from "@/lib/articles";
 import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
 import { LOCALES } from "@/i18n/routing";
+import { robotsFor } from "@/lib/seo/englishOnly";
 
 jest.mock("@/lib/articles/translatedLocales");
 
@@ -96,6 +97,15 @@ describe("sitemap", () => {
     for (const entry of entries) {
       expect(Object.values(entry.alternates?.languages ?? {}).some((href) => /leaderboard/.test(String(href)))).toBe(false);
     }
+  });
+
+  it("lists the contact page once, in English, while its translations stay indexable", async () => {
+    const contact = (await sitemap()).filter((entry) => /\/contact-us$/.test(entry.url));
+
+    expect(contact.map((entry) => entry.url)).toEqual(["https://thememorychess.com/contact-us"]);
+    expect(contact[0].alternates).toBeUndefined();
+    expect(robotsFor("/contact-us", "de")).toBeUndefined();
+    expect(robotsFor("/leaderboard", "de")).toMatchObject({ index: false });
   });
 
   it("lists the articles hub and every article once, with no alternates", async () => {

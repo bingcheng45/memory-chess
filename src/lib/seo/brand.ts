@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 
 const SITE_URL = "https://thememorychess.com";
+const BRAND_NAME = "Memory Chess";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
@@ -23,12 +24,16 @@ export function socialMetadata({ title, description, url }: { title: string; des
   } satisfies Pick<Metadata, "openGraph" | "twitter">;
 }
 
+export function titleNamingBrandOnce(title: string): Metadata["title"] {
+  return title.includes(BRAND_NAME) ? { absolute: title } : title;
+}
+
 const ALTERNATE_NAMES = ["MemoryChess", "The Memory Chess"];
 
 export const BRAND_ORGANIZATION = {
   "@type": "Organization",
   "@id": ORGANIZATION_ID,
-  name: "Memory Chess",
+  name: BRAND_NAME,
   alternateName: ALTERNATE_NAMES,
   // The English home meta description; a test keeps the two in step.
   description:
@@ -41,7 +46,7 @@ export const BRAND_ORGANIZATION = {
 export const BRAND_WEBSITE = {
   "@type": "WebSite",
   "@id": WEBSITE_ID,
-  name: "Memory Chess",
+  name: BRAND_NAME,
   alternateName: ALTERNATE_NAMES,
   url: SITE_URL,
   publisher: { "@id": ORGANIZATION_ID },

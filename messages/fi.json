@@ -64,10 +64,10 @@
       "chooseSettings": "Valitse nappulat ja aika"
     },
     "video": {
-      "title": "Katso, miten Memory Chess toimii",
-      "subtitle": "Lyhyt opas laudan tutkimiseen, aseman rakentamiseen ja tuloksen tulkintaan.",
-      "iframeTitle": "Näin pelaat Memory Chessiä",
-      "credit": "Video: ”A New Way To Train Your Vision”, Colin Galen"
+      "title": "Harjoita taitoa, jota peli vaatii",
+      "subtitle": "Colin Galenin lyhyt video visualisoinnista, jota jokainen kierros harjoittaa.",
+      "iframeTitle": "YouTube-video: {title}",
+      "credit": "Video: ”{title}”, Colin Galen"
     },
     "learn": {
       "browseCta": "Selaa shakkioppaita"
@@ -80,8 +80,8 @@
           "answer": "Memory Chess on ilmainen laudan muistipeli. Tutkit shakkiasemaa hetken, rakennat sen uudelleen muistista ja saat pisteet sen mukaan, kuinka monta nappulaa asetit oikein."
         },
         {
-          "question": "Miten peliä pelataan?",
-          "answer": "Valitse nappuloiden määrä ja se, kuinka kauan haluat tutkia lautaa. Kun asema katoaa, aseta nappulat takaisin muistamiisi ruutuihin. Lähetä vastauksesi, niin näet tarkkuuden ja ajan."
+          "question": "Miten Memory Chessiä pelataan?",
+          "answer": "Jokaisessa kierroksessa on kolme vaihetta. Valitse, montako nappulaa näytetään ja montako sekuntia saat tutkia asemaa, tai aloita valmiilla vaikeustasolla. Tutki asemaa, kunnes aika loppuu tai painat Piilota lauta -painiketta. Sitten lauta tyhjenee: valitse nappuloita valikoimasta ja napauta ruutuja, joilla ne olivat. Paina Lähetä, niin näet tarkkuutesi, oikein ja väärin asetetut nappulat sekä käyttämäsi ajan."
         },
         {
           "question": "Voivatko aloittelijat pelata Memory Chessiä?",
@@ -260,7 +260,8 @@
             "chain": "Sotilasketju",
             "blocked": "Tukossa"
           }
-        }
+        },
+        "dailyLink": "Tai pelaa <link>tämän päivän lautaa</link>, sama asema kaikille pelaajille."
       },
       "notebook": {
         "title": "Mitä et koskaan mittaa, sitä et voi parantaa.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Memory Chess -tulostaulukko",
-      "description": "Katso Memory Chessin parhaat pelaajat vaikeustason, tarkkuuden, muistiinpainamisnopeuden ja ratkaisuajan mukaan.",
+      "description": "Katso Memory Chessin parhaat pelaajat päivän laudalla ja neljällä vaikeustasolla muistettujen nappuloiden, virheiden, tutkimisajan ja ratkaisuajan mukaan.",
       "socialTitle": "Memory Chess -tulostaulukko",
       "socialDescription": "Katso, miten pelaajat sijoittuvat muisti- ja hahmotushaasteissa."
     },

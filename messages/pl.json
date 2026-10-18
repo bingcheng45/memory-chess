@@ -64,10 +64,10 @@
       "chooseSettings": "Wybierz figury i czas"
     },
     "video": {
-      "title": "Zobacz, jak działa Memory Chess",
-      "subtitle": "Krótki przewodnik: jak studiować szachownicę, odtwarzać pozycję i czytać swój wynik.",
-      "iframeTitle": "Jak grać w Memory Chess",
-      "credit": "Wideo: „A New Way To Train Your Vision”, Colin Galen"
+      "title": "Ćwicz umiejętność, na której opiera się gra",
+      "subtitle": "Krótki film Colina Galena o wizualizacji, umiejętności, którą ćwiczy każda runda.",
+      "iframeTitle": "Film na YouTube: {title}",
+      "credit": "Wideo: „{title}”, Colin Galen"
     },
     "learn": {
       "browseCta": "Przeglądaj poradniki"
@@ -80,8 +80,8 @@
           "answer": "Memory Chess to darmowa gra pamięciowa na szachownicy. Przez chwilę analizujesz pozycję, odtwarzasz ją z pamięci i dostajesz wynik zależny od tego, ile bierek ustawiłeś poprawnie."
         },
         {
-          "question": "Jak się gra?",
-          "answer": "Wybierz liczbę bierek i czas na analizę szachownicy. Gdy pozycja zniknie, ustaw bierki na polach, które pamiętasz. Wyślij odpowiedź, aby zobaczyć celność i czas."
+          "question": "Jak grać w Memory Chess?",
+          "answer": "Każda runda ma trzy etapy. Wybierz, ile bierek ma się pojawić i ile sekund chcesz na zapamiętanie, albo uruchom jeden z poziomów trudności. Analizuj pozycję, aż skończy się czas lub naciśniesz „Ukryj szachownicę”. Potem szachownica się czyści: wybieraj bierki z palety i stukaj w pola, na których stały. Naciśnij „Wyślij”, aby zobaczyć celność, bierki ustawione dobrze i źle oraz czas, jaki zajęła ci runda."
         },
         {
           "question": "Czy początkujący mogą grać w Memory Chess?",
@@ -260,7 +260,8 @@
             "chain": "Łańcuch pionków",
             "blocked": "Zablokowane"
           }
-        }
+        },
+        "dailyLink": "Albo zagraj w <link>dzisiejszą planszę dnia</link>, z tą samą pozycją dla każdego."
       },
       "notebook": {
         "title": "Nie poprawisz tego, czego nigdy nie mierzysz.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Ranking Memory Chess",
-      "description": "Zobacz najlepszych graczy Memory Chess według poziomu trudności, celności, tempa zapamiętywania i czasu rozwiązania.",
+      "description": "Zobacz najlepszych graczy Memory Chess na planszy dnia i w czterech poziomach trudności, według zapamiętanych bierek, błędów, czasu nauki i rozwiązania.",
       "socialTitle": "Ranking Memory Chess",
       "socialDescription": "Sprawdź, jak gracze wypadają w zadaniach na pamięć i wyobraźnię."
     },

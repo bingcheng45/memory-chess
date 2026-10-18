@@ -2,6 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import TutorialVideoFrame from "@/components/ui/TutorialVideoFrame";
+import { TUTORIAL_VIDEO } from "@/components/ui/tutorialVideo";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
 
 export function LabVideo() {
@@ -15,7 +16,7 @@ export function LabVideo() {
           <div className="lab-video-frame">
             <TutorialVideoFrame />
           </div>
-          <figcaption className="lab-note">{t("credit")}</figcaption>
+          <figcaption className="lab-note">{t("credit", { title: TUTORIAL_VIDEO.name })}</figcaption>
         </figure>
       </div>
     </section>

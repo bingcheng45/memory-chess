@@ -1,13 +1,14 @@
 import { homeSchema } from "@/components/home/homeSchema";
 
 describe("homeSchema", () => {
-  it("adds the app node for English beside the brand graph", () => {
+  it("adds the app and tutorial video nodes for English beside the brand graph", () => {
     const schema = homeSchema("en", "Play the free memory chess game online.");
 
     expect(schema["@graph"].map((node) => node["@type"])).toEqual([
       "Organization",
       "WebSite",
       ["SoftwareApplication", "WebApplication"],
+      "VideoObject",
     ]);
     expect(schema["@graph"][2]).toEqual({
       "@type": ["SoftwareApplication", "WebApplication"],

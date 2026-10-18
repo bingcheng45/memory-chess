@@ -1,12 +1,12 @@
 {
   "game": {
-    "title": "Jak działa Memory Chess",
+    "title": "Jak grać w Memory Chess",
     "intro": "Każda runda przebiega w tych samych trzech krokach.",
     "phases": {
-      "heading": "Trzy fazy rundy",
+      "heading": "Zasady Memory Chess: trzy fazy rundy",
       "memorize": {
         "title": "Zapamiętywanie",
-        "body": "Pozycja pojawia się na pełnej szachownicy na ustaloną liczbę sekund. Nic się nie rusza i nic nie jest ukryte. Fazę możesz zakończyć wcześniej przyciskiem Gotowe, a zegar zapisuje czas, przez który faktycznie patrzyłeś, a nie czas, który dostałeś."
+        "body": "Pozycja pojawia się na pełnej szachownicy na ustaloną liczbę sekund. Nic się nie rusza i nic nie jest ukryte. Fazę możesz zakończyć wcześniej przyciskiem Ukryj szachownicę, a zegar zapisuje czas, przez który faktycznie patrzyłeś, a nie czas, który dostałeś."
       },
       "place": {
         "title": "Ustawianie",

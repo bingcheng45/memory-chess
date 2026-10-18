@@ -64,10 +64,10 @@
       "chooseSettings": "Zvolte počet figur a čas"
     },
     "video": {
-      "title": "Podívejte se, jak Memory Chess funguje",
-      "subtitle": "Krátký průvodce: jak si prohlédnout šachovnici, poskládat pozici a přečíst si své skóre.",
-      "iframeTitle": "Jak hrát Memory Chess",
-      "credit": "Video: „A New Way To Train Your Vision“ od Colina Galena"
+      "title": "Trénujte dovednost, na které hra stojí",
+      "subtitle": "Krátké video Colina Galena o vizualizaci, dovednosti, kterou trénuje každé kolo.",
+      "iframeTitle": "Video na YouTube: {title}",
+      "credit": "Video: „{title}“ od Colina Galena"
     },
     "learn": {
       "browseCta": "Procházet návody"
@@ -80,8 +80,8 @@
           "answer": "Memory Chess je bezplatná paměťová hra na šachovnici. Chvíli si prohlížíte pozici, pak ji poskládáte po paměti a dostanete skóre podle toho, kolik figurek jste umístili správně."
         },
         {
-          "question": "Jak se hraje?",
-          "answer": "Zvolte počet figurek a čas na prohlížení šachovnice. Jakmile pozice zmizí, vraťte figurky na pole, která si pamatujete. Odešlete odpověď a uvidíte přesnost i čas."
+          "question": "Jak se hraje Memory Chess?",
+          "answer": "Každé kolo má tři kroky. Zvolte, kolik figurek se má ukázat a kolik sekund chcete na zapamatování, nebo spusťte jednu z úrovní obtížnosti. Prohlížejte si pozici, dokud nevyprší čas nebo dokud nestisknete „Skrýt šachovnici“. Pak se šachovnice vymaže: vybírejte figurky z palety a klepejte na pole, kde stály. Klepněte na „Odeslat“ a uvidíte přesnost, správně i chybně umístěné figurky a to, jak dlouho vám to trvalo."
         },
         {
           "question": "Mohou Memory Chess hrát začátečníci?",
@@ -260,7 +260,8 @@
             "chain": "Pěšcový řetěz",
             "blocked": "Zablokováno"
           }
-        }
+        },
+        "dailyLink": "Nebo si zahrajte <link>dnešní desku dne</link>, stejnou pozici pro všechny."
       },
       "notebook": {
         "title": "Co nikdy nezměříte, to nezlepšíte.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Žebříček Memory Chess",
-      "description": "Podívejte se na nejlepší hráče Memory Chess podle obtížnosti, přesnosti, rychlosti zapamatování a času řešení.",
+      "description": "Nejlepší hráči Memory Chess na dnešní desce dne a ve čtyřech úrovních obtížnosti, seřazení podle zapamatovaných figurek, chyb, času studia a času řešení.",
       "socialTitle": "Žebříček Memory Chess",
       "socialDescription": "Zjistěte, jak si hráči vedou v úlohách na paměť a představivost."
     },

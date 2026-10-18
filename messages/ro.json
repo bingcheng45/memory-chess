@@ -64,10 +64,10 @@
       "chooseSettings": "Alege piesele și timpul"
     },
     "video": {
-      "title": "Vezi cum funcționează Memory Chess",
-      "subtitle": "Un ghid scurt despre cum studiezi tabla, reconstruiești poziția și îți citești punctajul.",
-      "iframeTitle": "Cum se joacă Memory Chess",
-      "credit": "Video: „A New Way To Train Your Vision”, de Colin Galen"
+      "title": "Antrenează abilitatea din spatele jocului",
+      "subtitle": "Un videoclip scurt de Colin Galen despre vizualizare, ce antrenează fiecare rundă.",
+      "iframeTitle": "Videoclip YouTube: {title}",
+      "credit": "Video: „{title}”, de Colin Galen"
     },
     "learn": {
       "browseCta": "Răsfoiește ghidurile"
@@ -80,8 +80,8 @@
           "answer": "Memory Chess este un joc gratuit de memorie pe tabla de șah. Studiezi o poziție pentru scurt timp, o reconstruiești din memorie și primești un punctaj în funcție de câte piese ai așezat corect."
         },
         {
-          "question": "Cum se joacă?",
-          "answer": "Alege câte piese vrei și cât timp vrei să studiezi tabla. Când poziția dispare, pune piesele înapoi pe pătratele pe care ți le amintești. Trimite răspunsul ca să vezi precizia și timpul."
+          "question": "Cum se joacă Memory Chess?",
+          "answer": "Fiecare rundă are trei pași. Alege câte piese să apară și câte secunde ai pentru studiu sau pornește un nivel de dificultate. Studiază poziția până expiră timpul sau până apeși Ascunde tabla. Apoi tabla se golește: alege piese din paletă și atinge pătratele pe care stăteau. Apasă Trimite ca să vezi precizia, piesele așezate corect și greșit și cât timp ți-a luat."
         },
         {
           "question": "Pot juca începătorii Memory Chess?",
@@ -260,7 +260,8 @@
             "chain": "Lanț de pioni",
             "blocked": "Blocat"
           }
-        }
+        },
+        "dailyLink": "Sau joacă <link>tabla zilei</link>, aceeași poziție pentru toată lumea."
       },
       "notebook": {
         "title": "Nu poți îmbunătăți ce nu măsori niciodată.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Clasament Memory Chess",
-      "description": "Vezi cei mai buni jucători Memory Chess după dificultate, precizie, viteză de memorare și timp de rezolvare.",
+      "description": "Vezi cei mai buni jucători Memory Chess pe tabla zilei și la patru niveluri de dificultate, după piese reținute, greșeli, timp de studiu și de rezolvare.",
       "socialTitle": "Clasament Memory Chess",
       "socialDescription": "Vezi cum se clasează jucătorii în provocările de memorie și vizualizare."
     },

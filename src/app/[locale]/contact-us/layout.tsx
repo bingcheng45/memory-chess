@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getTranslations } from 'next-intl/server';
 import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
-import { socialMetadata } from '@/lib/seo/brand';
+import { socialMetadata, titleNamingBrandOnce } from '@/lib/seo/brand';
 import ContactReference from '@/components/reference/ContactReference';
 import { LabPaperHeader } from '@/components/lab-paper/LabPaperHeader';
 import { LAB_PAPER_CLASS } from '@/components/lab-paper/shell';
@@ -20,7 +20,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'contact.meta' });
 
   return {
-    title: t('title'),
+    title: titleNamingBrandOnce(t('title')),
     description: t('description'),
     alternates: buildAlternates('/contact-us', locale),
     ...socialMetadata({

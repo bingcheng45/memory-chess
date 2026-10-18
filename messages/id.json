@@ -64,10 +64,10 @@
       "chooseSettings": "Pilih bidak dan waktu"
     },
     "video": {
-      "title": "Lihat cara kerja Memory Chess",
-      "subtitle": "Panduan singkat untuk mengamati papan, menyusun ulang posisi, dan membaca skor Anda.",
-      "iframeTitle": "Cara bermain Memory Chess",
-      "credit": "Video: “A New Way To Train Your Vision” oleh Colin Galen"
+      "title": "Latih kemampuan di balik permainan ini",
+      "subtitle": "Video singkat Colin Galen tentang visualisasi, kemampuan yang dilatih setiap ronde.",
+      "iframeTitle": "Video YouTube: {title}",
+      "credit": "Video: “{title}” oleh Colin Galen"
     },
     "learn": {
       "browseCta": "Jelajahi panduan catur"
@@ -80,8 +80,8 @@
           "answer": "Memory Chess adalah permainan ingatan papan yang gratis. Anda mengamati sebuah posisi catur sebentar, menyusunnya ulang dari ingatan, lalu mendapat skor berdasarkan berapa banyak bidak yang Anda letakkan dengan benar."
         },
         {
-          "question": "Bagaimana cara bermainnya?",
-          "answer": "Pilih jumlah bidak dan berapa lama Anda ingin mengamati papan. Setelah posisinya hilang, kembalikan bidak ke kotak yang Anda ingat. Kirim jawaban Anda untuk melihat akurasi dan waktunya."
+          "question": "Bagaimana cara bermain Memory Chess?",
+          "answer": "Setiap ronde terdiri dari tiga langkah. Pilih berapa bidak yang ditampilkan dan berapa detik untuk mengamati, atau mulai salah satu tingkat kesulitan. Amati posisinya sampai waktu habis atau Anda menekan Sembunyikan papan. Lalu papan dikosongkan: pilih bidak dari palet dan ketuk kotak tempat bidak itu berada. Tekan Kirim untuk melihat akurasi Anda, bidak yang Anda letakkan dengan benar dan salah, serta berapa lama waktu yang Anda perlukan."
         },
         {
           "question": "Bisakah pemula bermain Memory Chess?",
@@ -260,7 +260,8 @@
             "chain": "Rantai pion",
             "blocked": "Terhadang"
           }
-        }
+        },
+        "dailyLink": "Atau mainkan <link>papan harian hari ini</link>, posisi yang sama untuk semua pemain."
       },
       "notebook": {
         "title": "Kamu tidak bisa memperbaiki apa yang tidak pernah kamu ukur.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Papan peringkat Memory Chess",
-      "description": "Lihat pemain Memory Chess terbaik berdasarkan tingkat kesulitan, akurasi, kecepatan menghafal, dan waktu penyelesaian.",
+      "description": "Peringkat pemain Memory Chess di papan harian dan empat tingkat kesulitan, menurut bidak yang diingat, kesalahan, waktu mengamati, dan penyelesaian.",
       "socialTitle": "Papan peringkat Memory Chess",
       "socialDescription": "Lihat posisi para pemain dalam tantangan ingatan dan visualisasi."
     },

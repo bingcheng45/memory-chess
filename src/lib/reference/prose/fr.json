@@ -1,12 +1,12 @@
 {
   "game": {
-    "title": "Comment fonctionne Memory Chess",
+    "title": "Comment jouer à Memory Chess",
     "intro": "Chaque manche suit les trois mêmes étapes.",
     "phases": {
-      "heading": "Les trois phases d'une manche",
+      "heading": "Règles de Memory Chess : les trois phases d'une manche",
       "memorize": {
         "title": "Mémorisation",
-        "body": "Une position apparaît sur un échiquier complet pendant un nombre de secondes fixé. Rien ne bouge et rien n'est caché. Vous pouvez écourter la phase avec le bouton Terminé, et le chrono enregistre le temps que vous avez réellement passé à regarder, et non le temps qui vous était accordé."
+        "body": "Une position apparaît sur un échiquier complet pendant un nombre de secondes fixé. Rien ne bouge et rien n'est caché. Vous pouvez écourter la phase avec le bouton Masquer l’échiquier, et le chrono enregistre le temps que vous avez réellement passé à regarder, et non le temps qui vous était accordé."
       },
       "place": {
         "title": "Placement",

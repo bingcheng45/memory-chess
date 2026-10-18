@@ -64,10 +64,10 @@
       "chooseSettings": "Escolha peças e tempo"
     },
     "video": {
-      "title": "Veja como o Memory Chess funciona",
-      "subtitle": "Um guia rápido para estudar o tabuleiro, reconstruir a posição e conferir sua pontuação.",
-      "iframeTitle": "Como jogar Memory Chess",
-      "credit": "Vídeo: “A New Way To Train Your Vision”, de Colin Galen"
+      "title": "Treine a habilidade por trás do jogo",
+      "subtitle": "Um vídeo curto de Colin Galen sobre visualização, a habilidade que cada rodada treina.",
+      "iframeTitle": "Vídeo do YouTube: {title}",
+      "credit": "Vídeo: “{title}”, de Colin Galen"
     },
     "learn": {
       "browseCta": "Ver os guias de xadrez"
@@ -80,8 +80,8 @@
           "answer": "O Memory Chess é um jogo gratuito de memória de tabuleiro. Você estuda uma posição de xadrez por pouco tempo, reconstrói de memória e recebe uma pontuação com base em quantas peças colocou no lugar certo."
         },
         {
-          "question": "Como eu jogo?",
-          "answer": "Escolha quantas peças você quer e quanto tempo quer estudar o tabuleiro. Quando a posição sumir, recoloque as peças nas casas que você lembrar. Envie sua resposta para ver sua precisão e seu tempo."
+          "question": "Como jogar Memory Chess?",
+          "answer": "Cada rodada tem três etapas. Escolha quantas peças mostrar e quantos segundos estudar, ou comece um nível pronto. Estude a posição até o tempo acabar ou até você tocar em Ocultar tabuleiro. Depois o tabuleiro é esvaziado: escolha peças na paleta e toque nas casas onde elas estavam. Toque em Enviar para ver sua precisão, as peças que você colocou certo e errado e quanto tempo levou."
         },
         {
           "question": "Iniciantes conseguem jogar Memory Chess?",
@@ -260,7 +260,8 @@
             "chain": "Cadeia de peões",
             "blocked": "Bloqueado"
           }
-        }
+        },
+        "dailyLink": "Ou jogue o <link>tabuleiro do dia</link>, a mesma posição para todo mundo."
       },
       "notebook": {
         "title": "Não dá para melhorar o que você nunca mede.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Ranking do Memory Chess",
-      "description": "Veja os melhores jogadores do Memory Chess por dificuldade, precisão, velocidade de memorização e tempo de resolução.",
+      "description": "Veja os melhores jogadores do Memory Chess no tabuleiro do dia e em quatro níveis, por peças lembradas, erros, tempo de estudo e de resolução.",
       "socialTitle": "Ranking do Memory Chess",
       "socialDescription": "Veja como os jogadores se classificam nos desafios de memória e visualização."
     },

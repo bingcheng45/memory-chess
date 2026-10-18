@@ -1,12 +1,12 @@
 {
   "game": {
-    "title": "Memory Chess hoạt động như thế nào",
+    "title": "Cách chơi Memory Chess",
     "intro": "Mỗi ván đều theo đúng ba bước như nhau.",
     "phases": {
-      "heading": "Ba giai đoạn của một ván",
+      "heading": "Luật chơi Memory Chess: ba giai đoạn của một ván",
       "memorize": {
         "title": "Ghi nhớ",
-        "body": "Một thế cờ xuất hiện trên bàn cờ đầy đủ trong một số giây cố định. Không có gì di chuyển và không có gì bị ẩn. Bạn có thể kết thúc giai đoạn này sớm bằng nút Xong, và đồng hồ ghi lại thời gian bạn thực sự nhìn, chứ không phải thời gian bạn được cho."
+        "body": "Một thế cờ xuất hiện trên bàn cờ đầy đủ trong một số giây cố định. Không có gì di chuyển và không có gì bị ẩn. Bạn có thể kết thúc giai đoạn này sớm bằng nút Ẩn bàn cờ, và đồng hồ ghi lại thời gian bạn thực sự nhìn, chứ không phải thời gian bạn được cho."
       },
       "place": {
         "title": "Đặt quân",

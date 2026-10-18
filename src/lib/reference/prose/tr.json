@@ -1,12 +1,12 @@
 {
   "game": {
-    "title": "Memory Chess nasıl çalışır",
+    "title": "Memory Chess nasıl oynanır",
     "intro": "Her tur aynı üç adımdan oluşur.",
     "phases": {
-      "heading": "Bir turun üç aşaması",
+      "heading": "Memory Chess kuralları: bir turun üç aşaması",
       "memorize": {
         "title": "Ezberleme",
-        "body": "Bir konum, sabit bir saniye boyunca tam tahtada görünür. Hiçbir şey hareket etmez ve hiçbir şey gizlenmez. Bu aşamayı Bitti ile erken bitirebilirsiniz ve saat, size verilen süreyi değil, gerçekten baktığınız süreyi kaydeder."
+        "body": "Bir konum, sabit bir saniye boyunca tam tahtada görünür. Hiçbir şey hareket etmez ve hiçbir şey gizlenmez. Bu aşamayı Tahtayı gizle ile erken bitirebilirsiniz ve saat, size verilen süreyi değil, gerçekten baktığınız süreyi kaydeder."
       },
       "place": {
         "title": "Yerleştirme",

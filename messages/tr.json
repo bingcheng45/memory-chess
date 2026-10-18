@@ -64,10 +64,10 @@
       "chooseSettings": "Taş sayısı ve süreyi seç"
     },
     "video": {
-      "title": "Memory Chess nasıl çalışıyor?",
-      "subtitle": "Tahtayı incelemek, konumu yeniden kurmak ve puanını değerlendirmek için kısa bir rehber.",
-      "iframeTitle": "Memory Chess nasıl oynanır",
-      "credit": "Video: “A New Way To Train Your Vision”, Colin Galen"
+      "title": "Oyunun dayandığı beceriyi çalıştır",
+      "subtitle": "Colin Galen’dan görselleştirme üzerine kısa bir video: her turun çalıştırdığı beceri.",
+      "iframeTitle": "YouTube videosu: {title}",
+      "credit": "Video: “{title}”, Colin Galen"
     },
     "learn": {
       "browseCta": "Satranç rehberlerine göz at"
@@ -80,8 +80,8 @@
           "answer": "Memory Chess, ücretsiz bir tahta hafızası oyunudur. Bir satranç konumunu kısa süre incelersin, hafızandan yeniden kurarsın ve doğru yerleştirdiğin taş sayısına göre puan alırsın."
         },
         {
-          "question": "Nasıl oynanır?",
-          "answer": "Kaç taş istediğini ve tahtayı ne kadar süre inceleyeceğini seç. Konum kaybolduğunda taşları hatırladığın karelere geri yerleştir. Cevabını gönderip isabetini ve süreni gör."
+          "question": "Memory Chess nasıl oynanır?",
+          "answer": "Her tur üç adımdan oluşur. Kaç taş gösterileceğini ve incelemek için kaç saniyen olacağını seç ya da bir zorluk seviyesiyle başla. Süre dolana ya da “Tahtayı gizle”ye basana kadar konumu incele. Ardından tahta temizlenir: paletten taşları seç ve durdukları karelere dokun. İsabetini, doğru ve yanlış yerleştirdiğin taşları ve ne kadar sürdüğünü görmek için “Gönder”e bas."
         },
         {
           "question": "Yeni başlayanlar Memory Chess oynayabilir mi?",
@@ -260,7 +260,8 @@
             "chain": "Piyon zinciri",
             "blocked": "Kilitli"
           }
-        }
+        },
+        "dailyLink": "Ya da herkes için aynı konumun olduğu <link>günün tahtasını</link> oyna."
       },
       "notebook": {
         "title": "Hiç ölçmediğin şeyi geliştiremezsin.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Memory Chess sıralaması",
-      "description": "Memory Chess’in en iyi oyuncularını zorluk, isabet, ezberleme hızı ve çözüm süresine göre gör.",
+      "description": "Bugünün günlük tahtasında ve dört zorluk seviyesinde Memory Chess’in en iyi oyuncularını gör; hatırlanan taş, hata, inceleme ve çözüm süresine göre sıralı.",
       "socialTitle": "Memory Chess sıralaması",
       "socialDescription": "Oyuncuların hafıza ve görselleştirme görevlerinde nasıl sıralandığını gör."
     },

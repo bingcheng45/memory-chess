@@ -1333,7 +1333,7 @@
     "tile": {
       "eyebrow": "Read next",
       "yourRound": "Your round",
-      "articleDrill": "This article's drill",
+      "yourDrill": "This drill at your level",
       "roundSize": "{pieces, plural, one {# piece} other {# pieces}}, {seconds, plural, one {# second} other {# seconds}}",
       "read": "Read the article",
       "tryDrill": "Try that drill"

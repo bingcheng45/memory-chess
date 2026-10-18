@@ -18,6 +18,7 @@ import {
   type TileArticle,
 } from "@/lib/articles/tile";
 import { viewedStore } from "@/lib/articles/viewedStore";
+import { useReaderRound } from "@/hooks/useReaderRound";
 import { useGameStore } from "@/lib/store/gameStore";
 import { playSound } from "@/lib/utils/soundEffects";
 
@@ -84,12 +85,13 @@ function TileHeader({ article }: { article: TileArticle }) {
 function ShownTile({ article, round }: { article: TileArticle; round: RoundSize }) {
   const t = useTranslations("articles.tile");
   const { startGame } = useGameStore();
+  const drillRound = useReaderRound();
   const { slug, drill } = article;
 
   function startDrill() {
     trackEvent({ name: "article_tile_click", params: { slug, action: "drill" } });
     playSound("click");
-    startGame(drill.pieceCount, drill.memorizeTime, "tile_drill");
+    startGame(drillRound.pieceCount, drillRound.memorizeTime, "tile_drill");
   }
 
   return (
@@ -104,7 +106,7 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
       <TileHeader article={article} />
       <dl className="mb-3 mt-3.5 grid grid-cols-2 gap-2">
         <RoundBox label={t("yourRound")} size={round} />
-        <RoundBox label={t("articleDrill")} size={drill} />
+        <RoundBox label={t("yourDrill")} size={drillRound} />
       </dl>
       <p className={`mb-3.5 text-[14.5px] leading-normal text-[var(--lp-ink-2)] ${ARTICLE_LONG_WORDS}`}>{drill.why}</p>
       <div className="flex flex-wrap gap-2">

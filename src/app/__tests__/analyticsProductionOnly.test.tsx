@@ -104,6 +104,63 @@ describe("Google Analytics loading", () => {
     ]);
   });
 
+  const firstPageView = () => {
+    new Function(initScript())();
+    return Array.from((window as unknown as { dataLayer: IArguments[] }).dataLayer[2]);
+  };
+
+  it("leaves the title for gtag.js to read when the page has none yet, as on a streamed 404", () => {
+    window.history.replaceState(null, "", "/articles/zz-not-real");
+
+    expect(firstPageView()).toEqual([
+      "event",
+      "page_view",
+      { page_location: "http://localhost/articles/zz-not-real", page_referrer: "" },
+    ]);
+  });
+
+  it("drops the typed player name and search text from the landing address and a same-site referrer, keeping campaign tags", () => {
+    window.history.replaceState(
+      null,
+      "",
+      "/leaderboard?player=Test+Name&difficulty=medium&utm_source=share&utm_medium=link",
+    );
+    Object.defineProperty(document, "referrer", {
+      configurable: true,
+      value: "http://localhost/learn/search?q=my+rating&page=2",
+    });
+    document.title = "Leaderboard | Memory Chess";
+
+    expect(firstPageView()).toEqual([
+      "event",
+      "page_view",
+      {
+        page_location: "http://localhost/leaderboard?difficulty=medium&utm_source=share&utm_medium=link",
+        page_referrer: "http://localhost/learn/search?page=2",
+        page_title: "Leaderboard | Memory Chess",
+      },
+    ]);
+  });
+
+  it("keeps another site's referrer as it came, query and all", () => {
+    window.history.replaceState(null, "", "/?q=kept");
+    Object.defineProperty(document, "referrer", {
+      configurable: true,
+      value: "https://www.bing.com/search?q=memory+chess",
+    });
+    document.title = "Memory Chess";
+
+    expect(firstPageView()).toEqual([
+      "event",
+      "page_view",
+      {
+        page_location: "http://localhost/",
+        page_referrer: "https://www.bing.com/search?q=memory+chess",
+        page_title: "Memory Chess",
+      },
+    ]);
+  });
+
   it("loads gtag.js only once the page is idle", () => {
     const library = collect(tree, (element) => element.type === Script);
 

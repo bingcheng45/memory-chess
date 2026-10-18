@@ -94,7 +94,7 @@ export type FunnelEvent =
     }
   | {
       name: "article_tile_click";
-      params: { slug: string; action: "read" | "drill" };
+      params: { slug: string; action: "read" | "drill" | "drill_original" };
     }
   | {
       name: "lab_export";

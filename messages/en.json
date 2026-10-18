@@ -1042,6 +1042,7 @@
       "changeSettings": "Change settings",
       "moreOptions": "More options",
       "tileDrill": "This drill at your level",
+      "tileDrillWhy": "Sized to your level, to practise what the article describes.",
       "submitToLeaderboard": "Submit to leaderboard",
       "leaderboardQualifies": "Your score makes the leaderboard. Submit it before it's gone.",
       "viewLeaderboard": "View leaderboard",

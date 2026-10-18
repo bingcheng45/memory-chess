@@ -85,14 +85,16 @@ function TileHeader({ article }: { article: TileArticle }) {
 function ShownTile({ article, round }: { article: TileArticle; round: RoundSize }) {
   const t = useTranslations("articles.tile");
   const tResult = useTranslations("game.result");
+  const tPage = useTranslations("articles.page");
   const { startGame } = useGameStore();
   const drillRound = useReaderRound();
   const { slug, drill } = article;
+  const isArticleRound = drillRound.pieceCount === drill.pieceCount && drillRound.memorizeTime === drill.memorizeTime;
 
-  function startDrill() {
-    trackEvent({ name: "article_tile_click", params: { slug, action: "drill" } });
+  function startDrill(action: "drill" | "drill_original", { pieceCount, memorizeTime }: RoundSize) {
+    trackEvent({ name: "article_tile_click", params: { slug, action } });
     playSound("click");
-    startGame(drillRound.pieceCount, drillRound.memorizeTime, "tile_drill");
+    startGame(pieceCount, memorizeTime, "tile_drill");
   }
 
   return (
@@ -109,7 +111,7 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
         <RoundBox label={t("yourRound")} size={round} />
         <RoundBox label={tResult("tileDrill")} size={drillRound} />
       </dl>
-      <p className={`mb-3.5 text-[14.5px] leading-normal text-[var(--lp-ink-2)] ${ARTICLE_LONG_WORDS}`}>{drill.why}</p>
+      <p className={`mb-3.5 text-[14.5px] leading-normal text-[var(--lp-ink-2)] ${ARTICLE_LONG_WORDS}`}>{isArticleRound ? drill.why : tResult("tileDrillWhy")}</p>
       <div className="flex flex-wrap gap-2">
         <Link
           href={articlePath(slug)}
@@ -120,11 +122,21 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
         </Link>
         <button
           type="button"
-          onClick={startDrill}
+          onClick={() => startDrill("drill", drillRound)}
           className={`${ACTION_CLASS} border border-[var(--lp-accent)] text-[var(--lp-accent)] hover:bg-[var(--lp-accent-soft)]`}
         >
           {t("tryDrill")}
         </button>
+        {isArticleRound ? null : (
+          <button
+            type="button"
+            data-article-drill-original
+            onClick={() => startDrill("drill_original", drill)}
+            className={`${ACTION_CLASS} text-[var(--lp-accent)] underline underline-offset-4 hover:no-underline`}
+          >
+            {tPage("drillAction", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}
+          </button>
+        )}
       </div>
     </section>
   );

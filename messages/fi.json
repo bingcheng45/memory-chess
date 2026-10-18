@@ -1042,6 +1042,7 @@
       "changeSettings": "Muuta asetuksia",
       "moreOptions": "Lisää vaihtoehtoja",
       "tileDrill": "Tämä harjoitus tasollasi",
+      "tileDrillWhy": "Mitoitettu tasollesi, jotta voit harjoitella sitä, mitä artikkeli kuvaa.",
       "submitToLeaderboard": "Lähetä tulostaulukkoon",
       "leaderboardQualifies": "Tuloksesi yltää tulostaulukkoon. Lähetä se heti.",
       "viewLeaderboard": "Katso tulostaulukko",

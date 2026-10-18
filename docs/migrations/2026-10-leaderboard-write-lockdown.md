@@ -70,17 +70,17 @@ Merging the app change does two things on deploy, before any migration. The API 
 
 The server reads the role written inside the key. It does not check the key's signature, so only Supabase can tell whether the key belongs to this project. The log names the problem and never prints the key.
 
-- Not set. The server writes with the anon key and logs one warning at the first score. Scores keep saving until the migration runs.
-- A JWT whose role is not `service_role`, such as the anon key pasted by mistake. The server falls back to the anon key and logs one error at the first score. Scores keep saving until the migration runs.
+- Not set. The server writes with the anon key and logs one warning at the first score on each server instance (on Vercel, several lines). Scores keep saving until the migration runs.
+- A JWT whose role is not `service_role`, such as the anon key pasted by mistake. The server falls back to the anon key and logs one error at the first score on each server instance. Scores keep saving until the migration runs.
 - A value that is not a JWT, such as an `sb_secret_` key. The server falls back to the anon key and logs one error that says the variable does not hold a Supabase JWT with a role. Scores keep saving until the migration runs.
 - The `service_role` JWT of this project. The server writes with it. This is the only value that keeps scores saving after the migration.
-- A JWT whose role is `service_role` that this project rejects, such as the key of another project or a key from before the JWT secret was rotated. The server uses the key, and Supabase refuses it. Every score submission answers `500` from the moment that deploy is live, before any migration. No key line appears in the log. Each failed score logs `Leaderboard submission failed:` instead. Item 4 below is the only check that catches this case, so do item 4 as soon as the redeploy in item 3 is live.
+- A JWT whose role is `service_role` that this project rejects, such as the `service_role` key of another project. The server uses the key, and Supabase refuses it. Every score submission answers `500` from the moment that deploy is live, before any migration. No key line appears in the log. Each failed score logs `Leaderboard submission failed:` instead. Item 4 below is the only check that catches this case, so do item 4 as soon as the redeploy in item 3 is live.
 
 ### Use the legacy `service_role` JWT, not an `sb_secret_` key
 
 `SUPABASE_SERVICE_ROLE_KEY` must hold the legacy `service_role` key, the JWT that starts with `eyJ`. Supabase also issues secret keys that start with `sb_secret_`, and the lab backup works with either. The leaderboard does not. An `sb_secret_` key carries no role the server can read, so the server cannot tell it apart from a wrong key and falls back to the anon key.
 
-If someone later changes the variable to an `sb_secret_` key, leaderboard writes go back to the anon key with one error in the log. After 0006, every score submission then answers `500`. To move the leaderboard to the new key format, first change the role check in `src/lib/supabase.js`. For the same reason, keep the legacy JWT keys enabled in Supabase. A disabled legacy key is a `service_role` JWT the project rejects, and every score answers `500`.
+If someone later changes the variable to an `sb_secret_` key, leaderboard writes go back to the anon key with one error in the log. After 0006, every score submission then answers `500`. To move the leaderboard to the new key format, first change the role check in `src/lib/supabase.js`. Also keep the legacy JWT keys enabled in Supabase. Disabling them turns off the anon key and the `service_role` key together, because both are legacy JWTs in this project. The connection check on the anon client then fails first, so score submissions answer `503` and the leaderboard stops loading.
 
 ### Steps
 
@@ -98,7 +98,7 @@ If someone later changes the variable to an `sb_secret_` key, leaderboard writes
 If the score in item 4 does not appear, or item 5 finds either line, do not migrate. Fix the variable or remove it, redeploy, and repeat items 4 and 5.
 
 - If item 5 found a key line, the server fell back to the anon key. Scores keep saving while you fix the variable.
-- If the score did not appear and item 5 found no key line, every score is failing now. Remove the variable and redeploy at once if you cannot fix it right away. Without the variable, the site writes with the anon key and scores save again.
+- If the score did not appear and item 5 found no key line, every score is failing now. Remove the variable and redeploy at once if you cannot fix it right away. Without the variable, the site writes with the anon key and scores save again. This does not help if the legacy JWT keys are disabled in Supabase, since the anon key is rejected too. Re-enable the legacy keys instead.
 
 If the migration runs while the site still writes with the anon key, every score submission fails with `500` until the key is fixed and production is redeployed. To undo that at once, run the rollback in step 5.
 

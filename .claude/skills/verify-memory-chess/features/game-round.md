@@ -16,7 +16,7 @@ The core loop on `/game`. A player picks a difficulty, memorizes a random positi
 
 - Open `/game` and choose `Start round`.
 - Open `/game?difficulty=hard` to preselect a preset.
-- Open `/game?pieceCount=6&memorizeTime=10`, which auto-starts a round.
+- Open `/game?pieceCount=6&memorizeTime=10`. A player's first-ever round (an empty lab record) waits behind the one-line rule "Study 6 pieces for 10 s, then rebuild the position from memory." and `Start` over the veiled board, then counts 3, 2, 1 into study. Once the record holds a round, the link starts the round at once.
 - Choose `Try again` on a result screen.
 - Choose `Try that drill` on the result screen's article tile, which starts a round with that article's piece count and viewing time.
 
@@ -53,10 +53,10 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
 - Study auto-advances after `memorizeTime` seconds; read the position before the timer ends or use `Hide board` deterministically.
 - Wait for `#game-result-heading` after Submit, never a fixed sleep.
 - Sounds play on every phase change (`src/hooks/useRoundSounds.ts`); cdp.mjs launches Chrome with `--mute-audio`, so no action needed unless you bring your own browser.
-- A feedback dialog opens 800ms after the first result screen of a day and covers the page, the tile included. Close it with Escape, or set `localStorage["memory-chess-feedback-next-eligible-at"]` to a future time before the page loads.
+- A feedback dialog opens 800ms after a result screen from the fifth round of the player's first day, or the first round of a later day, and then not again for 24 hours (`feedbackDue` in `src/components/game/feedbackSchedule.ts`). It never opens on a first result. Without a lab record (blocked storage) it waits for the session's second result instead. It covers the page, the tile included. Close it with Escape, or set `localStorage["memory-chess-feedback-next-eligible-at"]` to a future time before the page loads.
 - The tile is not in the served HTML. Its articles ride in the page's script payload, the 12 newest at most (`MAX_TILE_ARTICLES`), and it renders only on the result screen, so `ssr-words.sh` and the audit do not see it. `/game` serves the same word count with and without it.
 - The tile's article is random among the unopened ones, so a script that needs one article must open the others first. A fresh `cdp.mjs` run starts with nothing opened.
 - The result screen POSTs to `/api/game-stats`; without Supabase credentials that fails silently in the console and the round still scores. Do not treat that console error as a defect.
 - The board's side comes from container units, with a viewport-based size under `@supports not (width: 1cqw)` (`src/components/game/game-lab.css`). Chrome has container units, so drive `helpers/drive-no-container-units.mjs` to check the fallback: it strips them as an older browser would and fails unless the board keeps the size it had at 390x844, 1440x900 and 844x390.
-- `?pieceCount=&memorizeTime=` auto-starts on load, skipping the configuration screen entirely; use it when a recipe needs to reach later phases fast, but the click-through path above is the one users take.
+- `?pieceCount=&memorizeTime=` skips the configuration screen. On a fresh profile it stops at the rule and `Start` (`.round-gate button`): press it and wait out the 3 s count-in for `data-round-phase="study"`. Once the record holds a round it starts at once. Use it when a recipe needs to reach later phases fast, but the click-through path above is the one users take.
 - A rated round (any but a review) prepends a row to `state.history`, which holds the newest 30. Each row's `facts` are what the rating read (pieces, study seconds used, rebuild seconds, accuracy) and `skillRatingChange` is what it moved. The rating's uncertainty is `state.certainty` (`rd`, `rounds`); together with `skillRating` it is the player the engine reads. Check a rating against the engine rather than a direction: a new player is provisional and moves up to 400 a round, and a perfect Easy round gains nothing 500 or more above the board, so import `ratingAfter` from `src/lib/game/rating.ts` in the drive script (Node strips its types) and recompute from the stored facts and certainty.

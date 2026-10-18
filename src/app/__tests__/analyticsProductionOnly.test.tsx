@@ -76,20 +76,31 @@ describe("Google Analytics loading", () => {
   afterEach(() => {
     Reflect.deleteProperty(window, "dataLayer");
     Reflect.deleteProperty(document, "referrer");
+    document.title = "";
     window.history.replaceState(null, "", "/");
   });
 
-  it("reports the address and referrer the visitor landed with, even once the app has moved on before gtag.js loads", () => {
+  it("reports the address, referrer and title the visitor landed with, even once the app has moved on before gtag.js loads", () => {
     window.history.replaceState(null, "", "/?utm_source=test&utm_medium=test");
     Object.defineProperty(document, "referrer", { configurable: true, value: "https://www.google.com/" });
+    document.title = "Memory Chess Game: Free Online Chess Memory Trainer";
 
     new Function(initScript())();
     window.history.pushState(null, "", "/game");
+    document.title = "Chess Memory Game: Rebuild the Position | Memory Chess";
 
     const commands = (window as unknown as { dataLayer: IArguments[] }).dataLayer.map((args) => Array.from(args));
     expect(commands.slice(1)).toEqual([
       ["config", "G-R8BM9EMY9J", { send_page_view: false }],
-      ["event", "page_view", { page_location: "http://localhost/?utm_source=test&utm_medium=test", page_referrer: "https://www.google.com/" }],
+      [
+        "event",
+        "page_view",
+        {
+          page_location: "http://localhost/?utm_source=test&utm_medium=test",
+          page_referrer: "https://www.google.com/",
+          page_title: "Memory Chess Game: Free Online Chess Memory Trainer",
+        },
+      ],
     ]);
   });
 

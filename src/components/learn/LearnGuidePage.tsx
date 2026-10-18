@@ -99,6 +99,7 @@ export default function LearnGuidePage({ page, siblings, titles }: LearnGuidePag
           </nav>
           <h1>{meta.h1}</h1>
           <p className="lg-lede">{meta.description}</p>
+          <LearnQuickPlay />
           <ul className="lg-meta">
             <li>{LEARN_LEVELS[meta.level]}</li>
             <li>{COPY.minRead(page.readingMinutes)}</li>
@@ -135,7 +136,6 @@ export default function LearnGuidePage({ page, siblings, titles }: LearnGuidePag
           </nav>
 
           <div className="lg-main">
-            <LearnQuickPlay />
             <section className="lg-answer" aria-labelledby="lg-answer-label">
               <p id="lg-answer-label" className="lg-answer-label">
                 {COPY.quickAnswer}

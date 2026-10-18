@@ -909,8 +909,6 @@
         "next": {
           "label": "Tiếp theo",
           "why": {
-            "more": "Đạt 90% trở lên, nên thêm một quân với cùng thời gian quan sát.",
-            "fewer": "Dưới 50%, nên bớt một quân với cùng thời gian quan sát.",
             "edgeFiles": "Bạn sót ở cột a và h nhiều hơn các cột trung tâm.",
             "weakType": "Quân {type, select, q {hậu} r {xe} b {tượng} n {mã} other {tốt}} bị sót nhiều nhất: bạn nhớ được {recalled} trên {shown}.",
             "fasterLessAccurate": "Với {pieceCount} quân, {studyTime}, bạn nhanh hơn trên mỗi quân đúng nhưng độ chính xác giảm {fell} điểm.",
@@ -918,7 +916,6 @@
             "plateau": "Tầm nhớ của bạn đang giữ ở {span} quân."
           },
           "play": "Chơi {pieceCount} quân, {studyTime}",
-          "again": "Chơi lại với {pieceCount} quân, {studyTime}",
           "patterns": "Đọc các bài luyện nhận diện mẫu hình",
           "vision": "Đọc cách nhìn toàn bộ bàn cờ"
         }
@@ -974,7 +971,8 @@
         "miss": "Nếu bạn trượt",
         "gain": "Tối đa <num>+{value}</num>",
         "loss": "Tối đa <num>−{value}</num>",
-        "announce": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}. Nếu bạn trượt, tối đa −{loss}."
+        "announce": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}. Nếu bạn trượt, tối đa −{loss}.",
+        "announceProvisional": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} quân/giây",
       "actions": "Thao tác với kết quả",
       "tryAgain": "Thử lại",
-      "newGame": "Ván mới",
+      "nextRound": "Ván tiếp theo",
+      "changeSettings": "Đổi cài đặt",
+      "moreOptions": "Thêm tùy chọn",
+      "tileDrill": "Bài luyện này ở trình độ của bạn",
+      "tileDrillWhy": "Được điều chỉnh theo trình độ của bạn, để luyện điều bài viết mô tả.",
       "submitToLeaderboard": "Gửi lên bảng xếp hạng",
       "leaderboardQualifies": "Điểm của bạn lọt vào bảng xếp hạng. Gửi ngay kẻo mất cơ hội.",
       "viewLeaderboard": "Xem bảng xếp hạng",
@@ -1655,7 +1657,10 @@
     "cardTitle": "Bàn cờ hằng ngày hôm nay đã sẵn sàng",
     "cardSetting": "{pieceCount} quân và {seconds} giây để ghi nhớ.",
     "cardNote": "Hôm nay mọi người cùng chơi một bàn cờ, và bạn có một lượt thử.",
-    "play": "Chơi bàn cờ hôm nay"
+    "play": "Chơi bàn cờ hôm nay",
+    "tomorrowTitle": "Bàn cờ ngày mai",
+    "tomorrowOpens": "Mở sau {timeLeft}.",
+    "seeToday": "Xem bàn cờ hôm nay"
   },
   "daily": {
     "meta": {

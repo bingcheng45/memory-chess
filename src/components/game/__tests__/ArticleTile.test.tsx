@@ -76,7 +76,7 @@ afterEach(() => {
 });
 
 describe("ArticleTile", () => {
-  it("shows one article under a label, with its portrait, title, person and the reason for its drill", () => {
+  it("shows one article under a label, with its portrait, title and person", () => {
     render(tile());
     const section = screen.getByRole("region", { name: "Read next" });
 
@@ -85,10 +85,6 @@ describe("ArticleTile", () => {
     );
     expect(within(section).getByText("Alder Fixture")).toBeInTheDocument();
     expect(within(section).getByText("Fixture champion 1")).toBeInTheDocument();
-    expect(within(section).getByText("Three seconds and twenty pieces are what only Alder asks for.")).toBeInTheDocument();
-    expect(
-      within(section).queryByText("Five seconds and twelve pieces match the test this fixture describes."),
-    ).not.toBeInTheDocument();
 
     const portrait = within(section).getByRole("img", { name: "Alder Fixture at a chess board" });
     expect(portrait).toHaveAttribute("loading", "lazy");
@@ -96,25 +92,42 @@ describe("ArticleTile", () => {
     expect(portrait).toHaveAttribute("height", "1050");
   });
 
-  it("sets the round just played beside the article's drill", () => {
+  it("sets the round just played beside the drill sized to a new player, not the article's own 20 pieces", () => {
     render(tile());
 
     expect(screen.getByText("Your round").closest("div")).toHaveTextContent("Your round6 pieces, 10 seconds");
-    expect(screen.getByText("This article's drill").closest("div")).toHaveTextContent(
-      "This article's drill20 pieces, 3 seconds",
+    expect(screen.getByText("This drill at your level").closest("div")).toHaveTextContent(
+      "This drill at your level4 pieces, 10 seconds",
     );
     expect(screen.getByText("Your round").tagName).toBe("DT");
     expect(screen.getByText("6 pieces, 10 seconds").tagName).toBe("DD");
   });
 
+  it("explains the sized round in a generic line, not the article's reason for its own 20 pieces at 3 seconds", () => {
+    render(tile());
+    const section = screen.getByRole("region", { name: "Read next" });
+
+    expect([
+      within(section).queryByText("Three seconds and twenty pieces are what only Alder asks for."),
+      within(section).getByText("Sized to your level, to practise what the article describes.").tagName,
+    ]).toEqual([null, "P"]);
+  });
+
+  it("keeps the article's reason, and offers no second drill, when the sized round is the article's own", () => {
+    const fitting = tileArticleOf(makeArticle(0, { drill: { pieceCount: 4, memorizeTime: 10, why: "Ten seconds and four pieces are where Alder starts." } }));
+    render(tile({ articles: [fitting] }));
+
+    expect([
+      screen.getByText("Ten seconds and four pieces are where Alder starts.").tagName,
+      screen.queryByText("Sized to your level, to practise what the article describes."),
+      document.querySelector("[data-article-drill-original]"),
+    ]).toEqual(["P", null, null]);
+  });
+
   it("says 1 piece and 1 second in the singular", () => {
-    const tiny = { ...alder, drill: { ...alder.drill, pieceCount: 1, memorizeTime: 1 } };
-    render(tile({ articles: [tiny], round: { pieceCount: 1, memorizeTime: 1 } }));
+    render(tile({ round: { pieceCount: 1, memorizeTime: 1 } }));
 
     expect(screen.getByText("Your round").closest("div")).toHaveTextContent("Your round1 piece, 1 second");
-    expect(screen.getByText("This article's drill").closest("div")).toHaveTextContent(
-      "This article's drill1 piece, 1 second",
-    );
   });
 
   it("offers reading first and the drill second", () => {
@@ -154,8 +167,8 @@ describe("ArticleTile", () => {
     expect(within(section).getByText("Deine Runde").closest("div")).toHaveTextContent(
       "Deine Runde6 Figuren, 10 Sekunden",
     );
-    expect(within(section).getByText("Die Übung dieses Artikels").closest("div")).toHaveTextContent(
-      "Die Übung dieses Artikels20 Figuren, 3 Sekunden",
+    expect(within(section).getByText("Diese Übung auf deinem Niveau").closest("div")).toHaveTextContent(
+      "Diese Übung auf deinem Niveau4 Figuren, 10 Sekunden",
     );
   });
 });
@@ -164,16 +177,14 @@ describe("the round sizes in a language with few and many forms", () => {
   const size = (pieceCount: number, memorizeTime: number): RoundSize => ({ pieceCount, memorizeTime });
 
   it.each([
-    ["ru", russian, size(1, 1), "1 фигура, 1 секунда", size(3, 2), "3 фигуры, 2 секунды"],
-    ["ru", russian, size(5, 10), "5 фигур, 10 секунд", size(22, 21), "22 фигуры, 21 секунда"],
-    ["pl", polish, size(1, 1), "1 bierka, 1 sekunda", size(3, 2), "3 bierki, 2 sekundy"],
-    ["pl", polish, size(5, 10), "5 bierek, 10 sekund", size(22, 21), "22 bierki, 21 sekund"],
-    ["cs", czech, size(1, 1), "1 figurka, 1 sekunda", size(3, 2), "3 figurky, 2 sekundy"],
-    ["cs", czech, size(5, 10), "5 figurek, 10 sekund", size(22, 21), "22 figurek, 21 sekund"],
-  ])("in %s reads a round of %j as %s and a drill of %j as %s", (locale, messages, round, roundText, drill, drillText) => {
-    const article = { ...alder, drill: { ...alder.drill, ...drill } };
-
-    render(tile({ articles: [article], round }), { locale, messages });
+    ["ru", russian, size(1, 1), "1 фигура, 1 секунда", "4 фигуры, 10 секунд"],
+    ["ru", russian, size(22, 21), "22 фигуры, 21 секунда", "4 фигуры, 10 секунд"],
+    ["pl", polish, size(1, 1), "1 bierka, 1 sekunda", "4 bierki, 10 sekund"],
+    ["pl", polish, size(5, 10), "5 bierek, 10 sekund", "4 bierki, 10 sekund"],
+    ["cs", czech, size(1, 1), "1 figurka, 1 sekunda", "4 figurky, 10 sekund"],
+    ["cs", czech, size(22, 21), "22 figurek, 21 sekund", "4 figurky, 10 sekund"],
+  ])("in %s reads both boxes, case %#", (locale, messages, round, roundText, drillText) => {
+    render(tile({ round }), { locale, messages });
 
     expect(screen.getAllByRole("definition").map((box) => box.textContent)).toEqual([roundText, drillText]);
   });
@@ -235,15 +246,30 @@ describe("which article the tile shows", () => {
 });
 
 describe("the tile's actions", () => {
-  it("starts a round with the article's piece count and viewing time", () => {
+  it("starts the round sized to a new player, not the article's 20 pieces at 3 seconds", () => {
     render(tile({ random: first }));
     expect(useGameStore.getState().round.phase).toBe("idle");
 
     fireEvent.click(screen.getByRole("button", { name: "Try that drill" }));
 
     const { gameState, lastSettings, round } = useGameStore.getState();
-    expect([round.phase, gameState.pieceCount, gameState.memorizeTime]).toEqual(["study", 20, 3]);
-    expect(lastSettings).toEqual({ pieceCount: 20, memorizeTime: 3 });
+    expect([round.phase, gameState.pieceCount, gameState.memorizeTime]).toEqual(["study", 4, 10]);
+    expect(lastSettings).toEqual({ pieceCount: 4, memorizeTime: 10 });
+  });
+
+  it("sizes the drill to a returning player's saved rating, as the article page does", () => {
+    localStorage.setItem("memory-chess-storage", JSON.stringify({ state: { gameState: { skillRating: 1300 }, certainty: { rd: 60, rounds: 40 } }, version: 3 }));
+    try {
+      render(tile({ random: first }));
+      const shownSize = screen.getByText("This drill at your level").closest("div")?.textContent;
+
+      fireEvent.click(screen.getByRole("button", { name: "Try that drill" }));
+
+      const { gameState } = useGameStore.getState();
+      expect([shownSize, gameState.pieceCount, gameState.memorizeTime]).toEqual(["This drill at your level8 pieces, 10 seconds", 8, 10]);
+    } finally {
+      localStorage.clear();
+    }
   });
 
   it("reports the drill once, with the slug", () => {
@@ -253,6 +279,20 @@ describe("the tile's actions", () => {
 
     expect(gtag.mock.calls).toEqual([
       ["event", "article_tile_click", { slug: "alder-fixture", action: "drill" }],
+      ["event", "round_start", { piece_count: 4, memorize_time: 10, round_source: "tile_drill" }],
+    ]);
+  });
+
+  it("still offers the article's own drill, and starts it at 20 pieces and 3 seconds", () => {
+    render(tile({ random: first }));
+    const original = screen.getByRole("button", { name: "This article's drill 20 pieces, 3 seconds" });
+
+    fireEvent.click(original);
+
+    const { gameState, round } = useGameStore.getState();
+    expect([original.hasAttribute("data-article-drill-original"), round.phase, gameState.pieceCount, gameState.memorizeTime]).toEqual([true, "study", 20, 3]);
+    expect(gtag.mock.calls).toEqual([
+      ["event", "article_tile_click", { slug: "alder-fixture", action: "drill_original" }],
       ["event", "round_start", { piece_count: 20, memorize_time: 3, round_source: "tile_drill" }],
     ]);
   });

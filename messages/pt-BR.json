@@ -909,8 +909,6 @@
         "next": {
           "label": "Próximo",
           "why": {
-            "more": "90% ou mais, então uma peça a mais com o mesmo tempo de estudo.",
-            "fewer": "Menos de 50%, então uma peça a menos com o mesmo tempo de estudo.",
             "edgeFiles": "Você erra nas colunas a e h com mais frequência que nas colunas centrais.",
             "weakType": "{type, select, q {As damas} r {As torres} b {Os bispos} n {Os cavalos} other {Os peões}} são as que mais escapam: você lembrou {recalled} de {shown}.",
             "fasterLessAccurate": "Com {pieceCount} peças, {studyTime}, você ficou mais rápido por peça certa e a precisão caiu {fell} pontos.",
@@ -918,7 +916,6 @@
             "plateau": "Sua amplitude está parada em {span} peças."
           },
           "play": "Jogar {pieceCount} peças, {studyTime}",
-          "again": "Jogar de novo com {pieceCount} peças, {studyTime}",
           "patterns": "Leia os exercícios de reconhecimento de padrões",
           "vision": "Leia como ver o tabuleiro inteiro"
         }
@@ -974,7 +971,8 @@
         "miss": "Se você errar",
         "gain": "Até <num>+{value}</num>",
         "loss": "No máximo <num>−{value}</num>",
-        "announce": "Rating do tabuleiro {board}. Seu rating {rating}. Precisão esperada {expected}%. Se você acertar, até +{gain}. Se você errar, no máximo −{loss}."
+        "announce": "Rating do tabuleiro {board}. Seu rating {rating}. Precisão esperada {expected}%. Se você acertar, até +{gain}. Se você errar, no máximo −{loss}.",
+        "announceProvisional": "Rating do tabuleiro {board}. Seu rating {rating}. Precisão esperada {expected}%. Se você acertar, até +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} peças/s",
       "actions": "Ações do resultado",
       "tryAgain": "Tentar de novo",
-      "newGame": "Nova partida",
+      "nextRound": "Próxima rodada",
+      "changeSettings": "Alterar configurações",
+      "moreOptions": "Mais opções",
+      "tileDrill": "Este exercício no seu nível",
+      "tileDrillWhy": "Ajustado ao seu nível, para praticar o que o artigo descreve.",
       "submitToLeaderboard": "Enviar para o ranking",
       "leaderboardQualifies": "Sua pontuação entra no ranking. Envie antes de perder a vaga.",
       "viewLeaderboard": "Ver o ranking",
@@ -1655,7 +1657,10 @@
     "cardTitle": "O tabuleiro diário de hoje está pronto",
     "cardSetting": "{pieceCount, plural, one {# peça} many {# peças} other {# peças}} e {seconds, plural, one {# segundo} many {# segundos} other {# segundos}} para memorizar.",
     "cardNote": "Hoje todos jogam o mesmo tabuleiro, e você tem uma tentativa.",
-    "play": "Jogar o tabuleiro de hoje"
+    "play": "Jogar o tabuleiro de hoje",
+    "tomorrowTitle": "Tabuleiro de amanhã",
+    "tomorrowOpens": "Abre em {timeLeft}.",
+    "seeToday": "Ver o tabuleiro de hoje"
   },
   "daily": {
     "meta": {

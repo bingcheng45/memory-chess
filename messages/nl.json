@@ -909,8 +909,6 @@
         "next": {
           "label": "Volgende",
           "why": {
-            "more": "90% of beter, dus één stuk meer met dezelfde kijktijd.",
-            "fewer": "Onder 50%, dus één stuk minder met dezelfde kijktijd.",
             "edgeFiles": "Je mist de a- en h-lijn vaker dan de middenlijnen.",
             "weakType": "{type, select, q {Dames} r {Torens} b {Lopers} n {Paarden} other {Pionnen}} glippen het vaakst weg: je onthield {recalled} van {shown}.",
             "fasterLessAccurate": "Bij {pieceCount} stukken, {studyTime}, werd je sneller per goed stuk en daalde je nauwkeurigheid {fell} punten.",
@@ -918,7 +916,6 @@
             "plateau": "Je spanne staat stil op {span} stukken."
           },
           "play": "Speel {pieceCount} stukken, {studyTime}",
-          "again": "Speel opnieuw met {pieceCount} stukken, {studyTime}",
           "patterns": "Lees de oefeningen voor patroonherkenning",
           "vision": "Lees hoe je het hele bord overziet"
         }
@@ -974,7 +971,8 @@
         "miss": "Als het misgaat",
         "gain": "Tot <num>+{value}</num>",
         "loss": "Hooguit <num>−{value}</num>",
-        "announce": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}. Als het misgaat, hooguit −{loss}."
+        "announce": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}. Als het misgaat, hooguit −{loss}.",
+        "announceProvisional": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} stukken/s",
       "actions": "Acties bij het resultaat",
       "tryAgain": "Opnieuw",
-      "newGame": "Nieuwe partij",
+      "nextRound": "Volgende ronde",
+      "changeSettings": "Instellingen wijzigen",
+      "moreOptions": "Meer opties",
+      "tileDrill": "Deze oefening op jouw niveau",
+      "tileDrillWhy": "Afgestemd op jouw niveau, om te oefenen wat het artikel beschrijft.",
       "submitToLeaderboard": "Naar de ranglijst sturen",
       "leaderboardQualifies": "Je score haalt de ranglijst. Stuur hem in voordat het te laat is.",
       "viewLeaderboard": "Bekijk de ranglijst",
@@ -1655,7 +1657,10 @@
     "cardTitle": "Het dagelijkse bord van vandaag staat klaar",
     "cardSetting": "{pieceCount, plural, one {# stuk} other {# stukken}} en {seconds, plural, one {# seconde} other {# seconden}} om te onthouden.",
     "cardNote": "Iedereen speelt vandaag hetzelfde bord, en je hebt één poging.",
-    "play": "Speel het bord van vandaag"
+    "play": "Speel het bord van vandaag",
+    "tomorrowTitle": "Bord van morgen",
+    "tomorrowOpens": "Opent over {timeLeft}.",
+    "seeToday": "Bekijk het bord van vandaag"
   },
   "daily": {
     "meta": {

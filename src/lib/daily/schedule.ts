@@ -98,3 +98,5 @@ export function scheduleOf(arc: WeeklyArc): (day: string) => DailySetting {
 }
 
 export const dailySettingOf = scheduleOf(WEEKLY_ARC);
+
+export const nextDailySettingOf = (day: string): DailySetting => dailySettingOf(utcDayOf(Date.parse(`${day}T00:00:00Z`) + DAY_MS));

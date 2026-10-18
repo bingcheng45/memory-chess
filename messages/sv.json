@@ -909,8 +909,6 @@
         "next": {
           "label": "Nästa",
           "why": {
-            "more": "90 % eller bättre, så en pjäs till med samma studietid.",
-            "fewer": "Under 50 %, så en pjäs färre med samma studietid.",
             "edgeFiles": "Du missar a- och h-linjen oftare än centrumlinjerna.",
             "weakType": "{type, select, q {Damerna} r {Tornen} b {Löparna} n {Springarna} other {Bönderna}} glider undan mest: du kom ihåg {recalled} av {shown}.",
             "fasterLessAccurate": "Med {pieceCount} pjäser, {studyTime}, blev du snabbare per rätt pjäs och träffsäkerheten föll {fell} procentenheter.",
@@ -918,7 +916,6 @@
             "plateau": "Ditt spann har legat kvar på {span} pjäser."
           },
           "play": "Spela {pieceCount} pjäser, {studyTime}",
-          "again": "Spela igen med {pieceCount} pjäser, {studyTime}",
           "patterns": "Läs övningarna i mönsterigenkänning",
           "vision": "Läs hur du ser hela brädet"
         }
@@ -974,7 +971,8 @@
         "miss": "Om det går fel",
         "gain": "Upp till <num>+{value}</num>",
         "loss": "Högst <num>−{value}</num>",
-        "announce": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}. Om det går fel, högst −{loss}."
+        "announce": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}. Om det går fel, högst −{loss}.",
+        "announceProvisional": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} pjäser/s",
       "actions": "Åtgärder för resultatet",
       "tryAgain": "Försök igen",
-      "newGame": "Nytt parti",
+      "nextRound": "Nästa runda",
+      "changeSettings": "Ändra inställningar",
+      "moreOptions": "Fler alternativ",
+      "tileDrill": "Den här övningen på din nivå",
+      "tileDrillWhy": "Anpassad efter din nivå, så att du kan öva på det artikeln beskriver.",
       "submitToLeaderboard": "Skicka till topplistan",
       "leaderboardQualifies": "Ditt resultat når topplistan. Skicka in det innan det är för sent.",
       "viewLeaderboard": "Visa topplistan",
@@ -1655,7 +1657,10 @@
     "cardTitle": "Dagens bräde är redo",
     "cardSetting": "{pieceCount, plural, one {# pjäs} other {# pjäser}} och {seconds, plural, one {# sekund} other {# sekunder}} att memorera.",
     "cardNote": "Alla spelar samma bräde i dag, och du får ett försök.",
-    "play": "Spela dagens bräde"
+    "play": "Spela dagens bräde",
+    "tomorrowTitle": "Morgondagens bräde",
+    "tomorrowOpens": "Öppnar om {timeLeft}.",
+    "seeToday": "Se dagens bräde"
   },
   "daily": {
     "meta": {

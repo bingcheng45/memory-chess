@@ -3,7 +3,7 @@ import {
   type RankingScore,
   compareRanking,
   parseCutoffs,
-  qualifies,
+  pushesOffLast,
 } from "@/lib/leaderboard/ranking";
 
 const BASELINE: RankingScore = {
@@ -83,27 +83,27 @@ describe("compareRanking", () => {
   });
 });
 
-describe("qualifies", () => {
-  it("accepts any score while the board is open", () => {
-    const awful = score({ correctPieces: 0, totalWrongPieces: 99, memorizeTime: 999, solutionTime: 999 });
+describe("pushesOffLast", () => {
+  it("is false for every score while the board is open, since no entry can be pushed off it", () => {
+    const best = score({ correctPieces: 20, totalWrongPieces: 0, memorizeTime: 1, solutionTime: 1 });
 
-    expect(qualifies(awful, { kind: "open" })).toBe(true);
+    expect(pushesOffLast(best, { kind: "open" })).toBe(false);
   });
 
   it("accepts a score faster than the worst entry on a full board", () => {
     const contender = score({ correctPieces: 2, totalWrongPieces: 0, memorizeTime: 3.0, solutionTime: 5.0 });
 
-    expect(qualifies(contender, { kind: "full", worst: PRODUCTION_EASY_WORST })).toBe(true);
+    expect(pushesOffLast(contender, { kind: "full", worst: PRODUCTION_EASY_WORST })).toBe(true);
   });
 
   it("rejects a score slower than the worst entry on a full board", () => {
     const contender = score({ correctPieces: 2, totalWrongPieces: 0, memorizeTime: 10.5, solutionTime: 5.0 });
 
-    expect(qualifies(contender, { kind: "full", worst: PRODUCTION_EASY_WORST })).toBe(false);
+    expect(pushesOffLast(contender, { kind: "full", worst: PRODUCTION_EASY_WORST })).toBe(false);
   });
 
   it("rejects a score that exactly ties the worst entry", () => {
-    expect(qualifies({ ...PRODUCTION_EASY_WORST }, { kind: "full", worst: PRODUCTION_EASY_WORST })).toBe(
+    expect(pushesOffLast({ ...PRODUCTION_EASY_WORST }, { kind: "full", worst: PRODUCTION_EASY_WORST })).toBe(
       false,
     );
   });

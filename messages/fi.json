@@ -909,8 +909,6 @@
         "next": {
           "label": "Seuraavaksi",
           "why": {
-            "more": "Vähintään 90 %, joten yksi nappula lisää samalla tutkimisajalla.",
-            "fewer": "Alle 50 %, joten yksi nappula vähemmän samalla tutkimisajalla.",
             "edgeFiles": "Sinulta menee a- ja h-linjoilla ohi useammin kuin keskilinjoilla.",
             "weakType": "{type, select, q {Kuningattaret} r {Tornit} b {Lähetit} n {Ratsut} other {Sotilaat}} lipsuvat useimmin: muistit {recalled}/{shown}.",
             "fasterLessAccurate": "Asetuksella {pieceCount} nappulaa, {studyTime}, nopeuduit oikeaa nappulaa kohden ja tarkkuus laski {fell} prosenttiyksikköä.",
@@ -918,7 +916,6 @@
             "plateau": "Jänteesi on pysynyt {span} nappulassa."
           },
           "play": "Pelaa {pieceCount} nappulaa, {studyTime}",
-          "again": "Pelaa uudelleen {pieceCount} nappulaa, {studyTime}",
           "patterns": "Lue hahmontunnistuksen harjoitukset",
           "vision": "Lue, miten näet koko laudan"
         }
@@ -974,7 +971,8 @@
         "miss": "Jos epäonnistut",
         "gain": "Enintään <num>+{value}</num>",
         "loss": "Enintään <num>−{value}</num>",
-        "announce": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}. Jos epäonnistut, enintään −{loss}."
+        "announce": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}. Jos epäonnistut, enintään −{loss}.",
+        "announceProvisional": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} nappulaa/s",
       "actions": "Tulokseen liittyvät toiminnot",
       "tryAgain": "Yritä uudelleen",
-      "newGame": "Uusi peli",
+      "nextRound": "Seuraava kierros",
+      "changeSettings": "Muuta asetuksia",
+      "moreOptions": "Lisää vaihtoehtoja",
+      "tileDrill": "Tämä harjoitus tasollasi",
+      "tileDrillWhy": "Mitoitettu tasollesi, jotta voit harjoitella sitä, mitä artikkeli kuvaa.",
       "submitToLeaderboard": "Lähetä tulostaulukkoon",
       "leaderboardQualifies": "Tuloksesi yltää tulostaulukkoon. Lähetä se heti.",
       "viewLeaderboard": "Katso tulostaulukko",
@@ -1655,7 +1657,10 @@
     "cardTitle": "Tämän päivän lauta on valmiina",
     "cardSetting": "{pieceCount, plural, one {# nappula} other {# nappulaa}} ja {seconds, plural, one {# sekunti} other {# sekuntia}} aikaa painaa mieleen.",
     "cardNote": "Kaikki pelaavat tänään saman laudan, ja sinulla on yksi yritys.",
-    "play": "Pelaa päivän lauta"
+    "play": "Pelaa päivän lauta",
+    "tomorrowTitle": "Huomisen lauta",
+    "tomorrowOpens": "Aukeaa {timeLeft} päästä.",
+    "seeToday": "Katso päivän lauta"
   },
   "daily": {
     "meta": {

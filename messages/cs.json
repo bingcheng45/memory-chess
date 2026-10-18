@@ -909,8 +909,6 @@
         "next": {
           "label": "Dál",
           "why": {
-            "more": "90 % nebo víc, takže o figuru víc při stejném čase na prohlížení.",
-            "fewer": "Pod 50 %, takže o figuru méně při stejném čase na prohlížení.",
             "edgeFiles": "Sloupce a a h vynecháváte častěji než středové sloupce.",
             "weakType": "Nejvíc unikají {type, select, q {dámy} r {věže} b {střelci} n {jezdci} other {pěšci}}: zapamatováno {recalled} z {shown}.",
             "fasterLessAccurate": "Při {pieceCount} figurách, {studyTime}, jste zrychlili na správnou figuru a přesnost klesla o {fell} bodů.",
@@ -918,7 +916,6 @@
             "plateau": "Váš rozsah se drží na {span} figurách."
           },
           "play": "Hrát s {pieceCount} figurami, {studyTime}",
-          "again": "Hrát znovu s {pieceCount} figurami, {studyTime}",
           "patterns": "Přečtěte si cvičení na rozpoznávání vzorců",
           "vision": "Přečtěte si, jak vidět celou šachovnici"
         }
@@ -974,7 +971,8 @@
         "miss": "Když to nevyjde",
         "gain": "Až <num>+{value}</num>",
         "loss": "Nejvýše <num>−{value}</num>",
-        "announce": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}. Když to nevyjde, nejvýše −{loss}."
+        "announce": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}. Když to nevyjde, nejvýše −{loss}.",
+        "announceProvisional": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} figurek/s",
       "actions": "Akce k výsledku",
       "tryAgain": "Zkusit znovu",
-      "newGame": "Nová partie",
+      "nextRound": "Další kolo",
+      "changeSettings": "Změnit nastavení",
+      "moreOptions": "Další možnosti",
+      "tileDrill": "Toto cvičení na vaší úrovni",
+      "tileDrillWhy": "Upraveno na vaši úroveň, abyste si vyzkoušeli, co článek popisuje.",
       "submitToLeaderboard": "Odeslat do žebříčku",
       "leaderboardQualifies": "Váš výsledek stačí na žebříček. Odešlete ho, než zmizí.",
       "viewLeaderboard": "Zobrazit žebříček",
@@ -1655,7 +1657,10 @@
     "cardTitle": "Dnešní denní pozice je připravena",
     "cardSetting": "{pieceCount, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} a {seconds, plural, one {# sekunda} few {# sekundy} many {# sekundy} other {# sekund}} na zapamatování.",
     "cardNote": "Dnes všichni hrají stejnou pozici a máte jeden pokus.",
-    "play": "Hrát dnešní pozici"
+    "play": "Hrát dnešní pozici",
+    "tomorrowTitle": "Zítřejší pozice",
+    "tomorrowOpens": "Otevře se za {timeLeft}.",
+    "seeToday": "Zobrazit dnešní pozici"
   },
   "daily": {
     "meta": {

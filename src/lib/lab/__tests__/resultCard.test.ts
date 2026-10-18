@@ -42,17 +42,17 @@ beforeEach(() => {
 });
 
 describe("resultCardFor", () => {
-  it("gives a first round only the streak and a replay of its setting", () => {
+  it("gives a first round only the streak, and no finding to act on", () => {
     expect(cardAfter([played("first", { accuracy: 67 })])).toEqual({
       newBest: null,
       vsRecent: null,
       spanChange: null,
       streak: { current: 1, graceUsed: false, daysThisWeek: 1, goal: 5 },
-      next: { kind: "again", setting: { pieceCount: 6, memorizeSeconds: 10 } },
+      next: null,
     });
   });
 
-  it("names a new best with the best it replaced, and points one piece up after 90% or more", () => {
+  it("names a new best with the best it replaced", () => {
     const card = cardAfter([played("a", { accuracy: 85, day: 5 }), played("b", { accuracy: 80, day: 6 }), played("c", { accuracy: 92 })]);
 
     expect(card).toEqual({
@@ -60,7 +60,7 @@ describe("resultCardFor", () => {
       vsRecent: null,
       spanChange: null,
       streak: { current: 3, graceUsed: false, daysThisWeek: 3, goal: 5 },
-      next: { kind: "more", setting: { pieceCount: 7, memorizeSeconds: 10 } },
+      next: null,
     });
   });
 
@@ -127,21 +127,13 @@ describe("resultCardFor", () => {
     expect(cardAfter(records, { goal: 3 })?.streak).toEqual({ current: 3, graceUsed: true, daysThisWeek: 2, goal: 3 });
   });
 
-  it("points one piece down after under 50%, but never below three pieces or above the largest board", () => {
-    expect(cardAfter([played("a", { accuracy: 40 })])?.next).toEqual({ kind: "fewer", setting: { pieceCount: 5, memorizeSeconds: 10 } });
-    expect(cardAfter([played("b", { accuracy: 49, pieces: 3 })])?.next).toEqual({ kind: "again", setting: { pieceCount: 3, memorizeSeconds: 10 } });
-    expect(cardAfter([played("c", { accuracy: 50 })])?.next).toEqual({ kind: "again", setting: { pieceCount: 6, memorizeSeconds: 10 } });
-    expect(cardAfter([played("d", { accuracy: 100, pieces: 32 })])?.next).toEqual({ kind: "again", setting: { pieceCount: 32, memorizeSeconds: 10 } });
-    expect(cardAfter([played("e", { accuracy: 90, seconds: 5 })])?.next).toEqual({ kind: "more", setting: { pieceCount: 7, memorizeSeconds: 5 } });
-  });
-
-  it("puts the engine's top finding first, ahead of the accuracy rules", () => {
+  it("points at the engine's top finding", () => {
     const records = [played("a", { accuracy: 100 })];
     const derived = deriveLab({ records, summary: summarize(records), today: TODAY });
     const insight: Insight = { ruleId: "plateau", params: { span: 6 }, action: { kind: "rig", pieceCount: 7, memorizeSeconds: 10 }, strength: 1 };
     const results: LabResults = { ...derived, insights: { readiness: { state: "ready", sampleSize: 12 }, value: { insights: [insight] } } };
 
-    expect(resultCardFor({ round: records[0], records, results, goal: 5, days: summarize(records).days, today: TODAY })?.next).toEqual({ kind: "insight", insight });
+    expect(resultCardFor({ round: records[0], records, results, goal: 5, days: summarize(records).days, today: TODAY })?.next).toEqual(insight);
   });
 
   it("has no card until the record holds the round's day", () => {

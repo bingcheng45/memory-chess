@@ -909,8 +909,6 @@
         "next": {
           "label": "Co dalej",
           "why": {
-            "more": "90% lub więcej, więc jedna figura więcej przy tym samym czasie na zapamiętanie.",
-            "fewer": "Poniżej 50%, więc jedna figura mniej przy tym samym czasie na zapamiętanie.",
             "edgeFiles": "Częściej mylisz się w kolumnach a i h niż w kolumnach centralnych.",
             "weakType": "Najczęściej umykają ci {type, select, q {hetmany} r {wieże} b {gońce} n {skoczki} other {pionki}}: zapamiętano {recalled} z {shown}.",
             "fasterLessAccurate": "Przy {pieceCount} figurach, {studyTime}, przyspieszyło twoje tempo na poprawną figurę, a dokładność spadła o {fell} pkt.",
@@ -918,7 +916,6 @@
             "plateau": "Twój zakres utrzymuje się na {span} figurach."
           },
           "play": "Zagraj z {pieceCount} figurami, {studyTime}",
-          "again": "Zagraj znów z {pieceCount} figurami, {studyTime}",
           "patterns": "Przeczytaj ćwiczenia z rozpoznawania wzorców",
           "vision": "Przeczytaj, jak widzieć całą planszę"
         }
@@ -974,7 +971,8 @@
         "miss": "Jeśli się nie uda",
         "gain": "Do <num>+{value}</num>",
         "loss": "Najwyżej <num>−{value}</num>",
-        "announce": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}."
+        "announce": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}.",
+        "announceProvisional": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} bierek/s",
       "actions": "Działania dla wyniku",
       "tryAgain": "Spróbuj ponownie",
-      "newGame": "Nowa partia",
+      "nextRound": "Następna runda",
+      "changeSettings": "Zmień ustawienia",
+      "moreOptions": "Więcej opcji",
+      "tileDrill": "To ćwiczenie na twoim poziomie",
+      "tileDrillWhy": "Dopasowane do twojego poziomu, żeby przećwiczyć to, co opisuje artykuł.",
       "submitToLeaderboard": "Wyślij do rankingu",
       "leaderboardQualifies": "Twój wynik łapie się do rankingu. Wyślij go, zanim przepadnie.",
       "viewLeaderboard": "Zobacz ranking",
@@ -1655,7 +1657,10 @@
     "cardTitle": "Dzisiejsza plansza dnia jest gotowa",
     "cardSetting": "{pieceCount, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} i {seconds, plural, one {# sekunda} few {# sekundy} many {# sekund} other {# sekundy}} na zapamiętanie.",
     "cardNote": "Dziś wszyscy grają na tej samej planszy, a ty masz jedną próbę.",
-    "play": "Zagraj dzisiejszą planszę"
+    "play": "Zagraj dzisiejszą planszę",
+    "tomorrowTitle": "Jutrzejsza plansza",
+    "tomorrowOpens": "Otwiera się za {timeLeft}.",
+    "seeToday": "Zobacz dzisiejszą planszę"
   },
   "daily": {
     "meta": {

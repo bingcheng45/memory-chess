@@ -909,8 +909,6 @@
         "next": {
           "label": "Next",
           "why": {
-            "more": "90% or better, so one more piece at the same study time.",
-            "fewer": "Under 50%, so one piece fewer at the same study time.",
             "edgeFiles": "You miss the a and h files more often than the centre files.",
             "weakType": "{type, select, q {Queens} r {Rooks} b {Bishops} n {Knights} other {Pawns}} slip most: you recalled {recalled} of {shown}.",
             "fasterLessAccurate": "At {pieceCount} pieces, {studyTime}, you got faster per correct piece and accuracy fell {fell} points.",
@@ -918,7 +916,6 @@
             "plateau": "Your span has held at {span} pieces."
           },
           "play": "Play {pieceCount} pieces, {studyTime}",
-          "again": "Play again at {pieceCount} pieces, {studyTime}",
           "patterns": "Read the pattern recognition drills",
           "vision": "Read how to see the whole board"
         }
@@ -974,7 +971,8 @@
         "miss": "If you miss",
         "gain": "Up to <num>+{value}</num>",
         "loss": "At most <num>−{value}</num>",
-        "announce": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}. If you miss, at most −{loss}."
+        "announce": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}. If you miss, at most −{loss}.",
+        "announceProvisional": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} pieces/sec",
       "actions": "Result actions",
       "tryAgain": "Try again",
-      "newGame": "New game",
+      "nextRound": "Next round",
+      "changeSettings": "Change settings",
+      "moreOptions": "More options",
+      "tileDrill": "This drill at your level",
+      "tileDrillWhy": "Sized to your level, to practise what the article describes.",
       "submitToLeaderboard": "Submit to leaderboard",
       "leaderboardQualifies": "Your score makes the leaderboard. Submit it before it's gone.",
       "viewLeaderboard": "View leaderboard",
@@ -1655,7 +1657,10 @@
     "cardTitle": "Today's daily board is ready",
     "cardSetting": "{pieceCount, plural, one {# piece} other {# pieces}} and {seconds, plural, one {# second} other {# seconds}} to study.",
     "cardNote": "Everyone plays the same board today, and you get one try.",
-    "play": "Play today's board"
+    "play": "Play today's board",
+    "tomorrowTitle": "Tomorrow's board",
+    "tomorrowOpens": "Opens in {timeLeft}.",
+    "seeToday": "See today's board"
   },
   "daily": {
     "meta": {

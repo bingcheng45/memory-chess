@@ -909,8 +909,6 @@
         "next": {
           "label": "次は",
           "why": {
-            "more": "90%以上だったので、同じ記憶時間で駒を1つ増やします。",
-            "fewer": "50%未満だったので、同じ記憶時間で駒を1つ減らします。",
             "edgeFiles": "aファイルとhファイルのミスが、中央のファイルより多くなっています。",
             "weakType": "最も取りこぼしが多いのは{type, select, q {クイーン} r {ルーク} b {ビショップ} n {ナイト} other {ポーン}}です。{shown}駒中{recalled}駒を再現しました。",
             "fasterLessAccurate": "{pieceCount}駒・{studyTime}では、正解1駒あたりは速くなりましたが、正解率が{fell}ポイント下がりました。",
@@ -918,7 +916,6 @@
             "plateau": "記憶スパンが{span}駒にとどまっています。"
           },
           "play": "{pieceCount}駒・{studyTime}でプレイ",
-          "again": "{pieceCount}駒・{studyTime}でもう一度",
           "patterns": "パターン認識ドリルを読む",
           "vision": "盤面全体を見る方法を読む"
         }
@@ -974,7 +971,8 @@
         "miss": "失敗した場合",
         "gain": "最大 <num>+{value}</num>",
         "loss": "最大 <num>−{value}</num>",
-        "announce": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。失敗した場合は最大 −{loss}。"
+        "announce": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。失敗した場合は最大 −{loss}。",
+        "announceProvisional": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。"
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} 駒/秒",
       "actions": "結果に対する操作",
       "tryAgain": "もう一度",
-      "newGame": "新しいゲーム",
+      "nextRound": "次のラウンド",
+      "changeSettings": "設定を変更",
+      "moreOptions": "その他のオプション",
+      "tileDrill": "あなたのレベルに合わせたドリル",
+      "tileDrillWhy": "あなたのレベルに合わせてあり、記事の内容を練習できます。",
       "submitToLeaderboard": "ランキングに登録",
       "leaderboardQualifies": "このスコアならランキング入りです。今すぐ登録しましょう。",
       "viewLeaderboard": "ランキングを見る",
@@ -1655,7 +1657,10 @@
     "cardTitle": "今日のデイリー盤面をプレイできます",
     "cardSetting": "{pieceCount}駒、記憶時間{seconds}秒。",
     "cardNote": "今日は全員が同じ盤面に挑戦します。チャンスは1回です。",
-    "play": "今日の盤面をプレイ"
+    "play": "今日の盤面をプレイ",
+    "tomorrowTitle": "明日の盤面",
+    "tomorrowOpens": "{timeLeft}後に公開。",
+    "seeToday": "今日の盤面を見る"
   },
   "daily": {
     "meta": {

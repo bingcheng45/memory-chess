@@ -43,17 +43,20 @@ export default function RatingPreview({ pieceCount, memorizeTime, announceKey, o
         };
   const onSuggested = shown?.suggested.pieceCount === pieceCount && shown.suggested.studySeconds === memorizeTime;
 
-  const announcement = shown
-    ? t('announce', {
-        board: format.number(shown.difficultyRating),
-        rating: format.number(shown.rating),
-        expected: format.number(shown.expectedAccuracy),
-        gain: format.number(shown.perfectGain),
-        loss: format.number(Math.abs(shown.maxLoss)),
-      })
-    : '';
-  const [announced, setAnnounced] = useState({ key: announceKey, text: '' });
-  if (announced.key !== announceKey) setAnnounced({ key: announceKey, text: announcement });
+  const showsLoss = shown !== null && shown.phase !== 'provisional';
+  const figures = shown && {
+    board: format.number(shown.difficultyRating),
+    rating: format.number(shown.rating),
+    expected: format.number(shown.expectedAccuracy),
+    gain: format.number(shown.perfectGain),
+  };
+  const announcement = !shown
+    ? ''
+    : showsLoss
+      ? t('announce', { ...figures, loss: format.number(Math.abs(shown.maxLoss)) })
+      : t('announceProvisional', { ...figures });
+  const [spoken, setSpoken] = useState({ key: announceKey, text: '' });
+  if (spoken.key !== announceKey) setSpoken({ key: announceKey, text: announcement });
 
   const blank = <span className="lab-preview-num lab-preview-blank">—</span>;
 
@@ -88,17 +91,19 @@ export default function RatingPreview({ pieceCount, memorizeTime, announceKey, o
             </button>
           </dd>
         </div>
-        <div className="lab-preview-cell lab-preview-gain">
+        <div className={`lab-preview-cell lab-preview-gain${showsLoss ? '' : ' lab-preview-wide'}`}>
           <dt>{t('clear')}</dt>
           <dd data-preview="gain">{shown ? t.rich('gain', { value: format.number(shown.perfectGain), num }) : blank}</dd>
         </div>
-        <div className="lab-preview-cell lab-preview-loss">
-          <dt>{t('miss')}</dt>
-          <dd data-preview="loss">{shown ? t.rich('loss', { value: format.number(Math.abs(shown.maxLoss)), num }) : blank}</dd>
-        </div>
+        {showsLoss && (
+          <div className="lab-preview-cell lab-preview-loss">
+            <dt>{t('miss')}</dt>
+            <dd data-preview="loss">{shown ? t.rich('loss', { value: format.number(Math.abs(shown.maxLoss)), num }) : blank}</dd>
+          </div>
+        )}
       </dl>
       <p className="sr-only" aria-live="polite">
-        {announced.text}
+        {spoken.text}
       </p>
     </section>
   );

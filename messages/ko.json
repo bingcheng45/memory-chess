@@ -909,8 +909,6 @@
         "next": {
           "label": "다음",
           "why": {
-            "more": "90% 이상이므로, 같은 암기 시간에 기물을 하나 늘립니다.",
-            "fewer": "50% 미만이므로, 같은 암기 시간에 기물을 하나 줄입니다.",
             "edgeFiles": "a·h 파일을 가운데 파일보다 더 자주 놓칩니다.",
             "weakType": "{type, select, q {퀸을} r {룩을} b {비숍을} n {나이트를} other {폰을}} 가장 많이 놓칩니다. {shown}개 중 {recalled}개를 기억했습니다.",
             "fasterLessAccurate": "기물 {pieceCount}개, {studyTime} 설정에서 맞힌 기물 하나당 속도는 빨라졌지만, 정확도는 {fell}포인트 떨어졌습니다.",
@@ -918,7 +916,6 @@
             "plateau": "기억 범위가 {span}개에 머물러 있습니다."
           },
           "play": "기물 {pieceCount}개, {studyTime} 플레이",
-          "again": "기물 {pieceCount}개, {studyTime} 설정으로 다시 플레이",
           "patterns": "패턴 인식 훈련 읽기",
           "vision": "보드 전체를 보는 법 읽기"
         }
@@ -974,7 +971,8 @@
         "miss": "실패하면",
         "gain": "최대 <num>+{value}</num>",
         "loss": "최대 <num>−{value}</num>",
-        "announce": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}. 실패하면 최대 −{loss}."
+        "announce": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}. 실패하면 최대 −{loss}.",
+        "announceProvisional": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "초당 {value}개",
       "actions": "결과 관련 작업",
       "tryAgain": "다시 하기",
-      "newGame": "새 게임",
+      "nextRound": "다음 라운드",
+      "changeSettings": "설정 변경",
+      "moreOptions": "더 보기",
+      "tileDrill": "내 수준에 맞춘 이 연습",
+      "tileDrillWhy": "내 수준에 맞춰, 글에서 설명하는 내용을 연습할 수 있어요.",
       "submitToLeaderboard": "리더보드에 등록",
       "leaderboardQualifies": "이 점수면 리더보드에 오릅니다. 사라지기 전에 등록하세요.",
       "viewLeaderboard": "리더보드 보기",
@@ -1655,7 +1657,10 @@
     "cardTitle": "오늘의 데일리 보드가 준비됐어요",
     "cardSetting": "기물 {pieceCount}개, 암기 시간 {seconds}초.",
     "cardNote": "오늘은 모두가 같은 보드를 플레이하며, 기회는 한 번입니다.",
-    "play": "오늘의 보드 플레이"
+    "play": "오늘의 보드 플레이",
+    "tomorrowTitle": "내일의 보드",
+    "tomorrowOpens": "{timeLeft} 후에 열립니다.",
+    "seeToday": "오늘의 보드 보기"
   },
   "daily": {
     "meta": {

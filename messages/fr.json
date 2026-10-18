@@ -909,8 +909,6 @@
         "next": {
           "label": "Ensuite",
           "why": {
-            "more": "90 % ou mieux, donc une pièce de plus avec le même temps d’étude.",
-            "fewer": "Moins de 50 %, donc une pièce de moins avec le même temps d’étude.",
             "edgeFiles": "Vous manquez les colonnes a et h plus souvent que les colonnes centrales.",
             "weakType": "{type, select, q {Les dames} r {Les tours} b {Les fous} n {Les cavaliers} other {Les pions}} vous échappent le plus : {recalled} retenus sur {shown}.",
             "fasterLessAccurate": "À {pieceCount} pièces, {studyTime}, vous avez gagné en vitesse par pièce correcte et la précision a baissé de {fell} points.",
@@ -918,7 +916,6 @@
             "plateau": "Votre empan est resté à {span} pièces."
           },
           "play": "Jouer {pieceCount} pièces, {studyTime}",
-          "again": "Rejouer à {pieceCount} pièces, {studyTime}",
           "patterns": "Lire les exercices de reconnaissance de motifs",
           "vision": "Lire comment voir tout l’échiquier"
         }
@@ -974,7 +971,8 @@
         "miss": "Si vous échouez",
         "gain": "Jusqu’à <num>+{value}</num>",
         "loss": "Au plus <num>−{value}</num>",
-        "announce": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}. Si vous échouez, au plus −{loss}."
+        "announce": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}. Si vous échouez, au plus −{loss}.",
+        "announceProvisional": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} pièces/s",
       "actions": "Actions sur le résultat",
       "tryAgain": "Réessayer",
-      "newGame": "Nouvelle partie",
+      "nextRound": "Manche suivante",
+      "changeSettings": "Modifier les réglages",
+      "moreOptions": "Plus d’options",
+      "tileDrill": "Cet exercice à votre niveau",
+      "tileDrillWhy": "Adapté à votre niveau, pour pratiquer ce que décrit l'article.",
       "submitToLeaderboard": "Envoyer au classement",
       "leaderboardQualifies": "Votre score entre au classement. Envoyez-le avant qu’il disparaisse.",
       "viewLeaderboard": "Voir le classement",
@@ -1655,7 +1657,10 @@
     "cardTitle": "Le plateau du jour est prêt",
     "cardSetting": "{pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}} et {seconds, plural, one {# seconde} many {# secondes} other {# secondes}} pour mémoriser.",
     "cardNote": "Tout le monde joue le même plateau aujourd'hui, et vous avez un seul essai.",
-    "play": "Jouer le plateau du jour"
+    "play": "Jouer le plateau du jour",
+    "tomorrowTitle": "Plateau de demain",
+    "tomorrowOpens": "Ouvre dans {timeLeft}.",
+    "seeToday": "Voir le plateau du jour"
   },
   "daily": {
     "meta": {

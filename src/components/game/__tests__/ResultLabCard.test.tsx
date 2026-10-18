@@ -3,6 +3,7 @@ import ResultLabCard, { RESULT_LAB_WAIT_MS } from "@/components/game/ResultLabCa
 import { useLabData, useLabResults, type LabData } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
 import { reviewedBoard, round } from "@/lib/lab/__tests__/fixtures";
+import type { Insight } from "@/lib/lab/insights";
 import type { RoundRecord } from "@/lib/lab/record";
 import { summarize } from "@/lib/lab/summary";
 import { resetWeekGoalSession } from "@/components/home/useWeekGoal";
@@ -50,28 +51,50 @@ beforeEach(() => {
   resetWeekGoalSession();
   jest.mocked(trackEvent).mockClear();
   jest.mocked(useLabResults).mockClear();
+  jest.mocked(useLabResults).mockImplementation(jest.requireActual("@/hooks/useLabData").useLabResults);
 });
 
 const UNSHOWN = "Your lab record could not be shown for this round.";
+
+const PLATEAU: Insight = { ruleId: "plateau", params: { span: 6 }, action: { kind: "rig", pieceCount: 7, memorizeSeconds: 10 }, strength: 1 };
+
+function withPlateauFinding() {
+  const actual: typeof useLabResults = jest.requireActual("@/hooks/useLabData").useLabResults;
+  jest.mocked(useLabResults).mockImplementation((data) => ({
+    ...actual(data),
+    insights: { readiness: { state: "ready", sampleSize: 12 }, value: { insights: [PLATEAU] } },
+  }));
+}
 
 function withFrameTop(top: number) {
   return jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({ top } as DOMRect);
 }
 
 describe("ResultLabCard", () => {
-  it("shows a first round only the streak and a link that replays the setting in place", () => {
+  it("shows a first round only the streak and no next link, which the result screen's Next round button carries", () => {
     withRecord([played("first", 67)]);
-    const { onPlay } = renderCard("first");
+    renderCard("first");
 
     expect(screen.getByRole("region", { name: "Your lab record" })).toBeInTheDocument();
     expect(linesOf()).toEqual(["·Day 1, 1 of 5 days this week"]);
-    const link = screen.getByRole("link", { name: `Play again at 6 pieces, ${seconds(10)}` });
-    expect(link).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=result_next");
+    expect(screen.queryByText(/^Next\./)).toBeNull();
+    expect(screen.queryAllByRole("link")).toEqual([]);
+  });
+
+  it("points to the engine's top finding and starts its board in place", () => {
+    withPlateauFinding();
+    withRecord([played("first", 100)]);
+    const { onPlay } = renderCard("first");
+    const link = screen.getByRole("link", { name: `Play 7 pieces, ${seconds(10)}` });
 
     const followed = fireEvent.click(link);
 
-    expect(followed).toBe(false);
-    expect(onPlay).toHaveBeenCalledWith(6, 10, "result_next");
+    expect([link.closest("p")?.textContent, link.getAttribute("href"), followed]).toEqual([
+      `Next. Your span has held at 6 pieces. Play 7 pieces, ${seconds(10)} →`,
+      "/game?pieceCount=7&memorizeTime=10&source=result_next",
+      false,
+    ]);
+    expect(onPlay).toHaveBeenCalledWith(7, 10, "result_next");
     expect(jest.mocked(trackEvent).mock.calls).toEqual([[{ name: "lab_panel_action", params: { panel: "resultCard", action: "next" } }]]);
   });
 
@@ -85,7 +108,7 @@ describe("ResultLabCard", () => {
     expect(screen.queryAllByRole("link")).toEqual([]);
   });
 
-  it("prints a new best, the change against recent rounds, a raised span and the streak, then one more piece", () => {
+  it("prints a new best, the change against recent rounds, a raised span and the streak", () => {
     const records = [played("a", 70, { day: 5 }), played("b", 85, { day: 6 }), played("c", 60, { day: 6 }), played("d", 92)];
     withRecord(records);
     renderCard("d");
@@ -96,8 +119,6 @@ describe("ResultLabCard", () => {
       "·Span up to 6 pieces",
       "·Day 3 in a row, 3 of 5 days this week",
     ]);
-    expect(screen.getByText(/^Next\./).closest("p")?.textContent).toBe(`Next. 90% or better, so one more piece at the same study time. Play 7 pieces, ${seconds(10)} →`);
-    expect(screen.getByRole("link", { name: `Play 7 pieces, ${seconds(10)}` })).toHaveAttribute("href", "/game?pieceCount=7&memorizeTime=10&source=result_next");
   });
 
   it("says a matched best was rebuilt faster, and a round under the recent mean is below it", () => {
@@ -113,10 +134,11 @@ describe("ResultLabCard", () => {
   });
 
   it("opens a modified click in a new tab instead of starting the round here", () => {
+    withPlateauFinding();
     withRecord([played("first", 40)]);
     const { onPlay } = renderCard("first");
 
-    const followed = fireEvent.click(screen.getByRole("link", { name: `Play 5 pieces, ${seconds(10)}` }), { metaKey: true });
+    const followed = fireEvent.click(screen.getByRole("link", { name: `Play 7 pieces, ${seconds(10)}` }), { metaKey: true });
 
     expect(followed).toBe(true);
     expect(onPlay).not.toHaveBeenCalled();

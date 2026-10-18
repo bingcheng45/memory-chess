@@ -909,8 +909,6 @@
         "next": {
           "label": "下一步",
           "why": {
-            "more": "達到 90% 以上，所以在相同記憶時間下多加一子。",
-            "fewer": "低於 50%，所以在相同記憶時間下減少一子。",
             "edgeFiles": "你在 a、h 直行的失誤比中央直行多。",
             "weakType": "{type, select, q {皇后} r {城堡} b {主教} n {騎士} other {兵}}最容易漏記：你記住了 {shown} 個中的 {recalled} 個。",
             "fasterLessAccurate": "在 {pieceCount} 子、{studyTime} 下，你每個正確棋子花的時間變短了，但準確率下降了 {fell} 個百分點。",
@@ -918,7 +916,6 @@
             "plateau": "你的記憶廣度停在了 {span} 子。"
           },
           "play": "玩 {pieceCount} 子、{studyTime}",
-          "again": "以 {pieceCount} 子、{studyTime} 再玩一次",
           "patterns": "閱讀圖形辨識練習",
           "vision": "閱讀如何綜觀全盤"
         }
@@ -974,7 +971,8 @@
         "miss": "如果失手",
         "gain": "最多 <num>+{value}</num>",
         "loss": "最多 <num>−{value}</num>",
-        "announce": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。如果失手，最多 −{loss}。"
+        "announce": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。如果失手，最多 −{loss}。",
+        "announceProvisional": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。"
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} 子/秒",
       "actions": "結果操作",
       "tryAgain": "再來一局",
-      "newGame": "新對局",
+      "nextRound": "下一輪",
+      "changeSettings": "變更設定",
+      "moreOptions": "更多選項",
+      "tileDrill": "適合你程度的這道練習",
+      "tileDrillWhy": "依你的程度設定，用來練習文章所講的內容。",
       "submitToLeaderboard": "送出到排行榜",
       "leaderboardQualifies": "你的成績能上排行榜，趁還有機會趕快送出。",
       "viewLeaderboard": "查看排行榜",
@@ -1655,7 +1657,10 @@
     "cardTitle": "今日每日棋局已準備好",
     "cardSetting": "{pieceCount} 子，記憶時間 {seconds} 秒。",
     "cardNote": "今天所有人玩同一局，你只有一次機會。",
-    "play": "開始今日棋局"
+    "play": "開始今日棋局",
+    "tomorrowTitle": "明日棋局",
+    "tomorrowOpens": "{timeLeft}後開放。",
+    "seeToday": "查看今日棋局"
   },
   "daily": {
     "meta": {

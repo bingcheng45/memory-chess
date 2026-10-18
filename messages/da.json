@@ -909,8 +909,6 @@
         "next": {
           "label": "Næste",
           "why": {
-            "more": "90 % eller bedre, så én brik mere med samme husketid.",
-            "fewer": "Under 50 %, så én brik færre med samme husketid.",
             "edgeFiles": "Du misser a- og h-linjen oftere end centerlinjerne.",
             "weakType": "{type, select, q {Dronninger} r {Tårne} b {Løbere} n {Springere} other {Bønder}} smutter oftest: du huskede {recalled} af {shown}.",
             "fasterLessAccurate": "Med {pieceCount} brikker, {studyTime}, blev du hurtigere pr. rigtig brik, og præcisionen faldt {fell} point.",
@@ -918,7 +916,6 @@
             "plateau": "Dit spænd står stille på {span} brikker."
           },
           "play": "Spil {pieceCount} brikker, {studyTime}",
-          "again": "Spil igen med {pieceCount} brikker, {studyTime}",
           "patterns": "Læs øvelserne i mønstergenkendelse",
           "vision": "Læs, hvordan du ser hele brættet"
         }
@@ -974,7 +971,8 @@
         "miss": "Hvis det går galt",
         "gain": "Op til <num>+{value}</num>",
         "loss": "Højst <num>−{value}</num>",
-        "announce": "Brættets rating {board}. Din rating {rating}. Forventet præcision {expected} %. Hvis du klarer den, op til +{gain}. Hvis det går galt, højst −{loss}."
+        "announce": "Brættets rating {board}. Din rating {rating}. Forventet præcision {expected} %. Hvis du klarer den, op til +{gain}. Hvis det går galt, højst −{loss}.",
+        "announceProvisional": "Brættets rating {board}. Din rating {rating}. Forventet præcision {expected} %. Hvis du klarer den, op til +{gain}."
       }
     },
     "presets": {
@@ -1040,7 +1038,11 @@
       "piecesPerSecond": "{value} brikker/s",
       "actions": "Handlinger for resultatet",
       "tryAgain": "Prøv igen",
-      "newGame": "Nyt parti",
+      "nextRound": "Næste runde",
+      "changeSettings": "Ændr indstillinger",
+      "moreOptions": "Flere muligheder",
+      "tileDrill": "Denne øvelse på dit niveau",
+      "tileDrillWhy": "Tilpasset dit niveau, så du kan øve det, artiklen beskriver.",
       "submitToLeaderboard": "Send til ranglisten",
       "leaderboardQualifies": "Dit resultat rækker til ranglisten. Send det ind, før chancen ryger.",
       "viewLeaderboard": "Se ranglisten",
@@ -1655,7 +1657,10 @@
     "cardTitle": "Dagens bræt er klar",
     "cardSetting": "{pieceCount, plural, one {# brik} other {# brikker}} og {seconds, plural, one {# sekund} other {# sekunder}} til at huske.",
     "cardNote": "Alle spiller det samme bræt i dag, og du får ét forsøg.",
-    "play": "Spil dagens bræt"
+    "play": "Spil dagens bræt",
+    "tomorrowTitle": "Morgendagens bræt",
+    "tomorrowOpens": "Åbner om {timeLeft}.",
+    "seeToday": "Se dagens bræt"
   },
   "daily": {
     "meta": {

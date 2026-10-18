@@ -18,6 +18,7 @@ import {
   type TileArticle,
 } from "@/lib/articles/tile";
 import { viewedStore } from "@/lib/articles/viewedStore";
+import { useReaderRound } from "@/hooks/useReaderRound";
 import { useGameStore } from "@/lib/store/gameStore";
 import { playSound } from "@/lib/utils/soundEffects";
 
@@ -83,13 +84,16 @@ function TileHeader({ article }: { article: TileArticle }) {
 
 function ShownTile({ article, round }: { article: TileArticle; round: RoundSize }) {
   const t = useTranslations("articles.tile");
+  const tResult = useTranslations("game.result");
   const { startGame } = useGameStore();
+  const drillRound = useReaderRound();
   const { slug, drill } = article;
+  const isArticleRound = drillRound.pieceCount === drill.pieceCount && drillRound.memorizeTime === drill.memorizeTime;
 
-  function startDrill() {
-    trackEvent({ name: "article_tile_click", params: { slug, action: "drill" } });
+  function startDrill(action: "drill" | "drill_original", { pieceCount, memorizeTime }: RoundSize) {
+    trackEvent({ name: "article_tile_click", params: { slug, action } });
     playSound("click");
-    startGame(drill.pieceCount, drill.memorizeTime, "tile_drill");
+    startGame(pieceCount, memorizeTime, "tile_drill");
   }
 
   return (
@@ -104,9 +108,9 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
       <TileHeader article={article} />
       <dl className="mb-3 mt-3.5 grid grid-cols-2 gap-2">
         <RoundBox label={t("yourRound")} size={round} />
-        <RoundBox label={t("articleDrill")} size={drill} />
+        <RoundBox label={tResult("tileDrill")} size={drillRound} />
       </dl>
-      <p className={`mb-3.5 text-[14.5px] leading-normal text-[var(--lp-ink-2)] ${ARTICLE_LONG_WORDS}`}>{drill.why}</p>
+      <p className={`mb-3.5 text-[14.5px] leading-normal text-[var(--lp-ink-2)] ${ARTICLE_LONG_WORDS}`}>{isArticleRound ? drill.why : tResult("tileDrillWhy")}</p>
       <div className="flex flex-wrap gap-2">
         <Link
           href={articlePath(slug)}
@@ -117,11 +121,25 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
         </Link>
         <button
           type="button"
-          onClick={startDrill}
+          onClick={() => startDrill("drill", drillRound)}
           className={`${ACTION_CLASS} border border-[var(--lp-accent)] text-[var(--lp-accent)] hover:bg-[var(--lp-accent-soft)]`}
         >
           {t("tryDrill")}
         </button>
+        {isArticleRound ? null : (
+          <button
+            type="button"
+            data-article-drill-original
+            onClick={() => startDrill("drill_original", drill)}
+            className={`inline-flex min-h-11 items-center rounded-sm text-left text-[14.5px] font-semibold text-[var(--lp-accent)] underline underline-offset-4 hover:no-underline ${ARTICLE_FOCUS_RING}`}
+          >
+            <span>
+              {t("articleDrill")}
+              <span aria-hidden="true"> · </span>
+              {t("roundSize", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}
+            </span>
+          </button>
+        )}
       </div>
     </section>
   );

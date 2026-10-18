@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "7867c48765f977e581dc01b704a372020a7c333dd6e2b1ed01017cb0111880fa",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "7764ab9ca0247a40f87c841ee317a8e75a08b8ef32186bf7dfb6463e200f2dd5",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Läroböckerna tolkade det resultatet som att en mästare inte har någon fördel alls på meningslösa bräden. År 1996 prövade Fernand Gobet och Herbert Simon den tolkningen mot tretton experiment med visningstider på 10 sekunder eller mindre. I tolv av de tretton mindes den starkaste gruppen fler slumpade pjäser än den svagaste. Undantaget var Chases och Simons egen studie, där mästaren klarade sig sämst.",
           "Fördelen är liten. Gobet och Simon uppskattade den till ungefär en extra pjäs per 400 Elo-poäng på slumpade bräden, mot ungefär fem extra pjäser på partiställningar. I en översikt från 1998 angav Gobet medelvärdena vid 5 sekunder till 5,5 slumpade pjäser för mästare och 2,6 för spelare under klass B.",
           "Förklaringen lämnar de Groots idé orubbad. En spelare med en mycket stor mängd mönster hittar ibland ett av dem av en slump i en oordning. Slumpade bräden minskar expertens försprång utan att ta bort det. Gobet och Simon tillade att små urval döljer en så liten effekt, och studien från 1973 hade tre försökspersoner."
+        ]
+      },
+      {
+        "heading": "Är schack ett minnesspel?",
+        "paragraphs": [
+          "Minnet spelar roll i schack, men en stark spelare lagrar inte ställningar ruta för ruta. Enligt de Groots räkningar såg stormästarna inte längre framåt än skickliga spelare, och de undersökte inte fler drag. Skillnaden visade sig i stället i hur mycket de mindes. Efter en blick på några sekunder fick Euwe och de Groot 93 %, Fast 68 % och Hauer 51 %.",
+          "Den minnesförmågan bygger på schackkunskap. Gobet och Simon uppskattade mästarens försprång på slumpade bräden till ungefär en extra pjäs per 400 Elo-poäng, mot ungefär fem extra pjäser på ställningar från partier. En mästare ser välbekanta grupper av pjäser, de chunkar som beskrevs ovan, och har därför färre separata saker att hålla i huvudet."
         ]
       },
       {

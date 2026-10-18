@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "21f04d0319f3df51fe415d917e7fb126fbd4dad6c4f68d3133aa2060447f2de6",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "4e465352ffcc01d38570656a11927824502a81b9b1a003f6188d86b4af66d38c",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Učebnice z tohoto výsledku vyvodily, že mistr nemá na nesmyslných šachovnicích vůbec žádnou výhodu. V roce 1996 Fernand Gobet a Herbert Simon toto čtení ověřili na třinácti experimentech s dobou zobrazení do 10 sekund. Ve dvanácti ze třinácti si nejsilnější skupina vybavila víc náhodných figurek než nejslabší. Výjimkou byla studie samotných Chase a Simona, kde mistr dopadl nejhůř.",
           "Výhoda je malá. Gobet a Simon ji odhadli na zhruba jednu figurku navíc na 400 bodů Elo u náhodných šachovnic, oproti zhruba pěti figurkám navíc u pozic z partií. V přehledové práci z roku 1998 uvedl Gobet průměry při 5 sekundách: 5,5 náhodné figurky u mistrů a 2,6 u hráčů pod třídou B.",
           "Toto vysvětlení de Grootovu myšlenku nechává platit. Hráč s velmi rozsáhlou zásobou vzorů může občas nějaký vzor v nahodilé změti najít náhodou. Náhodné šachovnice expertovu výhodu zmenšují, ale neodstraňují. Gobet a Simon dodali, že malé vzorky tak malý efekt skrývají, a studie z roku 1973 měla tři účastníky."
+        ]
+      },
+      {
+        "heading": "Jsou šachy hra na paměť?",
+        "paragraphs": [
+          "Paměť v šachu hraje roli, ale silný hráč si pozice neukládá pole po poli. Podle de Grootova měření velmistři nehleděli dopředu dál ani nezkoumali víc tahů než experti. Rozdíl se místo toho ukázal v tom, kolik si vybavili. Po pohledu trvajícím několik sekund získali Euwe a de Groot 93 %, Fast 68 % a Hauer 51 %.",
+          "Tato paměť vychází ze znalosti šachu. Gobet a Simon odhadli výhodu mistra na náhodných šachovnicích na zhruba jednu figurku navíc na 400 bodů Elo, oproti zhruba pěti figurkám navíc u pozic z partií. Mistr vidí známé skupiny figurek, tedy výše popsané chunky, a musí si tak pamatovat méně samostatných prvků."
         ]
       },
       {

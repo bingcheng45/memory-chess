@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "62dcf35ddd21c5c7f0a2b7e4dbff4bb65fc0eb2aa602d72dd149f1c0abffe272",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "889521abdc968f29fd8ca379f3508ec190602e80adec2487367fe3f0e68d1287",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Leerboeken vatten dat resultaat op als bewijs dat een meester op betekenisloze stellingen helemaal geen voordeel heeft. In 1996 toetsten Fernand Gobet en Herbert Simon die lezing aan dertien experimenten met kijktijden van 10 seconden of korter. In twaalf van de dertien onthield de sterkste groep meer willekeurig geplaatste stukken dan de zwakste. De uitzondering was de eigen studie van Chase en Simon, waar de meester het slechtst scoorde.",
           "Het voordeel is klein. Gobet en Simon schatten het op ongeveer één extra stuk per 400 Elopunten op willekeurige stellingen, tegen ongeveer vijf extra stukken op partijstellingen. In een overzichtsartikel uit 1998 gaf Gobet de gemiddelden bij 5 seconden: 5,5 willekeurige stukken voor meesters en 2,6 voor spelers onder klasse B.",
           "De verklaring laat het idee van De Groot overeind. Een speler met een zeer grote voorraad patronen herkent er in een wirwar soms bij toeval één. Willekeurige stellingen verkleinen het voordeel van de expert, maar nemen het niet weg. Gobet en Simon voegden eraan toe dat kleine steekproeven zo'n klein effect verbergen, en de studie van 1973 had drie proefpersonen."
+        ]
+      },
+      {
+        "heading": "Is schaken een geheugenspel?",
+        "paragraphs": [
+          "Geheugen doet ertoe bij schaken, maar een sterke speler slaat stellingen niet veld voor veld op. Volgens de tellingen van De Groot keken grootmeesters niet verder vooruit dan experts en bekeken ze ook niet meer zetten. Het verschil zat juist in wat ze onthielden. Na een blik van een paar seconden haalden Euwe en De Groot 93%, Fast 68% en Hauer 51%.",
+          "Dat onthouden steunt op schaakkennis. Op willekeurige stellingen schatten Gobet en Simon het voordeel van de meester op ongeveer één extra stuk per 400 Elopunten, tegen ongeveer vijf extra stukken op stellingen uit partijen. Een meester ziet vertrouwde groepen stukken, de chunks die hierboven zijn beschreven, en hoeft dus minder losse dingen te onthouden."
         ]
       },
       {

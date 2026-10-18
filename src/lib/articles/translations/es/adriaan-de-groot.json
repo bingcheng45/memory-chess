@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "13d32fd06008c565e40034280ba3b0be71b84f285975406272cecaf5ea137d5d",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "f6714d7f0d7200f36a14c3301492bb10208e40b0f35075c661094ca785f61d9f",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Los manuales interpretaron que ese resultado significaba que un maestro no tiene ninguna ventaja en tableros sin sentido. En 1996 Fernand Gobet y Herbert Simon contrastaron esa lectura con trece experimentos con exposiciones de 10 segundos o menos. En doce de los trece, el grupo más fuerte recordó más piezas aleatorias que el más débil. La excepción fue el propio estudio de Chase y Simon, en el que el maestro lo hizo peor.",
           "La ventaja es pequeña. Gobet y Simon la cifran en alrededor de una pieza más por cada 400 puntos Elo en tableros aleatorios, frente a unas cinco piezas más en posiciones de partida. En una revisión de 1998, Gobet dio como promedios a los 5 segundos 5,5 piezas aleatorias para los maestros y 2,6 para los jugadores por debajo de la categoría B.",
           "La explicación deja en pie la idea de De Groot. Un jugador con un almacén muy grande de patrones a veces encuentra uno por casualidad en un revoltijo. Los tableros aleatorios reducen la ventaja del experto sin eliminarla. Gobet y Simon añadieron que las muestras pequeñas ocultan un efecto tan pequeño, y el estudio de 1973 tenía tres sujetos."
+        ]
+      },
+      {
+        "heading": "¿El ajedrez es un juego de memoria?",
+        "paragraphs": [
+          "La memoria importa en el ajedrez, pero un jugador fuerte no almacena las posiciones casilla por casilla. Según los recuentos de De Groot, los grandes maestros no veían más lejos que los jugadores expertos ni examinaban más jugadas. La diferencia estaba, en cambio, en lo que recordaban. Tras mirar el tablero unos pocos segundos, Euwe y De Groot obtuvieron el 93 %, Fast el 68 % y Hauer el 51 %.",
+          "Esa capacidad de recordar nace del conocimiento del ajedrez. En tableros aleatorios, Gobet y Simon cifran la ventaja del maestro en alrededor de una pieza más por cada 400 puntos Elo, frente a unas cinco piezas más en posiciones tomadas de partidas. Un maestro ve grupos de piezas que le resultan familiares, los chunks descritos más arriba, así que tiene menos elementos sueltos que retener."
         ]
       },
       {

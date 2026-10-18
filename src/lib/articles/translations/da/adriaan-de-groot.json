@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "dddd338bf87f293e00ce1c85182027b57e043fe846bea320ba6681bffbc84c6a",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "dedef444dd3fac98b481585ca2c79b127b327dab6ea96244b02e3c41a52d2416",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Lærebøger tolkede resultatet sådan, at en mester slet ikke har nogen fordel på meningsløse brætter. I 1996 efterprøvede Fernand Gobet og Herbert Simon den læsning mod tretten eksperimenter med visningstider på 10 sekunder eller mindre. I tolv af de tretten huskede den stærkeste gruppe flere tilfældige brikker end den svageste. Undtagelsen var Chase og Simons egen undersøgelse, hvor mesteren klarede sig dårligst.",
           "Fordelen er lille. Gobet og Simon anslår den til omkring én ekstra brik pr. 400 Elo-point på tilfældige brætter, mod omkring fem ekstra brikker på partistillinger. I en oversigt fra 1998 angav Gobet gennemsnittene ved 5 sekunder som 5,5 tilfældige brikker for mestre og 2,6 for spillere under klasse B.",
           "Forklaringen lader de Groots idé stå ved magt. En spiller med et meget stort lager af mønstre finder somme tider et ved et tilfælde i et virvar. Tilfældige brætter formindsker ekspertens forspring uden at fjerne det. Gobet og Simon føjede til, at små stikprøver skjuler en så lille effekt, og undersøgelsen fra 1973 havde tre forsøgspersoner."
+        ]
+      },
+      {
+        "heading": "Er skak et hukommelsesspil?",
+        "paragraphs": [
+          "Hukommelsen betyder noget i skak, men en stærk spiller gemmer ikke stillinger felt for felt. Ifølge de Groots optællinger så stormestrene ikke længere frem end ekspertspillerne, og de undersøgte heller ikke flere træk. Forskellen viste sig i stedet i, hvor meget de huskede. Efter et blik på få sekunder fik Euwe og de Groot 93 %, Fast 68 % og Hauer 51 %.",
+          "Den evne til at huske udspringer af kendskab til skak. Gobet og Simon anslår mesterens forspring på tilfældige brætter til omkring én ekstra brik pr. 400 Elo-point, mod omkring fem ekstra brikker på stillinger fra partier. En mester ser velkendte grupper af brikker, de chunks, der er beskrevet ovenfor, så der er færre separate ting at holde styr på."
         ]
       },
       {

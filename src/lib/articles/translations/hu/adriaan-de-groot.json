@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "690ffc519045158a00a0e1de3186b753a4537adeb764dc50b864883f4a0f3121",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "6208ab1bca262b684911a01b510376d6c3c8021126464434d6506018cde1bac5",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "A tankönyvek úgy értelmezték ezt az eredményt, hogy a mesternek értelmetlen táblákon egyáltalán nincs előnye. 1996-ban Fernand Gobet és Herbert Simon tizenhárom, legfeljebb 10 másodperces megtekintésű kísérlettel ellenőrizték ezt az olvasatot. A tizenhárom kísérletből tizenkettőben a legerősebb csoport több véletlenszerű bábut idézett fel, mint a leggyengébb. A kivétel Chase és Simon saját tanulmánya volt, ahol a mester teljesített a legrosszabbul.",
           "Az előny kicsi. Gobet és Simon szerint a véletlenszerű táblákon nagyjából egy extra bábu jut 400 Élő-pontra, szemben a játszmaállásokon tapasztalt nagyjából öt extra bábuval. Egy 1998-as áttekintésben Gobet az 5 másodperces átlagokat a mesterek esetében 5,5, a B osztály alatti játékosok esetében 2,6 véletlenszerű bábuban adta meg.",
           "A magyarázat érintetlenül hagyja de Groot elgondolását. Egy nagyon nagy mintatárral rendelkező játékos néha véletlenül talál egyet egy összevisszaságban. A véletlenszerű táblák csökkentik a szakértő előnyét, de nem szüntetik meg. Gobet és Simon hozzátették, hogy a kis minták elfedik az ilyen kis hatást, és az 1973-as tanulmánynak három alanya volt."
+        ]
+      },
+      {
+        "heading": "A sakk memóriajáték?",
+        "paragraphs": [
+          "A memória számít a sakkban, de egy erős játékos nem mezőről mezőre tárolja az állásokat. De Groot számadatai szerint a nagymesterek nem néztek messzebbre előre, és nem vizsgáltak több lépést, mint a szakértők. A különbség ehelyett abban mutatkozott meg, mennyit tudtak felidézni. Néhány másodperces megtekintés után Euwe és de Groot 93%-ot, Fast 68%-ot, Hauer pedig 51%-ot ért el.",
+          "Ez a felidézés a sakktudásból fakad. Gobet és Simon szerint a mester előnye a véletlenszerű táblákon nagyjából egy extra bábu 400 Élő-pontonként, szemben a játszmaállásokon tapasztalt nagyjából öt extra bábuval. A mester ismerős bábucsoportokat lát, a fent leírt chunkokat, így kevesebb különálló dolgot kell fejben tartania."
         ]
       },
       {

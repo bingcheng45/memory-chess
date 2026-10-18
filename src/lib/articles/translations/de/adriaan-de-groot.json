@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "20ea0dc8060e4c8ffaf79e6c3372d1b0ad31a36a308150860e18c8257380c6fb",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "a70c1aa9cbc2e62d5e37d0e3beebc100d58326a2e1fb8f29b4fa5fdf5ecb8602",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Lehrbücher verstanden dieses Ergebnis so, dass ein Meister auf sinnlosen Stellungen überhaupt keinen Vorteil hat. 1996 prüften Fernand Gobet und Herbert Simon diese Lesart an dreizehn Experimenten mit Darbietungszeiten von höchstens 10 Sekunden. In zwölf der dreizehn gab die stärkste Gruppe bei Zufallsstellungen mehr Figuren wieder als die schwächste. Die Ausnahme war die Studie von Chase und Simon selbst, in der der Meister am schlechtesten abschnitt.",
           "Der Vorteil ist klein. Gobet und Simon beziffern ihn auf etwa eine zusätzliche Figur je 400 Elo-Punkte bei Zufallsstellungen, gegenüber etwa fünf zusätzlichen Figuren bei Partiestellungen. In einem Überblick von 1998 gab Gobet die Mittelwerte bei 5 Sekunden mit 5,5 Figuren aus Zufallsstellungen für Meister und 2,6 für Spieler unterhalb der Klasse B an.",
           "Die Erklärung lässt de Groots Idee unangetastet. Ein Spieler mit einem sehr großen Vorrat an Mustern findet in einem Durcheinander manchmal zufällig eines. Zufallsstellungen verkleinern den Vorsprung des Experten, beseitigen ihn aber nicht. Gobet und Simon fügten hinzu, dass kleine Stichproben einen so kleinen Effekt verbergen, und die Studie von 1973 hatte drei Versuchspersonen."
+        ]
+      },
+      {
+        "heading": "Ist Schach ein Gedächtnisspiel?",
+        "paragraphs": [
+          "Das Gedächtnis spielt im Schach eine Rolle, aber ein starker Spieler speichert Stellungen nicht Feld für Feld. Nach de Groots Zählungen blickten Großmeister nicht weiter voraus als Expertenspieler und untersuchten auch nicht mehr Züge. Der Unterschied zeigte sich stattdessen darin, wie viel sie wiedergeben konnten. Nach einem Blick von wenigen Sekunden kamen Euwe und de Groot auf 93 %, Fast auf 68 % und Hauer auf 51 %.",
+          "Diese Gedächtnisleistung beruht auf Schachwissen. Gobet und Simon beziffern den Vorsprung des Meisters bei Zufallsstellungen auf etwa eine zusätzliche Figur je 400 Elo-Punkte, gegenüber etwa fünf zusätzlichen Figuren bei Stellungen aus Partien. Ein Meister sieht vertraute Gruppen von Figuren, die oben beschriebenen Chunks, und muss sich deshalb weniger einzelne Dinge merken."
         ]
       },
       {

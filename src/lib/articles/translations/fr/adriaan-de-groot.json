@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "1be93e6e63c9bab02d8e6625632713b3ab2420d95310ed91c77eefc7eb581c4e",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "2aa6ce8b370633ee9f4f6677e9a5f588a3100945a5283f1524c77a3c5fc3fdea",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Les manuels en ont conclu qu’un maître n’a aucun avantage sur des échiquiers dénués de sens. En 1996, Fernand Gobet et Herbert Simon ont confronté cette lecture à treize expériences aux expositions de 10 secondes ou moins. Dans douze des treize, le groupe le plus fort se rappelait plus de pièces aléatoires que le plus faible. L’exception était l’étude de Chase et Simon elle-même, où le maître avait obtenu le pire résultat.",
           "L’avantage est faible. Gobet et Simon l’estiment à environ une pièce supplémentaire par tranche de 400 points Elo sur les échiquiers aléatoires, contre environ cinq pièces supplémentaires sur les positions de partie. Dans une synthèse de 1998, Gobet donnait pour 5 secondes des moyennes de 5,5 pièces aléatoires pour les maîtres et de 2,6 pour les joueurs en dessous de la classe B.",
           "Cette explication laisse intacte l’idée de De Groot. Un joueur doté d’un très vaste stock de schémas en trouve parfois un par hasard dans un fouillis. Les échiquiers aléatoires réduisent l’avantage de l’expert sans le supprimer. Gobet et Simon ont ajouté que les petits échantillons masquent un effet aussi faible, et l’étude de 1973 comptait trois sujets."
+        ]
+      },
+      {
+        "heading": "Les échecs sont-ils un jeu de mémoire ?",
+        "paragraphs": [
+          "La mémoire compte aux échecs, mais un joueur fort ne stocke pas les positions case par case. D’après les comptages de De Groot, les grands maîtres ne voyaient pas plus loin que les joueurs de niveau expert et n’examinaient pas davantage de coups. L’écart apparaissait plutôt dans ce qu’ils se rappelaient. Après un coup d’œil de quelques secondes, Euwe et De Groot ont obtenu 93 %, Fast 68 % et Hauer 51 %.",
+          "Cette capacité à se rappeler vient de la connaissance des échecs. Gobet et Simon estiment l’avantage du maître sur les échiquiers aléatoires à environ une pièce supplémentaire par tranche de 400 points Elo, contre environ cinq pièces supplémentaires sur des positions tirées de parties. Un maître voit des groupes de pièces familiers, les chunks décrits plus haut, et il a donc moins d’éléments séparés à retenir."
         ]
       },
       {

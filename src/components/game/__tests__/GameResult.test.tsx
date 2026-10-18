@@ -181,7 +181,26 @@ describe("GameResult", () => {
 
       expect(primaries).toEqual([name.replace("Next round ", "Next round")]);
       expect(onPlay.mock.calls).toEqual([[...board, "result_next"]]);
-      expect(jest.mocked(window.gtag).mock.calls).toEqual([["event", "lab_panel_action", { panel: "resultCard", action: "next" }]]);
+      expect(jest.mocked(window.gtag).mock.calls).toEqual([["event", "lab_panel_action", { panel: "resultCard", action: "next_round" }]]);
+    });
+
+    it.each([
+      ["a review, whose accuracy on a seen board says nothing about the next size", { kind: "review", fen: baseGameState.originalPosition, reviewOf: "first-round", firstDay: "2026-10-06", step: 1 }],
+      ["the daily board, whose size the player did not choose", { kind: "daily", day: "2026-10-18", fen: baseGameState.originalPosition }],
+    ] as const)("after %s offers Try again as the one primary button, and no Next round", (_, board: SetBoard) => {
+      mockGameState = { ...baseGameState, accuracy: 100, correctPlacements: 6, board };
+      const onTryAgain = jest.fn();
+      const onPlay = jest.fn();
+      render(<GameResult onTryAgain={onTryAgain} onNewGame={jest.fn()} onPlay={onPlay} />);
+      const actions = screen.getByRole("navigation", { name: "Result actions" });
+
+      const primaries = [...document.querySelectorAll(".lab-btn-primary")].map((button) => button.textContent);
+      fireEvent.click(screen.getByRole("button", { name: "Try again" }));
+
+      expect(primaries).toEqual(["Try again"]);
+      expect(screen.queryByRole("button", { name: /Next round/ })).toBeNull();
+      expect([...actions.children].map((child) => (child.tagName === "DETAILS" ? "details" : child.textContent))).toEqual(["Change settings", "details"]);
+      expect([onTryAgain.mock.calls.length, onPlay.mock.calls.length, jest.mocked(window.gtag).mock.calls]).toEqual([1, 0, []]);
     });
 
     it("keeps Try again and Change settings in the row under it, and folds Submit, sharing and the leaderboard into More options", () => {
@@ -301,6 +320,36 @@ describe("GameResult", () => {
 
       expect(document.querySelector('[data-result-board="scored"]')).not.toBeNull();
       expect(shownSlug()).toBeUndefined();
+    });
+  });
+
+  describe("focus after the Submit dialog closes", () => {
+    function openFromMoreOptions() {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      const more = screen.getByRole("navigation", { name: "Result actions" }).querySelector("details")!;
+      more.open = true;
+      const submit = within(more).getByRole("button", { name: "Submit to leaderboard" });
+      fireEvent.click(submit);
+      return { more, submit };
+    }
+
+    it("lands on the Submit button inside More options when the player presses Escape", async () => {
+      const { submit } = openFromMoreOptions();
+
+      fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+
+      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+      await waitFor(() => expect(document.activeElement).toBe(submit));
+    });
+
+    it("lands on the More options summary when More options was closed meanwhile", async () => {
+      const { more } = openFromMoreOptions();
+
+      more.open = false;
+      fireEvent.click(screen.getByRole("button", { name: "Cancel" }));
+
+      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+      await waitFor(() => expect(document.activeElement?.textContent).toBe("More options"));
     });
   });
 
@@ -662,6 +711,22 @@ describe("GameResult", () => {
       await screen.findByRole("heading", { name: "Score submitted!" });
 
       expect([submit.isConnected, submit.parentElement === actions]).toEqual([true, true]);
+    });
+
+    it("returns focus to Submit when the dialog closes after a submit", async () => {
+      mockGameState = perfectEasyGame;
+      loadCutoffsMock.mockResolvedValue(CUTOFFS);
+      await renderSettled();
+      const submit = screen.getByRole("button", { name: "Submit to leaderboard" });
+
+      fireEvent.click(submit);
+      fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
+      fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
+      await screen.findByRole("heading", { name: "Score submitted!" });
+      fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+
+      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+      await waitFor(() => expect(document.activeElement).toBe(submit));
     });
 
     it("drops the nudge once the score has been submitted", async () => {

@@ -55,7 +55,7 @@ export type LabPanel =
   | "resultCard";
 
 /** What the player did: follow a link, start, stop or finish a plan, set or clear a goal, or check a standing. Never which plan or goal, and never an entry id or rank. */
-export type LabPanelAction = "play" | "guide" | "next" | "start" | "stop" | "finish" | "setGoal" | "clearGoal" | "check";
+export type LabPanelAction = "play" | "guide" | "next" | "next_round" | "start" | "stop" | "finish" | "setGoal" | "clearGoal" | "check";
 
 export type RoundStartParams = { piece_count: number; memorize_time: number; round_source: RoundSource };
 

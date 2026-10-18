@@ -32,7 +32,7 @@ import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
 import { feedbackDue, isSessionFirstResult } from "@/components/game/feedbackSchedule";
 import { localDayOf } from "@/lib/lab/record";
 import type { LabRound } from "@/lib/lab/recordRound";
-import { nextBoardOf } from "@/lib/game/nextBoard";
+import { nextBoardOf, type BoardSize } from "@/lib/game/nextBoard";
 import type { RecordBefore } from "@/components/game/ResultDeltas";
 import { RoundBoard } from "@/components/round/RoundBoard";
 import { ReadoutCard } from "@/components/round/ReadoutCard";
@@ -121,6 +121,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const submitRef = useRef<HTMLButtonElement>(null);
+  const moreRef = useRef<HTMLElement>(null);
   // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
   // effect below would insert it a frame later and push down everything under it.
   const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(readCachedCutoffs);
@@ -331,13 +333,19 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     );
   const showLeaderboardQualifier = ranks && !submitSuccess;
   const ratingNote = ratingNoteOf(gameState.rating, t);
-  const next = nextBoardOf({ pieceCount: gameState.pieceCount, memorizeSeconds: gameState.memorizeTime }, accuracy);
-  const playNext = () => {
-    trackEvent({ name: "lab_panel_action", params: { panel: "resultCard", action: "next" } });
-    onPlay(next.pieceCount, next.memorizeSeconds, "result_next");
+  // A daily or review board was not sized by the player, and a review's accuracy on a seen board misreads their level.
+  const next = gameState.board === undefined && nextBoardOf({ pieceCount: gameState.pieceCount, memorizeSeconds: gameState.memorizeTime }, accuracy);
+  const playNext = ({ pieceCount, memorizeSeconds }: BoardSize) => {
+    trackEvent({ name: "lab_panel_action", params: { panel: "resultCard", action: "next_round" } });
+    onPlay(pieceCount, memorizeSeconds, "result_next");
+  };
+  const returnFocus = (event: Event) => {
+    event.preventDefault();
+    const opener = submitRef.current;
+    (opener?.closest("details:not([open])") ? moreRef.current : opener)?.focus();
   };
   const submitButton = leaderboardEligible && (
-    <button type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
+    <button ref={submitRef} type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
       {t("submitToLeaderboard")}
     </button>
   );
@@ -379,22 +387,30 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         )}
 
         <div className="lab-result-next">
-          <button type="button" onClick={playNext} className="lab-btn lab-btn-primary">
-            {t("nextRound")}
-            <span className="lab-result-next-board">{tConfig("presetSummary", { pieces: next.pieceCount, seconds: next.memorizeSeconds })}</span>
-          </button>
+          {next ? (
+            <button type="button" onClick={() => playNext(next)} className="lab-btn lab-btn-primary">
+              {t("nextRound")}
+              <span className="lab-result-next-board">{tConfig("presetSummary", { pieces: next.pieceCount, seconds: next.memorizeSeconds })}</span>
+            </button>
+          ) : (
+            <button type="button" onClick={onTryAgain} className="lab-btn lab-btn-primary">
+              {t("tryAgain")}
+            </button>
+          )}
         </div>
 
         <nav aria-label={t("actions")} className="lab-result-actions">
-          <button type="button" onClick={onTryAgain} className="lab-btn lab-btn-secondary">
-            {t("tryAgain")}
-          </button>
+          {next && (
+            <button type="button" onClick={onTryAgain} className="lab-btn lab-btn-secondary">
+              {t("tryAgain")}
+            </button>
+          )}
           <button type="button" onClick={onNewGame} className="lab-btn lab-btn-secondary">
             {t("changeSettings")}
           </button>
           {ranks && submitButton}
           <details className="lab-result-more">
-            <summary className="lab-result-more-toggle">{t("moreOptions")}</summary>
+            <summary ref={moreRef} className="lab-result-more-toggle">{t("moreOptions")}</summary>
             <div className="lab-result-more-list">
               {gameState.board?.kind === "daily" && keepsRecord && (
                 <Link href="/daily" className="lab-btn lab-btn-secondary">
@@ -469,7 +485,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         open={showLeaderboardDialog}
         onOpenChange={setShowLeaderboardDialog}
       >
-        <DialogContent className={`${LAB_PAPER_CLASS} lab-dialog`}>
+        <DialogContent className={`${LAB_PAPER_CLASS} lab-dialog`} onCloseAutoFocus={returnFocus}>
           <DialogHeader>
             <DialogTitle className="lab-dialog-title">
               {submitSuccess ? t("dialog.successTitle") : t("dialog.submitTitle")}

@@ -3,7 +3,7 @@ import { deserialize, serialize } from "node:v8";
 import { render, screen, waitFor } from "@/test-utils/intl";
 import GameResult from "@/components/game/GameResult";
 import { FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY } from "@/components/game/feedbackSchedule";
-import { warmedResultDeltas, warmResultDeltas } from "@/components/game/resultDeltasWarm";
+import { recordReadDuringRound, warmedResultDeltas, warmResultDeltas } from "@/components/game/resultDeltasWarm";
 import { recordLabRound } from "@/lib/lab/recordRound";
 import { useGameStore } from "@/lib/store/gameStore";
 
@@ -65,5 +65,6 @@ describe("the dashboard figures on the result screen", () => {
 
     expect(figures()).toBeNull();
     expect(savedToast()).toBeNull();
+    expect(await recordReadDuringRound()).toBe(warmedResultDeltas()?.before);
   });
 });

@@ -355,7 +355,7 @@
         "start": "캘리브레이션 시작",
         "restart": "다시 시작",
         "again": "다시 하기",
-        "done": "완료",
+        "hide": "보드 가리기",
         "submit": "측정값 제출",
         "clear": "보드 비우기",
         "controlsLabel": "라운드 조작",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "시작",
-      "done": "완료",
+      "intro": "기물 {count}개를 {seconds}초 동안 외운 뒤, 기억으로 배치를 다시 만드세요.",
+      "hide": "보드 가리기",
       "restart": "다시 시작",
       "again": "다시 하기",
       "submit": "제출",

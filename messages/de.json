@@ -355,7 +355,7 @@
         "start": "Kalibrierung starten",
         "restart": "Neu starten",
         "again": "Noch einmal",
-        "done": "Fertig",
+        "hide": "Brett ausblenden",
         "submit": "Messwert abgeben",
         "clear": "Brett leeren",
         "controlsLabel": "Rundensteuerung",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Start",
-      "done": "Fertig",
+      "intro": "Präge dir {count, plural, one {# Figur} other {# Figuren}} {seconds} s lang ein und baue die Stellung dann aus dem Gedächtnis nach.",
+      "hide": "Brett ausblenden",
       "restart": "Neu starten",
       "again": "Neue Runde",
       "submit": "Abgeben",

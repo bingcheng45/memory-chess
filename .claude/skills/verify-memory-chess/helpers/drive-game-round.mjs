@@ -34,7 +34,7 @@ export default async function drive(page, { baseUrl }) {
   const pieces = (await page.eval(occupiedCells(words))).map((cell) => ({ square: cell.square, piece: pieceOf(cell) }));
   if (pieces.length === 0) throw new Error("the study board shows no pieces");
   await page.screenshot("1-study.png");
-  await page.clickText("button", words.round.done);
+  await page.clickText("button", words.round.hide);
 
   await page.waitFor(phaseIs("rebuild"));
   if ((await page.eval(occupiedCells(words))).length !== 0) throw new Error("the board did not clear for the rebuild");

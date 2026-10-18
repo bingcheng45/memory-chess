@@ -1,3 +1,5 @@
+import type { LabSummary } from "@/lib/lab/summary";
+
 export const FEEDBACK_COOLDOWN_MS = 24 * 60 * 60 * 1_000;
 export const FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY = "memory-chess-feedback-next-eligible-at";
 
@@ -24,7 +26,23 @@ export function writeNextEligibleAt(fromTime = Date.now()): void {
   }
 }
 
-/** Whether the result screen about to open will ask for feedback, so nothing else competes with that dialog. */
-export function feedbackPromptDue(): boolean {
-  return readNextEligibleAt() <= Date.now();
+const ASK_FROM_ROUND = 5;
+
+let sessionFirstResult: string | null = null;
+
+export function isSessionFirstResult(resultId: string): boolean {
+  sessionFirstResult ??= resultId;
+  return sessionFirstResult === resultId;
+}
+
+export interface FeedbackResult {
+  readonly day: string;
+  readonly sessionFirst: boolean;
+}
+
+export function feedbackDue(before: Pick<LabSummary, "rounds" | "days"> | null, result: FeedbackResult, now = Date.now()): boolean {
+  if (readNextEligibleAt() > now) return false;
+  if (!before) return !result.sessionFirst;
+  const playedBeforeToday = (before.days[0] ?? result.day) < result.day;
+  return before.rounds + 1 >= ASK_FROM_ROUND || playedBeforeToday;
 }

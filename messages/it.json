@@ -355,7 +355,7 @@
         "start": "Inizia la calibrazione",
         "restart": "Ricomincia",
         "again": "Ripeti",
-        "done": "Fatto",
+        "hide": "Nascondi scacchiera",
         "submit": "Invia la misurazione",
         "clear": "Svuota scacchiera",
         "controlsLabel": "Comandi della partita",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Inizia",
-      "done": "Fatto",
+      "intro": "Studia {count, plural, one {# pezzo} many {# di pezzi} other {# pezzi}} per {seconds} s, poi ricostruisci la posizione a memoria.",
+      "hide": "Nascondi scacchiera",
       "restart": "Ricomincia",
       "again": "Rigioca",
       "submit": "Invia",

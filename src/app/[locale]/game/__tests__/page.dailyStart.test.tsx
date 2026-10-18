@@ -55,7 +55,7 @@ async function openToStart() {
 async function playToSubmit() {
   fireEvent.click(await openToStart());
   await advance(3000);
-  fireEvent.click(screen.getByRole("button", { name: "Done" }));
+  fireEvent.click(screen.getByRole("button", { name: "Hide board" }));
   fireEvent.click(screen.getByRole("button", { name: "Submit" }));
 }
 

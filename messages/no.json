@@ -355,7 +355,7 @@
         "start": "Start kalibrering",
         "restart": "Start på nytt",
         "again": "Kjør igjen",
-        "done": "Ferdig",
+        "hide": "Skjul brettet",
         "submit": "Send inn målingen",
         "clear": "Tøm brettet",
         "controlsLabel": "Rundekontroller",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Start",
-      "done": "Ferdig",
+      "intro": "Se på {count, plural, one {# brikke} other {# brikker}} i {seconds} s, og bygg så opp stillingen etter hukommelsen.",
+      "hide": "Skjul brettet",
       "restart": "Start på nytt",
       "again": "Spill igjen",
       "submit": "Send inn",

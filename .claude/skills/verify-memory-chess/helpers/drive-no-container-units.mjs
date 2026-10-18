@@ -48,6 +48,8 @@ export default async function noCq(page, { baseUrl, evidenceDir }) {
     await page.send("Emulation.setDeviceMetricsOverride", { width, height, deviceScaleFactor: 1, mobile: Math.min(width, height) < 600 });
     await page.goto(`${baseUrl}/game?pieceCount=6&memorizeTime=60`);
     await page.waitFor(`document.querySelectorAll("[data-coordinate]").length === 64`, 30000);
+    if (await page.eval(`!!document.querySelector(".round-gate button:not([disabled])")`)) await page.click(".round-gate button");
+    await page.waitFor(`document.querySelector("[data-round-phase]")?.dataset.roundPhase === "study"`, 30000);
     await page.sleep(800);
     const before = await page.eval(MEASURE);
     await page.screenshot(`cq-${width}x${height}.png`);

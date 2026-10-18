@@ -2,7 +2,6 @@
 
 import { useEffect, useState, type RefObject } from "react";
 import { useTranslations } from "next-intl";
-import { feedbackPromptDue } from "@/components/game/feedbackSchedule";
 
 export const ROUND_SAVED_TOAST_MS = 3000;
 
@@ -18,10 +17,11 @@ export interface RoundSavedToastProps {
   readonly roundId: string;
   /** The dashboard figures under the result: what "Show me" scrolls to, and whose being on screen already makes the toast moot. */
   readonly target: RefObject<HTMLElement | null>;
+  readonly feedbackAsked: boolean;
 }
 
 /** Tells the player, once per round, that the round is saved and its dashboard figures wait below the fold. */
-export default function RoundSavedToast({ roundId, target }: RoundSavedToastProps) {
+export default function RoundSavedToast({ roundId, target, feedbackAsked }: RoundSavedToastProps) {
   const t = useTranslations("game.result.savedToast");
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -31,8 +31,8 @@ export default function RoundSavedToast({ roundId, target }: RoundSavedToastProp
     const section = target.current;
     if (!section || announced.has(roundId)) return;
     announced.add(roundId);
-    if (!inView(section) && !feedbackPromptDue()) setOpen(true);
-  }, [roundId, target]);
+    if (!inView(section) && !feedbackAsked) setOpen(true);
+  }, [roundId, target, feedbackAsked]);
 
   useEffect(() => {
     if (!open || hovered || focused) return;

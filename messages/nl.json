@@ -355,7 +355,7 @@
         "start": "Start kalibratie",
         "restart": "Opnieuw",
         "again": "Nog een keer",
-        "done": "Klaar",
+        "hide": "Bord verbergen",
         "submit": "Verstuur meting",
         "clear": "Bord leegmaken",
         "controlsLabel": "Rondebediening",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Start",
-      "done": "Klaar",
+      "intro": "Prent {count, plural, one {# stuk} other {# stukken}} in {seconds} s in en zet de stelling daarna uit je hoofd terug.",
+      "hide": "Bord verbergen",
       "restart": "Opnieuw",
       "again": "Nog een keer",
       "submit": "Verstuur",

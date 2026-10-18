@@ -131,16 +131,13 @@ export interface Refusal {
   readonly attempt: number;
 }
 
-/** A round on a set board, the only kind that waits for the player to press Start. */
-export type SetBoardConfig = RoundConfig & { readonly board: SetBoard };
-
 /** The three seconds between Start, or a replay, and the board appearing. */
 export const COUNTDOWN_MS = 3000;
 
 export type RoundState =
   | { readonly phase: "idle" }
-  | { readonly phase: "ready"; readonly config: SetBoardConfig }
-  | { readonly phase: "countdown"; readonly config: RoundConfig; readonly fen: string; readonly endsAt: number }
+  | { readonly phase: "ready"; readonly config: RoundConfig; readonly fen: string }
+  | { readonly phase: "countdown"; readonly config: RoundConfig; readonly fen: string; readonly endsAt: number; readonly afterIntro?: true }
   | { readonly phase: "study"; readonly config: RoundConfig; readonly target: LabPosition; readonly startedAt: number }
   | {
       readonly phase: "rebuild";
@@ -167,7 +164,7 @@ export type RoundPhase = RoundState["phase"];
 
 export type RoundAction =
   | { readonly type: "start"; readonly config: RoundConfig; readonly target: LabPosition; readonly now: number }
-  | { readonly type: "prepare"; readonly config: SetBoardConfig }
+  | { readonly type: "prepare"; readonly config: RoundConfig; readonly fen: string }
   | { readonly type: "begin"; readonly now: number }
   | { readonly type: "countIn"; readonly config: RoundConfig; readonly fen: string; readonly now: number }
   | { readonly type: "countdownEnded"; readonly now: number }
@@ -250,10 +247,10 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
   if (action.type === "start") {
     return { phase: "study", config: action.config, target: action.target, startedAt: action.now };
   }
-  if (action.type === "prepare") return state.phase === "idle" ? { phase: "ready", config: action.config } : state;
+  if (action.type === "prepare") return state.phase === "idle" ? { phase: "ready", config: action.config, fen: action.fen } : state;
   if (action.type === "begin") {
     return state.phase === "ready"
-      ? { phase: "countdown", config: state.config, fen: state.config.board.fen, endsAt: action.now + COUNTDOWN_MS }
+      ? { phase: "countdown", config: state.config, fen: state.fen, endsAt: action.now + COUNTDOWN_MS, ...(state.config.board ? {} : { afterIntro: true }) }
       : state;
   }
   if (action.type === "countIn") {

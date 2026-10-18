@@ -163,7 +163,7 @@ describe("lab record from a finished game round", () => {
     jest.mocked(recordLabRound).mockResolvedValueOnce(false);
 
     store().prepareGame(6, 10, "daily", board);
-    store().dispatch({ type: "begin", now: 1000 });
+    store().beginRound(1000);
     const before = { phase: store().round.phase, starts: gtag.mock.calls.length, shown: store().gameState.originalPosition };
     store().endCountdown(4000);
     const study = store().round;

@@ -74,28 +74,28 @@ afterEach(() => {
 });
 
 describe("GamePage URL-driven start", () => {
-  it("auto-starts the round a drill link names", () => {
+  it("auto-starts the round a drill link names", async () => {
     window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8");
 
     render(<GamePage />);
 
-    expect(mockStartGame).toHaveBeenCalledWith(12, 8, "link");
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(12, 8, "link"));
   });
 
-  it("starts a challenge link with the default memorize time", () => {
+  it("starts a challenge link with the default memorize time", async () => {
     window.history.pushState({}, "", "/game?pieceCount=6&challenge=2026-09-16");
 
     render(<GamePage />);
 
-    expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link");
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link"));
   });
 
-  it("clears the round params from the address after the URL start", () => {
+  it("clears the round params from the address after the URL start", async () => {
     window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10");
 
     render(<GamePage />);
 
-    expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link");
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link"));
     expect(window.location.pathname + window.location.search).toBe("/game");
   });
 
@@ -107,29 +107,29 @@ describe("GamePage URL-driven start", () => {
     expect(window.location.search).toBe("?challenge=2026-09-16");
   });
 
-  it("starts the round with the source its link names and clears that from the address", () => {
+  it("starts the round with the source its link names and clears that from the address", async () => {
     window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=guide_cta");
 
     render(<GamePage />);
 
-    expect(mockStartGame).toHaveBeenCalledWith(12, 8, "guide_cta");
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(12, 8, "guide_cta"));
     expect(window.location.pathname + window.location.search).toBe("/game");
   });
 
-  it("reads an unknown source as a plain link", () => {
+  it("reads an unknown source as a plain link", async () => {
     window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=newsletter%3Cx%3E");
 
     render(<GamePage />);
 
-    expect(mockStartGame).toHaveBeenCalledWith(12, 8, "link");
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(12, 8, "link"));
   });
 
-  it("starts a round at the longest study time a link can name", () => {
+  it("starts a round at the longest study time a link can name", async () => {
     window.history.pushState({}, "", "/game?pieceCount=8&memorizeTime=60&source=plan");
 
     render(<GamePage />);
 
-    expect(mockStartGame).toHaveBeenCalledWith(8, 60, "plan");
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(8, 60, "plan"));
   });
 
   it("opens the configuration form for a link past the longest study time", () => {
@@ -277,10 +277,11 @@ describe("GamePage review link", () => {
 });
 
 describe("GamePage URL-driven start under StrictMode", () => {
-  it("starts the round after the remount's reset and clears the address", () => {
+  it("starts the round after the remount's reset and clears the address", async () => {
     window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10");
 
     render(<GamePage />, { reactStrictMode: true });
+    await waitFor(() => expect(mockStartGame).toHaveBeenCalled());
 
     const lastStart = Math.max(...mockStartGame.mock.invocationCallOrder);
     const lastReset = Math.max(0, ...mockResetGame.mock.invocationCallOrder);

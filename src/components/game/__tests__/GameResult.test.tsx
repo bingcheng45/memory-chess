@@ -31,7 +31,7 @@ const baseGameState = {
 
 const mockRound = scoredRound("4k3/8/8/8/3q4/8/PP6/4K3", "4k3/8/8/8/8/8/PP6/4K3");
 
-let mockGameState: typeof baseGameState & { board?: SetBoard; rating?: RoundOutcome } = baseGameState;
+let mockGameState: typeof baseGameState & { board?: SetBoard; rating?: RoundOutcome; labRound?: typeof LAB_ROUND } = baseGameState;
 let mockHistory: readonly { readonly id: string }[] = [];
 const historyOf = (rounds: number) => Array.from({ length: rounds }, (_, index) => ({ id: `round-${index}` }));
 
@@ -81,6 +81,17 @@ const perfectEasyGame = {
 jest.mock("@/lib/utils/soundEffects", () => ({
   playSound: jest.fn(),
 }));
+
+let mockRecordBefore: { rounds: number; days: string[] } | null = null;
+jest.mock("@/components/game/resultDeltasWarm", () => ({
+  recordReadDuringRound: () => Promise.resolve(null),
+  warmedResultDeltas: () =>
+    mockRecordBefore && { Deltas: () => null, before: { records: [], summary: { ...jest.requireActual("@/lib/lab/summary").EMPTY_SUMMARY, ...mockRecordBefore } } },
+}));
+const LAB_ROUND = {
+  endedAt: Date.parse("2026-10-18T12:00:00"),
+  facts: { id: "played", source: "game", pieceCount: 6, memorizeSeconds: 10, targetFen: "8/8/8/8/8/8/8/P7", placedFen: "8/8/8/8/8/8/8/P7", memorizeMs: 8250, solveMs: 12500 },
+} as const;
 
 let mockFeedbackGame: { difficulty: string } | null = null;
 jest.mock("@/components/game/FirstGameFeedbackDialog", () => ({
@@ -468,7 +479,8 @@ describe("GameResult", () => {
     ["a daily board", { kind: "daily", day: "2026-10-14", fen: baseGameState.originalPosition }, "daily"],
     ["a free round of the same size", undefined, "custom"],
   ] as const)("labels the feedback for %s by what was played", (_, board: SetBoard | undefined, difficulty) => {
-    mockGameState = { ...baseGameState, pieceCount: 7, board };
+    mockGameState = { ...baseGameState, pieceCount: 7, board, labRound: LAB_ROUND };
+    mockRecordBefore = { rounds: 4, days: ["2026-10-18"] };
 
     try {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
@@ -476,6 +488,28 @@ describe("GameResult", () => {
       expect(mockFeedbackGame?.difficulty).toBe(difficulty);
     } finally {
       mockGameState = baseGameState;
+      mockRecordBefore = null;
+      mockFeedbackGame = null;
+    }
+  });
+
+  it("asks for feedback on the fifth round of the first day or the first round of a later day, never on the first or fourth result", async () => {
+    const asks = async (rounds: number, firstDay?: string) => {
+      mockGameState = { ...baseGameState, labRound: LAB_ROUND };
+      mockRecordBefore = { rounds, days: firstDay ? [firstDay] : [] };
+      mockFeedbackGame = null;
+      const { unmount } = render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      await act(async () => {});
+      unmount();
+      return mockFeedbackGame !== null;
+    };
+
+    try {
+      expect([await asks(0), await asks(3, "2026-10-18"), await asks(4, "2026-10-18"), await asks(1, "2026-10-17")]).toEqual([false, false, true, true]);
+    } finally {
+      mockGameState = baseGameState;
+      mockRecordBefore = null;
+      mockFeedbackGame = null;
     }
   });
 

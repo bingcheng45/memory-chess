@@ -355,7 +355,7 @@
         "start": "Mulai kalibrasi",
         "restart": "Ulangi",
         "again": "Jalankan lagi",
-        "done": "Selesai",
+        "hide": "Sembunyikan papan",
         "submit": "Kirim pembacaan",
         "clear": "Kosongkan papan",
         "controlsLabel": "Kontrol ronde",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Mulai",
-      "done": "Selesai",
+      "intro": "Hafalkan {count} bidak selama {seconds} dtk, lalu susun kembali posisinya dari ingatan.",
+      "hide": "Sembunyikan papan",
       "restart": "Ulangi",
       "again": "Main lagi",
       "submit": "Kirim",

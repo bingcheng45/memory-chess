@@ -3,18 +3,15 @@
 import { useEffect, useRef } from 'react';
 import { useFormatter, useTranslations } from 'next-intl';
 
-/** What today's board asks, shown before its position is. */
-export interface GateFacts {
-  readonly day: string;
-  readonly pieceCount: number;
-  readonly memorizeTime: number;
-}
+export type GateFacts =
+  | { readonly kind: 'daily'; readonly day: string; readonly pieceCount: number; readonly memorizeTime: number }
+  | { readonly kind: 'firstRound'; readonly pieceCount: number; readonly memorizeTime: number };
 
 /** "Daily board · Wednesday, 14 October", in the board's own UTC day. */
 export function useGateDate(gate: GateFacts | null): string | null {
   const t = useTranslations('daily.round');
   const format = useFormatter();
-  if (!gate) return null;
+  if (gate?.kind !== 'daily') return null;
   const date = format.dateTime(Date.parse(`${gate.day}T00:00:00Z`), { weekday: 'long', day: 'numeric', month: 'long', timeZone: 'UTC' });
   return t('fig', { date });
 }
@@ -32,6 +29,7 @@ interface RoundGateProps {
 /** Over the veiled board: what the board asks and Start, then the 3, 2, 1 that leads into study. */
 export function RoundGate({ facts, count, ready, onStart }: RoundGateProps) {
   const t = useTranslations('daily.round');
+  const tRound = useTranslations('game.round');
   const start = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -54,12 +52,18 @@ export function RoundGate({ facts, count, ready, onStart }: RoundGateProps) {
   return (
     <div className="round-gate">
       <div className="round-gate-card">
-        <p className="round-gate-facts">
-          {t('pieces', { count: facts.pieceCount })} · {t('seconds', { count: facts.memorizeTime })}
-        </p>
-        <p className="round-gate-rule">{t('rule')}</p>
+        {facts.kind === 'daily' ? (
+          <>
+            <p className="round-gate-facts">
+              {t('pieces', { count: facts.pieceCount })} · {t('seconds', { count: facts.memorizeTime })}
+            </p>
+            <p className="round-gate-rule">{t('rule')}</p>
+          </>
+        ) : (
+          <p className="round-gate-facts round-gate-intro">{tRound('intro', { count: facts.pieceCount, seconds: facts.memorizeTime })}</p>
+        )}
         <button ref={start} type="button" className="lab-btn lab-btn-primary" disabled={!ready} aria-busy={!ready || undefined} onClick={onStart}>
-          {t('start')}
+          {facts.kind === 'daily' ? t('start') : tRound('start')}
         </button>
       </div>
     </div>

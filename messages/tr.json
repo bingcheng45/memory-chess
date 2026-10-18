@@ -355,7 +355,7 @@
         "start": "Kalibrasyonu başlat",
         "restart": "Yeniden başla",
         "again": "Yeniden dene",
-        "done": "Bitti",
+        "hide": "Tahtayı gizle",
         "submit": "Ölçümü gönder",
         "clear": "Tahtayı temizle",
         "controlsLabel": "Tur kontrolleri",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Başla",
-      "done": "Bitti",
+      "intro": "{count} taşı {seconds} sn boyunca incele, sonra konumu hafızandan yeniden kur.",
+      "hide": "Tahtayı gizle",
       "restart": "Yeniden başla",
       "again": "Tekrar oyna",
       "submit": "Gönder",

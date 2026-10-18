@@ -190,10 +190,12 @@ async function playRound(page, base, preset, act, idle) {
 
   await act(`preset ${preset}`, () => page.tap(`document.querySelector('[data-preset="${preset}"]')`));
   await act("start round", () => page.tap(byText("Start round")));
+  await page.waitFor(`${phaseIs("study")} || ${byText("Start")}`, 30_000);
+  if (!(await page.evaluate(phaseIs("study")))) await act("first-round start", () => page.tap(byText("Start")));
   await page.waitFor(phaseIs("study"), 30_000);
   const pieces = await page.evaluate(STUDY_PIECES);
   const idleStudy = await idle(1_000);
-  await act("done (end study)", () => page.tap(byText("Done")));
+  await act("hide board (end study)", () => page.tap(byText("Hide board")));
   await page.waitFor(phaseIs("rebuild"));
   await sleep(1_000);
   const idleRebuild = await idle(2_000);

@@ -355,7 +355,7 @@
         "start": "Empezar la calibración",
         "restart": "Reiniciar",
         "again": "Repetir",
-        "done": "Listo",
+        "hide": "Ocultar tablero",
         "submit": "Enviar medición",
         "clear": "Vaciar tablero",
         "controlsLabel": "Controles de la ronda",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Empezar",
-      "done": "Listo",
+      "intro": "Memoriza {count, plural, one {# pieza} many {# de piezas} other {# piezas}} durante {seconds} s y luego reconstruye la posición de memoria.",
+      "hide": "Ocultar tablero",
       "restart": "Reiniciar",
       "again": "Otra partida",
       "submit": "Enviar",

@@ -10,7 +10,6 @@ import {
   type RoundAction,
   type RoundConfig,
   type RoundState,
-  type SetBoardConfig,
 } from "@/lib/round/round";
 
 
@@ -428,7 +427,7 @@ describe("the palette inventory", () => {
 });
 
 describe("a set board's start", () => {
-  const DAILY: SetBoardConfig = {
+  const DAILY: RoundConfig = {
     pieceCount: 3,
     studyMs: 10_000,
     source: "daily",
@@ -436,11 +435,11 @@ describe("a set board's start", () => {
   };
 
   it("waits on Start without the position, counts three seconds, then studies the board from the moment it ends", () => {
-    const ready = roundReducer({ phase: "idle" }, { type: "prepare", config: DAILY });
+    const ready = roundReducer({ phase: "idle" }, { type: "prepare", config: DAILY, fen: "4k3/8/8/8/8/8/8/R3K3 w - - 0 1" });
     const countdown = roundReducer(ready, { type: "begin", now: 1_000 });
     const study = roundReducer(countdown, { type: "countdownEnded", now: 4_020 });
 
-    expect(ready).toEqual({ phase: "ready", config: DAILY });
+    expect(ready).toEqual({ phase: "ready", config: DAILY, fen: "4k3/8/8/8/8/8/8/R3K3 w - - 0 1" });
     expect(countdown).toEqual({ phase: "countdown", config: DAILY, fen: "4k3/8/8/8/8/8/8/R3K3 w - - 0 1", endsAt: 4_000 });
     expect(study).toEqual({
       phase: "study",
@@ -451,13 +450,31 @@ describe("a set board's start", () => {
   });
 
   it("ignores Start and the countdown's end out of turn", () => {
-    const ready = roundReducer({ phase: "idle" }, { type: "prepare", config: DAILY });
+    const ready = roundReducer({ phase: "idle" }, { type: "prepare", config: DAILY, fen: "4k3/8/8/8/8/8/8/R3K3 w - - 0 1" });
     const idle: RoundState = { phase: "idle" };
 
     expect(roundReducer(idle, { type: "begin", now: 0 })).toBe(idle);
     expect(roundReducer(ready, { type: "countdownEnded", now: 0 })).toBe(ready);
     expect(roundReducer(ready, { type: "studyEnded", now: 0 })).toBe(ready);
     expect(roundReducer(ready, { type: "select", piece: WK })).toBe(ready);
+  });
+});
+
+describe("a first round's start", () => {
+  const FIRST: RoundConfig = { pieceCount: 2, studyMs: 10_000, source: "home_quick" };
+
+  it("holds a random board behind Start, then counts in and studies the board it was given", () => {
+    const ready = roundReducer({ phase: "idle" }, { type: "prepare", config: FIRST, fen: "4k3/8/8/8/8/8/8/4K3 w - - 0 1" });
+    const study = roundReducer(roundReducer(ready, { type: "begin", now: 500 }), { type: "countdownEnded", now: 3_500 });
+
+    expect(ready).toEqual({ phase: "ready", config: FIRST, fen: "4k3/8/8/8/8/8/8/4K3 w - - 0 1" });
+    expect(roundReducer(ready, { type: "studyEnded", now: 20_000 })).toBe(ready);
+    expect(study).toEqual({
+      phase: "study",
+      config: FIRST,
+      target: { e8: { color: "black", type: "king" }, e1: { color: "white", type: "king" } },
+      startedAt: 3_500,
+    });
   });
 });
 

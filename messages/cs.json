@@ -355,7 +355,7 @@
         "start": "Začít kalibraci",
         "restart": "Od začátku",
         "again": "Znovu",
-        "done": "Hotovo",
+        "hide": "Skrýt šachovnici",
         "submit": "Odeslat měření",
         "clear": "Vyčistit šachovnici",
         "controlsLabel": "Ovládání kola",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Začít",
-      "done": "Hotovo",
+      "intro": "Prohlédněte si {count, plural, one {# figurku} few {# figurky} many {# figurky} other {# figurek}} po {seconds} s a pak pozici složte zpaměti.",
+      "hide": "Skrýt šachovnici",
       "restart": "Od začátku",
       "again": "Hrát znovu",
       "submit": "Odeslat",

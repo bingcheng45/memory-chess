@@ -355,7 +355,7 @@
         "start": "Aloita kalibrointi",
         "restart": "Aloita alusta",
         "again": "Uudelleen",
-        "done": "Valmis",
+        "hide": "Piilota lauta",
         "submit": "Lähetä mittaus",
         "clear": "Tyhjennä lauta",
         "controlsLabel": "Kierroksen ohjaimet",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Aloita",
-      "done": "Valmis",
+      "intro": "Opettele {count, plural, one {# nappula} other {# nappulaa}} {seconds} sekunnissa ja rakenna sitten asema muistista.",
+      "hide": "Piilota lauta",
       "restart": "Aloita alusta",
       "again": "Uusi kierros",
       "submit": "Lähetä",

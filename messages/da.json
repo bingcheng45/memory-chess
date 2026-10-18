@@ -355,7 +355,7 @@
         "start": "Start kalibrering",
         "restart": "Forfra",
         "again": "Kør igen",
-        "done": "Færdig",
+        "hide": "Skjul brættet",
         "submit": "Send måling",
         "clear": "Ryd brættet",
         "controlsLabel": "Rundens knapper",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Start",
-      "done": "Færdig",
+      "intro": "Se på {count, plural, one {# brik} other {# brikker}} i {seconds} s, og genopbyg så stillingen efter hukommelsen.",
+      "hide": "Skjul brættet",
       "restart": "Forfra",
       "again": "Spil igen",
       "submit": "Send",

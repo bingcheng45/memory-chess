@@ -66,7 +66,7 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
   --evidence .verify-evidence/country-leaderboard --base http://127.0.0.1:4517
 ```
 
-`drive-country-submit.mjs` plays a round, dismisses the first-game feedback prompt, opens the picker at four viewports asserting it stays inside each, picks Singapore with the keyboard and asserts the captured POST body. `drive-country-leaderboard.mjs` asserts the rendered flags and that the narrow table still scrolls to its date column.
+`drive-country-submit.mjs` plays a round, dismisses the feedback prompt if it shows, opens the picker at four viewports asserting it stays inside each, picks Singapore with the keyboard and asserts the captured POST body. `drive-country-leaderboard.mjs` asserts the rendered flags and that the narrow table still scrolls to its date column.
 
 ## Driving it against a database without the rating column
 
@@ -98,6 +98,6 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
 
 - The fetch has a 10s timeout and the UI distinguishes timeout, parse, and service errors; a slow first request after boot can show the retry state once. Reload before concluding it is broken.
 - The default tab is Medium, not Easy.
-- The first-game feedback prompt opens 800ms after the result screen and stacks over the submission dialog, so a driver that lingers there finds its clicks landing on `#game-feedback`. Dismiss it with Escape before driving the dialog beneath.
+- The feedback prompt opens 800ms after a result screen from the fifth round of the first day or the first round of a later day, and stacks over the submission dialog, so a driver that lingers there finds its clicks landing on `#game-feedback`. Dismiss it with Escape before driving the dialog beneath.
 - The submission dialog animates in with a transform, so a rect read the instant it mounts names a point the element has already left. Hit-test the centre before dispatching a synthetic click.
 - Do not seed or clean production Supabase data from a verification run; the scripts in the repo root (`populate-leaderboard.js`, `clean-leaderboard.js`) target the live table.

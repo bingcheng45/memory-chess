@@ -57,6 +57,8 @@ export type LabPanel =
 /** What the player did: follow a link, start, stop or finish a plan, set or clear a goal, or check a standing. Never which plan or goal, and never an entry id or rank. */
 export type LabPanelAction = "play" | "guide" | "next" | "start" | "stop" | "finish" | "setGoal" | "clearGoal" | "check";
 
+export type RoundStartParams = { piece_count: number; memorize_time: number; round_source: RoundSource };
+
 /**
  * The GA4 event contract. Round events carry the setting, the score and `round_source`, never `source`, which
  * GA4 reads as the session's traffic source. Lab events carry counts and fixed ids only, never positions,
@@ -65,7 +67,12 @@ export type LabPanelAction = "play" | "guide" | "next" | "start" | "stop" | "fin
 export type FunnelEvent =
   | {
       name: "round_start";
-      params: { piece_count: number; memorize_time: number; round_source: RoundSource };
+      params: RoundStartParams;
+    }
+  /** Once per first-ever round from a link, when its one-line rule and Start show; its round_start follows on Start. */
+  | {
+      name: "round_intro_view";
+      params: RoundStartParams;
     }
   | {
       name: "round_complete";

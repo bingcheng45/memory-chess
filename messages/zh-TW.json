@@ -355,7 +355,7 @@
         "start": "開始校準",
         "restart": "重新開始",
         "again": "再測一次",
-        "done": "完成",
+        "hide": "隱藏棋盤",
         "submit": "送出讀數",
         "clear": "清空棋盤",
         "controlsLabel": "本回合操作",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "開始",
-      "done": "完成",
+      "intro": "用 {seconds} 秒記住 {count} 枚棋子，然後憑記憶還原局面。",
+      "hide": "隱藏棋盤",
       "restart": "重新開始",
       "again": "再玩一次",
       "submit": "送出",

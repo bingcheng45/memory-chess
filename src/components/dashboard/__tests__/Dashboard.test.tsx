@@ -115,11 +115,40 @@ describe("Dashboard", () => {
     );
   });
 
-  it("gives each tile the fragment a Learn guide links to", () => {
-    show("twoRounds");
+  describe.each<PersonaName>(["newVisitor", "twoRounds", "threeDays", "thirtyDays"])("for the %s persona", (name) => {
+    beforeEach(() => {
+      URL.createObjectURL = jest.fn(() => "blob:card");
+      URL.revokeObjectURL = jest.fn();
+    });
+    afterEach(() => window.history.replaceState(null, "", "/"));
 
-    expect(document.getElementById("tile-recentAccuracy")?.textContent).toBe(tileText("recentAccuracy"));
-    expect(document.getElementById("tile-recentAccuracy")?.textContent).toMatch(/^Recent accuracy/);
+    it.each([
+      ["span", "Memory span"],
+      ["recentAccuracy", "Recent accuracy"],
+      ["days", "Days played"],
+    ])("draws the tile-%s fragment a Learn link opens, labelled %s", (id, label) => {
+      window.history.replaceState(null, "", `/dashboard#tile-${id}`);
+      show(name);
+
+      expect(document.getElementById(`tile-${id}`)?.textContent?.startsWith(label)).toBe(true);
+    });
+  });
+
+  it("opens the Learn link's fragment once the record loads, when it was not drawn before", () => {
+    const scrolled: string[] = [];
+    Element.prototype.scrollIntoView = function (this: Element) {
+      scrolled.push(this.id);
+    };
+    window.history.replaceState(null, "", "/dashboard#tile-days");
+    labData = { ...persona("newVisitor"), storage: "loading", records: [], today: "" };
+    const { rerender } = renderWithIntl(<Dashboard />);
+    expect(document.getElementById("tile-days")).toBeNull();
+
+    labData = persona("newVisitor");
+    rerender(<Dashboard />);
+    expect(scrolled).toEqual(["tile-days"]);
+    expect(document.getElementById("tile-days")?.textContent).toBe("Days playedNothing yet.Play a round →");
+    window.history.replaceState(null, "", "/");
   });
 
   it("lists the figures still to unlock in one list, nearest first, in place of a card each", () => {

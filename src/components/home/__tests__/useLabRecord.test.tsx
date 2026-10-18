@@ -57,6 +57,26 @@ describe("useLabRecord download", () => {
   });
 });
 
+describe("useLabRecord identity", () => {
+  it("hands back the same record on a rerender until the record or its backup time changes", async () => {
+    jest.mocked(labStore).mockReturnValue(fakeStore());
+    URL.createObjectURL = jest.fn(() => "blob:lab");
+    URL.revokeObjectURL = jest.fn();
+    jest.spyOn(HTMLAnchorElement.prototype, "click").mockImplementation(() => {});
+    jest.spyOn(Date, "now").mockReturnValue(1_700_000_000_000);
+    const { result, rerender } = renderHook(() => useLabRecord());
+    await waitFor(() => expect(result.current.storage).toBe("available"));
+    const loaded = result.current;
+
+    rerender();
+    expect(result.current).toBe(loaded);
+
+    await act(() => result.current.download());
+    expect([result.current === loaded, result.current.lastBackup]).toEqual([false, 1_700_000_000_000]);
+    jest.restoreAllMocks();
+  });
+});
+
 describe("useLabRecord import", () => {
   const rounds = [round({ id: "a", endedAt: 1 }), round({ id: "b", endedAt: 2 })];
   const json = JSON.stringify(buildExport(rounds, 0, { ...summarize(rounds), rounds: 9 }));

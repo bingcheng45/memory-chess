@@ -5,6 +5,7 @@ import { appendGoogleSheetRow } from "@/lib/server/googleSheets";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 
 jest.mock("@/lib/server/googleSheets", () => ({
+  ...jest.requireActual("@/lib/server/googleSheets"),
   appendGoogleSheetRow: jest.fn(),
 }));
 

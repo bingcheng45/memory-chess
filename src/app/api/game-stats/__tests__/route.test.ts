@@ -5,6 +5,7 @@ import { POST } from "@/app/api/game-stats/route";
 import { incrementGameMetric } from "@/lib/services/gameStatsService";
 
 jest.mock("@/lib/services/gameStatsService", () => ({
+  ...jest.requireActual("@/lib/services/gameStatsService"),
   getAllGameMetrics: jest.fn(),
   getGameMetric: jest.fn(),
   incrementGameMetric: jest.fn(),
@@ -25,13 +26,13 @@ describe("POST /api/game-stats", () => {
     expect(await response.json()).toEqual({ success: true, data: { metric: "total_plays", value: 1043 } });
   });
 
-  it("answers 500 with the service's error when the count fails", async () => {
-    increment.mockResolvedValue({ success: false, error: "Failed to increment metric: invalid metric" });
+  it("answers 500 without the database's words when the count fails", async () => {
+    increment.mockResolvedValue({ success: false, error: 'Failed to increment metric: relation "public.game_stats" does not exist' });
 
     const response = await post({ metric: "total_plays", increment: 1 });
 
     expect(response.status).toBe(500);
-    expect(await response.json()).toEqual({ error: "Failed to increment metric: invalid metric" });
+    expect(await response.json()).toEqual({ error: "The play could not be counted" });
   });
 
   it("answers 400 without a metric", async () => {

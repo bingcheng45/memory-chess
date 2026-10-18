@@ -576,6 +576,16 @@ describe("GameResult", () => {
       expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
     });
 
+    it("stays silent for a medium score on an open board, which no later score can push off", async () => {
+      mockGameState = { ...baseGameState, accuracy: 100, correctPlacements: 6, totalPiecesPlaced: 6 };
+      loadCutoffsMock.mockResolvedValue(CUTOFFS);
+
+      await renderSettled();
+
+      expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
+      expect(screen.getByRole("button", { name: "Submit to leaderboard" })).toBeInTheDocument();
+    });
+
     it("stays silent for a custom game, which no board ranks", async () => {
       mockGameState = {
         ...perfectEasyGame,

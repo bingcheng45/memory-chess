@@ -22,7 +22,7 @@ import type { RoundSource } from "@/lib/analytics/events";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
-  qualifies,
+  pushesOffLast,
   type LeaderboardCutoffs,
   type RankingScore,
 } from "@/lib/leaderboard/ranking";
@@ -96,7 +96,7 @@ function qualifiesForLeaderboard(
   if (cutoffs === null || difficulty === "custom") {
     return false;
   }
-  return qualifies(score, cutoffs[difficulty]);
+  return pushesOffLast(score, cutoffs[difficulty]);
 }
 
 export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResultProps) {

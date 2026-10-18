@@ -71,8 +71,15 @@ The round-funnel events start the day PR #33 merges. From then on production sen
 | `round_start` | a round enters the memorize phase | `piece_count`, `memorize_time` |
 | `round_complete` | a round reaches its result | `piece_count`, `memorize_time`, `correct_pieces`, `accuracy` |
 | `score_submit` | the leaderboard accepts a submitted score | `difficulty`, `piece_count` |
+| `round_intro_view` | a player's first-ever round from a link shows its one-line rule and Start | `piece_count`, `memorize_time`, `source` |
 
 The clean production-only series for these events starts 2026-09-29. Read nothing earlier as comparable.
+
+Note added 2026-10-18 for PR #117. From the day it merges, a player's first-ever round from a link waits behind a
+one-line rule and Start. That round's `round_start` fires when Start is pressed, so `home_quick` (and other link)
+`round_start` counts mean "players who pressed Start", not "visitors who landed". Visitors who leave at the rule
+send only `round_intro_view`. To compare with the weeks before, add `round_intro_view` visitors to `round_start`.
+Daily boards, replays and later rounds are unchanged.
 
 `sound_settings` fired once per finished round beside `round_complete` for four weeks after that merge, so the weekly
 rounds series has no gap. It was retired in its own PR on 2026-10-16, eleven days early, because the counts already

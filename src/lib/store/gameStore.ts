@@ -33,6 +33,7 @@ import {
   labPositionToFen,
   roundReducer,
   type RoundAction,
+  type RoundConfig,
   type RoundState,
 } from '@/lib/round/round';
 
@@ -78,13 +79,15 @@ interface GameStore {
   round: RoundState;
 
   startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
-  /** Sets a board out behind its Start button. Start is `dispatch({ type: 'begin' })`; the round studies on endCountdown. */
+  /** Sets a board out behind its Start button; without a set board it is a first round's intro. The round studies on endCountdown. */
   prepareGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
+  /** Start on a prepared board: counts it in. */
+  beginRound: (now?: number) => void;
   /** Counts a new random board in over the veil, without a Start button; the round studies on endCountdown. */
   countInGame: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
   endCountdown: (now?: number) => void;
-  /** Start, done, the study deadline, the palette, the board and the eraser. Submit goes through submitSolution. */
-  dispatch: (action: Exclude<RoundAction, { type: 'start' | 'prepare' | 'countIn' | 'countdownEnded' | 'submit' }>) => void;
+  /** Hide board, the study deadline, the palette, the board and the eraser. Submit goes through submitSolution. */
+  dispatch: (action: Exclude<RoundAction, { type: 'start' | 'prepare' | 'begin' | 'countIn' | 'countdownEnded' | 'submit' }>) => void;
   /** Scores the round; resolves once the lab record has kept it, to whether it did. */
   submitSolution: (now?: number) => Promise<boolean>;
   resetGame: () => void;
@@ -162,8 +165,8 @@ const studyGameState = (previous: GameState, { pieceCount, memorizeTime, source,
   streak: previous.streak || 0,
 });
 
-const trackRoundStart = (pieceCount: number, memorizeTime: number, source: RoundSource) =>
-  trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime, round_source: source } });
+const trackRound = (name: "round_start" | "round_intro_view", { pieceCount, studyMs, source }: RoundConfig) =>
+  trackEvent({ name, params: { piece_count: pieceCount, memorize_time: studyMs / 1000, round_source: source } });
 
 // Initialize the store
 export const useGameStore = create<GameStore>()(
@@ -194,7 +197,7 @@ export const useGameStore = create<GameStore>()(
           gameState: studyGameState(get().gameState, { pieceCount, memorizeTime, source, board, originalPosition }),
           lastSettings: { pieceCount, memorizeTime },
         });
-        trackRoundStart(pieceCount, memorizeTime, source);
+        trackRound('round_start', { pieceCount, studyMs: memorizeTime * 1000, source });
       },
 
       prepareGame: (pieceCount, memorizeTime, source, board) => {
@@ -203,7 +206,16 @@ export const useGameStore = create<GameStore>()(
           console.error('Failed to generate random position');
           return;
         }
-        set({ round: roundReducer(get().round, { type: 'prepare', config: { pieceCount, studyMs: memorizeTime * 1000, source, board }, fen }) });
+        const config = { pieceCount, studyMs: memorizeTime * 1000, source, board };
+        const round = roundReducer(get().round, { type: 'prepare', config, fen });
+        set({ round });
+        if (round.phase === 'ready' && !board) trackRound('round_intro_view', config);
+      },
+
+      beginRound: (now = monotonicNow()) => {
+        const round = roundReducer(get().round, { type: 'begin', now });
+        set({ round });
+        if (round.phase === 'countdown' && round.afterIntro) trackRound('round_start', round.config);
       },
 
       countInGame: (pieceCount, memorizeTime, source) => {
@@ -232,7 +244,7 @@ export const useGameStore = create<GameStore>()(
           gameState: studyGameState(get().gameState, { pieceCount, memorizeTime, source, board, originalPosition: counting.fen }),
           lastSettings: { pieceCount, memorizeTime },
         });
-        trackRoundStart(pieceCount, memorizeTime, source);
+        if (!counting.afterIntro) trackRound('round_start', counting.config);
       },
 
       dispatch: (action) => set({ round: roundReducer(get().round, action) }),

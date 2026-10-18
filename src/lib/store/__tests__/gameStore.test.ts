@@ -42,6 +42,52 @@ describe("starting a round", () => {
   });
 });
 
+describe("a first round's intro", () => {
+  afterEach(() => {
+    store().resetGame();
+    Reflect.deleteProperty(window, "gtag");
+    jest.restoreAllMocks();
+  });
+
+  it("sends round_intro_view when the intro shows and round_start when Start is pressed, not again when study begins", () => {
+    const gtag = jest.fn();
+    window.gtag = gtag;
+    let clock = 1_000;
+    jest.spyOn(performance, "now").mockImplementation(() => clock);
+
+    store().prepareGame(3, 10, "home_quick");
+    const atIntro = [...gtag.mock.calls];
+    store().beginRound();
+    const atStart = [...gtag.mock.calls];
+    clock = 4_050;
+    store().endCountdown();
+
+    expect(atIntro).toEqual([["event", "round_intro_view", { piece_count: 3, memorize_time: 10, source: "home_quick" }]]);
+    expect(atStart).toEqual([
+      ["event", "round_intro_view", { piece_count: 3, memorize_time: 10, source: "home_quick" }],
+      ["event", "round_start", { piece_count: 3, memorize_time: 10, source: "home_quick" }],
+    ]);
+    expect(store().round.phase).toBe("study");
+    expect(gtag.mock.calls).toHaveLength(2);
+  });
+
+  it("keeps a daily board's round_start at the end of its countdown, with no intro event", () => {
+    const gtag = jest.fn();
+    window.gtag = gtag;
+    let clock = 1_000;
+    jest.spyOn(performance, "now").mockImplementation(() => clock);
+
+    store().prepareGame(5, 20, "daily", { kind: "daily", day: "2026-10-18", fen: "4k3/8/8/8/8/8/8/R3K3 w - - 0 1" });
+    store().beginRound();
+    const atStart = gtag.mock.calls.length;
+    clock = 4_050;
+    store().endCountdown();
+
+    expect(atStart).toBe(0);
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 5, memorize_time: 20, source: "daily" }]]);
+  });
+});
+
 describe("counting a replay in", () => {
   afterEach(() => {
     store().resetGame();

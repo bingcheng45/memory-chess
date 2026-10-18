@@ -133,7 +133,7 @@ function GamePageContent() {
   const startGame = useGameStore((state) => state.startGame);
   const prepareGame = useGameStore((state) => state.prepareGame);
   const countInGame = useGameStore((state) => state.countInGame);
-  const dispatch = useGameStore((state) => state.dispatch);
+  const beginRound = useGameStore((state) => state.beginRound);
   const resetGame = useGameStore((state) => state.resetGame);
   const submitSolution = useGameStore((state) => state.submitSolution);
   useRoundSounds(round);
@@ -241,7 +241,7 @@ function GamePageContent() {
     markOpenedRef.current?.();
     markOpenedRef.current = null;
     playSound('click');
-    dispatch({ type: 'begin', now: performance.now() });
+    beginRound();
   };
 
   const handleSubmitSolution = () => {

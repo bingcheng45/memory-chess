@@ -71,7 +71,7 @@ The round-funnel events start the day PR #33 merges. From then on production sen
 | `round_start` | a round enters the memorize phase | `piece_count`, `memorize_time` |
 | `round_complete` | a round reaches its result | `piece_count`, `memorize_time`, `correct_pieces`, `accuracy` |
 | `score_submit` | the leaderboard accepts a submitted score | `difficulty`, `piece_count` |
-| `round_intro_view` | a player's first-ever round from a link shows its one-line rule and Start | `piece_count`, `memorize_time`, `source` |
+| `round_intro_view` | a player's first-ever round from a link shows its one-line rule and Start | `piece_count`, `memorize_time`, `round_source` |
 
 The clean production-only series for these events starts 2026-09-29. Read nothing earlier as comparable.
 
@@ -81,7 +81,9 @@ one-line rule and Start. That round's `round_start` fires when Start is pressed,
 send only `round_intro_view`. GA4 cannot tell an intro round's `round_start` from a later round's, so read the
 `round_start` series as broken on the merge date, and `round_intro_view` against `round_start` as the intro's own
 start rate. Daily boards, replays and later rounds are unchanged. Databuddy's `round_started` (the mirror of
-`round_start`) shifts on the same merge date, and `round_intro_view` is not mirrored to Databuddy.
+`round_start`) shifts on the same merge date, and `round_intro_view` is not mirrored to Databuddy. Like
+`round_start` and `round_complete` since PR #118, `round_intro_view` names where the round began as `round_source`,
+never `source`, which GA4 reads as the traffic source. Databuddy's mirrors keep `source`.
 
 `sound_settings` fired once per finished round beside `round_complete` for four weeks after that merge, so the weekly
 rounds series has no gap. It was retired in its own PR on 2026-10-16, eleven days early, because the counts already

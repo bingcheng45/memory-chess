@@ -62,10 +62,10 @@ describe("a first round's intro", () => {
     clock = 4_050;
     store().endCountdown();
 
-    expect(atIntro).toEqual([["event", "round_intro_view", { piece_count: 3, memorize_time: 10, source: "home_quick" }]]);
+    expect(atIntro).toEqual([["event", "round_intro_view", { piece_count: 3, memorize_time: 10, round_source: "home_quick" }]]);
     expect(atStart).toEqual([
-      ["event", "round_intro_view", { piece_count: 3, memorize_time: 10, source: "home_quick" }],
-      ["event", "round_start", { piece_count: 3, memorize_time: 10, source: "home_quick" }],
+      ["event", "round_intro_view", { piece_count: 3, memorize_time: 10, round_source: "home_quick" }],
+      ["event", "round_start", { piece_count: 3, memorize_time: 10, round_source: "home_quick" }],
     ]);
     expect(store().round.phase).toBe("study");
     expect(gtag.mock.calls).toHaveLength(2);
@@ -84,7 +84,7 @@ describe("a first round's intro", () => {
     store().endCountdown();
 
     expect(atStart).toBe(0);
-    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 5, memorize_time: 20, source: "daily" }]]);
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 5, memorize_time: 20, round_source: "daily" }]]);
   });
 });
 

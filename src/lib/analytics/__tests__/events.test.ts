@@ -33,6 +33,7 @@ const EVENTS: FunnelEvent[] = [
     params: { query_length: 28, results: 2, top: "how-to-stop-blundering-in-chess", outcome: "strong", surface: "hub" },
   },
   { name: "learn_search_select", params: { slug: "chess-memory-training", rank: 1, matched_question: false, surface: "server" } },
+  { name: "round_intro_view", params: { piece_count: 3, memorize_time: 10, round_source: "link" } },
 ];
 
 afterEach(() => {
@@ -85,7 +86,7 @@ describe("Databuddy", () => {
     expect(databuddyTrack).toHaveBeenCalledWith(name, properties);
   });
 
-  it("receives no lab, article or search events", () => {
+  it("receives no lab, article, search or round intro events", () => {
     EVENTS.slice(4).forEach(trackEvent);
 
     expect(databuddyTrack).not.toHaveBeenCalled();

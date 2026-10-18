@@ -26,19 +26,13 @@ export function DailyBoard({ rendered }: { rendered: DailyTopRender }) {
   const shownDay = day ?? rendered.today;
   const setting = dailySettingOf(shownDay);
   const [joined, setJoined] = useState<DailyEntry | null>(null);
-  const [after, setAfter] = useState<string | null>(null);
   const [played, setPlayed] = useState(false);
-  const rows = useDailyRows(day, rendered, after);
+  const rows = useDailyRows(day, rendered, joined?.id ?? null);
   const Player = useDailyPlayer();
 
   useEffect(() => {
     if (day !== null) setJoined(readDailyEntry(day));
   }, [day]);
-
-  const onJoined = (entry: DailyEntry) => {
-    setJoined(entry);
-    setAfter(entry.id);
-  };
 
   return (
     <>
@@ -51,7 +45,7 @@ export function DailyBoard({ rendered }: { rendered: DailyTopRender }) {
         <DailyResetLine now={now} />
       </header>
       <div className="daily-grid">
-        {Player ? <Player day={day} setting={setting} joined={joined} onJoined={onJoined} onPlayed={setPlayed} /> : <DailyOpenCard setting={setting} />}
+        {Player ? <Player day={day} setting={setting} joined={joined} onJoined={setJoined} onPlayed={setPlayed} /> : <DailyOpenCard setting={setting} />}
         <DailyTopTen rows={rows} today={shownDay} joined={joined} played={played} />
       </div>
     </>

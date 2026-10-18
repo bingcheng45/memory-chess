@@ -32,8 +32,9 @@ async function readBoard(day: string, after: string | null): Promise<DailyBoardR
 }
 
 /**
- * The rows the server rendered, read again only when they may be out of date: after this device joins (`after` is the
- * new row's id), when the device's day is not the one rendered, as at midnight UTC, or when the render is stale.
+ * The rows the server rendered, read again only when they may be out of date: when this device has joined the day's
+ * board (`after` is its row's id, which keeps the read past any cached copy made before the join), when the device's
+ * day is not the one rendered, as at midnight UTC, or when the render is stale.
  */
 export function useDailyRows(day: string | null, rendered: DailyTopRender, after: string | null): DailyRows {
   const [rows, setRows] = useState<DailyRows>(rendered.board === null ? { state: "loading" } : { state: "ready", board: rendered.board });

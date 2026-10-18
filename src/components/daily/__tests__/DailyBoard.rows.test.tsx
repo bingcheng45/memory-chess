@@ -2,6 +2,7 @@ import { act, fireEvent, render, screen, waitFor, within } from "@/test-utils/in
 import { DailyBoard } from "@/components/daily/DailyBoard";
 import type { DailyTopRender } from "@/lib/daily/topTen";
 import type { DailyRound } from "@/lib/lab/daily";
+import { DAILY_ENTRY_KEY } from "@/lib/lab/entries";
 import type { CountryCode } from "@/lib/leaderboard/countries";
 import type { LeaderboardEntry } from "@/types/leaderboard";
 import { useSettingsStore } from "@/stores/settingsStore";
@@ -118,6 +119,24 @@ describe("joining today's board", () => {
     await act(async () => {});
     fireEvent.change(screen.getByLabelText("Name"), { target: { value: "Poteto" } });
     fireEvent.click(screen.getByRole("button", { name: "Join the board" }));
+
+    await waitFor(() => expect(topTen().querySelector("[data-you]")).toHaveTextContent("PotetoYou"));
+    expect(reads).toEqual(["/api/leaderboard?difficulty=daily&daily_day=2026-10-13&after=3c3c3c3c-0000-4000-8000-000000000003"]);
+  });
+});
+
+describe("coming back after joining today's board", () => {
+  it("reads the board past the shared cache on load, so a fresh render without the player's row is corrected", async () => {
+    jest.useFakeTimers({ now: Date.parse("2026-10-13T23:59:10Z"), doNotFake: ["queueMicrotask", "nextTick"] });
+    const own = row(3, "2026-10-13", "Poteto");
+    rowsByDay = { "2026-10-13": [ADA, own] };
+    window.localStorage.setItem(
+      DAILY_ENTRY_KEY,
+      JSON.stringify([{ id: own.id, difficulty: "daily", dailyDay: "2026-10-13", country: "SG", score: { correctPieces: 3, totalWrongPieces: 3, memorizeTime: 10, solutionTime: 13 }, submittedAt: 1 }]),
+    );
+
+    render(<DailyBoard rendered={RENDERED} />);
+    await act(async () => {});
 
     await waitFor(() => expect(topTen().querySelector("[data-you]")).toHaveTextContent("PotetoYou"));
     expect(reads).toEqual(["/api/leaderboard?difficulty=daily&daily_day=2026-10-13&after=3c3c3c3c-0000-4000-8000-000000000003"]);

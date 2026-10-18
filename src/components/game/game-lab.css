@@ -45,7 +45,9 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-result-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 24px; align-items: start; margin-top: 24px; }
 .lab-game .lab-result-board { margin: 0; padding: 16px; }
 .lab-game .lab-result-board figcaption { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: var(--lp-ink); }
-.lab-game .lab-result-next { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--lp-line); }
+/* The next round stays one tap away: pinned to the foot of the screen while the card runs past it, over a band of the
+   card's own paper so the board slides under it cleanly. Sticky keeps its place in the flow, so nothing moves. */
+.lab-game .lab-result-next { position: sticky; bottom: 0; z-index: 5; margin: 24px calc(-1 * clamp(16px, 3vw, 32px)) 0; padding: 12px clamp(16px, 3vw, 32px) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
 .lab-game .lab-result-next .lab-btn { min-height: 52px; min-width: min(320px, 100%); padding: 0 28px; font-size: 17px; }
 .lab-game .lab-result-next-board { font-weight: 500; opacity: 0.85; font-variant-numeric: tabular-nums; }
 .lab-game .lab-result-actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px; margin-top: 16px; }
@@ -95,11 +97,10 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 }
 @media (max-width: 767px) {
   .lab-game .lab-result-grid { grid-template-columns: minmax(0, 1fr); }
+  /* The readout carries the score, so on one column it comes before the board, clear of the pinned Next round bar. */
+  .lab-game .lab-result-grid > .lab-result-board { order: 1; }
   .lab-game .lab-result-actions > .lab-btn { flex: 1 1 calc(50% - 6px); }
   .lab-game .lab-result-actions > .lab-result-submit { flex-basis: 100%; }
-  /* The next round stays one tap away: pinned to the foot of the screen while the card runs past it, over a band of the
-     card's own paper so the board slides under it cleanly. Sticky keeps its place in the flow, so nothing moves. */
-  .lab-game .lab-result-next { position: sticky; bottom: 0; z-index: 5; margin: 24px calc(-1 * clamp(16px, 3vw, 32px)) 0; padding: 12px clamp(16px, 3vw, 32px) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
   .lab-game .lab-result-next .lab-btn { width: 100%; }
 }
 

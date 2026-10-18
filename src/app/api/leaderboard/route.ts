@@ -19,7 +19,6 @@ const SUBMISSION_UNAVAILABLE = 'The leaderboard is being updated. Please try aga
 const SCORES_PER_MINUTE = 5;
 const allowScore = fixedWindowLimiter({ limit: SCORES_PER_MINUTE, windowMs: 60_000, maxKeys: 5_000 });
 
-/** Board positions are public in the repo, so a script could post a perfect row; no person rebuilds a piece faster than this. */
 const SECONDS_PER_PIECE = 0.25;
 
 const BOARD_PIECES = Object.fromEntries(GAME_CONFIG_RULES.presets.map(({ id, pieceCount }) => [id, pieceCount])) as Record<LeaderboardDifficulty, number>;

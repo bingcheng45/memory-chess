@@ -43,8 +43,6 @@ function fencesIn(markdown: string): readonly Fence[] {
   }));
 }
 
-// A sql fence counts as a check only when a text fence with its answer follows.
-// The old-rows query at the end of step 4 has no printed answer.
 function checksIn(heading: string): readonly Check[] {
   const fences = fencesIn(sectionOf(heading));
   return fences.flatMap((fence, index) => {

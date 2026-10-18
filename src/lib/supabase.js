@@ -30,7 +30,6 @@ const leaderboardServiceClient =
     : null;
 let warnedAnonLeaderboardWriter = false;
 
-// Migration 0006 takes every write on leaderboard_entries away from the anon key; until the service key is set the anon writer keeps scores working.
 export function leaderboardWriter() {
   if (leaderboardServiceClient || !supabaseWriter) return leaderboardServiceClient;
   if (!warnedAnonLeaderboardWriter) {

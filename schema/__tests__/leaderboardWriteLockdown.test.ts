@@ -10,9 +10,7 @@ const CHECK_VIOLATION = "23514";
 const WEB_ROLES = ["anon", "authenticated"] as const;
 const UTC_TODAY = "(now() AT TIME ZONE 'UTC')::date";
 
-// convalidated is left out: production holds the 0006 checks NOT VALID, and a
-// table rebuilt from the schema file holds them plain. MAINTAIN is left out
-// because PostgreSQL 17 added it and production runs 15.
+// MAINTAIN is left out because PostgreSQL 17 added it and production runs 15.
 const FINGERPRINT = `
   SELECT jsonb_build_object(
     'columns', (

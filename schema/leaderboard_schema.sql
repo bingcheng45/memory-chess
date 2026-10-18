@@ -84,8 +84,6 @@ ALTER TABLE leaderboard_entries
   ADD CONSTRAINT check_memorize_time_longest
   CHECK (memorize_time <= 60);
 
--- An insert could send its own created_at, NULL included, which would bypass
--- check_daily_day_recent. A daily row always takes the database's clock.
 CREATE FUNCTION leaderboard_daily_created_at() RETURNS trigger
 LANGUAGE plpgsql
 SET search_path = ''
@@ -120,9 +118,9 @@ CREATE INDEX idx_leaderboard_daily_ranking ON leaderboard_entries (
   solution_time ASC
 ) WHERE difficulty = 'daily';
 
--- Anyone may read the board. Only the server writes it, with the service_role
--- key, which bypasses row level security. Row level security does not gate
--- TRUNCATE, so the grants carry the rule.
+-- Only the server writes the table, with the service_role key, which
+-- bypasses row level security. Row level security does not gate TRUNCATE,
+-- so the grants carry the rule.
 ALTER TABLE leaderboard_entries ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY "Allow public read"

@@ -6,11 +6,8 @@ const readSql = (file: string) => readFileSync(path.join(__dirname, "..", file),
 
 export const MIGRATION = readSql("migrations/0006_leaderboard_write_lockdown.sql");
 export const ROLLBACK = readSql("migrations/0006_leaderboard_write_lockdown_rollback.sql");
-// PGlite has no uuid-ossp. The default is never part of what the tests compare.
 export const SNAPSHOT = readSql("leaderboard_schema.sql").replace("uuid_generate_v4()", "gen_random_uuid()");
 
-// A Supabase project has these roles and hands them every privilege on a new
-// table in public. service_role is the key the server writes with.
 const SUPABASE_SHIM = `
   CREATE ROLE anon NOLOGIN;
   CREATE ROLE authenticated NOLOGIN;
@@ -19,7 +16,6 @@ const SUPABASE_SHIM = `
   ALTER DEFAULT PRIVILEGES IN SCHEMA public GRANT ALL ON TABLES TO anon, authenticated, service_role;
 `;
 
-// leaderboard_entries as schema/leaderboard_schema.sql described it after 0004.
 export const TABLE_BEFORE_0006 = `
   CREATE TABLE leaderboard_entries (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -78,9 +74,8 @@ export const TABLE_BEFORE_0006 = `
   ) WHERE difficulty = 'daily';
 `;
 
-// The policies and grants production held on 2026-10-18. The seven table
-// privileges are named because PostgreSQL 17 and later add MAINTAIN to ALL,
-// and production runs 15.
+// The seven table privileges are named because PostgreSQL 17 and later add
+// MAINTAIN to ALL, and production runs 15.
 const PRODUCTION_BEFORE_0006 = `
   ${TABLE_BEFORE_0006}
   ALTER TABLE leaderboard_entries ENABLE ROW LEVEL SECURITY;

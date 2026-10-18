@@ -333,8 +333,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     );
   const showLeaderboardQualifier = ranks && !submitSuccess;
   const ratingNote = ratingNoteOf(gameState.rating, t);
-  // A daily or review board was not sized by the player, and a review's accuracy on a seen board misreads their level.
-  const next = gameState.board === undefined && nextBoardOf({ pieceCount: gameState.pieceCount, memorizeSeconds: gameState.memorizeTime }, accuracy);
+  const isPlayerSizedBoard = gameState.board === undefined;
+  const next = isPlayerSizedBoard && nextBoardOf({ pieceCount: gameState.pieceCount, memorizeSeconds: gameState.memorizeTime }, accuracy);
   const playNext = ({ pieceCount, memorizeSeconds }: BoardSize) => {
     trackEvent({ name: "lab_panel_action", params: { panel: "resultCard", action: "next_round" } });
     onPlay(pieceCount, memorizeSeconds, "result_next");

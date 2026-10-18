@@ -28,8 +28,6 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-palette button { aspect-ratio: auto; height: 44px; max-height: none; }
 .lab-game .lab-cal-actions { margin-top: 8px; }
 .lab-game .lab-cal-main .lab-btn { min-height: 44px; height: 44px; padding: 0 8px; font-size: 15px; line-height: 1.15; white-space: normal; }
-/* On a phone Restart shrinks to its label at the left while Submit keeps its full cell, so the two are far apart. Only
-   the first button's width changes, from its left edge, so the phase change moves nothing on screen. */
 @media (max-width: 639px) {
   .lab-game .lab-cal-main { gap: 16px; }
   .lab-game .lab-cal-main[data-phase="rebuild"] > .lab-btn:first-child { justify-self: start; width: auto; padding: 0 20px; }
@@ -45,8 +43,6 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-result-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 24px; align-items: start; margin-top: 24px; }
 .lab-game .lab-result-board { margin: 0; padding: 16px; }
 .lab-game .lab-result-board figcaption { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: var(--lp-ink); }
-/* The next round stays one tap away: pinned to the foot of the screen while the card runs past it, over a band of the
-   card's own paper so the board slides under it cleanly. Sticky keeps its place in the flow, so nothing moves. */
 .lab-game .lab-result-next { position: sticky; bottom: 0; z-index: 5; margin: 24px calc(-1 * clamp(16px, 3vw, 32px)) 0; padding: 12px clamp(16px, 3vw, 32px) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
 .lab-game .lab-result-next .lab-btn { min-height: 52px; min-width: min(320px, 100%); padding: 0 28px; font-size: 17px; }
 .lab-game .lab-result-next-board { font-weight: 500; opacity: 0.85; font-variant-numeric: tabular-nums; }
@@ -62,7 +58,6 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-result-more-list { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-top: 8px; }
 @media (prefers-reduced-motion: reduce) { .lab-game .lab-result-more-toggle::after { transition: none; } }
 
-/* tomorrow's daily board, under the lab card */
 .lab-game .lab-tomorrow { padding: clamp(16px, 3vw, 24px); }
 .lab-game .lab-tomorrow-h { margin: 0; font: 650 18px/1.3 var(--lp-ui); }
 .lab-game .lab-tomorrow-text { margin: 8px 0 0; font: 400 16px/1.5 var(--lp-body); color: var(--lp-ink-2); }
@@ -97,7 +92,6 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 }
 @media (max-width: 767px) {
   .lab-game .lab-result-grid { grid-template-columns: minmax(0, 1fr); }
-  /* The readout carries the score, so on one column it comes before the board, clear of the pinned Next round bar. */
   .lab-game .lab-result-grid > .lab-result-board { order: 1; }
   .lab-game .lab-result-actions > .lab-btn { flex: 1 1 calc(50% - 6px); }
   .lab-game .lab-result-actions > .lab-result-submit { flex-basis: 100%; }

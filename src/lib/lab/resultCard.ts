@@ -41,7 +41,6 @@ export interface ResultCard {
   readonly vsRecent: VsRecent | null;
   readonly spanChange: SpanChange | null;
   readonly streak: StreakLine;
-  /** The engine's top finding to act on; null when there is none, and on a review, which replays a board the player has seen. */
   readonly next: Insight | null;
 }
 

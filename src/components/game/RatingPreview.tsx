@@ -43,7 +43,6 @@ export default function RatingPreview({ pieceCount, memorizeTime, announceKey, o
         };
   const onSuggested = shown?.suggested.pieceCount === pieceCount && shown.suggested.studySeconds === memorizeTime;
 
-  // A provisional rating moves a lot on every round, so the worst case reads as a threat rather than a guide.
   const showsLoss = shown?.phase !== 'provisional';
   const figures = shown && {
     board: format.number(shown.difficultyRating),

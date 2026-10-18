@@ -63,7 +63,6 @@ export function compareRanking(a: RankingScore, b: RankingScore): number {
   return 0;
 }
 
-/** Whether submitting the score would push the last entry off a full board. An open board keeps every score, so none is at stake. */
 export function pushesOffLast(score: RankingScore, cutoff: BoardCutoff): boolean {
   return cutoff.kind === "full" && compareRanking(score, cutoff.worst) < 0;
 }

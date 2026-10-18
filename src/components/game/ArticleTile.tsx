@@ -84,7 +84,6 @@ function TileHeader({ article }: { article: TileArticle }) {
 
 function ShownTile({ article, round }: { article: TileArticle; round: RoundSize }) {
   const t = useTranslations("articles.tile");
-  // Outside the articles namespace, whose translations are approved per locale and would need a fresh review.
   const tResult = useTranslations("game.result");
   const { startGame } = useGameStore();
   const drillRound = useReaderRound();

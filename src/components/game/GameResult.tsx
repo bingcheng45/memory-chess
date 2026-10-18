@@ -378,7 +378,6 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           </div>
         )}
 
-        {/* On a phone this sticks to the foot of the screen until the player scrolls to it, so the next round is one tap from the score. */}
         <div className="lab-result-next">
           <button type="button" onClick={playNext} className="lab-btn lab-btn-primary">
             {t("nextRound")}

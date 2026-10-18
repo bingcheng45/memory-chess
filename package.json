@@ -26,7 +26,8 @@
     "lab:fit": "node scripts/lab/fit.mjs",
     "lab:header-fit": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/lab/header-fit.mjs",
     "lab:dash-heights": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/lab/dash-heights.mjs",
-    "lab:cls-dashboard": "node scripts/lab/cls-dashboard.mjs"
+    "lab:cls-dashboard": "node scripts/lab/cls-dashboard.mjs",
+    "lab:fallback-widths": "node scripts/lab/fallback-widths.mjs"
   },
   "dependencies": {
     "@databuddy/sdk": "^3.2.1",

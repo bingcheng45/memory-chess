@@ -12,6 +12,8 @@ const openSans = Open_Sans({
   subsets: ["latin", "latin-ext", "cyrillic", "vietnamese"],
   display: "swap",
   preload: false,
+  adjustFontFallback: false,
+  fallback: ["Open Sans Arial"],
 });
 
 /** The class every block drawn in Lab Paper carries: the tokens, the page base and the body face. */

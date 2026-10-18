@@ -2,9 +2,10 @@
 /**
  * Loads the home page cold, on a 4x slower CPU, at eight widths, and records every
  * layout shift on the whole page until it settles, naming the nodes that moved.
- * The Geist Mono files are held for HOLD_MS on every load, so the page always
- * paints in the fallback face first and then swaps; a load where the font was not
- * held, or never loaded after release, fails. Reports CLS as the largest session
+ * Every webfont file the stylesheets declare (Geist, Geist Mono, Open Sans, Noto Sans)
+ * is held for HOLD_MS on every load, so the page always paints in the fallback faces
+ * first and then swaps; a load where no file was held, where a webfont had loaded while
+ * the first file was held, or where Geist Mono never loaded after release, fails. Reports CLS as the largest session
  * window (shifts under 1 s apart, at most 5 s long), the way browsers score it,
  * and the plain sum of every shift as shiftSum. Runs for a new visitor and a 30-day
  * player (whose record loads from storage after first paint), each at the top of /
@@ -14,7 +15,9 @@
  * for a returning player due the record note, scrolled to #record, where the note must appear, and with the tools
  * row centred before the record loads, as a reload that restores the scroll position leaves it, where the note
  * must wait for a later visit,
- * and for the German, Japanese and Russian homes, new and 30-day, where translated copy fills the same reserved boxes.
+ * for the German, Japanese and Russian homes, new and 30-day, where translated copy fills the same reserved boxes,
+ * and for a new visitor's home, /game and /leaderboard in the long-string locales, where a translated line that
+ * wraps differently in the fallback face moves everything under it when the webfont arrives.
  * Fails when either number is over MAX_CLS.
  *
  *   npm run lab:personas && npm run lab:cls -- --base http://localhost:3128 --out <dir> [--only <case>]
@@ -25,7 +28,8 @@ import { pathToFileURL } from "node:url";
 import { argsOf, loadPersona, PERSONA_ENV, runPersona, sized } from "./drive.mjs";
 
 const MAX_CLS = 0.02;
-const WIDTHS = [1440, 1024, 1000, 768, 640, 390, 360, 320];
+const WIDTHS = [1440, 1280, 1024, 1000, 768, 640, 390, 375, 360, 320];
+const LOCALE_WIDTHS = [1280, 1024, 768, 390, 375, 320];
 const CASE_ENV = "LAB_CLS_CASE";
 const RESULT_FILE = "cls.json";
 const HOLD_MS = 1500;
@@ -51,6 +55,11 @@ const CASES = [
   { name: "ja-record", persona: "thirtyDays", path: "/ja#record" },
   { name: "ru", persona: "newVisitor", path: "/ru" },
   { name: "ru-record", persona: "thirtyDays", path: "/ru#record" },
+  ...["de", "fi", "ru", "pt-BR", "pl", "hu", "ja", "zh-CN", "ko", "hi"].flatMap((locale) => [
+    ...(["de", "ja", "ru"].includes(locale) ? [] : [{ name: locale, persona: "newVisitor", path: `/${locale}`, widths: LOCALE_WIDTHS }]),
+    { name: `${locale}-game`, persona: "newVisitor", path: `/${locale}/game`, widths: LOCALE_WIDTHS },
+    { name: `${locale}-leaderboard`, persona: "newVisitor", path: `/${locale}/leaderboard`, widths: LOCALE_WIDTHS },
+  ]),
 ];
 
 // Registered before any page script runs, so shifts during parse and hydration are not missed.
@@ -74,8 +83,21 @@ const MONO_URLS = `[...document.styleSheets]
   .filter((rule) => rule instanceof CSSFontFaceRule && ${MONO_FAMILY}.test(rule.style.getPropertyValue("font-family")))
   .flatMap((rule) => [...rule.style.getPropertyValue("src").matchAll(/url\\("?([^")]+)"?\\)/g)].map(([, url]) => new URL(url, location.href).href))`;
 export const MONO_STATUS = `[...document.fonts].filter((face) => ${MONO_FAMILY}.test(face.family) && !/Local|Fallback/.test(face.family)).map((face) => face.status)`;
+const WEB_URLS = `[...document.styleSheets]
+  .flatMap((sheet) => [...sheet.cssRules])
+  .filter((rule) => rule instanceof CSSFontFaceRule)
+  .flatMap((rule) => [...rule.style.getPropertyValue("src").matchAll(/url\\("?([^")]+)"?\\)/g)].map(([, url]) => new URL(url, location.href).href))`;
+const WEB_LOADED = `[...document.fonts].filter((face) => face.status === "loaded" && !/Local|Fallback|Arial/.test(face.family)).map((face) => face.family)`;
 
 export const round = (value) => Math.round(value * 10000) / 10000;
+
+/** Every webfont file the page's stylesheets declare, read from a page that has loaded them. */
+async function webFontUrls(page, baseUrl) {
+  await page.goto(`${baseUrl}/`);
+  const urls = [...new Set(await page.eval(WEB_URLS))];
+  if (urls.length === 0) throw new Error("no webfont @font-face url in the page's stylesheets");
+  return urls;
+}
 
 /** The Geist Mono webfont files the page's stylesheets declare, read from a page that has loaded them. */
 export async function monoFontUrls(page, baseUrl) {
@@ -110,10 +132,10 @@ ${centre ? `document.addEventListener("DOMContentLoaded", () => document.querySe
 
 export default async function measure(page, { baseUrl, evidenceDir }) {
   const testCase = JSON.parse(process.env[CASE_ENV]);
-  const { path, shows = null, hides = null } = testCase;
+  const { path, shows = null, hides = null, widths = WIDTHS } = testCase;
   await loadPersona(page, baseUrl, process.env[PERSONA_ENV]);
   await sized(page, 1440);
-  const urls = await monoFontUrls(page, baseUrl);
+  const urls = await webFontUrls(page, baseUrl);
   await page.send("Page.addScriptToEvaluateOnNewDocument", { source: OBSERVE });
   await page.send("Page.addScriptToEvaluateOnNewDocument", { source: beforeLoad(testCase) });
   await page.send("Network.enable");
@@ -123,17 +145,17 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
   let held = [];
   page.on((method, params) => {
     if (method !== "Fetch.requestPaused") return;
-    const hold = { url: params.request.url, statusWhileHeld: null };
+    const hold = { url: params.request.url, loadedWhileHeld: null };
     held.push(hold);
     setTimeout(async () => {
-      hold.statusWhileHeld = await page.eval(MONO_STATUS).catch(() => null);
+      hold.loadedWhileHeld = await page.eval(WEB_LOADED).catch(() => null);
       await page.send("Fetch.continueRequest", { requestId: params.requestId });
     }, HOLD_MS);
   });
   await page.send("Fetch.enable", { patterns: urls.map((urlPattern) => ({ urlPattern, requestStage: "Request" })) });
 
   const result = {};
-  for (const width of WIDTHS) {
+  for (const width of widths) {
     await sized(page, width, width < 600 ? 844 : 900);
     await page.goto("about:blank");
     held = [];
@@ -143,22 +165,22 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     const statusAfter = await page.eval(MONO_STATUS);
     if (shows && !(await page.eval(`!!document.querySelector(${JSON.stringify(shows)})`))) throw new Error(`at ${width}: ${shows} never appeared`);
     if (hides && (await page.eval(`!!document.querySelector(${JSON.stringify(hides)})`))) throw new Error(`at ${width}: ${hides} appeared`);
-    if (held.length === 0) throw new Error(`at ${width}: no Geist Mono request was held, so the fallback face may never have painted`);
+    if (held.length === 0) throw new Error(`at ${width}: no webfont request was held, so the fallback faces may never have painted`);
     // A page with Cyrillic text asks for a second subset file after the Latin one, so only the first hold proves the fallback painted first.
-    if (held[0].statusWhileHeld?.includes("loaded")) throw new Error(`at ${width}: Geist Mono was already loaded while its file was held`);
+    if (held[0].loadedWhileHeld?.length) throw new Error(`at ${width}: ${held[0].loadedWhileHeld.join(", ")} had already loaded while the first file was held`);
     if (!statusAfter.includes("loaded")) throw new Error(`at ${width}: Geist Mono did not load after release, status ${JSON.stringify(statusAfter)}`);
     result[width] = {
       cls: round(sessionWindowCls(shifts)),
       shiftSum: round(shifts.reduce((sum, shift) => sum + shift.value, 0)),
-      held: held.map(({ url, statusWhileHeld }) => ({ file: url.split("/").at(-1), statusWhileHeld })),
+      held: held.map(({ url, loadedWhileHeld }) => ({ file: url.split("/").at(-1), loadedWhileHeld })),
       statusAfter,
       shifts: shifts.map((shift) => ({ ...shift, value: round(shift.value) })),
     };
   }
   writeFileSync(join(evidenceDir, RESULT_FILE), JSON.stringify(result, null, 2));
-  const over = WIDTHS.filter((width) => result[width].cls > MAX_CLS || result[width].shiftSum > MAX_CLS);
+  const over = widths.filter((width) => result[width].cls > MAX_CLS || result[width].shiftSum > MAX_CLS);
   if (over.length > 0) throw new Error(`CLS or shiftSum over ${MAX_CLS} at ${over.map((width) => `${width}: ${result[width].cls} / ${result[width].shiftSum}`).join(", ")}`);
-  return Object.fromEntries(WIDTHS.map((width) => [width, { cls: result[width].cls, shiftSum: result[width].shiftSum }]));
+  return Object.fromEntries(widths.map((width) => [width, { cls: result[width].cls, shiftSum: result[width].shiftSum }]));
 }
 
 async function main() {

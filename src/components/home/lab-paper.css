@@ -118,6 +118,7 @@
 @media (max-width: 767px) {
   .lab-sec { padding: 64px 0; }
   .lab-hero { padding: 32px 0 64px; }
+  .lab-eyebrow > span:last-child { flex-basis: 100%; }
   .lab-display { font-size: 40px; line-height: 1.08; }
   .lab-paper h2 { font-size: 30px; }
   .lab-sec-h { margin-bottom: 32px; }

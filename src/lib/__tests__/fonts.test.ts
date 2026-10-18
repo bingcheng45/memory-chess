@@ -4,7 +4,7 @@ import capsize from "next/dist/server/capsize-font-metrics.json";
 
 jest.mock("next/font/google", () => {
   const loader = () => jest.fn(() => ({ className: "font", variable: "font-variable", style: { fontFamily: "font" } }));
-  return { Geist: loader(), Geist_Mono: loader(), Noto_Sans: loader(), Noto_Sans_Devanagari: loader() };
+  return { Geist: loader(), Geist_Mono: loader(), Noto_Sans: loader(), Noto_Sans_Devanagari: loader(), Open_Sans: loader() };
 });
 
 // Menlo, the macOS and iOS face the fallback resolves to, is not in next's capsize data. Its regular and bold
@@ -50,6 +50,35 @@ describe("Geist Mono fallback", () => {
         src: 'local("Menlo Bold"), local("Courier New Bold"), local("DejaVu Sans Mono Bold"), local("Liberation Mono Bold")',
         ...METRICS,
       },
+    ]);
+  });
+});
+
+describe("text webfont fallbacks", () => {
+  it("paint Geist, Noto Sans and Open Sans in globals.css faces that cover every weight, in Arial Bold from 550", async () => {
+    const google = await import("next/font/google");
+    await import("../fonts");
+    await import("@/components/lab-paper/shell");
+    const css = readFileSync(join(process.cwd(), "src/app/globals.css"), "utf8");
+    const calls = ["Geist", "Noto_Sans", "Open_Sans"].flatMap((loader) =>
+      (google[loader as keyof typeof google] as unknown as jest.Mock).mock.calls.map(([options]) => options),
+    );
+    const coverage = calls.map(({ adjustFontFallback, fallback }) => {
+      const faces = fontFaces(css).filter((declared) => declared["font-family"] === `"${fallback[0]}"`);
+      return {
+        adjustFontFallback,
+        family: fallback[0],
+        weights: faces.map((declared) => declared["font-weight"]),
+        bold: faces.filter((declared) => Number(declared["font-weight"].split(" ")[0]) >= 550).every((declared) => /Bold/.test(declared.src)),
+        regular: faces.filter((declared) => Number(declared["font-weight"].split(" ")[0]) < 550).every((declared) => !/Bold/.test(declared.src)),
+      };
+    });
+
+    expect(coverage).toEqual([
+      { adjustFontFallback: false, family: "Geist Arial", weights: ["100 449", "450 549", "550 624", "625 674", "675 900"], bold: true, regular: true },
+      { adjustFontFallback: false, family: "Noto Sans Arial", weights: ["100 449", "450 549", "550 624", "625 674", "675 900"], bold: true, regular: true },
+      { adjustFontFallback: false, family: "Noto Sans Arial", weights: ["100 449", "450 549", "550 624", "625 674", "675 900"], bold: true, regular: true },
+      { adjustFontFallback: false, family: "Open Sans Arial", weights: ["100 549", "550 900"], bold: true, regular: true },
     ]);
   });
 });

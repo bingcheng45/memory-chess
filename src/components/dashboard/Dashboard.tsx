@@ -52,11 +52,7 @@ function useIdleAfter(ready: boolean): boolean {
   return idle;
 }
 
-/**
- * Most tiles are drawn only once the record is read, after the browser has already looked for the address's fragment, so
- * a Learn link to one of them is opened here instead.
- */
-function useOpenFragmentWhen(ready: boolean) {
+function useScrollToLateFragment(ready: boolean) {
   const missedAtFirstPaint = useRef(false);
   useEffect(() => {
     missedAtFirstPaint.current = document.getElementById(window.location.hash.slice(1)) === null;
@@ -94,7 +90,7 @@ export function Dashboard() {
   const results = useLabResults({ ...data, plan: loaded ? storedPlan : null, target: loaded ? storedTarget : null });
   const { standing, rated } = useGameStanding(loaded);
   const later = useIdleAfter(loaded);
-  useOpenFragmentWhen(loaded);
+  useScrollToLateFragment(loaded);
 
   const tiles = useMemo(
     () =>

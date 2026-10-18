@@ -7,8 +7,8 @@
  * config, memorize, solve or result. Two loads per width: /game, where the
  * start button opens a round, and the home page's round link, which memorizes
  * until the clock runs out (no Done, so the switch to solving is not an input),
- * places 4 of 6 pieces and submits. The leaderboard cutoffs answer "open" for
- * every board, so the round qualifies and the result screen shows its banner.
+ * places 4 of 6 pieces and submits. The leaderboard cutoffs answer every board full
+ * of scores any round beats, so the round ranks and the result screen shows its banner.
  * They answer when asked, as they do in the field, where the round warms them;
  * with --late-cutoffs they arrive LATE_CUTOFFS_MS after the result screen does,
  * as on a network slower than the whole round. Plays counter and leaderboard
@@ -50,11 +50,10 @@ const START_SETTLE_MS = 3000;
 const LATE_CUTOFFS_MS = 1000;
 const CORRECT_PIECES = 4;
 const ROUND_PATH = "/game?pieceCount=6&memorizeTime=10&source=home_quick";
-const CASES = [
-  { name: "en", prefix: "" },
-  { name: "de", prefix: "/de" },
-];
-const SCREENS = ["config", "start", "memorize", "solve", "result"];
+const LOCALES = ["en", "de", "fi", "ru", "pt-BR", "pl", "hu", "ja", "zh-CN", "ko", "hi"];
+const CASES = LOCALES.map((name) => ({ name, prefix: name === "en" ? "" : `/${name}` }));
+const SCREENS = ["config", "start", "intro", "memorize", "solve", "result"];
+const GATE_START = ".round-gate-card button";
 const BOARD_FIT = `(() => {
   const board = document.querySelector("[data-round-board]");
   const area = board.parentElement;
@@ -66,13 +65,15 @@ const BOARD_FIT = `(() => {
   scroller.scrollTop = 0;
   return { board: Math.round(board.getBoundingClientRect().width), areaWidth: area.clientWidth, areaHeight: area.clientHeight, scrolled };
 })()`;
-const OPEN_CUTOFFS = { easy: { kind: "open" }, medium: { kind: "open" }, hard: { kind: "open" }, grandmaster: { kind: "open" } };
+const FULL_BOARD = { kind: "full", worst: { correctPieces: 0, totalWrongPieces: 99, memorizeTime: 999, solutionTime: 9999 } };
+const FULL_CUTOFFS = { easy: FULL_BOARD, medium: FULL_BOARD, hard: FULL_BOARD, grandmaster: FULL_BOARD };
 
 // Registered before any page script runs. The screen is read when the entry is delivered, right after the frame that shifted.
 const OBSERVE = `window.__shifts = [];
 new PerformanceObserver((list) => {
   const screen = document.getElementById("game-result-heading") ? "result"
     : document.querySelector("[data-game-config]") ? "config"
+    : document.querySelector(".round-gate") ? "intro"
     : document.querySelector('[data-round-phase="rebuild"]') ? "solve" : "memorize";
   const name = (node) => {
     const element = node && (node.nodeType === 1 ? node : node.parentElement);
@@ -113,7 +114,7 @@ async function clickSelector(page, selector) {
   await page.click(selector);
 }
 
-/** Answers the cutoffs with every board open, after `release` resolves; answers counter and leaderboard writes locally. */
+/** Answers the cutoffs with every board full of scores any round beats, after `release` resolves; answers counter and leaderboard writes locally. */
 async function stubNetwork(page, release) {
   page.on((method, params) => {
     if (method !== "Fetch.requestPaused") return;
@@ -124,7 +125,7 @@ async function stubNetwork(page, release) {
         responseHeaders: [{ name: "Content-Type", value: "application/json" }],
         body: Buffer.from(JSON.stringify(data)).toString("base64"),
       });
-    if (params.request.url.includes("/api/leaderboard/cutoffs")) release().then(() => respond({ data: OPEN_CUTOFFS }));
+    if (params.request.url.includes("/api/leaderboard/cutoffs")) release().then(() => respond({ data: FULL_CUTOFFS }));
     else if (params.request.method === "POST") respond({ success: true, data: { value: 1 } });
     else page.send("Fetch.continueRequest", { requestId: params.requestId });
   });
@@ -144,6 +145,12 @@ const fitError = ({ board, areaWidth, areaHeight }) =>
 async function playRound(page, base, prefix, text) {
   await page.goto(`${base}${prefix}${ROUND_PATH}`);
   await page.waitFor(`document.querySelectorAll("[data-coordinate]").length === 64`, 20_000);
+  const intro = await page.eval(`!!document.querySelector(${JSON.stringify(GATE_START)})`);
+  if (intro) {
+    await page.waitFor(`!document.querySelector(${JSON.stringify(GATE_START)})?.disabled`, 10_000);
+    await page.click(GATE_START);
+    await page.waitFor(`!document.querySelector(".round-gate")`, 10_000);
+  }
   const memorizeFit = await page.eval(BOARD_FIT);
   const cells = await page.eval(`[...document.querySelectorAll("[data-coordinate]")].map((el) => ({ square: el.dataset.coordinate, label: el.getAttribute("aria-label") || "" }))`);
   const pieces = cells.filter((p) => p.label !== text.empty(p.square));
@@ -159,7 +166,7 @@ async function playRound(page, base, prefix, text) {
   }
   await page.clickText("button", text.submit);
   await page.waitFor(`!!document.getElementById("game-result-heading")`, 20_000);
-  return { pieces: pieces.length, fit: { memorize: memorizeFit, solve: solveFit } };
+  return { pieces: pieces.length, intro, fit: { memorize: memorizeFit, solve: solveFit } };
 }
 
 async function freshBoard(page, url, size) {
@@ -213,7 +220,7 @@ async function measureViewport(page, base, { prefix, lateCutoffs }, text, { widt
   let resultShown;
   const shown = new Promise((resolve) => (resultShown = resolve));
   if (lateCutoffs) cutoffs.release = () => shown.then(() => page.sleep(LATE_CUTOFFS_MS));
-  const { pieces, fit } = await playRound(page, base, prefix, text);
+  const { pieces, intro, fit } = await playRound(page, base, prefix, text);
   resultShown();
   await page.sleep(SETTLE_MS);
   const roundShifts = await page.eval("window.__shifts");
@@ -223,7 +230,7 @@ async function measureViewport(page, base, { prefix, lateCutoffs }, text, { widt
 
   const resize = width === RESIZE_FROM.width && height === RESIZE_FROM.height ? await resizeMidRound(page, base, prefix) : null;
 
-  return { width, height, pieces, banner, labCard, overflow, fit, resize, screens: screensOf([...start, ...roundShifts]) };
+  return { width, height, pieces, intro, banner, labCard, overflow, fit, resize, screens: screensOf([...start, ...roundShifts]) };
 }
 
 function boardErrors({ width, height, fit, resize }) {
@@ -253,6 +260,7 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
   const result = await measureViewport(page, baseUrl, testCase, labels(testCase.prefix.slice(1) || "en"), size, cutoffs);
   writeFileSync(join(evidenceDir, RESULT_FILE), JSON.stringify(result, null, 2));
   if (!result.banner) throw new Error("the qualifying banner never showed, so its arrival was not measured");
+  if (!result.intro) throw new Error("the first round's intro never showed, so its screen was not measured");
   if (testCase.lateCutoffs) return clsByScreen(result);
   const misfit = boardErrors(result);
   if (misfit.length > 0) throw new Error(`board does not fit its area: ${misfit.join("; ")}`);

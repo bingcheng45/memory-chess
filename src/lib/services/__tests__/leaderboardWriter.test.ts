@@ -1,5 +1,11 @@
 /** @jest-environment node */
 
+import { parseCountryCode } from "@/lib/leaderboard/countries";
+import type { LeaderboardSubmission } from "@/types/leaderboard";
+
+const SINGAPORE = parseCountryCode("SG");
+if (SINGAPORE === null) throw new Error("SG is not a known country code");
+
 const inserts: string[] = [];
 
 jest.mock("@supabase/supabase-js", () => ({
@@ -13,9 +19,9 @@ jest.mock("@supabase/supabase-js", () => ({
   }),
 }));
 
-const entry = {
+const entry: LeaderboardSubmission = {
   player_name: "Poteto",
-  country_code: "SG",
+  country_code: SINGAPORE,
   difficulty: "medium",
   piece_count: 6,
   correct_pieces: 4,
@@ -37,7 +43,7 @@ async function submitTwice(env: { serviceKey?: string; readOnly?: boolean }) {
   await jest.isolateModulesAsync(async () => {
     leaderboard = await import("@/lib/services/leaderboardService");
   });
-  return [await leaderboard.submitLeaderboardEntry(entry as never), await leaderboard.submitLeaderboardEntry(entry as never)];
+  return [await leaderboard.submitLeaderboardEntry(entry), await leaderboard.submitLeaderboardEntry(entry)];
 }
 
 let warn: jest.SpyInstance;

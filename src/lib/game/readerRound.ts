@@ -20,7 +20,6 @@ function playerOf(stored: string | null): PlayerRating | null {
   }
 }
 
-/** The round a reader is offered from the game's saved rating: the game's own suggestion, or a beginner's round before any rated round. */
 export function readerRoundOf(stored: string | null): GameSettings {
   const player = playerOf(stored);
   if (!player) return BEGINNER_ROUND;

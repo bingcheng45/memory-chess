@@ -19,7 +19,6 @@ function readStored(): string | null {
 
 const serverStored = () => null;
 
-/** The round sized to this reader. The served HTML and the hydration render offer a beginner's round, since the rating lives in localStorage. */
 export function useReaderRound(): GameSettings {
   const stored = useSyncExternalStore(subscribe, readStored, serverStored);
   return useMemo(() => readerRoundOf(stored), [stored]);

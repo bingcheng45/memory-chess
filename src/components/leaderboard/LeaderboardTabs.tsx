@@ -8,6 +8,7 @@ import { DailyResetNote } from '@/components/leaderboard/DailyResetNote';
 import { CommunityInvite } from '@/components/community/CommunityLink';
 import { useDailyState } from '@/hooks/useDailyState';
 import { Link } from '@/i18n/navigation';
+import { readDailyEntry } from '@/lib/lab/entries';
 import { RANKED_DIFFICULTIES, type RankedDifficulty } from '@/lib/reference/facts';
 import { DAILY_BOARD, type LeaderboardEntry } from '@/types/leaderboard';
 
@@ -121,7 +122,9 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
     if (!isRefreshing) return;
     const controller = new AbortController();
     const board = dailyDay === null ? `difficulty=${activeTab}` : `difficulty=${DAILY_BOARD}&daily_day=${dailyDay}`;
-    const query = isJustSubmitted ? `${board}&after=${Date.now()}` : board;
+    const joinedId = dailyDay === null ? null : (readDailyEntry(dailyDay)?.id ?? null);
+    const after = isJustSubmitted ? Date.now() : joinedId;
+    const query = after === null ? board : `${board}&after=${after}`;
     const settle = (read: Board) => {
       if (controller.signal.aborted) return;
       setReads((current) => {

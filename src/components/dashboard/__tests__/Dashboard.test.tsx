@@ -1,10 +1,15 @@
 import { act, fireEvent, waitFor } from "@testing-library/react";
+import { renderToString } from "react-dom/server";
+import { NextIntlClientProvider } from "next-intl";
 import { renderWithIntl, screen, within } from "@/test-utils/intl";
+import messages from "../../../../messages/en.json";
 import { Dashboard } from "@/components/dashboard/Dashboard";
 import type { LabData } from "@/hooks/useLabData";
 import { persona } from "@/test-utils/labPersona";
 import type { PersonaName } from "@/lib/lab/personas";
 
+// jsdom resolves the browser build, which needs MessageChannel.
+jest.mock("react-dom/server", () => jest.requireActual("react-dom/server.node"));
 jest.mock("@/lib/analytics/events", () => ({ ...jest.requireActual("@/lib/analytics/events"), trackEvent: jest.fn() }));
 jest.mock("@/components/dashboard/shareImage", () => ({ drawShareCard: () => Promise.resolve(new Blob(["png"], { type: "image/png" })) }));
 
@@ -25,6 +30,12 @@ const historyRows = () => waitFor(() => {
   expect(rows.length).toBeGreaterThan(0);
   return [...rows];
 });
+
+const frames = (count: number) =>
+  act(() => new Promise<void>((done) => {
+    const step = (left: number) => (left === 0 ? done() : requestAnimationFrame(() => step(left - 1)));
+    step(count);
+  }));
 
 beforeEach(() => window.localStorage.clear());
 
@@ -160,7 +171,7 @@ describe("Dashboard", () => {
       ["a wheel turn", () => fireEvent.wheel(window), []],
       ["a key press", () => fireEvent.keyDown(window, { key: "PageDown" }), []],
       ["a touch", () => fireEvent.touchStart(window), []],
-    ])("is scrolled to once the sections below it are in place, after %s from the player while the record loads", async (_, input, expected) => {
+    ])("after %s from the player while the record loads, is scrolled to once the sections below it are in place only if there was no input", async (_, input, expected) => {
       labData = { ...persona("thirtyDays"), storage: "loading", records: [], today: "" };
       const { rerender } = renderWithIntl(<Dashboard />);
       expect(document.getElementById("tile-days")).toBeNull();
@@ -169,8 +180,36 @@ describe("Dashboard", () => {
       labData = persona("thirtyDays");
       rerender(<Dashboard />);
       expect(await historyRows()).toHaveLength(20);
-      await waitFor(() => expect(scrolled).toEqual(expected));
+      await frames(3);
+      expect(scrolled).toEqual(expected);
       expect(tileText("days")).toBe("Days played30 daysSince Sep 9, 2026");
+    }, 15_000);
+
+    it.each([
+      ["nothing", () => undefined, [{ id: "tile-days", historyRows: 20, analysis: true }]],
+      ["a wheel turn", () => fireEvent.wheel(window), []],
+      ["a key press", () => fireEvent.keyDown(window, { key: "PageDown" }), []],
+    ])("after %s from the player before the server-drawn page hydrated, is scrolled to only if there was no input", async (_, input, expected) => {
+      labData = { ...persona("thirtyDays"), storage: "loading", records: [], today: "" };
+      const container = document.body.appendChild(document.createElement("div"));
+      container.innerHTML = renderToString(
+        <NextIntlClientProvider locale="en" messages={messages}>
+          <Dashboard />
+        </NextIntlClientProvider>,
+      );
+      for (const inert of container.querySelectorAll("script")) {
+        const parsed = document.createElement("script");
+        parsed.textContent = inert.textContent;
+        inert.replaceWith(parsed);
+      }
+      input();
+
+      const { rerender } = renderWithIntl(<Dashboard />, { container, hydrate: true });
+      labData = persona("thirtyDays");
+      rerender(<Dashboard />);
+      expect(await historyRows()).toHaveLength(20);
+      await frames(3);
+      expect(scrolled).toEqual(expected);
     }, 15_000);
   });
 

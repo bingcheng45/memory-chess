@@ -39,6 +39,7 @@ const loadLate = () =>
 
 type Late = Awaited<ReturnType<typeof loadLate>>;
 
+/** Not "scroll": the router fires one when a client navigation lands on a fragment it cannot find yet. */
 const USER_INPUTS = ["wheel", "touchstart", "keydown"] as const;
 
 function whenIdle(run: () => void): () => void {
@@ -50,12 +51,6 @@ function whenIdle(run: () => void): () => void {
   return () => window.cancelIdleCallback(handle);
 }
 
-/**
- * Without a fragment, the sections below the summary wait for an idle moment, so they render in a task of their own
- * instead of lengthening the one that draws what the player sees first. A fragment the first paint could not draw (a
- * Learn link to a tile) is scrolled to only once they are in place: scrolled earlier, they would fill in under the
- * player's eyes. Scroll events are not counted as the player's own, since the router fires one when it lands.
- */
 function useLate(ready: boolean): Late | null {
   const [late, setLate] = useState<Late | null>(null);
   const fragment = useRef<string | null>(null);

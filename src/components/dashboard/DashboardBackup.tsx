@@ -13,7 +13,6 @@ const capSeen = choiceStore<number>(CAP_NOTICE_KEY, parseStoredTime);
 
 type BackupRecord = Pick<LabRecord, "records" | "summary" | "lastBackup" | "download">;
 
-/** `persisted` is navigator.storage.persisted()'s answer, or null where the browser cannot say. */
 function BackupCard({ record, persisted }: { record: BackupRecord; persisted: boolean | null }) {
   const t = useTranslations("dashboard.backup");
   const format = useFormatter();

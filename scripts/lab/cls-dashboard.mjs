@@ -3,12 +3,10 @@
  * Loads /dashboard on a 4x slower CPU, so the record arrives from IndexedDB after the first paint, and records every
  * layout shift until the page settles, naming each node that moved with its box before and after. Fonts are left out:
  * each width loads once to warm the cache, and only the second load is measured. Runs for a new visitor and the
- * twoRounds, thirtyDays, stale and heavy players, in English and Russian, at WIDTHS. It also opens each tile a Learn page
- * links to, for a new visitor and the heavy player, on two phones and a desktop, FRAGMENT_LOADS times each: the page
- * scrolls to the tile, so the sections below it are in view while they fill in, and whether a shift lands depends on
- * timing. Reports CLS as the largest session window (sessionWindowCls in cls.mjs), the worst load per view, and fails
- * when it is over MAX_CLS, or when a fragment's tile has not been brought into the top half of the view. The writes a page could send are refused, since the local server talks to the production
- * database.
+ * twoRounds, thirtyDays, stale and heavy players, in English and Russian, at WIDTHS, and for each tile a Learn page links
+ * to. A fragment load is repeated because whether its shift lands depends on timing. Reports CLS as the largest session
+ * window (sessionWindowCls in cls.mjs), the worst load per view, and fails when it is over MAX_CLS or when a fragment's
+ * tile is not in the top half of the view.
  *
  *   npm run lab:personas && npm run lab:cls-dashboard -- --base http://localhost:4531 --out <dir> [--only <case>]
  */
@@ -24,7 +22,7 @@ const VIEWS = WIDTHS.map((width) => [width, width < 600 ? 844 : 900]);
 const FRAGMENT_VIEWS = [[1440, 900], [375, 812], [375, 844]];
 const FRAGMENT_LOADS = 2;
 const LEARN_TILES = ["span", "recentAccuracy", "days"];
-const WRITES = ["*/api/game-stats*", "*/api/leaderboard*", "*/api/feedback*", "*/api/contact*", "*/api/articles/*"];
+const PRODUCTION_WRITES = ["*/api/game-stats*", "*/api/leaderboard*", "*/api/feedback*", "*/api/contact*", "*/api/articles/*"];
 const SETTLE_MS = 4000;
 const CASE_ENV = "LAB_CLS_DASHBOARD_CASE";
 const RESULT_FILE = "cls.json";
@@ -60,7 +58,7 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
   const { path, views, loads } = JSON.parse(process.env[CASE_ENV]);
   const fragment = path.split("#")[1] ?? null;
   const misplaced = [];
-  await blockAds(page, WRITES);
+  await blockAds(page, PRODUCTION_WRITES);
   await loadPersona(page, baseUrl, process.env[PERSONA_ENV]);
   await page.send("Page.addScriptToEvaluateOnNewDocument", { source: OBSERVE });
   await page.send("Emulation.setCPUThrottlingRate", { rate: 4 });

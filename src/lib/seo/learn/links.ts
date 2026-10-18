@@ -12,7 +12,6 @@ export const DAILY_PATH = "/daily";
 
 export const guideRoundHref = ({ pieceCount, memorizeTime }: GameSetup) => playHref(pieceCount, memorizeTime, "guide_cta");
 
-/** The dashboard tile a stat call to action opens. */
 export const dashboardTileHref = (tile: DashboardTileId) => `/dashboard#${tileAnchor(tile)}`;
 
 export function ctaHref(target: CtaTarget): string {

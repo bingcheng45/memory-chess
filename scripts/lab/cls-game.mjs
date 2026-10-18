@@ -148,6 +148,8 @@ async function playRound(page, base, prefix, text) {
   const intro = await page.eval(`!!document.querySelector(${JSON.stringify(GATE_START)})`);
   if (intro) {
     await page.waitFor(`!document.querySelector(${JSON.stringify(GATE_START)})?.disabled`, 10_000);
+    await page.eval("document.fonts.ready.then(() => true)");
+    await page.sleep(SETTLE_MS);
     await page.click(GATE_START);
     await page.waitFor(`!document.querySelector(".round-gate")`, 10_000);
   }

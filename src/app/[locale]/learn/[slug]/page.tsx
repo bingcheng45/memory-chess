@@ -13,14 +13,10 @@ type LearnGuideRouteProps = {
   }>;
 };
 
-export function generateStaticParams({
-  params,
-}: {
-  params: { locale: string };
-}) {
-  return params.locale === DEFAULT_LOCALE
-    ? LEARN_SLUGS.map((slug) => ({ slug }))
-    : [];
+// Next 15.5 prerenders nothing for this route if any locale gets an empty
+// list, so every locale returns the English params and Next dedupes them.
+export function generateStaticParams() {
+  return LEARN_SLUGS.map((slug) => ({ locale: DEFAULT_LOCALE, slug }));
 }
 
 const titleOf = (slug: string, entries: readonly { slug: string; title: string }[]) => {

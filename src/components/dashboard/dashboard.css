@@ -35,16 +35,13 @@
 /* Today's tiles are the only ones drawn before the record is read, so they reserve the tallest row a record draws at
    each width, measured by `npm run lab:dash-heights`, and the summary under them mounts without moving them. Rerun it
    after a copy or layout change. */
-.lab-paper { --lab-h-dash-today: 160px; }
-@media (max-width: 1023px) { .lab-paper { --lab-h-dash-today: 168px; } }
+.lab-paper { --lab-h-dash-today: 144px; }
 @media (max-width: 767px) { .lab-paper { --lab-h-dash-today: 152px; } }
 @media (max-width: 479px) { .lab-paper { --lab-h-dash-today: 192px; } }
-@media (max-width: 359px) { .lab-paper { --lab-h-dash-today: 192px; } }
-.lab-paper:not(:lang(en)) { --lab-h-dash-today: 168px; }
-@media (max-width: 1023px) { .lab-paper:not(:lang(en)) { --lab-h-dash-today: 208px; } }
+.lab-paper:not(:lang(en)) { --lab-h-dash-today: 144px; }
 @media (max-width: 767px) { .lab-paper:not(:lang(en)) { --lab-h-dash-today: 192px; } }
-@media (max-width: 479px) { .lab-paper:not(:lang(en)) { --lab-h-dash-today: 224px; } }
-@media (max-width: 359px) { .lab-paper:not(:lang(en)) { --lab-h-dash-today: 248px; } }
+@media (max-width: 479px) { .lab-paper:not(:lang(en)) { --lab-h-dash-today: 200px; } }
+@media (max-width: 359px) { .lab-paper:not(:lang(en)) { --lab-h-dash-today: 224px; } }
 .lab-paper .lab-tiles[data-size="today"] .lab-tile { min-height: var(--lab-h-dash-today); }
 /* Holds the rest of the screen until the record is read, so nothing drawn below it is in view when the summary arrives. */
 .lab-paper .lab-dash-summary-pending { min-height: 100vh; }

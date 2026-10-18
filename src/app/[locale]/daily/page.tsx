@@ -6,7 +6,7 @@ import { DailyReference } from "@/components/daily/DailyReference";
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import { WEBSITE_ID } from "@/lib/seo/brand";
 import { readDailyBoard } from "@/lib/daily/readDailyBoard";
-import { readDailyTop } from "@/lib/daily/topTen";
+import { readTodayOrYesterday } from "@/lib/daily/topTen";
 import { utcDayOf } from "@/lib/lab/daily";
 
 export const revalidate = 60;
@@ -44,7 +44,7 @@ async function dailySchema(locale: string) {
 export default async function DailyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   const today = utcDayOf(Date.now());
-  const board = await readDailyTop(today, readDailyBoard);
+  const board = await readTodayOrYesterday(today, readDailyBoard);
 
   return (
     <div className={LAB_PAPER_CLASS}>

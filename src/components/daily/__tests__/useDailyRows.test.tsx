@@ -7,7 +7,7 @@ const ROW = { id: "3c3c3c3c-0000-4000-8000-000000000003", player_name: "Poteto",
 const NEW_ROW = { id: "3c3c3c3c-0000-4000-8000-000000000004", player_name: "Dino beta", difficulty: "daily", daily_day: "2026-10-13" } as LeaderboardEntry;
 const RENDERED_AT = Date.parse("2026-10-13T09:00:00Z");
 const RENDERED: DailyTopRender = { today: "2026-10-13", board: { day: "2026-10-13", rows: [ROW], playedLike: 1180 }, readAt: RENDERED_AT };
-const NOT_RENDERED: DailyTopRender = { today: "2026-10-13", board: null, readAt: RENDERED_AT };
+const FAILED_SERVER_READ: DailyTopRender = { today: "2026-10-13", board: null, readAt: RENDERED_AT };
 
 let asked: string[] = [];
 
@@ -65,7 +65,7 @@ describe("today's rows the server rendered", () => {
   it("reads the API when the server could not read the board", async () => {
     answer(() => ({ body: { data: [ROW], playedLike: null } }));
 
-    const { result } = renderHook(() => useDailyRows("2026-10-13", NOT_RENDERED, null));
+    const { result } = renderHook(() => useDailyRows("2026-10-13", FAILED_SERVER_READ, null));
 
     expect(result.current).toEqual({ state: "loading" });
     await waitFor(() => expect(result.current).toEqual({ state: "ready", board: { day: "2026-10-13", rows: [ROW], playedLike: null } }));
@@ -99,7 +99,7 @@ describe("today's rows when the database is down", () => {
   it("reads a 503 with the API's message as a failed read", async () => {
     answer(() => ({ status: 503, body: { data: [], error: "The leaderboard is unavailable. Please try again shortly." } }));
 
-    const { result } = renderHook(() => useDailyRows("2026-10-13", NOT_RENDERED, null));
+    const { result } = renderHook(() => useDailyRows("2026-10-13", FAILED_SERVER_READ, null));
 
     await waitFor(() => expect(result.current).toEqual({ state: "failed" }));
   });
@@ -124,7 +124,7 @@ describe("how today's board played", () => {
   ])("reads %s from the board's answer", async (_case, playedLike, expected) => {
     answer(() => ({ body: { data: [ROW], playedLike } }));
 
-    const { result } = renderHook(() => useDailyRows("2026-10-13", NOT_RENDERED, null));
+    const { result } = renderHook(() => useDailyRows("2026-10-13", FAILED_SERVER_READ, null));
 
     await waitFor(() => expect(result.current).toEqual({ state: "ready", board: { day: "2026-10-13", rows: [ROW], playedLike: expected } }));
   });

@@ -10,7 +10,6 @@ const PLAY_BEFORE_CLOCK = playHref(DEFAULT_PRESET.pieceCount, DEFAULT_PRESET.mem
 
 const BOARD_CELLS = Array.from({ length: 64 }, (_, index) => (Math.floor(index / 8) + index) % 2);
 
-/** Today's board before this device has played it. It needs no lab record, so it is server rendered and painted first. */
 export function DailyOpenCard({ setting, streak = 0 }: { setting: DailySetting | null; streak?: number }) {
   const t = useTranslations("daily.page");
   return (

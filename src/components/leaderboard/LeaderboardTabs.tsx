@@ -121,7 +121,6 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
     if (!isRefreshing) return;
     const controller = new AbortController();
     const board = dailyDay === null ? `difficulty=${activeTab}` : `difficulty=${DAILY_BOARD}&daily_day=${dailyDay}`;
-    // The API's answers are edge-cached for a few seconds; an address no cache holds yet makes sure the just-submitted round is in the answer.
     const query = isJustSubmitted ? `${board}&after=${Date.now()}` : board;
     const settle = (read: Board) => {
       if (controller.signal.aborted) return;

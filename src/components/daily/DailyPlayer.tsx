@@ -19,7 +19,6 @@ interface DailyPlayerProps {
   readonly onPlayed: (played: boolean) => void;
 }
 
-/** This device's part of the page: its round on today's board, the join form, and a late join for yesterday's board. */
 export function DailyPlayer({ day, setting, joined, onJoined, onPlayed }: DailyPlayerProps) {
   const lab = useLabData();
   const read = day !== null && lab.storage !== "loading";

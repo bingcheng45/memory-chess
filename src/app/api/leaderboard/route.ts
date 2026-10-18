@@ -14,10 +14,6 @@ import { MEMORIZE_SECONDS_RANGE } from '@/lib/reference/facts';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
 import { reportServerError } from '@/lib/server/serverErrors';
 
-/**
- * A shared cache may keep a read briefly. A reader who has just joined asks with a fresh `after` value, a URL no cache
- * holds yet. A daily read without a day is left uncached, because its answer changes at midnight UTC.
- */
 const RANKED_CACHE = 'public, s-maxage=30, stale-while-revalidate=300';
 const DAILY_DAY_CACHE = 'public, s-maxage=15, stale-while-revalidate=60';
 

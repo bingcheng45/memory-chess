@@ -14,10 +14,6 @@ import { DailyTopTen } from "./DailyTopTen";
 import { useDailyRows } from "./useDailyRows";
 import "./daily.css";
 
-/**
- * The day shown is the server's until the device's clock is read, so the server renders the same heading, card and
- * rows the first client render does.
- */
 export function DailyBoard({ rendered }: { rendered: DailyTopRender }) {
   const t = useTranslations("daily.page");
   const format = useFormatter();
@@ -28,7 +24,7 @@ export function DailyBoard({ rendered }: { rendered: DailyTopRender }) {
   const [joined, setJoined] = useState<DailyEntry | null>(null);
   const [played, setPlayed] = useState(false);
   const rows = useDailyRows(day, rendered, joined?.id ?? null);
-  const Player = useDailyPlayer();
+  const Player = useDeferredDailyPlayer();
 
   useEffect(() => {
     if (day !== null) setJoined(readDailyEntry(day));
@@ -52,8 +48,7 @@ export function DailyBoard({ rendered }: { rendered: DailyTopRender }) {
   );
 }
 
-/** The lab record, the chess rules it scores with and the join form load once the page is interactive; the open card stands in until then. */
-function useDailyPlayer(): typeof DailyPlayer | null {
+function useDeferredDailyPlayer(): typeof DailyPlayer | null {
   const [player, setPlayer] = useState<typeof DailyPlayer | null>(null);
   useEffect(() => {
     let live = true;

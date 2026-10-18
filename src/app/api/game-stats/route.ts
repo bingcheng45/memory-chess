@@ -18,8 +18,7 @@ const hasSupabaseConfig =
   Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL) &&
   Boolean(process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY);
 
-/** The play count on the home page is fine a minute old, so the edge answers it without a function call. */
-const COUNT_CACHE = 'public, s-maxage=60, stale-while-revalidate=600';
+const METRIC_CACHE = 'public, s-maxage=60, stale-while-revalidate=600';
 
 /**
  * GET /api/game-stats - Retrieve all game metrics
@@ -60,7 +59,7 @@ export async function GET(request: NextRequest) {
         );
       }
       
-      return NextResponse.json({ data }, { headers: { 'Cache-Control': COUNT_CACHE } });
+      return NextResponse.json({ data }, { headers: { 'Cache-Control': METRIC_CACHE } });
     } else {
       // Get all metrics
       const { data, error } = await getAllGameMetrics();

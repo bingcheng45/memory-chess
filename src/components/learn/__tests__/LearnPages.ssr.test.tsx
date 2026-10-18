@@ -77,6 +77,22 @@ describe("a guide page", () => {
     expect(markup.indexOf("Before every move, run one scan")).toBeLessThan(markup.indexOf('id="puzzle-vs-game"'));
   });
 
+  it("serves a beginner's round and today's daily board before the quick answer", async () => {
+    const markup = await guide("how-to-get-better-at-chess-for-beginners");
+    const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
+
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;source=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 10 seconds</a>');
+    expect(strip).toContain('<a href="/daily" class="lg-link">Play today&#x27;s daily board</a>');
+    expect(markup.indexOf('class="lg-quickplay"')).toBeLessThan(markup.indexOf('class="lg-answer"'));
+  });
+
+  it("links today's daily board under a drill box that plays a round, not under one done at a board", async () => {
+    const markup = await guide("blindfold-chess-training-for-beginners");
+
+    expect(markup.match(/class="lg-drill"/g)).toHaveLength(4);
+    expect(markup.match(/<p class="lg-drills-daily"><a href="\/daily" class="lg-link">Play today&#x27;s daily board<\/a><\/p>/g)).toHaveLength(1);
+  });
+
   it("draws three server-rendered boards and links a round, a dashboard stat and sibling guides", async () => {
     const markup = await guide("how-to-stop-blundering-in-chess");
 

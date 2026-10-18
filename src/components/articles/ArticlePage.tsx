@@ -2,6 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { ViewCount } from "@/components/articles/ArticleCounts";
+import { ArticleDrill, EarlyDrillLink } from "@/components/articles/ArticleDrill";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticleRail from "@/components/articles/ArticleRail";
 import ArrivingPortrait from "@/components/articles/ArrivingPortrait";
@@ -18,7 +19,6 @@ import { formatArticleDate } from "@/lib/articles/format";
 import { articlePath } from "@/lib/articles/paths";
 import type {
   Article,
-  ArticleDrill,
   ArticleRelatedGuide,
   ArticleSource,
   ArticleSummary,
@@ -26,7 +26,6 @@ import type {
 } from "@/lib/articles/schema";
 import type { ArticleCounts } from "@/lib/articles/stats";
 import { buildArticleStructuredData } from "@/lib/articles/structuredData";
-import { playHref } from "@/lib/game/roundLink";
 import { LEARN_AUTHOR } from "@/lib/seo/learn/schema";
 import "./articlePage.css";
 
@@ -42,7 +41,6 @@ const SOURCES_HEADING_ID = "article-sources-heading";
 const GUIDES_HEADING_ID = "article-guides-heading";
 /** The guides are English-only, so the list of them is shown, and worded, in English only. */
 const RELATED_GUIDES_HEADING = "Train it with a guide";
-const DRILL_WHY_ID = "article-drill-why";
 const NOTE_CLASS = "mt-1 max-w-2xl";
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
 
@@ -124,32 +122,8 @@ function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "c
         <ViewCount count={counts?.views} />
         <LikeButton key={article.slug} slug={article.slug} likes={counts?.likes} />
       </div>
+      <EarlyDrillLink />
     </header>
-  );
-}
-
-function Drill({ drill }: { drill: ArticleDrill }) {
-  const t = useTranslations("articles.page");
-  const action = t("drillAction", { pieces: drill.pieceCount, seconds: drill.memorizeTime });
-
-  return (
-    <aside className="mt-10 max-w-[720px]">
-      <Link
-        href={playHref(drill.pieceCount, drill.memorizeTime, "article_cta")}
-        data-article-drill
-        aria-label={action}
-        aria-describedby={DRILL_WHY_ID}
-        className="art-drill group flex flex-wrap items-center justify-between gap-4 p-6"
-      >
-        <span className="art-drill-text min-w-0 flex-[1_1_260px]">
-          <b>{t("drillHeading")}</b>
-          <span id={DRILL_WHY_ID}>{drill.why}</span>
-        </span>
-        <span className="art-drill-btn inline-flex min-h-11 items-center px-5">
-          {action}
-        </span>
-      </Link>
-    </aside>
   );
 }
 
@@ -246,7 +220,7 @@ export default function ArticlePage({ article, nextArticle, counts, charsPerSeco
             sections={article.sections}
             charsPerSecond={charsPerSecond}
           />
-          <Drill drill={article.drill} />
+          <ArticleDrill drill={article.drill} />
           {article.relatedGuides?.length ? (
             <RelatedGuides guides={article.relatedGuides} />
           ) : null}

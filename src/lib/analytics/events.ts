@@ -58,11 +58,9 @@ export type LabPanel =
 export type LabPanelAction = "play" | "guide" | "next" | "start" | "stop" | "finish" | "setGoal" | "clearGoal" | "check";
 
 /**
- * The GA4 event contract. Round events carry the setting and the score, and
- * `round_source` names where the round started (calibration included). It is not `source`, which GA4 reads as
- * the session's traffic source. Lab events
- * carry counts and fixed ids only, never positions, squares, round ids, dates
- * or streak lengths, which the privacy page promises.
+ * The GA4 event contract. Round events carry the setting, the score and `round_source`, never `source`, which
+ * GA4 reads as the session's traffic source. Lab events carry counts and fixed ids only, never positions,
+ * squares, round ids, dates or streak lengths, which the privacy page promises.
  */
 export type FunnelEvent =
   | {

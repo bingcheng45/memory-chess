@@ -5,8 +5,8 @@ export const GA_SCRIPT_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_M
 
 /**
  * The stub gtag.js documents. Events sent before the library arrives wait in dataLayer and replay once it loads.
- * gtag.js reads the address only when it loads, after the visitor may have followed a link and lost the campaign
- * tags, so the first page view carries the address and referrer read here, at first paint.
+ * gtag.js reads location only once it loads, by which time the visitor may have left the landing URL and its
+ * campaign tags, so the first page_view sends the landing address and referrer itself.
  */
 export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
 function gtag(){window.dataLayer.push(arguments);}

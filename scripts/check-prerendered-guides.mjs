@@ -1,15 +1,20 @@
 #!/usr/bin/env node
-import { existsSync, readdirSync, readFileSync } from "node:fs";
+import "./lab/ts-hooks.mjs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { pathToFileURL } from "node:url";
 
-const GUIDES_DIR = "src/lib/seo/learn/guides";
 const DIST = ".next";
+const MANIFEST = join(DIST, "prerender-manifest.json");
 
-const slugs = readdirSync(GUIDES_DIR)
-  .filter((file) => file.endsWith(".ts") && file !== "index.ts")
-  .map((file) => file.replace(/\.ts$/, ""));
+const { LEARN_SLUGS: slugs } = await import(pathToFileURL(join(process.cwd(), "src/lib/seo/learn/index.ts")).href);
 
-const routes = JSON.parse(readFileSync(join(DIST, "prerender-manifest.json"), "utf8")).routes;
+if (!existsSync(MANIFEST)) {
+  console.error(`${MANIFEST} not found. Run \`next build\` before this check.`);
+  process.exit(1);
+}
+
+const routes = JSON.parse(readFileSync(MANIFEST, "utf8")).routes;
 
 const missing = slugs.filter(
   (slug) => !routes[`/en/learn/${slug}`] || !existsSync(join(DIST, "server/app/en/learn", `${slug}.html`)),

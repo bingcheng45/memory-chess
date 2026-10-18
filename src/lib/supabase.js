@@ -1,3 +1,4 @@
+import 'server-only';
 import { createClient } from '@supabase/supabase-js';
 
 // Initialize the Supabase client with environment variables
@@ -21,6 +22,23 @@ const readOnly = process.env.SUPABASE_READ_ONLY === 'true';
 
 // Local runs against the production project set SUPABASE_READ_ONLY so no write can reach it
 export const supabaseWriter = readOnly ? null : supabase;
+
+const leaderboardServiceKey = process.env.LEADERBOARD_SUPABASE_SERVICE_KEY || '';
+const leaderboardServiceClient =
+  supabaseWriter && leaderboardServiceKey
+    ? createClient(supabaseUrl, leaderboardServiceKey, { auth: { persistSession: false } })
+    : null;
+let warnedAnonLeaderboardWriter = false;
+
+// Migration 0006 takes every write on leaderboard_entries away from the anon key; until the service key is set the anon writer keeps scores working.
+export function leaderboardWriter() {
+  if (leaderboardServiceClient || !supabaseWriter) return leaderboardServiceClient;
+  if (!warnedAnonLeaderboardWriter) {
+    warnedAnonLeaderboardWriter = true;
+    console.warn('LEADERBOARD_SUPABASE_SERVICE_KEY is not set, so leaderboard scores are written with the anon key. Migration 0006 refuses those writes.');
+  }
+  return supabaseWriter;
+}
 
 export const SUPABASE_WRITES_OFF_REASON = readOnly
   ? 'Supabase is read-only (SUPABASE_READ_ONLY=true)'

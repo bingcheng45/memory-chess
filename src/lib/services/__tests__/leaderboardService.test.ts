@@ -13,7 +13,7 @@ jest.mock("@/lib/supabase", () => {
   const client = { from: () => ({ insert }) };
   return {
     supabase: client,
-    supabaseWriter: client,
+    leaderboardWriter: () => client,
     SUPABASE_WRITES_OFF_REASON: "Supabase is not configured",
     checkSupabaseConnection: jest.fn(),
     mockInsert: insert,

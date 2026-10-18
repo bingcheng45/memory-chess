@@ -1,7 +1,8 @@
 import { trackAgents } from "@databuddy/sdk/agents";
 import createMiddleware from "next-intl/middleware";
 import { type NextFetchEvent, NextRequest, NextResponse } from "next/server";
-import { routing, LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
+import { routing, LOCALES, DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
+import { chineseLocaleFor } from "@/i18n/chineseLocale";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
 import { isIndexedInDefaultLocaleOnly, isServedAtBareEnglishUrl, unprefixedPath } from "@/lib/seo/englishOnly";
 import { resolveRetiredLearnPath } from "@/lib/seo/learn/retired";
@@ -101,24 +102,58 @@ function retiredPagePath(pathname: string): string | null {
   return localizedPath(target, bare === pathname ? DEFAULT_LOCALE : pathname.split("/")[1]);
 }
 
+const SHORT_CODES: ReadonlySet<string> = new Set(["pt", "zh"]);
+
+/** The language a `/en`, `/pt` or `/zh` prefix stands for, or null for any other path. */
+function localeOfPrefix(request: NextRequest): Locale | null {
+  const prefix = request.nextUrl.pathname.split("/")[1];
+  if (prefix === DEFAULT_LOCALE) return DEFAULT_LOCALE;
+  if (prefix === "pt") return "pt-BR";
+  if (prefix !== "zh") return null;
+  return chineseLocaleFor(request.headers.get("accept-language"), request.cookies.get(LOCALE_COOKIE)?.value);
+}
+
+function withCanonicalLocalePrefix(pathname: string, prefixLocale: Locale | null): string {
+  const [, prefix, ...rest] = pathname.split("/");
+  if (prefix === DEFAULT_LOCALE) return `/${rest.join("/")}`;
+  return prefixLocale && SHORT_CODES.has(prefix) ? ["", prefixLocale, ...rest].join("/") : pathname;
+}
+
 /**
  * The one URL a path should answer at: no trailing slash, a retired page's or guide's
  * replacement, and no locale prefix on a page that prefix's readers get at
  * its bare English URL. Resolving all three together keeps every redirect to
  * a single hop.
  */
-function canonicalPath(pathname: string): string {
-  const trimmed = pathname.replace(/\/+$/, "") || "/";
+function canonicalPath(pathname: string, prefixLocale: Locale | null): string {
+  const trimmed = withCanonicalLocalePrefix(pathname.replace(/\/+$/, "") || "/", prefixLocale);
   return retiredPagePath(trimmed) ?? resolveRetiredLearnPath(trimmed) ?? bareEnglishPath(trimmed) ?? trimmed;
 }
 
+/**
+ * Opening a prefixed URL is a language choice that next-intl used to record
+ * before these redirects answered first. Asking next-intl about the prefix
+ * itself yields the cookie it would have set, under its own rules.
+ */
+function withLocaleChoice(redirect: NextResponse, request: NextRequest, locale: Locale) {
+  const probeUrl = new URL(request.url);
+  probeUrl.pathname = `/${locale}`;
+  const probe = handleI18nRouting(new NextRequest(probeUrl, { headers: request.headers }));
+
+  for (const cookie of probe.headers.getSetCookie()) redirect.headers.append("set-cookie", cookie);
+  return redirect;
+}
+
 function route(request: NextRequest) {
-  const canonical = canonicalPath(request.nextUrl.pathname);
+  const crawler = isCrawler(request.headers.get("user-agent"));
+  const prefixLocale = localeOfPrefix(request);
+  const canonical = canonicalPath(request.nextUrl.pathname, prefixLocale);
   if (canonical !== request.nextUrl.pathname) {
     // NextURL puts the request's trailing slash back on any pathname it is given.
     const url = new URL(request.url);
     url.pathname = canonical;
-    return NextResponse.redirect(url, 308);
+    const redirect = NextResponse.redirect(url, 308);
+    return prefixLocale && !crawler ? withLocaleChoice(redirect, request, prefixLocale) : redirect;
   }
 
   if (isServedAtBareEnglishUrl(request.nextUrl.pathname, DEFAULT_LOCALE)) {
@@ -131,7 +166,6 @@ function route(request: NextRequest) {
   // gap when both are silent.
   const hasExplicitChoice = request.cookies.has(LOCALE_COOKIE);
   const acceptLanguage = request.headers.get("accept-language");
-  const crawler = isCrawler(request.headers.get("user-agent"));
 
   // Crawlers get the URL they asked for. Google's guidance for locale-adaptive
   // sites is to let hreflang do the routing rather than redirect on a header,

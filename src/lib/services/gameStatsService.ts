@@ -1,5 +1,7 @@
 import { supabase, supabaseWriter, SUPABASE_WRITES_OFF_REASON, checkSupabaseConnection } from '@/lib/supabase';
 
+export const DATABASE_CONNECTION_ISSUE = 'Database connection issue';
+
 export interface GameMetric {
   id: string;
   metric_name: string;
@@ -21,13 +23,13 @@ export async function getAllGameMetrics(): Promise<{
       console.error('Supabase connection failed:', connectionStatus.error);
       return {
         data: [],
-        error: `Database connection issue: ${connectionStatus.error || 'Unable to connect to the database'}`
+        error: `${DATABASE_CONNECTION_ISSUE}: ${connectionStatus.error || 'Unable to connect to the database'}`
       };
     }
     if (!supabase) {
       return {
         data: [],
-        error: 'Database connection issue: Supabase is not configured'
+        error: `${DATABASE_CONNECTION_ISSUE}: Supabase is not configured`
       };
     }
 
@@ -66,13 +68,13 @@ export async function getGameMetric(metricName: string): Promise<{
     if (!connectionStatus.connected) {
       return {
         data: null,
-        error: `Database connection issue: ${connectionStatus.error || 'Unable to connect to the database'}`
+        error: `${DATABASE_CONNECTION_ISSUE}: ${connectionStatus.error || 'Unable to connect to the database'}`
       };
     }
     if (!supabase) {
       return {
         data: null,
-        error: 'Database connection issue: Supabase is not configured'
+        error: `${DATABASE_CONNECTION_ISSUE}: Supabase is not configured`
       };
     }
 
@@ -118,13 +120,13 @@ export async function incrementGameMetric(metricName: string, increment: number 
     if (!connectionStatus.connected) {
       return {
         success: false,
-        error: `Database connection issue: ${connectionStatus.error || 'Unable to connect to the database'}`
+        error: `${DATABASE_CONNECTION_ISSUE}: ${connectionStatus.error || 'Unable to connect to the database'}`
       };
     }
     if (!supabaseWriter) {
       return {
         success: false,
-        error: `Database connection issue: ${SUPABASE_WRITES_OFF_REASON}`
+        error: `${DATABASE_CONNECTION_ISSUE}: ${SUPABASE_WRITES_OFF_REASON}`
       };
     }
 

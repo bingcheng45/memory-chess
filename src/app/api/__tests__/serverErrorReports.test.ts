@@ -2,7 +2,6 @@
 
 import { NextRequest } from "next/server";
 import { appendGoogleSheetRow, SheetsConfigError } from "@/lib/server/googleSheets";
-import { incrementGameMetric } from "@/lib/services/gameStatsService";
 import { recordArticleEvent } from "@/lib/services/articleStatsService";
 
 const SUPABASE_URL = "http://supabase.test";
@@ -23,7 +22,11 @@ jest.mock("@/lib/server/googleSheets", () => ({
   ...jest.requireActual("@/lib/server/googleSheets"),
   appendGoogleSheetRow: jest.fn(),
 }));
-jest.mock("@/lib/services/gameStatsService", () => ({ incrementGameMetric: jest.fn() }));
+jest.mock("@/lib/services/gameStatsService", () => ({
+  ...jest.requireActual("@/lib/services/gameStatsService"),
+  getAllGameMetrics: jest.fn(),
+  incrementGameMetric: jest.fn(),
+}));
 jest.mock("@/lib/services/articleStatsService", () => ({ recordArticleEvent: jest.fn() }));
 
 type Report = { readonly authorization: string | null; readonly row: unknown };
@@ -64,6 +67,7 @@ async function settled(): Promise<readonly Report[]> {
 const rowsOnly = (given: readonly Report[]) => given.map(({ row }) => row);
 
 const leaderboard = () => import("@/app/api/leaderboard/route");
+const gameStats = () => import("@/lib/services/gameStatsService");
 
 const SCORE = {
   player_name: "Dino beta",
@@ -80,6 +84,14 @@ function jsonRequest(path: string, body: unknown, address = "198.51.100.23") {
     method: "POST",
     headers: { "Content-Type": "application/json", "x-forwarded-for": address },
     body: JSON.stringify(body),
+  });
+}
+
+function rawRequest(path: string, body: string) {
+  return new NextRequest(`http://localhost${path}`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json", "x-forwarded-for": "198.51.100.24" },
+    body,
   });
 }
 
@@ -187,16 +199,64 @@ describe("a failing API route keeps a redacted row in server_errors", () => {
     expect(reports).toHaveLength(2);
   });
 
-  it("stores a play counter that could not count", async () => {
+  it("stores a feedback sheet that is not configured as unavailable", async () => {
+    jest.mocked(appendGoogleSheetRow).mockRejectedValue(new SheetsConfigError("Google Sheet ID is missing"));
+    const { POST } = await import("@/app/api/feedback/route");
+
+    const response = await POST(
+      jsonRequest("/api/feedback", {
+        rating: 5,
+        feedback: "",
+        accuracy: 100,
+        correctPieces: 6,
+        pieceCount: 6,
+        difficulty: "medium",
+        memorizationTime: 9,
+        solutionTime: 12.5,
+      }),
+    );
+
+    expect(response.status).toBe(500);
+    expect(rowsOnly(await settled())).toEqual([
+      { route: "POST /api/feedback", kind: "unavailable", message: "Google Sheet ID is missing", detail: { name: "SheetsConfigError" }, deploy: DEPLOY },
+    ]);
+  });
+
+  it("stores a play counter that could not count, and tells the player only that it failed", async () => {
+    const { incrementGameMetric } = await gameStats();
     jest.mocked(incrementGameMetric).mockResolvedValue({ success: false, error: "Failed to increment metric: timeout" });
     const { POST } = await import("@/app/api/game-stats/route");
 
     const response = await POST(jsonRequest("/api/game-stats", { metric: "total_plays" }));
 
-    expect(response.status).toBe(500);
+    expect([response.status, await response.json()]).toEqual([500, { error: "The play could not be counted" }]);
     expect(rowsOnly(await settled())).toEqual([
-      expect.objectContaining({ route: "POST /api/game-stats", kind: "failed", message: "Failed to increment metric: timeout", detail: {} }),
+      { route: "POST /api/game-stats", kind: "failed", message: "Failed to increment metric: timeout", detail: {}, deploy: DEPLOY },
     ]);
+  });
+
+  it("stores a play counter or stats read that could not reach the database as unavailable", async () => {
+    const { getAllGameMetrics, incrementGameMetric } = await gameStats();
+    jest.mocked(incrementGameMetric).mockResolvedValue({ success: false, error: "Database connection issue: fetch failed" });
+    jest.mocked(getAllGameMetrics).mockResolvedValue({ data: [], error: "Database connection issue: fetch failed" });
+    const { GET, POST } = await import("@/app/api/game-stats/route");
+
+    const posted = await POST(jsonRequest("/api/game-stats", { metric: "total_plays", increment: 1 }));
+    const read = await GET(new NextRequest("http://localhost/api/game-stats"));
+
+    expect([posted.status, await posted.json(), read.status, await read.json()]).toEqual([
+      500,
+      { error: "The play could not be counted" },
+      500,
+      { error: "Game stats are unavailable" },
+    ]);
+    expect(rowsOnly(await settled())).toEqual(
+      expect.arrayContaining([
+        { route: "POST /api/game-stats", kind: "unavailable", message: "Database connection issue: fetch failed", detail: {}, deploy: DEPLOY },
+        { route: "GET /api/game-stats", kind: "unavailable", message: "Database connection issue: fetch failed", detail: {}, deploy: DEPLOY },
+      ]),
+    );
+    expect(reports).toHaveLength(2);
   });
 
   it("stores an article like that failed, with the article's slug", async () => {
@@ -225,5 +285,34 @@ describe("a failing API route keeps a redacted row in server_errors", () => {
         deploy: DEPLOY,
       },
     ]);
+  });
+});
+
+describe("a client's mistake is answered 400 and stores nothing", () => {
+  it.each([
+    ["a leaderboard score that is not JSON", "/api/leaderboard", '{"player_name": Alice Smit"', "Invalid JSON request body"],
+    ["a leaderboard score that is null", "/api/leaderboard", "null", "Missing required fields"],
+    [
+      "a leaderboard score with an endless rebuild time",
+      "/api/leaderboard",
+      '{"player_name":"Dino beta","difficulty":"medium","piece_count":6,"correct_pieces":4,"memorize_time":8.25,"solution_time":1e400,"total_wrong_pieces":2}',
+      "A rebuild of 6 pieces takes at least 1.5 seconds",
+    ],
+    ["a play count that is not JSON", "/api/game-stats", '{"metric": total_plays', "Invalid JSON request body"],
+    ["a play count that is null", "/api/game-stats", "null", "Missing required field: metric"],
+    ["a play count of an unknown metric", "/api/game-stats", '{"metric":"total_wins"}', "Unknown metric"],
+    ["a play count with text for the increment", "/api/game-stats", '{"metric":"total_plays","increment":"Bob Jones"}', "The increment must be 1"],
+    ["a play count of more than one", "/api/game-stats", '{"metric":"total_plays","increment":5}', "The increment must be 1"],
+  ])("%s", async (_, path, body, error) => {
+    const { POST } = await import(path === "/api/leaderboard" ? "@/app/api/leaderboard/route" : "@/app/api/game-stats/route");
+
+    const { incrementGameMetric } = await gameStats();
+    jest.mocked(incrementGameMetric).mockClear();
+
+    const response = await POST(rawRequest(path, body));
+
+    expect([response.status, await response.json()]).toEqual([400, { error }]);
+    expect(await settled()).toEqual([]);
+    expect(jest.mocked(incrementGameMetric).mock.calls).toEqual([]);
   });
 });

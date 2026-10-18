@@ -28,7 +28,7 @@ const LONGEST_STUDY_SECONDS = MEMORIZE_SECONDS_RANGE.max;
 
 function rebuildTooFast(pieceCount: number, solutionTime: unknown): string | null {
   const floor = pieceCount * SECONDS_PER_PIECE;
-  return typeof solutionTime === 'number' && solutionTime >= floor ? null : `A rebuild of ${pieceCount} pieces takes at least ${floor} seconds`;
+  return typeof solutionTime === 'number' && Number.isFinite(solutionTime) && solutionTime >= floor ? null : `A rebuild of ${pieceCount} pieces takes at least ${floor} seconds`;
 }
 
 function boardRowMismatch(board: LeaderboardBoard, pieceCount: unknown, memorizeTime: unknown, solutionTime: unknown, country: unknown): string | null {
@@ -108,11 +108,16 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  let body;
   try {
-    const body = await request.json();
-    
+    body = await request.json();
+  } catch {
+    return NextResponse.json({ error: 'Invalid JSON request body' }, { status: 400 });
+  }
+
+  try {
     // Validate request body
-    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces, country_code, skill_rating, daily_day } = body;
+    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces, country_code, skill_rating, daily_day } = body ?? {};
     
     if (!player_name || !difficulty || !piece_count || correct_pieces === undefined || 
         !memorize_time || !solution_time) {

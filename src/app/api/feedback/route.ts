@@ -4,7 +4,7 @@ import {
   feedbackSubmissionSchema,
 } from "@/lib/feedback";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
-import { appendGoogleSheetRow } from "@/lib/server/googleSheets";
+import { appendGoogleSheetRow, SheetsConfigError } from "@/lib/server/googleSheets";
 import { reportServerError } from "@/lib/server/serverErrors";
 
 export const runtime = "nodejs";
@@ -52,7 +52,7 @@ export async function POST(request: Request) {
       "Failed to submit game feedback:",
       error instanceof Error ? error.message : "Unknown error",
     );
-    reportServerError("POST /api/feedback", "failed", error);
+    reportServerError("POST /api/feedback", error instanceof SheetsConfigError ? "unavailable" : "failed", error);
 
     return NextResponse.json(
       { error: "Failed to submit feedback" },

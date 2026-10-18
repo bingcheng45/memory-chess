@@ -18,6 +18,13 @@ describe("LabHero", () => {
     expect(screen.getByText("4 March 1998")).toBeInTheDocument();
     expect(screen.getAllByRole("button", { name: / on [a-h][1-8]$/ })).toHaveLength(10);
   });
+
+  it("links today's daily board", () => {
+    renderWithIntl(<LabHero totalPlays={{ status: "loading" }} />);
+
+    expect(screen.getByRole("link", { name: "today's daily board" })).toHaveAttribute("href", "/daily");
+    expect(screen.getByText(/the same position for every player\./)).toBeInTheDocument();
+  });
 });
 
 const factTexts = () =>

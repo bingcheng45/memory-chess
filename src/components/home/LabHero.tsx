@@ -58,6 +58,9 @@ export function LabHero({ totalPlays }: { totalPlays: TotalPlays }) {
             })}{" "}
             {t.rich("hero.freeToPlay", {
               link: (chunks) => <Link href="/leaderboard">{chunks}</Link>,
+            })}{" "}
+            {lab.rich("hero.dailyLink", {
+              link: (chunks) => <Link href="/daily">{chunks}</Link>,
             })}
           </p>
           <div className="lab-facts">

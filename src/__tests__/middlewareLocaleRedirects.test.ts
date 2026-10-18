@@ -5,8 +5,12 @@ import unchangedRedirects from "./__golden__/localeRedirects.main.json";
 
 const ORIGIN = "https://thememorychess.com";
 
-function run(path: string) {
-  return middleware(new NextRequest(`${ORIGIN}${path}`, { headers: { "accept-language": "en" } }));
+function run(path: string, headers: Record<string, string> = { "accept-language": "en" }) {
+  return middleware(new NextRequest(`${ORIGIN}${path}`, { headers }));
+}
+
+function locationWith(path: string, headers: Record<string, string>) {
+  return run(path, headers).headers.get("location")?.replace(ORIGIN, "") ?? null;
 }
 
 function locationOf(path: string) {
@@ -55,6 +59,75 @@ describe("the default language prefix", () => {
 
     expect(response.status).toBe(308);
     expect(locationOf(from)).toBe(to);
+  });
+});
+
+describe("the language a visitor picked by the prefix they used", () => {
+  it("remembers English for a German browser that opens /en/game", () => {
+    const response = run("/en/game", { "accept-language": "de" });
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(`${ORIGIN}/game`);
+    expect(response.headers.get("set-cookie")).toBe("NEXT_LOCALE=en; Path=/; SameSite=lax");
+  });
+
+  it("replaces a German cookie when /en/game is opened", () => {
+    const response = run("/en/game", { "accept-language": "de", cookie: "NEXT_LOCALE=de" });
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(`${ORIGIN}/game`);
+    expect(response.headers.get("set-cookie")).toBe("NEXT_LOCALE=en; Path=/; SameSite=lax");
+  });
+
+  it("sets no cookie when English already matches the browser", () => {
+    expect(run("/en/game", { "accept-language": "en-US,en;q=0.9" }).headers.get("set-cookie")).toBeNull();
+    expect(run("/en/game", { "accept-language": "de", cookie: "NEXT_LOCALE=en" }).headers.get("set-cookie")).toBeNull();
+  });
+
+  it("remembers Brazilian Portuguese for a German browser that opens /pt/game", () => {
+    const response = run("/pt/game", { "accept-language": "de" });
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(`${ORIGIN}/pt-BR/game`);
+    expect(response.headers.get("set-cookie")).toBe("NEXT_LOCALE=pt-BR; Path=/; SameSite=lax");
+  });
+
+  it("remembers Simplified Chinese for an English browser that opens /zh/game", () => {
+    const response = run("/zh/game");
+
+    expect(response.headers.get("location")).toBe(`${ORIGIN}/zh-CN/game`);
+    expect(response.headers.get("set-cookie")).toBe("NEXT_LOCALE=zh-CN; Path=/; SameSite=lax");
+  });
+});
+
+describe("/zh picks the Chinese the visitor asked for", () => {
+  it.each([
+    ["zh-TW,zh;q=0.9,en;q=0.8", "/zh-TW/game"],
+    ["en;q=0.9,zh-HK", "/zh-TW/game"],
+    ["zh-Hant", "/zh-TW/game"],
+    ["zh-Hant-TW", "/zh-TW/game"],
+    ["zh-CN,zh-TW;q=0.5", "/zh-CN/game"],
+    ["zh;q=0.4,zh-TW;q=0.8", "/zh-TW/game"],
+    ["zh-Hans", "/zh-CN/game"],
+    ["zh", "/zh-CN/game"],
+    ["de", "/zh-CN/game"],
+    ["zh-TW;q=0,en", "/zh-CN/game"],
+  ])("Accept-Language %s goes to %s", (acceptLanguage, to) => {
+    expect(locationWith("/zh/game", { "accept-language": acceptLanguage })).toBe(to);
+  });
+
+  it("keeps a visitor's Traditional Chinese cookie ahead of the header", () => {
+    const response = run("/zh/game", { "accept-language": "zh-CN", cookie: "NEXT_LOCALE=zh-TW" });
+
+    expect(response.headers.get("location")).toBe(`${ORIGIN}/zh-TW/game`);
+    expect(response.headers.get("set-cookie")).toBeNull();
+  });
+
+  it("remembers Traditional Chinese", () => {
+    const response = run("/zh", { "accept-language": "zh-TW" });
+
+    expect(response.headers.get("location")).toBe(`${ORIGIN}/zh-TW`);
+    expect(response.headers.get("set-cookie")).toBeNull();
   });
 });
 

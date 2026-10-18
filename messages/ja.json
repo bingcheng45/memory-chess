@@ -1367,6 +1367,24 @@
     "notSet": "まだ設定されていません。",
     "needs": "あと{need}で解放されます。",
     "needsAt": "{pieceCount}駒・{memorizeSeconds}秒で、あと{need}で解放されます。",
+    "unlocks": {
+      "title": "次に解放",
+      "plain": "あと{need}",
+      "at": "{pieceCount}駒・{memorizeSeconds}秒であと{need}",
+      "showAll": "すべて表示（{count}）",
+      "showFewer": "表示を減らす"
+    },
+    "backup": {
+      "title": "記録のコピーを保存しましょう",
+      "never": "{rounds, plural, other {#ラウンド}}の記録はこのブラウザにしか保存されておらず、空き容量を確保するために消去されることがあります。ダウンロードしたコピーがあれば安心です。",
+      "behind": "{date}の前回のコピー以降、{rounds, plural, other {#ラウンド}}をプレイしました。このブラウザは空き容量を確保するために保存データを消去することがあるため、新しいコピーをダウンロードしてください。",
+      "download": "コピーをダウンロード",
+      "later": "今はしない",
+      "started": "ダウンロードを開始しました。ファイルはこのブラウザ以外の場所に保管してください。",
+      "capTitle": "記録がいっぱいです",
+      "cap": "記録には最新{cap, number}ラウンドの詳細が保存されるため、今後は新しいラウンドごとに最も古いラウンドが置き換わります。合計、連続記録、ベストには引き続きすべてのラウンドが反映されます。",
+      "gotIt": "わかりました"
+    },
     "need": {
       "rounds": "{count, plural, other {#ラウンド}}",
       "days": "{count, plural, other {#日のプレイ}}",

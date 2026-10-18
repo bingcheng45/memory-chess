@@ -1367,6 +1367,24 @@
     "notSet": "Not set yet.",
     "needs": "Unlocks with {need}.",
     "needsAt": "Unlocks with {need} at {pieceCount} pieces, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Unlocks next",
+      "plain": "{need}",
+      "at": "{need} at {pieceCount} pieces, {memorizeSeconds} s",
+      "showAll": "Show all {count}",
+      "showFewer": "Show fewer"
+    },
+    "backup": {
+      "title": "Keep a copy of your record",
+      "never": "{rounds, plural, one {Your # round lives} other {Your # rounds live}} only in this browser, which may clear them to free up space. A downloaded copy keeps them safe.",
+      "behind": "{rounds, plural, one {# round has} other {# rounds have}} been played since your last copy on {date}. This browser may clear its stored data to free up space, so download a fresh copy.",
+      "download": "Download a copy",
+      "later": "Not now",
+      "started": "Download started. Keep the file somewhere other than this browser.",
+      "capTitle": "Your record is full",
+      "cap": "Your record keeps your newest {cap, number} rounds one by one, so each new round now replaces your oldest. Your totals, streaks and bests still count every round.",
+      "gotIt": "Got it"
+    },
     "need": {
       "rounds": "{count, plural, one {# more round} other {# more rounds}}",
       "days": "{count, plural, one {# more day of play} other {# more days of play}}",

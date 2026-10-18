@@ -1,13 +1,15 @@
 "use client";
 
-import { useMemo, type ReactNode } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CommunityInvite } from "@/components/community/CommunityLink";
 import { isReturningPlayer } from "@/lib/community";
-import { useLabData, useLabResults } from "@/hooks/useLabData";
+import { useLabResults } from "@/hooks/useLabData";
+import { useLabRecord } from "@/components/home/useLabRecord";
 import { readDailyOpened, utcDayOf } from "@/lib/lab/daily";
-import { DASHBOARD_GROUPS, dashboardOf, shareCardOf } from "@/lib/lab/dashboard";
+import { DASHBOARD_GROUPS, dashboardOf, figuresOf, shareCardOf, unlocksOf } from "@/lib/lab/dashboard";
 import { historyOf } from "@/lib/lab/history";
 import { ratingHistoryOf } from "@/lib/lab/ratingHistory";
 import { daysBetween } from "@/lib/lab/readiness";
@@ -15,17 +17,40 @@ import { WIN_ACCURACY } from "@/lib/store/gameStore";
 import { entriesChoice, planChoice, targetChoice } from "@/components/home/labChoices";
 import { LAB_SECTIONS } from "@/components/home/SectionHeading";
 import { useWeekGoal } from "@/components/home/useWeekGoal";
-import { DashboardAnalysis } from "./DashboardAnalysis";
+import { DashboardBackup } from "./DashboardBackup";
 import { DashboardDailyCard } from "./DashboardDailyCard";
-import { DashboardHistory } from "./DashboardHistory";
 import { DashboardRating } from "./DashboardRating";
 import { DashboardShare } from "./DashboardShare";
 import { TileList } from "./DashboardTiles";
+import { DashboardUnlocks } from "./DashboardUnlocks";
 import { useGameStanding } from "./useGameStanding";
 import "@/components/round/round.css";
 import "./dashboard.css";
 
 const CHOOSE_HREF = `/#${LAB_SECTIONS.record.anchor}`;
+
+const HistoryPending = () => <div className="lab-hist-pending" aria-hidden="true" />;
+const AnalysisPending = () => <div className="lab-dash-panels lab-dash-pending" aria-hidden="true" />;
+const DashboardHistory = dynamic(() => import("./DashboardHistory").then((module) => module.DashboardHistory), { ssr: false, loading: HistoryPending });
+const DashboardAnalysis = dynamic(() => import("./DashboardAnalysis").then((module) => module.DashboardAnalysis), { ssr: false, loading: AnalysisPending });
+
+/**
+ * True once the record is read and the browser has had an idle moment after drawing the summary, so the sections
+ * below the fold render in a task of their own instead of lengthening the one that draws what the player sees first.
+ */
+function useIdleAfter(ready: boolean): boolean {
+  const [idle, setIdle] = useState(false);
+  useEffect(() => {
+    if (!ready || idle) return;
+    if (typeof window.requestIdleCallback !== "function") {
+      const timer = window.setTimeout(() => setIdle(true), 1);
+      return () => window.clearTimeout(timer);
+    }
+    const handle = window.requestIdleCallback(() => setIdle(true), { timeout: 1000 });
+    return () => window.cancelIdleCallback(handle);
+  }, [ready, idle]);
+  return idle;
+}
 
 function Section({ id, title, lede, children }: { id: string; title: string; lede?: string; children: ReactNode }) {
   return (
@@ -46,7 +71,7 @@ function Section({ id, title, lede, children }: { id: string; title: string; led
 export function Dashboard() {
   const t = useTranslations("dashboard");
   const tCommunity = useTranslations("common.community");
-  const data = useLabData();
+  const data = useLabRecord();
   const storedPlan = planChoice.useValue();
   const storedTarget = targetChoice.useValue();
   const entries = entriesChoice.useValue();
@@ -54,6 +79,7 @@ export function Dashboard() {
   const loaded = data.storage === "available" && data.today !== "";
   const results = useLabResults({ ...data, plan: loaded ? storedPlan : null, target: loaded ? storedTarget : null });
   const { standing, rated } = useGameStanding(loaded);
+  const later = useIdleAfter(loaded);
 
   const tiles = useMemo(
     () =>
@@ -73,7 +99,9 @@ export function Dashboard() {
     [loaded, data, results, weekGoal, entries, standing],
   );
   const ratingLine = useMemo(() => (loaded ? standing && ratingHistoryOf(standing.rating, rated, Date.now()) : "pending"), [loaded, standing, rated]);
-  const rounds = useMemo(() => (loaded ? historyOf(data.records, rated) : null), [loaded, data.records, rated]);
+  const rounds = useMemo(() => (later ? historyOf(data.records, rated) : null), [later, data.records, rated]);
+  const figures = useMemo(() => tiles && figuresOf(tiles), [tiles]);
+  const unlocks = useMemo(() => tiles && unlocksOf(tiles), [tiles]);
   const card = tiles && shareCardOf(tiles, data.summary.rounds);
   const lastDay = data.summary.days.at(-1);
   const staleFor = tiles?.some(({ state }) => state === "stale") && lastDay ? daysBetween(lastDay, data.today) : null;
@@ -92,21 +120,32 @@ export function Dashboard() {
       {data.storage !== "unavailable" && (
         <>
           <Section id="summary" title={t("sections.summary")}>
-            <TileList ids={DASHBOARD_GROUPS.lead} tiles={tiles} size="lead" />
-            <DashboardRating history={ratingLine} />
-            <div className="lab-dash-summary">
-              <TileList ids={DASHBOARD_GROUPS.summary} tiles={tiles} size="summary" />
-              <DashboardShare card={tiles ? card : "pending"} />
-            </div>
+            <TileList ids={DASHBOARD_GROUPS.today} tiles={figures} size="today" />
+            {/* Keyed apart: which tiles have figures is known only once the record is read, so the summary mounts whole
+                into a box that held the rest of the screen, rather than moving tiles that were drawn before it. */}
+            {figures && unlocks ? (
+              <div key="read">
+                <DashboardUnlocks unlocks={unlocks} />
+                <TileList ids={DASHBOARD_GROUPS.lead} tiles={figures} size="lead" />
+                <DashboardRating history={ratingLine} />
+                <div className="lab-dash-summary">
+                  <TileList ids={DASHBOARD_GROUPS.summary} tiles={figures} size="summary" />
+                  <DashboardShare card={card} />
+                </div>
+              </div>
+            ) : (
+              <div key="reading" className="lab-dash-summary-pending" aria-hidden="true" />
+            )}
           </Section>
+          {later && <DashboardBackup record={data} />}
           <Section id="history" title={t("sections.history")} lede={t("historyLede")}>
-            <DashboardHistory rounds={rounds} total={data.summary.rounds} />
+            {later ? <DashboardHistory rounds={rounds} total={data.summary.rounds} /> : <HistoryPending />}
           </Section>
           <Section id="analysis" title={t("sections.analysis")} lede={t("analysisLede")}>
-            <DashboardAnalysis results={loaded ? results : null} />
+            {later ? <DashboardAnalysis results={results} /> : <AnalysisPending />}
           </Section>
           <Section id="more" title={t("sections.more")}>
-            <TileList ids={DASHBOARD_GROUPS.more} tiles={tiles} size="more" />
+            <TileList ids={DASHBOARD_GROUPS.more} tiles={figures} size="more" />
             <Link className="lab-dash-full" href={CHOOSE_HREF}>
               {t("fullRecord")} →
             </Link>

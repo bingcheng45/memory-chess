@@ -1367,6 +1367,24 @@
     "notSet": "Pas encore défini.",
     "needs": "Se débloque avec {need}.",
     "needsAt": "Se débloque avec {need} à {pieceCount} pièces, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Prochains déblocages",
+      "plain": "{need}",
+      "at": "{need} à {pieceCount} pièces, {memorizeSeconds} s",
+      "showAll": "Tout afficher ({count})",
+      "showFewer": "Afficher moins"
+    },
+    "backup": {
+      "title": "Gardez une copie de votre historique",
+      "never": "{rounds, plural, one {Votre # partie n’est enregistrée} many {Vos # parties ne sont enregistrées} other {Vos # parties ne sont enregistrées}} que dans ce navigateur, qui peut effacer ses données pour libérer de l’espace. Une copie téléchargée met votre historique à l’abri.",
+      "behind": "{rounds, plural, one {# partie a été jouée} many {# parties ont été jouées} other {# parties ont été jouées}} depuis votre dernière copie du {date}. Ce navigateur peut effacer ses données pour libérer de l’espace, alors téléchargez une nouvelle copie.",
+      "download": "Télécharger une copie",
+      "later": "Pas maintenant",
+      "started": "Téléchargement lancé. Conservez le fichier ailleurs que dans ce navigateur.",
+      "capTitle": "Votre historique est plein",
+      "cap": "Votre historique conserve en détail vos {cap, number} parties les plus récentes, donc chaque nouvelle partie remplace désormais la plus ancienne. Vos totaux, séries et records comptent toujours toutes les parties.",
+      "gotIt": "Compris"
+    },
     "need": {
       "rounds": "{count, plural, one {# partie de plus} many {# parties de plus} other {# parties de plus}}",
       "days": "{count, plural, one {# jour de jeu de plus} many {# jours de jeu de plus} other {# jours de jeu de plus}}",

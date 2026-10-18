@@ -1367,6 +1367,24 @@
     "notSet": "Ainda não definido.",
     "needs": "Libera com {need}.",
     "needsAt": "Libera com {need} com {pieceCount} peças, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Próximos desbloqueios",
+      "plain": "{need}",
+      "at": "{need} com {pieceCount} peças, {memorizeSeconds} s",
+      "showAll": "Mostrar todas ({count})",
+      "showFewer": "Mostrar menos"
+    },
+    "backup": {
+      "title": "Guarde uma cópia do seu registro",
+      "never": "{rounds, plural, one {Sua # rodada fica} many {Suas # rodadas ficam} other {Suas # rodadas ficam}} só neste navegador, que pode apagar dados para liberar espaço. Uma cópia baixada mantém seu registro seguro.",
+      "behind": "{rounds, plural, one {# rodada foi jogada} many {# rodadas foram jogadas} other {# rodadas foram jogadas}} desde sua última cópia em {date}. Este navegador pode apagar os dados salvos para liberar espaço, então baixe uma cópia nova.",
+      "download": "Baixar uma cópia",
+      "later": "Agora não",
+      "started": "Download iniciado. Guarde o arquivo em outro lugar que não seja este navegador.",
+      "capTitle": "Seu registro está cheio",
+      "cap": "Seu registro guarda rodada a rodada as suas {cap, number} rodadas mais recentes, então cada nova rodada agora substitui a mais antiga. Seus totais, sequências e recordes continuam contando todas as rodadas.",
+      "gotIt": "Entendi"
+    },
     "need": {
       "rounds": "{count, plural, one {mais # rodada} many {mais # rodadas} other {mais # rodadas}}",
       "days": "{count, plural, one {mais # dia de jogo} many {mais # dias de jogo} other {mais # dias de jogo}}",

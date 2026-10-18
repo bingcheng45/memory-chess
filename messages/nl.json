@@ -1367,6 +1367,24 @@
     "notSet": "Nog niet ingesteld.",
     "needs": "Ontgrendelt met {need}.",
     "needsAt": "Ontgrendelt met {need} bij {pieceCount} stukken, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Binnenkort ontgrendeld",
+      "plain": "{need}",
+      "at": "{need} bij {pieceCount} stukken, {memorizeSeconds} s",
+      "showAll": "Toon alle {count}",
+      "showFewer": "Toon minder"
+    },
+    "backup": {
+      "title": "Bewaar een kopie van je verslag",
+      "never": "{rounds, plural, one {Je # ronde staat} other {Je # rondes staan}} alleen in deze browser, die gegevens kan wissen om ruimte vrij te maken. Een gedownloade kopie houdt je verslag veilig.",
+      "behind": "Sinds je laatste kopie op {date} {rounds, plural, one {is er # ronde} other {zijn er # rondes}} gespeeld. Deze browser kan opgeslagen gegevens wissen om ruimte vrij te maken, dus download een nieuwe kopie.",
+      "download": "Download een kopie",
+      "later": "Niet nu",
+      "started": "Download gestart. Bewaar het bestand ergens anders dan in deze browser.",
+      "capTitle": "Je verslag is vol",
+      "cap": "Je verslag bewaart je nieuwste {cap, number} rondes ronde voor ronde, dus elke nieuwe ronde vervangt nu je oudste. Je totalen, reeksen en records tellen nog steeds elke ronde mee.",
+      "gotIt": "Begrepen"
+    },
     "need": {
       "rounds": "{count, plural, one {nog # ronde} other {nog # rondes}}",
       "days": "{count, plural, one {nog # speeldag} other {nog # speeldagen}}",

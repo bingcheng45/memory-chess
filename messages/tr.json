@@ -1367,6 +1367,24 @@
     "notSet": "Henüz ayarlanmadı.",
     "needs": "Açılması için: {need}.",
     "needsAt": "Açılması için: {need}, {pieceCount} taş, {memorizeSeconds} sn.",
+    "unlocks": {
+      "title": "Sırada açılacaklar",
+      "plain": "{need}",
+      "at": "{need}, {pieceCount} taş, {memorizeSeconds} sn",
+      "showAll": "Tümünü göster ({count})",
+      "showFewer": "Daha az göster"
+    },
+    "backup": {
+      "title": "Kaydının bir kopyasını sakla",
+      "never": "{rounds, plural, one {# turun} other {# turun}} yalnızca bu tarayıcıda duruyor ve tarayıcı yer açmak için verileri silebilir. İndirilen bir kopya kaydını güvende tutar.",
+      "behind": "{date} tarihli son kopyandan bu yana {rounds, plural, one {# tur} other {# tur}} oynandı. Bu tarayıcı yer açmak için sakladığı verileri silebilir, bu yüzden yeni bir kopya indir.",
+      "download": "Kopya indir",
+      "later": "Şimdi değil",
+      "started": "İndirme başladı. Dosyayı bu tarayıcının dışında bir yerde sakla.",
+      "capTitle": "Kaydın doldu",
+      "cap": "Kaydın en yeni {cap, number} turunu tur tur saklar, bu yüzden artık her yeni tur en eskisinin yerini alır. Toplamların, serilerin ve rekorların hâlâ her turu sayar.",
+      "gotIt": "Anladım"
+    },
     "need": {
       "rounds": "{count, plural, one {# tur daha} other {# tur daha}}",
       "days": "{count, plural, one {# oyun günü daha} other {# oyun günü daha}}",

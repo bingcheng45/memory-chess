@@ -1367,6 +1367,24 @@
     "notSet": "Non ancora impostato.",
     "needs": "Si sblocca con {need}.",
     "needsAt": "Si sblocca con {need} a {pieceCount} pezzi, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Prossimi sblocchi",
+      "plain": "{need}",
+      "at": "{need} a {pieceCount} pezzi, {memorizeSeconds} s",
+      "showAll": "Mostra tutte ({count})",
+      "showFewer": "Mostra meno"
+    },
+    "backup": {
+      "title": "Conserva una copia del tuo registro",
+      "never": "{rounds, plural, one {La tua # partita è salvata} many {Le tue # partite sono salvate} other {Le tue # partite sono salvate}} solo in questo browser, che può cancellare i dati per liberare spazio. Una copia scaricata mette al sicuro il tuo registro.",
+      "behind": "{rounds, plural, one {È stata giocata # partita} many {Sono state giocate # partite} other {Sono state giocate # partite}} dalla tua ultima copia del {date}. Questo browser può cancellare i dati salvati per liberare spazio, quindi scarica una copia aggiornata.",
+      "download": "Scarica una copia",
+      "later": "Non ora",
+      "started": "Download avviato. Conserva il file in un posto diverso da questo browser.",
+      "capTitle": "Il tuo registro è pieno",
+      "cap": "Il tuo registro conserva nel dettaglio le tue {cap, number} partite più recenti, quindi ogni nuova partita ora sostituisce la più vecchia. Totali, serie e record contano ancora ogni partita.",
+      "gotIt": "Ho capito"
+    },
     "need": {
       "rounds": "{count, plural, one {# partita in più} many {# partite in più} other {# partite in più}}",
       "days": "{count, plural, one {# giorno di gioco in più} many {# giorni di gioco in più} other {# giorni di gioco in più}}",

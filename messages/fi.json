@@ -1367,6 +1367,24 @@
     "notSet": "Ei vielä asetettu.",
     "needs": "Avautuu: {need}.",
     "needsAt": "Avautuu: {need}, {pieceCount} nappulaa, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Avautuu seuraavaksi",
+      "plain": "{need}",
+      "at": "{need}, {pieceCount} nappulaa, {memorizeSeconds} s",
+      "showAll": "Näytä kaikki {count}",
+      "showFewer": "Näytä vähemmän"
+    },
+    "backup": {
+      "title": "Pidä kopio päiväkirjastasi",
+      "never": "{rounds, plural, one {# kierroksesi on} other {# kierrostasi on}} tallessa vain tässä selaimessa, joka voi poistaa tietoja vapauttaakseen tilaa. Ladattu kopio pitää päiväkirjasi turvassa.",
+      "behind": "Viimeisimmän kopiosi ({date}) jälkeen on pelattu {rounds, plural, one {# kierros} other {# kierrosta}}. Tämä selain voi poistaa tallentamiaan tietoja vapauttaakseen tilaa, joten lataa uusi kopio.",
+      "download": "Lataa kopio",
+      "later": "Ei nyt",
+      "started": "Lataus alkoi. Säilytä tiedosto muualla kuin tässä selaimessa.",
+      "capTitle": "Päiväkirjasi on täynnä",
+      "cap": "Päiväkirjasi säilyttää kierros kierrokselta {cap, number} uusinta kierrostasi, joten jokainen uusi kierros korvaa nyt vanhimman. Yhteismäärät, putket ja ennätykset laskevat yhä jokaisen kierroksen.",
+      "gotIt": "Selvä"
+    },
     "need": {
       "rounds": "{count, plural, one {vielä # kierros} other {vielä # kierrosta}}",
       "days": "{count, plural, one {vielä # pelipäivä} other {vielä # pelipäivää}}",

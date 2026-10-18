@@ -65,16 +65,18 @@ export type TileState =
   | { readonly state: "empty"; readonly href: string; readonly cta: "play" | "choose" };
 
 /**
- * The page's figure tiles by where they sit: the lead row a player checks first, the totals and records under it,
- * and the figures of the record's other parts at the foot. The charts and tables between them read the metrics whole.
+ * The page's figure tiles by where they sit: today's row of the day streak and the daily board, which shows even
+ * before either can read a figure, the lead row a player checks first, the totals and records under it, and the
+ * figures of the record's other parts at the foot. The charts and tables between them read the metrics whole.
  */
 export const DASHBOARD_GROUPS = {
+  today: ["streak", "daily"],
   lead: ["rating", "span", "piecesHeld", "speed", "studyTime", "rebuildTime"],
-  summary: ["bestAccuracy", "recentAccuracy", "winStreak", "streak", "rounds", "days"],
-  more: ["daily", "week", "curve", "notebook", "plans", "goal", "board"],
+  summary: ["bestAccuracy", "recentAccuracy", "winStreak", "rounds", "days"],
+  more: ["week", "curve", "notebook", "plans", "goal", "board"],
 } as const;
 
-export const DASHBOARD_TILES = [...DASHBOARD_GROUPS.lead, ...DASHBOARD_GROUPS.summary, ...DASHBOARD_GROUPS.more] as const;
+export const DASHBOARD_TILES = [...DASHBOARD_GROUPS.today, ...DASHBOARD_GROUPS.lead, ...DASHBOARD_GROUPS.summary, ...DASHBOARD_GROUPS.more] as const;
 
 export type DashboardTileId = (typeof DASHBOARD_TILES)[number];
 export type DashboardTile = { readonly id: DashboardTileId } & TileState;
@@ -97,12 +99,13 @@ export const SHARE_TILES = [
   "rounds",
   "days",
 ] as const satisfies readonly (
+  | (typeof DASHBOARD_GROUPS.today)[number]
   | (typeof DASHBOARD_GROUPS.lead)[number]
   | (typeof DASHBOARD_GROUPS.summary)[number]
 )[];
 
 /** Which way of a figure's number is progress. Speed and the two times are seconds, so they improve as they fall. */
-export const BETTER_WHEN: { readonly [K in (typeof DASHBOARD_GROUPS.lead)[number] | (typeof DASHBOARD_GROUPS.summary)[number]]: "higher" | "lower" } = {
+export const BETTER_WHEN: { readonly [K in ShareFigureId]: "higher" | "lower" } = {
   rating: "higher",
   span: "higher",
   piecesHeld: "higher",
@@ -343,4 +346,29 @@ export function shareCardOf(tiles: readonly DashboardTile[], rounds: number): Sh
   const lead = figures.find(({ figure }) => figure.value > 0);
   if (!lead) return null;
   return { figures: [lead, ...figures.filter((candidate) => candidate !== lead)], rounds };
+}
+
+/** A tile with no figure yet: what it still needs and where to play it, or a first round or a choice. */
+export type LockedTile = DashboardTile & { readonly state: "warming" | "empty" };
+
+const isLocked = (tile: DashboardTile): tile is LockedTile => tile.state === "warming" || tile.state === "empty";
+
+/** Playable now, then only tomorrow, then a choice; within each, the fewest rounds or days left first. */
+function distanceOf(tile: LockedTile): readonly [number, number] {
+  if (tile.state === "empty") return tile.cta === "choose" ? [2, 0] : [0, 1];
+  return [tile.href === null ? 1 : 0, Math.max(...Object.values(tile.need))];
+}
+
+const TODAY: ReadonlySet<DashboardTileId> = new Set(DASHBOARD_GROUPS.today);
+
+/** The tiles the page draws: every one with a figure, and today's row whatever its state. */
+export const figuresOf = (tiles: readonly DashboardTile[]) => tiles.filter((tile) => TODAY.has(tile.id) || !isLocked(tile));
+
+/** The locked tiles outside today's row, nearest to unlocking first, keeping page order on a tie. */
+export function unlocksOf(tiles: readonly DashboardTile[]): readonly LockedTile[] {
+  return tiles
+    .filter((tile): tile is LockedTile => !TODAY.has(tile.id) && isLocked(tile))
+    .map((tile, order) => ({ tile, order, distance: distanceOf(tile) }))
+    .sort((a, b) => a.distance[0] - b.distance[0] || a.distance[1] - b.distance[1] || a.order - b.order)
+    .map(({ tile }) => tile);
 }

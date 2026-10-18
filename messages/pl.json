@@ -1367,6 +1367,24 @@
     "notSet": "Jeszcze nie ustawiono.",
     "needs": "Odblokuje się po {need}.",
     "needsAt": "Odblokuje się po {need} przy {pieceCount} figurach, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Następne do odblokowania",
+      "plain": "po {need}",
+      "at": "po {need} przy {pieceCount} figurach, {memorizeSeconds} s",
+      "showAll": "Pokaż wszystkie ({count})",
+      "showFewer": "Pokaż mniej"
+    },
+    "backup": {
+      "title": "Zachowaj kopię swojego dziennika",
+      "never": "{rounds, plural, one {Twoja # runda jest zapisana} few {Twoje # rundy są zapisane} many {Twoich # rund jest zapisanych} other {Twoje # rundy są zapisane}} tylko w tej przeglądarce, która może usunąć dane, aby zwolnić miejsce. Pobrana kopia zabezpieczy twój dziennik.",
+      "behind": "Od twojej ostatniej kopii z {date} {rounds, plural, one {rozegrano # rundę} few {rozegrano # rundy} many {rozegrano # rund} other {rozegrano # rundy}}. Ta przeglądarka może usunąć zapisane dane, aby zwolnić miejsce, więc pobierz nową kopię.",
+      "download": "Pobierz kopię",
+      "later": "Nie teraz",
+      "started": "Pobieranie rozpoczęte. Przechowuj plik poza tą przeglądarką.",
+      "capTitle": "Twój dziennik jest pełny",
+      "cap": "Twój dziennik przechowuje szczegółowo {cap, number} najnowszych rund, więc każda nowa runda zastępuje teraz najstarszą. Sumy, serie i rekordy nadal liczą każdą rundę.",
+      "gotIt": "Rozumiem"
+    },
     "need": {
       "rounds": "{count, plural, one {# kolejnej rundzie} few {# kolejnych rundach} many {# kolejnych rundach} other {# kolejnej rundy}}",
       "days": "{count, plural, one {# kolejnym dniu gry} few {# kolejnych dniach gry} many {# kolejnych dniach gry} other {# kolejnego dnia gry}}",

@@ -1367,6 +1367,24 @@
     "notSet": "Nesetat încă.",
     "needs": "Se deblochează cu {need}.",
     "needsAt": "Se deblochează cu {need} la {pieceCount} piese, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Urmează să se deblocheze",
+      "plain": "{need}",
+      "at": "{need} la {pieceCount} piese, {memorizeSeconds} s",
+      "showAll": "Arată toate ({count})",
+      "showFewer": "Arată mai puține"
+    },
+    "backup": {
+      "title": "Păstrează o copie a jurnalului tău",
+      "never": "{rounds, plural, one {Ai # rundă salvată} few {Ai # runde salvate} other {Ai # de runde salvate}} doar în acest browser, care poate șterge datele ca să elibereze spațiu. O copie descărcată îți păstrează jurnalul în siguranță.",
+      "behind": "De la ultima ta copie din {date} {rounds, plural, one {s-a jucat # rundă} few {s-au jucat # runde} other {s-au jucat # de runde}}. Acest browser își poate șterge datele stocate ca să elibereze spațiu, așa că descarcă o copie nouă.",
+      "download": "Descarcă o copie",
+      "later": "Nu acum",
+      "started": "Descărcarea a început. Păstrează fișierul în alt loc decât acest browser.",
+      "capTitle": "Jurnalul tău e plin",
+      "cap": "Jurnalul tău păstrează rundă cu rundă cele mai noi {cap, number} de runde ale tale, așa că fiecare rundă nouă o înlocuiește acum pe cea mai veche. Totalurile, seriile și recordurile tale numără în continuare fiecare rundă.",
+      "gotIt": "Am înțeles"
+    },
     "need": {
       "rounds": "{count, plural, one {încă # rundă} few {încă # runde} other {încă # de runde}}",
       "days": "{count, plural, one {încă # zi de joc} few {încă # zile de joc} other {încă # de zile de joc}}",

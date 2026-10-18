@@ -1367,6 +1367,24 @@
     "notSet": "Még nincs beállítva.",
     "needs": "Feloldás: {need}.",
     "needsAt": "Feloldás: {need}, {pieceCount} bábu, {memorizeSeconds} mp.",
+    "unlocks": {
+      "title": "Következő feloldások",
+      "plain": "{need}",
+      "at": "{need}, {pieceCount} bábu, {memorizeSeconds} mp",
+      "showAll": "Összes mutatása ({count})",
+      "showFewer": "Kevesebb mutatása"
+    },
+    "backup": {
+      "title": "Ments másolatot a jegyzőkönyvedről",
+      "never": "{rounds, plural, one {# köröd} other {# köröd}} csak ebben a böngészőben van meg, amely helyfelszabadítás céljából törölheti az adatokat. Egy letöltött másolat biztonságban tartja a jegyzőkönyvedet.",
+      "behind": "Legutóbbi másolatod ({date}) óta {rounds, plural, one {# kört} other {# kört}} játszottál. Ez a böngésző helyfelszabadítás céljából törölheti a tárolt adatait, ezért tölts le egy friss másolatot.",
+      "download": "Másolat letöltése",
+      "later": "Most nem",
+      "started": "A letöltés elindult. Tárold a fájlt máshol, ne ebben a böngészőben.",
+      "capTitle": "Megtelt a jegyzőkönyved",
+      "cap": "A jegyzőkönyved körönként a legújabb {cap, number} körödet őrzi meg, így mostantól minden új kör a legrégebbit váltja fel. Az összesítéseid, sorozataid és csúcsaid továbbra is minden kört beszámítanak.",
+      "gotIt": "Értem"
+    },
     "need": {
       "rounds": "{count, plural, one {még # kör} other {még # kör}}",
       "days": "{count, plural, one {még # játéknap} other {még # játéknap}}",

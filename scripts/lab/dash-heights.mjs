@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Measures the dashboard's figure tiles with their reserved height switched off, for every locale and the personas in
+ * Measures the dashboard's today tiles, the only ones drawn before the record is read, with their reserved height switched off, for every locale and the personas in
  * PERSONAS, at the narrowest width of each layout in WIDTHS, and fails when a row of tiles is taller than the
  * min-height its tiles reserve before the record is read. A row that outgrows its reserve pushes everything under it
  * down when the figures arrive, a layout shift. Prints the tallest row per tile list and width, with who drew it.
@@ -20,7 +20,7 @@ const RESULT_FILE = "heights.json";
 const PERSONAS = ["newVisitor", "twoRounds", "thirtyDays", "stale", "heavy"];
 // Both sides of each width dashboard.css changes the tiles' columns or reserves at; each tier's narrowest width is its tallest.
 const WIDTHS = [1440, 1024, 1023, 768, 767, 480, 479, 390, 360, 359, 320];
-const LISTS = ["lead", "summary"];
+const LISTS = ["today"];
 const CONCURRENCY = 4;
 
 const MEASURE = `(() => {

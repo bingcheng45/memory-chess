@@ -156,23 +156,23 @@ describe("the calibration round controls", () => {
     expect(screen.getByRole("button", { name: "Clear board" })).toBeDisabled();
   });
 
-  it("swaps Start for Done while studying, with Submit still disabled", async () => {
+  it("swaps Start for Hide board while studying, with Submit still disabled", async () => {
     renderWithIntl(<CalibrationSection />);
     await startRound();
 
-    expect(buttonState()).toEqual([["Done", false], ["Submit reading", true]]);
-    expect(controls().getByRole("button", { name: "Done" })).toHaveAttribute("data-primary");
+    expect(buttonState()).toEqual([["Hide board", false], ["Submit reading", true]]);
+    expect(controls().getByRole("button", { name: "Hide board" })).toHaveAttribute("data-primary");
     expect(screen.queryByText(/Ready early/)).toBeNull();
   });
 
-  it("rebuilds at once on Done and shows the real study time as exposure", async () => {
+  it("rebuilds at once on Hide board and shows the real study time as exposure", async () => {
     renderWithIntl(<CalibrationSection />);
     await startRound();
     act(() => {
       jest.advanceTimersByTime(3000);
     });
 
-    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    fireEvent.click(controls().getByRole("button", { name: "Hide board" }));
 
     expect(screen.getByText("Phase 6 · Rebuild")).toBeInTheDocument();
     expect(buttonState()).toEqual([["Restart", false], ["Submit reading", false]]);
@@ -189,7 +189,7 @@ describe("the calibration round controls", () => {
     act(() => {
       jest.advanceTimersByTime(2000);
     });
-    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    fireEvent.click(controls().getByRole("button", { name: "Hide board" }));
     fireEvent.click(controls().getByRole("button", { name: "Submit reading" }));
 
     const saved = jest.mocked(recordLabRound).mock.calls.at(-1)![0];
@@ -202,7 +202,7 @@ describe("the calibration round controls", () => {
     renderWithIntl(<CalibrationSection />);
     await startRound();
     const [square, pieceName] = studiedPiece();
-    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    fireEvent.click(controls().getByRole("button", { name: "Hide board" }));
     fireEvent.click(paletteButton(pieceName));
     fireEvent.click(screen.getByRole("button", { name: `${square}, empty` }));
     expect(screen.getByRole("button", { name: `${square}, ${pieceName}` })).toBeInTheDocument();
@@ -220,7 +220,7 @@ describe("the calibration round controls", () => {
   it("greys out the white king once it is placed and says why a second one is refused", async () => {
     renderWithIntl(<CalibrationSection />);
     await startRound();
-    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    fireEvent.click(controls().getByRole("button", { name: "Hide board" }));
     fireEvent.click(paletteButton("white king"));
     fireEvent.click(screen.getByRole("button", { name: "e1, empty" }));
     fireEvent.click(screen.getByRole("button", { name: "d1, empty" }));
@@ -236,7 +236,7 @@ describe("the calibration round controls", () => {
   it("keeps two buttons once scored: Run again as primary and Submit disabled", async () => {
     renderWithIntl(<CalibrationSection />);
     await startRound();
-    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    fireEvent.click(controls().getByRole("button", { name: "Hide board" }));
     fireEvent.click(controls().getByRole("button", { name: "Submit reading" }));
 
     expect(screen.getByText("Phase 7 · Score")).toBeInTheDocument();
@@ -254,7 +254,7 @@ describe("the calibration round controls", () => {
     });
     expect(screen.getByRole("timer").textContent).toMatch(/^[89]\.\d{3}s$/);
 
-    fireEvent.click(controls().getByRole("button", { name: "Done" }));
+    fireEvent.click(controls().getByRole("button", { name: "Hide board" }));
     act(() => {
       jest.advanceTimersByTime(2500);
     });

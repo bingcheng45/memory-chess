@@ -1,7 +1,6 @@
 import { useRef } from "react";
 import { act, fireEvent, render, screen } from "@/test-utils/intl";
 import RoundSavedToast, { ROUND_SAVED_TOAST_MS } from "@/components/game/RoundSavedToast";
-import { FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY } from "@/components/game/feedbackSchedule";
 
 const MESSAGE = "Round saved. Your updated stats are just below.";
 
@@ -9,11 +8,11 @@ function placeSections(top: number) {
   jest.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({ top, bottom: top + 300 } as DOMRect);
 }
 
-function Result({ roundId }: { roundId: string }) {
+function Result({ roundId, feedbackAsked = false }: { roundId: string; feedbackAsked?: boolean }) {
   const section = useRef<HTMLElement>(null);
   return (
     <section ref={section} tabIndex={-1} aria-label="Your dashboard after this round">
-      <RoundSavedToast roundId={roundId} target={section} />
+      <RoundSavedToast roundId={roundId} target={section} feedbackAsked={feedbackAsked} />
     </section>
   );
 }
@@ -21,10 +20,7 @@ function Result({ roundId }: { roundId: string }) {
 let scrolled: jest.Mock;
 let reducedMotion: boolean;
 
-const feedbackAskedAt = (time: number) => window.localStorage.setItem(FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY, String(time));
-
 beforeEach(() => {
-  feedbackAskedAt(Date.now() + 60 * 60 * 1000);
   jest.useFakeTimers();
   scrolled = jest.fn();
   reducedMotion = false;
@@ -46,10 +42,9 @@ describe("RoundSavedToast", () => {
     expect(screen.getByRole("status")).toHaveTextContent(`${MESSAGE}Show me`);
   });
 
-  it("stays quiet when the first-game feedback prompt is about to open, so the two never stack", () => {
-    feedbackAskedAt(0);
+  it("stays quiet when the feedback prompt is about to open, so the two never stack", () => {
     placeSections(1200);
-    render(<Result roundId="feedback-due" />);
+    render(<Result roundId="feedback-due" feedbackAsked />);
 
     expect(screen.getByRole("status")).toBeEmptyDOMElement();
   });

@@ -57,6 +57,13 @@ const OPEN_SET_BOARD: Record<SetBoardSource, () => Promise<SetBoardOpen>> = {
     }),
 };
 
+/** A player's first-ever round waits behind the rule and Start: a record this device can read that holds no rounds yet. */
+const isFirstEverRound = (): Promise<boolean> =>
+  import('@/lib/lab/storage').then(async ({ labStore }) => {
+    const store = labStore();
+    return store !== null && (await store.isAvailable()) && (await store.readSummary()).rounds === 0;
+  });
+
 /**
  * Pins the page while a round is memorised or placed. Pinning the scrolling
  * element, rather than only hiding its overflow, is what stops iOS
@@ -116,7 +123,7 @@ const subscribeNothing = () => () => {};
 /** What today's board asks, known from the date alone, so it shows while the board itself is still read. */
 const todayGate = (): GateFacts => {
   const day = utcDayOf(Date.now());
-  return { day, ...dailySettingOf(day) };
+  return { kind: 'daily', day, ...dailySettingOf(day) };
 };
 
 function GamePageContent() {
@@ -143,6 +150,8 @@ function GamePageContent() {
   // Until today's board is read, a daily link shows the veiled board with Start held, never the configuration form.
   const [dailyRead, setDailyRead] = useState(false);
   const [triedToday, setTriedToday] = useState(false);
+  // A link's random round, until the record says whether it is the player's first.
+  const [linkRead, setLinkRead] = useState(false);
   // A daily round's record being written, before /daily takes over.
   const [savingDaily, setSavingDaily] = useState(false);
   // A round the player starts by hand wins over a set board still being read.
@@ -153,6 +162,7 @@ function GamePageContent() {
   const dailyPending = hydrated && urlRound?.source === 'daily' && !dailyRead && round.phase === 'idle' && !refused;
   // A try already spent today is refused whatever the record says, so the board is never shown before the notice.
   const opening = dailyPending && !triedToday;
+  const linkPending = hydrated && !!urlRound && !isSetBoardSource(urlRound.source) && !linkRead && round.phase === 'idle';
 
   // Memorising and placing are played without scrolling: the board is sized
   // from the room that is actually left, so the screen holds exactly what
@@ -182,13 +192,21 @@ function GamePageContent() {
     clearRoundParams();
     if (!urlRound) return;
     const { source } = urlRound;
+    // StrictMode runs this twice; only the live run starts the board, or the second read would refuse a set one.
+    let live = true;
     if (!isSetBoardSource(source)) {
-      startGame(urlRound.pieceCount, urlRound.memorizeTime, source);
-      return;
+      void isFirstEverRound()
+        .catch(() => false)
+        .then((first) => {
+          if (!live) return;
+          setLinkRead(true);
+          (first ? prepareGame : startGame)(urlRound.pieceCount, urlRound.memorizeTime, source);
+        });
+      return () => {
+        live = false;
+      };
     }
 
-    // StrictMode runs this twice; only the live run starts the board, or the second read would refuse it.
-    let live = true;
     OPEN_SET_BOARD[source]()
       .then((opened) => {
         if (!live || startedByHandRef.current) return;
@@ -292,8 +310,8 @@ function GamePageContent() {
     switch (round.phase) {
       case 'idle': {
         if (opening) return activeRound(round, todayGate());
-        // Before the address is read this is one commit that never paints; on a day already tried it waits for the notice.
-        if (addressUnread || dailyPending) return <div className={containerClass} />;
+        // Before the address is read this is one commit that never paints; on a day already tried it waits for the notice, and a link waits for the record.
+        if (addressUnread || dailyPending || linkPending) return <div className={containerClass} />;
         // A daily link's notice waits on nothing rather than flashing the form it replaces.
         const noticeFallback = refused === 'daily' ? null : <GameConfig onStart={handleStartGame} />;
         return (
@@ -317,9 +335,9 @@ function GamePageContent() {
       case 'ready':
       case 'countdown': {
         const { pieceCount, studyMs, board } = round.config;
-        if (!board) return activeRound(round, null);
-        const day = board.kind === 'daily' ? board.day : utcDayOf(Date.now());
-        return activeRound(round, { day, pieceCount, memorizeTime: studyMs / 1000 });
+        const memorizeTime = studyMs / 1000;
+        if (board) return activeRound(round, { kind: 'daily', day: board.kind === 'daily' ? board.day : utcDayOf(Date.now()), pieceCount, memorizeTime });
+        return activeRound(round, round.phase === 'ready' ? { kind: 'firstRound', pieceCount, memorizeTime } : null);
       }
 
       case 'study':

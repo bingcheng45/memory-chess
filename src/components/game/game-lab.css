@@ -144,6 +144,7 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .round-gate-facts { margin: 0; font: 600 16px/1.35 var(--lp-ui); color: var(--lp-ink); font-variant-numeric: tabular-nums; }
 .lab-game .round-gate-rule { margin: 0 0 8px; font: 400 14px/1.5 var(--lp-body); color: var(--lp-muted); text-wrap: balance; }
 .lab-game .round-gate-card .lab-btn { min-width: 180px; }
+.lab-game .round-gate-intro { margin-bottom: 8px; text-wrap: balance; }
 .lab-game .round-count { font: 700 clamp(72px, 30cqmin, 160px)/1 var(--lp-ui); color: var(--lp-ink); font-variant-numeric: tabular-nums; text-shadow: 0 0 24px var(--lp-surface); animation: round-count-in 0.3s ease-out; }
 @keyframes round-count-in { from { opacity: 0; transform: scale(1.25); } }
 /* Before hydration a daily link's served page still holds the configuration form; the layout's script marks the

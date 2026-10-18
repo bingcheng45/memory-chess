@@ -78,8 +78,8 @@ interface GameStore {
   round: RoundState;
 
   startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
-  /** Sets a board out behind its Start button. Start is `dispatch({ type: 'begin' })`; the round studies on endCountdown. */
-  prepareGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board: SetBoard) => void;
+  /** Sets a board out behind its Start button, a random one without `board`. Start is `dispatch({ type: 'begin' })`; the round studies on endCountdown. */
+  prepareGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
   /** Counts a new random board in over the veil, without a Start button; the round studies on endCountdown. */
   countInGame: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
   endCountdown: (now?: number) => void;
@@ -197,8 +197,14 @@ export const useGameStore = create<GameStore>()(
         trackRoundStart(pieceCount, memorizeTime, source);
       },
 
-      prepareGame: (pieceCount, memorizeTime, source, board) =>
-        set({ round: roundReducer(get().round, { type: 'prepare', config: { pieceCount, studyMs: memorizeTime * 1000, source, board } }) }),
+      prepareGame: (pieceCount, memorizeTime, source, board) => {
+        const fen = board ? board.fen : generateMemorizationPosition(pieceCount)?.fen();
+        if (!fen) {
+          console.error('Failed to generate random position');
+          return;
+        }
+        set({ round: roundReducer(get().round, { type: 'prepare', config: { pieceCount, studyMs: memorizeTime * 1000, source, board }, fen }) });
+      },
 
       countInGame: (pieceCount, memorizeTime, source) => {
         const fen = generateMemorizationPosition(pieceCount)?.fen();

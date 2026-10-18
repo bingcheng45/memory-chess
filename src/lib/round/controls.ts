@@ -3,7 +3,7 @@ import type { RoundPhase } from "./round";
 export type ControlIntent = "start" | "endStudy" | "submit";
 
 export interface RoundControl {
-  readonly label: "start" | "done" | "restart" | "again" | "submit";
+  readonly label: "start" | "hide" | "restart" | "again" | "submit";
   readonly intent: ControlIntent;
   readonly enabled: boolean;
 }
@@ -19,7 +19,7 @@ const SUBMIT_OFF: RoundControl = { label: "submit", intent: "submit", enabled: f
 
 /** Before study the board's own Start button leads; the round's buttons wait, as they will read in study. */
 const WAITING: PhaseControls = {
-  first: { label: "done", intent: "endStudy", enabled: false },
+  first: { label: "hide", intent: "endStudy", enabled: false },
   second: SUBMIT_OFF,
   primary: "first",
   clearEnabled: false,
@@ -36,7 +36,7 @@ export const ROUND_CONTROLS = {
   ready: WAITING,
   countdown: WAITING,
   study: {
-    first: { label: "done", intent: "endStudy", enabled: true },
+    first: { label: "hide", intent: "endStudy", enabled: true },
     second: SUBMIT_OFF,
     primary: "first",
     clearEnabled: false,

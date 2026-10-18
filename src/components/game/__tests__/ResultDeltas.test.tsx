@@ -36,7 +36,7 @@ function afterRound(record: readonly RoundRecord[], standing: Standing) {
     gameState: { ...gameState, labRound: { facts, endedAt: played.endedAt }, skillRating: standing.rating, streak: standing.streak, standingBefore: standing.before },
     history: standing.history,
   }));
-  render(<ResultDeltas before={before} labRound={{ facts, endedAt: played.endedAt }} />);
+  render(<ResultDeltas before={before} labRound={{ facts, endedAt: played.endedAt }} feedbackAsked={false} />);
   return screen.getByRole("region", { name: "Your dashboard after this round" });
 }
 

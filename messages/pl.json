@@ -355,7 +355,7 @@
         "start": "Rozpocznij kalibrację",
         "restart": "Od nowa",
         "again": "Jeszcze raz",
-        "done": "Gotowe",
+        "hide": "Ukryj szachownicę",
         "submit": "Wyślij odczyt",
         "clear": "Wyczyść szachownicę",
         "controlsLabel": "Sterowanie rundą",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Start",
-      "done": "Gotowe",
+      "intro": "Zapamiętaj {count, plural, one {# bierkę} few {# bierki} many {# bierek} other {# bierki}} w {seconds} s, a potem odtwórz pozycję z pamięci.",
+      "hide": "Ukryj szachownicę",
       "restart": "Od nowa",
       "again": "Jeszcze raz",
       "submit": "Wyślij",

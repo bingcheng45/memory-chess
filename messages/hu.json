@@ -355,7 +355,7 @@
         "start": "Kalibrálás indítása",
         "restart": "Újrakezdés",
         "again": "Újra",
-        "done": "Kész",
+        "hide": "Tábla elrejtése",
         "submit": "Mérés beküldése",
         "clear": "Tábla törlése",
         "controlsLabel": "A kör vezérlői",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Indítás",
-      "done": "Kész",
+      "intro": "Jegyezz meg {count} bábut {seconds} mp alatt, aztán rakd ki az állást emlékezetből.",
+      "hide": "Tábla elrejtése",
       "restart": "Újrakezdés",
       "again": "Új kör",
       "submit": "Beküldés",

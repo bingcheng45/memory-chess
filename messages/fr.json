@@ -355,7 +355,7 @@
         "start": "Lancer l’étalonnage",
         "restart": "Recommencer",
         "again": "Refaire",
-        "done": "Terminé",
+        "hide": "Masquer l’échiquier",
         "submit": "Valider la mesure",
         "clear": "Vider l’échiquier",
         "controlsLabel": "Commandes de la partie",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Commencer",
-      "done": "Terminé",
+      "intro": "Mémorisez {count, plural, one {# pièce} many {# de pièces} other {# pièces}} pendant {seconds} s, puis reconstituez la position de mémoire.",
+      "hide": "Masquer l’échiquier",
       "restart": "Recommencer",
       "again": "Rejouer",
       "submit": "Valider",

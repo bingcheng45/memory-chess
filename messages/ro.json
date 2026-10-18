@@ -355,7 +355,7 @@
         "start": "Începe calibrarea",
         "restart": "Reîncepe",
         "again": "Încă o dată",
-        "done": "Gata",
+        "hide": "Ascunde tabla",
         "submit": "Trimite citirea",
         "clear": "Golește tabla",
         "controlsLabel": "Comenzile rundei",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Începe",
-      "done": "Gata",
+      "intro": "Memorează {count, plural, one {# piesă} few {# piese} other {# de piese}} timp de {seconds} s, apoi refă poziția din memorie.",
+      "hide": "Ascunde tabla",
       "restart": "Reîncepe",
       "again": "Joacă din nou",
       "submit": "Trimite",

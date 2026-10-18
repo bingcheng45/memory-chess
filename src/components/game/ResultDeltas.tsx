@@ -87,6 +87,7 @@ export async function readRecordBefore(): Promise<RecordBefore | null> {
 export interface ResultDeltasProps {
   readonly before: RecordBefore;
   readonly labRound: LabRound;
+  readonly feedbackAsked: boolean;
 }
 
 /**
@@ -94,7 +95,7 @@ export interface ResultDeltasProps {
  * from the record read during the round plus the round itself, through the same tile builders as the dashboard, so
  * the list is whole in the first frame it is drawn in and nothing under it moves.
  */
-export default function ResultDeltas({ before, labRound }: ResultDeltasProps) {
+export default function ResultDeltas({ before, labRound, feedbackAsked }: ResultDeltasProps) {
   const t = useTranslations("dashboard.deltas");
   const [weekGoal] = useWeekGoal();
   const standings = useRoundStandings(labRound.facts.id);
@@ -132,7 +133,7 @@ export default function ResultDeltas({ before, labRound }: ResultDeltasProps) {
       <Link className="lab-deltas-open" href="/dashboard">
         {t("open")} <span aria-hidden="true">→</span>
       </Link>
-      <RoundSavedToast roundId={labRound.facts.id} target={section} />
+      <RoundSavedToast roundId={labRound.facts.id} target={section} feedbackAsked={feedbackAsked} />
     </section>
   );
 }

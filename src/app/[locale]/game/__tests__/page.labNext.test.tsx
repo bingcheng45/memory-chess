@@ -42,7 +42,7 @@ describe("GamePage starting the lab card's next round", () => {
     render(<GamePage />);
     fireEvent.click(screen.getByRole("button", { name: "Start round" }));
     act(() => useGameStore.getState().endCountdown());
-    fireEvent.click(screen.getByRole("button", { name: "Done" }));
+    fireEvent.click(screen.getByRole("button", { name: "Hide board" }));
     fireEvent.click(screen.getByRole("button", { name: "Submit" }));
     const url = window.location.href;
 

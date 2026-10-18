@@ -355,7 +355,7 @@
         "start": "Start calibration",
         "restart": "Restart",
         "again": "Run again",
-        "done": "Done",
+        "hide": "Hide board",
         "submit": "Submit reading",
         "clear": "Clear board",
         "controlsLabel": "Round controls",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Start",
-      "done": "Done",
+      "intro": "Study {count, plural, one {# piece} other {# pieces}} for {seconds} s, then rebuild the position from memory.",
+      "hide": "Hide board",
       "restart": "Restart",
       "again": "Play again",
       "submit": "Submit",

@@ -355,7 +355,7 @@
         "start": "Bắt đầu hiệu chuẩn",
         "restart": "Làm lại",
         "again": "Đo lại",
-        "done": "Xong",
+        "hide": "Ẩn bàn cờ",
         "submit": "Gửi số đo",
         "clear": "Xóa bàn cờ",
         "controlsLabel": "Điều khiển ván",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Bắt đầu",
-      "done": "Xong",
+      "intro": "Ghi nhớ {count} quân trong {seconds} giây, rồi xếp lại thế cờ theo trí nhớ.",
+      "hide": "Ẩn bàn cờ",
       "restart": "Làm lại",
       "again": "Chơi lại",
       "submit": "Gửi",

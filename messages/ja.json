@@ -355,7 +355,7 @@
         "start": "キャリブレーション開始",
         "restart": "やり直す",
         "again": "もう一度",
-        "done": "完了",
+        "hide": "盤面を隠す",
         "submit": "測定値を送信",
         "clear": "盤面をクリア",
         "controlsLabel": "ラウンドの操作",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "スタート",
-      "done": "完了",
+      "intro": "{count}個の駒を{seconds}秒で覚え、記憶から配置を再現しましょう。",
+      "hide": "盤面を隠す",
       "restart": "やり直す",
       "again": "もう一度",
       "submit": "送信",

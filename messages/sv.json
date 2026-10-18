@@ -355,7 +355,7 @@
         "start": "Starta kalibrering",
         "restart": "Börja om",
         "again": "Kör igen",
-        "done": "Klar",
+        "hide": "Dölj brädet",
         "submit": "Skicka in mätningen",
         "clear": "Töm brädet",
         "controlsLabel": "Rundans kontroller",
@@ -1108,7 +1108,8 @@
     },
     "round": {
       "start": "Starta",
-      "done": "Klar",
+      "intro": "Studera {count, plural, one {# pjäs} other {# pjäser}} i {seconds} s och bygg sedan upp ställningen ur minnet.",
+      "hide": "Dölj brädet",
       "restart": "Börja om",
       "again": "Spela igen",
       "submit": "Skicka in",

@@ -1,3 +1,5 @@
+import type { LabSummary } from "@/lib/lab/summary";
+
 export const FEEDBACK_COOLDOWN_MS = 24 * 60 * 60 * 1_000;
 export const FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY = "memory-chess-feedback-next-eligible-at";
 
@@ -24,7 +26,14 @@ export function writeNextEligibleAt(fromTime = Date.now()): void {
   }
 }
 
-/** Whether the result screen about to open will ask for feedback, so nothing else competes with that dialog. */
-export function feedbackPromptDue(): boolean {
-  return readNextEligibleAt() <= Date.now();
+const ASK_FROM_ROUND = 5;
+
+/**
+ * Whether the result screen of a round that ended on local day `today` asks for feedback, read from the record as the
+ * round found it. A player is asked from their fifth finished round or on a later day than their first, so never on
+ * top of their first result.
+ */
+export function feedbackDue(before: Pick<LabSummary, "rounds" | "days">, today: string, now = Date.now()): boolean {
+  const firstDay = before.days[0] ?? today;
+  return (before.rounds + 1 >= ASK_FROM_ROUND || firstDay < today) && readNextEligibleAt() <= now;
 }

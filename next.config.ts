@@ -9,6 +9,43 @@ const withNextIntl = createNextIntlPlugin("./src/i18n/request.ts");
  */
 const SKIPPED_BY_MIDDLEWARE = "(?:api|_vercel).*|.*\\..*";
 
+const GOOGLE_ADS = ["https://*.googlesyndication.com", "https://*.doubleclick.net", "https://*.adtrafficquality.google", "https://www.google.com"];
+const GOOGLE_ANALYTICS = ["https://www.googletagmanager.com", "https://*.google-analytics.com", "https://analytics.google.com", "https://*.analytics.google.com"];
+const AHREFS = "https://analytics.ahrefs.com";
+const DATABUDDY_SCRIPT = "https://cdn.databuddy.cc";
+const DATABUDDY_EVENTS = ["https://basket.databuddy.cc", "https://api.databuddy.cc"];
+const YOUTUBE = "https://www.youtube.com";
+
+/**
+ * 'unsafe-inline' stays in script-src because Next writes per-build inline
+ * scripts into statically rendered pages, which hashes cannot follow and a
+ * nonce would force to render on every request. img-src admits any https image
+ * because Google's tags fetch pixels from country domains such as google.com.sg.
+ */
+const REPORT_ONLY_POLICY = [
+  "default-src 'self'",
+  `script-src 'self' 'unsafe-inline' ${[...GOOGLE_ADS, ...GOOGLE_ANALYTICS, AHREFS, DATABUDDY_SCRIPT, YOUTUBE].join(" ")}`,
+  "style-src 'self' 'unsafe-inline'",
+  "img-src 'self' data: blob: https:",
+  "font-src 'self' data:",
+  `connect-src 'self' ${[...GOOGLE_ADS, ...GOOGLE_ANALYTICS, AHREFS, ...DATABUDDY_EVENTS].join(" ")}`,
+  `frame-src ${[...GOOGLE_ADS, YOUTUBE].join(" ")}`,
+  "frame-ancestors 'none'",
+  "object-src 'none'",
+  "base-uri 'self'",
+  "form-action 'self'",
+].join("; ");
+
+const SECURITY_HEADERS = [
+  { key: "X-Frame-Options", value: "DENY" },
+  { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
+  { key: "Content-Security-Policy-Report-Only", value: REPORT_ONLY_POLICY },
+  { key: "X-Content-Type-Options", value: "nosniff" },
+  { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+  { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
+  { key: "Strict-Transport-Security", value: "max-age=63072000; includeSubDomains" },
+];
+
 const nextConfig: NextConfig = {
   output: "standalone",
   reactStrictMode: true,
@@ -21,6 +58,9 @@ const nextConfig: NextConfig = {
    * sent to the not-found page rather than served twice.
    */
   skipTrailingSlashRedirect: true,
+  async headers() {
+    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+  },
   async redirects() {
     return [
       // Vercel serves the production alias without the noindex header it adds to preview hosts.

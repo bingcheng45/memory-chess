@@ -101,6 +101,16 @@ function retiredPagePath(pathname: string): string | null {
   return localizedPath(target, bare === pathname ? DEFAULT_LOCALE : pathname.split("/")[1]);
 }
 
+const LOCALE_ALIASES: Readonly<Record<string, string>> = { pt: "pt-BR", zh: "zh-CN" };
+
+function withCanonicalLocalePrefix(pathname: string): string {
+  const [, prefix, ...rest] = pathname.split("/");
+  if (prefix === DEFAULT_LOCALE) return `/${rest.join("/")}`;
+
+  const locale = LOCALE_ALIASES[prefix];
+  return locale ? ["", locale, ...rest].join("/") : pathname;
+}
+
 /**
  * The one URL a path should answer at: no trailing slash, a retired page's or guide's
  * replacement, and no locale prefix on a page that prefix's readers get at
@@ -108,7 +118,7 @@ function retiredPagePath(pathname: string): string | null {
  * a single hop.
  */
 function canonicalPath(pathname: string): string {
-  const trimmed = pathname.replace(/\/+$/, "") || "/";
+  const trimmed = withCanonicalLocalePrefix(pathname.replace(/\/+$/, "") || "/");
   return retiredPagePath(trimmed) ?? resolveRetiredLearnPath(trimmed) ?? bareEnglishPath(trimmed) ?? trimmed;
 }
 

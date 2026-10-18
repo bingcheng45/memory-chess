@@ -52,8 +52,7 @@ afterEach(() => {
 
 async function playToRebuild() {
   render(<GamePage />);
-  await act(async () => {});
-  fireEvent.click(screen.getByRole("button", { name: "Hide board" }));
+  fireEvent.click(await screen.findByRole("button", { name: "Hide board" }));
 }
 
 async function countThrough() {

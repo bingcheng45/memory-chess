@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "chess-coordinates-practice",
-    title: "Chess Coordinates Practice for Faster Board Awareness",
+    title: "Chess Coordinates Practice: Name Squares Faster",
     h1: "Chess coordinates practice, from counting squares to reading them",
     description: "Chess coordinates practice in three steps. Learn eight anchor squares and a colour rule, then name every square in Memory Chess rounds with labels on and off.",
     group: "board-vision",

@@ -71,6 +71,7 @@ describe("trimmed search titles", () => {
     ["chess-memory-training", "Chess Memory Training: A 6-to-12 Piece Ladder"],
     ["blindfold-chess-training-for-beginners", "How to Learn Blindfold Chess: 4-Stage Training"],
     ["chess-visualization-exercises", "Chess Visualization Training: See the Board"],
+    ["chess-coordinates-practice", "Chess Coordinates Practice: Name Squares Faster"],
   ])("the %s guide is titled %p", (slug, title) => {
     expect(guide(slug).meta.title).toBe(title);
     expect((title + TITLE_SUFFIX).length).toBeLessThanOrEqual(MAX_TITLE_WITH_SUFFIX);
@@ -79,8 +80,15 @@ describe("trimmed search titles", () => {
   it.each([
     ["adriaan-de-groot", "De Groot's 1944 chess memory test, in numbers"],
     ["magnus-carlsen", "How Magnus Carlsen names a game from one position"],
+    ["judit-polgar", "How Judit Polgár played blindfold chess at seven"],
   ])("the %s article's search title is %p", (slug, title) => {
     expect(article(slug).searchTitle).toBe(title);
     expect((title + TITLE_SUFFIX).length).toBeLessThanOrEqual(MAX_TITLE_WITH_SUFFIX);
+  });
+
+  it("fits every guide and article title within 64 characters with the suffix", () => {
+    const titles = [...EN_LEARN_PAGES.map((page) => page.meta.title), ...ARTICLES.map((entry) => entry.searchTitle ?? entry.title)];
+
+    expect(titles.filter((title) => (title + TITLE_SUFFIX).length > MAX_TITLE_WITH_SUFFIX)).toEqual([]);
   });
 });

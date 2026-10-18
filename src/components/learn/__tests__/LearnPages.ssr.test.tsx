@@ -101,7 +101,7 @@ describe("a guide page", () => {
     expect(markup.match(/class="lg-board"/g)).toHaveLength(3);
     expect(markup).toContain('href="/game?pieceCount=6&amp;memorizeTime=10&amp;source=guide_cta"');
     expect(markup).toContain('href="/dashboard#tile-recentAccuracy"');
-    expect(markup).toContain('<a href="/learn/chess-coordinates-practice">Chess Coordinates Practice for Faster Board Awareness</a>');
+    expect(markup).toContain('<a href="/learn/chess-coordinates-practice">Chess Coordinates Practice: Name Squares Faster</a>');
   });
 
   it("hides no text from a crawler", async () => {

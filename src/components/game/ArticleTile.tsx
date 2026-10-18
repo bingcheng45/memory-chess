@@ -131,11 +131,13 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
             type="button"
             data-article-drill-original
             onClick={() => startDrill("drill_original", drill)}
-            className={`${ACTION_CLASS} text-[var(--lp-accent)] underline underline-offset-4 hover:no-underline`}
+            className={`inline-flex min-h-11 items-center rounded-sm text-left text-[14.5px] font-semibold text-[var(--lp-accent)] underline underline-offset-4 hover:no-underline ${ARTICLE_FOCUS_RING}`}
           >
-            {t("articleDrill")}
-            <span aria-hidden="true">&nbsp;·&nbsp;</span>
-            {t("roundSize", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}
+            <span>
+              {t("articleDrill")}
+              <span aria-hidden="true"> · </span>
+              {t("roundSize", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}
+            </span>
           </button>
         )}
       </div>

@@ -84,6 +84,7 @@ jest.mock("@/lib/utils/soundEffects", () => ({
 
 let mockRecordBefore: { rounds: number; days: string[] } | null = null;
 jest.mock("@/components/game/resultDeltasWarm", () => ({
+  warmedRecord: () => Promise.resolve(null),
   warmedResultDeltas: () =>
     mockRecordBefore && { Deltas: () => null, before: { records: [], summary: { ...jest.requireActual("@/lib/lab/summary").EMPTY_SUMMARY, ...mockRecordBefore } } },
 }));

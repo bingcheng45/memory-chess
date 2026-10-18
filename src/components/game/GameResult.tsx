@@ -31,6 +31,8 @@ import { useSettingsStore } from "@/stores/settingsStore";
 import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
 import { feedbackDue } from "@/components/game/feedbackSchedule";
 import { localDayOf } from "@/lib/lab/record";
+import type { LabRound } from "@/lib/lab/recordRound";
+import type { RecordBefore } from "@/components/game/ResultDeltas";
 import { RoundBoard } from "@/components/round/RoundBoard";
 import { ReadoutCard } from "@/components/round/ReadoutCard";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
@@ -38,7 +40,7 @@ import type { BoardAction } from "@/lib/round/round";
 import ArticleTile from "@/components/game/ArticleTile";
 import { countWrong } from "@/lib/game/scoring";
 import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
-import { warmedResultDeltas } from "@/components/game/resultDeltasWarm";
+import { warmedRecord, warmedResultDeltas } from "@/components/game/resultDeltasWarm";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import { CommunityInvite } from "@/components/community/CommunityLink";
 import { isReturningPlayer } from "@/lib/community";
@@ -74,6 +76,12 @@ function ratingNoteOf(outcome: RoundOutcome | undefined, t: ReturnType<typeof us
       return null;
   }
 }
+
+const resultOf = (labRound: LabRound) => ({ id: labRound.facts.id, day: localDayOf(new Date(labRound.endedAt)) });
+
+/** The summary without the round just played: a read that settled after the round was saved already counts it. */
+const summaryBefore = ({ records, summary }: RecordBefore, labRound: LabRound) =>
+  records.some(({ id }) => id === labRound.facts.id) ? { ...summary, rounds: summary.rounds - 1 } : summary;
 
 interface GameResultProps {
   readonly onTryAgain: () => void;
@@ -119,7 +127,18 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   // False in the first commit, so the tap that ends a round paints its score at once. What sits below the score, which
   // asks for most of the work, follows in a deferred render that yields to the next tap.
   const painted = useDeferredValue(true, false);
-  const [asksFeedback] = useState(() => deltas !== null && labRound !== undefined && feedbackDue(deltas.before.summary, localDayOf(new Date(labRound.endedAt))));
+  const [asksFeedback, setAsksFeedback] = useState(() => deltas !== null && labRound !== undefined && feedbackDue(summaryBefore(deltas.before, labRound), resultOf(labRound)));
+
+  useEffect(() => {
+    if (deltas || !labRound) return;
+    let live = true;
+    void warmedRecord().then((before) => {
+      if (live && feedbackDue(before && summaryBefore(before, labRound), resultOf(labRound))) setAsksFeedback(true);
+    });
+    return () => {
+      live = false;
+    };
+  }, [deltas, labRound]);
 
   // Use a ref instead of state to prevent double increments due to StrictMode
   const playsCountedRef = useRef(false);

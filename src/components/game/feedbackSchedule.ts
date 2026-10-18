@@ -28,8 +28,17 @@ export function writeNextEligibleAt(fromTime = Date.now()): void {
 
 const ASK_FROM_ROUND = 5;
 
-export function feedbackDue(before: Pick<LabSummary, "rounds" | "days">, today: string, now = Date.now()): boolean {
-  const roundNumber = before.rounds + 1;
-  const playedBeforeToday = (before.days[0] ?? today) < today;
-  return (roundNumber >= ASK_FROM_ROUND || playedBeforeToday) && readNextEligibleAt() <= now;
+let sessionFirstResult: string | null = null;
+
+/**
+ * Whether the result screen for `result` asks for feedback. With the record as it stood before the round, from the
+ * fifth round or a later day than the first; without one, from the session's second result. Never within a day of
+ * the last ask.
+ */
+export function feedbackDue(before: Pick<LabSummary, "rounds" | "days"> | null, result: { readonly id: string; readonly day: string }, now = Date.now()): boolean {
+  sessionFirstResult ??= result.id;
+  if (readNextEligibleAt() > now) return false;
+  if (!before) return sessionFirstResult !== result.id;
+  const playedBeforeToday = (before.days[0] ?? result.day) < result.day;
+  return before.rounds + 1 >= ASK_FROM_ROUND || playedBeforeToday;
 }

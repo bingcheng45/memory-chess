@@ -7,6 +7,7 @@ export interface WarmDeltas {
 }
 
 let warmed: WarmDeltas | null = null;
+let reading: Promise<RecordBefore | null> = Promise.resolve(null);
 let asked = 0;
 
 /**
@@ -16,12 +17,19 @@ let asked = 0;
 export function warmResultDeltas(): void {
   warmed = null;
   const ask = ++asked;
-  import("./ResultDeltas")
+  reading = import("./ResultDeltas")
     .then(async ({ default: Deltas, readRecordBefore }) => {
       const before = await readRecordBefore();
       if (ask === asked && before) warmed = { Deltas, before };
+      return before;
     })
-    .catch((error) => console.error("Could not warm the dashboard figures", error));
+    .catch((error) => {
+      console.error("Could not warm the dashboard figures", error);
+      return null;
+    });
 }
 
 export const warmedResultDeltas = (): WarmDeltas | null => warmed;
+
+/** The record as it stood before the round, once the read started during the round settles; null without one. */
+export const warmedRecord = (): Promise<RecordBefore | null> => reading;

@@ -285,7 +285,7 @@ describe("the tile's actions", () => {
 
   it("still offers the article's own drill, and starts it at 20 pieces and 3 seconds", () => {
     render(tile({ random: first }));
-    const original = screen.getByRole("button", { name: "Play 20 pieces, 3 seconds" });
+    const original = screen.getByRole("button", { name: "This article's drill 20 pieces, 3 seconds" });
 
     fireEvent.click(original);
 

@@ -85,7 +85,6 @@ function TileHeader({ article }: { article: TileArticle }) {
 function ShownTile({ article, round }: { article: TileArticle; round: RoundSize }) {
   const t = useTranslations("articles.tile");
   const tResult = useTranslations("game.result");
-  const tPage = useTranslations("articles.page");
   const { startGame } = useGameStore();
   const drillRound = useReaderRound();
   const { slug, drill } = article;
@@ -134,7 +133,9 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
             onClick={() => startDrill("drill_original", drill)}
             className={`${ACTION_CLASS} text-[var(--lp-accent)] underline underline-offset-4 hover:no-underline`}
           >
-            {tPage("drillAction", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}
+            {t("articleDrill")}
+            <span aria-hidden="true">&nbsp;·&nbsp;</span>
+            {t("roundSize", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}
           </button>
         )}
       </div>

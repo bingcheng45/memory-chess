@@ -2,7 +2,7 @@ import { FEEDBACK_NEXT_ELIGIBLE_STORAGE_KEY, feedbackDue } from "@/components/ga
 
 const NOW = Date.parse("2026-10-18T12:00:00Z");
 const before = (rounds: number, firstDay?: string) => ({ rounds, days: firstDay ? [firstDay] : [] });
-const TODAY = { id: "today", day: "2026-10-18" };
+const TODAY = { day: "2026-10-18", sessionFirst: false };
 
 beforeEach(() => window.localStorage.clear());
 
@@ -20,13 +20,9 @@ describe("feedbackDue", () => {
     expect(feedbackDue(before(1, "2026-10-17"), TODAY, NOW)).toBe(true);
   });
 
-  it("without a record, stays quiet on the session's first result and asks from the next", () => {
-    jest.isolateModules(() => {
-      const { feedbackDue: due } = jest.requireActual<typeof import("@/components/game/feedbackSchedule")>("@/components/game/feedbackSchedule");
-      const result = (id: string) => ({ id, day: "2026-10-18" });
-
-      expect([due(null, result("a"), NOW), due(null, result("a"), NOW), due(null, result("b"), NOW)]).toEqual([false, false, true]);
-    });
+  it("without a record, stays quiet on the session's first result and asks on any other", () => {
+    expect(feedbackDue(null, { day: "2026-10-18", sessionFirst: true }, NOW)).toBe(false);
+    expect(feedbackDue(null, { day: "2026-10-18", sessionFirst: false }, NOW)).toBe(true);
   });
 
   it("stays quiet for a day after it last asked, whatever the record holds", () => {
@@ -34,5 +30,15 @@ describe("feedbackDue", () => {
 
     expect(feedbackDue(before(9, "2026-10-01"), TODAY, NOW)).toBe(false);
     expect(feedbackDue(before(9, "2026-10-01"), TODAY, NOW + 1)).toBe(true);
+  });
+});
+
+describe("isSessionFirstResult", () => {
+  it("names the first result the session showed, whichever asks again", () => {
+    jest.isolateModules(() => {
+      const { isSessionFirstResult } = jest.requireActual<typeof import("@/components/game/feedbackSchedule")>("@/components/game/feedbackSchedule");
+
+      expect([isSessionFirstResult("a"), isSessionFirstResult("b"), isSessionFirstResult("a")]).toEqual([true, false, true]);
+    });
   });
 });

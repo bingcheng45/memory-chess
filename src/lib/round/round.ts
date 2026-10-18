@@ -137,7 +137,6 @@ export const COUNTDOWN_MS = 3000;
 export type RoundState =
   | { readonly phase: "idle" }
   | { readonly phase: "ready"; readonly config: RoundConfig; readonly fen: string }
-  /** `afterIntro`: Start was pressed on a first round's intro, which already counted as the round's start. */
   | { readonly phase: "countdown"; readonly config: RoundConfig; readonly fen: string; readonly endsAt: number; readonly afterIntro?: true }
   | { readonly phase: "study"; readonly config: RoundConfig; readonly target: LabPosition; readonly startedAt: number }
   | {

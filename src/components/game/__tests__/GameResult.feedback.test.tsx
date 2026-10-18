@@ -38,7 +38,7 @@ type Summary = { rounds: number; days: string[] };
 let mockRecordRead: Promise<{ records: never[]; summary: Summary } | null> = Promise.resolve(null);
 jest.mock("@/components/game/resultDeltasWarm", () => ({
   warmedResultDeltas: () => null,
-  warmedRecord: () => mockRecordRead,
+  recordReadDuringRound: () => mockRecordRead,
 }));
 
 let mockAsked = false;

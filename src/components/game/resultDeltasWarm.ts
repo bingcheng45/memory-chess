@@ -31,5 +31,4 @@ export function warmResultDeltas(): void {
 
 export const warmedResultDeltas = (): WarmDeltas | null => warmed;
 
-/** The record as it stood before the round, once the read started during the round settles; null without one. */
-export const warmedRecord = (): Promise<RecordBefore | null> => reading;
+export const recordReadDuringRound = (): Promise<RecordBefore | null> => reading;

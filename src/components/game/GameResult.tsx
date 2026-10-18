@@ -29,7 +29,7 @@ import {
 import type { LeaderboardDifficulty } from "@/types/leaderboard";
 import { useSettingsStore } from "@/stores/settingsStore";
 import FirstGameFeedbackDialog from "@/components/game/FirstGameFeedbackDialog";
-import { feedbackDue } from "@/components/game/feedbackSchedule";
+import { feedbackDue, isSessionFirstResult } from "@/components/game/feedbackSchedule";
 import { localDayOf } from "@/lib/lab/record";
 import type { LabRound } from "@/lib/lab/recordRound";
 import type { RecordBefore } from "@/components/game/ResultDeltas";
@@ -40,7 +40,7 @@ import type { BoardAction } from "@/lib/round/round";
 import ArticleTile from "@/components/game/ArticleTile";
 import { countWrong } from "@/lib/game/scoring";
 import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
-import { warmedRecord, warmedResultDeltas } from "@/components/game/resultDeltasWarm";
+import { recordReadDuringRound, warmedResultDeltas } from "@/components/game/resultDeltasWarm";
 import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import { CommunityInvite } from "@/components/community/CommunityLink";
 import { isReturningPlayer } from "@/lib/community";
@@ -77,9 +77,8 @@ function ratingNoteOf(outcome: RoundOutcome | undefined, t: ReturnType<typeof us
   }
 }
 
-const resultOf = (labRound: LabRound) => ({ id: labRound.facts.id, day: localDayOf(new Date(labRound.endedAt)) });
+const resultOf = (labRound: LabRound) => ({ day: localDayOf(new Date(labRound.endedAt)), sessionFirst: isSessionFirstResult(labRound.facts.id) });
 
-/** The summary without the round just played: a read that settled after the round was saved already counts it. */
 const summaryBefore = ({ records, summary }: RecordBefore, labRound: LabRound) =>
   records.some(({ id }) => id === labRound.facts.id) ? { ...summary, rounds: summary.rounds - 1 } : summary;
 
@@ -132,7 +131,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   useEffect(() => {
     if (deltas || !labRound) return;
     let live = true;
-    void warmedRecord().then((before) => {
+    void recordReadDuringRound().then((before) => {
       if (live && feedbackDue(before && summaryBefore(before, labRound), resultOf(labRound))) setAsksFeedback(true);
     });
     return () => {

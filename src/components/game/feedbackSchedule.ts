@@ -30,15 +30,19 @@ const ASK_FROM_ROUND = 5;
 
 let sessionFirstResult: string | null = null;
 
-/**
- * Whether the result screen for `result` asks for feedback. With the record as it stood before the round, from the
- * fifth round or a later day than the first; without one, from the session's second result. Never within a day of
- * the last ask.
- */
-export function feedbackDue(before: Pick<LabSummary, "rounds" | "days"> | null, result: { readonly id: string; readonly day: string }, now = Date.now()): boolean {
-  sessionFirstResult ??= result.id;
+export function isSessionFirstResult(resultId: string): boolean {
+  sessionFirstResult ??= resultId;
+  return sessionFirstResult === resultId;
+}
+
+export interface FeedbackResult {
+  readonly day: string;
+  readonly sessionFirst: boolean;
+}
+
+export function feedbackDue(before: Pick<LabSummary, "rounds" | "days"> | null, result: FeedbackResult, now = Date.now()): boolean {
   if (readNextEligibleAt() > now) return false;
-  if (!before) return sessionFirstResult !== result.id;
+  if (!before) return !result.sessionFirst;
   const playedBeforeToday = (before.days[0] ?? result.day) < result.day;
   return before.rounds + 1 >= ASK_FROM_ROUND || playedBeforeToday;
 }

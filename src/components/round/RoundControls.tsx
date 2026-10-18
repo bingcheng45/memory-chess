@@ -20,7 +20,7 @@ export function RoundControls({ phase, press, copy, starting = false }: RoundCon
   const controls = ROUND_CONTROLS[phase];
 
   return (
-    <div className="lab-cal-main" role="group" aria-label={t("controlsLabel")}>
+    <div className="lab-cal-main" role="group" aria-label={t("controlsLabel")} data-phase={phase}>
       {(["first", "second"] as const).map((slot) => {
         const control = controls[slot];
         const primary = controls.primary === slot;

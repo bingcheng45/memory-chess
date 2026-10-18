@@ -6,6 +6,11 @@ import type { LeaderboardSubmission } from "@/types/leaderboard";
 const SINGAPORE = parseCountryCode("SG");
 if (SINGAPORE === null) throw new Error("SG is not a known country code");
 
+const SERVICE_ROLE_JWT =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRlc3Rwcm9qZWN0Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSJ9.fake-signature";
+const ANON_JWT =
+  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRlc3Rwcm9qZWN0Iiwicm9sZSI6ImFub24ifQ.fake-signature";
+
 const inserts: string[] = [];
 
 jest.mock("@supabase/supabase-js", () => ({
@@ -34,8 +39,8 @@ const entry: LeaderboardSubmission = {
 async function submitTwice(env: { serviceKey?: string; readOnly?: boolean }) {
   process.env.NEXT_PUBLIC_SUPABASE_URL = "http://127.0.0.1:1";
   process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY = "test-anon-key";
-  if (env.serviceKey === undefined) delete process.env.LEADERBOARD_SUPABASE_SERVICE_KEY;
-  else process.env.LEADERBOARD_SUPABASE_SERVICE_KEY = env.serviceKey;
+  if (env.serviceKey === undefined) delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+  else process.env.SUPABASE_SERVICE_ROLE_KEY = env.serviceKey;
   if (env.readOnly) process.env.SUPABASE_READ_ONLY = "true";
   else delete process.env.SUPABASE_READ_ONLY;
 
@@ -47,25 +52,28 @@ async function submitTwice(env: { serviceKey?: string; readOnly?: boolean }) {
 }
 
 let warn: jest.SpyInstance;
+let error: jest.SpyInstance;
 
 beforeEach(() => {
   inserts.length = 0;
   warn = jest.spyOn(console, "warn").mockImplementation(() => {});
+  error = jest.spyOn(console, "error").mockImplementation(() => {});
 });
 
 afterEach(() => {
   jest.restoreAllMocks();
-  delete process.env.LEADERBOARD_SUPABASE_SERVICE_KEY;
+  delete process.env.SUPABASE_SERVICE_ROLE_KEY;
   delete process.env.SUPABASE_READ_ONLY;
 });
 
 describe("the leaderboard writer", () => {
-  it("inserts with the service key when LEADERBOARD_SUPABASE_SERVICE_KEY is set, and warns about nothing", async () => {
-    const results = await submitTwice({ serviceKey: "test-service-key" });
+  it("inserts with the service key when SUPABASE_SERVICE_ROLE_KEY holds a service_role JWT, and logs nothing", async () => {
+    const results = await submitTwice({ serviceKey: SERVICE_ROLE_JWT });
 
     expect(results.map((result) => result.status)).toEqual(["stored", "stored"]);
-    expect(inserts).toEqual(["test-service-key", "test-service-key"]);
+    expect(inserts).toEqual([SERVICE_ROLE_JWT, SERVICE_ROLE_JWT]);
     expect(warn.mock.calls).toEqual([]);
+    expect(error.mock.calls).toEqual([]);
   });
 
   it("keeps inserting with the anon key when the service key is missing, and warns once", async () => {
@@ -74,12 +82,38 @@ describe("the leaderboard writer", () => {
     expect(results.map((result) => result.status)).toEqual(["stored", "stored"]);
     expect(inserts).toEqual(["test-anon-key", "test-anon-key"]);
     expect(warn.mock.calls).toEqual([
-      ["LEADERBOARD_SUPABASE_SERVICE_KEY is not set, so leaderboard scores are written with the anon key. Migration 0006 refuses those writes."],
+      ["SUPABASE_SERVICE_ROLE_KEY is not set, so leaderboard scores are written with the anon key. Migration 0006 refuses those writes."],
+    ]);
+    expect(error.mock.calls).toEqual([]);
+  });
+
+  it("refuses an anon JWT pasted as the service key: inserts with the anon key and logs one error that names the role, not the key", async () => {
+    const results = await submitTwice({ serviceKey: ANON_JWT });
+
+    expect(results.map((result) => result.status)).toEqual(["stored", "stored"]);
+    expect(inserts).toEqual(["test-anon-key", "test-anon-key"]);
+    expect(warn.mock.calls).toEqual([]);
+    expect(error.mock.calls).toEqual([
+      [
+        'SUPABASE_SERVICE_ROLE_KEY holds a key whose role is "anon", not "service_role", so leaderboard scores are written with the anon key. Migration 0006 refuses those writes. Set it to the service_role key from Supabase project settings, under API.',
+      ],
+    ]);
+  });
+
+  it("refuses a service key that is not a JWT: inserts with the anon key and logs one error", async () => {
+    const results = await submitTwice({ serviceKey: "not-a-jwt" });
+
+    expect(results.map((result) => result.status)).toEqual(["stored", "stored"]);
+    expect(inserts).toEqual(["test-anon-key", "test-anon-key"]);
+    expect(error.mock.calls).toEqual([
+      [
+        "SUPABASE_SERVICE_ROLE_KEY does not hold a Supabase JWT with a role, so leaderboard scores are written with the anon key. Migration 0006 refuses those writes. Set it to the service_role key from Supabase project settings, under API.",
+      ],
     ]);
   });
 
   it("writes nothing when SUPABASE_READ_ONLY is set, even with the service key", async () => {
-    const results = await submitTwice({ serviceKey: "test-service-key", readOnly: true });
+    const results = await submitTwice({ serviceKey: SERVICE_ROLE_JWT, readOnly: true });
 
     expect(results).toEqual([
       { status: "unavailable", cause: "Supabase is read-only (SUPABASE_READ_ONLY=true)" },

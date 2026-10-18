@@ -8,7 +8,7 @@ After 0006:
 
 - The policy "Allow public insert" is gone. "Allow public read" stays.
 - `anon` and `authenticated` hold `SELECT` on the table and nothing else.
-- `service_role` keeps every privilege it holds. The site writes with that key, from the server only, through `LEADERBOARD_SUPABASE_SERVICE_KEY`. It bypasses row level security.
+- `service_role` keeps every privilege it holds. The site writes with that key, from the server only, through `SUPABASE_SERVICE_ROLE_KEY`, the variable the lab backup already reads. It bypasses row level security.
 - Three new checks hold every new row. `check_board_piece_count` ties each fixed board to its piece count (easy 2, medium 6, hard 12, grandmaster 20), from the presets in `src/lib/game/configPrefill.ts`. A daily row may have any count. `check_solution_time_per_piece` needs a quarter second per piece to rebuild, which is easy 0.5 s, medium 1.5 s, hard 3 s, grandmaster 5 s, and 0.25 s per piece on a daily board. `check_memorize_time_longest` caps study at 60 seconds, the top of the slider.
 
 The three checks are `NOT VALID`. Postgres tests every new insert and every update against them, and leaves the rows already stored alone. Six rows in production rebuild faster than the floor allows. They stay. An optional query at the end of step 4 counts the old rows that break each check. The migration does not validate the checks.
@@ -58,19 +58,34 @@ The rehearsal does not prove these points:
 
 - Behaviour on PostgreSQL 15, which production runs. The rehearsal runs PGlite, which is PostgreSQL 18. Step 4 repeats the role checks on production for that reason.
 - That production holds what the rehearsal assumes. The rehearsal copies the state the audit read on 2026-10-18. Step 2 checks it.
-- That the deployed site writes with the service key. Step 1 checks that by hand.
+- That the deployed site writes with the service key. Step 1 checks that by hand, through the server log.
 
 ## 1. Order of operations with the deploy
 
 Deploy first, then migrate.
 
-1. Merge and deploy the app change.
-2. In Vercel, set `LEADERBOARD_SUPABASE_SERVICE_KEY` for production. It is the `service_role` key from Supabase project settings, under API.
-3. Redeploy production so the new variable takes effect.
-4. Submit one real score on the site and confirm it is stored.
-5. Only then run the migration.
+Merging the app change does two things on deploy, before any migration. The API route applies the new per-board rules (fixed piece counts, the quarter second per piece floor, 60 seconds of study at most) to every submission. And the server picks its leaderboard key: the service key when `SUPABASE_SERVICE_ROLE_KEY` holds one, the anon key otherwise. Both keys can write until the migration runs, so scores keep saving either way.
 
-If the migration runs while the site still writes with the anon key, every score submission fails with `500` until the key is set.
+The server reads the role inside the key. It uses the key only when that role is `service_role`. Any other value, such as the anon key pasted by mistake, makes it fall back to the anon key and log one error at the first score. The log names the problem and never prints the key.
+
+1. Merge the PR. Vercel deploys it to production.
+2. In Vercel, open the project's environment variables. If `SUPABASE_SERVICE_ROLE_KEY` is already set for production, keep it. Otherwise add it for production only. Its value is the `service_role` key from Supabase project settings, under API, the long key that starts with `eyJ`. Never prefix the name with `NEXT_PUBLIC_`.
+3. Redeploy production so the variable takes effect. A variable added after a deploy reaches only the next deploy.
+4. Submit one real score on the site and confirm it appears on the leaderboard.
+5. In the Vercel runtime logs of that deploy, find the `POST /api/leaderboard` request from item 4. Neither of these lines may appear anywhere in the deploy's logs:
+    - `SUPABASE_SERVICE_ROLE_KEY is not set, so leaderboard scores are written with the anon key. ...`
+    - `SUPABASE_SERVICE_ROLE_KEY holds a key whose role is ...` or `SUPABASE_SERVICE_ROLE_KEY does not hold a Supabase JWT with a role ...`
+
+    Optionally, the Supabase API logs show the insert from item 4 with role `service_role`.
+6. Only then run the migration, from step 2 on.
+
+If the score in item 4 does not appear, or item 5 finds either line, do not migrate. Fix the variable or remove it, redeploy, and repeat items 4 and 5. Until the migration runs, the site keeps saving scores with the anon key, so nothing breaks while you fix it.
+
+If the migration runs while the site still writes with the anon key, every score submission fails with `500` until the key is fixed and production is redeployed. To undo that at once, run the rollback in step 5.
+
+### Old scripts that stop working
+
+Four scripts in the repo root write to `leaderboard_entries` with the anon key: `populate-leaderboard.js`, `clean-leaderboard.js`, `clean-leaderboard.mjs` and `clear-leaderboard.mjs`. After the migration each of them gets `42501` for every insert, update or delete. That is intended. Writing with the anon key is the hole this migration closes.
 
 ## 2. Pre-checks
 
@@ -149,11 +164,13 @@ Run these before the migration. They confirm that production still holds the sta
     ERROR: P0001: anon stored the row
     ```
 
+**When the tool cannot switch roles.** Pre-check 5 and checks 6 to 11 in step 4 switch to `anon` or `service_role` with `SET LOCAL ROLE`. The Supabase SQL editor runs as `postgres`, which may switch to both. Some tools connect as a user that may not. Such a tool answers `ERROR: 42501: permission denied to set role "anon"` (or `"service_role"`). That answer says nothing about the table, and it is not the `42501` of a closed hole. It means the tool cannot run these checks. Run them with `psql` and the `postgres` connection string from Supabase project settings, under Database. If no tool can switch roles, do not migrate on the strength of checks 1 to 4 alone, because pre-check 5 is the only check that shows the hole is open the way the rehearsal assumes.
+
 ## 3. Apply
 
 Paste the whole of `schema/migrations/0006_leaderboard_write_lockdown.sql` into the SQL editor and run it once. The file opens with `BEGIN` and ends with `COMMIT`, so it applies all or nothing. With `psql`, run it with `-f`.
 
-The file gives up after 5 seconds if it cannot take its lock, and then changes nothing. Run it again.
+The file gives up after 5 seconds if it cannot take its lock, and then changes nothing. Run it again. If the retry answers `25P02`, the tool kept the failed transaction open. Run `ROLLBACK`, then run the file again.
 
 The file ends by asking PostgREST to reload its schema cache, so step 4 can start at once.
 

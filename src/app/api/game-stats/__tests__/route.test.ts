@@ -1,8 +1,8 @@
 /** @jest-environment node */
 
 import { NextRequest } from "next/server";
-import { POST } from "@/app/api/game-stats/route";
-import { incrementGameMetric } from "@/lib/services/gameStatsService";
+import { GET, POST } from "@/app/api/game-stats/route";
+import { getGameMetric, incrementGameMetric } from "@/lib/services/gameStatsService";
 
 jest.mock("@/lib/services/gameStatsService", () => ({
   ...jest.requireActual("@/lib/services/gameStatsService"),
@@ -40,5 +40,27 @@ describe("POST /api/game-stats", () => {
 
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({ error: "Missing required field: metric" });
+  });
+});
+
+describe("GET /api/game-stats?metric=total_plays", () => {
+  const get = () => GET(new NextRequest("http://localhost/api/game-stats?metric=total_plays"));
+
+  it("lets the edge keep the count for a minute and serve it stale for ten while it refreshes", async () => {
+    jest.mocked(getGameMetric).mockResolvedValue({ data: { metric_name: "total_plays", metric_value: 1043 } } as never);
+
+    const response = await get();
+
+    expect(response.status).toBe(200);
+    expect(response.headers.get("cache-control")).toBe("public, s-maxage=60, stale-while-revalidate=600");
+  });
+
+  it("keeps no copy of a failed read", async () => {
+    jest.mocked(getGameMetric).mockResolvedValue({ data: null, error: "connection refused" } as never);
+
+    const response = await get();
+
+    expect(response.status).toBe(500);
+    expect(response.headers.get("cache-control")).toBeNull();
   });
 });

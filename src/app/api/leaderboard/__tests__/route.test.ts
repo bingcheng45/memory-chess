@@ -556,6 +556,43 @@ describe("GET /api/leaderboard", () => {
     expect(await response.json()).toEqual({ error: "Invalid difficulty or daily day" });
   });
 
+  describe("how long a shared cache may keep a read", () => {
+    beforeEach(() => jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-13T09:00:00Z")));
+    afterEach(() => jest.mocked(Date.now).mockRestore());
+
+    it.each([
+      ["a ranked board", "medium", "public, s-maxage=30, stale-while-revalidate=300"],
+      ["a named daily day", "daily&daily_day=2026-10-13", "public, s-maxage=15, stale-while-revalidate=60"],
+      ["a named daily day read again just after a join", "daily&daily_day=2026-10-13&after=3c3c3c3c-0000-4000-8000-000000000003", "public, s-maxage=15, stale-while-revalidate=60"],
+    ])("lets the edge keep %s", async (_case, query, cacheControl) => {
+      const response = await get(query);
+
+      expect(response.status).toBe(200);
+      expect(response.headers.get("cache-control")).toBe(cacheControl);
+    });
+
+    it("keeps no copy of a daily read without a day, whose answer changes at midnight", async () => {
+      expect((await get("daily")).headers.get("cache-control")).toBeNull();
+    });
+
+    it("keeps no copy of a board that could not be read", async () => {
+      jest.spyOn(console, "error").mockImplementation(() => {});
+      jest.mocked(getLeaderboard).mockResolvedValue({ data: [], error: "connection refused" });
+
+      const response = await get("medium");
+
+      expect(response.status).toBe(503);
+      expect(response.headers.get("cache-control")).toBeNull();
+    });
+
+    it("keeps no copy of a refused day", async () => {
+      const response = await get("daily&daily_day=2026-10-01");
+
+      expect(response.status).toBe(400);
+      expect(response.headers.get("cache-control")).toBeNull();
+    });
+  });
+
   it.each(["weekly", "custom"])("rejects the %s board, which it does not serve", async (difficulty) => {
     const response = await get(difficulty);
 

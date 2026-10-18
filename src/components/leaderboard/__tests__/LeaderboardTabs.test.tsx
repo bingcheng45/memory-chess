@@ -296,7 +296,8 @@ describe("the Daily tab", () => {
 });
 
 describe("a link from the result screen", () => {
-  it("opens the board it names, highlights the round, and reads that board fresh", async () => {
+  it("opens the board it names, highlights the round, and reads that board fresh, past any shared cache", async () => {
+    jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-13T09:00:00Z"));
     const hardRow: LeaderboardEntry = { ...mediumRow, id: "hana", player_name: "Hana Hard", difficulty: "hard" };
     fetchMock.mockImplementation(() => Promise.resolve({ json: () => Promise.resolve({ data: [hardRow] }) }));
     Element.prototype.scrollIntoView = jest.fn();
@@ -307,7 +308,8 @@ describe("a link from the result screen", () => {
 
     expect(screen.getByRole("tab", { selected: true })).toHaveTextContent("Hard");
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=hard", expect.anything());
+    expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=hard&after=1791882000000", expect.anything());
+    jest.mocked(Date.now).mockRestore();
     const row = within(screen.getByRole("tabpanel")).getByText("Hana Hard").closest("tr");
     expect(row).toHaveAttribute("data-highlighted", "");
     expect(row).toHaveTextContent("You");

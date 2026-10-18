@@ -14,6 +14,13 @@ import { MEMORIZE_SECONDS_RANGE } from '@/lib/reference/facts';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
 import { reportServerError } from '@/lib/server/serverErrors';
 
+/**
+ * A shared cache may keep a read briefly. A reader who has just joined asks with a fresh `after` value, a URL no cache
+ * holds yet. A daily read without a day is left uncached, because its answer changes at midnight UTC.
+ */
+const RANKED_CACHE = 'public, s-maxage=30, stale-while-revalidate=300';
+const DAILY_DAY_CACHE = 'public, s-maxage=15, stale-while-revalidate=60';
+
 const SUBMISSION_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
 
 /** A round takes longer than ten seconds to play, so more scores than this from one address are a script. */
@@ -71,7 +78,8 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const difficulty = searchParams.get('difficulty') || 'medium';
   const now = Date.now();
-  const board = readBoard(difficulty, difficulty === DAILY_BOARD ? (searchParams.get('daily_day') ?? utcDayOf(now)) : null, readableDays(now));
+  const namedDay = searchParams.get('daily_day');
+  const board = readBoard(difficulty, difficulty === DAILY_BOARD ? (namedDay ?? utcDayOf(now)) : null, readableDays(now));
 
   if (board === null) {
     return NextResponse.json(
@@ -85,13 +93,13 @@ export async function GET(request: NextRequest) {
   try {
     if (board.difficulty !== DAILY_BOARD) {
       const result = await getLeaderboard(board);
-      return result.error ? unavailable() : NextResponse.json({ data: result.data });
+      return result.error ? unavailable() : NextResponse.json({ data: result.data }, { headers: { 'Cache-Control': RANKED_CACHE } });
     }
     // How the board played is a side note: when its read fails the board still answers, without it.
     const [result, results] = await Promise.all([getLeaderboard(board), getDailyResults(board.daily_day)]);
     if (result.error) return unavailable();
     const playedLike = results === null ? null : playedLikeOf(results, dailySettingOf(board.daily_day));
-    return NextResponse.json({ data: result.data, playedLike });
+    return NextResponse.json({ data: result.data, playedLike }, namedDay === null ? undefined : { headers: { 'Cache-Control': DAILY_DAY_CACHE } });
   } catch (err) {
     console.error('Unexpected API error:', err);
     reportServerError('GET /api/leaderboard', 'unexpected', err, { board: board.difficulty });

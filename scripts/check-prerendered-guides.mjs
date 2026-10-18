@@ -1,11 +1,4 @@
 #!/usr/bin/env node
-/**
- * Fails the build when an English Learn guide is not prerendered. The guides
- * are the top organic landing pages, and a Next upgrade once stopped emitting
- * them with no build error.
- *
- * Usage: node scripts/check-prerendered-guides.mjs   (after `next build`)
- */
 import { existsSync, readdirSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 

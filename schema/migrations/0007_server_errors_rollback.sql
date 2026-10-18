@@ -9,6 +9,8 @@
 
 BEGIN;
 
+SET LOCAL lock_timeout = '5s';
+
 DROP TABLE IF EXISTS public.server_errors;
 
 NOTIFY pgrst, 'reload schema';

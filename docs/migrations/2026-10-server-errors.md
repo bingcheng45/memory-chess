@@ -11,6 +11,8 @@ Vercel Hobby keeps runtime logs for about an hour. When an API route fails, its 
 - `detail`, a small JSON object. It holds the error's `code` and `name` when it has them, and for some routes the board (`board`) or the article (`slug`).
 - `deploy`, the commit of the deploy that logged it, from `VERCEL_GIT_COMMIT_SHA`.
 
+A client's own mistake, such as a body that is not JSON or a field that fails validation, is answered with a 400 and stores no row. Only a failure on the server's side is stored.
+
 No row holds a request body, a player name, an email, an IP address or a key. A Supabase error's `details` and `hint` are never stored, because Postgres puts the failing row, with the player's name, in `details`.
 
 Only `service_role` may touch the table, and it may only insert and read. It cannot update, delete or truncate, so the server cannot rewrite its own log. `anon` and `authenticated` hold no privilege on the table or on its id sequence. Row level security is on with no policy, so a grant added later by mistake still shows them no row.
@@ -55,7 +57,7 @@ The rehearsal proves these points:
 - A second run of the migration is a no-op. The rollback removes the table and its sequence, is safe to run twice and on a database that never had 0007, and the migration then lands in the same state again.
 - Every check in steps 2 and 4 is one statement and gives exactly the answer printed under it. The queries in steps 5 and 6 run.
 
-`src/lib/server/__tests__/serverErrors.test.ts` and `src/app/api/__tests__/serverErrorReports.test.ts` prove the app side: one redacted row for each failure, through the `service_role` key only, nothing when the key is missing, is the anon key or is not a JWT, no throw when the database is down, and at most 20 rows a minute from one server instance.
+`src/lib/server/__tests__/serverErrors.test.ts` and `src/app/api/__tests__/serverErrorReports.test.ts` prove the app side: one redacted row for each failure, through the `service_role` key only, nothing when the key is missing, is the anon key or is not a JWT, no throw when the database is down, at most 20 rows a minute for each route from one server instance, and no row for a client's own mistake.
 
 The rehearsal does not prove these points:
 
@@ -96,7 +98,7 @@ The migration and the deploy can come in either order. Until both are done, noth
 
 Paste the whole of `schema/migrations/0007_server_errors.sql` into the SQL editor and run it once. The file opens with `BEGIN` and ends with `COMMIT`, so it applies all or nothing. With `psql`, run it with `-f`.
 
-The file creates a new table, so it waits on no lock that site traffic holds. It ends by asking PostgREST to reload its schema cache, so the site can store rows at once.
+The first run creates a new table, so it waits on no lock that site traffic holds. A later run waits at most five seconds for a lock on the table, then stops with `canceling statement due to lock timeout` and changes nothing. Run it again. It ends by asking PostgREST to reload its schema cache, so the site can store rows at once.
 
 ## 4. Verify
 
@@ -255,7 +257,7 @@ The values of `route`:
 - `GET /api/game-stats` and `POST /api/game-stats`, the play counter.
 - `POST /api/articles/stats`, an article view or like.
 
-Each server instance stores at most 20 rows a minute. In an outage every request fails, so the table shows the outage's start, its end and its message, not every failed request. The Vercel runtime log, while it lasts, still has every line.
+Each server instance stores at most 20 rows a minute for each route, so a flood of failures on one route never hides a failure on another. In an outage every request fails, so the table shows the outage's start, its end and its message, not every failed request. The Vercel runtime log, while it lasts, still has every line.
 
 ## 6. Retention: keep 30 days
 
@@ -283,8 +285,8 @@ The site keeps working without the table. Each error it tries to store then logs
 
 ## 8. Known limits
 
-- A sustained outage stores at most 20 rows a minute on each server instance, which is 28,800 rows a day for one instance. The retention delete in step 6 keeps that in check.
+- A sustained outage stores at most 20 rows a minute for each failing route on each server instance, which is 28,800 rows a day for each route on one instance. The retention delete in step 6 keeps that in check.
 - The limit counts per server instance, and each new instance starts its own count.
-- An error that happens while the instance is out of its 20 rows for the minute is in the Vercel runtime log only.
+- An error that happens while its route is out of its 20 rows for the minute is in the Vercel runtime log only.
 - A row is written after the response is sent. If the database is down, the write gives up after 2 seconds and logs `Server error report not stored: ...`.
 - Redaction matches patterns. A secret in a shape it does not know, such as a short password inside an error message, would be stored as written. No route passes one today.

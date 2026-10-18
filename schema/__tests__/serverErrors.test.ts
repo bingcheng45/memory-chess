@@ -219,3 +219,28 @@ describe("the 0007 rollback", () => {
     expect(await fingerprint(db)).toEqual(before);
   });
 });
+
+describe("waiting for a lock", () => {
+  const LOCK_TIMEOUT = "SELECT current_setting('lock_timeout') AS lock_timeout";
+  const uncommitted = (sql: string) => sql.replace(/^COMMIT;$/m, "");
+
+  it("gives up after five seconds inside 0007 and its rollback, and leaves no timeout on the session after either", async () => {
+    const db = await supabaseLike();
+
+    await db.rows(uncommitted(MIGRATION));
+    const duringMigration = await db.rows(LOCK_TIMEOUT);
+    await db.rows("COMMIT");
+    const afterMigration = await db.rows(LOCK_TIMEOUT);
+    await db.rows(uncommitted(ROLLBACK));
+    const duringRollback = await db.rows(LOCK_TIMEOUT);
+    await db.rows("COMMIT");
+    const afterRollback = await db.rows(LOCK_TIMEOUT);
+
+    expect([duringMigration, afterMigration, duringRollback, afterRollback]).toEqual([
+      [{ lock_timeout: "5s" }],
+      [{ lock_timeout: "0" }],
+      [{ lock_timeout: "5s" }],
+      [{ lock_timeout: "0" }],
+    ]);
+  });
+});

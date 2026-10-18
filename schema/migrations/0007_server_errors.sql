@@ -18,6 +18,12 @@
 
 BEGIN;
 
+-- Running this again revokes and grants on a live table, and every error
+-- report queues behind that wait for its lock. Give up after five seconds
+-- rather than stall the routes. LOCAL ends with this transaction, so a pooled
+-- connection does not keep it.
+SET LOCAL lock_timeout = '5s';
+
 CREATE TABLE IF NOT EXISTS public.server_errors (
   id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   created_at TIMESTAMPTZ NOT NULL DEFAULT now(),

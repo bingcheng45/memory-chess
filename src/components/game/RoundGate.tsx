@@ -3,7 +3,6 @@
 import { useEffect, useRef } from 'react';
 import { useFormatter, useTranslations } from 'next-intl';
 
-/** What the board behind Start asks, shown before its position is: today's board, or a player's first-ever round. */
 export type GateFacts =
   | { readonly kind: 'daily'; readonly day: string; readonly pieceCount: number; readonly memorizeTime: number }
   | { readonly kind: 'firstRound'; readonly pieceCount: number; readonly memorizeTime: number };

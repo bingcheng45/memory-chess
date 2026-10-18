@@ -57,7 +57,6 @@ const OPEN_SET_BOARD: Record<SetBoardSource, () => Promise<SetBoardOpen>> = {
     }),
 };
 
-/** A player's first-ever round waits behind the rule and Start: a record this device can read that holds no rounds yet. */
 const isFirstEverRound = (): Promise<boolean> =>
   import('@/lib/lab/storage').then(async ({ labStore }) => {
     const store = labStore();
@@ -150,8 +149,7 @@ function GamePageContent() {
   // Until today's board is read, a daily link shows the veiled board with Start held, never the configuration form.
   const [dailyRead, setDailyRead] = useState(false);
   const [triedToday, setTriedToday] = useState(false);
-  // A link's random round, until the record says whether it is the player's first.
-  const [linkRead, setLinkRead] = useState(false);
+  const [firstRoundKnown, setFirstRoundKnown] = useState(false);
   // A daily round's record being written, before /daily takes over.
   const [savingDaily, setSavingDaily] = useState(false);
   // A round the player starts by hand wins over a set board still being read.
@@ -162,7 +160,7 @@ function GamePageContent() {
   const dailyPending = hydrated && urlRound?.source === 'daily' && !dailyRead && round.phase === 'idle' && !refused;
   // A try already spent today is refused whatever the record says, so the board is never shown before the notice.
   const opening = dailyPending && !triedToday;
-  const linkPending = hydrated && !!urlRound && !isSetBoardSource(urlRound.source) && !linkRead && round.phase === 'idle';
+  const linkPending = hydrated && !!urlRound && !isSetBoardSource(urlRound.source) && !firstRoundKnown && round.phase === 'idle';
 
   // Memorising and placing are played without scrolling: the board is sized
   // from the room that is actually left, so the screen holds exactly what
@@ -192,14 +190,14 @@ function GamePageContent() {
     clearRoundParams();
     if (!urlRound) return;
     const { source } = urlRound;
-    // StrictMode runs this twice; only the live run starts the board, or the second read would refuse a set one.
+    // StrictMode runs this twice; only the live run starts the board, or the second read would refuse it.
     let live = true;
     if (!isSetBoardSource(source)) {
       void isFirstEverRound()
         .catch(() => false)
         .then((first) => {
           if (!live) return;
-          setLinkRead(true);
+          setFirstRoundKnown(true);
           (first ? prepareGame : startGame)(urlRound.pieceCount, urlRound.memorizeTime, source);
         });
       return () => {
@@ -310,7 +308,7 @@ function GamePageContent() {
     switch (round.phase) {
       case 'idle': {
         if (opening) return activeRound(round, todayGate());
-        // Before the address is read this is one commit that never paints; on a day already tried it waits for the notice, and a link waits for the record.
+        // Before the address is read this is one commit that never paints; on a day already tried it waits for the notice.
         if (addressUnread || dailyPending || linkPending) return <div className={containerClass} />;
         // A daily link's notice waits on nothing rather than flashing the form it replaces.
         const noticeFallback = refused === 'daily' ? null : <GameConfig onStart={handleStartGame} />;

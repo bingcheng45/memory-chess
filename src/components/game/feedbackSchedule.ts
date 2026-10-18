@@ -28,12 +28,8 @@ export function writeNextEligibleAt(fromTime = Date.now()): void {
 
 const ASK_FROM_ROUND = 5;
 
-/**
- * Whether the result screen of a round that ended on local day `today` asks for feedback, read from the record as the
- * round found it. A player is asked from their fifth finished round or on a later day than their first, so never on
- * top of their first result.
- */
 export function feedbackDue(before: Pick<LabSummary, "rounds" | "days">, today: string, now = Date.now()): boolean {
-  const firstDay = before.days[0] ?? today;
-  return (before.rounds + 1 >= ASK_FROM_ROUND || firstDay < today) && readNextEligibleAt() <= now;
+  const roundNumber = before.rounds + 1;
+  const playedBeforeToday = (before.days[0] ?? today) < today;
+  return (roundNumber >= ASK_FROM_ROUND || playedBeforeToday) && readNextEligibleAt() <= now;
 }

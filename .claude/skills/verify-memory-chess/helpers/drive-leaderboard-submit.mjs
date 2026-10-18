@@ -40,7 +40,7 @@ async function playRound(page, baseUrl) {
   await page.waitFor(phaseIs("study"));
   const pieces = (await page.eval(cells)).map((cell) => ({ square: cell.square, piece: pieceOf(cell) }));
   if (pieces.length === 0) throw new Error("the study board shows no pieces");
-  await page.clickText("button", words.round.done);
+  await page.clickText("button", words.round.hide);
   await page.waitFor(phaseIs("rebuild"));
   for (const { square, piece } of pieces) {
     const palette = `.lab-palette [aria-label^="${words.round.paletteItem.split("{count}")[0].replace("{piece}", piece)}"]`;

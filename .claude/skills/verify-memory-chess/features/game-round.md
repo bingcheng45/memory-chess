@@ -5,7 +5,7 @@ The core loop on `/game`. A player picks a difficulty, memorizes a random positi
 ## Sub-features
 
 - `round-config` picks a preset (Easy 2 pieces/10s, Medium 6/10, Hard 12/8, Grandmaster 20/5) or custom piece count and time.
-- `round-memorize` shows the position with a millisecond countdown and a meter; `Done` ends it early.
+- `round-memorize` shows the position with a millisecond countdown and a meter; `Hide board` ends it early.
 - `round-place` recreates the position: pick one of the 12 palette pieces, tap squares; tapping a square with that piece, or with none selected, removes it. The eraser (`Clear board`) empties the board, and `Restart` starts a new position at the same setting. Pieces also drag (Pointer Events, mouse and touch): a palette piece onto a square places it, a placed piece onto another square moves it and replaces what stood there, and off the board removes it. A piece with every copy on the board is refused with a message over the palette, also spoken by the live region.
 - `round-submit` scores at once.
 - `round-result` shows accuracy, pieces correct, timings, `Try again`, `New game`, and `Submit to leaderboard`.
@@ -33,9 +33,9 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
   --evidence .verify-evidence/game-round --base http://127.0.0.1:4517
 ```
 
-- **Configure.** Choose `Easy`, then `Start round`. Run `clickText("button", "Easy")` then `clickText("button", "Start round")`. The board grid carries `data-round-phase="study"` and the controls show `Done`.
+- **Configure.** Choose `Easy`, then `Start round`. Run `clickText("button", "Easy")` then `clickText("button", "Start round")`. The board grid carries `data-round-phase="study"` and the controls show `Hide board`.
 - **Read the position.** Every square is a `button[data-coordinate]` whose `aria-label` reads "e4, white king" or "e4, empty" (`game.round.squareWith` and `squareEmpty`). Collect the occupied ones. Screenshot as evidence of the position shown.
-- **End study.** Run `clickText("button", "Done")`. The grid turns `data-round-phase="rebuild"` and the palette (`.lab-palette`, one button per piece, named for the piece and what is left of it, like "white king, 1 left"; a piece with none left is greyed with `data-used-up` and stays pressable, so it is not `aria-disabled`) becomes active.
+- **End study.** Run `clickText("button", "Hide board")`. The grid turns `data-round-phase="rebuild"` and the palette (`.lab-palette`, one button per piece, named for the piece and what is left of it, like "white king, 1 left"; a piece with none left is greyed with `data-used-up` and stays pressable, so it is not `aria-disabled`) becomes active.
 - **Place each piece.** For each remembered square: `click('.lab-palette [aria-label^="white king, "]')` unless that button already has `aria-pressed="true"` (pressing it again deselects), then `click('[data-coordinate="e4"]')`. The square's `aria-label` becomes "e4, white king".
 - **Submit.** Run `clickText("button", "Submit")`. The result panel with `#game-result-heading` appears.
 - **Prove the score.** The page shows `100%` when every piece matched. Screenshot the result.
@@ -50,7 +50,7 @@ node .claude/skills/verify-memory-chess/helpers/cdp.mjs \
 ## Gotchas
 
 - During memorization and placement the page pins itself: `<html>` and `<body>` get a `game-fixed` class (`src/app/[locale]/game/page.tsx`), making the body `position: fixed; overflow: hidden` with `touch-action` restrictions (`src/app/globals.css`). Nothing scrolls in these phases; anything you need must fit the viewport, so give Chrome a real window size (cdp.mjs uses 1280x900).
-- Study auto-advances after `memorizeTime` seconds; read the position before the timer ends or use `Done` deterministically.
+- Study auto-advances after `memorizeTime` seconds; read the position before the timer ends or use `Hide board` deterministically.
 - Wait for `#game-result-heading` after Submit, never a fixed sleep.
 - Sounds play on every phase change (`src/hooks/useRoundSounds.ts`); cdp.mjs launches Chrome with `--mute-audio`, so no action needed unless you bring your own browser.
 - A feedback dialog opens 800ms after the first result screen of a day and covers the page, the tile included. Close it with Escape, or set `localStorage["memory-chess-feedback-next-eligible-at"]` to a future time before the page loads.

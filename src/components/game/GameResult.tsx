@@ -119,7 +119,6 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   // False in the first commit, so the tap that ends a round paints its score at once. What sits below the score, which
   // asks for most of the work, follows in a deferred render that yields to the next tap.
   const painted = useDeferredValue(true, false);
-  // Settled once, as the dialog's own cooldown write would otherwise close it again.
   const [asksFeedback] = useState(() => deltas !== null && labRound !== undefined && feedbackDue(deltas.before.summary, localDayOf(new Date(labRound.endedAt))));
 
   // Use a ref instead of state to prevent double increments due to StrictMode

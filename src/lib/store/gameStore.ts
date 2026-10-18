@@ -78,7 +78,7 @@ interface GameStore {
   round: RoundState;
 
   startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
-  /** Sets a board out behind its Start button, a random one without `board`. Start is `dispatch({ type: 'begin' })`; the round studies on endCountdown. */
+  /** Sets a board out behind its Start button. Start is `dispatch({ type: 'begin' })`; the round studies on endCountdown. */
   prepareGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
   /** Counts a new random board in over the veil, without a Start button; the round studies on endCountdown. */
   countInGame: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;

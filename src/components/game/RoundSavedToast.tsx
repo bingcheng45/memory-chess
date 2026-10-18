@@ -17,7 +17,6 @@ export interface RoundSavedToastProps {
   readonly roundId: string;
   /** The dashboard figures under the result: what "Show me" scrolls to, and whose being on screen already makes the toast moot. */
   readonly target: RefObject<HTMLElement | null>;
-  /** The result screen asks for feedback, and the toast never stacks with that dialog. */
   readonly feedbackAsked: boolean;
 }
 

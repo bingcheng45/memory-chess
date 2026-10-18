@@ -52,7 +52,7 @@ function useRecordReading(state: RoundState): void {
         memorize_time: STUDY_SECONDS,
         correct_pieces: state.score.correct,
         accuracy: state.score.accuracy,
-        source: "calibration",
+        round_source: "calibration",
       },
     });
   }, [state]);
@@ -105,7 +105,7 @@ export function CalibrationSection() {
         dispatch({ type: "start", config: CALIBRATION_CONFIG, target, now: performance.now() });
         trackEvent({
           name: "round_start",
-          params: { piece_count: CALIBRATION_RULES.pieceCount, memorize_time: STUDY_SECONDS, source: "calibration" },
+          params: { piece_count: CALIBRATION_RULES.pieceCount, memorize_time: STUDY_SECONDS, round_source: "calibration" },
         });
       }
       else setStartFailed(true);

@@ -59,14 +59,15 @@ export type LabPanelAction = "play" | "guide" | "next" | "start" | "stop" | "fin
 
 /**
  * The GA4 event contract. Round events carry the setting and the score, and
- * `source` names where the round started (calibration included). Lab events
+ * `round_source` names where the round started (calibration included). It is not `source`, which GA4 reads as
+ * the session's traffic source. Lab events
  * carry counts and fixed ids only, never positions, squares, round ids, dates
  * or streak lengths, which the privacy page promises.
  */
 export type FunnelEvent =
   | {
       name: "round_start";
-      params: { piece_count: number; memorize_time: number; source: RoundSource };
+      params: { piece_count: number; memorize_time: number; round_source: RoundSource };
     }
   | {
       name: "round_complete";
@@ -75,7 +76,7 @@ export type FunnelEvent =
         memorize_time: number;
         correct_pieces: number;
         accuracy: number;
-        source: RoundSource;
+        round_source: RoundSource;
       };
     }
   | {
@@ -149,11 +150,13 @@ export type ShareSurface = keyof typeof SHARE_EVENTS;
  */
 function databuddyEvent(event: FunnelEvent): [string, Record<string, string | number>] | null {
   switch (event.name) {
-    case "round_start":
-      return ["round_started", event.params];
+    case "round_start": {
+      const { piece_count, memorize_time, round_source } = event.params;
+      return ["round_started", { piece_count, memorize_time, source: round_source }];
+    }
     case "round_complete": {
-      const { piece_count, memorize_time, source } = event.params;
-      return ["round_completed", { piece_count, memorize_time, source }];
+      const { piece_count, memorize_time, round_source } = event.params;
+      return ["round_completed", { piece_count, memorize_time, source: round_source }];
     }
     case "score_submit":
       return ["score_submitted", event.params];

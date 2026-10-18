@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "La top 10 di oggi",
+      "yesterdayTitle": "La top 10 di ieri",
       "playedLike": "La scacchiera di oggi ha giocato come {rating}",
       "playedLikeNote": "Stima basata sui giocatori di oggi.",
       "rank": "Posizione",

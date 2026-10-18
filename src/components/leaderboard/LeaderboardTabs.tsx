@@ -141,7 +141,7 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
       });
 
     return () => controller.abort();
-  }, [activeTab, dailyDay, isRefreshing, retryAttempt]);
+  }, [activeTab, dailyDay, isJustSubmitted, isRefreshing, retryAttempt]);
 
   const { dailyFailure } = reads;
   useEffect(() => {

@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "Today's top 10",
+      "yesterdayTitle": "Yesterday's top 10",
       "playedLike": "Today's board played like {rating}",
       "playedLikeNote": "Estimated from today's players.",
       "rank": "Rank",

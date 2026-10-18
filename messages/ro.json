@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "Top 10 de azi",
+      "yesterdayTitle": "Top 10 de ieri",
       "playedLike": "Tabla de azi a jucat ca {rating}",
       "playedLikeNote": "Estimare din rezultatele jucătorilor de azi.",
       "rank": "Loc",

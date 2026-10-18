@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "Dagens topp 10",
+      "yesterdayTitle": "Gårsdagens topp 10",
       "playedLike": "Dagens brett spilte som {rating}",
       "playedLikeNote": "Anslått ut fra dagens spillere.",
       "rank": "Plass",

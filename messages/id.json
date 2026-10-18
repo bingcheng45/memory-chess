@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "10 besar hari ini",
+      "yesterdayTitle": "10 besar kemarin",
       "playedLike": "Papan hari ini bermain seperti {rating}",
       "playedLikeNote": "Diperkirakan dari pemain hari ini.",
       "rank": "Peringkat",

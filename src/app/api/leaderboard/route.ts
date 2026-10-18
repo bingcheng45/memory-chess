@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDailyResults, getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
+import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
+import { readDailyBoard } from '@/lib/daily/readDailyBoard';
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 import { isSkillRating, MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
@@ -7,7 +8,6 @@ import { joinableDays, readableDays, readBoard } from '@/lib/leaderboard/board';
 import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { utcDayOf } from '@/lib/lab/daily';
 import { dailySettingOf } from '@/lib/daily/schedule';
-import { playedLikeOf } from '@/lib/daily/boardRating';
 import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardBoard, type LeaderboardDifficulty } from '@/types/leaderboard';
 import { GAME_CONFIG_RULES } from '@/lib/game/configPrefill';
 import { MEMORIZE_SECONDS_RANGE } from '@/lib/reference/facts';
@@ -95,11 +95,9 @@ export async function GET(request: NextRequest) {
       const result = await getLeaderboard(board);
       return result.error ? unavailable() : NextResponse.json({ data: result.data }, { headers: { 'Cache-Control': RANKED_CACHE } });
     }
-    // How the board played is a side note: when its read fails the board still answers, without it.
-    const [result, results] = await Promise.all([getLeaderboard(board), getDailyResults(board.daily_day)]);
-    if (result.error) return unavailable();
-    const playedLike = results === null ? null : playedLikeOf(results, dailySettingOf(board.daily_day));
-    return NextResponse.json({ data: result.data, playedLike }, namedDay === null ? undefined : { headers: { 'Cache-Control': DAILY_DAY_CACHE } });
+    const read = await readDailyBoard(board.daily_day);
+    if (read === null) return unavailable();
+    return NextResponse.json({ data: read.rows, playedLike: read.playedLike }, namedDay === null ? undefined : { headers: { 'Cache-Control': DAILY_DAY_CACHE } });
   } catch (err) {
     console.error('Unexpected API error:', err);
     reportServerError('GET /api/leaderboard', 'unexpected', err, { board: board.difficulty });

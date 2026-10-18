@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "Dzisiejsza dziesiątka",
+      "yesterdayTitle": "Wczorajsza dziesiątka",
       "playedLike": "Dzisiejsza plansza grała jak {rating}",
       "playedLikeNote": "Szacunek na podstawie wyników dzisiejszych graczy.",
       "rank": "Miejsce",

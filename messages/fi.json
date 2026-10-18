@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "Päivän kymmenen parasta",
+      "yesterdayTitle": "Eilisen kymmenen parasta",
       "playedLike": "Tämän päivän lauta pelasi kuin {rating}",
       "playedLikeNote": "Arvio tämän päivän pelaajien tuloksista.",
       "rank": "Sija",

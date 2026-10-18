@@ -2,23 +2,17 @@
 
 import { useEffect, useRef } from "react";
 import { useFormatter, useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { useCopyText } from "@/components/home/useCopyText";
 import type { DailySetting } from "@/lib/daily/schedule";
-import { DEFAULT_PRESET } from "@/lib/game/configPrefill";
-import { playHref } from "@/lib/game/roundLink";
 import { SHARE_ORDER, shareRow, type DailyBoard, type DailyRound } from "@/lib/lab/daily";
 import type { DailyEntry } from "@/lib/lab/entries";
 import type { Standing } from "@/lib/leaderboard/standing";
 import type { SquareOutcome } from "@/lib/lab/record";
 import { CommunityInvite } from "@/components/community/CommunityLink";
 import { DailyJoinForm } from "./DailyJoinForm";
+import { DailyOpenCard, HiddenBoard } from "./DailyOpenCard";
 
 type Translate = ReturnType<typeof useTranslations<"daily.page">>;
-
-const PLAY_BEFORE_CLOCK = playHref(DEFAULT_PRESET.pieceCount, DEFAULT_PRESET.memorizeTime, "daily");
-
-const BOARD_CELLS = Array.from({ length: 64 }, (_, index) => (Math.floor(index / 8) + index) % 2);
 
 interface DailyCardProps {
   readonly board: DailyBoard | null;
@@ -52,25 +46,11 @@ export function DailyCard({ board, setting, joined, standing, onJoined, justPlay
       <section className="daily-card" aria-labelledby="daily-card-title" data-state="unfinished">
         <h2 id="daily-card-title" className="daily-card-title">{t("unfinishedTitle")}</h2>
         <p className="daily-note">{t("unfinished")}</p>
-        <HiddenBoard t={t} />
+        <HiddenBoard />
       </section>
     );
   }
-  return (
-    <section className="daily-card" aria-labelledby="daily-card-title" data-state="open">
-      <h2 id="daily-card-title" className="daily-card-title">{t("open")}</h2>
-      <ul className="daily-facts">
-        <li>{setting && t("pieces", { count: setting.pieceCount })}</li>
-        <li>{setting && t("seconds", { count: setting.memorizeTime })}</li>
-        <li>{t("oneTry")}</li>
-      </ul>
-      <HiddenBoard t={t} />
-      <Link className="lab-btn lab-btn-primary daily-play" href={setting ? playHref(setting.pieceCount, setting.memorizeTime, "daily") : PLAY_BEFORE_CLOCK}>
-        {t("play")}
-      </Link>
-      {board?.streak && board.streak.current > 0 && <p className="daily-note">{t("streak", { count: board.streak.current })}</p>}
-    </section>
-  );
+  return <DailyOpenCard setting={setting} streak={board?.streak?.current ?? 0} />;
 }
 
 /** Scrolls the prompt to the top, the join form under it, and puts the cursor in the name field, once, when the card starts prompting. */
@@ -82,17 +62,6 @@ function useJoinPrompt(prompting: boolean) {
     card.current.querySelector<HTMLInputElement>("input")?.focus({ preventScroll: true });
   }, [prompting]);
   return card;
-}
-
-function HiddenBoard({ t }: { t: Translate }) {
-  return (
-    <div className="daily-hidden" role="img" aria-label={t("hidden")}>
-      {BOARD_CELLS.map((dark, index) => (
-        <i key={index} data-dark={dark === 1 ? "" : undefined} />
-      ))}
-      <span aria-hidden="true">{t("hidden")}</span>
-    </div>
-  );
 }
 
 function tally(squares: string): Record<SquareOutcome, number> {

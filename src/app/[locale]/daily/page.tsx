@@ -5,6 +5,11 @@ import { DailyBoard } from "@/components/daily/DailyBoard";
 import { DailyReference } from "@/components/daily/DailyReference";
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import { WEBSITE_ID } from "@/lib/seo/brand";
+import { readDailyBoard } from "@/lib/daily/readDailyBoard";
+import { readDailyTop } from "@/lib/daily/topTen";
+import { utcDayOf } from "@/lib/lab/daily";
+
+export const revalidate = 60;
 
 async function dailySchema(locale: string) {
   const t = await getTranslations({ locale });
@@ -38,13 +43,15 @@ async function dailySchema(locale: string) {
 
 export default async function DailyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+  const today = utcDayOf(Date.now());
+  const board = await readDailyTop(today, readDailyBoard);
 
   return (
     <div className={LAB_PAPER_CLASS}>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(await dailySchema(locale)) }} />
       <LabPaperHeader />
       <main className="lab-wrap daily-main">
-        <DailyBoard />
+        <DailyBoard rendered={{ today, board, readAt: Date.now() }} />
         <DailyReference locale={locale} />
       </main>
     </div>

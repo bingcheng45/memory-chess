@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "Top 10 hôm nay",
+      "yesterdayTitle": "Top 10 hôm qua",
       "playedLike": "Bàn cờ hôm nay chơi như {rating}",
       "playedLikeNote": "Ước tính từ kết quả của người chơi hôm nay.",
       "rank": "Hạng",

@@ -3,33 +3,33 @@
 import { useEffect, useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import { useNow } from "@/components/home/DailyResetsIn";
-import { useLabData } from "@/hooks/useLabData";
 import { dailySettingOf } from "@/lib/daily/schedule";
-import { DAILY_PLAYED_PARAM, dailyBoardOf, readDailyOpened, utcDayOf, type DailyRound } from "@/lib/lab/daily";
-import { DAY_MS } from "@/lib/lab/readiness";
+import type { DailyTopRender } from "@/lib/daily/topTen";
+import { utcDayOf } from "@/lib/lab/daily";
 import { readDailyEntry, type DailyEntry } from "@/lib/lab/entries";
-import { DailyCard } from "./DailyCard";
-import { DailyJoinForm } from "./DailyJoinForm";
+import { DailyOpenCard } from "./DailyOpenCard";
+import type { DailyPlayer } from "./DailyPlayer";
 import { DailyResetLine } from "./DailyResetLine";
 import { DailyTopTen } from "./DailyTopTen";
-import { useDailyRows, useDailyStanding } from "./useDailyRows";
+import { useDailyRows } from "./useDailyRows";
 import "./daily.css";
 
-export function DailyBoard() {
+/**
+ * The day shown is the server's until the device's clock is read, so the server renders the same heading, card and
+ * rows the first client render does.
+ */
+export function DailyBoard({ rendered }: { rendered: DailyTopRender }) {
   const t = useTranslations("daily.page");
   const format = useFormatter();
   const now = useNow();
-  const lab = useLabData();
   const day = now === null ? null : utcDayOf(now);
-  const yesterday = now === null ? null : utcDayOf(now - DAY_MS);
-  const board = day === null || lab.storage === "loading" ? null : dailyBoardOf(lab.records, day, readDailyOpened());
-  const late = yesterday === null || lab.storage === "loading" ? null : dailyBoardOf(lab.records, yesterday, null);
+  const shownDay = day ?? rendered.today;
+  const setting = dailySettingOf(shownDay);
   const [joined, setJoined] = useState<DailyEntry | null>(null);
-  const [rowsVersion, setRowsVersion] = useState(0);
-  const rows = useDailyRows(day, rowsVersion);
-  const standing = useDailyStanding(joined);
-
-  const justPlayed = useJustPlayed();
+  const [after, setAfter] = useState<string | null>(null);
+  const [played, setPlayed] = useState(false);
+  const rows = useDailyRows(day, rendered, after);
+  const Player = useDailyPlayer();
 
   useEffect(() => {
     if (day !== null) setJoined(readDailyEntry(day));
@@ -37,69 +37,41 @@ export function DailyBoard() {
 
   const onJoined = (entry: DailyEntry) => {
     setJoined(entry);
-    setRowsVersion((version) => version + 1);
+    setAfter(entry.id);
   };
 
   return (
     <>
       <header className="daily-head">
         <div>
-          <p className="daily-fig">{day && t("fig", { date: format.dateTime(Date.parse(`${day}T00:00:00Z`), { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }) })}</p>
+          <p className="daily-fig">{t("fig", { date: format.dateTime(Date.parse(`${shownDay}T00:00:00Z`), { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" }) })}</p>
           <h1 className="daily-title">{t("title")}</h1>
           <p className="daily-lede">{t("lede")}</p>
         </div>
         <DailyResetLine now={now} />
       </header>
-      {late?.status === "played" && <LateJoin key={late.day} round={late.round} />}
       <div className="daily-grid">
-        <DailyCard board={board} setting={day === null ? null : dailySettingOf(day)} joined={joined} standing={standing} onJoined={onJoined} justPlayed={justPlayed} />
-        <DailyTopTen rows={rows} joined={joined} played={board?.status === "played"} />
+        {Player ? <Player day={day} setting={setting} joined={joined} onJoined={onJoined} onPlayed={setPlayed} /> : <DailyOpenCard setting={setting} />}
+        <DailyTopTen rows={rows} today={shownDay} joined={joined} played={played} />
       </div>
     </>
   );
 }
 
-/**
- * Whether the game sent the player here straight after today's round. The marker is taken off the address, so a
- * refresh or a shared link reads as an ordinary visit.
- */
-function useJustPlayed(): boolean {
-  const [justPlayed, setJustPlayed] = useState(false);
+/** The lab record, the chess rules it scores with and the join form load once the page is interactive; the open card stands in until then. */
+function useDailyPlayer(): typeof DailyPlayer | null {
+  const [player, setPlayer] = useState<typeof DailyPlayer | null>(null);
   useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    if (!params.has(DAILY_PLAYED_PARAM)) return;
-    setJustPlayed(true);
-    params.delete(DAILY_PLAYED_PARAM);
-    const query = params.toString();
-    window.history.replaceState(window.history.state, "", `${window.location.pathname}${query ? `?${query}` : ""}${window.location.hash}`);
+    let live = true;
+    import("./DailyPlayer").then(
+      (loaded) => {
+        if (live) setPlayer(() => loaded.DailyPlayer);
+      },
+      (error: unknown) => console.error("The daily player's code failed to load:", error),
+    );
+    return () => {
+      live = false;
+    };
   }, []);
-  return justPlayed;
-}
-
-/** The server still takes rows for yesterday, so a round played on yesterday's board and not joined can join it here. */
-function LateJoin({ round }: { round: DailyRound }) {
-  const t = useTranslations("daily.page");
-  const tJoin = useTranslations("daily.join");
-  const format = useFormatter();
-  const [joined, setJoined] = useState<DailyEntry | "before" | null>(() => (readDailyEntry(round.dailyDay) ? "before" : null));
-
-  if (joined === "before") return null;
-  const date = format.dateTime(Date.parse(`${round.dailyDay}T00:00:00Z`), { weekday: "long", day: "numeric", month: "long", timeZone: "UTC" });
-  return (
-    <section className="daily-card daily-late" aria-labelledby="daily-late-title">
-      <h2 id="daily-late-title" className="daily-kicker">
-        {t("fig", { date })}
-      </h2>
-      <p className="daily-note">
-        <strong>{t("score", { correct: round.correct, pieceCount: round.config.pieceCount })}</strong> {t("lateNote")}
-      </p>
-      {joined ? (
-        <p className="daily-joined-title" role="status">
-          {t("lateJoined")}
-        </p>
-      ) : (
-        <DailyJoinForm round={round} onJoined={setJoined} title={tJoin("lateTitle")} />
-      )}
-    </section>
-  );
+  return player;
 }

@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "De top 10 van vandaag",
+      "yesterdayTitle": "De top 10 van gisteren",
       "playedLike": "Het bord van vandaag speelde als {rating}",
       "playedLikeNote": "Geschat op basis van de spelers van vandaag.",
       "rank": "Plek",

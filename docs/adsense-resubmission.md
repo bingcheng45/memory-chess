@@ -78,8 +78,9 @@ The clean production-only series for these events starts 2026-09-29. Read nothin
 Note added 2026-10-18 for PR #117. From the day it merges, a player's first-ever round from a link waits behind a
 one-line rule and Start. That round's `round_start` fires when Start is pressed, so `home_quick` (and other link)
 `round_start` counts mean "players who pressed Start", not "visitors who landed". Visitors who leave at the rule
-send only `round_intro_view`. To compare with the weeks before, add `round_intro_view` visitors to `round_start`.
-Daily boards, replays and later rounds are unchanged.
+send only `round_intro_view`. GA4 cannot tell an intro round's `round_start` from a later round's, so read the
+`round_start` series as broken on the merge date, and `round_intro_view` against `round_start` as the intro's own
+start rate. Daily boards, replays and later rounds are unchanged.
 
 `sound_settings` fired once per finished round beside `round_complete` for four weeks after that merge, so the weekly
 rounds series has no gap. It was retired in its own PR on 2026-10-16, eleven days early, because the counts already

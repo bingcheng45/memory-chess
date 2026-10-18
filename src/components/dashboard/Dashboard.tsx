@@ -42,8 +42,7 @@ type Late = Awaited<ReturnType<typeof loadLate>>;
 /** Not "scroll": the router fires one when a client navigation lands on a fragment it cannot find yet. */
 const USER_INPUTS = ["wheel", "touchstart", "keydown"] as const;
 
-/** Input on the server-drawn page lands before hydration, when the effect's listeners do not exist yet. */
-const MARK_EARLY_INPUT = `(function(s,t){function m(){s.dataset.moved="";t.forEach(function(e){removeEventListener(e,m)})}t.forEach(function(e){addEventListener(e,m,{passive:true})})})(document.currentScript,${JSON.stringify(USER_INPUTS)})`;
+const MARK_INPUT_BEFORE_HYDRATION = `(function(s,t){function m(){s.dataset.moved="";t.forEach(function(e){removeEventListener(e,m)})}t.forEach(function(e){addEventListener(e,m,{passive:true})})})(document.currentScript,${JSON.stringify(USER_INPUTS)})`;
 
 function whenIdle(run: () => void): () => void {
   if (typeof window.requestIdleCallback !== "function") {
@@ -54,13 +53,13 @@ function whenIdle(run: () => void): () => void {
   return () => window.cancelIdleCallback(handle);
 }
 
-function useLate(ready: boolean, earlyInput: RefObject<HTMLScriptElement | null>) {
+function useLate(ready: boolean, inputBeforeHydration: RefObject<HTMLScriptElement | null>) {
   const [late, setLate] = useState<Late | "failed" | null>(null);
   const fragment = useRef<string | null>(null);
   const playerMoved = useRef(false);
   useEffect(() => {
     const id = window.location.hash.slice(1);
-    if (!id || document.getElementById(id) || earlyInput.current?.hasAttribute("data-moved")) return;
+    if (!id || document.getElementById(id) || inputBeforeHydration.current?.hasAttribute("data-moved")) return;
     fragment.current = id;
     const moved = () => {
       playerMoved.current = true;
@@ -69,7 +68,7 @@ function useLate(ready: boolean, earlyInput: RefObject<HTMLScriptElement | null>
     const stop = () => USER_INPUTS.forEach((type) => window.removeEventListener(type, moved));
     USER_INPUTS.forEach((type) => window.addEventListener(type, moved, { passive: true }));
     return stop;
-  }, [earlyInput]);
+  }, [inputBeforeHydration]);
   useEffect(() => {
     if (!ready || late) return;
     let live = true;
@@ -135,8 +134,8 @@ export function Dashboard() {
   const loaded = data.storage === "available" && data.today !== "";
   const results = useLabResults({ ...data, plan: loaded ? storedPlan : null, target: loaded ? storedTarget : null });
   const { standing, rated } = useGameStanding(loaded);
-  const earlyInput = useRef<HTMLScriptElement>(null);
-  const [late, retryLate] = useLate(loaded, earlyInput);
+  const inputBeforeHydration = useRef<HTMLScriptElement>(null);
+  const [late, retryLate] = useLate(loaded, inputBeforeHydration);
   const sections = late === "failed" ? null : late;
 
   const tiles = useMemo(
@@ -166,7 +165,7 @@ export function Dashboard() {
 
   return (
     <main className="lab-wrap lab-dashboard">
-      <script ref={earlyInput} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: MARK_EARLY_INPUT }} />
+      <script ref={inputBeforeHydration} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: MARK_INPUT_BEFORE_HYDRATION }} />
       <header className="lab-dash-head">
         <h1>{t("title")}</h1>
         <DashboardDailyCard records={loaded ? data.records : "loading"} />

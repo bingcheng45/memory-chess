@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode, type RefObject } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CommunityInvite } from "@/components/community/CommunityLink";
@@ -42,6 +42,9 @@ type Late = Awaited<ReturnType<typeof loadLate>>;
 /** Not "scroll": the router fires one when a client navigation lands on a fragment it cannot find yet. */
 const USER_INPUTS = ["wheel", "touchstart", "keydown"] as const;
 
+/** Input on the server-drawn page lands before hydration, when the effect's listeners do not exist yet. */
+const MARK_EARLY_INPUT = `(function(s,t){function m(){s.dataset.moved="";t.forEach(function(e){removeEventListener(e,m)})}t.forEach(function(e){addEventListener(e,m,{passive:true})})})(document.currentScript,${JSON.stringify(USER_INPUTS)})`;
+
 function whenIdle(run: () => void): () => void {
   if (typeof window.requestIdleCallback !== "function") {
     const timer = window.setTimeout(run, 1);
@@ -51,13 +54,13 @@ function whenIdle(run: () => void): () => void {
   return () => window.cancelIdleCallback(handle);
 }
 
-function useLate(ready: boolean): Late | null {
-  const [late, setLate] = useState<Late | null>(null);
+function useLate(ready: boolean, earlyInput: RefObject<HTMLScriptElement | null>) {
+  const [late, setLate] = useState<Late | "failed" | null>(null);
   const fragment = useRef<string | null>(null);
   const playerMoved = useRef(false);
   useEffect(() => {
     const id = window.location.hash.slice(1);
-    if (!id || document.getElementById(id)) return;
+    if (!id || document.getElementById(id) || earlyInput.current?.hasAttribute("data-moved")) return;
     fragment.current = id;
     const moved = () => {
       playerMoved.current = true;
@@ -66,11 +69,18 @@ function useLate(ready: boolean): Late | null {
     const stop = () => USER_INPUTS.forEach((type) => window.removeEventListener(type, moved));
     USER_INPUTS.forEach((type) => window.addEventListener(type, moved, { passive: true }));
     return stop;
-  }, []);
+  }, [earlyInput]);
   useEffect(() => {
     if (!ready || late) return;
     let live = true;
-    const load = () => loadLate().then((loaded) => live && setLate(loaded));
+    const load = () =>
+      loadLate().then(
+        (loaded) => live && setLate(loaded),
+        () => {
+          fragment.current = null;
+          if (live) setLate("failed");
+        },
+      );
     if (fragment.current) {
       load();
       return () => {
@@ -94,7 +104,7 @@ function useLate(ready: boolean): Late | null {
     });
     return () => cancelAnimationFrame(frame);
   }, [late]);
-  return late;
+  return [late, () => setLate(null)] as const;
 }
 
 function Section({ id, title, lede, children }: { id: string; title: string; lede?: string; children: ReactNode }) {
@@ -116,6 +126,7 @@ function Section({ id, title, lede, children }: { id: string; title: string; led
 export function Dashboard() {
   const t = useTranslations("dashboard");
   const tCommunity = useTranslations("common.community");
+  const tError = useTranslations("errorPages.error");
   const data = useLabRecord();
   const storedPlan = planChoice.useValue();
   const storedTarget = targetChoice.useValue();
@@ -124,7 +135,9 @@ export function Dashboard() {
   const loaded = data.storage === "available" && data.today !== "";
   const results = useLabResults({ ...data, plan: loaded ? storedPlan : null, target: loaded ? storedTarget : null });
   const { standing, rated } = useGameStanding(loaded);
-  const late = useLate(loaded);
+  const earlyInput = useRef<HTMLScriptElement>(null);
+  const [late, retryLate] = useLate(loaded, earlyInput);
+  const sections = late === "failed" ? null : late;
 
   const tiles = useMemo(
     () =>
@@ -144,7 +157,7 @@ export function Dashboard() {
     [loaded, data, results, weekGoal, entries, standing],
   );
   const ratingLine = useMemo(() => (loaded ? standing && ratingHistoryOf(standing.rating, rated, Date.now()) : "pending"), [loaded, standing, rated]);
-  const rounds = useMemo(() => (late ? historyOf(data.records, rated) : null), [late, data.records, rated]);
+  const rounds = useMemo(() => (sections ? historyOf(data.records, rated) : null), [sections, data.records, rated]);
   const figures = useMemo(() => tiles && drawnTilesOf(tiles), [tiles]);
   const unlocks = useMemo(() => tiles && unlocksOf(tiles), [tiles]);
   const card = tiles && shareCardOf(tiles, data.summary.rounds);
@@ -153,6 +166,7 @@ export function Dashboard() {
 
   return (
     <main className="lab-wrap lab-dashboard">
+      <script ref={earlyInput} suppressHydrationWarning dangerouslySetInnerHTML={{ __html: MARK_EARLY_INPUT }} />
       <header className="lab-dash-head">
         <h1>{t("title")}</h1>
         <DashboardDailyCard records={loaded ? data.records : "loading"} />
@@ -180,12 +194,23 @@ export function Dashboard() {
               <div className="lab-dash-summary-pending" aria-hidden="true" />
             )}
           </Section>
-          {late && <DashboardBackup record={data} persisted={late.persisted} />}
+          {sections && <DashboardBackup record={data} persisted={sections.persisted} />}
           <Section id="history" title={t("sections.history")} lede={t("historyLede")}>
-            {late ? <late.DashboardHistory rounds={rounds} total={data.summary.rounds} /> : <div className="lab-hist-pending" aria-hidden="true" />}
+            {late === "failed" ? (
+              <div className="lab-dash-late-failed">
+                <p className="lab-dash-warn">{tError("heading")}</p>
+                <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={retryLate}>
+                  {tError("retry")}
+                </button>
+              </div>
+            ) : sections ? (
+              <sections.DashboardHistory rounds={rounds} total={data.summary.rounds} />
+            ) : (
+              <div className="lab-hist-pending" aria-hidden="true" />
+            )}
           </Section>
           <Section id="analysis" title={t("sections.analysis")} lede={t("analysisLede")}>
-            {late ? <late.DashboardAnalysis results={results} /> : <div className="lab-dash-panels lab-dash-pending" aria-hidden="true" />}
+            {sections ? <sections.DashboardAnalysis results={results} /> : late !== "failed" && <div className="lab-dash-panels lab-dash-pending" aria-hidden="true" />}
           </Section>
           <Section id="more" title={t("sections.more")}>
             <TileList ids={DASHBOARD_GROUPS.more} tiles={figures} size="more" />

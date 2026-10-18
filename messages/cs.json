@@ -1471,15 +1471,15 @@
       "latest": "Nejnovější",
       "accuracy": {
         "title": "Přesnost v čase",
-        "desc": "Tvá přesnost kolo po kole při tvém nejčastějším nastavení, na stupnici od 0 do 100 %.",
+        "desc": "Tvá přesnost kolo po kole při tvém nejčastějším nastavení, s {window}kolovým průměrem.",
         "note": "{source, select, calibration {Tréninková kola} other {Kola v partiích}} při {pieceCount} figurách, {memorizeSeconds} s, tvé nejčastější nastavení. {count, plural, one {Poslední # kolo} few {Poslední # kola} many {Posledního # kola} other {Posledních # kol}}.",
-        "aria": "Přesnost v tvých posledních {count} kolech při {pieceCount} figurách, {memorizeSeconds} s, na stupnici od 0 do 100 procent, naposledy {latest} procent."
+        "aria": "Přesnost v tvých posledních {count} kolech při {pieceCount} figurách, {memorizeSeconds} s, naposledy {latest} procent, {window}kolový průměr {average} procent."
       },
       "speed": {
         "title": "Tempo vybavování v čase",
         "unit": "Sekundy na správnou figuru. Méně znamená rychleji.",
         "note": "{source, select, calibration {Tréninková kola} other {Kola v partiích}} při {pieceCount} figurách, {memorizeSeconds} s. {count, plural, one {Poslední # kolo} few {Poslední # kola} many {Posledního # kola} other {Posledních # kol}}.",
-        "aria": "Sekundy na správnou figuru v tvých posledních {count} kolech při {pieceCount} figurách, {memorizeSeconds} s, naposledy {latest}."
+        "aria": "Sekundy na správnou figuru v tvých posledních {count} kolech při {pieceCount} figurách, {memorizeSeconds} s, naposledy {latest}, {window}kolový průměr {average}."
       },
       "bests": {
         "title": "Osobní rekordy podle nastavení",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, nové"
       }
     },
-    "trend": "{direction, select, up {Nahoru} other {Dolů}} o {amount} za posledních {window} kol oproti {window} předchozím"
+    "trend": "{direction, select, up {Nahoru} other {Dolů}} o {amount} za posledních {window} kol oproti {window} předchozím",
+    "rating": {
+      "title": "Hodnocení dovednosti v čase",
+      "desc": "Tvé hodnocení dovednosti po každém hodnoceném herním kole na tomto zařízení.",
+      "periodDays": "{days, plural, one {za poslední den} few {za poslední # dny} many {za posledních # dne} other {za posledních # dní}}",
+      "periodRounds": "{count, plural, one {za tvé poslední kolo} few {za tvá poslední # kola} many {za tvých posledních # kola} other {za tvých posledních # kol}}",
+      "periodLevel": "Beze změny {days, plural, one {za poslední den} few {za poslední # dny} many {za posledních # dne} other {za posledních # dní}}",
+      "peak": "Maximum {rating}",
+      "newPeak": "Nové maximum",
+      "aria": "Hodnocení dovednosti v {count, plural, one {tvém posledním hodnoceném kole} few {tvých posledních # hodnocených kolech} many {tvých posledních # hodnoceného kola} other {tvých posledních # hodnocených kolech}}, od {start} do {current}, maximum {peak}.",
+      "empty": "Zahraj si ve hře hodnocené kolo a začne se kreslit tvá křivka hodnocení."
+    },
+    "chart": {
+      "round": "Kolo {n}",
+      "start": "Start",
+      "each": "Každé kolo",
+      "average": "{window}kolový průměr",
+      "best": "Nejlepší {value}",
+      "win": "Výhra {accuracy} %",
+      "col": {
+        "round": "Kolo",
+        "date": "Datum",
+        "rating": "Hodnocení",
+        "change": "Změna",
+        "accuracy": "Přesnost",
+        "pace": "Sekundy na figuru",
+        "average": "Průměr"
+      }
+    }
   },
   "share": {
     "intro": "Kartu sdílej, ulož nebo zkopíruj do příspěvku.",

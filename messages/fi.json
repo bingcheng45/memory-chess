@@ -1471,15 +1471,15 @@
       "latest": "Uusin",
       "accuracy": {
         "title": "Tarkkuus ajan mittaan",
-        "desc": "Tarkkuutesi kierros kierrokselta eniten pelaamallasi asetuksella, asteikolla 0–100 %.",
+        "desc": "Tarkkuutesi kierros kierrokselta eniten pelaamallasi asetuksella sekä {window} kierroksen keskiarvo.",
         "note": "{source, select, calibration {Harjoituksen kierrokset} other {Pelien kierrokset}}, {pieceCount} nappulaa, {memorizeSeconds} s, eniten pelaamasi asetus. {count, plural, one {Viimeinen # kierros} other {Viimeiset # kierrosta}}.",
-        "aria": "Tarkkuus viimeisillä {count} kierroksellasi, {pieceCount} nappulaa, {memorizeSeconds} s, asteikolla 0–100 prosenttia, viimeisin {latest} prosenttia."
+        "aria": "Tarkkuus viimeisillä {count} kierroksellasi, {pieceCount} nappulaa, {memorizeSeconds} s, viimeisin {latest} prosenttia, {window} kierroksen keskiarvo {average} prosenttia."
       },
       "speed": {
         "title": "Muistamistahti ajan mittaan",
         "unit": "Sekuntia oikeaa nappulaa kohden. Pienempi on nopeampi.",
         "note": "{source, select, calibration {Harjoituksen kierrokset} other {Pelien kierrokset}}, {pieceCount} nappulaa, {memorizeSeconds} s. {count, plural, one {Viimeinen # kierros} other {Viimeiset # kierrosta}}.",
-        "aria": "Sekuntia oikeaa nappulaa kohden viimeisillä {count} kierroksellasi, {pieceCount} nappulaa, {memorizeSeconds} s, viimeisin {latest}."
+        "aria": "Sekuntia oikeaa nappulaa kohden viimeisillä {count} kierroksellasi, {pieceCount} nappulaa, {memorizeSeconds} s, viimeisin {latest}, {window} kierroksen keskiarvo {average}."
       },
       "bests": {
         "title": "Ennätykset asetuksittain",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, uusi"
       }
     },
-    "trend": "{direction, select, up {Nousua} other {Laskua}} {amount} viimeisillä {window} kierroksella edellisiin {window} verrattuna"
+    "trend": "{direction, select, up {Nousua} other {Laskua}} {amount} viimeisillä {window} kierroksella edellisiin {window} verrattuna",
+    "rating": {
+      "title": "Taitoluku ajan mittaan",
+      "desc": "Taitolukusi jokaisen pisteytetyn pelikierroksen jälkeen tällä laitteella.",
+      "periodDays": "{days, plural, one {viimeisen päivän aikana} other {viimeisten # päivän aikana}}",
+      "periodRounds": "{count, plural, one {viimeisellä kierroksellasi} other {viimeisillä # kierroksellasi}}",
+      "periodLevel": "Ei muutosta {days, plural, one {viimeisen päivän aikana} other {viimeisten # päivän aikana}}",
+      "peak": "Huippu {rating}",
+      "newPeak": "Uusi huippu",
+      "aria": "Taitoluku {count, plural, one {viimeisellä pisteytetyllä kierroksellasi} other {viimeisillä # pisteytetyllä kierroksellasi}}, alussa {start}, nyt {current}, huippu {peak}.",
+      "empty": "Pelaa pisteytetty kierros pelissä, niin taitolukusi käyrä alkaa."
+    },
+    "chart": {
+      "round": "Kierros {n}",
+      "start": "Alku",
+      "each": "Jokainen kierros",
+      "average": "{window} kierroksen keskiarvo",
+      "best": "Paras {value}",
+      "win": "Voitto {accuracy} %",
+      "col": {
+        "round": "Kierros",
+        "date": "Päivä",
+        "rating": "Taitoluku",
+        "change": "Muutos",
+        "accuracy": "Tarkkuus",
+        "pace": "Sekuntia per nappula",
+        "average": "Keskiarvo"
+      }
+    }
   },
   "share": {
     "intro": "Jaa kortti, tallenna se tai kopioi se julkaisuun.",

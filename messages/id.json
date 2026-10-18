@@ -1471,15 +1471,15 @@
       "latest": "Terbaru",
       "accuracy": {
         "title": "Akurasi dari waktu ke waktu",
-        "desc": "Akurasimu ronde demi ronde pada pengaturan yang paling sering kamu mainkan, dalam skala 0 hingga 100%.",
+        "desc": "Akurasimu ronde demi ronde pada pengaturan yang paling sering kamu mainkan, dengan rata-rata {window} ronde.",
         "note": "Ronde {source, select, calibration {latihan} other {permainan}} dengan {pieceCount} bidak, {memorizeSeconds} dtk, pengaturan yang paling sering kamu mainkan. {count, plural, other {# ronde}} terakhir.",
-        "aria": "Akurasi dalam {count} ronde terakhirmu dengan {pieceCount} bidak, {memorizeSeconds} dtk, pada skala 0 sampai 100 persen, terbaru {latest} persen."
+        "aria": "Akurasi dalam {count} ronde terakhirmu dengan {pieceCount} bidak, {memorizeSeconds} dtk, terbaru {latest} persen, rata-rata {window} ronde {average} persen."
       },
       "speed": {
         "title": "Laju mengingat dari waktu ke waktu",
         "unit": "Detik per bidak benar. Makin rendah makin cepat.",
         "note": "Ronde {source, select, calibration {latihan} other {permainan}} dengan {pieceCount} bidak, {memorizeSeconds} dtk. {count, plural, other {# ronde}} terakhir.",
-        "aria": "Detik per bidak benar dalam {count} ronde terakhirmu dengan {pieceCount} bidak, {memorizeSeconds} dtk, terbaru {latest}."
+        "aria": "Detik per bidak benar dalam {count} ronde terakhirmu dengan {pieceCount} bidak, {memorizeSeconds} dtk, terbaru {latest}, rata-rata {window} ronde {average}."
       },
       "bests": {
         "title": "Rekor pribadi per pengaturan",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, baru"
       }
     },
-    "trend": "{direction, select, up {Naik} other {Turun}} {amount} dalam {window} ronde terakhirmu dibanding {window} ronde sebelumnya"
+    "trend": "{direction, select, up {Naik} other {Turun}} {amount} dalam {window} ronde terakhirmu dibanding {window} ronde sebelumnya",
+    "rating": {
+      "title": "Rating dari waktu ke waktu",
+      "desc": "Rating keahlianmu setelah setiap ronde permainan berperingkat di perangkat ini.",
+      "periodDays": "{days, plural, =1 {dalam sehari terakhir} other {dalam # hari terakhir}}",
+      "periodRounds": "{count, plural, =1 {dalam ronde terakhirmu} other {dalam # ronde terakhirmu}}",
+      "periodLevel": "Tidak berubah {days, plural, =1 {dalam sehari terakhir} other {dalam # hari terakhir}}",
+      "peak": "Puncak {rating}",
+      "newPeak": "Puncak baru",
+      "aria": "Rating keahlian dalam {count, plural, =1 {ronde berperingkat terakhirmu} other {# ronde berperingkat terakhirmu}}, dari {start} ke {current}, puncak {peak}.",
+      "empty": "Mainkan ronde berperingkat di permainan untuk memulai garis ratingmu."
+    },
+    "chart": {
+      "round": "Ronde {n}",
+      "start": "Awal",
+      "each": "Setiap ronde",
+      "average": "Rata-rata {window} ronde",
+      "best": "Terbaik {value}",
+      "win": "Menang {accuracy}%",
+      "col": {
+        "round": "Ronde",
+        "date": "Tanggal",
+        "rating": "Rating",
+        "change": "Perubahan",
+        "accuracy": "Akurasi",
+        "pace": "Detik per bidak",
+        "average": "Rata-rata"
+      }
+    }
   },
   "share": {
     "intro": "Bagikan kartunya, simpan, atau salin ke dalam unggahan.",

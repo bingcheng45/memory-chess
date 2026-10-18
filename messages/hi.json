@@ -1471,15 +1471,15 @@
       "latest": "सबसे नया",
       "accuracy": {
         "title": "समय के साथ सटीकता",
-        "desc": "आपकी सबसे ज़्यादा खेली गई सेटिंग पर हर राउंड की आपकी सटीकता, 0 से 100% के पैमाने पर।",
+        "desc": "आपकी सबसे ज़्यादा खेली गई सेटिंग पर हर राउंड की आपकी सटीकता, {window} राउंड के औसत के साथ।",
         "note": "{pieceCount} मोहरे, {memorizeSeconds} से. पर {source, select, calibration {अभ्यास} other {गेम}} राउंड, आपकी सबसे ज़्यादा खेली गई सेटिंग। पिछले {count, plural, one {# राउंड} other {# राउंड}}।",
-        "aria": "{pieceCount} मोहरे, {memorizeSeconds} से. पर आपके पिछले {count} राउंड की सटीकता, 0 से 100 प्रतिशत के पैमाने पर, नवीनतम {latest} प्रतिशत।"
+        "aria": "{pieceCount} मोहरे, {memorizeSeconds} से. पर आपके पिछले {count} राउंड की सटीकता, नवीनतम {latest} प्रतिशत, {window} राउंड का औसत {average} प्रतिशत।"
       },
       "speed": {
         "title": "समय के साथ याद करने की गति",
         "unit": "प्रति सही मोहरा सेकंड। कम का मतलब तेज़।",
         "note": "{pieceCount} मोहरे, {memorizeSeconds} से. पर {source, select, calibration {अभ्यास} other {गेम}} राउंड। पिछले {count, plural, one {# राउंड} other {# राउंड}}।",
-        "aria": "{pieceCount} मोहरे, {memorizeSeconds} से. पर आपके पिछले {count} राउंड में प्रति सही मोहरा सेकंड, नवीनतम {latest}।"
+        "aria": "{pieceCount} मोहरे, {memorizeSeconds} से. पर आपके पिछले {count} राउंड में प्रति सही मोहरा सेकंड, नवीनतम {latest}, {window} राउंड का औसत {average}।"
       },
       "bests": {
         "title": "हर सेटिंग के व्यक्तिगत रिकॉर्ड",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, नया"
       }
     },
-    "trend": "पिछले {window} राउंड में उससे पहले के {window} राउंड की तुलना में {amount} {direction, select, up {ऊपर} other {नीचे}}"
+    "trend": "पिछले {window} राउंड में उससे पहले के {window} राउंड की तुलना में {amount} {direction, select, up {ऊपर} other {नीचे}}",
+    "rating": {
+      "title": "समय के साथ कौशल रेटिंग",
+      "desc": "इस डिवाइस पर हर रेटेड गेम राउंड के बाद आपकी कौशल रेटिंग।",
+      "periodDays": "{days, plural, one {पिछले दिन में} other {पिछले # दिनों में}}",
+      "periodRounds": "{count, plural, one {आपके पिछले राउंड में} other {आपके पिछले # राउंड में}}",
+      "periodLevel": "{days, plural, one {पिछले दिन में} other {पिछले # दिनों में}} कोई बदलाव नहीं",
+      "peak": "शिखर {rating}",
+      "newPeak": "नया शिखर",
+      "aria": "{count, plural, one {आपके पिछले रेटेड राउंड} other {आपके पिछले # रेटेड राउंड}} में कौशल रेटिंग, {start} से {current}, शिखर {peak}।",
+      "empty": "अपनी रेटिंग रेखा शुरू करने के लिए गेम में एक रेटेड राउंड खेलें।"
+    },
+    "chart": {
+      "round": "राउंड {n}",
+      "start": "शुरुआत",
+      "each": "हर राउंड",
+      "average": "{window} राउंड का औसत",
+      "best": "सर्वश्रेष्ठ {value}",
+      "win": "जीत {accuracy}%",
+      "col": {
+        "round": "राउंड",
+        "date": "तारीख",
+        "rating": "रेटिंग",
+        "change": "बदलाव",
+        "accuracy": "सटीकता",
+        "pace": "प्रति मोहरा सेकंड",
+        "average": "औसत"
+      }
+    }
   },
   "share": {
     "intro": "कार्ड साझा करें, सहेजें या किसी पोस्ट में कॉपी करें।",

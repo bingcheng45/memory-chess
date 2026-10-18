@@ -1471,15 +1471,15 @@
       "latest": "En yeni",
       "accuracy": {
         "title": "Zaman içinde isabet",
-        "desc": "En çok oynadığın ayarda tur tur isabetin, 0 ile %100 arasındaki bir ölçekte.",
+        "desc": "En çok oynadığın ayarda tur tur isabetin ve {window} turluk ortalaması.",
         "note": "En çok oynadığın ayar olan {pieceCount} taş, {memorizeSeconds} sn ile {source, select, calibration {alıştırma turları} other {oyun turları}}. Son {count, plural, one {# tur} other {# tur}}.",
-        "aria": "{pieceCount} taş, {memorizeSeconds} sn ile son {count} turundaki isabet, yüzde 0 ile 100 arasında bir ölçekte, en son yüzde {latest}."
+        "aria": "{pieceCount} taş, {memorizeSeconds} sn ile son {count} turundaki isabet, en son yüzde {latest}, {window} turluk ortalama yüzde {average}."
       },
       "speed": {
         "title": "Zaman içinde hatırlama temposu",
         "unit": "Doğru taş başına saniye. Düşük olan daha hızlıdır.",
         "note": "{pieceCount} taş, {memorizeSeconds} sn ile {source, select, calibration {alıştırma turları} other {oyun turları}}. Son {count, plural, one {# tur} other {# tur}}.",
-        "aria": "{pieceCount} taş, {memorizeSeconds} sn ile son {count} turunda doğru taş başına saniye, en son {latest}."
+        "aria": "{pieceCount} taş, {memorizeSeconds} sn ile son {count} turunda doğru taş başına saniye, en son {latest}, {window} turluk ortalama {average}."
       },
       "bests": {
         "title": "Ayara göre kişisel rekorlar",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, yeni"
       }
     },
-    "trend": "Son {window} turda önceki {window} tura göre {amount} {direction, select, up {arttı} other {düştü}}"
+    "trend": "Son {window} turda önceki {window} tura göre {amount} {direction, select, up {arttı} other {düştü}}",
+    "rating": {
+      "title": "Zaman içinde beceri puanı",
+      "desc": "Bu cihazda puanlı her oyun turundan sonraki beceri puanın.",
+      "periodDays": "{days, plural, one {son günde} other {son # günde}}",
+      "periodRounds": "{count, plural, one {son turunda} other {son # turunda}}",
+      "periodLevel": "{days, plural, one {Son günde} other {Son # günde}} değişiklik yok",
+      "peak": "Zirve {rating}",
+      "newPeak": "Yeni zirve",
+      "aria": "Son {count, plural, one {puanlı turunda} other {# puanlı turunda}} beceri puanı, başlangıç {start}, şimdi {current}, zirve {peak}.",
+      "empty": "Puan çizgini başlatmak için oyunda puanlı bir tur oyna."
+    },
+    "chart": {
+      "round": "Tur {n}",
+      "start": "Başlangıç",
+      "each": "Her tur",
+      "average": "{window} turluk ortalama",
+      "best": "En iyi {value}",
+      "win": "Galibiyet %{accuracy}",
+      "col": {
+        "round": "Tur",
+        "date": "Tarih",
+        "rating": "Puan",
+        "change": "Değişim",
+        "accuracy": "İsabet",
+        "pace": "Taş başına saniye",
+        "average": "Ortalama"
+      }
+    }
   },
   "share": {
     "intro": "Kartı paylaş, kaydet ya da bir gönderiye kopyala.",

@@ -1471,15 +1471,15 @@
       "latest": "Più recente",
       "accuracy": {
         "title": "Precisione nel tempo",
-        "desc": "La tua precisione partita per partita nell’impostazione che giochi di più, su una scala da 0 a 100%.",
+        "desc": "La tua precisione partita per partita nell’impostazione che giochi di più, con una media su {window} partite.",
         "note": "Partite di {source, select, calibration {allenamento} other {gioco}} a {pieceCount} pezzi, {memorizeSeconds} s, l’impostazione che giochi di più. Le più recenti: {count, plural, one {# partita} many {# partite} other {# partite}}.",
-        "aria": "Precisione nelle tue ultime {count} partite a {pieceCount} pezzi, {memorizeSeconds} s, su una scala da 0 a 100 per cento, ultima {latest} per cento."
+        "aria": "Precisione nelle tue ultime {count} partite a {pieceCount} pezzi, {memorizeSeconds} s, ultima {latest} per cento, media su {window} partite {average} per cento."
       },
       "speed": {
         "title": "Ritmo di richiamo nel tempo",
         "unit": "Secondi per pezzo corretto. Meno è più veloce.",
         "note": "Partite di {source, select, calibration {allenamento} other {gioco}} a {pieceCount} pezzi, {memorizeSeconds} s. Le più recenti: {count, plural, one {# partita} many {# partite} other {# partite}}.",
-        "aria": "Secondi per pezzo corretto nelle tue ultime {count} partite a {pieceCount} pezzi, {memorizeSeconds} s, ultima {latest}."
+        "aria": "Secondi per pezzo corretto nelle tue ultime {count} partite a {pieceCount} pezzi, {memorizeSeconds} s, ultima {latest}, media su {window} partite {average}."
       },
       "bests": {
         "title": "Record personali per impostazione",
@@ -1571,7 +1571,35 @@
         "new": "{label} {after}, nuovo"
       }
     },
-    "trend": "{direction, select, up {In salita} other {In calo}} di {amount} nelle ultime {window} partite rispetto alle {window} precedenti"
+    "trend": "{direction, select, up {In salita} other {In calo}} di {amount} nelle ultime {window} partite rispetto alle {window} precedenti",
+    "rating": {
+      "title": "Punteggio di abilità nel tempo",
+      "desc": "Il tuo punteggio di abilità dopo ogni partita valutata del gioco su questo dispositivo.",
+      "periodDays": "{days, plural, one {nell’ultimo giorno} many {negli ultimi # giorni} other {negli ultimi # giorni}}",
+      "periodRounds": "{count, plural, one {nella tua ultima partita} many {nelle tue ultime # partite} other {nelle tue ultime # partite}}",
+      "periodLevel": "Nessuna variazione {days, plural, one {nell’ultimo giorno} many {negli ultimi # giorni} other {negli ultimi # giorni}}",
+      "peak": "Massimo {rating}",
+      "newPeak": "Nuovo massimo",
+      "aria": "Punteggio di abilità {count, plural, one {nella tua ultima partita valutata} many {nelle tue ultime # partite valutate} other {nelle tue ultime # partite valutate}}, da {start} a {current}, massimo {peak}.",
+      "empty": "Gioca una partita valutata nel gioco per avviare la linea del tuo punteggio."
+    },
+    "chart": {
+      "round": "Partita {n}",
+      "start": "Inizio",
+      "each": "Ogni partita",
+      "average": "Media su {window} partite",
+      "best": "Migliore {value}",
+      "win": "Vittoria {accuracy}%",
+      "col": {
+        "round": "Partita",
+        "date": "Data",
+        "rating": "Punteggio",
+        "change": "Variazione",
+        "accuracy": "Precisione",
+        "pace": "Secondi per pezzo",
+        "average": "Media"
+      }
+    }
   },
   "share": {
     "intro": "Condividi la scheda, salvala o copiala in un post.",

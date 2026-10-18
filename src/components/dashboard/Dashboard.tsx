@@ -9,6 +9,7 @@ import { useLabData, useLabResults } from "@/hooks/useLabData";
 import { readDailyOpened, utcDayOf } from "@/lib/lab/daily";
 import { DASHBOARD_GROUPS, dashboardOf, shareCardOf } from "@/lib/lab/dashboard";
 import { historyOf } from "@/lib/lab/history";
+import { ratingHistoryOf } from "@/lib/lab/ratingHistory";
 import { daysBetween } from "@/lib/lab/readiness";
 import { WIN_ACCURACY } from "@/lib/store/gameStore";
 import { entriesChoice, planChoice, targetChoice } from "@/components/home/labChoices";
@@ -17,6 +18,7 @@ import { useWeekGoal } from "@/components/home/useWeekGoal";
 import { DashboardAnalysis } from "./DashboardAnalysis";
 import { DashboardDailyCard } from "./DashboardDailyCard";
 import { DashboardHistory } from "./DashboardHistory";
+import { DashboardRating } from "./DashboardRating";
 import { DashboardShare } from "./DashboardShare";
 import { TileList } from "./DashboardTiles";
 import { useGameStanding } from "./useGameStanding";
@@ -70,6 +72,7 @@ export function Dashboard() {
         : null,
     [loaded, data, results, weekGoal, entries, standing],
   );
+  const ratingLine = useMemo(() => (loaded ? standing && ratingHistoryOf(standing.rating, rated, Date.now()) : "pending"), [loaded, standing, rated]);
   const rounds = useMemo(() => (loaded ? historyOf(data.records, rated) : null), [loaded, data.records, rated]);
   const card = tiles && shareCardOf(tiles, data.summary.rounds);
   const lastDay = data.summary.days.at(-1);
@@ -90,6 +93,7 @@ export function Dashboard() {
         <>
           <Section id="summary" title={t("sections.summary")}>
             <TileList ids={DASHBOARD_GROUPS.lead} tiles={tiles} size="lead" />
+            <DashboardRating history={ratingLine} />
             <div className="lab-dash-summary">
               <TileList ids={DASHBOARD_GROUPS.summary} tiles={tiles} size="summary" />
               <DashboardShare card={tiles ? card : "pending"} />

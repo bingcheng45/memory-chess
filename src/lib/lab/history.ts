@@ -25,7 +25,7 @@ export interface HistoryRound {
   readonly ratingChange: number | null;
 }
 
-export type RatedRound = Pick<GameHistory, "id" | "skillRatingChange">;
+export type RatedRound = Pick<GameHistory, "id" | "timestamp" | "skillRatingChange">;
 
 /** Newest first. */
 export function historyOf(records: readonly RoundRecord[], rated: readonly RatedRound[]): HistoryRound[] {

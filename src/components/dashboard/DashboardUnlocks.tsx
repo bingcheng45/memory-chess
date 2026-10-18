@@ -4,7 +4,7 @@ import { useId, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { LockedTile } from "@/lib/lab/dashboard";
-import { useNeedList } from "./DashboardTiles";
+import { tileAnchor, useNeedList } from "./DashboardTiles";
 
 const SHOWN = 4;
 
@@ -18,7 +18,7 @@ function UnlockItem({ tile }: { tile: LockedTile }) {
   const action = choose ? t("choose") : rig ? t("playAt", rig) : t("play");
 
   return (
-    <li data-unlock={tile.id}>
+    <li id={tileAnchor(tile.id)} data-unlock={tile.id}>
       <span className="lab-dash-unlock-what">{t(`label.${tile.id}`)}</span>
       <span className="lab-dash-unlock-need">{tile.state === "empty" ? need : rig ? t("unlocks.at", { need, ...rig }) : t("unlocks.plain", { need })}</span>
       {tile.href === null ? (
@@ -35,7 +35,7 @@ function UnlockItem({ tile }: { tile: LockedTile }) {
 export function DashboardUnlocks({ unlocks }: { unlocks: readonly LockedTile[] }) {
   const t = useTranslations("dashboard.unlocks");
   const listId = useId();
-  const [expanded, setExpanded] = useState(false);
+  const [expanded, setExpanded] = useState(() => unlocks.slice(SHOWN).some((tile) => window.location.hash === `#${tileAnchor(tile.id)}`));
   if (unlocks.length === 0) return null;
   const shown = expanded ? unlocks : unlocks.slice(0, SHOWN);
 

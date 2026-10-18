@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { useLabData, type LabData } from "@/hooks/useLabData";
 import { trackEvent } from "@/lib/analytics/events";
 import { announceLabChange } from "@/lib/lab/recordSync";
@@ -65,5 +65,5 @@ export function useLabRecord(): LabRecord {
     [],
   );
 
-  return { ...data, lastBackup: exportedAt ?? data.lastBackup, download, importFile };
+  return useMemo(() => ({ ...data, lastBackup: exportedAt ?? data.lastBackup, download, importFile }), [data, exportedAt, download, importFile]);
 }

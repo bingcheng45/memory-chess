@@ -25,6 +25,8 @@ export function useNeedText() {
   return (need: Need, rig: Rig | null) => (rig ? t("needsAt", { need: needList(need), ...rig }) : t("needs", { need: needList(need) }));
 }
 
+export const tileAnchor = (id: DashboardTileId) => `tile-${id}`;
+
 const betterWhenOf = (id: DashboardTileId) => (id in BETTER_WHEN ? BETTER_WHEN[id as keyof typeof BETTER_WHEN] : "higher");
 
 /** A time's trend compares its last rounds with the ones before, so it says so; the rating's sums its changes and keeps the chip's own words. */
@@ -85,7 +87,7 @@ function TileBody({ tile }: { tile: DashboardTile }) {
 function Tile({ tile }: { tile: DashboardTile }) {
   const t = useTranslations("dashboard");
   return (
-    <li className="lab-tile" id={`tile-${tile.id}`} data-state={tile.state} data-tile={tile.id}>
+    <li className="lab-tile" id={tileAnchor(tile.id)} data-state={tile.state} data-tile={tile.id}>
       <div className="lab-tile-head">
         <h3 className="lab-tile-label">{t(`label.${tile.id}`)}</h3>
         {tile.state === "stale" && <span className="lab-tag">{t("stale")}</span>}
@@ -99,7 +101,7 @@ function Tile({ tile }: { tile: DashboardTile }) {
 function PendingTile({ id }: { id: DashboardTileId }) {
   const t = useTranslations("dashboard");
   return (
-    <li className="lab-tile" id={`tile-${id}`} data-state="loading" data-tile={id}>
+    <li className="lab-tile" id={tileAnchor(id)} data-state="loading" data-tile={id}>
       <div className="lab-tile-head">
         <h3 className="lab-tile-label">{t(`label.${id}`)}</h3>
       </div>

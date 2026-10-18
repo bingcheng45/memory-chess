@@ -93,7 +93,7 @@ describe("GamePage today's board behind Start", () => {
     expect(lastSecond).toEqual({ phase: "countdown", pieces: 0, starts: 0 });
     expect([board()?.getAttribute("data-round-phase"), pieces(), count()]).toEqual(["study", 6, undefined]);
     expect(gtag.mock.calls.filter(([, name]) => name === "round_start")).toEqual([
-      ["event", "round_start", { piece_count: 6, memorize_time: 10, source: "daily" }],
+      ["event", "round_start", { piece_count: 6, memorize_time: 10, round_source: "daily" }],
     ]);
   });
 

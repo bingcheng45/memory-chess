@@ -30,7 +30,7 @@ const view = () => ({
 });
 
 let gtag: jest.Mock;
-const roundStarts = () => gtag.mock.calls.filter(([, name]) => name === "round_start").map(([, , params]) => params.source);
+const roundStarts = () => gtag.mock.calls.filter(([, name]) => name === "round_start").map(([, , params]) => params.round_source);
 
 beforeEach(() => {
   jest.useFakeTimers({ now: Date.parse("2026-10-14T12:00:00Z") });

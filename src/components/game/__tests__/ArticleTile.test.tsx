@@ -253,7 +253,7 @@ describe("the tile's actions", () => {
 
     expect(gtag.mock.calls).toEqual([
       ["event", "article_tile_click", { slug: "alder-fixture", action: "drill" }],
-      ["event", "round_start", { piece_count: 20, memorize_time: 3, source: "tile_drill" }],
+      ["event", "round_start", { piece_count: 20, memorize_time: 3, round_source: "tile_drill" }],
     ]);
   });
 

@@ -174,7 +174,7 @@ describe("lab record from a finished game round", () => {
     expect(study.phase === "study" && [study.startedAt, Object.keys(study.target).length]).toEqual([4000, 6]);
     expect(store().gameState).toMatchObject({ originalPosition: fen, startSource: "daily", board, memorizeTime: 10, pieceCount: 6 });
     expect(gtag.mock.calls.filter(([, name]) => name === "round_start")).toEqual([
-      ["event", "round_start", { piece_count: 6, memorize_time: 10, source: "daily" }],
+      ["event", "round_start", { piece_count: 6, memorize_time: 10, round_source: "daily" }],
     ]);
     expect(kept).toBe(false);
     Reflect.deleteProperty(window, "gtag");

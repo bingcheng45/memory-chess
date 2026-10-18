@@ -69,19 +69,33 @@ describe("visitor analytics", () => {
 
 describe("Google Analytics loading", () => {
   const tree = SiteGoogleAnalytics();
+  const initScript = () =>
+    (collect(tree, (element) => element.type === "script")[0].props as { dangerouslySetInnerHTML: { __html: string } })
+      .dangerouslySetInnerHTML.__html;
 
-  it("queues events from page load and loads gtag.js only once the page is idle", () => {
-    const [init] = collect(tree, (element) => element.type === "script");
+  afterEach(() => {
+    Reflect.deleteProperty(window, "dataLayer");
+    Reflect.deleteProperty(document, "referrer");
+    window.history.replaceState(null, "", "/");
+  });
+
+  it("reports the address and referrer the visitor landed with, even once the app has moved on before gtag.js loads", () => {
+    window.history.replaceState(null, "", "/?utm_source=test&utm_medium=test");
+    Object.defineProperty(document, "referrer", { configurable: true, value: "https://www.google.com/" });
+
+    new Function(initScript())();
+    window.history.pushState(null, "", "/game");
+
+    const commands = (window as unknown as { dataLayer: IArguments[] }).dataLayer.map((args) => Array.from(args));
+    expect(commands.slice(1)).toEqual([
+      ["config", "G-R8BM9EMY9J", { send_page_view: false }],
+      ["event", "page_view", { page_location: "http://localhost/?utm_source=test&utm_medium=test", page_referrer: "https://www.google.com/" }],
+    ]);
+  });
+
+  it("loads gtag.js only once the page is idle", () => {
     const library = collect(tree, (element) => element.type === Script);
 
-    expect((init.props as { dangerouslySetInnerHTML: { __html: string } }).dangerouslySetInnerHTML.__html).toBe(
-      [
-        "window.dataLayer = window.dataLayer || [];",
-        "function gtag(){window.dataLayer.push(arguments);}",
-        "gtag('js', new Date());",
-        "gtag('config', 'G-R8BM9EMY9J');",
-      ].join("\n"),
-    );
     expect(library).toHaveLength(1);
     expect(library[0].props).toMatchObject({
       src: "https://www.googletagmanager.com/gtag/js?id=G-R8BM9EMY9J",

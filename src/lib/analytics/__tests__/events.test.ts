@@ -1,14 +1,14 @@
 import { roundSourceFrom, trackEvent, type FunnelEvent } from "@/lib/analytics/events";
 
 const EVENTS: FunnelEvent[] = [
-  { name: "round_start", params: { piece_count: 6, memorize_time: 10, source: "home_quick" } },
+  { name: "round_start", params: { piece_count: 6, memorize_time: 10, round_source: "home_quick" } },
   {
     name: "round_complete",
-    params: { piece_count: 6, memorize_time: 10, correct_pieces: 4, accuracy: 67, source: "try_again" },
+    params: { piece_count: 6, memorize_time: 10, correct_pieces: 4, accuracy: 67, round_source: "try_again" },
   },
   {
     name: "round_complete",
-    params: { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, source: "calibration" },
+    params: { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, round_source: "calibration" },
   },
   { name: "score_submit", params: { difficulty: "medium", piece_count: 6 } },
   { name: "article_like", params: { slug: "magnus-carlsen" } },

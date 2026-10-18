@@ -29,9 +29,9 @@ const TABLE = "server_errors";
 const MESSAGE_LENGTH = 500;
 const DETAIL_TEXT_LENGTH = 100;
 const WRITE_TIMEOUT_MS = 2000;
-/** One outage fails every request on an instance; a few rows a minute show it as well as thousands. */
 const REPORTS_PER_MINUTE = 20;
-const allowReport = fixedWindowLimiter({ limit: REPORTS_PER_MINUTE, windowMs: 60_000, maxKeys: 1 });
+const WHOLE_INSTANCE = "instance";
+const allowInstanceReport = fixedWindowLimiter({ limit: REPORTS_PER_MINUTE, windowMs: 60_000, maxKeys: 1 });
 
 const REDACTIONS: readonly (readonly [RegExp, string])[] = [
   [/-----BEGIN [A-Z ]*PRIVATE KEY-----[\s\S]*?-----END [A-Z ]*PRIVATE KEY-----/g, "[private key]"],
@@ -87,15 +87,13 @@ async function store(writer: NonNullable<typeof serviceRoleWriter>, row: ServerE
   }
 }
 
-/**
- * Keeps a redacted copy of an error the route already logged. Only the service_role client writes, never anon,
- * and the write runs after the response is sent, so a slow or failing database costs the visitor nothing.
- */
+/** Stores a redacted copy of an error the caller has already logged. Never throws; the write runs after the response is sent. */
 export function reportServerError(route: ServerErrorRoute, kind: ServerErrorKind, error: unknown, detail: Detail = {}): void {
   try {
     const writer = serviceRoleWriter;
-    if (!writer || !allowReport("all", Date.now()).allowed) return;
-    const task = () => store(writer, rowOf(route, kind, error, detail));
+    if (!writer || !allowInstanceReport(WHOLE_INSTANCE, Date.now()).allowed) return;
+    const row = rowOf(route, kind, error, detail);
+    const task = () => store(writer, row);
     try {
       after(task);
     } catch {

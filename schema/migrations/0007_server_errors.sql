@@ -1,9 +1,8 @@
 -- 0007: a durable log of the API routes' server errors
 --
 -- Vercel Hobby keeps runtime logs for about an hour, so an API failure from
--- yesterday leaves no trace. The routes now also write one short row here
--- for each error they log: where, what kind, a redacted message of at most
--- 500 characters, a small detail object and the deploy's commit.
+-- yesterday leaves no trace. The routes now also write one row here for
+-- each error they log.
 --
 -- service_role may insert and read, and nothing else, so the server cannot
 -- rewrite or erase the log. anon and authenticated hold no privilege on the
@@ -34,8 +33,9 @@ CREATE INDEX IF NOT EXISTS server_errors_created_at_idx ON public.server_errors 
 ALTER TABLE public.server_errors ENABLE ROW LEVEL SECURITY;
 
 -- Supabase's default privileges grant every new table and sequence in public
--- to anon, authenticated and service_role. Take all of it back, then give
--- service_role the two it needs.
+-- to anon, authenticated and service_role. Revoke the table from all three
+-- and the sequence from anon and authenticated, then grant service_role the
+-- two it needs.
 REVOKE ALL ON public.server_errors FROM anon, authenticated, service_role, PUBLIC;
 REVOKE ALL ON SEQUENCE public.server_errors_id_seq FROM anon, authenticated, PUBLIC;
 

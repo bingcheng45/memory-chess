@@ -6,6 +6,8 @@ export const guidePath = (slug: string) => `/learn/${slug}`;
 
 export const groupAnchor = (groupId: string) => `/learn#${groupId}`;
 
+export const DAILY_PATH = "/daily";
+
 export const guideRoundHref = ({ pieceCount, memorizeTime }: GameSetup) => playHref(pieceCount, memorizeTime, "guide_cta");
 
 /** The dashboard tile a stat call to action opens. DashboardTiles gives each tile this id. */

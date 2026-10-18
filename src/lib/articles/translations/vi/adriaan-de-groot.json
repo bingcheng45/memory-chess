@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "b7c4a1dfb981ed7d9f72f7f1e5b3eada3c491acd28f3977e112e15f7fdd9ed7a",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "8c95eeff65a1852e3de00e8723e96e5d4a09c2f0dd95f279893992e2651c33b3",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Các sách giáo khoa hiểu kết quả đó là kiện tướng hoàn toàn không có lợi thế nào trên những bàn cờ vô nghĩa. Năm 1996, Fernand Gobet và Herbert Simon đối chiếu cách hiểu ấy với mười ba thí nghiệm có thời gian xem từ 10 giây trở xuống. Trong mười hai trên mười ba thí nghiệm, nhóm mạnh nhất nhớ được nhiều quân ngẫu nhiên hơn nhóm yếu nhất. Ngoại lệ là nghiên cứu của chính Chase và Simon, nơi kiện tướng lại kém nhất.",
           "Lợi thế này nhỏ. Gobet và Simon ước tính khoảng một quân dôi ra cho mỗi 400 điểm Elo trên bàn cờ ngẫu nhiên, so với khoảng năm quân dôi ra trên thế cờ từ các ván đấu. Trong một bài tổng quan năm 1998, Gobet đưa ra mức trung bình ở 5 giây là 5,5 quân ngẫu nhiên đối với các kiện tướng và 2,6 đối với các kỳ thủ dưới hạng B.",
           "Lời giải thích này vẫn giữ nguyên ý tưởng của de Groot. Một kỳ thủ có kho mẫu hình rất lớn đôi khi tình cờ tìm thấy một mẫu hình trong đống lộn xộn. Bàn cờ ngẫu nhiên làm lợi thế của chuyên gia thu hẹp mà không xóa bỏ nó. Gobet và Simon bổ sung rằng cỡ mẫu nhỏ che mất một hiệu ứng nhỏ như vậy, và nghiên cứu năm 1973 chỉ có ba đối tượng."
+        ]
+      },
+      {
+        "heading": "Cờ vua có phải là trò chơi trí nhớ không?",
+        "paragraphs": [
+          "Trí nhớ có vai trò trong cờ vua, nhưng một kỳ thủ mạnh không ghi nhớ thế cờ theo từng ô một. Theo số liệu của de Groot, các đại kiện tướng không nhìn xa hơn các kỳ thủ hạng chuyên gia, và cũng không xem xét nhiều nước đi hơn. Khác biệt lại nằm ở khả năng nhớ lại thế cờ. Sau khi xem vài giây, Euwe và de Groot đạt 93%, Fast đạt 68% và Hauer đạt 51%.",
+          "Khả năng nhớ ấy đến từ hiểu biết về cờ vua. Gobet và Simon ước tính lợi thế của kiện tướng là khoảng một quân dôi ra cho mỗi 400 điểm Elo trên bàn cờ ngẫu nhiên, so với khoảng năm quân dôi ra trên thế cờ từ các ván đấu. Kiện tướng nhìn thấy những nhóm quân quen thuộc, tức các chunk đã nói ở trên, nên có ít thứ riêng lẻ hơn phải ghi nhớ."
         ]
       },
       {

@@ -100,8 +100,9 @@ describe("ArticlePage under a German catalogue", () => {
       "Bekannt für",
       "Gedächtnisleistung",
     ]);
-    expect(container.querySelector("a[data-article-drill]")).toHaveAccessibleName("12 Figuren, 5 Sekunden spielen");
-    expect(container.querySelector("a[data-article-drill]")).toHaveTextContent("Du bist dran");
+    expect(container.querySelector("a[data-article-drill]")).toHaveAccessibleName("4 Figuren, 10 Sekunden spielen");
+    expect(container.querySelector("a[data-article-drill-original]")).toHaveTextContent("12 Figuren, 5 Sekunden spielen");
+    expect(container.querySelector("a[data-article-early-drill]")).toHaveTextContent("Du bist dran");
     expect(screen.getByRole("heading", { level: 2, name: "Quellen" })).toBeInTheDocument();
     expect(screen.getByRole("link", { name: new RegExp(next.title) })).toHaveTextContent("Nächster Artikel");
   });
@@ -138,7 +139,7 @@ describe("ArticlePage under a German catalogue", () => {
       makeArticle(0, { drill: { ...article.drill, pieceCount: 1, memorizeTime: 1 } }),
     );
 
-    expect(container.querySelector("a[data-article-drill]")).toHaveAccessibleName("1 Figur, 1 Sekunde spielen");
+    expect(container.querySelector("a[data-article-drill-original]")).toHaveTextContent("1 Figur, 1 Sekunde spielen");
   });
 
   it("shows none of the English labels", () => {

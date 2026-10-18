@@ -84,8 +84,9 @@ describe("ArticlePage server HTML", () => {
       "Photo: Fixture Photographer, CC BY 4.0, via Wikimedia Commons. Cropped and resized.",
     );
     expect(html).toContain("2,140 views</span>");
-    expect(html).toContain('aria-label="Play 12 pieces, 5 seconds"');
-    expect(html).toContain(">Play 12 pieces, 5 seconds</span>");
+    expect(html).toContain('aria-label="Play 4 pieces, 10 seconds"');
+    expect(html).toContain(">Play 4 pieces, 10 seconds</span>");
+    expect(html).toContain(">Play 12 pieces, 5 seconds</a>");
   });
 
   it("holds no translation note, since the English article is the original", () => {

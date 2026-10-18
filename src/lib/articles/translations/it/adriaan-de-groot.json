@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "a9d1936b9a9cb676965da6402880e24cd194b56fa1933d7b217028d39136a1dc",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "8f61504ade9859a6a256f4a9a971f86c35776de97e537e8c210b79d37c575f5e",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "I manuali interpretarono quel risultato come la prova che un maestro non ha alcun vantaggio sulle scacchiere prive di senso. Nel 1996 Fernand Gobet e Herbert Simon verificarono questa lettura su tredici esperimenti con esposizioni di 10 secondi o meno. In dodici su tredici il gruppo più forte ricordò più pezzi casuali del più debole. L’eccezione fu proprio lo studio di Chase e Simon, in cui il maestro andò peggio di tutti.",
           "Il vantaggio è piccolo. Gobet e Simon lo stimano in circa un pezzo in più ogni 400 punti Elo sulle scacchiere casuali, contro circa cinque pezzi in più sulle posizioni di partita. In una rassegna del 1998 Gobet indicò come medie a 5 secondi 5,5 pezzi casuali per i maestri e 2,6 per i giocatori sotto la classe B.",
           "La spiegazione lascia in piedi l’idea di de Groot. Un giocatore con un archivio molto vasto di schemi a volte ne trova uno per caso in un groviglio. Le scacchiere casuali riducono il vantaggio dell’esperto senza eliminarlo. Gobet e Simon aggiunsero che i campioni piccoli nascondono un effetto così ridotto, e lo studio del 1973 aveva tre soggetti."
+        ]
+      },
+      {
+        "heading": "Gli scacchi sono un gioco di memoria?",
+        "paragraphs": [
+          "La memoria conta negli scacchi, ma un giocatore forte non immagazzina le posizioni casa per casa. Secondo i conteggi di de Groot, i gran maestri non guardavano più avanti dei giocatori esperti e non esaminavano più mosse. Il divario emergeva invece in ciò che ricordavano. Dopo uno sguardo di pochi secondi, Euwe e de Groot ottennero il 93%, Fast il 68% e Hauer il 51%.",
+          "Questa capacità di ricordare nasce dalla conoscenza degli scacchi. Gobet e Simon stimano il vantaggio del maestro sulle scacchiere casuali in circa un pezzo in più ogni 400 punti Elo, contro circa cinque pezzi in più sulle posizioni tratte da partite. Un maestro vede gruppi di pezzi familiari, i chunk descritti sopra, e così ha meno elementi separati da tenere a mente."
         ]
       },
       {

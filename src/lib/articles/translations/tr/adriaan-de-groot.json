@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "ed67a80620335b7be89f351b88907d6d2598f786c933a46bc1273efd1b933e82",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "c8068d92a314f2221c277f9df754ddcc3a9026aed3663d3e9df4f48f1a1f58e6",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Ders kitapları bu sonucu, bir ustanın anlamsız tahtalarda hiçbir üstünlüğü olmadığı biçiminde yorumladı. 1996'da Fernand Gobet ve Herbert Simon bu yorumu, gösterim süresi 10 saniye ya da daha kısa olan on üç deneyle sınadı. On üç deneyin on ikisinde en güçlü grup, en zayıf gruptan daha fazla rastgele taş hatırladı. İstisna, ustanın en kötü sonucu aldığı, Chase ile Simon'ın kendi çalışmasıydı.",
           "Üstünlük küçüktür. Gobet ve Simon bunu rastgele tahtalarda her 400 Elo puanı için yaklaşık bir fazla taş, oyun konumlarında ise yaklaşık beş fazla taş olarak belirledi. 1998'de yazdığı bir derlemede Gobet, 5 saniyedeki ortalamaları ustalar için 5,5 rastgele taş, B sınıfının altındaki oyuncular için 2,6 olarak verdi.",
           "Bu açıklama de Groot'un fikrini ayakta bırakır. Çok geniş bir kalıp deposuna sahip bir oyuncu, bazen karmaşanın içinde tesadüfen bir kalıp bulur. Rastgele tahtalar uzmanın avantajını azaltır ama ortadan kaldırmaz. Gobet ve Simon ayrıca, küçük örneklemlerin bu kadar küçük bir etkiyi gizlediğini ve 1973 çalışmasında üç denek bulunduğunu ekledi."
+        ]
+      },
+      {
+        "heading": "Satranç bir hafıza oyunu mu?",
+        "paragraphs": [
+          "Satrançta hafıza önemlidir, ama güçlü bir oyuncu konumları kare kare depolamaz. De Groot'un sayımlarına göre büyükustalar uzmanlardan daha ileriyi görmüyor, daha fazla hamle de incelemiyordu. Fark bunun yerine hatırlamada ortaya çıktı. Birkaç saniyelik bir bakışın ardından Euwe ile de Groot %93, Fast %68, Hauer ise %51 aldı.",
+          "Bu hatırlama satranç bilgisinden gelir. Gobet ve Simon ustanın üstünlüğünü rastgele tahtalarda her 400 Elo puanı için yaklaşık bir fazla taş, oyun konumlarında ise yaklaşık beş fazla taş olarak belirledi. Usta tanıdık taş gruplarını, yani yukarıda anlatılan öbekleri görür, bu yüzden aklında tutması gereken ayrı parça sayısı azalır."
         ]
       },
       {

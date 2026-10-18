@@ -1,0 +1,28 @@
+import { readerRoundOf } from "../readerRound";
+
+const saved = (skillRating: unknown, certainty: unknown) => JSON.stringify({ state: { gameState: { skillRating }, certainty }, version: 3 });
+
+describe("readerRoundOf", () => {
+  it("offers a 4-piece, 10-second round to a reader who never played", () => {
+    expect(readerRoundOf(null)).toEqual({ pieceCount: 4, memorizeTime: 10 });
+  });
+
+  it("offers the beginner round while the saved game has no rated round", () => {
+    expect(readerRoundOf(saved(1000, { rd: 350, rounds: 0 }))).toEqual({ pieceCount: 4, memorizeTime: 10 });
+  });
+
+  it("offers the beginner round when the saved game is not readable", () => {
+    expect(readerRoundOf("{not json")).toEqual({ pieceCount: 4, memorizeTime: 10 });
+    expect(readerRoundOf(saved("high", { rd: 60, rounds: 40 }))).toEqual({ pieceCount: 4, memorizeTime: 10 });
+  });
+
+  it("sizes the round to an established rating", () => {
+    expect(readerRoundOf(saved(1000, { rd: 60, rounds: 40 }))).toEqual({ pieceCount: 5, memorizeTime: 10 });
+    expect(readerRoundOf(saved(1300, { rd: 60, rounds: 40 }))).toEqual({ pieceCount: 8, memorizeTime: 10 });
+    expect(readerRoundOf(saved(1800, { rd: 60, rounds: 40 }))).toEqual({ pieceCount: 15, memorizeTime: 10 });
+  });
+
+  it("stretches a provisional rating toward an even board, as the setup card suggests", () => {
+    expect(readerRoundOf(saved(1000, { rd: 300, rounds: 2 }))).toEqual({ pieceCount: 8, memorizeTime: 10 });
+  });
+});

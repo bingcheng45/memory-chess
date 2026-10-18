@@ -23,6 +23,9 @@ export const LEARN_GUIDE_COPY = {
   pieces: (count: number) => `${count} pieces`,
   secondsToLook: (seconds: number) => `${seconds} s to look`,
   ctaAction: { game: "Play", article: "Read", stat: "Open" },
+  quickPlay: "Try a round now",
+  tryRound: (pieces: number, seconds: number) => `Try ${pieces} pieces, ${seconds} seconds`,
+  dailyBoard: "Play today's daily board",
   ctaTag: { article: "Article", stat: "Dashboard" },
 } as const;
 

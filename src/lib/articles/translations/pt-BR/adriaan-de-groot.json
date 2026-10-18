@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "3b824d2704356afe3553cf111c31e6147dec55f1b0a6794a99b838a97d75f868",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "40dad68c7eae86bc2525c5747d30c0f940643ff0e66a1445254f275b221202af",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Os livros didáticos entenderam esse resultado como prova de que o mestre não tem vantagem alguma em tabuleiros sem sentido. Em 1996, Fernand Gobet e Herbert Simon confrontaram essa leitura com treze experimentos com exposições de 10 segundos ou menos. Em doze dos treze, o grupo mais forte recordou mais peças aleatórias do que o mais fraco. A exceção foi o próprio estudo de Chase e Simon, em que o mestre foi pior.",
           "A vantagem é pequena. Gobet e Simon a estimam em cerca de uma peça a mais para cada 400 pontos de Elo em tabuleiros aleatórios, contra cerca de cinco peças a mais em posições de partidas. Em uma revisão de 1998, Gobet deu as médias a 5 segundos: 5,5 peças aleatórias para mestres e 2,6 para jogadores abaixo da classe B.",
           "A explicação mantém de pé a ideia de De Groot. Um jogador com um repertório enorme de padrões às vezes encontra um por acaso numa mistura desordenada. Tabuleiros aleatórios reduzem a vantagem do expert sem eliminá-la. Gobet e Simon acrescentaram que amostras pequenas escondem um efeito tão pequeno, e o estudo de 1973 tinha três participantes."
+        ]
+      },
+      {
+        "heading": "Xadrez é um jogo de memória?",
+        "paragraphs": [
+          "A memória importa no xadrez, mas um jogador forte não guarda as posições casa por casa. Pelas contagens de De Groot, os grandes mestres não calculavam mais à frente do que os jogadores experts nem examinavam mais lances. A diferença aparecia, em vez disso, no quanto eles recordavam. Depois de olhar o tabuleiro por poucos segundos, Euwe e De Groot fizeram 93%, Fast 68% e Hauer 51%.",
+          "Essa capacidade de recordar vem do conhecimento de xadrez. Em tabuleiros aleatórios, Gobet e Simon estimam a vantagem do mestre em cerca de uma peça a mais para cada 400 pontos de Elo, contra cerca de cinco peças a mais em posições de partidas. O mestre vê grupos de peças conhecidos, os chunks descritos acima, e por isso tem menos coisas separadas para guardar."
         ]
       },
       {

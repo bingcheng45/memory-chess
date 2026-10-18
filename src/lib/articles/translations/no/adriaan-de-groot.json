@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "a178e3eb39a8fc410efb9613abcf16aa8240fbfcd88ef143551beb2db4a46dfc",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "d5e71b7a2ba1f867f633bb102cb6b50934b659c05852286ef4cd3c8da6ae9632",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Lærebøker tok det resultatet til å bety at en mester ikke har noen fordel i det hele tatt på meningsløse brett. I 1996 kontrollerte Fernand Gobet og Herbert Simon den tolkningen mot tretten eksperimenter med visningstid på 10 sekunder eller mindre. I tolv av de tretten husket den sterkeste gruppen flere tilfeldige brikker enn den svakeste. Unntaket var Chase og Simons egen studie, der mesteren gjorde det dårligst.",
           "Fordelen er liten. Gobet og Simon anslo den til omtrent én ekstra brikke per 400 Elo-poeng på tilfeldige brett, mot omtrent fem ekstra brikker på partistillinger. I en oversikt fra 1998 oppga Gobet gjennomsnittene ved 5 sekunder som 5,5 tilfeldige brikker for mestere og 2,6 for spillere under klasse B.",
           "Forklaringen lar de Groots idé stå. En spiller med et svært stort lager av mønstre finner av og til et mønster ved en tilfeldighet i et virvar. Tilfeldige brett krymper ekspertens forsprang uten å fjerne det. Gobet og Simon la til at små utvalg skjuler en så liten effekt, og studien fra 1973 hadde tre forsøkspersoner."
+        ]
+      },
+      {
+        "heading": "Er sjakk et hukommelsesspill?",
+        "paragraphs": [
+          "Hukommelse har betydning i sjakk, men en sterk spiller lagrer ikke stillinger felt for felt. Etter de Groots tellinger så ikke stormestrene lenger fram enn ekspertene, og de undersøkte ikke flere trekk. Forskjellen viste seg i stedet i hvor mye de husket. Etter å ha sett på brettet i noen få sekunder fikk Euwe og de Groot 93 prosent, Fast 68 prosent og Hauer 51 prosent.",
+          "Denne hukommelsen bygger på sjakkunnskap. Gobet og Simon anslo mesterens fordel på tilfeldige brett til omtrent én ekstra brikke per 400 Elo-poeng, mot omtrent fem ekstra brikker på partistillinger. En mester ser kjente grupper av brikker, chunkene som er beskrevet ovenfor, og har dermed færre enkeltting å holde i hodet."
         ]
       },
       {

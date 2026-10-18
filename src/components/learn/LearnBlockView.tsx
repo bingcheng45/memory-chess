@@ -2,7 +2,7 @@ import { Link } from "@/i18n/navigation";
 import en from "../../../messages/en.json";
 import { articlePath } from "@/lib/articles/paths";
 import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/copy";
-import { ctaHref, guidePath, guideRoundHref } from "@/lib/seo/learn/links";
+import { ctaHref, DAILY_PATH, guidePath, guideRoundHref } from "@/lib/seo/learn/links";
 import type { CtaBlock, LearnBlock, Rich } from "@/lib/seo/learn/schema";
 import LearnBoard from "./LearnBoard";
 
@@ -130,6 +130,13 @@ export default function LearnBlockView({ block, figure = 0, titles }: LearnBlock
               ) : null}
             </article>
           ))}
+          {block.drills.some((drill) => drill.play) ? (
+            <p className="lg-drills-daily">
+              <Link href={DAILY_PATH} className="lg-link">
+                {LEARN_GUIDE_COPY.dailyBoard}
+              </Link>
+            </p>
+          ) : null}
         </div>
       );
     case "table":

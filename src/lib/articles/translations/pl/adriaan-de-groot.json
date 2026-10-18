@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "a99d61e15dc257e429d99cbf723689f897c8cc48fe2de3ef48c2ce7f7a8a38dc",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "e53bf357641a750614f420dcb291ac4f43efa95003dee1eec8ac03267f60c168",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Podręczniki uznały ten wynik za dowód, że mistrz nie ma żadnej przewagi na pozbawionych sensu szachownicach. W 1996 roku Fernand Gobet i Herbert Simon sprawdzili tę interpretację na podstawie trzynastu eksperymentów z ekspozycją wynoszącą 10 sekund lub mniej. W dwunastu z trzynastu najsilniejsza grupa odtwarzała więcej losowo ustawionych bierek niż najsłabsza. Wyjątkiem było badanie samych Chase'a i Simona, w którym mistrz wypadł najgorzej.",
           "Przewaga jest niewielka. Gobet i Simon szacują ją na około jedną dodatkową bierkę na każde 400 punktów Elo w losowych pozycjach, wobec około pięciu dodatkowych bierek w pozycjach z partii. W przeglądzie z 1998 roku Gobet podał średnie dla ekspozycji 5 sekund: 5,5 bierki na losowych szachownicach dla mistrzów i 2,6 dla graczy poniżej klasy B.",
           "To wyjaśnienie nie podważa pomysłu de Groota. Gracz z bardzo dużym zasobem wzorców czasem trafia przypadkiem na jeden z nich w chaosie bierek. Losowe ustawienia zmniejszają przewagę eksperta, ale jej nie znoszą. Gobet i Simon dodali, że małe próby ukrywają tak mały efekt, a badanie z 1973 roku miało trzech uczestników."
+        ]
+      },
+      {
+        "heading": "Czy szachy to gra pamięciowa?",
+        "paragraphs": [
+          "Pamięć ma w szachach znaczenie, ale silny gracz nie zapamiętuje pozycji pole po polu. Według zliczeń de Groota arcymistrzowie nie wybiegali myślą dalej ani nie rozpatrywali więcej posunięć niż eksperci. Różnica ujawniała się za to w tym, ile zapamiętali. Po kilkusekundowym spojrzeniu Euwe i de Groot uzyskali 93%, Fast 68%, a Hauer 51%.",
+          "Ta pamięć bierze się ze znajomości szachów. Gobet i Simon szacowali przewagę mistrza na losowych szachownicach na około jedną dodatkową bierkę na każde 400 punktów Elo, wobec około pięciu dodatkowych bierek w pozycjach z partii. Mistrz widzi znajome grupy bierek, czyli opisane wyżej chunki, więc ma mniej oddzielnych elementów do zapamiętania."
         ]
       },
       {

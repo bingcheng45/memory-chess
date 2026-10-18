@@ -7,6 +7,7 @@ import { groupAnchor, guidePath } from "@/lib/seo/learn/links";
 import { guideStructuredData } from "@/lib/seo/learn/structuredData";
 import type { BodyBlock, EndBlock, LearnSection } from "@/lib/seo/learn/schema";
 import LearnBlockView, { type TitleLookup } from "./LearnBlockView";
+import LearnQuickPlay from "./LearnQuickPlay";
 import LearnRailTracker from "./LearnRailTracker";
 import "./learn.css";
 
@@ -98,6 +99,7 @@ export default function LearnGuidePage({ page, siblings, titles }: LearnGuidePag
           </nav>
           <h1>{meta.h1}</h1>
           <p className="lg-lede">{meta.description}</p>
+          <LearnQuickPlay />
           <ul className="lg-meta">
             <li>{LEARN_LEVELS[meta.level]}</li>
             <li>{COPY.minRead(page.readingMinutes)}</li>

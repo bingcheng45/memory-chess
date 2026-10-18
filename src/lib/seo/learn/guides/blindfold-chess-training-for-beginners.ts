@@ -3,17 +3,18 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "blindfold-chess-training-for-beginners",
-    title: "Blindfold Chess Training: A 4-Stage Beginner Plan",
-    h1: "Blindfold chess training for beginners in four stages, each with a pass mark",
+    title: "How to Learn Blindfold Chess: 4-Stage Training",
+    h1: "How to learn blindfold chess in four stages, each with a pass mark",
     description: "Blindfold chess training in four stages, from two kings held without a board to a full game. Each stage has a pass mark that tells you when to move on.",
     group: "visualization",
     level: "improver",
     publishedAt: "2026-03-06T00:00:00.000Z",
-    updatedAt: "2026-10-13T00:00:00.000Z",
+    updatedAt: "2026-10-18T00:00:00.000Z",
     questions: [
       "How do I start playing blindfold chess?",
       "How long does it take to learn blindfold chess?",
       "How do I know my mental chess board is wrong?",
+      "How do you play chess blindfolded?",
     ],
     keywords: {
       primary: "blindfold chess training",
@@ -40,6 +41,20 @@ const guide: LearnDocument = {
     ],
   },
   sections: [
+    {
+      id: "how-blindfold-chess-is-played",
+      heading: "How to play chess blindfolded",
+      blocks: [
+        {
+          kind: "prose",
+          paragraphs: [
+            "In a blindfold game you never see the pieces. You and your opponent call out each move in algebraic notation, such as e4 or Nf3, and you keep the position in your head. Your opponent can sit at a normal board, or someone can move the pieces on a board you cannot see.",
+            "Some online sites have a blindfold or hidden-pieces setting that does the same job. The board stays empty while the move list grows. The rules do not change, so a piece you forget is a piece you lose.",
+            "So the skill is not seeing through a blindfold. It is naming every square without a board and updating the picture after each move. The four stages below build that in order, and stage four ends with your first full blind game.",
+          ],
+        },
+      ],
+    },
     {
       id: "why-games-collapse",
       heading: "Why a first blindfold game collapses",
@@ -220,7 +235,7 @@ const guide: LearnDocument = {
     },
     {
       id: "how-long-each-stage-takes",
-      heading: "How long blindfold chess training takes",
+      heading: "How long it takes to learn blindfold chess",
       blocks: [
         {
           kind: "prose",

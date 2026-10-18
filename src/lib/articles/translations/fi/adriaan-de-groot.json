@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "feadfc6b6736f743a8d7565ea0221b4c3fb7893e5ee3fd770cdf470a64205f30",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "9cf56397e2aae8e1675df24a9c1676951f48de1b6a35ec31b981cc96875a725d",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Oppikirjat tulkitsivat tuloksen niin, ettei mestarilla ole mitään etua merkityksettömillä laudoilla. Vuonna 1996 Fernand Gobet ja Herbert Simon tarkistivat tätä tulkintaa kolmellatoista kokeella, joissa näyttöaika oli enintään 10 sekuntia. Kahdessatoista kolmestatoista vahvin ryhmä muisti enemmän satunnaisia nappuloita kuin heikoin. Poikkeus oli Chasen ja Simonin oma tutkimus, jossa mestari pärjäsi huonoimmin.",
           "Etu on pieni. Gobet ja Simon arvioivat sen noin yhdeksi lisänappulaksi jokaista 400 Elo-pistettä kohden satunnaisasemissa, kun pelien asemissa se on noin viisi lisänappulaa. Vuoden 1998 katsauksessa Gobet ilmoitti 5 sekunnin keskiarvoiksi 5,5 satunnaista nappulaa mestareille ja 2,6 B-luokan alapuolisille pelaajille.",
           "Selitys jättää de Grootin ajatuksen pystyyn. Pelaaja, jolla on hyvin suuri kuviovarasto, löytää joskus sattumalta kuvion sekamelskasta. Satunnaisasemat kaventavat asiantuntijan etua mutta eivät poista sitä. Gobet ja Simon lisäsivät, että pienet otokset kätkevät näin pienen vaikutuksen, ja vuoden 1973 tutkimuksessa oli kolme koehenkilöä."
+        ]
+      },
+      {
+        "heading": "Onko shakki muistipeli?",
+        "paragraphs": [
+          "Muistilla on shakissa merkitystä, mutta vahva pelaaja ei tallenna asemia ruutu ruudulta. De Grootin laskelmien mukaan suurmestarit eivät katsoneet pidemmälle eteenpäin eivätkä tutkineet useampia siirtoja kuin asiantuntijat. Ero näkyi sen sijaan siinä, kuinka paljon he muistivat. Muutaman sekunnin katselun jälkeen Euwe ja de Groot saivat 93 %, Fast 68 % ja Hauer 51 %.",
+          "Tämä muistikyky perustuu shakkitietämykseen. Gobet ja Simon arvioivat mestarin edun satunnaisasemissa noin yhdeksi lisänappulaksi jokaista 400 Elo-pistettä kohden, kun pelien asemissa se on noin viisi lisänappulaa. Mestari näkee tuttuja nappularyhmiä, edellä kuvattuja chunk-yksiköitä, joten mielessä pidettäviä erillisiä asioita on vähemmän."
         ]
       },
       {

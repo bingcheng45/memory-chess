@@ -68,9 +68,9 @@ describe("trimmed search titles", () => {
   it.each([
     ["chess-calculation-exercises-for-beginners", "Chess Calculation Exercises for Beginners"],
     ["chess-pattern-recognition-drills", "Chess Pattern Recognition Drills, From Memory"],
-    ["chess-memory-training", "Chess Memory Training: A Scored Ladder"],
-    ["blindfold-chess-training-for-beginners", "Blindfold Chess Training: A 4-Stage Beginner Plan"],
-    ["chess-visualization-exercises", "Chess Visualization Training: 2 Exercises"],
+    ["chess-memory-training", "Chess Memory Training: A 6-to-12 Piece Ladder"],
+    ["blindfold-chess-training-for-beginners", "How to Learn Blindfold Chess: 4-Stage Training"],
+    ["chess-visualization-exercises", "Chess Visualization Training: See the Board"],
   ])("the %s guide is titled %p", (slug, title) => {
     expect(guide(slug).meta.title).toBe(title);
     expect((title + TITLE_SUFFIX).length).toBeLessThanOrEqual(MAX_TITLE_WITH_SUFFIX);

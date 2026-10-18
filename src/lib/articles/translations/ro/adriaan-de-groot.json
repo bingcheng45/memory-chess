@@ -1,6 +1,6 @@
 {
-  "sourceHash": "12d555af5d8199fd7f4c78760300ddfa43236d8b02ff8354150ffee33b47eed0",
-  "approvedHash": "63726241020c0798b25735e92f23fa5d4c07da7c234ba0bcc62792e1f63e04ec",
+  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
+  "approvedHash": "4554ec1cf7967e0d83d9dea242186edffe2d353edb8059885c7f7a15f2f0cdb5",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -75,6 +75,13 @@
           "Manualele au înțeles din acest rezultat că un maestru nu are niciun avantaj pe tablele fără sens. În 1996, Fernand Gobet și Herbert Simon au verificat această interpretare în treisprezece experimente cu expuneri de cel mult 10 secunde. În douăsprezece din cele treisprezece, grupul cel mai puternic a reprodus mai multe piese aleatorii decât cel mai slab. Excepția a fost chiar studiul lui Chase și Simon, în care maestrul a avut cel mai slab rezultat.",
           "Avantajul este mic. Gobet și Simon îl estimează la aproximativ o piesă în plus la fiecare 400 de puncte Elo pe tablele aleatorii, față de aproximativ cinci piese în plus pe pozițiile din partide. Într-o trecere în revistă din 1998, Gobet a dat mediile la 5 secunde: 5,5 piese aleatorii pentru maeștri și 2,6 pentru jucătorii sub clasa B.",
           "Explicația lasă în picioare ideea lui de Groot. Un jucător cu o rezervă foarte mare de tipare găsește uneori unul din întâmplare într-un amestec de piese. Tablele aleatorii îi reduc expertului avantajul, fără să-l elimine. Gobet și Simon au adăugat că eșantioanele mici ascund un efect atât de mic, iar studiul din 1973 avea trei subiecți."
+        ]
+      },
+      {
+        "heading": "Este șahul un joc de memorie?",
+        "paragraphs": [
+          "Memoria contează în șah, dar un jucător puternic nu memorează pozițiile câmp cu câmp. După socotelile lui de Groot, marii maeștri nu priveau mai departe și nu examinau mai multe mutări decât experții. Diferența se vedea, în schimb, în cât de mult își aminteau. După o privire de câteva secunde, Euwe și de Groot au obținut 93%, Fast 68%, iar Hauer 51%.",
+          "Această memorie vine din cunoașterea șahului. Gobet și Simon au estimat avantajul maestrului pe tablele aleatorii la aproximativ o piesă în plus la fiecare 400 de puncte Elo, față de aproximativ cinci piese în plus pe pozițiile din partide. Un maestru vede grupuri familiare de piese, chunk-urile descrise mai sus, așa că are mai puține lucruri separate de ținut minte."
         ]
       },
       {

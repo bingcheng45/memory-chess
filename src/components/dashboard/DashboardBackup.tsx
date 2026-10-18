@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useFormatter, useTranslations } from "next-intl";
 import type { LabRecord } from "@/components/home/useLabRecord";
 import { choiceStore } from "@/components/home/labChoices";
@@ -11,27 +11,12 @@ import { ROUND_CAP } from "@/lib/lab/storage";
 const snooze = choiceStore<number>(BACKUP_SNOOZE_KEY, parseStoredTime);
 const capSeen = choiceStore<number>(CAP_NOTICE_KEY, parseStoredTime);
 
-function usePersisted(): boolean | null {
-  const [persisted, setPersisted] = useState<boolean | null>(null);
-  useEffect(() => {
-    let live = true;
-    navigator.storage?.persisted?.().then(
-      (answer) => live && setPersisted(answer),
-      () => undefined,
-    );
-    return () => {
-      live = false;
-    };
-  }, []);
-  return persisted;
-}
-
 type BackupRecord = Pick<LabRecord, "records" | "summary" | "lastBackup" | "download">;
 
-function BackupCard({ record }: { record: BackupRecord }) {
+/** `persisted` is navigator.storage.persisted()'s answer, or null where the browser cannot say. */
+function BackupCard({ record, persisted }: { record: BackupRecord; persisted: boolean | null }) {
   const t = useTranslations("dashboard.backup");
   const format = useFormatter();
-  const persisted = usePersisted();
   const snoozedUntil = snooze.useValue();
   const [now] = useState(() => Date.now());
   const [started, setStarted] = useState(false);
@@ -99,11 +84,11 @@ function CapNotice({ evicting }: { evicting: boolean }) {
   );
 }
 
-export function DashboardBackup({ record }: { record: BackupRecord }) {
+export function DashboardBackup({ record, persisted }: { record: BackupRecord; persisted: boolean | null }) {
   return (
     <>
       <CapNotice evicting={record.summary.evictedThrough !== null} />
-      <BackupCard record={record} />
+      <BackupCard record={record} persisted={persisted} />
     </>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
-import dynamic from "next/dynamic";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { CommunityInvite } from "@/components/community/CommunityLink";
@@ -29,37 +28,70 @@ import "./dashboard.css";
 
 const CHOOSE_HREF = `/#${LAB_SECTIONS.record.anchor}`;
 
-const HistoryPending = () => <div className="lab-hist-pending" aria-hidden="true" />;
-const AnalysisPending = () => <div className="lab-dash-panels lab-dash-pending" aria-hidden="true" />;
-const DashboardHistory = dynamic(() => import("./DashboardHistory").then((module) => module.DashboardHistory), { ssr: false, loading: HistoryPending });
-const DashboardAnalysis = dynamic(() => import("./DashboardAnalysis").then((module) => module.DashboardAnalysis), { ssr: false, loading: AnalysisPending });
+const askPersisted = (): Promise<boolean | null> => navigator.storage?.persisted?.().catch(() => null) ?? Promise.resolve(null);
 
-/**
- * True once the record is read and the browser has had an idle moment after drawing the summary, so the sections
- * below the fold render in a task of their own instead of lengthening the one that draws what the player sees first.
- */
-function useIdleAfter(ready: boolean): boolean {
-  const [idle, setIdle] = useState(false);
-  useEffect(() => {
-    if (!ready || idle) return;
-    if (typeof window.requestIdleCallback !== "function") {
-      const timer = window.setTimeout(() => setIdle(true), 1);
-      return () => window.clearTimeout(timer);
-    }
-    const handle = window.requestIdleCallback(() => setIdle(true), { timeout: 1000 });
-    return () => window.cancelIdleCallback(handle);
-  }, [ready, idle]);
-  return idle;
+const loadLate = () =>
+  Promise.all([import("./DashboardHistory"), import("./DashboardAnalysis"), askPersisted()]).then(([history, analysis, persisted]) => ({
+    DashboardHistory: history.DashboardHistory,
+    DashboardAnalysis: analysis.DashboardAnalysis,
+    persisted,
+  }));
+
+type Late = Awaited<ReturnType<typeof loadLate>>;
+
+const USER_INPUTS = ["wheel", "touchstart", "keydown"] as const;
+
+function whenIdle(run: () => void): () => void {
+  if (typeof window.requestIdleCallback !== "function") {
+    const timer = window.setTimeout(run, 1);
+    return () => window.clearTimeout(timer);
+  }
+  const handle = window.requestIdleCallback(run, { timeout: 1000 });
+  return () => window.cancelIdleCallback(handle);
 }
 
-function useScrollToLateFragment(ready: boolean) {
-  const missedAtFirstPaint = useRef(false);
+/**
+ * Without a fragment, the sections below the summary wait for an idle moment, so they render in a task of their own
+ * instead of lengthening the one that draws what the player sees first. A fragment the first paint could not draw (a
+ * Learn link to a tile) is scrolled to only once they are in place: scrolled earlier, they would fill in under the
+ * player's eyes. Scroll events are not counted as the player's own, since the router fires one when it lands.
+ */
+function useLate(ready: boolean): Late | null {
+  const [late, setLate] = useState<Late | null>(null);
+  const fragment = useRef<string | null>(null);
+  const playerMoved = useRef(false);
   useEffect(() => {
-    missedAtFirstPaint.current = document.getElementById(window.location.hash.slice(1)) === null;
+    const id = window.location.hash.slice(1);
+    if (!id || document.getElementById(id)) return;
+    fragment.current = id;
+    const moved = () => {
+      playerMoved.current = true;
+      stop();
+    };
+    const stop = () => USER_INPUTS.forEach((type) => window.removeEventListener(type, moved));
+    USER_INPUTS.forEach((type) => window.addEventListener(type, moved, { passive: true }));
+    return stop;
   }, []);
   useEffect(() => {
-    if (ready && missedAtFirstPaint.current) document.getElementById(window.location.hash.slice(1))?.scrollIntoView();
-  }, [ready]);
+    if (!ready || late) return;
+    let live = true;
+    const load = () => loadLate().then((loaded) => live && setLate(loaded));
+    if (fragment.current) {
+      load();
+      return () => {
+        live = false;
+      };
+    }
+    const cancel = whenIdle(load);
+    return () => {
+      live = false;
+      cancel();
+    };
+  }, [ready, late]);
+  useEffect(() => {
+    if (late && fragment.current && !playerMoved.current) document.getElementById(fragment.current)?.scrollIntoView();
+  }, [late]);
+  return late;
 }
 
 function Section({ id, title, lede, children }: { id: string; title: string; lede?: string; children: ReactNode }) {
@@ -89,8 +121,7 @@ export function Dashboard() {
   const loaded = data.storage === "available" && data.today !== "";
   const results = useLabResults({ ...data, plan: loaded ? storedPlan : null, target: loaded ? storedTarget : null });
   const { standing, rated } = useGameStanding(loaded);
-  const later = useIdleAfter(loaded);
-  useScrollToLateFragment(loaded);
+  const late = useLate(loaded);
 
   const tiles = useMemo(
     () =>
@@ -110,7 +141,7 @@ export function Dashboard() {
     [loaded, data, results, weekGoal, entries, standing],
   );
   const ratingLine = useMemo(() => (loaded ? standing && ratingHistoryOf(standing.rating, rated, Date.now()) : "pending"), [loaded, standing, rated]);
-  const rounds = useMemo(() => (later ? historyOf(data.records, rated) : null), [later, data.records, rated]);
+  const rounds = useMemo(() => (late ? historyOf(data.records, rated) : null), [late, data.records, rated]);
   const figures = useMemo(() => tiles && drawnTilesOf(tiles), [tiles]);
   const unlocks = useMemo(() => tiles && unlocksOf(tiles), [tiles]);
   const card = tiles && shareCardOf(tiles, data.summary.rounds);
@@ -146,12 +177,12 @@ export function Dashboard() {
               <div className="lab-dash-summary-pending" aria-hidden="true" />
             )}
           </Section>
-          {later && <DashboardBackup record={data} />}
+          {late && <DashboardBackup record={data} persisted={late.persisted} />}
           <Section id="history" title={t("sections.history")} lede={t("historyLede")}>
-            {later ? <DashboardHistory rounds={rounds} total={data.summary.rounds} /> : <HistoryPending />}
+            {late ? <late.DashboardHistory rounds={rounds} total={data.summary.rounds} /> : <div className="lab-hist-pending" aria-hidden="true" />}
           </Section>
           <Section id="analysis" title={t("sections.analysis")} lede={t("analysisLede")}>
-            {later ? <DashboardAnalysis results={results} /> : <AnalysisPending />}
+            {late ? <late.DashboardAnalysis results={results} /> : <div className="lab-dash-panels lab-dash-pending" aria-hidden="true" />}
           </Section>
           <Section id="more" title={t("sections.more")}>
             <TileList ids={DASHBOARD_GROUPS.more} tiles={figures} size="more" />

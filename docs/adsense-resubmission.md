@@ -15,6 +15,11 @@ every box below is ticked. The dates and thresholds are our heuristics; Google p
 ## Before resubmitting
 
 - [ ] **Not before 2026-11-23**, 8 weeks after the third rejection.
+- [ ] **Re-enable the AdSense script.** Since 2026-10-18 the `adsbygoogle.js` script is not loaded, because it cost
+      221 KB of JavaScript per mobile view and no page has an ad slot. The `google-adsense-account` meta tag and
+      `ads.txt` stay, so site verification keeps working. Set `ADSENSE_SCRIPT_ENABLED` to `true` in `src/lib/adsense.ts`,
+      merge and deploy before submitting, then confirm `curl -s https://thememorychess.com/ | grep -c adsbygoogle`
+      prints 1. Turn it off again if the submission is rejected.
 - [ ] **www works.** In Vercel Domains, `www.thememorychess.com` is attached as a 308 redirect to
       `thememorychess.com`, not as a second primary domain. `curl -I https://www.thememorychess.com/` answers 308 to
       the apex over valid TLS. Check which hostname the AdSense site entry uses.

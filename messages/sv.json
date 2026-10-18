@@ -81,7 +81,7 @@
         },
         {
           "question": "Hur spelar man Memory Chess?",
-          "answer": "Varje omgång har tre steg. Välj hur många pjäser som ska visas och hur många sekunder du får studera, eller starta en av svårighetsnivåerna. Studera ställningen tills tiden tar slut eller du trycker på Klar. Sedan töms brädet: välj pjäser i paletten och tryck på rutorna där de stod. Tryck på Skicka in för att se din träffsäkerhet, vilka pjäser du placerade rätt och fel och hur lång tid det tog."
+          "answer": "Varje omgång har tre steg. Välj hur många pjäser som ska visas och hur många sekunder du får studera, eller starta en av svårighetsnivåerna. Studera ställningen tills tiden tar slut eller du trycker på Dölj brädet. Sedan töms brädet: välj pjäser i paletten och tryck på rutorna där de stod. Tryck på Skicka in för att se din träffsäkerhet, vilka pjäser du placerade rätt och fel och hur lång tid det tog."
         },
         {
           "question": "Kan nybörjare spela Memory Chess?",

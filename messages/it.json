@@ -81,7 +81,7 @@
         },
         {
           "question": "Come si gioca a Memory Chess?",
-          "answer": "Ogni turno ha tre fasi. Scegli quanti pezzi mostrare e quanti secondi avere per studiarli, oppure avvia un livello predefinito. Studia la posizione finché il tempo non scade o finché non premi Fatto. Poi la scacchiera si svuota: scegli i pezzi dalla tavolozza e tocca le case dove si trovavano. Premi Invia per vedere la tua precisione, i pezzi messi bene e male e quanto tempo hai impiegato."
+          "answer": "Ogni turno ha tre fasi. Scegli quanti pezzi mostrare e quanti secondi avere per studiarli, oppure avvia un livello predefinito. Studia la posizione finché il tempo non scade o finché non premi Nascondi scacchiera. Poi la scacchiera si svuota: scegli i pezzi dalla tavolozza e tocca le case dove si trovavano. Premi Invia per vedere la tua precisione, i pezzi messi bene e male e quanto tempo hai impiegato."
         },
         {
           "question": "I principianti possono giocare a Memory Chess?",

@@ -6,7 +6,7 @@
       "heading": "Regras do Memory Chess: as três fases de uma rodada",
       "memorize": {
         "title": "Memorizar",
-        "body": "Uma posição aparece em um tabuleiro completo por um número fixo de segundos. Nada se move e nada fica escondido. Você pode encerrar a fase antes com o botão Pronto, e o cronômetro registra quanto tempo você realmente observou, não o tempo que recebeu."
+        "body": "Uma posição aparece em um tabuleiro completo por um número fixo de segundos. Nada se move e nada fica escondido. Você pode encerrar a fase antes com o botão Ocultar tabuleiro, e o cronômetro registra quanto tempo você realmente observou, não o tempo que recebeu."
       },
       "place": {
         "title": "Montar",

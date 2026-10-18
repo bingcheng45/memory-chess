@@ -81,7 +81,7 @@
         },
         {
           "question": "Miten Memory Chessiä pelataan?",
-          "answer": "Jokaisessa kierroksessa on kolme vaihetta. Valitse, montako nappulaa näytetään ja montako sekuntia saat tutkia asemaa, tai aloita valmiilla vaikeustasolla. Tutki asemaa, kunnes aika loppuu tai painat Valmis. Sitten lauta tyhjenee: valitse nappuloita valikoimasta ja napauta ruutuja, joilla ne olivat. Paina Lähetä, niin näet tarkkuutesi, oikein ja väärin asetetut nappulat sekä käyttämäsi ajan."
+          "answer": "Jokaisessa kierroksessa on kolme vaihetta. Valitse, montako nappulaa näytetään ja montako sekuntia saat tutkia asemaa, tai aloita valmiilla vaikeustasolla. Tutki asemaa, kunnes aika loppuu tai painat Piilota lauta -painiketta. Sitten lauta tyhjenee: valitse nappuloita valikoimasta ja napauta ruutuja, joilla ne olivat. Paina Lähetä, niin näet tarkkuutesi, oikein ja väärin asetetut nappulat sekä käyttämäsi ajan."
         },
         {
           "question": "Voivatko aloittelijat pelata Memory Chessiä?",

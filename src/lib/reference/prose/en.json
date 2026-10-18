@@ -6,7 +6,7 @@
       "heading": "Memory Chess rules: the three phases of a round",
       "memorize": {
         "title": "Memorize",
-        "body": "A position appears on a full board for a fixed number of seconds. Nothing moves and nothing is hidden. You can end the phase early with Done, and the clock records how long you actually looked rather than the time you were given."
+        "body": "A position appears on a full board for a fixed number of seconds. Nothing moves and nothing is hidden. You can end the phase early with Hide board, and the clock records how long you actually looked rather than the time you were given."
       },
       "place": {
         "title": "Place",

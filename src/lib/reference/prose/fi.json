@@ -6,7 +6,7 @@
       "heading": "Memory Chessin säännöt: kierroksen kolme vaihetta",
       "memorize": {
         "title": "Mieleenpainaminen",
-        "body": "Asema ilmestyy koko laudalle määrätyksi sekuntimääräksi. Mikään ei liiku eikä mitään piiloteta. Voit päättää vaiheen etuajassa Valmis-painikkeella, ja kello kirjaa sen, kuinka kauan oikeasti katsoit, ei sitä aikaa, joka sinulle annettiin."
+        "body": "Asema ilmestyy koko laudalle määrätyksi sekuntimääräksi. Mikään ei liiku eikä mitään piiloteta. Voit päättää vaiheen etuajassa Piilota lauta -painikkeella, ja kello kirjaa sen, kuinka kauan oikeasti katsoit, ei sitä aikaa, joka sinulle annettiin."
       },
       "place": {
         "title": "Asettelu",

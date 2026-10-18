@@ -81,7 +81,7 @@
         },
         {
           "question": "¿Cómo se juega a Memory Chess?",
-          "answer": "Cada ronda tiene tres pasos. Elige cuántas piezas mostrar y cuántos segundos estudiar, o empieza con un nivel predefinido. Estudia la posición hasta que se acabe el tiempo o pulses Listo. Después el tablero se vacía: elige piezas de la paleta y toca las casillas donde estaban. Pulsa Enviar para ver tu precisión, las piezas que colocaste bien y mal, y cuánto tardaste."
+          "answer": "Cada ronda tiene tres pasos. Elige cuántas piezas mostrar y cuántos segundos estudiar, o empieza con un nivel predefinido. Estudia la posición hasta que se acabe el tiempo o pulses Ocultar tablero. Después el tablero se vacía: elige piezas de la paleta y toca las casillas donde estaban. Pulsa Enviar para ver tu precisión, las piezas que colocaste bien y mal, y cuánto tardaste."
         },
         {
           "question": "¿Pueden los principiantes jugar a Memory Chess?",

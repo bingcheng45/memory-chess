@@ -81,7 +81,7 @@
         },
         {
           "question": "Comment jouer à Memory Chess ?",
-          "answer": "Chaque manche se déroule en trois étapes. Choisissez le nombre de pièces affichées et la durée d’étude en secondes, ou lancez un niveau prédéfini. Étudiez la position jusqu’à la fin du temps ou jusqu’à ce que vous appuyiez sur Terminé. L’échiquier se vide alors : choisissez des pièces dans la palette et touchez les cases où elles se trouvaient. Appuyez sur Valider pour voir votre précision, les pièces bien et mal placées, et le temps que vous avez mis."
+          "answer": "Chaque manche se déroule en trois étapes. Choisissez le nombre de pièces affichées et la durée d’étude en secondes, ou lancez un niveau prédéfini. Étudiez la position jusqu’à la fin du temps ou jusqu’à ce que vous appuyiez sur Masquer l’échiquier. L’échiquier se vide alors : choisissez des pièces dans la palette et touchez les cases où elles se trouvaient. Appuyez sur Valider pour voir votre précision, les pièces bien et mal placées, et le temps que vous avez mis."
         },
         {
           "question": "Les débutants peuvent-ils jouer à Memory Chess ?",

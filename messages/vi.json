@@ -81,7 +81,7 @@
         },
         {
           "question": "Cách chơi Memory Chess như thế nào?",
-          "answer": "Mỗi ván gồm ba bước. Chọn số quân cờ hiển thị và số giây để quan sát, hoặc bắt đầu một mức độ khó có sẵn. Quan sát thế cờ cho đến khi hết giờ hoặc khi bạn nhấn Xong. Sau đó bàn cờ được xóa trắng: chọn quân từ bảng quân cờ và chạm vào những ô chúng từng đứng. Nhấn Gửi để xem độ chính xác, những quân bạn đặt đúng và sai, cùng thời gian bạn đã dùng."
+          "answer": "Mỗi ván gồm ba bước. Chọn số quân cờ hiển thị và số giây để quan sát, hoặc bắt đầu một mức độ khó có sẵn. Quan sát thế cờ cho đến khi hết giờ hoặc khi bạn nhấn Ẩn bàn cờ. Sau đó bàn cờ được xóa trắng: chọn quân từ bảng quân cờ và chạm vào những ô chúng từng đứng. Nhấn Gửi để xem độ chính xác, những quân bạn đặt đúng và sai, cùng thời gian bạn đã dùng."
         },
         {
           "question": "Người mới có chơi Memory Chess được không?",

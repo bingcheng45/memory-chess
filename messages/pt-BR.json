@@ -81,7 +81,7 @@
         },
         {
           "question": "Como jogar Memory Chess?",
-          "answer": "Cada rodada tem três etapas. Escolha quantas peças mostrar e quantos segundos estudar, ou comece um nível pronto. Estude a posição até o tempo acabar ou até você tocar em Pronto. Depois o tabuleiro é esvaziado: escolha peças na paleta e toque nas casas onde elas estavam. Toque em Enviar para ver sua precisão, as peças que você colocou certo e errado e quanto tempo levou."
+          "answer": "Cada rodada tem três etapas. Escolha quantas peças mostrar e quantos segundos estudar, ou comece um nível pronto. Estude a posição até o tempo acabar ou até você tocar em Ocultar tabuleiro. Depois o tabuleiro é esvaziado: escolha peças na paleta e toque nas casas onde elas estavam. Toque em Enviar para ver sua precisão, as peças que você colocou certo e errado e quanto tempo levou."
         },
         {
           "question": "Iniciantes conseguem jogar Memory Chess?",

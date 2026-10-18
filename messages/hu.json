@@ -81,7 +81,7 @@
         },
         {
           "question": "Hogyan kell játszani a Memory Chesst?",
-          "answer": "Minden kör három lépésből áll. Válaszd ki, hány bábu jelenjen meg és hány másodperced legyen a tanulmányozásra, vagy indíts el egy nehézségi szintet. Tanulmányozd az állást, amíg le nem jár az idő, vagy amíg meg nem nyomod a Kész gombot. Ezután a tábla kiürül: válassz bábukat a palettáról, és koppints azokra a mezőkre, ahol álltak. Nyomd meg a Beküldés gombot, és láthatod a pontosságodat, a jól és rosszul elhelyezett bábukat, valamint azt, mennyi ideig tartott."
+          "answer": "Minden kör három lépésből áll. Válaszd ki, hány bábu jelenjen meg és hány másodperced legyen a tanulmányozásra, vagy indíts el egy nehézségi szintet. Tanulmányozd az állást, amíg le nem jár az idő, vagy amíg meg nem nyomod a Tábla elrejtése gombot. Ezután a tábla kiürül: válassz bábukat a palettáról, és koppints azokra a mezőkre, ahol álltak. Nyomd meg a Beküldés gombot, és láthatod a pontosságodat, a jól és rosszul elhelyezett bábukat, valamint azt, mennyi ideig tartott."
         },
         {
           "question": "Játszhatják kezdők is a Memory Chesst?",

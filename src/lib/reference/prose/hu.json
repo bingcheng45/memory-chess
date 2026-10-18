@@ -6,7 +6,7 @@
       "heading": "A Memory Chess szabályai: a kör három szakasza",
       "memorize": {
         "title": "Megjegyzés",
-        "body": "Egy állás jelenik meg a teljes táblán, egy rögzített másodpercig. Semmi sem mozdul, és semmi sincs elrejtve. A szakaszt korábban is befejezheted a Kész gombbal, és az óra azt rögzíti, mennyi ideig néztél ténylegesen, nem azt, mennyi időt kaptál."
+        "body": "Egy állás jelenik meg a teljes táblán, egy rögzített másodpercig. Semmi sem mozdul, és semmi sincs elrejtve. A szakaszt korábban is befejezheted a Tábla elrejtése gombbal, és az óra azt rögzíti, mennyi ideig néztél ténylegesen, nem azt, mennyi időt kaptál."
       },
       "place": {
         "title": "Elhelyezés",

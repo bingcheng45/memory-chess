@@ -81,7 +81,7 @@
         },
         {
           "question": "Memory Chess nasıl oynanır?",
-          "answer": "Her tur üç adımdan oluşur. Kaç taş gösterileceğini ve incelemek için kaç saniyen olacağını seç ya da bir zorluk seviyesiyle başla. Süre dolana ya da “Bitti”ye basana kadar konumu incele. Ardından tahta temizlenir: paletten taşları seç ve durdukları karelere dokun. İsabetini, doğru ve yanlış yerleştirdiğin taşları ve ne kadar sürdüğünü görmek için “Gönder”e bas."
+          "answer": "Her tur üç adımdan oluşur. Kaç taş gösterileceğini ve incelemek için kaç saniyen olacağını seç ya da bir zorluk seviyesiyle başla. Süre dolana ya da “Tahtayı gizle”ye basana kadar konumu incele. Ardından tahta temizlenir: paletten taşları seç ve durdukları karelere dokun. İsabetini, doğru ve yanlış yerleştirdiğin taşları ve ne kadar sürdüğünü görmek için “Gönder”e bas."
         },
         {
           "question": "Yeni başlayanlar Memory Chess oynayabilir mi?",

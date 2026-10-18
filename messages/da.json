@@ -81,7 +81,7 @@
         },
         {
           "question": "Hvordan spiller man Memory Chess?",
-          "answer": "Hver runde har tre trin. Vælg hvor mange brikker der skal vises, og hvor mange sekunder du vil studere, eller start en af sværhedsgraderne. Studér stillingen, til tiden løber ud, eller du trykker på Færdig. Derefter tømmes brættet: vælg brikker fra paletten, og tryk på de felter, hvor de stod. Tryk på Send for at se din præcision, hvilke brikker du placerede rigtigt og forkert, og hvor lang tid du brugte."
+          "answer": "Hver runde har tre trin. Vælg hvor mange brikker der skal vises, og hvor mange sekunder du vil studere, eller start en af sværhedsgraderne. Studér stillingen, til tiden løber ud, eller du trykker på Skjul brættet. Derefter tømmes brættet: vælg brikker fra paletten, og tryk på de felter, hvor de stod. Tryk på Send for at se din præcision, hvilke brikker du placerede rigtigt og forkert, og hvor lang tid du brugte."
         },
         {
           "question": "Kan begyndere spille Memory Chess?",

@@ -81,7 +81,7 @@
         },
         {
           "question": "Jak se hraje Memory Chess?",
-          "answer": "Každé kolo má tři kroky. Zvolte, kolik figurek se má ukázat a kolik sekund chcete na zapamatování, nebo spusťte jednu z úrovní obtížnosti. Prohlížejte si pozici, dokud nevyprší čas nebo dokud nestisknete „Hotovo“. Pak se šachovnice vymaže: vybírejte figurky z palety a klepejte na pole, kde stály. Klepněte na „Odeslat“ a uvidíte přesnost, správně i chybně umístěné figurky a to, jak dlouho vám to trvalo."
+          "answer": "Každé kolo má tři kroky. Zvolte, kolik figurek se má ukázat a kolik sekund chcete na zapamatování, nebo spusťte jednu z úrovní obtížnosti. Prohlížejte si pozici, dokud nevyprší čas nebo dokud nestisknete „Skrýt šachovnici“. Pak se šachovnice vymaže: vybírejte figurky z palety a klepejte na pole, kde stály. Klepněte na „Odeslat“ a uvidíte přesnost, správně i chybně umístěné figurky a to, jak dlouho vám to trvalo."
         },
         {
           "question": "Mohou Memory Chess hrát začátečníci?",

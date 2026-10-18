@@ -6,7 +6,7 @@
       "heading": "Regole di Memory Chess: le tre fasi di un turno",
       "memorize": {
         "title": "Memorizza",
-        "body": "Una posizione appare su una scacchiera completa per un numero fisso di secondi. Niente si muove e niente è nascosto. Puoi chiudere la fase in anticipo con Fatto, e il cronometro registra quanto hai guardato davvero, non il tempo che ti era stato concesso."
+        "body": "Una posizione appare su una scacchiera completa per un numero fisso di secondi. Niente si muove e niente è nascosto. Puoi chiudere la fase in anticipo con Nascondi scacchiera, e il cronometro registra quanto hai guardato davvero, non il tempo che ti era stato concesso."
       },
       "place": {
         "title": "Posiziona",

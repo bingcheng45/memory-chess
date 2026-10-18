@@ -6,7 +6,7 @@
       "heading": "Aturan Memory Chess: tiga fase dalam satu ronde",
       "memorize": {
         "title": "Menghafal",
-        "body": "Sebuah posisi muncul di papan penuh selama jumlah detik yang tetap. Tidak ada yang bergerak dan tidak ada yang disembunyikan. Anda bisa mengakhiri fase ini lebih awal dengan Selesai, dan waktu yang dicatat adalah waktu yang benar-benar Anda gunakan untuk melihat, bukan waktu yang diberikan."
+        "body": "Sebuah posisi muncul di papan penuh selama jumlah detik yang tetap. Tidak ada yang bergerak dan tidak ada yang disembunyikan. Anda bisa mengakhiri fase ini lebih awal dengan Sembunyikan papan, dan waktu yang dicatat adalah waktu yang benar-benar Anda gunakan untuk melihat, bukan waktu yang diberikan."
       },
       "place": {
         "title": "Menempatkan",

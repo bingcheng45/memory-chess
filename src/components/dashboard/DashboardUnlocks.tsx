@@ -4,7 +4,8 @@ import { useId, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import type { LockedTile } from "@/lib/lab/dashboard";
-import { tileAnchor, useNeedList } from "./DashboardTiles";
+import { tileAnchor } from "@/lib/lab/tileAnchor";
+import { useNeedList } from "./DashboardTiles";
 
 const SHOWN = 4;
 

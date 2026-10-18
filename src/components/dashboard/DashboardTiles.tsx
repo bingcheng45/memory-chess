@@ -4,6 +4,7 @@ import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { BETTER_WHEN, type DashboardTile, type DashboardTileId, type DashboardUnit, type Rig, type Trend } from "@/lib/lab/dashboard";
 import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
+import { tileAnchor } from "@/lib/lab/tileAnchor";
 import { useContextText, useFigureText } from "./figureText";
 import { TrendChip } from "./TrendChip";
 
@@ -24,8 +25,6 @@ export function useNeedText() {
   const needList = useNeedList();
   return (need: Need, rig: Rig | null) => (rig ? t("needsAt", { need: needList(need), ...rig }) : t("needs", { need: needList(need) }));
 }
-
-export const tileAnchor = (id: DashboardTileId) => `tile-${id}`;
 
 const betterWhenOf = (id: DashboardTileId) => (id in BETTER_WHEN ? BETTER_WHEN[id as keyof typeof BETTER_WHEN] : "higher");
 

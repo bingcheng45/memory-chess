@@ -3,7 +3,7 @@ import { generateMetadata as leaderboardMetadata } from "@/app/[locale]/leaderbo
 
 jest.mock("next-intl/server", () => {
   const read = (locale: string, path: string) =>
-    path.split(".").reduce((node, key) => node[key], jest.requireActual(`../../../../messages/${locale}.json`));
+    path.split(".").reduce<unknown>((node, key) => (node as Record<string, unknown>)[key], jest.requireActual(`../../../../messages/${locale}.json`));
   return {
     getTranslations: async ({ locale, namespace }: { locale: string; namespace: string }) => (key: string) =>
       read(locale, `${namespace}.${key}`),

@@ -78,12 +78,12 @@ const firstHeading = (html) => {
   return match ? [match[1], decode(match[2].replace(/<[^>]+>/g, "")).trim()] : [null, ""];
 };
 const textOf = (fragment) => decode(fragment.replace(/<[^>]+>/g, "")).trim();
-// A guide's call-to-action card is one link whose name is its bold label.
+const ctaLabelOf = (body) => textOf(body.match(/<b>([\s\S]*?)<\/b>/)?.[1] ?? "");
 const hasAnchor = (html, href, anchor) =>
   [...html.matchAll(/<a\b([^>]*)>([\s\S]*?)<\/a>/g)].some(
     ([, attributes, body]) =>
       attributes.includes(`href="${href}"`) &&
-      (anchor === null || textOf(body) === anchor || textOf(body.match(/<b>([\s\S]*?)<\/b>/)?.[1] ?? "") === anchor),
+      (anchor === null || textOf(body) === anchor || ctaLabelOf(body) === anchor),
   );
 const jsonLdTypes = (html) =>
   [...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].flatMap(([, json]) => {

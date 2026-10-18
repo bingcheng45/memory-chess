@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
 import { getMessages, getTranslations } from 'next-intl/server';
 import { buildAlternates, localizedPath } from '@/lib/seo/alternates';
-import { pageTitle, socialMetadata } from '@/lib/seo/brand';
+import { socialMetadata, titleNamingBrandOnce } from '@/lib/seo/brand';
 import ScopedMessagesProvider from '@/components/common/ScopedMessagesProvider';
 import TileArticlesProvider from '@/components/game/TileArticlesProvider';
 import GameReference from '@/components/reference/GameReference';
@@ -22,7 +22,7 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'game.meta' });
 
   return {
-    title: pageTitle(t('title')),
+    title: titleNamingBrandOnce(t('title')),
     description: t('description'),
     alternates: buildAlternates('/game', locale),
     ...socialMetadata({

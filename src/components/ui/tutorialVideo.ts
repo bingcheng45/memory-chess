@@ -1,4 +1,3 @@
-/** As YouTube lists the home tutorial video; the player and its VideoObject both read it. */
 export const TUTORIAL_VIDEO = {
   name: "How to Train Yourself to Visualize Anything (6 Simple Tips & Habits)",
   description:

@@ -24,8 +24,7 @@ export function socialMetadata({ title, description, url }: { title: string; des
   } satisfies Pick<Metadata, "openGraph" | "twitter">;
 }
 
-/** A title that already names the brand skips the layout's "| Memory Chess" suffix. */
-export function pageTitle(title: string): Metadata["title"] {
+export function titleNamingBrandOnce(title: string): Metadata["title"] {
   return title.includes(BRAND_NAME) ? { absolute: title } : title;
 }
 

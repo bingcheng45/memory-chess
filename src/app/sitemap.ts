@@ -38,8 +38,7 @@ type SitemapEntryConfig = {
     MetadataRoute.Sitemap[number]["changeFrequency"]
   >;
   priority: number;
-  /** Listed at its English URL alone, though every locale stays indexable: Google left 21 of 23 translations "Discovered, currently not indexed". */
-  englishUrlOnly?: true;
+  sitemapEnglishUrlOnly?: true;
 };
 
 const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
@@ -72,7 +71,7 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "monthly",
     priority: 0.5,
-    englishUrlOnly: true,
+    sitemapEnglishUrlOnly: true,
   },
   {
     path: "/changelog",
@@ -153,7 +152,7 @@ function entryFor(
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return SITEMAP_ENTRIES.flatMap((entry) =>
-    entry.englishUrlOnly || isEnglishOnlyPath(entry.path) || isIndexedInDefaultLocaleOnly(entry.path)
+    entry.sitemapEnglishUrlOnly || isEnglishOnlyPath(entry.path) || isIndexedInDefaultLocaleOnly(entry.path)
       ? [entryFor(entry, DEFAULT_LOCALE)]
       : LOCALES.map((locale) => ({
           ...entryFor(entry, locale),

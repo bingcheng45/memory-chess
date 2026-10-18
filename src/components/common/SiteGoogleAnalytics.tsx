@@ -3,11 +3,43 @@ import Script from "next/script";
 export const GA_MEASUREMENT_ID = "G-R8BM9EMY9J";
 export const GA_SCRIPT_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
 
-/** The stub gtag.js documents. Events sent before the library arrives wait in dataLayer and replay once it loads. */
+/**
+ * The stub gtag.js documents. Events sent before the library arrives wait in dataLayer and replay once it loads.
+ * gtag.js reads location only once it loads, by which time the visitor may have left the landing URL and its
+ * campaign tags, so the first page_view sends the landing address, referrer and title itself. A page that streams its
+ * title has none yet, so gtag.js reads it later.
+ */
 export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
 function gtag(){window.dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${GA_MEASUREMENT_ID}');`;
+gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
+(function () {
+  function isTypedText(pair) {
+    var key = pair.split('=')[0].replace(/\\+/g, ' ');
+    try { key = decodeURIComponent(key); } catch (e) {}
+    return key === 'player' || key === 'q';
+  }
+  function withoutTypedText(address) {
+    if (!address) return address;
+    try {
+      if (new URL(address).origin !== location.origin) return address;
+      var hashAt = address.indexOf('#');
+      var hash = hashAt < 0 ? '' : address.slice(hashAt);
+      var head = hashAt < 0 ? address : address.slice(0, hashAt);
+      var queryAt = head.indexOf('?');
+      if (queryAt < 0) return address;
+      var pairs = head.slice(queryAt + 1).split('&');
+      var kept = pairs.filter(function (pair) { return !isTypedText(pair); });
+      if (kept.length === pairs.length) return address;
+      return head.slice(0, queryAt) + (kept.length ? '?' + kept.join('&') : '') + hash;
+    } catch (e) {
+      return address.split('#')[0].split('?')[0];
+    }
+  }
+  var landing = { page_location: withoutTypedText(location.href), page_referrer: withoutTypedText(document.referrer) };
+  if (document.title) landing.page_title = document.title;
+  gtag('event', 'page_view', landing);
+})();`;
 
 /**
  * @next/third-parties preloads the 191 KB library in <head>, where it competes with the app's own scripts.

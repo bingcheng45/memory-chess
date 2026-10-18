@@ -148,7 +148,7 @@ describe("GameConfig start", () => {
     fireEvent.click(screen.getByRole("button", { name: "Start round" }));
 
     expect(useGameStore.getState().round).toMatchObject({ phase: "study", config: { pieceCount: 6, studyMs: 60000, source: "game_form" } });
-    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 60, source: "game_form" }]]);
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 60, round_source: "game_form" }]]);
   });
 });
 

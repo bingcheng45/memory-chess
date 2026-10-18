@@ -163,7 +163,7 @@ const studyGameState = (previous: GameState, { pieceCount, memorizeTime, source,
 });
 
 const trackRoundStart = (pieceCount: number, memorizeTime: number, source: RoundSource) =>
-  trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime, source } });
+  trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: memorizeTime, round_source: source } });
 
 // Initialize the store
 export const useGameStore = create<GameStore>()(
@@ -364,7 +364,7 @@ export const useGameStore = create<GameStore>()(
             memorize_time: gameState.memorizeTime,
             correct_pieces: score.correct,
             accuracy: score.accuracy,
-            source: gameState.startSource ?? 'link',
+            round_source: gameState.startSource ?? 'link',
           },
         });
 

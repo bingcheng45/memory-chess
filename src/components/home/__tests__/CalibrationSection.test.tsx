@@ -77,7 +77,7 @@ describe("CalibrationSection", () => {
     fireEvent.click(screen.getByRole("button", { name: /Start calibration/ }));
     await screen.findByText("Phase 1 · Study");
 
-    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "calibration" }]]);
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, round_source: "calibration" }]]);
     Reflect.deleteProperty(window, "gtag");
   });
 
@@ -101,7 +101,7 @@ describe("CalibrationSection", () => {
     fireEvent.click(screen.getByRole("button", { name: "Submit reading" }));
 
     expect(gtag.mock.calls.filter(([, name]) => name === "round_complete")).toEqual([
-      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, source: "calibration" }],
+      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, round_source: "calibration" }],
     ]);
     Reflect.deleteProperty(window, "gtag");
   });

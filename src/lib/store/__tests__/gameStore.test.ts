@@ -68,7 +68,7 @@ describe("counting a replay in", () => {
     expect(counting.phase === "countdown" && counting.fen).toBe(gameState.originalPosition);
     expect(boardPlacement(gameState.originalPosition!)).toBe(labPositionToFen(target()));
     expect(validateMemorizationPosition(gameState.originalPosition!, 6)).toMatchObject({ valid: true, violations: [] });
-    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "try_again" }]]);
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, round_source: "try_again" }]]);
   });
 
   it("rates a replay as an ordinary round, not as a set board", () => {
@@ -97,7 +97,7 @@ describe("reporting a round", () => {
 
     store().startGame(6, 10, "home_quick");
 
-    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, source: "home_quick" }]]);
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, round_source: "home_quick" }]]);
   });
 
   it("sends round_complete once when the round is scored, with what the player got right, and no other event", () => {
@@ -112,7 +112,7 @@ describe("reporting a round", () => {
     store().submitSolution();
 
     expect(gtag.mock.calls).toEqual([
-      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, source: "plan" }],
+      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, round_source: "plan" }],
     ]);
   });
 });

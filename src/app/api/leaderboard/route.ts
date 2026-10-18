@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDailyResults, getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
+import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboardService';
+import { readDailyBoard } from '@/lib/daily/readDailyBoard';
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
 import { isSkillRating, MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
@@ -7,12 +8,14 @@ import { joinableDays, readableDays, readBoard } from '@/lib/leaderboard/board';
 import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { utcDayOf } from '@/lib/lab/daily';
 import { dailySettingOf } from '@/lib/daily/schedule';
-import { playedLikeOf } from '@/lib/daily/boardRating';
 import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardBoard, type LeaderboardDifficulty } from '@/types/leaderboard';
 import { GAME_CONFIG_RULES } from '@/lib/game/configPrefill';
 import { MEMORIZE_SECONDS_RANGE } from '@/lib/reference/facts';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
 import { reportServerError } from '@/lib/server/serverErrors';
+
+const RANKED_CACHE = 'public, s-maxage=30, stale-while-revalidate=300';
+const DAILY_DAY_CACHE = 'public, s-maxage=15, stale-while-revalidate=60';
 
 const SUBMISSION_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
 
@@ -71,7 +74,8 @@ export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
   const difficulty = searchParams.get('difficulty') || 'medium';
   const now = Date.now();
-  const board = readBoard(difficulty, difficulty === DAILY_BOARD ? (searchParams.get('daily_day') ?? utcDayOf(now)) : null, readableDays(now));
+  const namedDay = searchParams.get('daily_day');
+  const board = readBoard(difficulty, difficulty === DAILY_BOARD ? (namedDay ?? utcDayOf(now)) : null, readableDays(now));
 
   if (board === null) {
     return NextResponse.json(
@@ -85,13 +89,11 @@ export async function GET(request: NextRequest) {
   try {
     if (board.difficulty !== DAILY_BOARD) {
       const result = await getLeaderboard(board);
-      return result.error ? unavailable() : NextResponse.json({ data: result.data });
+      return result.error ? unavailable() : NextResponse.json({ data: result.data }, { headers: { 'Cache-Control': RANKED_CACHE } });
     }
-    // How the board played is a side note: when its read fails the board still answers, without it.
-    const [result, results] = await Promise.all([getLeaderboard(board), getDailyResults(board.daily_day)]);
-    if (result.error) return unavailable();
-    const playedLike = results === null ? null : playedLikeOf(results, dailySettingOf(board.daily_day));
-    return NextResponse.json({ data: result.data, playedLike });
+    const read = await readDailyBoard(board.daily_day);
+    if (read === null) return unavailable();
+    return NextResponse.json({ data: read.rows, playedLike: read.playedLike }, namedDay === null ? undefined : { headers: { 'Cache-Control': DAILY_DAY_CACHE } });
   } catch (err) {
     console.error('Unexpected API error:', err);
     reportServerError('GET /api/leaderboard', 'unexpected', err, { board: board.difficulty });

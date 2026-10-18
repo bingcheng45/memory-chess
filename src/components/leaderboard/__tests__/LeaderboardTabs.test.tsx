@@ -4,6 +4,7 @@ import type { CountryCode } from "@/lib/leaderboard/countries";
 import { LEADERBOARD_UNAVAILABLE, type LeaderboardEntry } from "@/types/leaderboard";
 import { splitClientMessages } from "@/lib/articles/messageScope";
 import type { AbstractIntlMessages } from "next-intl";
+import { DAILY_ENTRY_KEY } from "@/lib/lab/entries";
 import enMessages from "../../../../messages/en.json";
 
 const boards: LeaderboardBoards = {
@@ -61,6 +62,7 @@ function openAt(search: string) {
 }
 
 beforeEach(() => {
+  window.localStorage.clear();
   openAt("");
   fetchMock.mockReset().mockImplementation(readByDay);
   global.fetch = fetchMock as unknown as typeof fetch;
@@ -165,6 +167,20 @@ describe("the Daily tab", () => {
     expect(screen.queryByText("Ada Today")).not.toBeInTheDocument();
     expect(within(screen.getByRole("tabpanel")).getByText("Be the First Champion!")).toBeInTheDocument();
     expect(screen.getByText("Resets at 00:00 UTC (00:00 your time), in 23 h 59 min")).toBeInTheDocument();
+  });
+
+  it("asks for the rows after the player's own entry when this device joined today's board, and not for another day's entry", async () => {
+    const stored = (day: string, id: string) => ({ id, difficulty: "daily", dailyDay: day, country: "SG", score: { correctPieces: 3, totalWrongPieces: 3, memorizeTime: 10, solutionTime: 13 }, submittedAt: 1 });
+    window.localStorage.setItem(
+      DAILY_ENTRY_KEY,
+      JSON.stringify([stored("2026-10-13", "3c3c3c3c-0000-4000-8000-000000000003"), stored("2026-10-12", "3c3c3c3c-0000-4000-8000-000000000002")]),
+    );
+    await renderDailyAt("2026-10-13T12:00:00Z", "UTC");
+
+    expect(fetchMock).toHaveBeenLastCalledWith(
+      "/api/leaderboard?difficulty=daily&daily_day=2026-10-13&after=3c3c3c3c-0000-4000-8000-000000000003",
+      expect.anything(),
+    );
   });
 
   it("keeps the new day's board on screen while a read the server is not ready for is retried a few seconds later", async () => {
@@ -296,7 +312,8 @@ describe("the Daily tab", () => {
 });
 
 describe("a link from the result screen", () => {
-  it("opens the board it names, highlights the round, and reads that board fresh", async () => {
+  it("opens the board it names, highlights the round, and reads that board fresh, past any shared cache", async () => {
+    jest.spyOn(Date, "now").mockReturnValue(Date.parse("2026-10-13T09:00:00Z"));
     const hardRow: LeaderboardEntry = { ...mediumRow, id: "hana", player_name: "Hana Hard", difficulty: "hard" };
     fetchMock.mockImplementation(() => Promise.resolve({ json: () => Promise.resolve({ data: [hardRow] }) }));
     Element.prototype.scrollIntoView = jest.fn();
@@ -307,7 +324,8 @@ describe("a link from the result screen", () => {
 
     expect(screen.getByRole("tab", { selected: true })).toHaveTextContent("Hard");
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=hard", expect.anything());
+    expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=hard&after=1791882000000", expect.anything());
+    jest.mocked(Date.now).mockRestore();
     const row = within(screen.getByRole("tabpanel")).getByText("Hana Hard").closest("tr");
     expect(row).toHaveAttribute("data-highlighted", "");
     expect(row).toHaveTextContent("You");

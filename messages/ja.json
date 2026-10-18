@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "今日のトップ10",
+      "yesterdayTitle": "昨日のトップ10",
       "playedLike": "今日のボードの実力は {rating} 相当",
       "playedLikeNote": "今日のプレイヤーの結果からの推定です。",
       "rank": "順位",

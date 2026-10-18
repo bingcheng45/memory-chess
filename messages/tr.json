@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "Bugünün ilk 10'u",
+      "yesterdayTitle": "Dünün ilk 10'u",
       "playedLike": "Bugünün tahtası {rating} gibi oynadı",
       "playedLikeNote": "Bugünkü oyuncuların sonuçlarından tahmin edildi.",
       "rank": "Sıra",

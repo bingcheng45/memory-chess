@@ -19,6 +19,8 @@ const ROUND_ON_13 = {
   squares: "cccc" + "ww" + ".".repeat(58),
 } as unknown as DailyRound;
 
+const FAILED_SERVER_READ = { today: "2026-10-14", board: null, readAt: 0 };
+
 let mockRecords: readonly DailyRound[] = [];
 jest.mock("@/hooks/useLabData", () => ({
   useLabData: () => ({ storage: "available", records: mockRecords }),
@@ -52,7 +54,7 @@ describe("a daily round finished after midnight UTC", () => {
   it("offers the join form for the 13th's board at 00:02 on the 14th and posts it for the 13th", async () => {
     jest.useFakeTimers({ now: Date.parse("2026-10-14T00:02:00Z"), doNotFake: ["queueMicrotask", "nextTick"] });
 
-    render(<DailyBoard />);
+    render(<DailyBoard rendered={FAILED_SERVER_READ} />);
     await act(async () => {});
 
     expect(screen.getByRole("heading", { name: "Today's board is open" })).toBeInTheDocument();
@@ -69,7 +71,7 @@ describe("a daily round finished after midnight UTC", () => {
     jest.useFakeTimers({ now: Date.parse("2026-10-14T09:00:00Z"), doNotFake: ["queueMicrotask", "nextTick"] });
     mockRecords = [{ ...ROUND_ON_13, endedAt: Date.parse("2026-10-13T10:00:00Z") }];
 
-    render(<DailyBoard />);
+    render(<DailyBoard rendered={FAILED_SERVER_READ} />);
     await act(async () => {});
 
     expect(within(lateSection()).getByText("You played yesterday's board and have not joined it yet.")).toBeInTheDocument();
@@ -78,7 +80,7 @@ describe("a daily round finished after midnight UTC", () => {
   it("keeps the form for a round finished at 23:58 when the clock passes midnight before the player joins", async () => {
     jest.useFakeTimers({ now: Date.parse("2026-10-13T23:58:30Z"), doNotFake: ["queueMicrotask", "nextTick"] });
 
-    render(<DailyBoard />);
+    render(<DailyBoard rendered={FAILED_SERVER_READ} />);
     await act(async () => {});
     expect(screen.getByRole("button", { name: "Join the board" })).toBeInTheDocument();
 
@@ -102,7 +104,7 @@ describe("a daily round finished after midnight UTC", () => {
     });
     observer.observe(container, { childList: true, subtree: true });
 
-    render(<DailyBoard />, { container });
+    render(<DailyBoard rendered={FAILED_SERVER_READ} />, { container });
     await act(async () => {});
     observer.disconnect();
 

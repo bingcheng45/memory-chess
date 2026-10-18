@@ -18,6 +18,8 @@ const TODAYS_ROUND = {
   squares: "ccccc" + "w" + ".".repeat(58),
 } as unknown as DailyRound;
 
+const FAILED_SERVER_READ = { today: "2026-10-14", board: null, readAt: 0 };
+
 let mockRecords: readonly DailyRound[] = [];
 jest.mock("@/hooks/useLabData", () => ({
   useLabData: () => ({ storage: "available", records: mockRecords }),
@@ -43,7 +45,7 @@ describe("today's board straight after the round", () => {
   it("leads with the score and a call to join, puts the cursor in the name field and takes the marker off the address", async () => {
     window.history.pushState({}, "", "/daily?played=1");
 
-    render(<DailyBoard />);
+    render(<DailyBoard rendered={FAILED_SERVER_READ} />);
     await act(async () => {});
 
     expect(prompt()).toBe(PROMPT);
@@ -55,7 +57,7 @@ describe("today's board straight after the round", () => {
   it("shows the result without the prompt on an ordinary visit", async () => {
     window.history.pushState({}, "", "/daily");
 
-    render(<DailyBoard />);
+    render(<DailyBoard rendered={FAILED_SERVER_READ} />);
     await act(async () => {});
 
     expect([prompt(), screen.getByText("5 of 7 right").tagName]).toEqual([null, "STRONG"]);

@@ -1736,6 +1736,7 @@
     },
     "board": {
       "title": "Top 10 de hoy",
+      "yesterdayTitle": "Top 10 de ayer",
       "playedLike": "El tablero de hoy jugó como {rating}",
       "playedLikeNote": "Estimado a partir de los jugadores de hoy.",
       "rank": "Puesto",

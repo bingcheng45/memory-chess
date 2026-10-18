@@ -1,3 +1,4 @@
+import 'server-only';
 import { createClient } from '@supabase/supabase-js';
 
 // Initialize the Supabase client with environment variables
@@ -21,6 +22,43 @@ const readOnly = process.env.SUPABASE_READ_ONLY === 'true';
 
 // Local runs against the production project set SUPABASE_READ_ONLY so no write can reach it
 export const supabaseWriter = readOnly ? null : supabase;
+
+function jwtRole(key) {
+  const parts = key.split('.');
+  if (parts.length !== 3) return null;
+  try {
+    const role = JSON.parse(Buffer.from(parts[1], 'base64url').toString('utf8')).role;
+    return typeof role === 'string' ? role : null;
+  } catch {
+    return null;
+  }
+}
+
+function serviceKeyProblem(key) {
+  if (!key) return 'is not set';
+  const role = jwtRole(key);
+  if (role === 'service_role') return null;
+  return role ? `holds a key whose role is "${role}", not "service_role"` : 'does not hold a Supabase JWT with a role';
+}
+
+const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
+const leaderboardServiceKeyProblem = serviceKeyProblem(serviceKey);
+const leaderboardServiceClient =
+  supabaseWriter && !leaderboardServiceKeyProblem
+    ? createClient(supabaseUrl, serviceKey, { auth: { persistSession: false } })
+    : null;
+let reportedAnonLeaderboardWriter = false;
+
+export function leaderboardWriter() {
+  if (leaderboardServiceClient || !supabaseWriter) return leaderboardServiceClient;
+  if (!reportedAnonLeaderboardWriter) {
+    reportedAnonLeaderboardWriter = true;
+    const message = `SUPABASE_SERVICE_ROLE_KEY ${leaderboardServiceKeyProblem}, so leaderboard scores are written with the anon key. Migration 0006 refuses those writes.`;
+    if (serviceKey) console.error(`${message} Set it to the service_role key from Supabase project settings, under API.`);
+    else console.warn(message);
+  }
+  return supabaseWriter;
+}
 
 export const SUPABASE_WRITES_OFF_REASON = readOnly
   ? 'Supabase is read-only (SUPABASE_READ_ONLY=true)'

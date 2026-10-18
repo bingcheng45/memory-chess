@@ -329,7 +329,7 @@ describe("POST /api/leaderboard", () => {
       const response = await post({ ...todaysRow, solution_time: 1.49 });
 
       expect(response.status).toBe(400);
-      expect(await response.json()).toEqual({ error: "A daily rebuild of 6 pieces takes at least 1.5 seconds" });
+      expect(await response.json()).toEqual({ error: "A rebuild of 6 pieces takes at least 1.5 seconds" });
       expect(submitLeaderboardEntry).not.toHaveBeenCalled();
     });
 
@@ -341,7 +341,7 @@ describe("POST /api/leaderboard", () => {
       const response = await post({ ...todaysRow, solution_time });
 
       expect(response.status).toBe(400);
-      expect(await response.json()).toEqual({ error: "A daily rebuild of 6 pieces takes at least 1.5 seconds" });
+      expect(await response.json()).toEqual({ error: "A rebuild of 6 pieces takes at least 1.5 seconds" });
       expect(submitLeaderboardEntry).not.toHaveBeenCalled();
     });
 
@@ -398,6 +398,56 @@ describe("POST /api/leaderboard", () => {
     await post({ ...validEntry, daily_day: null });
 
     expect(jest.mocked(submitLeaderboardEntry).mock.calls[0][0]).not.toHaveProperty("daily_day");
+  });
+
+  it.each([
+    ["easy", 2, 0.066, 0.5],
+    ["medium", 6, 60, 1.5],
+    ["hard", 12, 8, 3],
+    ["grandmaster", 20, 5, 5],
+  ])("stores a %s row of %i pieces studied %f s and rebuilt in %f s", async (difficulty, pieces, memorize_time, solution_time) => {
+    const response = await post({ ...validEntry, difficulty, piece_count: pieces, correct_pieces: pieces, total_wrong_pieces: 0, memorize_time, solution_time });
+
+    expect(response.status).toBe(200);
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ difficulty, piece_count: pieces, memorize_time, solution_time }));
+  });
+
+  it.each([
+    ["easy", 2, 0.49, "A rebuild of 2 pieces takes at least 0.5 seconds"],
+    ["medium", 6, 1.49, "A rebuild of 6 pieces takes at least 1.5 seconds"],
+    ["hard", 12, 2.99, "A rebuild of 12 pieces takes at least 3 seconds"],
+    ["grandmaster", 20, 4.99, "A rebuild of 20 pieces takes at least 5 seconds"],
+    ["medium", 6, "12.5", "A rebuild of 6 pieces takes at least 1.5 seconds"],
+  ])("rejects a %s row of %i pieces rebuilt in %p s", async (difficulty, pieces, solution_time, error) => {
+    const response = await post({ ...validEntry, difficulty, piece_count: pieces, correct_pieces: pieces, total_wrong_pieces: 0, solution_time });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["longer than the 60 s the game allows", 60.001],
+    ["below zero", -1],
+    ["as the text \"8.25\"", "8.25"],
+  ])("rejects a medium row with a study time %s", async (_case, memorize_time) => {
+    const response = await post({ ...validEntry, memorize_time });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "A study lasts more than 0 and at most 60 seconds" });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["medium", 5, 4, 1, "The medium board is 6 pieces"],
+    ["grandmaster", 2, 2, 0, "The grandmaster board is 20 pieces"],
+    ["easy", "2", 2, 0, "The easy board is 2 pieces"],
+  ])("rejects a %s row of %p pieces", async (difficulty, piece_count, correct_pieces, total_wrong_pieces, error) => {
+    const response = await post({ ...validEntry, difficulty, piece_count, correct_pieces, total_wrong_pieces });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
   });
 
   it("rejects a board that does not exist", async () => {

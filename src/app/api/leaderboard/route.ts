@@ -8,7 +8,9 @@ import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { utcDayOf } from '@/lib/lab/daily';
 import { dailySettingOf } from '@/lib/daily/schedule';
 import { playedLikeOf } from '@/lib/daily/boardRating';
-import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardBoard } from '@/types/leaderboard';
+import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardBoard, type LeaderboardDifficulty } from '@/types/leaderboard';
+import { GAME_CONFIG_RULES } from '@/lib/game/configPrefill';
+import { MEMORIZE_SECONDS_RANGE } from '@/lib/reference/facts';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
 
 const SUBMISSION_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
@@ -17,20 +19,33 @@ const SUBMISSION_UNAVAILABLE = 'The leaderboard is being updated. Please try aga
 const SCORES_PER_MINUTE = 5;
 const allowScore = fixedWindowLimiter({ limit: SCORES_PER_MINUTE, windowMs: 60_000, maxKeys: 5_000 });
 
-/** The board is public in the repo, so a script could post a perfect row; no person rebuilds a piece faster than this. */
-const DAILY_SECONDS_PER_PIECE = 0.25;
+const SECONDS_PER_PIECE = 0.25;
 
-function dailyRowMismatch(board: LeaderboardBoard, pieceCount: unknown, memorizeTime: unknown, solutionTime: unknown, country: unknown): string | null {
-  if (board.difficulty !== DAILY_BOARD) return null;
+const BOARD_PIECES = Object.fromEntries(GAME_CONFIG_RULES.presets.map(({ id, pieceCount }) => [id, pieceCount])) as Record<LeaderboardDifficulty, number>;
+
+const LONGEST_STUDY_SECONDS = MEMORIZE_SECONDS_RANGE.max;
+
+function rebuildTooFast(pieceCount: number, solutionTime: unknown): string | null {
+  const floor = pieceCount * SECONDS_PER_PIECE;
+  return typeof solutionTime === 'number' && solutionTime >= floor ? null : `A rebuild of ${pieceCount} pieces takes at least ${floor} seconds`;
+}
+
+function boardRowMismatch(board: LeaderboardBoard, pieceCount: unknown, memorizeTime: unknown, solutionTime: unknown, country: unknown): string | null {
+  if (board.difficulty !== DAILY_BOARD) {
+    const pieces = BOARD_PIECES[board.difficulty];
+    if (pieceCount !== pieces) return `The ${board.difficulty} board is ${pieces} pieces`;
+    if (typeof memorizeTime !== 'number' || memorizeTime <= 0 || memorizeTime > LONGEST_STUDY_SECONDS) {
+      return `A study lasts more than 0 and at most ${LONGEST_STUDY_SECONDS} seconds`;
+    }
+    return rebuildTooFast(pieces, solutionTime);
+  }
   const code = parseCountryCode(country);
   if (code === null || code === WORLD_CODE) return 'A daily row needs a country';
   const setting = dailySettingOf(board.daily_day);
   if (pieceCount !== setting.pieceCount || memorizeTime !== setting.memorizeTime) {
     return `The daily board for ${board.daily_day} is ${setting.pieceCount} pieces and ${setting.memorizeTime} seconds`;
   }
-  const floor = setting.pieceCount * DAILY_SECONDS_PER_PIECE;
-  if (typeof solutionTime !== 'number' || solutionTime < floor) return `A daily rebuild of ${setting.pieceCount} pieces takes at least ${floor} seconds`;
-  return null;
+  return rebuildTooFast(setting.pieceCount, solutionTime);
 }
 
 const BOARD_SQUARE_COUNT = 64;
@@ -121,7 +136,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Invalid difficulty or daily day' }, { status: 400 });
     }
 
-    const mismatch = dailyRowMismatch(board, piece_count, memorize_time, solution_time, country_code);
+    const mismatch = boardRowMismatch(board, piece_count, memorize_time, solution_time, country_code);
     if (mismatch !== null) {
       return NextResponse.json({ error: mismatch }, { status: 400 });
     }
@@ -143,7 +158,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!countsAreScored(piece_count, correct_pieces, total_wrong_pieces) || memorize_time <= 0 || solution_time <= 0) {
+    if (!countsAreScored(piece_count, correct_pieces, total_wrong_pieces)) {
       return NextResponse.json(
         { error: 'Invalid data values' },
         { status: 400 }

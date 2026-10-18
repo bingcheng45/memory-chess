@@ -1,5 +1,5 @@
 import type { PostgrestError } from '@supabase/supabase-js';
-import { supabase, supabaseWriter, SUPABASE_WRITES_OFF_REASON, checkSupabaseConnection } from '@/lib/supabase';
+import { supabase, leaderboardWriter, SUPABASE_WRITES_OFF_REASON, checkSupabaseConnection } from '@/lib/supabase';
 import { LEADERBOARD_ROW_LIMIT } from '@/lib/reference/facts';
 import { RANKING_ORDER, type BoardCutoff, type LeaderboardCutoffs } from '@/lib/leaderboard/ranking';
 import { parseBoard } from '@/lib/leaderboard/board';
@@ -235,11 +235,11 @@ export async function submitLeaderboardEntry(
   if (playerNameProblem(entry.player_name) !== null) {
     return { status: 'invalid', message: 'Player name must be between 4 and 16 characters' };
   }
-  if (!supabaseWriter) {
+  const client = leaderboardWriter();
+  if (!client) {
     return { status: 'unavailable', cause: SUPABASE_WRITES_OFF_REASON };
   }
 
-  const client = supabaseWriter;
   const insertRow = (row: LeaderboardSubmission | SubmissionRow) =>
     client.from('leaderboard_entries').insert(row).select().single();
 

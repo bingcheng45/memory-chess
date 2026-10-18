@@ -80,8 +80,8 @@
           "answer": "Memory Chess är ett gratis minnesspel på schackbrädet. Du studerar en ställning en kort stund, bygger upp den ur minnet och får poäng utifrån hur många pjäser du placerade rätt."
         },
         {
-          "question": "Hur spelar jag?",
-          "answer": "Välj hur många pjäser du vill ha och hur länge du vill studera brädet. När ställningen försvinner placerar du tillbaka pjäserna på de rutor du minns. Skicka in ditt svar för att se träffsäkerhet och tid."
+          "question": "Hur spelar man Memory Chess?",
+          "answer": "Varje omgång har tre steg. Välj hur många pjäser som ska visas och hur många sekunder du får studera, eller starta en av svårighetsnivåerna. Studera ställningen tills tiden tar slut eller du trycker på Klar. Sedan töms brädet: välj pjäser i paletten och tryck på rutorna där de stod. Tryck på Skicka in för att se din träffsäkerhet, vilka pjäser du placerade rätt och fel och hur lång tid det tog."
         },
         {
           "question": "Kan nybörjare spela Memory Chess?",
@@ -260,7 +260,8 @@
             "chain": "Bondekedja",
             "blocked": "Blockerat"
           }
-        }
+        },
+        "dailyLink": "Eller spela <link>dagens bräde</link>, samma ställning för alla spelare."
       },
       "notebook": {
         "title": "Det du aldrig mäter kan du inte förbättra.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Memory Chess topplista",
-      "description": "Se de bästa Memory Chess-spelarna efter svårighetsgrad, träffsäkerhet, memoreringstempo och lösningstid.",
+      "description": "Se de bästa Memory Chess-spelarna på dagens bräde och fyra svårighetsnivåer, rankade efter ihågkomna pjäser, misstag, studietid och lösningstid.",
       "socialTitle": "Memory Chess topplista",
       "socialDescription": "Se hur spelare rankas i minnes- och visualiseringsutmaningarna."
     },

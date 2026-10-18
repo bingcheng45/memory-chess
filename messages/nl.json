@@ -80,8 +80,8 @@
           "answer": "Memory Chess is een gratis geheugenspel op het schaakbord. Je bestudeert een stelling korte tijd, bouwt die uit je hoofd weer op en krijgt een score op basis van hoeveel stukken je goed hebt neergezet."
         },
         {
-          "question": "Hoe speel ik het?",
-          "answer": "Kies hoeveel stukken je wilt en hoe lang je het bord wilt bestuderen. Zodra de stelling verdwijnt, zet je de stukken terug op de velden die je je herinnert. Verstuur je antwoord om je nauwkeurigheid en tijd te zien."
+          "question": "Hoe speel je Memory Chess?",
+          "answer": "Elke ronde heeft drie stappen. Kies hoeveel stukken je te zien krijgt en hoeveel seconden je hebt om te kijken, of start een van de moeilijkheidsgraden. Bestudeer de stelling tot de tijd om is of tot je op Klaar tikt. Daarna wordt het bord leeggemaakt: kies stukken uit het palet en tik op de velden waar ze stonden. Tik op Verstuur om je nauwkeurigheid te zien, welke stukken je goed en fout hebt gezet en hoe lang je erover deed."
         },
         {
           "question": "Kunnen beginners Memory Chess spelen?",
@@ -260,7 +260,8 @@
             "chain": "Pionnenketen",
             "blocked": "Geblokkeerd"
           }
-        }
+        },
+        "dailyLink": "Of speel <link>het bord van de dag</link>, dezelfde stelling voor iedereen."
       },
       "notebook": {
         "title": "Wat je nooit meet, kun je niet verbeteren.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Memory Chess-ranglijst",
-      "description": "Bekijk de beste Memory Chess-spelers op moeilijkheidsgraad, nauwkeurigheid, kijksnelheid en oplostijd.",
+      "description": "Bekijk de beste Memory Chess-spelers op het bord van de dag en vier moeilijkheidsgraden, gerangschikt op onthouden stukken, fouten, kijktijd en oplostijd.",
       "socialTitle": "Memory Chess-ranglijst",
       "socialDescription": "Zie hoe spelers scoren in de geheugen- en visualisatie-uitdagingen."
     },

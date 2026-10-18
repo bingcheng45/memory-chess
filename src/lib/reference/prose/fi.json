@@ -1,9 +1,9 @@
 {
   "game": {
-    "title": "Näin Memory Chess toimii",
+    "title": "Näin pelaat Memory Chessiä",
     "intro": "Jokainen kierros koostuu samoista kolmesta vaiheesta.",
     "phases": {
-      "heading": "Kierroksen kolme vaihetta",
+      "heading": "Memory Chessin säännöt: kierroksen kolme vaihetta",
       "memorize": {
         "title": "Mieleenpainaminen",
         "body": "Asema ilmestyy koko laudalle määrätyksi sekuntimääräksi. Mikään ei liiku eikä mitään piiloteta. Voit päättää vaiheen etuajassa Valmis-painikkeella, ja kello kirjaa sen, kuinka kauan oikeasti katsoit, ei sitä aikaa, joka sinulle annettiin."

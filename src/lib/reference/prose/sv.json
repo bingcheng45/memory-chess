@@ -1,9 +1,9 @@
 {
   "game": {
-    "title": "Så fungerar Memory Chess",
+    "title": "Så spelar du Memory Chess",
     "intro": "Varje omgång följer samma tre steg.",
     "phases": {
-      "heading": "Omgångens tre faser",
+      "heading": "Regler för Memory Chess: omgångens tre faser",
       "memorize": {
         "title": "Memorera",
         "body": "En ställning visas på ett fullt bräde under ett bestämt antal sekunder. Inget rör sig och inget är dolt. Du kan avsluta fasen i förtid med Klar, och klockan registrerar hur länge du faktiskt tittade, inte hur lång tid du fick."

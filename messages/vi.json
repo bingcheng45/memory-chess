@@ -80,8 +80,8 @@
           "answer": "Memory Chess là trò chơi ghi nhớ bàn cờ miễn phí. Bạn quan sát một thế cờ trong thời gian ngắn, dựng lại nó từ trí nhớ và nhận điểm dựa trên số quân đặt đúng."
         },
         {
-          "question": "Chơi như thế nào?",
-          "answer": "Chọn số quân cờ và thời gian bạn muốn quan sát bàn cờ. Khi thế cờ biến mất, hãy đặt các quân về những ô bạn còn nhớ. Gửi đáp án để xem độ chính xác và thời gian."
+          "question": "Cách chơi Memory Chess như thế nào?",
+          "answer": "Mỗi ván gồm ba bước. Chọn số quân cờ hiển thị và số giây để quan sát, hoặc bắt đầu một mức độ khó có sẵn. Quan sát thế cờ cho đến khi hết giờ hoặc khi bạn nhấn Xong. Sau đó bàn cờ được xóa trắng: chọn quân từ bảng quân cờ và chạm vào những ô chúng từng đứng. Nhấn Gửi để xem độ chính xác, những quân bạn đặt đúng và sai, cùng thời gian bạn đã dùng."
         },
         {
           "question": "Người mới có chơi Memory Chess được không?",
@@ -260,7 +260,8 @@
             "chain": "Chuỗi tốt",
             "blocked": "Bị chặn"
           }
-        }
+        },
+        "dailyLink": "Hoặc chơi <link>bàn cờ hôm nay</link>, cùng một thế cờ cho mọi người chơi."
       },
       "notebook": {
         "title": "Không đo thì không thể tiến bộ.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Bảng xếp hạng Memory Chess",
-      "description": "Xem những người chơi Memory Chess giỏi nhất theo độ khó, độ chính xác, tốc độ ghi nhớ và thời gian hoàn thành.",
+      "description": "Xem những người chơi Memory Chess giỏi nhất trên bàn cờ hôm nay và bốn mức độ khó, xếp theo số quân nhớ được, số lỗi, thời gian quan sát và thời gian giải.",
       "socialTitle": "Bảng xếp hạng Memory Chess",
       "socialDescription": "Xem thứ hạng của người chơi trong các thử thách ghi nhớ và hình dung."
     },

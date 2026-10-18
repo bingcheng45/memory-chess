@@ -80,8 +80,8 @@
           "answer": "Memory Chess is a free board-memory game. You study a chess position for a short time, rebuild it from memory, and get a score based on how many pieces you placed correctly."
         },
         {
-          "question": "How do I play?",
-          "answer": "Choose how many pieces you want and how long you want to study the board. When the position disappears, place the pieces back on the squares you remember. Submit your answer to see your accuracy and time."
+          "question": "How do you play Memory Chess?",
+          "answer": "Each round has three steps. Pick how many pieces to show and how many seconds to study, or start a preset. Study the position until the time runs out or you press Done. The board then clears: choose pieces from the palette and tap the squares where they stood. Submit to see your accuracy, the pieces you placed right and wrong, and how long you took."
         },
         {
           "question": "Can beginners play Memory Chess?",
@@ -260,7 +260,8 @@
             "chain": "Pawn chain",
             "blocked": "Blocked"
           }
-        }
+        },
+        "dailyLink": "Or play <link>today's daily board</link>, the same position for every player."
       },
       "notebook": {
         "title": "You can't improve what you never measure.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Memory Chess Leaderboard",
-      "description": "View top Memory Chess players by difficulty, accuracy, memorization speed, and solution time.",
+      "description": "See the top Memory Chess players on today's daily board and four difficulty levels, ranked by pieces recalled, mistakes, study time and solve time.",
       "socialTitle": "Memory Chess Leaderboard",
       "socialDescription": "See how players rank in memory-based chess visualization challenges."
     },

@@ -1,9 +1,9 @@
 {
   "game": {
-    "title": "Sådan fungerer Memory Chess",
+    "title": "Sådan spiller du Memory Chess",
     "intro": "Hver runde består af de samme tre trin.",
     "phases": {
-      "heading": "Rundens tre faser",
+      "heading": "Regler for Memory Chess: rundens tre faser",
       "memorize": {
         "title": "Husk",
         "body": "En stilling vises på et fuldt bræt i et fast antal sekunder. Intet flytter sig, og intet er skjult. Du kan afslutte fasen før tid med Færdig, og uret registrerer, hvor længe du faktisk kiggede, ikke hvor lang tid du fik."

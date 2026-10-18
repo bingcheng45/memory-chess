@@ -80,8 +80,8 @@
           "answer": "Memory Chess es un juego gratuito de memoria sobre el tablero. Estudias una posición de ajedrez durante un breve tiempo, la reconstruyes de memoria y recibes una puntuación según cuántas piezas hayas colocado bien."
         },
         {
-          "question": "¿Cómo se juega?",
-          "answer": "Elige cuántas piezas quieres y cuánto tiempo quieres estudiar el tablero. Cuando la posición desaparezca, vuelve a colocar las piezas en las casillas que recuerdes. Envía tu respuesta para ver tu precisión y tu tiempo."
+          "question": "¿Cómo se juega a Memory Chess?",
+          "answer": "Cada ronda tiene tres pasos. Elige cuántas piezas mostrar y cuántos segundos estudiar, o empieza con un nivel predefinido. Estudia la posición hasta que se acabe el tiempo o pulses Listo. Después el tablero se vacía: elige piezas de la paleta y toca las casillas donde estaban. Pulsa Enviar para ver tu precisión, las piezas que colocaste bien y mal, y cuánto tardaste."
         },
         {
           "question": "¿Pueden los principiantes jugar a Memory Chess?",
@@ -260,7 +260,8 @@
             "chain": "Cadena de peones",
             "blocked": "Bloqueado"
           }
-        }
+        },
+        "dailyLink": "O juega <link>el tablero del día</link>, la misma posición para todo el mundo."
       },
       "notebook": {
         "title": "No puedes mejorar lo que nunca mides.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Clasificación de Memory Chess",
-      "description": "Consulta a los mejores jugadores de Memory Chess por dificultad, precisión, velocidad de memorización y tiempo de resolución.",
+      "description": "Consulta la clasificación de Memory Chess en el tablero del día y cuatro niveles, por piezas recordadas, errores, tiempo de estudio y de resolución.",
       "socialTitle": "Clasificación de Memory Chess",
       "socialDescription": "Mira cómo se clasifican los jugadores en los retos de visualización y memoria."
     },

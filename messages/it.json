@@ -80,8 +80,8 @@
           "answer": "Memory Chess è un gioco di memoria gratuito sulla scacchiera. Studi una posizione per un breve momento, la ricostruisci a memoria e ricevi un punteggio in base a quanti pezzi hai messo al posto giusto."
         },
         {
-          "question": "Come si gioca?",
-          "answer": "Scegli quanti pezzi vuoi e quanto tempo dedicare allo studio della scacchiera. Quando la posizione scompare, rimetti i pezzi sulle case che ricordi. Invia la risposta per vedere precisione e tempo."
+          "question": "Come si gioca a Memory Chess?",
+          "answer": "Ogni turno ha tre fasi. Scegli quanti pezzi mostrare e quanti secondi avere per studiarli, oppure avvia un livello predefinito. Studia la posizione finché il tempo non scade o finché non premi Fatto. Poi la scacchiera si svuota: scegli i pezzi dalla tavolozza e tocca le case dove si trovavano. Premi Invia per vedere la tua precisione, i pezzi messi bene e male e quanto tempo hai impiegato."
         },
         {
           "question": "I principianti possono giocare a Memory Chess?",
@@ -260,7 +260,8 @@
             "chain": "Catena di pedoni",
             "blocked": "Bloccato"
           }
-        }
+        },
+        "dailyLink": "Oppure gioca <link>la scacchiera del giorno</link>, la stessa posizione per tutti."
       },
       "notebook": {
         "title": "Non puoi migliorare ciò che non misuri mai.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Classifica di Memory Chess",
-      "description": "Guarda i migliori giocatori di Memory Chess per difficoltà, precisione, velocità di memorizzazione e tempo di risoluzione.",
+      "description": "Scopri la classifica di Memory Chess sulla scacchiera del giorno e quattro livelli, per pezzi ricordati, errori, tempo di studio e di soluzione.",
       "socialTitle": "Classifica di Memory Chess",
       "socialDescription": "Scopri come si posizionano i giocatori nelle sfide di memoria e visualizzazione."
     },

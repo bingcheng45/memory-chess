@@ -80,8 +80,8 @@
           "answer": "A Memory Chess egy ingyenes memóriajáték a sakktáblán. Rövid ideig tanulmányozol egy állást, emlékezetből felépíted, és aszerint kapsz pontot, hány bábut tettél a helyére."
         },
         {
-          "question": "Hogyan kell játszani?",
-          "answer": "Válaszd ki, hány bábut szeretnél, és mennyi ideig néznéd a táblát. Amikor az állás eltűnik, tedd vissza a bábukat azokra a mezőkre, amelyekre emlékszel. Küldd be a megoldást, és látod a pontosságot meg az időt."
+          "question": "Hogyan kell játszani a Memory Chesst?",
+          "answer": "Minden kör három lépésből áll. Válaszd ki, hány bábu jelenjen meg és hány másodperced legyen a tanulmányozásra, vagy indíts el egy nehézségi szintet. Tanulmányozd az állást, amíg le nem jár az idő, vagy amíg meg nem nyomod a Kész gombot. Ezután a tábla kiürül: válassz bábukat a palettáról, és koppints azokra a mezőkre, ahol álltak. Nyomd meg a Beküldés gombot, és láthatod a pontosságodat, a jól és rosszul elhelyezett bábukat, valamint azt, mennyi ideig tartott."
         },
         {
           "question": "Játszhatják kezdők is a Memory Chesst?",
@@ -260,7 +260,8 @@
             "chain": "Gyaloglánc",
             "blocked": "Blokkolva"
           }
-        }
+        },
+        "dailyLink": "Vagy játszd <link>a mai napi táblát</link>, ahol mindenki ugyanazt az állást kapja."
       },
       "notebook": {
         "title": "Amit sosem mérsz, azon nem tudsz javítani.",
@@ -1173,7 +1174,7 @@
   "leaderboard": {
     "meta": {
       "title": "Memory Chess ranglista",
-      "description": "Nézd meg a legjobb Memory Chess játékosokat nehézség, pontosság, memorizálási tempó és megoldási idő szerint.",
+      "description": "Nézd meg a legjobb Memory Chess játékosokat a mai napi táblán és négy nehézségi szinten, felidézett bábuk, hibák, tanulmányozási és megoldási idő szerint.",
       "socialTitle": "Memory Chess ranglista",
       "socialDescription": "Nézd meg, hogyan állnak a játékosok a memória- és vizualizációs feladatokban."
     },

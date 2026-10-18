@@ -1,9 +1,9 @@
 {
   "game": {
-    "title": "Cara kerja Memory Chess",
+    "title": "Cara bermain Memory Chess",
     "intro": "Setiap ronde mengikuti tiga langkah yang sama.",
     "phases": {
-      "heading": "Tiga fase dalam satu ronde",
+      "heading": "Aturan Memory Chess: tiga fase dalam satu ronde",
       "memorize": {
         "title": "Menghafal",
         "body": "Sebuah posisi muncul di papan penuh selama jumlah detik yang tetap. Tidak ada yang bergerak dan tidak ada yang disembunyikan. Anda bisa mengakhiri fase ini lebih awal dengan Selesai, dan waktu yang dicatat adalah waktu yang benar-benar Anda gunakan untuk melihat, bukan waktu yang diberikan."

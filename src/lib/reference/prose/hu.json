@@ -1,9 +1,9 @@
 {
   "game": {
-    "title": "Hogyan működik a Memory Chess",
+    "title": "Hogyan kell játszani a Memory Chesst",
     "intro": "Minden kör ugyanazt a három lépést követi.",
     "phases": {
-      "heading": "A kör három szakasza",
+      "heading": "A Memory Chess szabályai: a kör három szakasza",
       "memorize": {
         "title": "Megjegyzés",
         "body": "Egy állás jelenik meg a teljes táblán, egy rögzített másodpercig. Semmi sem mozdul, és semmi sincs elrejtve. A szakaszt korábban is befejezheted a Kész gombbal, és az óra azt rögzíti, mennyi ideig néztél ténylegesen, nem azt, mennyi időt kaptál."

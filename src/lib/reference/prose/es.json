@@ -1,9 +1,9 @@
 {
   "game": {
-    "title": "Cómo funciona Memory Chess",
+    "title": "Cómo jugar a Memory Chess",
     "intro": "Cada ronda sigue los mismos tres pasos.",
     "phases": {
-      "heading": "Las tres fases de una ronda",
+      "heading": "Reglas de Memory Chess: las tres fases de una ronda",
       "memorize": {
         "title": "Memorización",
         "body": "Una posición aparece en un tablero completo durante un número fijo de segundos. Nada se mueve y nada está oculto. Puedes terminar la fase antes de tiempo con el botón Listo, y el reloj registra cuánto miraste en realidad, no el tiempo que se te dio."

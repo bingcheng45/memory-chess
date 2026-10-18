@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "chess-memory-training",
-    title: "Chess Memory Training: A Scored 6-to-12 Piece Ladder",
+    title: "Chess Memory Training: A 6-to-12 Piece Ladder",
     h1: "Chess memory training with a score that tells you when to move up",
     description: "Chess memory training you can score. Rebuild boards from 6 pieces to 12, with a clear rule for when to add pieces and what each result message means.",
     group: "memory",

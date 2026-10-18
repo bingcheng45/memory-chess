@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "blindfold-chess-training-for-beginners",
-    title: "How to Learn Blindfold Chess: A 4-Stage Training Plan",
+    title: "How to Learn Blindfold Chess: 4-Stage Training",
     h1: "How to learn blindfold chess in four stages, each with a pass mark",
     description: "Blindfold chess training in four stages, from two kings held without a board to a full game. Each stage has a pass mark that tells you when to move on.",
     group: "visualization",

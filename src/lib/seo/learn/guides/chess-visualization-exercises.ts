@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "chess-visualization-exercises",
-    title: "Chess Visualization Training: See the Board in Your Head",
+    title: "Chess Visualization Training: See the Board",
     h1: "Chess visualization exercises that find and fix your weak spot",
     description: "Chess visualization exercises built on a four-minute test that shows whether pieces vanish, drift or change identity, and a cover-and-move drill to fix it.",
     group: "visualization",

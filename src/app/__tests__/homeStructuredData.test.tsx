@@ -81,6 +81,26 @@ describe("home page structured data", () => {
     expect(types.filter((type) => type === "WebSite")).toHaveLength(1);
   });
 
+  it("describes the tutorial video with its YouTube title, thumbnail, upload date and embed URL", async () => {
+    const { container } = await renderHome();
+    const video = brandGraph(container).find((node) => node["@type"] === "VideoObject");
+
+    expect(video).toEqual({
+      "@type": "VideoObject",
+      "@id": "https://thememorychess.com/#tutorial-video",
+      name: "How to Train Yourself to Visualize Anything (6 Simple Tips & Habits)",
+      description:
+        "Colin Galen explains why mental imagery helps you play out chess moves and solve problems in your head, and shares six tips and habits for getting better at it.",
+      thumbnailUrl: "https://i.ytimg.com/vi/p4xFVJTyJZg/hqdefault.jpg",
+      uploadDate: "2023-02-13T23:00:03-08:00",
+      duration: "PT10M34S",
+      embedUrl: "https://www.youtube.com/embed/p4xFVJTyJZg",
+      inLanguage: "en",
+      creator: { "@type": "Person", name: "Colin Galen", url: "https://www.youtube.com/@ColinGalen" },
+    });
+    expect(container.querySelector("iframe")?.getAttribute("src")).toMatch(/^https:\/\/www\.youtube\.com\/embed\/p4xFVJTyJZg\?/);
+  });
+
   it("keeps the FAQ structured data as a separate script", async () => {
     const { container } = await renderHome();
     const scripts = jsonLdScripts(container);

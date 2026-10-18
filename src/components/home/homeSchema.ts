@@ -1,5 +1,6 @@
 import { BRAND_ORGANIZATION, BRAND_WEBSITE, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/brand";
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
+import { TUTORIAL_VIDEO } from "@/components/ui/tutorialVideo";
 
 /**
  * No aggregateRating, because the site has no rating data and an invented one breaks Google's policy.
@@ -24,6 +25,12 @@ export function homeSchema(locale: string, description: string) {
         publisher: { "@id": ORGANIZATION_ID },
         isPartOf: { "@id": WEBSITE_ID },
         description,
+      },
+      {
+        "@type": "VideoObject",
+        "@id": `${localizedUrl("/", "en")}/#tutorial-video`,
+        ...TUTORIAL_VIDEO,
+        inLanguage: "en",
       },
     ],
   };

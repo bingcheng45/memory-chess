@@ -2,6 +2,7 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import { TUTORIAL_VIDEO } from "./tutorialVideo";
 
 /** The tutorial video's player, with its YouTube engagement events. Shared by the homepage video sections. */
 export default function TutorialVideoFrame({ className }: { className?: string }) {
@@ -248,7 +249,7 @@ export default function TutorialVideoFrame({ className }: { className?: string }
     <iframe
       ref={iframeRef}
       className={className}
-      src="https://www.youtube.com/embed/p4xFVJTyJZg?enablejsapi=1&origin=https://thememorychess.com&playsinline=1&modestbranding=1&rel=0&controls=1"
+      src={`${TUTORIAL_VIDEO.embedUrl}?enablejsapi=1&origin=https://thememorychess.com&playsinline=1&modestbranding=1&rel=0&controls=1`}
       title={t("iframeTitle")}
       frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

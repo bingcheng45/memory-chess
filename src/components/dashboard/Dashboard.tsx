@@ -84,7 +84,15 @@ function useLate(ready: boolean): Late | null {
     };
   }, [ready, late]);
   useEffect(() => {
-    if (late && fragment.current && !playerMoved.current) document.getElementById(fragment.current)?.scrollIntoView();
+    const id = fragment.current;
+    if (!late || !id) return;
+    // A frame of its own for the scroll: Chrome reads a scroll painted with a layout change as a shift.
+    let frame = requestAnimationFrame(() => {
+      frame = requestAnimationFrame(() => {
+        if (!playerMoved.current) document.getElementById(id)?.scrollIntoView();
+      });
+    });
+    return () => cancelAnimationFrame(frame);
   }, [late]);
   return late;
 }

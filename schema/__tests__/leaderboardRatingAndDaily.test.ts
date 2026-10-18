@@ -3,12 +3,12 @@
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { startPostgres, type Database, type Postgres, type SqlResult } from "./database";
+import { TABLE_BEFORE_0006 } from "./leaderboardWriteLockdownDatabase";
 
 const readSql = (file: string) => readFileSync(path.join(__dirname, "..", file), "utf8");
 const MIGRATION = readSql("migrations/0004_leaderboard_rating_and_daily.sql");
 const ROLLBACK = readSql("migrations/0004_leaderboard_rating_and_daily_rollback.sql");
 const RUNBOOK = readFileSync(path.join(__dirname, "..", "..", "docs/migrations/2026-10-leaderboard-rating-and-daily.md"), "utf8");
-const SCHEMA = readSql("leaderboard_schema.sql").replace("uuid_generate_v4()", "gen_random_uuid()");
 
 const BEFORE_0004 = `
   CREATE TABLE leaderboard_entries (
@@ -150,11 +150,11 @@ describe("0004 leaderboard rating and daily", () => {
     ]);
   });
 
-  it("leaves the table exactly as leaderboard_schema.sql describes it", async () => {
+  it("leaves the table exactly as the 0006 rehearsal starts from", async () => {
     const migrated = await before0004();
     await migrated.rows(MIGRATION);
     const fromSchema = await postgres.open();
-    await fromSchema.rows(SCHEMA);
+    await fromSchema.rows(TABLE_BEFORE_0006);
 
     expect(await fromSchema.rows(SHAPE)).toEqual(await migrated.rows(SHAPE));
   });

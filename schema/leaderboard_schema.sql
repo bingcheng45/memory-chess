@@ -1,7 +1,7 @@
 -- Leaderboard database schema for Memory Chess
 --
 -- This describes leaderboard_entries as it stands after
--- schema/migrations/0004_leaderboard_rating_and_daily.sql. The column list and its
+-- schema/migrations/0006_leaderboard_write_lockdown.sql. The column list and its
 -- order were taken from the live table, not from an earlier copy of this file:
 -- an older version omitted total_wrong_pieces for as long as that column had
 -- existed in production.
@@ -63,9 +63,29 @@ ALTER TABLE leaderboard_entries
   ADD CONSTRAINT check_daily_day_recent
   CHECK (daily_day IS NULL OR daily_day BETWEEN (created_at AT TIME ZONE 'UTC')::date - 1 AND (created_at AT TIME ZONE 'UTC')::date);
 
--- The anon key can insert past the API route and send its own created_at,
--- NULL included, which would bypass check_daily_day_recent. A daily row always
--- takes the database's clock.
+-- Added by 0006. Production holds these three NOT VALID, so rows stored
+-- before 0006 may break them. Here they are plain, since a rebuilt table
+-- starts empty.
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_board_piece_count
+  CHECK (
+    difficulty = 'daily'
+    OR (difficulty = 'easy' AND piece_count = 2)
+    OR (difficulty = 'medium' AND piece_count = 6)
+    OR (difficulty = 'hard' AND piece_count = 12)
+    OR (difficulty = 'grandmaster' AND piece_count = 20)
+  );
+
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_solution_time_per_piece
+  CHECK (solution_time >= piece_count * 0.25);
+
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_memorize_time_longest
+  CHECK (memorize_time <= 60);
+
+-- An insert could send its own created_at, NULL included, which would bypass
+-- check_daily_day_recent. A daily row always takes the database's clock.
 CREATE FUNCTION leaderboard_daily_created_at() RETURNS trigger
 LANGUAGE plpgsql
 SET search_path = ''
@@ -99,3 +119,16 @@ CREATE INDEX idx_leaderboard_daily_ranking ON leaderboard_entries (
   memorize_time ASC,
   solution_time ASC
 ) WHERE difficulty = 'daily';
+
+-- Anyone may read the board. Only the server writes it, with the service_role
+-- key, which bypasses row level security. Row level security does not gate
+-- TRUNCATE, so the grants carry the rule.
+ALTER TABLE leaderboard_entries ENABLE ROW LEVEL SECURITY;
+
+CREATE POLICY "Allow public read"
+  ON leaderboard_entries
+  FOR SELECT
+  USING (true);
+
+REVOKE ALL ON leaderboard_entries FROM anon, authenticated;
+GRANT SELECT ON leaderboard_entries TO anon, authenticated;

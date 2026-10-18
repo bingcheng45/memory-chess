@@ -43,14 +43,14 @@ function serviceKeyProblem(key) {
 
 const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY || '';
 const leaderboardServiceKeyProblem = serviceKeyProblem(serviceKey);
-const leaderboardServiceClient =
+export const serviceRoleWriter =
   supabaseWriter && !leaderboardServiceKeyProblem
     ? createClient(supabaseUrl, serviceKey, { auth: { persistSession: false } })
     : null;
 let reportedAnonLeaderboardWriter = false;
 
 export function leaderboardWriter() {
-  if (leaderboardServiceClient || !supabaseWriter) return leaderboardServiceClient;
+  if (serviceRoleWriter || !supabaseWriter) return serviceRoleWriter;
   if (!reportedAnonLeaderboardWriter) {
     reportedAnonLeaderboardWriter = true;
     const message = `SUPABASE_SERVICE_ROLE_KEY ${leaderboardServiceKeyProblem}, so leaderboard scores are written with the anon key. Migration 0006 refuses those writes.`;

@@ -26,10 +26,10 @@
  *
  *   npm run lab:cls-game -- --base http://localhost:3131 --out <dir> [--only <locale>] [--late-cutoffs]
  */
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { round, sessionWindowCls } from "./cls.mjs";
+import { exitCodeOf, measured, round, sessionWindowCls } from "./cls.mjs";
 import { argsOf, runPersona } from "./drive.mjs";
 
 const MAX_CLS = 0.02;
@@ -144,15 +144,13 @@ const fitError = ({ board, areaWidth, areaHeight }) =>
 
 async function playRound(page, base, prefix, text) {
   await page.goto(`${base}${prefix}${ROUND_PATH}`);
-  await page.waitFor(`document.querySelectorAll("[data-coordinate]").length === 64`, 20_000);
-  const intro = await page.eval(`!!document.querySelector(${JSON.stringify(GATE_START)})`);
-  if (intro) {
-    await page.waitFor(`!document.querySelector(${JSON.stringify(GATE_START)})?.disabled`, 10_000);
-    await page.eval("document.fonts.ready.then(() => true)");
-    await page.sleep(SETTLE_MS);
-    await page.click(GATE_START);
-    await page.waitFor(`!document.querySelector(".round-gate")`, 10_000);
-  }
+  const phase = await page.waitFor(`document.querySelectorAll("[data-coordinate]").length === 64 && document.querySelector("[data-round-phase]").dataset.roundPhase`, 20_000);
+  if (phase !== "ready") throw new Error(`harness: the round opened in "${phase}", not behind the intro, because the page's read of the record outlasted its limit`);
+  await page.waitFor(`!document.querySelector(${JSON.stringify(GATE_START)})?.disabled`, 10_000);
+  await page.eval("document.fonts.ready.then(() => true)");
+  await page.sleep(SETTLE_MS);
+  await page.click(GATE_START);
+  await page.waitFor(`!document.querySelector(".round-gate")`, 10_000);
   const memorizeFit = await page.eval(BOARD_FIT);
   const cells = await page.eval(`[...document.querySelectorAll("[data-coordinate]")].map((el) => ({ square: el.dataset.coordinate, label: el.getAttribute("aria-label") || "" }))`);
   const pieces = cells.filter((p) => p.label !== text.empty(p.square));
@@ -168,7 +166,7 @@ async function playRound(page, base, prefix, text) {
   }
   await page.clickText("button", text.submit);
   await page.waitFor(`!!document.getElementById("game-result-heading")`, 20_000);
-  return { pieces: pieces.length, intro, fit: { memorize: memorizeFit, solve: solveFit } };
+  return { pieces: pieces.length, fit: { memorize: memorizeFit, solve: solveFit } };
 }
 
 async function freshBoard(page, url, size) {
@@ -222,7 +220,7 @@ async function measureViewport(page, base, { prefix, lateCutoffs }, text, { widt
   let resultShown;
   const shown = new Promise((resolve) => (resultShown = resolve));
   if (lateCutoffs) cutoffs.release = () => shown.then(() => page.sleep(LATE_CUTOFFS_MS));
-  const { pieces, intro, fit } = await playRound(page, base, prefix, text);
+  const { pieces, fit } = await playRound(page, base, prefix, text);
   resultShown();
   await page.sleep(SETTLE_MS);
   const roundShifts = await page.eval("window.__shifts");
@@ -232,7 +230,7 @@ async function measureViewport(page, base, { prefix, lateCutoffs }, text, { widt
 
   const resize = width === RESIZE_FROM.width && height === RESIZE_FROM.height ? await resizeMidRound(page, base, prefix) : null;
 
-  return { width, height, pieces, intro, banner, labCard, overflow, fit, resize, screens: screensOf([...start, ...roundShifts]) };
+  return { width, height, pieces, banner, labCard, overflow, fit, resize, screens: screensOf([...start, ...roundShifts]) };
 }
 
 function boardErrors({ width, height, fit, resize }) {
@@ -262,7 +260,6 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
   const result = await measureViewport(page, baseUrl, testCase, labels(testCase.prefix.slice(1) || "en"), size, cutoffs);
   writeFileSync(join(evidenceDir, RESULT_FILE), JSON.stringify(result, null, 2));
   if (!result.banner) throw new Error("the qualifying banner never showed, so its arrival was not measured");
-  if (!result.intro) throw new Error("the first round's intro never showed, so its screen was not measured");
   if (testCase.lateCutoffs) return clsByScreen(result);
   const misfit = boardErrors(result);
   if (misfit.length > 0) throw new Error(`board does not fit its area: ${misfit.join("; ")}`);
@@ -274,26 +271,31 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
 async function main() {
   const args = argsOf(process.argv.slice(2), ".lab-drive/cls-game", "http://localhost:3131");
   const table = {};
-  let ok = true;
+  const verdicts = [];
   const lateCutoffs = process.argv.includes("--late-cutoffs");
   for (const testCase of CASES.filter(({ name }) => !args.only || name === args.only).map((testCase) => ({ ...testCase, lateCutoffs }))) {
     table[testCase.name] = {};
     for (const size of VIEWPORTS) {
-      process.env[CASE_ENV] = JSON.stringify({ testCase, viewport: size });
-      const run = await runPersona(join(testCase.name, size.name), "", args, import.meta.url);
-      ok &&= run.ok;
       const file = join(args.out, testCase.name, size.name, RESULT_FILE);
+      process.env[CASE_ENV] = JSON.stringify({ testCase, viewport: size });
+      const run = await measured(() => {
+        rmSync(file, { force: true });
+        return runPersona(join(testCase.name, size.name), "", args, import.meta.url);
+      });
+      verdicts.push(run.verdict);
       const result = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : null;
       table[testCase.name][size.name] = result && clsByScreen(result);
-      const verdict = lateCutoffs ? (run.ok ? "DIAGNOSTIC" : "ERROR") : run.ok ? "PASS" : "FAIL";
-      console.log(`${verdict} ${testCase.name} ${size.name}: ${run.ok ? JSON.stringify(table[testCase.name][size.name]) : run.log}`);
+      const verdict = lateCutoffs && run.ok ? "DIAGNOSTIC" : run.verdict;
+      const tries = run.tries > 1 ? ` (try ${run.tries})` : "";
+      console.log(`${verdict} ${testCase.name} ${size.name}${tries}: ${run.ok ? JSON.stringify(table[testCase.name][size.name]) : run.log}`);
       if (result?.fit) console.log(`  board ${JSON.stringify(result.fit)}`);
       if (result?.resize) console.log(`  resize ${JSON.stringify({ freshTurned: result.resize.freshTurned, before: result.resize.before, turned: result.resize.turned, back: result.resize.back })}`);
       if (result?.resize?.followErrors.length && !BOARD_FOLLOWS_RESIZE_GATED) console.log(`KNOWN ISSUE ${testCase.name} ${size.name}: the board does not follow a mid round resize, ${result.resize.followErrors.join("; ")}`);
     }
   }
   writeFileSync(join(args.out, "table.json"), JSON.stringify(table, null, 2));
-  process.exit(ok ? 0 : 1);
+  console.log(`${verdicts.filter((verdict) => verdict === "FAIL").length} FAIL, ${verdicts.filter((verdict) => verdict === "ERROR").length} ERROR (a page or the harness timed out on every try)`);
+  process.exit(exitCodeOf(verdicts));
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();

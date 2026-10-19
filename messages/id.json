@@ -1367,6 +1367,24 @@
     "notSet": "Belum diatur.",
     "needs": "Terbuka setelah {need}.",
     "needsAt": "Terbuka setelah {need} dengan {pieceCount} bidak, {memorizeSeconds} dtk.",
+    "unlocks": {
+      "title": "Berikutnya terbuka",
+      "plain": "{need}",
+      "at": "{need} dengan {pieceCount} bidak, {memorizeSeconds} dtk",
+      "showAll": "Tampilkan semua {count}",
+      "showFewer": "Tampilkan lebih sedikit"
+    },
+    "backup": {
+      "title": "Simpan salinan catatanmu",
+      "never": "{rounds, plural, other {# rondemu}} hanya tersimpan di browser ini, yang bisa menghapus data untuk mengosongkan ruang. Salinan yang diunduh menjaga catatanmu tetap aman.",
+      "behind": "{rounds, plural, other {# ronde}} telah dimainkan sejak salinan terakhirmu pada {date}. Browser ini bisa menghapus data tersimpannya untuk mengosongkan ruang, jadi unduh salinan baru.",
+      "download": "Unduh salinan",
+      "later": "Nanti saja",
+      "started": "Unduhan dimulai. Simpan file di tempat selain browser ini.",
+      "capTitle": "Catatanmu sudah penuh",
+      "cap": "Catatanmu menyimpan rincian {cap, number} ronde terbarumu, jadi setiap ronde baru kini menggantikan ronde terlamamu. Total, rekor beruntun, dan rekor terbaikmu tetap menghitung setiap ronde.",
+      "gotIt": "Mengerti"
+    },
     "need": {
       "rounds": "{count, plural, other {# ronde lagi}}",
       "days": "{count, plural, other {# hari bermain lagi}}",

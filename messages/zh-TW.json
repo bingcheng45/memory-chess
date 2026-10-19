@@ -1367,6 +1367,24 @@
     "notSet": "尚未設定。",
     "needs": "再完成{need}即可解鎖。",
     "needsAt": "以 {pieceCount} 子、{memorizeSeconds} 秒再完成{need}即可解鎖。",
+    "unlocks": {
+      "title": "即將解鎖",
+      "plain": "再完成{need}",
+      "at": "以 {pieceCount} 子、{memorizeSeconds} 秒再完成{need}",
+      "showAll": "顯示全部 {count} 項",
+      "showFewer": "收合"
+    },
+    "backup": {
+      "title": "保存一份紀錄副本",
+      "never": "你的 {rounds, plural, other {# 回合}}只儲存在這個瀏覽器中，瀏覽器可能會為了釋放空間而清除資料。下載一份副本就能確保紀錄安全。",
+      "behind": "自你 {date} 的上一份副本以來，又進行了 {rounds, plural, other {# 回合}}。這個瀏覽器可能會為了釋放空間而清除儲存的資料，請下載一份新副本。",
+      "download": "下載副本",
+      "later": "暫時不要",
+      "started": "已開始下載。請把檔案保存在這個瀏覽器以外的地方。",
+      "capTitle": "你的紀錄已滿",
+      "cap": "你的紀錄逐回合保留最新的 {cap, number} 回合，因此現在每個新回合都會取代最早的一個。你的總計、連續紀錄和個人最佳仍會計入每一回合。",
+      "gotIt": "知道了"
+    },
     "need": {
       "rounds": "{count, plural, other {# 回合}}",
       "days": "{count, plural, other {# 天遊玩}}",

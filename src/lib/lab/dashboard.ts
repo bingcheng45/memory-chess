@@ -64,17 +64,14 @@ export type TileState =
   | { readonly state: "warming"; readonly need: Need; readonly rig: Rig | null; readonly href: string | null }
   | { readonly state: "empty"; readonly href: string; readonly cta: "play" | "choose" };
 
-/**
- * The page's figure tiles by where they sit: the lead row a player checks first, the totals and records under it,
- * and the figures of the record's other parts at the foot. The charts and tables between them read the metrics whole.
- */
 export const DASHBOARD_GROUPS = {
+  today: ["streak", "daily"],
   lead: ["rating", "span", "piecesHeld", "speed", "studyTime", "rebuildTime"],
-  summary: ["bestAccuracy", "recentAccuracy", "winStreak", "streak", "rounds", "days"],
-  more: ["daily", "week", "curve", "notebook", "plans", "goal", "board"],
+  summary: ["bestAccuracy", "recentAccuracy", "winStreak", "rounds", "days"],
+  more: ["week", "curve", "notebook", "plans", "goal", "board"],
 } as const;
 
-export const DASHBOARD_TILES = [...DASHBOARD_GROUPS.lead, ...DASHBOARD_GROUPS.summary, ...DASHBOARD_GROUPS.more] as const;
+export const DASHBOARD_TILES = [...DASHBOARD_GROUPS.today, ...DASHBOARD_GROUPS.lead, ...DASHBOARD_GROUPS.summary, ...DASHBOARD_GROUPS.more] as const;
 
 export type DashboardTileId = (typeof DASHBOARD_TILES)[number];
 export type DashboardTile = { readonly id: DashboardTileId } & TileState;
@@ -97,12 +94,13 @@ export const SHARE_TILES = [
   "rounds",
   "days",
 ] as const satisfies readonly (
+  | (typeof DASHBOARD_GROUPS.today)[number]
   | (typeof DASHBOARD_GROUPS.lead)[number]
   | (typeof DASHBOARD_GROUPS.summary)[number]
 )[];
 
 /** Which way of a figure's number is progress. Speed and the two times are seconds, so they improve as they fall. */
-export const BETTER_WHEN: { readonly [K in (typeof DASHBOARD_GROUPS.lead)[number] | (typeof DASHBOARD_GROUPS.summary)[number]]: "higher" | "lower" } = {
+export const BETTER_WHEN: { readonly [K in ShareFigureId]: "higher" | "lower" } = {
   rating: "higher",
   span: "higher",
   piecesHeld: "higher",
@@ -343,4 +341,28 @@ export function shareCardOf(tiles: readonly DashboardTile[], rounds: number): Sh
   const lead = figures.find(({ figure }) => figure.value > 0);
   if (!lead) return null;
   return { figures: [lead, ...figures.filter((candidate) => candidate !== lead)], rounds };
+}
+
+export type LockedTile = DashboardTile & { readonly state: "warming" | "empty" };
+
+const isLocked = (tile: DashboardTile): tile is LockedTile => tile.state === "warming" || tile.state === "empty";
+
+const WHEN = { counted: 0, uncounted: 1, tomorrow: 2, choose: 3 } as const;
+
+/** A warming tile counts what it lacks; an empty one may need a kind of round the record cannot count down to. */
+function distanceOf(tile: LockedTile): { readonly when: number; readonly left: number } {
+  if (tile.state === "empty") return { when: tile.cta === "choose" ? WHEN.choose : WHEN.uncounted, left: 0 };
+  return { when: tile.href === null ? WHEN.tomorrow : WHEN.counted, left: Math.max(...Object.values(tile.need)) };
+}
+
+const TODAY: ReadonlySet<DashboardTileId> = new Set(DASHBOARD_GROUPS.today);
+
+export const drawnTilesOf = (tiles: readonly DashboardTile[]) => tiles.filter((tile) => TODAY.has(tile.id) || !isLocked(tile));
+
+export function unlocksOf(tiles: readonly DashboardTile[]): readonly LockedTile[] {
+  return tiles
+    .filter((tile): tile is LockedTile => !TODAY.has(tile.id) && isLocked(tile))
+    .map((tile, order) => ({ tile, order, distance: distanceOf(tile) }))
+    .sort((a, b) => a.distance.when - b.distance.when || a.distance.left - b.distance.left || a.order - b.order)
+    .map(({ tile }) => tile);
 }

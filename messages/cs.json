@@ -1367,6 +1367,24 @@
     "notSet": "Zatím nenastaveno.",
     "needs": "Odemkne se po {need}.",
     "needsAt": "Odemkne se po {need} při {pieceCount} figurách, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Další na řadě",
+      "plain": "po {need}",
+      "at": "po {need} při {pieceCount} figurách, {memorizeSeconds} s",
+      "showAll": "Zobrazit vše ({count})",
+      "showFewer": "Zobrazit méně"
+    },
+    "backup": {
+      "title": "Uchovej si kopii svého záznamu",
+      "never": "{rounds, plural, one {Tvé # kolo je uložené} few {Tvá # kola jsou uložená} many {Tvého # kola je uloženo} other {Tvých # kol je uloženo}} jen v tomto prohlížeči. Ten může uložená data smazat, aby uvolnil místo. Stažená kopie tvůj záznam ochrání.",
+      "behind": "Od tvé poslední kopie z {date} {rounds, plural, one {přibylo # kolo} few {přibyla # kola} many {přibylo # kola} other {přibylo # kol}}. Tento prohlížeč může uložená data smazat, aby uvolnil místo, tak si stáhni novou kopii.",
+      "download": "Stáhnout kopii",
+      "later": "Teď ne",
+      "started": "Stahování začalo. Ulož soubor jinam než do tohoto prohlížeče.",
+      "capTitle": "Tvůj záznam je plný",
+      "cap": "Tvůj záznam uchovává kolo po kole {cap, number} nejnovějších kol, takže každé nové kolo teď nahradí to nejstarší. Tvé součty, série a rekordy dál počítají všechna kola.",
+      "gotIt": "Rozumím"
+    },
     "need": {
       "rounds": "{count, plural, one {# dalším kole} few {# dalších kolech} many {# dalšího kola} other {# dalších kolech}}",
       "days": "{count, plural, one {# dalším herním dni} few {# dalších herních dnech} many {# dalšího herního dne} other {# dalších herních dnech}}",

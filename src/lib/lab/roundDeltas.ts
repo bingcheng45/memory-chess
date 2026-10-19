@@ -1,10 +1,10 @@
-import { BETTER_WHEN, DASHBOARD_GROUPS, dashboardOf, type DashboardInput, type DashboardTile, type Figure, type GameStanding } from "./dashboard";
+import { BETTER_WHEN, DASHBOARD_GROUPS, dashboardOf, type DashboardInput, type DashboardTile, type DashboardTileId, type Figure, type GameStanding } from "./dashboard";
 import { deriveLab } from "./metrics";
 import type { RoundRecord } from "./record";
 import { removeFromSummary } from "./summary";
 
-/** The dashboard's lead row and totals, in its reading order: the figures one round can move. */
-export const DELTA_FIGURES = [...DASHBOARD_GROUPS.lead, ...DASHBOARD_GROUPS.summary] as const;
+/** The dashboard's lead row, day streak and totals: the figures one round can move. */
+export const DELTA_FIGURES = [...DASHBOARD_GROUPS.lead, "bestAccuracy", "recentAccuracy", "winStreak", "streak", "rounds", "days"] as const satisfies readonly DashboardTileId[];
 
 export type DeltaFigureId = (typeof DELTA_FIGURES)[number];
 

@@ -231,9 +231,9 @@ export function runPersona(name, file, { base, out }, script = import.meta.url) 
 }
 
 /** Refuses the ad and consent requests, which can hold a page's load event past the harness's 20 s timeout. */
-export async function blockAds(page) {
+export async function blockAds(page, extraPatterns = []) {
   await page.send("Network.enable");
-  await page.send("Network.setBlockedURLs", { urls: ["*doubleclick.net*", "*googlesyndication.com*", "*adtrafficquality.google*", "*google.com/recaptcha*", "*fundingchoicesmessages.google.com*"] });
+  await page.send("Network.setBlockedURLs", { urls: ["*doubleclick.net*", "*googlesyndication.com*", "*adtrafficquality.google*", "*google.com/recaptcha*", "*fundingchoicesmessages.google.com*", ...extraPatterns] });
 }
 
 /**

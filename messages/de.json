@@ -1367,6 +1367,24 @@
     "notSet": "Noch nicht festgelegt.",
     "needs": "Wird freigeschaltet mit {need}.",
     "needsAt": "Wird freigeschaltet mit {need} bei {pieceCount} Figuren, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Nächste Freischaltungen",
+      "plain": "mit {need}",
+      "at": "mit {need} bei {pieceCount} Figuren, {memorizeSeconds} s",
+      "showAll": "Alle {count} zeigen",
+      "showFewer": "Weniger zeigen"
+    },
+    "backup": {
+      "title": "Behalte eine Kopie deines Verlaufs",
+      "never": "{rounds, plural, one {Deine # Runde ist} other {Deine # Runden sind}} nur in diesem Browser gespeichert, der Daten löschen kann, um Platz zu schaffen. Eine heruntergeladene Kopie bewahrt deinen Verlauf sicher auf.",
+      "behind": "Seit deiner letzten Kopie am {date} {rounds, plural, one {wurde # Runde} other {wurden # Runden}} gespielt. Dieser Browser kann seine gespeicherten Daten löschen, um Platz zu schaffen, also lade eine neue Kopie herunter.",
+      "download": "Kopie herunterladen",
+      "later": "Jetzt nicht",
+      "started": "Download gestartet. Bewahre die Datei außerhalb dieses Browsers auf.",
+      "capTitle": "Dein Verlauf ist voll",
+      "cap": "Dein Verlauf speichert deine neuesten {cap, number} Runden einzeln, daher ersetzt jede neue Runde jetzt deine älteste. Deine Summen, Serien und Bestwerte zählen weiterhin jede Runde.",
+      "gotIt": "Verstanden"
+    },
     "need": {
       "rounds": "{count, plural, one {# weiteren Runde} other {# weiteren Runden}}",
       "days": "{count, plural, one {# weiteren Spieltag} other {# weiteren Spieltagen}}",

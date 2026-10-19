@@ -1367,6 +1367,24 @@
     "notSet": "Ikke valgt endnu.",
     "needs": "Låses op med {need}.",
     "needsAt": "Låses op med {need} med {pieceCount} brikker, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Næste at låse op",
+      "plain": "{need}",
+      "at": "{need} med {pieceCount} brikker, {memorizeSeconds} s",
+      "showAll": "Vis alle {count}",
+      "showFewer": "Vis færre"
+    },
+    "backup": {
+      "title": "Gem en kopi af din journal",
+      "never": "{rounds, plural, one {Din # runde findes} other {Dine # runder findes}} kun i denne browser, som kan slette data for at frigøre plads. En downloadet kopi holder din journal sikker.",
+      "behind": "{rounds, plural, one {# runde er} other {# runder er}} spillet siden din seneste kopi den {date}. Denne browser kan slette sine gemte data for at frigøre plads, så download en ny kopi.",
+      "download": "Download en kopi",
+      "later": "Ikke nu",
+      "started": "Download startet. Gem filen et andet sted end i denne browser.",
+      "capTitle": "Din journal er fuld",
+      "cap": "Din journal gemmer dine nyeste {cap, number} runder enkeltvis, så hver ny runde erstatter nu din ældste. Dine totaler, serier og rekorder tæller stadig alle runder.",
+      "gotIt": "Forstået"
+    },
     "need": {
       "rounds": "{count, plural, one {# runde mere} other {# runder mere}}",
       "days": "{count, plural, one {# spilledag mere} other {# spilledage mere}}",

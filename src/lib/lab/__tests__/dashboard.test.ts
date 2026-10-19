@@ -1,4 +1,4 @@
-import { dashboardOf, shareCardOf, type DashboardTile, type DashboardTileId, type GameStanding } from "@/lib/lab/dashboard";
+import { dashboardOf, shareCardOf, unlocksOf, type DashboardTile, type DashboardTileId, type GameStanding } from "@/lib/lab/dashboard";
 import { dayDate } from "@/lib/lab/engine";
 import { deriveLab } from "@/lib/lab/metrics";
 import type { RoundInput, RoundRecord } from "@/lib/lab/record";
@@ -79,6 +79,8 @@ describe("dashboardOf", () => {
     const tiles = tilesFor("newVisitor", { today: "" });
 
     expect(tiles.map(({ id, state, ...rest }) => [id, state, "href" in rest ? rest.href : null])).toEqual([
+      ["streak", "empty", QUICK],
+      ["daily", "empty", "/game?pieceCount=7&memorizeTime=9&source=daily"],
       ["rating", "empty", QUICK],
       ["span", "empty", QUICK],
       ["piecesHeld", "empty", QUICK],
@@ -88,10 +90,8 @@ describe("dashboardOf", () => {
       ["bestAccuracy", "empty", QUICK],
       ["recentAccuracy", "empty", QUICK],
       ["winStreak", "empty", QUICK],
-      ["streak", "empty", QUICK],
       ["rounds", "empty", QUICK],
       ["days", "empty", QUICK],
-      ["daily", "empty", "/game?pieceCount=7&memorizeTime=9&source=daily"],
       ["week", "empty", QUICK],
       ["curve", "empty", QUICK],
       ["notebook", "empty", QUICK],
@@ -273,5 +273,25 @@ describe("shareCardOf", () => {
   it("leaves out stale and warming figures, and offers no card before the first round", () => {
     expect(ids(shareCardOf(tilesFor("stale"), 30))?.some((id) => id.startsWith("span"))).toBe(false);
     expect(shareCardOf(tilesFor("newVisitor", { today: "" }), 0)).toBeNull();
+  });
+});
+
+describe("unlocksOf", () => {
+  it("lists a warming player's locked figures outside today's row, the fewest rounds left first and a choice last", () => {
+    expect(unlocksOf(tilesFor("twoRounds")).map((locked) => [locked.id, locked.state === "warming" ? locked.need : locked.cta])).toEqual([
+      ["span", { qualifyingRounds: 1 }],
+      ["piecesHeld", { rounds: 3, days: 1 }],
+      ["curve", { reviews: 3 }],
+      ["speed", { rounds: 4 }],
+      ["rating", "play"],
+      ["winStreak", "play"],
+      ["board", "play"],
+      ["plans", "choose"],
+      ["goal", "choose"],
+    ]);
+  });
+
+  it("leaves out every figure a long record can read", () => {
+    expect(unlocksOf(tilesFor("spanClimber", { game: { rating: 1240, winStreak: 2, changes: [8] } })).map(({ id }) => id)).toEqual(["curve", "board", "plans", "goal"]);
   });
 });

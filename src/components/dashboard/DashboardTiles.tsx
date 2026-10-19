@@ -4,20 +4,26 @@ import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { BETTER_WHEN, type DashboardTile, type DashboardTileId, type DashboardUnit, type Rig, type Trend } from "@/lib/lab/dashboard";
 import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
+import { tileAnchor } from "@/lib/lab/tileAnchor";
 import { useContextText, useFigureText } from "./figureText";
 import { TrendChip } from "./TrendChip";
 
 const NEED_VALUES = { accuracy: LAB_THRESHOLDS.spanAccuracy, minPieces: LAB_THRESHOLDS.spanMinPieces };
 
-/** What a warming figure still needs, as one list, at the setting it reads when it reads one. */
-export function useNeedText() {
+export function useNeedList() {
   const t = useTranslations("dashboard");
   const format = useFormatter();
-  return (need: Need, rig: Rig | null) => {
-    const parts = Object.entries(need).map(([key, count]) => t(`need.${key as keyof Need}`, { count, ...NEED_VALUES }));
-    const list = format.list(parts, { type: "conjunction" });
-    return rig ? t("needsAt", { need: list, ...rig }) : t("needs", { need: list });
-  };
+  return (need: Need) =>
+    format.list(
+      Object.entries(need).map(([key, count]) => t(`need.${key as keyof Need}`, { count, ...NEED_VALUES })),
+      { type: "conjunction" },
+    );
+}
+
+export function useNeedText() {
+  const t = useTranslations("dashboard");
+  const needList = useNeedList();
+  return (need: Need, rig: Rig | null) => (rig ? t("needsAt", { need: needList(need), ...rig }) : t("needs", { need: needList(need) }));
 }
 
 const betterWhenOf = (id: DashboardTileId) => (id in BETTER_WHEN ? BETTER_WHEN[id as keyof typeof BETTER_WHEN] : "higher");
@@ -80,7 +86,7 @@ function TileBody({ tile }: { tile: DashboardTile }) {
 function Tile({ tile }: { tile: DashboardTile }) {
   const t = useTranslations("dashboard");
   return (
-    <li className="lab-tile" id={`tile-${tile.id}`} data-state={tile.state} data-tile={tile.id}>
+    <li className="lab-tile" id={tileAnchor(tile.id)} data-state={tile.state} data-tile={tile.id}>
       <div className="lab-tile-head">
         <h3 className="lab-tile-label">{t(`label.${tile.id}`)}</h3>
         {tile.state === "stale" && <span className="lab-tag">{t("stale")}</span>}
@@ -94,7 +100,7 @@ function Tile({ tile }: { tile: DashboardTile }) {
 function PendingTile({ id }: { id: DashboardTileId }) {
   const t = useTranslations("dashboard");
   return (
-    <li className="lab-tile" id={`tile-${id}`} data-state="loading" data-tile={id}>
+    <li className="lab-tile" id={tileAnchor(id)} data-state="loading" data-tile={id}>
       <div className="lab-tile-head">
         <h3 className="lab-tile-label">{t(`label.${id}`)}</h3>
       </div>
@@ -105,10 +111,11 @@ function PendingTile({ id }: { id: DashboardTileId }) {
 interface TileListProps {
   readonly ids: readonly DashboardTileId[];
   readonly tiles: readonly DashboardTile[] | null;
-  readonly size: "lead" | "summary" | "more";
+  readonly size: "today" | "lead" | "summary" | "more";
 }
 
 export function TileList({ ids, tiles, size }: TileListProps) {
+  if (tiles && !ids.some((id) => tiles.some((tile) => tile.id === id))) return null;
   return (
     <ul className="lab-tiles" data-size={size}>
       {ids.map((id) => {

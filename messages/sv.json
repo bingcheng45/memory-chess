@@ -1367,6 +1367,24 @@
     "notSet": "Inte valt ännu.",
     "needs": "Låses upp med {need}.",
     "needsAt": "Låses upp med {need} på {pieceCount} pjäser, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Låses upp härnäst",
+      "plain": "{need}",
+      "at": "{need} på {pieceCount} pjäser, {memorizeSeconds} s",
+      "showAll": "Visa alla {count}",
+      "showFewer": "Visa färre"
+    },
+    "backup": {
+      "title": "Spara en kopia av din journal",
+      "never": "{rounds, plural, one {Din # runda finns} other {Dina # rundor finns}} bara i den här webbläsaren, som kan rensa data för att frigöra utrymme. En nedladdad kopia håller din journal säker.",
+      "behind": "{rounds, plural, one {# runda har} other {# rundor har}} spelats sedan din senaste kopia den {date}. Den här webbläsaren kan rensa sparad data för att frigöra utrymme, så ladda ned en ny kopia.",
+      "download": "Ladda ned en kopia",
+      "later": "Inte nu",
+      "started": "Nedladdningen har startat. Spara filen någon annanstans än i den här webbläsaren.",
+      "capTitle": "Din journal är full",
+      "cap": "Din journal sparar dina {cap, number} senaste rundor runda för runda, så varje ny runda ersätter nu din äldsta. Dina totaler, sviter och personbästa räknar fortfarande varje runda.",
+      "gotIt": "Uppfattat"
+    },
     "need": {
       "rounds": "{count, plural, one {# runda till} other {# rundor till}}",
       "days": "{count, plural, one {# speldag till} other {# speldagar till}}",

@@ -19,7 +19,7 @@
 .lab-paper .lab-dash-warn { font: 400 15px/1.55 var(--lp-body); color: var(--lp-wrong); }
 
 /* sections: a plain heading, a hairline between them */
-.lab-paper .lab-dash-sec + .lab-dash-sec { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--lp-line); }
+.lab-paper :is(.lab-dash-sec, .lab-dash-note-card) + .lab-dash-sec { margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--lp-line); }
 .lab-paper .lab-dash-sec { scroll-margin-top: calc(var(--lp-header-h) + 16px); }
 .lab-paper .lab-dash-sec-h { max-width: 760px; margin-bottom: 24px; }
 .lab-paper .lab-dash-sec-h h2 { font: 650 30px/1.15 var(--lp-ui); letter-spacing: -0.02em; }
@@ -27,24 +27,24 @@
 
 /* figure tiles: the number in tabular mono, its unit beside it, what it is read from under it */
 .lab-paper .lab-tiles { display: grid; gap: 16px; margin: 0; padding: 0; list-style: none; }
+.lab-paper .lab-tiles[data-size="today"] { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-bottom: 16px; }
 .lab-paper .lab-tiles[data-size="lead"] { grid-template-columns: repeat(3, minmax(0, 1fr)); margin-bottom: 16px; }
 .lab-paper .lab-tiles[data-size="summary"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .lab-paper .lab-tiles[data-size="more"] { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
 .lab-paper .lab-tile { display: flex; flex-direction: column; gap: 8px; min-width: 0; min-height: 140px; padding: 20px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
-/* The lead and summary tiles reserve the tallest row a record draws at each width, measured by
-   `npm run lab:dash-heights`, so the summary under them stays put when the figures arrive. Rerun it after a copy or layout change. */
-.lab-paper { --lab-h-dash-lead: 176px; --lab-h-dash-summary: 160px; }
-@media (max-width: 1023px) { .lab-paper { --lab-h-dash-lead: 176px; --lab-h-dash-summary: 168px; } }
-@media (max-width: 767px) { .lab-paper { --lab-h-dash-lead: 184px; --lab-h-dash-summary: 152px; } }
-@media (max-width: 479px) { .lab-paper { --lab-h-dash-lead: 232px; --lab-h-dash-summary: 192px; } }
-@media (max-width: 359px) { .lab-paper { --lab-h-dash-lead: 256px; --lab-h-dash-summary: 192px; } }
-.lab-paper:not(:lang(en)) { --lab-h-dash-lead: 200px; --lab-h-dash-summary: 168px; }
-@media (max-width: 1023px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 200px; --lab-h-dash-summary: 208px; } }
-@media (max-width: 767px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 216px; --lab-h-dash-summary: 192px; } }
-@media (max-width: 479px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 288px; --lab-h-dash-summary: 224px; } }
-@media (max-width: 359px) { .lab-paper:not(:lang(en)) { --lab-h-dash-lead: 328px; --lab-h-dash-summary: 248px; } }
-.lab-paper .lab-tiles[data-size="lead"] .lab-tile { min-height: var(--lab-h-dash-lead); }
-.lab-paper .lab-tiles[data-size="summary"] .lab-tile { min-height: var(--lab-h-dash-summary); }
+/* Today's tiles are the only ones drawn before the record is read, so they reserve the tallest row a record draws at
+   each width, measured by `npm run lab:dash-heights`, and the summary under them mounts without moving them. Rerun it
+   after a copy or layout change. */
+.lab-paper { --lab-h-dash-today: 144px; }
+@media (max-width: 767px) { .lab-paper { --lab-h-dash-today: 152px; } }
+@media (max-width: 479px) { .lab-paper { --lab-h-dash-today: 192px; } }
+.lab-paper:not(:lang(en)) { --lab-h-dash-today: 144px; }
+@media (max-width: 767px) { .lab-paper:not(:lang(en)) { --lab-h-dash-today: 192px; } }
+@media (max-width: 479px) { .lab-paper:not(:lang(en)) { --lab-h-dash-today: 200px; } }
+@media (max-width: 359px) { .lab-paper:not(:lang(en)) { --lab-h-dash-today: 224px; } }
+.lab-paper .lab-tiles[data-size="today"] .lab-tile { min-height: var(--lab-h-dash-today); }
+/* Holds the rest of the screen until the record is read, so nothing drawn below it is in view when the summary arrives. */
+.lab-paper .lab-dash-summary-pending { min-height: 100vh; }
 .lab-paper .lab-tile-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; flex-wrap: wrap; }
 .lab-paper .lab-tile-head .lab-tag { max-width: 100%; height: auto; min-height: 24px; padding-block: 4px; line-height: 1.25; white-space: normal; }
 .lab-paper .lab-tile-label { font: 600 14px/1.3 var(--lp-ui); color: var(--lp-muted); }
@@ -59,6 +59,24 @@
 .lab-paper .lab-tile[data-state="stale"] .lab-tile-value { color: var(--lp-ink-2); }
 /* Not yet a reading: dashed and unfilled, so the state shows in the shape as well as the words. */
 .lab-paper .lab-tile:is([data-state="warming"], [data-state="empty"], [data-state="loading"]) { background: transparent; border-style: dashed; border-color: var(--lp-line-strong); }
+
+.lab-paper .lab-dash-unlocks { margin-bottom: 16px; padding: 16px 20px; border: 1px dashed var(--lp-line-strong); border-radius: var(--lp-r-lg); }
+.lab-paper .lab-dash-unlocks h3 { font: 600 14px/1.3 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lab-dash-unlocks ul { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 32px; margin: 12px 0 0; padding: 0; list-style: none; }
+.lab-paper .lab-dash-unlocks li { display: grid; align-content: start; gap: 2px; min-width: 0; }
+.lab-paper .lab-dash-unlock-what { font: 600 15px/1.4 var(--lp-ui); color: var(--lp-ink); }
+.lab-paper .lab-dash-unlock-need { font: 400 14px/1.5 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .lab-dash-unlock-go { justify-self: start; font: 500 14px/1.45 var(--lp-ui); color: var(--lp-accent); text-decoration: underline; text-underline-offset: 3px; }
+.lab-paper .lab-dash-unlock-wait { font: 400 14px/1.45 var(--lp-body); color: var(--lp-muted); }
+.lab-paper .lab-dash-unlock-toggle { display: block; min-height: 44px; margin-top: 4px; padding: 0; font: 600 14px/1.45 var(--lp-ui); color: var(--lp-accent); background: none; border: 0; text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.lab-paper .lab-dash-unlock-toggle:hover, .lab-paper .lab-dash-unlock-go:hover { text-decoration-thickness: 2px; }
+
+.lab-paper .lab-dash-note-card + .lab-dash-note-card { margin-top: 16px; }
+.lab-paper .lab-dash-note-card { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-top: 32px; padding: 20px 24px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
+.lab-paper .lab-dash-note-text { flex: 1 1 360px; min-width: 0; }
+.lab-paper .lab-dash-note-card h2 { font: 600 18px/1.35 var(--lp-ui); color: var(--lp-ink); }
+.lab-paper .lab-dash-note-card p { max-width: 64ch; margin-top: 4px; font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .lab-dash-note-actions { display: flex; flex-wrap: wrap; gap: 12px; }
 
 /* The rating card between the lead tiles and the totals. Its hero row and plot box keep one height in every state. */
 .lab-paper .lab-rating { margin-bottom: 16px; }
@@ -90,6 +108,7 @@
 .lab-paper .lab-field select:hover { border-color: var(--lp-ink-2); }
 .lab-paper .lab-hist-count { font: 500 14px/1.4 var(--lp-ui); font-variant-numeric: tabular-nums; color: var(--lp-muted); }
 .lab-paper .lab-hist-pending { min-height: 320px; }
+.lab-paper .lab-dash-late-failed .lab-btn { margin-top: 12px; }
 .lab-paper .lab-hist-plate { background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); overflow: hidden; }
 .lab-paper .lab-hist-table { width: 100%; border-collapse: collapse; font: 400 15px/1.4 var(--lp-body); color: var(--lp-ink); }
 .lab-paper .lab-hist-table th { padding: 12px 16px; text-align: left; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); white-space: nowrap; background: var(--lp-surface-2); border-bottom: 1px solid var(--lp-line); }
@@ -178,6 +197,10 @@
   .lab-paper .lab-dash-sec-h h2 { font-size: 26px; }
   .lab-paper .lab-tiles { gap: 12px; }
   .lab-paper .lab-tiles[data-size="summary"], .lab-paper .lab-tiles[data-size="more"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .lab-paper .lab-dash-unlocks { padding: 16px; }
+  .lab-paper .lab-dash-unlocks ul { grid-template-columns: minmax(0, 1fr); }
+  .lab-paper .lab-dash-note-card { padding: 16px; }
+  .lab-paper .lab-dash-note-actions .lab-btn { flex: 1 1 auto; }
   .lab-paper .lab-tile { padding: 16px; min-height: 124px; }
   .lab-paper .lab-tile-value { font-size: 28px; }
   .lab-paper .lab-tiles[data-size="lead"] .lab-tile-value { font-size: 34px; }

@@ -1,6 +1,6 @@
 /** @jest-environment <rootDir>/src/test-utils/machineZoneEnvironment.ts */
 import type { ReactNode } from "react";
-import { render } from "@testing-library/react";
+import { render, waitFor } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 import ViewerTimeZoneProvider from "@/components/common/ViewerTimeZoneProvider";
 import { Dashboard } from "@/components/dashboard/Dashboard";
@@ -47,24 +47,24 @@ describe("Dashboard history times", () => {
     labData = withNewestRoundAt(PLAYED_AT);
   });
 
-  it("shows a round played at 20:30 UTC on 17 October as 18 October, 4:30 AM for a viewer in Singapore", () => {
+  it("shows a round played at 20:30 UTC on 17 October as 18 October, 4:30 AM for a viewer in Singapore", async () => {
     setMachineTimeZone("Asia/Singapore");
     render(<Dashboard />, { wrapper: ServerZone });
 
-    expect(newestRowTime()?.textContent).toBe("Oct 18, 2026, 4:30 AM");
+    await waitFor(() => expect(newestRowTime()?.textContent).toBe("Oct 18, 2026, 4:30 AM"));
   });
 
-  it("shows the same round as 17 October, 1:30 PM for a viewer in Los Angeles", () => {
+  it("shows the same round as 17 October, 1:30 PM for a viewer in Los Angeles", async () => {
     setMachineTimeZone("America/Los_Angeles");
     render(<Dashboard />, { wrapper: ServerZone });
 
-    expect(newestRowTime()?.textContent).toBe("Oct 17, 2026, 1:30 PM");
+    await waitFor(() => expect(newestRowTime()?.textContent).toBe("Oct 17, 2026, 1:30 PM"));
   });
 
-  it("keeps the machine-readable time in UTC", () => {
+  it("keeps the machine-readable time in UTC", async () => {
     setMachineTimeZone("Asia/Singapore");
     render(<Dashboard />, { wrapper: ServerZone });
 
-    expect(newestRowTime()).toHaveAttribute("dateTime", "2026-10-17T20:30:00.000Z");
+    await waitFor(() => expect(newestRowTime()).toHaveAttribute("dateTime", "2026-10-17T20:30:00.000Z"));
   });
 });

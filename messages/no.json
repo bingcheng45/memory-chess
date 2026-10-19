@@ -1367,6 +1367,24 @@
     "notSet": "Ikke valgt ennå.",
     "needs": "Låses opp med {need}.",
     "needsAt": "Låses opp med {need} med {pieceCount} brikker, {memorizeSeconds} s.",
+    "unlocks": {
+      "title": "Neste å låse opp",
+      "plain": "{need}",
+      "at": "{need} med {pieceCount} brikker, {memorizeSeconds} s",
+      "showAll": "Vis alle {count}",
+      "showFewer": "Vis færre"
+    },
+    "backup": {
+      "title": "Ta vare på en kopi av journalen din",
+      "never": "{rounds, plural, one {Din # runde finnes} other {Dine # runder finnes}} bare i denne nettleseren, som kan slette data for å frigjøre plass. En nedlastet kopi holder journalen din trygg.",
+      "behind": "{rounds, plural, one {# runde er} other {# runder er}} spilt siden den forrige kopien din den {date}. Denne nettleseren kan slette lagrede data for å frigjøre plass, så last ned en ny kopi.",
+      "download": "Last ned en kopi",
+      "later": "Ikke nå",
+      "started": "Nedlastingen har startet. Oppbevar filen et annet sted enn i denne nettleseren.",
+      "capTitle": "Journalen din er full",
+      "cap": "Journalen din lagrer de {cap, number} nyeste rundene dine runde for runde, så hver nye runde erstatter nå den eldste. Totaler, rekker og rekorder teller fortsatt hver runde.",
+      "gotIt": "Forstått"
+    },
     "need": {
       "rounds": "{count, plural, one {# runde til} other {# runder til}}",
       "days": "{count, plural, one {# spilledag til} other {# spilledager til}}",

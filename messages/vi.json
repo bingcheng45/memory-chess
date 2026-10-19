@@ -1367,6 +1367,24 @@
     "notSet": "Chưa đặt.",
     "needs": "Mở khóa sau {need}.",
     "needsAt": "Mở khóa sau {need} với {pieceCount} quân, {memorizeSeconds} giây.",
+    "unlocks": {
+      "title": "Sắp mở khóa",
+      "plain": "{need}",
+      "at": "{need} với {pieceCount} quân, {memorizeSeconds} giây",
+      "showAll": "Hiện tất cả {count}",
+      "showFewer": "Thu gọn"
+    },
+    "backup": {
+      "title": "Giữ một bản sao hồ sơ của bạn",
+      "never": "{rounds, plural, other {# ván}} của bạn chỉ được lưu trong trình duyệt này, và trình duyệt có thể xóa dữ liệu để giải phóng dung lượng. Một bản sao đã tải xuống sẽ giữ hồ sơ của bạn an toàn.",
+      "behind": "Đã có {rounds, plural, other {# ván}} được chơi kể từ bản sao gần nhất của bạn vào {date}. Trình duyệt này có thể xóa dữ liệu đã lưu để giải phóng dung lượng, vì vậy hãy tải xuống một bản sao mới.",
+      "download": "Tải xuống bản sao",
+      "later": "Để sau",
+      "started": "Đã bắt đầu tải xuống. Hãy lưu tệp ở nơi khác ngoài trình duyệt này.",
+      "capTitle": "Hồ sơ của bạn đã đầy",
+      "cap": "Hồ sơ của bạn lưu chi tiết từng ván cho {cap, number} ván mới nhất, vì vậy giờ mỗi ván mới sẽ thay thế ván cũ nhất. Tổng số, chuỗi và kỷ lục của bạn vẫn tính mọi ván.",
+      "gotIt": "Đã hiểu"
+    },
     "need": {
       "rounds": "{count, plural, other {thêm # ván}}",
       "days": "{count, plural, other {thêm # ngày chơi}}",

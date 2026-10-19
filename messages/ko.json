@@ -1367,6 +1367,24 @@
     "notSet": "아직 설정하지 않았습니다.",
     "needs": "{need} 더 하면 열립니다.",
     "needsAt": "{pieceCount}개, {memorizeSeconds}초로 {need} 더 하면 열립니다.",
+    "unlocks": {
+      "title": "다음 해제 항목",
+      "plain": "{need} 더",
+      "at": "{pieceCount}개, {memorizeSeconds}초로 {need} 더",
+      "showAll": "모두 보기({count})",
+      "showFewer": "접기"
+    },
+    "backup": {
+      "title": "기록 사본을 보관하세요",
+      "never": "{rounds, plural, other {#라운드}}의 기록이 이 브라우저에만 저장되어 있으며, 브라우저가 공간 확보를 위해 지울 수 있습니다. 내려받은 사본이 있으면 안전합니다.",
+      "behind": "{date}의 마지막 사본 이후 {rounds, plural, other {#라운드}}를 플레이했습니다. 이 브라우저는 공간 확보를 위해 저장된 데이터를 지울 수 있으니 새 사본을 내려받으세요.",
+      "download": "사본 내려받기",
+      "later": "나중에",
+      "started": "다운로드를 시작했습니다. 파일을 이 브라우저가 아닌 다른 곳에 보관하세요.",
+      "capTitle": "기록이 가득 찼습니다",
+      "cap": "기록에는 최신 {cap, number}라운드가 라운드별로 저장되므로, 이제 새 라운드마다 가장 오래된 라운드를 대체합니다. 합계, 연속 기록, 최고 기록에는 계속 모든 라운드가 반영됩니다.",
+      "gotIt": "확인"
+    },
     "need": {
       "rounds": "{count, plural, other {#라운드}}",
       "days": "{count, plural, other {#일 플레이}}",

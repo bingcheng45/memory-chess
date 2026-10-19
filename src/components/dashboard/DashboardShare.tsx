@@ -54,15 +54,13 @@ function useCardCopy(card: ShareCard | null): CardCopy | null {
 
 /**
  * The card as it will post, drawn as soon as the record is read, with the action that opens every way to post it.
- * `pending` holds the panel's place before the record is read, so nothing under it moves when the card arrives.
  */
-export function DashboardShare({ card }: { card: ShareCard | null | "pending" }) {
+export function DashboardShare({ card }: { card: ShareCard | null }) {
   const t = useTranslations("dashboard");
   const locale = useLocale();
   const root = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
-  const ready = card === "pending" ? null : card;
-  const copy = useCardCopy(ready);
+  const copy = useCardCopy(card);
   const image = useCardImage(
     () => (copy ? drawShareCard(copy, fontsOf(root.current ?? document.body), locale) : Promise.reject(new Error("No card to draw"))),
     copy && `${locale}:${JSON.stringify(copy)}`,
@@ -83,20 +81,20 @@ export function DashboardShare({ card }: { card: ShareCard | null | "pending" })
   }
 
   return (
-    <div className="lab-share" ref={root} data-state={ready ? "ready" : "pending"}>
+    <div className="lab-share" ref={root} data-state="ready">
       <Dialog.Root open={open} onOpenChange={setOpen}>
-        <Thumb image={ready ? image : { state: "rendering" }} onOpen={() => ready && setOpen(true)} />
+        <Thumb image={image} onOpen={() => setOpen(true)} />
         <p className="lab-share-text">{t("share.lede")}</p>
-        <Dialog.Trigger className="lab-btn lab-btn-primary" disabled={!ready}>
+        <Dialog.Trigger className="lab-btn lab-btn-primary">
           {t("share.button")}
         </Dialog.Trigger>
-        {open && ready && (
+        {open && (
           <ShareDialog
             surface="dashboard"
             title={t("share.title")}
-            caption={shareCaption(t, ready, locale)}
+            caption={shareCaption(t, card, locale)}
             image={image}
-            alt={shareAlt(t, ready, locale)}
+            alt={shareAlt(t, card, locale)}
             fileName={FILE_NAME}
           />
         )}

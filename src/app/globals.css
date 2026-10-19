@@ -54,7 +54,6 @@ body {
  * text at that weight (npm run lab:fallback-widths), with the webfont's vertical
  * metrics from next's capsize data. Bold text paints in Arial Bold, not in a
  * synthesized bold of Arial, so a heading wraps where the webfont will wrap it.
- * npm run lab:cls fails if a translated line still rewraps when the webfont arrives.
  */
 @font-face {
   font-family: "Geist Arial";

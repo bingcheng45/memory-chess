@@ -4,7 +4,7 @@
  * phone held sideways, and records every layout shift with the nodes that moved
  * and their rects before and after.
  * Each shift is tagged in the page with the screen showing when it happened:
- * config, memorize, solve or result. Two loads per width: /game, where the
+ * config, intro, memorize, solve or result. Two loads per width: /game, where the
  * start button opens a round, and the home page's round link, which memorizes
  * until the clock runs out (no Done, so the switch to solving is not an input),
  * places 4 of 6 pieces and submits. The leaderboard cutoffs answer every board full
@@ -24,7 +24,7 @@
  * false. With --late-cutoffs the run is a diagnostic: it prints every screen's
  * CLS and fails only if it cannot play.
  *
- *   npm run lab:cls-game -- --base http://localhost:3131 --out <dir> [--only en|de] [--late-cutoffs]
+ *   npm run lab:cls-game -- --base http://localhost:3131 --out <dir> [--only <locale>] [--late-cutoffs]
  */
 import { existsSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -65,8 +65,8 @@ const BOARD_FIT = `(() => {
   scroller.scrollTop = 0;
   return { board: Math.round(board.getBoundingClientRect().width), areaWidth: area.clientWidth, areaHeight: area.clientHeight, scrolled };
 })()`;
-const FULL_BOARD = { kind: "full", worst: { correctPieces: 0, totalWrongPieces: 99, memorizeTime: 999, solutionTime: 9999 } };
-const FULL_CUTOFFS = { easy: FULL_BOARD, medium: FULL_BOARD, hard: FULL_BOARD, grandmaster: FULL_BOARD };
+const BEATEN_BOARD = { kind: "full", worst: { correctPieces: 0, totalWrongPieces: 99, memorizeTime: 999, solutionTime: 9999 } };
+const BEATEN_CUTOFFS = { easy: BEATEN_BOARD, medium: BEATEN_BOARD, hard: BEATEN_BOARD, grandmaster: BEATEN_BOARD };
 
 // Registered before any page script runs. The screen is read when the entry is delivered, right after the frame that shifted.
 const OBSERVE = `window.__shifts = [];
@@ -114,7 +114,7 @@ async function clickSelector(page, selector) {
   await page.click(selector);
 }
 
-/** Answers the cutoffs with every board full of scores any round beats, after `release` resolves; answers counter and leaderboard writes locally. */
+/** Answers the cutoffs with BEATEN_CUTOFFS after `release` resolves; answers counter and leaderboard writes locally. */
 async function stubNetwork(page, release) {
   page.on((method, params) => {
     if (method !== "Fetch.requestPaused") return;
@@ -125,7 +125,7 @@ async function stubNetwork(page, release) {
         responseHeaders: [{ name: "Content-Type", value: "application/json" }],
         body: Buffer.from(JSON.stringify(data)).toString("base64"),
       });
-    if (params.request.url.includes("/api/leaderboard/cutoffs")) release().then(() => respond({ data: FULL_CUTOFFS }));
+    if (params.request.url.includes("/api/leaderboard/cutoffs")) release().then(() => respond({ data: BEATEN_CUTOFFS }));
     else if (params.request.method === "POST") respond({ success: true, data: { value: 1 } });
     else page.send("Fetch.continueRequest", { requestId: params.requestId });
   });

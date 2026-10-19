@@ -1,9 +1,8 @@
 #!/usr/bin/env node
 /**
- * Loads the home page cold, on a 4x slower CPU, at eight widths, and records every
+ * Loads the home page cold, on a 4x slower CPU, at ten widths, and records every
  * layout shift on the whole page until it settles, naming the nodes that moved.
- * Every webfont file the stylesheets declare (Geist, Geist Mono, Open Sans, Noto Sans)
- * is held for HOLD_MS on every load at the top of a page, and the Geist Mono files on a
+ * Every webfont file the stylesheets declare is held for HOLD_MS on every load at the top of a page, and the Geist Mono files on a
  * load scrolled into the page, so the page always paints in the fallback faces first
  * and then swaps; a load where no file was held, where a webfont had loaded while the
  * first file was held, or where Geist Mono never loaded after release, fails. Reports CLS as the largest session
@@ -35,9 +34,8 @@ const LOCALE_WIDTHS = [1280, 1024, 768, 390, 375, 320];
 const CASE_ENV = "LAB_CLS_CASE";
 const RESULT_FILE = "cls.json";
 const HOLD_MS = 1500;
-// A body paragraph in Open Sans, or Devanagari in Noto Sans Devanagari, still breaks its lines differently in the
-// fallback face here: no local face matches a proportional webfont's width for every line.
-const KNOWN_REWRAPS = { hu: [320], pl: [768], ko: [320], hi: [390, 1024, 1280] };
+// The hero's Open Sans paragraphs (hu, pl, ko) and Devanagari heading (hi) still break lines differently in the fallback face.
+const KNOWN_REWRAPS = { hu: [320], pl: [768], ko: [320], hi: [390, 768, 1024, 1280] };
 const SETTLE_MS = 4500;
 const SESSION_GAP_MS = 1000;
 const SESSION_MAX_MS = 5000;
@@ -102,7 +100,6 @@ const WEB_LOADED = `(() => {
 
 export const round = (value) => Math.round(value * 10000) / 10000;
 
-/** Every webfont file the page's stylesheets declare, read from a page that has loaded them. */
 async function webFontUrls(page, baseUrl) {
   await page.goto(`${baseUrl}/`);
   const urls = [...new Set(await page.eval(WEB_URLS))];

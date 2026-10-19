@@ -20,7 +20,7 @@ import type { Locale } from "@/i18n/routing";
  * this subset those glyphs fall back to a system font mid-word, which looks
  * like a rendering bug rather than a design choice.
  */
-/** next/font's own fallback is one Arial face for every weight, so bold headings painted narrower and rewrapped on swap. globals.css defines these faces. */
+/** next/font's own fallback is one Arial face for every weight, so bold headings painted narrower and rewrapped on swap. */
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin", "latin-ext"],

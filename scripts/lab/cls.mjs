@@ -34,10 +34,8 @@ const RESULT_FILE = "cls.json";
 const HOLD_MS = 1500;
 const REWRAP = "a line in the hero breaks differently in the fallback face and rewraps when the webfont arrives";
 const KNOWN = {
-  hu: { why: REWRAP, ceilings: { 320: 0.044, 1280: 0.027 } },
-  pl: { why: REWRAP, ceilings: { 768: 0.041 } },
-  ko: { why: REWRAP, ceilings: { 320: 0.035 } },
-  hi: { why: REWRAP, ceilings: { 390: 0.077, 1024: 0.047, 1280: 0.047 } },
+  hu: { why: REWRAP, ceilings: { 320: 0.029 } },
+  hi: { why: REWRAP, ceilings: { 1024: 0.047, 1280: 0.047 } },
 };
 const ceilingOf = (name, width) => KNOWN[name]?.ceilings[width] ?? MAX_CLS;
 const isReportOnly = ({ path, centre }) => path.includes("#") || Boolean(centre);

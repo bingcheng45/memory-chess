@@ -169,9 +169,9 @@ body {
   font-family: "Open Sans Arial";
   font-weight: 550 900;
   src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
-  size-adjust: 100.85%;
-  ascent-override: 105.98%;
-  descent-override: 29.05%;
+  size-adjust: 101.67%;
+  ascent-override: 105.13%;
+  descent-override: 28.82%;
   line-gap-override: 0.00%;
 }
 

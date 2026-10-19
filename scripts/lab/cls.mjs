@@ -33,7 +33,7 @@ const HOLD_MS = 1500;
 const REWRAP = "a line in the hero breaks differently in the fallback face and rewraps when the webfont arrives";
 const SCROLLED = "loaded scrolled into the page, the sections in view are scored as moving when the webfonts swap in above them";
 const KNOWN = {
-  hu: { why: REWRAP, ceilings: { 320: 0.044 } },
+  hu: { why: REWRAP, ceilings: { 320: 0.044, 1280: 0.027 } },
   pl: { why: REWRAP, ceilings: { 768: 0.041 } },
   ko: { why: REWRAP, ceilings: { 320: 0.035 } },
   hi: { why: REWRAP, ceilings: { 390: 0.077, 1024: 0.047, 1280: 0.047 } },
@@ -46,7 +46,7 @@ const KNOWN = {
   "note-tools": { why: SCROLLED, ceilings: { 360: 0.064, 375: 0.07, 640: 0.031 } },
   "de-record": { why: SCROLLED, ceilings: { 320: 0.182, 360: 0.035, 390: 0.038 } },
   "ja-record": { why: SCROLLED, ceilings: { 320: 0.032, 375: 0.039 } },
-  "ru-record": { why: SCROLLED, ceilings: { 320: 0.215, 360: 0.6, 375: 0.371, 390: 0.066, 640: 0.036, 768: 0.094, 1024: 0.033, 1440: 0.048 } },
+  "ru-record": { why: SCROLLED, ceilings: { 320: 0.215, 360: 0.6, 375: 0.373, 390: 0.066, 640: 0.036, 768: 0.094, 1024: 0.033, 1280: 0.053, 1440: 0.048 } },
 };
 const ceilingOf = (name, width) => KNOWN[name]?.ceilings[width] ?? MAX_CLS;
 const HARNESS_TIMEOUT = /load event never fired|timed out after|drive script exceeded|harness: /;

@@ -68,7 +68,7 @@ const shippedFaces = () =>
   [...readFileSync("src/app/globals.css", "utf8").matchAll(/@font-face\s*{([^}]*)}/g)]
     .map(([, body]) => Object.fromEntries([...body.matchAll(/([\w-]+):\s*([^;]+);/g)].map(([, key, value]) => [key, value.trim()])))
     .filter((face) => / Arial"$/.test(face["font-family"] ?? ""))
-    .map((face) => ({ family: face["font-family"].replace(/"/g, "").replace(/ Arial$/, ""), range: face["font-weight"].split(" ").map(Number), sizeAdjust: parseFloat(face["size-adjust"]) / 100 }));
+    .map((face) => ({ family: face["font-family"].replace(/"/g, "").replace(/ Arial$/, ""), range: face["font-weight"].split(" ").map(Number), sizeAdjust: Number((parseFloat(face["size-adjust"]) / 100).toFixed(4)) }));
 
 function shippedOf(faces, family, weight) {
   return faces.find((face) => face.family === family && face.range[0] <= weight && weight <= face.range[1])?.sizeAdjust ?? null;

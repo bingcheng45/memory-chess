@@ -68,7 +68,7 @@
 @media (max-width: 767px) {
   .lab-paper .lb-main { padding-top: 32px; padding-bottom: 48px; }
   .lab-paper .lb-head { margin-bottom: 32px; }
-  .lab-paper .lb-title { font-size: 34px; line-height: 1.12; }
+  .lab-paper .lb-title { display: flex; align-items: flex-end; min-height: 2lh; font-size: 34px; line-height: 1.12; }
   .lab-paper .lb-lede { font-size: 17px; }
   .lab-paper .lb-scroll { max-height: min(72vh, 640px); overflow: auto; overscroll-behavior-x: contain; border-radius: calc(var(--lp-r-lg) - 1px); }
   .lab-paper .lb-table th { top: 0; }

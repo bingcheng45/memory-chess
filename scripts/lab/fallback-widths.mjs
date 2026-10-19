@@ -66,6 +66,7 @@ function summarize(texts) {
   const groups = Object.groupBy(texts, ({ family, weight }) => `${family} ${weight}`);
   return Object.fromEntries(
     Object.entries(groups)
+      .filter(([, group]) => group.some(({ web }) => web >= MIN_TEXT_PX))
       .sort(([a], [b]) => a.localeCompare(b))
       .map(([key, group]) => {
         const ratios = group.filter(({ web }) => web >= MIN_TEXT_PX).map(({ web, arial }) => web / arial).sort((a, b) => a - b);

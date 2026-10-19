@@ -26,6 +26,7 @@
 .lab-hero .lab-lede { margin-top: 24px; max-width: 580px; }
 .lab-subtle-links { margin-top: 16px; font-size: 15px; line-height: 1.6; color: var(--lp-muted); }
 .lab-subtle-links a { font-weight: 600; }
+.lab-subtle-links > span { display: block; }
 .lab-facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 48px; border-top: 1px solid var(--lp-line); }
 .lab-facts div { padding: 16px 16px 0 0; font: 400 13px/1.4 var(--lp-ui); color: var(--lp-muted); }
 .lab-facts div + div { padding-left: 16px; border-left: 1px solid var(--lp-line); }

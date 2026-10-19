@@ -51,7 +51,7 @@ body {
 /*
  * Geist, Noto Sans and Open Sans fall back to local Arial while they load, one face
  * per weight they are set in, each sized to how wide the webfont sets the site's own
- * text at that weight (npm run lab:fallback-widths), with the webfont's vertical
+ * text at that weight (npm run lab:fallback-widths, unless a face says why not), with the webfont's vertical
  * metrics from next's capsize data. Bold text paints in Arial Bold, not in a
  * synthesized bold of Arial, so a heading wraps where the webfont will wrap it.
  */
@@ -155,13 +155,14 @@ body {
   line-gap-override: 0.00%;
 }
 
+/* Not lab:fallback-widths' 104.18%: at 104.7% fewer paragraphs rewrap on swap above #record (24 locales, 11 widths: 323 vs 345, English 8 vs 20). */
 @font-face {
   font-family: "Open Sans Arial";
   font-weight: 100 549;
   src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
-  size-adjust: 104.18%;
-  ascent-override: 102.60%;
-  descent-override: 28.12%;
+  size-adjust: 104.70%;
+  ascent-override: 102.09%;
+  descent-override: 27.98%;
   line-gap-override: 0.00%;
 }
 
@@ -169,9 +170,9 @@ body {
   font-family: "Open Sans Arial";
   font-weight: 550 900;
   src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
-  size-adjust: 101.67%;
-  ascent-override: 105.13%;
-  descent-override: 28.82%;
+  size-adjust: 100.85%;
+  ascent-override: 105.98%;
+  descent-override: 29.05%;
   line-gap-override: 0.00%;
 }
 

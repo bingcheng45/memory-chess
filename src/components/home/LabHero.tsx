@@ -52,16 +52,22 @@ export function LabHero({ totalPlays }: { totalPlays: TotalPlays }) {
             </a>
           </div>
           <p className="lab-subtle-links">
-            {lab.rich("hero.settingsLink", {
-              label: t("cta.chooseSettings"),
-              link: (chunks) => <Link href="/game">{chunks}</Link>,
-            })}{" "}
-            {t.rich("hero.freeToPlay", {
-              link: (chunks) => <Link href="/leaderboard">{chunks}</Link>,
-            })}{" "}
-            {lab.rich("hero.dailyLink", {
-              link: (chunks) => <Link href="/daily">{chunks}</Link>,
-            })}
+            <span>
+              {lab.rich("hero.settingsLink", {
+                label: t("cta.chooseSettings"),
+                link: (chunks) => <Link href="/game">{chunks}</Link>,
+              })}
+            </span>{" "}
+            <span>
+              {t.rich("hero.freeToPlay", {
+                link: (chunks) => <Link href="/leaderboard">{chunks}</Link>,
+              })}
+            </span>{" "}
+            <span>
+              {lab.rich("hero.dailyLink", {
+                link: (chunks) => <Link href="/daily">{chunks}</Link>,
+              })}
+            </span>
           </p>
           <div className="lab-facts">
             <div className="lab-fact-lead" data-status={totalPlays.status} aria-busy={totalPlays.status === "loading"}>

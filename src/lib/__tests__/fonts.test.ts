@@ -81,6 +81,34 @@ describe("text webfont fallbacks", () => {
       { adjustFontFallback: false, family: "Open Sans Arial", weights: ["100 549", "550 900"], bold: true, regular: true },
     ]);
   });
+
+  it("size each weight to the webfont's measured width and carry the webfont's vertical metrics", () => {
+    const webfonts = { "Geist Arial": capsize.geist, "Noto Sans Arial": capsize.notoSans, "Open Sans Arial": capsize.openSans };
+    const familyOf = (declared: Record<string, string>) => declared["font-family"].replace(/"/g, "") as keyof typeof webfonts;
+    const faces = fontFaces(readFileSync(join(process.cwd(), "src/app/globals.css"), "utf8")).filter((declared) => familyOf(declared) in webfonts);
+    const metrics = faces.map((face) => [familyOf(face), face["font-weight"], face["size-adjust"], face["ascent-override"], face["descent-override"], face["line-gap-override"]]);
+    const fromCapsize = faces.map((face) => {
+      const { ascent, descent, lineGap, unitsPerEm } = webfonts[familyOf(face)];
+      const sizeAdjust = parseFloat(face["size-adjust"]) / 100;
+      return [familyOf(face), face["font-weight"], face["size-adjust"], ...[ascent, descent, lineGap].map((value) => percent(value / (unitsPerEm * sizeAdjust)))];
+    });
+
+    expect(metrics).toEqual([
+      ["Geist Arial", "100 449", "101.22%", "99.29%", "29.14%", "0.00%"],
+      ["Geist Arial", "450 549", "103.38%", "97.21%", "28.54%", "0.00%"],
+      ["Geist Arial", "550 624", "99.86%", "100.64%", "29.54%", "0.00%"],
+      ["Geist Arial", "625 674", "100.91%", "99.59%", "29.23%", "0.00%"],
+      ["Geist Arial", "675 900", "102.26%", "98.28%", "28.85%", "0.00%"],
+      ["Noto Sans Arial", "100 449", "102.61%", "104.18%", "28.55%", "0.00%"],
+      ["Noto Sans Arial", "450 549", "105.27%", "101.55%", "27.83%", "0.00%"],
+      ["Noto Sans Arial", "550 624", "101.29%", "105.54%", "28.93%", "0.00%"],
+      ["Noto Sans Arial", "625 674", "102.72%", "104.07%", "28.52%", "0.00%"],
+      ["Noto Sans Arial", "675 900", "102.92%", "103.87%", "28.47%", "0.00%"],
+      ["Open Sans Arial", "100 549", "104.18%", "102.60%", "28.12%", "0.00%"],
+      ["Open Sans Arial", "550 900", "100.85%", "105.98%", "29.05%", "0.00%"],
+    ]);
+    expect(metrics).toEqual(fromCapsize);
+  });
 });
 
 describe("lab mono font shorthands", () => {

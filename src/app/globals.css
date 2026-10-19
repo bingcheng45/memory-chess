@@ -69,9 +69,9 @@ body {
   font-family: "Geist Arial";
   font-weight: 450 549;
   src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
-  size-adjust: 103.46%;
-  ascent-override: 97.14%;
-  descent-override: 28.51%;
+  size-adjust: 103.38%;
+  ascent-override: 97.21%;
+  descent-override: 28.54%;
   line-gap-override: 0.00%;
 }
 
@@ -99,8 +99,8 @@ body {
   font-family: "Geist Arial";
   font-weight: 675 900;
   src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
-  size-adjust: 102.25%;
-  ascent-override: 98.29%;
+  size-adjust: 102.26%;
+  ascent-override: 98.28%;
   descent-override: 28.85%;
   line-gap-override: 0.00%;
 }
@@ -119,9 +119,9 @@ body {
   font-family: "Noto Sans Arial";
   font-weight: 450 549;
   src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
-  size-adjust: 105.33%;
-  ascent-override: 101.49%;
-  descent-override: 27.82%;
+  size-adjust: 105.27%;
+  ascent-override: 101.55%;
+  descent-override: 27.83%;
   line-gap-override: 0.00%;
 }
 
@@ -169,9 +169,9 @@ body {
   font-family: "Open Sans Arial";
   font-weight: 550 900;
   src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
-  size-adjust: 101.67%;
-  ascent-override: 105.13%;
-  descent-override: 28.82%;
+  size-adjust: 100.85%;
+  ascent-override: 105.98%;
+  descent-override: 29.05%;
   line-gap-override: 0.00%;
 }
 

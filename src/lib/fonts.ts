@@ -20,9 +20,12 @@ import type { Locale } from "@/i18n/routing";
  * this subset those glyphs fall back to a system font mid-word, which looks
  * like a rendering bug rather than a design choice.
  */
+/** next/font's own fallback is one Arial face for every weight, so bold headings painted narrower and rewrapped on swap. */
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin", "latin-ext"],
+  adjustFontFallback: false,
+  fallback: ["Geist Arial"],
 });
 
 /**
@@ -49,6 +52,8 @@ const notoSansCyrillic = Noto_Sans({
   subsets: ["cyrillic", "latin"],
   display: "swap",
   preload: false,
+  adjustFontFallback: false,
+  fallback: ["Noto Sans Arial"],
 });
 
 const notoSansDevanagari = Noto_Sans_Devanagari({
@@ -64,6 +69,8 @@ const notoSansVietnamese = Noto_Sans({
   subsets: ["vietnamese", "latin"],
   display: "swap",
   preload: false,
+  adjustFontFallback: false,
+  fallback: ["Noto Sans Arial"],
 });
 
 /**

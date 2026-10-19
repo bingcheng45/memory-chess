@@ -49,6 +49,134 @@ body {
 }
 
 /*
+ * Geist, Noto Sans and Open Sans fall back to local Arial while they load, one face
+ * per weight they are set in, each sized to how wide the webfont sets the site's own
+ * text at that weight (npm run lab:fallback-widths, unless a face says why not), with the webfont's vertical
+ * metrics from next's capsize data. Bold text paints in Arial Bold, not in a
+ * synthesized bold of Arial, so a heading wraps where the webfont will wrap it.
+ */
+@font-face {
+  font-family: "Geist Arial";
+  font-weight: 100 449;
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+  size-adjust: 101.22%;
+  ascent-override: 99.29%;
+  descent-override: 29.14%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Geist Arial";
+  font-weight: 450 549;
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+  size-adjust: 103.38%;
+  ascent-override: 97.21%;
+  descent-override: 28.54%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Geist Arial";
+  font-weight: 550 624;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+  size-adjust: 99.86%;
+  ascent-override: 100.64%;
+  descent-override: 29.54%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Geist Arial";
+  font-weight: 625 674;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+  size-adjust: 100.91%;
+  ascent-override: 99.59%;
+  descent-override: 29.23%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Geist Arial";
+  font-weight: 675 900;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+  size-adjust: 102.26%;
+  ascent-override: 98.28%;
+  descent-override: 28.85%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Noto Sans Arial";
+  font-weight: 100 449;
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+  size-adjust: 102.61%;
+  ascent-override: 104.18%;
+  descent-override: 28.55%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Noto Sans Arial";
+  font-weight: 450 549;
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+  size-adjust: 105.27%;
+  ascent-override: 101.55%;
+  descent-override: 27.83%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Noto Sans Arial";
+  font-weight: 550 624;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+  size-adjust: 101.29%;
+  ascent-override: 105.54%;
+  descent-override: 28.93%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Noto Sans Arial";
+  font-weight: 625 674;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+  size-adjust: 102.72%;
+  ascent-override: 104.07%;
+  descent-override: 28.52%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Noto Sans Arial";
+  font-weight: 675 900;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+  size-adjust: 102.92%;
+  ascent-override: 103.87%;
+  descent-override: 28.47%;
+  line-gap-override: 0.00%;
+}
+
+/* Not lab:fallback-widths' 104.18%: at 104.7% fewer paragraphs rewrap on swap above #record, 323 vs 345 over 24 locales and 11 widths, English 8 vs 20 (PR 126). */
+@font-face {
+  font-family: "Open Sans Arial";
+  font-weight: 100 549;
+  src: local("Arial"), local("ArialMT"), local("Liberation Sans"), local("Arimo");
+  size-adjust: 104.70%;
+  ascent-override: 102.09%;
+  descent-override: 27.98%;
+  line-gap-override: 0.00%;
+}
+
+@font-face {
+  font-family: "Open Sans Arial";
+  font-weight: 550 900;
+  src: local("Arial Bold"), local("Arial-BoldMT"), local("Liberation Sans Bold"), local("Arimo Bold");
+  size-adjust: 100.85%;
+  ascent-override: 105.98%;
+  descent-override: 29.05%;
+  line-gap-override: 0.00%;
+}
+
+/*
  * CJK locales use the platform UI font rather than a downloaded webfont -- see
  * src/lib/fonts.ts for why. Applied to <body> by the locale layout, so the
  * variable is overridden before `body` reads it.

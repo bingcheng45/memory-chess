@@ -4,11 +4,11 @@
  * phone held sideways, and records every layout shift with the nodes that moved
  * and their rects before and after.
  * Each shift is tagged in the page with the screen showing when it happened:
- * config, memorize, solve or result. Two loads per width: /game, where the
+ * config, intro, memorize, solve or result. Two loads per width: /game, where the
  * start button opens a round, and the home page's round link, which memorizes
  * until the clock runs out (no Done, so the switch to solving is not an input),
- * places 4 of 6 pieces and submits. The leaderboard cutoffs answer "open" for
- * every board, so the round qualifies and the result screen shows its banner.
+ * places 4 of 6 pieces and submits. The leaderboard cutoffs answer every board full
+ * of scores any round beats, so the round ranks and the result screen shows its banner.
  * They answer when asked, as they do in the field, where the round warms them;
  * with --late-cutoffs they arrive LATE_CUTOFFS_MS after the result screen does,
  * as on a network slower than the whole round. Plays counter and leaderboard
@@ -24,12 +24,12 @@
  * false. With --late-cutoffs the run is a diagnostic: it prints every screen's
  * CLS and fails only if it cannot play.
  *
- *   npm run lab:cls-game -- --base http://localhost:3131 --out <dir> [--only en|de] [--late-cutoffs]
+ *   npm run lab:cls-game -- --base http://localhost:3131 --out <dir> [--only <locale>] [--late-cutoffs]
  */
-import { existsSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
-import { round, sessionWindowCls } from "./cls.mjs";
+import { exitCodeOf, measured, round, sessionWindowCls } from "./cls.mjs";
 import { argsOf, runPersona } from "./drive.mjs";
 
 const MAX_CLS = 0.02;
@@ -50,11 +50,10 @@ const START_SETTLE_MS = 3000;
 const LATE_CUTOFFS_MS = 1000;
 const CORRECT_PIECES = 4;
 const ROUND_PATH = "/game?pieceCount=6&memorizeTime=10&source=home_quick";
-const CASES = [
-  { name: "en", prefix: "" },
-  { name: "de", prefix: "/de" },
-];
-const SCREENS = ["config", "start", "memorize", "solve", "result"];
+const LOCALES = ["en", "de", "fi", "ru", "pt-BR", "pl", "hu", "ja", "zh-CN", "ko", "hi"];
+const CASES = LOCALES.map((name) => ({ name, prefix: name === "en" ? "" : `/${name}` }));
+const SCREENS = ["config", "start", "intro", "memorize", "solve", "result"];
+const GATE_START = ".round-gate-card button";
 const BOARD_FIT = `(() => {
   const board = document.querySelector("[data-round-board]");
   const area = board.parentElement;
@@ -66,13 +65,15 @@ const BOARD_FIT = `(() => {
   scroller.scrollTop = 0;
   return { board: Math.round(board.getBoundingClientRect().width), areaWidth: area.clientWidth, areaHeight: area.clientHeight, scrolled };
 })()`;
-const OPEN_CUTOFFS = { easy: { kind: "open" }, medium: { kind: "open" }, hard: { kind: "open" }, grandmaster: { kind: "open" } };
+const BEATEN_BOARD = { kind: "full", worst: { correctPieces: 0, totalWrongPieces: 99, memorizeTime: 999, solutionTime: 9999 } };
+const BEATEN_CUTOFFS = { easy: BEATEN_BOARD, medium: BEATEN_BOARD, hard: BEATEN_BOARD, grandmaster: BEATEN_BOARD };
 
 // Registered before any page script runs. The screen is read when the entry is delivered, right after the frame that shifted.
 const OBSERVE = `window.__shifts = [];
 new PerformanceObserver((list) => {
   const screen = document.getElementById("game-result-heading") ? "result"
     : document.querySelector("[data-game-config]") ? "config"
+    : document.querySelector(".round-gate") ? "intro"
     : document.querySelector('[data-round-phase="rebuild"]') ? "solve" : "memorize";
   const name = (node) => {
     const element = node && (node.nodeType === 1 ? node : node.parentElement);
@@ -113,7 +114,7 @@ async function clickSelector(page, selector) {
   await page.click(selector);
 }
 
-/** Answers the cutoffs with every board open, after `release` resolves; answers counter and leaderboard writes locally. */
+/** Answers the cutoffs with BEATEN_CUTOFFS after `release` resolves; answers counter and leaderboard writes locally. */
 async function stubNetwork(page, release) {
   page.on((method, params) => {
     if (method !== "Fetch.requestPaused") return;
@@ -124,7 +125,7 @@ async function stubNetwork(page, release) {
         responseHeaders: [{ name: "Content-Type", value: "application/json" }],
         body: Buffer.from(JSON.stringify(data)).toString("base64"),
       });
-    if (params.request.url.includes("/api/leaderboard/cutoffs")) release().then(() => respond({ data: OPEN_CUTOFFS }));
+    if (params.request.url.includes("/api/leaderboard/cutoffs")) release().then(() => respond({ data: BEATEN_CUTOFFS }));
     else if (params.request.method === "POST") respond({ success: true, data: { value: 1 } });
     else page.send("Fetch.continueRequest", { requestId: params.requestId });
   });
@@ -143,7 +144,13 @@ const fitError = ({ board, areaWidth, areaHeight }) =>
 
 async function playRound(page, base, prefix, text) {
   await page.goto(`${base}${prefix}${ROUND_PATH}`);
-  await page.waitFor(`document.querySelectorAll("[data-coordinate]").length === 64`, 20_000);
+  const phase = await page.waitFor(`document.querySelectorAll("[data-coordinate]").length === 64 && document.querySelector("[data-round-phase]").dataset.roundPhase`, 20_000);
+  if (phase !== "ready") throw new Error(`harness: the round opened in "${phase}", not behind the intro, because the page's read of the record outlasted its limit`);
+  await page.waitFor(`!document.querySelector(${JSON.stringify(GATE_START)})?.disabled`, 10_000);
+  await page.eval("document.fonts.ready.then(() => true)");
+  await page.sleep(SETTLE_MS);
+  await page.click(GATE_START);
+  await page.waitFor(`!document.querySelector(".round-gate")`, 10_000);
   const memorizeFit = await page.eval(BOARD_FIT);
   const cells = await page.eval(`[...document.querySelectorAll("[data-coordinate]")].map((el) => ({ square: el.dataset.coordinate, label: el.getAttribute("aria-label") || "" }))`);
   const pieces = cells.filter((p) => p.label !== text.empty(p.square));
@@ -264,26 +271,31 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
 async function main() {
   const args = argsOf(process.argv.slice(2), ".lab-drive/cls-game", "http://localhost:3131");
   const table = {};
-  let ok = true;
+  const verdicts = [];
   const lateCutoffs = process.argv.includes("--late-cutoffs");
   for (const testCase of CASES.filter(({ name }) => !args.only || name === args.only).map((testCase) => ({ ...testCase, lateCutoffs }))) {
     table[testCase.name] = {};
     for (const size of VIEWPORTS) {
-      process.env[CASE_ENV] = JSON.stringify({ testCase, viewport: size });
-      const run = await runPersona(join(testCase.name, size.name), "", args, import.meta.url);
-      ok &&= run.ok;
       const file = join(args.out, testCase.name, size.name, RESULT_FILE);
+      process.env[CASE_ENV] = JSON.stringify({ testCase, viewport: size });
+      const run = await measured(() => {
+        rmSync(file, { force: true });
+        return runPersona(join(testCase.name, size.name), "", args, import.meta.url);
+      });
+      verdicts.push(run.verdict);
       const result = existsSync(file) ? JSON.parse(readFileSync(file, "utf8")) : null;
       table[testCase.name][size.name] = result && clsByScreen(result);
-      const verdict = lateCutoffs ? (run.ok ? "DIAGNOSTIC" : "ERROR") : run.ok ? "PASS" : "FAIL";
-      console.log(`${verdict} ${testCase.name} ${size.name}: ${run.ok ? JSON.stringify(table[testCase.name][size.name]) : run.log}`);
+      const verdict = lateCutoffs && run.ok ? "DIAGNOSTIC" : run.verdict;
+      const tries = run.tries > 1 ? ` (try ${run.tries})` : "";
+      console.log(`${verdict} ${testCase.name} ${size.name}${tries}: ${run.ok ? JSON.stringify(table[testCase.name][size.name]) : run.log}`);
       if (result?.fit) console.log(`  board ${JSON.stringify(result.fit)}`);
       if (result?.resize) console.log(`  resize ${JSON.stringify({ freshTurned: result.resize.freshTurned, before: result.resize.before, turned: result.resize.turned, back: result.resize.back })}`);
       if (result?.resize?.followErrors.length && !BOARD_FOLLOWS_RESIZE_GATED) console.log(`KNOWN ISSUE ${testCase.name} ${size.name}: the board does not follow a mid round resize, ${result.resize.followErrors.join("; ")}`);
     }
   }
   writeFileSync(join(args.out, "table.json"), JSON.stringify(table, null, 2));
-  process.exit(ok ? 0 : 1);
+  console.log(`${verdicts.filter((verdict) => verdict === "FAIL").length} FAIL, ${verdicts.filter((verdict) => verdict === "ERROR").length} ERROR (a page or the harness timed out on every try)`);
+  process.exit(exitCodeOf(verdicts));
 }
 
 if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();

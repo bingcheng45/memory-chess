@@ -155,7 +155,7 @@ body {
   line-gap-override: 0.00%;
 }
 
-/* Not lab:fallback-widths' 104.18%: at 104.7% fewer paragraphs rewrap on swap above #record (24 locales, 11 widths: 323 vs 345, English 8 vs 20). */
+/* Not lab:fallback-widths' 104.18%: at 104.7% fewer paragraphs rewrap on swap above #record, 323 vs 345 over 24 locales and 11 widths, English 8 vs 20 (PR 126). */
 @font-face {
   font-family: "Open Sans Arial";
   font-weight: 100 549;

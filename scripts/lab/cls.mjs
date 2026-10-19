@@ -16,9 +16,8 @@
  * and for a new visitor's home, /game and /leaderboard in the long-string locales, where a translated line that
  * wraps differently in the fallback face moves everything under it when the webfont arrives.
  * Fails when either number is over MAX_CLS, or over the ceiling KNOWN gives a known defect at that width.
- * Loads scrolled into the page are reported, not gated: Chrome scores the sections in view as moving when the
- * webfonts swap in above them even though scroll anchoring holds them still. With --main their numbers print
- * beside the same loads on main. Every /api request that writes is answered locally and never sent.
+ * Loads scrolled into the page are reported, not gated. With --main their numbers print beside the same loads
+ * on main. Every /api request that writes is answered locally and never sent.
  *
  *   npm run lab:personas && npm run lab:cls -- --base http://localhost:3128 --out <dir> [--only <case>] [--main <base>]
  */
@@ -41,7 +40,7 @@ const KNOWN = {
   hi: { why: REWRAP, ceilings: { 390: 0.077, 1024: 0.047, 1280: 0.047 } },
 };
 const ceilingOf = (name, width) => KNOWN[name]?.ceilings[width] ?? MAX_CLS;
-const isScrolled = ({ path, centre }) => path.includes("#") || Boolean(centre);
+const isReportOnly = ({ path, centre }) => path.includes("#") || Boolean(centre);
 const HARNESS_TIMEOUT = /load event never fired|timed out after|drive script exceeded|harness: /;
 const ATTEMPTS = 3;
 const SETTLE_MS = 4500;
@@ -212,7 +211,7 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     };
   }
   writeFileSync(join(evidenceDir, RESULT_FILE), JSON.stringify(result, null, 2));
-  const over = isScrolled(testCase) ? [] : widths.filter((width) => Math.max(result[width].cls, result[width].shiftSum) > ceilingOf(name, width));
+  const over = isReportOnly(testCase) ? [] : widths.filter((width) => Math.max(result[width].cls, result[width].shiftSum) > ceilingOf(name, width));
   if (over.length > 0) throw new Error(`CLS or shiftSum over its ceiling at ${over.map((width) => `${width}: ${result[width].cls} / ${result[width].shiftSum} > ${ceilingOf(name, width)}`).join(", ")}`);
   return Object.fromEntries(widths.map((width) => [width, { cls: result[width].cls, shiftSum: result[width].shiftSum }]));
 }
@@ -246,7 +245,7 @@ async function main() {
     for (const [width, ceiling] of Object.entries(KNOWN[name]?.ceilings ?? {})) {
       if (table[name]?.[width]) console.log(`KNOWN ISSUE ${name} ${width}: ${KNOWN[name].why}, cls ${table[name][width].cls} / ${table[name][width].shiftSum}, ceiling ${ceiling}`);
     }
-    if (isScrolled(testCase)) reports.push({ name, widths: run.widths, main: mainArgs && (await runCase(testCase, mainArgs)).widths });
+    if (isReportOnly(testCase)) reports.push({ name, widths: run.widths, main: mainArgs && (await runCase(testCase, mainArgs)).widths });
   }
   writeFileSync(join(args.out, "table.json"), JSON.stringify(table, null, 2));
   console.log(`\nREPORT ONLY, loads scrolled into the page: cls / shiftSum at each width${mainArgs ? `, main (${mainArgs.base}) in brackets` : ""}`);

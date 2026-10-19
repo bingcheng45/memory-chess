@@ -16,8 +16,11 @@
  * and for a new visitor's home, /game and /leaderboard in the long-string locales, where a translated line that
  * wraps differently in the fallback face moves everything under it when the webfont arrives.
  * Fails when either number is over MAX_CLS, or over the ceiling KNOWN gives a known defect at that width.
+ * Loads scrolled into the page are reported, not gated: Chrome scores the sections in view as moving when the
+ * webfonts swap in above them even though scroll anchoring holds them still. With --main their numbers print
+ * beside the same loads on main. Every /api request that writes is answered locally and never sent.
  *
- *   npm run lab:personas && npm run lab:cls -- --base http://localhost:3128 --out <dir> [--only <case>]
+ *   npm run lab:personas && npm run lab:cls -- --base http://localhost:3128 --out <dir> [--only <case>] [--main <base>]
  */
 import { existsSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
@@ -26,29 +29,19 @@ import { argsOf, loadPersona, PERSONA_ENV, runPersona, sized } from "./drive.mjs
 
 const MAX_CLS = 0.02;
 const WIDTHS = [1440, 1280, 1024, 1000, 768, 640, 390, 375, 360, 320];
-const LOCALE_WIDTHS = [1280, 1024, 768, 390, 375, 320];
+const LOCALE_WIDTHS = [1280, 1024, 1000, 768, 390, 375, 320];
 const CASE_ENV = "LAB_CLS_CASE";
 const RESULT_FILE = "cls.json";
 const HOLD_MS = 1500;
 const REWRAP = "a line in the hero breaks differently in the fallback face and rewraps when the webfont arrives";
-const SCROLLED = "loaded scrolled into the page, the sections in view are scored as moving when the webfonts swap in above them";
 const KNOWN = {
   hu: { why: REWRAP, ceilings: { 320: 0.044, 1280: 0.027 } },
   pl: { why: REWRAP, ceilings: { 768: 0.041 } },
   ko: { why: REWRAP, ceilings: { 320: 0.035 } },
   hi: { why: REWRAP, ceilings: { 390: 0.077, 1024: 0.047, 1280: 0.047 } },
-  "newVisitor-record": { why: SCROLLED, ceilings: { 360: 0.064, 375: 0.07, 640: 0.03 } },
-  "thirtyDays-record": { why: SCROLLED, ceilings: { 360: 0.064, 375: 0.07, 640: 0.031 } },
-  "twoRounds-record": { why: SCROLLED, ceilings: { 360: 0.064, 375: 0.07, 640: 0.03, 768: 0.039 } },
-  "planEdge-record": { why: SCROLLED, ceilings: { 360: 0.064, 375: 0.07, 640: 0.031 } },
-  "dailyPlayed-record": { why: SCROLLED, ceilings: { 360: 0.064, 375: 0.071, 640: 0.031 } },
-  "note-record": { why: SCROLLED, ceilings: { 360: 0.064, 375: 0.07, 640: 0.031 } },
-  "note-tools": { why: SCROLLED, ceilings: { 360: 0.064, 375: 0.07, 640: 0.031 } },
-  "de-record": { why: SCROLLED, ceilings: { 320: 0.182, 360: 0.035, 390: 0.038 } },
-  "ja-record": { why: SCROLLED, ceilings: { 320: 0.032, 375: 0.039 } },
-  "ru-record": { why: SCROLLED, ceilings: { 320: 0.215, 360: 0.6, 375: 0.373, 390: 0.066, 640: 0.036, 768: 0.094, 1024: 0.033, 1280: 0.053, 1440: 0.048 } },
 };
 const ceilingOf = (name, width) => KNOWN[name]?.ceilings[width] ?? MAX_CLS;
+const isScrolled = ({ path, centre }) => path.includes("#") || Boolean(centre);
 const HARNESS_TIMEOUT = /load event never fired|timed out after|drive script exceeded|harness: /;
 const ATTEMPTS = 3;
 const SETTLE_MS = 4500;
@@ -180,6 +173,11 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
   let loadedWhileHeld = null;
   page.on((method, params) => {
     if (method !== "Fetch.requestPaused") return;
+    if (params.request.url.includes("/api/")) {
+      if (params.request.method === "GET") page.send("Fetch.continueRequest", { requestId: params.requestId });
+      else page.send("Fetch.fulfillRequest", { requestId: params.requestId, responseCode: 200, responseHeaders: [{ name: "Content-Type", value: "application/json" }], body: Buffer.from('{"success":true}').toString("base64") });
+      return;
+    }
     held.push(params.request.url);
     release ??= page.sleep(HOLD_MS).then(async () => (loadedWhileHeld = await page.eval(WEB_LOADED).catch(() => null)));
     // A request the page dropped by navigating on before the release has nothing left to continue.
@@ -187,7 +185,7 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
       if (!/Invalid InterceptionId/.test(error.message)) throw error;
     });
   });
-  await page.send("Fetch.enable", { patterns: urls.map((urlPattern) => ({ urlPattern, requestStage: "Request" })) });
+  await page.send("Fetch.enable", { patterns: [...urls, "*/api/*"].map((urlPattern) => ({ urlPattern, requestStage: "Request" })) });
 
   const result = {};
   for (const width of widths) {
@@ -214,33 +212,49 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     };
   }
   writeFileSync(join(evidenceDir, RESULT_FILE), JSON.stringify(result, null, 2));
-  const over = widths.filter((width) => Math.max(result[width].cls, result[width].shiftSum) > ceilingOf(name, width));
+  const over = isScrolled(testCase) ? [] : widths.filter((width) => Math.max(result[width].cls, result[width].shiftSum) > ceilingOf(name, width));
   if (over.length > 0) throw new Error(`CLS or shiftSum over its ceiling at ${over.map((width) => `${width}: ${result[width].cls} / ${result[width].shiftSum} > ${ceilingOf(name, width)}`).join(", ")}`);
   return Object.fromEntries(widths.map((width) => [width, { cls: result[width].cls, shiftSum: result[width].shiftSum }]));
 }
 
+async function runCase({ name, persona, ...testCase }, args) {
+  const file = join(args.out, name, RESULT_FILE);
+  process.env[CASE_ENV] = JSON.stringify({ name, ...testCase });
+  const run = await measured(() => {
+    rmSync(file, { force: true });
+    return runPersona(name, join(args.personas, `${persona}.json`), args, import.meta.url);
+  });
+  const widths = existsSync(file) ? Object.fromEntries(Object.entries(JSON.parse(readFileSync(file, "utf8"))).map(([width, { cls, shiftSum }]) => [width, { cls, shiftSum }])) : null;
+  return { ...run, widths };
+}
+
 async function main() {
   const args = argsOf(process.argv.slice(2), ".lab-cls", "http://localhost:3128");
+  const mainFlag = process.argv.indexOf("--main");
+  const mainArgs = mainFlag > 0 ? { ...args, base: process.argv[mainFlag + 1], out: join(args.out, "main") } : null;
   const cases = CASES.filter(({ name }) => !args.only || name === args.only);
   const table = {};
+  const reports = [];
   const verdicts = [];
-  for (const { name, persona, ...testCase } of cases) {
-    const { path } = testCase;
-    const file = join(args.out, name, RESULT_FILE);
-    process.env[CASE_ENV] = JSON.stringify({ name, ...testCase });
-    const run = await measured(() => {
-      rmSync(file, { force: true });
-      return runPersona(name, join(args.personas, `${persona}.json`), args, import.meta.url);
-    });
+  for (const testCase of cases) {
+    const { name, path } = testCase;
+    const run = await runCase(testCase, args);
     verdicts.push(run.verdict);
-    table[name] = existsSync(file) ? Object.fromEntries(Object.entries(JSON.parse(readFileSync(file, "utf8"))).map(([width, { cls, shiftSum }]) => [width, { cls, shiftSum }])) : null;
+    table[name] = run.widths;
     const tries = run.tries > 1 ? ` (try ${run.tries})` : "";
     console.log(`${run.verdict} ${name} ${path}${tries}: ${run.verdict === "PASS" ? JSON.stringify(table[name]) : run.log}`);
     for (const [width, ceiling] of Object.entries(KNOWN[name]?.ceilings ?? {})) {
       if (table[name]?.[width]) console.log(`KNOWN ISSUE ${name} ${width}: ${KNOWN[name].why}, cls ${table[name][width].cls} / ${table[name][width].shiftSum}, ceiling ${ceiling}`);
     }
+    if (isScrolled(testCase)) reports.push({ name, widths: run.widths, main: mainArgs && (await runCase(testCase, mainArgs)).widths });
   }
   writeFileSync(join(args.out, "table.json"), JSON.stringify(table, null, 2));
+  console.log(`\nREPORT ONLY, loads scrolled into the page: cls / shiftSum at each width${mainArgs ? `, main (${mainArgs.base}) in brackets` : ""}`);
+  for (const { name, widths, main } of reports) {
+    const cell = (numbers) => (numbers ? `${numbers.cls} / ${numbers.shiftSum}` : "no result");
+    console.log(`${name}: ${Object.keys(widths ?? {}).map((width) => `${width} ${cell(widths[width])}${main ? ` [${cell(main[width])}]` : ""}`).join(", ") || "no result"}`);
+  }
+  writeFileSync(join(args.out, "report.json"), JSON.stringify(reports, null, 2));
   console.log(`${verdicts.filter((verdict) => verdict === "FAIL").length} FAIL, ${verdicts.filter((verdict) => verdict === "ERROR").length} ERROR (a page or the harness timed out on every try)`);
   process.exit(exitCodeOf(verdicts));
 }

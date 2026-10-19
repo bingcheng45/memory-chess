@@ -6,7 +6,9 @@
  * Sans is measured on one line in its webfont and again in Arial Regular (weights under
  * 550) or Arial Bold, both at 100%. Prints, per family and weight, the summed webfont
  * width over the summed Arial width: the size-adjust that makes a fallback line as long
- * as the webfont line on average, with the 10th and 90th percentile of single texts.
+ * as the webfont line on average, with the 10th and 90th percentile of single texts,
+ * beside the size-adjust globals.css ships for that weight. Where the two differ,
+ * globals.css says why next to the face.
  *
  *   npm run lab:fallback-widths -- --base http://localhost:3128 --out <dir>
  */
@@ -62,7 +64,18 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
   return texts.length;
 }
 
+const shippedFaces = () =>
+  [...readFileSync("src/app/globals.css", "utf8").matchAll(/@font-face\s*{([^}]*)}/g)]
+    .map(([, body]) => Object.fromEntries([...body.matchAll(/([\w-]+):\s*([^;]+);/g)].map(([, key, value]) => [key, value.trim()])))
+    .filter((face) => / Arial"$/.test(face["font-family"] ?? ""))
+    .map((face) => ({ family: face["font-family"].replace(/"/g, "").replace(/ Arial$/, ""), range: face["font-weight"].split(" ").map(Number), sizeAdjust: parseFloat(face["size-adjust"]) / 100 }));
+
+function shippedOf(faces, family, weight) {
+  return faces.find((face) => face.family === family && face.range[0] <= weight && weight <= face.range[1])?.sizeAdjust ?? null;
+}
+
 function summarize(texts) {
+  const faces = shippedFaces();
   const groups = Object.groupBy(texts, ({ family, weight }) => `${family} ${weight}`);
   return Object.fromEntries(
     Object.entries(groups)
@@ -72,7 +85,8 @@ function summarize(texts) {
         const ratios = group.filter(({ web }) => web >= MIN_TEXT_PX).map(({ web, arial }) => web / arial).sort((a, b) => a - b);
         const at = (share) => Number(ratios[Math.floor(ratios.length * share)]?.toFixed(3));
         const sum = (field) => group.reduce((total, text) => total + text[field], 0);
-        return [key, { sizeAdjust: Number((sum("web") / sum("arial")).toFixed(4)), texts: ratios.length, p10: at(0.1), p90: at(0.9) }];
+        const { family, weight } = group[0];
+        return [key, { sizeAdjust: Number((sum("web") / sum("arial")).toFixed(4)), shipped: shippedOf(faces, family, Number(weight)), texts: ratios.length, p10: at(0.1), p90: at(0.9) }];
       }),
   );
 }

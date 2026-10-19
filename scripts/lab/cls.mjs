@@ -15,10 +15,10 @@
  * for the German, Japanese and Russian homes, new and 30-day, where translated copy fills the same reserved boxes,
  * and for a new visitor's home, /game and /leaderboard in the long-string locales, where a translated line that
  * wraps differently in the fallback face moves everything under it when the webfont arrives.
- * Fails when either number is over MAX_CLS, or over the ceiling KNOWN gives a known defect at that width.
- * Loads scrolled into the page hold the webfonts until RECORD_HOLD_MS, after the record has loaded from storage, and
- * are gated only on the shifts before that release; what the release moves is reported, and with --main printed
- * beside the same loads on main. Every /api request that writes is answered locally and never sent.
+ * Fails when either number is over MAX_CLS, or over the ceiling KNOWN gives a known defect at that width. A load
+ * scrolled into the page fails only when the shifts before its webfonts are released sum over MAX_CLS; the rest is
+ * reported, and with --main printed beside the same loads on main. Every /api request that writes is answered
+ * locally and never sent.
  *
  *   npm run lab:personas && npm run lab:cls -- --base http://localhost:3128 --out <dir> [--only <case>] [--main <base>]
  */
@@ -33,14 +33,14 @@ const LOCALE_WIDTHS = [1280, 1024, 1000, 768, 390, 375, 320];
 const CASE_ENV = "LAB_CLS_CASE";
 const RESULT_FILE = "cls.json";
 const HOLD_MS = 1500;
-const RECORD_HOLD_MS = 4000;
+const SCROLLED_HOLD_MS = 4000;
 const REWRAP = "a line in the hero breaks differently in the fallback face and rewraps when the webfont arrives";
 const KNOWN = {
   hu: { why: REWRAP, ceilings: { 320: 0.029 } },
   hi: { why: REWRAP, ceilings: { 1024: 0.047, 1280: 0.047 } },
 };
 const ceilingOf = (name, width) => KNOWN[name]?.ceilings[width] ?? MAX_CLS;
-const isReportOnly = ({ path, centre }) => path.includes("#") || Boolean(centre);
+const isScrolledLoad = ({ path, centre }) => path.includes("#") || Boolean(centre);
 const HARNESS_TIMEOUT = /load event never fired|timed out after|drive script exceeded|harness: /;
 const ATTEMPTS = 3;
 const SETTLE_MS = 4500;
@@ -173,7 +173,7 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
   let release = null;
   let loadedWhileHeld = null;
   let atRelease = null;
-  const holdMs = isReportOnly(testCase) ? RECORD_HOLD_MS : HOLD_MS;
+  const holdMs = isScrolledLoad(testCase) ? SCROLLED_HOLD_MS : HOLD_MS;
   page.on((method, params) => {
     if (method !== "Fetch.requestPaused") return;
     if (params.request.url.includes("/api/")) {
@@ -210,18 +210,20 @@ export default async function measure(page, { baseUrl, evidenceDir }) {
     if (held.length === 0) throw new Error(`at ${width}: no webfont request was held, so the fallback faces may never have painted`);
     if (loadedWhileHeld?.length) throw new Error(`at ${width}: ${loadedWhileHeld.join(", ")} had already loaded while the webfont files were held`);
     if (!statusAfter.includes("loaded")) throw new Error(`at ${width}: Geist Mono did not load after release, status ${JSON.stringify(statusAfter)}`);
-    if (isReportOnly(testCase) && atRelease?.record !== (await page.eval(RECORD_TEXT))) throw new Error(`harness: at ${width} #record changed after the webfonts were released, so its shifts were not gated`);
+    if (isScrolledLoad(testCase) && (atRelease?.record == null || atRelease.record !== (await page.eval(RECORD_TEXT)))) {
+      throw new Error(`harness: at ${width} #record was missing at the webfont release or changed after it, so its shifts were not gated`);
+    }
     result[width] = {
       cls: round(sessionWindowCls(shifts)),
       shiftSum: round(shifts.reduce((sum, shift) => sum + shift.value, 0)),
-      beforeFonts: round(shifts.filter((shift) => shift.at < atRelease?.now).reduce((sum, shift) => sum + shift.value, 0)),
+      beforeFonts: round(shifts.filter((shift) => shift.at < (atRelease?.now ?? 0)).reduce((sum, shift) => sum + shift.value, 0)),
       held: held.map((url) => url.split("/").at(-1)),
       statusAfter,
       shifts: shifts.map((shift) => ({ ...shift, value: round(shift.value) })),
     };
   }
   writeFileSync(join(evidenceDir, RESULT_FILE), JSON.stringify(result, null, 2));
-  if (isReportOnly(testCase)) {
+  if (isScrolledLoad(testCase)) {
     const over = widths.filter((width) => result[width].beforeFonts > MAX_CLS);
     if (over.length > 0) throw new Error(`shifts before the webfonts were released over ${MAX_CLS} at ${over.map((width) => `${width}: ${result[width].beforeFonts}`).join(", ")}`);
   } else {
@@ -260,7 +262,7 @@ async function main() {
     for (const [width, ceiling] of Object.entries(KNOWN[name]?.ceilings ?? {})) {
       if (table[name]?.[width]) console.log(`KNOWN ISSUE ${name} ${width}: ${KNOWN[name].why}, cls ${table[name][width].cls} / ${table[name][width].shiftSum}, ceiling ${ceiling}`);
     }
-    if (isReportOnly(testCase)) reports.push({ name, widths: run.widths, main: mainArgs && (await runCase(testCase, mainArgs)).widths });
+    if (isScrolledLoad(testCase)) reports.push({ name, widths: run.widths, main: mainArgs && (await runCase(testCase, mainArgs)).widths });
   }
   writeFileSync(join(args.out, "table.json"), JSON.stringify(table, null, 2));
   console.log(`\nLOADS SCROLLED INTO THE PAGE: cls / shiftSum (report only) / before the webfonts were released (gated) at each width${mainArgs ? `, main (${mainArgs.base}) in brackets` : ""}`);

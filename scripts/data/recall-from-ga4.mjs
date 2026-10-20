@@ -19,6 +19,7 @@ const CSV_COLUMNS = [
   "p25_accuracy",
   "p75_accuracy",
   "perfect_share",
+  "zero_share",
 ];
 
 class UsageError extends Error {}
@@ -86,6 +87,7 @@ function nearestRankPercentile(sorted, rounds, share) {
 }
 
 const oneDecimal = (value) => Math.round(value * 10) / 10;
+const shareScoring = (counts, accuracy, rounds) => oneDecimal(((counts.get(accuracy) ?? 0) / rounds) * 100);
 
 function summarize({ pieces, seconds, counts }, players) {
   const sorted = [...counts].sort(([a], [b]) => a - b);
@@ -100,7 +102,8 @@ function summarize({ pieces, seconds, counts }, players) {
     medianAccuracy: nearestRankPercentile(sorted, rounds, 0.5),
     p25Accuracy: nearestRankPercentile(sorted, rounds, 0.25),
     p75Accuracy: nearestRankPercentile(sorted, rounds, 0.75),
-    perfectShare: oneDecimal(((counts.get(100) ?? 0) / rounds) * 100),
+    perfectShare: shareScoring(counts, 100, rounds),
+    zeroShare: shareScoring(counts, 0, rounds),
   };
 }
 
@@ -141,6 +144,7 @@ function recallCsv(dataset) {
       cell.p25Accuracy,
       cell.p75Accuracy,
       cell.perfectShare,
+      cell.zeroShare,
     ].join(","),
   );
   return `${[CSV_COLUMNS.join(","), ...rows].join("\n")}\n`;

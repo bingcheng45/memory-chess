@@ -20,7 +20,8 @@
       "medianAccuracy": 100,
       "p25Accuracy": 100,
       "p75Accuracy": 100,
-      "perfectShare": 77.1
+      "perfectShare": 77.1,
+      "zeroShare": 13.4
     },
     {
       "pieceCount": 3,
@@ -31,7 +32,8 @@
       "medianAccuracy": 100,
       "p25Accuracy": 67,
       "p75Accuracy": 100,
-      "perfectShare": 72.6
+      "perfectShare": 72.6,
+      "zeroShare": 4.8
     },
     {
       "pieceCount": 4,
@@ -42,7 +44,8 @@
       "medianAccuracy": 75,
       "p25Accuracy": 50,
       "p75Accuracy": 100,
-      "perfectShare": 43.4
+      "perfectShare": 43.4,
+      "zeroShare": 7.4
     },
     {
       "pieceCount": 5,
@@ -53,7 +56,8 @@
       "medianAccuracy": 60,
       "p25Accuracy": 40,
       "p75Accuracy": 80,
-      "perfectShare": 21.8
+      "perfectShare": 21.8,
+      "zeroShare": 3
     },
     {
       "pieceCount": 6,
@@ -64,7 +68,8 @@
       "medianAccuracy": 67,
       "p25Accuracy": 33,
       "p75Accuracy": 83,
-      "perfectShare": 9.4
+      "perfectShare": 9.4,
+      "zeroShare": 18.8
     },
     {
       "pieceCount": 6,
@@ -75,7 +80,8 @@
       "medianAccuracy": 50,
       "p25Accuracy": 17,
       "p75Accuracy": 67,
-      "perfectShare": 11.1
+      "perfectShare": 11.1,
+      "zeroShare": 15.7
     },
     {
       "pieceCount": 6,
@@ -86,7 +92,8 @@
       "medianAccuracy": 67,
       "p25Accuracy": 50,
       "p75Accuracy": 100,
-      "perfectShare": 30.6
+      "perfectShare": 30.6,
+      "zeroShare": 0
     },
     {
       "pieceCount": 6,
@@ -97,7 +104,8 @@
       "medianAccuracy": 83,
       "p25Accuracy": 50,
       "p75Accuracy": 100,
-      "perfectShare": 34.5
+      "perfectShare": 34.5,
+      "zeroShare": 4.4
     },
     {
       "pieceCount": 7,
@@ -108,7 +116,8 @@
       "medianAccuracy": 71,
       "p25Accuracy": 43,
       "p75Accuracy": 86,
-      "perfectShare": 12.9
+      "perfectShare": 12.9,
+      "zeroShare": 2.4
     },
     {
       "pieceCount": 8,
@@ -119,7 +128,8 @@
       "medianAccuracy": 38,
       "p25Accuracy": 25,
       "p75Accuracy": 75,
-      "perfectShare": 3.2
+      "perfectShare": 3.2,
+      "zeroShare": 3.2
     },
     {
       "pieceCount": 12,
@@ -130,7 +140,8 @@
       "medianAccuracy": 42,
       "p25Accuracy": 17,
       "p75Accuracy": 58,
-      "perfectShare": 1.4
+      "perfectShare": 1.4,
+      "zeroShare": 16.2
     }
   ]
 }

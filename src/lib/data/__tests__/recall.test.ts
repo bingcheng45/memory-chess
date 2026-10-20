@@ -10,6 +10,7 @@ const cell = (pieceCount: number, memorizeSeconds: number, meanAccuracy: number)
   p25Accuracy: 25,
   p75Accuracy: 75,
   perfectShare: 10,
+  zeroShare: 5,
 });
 
 const DATASET: RecallDataset = {
@@ -51,6 +52,18 @@ it("describes the data as a schema.org Dataset with its range, license and files
     license: "https://creativecommons.org/licenses/by/4.0/",
     creator: { "@type": "Person", name: "Bing Cheng" },
   });
+  expect(data.variableMeasured).toEqual([
+    "piece count",
+    "study time setting in seconds",
+    "rounds",
+    "players",
+    "mean accuracy",
+    "median accuracy",
+    "25th percentile accuracy",
+    "75th percentile accuracy",
+    "perfect round share",
+    "share of rounds that scored 0",
+  ]);
   expect(data.distribution.map((file) => [file.encodingFormat, file.contentUrl])).toEqual([
     ["text/csv", "https://raw.githubusercontent.com/bingcheng45/memory-chess/main/data/recall/latest.csv"],
     ["application/json", "https://raw.githubusercontent.com/bingcheng45/memory-chess/main/data/recall/latest.json"],

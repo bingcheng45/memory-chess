@@ -98,12 +98,13 @@ it("summarizes each cell with enough rounds and players, and counts the rounds i
         p25Accuracy: 0,
         p75Accuracy: 50,
         perfectShare: 9.1,
+        zeroShare: 30.3,
       },
     ],
   });
   expect(read("latest.csv")).toBe(
-    "piece_count,memorize_seconds,rounds,players,mean_accuracy,median_accuracy,p25_accuracy,p75_accuracy,perfect_share\n" +
-      "6,10,33,7,39.4,50,0,50,9.1\n",
+    "piece_count,memorize_seconds,rounds,players,mean_accuracy,median_accuracy,p25_accuracy,p75_accuracy,perfect_share,zero_share\n" +
+      "6,10,33,7,39.4,50,0,50,9.1,30.3\n",
   );
   expect(readdirSync(join(dir, "out")).sort()).toEqual(["2026-10-19.json", "latest.csv", "latest.json"]);
   expect(read("2026-10-19.json")).toBe(read("latest.json"));

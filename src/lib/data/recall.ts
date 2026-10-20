@@ -10,6 +10,7 @@ export interface RecallCell {
   readonly p25Accuracy: number;
   readonly p75Accuracy: number;
   readonly perfectShare: number;
+  readonly zeroShare: number;
 }
 
 export interface RecallDataset {
@@ -76,7 +77,18 @@ export function recallStructuredData(dataset: RecallDataset, { name, description
     publisher: { "@type": "Organization", name: "Memory Chess", url: SITE_URL },
     keywords: ["chess", "memory", "visual memory", "chess position recall", "open data"],
     measurementTechnique: "Finished rounds of the Memory Chess recall game, recorded as Google Analytics 4 events",
-    variableMeasured: ["piece count", "study time in seconds", "rounds", "players", "mean accuracy", "median accuracy", "perfect round share"],
+    variableMeasured: [
+      "piece count",
+      "study time setting in seconds",
+      "rounds",
+      "players",
+      "mean accuracy",
+      "median accuracy",
+      "25th percentile accuracy",
+      "75th percentile accuracy",
+      "perfect round share",
+      "share of rounds that scored 0",
+    ],
     distribution: [
       { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${RAW_FILE}/latest.csv` },
       { "@type": "DataDownload", encodingFormat: "application/json", contentUrl: `${RAW_FILE}/latest.json` },

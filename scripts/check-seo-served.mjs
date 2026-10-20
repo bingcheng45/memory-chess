@@ -8,7 +8,7 @@
 const BASE = (process.argv[2] ?? "http://localhost:3103").replace(/\/$/, "");
 const SITE = "https://thememorychess.com";
 const UA = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
-const SOCIAL_IMAGE = `${SITE}/social-preview.png`;
+const SOCIAL_IMAGE = `${SITE}/social/v2/memory-chess-1200x630.jpg`;
 const MAX_TITLE = 64;
 
 const GAME_TITLE = "Chess Memory Game: Rebuild the Position | Memory Chess";

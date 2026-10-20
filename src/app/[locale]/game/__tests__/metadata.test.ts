@@ -8,11 +8,11 @@ jest.mock("next-intl/server", () => ({
 jest.mock("@/components/reference/GameReference", () => () => null);
 
 const SOCIAL_IMAGE = {
-  url: "https://thememorychess.com/social-preview.png",
+  url: "https://thememorychess.com/social/v2/memory-chess-1200x630.jpg",
   width: 1200,
   height: 630,
-  type: "image/png",
-  alt: "Memory Chess knight and brain logo — thememorychess.com",
+  type: "image/jpeg",
+  alt: "Memory Chess: how many chess pieces can you remember? A chess position to study, then rebuild from memory.",
 };
 
 describe("game metadata", () => {

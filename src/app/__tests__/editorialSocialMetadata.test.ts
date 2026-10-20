@@ -4,7 +4,7 @@ import { generateMetadata as changelog } from "@/app/[locale]/changelog/page";
 import { generateMetadata as privacy } from "@/app/[locale]/privacy/page";
 import { generateMetadata as terms } from "@/app/[locale]/terms/page";
 
-const SOCIAL_IMAGE_URL = "https://thememorychess.com/social-preview.png";
+const SOCIAL_IMAGE_URL = "https://thememorychess.com/social/v2/memory-chess-1200x630.jpg";
 
 const IN_ENGLISH = { params: Promise.resolve({ locale: "en" }) };
 

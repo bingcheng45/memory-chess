@@ -5,16 +5,23 @@ const BRAND_NAME = "Memory Chess";
 export const ORGANIZATION_ID = `${SITE_URL}/#organization`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 
-// Social preview artwork. Served as a static file from /public rather than a
-// dynamic `opengraph-image` route: X's card crawler is noticeably more reliable
-// against a plain PNG with no query string and no Next.js `Vary` headers.
+// Social preview artwork, built from the launch artwork by
+// scripts/build-social-images.mjs. Served as static files from /public rather
+// than a dynamic `opengraph-image` route: X's card crawler is noticeably more
+// reliable against a plain image with no query string and no Next.js `Vary`
+// headers. The folder matches OUT_DIR in that script.
+const SOCIAL_IMAGE_URL = (size: string) => `${SITE_URL}/social/v2/memory-chess-${size}.jpg`;
+
 export const socialImage = {
-  url: `${SITE_URL}/social-preview.png`,
+  url: SOCIAL_IMAGE_URL("1200x630"),
   width: 1200,
   height: 630,
-  type: "image/png",
-  alt: "Memory Chess knight and brain logo — thememorychess.com",
+  type: "image/jpeg",
+  alt: "Memory Chess: how many chess pieces can you remember? A chess position to study, then rebuild from memory.",
 };
+
+/** 16:9, 4:3 and 1:1 crops, the set Google asks for in structured data. */
+export const SCHEMA_IMAGES = ["1200x675", "1200x900", "1200x1200"].map(SOCIAL_IMAGE_URL);
 
 /** Open Graph and X card fields for a page that shares the site artwork. */
 export function socialMetadata({ title, description, url }: { title: string; description: string; url: string }) {

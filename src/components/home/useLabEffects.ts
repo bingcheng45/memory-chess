@@ -25,7 +25,9 @@ async function fetchTotalPlays(): Promise<TotalPlays> {
   }
 }
 
-/** `initialPlays` is the count the server read, shown until the browser's own request answers. */
+const keepKnownCountOnFailure = (current: TotalPlays, next: TotalPlays): TotalPlays =>
+  next.status === "unavailable" && current.status === "known" ? current : next;
+
 export function useTotalPlays(initialPlays?: number): TotalPlays {
   const [totalPlays, setTotalPlays] = useState<TotalPlays>(() =>
     initialPlays === undefined ? { status: "loading" } : { status: "known", plays: initialPlays },
@@ -35,8 +37,7 @@ export function useTotalPlays(initialPlays?: number): TotalPlays {
     let cancelled = false;
     fetchTotalPlays().then((result) => {
       if (cancelled) return;
-      // A failed browser request keeps the server's count rather than blanking it.
-      setTotalPlays((current) => (result.status === "unavailable" && current.status === "known" ? current : result));
+      setTotalPlays((current) => keepKnownCountOnFailure(current, result));
     });
     return () => {
       cancelled = true;

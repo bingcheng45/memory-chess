@@ -5,10 +5,8 @@ import { languageTag } from "@/lib/seo/alternates";
 import type { PlayCount } from "@/lib/services/totalPlays";
 
 const COUNT_STEP = 1000;
-/** Locales whose sentences follow one another with no space after the full stop. */
 const UNSPACED_SENTENCES: ReadonlySet<string> = new Set(["ja", "zh-CN", "zh-TW"]);
 
-/** The About page's facts line. It lives outside the page's gated, translated text, so its words come from the message catalogue. */
 export function AboutFacts({ plays }: { readonly plays: PlayCount | null }) {
   const t = useTranslations("common.about");
   const locale = useLocale();

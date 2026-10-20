@@ -73,7 +73,6 @@ interface TrustPageProps {
   readonly locale: Locale;
   /** What `loadPage` returned for this name and locale. */
   readonly page: LoadedPage;
-  /** Content that is not part of the translated page text, set before its first section. */
   readonly before?: ReactNode;
   /** Content that is not part of the translated page text, set after its last section. */
   readonly after?: ReactNode;

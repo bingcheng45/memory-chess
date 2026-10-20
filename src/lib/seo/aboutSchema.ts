@@ -1,7 +1,6 @@
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import { BRAND_AUTHOR, BRAND_ORGANIZATION, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/brand";
 
-/** The About page in `locale`, titled `title`: about the Organization, with its developer as the main entity. */
 export function aboutSchema(locale: string, title: string) {
   const url = localizedUrl("/about", locale);
   return {

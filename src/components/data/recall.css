@@ -22,6 +22,6 @@
   .lab-paper .recall-bar { grid-template-columns: 64px minmax(0, 1fr) 76px; gap: 8px; }
 }
 .lab-paper .recall-scale { margin: -16px 0 0; font: 400 14px/1.5 var(--lp-body); color: var(--lp-muted); }
-@media (min-width: 1120px) {
+@media (min-width: 1024px) {
   .lab-paper .recall-scroll { width: max-content; min-width: 100%; max-width: calc(100% + 320px); }
 }

@@ -1,0 +1,136 @@
+{
+  "name": "Memory Chess position recall",
+  "source": "Google Analytics 4 event round_complete, property of thememorychess.com",
+  "license": "CC BY 4.0",
+  "start": "2026-09-29",
+  "end": "2026-10-19",
+  "minRounds": 30,
+  "minPlayers": 5,
+  "totalRounds": 3734,
+  "roundsWithoutSettings": 44,
+  "roundsInSmallCells": 1126,
+  "publishedRounds": 2564,
+  "cells": [
+    {
+      "pieceCount": 2,
+      "memorizeSeconds": 10,
+      "rounds": 380,
+      "players": 71,
+      "meanAccuracy": 81.8,
+      "medianAccuracy": 100,
+      "p25Accuracy": 100,
+      "p75Accuracy": 100,
+      "perfectShare": 77.1
+    },
+    {
+      "pieceCount": 3,
+      "memorizeSeconds": 10,
+      "rounds": 124,
+      "players": 21,
+      "meanAccuracy": 85,
+      "medianAccuracy": 100,
+      "p25Accuracy": 67,
+      "p75Accuracy": 100,
+      "perfectShare": 72.6
+    },
+    {
+      "pieceCount": 4,
+      "memorizeSeconds": 10,
+      "rounds": 242,
+      "players": 40,
+      "meanAccuracy": 71,
+      "medianAccuracy": 75,
+      "p25Accuracy": 50,
+      "p75Accuracy": 100,
+      "perfectShare": 43.4
+    },
+    {
+      "pieceCount": 5,
+      "memorizeSeconds": 10,
+      "rounds": 101,
+      "players": 17,
+      "meanAccuracy": 63,
+      "medianAccuracy": 60,
+      "p25Accuracy": 40,
+      "p75Accuracy": 80,
+      "perfectShare": 21.8
+    },
+    {
+      "pieceCount": 6,
+      "memorizeSeconds": 5,
+      "rounds": 32,
+      "players": 8,
+      "meanAccuracy": 54.2,
+      "medianAccuracy": 67,
+      "p25Accuracy": 33,
+      "p75Accuracy": 83,
+      "perfectShare": 9.4
+    },
+    {
+      "pieceCount": 6,
+      "memorizeSeconds": 10,
+      "rounds": 1294,
+      "players": 292,
+      "meanAccuracy": 48.3,
+      "medianAccuracy": 50,
+      "p25Accuracy": 17,
+      "p75Accuracy": 67,
+      "perfectShare": 11.1
+    },
+    {
+      "pieceCount": 6,
+      "memorizeSeconds": 15,
+      "rounds": 49,
+      "players": 6,
+      "meanAccuracy": 71.1,
+      "medianAccuracy": 67,
+      "p25Accuracy": 50,
+      "p75Accuracy": 100,
+      "perfectShare": 30.6
+    },
+    {
+      "pieceCount": 6,
+      "memorizeSeconds": 20,
+      "rounds": 113,
+      "players": 10,
+      "meanAccuracy": 69.3,
+      "medianAccuracy": 83,
+      "p25Accuracy": 50,
+      "p75Accuracy": 100,
+      "perfectShare": 34.5
+    },
+    {
+      "pieceCount": 7,
+      "memorizeSeconds": 10,
+      "rounds": 124,
+      "players": 8,
+      "meanAccuracy": 61.5,
+      "medianAccuracy": 71,
+      "p25Accuracy": 43,
+      "p75Accuracy": 86,
+      "perfectShare": 12.9
+    },
+    {
+      "pieceCount": 8,
+      "memorizeSeconds": 10,
+      "rounds": 31,
+      "players": 6,
+      "meanAccuracy": 45.4,
+      "medianAccuracy": 38,
+      "p25Accuracy": 25,
+      "p75Accuracy": 75,
+      "perfectShare": 3.2
+    },
+    {
+      "pieceCount": 12,
+      "memorizeSeconds": 8,
+      "rounds": 74,
+      "players": 14,
+      "meanAccuracy": 39.8,
+      "medianAccuracy": 42,
+      "p25Accuracy": 17,
+      "p75Accuracy": 58,
+      "perfectShare": 1.4
+    }
+  ]
+}

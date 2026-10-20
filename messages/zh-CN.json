@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "人们对国际象棋局面记得有多准？来自 Memory Chess {rounds, number} 个回合的数据",
+      "title": "人们对国际象棋局面记得有多准？",
       "description": "按棋子数和记忆时间统计的国际象棋局面平均记忆准确率，数据来自 Memory Chess 的 {rounds, number} 个已完成回合。数据以 CC BY 4.0 许可开放，并附方法及其局限。",
       "socialTitle": "人们对国际象棋局面记得有多准？",
       "socialDescription": "按棋子数和记忆时间统计的记忆准确率，数据来自 Memory Chess 的 {rounds, number} 个已完成回合。数据以 CC BY 4.0 许可开放。"
     },
     "kicker": "开放数据",
     "title": "人们对国际象棋局面记得有多准？",
-    "answer": "在 {start} 至 {end} 期间 Memory Chess 的 {rounds, number} 个已完成回合中，观察局面 10 秒的玩家在 2 个棋子时平均准确率为 {two}（{twoRounds, number} 个回合），但 6 个棋子时只有 {six}（{sixRounds, number} 个回合）。这些 6 子回合中仅有 {sixPerfect} 是满分，而在 12 个棋子、8 秒的设置下，平均值降到 {twelve}，满分为 {twelvePerfect}（{twelveRounds, number} 个回合）。",
+    "answer": "在 {start} 至 {end} 期间 Memory Chess 的 {rounds, number} 个已完成回合中，记忆时间设为 10 秒的回合在 2 个棋子时平均准确率为 {two}（{twoRounds, number} 个回合），在默认设置的 6 个棋子时为 {six}（{sixRounds, number} 个回合）。这些 6 子回合中有 {sixPerfect} 是满分。在选择人数较少的 12 个棋子、8 秒设置下，平均值为 {twelve}，满分为 {twelvePerfect}（{twelveRounds, number} 个回合）。",
     "englishNote": "下方关于方法、局限和引用的说明为英文。",
     "chart": {
       "byPieces": "记忆时间为 {seconds} 秒时的平均记忆准确率",
       "bySeconds": "{pieces} 个棋子的平均记忆准确率，按记忆时间",
+      "bySecondsNote": "每种记忆时间由不同的玩家选择，因此这些柱形并不能说明增加时间有多大帮助。",
       "pieces": "{count, plural, other {# 子}}",
       "seconds": "{count} 秒",
       "rounds": "{count, plural, other {# 回合}}",
@@ -1822,14 +1823,15 @@
       "median": "中位数",
       "middle": "中间一半",
       "middleValue": "{low} 至 {high}",
-      "perfect": "满分"
+      "perfect": "满分",
+      "zero": "零分"
     },
     "links": {
       "csv": "下载 CSV",
       "notes": "GitHub 上的研究笔记",
       "play": "玩一回合"
     },
-    "aboutLine": "每一个已完成回合的结果都会以汇总形式公布。",
+    "aboutLine": "我们公布 Google Analytics 记录的回合的汇总记忆统计，仅限回合数和玩家数足够的设置。",
     "aboutLink": "查看记忆数据"
   }
 }

@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "Hvor godt husker folk skakstillinger? Data fra {rounds, number} runder i Memory Chess",
-      "description": "Gennemsnitlig præcision, når skakstillinger skal genskabes, efter antal brikker og husketid, fra {rounds, number} gennemførte runder i Memory Chess. Åbne data under CC BY 4.0, med metoden og dens begrænsninger.",
+      "title": "Hvor godt husker folk skakstillinger?",
+      "description": "Hvor godt skakstillinger genskabes i gennemsnit, efter antal brikker og husketid, fra {rounds, number} gennemførte runder i Memory Chess. Åbne data under CC BY 4.0.",
       "socialTitle": "Hvor godt husker folk skakstillinger?",
       "socialDescription": "Præcision efter antal brikker og husketid, fra {rounds, number} gennemførte runder i Memory Chess. Åbne data under CC BY 4.0."
     },
     "kicker": "Åbne data",
     "title": "Hvor godt husker folk skakstillinger?",
-    "answer": "I {rounds, number} gennemførte runder i Memory Chess fra {start} til {end} opnåede spillere, der så på en stilling i 10 sekunder, i gennemsnit en præcision på {two} med 2 brikker ({twoRounds, number} runder), men kun {six} med 6 brikker ({sixRounds, number} runder). Blot {sixPerfect} af runderne med 6 brikker var fejlfri, og med 12 brikker og 8 sekunder faldt gennemsnittet til {twelve}, med {twelvePerfect} fejlfri ({twelveRounds, number} runder).",
+    "answer": "I {rounds, number} gennemførte runder i Memory Chess fra {start} til {end} opnåede runder indstillet til 10 sekunders husketid i gennemsnit en præcision på {two} med 2 brikker ({twoRounds, number} runder) og {six} med 6 brikker, som er standardindstillingen ({sixRounds, number} runder). {sixPerfect} af disse runder med 6 brikker var fejlfri. Med 12 brikker og 8 sekunder, en indstilling færre spillere valgte, var gennemsnittet {twelve}, med {twelvePerfect} fejlfri ({twelveRounds, number} runder).",
     "englishNote": "Noterne om metode, begrænsninger og kildeangivelse nedenfor er på engelsk.",
     "chart": {
       "byPieces": "Gennemsnitlig præcision med {seconds} sekunders husketid",
       "bySeconds": "Gennemsnitlig præcision for {pieces} brikker, efter husketid",
+      "bySecondsNote": "Forskellige spillere valgte hver husketid, så søjlerne viser ikke, hvor meget ekstra tid hjælper.",
       "pieces": "{count, plural, one {# brik} other {# brikker}}",
       "seconds": "{count} s",
       "rounds": "{count, plural, one {# runde} other {# runder}}",
@@ -1822,14 +1823,15 @@
       "median": "Median",
       "middle": "Midterste halvdel",
       "middleValue": "{low} til {high}",
-      "perfect": "Fejlfri"
+      "perfect": "Fejlfri",
+      "zero": "0 point"
     },
     "links": {
       "csv": "Download CSV-filen",
       "notes": "Feltnoter på GitHub",
       "play": "Spil en runde"
     },
-    "aboutLine": "Resultaterne fra hver gennemført runde offentliggøres samlet.",
+    "aboutLine": "Samlede statistikker for genkaldelse fra runder registreret i Google Analytics offentliggøres for indstillinger med nok runder og spillere.",
     "aboutLink": "Se hukommelsesdataene"
   }
 }

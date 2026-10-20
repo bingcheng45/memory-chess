@@ -45,7 +45,7 @@ describe("AboutPage", () => {
 
     const data = screen.getByRole("link", { name: "See the recall data" });
     expect(data).toHaveAttribute("href", "/data");
-    expect(data.parentElement).toHaveTextContent("The results of every finished round are published in aggregate. See the recall data");
+    expect(data.parentElement).toHaveTextContent("Aggregate recall statistics from rounds recorded in Google Analytics are published, for settings with enough rounds and players. See the recall data");
     const telegram = screen.getByRole("link", { name: "Join the Telegram group" });
     expect(data.compareDocumentPosition(telegram) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });

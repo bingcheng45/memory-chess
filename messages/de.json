@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "Wie gut merken sich Menschen Schachstellungen? Daten aus {rounds, number} Runden Memory Chess",
-      "description": "Wie gut man sich Schachstellungen im Schnitt merkt, nach Figurenzahl und Einprägezeit, aus {rounds, number} beendeten Runden Memory Chess. Offene Daten unter CC BY 4.0, mit Methode und ihren Grenzen.",
+      "title": "Wie gut merkt man sich Schachstellungen?",
+      "description": "Wie gut man sich Schachstellungen merkt, nach Figurenzahl und Einprägezeit, aus {rounds, number} beendeten Runden Memory Chess. Offene Daten unter CC BY 4.0.",
       "socialTitle": "Wie gut merken sich Menschen Schachstellungen?",
       "socialDescription": "Erinnerung nach Figurenzahl und Einprägezeit, aus {rounds, number} beendeten Runden Memory Chess. Offene Daten unter CC BY 4.0."
     },
     "kicker": "Offene Daten",
     "title": "Wie gut merken sich Menschen Schachstellungen?",
-    "answer": "In {rounds, number} beendeten Runden Memory Chess vom {start} bis zum {end} erreichten Spielende, die sich eine Stellung 10 Sekunden lang einprägten, mit 2 Figuren im Schnitt eine Genauigkeit von {two} ({twoRounds, number} Runden), mit 6 Figuren aber nur {six} ({sixRounds, number} Runden). Gerade einmal {sixPerfect} dieser Runden mit 6 Figuren waren perfekt, und mit 12 Figuren und 8 Sekunden sank der Schnitt auf {twelve}, mit {twelvePerfect} perfekten Runden ({twelveRounds, number} Runden).",
+    "answer": "Von {rounds, number} beendeten Runden Memory Chess vom {start} bis zum {end} erreichten die Runden mit einer eingestellten Einprägezeit von 10 Sekunden im Schnitt eine Genauigkeit von {two} mit 2 Figuren ({twoRounds, number} Runden) und {six} mit 6 Figuren, der Standardeinstellung ({sixRounds, number} Runden). {sixPerfect} dieser Runden mit 6 Figuren waren perfekt. Mit 12 Figuren und 8 Sekunden, einer Einstellung, die weniger Spielende wählten, lag der Schnitt bei {twelve}, mit {twelvePerfect} perfekten Runden ({twelveRounds, number} Runden).",
     "englishNote": "Die Hinweise zu Methode, Grenzen und Zitierweise unten sind auf Englisch.",
     "chart": {
       "byPieces": "Durchschnittliche Erinnerung bei {seconds} Sekunden Einprägezeit",
       "bySeconds": "Durchschnittliche Erinnerung an {pieces} Figuren, nach Einprägezeit",
+      "bySecondsNote": "Jede Einprägezeit wurde von anderen Spielenden gewählt, daher zeigen diese Balken nicht, wie viel zusätzliche Zeit hilft.",
       "pieces": "{count, plural, one {# Figur} other {# Figuren}}",
       "seconds": "{count} s",
       "rounds": "{count, plural, one {# Runde} other {# Runden}}",
@@ -1822,14 +1823,15 @@
       "median": "Median",
       "middle": "Mittlere Hälfte",
       "middleValue": "{low} bis {high}",
-      "perfect": "Perfekt"
+      "perfect": "Perfekt",
+      "zero": "Ergebnis 0"
     },
     "links": {
       "csv": "CSV herunterladen",
       "notes": "Feldnotizen auf GitHub",
       "play": "Eine Runde spielen"
     },
-    "aboutLine": "Die Ergebnisse aller beendeten Runden werden aggregiert veröffentlicht.",
+    "aboutLine": "Aggregierte Statistiken zum Merken aus den in Google Analytics erfassten Runden werden veröffentlicht, für Einstellungen mit genügend Runden und Spielenden.",
     "aboutLink": "Zu den Gedächtnisdaten"
   }
 }

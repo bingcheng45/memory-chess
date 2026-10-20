@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "Hur bra minns människor schackställningar? Data från {rounds, number} rundor i Memory Chess",
-      "description": "Genomsnittlig träffsäkerhet när schackställningar återskapas, efter antal pjäser och studietid, från {rounds, number} avslutade rundor i Memory Chess. Öppna data under CC BY 4.0, med metoden och dess begränsningar.",
+      "title": "Hur bra minns människor schackställningar?",
+      "description": "Hur bra schackställningar återskapas i snitt, efter antal pjäser och studietid, från {rounds, number} avslutade rundor i Memory Chess. Öppna data under CC BY 4.0.",
       "socialTitle": "Hur bra minns människor schackställningar?",
       "socialDescription": "Träffsäkerhet efter antal pjäser och studietid, från {rounds, number} avslutade rundor i Memory Chess. Öppna data under CC BY 4.0."
     },
     "kicker": "Öppna data",
     "title": "Hur bra minns människor schackställningar?",
-    "answer": "I {rounds, number} avslutade rundor i Memory Chess från {start} till {end} hade spelare som studerade en ställning i 10 sekunder i genomsnitt en träffsäkerhet på {two} med 2 pjäser ({twoRounds, number} rundor), men bara {six} med 6 pjäser ({sixRounds, number} rundor). Endast {sixPerfect} av rundorna med 6 pjäser var felfria, och med 12 pjäser och 8 sekunder sjönk snittet till {twelve}, med {twelvePerfect} felfria ({twelveRounds, number} rundor).",
+    "answer": "I {rounds, number} avslutade rundor i Memory Chess från {start} till {end} hade rundor inställda på 10 sekunders studietid i genomsnitt en träffsäkerhet på {two} med 2 pjäser ({twoRounds, number} rundor) och {six} med 6 pjäser, standardinställningen ({sixRounds, number} rundor). {sixPerfect} av rundorna med 6 pjäser var felfria. Med 12 pjäser och 8 sekunder, en inställning som färre spelare valde, var snittet {twelve}, med {twelvePerfect} felfria ({twelveRounds, number} rundor).",
     "englishNote": "Anteckningarna om metod, begränsningar och källhänvisning nedan är på engelska.",
     "chart": {
       "byPieces": "Genomsnittlig träffsäkerhet med {seconds} sekunders studietid",
       "bySeconds": "Genomsnittlig träffsäkerhet för {pieces} pjäser, efter studietid",
+      "bySecondsNote": "Olika spelare valde varje studietid, så staplarna visar inte hur mycket extra tid hjälper.",
       "pieces": "{count, plural, one {# pjäs} other {# pjäser}}",
       "seconds": "{count} s",
       "rounds": "{count, plural, one {# runda} other {# rundor}}",
@@ -1822,14 +1823,15 @@
       "median": "Median",
       "middle": "Mittersta hälften",
       "middleValue": "{low} till {high}",
-      "perfect": "Felfria"
+      "perfect": "Felfria",
+      "zero": "0 poäng"
     },
     "links": {
       "csv": "Ladda ned CSV-filen",
       "notes": "Fältanteckningar på GitHub",
       "play": "Spela en runda"
     },
-    "aboutLine": "Resultaten från varje avslutad runda publiceras sammanställda.",
+    "aboutLine": "Sammanställd statistik över återgivning från rundor som registrerats i Google Analytics publiceras för inställningar med tillräckligt många rundor och spelare.",
     "aboutLink": "Se minnesdata"
   }
 }

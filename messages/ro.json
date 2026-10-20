@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "Cât de bine își amintesc oamenii pozițiile de șah? Date din {rounds, plural, one {# rundă} few {# runde} other {# de runde}} de Memory Chess",
-      "description": "Precizia medie de reconstituire a pozițiilor de șah în funcție de numărul de piese și de timpul de studiu, din {rounds, plural, one {# rundă terminată} few {# runde terminate} other {# de runde terminate}} de Memory Chess. Date deschise sub licența CC BY 4.0, cu metoda și limitele ei.",
+      "title": "Cât de bine ne amintim pozițiile de șah?",
+      "description": "Precizia medie de reconstituire a pozițiilor de șah după numărul de piese și timpul de studiu, din {rounds, number} de runde Memory Chess. Date deschise CC BY 4.0.",
       "socialTitle": "Cât de bine își amintesc oamenii pozițiile de șah?",
       "socialDescription": "Precizia în funcție de numărul de piese și de timpul de studiu, din {rounds, plural, one {# rundă terminată} few {# runde terminate} other {# de runde terminate}} de Memory Chess. Date deschise sub licența CC BY 4.0."
     },
     "kicker": "Date deschise",
     "title": "Cât de bine își amintesc oamenii pozițiile de șah?",
-    "answer": "În {rounds, plural, one {# rundă terminată} few {# runde terminate} other {# de runde terminate}} de Memory Chess, între {start} și {end}, jucătorii care au studiat o poziție timp de 10 secunde au obținut în medie o precizie de {two} cu 2 piese ({twoRounds, plural, one {# rundă} few {# runde} other {# de runde}}), dar doar {six} cu 6 piese ({sixRounds, plural, one {# rundă} few {# runde} other {# de runde}}). Numai {sixPerfect} dintre aceste runde cu 6 piese au fost perfecte, iar cu 12 piese și 8 secunde media a scăzut la {twelve}, cu {twelvePerfect} perfecte ({twelveRounds, plural, one {# rundă} few {# runde} other {# de runde}}).",
+    "answer": "În {rounds, plural, one {# rundă terminată} few {# runde terminate} other {# de runde terminate}} de Memory Chess, între {start} și {end}, rundele setate la 10 secunde de studiu au obținut în medie o precizie de {two} cu 2 piese ({twoRounds, plural, one {# rundă} few {# runde} other {# de runde}}) și de {six} cu 6 piese, setarea implicită ({sixRounds, plural, one {# rundă} few {# runde} other {# de runde}}). {sixPerfect} dintre aceste runde cu 6 piese au fost perfecte. Cu 12 piese și 8 secunde, o setare aleasă de mai puțini jucători, media a fost de {twelve}, cu {twelvePerfect} perfecte ({twelveRounds, plural, one {# rundă} few {# runde} other {# de runde}}).",
     "englishNote": "Notele despre metodă, limite și citare de mai jos sunt în engleză.",
     "chart": {
       "byPieces": "Precizia medie cu {seconds} secunde de studiu",
       "bySeconds": "Precizia medie pentru {pieces} piese, în funcție de timpul de studiu",
+      "bySecondsNote": "Fiecare timp de studiu a fost ales de alți jucători, așa că aceste bare nu arată cât ajută timpul în plus.",
       "pieces": "{count, plural, one {# piesă} few {# piese} other {# de piese}}",
       "seconds": "{count} s",
       "rounds": "{count, plural, one {# rundă} few {# runde} other {# de runde}}",
@@ -1822,14 +1823,15 @@
       "median": "Mediană",
       "middle": "Jumătatea din mijloc",
       "middleValue": "între {low} și {high}",
-      "perfect": "Perfecte"
+      "perfect": "Perfecte",
+      "zero": "Scor 0"
     },
     "links": {
       "csv": "Descarcă fișierul CSV",
       "notes": "Note de lucru pe GitHub",
       "play": "Joacă o rundă"
     },
-    "aboutLine": "Rezultatele fiecărei runde terminate sunt publicate în formă agregată.",
+    "aboutLine": "Publicăm statistici agregate despre reconstituire din rundele înregistrate în Google Analytics, pentru setările cu suficiente runde și jucători.",
     "aboutLink": "Vezi datele despre memorare"
   }
 }

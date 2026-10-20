@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "Kuinka hyvin ihmiset muistavat shakkiasemia? Tiedot {rounds, number} Memory Chess -kierroksesta",
-      "description": "Shakkiasemien keskimääräinen muistamistarkkuus nappuloiden määrän ja tutkimisajan mukaan, {rounds, number} loppuun pelatusta Memory Chess -kierroksesta. Avoin data CC BY 4.0 -lisenssillä, menetelmineen ja rajoituksineen.",
+      "title": "Kuinka hyvin ihmiset muistavat shakkiasemia?",
+      "description": "Shakkiasemien keskimääräinen muistitarkkuus nappuloiden määrän ja tutkimisajan mukaan, {rounds, number} pelatusta Memory Chess -kierroksesta. Avoin data, CC BY 4.0.",
       "socialTitle": "Kuinka hyvin ihmiset muistavat shakkiasemia?",
       "socialDescription": "Muistamistarkkuus nappuloiden määrän ja tutkimisajan mukaan, {rounds, number} loppuun pelatusta Memory Chess -kierroksesta. Avoin data CC BY 4.0 -lisenssillä."
     },
     "kicker": "Avoin data",
     "title": "Kuinka hyvin ihmiset muistavat shakkiasemia?",
-    "answer": "Memory Chessin {rounds, number} loppuun pelatulla kierroksella {start} ja {end} välillä pelaajat, jotka tutkivat asemaa 10 sekuntia, saivat 2 nappulalla keskimäärin tarkkuuden {two} ({twoRounds, number} kierrosta), mutta 6 nappulalla vain {six} ({sixRounds, number} kierrosta). Ainoastaan {sixPerfect} näistä 6 nappulan kierroksista oli virheettömiä, ja 12 nappulalla ja 8 sekunnilla keskiarvo oli enää {twelve} ja virheettömiä oli {twelvePerfect} ({twelveRounds, number} kierrosta).",
+    "answer": "Memory Chessin {rounds, number} loppuun pelatulla kierroksella {start} ja {end} välillä kierrokset, joiden tutkimisajaksi oli asetettu 10 sekuntia, saivat keskimäärin tarkkuuden {two} 2 nappulalla ({twoRounds, number} kierrosta) ja {six} 6 nappulalla, joka on oletusasetus ({sixRounds, number} kierrosta). Näistä 6 nappulan kierroksista {sixPerfect} oli virheettömiä. Asetuksella 12 nappulaa ja 8 sekuntia, jonka harvempi pelaaja valitsi, keskiarvo oli {twelve} ja virheettömiä oli {twelvePerfect} ({twelveRounds, number} kierrosta).",
     "englishNote": "Alla olevat huomiot menetelmästä, rajoituksista ja viittaamisesta ovat englanniksi.",
     "chart": {
       "byPieces": "Keskimääräinen tarkkuus, kun tutkimisaikaa on {seconds} sekuntia",
       "bySeconds": "Keskimääräinen tarkkuus {pieces} nappulalla tutkimisajan mukaan",
+      "bySecondsNote": "Eri pelaajat valitsivat kunkin tutkimisajan, joten nämä palkit eivät näytä, kuinka paljon lisäaika auttaa.",
       "pieces": "{count, plural, one {# nappula} other {# nappulaa}}",
       "seconds": "{count} s",
       "rounds": "{count, plural, one {# kierros} other {# kierrosta}}",
@@ -1822,14 +1823,15 @@
       "median": "Mediaani",
       "middle": "Keskimmäinen puolikas",
       "middleValue": "{low} ja {high} välillä",
-      "perfect": "Virheettömät"
+      "perfect": "Virheettömät",
+      "zero": "Tulos 0"
     },
     "links": {
       "csv": "Lataa CSV-tiedosto",
       "notes": "Kenttämuistiinpanot GitHubissa",
       "play": "Pelaa kierros"
     },
-    "aboutLine": "Jokaisen loppuun pelatun kierroksen tulokset julkaistaan yhteenvetona.",
+    "aboutLine": "Google Analyticsiin kirjatuista kierroksista julkaistaan koostetut muistamistilastot niille asetuksille, joissa on tarpeeksi kierroksia ja pelaajia.",
     "aboutLink": "Katso muistamistiedot"
   }
 }

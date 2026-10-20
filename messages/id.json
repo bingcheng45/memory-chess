@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "Seberapa baik orang mengingat posisi catur? Data dari {rounds, number} ronde Memory Chess",
-      "description": "Rata-rata ingatan posisi catur menurut jumlah bidak dan waktu menghafal, dari {rounds, number} ronde Memory Chess yang selesai. Data terbuka di bawah CC BY 4.0, beserta metode dan batasannya.",
+      "title": "Seberapa baik orang mengingat posisi catur?",
+      "description": "Rata-rata ingatan posisi catur menurut jumlah bidak dan waktu menghafal, dari {rounds, number} ronde Memory Chess yang selesai. Data terbuka di bawah CC BY 4.0.",
       "socialTitle": "Seberapa baik orang mengingat posisi catur?",
       "socialDescription": "Ingatan menurut jumlah bidak dan waktu menghafal, dari {rounds, number} ronde Memory Chess yang selesai. Data terbuka di bawah CC BY 4.0."
     },
     "kicker": "Data terbuka",
     "title": "Seberapa baik orang mengingat posisi catur?",
-    "answer": "Dalam {rounds, number} ronde Memory Chess yang selesai dari {start} hingga {end}, pemain yang mempelajari posisi selama 10 detik rata-rata meraih akurasi {two} dengan 2 bidak ({twoRounds, number} ronde), tetapi hanya {six} dengan 6 bidak ({sixRounds, number} ronde). Hanya {sixPerfect} dari ronde 6 bidak itu yang sempurna, dan dengan 12 bidak dan 8 detik rata-ratanya turun menjadi {twelve}, dengan {twelvePerfect} yang sempurna ({twelveRounds, number} ronde).",
+    "answer": "Dalam {rounds, number} ronde Memory Chess yang selesai dari {start} hingga {end}, ronde dengan waktu menghafal yang diatur ke 10 detik rata-rata meraih akurasi {two} dengan 2 bidak ({twoRounds, number} ronde) dan {six} dengan 6 bidak, pengaturan bawaan ({sixRounds, number} ronde). Sebanyak {sixPerfect} dari ronde 6 bidak itu sempurna. Dengan 12 bidak dan 8 detik, pengaturan yang dipilih lebih sedikit pemain, rata-ratanya {twelve}, dengan {twelvePerfect} yang sempurna ({twelveRounds, number} ronde).",
     "englishNote": "Catatan tentang metode, batasan, dan sitasi di bawah ini ditulis dalam bahasa Inggris.",
     "chart": {
       "byPieces": "Rata-rata ingatan dengan {seconds} detik untuk menghafal",
       "bySeconds": "Rata-rata ingatan {pieces} bidak, menurut waktu menghafal",
+      "bySecondsNote": "Setiap waktu menghafal dipilih oleh pemain yang berbeda, jadi batang ini tidak menunjukkan seberapa besar tambahan waktu membantu.",
       "pieces": "{count, plural, other {# bidak}}",
       "seconds": "{count} dtk",
       "rounds": "{count, plural, other {# ronde}}",
@@ -1822,14 +1823,15 @@
       "median": "Median",
       "middle": "Separuh tengah",
       "middleValue": "{low} hingga {high}",
-      "perfect": "Sempurna"
+      "perfect": "Sempurna",
+      "zero": "Skor 0"
     },
     "links": {
       "csv": "Unduh CSV",
       "notes": "Catatan lapangan di GitHub",
       "play": "Mainkan satu ronde"
     },
-    "aboutLine": "Hasil setiap ronde yang selesai dipublikasikan secara agregat.",
+    "aboutLine": "Statistik agregat ingatan dari ronde yang tercatat di Google Analytics dipublikasikan, untuk pengaturan dengan cukup ronde dan pemain.",
     "aboutLink": "Lihat data ingatan"
   }
 }

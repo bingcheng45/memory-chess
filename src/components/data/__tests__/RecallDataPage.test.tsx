@@ -19,7 +19,15 @@ jest.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ replace: jest.fn() }),
 }));
 
-const cell = (pieceCount: number, memorizeSeconds: number, rounds: number, players: number, meanAccuracy: number, perfectShare: number): RecallCell => ({
+const cell = (
+  pieceCount: number,
+  memorizeSeconds: number,
+  rounds: number,
+  players: number,
+  meanAccuracy: number,
+  perfectShare: number,
+  zeroShare: number,
+): RecallCell => ({
   pieceCount,
   memorizeSeconds,
   rounds,
@@ -29,6 +37,7 @@ const cell = (pieceCount: number, memorizeSeconds: number, rounds: number, playe
   p25Accuracy: 25,
   p75Accuracy: 75,
   perfectShare,
+  zeroShare,
 });
 
 const DATA: RecallDataset = {
@@ -40,7 +49,12 @@ const DATA: RecallDataset = {
   roundsWithoutSettings: 10,
   roundsInSmallCells: 90,
   publishedRounds: 1100,
-  cells: [cell(2, 10, 300, 60, 81.8, 77.1), cell(6, 10, 600, 200, 48.3, 11.1), cell(6, 20, 120, 10, 69, 34.5), cell(12, 8, 80, 14, 39.8, 1.4)],
+  cells: [
+    cell(2, 10, 300, 60, 81.8, 77.1, 13.4),
+    cell(6, 10, 600, 200, 48.3, 11.1, 15.7),
+    cell(6, 20, 120, 10, 69, 34.5, 4.4),
+    cell(12, 8, 80, 14, 39.8, 1.4, 16.2),
+  ],
 };
 
 it("opens with the answer: the headline averages, their rounds and the date range", async () => {
@@ -48,7 +62,7 @@ it("opens with the answer: the headline averages, their rounds and the date rang
 
   expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("How well do people remember chess positions?");
   expect(document.querySelector(".lab-lede")).toHaveTextContent(
-    "In 1,200 finished rounds of Memory Chess from September 29, 2026 to October 19, 2026, players who studied a position for 10 seconds scored 82% accuracy on average with 2 pieces (300 rounds), but only 48% with 6 pieces (600 rounds). Just 11.1% of those 6-piece rounds were perfect, and with 12 pieces and 8 seconds the average fell to 40%, with 1.4% perfect (80 rounds).",
+    "In 1,200 finished rounds of Memory Chess from September 29, 2026 to October 19, 2026, rounds set to 10 seconds of study scored 82% accuracy on average with 2 pieces (300 rounds) and 48% with 6 pieces, the default setting (600 rounds). 11.1% of those 6-piece rounds were perfect. With 12 pieces and 8 seconds, a setting fewer players chose, the average was 40%, with 1.4% perfect (80 rounds).",
   );
 });
 
@@ -62,20 +76,38 @@ it("draws each bar to scale and prints its value and rounds", async () => {
 
   const bySeconds = screen.getByRole("figure", { name: "Average recall of 6 pieces, by study time" });
   expect(within(bySeconds).getAllByRole("listitem").map((bar) => bar.textContent)).toEqual(["10 s48%600 rounds", "20 s69%120 rounds"]);
+  expect(bySeconds.nextElementSibling).toHaveTextContent(
+    "Different players chose each study time, so these bars do not show how much extra time helps.",
+  );
 });
 
-it("tabulates every published setting with its spread and perfect share", async () => {
+it("tabulates every published setting with its spread, perfect share and share that scored 0", async () => {
   render(await RecallDataPage({ data: DATA, locale: "en" }));
 
   const rows = within(screen.getByRole("table")).getAllByRole("row");
   expect(rows.map((row) => Array.from(row.children, (cellNode) => cellNode.textContent))).toEqual([
-    ["Pieces", "Study time", "Rounds", "Players", "Mean", "Median", "Middle half", "Perfect"],
-    ["2", "10 s", "300", "60", "81.8%", "50%", "25% to 75%", "77.1%"],
-    ["6", "10 s", "600", "200", "48.3%", "50%", "25% to 75%", "11.1%"],
-    ["6", "20 s", "120", "10", "69.0%", "50%", "25% to 75%", "34.5%"],
-    ["12", "8 s", "80", "14", "39.8%", "50%", "25% to 75%", "1.4%"],
+    ["Pieces", "Study time", "Rounds", "Players", "Mean", "Median", "Middle half", "Perfect", "Scored 0"],
+    ["2", "10 s", "300", "60", "81.8%", "50%", "25% to 75%", "77.1%", "13.4%"],
+    ["6", "10 s", "600", "200", "48.3%", "50%", "25% to 75%", "11.1%", "15.7%"],
+    ["6", "20 s", "120", "10", "69.0%", "50%", "25% to 75%", "34.5%", "4.4%"],
+    ["12", "8 s", "80", "14", "39.8%", "50%", "25% to 75%", "1.4%", "16.2%"],
   ]);
   expect(screen.getByText(/Of 1,200 rounds, 1,100 fall in the 4 settings shown, 90 in smaller settings, and 10 arrived without their settings/)).toBeInTheDocument();
+});
+
+it("says in the limits that skips, calibration, review and daily rounds are pooled, and how many default rounds scored 0", async () => {
+  render(await RecallDataPage({ data: DATA, locale: "en" }));
+
+  const limits = screen.getByRole("heading", { name: "Limits" }).parentElement as HTMLElement;
+  expect(within(limits).getByText(/^An empty board counts as a round that scored 0\./)).toHaveTextContent(
+    "An empty board counts as a round that scored 0. Once a day the game accepts an empty board as a free skip, and the analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting's share: 15.7% of the 6-piece, 10-second rounds.",
+  );
+  expect(within(limits).getByText(/^Review rounds/)).toHaveTextContent(
+    "Review rounds, which replay a board the player saw before, and the daily board, the same seeded position for everyone that day, are pooled with the other rounds. The data cannot separate them.",
+  );
+  expect(within(limits).getByText(/^6 pieces with 10 seconds is the default round/)).toHaveTextContent(
+    "6 pieces with 10 seconds is the default round and the setting of the calibration round on the home page, which is pooled into it, so it holds the most players (200) and likely many first rounds.",
+  );
 });
 
 it("links the CSV, the field notes and a round, and cites the data with its range", async () => {
@@ -93,7 +125,7 @@ it("embeds a Dataset JSON-LD block named for the rounds it covers", async () => 
   const jsonLd = JSON.parse(container.querySelector('script[type="application/ld+json"]')?.textContent ?? "{}");
   expect([jsonLd["@type"], jsonLd.name, jsonLd.temporalCoverage]).toEqual([
     "Dataset",
-    "How well do people remember chess positions? Data from 1,200 rounds of Memory Chess",
+    "How well do people remember chess positions?",
     "2026-09-29/2026-10-19",
   ]);
 });

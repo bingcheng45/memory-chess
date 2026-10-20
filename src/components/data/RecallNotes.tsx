@@ -4,11 +4,13 @@ import { articlePath } from "@/lib/articles/paths";
 import { DEFAULT_ROUND_PIECES, DEFAULT_ROUND_SECONDS, RECALL_CSV_PAGE, RECALL_README_PAGE, findCell, type RecallDataset } from "@/lib/data/recall";
 
 const englishNumber = new Intl.NumberFormat("en");
+const englishTenth = new Intl.NumberFormat("en", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 const englishDate = new Intl.DateTimeFormat("en", { dateStyle: "long", timeZone: "UTC" });
 export const englishDay = (iso: string) => englishDate.format(new Date(`${iso}T12:00:00Z`));
 
 export function RecallNotes({ data }: { readonly data: RecallDataset }) {
   const n = (value: number) => englishNumber.format(value);
+  const tenth = (value: number) => englishTenth.format(value);
   const range = `${englishDay(data.start)} to ${englishDay(data.end)}`;
   const defaultRound = findCell(data, DEFAULT_ROUND_PIECES, DEFAULT_ROUND_SECONDS);
 
@@ -17,15 +19,17 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
       <LabReadingSection title="Method" id="method">
         <p>
           Every number here comes from the game. When a round&apos;s result shows, Memory Chess sends one Google Analytics 4 event,
-          round_complete, with the number of pieces, the study time and the round&apos;s accuracy. The event has fired since September 29,
-          2026, so there is no earlier data. This release covers {range}, counted in days of the America/Los_Angeles time zone the
-          analytics property uses.
+          round_complete, with the number of pieces, the study time the round was set to and the round&apos;s accuracy. The study time
+          is that setting, not the time the board was actually shown: a player can clear the board early. The event has fired since
+          September 29, 2026, so there is no earlier data. This release covers {range}, counted in days of the America/Los_Angeles
+          time zone the analytics property uses.
         </p>
         <p>
           A piece counts only when the right piece of the right colour stands on the right square. Accuracy is the share of the
           position&apos;s pieces placed that way, rounded to a whole percent, minus 10 points for each piece placed beyond the
-          position&apos;s count, and never below 0. A perfect round scores 100: every piece right and nothing extra. Each round is a new
-          legal position generated at random, not one taken from a real game.
+          position&apos;s count, and never below 0. A perfect round scores 100: every piece right and nothing extra. Most rounds show a new
+          legal position generated at random. A review round replays a board the player saw before, and the daily board is one seeded
+          random position, the same for everyone that day. None is taken from a real game.
         </p>
         <p>
           A setting is shown only with at least {n(data.minRounds)} rounds from at least {n(data.minPlayers)} players. Those cuts are my
@@ -33,6 +37,16 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
           {n(data.cells.length)} settings shown, {n(data.roundsInSmallCells)} in smaller settings, and {n(data.roundsWithoutSettings)}{" "}
           arrived without their settings. The median and the middle half (the 25th to the 75th percentile) are nearest-rank values of
           the whole-number scores.
+        </p>
+        <p>
+          Four settings are one-click presets: 2 pieces at 10 seconds (Easy), 6 at 10 (Medium), 12 at 8 (Hard) and 20 at 5
+          (Grandmaster). Those rows collect many rounds from players who clicked a preset rather than chose a setting; 20 at 5 has too
+          few rounds to show.
+        </p>
+        <p>
+          The Google Analytics reports behind this release were unsampled and had no &ldquo;(other)&rdquo; row, so every setting is
+          counted in full. Google Analytics may withhold or round user counts that fall under its privacy thresholds, so the Players
+          column can be lower than the real number of browsers.
         </p>
       </LabReadingSection>
       <LabReadingSection title="Limits" id="limits">
@@ -43,8 +57,18 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
           </li>
           <li>Repeat players weigh more: one player&apos;s 50 rounds count 50 times. Compare the Rounds and Players columns.</li>
           <li>
-            {DEFAULT_ROUND_PIECES} pieces with {DEFAULT_ROUND_SECONDS} seconds is the default round, so it holds the most players ({n(defaultRound.players)})
-            and likely many first rounds.
+            {DEFAULT_ROUND_PIECES} pieces with {DEFAULT_ROUND_SECONDS} seconds is the default round and the setting of the calibration
+            round on the home page, which is pooled into it, so it holds the most players ({n(defaultRound.players)}) and likely many
+            first rounds.
+          </li>
+          <li>
+            An empty board counts as a round that scored 0. Once a day the game accepts an empty board as a free skip, and the
+            analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting&apos;s
+            share: {tenth(defaultRound.zeroShare)}% of the {DEFAULT_ROUND_PIECES}-piece, {DEFAULT_ROUND_SECONDS}-second rounds.
+          </li>
+          <li>
+            Review rounds, which replay a board the player saw before, and the daily board, the same seeded position for everyone that
+            day, are pooled with the other rounds. The data cannot separate them.
           </li>
           <li>A player is a browser as Google Analytics counts it. One person on two devices counts twice.</li>
           <li>Rounds from visitors who block analytics, or decline analytics cookies where they are asked, are missing.</li>

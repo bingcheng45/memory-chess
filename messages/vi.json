@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "Mọi người nhớ thế cờ vua tốt đến mức nào? Dữ liệu từ {rounds, number} ván Memory Chess",
-      "description": "Mức ghi nhớ trung bình các thế cờ vua theo số quân và thời gian ghi nhớ, từ {rounds, number} ván Memory Chess đã chơi xong. Dữ liệu mở theo giấy phép CC BY 4.0, kèm phương pháp và các giới hạn của nó.",
+      "title": "Mọi người nhớ thế cờ vua tốt đến mức nào?",
+      "description": "Mức ghi nhớ trung bình các thế cờ vua theo số quân và thời gian ghi nhớ, từ {rounds, number} ván Memory Chess đã chơi xong. Dữ liệu mở theo giấy phép CC BY 4.0.",
       "socialTitle": "Mọi người nhớ thế cờ vua tốt đến mức nào?",
       "socialDescription": "Mức ghi nhớ theo số quân và thời gian ghi nhớ, từ {rounds, number} ván Memory Chess đã chơi xong. Dữ liệu mở theo giấy phép CC BY 4.0."
     },
     "kicker": "Dữ liệu mở",
     "title": "Mọi người nhớ thế cờ vua tốt đến mức nào?",
-    "answer": "Trong {rounds, number} ván Memory Chess đã chơi xong từ {start} đến {end}, người chơi quan sát thế cờ trong 10 giây đạt độ chính xác trung bình {two} với 2 quân ({twoRounds, number} ván), nhưng chỉ {six} với 6 quân ({sixRounds, number} ván). Chỉ vỏn vẹn {sixPerfect} số ván 6 quân đó đạt điểm tuyệt đối, và với 12 quân và 8 giây, mức trung bình giảm xuống {twelve}, với {twelvePerfect} đạt điểm tuyệt đối ({twelveRounds, number} ván).",
+    "answer": "Trong {rounds, number} ván Memory Chess đã chơi xong từ {start} đến {end}, các ván được đặt thời gian ghi nhớ 10 giây đạt độ chính xác trung bình {two} với 2 quân ({twoRounds, number} ván) và {six} với 6 quân, mức cài đặt mặc định ({sixRounds, number} ván). Có {sixPerfect} số ván 6 quân đó đạt điểm tuyệt đối. Với 12 quân và 8 giây, một mức cài đặt ít người chơi chọn hơn, mức trung bình là {twelve}, với {twelvePerfect} đạt điểm tuyệt đối ({twelveRounds, number} ván).",
     "englishNote": "Các ghi chú về phương pháp, giới hạn và cách trích dẫn bên dưới được viết bằng tiếng Anh.",
     "chart": {
       "byPieces": "Mức ghi nhớ trung bình với {seconds} giây ghi nhớ",
       "bySeconds": "Mức ghi nhớ trung bình với {pieces} quân, theo thời gian ghi nhớ",
+      "bySecondsNote": "Mỗi mức thời gian ghi nhớ do những người chơi khác nhau chọn, nên các cột này không cho thấy thêm thời gian giúp ích bao nhiêu.",
       "pieces": "{count, plural, other {# quân}}",
       "seconds": "{count} giây",
       "rounds": "{count, plural, other {# ván}}",
@@ -1822,14 +1823,15 @@
       "median": "Trung vị",
       "middle": "Nửa giữa",
       "middleValue": "{low} đến {high}",
-      "perfect": "Điểm tuyệt đối"
+      "perfect": "Điểm tuyệt đối",
+      "zero": "0 điểm"
     },
     "links": {
       "csv": "Tải xuống tệp CSV",
       "notes": "Ghi chép thực địa trên GitHub",
       "play": "Chơi một ván"
     },
-    "aboutLine": "Kết quả của mọi ván đã chơi xong được công bố dưới dạng tổng hợp.",
+    "aboutLine": "Thống kê tổng hợp về khả năng ghi nhớ từ các ván được Google Analytics ghi lại được công bố cho những mức cài đặt có đủ số ván và người chơi.",
     "aboutLink": "Xem dữ liệu ghi nhớ"
   }
 }

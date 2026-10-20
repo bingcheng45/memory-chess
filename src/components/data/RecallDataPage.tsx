@@ -67,6 +67,7 @@ function RecallTable({ data, t, format }: { data: RecallDataset; t: Translate; f
               <th scope="col" className="recall-num">{t("table.median")}</th>
               <th scope="col" className="recall-num">{t("table.middle")}</th>
               <th scope="col" className="recall-num">{t("table.perfect")}</th>
+              <th scope="col" className="recall-num">{t("table.zero")}</th>
             </tr>
           </thead>
           <tbody>
@@ -82,6 +83,7 @@ function RecallTable({ data, t, format }: { data: RecallDataset; t: Translate; f
                   {t("table.middleValue", { low: percent(cell.p25Accuracy), high: percent(cell.p75Accuracy) })}
                 </td>
                 <td className="recall-num">{tenth(cell.perfectShare)}</td>
+                <td className="recall-num">{tenth(cell.zeroShare)}</td>
               </tr>
             ))}
           </tbody>
@@ -114,7 +116,7 @@ export async function RecallDataPage({ data, locale }: { readonly data: RecallDa
     twelveRounds: hard.rounds,
   });
   const structuredData = recallStructuredData(data, {
-    name: t("meta.title", { rounds: data.totalRounds }),
+    name: t("meta.title"),
     description: t("meta.description", { rounds: data.totalRounds }),
   });
 
@@ -135,6 +137,7 @@ export async function RecallDataPage({ data, locale }: { readonly data: RecallDa
           t={t}
           percent={whole}
         />
+        <p className="recall-scale">{t("chart.bySecondsNote")}</p>
         <p className="recall-scale">{t("chart.scale")}</p>
       </section>
       <section className="lab-read-sec" id="table">

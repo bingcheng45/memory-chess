@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "¿Hasta qué punto recuerda la gente las posiciones de ajedrez? Datos de {rounds, number} rondas de Memory Chess",
-      "description": "Recuerdo medio de posiciones de ajedrez según el número de piezas y el tiempo de estudio, a partir de {rounds, number} rondas terminadas de Memory Chess. Datos abiertos con licencia CC BY 4.0, con el método y sus límites.",
+      "title": "Datos de memoria de posiciones de ajedrez",
+      "description": "Recuerdo medio de posiciones de ajedrez por número de piezas y tiempo de estudio, en {rounds, number} rondas terminadas de Memory Chess. Datos abiertos CC BY 4.0.",
       "socialTitle": "¿Hasta qué punto recuerda la gente las posiciones de ajedrez?",
       "socialDescription": "Recuerdo según el número de piezas y el tiempo de estudio, a partir de {rounds, number} rondas terminadas de Memory Chess. Datos abiertos con licencia CC BY 4.0."
     },
     "kicker": "Datos abiertos",
     "title": "¿Hasta qué punto recuerda la gente las posiciones de ajedrez?",
-    "answer": "En {rounds, number} rondas terminadas de Memory Chess entre el {start} y el {end}, los jugadores que estudiaron una posición durante 10 segundos obtuvieron de media una precisión del {two} con 2 piezas ({twoRounds, number} rondas), pero solo del {six} con 6 piezas ({sixRounds, number} rondas). Apenas el {sixPerfect} de esas rondas de 6 piezas fueron perfectas, y con 12 piezas y 8 segundos la media bajó al {twelve}, con un {twelvePerfect} de rondas perfectas ({twelveRounds, number} rondas).",
+    "answer": "En {rounds, number} rondas terminadas de Memory Chess entre el {start} y el {end}, las rondas configuradas con 10 segundos de estudio obtuvieron de media una precisión del {two} con 2 piezas ({twoRounds, number} rondas) y del {six} con 6 piezas, la configuración predeterminada ({sixRounds, number} rondas). El {sixPerfect} de esas rondas de 6 piezas fueron perfectas. Con 12 piezas y 8 segundos, una configuración que eligieron menos jugadores, la media fue del {twelve}, con un {twelvePerfect} de rondas perfectas ({twelveRounds, number} rondas).",
     "englishNote": "Las notas sobre el método, los límites y cómo citar estos datos están en inglés.",
     "chart": {
       "byPieces": "Recuerdo medio con {seconds} segundos de estudio",
       "bySeconds": "Recuerdo medio de {pieces} piezas, según el tiempo de estudio",
+      "bySecondsNote": "Cada tiempo de estudio lo eligieron jugadores distintos, así que estas barras no muestran cuánto ayuda tener más tiempo.",
       "pieces": "{count, plural, one {# pieza} many {# de piezas} other {# piezas}}",
       "seconds": "{count} s",
       "rounds": "{count, plural, one {# ronda} many {# de rondas} other {# rondas}}",
@@ -1822,14 +1823,15 @@
       "median": "Mediana",
       "middle": "Mitad central",
       "middleValue": "{low} a {high}",
-      "perfect": "Perfectas"
+      "perfect": "Perfectas",
+      "zero": "Puntuación 0"
     },
     "links": {
       "csv": "Descargar el CSV",
       "notes": "Notas de campo en GitHub",
       "play": "Jugar una ronda"
     },
-    "aboutLine": "Los resultados de todas las rondas terminadas se publican de forma agregada.",
+    "aboutLine": "Se publican estadísticas agregadas de recuerdo de las rondas registradas en Google Analytics, para las configuraciones con suficientes rondas y jugadores.",
     "aboutLink": "Ver los datos de recuerdo"
   }
 }

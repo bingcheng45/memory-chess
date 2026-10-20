@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "Hvor godt husker folk sjakkstillinger? Data fra {rounds, number} runder i Memory Chess",
-      "description": "Gjennomsnittlig treffsikkerhet når sjakkstillinger gjenskapes, etter antall brikker og studietid, fra {rounds, number} fullførte runder i Memory Chess. Åpne data under CC BY 4.0, med metoden og begrensningene.",
+      "title": "Hvor godt husker folk sjakkstillinger?",
+      "description": "Hvor godt sjakkstillinger huskes i snitt, etter antall brikker og studietid, fra {rounds, number} fullførte runder i Memory Chess. Åpne data under CC BY 4.0.",
       "socialTitle": "Hvor godt husker folk sjakkstillinger?",
       "socialDescription": "Treffsikkerhet etter antall brikker og studietid, fra {rounds, number} fullførte runder i Memory Chess. Åpne data under CC BY 4.0."
     },
     "kicker": "Åpne data",
     "title": "Hvor godt husker folk sjakkstillinger?",
-    "answer": "I {rounds, number} fullførte runder i Memory Chess fra {start} til {end} hadde spillere som studerte en stilling i 10 sekunder i snitt en treffsikkerhet på {two} med 2 brikker ({twoRounds, number} runder), men bare {six} med 6 brikker ({sixRounds, number} runder). Kun {sixPerfect} av rundene med 6 brikker var feilfrie, og med 12 brikker og 8 sekunder falt snittet til {twelve}, med {twelvePerfect} feilfrie ({twelveRounds, number} runder).",
+    "answer": "I {rounds, number} fullførte runder i Memory Chess fra {start} til {end} hadde runder stilt inn på 10 sekunders studietid i snitt en treffsikkerhet på {two} med 2 brikker ({twoRounds, number} runder) og {six} med 6 brikker, som er standardinnstillingen ({sixRounds, number} runder). {sixPerfect} av disse rundene med 6 brikker var feilfrie. Med 12 brikker og 8 sekunder, en innstilling færre spillere valgte, var snittet {twelve}, med {twelvePerfect} feilfrie ({twelveRounds, number} runder).",
     "englishNote": "Merknadene om metode, begrensninger og kildehenvisning nedenfor er på engelsk.",
     "chart": {
       "byPieces": "Gjennomsnittlig treffsikkerhet med {seconds} sekunders studietid",
       "bySeconds": "Gjennomsnittlig treffsikkerhet for {pieces} brikker, etter studietid",
+      "bySecondsNote": "Ulike spillere valgte hver studietid, så disse søylene viser ikke hvor mye ekstra tid hjelper.",
       "pieces": "{count, plural, one {# brikke} other {# brikker}}",
       "seconds": "{count} s",
       "rounds": "{count, plural, one {# runde} other {# runder}}",
@@ -1822,14 +1823,15 @@
       "median": "Median",
       "middle": "Midterste halvdel",
       "middleValue": "{low} til {high}",
-      "perfect": "Feilfrie"
+      "perfect": "Feilfrie",
+      "zero": "0 poeng"
     },
     "links": {
       "csv": "Last ned CSV-filen",
       "notes": "Feltnotater på GitHub",
       "play": "Spill en runde"
     },
-    "aboutLine": "Resultatene fra hver fullførte runde publiseres samlet.",
+    "aboutLine": "Samlet statistikk over gjenkalling fra runder registrert i Google Analytics publiseres for innstillinger med nok runder og spillere.",
     "aboutLink": "Se hukommelsesdataene"
   }
 }

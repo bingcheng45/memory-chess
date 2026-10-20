@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const robots = robotsFor(RECALL_PATH, locale);
 
   return {
-    title: titleNamingBrandOnce(t("title", { rounds })),
+    title: titleNamingBrandOnce(t("title")),
     description: t("description", { rounds }),
     alternates: { canonical: localizedPath(RECALL_PATH, locale) },
     ...(robots ? { robots } : {}),

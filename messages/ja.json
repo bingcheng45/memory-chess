@@ -1794,18 +1794,19 @@
   },
   "data": {
     "meta": {
-      "title": "人はチェスの局面をどれだけ正確に覚えられるのか？ Memory Chess の {rounds, number} ラウンドのデータ",
+      "title": "人はチェスの局面をどれだけ正確に覚えられるのか？",
       "description": "駒数と記憶時間ごとに見た、チェスの局面の平均正解率。Memory Chess で完了した {rounds, number} ラウンドから集計しました。CC BY 4.0 のオープンデータで、方法とその限界も示しています。",
       "socialTitle": "人はチェスの局面をどれだけ正確に覚えられるのか？",
       "socialDescription": "駒数と記憶時間ごとの正解率。Memory Chess で完了した {rounds, number} ラウンドから集計しました。CC BY 4.0 のオープンデータです。"
     },
     "kicker": "オープンデータ",
     "title": "人はチェスの局面をどれだけ正確に覚えられるのか？",
-    "answer": "{start}から{end}までに Memory Chess で完了した {rounds, number} ラウンドでは、局面を10秒間覚えたプレイヤーの正解率は、2駒で平均{two}でした（{twoRounds, number} ラウンド）が、6駒では{six}にとどまりました（{sixRounds, number} ラウンド）。その6駒のラウンドで満点だったのはわずか{sixPerfect}で、12駒・8秒では平均が{twelve}まで下がり、満点は{twelvePerfect}でした（{twelveRounds, number} ラウンド）。",
+    "answer": "{start}から{end}までに Memory Chess で完了した {rounds, number} ラウンドのうち、記憶時間を10秒に設定したラウンドの平均正解率は、2駒で{two}（{twoRounds, number} ラウンド）、6駒（初期設定）で{six}でした（{sixRounds, number} ラウンド）。その6駒のラウンドのうち{sixPerfect}が満点でした。選ぶプレイヤーが少ない12駒・8秒の設定では、平均は{twelve}、満点は{twelvePerfect}でした（{twelveRounds, number} ラウンド）。",
     "englishNote": "以下の方法、限界、引用についての注記は英語です。",
     "chart": {
       "byPieces": "記憶時間{seconds}秒での平均正解率",
       "bySeconds": "{pieces}駒の平均正解率（記憶時間別）",
+      "bySecondsNote": "記憶時間ごとに選んだプレイヤーが異なるため、これらの棒グラフは時間を増やすとどれだけ効果があるかを示すものではありません。",
       "pieces": "{count, plural, other {#駒}}",
       "seconds": "{count} 秒",
       "rounds": "{count, plural, other {#ラウンド}}",
@@ -1822,14 +1823,15 @@
       "median": "中央値",
       "middle": "中央の半分",
       "middleValue": "{low}から{high}",
-      "perfect": "満点"
+      "perfect": "満点",
+      "zero": "0点"
     },
     "links": {
       "csv": "CSV をダウンロード",
       "notes": "GitHub の調査ノート",
       "play": "1ラウンド遊ぶ"
     },
-    "aboutLine": "完了したすべてのラウンドの結果を、集計して公開しています。",
+    "aboutLine": "Google Analytics に記録されたラウンドをもとに、十分なラウンド数とプレイヤー数がある設定について、記憶の集計統計を公開しています。",
     "aboutLink": "記憶データを見る"
   }
 }

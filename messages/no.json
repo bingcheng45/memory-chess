@@ -44,6 +44,10 @@
       "dashboardLine": "Sammenlign erfaringer med andre spillere.",
       "leaderboardLine": "Snakk med spillerne på denne ledertavlen.",
       "aboutLine": "Foretrekker du chat?"
+    },
+    "about": {
+      "facts": "Memory Chess er bygget og drives av én utvikler, Bing Cheng. Det ble lansert i mars 2025 og kan spilles på {languages} språk.",
+      "plays": "Per <time>{date}</time> hadde spillerne fullført {count}+ spill."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Se hva som er nytt",
+    "bannerDismiss": "Lukk denne oppdateringen",
     "bannerLabel": "Memory Chess-oppdatering",
-    "bannerLead": "Memory Chess v{version} er her."
+    "bannerLead": "Versjon {version} er ute."
   },
   "articles": {
     "meta": {

@@ -44,6 +44,10 @@
       "dashboardLine": "Compara notas con otros jugadores.",
       "leaderboardLine": "Charla con los jugadores de esta clasificación.",
       "aboutLine": "¿Prefieres chatear?"
+    },
+    "about": {
+      "facts": "Memory Chess lo crea y lo mantiene un solo desarrollador, Bing Cheng. Se lanzó por primera vez en marzo de 2025 y se puede jugar en {languages} idiomas.",
+      "plays": "Hasta el <time>{date}</time>, los jugadores habían terminado {count}+ partidas."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Ver novedades",
+    "bannerDismiss": "Cerrar este aviso",
     "bannerLabel": "Actualización de Memory Chess",
-    "bannerLead": "Ya está aquí Memory Chess v{version}."
+    "bannerLead": "Ya está aquí la versión {version}."
   },
   "articles": {
     "meta": {

@@ -44,6 +44,10 @@
       "dashboardLine": "Vertaile kokemuksia muiden pelaajien kanssa.",
       "leaderboardLine": "Keskustele tämän tulostaulun pelaajien kanssa.",
       "aboutLine": "Haluatko mieluummin jutella?"
+    },
+    "about": {
+      "facts": "Memory Chessin rakentaa ja ylläpitää yksi kehittäjä, Bing Cheng. Se julkaistiin ensimmäisen kerran maaliskuussa 2025, ja sitä voi pelata {languages} kielellä.",
+      "plays": "Pelaajat olivat pelanneet loppuun {count}+ peliä <time>{date}</time> mennessä."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Katso mitä uutta",
+    "bannerDismiss": "Sulje tämä ilmoitus",
     "bannerLabel": "Memory Chess -päivitys",
-    "bannerLead": "Memory Chess v{version} on täällä."
+    "bannerLead": "Versio {version} on julkaistu."
   },
   "articles": {
     "meta": {

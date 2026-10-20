@@ -44,6 +44,10 @@
       "dashboardLine": "Обменивайтесь опытом с другими игроками.",
       "leaderboardLine": "Общайтесь с игроками этой таблицы лидеров.",
       "aboutLine": "Удобнее общаться в чате?"
+    },
+    "about": {
+      "facts": "Memory Chess создаёт и поддерживает один разработчик, Bing Cheng. Сайт впервые заработал в марте 2025 года, и играть можно на {languages, plural, one {# языке} few {# языках} many {# языках} other {# языках}}.",
+      "plays": "К <time>{date}</time> игроки завершили {count}+ партий."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Смотреть, что нового",
+    "bannerDismiss": "Закрыть это уведомление",
     "bannerLabel": "Обновление Memory Chess",
-    "bannerLead": "Вышла версия Memory Chess v{version}."
+    "bannerLead": "Вышла версия {version}."
   },
   "articles": {
     "meta": {

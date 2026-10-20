@@ -44,6 +44,10 @@
       "dashboardLine": "Schimbă păreri cu alți jucători.",
       "leaderboardLine": "Discută cu jucătorii din acest clasament.",
       "aboutLine": "Preferi un chat?"
+    },
+    "about": {
+      "facts": "Memory Chess este construit și administrat de un singur dezvoltator, Bing Cheng. A fost lansat în martie 2025 și se poate juca în {languages} de limbi.",
+      "plays": "Până la <time>{date}</time>, jucătorii terminaseră {count}+ de partide."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Vezi noutățile",
+    "bannerDismiss": "Închide acest anunț",
     "bannerLabel": "Actualizare Memory Chess",
-    "bannerLead": "Memory Chess v{version} a sosit."
+    "bannerLead": "Versiunea {version} a apărut."
   },
   "articles": {
     "meta": {

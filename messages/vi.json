@@ -44,6 +44,10 @@
       "dashboardLine": "Trao đổi kinh nghiệm với những người chơi khác.",
       "leaderboardLine": "Trò chuyện với những người chơi trên bảng xếp hạng này.",
       "aboutLine": "Thích trò chuyện hơn?"
+    },
+    "about": {
+      "facts": "Memory Chess do một nhà phát triển duy nhất, Bing Cheng, xây dựng và vận hành. Trang ra mắt lần đầu vào tháng 3 năm 2025 và có thể chơi bằng {languages} ngôn ngữ.",
+      "plays": "Tính đến <time>{date}</time>, người chơi đã hoàn thành hơn {count} ván."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Xem có gì mới",
+    "bannerDismiss": "Đóng thông báo này",
     "bannerLabel": "Cập nhật Memory Chess",
-    "bannerLead": "Memory Chess v{version} đã ra mắt."
+    "bannerLead": "Phiên bản {version} đã ra mắt."
   },
   "articles": {
     "meta": {

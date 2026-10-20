@@ -7,6 +7,8 @@ import PrivacyPage from "@/app/[locale]/privacy/page";
 import ContactUsPage from "@/app/[locale]/contact-us/page";
 import SiteFooter from "@/components/lab-paper/SiteFooter";
 
+jest.mock("@/lib/services/totalPlays", () => ({ getTotalPlays: async () => null }));
+
 jest.mock("next-intl/server", () => ({
   ...jest.requireActual("next-intl/server"),
   setRequestLocale: jest.fn(),

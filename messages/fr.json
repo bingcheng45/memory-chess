@@ -44,6 +44,10 @@
       "dashboardLine": "Comparez vos astuces avec les autres joueurs.",
       "leaderboardLine": "Discutez avec les joueurs de ce classement.",
       "aboutLine": "Vous préférez discuter ?"
+    },
+    "about": {
+      "facts": "Memory Chess est conçu et géré par un seul développeur, Bing Cheng. Le site a été mis en ligne en mars 2025 et se joue en {languages} langues.",
+      "plays": "Au <time>{date}</time>, les joueurs avaient terminé {count}+ parties."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Voir les nouveautés",
+    "bannerDismiss": "Fermer cette annonce",
     "bannerLabel": "Mise à jour de Memory Chess",
-    "bannerLead": "Memory Chess v{version} est arrivé."
+    "bannerLead": "La version {version} est disponible."
   },
   "articles": {
     "meta": {

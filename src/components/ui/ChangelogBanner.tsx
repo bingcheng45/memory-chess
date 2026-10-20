@@ -190,7 +190,7 @@ export default function ChangelogBanner({
           <button
             type="button"
             onClick={handleDismiss}
-            aria-label={`Dismiss Memory Chess v${version} update`}
+            aria-label={t("bannerDismiss")}
             className={look.close}
           >
             <X aria-hidden="true" className="h-4 w-4" />

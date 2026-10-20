@@ -44,6 +44,10 @@
       "dashboardLine": "Tausche dich mit anderen Spielenden aus.",
       "leaderboardLine": "Unterhalte dich mit den Spielenden dieser Rangliste.",
       "aboutLine": "Lieber chatten?"
+    },
+    "about": {
+      "facts": "Memory Chess wird von einem einzigen Entwickler, Bing Cheng, gebaut und betrieben. Es ging im März 2025 erstmals online und lässt sich in {languages} Sprachen spielen.",
+      "plays": "Bis zum <time>{date}</time> hatten Spielende {count}+ Partien beendet."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Neuerungen ansehen",
+    "bannerDismiss": "Diesen Hinweis schließen",
     "bannerLabel": "Update für Memory Chess",
-    "bannerLead": "Memory Chess v{version} ist da."
+    "bannerLead": "Version {version} ist da."
   },
   "articles": {
     "meta": {

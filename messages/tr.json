@@ -44,6 +44,10 @@
       "dashboardLine": "Diğer oyuncularla notlarını karşılaştır.",
       "leaderboardLine": "Bu sıralamadaki oyuncularla sohbet et.",
       "aboutLine": "Sohbeti mi tercih edersin?"
+    },
+    "about": {
+      "facts": "Memory Chess, tek bir geliştirici olan Bing Cheng tarafından geliştiriliyor ve yönetiliyor. İlk kez Mart 2025'te yayına girdi ve {languages} dilde oynanabiliyor.",
+      "plays": "<time>{date}</time> itibarıyla oyuncular {count}+ oyunu tamamlamıştı."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Yenilikleri gör",
+    "bannerDismiss": "Bu duyuruyu kapat",
     "bannerLabel": "Memory Chess güncellemesi",
-    "bannerLead": "Memory Chess v{version} yayında."
+    "bannerLead": "{version} sürümü yayında."
   },
   "articles": {
     "meta": {

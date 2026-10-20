@@ -44,6 +44,10 @@
       "dashboardLine": "Wymień się spostrzeżeniami z innymi graczami.",
       "leaderboardLine": "Porozmawiaj z graczami z tego rankingu.",
       "aboutLine": "Wolisz czat?"
+    },
+    "about": {
+      "facts": "Memory Chess tworzy i prowadzi jeden programista, Bing Cheng. Serwis wystartował w marcu 2025 roku i działa w {languages} językach.",
+      "plays": "Do <time>{date}</time> gracze ukończyli {count}+ gier."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Zobacz nowości",
+    "bannerDismiss": "Zamknij to powiadomienie",
     "bannerLabel": "Aktualizacja Memory Chess",
-    "bannerLead": "Memory Chess v{version} już jest."
+    "bannerLead": "Wersja {version} już jest."
   },
   "articles": {
     "meta": {

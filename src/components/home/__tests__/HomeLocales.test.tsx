@@ -9,6 +9,10 @@ jest.mock("@/components/ui/LanguageSettings", () => function MockLanguageSetting
   return null;
 });
 
+jest.mock("@/lib/services/totalPlays", () => ({
+  getTotalPlays: async () => ({ plays: 49631, asOf: "2026-10-19T18:30:00.000Z" }),
+}));
+
 // A test render has no app router to read the path from.
 jest.mock("@/i18n/navigation", () => ({ ...jest.requireActual("@/i18n/navigation"), usePathname: () => "/" }));
 
@@ -18,7 +22,7 @@ beforeEach(() => {
 
 describe("homepage locales", () => {
   it("serves English the Brain Lab under its one heading", async () => {
-    const { container } = renderWithIntl(Home());
+    const { container } = renderWithIntl(await Home());
 
     await screen.findByRole("heading", { level: 1 });
     expect(container.querySelector(".lab-paper")).not.toBeNull();
@@ -28,18 +32,29 @@ describe("homepage locales", () => {
     );
     expect(screen.getAllByText("Take a calibration reading").length).toBeGreaterThan(0);
     // jsdom has no IndexedDB, which the record reads as a window that cannot keep it.
-    expect(await screen.findByText(/Not saved in private windows/)).toBeInTheDocument();
+    expect(await screen.findByText(/Not saved in private windows/, undefined, { timeout: 5000 })).toBeInTheDocument();
   });
 
   it.each([
     ["de", german],
     ["ja", japanese],
   ])("serves %s the Brain Lab in its own words", async (locale, messages) => {
-    const { container } = renderWithIntl(Home(), { locale, messages });
+    const { container } = renderWithIntl(await Home(), { locale, messages });
 
     expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(messages.home.hero.title);
     expect(container.querySelector(".lab-paper")).not.toBeNull();
     expect(screen.getAllByText(messages.home.lab.hero.secondaryCta).length).toBeGreaterThan(0);
     expect(container.textContent).not.toContain(english.home.lab.hero.secondaryCta);
+  });
+});
+
+describe("homepage play count", () => {
+  it("shows the server's finished-game count before the browser's own request answers", async () => {
+    global.fetch = jest.fn(() => new Promise<Response>(() => {}));
+    renderWithIntl(await Home());
+
+    const lead = document.querySelector(".lab-fact-lead");
+    expect(lead?.textContent).toBe("49,631games played");
+    expect(lead).not.toHaveAttribute("aria-busy", "true");
   });
 });

@@ -1,4 +1,4 @@
-import { renderWithIntl, screen, within } from "@/test-utils/intl";
+import { act, renderWithIntl, screen, waitFor, within } from "@/test-utils/intl";
 import { LabHero } from "@/components/home/LabHero";
 import { useTotalPlays } from "@/components/home/useLabEffects";
 import de from "../../../../messages/de.json";
@@ -45,6 +45,31 @@ describe("LabHero games-played stat", () => {
       ["2–32", "2–32pieces per round"],
       ["24", "24languages"],
     ]);
+  });
+
+  it("starts from the count the server read, then takes the browser's newer one", async () => {
+    let answer: (response: unknown) => void = () => {};
+    global.fetch = jest.fn(() => new Promise((resolve) => (answer = resolve))) as jest.Mock;
+    function HeroFromServer() {
+      return <LabHero totalPlays={useTotalPlays(49631)} />;
+    }
+    renderWithIntl(<HeroFromServer />);
+
+    expect(factTexts()[0]).toEqual(["49,631", "49,631games played"]);
+    answer({ ok: true, json: async () => ({ data: { metric_name: "total_plays", metric_value: "49702" } }) });
+    expect(await statsRow().findByText("49,702")).toBeInTheDocument();
+  });
+
+  it("keeps the server's count when the browser's request fails", async () => {
+    global.fetch = jest.fn().mockResolvedValue({ ok: false });
+    function HeroFromServer() {
+      return <LabHero totalPlays={useTotalPlays(49631)} />;
+    }
+    renderWithIntl(<HeroFromServer />);
+    await waitFor(() => expect(global.fetch).toHaveBeenCalledTimes(1));
+    await act(async () => {});
+
+    expect(factTexts()[0]).toEqual(["49,631", "49,631games played"]);
   });
 
   it("holds the slot with the label and a placeholder while the count loads", () => {

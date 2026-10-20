@@ -25,13 +25,18 @@ async function fetchTotalPlays(): Promise<TotalPlays> {
   }
 }
 
-export function useTotalPlays(): TotalPlays {
-  const [totalPlays, setTotalPlays] = useState<TotalPlays>({ status: "loading" });
+/** `initialPlays` is the count the server read, shown until the browser's own request answers. */
+export function useTotalPlays(initialPlays?: number): TotalPlays {
+  const [totalPlays, setTotalPlays] = useState<TotalPlays>(() =>
+    initialPlays === undefined ? { status: "loading" } : { status: "known", plays: initialPlays },
+  );
 
   useEffect(() => {
     let cancelled = false;
     fetchTotalPlays().then((result) => {
-      if (!cancelled) setTotalPlays(result);
+      if (cancelled) return;
+      // A failed browser request keeps the server's count rather than blanking it.
+      setTotalPlays((current) => (result.status === "unavailable" && current.status === "known" ? current : result));
     });
     return () => {
       cancelled = true;

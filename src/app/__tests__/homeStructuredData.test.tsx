@@ -6,6 +6,8 @@ const WEBSITE_ID = "https://thememorychess.com/#website";
 
 jest.mock("@/i18n/navigation", () => ({ ...jest.requireActual("@/i18n/navigation"), usePathname: () => "/" }));
 
+jest.mock("@/lib/services/totalPlays", () => ({ getTotalPlays: async () => null }));
+
 // The switcher needs a mounted app router, which a test render does not have.
 jest.mock("@/components/ui/LanguageSettings", () => function MockLanguageSettings() {
   return null;
@@ -21,7 +23,7 @@ function jsonLdScripts(container: HTMLElement): Schema[] {
 }
 
 async function renderHome() {
-  const rendered = render(HomePage());
+  const rendered = render(await HomePage());
   await screen.findByRole("heading", { level: 1 });
   return rendered;
 }

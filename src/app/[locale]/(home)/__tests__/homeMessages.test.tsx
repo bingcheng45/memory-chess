@@ -13,6 +13,8 @@ jest.mock("next-intl/server", () => ({
   ),
 }));
 
+jest.mock("@/lib/services/totalPlays", () => ({ getTotalPlays: async () => null }));
+
 // The switcher needs a mounted app router, which a test render does not have.
 jest.mock("@/i18n/navigation", () => ({ ...jest.requireActual("@/i18n/navigation"), usePathname: () => "/" }));
 
@@ -25,7 +27,7 @@ const RAW_MESSAGE_KEY = /\bhome\.[a-z]+\.[A-Za-z.]+/;
 async function renderHome(locale: string) {
   const missing: string[] = [];
   const rootMessages = await localeLayoutClientMessages(locale);
-  const homeLayout = await HomeLayout({ children: Home(), params: Promise.resolve({ locale }) });
+  const homeLayout = await HomeLayout({ children: await Home(), params: Promise.resolve({ locale }) });
 
   const { container } = render(
     <NextIntlClientProvider locale={locale} messages={rootMessages} onError={(error) => missing.push(error.message)}>

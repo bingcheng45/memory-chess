@@ -18,8 +18,9 @@ import { useLabRecord } from "./useLabRecord";
 import "./lab-paper.css";
 import "./lab-instruments.css";
 
-export function BrainLabHome() {
-  const totalPlays = useTotalPlays();
+/** `initialPlays` is the finished-game count read on the server, so the served HTML carries it. */
+export function BrainLabHome({ initialPlays }: { readonly initialPlays?: number }) {
+  const totalPlays = useTotalPlays(initialPlays);
   const record = useLabRecord();
 
   return (

@@ -48,7 +48,7 @@ describe("the de Groot article opens with its answer", () => {
 
   it("serves the reviewed German answer as the first paragraph of the German body", async () => {
     expect(await firstBodyParagraph("de")).toBe(
-      "Großmeister behalten eine Stellung aus einer echten Partie nicht Feld für Feld, sondern als wenige vertraute Figurengruppen, jene Chunks, die William Chase und Herbert Simon 1973 gemessen haben. In Adriaan de Groots Test von 1944 sah Weltmeister Max Euwe eine Stellung mit 22 Figuren 5 Sekunden lang und hatte alle 22 Figuren richtig, während ein Spieler aus einer schwächeren Klasse auf 9 kam. Bei Zufallsstellungen schrumpft der Vorsprung auf etwa eine zusätzliche Figur je 400 Elo-Punkte, gegenüber etwa fünf bei Stellungen aus Partien. Das fanden Fernand Gobet und Herbert Simon 1996 heraus.",
+      "Großmeister behalten eine Stellung aus einer echten Partie nicht Feld für Feld, sondern als wenige vertraute Figurengruppen. Diese Gruppen sind die Chunks, die William Chase und Herbert Simon 1973 gemessen haben. In de Groots Test von 1944 sah Weltmeister Max Euwe eine Stellung mit 22 Figuren 5 Sekunden lang und hatte alle 22 richtig, während ein Spieler aus einer schwächeren Klasse auf 9 kam. Bei Zufallsstellungen schrumpft der Vorsprung auf etwa eine zusätzliche Figur je 400 Elo-Punkte, gegenüber etwa fünf bei Stellungen aus Partien (Gobet und Simon, 1996).",
     );
   });
 });

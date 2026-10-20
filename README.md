@@ -9,7 +9,7 @@ Memory Chess is a free chess memory game at [thememorychess.com](https://thememo
 1. Pick how many pieces to show and how many seconds you get, or start a preset. The presets run from 2 pieces for 10 seconds (Easy) to 20 pieces for 5 seconds (Grandmaster).
 2. Study the position. The board goes blank when the time runs out or when you press Hide board.
 3. Rebuild it by choosing pieces from the palette and placing them on the squares where they stood.
-4. Submit to see your accuracy score (pieces placed correctly out of the total), which pieces you got wrong, and how long you took.
+4. Submit to see your accuracy score (the share of pieces placed correctly, less 10 points for each piece placed beyond the count, never below 0), which pieces you got wrong, and how long you took.
 
 Around the round:
 
@@ -73,9 +73,11 @@ npx jest
 npx tsc --noEmit
 ```
 
-There is no `test` script. Jest runs every `__tests__/**/*.test.ts(x)` file under `src/` and `scripts/`.
+There is no `test` script. Jest runs every file matching `**/__tests__/**/*.test.[jt]s?(x)`, which covers `src/`, `scripts/` and `schema/`.
 
 **Adding or changing text.** Interface strings (next-intl) go into `messages/en.json` and the other 23 locale files. Article and trust-page translations live elsewhere: articles in `src/lib/articles/translations/`, and About, Privacy and Terms in `src/lib/pages/translations/`. Those are written and checked with `node scripts/articles-i18n.mjs` (add `--pages` for the trust pages). Run `npm run validate` before you open a pull request. It checks both the message files and these translations.
+
+**Ads.** No ad units are active. The AdSense script is off because `ADSENSE_SCRIPT_ENABLED` in `src/lib/adsense.ts` is set to `false`, and the placement plan is in [`adsense-layout-plan.md`](./adsense-layout-plan.md).
 
 ## Contributing
 

@@ -7,6 +7,14 @@ const metric = (metric_value: unknown) => ({
   data: { id: "1", metric_name: "total_plays", metric_value, last_updated: "2026-10-19T18:30:00.000Z" },
 });
 
+const env = process.env as Record<string, string | undefined>;
+const original = { NODE_ENV: env.NODE_ENV, NEXT_PHASE: env.NEXT_PHASE };
+
+afterEach(() => {
+  env.NODE_ENV = original.NODE_ENV;
+  env.NEXT_PHASE = original.NEXT_PHASE;
+});
+
 describe("getTotalPlays", () => {
   it("reads the count Postgres sends as a numeric string", async () => {
     jest.mocked(getGameMetric).mockResolvedValue(metric("49631") as never);
@@ -42,5 +50,41 @@ describe("getTotalPlays", () => {
     jest.mocked(getGameMetric).mockResolvedValue(metric("lots") as never);
 
     expect(await getTotalPlays()).toBeNull();
+  });
+});
+
+describe("getTotalPlays when the count cannot be read", () => {
+  const down = { data: null, error: "Database connection issue: fetch failed" };
+
+  it("throws in a production revalidation, so the last good page keeps serving", async () => {
+    env.NODE_ENV = "production";
+    delete env.NEXT_PHASE;
+    jest.mocked(getGameMetric).mockResolvedValue(down);
+
+    await expect(getTotalPlays()).rejects.toThrow("Play count refresh failed: Database connection issue: fetch failed");
+  });
+
+  it("throws in a production revalidation when the row is missing", async () => {
+    env.NODE_ENV = "production";
+    delete env.NEXT_PHASE;
+    jest.mocked(getGameMetric).mockResolvedValue({ data: null });
+
+    await expect(getTotalPlays()).rejects.toThrow("Play count refresh failed: no total_plays value");
+  });
+
+  it("gives nothing during the production build, so a deploy with Supabase down still succeeds", async () => {
+    env.NODE_ENV = "production";
+    env.NEXT_PHASE = "phase-production-build";
+    jest.mocked(getGameMetric).mockResolvedValue(down);
+
+    expect(await getTotalPlays()).toBeNull();
+  });
+
+  it("still reads a good count in a production revalidation", async () => {
+    env.NODE_ENV = "production";
+    delete env.NEXT_PHASE;
+    jest.mocked(getGameMetric).mockResolvedValue(metric("49631") as never);
+
+    expect(await getTotalPlays()).toEqual({ plays: 49631, asOf: "2026-10-19T18:30:00.000Z" });
   });
 });

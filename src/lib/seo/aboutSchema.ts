@@ -1,5 +1,5 @@
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
-import { BRAND_AUTHOR, BRAND_ORGANIZATION, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/brand";
+import { BRAND_AUTHOR, BRAND_ORGANIZATION, BRAND_WEBSITE, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/brand";
 
 export function aboutSchema(locale: string, title: string) {
   const url = localizedUrl("/about", locale);
@@ -18,6 +18,7 @@ export function aboutSchema(locale: string, title: string) {
       },
       BRAND_AUTHOR,
       BRAND_ORGANIZATION,
+      BRAND_WEBSITE,
     ],
   };
 }

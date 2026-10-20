@@ -29,6 +29,15 @@ const ORGANIZATION = {
   founder: { "@id": "https://thememorychess.com/about#bing-cheng" },
 };
 
+const WEBSITE = {
+  "@type": "WebSite",
+  "@id": "https://thememorychess.com/#website",
+  name: "Memory Chess",
+  alternateName: ["MemoryChess", "The Memory Chess", "thememorychess.com"],
+  url: "https://thememorychess.com",
+  publisher: { "@id": "https://thememorychess.com/#organization" },
+};
+
 describe("aboutSchema", () => {
   it("makes the English About page about the Organization, with its developer as the main entity", () => {
     expect(aboutSchema("en", "About Memory Chess")).toEqual({
@@ -46,6 +55,7 @@ describe("aboutSchema", () => {
         },
         PERSON,
         ORGANIZATION,
+        WEBSITE,
       ],
     });
   });
@@ -64,6 +74,7 @@ describe("aboutSchema", () => {
       },
       PERSON,
       ORGANIZATION,
+      WEBSITE,
     ]);
   });
 });

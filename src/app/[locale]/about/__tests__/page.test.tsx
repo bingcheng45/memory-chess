@@ -117,7 +117,7 @@ describe("AboutPage", () => {
     expect(facts.compareDocumentPosition(firstSection) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
-  it("serves the About page, its developer and the Organization as one JSON-LD graph", async () => {
+  it("serves the About page, its developer, the Organization and the WebSite it is part of as one JSON-LD graph", async () => {
     const { container } = render(await AboutPage(IN_ENGLISH));
     const script = container.querySelector('script[type="application/ld+json"]');
     const graph = JSON.parse(script?.textContent ?? "{}")["@graph"];
@@ -126,6 +126,7 @@ describe("AboutPage", () => {
       ["AboutPage", "https://thememorychess.com/about#webpage"],
       ["Person", "https://thememorychess.com/about#bing-cheng"],
       ["Organization", "https://thememorychess.com/#organization"],
+      ["WebSite", "https://thememorychess.com/#website"],
     ]);
     expect(graph[0].name).toBe("About Memory Chess");
   });

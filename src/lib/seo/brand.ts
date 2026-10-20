@@ -36,8 +36,6 @@ export function titleNamingBrandOnce(title: string): Metadata["title"] {
   return title.includes(BRAND_NAME) ? { absolute: title } : title;
 }
 
-export const BRAND_IDENTITY = "Memory Chess, the free chess position memory trainer";
-
 export const BRAND_ALTERNATE_NAMES = ["MemoryChess", "The Memory Chess", "thememorychess.com"];
 
 export const BRAND_DISAMBIGUATION =

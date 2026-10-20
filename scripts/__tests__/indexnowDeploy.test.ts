@@ -97,6 +97,22 @@ describe("waitForDeployment", () => {
     expect(await waitForDeployment(h.options)).toEqual({ deployed: true });
   });
 
+  it("keeps waiting to the 15 minute deadline when an API call fails after a deployment was seen", async () => {
+    const h = harness({ deployments: [[11]], statuses: [{ 11: ["in_progress"] }] });
+    let calls = 0;
+    const api = async (path: string) => {
+      calls += 1;
+      if (calls === 3) throw new Error("GitHub answered 502.");
+      return h.options.api(path);
+    };
+    const result = await waitForDeployment({ ...h.options, api, noDeploymentMs: 0 });
+    expect(result).toEqual({
+      deployed: false,
+      reason: "the Production deployment of 27be34ce4d99 did not finish within 15 minutes",
+    });
+    expect(h.elapsed()).toBe(15 * MINUTE);
+  });
+
   it("keeps polling through a failed API call", async () => {
     const h = harness({ deployments: [[11]], statuses: [{ 11: ["success"] }] });
     let first = true;

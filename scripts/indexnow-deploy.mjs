@@ -4,6 +4,7 @@ const MINUTE = 60_000;
 export async function waitForDeployment({ api, sha, now, sleep, log, pollMs, noDeploymentMs, timeoutMs }) {
   const short = sha.slice(0, 12);
   const start = now();
+  let seen = false;
   for (;;) {
     const elapsed = now() - start;
     let newest = [];
@@ -13,11 +14,12 @@ export async function waitForDeployment({ api, sha, now, sleep, log, pollMs, noD
     } catch (cause) {
       log(cause.message);
     }
+    seen ||= newest.length > 0;
     if (newest.some((states) => states.includes("success"))) return { deployed: true };
     if (newest.length > 0 && newest.every(([latest]) => FAILED.has(latest))) {
       return { deployed: false, reason: `the Production deployment of ${short} ended with ${newest[0][0]}` };
     }
-    if (newest.length === 0 && elapsed >= noDeploymentMs) {
+    if (!seen && elapsed >= noDeploymentMs) {
       return { deployed: false, reason: `no Production deployment of ${short} appeared within ${noDeploymentMs / MINUTE} minutes` };
     }
     if (elapsed >= timeoutMs) {

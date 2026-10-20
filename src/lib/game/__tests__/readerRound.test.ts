@@ -39,9 +39,10 @@ describe("newReaderRound", () => {
     expect(newReaderRound({ pieceCount: 6, memorizeTime: 20 })).toEqual({ pieceCount: 6, memorizeTime: 20 });
   });
 
-  it("swaps a harder page round for the 4-piece, 10-second beginner round", () => {
+  it("swaps a harder or blindfold page round for the 4-piece, 10-second beginner round", () => {
     expect(newReaderRound({ pieceCount: 12, memorizeTime: 8 })).toEqual({ pieceCount: 4, memorizeTime: 10 });
     expect(newReaderRound({ pieceCount: 8, memorizeTime: 10 })).toEqual({ pieceCount: 4, memorizeTime: 10 });
     expect(newReaderRound({ pieceCount: 6, memorizeTime: 8 })).toEqual({ pieceCount: 4, memorizeTime: 10 });
+    expect(newReaderRound({ pieceCount: 2, memorizeTime: 10, blindfold: true })).toEqual({ pieceCount: 4, memorizeTime: 10 });
   });
 });

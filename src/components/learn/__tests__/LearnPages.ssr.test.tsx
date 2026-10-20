@@ -119,7 +119,7 @@ describe("a guide page", () => {
     expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=12&amp;source=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 12 seconds</a>');
   });
 
-  it("offers a new reader the guide's closing round in the hero only up to 6 pieces with 10 seconds or more, and the beginner round otherwise", async () => {
+  it("offers a new reader the guide's closing round in the hero only when it is sighted, up to 6 pieces with 10 seconds or more, and the beginner round otherwise", async () => {
     const heroes = await Promise.all(
       EN_LEARN_PAGES.map(async ({ meta }) => {
         const markup = await guide(meta.slug);
@@ -135,7 +135,7 @@ describe("a guide page", () => {
       "chess-visualization-exercises": "6/10",
       "how-to-see-the-whole-board-in-chess": "4/10",
       "chess-calculation-exercises-for-beginners": "4/10",
-      "blindfold-chess-training-for-beginners": "2/10",
+      "blindfold-chess-training-for-beginners": "4/10",
       "chess-memory-training": "6/10",
       "chess-pattern-recognition-drills": "4/10",
       "how-to-think-in-chess-for-beginners": "6/20",

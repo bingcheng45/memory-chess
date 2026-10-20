@@ -1,6 +1,6 @@
 {
   "sourceHash": "fe30fe527e7e3dbc662ae5862afd6102419ffbb7ddffdeba868f4e9c710bf7ae",
-  "approvedHash": "b4f25004cb48f6de94503988ecf00ceb560068df2f0d242e8fa1cd350fafcb8b",
+  "approvedHash": "65fc7dbcb5908901a31261718fce6996db7f070cae2b9a3b7691045c98289914",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -105,7 +105,7 @@
           {
             "paragraphs": [
               "La pregunta de seguridad es siempre la misma. Después de mi jugada, ¿puede mi rival capturar algo gratis, o atacar una pieza que no puede apartarse? Hazla en cada jugada, también en las tranquilas.",
-              "Empieza por la última jugada de tu rival. Supón que llevas las negras tras 1.e4 e5. Si las blancas juegan 2.Bc4, el alfil apunta ahora a f7. Si en cambio juegan 2.Qh5, la dama apunta a f7, e5 y h7.",
+              "Empieza por la última jugada de tu rival. Supón que llevas las negras tras 1.e4 e5. Si las blancas juegan 2.Bc4 (el sitio anota las piezas con las letras inglesas K, Q, R, B, N, que en español son R, D, T, A, C), el alfil apunta ahora a f7. Si en cambio juegan 2.Qh5, la dama apunta a f7, e5 y h7.",
               "Después comprueba tu propia jugada. La pieza que mueves deja de proteger lo que protegía. Supón que respondiste a 2.Qh5 con 2...Nc6. El caballo protege ahora e5, que la dama ataca. Si más adelante mueves ese caballo, el peón de e5 queda indefenso y la dama lo captura con jaque."
             ]
           },

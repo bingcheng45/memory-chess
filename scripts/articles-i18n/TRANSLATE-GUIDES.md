@@ -5,8 +5,8 @@ draws around them into one language. This recipe calls that language `<locale>`,
 agent reviews your work after you. The tool `scripts/articles-i18n.mjs --guides` checks a translation and
 writes it into the repo.
 
-A translated guide is indexed by search engines and read by AI assistants, which quote it to players who ask
-in your language. Every number, setting and claim must stay exactly what the English says. A drill that tells
+A translated guide is read by players and AI assistants, which quote it to players who ask in your language.
+It is kept out of search until its locale is turned on in `GUIDE_LOCALE_INDEXING`, and may be indexed then. Every number, setting and claim must stay exactly what the English says. A drill that tells
 a reader the wrong piece count or the wrong button sends them to the wrong round.
 
 Run every command from the repo root, with Node 22.18 or newer. Keep each shell command plain: one command,
@@ -44,7 +44,9 @@ Do not edit an English guide, another locale, a script, a message catalogue or t
    German writes "Blindschach" or "Blindspiel", French "partie à l'aveugle" or "jouer à l'aveugle", Spanish
    "ajedrez a ciegas", Portuguese "xadrez às cegas", Russian "игра вслепую". Note the terms you chose and
    where you saw them, for your report. Piece letters in notation (`Nf3`, `Bc4`) stay as the English text has
-   them: the site and its boards use English notation.
+   them: the site and its boards use English notation. Where a guide first uses a piece letter, add one short
+   legend in your language that says the site writes pieces with the English letters K, Q, R, B, N and gives
+   your language's letters, as the installed translations in `src/lib/seo/learn/translations/de/` do.
 
 4. For each source file, write `.verify-evidence/guides-i18n/<locale>/<name>.json`: the `text` object alone,
    with the same keys in the same order and the same number of items in every list, and every string

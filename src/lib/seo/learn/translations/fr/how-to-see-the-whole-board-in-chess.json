@@ -1,6 +1,6 @@
 {
   "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
-  "approvedHash": "5cbf917eb2f2e9b3a4d8aadb7ea8ad90c62e36e2121b6c42fb934bcf37231e47",
+  "approvedHash": "5731003f8544f9c7b3d63cd4fe674d9f9957cc91debac28b504898f62a98b537",
   "sameAsEnglish": [
     "sections.generated-positions.blocks[1].drills[1].duration",
     "sections.far-corner-glance.blocks[1].columns[0]"
@@ -39,7 +39,7 @@
         "blocks": [
           {
             "paragraphs": [
-              "Installez cette position, les Noirs au trait. Les Blancs ont Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 et des pions en a3, b2, c2, f2, g2 et h2. Les Noirs ont Kg8, Ra8, Rd8, Bc8, Nf6 et des pions en a7, b7, c7, e6, f7, g7 et h7.",
+              "Installez cette position, les Noirs au trait. Les Blancs ont Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 et des pions en a3, b2, c2, f2, g2 et h2 (le site note les pièces avec les lettres anglaises K, Q, R, B, N, soit R, D, T, F, C en français). Les Noirs ont Kg8, Ra8, Rd8, Bc8, Nf6 et des pions en a7, b7, c7, e6, f7, g7 et h7.",
               "Le fou en a2 regarde b3, c4, d5, e6, f7 et g8. Les pions noirs en e6 et f7 lui barrent la route, et le roi noir attend au bout.",
               "Poussez ...e5 pour gagner de l’espace au centre, et Bxf7+ suit. Le roi ne peut pas reprendre, car le cavalier en g5 contrôle aussi f7 : les Blancs gagnent donc un pion avec échec."
             ]

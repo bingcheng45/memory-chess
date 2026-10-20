@@ -1,6 +1,6 @@
 {
   "sourceHash": "2e876d5b5c5c75ebdb4f87c75fb7520a2ca35c59bc6d792af9a70faa80dfd00b",
-  "approvedHash": "102004b906d71cef2280bbb63e17e3ba7e3e30d32e0cc4e828be36a3a900a010",
+  "approvedHash": "05c44faee4c85212aea1f61098439e947a0d2f9295f206c85ee1d10364ea5292",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -40,7 +40,7 @@
               "Un problema te dice dos cosas antes de mirar. Hay una táctica, y te toca mover. Una partida no te dice ninguna de las dos, así que una horquilla que encontrarías en un problema puede pasar sin que la veas.",
               "Un error grave de una sola jugada no exige una variante profunda para evitarlo. Es una jugada que funciona en el tablero de tu cabeza y falla en el tablero de la mesa.",
               "Los dos tableros suelen diferir de tres maneras. La primera es el defensor fantasma, una pieza con la que cuentas para recapturar y que no puede hacer esa captura de forma legal.",
-              "Pon un alfil blanco en b5, un caballo negro en c6, el rey negro en e8 y un peón blanco en e5, con d7 vacía. El peón acaba de capturar una pieza negra en e5. Las negras contaban con el caballo como defensor y pensaban recapturar. El caballo está clavado contra el rey, así que Nxe5 es ilegal y la pieza simplemente se pierde."
+              "Pon un alfil blanco en b5, un caballo negro en c6, el rey negro en e8 y un peón blanco en e5, con d7 vacía. El peón acaba de capturar una pieza negra en e5. Las negras contaban con el caballo como defensor y pensaban recapturar. El caballo está clavado contra el rey, así que Nxe5 es ilegal y la pieza simplemente se pierde. El sitio anota las piezas con las letras inglesas K, Q, R, B, N, que en español son R, D, T, A, C."
             ]
           },
           {

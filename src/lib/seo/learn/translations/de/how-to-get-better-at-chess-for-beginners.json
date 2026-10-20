@@ -1,6 +1,6 @@
 {
   "sourceHash": "fe30fe527e7e3dbc662ae5862afd6102419ffbb7ddffdeba868f4e9c710bf7ae",
-  "approvedHash": "078d996347e658ea047c386b29b41725b8931c0f57cef27a15ca8d517344c0f6",
+  "approvedHash": "ed3ac695929a7fd213a06ea53245eb3a770929c98e4c737fbdd0caefbaaecc68",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -105,7 +105,7 @@
           {
             "paragraphs": [
               "Die Sicherheitsfrage ist immer dieselbe: Kann mein Gegenüber nach meinem Zug etwas umsonst schlagen oder eine Figur angreifen, die nicht wegziehen kann? Stell sie bei jedem Zug, auch bei den ruhigen.",
-              "Fang beim letzten Zug deines Gegenübers an. Nimm an, du spielst Schwarz und die Partie begann mit 1.e4 e5. Spielt Weiß 2.Bc4, blickt der Läufer jetzt auf f7. Spielt Weiß stattdessen 2.Qh5, blickt die Dame auf f7, e5 und h7.",
+              "Fang beim letzten Zug deines Gegenübers an. Nimm an, du spielst Schwarz und die Partie begann mit 1.e4 e5. Spielt Weiß 2.Bc4 (die Website schreibt Figuren mit englischen Buchstaben: K, Q, R, B, N statt K, D, T, L, S), blickt der Läufer jetzt auf f7. Spielt Weiß stattdessen 2.Qh5, blickt die Dame auf f7, e5 und h7.",
               "Prüf dann deinen eigenen Zug. Die Figur, die du ziehst, deckt nicht mehr, was sie gedeckt hat. Nimm an, du hast auf 2.Qh5 mit 2...Nc6 geantwortet. Der Springer deckt jetzt e5, das die Dame angreift. Ziehst du diesen Springer später weg, ist der Bauer auf e5 ungedeckt, und die Dame schlägt ihn mit Schach."
             ]
           },

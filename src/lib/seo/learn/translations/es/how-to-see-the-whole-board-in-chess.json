@@ -1,6 +1,6 @@
 {
   "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
-  "approvedHash": "8c8daaf7d2324a0c88020fb36341c6490f27161974e798923630453156f4f6c1",
+  "approvedHash": "5d835c54580ce60b347fae51decbed7de147159290a630916846f6d16fa1a109",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -36,7 +36,7 @@
         "blocks": [
           {
             "paragraphs": [
-              "Monta esta posición con turno de las negras. Las blancas tienen Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 y peones en a3, b2, c2, f2, g2 y h2. Las negras tienen Kg8, Ra8, Rd8, Bc8, Nf6 y peones en a7, b7, c7, e6, f7, g7 y h7.",
+              "Monta esta posición con turno de las negras. Las blancas tienen Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 y peones en a3, b2, c2, f2, g2 y h2 (el sitio anota las piezas con las letras inglesas K, Q, R, B, N, que en español son R, D, T, A, C). Las negras tienen Kg8, Ra8, Rd8, Bc8, Nf6 y peones en a7, b7, c7, e6, f7, g7 y h7.",
               "El alfil de a2 mira por b3, c4, d5, e6, f7 y g8. Los peones negros de e6 y f7 se interponen, y el rey negro espera al final.",
               "Juega ...e5 para ganar espacio en el centro, y llega Bxf7+. El rey no puede recapturar, porque el caballo de g5 también controla f7, así que las blancas ganan un peón con jaque."
             ]

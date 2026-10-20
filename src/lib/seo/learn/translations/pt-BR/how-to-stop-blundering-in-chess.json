@@ -1,6 +1,6 @@
 {
   "sourceHash": "2e876d5b5c5c75ebdb4f87c75fb7520a2ca35c59bc6d792af9a70faa80dfd00b",
-  "approvedHash": "38150b7d43038224b5021b5b8588eb03f04dca161781f2f878c77f57c59149e9",
+  "approvedHash": "5001f8cf482d4226a558f32289173b2a9bee9f6f47b02babcc5482187dde5629",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -40,7 +40,7 @@
               "Um problema tático conta duas coisas antes de você olhar. Existe uma tática, e a vez é sua. Uma partida não conta nenhuma das duas, então um garfo que você acharia num problema pode passar sem ser visto.",
               "Um erro grave de um lance não exige nenhuma variante profunda para ser evitado. É um lance que funciona no tabuleiro da sua cabeça e falha no tabuleiro da mesa.",
               "Os dois tabuleiros costumam diferir de três maneiras. A primeira é o defensor fantasma, uma peça com que você conta para recapturar, mas que não pode fazer essa captura legalmente.",
-              "Coloque um bispo branco em b5, um cavalo preto em c6, o rei preto em e8 e um peão branco em e5, com d7 vazia. O peão acabou de capturar uma peça preta em e5. As pretas contavam com o cavalo como defensor e planejavam recapturar. O cavalo está cravado no rei, então Nxe5 é ilegal e a peça está simplesmente perdida."
+              "Coloque um bispo branco em b5, um cavalo preto em c6, o rei preto em e8 e um peão branco em e5, com d7 vazia. O peão acabou de capturar uma peça preta em e5. As pretas contavam com o cavalo como defensor e planejavam recapturar. O cavalo está cravado no rei, então Nxe5 é ilegal e a peça está simplesmente perdida. O site anota as peças com as letras inglesas K, Q, R, B, N, que em português são R, D, T, B, C."
             ]
           },
           {

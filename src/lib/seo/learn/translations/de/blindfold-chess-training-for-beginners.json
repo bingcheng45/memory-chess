@@ -1,6 +1,6 @@
 {
   "sourceHash": "b41e3363b91f542f7d98a16ac9e40841fa7a3401b8a66701a68acb292c4ddea4",
-  "approvedHash": "d7db7248763dbb9e728c885c23698dd1e4cc410769856d52ad65b046ccd22f9e",
+  "approvedHash": "978865dd4c57b806a8aed14e10258efe45f128c22c98e189a372e301f1e250d5",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -37,7 +37,7 @@
         "blocks": [
           {
             "paragraphs": [
-              "In einer Blindpartie siehst du die Figuren nie. Du und dein Gegenüber sagen jeden Zug in algebraischer Notation an, etwa e4 oder Nf3, und du behältst die Stellung im Kopf. Dein Gegenüber kann an einem normalen Brett sitzen, oder jemand zieht die Figuren auf einem Brett, das du nicht sehen kannst.",
+              "In einer Blindpartie siehst du die Figuren nie. Du und dein Gegenüber sagen jeden Zug in algebraischer Notation an, etwa e4 oder Nf3 (die Website schreibt Figuren mit englischen Buchstaben: K, Q, R, B, N statt K, D, T, L, S), und du behältst die Stellung im Kopf. Dein Gegenüber kann an einem normalen Brett sitzen, oder jemand zieht die Figuren auf einem Brett, das du nicht sehen kannst.",
               "Manche Schachseiten haben eine Einstellung für Blindschach oder unsichtbare Figuren, die dasselbe leistet. Das Brett bleibt leer, während die Zugliste wächst. Die Regeln ändern sich nicht. Eine Figur, die du vergisst, ist also eine Figur, die du verlierst.",
               "Die Fähigkeit besteht also nicht darin, durch eine Augenbinde zu sehen. Sie besteht darin, jedes Feld ohne Brett zu benennen und das Bild nach jedem Zug zu aktualisieren. Die vier Stufen unten bauen das der Reihe nach auf, und Stufe vier endet mit deiner ersten ganzen Blindpartie."
             ]

@@ -1,6 +1,6 @@
 {
   "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
-  "approvedHash": "afe1bcc71ead1f39056f9fd62bfa3d54aadadba52f35786840b9474209562e27",
+  "approvedHash": "e74e1c34422a7bd16587779790e98cb0f2c945df2875b26f5b41475792b694f5",
   "sameAsEnglish": [
     "sections.far-corner-glance.blocks[1].columns[0]"
   ],
@@ -38,7 +38,7 @@
         "blocks": [
           {
             "paragraphs": [
-              "Bau diese Stellung mit Schwarz am Zug auf. Weiß hat Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 und Bauern auf a3, b2, c2, f2, g2 und h2. Schwarz hat Kg8, Ra8, Rd8, Bc8, Nf6 und Bauern auf a7, b7, c7, e6, f7, g7 und h7.",
+              "Bau diese Stellung mit Schwarz am Zug auf. Weiß hat Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 und Bauern auf a3, b2, c2, f2, g2 und h2 (die Website schreibt Figuren mit englischen Buchstaben: K, Q, R, B, N statt K, D, T, L, S). Schwarz hat Kg8, Ra8, Rd8, Bc8, Nf6 und Bauern auf a7, b7, c7, e6, f7, g7 und h7.",
               "Der Läufer auf a2 blickt über b3, c4, d5, e6, f7 und g8. Die schwarzen Bauern auf e6 und f7 stehen im Weg, und am Ende wartet der schwarze König.",
               "Zieh ...e5 für Raum im Zentrum, und es folgt Bxf7+. Der König kann nicht zurückschlagen, weil auch der Springer auf g5 das Feld f7 deckt. Weiß gewinnt also einen Bauern mit Schach."
             ]

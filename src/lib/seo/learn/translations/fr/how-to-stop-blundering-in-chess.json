@@ -1,6 +1,6 @@
 {
   "sourceHash": "2e876d5b5c5c75ebdb4f87c75fb7520a2ca35c59bc6d792af9a70faa80dfd00b",
-  "approvedHash": "b46b3b413ff9a394008689be1dbe367bb3e4159a7a758285305bc2fda48bbf5a",
+  "approvedHash": "24cfaf0fc95fb11c10ff326c28f4c4af6148d8da9b795fc3941febcc7551e1a9",
   "sameAsEnglish": [
     "sections.own-games-drills.blocks[1].drills[0].duration",
     "sections.own-games-drills.blocks[1].drills[1].duration"
@@ -43,7 +43,7 @@
               "Un exercice vous dit deux choses avant même que vous regardiez. Il y a une tactique, et c’est à vous de jouer. Une partie ne vous dit ni l’un ni l’autre : une fourchette que vous trouveriez dans un exercice peut passer sans que vous la voyiez.",
               "Éviter une gaffe en un coup ne demande aucune variante profonde. C’est un coup qui fonctionne sur l’échiquier que vous avez en tête et échoue sur celui qui est sur la table.",
               "Les deux échiquiers diffèrent de trois façons courantes. La première est le défenseur fantôme, une pièce sur laquelle vous comptez pour reprendre et qui ne peut pas légalement faire cette prise.",
-              "Placez un fou blanc en b5, un cavalier noir en c6, le roi noir en e8 et un pion blanc en e5, avec d7 vide. Le pion vient de prendre une pièce noire en e5. Les Noirs comptaient sur le cavalier pour défendre et prévoyaient de reprendre. Le cavalier est cloué sur le roi : Nxe5 est donc illégal, et la pièce est tout simplement perdue."
+              "Placez un fou blanc en b5, un cavalier noir en c6, le roi noir en e8 et un pion blanc en e5, avec d7 vide. Le pion vient de prendre une pièce noire en e5. Les Noirs comptaient sur le cavalier pour défendre et prévoyaient de reprendre. Le cavalier est cloué sur le roi : Nxe5 est donc illégal, et la pièce est tout simplement perdue. Le site note les pièces avec les lettres anglaises K, Q, R, B, N, soit R, D, T, F, C en français."
             ]
           },
           {

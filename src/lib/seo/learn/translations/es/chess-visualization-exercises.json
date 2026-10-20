@@ -1,6 +1,6 @@
 {
   "sourceHash": "1e76a79b0ae5ab6f6b4238980f8e2d254e771ef3830048abdda935ebf8dfcf2f",
-  "approvedHash": "be86011562a4c575e64fae657d2b18fb9fb4b4def3c279a4966b10c720f6c02d",
+  "approvedHash": "f60db148d3d6498e9fec46715783ad37415d68a3b3effe14743bf0d8458a214f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,7 +126,7 @@
         "summary": "Una ronda de memoria pone a prueba retener una imagen. Este ejercicio pone a prueba cambiarla.",
         "blocks": [
           {
-            "caption": "Juegan las blancas: estudia este tablero, tápalo y decide si 1.Nxe5 gana un peón."
+            "caption": "Juegan las blancas: estudia este tablero, tápalo y decide si 1.Nxe5 gana un peón. El sitio anota las piezas con las letras inglesas K, Q, R, B, N, que en español son R, D, T, A, C."
           },
           {
             "paragraphs": [

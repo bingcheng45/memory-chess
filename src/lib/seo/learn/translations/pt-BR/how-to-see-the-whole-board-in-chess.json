@@ -1,6 +1,6 @@
 {
   "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
-  "approvedHash": "3a57af751c362092194f3ba0a9fcd1c49f30cb38fbbb4ffe5eb0a2ada425ae27",
+  "approvedHash": "81f728cb4e2dd1020a365ee88d9894ddc4a447663f6bdc7c0e2014a8aec5dae3",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -36,7 +36,7 @@
         "blocks": [
           {
             "paragraphs": [
-              "Monte esta posição com a vez das pretas. As brancas têm Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 e peões em a3, b2, c2, f2, g2 e h2. As pretas têm Kg8, Ra8, Rd8, Bc8, Nf6 e peões em a7, b7, c7, e6, f7, g7 e h7.",
+              "Monte esta posição com a vez das pretas. As brancas têm Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 e peões em a3, b2, c2, f2, g2 e h2 (o site anota as peças com as letras inglesas K, Q, R, B, N, que em português são R, D, T, B, C). As pretas têm Kg8, Ra8, Rd8, Bc8, Nf6 e peões em a7, b7, c7, e6, f7, g7 e h7.",
               "O bispo em a2 mira b3, c4, d5, e6, f7 e g8. Os peões pretos em e6 e f7 estão no caminho, e o rei preto espera no fim da linha.",
               "Jogue ...e5 para ganhar espaço no centro, e vem Bxf7+. O rei não pode recapturar, porque o cavalo em g5 também cobre f7, então as brancas ganham um peão com xeque."
             ]

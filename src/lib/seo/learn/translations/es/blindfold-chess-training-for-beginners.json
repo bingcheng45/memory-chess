@@ -1,6 +1,6 @@
 {
   "sourceHash": "b41e3363b91f542f7d98a16ac9e40841fa7a3401b8a66701a68acb292c4ddea4",
-  "approvedHash": "1356219cde2e81fea5bf5931044e59001bd0afdb05774e1a55d62de8fa9d042d",
+  "approvedHash": "9eb05f6a61d273f4efd0aa6c770e7b0f7e64d44d934425003b7fbbf8a9d42211",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -37,7 +37,7 @@
         "blocks": [
           {
             "paragraphs": [
-              "En una partida a ciegas nunca ves las piezas. Cada jugada se anuncia en voz alta en notación algebraica, como e4 o Nf3, y tú mantienes la posición en la cabeza. Tu rival puede sentarse ante un tablero normal, o alguien puede mover las piezas en un tablero que tú no ves.",
+              "En una partida a ciegas nunca ves las piezas. Cada jugada se anuncia en voz alta en notación algebraica, como e4 o Nf3 (el sitio anota las piezas con las letras inglesas K, Q, R, B, N, que en español son R, D, T, A, C), y tú mantienes la posición en la cabeza. Tu rival puede sentarse ante un tablero normal, o alguien puede mover las piezas en un tablero que tú no ves.",
               "Algunas webs tienen una opción de partida a ciegas o de piezas ocultas que cumple la misma función. El tablero sigue vacío mientras crece la lista de jugadas. Las reglas no cambian, así que una pieza que olvidas es una pieza que pierdes.",
               "Por eso la habilidad no consiste en ver a través de una venda. Consiste en nombrar cada casilla sin tablero y actualizar la imagen después de cada jugada. Las cuatro etapas que siguen lo construyen en orden, y la etapa cuatro termina con tu primera partida completa a ciegas."
             ]

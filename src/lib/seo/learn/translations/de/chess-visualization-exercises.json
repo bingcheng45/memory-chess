@@ -1,6 +1,6 @@
 {
   "sourceHash": "1e76a79b0ae5ab6f6b4238980f8e2d254e771ef3830048abdda935ebf8dfcf2f",
-  "approvedHash": "d87962960574701f05476649beebf86c7e3dbfb33d0633853eeb5bed4d9a85dd",
+  "approvedHash": "df5b08d09821e774a0ff96cb16b015ff86864f517bdc45b0d61ade43c58a48ba",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,7 +126,7 @@
         "summary": "Eine Gedächtnisrunde prüft, ob du ein Bild halten kannst. Diese Übung prüft, ob du es verändern kannst.",
         "blocks": [
           {
-            "caption": "Weiß am Zug: Präg dir dieses Brett ein, deck es ab und entscheide dann, ob 1.Nxe5 einen Bauern gewinnt."
+            "caption": "Weiß am Zug: Präg dir dieses Brett ein, deck es ab und entscheide dann, ob 1.Nxe5 einen Bauern gewinnt. Die Website schreibt Figuren mit englischen Buchstaben: K, Q, R, B, N statt K, D, T, L, S."
           },
           {
             "paragraphs": [

@@ -1,6 +1,6 @@
 {
   "sourceHash": "1e76a79b0ae5ab6f6b4238980f8e2d254e771ef3830048abdda935ebf8dfcf2f",
-  "approvedHash": "3ff7ee881e8716c1a7a1ae2542d21655a46290b9c959b273aae6f1fea3437da6",
+  "approvedHash": "6ca21e73dcb6c3c0e44e7eb39df5cbb83d55c76f8796f722770e93c0735f33de",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,7 +126,7 @@
         "summary": "Une manche de mémoire teste votre capacité à garder une image. Cet exercice teste votre capacité à la modifier.",
         "blocks": [
           {
-            "caption": "Les Blancs jouent : étudiez cet échiquier, couvrez-le, puis décidez si 1.Nxe5 gagne un pion."
+            "caption": "Les Blancs jouent : étudiez cet échiquier, couvrez-le, puis décidez si 1.Nxe5 gagne un pion. Le site note les pièces avec les lettres anglaises K, Q, R, B, N, soit R, D, T, F, C en français."
           },
           {
             "paragraphs": [

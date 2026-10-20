@@ -1,6 +1,6 @@
 {
   "sourceHash": "fe30fe527e7e3dbc662ae5862afd6102419ffbb7ddffdeba868f4e9c710bf7ae",
-  "approvedHash": "dd474b2397cfc6970dbd3f59cdcaf65d9861cad492867b39bbd53dd72dbc1d7b",
+  "approvedHash": "3a3b7865cdacbf0c48be16a94e1e63a2ed0301413ee6b919ad506ffd7d5ce4b3",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -105,7 +105,7 @@
           {
             "paragraphs": [
               "A pergunta de segurança é sempre a mesma. Depois do meu lance, o adversário pode capturar alguma coisa de graça, ou atacar uma peça que não tem para onde fugir? Faça a pergunta em todo lance, inclusive nos lances tranquilos.",
-              "Comece pelo último lance do adversário. Digamos que você está de pretas depois de 1.e4 e5. Se as brancas jogam 2.Bc4, o bispo agora mira f7. Se as brancas jogam 2.Qh5, a dama mira f7, e5 e h7.",
+              "Comece pelo último lance do adversário. Digamos que você está de pretas depois de 1.e4 e5. Se as brancas jogam 2.Bc4 (o site anota as peças com as letras inglesas K, Q, R, B, N, que em português são R, D, T, B, C), o bispo agora mira f7. Se as brancas jogam 2.Qh5, a dama mira f7, e5 e h7.",
               "Depois confira o seu próprio lance. A peça que você move para de proteger o que protegia. Digamos que você respondeu a 2.Qh5 com 2...Nc6. O cavalo agora protege e5, que a dama ataca. Se mais tarde você mover esse cavalo, o peão de e5 fica solto e a dama o captura com xeque."
             ]
           },

@@ -1,6 +1,6 @@
 {
   "sourceHash": "1e76a79b0ae5ab6f6b4238980f8e2d254e771ef3830048abdda935ebf8dfcf2f",
-  "approvedHash": "e797c051f130fb3862f2016a906368ef2a10f6014175003ba1dbd3d9649ab813",
+  "approvedHash": "69476a928f38868115641d0e0c501a432970e9b03b2a5b58a1395b9696e996fb",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,7 +126,7 @@
         "summary": "Uma rodada de memória testa guardar uma imagem. Este exercício testa mudá-la.",
         "blocks": [
           {
-            "caption": "Brancas jogam: estude este tabuleiro, cubra-o e decida se 1.Nxe5 ganha um peão."
+            "caption": "Brancas jogam: estude este tabuleiro, cubra-o e decida se 1.Nxe5 ganha um peão. O site anota as peças com as letras inglesas K, Q, R, B, N, que em português são R, D, T, B, C."
           },
           {
             "paragraphs": [

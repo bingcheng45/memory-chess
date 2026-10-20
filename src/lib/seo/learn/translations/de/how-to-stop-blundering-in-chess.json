@@ -1,6 +1,6 @@
 {
   "sourceHash": "2e876d5b5c5c75ebdb4f87c75fb7520a2ca35c59bc6d792af9a70faa80dfd00b",
-  "approvedHash": "54c62747d571ff4a6c02fd61246c1196caa831c58f3803b0f6dcfe1831c80e88",
+  "approvedHash": "0136f3e722799cf2585196d98a9b999d107fc69b2c923e27d8cfe850aaa8826e",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -40,7 +40,7 @@
               "Eine Taktikaufgabe verrät dir zwei Dinge, bevor du hinschaust: Es gibt eine Taktik, und du bist am Zug. Eine Partie verrät dir keins von beiden. So kann eine Gabel, die du in einer Aufgabe finden würdest, unbemerkt vorbeiziehen.",
               "Um einen Patzer zu vermeiden, der in einem Zug bestraft wird, brauchst du keine tiefe Variante. Es ist ein Zug, der auf dem Brett in deinem Kopf funktioniert und auf dem Brett auf dem Tisch scheitert.",
               "Die beiden Bretter unterscheiden sich auf drei häufige Arten. Die erste ist der Phantomverteidiger, eine Figur, auf deren Zurückschlagen du zählst, die diesen Schlagzug aber nicht legal ausführen kann.",
-              "Stell einen weißen Läufer auf b5, einen schwarzen Springer auf c6, den schwarzen König auf e8 und einen weißen Bauern auf e5, mit leerem d7. Der Bauer hat gerade eine schwarze Figur auf e5 geschlagen. Schwarz hat den Springer als Verteidiger gezählt und wollte zurückschlagen. Der Springer ist an den König gefesselt, also ist Nxe5 illegal, und die Figur ist einfach weg."
+              "Stell einen weißen Läufer auf b5, einen schwarzen Springer auf c6, den schwarzen König auf e8 und einen weißen Bauern auf e5, mit leerem d7. Der Bauer hat gerade eine schwarze Figur auf e5 geschlagen. Schwarz hat den Springer als Verteidiger gezählt und wollte zurückschlagen. Der Springer ist an den König gefesselt, also ist Nxe5 illegal, und die Figur ist einfach weg. Die Website schreibt Figuren mit englischen Buchstaben: K, Q, R, B, N statt K, D, T, L, S."
             ]
           },
           {

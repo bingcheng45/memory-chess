@@ -1,6 +1,6 @@
 {
   "sourceHash": "b41e3363b91f542f7d98a16ac9e40841fa7a3401b8a66701a68acb292c4ddea4",
-  "approvedHash": "2ff61dafd41b07bd92ca06b27c5b4aa3fc1de4b468590f4271c874a948327f15",
+  "approvedHash": "3b6e3aaec3feaa1314337db0be2adf1e5c38e3ea9e5785805ae9e5ff961eae13",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -12,7 +12,7 @@
         "secondary": [
           "jouer aux échecs à l'aveugle",
           "apprendre les échecs à l'aveugle",
-          "partie à l'aveugle échecs",
+          "entraîner son échiquier mental",
           "rejouer une partie sans échiquier",
           "exercices de concentration échecs"
         ]
@@ -37,7 +37,7 @@
         "blocks": [
           {
             "paragraphs": [
-              "Dans une partie à l’aveugle, vous ne voyez jamais les pièces. Votre adversaire et vous annoncez chaque coup en notation algébrique, par exemple e4 ou Nf3, et vous gardez la position en tête. Votre adversaire peut jouer devant un échiquier normal, ou quelqu’un peut déplacer les pièces sur un échiquier que vous ne voyez pas.",
+              "Dans une partie à l’aveugle, vous ne voyez jamais les pièces. Votre adversaire et vous annoncez chaque coup en notation algébrique, par exemple e4 ou Nf3 (le site note les pièces avec les lettres anglaises K, Q, R, B, N, soit R, D, T, F, C en français), et vous gardez la position en tête. Votre adversaire peut jouer devant un échiquier normal, ou quelqu’un peut déplacer les pièces sur un échiquier que vous ne voyez pas.",
               "Certains sites en ligne proposent un réglage « à l’aveugle » ou « pièces masquées » qui fait la même chose. L’échiquier reste vide pendant que la liste des coups s’allonge. Les règles ne changent pas : une pièce oubliée est une pièce perdue.",
               "La compétence ne consiste donc pas à voir à travers un bandeau. Elle consiste à nommer chaque case sans échiquier et à mettre l’image à jour après chaque coup. Les quatre étapes ci-dessous la construisent dans l’ordre, et l’étape quatre se termine par votre première partie entière à l’aveugle."
             ]

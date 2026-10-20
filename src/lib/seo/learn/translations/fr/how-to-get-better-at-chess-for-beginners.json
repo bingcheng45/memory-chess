@@ -1,6 +1,6 @@
 {
   "sourceHash": "fe30fe527e7e3dbc662ae5862afd6102419ffbb7ddffdeba868f4e9c710bf7ae",
-  "approvedHash": "9d8510902c0a7eda001329572c7d8e7689f4fd603456207be23b4f3688428798",
+  "approvedHash": "6b2e6a588a683c94c1d537c2b9600ac51769b8d946a7643e4b38ac6036cdfc8d",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -105,7 +105,7 @@
           {
             "paragraphs": [
               "La question de sécurité est toujours la même. Après mon coup, mon adversaire peut-il prendre quelque chose gratuitement, ou attaquer une pièce qui ne peut pas s’échapper ? Posez-la à chaque coup, y compris les coups calmes.",
-              "Partez du dernier coup de votre adversaire. Disons que vous avez les Noirs après 1.e4 e5. Si les Blancs jouent 2.Bc4, le fou vise maintenant f7. Si les Blancs jouent plutôt 2.Qh5, la dame vise f7, e5 et h7.",
+              "Partez du dernier coup de votre adversaire. Disons que vous avez les Noirs après 1.e4 e5. Si les Blancs jouent 2.Bc4 (le site note les pièces avec les lettres anglaises K, Q, R, B, N, soit R, D, T, F, C en français), le fou vise maintenant f7. Si les Blancs jouent plutôt 2.Qh5, la dame vise f7, e5 et h7.",
               "Vérifiez ensuite votre propre coup. La pièce que vous déplacez cesse de protéger ce qu’elle protégeait. Disons que vous avez répondu à 2.Qh5 par 2...Nc6. Le cavalier protège maintenant e5, que la dame attaque. Si vous déplacez ce cavalier plus tard, le pion e5 n’est plus défendu et la dame le prend avec échec."
             ]
           },

@@ -63,6 +63,10 @@
       "leaderboard": "ランキングを見る",
       "chooseSettings": "駒の数と時間を選ぶ"
     },
+    "gameVideo": {
+      "play": "動画を再生: {title}",
+      "caption": "1ラウンドを最初から最後まで。局面を覚え、記憶から再現し、スコアを確認します。"
+    },
     "video": {
       "title": "ゲームの土台にある力を鍛える",
       "subtitle": "毎ラウンドで鍛える「思い描く力」についての、Colin Galen の短い動画です。",

@@ -63,6 +63,10 @@
       "leaderboard": "Ranglista megtekintése",
       "chooseSettings": "Válassz bábukat és időt"
     },
+    "gameVideo": {
+      "play": "Videó lejátszása: {title}",
+      "caption": "Egy kör az elejétől a végéig: nézd meg az állást, rakd ki emlékezetből, és olvasd le a pontszámod."
+    },
     "video": {
       "title": "Edzd a képességet, amelyre a játék épül",
       "subtitle": "Colin Galen rövid videója a vizualizációról, arról a képességről, amelyet minden kör edz.",

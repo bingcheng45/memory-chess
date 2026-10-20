@@ -63,6 +63,10 @@
       "leaderboard": "Voir le classement",
       "chooseSettings": "Choisir les pièces et la durée"
     },
+    "gameVideo": {
+      "play": "Lire la vidéo : {title}",
+      "caption": "Une manche du début à la fin : étudiez la position, reconstruisez-la de mémoire, lisez votre score."
+    },
     "video": {
       "title": "Entraînez la compétence au cœur du jeu",
       "subtitle": "Une courte vidéo de Colin Galen sur la visualisation, ce que chaque partie entraîne.",

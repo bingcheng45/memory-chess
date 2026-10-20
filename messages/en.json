@@ -63,6 +63,10 @@
       "leaderboard": "View leaderboard",
       "chooseSettings": "Choose pieces and time"
     },
+    "gameVideo": {
+      "play": "Play video: {title}",
+      "caption": "One round, start to finish: study the position, rebuild it from memory, read your score."
+    },
     "video": {
       "title": "Train the skill the game uses.",
       "subtitle": "A short video by Colin Galen on visualization, the skill every round trains.",

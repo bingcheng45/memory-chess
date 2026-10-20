@@ -63,6 +63,10 @@
       "leaderboard": "Bestenliste ansehen",
       "chooseSettings": "Figuren und Zeit wählen"
     },
+    "gameVideo": {
+      "play": "Video abspielen: {title}",
+      "caption": "Eine Runde von Anfang bis Ende: Stellung einprägen, aus dem Gedächtnis nachbauen, Ergebnis ablesen."
+    },
     "video": {
       "title": "Trainiere die Fähigkeit hinter dem Spiel",
       "subtitle": "Ein kurzes Video von Colin Galen über Visualisierung, die Fähigkeit, die jede Runde trainiert.",

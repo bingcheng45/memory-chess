@@ -63,6 +63,10 @@
       "leaderboard": "Sıralamayı gör",
       "chooseSettings": "Taş sayısı ve süreyi seç"
     },
+    "gameVideo": {
+      "play": "Videoyu oynat: {title}",
+      "caption": "Baştan sona bir tur: pozisyonu incele, hafızandan yeniden kur, puanını gör."
+    },
     "video": {
       "title": "Oyunun dayandığı beceriyi çalıştır",
       "subtitle": "Colin Galen’dan görselleştirme üzerine kısa bir video: her turun çalıştırdığı beceri.",

@@ -63,6 +63,10 @@
       "leaderboard": "查看排行榜",
       "chooseSettings": "自选棋子数和时间"
     },
+    "gameVideo": {
+      "play": "播放视频：{title}",
+      "caption": "完整的一局：观察局面，凭记忆复原，再查看你的得分。"
+    },
     "video": {
       "title": "锻炼游戏背后的那项能力",
       "subtitle": "Colin Galen 的短视频，讲视觉化想象，也就是每局都在训练的能力。",

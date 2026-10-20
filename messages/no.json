@@ -63,6 +63,10 @@
       "leaderboard": "Se topplisten",
       "chooseSettings": "Velg brikker og tid"
     },
+    "gameVideo": {
+      "play": "Spill av video: {title}",
+      "caption": "Én runde fra start til slutt: studer stillingen, gjenoppbygg den etter hukommelsen og les poengsummen din."
+    },
     "video": {
       "title": "Tren ferdigheten bak spillet",
       "subtitle": "En kort video av Colin Galen om visualisering, som hver runde trener.",

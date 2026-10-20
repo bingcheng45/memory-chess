@@ -63,6 +63,10 @@
       "leaderboard": "리더보드 보기",
       "chooseSettings": "기물 수와 시간 선택"
     },
+    "gameVideo": {
+      "play": "동영상 재생: {title}",
+      "caption": "한 라운드를 처음부터 끝까지: 포지션을 익히고, 기억으로 다시 놓고, 점수를 확인하세요."
+    },
     "video": {
       "title": "게임의 바탕이 되는 능력을 기르세요",
       "subtitle": "매 라운드가 훈련하는 시각화 능력에 관한 Colin Galen의 짧은 영상입니다.",

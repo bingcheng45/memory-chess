@@ -63,6 +63,10 @@
       "leaderboard": "Bekijk de ranglijst",
       "chooseSettings": "Kies stukken en tijd"
     },
+    "gameVideo": {
+      "play": "Video afspelen: {title}",
+      "caption": "Eén ronde van begin tot eind: bestudeer de stelling, bouw haar uit het hoofd na en lees je score af."
+    },
     "video": {
       "title": "Train het zien in je hoofd",
       "subtitle": "Een korte video van Colin Galen over visualisatie, de vaardigheid die elke ronde traint.",

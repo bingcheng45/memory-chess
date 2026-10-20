@@ -63,6 +63,10 @@
       "leaderboard": "Zobacz ranking",
       "chooseSettings": "Wybierz figury i czas"
     },
+    "gameVideo": {
+      "play": "Odtwórz wideo: {title}",
+      "caption": "Jedna runda od początku do końca: przyjrzyj się pozycji, odtwórz ją z pamięci i sprawdź wynik."
+    },
     "video": {
       "title": "Ćwicz umiejętność, na której opiera się gra",
       "subtitle": "Krótki film Colina Galena o wizualizacji, umiejętności, którą ćwiczy każda runda.",

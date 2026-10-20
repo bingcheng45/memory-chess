@@ -63,6 +63,10 @@
       "leaderboard": "Lihat papan peringkat",
       "chooseSettings": "Pilih bidak dan waktu"
     },
+    "gameVideo": {
+      "play": "Putar video: {title}",
+      "caption": "Satu ronde dari awal sampai akhir: pelajari posisinya, susun ulang dari ingatan, lalu lihat skormu."
+    },
     "video": {
       "title": "Latih kemampuan di balik permainan ini",
       "subtitle": "Video singkat Colin Galen tentang visualisasi, kemampuan yang dilatih setiap ronde.",

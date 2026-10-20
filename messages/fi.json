@@ -1801,7 +1801,7 @@
     },
     "kicker": "Avoin data",
     "title": "Kuinka hyvin ihmiset muistavat shakkiasemia?",
-    "answer": "Memory Chessin {rounds, number} loppuun pelatulla kierroksella {start} ja {end} välillä pelaajat, jotka tutkivat asemaa 10 sekuntia, sijoittivat keskimäärin {two} 2 nappulasta oikein ({twoRounds, number} kierrosta), mutta vain {six} 6 nappulasta ({sixRounds, number} kierrosta). Ainoastaan {sixPerfect} näistä 6 nappulan kierroksista oli virheettömiä, ja 12 nappulalla ja 8 sekunnilla keskiarvo oli enää {twelve} ja virheettömiä oli {twelvePerfect} ({twelveRounds, number} kierrosta).",
+    "answer": "Memory Chessin {rounds, number} loppuun pelatulla kierroksella {start} ja {end} välillä pelaajat, jotka tutkivat asemaa 10 sekuntia, saivat 2 nappulalla keskimäärin tarkkuuden {two} ({twoRounds, number} kierrosta), mutta 6 nappulalla vain {six} ({sixRounds, number} kierrosta). Ainoastaan {sixPerfect} näistä 6 nappulan kierroksista oli virheettömiä, ja 12 nappulalla ja 8 sekunnilla keskiarvo oli enää {twelve} ja virheettömiä oli {twelvePerfect} ({twelveRounds, number} kierrosta).",
     "englishNote": "Alla olevat huomiot menetelmästä, rajoituksista ja viittaamisesta ovat englanniksi.",
     "chart": {
       "byPieces": "Keskimääräinen tarkkuus, kun tutkimisaikaa on {seconds} sekuntia",

@@ -1801,7 +1801,7 @@
     },
     "kicker": "Datos abiertos",
     "title": "¿Hasta qué punto recuerda la gente las posiciones de ajedrez?",
-    "answer": "En {rounds, number} rondas terminadas de Memory Chess entre el {start} y el {end}, los jugadores que estudiaron una posición durante 10 segundos colocaron bien de media el {two} de las 2 piezas ({twoRounds, number} rondas), pero solo el {six} de las 6 piezas ({sixRounds, number} rondas). Apenas el {sixPerfect} de esas rondas de 6 piezas fueron perfectas, y con 12 piezas y 8 segundos la media bajó al {twelve}, con un {twelvePerfect} de rondas perfectas ({twelveRounds, number} rondas).",
+    "answer": "En {rounds, number} rondas terminadas de Memory Chess entre el {start} y el {end}, los jugadores que estudiaron una posición durante 10 segundos obtuvieron de media una precisión del {two} con 2 piezas ({twoRounds, number} rondas), pero solo del {six} con 6 piezas ({sixRounds, number} rondas). Apenas el {sixPerfect} de esas rondas de 6 piezas fueron perfectas, y con 12 piezas y 8 segundos la media bajó al {twelve}, con un {twelvePerfect} de rondas perfectas ({twelveRounds, number} rondas).",
     "englishNote": "Las notas sobre el método, los límites y cómo citar estos datos están en inglés.",
     "chart": {
       "byPieces": "Recuerdo medio con {seconds} segundos de estudio",

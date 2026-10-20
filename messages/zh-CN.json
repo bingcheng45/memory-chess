@@ -1801,7 +1801,7 @@
     },
     "kicker": "开放数据",
     "title": "人们对国际象棋局面记得有多准？",
-    "answer": "在 {start} 至 {end} 期间 Memory Chess 的 {rounds, number} 个已完成回合中，观察局面 10 秒的玩家平均能把 2 个棋子中的 {two} 摆对（{twoRounds, number} 个回合），但 6 个棋子只摆对 {six}（{sixRounds, number} 个回合）。这些 6 子回合中仅有 {sixPerfect} 是满分，而在 12 个棋子、8 秒的设置下，平均值降到 {twelve}，满分为 {twelvePerfect}（{twelveRounds, number} 个回合）。",
+    "answer": "在 {start} 至 {end} 期间 Memory Chess 的 {rounds, number} 个已完成回合中，观察局面 10 秒的玩家在 2 个棋子时平均准确率为 {two}（{twoRounds, number} 个回合），但 6 个棋子时只有 {six}（{sixRounds, number} 个回合）。这些 6 子回合中仅有 {sixPerfect} 是满分，而在 12 个棋子、8 秒的设置下，平均值降到 {twelve}，满分为 {twelvePerfect}（{twelveRounds, number} 个回合）。",
     "englishNote": "下方关于方法、局限和引用的说明为英文。",
     "chart": {
       "byPieces": "记忆时间为 {seconds} 秒时的平均记忆准确率",

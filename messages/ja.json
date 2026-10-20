@@ -1801,7 +1801,7 @@
     },
     "kicker": "オープンデータ",
     "title": "人はチェスの局面をどれだけ正確に覚えられるのか？",
-    "answer": "{start}から{end}までに Memory Chess で完了した {rounds, number} ラウンドでは、局面を10秒間覚えたプレイヤーは、2駒のうち平均{two}を正しく置けました（{twoRounds, number} ラウンド）が、6駒では{six}にとどまりました（{sixRounds, number} ラウンド）。その6駒のラウンドで満点だったのはわずか{sixPerfect}で、12駒・8秒では平均が{twelve}まで下がり、満点は{twelvePerfect}でした（{twelveRounds, number} ラウンド）。",
+    "answer": "{start}から{end}までに Memory Chess で完了した {rounds, number} ラウンドでは、局面を10秒間覚えたプレイヤーの正解率は、2駒で平均{two}でした（{twoRounds, number} ラウンド）が、6駒では{six}にとどまりました（{sixRounds, number} ラウンド）。その6駒のラウンドで満点だったのはわずか{sixPerfect}で、12駒・8秒では平均が{twelve}まで下がり、満点は{twelvePerfect}でした（{twelveRounds, number} ラウンド）。",
     "englishNote": "以下の方法、限界、引用についての注記は英語です。",
     "chart": {
       "byPieces": "記憶時間{seconds}秒での平均正解率",

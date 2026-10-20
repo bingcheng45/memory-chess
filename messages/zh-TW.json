@@ -1801,7 +1801,7 @@
     },
     "kicker": "開放資料",
     "title": "人們對西洋棋局面記得有多準？",
-    "answer": "在 {start} 至 {end} 期間 Memory Chess 的 {rounds, number} 個已完成回合中，觀察局面 10 秒的玩家平均能把 2 個棋子中的 {two} 擺對（{twoRounds, number} 個回合），但 6 個棋子只擺對 {six}（{sixRounds, number} 個回合）。這些 6 子回合中僅有 {sixPerfect} 是滿分，而在 12 個棋子、8 秒的設定下，平均值降到 {twelve}，滿分為 {twelvePerfect}（{twelveRounds, number} 個回合）。",
+    "answer": "在 {start} 至 {end} 期間 Memory Chess 的 {rounds, number} 個已完成回合中，觀察局面 10 秒的玩家在 2 個棋子時平均準確率為 {two}（{twoRounds, number} 個回合），但 6 個棋子時只有 {six}（{sixRounds, number} 個回合）。這些 6 子回合中僅有 {sixPerfect} 是滿分，而在 12 個棋子、8 秒的設定下，平均值降到 {twelve}，滿分為 {twelvePerfect}（{twelveRounds, number} 個回合）。",
     "englishNote": "下方關於方法、限制和引用的說明為英文。",
     "chart": {
       "byPieces": "記憶時間為 {seconds} 秒時的平均記憶準確率",

@@ -1801,7 +1801,7 @@
     },
     "kicker": "Otevřená data",
     "title": "Jak dobře si lidé pamatují šachové pozice?",
-    "answer": "V {rounds, number} dokončených kolech hry Memory Chess od {start} do {end} hráči, kteří si pozici prohlíželi 10 sekund, umístili správně v průměru {two} ze 2 figur ({twoRounds, number} kol), ale jen {six} ze 6 figur ({sixRounds, number} kol). Pouze {sixPerfect} z těchto kol se 6 figurami bylo bezchybných a při 12 figurách a 8 sekundách klesl průměr na {twelve}, přičemž bezchybných bylo {twelvePerfect} ({twelveRounds, number} kol).",
+    "answer": "V {rounds, number} dokončených kolech hry Memory Chess od {start} do {end} hráči, kteří si pozici prohlíželi 10 sekund, dosáhli se 2 figurami průměrné přesnosti {two} ({twoRounds, number} kol), ale se 6 figurami jen {six} ({sixRounds, number} kol). Pouze {sixPerfect} z těchto kol se 6 figurami bylo bezchybných a při 12 figurách a 8 sekundách klesl průměr na {twelve}, přičemž bezchybných bylo {twelvePerfect} ({twelveRounds, number} kol).",
     "englishNote": "Poznámky k metodě, omezením a citování níže jsou v angličtině.",
     "chart": {
       "byPieces": "Průměrná přesnost při {seconds} s na zapamatování",

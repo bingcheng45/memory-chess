@@ -28,8 +28,8 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
           legal position generated at random, not one taken from a real game.
         </p>
         <p>
-          A setting is shown only with at least {n(data.minRounds)} rounds from at least {n(data.minPlayers)} players, because smaller
-          groups are mostly one or two people. Of {n(data.totalRounds)} rounds, {n(data.publishedRounds)} fall in the{" "}
+          A setting is shown only with at least {n(data.minRounds)} rounds from at least {n(data.minPlayers)} players. Those cuts are my
+          judgement: smaller groups were mostly one or two people, and a setting near the cut is still a small sample. Of {n(data.totalRounds)} rounds, {n(data.publishedRounds)} fall in the{" "}
           {n(data.cells.length)} settings shown, {n(data.roundsInSmallCells)} in smaller settings, and {n(data.roundsWithoutSettings)}{" "}
           arrived without their settings. The median and the middle half (the 25th to the 75th percentile) are nearest-rank values of
           the whole-number scores.
@@ -38,8 +38,8 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
       <LabReadingSection title="Limits" id="limits">
         <ul>
           <li>
-            Players chose to play and chose their settings. People who pick harder settings tend to be stronger, so each row describes
-            the players who chose it, not people in general.
+            Players chose to play and chose their settings, so each row describes the players who chose it, not people in general.
+            The data has no ratings, but in my judgement people who pick harder settings are likely better at this game.
           </li>
           <li>Repeat players weigh more: one player&apos;s 50 rounds count 50 times. Compare the Rounds and Players columns.</li>
           <li>

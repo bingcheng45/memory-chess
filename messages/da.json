@@ -1801,7 +1801,7 @@
     },
     "kicker": "Åbne data",
     "title": "Hvor godt husker folk skakstillinger?",
-    "answer": "I {rounds, number} gennemførte runder i Memory Chess fra {start} til {end} placerede spillere, der så på en stilling i 10 sekunder, i gennemsnit {two} af 2 brikker rigtigt ({twoRounds, number} runder), men kun {six} af 6 brikker ({sixRounds, number} runder). Blot {sixPerfect} af runderne med 6 brikker var fejlfri, og med 12 brikker og 8 sekunder faldt gennemsnittet til {twelve}, med {twelvePerfect} fejlfri ({twelveRounds, number} runder).",
+    "answer": "I {rounds, number} gennemførte runder i Memory Chess fra {start} til {end} opnåede spillere, der så på en stilling i 10 sekunder, i gennemsnit en præcision på {two} med 2 brikker ({twoRounds, number} runder), men kun {six} med 6 brikker ({sixRounds, number} runder). Blot {sixPerfect} af runderne med 6 brikker var fejlfri, og med 12 brikker og 8 sekunder faldt gennemsnittet til {twelve}, med {twelvePerfect} fejlfri ({twelveRounds, number} runder).",
     "englishNote": "Noterne om metode, begrænsninger og kildeangivelse nedenfor er på engelsk.",
     "chart": {
       "byPieces": "Gennemsnitlig præcision med {seconds} sekunders husketid",

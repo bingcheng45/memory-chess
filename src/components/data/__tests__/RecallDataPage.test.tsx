@@ -48,7 +48,7 @@ it("opens with the answer: the headline averages, their rounds and the date rang
 
   expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent("How well do people remember chess positions?");
   expect(document.querySelector(".lab-lede")).toHaveTextContent(
-    "In 1,200 finished rounds of Memory Chess from September 29, 2026 to October 19, 2026, players who studied a position for 10 seconds placed 82% of 2 pieces correctly on average (300 rounds), but only 48% of 6 pieces (600 rounds). Just 11.1% of those 6-piece rounds were perfect, and with 12 pieces and 8 seconds the average fell to 40%, with 1.4% perfect (80 rounds).",
+    "In 1,200 finished rounds of Memory Chess from September 29, 2026 to October 19, 2026, players who studied a position for 10 seconds scored 82% accuracy on average with 2 pieces (300 rounds), but only 48% with 6 pieces (600 rounds). Just 11.1% of those 6-piece rounds were perfect, and with 12 pieces and 8 seconds the average fell to 40%, with 1.4% perfect (80 rounds).",
   );
 });
 

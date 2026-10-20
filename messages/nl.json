@@ -1801,7 +1801,7 @@
     },
     "kicker": "Open data",
     "title": "Hoe goed onthouden mensen schaakstellingen?",
-    "answer": "In {rounds, number} voltooide rondes Memory Chess van {start} tot en met {end} zetten spelers die een stelling 10 seconden bekeken gemiddeld {two} van 2 stukken goed terug ({twoRounds, number} rondes), maar slechts {six} van 6 stukken ({sixRounds, number} rondes). Amper {sixPerfect} van die rondes met 6 stukken was foutloos, en met 12 stukken en 8 seconden zakte het gemiddelde naar {twelve}, met {twelvePerfect} foutloze rondes ({twelveRounds, number} rondes).",
+    "answer": "In {rounds, number} voltooide rondes Memory Chess van {start} tot en met {end} haalden spelers die een stelling 10 seconden bekeken gemiddeld een nauwkeurigheid van {two} met 2 stukken ({twoRounds, number} rondes), maar slechts {six} met 6 stukken ({sixRounds, number} rondes). Amper {sixPerfect} van die rondes met 6 stukken was foutloos, en met 12 stukken en 8 seconden zakte het gemiddelde naar {twelve}, met {twelvePerfect} foutloze rondes ({twelveRounds, number} rondes).",
     "englishNote": "De toelichting over methode, beperkingen en bronvermelding hieronder is in het Engels.",
     "chart": {
       "byPieces": "Gemiddelde herinnering bij {seconds} seconden kijktijd",

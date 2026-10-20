@@ -1801,7 +1801,7 @@
     },
     "kicker": "오픈 데이터",
     "title": "사람들은 체스 국면을 얼마나 잘 기억할까?",
-    "answer": "{start}부터 {end}까지 Memory Chess에서 완료된 {rounds, number}라운드에서, 국면을 10초 동안 살펴본 플레이어는 기물 2개 중 평균 {two}를 바르게 놓았지만({twoRounds, number}라운드), 기물 6개에서는 {six}에 그쳤습니다({sixRounds, number}라운드). 그 기물 6개 라운드 중 만점은 {sixPerfect}에 불과했고, 기물 12개와 8초에서는 평균이 {twelve}로 떨어졌으며 만점은 {twelvePerfect}였습니다({twelveRounds, number}라운드).",
+    "answer": "{start}부터 {end}까지 Memory Chess에서 완료된 {rounds, number}라운드에서, 국면을 10초 동안 살펴본 플레이어는 기물 2개에서 평균 정확도 {two}를 기록했지만({twoRounds, number}라운드), 기물 6개에서는 {six}에 그쳤습니다({sixRounds, number}라운드). 그 기물 6개 라운드 중 만점은 {sixPerfect}에 불과했고, 기물 12개와 8초에서는 평균이 {twelve}로 떨어졌으며 만점은 {twelvePerfect}였습니다({twelveRounds, number}라운드).",
     "englishNote": "아래의 방법, 한계, 인용에 관한 설명은 영어로 되어 있습니다.",
     "chart": {
       "byPieces": "암기 시간 {seconds}초일 때의 평균 기억 정확도",

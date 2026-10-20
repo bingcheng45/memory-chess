@@ -1801,7 +1801,7 @@
     },
     "kicker": "Otwarte dane",
     "title": "Jak dobrze ludzie zapamiętują pozycje szachowe?",
-    "answer": "W {rounds, number} ukończonych rundach Memory Chess od {start} do {end} gracze, którzy zapamiętywali pozycję przez 10 sekund, ustawiali poprawnie średnio {two} z 2 figur (dane z {twoRounds, number} rund), ale tylko {six} z 6 figur (dane z {sixRounds, number} rund). Zaledwie {sixPerfect} tych rund z 6 figurami było bezbłędnych, a przy 12 figurach i 8 sekundach średnia spadła do {twelve}, przy {twelvePerfect} rund bezbłędnych (dane z {twelveRounds, number} rund).",
+    "answer": "W {rounds, number} ukończonych rundach Memory Chess od {start} do {end} gracze, którzy zapamiętywali pozycję przez 10 sekund, osiągali średnio dokładność {two} przy 2 figurach (dane z {twoRounds, number} rund), ale tylko {six} przy 6 figurach (dane z {sixRounds, number} rund). Zaledwie {sixPerfect} tych rund z 6 figurami było bezbłędnych, a przy 12 figurach i 8 sekundach średnia spadła do {twelve}, przy {twelvePerfect} rund bezbłędnych (dane z {twelveRounds, number} rund).",
     "englishNote": "Uwagi o metodzie, ograniczeniach i cytowaniu poniżej są po angielsku.",
     "chart": {
       "byPieces": "Średnia dokładność przy {seconds} sekundach na zapamiętanie",

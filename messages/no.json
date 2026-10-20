@@ -1801,7 +1801,7 @@
     },
     "kicker": "Åpne data",
     "title": "Hvor godt husker folk sjakkstillinger?",
-    "answer": "I {rounds, number} fullførte runder i Memory Chess fra {start} til {end} plasserte spillere som studerte en stilling i 10 sekunder i snitt {two} av 2 brikker riktig ({twoRounds, number} runder), men bare {six} av 6 brikker ({sixRounds, number} runder). Kun {sixPerfect} av rundene med 6 brikker var feilfrie, og med 12 brikker og 8 sekunder falt snittet til {twelve}, med {twelvePerfect} feilfrie ({twelveRounds, number} runder).",
+    "answer": "I {rounds, number} fullførte runder i Memory Chess fra {start} til {end} hadde spillere som studerte en stilling i 10 sekunder i snitt en treffsikkerhet på {two} med 2 brikker ({twoRounds, number} runder), men bare {six} med 6 brikker ({sixRounds, number} runder). Kun {sixPerfect} av rundene med 6 brikker var feilfrie, og med 12 brikker og 8 sekunder falt snittet til {twelve}, med {twelvePerfect} feilfrie ({twelveRounds, number} runder).",
     "englishNote": "Merknadene om metode, begrensninger og kildehenvisning nedenfor er på engelsk.",
     "chart": {
       "byPieces": "Gjennomsnittlig treffsikkerhet med {seconds} sekunders studietid",

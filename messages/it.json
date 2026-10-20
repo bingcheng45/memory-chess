@@ -1801,7 +1801,7 @@
     },
     "kicker": "Dati aperti",
     "title": "Quanto bene le persone ricordano le posizioni di scacchi?",
-    "answer": "In {rounds, number} partite concluse di Memory Chess dal {start} al {end}, i giocatori che hanno studiato una posizione per 10 secondi hanno piazzato correttamente in media {two} dei 2 pezzi ({twoRounds, number} partite), ma solo {six} dei 6 pezzi ({sixRounds, number} partite). Appena {sixPerfect} di quelle partite con 6 pezzi sono state perfette, e con 12 pezzi e 8 secondi la media è scesa a {twelve}, con {twelvePerfect} di partite perfette ({twelveRounds, number} partite).",
+    "answer": "In {rounds, number} partite concluse di Memory Chess dal {start} al {end}, i giocatori che hanno studiato una posizione per 10 secondi hanno ottenuto in media una precisione pari a {two} con 2 pezzi ({twoRounds, number} partite), ma solo pari a {six} con 6 pezzi ({sixRounds, number} partite). Appena {sixPerfect} di quelle partite con 6 pezzi sono state perfette, e con 12 pezzi e 8 secondi la media è scesa a {twelve}, con {twelvePerfect} di partite perfette ({twelveRounds, number} partite).",
     "englishNote": "Le note su metodo, limiti e citazione qui sotto sono in inglese.",
     "chart": {
       "byPieces": "Memoria media con {seconds} secondi di studio",

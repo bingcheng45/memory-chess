@@ -1801,7 +1801,7 @@
     },
     "kicker": "Dados abertos",
     "title": "Quão bem as pessoas se lembram de posições de xadrez?",
-    "answer": "Em {rounds, number} rodadas concluídas do Memory Chess entre {start} e {end}, os jogadores que estudaram uma posição por 10 segundos acertaram em média {two} das 2 peças ({twoRounds, number} rodadas), mas só {six} das 6 peças ({sixRounds, number} rodadas). Apenas {sixPerfect} dessas rodadas de 6 peças foram perfeitas, e com 12 peças e 8 segundos a média caiu para {twelve}, com {twelvePerfect} de rodadas perfeitas ({twelveRounds, number} rodadas).",
+    "answer": "Em {rounds, number} rodadas concluídas do Memory Chess entre {start} e {end}, os jogadores que estudaram uma posição por 10 segundos tiveram em média {two} de precisão com 2 peças ({twoRounds, number} rodadas), mas só {six} com 6 peças ({sixRounds, number} rodadas). Apenas {sixPerfect} dessas rodadas de 6 peças foram perfeitas, e com 12 peças e 8 segundos a média caiu para {twelve}, com {twelvePerfect} de rodadas perfeitas ({twelveRounds, number} rodadas).",
     "englishNote": "As notas sobre método, limites e citação abaixo estão em inglês.",
     "chart": {
       "byPieces": "Lembrança média com {seconds} segundos de estudo",

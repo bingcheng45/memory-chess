@@ -27,13 +27,13 @@ The JSON also gives the totals: `totalRounds` in the date range, `roundsWithoutS
 - **Source.** The game sends a GA4 event, `round_complete`, when a round's result shows. It carries the piece count, the study time and the round's accuracy. It has fired since 29 September 2026, so no earlier data exists. Dates are days in the property's time zone, America/Los_Angeles.
 - **Accuracy.** A piece counts only when the right piece of the right colour stands on the right square. Accuracy is the share of the position's pieces placed that way, rounded to a whole percent, minus 10 points for each piece placed beyond the position's count, and never below 0. The code is `src/lib/game/scoring.ts`.
 - **Positions.** Each round is a new legal position generated at random, not taken from a real game.
-- **Thresholds.** A setting is published only with at least 30 rounds from at least 5 players. Smaller cells are mostly one or two people and describe them, not players in general.
+- **Thresholds.** A setting is published only with at least 30 rounds from at least 5 players. The cuts are a judgement call: smaller cells were mostly one or two people and describe them, not players in general. A cell near the cut (8 pieces at 10 seconds, 31 rounds from 6 players) is still a small sample.
 - **Statistics.** Median and percentiles are nearest rank on the whole-number accuracies: the smallest accuracy at or below which at least that share of the rounds fall.
 - **Privacy.** Only counts per setting are published. There are no names, player IDs, round IDs, dates per round or positions, and the privacy policy says so.
 
 ## Limits
 
-- Players chose to play and chose their settings. Stronger players pick harder settings, so a cell describes the people who chose it, not everyone.
+- Players chose to play and chose their settings, so a cell describes the people who chose it, not everyone. There are no ratings; that stronger players pick harder settings is a judgement, not a measurement.
 - Repeat players weigh more. A player who finished 50 rounds counts 50 times. Compare `rounds` with `players`.
 - 6 pieces with 10 seconds is the default round, so that cell is weighted toward first rounds.
 - A GA4 user is a browser. One person on two devices counts twice.
@@ -73,7 +73,7 @@ Anyone with read access to GA4 property 483086308 can do this. It needs no code 
    }
    ```
 
-   Check the response has no `rowCount` above the rows it returned, so nothing was cut.
+   Check the response has no `rowCount` above the rows it returned, so nothing was cut. End the range at least two days before the pull: GA4 keeps adding late events for a day or two, so a re-pull of the same range can differ by a few rounds (this release's histogram summed to 3,734 rounds, and a total pulled minutes later read 3,736).
 
 2. Keep the saved files outside the repo. From the repo root run:
 

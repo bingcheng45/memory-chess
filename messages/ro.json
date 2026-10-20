@@ -1801,7 +1801,7 @@
     },
     "kicker": "Date deschise",
     "title": "Cât de bine își amintesc oamenii pozițiile de șah?",
-    "answer": "În {rounds, plural, one {# rundă terminată} few {# runde terminate} other {# de runde terminate}} de Memory Chess, între {start} și {end}, jucătorii care au studiat o poziție timp de 10 secunde au plasat corect în medie {two} din 2 piese ({twoRounds, plural, one {# rundă} few {# runde} other {# de runde}}), dar doar {six} din 6 piese ({sixRounds, plural, one {# rundă} few {# runde} other {# de runde}}). Numai {sixPerfect} dintre aceste runde cu 6 piese au fost perfecte, iar cu 12 piese și 8 secunde media a scăzut la {twelve}, cu {twelvePerfect} perfecte ({twelveRounds, plural, one {# rundă} few {# runde} other {# de runde}}).",
+    "answer": "În {rounds, plural, one {# rundă terminată} few {# runde terminate} other {# de runde terminate}} de Memory Chess, între {start} și {end}, jucătorii care au studiat o poziție timp de 10 secunde au obținut în medie o precizie de {two} cu 2 piese ({twoRounds, plural, one {# rundă} few {# runde} other {# de runde}}), dar doar {six} cu 6 piese ({sixRounds, plural, one {# rundă} few {# runde} other {# de runde}}). Numai {sixPerfect} dintre aceste runde cu 6 piese au fost perfecte, iar cu 12 piese și 8 secunde media a scăzut la {twelve}, cu {twelvePerfect} perfecte ({twelveRounds, plural, one {# rundă} few {# runde} other {# de runde}}).",
     "englishNote": "Notele despre metodă, limite și citare de mai jos sunt în engleză.",
     "chart": {
       "byPieces": "Precizia medie cu {seconds} secunde de studiu",

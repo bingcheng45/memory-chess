@@ -1801,7 +1801,7 @@
     },
     "kicker": "Données ouvertes",
     "title": "À quel point les gens retiennent-ils les positions d’échecs ?",
-    "answer": "Sur {rounds, number} parties terminées de Memory Chess du {start} au {end}, les joueurs qui ont étudié une position pendant 10 secondes ont replacé correctement en moyenne {two} des 2 pièces ({twoRounds, number} parties), mais seulement {six} des 6 pièces ({sixRounds, number} parties). À peine {sixPerfect} de ces parties à 6 pièces étaient parfaites, et avec 12 pièces et 8 secondes la moyenne est tombée à {twelve}, avec {twelvePerfect} de parties parfaites ({twelveRounds, number} parties).",
+    "answer": "Sur {rounds, number} parties terminées de Memory Chess du {start} au {end}, les joueurs qui ont étudié une position pendant 10 secondes ont obtenu en moyenne une précision de {two} avec 2 pièces ({twoRounds, number} parties), mais seulement de {six} avec 6 pièces ({sixRounds, number} parties). À peine {sixPerfect} de ces parties à 6 pièces étaient parfaites, et avec 12 pièces et 8 secondes la moyenne est tombée à {twelve}, avec {twelvePerfect} de parties parfaites ({twelveRounds, number} parties).",
     "englishNote": "Les notes sur la méthode, les limites et la citation ci-dessous sont en anglais.",
     "chart": {
       "byPieces": "Mémorisation moyenne avec {seconds} secondes d’étude",

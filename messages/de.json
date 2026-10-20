@@ -1801,7 +1801,7 @@
     },
     "kicker": "Offene Daten",
     "title": "Wie gut merken sich Menschen Schachstellungen?",
-    "answer": "In {rounds, number} beendeten Runden Memory Chess vom {start} bis zum {end} setzten Spielende, die sich eine Stellung 10 Sekunden lang einprägten, im Schnitt {two} der 2 Figuren richtig ({twoRounds, number} Runden), aber nur {six} der 6 Figuren ({sixRounds, number} Runden). Gerade einmal {sixPerfect} dieser Runden mit 6 Figuren waren perfekt, und mit 12 Figuren und 8 Sekunden sank der Schnitt auf {twelve}, mit {twelvePerfect} perfekten Runden ({twelveRounds, number} Runden).",
+    "answer": "In {rounds, number} beendeten Runden Memory Chess vom {start} bis zum {end} erreichten Spielende, die sich eine Stellung 10 Sekunden lang einprägten, mit 2 Figuren im Schnitt eine Genauigkeit von {two} ({twoRounds, number} Runden), mit 6 Figuren aber nur {six} ({sixRounds, number} Runden). Gerade einmal {sixPerfect} dieser Runden mit 6 Figuren waren perfekt, und mit 12 Figuren und 8 Sekunden sank der Schnitt auf {twelve}, mit {twelvePerfect} perfekten Runden ({twelveRounds, number} Runden).",
     "englishNote": "Die Hinweise zu Methode, Grenzen und Zitierweise unten sind auf Englisch.",
     "chart": {
       "byPieces": "Durchschnittliche Erinnerung bei {seconds} Sekunden Einprägezeit",

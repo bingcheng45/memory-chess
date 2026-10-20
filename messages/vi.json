@@ -1801,7 +1801,7 @@
     },
     "kicker": "Dữ liệu mở",
     "title": "Mọi người nhớ thế cờ vua tốt đến mức nào?",
-    "answer": "Trong {rounds, number} ván Memory Chess đã chơi xong từ {start} đến {end}, người chơi quan sát thế cờ trong 10 giây trung bình đặt đúng {two} trong 2 quân ({twoRounds, number} ván), nhưng chỉ {six} trong 6 quân ({sixRounds, number} ván). Chỉ vỏn vẹn {sixPerfect} số ván 6 quân đó đạt điểm tuyệt đối, và với 12 quân và 8 giây, mức trung bình giảm xuống {twelve}, với {twelvePerfect} đạt điểm tuyệt đối ({twelveRounds, number} ván).",
+    "answer": "Trong {rounds, number} ván Memory Chess đã chơi xong từ {start} đến {end}, người chơi quan sát thế cờ trong 10 giây đạt độ chính xác trung bình {two} với 2 quân ({twoRounds, number} ván), nhưng chỉ {six} với 6 quân ({sixRounds, number} ván). Chỉ vỏn vẹn {sixPerfect} số ván 6 quân đó đạt điểm tuyệt đối, và với 12 quân và 8 giây, mức trung bình giảm xuống {twelve}, với {twelvePerfect} đạt điểm tuyệt đối ({twelveRounds, number} ván).",
     "englishNote": "Các ghi chú về phương pháp, giới hạn và cách trích dẫn bên dưới được viết bằng tiếng Anh.",
     "chart": {
       "byPieces": "Mức ghi nhớ trung bình với {seconds} giây ghi nhớ",

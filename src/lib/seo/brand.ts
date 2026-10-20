@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { LEARN_AUTHOR } from "@/lib/seo/learn/schema";
 
 const SITE_URL = "https://thememorychess.com";
 const BRAND_NAME = "Memory Chess";
@@ -35,26 +36,46 @@ export function titleNamingBrandOnce(title: string): Metadata["title"] {
   return title.includes(BRAND_NAME) ? { absolute: title } : title;
 }
 
-const ALTERNATE_NAMES = ["MemoryChess", "The Memory Chess"];
+export const BRAND_IDENTITY = "Memory Chess, the free chess position memory trainer";
+
+export const BRAND_ALTERNATE_NAMES = ["MemoryChess", "The Memory Chess", "thememorychess.com"];
+
+export const BRAND_DISAMBIGUATION =
+  "A chess position memory trainer played in the browser, not the dice-and-colour memory game for children that shares the name.";
+
+export const BRAND_AUTHOR = {
+  "@type": "Person",
+  "@id": LEARN_AUTHOR.id,
+  name: LEARN_AUTHOR.name,
+  url: LEARN_AUTHOR.url,
+  jobTitle: "Solo developer",
+  sameAs: ["https://github.com/bingcheng45", "https://x.com/Bing_Builds"],
+} as const;
 
 export const BRAND_ORGANIZATION = {
   "@type": "Organization",
   "@id": ORGANIZATION_ID,
   name: BRAND_NAME,
-  alternateName: ALTERNATE_NAMES,
-  // The English home meta description; a test keeps the two in step.
+  alternateName: BRAND_ALTERNATE_NAMES,
   description:
-    "Play the free memory chess game online. Study a chess position for a few seconds, rebuild it from memory, and get an instant accuracy score. No sign-up.",
+    "Memory Chess is the free chess position memory trainer at thememorychess.com. Study a chess position for a few seconds, rebuild it from memory, and get an instant accuracy score. No sign-up.",
+  disambiguatingDescription: BRAND_DISAMBIGUATION,
   url: SITE_URL,
   logo: `${SITE_URL}/logo-512.png`,
-  sameAs: ["https://x.com/TheMemoryChess"],
+  sameAs: [
+    "https://x.com/TheMemoryChess",
+    "https://www.producthunt.com/products/memory-chess",
+    "https://github.com/bingcheng45/memory-chess",
+    "https://t.me/TheMemoryChess",
+  ],
+  founder: { "@id": BRAND_AUTHOR["@id"] },
 } as const;
 
 export const BRAND_WEBSITE = {
   "@type": "WebSite",
   "@id": WEBSITE_ID,
   name: BRAND_NAME,
-  alternateName: ALTERNATE_NAMES,
+  alternateName: BRAND_ALTERNATE_NAMES,
   url: SITE_URL,
   publisher: { "@id": ORGANIZATION_ID },
 } as const;

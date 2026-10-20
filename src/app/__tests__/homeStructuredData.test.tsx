@@ -1,6 +1,5 @@
 import { render, screen } from "@/test-utils/intl";
 import HomePage from "@/app/[locale]/(home)/page";
-import english from "../../../messages/en.json";
 
 const ORGANIZATION_ID = "https://thememorychess.com/#organization";
 const WEBSITE_ID = "https://thememorychess.com/#website";
@@ -49,9 +48,17 @@ describe("home page structured data", () => {
     expect(organization).toMatchObject({
       "@id": ORGANIZATION_ID,
       name: "Memory Chess",
-      alternateName: ["MemoryChess", "The Memory Chess"],
+      alternateName: ["MemoryChess", "The Memory Chess", "thememorychess.com"],
+      disambiguatingDescription:
+        "A chess position memory trainer played in the browser, not the dice-and-colour memory game for children that shares the name.",
       logo: "https://thememorychess.com/logo-512.png",
-      sameAs: ["https://x.com/TheMemoryChess"],
+      sameAs: [
+        "https://x.com/TheMemoryChess",
+        "https://www.producthunt.com/products/memory-chess",
+        "https://github.com/bingcheng45/memory-chess",
+        "https://t.me/TheMemoryChess",
+      ],
+      founder: { "@id": "https://thememorychess.com/about#bing-cheng" },
     });
   });
 
@@ -63,14 +70,16 @@ describe("home page structured data", () => {
 
     expect(website?.["@id"]).toBe(WEBSITE_ID);
     expect(website?.publisher).toEqual({ "@id": ORGANIZATION_ID });
-    expect(website?.alternateName).toEqual(["MemoryChess", "The Memory Chess"]);
+    expect(website?.alternateName).toEqual(["MemoryChess", "The Memory Chess", "thememorychess.com"]);
   });
 
-  it("describes the Organization with the English home meta description", async () => {
+  it("describes the Organization as the chess position memory trainer at its domain", async () => {
     const { container } = await renderHome();
     const organization = brandGraph(container).find((node) => node["@type"] === "Organization");
 
-    expect(organization?.description).toBe(english.home.meta.description);
+    expect(organization?.description).toBe(
+      "Memory Chess is the free chess position memory trainer at thememorychess.com. Study a chess position for a few seconds, rebuild it from memory, and get an instant accuracy score. No sign-up.",
+    );
   });
 
   it("emits exactly one Organization and one WebSite", async () => {

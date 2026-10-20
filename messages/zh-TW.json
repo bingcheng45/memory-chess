@@ -1804,7 +1804,7 @@
     "answer": "在 {start} 至 {end} 期間 Memory Chess 的 {rounds, number} 個已完成回合中，記憶時間設為 10 秒的回合在 2 個棋子時平均準確率為 {two}（{twoRounds, number} 個回合），在預設設定的 6 個棋子時為 {six}（{sixRounds, number} 個回合）。這些 6 子回合中有 {sixPerfect} 是滿分。在選擇人數較少的 12 個棋子、8 秒設定下，平均值為 {twelve}，滿分為 {twelvePerfect}（{twelveRounds, number} 個回合）。",
     "englishNote": "下方關於方法、限制和引用的說明為英文。",
     "chart": {
-      "byPieces": "記憶時間為 {seconds} 秒時的平均記憶準確率",
+      "byPieces": "記憶時間設為 {seconds} 秒的回合的平均記憶準確率",
       "bySeconds": "{pieces} 個棋子的平均記憶準確率，依記憶時間",
       "bySecondsNote": "每種記憶時間由不同的玩家選擇，因此這些長條並不能說明增加時間有多大幫助。",
       "pieces": "{count, plural, other {# 子}}",

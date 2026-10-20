@@ -69,7 +69,7 @@ it("opens with the answer: the headline averages, their rounds and the date rang
 it("draws each bar to scale and prints its value and rounds", async () => {
   render(await RecallDataPage({ data: DATA, locale: "en" }));
 
-  const byPieces = screen.getByRole("figure", { name: "Average recall with 10 seconds to study" });
+  const byPieces = screen.getByRole("figure", { name: "Average recall in rounds set to 10 seconds of study" });
   const bars = within(byPieces).getAllByRole("listitem");
   expect(bars.map((bar) => bar.textContent)).toEqual(["2 pieces82%300 rounds", "6 pieces48%600 rounds"]);
   expect(bars.map((bar) => (bar.querySelector("i") as HTMLElement).style.width)).toEqual(["81.8%", "48.3%"]);
@@ -100,13 +100,13 @@ it("says in the limits that skips, calibration, review and daily rounds are pool
 
   const limits = screen.getByRole("heading", { name: "Limits" }).parentElement as HTMLElement;
   expect(within(limits).getByText(/^An empty board counts as a round that scored 0\./)).toHaveTextContent(
-    "An empty board counts as a round that scored 0. Once a day the game accepts an empty board as a free skip, and the analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting's share, 15.7% for the 6-piece, 10-second rounds.",
+    "An empty board counts as a round that scored 0. Since mid-October the game has accepted one empty board a day as a free skip, and the analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting's share, 15.7% for the 6-piece, 10-second rounds.",
   );
   expect(within(limits).getByText(/^Review rounds/)).toHaveTextContent(
     "Review rounds, which replay a board the player saw before, and the daily board, the same seeded position for everyone that day, are pooled with the other rounds. The data cannot separate them.",
   );
   expect(within(limits).getByText(/^6 pieces with 10 seconds is the default round/)).toHaveTextContent(
-    "6 pieces with 10 seconds is the default round and the setting of the calibration round on the home page, which is pooled into it, so it holds the most players (200) and likely many first rounds.",
+    "6 pieces with 10 seconds is the default round, and the home page's calibration round uses the same setting and is pooled into it. It holds the most players (200).",
   );
 });
 

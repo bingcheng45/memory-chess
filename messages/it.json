@@ -1804,7 +1804,7 @@
     "answer": "In {rounds, number} partite concluse di Memory Chess dal {start} al {end}, le partite impostate su 10 secondi di studio hanno ottenuto in media una precisione pari a {two} con 2 pezzi ({twoRounds, number} partite) e pari a {six} con 6 pezzi, l’impostazione predefinita ({sixRounds, number} partite). Sono state perfette {sixPerfect} di quelle partite con 6 pezzi. Con 12 pezzi e 8 secondi, un’impostazione scelta da meno giocatori, la media è stata {twelve}, con {twelvePerfect} di partite perfette ({twelveRounds, number} partite).",
     "englishNote": "Le note su metodo, limiti e citazione qui sotto sono in inglese.",
     "chart": {
-      "byPieces": "Memoria media con {seconds} secondi di studio",
+      "byPieces": "Memoria media nelle partite impostate su {seconds} secondi di studio",
       "bySeconds": "Memoria media di {pieces} pezzi, per tempo di studio",
       "bySecondsNote": "Ogni tempo di studio è stato scelto da giocatori diversi, quindi queste barre non mostrano quanto aiuti avere più tempo.",
       "pieces": "{count, plural, one {# pezzo} many {# di pezzi} other {# pezzi}}",

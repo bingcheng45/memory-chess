@@ -1804,7 +1804,7 @@
     "answer": "În {rounds, plural, one {# rundă terminată} few {# runde terminate} other {# de runde terminate}} de Memory Chess, între {start} și {end}, rundele setate la 10 secunde de studiu au obținut în medie o precizie de {two} cu 2 piese ({twoRounds, plural, one {# rundă} few {# runde} other {# de runde}}) și de {six} cu 6 piese, setarea implicită ({sixRounds, plural, one {# rundă} few {# runde} other {# de runde}}). {sixPerfect} dintre aceste runde cu 6 piese au fost perfecte. Cu 12 piese și 8 secunde, o setare aleasă de mai puțini jucători, media a fost de {twelve}, cu {twelvePerfect} perfecte ({twelveRounds, plural, one {# rundă} few {# runde} other {# de runde}}).",
     "englishNote": "Notele despre metodă, limite și citare de mai jos sunt în engleză.",
     "chart": {
-      "byPieces": "Precizia medie cu {seconds} secunde de studiu",
+      "byPieces": "Precizia medie în rundele setate la {seconds} secunde de studiu",
       "bySeconds": "Precizia medie pentru {pieces} piese, în funcție de timpul de studiu",
       "bySecondsNote": "Fiecare timp de studiu a fost ales de alți jucători, așa că aceste bare nu arată cât ajută timpul în plus.",
       "pieces": "{count, plural, one {# piesă} few {# piese} other {# de piese}}",

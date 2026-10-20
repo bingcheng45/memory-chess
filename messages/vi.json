@@ -1804,7 +1804,7 @@
     "answer": "Trong {rounds, number} ván Memory Chess đã chơi xong từ {start} đến {end}, các ván được đặt thời gian ghi nhớ 10 giây đạt độ chính xác trung bình {two} với 2 quân ({twoRounds, number} ván) và {six} với 6 quân, mức cài đặt mặc định ({sixRounds, number} ván). Có {sixPerfect} số ván 6 quân đó đạt điểm tuyệt đối. Với 12 quân và 8 giây, một mức cài đặt ít người chơi chọn hơn, mức trung bình là {twelve}, với {twelvePerfect} đạt điểm tuyệt đối ({twelveRounds, number} ván).",
     "englishNote": "Các ghi chú về phương pháp, giới hạn và cách trích dẫn bên dưới được viết bằng tiếng Anh.",
     "chart": {
-      "byPieces": "Mức ghi nhớ trung bình với {seconds} giây ghi nhớ",
+      "byPieces": "Mức ghi nhớ trung bình ở các ván đặt thời gian ghi nhớ {seconds} giây",
       "bySeconds": "Mức ghi nhớ trung bình với {pieces} quân, theo thời gian ghi nhớ",
       "bySecondsNote": "Mỗi mức thời gian ghi nhớ do những người chơi khác nhau chọn, nên các cột này không cho thấy thêm thời gian giúp ích bao nhiêu.",
       "pieces": "{count, plural, other {# quân}}",

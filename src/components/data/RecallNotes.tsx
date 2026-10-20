@@ -40,7 +40,7 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
         </p>
         <p>
           Four settings are one-click presets: 2 pieces at 10 seconds (Easy), 6 at 10 (Medium), 12 at 8 (Hard) and 20 at 5
-          (Grandmaster). Those rows collect many rounds from players who clicked a preset rather than chose a setting; 20 at 5 has too
+          (Grandmaster). Those rows can include rounds from players who clicked a preset rather than picked a setting. 20 at 5 has too
           few rounds to show.
         </p>
         <p>
@@ -57,18 +57,21 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
           </li>
           <li>Repeat players weigh more: one player&apos;s 50 rounds count 50 times. Compare the Rounds and Players columns.</li>
           <li>
-            {DEFAULT_ROUND_PIECES} pieces with {DEFAULT_ROUND_SECONDS} seconds is the default round and the setting of the calibration
-            round on the home page, which is pooled into it, so it holds the most players ({n(defaultRound.players)}) and likely many
-            first rounds.
+            {DEFAULT_ROUND_PIECES} pieces with {DEFAULT_ROUND_SECONDS} seconds is the default round, and the home page&apos;s calibration
+            round uses the same setting and is pooled into it. It holds the most players ({n(defaultRound.players)}).
           </li>
           <li>
-            An empty board counts as a round that scored 0. Once a day the game accepts an empty board as a free skip, and the
-            analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting&apos;s
+            An empty board counts as a round that scored 0. Since mid-October the game has accepted one empty board a day as a free
+            skip, and the analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting&apos;s
             share, {tenth(defaultRound.zeroShare)}% for the {DEFAULT_ROUND_PIECES}-piece, {DEFAULT_ROUND_SECONDS}-second rounds.
           </li>
           <li>
             Review rounds, which replay a board the player saw before, and the daily board, the same seeded position for everyone that
             day, are pooled with the other rounds. The data cannot separate them.
+          </li>
+          <li>
+            The game changed during this release. The calibration round&apos;s event, review rounds, the daily board and the free skip
+            were all added between October 8 and 14, so the earliest days hold none of them.
           </li>
           <li>A player is a browser as Google Analytics counts it. One person on two devices counts twice.</li>
           <li>Rounds from visitors who block analytics, or decline analytics cookies where they are asked, are missing.</li>

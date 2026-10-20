@@ -1804,7 +1804,7 @@
     "answer": "{start}부터 {end}까지 Memory Chess에서 완료된 {rounds, number}라운드에서, 암기 시간을 10초로 설정한 라운드의 평균 정확도는 기물 2개에서 {two}({twoRounds, number}라운드), 기본 설정인 기물 6개에서 {six}였습니다({sixRounds, number}라운드). 그 기물 6개 라운드 중 {sixPerfect}가 만점이었습니다. 선택한 플레이어가 더 적은 기물 12개, 8초 설정에서는 평균이 {twelve}였고 만점은 {twelvePerfect}였습니다({twelveRounds, number}라운드).",
     "englishNote": "아래의 방법, 한계, 인용에 관한 설명은 영어로 되어 있습니다.",
     "chart": {
-      "byPieces": "암기 시간 {seconds}초일 때의 평균 기억 정확도",
+      "byPieces": "암기 시간을 {seconds}초로 설정한 라운드의 평균 기억 정확도",
       "bySeconds": "기물 {pieces}개의 평균 기억 정확도, 암기 시간별",
       "bySecondsNote": "암기 시간마다 선택한 플레이어가 다르므로, 이 막대는 시간이 늘어날 때 얼마나 도움이 되는지를 보여 주지 않습니다.",
       "pieces": "{count, plural, other {기물 #개}}",

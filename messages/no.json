@@ -1804,7 +1804,7 @@
     "answer": "I {rounds, number} fullførte runder i Memory Chess fra {start} til {end} hadde runder stilt inn på 10 sekunders studietid i snitt en treffsikkerhet på {two} med 2 brikker ({twoRounds, number} runder) og {six} med 6 brikker, som er standardinnstillingen ({sixRounds, number} runder). {sixPerfect} av disse rundene med 6 brikker var feilfrie. Med 12 brikker og 8 sekunder, en innstilling færre spillere valgte, var snittet {twelve}, med {twelvePerfect} feilfrie ({twelveRounds, number} runder).",
     "englishNote": "Merknadene om metode, begrensninger og kildehenvisning nedenfor er på engelsk.",
     "chart": {
-      "byPieces": "Gjennomsnittlig treffsikkerhet med {seconds} sekunders studietid",
+      "byPieces": "Gjennomsnittlig treffsikkerhet i runder med studietid satt til {seconds} sekunder",
       "bySeconds": "Gjennomsnittlig treffsikkerhet for {pieces} brikker, etter studietid",
       "bySecondsNote": "Ulike spillere valgte hver studietid, så disse søylene viser ikke hvor mye ekstra tid hjelper.",
       "pieces": "{count, plural, one {# brikke} other {# brikker}}",

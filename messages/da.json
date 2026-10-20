@@ -1804,7 +1804,7 @@
     "answer": "I {rounds, number} gennemførte runder i Memory Chess fra {start} til {end} opnåede runder indstillet til 10 sekunders husketid i gennemsnit en præcision på {two} med 2 brikker ({twoRounds, number} runder) og {six} med 6 brikker, som er standardindstillingen ({sixRounds, number} runder). {sixPerfect} af disse runder med 6 brikker var fejlfri. Med 12 brikker og 8 sekunder, en indstilling færre spillere valgte, var gennemsnittet {twelve}, med {twelvePerfect} fejlfri ({twelveRounds, number} runder).",
     "englishNote": "Noterne om metode, begrænsninger og kildeangivelse nedenfor er på engelsk.",
     "chart": {
-      "byPieces": "Gennemsnitlig præcision med {seconds} sekunders husketid",
+      "byPieces": "Gennemsnitlig præcision i runder med husketid sat til {seconds} sekunder",
       "bySeconds": "Gennemsnitlig præcision for {pieces} brikker, efter husketid",
       "bySecondsNote": "Forskellige spillere valgte hver husketid, så søjlerne viser ikke, hvor meget ekstra tid hjælper.",
       "pieces": "{count, plural, one {# brik} other {# brikker}}",

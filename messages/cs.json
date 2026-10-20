@@ -1804,7 +1804,7 @@
     "answer": "V {rounds, number} dokončených kolech hry Memory Chess od {start} do {end} dosáhla kola s časem na zapamatování nastaveným na 10 sekund průměrné přesnosti {two} se 2 figurami ({twoRounds, number} kol) a {six} se 6 figurami, což je výchozí nastavení ({sixRounds, number} kol). Bezchybných bylo {sixPerfect} z těchto kol se 6 figurami. Při 12 figurách a 8 sekundách, tedy nastavení, které volilo méně hráčů, byl průměr {twelve} a bezchybných bylo {twelvePerfect} ({twelveRounds, number} kol).",
     "englishNote": "Poznámky k metodě, omezením a citování níže jsou v angličtině.",
     "chart": {
-      "byPieces": "Průměrná přesnost při {seconds} s na zapamatování",
+      "byPieces": "Průměrná přesnost v kolech s nastaveným časem na zapamatování {seconds} s",
       "bySeconds": "Průměrná přesnost u {pieces} figur podle času na zapamatování",
       "bySecondsNote": "Každý čas na zapamatování si zvolili jiní hráči, takže tyto sloupce neukazují, o kolik pomáhá delší čas.",
       "pieces": "{count, plural, one {# figura} few {# figury} many {# figury} other {# figur}}",

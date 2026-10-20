@@ -1804,7 +1804,7 @@
     "answer": "In {rounds, number} beendeten Runden Memory Chess vom {start} bis zum {end} erreichten Runden mit einer eingestellten Einprägezeit von 10 Sekunden im Schnitt eine Genauigkeit von {two} mit 2 Figuren ({twoRounds, number} Runden) und {six} mit 6 Figuren, der Standardeinstellung ({sixRounds, number} Runden). {sixPerfect} dieser Runden mit 6 Figuren waren perfekt. Mit 12 Figuren und 8 Sekunden, einer Einstellung, die weniger Spielende wählten, lag der Schnitt bei {twelve}, mit {twelvePerfect} perfekten Runden ({twelveRounds, number} Runden).",
     "englishNote": "Die Hinweise zu Methode, Grenzen und Zitierweise unten sind auf Englisch.",
     "chart": {
-      "byPieces": "Durchschnittliche Erinnerung bei {seconds} Sekunden Einprägezeit",
+      "byPieces": "Durchschnittliche Erinnerung in Runden mit eingestellter Einprägezeit von {seconds} Sekunden",
       "bySeconds": "Durchschnittliche Erinnerung an {pieces} Figuren, nach Einprägezeit",
       "bySecondsNote": "Jede Einprägezeit wurde von anderen Spielenden gewählt, daher zeigen diese Balken nicht, wie viel zusätzliche Zeit hilft.",
       "pieces": "{count, plural, one {# Figur} other {# Figuren}}",

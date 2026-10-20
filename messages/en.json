@@ -1804,7 +1804,7 @@
     "answer": "In {rounds, number} finished rounds of Memory Chess from {start} to {end}, rounds set to 10 seconds of study scored {two} accuracy on average with 2 pieces ({twoRounds, number} rounds) and {six} with 6 pieces, the default setting ({sixRounds, number} rounds). {sixPerfect} of those 6-piece rounds were perfect. With 12 pieces and 8 seconds, a setting fewer players chose, the average was {twelve}, with {twelvePerfect} perfect ({twelveRounds, number} rounds).",
     "englishNote": "The notes on method, limits and citation below are in English.",
     "chart": {
-      "byPieces": "Average recall with {seconds} seconds to study",
+      "byPieces": "Average recall in rounds set to {seconds} seconds of study",
       "bySeconds": "Average recall of {pieces} pieces, by study time",
       "bySecondsNote": "Different players chose each study time, so these bars do not show how much extra time helps.",
       "pieces": "{count, plural, one {# piece} other {# pieces}}",

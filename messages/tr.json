@@ -1804,7 +1804,7 @@
     "answer": "{start} ile {end} arasında Memory Chess'te bitirilen {rounds, number} turda, inceleme süresi 10 saniyeye ayarlanan turların isabeti 2 taşta ortalama {two} ({twoRounds, number} tur), varsayılan ayar olan 6 taşta {six} oldu ({sixRounds, number} tur). Bu 6 taşlı turlarda kusursuz olanların oranı {sixPerfect} idi. Daha az oyuncunun seçtiği 12 taş ve 8 saniye ayarında ortalama {twelve}, kusursuz turların oranı {twelvePerfect} oldu ({twelveRounds, number} tur).",
     "englishNote": "Aşağıdaki yöntem, sınırlar ve kaynak gösterme notları İngilizcedir.",
     "chart": {
-      "byPieces": "{seconds} saniye inceleme süresiyle ortalama hatırlama",
+      "byPieces": "İnceleme süresi {seconds} saniyeye ayarlanmış turlarda ortalama hatırlama",
       "bySeconds": "{pieces} taşın ortalama hatırlanma oranı, inceleme süresine göre",
       "bySecondsNote": "Her inceleme süresini farklı oyuncular seçti, bu yüzden bu çubuklar ek sürenin ne kadar yardımcı olduğunu göstermez.",
       "pieces": "{count, plural, one {# taş} other {# taş}}",

@@ -1804,7 +1804,7 @@
     "answer": "W {rounds, number} ukończonych rundach Memory Chess od {start} do {end} rundy z czasem na zapamiętanie ustawionym na 10 sekund osiągały średnio dokładność {two} przy 2 figurach (dane z {twoRounds, number} rund) i {six} przy 6 figurach, czyli w ustawieniu domyślnym (dane z {sixRounds, number} rund). Bezbłędnych było {sixPerfect} tych rund z 6 figurami. Przy 12 figurach i 8 sekundach, ustawieniu wybieranym przez mniej graczy, średnia wyniosła {twelve}, przy {twelvePerfect} rund bezbłędnych (dane z {twelveRounds, number} rund).",
     "englishNote": "Uwagi o metodzie, ograniczeniach i cytowaniu poniżej są po angielsku.",
     "chart": {
-      "byPieces": "Średnia dokładność przy {seconds} sekundach na zapamiętanie",
+      "byPieces": "Średnia dokładność w rundach z czasem na zapamiętanie ustawionym na {seconds} sekund",
       "bySeconds": "Średnia dokładność przy {pieces} figurach, według czasu na zapamiętanie",
       "bySecondsNote": "Każdy czas na zapamiętanie wybierali inni gracze, więc te słupki nie pokazują, ile pomaga dodatkowy czas.",
       "pieces": "{count, plural, one {# figura} few {# figury} many {# figur} other {# figury}}",

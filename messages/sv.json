@@ -1804,7 +1804,7 @@
     "answer": "I {rounds, number} avslutade rundor i Memory Chess från {start} till {end} hade rundor inställda på 10 sekunders studietid i genomsnitt en träffsäkerhet på {two} med 2 pjäser ({twoRounds, number} rundor) och {six} med 6 pjäser, standardinställningen ({sixRounds, number} rundor). {sixPerfect} av rundorna med 6 pjäser var felfria. Med 12 pjäser och 8 sekunder, en inställning som färre spelare valde, var snittet {twelve}, med {twelvePerfect} felfria ({twelveRounds, number} rundor).",
     "englishNote": "Anteckningarna om metod, begränsningar och källhänvisning nedan är på engelska.",
     "chart": {
-      "byPieces": "Genomsnittlig träffsäkerhet med {seconds} sekunders studietid",
+      "byPieces": "Genomsnittlig träffsäkerhet i rundor med studietid inställd på {seconds} sekunder",
       "bySeconds": "Genomsnittlig träffsäkerhet för {pieces} pjäser, efter studietid",
       "bySecondsNote": "Olika spelare valde varje studietid, så staplarna visar inte hur mycket extra tid hjälper.",
       "pieces": "{count, plural, one {# pjäs} other {# pjäser}}",

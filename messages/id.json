@@ -1804,7 +1804,7 @@
     "answer": "Dalam {rounds, number} ronde Memory Chess yang selesai dari {start} hingga {end}, ronde dengan waktu menghafal yang diatur ke 10 detik rata-rata meraih akurasi {two} dengan 2 bidak ({twoRounds, number} ronde) dan {six} dengan 6 bidak, pengaturan bawaan ({sixRounds, number} ronde). Sebanyak {sixPerfect} dari ronde 6 bidak itu sempurna. Dengan 12 bidak dan 8 detik, pengaturan yang dipilih lebih sedikit pemain, rata-ratanya {twelve}, dengan {twelvePerfect} yang sempurna ({twelveRounds, number} ronde).",
     "englishNote": "Catatan tentang metode, batasan, dan sitasi di bawah ini ditulis dalam bahasa Inggris.",
     "chart": {
-      "byPieces": "Rata-rata ingatan dengan {seconds} detik untuk menghafal",
+      "byPieces": "Rata-rata ingatan pada ronde dengan waktu menghafal yang diatur {seconds} detik",
       "bySeconds": "Rata-rata ingatan {pieces} bidak, menurut waktu menghafal",
       "bySecondsNote": "Setiap waktu menghafal dipilih oleh pemain yang berbeda, jadi batang ini tidak menunjukkan seberapa besar tambahan waktu membantu.",
       "pieces": "{count, plural, other {# bidak}}",

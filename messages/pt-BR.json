@@ -1804,7 +1804,7 @@
     "answer": "Em {rounds, number} rodadas concluídas do Memory Chess entre {start} e {end}, as rodadas configuradas com 10 segundos de estudo tiveram em média {two} de precisão com 2 peças ({twoRounds, number} rodadas) e {six} com 6 peças, a configuração padrão ({sixRounds, number} rodadas). {sixPerfect} dessas rodadas de 6 peças foram perfeitas. Com 12 peças e 8 segundos, uma configuração escolhida por menos jogadores, a média foi {twelve}, com {twelvePerfect} de rodadas perfeitas ({twelveRounds, number} rodadas).",
     "englishNote": "As notas sobre método, limites e citação abaixo estão em inglês.",
     "chart": {
-      "byPieces": "Lembrança média com {seconds} segundos de estudo",
+      "byPieces": "Lembrança média em rodadas configuradas com {seconds} segundos de estudo",
       "bySeconds": "Lembrança média de {pieces} peças, por tempo de estudo",
       "bySecondsNote": "Jogadores diferentes escolheram cada tempo de estudo, então estas barras não mostram quanto o tempo extra ajuda.",
       "pieces": "{count, plural, one {# peça} many {# de peças} other {# peças}}",

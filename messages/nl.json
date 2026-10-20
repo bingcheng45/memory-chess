@@ -1804,7 +1804,7 @@
     "answer": "In {rounds, number} voltooide rondes Memory Chess van {start} tot en met {end} haalden rondes met een ingestelde kijktijd van 10 seconden gemiddeld een nauwkeurigheid van {two} met 2 stukken ({twoRounds, number} rondes) en {six} met 6 stukken, de standaardinstelling ({sixRounds, number} rondes). {sixPerfect} van die rondes met 6 stukken was foutloos. Met 12 stukken en 8 seconden, een instelling die minder spelers kozen, was het gemiddelde {twelve}, met {twelvePerfect} foutloze rondes ({twelveRounds, number} rondes).",
     "englishNote": "De toelichting over methode, beperkingen en bronvermelding hieronder is in het Engels.",
     "chart": {
-      "byPieces": "Gemiddelde herinnering bij {seconds} seconden kijktijd",
+      "byPieces": "Gemiddelde herinnering in rondes met een ingestelde kijktijd van {seconds} seconden",
       "bySeconds": "Gemiddelde herinnering van {pieces} stukken, per kijktijd",
       "bySecondsNote": "Elke kijktijd werd door andere spelers gekozen, dus deze balken laten niet zien hoeveel extra tijd helpt.",
       "pieces": "{count, plural, one {# stuk} other {# stukken}}",

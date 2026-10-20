@@ -35,7 +35,7 @@ const guide: LearnDocument = {
       "Coordinates are the map. Position memory is holding what stands on it.",
       "Lichess's drill is free, with a 30-second timed mode and an untimed one.",
       "Memory Chess is free with no account, and counts from 2 to 32 pieces.",
-      "Learn the squares first. A piece you cannot name a square for is a piece you cannot remember precisely.",
+      "In our judgement, learn the squares first, since a piece you cannot name a square for is hard to remember precisely. This is not a measured result.",
     ],
     audience: [
       "Players who already use the Lichess coordinate trainer and wonder what comes next.",

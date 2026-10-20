@@ -62,7 +62,7 @@ describe("derived page values", () => {
       "20-minute-daily-chess-study-plan": 5,
       "how-to-analyze-chess-games-for-beginners": 6,
       "how-many-chess-puzzles-a-day": 4,
-      "chess-position-memory-trainers-compared": 4,
+      "chess-position-memory-trainers-compared": 5,
       "lichess-vs-chess-com-visualization-training": 3,
       "memory-chess-vs-lichess-coordinate-trainer": 3,
       "memory-chess-vs-darksquares": 3,

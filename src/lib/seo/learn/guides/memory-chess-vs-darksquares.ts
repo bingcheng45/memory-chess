@@ -76,7 +76,7 @@ const guide: LearnDocument = {
             {
               label: "Position memory",
               cells: [
-                "Three tiers. 3 to 8 pieces, 9 to 16 pieces in 60 seconds, 17 to 24 pieces in 120 seconds.",
+                "Three tiers. 3 to 8 pieces, 9 to 16 pieces in 60 seconds, 17 to 24 pieces in 120 seconds. Whether the expert tier needs Pro is not stated.",
                 "Any count from 2 to 32 pieces and any look from 1 to 60 seconds.",
               ],
             },
@@ -86,7 +86,7 @@ const guide: LearnDocument = {
             },
             {
               label: "Rating and rewards",
-              cells: ["XP and achievements.", "A skill rating for each rated round."],
+              cells: ["XP, streaks, achievements and rated puzzles.", "A skill rating for each rated round."],
             },
             {
               label: "Leaderboard",
@@ -94,7 +94,10 @@ const guide: LearnDocument = {
             },
             {
               label: "Blindfold games",
-              cells: ["Yes, against Stockfish at 8 levels. Levels 1 to 5 are free, 6 to 8 need Pro.", "No."],
+              cells: [
+                "Yes, against Stockfish at 8 levels, where levels 1 to 5 are free and 6 to 8 need Pro. Also against real players through Lichess, or with a friend.",
+                "No.",
+              ],
             },
             {
               label: "Course",
@@ -120,10 +123,10 @@ const guide: LearnDocument = {
           kind: "list",
           ordered: false,
           items: [
-            "Blindfold play. You can play full games against an engine with as much of the board hidden as you like. Memory Chess has no games at all.",
+            "Blindfold play. You can play full games against an engine, against real players through Lichess, or with a friend, with as much of the board hidden as you like. Memory Chess has no games at all.",
             "A course. Seven levels take you from square colours to full blindfold games, each with a skill to check before you move on.",
             "Mobile apps. DarkSquares has iPhone, iPad and Android apps. Memory Chess runs only in a browser.",
-            "Range of drills. Knight and bishop routes, attack detection, tactics solved in your head, voice input and famous games.",
+            "Range of drills. Knight and bishop routes, attack detection, Position Reconstruction (apply a list of moves, then place the final position), tactics solved in your head, voice input and famous games.",
           ],
         },
       ],
@@ -138,15 +141,9 @@ const guide: LearnDocument = {
           items: [
             "It has no paid tier, so nothing is held back for buyers.",
             "You set the round. Any piece count from 2 to 32 and any look from 1 to 60 seconds, not three fixed tiers.",
-            "Every round returns an accuracy figure and moves a skill rating, and a daily board gives every player the same position.",
+            "Every round returns an accuracy figure, rated rounds move a skill rating, and a daily board gives every player the same position.",
             "The site is in 24 languages against DarkSquares' 9.",
             "It does one job. If you want only position recall, there is less to choose between.",
-          ],
-        },
-        {
-          kind: "prose",
-          paragraphs: [
-            "Some of DarkSquares' pages disagree with each other. Its pricing page lists four board visibility modes and its play page lists five. The play page says no signup is needed, and also offers one free guest game before asking you to sign up. Whether the expert memory tier needs Pro is not stated.",
           ],
         },
       ],

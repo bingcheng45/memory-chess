@@ -78,12 +78,15 @@ const guide: LearnDocument = {
               label: "Rebuilding a whole position",
               cells: [
                 "None found on its training, practice or learn pages.",
-                "None found on its public pages.",
+                "None found on its Vision, variants, membership or help pages.",
               ],
             },
             {
               label: "Puzzles on a free account",
-              cells: ["No limit stated. Every feature is free.", "3 a day. Gold and above are unlimited."],
+              cells: [
+                "No limit stated. Every feature is free.",
+                "3 a day, plus the daily puzzle, and one Puzzle Rush and one Puzzle Battle a day after five of each on the first day. Gold and above are unlimited.",
+              ],
             },
             {
               label: "Cost",
@@ -107,7 +110,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The coordinate drills are close. Lichess lets you drill only some files and ranks, and turn the pieces and labels on or off. Chess.com adds a Moves mode, so you practise reading notation as well as squares.",
+            "The coordinate drills are close. Both let you turn the board's coordinate labels on or off and train as White, Black or either. Lichess also lets you drill only some files and ranks, and turn the pieces on or off. Chess.com adds a Moves mode, so you practise reading notation as well as squares.",
             "Chess.com's own help page on Vision says it may not directly help your game, though it makes learning easier. In our view the Lichess drill is similar. Both teach the map, not what the pieces are doing on it.",
             "For hidden-piece play, Lichess puts Blindfold in the board menu of its puzzle page. A Lichess user's forum post says it is on game pages too, but no official help page states it. Chess.com lists Blindfold Chess among its variants, and its help page says only your opponent's latest move is shown.",
             "Price is the clearest difference. Lichess says all of its features are free for all and forever. Chess.com gives Vision to free accounts, but a free account gets 3 puzzles and one extra lesson a day.",
@@ -117,7 +120,7 @@ const guide: LearnDocument = {
     },
     {
       id: "what-neither-has",
-      heading: "What neither site has",
+      heading: "What we did not find on either site",
       blocks: [
         {
           kind: "prose",
@@ -133,7 +136,7 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
-      why: "Rebuilding six pieces after a ten-second look is the drill neither site offers.",
+      why: "Rebuilding six pieces after a ten-second look is the drill we did not find on either site.",
     },
     {
       kind: "furtherReading",

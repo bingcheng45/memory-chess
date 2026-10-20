@@ -62,7 +62,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "A chess memory app can mean two things. One kind drills move sequences, such as the first fifteen moves of your repertoire, until you can play them without thinking. The other kind shows you a position and checks whether you can put every piece back on its square.",
-            "Chessable is built around the first kind. Its MoveTrainer page says it turns chess books and videos into interactive courses, and its home page lists openings, tactics, endgame patterns and more. Its pages do not describe a drill that shows a position briefly and then asks you to rebuild it.",
+            "Chessable is built around the first kind. Its MoveTrainer page says it turns chess books and videos into interactive courses, and its home page lists openings, tactics, endgame patterns and more. Its MoveTrainer and home pages do not describe a drill that shows a position briefly and then asks you to rebuild it.",
             "The tools below do the second kind, as their own pages describe them. You study a board, the pieces vanish, and you place them again. The tables say what each page states, and \"not stated\" where it is silent.",
           ],
         },
@@ -100,8 +100,8 @@ const guide: LearnDocument = {
               label: "BoardWithin",
               cells: [
                 "$4.99 on the US App Store, with no in-app purchases or subscription.",
-                "iPhone and iPad. Macs with an M1 chip or later can run the iPad app, which the listing marks as not verified for macOS.",
-                "Not stated.",
+                "iPhone, iPad and Apple Vision. Macs with an M1 chip or later can run the iPad app, which the listing marks as \"Not verified for macOS\".",
+                "Not needed. The listing says training does not require an account or an internet connection.",
               ],
             },
             {
@@ -160,16 +160,16 @@ const guide: LearnDocument = {
               cells: [
                 "Easy 3, Medium 5, Hard 8, Grandmaster 12.",
                 "10 seconds, set in the page's script. The visible text does not say.",
-                "A score, shown by the page's script. Its format is not stated.",
+                "Pieces right out of the total and a percentage, shown by the page's script.",
                 "Questions and answers on memory on the same page.",
               ],
             },
             {
               label: "BoardWithin",
               cells: [
-                "Its guide starts at 3 pieces. The full range is not stated.",
-                "Its guide suggests about 15 seconds. The range is not stated.",
-                "A Blindfold Score built from its levels, recall, puzzles and blindfold game.",
+                "3 pieces at level 1, rising to full game positions, per its how-to page. Exact counts are not stated.",
+                "Not stated for Position Recall. My Training lets you choose 3 to 15 seconds.",
+                "An accuracy percentage for each recall, and a Blindfold Score built from its levels, recall, puzzles and blindfold game.",
                 "Coordinates, hidden calculation, 100 tactical puzzles and a blindfold game.",
               ],
             },

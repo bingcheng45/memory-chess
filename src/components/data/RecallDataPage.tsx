@@ -1,7 +1,7 @@
 import { getFormatter, getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
-import { LabReadingPage, LabReadingSection } from "@/components/lab-paper/LabReadingPage";
+import { LabReadingPage } from "@/components/lab-paper/LabReadingPage";
 import {
   DEFAULT_ROUND_PIECES,
   DEFAULT_ROUND_SECONDS,
@@ -50,41 +50,43 @@ function RecallChart({ id, title, rows, t, percent }: { id: string; title: strin
 function RecallTable({ data, t, format }: { data: RecallDataset; t: Translate; format: Formatter }) {
   const percent = (value: number) => format.number(value / 100, { style: "percent", maximumFractionDigits: 1 });
   return (
-    <div className="recall-scroll" tabIndex={0} role="region" aria-labelledby="recall-table-caption">
-      <table className="recall-table">
-        <caption id="recall-table-caption">
-          {t("table.caption", { minRounds: data.minRounds, minPlayers: data.minPlayers })}
-        </caption>
-        <thead>
-          <tr>
-            <th scope="col">{t("table.pieces")}</th>
-            <th scope="col">{t("table.seconds")}</th>
-            <th scope="col" className="recall-num">{t("table.rounds")}</th>
-            <th scope="col" className="recall-num">{t("table.players")}</th>
-            <th scope="col" className="recall-num">{t("table.mean")}</th>
-            <th scope="col" className="recall-num">{t("table.median")}</th>
-            <th scope="col" className="recall-num">{t("table.middle")}</th>
-            <th scope="col" className="recall-num">{t("table.perfect")}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.cells.map((cell) => (
-            <tr key={`${cell.pieceCount}/${cell.memorizeSeconds}`}>
-              <th scope="row">{format.number(cell.pieceCount)}</th>
-              <td>{t("chart.seconds", { count: cell.memorizeSeconds })}</td>
-              <td className="recall-num">{format.number(cell.rounds)}</td>
-              <td className="recall-num">{format.number(cell.players)}</td>
-              <td className="recall-num">{percent(cell.meanAccuracy)}</td>
-              <td className="recall-num">{percent(cell.medianAccuracy)}</td>
-              <td className="recall-num">
-                {t("table.middleValue", { low: percent(cell.p25Accuracy), high: percent(cell.p75Accuracy) })}
-              </td>
-              <td className="recall-num">{percent(cell.perfectShare)}</td>
+    <>
+      <p className="recall-caption" id="recall-table-caption">
+        {t("table.caption", { minRounds: data.minRounds, minPlayers: data.minPlayers })}
+      </p>
+      <div className="recall-scroll" tabIndex={0} role="region" aria-labelledby="recall-table-title">
+        <table className="recall-table" aria-labelledby="recall-table-title" aria-describedby="recall-table-caption">
+          <thead>
+            <tr>
+              <th scope="col">{t("table.pieces")}</th>
+              <th scope="col">{t("table.seconds")}</th>
+              <th scope="col" className="recall-num">{t("table.rounds")}</th>
+              <th scope="col" className="recall-num">{t("table.players")}</th>
+              <th scope="col" className="recall-num">{t("table.mean")}</th>
+              <th scope="col" className="recall-num">{t("table.median")}</th>
+              <th scope="col" className="recall-num">{t("table.middle")}</th>
+              <th scope="col" className="recall-num">{t("table.perfect")}</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {data.cells.map((cell) => (
+              <tr key={`${cell.pieceCount}/${cell.memorizeSeconds}`}>
+                <th scope="row">{format.number(cell.pieceCount)}</th>
+                <td>{t("chart.seconds", { count: cell.memorizeSeconds })}</td>
+                <td className="recall-num">{format.number(cell.rounds)}</td>
+                <td className="recall-num">{format.number(cell.players)}</td>
+                <td className="recall-num">{percent(cell.meanAccuracy)}</td>
+                <td className="recall-num">{percent(cell.medianAccuracy)}</td>
+                <td className="recall-num">
+                  {t("table.middleValue", { low: percent(cell.p25Accuracy), high: percent(cell.p75Accuracy) })}
+                </td>
+                <td className="recall-num">{percent(cell.perfectShare)}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }
 
@@ -117,7 +119,7 @@ export async function RecallDataPage({ data, locale }: { readonly data: RecallDa
 
   return (
     <LabReadingPage locale={locale} kicker={t("kicker")} title={t("title")} lede={answer}>
-      <section className="lab-read-sec recall-figures" aria-label={t("table.title")}>
+      <section className="lab-read-sec recall-figures">
         <RecallChart
           id="recall-by-pieces"
           title={t("chart.byPieces", { seconds: DEFAULT_ROUND_SECONDS })}
@@ -134,7 +136,8 @@ export async function RecallDataPage({ data, locale }: { readonly data: RecallDa
         />
         <p className="recall-scale">{t("chart.scale")}</p>
       </section>
-      <LabReadingSection title={t("table.title")} id="table">
+      <section className="lab-read-sec" id="table">
+        <h2 id="recall-table-title">{t("table.title")}</h2>
         <RecallTable data={data} t={t} format={format} />
         <p className="recall-actions">
           <a className="lab-btn lab-btn-primary" href={RECALL_CSV_PAGE}>
@@ -147,7 +150,7 @@ export async function RecallDataPage({ data, locale }: { readonly data: RecallDa
             {t("links.play")}
           </Link>
         </p>
-      </LabReadingSection>
+      </section>
       <div lang={isEnglish ? undefined : DEFAULT_LOCALE}>
         {isEnglish ? null : (
           <p className="lab-read-note" lang={locale}>

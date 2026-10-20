@@ -40,8 +40,9 @@ export default function WoodenGameDemo() {
   }, [playing, onScreen, step]);
 
   const go = (target: number) => {
+    if (target < 0 || target > LAST) return;
     setPlaying(false);
-    setStep(Math.min(LAST, Math.max(0, target)));
+    setStep(target);
   };
 
   const toggle = () => {

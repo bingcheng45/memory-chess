@@ -37,6 +37,16 @@ describe("PrivacyPage", () => {
     ).toHaveAttribute("href", "/contact-us");
   });
 
+  it("says the recall data page publishes aggregate round counts with no names or IDs, and links it", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    const link = screen.getByRole("link", { name: "recall data page" });
+    expect(link).toHaveAttribute("href", "/data");
+    expect(link.parentElement).toHaveTextContent(
+      "On the recall data page we publish counts of finished rounds by number of pieces, study time and accuracy, taken from Google Analytics. They are aggregate counts only, with no names, player IDs or positions, and a group of fewer than 30 rounds or 5 players is left out.",
+    );
+  });
+
   it("says what article likes and views keep in the browser and in Supabase", async () => {
     render(await PrivacyPage(IN_ENGLISH));
 

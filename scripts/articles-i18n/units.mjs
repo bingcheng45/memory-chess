@@ -127,6 +127,6 @@ export function unitCommands(spec) {
     check: { minArgs: 1, maxArgs: 2, takesLocale: true, run: (repo, [locale, dir]) => check(repo, locale, dir) },
     import: { minArgs: 2, maxArgs: 2, takesLocale: true, run: (repo, [locale, dir]) => importTranslation(repo, locale, dir) },
     approve: { minArgs: 1, maxArgs: 1, takesLocale: true, run: (repo, [locale]) => approve(repo, locale) },
-    verify: { minArgs: 0, maxArgs: 0, takesLocale: false, run: (repo) => verify(repo) },
+    verify: { minArgs: 0, maxArgs: 0, takesLocale: false, run: (repo) => (spec.verify ?? verify)(repo, { readInstalled, failuresOf }) },
   };
 }

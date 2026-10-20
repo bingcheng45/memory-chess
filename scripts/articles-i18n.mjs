@@ -37,7 +37,8 @@ With --guides first, the same five commands act on the translated Learn guides a
   --guides check <locale> [dir]    check a translator's directory, or the installed files
   --guides import <locale> <dir>   check a directory, then install it, not yet approved
   --guides approve <locale>        check the installed files, then record the hash of the text as approved
-  --guides verify                  check every locale that serves the guides and require its approval
+  --guides verify                  check every locale that serves the guides and require its approval; a translation
+                                   whose English or shared chrome changed since is withheld with a warning, not failed
 
 Run it from the repo root. Every path must stay inside the repo.
 `;
@@ -75,7 +76,8 @@ async function run(argv) {
     throw new UsageError(`"${args[0]}" is not a shipped locale other than ${ENGLISH}`);
   }
 
-  const { failures, summary } = command.run(repo, args);
+  const { failures, summary, warnings = [] } = command.run(repo, args);
+  warnings.forEach((warning) => process.stderr.write(`warning: ${oneLine(warning)}\n`));
   failures.forEach((failure) => process.stderr.write(`${oneLine(failure)}\n`));
   process.stdout.write(`${summary}\n`);
   return failures.length === 0 ? 0 : EXIT_FAILED;

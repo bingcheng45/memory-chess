@@ -25,6 +25,6 @@ describe("the translations this repo serves", () => {
     const run = spawnSync(process.execPath, [LEVER_PATH, "--guides", "verify"], { cwd: REPO_ROOT, encoding: "utf8" });
 
     expect({ stderr: run.stderr, status: run.status }).toEqual({ stderr: "", status: 0 });
-    expect(run.stdout).toBe("ok verify --guides: ru, pt-BR, fr, de, es\n");
+    expect(run.stdout).toBe("ok verify --guides: 25 of 25 translations served, in ru, pt-BR, fr, de, es\n");
   });
 });

@@ -44,6 +44,8 @@ const ANCHORS = [
   ["/learn/chess-pattern-recognition-drills", "/articles/magnus-carlsen", "How Magnus Carlsen names a famous game from one position"],
   ["/learn/chess-calculation-exercises-for-beginners", "/learn/how-to-stop-blundering-in-chess", null],
   ["/learn/chess-visualization-exercises", "/learn/how-to-see-the-whole-board-in-chess", null],
+  ["/learn/chess-visualization-exercises", "/learn/blindfold-chess-training-for-beginners", "blindfold chess training"],
+  ["/learn/how-to-see-the-whole-board-in-chess", "/learn/blindfold-chess-training-for-beginners", "blindfold chess training"],
   ["/learn/how-to-get-better-at-chess-for-beginners", "/learn/20-minute-daily-chess-study-plan", null],
   ["/learn/chess-pattern-recognition-drills", "/learn/how-many-chess-puzzles-a-day", null],
   ["/", "/daily", "today's daily board"],

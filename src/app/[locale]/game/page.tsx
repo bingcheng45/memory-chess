@@ -57,14 +57,6 @@ const OPEN_SET_BOARD: Record<SetBoardSource, () => Promise<SetBoardOpen>> = {
     }),
 };
 
-const FIRST_ROUND_READ_LIMIT_MS = 1_500;
-
-const isFirstEverRound = (): Promise<boolean> =>
-  import('@/lib/lab/storage').then(async ({ labStore }) => {
-    const store = labStore();
-    return store !== null && (await store.isAvailable()) && (await store.readSummary()).rounds === 0;
-  });
-
 /**
  * Pins the page while a round is memorised or placed. Pinning the scrolling
  * element, rather than only hiding its overflow, is what stops iOS
@@ -158,7 +150,6 @@ function GamePageContent() {
   // Until today's board is read, a daily link shows the veiled board with Start held, never the configuration form.
   const [dailyRead, setDailyRead] = useState(false);
   const [triedToday, setTriedToday] = useState(false);
-  const [firstRoundKnown, setFirstRoundKnown] = useState(false);
   // A daily round's record being written, before /daily takes over.
   const [savingDaily, setSavingDaily] = useState(false);
   // A round the player starts by hand wins over a set board still being read.
@@ -169,7 +160,7 @@ function GamePageContent() {
   const dailyPending = hydrated && urlRound?.source === 'daily' && !dailyRead && round.phase === 'idle' && !refused;
   // A try already spent today is refused whatever the record says, so the board is never shown before the notice.
   const opening = dailyPending && !triedToday;
-  const linkPending = hydrated && !!urlRound && !isSetBoardSource(urlRound.source) && !firstRoundKnown && round.phase === 'idle';
+  const linkPending = hydrated && !!urlRound && !isSetBoardSource(urlRound.source) && round.phase === 'idle';
 
   // Memorising and placing are played without scrolling: the board is sized
   // from the room that is actually left, so the screen holds exactly what
@@ -199,24 +190,13 @@ function GamePageContent() {
     clearRoundParams();
     if (!urlRound) return;
     const { source } = urlRound;
-    // StrictMode runs this twice; only the live run starts the board, or the second read would refuse it.
-    let live = true;
     if (!isSetBoardSource(source)) {
-      const open = (first: boolean) => {
-        if (!live) return;
-        live = false;
-        window.clearTimeout(limit);
-        setFirstRoundKnown(true);
-        startAs(first ? prepareGame : startGame, urlRound.blindfold, urlRound.pieceCount, urlRound.memorizeTime, source);
-      };
-      const limit = window.setTimeout(() => open(false), FIRST_ROUND_READ_LIMIT_MS);
-      void isFirstEverRound().catch(() => false).then(open);
-      return () => {
-        live = false;
-        window.clearTimeout(limit);
-      };
+      startAs(prepareGame, urlRound.blindfold, urlRound.pieceCount, urlRound.memorizeTime, source);
+      return;
     }
 
+    // StrictMode runs this twice; only the live run starts the board, or the second read would refuse it.
+    let live = true;
     OPEN_SET_BOARD[source]()
       .then((opened) => {
         if (!live || startedByHandRef.current) return;
@@ -350,7 +330,7 @@ function GamePageContent() {
         const { pieceCount, studyMs, board } = round.config;
         const memorizeTime = studyMs / 1000;
         if (board) return activeRound(round, { kind: 'daily', day: board.kind === 'daily' ? board.day : utcDayOf(Date.now()), pieceCount, memorizeTime });
-        return activeRound(round, round.phase === 'ready' ? { kind: 'firstRound', pieceCount, memorizeTime } : null);
+        return activeRound(round, round.phase === 'ready' ? { kind: 'link', pieceCount, memorizeTime } : null);
       }
 
       case 'study':

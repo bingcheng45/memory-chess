@@ -1,201 +1,88 @@
 # Memory Chess
 
-A web-based memory training application that challenges players to memorize and recreate chess positions. Built with Next.js, TypeScript, and Tailwind CSS.
+Memory Chess is a free chess memory game at [thememorychess.com](https://thememorychess.com). You see a chess position for a few seconds, then rebuild it from memory and get a score. This repository is the source of the site.
 
-## Latest Release - v2.0.0
+![Memory Chess: a position on screen with a countdown timer, shown while the player studies it](public/social/v2/memory-chess-1200x675.jpg)
 
-Memory Chess 2.0 adds a daily board that every player shares, a dashboard of your memory figures kept on your device, a result screen that shows what each round changed, shareable result cards with a replay link, rebuilt Learn guides, and a new light design in all 24 languages. Visit `/changelog` in the app to see the full release history.
+## How a round works
 
-## Overview
+1. Pick how many pieces to show and how many seconds you get, or start a preset. The presets run from 2 pieces for 10 seconds (Easy) to 20 pieces for 5 seconds (Grandmaster).
+2. Study the position. The board goes blank when the time runs out or when you press Hide board.
+3. Rebuild it by choosing pieces from the palette and placing them on the squares where they stood.
+4. Submit to see your accuracy score (the share of pieces placed correctly, less 10 points for each piece placed beyond the count, never below 0), which pieces you got wrong, and how long you took.
 
-Memory Chess combines chess knowledge with memory skills, offering a unique and engaging experience for chess enthusiasts and casual players alike. The game helps players improve their visualization abilities and pattern recognition through interactive exercises.
+Around the round:
 
-## Features
+- A rating that changes after each round, with a preview of what a win or a miss would do to it. Your rating history and stats are kept on your device.
+- A daily board, the same position for every player that day.
+- A leaderboard you can submit a score to.
+- Learn guides and articles on chess memory and visualization.
+- 24 languages.
+- Free, with no account and no sign-up.
 
-### Currently Implemented ✅
+## For developers
 
-- Core chess game functionality
-  - Interactive chess board with piece movement
-  - Game state management using Zustand
-  - Dynamic position generation
-  - Accurate position comparison
-- Game interface
-  - Responsive design for mobile and desktop
-  - Black and white chess theme
-  - Real-time game statistics
-  - Accessible keyboard controls
-  - Modern UI with elegant color selection buttons
-- Memory training features
-  - Position memorization with visual timer
-  - Interactive position recreation
-  - Piece count configuration
-  - Randomized piece placement
-  - Accuracy calculation with visual feedback
-- User experience
-  - Smooth animations and transitions
-  - Touch gesture support for mobile
-  - Keyboard navigation support
-  - Adaptive layout for various screen sizes
-- Social features
-  - Leaderboards
-  - Ability to claim your rank
+Memory Chess is a Next.js 15 App Router app written in TypeScript. The Node version is not pinned in the repo. The versions below are from `package.json`.
 
-### In Progress 🚧
+**Stack**
 
-- Testing and optimization
-  - Component unit tests
-  - Integration testing
-  - Performance optimizations
-  - Code documentation
+- Next.js 15 (App Router) with React 19
+- Tailwind CSS 3, Radix UI primitives, Zustand for game state
+- chess.js for position handling
+- next-intl for the 24 locales, with message files in `messages/`
+- Supabase for the leaderboard and Google Sheets for feedback and contact forms
+- Jest and Testing Library for tests
+- Hosted on Vercel
 
-### Planned Features 📋
-
-- Advanced features
-  - Achievement system
-- Social features
-  - Multiplayer mode
-
-## Getting Started
-
-1. Clone the repository:
+**Setup**
 
 ```bash
 git clone https://github.com/bingcheng45/memory-chess.git
 cd memory-chess
-```
-
-2. Install dependencies:
-
-```bash
 npm install
-```
-
-3. Run the development server:
-
-```bash
 npm run dev
 ```
 
-4. Open [http://localhost:3000](http://localhost:3000) with your browser to see the application.
+Open [http://localhost:3000](http://localhost:3000). The dev server uses Turbopack.
 
-### Game feedback worksheet
+**Environment**
 
-Game feedback uses the same spreadsheet configured by `GOOGLE_SHEET_ID`. Create a worksheet tab named `Game Feedback` and add these headers to columns A–J:
+Put these in `.env.local`. The names come from `src/`.
 
-`Submitted At`, `Rating`, `Feedback`, `Accuracy`, `Correct Pieces`, `Piece Count`, `Difficulty`, `Memorization Time`, `Solution Time`, `App Version`.
+- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`: the leaderboard. Set `SUPABASE_READ_ONLY=true` to stop writes that go through the shared Supabase client in `src/lib/supabase.js`. It does not cover the Google Sheets writes below, and the opt-in lab backup (`LAB_BACKUP=on`) builds its own service-role client that ignores it, so leave `LAB_BACKUP` unset locally.
+- `GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_ACCOUNT_KEY`: where feedback and contact messages are appended. Feedback goes to a worksheet tab named `Game Feedback` with headers `Submitted At`, `Rating`, `Feedback`, `Accuracy`, `Correct Pieces`, `Piece Count`, `Difficulty`, `Memorization Time`, `Solution Time`, `App Version` in columns A to J.
+- `NEXT_PUBLIC_DATABUDDY_CLIENT_ID`: analytics.
 
-### Advertising rollout
+**Scripts**
 
-The AdSense ownership code is installed, but no ad units are active while the
-site is under review. The approval-gated placement design is documented in
-[`adsense-layout-plan.md`](./adsense-layout-plan.md).
+| Command | What it does |
+| --- | --- |
+| `npm run dev` | Development server |
+| `npm run build` | Validates messages and articles, builds the app, then checks the prerendered guides |
+| `npm start` | Serves a production build |
+| `npm run lint` | `next lint` |
+| `npm run validate` | Checks the message files and the article translations |
+| `npm run validate:messages` | Checks every locale file for missing keys and broken placeholders |
 
-## Project Roadmap Progress
+Other `npm run` scripts (`lab:*`, `measure:*`, `migrate:rehearse`, `backup:verify`) are measurement and maintenance tools. See `package.json` and `scripts/`.
 
-### Phase 1: Project Setup ✅
+**Tests and type checks**
 
-- [x] Initialize Next.js project with TypeScript
-- [x] Set up ESLint and Prettier
-- [x] Configure Git hooks (husky)
-- [x] Set up project structure
+```bash
+npx jest
+npx tsc --noEmit
+```
 
-### Phase 2: Core Game Components ✅
+There is no `test` script. Jest runs every file matching `**/__tests__/**/*.test.[jt]s?(x)`, which covers `src/`, `scripts/` and `schema/`.
 
-- [x] Create chess board component
-- [x] Implement piece movement
-- [x] Add game controls
-- [x] Create game statistics display
-- [x] Add difficulty presets
+**Adding or changing text.** Interface strings (next-intl) go into `messages/en.json` and the other 23 locale files. Article and trust-page translations live elsewhere: articles in `src/lib/articles/translations/`, and About, Privacy and Terms in `src/lib/pages/translations/`. Those are written and checked with `node scripts/articles-i18n.mjs` (add `--pages` for the trust pages). Run `npm run validate` before you open a pull request. It checks both the message files and these translations.
 
-### Phase 3: Game Logic Implementation ✅
-
-- [x] Implement memory training mechanics
-- [x] Add timer system
-- [x] Create position validation
-- [x] Add game flow control
-- [x] Ensure truly random piece placement
-- [x] Display pieces correct / total in results
-
-### Phase 4: Game Experience Improvements ✅
-
-- [x] Session tracking for player progress
-- [x] Add basic performance metrics
-- [x] Improve mobile experience
-- [x] Add touch gesture support
-- [x] Optimize component rendering
-- [x] Add responsive layouts for all screen sizes
-- [x] Implement modern, intuitive UI elements
-- [x] Create elegant color selection interface
-
-### Phase 5: Social Features ✅
-
-- [x] Create leaderboard system
-- [x] Implement "Claim Your Rank" feature
-- [x] Add leaderboard entry submission
-
-### Phase 6: Testing and Optimization 🚧
-
-- [ ] Implement comprehensive testing
-- [ ] Optimize rendering performance
-- [ ] Add code documentation
-- [ ] Prepare for deployment
-
-### Phase 7: Additional Features (Optional) 📋
-
-- [ ] Add daily challenges
-- [ ] Implement simple achievements
-- [ ] Create shareable results
-- [ ] Add optional user accounts
-
-## Tech Stack
-
-- [Next.js](https://nextjs.org/) - React framework
-- [TypeScript](https://www.typescriptlang.org/) - Type safety
-- [Tailwind CSS](https://tailwindcss.com/) - Styling
-- [Zustand](https://zustand-demo.pmnd.rs/) - State management
-- [shadcn/ui](https://ui.shadcn.com/) - UI components
-- [React DnD](https://react-dnd.github.io/react-dnd/) - Drag and drop functionality
-
-## Game Difficulty Settings
-
-### Beginner
-
-- 3-5 pieces on the board
-- 30 seconds memorization time
-- Simple piece patterns
-
-### Intermediate
-
-- 6-10 pieces on the board
-- 15 seconds memorization time
-- More complex patterns
-
-### Advanced
-
-- 11-16 pieces on the board
-- 10 seconds memorization time
-- Challenging positions
-
-### Expert
-
-- 17+ pieces on the board
-- 5 seconds memorization time
-- Complex, game-like positions
-
-## Mobile Support
-
-The application is fully responsive and works well on mobile devices:
-
-- Dynamic board sizing based on screen dimensions
-- Touch-optimized interactions for piece movement
-- Compact UI for smaller screens
-- Orientation support for both portrait and landscape
-- Special optimizations for devices as small as iPhone SE (320x568px)
+**Ads.** No ad units are active. The AdSense script is off because `ADSENSE_SCRIPT_ENABLED` in `src/lib/adsense.ts` is set to `false`, and the placement plan is in [`adsense-layout-plan.md`](./adsense-layout-plan.md).
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Issues and pull requests are welcome. Run `npm run lint`, `npx tsc --noEmit` and `npx jest` first.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+[MIT](LICENSE). Copyright 2025-2026 bing cheng.

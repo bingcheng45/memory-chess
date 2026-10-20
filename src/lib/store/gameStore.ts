@@ -219,6 +219,7 @@ export const useGameStore = create<GameStore>()(
         }
         const config = configOf(pieceCount, memorizeTime, source, board, blindfold);
         const round = roundReducer(get().round, { type: 'prepare', config, fen });
+        if (round === get().round) return;
         set({ round });
         if (round.phase === 'ready' && !board) trackRound('round_intro_view', config);
       },

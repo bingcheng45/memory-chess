@@ -17,7 +17,7 @@ jest.mock("next/navigation", () => ({
 }));
 jest.mock("@/lib/articles/translatedLocales");
 
-const BANNER_NAME = new RegExp(`Memory Chess v${LATEST_CHANGELOG_ENTRY.version.replaceAll(".", "\\.")} is here`);
+const BANNER_NAME = new RegExp(`Version ${LATEST_CHANGELOG_ENTRY.version.replaceAll(".", "\\.")} is out`);
 
 beforeEach(() => {
   mockPathname = "/";
@@ -100,7 +100,7 @@ describe("the changelog banner", () => {
     expect(banner.parentElement).toHaveClass("lab-paper");
     expect(screen.getByRole("link", { name: BANNER_NAME })).toHaveAttribute("href", "/changelog");
 
-    fireEvent.click(screen.getByRole("button", { name: `Dismiss Memory Chess v${LATEST_CHANGELOG_ENTRY.version} update` }));
+    fireEvent.click(screen.getByRole("button", { name: "Dismiss this update" }));
 
     expect(window.localStorage.getItem(CHANGELOG_DISMISSAL_STORAGE_KEY)).toBe(LATEST_CHANGELOG_ENTRY.version);
     expect(screen.queryByRole("complementary", { name: "Memory Chess update" })).toBeNull();

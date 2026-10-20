@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "Bekijk wat er nieuw is",
+    "bannerDismiss": "Deze melding sluiten",
     "bannerLabel": "Memory Chess-update",
-    "bannerLead": "Memory Chess v{version} is er."
+    "bannerLead": "Versie {version} is uit."
   },
   "articles": {
     "meta": {

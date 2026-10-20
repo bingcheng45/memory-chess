@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "Lihat yang baru",
+    "bannerDismiss": "Tutup pemberitahuan ini",
     "bannerLabel": "Pembaruan Memory Chess",
-    "bannerLead": "Memory Chess v{version} sudah hadir."
+    "bannerLead": "Versi {version} sudah hadir."
   },
   "articles": {
     "meta": {

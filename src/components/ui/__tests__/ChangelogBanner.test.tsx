@@ -5,6 +5,7 @@ import {
   CHANGELOG_DISMISSAL_STORAGE_KEY,
   LATEST_CHANGELOG_ENTRY,
 } from "@/lib/changelog";
+import { LOCALES } from "@/i18n/routing";
 
 describe("ChangelogBanner", () => {
   const publishedAt = Date.parse(LATEST_CHANGELOG_ENTRY.publishedAt);
@@ -25,7 +26,7 @@ describe("ChangelogBanner", () => {
 
     const link = await screen.findByRole("link", {
       name: new RegExp(
-        `Memory Chess v${LATEST_CHANGELOG_ENTRY.version.replaceAll(".", "\\.")} is here`,
+        `Version ${LATEST_CHANGELOG_ENTRY.version.replaceAll(".", "\\.")} is out`,
         "i",
       ),
     });
@@ -33,11 +34,20 @@ describe("ChangelogBanner", () => {
     expect(link).toHaveAttribute("href", "/changelog");
   });
 
+  it.each(LOCALES)("keeps the product name away from the version number in %s", (locale) => {
+    const messages = jest.requireActual(`../../../../messages/${locale}.json`);
+    render(<ChangelogBanner announce version="7.3.1" publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />, { locale, messages });
+
+    const link = screen.getByRole("link");
+    expect(link.textContent).toContain("7.3.1");
+    expect(link.textContent).not.toMatch(/Memory ?Chess/i);
+  });
+
   it("stores the dismissed version and hides immediately", async () => {
     render(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
     const closeButton = await screen.findByRole("button", {
-      name: `Dismiss Memory Chess v${LATEST_CHANGELOG_ENTRY.version} update`,
+      name: "Dismiss this update",
     });
     fireEvent.click(closeButton);
 

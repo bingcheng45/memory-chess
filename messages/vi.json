@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "Xem có gì mới",
+    "bannerDismiss": "Đóng thông báo này",
     "bannerLabel": "Cập nhật Memory Chess",
-    "bannerLead": "Memory Chess v{version} đã ra mắt."
+    "bannerLead": "Phiên bản {version} đã ra mắt."
   },
   "articles": {
     "meta": {

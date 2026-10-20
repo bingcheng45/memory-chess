@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "Katso mitä uutta",
+    "bannerDismiss": "Sulje tämä ilmoitus",
     "bannerLabel": "Memory Chess -päivitys",
-    "bannerLead": "Memory Chess v{version} on täällä."
+    "bannerLead": "Versio {version} on julkaistu."
   },
   "articles": {
     "meta": {

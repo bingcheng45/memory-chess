@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "Se hva som er nytt",
+    "bannerDismiss": "Lukk denne oppdateringen",
     "bannerLabel": "Memory Chess-oppdatering",
-    "bannerLead": "Memory Chess v{version} er her."
+    "bannerLead": "Versjon {version} er ute."
   },
   "articles": {
     "meta": {

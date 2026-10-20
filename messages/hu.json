@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "Nézd meg, mi újult meg",
+    "bannerDismiss": "Értesítés bezárása",
     "bannerLabel": "Memory Chess frissítés",
-    "bannerLead": "Megérkezett a Memory Chess v{version}."
+    "bannerLead": "Megjelent az új verzió: {version}."
   },
   "articles": {
     "meta": {

@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "Ver novidades",
+    "bannerDismiss": "Fechar este aviso",
     "bannerLabel": "Atualização do Memory Chess",
-    "bannerLead": "Chegou o Memory Chess v{version}."
+    "bannerLead": "Chegou a versão {version}."
   },
   "articles": {
     "meta": {

@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "Смотреть, что нового",
+    "bannerDismiss": "Закрыть это уведомление",
     "bannerLabel": "Обновление Memory Chess",
-    "bannerLead": "Вышла версия Memory Chess v{version}."
+    "bannerLead": "Вышла версия {version}."
   },
   "articles": {
     "meta": {

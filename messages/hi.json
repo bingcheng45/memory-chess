@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "नया क्या है देखें",
+    "bannerDismiss": "यह अपडेट सूचना बंद करें",
     "bannerLabel": "Memory Chess अपडेट",
-    "bannerLead": "Memory Chess v{version} आ गया है।"
+    "bannerLead": "संस्करण {version} आ गया है।"
   },
   "articles": {
     "meta": {

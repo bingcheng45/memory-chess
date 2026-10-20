@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "Zobrazit novinky",
+    "bannerDismiss": "Zavřít toto oznámení",
     "bannerLabel": "Aktualizace Memory Chess",
-    "bannerLead": "Memory Chess v{version} je tady."
+    "bannerLead": "Vyšla verze {version}."
   },
   "articles": {
     "meta": {

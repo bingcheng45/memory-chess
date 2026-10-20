@@ -1266,8 +1266,9 @@
   },
   "changelog": {
     "bannerCta": "새로운 소식 보기",
+    "bannerDismiss": "이 알림 닫기",
     "bannerLabel": "Memory Chess 업데이트",
-    "bannerLead": "Memory Chess v{version}이 출시되었습니다."
+    "bannerLead": "버전 {version}이 출시되었습니다."
   },
   "articles": {
     "meta": {

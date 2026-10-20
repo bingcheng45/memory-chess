@@ -64,6 +64,10 @@
       "leaderboard": "Visa topplistan",
       "chooseSettings": "Välj pjäser och tid"
     },
+    "gameVideo": {
+      "play": "Spela upp video: {title}",
+      "caption": "En runda från början till slut: studera ställningen, bygg upp den ur minnet och läs av ditt resultat."
+    },
     "video": {
       "title": "Träna förmågan bakom spelet",
       "subtitle": "En kort video av Colin Galen om visualisering, som varje runda tränar.",

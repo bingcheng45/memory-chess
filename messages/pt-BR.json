@@ -64,6 +64,10 @@
       "leaderboard": "Ver o ranking",
       "chooseSettings": "Escolha peças e tempo"
     },
+    "gameVideo": {
+      "play": "Reproduzir vídeo: {title}",
+      "caption": "Uma rodada do começo ao fim: estude a posição, reconstrua de memória e veja sua pontuação."
+    },
     "video": {
       "title": "Treine a habilidade por trás do jogo",
       "subtitle": "Um vídeo curto de Colin Galen sobre visualização, a habilidade que cada rodada treina.",

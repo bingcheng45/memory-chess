@@ -64,6 +64,10 @@
       "leaderboard": "Vezi clasamentul",
       "chooseSettings": "Alege piesele și timpul"
     },
+    "gameVideo": {
+      "play": "Redă videoclipul: {title}",
+      "caption": "O rundă de la început până la sfârșit: studiază poziția, reconstruiește-o din memorie, citește-ți scorul."
+    },
     "video": {
       "title": "Antrenează abilitatea din spatele jocului",
       "subtitle": "Un videoclip scurt de Colin Galen despre vizualizare, ce antrenează fiecare rundă.",

@@ -64,6 +64,10 @@
       "leaderboard": "Zobrazit žebříček",
       "chooseSettings": "Zvolte počet figur a čas"
     },
+    "gameVideo": {
+      "play": "Přehrát video: {title}",
+      "caption": "Jedno kolo od začátku do konce: prohlédněte si pozici, sestavte ji zpaměti a přečtěte si skóre."
+    },
     "video": {
       "title": "Trénujte dovednost, na které hra stojí",
       "subtitle": "Krátké video Colina Galena o vizualizaci, dovednosti, kterou trénuje každé kolo.",

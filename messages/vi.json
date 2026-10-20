@@ -64,6 +64,10 @@
       "leaderboard": "Xem bảng xếp hạng",
       "chooseSettings": "Chọn số quân và thời gian"
     },
+    "gameVideo": {
+      "play": "Phát video: {title}",
+      "caption": "Một ván từ đầu đến cuối: quan sát thế cờ, xếp lại từ trí nhớ và xem điểm của bạn."
+    },
     "video": {
       "title": "Rèn kỹ năng mà trò chơi dựa vào",
       "subtitle": "Video ngắn của Colin Galen về khả năng hình dung, kỹ năng mỗi ván đều rèn.",

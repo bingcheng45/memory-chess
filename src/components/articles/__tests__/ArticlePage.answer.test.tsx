@@ -39,7 +39,7 @@ async function firstBodyParagraph(locale: Locale): Promise<string | undefined> {
   return body.match(/<p class="art-body-p">([^<]*)<\/p>/)?.[1].replace(/&#x27;/g, "'");
 }
 
-async function earlyDrillLink(locale: Locale) {
+async function headerDrillLinks(locale: Locale) {
   const article = await getArticle("adriaan-de-groot", locale);
   if (!article) throw new Error("no de Groot article");
   const messages = jest.requireActual(`../../../../messages/${locale}.json`);
@@ -48,18 +48,20 @@ async function earlyDrillLink(locale: Locale) {
       <ArticlePage article={article} />
     </NextIntlClientProvider>,
   ).replace(/<!-- -->/g, "");
-  const link = html.match(/<a[^>]*href="([^"]*)"[^>]*data-article-early-drill[^>]*>([\s\S]*?)<\/a>/);
-  return link && { href: link[1].replace(/&amp;/g, "&"), text: link[2].replace(/<[^>]+>/g, "") };
+  const header = html.slice(0, html.indexOf("data-article-body"));
+  return Array.from(header.matchAll(/<a[^>]*href="(\/game[^"]*)"[^>]*>([\s\S]*?)<\/a>/g), ([, href, text]) => ({
+    href: href.replace(/&amp;/g, "&"),
+    text: text.replace(/<[^>]+>/g, ""),
+  }));
 }
 
 describe("the de Groot article opens with its answer", () => {
-  it("offers de Groot's own 22-piece, 5-second round right above the answer", async () => {
-    expect(await earlyDrillLink("en")).toEqual({
-      href: "/game?pieceCount=22&memorizeTime=5&source=article_cta",
-      text: "Your turnPlay 22 pieces, 5 seconds→",
-    });
+  it("offers a new reader's 4-piece round first and de Groot's own 22-piece, 5-second round right above the answer", async () => {
+    expect(await headerDrillLinks("en")).toEqual([
+      { href: "/game?pieceCount=4&memorizeTime=10&source=article_cta", text: "Your turnPlay 4 pieces, 10 seconds→" },
+      { href: "/game?pieceCount=22&memorizeTime=5&source=article_cta", text: "Play 22 pieces, 5 seconds" },
+    ]);
   });
-
 
   it("serves the English answer as the first paragraph of the body", async () => {
     expect(await firstBodyParagraph("en")).toBe(

@@ -196,22 +196,23 @@ describe("ArticlePage body", () => {
     }
   });
 
-  it("offers the article's own drill near the top, and a new reader's 4-piece round at the end beside the article's drill", () => {
+  it("offers a new reader a 4-piece round near the top and at the end, and keeps the article's own drill as a second link at both", () => {
     const { container } = renderPage();
 
     expect(Array.from(container.querySelectorAll('a[href^="/game"]'), (link) => [link.getAttribute("href"), link.textContent])).toEqual([
-      ["/game?pieceCount=12&memorizeTime=5&source=article_cta", "Your turnPlay 12 pieces, 5 seconds→"],
+      ["/game?pieceCount=4&memorizeTime=10&source=article_cta", "Your turnPlay 4 pieces, 10 seconds→"],
+      ["/game?pieceCount=12&memorizeTime=5&source=article_cta", "Play 12 pieces, 5 seconds"],
       ["/game?pieceCount=4&memorizeTime=10&source=article_cta", `Your turn${article.drill.why}Play 4 pieces, 10 seconds`],
       ["/game?pieceCount=12&memorizeTime=5&source=article_cta", "Play 12 pieces, 5 seconds"],
     ]);
   });
 
-  it("sizes the end drill link to a returning player's saved rating and keeps the top link on the article's drill", () => {
+  it("sizes both drill links to a returning player's saved rating", () => {
     localStorage.setItem("memory-chess-storage", JSON.stringify({ state: { gameState: { skillRating: 1300 }, certainty: { rd: 60, rounds: 40 } }, version: 3 }));
     try {
       const { container } = renderPage();
 
-      expect(container.querySelector("a[data-article-early-drill]")).toHaveAttribute("href", "/game?pieceCount=12&memorizeTime=5&source=article_cta");
+      expect(container.querySelector("a[data-article-early-drill]")).toHaveAttribute("href", "/game?pieceCount=8&memorizeTime=10&source=article_cta");
       expect(container.querySelector("a[data-article-drill]")).toHaveTextContent("Play 8 pieces, 10 seconds");
     } finally {
       localStorage.clear();
@@ -223,6 +224,7 @@ describe("ArticlePage body", () => {
 
     expect(container.querySelector("a[data-article-drill]")).toHaveTextContent("Play 4 pieces, 10 seconds");
     expect(container.querySelector("a[data-article-drill-original]")).toBeNull();
+    expect(container.querySelector("a[data-article-early-drill-original]")).toBeNull();
   });
 
   it("describes the drill button by the drill's sentence, which the button's own name leaves out", () => {

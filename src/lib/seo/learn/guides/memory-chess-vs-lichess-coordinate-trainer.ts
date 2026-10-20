@@ -30,7 +30,7 @@ const guide: LearnDocument = {
     disclosure: "Memory Chess makes one of the two tools on this page and publishes the page. Facts about Lichess come from its own public pages.",
   },
   intro: {
-    quickAnswer: "They train two different skills, so most players gain from doing both. The Lichess coordinate trainer asks you to find or name as many squares as you can in 30 seconds. Memory Chess shows a position for 1 to 60 seconds, clears the board and asks you to put every piece back.",
+    quickAnswer: "They train two different skills, so in our judgement most players gain from doing both. The Lichess coordinate trainer asks you to find or name as many squares as you can in 30 seconds. Memory Chess shows a position for 1 to 60 seconds, clears the board and asks you to put every piece back.",
     takeaways: [
       "Coordinates are the map. Position memory is holding what stands on it.",
       "Lichess's drill is free, with a 30-second timed mode and an untimed one.",

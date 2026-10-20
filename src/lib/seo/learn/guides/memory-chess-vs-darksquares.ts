@@ -123,7 +123,7 @@ const guide: LearnDocument = {
           kind: "list",
           ordered: false,
           items: [
-            "Blindfold play. You can play full games against an engine, against real players through Lichess, or with a friend, with as much of the board hidden as you like. Memory Chess has no games at all.",
+            "Blindfold play. You can play full games against Stockfish in five board modes, from the full board to a blank one. You can also play real players through Lichess, or a friend. Memory Chess has no games at all.",
             "A course. Seven levels take you from square colours to full blindfold games, each with a skill to check before you move on.",
             "Mobile apps. DarkSquares has iPhone, iPad and Android apps. Memory Chess runs only in a browser.",
             "Range of drills. Knight and bishop routes, attack detection, Position Reconstruction (apply a list of moves, then place the final position), tactics solved in your head, voice input and famous games.",
@@ -179,6 +179,7 @@ const guide: LearnDocument = {
         { title: "DarkSquares: Intermediate position memory", url: "https://darksquares.net/train/position-memory-intermediate" },
         { title: "DarkSquares: Expert position memory", url: "https://darksquares.net/train/position-memory-expert" },
         { title: "DarkSquares: Play blindfold chess", url: "https://darksquares.net/play" },
+        { title: "DarkSquares: Position Reconstruction", url: "https://darksquares.net/train/position-reconstruction" },
         { title: "DarkSquares: Learn", url: "https://darksquares.net/learn" },
         { title: "DarkSquares: Leaderboard", url: "https://darksquares.net/leaderboard" },
       ],

@@ -8,8 +8,8 @@ jest.mock("@/lib/seo/learn/translatedGuides", () => ({
 
 jest.mock("@/lib/seo/learn/servedGuides.json", () => ({
   "blindfold-chess-training-for-beginners": ["pt-BR", "fr", "de", "es"],
-  "how-to-see-the-whole-board-in-chess": ["ru", "pt-BR", "fr", "de", "es"],
-  "chess-visualization-exercises": ["ru", "pt-BR", "fr", "de", "es"],
+  "how-to-see-the-whole-board-in-chess": ["ru", "pt-BR", "fr", "es"],
+  "chess-visualization-exercises": ["ru", "fr", "de", "es"],
   "how-to-stop-blundering-in-chess": ["ru", "pt-BR", "fr", "de", "es"],
   "how-to-get-better-at-chess-for-beginners": ["ru", "pt-BR", "fr", "es"],
 }));
@@ -43,7 +43,8 @@ const run = (path: string) => middleware(new NextRequest(`${SITE}${path}`));
 
 describe("turning on indexing for one locale's translated guides", () => {
   it("makes that locale's translation indexable and leaves the others noindex", () => {
-    expect(buildLearnPageMetadata(blundering(), "de").robots).toBeUndefined();
+    expect("robots" in buildLearnPageMetadata(blundering(), "de")).toBe(false);
+    expect("robots" in buildLearnPageMetadata(blundering())).toBe(false);
     expect(buildLearnPageMetadata(blundering(), "fr").robots).toEqual(NOINDEX_FOLLOW);
   });
 
@@ -88,6 +89,14 @@ describe("a translation withheld until it is approved again", () => {
 
   it("sends a retired guide's German readers to English for now when the guide's German is withheld", () => {
     const retired = run("/de/learn/chess-board-vision-drills");
-    expect([retired.status, retired.headers.get("location")]).toEqual([308, `${SITE}/de/learn/how-to-see-the-whole-board-in-chess`]);
+    expect([retired.status, retired.headers.get("location")]).toEqual([307, `${SITE}/learn/how-to-see-the-whole-board-in-chess`]);
+  });
+
+  it("answers a temporary redirect for a withheld translation reached by a trailing slash or the /pt short code", () => {
+    const slashed = run("/ru/learn/blindfold-chess-training-for-beginners/");
+    const short = run("/pt/learn/chess-visualization-exercises");
+
+    expect([slashed.status, slashed.headers.get("location")]).toEqual([307, `${SITE}/learn/blindfold-chess-training-for-beginners`]);
+    expect([short.status, short.headers.get("location")]).toEqual([307, `${SITE}/learn/chess-visualization-exercises`]);
   });
 });

@@ -61,10 +61,6 @@ function stripBlocks(html, tags) {
 
 const markedElement = (attribute, flags) => new RegExp(`<([a-zA-Z][\\w-]*)\\b[^>]*\\s${attribute}(?:="[^"]*")?[^>]*>([\\s\\S]*?)<\\/\\1>`, flags);
 
-/**
- * What the boilerplate rule does not read as content: the note saying how a page was written or translated, and an
- * interface label such as "Who this is for", which names a block the same way on every page, as navigation does.
- */
 const PROSE_EXEMPT_MARKS = ["data-authorship-note", "data-interface-label"];
 
 /** Drops every element carrying `attribute`, such as the guides' AI-assistance note. */

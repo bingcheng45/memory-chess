@@ -90,8 +90,8 @@ export default function middleware(request: NextRequest, event?: NextFetchEvent)
   const response = route(request);
   // next-intl advertises every locale in a hreflang Link header. For a route
   // indexed only in English that would point crawlers at noindex pages, and for
-  // a route served in a few locales at URLs that redirect. Such a route gets the
-  // alternates its page's <link rel="alternate"> tags name, or none.
+  // a route served in a few locales at URLs that redirect. The page's own
+  // <link rel="alternate"> tags list the locales that exist.
   const path = unprefixedPath(request.nextUrl.pathname);
   if (isIndexedInDefaultLocaleOnly(path) || isPartlyTranslatedPath(path)) {
     const link = response.status < 300 ? alternatesLinkHeader(path, request.nextUrl.origin) : null;
@@ -164,8 +164,7 @@ function route(request: NextRequest) {
     // NextURL puts the request's trailing slash back on any pathname it is given.
     const url = new URL(request.url);
     url.pathname = canonical;
-    // A translation held back until it is approved again comes back at its URL, so its redirect is temporary.
-    const isWithheld = isWithheldTranslation(canonical, request.nextUrl.pathname.split("/")[1]);
+    const isWithheld = isWithheldTranslation(canonical, prefixLocale ?? request.nextUrl.pathname.split("/")[1]);
     const redirect = NextResponse.redirect(url, isWithheld ? 307 : 308);
     return prefixLocale && !crawler ? withLocaleChoice(redirect, request, prefixLocale) : redirect;
   }

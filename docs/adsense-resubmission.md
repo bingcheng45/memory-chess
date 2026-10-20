@@ -213,7 +213,8 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
     Link header and no sitemap entry. The English guide keeps its bare self canonical, no alternates and its one
     sitemap entry, exactly as before PR 143.
   - The switch. `GUIDE_LOCALE_INDEXING` in `src/lib/seo/learn/translatedGuides.ts` holds `indexed: false` for
-    each locale. Setting one locale to `indexed: true` makes its translations indexable and lists them, with the
+    each locale. Setting one locale to `{ indexed: true, after: "adsense-approval" }` (or `"native-read"`) makes
+    its translations indexable and lists them, with the
     English guide, in the HTML `hreflang`, the Link header and the sitemap, all together. Turn a locale on only
     after AdSense approves the site, or after a native speaker has read that locale's guides.
   - What an edit costs. An English edit to one of the five guides, or to the chrome every guide shares, does not

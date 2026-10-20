@@ -35,7 +35,6 @@ function editFile(root: string, file: string, from: string, to: string): void {
 const editEnglishBlundering = (root: string) =>
   editFile(root, `${LEARN}/guides/${BLUNDERING}.ts`, '"A puzzle tells you two things', '"A chess puzzle tells you two things');
 
-/** The translator's side of a re-approval: the installed text, unchanged, imported against the new English and approved. */
 function reapprove(root: string, locale: string): void {
   const dir = `work/${locale}`;
   const installed = join(root, LEARN, "translations", locale);

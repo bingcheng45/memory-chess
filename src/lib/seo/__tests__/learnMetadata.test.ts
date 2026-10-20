@@ -27,7 +27,7 @@ describe("buildLearnPageMetadata", () => {
     expect(metadata.alternates).toEqual({
       canonical: "/learn/chess-memory-training",
     });
-    expect(metadata.robots).toBeUndefined();
+    expect("robots" in metadata).toBe(false);
   });
 
   const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } };
@@ -36,7 +36,7 @@ describe("buildLearnPageMetadata", () => {
     const metadata = buildLearnPageMetadata(pageFor("how-to-stop-blundering-in-chess"));
 
     expect(metadata.alternates).toEqual({ canonical: "/learn/how-to-stop-blundering-in-chess" });
-    expect(metadata.robots).toBeUndefined();
+    expect("robots" in metadata).toBe(false);
   });
 
   it("makes a translation noindex, follow and canonical to itself, with no alternates", () => {

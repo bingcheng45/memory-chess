@@ -100,11 +100,6 @@ const WITHHELD_BECAUSE = {
   button: "a button the guide names has a new label in the game",
 };
 
-/**
- * The guides of `locale` that are approved but no longer current, each with the reason. Each one is withheld: it
- * redirects to the English guide until a new translation is imported and approved. A stale chrome withholds every
- * guide, since each page draws its labels from it.
- */
 function withheldOf(repo, locale, bundle) {
   const isStale = ({ name, sourceHash }) => {
     const unit = bundle.units[name];
@@ -133,10 +128,6 @@ const withheldWarning = (locale, name, reason) =>
   `[${locale}] ${name}: ${reason}, so /${locale}/learn/${name} answers a 307 to the English guide until it is translated again. ` +
   `Run node scripts/articles-i18n.mjs --guides export <dir>, translate, then --guides import ${locale} <dir> and --guides approve ${locale}`;
 
-/**
- * Fails on what no reviewer approved and on a current translation that breaks a rule, withholds an approved
- * translation that is no longer current, and writes the translations left to serve to `repo.servedFile`.
- */
 function verifyGuides(repo, { readInstalled, failuresOf }) {
   const locales = repo.translatedLocales.filter((locale) => locale !== ENGLISH);
   const slugs = repo.units.map(({ name }) => name).filter((name) => name !== CHROME);

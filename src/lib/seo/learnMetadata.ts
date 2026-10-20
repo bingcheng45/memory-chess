@@ -9,6 +9,7 @@ export function buildLearnPageMetadata(page: LearnPage, locale: string = DEFAULT
   const { slug, title, description, publishedAt, updatedAt, keywords } = page.meta;
   const path = guidePath(slug);
   const locales = indexedLocalesOf(path);
+  const robots = robotsFor(path, locale);
   const imageUrl = `${localizedUrl(path, DEFAULT_LOCALE)}/opengraph-image`;
   const tags = [keywords.primary, ...keywords.secondary];
   const languages =
@@ -20,7 +21,7 @@ export function buildLearnPageMetadata(page: LearnPage, locale: string = DEFAULT
     title,
     description,
     alternates: { canonical: localizedPath(path, locale), ...languages },
-    robots: robotsFor(path, locale),
+    ...(robots ? { robots } : {}),
     openGraph: {
       title,
       description,

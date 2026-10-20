@@ -25,6 +25,8 @@ export type SearchResult = {
   readonly group: string | null;
   readonly score: number;
   readonly matchedQuestion: string | null;
+  /** Every query term is in the title. IDF falls for a word most pages use ("memory" here), so the score alone undersells this. */
+  readonly titleMatch: boolean;
 };
 
 const FIELD_WEIGHTS: Readonly<Record<SearchField, number>> = {
@@ -229,6 +231,7 @@ export function search(query: string, index: SearchIndex, limit = RESULT_LIMIT):
         group: doc.group,
         score: Math.round(score * 100) / 100,
         matchedQuestion: question?.text ?? null,
+        titleMatch: queryTerms.every((term) => doc.terms.title.includes(term)),
       },
     ];
   });
@@ -248,5 +251,5 @@ export type SearchOutcome = "none" | "weak" | "strong";
 
 export function outcomeOf(results: readonly SearchResult[]): SearchOutcome {
   if (results.length === 0) return "none";
-  return results[0].score < WEAK_SCORE ? "weak" : "strong";
+  return results[0].score >= WEAK_SCORE || results[0].titleMatch ? "strong" : "weak";
 }

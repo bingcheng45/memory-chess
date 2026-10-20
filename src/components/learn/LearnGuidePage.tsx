@@ -98,13 +98,13 @@ export default function LearnGuidePage({ page, siblings, titles }: LearnGuidePag
             </ol>
           </nav>
           <h1>{meta.h1}</h1>
+          <p className="lg-lede">{meta.description}</p>
           {page.comparison ? (
             <p className="lg-disclosure" data-compare-disclosure>
               {page.comparison.disclosure}{" "}
               <time dateTime={page.comparison.checkedAt}>{COPY.checked(formatDate(page.comparison.checkedAt))}</time>.
             </p>
           ) : null}
-          <p className="lg-lede">{meta.description}</p>
           <LearnQuickPlay />
           <ul className="lg-meta">
             <li>{LEARN_LEVELS[meta.level]}</li>

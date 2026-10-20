@@ -192,7 +192,7 @@ export type Comparison = {
   readonly checkedAt: string;
   /** Written per page: says Memory Chess publishes it. */
   readonly disclosure: string;
-  /** The products the page compares, in table order. */
+  /** The products the page compares. Structured data lists them alphabetically. */
   readonly products?: readonly [ComparedProduct, ComparedProduct, ...ComparedProduct[]];
 };
 

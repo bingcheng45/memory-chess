@@ -39,16 +39,17 @@ const nodeOfType = (doc: LearnDocument, type: string) =>
   guideStructuredData(toPage(doc))["@graph"].find((node) => (node as { "@type": string })["@type"] === type);
 
 describe("comparison page structured data", () => {
-  it("lists the compared products as an ItemList in table order, with a url only where the page opened", () => {
+  it("lists the compared products alphabetically as an ItemList, so the publisher is not ranked first, with a url only where the page opened", () => {
     expect(nodeOfType(comparisonDoc, "ItemList")).toEqual({
       "@type": "ItemList",
       "@id": "https://thememorychess.com/learn/trainers-compared#compared",
       name: "Trainers compared",
+      itemListOrder: "https://schema.org/ItemListOrderAscending",
       numberOfItems: 3,
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: "Memory Chess", url: "https://thememorychess.com" },
+        { "@type": "ListItem", position: 1, name: "An app whose listing is gone" },
         { "@type": "ListItem", position: 2, name: "Lichess coordinate trainer", url: "https://lichess.org/training/coordinate" },
-        { "@type": "ListItem", position: 3, name: "An app whose listing is gone" },
+        { "@type": "ListItem", position: 3, name: "Memory Chess", url: "https://thememorychess.com" },
       ],
     });
   });

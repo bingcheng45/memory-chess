@@ -1,11 +1,14 @@
 import { BRAND_ORGANIZATION, BRAND_WEBSITE, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/brand";
 import type { LearnPage } from ".";
-import { LEARN_AUTHOR, LEARN_LEVELS } from "./schema";
+import { type ComparedProduct, LEARN_AUTHOR, LEARN_LEVELS } from "./schema";
 
 const SITE_URL = "https://thememorychess.com";
 const HUB_URL = `${SITE_URL}/learn`;
 
 const guideUrl = (slug: string) => `${HUB_URL}/${slug}`;
+
+/** Alphabetical, so the publisher's own product is not listed first by default. */
+const byName = (a: ComparedProduct, b: ComparedProduct) => a.name.localeCompare(b.name, "en", { sensitivity: "base" });
 
 export function guideStructuredData(page: LearnPage) {
   const { meta } = page;
@@ -59,8 +62,9 @@ export function guideStructuredData(page: LearnPage) {
               "@type": "ItemList",
               "@id": `${url}#compared`,
               name: meta.title,
+              itemListOrder: "https://schema.org/ItemListOrderAscending",
               numberOfItems: page.comparison.products.length,
-              itemListElement: page.comparison.products.map((product, index) => ({
+              itemListElement: [...page.comparison.products].sort(byName).map((product, index) => ({
                 "@type": "ListItem",
                 position: index + 1,
                 name: product.name,

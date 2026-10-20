@@ -239,13 +239,13 @@ describe("a comparison page", () => {
     "memory-chess-vs-darksquares",
   ];
 
-  it.each(COMPARE_SLUGS)("%s says who publishes it and when it was checked, before the lede, and serves a table", async (slug) => {
+  it.each(COMPARE_SLUGS)("%s says who publishes it and when it was checked, right after the lede and before the play strip, and serves a table", async (slug) => {
     const markup = await guide(slug);
     const disclosure = markup.indexOf("data-compare-disclosure");
 
     expect(markup).toContain('<time dateTime="2026-10-20T00:00:00.000Z">Checked 20 October 2026</time>');
-    expect(disclosure).toBeGreaterThan(markup.indexOf("<h1"));
-    expect(disclosure).toBeLessThan(markup.indexOf('class="lg-lede"'));
+    expect(disclosure).toBeGreaterThan(markup.indexOf('class="lg-lede"'));
+    expect(disclosure).toBeLessThan(markup.indexOf('class="lg-quickplay"'));
     expect(texts(markup, "p").find((text) => text.includes("Checked 20 October 2026"))).toMatch(/^Memory Chess (publishes|makes)/);
     expect(markup).toContain("<table>");
     expect(markup).toContain('<a href="/learn#compare">Compare training tools</a>');
@@ -256,19 +256,19 @@ describe("a comparison page", () => {
     );
   });
 
-  it("lists the seven position-memory trainers in the ItemList in table order", async () => {
+  it("lists the seven position-memory trainers in the ItemList alphabetically, ignoring case", async () => {
     const list = graph(await guide("chess-position-memory-trainers-compared")).find((node) => node["@type"] === "ItemList") as {
       itemListElement: { name: string }[];
     };
 
     expect(list.itemListElement.map((item) => item.name)).toEqual([
-      "Memory Chess",
-      "DarkSquares Position Memory",
-      "ChessWorld memory trainer",
       "BoardWithin",
-      "chessO",
-      "Lucas Chess memory exercise",
       "Chess Memory (Android)",
+      "chessO",
+      "ChessWorld memory trainer",
+      "DarkSquares Position Memory",
+      "Lucas Chess memory exercise",
+      "Memory Chess",
     ]);
   });
 

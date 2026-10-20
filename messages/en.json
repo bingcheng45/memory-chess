@@ -44,6 +44,10 @@
       "dashboardLine": "Compare notes with other players.",
       "leaderboardLine": "Talk with the players on this leaderboard.",
       "aboutLine": "Prefer chat?"
+    },
+    "about": {
+      "facts": "Memory Chess is built and run by one developer, Bing Cheng. It first went live in March 2025 and plays in {languages} languages.",
+      "plays": "Players had finished {count}+ games by <time>{date}</time>."
     }
   },
   "home": {

@@ -44,6 +44,10 @@
       "dashboardLine": "Vesd össze a tapasztalataidat a többi játékossal.",
       "leaderboardLine": "Beszélgess a ranglista játékosaival.",
       "aboutLine": "Inkább csevegnél?"
+    },
+    "about": {
+      "facts": "A Memory Chesst egyetlen fejlesztő, Bing Cheng készíti és üzemelteti. 2025 márciusában indult, és {languages} nyelven játszható.",
+      "plays": "<time>{date}</time> állapot szerint a játékosok {count}+ játszmát fejeztek be."
     }
   },
   "home": {

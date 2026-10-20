@@ -44,6 +44,10 @@
       "dashboardLine": "Porovnejte postřehy s dalšími hráči.",
       "leaderboardLine": "Popovídejte si s hráči z tohoto žebříčku.",
       "aboutLine": "Raději chat?"
+    },
+    "about": {
+      "facts": "Memory Chess vyvíjí a provozuje jediný vývojář, Bing Cheng. Poprvé byl spuštěn v březnu 2025 a hraje se ve {languages} jazycích.",
+      "plays": "Do <time>{date}</time> hráči dohráli {count}+ her."
     }
   },
   "home": {

@@ -44,6 +44,10 @@
       "dashboardLine": "다른 플레이어와 노하우를 나눠 보세요.",
       "leaderboardLine": "이 순위표의 플레이어들과 이야기해 보세요.",
       "aboutLine": "채팅이 더 편하신가요?"
+    },
+    "about": {
+      "facts": "Memory Chess는 개발자 한 명, Bing Cheng이 만들고 운영합니다. 2025년 3월에 처음 공개되었고 {languages}개 언어로 즐길 수 있습니다.",
+      "plays": "<time>{date}</time>까지 플레이어들이 마친 게임은 {count}판이 넘습니다."
     }
   },
   "home": {

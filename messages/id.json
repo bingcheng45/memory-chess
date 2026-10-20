@@ -44,6 +44,10 @@
       "dashboardLine": "Bertukar catatan dengan pemain lain.",
       "leaderboardLine": "Ngobrol dengan para pemain di papan peringkat ini.",
       "aboutLine": "Lebih suka mengobrol?"
+    },
+    "about": {
+      "facts": "Memory Chess dibuat dan dikelola oleh satu pengembang, Bing Cheng. Situs ini pertama kali diluncurkan pada Maret 2025 dan bisa dimainkan dalam {languages} bahasa.",
+      "plays": "Hingga <time>{date}</time>, para pemain telah menyelesaikan {count}+ permainan."
     }
   },
   "home": {

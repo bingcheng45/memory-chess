@@ -17,6 +17,8 @@
 .lab-paper .lab-read-contents a { display: inline-block; padding: 6px 0; font: 500 15px/1.4 var(--lp-ui); text-decoration: none; }
 .lab-paper .lab-read-contents a:hover { text-decoration: underline; }
 
+.lab-paper .lab-read-facts { padding-top: 48px; font: 400 18px/1.7 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .lab-read-facts time { font-variant-numeric: tabular-nums; }
 .lab-paper .lab-read-sec { padding-top: 48px; }
 .lab-paper .lab-read-sec h2 { font: 650 28px/1.2 var(--lp-ui); letter-spacing: -0.015em; }
 .lab-paper .lab-prose { margin-top: 16px; font-size: 18px; line-height: 1.7; color: var(--lp-ink-2); }

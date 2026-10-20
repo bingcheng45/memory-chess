@@ -44,6 +44,10 @@
       "dashboardLine": "Troque ideias com outros jogadores.",
       "leaderboardLine": "Converse com os jogadores deste ranking.",
       "aboutLine": "Prefere conversar por chat?"
+    },
+    "about": {
+      "facts": "O Memory Chess é criado e mantido por um único desenvolvedor, Bing Cheng. Ele entrou no ar em março de 2025 e pode ser jogado em {languages} idiomas.",
+      "plays": "Até <time>{date}</time>, os jogadores tinham concluído {count}+ partidas."
     }
   },
   "home": {

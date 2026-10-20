@@ -44,6 +44,10 @@
       "dashboardLine": "Vergelijk ervaringen met andere spelers.",
       "leaderboardLine": "Praat mee met de spelers van dit klassement.",
       "aboutLine": "Liever chatten?"
+    },
+    "about": {
+      "facts": "Memory Chess wordt gebouwd en beheerd door één ontwikkelaar, Bing Cheng. Het ging in maart 2025 voor het eerst live en is te spelen in {languages} talen.",
+      "plays": "Op <time>{date}</time> hadden spelers {count}+ potjes uitgespeeld."
     }
   },
   "home": {

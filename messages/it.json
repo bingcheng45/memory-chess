@@ -44,6 +44,10 @@
       "dashboardLine": "Confronta i tuoi appunti con gli altri giocatori.",
       "leaderboardLine": "Chiacchiera con i giocatori di questa classifica.",
       "aboutLine": "Preferisci chattare?"
+    },
+    "about": {
+      "facts": "Memory Chess è sviluppato e gestito da un solo sviluppatore, Bing Cheng. È andato online per la prima volta a marzo 2025 e si gioca in {languages} lingue.",
+      "plays": "Al <time>{date}</time> i giocatori avevano completato {count}+ partite."
     }
   },
   "home": {

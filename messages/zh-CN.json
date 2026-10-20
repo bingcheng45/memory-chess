@@ -44,6 +44,10 @@
       "dashboardLine": "和其他玩家交流心得。",
       "leaderboardLine": "和这个排行榜上的玩家聊聊。",
       "aboutLine": "更喜欢聊天？"
+    },
+    "about": {
+      "facts": "Memory Chess 由一位开发者 Bing Cheng 独立开发和运营。它于 2025 年 3 月首次上线，支持 {languages} 种语言。",
+      "plays": "截至 <time>{date}</time>，玩家已完成超过 {count} 局游戏。"
     }
   },
   "home": {

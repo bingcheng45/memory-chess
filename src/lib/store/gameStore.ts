@@ -311,6 +311,7 @@ export const useGameStore = create<GameStore>()(
         };
         const rating = roundOutcomeOf(playerRatingOf(get()), {
           review: gameState.board?.kind === 'review',
+          blindfold: playing.config.blindfold === true,
           placedPieces: Object.keys(placed).length,
           day,
           freeSkipDay: get().freeSkipDay,

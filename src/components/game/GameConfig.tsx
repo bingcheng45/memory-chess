@@ -246,7 +246,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </p>
       </div>
 
-      <RatingPreview pieceCount={pieceCount} memorizeTime={memorizeTime} announceKey={announceKey} onSuggest={selectBoard} />
+      {!blindfold && <RatingPreview pieceCount={pieceCount} memorizeTime={memorizeTime} announceKey={announceKey} onSuggest={selectBoard} />}
 
       <button type="button" onClick={handleStart} data-start-round className="lab-btn lab-btn-primary lab-config-start">
         {t('config.start')}

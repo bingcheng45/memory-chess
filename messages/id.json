@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Latih ingatan dan visualisasi catur Anda",
-      "freeToPlay": "Gratis dimainkan, tanpa perlu akun. Anda juga bisa membandingkan skor di <link>papan peringkat</link>."
+      "freeToPlay": "Gratis dimainkan, tanpa perlu akun. Anda juga bisa membandingkan skor di <link>papan peringkat</link>.",
+      "boardGame": "Mencari permainan papan kayu Memory Chess? <link>Baca aturannya</link>."
     },
     "cta": {
       "leaderboard": "Lihat papan peringkat",
@@ -973,7 +974,9 @@
         "loss": "Paling banyak <num>−{value}</num>",
         "announce": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}. Jika kamu gagal, paling banyak −{loss}.",
         "announceProvisional": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}."
-      }
+      },
+      "blindfold": "Tutup mata",
+      "blindfoldHint": "Pelajari posisi sebagai notasi, tanpa bidak di papan."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1090,8 @@
       "savedToast": {
         "message": "Ronde tersimpan. Statistik terbarumu ada tepat di bawah.",
         "action": "Lihat"
-      }
+      },
+      "blindfoldRound": "Ronde tutup mata: kamu mempelajari posisi sebagai notasi."
     },
     "comparison": {
       "title": "Tinjau posisi Anda"
@@ -1170,6 +1174,12 @@
         "bishop": "Gajah",
         "knight": "Kuda",
         "pawn": "Pion"
+      },
+      "notation": {
+        "label": "Posisi dalam notasi",
+        "white": "Putih",
+        "black": "Hitam",
+        "pawns": "petak saja berarti pion"
       }
     }
   },
@@ -1208,6 +1218,13 @@
       "setting": "{pieces, plural, other {# bidak}} · {seconds} dtk untuk menghafal",
       "resetsAtUtc": "Direset pukul {utc} UTC",
       "resetsAt": "Direset pukul {utc} UTC ({local} waktu Anda), dalam {timeLeft}"
+    },
+    "mode": {
+      "label": "Mode belajar",
+      "board": "Papan",
+      "blindfold": "Tutup mata",
+      "note": "Ronde tutup mata dipelajari sebagai notasi tanpa bidak di papan, jadi punya papan peringkat sendiri.",
+      "loading": "Memuat papan peringkat tutup mata."
     }
   },
   "country": {

@@ -1,6 +1,6 @@
 "use client";
 
-export const DEFAULT_SOUND_VOLUME = 0.1;
+export const DEFAULT_SOUND_VOLUME = 0.05;
 
 let soundEnabled = true;
 let volume = DEFAULT_SOUND_VOLUME;
@@ -23,26 +23,45 @@ type SoundName = keyof typeof SOUND_URLS;
 /** The sounds a round and its result screen play after the Start round click. */
 const ROUND_SOUNDS: readonly SoundName[] = ["success", "timer", "timerEnd", "failure"];
 
-const audioByUrl = new Map<string, HTMLAudioElement>();
-let currentTimerAudio: HTMLAudioElement | null = null;
+// iOS ignores an audio element's volume and plays it at full loudness, so every sound goes through one gain node.
+let output: { context: AudioContext; gain: GainNode } | null = null;
+const bufferByUrl = new Map<string, Promise<AudioBuffer | null>>();
+let currentTimer: AudioBufferSourceNode | null = null;
+// Bumped on every timer play and stop, so a timer still downloading never starts after it was stopped or replaced.
+let timerPlay = 0;
 
-const audioFor = (soundName: SoundName): HTMLAudioElement => {
-  const url = SOUND_URLS[soundName];
-  const cached = audioByUrl.get(url);
-  if (cached) return cached;
-
-  const audio = new Audio(url);
-  audio.volume = volume;
-  audio.addEventListener("error", () => {
-    const error = audio.error;
-    console.error(`Error loading sound ${soundName}:`, error ? `${error.code} - ${error.message}` : "Unknown error");
-    audioByUrl.delete(url);
-  });
-  audioByUrl.set(url, audio);
-  return audio;
+const outputFor = (): { context: AudioContext; gain: GainNode } | null => {
+  if (output) return output;
+  if (typeof AudioContext === "undefined") return null;
+  const context = new AudioContext();
+  const gain = context.createGain();
+  gain.gain.value = volume;
+  gain.connect(context.destination);
+  output = { context, gain };
+  return output;
 };
 
-// Browsers without the User Activation API fall through to play(), whose rejection retries on the next click.
+const bufferFor = (context: AudioContext, soundName: SoundName): Promise<AudioBuffer | null> => {
+  const url = SOUND_URLS[soundName];
+  const cached = bufferByUrl.get(url);
+  if (cached) return cached;
+
+  const loading = fetch(url)
+    .then((response) => {
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      return response.arrayBuffer();
+    })
+    .then((data) => context.decodeAudioData(data))
+    .catch((error: unknown) => {
+      console.error(`Error loading sound ${soundName}:`, error);
+      bufferByUrl.delete(url);
+      return null;
+    });
+  bufferByUrl.set(url, loading);
+  return loading;
+};
+
+// Browsers without the User Activation API fall through to resume(); a context it cannot start yet holds the sound until it can.
 const hasUserActivation = (): boolean => navigator.userActivation?.hasBeenActive ?? true;
 
 const playOnNextInteraction = (soundName: SoundName): void => {
@@ -58,7 +77,7 @@ const playOnNextInteraction = (soundName: SoundName): void => {
 };
 
 /**
- * Play a sound effect. Its file downloads on the first play, and later plays reuse that element.
+ * Play a sound effect. Its file downloads and decodes on the first play, and later plays reuse it.
  */
 export const playSound = (soundName: SoundName): void => {
   if (typeof window === "undefined" || !soundEnabled) return;
@@ -68,21 +87,20 @@ export const playSound = (soundName: SoundName): void => {
     return;
   }
 
+  const out = outputFor();
+  if (!out) return;
   if (soundName === "timer") stopTimerSound();
+  const play = soundName === "timer" ? ++timerPlay : null;
 
-  const cached = audioFor(soundName);
-  // A clone lets a sound overlap its own earlier play, as when two clicks land close together.
-  const sound = cached.paused ? cached : (cached.cloneNode() as HTMLAudioElement);
-  sound.volume = volume;
-  sound.currentTime = 0;
-  if (soundName === "timer") currentTimerAudio = sound;
-
-  sound.play()?.catch((err) => {
-    console.error(`Error playing sound ${soundName}:`, err);
-    const playOnInteraction = () => {
-      sound.play().catch((e) => console.error("Still failed to play sound:", e));
-    };
-    document.addEventListener("click", playOnInteraction, { once: true });
+  out.context.resume().catch((err: unknown) => console.error("Error resuming sound:", err));
+  void bufferFor(out.context, soundName).then((buffer) => {
+    if (!buffer || !soundEnabled || (play !== null && play !== timerPlay)) return;
+    // A new source per play lets a sound overlap its own earlier play, as when two clicks land close together.
+    const source = out.context.createBufferSource();
+    source.buffer = buffer;
+    source.connect(out.gain);
+    source.start();
+    if (play !== null) currentTimer = source;
   });
 };
 
@@ -91,21 +109,18 @@ export const playSound = (soundName: SoundName): void => {
  */
 export const warmRoundSounds = (): void => {
   if (typeof window === "undefined" || !soundEnabled) return;
-  for (const soundName of ROUND_SOUNDS) {
-    const audio = audioFor(soundName);
-    audio.preload = "auto";
-    audio.load();
-  }
+  const out = outputFor();
+  if (!out) return;
+  for (const soundName of ROUND_SOUNDS) void bufferFor(out.context, soundName);
 };
 
 /**
  * Stop the currently playing timer sound, if any.
  */
 export const stopTimerSound = (): void => {
-  if (!currentTimerAudio) return;
-  currentTimerAudio.pause();
-  currentTimerAudio.currentTime = 0;
-  currentTimerAudio = null;
+  timerPlay += 1;
+  currentTimer?.stop();
+  currentTimer = null;
 };
 
 /**
@@ -125,9 +140,7 @@ export const isSoundEnabled = (): boolean => soundEnabled;
  */
 export const setVolume = (newVolume: number): void => {
   volume = Math.max(0, Math.min(1, newVolume));
-  audioByUrl.forEach((audio) => {
-    audio.volume = volume;
-  });
+  if (output) output.gain.gain.value = volume;
 };
 
 /**

@@ -69,6 +69,8 @@ export interface RoundCapture {
   /** Kept on the newest PLACEMENT_KEEP rounds only; older rounds lose both fields together. */
   readonly placements?: PlacementLog["placements"];
   readonly removals?: number;
+  /** Set on a round studied as notation over an empty board; absent on a board round. */
+  readonly blindfold?: true;
 }
 
 export interface RoundRecordV2 extends Omit<RoundRecordV1, "v">, RoundCapture {

@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory chess game · chess memory trainer",
-      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>."
+      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
+      "boardGame": "Looking for the wooden Memory Chess board game? <link>Read its rules</link>."
     },
     "cta": {
       "leaderboard": "View leaderboard",
@@ -973,7 +974,9 @@
         "loss": "At most <num>−{value}</num>",
         "announce": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}. If you miss, at most −{loss}.",
         "announceProvisional": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}."
-      }
+      },
+      "blindfold": "Blindfold",
+      "blindfoldHint": "Study the position as notation, with no pieces on the board."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1090,8 @@
       "savedToast": {
         "message": "Round saved. Your updated stats are just below.",
         "action": "Show me"
-      }
+      },
+      "blindfoldRound": "Blindfold round: you studied the position as notation."
     },
     "comparison": {
       "title": "Review your position"
@@ -1170,6 +1174,12 @@
         "bishop": "Bishop",
         "knight": "Knight",
         "pawn": "Pawn"
+      },
+      "notation": {
+        "label": "The position in notation",
+        "white": "White",
+        "black": "Black",
+        "pawns": "a square alone is a pawn"
       }
     }
   },
@@ -1208,6 +1218,13 @@
       "setting": "{pieces, plural, one {# piece} other {# pieces}} · {seconds} s to study",
       "resetsAtUtc": "Resets at {utc} UTC",
       "resetsAt": "Resets at {utc} UTC ({local} your time), in {timeLeft}"
+    },
+    "mode": {
+      "label": "Study mode",
+      "board": "Board",
+      "blindfold": "Blindfold",
+      "note": "Blindfold rounds are studied as notation, with no pieces on the board, so they rank on their own boards.",
+      "loading": "Loading the blindfold board."
     }
   },
   "country": {

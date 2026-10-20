@@ -20,7 +20,7 @@ import { PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 import { warmResultDeltas } from '@/components/game/resultDeltasWarm';
 import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
-import { ROUND_PARAMS } from '@/lib/game/roundLink';
+import { isBlindfoldSearch, ROUND_PARAMS } from '@/lib/game/roundLink';
 import { GAME_CONFIG_RULES, parseGameSettings } from '@/lib/game/configPrefill';
 import '@/components/game/game-lab.css';
 // Loaded with the page, not with the result figures the round warms: Next commits a stylesheet a lazy chunk brings
@@ -57,14 +57,6 @@ const OPEN_SET_BOARD: Record<SetBoardSource, () => Promise<SetBoardOpen>> = {
     }),
 };
 
-const FIRST_ROUND_READ_LIMIT_MS = 1_500;
-
-const isFirstEverRound = (): Promise<boolean> =>
-  import('@/lib/lab/storage').then(async ({ labStore }) => {
-    const store = labStore();
-    return store !== null && (await store.isAvailable()) && (await store.readSummary()).rounds === 0;
-  });
-
 /**
  * Pins the page while a round is memorised or placed. Pinning the scrolling
  * element, rather than only hiding its overflow, is what stops iOS
@@ -89,7 +81,7 @@ function PinnedPage() {
   return null;
 }
 
-type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource };
+type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource; blindfold: boolean };
 
 // The query is read off the live location rather than via useSearchParams,
 // which would bail /game out of static rendering and serve an empty page.
@@ -107,7 +99,8 @@ function readUrlRound(): UrlRound | null {
     },
     GAME_CONFIG_RULES,
   );
-  return settings && { ...settings, source };
+  // A set board is the same position for every player, studied on the board.
+  return settings && { ...settings, source, blindfold: !isSetBoardSource(source) && isBlindfoldSearch(window.location.search) };
 }
 
 /** A refresh then opens the configuration screen instead of restarting the round. */
@@ -118,6 +111,12 @@ function clearRoundParams(): void {
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
 }
+
+/** A board round is started with the same arguments it always was; only a blindfold round adds the mode. */
+const blindfoldArg = (blindfold: boolean | undefined) => (blindfold ? ([true] as const) : ([] as const));
+type StartRound = (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard, blindfold?: boolean) => void;
+const startAs = (start: StartRound, blindfold: boolean | undefined, pieceCount: number, memorizeTime: number, source: RoundSource) =>
+  blindfold ? start(pieceCount, memorizeTime, source, undefined, true) : start(pieceCount, memorizeTime, source);
 
 const subscribeNothing = () => () => {};
 
@@ -151,7 +150,6 @@ function GamePageContent() {
   // Until today's board is read, a daily link shows the veiled board with Start held, never the configuration form.
   const [dailyRead, setDailyRead] = useState(false);
   const [triedToday, setTriedToday] = useState(false);
-  const [firstRoundKnown, setFirstRoundKnown] = useState(false);
   // A daily round's record being written, before /daily takes over.
   const [savingDaily, setSavingDaily] = useState(false);
   // A round the player starts by hand wins over a set board still being read.
@@ -162,7 +160,7 @@ function GamePageContent() {
   const dailyPending = hydrated && urlRound?.source === 'daily' && !dailyRead && round.phase === 'idle' && !refused;
   // A try already spent today is refused whatever the record says, so the board is never shown before the notice.
   const opening = dailyPending && !triedToday;
-  const linkPending = hydrated && !!urlRound && !isSetBoardSource(urlRound.source) && !firstRoundKnown && round.phase === 'idle';
+  const linkPending = hydrated && !!urlRound && !isSetBoardSource(urlRound.source) && round.phase === 'idle';
 
   // Memorising and placing are played without scrolling: the board is sized
   // from the room that is actually left, so the screen holds exactly what
@@ -192,24 +190,13 @@ function GamePageContent() {
     clearRoundParams();
     if (!urlRound) return;
     const { source } = urlRound;
-    // StrictMode runs this twice; only the live run starts the board, or the second read would refuse it.
-    let live = true;
     if (!isSetBoardSource(source)) {
-      const open = (first: boolean) => {
-        if (!live) return;
-        live = false;
-        window.clearTimeout(limit);
-        setFirstRoundKnown(true);
-        (first ? prepareGame : startGame)(urlRound.pieceCount, urlRound.memorizeTime, source);
-      };
-      const limit = window.setTimeout(() => open(false), FIRST_ROUND_READ_LIMIT_MS);
-      void isFirstEverRound().catch(() => false).then(open);
-      return () => {
-        live = false;
-        window.clearTimeout(limit);
-      };
+      startAs(prepareGame, urlRound.blindfold, urlRound.pieceCount, urlRound.memorizeTime, source);
+      return;
     }
 
+    // StrictMode runs this twice; only the live run starts the board, or the second read would refuse it.
+    let live = true;
     OPEN_SET_BOARD[source]()
       .then((opened) => {
         if (!live || startedByHandRef.current) return;
@@ -272,14 +259,17 @@ function GamePageContent() {
     begin();
   };
 
-  const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) =>
-    replay(() => startGame(pieceCount, memorizeTime, source));
+  // Next round and the lab card's suggestions keep the mode of the round just played.
+  const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
+    const blindfold = round.phase !== 'idle' && round.config.blindfold === true;
+    replay(() => startAs(startGame, blindfold, pieceCount, memorizeTime, source));
+  };
 
   // The player has just pressed a button, so the new board counts in over the veil without a second one.
   const handleTryAgain = () => {
     if (round.phase === 'idle') return;
-    const { pieceCount, studyMs } = round.config;
-    replay(() => countInGame(pieceCount, studyMs / 1000, 'try_again'));
+    const { pieceCount, studyMs, blindfold } = round.config;
+    replay(() => countInGame(pieceCount, studyMs / 1000, 'try_again', ...blindfoldArg(blindfold)));
   };
 
   const handleNewGame = () => {
@@ -289,10 +279,10 @@ function GamePageContent() {
     resetGame();
   };
 
-  const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
+  const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource, blindfold = false) => {
     playSound('click');
     startedByHandRef.current = true;
-    countInGame(pieceCount, memorizeTime, source);
+    countInGame(pieceCount, memorizeTime, source, ...blindfoldArg(blindfold));
   };
 
   const renderGameContent = () => {
@@ -340,7 +330,7 @@ function GamePageContent() {
         const { pieceCount, studyMs, board } = round.config;
         const memorizeTime = studyMs / 1000;
         if (board) return activeRound(round, { kind: 'daily', day: board.kind === 'daily' ? board.day : utcDayOf(Date.now()), pieceCount, memorizeTime });
-        return activeRound(round, round.phase === 'ready' ? { kind: 'firstRound', pieceCount, memorizeTime } : null);
+        return activeRound(round, round.phase === 'ready' ? { kind: 'link', pieceCount, memorizeTime } : null);
       }
 
       case 'study':

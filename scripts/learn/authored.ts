@@ -120,7 +120,7 @@ export const AUTHORED: Readonly<Record<string, Authored>> = {
       "Do I need to be strong to train blindfold?",
       "How long does each blindfold stage take?",
     ],
-    gameWhy: "Two kings and ten seconds is stage one of the plan: hold both squares with nothing else on the board.",
+    gameWhy: "Blindfold mode shows the two kings as notation, never on the board, so you picture both squares before placing them.",
     articles: {
       "judit-polgar": {
         label: "How Judit Polgár played blindfold chess at age seven",

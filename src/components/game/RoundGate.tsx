@@ -5,7 +5,7 @@ import { useFormatter, useTranslations } from 'next-intl';
 
 export type GateFacts =
   | { readonly kind: 'daily'; readonly day: string; readonly pieceCount: number; readonly memorizeTime: number }
-  | { readonly kind: 'firstRound'; readonly pieceCount: number; readonly memorizeTime: number };
+  | { readonly kind: 'link'; readonly pieceCount: number; readonly memorizeTime: number };
 
 /** "Daily board · Wednesday, 14 October", in the board's own UTC day. */
 export function useGateDate(gate: GateFacts | null): string | null {

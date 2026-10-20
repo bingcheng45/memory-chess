@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Allena la tua memoria e visualizzazione negli scacchi",
-      "freeToPlay": "Gratis e senza bisogno di un account. Puoi anche confrontare il tuo punteggio nella <link>classifica</link>."
+      "freeToPlay": "Gratis e senza bisogno di un account. Puoi anche confrontare il tuo punteggio nella <link>classifica</link>.",
+      "boardGame": "Cerchi il gioco da tavolo in legno Memory Chess? <link>Leggi le regole</link>."
     },
     "cta": {
       "leaderboard": "Vedi la classifica",
@@ -973,7 +974,9 @@
         "loss": "Al massimo <num>−{value}</num>",
         "announce": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}. Se sbagli, al massimo −{loss}.",
         "announceProvisional": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}."
-      }
+      },
+      "blindfold": "Alla cieca",
+      "blindfoldHint": "Studia la posizione in notazione, senza pezzi sulla scacchiera."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1090,8 @@
       "savedToast": {
         "message": "Partita salvata. Le tue statistiche aggiornate sono qui sotto.",
         "action": "Mostra"
-      }
+      },
+      "blindfoldRound": "Partita alla cieca: hai studiato la posizione in notazione."
     },
     "comparison": {
       "title": "Rivedi la tua posizione"
@@ -1170,6 +1174,12 @@
         "bishop": "Alfiere",
         "knight": "Cavallo",
         "pawn": "Pedone"
+      },
+      "notation": {
+        "label": "La posizione in notazione",
+        "white": "Bianco",
+        "black": "Nero",
+        "pawns": "una casa da sola è un pedone"
       }
     }
   },
@@ -1208,6 +1218,13 @@
       "setting": "{pieces, plural, one {# pezzo} many {# pezzi} other {# pezzi}} · {seconds} s per studiare",
       "resetsAtUtc": "Si azzera alle {utc} UTC",
       "resetsAt": "Si azzera alle {utc} UTC (le {local} da te), tra {timeLeft}"
+    },
+    "mode": {
+      "label": "Modalità di studio",
+      "board": "Scacchiera",
+      "blindfold": "Alla cieca",
+      "note": "Le partite alla cieca si studiano in notazione, senza pezzi sulla scacchiera, quindi hanno classifiche proprie.",
+      "loading": "Caricamento della classifica alla cieca."
     }
   },
   "country": {

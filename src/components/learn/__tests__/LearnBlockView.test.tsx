@@ -1,7 +1,8 @@
 import type { ComponentProps } from "react";
-import { render, screen, within } from "@/test-utils/intl";
+import { fireEvent, render, screen, within } from "@/test-utils/intl";
 import LearnBlockView, { type TitleLookup } from "@/components/learn/LearnBlockView";
 import type { LearnBlock } from "@/lib/seo/learn/schema";
+import { AFFILIATE } from "@/lib/affiliate/amazon";
 
 jest.mock("next/link", () => {
   function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
@@ -160,5 +161,44 @@ describe("LearnBlockView", () => {
 
     expect(screen.getByRole("link", { name: "A study" })).toHaveAttribute("target", "_blank");
     expect(screen.getByText("Recall.")).toBeInTheDocument();
+  });
+
+  describe("an Amazon block", () => {
+    const block: LearnBlock = { kind: "affiliate", label: "Find the set on Amazon" };
+
+    afterEach(() => {
+      jest.restoreAllMocks();
+      Reflect.deleteProperty(window, "gtag");
+    });
+
+    it("draws nothing, not even the set, while the product link is empty", () => {
+      jest.replaceProperty(AFFILIATE, "amazonProductUrl", "");
+
+      expect(draw(block).innerHTML).toBe("");
+    });
+
+    it("links the tagged product beside the disclosure and reports the click", () => {
+      const gtag = jest.fn();
+      window.gtag = gtag;
+      const box = draw(block);
+      const link = screen.getByRole("link", { name: /Find the set on Amazon/ });
+
+      expect(link).toHaveAttribute("href", "https://link.amazon/B02uoulyl");
+      expect(link).toHaveAttribute("rel", "sponsored nofollow noopener");
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link.parentElement?.textContent).toContain("As an Amazon Associate, Memory Chess earns from qualifying purchases.");
+      expect(box.querySelector("svg.wg-set")).not.toBeNull();
+
+      fireEvent.click(link);
+
+      expect(gtag.mock.calls).toEqual([["event", "affiliate_click", { store: "amazon" }]]);
+    });
+  });
+
+  it("holds the rules demo's space and shows its caption before the demo loads", () => {
+    const box = draw({ kind: "rulesDemo", caption: "A two-player game, step by step." });
+
+    expect(box.querySelector("figure .wg-stage")).not.toBeNull();
+    expect(box.querySelector("figcaption")?.textContent).toBe("A two-player game, step by step.");
   });
 });

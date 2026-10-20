@@ -3,10 +3,11 @@ import { join } from "node:path";
 import { ARTICLE_SLUGS } from "@/lib/articles";
 import { LEARN_GUIDES } from "../guides";
 import { EN_LEARN_PAGES, LEARN_SLUGS, RESERVED_LEARN_SLUGS, groupPages, toPage } from "..";
+import { guidePath } from "../links";
 import type { BodyBlock, InlineLink, LearnDocument, Rich } from "../schema";
 import { readingMinutes } from "../text";
 
-const SITE_PATHS = ["/settings", "/game", "/dashboard", "/learn", "/articles"];
+const SITE_PATHS = ["/", "/settings", "/game", "/dashboard", "/learn", "/articles"];
 
 const blocks = (doc: LearnDocument): BodyBlock[] => doc.sections.flatMap((section) => section.blocks);
 const linksIn = (rich: Rich): InlineLink[] => (typeof rich === "string" ? [] : rich.filter((part) => typeof part !== "string"));
@@ -52,8 +53,8 @@ describe("derived page values", () => {
       "how-to-stop-blundering-in-chess": 6,
       "why-puzzle-rating-doesnt-transfer-to-games": 6,
       "chess-coordinates-practice": 5,
-      "chess-visualization-exercises": 5,
-      "how-to-see-the-whole-board-in-chess": 5,
+      "chess-visualization-exercises": 6,
+      "how-to-see-the-whole-board-in-chess": 6,
       "chess-calculation-exercises-for-beginners": 7,
       "blindfold-chess-training-for-beginners": 8,
       "chess-memory-training": 7,
@@ -62,6 +63,7 @@ describe("derived page values", () => {
       "20-minute-daily-chess-study-plan": 5,
       "how-to-analyze-chess-games-for-beginners": 6,
       "how-many-chess-puzzles-a-day": 4,
+      "how-to-play-memory-chess-board-game": 5,
       "chess-position-memory-trainers-compared": 5,
       "lichess-vs-chess-com-visualization-training": 3,
       "memory-chess-vs-lichess-coordinate-trainer": 3,
@@ -98,7 +100,7 @@ describe("hub grouping", () => {
         "visualization",
         ["chess-visualization-exercises", "chess-calculation-exercises-for-beginners", "blindfold-chess-training-for-beginners"],
       ],
-      ["memory", ["chess-memory-training", "chess-pattern-recognition-drills"]],
+      ["memory", ["chess-memory-training", "chess-pattern-recognition-drills", "how-to-play-memory-chess-board-game"]],
       [
         "practice",
         ["20-minute-daily-chess-study-plan", "how-to-analyze-chess-games-for-beginners", "how-many-chess-puzzles-a-day"],
@@ -149,7 +151,7 @@ describe("rules the types cannot hold", () => {
         return [];
       });
       const targets = [
-        ...inline.filter(({ href }) => !SITE_PATHS.includes(href)).map(({ href }) => href),
+        ...inline.filter(({ href }) => !SITE_PATHS.includes(href) && !LEARN_SLUGS.map(guidePath).includes(href)).map(({ href }) => href),
         ...doc.end.flatMap((block) => {
           if (block.kind === "furtherReading") {
             return block.items

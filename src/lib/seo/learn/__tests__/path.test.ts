@@ -33,7 +33,7 @@ describe("the Learn path", () => {
           "3.3 blindfold-chess-training-for-beginners",
         ],
       ],
-      [4, "Memory and patterns", ["4.1 chess-memory-training", "4.2 chess-pattern-recognition-drills"]],
+      [4, "Memory and patterns", ["4.1 chess-memory-training", "4.2 chess-pattern-recognition-drills", "4.3 how-to-play-memory-chess-board-game"]],
       [
         5,
         "Practice and review",

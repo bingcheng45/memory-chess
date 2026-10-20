@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: 체스 기억력과 시각화 능력을 훈련하세요",
-      "freeToPlay": "계정 없이 무료로 즐길 수 있습니다. <link>리더보드</link>에서 점수를 비교할 수도 있습니다."
+      "freeToPlay": "계정 없이 무료로 즐길 수 있습니다. <link>리더보드</link>에서 점수를 비교할 수도 있습니다.",
+      "boardGame": "나무로 된 보드게임 Memory Chess를 찾으시나요? <link>규칙 보기</link>."
     },
     "cta": {
       "leaderboard": "리더보드 보기",
@@ -973,7 +974,9 @@
         "loss": "최대 <num>−{value}</num>",
         "announce": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}. 실패하면 최대 −{loss}.",
         "announceProvisional": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}."
-      }
+      },
+      "blindfold": "블라인드",
+      "blindfoldHint": "보드에 기물 없이 기보로 포지션을 익히세요."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1090,8 @@
       "savedToast": {
         "message": "라운드가 저장됐어요. 업데이트된 기록은 바로 아래에 있어요.",
         "action": "보기"
-      }
+      },
+      "blindfoldRound": "블라인드 라운드: 포지션을 기보로 익혔습니다."
     },
     "comparison": {
       "title": "내 국면 되돌아보기"
@@ -1170,6 +1174,12 @@
         "bishop": "비숍",
         "knight": "나이트",
         "pawn": "폰"
+      },
+      "notation": {
+        "label": "기보로 적은 포지션",
+        "white": "백",
+        "black": "흑",
+        "pawns": "칸만 적힌 것은 폰"
       }
     }
   },
@@ -1208,6 +1218,13 @@
       "setting": "{pieces, plural, other {기물 #개}} · 암기 {seconds}초",
       "resetsAtUtc": "UTC {utc}에 초기화",
       "resetsAt": "UTC {utc}(현지 시간 {local})에 초기화, {timeLeft} 남음"
+    },
+    "mode": {
+      "label": "학습 방식",
+      "board": "보드",
+      "blindfold": "블라인드",
+      "note": "블라인드 라운드는 보드에 기물 없이 기보로 익히므로 별도의 순위표가 있습니다.",
+      "loading": "블라인드 순위표를 불러오는 중입니다."
     }
   },
   "country": {

@@ -106,7 +106,8 @@ export type LearnIntro = {
   readonly audience: readonly string[];
 };
 
-export type GameSetup = { readonly pieceCount: number; readonly memorizeTime: number };
+/** `blindfold` opens the round with the position shown as notation instead of on the board. */
+export type GameSetup = { readonly pieceCount: number; readonly memorizeTime: number; readonly blindfold?: true };
 
 export type BoardArrow = { readonly from: Square; readonly to: Square; readonly kind: "attack" | "defend" | "pin" };
 export type BoardMark = { readonly square: Square; readonly kind: "ring" };
@@ -151,6 +152,10 @@ export type BodyBlock =
       readonly rows: readonly { readonly label: string; readonly cells: readonly string[] }[];
     }
   | { readonly kind: "plan"; readonly steps: readonly PlanStep[] }
+  /** The wooden Memory Chess set and its Amazon link. Draws nothing while the link in `AFFILIATE` is empty. */
+  | { readonly kind: "affiliate"; readonly label: string }
+  /** The animated wooden-board game. The written rules must also be on the page, as the demo loads on scroll. */
+  | { readonly kind: "rulesDemo"; readonly caption: string }
   | CtaBlock;
 
 export type CtaTarget =

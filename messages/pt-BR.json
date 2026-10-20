@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Treine sua memória e visualização no xadrez",
-      "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>."
+      "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>.",
+      "boardGame": "Procurando o jogo de tabuleiro de madeira Memory Chess? <link>Leia as regras</link>."
     },
     "cta": {
       "leaderboard": "Ver o ranking",
@@ -973,7 +974,9 @@
         "loss": "No máximo <num>−{value}</num>",
         "announce": "Rating do tabuleiro {board}. Seu rating {rating}. Precisão esperada {expected}%. Se você acertar, até +{gain}. Se você errar, no máximo −{loss}.",
         "announceProvisional": "Rating do tabuleiro {board}. Seu rating {rating}. Precisão esperada {expected}%. Se você acertar, até +{gain}."
-      }
+      },
+      "blindfold": "Às cegas",
+      "blindfoldHint": "Estude a posição em notação, sem peças no tabuleiro."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1090,8 @@
       "savedToast": {
         "message": "Rodada salva. Suas estatísticas atualizadas estão logo abaixo.",
         "action": "Ver"
-      }
+      },
+      "blindfoldRound": "Rodada às cegas: você estudou a posição em notação."
     },
     "comparison": {
       "title": "Revise sua posição"
@@ -1170,6 +1174,12 @@
         "bishop": "Bispo",
         "knight": "Cavalo",
         "pawn": "Peão"
+      },
+      "notation": {
+        "label": "A posição em notação",
+        "white": "Brancas",
+        "black": "Pretas",
+        "pawns": "uma casa sozinha é um peão"
       }
     }
   },
@@ -1208,6 +1218,13 @@
       "setting": "{pieces, plural, one {# peça} many {# peças} other {# peças}} · {seconds} s para estudar",
       "resetsAtUtc": "Reinicia às {utc} UTC",
       "resetsAt": "Reinicia às {utc} UTC ({local} no seu horário), em {timeLeft}"
+    },
+    "mode": {
+      "label": "Modo de estudo",
+      "board": "Tabuleiro",
+      "blindfold": "Às cegas",
+      "note": "Rodadas às cegas são estudadas em notação, sem peças no tabuleiro, por isso têm rankings próprios.",
+      "loading": "Carregando o ranking às cegas."
     }
   },
   "country": {

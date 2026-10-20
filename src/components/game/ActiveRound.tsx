@@ -7,6 +7,7 @@ import type { RoundState } from '@/lib/round/round';
 import { ROUND_CONTROLS } from '@/lib/round/controls';
 import { RefusalAnnouncement, RoundBoard, RoundPalette } from '@/components/round/RoundBoard';
 import { RoundControls } from '@/components/round/RoundControls';
+import { StudyNotation } from '@/components/round/StudyNotation';
 import { clockFace, RoundHead } from '@/components/round/RoundHead';
 import { useCountdown } from '@/components/round/useCountdown';
 import { usePreloadPieces } from '@/components/round/usePreloadPieces';
@@ -42,6 +43,8 @@ export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit 
   const veiled = round.phase === 'idle' || round.phase === 'ready' || round.phase === 'countdown';
   const studyMs = round.phase === 'idle' ? (gate?.memorizeTime ?? 0) * 1000 : round.config.studyMs;
   const controlsPhase = round.phase === 'idle' ? 'ready' : round.phase;
+  const notation = round.phase === 'study' && round.config.blindfold ? round.target : null;
+  const boardHidden = veiled || notation !== null;
 
   const heading = veiled ? (gateDate ?? t('phaseStudy')) : round.phase === 'study' ? t('phaseStudy') : t('phaseRebuild');
   const announcement =
@@ -68,9 +71,10 @@ export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit 
         board={
           <div className="round-stage" data-veiled={veiled || undefined}>
             {/* The empty board under the veil is a picture of what comes, not something to read square by square. */}
-            <div className="round-stage-board" aria-hidden={veiled || undefined} inert={veiled || undefined}>
+            <div className="round-stage-board" aria-hidden={boardHidden || undefined} inert={boardHidden || undefined}>
               <RoundBoard state={round} dispatch={dispatch} copy={COPY} />
             </div>
+            {notation && <StudyNotation position={notation} />}
             {veiled && <RoundGate facts={gate} count={round.phase === 'countdown' ? count : null} ready={round.phase === 'ready'} onStart={onStart} />}
           </div>
         }

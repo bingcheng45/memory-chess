@@ -6,7 +6,7 @@ jest.mock("next-intl/server", () => ({
 
 jest.mock("@/components/reference/ContactReference", () => () => null);
 
-const SOCIAL_IMAGE_URL = "https://thememorychess.com/social-preview.png";
+const SOCIAL_IMAGE_URL = "https://thememorychess.com/social/v2/memory-chess-1200x630.jpg";
 
 describe("contact metadata", () => {
   it("gives the contact page a large social card on its own URL", async () => {

@@ -36,11 +36,11 @@ describe("leaderboard social card", () => {
 
     expect(metadata.openGraph).toMatchObject({
       url: "https://thememorychess.com/leaderboard",
-      images: [expect.objectContaining({ url: "https://thememorychess.com/social-preview.png", width: 1200, height: 630 })],
+      images: [expect.objectContaining({ url: "https://thememorychess.com/social/v2/memory-chess-1200x630.jpg", width: 1200, height: 630 })],
     });
     expect(metadata.twitter).toMatchObject({
       card: "summary_large_image",
-      images: [expect.objectContaining({ url: "https://thememorychess.com/social-preview.png" })],
+      images: [expect.objectContaining({ url: "https://thememorychess.com/social/v2/memory-chess-1200x630.jpg" })],
     });
   });
 });

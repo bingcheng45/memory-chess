@@ -71,6 +71,8 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       { source: `/:path(${SKIPPED_BY_MIDDLEWARE})/`, destination: "/:path", permanent: true },
+      // The first launch's share image, still linked from cards cached elsewhere.
+      { source: "/social-preview.png", destination: "/social/v2/memory-chess-1200x630.jpg", permanent: true },
     ];
   },
   async rewrites() {

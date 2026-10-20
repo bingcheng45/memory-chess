@@ -60,13 +60,15 @@ function MemoryTestAnswer({ answer, locale }: { answer: ReferenceProse["game"]["
             perfect: percent(medium.perfectShare),
             easyPieces: easy.pieceCount,
             easyMean: percent(easy.meanAccuracy),
+            easyRounds: number.format(easy.rounds),
             hardPieces: hard.pieceCount,
             hardSeconds: hard.memorizeSeconds,
             hardMean: percent(hard.meanAccuracy),
+            hardRounds: number.format(hard.rounds),
           })}
         </p>
         <p>
-          {answer.limits} <Link href={RECALL_PATH}>{answer.dataLink}</Link>
+          {answer.limits} <Link href={localizedPath(RECALL_PATH, locale)}>{answer.dataLink}</Link>
         </p>
       </div>
     </section>

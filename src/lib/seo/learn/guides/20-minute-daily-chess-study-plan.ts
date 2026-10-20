@@ -5,11 +5,11 @@ const guide: LearnDocument = {
     slug: "20-minute-daily-chess-study-plan",
     title: "20-Minute Daily Chess Study Plan for Beginners",
     h1: "A 20-minute daily chess study plan for beginners",
-    description: "A 20-minute daily chess study plan in four fixed blocks. Three memory rounds, six slow puzzles, one of your own games, and one written line for tomorrow.",
+    description: "Spend 3 minutes on memory rounds, 7 on six slow puzzles, 7 replaying your latest game and 3 writing one line about it. Keep that order five days a week.",
     group: "practice",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
-    updatedAt: "2026-10-13T00:00:00.000Z",
+    updatedAt: "2026-10-20T00:00:00.000Z",
     questions: [
       "How should I spend 20 minutes a day on chess?",
       "What is a good daily chess routine for beginners?",
@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "A 20-minute daily chess study plan works best as four fixed blocks in the same order. Spend 3 minutes on three memory rounds of 6 pieces and 7 on six slow puzzles with the reply checked. Then spend 7 replaying your latest game and 3 writing one line about the move you would take back.",
+    quickAnswer: "A 20-minute daily chess study plan works best as four fixed blocks in the same order. The memory rounds are three of 6 pieces at 10 seconds, and each puzzle gets a little over a minute with the reply checked. The written line names the move you would take back.",
     takeaways: [
       "Same four blocks, same order, five days a week.",
       "Six puzzles in seven minutes leaves time to name the reply before each move.",

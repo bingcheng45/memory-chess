@@ -5,11 +5,11 @@ const guide: LearnDocument = {
     slug: "blindfold-chess-training-for-beginners",
     title: "How to Learn Blindfold Chess: 4-Stage Training",
     h1: "How to learn blindfold chess in four stages, each with a pass mark",
-    description: "Blindfold chess training in four stages, from two kings held without a board to a full game. Each stage has a pass mark that tells you when to move on.",
+    description: "Plan on about five weeks to your first full blindfold game. That is four weeks of drills at 3 to 6 minutes a day, then a game every other day.",
     group: "visualization",
     level: "improver",
     publishedAt: "2026-03-06T00:00:00.000Z",
-    updatedAt: "2026-10-18T00:00:00.000Z",
+    updatedAt: "2026-10-20T00:00:00.000Z",
     questions: [
       "How do I start playing blindfold chess?",
       "How long does it take to learn blindfold chess?",
@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Blindfold chess training for beginners starts with two kings held without a board, not a game. Next, learn six checks that catch the worst errors in your mental picture, then replay ten moves of your own games from the move list alone. Play a full game blind only after each stage passes its test.",
+    quickAnswer: "Five weeks is the soonest, when every stage passes on its first try. Start with two kings held without a board. Then learn six checks that catch a drifting mental picture, and replay ten moves of your own games from the move list alone. Play a full game blind only after each stage passes its test.",
     takeaways: [
       "Each stage has a pass mark, so you know when to move on and when to repeat.",
       "Six checks that every Memory Chess position passes also catch the worst errors in a mental board that has drifted.",
@@ -240,31 +240,32 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The first three stages take about four weeks. Stage four takes at least another week. You need two clean 15-move games and then one clean full game, playing one game every other day. That puts your first full blind game, a whole game with the list hidden, about five weeks from today. Repeat a stage you fail instead of skipping ahead.",
+            "The first three stages take about four weeks at 3 to 6 minutes a day. Stage four takes at least another week. You need two clean 15-move games and then one clean full game, playing one game every other day. That puts your first full blind game, a whole game with the list hidden, about five weeks from today.",
+            "Five weeks is the soonest, not the usual. Each stage ends on a pass mark, not a date, so a stage you fail adds days. Repeat it instead of skipping ahead.",
           ],
         },
         {
           kind: "plan",
           steps: [
             {
-              label: "Stage one",
-              duration: "3 minutes a day for a week",
-              detail: "Six perfect two-king rounds in a row, colours included, on two separate days.",
+              label: "Stage one, week 1",
+              duration: "3 minutes a day",
+              detail: "Six rounds of 2 pieces, 10 seconds, which are the two kings. Move on when all six are perfect in a row, colours included, on two separate days.",
             },
             {
-              label: "Stage two",
-              duration: "5 minutes a day for a week",
-              detail: "Replay Scholar's mate with no board, name all 31 pieces and run the six checks, until two days come out clean.",
+              label: "Stage two, week 2",
+              duration: "5 minutes a day",
+              detail: "Replay Scholar's mate with no board, name all 31 pieces and run the six checks. Move on when two days come out clean.",
             },
             {
-              label: "Stage three",
-              duration: "6 minutes a day for two weeks",
-              detail: "Ten moves each from one of your own games a day, until two different games pass on different days.",
+              label: "Stage three, weeks 3 and 4",
+              duration: "6 minutes a day",
+              detail: "Ten moves each from one of your own games a day. Move on when two different games pass on different days with no piece on a wrong square.",
             },
             {
-              label: "Stage four",
-              duration: "One game every other day, a week or more",
-              detail: "Fifteen moves with the move list in view until two games in a row come out clean, then one clean full game with the list still in view.",
+              label: "Stage four, week 5 on",
+              duration: "One game every other day",
+              detail: "Fifteen moves with the move list in view. Move on to full games when two in a row come out clean, and to a game with the list hidden after one clean full game.",
             },
           ],
         },

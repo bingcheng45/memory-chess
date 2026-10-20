@@ -5,11 +5,11 @@ const guide: LearnDocument = {
     slug: "chess-visualization-exercises",
     title: "Chess Visualization Training: See the Board",
     h1: "Chess visualization exercises that find and fix your weak spot",
-    description: "Chess visualization exercises built on a four-minute test that shows whether pieces vanish, drift or change identity, and a cover-and-move drill to fix it.",
+    description: "Test your chess visualization with four 6-piece rounds at 10 seconds to see how your mental board fails. Then fix it with 8 to 12 minutes a day for six weeks.",
     group: "visualization",
     level: "beginner",
     publishedAt: "2026-03-06T00:00:00.000Z",
-    updatedAt: "2026-10-18T00:00:00.000Z",
+    updatedAt: "2026-10-20T00:00:00.000Z",
     questions: [
       "What are the best chess visualization exercises?",
       "How do I improve my chess visualization?",
@@ -30,7 +30,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "The best chess visualization exercises train the failure you actually have. A four-minute test of four 6-piece rounds shows whether pieces vanish, drift a square or change identity in your head. Then cover a position, play a capture from memory and name every square on the file behind it before you uncover the board.",
+    quickAnswer: "The best chess visualization exercises train the failure you actually have. The test's result boards show whether pieces vanish, drift a square or change identity in your head. Then cover a position, play a capture from memory and name every square on the file behind it before you uncover the board.",
     takeaways: [
       "Four 6-piece, 10-second rounds are a four-minute test of which way your picture breaks.",
       "The result board tells a vanished piece from a drifted one. The accuracy number cannot.",

@@ -5,11 +5,11 @@ const guide: LearnDocument = {
     slug: "chess-memory-training",
     title: "Chess Memory Training: A 6-to-12 Piece Ladder",
     h1: "Chess memory training with a score that tells you when to move up",
-    description: "Chess memory training you can score. Rebuild boards from 6 pieces to 12, with a clear rule for when to add pieces and what each result message means.",
+    description: "Train chess memory by rebuilding a board after a 10-second look. Start at 6 pieces, add two after three perfect rounds in a row, and climb to 12 at 8 seconds.",
     group: "memory",
     level: "beginner",
     publishedAt: "2026-03-06T00:00:00.000Z",
-    updatedAt: "2026-10-18T00:00:00.000Z",
+    updatedAt: "2026-10-20T00:00:00.000Z",
     questions: [
       "How do I train my chess memory?",
       "Is 4 out of 6 a good score in Memory Chess?",
@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the board from memory and scoring it square by square. Start at 6 pieces and 10 seconds, and add two pieces after three perfect rounds in a row. Keep the look at 10 seconds until 12 pieces comes back perfect three times, then lower it to 8.",
+    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the board from memory and scoring it square by square. Five rungs take you from 6 pieces to 12. Keep the look at 10 seconds until 12 pieces comes back perfect three times, then lower it to 8.",
     takeaways: [
       "A piece scores only when its square, type and colour all match, so a near miss is a miss.",
       "At 6 pieces one missed piece already costs 17 points, so the result messages are blunt at low counts.",
@@ -168,7 +168,9 @@ const guide: LearnDocument = {
           paragraphs: [
             "Rebuilding from an empty board is a recall test, and recall tests help a memory last. Roediger and Karpicke had students study a prose passage, then either reread it or write down what they recalled. A week later the tested students remembered more. On a board, rebuilding is the written recall and staring longer is the rereading.",
             "Gobet and Simon showed strong players several boards in a row for a few seconds each, and the players still recalled much of each one. The authors explain it with templates, large familiar patterns held in long-term memory.",
-            "Memory Chess positions are random, so you rarely meet a familiar template. The plain groups from the hard-preset drill, pieces that touch or share a rank or file, take their place.",
+            "Chase and Simon timed the look at 5 seconds and used middle-game positions of 24 to 26 pieces. Their master recalled about twice as many pieces as their Class A player. On the same pieces set out on random squares, every player recalled only about three or four.",
+            "Random boards shrink the expert's edge but do not erase it. Gobet and Simon pooled thirteen experiments with looks of 10 seconds or less. They put the edge at about one extra piece per 400 Elo points on random boards, against about five on positions from games.",
+            "Memory Chess positions are random, so you rarely meet a familiar template, and a strong player's lead over you is smaller here than in a game. The plain groups from the hard-preset drill, pieces that touch or share a rank or file, take the place of templates.",
             "Groups are what make the hard preset possible. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four groups it leaves two seconds or more each.",
           ],
         },
@@ -244,6 +246,21 @@ const guide: LearnDocument = {
           title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
           note: "Supports the claim that strong players shown several boards briefly could still recall much of each, explained by templates held in long-term memory.",
           url: "https://doi.org/10.1006/cogp.1996.0011",
+        },
+        {
+          title: "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+          note: "Supports the 5-second look and the middle-game positions of 24 to 26 pieces.",
+          url: "https://andymatuschak.org/prompts/Chase1973.pdf",
+        },
+        {
+          title: "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+          note: "Supports the master recalling about twice as many pieces as the Class A player, and every player recalling about three or four pieces on random boards.",
+          url: "https://paulogentil.com/pdf/Skill%20in%20chess.pdf",
+        },
+        {
+          title: "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+          note: "Supports the thirteen experiments with looks of 10 seconds or less. Also supports the edge of about one piece per 400 Elo points on random boards, against about five on game positions.",
+          url: "https://bura.brunel.ac.uk/bitstream/2438/1346/1/FullText.pdf",
         },
       ],
     },

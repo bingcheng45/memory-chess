@@ -5,11 +5,11 @@ const guide: LearnDocument = {
     slug: "chess-coordinates-practice",
     title: "Chess Coordinates Practice: Name Squares Faster",
     h1: "Chess coordinates practice, from counting squares to reading them",
-    description: "Chess coordinates practice in three steps. Learn eight anchor squares and a colour rule, then name every square in Memory Chess rounds with labels on and off.",
+    description: "Learn chess coordinates from eight anchor squares and one colour rule, then name each square aloud in 4-piece, 12-second rounds until five in a row are clean.",
     group: "board-vision",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
-    updatedAt: "2026-10-13T00:00:00.000Z",
+    updatedAt: "2026-10-20T00:00:00.000Z",
     questions: [
       "How do I learn chess coordinates fast?",
       "How do I know a square's colour without looking?",
@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. Learn eight anchor squares and the colour rule first. Then play short Memory Chess rounds naming every square aloud, first reading the board labels and then naming each square before you look at them.",
+    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. Ten squares called at random with every colour right means the anchors are in. Then play short Memory Chess rounds naming every square aloud, first reading the board labels and then naming each square before you look at them.",
     takeaways: [
       "A square you count takes two lookups, the file and then the rank. A square you recognise takes one.",
       "Add the file number to the rank number. An even total is a dark square, an odd total is light.",
@@ -228,6 +228,20 @@ const guide: LearnDocument = {
         },
       ],
     },
+    {
+      id: "coordinate-trainer-or-memory-round",
+      heading: "A coordinate trainer and a memory round train different things",
+      blocks: [
+        {
+          kind: "prose",
+          paragraphs: [
+            "The Lichess coordinate trainer is free and does one job well. Its page describes it this way, \"A square name appears on the board and you must click on the correct square.\" That trains the step from a name to a place, the one this guide starts with.",
+            "A Memory Chess round trains the next step. You hold where several pieces stand after the board clears, and each piece counts only when its square, type and colour all match.",
+            "Use the coordinate trainer while you still count files and ranks. Switch to the 4-piece rounds above once squares arrive without counting, because holding four pieces is hard while you are still hunting for the squares. In our judgement most players gain from a few minutes of each.",
+          ],
+        },
+      ],
+    },
   ],
   end: [
     {
@@ -265,6 +279,16 @@ const guide: LearnDocument = {
           kind: "guide",
           slug: "how-to-see-the-whole-board-in-chess",
           reason: "A scan of the whole board is faster when every square has a name.",
+        },
+      ],
+    },
+    {
+      kind: "sources",
+      items: [
+        {
+          title: "Coordinate training, lichess.org",
+          note: "Supports the description of the trainer, in the page's own words, as read on 20 October 2026.",
+          url: "https://lichess.org/training/coordinate",
         },
       ],
     },

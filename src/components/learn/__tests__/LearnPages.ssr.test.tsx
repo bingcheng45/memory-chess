@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import LearnGuideRoute from "@/app/[locale]/learn/[slug]/page";
 import LearnHub from "@/app/[locale]/learn/page";
 import LearnSearchRoute, { metadata as searchMetadata } from "@/app/[locale]/learn/search/page";
+import { EN_LEARN_PAGES } from "@/lib/seo/learn";
 import messages from "../../../../messages/en.json";
 
 jest.mock("next/link", () => {
@@ -75,6 +76,28 @@ describe("a guide page", () => {
     expect(markup).toContain('<a href="/learn#board-vision">Board vision and blunders</a>');
     expect(texts(markup, "li").slice(3, 7)).toEqual(["Beginner", "6 min read", "Updated 15 September 2026", "By Bing Cheng"]);
     expect(markup.indexOf("Before every move, run one scan")).toBeLessThan(markup.indexOf('id="puzzle-vs-game"'));
+  });
+
+  it("opens with the direct answer as the first paragraph under the h1 and in the Article and WebPage description", async () => {
+    const answer =
+      "Plan on about five weeks to your first full blindfold game. That is four weeks of drills at 3 to 6 minutes a day, then a game every other day.";
+    const markup = await guide("blindfold-chess-training-for-beginners");
+    const nodes = graph(markup);
+
+    expect(texts(markup.slice(markup.indexOf("</h1>")), "p")[0]).toBe(answer);
+    expect(nodes.find((node) => node["@type"] === "Article")?.description).toBe(answer);
+    expect(nodes.find((node) => node["@type"] === "WebPage")?.description).toBe(answer);
+  });
+
+  it("puts every guide's answer first under its h1", async () => {
+    const firstParagraphs = await Promise.all(
+      EN_LEARN_PAGES.map(async ({ meta }) => {
+        const markup = await guide(meta.slug);
+        return [meta.slug, texts(markup.slice(markup.indexOf("</h1>")), "p")[0]];
+      }),
+    );
+
+    expect(firstParagraphs).toEqual(EN_LEARN_PAGES.map(({ meta }) => [meta.slug, meta.description]));
   });
 
   it("serves a beginner's round and today's daily board under the lede, before the byline and the quick answer", async () => {

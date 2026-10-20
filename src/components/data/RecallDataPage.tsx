@@ -48,7 +48,8 @@ function RecallChart({ id, title, rows, t, percent }: { id: string; title: strin
 }
 
 function RecallTable({ data, t, format }: { data: RecallDataset; t: Translate; format: Formatter }) {
-  const percent = (value: number) => format.number(value / 100, { style: "percent", maximumFractionDigits: 1 });
+  const percent = (value: number) => format.number(value / 100, { style: "percent" });
+  const tenth = (value: number) => format.number(value / 100, { style: "percent", minimumFractionDigits: 1, maximumFractionDigits: 1 });
   return (
     <>
       <p className="recall-caption" id="recall-table-caption">
@@ -75,12 +76,12 @@ function RecallTable({ data, t, format }: { data: RecallDataset; t: Translate; f
                 <td>{t("chart.seconds", { count: cell.memorizeSeconds })}</td>
                 <td className="recall-num">{format.number(cell.rounds)}</td>
                 <td className="recall-num">{format.number(cell.players)}</td>
-                <td className="recall-num">{percent(cell.meanAccuracy)}</td>
+                <td className="recall-num">{tenth(cell.meanAccuracy)}</td>
                 <td className="recall-num">{percent(cell.medianAccuracy)}</td>
                 <td className="recall-num">
                   {t("table.middleValue", { low: percent(cell.p25Accuracy), high: percent(cell.p75Accuracy) })}
                 </td>
-                <td className="recall-num">{percent(cell.perfectShare)}</td>
+                <td className="recall-num">{tenth(cell.perfectShare)}</td>
               </tr>
             ))}
           </tbody>

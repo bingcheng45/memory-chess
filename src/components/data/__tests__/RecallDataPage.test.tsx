@@ -40,7 +40,7 @@ const DATA: RecallDataset = {
   roundsWithoutSettings: 10,
   roundsInSmallCells: 90,
   publishedRounds: 1100,
-  cells: [cell(2, 10, 300, 60, 81.8, 77.1), cell(6, 10, 600, 200, 48.3, 11.1), cell(6, 20, 120, 10, 69.3, 34.5), cell(12, 8, 80, 14, 39.8, 1.4)],
+  cells: [cell(2, 10, 300, 60, 81.8, 77.1), cell(6, 10, 600, 200, 48.3, 11.1), cell(6, 20, 120, 10, 69, 34.5), cell(12, 8, 80, 14, 39.8, 1.4)],
 };
 
 it("opens with the answer: the headline averages, their rounds and the date range", async () => {
@@ -72,7 +72,7 @@ it("tabulates every published setting with its spread and perfect share", async 
     ["Pieces", "Study time", "Rounds", "Players", "Mean", "Median", "Middle half", "Perfect"],
     ["2", "10 s", "300", "60", "81.8%", "50%", "25% to 75%", "77.1%"],
     ["6", "10 s", "600", "200", "48.3%", "50%", "25% to 75%", "11.1%"],
-    ["6", "20 s", "120", "10", "69.3%", "50%", "25% to 75%", "34.5%"],
+    ["6", "20 s", "120", "10", "69.0%", "50%", "25% to 75%", "34.5%"],
     ["12", "8 s", "80", "14", "39.8%", "50%", "25% to 75%", "1.4%"],
   ]);
   expect(screen.getByText(/Of 1,200 rounds, 1,100 fall in the 4 settings shown, 90 in smaller settings, and 10 arrived without their settings/)).toBeInTheDocument();

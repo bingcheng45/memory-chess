@@ -1,0 +1,205 @@
+{
+  "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
+  "approvedHash": "5731003f8544f9c7b3d63cd4fe674d9f9957cc91debac28b504898f62a98b537",
+  "sameAsEnglish": [
+    "sections.generated-positions.blocks[1].drills[1].duration",
+    "sections.far-corner-glance.blocks[1].columns[0]"
+  ],
+  "text": {
+    "meta": {
+      "title": "Comment voir tout l’échiquier aux échecs",
+      "h1": "Comment voir tout l’échiquier aux échecs",
+      "description": "Apprenez à voir tout l’échiquier en nommant chaque pièce des quatre bords avant chaque coup, puis suivez les lignes adverses après une prise ou un coup de pion.",
+      "keywords": {
+        "primary": "voir tout l'échiquier aux échecs",
+        "secondary": [
+          "vision tunnel échecs",
+          "vision de l'échiquier",
+          "balayer l'échiquier",
+          "pièces à longue portée échecs",
+          "repérer les menaces aux échecs"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Pour voir tout l’échiquier, faites un balayage en cinq étapes, des bords vers le centre, avant de choisir un coup. Nommez chaque pièce sur la colonne a, la colonne h, la première rangée et la huitième rangée. Suivez ensuite chaque fou, tour et dame adverses jusqu’au bord, puis vérifiez les cavaliers et vos propres pièces à longue portée.",
+      "takeaways": [
+        "Une pièce à longue portée gagne du matériel sans bouger. Quand un pion quitte sa ligne, vos yeux suivent le pion et ratent la ligne qu’il a ouverte.",
+        "Suivez chaque ligne jusqu’au bord de l’échiquier, car la première pièce sur la ligne est peut-être la vôtre, et clouée.",
+        "Commencez le balayage par les bords, car un regard qui part de votre propre coup les atteint en dernier."
+      ],
+      "audience": [
+        "Les joueurs qui perdent du matériel à cause d’un fou ou d’une tour qui n’avait pas bougé depuis de nombreux coups.",
+        "Tous ceux dont les gaffes se produisent du côté de l’échiquier éloigné de la bataille."
+      ]
+    },
+    "sections": {
+      "bishop-on-a2": {
+        "heading": "Pourquoi vous ratez les fous et les tours à longue portée",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Installez cette position, les Noirs au trait. Les Blancs ont Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 et des pions en a3, b2, c2, f2, g2 et h2 (le site note les pièces avec les lettres anglaises K, Q, R, B, N, soit R, D, T, F, C en français). Les Noirs ont Kg8, Ra8, Rd8, Bc8, Nf6 et des pions en a7, b7, c7, e6, f7, g7 et h7.",
+              "Le fou en a2 regarde b3, c4, d5, e6, f7 et g8. Les pions noirs en e6 et f7 lui barrent la route, et le roi noir attend au bout.",
+              "Poussez ...e5 pour gagner de l’espace au centre, et Bxf7+ suit. Le roi ne peut pas reprendre, car le cavalier en g5 contrôle aussi f7 : les Blancs gagnent donc un pion avec échec."
+            ]
+          },
+          {
+            "caption": "Après ...e5, le fou en a2 et le cavalier en g5 frappent tous deux f7, alors que le fou n’a pas bougé."
+          },
+          {
+            "paragraphs": [
+              "Nxf7 est encore plus fort. Le roi ne peut pas non plus prendre le cavalier, car le fou contrôle maintenant f7, et le cavalier attaque la tour en d8.",
+              "Rien n’a changé pour le fou. Seul un pion noir a bougé. C’est la vision en tunnel. Vos yeux suivent le pion jusqu’en e5 et l’espace qu’il gagne, si bien qu’un fou immobile depuis dix coups sort de l’image.",
+              "Les tours font la même chose, plus discrètement. Une tour peut rester en h1 toute la partie jusqu’à l’échange des pions h, puis posséder une colonne ouverte sans avoir bougé."
+            ]
+          }
+        ]
+      },
+      "edge-sweep": {
+        "heading": "Comment balayer l’échiquier des bords vers le centre",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Le balayage est le remède à la vision en tunnel. L’ordre compte plus que la vitesse. Faites ces cinq étapes avant de choisir un coup."
+            ]
+          },
+          {
+            "items": [
+              "Les bords. Nommez chaque pièce sur la colonne a, la colonne h, la première rangée et la huitième rangée, pour les deux camps. C’est là que se trouvent les tours encore sur leur case de départ et les fous repliés sur le bord.",
+              "Chaque fou, tour et dame adverses. Suivez chaque ligne à travers toutes les pièces qui s’y trouvent jusqu’au bord de l’échiquier, et dites à qui appartient chacune.",
+              "Chaque cavalier adverse. Nommez les cases qu’il atteint, car un balayage le long des lignes ne les touche jamais.",
+              "Vos propres fous, tours et dame, suivis de la même façon.",
+              "En dernier, votre propre coup. Vérifiez la case où il arrive et toute ligne qu’il ouvre en quittant son ancienne case."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Appliquez-le à la position du fou, avec les Noirs. L’étape un trouve le fou en a2. L’étape deux le suit à travers e6 et f7 jusqu’en g8 et nomme chaque pièce qu’il traverse : votre pion, votre autre pion et votre roi. ...e5 se lit maintenant comme un coup qui ne laisse plus qu’un pion entre ce fou et votre roi."
+            ]
+          }
+        ]
+      },
+      "last-square": {
+        "heading": "Suivre une ligne jusqu’au bord, pas jusqu’à la première pièce",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Une erreur consiste à arrêter le suivi à la première pièce de la ligne. Si cette pièce est la vôtre, vous n’avez pas trouvé un obstacle. Vous avez peut-être trouvé un clouage.",
+              "Placez une tour blanche en e1, un cavalier noir en e5 et le roi noir en e8, avec les cases entre eux vides. Le cavalier ne peut pas bouger du tout.",
+              "Avec les Noirs, dites donc que la tour voit e8, jamais que la tour est bloquée par votre cavalier. La première formulation annonce le clouage, la seconde le cache."
+            ]
+          }
+        ]
+      },
+      "generated-positions": {
+        "heading": "Pourquoi une position générée de 12 pièces entraîne le balayage",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Une position de partie se regroupe. Les pions se bloquent au centre, les pièces se rassemblent près des rois, et un coin peut rester vide pendant vingt coups. C’est ce regroupement qui rend le balayage nécessaire.",
+              "Memory Chess crée une nouvelle position à chaque manche, sans aucun plan derrière. Les deux rois vont sur des cases aléatoires qui ne sont jamais adjacentes. Chaque autre pièce va sur une case vide aléatoire, dans les règles d’une position légale.",
+              "Rien n’attire les pièces vers le centre ou vers les rois : un échiquier de 12 pièces peut donc avoir une pièce dans chaque coin. Lire les bords d’abord et le centre en dernier, c’est le balayage, fait de mémoire.",
+              "Une fois que le balayage tient de mémoire, <l0>l’entraînement aux échecs à l’aveugle</l0> demande la même image sans aucun échiquier devant vous."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Mémoriser en commençant par les bords",
+                "description": "Jouez 3 manches de 12 pièces avec 8 secondes pour observer, en appuyant sur « Réessayer » entre les manches. Pendant l’observation, lisez d’abord les bords, puis le centre. Placez d’abord les pièces des bords. L’échiquier de résultat entoure d’un anneau chaque case manquée. Vous réussissez quand aucun anneau ne tombe sur une case du bord.",
+                "duration": "3 manches, environ 5 minutes",
+                "goal": "Tenir à la fois les bords et le centre plutôt qu’un seul groupe.",
+                "play": {
+                  "label": "Jouer 12 pièces, 8 secondes"
+                }
+              },
+              {
+                "title": "Inventaire des bords",
+                "description": "Ouvrez une partie commentée à n’importe quel diagramme de milieu de partie. Listez chaque pièce sur les quatre bords. Pour chaque fou, tour et dame parmi elles, suivez ses lignes jusqu’au bord et notez chaque pièce qu’elles traversent. Vérifiez ensuite en un second passage. Faites courir votre doigt de a1 à h1, h8, a8 et retour en a1, en cochant chaque pièce de votre liste, et touchez chaque case de chaque ligne suivie. Vous réussissez quand le second passage n’ajoute rien.",
+                "duration": "4 minutes",
+                "goal": "Faire des pièces que vous sautez d’habitude les premières de votre liste."
+              }
+            ]
+          }
+        ]
+      },
+      "far-corner-glance": {
+        "heading": "Un dernier coup d’œil au coin opposé avant de lâcher la pièce",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Le balayage ouvre votre réflexion. Le tableau couvre les moments qui l’entourent."
+            ]
+          },
+          {
+            "columns": [
+              "Moment",
+              "Les yeux sur la bataille",
+              "Les yeux sur tout l’échiquier"
+            ],
+            "rows": [
+              {
+                "label": "Dernier coup de l’adversaire",
+                "cells": [
+                  "Vous regardez la pièce qui a bougé et la case qu’elle a atteinte.",
+                  "Vous regardez la ligne qu’elle a ouverte derrière elle et la case qu’elle a cessé de protéger."
+                ]
+              },
+              {
+                "label": "Après un échange",
+                "cells": [
+                  "Vous comptez le matériel.",
+                  "Vous suivez à nouveau chaque ligne que l’échange a ouverte, pour les deux camps."
+                ]
+              },
+              {
+                "label": "Avant de lâcher une pièce",
+                "cells": [
+                  "Vous vérifiez les cases voisines de votre coup.",
+                  "Vous vérifiez le coin le plus éloigné de votre coup."
+                ]
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "La dernière chose que touchent vos yeux avant un coup, c’est le coin opposé, et le fou en a2 en est la raison."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jouer 12 pièces avec 8 secondes pour observer",
+        "why": "Douze pièces placées au hasard peuvent tomber sur n’importe quelle colonne ou rangée : les bords sont donc testés aussi durement que le centre."
+      },
+      {
+        "items": [
+          {
+            "question": "Quand faire le balayage complet ?",
+            "answer": "Faites-le en entier après chaque coup de pion, prise ou échange, car ce sont les coups qui ouvrent des lignes. Sur un coup calme où aucun obstacle n’a bougé, vérifiez les quatre bords et la ligne derrière la pièce qui vient de bouger, puis jouez."
+          },
+          {
+            "question": "Et si le balayage me rend trop lent ?",
+            "answer": "Gardez l’ordre et raccourcissez chaque étape. Quand rien n’a changé sur un bord depuis votre dernier coup, un coup d’œil le confirme et vous passez à la suite. Entraînez d’abord l’ordre dans des parties lentes et des manches de Memory Chess, pour qu’il se fasse tout seul avant le blitz."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Entraîne à garder une position en tête, ce que l’exercice de mémorisation par les bords demande à grande vitesse."
+          },
+          {
+            "reason": "Des exercices pour nommer une case sans compter, afin que nommer chaque case le long d’une ligne ne ralentisse pas le balayage."
+          },
+          {
+            "reason": "Traite du défenseur fantôme et de la pièce non défendue, les autres façons dont votre image de l’échiquier se trompe."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -3,11 +3,13 @@ import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { ARTICLES_PATH } from "@/lib/articles/paths";
 import { RECALL_PATH } from "@/lib/data/recall";
-import { LEARN_GUIDE_COPY, LEARN_HUB_COPY as COPY, LEARN_SEARCH_COPY } from "@/lib/seo/learn/copy";
+import { LEARN_HUB_COPY as COPY, LEARN_SEARCH_COPY } from "@/lib/seo/learn/copy";
+import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/guideCopy";
 import { dashboardTileHref, guidePath, guideRoundHref, learnSearchHref } from "@/lib/seo/learn/links";
 import { stageGuideNumber, type LearnShelves, type LearnStage } from "@/lib/seo/learn/path";
 import type { LearnGroupPages, LearnPage } from "@/lib/seo/learn";
 import { hubStructuredData } from "@/lib/seo/learn/structuredData";
+import GuideTranslations from "./GuideTranslations";
 import LearnSearch from "./LearnSearch";
 import "./learn.css";
 
@@ -33,16 +35,19 @@ function StageMap({ stages }: { readonly stages: readonly LearnStage[] }) {
 
 function GuideCard({ page, number }: { readonly page: LearnPage; readonly number?: string }) {
   return (
-    <Link href={guidePath(page.meta.slug)} className="lh-guide">
-      {number ? <span className="lh-guide-n">{number}</span> : null}
-      <span className="lh-guide-text">
-        <b>{page.meta.title}</b>
-        <span>{page.meta.description}</span>
-        <span className="lh-guide-meta">
-          {LEARN_GUIDE_COPY.minRead(page.readingMinutes)} · {COPY.endsWith(page.primaryCta)}
+    <>
+      <Link href={guidePath(page.meta.slug)} className="lh-guide">
+        {number ? <span className="lh-guide-n">{number}</span> : null}
+        <span className="lh-guide-text">
+          <b>{page.meta.title}</b>
+          <span>{page.meta.description}</span>
+          <span className="lh-guide-meta">
+            {LEARN_GUIDE_COPY.minRead(page.readingMinutes)} · {COPY.endsWith(page.primaryCta)}
+          </span>
         </span>
-      </span>
-    </Link>
+      </Link>
+      <GuideTranslations slug={page.meta.slug} />
+    </>
   );
 }
 

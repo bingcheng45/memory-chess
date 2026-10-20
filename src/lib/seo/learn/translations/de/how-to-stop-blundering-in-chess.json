@@ -1,0 +1,222 @@
+{
+  "sourceHash": "2e876d5b5c5c75ebdb4f87c75fb7520a2ca35c59bc6d792af9a70faa80dfd00b",
+  "approvedHash": "0136f3e722799cf2585196d98a9b999d107fc69b2c923e27d8cfe850aaa8826e",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Patzer im Schach vermeiden: so geht es",
+      "h1": "So hörst du auf, im Schach zu patzen",
+      "description": "Patzer im Schach vermeiden: ein Kontrollblick in fünf Schritten vor jedem Zug, ein Blick auf ungedeckte Figuren und Übungen aus deinen verlorenen Partien.",
+      "keywords": {
+        "primary": "Patzer vermeiden Schach",
+        "secondary": [
+          "Brettübersicht Schach",
+          "ungedeckte Figuren Schach",
+          "Schachgebote Schlagzüge Drohungen",
+          "warum stelle ich Figuren ein",
+          "Schach Fehler vermeiden"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Mach vor jedem Zug einen Kontrollblick in fünf Schritten, immer in derselben Reihenfolge. Prüf, was der letzte Zug deines Gegenübers angreift, liste seine Schachgebote, Schlagzüge und Drohungen auf und finde deine ungedeckten Figuren, die ohne Verteidiger. Frag dann, ob dein Zug auf einem gedeckten Feld landet und was er nicht mehr deckt, und erst dann suchst du nach deinen eigenen Schachgeboten und Schlagzügen.",
+      "takeaways": [
+        "Ein Patzer, der in einem Zug bestraft wird, ist ein Zug, der nur auf dem Brett in deinem Kopf funktioniert.",
+        "Eine ungedeckte Figur hat keinen Verteidiger. Liste deine auf, bevor ein Schachgebot deines Gegenübers eine findet.",
+        "Miss die Gewohnheit mit einer Patzer-Strichliste pro Partie, denn die Wertungszahl bewegt sich auch mit Eröffnungen, Endspielen und Paarungen."
+      ],
+      "audience": [
+        "Wer Taktikaufgaben gut löst und trotzdem Figuren an eine Antwort in einem Zug verliert.",
+        "Wer den Schlagzug erst sieht, wenn die Figur schon losgelassen ist.",
+        "Anfänger, denen man geraten hat, langsamer zu spielen, und die gemerkt haben, dass mehr Zeit allein nichts geändert hat."
+      ]
+    },
+    "sections": {
+      "puzzle-vs-game": {
+        "heading": "Warum Figuren in Partien verloren gehen und nicht in Taktikaufgaben",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Eine Taktikaufgabe verrät dir zwei Dinge, bevor du hinschaust: Es gibt eine Taktik, und du bist am Zug. Eine Partie verrät dir keins von beiden. So kann eine Gabel, die du in einer Aufgabe finden würdest, unbemerkt vorbeiziehen.",
+              "Um einen Patzer zu vermeiden, der in einem Zug bestraft wird, brauchst du keine tiefe Variante. Es ist ein Zug, der auf dem Brett in deinem Kopf funktioniert und auf dem Brett auf dem Tisch scheitert.",
+              "Die beiden Bretter unterscheiden sich auf drei häufige Arten. Die erste ist der Phantomverteidiger, eine Figur, auf deren Zurückschlagen du zählst, die diesen Schlagzug aber nicht legal ausführen kann.",
+              "Stell einen weißen Läufer auf b5, einen schwarzen Springer auf c6, den schwarzen König auf e8 und einen weißen Bauern auf e5, mit leerem d7. Der Bauer hat gerade eine schwarze Figur auf e5 geschlagen. Schwarz hat den Springer als Verteidiger gezählt und wollte zurückschlagen. Der Springer ist an den König gefesselt, also ist Nxe5 illegal, und die Figur ist einfach weg. Die Website schreibt Figuren mit englischen Buchstaben: K, Q, R, B, N statt K, D, T, L, S."
+            ]
+          },
+          {
+            "caption": "Schwarz hat mit dem Zurückschlagen Nxe5 gerechnet, aber der Läufer auf b5 fesselt den Springer an den König auf e8."
+          },
+          {
+            "paragraphs": [
+              "Die zweite ist die vergessene Figur, ein Läufer oder Turm, der viele Züge lang nicht gezogen hat, sodass du nicht mehr auf ihn schaust.",
+              "Die dritte ist die verlassene Aufgabe. Wenn der Bauer auf d2 als Einziger deinen Springer auf c3 deckt, lässt d2-d4 den Springer ungedeckt zurück, obwohl der Springer nie gezogen hat."
+            ]
+          },
+          {
+            "caption": "Nach d2-d4 hat der Springer auf c3 keinen Verteidiger mehr, obwohl er nie gezogen hat."
+          }
+        ]
+      },
+      "pre-move-scan": {
+        "heading": "Der Kontrollblick vor dem Zug: Schachgebote, Schlagzüge, Drohungen und ungedeckte Figuren",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Brettübersicht ist ein Kontrollblick, den du vor jedem Zug in derselben Reihenfolge machst. Eine feste Reihenfolge heißt, dass nichts davon abhängt, wo deine Augen gerade landen."
+            ]
+          },
+          {
+            "items": [
+              "Der letzte Zug. Nenne jedes Feld, das die gezogene Figur jetzt angreift, und jede Linie, die sie geöffnet hat, als sie ihr altes Feld verließ.",
+              "Die forcierenden Züge der Gegenseite. Liste jedes Schachgebot auf, das sie geben könnte, jeden Schlagzug, den sie machen könnte, und jeden Zug, der eine deiner Figuren angreifen würde.",
+              "Deine ungedeckten Figuren. Eine ungedeckte Figur hat keinen Verteidiger. Ein gefesselter Verteidiger zählt nur, wenn er legal zurückschlagen kann. Nenne jede ungedeckte Figur mit ihrem Feld und dann jede Figur, die öfter angegriffen als gedeckt ist.",
+              "Dein geplanter Zug. Zähl die Verteidiger der Figur auf ihrem neuen Feld. Frag dann, was sie von ihrem alten Feld aus gedeckt hat und welche Linie sie versperrt hat.",
+              "Deine eigenen forcierenden Züge. Erst jetzt suchst du nach Schachgeboten und Schlagzügen für dich, angefangen bei jeder ungedeckten gegnerischen Figur."
+            ]
+          },
+          {
+            "title": "Warum ungedeckte Figuren vor deinen eigenen Ideen kommen",
+            "body": "Ein Doppelangriff gewinnt Material, wenn eines seiner beiden Ziele nicht zu retten ist. Jeder Angriff auf eine ungedeckte Figur ist schon eine Drohung, also ist jede ungedeckte Figur eine halbe Taktik, die auf ihre zweite Hälfte wartet."
+          }
+        ]
+      },
+      "loose-bishop-b4": {
+        "heading": "Ein Damenschach gegen einen ungedeckten Läufer auf b4",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Bau diese Stellung mit Weiß am Zug auf. Weiß hat Kg1, Qd1, Ra1, Rf1, Bc1, Nb1, Nf3 und Bauern auf a2, b2, f2, g2 und h2.",
+              "Schwarz hat Ke8, Ra8, Rh8, Bc8, Bb4 und Bauern auf a7, b7, c7, f7, g7 und h7. Keine schwarze Figur deckt den Läufer auf b4.",
+              "Weiß spielt Qa4+. Die Dame gibt Schach über b5, c6 und d7 zum König auf e8 und greift den Läufer entlang der vierten Reihe an."
+            ]
+          },
+          {
+            "caption": "Qa4+ gibt Schach über b5, c6 und d7 und greift den ungedeckten Läufer auf b4 an."
+          },
+          {
+            "paragraphs": [
+              "Schwarz muss zuerst das Schach abwehren. Dazwischenziehen mit ...c6, ...b5 oder ...Bd7 deckt b4 nicht, ein Königszug ebenso wenig, also folgt Qxb4.",
+              "Schritt vier hätte Schwarz einen Zug früher gewarnt. Zähl die Verteidiger des Läufers auf b4, bevor du ihn dorthin spielst, und es sind keine."
+            ]
+          }
+        ]
+      },
+      "invented-pieces": {
+        "heading": "Was eine erfundene Figur in einer Runde bei Memory Chess kostet",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Eine Runde bei Memory Chess vergleicht dein nachgebautes Brett Feld für Feld mit dem Original. Eine Figur zählt nur, wenn Feld, Figurentyp und Farbe übereinstimmen.",
+              "Wer mehr Figuren setzt, als die Stellung hatte, zahlt doppelt. Jede Figur über der Anzahl gilt als falsch und kostet zusätzlich zehn Punkte Genauigkeit.",
+              "Eine falsche Figur innerhalb der Anzahl kostet nicht mehr als ein leeres Feld, also trifft der Aufschlag nur erfundene Figuren.",
+              "Das macht eine Runde zu einem sauberen Test für eine Patzer-Gewohnheit. Eine siebte Figur auf einem Brett mit sechs Figuren ist eine Figur, die dein Gedächtnis hinzugefügt hat, derselbe Fehler, wie einem Verteidiger zu vertrauen, den das echte Brett nicht hat."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Keine siebte Figur",
+                "description": "Spiel 4 Runden mit 6 Figuren und 10 Sekunden zum Einprägen und drück auf dem Ergebnisbildschirm auf „Nochmal“, damit die Einstellungen bleiben. Zähl vor jedem Abgeben deine Figuren. Wenn es mehr als sechs sind, nimm die weg, bei denen du am wenigsten sicher bist, dass du sie gesehen hast. Bestanden hast du, wenn alle vier Runden mit sechs Figuren oder weniger abgegeben werden.",
+                "duration": "4 Runden, etwa 4 Minuten",
+                "goal": "Eine Figur, die du gesehen hast, von einer unterscheiden, die du nur vermutet hast.",
+                "play": {
+                  "label": "6 Figuren, 10 Sekunden spielen"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "own-games-drills": {
+        "heading": "Übungen zu ungedeckten Figuren und zum letzten Zug aus deinen verlorenen Partien",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Beide Übungen nutzen deine eigenen Partien, denn dort stecken die Patzer, die du tatsächlich machst."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Bestandsaufnahme der ungedeckten Figuren",
+                "description": "Bau eine Mittelspielstellung aus einer deiner Partien auf. Schreib für jede deiner Figuren zwei Zahlen auf: gegnerische Angreifer, dann deine Verteidiger, ohne Verteidiger, die so gefesselt sind, dass sie nicht zurückschlagen können. Kreise jede Figur ohne Verteidiger ein. Setz einen Stern an jede Figur mit mehr Angreifern als Verteidigern.",
+                "duration": "5 Minuten",
+                "goal": "Deine ungedeckten Figuren sehen, bevor ein Schachgebot deines Gegenübers auf einer landet."
+              },
+              {
+                "title": "Den letzten Zug nachspielen",
+                "description": "Spiel eine Partie nach, die du verloren hast. Sag vor jedem deiner Züge laut, was der vorige Zug deines Gegenübers angreift. Wo dich die Antwort überrascht, hast du die Ursache gefunden.",
+                "duration": "10 Minuten",
+                "goal": "Lernen, wie eine übersehene Drohung einen Zug vor dem Einschlag aussah."
+              }
+            ]
+          }
+        ]
+      },
+      "blunder-tally": {
+        "heading": "Eine Patzer-Strichliste neben jedem Ergebnis",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Für die Strichliste ist ein Patzer ein Zug, der einen Bauern oder mehr an eine Antwort verliert, die ein oder zwei Züge tief liegt. Ein langsames positionelles Abgleiten zählt nicht, weil kein Kontrollblick es erkennen würde.",
+              "Schreib die Zahl neben jedes Ergebnis, Siege eingeschlossen. Zähl den Zug auch dann, wenn dein Gegenüber die Antwort verpasst hat, denn gemessen wird deine Gewohnheit.",
+              "Die Wertungszahl ist ein schlechter Maßstab für diese eine Gewohnheit. Sie bewegt sich auch mit deinen Eröffnungen, deinen Endspielen und deinen Paarungen, während sich die Strichliste nur mit dem Kontrollblick bewegt."
+            ]
+          }
+        ]
+      },
+      "low-clock-scan": {
+        "heading": "Bei weniger als dreißig Sekunden nur den letzten Zug prüfen",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Bei knapper Zeit passt der volle Kontrollblick nicht mehr hinein. Behalte also Schritt eins und lass den Rest weg. Eine Figur, die gerade gezogen hat, hat frische Ziele, und Schritt eins erfasst auch jede Linie, die sie geöffnet hat."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "6 Figuren mit 10 Sekunden zum Einprägen spielen",
+        "why": "Bei sechs Figuren mit zehn Sekunden zum Einprägen taucht eine erfundene siebte Figur zum ersten Mal auf. Zähl also, bevor du abgibst."
+      },
+      {
+        "label": "Deine aktuelle Genauigkeit ansehen",
+        "why": "Eine Runde mit einer erfundenen siebten Figur zeigt sich als Einbruch in der aktuellen Genauigkeit. Schau zu, wie sie wieder steigt, während sich das Zählen einschleift."
+      },
+      {
+        "items": [
+          {
+            "question": "Hilft langsameres Spielen gegen Patzer?",
+            "answer": "Nur, wenn du die zusätzliche Zeit für eine feste Frage nutzt. Langes Nachdenken ohne Checkliste fließt meist in deinen eigenen Plan. Nutz die Zeit für den Kontrollblick, angefangen bei dem, was der letzte Zug angreift, und die zusätzlichen Minuten fangen die Antworten ab, die du früher übersehen hast."
+          },
+          {
+            "question": "Muss ich den ganzen Kontrollblick bei jedem Zug machen?",
+            "answer": "Geh alle fünf Schritte nach jedem Schlagzug, jedem Schachgebot und jedem Bauernzug durch, der eine Linie öffnet, denn diese Züge verändern die meisten Felder. Bei einem ruhigen Zug machst du mindestens die Schritte eins und drei, den letzten Zug und deine ungedeckten Figuren."
+          },
+          {
+            "question": "Soll ich in einer Runde ein Feld leer lassen, wenn ich unsicher bin?",
+            "answer": "Setz die Figur, wenn du mit dem Raten innerhalb der Figurenzahl bleibst. Ein Tipp innerhalb der Anzahl kostet dasselbe wie ein leeres Feld, und ein richtiger Tipp zählt. Ein Tipp, mit dem du über die Anzahl hinausgehst, wird als falsch gewertet und kostet zusätzlich zehn Punkte Genauigkeit."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Erklärt, warum die Taktiken, die du in Aufgaben findest, in Partien fehlen, die Lücke, die dieser Kontrollblick schließen soll."
+          },
+          {
+            "reason": "Behandelt die vergessene Figur, den Läufer oder Turm auf einer langen Linie, der dich von der fernen Seite schlägt."
+          },
+          {
+            "reason": "Liefert die drei Fragen für jeden Zug, mit einer Sicherheitsprüfung, die dieser Kontrollblick zu benannten Feldern ausbaut."
+          },
+          {
+            "reason": "Zeigt, wie du eine verlorene Partie auswertest, damit jeder Eintrag in der Strichliste eine Ursache bekommt."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -83,7 +83,7 @@ describe("middleware on English-only routes", () => {
   });
 
   it("sends a prefixed retired guide straight to the guide that absorbed it in one 308", () => {
-    const response = run("https://thememorychess.com/de/learn/chess-board-vision-drills");
+    const response = run("https://thememorychess.com/it/learn/chess-board-vision-drills");
 
     expect(response.status).toBe(308);
     expect(response.headers.get("location")).toBe(
@@ -202,7 +202,7 @@ describe("middleware on a trailing slash", () => {
     ["https://thememorychess.com/fr/learn/?utm=1", "https://thememorychess.com/learn?utm=1"],
     ["https://thememorychess.com/de/changelog/", "https://thememorychess.com/changelog"],
     [
-      "https://thememorychess.com/de/learn/chess-board-vision-drills/?utm=xyz",
+      "https://thememorychess.com/it/learn/chess-board-vision-drills/?utm=xyz",
       "https://thememorychess.com/learn/how-to-see-the-whole-board-in-chess?utm=xyz",
     ],
     ["https://thememorychess.com/learn/", "https://thememorychess.com/learn"],

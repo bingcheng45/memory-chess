@@ -4,6 +4,7 @@ import { Link } from "@/i18n/navigation";
 import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import LearnSearchBeacon from "@/components/learn/LearnSearchBeacon";
+import GuideTranslations from "@/components/learn/GuideTranslations";
 import LearnSearchResult from "@/components/learn/LearnSearchResult";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { EN_LEARN_PAGES, groupPages } from "@/lib/seo/learn";
@@ -110,6 +111,7 @@ export default async function LearnSearchRoute({ searchParams }: LearnSearchRout
                   >
                     <LearnSearchResult result={result} query={query} />
                   </Link>
+                  {result.kind === "guide" ? <GuideTranslations slug={result.slug} /> : null}
                 </li>
               ))}
             </ol>

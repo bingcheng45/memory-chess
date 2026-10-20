@@ -1,0 +1,63 @@
+{
+  "sourceHash": "d95afec4b44321cc077856fecd32508813476f2595692424e6cb49a8be5a6570",
+  "approvedHash": "64018e91e73f65ad0c34cc5867e57440f6862de8d01de565c2dee2e77f5c3828",
+  "sameAsEnglish": [
+    "sources",
+    "figure",
+    "ctaTag.article"
+  ],
+  "text": {
+    "breadcrumbs": "Fil d’Ariane",
+    "breadcrumbHome": "Accueil",
+    "breadcrumbLearn": "Apprendre",
+    "quickAnswer": "En bref",
+    "takeaways": "À retenir",
+    "audience": "À qui s’adresse ce guide",
+    "contents": "Sur cette page",
+    "allGuides": "Tous les guides",
+    "aimFor": "Objectif :",
+    "atABoard": "Sur un vrai échiquier",
+    "readNext": "À lire ensuite",
+    "sources": "Sources",
+    "faq": "Questions fréquentes",
+    "minRead": "{minutes} min de lecture",
+    "updated": "Mis à jour le {date}",
+    "checked": "Vérifié le {date}",
+    "by": "Par",
+    "figure": "Fig. {n}",
+    "whiteToMove": "Les Blancs jouent.",
+    "blackToMove": "Les Noirs jouent.",
+    "pieces": "{count, plural, one {# pièce} many {# pièces} other {# pièces}}",
+    "secondsToLook": "{seconds} s pour observer",
+    "ctaAction": {
+      "game": "Jouer",
+      "article": "Lire",
+      "stat": "Ouvrir"
+    },
+    "ctaTag": {
+      "article": "Article",
+      "stat": "Tableau de bord"
+    },
+    "quickPlay": "Essayez une manche tout de suite",
+    "tryRound": "Essayez {pieces, plural, one {# pièce} many {# pièces} other {# pièces}}, {seconds, plural, one {# seconde} many {# secondes} other {# secondes}}",
+    "dailyBoard": "Jouer le plateau du jour",
+    "authorshipNote": "Rédigé avec l’aide de l’IA ; positions d’échecs vérifiées par un script et faits sur le jeu vérifiés dans son code.",
+    "translationNote": "Traduit de l’anglais avec l’aide de l’IA et vérifié par une seconde IA, mais pas encore par un locuteur natif.",
+    "readInEnglish": "Le lire en anglais",
+    "levels": {
+      "beginner": "Débutant",
+      "improver": "Débutant à intermédiaire",
+      "intermediate": "Intermédiaire"
+    },
+    "groups": {
+      "foundations": "Pour commencer",
+      "board-vision": "Vision de l’échiquier et gaffes",
+      "visualization": "Visualisation et calcul",
+      "memory": "Mémoire et schémas",
+      "practice": "Pratique et analyse",
+      "science": "La science de la mémoire aux échecs",
+      "using-memory-chess": "Utiliser Memory Chess",
+      "compare": "Comparer les outils d’entraînement"
+    }
+  }
+}

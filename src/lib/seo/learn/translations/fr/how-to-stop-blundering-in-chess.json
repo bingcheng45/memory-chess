@@ -1,0 +1,225 @@
+{
+  "sourceHash": "2e876d5b5c5c75ebdb4f87c75fb7520a2ca35c59bc6d792af9a70faa80dfd00b",
+  "approvedHash": "24cfaf0fc95fb11c10ff326c28f4c4af6148d8da9b795fc3941febcc7551e1a9",
+  "sameAsEnglish": [
+    "sections.own-games-drills.blocks[1].drills[0].duration",
+    "sections.own-games-drills.blocks[1].drills[1].duration"
+  ],
+  "text": {
+    "meta": {
+      "title": "Comment arrêter de gaffer aux échecs",
+      "h1": "Comment arrêter de gaffer aux échecs",
+      "description": "Arrêtez de gaffer aux échecs : un examen en cinq étapes avant chaque coup, une vérification des pièces non défendues et des exercices tirés de vos défaites.",
+      "keywords": {
+        "primary": "arrêter de gaffer aux échecs",
+        "secondary": [
+          "vision de l'échiquier",
+          "pièces non défendues échecs",
+          "échecs prises menaces",
+          "pourquoi je laisse des pièces en prise",
+          "éviter les gaffes aux échecs"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Avant chaque coup, faites un examen en cinq étapes, toujours dans le même ordre. Regardez ce qu’attaque le dernier coup de votre adversaire, listez ses échecs, ses prises et ses menaces, et trouvez vos pièces non défendues, celles qu’aucune pièce ne protège. Demandez-vous ensuite si votre coup arrive sur une case défendue et ce qu’il cesse de protéger, et seulement alors cherchez vos propres échecs et prises.",
+      "takeaways": [
+        "Une gaffe en un coup est un coup qui ne fonctionne que sur l’échiquier que vous avez en tête.",
+        "Une pièce non défendue n’a aucun défenseur : listez les vôtres avant qu’un échec de votre adversaire en trouve une.",
+        "Mesurez l’habitude avec un décompte des gaffes par partie, car la cote dépend aussi des ouvertures, des finales et des appariements."
+      ],
+      "audience": [
+        "Les joueurs qui résolvent bien les exercices tactiques et perdent quand même des pièces sur une réponse en un coup.",
+        "Tous ceux qui ne voient la prise qu’après avoir lâché la pièce.",
+        "Les débutants à qui l’on a dit de ralentir et qui ont constaté que le temps en plus, à lui seul, ne changeait rien."
+      ]
+    },
+    "sections": {
+      "puzzle-vs-game": {
+        "heading": "Pourquoi les pièces tombent en partie et pas dans les exercices",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Un exercice vous dit deux choses avant même que vous regardiez. Il y a une tactique, et c’est à vous de jouer. Une partie ne vous dit ni l’un ni l’autre : une fourchette que vous trouveriez dans un exercice peut passer sans que vous la voyiez.",
+              "Éviter une gaffe en un coup ne demande aucune variante profonde. C’est un coup qui fonctionne sur l’échiquier que vous avez en tête et échoue sur celui qui est sur la table.",
+              "Les deux échiquiers diffèrent de trois façons courantes. La première est le défenseur fantôme, une pièce sur laquelle vous comptez pour reprendre et qui ne peut pas légalement faire cette prise.",
+              "Placez un fou blanc en b5, un cavalier noir en c6, le roi noir en e8 et un pion blanc en e5, avec d7 vide. Le pion vient de prendre une pièce noire en e5. Les Noirs comptaient sur le cavalier pour défendre et prévoyaient de reprendre. Le cavalier est cloué sur le roi : Nxe5 est donc illégal, et la pièce est tout simplement perdue. Le site note les pièces avec les lettres anglaises K, Q, R, B, N, soit R, D, T, F, C en français."
+            ]
+          },
+          {
+            "caption": "Les Noirs comptaient reprendre par Nxe5, mais le fou en b5 cloue le cavalier sur le roi en e8."
+          },
+          {
+            "paragraphs": [
+              "La deuxième est la pièce oubliée, un fou ou une tour qui n’a pas bougé depuis de nombreux coups, si bien que vous ne la regardez plus.",
+              "La troisième est la tâche abandonnée. Si le pion d2 est le seul défenseur de votre cavalier en c3, pousser d2-d4 laisse le cavalier sans défense, alors même que le cavalier n’a jamais bougé."
+            ]
+          },
+          {
+            "caption": "Après d2-d4, le cavalier en c3 n’a plus de défenseur, alors qu’il n’a jamais bougé."
+          }
+        ]
+      },
+      "pre-move-scan": {
+        "heading": "L’examen avant le coup : échecs, prises, menaces et pièces non défendues",
+        "blocks": [
+          {
+            "paragraphs": [
+              "La vision de l’échiquier, c’est un examen que vous faites dans le même ordre avant chaque coup. Avec un ordre fixe, rien ne dépend de l’endroit où vos yeux se posent par hasard."
+            ]
+          },
+          {
+            "items": [
+              "Le dernier coup. Nommez chaque case que la pièce jouée attaque maintenant, et toute ligne qu’elle a ouverte en quittant son ancienne case.",
+              "Les coups forçants de votre adversaire. Listez chaque échec qu’il pourrait donner, chaque prise qu’il pourrait faire et chaque coup qui attaquerait l’une de vos pièces.",
+              "Vos pièces non défendues. Une pièce non défendue est une pièce sans défenseur. Un défenseur cloué ne compte que s’il peut légalement reprendre. Nommez chaque pièce non défendue par sa case, puis nommez toute pièce attaquée plus de fois qu’elle n’est défendue.",
+              "Le coup que vous prévoyez. Comptez les défenseurs de la pièce sur sa nouvelle case. Demandez-vous ensuite ce qu’elle protégeait depuis son ancienne case et quelle ligne elle bloquait.",
+              "Vos propres coups forçants. Maintenant seulement, regardez vos échecs et vos prises, en commençant par toute pièce adverse non défendue."
+            ]
+          },
+          {
+            "title": "Pourquoi les pièces non défendues passent avant vos propres idées",
+            "body": "Une double attaque gagne du matériel quand l’une de ses deux cibles ne peut pas être sauvée. Toute attaque sur une pièce non défendue est déjà une menace : chaque pièce non défendue est donc une demi-tactique qui attend sa seconde moitié."
+          }
+        ]
+      },
+      "loose-bishop-b4": {
+        "heading": "Un seul échec de la dame contre un fou non défendu en b4",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Installez cette position, les Blancs au trait. Les Blancs ont Kg1, Qd1, Ra1, Rf1, Bc1, Nb1, Nf3 et des pions en a2, b2, f2, g2 et h2.",
+              "Les Noirs ont Ke8, Ra8, Rh8, Bc8, Bb4 et des pions en a7, b7, c7, f7, g7 et h7. Aucune pièce noire ne défend le fou en b4.",
+              "Les Blancs jouent Qa4+. La dame fait échec par b5, c6 et d7 jusqu’au roi en e8, et attaque le fou le long de la quatrième rangée."
+            ]
+          },
+          {
+            "caption": "Qa4+ fait échec par b5, c6 et d7 et attaque le fou non défendu en b4."
+          },
+          {
+            "paragraphs": [
+              "Les Noirs doivent d’abord parer l’échec. S’interposer par ...c6, ...b5 ou ...Bd7 ne défend pas b4, pas plus qu’un coup de roi : Qxb4 suit donc.",
+              "L’étape quatre aurait prévenu les Noirs un coup plus tôt. Comptez les défenseurs du fou en b4 avant de l’y jouer : il n’y en a aucun."
+            ]
+          }
+        ]
+      },
+      "invented-pieces": {
+        "heading": "Ce que coûte une pièce inventée dans une manche de Memory Chess",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Une manche de Memory Chess compare l’échiquier que vous avez reconstitué à l’original, case par case. Une pièce ne marque que si la case, le type et la couleur correspondent tous.",
+              "Placer plus de pièces que la position n’en comptait est sanctionné deux fois. Chaque pièce au-delà du nombre est comptée comme fausse et retire en plus dix points à votre précision.",
+              "Une pièce fausse dans la limite du nombre ne coûte pas plus qu’une case vide : la sanction supplémentaire ne frappe donc que les pièces inventées.",
+              "Une manche devient ainsi un test net d’une habitude de gaffe. Une septième pièce sur un échiquier de six pièces est une pièce que votre mémoire a ajoutée, la même erreur que se fier à un défenseur que le vrai échiquier n’a pas."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Pas de septième pièce",
+                "description": "Jouez 4 manches de 6 pièces avec 10 secondes pour observer, en appuyant sur « Réessayer » sur l’écran de résultat pour garder les réglages. Avant chaque validation, comptez vos pièces. Si vous en avez plus de six, retirez celles que vous êtes le moins sûr d’avoir vues. Vous réussissez quand les quatre manches sont validées avec six pièces ou moins.",
+                "duration": "4 manches, environ 4 minutes",
+                "goal": "Distinguer une pièce que vous avez vue d’une pièce que vous avez supposée là.",
+                "play": {
+                  "label": "Jouer 6 pièces, 10 secondes"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "own-games-drills": {
+        "heading": "Exercices sur les pièces non défendues et le dernier coup, tirés de vos défaites",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Les deux exercices utilisent vos propres parties, car ce sont elles qui contiennent les gaffes que vous faites vraiment."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Inventaire des pièces non défendues",
+                "description": "Installez une position de milieu de partie tirée de l’une de vos parties. Pour chacune de vos pièces, notez deux nombres : les attaquants adverses, puis vos défenseurs, sans compter un défenseur cloué au point de ne pas pouvoir reprendre. Entourez chaque pièce sans défenseur. Marquez d’une étoile chaque pièce qui a plus d’attaquants que de défenseurs.",
+                "duration": "5 minutes",
+                "goal": "Voir vos pièces non défendues avant que l’échec d’un adversaire tombe sur l’une d’elles."
+              },
+              {
+                "title": "Relecture du dernier coup",
+                "description": "Rejouez une partie que vous avez perdue. Avant chacun de vos coups, dites à voix haute ce qu’attaque le coup précédent de l’adversaire. Là où la réponse vous surprend, vous avez trouvé la cause.",
+                "duration": "10 minutes",
+                "goal": "Apprendre à quoi ressemblait une menace manquée un coup avant qu’elle frappe."
+              }
+            ]
+          }
+        ]
+      },
+      "blunder-tally": {
+        "heading": "Un décompte des gaffes à côté de chaque résultat",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Pour le décompte, une gaffe est un coup qui perd un pion ou plus face à une réponse à un ou deux coups de profondeur. Une lente dégradation positionnelle ne compte pas, car aucun examen ne la repérerait.",
+              "Notez le nombre à côté de chaque résultat, victoires comprises. Comptez le coup même si votre adversaire a manqué la réponse, car l’habitude mesurée est la vôtre.",
+              "La cote mesure mal cette habitude précise. Elle dépend aussi de vos ouvertures, de vos finales et de vos appariements, alors que le décompte ne bouge qu’avec l’examen."
+            ]
+          }
+        ]
+      },
+      "low-clock-scan": {
+        "heading": "Avec moins de trente secondes, n’examinez que le dernier coup",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Quand il reste peu de temps à la pendule, l’examen complet ne rentre pas : gardez l’étape un et laissez tomber le reste. Une pièce qui vient de bouger a de nouvelles cibles, et l’étape un repère aussi toute ligne qu’elle a ouverte."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jouer 6 pièces avec 10 secondes pour observer",
+        "why": "Six pièces avec dix secondes pour observer, c’est là qu’une septième pièce inventée apparaît pour la première fois : comptez donc avant de valider."
+      },
+      {
+        "label": "Voir votre précision récente",
+        "why": "Une manche avec une septième pièce inventée se voit comme un creux dans la précision récente : regardez-la remonter à mesure que l’habitude de compter s’installe."
+      },
+      {
+        "items": [
+          {
+            "question": "Jouer plus lentement évite-t-il les gaffes ?",
+            "answer": "Seulement si vous consacrez le temps en plus à une question fixe. Une longue réflexion sans liste de vérification porte surtout sur votre propre plan. Consacrez-le à l’examen, en commençant par ce qu’attaque le dernier coup, et les minutes en plus commencent à repérer les réponses que vous manquiez."
+          },
+          {
+            "question": "Faut-il faire tout l’examen à chaque coup ?",
+            "answer": "Faites les cinq étapes après toute prise, tout échec et tout coup de pion qui ouvre une ligne, car ce sont les coups qui changent le plus de cases. Sur un coup calme, faites au moins les étapes un et trois, le dernier coup et vos pièces non défendues."
+          },
+          {
+            "question": "Dans une manche, faut-il laisser une case vide quand je ne suis pas sûr ?",
+            "answer": "Placez la pièce si cette supposition vous laisse dans la limite du nombre de pièces. Une supposition dans la limite coûte autant qu’une case vide, et une supposition juste marque. Une supposition qui vous fait dépasser le nombre est comptée fausse et coûte en plus dix points de précision."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Explique pourquoi les tactiques que vous trouvez dans les exercices disparaissent en partie, l’écart que cet examen doit combler."
+          },
+          {
+            "reason": "Traite de la pièce oubliée, le fou ou la tour à longue portée qui vous bat depuis l’autre côté de l’échiquier."
+          },
+          {
+            "reason": "Donne les trois questions à se poser avant chaque coup, avec une vérification de sécurité que cet examen développe en cases nommées."
+          },
+          {
+            "reason": "Montre comment analyser une partie perdue pour que chaque ligne du décompte reçoive une cause."
+          }
+        ]
+      }
+    ]
+  }
+}

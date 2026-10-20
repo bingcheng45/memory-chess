@@ -1,0 +1,61 @@
+{
+  "sourceHash": "d95afec4b44321cc077856fecd32508813476f2595692424e6cb49a8be5a6570",
+  "approvedHash": "ac1ec3653f7b1d230ac17caffce9ebb7a19992404ed72d17579e1f310989abb2",
+  "sameAsEnglish": [
+    "figure"
+  ],
+  "text": {
+    "breadcrumbs": "Trilha de navegação",
+    "breadcrumbHome": "Início",
+    "breadcrumbLearn": "Aprender",
+    "quickAnswer": "Resposta rápida",
+    "takeaways": "Pontos principais",
+    "audience": "Para quem é",
+    "contents": "Nesta página",
+    "allGuides": "Todos os guias",
+    "aimFor": "Meta:",
+    "atABoard": "Num tabuleiro de verdade",
+    "readNext": "Leia em seguida",
+    "sources": "Fontes",
+    "faq": "Perguntas",
+    "minRead": "{minutes} min de leitura",
+    "updated": "Atualizado em {date}",
+    "checked": "Verificado em {date}",
+    "by": "Por",
+    "figure": "Fig. {n}",
+    "whiteToMove": "Brancas jogam.",
+    "blackToMove": "Pretas jogam.",
+    "pieces": "{count, plural, one {# peça} many {# peças} other {# peças}}",
+    "secondsToLook": "{seconds} s para olhar",
+    "ctaAction": {
+      "game": "Jogar",
+      "article": "Ler",
+      "stat": "Abrir"
+    },
+    "ctaTag": {
+      "article": "Artigo",
+      "stat": "Painel"
+    },
+    "quickPlay": "Jogue uma rodada agora",
+    "tryRound": "Experimente {pieces, plural, one {# peça} many {# peças} other {# peças}}, {seconds, plural, one {# segundo} many {# segundos} other {# segundos}}",
+    "dailyBoard": "Jogue o tabuleiro diário de hoje",
+    "authorshipNote": "Escrito com ajuda de IA; posições de xadrez verificadas por script e fatos do jogo conferidos no código.",
+    "translationNote": "Traduzido do inglês com ajuda de IA e revisado por uma segunda IA, ainda não por um falante nativo.",
+    "readInEnglish": "Leia em inglês",
+    "levels": {
+      "beginner": "Iniciante",
+      "improver": "Iniciante a intermediário",
+      "intermediate": "Intermediário"
+    },
+    "groups": {
+      "foundations": "Comece aqui",
+      "board-vision": "Visão de tabuleiro e erros graves",
+      "visualization": "Visualização e cálculo",
+      "memory": "Memória e padrões",
+      "practice": "Prática e revisão",
+      "science": "A ciência da memória no xadrez",
+      "using-memory-chess": "Como usar o Memory Chess",
+      "compare": "Compare ferramentas de treino"
+    }
+  }
+}

@@ -1,0 +1,259 @@
+{
+  "sourceHash": "b41e3363b91f542f7d98a16ac9e40841fa7a3401b8a66701a68acb292c4ddea4",
+  "approvedHash": "9eb05f6a61d273f4efd0aa6c770e7b0f7e64d44d934425003b7fbbf8a9d42211",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Ajedrez a ciegas para principiantes: 4 etapas",
+      "h1": "Cómo aprender ajedrez a ciegas en cuatro etapas, cada una con su prueba para avanzar",
+      "description": "Unas cinco semanas de ajedrez a ciegas hasta tu primera partida completa: de 3 a 6 minutos al día durante cuatro semanas y luego una partida cada dos días.",
+      "keywords": {
+        "primary": "entrenamiento de ajedrez a ciegas",
+        "secondary": [
+          "ajedrez a ciegas para principiantes",
+          "cómo jugar al ajedrez a ciegas",
+          "jugar al ajedrez sin ver el tablero",
+          "reproducir una partida sin tablero",
+          "ejercicios de concentración en ajedrez"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "El entrenamiento de ajedrez a ciegas sigue un plan de cinco semanas. Empieza con dos reyes que retienes sin tablero, y una prueba decide cuándo pasas a la siguiente etapa. Después aprendes seis comprobaciones que detectan una imagen mental que se desvía, y reproduces diez jugadas de tus propias partidas a partir de la lista de jugadas. Juega una partida completa a ciegas solo cuando hayas superado cada etapa.",
+      "takeaways": [
+        "Cada etapa tiene una prueba, así que sabes cuándo avanzar y cuándo repetir.",
+        "Seis comprobaciones que cumple toda posición de Memory Chess también detectan los peores errores de un tablero mental que se ha desviado.",
+        "Desde la etapa dos, cada prueba te obliga a nombrar las piezas que nunca se movieron, que son las que pierdes.",
+        "Ten la lista de jugadas a la vista hasta que una partida completa salga limpia. Reconstruir la posición a partir de ella es la habilidad."
+      ],
+      "audience": [
+        "Jugadores que probaron una partida a ciegas y perdieron de vista los alfiles antes de la jugada diez.",
+        "Jugadores que pueden seguir una partida en notación con un tablero delante, pero no sin él."
+      ]
+    },
+    "sections": {
+      "how-blindfold-chess-is-played": {
+        "heading": "Cómo se juega al ajedrez a ciegas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "En una partida a ciegas nunca ves las piezas. Cada jugada se anuncia en voz alta en notación algebraica, como e4 o Nf3 (el sitio anota las piezas con las letras inglesas K, Q, R, B, N, que en español son R, D, T, A, C), y tú mantienes la posición en la cabeza. Tu rival puede sentarse ante un tablero normal, o alguien puede mover las piezas en un tablero que tú no ves.",
+              "Algunas webs tienen una opción de partida a ciegas o de piezas ocultas que cumple la misma función. El tablero sigue vacío mientras crece la lista de jugadas. Las reglas no cambian, así que una pieza que olvidas es una pieza que pierdes.",
+              "Por eso la habilidad no consiste en ver a través de una venda. Consiste en nombrar cada casilla sin tablero y actualizar la imagen después de cada jugada. Las cuatro etapas que siguen lo construyen en orden, y la etapa cuatro termina con tu primera partida completa a ciegas."
+            ]
+          }
+        ]
+      },
+      "why-games-collapse": {
+        "heading": "Por qué se viene abajo la primera partida a ciegas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Una partida a ciegas suele fallar por una sola pieza que no se ha movido. Sabes dónde están los caballos porque los moviste tú. El alfil de c1 llevaba doce jugadas quieto, así que salió de la imagen, y juegas como si no estuviera.",
+              "Por eso el entrenamiento construye el tablero entero, incluidas las piezas que nunca se mueven. Cada una de las cuatro etapas que siguen tiene una prueba que superas o repites."
+            ]
+          }
+        ]
+      },
+      "stage-one-two-kings": {
+        "heading": "Etapa uno, dos reyes y nada más",
+        "blocks": [
+          {
+            "paragraphs": [
+              "El nivel predefinido más fácil de Memory Chess es de 2 piezas, y las reglas de la posición hacen que esas dos sean los reyes, nunca en casillas contiguas."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Dos reyes, con los ojos cerrados",
+                "description": "Juega 6 rondas de 2 piezas con 10 segundos para mirar, y pulsa «Reintentar» entre ronda y ronda. Di en voz alta las dos casillas, cierra los ojos, nombra el color de cada casilla, luego ábrelos y coloca los reyes.",
+                "duration": "Unos 3 minutos",
+                "goal": "Retener dos casillas nombradas sin tener el tablero delante.",
+                "play": {
+                  "label": "Jugar 2 piezas, 10 segundos, solo reyes"
+                }
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Para pasar necesitas seis rondas perfectas seguidas en dos días distintos, con el color de las dos casillas también bien. No te saltes los colores. Un alfil vive siempre en un solo color, así que los colores te permiten comprobar tu imagen más adelante.",
+              "Si no puedes decir el color de una casilla sin pensarlo, haz primero la guía de coordenadas y vuelve después."
+            ]
+          }
+        ]
+      },
+      "stage-two-sanity-rules": {
+        "heading": "Etapa dos, seis comprobaciones que detectan un tablero mental que se desvía",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Toda posición que muestra Memory Chess cumple un conjunto fijo de comprobaciones. Las mismas comprobaciones detectan un tablero mental que se desvía. Cuando la posición que imaginas incumple una, la imagen está mal, y la reconstruyes desde la última jugada de la que estás seguro.",
+              "Cumplir las seis no demuestra que la imagen sea correcta. Un caballo desplazado una casilla no incumple ninguna. Detectan los errores gruesos, y las etapas tres y cuatro detectan el resto al comparar con el tablero real."
+            ]
+          },
+          {
+            "items": [
+              "Exactamente un rey de cada color.",
+              "Los dos reyes nunca están en casillas contiguas.",
+              "Ningún peón en la primera fila ni en la octava. Un peón que imaginas en e1 es un peón al que perdiste la pista.",
+              "Los dos alfiles de un bando nunca están en casillas del mismo color. Si imaginas los dos alfiles negros en casillas oscuras, uno está mal colocado.",
+              "Ningún bando tiene más piezas de un tipo de las que trae un juego. Ocho peones, dos caballos, dos alfiles, dos torres, una dama. Si cuentas tres caballos negros, tu imagen se ha inventado uno.",
+              "Los dos reyes nunca están en jaque a la vez, y un rey en jaque pertenece al bando que mueve."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "El mate del pastor sin tablero",
+                "description": "No sigas bajando, para que el diagrama de abajo quede fuera de la vista, y no tengas ningún tablero delante. Di en voz alta 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7#, jugada a jugada. Nombra la casilla de las 31 piezas que quedan, pasa las seis comprobaciones y explica por qué las negras están en mate. Después baja y compara con el diagrama.",
+                "duration": "Unos 5 minutos",
+                "goal": "Cada pieza nombrada en su casilla y el mate explicado antes de mirar el diagrama."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "El mate del pastor es la primera partida adecuada porque dura cuatro jugadas y solo se mueven seis piezas. Las otras 25 siguen donde empezaron, y esas son las que pierde un jugador a ciegas.",
+              "Ahora explica por qué es mate. El rey de e8 no puede capturar en f7, porque el alfil de c4 controla esa casilla. No puede ir a e7, porque la dama de f7 la controla. La dama, el alfil y el peón negros ocupan d8, f8 y d7. El rey negro está en jaque y juegan las negras, así que se cumple el último punto de la lista.",
+              "Para pasar necesitas una pasada limpia en dos días distintos. Limpia quiere decir cada pieza en su casilla y el mate explicado antes de mirar el diagrama."
+            ]
+          },
+          {
+            "caption": "Tras 4.Qxf7# quedan 31 piezas y 25 de ellas nunca se movieron, así que compruébalas primero."
+          },
+          {
+            "paragraphs": [
+              "En una partida real, la coronación puede romper las comprobaciones de los alfiles y del número de piezas. Un peón puede convertirse en un tercer caballo o en un alfil del mismo color que su compañero, así que busca primero las coronaciones en la lista de jugadas."
+            ]
+          }
+        ]
+      },
+      "stage-three-covered-replay": {
+        "heading": "Etapa tres, diez jugadas de tu propia partida a partir de la lista de jugadas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "El mate del pastor se puede aprender de memoria. Tus propias partidas no, así que comprueban si reconstruyes el tablero solo a partir de las jugadas."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Diez jugadas a partir de la lista de jugadas",
+                "description": "Abre una de tus propias partidas en la web donde la jugaste. Tapa el tablero con una hoja de papel o una nota adhesiva, para que solo se vea la lista de jugadas. Lee las diez primeras jugadas de cada bando, 20 en total. Nombra la casilla de cada pieza que sigue en el tablero y pasa las seis comprobaciones. Después avanza el tablero de la web hasta la décima jugada de las negras y cuenta las piezas que pusiste en una casilla equivocada.",
+                "duration": "Unos 6 minutos",
+                "goal": "Ninguna pieza en una casilla equivocada tras diez jugadas de cada bando, sin nada delante salvo la lista de jugadas."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Para pasar necesitas dos reproducciones limpias en días distintos y de partidas distintas. Un solo peón mal colocado en una reproducción puede convertirse en una pieza perdida en una partida a ciegas."
+            ]
+          }
+        ]
+      },
+      "stage-four-with-move-list": {
+        "heading": "Etapa cuatro, una partida con la lista de jugadas a la vista",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Reconstruyes a partir de la lista, así que tenerla a la vista forma parte del ejercicio."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Quince jugadas con la lista de jugadas a la vista",
+                "description": "Juega contra un amigo o contra un motor. Tapa el tablero de la partida con papel, o activa la opción de partida a ciegas o de piezas ocultas de la web si la tiene. Lee la lista de jugadas cuando tu imagen incumpla una de las seis comprobaciones o cuando no estés seguro de dónde está una pieza, nunca para buscar una jugada. En la jugada 15, monta la posición de memoria en un tablero real. Destapa el tablero de la partida y cuenta las piezas de tu tablero real que están en otra casilla.",
+                "duration": "Una partida cada dos días",
+                "goal": "Cada pieza en su casilla en la jugada 15, dos partidas seguidas."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Cuando dos partidas superen la prueba en la jugada 15, juega las siguientes hasta el final con la lista todavía a la vista. Comprueba la posición final en un tablero real de la misma manera. Cuando una partida completa salga limpia, juega la siguiente con la lista oculta. Esa es tu primera partida completa a ciegas."
+            ]
+          }
+        ]
+      },
+      "how-long-each-stage-takes": {
+        "heading": "Cuánto se tarda en aprender ajedrez a ciegas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Las tres primeras etapas llevan unas cuatro semanas, a razón de 3 a 6 minutos al día. La etapa cuatro lleva al menos una semana más. Necesitas dos partidas limpias de 15 jugadas y luego una partida completa limpia, jugando una partida cada dos días. Eso sitúa tu primera partida completa a ciegas, una partida entera con la lista oculta, a unas cinco semanas de hoy.",
+              "Cinco semanas es el plan, no un mínimo ni una promesa. Cada etapa termina con una prueba superada, no con una fecha. Si superas cada prueba a la primera, el camino más rápido son unos 13 días. Son dos días para cada una de las tres primeras etapas y luego una partida cada dos días. Una etapa que no superas añade días, así que repítela en lugar de saltarla."
+            ]
+          },
+          {
+            "steps": [
+              {
+                "label": "Etapa uno, semana 1",
+                "duration": "3 minutos al día",
+                "detail": "Seis rondas de 2 piezas, 10 segundos, que son los dos reyes. Pulsa «Reintentar» entre ronda y ronda, porque «Siguiente ronda» después de una ronda perfecta ofrece 3 piezas. Avanza cuando las seis sean perfectas seguidas, colores incluidos, en dos días distintos."
+              },
+              {
+                "label": "Etapa dos, semana 2",
+                "duration": "5 minutos al día",
+                "detail": "Reproduce el mate del pastor sin tablero, nombra las 31 piezas y pasa las seis comprobaciones. Avanza cuando dos días salgan limpios."
+              },
+              {
+                "label": "Etapa tres, semanas 3 y 4",
+                "duration": "6 minutos al día",
+                "detail": "Diez jugadas de cada bando de una de tus propias partidas cada día. Avanza cuando dos partidas distintas superen la prueba en días distintos sin ninguna pieza en una casilla equivocada."
+              },
+              {
+                "label": "Etapa cuatro, desde la semana 5",
+                "duration": "Una partida cada dos días",
+                "detail": "Quince jugadas con la lista de jugadas a la vista. Pasa a partidas completas cuando dos seguidas salgan limpias, y a una partida con la lista oculta después de una partida completa limpia."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Juega 2 reyes a ciegas, solo con notación",
+        "why": "El modo a ciegas muestra los dos reyes en notación, nunca en el tablero, así que imaginas las dos casillas antes de colocarlos."
+      },
+      {
+        "label": "Cómo jugaba Judit Polgár al ajedrez a ciegas a los siete años",
+        "why": "Lee cómo Judit Polgár jugaba a ciegas a los siete años, la habilidad que este plan construye etapa a etapa."
+      },
+      {
+        "items": [
+          {
+            "question": "¿Debo entrenar también con los niveles de 6 o 12 piezas?",
+            "answer": "Para jugar a ciegas, no. En una partida sigues las piezas a lo largo de jugadas que tú elegiste. Una posición aleatoria de 12 piezas no tiene jugadas que seguir, así que entrena el recuerdo. La etapa uno usa 2 piezas porque las reglas hacen que sean los reyes, el tablero más pequeño que puedes retener."
+          },
+          {
+            "question": "¿Tengo que ser un jugador fuerte primero?",
+            "answer": "No. Necesitas saber cómo se mueve cada pieza y los nombres de las casillas sin contar. La etapa uno no supone nada más. La etapa cuatro supone que lees la notación a velocidad de lectura."
+          },
+          {
+            "question": "¿Y si imagino el tablero desde el lado de las negras?",
+            "answer": "Elige una orientación y mantenla, incluso cuando juegas con negras. Las blancas abajo coinciden con cómo se imprimen los diagramas, y eso la convierte en la opción más fácil. Cambiar a mitad de partida es una forma fácil de perder la pista de un alfil."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Empieza por aquí si con el tablero tapado pierdes piezas tras una sola jugada."
+          },
+          {
+            "reason": "Colores y nombres de las casillas sin contar, lo que la etapa uno da por supuesto."
+          },
+          {
+            "reason": "Para mantener firme la posición inicial dos jugadas dentro de una variante."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "sourceHash": "1e76a79b0ae5ab6f6b4238980f8e2d254e771ef3830048abdda935ebf8dfcf2f",
+  "approvedHash": "df5b08d09821e774a0ff96cb16b015ff86864f517bdc45b0d61ade43c58a48ba",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Visualisierung im Schach trainieren: das Brett sehen",
+      "h1": "Visualisierungsübungen im Schach, die deine Schwachstelle finden und beheben",
+      "description": "Teste dein Brett im Kopf mit vier Runden zu 6 Figuren und 10 Sekunden. Übe dann 8 bis 12 Minuten täglich Visualisierung, die dort ansetzt, wo dein Bild versagt.",
+      "keywords": {
+        "primary": "Visualisierung Schach Übungen",
+        "secondary": [
+          "Schach Visualisierung trainieren",
+          "Schachzüge im Kopf vorstellen",
+          "Brett im Kopf Schach",
+          "Stellung abdecken Übung",
+          "Schach im Kopf üben"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Die besten Visualisierungsübungen im Schach trainieren den Fehler, den du tatsächlich machst. Vier Runden mit 6 Figuren zeigen, ob dir Figuren im Kopf verschwinden, um ein Feld verrutschen oder zu einer anderen Figur werden. Dann deckst du eine Stellung ab, spielst einen Schlagzug aus dem Gedächtnis und nennst jedes Feld der Linie dahinter, bevor du das Brett wieder aufdeckst.",
+      "takeaways": [
+        "Vier Runden mit 6 Figuren und 10 Sekunden sind ein Test von vier Minuten, der zeigt, wie dein Bild versagt.",
+        "Das Ergebnisbrett unterscheidet eine verschwundene Figur von einer verrutschten. Die Genauigkeit kann das nicht.",
+        "Abdecken und Ziehen trainiert, das Bild nach einem Schlagzug zu aktualisieren."
+      ],
+      "audience": [
+        "Wer zwei Züge berechnet, dann wieder aufs Brett schaut und von vorn anfängt.",
+        "Wer den Zug sieht, aber nicht die Stellung, die er hinterlässt."
+      ]
+    },
+    "sections": {
+      "how-the-picture-fails": {
+        "heading": "Warum Figuren im Kopf verschwinden, verrutschen oder sich vertauschen",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Dein Bild ist die Stellung, die du im Kopf behältst. Wenn dort eine Variante schiefgeht, ist eines von drei Dingen passiert, und jedes braucht eine andere Lösung."
+            ]
+          },
+          {
+            "items": [
+              "Eine Figur verschwindet. Eine Figur außerhalb der Variante, etwa ein Bauer auf e4, fällt aus deinem Bild, und du rechnest, als wäre ihr Feld leer.",
+              "Eine Figur verrutscht. Der Turm steht auf d7, aber in deinem Bild steht er auf d6, ein Feld daneben.",
+              "Eine Figur wird vertauscht. Ein Läufer wird zum Springer, oder ein weißer Turm wird zu einem schwarzen."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Ein vierter Fehler ist seltener. Eine Phantomfigur taucht auf, und du rechnest mit einem Verteidiger, den es nicht gibt.",
+              "Memory Chess wertet eine gesetzte Figur nur dann als richtig, wenn Feld, Figurentyp und Farbe mit dem Original übereinstimmen. Durch diese strenge Regel kann schon eine Runde die Fehler auseinanderhalten."
+            ]
+          }
+        ]
+      },
+      "four-minute-check": {
+        "heading": "Der Visualisierungstest in vier Minuten",
+        "summary": "Spiel ihn vor jeder anderen Übung und danach täglich, wie es der Sechswochenplan unten vorsieht.",
+        "blocks": [
+          {
+            "drills": [
+              {
+                "title": "Sechs Figuren, zehn Sekunden, vier Runden",
+                "description": "Spiel 4 Runden mit 6 Figuren und 10 Sekunden zum Einprägen und drück zwischen den Runden auf „Nochmal“. Setz die Figuren und gib ab. Schreib vor der nächsten Runde für jeden Fehler ein Wort auf: verschwunden, verrutscht, vertauscht oder Phantom.",
+                "duration": "Etwa 4 Minuten",
+                "goal": "Eine Strichliste, die zeigt, welchen Fehler du am häufigsten machst.",
+                "play": {
+                  "label": "6 Figuren, 10 Sekunden spielen"
+                }
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Nach dem Abgeben zeigt das Brett die Figuren, die du gesetzt hast. Ein grünes Feld ist richtig. Ein rotes Feld enthält eine Figur, die dort nicht hingehört. Ein roter Ring markiert ein Feld, auf dem im Original eine Figur stand, die du nicht zurückgestellt hast. Wenn du das Feld leer gelassen hast, steht eine blasse Kopie der fehlenden Figur im Ring.",
+              "Lies diese Markierungen, nicht die Genauigkeit. Ein Phantom hat keinen eigenen Ring. Eine siebte Figur erscheint als ein weiteres rotes Feld, und die Genauigkeit sinkt dafür um zehn Punkte."
+            ]
+          }
+        ]
+      },
+      "which-drill-for-which-failure": {
+        "heading": "Welche Übung welchen Fehler behebt",
+        "blocks": [
+          {
+            "columns": [
+              "Fehler",
+              "Was das Ergebnisbrett zeigt",
+              "Was du trainierst"
+            ],
+            "rows": [
+              {
+                "label": "Verschwundene Figur",
+                "cells": [
+                  "Ein Ring mit einer blassen Figur darin und kein verirrtes rotes Feld in der Nähe.",
+                  "Schau in Gruppen. Nenne zuerst den König und seine Nachbarn, dann die Ausreißer."
+                ]
+              },
+              {
+                "label": "Verrutschte Figur",
+                "cells": [
+                  "Ein rotes Feld einen Schritt neben einem Ring, der eine blasse Kopie derselben Figur enthält.",
+                  "Sag beim Hinschauen jeden Feldnamen leise vor dich hin."
+                ]
+              },
+              {
+                "label": "Vertauschte Figur",
+                "cells": [
+                  "Ein rotes Feld in einem Ring. Du hast das Feld gefunden und den Figurentyp oder die Farbe verloren.",
+                  "Sag Farbe und Figurentyp zusammen mit dem Feld, etwa weißer Springer f3."
+                ]
+              },
+              {
+                "label": "Phantomfigur",
+                "cells": [
+                  "Eine Figur mehr, als die Stellung hatte, und zehn Punkte Genauigkeit weg.",
+                  "Zähl deine Figuren, bevor du abgibst. Zähl in einer Variante die Schlagzüge mit."
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cover-and-move": {
+        "heading": "Abdecken und Ziehen: die Übung, um das Bild zu aktualisieren",
+        "summary": "Eine Gedächtnisrunde prüft, ob du ein Bild halten kannst. Diese Übung prüft, ob du es verändern kannst.",
+        "blocks": [
+          {
+            "caption": "Weiß am Zug: Präg dir dieses Brett ein, deck es ab und entscheide dann, ob 1.Nxe5 einen Bauern gewinnt. Die Website schreibt Figuren mit englischen Buchstaben: K, Q, R, B, N statt K, D, T, L, S."
+          },
+          {
+            "paragraphs": [
+              "Präg dir das Brett ein oder bau es an einem echten Brett auf. Weiß hat König g1, Turm e1, Springer f3 und Bauern auf e4, f2, g2 und h2. Schwarz hat König g8, Turm e8, Springer f6 und Bauern auf e5, f7, g7 und h7.",
+              "Deck das Brett ab. Antworte jetzt, ohne es aufzudecken. Gewinnt 1.Nxe5 einen Bauern?"
+            ]
+          },
+          {
+            "items": [
+              "Spiel 1.Nxe5 im Kopf. Sag die e-Linie von oben nach unten auf: Turm e8, dann e7 und e6 leer, Springer e5, Bauer e4, dann e3 und e2 leer, Turm e1.",
+              "Zähl die Angreifer von e5. Der Turm auf e8 greift es einmal an.",
+              "Zähl die Verteidiger von e5. Der Turm auf e1 würde decken, aber dein eigener Bauer auf e4 steht im Weg. Null.",
+              "Zieh dein Fazit. 1.Nxe5 verliert nach 1...Rxe5 einen Springer für einen Bauern. Deck das Brett auf und prüf jedes Feld, das du genannt hast."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Setz jetzt den weißen Bauern von e4 nach d3 und stell dieselbe Frage. Diesmal ist die e-Linie hinter dem Springer frei, also deckt der Turm auf e1 das Feld e5. Nach 1.Nxe5 Rxe5 2.Rxe5 hat Weiß einen Turm und einen Bauern für einen Springer gewonnen. Schwarz sollte also nicht zurückschlagen, und 1.Nxe5 gewinnt glatt einen Bauern.",
+              "Ein Bauer ist ein Feld weitergezogen, und die Antwort hat sich umgedreht. Den Bauern auf e4 vergisst man leicht, weil er in der Variante nie zieht. Bevor du einen Schlagzug beurteilst, sag die ganze Linie oder Diagonale dahinter auf, bis zum Brettrand.",
+              "Mach jeden Tag zwei eigene Stellungen. Deck eine Taktikaufgabe ab, die du gestern gelöst hast, und spiel die Lösung im Kopf. Sag, wo jede gezogene Figur jetzt steht und welche Figuren weg sind. Deck dann auf, spiel die Lösung auf dem Brett aus und prüf jedes Feld, das du genannt hast. Es hat geklappt, wenn alle übereinstimmen.",
+              "Sobald abgedeckte Stellungen fehlerfrei gelingen, überträgt das <l0>Blindschach-Training</l0> dieselbe Gewohnheit von einer Stellung auf eine ganze Partie ganz ohne Brett."
+            ]
+          }
+        ]
+      },
+      "six-week-progression": {
+        "heading": "Sechs Wochen mit einer Zahl im Blick",
+        "blocks": [
+          {
+            "steps": [
+              {
+                "label": "Wochen 1 und 2",
+                "duration": "8 Minuten am Tag",
+                "detail": "Täglich der Test in vier Minuten, dann zwei Stellungen zum Abdecken und Ziehen, jede mit einem einzigen Schlagzug. Die Zahl, auf die du achtest: wie viele der vier Runden perfekt sind."
+              },
+              {
+                "label": "Wochen 3 und 4",
+                "duration": "10 Minuten am Tag",
+                "detail": "Behalte den Test bei. Erweitere Abdecken und Ziehen auf zwei Züge pro Seite und sag zum Schluss die Linie oder Diagonale hinter dem letzten Schlagzug auf. Öffne in deinem Laborbericht die Erinnerung nach Figurentyp. Ein Figurentyp, der niedrig bleibt, ist der, den dein Bild verliert."
+              },
+              {
+                "label": "Wochen 5 und 6",
+                "duration": "12 Minuten am Tag",
+                "detail": "Wenn bei drei deiner letzten fünf Tests in Woche 4 drei von vier Runden perfekt waren, hält dein Bild bei sechs Figuren. Stell den Test auf 8 Figuren mit 10 Sekunden um und fang beim Abdecken und Ziehen wieder mit einem Schlagzug an. Sonst wiederholst du die Wochen 3 und 4."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "6 Figuren, 10 Sekunden spielen",
+        "why": "Vier Runden mit sechs Figuren, mit „Nochmal“ dazwischen, zeigen, ob deine Figuren auf dem Weg zurück verschwinden, um ein Feld verrutschen oder zu einer anderen Figur werden."
+      },
+      {
+        "items": [
+          {
+            "question": "Warum nicht einfach mehr Runden spielen, bis die Genauigkeit steigt?",
+            "answer": "Die Genauigkeit verdeckt, welchen Fehler du machst. Zwei Spieler mit 67 % bei sechs Figuren können entgegengesetzte Probleme haben. Der eine verliert die Ausreißer und sollte in Gruppen schauen. Der andere behält jedes Feld, vertauscht aber die Figuren und sollte Farbe und Figurentyp mitnennen."
+          },
+          {
+            "question": "Soll ich die Visualisierung mit mehr Figuren testen?",
+            "answer": "Erst, wenn sechs Figuren leicht sind. Auf einem Brett mit vielen Fehlern drängen sich Ringe und rote Felder, und du kannst nicht mehr erkennen, welcher Fehler was verursacht hat. Geh zu acht über, sobald bei drei deiner letzten fünf Tests drei von vier Runden perfekt waren. Die Voreinstellung „Schwer“ mit 12 Figuren und 8 Sekunden kommt danach."
+          },
+          {
+            "question": "Kann ich Visualisierungsübungen ohne Schachbrett machen?",
+            "answer": "Ja. Abdecken und Ziehen funktioniert mit jedem Diagramm, das du verdecken kannst, auf Papier oder auf dem Bildschirm. Die Figuren von Hand aufzustellen hilft ein wenig, denn wenn du den Bauern auf e4 selbst setzt, vergisst du ihn schwerer."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Wenn ein abgedecktes Brett leicht wirkt, ist der nächste Schritt eine ganze Partie ohne Brett."
+          },
+          {
+            "reason": "Wendet die Gewohnheit des Abdeckens und Ziehens auf längere Varianten an."
+          },
+          {
+            "reason": "Verfolgt jede Linie von Läufer, Turm und Dame bis zum Rand, die Gewohnheit, auf der Abdecken und Ziehen beruht."
+          },
+          {
+            "reason": "Die Leiter der Figurenzahlen, die du hinaufsteigst, sobald sechs Figuren in drei von vier Runden halten."
+          }
+        ]
+      }
+    ]
+  }
+}

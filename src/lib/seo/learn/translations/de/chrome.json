@@ -1,0 +1,61 @@
+{
+  "sourceHash": "d95afec4b44321cc077856fecd32508813476f2595692424e6cb49a8be5a6570",
+  "approvedHash": "3ddd73e79ed4e4e2a7b28379ee2cc66145051eb345d09862a87053e29d86dd07",
+  "sameAsEnglish": [
+    "ctaTag.stat"
+  ],
+  "text": {
+    "breadcrumbs": "Brotkrümelnavigation",
+    "breadcrumbHome": "Startseite",
+    "breadcrumbLearn": "Lernen",
+    "quickAnswer": "Kurze Antwort",
+    "takeaways": "Das Wichtigste",
+    "audience": "Für wen das ist",
+    "contents": "Auf dieser Seite",
+    "allGuides": "Alle Guides",
+    "aimFor": "Ziel:",
+    "atABoard": "An einem echten Brett",
+    "readNext": "Weiterlesen",
+    "sources": "Quellen",
+    "faq": "Fragen",
+    "minRead": "{minutes} Min. Lesezeit",
+    "updated": "Aktualisiert am {date}",
+    "checked": "Geprüft am {date}",
+    "by": "Von",
+    "figure": "Abb. {n}",
+    "whiteToMove": "Weiß am Zug.",
+    "blackToMove": "Schwarz am Zug.",
+    "pieces": "{count, plural, one {# Figur} other {# Figuren}}",
+    "secondsToLook": "{seconds} s zum Einprägen",
+    "ctaAction": {
+      "game": "Spielen",
+      "article": "Lesen",
+      "stat": "Öffnen"
+    },
+    "ctaTag": {
+      "article": "Artikel",
+      "stat": "Dashboard"
+    },
+    "quickPlay": "Jetzt eine Runde spielen",
+    "tryRound": "{pieces, plural, one {# Figur} other {# Figuren}}, {seconds, plural, one {# Sekunde} other {# Sekunden}} ausprobieren",
+    "dailyBoard": "Das heutige Tagesbrett spielen",
+    "authorshipNote": "Mit KI-Unterstützung geschrieben. Die Schachstellungen wurden per Skript geprüft, die Angaben zum Spiel bis in den Code zurückverfolgt.",
+    "translationNote": "Mit KI-Unterstützung aus dem Englischen übersetzt und von einer zweiten KI geprüft, aber noch nicht von einer Person mit Deutsch als Muttersprache gelesen.",
+    "readInEnglish": "Auf Englisch lesen",
+    "levels": {
+      "beginner": "Anfänger",
+      "improver": "Anfänger bis Fortgeschrittene",
+      "intermediate": "Fortgeschrittene"
+    },
+    "groups": {
+      "foundations": "Hier anfangen",
+      "board-vision": "Brettübersicht und Patzer",
+      "visualization": "Visualisierung und Variantenberechnung",
+      "memory": "Gedächtnis und Muster",
+      "practice": "Üben und Auswerten",
+      "science": "Die Wissenschaft des Schachgedächtnisses",
+      "using-memory-chess": "Memory Chess nutzen",
+      "compare": "Trainingstools im Vergleich"
+    }
+  }
+}

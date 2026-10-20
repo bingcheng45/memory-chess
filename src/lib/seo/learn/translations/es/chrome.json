@@ -1,0 +1,61 @@
+{
+  "sourceHash": "d95afec4b44321cc077856fecd32508813476f2595692424e6cb49a8be5a6570",
+  "approvedHash": "6c09e68235ffb886a3ce91326eb85a93acbc155a373b6fc1fc33e3cc885fc6bd",
+  "sameAsEnglish": [
+    "figure"
+  ],
+  "text": {
+    "breadcrumbs": "Ruta de navegación",
+    "breadcrumbHome": "Inicio",
+    "breadcrumbLearn": "Aprender",
+    "quickAnswer": "Respuesta rápida",
+    "takeaways": "Ideas clave",
+    "audience": "Para quién es",
+    "contents": "En esta página",
+    "allGuides": "Todas las guías",
+    "aimFor": "Objetivo:",
+    "atABoard": "En un tablero real",
+    "readNext": "Lectura siguiente",
+    "sources": "Fuentes",
+    "faq": "Preguntas",
+    "minRead": "{minutes} min de lectura",
+    "updated": "Actualizado el {date}",
+    "checked": "Revisado el {date}",
+    "by": "Por",
+    "figure": "Fig. {n}",
+    "whiteToMove": "Juegan las blancas.",
+    "blackToMove": "Juegan las negras.",
+    "pieces": "{count, plural, one {# pieza} many {# piezas} other {# piezas}}",
+    "secondsToLook": "{seconds} s para mirar",
+    "ctaAction": {
+      "game": "Jugar",
+      "article": "Leer",
+      "stat": "Abrir"
+    },
+    "ctaTag": {
+      "article": "Artículo",
+      "stat": "Panel"
+    },
+    "quickPlay": "Prueba una ronda ahora",
+    "tryRound": "Prueba con {pieces, plural, one {# pieza} many {# piezas} other {# piezas}} y {seconds, plural, one {# segundo} many {# segundos} other {# segundos}}",
+    "dailyBoard": "Juega el tablero del día",
+    "authorshipNote": "Escrito con ayuda de IA; las posiciones de ajedrez se comprobaron con un script y los datos del juego se verificaron en el código.",
+    "translationNote": "Traducido del inglés con ayuda de IA y revisado por una segunda IA, aún no por un hablante nativo.",
+    "readInEnglish": "Leer en inglés",
+    "levels": {
+      "beginner": "Principiante",
+      "improver": "De principiante a intermedio",
+      "intermediate": "Intermedio"
+    },
+    "groups": {
+      "foundations": "Empieza aquí",
+      "board-vision": "Visión del tablero y errores graves",
+      "visualization": "Visualización y cálculo",
+      "memory": "Memoria y patrones",
+      "practice": "Práctica y repaso",
+      "science": "La ciencia de la memoria en el ajedrez",
+      "using-memory-chess": "Cómo usar Memory Chess",
+      "compare": "Comparar herramientas de entrenamiento"
+    }
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
+  "approvedHash": "5d835c54580ce60b347fae51decbed7de147159290a630916846f6d16fa1a109",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Cómo ver todo el tablero en ajedrez",
+      "h1": "Cómo ver todo el tablero en ajedrez",
+      "description": "Para ver todo el tablero en ajedrez, nombra cada pieza de los cuatro bordes antes de cada jugada. Sigue las líneas rivales tras capturas y jugadas de peón.",
+      "keywords": {
+        "primary": "cómo ver todo el tablero en ajedrez",
+        "secondary": [
+          "visión de túnel en ajedrez",
+          "visión del tablero en ajedrez",
+          "cómo revisar el tablero antes de mover",
+          "piezas de largo alcance en ajedrez",
+          "cómo ver las amenazas en ajedrez"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Para ver todo el tablero en ajedrez, haz un barrido de cinco pasos desde los bordes hacia dentro antes de elegir una jugada. Nombra cada pieza de la columna a, la columna h, la primera fila y la octava fila. Después sigue cada alfil, torre y dama rivales hasta el borde, y revisa los caballos y tus propias piezas de largo alcance.",
+      "takeaways": [
+        "Una pieza de largo alcance gana material sin moverse. Cuando un peón sale de su línea, tus ojos siguen al peón y no ven la línea que abrió.",
+        "Sigue cada línea hasta el borde del tablero, porque la primera pieza de la línea puede ser tuya y estar clavada.",
+        "Empieza el barrido por los bordes, porque una mirada que se abre desde tu propia jugada es la última en llegar a ellos."
+      ],
+      "audience": [
+        "Jugadores que pierden material por un alfil o una torre que llevaban muchas jugadas sin moverse.",
+        "Cualquiera cuyos errores graves ocurren en el lado del tablero alejado de la lucha."
+      ]
+    },
+    "sections": {
+      "bishop-on-a2": {
+        "heading": "Por qué no ves los alfiles y las torres de largo alcance",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Monta esta posición con turno de las negras. Las blancas tienen Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 y peones en a3, b2, c2, f2, g2 y h2 (el sitio anota las piezas con las letras inglesas K, Q, R, B, N, que en español son R, D, T, A, C). Las negras tienen Kg8, Ra8, Rd8, Bc8, Nf6 y peones en a7, b7, c7, e6, f7, g7 y h7.",
+              "El alfil de a2 mira por b3, c4, d5, e6, f7 y g8. Los peones negros de e6 y f7 se interponen, y el rey negro espera al final.",
+              "Juega ...e5 para ganar espacio en el centro, y llega Bxf7+. El rey no puede recapturar, porque el caballo de g5 también controla f7, así que las blancas ganan un peón con jaque."
+            ]
+          },
+          {
+            "caption": "Tras ...e5, el alfil de a2 y el caballo de g5 atacan f7, aunque el alfil no se movió."
+          },
+          {
+            "paragraphs": [
+              "Nxf7 es todavía más fuerte. El rey tampoco puede capturar el caballo, porque ahora el alfil controla f7, y el caballo ataca la torre de d8.",
+              "Nada cambió en el alfil. Solo se movió un peón negro. Esto es visión de túnel. Tus ojos siguen al peón hasta e5 y al espacio que gana, así que un alfil que lleva diez jugadas quieto se cae de la imagen.",
+              "Las torres hacen lo mismo con más discreción. Una torre puede pasar toda la partida en h1 hasta que se cambian los peones h, y entonces domina una columna abierta sin haberse movido."
+            ]
+          }
+        ]
+      },
+      "edge-sweep": {
+        "heading": "Cómo barrer el tablero desde los bordes hacia dentro",
+        "blocks": [
+          {
+            "paragraphs": [
+              "El barrido es el remedio contra la visión de túnel. El orden importa más que la velocidad. Haz estos cinco pasos antes de elegir una jugada."
+            ]
+          },
+          {
+            "items": [
+              "Los bordes. Nombra cada pieza de la columna a, la columna h, la primera fila y la octava fila, de los dos bandos. Aquí están las torres que siguen en su casilla inicial y los alfiles replegados a la banda.",
+              "Cada alfil, torre y dama rivales. Sigue cada línea a través de todas las piezas que haya en ella hasta el borde del tablero, y di de quién es cada una.",
+              "Cada caballo rival. Nombra las casillas a las que llega, porque un barrido por líneas nunca las toca.",
+              "Tus propios alfiles, torres y dama, seguidos de la misma manera.",
+              "Por último, tu propia jugada. Revisa la casilla a la que llega y cualquier línea que abra al dejar su casilla anterior."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Aplícalo a la posición del alfil, con negras. El paso uno encuentra el alfil de a2. El paso dos lo sigue por e6 y f7 hasta g8 y nombra cada pieza por la que pasa: tu peón, tu otro peón y tu rey. Ahora ...e5 se lee como una jugada que deja un solo peón entre ese alfil y tu rey."
+            ]
+          }
+        ]
+      },
+      "last-square": {
+        "heading": "Sigue la línea hasta el borde, no hasta la primera pieza",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Un despiste es detener el recorrido en la primera pieza de la línea. Si esa pieza es tuya, no has encontrado un bloqueo. Puede que hayas encontrado una clavada.",
+              "Pon una torre blanca en e1, un caballo negro en e5 y el rey negro en e8, con las casillas intermedias vacías. El caballo no puede moverse en absoluto.",
+              "Así que, con negras, di que la torre ve e8, nunca que tu caballo bloquea la torre. La primera versión anuncia la clavada, y la segunda la esconde."
+            ]
+          }
+        ]
+      },
+      "generated-positions": {
+        "heading": "Por qué una posición generada de 12 piezas entrena el barrido",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Una posición de partida se agrupa. Los peones se bloquean en el centro, las piezas se juntan cerca de los reyes y una esquina puede seguir vacía durante veinte jugadas. Esa agrupación es la razón por la que necesitas el barrido.",
+              "Memory Chess construye una posición nueva para cada ronda, sin ningún plan detrás. Los dos reyes van en casillas al azar que nunca son contiguas. Cada una de las demás piezas va en una casilla vacía al azar, dentro de las reglas de una posición legal.",
+              "Nada empuja las piezas hacia el centro ni hacia los reyes, así que un tablero de 12 piezas puede tener una pieza en cada esquina. Leer primero los bordes y por último el centro es el barrido, hecho de memoria.",
+              "Cuando el barrido aguante de memoria, el <l0>entrenamiento de ajedrez a ciegas</l0> te pide la misma imagen sin ningún tablero delante."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Ronda de memoria empezando por los bordes",
+                "description": "Juega 3 rondas de 12 piezas con 8 segundos para mirar, y pulsa «Reintentar» entre ronda y ronda. Mientras miras, lee primero los bordes y después el centro. Coloca primero las piezas de los bordes. El tablero de resultados marca con un círculo cada casilla que fallaste. Superas la prueba cuando ningún círculo cae en una casilla del borde.",
+                "duration": "3 rondas, unos 5 minutos",
+                "goal": "Retener a la vez los bordes y el centro en lugar de un solo grupo.",
+                "play": {
+                  "label": "Jugar 12 piezas, 8 segundos"
+                }
+              },
+              {
+                "title": "Inventario de los bordes",
+                "description": "Abre una partida comentada en cualquier diagrama del medio juego. Haz una lista de cada pieza de los cuatro bordes. Para cada alfil, torre y dama de la lista, sigue sus líneas hasta el borde y anota cada pieza por la que pasan. Después compruébalo en una segunda pasada. Recorre con el dedo de a1 a h1, h8, a8 y de vuelta a a1, marcando cada pieza de tu lista, y toca cada casilla de cada recorrido. Superas la prueba cuando la segunda pasada no añade nada.",
+                "duration": "4 minutos",
+                "goal": "Que las piezas que sueles pasar por alto sean las primeras de tu lista."
+              }
+            ]
+          }
+        ]
+      },
+      "far-corner-glance": {
+        "heading": "Un último vistazo a la esquina lejana antes de soltar la pieza",
+        "blocks": [
+          {
+            "paragraphs": [
+              "El barrido abre tu reflexión. La tabla cubre los momentos que la rodean."
+            ]
+          },
+          {
+            "columns": [
+              "Momento",
+              "Ojos en la lucha",
+              "Ojos en todo el tablero"
+            ],
+            "rows": [
+              {
+                "label": "Última jugada del rival",
+                "cells": [
+                  "Miras la pieza que se movió y la casilla a la que llegó.",
+                  "Miras la línea que abrió detrás de ella y la casilla que dejó de proteger."
+                ]
+              },
+              {
+                "label": "Después de un cambio",
+                "cells": [
+                  "Cuentas el material.",
+                  "Vuelves a seguir cada línea que abrió el cambio, para los dos bandos."
+                ]
+              },
+              {
+                "label": "Antes de soltar una pieza",
+                "cells": [
+                  "Revisas las casillas cercanas a tu jugada.",
+                  "Revisas la esquina más alejada de tu jugada."
+                ]
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Lo último que tocan tus ojos antes de una jugada es la esquina lejana, y el alfil de a2 es el porqué."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jugar 12 piezas con 8 segundos para mirar",
+        "why": "Doce piezas colocadas al azar pueden caer en cualquier columna o fila, así que los bordes se ponen a prueba tanto como el centro."
+      },
+      {
+        "items": [
+          {
+            "question": "¿Cuándo debo hacer el barrido completo?",
+            "answer": "Hazlo completo después de cualquier jugada de peón, captura o cambio, porque esas son las jugadas que abren líneas. En una jugada tranquila en la que no se movió ningún bloqueo, revisa los cuatro bordes y la línea que hay detrás de la pieza que acaba de moverse, y luego juega."
+          },
+          {
+            "question": "¿Y si el barrido me hace demasiado lento?",
+            "answer": "Mantén el orden y acorta cada paso. Cuando nada ha cambiado en un borde desde tu última jugada, un vistazo lo confirma y sigues adelante. Practica primero el orden en partidas lentas y en rondas de Memory Chess, para que salga solo antes de jugar blitz."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Entrena retener una posición en la cabeza, lo que la ronda de memoria empezando por los bordes exige a toda velocidad."
+          },
+          {
+            "reason": "Ejercicios para nombrar una casilla sin contar, de modo que nombrar cada casilla de una línea no frene el barrido."
+          },
+          {
+            "reason": "Trata el defensor fantasma y la pieza indefensa, las otras formas en que se equivoca tu imagen del tablero."
+          }
+        ]
+      }
+    ]
+  }
+}

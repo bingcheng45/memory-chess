@@ -1,0 +1,255 @@
+{
+  "sourceHash": "fe30fe527e7e3dbc662ae5862afd6102419ffbb7ddffdeba868f4e9c710bf7ae",
+  "approvedHash": "3a3b7865cdacbf0c48be16a94e1e63a2ed0301413ee6b919ad506ffd7d5ce4b3",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Como melhorar no xadrez sendo iniciante",
+      "h1": "Como melhorar no xadrez sendo iniciante",
+      "description": "Plano de quatro semanas para iniciantes no xadrez. Leia o tabuleiro todo, faça uma pergunta de segurança por lance, jogue partidas lentas e anote cada derrota.",
+      "keywords": {
+        "primary": "como melhorar no xadrez",
+        "secondary": [
+          "como evoluir no xadrez",
+          "plano de estudo de xadrez",
+          "treino de xadrez para iniciantes",
+          "rotina de xadrez para iniciantes",
+          "como parar de entregar peças no xadrez"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Para melhorar no xadrez como iniciante, pare de entregar peças antes de estudar aberturas. Todo dia, jogue cinco rodadas curtas de leitura do tabuleiro e depois uma partida lenta em que você faz uma pergunta de segurança antes de cada lance. Depois da partida, escreva uma linha sobre o lance que perdeu material.",
+      "takeaways": [
+        "Acrescente duas peças por semana, mas só depois de uma sessão com cinco rodadas perfeitas no número atual.",
+        "Uma linha depois de cada partida diz se falhou a leitura do tabuleiro, a pergunta ou o ritmo."
+      ],
+      "audience": [
+        "Você sabe como as peças se movem e perde a maioria das partidas por uma peça pendurada.",
+        "Você já assistiu a vídeos de abertura e não sabe dizer por que ainda perde.",
+        "Você quer uma ordem de trabalho, com um próximo passo claro a cada semana."
+      ]
+    },
+    "sections": {
+      "where-games-go": {
+        "heading": "Onde as partidas de iniciantes são realmente perdidas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "No nível iniciante, uma partida costuma se decidir por uma peça perdida a troco de nada ou de um peão. Um cavalo perdido pesa mais do que qualquer coisa que a abertura tenha dado a você.",
+              "O seu cavalo em f3 está cravado na sua dama em d1 pelo bispo preto em g4. As pretas avançam o peão de e5 para e4, e ele ataca o cavalo. Os peões em d6, f7 e h5 bloqueiam todos os xeques da dama e protegem o bispo."
+            ]
+          },
+          {
+            "caption": "O peão em e4 ataca o cavalo em f3, e o cavalo não pode sair sem expor a dama em d1 ao bispo em g4."
+          },
+          {
+            "paragraphs": [
+              "Se o cavalo fica, o peão o captura e você recebe só um peão de volta. Se o cavalo sai, o bispo captura a dama. Nenhum estudo de abertura resolve isso.",
+              "Dois hábitos resolvem. Você enxerga cada peça que está sendo atacada e confere cada lance contra a resposta antes de jogar."
+            ]
+          },
+          {
+            "title": "A ordem que este guia segue",
+            "body": "Primeiro a leitura do tabuleiro, depois a pergunta de segurança, depois partidas mais lentas, depois uma linha após cada partida. As aberturas esperam até as três primeiras ficarem automáticas."
+          }
+        ]
+      },
+      "read-the-board": {
+        "heading": "Etapa 1. Guarde o tabuleiro inteiro na cabeça",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Uma peça costuma ficar pendurada porque ninguém olhou para ela. Você estudou a peça que ia mover, e o resto do tabuleiro ficou sem nenhum olhar.",
+              "Uma rodada do Memory Chess treina o hábito contrário. Ela mostra uma posição por um número fixo de segundos, limpa o tabuleiro e pede que você a reconstrua. Uma peça só conta como correta quando a casa, o tipo e a cor batem.",
+              "Chutar não ajuda, porque peças a mais custam pontos. Coloque cinco peças numa rodada de 4 peças e a sua precisão perde dez pontos, não importa quantas das cinco estejam certas.",
+              "Comece com 4 peças e acrescente duas de cada vez, mantendo o tempo para olhar em 10 segundos. Toda posição tem os dois reis, então uma rodada de 4 peças são os dois reis e mais duas peças."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Quatro peças, em voz alta",
+                "description": "Jogue 4 peças com 10 segundos para olhar, 5 rodadas, apertando \"Tentar de novo\" entre as rodadas. Enquanto a posição estiver na tela, diga em voz alta cada peça e a sua casa, como cavalo branco c3. Depois reconstrua a posição.",
+                "duration": "cerca de 4 minutos",
+                "goal": "As cinco rodadas com 100% numa mesma sessão antes de começar a semana 2.",
+                "play": {
+                  "label": "Jogar 4 peças, 10 segundos"
+                }
+              },
+              {
+                "title": "Seis peças, os mesmos dez segundos",
+                "description": "Jogue 6 peças com 10 segundos para olhar, 5 rodadas, apertando \"Tentar de novo\" entre as rodadas. Continue dizendo cada peça em voz alta e comece pelos dois reis, para que nunca sejam eles os esquecidos.",
+                "duration": "cerca de 5 minutos",
+                "goal": "As cinco rodadas com 100% numa mesma sessão antes de começar a semana 3.",
+                "play": {
+                  "label": "Jogar 6 peças, 10 segundos"
+                }
+              },
+              {
+                "title": "Oito peças, onde esta etapa termina",
+                "description": "Jogue 8 peças com 10 segundos para olhar, 5 rodadas, apertando \"Tentar de novo\" entre as rodadas. Aqui fica apertado dizer cada peça, então diga os pares que se atacam ou se protegem.",
+                "duration": "cerca de 6 minutos",
+                "goal": "A maioria das rodadas com 100%. Oito é o limite deste plano.",
+                "play": {
+                  "label": "Jogar 8 peças, 10 segundos"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "move-question": {
+        "heading": "Etapa 2. Uma pergunta antes de cada lance",
+        "blocks": [
+          {
+            "paragraphs": [
+              "A pergunta de segurança é sempre a mesma. Depois do meu lance, o adversário pode capturar alguma coisa de graça, ou atacar uma peça que não tem para onde fugir? Faça a pergunta em todo lance, inclusive nos lances tranquilos.",
+              "Comece pelo último lance do adversário. Digamos que você está de pretas depois de 1.e4 e5. Se as brancas jogam 2.Bc4 (o site anota as peças com as letras inglesas K, Q, R, B, N, que em português são R, D, T, B, C), o bispo agora mira f7. Se as brancas jogam 2.Qh5, a dama mira f7, e5 e h7.",
+              "Depois confira o seu próprio lance. A peça que você move para de proteger o que protegia. Digamos que você respondeu a 2.Qh5 com 2...Nc6. O cavalo agora protege e5, que a dama ataca. Se mais tarde você mover esse cavalo, o peão de e5 fica solto e a dama o captura com xeque."
+            ]
+          },
+          {
+            "items": [
+              "Diga o último lance do adversário e cada casa nova que ele ataca.",
+              "Escolha o seu lance, mas não toque na peça.",
+              "Faça a pergunta de segurança sobre a posição depois dele, incluindo tudo o que a peça que se move protegia.",
+              "Se a resposta for sim, escolha de novo."
+            ]
+          },
+          {
+            "title": "Por que a pergunta funciona",
+            "body": "Evitar uma perda boba não exige um cálculo longo, só um olhar para a peça certa. A pergunta obriga esse olhar em todo lance."
+          }
+        ]
+      },
+      "slow-games": {
+        "heading": "Etapa 3. Jogue devagar o bastante para usar a pergunta",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Jogue uma partida por dia com 15 minutos para cada lado e 10 segundos de acréscimo por lance, o que se escreve 15+10, ou mais lenta.",
+              "Uma partida de 3 minutos com 40 lances deixa você com menos de 5 segundos por lance. Enquanto a pergunta é nova, ela leva mais tempo do que isso, então na blitz você a pula. No 15+10 há tempo para fazê-la em todo lance."
+            ]
+          }
+        ]
+      },
+      "one-line": {
+        "heading": "Etapa 4. Uma linha depois de cada partida",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Deixe a análise completa com o motor para depois. Ache o primeiro lance em que você perdeu material e escreva uma linha sobre ele. A linha diz qual etapa falhou. Se você não perdeu nada, escreva isso."
+            ]
+          },
+          {
+            "items": [
+              "A etapa 1 falhou se você nunca viu a peça que capturou a sua.",
+              "A etapa 2 falhou se você viu a peça, mas não fez a pergunta antes de jogar.",
+              "A etapa 3 falhou se você fez a pergunta e respondeu com pressa."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Guarde as linhas num lugar só. A cada dez partidas, conte qual etapa aparece mais e treine essa etapa em seguida."
+            ]
+          }
+        ]
+      },
+      "four-weeks": {
+        "heading": "Quatro semanas na ordem certa",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Cada dia tem duas partes, alguns minutos de rodadas e uma partida lenta. Só suba o número de peças no começo de uma semana nova, e só se a meta do exercício da semana anterior foi cumprida. Caso contrário, repita a semana."
+            ]
+          },
+          {
+            "steps": [
+              {
+                "label": "Semana 1",
+                "duration": "4 minutos mais uma partida lenta",
+                "detail": "Cinco rodadas de 4 peças, 10 segundos, com \"Tentar de novo\" entre as rodadas e cada peça dita em voz alta. Depois uma partida 15+10 com a pergunta feita antes de cada lance, e uma linha no final."
+              },
+              {
+                "label": "Semana 2",
+                "duration": "5 minutos mais uma partida lenta",
+                "detail": "Cinco rodadas de 6 peças, 10 segundos, com \"Tentar de novo\" entre as rodadas. Mesma partida, mesma pergunta. Leia as suas linhas da semana 1 antes de jogar."
+              },
+              {
+                "label": "Semana 3",
+                "duration": "6 minutos mais uma partida lenta",
+                "detail": "Cinco rodadas de 8 peças, 10 segundos, com \"Tentar de novo\" entre as rodadas, dizendo os pares que se atacam ou se protegem. Mesma partida, mesma pergunta, mesma linha."
+              },
+              {
+                "label": "Semana 4",
+                "duration": "6 minutos mais uma partida lenta",
+                "detail": "Continue com as rodadas de 8 peças. Conte as suas linhas por etapa. A etapa que aparecer mais é a sua primeira tarefa do mês que vem."
+              }
+            ]
+          }
+        ]
+      },
+      "openings-last": {
+        "heading": "Quando o iniciante deve estudar aberturas?",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Comece quando passar uma semana inteira de partidas sem entregar material. Antes disso, uma variante decorada só leva você até o lance dez numa posição que você ainda não sabe ler.",
+              "Mantenha o primeiro repertório pequeno. De brancas, jogue 1.e4 e desenvolva os cavalos antes dos bispos. De pretas, responda 1.e4 com 1...e5 e 1.d4 com 1...d5.",
+              "Aprenda por que cada lance é jogado antes de aprender o próximo. Quando o adversário sai da teoria, os motivos são tudo o que sobra para você."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jogar 4 peças, 10 segundos",
+        "why": "Quatro peças são o primeiro degrau do hábito de ler o tabuleiro. Olhe, reconstrua e só então pense num lance."
+      },
+      {
+        "items": [
+          {
+            "question": "Quanto tempo até isso aparecer no meu rating?",
+            "answer": "O rating anda devagar e depende de contra quem você é pareado, então uma semana de resultados diz pouco. Olhe as suas últimas dez linhas da etapa 4 e conte as partidas em que você perdeu material. Se esse número cair, o plano está funcionando."
+          },
+          {
+            "question": "O Memory Chess basta sozinho?",
+            "answer": "Não. Uma rodada treina a etapa 1, ler cada peça no tabuleiro. Ela não faz você fazer a pergunta de segurança contra um relógio de verdade nem mostra onde as suas partidas dão errado. As etapas 2 a 4 precisam de partidas de verdade."
+          },
+          {
+            "question": "Devo fazer problemas táticos também?",
+            "answer": "Sim, alguns por dia, quando a partida lenta já fizer parte da rotina. Resolva cada um devagar e confira a melhor resposta do adversário antes de se decidir, o que é de novo a pergunta de segurança. Reserve cerca de um minuto por problema."
+          },
+          {
+            "question": "Em qual número de peças devo parar?",
+            "answer": "Oito peças com 10 segundos é onde este plano para. Além disso, peças a mais treinam mais a memória do que o hábito de olhar para cada peça nas suas partidas. O guia de treino de memória no xadrez leva a escada até 12 peças."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Uma lista de verificação mais longa para a etapa 2, quando a pergunta única já for automática."
+          },
+          {
+            "reason": "Acrescenta um plano para o lance por cima da pergunta de segurança, quando ela já sair sem esforço."
+          },
+          {
+            "reason": "Transforma a linha da etapa 4 numa análise de dez minutos."
+          },
+          {
+            "reason": "A escada de leitura do tabuleiro além de oito peças, para quem gosta das rodadas."
+          },
+          {
+            "reason": "Como dimensionar o hábito de problemas táticos que fica ao lado destas etapas."
+          },
+          {
+            "reason": "Encaixa as quatro etapas numa sessão fixa de vinte minutos para os dias sem tempo para uma partida lenta."
+          }
+        ]
+      }
+    ]
+  }
+}

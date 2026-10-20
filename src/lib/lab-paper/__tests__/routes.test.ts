@@ -22,9 +22,13 @@ describe("the Lab Paper route registry", () => {
     expect(isLabPaperRoute("/privacy", "en")).toBe(true);
   });
 
-  it("draws the Learn hub and every guide in Lab Paper in English only", () => {
+  it("draws the Learn hub and every guide in Lab Paper in English, and a translated guide in each locale it is served in", () => {
     expect(isLabPaperRoute("/learn", "en")).toBe(true);
     expect(isLabPaperRoute("/learn/how-to-stop-blundering-in-chess", "en")).toBe(true);
+    expect(isLabPaperRoute("/learn/how-to-stop-blundering-in-chess", "de")).toBe(true);
+    expect(isLabPaperRoute("/learn/how-to-stop-blundering-in-chess", "pt-BR")).toBe(true);
+    expect(isLabPaperRoute("/learn/how-to-stop-blundering-in-chess", "it")).toBe(false);
+    expect(isLabPaperRoute("/learn/chess-memory-training", "de")).toBe(false);
     expect(isLabPaperRoute("/learn", "de")).toBe(false);
     expect(isLabPaperRoute("/learning", "en")).toBe(false);
   });

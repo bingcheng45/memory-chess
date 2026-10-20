@@ -2,60 +2,61 @@ import type { Square } from "chess.js";
 import type { PhotoCredit } from "@/lib/articles/schema";
 import type { DashboardTileId } from "@/lib/lab/dashboard";
 import type { LearnPosition } from "./positions";
+import GUIDE_CHROME from "./guideChrome";
 
 export const LEARN_GROUPS = [
   {
     id: "foundations",
-    label: "Start here",
+    label: GUIDE_CHROME.groups["foundations"],
     description: "How to improve from scratch and what to think about on every move.",
     status: "live",
     placement: "path",
   },
   {
     id: "board-vision",
-    label: "Board vision and blunders",
+    label: GUIDE_CHROME.groups["board-vision"],
     description: "See every piece, read squares at a glance, and stop dropping material.",
     status: "live",
     placement: "path",
   },
   {
     id: "visualization",
-    label: "Visualization and calculation",
+    label: GUIDE_CHROME.groups["visualization"],
     description: "Hold a position in your head and move pieces there without losing it.",
     status: "live",
     placement: "path",
   },
   {
     id: "memory",
-    label: "Memory and patterns",
+    label: GUIDE_CHROME.groups["memory"],
     description: "Recall positions square by square and learn shapes worth remembering.",
     status: "live",
     placement: "path",
   },
   {
     id: "practice",
-    label: "Practice and review",
+    label: GUIDE_CHROME.groups["practice"],
     description: "Short routines, puzzle counts and how to learn from your own games.",
     status: "live",
     placement: "path",
   },
   {
     id: "science",
-    label: "The science of chess memory",
+    label: GUIDE_CHROME.groups["science"],
     description: "What de Groot, Chase and Simon and later research found, written for players.",
     status: "planned",
     placement: "path",
   },
   {
     id: "using-memory-chess",
-    label: "Using Memory Chess",
+    label: GUIDE_CHROME.groups["using-memory-chess"],
     description: "How a round is scored, what each preset tests and what your dashboard figures mean.",
     status: "planned",
     placement: "path",
   },
   {
     id: "compare",
-    label: "Compare training tools",
+    label: GUIDE_CHROME.groups["compare"],
     description: "What each memory and visualization trainer offers, read from its own pages and dated.",
     status: "live",
     placement: "shelf",
@@ -68,16 +69,12 @@ export const LEARN_GROUPS = [
   readonly placement: "path" | "shelf";
 }[];
 
-export type LearnGroup = (typeof LEARN_GROUPS)[number];
+type WithLabel<T> = T extends unknown ? Omit<T, "label"> & { readonly label: string } : never;
+
+export type LearnGroup = WithLabel<(typeof LEARN_GROUPS)[number]>;
 export type LearnGroupId = LearnGroup["id"];
 
-export const LEARN_LEVELS = {
-  beginner: "Beginner",
-  improver: "Beginner to intermediate",
-  intermediate: "Intermediate",
-} as const;
-
-export type LearnLevel = keyof typeof LEARN_LEVELS;
+export type LearnLevel = keyof typeof GUIDE_CHROME.levels;
 
 export type InlineLink = { readonly text: string; readonly href: `/${string}` };
 
@@ -220,6 +217,3 @@ export const LEARN_AUTHOR = {
   id: "https://thememorychess.com/about#bing-cheng",
 } as const;
 
-/** Shown after the author's name on every guide. */
-export const LEARN_AUTHORSHIP_NOTE =
-  "Written with AI assistance; chess positions checked by script and game facts traced to the code.";

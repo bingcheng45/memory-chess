@@ -1,8 +1,11 @@
 import type { Metadata } from "next";
 import { DEFAULT_LOCALE, LOCALE_LABELS, LOCALES } from "@/i18n/routing";
 import { ARTICLES_PATH } from "@/lib/articles/paths";
+import { localizedPath } from "@/lib/seo/alternates";
 import { TRANSLATED_ARTICLE_LOCALES } from "@/lib/articles/translatedLocales";
 import { PAGE_ROUTES, TRANSLATED_PAGE_LOCALES } from "@/lib/pages/translatedLocales";
+import SERVED_GUIDES from "@/lib/seo/learn/servedGuides.json";
+import { TRANSLATED_GUIDE_LOCALES, TRANSLATED_GUIDE_SLUGS, isIndexedGuideLocale } from "@/lib/seo/learn/translatedGuides";
 
 const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } } as const;
 
@@ -56,9 +59,8 @@ export function isIndexedInDefaultLocaleOnly(path: string): boolean {
   return DEFAULT_LOCALE_INDEXED_ROUTES.some((route) => isUnder(path, route));
 }
 
-/** The robots metadata for a page: noindex on a translation of a route indexed only in English. */
 export function robotsFor(path: string, locale: string): Metadata["robots"] {
-  return isIndexedInDefaultLocaleOnly(path) && locale !== DEFAULT_LOCALE ? NOINDEX_FOLLOW : undefined;
+  return locale !== DEFAULT_LOCALE && !indexedLocalesOf(path).includes(locale) ? NOINDEX_FOLLOW : undefined;
 }
 
 /**
@@ -72,8 +74,28 @@ export function englishOnlyLinkSuffix(locale: string): string {
 
 /** Whether a path is read in English alone: an English-only route, or a translated route no locale serves yet. */
 export function isEnglishOnlyPath(path: string): boolean {
-  if (ENGLISH_ONLY_ROUTES.some((route) => isUnder(path, route))) return true;
-  return TRANSLATED_ROUTES.some(([route, locales]) => isUnder(path, route) && locales.length === 0);
+  const translated = translatedRouteOf(path);
+  if (translated) return translated.translatedLocales.length === 0;
+  return ENGLISH_ONLY_ROUTES.some((route) => isUnder(path, route));
+}
+
+type TranslatedRoute = {
+  readonly route: string;
+  readonly translatedLocales: readonly string[];
+  readonly indexed: readonly string[];
+  readonly withheld: readonly string[];
+};
+
+const servedGuideLocales: Readonly<Record<string, readonly string[]>> = SERVED_GUIDES;
+
+function guideRoute(slug: string): TranslatedRoute {
+  const translatedLocales = servedGuideLocales[slug] ?? [];
+  return {
+    route: `/learn/${slug}`,
+    translatedLocales,
+    indexed: translatedLocales.filter(isIndexedGuideLocale),
+    withheld: TRANSLATED_GUIDE_LOCALES.filter((locale) => !translatedLocales.includes(locale)),
+  };
 }
 
 /**
@@ -81,15 +103,39 @@ export function isEnglishOnlyPath(path: string): boolean {
  * place that says which locale reads which route in its own language; the redirects, the links, the language
  * switcher and the Lab Paper shell all derive from it. A route here covers every path beneath it.
  */
-const TRANSLATED_ROUTES: readonly (readonly [route: string, locales: readonly string[]])[] = [
-  [ARTICLES_PATH, TRANSLATED_ARTICLE_LOCALES],
-  ...PAGE_ROUTES.map((route) => [route, TRANSLATED_PAGE_LOCALES] as const),
+const TRANSLATED_ROUTES: readonly TranslatedRoute[] = [
+  { route: ARTICLES_PATH, translatedLocales: TRANSLATED_ARTICLE_LOCALES, indexed: [], withheld: [] },
+  ...PAGE_ROUTES.map((route) => ({ route, translatedLocales: TRANSLATED_PAGE_LOCALES, indexed: [], withheld: [] })),
+  ...TRANSLATED_GUIDE_SLUGS.map(guideRoute),
 ];
+
+const translatedRouteOf = (path: string) => TRANSLATED_ROUTES.find(({ route }) => isUnder(path, route));
+
+export function isPartlyTranslatedPath(path: string): boolean {
+  return translatedRouteOf(path) !== undefined;
+}
+
+export function indexedLocalesOf(path: string): readonly string[] {
+  if (isIndexedInDefaultLocaleOnly(path)) return [DEFAULT_LOCALE];
+  const translated = translatedRouteOf(path);
+  if (translated) return [DEFAULT_LOCALE, ...translated.indexed];
+  return isEnglishOnlyPath(path) ? [DEFAULT_LOCALE] : LOCALES;
+}
+
+export function alternatesLinkHeader(path: string, locale: string, origin: string): string | null {
+  const locales = indexedLocalesOf(path);
+  if (locales.length < 2 || !locales.includes(locale)) return null;
+  const alternates = [...locales.map((locale) => [locale, localizedPath(path, locale)]), ["x-default", path]];
+  return alternates.map(([hreflang, href]) => `<${origin}${href}>; rel="alternate"; hreflang="${hreflang}"`).join(", ");
+}
+
+export function isWithheldTranslation(path: string, locale: string): boolean {
+  return translatedRouteOf(path)?.withheld.includes(locale) ?? false;
+}
 
 /** The locales that serve an unprefixed path of a route in `TRANSLATED_ROUTES`, English first; English alone outside it. */
 export function servedLocalesOf(path: string): readonly string[] {
-  const translated = TRANSLATED_ROUTES.find(([route]) => isUnder(path, route));
-  return [DEFAULT_LOCALE, ...(translated?.[1] ?? [])];
+  return [DEFAULT_LOCALE, ...(translatedRouteOf(path)?.translatedLocales ?? [])];
 }
 
 /**
@@ -99,6 +145,5 @@ export function servedLocalesOf(path: string): readonly string[] {
  */
 export function isServedAtBareEnglishUrl(path: string, locale: string): boolean {
   if (isEnglishOnlyPath(path) || UNLISTED_ROUTES.some((route) => isUnder(path, route))) return true;
-  const isTranslatedRoute = TRANSLATED_ROUTES.some(([route]) => isUnder(path, route));
-  return isTranslatedRoute && (locale === DEFAULT_LOCALE || !servedLocalesOf(path).includes(locale));
+  return isPartlyTranslatedPath(path) && (locale === DEFAULT_LOCALE || !servedLocalesOf(path).includes(locale));
 }

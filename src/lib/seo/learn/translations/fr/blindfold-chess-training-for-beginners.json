@@ -1,0 +1,259 @@
+{
+  "sourceHash": "b41e3363b91f542f7d98a16ac9e40841fa7a3401b8a66701a68acb292c4ddea4",
+  "approvedHash": "3b6e3aaec3feaa1314337db0be2adf1e5c38e3ea9e5785805ae9e5ff961eae13",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Échecs à l’aveugle pour débutants : 4 étapes",
+      "h1": "Apprendre à jouer à l’aveugle en quatre étapes, chacune avec son seuil de réussite",
+      "description": "Comptez environ cinq semaines jusqu’à une première partie entière à l’aveugle : 3 à 6 minutes par jour durant quatre semaines, puis une partie un jour sur deux.",
+      "keywords": {
+        "primary": "échecs à l'aveugle",
+        "secondary": [
+          "jouer aux échecs à l'aveugle",
+          "apprendre les échecs à l'aveugle",
+          "entraîner son échiquier mental",
+          "rejouer une partie sans échiquier",
+          "exercices de concentration échecs"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "L’entraînement aux échecs à l’aveugle suit un programme de cinq semaines qui commence par deux rois gardés en tête sans échiquier, et des seuils de réussite décident du moment où vous passez à la suite. Apprenez ensuite six contrôles qui repèrent une image mentale qui dérive, puis rejouez dix coups de vos propres parties à partir de la liste des coups. Ne jouez une partie entière à l’aveugle qu’une fois chaque étape réussie.",
+      "takeaways": [
+        "Chaque étape a son seuil de réussite : vous savez quand passer à la suite et quand recommencer.",
+        "Six contrôles que passe toute position de Memory Chess repèrent aussi les pires erreurs d’un échiquier mental qui a dérivé.",
+        "Dès l’étape deux, chaque test vous fait nommer les pièces qui n’ont jamais bougé, celles que l’on perd.",
+        "Gardez la liste des coups sous les yeux jusqu’à ce qu’une partie entière se termine sans faute. Reconstruire la position à partir d’elle, c’est justement la compétence."
+      ],
+      "audience": [
+        "Les joueurs qui ont tenté une partie à l’aveugle et avaient perdu les fous de vue au dixième coup.",
+        "Les joueurs qui suivent une partie en notation avec un échiquier, mais pas sans."
+      ]
+    },
+    "sections": {
+      "how-blindfold-chess-is-played": {
+        "heading": "Comment jouer aux échecs à l’aveugle",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Dans une partie à l’aveugle, vous ne voyez jamais les pièces. Votre adversaire et vous annoncez chaque coup en notation algébrique, par exemple e4 ou Nf3 (le site note les pièces avec les lettres anglaises K, Q, R, B, N, soit R, D, T, F, C en français), et vous gardez la position en tête. Votre adversaire peut jouer devant un échiquier normal, ou quelqu’un peut déplacer les pièces sur un échiquier que vous ne voyez pas.",
+              "Certains sites en ligne proposent un réglage « à l’aveugle » ou « pièces masquées » qui fait la même chose. L’échiquier reste vide pendant que la liste des coups s’allonge. Les règles ne changent pas : une pièce oubliée est une pièce perdue.",
+              "La compétence ne consiste donc pas à voir à travers un bandeau. Elle consiste à nommer chaque case sans échiquier et à mettre l’image à jour après chaque coup. Les quatre étapes ci-dessous la construisent dans l’ordre, et l’étape quatre se termine par votre première partie entière à l’aveugle."
+            ]
+          }
+        ]
+      },
+      "why-games-collapse": {
+        "heading": "Pourquoi une première partie à l’aveugle s’effondre",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Une partie à l’aveugle échoue souvent à cause d’une seule pièce qui n’a pas bougé. Vous savez où sont les cavaliers, parce que vous les avez joués. Le fou de c1, lui, est resté immobile pendant douze coups : il est sorti de l’image, et vous jouez comme s’il n’était pas là.",
+              "L’entraînement construit donc tout l’échiquier, y compris les pièces qui ne bougent jamais. Chacune des quatre étapes ci-dessous comporte un test que vous réussissez ou que vous recommencez."
+            ]
+          }
+        ]
+      },
+      "stage-one-two-kings": {
+        "heading": "Étape un : les deux rois, et rien d’autre",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Le réglage le plus facile de Memory Chess compte 2 pièces, et les règles des positions en font les deux rois, jamais sur des cases adjacentes."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Deux rois, les yeux fermés",
+                "description": "Jouez 6 manches de 2 pièces avec 10 secondes pour observer, en appuyant sur « Réessayer » entre les manches. Dites les deux cases à voix haute, fermez les yeux, donnez la couleur de chaque case, puis rouvrez-les et placez les rois.",
+                "duration": "Environ 3 minutes",
+                "goal": "Garder en tête deux cases nommées sans avoir l’échiquier sous les yeux.",
+                "play": {
+                  "label": "Jouer 2 pièces, 10 secondes, les rois seuls"
+                }
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Le seuil de réussite : six manches parfaites d’affilée, deux jours différents, avec en plus la bonne couleur pour les deux cases. Ne sautez pas les couleurs. Un fou ne vit jamais que sur une seule couleur, donc les couleurs vous serviront plus tard à tester votre image.",
+              "Si vous ne pouvez pas donner la couleur d’une case sans réfléchir, travaillez d’abord le guide des coordonnées, puis revenez."
+            ]
+          }
+        ]
+      },
+      "stage-two-sanity-rules": {
+        "heading": "Étape deux : six contrôles qui repèrent un échiquier mental qui dérive",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Chaque position que montre Memory Chess passe un ensemble fixe de contrôles. Ces mêmes contrôles repèrent un échiquier mental qui dérive. Quand la position que vous imaginez en rate un, l’image est fausse, et vous la reconstruisez à partir du dernier coup dont vous êtes sûr.",
+              "Réussir les six ne prouve pas que l’image est juste. Un cavalier décalé d’une case n’en rate aucun. Ils repèrent les erreurs grossières, et les étapes trois et quatre repèrent le reste en comparant avec le vrai échiquier."
+            ]
+          },
+          {
+            "items": [
+              "Exactement un roi de chaque couleur.",
+              "Les deux rois ne sont jamais sur des cases adjacentes.",
+              "Aucun pion sur la première ni sur la huitième rangée. Un pion que vous imaginez en e1 est un pion dont vous avez perdu la trace.",
+              "Les deux fous d’un même camp ne sont jamais sur des cases de même couleur. Si vous imaginez les deux fous noirs sur des cases noires, l’un d’eux est mal placé.",
+              "Aucun camp n’a plus d’exemplaires d’une pièce qu’un jeu n’en contient. Huit pions, deux cavaliers, deux fous, deux tours, une dame. Si vous comptez trois cavaliers noirs, votre image en a inventé un.",
+              "Les deux rois ne sont jamais en échec en même temps, et un roi en échec appartient au camp qui a le trait."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Le coup du berger sans échiquier",
+                "description": "Arrêtez de faire défiler la page ici, pour que le diagramme ci-dessous reste hors de vue, et ne gardez aucun échiquier devant vous. Dites 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7# à voix haute, un coup à la fois. Donnez la case des 31 pièces restantes, faites les six contrôles et expliquez pourquoi les Noirs sont mat. Faites ensuite défiler la page et comparez avec le diagramme.",
+                "duration": "Environ 5 minutes",
+                "goal": "Chaque pièce nommée sur sa case et le mat expliqué avant de regarder le diagramme."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Le coup du berger est la bonne première partie : il dure quatre coups et seules six pièces bougent. Les 25 autres sont toujours sur leur case de départ, et ce sont elles qu’un joueur à l’aveugle oublie.",
+              "Expliquez maintenant pourquoi il y a mat. Le roi en e8 ne peut pas prendre en f7, car le fou de c4 contrôle cette case. Il ne peut pas aller en e7, car la dame en f7 la contrôle. Les Noirs bloquent eux-mêmes d8, f8 et d7 avec leur dame, leur fou et leur pion. Le roi noir est en échec et les Noirs ont le trait : le dernier point de la liste est donc vérifié.",
+              "Le seuil de réussite : un parcours sans faute, deux jours différents. Sans faute veut dire chaque pièce sur sa case et le mat expliqué avant de regarder le diagramme."
+            ]
+          },
+          {
+            "caption": "Après 4.Qxf7#, il reste 31 pièces, dont 25 n’ont jamais bougé : vérifiez-les d’abord."
+          },
+          {
+            "paragraphs": [
+              "Dans une vraie partie, une promotion peut faire échouer les contrôles des fous et du nombre de pièces. Un pion peut devenir un troisième cavalier ou un fou sur la couleur de son partenaire : cherchez donc d’abord les promotions dans la liste des coups."
+            ]
+          }
+        ]
+      },
+      "stage-three-covered-replay": {
+        "heading": "Étape trois : dix coups d’une de vos parties, à partir de la liste des coups",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Le coup du berger peut s’apprendre par cœur. Vos propres parties, non : elles vérifient donc si vous reconstruisez l’échiquier à partir des seuls coups."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Dix coups à partir de la liste des coups",
+                "description": "Ouvrez une de vos parties sur le site où vous l’avez jouée. Couvrez l’échiquier avec une feuille de papier ou un post-it, pour que seule la liste des coups reste visible. Lisez les dix premiers coups de chaque camp, 20 en tout. Donnez la case de chaque pièce encore sur l’échiquier et faites les six contrôles. Avancez ensuite l’échiquier du site jusqu’au dixième coup des Noirs et comptez les pièces que vous avez placées sur une mauvaise case.",
+                "duration": "Environ 6 minutes",
+                "goal": "Aucune pièce sur une mauvaise case après dix coups de chaque camp, avec seulement la liste des coups devant vous."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Le seuil de réussite : deux reconstitutions sans faute, deux jours différents, à partir de deux parties différentes. Un seul pion mal placé dans une reconstitution peut devenir une pièce perdue dans une partie à l’aveugle."
+            ]
+          }
+        ]
+      },
+      "stage-four-with-move-list": {
+        "heading": "Étape quatre : une partie avec la liste des coups sous les yeux",
+        "blocks": [
+          {
+            "paragraphs": [
+              "C’est à partir de la liste que vous reconstruisez la position : la garder sous les yeux fait donc partie de l’exercice."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Quinze coups avec la liste des coups sous les yeux",
+                "description": "Jouez contre un ami ou un moteur. Couvrez l’échiquier de la partie avec du papier, ou activez le réglage « à l’aveugle » ou « pièces masquées » du site s’il en a un. Lisez la liste des coups quand votre image rate l’un des six contrôles ou quand vous ne savez plus où se trouve une pièce, jamais pour trouver un coup. Au 15e coup, installez la position de mémoire sur un vrai échiquier. Découvrez l’échiquier de la partie et comptez les pièces de votre vrai échiquier qui se trouvent sur une autre case.",
+                "duration": "Une partie un jour sur deux",
+                "goal": "Chaque pièce sur sa case au 15e coup, deux parties de suite."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Une fois deux parties réussies au 15e coup, jouez les suivantes jusqu’au bout, toujours avec la liste sous les yeux. Vérifiez la position finale sur un vrai échiquier de la même façon. Quand une partie entière se termine sans faute, jouez la suivante avec la liste masquée. C’est votre première partie entière à l’aveugle."
+            ]
+          }
+        ]
+      },
+      "how-long-each-stage-takes": {
+        "heading": "Combien de temps pour apprendre à jouer à l’aveugle",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Les trois premières étapes prennent environ quatre semaines, à raison de 3 à 6 minutes par jour. L’étape quatre prend au moins une semaine de plus. Il vous faut deux parties de 15 coups sans faute, puis une partie entière sans faute, en jouant une partie un jour sur deux. Votre première partie entière à l’aveugle, une partie complète avec la liste masquée, arrive donc dans environ cinq semaines.",
+              "Cinq semaines, c’est le programme, pas un minimum ni une promesse. Chaque étape se termine sur un seuil de réussite, pas sur une date. Si chaque test est réussi du premier coup, le chemin le plus rapide prend environ 13 jours. Soit deux jours pour chacune des trois premières étapes, puis une partie un jour sur deux. Une étape ratée ajoute des jours : recommencez-la plutôt que de sauter à la suivante."
+            ]
+          },
+          {
+            "steps": [
+              {
+                "label": "Étape un, semaine 1",
+                "duration": "3 minutes par jour",
+                "detail": "Six manches de 2 pièces, 10 secondes, c’est-à-dire les deux rois. Appuyez sur « Réessayer » entre les manches, car « Manche suivante » après une manche parfaite propose 3 pièces. Passez à la suite quand les six sont parfaites d’affilée, couleurs comprises, deux jours différents."
+              },
+              {
+                "label": "Étape deux, semaine 2",
+                "duration": "5 minutes par jour",
+                "detail": "Rejouez le coup du berger sans échiquier, nommez les 31 pièces et faites les six contrôles. Passez à la suite après deux jours sans faute."
+              },
+              {
+                "label": "Étape trois, semaines 3 et 4",
+                "duration": "6 minutes par jour",
+                "detail": "Chaque jour, dix coups de chaque camp tirés d’une de vos parties. Passez à la suite quand deux parties différentes sont réussies deux jours différents, sans aucune pièce sur une mauvaise case."
+              },
+              {
+                "label": "Étape quatre, à partir de la semaine 5",
+                "duration": "Une partie un jour sur deux",
+                "detail": "Quinze coups avec la liste des coups sous les yeux. Passez aux parties entières quand deux de suite sont sans faute, puis à une partie avec la liste masquée après une partie entière sans faute."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jouer 2 rois à l’aveugle, en notation seulement",
+        "why": "Le mode à l’aveugle affiche les deux rois en notation, jamais sur l’échiquier : vous imaginez donc les deux cases avant de les placer."
+      },
+      {
+        "label": "Comment Judit Polgár jouait à l’aveugle à sept ans",
+        "why": "Découvrez comment Judit Polgár jouait à l’aveugle à sept ans, la compétence que ce programme construit étape par étape."
+      },
+      {
+        "items": [
+          {
+            "question": "Faut-il aussi s’entraîner avec les réglages à 6 ou 12 pièces ?",
+            "answer": "Pas pour le jeu à l’aveugle. Dans une partie, vous suivez les pièces au fil de coups que vous avez choisis. Une position aléatoire de 12 pièces n’a aucun coup à suivre : elle entraîne plutôt la mémorisation. L’étape un utilise 2 pièces parce que les règles en font les rois, le plus petit échiquier que l’on puisse garder en tête."
+          },
+          {
+            "question": "Faut-il d’abord être un joueur fort ?",
+            "answer": "Non. Il faut savoir comment se déplace chaque pièce et connaître le nom des cases sans compter. L’étape un ne suppose rien d’autre. L’étape quatre suppose que vous lisez la notation aussi vite qu’un texte."
+          },
+          {
+            "question": "Et si j’imagine l’échiquier du côté des Noirs ?",
+            "answer": "Choisissez une orientation et gardez-la, même quand vous avez les Noirs. Les Blancs en bas, c’est le sens dans lequel les diagrammes sont imprimés, ce qui en fait le choix par défaut le plus simple. Changer en cours de partie est un moyen facile de perdre la trace d’un fou."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Commencez par là si, échiquier couvert, vous perdez des pièces après un seul coup."
+          },
+          {
+            "reason": "La couleur et le nom des cases sans compter, ce que suppose l’étape un."
+          },
+          {
+            "reason": "Pour garder la position de départ nette deux coups plus loin dans une variante."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -8,10 +8,10 @@ describe("resolveRetiredLearnPath", () => {
     );
   });
 
-  it("reaches the final guide in one hop from a locale-prefixed URL", () => {
-    expect(resolveRetiredLearnPath("/de/learn/chess-board-vision-drills")).toBe(
-      "/learn/how-to-see-the-whole-board-in-chess",
-    );
+  it("reaches the final guide in one hop from a locale-prefixed URL, in that locale when the guide is translated into it", () => {
+    expect(resolveRetiredLearnPath("/de/learn/chess-board-vision-drills")).toBe("/de/learn/how-to-see-the-whole-board-in-chess");
+    expect(resolveRetiredLearnPath("/it/learn/chess-board-vision-drills")).toBe("/learn/how-to-see-the-whole-board-in-chess");
+    expect(resolveRetiredLearnPath("/de/learn/working-memory-exercises-for-chess")).toBe("/learn/chess-calculation-exercises-for-beginners");
   });
 
   it("leaves live guides, the hub and near misses alone", () => {

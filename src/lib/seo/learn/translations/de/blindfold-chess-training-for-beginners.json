@@ -1,0 +1,259 @@
+{
+  "sourceHash": "b41e3363b91f542f7d98a16ac9e40841fa7a3401b8a66701a68acb292c4ddea4",
+  "approvedHash": "978865dd4c57b806a8aed14e10258efe45f128c22c98e189a372e301f1e250d5",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Blindschach-Training für Anfänger: 4 Stufen",
+      "h1": "Blindschach lernen in vier Stufen, jede mit einer klaren Hürde",
+      "description": "Rechne mit etwa fünf Wochen Blindschach-Training bis zur ersten ganzen Blindpartie. Vier Wochen 3 bis 6 Minuten täglich, dann jeden zweiten Tag eine Partie.",
+      "keywords": {
+        "primary": "Blindschach Training",
+        "secondary": [
+          "Blindschach für Anfänger",
+          "Blindschach lernen",
+          "Schach im Kopf trainieren",
+          "Partie ohne Brett nachspielen",
+          "Konzentrationsübungen Schach"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Blindschach-Training folgt einem Plan über fünf Wochen. Es beginnt mit zwei Königen, die du ohne Brett im Kopf behältst, und feste Hürden entscheiden, wann du weitergehst. Danach lernst du sechs Prüfregeln, die ein verrutschendes Bild im Kopf entlarven, und spielst zehn Züge deiner eigenen Partien aus der Zugliste nach. Eine ganze Partie blind spielst du erst, wenn jede Stufe bestanden ist.",
+      "takeaways": [
+        "Jede Stufe hat eine Hürde. So weißt du, wann du weitergehst und wann du wiederholst.",
+        "Sechs Prüfregeln, die jede Stellung bei Memory Chess erfüllt, entlarven auch die schlimmsten Fehler in einem Brett im Kopf, das verrutscht ist.",
+        "Ab Stufe zwei musst du bei jedem Test die Figuren nennen, die nie gezogen haben. Genau die verlierst du.",
+        "Behalte die Zugliste im Blick, bis eine ganze Partie fehlerfrei gelingt. Das Wiederaufbauen aus der Liste ist die eigentliche Fähigkeit."
+      ],
+      "audience": [
+        "Wer eine Blindpartie versucht hat und bis zum zehnten Zug die Läufer vergessen hat.",
+        "Wer einer Partie in Notation mit Brett folgen kann, aber nicht ohne."
+      ]
+    },
+    "sections": {
+      "how-blindfold-chess-is-played": {
+        "heading": "So spielt man Blindschach",
+        "blocks": [
+          {
+            "paragraphs": [
+              "In einer Blindpartie siehst du die Figuren nie. Du und dein Gegenüber sagen jeden Zug in algebraischer Notation an, etwa e4 oder Nf3 (die Website schreibt Figuren mit englischen Buchstaben: K, Q, R, B, N statt K, D, T, L, S), und du behältst die Stellung im Kopf. Dein Gegenüber kann an einem normalen Brett sitzen, oder jemand zieht die Figuren auf einem Brett, das du nicht sehen kannst.",
+              "Manche Schachseiten haben eine Einstellung für Blindschach oder unsichtbare Figuren, die dasselbe leistet. Das Brett bleibt leer, während die Zugliste wächst. Die Regeln ändern sich nicht. Eine Figur, die du vergisst, ist also eine Figur, die du verlierst.",
+              "Die Fähigkeit besteht also nicht darin, durch eine Augenbinde zu sehen. Sie besteht darin, jedes Feld ohne Brett zu benennen und das Bild nach jedem Zug zu aktualisieren. Die vier Stufen unten bauen das der Reihe nach auf, und Stufe vier endet mit deiner ersten ganzen Blindpartie."
+            ]
+          }
+        ]
+      },
+      "why-games-collapse": {
+        "heading": "Warum die erste Blindpartie zusammenbricht",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Eine Blindpartie scheitert oft an einer einzigen Figur, die nicht gezogen hat. Wo die Springer stehen, weißt du, weil du sie gezogen hast. Der Läufer auf c1 stand zwölf Züge lang still, also ist er aus dem Bild gefallen, und du spielst, als wäre er nicht da.",
+              "Deshalb baut das Training das ganze Brett auf, auch die Figuren, die nie ziehen. Jede der vier Stufen unten hat einen Test, den du bestehst oder wiederholst."
+            ]
+          }
+        ]
+      },
+      "stage-one-two-kings": {
+        "heading": "Stufe eins: zwei Könige und sonst nichts",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Die leichteste Voreinstellung bei Memory Chess sind 2 Figuren, und nach den Stellungsregeln sind diese beiden die Könige, nie auf benachbarten Feldern."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Zwei Könige, Augen zu",
+                "description": "Spiel 6 Runden mit 2 Figuren und 10 Sekunden zum Einprägen und drück zwischen den Runden auf „Nochmal“. Sag beide Felder laut, schließ die Augen, nenne die Farbe jedes Feldes, öffne dann die Augen und setz die Könige.",
+                "duration": "Etwa 3 Minuten",
+                "goal": "Zwei benannte Felder behalten, ohne dass das Brett vor dir liegt.",
+                "play": {
+                  "label": "2 Figuren, 10 Sekunden, nur Könige spielen"
+                }
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Die Hürde: sechs perfekte Runden in Folge an zwei verschiedenen Tagen, und auch beide Feldfarben müssen stimmen. Lass die Farben nicht weg. Ein Läufer steht immer nur auf einer Farbe, deshalb kannst du dein Bild später mit den Farben überprüfen.",
+              "Wenn du die Farbe eines Feldes nicht ohne Nachdenken nennen kannst, arbeite zuerst den Guide zu den Koordinaten durch und komm dann zurück."
+            ]
+          }
+        ]
+      },
+      "stage-two-sanity-rules": {
+        "heading": "Stufe zwei: sechs Prüfregeln, die ein verrutschendes Brett im Kopf entlarven",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Jede Stellung, die Memory Chess zeigt, erfüllt eine feste Reihe von Prüfregeln. Dieselben Regeln entlarven ein verrutschendes Brett im Kopf. Wenn deine vorgestellte Stellung gegen eine verstößt, ist das Bild falsch, und du baust es ab dem letzten Zug neu auf, bei dem du dir sicher bist.",
+              "Wenn alle sechs erfüllt sind, ist das noch kein Beweis, dass das Bild stimmt. Ein Springer, der ein Feld daneben steht, verstößt gegen keine davon. Sie finden die groben Fehler, und die Stufen drei und vier finden den Rest durch den Vergleich mit dem echten Brett."
+            ]
+          },
+          {
+            "items": [
+              "Genau ein König jeder Farbe.",
+              "Die beiden Könige stehen nie auf benachbarten Feldern.",
+              "Kein Bauer auf der ersten oder achten Reihe. Ein Bauer, den du dir auf e1 vorstellst, ist ein Bauer, den du aus dem Blick verloren hast.",
+              "Die beiden Läufer einer Seite stehen nie auf Feldern derselben Farbe. Wenn du dir beide schwarzen Läufer auf dunklen Feldern vorstellst, steht einer falsch.",
+              "Keine Seite hat von einer Figurenart mehr, als ein Satz enthält: acht Bauern, zwei Springer, zwei Läufer, zwei Türme, eine Dame. Wenn du drei schwarze Springer zählst, hat dein Bild einen erfunden.",
+              "Nie stehen beide Könige gleichzeitig im Schach, und ein König im Schach gehört zu der Seite, die am Zug ist."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Schäfermatt ohne Brett",
+                "description": "Hör hier mit dem Scrollen auf, damit das Diagramm unten nicht ins Bild kommt, und leg dir kein Brett hin. Sag 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7# laut, einen Zug nach dem anderen. Nenne das Feld aller 31 verbliebenen Figuren, geh die sechs Prüfregeln durch und erkläre, warum Schwarz matt ist. Scroll dann nach unten und vergleiche mit dem Diagramm.",
+                "duration": "Etwa 5 Minuten",
+                "goal": "Jede Figur mit ihrem Feld genannt und das Matt erklärt, bevor du auf das Diagramm schaust."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Das Schäfermatt ist die richtige erste Partie, weil es nur vier Züge lang ist und nur sechs Figuren ziehen. Die anderen 25 stehen noch auf ihren Ausgangsfeldern, und genau die verliert man beim Blindspiel.",
+              "Erkläre jetzt, warum es matt ist. Der König auf e8 kann nicht auf f7 schlagen, weil der Läufer auf c4 dieses Feld deckt. Er kann nicht nach e7 gehen, weil die Dame auf f7 es deckt. Die eigene Dame, ein Läufer und ein Bauer von Schwarz besetzen d8, f8 und d7. Der schwarze König steht im Schach, und Schwarz ist am Zug, also ist auch die letzte Regel der Liste erfüllt.",
+              "Die Hürde ist ein fehlerfreier Durchgang an zwei verschiedenen Tagen. Fehlerfrei heißt: jede Figur auf ihrem Feld und das Matt erklärt, bevor du auf das Diagramm schaust."
+            ]
+          },
+          {
+            "caption": "Nach 4.Qxf7# sind noch 31 Figuren auf dem Brett, und 25 davon haben nie gezogen. Prüf diese zuerst."
+          },
+          {
+            "paragraphs": [
+              "In einer echten Partie kann eine Umwandlung gegen die Läuferregel und die Regel zur Figurenzahl verstoßen. Ein Bauer kann zu einem dritten Springer werden oder zu einem Läufer auf der Farbe des anderen Läufers. Such deshalb zuerst in der Zugliste nach Umwandlungen."
+            ]
+          }
+        ]
+      },
+      "stage-three-covered-replay": {
+        "heading": "Stufe drei: zehn Züge deiner eigenen Partie aus der Zugliste",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Das Schäfermatt kann man auswendig lernen. Deine eigenen Partien nicht. Mit ihnen prüfst du, ob du das Brett allein aus den Zügen wieder aufbaust."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Zehn Züge aus der Zugliste",
+                "description": "Öffne eine deiner eigenen Partien auf der Seite, auf der du sie gespielt hast. Deck das Brett mit einem Blatt Papier oder einem Haftzettel ab, sodass nur die Zugliste zu sehen ist. Lies die ersten zehn Züge jeder Seite, 20 insgesamt. Nenne das Feld jeder Figur, die noch auf dem Brett steht, und geh die sechs Prüfregeln durch. Spring dann auf der Seite zum zehnten Zug von Schwarz und zähle die Figuren, die du auf ein falsches Feld gestellt hast.",
+                "duration": "Etwa 6 Minuten",
+                "goal": "Keine einzige Figur auf einem falschen Feld nach je zehn Zügen, mit nichts vor dir als der Zugliste."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Die Hürde sind zwei fehlerfreie Durchgänge an verschiedenen Tagen, mit verschiedenen Partien. Ein falsch gesetzter Bauer beim Nachspielen kann in einer Blindpartie zu einer verlorenen Figur werden."
+            ]
+          }
+        ]
+      },
+      "stage-four-with-move-list": {
+        "heading": "Stufe vier: eine Partie mit der Zugliste im Blick",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Du baust aus der Liste wieder auf, deshalb gehört es zur Übung, sie im Blick zu behalten."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Fünfzehn Züge mit der Zugliste im Blick",
+                "description": "Spiel gegen jemanden aus deinem Bekanntenkreis oder gegen eine Engine. Deck das Spielbrett mit Papier ab, oder schalte die Einstellung für Blindschach oder unsichtbare Figuren ein, falls die Seite eine hat. Schau in die Zugliste, wenn dein Bild gegen eine der sechs Prüfregeln verstößt oder wenn du nicht sicher bist, wo eine Figur steht, aber nie, um einen Zug zu finden. Bei Zug 15 baust du die Stellung aus dem Gedächtnis auf einem echten Brett auf. Deck das Spielbrett auf und zähle die Figuren auf deinem echten Brett, die auf einem anderen Feld stehen.",
+                "duration": "Eine Partie jeden zweiten Tag",
+                "goal": "Jede Figur auf ihrem Feld bei Zug 15, in zwei Partien hintereinander."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Sobald zwei Partien bei Zug 15 bestanden sind, spielst du die nächsten Partien bis zum Ende, die Liste weiter im Blick. Prüf die Schlussstellung auf dieselbe Weise an einem echten Brett. Wenn eine ganze Partie fehlerfrei gelingt, spielst du die nächste mit verdeckter Liste. Das ist deine erste ganze Blindpartie."
+            ]
+          }
+        ]
+      },
+      "how-long-each-stage-takes": {
+        "heading": "Wie lange es dauert, Blindschach zu lernen",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Die ersten drei Stufen dauern bei 3 bis 6 Minuten am Tag etwa vier Wochen. Stufe vier dauert mindestens eine weitere Woche. Du brauchst zwei fehlerfreie Partien über 15 Züge und dann eine fehlerfreie ganze Partie, bei einer Partie jeden zweiten Tag. Damit liegt deine erste ganze Blindpartie, eine komplette Partie mit verdeckter Liste, etwa fünf Wochen von heute entfernt.",
+              "Fünf Wochen sind der Plan, keine Untergrenze und kein Versprechen. Jede Stufe endet mit einer Hürde, nicht mit einem Datum. Wenn du jeden Test beim ersten Mal bestehst, dauert der schnellste Weg etwa 13 Tage. Das sind zwei Tage für jede der ersten drei Stufen und danach eine Partie jeden zweiten Tag. Eine Stufe, die du nicht bestehst, kostet zusätzliche Tage. Wiederhole sie also, statt vorzuspringen."
+            ]
+          },
+          {
+            "steps": [
+              {
+                "label": "Stufe eins, Woche 1",
+                "duration": "3 Minuten am Tag",
+                "detail": "Sechs Runden mit 2 Figuren und 10 Sekunden, also die beiden Könige. Drück zwischen den Runden auf „Nochmal“, denn „Nächste Runde“ bietet nach einer perfekten Runde 3 Figuren an. Geh weiter, wenn alle sechs in Folge perfekt sind, die Farben eingeschlossen, an zwei verschiedenen Tagen."
+              },
+              {
+                "label": "Stufe zwei, Woche 2",
+                "duration": "5 Minuten am Tag",
+                "detail": "Spiel das Schäfermatt ohne Brett nach, nenne alle 31 Figuren und geh die sechs Prüfregeln durch. Geh weiter, wenn zwei Tage fehlerfrei gelingen."
+              },
+              {
+                "label": "Stufe drei, Wochen 3 und 4",
+                "duration": "6 Minuten am Tag",
+                "detail": "Zehn Züge pro Seite aus einer deiner eigenen Partien, eine am Tag. Geh weiter, wenn zwei verschiedene Partien an verschiedenen Tagen bestanden sind, ohne eine Figur auf einem falschen Feld."
+              },
+              {
+                "label": "Stufe vier, ab Woche 5",
+                "duration": "Eine Partie jeden zweiten Tag",
+                "detail": "Fünfzehn Züge mit der Zugliste im Blick. Geh zu ganzen Partien über, wenn zwei in Folge fehlerfrei gelingen, und zu einer Partie mit verdeckter Liste nach einer fehlerfreien ganzen Partie."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "2 Könige blind spielen, nur aus der Notation",
+        "why": "Der Blindmodus zeigt die beiden Könige als Notation, nie auf dem Brett. So stellst du dir beide Felder vor, bevor du sie setzt."
+      },
+      {
+        "label": "Wie Judit Polgár mit sieben Jahren Blindschach spielte",
+        "why": "Lies, wie Judit Polgár mit sieben blind spielte: die Fähigkeit, die dieser Plan Stufe für Stufe aufbaut."
+      },
+      {
+        "items": [
+          {
+            "question": "Soll ich auch mit den Voreinstellungen für 6 oder 12 Figuren trainieren?",
+            "answer": "Nicht für Blindschach. In einer Partie verfolgst du Figuren über Züge, die du selbst gewählt hast. Eine zufällige Stellung mit 12 Figuren hat keine Züge, denen du folgen kannst, sie trainiert also das Erinnern. Stufe eins nutzt 2 Figuren, weil die Regeln sie zu den Königen machen, dem kleinsten Brett, das du im Kopf behalten kannst."
+          },
+          {
+            "question": "Muss ich vorher ein starker Spieler sein?",
+            "answer": "Nein. Du musst wissen, wie jede Figur zieht, und die Feldnamen ohne Abzählen kennen. Mehr setzt Stufe eins nicht voraus. Stufe vier setzt voraus, dass du Notation in normalem Lesetempo lesen kannst."
+          },
+          {
+            "question": "Was, wenn ich mir das Brett von der schwarzen Seite aus vorstelle?",
+            "answer": "Wähl eine Blickrichtung und bleib dabei, auch wenn du Schwarz spielst. Weiß unten entspricht der Art, wie Diagramme gedruckt werden, und ist deshalb die leichtere Grundeinstellung. Wer mitten in der Partie wechselt, verliert leicht einen Läufer aus dem Blick."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Fang dort an, wenn dir auf einem abgedeckten Brett schon nach einem einzigen Zug Figuren verloren gehen."
+          },
+          {
+            "reason": "Feldfarben und Feldnamen ohne Abzählen, was Stufe eins voraussetzt."
+          },
+          {
+            "reason": "Damit die Ausgangsstellung zwei Züge tief in einer Variante stabil bleibt."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,5 +1,5 @@
 import type { Square } from "chess.js";
-import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/copy";
+import type { GuideCopy } from "@/lib/seo/learn/guideCopy";
 import { chessOf } from "@/lib/seo/learn/positions";
 import type { BodyBlock } from "@/lib/seo/learn/schema";
 
@@ -13,7 +13,7 @@ const TEXT_PRESENTATION = "\uFE0E";
 
 const centre = (square: Square) => ({ x: FILES.indexOf(square[0]) + 0.5, y: 8 - Number(square[1]) + 0.5 });
 
-export default function LearnBoard({ block, figure }: { readonly block: BoardBlock; readonly figure: number }) {
+export default function LearnBoard({ block, figure, copy }: { readonly block: BoardBlock; readonly figure: number; readonly copy: GuideCopy }) {
   const chess = chessOf(block.position);
   const captionId = `${block.position.id}-caption`;
 
@@ -65,7 +65,7 @@ export default function LearnBoard({ block, figure }: { readonly block: BoardBlo
         </div>
       </div>
       <figcaption id={captionId}>
-        <b>{LEARN_GUIDE_COPY.figure(figure)}</b> {block.caption} {LEARN_GUIDE_COPY.toMove(chess.turn())}
+        <b>{copy.figure(figure)}</b> {block.caption} {copy.toMove(chess.turn())}
       </figcaption>
     </figure>
   );

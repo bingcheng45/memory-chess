@@ -1,3 +1,4 @@
+import GUIDE_CHROME, { type GuideChrome } from "./guideChrome";
 import { LEARN_GUIDES } from "./guides";
 import { LEARN_GROUPS, type FaqItem, type GameSetup, type LearnDocument, type LearnGroup } from "./schema";
 import { readingMinutes } from "./text";
@@ -16,7 +17,6 @@ export type LearnPage = LearnDocument & {
 };
 
 export const FAQ_ANCHOR = "faq";
-export const FAQ_LABEL = "Questions";
 
 function primaryCtaOf(doc: LearnDocument): LearnPage["primaryCta"] {
   for (const block of doc.end) {
@@ -32,9 +32,10 @@ function primaryCtaOf(doc: LearnDocument): LearnPage["primaryCta"] {
   throw new Error(`${doc.meta.slug} has nothing to play`);
 }
 
-export function toPage(doc: LearnDocument): LearnPage {
-  const group = LEARN_GROUPS.find(({ id }) => id === doc.meta.group);
-  if (!group) throw new Error(`${doc.meta.slug} names no group ${doc.meta.group}`);
+export function toPage(doc: LearnDocument, chrome: GuideChrome = GUIDE_CHROME): LearnPage {
+  const found = LEARN_GROUPS.find(({ id }) => id === doc.meta.group);
+  if (!found) throw new Error(`${doc.meta.slug} names no group ${doc.meta.group}`);
+  const group = { ...found, label: chrome.groups[found.id] };
   const faq = doc.end.flatMap((block) => (block.kind === "faq" ? block.items : []));
 
   return {
@@ -43,14 +44,14 @@ export function toPage(doc: LearnDocument): LearnPage {
     readingMinutes: readingMinutes(doc),
     tableOfContents: [
       ...doc.sections.map(({ id, heading }) => ({ id, label: heading })),
-      ...(faq.length > 0 ? [{ id: FAQ_ANCHOR, label: FAQ_LABEL }] : []),
+      ...(faq.length > 0 ? [{ id: FAQ_ANCHOR, label: chrome.faq }] : []),
     ],
     primaryCta: primaryCtaOf(doc),
     faq,
   };
 }
 
-export const EN_LEARN_PAGES: readonly LearnPage[] = LEARN_GUIDES.map(toPage);
+export const EN_LEARN_PAGES: readonly LearnPage[] = LEARN_GUIDES.map((doc) => toPage(doc));
 
 export const LEARN_SLUGS: readonly string[] = EN_LEARN_PAGES.map((page) => page.meta.slug);
 

@@ -1,4 +1,5 @@
-import { unprefixedPath } from "@/lib/seo/englishOnly";
+import { localizedPath } from "@/lib/seo/alternates";
+import { servedLocalesOf, unprefixedPath } from "@/lib/seo/englishOnly";
 
 /**
  * Guides merged into another guide, by old slug. Their URLs were indexed and
@@ -16,5 +17,8 @@ export function resolveRetiredLearnPath(pathname: string): string | null {
   if (segments.length !== 2 || segments[0] !== "learn") return null;
 
   const target = RETIRED_LEARN_SLUGS[segments[1]];
-  return target ? `/learn/${target}` : null;
+  if (!target) return null;
+  const path = `/learn/${target}`;
+  const locale = pathname.split("/")[1];
+  return servedLocalesOf(path).includes(locale) ? localizedPath(path, locale) : path;
 }

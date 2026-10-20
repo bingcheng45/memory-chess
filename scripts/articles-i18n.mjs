@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * The one tool that writes an article or trust page translation into the repo,
+ * The one tool that writes an article, trust page or Learn guide translation into the repo,
  * and the one definition of "this translation is acceptable". A translator, a reviewer,
  * the integrator and a Jest test all run it.
  *
@@ -9,6 +9,7 @@
  * in the call or the place it runs from.
  */
 import { approve, check, exportSources, importTranslation, seed, verify } from "./articles-i18n/commands.mjs";
+import { GUIDE_COMMANDS, loadGuidesRepo } from "./articles-i18n/guides.mjs";
 import { ENGLISH } from "./articles-i18n/names.mjs";
 import { PAGE_COMMANDS, loadPagesRepo } from "./articles-i18n/pages.mjs";
 import { UsageError, loadRepo } from "./articles-i18n/repo.mjs";
@@ -30,6 +31,15 @@ With --pages first, the same commands but seed act on the translation of /about,
   --pages approve <locale>        check the installed files, then record the hash of the text as approved
   --pages verify                  check every locale that serves the pages and require its approval
 
+With --guides first, the same five commands act on the translated Learn guides and their chrome:
+
+  --guides export <outDir>         write the English sources of the translated guides and their chrome
+  --guides check <locale> [dir]    check a translator's directory, or the installed files
+  --guides import <locale> <dir>   check a directory, then install it, not yet approved
+  --guides approve <locale>        check the installed files, then record the hash of the text as approved
+  --guides verify                  check every locale that serves the guides and require its approval; a translation
+                                   whose English or shared chrome changed since is withheld with a warning, not failed
+
 Run it from the repo root. Every path must stay inside the repo.
 `;
 
@@ -47,23 +57,27 @@ const COMMANDS = {
 
 const oneLine = (text) => text.replace(/\s*\n\s*/g, " ");
 
-const PAGES_FLAG = "--pages";
+const UNIT_TOOLS = {
+  "--pages": { commands: PAGE_COMMANDS, load: loadPagesRepo },
+  "--guides": { commands: GUIDE_COMMANDS, load: loadGuidesRepo },
+};
 
 async function run(argv) {
-  const isPages = argv[0] === PAGES_FLAG;
-  const [name = "", ...args] = isPages ? argv.slice(1) : argv;
-  const commands = isPages ? PAGE_COMMANDS : COMMANDS;
+  const unitTool = Object.hasOwn(UNIT_TOOLS, argv[0]) ? UNIT_TOOLS[argv[0]] : undefined;
+  const { commands, load } = unitTool ?? { commands: COMMANDS, load: loadRepo };
+  const [name = "", ...args] = unitTool ? argv.slice(1) : argv;
   const command = Object.hasOwn(commands, name) ? commands[name] : undefined;
   if (!command || args.length < command.minArgs || args.length > command.maxArgs) {
     process.stderr.write(USAGE);
     return EXIT_USAGE;
   }
-  const repo = await (isPages ? loadPagesRepo : loadRepo)(process.cwd());
+  const repo = await load(process.cwd());
   if (command.takesLocale && (args[0] === ENGLISH || !repo.locales.includes(args[0]))) {
     throw new UsageError(`"${args[0]}" is not a shipped locale other than ${ENGLISH}`);
   }
 
-  const { failures, summary } = command.run(repo, args);
+  const { failures, summary, warnings = [] } = command.run(repo, args);
+  warnings.forEach((warning) => process.stderr.write(`warning: ${oneLine(warning)}\n`));
   failures.forEach((failure) => process.stderr.write(`${oneLine(failure)}\n`));
   process.stdout.write(`${summary}\n`);
   return failures.length === 0 ? 0 : EXIT_FAILED;

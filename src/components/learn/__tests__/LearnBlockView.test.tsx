@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import { fireEvent, render, screen, within } from "@/test-utils/intl";
 import LearnBlockView, { type TitleLookup } from "@/components/learn/LearnBlockView";
+import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/guideCopy";
 import type { LearnBlock } from "@/lib/seo/learn/schema";
 import { AFFILIATE } from "@/lib/affiliate/amazon";
 
@@ -21,7 +22,7 @@ const TITLES: TitleLookup = {
 };
 
 function draw(block: LearnBlock, figure?: number) {
-  return render(<LearnBlockView block={block} figure={figure} titles={TITLES} />).container;
+  return render(<LearnBlockView block={block} figure={figure} titles={TITLES} context={{ copy: LEARN_GUIDE_COPY, locale: "en" }} />).container;
 }
 
 describe("LearnBlockView", () => {
@@ -200,5 +201,44 @@ describe("LearnBlockView", () => {
 
     expect(box.querySelector("figure .wg-stage")).not.toBeNull();
     expect(box.querySelector("figcaption")?.textContent).toBe("A two-player game, step by step.");
+  });
+});
+
+describe("LearnBlockView in a German guide", () => {
+  const furtherReading: LearnBlock = {
+    kind: "furtherReading",
+    items: [
+      { kind: "guide", slug: "blindfold-chess-training-for-beginners", reason: "Übersetzt." },
+      { kind: "guide", slug: "chess-memory-training", reason: "Nur Englisch." },
+    ],
+  };
+
+  it("links a translated guide in German and an untranslated one at its bare English URL, marked (English)", () => {
+    render(<LearnBlockView block={furtherReading} titles={TITLES} context={{ copy: LEARN_GUIDE_COPY, locale: "de" }} />, {
+      locale: "de",
+    });
+
+    expect(
+      screen.getAllByRole("link").map((link) => [link.textContent, link.getAttribute("href"), link.getAttribute("hreflang")]),
+    ).toEqual([
+      ["Guide blindfold-chess-training-for-beginners", "/de/learn/blindfold-chess-training-for-beginners", null],
+      ["Guide chess-memory-training (English)", "/learn/chess-memory-training", "en"],
+    ]);
+  });
+
+  it("sends a drill's round to the German game with the same settings", () => {
+    render(
+      <LearnBlockView
+        block={{
+          kind: "drills",
+          drills: [{ title: "Zwei Könige", description: "Beschreibung.", duration: "3 Min.", goal: "Fehlerfrei.", play: { label: "Spielen", pieceCount: 2, memorizeTime: 10 } }],
+        }}
+        titles={TITLES}
+        context={{ copy: LEARN_GUIDE_COPY, locale: "de" }}
+      />,
+      { locale: "de" },
+    );
+
+    expect(screen.getByRole("link", { name: "Spielen" })).toHaveAttribute("href", "/de/game?pieceCount=2&memorizeTime=10&source=guide_cta");
   });
 });

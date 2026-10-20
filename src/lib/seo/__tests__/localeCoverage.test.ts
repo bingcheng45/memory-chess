@@ -3,6 +3,7 @@ import { LOCALES, DEFAULT_LOCALE } from "@/i18n/routing";
 import { DEFAULT_LOCALE_INDEXED_ROUTES, ENGLISH_ONLY_ROUTES, UNLISTED_ROUTES } from "@/lib/seo/englishOnly";
 import { ARTICLE_SLUGS } from "@/lib/articles";
 import { EN_LEARN_PAGES } from "@/lib/seo/learn";
+import { TRANSLATED_GUIDE_SLUGS } from "@/lib/seo/learn/translatedGuides";
 
 jest.mock("@/lib/articles/translatedLocales");
 
@@ -40,14 +41,17 @@ describe("locale coverage", () => {
     expect(urls.filter((url) => UNLISTED_ROUTES.some((route) => new URL(url).pathname.includes(route)))).toEqual([]);
   });
 
-  it("lists no locale-prefixed URL of a route indexed only in English, translated or not", async () => {
+  it("lists no locale-prefixed URL of a route indexed only in English, translated or not, apart from the translated guides", async () => {
     const entries = await sitemap();
     const prefixed = new RegExp(
       `^${SITE_URL}/(${NON_DEFAULT_LOCALES.join("|")})(${LISTED_IN_ENGLISH_ONLY.join("|")})(/|$)`,
     );
 
     expect(prefixed.test(`${SITE_URL}/de/articles/magnus-carlsen`)).toBe(true);
-    expect(entries.filter((entry) => prefixed.test(entry.url))).toEqual([]);
+    const isTranslatedGuide = (url: string) => TRANSLATED_GUIDE_SLUGS.some((slug) => url.endsWith(`/learn/${slug}`));
+
+    expect(prefixed.test(`${SITE_URL}/de/learn/chess-memory-training`)).toBe(true);
+    expect(entries.filter((entry) => prefixed.test(entry.url) && !isTranslatedGuide(entry.url))).toEqual([]);
   });
 
   it("gives entries indexed only in English no hreflang alternates", async () => {

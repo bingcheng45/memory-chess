@@ -1,0 +1,202 @@
+{
+  "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
+  "approvedHash": "81f728cb4e2dd1020a365ee88d9894ddc4a447663f6bdc7c0e2014a8aec5dae3",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Como enxergar o tabuleiro inteiro no xadrez",
+      "h1": "Como enxergar o tabuleiro inteiro no xadrez",
+      "description": "Enxergue o tabuleiro inteiro no xadrez: diga cada peça das quatro bordas antes de cada lance. Depois siga as linhas inimigas após uma captura ou lance de peão.",
+      "keywords": {
+        "primary": "como enxergar o tabuleiro inteiro no xadrez",
+        "secondary": [
+          "visão de túnel no xadrez",
+          "visão de tabuleiro no xadrez",
+          "como varrer o tabuleiro no xadrez",
+          "peças de longo alcance no xadrez",
+          "como perceber ameaças no xadrez"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Para enxergar o tabuleiro inteiro no xadrez, faça uma varredura de cinco passos das bordas para o centro antes de escolher um lance. Diga cada peça na coluna a, na coluna h, na primeira fileira e na oitava fileira. Depois siga cada bispo, torre e dama inimigos até a borda e confira os cavalos e as suas próprias peças de longo alcance.",
+      "takeaways": [
+        "Uma peça de longo alcance ganha material sem se mover. Quando um peão sai da linha dela, os seus olhos seguem o peão e perdem a linha que ele abriu.",
+        "Siga cada linha até a borda do tabuleiro, porque a primeira peça na linha pode ser sua e estar cravada.",
+        "Comece a varredura pelas bordas, porque um olhar que parte do seu próprio lance chega a elas por último."
+      ],
+      "audience": [
+        "Quem perde material para um bispo ou uma torre que não se movia havia muitos lances.",
+        "Quem comete os erros graves no lado do tabuleiro longe da briga."
+      ]
+    },
+    "sections": {
+      "bishop-on-a2": {
+        "heading": "Por que você não vê bispos e torres de longo alcance",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Monte esta posição com a vez das pretas. As brancas têm Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 e peões em a3, b2, c2, f2, g2 e h2 (o site anota as peças com as letras inglesas K, Q, R, B, N, que em português são R, D, T, B, C). As pretas têm Kg8, Ra8, Rd8, Bc8, Nf6 e peões em a7, b7, c7, e6, f7, g7 e h7.",
+              "O bispo em a2 mira b3, c4, d5, e6, f7 e g8. Os peões pretos em e6 e f7 estão no caminho, e o rei preto espera no fim da linha.",
+              "Jogue ...e5 para ganhar espaço no centro, e vem Bxf7+. O rei não pode recapturar, porque o cavalo em g5 também cobre f7, então as brancas ganham um peão com xeque."
+            ]
+          },
+          {
+            "caption": "Depois de ...e5, o bispo em a2 e o cavalo em g5 atacam f7, embora o bispo não tenha se movido."
+          },
+          {
+            "paragraphs": [
+              "Nxf7 é ainda mais forte. O rei também não pode capturar o cavalo, porque agora o bispo cobre f7, e o cavalo ataca a torre em d8.",
+              "Nada mudou no bispo. Só um peão preto se moveu. Isso é visão de túnel. Os seus olhos seguem o peão até e5 e o espaço que ele ganha, então um bispo parado há dez lances cai da imagem.",
+              "As torres fazem o mesmo, de forma mais discreta. Uma torre pode ficar em h1 a partida toda até os peões da coluna h serem trocados, e aí ela domina uma coluna aberta sem ter se movido."
+            ]
+          }
+        ]
+      },
+      "edge-sweep": {
+        "heading": "Como varrer o tabuleiro das bordas para o centro",
+        "blocks": [
+          {
+            "paragraphs": [
+              "A varredura é a cura da visão de túnel. A ordem importa mais do que a velocidade. Faça estes cinco passos antes de escolher um lance."
+            ]
+          },
+          {
+            "items": [
+              "As bordas. Diga cada peça na coluna a, na coluna h, na primeira fileira e na oitava fileira, dos dois lados. Torres ainda nas casas iniciais e bispos recuados para a beira ficam aqui.",
+              "Cada bispo, torre e dama inimigos. Siga cada linha através de todas as peças nela até a borda do tabuleiro e diga de quem é cada uma.",
+              "Cada cavalo inimigo. Diga as casas que ele alcança, porque uma varredura ao longo das linhas nunca passa por elas.",
+              "Os seus próprios bispos, torres e dama, seguidos do mesmo jeito.",
+              "Por último, o seu próprio lance. Confira a casa onde a peça chega e qualquer linha que ela abre ao sair da casa antiga."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Faça isso na posição do bispo, de pretas. O passo um acha o bispo em a2. O passo dois segue o bispo por e6 e f7 até g8 e diz cada peça por onde passa: o seu peão, o seu outro peão e o seu rei. Agora ...e5 se lê como um lance que deixa um único peão entre aquele bispo e o seu rei."
+            ]
+          }
+        ]
+      },
+      "last-square": {
+        "heading": "Siga a linha até a borda, não até a primeira peça nela",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Um deslize comum é parar de seguir a linha na primeira peça. Se essa peça é sua, você não achou um bloqueio. Talvez tenha achado uma cravada.",
+              "Coloque uma torre branca em e1, um cavalo preto em e5 e o rei preto em e8, com as casas entre eles vazias. O cavalo não pode se mover de jeito nenhum.",
+              "Então, de pretas, diga que a torre vê e8, nunca que a torre está bloqueada pelo seu cavalo. A primeira versão anuncia a cravada, e a segunda a esconde."
+            ]
+          }
+        ]
+      },
+      "generated-positions": {
+        "heading": "Por que uma posição gerada de 12 peças treina a varredura",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Uma posição de partida se aglomera. Os peões travam no centro, as peças se juntam perto dos reis e um canto pode ficar vazio por vinte lances. Essa aglomeração é o motivo de você precisar da varredura.",
+              "O Memory Chess cria uma posição nova para cada rodada, sem nenhum plano por trás. Os dois reis vão para casas aleatórias que nunca são vizinhas. Cada uma das outras peças vai para uma casa vazia aleatória, dentro das regras de uma posição legal.",
+              "Nada puxa as peças para o centro ou para os reis, então um tabuleiro de 12 peças pode ter uma peça em cada canto. Ler primeiro as bordas e por último o meio é a varredura, feita de memória.",
+              "Quando a varredura se sustentar de memória, o <l0>treino de xadrez às cegas</l0> pede a mesma imagem sem tabuleiro nenhum na sua frente."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Rodada de memória com as bordas primeiro",
+                "description": "Jogue 3 rodadas de 12 peças com 8 segundos para olhar, apertando \"Tentar de novo\" entre as rodadas. Enquanto olha, leia primeiro as bordas, depois o meio. Posicione primeiro as peças das bordas. O tabuleiro de resultado marca com um anel cada casa que você esqueceu. Você passa quando nenhum anel cai numa casa da borda.",
+                "duration": "3 rodadas, cerca de 5 minutos",
+                "goal": "Guardar as bordas e o meio ao mesmo tempo, em vez de um único grupo.",
+                "play": {
+                  "label": "Jogar 12 peças, 8 segundos"
+                }
+              },
+              {
+                "title": "Inventário das bordas",
+                "description": "Abra uma partida comentada em qualquer diagrama do meio-jogo. Liste cada peça nas quatro bordas. Para cada bispo, torre e dama entre elas, siga as suas linhas até a borda e anote cada peça por onde elas passam. Depois confira numa segunda passada. Corra o dedo de a1 a h1, h8, a8 e de volta a a1, marcando cada peça da sua lista, e toque cada casa de cada linha seguida. Você passa quando a segunda passada não acrescenta nada.",
+                "duration": "4 minutos",
+                "goal": "Fazer das peças que você costuma pular as primeiras da sua lista."
+              }
+            ]
+          }
+        ]
+      },
+      "far-corner-glance": {
+        "heading": "Uma última olhada no canto oposto antes de soltar a peça",
+        "blocks": [
+          {
+            "paragraphs": [
+              "A varredura abre a sua reflexão. A tabela cobre os momentos em volta dela."
+            ]
+          },
+          {
+            "columns": [
+              "Momento",
+              "Olhos na briga",
+              "Olhos no tabuleiro inteiro"
+            ],
+            "rows": [
+              {
+                "label": "Último lance do adversário",
+                "cells": [
+                  "Você olha a peça que se moveu e a casa aonde ela chegou.",
+                  "Você olha a linha que ela abriu atrás de si e a casa que ela deixou de proteger."
+                ]
+              },
+              {
+                "label": "Depois de uma troca",
+                "cells": [
+                  "Você conta o material.",
+                  "Você segue de novo cada linha que a troca abriu, para os dois lados."
+                ]
+              },
+              {
+                "label": "Antes de soltar uma peça",
+                "cells": [
+                  "Você confere as casas ao lado do seu lance.",
+                  "Você confere o canto mais distante do seu lance."
+                ]
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "A última coisa que os seus olhos tocam antes de um lance é o canto oposto, e o bispo em a2 é o motivo."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jogar 12 peças com 8 segundos para olhar",
+        "why": "Doze peças colocadas ao acaso podem cair em qualquer coluna ou fileira, então as bordas são testadas com o mesmo rigor que o meio."
+      },
+      {
+        "items": [
+          {
+            "question": "Quando devo fazer a varredura completa?",
+            "answer": "Faça a varredura completa depois de qualquer lance de peão, captura ou troca, porque são esses os lances que abrem linhas. Num lance tranquilo em que nenhuma peça de bloqueio se moveu, confira as quatro bordas e a linha atrás da peça que acabou de se mover, e então jogue."
+          },
+          {
+            "question": "E se a varredura me deixar lento demais?",
+            "answer": "Mantenha a ordem e encurte cada passo. Quando nada numa borda mudou desde o seu último lance, uma olhada confirma isso e você segue em frente. Treine a ordem primeiro em partidas lentas e em rodadas do Memory Chess, para que ela saia sozinha antes da blitz."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Treina guardar uma posição na cabeça, o que a rodada de memória com as bordas primeiro pede com rapidez."
+          },
+          {
+            "reason": "Exercícios para dizer o nome de uma casa sem contar, para que nomear cada casa ao longo de uma linha não deixe a varredura lenta."
+          },
+          {
+            "reason": "Trata do defensor fantasma e da peça solta, as outras maneiras pelas quais a sua imagem do tabuleiro dá errado."
+          }
+        ]
+      }
+    ]
+  }
+}

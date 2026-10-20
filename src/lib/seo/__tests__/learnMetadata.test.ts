@@ -21,13 +21,30 @@ describe("buildLearnPageMetadata", () => {
     ).toBe("article");
   });
 
-  it("is a bare self canonical with no alternates or robots override", () => {
-    const metadata = buildLearnPageMetadata(pageFor("how-to-stop-blundering-in-chess"));
+  it("gives an untranslated guide a bare self canonical with no alternates or robots override", () => {
+    const metadata = buildLearnPageMetadata(pageFor("chess-memory-training"));
 
     expect(metadata.alternates).toEqual({
-      canonical: "/learn/how-to-stop-blundering-in-chess",
+      canonical: "/learn/chess-memory-training",
     });
-    expect(metadata.robots).toBeUndefined();
+    expect("robots" in metadata).toBe(false);
+  });
+
+  const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } };
+
+  it("gives a translated guide's English page a bare self canonical, no alternates and no robots override", () => {
+    const metadata = buildLearnPageMetadata(pageFor("how-to-stop-blundering-in-chess"));
+
+    expect(metadata.alternates).toEqual({ canonical: "/learn/how-to-stop-blundering-in-chess" });
+    expect("robots" in metadata).toBe(false);
+  });
+
+  it("makes a translation noindex, follow and canonical to itself, with no alternates", () => {
+    const metadata = buildLearnPageMetadata(pageFor("how-to-stop-blundering-in-chess"), "de");
+
+    expect(metadata.alternates).toEqual({ canonical: "/de/learn/how-to-stop-blundering-in-chess" });
+    expect(metadata.robots).toEqual(NOINDEX_FOLLOW);
+    expect(metadata.openGraph?.url).toBe("https://thememorychess.com/de/learn/how-to-stop-blundering-in-chess");
   });
 
   it("adds article timestamps, author and image metadata", () => {
@@ -69,7 +86,7 @@ describe("buildLearnPageMetadata", () => {
 
       expect(metadata.title).toBe(page.meta.title);
       expect(metadata.description).toBe(page.meta.description);
-      expect(metadata.alternates).toEqual({ canonical: `/learn/${page.meta.slug}` });
+      expect(metadata.alternates?.canonical).toBe(`/learn/${page.meta.slug}`);
       expect(openGraph && "url" in openGraph ? openGraph.url : undefined).toBe(
         `https://thememorychess.com/learn/${page.meta.slug}`,
       );

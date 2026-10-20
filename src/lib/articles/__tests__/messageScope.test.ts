@@ -28,6 +28,12 @@ describe("splitClientMessages", () => {
     });
   });
 
+  it("sends no client the recall data page's strings, which only server components print", () => {
+    const { shared } = splitClientMessages({ common: { nav: { about: "About" } }, data: { title: "How well do people remember chess positions?" } });
+
+    expect(shared).toEqual({ common: { nav: { about: "About" } }, home: {} });
+  });
+
   it("sends /game the dashboard figures' strings in a catalogue without the lab", () => {
     const catalogue = { game: { skip: "Überspringen" }, dashboard: { title: "Dashboard", label: { span: "Gedächtnisspanne" }, unit: { percent: "<n>{value}</n> %" }, deltas: { new: "Neu" } } };
 

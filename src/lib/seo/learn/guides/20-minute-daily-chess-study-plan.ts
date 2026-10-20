@@ -17,7 +17,7 @@ const guide: LearnDocument = {
       "What if I miss a day of chess study?",
     ],
     keywords: {
-      primary: "20 minute daily chess study plan",
+      primary: "20-minute daily chess study plan",
       secondary: [
         "daily chess routine for beginners",
         "short chess study plan",

@@ -30,5 +30,5 @@ export function generateMetadata(): Metadata {
 export default function LearnHub() {
   // English-only route: the bare URL is the only one served, as English.
   setRequestLocale(DEFAULT_LOCALE);
-  return <LearnHubPage stages={pathStages(groupPages(EN_LEARN_PAGES))} />;
+  return <LearnHubPage {...pathStages(groupPages(EN_LEARN_PAGES))} />;
 }

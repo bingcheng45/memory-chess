@@ -80,6 +80,10 @@ describe("derived page values", () => {
       "how-to-analyze-chess-games-for-beginners": 6,
       "how-many-chess-puzzles-a-day": 4,
       "how-to-play-memory-chess-board-game": 5,
+      "chess-position-memory-trainers-compared": 5,
+      "lichess-vs-chess-com-visualization-training": 3,
+      "memory-chess-vs-lichess-coordinate-trainer": 3,
+      "memory-chess-vs-darksquares": 3,
     });
   });
 
@@ -96,7 +100,7 @@ describe("derived page values", () => {
 });
 
 describe("hub grouping", () => {
-  it("puts the live guides in five groups in reading order", () => {
+  it("puts the live guides in six groups in reading order", () => {
     expect(groupPages(EN_LEARN_PAGES).map(({ group, pages }) => [group.id, pages.map((page) => page.meta.slug)])).toEqual([
       ["foundations", ["how-to-get-better-at-chess-for-beginners", "how-to-think-in-chess-for-beginners"]],
       [
@@ -117,6 +121,15 @@ describe("hub grouping", () => {
         "practice",
         ["20-minute-daily-chess-study-plan", "how-to-analyze-chess-games-for-beginners", "how-many-chess-puzzles-a-day"],
       ],
+      [
+        "compare",
+        [
+          "chess-position-memory-trainers-compared",
+          "lichess-vs-chess-com-visualization-training",
+          "memory-chess-vs-lichess-coordinate-trainer",
+          "memory-chess-vs-darksquares",
+        ],
+      ],
     ]);
   });
 
@@ -135,8 +148,9 @@ describe("rules the types cannot hold", () => {
     expect(long).toEqual([]);
   });
 
-  it("keeps seven answer-first descriptions to 155 characters with the exact primary keyword", () => {
+  it("keeps eight answer-first descriptions to 155 characters with the exact primary keyword", () => {
     const answerFirst = [
+      "20-minute-daily-chess-study-plan",
       "blindfold-chess-training-for-beginners",
       "chess-coordinates-practice",
       "chess-memory-training",

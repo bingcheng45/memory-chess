@@ -1,0 +1,222 @@
+{
+  "sourceHash": "2e876d5b5c5c75ebdb4f87c75fb7520a2ca35c59bc6d792af9a70faa80dfd00b",
+  "approvedHash": "38150b7d43038224b5021b5b8588eb03f04dca161781f2f878c77f57c59149e9",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Como parar de cometer erros graves no xadrez",
+      "h1": "Como parar de cometer erros graves no xadrez",
+      "description": "Pare de cometer erros graves no xadrez com uma varredura de cinco passos antes de cada lance, uma checagem de peças soltas e exercícios das suas derrotas.",
+      "keywords": {
+        "primary": "como parar de errar no xadrez",
+        "secondary": [
+          "visão de tabuleiro no xadrez",
+          "peças soltas no xadrez",
+          "xeques capturas e ameaças",
+          "por que eu entrego peças no xadrez",
+          "como evitar erros graves no xadrez"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Antes de cada lance, faça uma varredura de cinco passos numa ordem fixa. Veja o que o último lance do adversário ataca, liste os xeques, as capturas e as ameaças dele e ache as suas peças soltas, as que não têm defesa. Depois pergunte se o seu lance cai numa casa defendida e o que a peça deixa de proteger, e só então procure os seus próprios xeques e capturas.",
+      "takeaways": [
+        "Um erro grave de um lance é um lance que só funciona no tabuleiro da sua cabeça.",
+        "Uma peça solta não tem defensor, então liste as suas antes que um xeque do adversário encontre uma.",
+        "Meça o hábito com uma contagem de erros graves por partida, porque o rating também se move com aberturas, finais e adversários."
+      ],
+      "audience": [
+        "Quem resolve bem problemas táticos e ainda perde peças para uma resposta de um lance.",
+        "Quem só vê a captura depois de soltar a peça.",
+        "Iniciantes que ouviram que deviam jogar mais devagar e descobriram que só o tempo extra não mudou nada."
+      ]
+    },
+    "sections": {
+      "puzzle-vs-game": {
+        "heading": "Por que as peças caem nas partidas e não nos problemas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Um problema tático conta duas coisas antes de você olhar. Existe uma tática, e a vez é sua. Uma partida não conta nenhuma das duas, então um garfo que você acharia num problema pode passar sem ser visto.",
+              "Um erro grave de um lance não exige nenhuma variante profunda para ser evitado. É um lance que funciona no tabuleiro da sua cabeça e falha no tabuleiro da mesa.",
+              "Os dois tabuleiros costumam diferir de três maneiras. A primeira é o defensor fantasma, uma peça com que você conta para recapturar, mas que não pode fazer essa captura legalmente.",
+              "Coloque um bispo branco em b5, um cavalo preto em c6, o rei preto em e8 e um peão branco em e5, com d7 vazia. O peão acabou de capturar uma peça preta em e5. As pretas contavam com o cavalo como defensor e planejavam recapturar. O cavalo está cravado no rei, então Nxe5 é ilegal e a peça está simplesmente perdida."
+            ]
+          },
+          {
+            "caption": "As pretas contavam com Nxe5 para recapturar, mas o bispo em b5 crava o cavalo no rei em e8."
+          },
+          {
+            "paragraphs": [
+              "A segunda é a peça esquecida, um bispo ou uma torre que não se move há muitos lances, e por isso você para de olhar para ela.",
+              "A terceira é a tarefa abandonada. Se o peão de d2 é o único protetor do seu cavalo em c3, avançar d2-d4 deixa o cavalo solto, embora o cavalo nunca tenha se movido."
+            ]
+          },
+          {
+            "caption": "Depois de d2-d4, o cavalo em c3 não tem defensor, embora nunca tenha se movido."
+          }
+        ]
+      },
+      "pre-move-scan": {
+        "heading": "A varredura antes do lance: xeques, capturas, ameaças e peças soltas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Visão de tabuleiro é uma varredura que você faz na mesma ordem antes de cada lance. Uma ordem fixa quer dizer que nada depende de onde os seus olhos por acaso caem."
+            ]
+          },
+          {
+            "items": [
+              "O último lance. Diga cada casa que a peça que se moveu ataca agora e qualquer linha que ela abriu ao sair da casa antiga.",
+              "Os lances forçantes do adversário. Liste cada xeque que ele poderia dar, cada captura que poderia fazer e cada lance que atacaria uma das suas peças.",
+              "As suas peças soltas. Uma peça solta é uma peça sem defensor. Um defensor cravado só conta se puder recapturar legalmente. Diga cada peça solta pela sua casa e depois diga qualquer peça atacada mais vezes do que é defendida.",
+              "O lance que você pretende jogar. Conte os defensores da peça na casa nova. Depois pergunte o que ela protegia na casa antiga e qual linha ela bloqueava.",
+              "Os seus próprios lances forçantes. Só agora procure xeques e capturas para você, começando por qualquer peça inimiga solta."
+            ]
+          },
+          {
+            "title": "Por que as peças soltas vêm antes das suas próprias ideias",
+            "body": "Um ataque duplo ganha material quando um dos dois alvos não pode ser salvo. Qualquer ataque a uma peça solta já é uma ameaça, então cada peça solta é meia tática esperando a outra metade."
+          }
+        ]
+      },
+      "loose-bishop-b4": {
+        "heading": "Um xeque de dama contra um bispo solto em b4",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Monte esta posição com a vez das brancas. As brancas têm Kg1, Qd1, Ra1, Rf1, Bc1, Nb1, Nf3 e peões em a2, b2, f2, g2 e h2.",
+              "As pretas têm Ke8, Ra8, Rh8, Bc8, Bb4 e peões em a7, b7, c7, f7, g7 e h7. Nenhuma peça preta defende o bispo em b4.",
+              "As brancas jogam Qa4+. A dama dá xeque por b5, c6 e d7 até o rei em e8 e ataca o bispo pela quarta fileira."
+            ]
+          },
+          {
+            "caption": "Qa4+ dá xeque por b5, c6 e d7 e ataca o bispo sem defesa em b4."
+          },
+          {
+            "paragraphs": [
+              "As pretas precisam responder primeiro ao xeque. Bloquear com ...c6, ...b5 ou ...Bd7 não defende b4, e nenhum lance de rei defende, então vem Qxb4.",
+              "O passo quatro teria avisado as pretas um lance antes. Conte os defensores do bispo em b4 antes de jogá-lo para lá, e não há nenhum."
+            ]
+          }
+        ]
+      },
+      "invented-pieces": {
+        "heading": "Quanto custa uma peça inventada numa rodada do Memory Chess",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Uma rodada do Memory Chess compara o tabuleiro que você reconstruiu com o original, uma casa de cada vez. Uma peça só pontua quando a casa, o tipo e a cor batem.",
+              "Posicionar mais peças do que a posição tinha é cobrado duas vezes. Cada peça além do número conta como errada e também tira dez pontos da sua precisão.",
+              "Uma peça errada dentro do número não custa mais do que uma casa vazia, então a cobrança extra cai só sobre as peças inventadas.",
+              "Isso faz de uma rodada um teste limpo de um hábito que leva a erros graves. Uma sétima peça num tabuleiro de seis peças é uma peça que a sua memória acrescentou, o mesmo deslize de confiar num defensor que o tabuleiro real não tem."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Nada de sétima peça",
+                "description": "Jogue 4 rodadas de 6 peças com 10 segundos para olhar, apertando \"Tentar de novo\" na tela de resultado para manter as configurações. Antes de cada envio, conte as suas peças. Se tiver mais de seis, tire aquelas de que você menos tem certeza de ter visto. Você passa quando as quatro rodadas forem enviadas com seis peças ou menos.",
+                "duration": "4 rodadas, cerca de 4 minutos",
+                "goal": "Distinguir uma peça que você viu de uma peça que você supôs que estava lá.",
+                "play": {
+                  "label": "Jogar 6 peças, 10 segundos"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "own-games-drills": {
+        "heading": "Exercícios de peças soltas e de último lance com as suas derrotas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Os dois exercícios usam as suas próprias partidas, porque são elas que guardam os erros graves que você realmente comete."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Inventário de peças soltas",
+                "description": "Monte uma posição de meio-jogo de uma das suas partidas. Para cada peça sua, escreva dois números: atacantes inimigos e depois os seus defensores, deixando de fora qualquer defensor cravado que não possa recapturar. Circule cada peça sem defensores. Marque com uma estrela cada peça com mais atacantes do que defensores.",
+                "duration": "5 minutos",
+                "goal": "Ver as suas peças soltas antes que um xeque do adversário caia sobre uma delas."
+              },
+              {
+                "title": "Reprodução do último lance",
+                "description": "Reproduza uma partida que você perdeu. Antes de cada lance seu, diga em voz alta o que o lance anterior do adversário ataca. Onde a resposta surpreender você, você achou a causa.",
+                "duration": "10 minutos",
+                "goal": "Aprender como era uma ameaça que passou despercebida um lance antes de ela acontecer."
+              }
+            ]
+          }
+        ]
+      },
+      "blunder-tally": {
+        "heading": "Uma contagem de erros graves ao lado de cada resultado",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Para a contagem, um erro grave é um lance que perde um peão ou mais para uma resposta de um ou dois lances de profundidade. Uma piora posicional lenta não conta, porque nenhuma varredura a pegaria.",
+              "Escreva o número ao lado de cada resultado, inclusive das vitórias. Conte o lance mesmo quando o adversário não viu a resposta, porque o hábito medido é o seu.",
+              "O rating é uma medida ruim deste hábito específico. Ele também se move com as suas aberturas, os seus finais e os adversários que você enfrenta, enquanto a contagem só se move com a varredura."
+            ]
+          }
+        ]
+      },
+      "low-clock-scan": {
+        "heading": "Com menos de trinta segundos, varra só o último lance",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Com pouco tempo no relógio, a varredura completa não cabe, então fique com o passo um e deixe o resto. Uma peça que acabou de se mover tem alvos novos, e o passo um também pega qualquer linha que ela abriu."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jogar 6 peças com 10 segundos para olhar",
+        "why": "Seis peças com dez segundos para olhar é onde uma sétima peça inventada aparece pela primeira vez, então conte antes de enviar."
+      },
+      {
+        "label": "Ver a sua precisão recente",
+        "why": "Uma rodada com uma sétima peça inventada aparece como uma queda na precisão recente, então acompanhe a volta dela conforme o hábito de contar se firma."
+      },
+      {
+        "items": [
+          {
+            "question": "Jogar mais devagar acaba com os erros graves?",
+            "answer": "Só quando você gasta o tempo extra numa pergunta fixa. Uma reflexão lenta sem lista de verificação vai quase toda para o seu próprio plano. Gaste esse tempo na varredura, começando pelo que o último lance ataca, e os minutos a mais começam a pegar as respostas que você deixava passar."
+          },
+          {
+            "question": "Preciso fazer a varredura inteira em todo lance?",
+            "answer": "Faça os cinco passos depois de qualquer captura, qualquer xeque e qualquer lance de peão que abra uma linha, porque esses lances mudam mais casas. Num lance tranquilo, faça pelo menos os passos um e três, o último lance e as suas peças soltas."
+          },
+          {
+            "question": "Numa rodada, devo deixar uma casa vazia quando não tenho certeza?",
+            "answer": "Posicione a peça quando o chute mantiver você dentro do número de peças. Um chute dentro do número custa o mesmo que uma casa vazia, e um chute certo pontua. Um chute que passa do número é marcado como errado e ainda custa dez pontos de precisão."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Explica por que as táticas que você acha nos problemas somem nas partidas, a lacuna que esta varredura quer fechar."
+          },
+          {
+            "reason": "Trata da peça esquecida, o bispo ou a torre de longo alcance que derrota você do outro lado do tabuleiro."
+          },
+          {
+            "reason": "Traz as três perguntas para fazer antes de cada lance, com uma checagem de segurança que esta varredura transforma em casas nomeadas."
+          },
+          {
+            "reason": "Mostra como analisar uma partida perdida para que cada item da contagem ganhe uma causa."
+          }
+        ]
+      }
+    ]
+  }
+}

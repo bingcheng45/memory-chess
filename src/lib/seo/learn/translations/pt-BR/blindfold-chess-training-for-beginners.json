@@ -1,0 +1,259 @@
+{
+  "sourceHash": "b41e3363b91f542f7d98a16ac9e40841fa7a3401b8a66701a68acb292c4ddea4",
+  "approvedHash": "fd1d8d40027a42d281c8f74a29034efb6d49747bcb31319fb79b1698e473ce9d",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Treino de xadrez às cegas para iniciantes: 4 etapas",
+      "h1": "Como aprender xadrez às cegas em quatro etapas, cada uma com um critério para avançar",
+      "description": "Treino de xadrez às cegas: cerca de cinco semanas até a primeira partida inteira. Treine 3 a 6 min por dia por quatro semanas, depois jogue dia sim, dia não.",
+      "keywords": {
+        "primary": "treino de xadrez às cegas",
+        "secondary": [
+          "xadrez às cegas para iniciantes",
+          "como jogar xadrez às cegas",
+          "treino de visualização do tabuleiro",
+          "reproduzir uma partida sem tabuleiro",
+          "exercícios de concentração no xadrez"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "O treino de xadrez às cegas segue um plano de cinco semanas que começa com dois reis guardados na cabeça, sem tabuleiro, e cada critério de aprovação diz quando avançar. Depois você aprende seis verificações que pegam uma imagem mental que saiu do lugar e reconstrói dez lances das suas próprias partidas a partir da lista de lances. Só jogue uma partida inteira às cegas depois de passar em cada etapa.",
+      "takeaways": [
+        "Cada etapa tem um critério de aprovação, então você sabe quando avançar e quando repetir.",
+        "Seis verificações que toda posição do Memory Chess cumpre também pegam os piores erros de um tabuleiro mental que saiu do lugar.",
+        "A partir da etapa dois, cada teste pede que você diga onde estão as peças que nunca se moveram, que são as que você perde.",
+        "Deixe a lista de lances à vista até uma partida inteira sair limpa. Reconstruir a posição a partir dela é a habilidade."
+      ],
+      "audience": [
+        "Quem tentou uma partida às cegas e perdeu os bispos até o lance dez.",
+        "Quem consegue acompanhar uma partida pela notação com um tabuleiro, mas não sem ele."
+      ]
+    },
+    "sections": {
+      "how-blindfold-chess-is-played": {
+        "heading": "Como se joga xadrez às cegas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Numa partida às cegas você nunca vê as peças. Você e o adversário anunciam cada lance em notação algébrica, como e4 ou Nf3, e você guarda a posição na cabeça. O adversário pode ficar diante de um tabuleiro normal, ou alguém pode mover as peças num tabuleiro que você não vê.",
+              "Alguns sites têm uma opção às cegas ou de peças ocultas que faz o mesmo papel. O tabuleiro fica vazio enquanto a lista de lances cresce. As regras não mudam, então uma peça que você esquece é uma peça que você perde.",
+              "Então a habilidade não é enxergar através de uma venda. É saber o nome de cada casa sem tabuleiro e atualizar a imagem depois de cada lance. As quatro etapas abaixo constroem isso em ordem, e a etapa quatro termina com a sua primeira partida inteira às cegas."
+            ]
+          }
+        ]
+      },
+      "why-games-collapse": {
+        "heading": "Por que a primeira partida às cegas desmorona",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Uma partida às cegas muitas vezes cai por causa de uma única peça que não se moveu. Você sabe onde estão os cavalos porque foi você quem os moveu. O bispo de c1 ficou parado por doze lances, então sumiu da imagem, e você joga como se ele não estivesse lá.",
+              "Por isso o treino constrói o tabuleiro inteiro, inclusive as peças que nunca se movem. Cada uma das quatro etapas abaixo tem um teste: você passa ou repete."
+            ]
+          }
+        ]
+      },
+      "stage-one-two-kings": {
+        "heading": "Etapa um: dois reis e mais nada",
+        "blocks": [
+          {
+            "paragraphs": [
+              "A configuração mais fácil do Memory Chess é de 2 peças, e as regras das posições fazem dessas duas os reis, nunca em casas vizinhas."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Dois reis, olhos fechados",
+                "description": "Jogue 6 rodadas de 2 peças com 10 segundos para olhar, apertando \"Tentar de novo\" entre as rodadas. Diga as duas casas em voz alta, feche os olhos, diga a cor de cada casa, depois abra os olhos e posicione os reis.",
+                "duration": "Cerca de 3 minutos",
+                "goal": "Guardar duas casas nomeadas sem o tabuleiro na sua frente.",
+                "play": {
+                  "label": "Jogar 2 peças, 10 segundos, só os reis"
+                }
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "O critério de aprovação é seis rodadas perfeitas seguidas em dois dias diferentes, com as cores das duas casas certas também. Não pule as cores. Um bispo só anda numa cor, então as cores deixam você testar a sua imagem mais tarde.",
+              "Se você não consegue dizer a cor de uma casa sem pensar, faça antes o guia de coordenadas e depois volte."
+            ]
+          }
+        ]
+      },
+      "stage-two-sanity-rules": {
+        "heading": "Etapa dois: seis verificações que pegam um tabuleiro mental fora do lugar",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Toda posição que o Memory Chess mostra cumpre um conjunto fixo de verificações. As mesmas verificações pegam um tabuleiro mental que saiu do lugar. Quando a posição que você imagina quebra uma delas, a imagem está errada, e você reconstrói a partir do último lance de que tem certeza.",
+              "Passar nas seis não prova que a imagem está certa. Um cavalo uma casa fora do lugar não quebra nenhuma delas. Elas pegam os erros grosseiros, e as etapas três e quatro pegam o resto comparando com o tabuleiro real."
+            ]
+          },
+          {
+            "items": [
+              "Exatamente um rei de cada cor.",
+              "Os dois reis nunca ficam em casas vizinhas.",
+              "Nenhum peão na primeira fileira nem na oitava. Um peão que você imagina em e1 é um peão que você perdeu de vista.",
+              "Os dois bispos de um lado nunca ficam em casas da mesma cor. Se você imagina os dois bispos pretos em casas escuras, um deles está no lugar errado.",
+              "Nenhum lado tem mais peças de um tipo do que um jogo traz. Oito peões, dois cavalos, dois bispos, duas torres, uma dama. Se você conta três cavalos pretos, a sua imagem inventou um.",
+              "Os dois reis nunca estão em xeque ao mesmo tempo, e um rei em xeque é do lado que tem a vez."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Mate do pastor sem tabuleiro",
+                "description": "Pare de rolar a página aqui, para o diagrama abaixo continuar fora de vista, e não deixe nenhum tabuleiro na sua frente. Diga 1.e4 e5 2.Bc4 Nc6 3.Qh5 Nf6 4.Qxf7# em voz alta, um lance de cada vez. Diga a casa de cada uma das 31 peças que restam, faça as seis verificações e explique por que as pretas levaram mate. Depois role a página e compare com o diagrama.",
+                "duration": "Cerca de 5 minutos",
+                "goal": "Cada peça nomeada na sua casa e o mate explicado antes de olhar o diagrama."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "O mate do pastor é a primeira partida certa porque tem quatro lances e só seis peças se movem. As outras 25 continuam onde começaram, e são essas que o jogador às cegas deixa cair.",
+              "Agora explique por que é mate. O rei em e8 não pode tomar em f7, porque o bispo em c4 cobre essa casa. Ele não pode ir para e7, porque a dama em f7 cobre essa casa. A dama, o bispo e o peão das próprias pretas ocupam d8, f8 e d7. O rei preto está em xeque e a vez é das pretas, então o último item da lista se cumpre.",
+              "O critério de aprovação é uma passada limpa em dois dias diferentes. Limpa quer dizer cada peça na sua casa e o mate explicado antes de olhar o diagrama."
+            ]
+          },
+          {
+            "caption": "Depois de 4.Qxf7#, restam 31 peças e 25 delas nunca se moveram, então confira essas primeiro."
+          },
+          {
+            "paragraphs": [
+              "Numa partida real, a promoção pode quebrar as verificações dos bispos e da contagem de peças. Um peão pode virar um terceiro cavalo ou um bispo na mesma cor do outro, então procure primeiro as promoções na lista de lances."
+            ]
+          }
+        ]
+      },
+      "stage-three-covered-replay": {
+        "heading": "Etapa três: dez lances de uma partida sua a partir da lista de lances",
+        "blocks": [
+          {
+            "paragraphs": [
+              "O mate do pastor pode ser decorado. As suas próprias partidas, não, então elas testam se você reconstrói o tabuleiro só a partir dos lances."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Dez lances a partir da lista de lances",
+                "description": "Abra uma das suas partidas no site em que você a jogou. Cubra o tabuleiro com uma folha de papel ou um post-it, para só a lista de lances ficar à vista. Leia os primeiros dez lances de cada lado, 20 no total. Diga a casa de cada peça que ainda está no tabuleiro e faça as seis verificações. Depois avance o tabuleiro do site até o décimo lance das pretas e conte as peças que você colocou na casa errada.",
+                "duration": "Cerca de 6 minutos",
+                "goal": "Nenhuma peça na casa errada depois de dez lances de cada lado, sem nada na sua frente além da lista de lances."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "O critério de aprovação é duas reconstruções limpas em dias diferentes, de partidas diferentes. Um peão fora do lugar numa reconstrução pode virar uma peça perdida numa partida às cegas."
+            ]
+          }
+        ]
+      },
+      "stage-four-with-move-list": {
+        "heading": "Etapa quatro: uma partida com a lista de lances à vista",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Você reconstrói a posição a partir da lista, então deixá-la à vista faz parte do exercício."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Quinze lances com a lista de lances à vista",
+                "description": "Jogue contra um amigo ou um motor. Cubra o tabuleiro da partida com papel, ou ative a opção às cegas ou de peças ocultas do site, se ele tiver. Leia a lista de lances quando a sua imagem quebrar uma das seis verificações ou quando não tiver certeza de onde está uma peça, nunca para achar um lance. No lance 15, monte a posição num tabuleiro real de memória. Descubra o tabuleiro da partida e conte as peças do seu tabuleiro real que estão numa casa diferente.",
+                "duration": "Uma partida dia sim, dia não",
+                "goal": "Cada peça na sua casa no lance 15, em duas partidas seguidas."
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Quando duas partidas passarem no lance 15, jogue as próximas até o fim, ainda com a lista à vista. Confira a posição final num tabuleiro real do mesmo jeito. Quando uma partida inteira sair limpa, jogue a seguinte com a lista escondida. Essa é a sua primeira partida inteira às cegas."
+            ]
+          }
+        ]
+      },
+      "how-long-each-stage-takes": {
+        "heading": "Quanto tempo leva para aprender xadrez às cegas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "As três primeiras etapas levam cerca de quatro semanas, com 3 a 6 minutos por dia. A etapa quatro leva pelo menos mais uma semana. Você precisa de duas partidas limpas de 15 lances e depois de uma partida inteira limpa, jogando uma partida dia sim, dia não. Isso coloca a sua primeira partida inteira às cegas, uma partida completa com a lista escondida, a cerca de cinco semanas de hoje.",
+              "Cinco semanas é o cronograma, não um mínimo nem uma promessa. Cada etapa termina num critério de aprovação, não numa data. Se você passar em todos os testes de primeira, o caminho mais rápido leva cerca de 13 dias. São dois dias para cada uma das três primeiras etapas e depois uma partida dia sim, dia não. Uma etapa em que você não passa soma dias, então repita a etapa em vez de pular adiante."
+            ]
+          },
+          {
+            "steps": [
+              {
+                "label": "Etapa um, semana 1",
+                "duration": "3 minutos por dia",
+                "detail": "Seis rodadas de 2 peças, 10 segundos, que são os dois reis. Aperte \"Tentar de novo\" entre as rodadas, porque \"Próxima rodada\" depois de uma rodada perfeita oferece 3 peças. Avance quando as seis forem perfeitas seguidas, com as cores, em dois dias diferentes."
+              },
+              {
+                "label": "Etapa dois, semana 2",
+                "duration": "5 minutos por dia",
+                "detail": "Reproduza o mate do pastor sem tabuleiro, diga a casa das 31 peças e faça as seis verificações. Avance quando dois dias saírem limpos."
+              },
+              {
+                "label": "Etapa três, semanas 3 e 4",
+                "duration": "6 minutos por dia",
+                "detail": "Dez lances de cada lado de uma das suas partidas por dia. Avance quando duas partidas diferentes passarem em dias diferentes sem nenhuma peça na casa errada."
+              },
+              {
+                "label": "Etapa quatro, da semana 5 em diante",
+                "duration": "Uma partida dia sim, dia não",
+                "detail": "Quinze lances com a lista de lances à vista. Passe para partidas inteiras quando duas seguidas saírem limpas, e para uma partida com a lista escondida depois de uma partida inteira limpa."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jogar 2 reis às cegas, só pela notação",
+        "why": "O modo às cegas mostra os dois reis em notação, nunca no tabuleiro, então você imagina as duas casas antes de posicionar os reis."
+      },
+      {
+        "label": "Como Judit Polgár jogava xadrez às cegas aos sete anos",
+        "why": "Leia como Judit Polgár jogava às cegas aos sete anos, a habilidade que este plano constrói uma etapa de cada vez."
+      },
+      {
+        "items": [
+          {
+            "question": "Devo treinar também com as configurações de 6 ou 12 peças?",
+            "answer": "Não para jogar às cegas. Numa partida você acompanha as peças através de lances que você escolheu. Uma posição aleatória de 12 peças não tem lances para acompanhar, então treina a memorização. A etapa um usa 2 peças porque as regras fazem delas os reis, o menor tabuleiro que dá para guardar."
+          },
+          {
+            "question": "Preciso ser um jogador forte antes?",
+            "answer": "Não. Você precisa saber como cada peça se move e os nomes das casas sem contar. A etapa um não pressupõe mais nada. A etapa quatro pressupõe que você leia notação na velocidade de leitura normal."
+          },
+          {
+            "question": "E se eu imaginar o tabuleiro do lado das pretas?",
+            "answer": "Escolha uma orientação e fique com ela, mesmo quando jogar de pretas. Brancas embaixo é como os diagramas são impressos, o que torna essa a opção padrão mais fácil. Trocar no meio da partida é um jeito fácil de perder um bispo de vista."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Comece por aí se um tabuleiro coberto perde peças depois de um único lance."
+          },
+          {
+            "reason": "Cores e nomes das casas sem contar, que a etapa um pressupõe."
+          },
+          {
+            "reason": "Para manter a posição inicial firme dois lances adentro de uma variante."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "sourceHash": "1e76a79b0ae5ab6f6b4238980f8e2d254e771ef3830048abdda935ebf8dfcf2f",
+  "approvedHash": "e797c051f130fb3862f2016a906368ef2a10f6014175003ba1dbd3d9649ab813",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Treino de visualização no xadrez: veja o tabuleiro",
+      "h1": "Exercícios de visualização no xadrez que acham e corrigem o seu ponto fraco",
+      "description": "Teste o seu tabuleiro mental com quatro rodadas de 6 peças a 10 segundos. Depois faça 8 a 12 minutos por dia de exercícios de visualização para a sua falha.",
+      "keywords": {
+        "primary": "exercícios de visualização no xadrez",
+        "secondary": [
+          "treino de visualização no xadrez",
+          "como visualizar lances no xadrez",
+          "visualização do tabuleiro de xadrez",
+          "exercício de cobrir o tabuleiro",
+          "treino mental de xadrez"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Os melhores exercícios de visualização no xadrez treinam a falha que você realmente tem. Quatro rodadas de 6 peças mostram se, na sua cabeça, as peças somem, escorregam uma casa ou trocam de identidade. Depois cubra uma posição, faça uma captura de memória e diga cada casa da coluna atrás dela antes de descobrir o tabuleiro.",
+      "takeaways": [
+        "Quatro rodadas de 6 peças e 10 segundos são um teste de quatro minutos que mostra como a sua imagem falha.",
+        "O tabuleiro de resultado distingue uma peça que sumiu de uma que escorregou. O número de precisão não consegue.",
+        "Cobrir e mover treina atualizar a imagem depois de uma captura."
+      ],
+      "audience": [
+        "Quem calcula dois lances, volta a olhar o tabuleiro e começa tudo de novo.",
+        "Quem enxerga o lance, mas não a posição que ele deixa para trás."
+      ]
+    },
+    "sections": {
+      "how-the-picture-fails": {
+        "heading": "Por que as peças somem, escorregam ou mudam na sua cabeça",
+        "blocks": [
+          {
+            "paragraphs": [
+              "A sua imagem é a posição que você guarda na cabeça. Quando uma variante dá errado ali, aconteceu uma de três coisas, e cada uma pede uma correção diferente."
+            ]
+          },
+          {
+            "items": [
+              "Uma peça some. Uma peça fora da variante, como um peão em e4, cai da sua imagem, e você calcula como se a casa dela estivesse vazia.",
+              "Uma peça escorrega. A torre está em d7, mas a sua imagem a coloca em d6, uma casa fora do lugar.",
+              "Uma peça troca de identidade. Um bispo vira cavalo, ou uma torre branca vira preta."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Uma quarta falha é mais rara. Aparece uma peça fantasma, e você calcula contando com um defensor que não existe.",
+              "O Memory Chess só conta uma peça posicionada como correta quando a casa, o tipo e a cor batem com o original. Essa regra rígida permite que uma única rodada separe as falhas."
+            ]
+          }
+        ]
+      },
+      "four-minute-check": {
+        "heading": "O teste de visualização de quatro minutos",
+        "summary": "Faça este teste antes de qualquer outro exercício e depois todos os dias, como o plano de seis semanas abaixo define.",
+        "blocks": [
+          {
+            "drills": [
+              {
+                "title": "Seis peças, dez segundos, quatro rodadas",
+                "description": "Jogue 4 rodadas de 6 peças com 10 segundos para olhar, apertando \"Tentar de novo\" entre as rodadas. Posicione as peças e envie. Antes da rodada seguinte, anote uma palavra para cada erro: sumiu, escorregou, trocou ou fantasma.",
+                "duration": "Cerca de 4 minutos",
+                "goal": "Uma contagem que mostra qual falha você comete mais.",
+                "play": {
+                  "label": "Jogar 6 peças, 10 segundos"
+                }
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Depois de enviar, o tabuleiro mostra as peças que você posicionou. Uma casa verde está correta. Uma casa vermelha tem uma peça que não deveria estar ali. Um anel vermelho marca uma casa onde havia uma peça no original e você não a recolocou. Se você deixou essa casa vazia, uma cópia apagada da peça que falta fica dentro do anel.",
+              "Leia essas marcas, não o número de precisão. Uma peça fantasma não tem anel próprio. Uma sétima peça aparece como mais uma casa vermelha, e a precisão cai dez pontos por causa dela."
+            ]
+          }
+        ]
+      },
+      "which-drill-for-which-failure": {
+        "heading": "Qual exercício corrige qual falha",
+        "blocks": [
+          {
+            "columns": [
+              "Falha",
+              "O que o tabuleiro de resultado mostra",
+              "O que treinar"
+            ],
+            "rows": [
+              {
+                "label": "Peça que sumiu",
+                "cells": [
+                  "Um anel com uma peça apagada dentro e nenhuma casa vermelha solta perto dele.",
+                  "Olhe em grupos. Diga primeiro o rei e as peças vizinhas, depois as peças isoladas."
+                ]
+              },
+              {
+                "label": "Peça que escorregou",
+                "cells": [
+                  "Uma casa vermelha a um passo de um anel que tem uma cópia apagada da mesma peça.",
+                  "Diga baixinho o nome de cada casa enquanto olha."
+                ]
+              },
+              {
+                "label": "Peça que trocou",
+                "cells": [
+                  "Uma casa vermelha dentro de um anel. Você achou a casa e perdeu o tipo ou a cor.",
+                  "Diga a cor e o tipo junto com a casa, como cavalo branco f3."
+                ]
+              },
+              {
+                "label": "Peça fantasma",
+                "cells": [
+                  "Uma peça a mais do que a posição tinha, e dez pontos de precisão a menos.",
+                  "Conte as suas peças antes de enviar. Numa variante, conte as capturas à medida que elas acontecem."
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cover-and-move": {
+        "heading": "O exercício de cobrir e mover para atualizar a imagem",
+        "summary": "Uma rodada de memória testa guardar uma imagem. Este exercício testa mudá-la.",
+        "blocks": [
+          {
+            "caption": "Brancas jogam: estude este tabuleiro, cubra-o e decida se 1.Nxe5 ganha um peão."
+          },
+          {
+            "paragraphs": [
+              "Estude o tabuleiro, ou monte a posição num tabuleiro de verdade. As brancas têm rei em g1, torre em e1, cavalo em f3 e peões em e4, f2, g2 e h2. As pretas têm rei em g8, torre em e8, cavalo em f6 e peões em e5, f7, g7 e h7.",
+              "Cubra o tabuleiro. Agora responda sem descobri-lo. 1.Nxe5 ganha um peão?"
+            ]
+          },
+          {
+            "items": [
+              "Jogue 1.Nxe5 na cabeça. Diga a coluna e de cima para baixo: torre em e8, depois e7 e e6 vazias, cavalo em e5, peão em e4, depois e3 e e2 vazias, torre em e1.",
+              "Conte os atacantes de e5. A torre em e8 ataca a casa uma vez.",
+              "Conte os defensores de e5. A torre em e1 defenderia, mas o seu próprio peão em e4 está no caminho. Zero.",
+              "Conclua. 1.Nxe5 perde um cavalo por um peão depois de 1...Rxe5. Descubra o tabuleiro e confira cada casa que você disse."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Agora passe o peão branco de e4 para d3 e faça a mesma pergunta. Desta vez a coluna e atrás do cavalo está vazia, então a torre em e1 defende e5. Depois de 1.Nxe5 Rxe5 2.Rxe5, as brancas ganharam uma torre e um peão por um cavalo, então as pretas não devem recapturar, e 1.Nxe5 ganha um peão limpo.",
+              "Um peão andou uma casa e a resposta se inverteu. É fácil esquecer o peão de e4 porque ele nunca se move na variante. Antes de avaliar uma captura, diga a coluna ou a diagonal inteira atrás dela, até a borda.",
+              "Faça duas posições suas por dia. Cubra um problema que você resolveu ontem e jogue a solução na cabeça. Diga onde está agora cada peça que se moveu e quais peças saíram do tabuleiro. Depois descubra, jogue a solução no tabuleiro e confira cada casa que você disse. Deu certo se todas baterem.",
+              "Quando as posições cobertas saírem limpas, o <l0>treino de xadrez às cegas</l0> leva o mesmo hábito de uma posição para uma partida inteira, sem tabuleiro nenhum."
+            ]
+          }
+        ]
+      },
+      "six-week-progression": {
+        "heading": "Seis semanas com um único número para acompanhar",
+        "blocks": [
+          {
+            "steps": [
+              {
+                "label": "Semanas 1 e 2",
+                "duration": "8 minutos por dia",
+                "detail": "O teste de quatro minutos todos os dias, depois duas posições de cobrir e mover, cada uma com uma única captura. O número para acompanhar é quantas rodadas perfeitas você faz em quatro."
+              },
+              {
+                "label": "Semanas 3 e 4",
+                "duration": "10 minutos por dia",
+                "detail": "Mantenha o teste. Estenda o cobrir e mover para dois lances de cada lado e termine dizendo a coluna ou a diagonal atrás da última captura. Abra \"Lembrança por tipo de peça\" no seu Registro do laboratório. Um tipo que continua baixo é o que a sua imagem perde."
+              },
+              {
+                "label": "Semanas 5 e 6",
+                "duration": "12 minutos por dia",
+                "detail": "Se em três dos seus últimos cinco testes da semana 4 você fez três rodadas perfeitas em quatro, a imagem se sustenta com seis peças. Passe o teste para 8 peças com 10 segundos e recomece o cobrir e mover com uma captura. Caso contrário, repita as semanas 3 e 4."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jogar 6 peças, 10 segundos",
+        "why": "Quatro rodadas de seis peças, com \"Tentar de novo\" entre elas, mostram se as suas peças somem, escorregam uma casa ou trocam de identidade no caminho de volta."
+      },
+      {
+        "items": [
+          {
+            "question": "Por que não jogar mais rodadas até a precisão subir?",
+            "answer": "A precisão esconde qual falha você tem. Dois jogadores com 67% em seis peças podem ter problemas opostos. Um deixa cair as peças isoladas e precisa olhar em grupos. O outro acerta todas as casas, troca as peças e precisa dizer a cor e o tipo."
+          },
+          {
+            "question": "Devo testar a visualização com mais peças?",
+            "answer": "Só quando seis peças ficarem fáceis. Num tabuleiro com muitos erros, anéis e casas vermelhas se amontoam e você não consegue dizer qual falha causou o quê. Passe para oito quando três dos seus últimos cinco testes tiverem três rodadas perfeitas em quatro. A configuração Difícil, de 12 peças e 8 segundos, vem depois disso."
+          },
+          {
+            "question": "Dá para fazer exercícios de visualização sem tabuleiro de xadrez?",
+            "answer": "Sim. Cobrir e mover funciona com qualquer diagrama que você consiga esconder, no papel ou na tela. Montar as peças com a mão ajuda um pouco, porque posicionar você mesmo o peão de e4 torna mais difícil esquecê-lo."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Quando um tabuleiro coberto parecer fácil, o próximo passo é uma partida inteira sem tabuleiro."
+          },
+          {
+            "reason": "Usa o hábito de cobrir e mover em variantes mais longas."
+          },
+          {
+            "reason": "Segue cada linha de bispo, torre e dama até a borda, o hábito de que o cobrir e mover depende."
+          },
+          {
+            "reason": "A escada de número de peças para subir quando seis peças sustentarem três rodadas em quatro."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -44,6 +44,10 @@
       "dashboardLine": "Vertaile kokemuksia muiden pelaajien kanssa.",
       "leaderboardLine": "Keskustele tämän tulostaulun pelaajien kanssa.",
       "aboutLine": "Haluatko mieluummin jutella?"
+    },
+    "about": {
+      "facts": "Memory Chessin rakentaa ja ylläpitää yksi kehittäjä, Bing Cheng. Se julkaistiin ensimmäisen kerran maaliskuussa 2025, ja sitä voi pelata {languages} kielellä.",
+      "plays": "Pelaajat olivat pelanneet loppuun {count}+ peliä <time>{date}</time> mennessä."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Katso mitä uutta",
+    "bannerDismiss": "Sulje tämä ilmoitus",
     "bannerLabel": "Memory Chess -päivitys",
-    "bannerLead": "Memory Chess v{version} on täällä."
+    "bannerLead": "Versio {version} on julkaistu."
   },
   "articles": {
     "meta": {
@@ -1812,5 +1817,48 @@
       "secondsRange": "{min}–{max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Kuinka hyvin ihmiset muistavat shakkiasemia?",
+      "description": "Shakkiasemien keskimääräinen muistitarkkuus nappuloiden määrän ja tutkimisajan mukaan, {rounds, number} pelatusta Memory Chess -kierroksesta. Avoin data, CC BY 4.0.",
+      "socialTitle": "Kuinka hyvin ihmiset muistavat shakkiasemia?",
+      "socialDescription": "Muistamistarkkuus nappuloiden määrän ja tutkimisajan mukaan, {rounds, number} loppuun pelatusta Memory Chess -kierroksesta. Avoin data CC BY 4.0 -lisenssillä."
+    },
+    "kicker": "Avoin data",
+    "title": "Kuinka hyvin ihmiset muistavat shakkiasemia?",
+    "answer": "Memory Chessin {rounds, number} loppuun pelatulla kierroksella {start} ja {end} välillä kierrokset, joiden tutkimisajaksi oli asetettu 10 sekuntia, saivat keskimäärin tarkkuuden {two} 2 nappulalla ({twoRounds, number} kierrosta) ja {six} 6 nappulalla, joka on oletusasetus ({sixRounds, number} kierrosta). Näistä 6 nappulan kierroksista {sixPerfect} oli virheettömiä. Asetuksella 12 nappulaa ja 8 sekuntia, jonka harvempi pelaaja valitsi, keskiarvo oli {twelve} ja virheettömiä oli {twelvePerfect} ({twelveRounds, number} kierrosta).",
+    "englishNote": "Alla olevat huomiot menetelmästä, rajoituksista ja viittaamisesta ovat englanniksi.",
+    "chart": {
+      "byPieces": "Keskimääräinen tarkkuus kierroksilla, joiden tutkimisajaksi on asetettu {seconds} sekuntia",
+      "byPiecesNote": "Eri pelaajat valitsivat kunkin nappulamäärän, ja osa riveistä perustuu vain muutamaan pelaajaan, joten katso taulukon Pelaajat-sarake ennen palkkien vertailua.",
+      "bySeconds": "Keskimääräinen tarkkuus {pieces} nappulalla tutkimisajan mukaan",
+      "bySecondsNote": "Eri pelaajat valitsivat kunkin tutkimisajan, joten nämä palkit eivät näytä, kuinka paljon lisäaika auttaa.",
+      "pieces": "{count, plural, one {# nappula} other {# nappulaa}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# kierros} other {# kierrosta}}",
+      "scale": "Jokainen palkki on piirretty mittakaavassa tarkkuusasteikolle, joka alkaa 0 %:sta ja päättyy 100 %:iin."
+    },
+    "table": {
+      "title": "Kaikki julkaistut asetukset",
+      "caption": "Tarkkuus nappuloiden määrän ja tutkimisajan mukaan. Asetukset, joissa on alle {minRounds, number} kierrosta tai {minPlayers, number} pelaajaa, on jätetty pois.",
+      "pieces": "Nappulat",
+      "seconds": "Tutkimisaika",
+      "rounds": "Kierrokset",
+      "players": "Pelaajat",
+      "mean": "Keskiarvo",
+      "median": "Mediaani",
+      "middle": "Keskimmäinen puolikas",
+      "middleValue": "{low} ja {high} välillä",
+      "perfect": "Virheettömät",
+      "zero": "Tulos 0"
+    },
+    "links": {
+      "csv": "Lataa CSV-tiedosto",
+      "notes": "Kenttämuistiinpanot GitHubissa",
+      "play": "Pelaa kierros"
+    },
+    "aboutLine": "Google Analyticsiin kirjatuista kierroksista julkaistaan koostetut muistamistilastot niille asetuksille, joissa on tarpeeksi kierroksia ja pelaajia.",
+    "aboutLink": "Katso muistamistiedot"
   }
 }

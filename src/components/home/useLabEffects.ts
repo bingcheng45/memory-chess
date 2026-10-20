@@ -25,13 +25,19 @@ async function fetchTotalPlays(): Promise<TotalPlays> {
   }
 }
 
-export function useTotalPlays(): TotalPlays {
-  const [totalPlays, setTotalPlays] = useState<TotalPlays>({ status: "loading" });
+const keepKnownCountOnFailure = (current: TotalPlays, next: TotalPlays): TotalPlays =>
+  next.status === "unavailable" && current.status === "known" ? current : next;
+
+export function useTotalPlays(initialPlays?: number): TotalPlays {
+  const [totalPlays, setTotalPlays] = useState<TotalPlays>(() =>
+    initialPlays === undefined ? { status: "loading" } : { status: "known", plays: initialPlays },
+  );
 
   useEffect(() => {
     let cancelled = false;
     fetchTotalPlays().then((result) => {
-      if (!cancelled) setTotalPlays(result);
+      if (cancelled) return;
+      setTotalPlays((current) => keepKnownCountOnFailure(current, result));
     });
     return () => {
       cancelled = true;

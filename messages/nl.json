@@ -44,6 +44,10 @@
       "dashboardLine": "Vergelijk ervaringen met andere spelers.",
       "leaderboardLine": "Praat mee met de spelers van dit klassement.",
       "aboutLine": "Liever chatten?"
+    },
+    "about": {
+      "facts": "Memory Chess wordt gebouwd en beheerd door één ontwikkelaar, Bing Cheng. Het ging in maart 2025 voor het eerst live en is te spelen in {languages} talen.",
+      "plays": "Op <time>{date}</time> hadden spelers {count}+ potjes uitgespeeld."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Bekijk wat er nieuw is",
+    "bannerDismiss": "Deze melding sluiten",
     "bannerLabel": "Memory Chess-update",
-    "bannerLead": "Memory Chess v{version} is er."
+    "bannerLead": "Versie {version} is uit."
   },
   "articles": {
     "meta": {
@@ -1812,5 +1817,48 @@
       "secondsRange": "{min} tot {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Hoe goed onthouden mensen schaakstellingen?",
+      "description": "Hoeveel mensen gemiddeld onthouden van een schaakstelling, per aantal stukken en kijktijd, uit {rounds, number} voltooide rondes Memory Chess. Open data, CC BY 4.0.",
+      "socialTitle": "Hoe goed onthouden mensen schaakstellingen?",
+      "socialDescription": "Herinnering per aantal stukken en kijktijd, uit {rounds, number} voltooide rondes Memory Chess. Open data onder CC BY 4.0."
+    },
+    "kicker": "Open data",
+    "title": "Hoe goed onthouden mensen schaakstellingen?",
+    "answer": "In {rounds, number} voltooide rondes Memory Chess van {start} tot en met {end} haalden rondes met een ingestelde kijktijd van 10 seconden gemiddeld een nauwkeurigheid van {two} met 2 stukken ({twoRounds, number} rondes) en {six} met 6 stukken, de standaardinstelling ({sixRounds, number} rondes). {sixPerfect} van die rondes met 6 stukken was foutloos. Met 12 stukken en 8 seconden, een instelling die minder spelers kozen, was het gemiddelde {twelve}, met {twelvePerfect} foutloze rondes ({twelveRounds, number} rondes).",
+    "englishNote": "De toelichting over methode, beperkingen en bronvermelding hieronder is in het Engels.",
+    "chart": {
+      "byPieces": "Gemiddelde herinnering in rondes met een ingestelde kijktijd van {seconds} seconden",
+      "byPiecesNote": "Elk aantal stukken werd door andere spelers gekozen, en sommige rijen komen van maar een paar spelers, dus kijk naar de kolom Spelers in de tabel voordat je balken vergelijkt.",
+      "bySeconds": "Gemiddelde herinnering van {pieces} stukken, per kijktijd",
+      "bySecondsNote": "Elke kijktijd werd door andere spelers gekozen, dus deze balken laten niet zien hoeveel extra tijd helpt.",
+      "pieces": "{count, plural, one {# stuk} other {# stukken}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# ronde} other {# rondes}}",
+      "scale": "Elke balk is op schaal getekend, van 0 tot 100% nauwkeurigheid."
+    },
+    "table": {
+      "title": "Alle gepubliceerde instellingen",
+      "caption": "Nauwkeurigheid per aantal stukken en kijktijd. Instellingen met minder dan {minRounds, number} rondes of {minPlayers, number} spelers zijn weggelaten.",
+      "pieces": "Stukken",
+      "seconds": "Kijktijd",
+      "rounds": "Rondes",
+      "players": "Spelers",
+      "mean": "Gemiddelde",
+      "median": "Mediaan",
+      "middle": "Middelste helft",
+      "middleValue": "{low} tot {high}",
+      "perfect": "Foutloos",
+      "zero": "Score 0"
+    },
+    "links": {
+      "csv": "Download de CSV",
+      "notes": "Veldnotities op GitHub",
+      "play": "Speel een ronde"
+    },
+    "aboutLine": "Geaggregeerde statistieken over onthouden uit rondes die in Google Analytics zijn vastgelegd, worden gepubliceerd voor instellingen met genoeg rondes en spelers.",
+    "aboutLink": "Bekijk de geheugendata"
   }
 }

@@ -44,6 +44,10 @@
       "dashboardLine": "Schimbă păreri cu alți jucători.",
       "leaderboardLine": "Discută cu jucătorii din acest clasament.",
       "aboutLine": "Preferi un chat?"
+    },
+    "about": {
+      "facts": "Memory Chess este construit și administrat de un singur dezvoltator, Bing Cheng. A fost lansat în martie 2025 și se poate juca în {languages} de limbi.",
+      "plays": "Până la <time>{date}</time>, jucătorii terminaseră {count}+ de partide."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Vezi noutățile",
+    "bannerDismiss": "Închide acest anunț",
     "bannerLabel": "Actualizare Memory Chess",
-    "bannerLead": "Memory Chess v{version} a sosit."
+    "bannerLead": "Versiunea {version} a apărut."
   },
   "articles": {
     "meta": {
@@ -1812,5 +1817,48 @@
       "secondsRange": "între {min} și {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Cât de bine ne amintim pozițiile de șah?",
+      "description": "Precizia medie de reconstituire a pozițiilor de șah după numărul de piese și timpul de studiu, din {rounds, plural, one {# rundă} few {# runde} other {# de runde}} Memory Chess. Date deschise CC BY 4.0.",
+      "socialTitle": "Cât de bine își amintesc oamenii pozițiile de șah?",
+      "socialDescription": "Precizia în funcție de numărul de piese și de timpul de studiu, din {rounds, plural, one {# rundă terminată} few {# runde terminate} other {# de runde terminate}} de Memory Chess. Date deschise sub licența CC BY 4.0."
+    },
+    "kicker": "Date deschise",
+    "title": "Cât de bine își amintesc oamenii pozițiile de șah?",
+    "answer": "În {rounds, plural, one {# rundă terminată} few {# runde terminate} other {# de runde terminate}} de Memory Chess, între {start} și {end}, rundele setate la 10 secunde de studiu au obținut în medie o precizie de {two} cu 2 piese ({twoRounds, plural, one {# rundă} few {# runde} other {# de runde}}) și de {six} cu 6 piese, setarea implicită ({sixRounds, plural, one {# rundă} few {# runde} other {# de runde}}). {sixPerfect} dintre aceste runde cu 6 piese au fost perfecte. Cu 12 piese și 8 secunde, o setare aleasă de mai puțini jucători, media a fost de {twelve}, cu {twelvePerfect} perfecte ({twelveRounds, plural, one {# rundă} few {# runde} other {# de runde}}).",
+    "englishNote": "Notele despre metodă, limite și citare de mai jos sunt în engleză.",
+    "chart": {
+      "byPieces": "Precizia medie în rundele setate la {seconds} secunde de studiu",
+      "byPiecesNote": "Fiecare număr de piese a fost ales de alți jucători, iar unele rânduri provin de la doar câțiva jucători, așa că verifică coloana Jucători din tabel înainte să compari barele.",
+      "bySeconds": "Precizia medie pentru {pieces} piese, în funcție de timpul de studiu",
+      "bySecondsNote": "Fiecare timp de studiu a fost ales de alți jucători, așa că aceste bare nu arată cât ajută timpul în plus.",
+      "pieces": "{count, plural, one {# piesă} few {# piese} other {# de piese}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# rundă} few {# runde} other {# de runde}}",
+      "scale": "Fiecare bară este desenată la scară, de la 0 la 100% precizie."
+    },
+    "table": {
+      "title": "Toate setările publicate",
+      "caption": "Precizia în funcție de numărul de piese și de timpul de studiu. Setările cu mai puțin de {minRounds, number} de runde sau {minPlayers, number} jucători sunt omise.",
+      "pieces": "Piese",
+      "seconds": "Timp de studiu",
+      "rounds": "Runde",
+      "players": "Jucători",
+      "mean": "Medie",
+      "median": "Mediană",
+      "middle": "Jumătatea din mijloc",
+      "middleValue": "între {low} și {high}",
+      "perfect": "Perfecte",
+      "zero": "Scor 0"
+    },
+    "links": {
+      "csv": "Descarcă fișierul CSV",
+      "notes": "Note de lucru pe GitHub",
+      "play": "Joacă o rundă"
+    },
+    "aboutLine": "Publicăm statistici agregate despre reconstituire din rundele înregistrate în Google Analytics, pentru setările cu suficiente runde și jucători.",
+    "aboutLink": "Vezi datele despre memorare"
   }
 }

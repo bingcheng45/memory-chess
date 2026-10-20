@@ -2,7 +2,7 @@ import { dirname } from "node:path";
 
 const HOST = "thememorychess.com";
 const KEY = "5a02a3bb61bac459c5a10034038b50f9";
-const ENDPOINT = "https://api.indexnow.org/indexnow";
+const DEFAULT_ENDPOINT = "https://api.indexnow.org/indexnow";
 const DEFAULT_SITEMAP = `https://${HOST}/sitemap.xml`;
 export const MAX_URLS = 10_000;
 const MAX_BODY_CHARS = 500;
@@ -103,7 +103,7 @@ async function readResponseBody(response) {
 }
 
 export async function run(argv, deps) {
-  const { fetch, writeFile, mkdir, log, error } = deps;
+  const { fetch, writeFile, mkdir, log, error, endpoint = DEFAULT_ENDPOINT } = deps;
   try {
     const options = parseArgs(argv);
     let urls = options.urls;
@@ -124,7 +124,7 @@ export async function run(argv, deps) {
       log(JSON.stringify(payload, null, 2));
       return 0;
     }
-    const response = await fetch(ENDPOINT, {
+    const response = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json; charset=utf-8" },
       body: JSON.stringify(payload),

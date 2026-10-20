@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "ca747e5560c5cb8fadc3b65c69bef098f00aefc830358509f7806f0648d86adc",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "85d525e9211bd0e1062049a3716adcf52e6ee96c2a2bc6530d9e0d4de6f22f27",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Ketika Anda membuka atau menyukai sebuah artikel, Supabase hanya menyimpan total tayangan dan total suka untuk setiap artikel, beserta waktu perubahan terakhir dan tanpa pengenal pengunjung."
+          },
+          {
+            "p": "Di <data>halaman data ingatan</data>, kami memublikasikan jumlah ronde yang selesai menurut jumlah bidak, waktu menghafal, dan akurasi, yang diambil dari Google Analytics. Data ini hanya berupa jumlah agregat, tanpa nama, ID pemain, atau posisi, dan kelompok dengan kurang dari 30 ronde atau 5 pemain tidak ditampilkan."
           }
         ]
       },

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "362801385a00eee0fdca75e74cf4a097ce4890a151c318eb1206ba6181b832ee",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "fbfe8fbae9f9981542b293b5f16c6c44248f70184c66d8fa463fdebfd31281a8",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Kun avaat artikkelin tai tykkäät siitä, Supabase tallentaa kustakin artikkelista vain katselukertojen kokonaismäärän ja tykkäysten kokonaismäärän sekä viimeisimmän muutoksen ajan, ilman kävijän tunnistetta."
+          },
+          {
+            "p": "<data>Muistamistietojen sivulla</data> julkaisemme loppuun pelattujen kierrosten määriä nappuloiden määrän, tutkimisajan ja tarkkuuden mukaan Google Analyticsin tiedoista. Ne ovat vain koostettuja määriä ilman nimiä, pelaajatunnisteita tai asemia, ja ryhmä, jossa on alle 30 kierrosta tai 5 pelaajaa, jätetään pois."
           }
         ]
       },

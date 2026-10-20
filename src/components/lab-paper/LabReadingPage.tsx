@@ -1,8 +1,8 @@
 import type { ReactNode } from "react";
 import englishChrome from "@/lib/pages/readingChrome";
 import type { ReadingChrome } from "@/lib/pages/schema";
-import { languageTag } from "@/lib/seo/alternates";
 import { LabPaperHeader, type PageSections } from "./LabPaperHeader";
+import { readingDateLabel, readingDateTime } from "./readingDate";
 import { richText } from "./richText";
 import { LAB_PAPER_CLASS } from "./shell";
 import "./lab-reading.css";
@@ -28,14 +28,6 @@ interface LabReadingPageProps {
   /** When the page's text last changed, an ISO timestamp, printed as the Singapore calendar date the sitemap reads. */
   readonly updated?: string;
   readonly children: ReactNode;
-}
-
-const READING_ZONE = "Asia/Singapore";
-const updatedDateTime = new Intl.DateTimeFormat("en-CA", { year: "numeric", month: "2-digit", day: "2-digit", timeZone: READING_ZONE });
-
-function updatedLabel(updated: string, locale: string): string {
-  const format = { month: "long", day: "numeric", year: "numeric", timeZone: READING_ZONE } as const;
-  return new Intl.DateTimeFormat(languageTag(locale), format).format(new Date(updated));
 }
 
 function contentsMenu(contents: readonly ReadingSection[], chrome: ReadingChrome): PageSections {
@@ -71,8 +63,8 @@ export function LabReadingPage({
           {updated && (
             <p className="lab-read-updated">
               {richText(chrome.lastUpdated, locale, {
-                date: updatedLabel(updated, locale),
-                time: (chunks) => <time dateTime={updatedDateTime.format(new Date(updated))}>{chunks}</time>,
+                date: readingDateLabel(updated, locale),
+                time: (chunks) => <time dateTime={readingDateTime(updated)}>{chunks}</time>,
               })}
             </p>
           )}

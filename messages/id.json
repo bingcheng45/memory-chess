@@ -44,6 +44,10 @@
       "dashboardLine": "Bertukar catatan dengan pemain lain.",
       "leaderboardLine": "Ngobrol dengan para pemain di papan peringkat ini.",
       "aboutLine": "Lebih suka mengobrol?"
+    },
+    "about": {
+      "facts": "Memory Chess dibuat dan dikelola oleh satu pengembang, Bing Cheng. Situs ini pertama kali diluncurkan pada Maret 2025 dan bisa dimainkan dalam {languages} bahasa.",
+      "plays": "Hingga <time>{date}</time>, para pemain telah menyelesaikan {count}+ permainan."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Lihat yang baru",
+    "bannerDismiss": "Tutup pemberitahuan ini",
     "bannerLabel": "Pembaruan Memory Chess",
-    "bannerLead": "Memory Chess v{version} sudah hadir."
+    "bannerLead": "Versi {version} sudah hadir."
   },
   "articles": {
     "meta": {
@@ -1812,5 +1817,48 @@
       "secondsRange": "{min} sampai {max} dtk",
       "secondsExact": "{count} dtk"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Seberapa baik orang mengingat posisi catur?",
+      "description": "Rata-rata ingatan posisi catur menurut jumlah bidak dan waktu menghafal, dari {rounds, number} ronde Memory Chess yang selesai. Data terbuka di bawah CC BY 4.0.",
+      "socialTitle": "Seberapa baik orang mengingat posisi catur?",
+      "socialDescription": "Ingatan menurut jumlah bidak dan waktu menghafal, dari {rounds, number} ronde Memory Chess yang selesai. Data terbuka di bawah CC BY 4.0."
+    },
+    "kicker": "Data terbuka",
+    "title": "Seberapa baik orang mengingat posisi catur?",
+    "answer": "Dalam {rounds, number} ronde Memory Chess yang selesai dari {start} hingga {end}, ronde dengan waktu menghafal yang diatur ke 10 detik rata-rata meraih akurasi {two} dengan 2 bidak ({twoRounds, number} ronde) dan {six} dengan 6 bidak, pengaturan bawaan ({sixRounds, number} ronde). Sebanyak {sixPerfect} dari ronde 6 bidak itu sempurna. Dengan 12 bidak dan 8 detik, pengaturan yang dipilih lebih sedikit pemain, rata-ratanya {twelve}, dengan {twelvePerfect} yang sempurna ({twelveRounds, number} ronde).",
+    "englishNote": "Catatan tentang metode, batasan, dan sitasi di bawah ini ditulis dalam bahasa Inggris.",
+    "chart": {
+      "byPieces": "Rata-rata ingatan pada ronde dengan waktu menghafal yang diatur {seconds} detik",
+      "byPiecesNote": "Setiap jumlah bidak dipilih oleh pemain yang berbeda, dan beberapa baris hanya berasal dari sedikit pemain, jadi periksa kolom Pemain di tabel sebelum membandingkan batang.",
+      "bySeconds": "Rata-rata ingatan {pieces} bidak, menurut waktu menghafal",
+      "bySecondsNote": "Setiap waktu menghafal dipilih oleh pemain yang berbeda, jadi batang ini tidak menunjukkan seberapa besar tambahan waktu membantu.",
+      "pieces": "{count, plural, other {# bidak}}",
+      "seconds": "{count} dtk",
+      "rounds": "{count, plural, other {# ronde}}",
+      "scale": "Setiap batang digambar sesuai skala dari 0 hingga 100% akurasi."
+    },
+    "table": {
+      "title": "Semua pengaturan yang dipublikasikan",
+      "caption": "Akurasi menurut jumlah bidak dan waktu menghafal. Pengaturan dengan kurang dari {minRounds, number} ronde atau {minPlayers, number} pemain tidak ditampilkan.",
+      "pieces": "Bidak",
+      "seconds": "Waktu menghafal",
+      "rounds": "Ronde",
+      "players": "Pemain",
+      "mean": "Rata-rata",
+      "median": "Median",
+      "middle": "Separuh tengah",
+      "middleValue": "{low} hingga {high}",
+      "perfect": "Sempurna",
+      "zero": "Skor 0"
+    },
+    "links": {
+      "csv": "Unduh CSV",
+      "notes": "Catatan lapangan di GitHub",
+      "play": "Mainkan satu ronde"
+    },
+    "aboutLine": "Statistik agregat ingatan dari ronde yang tercatat di Google Analytics dipublikasikan, untuk pengaturan dengan cukup ronde dan pemain.",
+    "aboutLink": "Lihat data ingatan"
   }
 }

@@ -302,6 +302,12 @@ describe("the hub", () => {
     expect(markup).toContain("6 min read · ends with 6 pieces, 10 seconds");
   });
 
+  it("closes the path with a link to the open recall data", () => {
+    const markup = html(LearnHub());
+
+    expect(markup).toContain('<p class="lh-stage-cta"><a href="/data">See how well other players recall positions, by piece count and study time</a></p>');
+  });
+
   it("lists every guide in the ItemList in the order a reader sees them", () => {
     const markup = html(LearnHub());
     const items = graph(markup).find((node) => node["@type"] === "ItemList")?.itemListElement as { name: string }[];

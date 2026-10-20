@@ -44,6 +44,10 @@
       "dashboardLine": "Compara notas con otros jugadores.",
       "leaderboardLine": "Charla con los jugadores de esta clasificación.",
       "aboutLine": "¿Prefieres chatear?"
+    },
+    "about": {
+      "facts": "Memory Chess lo crea y lo mantiene un solo desarrollador, Bing Cheng. Se lanzó por primera vez en marzo de 2025 y se puede jugar en {languages} idiomas.",
+      "plays": "Hasta el <time>{date}</time>, los jugadores habían terminado {count}+ partidas."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Ver novedades",
+    "bannerDismiss": "Cerrar este aviso",
     "bannerLabel": "Actualización de Memory Chess",
-    "bannerLead": "Ya está aquí Memory Chess v{version}."
+    "bannerLead": "Ya está aquí la versión {version}."
   },
   "articles": {
     "meta": {
@@ -1812,5 +1817,48 @@
       "secondsRange": "De {min} a {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Datos de memoria de posiciones de ajedrez",
+      "description": "Recuerdo medio de posiciones de ajedrez por número de piezas y tiempo de estudio, en {rounds, number} rondas terminadas de Memory Chess. Datos abiertos CC BY 4.0.",
+      "socialTitle": "¿Hasta qué punto recuerda la gente las posiciones de ajedrez?",
+      "socialDescription": "Recuerdo según el número de piezas y el tiempo de estudio, a partir de {rounds, number} rondas terminadas de Memory Chess. Datos abiertos con licencia CC BY 4.0."
+    },
+    "kicker": "Datos abiertos",
+    "title": "¿Hasta qué punto recuerda la gente las posiciones de ajedrez?",
+    "answer": "En {rounds, number} rondas terminadas de Memory Chess entre el {start} y el {end}, las rondas configuradas con 10 segundos de estudio obtuvieron de media una precisión del {two} con 2 piezas ({twoRounds, number} rondas) y del {six} con 6 piezas, la configuración predeterminada ({sixRounds, number} rondas). El {sixPerfect} de esas rondas de 6 piezas fueron perfectas. Con 12 piezas y 8 segundos, una configuración que eligieron menos jugadores, la media fue del {twelve}, con un {twelvePerfect} de rondas perfectas ({twelveRounds, number} rondas).",
+    "englishNote": "Las notas sobre el método, los límites y cómo citar estos datos están en inglés.",
+    "chart": {
+      "byPieces": "Recuerdo medio en rondas configuradas con {seconds} segundos de estudio",
+      "byPiecesNote": "Cada número de piezas lo eligieron jugadores distintos, y algunas filas proceden de pocos jugadores, así que mira la columna Jugadores de la tabla antes de comparar barras.",
+      "bySeconds": "Recuerdo medio de {pieces} piezas, según el tiempo de estudio",
+      "bySecondsNote": "Cada tiempo de estudio lo eligieron jugadores distintos, así que estas barras no muestran cuánto ayuda tener más tiempo.",
+      "pieces": "{count, plural, one {# pieza} many {# de piezas} other {# piezas}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# ronda} many {# de rondas} other {# rondas}}",
+      "scale": "Cada barra está dibujada a escala de 0 a 100 % de precisión."
+    },
+    "table": {
+      "title": "Todos los ajustes publicados",
+      "caption": "Precisión según el número de piezas y el tiempo de estudio. Se omiten los ajustes con menos de {minRounds, number} rondas o {minPlayers, number} jugadores.",
+      "pieces": "Piezas",
+      "seconds": "Tiempo de estudio",
+      "rounds": "Rondas",
+      "players": "Jugadores",
+      "mean": "Media",
+      "median": "Mediana",
+      "middle": "Mitad central",
+      "middleValue": "{low} a {high}",
+      "perfect": "Perfectas",
+      "zero": "Puntuación 0"
+    },
+    "links": {
+      "csv": "Descargar el CSV",
+      "notes": "Notas de campo en GitHub",
+      "play": "Jugar una ronda"
+    },
+    "aboutLine": "Se publican estadísticas agregadas de recuerdo de las rondas registradas en Google Analytics, para las configuraciones con suficientes rondas y jugadores.",
+    "aboutLink": "Ver los datos de recuerdo"
   }
 }

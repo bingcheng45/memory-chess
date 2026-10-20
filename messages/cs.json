@@ -44,6 +44,10 @@
       "dashboardLine": "Porovnejte postřehy s dalšími hráči.",
       "leaderboardLine": "Popovídejte si s hráči z tohoto žebříčku.",
       "aboutLine": "Raději chat?"
+    },
+    "about": {
+      "facts": "Memory Chess vyvíjí a provozuje jediný vývojář, Bing Cheng. Poprvé byl spuštěn v březnu 2025 a hraje se ve {languages} jazycích.",
+      "plays": "Do <time>{date}</time> hráči dohráli {count}+ her."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Zobrazit novinky",
+    "bannerDismiss": "Zavřít toto oznámení",
     "bannerLabel": "Aktualizace Memory Chess",
-    "bannerLead": "Memory Chess v{version} je tady."
+    "bannerLead": "Vyšla verze {version}."
   },
   "articles": {
     "meta": {
@@ -1812,5 +1817,48 @@
       "secondsRange": "{min} až {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Jak dobře si lidé pamatují šachové pozice?",
+      "description": "Průměrné vybavení šachových pozic podle počtu figur a času na zapamatování, z {rounds, number} dokončených kol hry Memory Chess. Otevřená data CC BY 4.0.",
+      "socialTitle": "Jak dobře si lidé pamatují šachové pozice?",
+      "socialDescription": "Přesnost podle počtu figur a času na zapamatování, z {rounds, number} dokončených kol hry Memory Chess. Otevřená data pod licencí CC BY 4.0."
+    },
+    "kicker": "Otevřená data",
+    "title": "Jak dobře si lidé pamatují šachové pozice?",
+    "answer": "V {rounds, number} dokončených kolech hry Memory Chess od {start} do {end} dosáhla kola s časem na zapamatování nastaveným na 10 sekund průměrné přesnosti {two} se 2 figurami ({twoRounds, number} kol) a {six} se 6 figurami, což je výchozí nastavení ({sixRounds, number} kol). Bezchybných bylo {sixPerfect} z těchto kol se 6 figurami. Při 12 figurách a 8 sekundách, tedy nastavení, které volilo méně hráčů, byl průměr {twelve} a bezchybných bylo {twelvePerfect} ({twelveRounds, number} kol).",
+    "englishNote": "Poznámky k metodě, omezením a citování níže jsou v angličtině.",
+    "chart": {
+      "byPieces": "Průměrná přesnost v kolech s nastaveným časem na zapamatování {seconds} s",
+      "byPiecesNote": "Každý počet figur si zvolili jiní hráči a některé řádky pocházejí jen od několika hráčů, proto si před porovnáním sloupců zkontrolujte v tabulce sloupec Hráči.",
+      "bySeconds": "Průměrná přesnost u {pieces} figur podle času na zapamatování",
+      "bySecondsNote": "Každý čas na zapamatování si zvolili jiní hráči, takže tyto sloupce neukazují, o kolik pomáhá delší čas.",
+      "pieces": "{count, plural, one {# figura} few {# figury} many {# figury} other {# figur}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
+      "scale": "Každý sloupec je vykreslen v měřítku od 0 do 100 % přesnosti."
+    },
+    "table": {
+      "title": "Všechna zveřejněná nastavení",
+      "caption": "Přesnost podle počtu figur a času na zapamatování. Nastavení s méně než {minRounds, number} koly nebo {minPlayers, number} hráči nejsou uvedena.",
+      "pieces": "Figury",
+      "seconds": "Čas na zapamatování",
+      "rounds": "Kola",
+      "players": "Hráči",
+      "mean": "Průměr",
+      "median": "Medián",
+      "middle": "Prostřední polovina",
+      "middleValue": "{low} až {high}",
+      "perfect": "Bezchybná",
+      "zero": "0 bodů"
+    },
+    "links": {
+      "csv": "Stáhnout CSV",
+      "notes": "Pracovní poznámky na GitHubu",
+      "play": "Zahrát kolo"
+    },
+    "aboutLine": "Zveřejňujeme souhrnné statistiky vybavení z kol zaznamenaných v Google Analytics, a to pro nastavení s dostatečným počtem kol a hráčů.",
+    "aboutLink": "Zobrazit data o zapamatování"
   }
 }

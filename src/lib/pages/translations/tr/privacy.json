@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "3566504beb8801cea9e8b13380857039fb2b47ed1b5bebc2f7a48cce30f47754",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "f9f771fb4b08f1d1881be33b76fd180869574ea3b070ed41b334e5685e0c3782",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Bir makaleyi açtığında veya beğendiğinde Supabase, her makale için yalnızca toplam görüntüleme ve toplam beğeni sayısını, son değişikliğin zamanıyla birlikte ve hiçbir ziyaretçi tanımlayıcısı olmadan saklar."
+          },
+          {
+            "p": "<data>Hatırlama verileri sayfasında</data>, Google Analytics'ten alınan bitirilmiş tur sayılarını taş sayısına, inceleme süresine ve isabete göre yayımlarız. Bunlar yalnızca toplu sayılardır; ad, oyuncu kimliği veya konum içermez ve 30'dan az tur ya da 5'ten az oyuncu içeren gruplar dışarıda bırakılır."
           }
         ]
       },

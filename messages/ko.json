@@ -44,6 +44,10 @@
       "dashboardLine": "다른 플레이어와 노하우를 나눠 보세요.",
       "leaderboardLine": "이 순위표의 플레이어들과 이야기해 보세요.",
       "aboutLine": "채팅이 더 편하신가요?"
+    },
+    "about": {
+      "facts": "Memory Chess는 개발자 한 명, Bing Cheng이 만들고 운영합니다. 2025년 3월에 처음 공개되었고 {languages}개 언어로 즐길 수 있습니다.",
+      "plays": "<time>{date}</time>까지 플레이어들이 마친 게임은 {count}판이 넘습니다."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "새로운 소식 보기",
+    "bannerDismiss": "이 알림 닫기",
     "bannerLabel": "Memory Chess 업데이트",
-    "bannerLead": "Memory Chess v{version}이 출시되었습니다."
+    "bannerLead": "버전 {version}이 출시되었습니다."
   },
   "articles": {
     "meta": {
@@ -1812,5 +1817,48 @@
       "secondsRange": "{min}~{max}초",
       "secondsExact": "{count}초"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "사람들은 체스 국면을 얼마나 잘 기억할까?",
+      "description": "기물 수와 암기 시간에 따른 체스 국면의 평균 기억 정확도로, Memory Chess에서 완료된 {rounds, number}라운드를 바탕으로 합니다. 방법과 그 한계를 함께 담은 CC BY 4.0 오픈 데이터입니다.",
+      "socialTitle": "사람들은 체스 국면을 얼마나 잘 기억할까?",
+      "socialDescription": "기물 수와 암기 시간에 따른 기억 정확도로, Memory Chess에서 완료된 {rounds, number}라운드를 바탕으로 합니다. CC BY 4.0 오픈 데이터입니다."
+    },
+    "kicker": "오픈 데이터",
+    "title": "사람들은 체스 국면을 얼마나 잘 기억할까?",
+    "answer": "{start}부터 {end}까지 Memory Chess에서 완료된 {rounds, number}라운드에서, 암기 시간을 10초로 설정한 라운드의 평균 정확도는 기물 2개에서 {two}({twoRounds, number}라운드), 기본 설정인 기물 6개에서 {six}였습니다({sixRounds, number}라운드). 그 기물 6개 라운드 중 {sixPerfect}가 만점이었습니다. 선택한 플레이어가 더 적은 기물 12개, 8초 설정에서는 평균이 {twelve}였고 만점은 {twelvePerfect}였습니다({twelveRounds, number}라운드).",
+    "englishNote": "아래의 방법, 한계, 인용에 관한 설명은 영어로 되어 있습니다.",
+    "chart": {
+      "byPieces": "암기 시간을 {seconds}초로 설정한 라운드의 평균 기억 정확도",
+      "byPiecesNote": "기물 수마다 고른 플레이어가 다르고 일부 행은 소수의 플레이어에게서 나왔으므로, 막대를 비교하기 전에 표의 플레이어 열을 확인하세요.",
+      "bySeconds": "기물 {pieces}개의 평균 기억 정확도, 암기 시간별",
+      "bySecondsNote": "암기 시간마다 선택한 플레이어가 다르므로, 이 막대는 시간이 늘어날 때 얼마나 도움이 되는지를 보여 주지 않습니다.",
+      "pieces": "{count, plural, other {기물 #개}}",
+      "seconds": "{count}초",
+      "rounds": "{count, plural, other {#라운드}}",
+      "scale": "각 막대는 정확도 0%에서 100%까지의 축척에 맞춰 그렸습니다."
+    },
+    "table": {
+      "title": "공개된 모든 설정",
+      "caption": "기물 수와 암기 시간별 정확도. {minRounds, number}라운드 미만이거나 플레이어가 {minPlayers, number}명 미만인 설정은 제외했습니다.",
+      "pieces": "기물",
+      "seconds": "암기 시간",
+      "rounds": "라운드",
+      "players": "플레이어",
+      "mean": "평균",
+      "median": "중앙값",
+      "middle": "가운데 절반",
+      "middleValue": "{low}에서 {high}",
+      "perfect": "만점",
+      "zero": "0점"
+    },
+    "links": {
+      "csv": "CSV 내려받기",
+      "notes": "GitHub의 현장 노트",
+      "play": "한 라운드 하기"
+    },
+    "aboutLine": "Google Analytics에 기록된 라운드를 바탕으로, 라운드와 플레이어 수가 충분한 설정에 대해 기억 정확도 집계 통계를 공개합니다.",
+    "aboutLink": "기억 데이터 보기"
   }
 }

@@ -44,6 +44,10 @@
       "dashboardLine": "Confronta i tuoi appunti con gli altri giocatori.",
       "leaderboardLine": "Chiacchiera con i giocatori di questa classifica.",
       "aboutLine": "Preferisci chattare?"
+    },
+    "about": {
+      "facts": "Memory Chess è sviluppato e gestito da un solo sviluppatore, Bing Cheng. È andato online per la prima volta a marzo 2025 e si gioca in {languages} lingue.",
+      "plays": "Al <time>{date}</time> i giocatori avevano completato {count}+ partite."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Guarda le novità",
+    "bannerDismiss": "Chiudi questo avviso",
     "bannerLabel": "Aggiornamento di Memory Chess",
-    "bannerLead": "È arrivato Memory Chess v{version}."
+    "bannerLead": "È uscita la versione {version}."
   },
   "articles": {
     "meta": {
@@ -1812,5 +1817,48 @@
       "secondsRange": "Da {min} a {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Quanto ricordiamo le posizioni di scacchi?",
+      "description": "Memoria media delle posizioni di scacchi per numero di pezzi e tempo di studio, da {rounds, number} partite concluse di Memory Chess. Dati aperti CC BY 4.0.",
+      "socialTitle": "Quanto bene le persone ricordano le posizioni di scacchi?",
+      "socialDescription": "Memoria per numero di pezzi e tempo di studio, da {rounds, number} partite concluse di Memory Chess. Dati aperti con licenza CC BY 4.0."
+    },
+    "kicker": "Dati aperti",
+    "title": "Quanto bene le persone ricordano le posizioni di scacchi?",
+    "answer": "In {rounds, number} partite concluse di Memory Chess dal {start} al {end}, le partite impostate su 10 secondi di studio hanno ottenuto in media una precisione pari a {two} con 2 pezzi ({twoRounds, number} partite) e pari a {six} con 6 pezzi, l’impostazione predefinita ({sixRounds, number} partite). Sono state perfette {sixPerfect} di quelle partite con 6 pezzi. Con 12 pezzi e 8 secondi, un’impostazione scelta da meno giocatori, la media è stata {twelve}, con {twelvePerfect} di partite perfette ({twelveRounds, number} partite).",
+    "englishNote": "Le note su metodo, limiti e citazione qui sotto sono in inglese.",
+    "chart": {
+      "byPieces": "Memoria media nelle partite impostate su {seconds} secondi di studio",
+      "byPiecesNote": "Ogni numero di pezzi è stato scelto da giocatori diversi e alcune righe vengono da pochi giocatori, quindi controlla la colonna Giocatori della tabella prima di confrontare le barre.",
+      "bySeconds": "Memoria media di {pieces} pezzi, per tempo di studio",
+      "bySecondsNote": "Ogni tempo di studio è stato scelto da giocatori diversi, quindi queste barre non mostrano quanto aiuti avere più tempo.",
+      "pieces": "{count, plural, one {# pezzo} many {# di pezzi} other {# pezzi}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# partita} many {# di partite} other {# partite}}",
+      "scale": "Ogni barra è disegnata in scala da 0 a 100% di precisione."
+    },
+    "table": {
+      "title": "Tutte le impostazioni pubblicate",
+      "caption": "Precisione per numero di pezzi e tempo di studio. Le impostazioni con meno di {minRounds, number} partite o {minPlayers, number} giocatori sono escluse.",
+      "pieces": "Pezzi",
+      "seconds": "Tempo di studio",
+      "rounds": "Partite",
+      "players": "Giocatori",
+      "mean": "Media",
+      "median": "Mediana",
+      "middle": "Metà centrale",
+      "middleValue": "da {low} a {high}",
+      "perfect": "Perfette",
+      "zero": "Punteggio 0"
+    },
+    "links": {
+      "csv": "Scarica il CSV",
+      "notes": "Note di campo su GitHub",
+      "play": "Gioca una partita"
+    },
+    "aboutLine": "Pubblichiamo statistiche aggregate sulla memoria dalle partite registrate in Google Analytics, per le impostazioni con abbastanza partite e giocatori.",
+    "aboutLink": "Vedi i dati sulla memoria"
   }
 }

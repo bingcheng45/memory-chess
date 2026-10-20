@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "823aad8180e0968ad0a1a5436ab6f70557294ac6187736286106a12f75284498",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "6c0b9e655d985c1a45c30829d9a26c332112411f012f7dc79fd911981ee5b0e3",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "När du öppnar eller gillar en artikel sparar Supabase bara en summa av visningar och en summa av gillamarkeringar för varje artikel, med tidpunkten för den senaste ändringen och ingen identifierare för besökaren."
+          },
+          {
+            "p": "På <data>sidan med minnesdata</data> publicerar vi antal avslutade rundor efter antal pjäser, studietid och träffsäkerhet, hämtade från Google Analytics. Det är bara sammanställda antal, utan namn, spelar-id:n eller ställningar, och en grupp med färre än 30 rundor eller 5 spelare utelämnas."
           }
         ]
       },

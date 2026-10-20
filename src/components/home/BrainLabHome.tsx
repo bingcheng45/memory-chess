@@ -20,8 +20,8 @@ import { useLabRecord } from "./useLabRecord";
 import "./lab-paper.css";
 import "./lab-instruments.css";
 
-export function BrainLabHome() {
-  const totalPlays = useTotalPlays();
+export function BrainLabHome({ initialPlays }: { readonly initialPlays?: number }) {
+  const totalPlays = useTotalPlays(initialPlays);
   const record = useLabRecord();
 
   return (

@@ -44,6 +44,10 @@
       "dashboardLine": "Sammenlign erfaringer med andre spillere.",
       "leaderboardLine": "Snakk med spillerne på denne ledertavlen.",
       "aboutLine": "Foretrekker du chat?"
+    },
+    "about": {
+      "facts": "Memory Chess er bygget og drives av én utvikler, Bing Cheng. Det ble lansert i mars 2025 og kan spilles på {languages} språk.",
+      "plays": "Per <time>{date}</time> hadde spillerne fullført {count}+ spill."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Se hva som er nytt",
+    "bannerDismiss": "Lukk denne oppdateringen",
     "bannerLabel": "Memory Chess-oppdatering",
-    "bannerLead": "Memory Chess v{version} er her."
+    "bannerLead": "Versjon {version} er ute."
   },
   "articles": {
     "meta": {
@@ -1812,5 +1817,48 @@
       "secondsRange": "{min} til {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Hvor godt husker folk sjakkstillinger?",
+      "description": "Hvor godt sjakkstillinger huskes i snitt, etter antall brikker og studietid, fra {rounds, number} fullførte runder i Memory Chess. Åpne data under CC BY 4.0.",
+      "socialTitle": "Hvor godt husker folk sjakkstillinger?",
+      "socialDescription": "Treffsikkerhet etter antall brikker og studietid, fra {rounds, number} fullførte runder i Memory Chess. Åpne data under CC BY 4.0."
+    },
+    "kicker": "Åpne data",
+    "title": "Hvor godt husker folk sjakkstillinger?",
+    "answer": "I {rounds, number} fullførte runder i Memory Chess fra {start} til {end} hadde runder stilt inn på 10 sekunders studietid i snitt en treffsikkerhet på {two} med 2 brikker ({twoRounds, number} runder) og {six} med 6 brikker, som er standardinnstillingen ({sixRounds, number} runder). {sixPerfect} av disse rundene med 6 brikker var feilfrie. Med 12 brikker og 8 sekunder, en innstilling færre spillere valgte, var snittet {twelve}, med {twelvePerfect} feilfrie ({twelveRounds, number} runder).",
+    "englishNote": "Merknadene om metode, begrensninger og kildehenvisning nedenfor er på engelsk.",
+    "chart": {
+      "byPieces": "Gjennomsnittlig treffsikkerhet i runder med studietid satt til {seconds} sekunder",
+      "byPiecesNote": "Ulike spillere valgte hvert antall brikker, og noen rader kommer fra bare noen få spillere, så sjekk kolonnen Spillere i tabellen før du sammenligner stolpene.",
+      "bySeconds": "Gjennomsnittlig treffsikkerhet for {pieces} brikker, etter studietid",
+      "bySecondsNote": "Ulike spillere valgte hver studietid, så disse søylene viser ikke hvor mye ekstra tid hjelper.",
+      "pieces": "{count, plural, one {# brikke} other {# brikker}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# runde} other {# runder}}",
+      "scale": "Hver stolpe er tegnet i riktig skala fra 0 til 100 % treffsikkerhet."
+    },
+    "table": {
+      "title": "Alle publiserte innstillinger",
+      "caption": "Treffsikkerhet etter antall brikker og studietid. Innstillinger med færre enn {minRounds, number} runder eller {minPlayers, number} spillere er utelatt.",
+      "pieces": "Brikker",
+      "seconds": "Studietid",
+      "rounds": "Runder",
+      "players": "Spillere",
+      "mean": "Gjennomsnitt",
+      "median": "Median",
+      "middle": "Midterste halvdel",
+      "middleValue": "{low} til {high}",
+      "perfect": "Feilfrie",
+      "zero": "0 poeng"
+    },
+    "links": {
+      "csv": "Last ned CSV-filen",
+      "notes": "Feltnotater på GitHub",
+      "play": "Spill en runde"
+    },
+    "aboutLine": "Samlet statistikk over gjenkalling fra runder registrert i Google Analytics publiseres for innstillinger med nok runder og spillere.",
+    "aboutLink": "Se hukommelsesdataene"
   }
 }

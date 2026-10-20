@@ -1,33 +1,47 @@
 name: IndexNow
 
 on:
-  deployment_status:
+  push:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
   contents: read
+  deployments: read
 
 jobs:
   submit:
-    if: github.event_name == 'workflow_dispatch' || (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
     concurrency:
       group: indexnow
       cancel-in-progress: false
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - uses: actions/cache@v4
+      - name: Wait for the Production deployment of this commit
+        id: wait
+        run: node scripts/indexnow-wait-deploy.mjs --sha "$GITHUB_SHA"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+      - name: Restore the last submission state
+        if: steps.wait.outputs.deployed == 'true'
+        uses: actions/cache/restore@v4
         with:
           path: .indexnow/state.json
           key: indexnow-state-${{ github.run_id }}
           restore-keys: indexnow-state-
       - name: Submit URLs whose lastmod is newer than the last submission
-        if: github.event_name == 'deployment_status'
+        if: steps.wait.outputs.deployed == 'true' && github.event_name == 'push'
         run: node scripts/indexnow-submit.mjs --state .indexnow/state.json
       - name: Submit the whole sitemap
-        if: github.event_name == 'workflow_dispatch'
+        if: steps.wait.outputs.deployed == 'true' && github.event_name == 'workflow_dispatch'
         run: node scripts/indexnow-submit.mjs --state .indexnow/state.json --all
+      - name: Save the submission state
+        if: steps.wait.outputs.deployed == 'true' && hashFiles('.indexnow/state.json') != ''
+        uses: actions/cache/save@v4
+        with:
+          path: .indexnow/state.json
+          key: indexnow-state-${{ github.run_id }}

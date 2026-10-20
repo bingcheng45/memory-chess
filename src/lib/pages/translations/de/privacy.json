@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "0ea104b4ef5fc6daa0b008700ce797aff059bf5ecce6059c55ccb517899b5c2f",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "7eb829f134c97e85325380b9d7cb3694aa6a6ea5996df0e45511d98ceae7eef3",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Wenn du einen Artikel öffnest oder mit „Gefällt mir“ markierst, speichert Supabase für jeden Artikel nur eine Summe der Aufrufe und eine Summe der Likes, mit dem Zeitpunkt der letzten Änderung und ohne Kennung des Besuchers."
+          },
+          {
+            "p": "Auf der <data>Seite mit den Gedächtnisdaten</data> veröffentlichen wir Zählungen beendeter Runden nach Figurenzahl, Einprägezeit und Genauigkeit, die aus Google Analytics stammen. Es sind ausschließlich aggregierte Zählungen ohne Namen, Spieler-IDs oder Stellungen, und eine Gruppe mit weniger als 30 Runden oder 5 Spielenden wird weggelassen."
           }
         ]
       },

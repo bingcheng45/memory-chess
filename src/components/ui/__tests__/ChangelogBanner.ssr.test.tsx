@@ -17,7 +17,7 @@ describe("ChangelogBanner server render", () => {
     const html = serve(true);
 
     expect(html).toContain('<aside id="changelog-banner"');
-    expect(html).toContain(`Dismiss Memory Chess v${LATEST_CHANGELOG_ENTRY.version} update`);
+    expect(html).toContain("Dismiss this update");
     expect(html).toContain('<script>(function () {\n  try {\n    var banner = document.getElementById("changelog-banner");');
   });
 

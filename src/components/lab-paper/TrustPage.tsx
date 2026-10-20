@@ -73,12 +73,13 @@ interface TrustPageProps {
   readonly locale: Locale;
   /** What `loadPage` returned for this name and locale. */
   readonly page: LoadedPage;
+  readonly before?: ReactNode;
   /** Content that is not part of the translated page text, set after its last section. */
   readonly after?: ReactNode;
 }
 
 /** A trust page in `locale`: its text and chrome as loaded, its links and values from the page registry. */
-export function TrustPage({ name, locale, page: { text, chrome }, after }: TrustPageProps) {
+export function TrustPage({ name, locale, page: { text, chrome }, before, after }: TrustPageProps) {
   const spec = PAGES[name];
   const links = Object.entries(spec.links).map(([tag, href]) => [
     tag,
@@ -103,6 +104,7 @@ export function TrustPage({ name, locale, page: { text, chrome }, after }: Trust
       contents={spec.hasContents ? sections.map(([id, section]) => ({ id, title: section.title })) : undefined}
       updated={spec.updated}
     >
+      {before}
       {sections.map(([id, section]) => (
         <LabReadingSection key={id} title={section.title} id={spec.hasContents ? id : undefined}>
           {section.blocks.map((block, index) => (

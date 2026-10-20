@@ -44,6 +44,10 @@
       "dashboardLine": "Sammenlign erfaringer med andre spillere.",
       "leaderboardLine": "Snak med spillerne på denne rangliste.",
       "aboutLine": "Foretrækker du chat?"
+    },
+    "about": {
+      "facts": "Memory Chess er bygget og drives af én udvikler, Bing Cheng. Det gik først online i marts 2025 og kan spilles på {languages} sprog.",
+      "plays": "Spillerne havde gennemført {count}+ spil pr. <time>{date}</time>."
     }
   },
   "home": {
@@ -1287,8 +1291,9 @@
   },
   "changelog": {
     "bannerCta": "Se hvad der er nyt",
+    "bannerDismiss": "Luk denne opdatering",
     "bannerLabel": "Memory Chess-opdatering",
-    "bannerLead": "Memory Chess v{version} er her."
+    "bannerLead": "Version {version} er ude."
   },
   "articles": {
     "meta": {
@@ -1812,5 +1817,48 @@
       "secondsRange": "{min} til {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Hvor godt husker folk skakstillinger?",
+      "description": "Hvor godt skakstillinger genskabes i gennemsnit, efter antal brikker og husketid, fra {rounds, number} gennemførte runder i Memory Chess. Åbne data under CC BY 4.0.",
+      "socialTitle": "Hvor godt husker folk skakstillinger?",
+      "socialDescription": "Præcision efter antal brikker og husketid, fra {rounds, number} gennemførte runder i Memory Chess. Åbne data under CC BY 4.0."
+    },
+    "kicker": "Åbne data",
+    "title": "Hvor godt husker folk skakstillinger?",
+    "answer": "I {rounds, number} gennemførte runder i Memory Chess fra {start} til {end} opnåede runder indstillet til 10 sekunders husketid i gennemsnit en præcision på {two} med 2 brikker ({twoRounds, number} runder) og {six} med 6 brikker, som er standardindstillingen ({sixRounds, number} runder). {sixPerfect} af disse runder med 6 brikker var fejlfri. Med 12 brikker og 8 sekunder, en indstilling færre spillere valgte, var gennemsnittet {twelve}, med {twelvePerfect} fejlfri ({twelveRounds, number} runder).",
+    "englishNote": "Noterne om metode, begrænsninger og kildeangivelse nedenfor er på engelsk.",
+    "chart": {
+      "byPieces": "Gennemsnitlig præcision i runder med husketid sat til {seconds} sekunder",
+      "byPiecesNote": "Forskellige spillere valgte hvert antal brikker, og nogle rækker stammer fra få spillere, så tjek kolonnen Spillere i tabellen, før du sammenligner søjlerne.",
+      "bySeconds": "Gennemsnitlig præcision for {pieces} brikker, efter husketid",
+      "bySecondsNote": "Forskellige spillere valgte hver husketid, så søjlerne viser ikke, hvor meget ekstra tid hjælper.",
+      "pieces": "{count, plural, one {# brik} other {# brikker}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# runde} other {# runder}}",
+      "scale": "Hver søjle er tegnet i korrekt skala fra 0 til 100 % præcision."
+    },
+    "table": {
+      "title": "Alle offentliggjorte indstillinger",
+      "caption": "Præcision efter antal brikker og husketid. Indstillinger med færre end {minRounds, number} runder eller {minPlayers, number} spillere er udeladt.",
+      "pieces": "Brikker",
+      "seconds": "Husketid",
+      "rounds": "Runder",
+      "players": "Spillere",
+      "mean": "Gennemsnit",
+      "median": "Median",
+      "middle": "Midterste halvdel",
+      "middleValue": "{low} til {high}",
+      "perfect": "Fejlfri",
+      "zero": "0 point"
+    },
+    "links": {
+      "csv": "Download CSV-filen",
+      "notes": "Feltnoter på GitHub",
+      "play": "Spil en runde"
+    },
+    "aboutLine": "Samlede statistikker for genkaldelse fra runder registreret i Google Analytics offentliggøres for indstillinger med nok runder og spillere.",
+    "aboutLink": "Se hukommelsesdataene"
   }
 }

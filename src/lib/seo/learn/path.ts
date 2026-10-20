@@ -24,7 +24,7 @@ export type LearnStage = LearnGroupPages & { readonly number: number; readonly c
 
 export type LearnShelves = { readonly stages: readonly LearnStage[]; readonly offPath: readonly LearnGroupPages[] };
 
-const isOnPath = ({ group }: LearnGroupPages) => !("onPath" in group);
+const isOnPath = ({ group }: LearnGroupPages) => group.placement === "path";
 
 export function pathStages(groups: readonly LearnGroupPages[]): LearnShelves {
   const stages = groups.filter(isOnPath).map((entry, index) => {

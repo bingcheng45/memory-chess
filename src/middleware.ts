@@ -94,7 +94,9 @@ export default function middleware(request: NextRequest, event?: NextFetchEvent)
   // <link rel="alternate"> tags list the locales that exist.
   const path = unprefixedPath(request.nextUrl.pathname);
   if (isIndexedInDefaultLocaleOnly(path) || isPartlyTranslatedPath(path)) {
-    const link = response.status < 300 ? alternatesLinkHeader(path, request.nextUrl.origin) : null;
+    const prefix = request.nextUrl.pathname.split("/")[1];
+    const locale = path === request.nextUrl.pathname ? DEFAULT_LOCALE : prefix;
+    const link = response.status < 300 ? alternatesLinkHeader(path, locale, request.nextUrl.origin) : null;
     if (link) response.headers.set("Link", link);
     else response.headers.delete("Link");
   }

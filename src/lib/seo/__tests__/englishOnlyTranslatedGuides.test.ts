@@ -38,6 +38,6 @@ describe("the translated Learn guides in the routing table", () => {
     expect(robotsFor(BLINDFOLD, "en")).toBeUndefined();
     expect(robotsFor("/learn/chess-memory-training", "en")).toBeUndefined();
     expect(indexedLocalesOf(BLINDFOLD)).toEqual(["en"]);
-    expect(alternatesLinkHeader(BLINDFOLD, "https://thememorychess.com")).toBeNull();
+    expect(alternatesLinkHeader(BLINDFOLD, "en", "https://thememorychess.com")).toBeNull();
   });
 });

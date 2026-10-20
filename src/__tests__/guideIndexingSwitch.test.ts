@@ -48,10 +48,10 @@ describe("turning on indexing for one locale's translated guides", () => {
     expect(buildLearnPageMetadata(blundering(), "fr").robots).toEqual(NOINDEX_FOLLOW);
   });
 
-  it("names English and that locale, and no other, as the guide's hreflang alternates", () => {
+  it("names English and that locale as the alternates of those two pages, and gives a noindex translation none", () => {
     expect(buildLearnPageMetadata(blundering()).alternates).toEqual({ canonical: BLUNDERING, languages: ALTERNATES });
     expect(buildLearnPageMetadata(blundering(), "de").alternates).toEqual({ canonical: `/de${BLUNDERING}`, languages: ALTERNATES });
-    expect(buildLearnPageMetadata(blundering(), "fr").alternates).toEqual({ canonical: `/fr${BLUNDERING}`, languages: ALTERNATES });
+    expect(buildLearnPageMetadata(blundering(), "fr").alternates).toEqual({ canonical: `/fr${BLUNDERING}` });
   });
 
   it("lists the English and that locale's URL in the sitemap, each with the same alternates", async () => {
@@ -63,10 +63,10 @@ describe("turning on indexing for one locale's translated guides", () => {
     ]);
   });
 
-  it("sends the same alternates in the Link header as the HTML, and none on a guide whose German is withheld", () => {
+  it("sends the same alternates in the Link header as the HTML, none on a noindex translation, and none on a guide whose German is withheld", () => {
     expect(run(BLUNDERING).headers.get("Link")).toBe(LINK);
     expect(run(`/de${BLUNDERING}`).headers.get("Link")).toBe(LINK);
-    expect(run(`/fr${BLUNDERING}`).headers.get("Link")).toBe(LINK);
+    expect(run(`/fr${BLUNDERING}`).headers.get("Link")).toBeNull();
     expect(run("/learn/how-to-get-better-at-chess-for-beginners").headers.get("Link")).toBeNull();
   });
 });

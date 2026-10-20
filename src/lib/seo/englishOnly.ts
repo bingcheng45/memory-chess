@@ -122,9 +122,9 @@ export function indexedLocalesOf(path: string): readonly string[] {
   return isEnglishOnlyPath(path) ? [DEFAULT_LOCALE] : LOCALES;
 }
 
-export function alternatesLinkHeader(path: string, origin: string): string | null {
+export function alternatesLinkHeader(path: string, locale: string, origin: string): string | null {
   const locales = indexedLocalesOf(path);
-  if (locales.length < 2) return null;
+  if (locales.length < 2 || !locales.includes(locale)) return null;
   const alternates = [...locales.map((locale) => [locale, localizedPath(path, locale)]), ["x-default", path]];
   return alternates.map(([hreflang, href]) => `<${origin}${href}>; rel="alternate"; hreflang="${hreflang}"`).join(", ");
 }

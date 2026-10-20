@@ -13,7 +13,7 @@ export function buildLearnPageMetadata(page: LearnPage, locale: string = DEFAULT
   const imageUrl = `${localizedUrl(path, DEFAULT_LOCALE)}/opengraph-image`;
   const tags = [keywords.primary, ...keywords.secondary];
   const languages =
-    locales.length > 1
+    locales.length > 1 && locales.includes(locale)
       ? { languages: { ...Object.fromEntries(locales.map((served) => [served, localizedPath(path, served)])), 'x-default': path } }
       : {};
 

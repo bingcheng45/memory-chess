@@ -132,7 +132,7 @@ export default function ActiveGameLayout({
 
   return (
     <div
-      className={`lab-active-column flex h-full w-full flex-col items-center justify-center gap-2 ${COLUMN_MIN_HEIGHT}`}
+      className={`lab-active-column flex h-full w-full flex-col items-center justify-start gap-2 ${COLUMN_MIN_HEIGHT}`}
       style={BOARD_SIZE_INPUTS}
     >
       {/*
@@ -151,8 +151,11 @@ export default function ActiveGameLayout({
         {status}
       </section>
 
-      {/* As tall as the board, so the column's spare height collects above
-          and below the whole group rather than between the board and its rows. */}
+      {/* As tall as the board, so the column's spare height collects under
+          the whole group rather than between the board and its rows. Not above
+          it either: an in-app browser sheet, ChatGPT's, lays the page out
+          taller than it shows and floats its toolbar over the bottom, so space
+          above pushed the palette out of reach. */}
       <div className="flex w-full shrink-0 items-center justify-center" style={{ height: BOARD_SIZE }}>
         <div data-round-board style={{ width: BOARD_SIZE, height: BOARD_SIZE }}>
           {board}

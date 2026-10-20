@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "20-minute-daily-chess-study-plan",
     title: "20-Minute Daily Chess Study Plan for Beginners",
     h1: "A 20-minute daily chess study plan for beginners",
-    description: "Spend 3 minutes on memory rounds, 7 on six slow puzzles, 7 replaying your latest game and 3 writing one line about it. Keep that order five days a week.",
+    description: "This 20-minute daily chess study plan spends 3 minutes on memory rounds, 7 on six slow puzzles, 7 on your latest game and 3 on one written line.",
     group: "practice",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
@@ -190,7 +190,7 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
-      why: "This is the first block of the twenty minutes. Three rounds at this setting and today's session has started.",
+      why: "This is the first block of the twenty minutes. Three rounds at this setting, with Try again between them, and today's session has started.",
     },
     {
       kind: "cta",

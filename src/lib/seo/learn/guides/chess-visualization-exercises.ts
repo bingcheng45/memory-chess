@@ -254,7 +254,7 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
-      why: "Four rounds at six pieces show whether your pieces vanish, drift a square or change identity on the way back.",
+      why: "Four rounds at six pieces, with Try again between them, show whether your pieces vanish, drift a square or change identity on the way back.",
     },
     {
       kind: "faq",

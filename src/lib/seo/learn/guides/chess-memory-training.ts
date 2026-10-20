@@ -182,7 +182,7 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Open the 6-piece, 10-second round", pieceCount: 6, memorizeTime: 10 },
-      why: "Rung one is six pieces and ten seconds. Stay there until three rounds in a row come back perfect.",
+      why: "Rung one is six pieces and ten seconds. Stay there, pressing Try again, until three rounds in a row come back perfect.",
     },
     {
       kind: "cta",

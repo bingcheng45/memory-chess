@@ -142,6 +142,7 @@ describe("a guide page", () => {
       "20-minute-daily-chess-study-plan": "6/10",
       "how-many-chess-puzzles-a-day": "6/10",
       "how-to-analyze-chess-games-for-beginners": "4/10",
+      "how-to-play-memory-chess-board-game": "4/10",
     });
   });
 

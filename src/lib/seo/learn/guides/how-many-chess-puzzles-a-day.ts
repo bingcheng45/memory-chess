@@ -181,7 +181,7 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
-      why: "Play three rounds before your puzzles and three after. If the second total is two or more pieces lower out of 18, cut five minutes from tomorrow's block.",
+      why: "Play three rounds before your puzzles and three after, pressing Try again between rounds. If the second total is two or more pieces lower out of 18, cut five minutes from tomorrow's block.",
     },
     {
       kind: "faq",

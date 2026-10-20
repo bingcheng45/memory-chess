@@ -13,7 +13,7 @@ const SITE_PATHS = ["/", "/settings", "/game", "/dashboard", "/learn", "/article
 const blocks = (doc: LearnDocument): BodyBlock[] => doc.sections.flatMap((section) => section.blocks);
 const linksIn = (rich: Rich): InlineLink[] => (typeof rich === "string" ? [] : rich.filter((part) => typeof part !== "string"));
 const CURRENT_BUTTONS = [...Object.values(messages.game.result), ...Object.values(messages.game.round)].filter((value): value is string => typeof value === "string");
-const RETIRED_BUTTONS = /(?<!(?:^|[.?!]\s+|Well\s))\b(?:Skip|Try Again|Done)\b/g;
+const RETIRED_BUTTONS = /(?<!(?:^|[.?!]\s+))\bSkip\b|(?<!Well\s)\b(?:Try Again|Done)\b/g;
 const ROUND_COUNT = /\b(?:\d+|two|three|four|five|six|seven|eight|nine|ten) rounds\b/i;
 
 const stringsIn = (value: unknown): string[] =>
@@ -157,12 +157,14 @@ describe("rules the types cannot hold", () => {
     expect(misnamedButtons("Press Skip to end the look.")).toEqual(["Press Skip to"]);
     expect(misnamedButtons("Then press try again.")).toEqual(["press try again."]);
     expect(misnamedButtons("A Done button ends the look, and Try Again repeats it.")).toEqual(["Done", "Try Again"]);
+    expect(misnamedButtons("Done when certain")).toEqual(["Done"]);
+    expect(misnamedButtons("Done ends the look. Try Again keeps the size.")).toEqual(["Done", "Try Again"]);
     expect(misnamedButtons("Press Try again, then press Change settings. Skip the full replay below Well Done.")).toEqual([]);
 
     expect(LEARN_GUIDES.flatMap((doc) => stringsIn(doc).flatMap(misnamedButtons).map((found) => `${doc.meta.slug}: ${found}`))).toEqual([]);
   });
 
-  it("tells every fixed-size drill that names a round count to press Try again, since Next round resizes the board", () => {
+  it("tells every fixed-size drill and closing round that names a round count to press Try again, since Next round resizes the board", () => {
     const missing = LEARN_GUIDES.flatMap((doc) =>
       blocks(doc)
         .flatMap((block) =>
@@ -172,6 +174,7 @@ describe("rules the types cannot hold", () => {
               ? block.steps.map((step) => [step.label, step.detail])
               : [],
         )
+        .concat(doc.end.flatMap((block) => (block.kind === "cta" && block.target.kind === "game" ? [["closing call to action", block.why]] : [])))
         .filter(([, text]) => ROUND_COUNT.test(text) && !text.includes(messages.game.result.tryAgain))
         .map(([title]) => `${doc.meta.slug}: ${title}`),
     );

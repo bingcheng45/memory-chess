@@ -337,7 +337,7 @@ const PAGE_BODY_PATH = /^(lede|sections\..+\.blocks\[\d+\]\.(p|ul\[\d+\]))$/;
  * @param {string} locale
  * @returns {string[]}
  */
-export function pageFailuresOf(locale, source, bundle) {
+export function pageFailuresOf(locale, source, bundle, isBody = (path) => PAGE_BODY_PATH.test(path)) {
   const names = source.units.map((unit) => unit.name);
   const isUnknown = (name) => !names.includes(name);
 
@@ -352,7 +352,7 @@ export function pageFailuresOf(locale, source, bundle) {
     ...contentLossFailures(
       source.units.map(({ name, text }) => ({ slug: name, text })),
       bundle.units,
-      (path) => PAGE_BODY_PATH.test(path),
+      isBody,
     ),
     ...Object.keys(bundle.units)
       .filter(isUnknown)

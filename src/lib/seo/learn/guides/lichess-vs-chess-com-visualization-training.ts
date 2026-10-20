@@ -122,7 +122,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Neither site offers a drill that shows you a full position, hides it and asks you to put every piece back. That is the skill a blindfold game leans on most, and the step between naming squares and playing blind.",
+            "Neither site offers a drill that shows you a full position, hides it and asks you to put every piece back. In our judgement, that is the step between naming squares and playing blind.",
             "Memory Chess, which publishes this page, is a free browser trainer for that one step. It works beside either site, with no account.",
           ],
         },

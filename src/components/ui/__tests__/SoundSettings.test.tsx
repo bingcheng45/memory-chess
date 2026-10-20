@@ -3,9 +3,9 @@ import SoundSettings from "@/components/ui/SoundSettings";
 import { DEFAULT_SOUND_VOLUME, setVolume } from "@/lib/utils/soundEffects";
 
 jest.mock("@/lib/utils/soundEffects", () => ({
-  DEFAULT_SOUND_VOLUME: 0.1,
+  DEFAULT_SOUND_VOLUME: 0.05,
   isSoundEnabled: jest.fn(() => true),
-  getVolume: jest.fn(() => 0.1),
+  getVolume: jest.fn(() => 0.05),
   setSoundEnabled: jest.fn(),
   setVolume: jest.fn(),
   playSound: jest.fn(),

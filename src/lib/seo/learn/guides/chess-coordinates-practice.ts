@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. The anchor test is ten squares called at random, each colour said before the name is finished. Then play short Memory Chess rounds naming every square aloud, first reading the labels and then before you read them.",
+    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. The anchor test is ten squares called at random, each colour said before the name is finished. Then play short Memory Chess rounds naming every square aloud, first reading the labels, then naming each square before reading its label.",
     takeaways: [
       "A square you count takes two lookups, the file and then the rank. A square you recognise takes one.",
       "Add the file number to the rank number. An even total is a dark square, an odd total is light.",
@@ -137,14 +137,14 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Labels on, say every square",
-              description: "Play 5 rounds of 4 pieces with 12 seconds to look. During the look, say each piece with its square aloud, such as white rook a1. Place them, then read the result board and name each square it marks.",
+              description: "Play 5 rounds of 4 pieces with 12 seconds to look, pressing Try again between rounds. During the look, say each piece with its square aloud, such as white rook a1. Place them, then read the result board and name each square it marks.",
               duration: "About 4 minutes",
               goal: "Remember every piece as a piece and a square name, such as rook a1.",
               play: { label: "Play 4 pieces, 12 seconds", pieceCount: 4, memorizeTime: 12 },
             },
             {
               title: "Name it before you read it",
-              description: "Play 5 rounds of 4 pieces with 12 seconds to look. Keep your eyes on the pieces, not the edges. Say each square aloud before you glance at its label, finding it from its nearest anchor, so c3 is one step down and left of d4. A square you had to read first counts as missed.",
+              description: "Play 5 rounds of 4 pieces with 12 seconds to look, pressing Try again between rounds. Keep your eyes on the pieces, not the edges. Say each square aloud before you glance at its label, finding it from its nearest anchor, so c3 is one step down and left of d4. A square you had to read first counts as missed.",
               duration: "About 4 minutes",
               goal: "Name a square from its place on the board, with the label only confirming it.",
               play: { label: "Play 4 pieces, 12 seconds", pieceCount: 4, memorizeTime: 12 },

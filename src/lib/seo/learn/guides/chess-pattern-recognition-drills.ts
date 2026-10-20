@@ -372,7 +372,7 @@ const guide: LearnDocument = {
         },
         {
           title: "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
-          note: "Supports the 2-second pause as the chunk boundary and 47 pawn chains among the master's 77 chunks over fourteen positions. Also supports first chunks of 3.8 and 2.6 pieces.",
+          note: "Supports the 2-second pause as the chunk boundary and 47 pawn chains among the master's 77 chunks over fourteen positions. Also supports first chunks of 3.8 and 2.6 pieces on the middle-game positions.",
           url: "https://andymatuschak.org/prompts/Chase1973.pdf",
         },
       ],

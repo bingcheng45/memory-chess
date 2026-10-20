@@ -80,7 +80,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Six pieces, ten seconds, four rounds",
-              description: "Play 4 rounds of 6 pieces with 10 seconds to look. Place the pieces and submit. Before the next round, write one word for each miss: vanished, drifted, changed or phantom.",
+              description: "Play 4 rounds of 6 pieces with 10 seconds to look, pressing Try again between rounds. Place the pieces and submit. Before the next round, write one word for each miss: vanished, drifted, changed or phantom.",
               duration: "About 4 minutes",
               goal: "A tally that shows which failure you make most often.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },

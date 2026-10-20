@@ -53,7 +53,7 @@ describe("derived page values", () => {
       "how-to-stop-blundering-in-chess": 6,
       "why-puzzle-rating-doesnt-transfer-to-games": 6,
       "chess-coordinates-practice": 6,
-      "chess-visualization-exercises": 5,
+      "chess-visualization-exercises": 6,
       "how-to-see-the-whole-board-in-chess": 5,
       "chess-calculation-exercises-for-beginners": 7,
       "blindfold-chess-training-for-beginners": 8,
@@ -118,7 +118,7 @@ describe("rules the types cannot hold", () => {
     expect(long).toEqual([]);
   });
 
-  it("keeps the descriptions of the eight answer-first guides to 155 characters with the primary keyword", () => {
+  it("keeps seven answer-first descriptions to 155 characters with the exact primary keyword", () => {
     const answerFirst = [
       "blindfold-chess-training-for-beginners",
       "chess-coordinates-practice",

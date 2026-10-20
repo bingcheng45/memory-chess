@@ -82,7 +82,7 @@ describe("game reference heading", () => {
     const { container } = render(await GameReference({ locale: "en" }));
 
     expect(container.querySelectorAll("h1")).toHaveLength(0);
-    expect(container.querySelector("h2")).toHaveTextContent(en.game.title);
+    expect(container.querySelector("h2")).toHaveTextContent("The chess memory test");
   });
 });
 

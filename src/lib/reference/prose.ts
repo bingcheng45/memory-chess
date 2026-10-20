@@ -63,6 +63,15 @@ export type ContactInquiryKey = (typeof CONTACT_INQUIRY_KEYS)[number];
 
 export type ReferenceProse = {
   game: {
+    answer: {
+      heading: string;
+      what: string;
+      deGroot: string;
+      scoring: string;
+      typical: string;
+      limits: string;
+      dataLink: string;
+    };
     title: string;
     intro: string;
     phases: {

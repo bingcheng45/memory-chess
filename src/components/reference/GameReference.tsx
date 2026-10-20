@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Fragment, type ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
@@ -9,8 +10,12 @@ import {
   PIECE_COUNT_RANGE,
   PRESET_FACTS,
 } from "@/lib/reference/facts";
-import { getReferenceProse, interpolate } from "@/lib/reference/prose";
+import { getReferenceProse, interpolate, type ReferenceProse } from "@/lib/reference/prose";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
+import { articlePath } from "@/lib/articles/paths";
+import { DEFAULT_ROUND_PIECES, DEFAULT_ROUND_SECONDS, RECALL_DATA, RECALL_PATH, presetCells } from "@/lib/data/recall";
+import { EXTRA_PIECE_PENALTY } from "@/lib/game/scoring";
+import { localizedPath } from "@/lib/seo/alternates";
 
 /**
  * The Learn guides are English-only, so the list that links them is too: a
@@ -25,6 +30,48 @@ const TRAINING_GUIDES = {
     { slug: "how-to-see-the-whole-board-in-chess", before: "Learn to ", anchor: "see the whole board", after: " before you move." },
   ],
 } as const;
+
+function withNodes(template: string, nodes: Record<string, ReactNode>): ReactNode[] {
+  return template.split(/\{(\w+)\}/).map((part, index) => (
+    <Fragment key={index}>{index % 2 === 1 && part in nodes ? nodes[part] : part}</Fragment>
+  ));
+}
+
+function MemoryTestAnswer({ answer, locale }: { answer: ReferenceProse["game"]["answer"]; locale: string }) {
+  const { easy, medium, hard } = presetCells(RECALL_DATA);
+  const number = new Intl.NumberFormat(locale);
+  const percent = (value: number) => new Intl.NumberFormat(locale, { style: "percent", maximumFractionDigits: 0 }).format(value / 100);
+  const day = (iso: string) => new Intl.DateTimeFormat(locale, { dateStyle: "long", timeZone: "UTC" }).format(new Date(`${iso}T12:00:00Z`));
+
+  return (
+    <section aria-labelledby="game-answer-title" className="lab-ref-answer">
+      <h2 id="game-answer-title">{answer.heading}</h2>
+      <div className="lab-ref-paras">
+        <p>{withNodes(answer.what, { deGroot: <Link href={localizedPath(articlePath("adriaan-de-groot"), locale)}>{answer.deGroot}</Link> })}</p>
+        <p>{interpolate(answer.scoring, { penalty: EXTRA_PIECE_PENALTY })}</p>
+        <p>
+          {interpolate(answer.typical, {
+            rounds: number.format(medium.rounds),
+            pieces: DEFAULT_ROUND_PIECES,
+            seconds: DEFAULT_ROUND_SECONDS,
+            start: day(RECALL_DATA.start),
+            end: day(RECALL_DATA.end),
+            mean: percent(medium.meanAccuracy),
+            perfect: percent(medium.perfectShare),
+            easyPieces: easy.pieceCount,
+            easyMean: percent(easy.meanAccuracy),
+            hardPieces: hard.pieceCount,
+            hardSeconds: hard.memorizeSeconds,
+            hardMean: percent(hard.meanAccuracy),
+          })}
+        </p>
+        <p>
+          {answer.limits} <Link href={RECALL_PATH}>{answer.dataLink}</Link>
+        </p>
+      </div>
+    </section>
+  );
+}
 
 /**
  * Rendered by the game route's layout, not its page: the page wraps the game
@@ -75,6 +122,7 @@ export default async function GameReference({ locale }: { locale: string }) {
 
       <div className="lab-wrap">
         <div className="lab-ref-col">
+          <MemoryTestAnswer answer={prose.answer} locale={locale} />
           <h2 id="game-reference-title" className="lab-ref-title">
             {prose.title}
           </h2>

@@ -11,7 +11,7 @@ export interface PlacementScore {
   readonly totalWrong: number;
 }
 
-const EXTRA_PIECE_PENALTY = 10;
+export const EXTRA_PIECE_PENALTY = 10;
 
 export function placementFromFen(fen: string): Placement {
   const ranks = fen.split(" ")[0].split("/");

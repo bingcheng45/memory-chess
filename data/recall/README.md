@@ -1,6 +1,6 @@
 # Memory Chess position recall data
 
-How well people recall chess positions in [Memory Chess](https://thememorychess.com/data): one row per number of pieces and study time, from every finished round recorded between the dates in the file. The page at https://thememorychess.com/data draws the same numbers.
+How well people recall chess positions in [Memory Chess](https://thememorychess.com/data): one row per number of pieces and study time setting, from the finished rounds Google Analytics recorded between the dates in the file, for each setting with enough rounds and players. The page at https://thememorychess.com/data draws the same numbers.
 
 - `latest.csv` and `latest.json`: the current release.
 - `<yyyy-mm-dd>.json`: each release, named by the last day it covers.
@@ -12,22 +12,25 @@ Current release: 29 September to 19 October 2026, 3,734 finished rounds, of whic
 | CSV column | JSON field | Meaning |
 |---|---|---|
 | `piece_count` | `pieceCount` | Pieces in the position, 2 to 32. |
-| `memorize_seconds` | `memorizeSeconds` | Seconds the position was shown before the board cleared. |
+| `memorize_seconds` | `memorizeSeconds` | The study time the round was set to, in seconds. A player can clear the board early, so the position may have been shown for less. |
 | `rounds` | `rounds` | Finished rounds with this setting. |
 | `players` | `players` | Distinct GA4 users who finished one: browsers, not people. |
 | `mean_accuracy` | `meanAccuracy` | Mean round accuracy, 0 to 100, to one decimal. |
 | `median_accuracy` | `medianAccuracy` | Median round accuracy. |
 | `p25_accuracy`, `p75_accuracy` | `p25Accuracy`, `p75Accuracy` | The 25th and 75th percentile round accuracy. |
 | `perfect_share` | `perfectShare` | Percent of rounds scored 100: every piece on its square, nothing extra. |
+| `zero_share` | `zeroShare` | Percent of rounds scored 0, which includes empty boards (see Limits). |
 
 The JSON also gives the totals: `totalRounds` in the date range, `roundsWithoutSettings` (events that reached GA4 without their parameters), `roundsInSmallCells` (left out by the thresholds below) and `publishedRounds`.
 
 ## Method
 
-- **Source.** The game sends a GA4 event, `round_complete`, when a round's result shows. It carries the piece count, the study time and the round's accuracy. It has fired since 29 September 2026, so no earlier data exists. Dates are days in the property's time zone, America/Los_Angeles.
+- **Source.** The game sends a GA4 event, `round_complete`, when a round's result shows. It carries the piece count, the study time setting and the round's accuracy. Rounds from the game page, review rounds, the daily board and the calibration round on the home page all send it, and all are pooled here. It has fired since 29 September 2026, so no earlier data exists. Dates are days in the property's time zone, America/Los_Angeles.
 - **Accuracy.** A piece counts only when the right piece of the right colour stands on the right square. Accuracy is the share of the position's pieces placed that way, rounded to a whole percent, minus 10 points for each piece placed beyond the position's count, and never below 0. The code is `src/lib/game/scoring.ts`.
-- **Positions.** Each round is a new legal position generated at random, not taken from a real game.
+- **Positions.** Most rounds show a new legal position generated at random. A review round replays a board the player saw before, and the daily board is one seeded random position, the same for everyone that day. None is taken from a real game.
+- **Presets.** Four settings are one-click presets: 2 pieces at 10 seconds (Easy), 6 at 10 (Medium, also the default and the calibration round's setting), 12 at 8 (Hard) and 20 at 5 (Grandmaster). Those rows collect many rounds from players who clicked a preset rather than chose a setting. 20 at 5 is below the thresholds in this release.
 - **Thresholds.** A setting is published only with at least 30 rounds from at least 5 players. The cuts are a judgement call: smaller cells were mostly one or two people and describe them, not players in general. A cell near the cut (8 pieces at 10 seconds, 31 rounds from 6 players) is still a small sample.
+- **Sampling.** Both reports for this release were unsampled (no `samplingMetadatas`) and had no "(other)" row (`dataLossFromOtherRow` false), so every setting is counted in full. Google Analytics may withhold or round user counts that fall under its privacy thresholds, so `players` can be lower than the real number of browsers.
 - **Statistics.** Median and percentiles are nearest rank on the whole-number accuracies: the smallest accuracy at or below which at least that share of the rounds fall.
 - **Privacy.** Only counts per setting are published. There are no names, player IDs, round IDs, dates per round or positions, and the privacy policy says so.
 
@@ -35,7 +38,9 @@ The JSON also gives the totals: `totalRounds` in the date range, `roundsWithoutS
 
 - Players chose to play and chose their settings, so a cell describes the people who chose it, not everyone. There are no ratings; that stronger players pick harder settings is a judgement, not a measurement.
 - Repeat players weigh more. A player who finished 50 rounds counts 50 times. Compare `rounds` with `players`.
-- 6 pieces with 10 seconds is the default round, so that cell is weighted toward first rounds.
+- 6 pieces with 10 seconds is the default round and the setting of the home page's calibration round, which is pooled into it, so that cell is weighted toward first rounds.
+- An empty board counts as a round that scored 0. Once a day the game accepts an empty board as a free skip, and the event cannot tell a skip from a real 0 (it sends no count of pieces placed), so skips are in the data. `zero_share` gives each setting's share of rounds that scored 0: 15.7% at 6 pieces and 10 seconds in this release.
+- Review rounds and the daily board are pooled with the other rounds. The event's `round_source` parameter is not a registered GA4 dimension, and the older `source` parameter it replaced (PR 118, 18 October) reached GA4 for under a quarter of this release's rounds, so the data cannot separate them.
 - A GA4 user is a browser. One person on two devices counts twice.
 - Rounds from visitors who blocked analytics or declined analytics cookies are missing.
 - Scoring is strict: a knight on the right square in the wrong colour scores nothing.
@@ -73,7 +78,7 @@ Anyone with read access to GA4 property 483086308 can do this. It needs no code 
    }
    ```
 
-   Check the response has no `rowCount` above the rows it returned, so nothing was cut. End the range at least two days before the pull: GA4 keeps adding late events for a day or two, so a re-pull of the same range can differ by a few rounds (this release's histogram summed to 3,734 rounds, and a total pulled minutes later read 3,736).
+   Check the response has no `rowCount` above the rows it returned, that `metadata.dataLossFromOtherRow` is false and that `metadata.samplingMetadatas` is empty, so nothing was cut, folded or sampled. End the range at least two days before the pull: GA4 keeps adding late events for a day or two, so a re-pull of the same range can differ by a few rounds (this release's histogram summed to 3,734 rounds, and a total pulled minutes later read 3,736).
 
 2. Keep the saved files outside the repo. From the repo root run:
 
@@ -83,4 +88,4 @@ Anyone with read access to GA4 property 483086308 can do this. It needs no code 
 
    It writes `data/recall/<last day>.json`, `latest.json` and `latest.csv`. The same files in give the same bytes out.
 
-3. Update the date range and the counts at the top of this file, and the citation line, then `npm run build` and `npx jest src/lib/data` before you open the PR. The build fails if a cell the page quotes (2 or 6 pieces at 10 seconds, 12 pieces at 8 seconds) is missing.
+3. Update the date range and the counts at the top of this file, the 6-piece `zero_share` in Limits, the sampling line in Method if a report was sampled, and the citation line, then `npm run build` and `npx jest src/lib/data` before you open the PR. The build fails if a cell the page quotes (2 or 6 pieces at 10 seconds, 12 pieces at 8 seconds) is missing.

@@ -94,7 +94,7 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   },
   {
     path: "/about",
-    lastModified: "2026-09-15T00:00:00.000Z",
+    lastModified: "2026-10-20T00:00:00.000Z",
     changeFrequency: "monthly",
     priority: 0.5,
   },

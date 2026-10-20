@@ -69,4 +69,18 @@ describe("GamePage round a link starts", () => {
     expect(view()).toEqual({ phase: "study", pieces: 3, count: undefined });
     expect(screen.getByRole("button", { name: "Hide board" })).toBeEnabled();
   });
+
+  it("holds a blindfold link round behind Start too, then studies it as notation with no pieces on the board", async () => {
+    window.history.pushState({}, "", "/game?pieceCount=3&memorizeTime=10&source=guide_cta&mode=blindfold");
+
+    render(<GamePage />);
+    fireEvent.click(await screen.findByRole("button", { name: "Start" }));
+    const counting = view();
+    await advance(3_000);
+
+    expect(counting).toEqual({ phase: "countdown", pieces: 0, count: "3" });
+    expect(view()).toEqual({ phase: "study", pieces: 0, count: undefined });
+    expect(document.querySelector("[data-study-notation]")).not.toBeNull();
+    expect(useGameStore.getState().round).toMatchObject({ phase: "study", config: { blindfold: true, pieceCount: 3 } });
+  });
 });

@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Train je schaakgeheugen en je voorstellingsvermogen",
-      "freeToPlay": "Gratis te spelen, zonder account. Je kunt je score ook vergelijken op de <link>ranglijst</link>."
+      "freeToPlay": "Gratis te spelen, zonder account. Je kunt je score ook vergelijken op de <link>ranglijst</link>.",
+      "boardGame": "Zoek je het houten bordspel Memory Chess? <link>Lees de spelregels</link>."
     },
     "cta": {
       "leaderboard": "Bekijk de ranglijst",
       "chooseSettings": "Kies stukken en tijd"
+    },
+    "gameVideo": {
+      "play": "Video afspelen: {title}",
+      "caption": "Eén ronde van begin tot eind: bestudeer de stelling, bouw haar uit het hoofd na en lees je score af."
     },
     "video": {
       "title": "Train het zien in je hoofd",

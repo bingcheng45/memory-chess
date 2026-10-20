@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory chess game · chess memory trainer",
-      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>."
+      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
+      "boardGame": "Looking for the wooden Memory Chess board game? <link>Read its rules</link>."
     },
     "cta": {
       "leaderboard": "View leaderboard",
       "chooseSettings": "Choose pieces and time"
+    },
+    "gameVideo": {
+      "play": "Play video: {title}",
+      "caption": "One round, start to finish: study the position, rebuild it from memory, read your score."
     },
     "video": {
       "title": "Train the skill the game uses.",

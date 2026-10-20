@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Trainiere dein Schachgedächtnis und deine Vorstellungskraft",
-      "freeToPlay": "Kostenlos und ohne Konto. Deinen Punktestand kannst du auch in der <link>Bestenliste</link> vergleichen."
+      "freeToPlay": "Kostenlos und ohne Konto. Deinen Punktestand kannst du auch in der <link>Bestenliste</link> vergleichen.",
+      "boardGame": "Suchst du das Holzbrettspiel Memory Chess? <link>Zu den Spielregeln</link>."
     },
     "cta": {
       "leaderboard": "Bestenliste ansehen",
       "chooseSettings": "Figuren und Zeit wählen"
+    },
+    "gameVideo": {
+      "play": "Video abspielen: {title}",
+      "caption": "Eine Runde von Anfang bis Ende: Stellung einprägen, aus dem Gedächtnis nachbauen, Ergebnis ablesen."
     },
     "video": {
       "title": "Trainiere die Fähigkeit hinter dem Spiel",

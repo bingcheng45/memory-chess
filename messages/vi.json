@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Rèn trí nhớ và khả năng hình dung bàn cờ",
-      "freeToPlay": "Chơi miễn phí, không cần tài khoản. Bạn cũng có thể so điểm trên <link>bảng xếp hạng</link>."
+      "freeToPlay": "Chơi miễn phí, không cần tài khoản. Bạn cũng có thể so điểm trên <link>bảng xếp hạng</link>.",
+      "boardGame": "Bạn đang tìm trò chơi trên bàn bằng gỗ Memory Chess? <link>Đọc luật chơi</link>."
     },
     "cta": {
       "leaderboard": "Xem bảng xếp hạng",
       "chooseSettings": "Chọn số quân và thời gian"
+    },
+    "gameVideo": {
+      "play": "Phát video: {title}",
+      "caption": "Một ván từ đầu đến cuối: quan sát thế cờ, xếp lại từ trí nhớ và xem điểm của bạn."
     },
     "video": {
       "title": "Rèn kỹ năng mà trò chơi dựa vào",

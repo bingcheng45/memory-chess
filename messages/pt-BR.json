@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Treine sua memória e visualização no xadrez",
-      "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>."
+      "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>.",
+      "boardGame": "Procurando o jogo de tabuleiro de madeira Memory Chess? <link>Leia as regras</link>."
     },
     "cta": {
       "leaderboard": "Ver o ranking",
       "chooseSettings": "Escolha peças e tempo"
+    },
+    "gameVideo": {
+      "play": "Reproduzir vídeo: {title}",
+      "caption": "Uma rodada do começo ao fim: estude a posição, reconstrua de memória e veja sua pontuação."
     },
     "video": {
       "title": "Treine a habilidade por trás do jogo",

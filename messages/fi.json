@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Harjoita shakkimuistiasi ja hahmotustasi",
-      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>."
+      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>.",
+      "boardGame": "Etsitkö puista Memory Chess -lautapeliä? <link>Lue säännöt</link>."
     },
     "cta": {
       "leaderboard": "Katso tulostaulukko",
       "chooseSettings": "Valitse nappulat ja aika"
+    },
+    "gameVideo": {
+      "play": "Toista video: {title}",
+      "caption": "Yksi kierros alusta loppuun: tutki asema, rakenna se muistista ja katso tuloksesi."
     },
     "video": {
       "title": "Harjoita taitoa, jota peli vaatii",

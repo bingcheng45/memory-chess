@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Tren sjakkhukommelsen og forestillingsevnen din",
-      "freeToPlay": "Gratis å spille, uten konto. Du kan også sammenligne poengsummen din på <link>topplisten</link>."
+      "freeToPlay": "Gratis å spille, uten konto. Du kan også sammenligne poengsummen din på <link>topplisten</link>.",
+      "boardGame": "Leter du etter brettspillet Memory Chess i tre? <link>Les reglene</link>."
     },
     "cta": {
       "leaderboard": "Se topplisten",
       "chooseSettings": "Velg brikker og tid"
+    },
+    "gameVideo": {
+      "play": "Spill av video: {title}",
+      "caption": "Én runde fra start til slutt: studer stillingen, gjenoppbygg den etter hukommelsen og les poengsummen din."
     },
     "video": {
       "title": "Tren ferdigheten bak spillet",

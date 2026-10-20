@@ -13,6 +13,7 @@ import howToThinkInChessForBeginners from "./how-to-think-in-chess-for-beginners
 import n20MinuteDailyChessStudyPlan from "./20-minute-daily-chess-study-plan";
 import howToAnalyzeChessGamesForBeginners from "./how-to-analyze-chess-games-for-beginners";
 import howManyChessPuzzlesADay from "./how-many-chess-puzzles-a-day";
+import howToPlayMemoryChessBoardGame from "./how-to-play-memory-chess-board-game";
 
 /** Display order. Within a group the hub lists guides in this order, easiest first. */
 export const LEARN_GUIDES: readonly LearnDocument[] = [
@@ -30,4 +31,5 @@ export const LEARN_GUIDES: readonly LearnDocument[] = [
   n20MinuteDailyChessStudyPlan,
   howToAnalyzeChessGamesForBeginners,
   howManyChessPuzzlesADay,
+  howToPlayMemoryChessBoardGame,
 ];

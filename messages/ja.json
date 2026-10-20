@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: チェスの記憶力とイメージ力を鍛える",
-      "freeToPlay": "アカウント不要、無料で遊べます。スコアは<link>ランキング</link>で比べることもできます。"
+      "freeToPlay": "アカウント不要、無料で遊べます。スコアは<link>ランキング</link>で比べることもできます。",
+      "boardGame": "木製ボードゲームの Memory Chess をお探しですか？<link>遊び方を読む</link>。"
     },
     "cta": {
       "leaderboard": "ランキングを見る",
       "chooseSettings": "駒の数と時間を選ぶ"
+    },
+    "gameVideo": {
+      "play": "動画を再生: {title}",
+      "caption": "1ラウンドを最初から最後まで。局面を覚え、記憶から再現し、スコアを確認します。"
     },
     "video": {
       "title": "ゲームの土台にある力を鍛える",

@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Entrena tu memoria y tu visualización en el ajedrez",
-      "freeToPlay": "Gratis y sin necesidad de crear una cuenta. También puedes comparar tu puntuación en la <link>clasificación</link>."
+      "freeToPlay": "Gratis y sin necesidad de crear una cuenta. También puedes comparar tu puntuación en la <link>clasificación</link>.",
+      "boardGame": "¿Buscas el juego de mesa de madera Memory Chess? <link>Lee sus reglas</link>."
     },
     "cta": {
       "leaderboard": "Ver la clasificación",
       "chooseSettings": "Elige piezas y tiempo"
+    },
+    "gameVideo": {
+      "play": "Reproducir vídeo: {title}",
+      "caption": "Una ronda de principio a fin: estudia la posición, reconstrúyela de memoria y consulta tu puntuación."
     },
     "video": {
       "title": "Entrena la habilidad detrás del juego",

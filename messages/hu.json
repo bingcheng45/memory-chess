@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Fejleszd a sakkmemóriádat és a vizualizációdat",
-      "freeToPlay": "Ingyenes, fiók nélkül is játszható. Az eredményedet a <link>ranglistán</link> is összevetheted másokéval."
+      "freeToPlay": "Ingyenes, fiók nélkül is játszható. Az eredményedet a <link>ranglistán</link> is összevetheted másokéval.",
+      "boardGame": "A fából készült Memory Chess társasjátékot keresed? <link>Olvasd el a szabályait</link>."
     },
     "cta": {
       "leaderboard": "Ranglista megtekintése",
       "chooseSettings": "Válassz bábukat és időt"
+    },
+    "gameVideo": {
+      "play": "Videó lejátszása: {title}",
+      "caption": "Egy kör az elejétől a végéig: nézd meg az állást, rakd ki emlékezetből, és olvasd le a pontszámod."
     },
     "video": {
       "title": "Edzd a képességet, amelyre a játék épül",

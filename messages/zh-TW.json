@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: 訓練你的西洋棋記憶力與盤面想像力",
-      "freeToPlay": "免費遊玩，不必註冊。你也可以在<link>排行榜</link>上比較自己的成績。"
+      "freeToPlay": "免費遊玩，不必註冊。你也可以在<link>排行榜</link>上比較自己的成績。",
+      "boardGame": "在找木製桌遊 Memory Chess？<link>閱讀玩法規則</link>。"
     },
     "cta": {
       "leaderboard": "查看排行榜",
       "chooseSettings": "自選棋子數與時間"
+    },
+    "gameVideo": {
+      "play": "播放影片：{title}",
+      "caption": "完整的一局：觀察局面，憑記憶還原，再查看你的分數。"
     },
     "video": {
       "title": "鍛鍊遊戲背後的那項能力",

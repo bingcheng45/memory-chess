@@ -4,7 +4,11 @@ import { articlePath } from "@/lib/articles/paths";
 import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/copy";
 import { ctaHref, DAILY_PATH, guidePath, guideRoundHref } from "@/lib/seo/learn/links";
 import type { CtaBlock, LearnBlock, Rich } from "@/lib/seo/learn/schema";
+import { AFFILIATE, AMAZON_DISCLOSURE } from "@/lib/affiliate/amazon";
+import LearnAffiliateLink from "./LearnAffiliateLink";
 import LearnBoard from "./LearnBoard";
+import LearnRulesDemo from "./LearnRulesDemo";
+import { WoodenSetIllustration } from "./WoodenSet";
 
 export type TitleLookup = { readonly guide: (slug: string) => string; readonly article: (slug: string) => string };
 
@@ -177,6 +181,21 @@ export default function LearnBlockView({ block, figure = 0, titles }: LearnBlock
           ))}
         </ol>
       );
+    case "affiliate": {
+      const href = AFFILIATE.amazonProductUrl;
+      if (!href) return null;
+      return (
+        <div className="lg-buy">
+          <WoodenSetIllustration />
+          <div>
+            <LearnAffiliateLink href={href} label={block.label} />
+            <p>{AMAZON_DISCLOSURE}</p>
+          </div>
+        </div>
+      );
+    }
+    case "rulesDemo":
+      return <LearnRulesDemo caption={block.caption} />;
     case "cta":
       return <Cta block={block} />;
     case "faq":

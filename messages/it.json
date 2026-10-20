@@ -1805,6 +1805,7 @@
     "englishNote": "Le note su metodo, limiti e citazione qui sotto sono in inglese.",
     "chart": {
       "byPieces": "Memoria media nelle partite impostate su {seconds} secondi di studio",
+      "byPiecesNote": "Ogni numero di pezzi è stato scelto da giocatori diversi e alcune righe vengono da pochi giocatori, quindi controlla la colonna Giocatori della tabella prima di confrontare le barre.",
       "bySeconds": "Memoria media di {pieces} pezzi, per tempo di studio",
       "bySecondsNote": "Ogni tempo di studio è stato scelto da giocatori diversi, quindi queste barre non mostrano quanto aiuti avere più tempo.",
       "pieces": "{count, plural, one {# pezzo} many {# di pezzi} other {# pezzi}}",

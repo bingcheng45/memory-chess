@@ -33,7 +33,7 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
         </p>
         <p>
           A setting is shown only with at least {n(data.minRounds)} rounds from at least {n(data.minPlayers)} players. Those cuts are my
-          judgement: smaller groups were mostly one or two people, and a setting near the cut is still a small sample. Of {n(data.totalRounds)} rounds, {n(data.publishedRounds)} fall in the{" "}
+          judgement: smaller groups were mostly one or two people, and a setting near the cut is still a small sample. Of {n(data.totalRounds)} rounds from {n(data.totalPlayers)} players, {n(data.publishedRounds)} fall in the{" "}
           {n(data.cells.length)} settings shown, {n(data.roundsInSmallCells)} in smaller settings, and {n(data.roundsWithoutSettings)}{" "}
           arrived without their settings. The median and the middle half (the 25th to the 75th percentile) are nearest-rank values of
           the whole-number scores.
@@ -61,7 +61,7 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
             round uses the same setting and is pooled into it. It holds the most players ({n(defaultRound.players)}).
           </li>
           <li>
-            An empty board counts as a round that scored 0. Since mid-October the game has accepted one empty board a day as a free
+            An empty board counts as a round that scored 0. Since October 14 the game has accepted one empty board a day as a free
             skip, and the analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting&apos;s
             share, {tenth(defaultRound.zeroShare)}% for the {DEFAULT_ROUND_PIECES}-piece, {DEFAULT_ROUND_SECONDS}-second rounds.
           </li>
@@ -71,7 +71,7 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
           </li>
           <li>
             The game changed during this release. The calibration round&apos;s event, review rounds, the daily board and the free skip
-            were all added between October 8 and 14, so the earliest days hold none of them.
+            all reached players on October 14, so the 15 days before then hold none of them.
           </li>
           <li>A player is a browser as Google Analytics counts it. One person on two devices counts twice.</li>
           <li>Rounds from visitors who block analytics, or decline analytics cookies where they are asked, are missing.</li>

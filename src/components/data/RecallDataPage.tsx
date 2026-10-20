@@ -130,6 +130,7 @@ export async function RecallDataPage({ data, locale }: { readonly data: RecallDa
           t={t}
           percent={whole}
         />
+        <p className="recall-scale">{t("chart.byPiecesNote")}</p>
         <RecallChart
           id="recall-by-seconds"
           title={t("chart.bySeconds", { pieces: DEFAULT_ROUND_PIECES })}

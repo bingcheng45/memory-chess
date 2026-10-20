@@ -1805,6 +1805,7 @@
     "englishNote": "Notele despre metodă, limite și citare de mai jos sunt în engleză.",
     "chart": {
       "byPieces": "Precizia medie în rundele setate la {seconds} secunde de studiu",
+      "byPiecesNote": "Fiecare număr de piese a fost ales de alți jucători, iar unele rânduri provin de la doar câțiva jucători, așa că verifică coloana Jucători din tabel înainte să compari barele.",
       "bySeconds": "Precizia medie pentru {pieces} piese, în funcție de timpul de studiu",
       "bySecondsNote": "Fiecare timp de studiu a fost ales de alți jucători, așa că aceste bare nu arată cât ajută timpul în plus.",
       "pieces": "{count, plural, one {# piesă} few {# piese} other {# de piese}}",

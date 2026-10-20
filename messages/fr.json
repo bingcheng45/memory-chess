@@ -1805,6 +1805,7 @@
     "englishNote": "Les notes sur la méthode, les limites et la citation ci-dessous sont en anglais.",
     "chart": {
       "byPieces": "Mémorisation moyenne des parties réglées sur {seconds} secondes d’étude",
+      "byPiecesNote": "Des joueurs différents ont choisi chaque nombre de pièces, et certaines lignes ne viennent que de quelques joueurs : regardez la colonne Joueurs du tableau avant de comparer les barres.",
       "bySeconds": "Mémorisation moyenne de {pieces} pièces, selon le temps d’étude",
       "bySecondsNote": "Des joueurs différents ont choisi chaque temps d’étude, donc ces barres ne montrent pas ce qu’apporte du temps en plus.",
       "pieces": "{count, plural, one {# pièce} many {# de pièces} other {# pièces}}",

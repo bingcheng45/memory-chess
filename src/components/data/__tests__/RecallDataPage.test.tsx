@@ -46,6 +46,7 @@ const DATA: RecallDataset = {
   minRounds: 30,
   minPlayers: 5,
   totalRounds: 1200,
+  totalPlayers: 250,
   roundsWithoutSettings: 10,
   roundsInSmallCells: 90,
   publishedRounds: 1100,
@@ -74,6 +75,10 @@ it("draws each bar to scale and prints its value and rounds", async () => {
   expect(bars.map((bar) => bar.textContent)).toEqual(["2 pieces82%300 rounds", "6 pieces48%600 rounds"]);
   expect(bars.map((bar) => (bar.querySelector("i") as HTMLElement).style.width)).toEqual(["81.8%", "48.3%"]);
 
+  expect(byPieces.nextElementSibling).toHaveTextContent(
+    "Different players chose each number of pieces, and some rows come from only a few players, so check the Players column in the table before comparing bars.",
+  );
+
   const bySeconds = screen.getByRole("figure", { name: "Average recall of 6 pieces, by study time" });
   expect(within(bySeconds).getAllByRole("listitem").map((bar) => bar.textContent)).toEqual(["10 s48%600 rounds", "20 s69%120 rounds"]);
   expect(bySeconds.nextElementSibling).toHaveTextContent(
@@ -92,7 +97,7 @@ it("tabulates every published setting with its spread, perfect share and share t
     ["6", "20 s", "120", "10", "69.0%", "50%", "25% to 75%", "34.5%", "4.4%"],
     ["12", "8 s", "80", "14", "39.8%", "50%", "25% to 75%", "1.4%", "16.2%"],
   ]);
-  expect(screen.getByText(/Of 1,200 rounds, 1,100 fall in the 4 settings shown, 90 in smaller settings, and 10 arrived without their settings/)).toBeInTheDocument();
+  expect(screen.getByText(/Of 1,200 rounds from 250 players, 1,100 fall in the 4 settings shown, 90 in smaller settings, and 10 arrived without their settings/)).toBeInTheDocument();
 });
 
 it("says in the limits that skips, calibration, review and daily rounds are pooled, and how many default rounds scored 0", async () => {
@@ -100,7 +105,7 @@ it("says in the limits that skips, calibration, review and daily rounds are pool
 
   const limits = screen.getByRole("heading", { name: "Limits" }).parentElement as HTMLElement;
   expect(within(limits).getByText(/^An empty board counts as a round that scored 0\./)).toHaveTextContent(
-    "An empty board counts as a round that scored 0. Since mid-October the game has accepted one empty board a day as a free skip, and the analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting's share, 15.7% for the 6-piece, 10-second rounds.",
+    "An empty board counts as a round that scored 0. Since October 14 the game has accepted one empty board a day as a free skip, and the analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting's share, 15.7% for the 6-piece, 10-second rounds.",
   );
   expect(within(limits).getByText(/^Review rounds/)).toHaveTextContent(
     "Review rounds, which replay a board the player saw before, and the daily board, the same seeded position for everyone that day, are pooled with the other rounds. The data cannot separate them.",

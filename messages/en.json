@@ -1805,6 +1805,7 @@
     "englishNote": "The notes on method, limits and citation below are in English.",
     "chart": {
       "byPieces": "Average recall in rounds set to {seconds} seconds of study",
+      "byPiecesNote": "Different players chose each number of pieces, and some rows come from only a few players, so check the Players column in the table before comparing bars.",
       "bySeconds": "Average recall of {pieces} pieces, by study time",
       "bySecondsNote": "Different players chose each study time, so these bars do not show how much extra time helps.",
       "pieces": "{count, plural, one {# piece} other {# pieces}}",

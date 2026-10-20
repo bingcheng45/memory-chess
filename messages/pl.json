@@ -1805,6 +1805,7 @@
     "englishNote": "Uwagi o metodzie, ograniczeniach i cytowaniu poniżej są po angielsku.",
     "chart": {
       "byPieces": "Średnia dokładność w rundach z czasem na zapamiętanie ustawionym na {seconds} sekund",
+      "byPiecesNote": "Każdą liczbę figur wybierali inni gracze, a niektóre wiersze pochodzą od zaledwie kilku graczy, więc przed porównaniem słupków sprawdź w tabeli kolumnę Gracze.",
       "bySeconds": "Średnia dokładność przy {pieces} figurach, według czasu na zapamiętanie",
       "bySecondsNote": "Każdy czas na zapamiętanie wybierali inni gracze, więc te słupki nie pokazują, ile pomaga dodatkowy czas.",
       "pieces": "{count, plural, one {# figura} few {# figury} many {# figur} other {# figury}}",

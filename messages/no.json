@@ -1805,6 +1805,7 @@
     "englishNote": "Merknadene om metode, begrensninger og kildehenvisning nedenfor er på engelsk.",
     "chart": {
       "byPieces": "Gjennomsnittlig treffsikkerhet i runder med studietid satt til {seconds} sekunder",
+      "byPiecesNote": "Ulike spillere valgte hvert antall brikker, og noen rader kommer fra bare noen få spillere, så sjekk kolonnen Spillere i tabellen før du sammenligner stolpene.",
       "bySeconds": "Gjennomsnittlig treffsikkerhet for {pieces} brikker, etter studietid",
       "bySecondsNote": "Ulike spillere valgte hver studietid, så disse søylene viser ikke hvor mye ekstra tid hjelper.",
       "pieces": "{count, plural, one {# brikke} other {# brikker}}",

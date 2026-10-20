@@ -1805,6 +1805,7 @@
     "englishNote": "De toelichting over methode, beperkingen en bronvermelding hieronder is in het Engels.",
     "chart": {
       "byPieces": "Gemiddelde herinnering in rondes met een ingestelde kijktijd van {seconds} seconden",
+      "byPiecesNote": "Elk aantal stukken werd door andere spelers gekozen, en sommige rijen komen van maar een paar spelers, dus kijk naar de kolom Spelers in de tabel voordat je balken vergelijkt.",
       "bySeconds": "Gemiddelde herinnering van {pieces} stukken, per kijktijd",
       "bySecondsNote": "Elke kijktijd werd door andere spelers gekozen, dus deze balken laten niet zien hoeveel extra tijd helpt.",
       "pieces": "{count, plural, one {# stuk} other {# stukken}}",

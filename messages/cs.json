@@ -1805,6 +1805,7 @@
     "englishNote": "Poznámky k metodě, omezením a citování níže jsou v angličtině.",
     "chart": {
       "byPieces": "Průměrná přesnost v kolech s nastaveným časem na zapamatování {seconds} s",
+      "byPiecesNote": "Každý počet figur si zvolili jiní hráči a některé řádky pocházejí jen od několika hráčů, proto si před porovnáním sloupců zkontrolujte v tabulce sloupec Hráči.",
       "bySeconds": "Průměrná přesnost u {pieces} figur podle času na zapamatování",
       "bySecondsNote": "Každý čas na zapamatování si zvolili jiní hráči, takže tyto sloupce neukazují, o kolik pomáhá delší čas.",
       "pieces": "{count, plural, one {# figura} few {# figury} many {# figury} other {# figur}}",

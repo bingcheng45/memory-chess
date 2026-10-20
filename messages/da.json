@@ -1805,6 +1805,7 @@
     "englishNote": "Noterne om metode, begrænsninger og kildeangivelse nedenfor er på engelsk.",
     "chart": {
       "byPieces": "Gennemsnitlig præcision i runder med husketid sat til {seconds} sekunder",
+      "byPiecesNote": "Forskellige spillere valgte hvert antal brikker, og nogle rækker stammer fra få spillere, så tjek kolonnen Spillere i tabellen, før du sammenligner søjlerne.",
       "bySeconds": "Gennemsnitlig præcision for {pieces} brikker, efter husketid",
       "bySecondsNote": "Forskellige spillere valgte hver husketid, så søjlerne viser ikke, hvor meget ekstra tid hjælper.",
       "pieces": "{count, plural, one {# brik} other {# brikker}}",

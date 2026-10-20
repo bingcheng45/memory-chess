@@ -1805,6 +1805,7 @@
     "englishNote": "Alla olevat huomiot menetelmästä, rajoituksista ja viittaamisesta ovat englanniksi.",
     "chart": {
       "byPieces": "Keskimääräinen tarkkuus kierroksilla, joiden tutkimisajaksi on asetettu {seconds} sekuntia",
+      "byPiecesNote": "Eri pelaajat valitsivat kunkin nappulamäärän, ja osa riveistä perustuu vain muutamaan pelaajaan, joten katso taulukon Pelaajat-sarake ennen palkkien vertailua.",
       "bySeconds": "Keskimääräinen tarkkuus {pieces} nappulalla tutkimisajan mukaan",
       "bySecondsNote": "Eri pelaajat valitsivat kunkin tutkimisajan, joten nämä palkit eivät näytä, kuinka paljon lisäaika auttaa.",
       "pieces": "{count, plural, one {# nappula} other {# nappulaa}}",

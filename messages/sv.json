@@ -1805,6 +1805,7 @@
     "englishNote": "Anteckningarna om metod, begränsningar och källhänvisning nedan är på engelska.",
     "chart": {
       "byPieces": "Genomsnittlig träffsäkerhet i rundor med studietid inställd på {seconds} sekunder",
+      "byPiecesNote": "Olika spelare valde varje antal pjäser, och vissa rader kommer från bara några få spelare, så titta på kolumnen Spelare i tabellen innan du jämför staplarna.",
       "bySeconds": "Genomsnittlig träffsäkerhet för {pieces} pjäser, efter studietid",
       "bySecondsNote": "Olika spelare valde varje studietid, så staplarna visar inte hur mycket extra tid hjälper.",
       "pieces": "{count, plural, one {# pjäs} other {# pjäser}}",

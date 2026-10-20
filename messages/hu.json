@@ -1805,6 +1805,7 @@
     "englishNote": "Az alábbi, a módszerről, a korlátokról és a hivatkozásról szóló megjegyzések angol nyelvűek.",
     "chart": {
       "byPieces": "Átlagos pontosság a {seconds} másodperces megfigyelési időre állított körökben",
+      "byPiecesNote": "Az egyes bábuszámokat más-más játékosok választották, és néhány sor csak kevés játékostól származik, ezért a sávok összevetése előtt nézd meg a táblázat Játékosok oszlopát.",
       "bySeconds": "{pieces} bábu átlagos felidézési pontossága a megfigyelési idő szerint",
       "bySecondsNote": "Az egyes megfigyelési időket más-más játékosok választották, ezért ezek az oszlopok nem mutatják meg, mennyit segít a több idő.",
       "pieces": "{count, plural, one {# bábu} other {# bábu}}",

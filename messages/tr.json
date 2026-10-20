@@ -1805,6 +1805,7 @@
     "englishNote": "Aşağıdaki yöntem, sınırlar ve kaynak gösterme notları İngilizcedir.",
     "chart": {
       "byPieces": "İnceleme süresi {seconds} saniyeye ayarlanmış turlarda ortalama hatırlama",
+      "byPiecesNote": "Her taş sayısını farklı oyuncular seçti ve bazı satırlar yalnızca birkaç oyuncudan geliyor, bu yüzden çubukları karşılaştırmadan önce tablodaki Oyuncular sütununa bak.",
       "bySeconds": "{pieces} taşın ortalama hatırlanma oranı, inceleme süresine göre",
       "bySecondsNote": "Her inceleme süresini farklı oyuncular seçti, bu yüzden bu çubuklar ek sürenin ne kadar yardımcı olduğunu göstermez.",
       "pieces": "{count, plural, one {# taş} other {# taş}}",

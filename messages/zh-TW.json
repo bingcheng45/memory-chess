@@ -1805,6 +1805,7 @@
     "englishNote": "下方關於方法、限制和引用的說明為英文。",
     "chart": {
       "byPieces": "記憶時間設為 {seconds} 秒的回合的平均記憶準確率",
+      "byPiecesNote": "每種棋子數由不同的玩家選擇，有些列只來自少數玩家，因此比較長條前請先看表中的「玩家數」一欄。",
       "bySeconds": "{pieces} 個棋子的平均記憶準確率，依記憶時間",
       "bySecondsNote": "每種記憶時間由不同的玩家選擇，因此這些長條並不能說明增加時間有多大幫助。",
       "pieces": "{count, plural, other {# 子}}",

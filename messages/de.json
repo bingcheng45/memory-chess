@@ -1805,6 +1805,7 @@
     "englishNote": "Die Hinweise zu Methode, Grenzen und Zitierweise unten sind auf Englisch.",
     "chart": {
       "byPieces": "Durchschnittliche Erinnerung in Runden mit eingestellter Einprägezeit von {seconds} Sekunden",
+      "byPiecesNote": "Jede Figurenzahl wurde von anderen Spielenden gewählt, und manche Zeilen stammen von nur wenigen Spielenden. Prüfe daher die Spalte Spielende in der Tabelle, bevor du Balken vergleichst.",
       "bySeconds": "Durchschnittliche Erinnerung an {pieces} Figuren, nach Einprägezeit",
       "bySecondsNote": "Jede Einprägezeit wurde von anderen Spielenden gewählt, daher zeigen diese Balken nicht, wie viel zusätzliche Zeit hilft.",
       "pieces": "{count, plural, one {# Figur} other {# Figuren}}",

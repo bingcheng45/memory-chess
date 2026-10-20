@@ -1805,6 +1805,7 @@
     "englishNote": "Các ghi chú về phương pháp, giới hạn và cách trích dẫn bên dưới được viết bằng tiếng Anh.",
     "chart": {
       "byPieces": "Mức ghi nhớ trung bình ở các ván đặt thời gian ghi nhớ {seconds} giây",
+      "byPiecesNote": "Mỗi số quân do những người chơi khác nhau chọn, và một số hàng chỉ đến từ vài người chơi, nên hãy xem cột Người chơi trong bảng trước khi so sánh các thanh.",
       "bySeconds": "Mức ghi nhớ trung bình với {pieces} quân, theo thời gian ghi nhớ",
       "bySecondsNote": "Mỗi mức thời gian ghi nhớ do những người chơi khác nhau chọn, nên các cột này không cho thấy thêm thời gian giúp ích bao nhiêu.",
       "pieces": "{count, plural, other {# quân}}",

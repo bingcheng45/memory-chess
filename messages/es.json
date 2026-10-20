@@ -1805,6 +1805,7 @@
     "englishNote": "Las notas sobre el método, los límites y cómo citar estos datos están en inglés.",
     "chart": {
       "byPieces": "Recuerdo medio en rondas configuradas con {seconds} segundos de estudio",
+      "byPiecesNote": "Cada número de piezas lo eligieron jugadores distintos, y algunas filas proceden de pocos jugadores, así que mira la columna Jugadores de la tabla antes de comparar barras.",
       "bySeconds": "Recuerdo medio de {pieces} piezas, según el tiempo de estudio",
       "bySecondsNote": "Cada tiempo de estudio lo eligieron jugadores distintos, así que estas barras no muestran cuánto ayuda tener más tiempo.",
       "pieces": "{count, plural, one {# pieza} many {# de piezas} other {# piezas}}",

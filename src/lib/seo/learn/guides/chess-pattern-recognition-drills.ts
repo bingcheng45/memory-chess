@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Each of the four patterns is a shape plus one condition. Set up the shape on a board, clear it and rebuild it from memory. Then add one black piece that breaks the condition, watch the tactic fail, and look for the shape in your own games. Add a fifth pattern only after you have found all four in games you played.",
+    quickAnswer: "Each pattern is a shape plus one condition. Set up the shape on a board, clear it and rebuild it from memory. Then add one black piece that breaks the condition, watch the tactic fail, and look for the shape in your own games. Add a fifth only after you have found each of the four, or its early form, in a game you played.",
     takeaways: [
       "A knight fork on c7 is three squares, e8, a8 and c7, plus one condition, that nothing black can take on c7.",
       "Rebuild each shape from an empty board until you can place it without the table, then look for it in your own games.",
@@ -267,7 +267,7 @@ const guide: LearnDocument = {
             "Memory Chess positions are random and fresh each round, so a back-rank mate shows up only by chance. What a round trains is reading a cluster, two to four pieces that touch or guard each other, as one unit. Twenty pieces in five seconds is a quarter of a second per piece, too little to read square by square.",
             "The generator weights piece types as a real set holds them, eight pawns to one queen per side. On a 12-piece board the ten pieces beyond the kings are split five and five, and about half of them are pawns. So read the kings first, then the pawns that touch, then the odd pieces.",
             "Two more rules shrink the search. A side's two bishops never share a square colour, and no pawn ever stands on the first or eighth rank.",
-            "Masters read boards the same way. Chase and Simon filmed a master rebuilding game positions and split his work into chunks at every pause longer than 2 seconds. Of his 77 chunks across fourteen positions, 47 contained a pawn chain. His chunks averaged 3.8 pieces, against 2.6 for a Class A player.",
+            "Chase and Simon saw a master group pawns too. They filmed him rebuilding game positions and split his work into chunks at every pause longer than 2 seconds. Of his 77 chunks across fourteen positions, 47 contained a pawn chain. His first chunk averaged 3.8 pieces, against 2.6 for a Class A player.",
           ],
         },
         {
@@ -372,7 +372,7 @@ const guide: LearnDocument = {
         },
         {
           title: "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
-          note: "Supports the 2-second pause as the chunk boundary, 47 of the master's 77 chunks over fourteen positions containing a pawn chain, and chunk sizes of 3.8 pieces for the master and 2.6 for the Class A player.",
+          note: "Supports the 2-second pause as the chunk boundary and 47 pawn chains among the master's 77 chunks over fourteen positions. Also supports first chunks of 3.8 and 2.6 pieces.",
           url: "https://andymatuschak.org/prompts/Chase1973.pdf",
         },
       ],

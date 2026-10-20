@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. Ten squares called at random with every colour right means the anchors are in. Then play short Memory Chess rounds naming every square aloud, first reading the board labels and then naming each square before you look at them.",
+    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. The anchor test is ten squares called at random, each colour said before the name is finished. Then play short Memory Chess rounds naming every square aloud, first reading the board labels and then naming each square before you look at them.",
     takeaways: [
       "A square you count takes two lookups, the file and then the rank. A square you recognise takes one.",
       "Add the file number to the rank number. An even total is a dark square, an odd total is light.",
@@ -235,9 +235,9 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The Lichess coordinate trainer is free and does one job well. Its page describes it this way, \"A square name appears on the board and you must click on the correct square.\" That trains the step from a name to a place, the one this guide starts with.",
+            "The Lichess coordinate trainer shows a square name on the board, and you click that square. That trains the step from a name to a place, the one this guide starts with.",
             "A Memory Chess round trains the next step. You hold where several pieces stand after the board clears, and each piece counts only when its square, type and colour all match.",
-            "Use the coordinate trainer while you still count files and ranks. Switch to the 4-piece rounds above once squares arrive without counting, because holding four pieces is hard while you are still hunting for the squares. In our judgement most players gain from a few minutes of each.",
+            "Use the coordinate trainer while you still count files and ranks. Switch to the 4-piece rounds above once squares arrive without counting. In our judgement four pieces are hard to hold while you are still hunting for the squares, and most players gain from a few minutes of each.",
           ],
         },
       ],
@@ -287,7 +287,7 @@ const guide: LearnDocument = {
       items: [
         {
           title: "Coordinate training, lichess.org",
-          note: "Supports the description of the trainer, in the page's own words, as read on 20 October 2026.",
+          note: "Supports the description of how the trainer works, as read on 20 October 2026.",
           url: "https://lichess.org/training/coordinate",
         },
       ],

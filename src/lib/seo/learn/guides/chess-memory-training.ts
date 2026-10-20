@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the board from memory and scoring it square by square. Five rungs take you from 6 pieces to 12. Keep the look at 10 seconds until 12 pieces comes back perfect three times, then lower it to 8.",
+    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the board from memory and scoring it square by square. Five rungs take you from 6 pieces to 12. Keep the look at 10 seconds until 12 pieces comes back perfect three times in a row, then lower it to 8.",
     takeaways: [
       "A piece scores only when its square, type and colour all match, so a near miss is a miss.",
       "At 6 pieces one missed piece already costs 17 points, so the result messages are blunt at low counts.",
@@ -169,7 +169,7 @@ const guide: LearnDocument = {
             "Rebuilding from an empty board is a recall test, and recall tests help a memory last. Roediger and Karpicke had students study a prose passage, then either reread it or write down what they recalled. A week later the tested students remembered more. On a board, rebuilding is the written recall and staring longer is the rereading.",
             "Gobet and Simon showed strong players several boards in a row for a few seconds each, and the players still recalled much of each one. The authors explain it with templates, large familiar patterns held in long-term memory.",
             "Chase and Simon timed the look at 5 seconds and used middle-game positions of 24 to 26 pieces. Their master recalled about twice as many pieces as their Class A player. On the same pieces set out on random squares, every player recalled only about three or four.",
-            "Random boards shrink the expert's edge but do not erase it. Gobet and Simon pooled thirteen experiments with looks of 10 seconds or less. They put the edge at about one extra piece per 400 Elo points on random boards, against about five on positions from games.",
+            "Random boards shrink the expert's edge but do not erase it. Gobet and Simon checked thirteen experiments with looks of 10 seconds or less. They put the edge at about one extra piece per 400 Elo points on random boards, against about five on positions from games.",
             "Memory Chess positions are random, so you rarely meet a familiar template, and a strong player's lead over you is smaller here than in a game. The plain groups from the hard-preset drill, pieces that touch or share a rank or file, take the place of templates.",
             "Groups are what make the hard preset possible. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four groups it leaves two seconds or more each.",
           ],

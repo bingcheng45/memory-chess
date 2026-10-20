@@ -53,7 +53,7 @@ describe("derived page values", () => {
       "why-puzzle-rating-doesnt-transfer-to-games": 6,
       "chess-coordinates-practice": 6,
       "chess-visualization-exercises": 6,
-      "how-to-see-the-whole-board-in-chess": 5,
+      "how-to-see-the-whole-board-in-chess": 6,
       "chess-calculation-exercises-for-beginners": 7,
       "blindfold-chess-training-for-beginners": 8,
       "chess-memory-training": 8,

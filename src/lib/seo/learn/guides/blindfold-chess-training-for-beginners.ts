@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Five weeks is the soonest, when every stage passes on its first try. Start with two kings held without a board. Then learn six checks that catch a drifting mental picture, and replay ten moves of your own games from the move list alone. Play a full game blind only after each stage passes its test.",
+    quickAnswer: "Five weeks is the schedule, and the pass marks decide when you move on. Start with two kings held without a board. Then learn six checks that catch a drifting mental picture, and replay ten moves of your own games from the move list alone. Play a full game blind only after each stage passes its test.",
     takeaways: [
       "Each stage has a pass mark, so you know when to move on and when to repeat.",
       "Six checks that every Memory Chess position passes also catch the worst errors in a mental board that has drifted.",
@@ -241,7 +241,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "The first three stages take about four weeks at 3 to 6 minutes a day. Stage four takes at least another week. You need two clean 15-move games and then one clean full game, playing one game every other day. That puts your first full blind game, a whole game with the list hidden, about five weeks from today.",
-            "Five weeks is the soonest, not the usual. Each stage ends on a pass mark, not a date, so a stage you fail adds days. Repeat it instead of skipping ahead.",
+            "Five weeks is the schedule, not a floor or a promise. Each stage ends on a pass mark, not a date. If every test passes the first time, the fastest path is about 13 days. That is two days for each of the first three stages, then a game every other day. A stage you fail adds days, so repeat it instead of skipping ahead.",
           ],
         },
         {

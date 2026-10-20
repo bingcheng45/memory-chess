@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "how-many-chess-puzzles-a-day",
     title: "How Many Chess Puzzles a Day Should Beginners Do?",
     h1: "How many chess puzzles a day should a beginner do?",
-    description: "Do 10 to 15 chess puzzles a day, about one a minute in a 10- to 15-minute block. Stop sooner once you start playing moves just to see whether they work.",
+    description: "Give each chess puzzle about a minute, so a 10- to 15-minute daily block is 10 to 15 puzzles. Stop sooner once you start playing moves just to see if they work.",
     group: "practice",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Your daily count is your study minutes at one checked puzzle a minute, so a 10-minute block is about ten puzzles. Before each move, look for the opponent's reply that would refute it. Fifty puzzles in twenty minutes leaves no time for that check.",
+    quickAnswer: "Your daily count is your study minutes at one checked puzzle a minute, so a 10-minute block is about ten puzzles. Before each move, look for the opponent's reply that would refute it. Fifty puzzles in twenty minutes is under half a minute each, too fast for that check in our judgement.",
     takeaways: [
       "Your daily count is your minutes at one checked puzzle a minute.",
       "Treat the count as a ceiling. Stop earlier when you start guessing moves.",

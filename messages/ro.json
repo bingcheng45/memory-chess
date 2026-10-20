@@ -1795,7 +1795,7 @@
   "data": {
     "meta": {
       "title": "Cât de bine ne amintim pozițiile de șah?",
-      "description": "Precizia medie de reconstituire a pozițiilor de șah după numărul de piese și timpul de studiu, din {rounds, number} de runde Memory Chess. Date deschise CC BY 4.0.",
+      "description": "Precizia medie de reconstituire a pozițiilor de șah după numărul de piese și timpul de studiu, din {rounds, plural, one {# rundă} few {# runde} other {# de runde}} Memory Chess. Date deschise CC BY 4.0.",
       "socialTitle": "Cât de bine își amintesc oamenii pozițiile de șah?",
       "socialDescription": "Precizia în funcție de numărul de piese și de timpul de studiu, din {rounds, plural, one {# rundă terminată} few {# runde terminate} other {# de runde terminate}} de Memory Chess. Date deschise sub licența CC BY 4.0."
     },

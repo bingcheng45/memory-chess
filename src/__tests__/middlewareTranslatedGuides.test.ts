@@ -63,3 +63,14 @@ describe("middleware on the translated Learn guides", () => {
     expect(mockForwarded[0].cookies.has("NEXT_LOCALE")).toBe(false);
   });
 });
+
+describe("middleware on a retired guide whose replacement is translated", () => {
+  it("keeps the reader's locale when the replacement is served in it, and goes to English when it is not", () => {
+    expect(run("/de/learn/chess-board-vision-drills").headers.get("location")).toBe(
+      "https://thememorychess.com/de/learn/how-to-see-the-whole-board-in-chess",
+    );
+    expect(run("/it/learn/chess-board-vision-drills").headers.get("location")).toBe(
+      "https://thememorychess.com/learn/how-to-see-the-whole-board-in-chess",
+    );
+  });
+});

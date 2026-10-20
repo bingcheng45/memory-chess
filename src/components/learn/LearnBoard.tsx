@@ -1,5 +1,5 @@
 import type { Square } from "chess.js";
-import type { GuideCopy } from "@/lib/seo/learn/copy";
+import type { GuideCopy } from "@/lib/seo/learn/guideCopy";
 import { chessOf } from "@/lib/seo/learn/positions";
 import type { BodyBlock } from "@/lib/seo/learn/schema";
 

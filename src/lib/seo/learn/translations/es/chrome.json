@@ -1,10 +1,11 @@
 {
-  "sourceHash": "cab333855dcc71fb8c25364857b8a3ec71be0567d803b6d8e2b2ee53e84b48d5",
-  "approvedHash": "49dd2011767636fbfbfd9d965c8e6429eea6854d59b545d71ed6fc2defc9388e",
+  "sourceHash": "d95afec4b44321cc077856fecd32508813476f2595692424e6cb49a8be5a6570",
+  "approvedHash": "6c09e68235ffb886a3ce91326eb85a93acbc155a373b6fc1fc33e3cc885fc6bd",
   "sameAsEnglish": [
     "figure"
   ],
   "text": {
+    "breadcrumbs": "Ruta de navegación",
     "breadcrumbHome": "Inicio",
     "breadcrumbLearn": "Aprender",
     "quickAnswer": "Respuesta rápida",

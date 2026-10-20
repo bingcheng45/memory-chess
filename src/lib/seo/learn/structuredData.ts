@@ -2,7 +2,7 @@ import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import { BRAND_ORGANIZATION, BRAND_WEBSITE, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/brand";
 import type { LearnPage } from ".";
-import { LEARN_GUIDE_COPY, type GuideCopy } from "./copy";
+import { LEARN_GUIDE_COPY, type GuideCopy } from "./guideCopy";
 import { guidePath } from "./links";
 import { type ComparedProduct, LEARN_AUTHOR } from "./schema";
 

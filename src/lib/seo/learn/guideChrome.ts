@@ -1,6 +1,7 @@
 // `scripts/articles-i18n.mjs` imports this file with Node's type stripping, so it holds data only.
 
 const GUIDE_CHROME = {
+  breadcrumbs: "Breadcrumb",
   breadcrumbHome: "Home",
   breadcrumbLearn: "Learn",
   quickAnswer: "Quick answer",

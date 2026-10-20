@@ -1,10 +1,11 @@
 {
-  "sourceHash": "cab333855dcc71fb8c25364857b8a3ec71be0567d803b6d8e2b2ee53e84b48d5",
-  "approvedHash": "aa603397a0d883cf3e2d7156f0ef9b738aed714c584e74092004f2892f10b028",
+  "sourceHash": "d95afec4b44321cc077856fecd32508813476f2595692424e6cb49a8be5a6570",
+  "approvedHash": "3ddd73e79ed4e4e2a7b28379ee2cc66145051eb345d09862a87053e29d86dd07",
   "sameAsEnglish": [
     "ctaTag.stat"
   ],
   "text": {
+    "breadcrumbs": "Brotkrümelnavigation",
     "breadcrumbHome": "Startseite",
     "breadcrumbLearn": "Lernen",
     "quickAnswer": "Kurze Antwort",

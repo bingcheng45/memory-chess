@@ -2,7 +2,7 @@ import "server-only";
 import { DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
 import { translationProblems } from "@/lib/articles/articleText";
 import { findLearnPage, toPage, type LearnPage } from ".";
-import { LEARN_GUIDE_COPY, guideCopyOf, type GuideCopy } from "./copy";
+import { LEARN_GUIDE_COPY, guideCopyOf, type GuideCopy } from "./guideCopy";
 import GUIDE_CHROME, { type GuideChrome } from "./guideChrome";
 import { textOf, withText, type GuideText } from "./guideText";
 import { guideLocalesOf } from "./links";

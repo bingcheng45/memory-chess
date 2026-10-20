@@ -46,6 +46,14 @@ With --pages first, the same commands but seed act on the translation of /about,
   --pages approve <locale>        check the installed files, then record the hash of the text as approved
   --pages verify                  check every locale that serves the pages and require its approval
 
+With --guides first, the same five commands act on the translated Learn guides and their chrome:
+
+  --guides export <outDir>         write the English sources of the translated guides and their chrome
+  --guides check <locale> [dir]    check a translator's directory, or the installed files
+  --guides import <locale> <dir>   check a directory, then install it, not yet approved
+  --guides approve <locale>        check the installed files, then record the hash of the text as approved
+  --guides verify                  check every locale that serves the guides and require its approval
+
 Run it from the repo root. Every path must stay inside the repo.
 `;
 

@@ -1,7 +1,7 @@
 import type { ComponentProps } from "react";
 import { fireEvent, render, screen, within } from "@/test-utils/intl";
 import LearnBlockView, { type TitleLookup } from "@/components/learn/LearnBlockView";
-import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/copy";
+import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/guideCopy";
 import type { LearnBlock } from "@/lib/seo/learn/schema";
 import { AFFILIATE } from "@/lib/affiliate/amazon";
 

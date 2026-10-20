@@ -89,7 +89,7 @@ export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGui
       </div>
       <main className="lab-wrap lg-guide" data-learn-guide={meta.slug}>
         <header className="lg-head">
-          <nav aria-label="Breadcrumb" className="lg-crumbs">
+          <nav aria-label={COPY.breadcrumbs} className="lg-crumbs">
             <ol>
               <li>
                 <Link href="/">{COPY.breadcrumbHome}</Link>

@@ -1,5 +1,5 @@
 import { articlePath } from "@/lib/articles/paths";
-import type { GuideCopy } from "@/lib/seo/learn/copy";
+import type { GuideCopy } from "@/lib/seo/learn/guideCopy";
 import { ctaHref, DAILY_PATH, guidePath, guideRoundHref } from "@/lib/seo/learn/links";
 import type { CtaBlock, LearnBlock, Rich } from "@/lib/seo/learn/schema";
 import { AFFILIATE, AMAZON_DISCLOSURE } from "@/lib/affiliate/amazon";

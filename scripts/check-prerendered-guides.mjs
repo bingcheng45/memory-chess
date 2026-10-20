@@ -8,6 +8,13 @@ const DIST = ".next";
 const MANIFEST = join(DIST, "prerender-manifest.json");
 
 const { LEARN_SLUGS: slugs } = await import(pathToFileURL(join(process.cwd(), "src/lib/seo/learn/index.ts")).href);
+const { TRANSLATED_GUIDE_SLUGS, TRANSLATED_GUIDE_LOCALES } = await import(
+  pathToFileURL(join(process.cwd(), "src/lib/seo/learn/translatedGuides.ts")).href
+);
+const pages = [
+  ...slugs.map((slug) => ["en", slug]),
+  ...TRANSLATED_GUIDE_LOCALES.flatMap((locale) => TRANSLATED_GUIDE_SLUGS.map((slug) => [locale, slug])),
+];
 
 if (!existsSync(MANIFEST)) {
   console.error(`${MANIFEST} not found. Run \`next build\` before this check.`);
@@ -16,14 +23,14 @@ if (!existsSync(MANIFEST)) {
 
 const routes = JSON.parse(readFileSync(MANIFEST, "utf8")).routes;
 
-const missing = slugs.filter(
-  (slug) => !routes[`/en/learn/${slug}`] || !existsSync(join(DIST, "server/app/en/learn", `${slug}.html`)),
+const missing = pages.filter(
+  ([locale, slug]) => !routes[`/${locale}/learn/${slug}`] || !existsSync(join(DIST, `server/app/${locale}/learn`, `${slug}.html`)),
 );
 
 if (missing.length > 0) {
-  console.error(`${missing.length} of ${slugs.length} English guides were not prerendered:`);
-  for (const slug of missing) console.error(`  /en/learn/${slug}`);
+  console.error(`${missing.length} of ${pages.length} guide pages were not prerendered:`);
+  for (const [locale, slug] of missing) console.error(`  /${locale}/learn/${slug}`);
   process.exit(1);
 }
 
-console.log(`All ${slugs.length} English guides prerendered.`);
+console.log(`All ${slugs.length} English guides and ${pages.length - slugs.length} translated guides prerendered.`);

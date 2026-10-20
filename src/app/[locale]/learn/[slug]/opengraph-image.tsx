@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 import { findLearnPage } from "@/lib/seo/learn";
-import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/copy";
+import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/guideCopy";
 
 export const size = {
   width: 1200,

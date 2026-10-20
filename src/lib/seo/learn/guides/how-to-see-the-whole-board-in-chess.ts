@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "how-to-see-the-whole-board-in-chess",
     title: "How to See the Whole Board in Chess",
     h1: "How to see the whole board in chess",
-    description: "Before each move, name every piece on the four edges. After any capture or pawn move, also trace each enemy bishop, rook and queen to the edge.",
+    description: "Name every piece on the four edges before each move, and trace enemy lines after a capture or pawn move. That is how to see the whole board in chess.",
     group: "board-vision",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "To see the whole board in chess, run a five-step sweep from the edges inward before you look at your own move. Name every piece on the a-file, h-file, first rank and eighth rank. Then trace each enemy bishop, rook and queen to the edge of the board, check the knights and your own long-range pieces, and only then choose your move.",
+    quickAnswer: "To learn how to see the whole board in chess, run a five-step sweep from the edges inward before you choose a move. Name every piece on the a-file, h-file, first rank and eighth rank. Then trace each enemy bishop, rook and queen to the edge, and check the knights and your own long-range pieces.",
     takeaways: [
       "A long-range piece wins material without moving. When a pawn steps off its line, your eyes follow the pawn and miss the line it opened.",
       "Trace every line to the edge of the board, because the first piece on the line may be yours and pinned.",

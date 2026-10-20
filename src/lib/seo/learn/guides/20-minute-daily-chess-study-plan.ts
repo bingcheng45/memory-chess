@@ -95,7 +95,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "The medium preset in Memory Chess is 6 pieces with 10 seconds to look. Three rounds of it fit in three minutes, with a moment to read each result.",
-            "Press Try Again on the result screen for the next round. It keeps the settings and deals a new position, so no round can be remembered from yesterday.",
+            "Press Try again on the result screen for each new round. It keeps the settings and deals a new position, so no round can be remembered from yesterday. Next round would add a piece after a round of 90 percent or better.",
             "Name each piece and its square aloud while the board is up. The session then opens with a full read of a board, which the puzzles and your game ask for next.",
           ],
         },

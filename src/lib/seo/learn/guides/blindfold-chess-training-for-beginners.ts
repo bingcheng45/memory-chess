@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "blindfold-chess-training-for-beginners",
     title: "How to Learn Blindfold Chess: 4-Stage Training",
     h1: "How to learn blindfold chess in four stages, each with a pass mark",
-    description: "Plan on about five weeks to your first full blindfold game. That is four weeks of drills at 3 to 6 minutes a day, then a game every other day.",
+    description: "Plan on about five weeks of blindfold chess training to a first full blind game. Drill 3 to 6 minutes a day for four weeks, then a game every other day.",
     group: "visualization",
     level: "improver",
     publishedAt: "2026-03-06T00:00:00.000Z",
@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Five weeks is the schedule, and the pass marks decide when you move on. Start with two kings held without a board. Then learn six checks that catch a drifting mental picture, and replay ten moves of your own games from the move list alone. Play a full game blind only after each stage passes its test.",
+    quickAnswer: "Blindfold chess training runs on a five-week schedule, and pass marks decide when you move on. Start with two kings held without a board. Then learn six checks that catch a drifting mental picture, and replay ten moves of your own games from the move list. Play a full game blind only after each stage passes.",
     takeaways: [
       "Each stage has a pass mark, so you know when to move on and when to repeat.",
       "Six checks that every Memory Chess position passes also catch the worst errors in a mental board that has drifted.",
@@ -250,7 +250,7 @@ const guide: LearnDocument = {
             {
               label: "Stage one, week 1",
               duration: "3 minutes a day",
-              detail: "Six rounds of 2 pieces, 10 seconds, which are the two kings. Move on when all six are perfect in a row, colours included, on two separate days.",
+              detail: "Six rounds of 2 pieces, 10 seconds, which are the two kings. Press Try again between rounds, since Next round after a perfect round offers 3 pieces. Move on when all six are perfect in a row, colours included, on two separate days.",
             },
             {
               label: "Stage two, week 2",

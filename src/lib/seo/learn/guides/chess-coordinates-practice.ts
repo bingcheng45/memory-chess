@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "chess-coordinates-practice",
     title: "Chess Coordinates Practice: Name Squares Faster",
     h1: "Chess coordinates practice, from counting squares to reading them",
-    description: "Learn chess coordinates from eight anchor squares and one colour rule, then name each square aloud in 4-piece, 12-second rounds until five in a row are clean.",
+    description: "Chess coordinates practice starts with eight anchor squares and a colour rule. Then name squares aloud in 4-piece, 12-second rounds, five clean in a row.",
     group: "board-vision",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. The anchor test is ten squares called at random, each colour said before the name is finished. Then play short Memory Chess rounds naming every square aloud, first reading the board labels and then naming each square before you look at them.",
+    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. The anchor test is ten squares called at random, each colour said before the name is finished. Then play short Memory Chess rounds naming every square aloud, first reading the labels and then before you read them.",
     takeaways: [
       "A square you count takes two lookups, the file and then the rank. A square you recognise takes one.",
       "Add the file number to the rank number. An even total is a dark square, an odd total is light.",
@@ -235,9 +235,10 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The Lichess coordinate trainer shows a square name on the board, and you click that square. That trains the step from a name to a place, the one this guide starts with.",
-            "A Memory Chess round trains the next step. You hold where several pieces stand after the board clears, and each piece counts only when its square, type and colour all match.",
-            "Use the coordinate trainer while you still count files and ranks. Switch to the 4-piece rounds above once squares arrive without counting. In our judgement four pieces are hard to hold while you are still hunting for the squares, and most players gain from a few minutes of each.",
+            "The Lichess coordinate trainer has two modes. In Find square a coordinate appears and you click that square, which trains the step from a name to a place. In Name square a square is highlighted and you type its coordinate. That is the place-to-name skill of the Name it before you read it drill above.",
+            "Both modes run against a 30-second clock or untimed, with the board labels shown or hidden. Each asks about one square at a time.",
+            "A Memory Chess round adds memory. You hold where several pieces stand after the board clears, and each piece counts only when its square, type and colour all match.",
+            "Use the coordinate trainer while you still count files and ranks. Switch to the 4-piece rounds above once squares arrive without counting. In our judgement four pieces are hard to hold while you are still hunting for the squares. We think most players gain from a few minutes of each.",
           ],
         },
       ],
@@ -287,7 +288,7 @@ const guide: LearnDocument = {
       items: [
         {
           title: "Coordinate training, lichess.org",
-          note: "Supports the description of how the trainer works, as read on 20 October 2026.",
+          note: "Supports both modes, the 30-second or untimed clock and the labels toggle, as read on 20 October 2026. In Find square you click the named square. In Name square you type the highlighted one.",
           url: "https://lichess.org/training/coordinate",
         },
       ],

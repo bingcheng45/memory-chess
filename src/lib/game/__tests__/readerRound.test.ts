@@ -7,6 +7,11 @@ describe("readerRoundOf", () => {
     expect(readerRoundOf(null)).toEqual({ pieceCount: 4, memorizeTime: 10 });
   });
 
+  it("offers the page's own round to an unrated reader and sizes a rated reader's round from the rating", () => {
+    expect(readerRoundOf(null, { pieceCount: 6, memorizeTime: 10 })).toEqual({ pieceCount: 6, memorizeTime: 10 });
+    expect(readerRoundOf(saved(1300, { rd: 60, rounds: 40 }), { pieceCount: 6, memorizeTime: 10 })).toEqual({ pieceCount: 8, memorizeTime: 10 });
+  });
+
   it("offers the beginner round while the saved game has no rated round", () => {
     expect(readerRoundOf(saved(1000, { rd: 350, rounds: 0 }))).toEqual({ pieceCount: 4, memorizeTime: 10 });
   });

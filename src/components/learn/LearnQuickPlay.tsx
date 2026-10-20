@@ -2,11 +2,12 @@
 
 import { Link } from "@/i18n/navigation";
 import { useReaderRound } from "@/hooks/useReaderRound";
+import type { GameSettings } from "@/lib/game/configPrefill";
 import { LEARN_GUIDE_COPY as COPY } from "@/lib/seo/learn/copy";
 import { DAILY_PATH, guideRoundHref } from "@/lib/seo/learn/links";
 
-export default function LearnQuickPlay() {
-  const round = useReaderRound();
+export default function LearnQuickPlay({ unrated }: { readonly unrated: GameSettings }) {
+  const round = useReaderRound(unrated);
 
   return (
     <aside className="lg-quickplay" aria-label={COPY.quickPlay} data-reader-round={`${round.pieceCount}/${round.memorizeTime}`}>

@@ -5,6 +5,7 @@ import { LEARN_GUIDES } from "../guides";
 import { EN_LEARN_PAGES, LEARN_SLUGS, RESERVED_LEARN_SLUGS, groupPages, toPage } from "..";
 import type { BodyBlock, InlineLink, LearnDocument, Rich } from "../schema";
 import { readingMinutes } from "../text";
+import messages from "../../../../../messages/en.json";
 
 const SITE_PATHS = ["/settings", "/game", "/dashboard", "/learn", "/articles"];
 
@@ -52,8 +53,8 @@ describe("derived page values", () => {
       "how-to-stop-blundering-in-chess": 6,
       "why-puzzle-rating-doesnt-transfer-to-games": 6,
       "chess-coordinates-practice": 6,
-      "chess-visualization-exercises": 6,
-      "how-to-see-the-whole-board-in-chess": 6,
+      "chess-visualization-exercises": 5,
+      "how-to-see-the-whole-board-in-chess": 5,
       "chess-calculation-exercises-for-beginners": 7,
       "blindfold-chess-training-for-beginners": 8,
       "chess-memory-training": 8,
@@ -115,6 +116,41 @@ describe("rules the types cannot hold", () => {
     ]);
 
     expect(long).toEqual([]);
+  });
+
+  it("keeps the descriptions of the eight answer-first guides to 155 characters with the primary keyword", () => {
+    const answerFirst = [
+      "blindfold-chess-training-for-beginners",
+      "chess-coordinates-practice",
+      "chess-memory-training",
+      "chess-pattern-recognition-drills",
+      "chess-visualization-exercises",
+      "how-many-chess-puzzles-a-day",
+      "how-to-see-the-whole-board-in-chess",
+    ];
+    const misses = LEARN_GUIDES.filter(({ meta }) => answerFirst.includes(meta.slug)).flatMap(({ meta }) => [
+      ...(meta.description.length > 155 ? [`${meta.slug} description ${meta.description.length}`] : []),
+      ...(meta.description.toLowerCase().includes(meta.keywords.primary) ? [] : [`${meta.slug} description lacks ${meta.keywords.primary}`]),
+    ]);
+
+    expect(misses).toEqual([]);
+  });
+
+  it("names the game's buttons the way the game labels them", () => {
+    const buttons = [messages.game.result.tryAgain, messages.game.result.nextRound, messages.game.result.changeSettings, messages.game.round.hide];
+    expect(buttons).toEqual(["Try again", "Next round", "Change settings", "Hide board"]);
+
+    const misnamed = LEARN_GUIDES.flatMap((doc) => {
+      const text = JSON.stringify(doc);
+      return buttons.flatMap((label) =>
+        [...text.matchAll(new RegExp(label, "gi"))]
+          .map(([found]) => found)
+          .filter((found) => found !== label && found !== label.toLowerCase())
+          .map((found) => `${doc.meta.slug}: ${found}`),
+      );
+    });
+
+    expect(misnamed).toEqual([]);
   });
 
   it("asks questions that end in a question mark and repeat no FAQ question", () => {

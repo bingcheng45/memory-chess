@@ -200,7 +200,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "No seventh piece",
-              description: "Play 4 rounds of 6 pieces with 10 seconds to look, pressing Try Again on the result screen to keep the settings. Before each submit, count your pieces. If you have more than six, remove the ones you are least sure you saw. You pass when all four rounds go in with six pieces or fewer.",
+              description: "Play 4 rounds of 6 pieces with 10 seconds to look, pressing Try again on the result screen to keep the settings. Before each submit, count your pieces. If you have more than six, remove the ones you are least sure you saw. You pass when all four rounds go in with six pieces or fewer.",
               duration: "4 rounds, about 4 minutes",
               goal: "Tell a piece you saw from a piece you assumed was there.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },

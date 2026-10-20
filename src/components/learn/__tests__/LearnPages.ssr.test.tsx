@@ -80,7 +80,7 @@ describe("a guide page", () => {
 
   it("opens with the direct answer as the first paragraph under the h1 and in the Article and WebPage description", async () => {
     const answer =
-      "Plan on about five weeks to your first full blindfold game. That is four weeks of drills at 3 to 6 minutes a day, then a game every other day.";
+      "Plan on about five weeks of blindfold chess training to a first full blind game. Drill 3 to 6 minutes a day for four weeks, then a game every other day.";
     const markup = await guide("blindfold-chess-training-for-beginners");
     const nodes = graph(markup);
 
@@ -109,6 +109,24 @@ describe("a guide page", () => {
     expect(markup.indexOf('class="lg-lede"')).toBeLessThan(markup.indexOf('class="lg-quickplay"'));
     expect(markup.indexOf('class="lg-quickplay"')).toBeLessThan(markup.indexOf('class="lg-meta"'));
     expect(markup.indexOf('class="lg-quickplay"')).toBeLessThan(markup.indexOf('class="lg-answer"'));
+  });
+
+  it("offers a new reader the guide's own round in the hero, the same round its answer and closing call to action name", async () => {
+    const markup = await guide("chess-coordinates-practice");
+    const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
+
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=12&amp;source=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 12 seconds</a>');
+  });
+
+  it("matches every guide's hero round to its closing round", async () => {
+    const heroes = await Promise.all(
+      EN_LEARN_PAGES.map(async ({ meta }) => {
+        const markup = await guide(meta.slug);
+        return [meta.slug, markup.match(/data-reader-round="([^"]+)"/)?.[1]];
+      }),
+    );
+
+    expect(heroes).toEqual(EN_LEARN_PAGES.map(({ meta, primaryCta }) => [meta.slug, `${primaryCta.pieceCount}/${primaryCta.memorizeTime}`]));
   });
 
   it("links today's daily board under a drill box that plays a round, not under one done at a board", async () => {

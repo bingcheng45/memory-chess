@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "chess-memory-training",
     title: "Chess Memory Training: A 6-to-12 Piece Ladder",
     h1: "Chess memory training with a score that tells you when to move up",
-    description: "Train chess memory by rebuilding a board after a 10-second look. Start at 6 pieces, add two after three perfect rounds in a row, and climb to 12 at 8 seconds.",
+    description: "Chess memory training is a ladder. Rebuild 6 pieces after a 10-second look, add two after three perfect rounds in a row, and climb to 12 at 8 seconds.",
     group: "memory",
     level: "beginner",
     publishedAt: "2026-03-06T00:00:00.000Z",
@@ -68,7 +68,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "The message on the result screen comes straight from your accuracy. 100 percent is Perfect Score, 90 or more is Excellent Memory, 80 is Great Job, 70 is Well Done and 50 is Good Effort. Below 50 the screen says Keep Practicing. Those are the only six messages, and the thresholds are the same at every piece count.",
-            "At 6 pieces each piece is worth about 17 points, so the steps are steep. Four out of 6 is 67 percent, Good Effort. It means two pieces were missing or wrong. Before you press Try Again, find those two pieces on the result board and note what kind of piece each was.",
+            "At 6 pieces each piece is worth about 17 points, so the steps are steep. Four out of 6 is 67 percent, Good Effort. It means two pieces were missing or wrong. Before you start the next round, find those two pieces on the result board and note what kind of piece each was.",
             "With no extra pieces on the board, a 6-piece round goes straight from Great Job at five correct to Perfect Score at six. So it never shows Excellent Memory. Six correct plus one extra piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message. The table shows how much one miss costs at 6 pieces against 12.",
           ],
         },
@@ -110,8 +110,9 @@ const guide: LearnDocument = {
           kind: "list",
           ordered: false,
           items: [
-            "Three Perfect Score rounds in a row at your current settings: add two pieces. The piece slider runs from 2 to 32, so every rung exists.",
-            "Two rounds in a row below Well Done, which is 70 percent: take two pieces away and rebuild the streak there.",
+            "The result screen's Next round button moves one piece at a time. After 90 percent or better it offers one more piece with the same look, and below 50 percent one fewer.",
+            "To climb this ladder instead, press Try again, which keeps your settings. After three Perfect Score rounds in a row, press Change settings and add two pieces. The piece slider runs from 2 to 32, so every rung exists.",
+            "Two rounds in a row below Well Done, which is 70 percent: press Change settings, take two pieces away and rebuild the streak there.",
             "Change one setting at a time. Hold the look at 10 seconds until 12 pieces gives three Perfect Score rounds in a row, then drop it to 8. If you change both at once, you cannot tell which one broke.",
             "Rungs 2 and 3 use 8 and 10 pieces. Counts other than 2, 6, 12 and 20 are not preset counts, so those rounds are custom games and stay off the leaderboard. While you climb, that does not matter.",
             "The look slider runs from 1 to 60 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
@@ -147,13 +148,13 @@ const guide: LearnDocument = {
     },
     {
       id: "skip-and-try-again",
-      heading: "Skip, Try Again, and what the clock records",
+      heading: "Hide board, Try again, and what the clock records",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "Skip ends the look early. The game records how long you actually looked, and the result screen and the leaderboard use that number. So once you have the board, skip.",
-            "Try Again keeps your piece count and look time and deals a new position. You never see the same board twice. That suits training, and it means one perfect round might be an easy draw. Three perfect rounds in a row at the same settings is a signal.",
+            "Hide board ends the look early. The game records how long you actually looked, and the result screen and the leaderboard use that number. So once you have the board, hide it.",
+            "Try again keeps your piece count and look time and deals a new position. Next round also deals a new position, but after 90 percent or better it adds a piece. You never see the same board twice. That suits training, and it means one perfect round might be an easy draw. Three perfect rounds in a row at the same settings is a signal.",
             "On the result board under Review Your Position, a piece you placed is marked correct or wrong placement. An original square you left empty is marked missed square and shows the piece that stood there.",
           ],
         },

@@ -20,9 +20,9 @@ function playerOf(stored: string | null): PlayerRating | null {
   }
 }
 
-export function readerRoundOf(stored: string | null): GameSettings {
+export function readerRoundOf(stored: string | null, unrated: GameSettings = BEGINNER_ROUND): GameSettings {
   const player = playerOf(stored);
-  if (!player) return BEGINNER_ROUND;
+  if (!player) return unrated;
   const { pieceCount, studySeconds } = suggestBoard(player, RANGES);
   return { pieceCount, memorizeTime: studySeconds };
 }

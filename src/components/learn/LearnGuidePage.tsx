@@ -99,7 +99,7 @@ export default function LearnGuidePage({ page, siblings, titles }: LearnGuidePag
           </nav>
           <h1>{meta.h1}</h1>
           <p className="lg-lede">{meta.description}</p>
-          <LearnQuickPlay />
+          <LearnQuickPlay unrated={{ pieceCount: page.primaryCta.pieceCount, memorizeTime: page.primaryCta.memorizeTime }} />
           <ul className="lg-meta">
             <li>{LEARN_LEVELS[meta.level]}</li>
             <li>{COPY.minRead(page.readingMinutes)}</li>

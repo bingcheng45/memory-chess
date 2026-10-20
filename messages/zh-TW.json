@@ -61,11 +61,16 @@
     },
     "hero": {
       "title": "Memory Chess: 訓練你的西洋棋記憶力與盤面想像力",
-      "freeToPlay": "免費遊玩，不必註冊。你也可以在<link>排行榜</link>上比較自己的成績。"
+      "freeToPlay": "免費遊玩，不必註冊。你也可以在<link>排行榜</link>上比較自己的成績。",
+      "boardGame": "在找木製桌遊 Memory Chess？<link>閱讀玩法規則</link>。"
     },
     "cta": {
       "leaderboard": "查看排行榜",
       "chooseSettings": "自選棋子數與時間"
+    },
+    "gameVideo": {
+      "play": "播放影片：{title}",
+      "caption": "完整的一局：觀察局面，憑記憶還原，再查看你的分數。"
     },
     "video": {
       "title": "鍛鍊遊戲背後的那項能力",
@@ -977,7 +982,9 @@
         "loss": "最多 <num>−{value}</num>",
         "announce": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。如果失手，最多 −{loss}。",
         "announceProvisional": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。"
-      }
+      },
+      "blindfold": "盲棋",
+      "blindfoldHint": "以記譜方式記住局面，棋盤上不擺棋子。"
     },
     "presets": {
       "easy": {
@@ -1091,7 +1098,8 @@
       "savedToast": {
         "message": "本局已儲存。更新後的數據就在下方。",
         "action": "查看"
-      }
+      },
+      "blindfoldRound": "盲棋回合：你透過記譜記住了局面。"
     },
     "comparison": {
       "title": "回顧你的棋局"
@@ -1174,6 +1182,12 @@
         "bishop": "主教",
         "knight": "騎士",
         "pawn": "兵"
+      },
+      "notation": {
+        "label": "記譜形式的局面",
+        "white": "白方",
+        "black": "黑方",
+        "pawns": "只寫格子的是兵"
       }
     }
   },
@@ -1212,6 +1226,13 @@
       "setting": "{pieces, plural, other {# 個棋子}} · 記憶 {seconds} 秒",
       "resetsAtUtc": "UTC {utc} 重設",
       "resetsAt": "UTC {utc} 重設（你的時間 {local}），{timeLeft}後"
+    },
+    "mode": {
+      "label": "練習方式",
+      "board": "棋盤",
+      "blindfold": "盲棋",
+      "note": "盲棋回合以記譜方式記憶、棋盤上不擺棋子，因此有獨立的排行榜。",
+      "loading": "正在載入盲棋排行榜。"
     }
   },
   "country": {
@@ -1796,5 +1817,48 @@
       "secondsRange": "{min} 至 {max} 秒",
       "secondsExact": "{count} 秒"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "人們對西洋棋局面記得有多準？",
+      "description": "依棋子數和記憶時間統計的西洋棋局面平均記憶準確率，資料來自 Memory Chess 的 {rounds, number} 個已完成回合。資料以 CC BY 4.0 授權開放，並附方法及其限制。",
+      "socialTitle": "人們對西洋棋局面記得有多準？",
+      "socialDescription": "依棋子數和記憶時間統計的記憶準確率，資料來自 Memory Chess 的 {rounds, number} 個已完成回合。資料以 CC BY 4.0 授權開放。"
+    },
+    "kicker": "開放資料",
+    "title": "人們對西洋棋局面記得有多準？",
+    "answer": "在 {start} 至 {end} 期間 Memory Chess 的 {rounds, number} 個已完成回合中，記憶時間設為 10 秒的回合在 2 個棋子時平均準確率為 {two}（{twoRounds, number} 個回合），在預設設定的 6 個棋子時為 {six}（{sixRounds, number} 個回合）。這些 6 子回合中有 {sixPerfect} 是滿分。在選擇人數較少的 12 個棋子、8 秒設定下，平均值為 {twelve}，滿分為 {twelvePerfect}（{twelveRounds, number} 個回合）。",
+    "englishNote": "下方關於方法、限制和引用的說明為英文。",
+    "chart": {
+      "byPieces": "記憶時間設為 {seconds} 秒的回合的平均記憶準確率",
+      "byPiecesNote": "每種棋子數由不同的玩家選擇，有些列只來自少數玩家，因此比較長條前請先看表中的「玩家數」一欄。",
+      "bySeconds": "{pieces} 個棋子的平均記憶準確率，依記憶時間",
+      "bySecondsNote": "每種記憶時間由不同的玩家選擇，因此這些長條並不能說明增加時間有多大幫助。",
+      "pieces": "{count, plural, other {# 子}}",
+      "seconds": "{count} 秒",
+      "rounds": "{count, plural, other {# 回合}}",
+      "scale": "每根長條都依 0 到 100% 準確率的比例繪製。"
+    },
+    "table": {
+      "title": "所有公布的設定",
+      "caption": "依棋子數和記憶時間統計的準確率。少於 {minRounds, number} 個回合或 {minPlayers, number} 名玩家的設定不予列出。",
+      "pieces": "棋子數",
+      "seconds": "記憶時間",
+      "rounds": "回合數",
+      "players": "玩家數",
+      "mean": "平均值",
+      "median": "中位數",
+      "middle": "中間一半",
+      "middleValue": "{low} 至 {high}",
+      "perfect": "滿分",
+      "zero": "零分"
+    },
+    "links": {
+      "csv": "下載 CSV",
+      "notes": "GitHub 上的研究筆記",
+      "play": "玩一回合"
+    },
+    "aboutLine": "我們公布 Google Analytics 記錄的回合的彙總記憶統計，僅限回合數和玩家數足夠的設定。",
+    "aboutLink": "查看記憶資料"
   }
 }

@@ -20,9 +20,19 @@ import {
   resolveGameSettings,
   VALUE_PLACEHOLDER,
 } from '@/lib/game/configPrefill';
+import { BLINDFOLD_MODE, isBlindfoldSearch, MODE_PARAM } from '@/lib/game/roundLink';
 
 interface GameConfigProps {
-  readonly onStart?: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
+  /** `blindfold` is passed only when the option is on, so a board round starts exactly as it always did. */
+  readonly onStart?: (pieceCount: number, memorizeTime: number, source: RoundSource, blindfold?: true) => void;
+}
+
+/** The choice lives in the address, so a refresh, a shared link and the form after a round all keep it. */
+function writeBlindfold(on: boolean): void {
+  const url = new URL(window.location.href);
+  if (on) url.searchParams.set(MODE_PARAM, BLINDFOLD_MODE);
+  else url.searchParams.delete(MODE_PARAM);
+  window.history.replaceState(window.history.state, '', `${url.pathname}${url.search}${url.hash}`);
 }
 
 const { presets: DIFFICULTY_PRESETS } = GAME_CONFIG_RULES;
@@ -55,6 +65,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   } = useGameStore();
   const [pieceCount, setPieceCount] = useState(() => readPrefilledSettings().pieceCount);
   const [memorizeTime, setMemorizeTime] = useState(() => readPrefilledSettings().memorizeTime);
+  const [blindfold, setBlindfold] = useState(false);
   const selectedPreset = presetIdFor({ pieceCount, memorizeTime }, DIFFICULTY_PRESETS);
   const formRef = useRef<HTMLDivElement>(null);
   const [announceKey, setAnnounceKey] = useState(0);
@@ -77,6 +88,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       ) ?? DEFAULT_PRESET;
     setPieceCount(settings.pieceCount);
     setMemorizeTime(settings.memorizeTime);
+    setBlindfold(isBlindfoldSearch(window.location.search));
   }, []);
   
   function selectBoard(pieces: number, seconds: number) {
@@ -85,7 +97,15 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     announce();
   }
   
-  const handleStart = () => (onStart ?? startGame)(pieceCount, memorizeTime, 'game_form');
+  const handleStart = () =>
+    blindfold
+      ? (onStart ? onStart(pieceCount, memorizeTime, 'game_form', true) : startGame(pieceCount, memorizeTime, 'game_form', undefined, true))
+      : (onStart ?? startGame)(pieceCount, memorizeTime, 'game_form');
+
+  const toggleBlindfold = (on: boolean) => {
+    setBlindfold(on);
+    writeBlindfold(on);
+  };
   
   const fillOf = (value: number, range: { min: number; max: number }) =>
     ({ '--fill': `${((value - range.min) / (range.max - range.min)) * 100}%` }) as CSSProperties;
@@ -209,7 +229,24 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </div>
       </div>
 
-      <RatingPreview pieceCount={pieceCount} memorizeTime={memorizeTime} announceKey={announceKey} onSuggest={selectBoard} />
+      <div className="lab-config-group lab-config-mode">
+        <input
+          id="blindfold"
+          type="checkbox"
+          checked={blindfold}
+          onChange={(event) => toggleBlindfold(event.target.checked)}
+          aria-describedby="blindfold-hint"
+          className="lab-config-check"
+        />
+        <label htmlFor="blindfold" className="lab-config-label">
+          {t('config.blindfold')}
+        </label>
+        <p id="blindfold-hint" className="lab-note lab-config-mode-hint">
+          {t('config.blindfoldHint')}
+        </p>
+      </div>
+
+      {!blindfold && <RatingPreview pieceCount={pieceCount} memorizeTime={memorizeTime} announceKey={announceKey} onSuggest={selectBoard} />}
 
       <button type="button" onClick={handleStart} data-start-round className="lab-btn lab-btn-primary lab-config-start">
         {t('config.start')}

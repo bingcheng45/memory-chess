@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "fb54112e256d1b22776623a04b4a428988fbf48481944a3b5ca856d175102c3e",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "39e330a34cd6917be4117f5c7483911f9e4ee7aa389ce9dd0a7c91e27eb83e43",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "글을 열거나 좋아요를 누르면 Supabase는 글마다 조회수 합계와 좋아요 합계, 마지막 변경 시각만 저장하며, 방문자 식별자는 저장하지 않습니다."
+          },
+          {
+            "p": "저희는 <data>기억 데이터 페이지</data>에 Google Analytics에서 가져온 완료된 라운드 수를 기물 수, 암기 시간, 정확도별로 게시합니다. 이는 집계된 수치일 뿐이며 이름, 플레이어 ID, 국면은 포함되지 않고, 30라운드 미만이거나 플레이어가 5명 미만인 그룹은 제외됩니다."
           }
         ]
       },

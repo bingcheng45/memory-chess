@@ -3,8 +3,10 @@
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { CalibrationSection } from "./CalibrationSection";
 import { FinalCta } from "./FinalCta";
+import { GAME_VIDEO } from "./gameVideo";
 import { HomeStructuredData } from "./HomeStructuredData";
 import { LabFaq } from "./LabFaq";
+import { LabGameVideo } from "./LabGameVideo";
 import { LabHomeHeader } from "./LabHomeHeader";
 import { LabHero } from "./LabHero";
 import { LabRecordSection } from "./LabRecordSection";
@@ -28,6 +30,7 @@ export function BrainLabHome({ initialPlays }: { readonly initialPlays?: number 
       <main>
         <HomeStructuredData />
         <LabHero totalPlays={totalPlays} />
+        <LabGameVideo video={GAME_VIDEO} />
         <NotebookSection />
         <MicroscopeSection />
         <LabVideo />

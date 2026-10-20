@@ -46,6 +46,16 @@ describe("AboutPage", () => {
     expect(contact.compareDocumentPosition(link) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
   });
 
+  it("points to the open recall data before the Telegram invite", async () => {
+    render(await AboutPage(IN_ENGLISH));
+
+    const data = screen.getByRole("link", { name: "See the recall data" });
+    expect(data).toHaveAttribute("href", "/data");
+    expect(data.parentElement).toHaveTextContent("Aggregate recall statistics from rounds recorded in Google Analytics are published, for settings with enough rounds and players. See the recall data");
+    const telegram = screen.getByRole("link", { name: "Join the Telegram group" });
+    expect(data.compareDocumentPosition(telegram) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+  });
+
   it("names the developer and links the site's real pages", async () => {
     render(await AboutPage(IN_ENGLISH));
 

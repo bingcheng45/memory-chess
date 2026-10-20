@@ -9,48 +9,63 @@ export const LEARN_GROUPS = [
     label: "Start here",
     description: "How to improve from scratch and what to think about on every move.",
     status: "live",
+    placement: "path",
   },
   {
     id: "board-vision",
     label: "Board vision and blunders",
     description: "See every piece, read squares at a glance, and stop dropping material.",
     status: "live",
+    placement: "path",
   },
   {
     id: "visualization",
     label: "Visualization and calculation",
     description: "Hold a position in your head and move pieces there without losing it.",
     status: "live",
+    placement: "path",
   },
   {
     id: "memory",
     label: "Memory and patterns",
     description: "Recall positions square by square and learn shapes worth remembering.",
     status: "live",
+    placement: "path",
   },
   {
     id: "practice",
     label: "Practice and review",
     description: "Short routines, puzzle counts and how to learn from your own games.",
     status: "live",
+    placement: "path",
   },
   {
     id: "science",
     label: "The science of chess memory",
     description: "What de Groot, Chase and Simon and later research found, written for players.",
     status: "planned",
+    placement: "path",
   },
   {
     id: "using-memory-chess",
     label: "Using Memory Chess",
     description: "How a round is scored, what each preset tests and what your dashboard figures mean.",
     status: "planned",
+    placement: "path",
+  },
+  {
+    id: "compare",
+    label: "Compare training tools",
+    description: "What each memory and visualization trainer offers, read from its own pages and dated.",
+    status: "live",
+    placement: "shelf",
   },
 ] as const satisfies readonly {
   readonly id: string;
   readonly label: string;
   readonly description: string;
   readonly status: "live" | "planned";
+  readonly placement: "path" | "shelf";
 }[];
 
 export type LearnGroup = (typeof LEARN_GROUPS)[number];
@@ -91,7 +106,8 @@ export type LearnIntro = {
   readonly audience: readonly string[];
 };
 
-export type GameSetup = { readonly pieceCount: number; readonly memorizeTime: number };
+/** `blindfold` opens the round with the position shown as notation instead of on the board. */
+export type GameSetup = { readonly pieceCount: number; readonly memorizeTime: number; readonly blindfold?: true };
 
 export type BoardArrow = { readonly from: Square; readonly to: Square; readonly kind: "attack" | "defend" | "pin" };
 export type BoardMark = { readonly square: Square; readonly kind: "ring" };
@@ -136,6 +152,10 @@ export type BodyBlock =
       readonly rows: readonly { readonly label: string; readonly cells: readonly string[] }[];
     }
   | { readonly kind: "plan"; readonly steps: readonly PlanStep[] }
+  /** The wooden Memory Chess set and its Amazon link. Draws nothing while the link in `AFFILIATE` is empty. */
+  | { readonly kind: "affiliate"; readonly label: string }
+  /** The animated wooden-board game. The written rules must also be on the page, as the demo loads on scroll. */
+  | { readonly kind: "rulesDemo"; readonly caption: string }
   | CtaBlock;
 
 export type CtaTarget =
@@ -169,13 +189,30 @@ export type LearnSection = {
   readonly facts?: readonly LearnPosition[];
 };
 
-export type LearnDocument = {
-  readonly meta: LearnMeta;
+/** `url` is the product's own page; a product whose page could not be opened when checked has none. */
+export type ComparedProduct = { readonly name: string; readonly url?: `https://${string}` };
+
+export type Comparison = {
+  /** The day every fact about another product on the page was read from that product's live public page. */
+  readonly checkedAt: string;
+  /** Written per page: says Memory Chess publishes it. */
+  readonly disclosure: string;
+  /** The products the page compares. Structured data lists them alphabetically. */
+  readonly products?: readonly [ComparedProduct, ComparedProduct, ...ComparedProduct[]];
+};
+
+type LearnBody = {
   readonly intro: LearnIntro;
   readonly sections: readonly [LearnSection, ...LearnSection[]];
   /** In render order. At most one each of faq, furtherReading and sources. */
   readonly end: readonly EndBlock[];
 };
+
+export type LearnDocument = LearnBody &
+  (
+    | { readonly meta: LearnMeta & { readonly group: Exclude<LearnGroupId, "compare"> }; readonly comparison?: never }
+    | { readonly meta: LearnMeta & { readonly group: "compare" }; readonly comparison: Comparison }
+  );
 
 export const LEARN_AUTHOR = {
   name: "Bing Cheng",

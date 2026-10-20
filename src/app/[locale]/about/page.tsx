@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { setRequestLocale } from "next-intl/server";
 import { AboutCommunityInvite } from "@/components/community/AboutCommunityInvite";
 import { AboutFacts } from "@/components/community/AboutFacts";
+import { RecallDataLine } from "@/components/data/RecallDataLine";
 import { TrustPage } from "@/components/lab-paper/TrustPage";
 import { loadPage, servedPageLocale } from "@/lib/pages/load";
 import { aboutSchema } from "@/lib/seo/aboutSchema";
@@ -27,7 +28,12 @@ export default async function AboutPage({ params }: PageProps) {
         locale={locale}
         page={page}
         before={<AboutFacts plays={plays} />}
-        after={<AboutCommunityInvite />}
+        after={
+          <>
+            <RecallDataLine />
+            <AboutCommunityInvite />
+          </>
+        }
       />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutSchema(locale, page.text.title)) }} />
     </>

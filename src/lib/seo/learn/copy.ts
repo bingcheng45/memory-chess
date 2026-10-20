@@ -17,6 +17,7 @@ export const LEARN_GUIDE_COPY = {
   sources: "Sources",
   minRead: (minutes: number) => `${minutes} min read`,
   updated: (date: string) => `Updated ${date}`,
+  checked: (date: string) => `Checked ${date}`,
   by: "By",
   figure: (n: number) => `Fig. ${n}`,
   toMove: (side: "w" | "b") => (side === "w" ? "White to move." : "Black to move."),
@@ -53,6 +54,7 @@ export const LEARN_HUB_COPY = {
     play: "Play a 6-piece round",
     articles: "Read the articles",
     stat: "Count your days played on the dashboard",
+    data: "See how well other players recall positions, by piece count and study time",
   },
 };
 

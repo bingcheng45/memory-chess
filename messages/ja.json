@@ -61,11 +61,16 @@
     },
     "hero": {
       "title": "Memory Chess: チェスの記憶力とイメージ力を鍛える",
-      "freeToPlay": "アカウント不要、無料で遊べます。スコアは<link>ランキング</link>で比べることもできます。"
+      "freeToPlay": "アカウント不要、無料で遊べます。スコアは<link>ランキング</link>で比べることもできます。",
+      "boardGame": "木製ボードゲームの Memory Chess をお探しですか？<link>遊び方を読む</link>。"
     },
     "cta": {
       "leaderboard": "ランキングを見る",
       "chooseSettings": "駒の数と時間を選ぶ"
+    },
+    "gameVideo": {
+      "play": "動画を再生: {title}",
+      "caption": "1ラウンドを最初から最後まで。局面を覚え、記憶から再現し、スコアを確認します。"
     },
     "video": {
       "title": "ゲームの土台にある力を鍛える",
@@ -977,7 +982,9 @@
         "loss": "最大 <num>−{value}</num>",
         "announce": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。失敗した場合は最大 −{loss}。",
         "announceProvisional": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。"
-      }
+      },
+      "blindfold": "目隠し",
+      "blindfoldHint": "盤上に駒を置かず、局面を棋譜表記で覚えます。"
     },
     "presets": {
       "easy": {
@@ -1091,7 +1098,8 @@
       "savedToast": {
         "message": "ラウンドを保存しました。更新された成績はすぐ下にあります。",
         "action": "見る"
-      }
+      },
+      "blindfoldRound": "目隠しラウンド：局面を棋譜表記で覚えました。"
     },
     "comparison": {
       "title": "自分の局面を振り返る"
@@ -1174,6 +1182,12 @@
         "bishop": "ビショップ",
         "knight": "ナイト",
         "pawn": "ポーン"
+      },
+      "notation": {
+        "label": "棋譜表記の局面",
+        "white": "白",
+        "black": "黒",
+        "pawns": "マス目だけはポーン"
       }
     }
   },
@@ -1212,6 +1226,13 @@
       "setting": "{pieces, plural, other {#駒}} · 記憶{seconds}秒",
       "resetsAtUtc": "UTC {utc} にリセット",
       "resetsAt": "UTC {utc}（あなたの時刻で {local}）にリセット、あと{timeLeft}"
+    },
+    "mode": {
+      "label": "学習モード",
+      "board": "盤",
+      "blindfold": "目隠し",
+      "note": "目隠しラウンドは盤上に駒を置かず棋譜表記で覚えるため、専用のランキングがあります。",
+      "loading": "目隠しランキングを読み込んでいます。"
     }
   },
   "country": {
@@ -1796,5 +1817,48 @@
       "secondsRange": "{min}〜{max}秒",
       "secondsExact": "{count}秒"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "人はチェスの局面をどれだけ正確に覚えられるのか？",
+      "description": "駒数と記憶時間ごとに見た、チェスの局面の平均正解率。Memory Chess で完了した {rounds, number} ラウンドから集計しました。CC BY 4.0 のオープンデータで、方法とその限界も示しています。",
+      "socialTitle": "人はチェスの局面をどれだけ正確に覚えられるのか？",
+      "socialDescription": "駒数と記憶時間ごとの正解率。Memory Chess で完了した {rounds, number} ラウンドから集計しました。CC BY 4.0 のオープンデータです。"
+    },
+    "kicker": "オープンデータ",
+    "title": "人はチェスの局面をどれだけ正確に覚えられるのか？",
+    "answer": "{start}から{end}までに Memory Chess で完了した {rounds, number} ラウンドのうち、記憶時間を10秒に設定したラウンドの平均正解率は、2駒で{two}（{twoRounds, number} ラウンド）、6駒（初期設定）で{six}でした（{sixRounds, number} ラウンド）。その6駒のラウンドのうち{sixPerfect}が満点でした。選ぶプレイヤーが少ない12駒・8秒の設定では、平均は{twelve}、満点は{twelvePerfect}でした（{twelveRounds, number} ラウンド）。",
+    "englishNote": "以下の方法、限界、引用についての注記は英語です。",
+    "chart": {
+      "byPieces": "記憶時間を{seconds}秒に設定したラウンドの平均正解率",
+      "byPiecesNote": "駒数ごとに選んだプレイヤーは異なり、少数のプレイヤーだけの行もあります。棒を比べる前に、表のプレイヤー列を確認してください。",
+      "bySeconds": "{pieces}駒の平均正解率（記憶時間別）",
+      "bySecondsNote": "記憶時間ごとに選んだプレイヤーが異なるため、これらの棒グラフは時間を増やすとどれだけ効果があるかを示すものではありません。",
+      "pieces": "{count, plural, other {#駒}}",
+      "seconds": "{count} 秒",
+      "rounds": "{count, plural, other {#ラウンド}}",
+      "scale": "各バーは、正解率0%から100%までの目盛りに合わせて描いています。"
+    },
+    "table": {
+      "title": "公開しているすべての設定",
+      "caption": "駒数と記憶時間ごとの正解率。ラウンドが{minRounds, number}未満、またはプレイヤーが{minPlayers, number}人未満の設定は除外しています。",
+      "pieces": "駒",
+      "seconds": "記憶時間",
+      "rounds": "ラウンド",
+      "players": "プレイヤー",
+      "mean": "平均",
+      "median": "中央値",
+      "middle": "中央の半分",
+      "middleValue": "{low}から{high}",
+      "perfect": "満点",
+      "zero": "0点"
+    },
+    "links": {
+      "csv": "CSV をダウンロード",
+      "notes": "GitHub の調査ノート",
+      "play": "1ラウンド遊ぶ"
+    },
+    "aboutLine": "Google Analytics に記録されたラウンドをもとに、十分なラウンド数とプレイヤー数がある設定について、記憶の集計統計を公開しています。",
+    "aboutLink": "記憶データを見る"
   }
 }

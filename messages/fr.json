@@ -61,11 +61,16 @@
     },
     "hero": {
       "title": "Memory Chess: Entraînez votre mémoire et votre visualisation aux échecs",
-      "freeToPlay": "Gratuit, sans création de compte. Vous pouvez aussi comparer votre score dans le <link>classement</link>."
+      "freeToPlay": "Gratuit, sans création de compte. Vous pouvez aussi comparer votre score dans le <link>classement</link>.",
+      "boardGame": "Vous cherchez le jeu de société en bois Memory Chess ? <link>Lisez ses règles</link>."
     },
     "cta": {
       "leaderboard": "Voir le classement",
       "chooseSettings": "Choisir les pièces et la durée"
+    },
+    "gameVideo": {
+      "play": "Lire la vidéo : {title}",
+      "caption": "Une manche du début à la fin : étudiez la position, reconstruisez-la de mémoire, lisez votre score."
     },
     "video": {
       "title": "Entraînez la compétence au cœur du jeu",
@@ -977,7 +982,9 @@
         "loss": "Au plus <num>−{value}</num>",
         "announce": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}. Si vous échouez, au plus −{loss}.",
         "announceProvisional": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}."
-      }
+      },
+      "blindfold": "À l'aveugle",
+      "blindfoldHint": "Étudiez la position en notation, sans pièces sur l'échiquier."
     },
     "presets": {
       "easy": {
@@ -1091,7 +1098,8 @@
       "savedToast": {
         "message": "Partie enregistrée. Vos statistiques à jour sont juste en dessous.",
         "action": "Voir"
-      }
+      },
+      "blindfoldRound": "Partie à l'aveugle : vous avez étudié la position en notation."
     },
     "comparison": {
       "title": "Revoyez votre position"
@@ -1174,6 +1182,12 @@
         "bishop": "Fou",
         "knight": "Cavalier",
         "pawn": "Pion"
+      },
+      "notation": {
+        "label": "La position en notation",
+        "white": "Blancs",
+        "black": "Noirs",
+        "pawns": "une case seule est un pion"
       }
     }
   },
@@ -1212,6 +1226,13 @@
       "setting": "{pieces, plural, one {# pièce} many {# pièces} other {# pièces}} · {seconds} s pour mémoriser",
       "resetsAtUtc": "Réinitialisation à {utc} UTC",
       "resetsAt": "Réinitialisation à {utc} UTC ({local} chez vous), dans {timeLeft}"
+    },
+    "mode": {
+      "label": "Mode d'étude",
+      "board": "Échiquier",
+      "blindfold": "À l'aveugle",
+      "note": "Les parties à l'aveugle s'étudient en notation, sans pièces sur l'échiquier : elles ont donc leurs propres classements.",
+      "loading": "Chargement du classement à l'aveugle."
     }
   },
   "country": {
@@ -1796,5 +1817,48 @@
       "secondsRange": "De {min} à {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Données sur la mémoire des positions d’échecs",
+      "description": "Mémorisation moyenne des positions d’échecs selon le nombre de pièces et le temps d’étude, sur {rounds, number} parties de Memory Chess. Données ouvertes CC BY 4.0.",
+      "socialTitle": "À quel point les gens retiennent-ils les positions d’échecs ?",
+      "socialDescription": "Mémorisation selon le nombre de pièces et le temps d’étude, d’après {rounds, number} parties terminées de Memory Chess. Données ouvertes sous licence CC BY 4.0."
+    },
+    "kicker": "Données ouvertes",
+    "title": "À quel point les gens retiennent-ils les positions d’échecs ?",
+    "answer": "Sur {rounds, number} parties terminées de Memory Chess du {start} au {end}, les parties réglées sur 10 secondes d’étude ont obtenu en moyenne une précision de {two} avec 2 pièces ({twoRounds, number} parties) et de {six} avec 6 pièces, le réglage par défaut ({sixRounds, number} parties). {sixPerfect} de ces parties à 6 pièces étaient parfaites. Avec 12 pièces et 8 secondes, un réglage choisi par moins de joueurs, la moyenne était de {twelve}, avec {twelvePerfect} de parties parfaites ({twelveRounds, number} parties).",
+    "englishNote": "Les notes sur la méthode, les limites et la citation ci-dessous sont en anglais.",
+    "chart": {
+      "byPieces": "Mémorisation moyenne des parties réglées sur {seconds} secondes d’étude",
+      "byPiecesNote": "Des joueurs différents ont choisi chaque nombre de pièces, et certaines lignes ne viennent que de quelques joueurs : regardez la colonne Joueurs du tableau avant de comparer les barres.",
+      "bySeconds": "Mémorisation moyenne de {pieces} pièces, selon le temps d’étude",
+      "bySecondsNote": "Des joueurs différents ont choisi chaque temps d’étude, donc ces barres ne montrent pas ce qu’apporte du temps en plus.",
+      "pieces": "{count, plural, one {# pièce} many {# de pièces} other {# pièces}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# partie} many {# de parties} other {# parties}}",
+      "scale": "Chaque barre est tracée à l’échelle, de 0 à 100 % de précision."
+    },
+    "table": {
+      "title": "Tous les réglages publiés",
+      "caption": "Précision selon le nombre de pièces et le temps d’étude. Les réglages comptant moins de {minRounds, number} parties ou {minPlayers, number} joueurs sont exclus.",
+      "pieces": "Pièces",
+      "seconds": "Temps d’étude",
+      "rounds": "Parties",
+      "players": "Joueurs",
+      "mean": "Moyenne",
+      "median": "Médiane",
+      "middle": "Moitié centrale",
+      "middleValue": "{low} à {high}",
+      "perfect": "Parfaites",
+      "zero": "Score 0"
+    },
+    "links": {
+      "csv": "Télécharger le CSV",
+      "notes": "Notes de terrain sur GitHub",
+      "play": "Jouer une partie"
+    },
+    "aboutLine": "Des statistiques agrégées de mémorisation issues des parties enregistrées dans Google Analytics sont publiées, pour les réglages comptant assez de parties et de joueurs.",
+    "aboutLink": "Voir les données de mémorisation"
   }
 }

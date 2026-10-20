@@ -81,10 +81,11 @@ describe("the report-only content security policy", () => {
     expect((await directives())["connect-src"]).toContain("https://analytics.google.com");
   });
 
-  it("frames only the tutorial video and forbids plugins", async () => {
+  it("frames only the YouTube players and forbids plugins", async () => {
     const policy = await directives();
 
     expect(policy["frame-src"]).toContain("https://www.youtube.com");
+    expect(policy["frame-src"]).toContain("https://www.youtube-nocookie.com");
     expect(policy["object-src"]).toEqual(["'none'"]);
     expect(policy["frame-ancestors"]).toEqual(["'none'"]);
   });

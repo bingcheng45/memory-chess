@@ -17,7 +17,8 @@ export async function postLeaderboardEntry(entry: LeaderboardSubmission): Promis
   const reply = isObject(body) ? body : {};
   if (!response.ok) return { ok: false, message: typeof reply.error === "string" ? reply.error : null };
 
-  trackEvent({ name: "score_submit", params: { difficulty: entry.difficulty, piece_count: entry.piece_count } });
+  const mode = "mode" in entry && entry.mode ? { round_mode: entry.mode } : {};
+  trackEvent({ name: "score_submit", params: { difficulty: entry.difficulty, piece_count: entry.piece_count, ...mode } });
   // Loaded only once a score is sent, so the result screen pays nothing for the stored entries before then. The
   // server has the score whether or not this device can keep it.
   try {

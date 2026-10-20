@@ -61,11 +61,16 @@
     },
     "hero": {
       "title": "Memory Chess: Train je schaakgeheugen en je voorstellingsvermogen",
-      "freeToPlay": "Gratis te spelen, zonder account. Je kunt je score ook vergelijken op de <link>ranglijst</link>."
+      "freeToPlay": "Gratis te spelen, zonder account. Je kunt je score ook vergelijken op de <link>ranglijst</link>.",
+      "boardGame": "Zoek je het houten bordspel Memory Chess? <link>Lees de spelregels</link>."
     },
     "cta": {
       "leaderboard": "Bekijk de ranglijst",
       "chooseSettings": "Kies stukken en tijd"
+    },
+    "gameVideo": {
+      "play": "Video afspelen: {title}",
+      "caption": "Eén ronde van begin tot eind: bestudeer de stelling, bouw haar uit het hoofd na en lees je score af."
     },
     "video": {
       "title": "Train het zien in je hoofd",
@@ -977,7 +982,9 @@
         "loss": "Hooguit <num>−{value}</num>",
         "announce": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}. Als het misgaat, hooguit −{loss}.",
         "announceProvisional": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}."
-      }
+      },
+      "blindfold": "Blind",
+      "blindfoldHint": "Bestudeer de stelling als notatie, zonder stukken op het bord."
     },
     "presets": {
       "easy": {
@@ -1091,7 +1098,8 @@
       "savedToast": {
         "message": "Ronde opgeslagen. Je bijgewerkte statistieken staan hieronder.",
         "action": "Laat zien"
-      }
+      },
+      "blindfoldRound": "Blinde ronde: je hebt de stelling als notatie bestudeerd."
     },
     "comparison": {
       "title": "Bekijk je stelling terug"
@@ -1174,6 +1182,12 @@
         "bishop": "Loper",
         "knight": "Paard",
         "pawn": "Pion"
+      },
+      "notation": {
+        "label": "De stelling in notatie",
+        "white": "Wit",
+        "black": "Zwart",
+        "pawns": "een veld alleen is een pion"
       }
     }
   },
@@ -1212,6 +1226,13 @@
       "setting": "{pieces, plural, one {# stuk} other {# stukken}} · {seconds} s kijktijd",
       "resetsAtUtc": "Reset om {utc} UTC",
       "resetsAt": "Reset om {utc} UTC ({local} bij jou), over {timeLeft}"
+    },
+    "mode": {
+      "label": "Studiemodus",
+      "board": "Bord",
+      "blindfold": "Blind",
+      "note": "Blinde rondes worden als notatie bestudeerd, zonder stukken op het bord, en hebben daarom eigen ranglijsten.",
+      "loading": "De blinde ranglijst wordt geladen."
     }
   },
   "country": {
@@ -1796,5 +1817,48 @@
       "secondsRange": "{min} tot {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Hoe goed onthouden mensen schaakstellingen?",
+      "description": "Hoeveel mensen gemiddeld onthouden van een schaakstelling, per aantal stukken en kijktijd, uit {rounds, number} voltooide rondes Memory Chess. Open data, CC BY 4.0.",
+      "socialTitle": "Hoe goed onthouden mensen schaakstellingen?",
+      "socialDescription": "Herinnering per aantal stukken en kijktijd, uit {rounds, number} voltooide rondes Memory Chess. Open data onder CC BY 4.0."
+    },
+    "kicker": "Open data",
+    "title": "Hoe goed onthouden mensen schaakstellingen?",
+    "answer": "In {rounds, number} voltooide rondes Memory Chess van {start} tot en met {end} haalden rondes met een ingestelde kijktijd van 10 seconden gemiddeld een nauwkeurigheid van {two} met 2 stukken ({twoRounds, number} rondes) en {six} met 6 stukken, de standaardinstelling ({sixRounds, number} rondes). {sixPerfect} van die rondes met 6 stukken was foutloos. Met 12 stukken en 8 seconden, een instelling die minder spelers kozen, was het gemiddelde {twelve}, met {twelvePerfect} foutloze rondes ({twelveRounds, number} rondes).",
+    "englishNote": "De toelichting over methode, beperkingen en bronvermelding hieronder is in het Engels.",
+    "chart": {
+      "byPieces": "Gemiddelde herinnering in rondes met een ingestelde kijktijd van {seconds} seconden",
+      "byPiecesNote": "Elk aantal stukken werd door andere spelers gekozen, en sommige rijen komen van maar een paar spelers, dus kijk naar de kolom Spelers in de tabel voordat je balken vergelijkt.",
+      "bySeconds": "Gemiddelde herinnering van {pieces} stukken, per kijktijd",
+      "bySecondsNote": "Elke kijktijd werd door andere spelers gekozen, dus deze balken laten niet zien hoeveel extra tijd helpt.",
+      "pieces": "{count, plural, one {# stuk} other {# stukken}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# ronde} other {# rondes}}",
+      "scale": "Elke balk is op schaal getekend, van 0 tot 100% nauwkeurigheid."
+    },
+    "table": {
+      "title": "Alle gepubliceerde instellingen",
+      "caption": "Nauwkeurigheid per aantal stukken en kijktijd. Instellingen met minder dan {minRounds, number} rondes of {minPlayers, number} spelers zijn weggelaten.",
+      "pieces": "Stukken",
+      "seconds": "Kijktijd",
+      "rounds": "Rondes",
+      "players": "Spelers",
+      "mean": "Gemiddelde",
+      "median": "Mediaan",
+      "middle": "Middelste helft",
+      "middleValue": "{low} tot {high}",
+      "perfect": "Foutloos",
+      "zero": "Score 0"
+    },
+    "links": {
+      "csv": "Download de CSV",
+      "notes": "Veldnotities op GitHub",
+      "play": "Speel een ronde"
+    },
+    "aboutLine": "Geaggregeerde statistieken over onthouden uit rondes die in Google Analytics zijn vastgelegd, worden gepubliceerd voor instellingen met genoeg rondes en spelers.",
+    "aboutLink": "Bekijk de geheugendata"
   }
 }

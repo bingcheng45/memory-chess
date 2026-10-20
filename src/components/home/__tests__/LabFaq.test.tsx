@@ -49,4 +49,10 @@ describe("LabFaq", () => {
       acceptedAnswer: { "@type": "Answer", text: answer },
     });
   });
+
+  it("leaves the board game pointer to the hero", () => {
+    render(<LabFaq />);
+
+    expect(screen.queryByText(/Looking for the wooden Memory Chess board game\?/)).toBeNull();
+  });
 });

@@ -61,11 +61,16 @@
     },
     "hero": {
       "title": "Memory Chess: Trenuj szachową pamięć i wyobraźnię",
-      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>."
+      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>.",
+      "boardGame": "Szukasz drewnianej gry planszowej Memory Chess? <link>Przeczytaj zasady</link>."
     },
     "cta": {
       "leaderboard": "Zobacz ranking",
       "chooseSettings": "Wybierz figury i czas"
+    },
+    "gameVideo": {
+      "play": "Odtwórz wideo: {title}",
+      "caption": "Jedna runda od początku do końca: przyjrzyj się pozycji, odtwórz ją z pamięci i sprawdź wynik."
     },
     "video": {
       "title": "Ćwicz umiejętność, na której opiera się gra",
@@ -977,7 +982,9 @@
         "loss": "Najwyżej <num>−{value}</num>",
         "announce": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}.",
         "announceProvisional": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}."
-      }
+      },
+      "blindfold": "Na ślepo",
+      "blindfoldHint": "Zapamiętaj pozycję z zapisu, bez bierek na szachownicy."
     },
     "presets": {
       "easy": {
@@ -1091,7 +1098,8 @@
       "savedToast": {
         "message": "Runda zapisana. Zaktualizowane statystyki są tuż poniżej.",
         "action": "Pokaż"
-      }
+      },
+      "blindfoldRound": "Runda na ślepo: pozycja zapamiętana z zapisu."
     },
     "comparison": {
       "title": "Przejrzyj swoją pozycję"
@@ -1174,6 +1182,12 @@
         "bishop": "Goniec",
         "knight": "Skoczek",
         "pawn": "Pionek"
+      },
+      "notation": {
+        "label": "Pozycja w zapisie",
+        "white": "Białe",
+        "black": "Czarne",
+        "pawns": "samo pole oznacza piona"
       }
     }
   },
@@ -1212,6 +1226,13 @@
       "setting": "{pieces, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} · {seconds} s na naukę",
       "resetsAtUtc": "Reset o {utc} UTC",
       "resetsAt": "Reset o {utc} UTC ({local} u Ciebie), za {timeLeft}"
+    },
+    "mode": {
+      "label": "Tryb nauki",
+      "board": "Szachownica",
+      "blindfold": "Na ślepo",
+      "note": "Rundy na ślepo zapamiętuje się z zapisu, bez bierek na szachownicy, więc mają własne rankingi.",
+      "loading": "Wczytywanie rankingu na ślepo."
     }
   },
   "country": {
@@ -1796,5 +1817,48 @@
       "secondsRange": "od {min} do {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Jak dobrze zapamiętujemy pozycje szachowe?",
+      "description": "Średnia dokładność odtwarzania pozycji szachowych według liczby figur i czasu na zapamiętanie, z {rounds, number} rund Memory Chess. Otwarte dane CC BY 4.0.",
+      "socialTitle": "Jak dobrze ludzie zapamiętują pozycje szachowe?",
+      "socialDescription": "Dokładność według liczby figur i czasu na zapamiętanie, na podstawie {rounds, number} ukończonych rund Memory Chess. Otwarte dane na licencji CC BY 4.0."
+    },
+    "kicker": "Otwarte dane",
+    "title": "Jak dobrze ludzie zapamiętują pozycje szachowe?",
+    "answer": "W {rounds, number} ukończonych rundach Memory Chess od {start} do {end} rundy z czasem na zapamiętanie ustawionym na 10 sekund osiągały średnio dokładność {two} przy 2 figurach (dane z {twoRounds, number} rund) i {six} przy 6 figurach, czyli w ustawieniu domyślnym (dane z {sixRounds, number} rund). Bezbłędnych było {sixPerfect} tych rund z 6 figurami. Przy 12 figurach i 8 sekundach, ustawieniu wybieranym przez mniej graczy, średnia wyniosła {twelve}, przy {twelvePerfect} rund bezbłędnych (dane z {twelveRounds, number} rund).",
+    "englishNote": "Uwagi o metodzie, ograniczeniach i cytowaniu poniżej są po angielsku.",
+    "chart": {
+      "byPieces": "Średnia dokładność w rundach z czasem na zapamiętanie ustawionym na {seconds} sekund",
+      "byPiecesNote": "Każdą liczbę figur wybierali inni gracze, a niektóre wiersze pochodzą od zaledwie kilku graczy, więc przed porównaniem słupków sprawdź w tabeli kolumnę Gracze.",
+      "bySeconds": "Średnia dokładność przy {pieces} figurach, według czasu na zapamiętanie",
+      "bySecondsNote": "Każdy czas na zapamiętanie wybierali inni gracze, więc te słupki nie pokazują, ile pomaga dodatkowy czas.",
+      "pieces": "{count, plural, one {# figura} few {# figury} many {# figur} other {# figury}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}",
+      "scale": "Każdy słupek jest narysowany w skali od 0 do 100% dokładności."
+    },
+    "table": {
+      "title": "Wszystkie opublikowane ustawienia",
+      "caption": "Dokładność według liczby figur i czasu na zapamiętanie. Pominięto ustawienia, w których liczba rund jest mniejsza niż {minRounds, number} lub liczba graczy mniejsza niż {minPlayers, number}.",
+      "pieces": "Figury",
+      "seconds": "Czas na zapamiętanie",
+      "rounds": "Rundy",
+      "players": "Gracze",
+      "mean": "Średnia",
+      "median": "Mediana",
+      "middle": "Środkowa połowa",
+      "middleValue": "od {low} do {high}",
+      "perfect": "Bezbłędne",
+      "zero": "Wynik 0"
+    },
+    "links": {
+      "csv": "Pobierz plik CSV",
+      "notes": "Notatki robocze w serwisie GitHub",
+      "play": "Zagraj rundę"
+    },
+    "aboutLine": "Publikujemy zbiorcze statystyki zapamiętywania z rund zarejestrowanych w Google Analytics, dla ustawień z wystarczającą liczbą rund i graczy.",
+    "aboutLink": "Zobacz dane o zapamiętywaniu"
   }
 }

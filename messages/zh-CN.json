@@ -61,11 +61,16 @@
     },
     "hero": {
       "title": "Memory Chess: 训练你的国际象棋记忆与盘面想象力",
-      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。"
+      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。",
+      "boardGame": "在找木制桌游 Memory Chess？<link>阅读玩法规则</link>。"
     },
     "cta": {
       "leaderboard": "查看排行榜",
       "chooseSettings": "自选棋子数和时间"
+    },
+    "gameVideo": {
+      "play": "播放视频：{title}",
+      "caption": "完整的一局：观察局面，凭记忆复原，再查看你的得分。"
     },
     "video": {
       "title": "锻炼游戏背后的那项能力",
@@ -977,7 +982,9 @@
         "loss": "最多 <num>−{value}</num>",
         "announce": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。如果失手，最多 −{loss}。",
         "announceProvisional": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。"
-      }
+      },
+      "blindfold": "盲棋",
+      "blindfoldHint": "以记谱方式记住局面，棋盘上不摆棋子。"
     },
     "presets": {
       "easy": {
@@ -1091,7 +1098,8 @@
       "savedToast": {
         "message": "本局已保存。更新后的数据就在下方。",
         "action": "查看"
-      }
+      },
+      "blindfoldRound": "盲棋回合：你通过记谱记住了局面。"
     },
     "comparison": {
       "title": "回顾你的棋局"
@@ -1174,6 +1182,12 @@
         "bishop": "象",
         "knight": "马",
         "pawn": "兵"
+      },
+      "notation": {
+        "label": "记谱形式的局面",
+        "white": "白方",
+        "black": "黑方",
+        "pawns": "只写格子的是兵"
       }
     }
   },
@@ -1212,6 +1226,13 @@
       "setting": "{pieces, plural, other {# 个棋子}} · 记忆 {seconds} 秒",
       "resetsAtUtc": "UTC {utc} 重置",
       "resetsAt": "UTC {utc} 重置（你的时间 {local}），{timeLeft}后"
+    },
+    "mode": {
+      "label": "练习方式",
+      "board": "棋盘",
+      "blindfold": "盲棋",
+      "note": "盲棋回合以记谱方式记忆、棋盘上不摆棋子，因此有单独的排行榜。",
+      "loading": "正在加载盲棋排行榜。"
     }
   },
   "country": {
@@ -1796,5 +1817,48 @@
       "secondsRange": "{min} 至 {max} 秒",
       "secondsExact": "{count} 秒"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "人们对国际象棋局面记得有多准？",
+      "description": "按棋子数和记忆时间统计的国际象棋局面平均记忆准确率，数据来自 Memory Chess 的 {rounds, number} 个已完成回合。数据以 CC BY 4.0 许可开放，并附方法及其局限。",
+      "socialTitle": "人们对国际象棋局面记得有多准？",
+      "socialDescription": "按棋子数和记忆时间统计的记忆准确率，数据来自 Memory Chess 的 {rounds, number} 个已完成回合。数据以 CC BY 4.0 许可开放。"
+    },
+    "kicker": "开放数据",
+    "title": "人们对国际象棋局面记得有多准？",
+    "answer": "在 {start} 至 {end} 期间 Memory Chess 的 {rounds, number} 个已完成回合中，记忆时间设为 10 秒的回合在 2 个棋子时平均准确率为 {two}（{twoRounds, number} 个回合），在默认设置的 6 个棋子时为 {six}（{sixRounds, number} 个回合）。这些 6 子回合中有 {sixPerfect} 是满分。在选择人数较少的 12 个棋子、8 秒设置下，平均值为 {twelve}，满分为 {twelvePerfect}（{twelveRounds, number} 个回合）。",
+    "englishNote": "下方关于方法、局限和引用的说明为英文。",
+    "chart": {
+      "byPieces": "记忆时间设为 {seconds} 秒的回合的平均记忆准确率",
+      "byPiecesNote": "每种棋子数由不同的玩家选择，有些行只来自少数玩家，因此比较柱形前请先看表中的“玩家数”一列。",
+      "bySeconds": "{pieces} 个棋子的平均记忆准确率，按记忆时间",
+      "bySecondsNote": "每种记忆时间由不同的玩家选择，因此这些柱形并不能说明增加时间有多大帮助。",
+      "pieces": "{count, plural, other {# 子}}",
+      "seconds": "{count} 秒",
+      "rounds": "{count, plural, other {# 回合}}",
+      "scale": "每根柱条都按 0 到 100% 准确率的比例绘制。"
+    },
+    "table": {
+      "title": "所有公布的设置",
+      "caption": "按棋子数和记忆时间统计的准确率。少于 {minRounds, number} 个回合或 {minPlayers, number} 名玩家的设置不予列出。",
+      "pieces": "棋子数",
+      "seconds": "记忆时间",
+      "rounds": "回合数",
+      "players": "玩家数",
+      "mean": "平均值",
+      "median": "中位数",
+      "middle": "中间一半",
+      "middleValue": "{low} 至 {high}",
+      "perfect": "满分",
+      "zero": "零分"
+    },
+    "links": {
+      "csv": "下载 CSV",
+      "notes": "GitHub 上的研究笔记",
+      "play": "玩一回合"
+    },
+    "aboutLine": "我们公布 Google Analytics 记录的回合的汇总记忆统计，仅限回合数和玩家数足够的设置。",
+    "aboutLink": "查看记忆数据"
   }
 }

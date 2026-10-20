@@ -11,11 +11,12 @@ import {
 } from "@/lib/seo/brand";
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import { TUTORIAL_VIDEO } from "@/components/ui/tutorialVideo";
+import { GAME_VIDEO, type GameVideo } from "./gameVideo";
 
 /**
  * No aggregateRating, because the site has no rating data and an invented one breaks Google's policy.
  */
-export function homeSchema(locale: string, description: string) {
+export function homeSchema(locale: string, description: string, gameVideo: GameVideo | null = GAME_VIDEO) {
   return {
     "@context": "https://schema.org",
     "@graph": [
@@ -48,6 +49,22 @@ export function homeSchema(locale: string, description: string) {
         ...TUTORIAL_VIDEO,
         inLanguage: "en",
       },
+      ...(gameVideo
+        ? [
+            {
+              "@type": "VideoObject",
+              "@id": `${localizedUrl("/", "en")}/#game-video`,
+              name: gameVideo.name,
+              description: gameVideo.description,
+              thumbnailUrl: gameVideo.thumbnailUrl,
+              uploadDate: gameVideo.uploadDate,
+              duration: gameVideo.duration,
+              embedUrl: gameVideo.embedUrl,
+              contentUrl: gameVideo.contentUrl,
+              inLanguage: "en",
+            },
+          ]
+        : []),
     ],
   };
 }

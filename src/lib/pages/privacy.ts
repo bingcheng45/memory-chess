@@ -125,6 +125,9 @@ const privacy: PageText = {
         {
           p: "When you open or like an article, Supabase stores only a total of views and a total of likes for each article, with the time of the last change and no visitor identifier.",
         },
+        {
+          p: "On the <data>recall data page</data> we publish counts of finished rounds by number of pieces, study time and accuracy, taken from Google Analytics. They are aggregate counts only, with no names, player IDs or positions, and a group of fewer than 30 rounds or 5 players is left out.",
+        },
       ],
     },
     retention: {

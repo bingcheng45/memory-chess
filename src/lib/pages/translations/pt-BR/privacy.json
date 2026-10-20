@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "facc13f280b27992f9076072853909544822a5f851ddf6955d72a990c3c361a0",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "6a513797f63f96d03b9a78b57822e10852b5882a683604eb76b2d4f3f04aec65",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Quando você abre ou curte um artigo, o Supabase armazena apenas um total de visualizações e um total de curtidas por artigo, com o horário da última alteração e nenhum identificador de visitante."
+          },
+          {
+            "p": "Na <data>página de dados de lembrança</data>, publicamos contagens de rodadas concluídas por número de peças, tempo de estudo e precisão, obtidas do Google Analytics. São apenas contagens agregadas, sem nomes, IDs de jogador nem posições, e qualquer grupo com menos de 30 rodadas ou 5 jogadores fica de fora."
           }
         ]
       },

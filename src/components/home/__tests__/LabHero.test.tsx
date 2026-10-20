@@ -25,6 +25,19 @@ describe("LabHero", () => {
     expect(screen.getByRole("link", { name: "today's daily board" })).toHaveAttribute("href", "/daily");
     expect(screen.getByText(/the same position for every player\./)).toBeInTheDocument();
   });
+
+  it("points readers who wanted the wooden board game at its rules", () => {
+    renderWithIntl(<LabHero totalPlays={{ status: "loading" }} />);
+
+    expect(screen.getByText(/Looking for the wooden Memory Chess board game\?/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Read its rules" })).toHaveAttribute("href", "/learn/how-to-play-memory-chess-board-game");
+  });
+
+  it("marks the rules link as English from a translated home page", () => {
+    renderWithIntl(<LabHero totalPlays={{ status: "loading" }} />, { locale: "de", messages: de });
+
+    expect(screen.getByRole("link", { name: "Zu den Spielregeln (English)" })).toHaveAttribute("hrefLang", "en");
+  });
 });
 
 const factTexts = () =>

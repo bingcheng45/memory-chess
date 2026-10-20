@@ -61,11 +61,16 @@
     },
     "hero": {
       "title": "Memory Chess: Trénujte šachovou paměť a představivost",
-      "freeToPlay": "Zdarma a bez zakládání účtu. Své skóre můžete porovnat i v <link>žebříčku</link>."
+      "freeToPlay": "Zdarma a bez zakládání účtu. Své skóre můžete porovnat i v <link>žebříčku</link>.",
+      "boardGame": "Hledáte dřevěnou deskovou hru Memory Chess? <link>Přečtěte si pravidla</link>."
     },
     "cta": {
       "leaderboard": "Zobrazit žebříček",
       "chooseSettings": "Zvolte počet figur a čas"
+    },
+    "gameVideo": {
+      "play": "Přehrát video: {title}",
+      "caption": "Jedno kolo od začátku do konce: prohlédněte si pozici, sestavte ji zpaměti a přečtěte si skóre."
     },
     "video": {
       "title": "Trénujte dovednost, na které hra stojí",
@@ -977,7 +982,9 @@
         "loss": "Nejvýše <num>−{value}</num>",
         "announce": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}. Když to nevyjde, nejvýše −{loss}.",
         "announceProvisional": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}."
-      }
+      },
+      "blindfold": "Naslepo",
+      "blindfoldHint": "Pozici si zapamatujte ze zápisu, bez figur na šachovnici."
     },
     "presets": {
       "easy": {
@@ -1091,7 +1098,8 @@
       "savedToast": {
         "message": "Kolo uloženo. Aktualizované statistiky najdeš hned níž.",
         "action": "Ukázat"
-      }
+      },
+      "blindfoldRound": "Kolo naslepo: pozici jste si zapamatovali ze zápisu."
     },
     "comparison": {
       "title": "Projděte si svou pozici"
@@ -1174,6 +1182,12 @@
         "bishop": "Střelec",
         "knight": "Jezdec",
         "pawn": "Pěšec"
+      },
+      "notation": {
+        "label": "Pozice v zápisu",
+        "white": "Bílý",
+        "black": "Černý",
+        "pawns": "samotné pole je pěšec"
       }
     }
   },
@@ -1212,6 +1226,13 @@
       "setting": "{pieces, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} · {seconds} s na studium",
       "resetsAtUtc": "Obnoví se v {utc} UTC",
       "resetsAt": "Obnoví se v {utc} UTC ({local} u vás), za {timeLeft}"
+    },
+    "mode": {
+      "label": "Režim studia",
+      "board": "Šachovnice",
+      "blindfold": "Naslepo",
+      "note": "Kola naslepo se studují ze zápisu, bez figur na šachovnici, a proto mají vlastní žebříčky.",
+      "loading": "Načítá se žebříček naslepo."
     }
   },
   "country": {
@@ -1796,5 +1817,48 @@
       "secondsRange": "{min} až {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Jak dobře si lidé pamatují šachové pozice?",
+      "description": "Průměrné vybavení šachových pozic podle počtu figur a času na zapamatování, z {rounds, number} dokončených kol hry Memory Chess. Otevřená data CC BY 4.0.",
+      "socialTitle": "Jak dobře si lidé pamatují šachové pozice?",
+      "socialDescription": "Přesnost podle počtu figur a času na zapamatování, z {rounds, number} dokončených kol hry Memory Chess. Otevřená data pod licencí CC BY 4.0."
+    },
+    "kicker": "Otevřená data",
+    "title": "Jak dobře si lidé pamatují šachové pozice?",
+    "answer": "V {rounds, number} dokončených kolech hry Memory Chess od {start} do {end} dosáhla kola s časem na zapamatování nastaveným na 10 sekund průměrné přesnosti {two} se 2 figurami ({twoRounds, number} kol) a {six} se 6 figurami, což je výchozí nastavení ({sixRounds, number} kol). Bezchybných bylo {sixPerfect} z těchto kol se 6 figurami. Při 12 figurách a 8 sekundách, tedy nastavení, které volilo méně hráčů, byl průměr {twelve} a bezchybných bylo {twelvePerfect} ({twelveRounds, number} kol).",
+    "englishNote": "Poznámky k metodě, omezením a citování níže jsou v angličtině.",
+    "chart": {
+      "byPieces": "Průměrná přesnost v kolech s nastaveným časem na zapamatování {seconds} s",
+      "byPiecesNote": "Každý počet figur si zvolili jiní hráči a některé řádky pocházejí jen od několika hráčů, proto si před porovnáním sloupců zkontrolujte v tabulce sloupec Hráči.",
+      "bySeconds": "Průměrná přesnost u {pieces} figur podle času na zapamatování",
+      "bySecondsNote": "Každý čas na zapamatování si zvolili jiní hráči, takže tyto sloupce neukazují, o kolik pomáhá delší čas.",
+      "pieces": "{count, plural, one {# figura} few {# figury} many {# figury} other {# figur}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
+      "scale": "Každý sloupec je vykreslen v měřítku od 0 do 100 % přesnosti."
+    },
+    "table": {
+      "title": "Všechna zveřejněná nastavení",
+      "caption": "Přesnost podle počtu figur a času na zapamatování. Nastavení s méně než {minRounds, number} koly nebo {minPlayers, number} hráči nejsou uvedena.",
+      "pieces": "Figury",
+      "seconds": "Čas na zapamatování",
+      "rounds": "Kola",
+      "players": "Hráči",
+      "mean": "Průměr",
+      "median": "Medián",
+      "middle": "Prostřední polovina",
+      "middleValue": "{low} až {high}",
+      "perfect": "Bezchybná",
+      "zero": "0 bodů"
+    },
+    "links": {
+      "csv": "Stáhnout CSV",
+      "notes": "Pracovní poznámky na GitHubu",
+      "play": "Zahrát kolo"
+    },
+    "aboutLine": "Zveřejňujeme souhrnné statistiky vybavení z kol zaznamenaných v Google Analytics, a to pro nastavení s dostatečným počtem kol a hráčů.",
+    "aboutLink": "Zobrazit data o zapamatování"
   }
 }

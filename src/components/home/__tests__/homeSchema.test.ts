@@ -1,4 +1,5 @@
 import { homeSchema } from "@/components/home/homeSchema";
+import { gameVideo } from "@/components/home/gameVideo";
 
 describe("homeSchema", () => {
   it("adds the app and tutorial video nodes for English beside the brand graph", () => {
@@ -60,5 +61,41 @@ describe("homeSchema", () => {
       inLanguage: "de",
       description: "Beschreibung",
     });
+  });
+
+  it("adds the game video node when a game video is published", () => {
+    const video = gameVideo({
+      id: "dQw4w9WgXcQ",
+      name: "Memory Chess: one round from study to score",
+      description: "A full round of Memory Chess.",
+      uploadDate: "2026-10-20T09:00:00+08:00",
+      duration: "PT20S",
+    });
+    const graph = homeSchema("de", "Beschreibung", video)["@graph"];
+
+    expect(graph).toHaveLength(5);
+    expect(graph[4]).toEqual({
+      "@type": "VideoObject",
+      "@id": "https://thememorychess.com/#game-video",
+      name: "Memory Chess: one round from study to score",
+      description: "A full round of Memory Chess.",
+      thumbnailUrl: "https://i.ytimg.com/vi/dQw4w9WgXcQ/hqdefault.jpg",
+      uploadDate: "2026-10-20T09:00:00+08:00",
+      duration: "PT20S",
+      embedUrl: "https://www.youtube-nocookie.com/embed/dQw4w9WgXcQ",
+      contentUrl: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      inLanguage: "en",
+    });
+  });
+
+  it("emits no game video node while no game video is published", () => {
+    const graph = homeSchema("en", "Play.", gameVideo({ id: "", name: "", description: "", uploadDate: "", duration: "" }))["@graph"];
+
+    expect(graph.map((node) => node["@id"] ?? node["@type"])).toEqual([
+      "https://thememorychess.com/#organization",
+      "https://thememorychess.com/#website",
+      "https://thememorychess.com/#app",
+      "https://thememorychess.com/#tutorial-video",
+    ]);
   });
 });

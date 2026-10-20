@@ -61,11 +61,16 @@
     },
     "hero": {
       "title": "Memory Chess: Treine sua memória e visualização no xadrez",
-      "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>."
+      "freeToPlay": "De graça e sem precisar de conta. Você também pode comparar sua pontuação no <link>ranking</link>.",
+      "boardGame": "Procurando o jogo de tabuleiro de madeira Memory Chess? <link>Leia as regras</link>."
     },
     "cta": {
       "leaderboard": "Ver o ranking",
       "chooseSettings": "Escolha peças e tempo"
+    },
+    "gameVideo": {
+      "play": "Reproduzir vídeo: {title}",
+      "caption": "Uma rodada do começo ao fim: estude a posição, reconstrua de memória e veja sua pontuação."
     },
     "video": {
       "title": "Treine a habilidade por trás do jogo",
@@ -977,7 +982,9 @@
         "loss": "No máximo <num>−{value}</num>",
         "announce": "Rating do tabuleiro {board}. Seu rating {rating}. Precisão esperada {expected}%. Se você acertar, até +{gain}. Se você errar, no máximo −{loss}.",
         "announceProvisional": "Rating do tabuleiro {board}. Seu rating {rating}. Precisão esperada {expected}%. Se você acertar, até +{gain}."
-      }
+      },
+      "blindfold": "Às cegas",
+      "blindfoldHint": "Estude a posição em notação, sem peças no tabuleiro."
     },
     "presets": {
       "easy": {
@@ -1091,7 +1098,8 @@
       "savedToast": {
         "message": "Rodada salva. Suas estatísticas atualizadas estão logo abaixo.",
         "action": "Ver"
-      }
+      },
+      "blindfoldRound": "Rodada às cegas: você estudou a posição em notação."
     },
     "comparison": {
       "title": "Revise sua posição"
@@ -1174,6 +1182,12 @@
         "bishop": "Bispo",
         "knight": "Cavalo",
         "pawn": "Peão"
+      },
+      "notation": {
+        "label": "A posição em notação",
+        "white": "Brancas",
+        "black": "Pretas",
+        "pawns": "uma casa sozinha é um peão"
       }
     }
   },
@@ -1212,6 +1226,13 @@
       "setting": "{pieces, plural, one {# peça} many {# peças} other {# peças}} · {seconds} s para estudar",
       "resetsAtUtc": "Reinicia às {utc} UTC",
       "resetsAt": "Reinicia às {utc} UTC ({local} no seu horário), em {timeLeft}"
+    },
+    "mode": {
+      "label": "Modo de estudo",
+      "board": "Tabuleiro",
+      "blindfold": "Às cegas",
+      "note": "Rodadas às cegas são estudadas em notação, sem peças no tabuleiro, por isso têm rankings próprios.",
+      "loading": "Carregando o ranking às cegas."
     }
   },
   "country": {
@@ -1796,5 +1817,48 @@
       "secondsRange": "De {min} a {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Quanto lembramos de posições de xadrez?",
+      "description": "Lembrança média de posições de xadrez por número de peças e tempo de estudo, em {rounds, number} rodadas concluídas do Memory Chess. Dados abertos sob CC BY 4.0.",
+      "socialTitle": "Quão bem as pessoas se lembram de posições de xadrez?",
+      "socialDescription": "Lembrança por número de peças e tempo de estudo, com base em {rounds, number} rodadas concluídas do Memory Chess. Dados abertos sob CC BY 4.0."
+    },
+    "kicker": "Dados abertos",
+    "title": "Quão bem as pessoas se lembram de posições de xadrez?",
+    "answer": "Em {rounds, number} rodadas concluídas do Memory Chess entre {start} e {end}, as rodadas configuradas com 10 segundos de estudo tiveram em média {two} de precisão com 2 peças ({twoRounds, number} rodadas) e {six} com 6 peças, a configuração padrão ({sixRounds, number} rodadas). {sixPerfect} dessas rodadas de 6 peças foram perfeitas. Com 12 peças e 8 segundos, uma configuração escolhida por menos jogadores, a média foi {twelve}, com {twelvePerfect} de rodadas perfeitas ({twelveRounds, number} rodadas).",
+    "englishNote": "As notas sobre método, limites e citação abaixo estão em inglês.",
+    "chart": {
+      "byPieces": "Lembrança média em rodadas configuradas com {seconds} segundos de estudo",
+      "byPiecesNote": "Cada número de peças foi escolhido por jogadores diferentes, e algumas linhas vêm de poucos jogadores, então confira a coluna Jogadores na tabela antes de comparar as barras.",
+      "bySeconds": "Lembrança média de {pieces} peças, por tempo de estudo",
+      "bySecondsNote": "Jogadores diferentes escolheram cada tempo de estudo, então estas barras não mostram quanto o tempo extra ajuda.",
+      "pieces": "{count, plural, one {# peça} many {# de peças} other {# peças}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# rodada} many {# de rodadas} other {# rodadas}}",
+      "scale": "Cada barra é desenhada em escala de 0 a 100% de precisão."
+    },
+    "table": {
+      "title": "Todas as configurações publicadas",
+      "caption": "Precisão por número de peças e tempo de estudo. Configurações com menos de {minRounds, number} rodadas ou {minPlayers, number} jogadores ficam de fora.",
+      "pieces": "Peças",
+      "seconds": "Tempo de estudo",
+      "rounds": "Rodadas",
+      "players": "Jogadores",
+      "mean": "Média",
+      "median": "Mediana",
+      "middle": "Metade central",
+      "middleValue": "{low} a {high}",
+      "perfect": "Perfeitas",
+      "zero": "Pontuação 0"
+    },
+    "links": {
+      "csv": "Baixar o CSV",
+      "notes": "Notas de campo no GitHub",
+      "play": "Jogar uma rodada"
+    },
+    "aboutLine": "Publicamos estatísticas agregadas de memorização das rodadas registradas no Google Analytics, para as configurações com rodadas e jogadores suficientes.",
+    "aboutLink": "Ver os dados de lembrança"
   }
 }

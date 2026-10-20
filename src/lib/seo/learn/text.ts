@@ -15,6 +15,7 @@ export function blockText(block: LearnBlock): string[] {
       return [block.title, block.body];
     case "board":
     case "image":
+    case "rulesDemo":
       return [block.caption];
     case "drills":
       return block.drills.flatMap((drill) => [drill.title, richText(drill.description), drill.duration, drill.goal]);
@@ -22,6 +23,8 @@ export function blockText(block: LearnBlock): string[] {
       return [...block.columns, ...block.rows.flatMap((row) => [row.label, ...row.cells])];
     case "plan":
       return block.steps.flatMap((step) => [step.label, step.duration, step.detail]);
+    case "affiliate":
+      return [];
     case "cta":
       return [block.why];
     case "faq":

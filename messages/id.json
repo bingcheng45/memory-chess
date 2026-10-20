@@ -61,11 +61,16 @@
     },
     "hero": {
       "title": "Memory Chess: Latih ingatan dan visualisasi catur Anda",
-      "freeToPlay": "Gratis dimainkan, tanpa perlu akun. Anda juga bisa membandingkan skor di <link>papan peringkat</link>."
+      "freeToPlay": "Gratis dimainkan, tanpa perlu akun. Anda juga bisa membandingkan skor di <link>papan peringkat</link>.",
+      "boardGame": "Mencari permainan papan kayu Memory Chess? <link>Baca aturannya</link>."
     },
     "cta": {
       "leaderboard": "Lihat papan peringkat",
       "chooseSettings": "Pilih bidak dan waktu"
+    },
+    "gameVideo": {
+      "play": "Putar video: {title}",
+      "caption": "Satu ronde dari awal sampai akhir: pelajari posisinya, susun ulang dari ingatan, lalu lihat skormu."
     },
     "video": {
       "title": "Latih kemampuan di balik permainan ini",
@@ -977,7 +982,9 @@
         "loss": "Paling banyak <num>−{value}</num>",
         "announce": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}. Jika kamu gagal, paling banyak −{loss}.",
         "announceProvisional": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}."
-      }
+      },
+      "blindfold": "Tutup mata",
+      "blindfoldHint": "Pelajari posisi sebagai notasi, tanpa bidak di papan."
     },
     "presets": {
       "easy": {
@@ -1091,7 +1098,8 @@
       "savedToast": {
         "message": "Ronde tersimpan. Statistik terbarumu ada tepat di bawah.",
         "action": "Lihat"
-      }
+      },
+      "blindfoldRound": "Ronde tutup mata: kamu mempelajari posisi sebagai notasi."
     },
     "comparison": {
       "title": "Tinjau posisi Anda"
@@ -1174,6 +1182,12 @@
         "bishop": "Gajah",
         "knight": "Kuda",
         "pawn": "Pion"
+      },
+      "notation": {
+        "label": "Posisi dalam notasi",
+        "white": "Putih",
+        "black": "Hitam",
+        "pawns": "petak saja berarti pion"
       }
     }
   },
@@ -1212,6 +1226,13 @@
       "setting": "{pieces, plural, other {# bidak}} · {seconds} dtk untuk menghafal",
       "resetsAtUtc": "Direset pukul {utc} UTC",
       "resetsAt": "Direset pukul {utc} UTC ({local} waktu Anda), dalam {timeLeft}"
+    },
+    "mode": {
+      "label": "Mode belajar",
+      "board": "Papan",
+      "blindfold": "Tutup mata",
+      "note": "Ronde tutup mata dipelajari sebagai notasi tanpa bidak di papan, jadi punya papan peringkat sendiri.",
+      "loading": "Memuat papan peringkat tutup mata."
     }
   },
   "country": {
@@ -1796,5 +1817,48 @@
       "secondsRange": "{min} sampai {max} dtk",
       "secondsExact": "{count} dtk"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Seberapa baik orang mengingat posisi catur?",
+      "description": "Rata-rata ingatan posisi catur menurut jumlah bidak dan waktu menghafal, dari {rounds, number} ronde Memory Chess yang selesai. Data terbuka di bawah CC BY 4.0.",
+      "socialTitle": "Seberapa baik orang mengingat posisi catur?",
+      "socialDescription": "Ingatan menurut jumlah bidak dan waktu menghafal, dari {rounds, number} ronde Memory Chess yang selesai. Data terbuka di bawah CC BY 4.0."
+    },
+    "kicker": "Data terbuka",
+    "title": "Seberapa baik orang mengingat posisi catur?",
+    "answer": "Dalam {rounds, number} ronde Memory Chess yang selesai dari {start} hingga {end}, ronde dengan waktu menghafal yang diatur ke 10 detik rata-rata meraih akurasi {two} dengan 2 bidak ({twoRounds, number} ronde) dan {six} dengan 6 bidak, pengaturan bawaan ({sixRounds, number} ronde). Sebanyak {sixPerfect} dari ronde 6 bidak itu sempurna. Dengan 12 bidak dan 8 detik, pengaturan yang dipilih lebih sedikit pemain, rata-ratanya {twelve}, dengan {twelvePerfect} yang sempurna ({twelveRounds, number} ronde).",
+    "englishNote": "Catatan tentang metode, batasan, dan sitasi di bawah ini ditulis dalam bahasa Inggris.",
+    "chart": {
+      "byPieces": "Rata-rata ingatan pada ronde dengan waktu menghafal yang diatur {seconds} detik",
+      "byPiecesNote": "Setiap jumlah bidak dipilih oleh pemain yang berbeda, dan beberapa baris hanya berasal dari sedikit pemain, jadi periksa kolom Pemain di tabel sebelum membandingkan batang.",
+      "bySeconds": "Rata-rata ingatan {pieces} bidak, menurut waktu menghafal",
+      "bySecondsNote": "Setiap waktu menghafal dipilih oleh pemain yang berbeda, jadi batang ini tidak menunjukkan seberapa besar tambahan waktu membantu.",
+      "pieces": "{count, plural, other {# bidak}}",
+      "seconds": "{count} dtk",
+      "rounds": "{count, plural, other {# ronde}}",
+      "scale": "Setiap batang digambar sesuai skala dari 0 hingga 100% akurasi."
+    },
+    "table": {
+      "title": "Semua pengaturan yang dipublikasikan",
+      "caption": "Akurasi menurut jumlah bidak dan waktu menghafal. Pengaturan dengan kurang dari {minRounds, number} ronde atau {minPlayers, number} pemain tidak ditampilkan.",
+      "pieces": "Bidak",
+      "seconds": "Waktu menghafal",
+      "rounds": "Ronde",
+      "players": "Pemain",
+      "mean": "Rata-rata",
+      "median": "Median",
+      "middle": "Separuh tengah",
+      "middleValue": "{low} hingga {high}",
+      "perfect": "Sempurna",
+      "zero": "Skor 0"
+    },
+    "links": {
+      "csv": "Unduh CSV",
+      "notes": "Catatan lapangan di GitHub",
+      "play": "Mainkan satu ronde"
+    },
+    "aboutLine": "Statistik agregat ingatan dari ronde yang tercatat di Google Analytics dipublikasikan, untuk pengaturan dengan cukup ronde dan pemain.",
+    "aboutLink": "Lihat data ingatan"
   }
 }

@@ -123,6 +123,22 @@ describe("dashboardOf", () => {
     });
   });
 
+  it("reads the board tile from board-study entries only, since a blindfold score ranks on another board", () => {
+    const records = personaRounds("thirtyDays", PERSONA_TODAY);
+    const summary = summarize(records);
+    const results = deriveLab({ records, summary, today: PERSONA_TODAY });
+    const entries = personaEntries("thirtyDays");
+    const blindfold = entries?.hard && { ...entries.hard, id: "c3d4e5f6-0718-4a29-8b3c-4d5e6f708192", mode: "blindfold" as const, score: { ...entries.hard.score, correctPieces: 12 } };
+    const tiles = dashboardOf({ results, summary, records, weekGoal: 5, entries: { ...entries, "blindfold-hard": blindfold }, today: PERSONA_TODAY, utcDay: PERSONA_TODAY, dailyOpened: null, chooseHref: null, ...NO_GAME });
+
+    expect(tile(tiles, "board")).toEqual({
+      id: "board",
+      state: "ready",
+      figure: { value: 9, unit: "pieces", digits: 0 },
+      context: { kind: "entry", values: { difficulty: "hard" } },
+    });
+  });
+
   it("reads the best and recent accuracy from the record, every round counted", () => {
     const tiles = tilesFor("spanClimber");
 

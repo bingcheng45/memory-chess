@@ -28,7 +28,14 @@ export default function LearnRulesDemo({ caption }: { readonly caption: string }
   return (
     <figure className="wg-figure">
       <div ref={box} className="wg-stage">
-        {near ? <WoodenGameDemo /> : null}
+        {near ? (
+          <WoodenGameDemo />
+        ) : (
+          <div className="wg-demo">
+            <div className="wg-art" />
+            <div className="wg-below" />
+          </div>
+        )}
       </div>
       <figcaption>{caption}</figcaption>
     </figure>

@@ -282,8 +282,8 @@
 }
 
 /* ---- the wooden Memory Chess set and its animated game ---- */
-.lab-paper .wg-figure { container-type: inline-size; margin: 24px 0; }
-.lab-paper .wg-stage { min-height: calc(100cqw * 2 / 3 + 132px); }
+.lab-paper .wg-figure { margin: 24px 0; }
+.lab-paper .wg-below { display: grid; gap: 12px; min-height: 132px; align-content: start; }
 .lab-paper .wg-figure figcaption { margin-top: 10px; font: 400 15px/1.5 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .wg-demo { display: grid; gap: 12px; }
 .lab-paper .wg-art { display: block; width: 100%; height: auto; aspect-ratio: 3 / 2; --wg-wood: #e9d3ad; --wg-wood-edge: #c9a874; --wg-hole: #8f6e43; --wg-head: #f3e2c2; --wg-head-edge: #b8925c; }
@@ -320,7 +320,7 @@
 .lab-paper .lg-buy > div { display: grid; gap: 10px; flex: 1 1 240px; justify-items: start; }
 .lab-paper .lg-buy p { font: 400 14px/1.5 var(--lp-body); color: var(--lp-muted); }
 @media (max-width: 767px) {
-  .lab-paper .wg-stage { min-height: calc(100cqw * 2 / 3 + 190px); }
+  .lab-paper .wg-below { min-height: 196px; }
   .lab-paper .wg-dots { margin-left: 0; width: 100%; }
 }
 @media (prefers-reduced-motion: reduce) {

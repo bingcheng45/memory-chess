@@ -61,34 +61,36 @@ export default function WoodenGameDemo() {
           <WoodenPeg key={id} id={id} pose={pegPose(id, frame.places[id], frame.showAll)} />
         ))}
       </svg>
-      <p className="wg-caption" aria-live="polite">
-        <span className="wg-count">
-          {step + 1} / {FRAMES.length}
-        </span>{" "}
-        {frame.caption}
-      </p>
-      <div className="wg-controls">
-        <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={() => go(step - 1)} disabled={step === 0}>
-          Previous
-        </button>
-        <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={toggle} aria-pressed={playing}>
-          {playing ? "Pause" : step === LAST ? "Replay" : "Play"}
-        </button>
-        <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={() => go(step + 1)} disabled={step === LAST}>
-          Next
-        </button>
-        <ol className="wg-dots">
-          {FRAMES.map((_, index) => (
-            <li key={index}>
-              <button
-                type="button"
-                aria-label={`Step ${index + 1} of ${FRAMES.length}`}
-                aria-current={index === step ? "step" : undefined}
-                onClick={() => go(index)}
-              />
-            </li>
-          ))}
-        </ol>
+      <div className="wg-below">
+        <p className="wg-caption" aria-live="polite">
+          <span className="wg-count">
+            {step + 1} / {FRAMES.length}
+          </span>{" "}
+          {frame.caption}
+        </p>
+        <div className="wg-controls">
+          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={() => go(step - 1)} disabled={step === 0}>
+            Previous
+          </button>
+          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={toggle} aria-pressed={playing}>
+            {playing ? "Pause" : step === LAST ? "Replay" : "Play"}
+          </button>
+          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={() => go(step + 1)} disabled={step === LAST}>
+            Next
+          </button>
+          <ol className="wg-dots">
+            {FRAMES.map((_, index) => (
+              <li key={index}>
+                <button
+                  type="button"
+                  aria-label={`Step ${index + 1} of ${FRAMES.length}`}
+                  aria-current={index === step ? "step" : undefined}
+                  onClick={() => go(index)}
+                />
+              </li>
+            ))}
+          </ol>
+        </div>
       </div>
     </div>
   );

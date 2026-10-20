@@ -973,7 +973,9 @@
         "loss": "最大 <num>−{value}</num>",
         "announce": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。失敗した場合は最大 −{loss}。",
         "announceProvisional": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。"
-      }
+      },
+      "blindfold": "目隠し",
+      "blindfoldHint": "盤上に駒を置かず、局面を棋譜表記で覚えます。"
     },
     "presets": {
       "easy": {
@@ -1087,7 +1089,8 @@
       "savedToast": {
         "message": "ラウンドを保存しました。更新された成績はすぐ下にあります。",
         "action": "見る"
-      }
+      },
+      "blindfoldRound": "目隠しラウンド：局面を棋譜表記で覚えました。"
     },
     "comparison": {
       "title": "自分の局面を振り返る"
@@ -1170,6 +1173,12 @@
         "bishop": "ビショップ",
         "knight": "ナイト",
         "pawn": "ポーン"
+      },
+      "notation": {
+        "label": "棋譜表記の局面",
+        "white": "白",
+        "black": "黒",
+        "pawns": "マス目だけはポーン"
       }
     }
   },
@@ -1208,6 +1217,13 @@
       "setting": "{pieces, plural, other {#駒}} · 記憶{seconds}秒",
       "resetsAtUtc": "UTC {utc} にリセット",
       "resetsAt": "UTC {utc}（あなたの時刻で {local}）にリセット、あと{timeLeft}"
+    },
+    "mode": {
+      "label": "学習モード",
+      "board": "盤",
+      "blindfold": "目隠し",
+      "note": "目隠しラウンドは盤上に駒を置かず棋譜表記で覚えるため、専用のランキングがあります。",
+      "loading": "目隠しランキングを読み込んでいます。"
     }
   },
   "country": {

@@ -973,7 +973,9 @@
         "loss": "Tối đa <num>−{value}</num>",
         "announce": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}. Nếu bạn trượt, tối đa −{loss}.",
         "announceProvisional": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}."
-      }
+      },
+      "blindfold": "Bịt mắt",
+      "blindfoldHint": "Học thế cờ qua ký hiệu, không có quân trên bàn cờ."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1089,8 @@
       "savedToast": {
         "message": "Đã lưu ván. Số liệu mới của bạn ở ngay bên dưới.",
         "action": "Xem"
-      }
+      },
+      "blindfoldRound": "Ván bịt mắt: bạn đã học thế cờ qua ký hiệu."
     },
     "comparison": {
       "title": "Xem lại thế cờ của bạn"
@@ -1170,6 +1173,12 @@
         "bishop": "Tượng",
         "knight": "Mã",
         "pawn": "Tốt"
+      },
+      "notation": {
+        "label": "Thế cờ bằng ký hiệu",
+        "white": "Trắng",
+        "black": "Đen",
+        "pawns": "chỉ ghi ô là quân tốt"
       }
     }
   },
@@ -1208,6 +1217,13 @@
       "setting": "{pieces, plural, other {# quân}} · {seconds} giây để ghi nhớ",
       "resetsAtUtc": "Đặt lại lúc {utc} UTC",
       "resetsAt": "Đặt lại lúc {utc} UTC ({local} giờ của bạn), còn {timeLeft}"
+    },
+    "mode": {
+      "label": "Cách học",
+      "board": "Bàn cờ",
+      "blindfold": "Bịt mắt",
+      "note": "Ván bịt mắt được học qua ký hiệu, không có quân trên bàn cờ, nên có bảng xếp hạng riêng.",
+      "loading": "Đang tải bảng xếp hạng bịt mắt."
     }
   },
   "country": {

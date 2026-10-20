@@ -1,4 +1,5 @@
 import type { CountryCode } from '@/lib/leaderboard/countries';
+import type { BLINDFOLD_MODE } from '@/lib/game/roundLink';
 
 export const LEADERBOARD_DIFFICULTIES = ['easy', 'medium', 'hard', 'grandmaster'] as const;
 export type LeaderboardDifficulty = (typeof LEADERBOARD_DIFFICULTIES)[number];
@@ -29,6 +30,8 @@ export interface LeaderboardEntry {
   solution_time: number;
   total_wrong_pieces?: number; // Total wrong pieces (missed + extra)
   skill_rating?: number;
+  /** Absent on rows read before migration 0008 added the column. */
+  mode?: 'board' | typeof BLINDFOLD_MODE;
   created_at: string;
 }
 
@@ -50,8 +53,9 @@ type SubmittedRound = {
   skill_rating: number;
 };
 
+/** A ranked board, studied on the board or, with `mode`, blindfold. The daily board is always studied on the board. */
 export type LeaderboardBoard =
-  | { difficulty: LeaderboardDifficulty }
+  | { difficulty: LeaderboardDifficulty; mode?: typeof BLINDFOLD_MODE }
   | { difficulty: typeof DAILY_BOARD; daily_day: string };
 
 export type LeaderboardSubmission = SubmittedRound & LeaderboardBoard;

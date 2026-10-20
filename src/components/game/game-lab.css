@@ -126,6 +126,10 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-preset[aria-pressed="true"] { background: var(--lp-accent-soft); border-color: var(--lp-accent); box-shadow: inset 0 0 0 1px var(--lp-accent); }
 .lab-game .lab-preset-name { font: 600 15px/1.25 var(--lp-ui); }
 .lab-game .lab-preset-meta { font: 400 12px/1.3 var(--lp-data); color: var(--lp-muted); font-variant-numeric: tabular-nums; }
+.lab-game .lab-config-mode { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: 10px; }
+.lab-game .lab-config-mode .lab-config-label { margin: 0; cursor: pointer; }
+.lab-game .lab-config-check { width: 20px; height: 20px; margin: 0; accent-color: var(--lp-accent); cursor: pointer; }
+.lab-game .lab-config-mode-hint { grid-column: 2; margin: 4px 0 0; }
 .lab-game .lab-config-description { margin-top: 8px; min-height: 1.55em; }
 .lab-game .lab-range { width: 100%; height: 24px; margin: 0; background: transparent; cursor: pointer; appearance: none; -webkit-appearance: none; }
 .lab-game .lab-range::-webkit-slider-runnable-track { height: 6px; border-radius: 3px; background: linear-gradient(to right, var(--lp-accent) var(--fill, 0%), var(--lp-surface-2) var(--fill, 0%)); box-shadow: inset 0 0 0 1px var(--lp-line); }
@@ -168,6 +172,11 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .round-gate-rule { margin: 0 0 8px; font: 400 14px/1.5 var(--lp-body); color: var(--lp-muted); text-wrap: balance; }
 .lab-game .round-gate-card .lab-btn { min-width: 180px; }
 .lab-game .round-gate-intro { margin-bottom: 8px; text-wrap: balance; }
+.lab-game .round-notation { position: absolute; inset: 0; display: grid; place-items: center; padding: 12px; }
+.lab-game .round-notation-card { display: grid; gap: 16px; width: 100%; max-width: 440px; max-height: 100%; overflow-y: auto; padding: 20px 24px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); background: var(--lp-surface); box-shadow: var(--lp-pop-shadow); }
+.lab-game .round-notation-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; font: 600 clamp(20px, 5.5cqmin, 28px)/1.4 var(--lp-data); color: var(--lp-ink); overflow-wrap: anywhere; }
+.lab-game .round-notation-side { font-family: var(--lp-ui); color: var(--lp-muted); }
+.lab-game .round-notation-legend { margin: 0; font: 400 14px/1.5 var(--lp-body); color: var(--lp-muted); }
 .lab-game .round-count { font: 700 clamp(72px, 30cqmin, 160px)/1 var(--lp-ui); color: var(--lp-ink); font-variant-numeric: tabular-nums; text-shadow: 0 0 24px var(--lp-surface); animation: round-count-in 0.3s ease-out; }
 @keyframes round-count-in { from { opacity: 0; transform: scale(1.25); } }
 /* Before hydration a daily link's served page still holds the configuration form; the layout's script marks the

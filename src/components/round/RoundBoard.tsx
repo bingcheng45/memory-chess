@@ -56,7 +56,7 @@ function squareView(state: RoundState, square: SquareName): SquareView {
     case "countdown":
       return { piece: undefined, ghost: undefined, mark: undefined };
     case "study":
-      return { piece: state.target[square], ghost: undefined, mark: undefined };
+      return { piece: state.config.blindfold ? undefined : state.target[square], ghost: undefined, mark: undefined };
     case "rebuild":
       return { piece: state.placed[square], ghost: undefined, mark: undefined };
     case "scored":

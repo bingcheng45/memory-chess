@@ -158,3 +158,39 @@ describe("rememberEntry", () => {
     expect([unreadable, refused, window.localStorage.getItem(ENTRIES_KEY)]).toEqual([null, medium, null]);
   });
 });
+
+describe("a blindfold entry", () => {
+  const OPEN = process.env.NEXT_PUBLIC_BLINDFOLD_LEADERBOARD;
+  const blindfold: StoredEntry = { ...medium, id: ID_B, mode: "blindfold", score: { ...medium.score, correctPieces: 3 }, submittedAt: 2_000 };
+
+  beforeEach(() => {
+    window.localStorage.clear();
+    process.env.NEXT_PUBLIC_BLINDFOLD_LEADERBOARD = "1";
+  });
+  afterEach(() => {
+    if (OPEN === undefined) delete process.env.NEXT_PUBLIC_BLINDFOLD_LEADERBOARD;
+    else process.env.NEXT_PUBLIC_BLINDFOLD_LEADERBOARD = OPEN;
+  });
+
+  it("keeps its mode from the row, and is stored beside the board entry on the same difficulty instead of replacing it", () => {
+    rememberEntry(row, 1_000);
+    expect(rememberEntry({ ...row, id: ID_B, mode: "blindfold", correct_pieces: 3 }, 2_000)).toEqual(blindfold);
+
+    const text = window.localStorage.getItem(ENTRIES_KEY);
+    expect(JSON.parse(text ?? "null")).toEqual({ medium, "blindfold-medium": blindfold });
+    expect(parseEntries(text)).toEqual({ medium, "blindfold-medium": blindfold });
+  });
+
+  it("is ranked only against blindfold entries, and dropped without touching the board entry", () => {
+    const better = { ...medium, id: "c3d4e5f6-0718-4a29-8b3c-4d5e6f708192", score: { ...medium.score, correctPieces: 6 } };
+
+    expect(withEntry({ "blindfold-medium": blindfold }, better)).toEqual({ "blindfold-medium": blindfold, medium: better });
+    expect(withoutEntry({ medium, "blindfold-medium": blindfold }, blindfold)).toEqual({ medium });
+    expect(withoutEntry({ medium, "blindfold-medium": blindfold }, { ...medium, id: ID_B })).toEqual({ medium, "blindfold-medium": blindfold });
+  });
+
+  it("reads entries stored before modes existed as board entries, and refuses a mode stored under the other board", () => {
+    expect(parseEntries(JSON.stringify({ medium, hard: { ...medium, difficulty: "hard" } }))).toEqual({ medium, hard: { ...medium, difficulty: "hard" } });
+    expect(parseEntries(JSON.stringify({ medium: blindfold, "blindfold-hard": { ...medium, difficulty: "hard" } }))).toBeNull();
+  });
+});

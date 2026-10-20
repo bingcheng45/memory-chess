@@ -75,7 +75,7 @@ export async function GET(request: NextRequest) {
   const difficulty = searchParams.get('difficulty') || 'medium';
   const now = Date.now();
   const namedDay = searchParams.get('daily_day');
-  const board = readBoard(difficulty, difficulty === DAILY_BOARD ? (namedDay ?? utcDayOf(now)) : null, readableDays(now));
+  const board = readBoard(difficulty, difficulty === DAILY_BOARD ? (namedDay ?? utcDayOf(now)) : null, readableDays(now), searchParams.get('mode'));
 
   if (board === null) {
     return NextResponse.json(
@@ -119,7 +119,7 @@ export async function POST(request: NextRequest) {
 
   try {
     // Validate request body
-    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces, country_code, skill_rating, daily_day } = body ?? {};
+    const { player_name, difficulty, piece_count, correct_pieces, memorize_time, solution_time, total_wrong_pieces, country_code, skill_rating, daily_day, mode } = body ?? {};
     
     if (!player_name || !difficulty || !piece_count || correct_pieces === undefined || 
         !memorize_time || !solution_time) {
@@ -140,7 +140,7 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    const board = readBoard(difficulty, daily_day, joinableDays(Date.now()));
+    const board = readBoard(difficulty, daily_day, joinableDays(Date.now()), mode);
     if (board === null) {
       return NextResponse.json({ error: 'Invalid difficulty or daily day' }, { status: 400 });
     }

@@ -107,7 +107,8 @@
           "question": "Ne sıklıkla çalışmalıyım?",
           "answer": "Düzenli aralıklarla birkaç odaklı tur iyi bir başlangıçtır. Her konumu dikkatle inceleyebilecek kadar kısa seanslar tut."
         }
-      ]
+      ],
+      "boardGame": "Ahşap kutu oyunu Memory Chess'i mi arıyorsun? <link>Kurallarını oku</link>."
     },
     "lab": {
       "index": {

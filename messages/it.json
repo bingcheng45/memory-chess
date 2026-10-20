@@ -107,7 +107,8 @@
           "question": "Ogni quanto dovrei allenarmi?",
           "answer": "Qualche turno ben concentrato con regolarità è un buon punto di partenza. Tieni le sessioni abbastanza brevi da riuscire a studiare ogni posizione con attenzione."
         }
-      ]
+      ],
+      "boardGame": "Cerchi il gioco da tavolo in legno Memory Chess? <link>Leggi le regole</link>."
     },
     "lab": {
       "index": {

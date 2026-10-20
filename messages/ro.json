@@ -107,7 +107,8 @@
           "question": "Cât de des ar trebui să exersez?",
           "answer": "Câteva runde făcute cu atenție, în mod regulat, sunt un început bun. Ține sesiunile suficient de scurte cât să poți studia atent fiecare poziție."
         }
-      ]
+      ],
+      "boardGame": "Cauți jocul de societate din lemn Memory Chess? <link>Citește regulile</link>."
     },
     "lab": {
       "index": {

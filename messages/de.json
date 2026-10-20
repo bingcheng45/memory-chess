@@ -107,7 +107,8 @@
           "question": "Wie oft sollte ich üben?",
           "answer": "Ein paar konzentrierte Runden in regelmäßigen Abständen sind ein guter Anfang. Halte die Einheiten kurz genug, dass du jede Stellung noch sorgfältig studieren kannst."
         }
-      ]
+      ],
+      "boardGame": "Suchst du das Holzbrettspiel Memory Chess? <link>Zu den Spielregeln</link>."
     },
     "lab": {
       "index": {

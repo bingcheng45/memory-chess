@@ -1,6 +1,7 @@
 import { render, screen } from "@/test-utils/intl";
 import { LabFaq } from "@/components/home/LabFaq";
 import messages from "../../../../messages/en.json";
+import de from "../../../../messages/de.json";
 
 const faqs = messages.home.faq.items;
 
@@ -48,5 +49,21 @@ describe("LabFaq", () => {
       name: "How do you play Memory Chess?",
       acceptedAnswer: { "@type": "Answer", text: answer },
     });
+  });
+
+  it("points readers who wanted the wooden board game at its rules", () => {
+    render(<LabFaq />);
+
+    expect(screen.getByText(/Looking for the wooden Memory Chess board game\?/)).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Read its rules" })).toHaveAttribute(
+      "href",
+      "/learn/how-to-play-memory-chess-board-game",
+    );
+  });
+
+  it("marks the rules link as English from a translated home page", () => {
+    render(<LabFaq />, { locale: "de", messages: de });
+
+    expect(screen.getByRole("link", { name: "Zu den Spielregeln (English)" })).toHaveAttribute("hrefLang", "en");
   });
 });

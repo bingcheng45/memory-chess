@@ -107,7 +107,8 @@
           "question": "Com que frequência devo treinar?",
           "answer": "Algumas rodadas focadas com regularidade já é um bom começo. Mantenha as sessões curtas o bastante para conseguir estudar cada posição com calma."
         }
-      ]
+      ],
+      "boardGame": "Procurando o jogo de tabuleiro de madeira Memory Chess? <link>Leia as regras</link>."
     },
     "lab": {
       "index": {

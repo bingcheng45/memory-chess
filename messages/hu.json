@@ -107,7 +107,8 @@
           "question": "Milyen gyakran gyakoroljak?",
           "answer": "Néhány koncentrált kör rendszeresen jó kezdet. Tartsd elég rövidre az alkalmakat ahhoz, hogy minden állást alaposan meg tudj nézni."
         }
-      ]
+      ],
+      "boardGame": "A fából készült Memory Chess társasjátékot keresed? <link>Olvasd el a szabályait</link>."
     },
     "lab": {
       "index": {

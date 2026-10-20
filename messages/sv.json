@@ -107,7 +107,8 @@
           "question": "Hur ofta bör jag öva?",
           "answer": "Några fokuserade omgångar med jämna mellanrum är en bra början. Håll passen så korta att du fortfarande orkar studera varje ställning noggrant."
         }
-      ]
+      ],
+      "boardGame": "Letar du efter brädspelet Memory Chess i trä? <link>Läs reglerna</link>."
     },
     "lab": {
       "index": {

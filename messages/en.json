@@ -107,7 +107,8 @@
           "question": "How often should I practice?",
           "answer": "A few focused rounds on a regular schedule is a good place to start. Keep sessions short enough that you can still study each position carefully."
         }
-      ]
+      ],
+      "boardGame": "Looking for the wooden Memory Chess board game? <link>Read its rules</link>."
     },
     "lab": {
       "index": {

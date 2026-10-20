@@ -107,7 +107,8 @@
           "question": "À quelle fréquence s’entraîner ?",
           "answer": "Quelques manches bien concentrées, à un rythme régulier, constituent un bon point de départ. Gardez des sessions assez courtes pour continuer à étudier chaque position avec attention."
         }
-      ]
+      ],
+      "boardGame": "Vous cherchez le jeu de société en bois Memory Chess ? <link>Lisez ses règles</link>."
     },
     "lab": {
       "index": {

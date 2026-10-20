@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { WoodenBoard, WoodenDie, WoodenPeg } from "./WoodenSet";
 import { FRAMES, HOLES, VIEW, pegPose, type Player } from "./woodenGame";
 
@@ -16,21 +16,28 @@ function prefersReducedMotion(): boolean {
 export default function WoodenGameDemo() {
   const [step, setStep] = useState(0);
   const [playing, setPlaying] = useState(false);
+  const [onScreen, setOnScreen] = useState(true);
+  const root = useRef<HTMLDivElement>(null);
   const frame = FRAMES[step];
 
   useEffect(() => {
     setPlaying(!prefersReducedMotion());
+    const target = root.current;
+    if (!target) return;
+    const observer = new IntersectionObserver((entries) => setOnScreen(entries.some((entry) => entry.isIntersecting)));
+    observer.observe(target);
+    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
-    if (!playing) return;
+    if (!playing || !onScreen) return;
     if (step === LAST) {
       setPlaying(false);
       return;
     }
     const timer = window.setTimeout(() => setStep(step + 1), STEP_MS);
     return () => window.clearTimeout(timer);
-  }, [playing, step]);
+  }, [playing, onScreen, step]);
 
   const go = (target: number) => {
     setPlaying(false);
@@ -43,7 +50,7 @@ export default function WoodenGameDemo() {
   };
 
   return (
-    <div className="wg-demo">
+    <div ref={root} className="wg-demo">
       <svg className="wg-art" viewBox={`0 0 ${VIEW.width} ${VIEW.height}`} aria-hidden="true">
         <WoodenBoard />
         {PLAYERS.map((player) => (
@@ -62,20 +69,20 @@ export default function WoodenGameDemo() {
         ))}
       </svg>
       <div className="wg-below">
-        <p className="wg-caption" aria-live="polite">
+        <p className="wg-caption" aria-live={playing ? "off" : "polite"}>
           <span className="wg-count">
             {step + 1} / {FRAMES.length}
           </span>{" "}
           {frame.caption}
         </p>
         <div className="wg-controls">
-          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={() => go(step - 1)} disabled={step === 0}>
+          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={() => go(step - 1)} aria-disabled={step === 0}>
             Previous
           </button>
-          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={toggle} aria-pressed={playing}>
+          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={toggle}>
             {playing ? "Pause" : step === LAST ? "Replay" : "Play"}
           </button>
-          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={() => go(step + 1)} disabled={step === LAST}>
+          <button type="button" className="lab-btn lab-btn-secondary lab-btn-sm" onClick={() => go(step + 1)} aria-disabled={step === LAST}>
             Next
           </button>
           <ol className="wg-dots">

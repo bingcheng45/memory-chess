@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     takeaways: [
       "The colour is painted on the bottom of each peg, so it is hidden while the peg stands in the board.",
       "A missed peg goes back in the hole it came from. Remembering those misses is the whole game.",
-      "The rules card in the box plays to four of one colour. Other printed rules play until the board is empty.",
+      "The rules card with many sets plays to four of one colour. Other printed rules play until the board is empty.",
     ],
     audience: [
       "You have the wooden set with 24 pegs and a colour die, and the rules card is lost or hard to read.",
@@ -54,7 +54,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "Each peg is plain wood on top. Its colour is painted on the base, the end that goes down into the hole. Once a peg stands in the board, nobody can see its colour until it is lifted out.",
-            "Sets from different makers look alike and play the same way. Most are sold for ages 3 and up, and a few say 4 and up.",
+            "Sets from different makers look alike, but their printed rules differ a little. Most are sold for ages 3 and up, and a few say 4 and up.",
           ],
         },
       ],
@@ -112,7 +112,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The rules card in the box gives the win to the first player holding all four pegs of one colour. Pegs of other colours do not count towards it.",
+            "The rules card with many sets gives the win to the first player holding all four pegs of one colour. Pegs of other colours do not count towards it.",
             "If nobody gets four of a colour before the board is empty, the player with the most pegs wins. Agree on the win before the first roll, as the variants below change it.",
           ],
         },
@@ -170,7 +170,7 @@ const guide: LearnDocument = {
           ordered: false,
           items: [
             "With a young child, say the colour out loud every time a peg is lifted, and point to its hole.",
-            "For a shorter game, take out the pegs of two colours before you set up. Fewer pegs means fewer places to remember.",
+            "For a shorter game, take out the pegs of two colours before you set up. Roll again whenever the die shows a colour you took out.",
             "After a miss, ask who remembers the colour in that hole before the next roll.",
             "Adults and older children can play the moving-pegs rule or the one-of-each-colour win. Both stop one good memory from settling the game early.",
           ],
@@ -184,7 +184,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The wooden peg game has no chess rules. Its pegs just look a little like chess pawns.",
+            "The wooden peg game has no chess rules and uses no chess pieces.",
             [
               "This site is a different game with the same name. ",
               { text: "Memory Chess online", href: "/" },
@@ -212,7 +212,7 @@ const guide: LearnDocument = {
         {
           question: "How many pegs are in a wooden Memory Chess set?",
           answer:
-            "Most sets have 24 pegs, four in each of six colours, plus one colour die and the round board. Shops often call this a 26-piece set, counting the board and the die. A few makers list a different count, so check the box.",
+            "Most sets have 24 pegs, four in each of six colours, plus one colour die and the round board. Some shops call this a 26-piece set, counting the board and the die. A few makers list a different count, so check the box.",
         },
         {
           question: "What age is wooden Memory Chess for?",
@@ -222,7 +222,7 @@ const guide: LearnDocument = {
         {
           question: "Do you roll again after a match?",
           answer:
-            "On the rules card in the box, yes. You keep the peg and roll again, so one good memory can win several pegs in a row. Some rule sheets pass the die after every turn instead. Agree on it before you start.",
+            "On the rules card with many sets, yes. You keep the peg and roll again, so one good memory can win several pegs in a row. Some rule sheets pass the die after every turn instead. Agree on it before you start.",
         },
         {
           question: "Is wooden Memory Chess the same as Toy Theater's Memory Chess?",

@@ -3,7 +3,16 @@
 import dynamic from "next/dynamic";
 import { useEffect, useRef, useState } from "react";
 
-const WoodenGameDemo = dynamic(() => import("./WoodenGameDemo"), { ssr: false });
+function Placeholder() {
+  return (
+    <div className="wg-demo">
+      <div className="wg-art" />
+      <div className="wg-below" />
+    </div>
+  );
+}
+
+const WoodenGameDemo = dynamic(() => import("./WoodenGameDemo"), { ssr: false, loading: Placeholder });
 
 /** Holds the demo's space from the first paint and loads it only as it nears the screen, so it costs the guide no LCP. */
 export default function LearnRulesDemo({ caption }: { readonly caption: string }) {
@@ -28,14 +37,7 @@ export default function LearnRulesDemo({ caption }: { readonly caption: string }
   return (
     <figure className="wg-figure">
       <div ref={box} className="wg-stage">
-        {near ? (
-          <WoodenGameDemo />
-        ) : (
-          <div className="wg-demo">
-            <div className="wg-art" />
-            <div className="wg-below" />
-          </div>
-        )}
+        {near ? <WoodenGameDemo /> : <Placeholder />}
       </div>
       <figcaption>{caption}</figcaption>
     </figure>

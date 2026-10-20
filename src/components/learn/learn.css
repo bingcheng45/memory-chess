@@ -293,6 +293,8 @@
 .lab-paper .wg-hole { fill: var(--wg-hole); opacity: 0.55; }
 .lab-paper .wg-peg, .lab-paper .wg-die { transition: transform 600ms cubic-bezier(0.2, 0.8, 0.2, 1); }
 .lab-paper .wg-peg-head { fill: var(--wg-head); stroke: var(--wg-head-edge); stroke-width: 1.5; }
+.lab-paper .wg-die .wg-paint { transition-delay: 450ms; }
+.lab-paper .wg-controls [aria-disabled="true"] { opacity: 0.45; cursor: default; }
 .lab-paper .wg-die rect { fill: var(--wg-head); stroke: var(--wg-head-edge); stroke-width: 1.5; }
 .lab-paper .wg-paint { transition: opacity 300ms ease; stroke: rgba(0, 0, 0, 0.25); stroke-width: 1; }
 .lab-paper .wg-red { fill: #c8372d; }
@@ -312,7 +314,7 @@
 .lab-paper .wg-controls { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
 .lab-paper .wg-dots { display: flex; flex-wrap: wrap; gap: 2px; margin-left: auto; list-style: none; padding: 0; }
 .lab-paper .wg-dots button { width: 24px; height: 24px; padding: 0; border: 0; background: none; cursor: pointer; }
-.lab-paper .wg-dots button::before { content: ""; display: block; width: 8px; height: 8px; margin: auto; border-radius: 50%; background: var(--lp-line-strong); transition: transform 150ms ease; }
+.lab-paper .wg-dots button::before { content: ""; display: block; width: 8px; height: 8px; margin: auto; border-radius: 50%; background: var(--lp-muted); transition: transform 150ms ease; }
 .lab-paper .wg-dots button[aria-current="step"]::before { background: var(--lp-accent); transform: scale(1.4); }
 .lab-paper .wg-dots button:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 1px; border-radius: 50%; }
 .lab-paper .lg-buy { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin: 24px 0; padding: 20px 24px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); background: var(--lp-surface); }
@@ -322,6 +324,9 @@
 @media (max-width: 767px) {
   .lab-paper .wg-below { min-height: 196px; }
   .lab-paper .wg-dots { margin-left: 0; width: 100%; }
+}
+@media (max-width: 359px) {
+  .lab-paper .wg-below { min-height: 236px; }
 }
 @media (prefers-reduced-motion: reduce) {
   .lab-paper .wg-peg, .lab-paper .wg-die, .lab-paper .wg-paint, .lab-paper .wg-tray-win, .lab-paper .wg-turn, .lab-paper .wg-dots button::before { transition: none; }

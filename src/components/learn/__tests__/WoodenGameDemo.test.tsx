@@ -46,7 +46,7 @@ describe("WoodenGameDemo", () => {
     render(<WoodenGameDemo />);
 
     expect(caption()).toBe(`1 / ${FRAMES.length} ${FRAMES[0].caption}`);
-    expect(document.querySelector(".wg-caption")).toHaveAttribute("aria-live", "polite");
+    expect(document.querySelector(".wg-caption")).toHaveAttribute("aria-live", "off");
 
     act(() => jest.advanceTimersByTime(3200));
     expect(caption()).toBe(`2 / ${FRAMES.length} ${FRAMES[1].caption}`);
@@ -63,7 +63,10 @@ describe("WoodenGameDemo", () => {
 
     act(() => jest.advanceTimersByTime(10000));
     expect(caption()).toContain(FRAMES[0].caption);
-    expect(screen.getByRole("button", { name: "Previous" })).toBeDisabled();
+    expect(document.querySelector(".wg-caption")).toHaveAttribute("aria-live", "polite");
+    expect(screen.getByRole("button", { name: "Previous" })).toHaveAttribute("aria-disabled", "true");
+    fireEvent.click(screen.getByRole("button", { name: "Previous" }));
+    expect(caption()).toContain(FRAMES[0].caption);
 
     fireEvent.click(screen.getByRole("button", { name: "Next" }));
     expect(caption()).toContain(FRAMES[1].caption);
@@ -85,6 +88,7 @@ describe("WoodenGameDemo", () => {
     act(() => jest.advanceTimersByTime(10000));
 
     expect(caption()).toContain(FRAMES[0].caption);
-    expect(screen.getByRole("button", { name: "Play" })).toHaveAttribute("aria-pressed", "false");
+    expect(screen.getByRole("button", { name: "Play" })).toBeInTheDocument();
+    expect(document.querySelector(".wg-caption")).toHaveAttribute("aria-live", "polite");
   });
 });

@@ -296,7 +296,7 @@ const TILES: { readonly [K in DashboardTileId]: TileBuilder } = {
     );
   },
   board: ({ entries }) => {
-    const best = Object.values(entries ?? {}).reduce<{ difficulty: string; correct: number } | null>(
+    const best = Object.values(entries ?? {}).filter((entry) => !entry?.mode).reduce<{ difficulty: string; correct: number } | null>(
       (top, entry) => (entry && (top === null || entry.score.correctPieces > top.correct) ? { difficulty: entry.difficulty, correct: entry.score.correctPieces } : top),
       null,
     );

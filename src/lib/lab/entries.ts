@@ -4,6 +4,7 @@ import { entryFromRow } from "@/lib/leaderboard/entryRow";
 import { isEntryId } from "@/lib/leaderboard/standing";
 import { parseUtcDay } from "./daily";
 import { isObject } from "./guards";
+import { BLINDFOLD_MODE } from "@/lib/game/roundLink";
 import { DAILY_BOARD, LEADERBOARD_DIFFICULTIES, type LeaderboardDifficulty } from "@/types/leaderboard";
 
 export const ENTRIES_KEY = "memory-chess-lab-entries";
@@ -18,8 +19,10 @@ interface EntryFacts {
   readonly submittedAt: number;
 }
 
+/** `mode` is absent on a board-study entry, as it is on every entry stored before blindfold boards existed. */
 export interface StoredEntry extends EntryFacts {
   readonly difficulty: LeaderboardDifficulty;
+  readonly mode?: typeof BLINDFOLD_MODE;
 }
 
 export interface DailyEntry extends EntryFacts {
@@ -27,14 +30,23 @@ export interface DailyEntry extends EntryFacts {
   readonly dailyDay: string;
 }
 
-export type StoredEntries = Readonly<Partial<Record<LeaderboardDifficulty, StoredEntry>>>;
+/** Each ranked board keeps its own entry: a board-study one under its difficulty, a blindfold one beside it. */
+export type EntryKey = LeaderboardDifficulty | `${typeof BLINDFOLD_MODE}-${LeaderboardDifficulty}`;
 
-function parseEntry(raw: unknown, difficulty: LeaderboardDifficulty): StoredEntry | null {
-  if (!isObject(raw) || !isEntryId(raw.id) || raw.difficulty !== difficulty) return null;
+export type StoredEntries = Readonly<Partial<Record<EntryKey, StoredEntry>>>;
+
+type Board = Pick<StoredEntry, "difficulty" | "mode">;
+
+export const entryKey = ({ difficulty, mode }: Board): EntryKey => (mode ? `${mode}-${difficulty}` : difficulty);
+
+export const ENTRY_BOARDS: readonly Board[] = LEADERBOARD_DIFFICULTIES.flatMap((difficulty) => [{ difficulty }, { difficulty, mode: BLINDFOLD_MODE }]);
+
+function parseEntry(raw: unknown, { difficulty, mode }: Board): StoredEntry | null {
+  if (!isObject(raw) || !isEntryId(raw.id) || raw.difficulty !== difficulty || raw.mode !== mode) return null;
   const score = parseScore(raw.score);
   const country = parseCountryCode(raw.country);
   if (score === null || country === null || !Number.isSafeInteger(raw.submittedAt)) return null;
-  return { id: raw.id, difficulty, country, score, submittedAt: raw.submittedAt as number };
+  return { id: raw.id, difficulty, ...(mode && { mode }), country, score, submittedAt: raw.submittedAt as number };
 }
 
 const orNothing = (entries: StoredEntries): StoredEntries | null => (Object.keys(entries).length > 0 ? entries : null);
@@ -48,22 +60,25 @@ export function parseEntries(text: string | null): StoredEntries | null {
     return null;
   }
   if (!isObject(raw)) return null;
-  const kept = LEADERBOARD_DIFFICULTIES.flatMap((difficulty) => {
-    const entry = parseEntry(raw[difficulty], difficulty);
-    return entry ? [[difficulty, entry] as const] : [];
+  const kept = ENTRY_BOARDS.flatMap((board) => {
+    const key = entryKey(board);
+    const entry = parseEntry(raw[key], board);
+    return entry ? [[key, entry] as const] : [];
   });
   return orNothing(Object.fromEntries(kept));
 }
 
 export function withEntry(entries: StoredEntries | null, entry: StoredEntry): StoredEntries {
-  const kept = entries?.[entry.difficulty];
+  const key = entryKey(entry);
+  const kept = entries?.[key];
   if (entries && kept && compareRanking(kept.score, entry.score) < 0) return entries;
-  return { ...entries, [entry.difficulty]: entry };
+  return { ...entries, [key]: entry };
 }
 
-export function withoutEntry(entries: StoredEntries | null, { id, difficulty }: StoredEntry): StoredEntries | null {
-  if (entries?.[difficulty]?.id !== id) return entries;
-  return orNothing(Object.fromEntries(Object.entries(entries).filter(([kept]) => kept !== difficulty)));
+export function withoutEntry(entries: StoredEntries | null, entry: StoredEntry): StoredEntries | null {
+  const key = entryKey(entry);
+  if (entries?.[key]?.id !== entry.id) return entries;
+  return orNothing(Object.fromEntries(Object.entries(entries).filter(([kept]) => kept !== key)));
 }
 
 const DAILY_DAYS_KEPT = 2;

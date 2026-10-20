@@ -1791,5 +1791,45 @@
       "secondsRange": "De {min} a {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "¿Hasta qué punto recuerda la gente las posiciones de ajedrez? Datos de {rounds, number} rondas de Memory Chess",
+      "description": "Recuerdo medio de posiciones de ajedrez según el número de piezas y el tiempo de estudio, a partir de {rounds, number} rondas terminadas de Memory Chess. Datos abiertos con licencia CC BY 4.0, con el método y sus límites.",
+      "socialTitle": "¿Hasta qué punto recuerda la gente las posiciones de ajedrez?",
+      "socialDescription": "Recuerdo según el número de piezas y el tiempo de estudio, a partir de {rounds, number} rondas terminadas de Memory Chess. Datos abiertos con licencia CC BY 4.0."
+    },
+    "kicker": "Datos abiertos",
+    "title": "¿Hasta qué punto recuerda la gente las posiciones de ajedrez?",
+    "answer": "En {rounds, number} rondas terminadas de Memory Chess entre el {start} y el {end}, los jugadores que estudiaron una posición durante 10 segundos colocaron bien de media el {two} de las 2 piezas ({twoRounds, number} rondas), pero solo el {six} de las 6 piezas ({sixRounds, number} rondas). Apenas el {sixPerfect} de esas rondas de 6 piezas fueron perfectas, y con 12 piezas y 8 segundos la media bajó al {twelve}, con un {twelvePerfect} de rondas perfectas ({twelveRounds, number} rondas).",
+    "englishNote": "Las notas sobre el método, los límites y cómo citar estos datos están en inglés.",
+    "chart": {
+      "byPieces": "Recuerdo medio con {seconds} segundos de estudio",
+      "bySeconds": "Recuerdo medio de {pieces} piezas, según el tiempo de estudio",
+      "pieces": "{count, plural, one {# pieza} many {# de piezas} other {# piezas}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# ronda} many {# de rondas} other {# rondas}}",
+      "scale": "Cada barra está dibujada a escala de 0 a 100 % de precisión."
+    },
+    "table": {
+      "title": "Todos los ajustes publicados",
+      "caption": "Precisión según el número de piezas y el tiempo de estudio. Se omiten los ajustes con menos de {minRounds, number} rondas o {minPlayers, number} jugadores.",
+      "pieces": "Piezas",
+      "seconds": "Tiempo de estudio",
+      "rounds": "Rondas",
+      "players": "Jugadores",
+      "mean": "Media",
+      "median": "Mediana",
+      "middle": "Mitad central",
+      "middleValue": "{low} a {high}",
+      "perfect": "Perfectas"
+    },
+    "links": {
+      "csv": "Descargar el CSV",
+      "notes": "Notas de campo en GitHub",
+      "play": "Jugar una ronda"
+    },
+    "aboutLine": "Los resultados de todas las rondas terminadas se publican de forma agregada.",
+    "aboutLink": "Ver los datos de recuerdo"
   }
 }

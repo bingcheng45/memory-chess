@@ -1791,5 +1791,45 @@
       "secondsRange": "{min} až {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Jak dobře si lidé pamatují šachové pozice? Data z {rounds, number} kol hry Memory Chess",
+      "description": "Průměrná přesnost vybavení šachových pozic podle počtu figur a času na zapamatování, z {rounds, number} dokončených kol hry Memory Chess. Otevřená data pod licencí CC BY 4.0, s popisem metody a jejích omezení.",
+      "socialTitle": "Jak dobře si lidé pamatují šachové pozice?",
+      "socialDescription": "Přesnost podle počtu figur a času na zapamatování, z {rounds, number} dokončených kol hry Memory Chess. Otevřená data pod licencí CC BY 4.0."
+    },
+    "kicker": "Otevřená data",
+    "title": "Jak dobře si lidé pamatují šachové pozice?",
+    "answer": "V {rounds, number} dokončených kolech hry Memory Chess od {start} do {end} hráči, kteří si pozici prohlíželi 10 sekund, umístili správně v průměru {two} ze 2 figur ({twoRounds, number} kol), ale jen {six} ze 6 figur ({sixRounds, number} kol). Pouze {sixPerfect} z těchto kol se 6 figurami bylo bezchybných a při 12 figurách a 8 sekundách klesl průměr na {twelve}, přičemž bezchybných bylo {twelvePerfect} ({twelveRounds, number} kol).",
+    "englishNote": "Poznámky k metodě, omezením a citování níže jsou v angličtině.",
+    "chart": {
+      "byPieces": "Průměrná přesnost při {seconds} s na zapamatování",
+      "bySeconds": "Průměrná přesnost u {pieces} figur podle času na zapamatování",
+      "pieces": "{count, plural, one {# figura} few {# figury} many {# figury} other {# figur}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# kolo} few {# kola} many {# kola} other {# kol}}",
+      "scale": "Každý sloupec je vykreslen v měřítku od 0 do 100 % přesnosti."
+    },
+    "table": {
+      "title": "Všechna zveřejněná nastavení",
+      "caption": "Přesnost podle počtu figur a času na zapamatování. Nastavení s méně než {minRounds, number} koly nebo {minPlayers, number} hráči nejsou uvedena.",
+      "pieces": "Figury",
+      "seconds": "Čas na zapamatování",
+      "rounds": "Kola",
+      "players": "Hráči",
+      "mean": "Průměr",
+      "median": "Medián",
+      "middle": "Prostřední polovina",
+      "middleValue": "{low} až {high}",
+      "perfect": "Bezchybná"
+    },
+    "links": {
+      "csv": "Stáhnout CSV",
+      "notes": "Pracovní poznámky na GitHubu",
+      "play": "Zahrát kolo"
+    },
+    "aboutLine": "Výsledky všech dokončených kol zveřejňujeme v souhrnné podobě.",
+    "aboutLink": "Zobrazit data o zapamatování"
   }
 }

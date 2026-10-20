@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "59bf7f2cc13328b45d8110c5420b081183239ba211b0714db566bd9d53024d7a",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "ae4e03e2a34fe6c6a03dccd7da8ff9292ade624251f512ecfeefdb0e0dfc8819",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Når du åpner eller liker en artikkel, lagrer Supabase bare et totalt antall visninger og et totalt antall likerklikk for hver artikkel, med tidspunktet for siste endring og uten noen identifikator for den besøkende."
+          },
+          {
+            "p": "På <data>siden med hukommelsesdata</data> publiserer vi antall fullførte runder etter antall brikker, studietid og treffsikkerhet, hentet fra Google Analytics. Det er bare samlede tall, uten navn, spiller-ID-er eller stillinger, og en gruppe med færre enn 30 runder eller 5 spillere utelates."
           }
         ]
       },

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "b4f0ae904c38ba27c83d87f61825d59547c7d5a7c3f29bf6f32c0e9a381a97c9",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "18464daabf790848e982f4142861656e2b8bf37963d264660a1f26cc96bc4bd0",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Gdy otworzysz lub polubisz artykuł, Supabase przechowuje dla każdego artykułu tylko łączną liczbę wyświetleń i łączną liczbę polubień, z czasem ostatniej zmiany i bez żadnego identyfikatora odwiedzającego."
+          },
+          {
+            "p": "Na <data>stronie z danymi o zapamiętywaniu</data> publikujemy liczby ukończonych rund według liczby figur, czasu na zapamiętanie i celności, pobrane z Google Analytics. Są to wyłącznie zbiorcze liczby, bez nazw, identyfikatorów graczy ani pozycji, a grupa licząca mniej niż 30 rund lub 5 graczy jest pomijana."
           }
         ]
       },

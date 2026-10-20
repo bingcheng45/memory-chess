@@ -1791,5 +1791,45 @@
       "secondsRange": "{min}–{max} mp",
       "secondsExact": "{count} mp"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Mennyire jól emlékeznek az emberek a sakkállásokra? Adatok {rounds, number} Memory Chess-körből",
+      "description": "Sakkállások átlagos felidézési pontossága a bábuk száma és a megfigyelési idő szerint, {rounds, number} befejezett Memory Chess-kör alapján. Nyílt adatok CC BY 4.0 licenc alatt, a módszerrel és annak korlátaival.",
+      "socialTitle": "Mennyire jól emlékeznek az emberek a sakkállásokra?",
+      "socialDescription": "Felidézési pontosság a bábuk száma és a megfigyelési idő szerint, {rounds, number} befejezett Memory Chess-kör alapján. Nyílt adatok CC BY 4.0 licenc alatt."
+    },
+    "kicker": "Nyílt adatok",
+    "title": "Mennyire jól emlékeznek az emberek a sakkállásokra?",
+    "answer": "{start} és {end} között {rounds, number} befejezett Memory Chess-körben azok a játékosok, akik 10 másodpercig figyelték meg az állást, 2 bábunál átlagosan {two} pontossággal rakták vissza a bábukat ({twoRounds, number} kör), 6 bábunál viszont csak {six} pontossággal ({sixRounds, number} kör). A 6 bábus körökben a hibátlanok aránya mindössze {sixPerfect} volt, 12 bábuval és 8 másodperccel pedig az átlag {twelve} értékre esett, a hibátlan körök aránya {twelvePerfect} lett ({twelveRounds, number} kör).",
+    "englishNote": "Az alábbi, a módszerről, a korlátokról és a hivatkozásról szóló megjegyzések angol nyelvűek.",
+    "chart": {
+      "byPieces": "Átlagos pontosság {seconds} másodperc megfigyelési idővel",
+      "bySeconds": "{pieces} bábu átlagos felidézési pontossága a megfigyelési idő szerint",
+      "pieces": "{count, plural, one {# bábu} other {# bábu}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# kör} other {# kör}}",
+      "scale": "Minden oszlop méretarányos, 0 és 100% közötti pontossági skálán."
+    },
+    "table": {
+      "title": "Minden közzétett beállítás",
+      "caption": "Pontosság a bábuk száma és a megfigyelési idő szerint. Azokat a beállításokat, amelyekben {minRounds, number} körnél vagy {minPlayers, number} játékosnál kevesebb van, kihagytuk.",
+      "pieces": "Bábuk",
+      "seconds": "Megfigyelési idő",
+      "rounds": "Körök",
+      "players": "Játékosok",
+      "mean": "Átlag",
+      "median": "Medián",
+      "middle": "Középső 50%",
+      "middleValue": "{low} és {high} között",
+      "perfect": "Hibátlan"
+    },
+    "links": {
+      "csv": "A CSV letöltése",
+      "notes": "Munkajegyzetek a GitHubon",
+      "play": "Játssz egy kört"
+    },
+    "aboutLine": "Minden befejezett kör eredményét összesítve tesszük közzé.",
+    "aboutLink": "Nézd meg a felidézési adatokat"
   }
 }

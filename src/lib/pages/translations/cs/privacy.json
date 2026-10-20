@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "83e43cf5ad5f74985f9bf3a4124a2d4bf7c670018c62cf029008e3533cebd15f",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "841405ea3a5237a37cf12ec7376d2af5db4a6254b02d5a37d1cf7de642441dc5",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Když článek otevřete nebo mu dáte lajk, Supabase ukládá u každého článku pouze celkový počet zobrazení a celkový počet lajků, s časem poslední změny a bez jakéhokoli identifikátoru návštěvníka."
+          },
+          {
+            "p": "Na <data>stránce s daty o zapamatování</data> zveřejňujeme počty dokončených kol podle počtu figur, doby na zapamatování a přesnosti, převzaté z Google Analytics. Jde pouze o souhrnné počty, bez jmen, identifikátorů hráčů a pozic, a skupina s méně než 30 koly nebo 5 hráči se vynechává."
           }
         ]
       },

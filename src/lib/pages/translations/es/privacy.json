@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "a01721dd2d176120941419350adb5c00ec0a1a6d815d7030f81e2eafba8daefe",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "215cb1b35eafd668984032bc90684fe2c6644422b4d93eb06474c19dab7bdc8e",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Cuando abres un artículo o le das me gusta, Supabase guarda solo un total de visitas y un total de me gusta por artículo, con la hora del último cambio y sin ningún identificador de visitante."
+          },
+          {
+            "p": "En la <data>página de datos de recuerdo</data> publicamos recuentos de rondas terminadas por número de piezas, tiempo de estudio y precisión, obtenidos de Google Analytics. Son solo recuentos agregados, sin nombres, identificadores de jugador ni posiciones, y se omite cualquier grupo de menos de 30 rondas o 5 jugadores."
           }
         ]
       },

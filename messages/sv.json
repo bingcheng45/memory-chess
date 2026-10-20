@@ -1791,5 +1791,45 @@
       "secondsRange": "{min} till {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Hur bra minns människor schackställningar? Data från {rounds, number} rundor i Memory Chess",
+      "description": "Genomsnittlig träffsäkerhet när schackställningar återskapas, efter antal pjäser och studietid, från {rounds, number} avslutade rundor i Memory Chess. Öppna data under CC BY 4.0, med metoden och dess begränsningar.",
+      "socialTitle": "Hur bra minns människor schackställningar?",
+      "socialDescription": "Träffsäkerhet efter antal pjäser och studietid, från {rounds, number} avslutade rundor i Memory Chess. Öppna data under CC BY 4.0."
+    },
+    "kicker": "Öppna data",
+    "title": "Hur bra minns människor schackställningar?",
+    "answer": "I {rounds, number} avslutade rundor i Memory Chess från {start} till {end} placerade spelare som studerade en ställning i 10 sekunder i genomsnitt {two} av 2 pjäser rätt ({twoRounds, number} rundor), men bara {six} av 6 pjäser ({sixRounds, number} rundor). Endast {sixPerfect} av rundorna med 6 pjäser var felfria, och med 12 pjäser och 8 sekunder sjönk snittet till {twelve}, med {twelvePerfect} felfria ({twelveRounds, number} rundor).",
+    "englishNote": "Anteckningarna om metod, begränsningar och källhänvisning nedan är på engelska.",
+    "chart": {
+      "byPieces": "Genomsnittlig träffsäkerhet med {seconds} sekunders studietid",
+      "bySeconds": "Genomsnittlig träffsäkerhet för {pieces} pjäser, efter studietid",
+      "pieces": "{count, plural, one {# pjäs} other {# pjäser}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# runda} other {# rundor}}",
+      "scale": "Varje stapel är skalenligt ritad från 0 till 100 % träffsäkerhet."
+    },
+    "table": {
+      "title": "Alla publicerade inställningar",
+      "caption": "Träffsäkerhet efter antal pjäser och studietid. Inställningar med färre än {minRounds, number} rundor eller {minPlayers, number} spelare är utelämnade.",
+      "pieces": "Pjäser",
+      "seconds": "Studietid",
+      "rounds": "Rundor",
+      "players": "Spelare",
+      "mean": "Medelvärde",
+      "median": "Median",
+      "middle": "Mittersta hälften",
+      "middleValue": "{low} till {high}",
+      "perfect": "Felfria"
+    },
+    "links": {
+      "csv": "Ladda ned CSV-filen",
+      "notes": "Fältanteckningar på GitHub",
+      "play": "Spela en runda"
+    },
+    "aboutLine": "Resultaten från varje avslutad runda publiceras sammanställda.",
+    "aboutLink": "Se minnesdata"
   }
 }

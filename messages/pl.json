@@ -1791,5 +1791,45 @@
       "secondsRange": "od {min} do {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Jak dobrze ludzie zapamiętują pozycje szachowe? Dane z {rounds, number} rund Memory Chess",
+      "description": "Średnia dokładność odtwarzania pozycji szachowych według liczby figur i czasu na zapamiętanie, na podstawie {rounds, number} ukończonych rund Memory Chess. Otwarte dane na licencji CC BY 4.0, z opisem metody i jej ograniczeń.",
+      "socialTitle": "Jak dobrze ludzie zapamiętują pozycje szachowe?",
+      "socialDescription": "Dokładność według liczby figur i czasu na zapamiętanie, na podstawie {rounds, number} ukończonych rund Memory Chess. Otwarte dane na licencji CC BY 4.0."
+    },
+    "kicker": "Otwarte dane",
+    "title": "Jak dobrze ludzie zapamiętują pozycje szachowe?",
+    "answer": "W {rounds, number} ukończonych rundach Memory Chess od {start} do {end} gracze, którzy zapamiętywali pozycję przez 10 sekund, ustawiali poprawnie średnio {two} z 2 figur (dane z {twoRounds, number} rund), ale tylko {six} z 6 figur (dane z {sixRounds, number} rund). Zaledwie {sixPerfect} tych rund z 6 figurami było bezbłędnych, a przy 12 figurach i 8 sekundach średnia spadła do {twelve}, przy {twelvePerfect} rund bezbłędnych (dane z {twelveRounds, number} rund).",
+    "englishNote": "Uwagi o metodzie, ograniczeniach i cytowaniu poniżej są po angielsku.",
+    "chart": {
+      "byPieces": "Średnia dokładność przy {seconds} sekundach na zapamiętanie",
+      "bySeconds": "Średnia dokładność przy {pieces} figurach, według czasu na zapamiętanie",
+      "pieces": "{count, plural, one {# figura} few {# figury} many {# figur} other {# figury}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# runda} few {# rundy} many {# rund} other {# rundy}}",
+      "scale": "Każdy słupek jest narysowany w skali od 0 do 100% dokładności."
+    },
+    "table": {
+      "title": "Wszystkie opublikowane ustawienia",
+      "caption": "Dokładność według liczby figur i czasu na zapamiętanie. Pominięto ustawienia, w których liczba rund jest mniejsza niż {minRounds, number} lub liczba graczy mniejsza niż {minPlayers, number}.",
+      "pieces": "Figury",
+      "seconds": "Czas na zapamiętanie",
+      "rounds": "Rundy",
+      "players": "Gracze",
+      "mean": "Średnia",
+      "median": "Mediana",
+      "middle": "Środkowa połowa",
+      "middleValue": "od {low} do {high}",
+      "perfect": "Bezbłędne"
+    },
+    "links": {
+      "csv": "Pobierz plik CSV",
+      "notes": "Notatki robocze w serwisie GitHub",
+      "play": "Zagraj rundę"
+    },
+    "aboutLine": "Wyniki wszystkich ukończonych rund publikujemy w formie zbiorczej.",
+    "aboutLink": "Zobacz dane o zapamiętywaniu"
   }
 }

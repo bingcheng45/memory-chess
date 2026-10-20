@@ -1791,5 +1791,45 @@
       "secondsRange": "{min} ila {max} sn",
       "secondsExact": "{count} sn"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "İnsanlar satranç konumlarını ne kadar iyi hatırlıyor? Memory Chess'te oynanan {rounds, number} turdan veriler",
+      "description": "Taş sayısına ve inceleme süresine göre satranç konumlarının ortalama hatırlanma oranı, Memory Chess'te bitirilen {rounds, number} turdan. CC BY 4.0 lisanslı açık veri, yöntem ve sınırlarıyla birlikte.",
+      "socialTitle": "İnsanlar satranç konumlarını ne kadar iyi hatırlıyor?",
+      "socialDescription": "Taş sayısına ve inceleme süresine göre hatırlama oranı, Memory Chess'te bitirilen {rounds, number} turdan. CC BY 4.0 lisanslı açık veri."
+    },
+    "kicker": "Açık veri",
+    "title": "İnsanlar satranç konumlarını ne kadar iyi hatırlıyor?",
+    "answer": "{start} ile {end} arasında Memory Chess'te bitirilen {rounds, number} turda, bir konumu 10 saniye inceleyen oyuncuların isabeti 2 taşta ortalama {two} oldu ({twoRounds, number} tur), 6 taşta ise yalnızca {six} ({sixRounds, number} tur). Bu 6 taşlı turlarda kusursuz olanların oranı sadece {sixPerfect} idi ve 12 taş ile 8 saniyede ortalama {twelve} seviyesine düştü, kusursuz turların oranı ise {twelvePerfect} oldu ({twelveRounds, number} tur).",
+    "englishNote": "Aşağıdaki yöntem, sınırlar ve kaynak gösterme notları İngilizcedir.",
+    "chart": {
+      "byPieces": "{seconds} saniye inceleme süresiyle ortalama hatırlama",
+      "bySeconds": "{pieces} taşın ortalama hatırlanma oranı, inceleme süresine göre",
+      "pieces": "{count, plural, one {# taş} other {# taş}}",
+      "seconds": "{count} sn",
+      "rounds": "{count, plural, one {# tur} other {# tur}}",
+      "scale": "Her çubuk %0 ile %100 isabet aralığında ölçeğe uygun çizilmiştir."
+    },
+    "table": {
+      "title": "Yayımlanan tüm ayarlar",
+      "caption": "Taş sayısına ve inceleme süresine göre isabet. {minRounds, number} turdan veya {minPlayers, number} oyuncudan az olan ayarlar dışarıda bırakılmıştır.",
+      "pieces": "Taş",
+      "seconds": "İnceleme süresi",
+      "rounds": "Tur",
+      "players": "Oyuncu",
+      "mean": "Ortalama",
+      "median": "Medyan",
+      "middle": "Ortadaki yarı",
+      "middleValue": "{low} ile {high} arası",
+      "perfect": "Kusursuz"
+    },
+    "links": {
+      "csv": "CSV'yi indir",
+      "notes": "GitHub'daki saha notları",
+      "play": "Bir tur oyna"
+    },
+    "aboutLine": "Bitirilen her turun sonuçları toplu olarak yayımlanır.",
+    "aboutLink": "Hatırlama verilerini gör"
   }
 }

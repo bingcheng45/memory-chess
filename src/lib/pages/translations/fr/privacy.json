@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "27f2269e07a71a0f117ff2cefe859914fc5afc58f9d4fec1da1c934ae3a3109c",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "ca3aa820b11147387b5a0dabca2e35157d0697c1387846d11f72257233ad8bf8",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Lorsque vous ouvrez ou aimez un article, Supabase stocke uniquement un total de vues et un total de « j’aime » pour chaque article, avec l’heure de la dernière modification et sans aucun identifiant de visiteur."
+          },
+          {
+            "p": "Sur la <data>page des données de mémorisation</data>, nous publions le nombre de parties terminées par nombre de pièces, temps d’étude et précision, issu de Google Analytics. Il s’agit uniquement de décomptes agrégés, sans noms, identifiants de joueur ni positions, et tout groupe de moins de 30 parties ou de 5 joueurs est exclu."
           }
         ]
       },

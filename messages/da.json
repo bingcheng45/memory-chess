@@ -1791,5 +1791,45 @@
       "secondsRange": "{min} til {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Hvor godt husker folk skakstillinger? Data fra {rounds, number} runder i Memory Chess",
+      "description": "Gennemsnitlig præcision, når skakstillinger skal genskabes, efter antal brikker og husketid, fra {rounds, number} gennemførte runder i Memory Chess. Åbne data under CC BY 4.0, med metoden og dens begrænsninger.",
+      "socialTitle": "Hvor godt husker folk skakstillinger?",
+      "socialDescription": "Præcision efter antal brikker og husketid, fra {rounds, number} gennemførte runder i Memory Chess. Åbne data under CC BY 4.0."
+    },
+    "kicker": "Åbne data",
+    "title": "Hvor godt husker folk skakstillinger?",
+    "answer": "I {rounds, number} gennemførte runder i Memory Chess fra {start} til {end} placerede spillere, der så på en stilling i 10 sekunder, i gennemsnit {two} af 2 brikker rigtigt ({twoRounds, number} runder), men kun {six} af 6 brikker ({sixRounds, number} runder). Blot {sixPerfect} af runderne med 6 brikker var fejlfri, og med 12 brikker og 8 sekunder faldt gennemsnittet til {twelve}, med {twelvePerfect} fejlfri ({twelveRounds, number} runder).",
+    "englishNote": "Noterne om metode, begrænsninger og kildeangivelse nedenfor er på engelsk.",
+    "chart": {
+      "byPieces": "Gennemsnitlig præcision med {seconds} sekunders husketid",
+      "bySeconds": "Gennemsnitlig præcision for {pieces} brikker, efter husketid",
+      "pieces": "{count, plural, one {# brik} other {# brikker}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# runde} other {# runder}}",
+      "scale": "Hver søjle er tegnet i korrekt skala fra 0 til 100 % præcision."
+    },
+    "table": {
+      "title": "Alle offentliggjorte indstillinger",
+      "caption": "Præcision efter antal brikker og husketid. Indstillinger med færre end {minRounds, number} runder eller {minPlayers, number} spillere er udeladt.",
+      "pieces": "Brikker",
+      "seconds": "Husketid",
+      "rounds": "Runder",
+      "players": "Spillere",
+      "mean": "Gennemsnit",
+      "median": "Median",
+      "middle": "Midterste halvdel",
+      "middleValue": "{low} til {high}",
+      "perfect": "Fejlfri"
+    },
+    "links": {
+      "csv": "Download CSV-filen",
+      "notes": "Feltnoter på GitHub",
+      "play": "Spil en runde"
+    },
+    "aboutLine": "Resultaterne fra hver gennemført runde offentliggøres samlet.",
+    "aboutLink": "Se hukommelsesdataene"
   }
 }

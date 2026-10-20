@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "b1edd65f00a7615306cbcad3ebb71dc211df3854c3fc51f4f495c9ec0bd009e4",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "8e4a76a4844d77fa72c7fb5839b01b4923cb0b257cee76a7eb4ed90682a6db60",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "當你開啟一篇文章或按讚時，Supabase 只為每篇文章儲存瀏覽總數和按讚總數，以及最後一次變更的時間，不儲存任何訪客識別碼。"
+          },
+          {
+            "p": "我們在<data>記憶資料頁面</data>上公布來自 Google Analytics 的已完成回合數，依棋子數、記憶用時和準確率分組。這些只是彙總計數，不包含姓名、玩家 ID 或局面，少於 30 個回合或 5 名玩家的組別不予列出。"
           }
         ]
       },

@@ -1791,5 +1791,45 @@
       "secondsRange": "De {min} a {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Quão bem as pessoas se lembram de posições de xadrez? Dados de {rounds, number} rodadas do Memory Chess",
+      "description": "Lembrança média de posições de xadrez por número de peças e tempo de estudo, com base em {rounds, number} rodadas concluídas do Memory Chess. Dados abertos sob CC BY 4.0, com o método e seus limites.",
+      "socialTitle": "Quão bem as pessoas se lembram de posições de xadrez?",
+      "socialDescription": "Lembrança por número de peças e tempo de estudo, com base em {rounds, number} rodadas concluídas do Memory Chess. Dados abertos sob CC BY 4.0."
+    },
+    "kicker": "Dados abertos",
+    "title": "Quão bem as pessoas se lembram de posições de xadrez?",
+    "answer": "Em {rounds, number} rodadas concluídas do Memory Chess entre {start} e {end}, os jogadores que estudaram uma posição por 10 segundos acertaram em média {two} das 2 peças ({twoRounds, number} rodadas), mas só {six} das 6 peças ({sixRounds, number} rodadas). Apenas {sixPerfect} dessas rodadas de 6 peças foram perfeitas, e com 12 peças e 8 segundos a média caiu para {twelve}, com {twelvePerfect} de rodadas perfeitas ({twelveRounds, number} rodadas).",
+    "englishNote": "As notas sobre método, limites e citação abaixo estão em inglês.",
+    "chart": {
+      "byPieces": "Lembrança média com {seconds} segundos de estudo",
+      "bySeconds": "Lembrança média de {pieces} peças, por tempo de estudo",
+      "pieces": "{count, plural, one {# peça} many {# de peças} other {# peças}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# rodada} many {# de rodadas} other {# rodadas}}",
+      "scale": "Cada barra é desenhada em escala de 0 a 100% de precisão."
+    },
+    "table": {
+      "title": "Todas as configurações publicadas",
+      "caption": "Precisão por número de peças e tempo de estudo. Configurações com menos de {minRounds, number} rodadas ou {minPlayers, number} jogadores ficam de fora.",
+      "pieces": "Peças",
+      "seconds": "Tempo de estudo",
+      "rounds": "Rodadas",
+      "players": "Jogadores",
+      "mean": "Média",
+      "median": "Mediana",
+      "middle": "Metade central",
+      "middleValue": "{low} a {high}",
+      "perfect": "Perfeitas"
+    },
+    "links": {
+      "csv": "Baixar o CSV",
+      "notes": "Notas de campo no GitHub",
+      "play": "Jogar uma rodada"
+    },
+    "aboutLine": "Os resultados de todas as rodadas concluídas são publicados de forma agregada.",
+    "aboutLink": "Ver os dados de lembrança"
   }
 }

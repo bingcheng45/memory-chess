@@ -1791,5 +1791,45 @@
       "secondsRange": "Da {min} a {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Quanto bene le persone ricordano le posizioni di scacchi? Dati da {rounds, number} partite di Memory Chess",
+      "description": "Memoria media delle posizioni di scacchi per numero di pezzi e tempo di studio, da {rounds, number} partite concluse di Memory Chess. Dati aperti con licenza CC BY 4.0, con il metodo e i suoi limiti.",
+      "socialTitle": "Quanto bene le persone ricordano le posizioni di scacchi?",
+      "socialDescription": "Memoria per numero di pezzi e tempo di studio, da {rounds, number} partite concluse di Memory Chess. Dati aperti con licenza CC BY 4.0."
+    },
+    "kicker": "Dati aperti",
+    "title": "Quanto bene le persone ricordano le posizioni di scacchi?",
+    "answer": "In {rounds, number} partite concluse di Memory Chess dal {start} al {end}, i giocatori che hanno studiato una posizione per 10 secondi hanno piazzato correttamente in media {two} dei 2 pezzi ({twoRounds, number} partite), ma solo {six} dei 6 pezzi ({sixRounds, number} partite). Appena {sixPerfect} di quelle partite con 6 pezzi sono state perfette, e con 12 pezzi e 8 secondi la media è scesa a {twelve}, con {twelvePerfect} di partite perfette ({twelveRounds, number} partite).",
+    "englishNote": "Le note su metodo, limiti e citazione qui sotto sono in inglese.",
+    "chart": {
+      "byPieces": "Memoria media con {seconds} secondi di studio",
+      "bySeconds": "Memoria media di {pieces} pezzi, per tempo di studio",
+      "pieces": "{count, plural, one {# pezzo} many {# di pezzi} other {# pezzi}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# partita} many {# di partite} other {# partite}}",
+      "scale": "Ogni barra è disegnata in scala da 0 a 100% di precisione."
+    },
+    "table": {
+      "title": "Tutte le impostazioni pubblicate",
+      "caption": "Precisione per numero di pezzi e tempo di studio. Le impostazioni con meno di {minRounds, number} partite o {minPlayers, number} giocatori sono escluse.",
+      "pieces": "Pezzi",
+      "seconds": "Tempo di studio",
+      "rounds": "Partite",
+      "players": "Giocatori",
+      "mean": "Media",
+      "median": "Mediana",
+      "middle": "Metà centrale",
+      "middleValue": "da {low} a {high}",
+      "perfect": "Perfette"
+    },
+    "links": {
+      "csv": "Scarica il CSV",
+      "notes": "Note di campo su GitHub",
+      "play": "Gioca una partita"
+    },
+    "aboutLine": "I risultati di ogni partita conclusa sono pubblicati in forma aggregata.",
+    "aboutLink": "Vedi i dati sulla memoria"
   }
 }

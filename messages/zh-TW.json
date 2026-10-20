@@ -1791,5 +1791,45 @@
       "secondsRange": "{min} 至 {max} 秒",
       "secondsExact": "{count} 秒"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "人們對西洋棋局面記得有多準？來自 Memory Chess {rounds, number} 個回合的資料",
+      "description": "依棋子數和記憶時間統計的西洋棋局面平均記憶準確率，資料來自 Memory Chess 的 {rounds, number} 個已完成回合。資料以 CC BY 4.0 授權開放，並附方法及其限制。",
+      "socialTitle": "人們對西洋棋局面記得有多準？",
+      "socialDescription": "依棋子數和記憶時間統計的記憶準確率，資料來自 Memory Chess 的 {rounds, number} 個已完成回合。資料以 CC BY 4.0 授權開放。"
+    },
+    "kicker": "開放資料",
+    "title": "人們對西洋棋局面記得有多準？",
+    "answer": "在 {start} 至 {end} 期間 Memory Chess 的 {rounds, number} 個已完成回合中，觀察局面 10 秒的玩家平均能把 2 個棋子中的 {two} 擺對（{twoRounds, number} 個回合），但 6 個棋子只擺對 {six}（{sixRounds, number} 個回合）。這些 6 子回合中僅有 {sixPerfect} 是滿分，而在 12 個棋子、8 秒的設定下，平均值降到 {twelve}，滿分為 {twelvePerfect}（{twelveRounds, number} 個回合）。",
+    "englishNote": "下方關於方法、限制和引用的說明為英文。",
+    "chart": {
+      "byPieces": "記憶時間為 {seconds} 秒時的平均記憶準確率",
+      "bySeconds": "{pieces} 個棋子的平均記憶準確率，依記憶時間",
+      "pieces": "{count, plural, other {# 子}}",
+      "seconds": "{count} 秒",
+      "rounds": "{count, plural, other {# 回合}}",
+      "scale": "每根長條都依 0 到 100% 準確率的比例繪製。"
+    },
+    "table": {
+      "title": "所有公布的設定",
+      "caption": "依棋子數和記憶時間統計的準確率。少於 {minRounds, number} 個回合或 {minPlayers, number} 名玩家的設定不予列出。",
+      "pieces": "棋子數",
+      "seconds": "記憶時間",
+      "rounds": "回合數",
+      "players": "玩家數",
+      "mean": "平均值",
+      "median": "中位數",
+      "middle": "中間一半",
+      "middleValue": "{low} 至 {high}",
+      "perfect": "滿分"
+    },
+    "links": {
+      "csv": "下載 CSV",
+      "notes": "GitHub 上的研究筆記",
+      "play": "玩一回合"
+    },
+    "aboutLine": "每一個已完成回合的結果都會以彙總形式公布。",
+    "aboutLink": "查看記憶資料"
   }
 }

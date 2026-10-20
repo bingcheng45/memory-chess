@@ -1791,5 +1791,45 @@
       "secondsRange": "{min} tot {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Hoe goed onthouden mensen schaakstellingen? Gegevens uit {rounds, number} rondes Memory Chess",
+      "description": "Hoeveel mensen gemiddeld onthouden van een schaakstelling, per aantal stukken en kijktijd, uit {rounds, number} voltooide rondes Memory Chess. Open data onder CC BY 4.0, met de methode en de beperkingen.",
+      "socialTitle": "Hoe goed onthouden mensen schaakstellingen?",
+      "socialDescription": "Herinnering per aantal stukken en kijktijd, uit {rounds, number} voltooide rondes Memory Chess. Open data onder CC BY 4.0."
+    },
+    "kicker": "Open data",
+    "title": "Hoe goed onthouden mensen schaakstellingen?",
+    "answer": "In {rounds, number} voltooide rondes Memory Chess van {start} tot en met {end} zetten spelers die een stelling 10 seconden bekeken gemiddeld {two} van 2 stukken goed terug ({twoRounds, number} rondes), maar slechts {six} van 6 stukken ({sixRounds, number} rondes). Amper {sixPerfect} van die rondes met 6 stukken was foutloos, en met 12 stukken en 8 seconden zakte het gemiddelde naar {twelve}, met {twelvePerfect} foutloze rondes ({twelveRounds, number} rondes).",
+    "englishNote": "De toelichting over methode, beperkingen en bronvermelding hieronder is in het Engels.",
+    "chart": {
+      "byPieces": "Gemiddelde herinnering bij {seconds} seconden kijktijd",
+      "bySeconds": "Gemiddelde herinnering van {pieces} stukken, per kijktijd",
+      "pieces": "{count, plural, one {# stuk} other {# stukken}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# ronde} other {# rondes}}",
+      "scale": "Elke balk is op schaal getekend, van 0 tot 100% nauwkeurigheid."
+    },
+    "table": {
+      "title": "Alle gepubliceerde instellingen",
+      "caption": "Nauwkeurigheid per aantal stukken en kijktijd. Instellingen met minder dan {minRounds, number} rondes of {minPlayers, number} spelers zijn weggelaten.",
+      "pieces": "Stukken",
+      "seconds": "Kijktijd",
+      "rounds": "Rondes",
+      "players": "Spelers",
+      "mean": "Gemiddelde",
+      "median": "Mediaan",
+      "middle": "Middelste helft",
+      "middleValue": "{low} tot {high}",
+      "perfect": "Foutloos"
+    },
+    "links": {
+      "csv": "Download de CSV",
+      "notes": "Veldnotities op GitHub",
+      "play": "Speel een ronde"
+    },
+    "aboutLine": "De resultaten van elke voltooide ronde worden geaggregeerd gepubliceerd.",
+    "aboutLink": "Bekijk de geheugendata"
   }
 }

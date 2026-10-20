@@ -1791,5 +1791,45 @@
       "secondsRange": "{min} bis {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Wie gut merken sich Menschen Schachstellungen? Daten aus {rounds, number} Runden Memory Chess",
+      "description": "Wie gut man sich Schachstellungen im Schnitt merkt, nach Figurenzahl und Einprägezeit, aus {rounds, number} beendeten Runden Memory Chess. Offene Daten unter CC BY 4.0, mit Methode und ihren Grenzen.",
+      "socialTitle": "Wie gut merken sich Menschen Schachstellungen?",
+      "socialDescription": "Erinnerung nach Figurenzahl und Einprägezeit, aus {rounds, number} beendeten Runden Memory Chess. Offene Daten unter CC BY 4.0."
+    },
+    "kicker": "Offene Daten",
+    "title": "Wie gut merken sich Menschen Schachstellungen?",
+    "answer": "In {rounds, number} beendeten Runden Memory Chess vom {start} bis zum {end} setzten Spielende, die sich eine Stellung 10 Sekunden lang einprägten, im Schnitt {two} der 2 Figuren richtig ({twoRounds, number} Runden), aber nur {six} der 6 Figuren ({sixRounds, number} Runden). Gerade einmal {sixPerfect} dieser Runden mit 6 Figuren waren perfekt, und mit 12 Figuren und 8 Sekunden sank der Schnitt auf {twelve}, mit {twelvePerfect} perfekten Runden ({twelveRounds, number} Runden).",
+    "englishNote": "Die Hinweise zu Methode, Grenzen und Zitierweise unten sind auf Englisch.",
+    "chart": {
+      "byPieces": "Durchschnittliche Erinnerung bei {seconds} Sekunden Einprägezeit",
+      "bySeconds": "Durchschnittliche Erinnerung an {pieces} Figuren, nach Einprägezeit",
+      "pieces": "{count, plural, one {# Figur} other {# Figuren}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# Runde} other {# Runden}}",
+      "scale": "Jeder Balken ist maßstabsgetreu von 0 bis 100 % Genauigkeit gezeichnet."
+    },
+    "table": {
+      "title": "Alle veröffentlichten Einstellungen",
+      "caption": "Genauigkeit nach Figurenzahl und Einprägezeit. Einstellungen mit weniger als {minRounds, number} Runden oder {minPlayers, number} Spielenden sind nicht enthalten.",
+      "pieces": "Figuren",
+      "seconds": "Einprägezeit",
+      "rounds": "Runden",
+      "players": "Spielende",
+      "mean": "Mittelwert",
+      "median": "Median",
+      "middle": "Mittlere Hälfte",
+      "middleValue": "{low} bis {high}",
+      "perfect": "Perfekt"
+    },
+    "links": {
+      "csv": "CSV herunterladen",
+      "notes": "Feldnotizen auf GitHub",
+      "play": "Eine Runde spielen"
+    },
+    "aboutLine": "Die Ergebnisse aller beendeten Runden werden aggregiert veröffentlicht.",
+    "aboutLink": "Zu den Gedächtnisdaten"
   }
 }

@@ -1791,5 +1791,45 @@
       "secondsRange": "{min} til {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Hvor godt husker folk sjakkstillinger? Data fra {rounds, number} runder i Memory Chess",
+      "description": "Gjennomsnittlig treffsikkerhet når sjakkstillinger gjenskapes, etter antall brikker og studietid, fra {rounds, number} fullførte runder i Memory Chess. Åpne data under CC BY 4.0, med metoden og begrensningene.",
+      "socialTitle": "Hvor godt husker folk sjakkstillinger?",
+      "socialDescription": "Treffsikkerhet etter antall brikker og studietid, fra {rounds, number} fullførte runder i Memory Chess. Åpne data under CC BY 4.0."
+    },
+    "kicker": "Åpne data",
+    "title": "Hvor godt husker folk sjakkstillinger?",
+    "answer": "I {rounds, number} fullførte runder i Memory Chess fra {start} til {end} plasserte spillere som studerte en stilling i 10 sekunder i snitt {two} av 2 brikker riktig ({twoRounds, number} runder), men bare {six} av 6 brikker ({sixRounds, number} runder). Kun {sixPerfect} av rundene med 6 brikker var feilfrie, og med 12 brikker og 8 sekunder falt snittet til {twelve}, med {twelvePerfect} feilfrie ({twelveRounds, number} runder).",
+    "englishNote": "Merknadene om metode, begrensninger og kildehenvisning nedenfor er på engelsk.",
+    "chart": {
+      "byPieces": "Gjennomsnittlig treffsikkerhet med {seconds} sekunders studietid",
+      "bySeconds": "Gjennomsnittlig treffsikkerhet for {pieces} brikker, etter studietid",
+      "pieces": "{count, plural, one {# brikke} other {# brikker}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# runde} other {# runder}}",
+      "scale": "Hver stolpe er tegnet i riktig skala fra 0 til 100 % treffsikkerhet."
+    },
+    "table": {
+      "title": "Alle publiserte innstillinger",
+      "caption": "Treffsikkerhet etter antall brikker og studietid. Innstillinger med færre enn {minRounds, number} runder eller {minPlayers, number} spillere er utelatt.",
+      "pieces": "Brikker",
+      "seconds": "Studietid",
+      "rounds": "Runder",
+      "players": "Spillere",
+      "mean": "Gjennomsnitt",
+      "median": "Median",
+      "middle": "Midterste halvdel",
+      "middleValue": "{low} til {high}",
+      "perfect": "Feilfrie"
+    },
+    "links": {
+      "csv": "Last ned CSV-filen",
+      "notes": "Feltnotater på GitHub",
+      "play": "Spill en runde"
+    },
+    "aboutLine": "Resultatene fra hver fullførte runde publiseres samlet.",
+    "aboutLink": "Se hukommelsesdataene"
   }
 }

@@ -68,7 +68,7 @@ export type BoardPlacement = {
 
 /** What the template needs that the legacy guide never held, written per guide. */
 export type Authored = {
-  readonly group: LearnGroupId;
+  readonly group: Exclude<LearnGroupId, "compare">;
   readonly questions: readonly string[];
   /** Why to play the page's round, in this guide's words. */
   readonly gameWhy: string;

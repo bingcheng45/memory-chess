@@ -53,6 +53,22 @@ export function guideStructuredData(page: LearnPage) {
           { "@type": "ListItem", position: 3, name: meta.title, item: url },
         ],
       },
+      ...(page.comparison?.products
+        ? [
+            {
+              "@type": "ItemList",
+              "@id": `${url}#compared`,
+              name: meta.title,
+              numberOfItems: page.comparison.products.length,
+              itemListElement: page.comparison.products.map((product, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: product.name,
+                url: product.url,
+              })),
+            },
+          ]
+        : []),
       ...(page.faq.length > 0
         ? [
             {

@@ -46,6 +46,12 @@ export const LEARN_GROUPS = [
     description: "How a round is scored, what each preset tests and what your dashboard figures mean.",
     status: "planned",
   },
+  {
+    id: "compare",
+    label: "Compare training tools",
+    description: "What each memory and visualization trainer offers, read from its own pages and dated.",
+    status: "live",
+  },
 ] as const satisfies readonly {
   readonly id: string;
   readonly label: string;
@@ -169,13 +175,30 @@ export type LearnSection = {
   readonly facts?: readonly LearnPosition[];
 };
 
-export type LearnDocument = {
-  readonly meta: LearnMeta;
+export type ComparedProduct = { readonly name: string; readonly url: `https://${string}` };
+
+export type Comparison = {
+  /** The day every fact about another product on the page was read from that product's live public page. */
+  readonly checkedAt: string;
+  /** Written per page: says Memory Chess publishes it. */
+  readonly disclosure: string;
+  /** The products the page compares, in table order. */
+  readonly products?: readonly [ComparedProduct, ComparedProduct, ...ComparedProduct[]];
+};
+
+type LearnBody = {
   readonly intro: LearnIntro;
   readonly sections: readonly [LearnSection, ...LearnSection[]];
   /** In render order. At most one each of faq, furtherReading and sources. */
   readonly end: readonly EndBlock[];
 };
+
+/** A page in the compare group, and only there, carries its disclosure and the date its facts were checked. */
+export type LearnDocument = LearnBody &
+  (
+    | { readonly meta: LearnMeta & { readonly group: Exclude<LearnGroupId, "compare"> }; readonly comparison?: never }
+    | { readonly meta: LearnMeta & { readonly group: "compare" }; readonly comparison: Comparison }
+  );
 
 export const LEARN_AUTHOR = {
   name: "Bing Cheng",

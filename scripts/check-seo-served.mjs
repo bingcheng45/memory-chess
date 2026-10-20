@@ -21,7 +21,7 @@ const TRIMMED_TITLES = {
   "/learn/chess-memory-training": "Chess Memory Training: A 6-to-12 Piece Ladder | Memory Chess",
   "/articles/adriaan-de-groot": "De Groot's 1944 chess memory test, in numbers | Memory Chess",
   "/articles/magnus-carlsen": "How Magnus Carlsen names a game from one position | Memory Chess",
-  "/learn/blindfold-chess-training-for-beginners": "How to Learn Blindfold Chess: 4-Stage Training | Memory Chess",
+  "/learn/blindfold-chess-training-for-beginners": "Blindfold Chess Training for Beginners: 4 Stages | Memory Chess",
   "/learn/chess-visualization-exercises": "Chess Visualization Training: See the Board | Memory Chess",
   "/learn/chess-coordinates-practice": "Chess Coordinates Practice: Name Squares Faster | Memory Chess",
   "/articles/judit-polgar": "How Judit Polgár played blindfold chess at seven | Memory Chess",

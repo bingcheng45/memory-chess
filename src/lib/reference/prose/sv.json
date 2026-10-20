@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "Minnestestet i schack",
+      "what": "I ett minnestest i schack ser du en ställning i några sekunder och ska sedan bygga upp den igen på ett tomt bräde. Det är den minnesuppgift som {deGroot} gav schackspelare 1944, och William Chase och Herbert Simons artikel ”Perception in Chess” från 1973 är standardverket om den.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess räknar en pjäs som rätt bara när rätt pjäs i rätt färg står på rätt ruta. Din träffsäkerhet är andelen av ställningens pjäser som du placerade så, minus {penalty} poäng för varje pjäs du placerade utöver ställningens antal, och den går aldrig under 0.",
+      "typical": "I {rounds} omgångar av Memory Chess med {pieces} pjäser och {seconds} sekunder, spelade från {start} till {end}, var den genomsnittliga träffsäkerheten {mean}, och {perfect} av omgångarna var felfria. Med {easyPieces} pjäser var genomsnittet {easyMean}, och med {hardPieces} pjäser på {hardSeconds} sekunder var det {hardMean}.",
+      "limits": "Det här är spelare som själva valde att spela och själva valde inställningen, inte ett urval av alla schackspelare, och ett tomt bräde räknas som 0, även dagens enda gratis överhoppning.",
+      "dataLink": "Datasidan beskriver metoden och alla begränsningar."
+    },
     "title": "Så spelar du Memory Chess",
     "intro": "Varje omgång följer samma tre steg.",
     "phases": {

@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "Il test di memoria scacchistica",
+      "what": "Un test di memoria scacchistica ti mostra una posizione per pochi secondi e poi ti chiede di ricostruirla su una scacchiera vuota. È il compito di ricordo che {deGroot} propose agli scacchisti nel 1944, e l'articolo «Perception in Chess» di William Chase e Herbert Simon, del 1973, ne è il riferimento classico.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess conta un pezzo solo quando il pezzo giusto, del colore giusto, si trova sulla casa giusta. La tua precisione è la quota dei pezzi della posizione piazzati così, meno {penalty} punti per ogni pezzo piazzato oltre il numero della posizione, e non scende mai sotto 0.",
+      "typical": "In {rounds} turni di Memory Chess impostati su {pieces} pezzi e {seconds} secondi, giocati dal {start} al {end}, la precisione media è stata pari a {mean} e i turni perfetti sono stati pari a {perfect} del totale. Con {easyPieces} pezzi la media è stata pari a {easyMean}, e con {hardPieces} pezzi in {hardSeconds} secondi pari a {hardMean}.",
+      "limits": "Si tratta di giocatori che hanno scelto di giocare e scelto l'impostazione, non di un campione di tutti gli scacchisti, e una scacchiera vuota conta come 0, compresa quella del salto gratuito del giorno.",
+      "dataLink": "La pagina dei dati spiega il metodo e ogni limite."
+    },
     "title": "Come si gioca a Memory Chess",
     "intro": "Ogni turno segue gli stessi tre passi.",
     "phases": {

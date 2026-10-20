@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "Bài kiểm tra trí nhớ cờ vua",
+      "what": "Bài kiểm tra trí nhớ cờ vua cho bạn xem một thế cờ trong vài giây, rồi yêu cầu bạn xếp lại thế cờ ấy trên một bàn cờ trống. Đây chính là bài tập ghi nhớ mà {deGroot} đã giao cho các kỳ thủ năm 1944, và bài báo “Perception in Chess” năm 1973 của William Chase và Herbert Simon là tài liệu tham khảo chuẩn về bài kiểm tra này.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess chỉ tính một quân khi đúng loại quân, đúng màu và đứng đúng ô. Độ chính xác của bạn là tỷ lệ phần trăm số quân của thế cờ được đặt như vậy, trừ đi {penalty} điểm cho mỗi quân đặt vượt quá số quân của thế cờ, và không bao giờ xuống dưới 0.",
+      "typical": "Trong {rounds} ván Memory Chess đặt ở mức {pieces} quân và {seconds} giây, chơi từ ngày {start} đến ngày {end}, độ chính xác trung bình là {mean} và {perfect} số ván không sai quân nào. Với {easyPieces} quân, mức trung bình là {easyMean}, còn với {hardPieces} quân trong {hardSeconds} giây là {hardMean}.",
+      "limits": "Đây là những người chơi tự chọn chơi và tự chọn mức thiết lập, không phải một mẫu đại diện cho mọi kỳ thủ, và bàn cờ trống được tính là 0, kể cả lượt bỏ qua miễn phí mỗi ngày.",
+      "dataLink": "Trang dữ liệu trình bày phương pháp và mọi giới hạn."
+    },
     "title": "Cách chơi Memory Chess",
     "intro": "Mỗi ván đều theo đúng ba bước như nhau.",
     "phases": {

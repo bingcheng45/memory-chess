@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "国际象棋记忆测试",
+      "what": "国际象棋记忆测试先让你看一个局面几秒钟，再请你在空棋盘上把它复原。这正是{deGroot}在1944年给棋手们出的回忆任务，而威廉·蔡斯和赫伯特·西蒙1973年的论文《Perception in Chess》是这方面的标准参考文献。",
+      "deGroot": "阿德里安·德格鲁特",
+      "scoring": "在 Memory Chess 里，只有颜色对、种类对、格子也对的棋子才算对。你的准确率是这样摆对的棋子占局面棋子的比例，每多摆一颗超出局面数量的棋子扣 {penalty} 分，最低为 0。",
+      "typical": "从{start}到{end}，设为 {pieces} 颗子、{seconds} 秒的 Memory Chess 共玩了 {rounds} 局，平均准确率为 {mean}，每颗子都正确的局占 {perfect}。{easyPieces} 颗子时平均为 {easyMean}，{hardSeconds} 秒记 {hardPieces} 颗子时为 {hardMean}。",
+      "limits": "这些玩家是自己选择来玩、自己选定设置的，并不是全体国际象棋棋手的样本；空棋盘按 0 计，每天一次的免费跳过也算在内。",
+      "dataLink": "数据页面列出了方法和每一项局限。"
+    },
     "title": "Memory Chess 怎么玩",
     "intro": "每一局都是同样的三步。",
     "phases": {

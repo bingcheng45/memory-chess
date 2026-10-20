@@ -47,9 +47,9 @@ describe("the chess memory test answer on /game", () => {
     const html = await servedHtml("de");
     const text = await servedText("de");
 
-    expect(text).toContain("1.294");
-    expect(text).toContain("29. September 2026");
-    expect(text).toContain("48 %");
+    expect(text).toContain(
+      "In 1.294 Runden Memory Chess mit 6 Figuren und 10 Sekunden Einprägezeit, gespielt vom 29. September 2026 bis zum 19. Oktober 2026, lag die Genauigkeit im Schnitt bei 48\u00a0%, und 11\u00a0% der Runden waren fehlerfrei. Mit 2 Figuren lag der Schnitt bei 82\u00a0%, mit 12 Figuren in 8 Sekunden bei 40\u00a0%.",
+    );
     expect(html).toContain('href="/de/articles/adriaan-de-groot"');
   });
 });

@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "Tes memori catur",
+      "what": "Tes memori catur memperlihatkan sebuah posisi kepada Anda selama beberapa detik, lalu meminta Anda menyusunnya kembali di papan kosong. Inilah tugas mengingat yang diberikan {deGroot} kepada para pemain catur pada 1944, dan makalah William Chase dan Herbert Simon tahun 1973, “Perception in Chess”, menjadi rujukan bakunya.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess hanya menghitung sebuah bidak jika bidak yang benar dengan warna yang benar berdiri di petak yang benar. Akurasi Anda adalah proporsi bidak posisi itu yang ditempatkan dengan cara tersebut, dikurangi {penalty} poin untuk setiap bidak yang ditempatkan melebihi jumlah bidak posisi itu, dan nilainya tidak pernah di bawah 0.",
+      "typical": "Dalam {rounds} ronde Memory Chess dengan pengaturan {pieces} bidak dan {seconds} detik yang dimainkan dari {start} sampai {end}, rata-rata akurasinya {mean} dan {perfect} ronde berakhir sempurna. Dengan {easyPieces} bidak, rata-ratanya {easyMean}, dan dengan {hardPieces} bidak dalam {hardSeconds} detik rata-ratanya {hardMean}.",
+      "limits": "Mereka adalah pemain yang memilih sendiri untuk bermain dan memilih sendiri pengaturannya, bukan sampel dari semua pemain catur, dan papan kosong dihitung 0, termasuk jatah lewati gratis sekali sehari.",
+      "dataLink": "Halaman data menjelaskan metodenya dan setiap batasannya."
+    },
     "title": "Cara bermain Memory Chess",
     "intro": "Setiap ronde mengikuti tiga langkah yang sama.",
     "phases": {

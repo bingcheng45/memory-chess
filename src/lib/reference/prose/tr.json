@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "Satranç hafıza testi",
+      "what": "Satranç hafıza testi size bir konumu birkaç saniye gösterir, ardından onu boş bir tahtada yeniden kurmanızı ister. Bu, {deGroot}'un 1944'te satranççılara verdiği hatırlama görevidir ve William Chase ile Herbert Simon'ın 1973 tarihli “Perception in Chess” makalesi bu görevin temel kaynağıdır.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess bir taşı yalnızca doğru renkteki doğru taş doğru karede durduğunda sayar. Doğruluğunuz, konumdaki taşlardan bu şekilde yerleştirilenlerin oranıdır; konumun taş sayısının ötesinde yerleştirdiğiniz her taş için {penalty} puan düşülür ve doğruluk hiçbir zaman 0'ın altına inmez.",
+      "typical": "{start} ile {end} arasında {pieces} taş ve {seconds} saniye ayarıyla oynanan {rounds} Memory Chess turunda ortalama doğruluk {mean} oldu, kusursuz turların oranı ise {perfect} idi. {easyPieces} taşla ortalama {easyMean}, {hardSeconds} saniyede {hardPieces} taşla ise {hardMean} oldu.",
+      "limits": "Bunlar oynamayı ve ayarı kendileri seçen oyunculardır, tüm satranççılardan alınmış bir örneklem değildir; boş bir tahta da, günün tek ücretsiz atlaması dahil, 0 sayılır.",
+      "dataLink": "Veri sayfası yöntemi ve tüm sınırlamaları açıklıyor."
+    },
     "title": "Memory Chess nasıl oynanır",
     "intro": "Her tur aynı üç adımdan oluşur.",
     "phases": {

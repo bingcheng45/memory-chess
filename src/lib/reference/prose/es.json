@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "La prueba de memoria ajedrecística",
+      "what": "Una prueba de memoria ajedrecística te muestra una posición durante unos segundos y después te pide que la reconstruyas en un tablero vacío. Es la tarea de recuerdo que {deGroot} planteó a jugadores de ajedrez en 1944, y el artículo «Perception in Chess» de William Chase y Herbert Simon, de 1973, es su referencia clásica.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess solo cuenta una pieza cuando la pieza correcta, del color correcto, está en la casilla correcta. Tu precisión es el porcentaje de piezas de la posición colocadas así, menos {penalty} puntos por cada pieza colocada por encima del número de la posición, y nunca baja de 0.",
+      "typical": "En {rounds} rondas de Memory Chess con {pieces} piezas y {seconds} segundos, jugadas del {start} al {end}, la precisión media fue del {mean} y el {perfect} de las rondas fueron perfectas. Con {easyPieces} piezas la media fue del {easyMean}, y con {hardPieces} piezas en {hardSeconds} segundos, del {hardMean}.",
+      "limits": "Son jugadores que eligieron jugar y eligieron la configuración, no una muestra de todos los jugadores de ajedrez, y un tablero vacío cuenta como 0, incluido el del salto gratis del día.",
+      "dataLink": "La página de datos explica el método y todas sus limitaciones."
+    },
     "title": "Cómo jugar a Memory Chess",
     "intro": "Cada ronda sigue los mismos tres pasos.",
     "phases": {

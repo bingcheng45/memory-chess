@@ -1,6 +1,6 @@
 {
-  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
-  "approvedHash": "8f61504ade9859a6a256f4a9a971f86c35776de97e537e8c210b79d37c575f5e",
+  "sourceHash": "cc29ce6472c077d5414b39660222c240c6c0ab3bcaf9329cc1a6bf6408fd5ce8",
+  "approvedHash": "46d213792b8385d05e026773dc2153e56ffc6c7565dbf030916ed863ee1233b6",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -31,6 +31,7 @@
       {
         "heading": "Quattro giocatori e pochi secondi",
         "paragraphs": [
+          "I grandi maestri ricordano una posizione tratta da una partita vera come pochi gruppi di pezzi familiari, i chunk che William Chase e Herbert Simon misurarono nel 1973, e non casa per casa. Nel test di Adriaan de Groot del 1944 il campione del mondo Max Euwe vide una posizione di 22 pezzi per 5 secondi e indicò correttamente la posizione di tutti e 22 i pezzi, mentre un giocatore di una classe più debole ottenne 9. Sulle scacchiere casuali il vantaggio si riduce a circa un pezzo in più ogni 400 punti Elo, contro circa cinque sulle posizioni di partita, come rilevarono Fernand Gobet e Herbert Simon nel 1996.",
           "Nel 1944 Adriaan de Groot mostrò a Max Euwe una posizione di scacchi e la tolse cinque secondi dopo. La posizione veniva da una partita tra Rohacek e Rabar, dopo la 20ª mossa del Bianco, con 22 pezzi sulla scacchiera. Euwe, campione del mondo dal 1935 al 1937, dettò poi dove si trovava ogni pezzo. Non sbagliò nessuno dei 22.",
           "De Groot, a sua volta maestro, fece lo stesso test, aggiunse un pedone che non c’era e ottenne 21 punti. A. Fast, campione di Utrecht del 1942, collocò correttamente 17 pezzi ma giudicò pari il materiale quando non lo era, e ottenne 16. G. P. Hauer, un giocatore di una classe più debole, ottenne 9.",
           "I racconti di seconda mano non concordano sul tempo di esposizione e sulle percentuali, perciò le cifre che seguono vengono dal libro di de Groot."

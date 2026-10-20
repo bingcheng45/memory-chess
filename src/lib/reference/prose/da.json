@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "Hukommelsestesten i skak",
+      "what": "I en hukommelsestest i skak ser du en stilling i nogle få sekunder og skal derefter genskabe den på et tomt bræt. Det er den genkaldelsesopgave, {deGroot} gav skakspillere i 1944, og William Chase og Herbert Simons artikel »Perception in Chess« fra 1973 er standardværket om den.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess tæller kun en brik som rigtig, når den rigtige brik i den rigtige farve står på det rigtige felt. Din præcision er den andel af stillingens brikker, du satte på den måde, minus {penalty} point for hver brik du satte ud over stillingens antal, og den kommer aldrig under 0.",
+      "typical": "I {rounds} runder Memory Chess med {pieces} brikker og {seconds} sekunder, spillet fra {start} til {end}, var den gennemsnitlige præcision {mean}, og {perfect} af runderne var fejlfri. Med {easyPieces} brikker var gennemsnittet {easyMean}, og med {hardPieces} brikker på {hardSeconds} sekunder var det {hardMean}.",
+      "limits": "Det er spillere, der selv valgte at spille og selv valgte indstillingen, ikke et udsnit af alle skakspillere, og et tomt bræt tæller som 0, også dagens ene gratis overspring.",
+      "dataLink": "Datasiden beskriver metoden og alle begrænsninger."
+    },
     "title": "Sådan spiller du Memory Chess",
     "intro": "Hver runde består af de samme tre trin.",
     "phases": {

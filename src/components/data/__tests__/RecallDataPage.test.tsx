@@ -100,7 +100,7 @@ it("says in the limits that skips, calibration, review and daily rounds are pool
 
   const limits = screen.getByRole("heading", { name: "Limits" }).parentElement as HTMLElement;
   expect(within(limits).getByText(/^An empty board counts as a round that scored 0\./)).toHaveTextContent(
-    "An empty board counts as a round that scored 0. Once a day the game accepts an empty board as a free skip, and the analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting's share: 15.7% of the 6-piece, 10-second rounds.",
+    "An empty board counts as a round that scored 0. Once a day the game accepts an empty board as a free skip, and the analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting's share, 15.7% for the 6-piece, 10-second rounds.",
   );
   expect(within(limits).getByText(/^Review rounds/)).toHaveTextContent(
     "Review rounds, which replay a board the player saw before, and the daily board, the same seeded position for everyone that day, are pooled with the other rounds. The data cannot separate them.",

@@ -20,7 +20,7 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
         <p>
           Every number here comes from the game. When a round&apos;s result shows, Memory Chess sends one Google Analytics 4 event,
           round_complete, with the number of pieces, the study time the round was set to and the round&apos;s accuracy. The study time
-          is that setting, not the time the board was actually shown: a player can clear the board early. The event has fired since
+          is that setting, not the time the board was actually shown. A player can clear the board early. The event has fired since
           September 29, 2026, so there is no earlier data. This release covers {range}, counted in days of the America/Los_Angeles
           time zone the analytics property uses.
         </p>
@@ -64,7 +64,7 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
           <li>
             An empty board counts as a round that scored 0. Once a day the game accepts an empty board as a free skip, and the
             analytics event cannot tell a skip from a real 0, so skips are in the data. The Scored 0 column gives each setting&apos;s
-            share: {tenth(defaultRound.zeroShare)}% of the {DEFAULT_ROUND_PIECES}-piece, {DEFAULT_ROUND_SECONDS}-second rounds.
+            share, {tenth(defaultRound.zeroShare)}% for the {DEFAULT_ROUND_PIECES}-piece, {DEFAULT_ROUND_SECONDS}-second rounds.
           </li>
           <li>
             Review rounds, which replay a board the player saw before, and the daily board, the same seeded position for everyone that

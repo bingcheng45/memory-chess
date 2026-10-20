@@ -25,7 +25,7 @@ describe("homeSchema", () => {
       isPartOf: { "@id": "https://thememorychess.com/#website" },
       description: "Play the free memory chess game online.",
       image: [
-        "https://thememorychess.com/social/v2/memory-chess-1200x630.jpg",
+        "https://thememorychess.com/social/v2/memory-chess-1200x675.jpg",
         "https://thememorychess.com/social/v2/memory-chess-1200x900.jpg",
         "https://thememorychess.com/social/v2/memory-chess-1200x1200.jpg",
       ],

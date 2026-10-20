@@ -21,7 +21,7 @@ export const socialImage = {
 };
 
 /** 16:9, 4:3 and 1:1 crops, the set Google asks for in structured data. */
-export const SCHEMA_IMAGES = ["1200x630", "1200x900", "1200x1200"].map(SOCIAL_IMAGE_URL);
+export const SCHEMA_IMAGES = ["1200x675", "1200x900", "1200x1200"].map(SOCIAL_IMAGE_URL);
 
 /** Open Graph and X card fields for a page that shares the site artwork. */
 export function socialMetadata({ title, description, url }: { title: string; description: string; url: string }) {

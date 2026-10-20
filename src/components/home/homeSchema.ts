@@ -1,4 +1,4 @@
-import { BRAND_ORGANIZATION, BRAND_WEBSITE, ORGANIZATION_ID, SCHEMA_IMAGES, WEBSITE_ID } from "@/lib/seo/brand";
+import { BRAND_ORGANIZATION, BRAND_WEBSITE, ORGANIZATION_ID, SCHEMA_IMAGES, socialImage, WEBSITE_ID } from "@/lib/seo/brand";
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import { TUTORIAL_VIDEO } from "@/components/ui/tutorialVideo";
 
@@ -26,7 +26,7 @@ export function homeSchema(locale: string, description: string) {
         isPartOf: { "@id": WEBSITE_ID },
         description,
         image: SCHEMA_IMAGES,
-        screenshot: SCHEMA_IMAGES[0],
+        screenshot: socialImage.url,
       },
       {
         "@type": "VideoObject",

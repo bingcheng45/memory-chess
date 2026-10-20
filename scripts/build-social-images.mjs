@@ -25,6 +25,7 @@ const BOX = { width: 840, height: 630 };
 
 const OUTPUTS = [
   { name: "memory-chess-1200x630.jpg", width: 1200, height: 630 },
+  { name: "memory-chess-1200x675.jpg", width: 1200, height: 675 },
   { name: "memory-chess-1200x900.jpg", width: 1200, height: 900 },
   { name: "memory-chess-1200x1200.jpg", width: 1200, height: 1200 },
 ];

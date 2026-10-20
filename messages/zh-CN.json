@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: 训练你的国际象棋记忆与盘面想象力",
-      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。"
+      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。",
+      "boardGame": "在找木制桌游 Memory Chess？<link>阅读玩法规则</link>。"
     },
     "cta": {
       "leaderboard": "查看排行榜",
       "chooseSettings": "自选棋子数和时间"
+    },
+    "gameVideo": {
+      "play": "播放视频：{title}",
+      "caption": "完整的一局：观察局面，凭记忆复原，再查看你的得分。"
     },
     "video": {
       "title": "锻炼游戏背后的那项能力",
@@ -973,7 +978,9 @@
         "loss": "最多 <num>−{value}</num>",
         "announce": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。如果失手，最多 −{loss}。",
         "announceProvisional": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。"
-      }
+      },
+      "blindfold": "盲棋",
+      "blindfoldHint": "以记谱方式记住局面，棋盘上不摆棋子。"
     },
     "presets": {
       "easy": {
@@ -1087,7 +1094,8 @@
       "savedToast": {
         "message": "本局已保存。更新后的数据就在下方。",
         "action": "查看"
-      }
+      },
+      "blindfoldRound": "盲棋回合：你通过记谱记住了局面。"
     },
     "comparison": {
       "title": "回顾你的棋局"
@@ -1170,6 +1178,12 @@
         "bishop": "象",
         "knight": "马",
         "pawn": "兵"
+      },
+      "notation": {
+        "label": "记谱形式的局面",
+        "white": "白方",
+        "black": "黑方",
+        "pawns": "只写格子的是兵"
       }
     }
   },
@@ -1208,6 +1222,13 @@
       "setting": "{pieces, plural, other {# 个棋子}} · 记忆 {seconds} 秒",
       "resetsAtUtc": "UTC {utc} 重置",
       "resetsAt": "UTC {utc} 重置（你的时间 {local}），{timeLeft}后"
+    },
+    "mode": {
+      "label": "练习方式",
+      "board": "棋盘",
+      "blindfold": "盲棋",
+      "note": "盲棋回合以记谱方式记忆、棋盘上不摆棋子，因此有单独的排行榜。",
+      "loading": "正在加载盲棋排行榜。"
     }
   },
   "country": {

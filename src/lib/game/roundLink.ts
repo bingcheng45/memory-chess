@@ -6,11 +6,21 @@ export const ROUND_PARAMS = {
   source: "source",
 } as const;
 
-export function playHref(pieceCount: number, memorizeTime: number, source: RoundSource): string {
+/**
+ * `?mode=blindfold` studies the position as notation. Unlike the round params it stays in the address once a round
+ * starts, as `?difficulty=` does, so the form opens with Blindfold still on after the round.
+ */
+export const MODE_PARAM = "mode";
+export const BLINDFOLD_MODE = "blindfold";
+
+export const isBlindfoldSearch = (search: string): boolean => new URLSearchParams(search).get(MODE_PARAM) === BLINDFOLD_MODE;
+
+export function playHref(pieceCount: number, memorizeTime: number, source: RoundSource, blindfold = false): string {
   const query = new URLSearchParams({
     [ROUND_PARAMS.pieceCount]: String(pieceCount),
     [ROUND_PARAMS.memorizeTime]: String(memorizeTime),
     [ROUND_PARAMS.source]: source,
+    ...(blindfold ? { [MODE_PARAM]: BLINDFOLD_MODE } : {}),
   });
   return `/game?${query}`;
 }

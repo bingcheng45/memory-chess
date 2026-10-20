@@ -5,6 +5,7 @@ const at = (rating: number) => ({ ...NEW_PLAYER, rating });
 
 const empty: ScoredRound = {
   review: false,
+  blindfold: false,
   placedPieces: 0,
   day: "2026-10-14",
   freeSkipDay: null,
@@ -12,6 +13,16 @@ const empty: ScoredRound = {
 };
 
 describe("the outcome of a scored round", () => {
+  it("leaves a blindfold round's rating exactly where it was, empty or full, without spending the free skip", () => {
+    const full = { ...empty, placedPieces: 6, facts: { ...empty.facts, accuracy: 100 } };
+
+    expect([roundOutcomeOf(at(1200), { ...empty, blindfold: true }), roundOutcomeOf(at(1200), { ...full, blindfold: true })]).toEqual([
+      { phase: "blindfold", rating: 1200, change: 0 },
+      { phase: "blindfold", rating: 1200, change: 0 },
+    ]);
+    expect(roundOutcomeOf(at(1200), full).phase).toBe("provisional");
+  });
+
   it("makes the first empty board of the day a free skip that keeps the rating", () => {
     expect(roundOutcomeOf(at(1200), empty)).toEqual({ phase: "freeSkip", rating: 1200, change: 0 });
   });

@@ -15,6 +15,7 @@ const AHREFS = "https://analytics.ahrefs.com";
 const DATABUDDY_SCRIPT = "https://cdn.databuddy.cc";
 const DATABUDDY_EVENTS = ["https://basket.databuddy.cc", "https://api.databuddy.cc"];
 const YOUTUBE = "https://www.youtube.com";
+const YOUTUBE_NOCOOKIE = "https://www.youtube-nocookie.com";
 
 /**
  * 'unsafe-inline' stays in script-src because Next writes per-build inline
@@ -29,7 +30,7 @@ const REPORT_ONLY_POLICY = [
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
   `connect-src 'self' ${[...GOOGLE_ADS, ...GOOGLE_ANALYTICS, AHREFS, ...DATABUDDY_EVENTS].join(" ")}`,
-  `frame-src ${[...GOOGLE_ADS, YOUTUBE].join(" ")}`,
+  `frame-src ${[...GOOGLE_ADS, YOUTUBE, YOUTUBE_NOCOOKIE].join(" ")}`,
   "frame-ancestors 'none'",
   "object-src 'none'",
   "base-uri 'self'",

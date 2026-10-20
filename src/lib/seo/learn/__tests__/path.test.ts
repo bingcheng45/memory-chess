@@ -4,7 +4,7 @@ import { pathStages, stageGuideNumber } from "../path";
 
 describe("the Learn path", () => {
   it("numbers the five live groups as stages and their guides within each stage", () => {
-    const stages = pathStages(groupPages(EN_LEARN_PAGES));
+    const { stages } = pathStages(groupPages(EN_LEARN_PAGES));
 
     expect(
       stages.map((stage) => [
@@ -33,7 +33,7 @@ describe("the Learn path", () => {
           "3.3 blindfold-chess-training-for-beginners",
         ],
       ],
-      [4, "Memory and patterns", ["4.1 chess-memory-training", "4.2 chess-pattern-recognition-drills"]],
+      [4, "Memory and patterns", ["4.1 chess-memory-training", "4.2 chess-pattern-recognition-drills", "4.3 how-to-play-memory-chess-board-game"]],
       [
         5,
         "Practice and review",
@@ -43,7 +43,7 @@ describe("the Learn path", () => {
   });
 
   it("closes selected stages with a round or a dashboard figure", () => {
-    const ctas = pathStages(groupPages(EN_LEARN_PAGES)).map((stage) => [stage.group.id, stage.cta?.href ?? null]);
+    const ctas = pathStages(groupPages(EN_LEARN_PAGES)).stages.map((stage) => [stage.group.id, stage.cta?.href ?? null]);
 
     expect(ctas).toEqual([
       ["foundations", "/game?pieceCount=6&memorizeTime=10&source=guide_cta"],
@@ -57,11 +57,28 @@ describe("the Learn path", () => {
   it("renumbers the stages when a group has no guide yet", () => {
     const withoutFoundations = LEARN_GUIDES.filter((doc) => doc.meta.group !== "foundations").map(toPage);
 
-    expect(pathStages(groupPages(withoutFoundations)).map((stage) => `${stage.number} ${stage.group.id}`)).toEqual([
+    expect(pathStages(groupPages(withoutFoundations)).stages.map((stage) => `${stage.number} ${stage.group.id}`)).toEqual([
       "1 board-vision",
       "2 visualization",
       "3 memory",
       "4 practice",
+    ]);
+  });
+
+  it("keeps the compare group off the numbered path", () => {
+    const { stages, offPath } = pathStages(groupPages(EN_LEARN_PAGES));
+
+    expect(stages.map((stage) => stage.group.id)).not.toContain("compare");
+    expect(offPath.map(({ group, pages }) => [group.id, pages.map((page) => page.meta.slug)])).toEqual([
+      [
+        "compare",
+        [
+          "chess-position-memory-trainers-compared",
+          "lichess-vs-chess-com-visualization-training",
+          "memory-chess-vs-lichess-coordinate-trainer",
+          "memory-chess-vs-darksquares",
+        ],
+      ],
     ]);
   });
 });

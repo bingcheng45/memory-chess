@@ -17,6 +17,7 @@ export const LEARN_GUIDE_COPY = {
   sources: "Sources",
   minRead: (minutes: number) => `${minutes} min read`,
   updated: (date: string) => `Updated ${date}`,
+  checked: (date: string) => `Checked ${date}`,
   by: "By",
   figure: (n: number) => `Fig. ${n}`,
   toMove: (side: "w" | "b") => (side === "w" ? "White to move." : "Black to move."),

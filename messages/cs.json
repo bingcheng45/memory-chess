@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Trénujte šachovou paměť a představivost",
-      "freeToPlay": "Zdarma a bez zakládání účtu. Své skóre můžete porovnat i v <link>žebříčku</link>."
+      "freeToPlay": "Zdarma a bez zakládání účtu. Své skóre můžete porovnat i v <link>žebříčku</link>.",
+      "boardGame": "Hledáte dřevěnou deskovou hru Memory Chess? <link>Přečtěte si pravidla</link>."
     },
     "cta": {
       "leaderboard": "Zobrazit žebříček",
       "chooseSettings": "Zvolte počet figur a čas"
+    },
+    "gameVideo": {
+      "play": "Přehrát video: {title}",
+      "caption": "Jedno kolo od začátku do konce: prohlédněte si pozici, sestavte ji zpaměti a přečtěte si skóre."
     },
     "video": {
       "title": "Trénujte dovednost, na které hra stojí",
@@ -973,7 +978,9 @@
         "loss": "Nejvýše <num>−{value}</num>",
         "announce": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}. Když to nevyjde, nejvýše −{loss}.",
         "announceProvisional": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}."
-      }
+      },
+      "blindfold": "Naslepo",
+      "blindfoldHint": "Pozici si zapamatujte ze zápisu, bez figur na šachovnici."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1094,8 @@
       "savedToast": {
         "message": "Kolo uloženo. Aktualizované statistiky najdeš hned níž.",
         "action": "Ukázat"
-      }
+      },
+      "blindfoldRound": "Kolo naslepo: pozici jste si zapamatovali ze zápisu."
     },
     "comparison": {
       "title": "Projděte si svou pozici"
@@ -1170,6 +1178,12 @@
         "bishop": "Střelec",
         "knight": "Jezdec",
         "pawn": "Pěšec"
+      },
+      "notation": {
+        "label": "Pozice v zápisu",
+        "white": "Bílý",
+        "black": "Černý",
+        "pawns": "samotné pole je pěšec"
       }
     }
   },
@@ -1208,6 +1222,13 @@
       "setting": "{pieces, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} · {seconds} s na studium",
       "resetsAtUtc": "Obnoví se v {utc} UTC",
       "resetsAt": "Obnoví se v {utc} UTC ({local} u vás), za {timeLeft}"
+    },
+    "mode": {
+      "label": "Režim studia",
+      "board": "Šachovnice",
+      "blindfold": "Naslepo",
+      "note": "Kola naslepo se studují ze zápisu, bez figur na šachovnici, a proto mají vlastní žebříčky.",
+      "loading": "Načítá se žebříček naslepo."
     }
   },
   "country": {

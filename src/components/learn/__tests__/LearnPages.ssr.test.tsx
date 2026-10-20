@@ -6,6 +6,7 @@ import LearnGuideRoute from "@/app/[locale]/learn/[slug]/page";
 import LearnHub from "@/app/[locale]/learn/page";
 import LearnSearchRoute, { metadata as searchMetadata } from "@/app/[locale]/learn/search/page";
 import messages from "../../../../messages/en.json";
+import { AFFILIATE } from "@/lib/affiliate/amazon";
 
 jest.mock("next/link", () => {
   function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
@@ -104,6 +105,15 @@ describe("a guide page", () => {
     expect(markup).toContain('<a href="/learn/chess-coordinates-practice">Chess Coordinates Practice: Name Squares Faster</a>');
   });
 
+  it.each(["chess-visualization-exercises", "how-to-see-the-whole-board-in-chess"])(
+    "links the blindfold guide from the %s prose with its search phrase",
+    async (slug) => {
+      const markup = await guide(slug);
+
+      expect(markup).toContain('<a href="/learn/blindfold-chess-training-for-beginners" class="lg-link">blindfold chess training</a>');
+    },
+  );
+
   it("hides no text from a crawler", async () => {
     const markup = await guide("20-minute-daily-chess-study-plan");
 
@@ -139,8 +149,65 @@ describe("a guide page", () => {
   });
 });
 
+describe("the wooden board game guide", () => {
+  const SLUG = "how-to-play-memory-chess-board-game";
+  const amazonLinks = (markup: string) => [...markup.matchAll(/<a [^>]*href="([^"]*amazon[^"]*)"[^>]*>/g)].map((match) => match[0]);
+
+  afterEach(() => jest.restoreAllMocks());
+
+  it("serves the written rules, the demo's caption and its sections to a crawler", async () => {
+    const markup = await guide(SLUG);
+
+    expect(texts(markup, "h1")).toEqual(["How to play Memory Chess, the wooden board game"]);
+    expect(texts(markup, "h2")).toEqual([
+      "What comes in a wooden Memory Chess set",
+      "How to set up the board",
+      "How a turn works: roll, lift, keep or put back",
+      "How to win wooden Memory Chess",
+      "Memory Chess variants and house rules",
+      "Tips for playing with children and with adults",
+      "Two games share the name Memory Chess",
+      "Questions",
+    ]);
+    expect(markup).toContain("If they do not match, put the peg back in exactly the same hole.");
+    expect(markup).toContain("<figcaption>A two-player game step by step: setup, a match, a miss that goes back in its hole, and a win.</figcaption>");
+    expect(markup).toContain('<a href="/" class="lg-link">Memory Chess online</a>');
+    expect(markup).toContain('<a href="/learn#memory">Memory and patterns</a>');
+  });
+
+  it("links the tagged Amazon product once, sponsored, beside the disclosure", async () => {
+    const markup = await guide(SLUG);
+
+    expect(amazonLinks(markup)).toEqual([
+      '<a href="https://link.amazon/B02uoulyl" target="_blank" rel="sponsored nofollow noopener" class="lab-btn lab-btn-secondary">',
+    ]);
+    expect(markup).toMatch(/link\.amazon\/B02uoulyl[^]*?<\/a><p>As an Amazon Associate, Memory Chess earns from qualifying purchases\.<\/p>/);
+  });
+
+  it("carries no Amazon link, disclosure or set drawing while the product link is empty", async () => {
+    jest.replaceProperty(AFFILIATE, "amazonProductUrl", "");
+    const markup = await guide(SLUG);
+
+    expect(amazonLinks(markup)).toEqual([]);
+    expect(markup).not.toContain("Amazon Associate");
+    expect(markup).not.toContain("wg-set");
+    expect(markup).toContain('id="take-a-turn"');
+  });
+
+  it("describes itself as an article in the memory group with an FAQ", async () => {
+    const nodes = graph(await guide(SLUG));
+
+    expect(nodes.map((node) => node["@type"])).toEqual(["Article", "WebPage", "BreadcrumbList", "FAQPage", "Organization", "WebSite"]);
+    expect(nodes[0]).toMatchObject({
+      headline: "How to play Memory Chess, the wooden board game",
+      articleSection: "Memory and patterns",
+      about: { "@type": "Thing", name: "how to play memory chess" },
+    });
+  });
+});
+
 describe("the hub", () => {
-  it("walks five numbered stages, each guide numbered within its stage, then the closing routine", () => {
+  it("walks five numbered stages, each guide numbered within its stage, then the closing routine and the unnumbered compare group", () => {
     const markup = html(LearnHub());
 
     expect(texts(markup, "h2")).toEqual([
@@ -150,6 +217,7 @@ describe("the hub", () => {
       "Memory and patterns",
       "Practice and review",
       "Then keep the routine going",
+      "Compare training tools",
     ]);
     expect(texts(markup, "p").find((text) => text.endsWith("matches your problem."))).toBe(
       "Five stages, each a few short guides. Read them in order, or start at the stage that matches your problem.",
@@ -161,7 +229,7 @@ describe("the hub", () => {
       'href="#memory"',
       'href="#practice"',
     ]);
-    expect(texts(markup, "span").filter((text) => /^\d\.\d$/.test(text))).toHaveLength(14);
+    expect(texts(markup, "span").filter((text) => /^\d\.\d$/.test(text))).toHaveLength(15);
     expect(markup).toContain("6 min read · ends with 6 pieces, 10 seconds");
   });
 
@@ -176,7 +244,13 @@ describe("the hub", () => {
     const items = graph(markup).find((node) => node["@type"] === "ItemList")?.itemListElement as { name: string }[];
     const shown = [...markup.matchAll(/class="lh-guide"[^]*?<b>(.*?)<\/b>/g)].map((match) => match[1].replace(/&#x27;/g, "'"));
 
-    expect(shown).toHaveLength(14);
+    expect(shown).toHaveLength(19);
+    expect(shown.slice(-4)).toEqual([
+      "Chess Position Memory Trainers Compared",
+      "Lichess vs Chess.com for Visualization Training",
+      "Memory Chess vs the Lichess Coordinate Trainer",
+      "Memory Chess vs DarkSquares Compared",
+    ]);
     expect(items.map((item) => item.name)).toEqual(shown);
   });
 
@@ -227,5 +301,51 @@ describe("the server search page", () => {
   it("keeps itself out of the index and canonical without the query", () => {
     expect(searchMetadata.robots).toEqual({ index: false, follow: true });
     expect(searchMetadata.alternates).toEqual({ canonical: "/learn/search" });
+  });
+});
+
+describe("a comparison page", () => {
+  const COMPARE_SLUGS = [
+    "chess-position-memory-trainers-compared",
+    "lichess-vs-chess-com-visualization-training",
+    "memory-chess-vs-lichess-coordinate-trainer",
+    "memory-chess-vs-darksquares",
+  ];
+
+  it.each(COMPARE_SLUGS)("%s says who publishes it and when it was checked, right after the lede and before the play strip, and serves a table", async (slug) => {
+    const markup = await guide(slug);
+    const disclosure = markup.indexOf("data-compare-disclosure");
+
+    expect(markup).toContain('<time dateTime="2026-10-20T00:00:00.000Z">Checked 20 October 2026</time>');
+    expect(disclosure).toBeGreaterThan(markup.indexOf('class="lg-lede"'));
+    expect(disclosure).toBeLessThan(markup.indexOf('class="lg-quickplay"'));
+    expect(texts(markup, "p").find((text) => text.includes("Checked 20 October 2026"))).toMatch(/^Memory Chess (publishes|makes)/);
+    expect(markup).toContain("<table>");
+    expect(markup).toContain('<a href="/learn#compare">Compare training tools</a>');
+    expect(graph(markup).map((node) => node["@type"])).toEqual(
+      slug === "chess-position-memory-trainers-compared"
+        ? ["Article", "WebPage", "BreadcrumbList", "ItemList", "Organization", "WebSite"]
+        : ["Article", "WebPage", "BreadcrumbList", "Organization", "WebSite"],
+    );
+  });
+
+  it("lists the seven position-memory trainers in the ItemList alphabetically, ignoring case", async () => {
+    const list = graph(await guide("chess-position-memory-trainers-compared")).find((node) => node["@type"] === "ItemList") as {
+      itemListElement: { name: string }[];
+    };
+
+    expect(list.itemListElement.map((item) => item.name)).toEqual([
+      "BoardWithin",
+      "Chess Memory (Android)",
+      "chessO",
+      "ChessWorld memory trainer",
+      "DarkSquares Position Memory",
+      "Lucas Chess memory exercise",
+      "Memory Chess",
+    ]);
+  });
+
+  it("shows no disclosure on an ordinary guide", async () => {
+    expect(await guide("chess-memory-training")).not.toContain("data-compare-disclosure");
   });
 });

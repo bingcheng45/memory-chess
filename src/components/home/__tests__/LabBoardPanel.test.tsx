@@ -184,6 +184,25 @@ describe("BoardPanel", () => {
     expect(window.localStorage.getItem(ENTRIES_KEY)).not.toBeNull();
   });
 
+  it("keeps a board and a blindfold entry on one difficulty apart, and checks the one the player picks", async () => {
+    const blindfold = { ...medium, id: HARD_ID, mode: "blindfold", score: { ...medium.score, correctPieces: 3 }, submittedAt: Date.UTC(2026, 9, 9, 12) };
+    keep({ medium, "blindfold-medium": blindfold });
+    answers(rank({ rank: 2, total: 9 }), rank({ rank: 1, total: 4 }));
+    renderWithIntl(<BoardPanel ready />);
+
+    expect(screen.getByRole("radio", { name: "Medium · Blindfold" })).toBeChecked();
+    expect(screen.getByText("Your best entry on Medium · Blindfold: 3 correct pieces, sent Oct 9.")).toBeInTheDocument();
+    await press();
+    fireEvent.click(screen.getByRole("radio", { name: "Medium" }));
+    await press();
+
+    expect(jest.mocked(global.fetch).mock.calls.map(([url]) => url)).toEqual([
+      `/api/leaderboard/rank?id=${HARD_ID}&scope=world`,
+      `/api/leaderboard/rank?id=${MEDIUM_ID}&scope=world`,
+    ]);
+    expect(status().textContent).toMatch(new RegExp(`^Rank 1 of 4 entries on Medium, worldwide\\.`));
+  });
+
   it("disables the button while a check is in flight, so one press sends one request", async () => {
     keep({ medium });
     let finish: (value: unknown) => void = () => {};

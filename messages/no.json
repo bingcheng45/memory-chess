@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Tren sjakkhukommelsen og forestillingsevnen din",
-      "freeToPlay": "Gratis å spille, uten konto. Du kan også sammenligne poengsummen din på <link>topplisten</link>."
+      "freeToPlay": "Gratis å spille, uten konto. Du kan også sammenligne poengsummen din på <link>topplisten</link>.",
+      "boardGame": "Leter du etter brettspillet Memory Chess i tre? <link>Les reglene</link>."
     },
     "cta": {
       "leaderboard": "Se topplisten",
       "chooseSettings": "Velg brikker og tid"
+    },
+    "gameVideo": {
+      "play": "Spill av video: {title}",
+      "caption": "Én runde fra start til slutt: studer stillingen, gjenoppbygg den etter hukommelsen og les poengsummen din."
     },
     "video": {
       "title": "Tren ferdigheten bak spillet",
@@ -973,7 +978,9 @@
         "loss": "Høyst <num>−{value}</num>",
         "announce": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}. Hvis det går galt, høyst −{loss}.",
         "announceProvisional": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}."
-      }
+      },
+      "blindfold": "Blindsjakk",
+      "blindfoldHint": "Studer stillingen som notasjon, uten brikker på brettet."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1094,8 @@
       "savedToast": {
         "message": "Runden er lagret. De oppdaterte tallene dine står rett nedenfor.",
         "action": "Vis meg"
-      }
+      },
+      "blindfoldRound": "Blindrunde: du studerte stillingen som notasjon."
     },
     "comparison": {
       "title": "Gå gjennom stillingen din"
@@ -1170,6 +1178,12 @@
         "bishop": "Løper",
         "knight": "Springer",
         "pawn": "Bonde"
+      },
+      "notation": {
+        "label": "Stillingen i notasjon",
+        "white": "Hvit",
+        "black": "Svart",
+        "pawns": "en rute alene er en bonde"
       }
     }
   },
@@ -1208,6 +1222,13 @@
       "setting": "{pieces, plural, one {# brikke} other {# brikker}} · {seconds} s innlæring",
       "resetsAtUtc": "Nullstilles kl. {utc} UTC",
       "resetsAt": "Nullstilles kl. {utc} UTC ({local} hos deg), om {timeLeft}"
+    },
+    "mode": {
+      "label": "Studiemodus",
+      "board": "Brett",
+      "blindfold": "Blindsjakk",
+      "note": "Blindrunder studeres som notasjon uten brikker på brettet, så de har egne rangeringer.",
+      "loading": "Laster blindrangeringen."
     }
   },
   "country": {

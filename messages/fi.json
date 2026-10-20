@@ -57,11 +57,16 @@
     },
     "hero": {
       "title": "Memory Chess: Harjoita shakkimuistiasi ja hahmotustasi",
-      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>."
+      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>.",
+      "boardGame": "Etsitkö puista Memory Chess -lautapeliä? <link>Lue säännöt</link>."
     },
     "cta": {
       "leaderboard": "Katso tulostaulukko",
       "chooseSettings": "Valitse nappulat ja aika"
+    },
+    "gameVideo": {
+      "play": "Toista video: {title}",
+      "caption": "Yksi kierros alusta loppuun: tutki asema, rakenna se muistista ja katso tuloksesi."
     },
     "video": {
       "title": "Harjoita taitoa, jota peli vaatii",
@@ -973,7 +978,9 @@
         "loss": "Enintään <num>−{value}</num>",
         "announce": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}. Jos epäonnistut, enintään −{loss}.",
         "announceProvisional": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}."
-      }
+      },
+      "blindfold": "Sokko",
+      "blindfoldHint": "Opettele asema notaationa, ilman nappuloita laudalla."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1094,8 @@
       "savedToast": {
         "message": "Kierros tallennettu. Päivitetyt tilastosi ovat heti alla.",
         "action": "Näytä"
-      }
+      },
+      "blindfoldRound": "Sokkokierros: opettelit aseman notaationa."
     },
     "comparison": {
       "title": "Käy asemasi läpi"
@@ -1170,6 +1178,12 @@
         "bishop": "Lähetti",
         "knight": "Ratsu",
         "pawn": "Sotilas"
+      },
+      "notation": {
+        "label": "Asema notaationa",
+        "white": "Valkea",
+        "black": "Musta",
+        "pawns": "pelkkä ruutu on sotilas"
       }
     }
   },
@@ -1208,6 +1222,13 @@
       "setting": "{pieces, plural, one {# nappula} other {# nappulaa}} · {seconds} s opetteluun",
       "resetsAtUtc": "Nollautuu klo {utc} UTC",
       "resetsAt": "Nollautuu klo {utc} UTC (sinun aikaasi {local}), {timeLeft} päästä"
+    },
+    "mode": {
+      "label": "Opettelutapa",
+      "board": "Lauta",
+      "blindfold": "Sokko",
+      "note": "Sokkokierrokset opetellaan notaationa ilman nappuloita laudalla, joten niillä on omat tulostaulunsa.",
+      "loading": "Ladataan sokkotulostaulua."
     }
   },
   "country": {

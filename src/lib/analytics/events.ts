@@ -57,7 +57,10 @@ export type LabPanel =
 /** What the player did: follow a link, start, stop or finish a plan, set or clear a goal, or check a standing. Never which plan or goal, and never an entry id or rank. */
 export type LabPanelAction = "play" | "guide" | "next" | "next_round" | "start" | "stop" | "finish" | "setGoal" | "clearGoal" | "check";
 
-export type RoundStartParams = { piece_count: number; memorize_time: number; round_source: RoundSource };
+/** Sent only for a blindfold round, which studies notation instead of the board; a board round sends no mode. */
+export type RoundMode = "blindfold";
+
+export type RoundStartParams = { piece_count: number; memorize_time: number; round_source: RoundSource; round_mode?: RoundMode };
 
 /**
  * The GA4 event contract. Round events carry the setting, the score and `round_source`, never `source`, which
@@ -69,7 +72,7 @@ export type FunnelEvent =
       name: "round_start";
       params: RoundStartParams;
     }
-  /** Once per first-ever round from a link, when its one-line rule and Start show; its round_start follows on Start. */
+  /** Once per round from a link, when its one-line rule and Start show; its round_start follows on Start. */
   | {
       name: "round_intro_view";
       params: RoundStartParams;
@@ -82,11 +85,12 @@ export type FunnelEvent =
         correct_pieces: number;
         accuracy: number;
         round_source: RoundSource;
+        round_mode?: RoundMode;
       };
     }
   | {
       name: "score_submit";
-      params: { difficulty: LeaderboardDifficulty | typeof DAILY_BOARD; piece_count: number };
+      params: { difficulty: LeaderboardDifficulty | typeof DAILY_BOARD; piece_count: number; round_mode?: RoundMode };
     }
   | {
       name: "article_like";
@@ -135,6 +139,11 @@ export type FunnelEvent =
   | {
       name: "result_share";
       params: ShareParams;
+    }
+  /** A shop link followed from a guide. GA4's page_location already names the guide. */
+  | {
+      name: "affiliate_click";
+      params: { store: "amazon" };
     };
 
 export type LearnSearchSurface = "hub" | "server";

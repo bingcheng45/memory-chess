@@ -9,20 +9,25 @@ if (!fixturePath) {
   console.error("fixture: an array of leaderboard_entries rows, or { leaderboard_entries: [...], article_stats: [{ slug, views, likes }] }");
   console.error("env: FAKE_SUPABASE_MISSING_RATING=1 serves the table before migration 0004: no skill_rating or daily_day, no daily board");
   console.error("env: FAKE_SUPABASE_MISSING_COUNTRY=1 serves the table before migration 0001 as well: no country_code either");
+  console.error("env: FAKE_SUPABASE_MISSING_MODE=1 serves the table before migration 0008: no mode, no blindfold boards");
   process.exit(1);
 }
 
 const fixture = JSON.parse(readFileSync(fixturePath, "utf8"));
 
-const DEFAULTS = { country_code: "ZZ", skill_rating: 1000, daily_day: null };
+const DEFAULTS = { country_code: "ZZ", skill_rating: 1000, daily_day: null, mode: "board" };
 const SCHEMAS = {
   MISSING_COUNTRY: {
     label: ", without migrations 0001 and 0004 (no country_code, skill_rating or daily_day)",
-    absent: ["skill_rating", "daily_day", "country_code"],
+    absent: ["skill_rating", "daily_day", "country_code", "mode"],
   },
   MISSING_RATING: {
     label: ", without migration 0004 (no skill_rating or daily_day)",
-    absent: ["skill_rating", "daily_day"],
+    absent: ["skill_rating", "daily_day", "mode"],
+  },
+  MISSING_MODE: {
+    label: ", without migration 0008 (no mode)",
+    absent: ["mode"],
   },
 };
 const mode = Object.keys(SCHEMAS).find((name) => process.env[`FAKE_SUPABASE_${name}`] === "1");
@@ -101,6 +106,8 @@ const CHECKS = [
     "skill_rating",
     (row) => Number.isInteger(row.skill_rating) && row.skill_rating >= 0 && row.skill_rating <= 5000,
   ],
+  ["check_mode_known", "mode", (row) => row.mode === "board" || row.mode === "blindfold"],
+  ["check_daily_board_mode", "mode", (row) => row.difficulty !== "daily" || row.mode === "board"],
 ].filter(([, column]) => has(column));
 
 function rejectInsert(body) {

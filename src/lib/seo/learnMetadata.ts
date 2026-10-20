@@ -4,10 +4,6 @@ import { localizedPath, localizedUrl } from '@/lib/seo/alternates';
 import { LEARN_AUTHOR, type LearnPage } from '@/lib/seo/learn';
 import { guideLocalesOf, guidePath } from '@/lib/seo/learn/links';
 
-/**
- * A guide is canonical to its own URL in each locale it is served in. A translated guide lists the English guide and
- * every translation as alternates, and an English-only guide lists none.
- */
 export function buildLearnPageMetadata(page: LearnPage, locale: string = DEFAULT_LOCALE): Metadata {
   const { slug, title, description, publishedAt, updatedAt, keywords } = page.meta;
   const path = guidePath(slug);

@@ -130,7 +130,6 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   })),
 ];
 
-/** hreflang block for one route across `locales`, matching the page's own alternates. */
 function alternatesFor(routePath: string, locales: readonly string[]) {
   return {
     languages: {
@@ -157,7 +156,6 @@ function entryFor(
   };
 }
 
-/** The locales whose URL of a route the sitemap lists: English alone, the locales that serve it, or every locale. */
 function listedLocalesOf(entry: SitemapEntryConfig): readonly string[] {
   if (entry.sitemapEnglishUrlOnly || isEnglishOnlyPath(entry.path) || isIndexedInDefaultLocaleOnly(entry.path)) {
     return [DEFAULT_LOCALE];

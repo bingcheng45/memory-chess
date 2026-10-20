@@ -9,7 +9,6 @@ import { DAILY_PATH, guideRoundHref } from "@/lib/seo/learn/links";
 interface LearnQuickPlayProps {
   readonly unrated: GameSettings;
   readonly locale: string;
-  /** The chrome's `quickPlay`, `tryRound` (an ICU message with `pieces` and `seconds`) and `dailyBoard`. */
   readonly copy: { readonly quickPlay: string; readonly tryRound: string; readonly dailyBoard: string };
 }
 

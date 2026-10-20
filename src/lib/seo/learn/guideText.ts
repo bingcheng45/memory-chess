@@ -30,12 +30,6 @@ type EndText =
 
 type SectionText = { readonly heading: string; readonly summary?: string; readonly blocks: readonly BlockText[] };
 
-/**
- * What a translator translates of a guide: every string a reader reads, and nothing else. Sections are keyed by
- * their anchor, blocks keep their order. Positions, numbers of a round, links and dates stay in the English
- * document, so a translation cannot change them. Source titles stay as published and the search questions stay
- * English, since the search is English.
- */
 export type GuideText = {
   readonly meta: {
     readonly title: string;
@@ -50,15 +44,13 @@ export type GuideText = {
 
 const LINK_TAG = /<l(\d+)>(.*?)<\/l\1>/g;
 
-/** A string as is, or its parts with link `n` written `<ln>text</ln>`, the tag an ICU message carries. */
-export function richMessage(rich: Rich): string {
+function richMessage(rich: Rich): string {
   if (typeof rich === "string") return rich;
   let link = 0;
   return rich.map((part) => (typeof part === "string" ? part : `<l${link}>${part.text}</l${link++}>`)).join("");
 }
 
-/** The parts of a translated message, each link taking the href of the English link of its number. */
-export function richOf(message: string, english: Rich): Rich {
+function richOf(message: string, english: Rich): Rich {
   if (typeof english === "string") return message;
   const links = english.filter((part): part is InlineLink => typeof part !== "string");
   const parts: (string | InlineLink)[] = [];
@@ -211,7 +203,6 @@ function withEndText(block: EndBlock, text: unknown): EndBlock {
   }
 }
 
-/** The English guide with its reader-facing strings taken from `text`, which must have the shape of `textOf(english)`. */
 export function withText(english: LearnDocument, text: GuideText): LearnDocument {
   return {
     ...english,

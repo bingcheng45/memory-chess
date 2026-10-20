@@ -36,7 +36,6 @@ const titleOf = (slug: string, titles: ReadonlyMap<string, string>) => {
   return title;
 };
 
-/** Each guide and article by the title it has where the link goes: in `locale` when it is served there, else in English. */
 async function titlesIn(locale: Locale): Promise<TitleLookup> {
   const [guides, articles] = await Promise.all([
     Promise.all(EN_LEARN_PAGES.map(async ({ meta }) => [meta.slug, (await loadGuide(meta.slug, locale))?.page.meta.title ?? meta.title] as const)),
@@ -72,7 +71,7 @@ export default async function LearnGuideRoute({ params }: LearnGuideRouteProps) 
   return (
     <LearnGuidePage
       guide={guide}
-      siblings={siblingsOf(guide.page).map((sibling) => sibling.meta.slug)}
+      siblingSlugs={siblingsOf(guide.page).map((sibling) => sibling.meta.slug)}
       titles={titles}
     />
   );

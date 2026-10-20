@@ -14,7 +14,6 @@ const guideUrl = (slug: string) => `${HUB_URL}/${slug}`;
 /** Alphabetical, so the publisher's own product is not listed first by default. */
 const byName = (a: ComparedProduct, b: ComparedProduct) => a.name.localeCompare(b.name, "en", { sensitivity: "base" });
 
-/** `locale` and `copy` are the language the page is read in; a translation names the English guide it was made from. */
 export function guideStructuredData(page: LearnPage, locale: string = DEFAULT_LOCALE, copy: GuideCopy = LEARN_GUIDE_COPY) {
   const { meta } = page;
   const url = localizedUrl(guidePath(meta.slug), locale);

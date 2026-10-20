@@ -1,10 +1,5 @@
 // `scripts/articles-i18n.mjs` imports this file with Node's type stripping, so it holds data only.
 
-/**
- * The ICU messages a guide draws around its text, in English. A translated guide has the same keys in
- * `translations/<locale>/chrome.json`. Every guide repeats these strings, so each stays short (seo.md, the AdSense
- * repeated-sentence rule) and renders as a label, never as an h2.
- */
 const GUIDE_CHROME = {
   breadcrumbHome: "Home",
   breadcrumbLearn: "Learn",

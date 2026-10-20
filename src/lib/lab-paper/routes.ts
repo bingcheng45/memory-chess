@@ -21,7 +21,6 @@ export const LAB_PAPER_ROUTES: readonly LabPaperRoute[] = [
   { path: "/contact-us", scope: "page", locales: "all" },
   { path: "/leaderboard", scope: "page", locales: "all" },
   { path: "/articles", scope: "subtree", locales: "all" },
-  // English-only (ENGLISH_ONLY_ROUTES) apart from the translated guides: no other locale reaches the rest.
   { path: "/learn", scope: "subtree", locales: ["en"] },
   ...TRANSLATED_GUIDE_SLUGS.map((slug) => ({ path: `/learn/${slug}` as const, scope: "page" as const, locales: servedLocalesOf(`/learn/${slug}`) })),
   { path: "/game", scope: "page", locales: "all" },

@@ -5,7 +5,6 @@ import type { LearnGroupId, LearnLevel } from "./schema";
 
 type Values = Record<string, string | number>;
 
-/** The chrome of a guide in one locale, its ICU messages ready to call. `statLabel` names a dashboard tile in that locale. */
 export function guideCopyOf(locale: string, chrome: GuideChrome, statLabels: Readonly<Record<string, string>>) {
   const format = (message: string, values: Values) => String(new IntlMessageFormat(message, locale).format(values));
   const dateFormat = new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, {
@@ -35,7 +34,6 @@ export function guideCopyOf(locale: string, chrome: GuideChrome, statLabels: Rea
 
 export type GuideCopy = ReturnType<typeof guideCopyOf>;
 
-/** The English chrome of the Learn hub and guides. */
 export const LEARN_GUIDE_COPY: GuideCopy = guideCopyOf("en", GUIDE_CHROME, en.dashboard.label);
 
 const COUNT_WORDS = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];

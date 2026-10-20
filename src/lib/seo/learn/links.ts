@@ -7,7 +7,6 @@ import type { CtaTarget, GameSetup } from "./schema";
 
 export const guidePath = (slug: string) => `/learn/${slug}`;
 
-/** The locales a guide is served in, English first. */
 export const guideLocalesOf = (slug: string): readonly string[] => servedLocalesOf(guidePath(slug));
 
 export const groupAnchor = (groupId: string) => `/learn#${groupId}`;

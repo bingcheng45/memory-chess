@@ -26,8 +26,7 @@ function figureNumbers(sections: readonly LearnSection[]): Map<BodyBlock, number
 
 interface LearnGuidePageProps {
   readonly guide: LocalizedGuide;
-  /** The slugs of the other guides in the page's group that its reading list does not already name, in display order. Titles only: a description repeated on every sibling would trip the repeated-sentence rule. */
-  readonly siblings: readonly string[];
+  readonly siblingSlugs: readonly string[];
   readonly titles: TitleLookup;
 }
 
@@ -74,7 +73,7 @@ function EndPart({ block, titles, context }: PartProps & { block: EndBlock }) {
   }
 }
 
-export default function LearnGuidePage({ guide, siblings, titles }: LearnGuidePageProps) {
+export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGuidePageProps) {
   const { page, copy: COPY, locale } = guide;
   const context: GuideContext = { copy: COPY, locale };
   const { meta, intro, group } = page;
@@ -211,9 +210,9 @@ export default function LearnGuidePage({ guide, siblings, titles }: LearnGuidePa
               ))}
               <div className="lg-after">
                 <p className="lg-after-label">{group.label}</p>
-                {siblings.length > 0 ? (
+                {siblingSlugs.length > 0 ? (
                   <ul className="lg-siblings">
-                    {siblings.map((slug) => (
+                    {siblingSlugs.map((slug) => (
                       <li key={slug}>
                         <GuideLink href={guidePath(slug)} locale={locale}>
                           {titles.guide(slug)}

@@ -11,7 +11,6 @@ import { WoodenSetIllustration } from "./WoodenSet";
 
 export type TitleLookup = { readonly guide: (slug: string) => string; readonly article: (slug: string) => string };
 
-/** The language a guide is read in: its chrome and its locale, which decides where each link goes. */
 export type GuideContext = { readonly copy: GuideCopy; readonly locale: string };
 
 function RichText({ value, locale }: { readonly value: Rich; readonly locale: string }) {
@@ -41,7 +40,7 @@ function ctaTag(block: CtaBlock, copy: GuideCopy): string {
 
 function Cta({ block, context: { copy, locale } }: { readonly block: CtaBlock; readonly context: GuideContext }) {
   return (
-    <GuideLink href={ctaHref(block.target)} locale={locale} marked={false} className="lg-cta" data-cta-kind={block.target.kind}>
+    <GuideLink href={ctaHref(block.target)} locale={locale} marksEnglish={false} className="lg-cta" data-cta-kind={block.target.kind}>
       <span className="lg-cta-text">
         <span className="lg-cta-tag">{ctaTag(block, copy)}</span>
         <b>{block.target.label}</b>

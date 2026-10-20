@@ -1,8 +1,4 @@
-/**
- * NextRequest needs the Web Fetch globals, which the default jsdom environment does not provide.
- *
- * @jest-environment node
- */
+/** @jest-environment node */
 import { NextRequest } from "next/server";
 
 const mockForwarded: NextRequest[] = [];

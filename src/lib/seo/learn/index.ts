@@ -32,7 +32,6 @@ function primaryCtaOf(doc: LearnDocument): LearnPage["primaryCta"] {
   throw new Error(`${doc.meta.slug} has nothing to play`);
 }
 
-/** `chrome` names the group and the questions heading in the guide's language. */
 export function toPage(doc: LearnDocument, chrome: GuideChrome = GUIDE_CHROME): LearnPage {
   const found = LEARN_GROUPS.find(({ id }) => id === doc.meta.group);
   if (!found) throw new Error(`${doc.meta.slug} names no group ${doc.meta.group}`);

@@ -1,4 +1,3 @@
-// The translation files and their approval bookkeeping must never reach a client bundle.
 import "server-only";
 import { DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
 import { translationProblems } from "@/lib/articles/articleText";
@@ -33,11 +32,6 @@ async function translated<T>(source: GuideSource, locale: Locale, unit: GuideUni
   return (file as { text: T }).text;
 }
 
-/**
- * A guide in `locale`, or undefined when no guide has that slug or the locale does not serve it. A translation must
- * be reviewed and made from the current English text, or this throws, which stops a build that prerenders it. It
- * never answers with English text for another locale.
- */
 export async function loadGuide(slug: string, locale: string, source: GuideSource = readTranslationFile): Promise<LocalizedGuide | undefined> {
   const english = findLearnPage(slug);
   if (!english || !guideLocalesOf(slug).includes(locale)) return undefined;

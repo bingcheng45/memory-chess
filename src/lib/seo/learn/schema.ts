@@ -71,13 +71,10 @@ export const LEARN_GROUPS = [
 
 type WithLabel<T> = T extends unknown ? Omit<T, "label"> & { readonly label: string } : never;
 
-/** A group as a guide shows it: its label is in the guide's language. */
 export type LearnGroup = WithLabel<(typeof LEARN_GROUPS)[number]>;
 export type LearnGroupId = LearnGroup["id"];
 
-export const LEARN_LEVELS = GUIDE_CHROME.levels;
-
-export type LearnLevel = keyof typeof LEARN_LEVELS;
+export type LearnLevel = keyof typeof GUIDE_CHROME.levels;
 
 export type InlineLink = { readonly text: string; readonly href: `/${string}` };
 
@@ -220,5 +217,3 @@ export const LEARN_AUTHOR = {
   id: "https://thememorychess.com/about#bing-cheng",
 } as const;
 
-/** Shown after the author's name on every guide. */
-export const LEARN_AUTHORSHIP_NOTE = GUIDE_CHROME.authorshipNote;

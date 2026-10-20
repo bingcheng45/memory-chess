@@ -8,19 +8,16 @@ type DataAttributes = { readonly [name: `data-${string}`]: string };
 
 type GuideLinkProps = DataAttributes & {
   readonly href: string;
-  /** The locale the guide is read in. */
   readonly locale: string;
   readonly className?: string;
-  /** Whether the label says "(English)" when the link leaves the reader's language. */
-  readonly marked?: boolean;
+  readonly marksEnglish?: boolean;
   readonly children: ReactNode;
 };
 
 /**
- * A link from a guide: in the reader's locale where the target is served in it, else to the bare English URL. The
- * locale-aware Link given `locale="en"` writes `/en/...`, which costs a redirect, so the English link is a plain one.
+ * The locale-aware Link given `locale="en"` writes `/en/...`, which costs a redirect, so the English link is a plain one.
  */
-export default function GuideLink({ href, locale, className, marked = true, children, ...data }: GuideLinkProps) {
+export default function GuideLink({ href, locale, className, marksEnglish = true, children, ...data }: GuideLinkProps) {
   const path = href.split(/[?#]/)[0];
   if (locale === DEFAULT_LOCALE || !isServedAtBareEnglishUrl(path, locale)) {
     return (
@@ -32,7 +29,7 @@ export default function GuideLink({ href, locale, className, marked = true, chil
   return (
     <NextLink href={href} hrefLang={DEFAULT_LOCALE} className={className} {...data}>
       {children}
-      {marked ? englishOnlyLinkSuffix(locale) : null}
+      {marksEnglish ? englishOnlyLinkSuffix(locale) : null}
     </NextLink>
   );
 }

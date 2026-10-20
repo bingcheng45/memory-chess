@@ -9,12 +9,6 @@ const INSTALLED_FILES = "the installed files";
 const WHEN_IT_FAILS = { check: "", import: ", nothing was written", approve: ", nothing was approved" };
 const passed = (summary) => ({ failures: [], summary });
 
-/**
- * The commands of a text kept as units, one JSON file per unit and locale: the trust pages, or the guides.
- *
- * `spec` is `{ translationsDir, flag, served, size(repo), isBody(path), extraFailures(repo, locale, bundle) }`. A repo is
- * `{ root, locales, translatedLocales, lib, approvalNameOf, units: [{ name, text, sourceHash }] }`.
- */
 export function unitCommands(spec) {
   const installedFile = (locale, unit) => `${spec.translationsDir}/${locale}/${unit}.json`;
 

@@ -27,9 +27,7 @@ function isUnder(path: string, route: string): boolean {
  * A route here covers every path beneath it.
  *
  * The articles and the trust pages (/about, /privacy, /terms) are not here.
- * They are translated, so they are in `DEFAULT_LOCALE_INDEXED_ROUTES`. The
- * guides in `TRANSLATED_GUIDE_SLUGS` are the exception under /learn: their
- * entry in `TRANSLATED_ROUTES` wins over this list.
+ * They are translated, so they are in `DEFAULT_LOCALE_INDEXED_ROUTES`.
  */
 export const ENGLISH_ONLY_ROUTES = ["/changelog", "/learn"] as const;
 
@@ -93,7 +91,6 @@ const TRANSLATED_ROUTES: readonly (readonly [route: string, locales: readonly st
 
 const translatedRouteOf = (path: string) => TRANSLATED_ROUTES.find(([route]) => isUnder(path, route));
 
-/** Whether a path is served in some locales and not in others, so no header may advertise all of them. */
 export function isPartlyTranslatedPath(path: string): boolean {
   return translatedRouteOf(path) !== undefined;
 }

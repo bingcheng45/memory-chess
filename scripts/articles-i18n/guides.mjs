@@ -9,7 +9,6 @@ const LEARN_DIR = "src/lib/seo/learn";
 const TRANSLATED_GUIDES_FILE = `${LEARN_DIR}/translatedGuides.ts`;
 const GUIDE_BODY_PATH = /^(meta\.description|intro\.(quickAnswer|takeaways\[\d+\])|sections\..+\.blocks\[\d+\]\.(paragraphs|items)\[\d+\]|end\[\d+\]\.items\[\d+\]\.answer)$/;
 
-/** Game buttons a guide may name, by their key under `game.result` or `game.round`. A one-word label counts only after "press". */
 const BUTTONS = {
   result: ["tryAgain", "nextRound", "changeSettings", "moreOptions", "submitToLeaderboard", "viewLeaderboard"],
   round: ["start", "hide", "restart", "again", "submit", "clear"],
@@ -26,10 +25,6 @@ function isNamed(english, label) {
   return new RegExp(pattern, "i").test(english) && english.includes(label);
 }
 
-/**
- * A guide leaf that names a game button in English must name the same button as the game shows it in `locale`, so
- * a reader looking for "Try again" finds it under its translated name. The labels come from `messages/<locale>.json`.
- */
 export function buttonFailures(englishButtons, localeButtons, name, englishText, translatedText) {
   const translated = new Map(leavesOf(translatedText));
   return leavesOf(englishText).flatMap(([path, english]) => {
@@ -45,10 +40,6 @@ export function buttonFailures(englishButtons, localeButtons, name, englishText,
 
 const readMessages = (root, locale) => JSON.parse(readFileSync(inside(root, `messages/${locale}.json`), "utf8"));
 
-/**
- * The English side of the translated guides: one unit per guide in `TRANSLATED_GUIDE_SLUGS` and one for the chrome,
- * each with the hash of its text, and the locales that serve them. The same shape as `loadPagesRepo`.
- */
 export async function loadGuidesRepo(cwd) {
   if (!process.features.typescript) {
     throw new UsageError("this needs a Node that strips TypeScript types, 22.18 or newer");

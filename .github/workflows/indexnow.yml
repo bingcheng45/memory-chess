@@ -1,0 +1,29 @@
+name: IndexNow
+
+on:
+  deployment_status:
+  workflow_dispatch:
+
+concurrency:
+  group: indexnow
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  submit:
+    if: github.event_name == 'workflow_dispatch' || (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Submit pages changed in the last two days
+        if: github.event_name == 'deployment_status'
+        run: node scripts/indexnow-submit.mjs --since "$(date -u -d '2 days ago' +%F)"
+      - name: Submit the whole sitemap
+        if: github.event_name == 'workflow_dispatch'
+        run: node scripts/indexnow-submit.mjs

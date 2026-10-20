@@ -978,7 +978,9 @@
         "loss": "Como máximo <num>−{value}</num>",
         "announce": "Puntuación del tablero {board}. Tu puntuación {rating}. Precisión esperada {expected} %. Si lo superas, hasta +{gain}. Si fallas, como máximo −{loss}.",
         "announceProvisional": "Puntuación del tablero {board}. Tu puntuación {rating}. Precisión esperada {expected} %. Si lo superas, hasta +{gain}."
-      }
+      },
+      "blindfold": "A ciegas",
+      "blindfoldHint": "Estudia la posición en notación, sin piezas en el tablero."
     },
     "presets": {
       "easy": {
@@ -1092,7 +1094,8 @@
       "savedToast": {
         "message": "Ronda guardada. Tus estadísticas actualizadas están justo debajo.",
         "action": "Ver"
-      }
+      },
+      "blindfoldRound": "Ronda a ciegas: estudiaste la posición en notación."
     },
     "comparison": {
       "title": "Revisa tu posición"
@@ -1175,6 +1178,12 @@
         "bishop": "Alfil",
         "knight": "Caballo",
         "pawn": "Peón"
+      },
+      "notation": {
+        "label": "La posición en notación",
+        "white": "Blancas",
+        "black": "Negras",
+        "pawns": "una casilla sola es un peón"
       }
     }
   },
@@ -1213,6 +1222,13 @@
       "setting": "{pieces, plural, one {# pieza} many {# piezas} other {# piezas}} · {seconds} s para memorizar",
       "resetsAtUtc": "Se reinicia a las {utc} UTC",
       "resetsAt": "Se reinicia a las {utc} UTC ({local} en tu hora), en {timeLeft}"
+    },
+    "mode": {
+      "label": "Modo de estudio",
+      "board": "Tablero",
+      "blindfold": "A ciegas",
+      "note": "Las rondas a ciegas se estudian en notación, sin piezas en el tablero, así que tienen sus propias clasificaciones.",
+      "loading": "Cargando la clasificación a ciegas."
     }
   },
   "country": {

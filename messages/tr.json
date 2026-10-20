@@ -978,7 +978,9 @@
         "loss": "En fazla <num>−{value}</num>",
         "announce": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}. Kaçırırsan en fazla −{loss}.",
         "announceProvisional": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}."
-      }
+      },
+      "blindfold": "Körleme",
+      "blindfoldHint": "Konumu tahtada taş olmadan, notasyon olarak çalışın."
     },
     "presets": {
       "easy": {
@@ -1092,7 +1094,8 @@
       "savedToast": {
         "message": "Tur kaydedildi. Güncel istatistiklerin hemen aşağıda.",
         "action": "Göster"
-      }
+      },
+      "blindfoldRound": "Körleme tur: konumu notasyon olarak çalıştınız."
     },
     "comparison": {
       "title": "Konumunu incele"
@@ -1175,6 +1178,12 @@
         "bishop": "Fil",
         "knight": "At",
         "pawn": "Piyon"
+      },
+      "notation": {
+        "label": "Notasyonla konum",
+        "white": "Beyaz",
+        "black": "Siyah",
+        "pawns": "yalnız kare piyondur"
       }
     }
   },
@@ -1213,6 +1222,13 @@
       "setting": "{pieces, plural, one {# taş} other {# taş}} · İncelemek için {seconds} sn",
       "resetsAtUtc": "{utc} UTC itibarıyla sıfırlanır",
       "resetsAt": "{utc} UTC itibarıyla sıfırlanır (sizin saatinizle {local}), {timeLeft} sonra"
+    },
+    "mode": {
+      "label": "Çalışma modu",
+      "board": "Tahta",
+      "blindfold": "Körleme",
+      "note": "Körleme turlar tahtada taş olmadan notasyonla çalışıldığı için ayrı sıralamaları vardır.",
+      "loading": "Körleme sıralaması yükleniyor."
     }
   },
   "country": {

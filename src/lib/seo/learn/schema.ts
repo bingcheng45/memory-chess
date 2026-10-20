@@ -91,7 +91,8 @@ export type LearnIntro = {
   readonly audience: readonly string[];
 };
 
-export type GameSetup = { readonly pieceCount: number; readonly memorizeTime: number };
+/** `blindfold` opens the round with the position shown as notation instead of on the board. */
+export type GameSetup = { readonly pieceCount: number; readonly memorizeTime: number; readonly blindfold?: true };
 
 export type BoardArrow = { readonly from: Square; readonly to: Square; readonly kind: "attack" | "defend" | "pin" };
 export type BoardMark = { readonly square: Square; readonly kind: "ring" };

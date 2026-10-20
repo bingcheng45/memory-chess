@@ -76,7 +76,7 @@ The round-funnel events start the day PR #33 merges. From then on production sen
 | `round_start` | a round enters the memorize phase | `piece_count`, `memorize_time` |
 | `round_complete` | a round reaches its result | `piece_count`, `memorize_time`, `correct_pieces`, `accuracy` |
 | `score_submit` | the leaderboard accepts a submitted score | `difficulty`, `piece_count` |
-| `round_intro_view` | a player's first-ever round from a link shows its one-line rule and Start | `piece_count`, `memorize_time`, `round_source` |
+| `round_intro_view` | a round from a link shows its one-line rule and Start (every such round since the free-round countdown fix; before it, only a first-ever round) | `piece_count`, `memorize_time`, `round_source` |
 
 The clean production-only series for these events starts 2026-09-29. Read nothing earlier as comparable.
 

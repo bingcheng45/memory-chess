@@ -978,7 +978,9 @@
         "loss": "Legfeljebb <num>−{value}</num>",
         "announce": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}. Ha nem sikerül, legfeljebb −{loss}.",
         "announceProvisional": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}."
-      }
+      },
+      "blindfold": "Vakon",
+      "blindfoldHint": "Az állást lejegyzésből jegyezd meg, bábuk nélkül a táblán."
     },
     "presets": {
       "easy": {
@@ -1092,7 +1094,8 @@
       "savedToast": {
         "message": "A kör elmentve. A frissített statisztikáid közvetlenül lent vannak.",
         "action": "Mutasd"
-      }
+      },
+      "blindfoldRound": "Vakkör: az állást lejegyzésből jegyezted meg."
     },
     "comparison": {
       "title": "Nézd át az állásodat"
@@ -1175,6 +1178,12 @@
         "bishop": "Futó",
         "knight": "Huszár",
         "pawn": "Gyalog"
+      },
+      "notation": {
+        "label": "Az állás lejegyzésben",
+        "white": "Világos",
+        "black": "Sötét",
+        "pawns": "a magában álló mező gyalog"
       }
     }
   },
@@ -1213,6 +1222,13 @@
       "setting": "{pieces, plural, one {# bábu} other {# bábu}} · {seconds} mp tanulásra",
       "resetsAtUtc": "Újraindul {utc} UTC-kor",
       "resetsAt": "Újraindul {utc} UTC-kor (nálad {local}), {timeLeft} múlva"
+    },
+    "mode": {
+      "label": "Tanulási mód",
+      "board": "Tábla",
+      "blindfold": "Vakon",
+      "note": "A vakköröket lejegyzésből, bábuk nélkül tanulják, ezért saját ranglistájuk van.",
+      "loading": "A vak ranglista betöltése."
     }
   },
   "country": {

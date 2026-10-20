@@ -978,7 +978,9 @@
         "loss": "Au plus <num>−{value}</num>",
         "announce": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}. Si vous échouez, au plus −{loss}.",
         "announceProvisional": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}."
-      }
+      },
+      "blindfold": "À l'aveugle",
+      "blindfoldHint": "Étudiez la position en notation, sans pièces sur l'échiquier."
     },
     "presets": {
       "easy": {
@@ -1092,7 +1094,8 @@
       "savedToast": {
         "message": "Partie enregistrée. Vos statistiques à jour sont juste en dessous.",
         "action": "Voir"
-      }
+      },
+      "blindfoldRound": "Partie à l'aveugle : vous avez étudié la position en notation."
     },
     "comparison": {
       "title": "Revoyez votre position"
@@ -1175,6 +1178,12 @@
         "bishop": "Fou",
         "knight": "Cavalier",
         "pawn": "Pion"
+      },
+      "notation": {
+        "label": "La position en notation",
+        "white": "Blancs",
+        "black": "Noirs",
+        "pawns": "une case seule est un pion"
       }
     }
   },
@@ -1213,6 +1222,13 @@
       "setting": "{pieces, plural, one {# pièce} many {# pièces} other {# pièces}} · {seconds} s pour mémoriser",
       "resetsAtUtc": "Réinitialisation à {utc} UTC",
       "resetsAt": "Réinitialisation à {utc} UTC ({local} chez vous), dans {timeLeft}"
+    },
+    "mode": {
+      "label": "Mode d'étude",
+      "board": "Échiquier",
+      "blindfold": "À l'aveugle",
+      "note": "Les parties à l'aveugle s'étudient en notation, sans pièces sur l'échiquier : elles ont donc leurs propres classements.",
+      "loading": "Chargement du classement à l'aveugle."
     }
   },
   "country": {

@@ -117,12 +117,16 @@ export function hiddenAnswer(target: LabPosition, placed: LabPosition, square: S
   return placed[square] && !samePiece(target[square], placed[square]) ? target[square] : undefined;
 }
 
-/** What a round is played at and where it came from. `board` is set when the round plays a set position. */
+/**
+ * What a round is played at and where it came from. `board` is set when the round plays a set position. `blindfold`
+ * studies the position as notation over an empty board; absent, the round studies the pieces on the board.
+ */
 export interface RoundConfig {
   readonly pieceCount: number;
   readonly studyMs: number;
   readonly source: RoundSource;
   readonly board?: SetBoard;
+  readonly blindfold?: true;
 }
 
 /** A piece the player reached for after every copy was on the board; `attempt` counts the tries in a row. */

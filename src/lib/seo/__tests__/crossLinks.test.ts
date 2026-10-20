@@ -69,7 +69,7 @@ describe("trimmed search titles", () => {
     ["chess-calculation-exercises-for-beginners", "Chess Calculation Exercises for Beginners"],
     ["chess-pattern-recognition-drills", "Chess Pattern Recognition Drills, From Memory"],
     ["chess-memory-training", "Chess Memory Training: A 6-to-12 Piece Ladder"],
-    ["blindfold-chess-training-for-beginners", "How to Learn Blindfold Chess: 4-Stage Training"],
+    ["blindfold-chess-training-for-beginners", "Blindfold Chess Training for Beginners: 4 Stages"],
     ["chess-visualization-exercises", "Chess Visualization Training: See the Board"],
     ["chess-coordinates-practice", "Chess Coordinates Practice: Name Squares Faster"],
   ])("the %s guide is titled %p", (slug, title) => {

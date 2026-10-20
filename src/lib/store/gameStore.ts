@@ -78,12 +78,12 @@ interface GameStore {
   /** The round being played, run by the shared round reducer. Never persisted. */
   round: RoundState;
 
-  startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
+  startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard, blindfold?: boolean) => void;
   /** Sets a board out behind its Start button; the round studies on endCountdown. */
-  prepareGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard) => void;
+  prepareGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard, blindfold?: boolean) => void;
   beginRound: (now?: number) => void;
   /** Counts a new random board in over the veil, without a Start button; the round studies on endCountdown. */
-  countInGame: (pieceCount: number, memorizeTime: number, source: RoundSource) => void;
+  countInGame: (pieceCount: number, memorizeTime: number, source: RoundSource, blindfold?: boolean) => void;
   endCountdown: (now?: number) => void;
   /** Hide board, the study deadline, the palette, the board and the eraser. Submit goes through submitSolution. */
   dispatch: (action: Exclude<RoundAction, { type: 'start' | 'prepare' | 'begin' | 'countIn' | 'countdownEnded' | 'submit' }>) => void;
@@ -164,8 +164,19 @@ const studyGameState = (previous: GameState, { pieceCount, memorizeTime, source,
   streak: previous.streak || 0,
 });
 
-const trackRound = (name: "round_start" | "round_intro_view", { pieceCount, studyMs, source }: RoundConfig) =>
-  trackEvent({ name, params: { piece_count: pieceCount, memorize_time: studyMs / 1000, round_source: source } });
+/** A board round's config and events carry no mode at all, exactly as before blindfold rounds existed. */
+const configOf = (pieceCount: number, memorizeTime: number, source: RoundSource, board: SetBoard | undefined, blindfold: boolean | undefined): RoundConfig => ({
+  pieceCount,
+  studyMs: memorizeTime * 1000,
+  source,
+  board,
+  ...(blindfold ? { blindfold: true } : {}),
+});
+
+const modeParam = (blindfold: true | undefined) => (blindfold ? { round_mode: "blindfold" as const } : {});
+
+const trackRound = (name: "round_start" | "round_intro_view", { pieceCount, studyMs, source, blindfold }: RoundConfig) =>
+  trackEvent({ name, params: { piece_count: pieceCount, memorize_time: studyMs / 1000, round_source: source, ...modeParam(blindfold) } });
 
 // Initialize the store
 export const useGameStore = create<GameStore>()(
@@ -178,7 +189,7 @@ export const useGameStore = create<GameStore>()(
       lastSettings: null,
       round: IDLE_ROUND,
 
-      startGame: (pieceCount, memorizeTime, source, board) => {
+      startGame: (pieceCount, memorizeTime, source, board, blindfold) => {
         const generated = board ? null : generateMemorizationPosition(pieceCount);
         const originalPosition = board ? board.fen : generated?.fen();
         if (!originalPosition) {
@@ -186,27 +197,29 @@ export const useGameStore = create<GameStore>()(
           return;
         }
 
+        const config = configOf(pieceCount, memorizeTime, source, board, blindfold);
         set({
           round: roundReducer(get().round, {
             type: 'start',
-            config: { pieceCount, studyMs: memorizeTime * 1000, source, board },
+            config,
             target: labPositionFromFen(originalPosition),
             now: monotonicNow(),
           }),
           gameState: studyGameState(get().gameState, { pieceCount, memorizeTime, source, board, originalPosition }),
           lastSettings: { pieceCount, memorizeTime },
         });
-        trackRound('round_start', { pieceCount, studyMs: memorizeTime * 1000, source });
+        trackRound('round_start', config);
       },
 
-      prepareGame: (pieceCount, memorizeTime, source, board) => {
+      prepareGame: (pieceCount, memorizeTime, source, board, blindfold) => {
         const fen = board ? board.fen : generateMemorizationPosition(pieceCount)?.fen();
         if (!fen) {
           console.error('Failed to generate random position');
           return;
         }
-        const config = { pieceCount, studyMs: memorizeTime * 1000, source, board };
+        const config = configOf(pieceCount, memorizeTime, source, board, blindfold);
         const round = roundReducer(get().round, { type: 'prepare', config, fen });
+        if (round === get().round) return;
         set({ round });
         if (round.phase === 'ready' && !board) trackRound('round_intro_view', config);
       },
@@ -217,7 +230,7 @@ export const useGameStore = create<GameStore>()(
         if (round.phase === 'countdown' && round.afterIntro) trackRound('round_start', round.config);
       },
 
-      countInGame: (pieceCount, memorizeTime, source) => {
+      countInGame: (pieceCount, memorizeTime, source, blindfold) => {
         const fen = generateMemorizationPosition(pieceCount)?.fen();
         if (!fen) {
           console.error('Failed to generate random position');
@@ -226,7 +239,7 @@ export const useGameStore = create<GameStore>()(
         set({
           round: roundReducer(get().round, {
             type: 'countIn',
-            config: { pieceCount, studyMs: memorizeTime * 1000, source },
+            config: configOf(pieceCount, memorizeTime, source, undefined, blindfold),
             fen,
             now: monotonicNow(),
           }),
@@ -298,6 +311,7 @@ export const useGameStore = create<GameStore>()(
         };
         const rating = roundOutcomeOf(playerRatingOf(get()), {
           review: gameState.board?.kind === 'review',
+          blindfold: playing.config.blindfold === true,
           placedPieces: Object.keys(placed).length,
           day,
           freeSkipDay: get().freeSkipDay,
@@ -325,6 +339,7 @@ export const useGameStore = create<GameStore>()(
             placements: round.log.placements,
             removals: round.log.removals,
             board: gameState.board,
+            ...(playing.config.blindfold ? { blindfold: true } : {}),
           },
         };
 
@@ -382,6 +397,7 @@ export const useGameStore = create<GameStore>()(
             correct_pieces: score.correct,
             accuracy: score.accuracy,
             round_source: gameState.startSource ?? 'link',
+            ...modeParam(playing.config.blindfold),
           },
         });
 

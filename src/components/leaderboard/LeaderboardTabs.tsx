@@ -10,6 +10,8 @@ import { useDailyState } from '@/hooks/useDailyState';
 import { Link } from '@/i18n/navigation';
 import { readDailyEntry } from '@/lib/lab/entries';
 import { RANKED_DIFFICULTIES, type RankedDifficulty } from '@/lib/reference/facts';
+import { BLINDFOLD_MODE, isBlindfoldSearch } from '@/lib/game/roundLink';
+import { blindfoldBoardOpen } from '@/lib/leaderboard/mode';
 import { DAILY_BOARD, type LeaderboardEntry } from '@/types/leaderboard';
 
 const LEADERBOARD_TABS = [DAILY_BOARD, ...RANKED_DIFFICULTIES] as const;
@@ -66,6 +68,38 @@ function applyDailyRead(reads: Reads, read: DailyBoard, at: number): Reads {
   return { boards: { ...reads.boards, daily }, dailyFailure: { day: read.day, since } };
 }
 
+function isRankedTab(tab: LeaderboardTab): tab is RankedDifficulty {
+  return tab !== DAILY_BOARD;
+}
+
+type BlindfoldBoards = Partial<Record<RankedDifficulty, Board>>;
+
+/**
+ * The blindfold boards, read in the browser one tab at a time when first shown. The served page carries only the
+ * board-study boards, so a crawler reads what it read before. Null until the blindfold view is open.
+ */
+function useBlindfoldBoards(tab: RankedDifficulty | null, refresh: boolean): BlindfoldBoards {
+  const [boards, setBoards] = useState<BlindfoldBoards>({});
+  const loaded = tab !== null && boards[tab] !== undefined;
+
+  useEffect(() => {
+    if (tab === null || loaded) return;
+    const controller = new AbortController();
+    const after = refresh ? `&after=${Date.now()}` : '';
+    fetch(`/api/leaderboard?difficulty=${tab}&mode=${BLINDFOLD_MODE}${after}`, { signal: controller.signal, cache: refresh ? 'no-store' : 'default' })
+      .then((response) => response.json())
+      .then(({ data, error }: { data?: LeaderboardEntry[]; error?: string }) => setBoards((current) => ({ ...current, [tab]: { data: data ?? [], error } })))
+      .catch((err) => {
+        if (err.name === 'AbortError') return;
+        console.error('Error reading the blindfold leaderboard:', err);
+        setBoards((current) => ({ ...current, [tab]: { data: [], error: String(err) } }));
+      });
+    return () => controller.abort();
+  }, [tab, loaded, refresh]);
+
+  return boards;
+}
+
 const opened =
   (tab: LeaderboardTab) =>
   ({ visited }: TabState): TabState => ({ active: tab, visited: new Set(visited).add(tab) });
@@ -96,7 +130,14 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
   const [retryAttempt, setRetryAttempt] = useState(0);
   const [entryDetails, setEntryDetails] = useState<EntryDetails>();
   const [tabs, setTabs] = useState<TabState>({ active: DEFAULT_TAB, visited: new Set([DEFAULT_TAB]) });
+  const [blindfold, setBlindfold] = useState(false);
   const activeTab = tabs.active;
+  const shownTabs = blindfold ? LEADERBOARD_TABS.filter(isRankedTab) : LEADERBOARD_TABS;
+  const blindfoldBoards = useBlindfoldBoards(blindfold && isRankedTab(activeTab) ? activeTab : null, Boolean(entryDetails?.player));
+  const chooseMode = (on: boolean) => {
+    setBlindfold(on);
+    if (on && activeTab === DAILY_BOARD) setTabs(opened(DEFAULT_TAB));
+  };
   const daily = useDailyState();
   const today = daily?.day ?? null;
   const dailyDay = activeTab === DAILY_BOARD ? today : null;
@@ -106,7 +147,7 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
   // visit refreshes the open tab.
   const isJustSubmitted = Boolean(entryDetails?.player);
 
-  const isRefreshing = activeTab === DAILY_BOARD ? dailyDay !== null : isJustSubmitted;
+  const isRefreshing = activeTab === DAILY_BOARD ? dailyDay !== null : isJustSubmitted && !blindfold;
 
   // Read after mount, not through useSearchParams: that hook makes the static
   // prerender serve only a Suspense fallback, which hydration discards and
@@ -114,6 +155,7 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search);
     const difficulty = searchParams.get('difficulty');
+    if (blindfoldBoardOpen() && isBlindfoldSearch(window.location.search)) setBlindfold(true);
     if (isLeaderboardTab(difficulty)) setTabs(opened(difficulty));
     if (searchParams.get('player')) setEntryDetails(entryDetailsOf(searchParams));
   }, []);
@@ -169,7 +211,8 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
 
   const boards: LeaderboardBoards =
     today === null || reads.boards.daily.day === today ? reads.boards : { ...reads.boards, daily: { data: [], day: today } };
-  const activeBoard = boards[activeTab];
+  const blindfoldBoard = (tab: LeaderboardTab): Board | undefined => (isRankedTab(tab) ? blindfoldBoards[tab] : undefined);
+  const activeBoard = blindfold ? blindfoldBoard(activeTab) : boards[activeTab];
 
   return (
     <>
@@ -178,6 +221,18 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
         <p className="lb-lede">{t("subtitle")}</p>
       </div>
 
+      {blindfoldBoardOpen() && (
+        <div className="lb-mode" role="group" aria-label={t('mode.label')}>
+          <button type="button" className="lb-mode-option" aria-pressed={!blindfold} onClick={() => chooseMode(false)}>
+            {t('mode.board')}
+          </button>
+          <button type="button" className="lb-mode-option" aria-pressed={blindfold} onClick={() => chooseMode(true)}>
+            {t('mode.blindfold')}
+          </button>
+        </div>
+      )}
+      {blindfold && <p className="lb-note lb-mode-note">{t('mode.note')}</p>}
+
       <Tabs.Root
         value={activeTab}
         onValueChange={(value) => {
@@ -185,7 +240,7 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
         }}
       >
         <Tabs.List className="lb-tabs">
-          {LEADERBOARD_TABS.map((difficulty) => (
+          {shownTabs.map((difficulty) => (
             <Tabs.Trigger
               key={difficulty}
               value={difficulty}
@@ -209,12 +264,26 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
             hidden={difficulty !== activeTab}
           >
             {difficulty === DAILY_BOARD && <DailyResetNote day={today ?? boards.daily.day} left={daily?.left ?? null} />}
-            <LeaderboardTable
-              data={boards[difficulty].data}
-              error={boards[difficulty].error ?? null}
-              entryDetails={entryDetails}
-              activeTab={difficulty}
-            />
+            {!blindfold ? (
+              <LeaderboardTable
+                data={boards[difficulty].data}
+                error={boards[difficulty].error ?? null}
+                entryDetails={entryDetails}
+                activeTab={difficulty}
+              />
+            ) : blindfoldBoard(difficulty) ? (
+              <LeaderboardTable
+                data={blindfoldBoard(difficulty)?.data ?? []}
+                error={blindfoldBoard(difficulty)?.error ?? null}
+                entryDetails={entryDetails}
+                activeTab={difficulty}
+                blindfold
+              />
+            ) : (
+              <p className="lb-note" role="status">
+                {t('mode.loading')}
+              </p>
+            )}
           </Tabs.Content>
         ))}
       </Tabs.Root>
@@ -222,9 +291,9 @@ export default function LeaderboardTabs({ boards: serverBoards }: { boards: Lead
       <p className="lb-note">{t("footnote")}</p>
       <CommunityInvite placement="leaderboard" line={tCommunity('leaderboardLine')} link={tCommunity('link')} />
 
-      {activeBoard.data.length > 0 && !activeBoard.error && (
+      {activeBoard && activeBoard.data.length > 0 && !activeBoard.error && (
         <div className="lb-cta">
-          <Link href={playHrefOf(activeTab)} className="lab-btn lab-btn-primary">
+          <Link href={playHrefOf(activeTab, blindfold)} className="lab-btn lab-btn-primary">
             {t("claimRank")}
           </Link>
         </div>

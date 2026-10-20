@@ -3,7 +3,7 @@ import type { LearnDocument } from "../schema";
 const guide: LearnDocument = {
   meta: {
     slug: "blindfold-chess-training-for-beginners",
-    title: "How to Learn Blindfold Chess: 4-Stage Training",
+    title: "Blindfold Chess Training for Beginners: 4 Stages",
     h1: "How to learn blindfold chess in four stages, each with a pass mark",
     description: "Blindfold chess training in four stages, from two kings held without a board to a full game. Each stage has a pass mark that tells you when to move on.",
     group: "visualization",
@@ -276,11 +276,12 @@ const guide: LearnDocument = {
       kind: "cta",
       target: {
         kind: "game",
-        label: "Play 2 pieces, 10 seconds, kings only",
+        label: "Play 2 kings blindfold, from notation only",
         pieceCount: 2,
         memorizeTime: 10,
+        blindfold: true,
       },
-      why: "Two kings and ten seconds is stage one of the plan: hold both squares with nothing else on the board.",
+      why: "Blindfold mode shows the two kings as notation, never on the board, so you picture both squares before placing them.",
     },
     {
       kind: "cta",

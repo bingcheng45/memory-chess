@@ -978,7 +978,9 @@
         "loss": "Cel mult <num>−{value}</num>",
         "announce": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}. Dacă greșești, cel mult −{loss}.",
         "announceProvisional": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}."
-      }
+      },
+      "blindfold": "Pe orbește",
+      "blindfoldHint": "Studiază poziția în notație, fără piese pe tablă."
     },
     "presets": {
       "easy": {
@@ -1092,7 +1094,8 @@
       "savedToast": {
         "message": "Runda a fost salvată. Statisticile tale actualizate sunt chiar mai jos.",
         "action": "Arată-mi"
-      }
+      },
+      "blindfoldRound": "Rundă pe orbește: ai studiat poziția în notație."
     },
     "comparison": {
       "title": "Revezi-ți poziția"
@@ -1175,6 +1178,12 @@
         "bishop": "Nebun",
         "knight": "Cal",
         "pawn": "Pion"
+      },
+      "notation": {
+        "label": "Poziția în notație",
+        "white": "Albul",
+        "black": "Negrul",
+        "pawns": "un câmp singur este un pion"
       }
     }
   },
@@ -1213,6 +1222,13 @@
       "setting": "{pieces, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s de studiu",
       "resetsAtUtc": "Se resetează la {utc} UTC",
       "resetsAt": "Se resetează la {utc} UTC ({local} la tine), în {timeLeft}"
+    },
+    "mode": {
+      "label": "Mod de studiu",
+      "board": "Tablă",
+      "blindfold": "Pe orbește",
+      "note": "Rundele pe orbește se studiază în notație, fără piese pe tablă, așa că au clasamente proprii.",
+      "loading": "Se încarcă clasamentul pe orbește."
     }
   },
   "country": {

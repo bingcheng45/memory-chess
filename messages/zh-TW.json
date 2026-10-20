@@ -978,7 +978,9 @@
         "loss": "最多 <num>−{value}</num>",
         "announce": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。如果失手，最多 −{loss}。",
         "announceProvisional": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。"
-      }
+      },
+      "blindfold": "盲棋",
+      "blindfoldHint": "以記譜方式記住局面，棋盤上不擺棋子。"
     },
     "presets": {
       "easy": {
@@ -1092,7 +1094,8 @@
       "savedToast": {
         "message": "本局已儲存。更新後的數據就在下方。",
         "action": "查看"
-      }
+      },
+      "blindfoldRound": "盲棋回合：你透過記譜記住了局面。"
     },
     "comparison": {
       "title": "回顧你的棋局"
@@ -1175,6 +1178,12 @@
         "bishop": "主教",
         "knight": "騎士",
         "pawn": "兵"
+      },
+      "notation": {
+        "label": "記譜形式的局面",
+        "white": "白方",
+        "black": "黑方",
+        "pawns": "只寫格子的是兵"
       }
     }
   },
@@ -1213,6 +1222,13 @@
       "setting": "{pieces, plural, other {# 個棋子}} · 記憶 {seconds} 秒",
       "resetsAtUtc": "UTC {utc} 重設",
       "resetsAt": "UTC {utc} 重設（你的時間 {local}），{timeLeft}後"
+    },
+    "mode": {
+      "label": "練習方式",
+      "board": "棋盤",
+      "blindfold": "盲棋",
+      "note": "盲棋回合以記譜方式記憶、棋盤上不擺棋子，因此有獨立的排行榜。",
+      "loading": "正在載入盲棋排行榜。"
     }
   },
   "country": {

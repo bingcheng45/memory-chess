@@ -978,7 +978,9 @@
         "loss": "Najwyżej <num>−{value}</num>",
         "announce": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}.",
         "announceProvisional": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}."
-      }
+      },
+      "blindfold": "Na ślepo",
+      "blindfoldHint": "Zapamiętaj pozycję z zapisu, bez bierek na szachownicy."
     },
     "presets": {
       "easy": {
@@ -1092,7 +1094,8 @@
       "savedToast": {
         "message": "Runda zapisana. Zaktualizowane statystyki są tuż poniżej.",
         "action": "Pokaż"
-      }
+      },
+      "blindfoldRound": "Runda na ślepo: pozycja zapamiętana z zapisu."
     },
     "comparison": {
       "title": "Przejrzyj swoją pozycję"
@@ -1175,6 +1178,12 @@
         "bishop": "Goniec",
         "knight": "Skoczek",
         "pawn": "Pionek"
+      },
+      "notation": {
+        "label": "Pozycja w zapisie",
+        "white": "Białe",
+        "black": "Czarne",
+        "pawns": "samo pole oznacza piona"
       }
     }
   },
@@ -1213,6 +1222,13 @@
       "setting": "{pieces, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} · {seconds} s na naukę",
       "resetsAtUtc": "Reset o {utc} UTC",
       "resetsAt": "Reset o {utc} UTC ({local} u Ciebie), za {timeLeft}"
+    },
+    "mode": {
+      "label": "Tryb nauki",
+      "board": "Szachownica",
+      "blindfold": "Na ślepo",
+      "note": "Rundy na ślepo zapamiętuje się z zapisu, bez bierek na szachownicy, więc mają własne rankingi.",
+      "loading": "Wczytywanie rankingu na ślepo."
     }
   },
   "country": {

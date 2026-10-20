@@ -2,13 +2,14 @@ import { ratingAfter, type PlayerRating, type RatedRoundFacts, type RatingResult
 
 /**
  * What a scored round did to the rating. A provisional or rated round is the engine's result. The day's first empty
- * board is a free skip, kept for a round started by accident, and a review replays a board already seen; neither
- * moves the rating.
+ * board is a free skip, kept for a round started by accident, a review replays a board already seen, and the rating
+ * measures board study only, so a blindfold round never moves it; none of these moves the rating.
  */
 export type RoundOutcome =
   | RatingResult
   | { readonly phase: "freeSkip"; readonly rating: number; readonly change: 0 }
-  | { readonly phase: "review"; readonly rating: number; readonly change: 0 };
+  | { readonly phase: "review"; readonly rating: number; readonly change: 0 }
+  | { readonly phase: "blindfold"; readonly rating: number; readonly change: 0 };
 
 export type OutcomePhase = RoundOutcome["phase"];
 
@@ -18,10 +19,12 @@ export const outcomeEffects: { readonly [P in OutcomePhase]: { readonly rated: b
   rated: { rated: true, spendsFreeSkip: false },
   freeSkip: { rated: false, spendsFreeSkip: true },
   review: { rated: false, spendsFreeSkip: false },
+  blindfold: { rated: false, spendsFreeSkip: false },
 };
 
 export interface ScoredRound {
   readonly review: boolean;
+  readonly blindfold: boolean;
   /** Pieces on the board when it was submitted, right or wrong. */
   readonly placedPieces: number;
   /** The local day the round ended, as `localDayOf` writes it. */
@@ -33,6 +36,7 @@ export interface ScoredRound {
 
 export function roundOutcomeOf(player: PlayerRating, round: ScoredRound): RoundOutcome {
   if (round.review) return { phase: "review", rating: player.rating, change: 0 };
+  if (round.blindfold) return { phase: "blindfold", rating: player.rating, change: 0 };
   if (round.placedPieces === 0 && round.freeSkipDay !== round.day) return { phase: "freeSkip", rating: player.rating, change: 0 };
   return ratingAfter(player, round.facts);
 }

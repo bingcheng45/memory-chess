@@ -5,7 +5,7 @@
       "what": "A sakkmemória-teszt néhány másodpercre megmutat egy állást, aztán azt kéri, hogy építsd újra egy üres táblán. Ez ugyanaz a felidézési feladat, amelyet {deGroot} 1944-ben sakkozóknak adott, és William Chase és Herbert Simon 1973-as „Perception in Chess” című tanulmánya a téma alapvető forrása.",
       "deGroot": "Adriaan de Groot",
       "scoring": "A Memory Chess egy bábut csak akkor tekint helyesnek, ha a megfelelő bábu a megfelelő színben a megfelelő mezőn áll. A pontosságod az állás bábuinak így lerakott hányada, minden, az állás darabszámán felül lerakott bábuért {penalty} pont levonással, és sosem megy 0 alá.",
-      "typical": "{start} és {end} között {rounds} Memory Chess-kört játszottak {pieces} bábus, {seconds} másodperces beállítással. Ezekben az átlagos pontosság {mean} volt, és a körök {perfect}-a lett hibátlan. {easyPieces} bábuval az átlag {easyMean} volt, {hardPieces} bábuval és {hardSeconds} másodperccel pedig {hardMean}.",
+      "typical": "{start} és {end} között {rounds} Memory Chess-kört játszottak {pieces} bábus, {seconds} másodperces beállítással. Ezekben az átlagos pontosság {mean} volt, és a körök {perfect}-a lett hibátlan. {easyPieces} bábuval {easyRounds} kör átlaga {easyMean} volt, {hardPieces} bábuval és {hardSeconds} másodperccel pedig {hardRounds} kör átlaga {hardMean}.",
       "limits": "Ezek a játékosok maguk döntöttek úgy, hogy játszanak, és maguk választották a beállítást, így nem az összes sakkozót képviselik, az üres tábla pedig 0-nak számít, a napi egy ingyenes kihagyás is.",
       "dataLink": "Az adatoldal leírja a módszert és minden korlátot."
     },

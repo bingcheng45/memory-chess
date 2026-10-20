@@ -5,7 +5,7 @@
       "what": "Um teste de memória no xadrez mostra uma posição por alguns segundos e depois pede que você a reconstrua em um tabuleiro vazio. É a tarefa de recordação que {deGroot} aplicou a enxadristas em 1944, e o artigo “Perception in Chess”, publicado por William Chase e Herbert Simon em 1973, é a referência clássica sobre ela.",
       "deGroot": "Adriaan de Groot",
       "scoring": "O Memory Chess só conta uma peça quando a peça certa, da cor certa, está na casa certa. Sua precisão é a fração das peças da posição colocadas assim, menos {penalty} pontos para cada peça colocada além da contagem da posição, e nunca fica abaixo de 0.",
-      "typical": "Em {rounds} rodadas de Memory Chess com {pieces} peças e {seconds} segundos, jogadas de {start} a {end}, a precisão média foi de {mean}, e {perfect} das rodadas foram perfeitas. Com {easyPieces} peças, a média foi de {easyMean}, e com {hardPieces} peças em {hardSeconds} segundos, ficou em {hardMean}.",
+      "typical": "Em {rounds} rodadas de Memory Chess com {pieces} peças e {seconds} segundos, jogadas de {start} a {end}, a precisão média foi de {mean}, e {perfect} das rodadas foram perfeitas. Com {easyPieces} peças, a média foi de {easyMean} em {easyRounds} rodadas, e com {hardPieces} peças em {hardSeconds} segundos, foi de {hardMean} em {hardRounds} rodadas.",
       "limits": "São jogadores que escolheram jogar e escolheram a configuração, não uma amostra de todos os enxadristas, e um tabuleiro vazio conta como 0, inclusive no pulo grátis de cada dia.",
       "dataLink": "A página de dados explica o método e todas as limitações."
     },

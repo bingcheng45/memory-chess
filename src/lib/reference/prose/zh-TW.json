@@ -5,7 +5,7 @@
       "what": "西洋棋記憶測驗會讓你看一個局面幾秒鐘，再請你在空棋盤上把它擺回來。這正是{deGroot}在 1944年讓棋手做的回想作業，而威廉·蔡斯與司馬賀 1973年的論文〈Perception in Chess〉是這個題目的標準參考文獻。",
       "deGroot": "阿德里安·德格魯特",
       "scoring": "Memory Chess 只在顏色正確、種類正確的棋子站在正確的格子上時，才把它算作答對。你的準確度是以這種方式擺對的棋子占局面棋子數的比例，每多擺一顆超出局面數量的棋子就扣 {penalty} 分，最低不會低於 0。",
-      "typical": "從{start}到{end}，設定為 {pieces} 顆棋子、{seconds} 秒的 Memory Chess 一共玩了 {rounds} 局，平均準確度為 {mean}，每顆棋子都正確的局占 {perfect}。{easyPieces} 顆棋子時平均為 {easyMean}，{hardSeconds} 秒內記 {hardPieces} 顆棋子時則為 {hardMean}。",
+      "typical": "從{start}到{end}，設定為 {pieces} 顆棋子、{seconds} 秒的 Memory Chess 一共玩了 {rounds} 局，平均準確度為 {mean}，每顆棋子都正確的局占 {perfect}。{easyPieces} 顆棋子的 {easyRounds} 局平均為 {easyMean}，{hardSeconds} 秒內記 {hardPieces} 顆棋子的 {hardRounds} 局則為 {hardMean}。",
       "limits": "這些玩家是自己選擇來玩、自己選擇設定的，並不是全體西洋棋棋手的樣本；空白棋盤一律以 0 計，每天一次的免費跳過也算在內。",
       "dataLink": "資料頁面說明了方法與每一項限制。"
     },

@@ -5,7 +5,7 @@
       "what": "A chess memory test shows you a position for a few seconds, then asks you to rebuild it on an empty board. It is the recall task {deGroot} gave chess players in 1944, and William Chase and Herbert Simon's 1973 paper \"Perception in Chess\" is the standard reference for it.",
       "deGroot": "Adriaan de Groot",
       "scoring": "Memory Chess counts a piece only when the right piece of the right color stands on the right square. Your score is the share of the position's pieces placed that way, minus {penalty} points for each piece placed beyond the position's count, and never below 0.",
-      "typical": "In {rounds} Memory Chess rounds set to {pieces} pieces and {seconds} seconds, played from {start} to {end}, the average score was {mean} and {perfect} of rounds were perfect. With {easyPieces} pieces the average was {easyMean}, and with {hardPieces} pieces in {hardSeconds} seconds it was {hardMean}.",
+      "typical": "In {rounds} Memory Chess rounds set to {pieces} pieces and {seconds} seconds, played from {start} to {end}, the average score was {mean} and {perfect} of rounds were perfect. With {easyPieces} pieces the average was {easyMean} across {easyRounds} rounds, and with {hardPieces} pieces in {hardSeconds} seconds it was {hardMean} across {hardRounds} rounds.",
       "limits": "These are players who chose to play and chose the setting, not a sample of all chess players, and an empty board counts as 0, including the one free skip a day.",
       "dataLink": "The data page gives the method and every limit."
     },

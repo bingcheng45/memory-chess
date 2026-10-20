@@ -1,6 +1,6 @@
 {
-  "sourceHash": "465a05c2a6083f01b303cd57f43755d358285d796b18326306506b3722a9397c",
-  "approvedHash": "0c216feb4db5223bdd82aeb0916aa9c2229c1db57547b9c3c0709bac39c4950d",
+  "sourceHash": "d71bc77239bdf44f5ab00f364ee696165f541862a97f50166012404b2019e79a",
+  "approvedHash": "afe7be137ce183763cc899a54d2b5df59b259c5587f841ca1c574bbc2e43c623",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -31,7 +31,7 @@
       {
         "heading": "Quatro jogadores e alguns segundos",
         "paragraphs": [
-          "Os grandes mestres guardam uma posição de uma partida real como alguns grupos de peças conhecidos, e não casa por casa. Esses grupos são os chunks que William Chase e Herbert Simon mediram em 1973. No teste que de Groot fez em 1944, o campeão mundial Max Euwe viu uma posição de 22 peças por 5 segundos e acertou as 22, enquanto um jogador de uma classe mais fraca fez 9. Em tabuleiros aleatórios, a vantagem cai para cerca de uma peça a mais para cada 400 pontos de Elo, contra cerca de cinco em posições de partidas (Gobet e Simon, 1996).",
+          "Os grandes mestres guardam uma posição de uma partida real como alguns grupos de peças conhecidos, e não casa por casa. Esses grupos são os chunks que William Chase e Herbert Simon mediram em 1973. No teste que de Groot fez em 1944, o ex-campeão mundial Max Euwe viu uma posição de 22 peças por 5 segundos e acertou as 22, enquanto um jogador de uma classe mais fraca fez 9. Em tabuleiros aleatórios, a vantagem cai para cerca de uma peça a mais para cada 400 pontos de Elo, contra cerca de cinco em posições de partidas (Gobet e Simon, 1996).",
           "Em 1944, Adriaan de Groot mostrou uma posição de xadrez a Max Euwe e a retirou cinco segundos depois. A posição vinha de uma partida entre Rohacek e Rabar, depois do 20º lance das brancas, com 22 peças no tabuleiro. Euwe, campeão mundial de 1935 a 1937, ditou então onde estava cada peça. Acertou as 22.",
           "De Groot, ele próprio um mestre, fez o mesmo teste, acrescentou um peão que não estava lá e fez 21 pontos. A. Fast, campeão de Utrecht em 1942, colocou 17 peças corretamente, mas julgou o material igual quando não era, e fez 16. G. P. Hauer, jogador de uma classe mais fraca, fez 9.",
           "Os relatos de segunda mão divergem quanto ao tempo de exposição e às porcentagens, por isso os números abaixo vêm do próprio livro de De Groot."

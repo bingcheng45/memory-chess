@@ -5,7 +5,7 @@
       "what": "チェスの記憶力テストでは、ある局面を数秒間見たあと、空の盤の上にその局面を並べ直します。{deGroot}が1944年にチェスプレイヤーに課した再生課題で、その定番の参考文献はウィリアム・チェイスとハーバート・サイモンが1973年に発表した論文「Perception in Chess」です。",
       "deGroot": "アドリアーン・デ・フロート",
       "scoring": "Memory Chess では、正しい色の正しい駒が正しいマスに立っているときだけ、その駒を正解と数えます。正確さは、局面の駒のうちそうして置けた駒の割合から、局面の駒数を超えて置いた駒1つにつき{penalty}ポイントを引いた値で、0を下回ることはありません。",
-      "typical": "{start}から{end}までに遊ばれた、駒{pieces}個・{seconds}秒設定の Memory Chess {rounds}ラウンドでは、正確さの平均は{mean}で、すべての駒が正解だったラウンドは{perfect}でした。駒{easyPieces}個では平均{easyMean}、{hardSeconds}秒で駒{hardPieces}個では{hardMean}でした。",
+      "typical": "{start}から{end}までに遊ばれた、駒{pieces}個・{seconds}秒設定の Memory Chess {rounds}ラウンドでは、正確さの平均は{mean}で、すべての駒が正解だったラウンドは{perfect}でした。駒{easyPieces}個の{easyRounds}ラウンドでは平均{easyMean}、{hardSeconds}秒で駒{hardPieces}個の{hardRounds}ラウンドでは{hardMean}でした。",
       "limits": "これは自分から遊ぶことを選び、設定も自分で選んだプレイヤーの数字であり、チェスプレイヤー全体を代表する標本ではありません。また、空の盤面は0として数えており、1日1回の無料スキップもそこに含まれます。",
       "dataLink": "方法とすべての限界は、データのページで説明しています。"
     },

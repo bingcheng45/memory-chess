@@ -5,7 +5,7 @@
       "what": "Test šachové paměti vám na pár sekund ukáže pozici a pak vás požádá, abyste ji sestavili na prázdné šachovnici. Je to úloha na vybavování z paměti, kterou {deGroot} zadával šachistům v roce 1944, a standardním zdrojem k ní je článek Williama Chase a Herberta Simona „Perception in Chess“ z roku 1973.",
       "deGroot": "Adriaan de Groot",
       "scoring": "Memory Chess započítá figuru jen tehdy, když na správném poli stojí správná figura správné barvy. Vaše skóre je podíl figur pozice umístěných právě takto, snížený o {penalty} bodů za každou figuru umístěnou nad počet v pozici, a nikdy neklesne pod 0.",
-      "typical": "V kolech Memory Chess s nastavením {pieces} figur a {seconds} sekund, odehraných od {start} do {end} (počet kol: {rounds}), bylo průměrné skóre {mean} a {perfect} kol bylo bezchybných. Při {easyPieces} figurách byl průměr {easyMean} a při {hardPieces} figurách a {hardSeconds} sekundách to bylo {hardMean}.",
+      "typical": "V kolech Memory Chess s nastavením {pieces} figur a {seconds} sekund, odehraných od {start} do {end} (počet kol: {rounds}), bylo průměrné skóre {mean} a {perfect} kol bylo bezchybných. Při {easyPieces} figurách byl průměr {easyMean} (počet kol: {easyRounds}) a při {hardPieces} figurách a {hardSeconds} sekundách to bylo {hardMean} (počet kol: {hardRounds}).",
       "limits": "Jde o hráče, kteří se sami rozhodli hrát a sami si zvolili nastavení, nikoli o vzorek všech šachistů, a prázdná šachovnice se počítá jako 0, včetně jednoho volného přeskočení denně.",
       "dataLink": "Stránka s daty popisuje metodu a všechna omezení."
     },

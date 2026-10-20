@@ -5,7 +5,7 @@
       "what": "Shakkimuistitestissä näet aseman muutaman sekunnin ajan, ja sitten sinun pitää rakentaa se uudelleen tyhjälle laudalle. Se on sama muistitehtävä, jonka {deGroot} antoi shakinpelaajille vuonna 1944, ja William Chasen ja Herbert Simonin vuoden 1973 artikkeli ”Perception in Chess” on sen vakiintunut perusteos.",
       "deGroot": "Adriaan de Groot",
       "scoring": "Memory Chess laskee nappulan oikeaksi vain, kun oikea nappula oikeassa värissä seisoo oikealla ruudulla. Tarkkuutesi on se osuus aseman nappuloista, jotka asetit näin, vähennettynä {penalty} pisteellä jokaisesta nappulasta, jonka asetit yli aseman nappulamäärän, eikä se koskaan laske alle 0:n.",
-      "typical": "Memory Chess -kierroksia pelattiin {pieces} nappulan ja {seconds} sekunnin asetuksella {start} ja {end} välisenä aikana yhteensä {rounds}. Niiden keskimääräinen tarkkuus oli {mean}, ja kierroksista {perfect} oli täydellisiä. {easyPieces} nappulalla keskiarvo oli {easyMean}, ja {hardPieces} nappulalla {hardSeconds} sekunnissa se oli {hardMean}.",
+      "typical": "Memory Chess -kierroksia pelattiin {pieces} nappulan ja {seconds} sekunnin asetuksella {start} ja {end} välisenä aikana yhteensä {rounds}. Niiden keskimääräinen tarkkuus oli {mean}, ja kierroksista {perfect} oli täydellisiä. {easyPieces} nappulalla keskiarvo oli {easyMean} (kierroksia {easyRounds}), ja {hardPieces} nappulalla {hardSeconds} sekunnissa se oli {hardMean} (kierroksia {hardRounds}).",
       "limits": "Nämä pelaajat päättivät itse pelata ja valitsivat itse asetuksen, joten he eivät ole otos kaikista shakinpelaajista, ja tyhjä lauta lasketaan tulokseksi 0, myös päivän yksi ilmainen ohitus.",
       "dataLink": "Datasivulla kerrotaan menetelmä ja kaikki rajoitukset."
     },

@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "Testul de memorie la șah",
+      "what": "Un test de memorie la șah îți arată o poziție câteva secunde, apoi îți cere s-o reconstruiești pe o tablă goală. Este sarcina de reamintire pe care {deGroot} le-a dat-o șahiștilor în 1944, iar lucrarea lui William Chase și Herbert Simon din 1973, „Perception in Chess”, este referința de bază pentru ea.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess numără o piesă doar când piesa potrivită, de culoarea potrivită, stă pe pătratul potrivit. Precizia ta este procentul din piesele poziției așezate astfel, din care se scad {penalty} puncte pentru fiecare piesă așezată peste numărul de piese al poziției, și nu coboară niciodată sub 0.",
+      "typical": "Între {start} și {end} s-au jucat runde Memory Chess cu setarea de {pieces} piese și {seconds} secunde, în total {rounds}. Precizia lor medie a fost {mean}, iar {perfect} dintre ele au fost perfecte. Cu {easyPieces} piese media a fost {easyMean} (număr de runde: {easyRounds}), iar cu {hardPieces} piese în {hardSeconds} secunde a fost {hardMean} (număr de runde: {hardRounds}).",
+      "limits": "Aceștia sunt jucători care au ales singuri să joace și și-au ales singuri setarea, nu un eșantion din toți șahiștii, iar o tablă goală contează ca 0, inclusiv singura sărire gratuită pe zi.",
+      "dataLink": "Pagina de date prezintă metoda și toate limitările."
+    },
     "title": "Cum se joacă Memory Chess",
     "intro": "Fiecare rundă urmează aceiași trei pași.",
     "phases": {

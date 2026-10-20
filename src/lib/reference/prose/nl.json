@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "De geheugentest voor schakers",
+      "what": "Bij een geheugentest voor schakers zie je een paar seconden een stelling, die je daarna op een leeg bord moet nabouwen. Het is de herinneringstaak die {deGroot} in 1944 aan schakers voorlegde, en het artikel „Perception in Chess” van William Chase en Herbert Simon uit 1973 geldt als het standaardwerk erover.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess telt een stuk alleen als goed wanneer het juiste stuk in de juiste kleur op het juiste veld staat. Je nauwkeurigheid is het aandeel van de stukken uit de stelling dat je zo hebt geplaatst, min {penalty} punten voor elk stuk dat je boven het aantal van de stelling plaatste, en komt nooit onder 0.",
+      "typical": "In {rounds} rondes Memory Chess met {pieces} stukken en {seconds} seconden, gespeeld van {start} tot en met {end}, was de gemiddelde nauwkeurigheid {mean} en was {perfect} van de rondes foutloos. Met {easyPieces} stukken lag het gemiddelde over {easyRounds} rondes op {easyMean}, en met {hardPieces} stukken in {hardSeconds} seconden over {hardRounds} rondes op {hardMean}.",
+      "limits": "Dit zijn spelers die zelf kozen om te spelen en zelf de instelling kozen, geen steekproef van alle schakers, en een leeg bord telt als 0, ook bij het ene gratis overslaan per dag.",
+      "dataLink": "Op de datapagina lees je de methode en alle beperkingen."
+    },
     "title": "Zo speel je Memory Chess",
     "intro": "Elke ronde bestaat uit dezelfde 3 stappen.",
     "phases": {

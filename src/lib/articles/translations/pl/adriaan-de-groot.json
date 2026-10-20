@@ -1,6 +1,6 @@
 {
-  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
-  "approvedHash": "e53bf357641a750614f420dcb291ac4f43efa95003dee1eec8ac03267f60c168",
+  "sourceHash": "b8a2dc0a9889599a9f90c757b4cb59300ede92aee1a57b2f7196bc0f8c826486",
+  "approvedHash": "909339f4c34acd35d07179d963577ccc0796d9a7585d21fc4a7187625c787e2f",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -31,6 +31,7 @@
       {
         "heading": "Czterech graczy i kilka sekund",
         "paragraphs": [
+          "Arcymistrzowie zapamiętują pozycję z prawdziwej partii nie pole po polu, lecz jako kilka znajomych grup bierek. Te grupy to chunki, które William Chase i Herbert Simon zmierzyli w 1973 roku. W teście de Groota z 1944 roku były mistrz świata Max Euwe patrzył przez 5 sekund na pozycję z 22 bierkami i wszystkie 22 podał poprawnie, a gracz słabszej klasy zdobył 9. Na losowych szachownicach przewaga maleje do około jednej dodatkowej bierki na każde 400 punktów Elo, wobec około pięciu w pozycjach z partii (Gobet i Simon, 1996).",
           "W 1944 roku Adriaan de Groot pokazał Maxowi Euwe pozycję szachową i po pięciu sekundach ją zasłonił. Pozycja pochodziła z partii Rohacek kontra Rabar, po 20. posunięciu białych; na szachownicy stało 22 bierki. Euwe, mistrz świata w latach 1935-1937, podyktował następnie, gdzie stała każda bierka. Wszystkie 22 podał poprawnie.",
           "De Groot, sam będący mistrzem, podszedł do tego samego testu, dodał jednego pionka, którego w pozycji nie było, i zdobył 21 punktów. A. Fast, zwycięzca mistrzostw Utrechtu z 1942 roku, poprawnie ustawił 17 bierek, ale uznał materiał za równy, choć wcale nie był, i zdobył 16 punktów. G. P. Hauer, gracz słabszej klasy, zdobył 9.",
           "Relacje o tym teście różnią się co do czasu ekspozycji i procentów, dlatego poniższe liczby pochodzą z książki samego de Groota."

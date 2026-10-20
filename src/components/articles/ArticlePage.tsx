@@ -122,7 +122,7 @@ function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "c
         <ViewCount count={counts?.views} />
         <LikeButton key={article.slug} slug={article.slug} likes={counts?.likes} />
       </div>
-      <EarlyDrillLink />
+      <EarlyDrillLink drill={article.drill} />
     </header>
   );
 }

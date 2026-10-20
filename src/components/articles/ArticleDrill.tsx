@@ -9,21 +9,34 @@ import { playHref } from "@/lib/game/roundLink";
 
 const DRILL_WHY_ID = "article-drill-why";
 
-const articleRoundHref = ({ pieceCount, memorizeTime }: { pieceCount: number; memorizeTime: number }) =>
+type Round = { pieceCount: number; memorizeTime: number };
+
+const isArticleRound = (round: Round, drill: Round) => round.pieceCount === drill.pieceCount && round.memorizeTime === drill.memorizeTime;
+
+const articleRoundHref = ({ pieceCount, memorizeTime }: Round) =>
   playHref(pieceCount, memorizeTime, "article_cta");
 
-export function EarlyDrillLink() {
+export function EarlyDrillLink({ drill }: { drill: Drill }) {
   const t = useTranslations("articles.page");
   const round = useReaderRound();
 
   return (
-    <p className="art-early mt-5">
-      <Link href={articleRoundHref(round)} data-article-early-drill className="art-early-link inline-flex min-h-11 items-center gap-2">
-        <b>{t("drillHeading")}</b>
-        <span>{t("drillAction", { pieces: round.pieceCount, seconds: round.memorizeTime })}</span>
-        <span aria-hidden="true">→</span>
-      </Link>
-    </p>
+    <>
+      <p className="art-early mt-5">
+        <Link href={articleRoundHref(round)} data-article-early-drill className="art-early-link inline-flex min-h-11 items-center gap-2">
+          <b>{t("drillHeading")}</b>
+          <span>{t("drillAction", { pieces: round.pieceCount, seconds: round.memorizeTime })}</span>
+          <span aria-hidden="true">→</span>
+        </Link>
+      </p>
+      {isArticleRound(round, drill) ? null : (
+        <p>
+          <Link href={articleRoundHref(drill)} data-article-early-drill-original className={`${ARTICLE_LINK} art-drill-original inline-flex min-h-11 items-center`}>
+            {t("drillAction", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}
+          </Link>
+        </p>
+      )}
+    </>
   );
 }
 
@@ -31,7 +44,6 @@ export function ArticleDrill({ drill }: { drill: Drill }) {
   const t = useTranslations("articles.page");
   const round = useReaderRound();
   const action = t("drillAction", { pieces: round.pieceCount, seconds: round.memorizeTime });
-  const isArticleRound = round.pieceCount === drill.pieceCount && round.memorizeTime === drill.memorizeTime;
 
   return (
     <aside className="mt-10 max-w-[720px]">
@@ -48,7 +60,7 @@ export function ArticleDrill({ drill }: { drill: Drill }) {
         </span>
         <span className="art-drill-btn inline-flex min-h-11 items-center px-5">{action}</span>
       </Link>
-      {isArticleRound ? null : (
+      {isArticleRound(round, drill) ? null : (
         <p className="mt-2">
           <Link href={articleRoundHref(drill)} data-article-drill-original className={`${ARTICLE_LINK} art-drill-original inline-flex min-h-11 items-center`}>
             {t("drillAction", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}

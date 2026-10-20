@@ -1,6 +1,6 @@
 {
-  "sourceHash": "491849ba22c4d01a6b9783fd9f3bc34f9f4ace3ff719ebde5a25580c6a6493d5",
-  "approvedHash": "2aa6ce8b370633ee9f4f6677e9a5f588a3100945a5283f1524c77a3c5fc3fdea",
+  "sourceHash": "b8a2dc0a9889599a9f90c757b4cb59300ede92aee1a57b2f7196bc0f8c826486",
+  "approvedHash": "ee0772a40f5ab4797960d63c512a7879c5d73735bbec3805dffd9cfb6fe5cd68",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -31,6 +31,7 @@
       {
         "heading": "Quatre joueurs et quelques secondes",
         "paragraphs": [
+          "Les grands maîtres retiennent une position tirée d’une vraie partie sous la forme de quelques groupes de pièces familiers, plutôt que case par case. Ces groupes sont les chunks que William Chase et Herbert Simon ont mesurés en 1973. Dans le test de De Groot de 1944, l’ancien champion du monde Max Euwe a vu une position de 22 pièces pendant 5 secondes et a retrouvé la place exacte des 22, tandis qu’un joueur de classe inférieure a obtenu 9 points. Sur des échiquiers aléatoires, l’avantage se réduit à environ une pièce supplémentaire par tranche de 400 points Elo, contre environ cinq sur des positions de partie (Gobet et Simon, 1996).",
           "En 1944, Adriaan de Groot a montré une position d’échecs à Max Euwe et l’a retirée cinq secondes plus tard. La position était tirée d’une partie entre Rohacek et Rabar, après le 20e coup des Blancs, avec 22 pièces sur l’échiquier. Euwe, champion du monde de 1935 à 1937, a ensuite dicté la place de chaque pièce. Les 22 étaient justes.",
           "De Groot, maître lui-même, a passé le même test. Il a ajouté un pion qui n’y était pas et a obtenu 21 points. A. Fast, champion d’Utrecht en 1942, a placé correctement 17 pièces, mais il a jugé le matériel égal alors qu’il ne l’était pas, et a obtenu 16 points. G. P. Hauer, un joueur de classe inférieure, en a obtenu 9.",
           "Les récits divergent sur la durée d’exposition et sur les pourcentages. Les chiffres ci-dessous sont donc tirés du livre de De Groot lui-même."

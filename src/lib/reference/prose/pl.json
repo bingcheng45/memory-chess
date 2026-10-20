@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "Test pamięci szachowej",
+      "what": "Test pamięci szachowej pokazuje ci pozycję przez kilka sekund, a potem prosi, żebyś odtworzył ją na pustej szachownicy. To zadanie na odtwarzanie z pamięci, które {deGroot} dawał szachistom w 1944 roku, a standardowym źródłem na jego temat jest artykuł Williama Chase'a i Herberta Simona „Perception in Chess” z 1973 roku.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess zalicza bierkę tylko wtedy, gdy właściwa bierka we właściwym kolorze stoi na właściwym polu. Twój wynik to odsetek bierek pozycji ustawionych w ten sposób, pomniejszony o {penalty} punktów za każdą bierkę postawioną ponad liczbę bierek w pozycji, i nigdy nie spada poniżej 0.",
+      "typical": "W rundach Memory Chess z ustawieniem {pieces} bierek i {seconds} sekund, rozegranych od {start} do {end} (liczba rund: {rounds}), średni wynik wyniósł {mean}, a {perfect} rund było bezbłędnych. Przy {easyPieces} bierkach średnia wyniosła {easyMean} (liczba rund: {easyRounds}), a przy {hardPieces} bierkach i {hardSeconds} sekundach wyniosła {hardMean} (liczba rund: {hardRounds}).",
+      "limits": "To gracze, którzy sami zdecydowali się grać i sami wybrali ustawienie, a nie próba wszystkich szachistów, a pusta szachownica liczy się jako 0, także przy jednym darmowym pominięciu dziennie.",
+      "dataLink": "Strona z danymi opisuje metodę i wszystkie ograniczenia."
+    },
     "title": "Jak grać w Memory Chess",
     "intro": "Każda runda przebiega w tych samych trzech krokach.",
     "phases": {

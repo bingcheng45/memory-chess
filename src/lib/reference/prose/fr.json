@@ -1,5 +1,14 @@
 {
   "game": {
+    "answer": {
+      "heading": "Le test de mémoire aux échecs",
+      "what": "Un test de mémoire aux échecs vous montre une position pendant quelques secondes, puis vous demande de la reconstituer sur un échiquier vide. C'est l'exercice de rappel que {deGroot} faisait passer aux joueurs d'échecs en 1944, et l'article « Perception in Chess » de William Chase et Herbert Simon, paru en 1973, en est la référence classique.",
+      "deGroot": "Adriaan de Groot",
+      "scoring": "Memory Chess ne compte une pièce que si la bonne pièce, de la bonne couleur, se trouve sur la bonne case. Votre précision est la part des pièces de la position placées ainsi, moins {penalty} points pour chaque pièce posée au-delà du nombre que comptait la position. Elle ne descend jamais sous 0.",
+      "typical": "Sur {rounds} manches de Memory Chess réglées sur {pieces} pièces et {seconds} secondes, jouées du {start} au {end}, la précision moyenne était de {mean} et {perfect} des manches étaient parfaites. Avec {easyPieces} pièces, la moyenne était de {easyMean} sur {easyRounds} manches, et avec {hardPieces} pièces en {hardSeconds} secondes, de {hardMean} sur {hardRounds} manches.",
+      "limits": "Ce sont des joueurs qui ont choisi de jouer et choisi leur réglage, pas un échantillon de l'ensemble des joueurs d'échecs, et un échiquier vide compte pour 0, y compris celui de la passe gratuite du jour.",
+      "dataLink": "La page des données présente la méthode et toutes les limites."
+    },
     "title": "Comment jouer à Memory Chess",
     "intro": "Chaque manche suit les trois mêmes étapes.",
     "phases": {

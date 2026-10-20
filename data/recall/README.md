@@ -1,6 +1,6 @@
 # Memory Chess position recall data
 
-How well people recall chess positions in [Memory Chess](https://thememorychess.com/data): one row per number of pieces and study time setting, from the finished rounds Google Analytics recorded between the dates in the file, for each setting with enough rounds and players. The page at https://thememorychess.com/data draws the same numbers.
+How well people recall chess positions in [Memory Chess](https://thememorychess.com/data): one row per number of pieces and study time setting, from the finished rounds Google Analytics recorded between the dates in the file, for each setting with enough rounds and players. The page at https://thememorychess.com/data draws the same numbers, and the game page at https://thememorychess.com/game quotes three of its cells.
 
 - `latest.csv` and `latest.json`: the current release.
 - `<yyyy-mm-dd>.json`: each release, named by the last day it covers.
@@ -94,4 +94,4 @@ Anyone with read access to GA4 property 483086308 can do this. It needs no code 
 
    It writes `data/recall/<last day>.json`, `latest.json` and `latest.csv`. The same files in give the same bytes out.
 
-3. Update the date range and the counts at the top of this file, the 6-piece `zero_share` in Limits, the sampling line in Method if a report was sampled, and the citation line, then `npm run build` and `npx jest src/lib/data` before you open the PR. The build fails if a cell the page quotes (2 or 6 pieces at 10 seconds, 12 pieces at 8 seconds) is missing.
+3. Update the date range and the counts at the top of this file, the 6-piece `zero_share` in Limits, the sampling line in Method if a report was sampled, and the citation line, then `npm run build` and `npx jest src/lib/data src/components/data src/components/reference` before you open the PR. Two pages quote the same three cells (2 or 6 pieces at 10 seconds, 12 pieces at 8 seconds): /data, and the answer block at the top of the reference text on /game (`src/components/reference/GameReference.tsx`). The build fails if one of those cells is missing.

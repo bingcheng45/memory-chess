@@ -196,11 +196,12 @@ describe("ArticlePage body", () => {
     }
   });
 
-  it("offers a new reader a 4-piece round near the top and at the end, and keeps the article's own drill as a second link", () => {
+  it("offers a new reader a 4-piece round near the top and at the end, and keeps the article's own drill as a second link at both", () => {
     const { container } = renderPage();
 
     expect(Array.from(container.querySelectorAll('a[href^="/game"]'), (link) => [link.getAttribute("href"), link.textContent])).toEqual([
       ["/game?pieceCount=4&memorizeTime=10&source=article_cta", "Your turnPlay 4 pieces, 10 seconds→"],
+      ["/game?pieceCount=12&memorizeTime=5&source=article_cta", "Play 12 pieces, 5 seconds"],
       ["/game?pieceCount=4&memorizeTime=10&source=article_cta", `Your turn${article.drill.why}Play 4 pieces, 10 seconds`],
       ["/game?pieceCount=12&memorizeTime=5&source=article_cta", "Play 12 pieces, 5 seconds"],
     ]);
@@ -223,6 +224,7 @@ describe("ArticlePage body", () => {
 
     expect(container.querySelector("a[data-article-drill]")).toHaveTextContent("Play 4 pieces, 10 seconds");
     expect(container.querySelector("a[data-article-drill-original]")).toBeNull();
+    expect(container.querySelector("a[data-article-early-drill-original]")).toBeNull();
   });
 
   it("describes the drill button by the drill's sentence, which the button's own name leaves out", () => {

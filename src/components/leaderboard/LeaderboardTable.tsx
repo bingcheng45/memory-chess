@@ -8,6 +8,7 @@ import { CloudOff, TriangleAlert } from "lucide-react";
 
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { countryName, flagEmoji, parseCountryCode, WORLD_CODE } from "@/lib/leaderboard/countries";
+import { BLINDFOLD_MODE, MODE_PARAM } from "@/lib/game/roundLink";
 
 export interface EntryDetails {
   player: string | null;
@@ -24,11 +25,14 @@ interface LeaderboardTableProps {
   error: string | null;
   entryDetails?: EntryDetails;
   activeTab?: string;
+  /** The blindfold board of `activeTab`, whose play link starts a blindfold round. */
+  blindfold?: boolean;
 }
 
 const COLUMN_COUNT = 7;
 
-export const playHrefOf = (board: string) => (board === DAILY_BOARD ? "/daily" : `/game?difficulty=${board}`);
+export const playHrefOf = (board: string, blindfold = false) =>
+  board === DAILY_BOARD ? "/daily" : `/game?difficulty=${board}${blindfold ? `&${MODE_PARAM}=${BLINDFOLD_MODE}` : ""}`;
 const PODIUM_MEDALS = ["🏆", "🥈", "🥉"];
 
 export function TimeDisplay({ seconds }: { seconds: number }) {
@@ -88,7 +92,7 @@ function BoardState({ icon, children }: { icon: ReactNode; children: ReactNode }
   );
 }
 
-function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardTableProps) {
+function LeaderboardTable({ data, error, entryDetails, activeTab, blindfold = false }: LeaderboardTableProps) {
   const t = useTranslations("leaderboard");
   const tCountry = useTranslations("country");
   const locale = useLocale();
@@ -141,7 +145,7 @@ function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardT
         <p className="lb-state-title">{t("emptyTitle")}</p>
         <p className="lb-state-body">{t("emptyBody")}</p>
         <p className="lb-state-note">{t("emptyCta")}</p>
-        <Link href={playHrefOf(activeTab || 'medium')} className="lab-btn lab-btn-secondary">
+        <Link href={playHrefOf(activeTab || 'medium', blindfold)} className="lab-btn lab-btn-secondary">
           {t("startPlaying")}
         </Link>
       </BoardState>

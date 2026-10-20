@@ -38,6 +38,8 @@ import { RoundBoard } from "@/components/round/RoundBoard";
 import { ReadoutCard } from "@/components/round/ReadoutCard";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import type { BoardAction } from "@/lib/round/round";
+import { BLINDFOLD_MODE } from "@/lib/game/roundLink";
+import { blindfoldBoardOpen } from "@/lib/leaderboard/mode";
 import ArticleTile from "@/components/game/ArticleTile";
 import TomorrowBoardCard from "@/components/game/TomorrowBoardCard";
 import { countWrong } from "@/lib/game/scoring";
@@ -113,6 +115,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const tConfig = useTranslations("game.config");
   const { gameState, round, history } = useGameStore();
   const { labRound } = gameState;
+  const blindfold = round.phase === "scored" && round.config.blindfold === true;
   const { countryCode, setCountryCode } = useSettingsStore();
 
   // Leaderboard submission state
@@ -254,8 +257,9 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     // Only standard difficulties are eligible (not custom games). The board
     // hides rows with no correct piece, so such a round is not submittable.
     // A set board is not ranked: the daily board is the same position for every player, and a review is one the player has seen.
+    // A blindfold round ranks only on the blindfold boards, which take scores once they are open.
     const difficulty = determineDifficulty(gameState.pieceCount);
-    return difficulty !== "custom" && (extendedGameState.correctPlacements ?? 0) > 0 && gameState.board === undefined;
+    return difficulty !== "custom" && (extendedGameState.correctPlacements ?? 0) > 0 && gameState.board === undefined && (!blindfold || blindfoldBoardOpen());
   };
 
   // Prepare leaderboard entry data
@@ -282,6 +286,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       solution_time: gameState.completionTime || 0,
       total_wrong_pieces: piecesInfo.totalWrong,
       skill_rating: gameState.skillRating ?? START_RATING,
+      ...(blindfold ? ({ mode: BLINDFOLD_MODE } as const) : {}),
     };
   };
 
@@ -319,8 +324,10 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         })
       : t("piecesPerSecond", { value: "0.0" });
   const leaderboardEligible = isEligibleForLeaderboard();
+  // The cutoffs are the board-study boards', so a blindfold round never claims it makes the board; it can still submit.
   const ranks =
     leaderboardEligible &&
+    !blindfold &&
     qualifiesForLeaderboard(
       determineDifficulty(gameState.pieceCount),
       {
@@ -364,6 +371,11 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <span aria-hidden="true"> · </span>
           <span>{t("recallSpeed")}</span> <span className="lab-mono">{recallSpeed}</span>
         </p>
+        {blindfold && (
+          <p className="lab-result-sub" data-round-mode="blindfold">
+            {t("blindfoldRound")}
+          </p>
+        )}
         {ratingNote && (
           <p className="lab-result-sub" data-rating-phase={gameState.rating?.phase}>
             {ratingNote}
@@ -588,7 +600,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                     return encodeURIComponent(
                       difficulty === "custom" ? "medium" : difficulty,
                     );
-                  })()}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round(((gameState.accuracy || 0) * gameState.pieceCount) / 100)}&totalWrongPieces=${piecesInfo.totalWrong}`}
+                  })()}${blindfold ? `&mode=${BLINDFOLD_MODE}` : ""}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round(((gameState.accuracy || 0) * gameState.pieceCount) / 100)}&totalWrongPieces=${piecesInfo.totalWrong}`}
                 >
                   {t("viewLeaderboard")}
                 </Link>

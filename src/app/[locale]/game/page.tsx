@@ -20,7 +20,7 @@ import { PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 import { warmResultDeltas } from '@/components/game/resultDeltasWarm';
 import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
-import { ROUND_PARAMS } from '@/lib/game/roundLink';
+import { isBlindfoldSearch, ROUND_PARAMS } from '@/lib/game/roundLink';
 import { GAME_CONFIG_RULES, parseGameSettings } from '@/lib/game/configPrefill';
 import '@/components/game/game-lab.css';
 // Loaded with the page, not with the result figures the round warms: Next commits a stylesheet a lazy chunk brings
@@ -89,7 +89,7 @@ function PinnedPage() {
   return null;
 }
 
-type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource };
+type UrlRound = { pieceCount: number; memorizeTime: number; source: RoundSource; blindfold: boolean };
 
 // The query is read off the live location rather than via useSearchParams,
 // which would bail /game out of static rendering and serve an empty page.
@@ -107,7 +107,8 @@ function readUrlRound(): UrlRound | null {
     },
     GAME_CONFIG_RULES,
   );
-  return settings && { ...settings, source };
+  // A set board is the same position for every player, studied on the board.
+  return settings && { ...settings, source, blindfold: !isSetBoardSource(source) && isBlindfoldSearch(window.location.search) };
 }
 
 /** A refresh then opens the configuration screen instead of restarting the round. */
@@ -118,6 +119,12 @@ function clearRoundParams(): void {
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
 }
+
+/** A board round is started with the same arguments it always was; only a blindfold round adds the mode. */
+const blindfoldArg = (blindfold: boolean | undefined) => (blindfold ? ([true] as const) : ([] as const));
+type StartRound = (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard, blindfold?: boolean) => void;
+const startAs = (start: StartRound, blindfold: boolean | undefined, pieceCount: number, memorizeTime: number, source: RoundSource) =>
+  blindfold ? start(pieceCount, memorizeTime, source, undefined, true) : start(pieceCount, memorizeTime, source);
 
 const subscribeNothing = () => () => {};
 
@@ -200,7 +207,7 @@ function GamePageContent() {
         live = false;
         window.clearTimeout(limit);
         setFirstRoundKnown(true);
-        (first ? prepareGame : startGame)(urlRound.pieceCount, urlRound.memorizeTime, source);
+        startAs(first ? prepareGame : startGame, urlRound.blindfold, urlRound.pieceCount, urlRound.memorizeTime, source);
       };
       const limit = window.setTimeout(() => open(false), FIRST_ROUND_READ_LIMIT_MS);
       void isFirstEverRound().catch(() => false).then(open);
@@ -272,14 +279,17 @@ function GamePageContent() {
     begin();
   };
 
-  const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) =>
-    replay(() => startGame(pieceCount, memorizeTime, source));
+  // Next round and the lab card's suggestions keep the mode of the round just played.
+  const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
+    const blindfold = round.phase !== 'idle' && round.config.blindfold === true;
+    replay(() => startAs(startGame, blindfold, pieceCount, memorizeTime, source));
+  };
 
   // The player has just pressed a button, so the new board counts in over the veil without a second one.
   const handleTryAgain = () => {
     if (round.phase === 'idle') return;
-    const { pieceCount, studyMs } = round.config;
-    replay(() => countInGame(pieceCount, studyMs / 1000, 'try_again'));
+    const { pieceCount, studyMs, blindfold } = round.config;
+    replay(() => countInGame(pieceCount, studyMs / 1000, 'try_again', ...blindfoldArg(blindfold)));
   };
 
   const handleNewGame = () => {
@@ -289,10 +299,10 @@ function GamePageContent() {
     resetGame();
   };
 
-  const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
+  const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource, blindfold = false) => {
     playSound('click');
     startedByHandRef.current = true;
-    countInGame(pieceCount, memorizeTime, source);
+    countInGame(pieceCount, memorizeTime, source, ...blindfoldArg(blindfold));
   };
 
   const renderGameContent = () => {

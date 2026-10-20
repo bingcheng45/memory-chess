@@ -973,7 +973,9 @@
         "loss": "Hooguit <num>−{value}</num>",
         "announce": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}. Als het misgaat, hooguit −{loss}.",
         "announceProvisional": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}."
-      }
+      },
+      "blindfold": "Blind",
+      "blindfoldHint": "Bestudeer de stelling als notatie, zonder stukken op het bord."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1089,8 @@
       "savedToast": {
         "message": "Ronde opgeslagen. Je bijgewerkte statistieken staan hieronder.",
         "action": "Laat zien"
-      }
+      },
+      "blindfoldRound": "Blinde ronde: je hebt de stelling als notatie bestudeerd."
     },
     "comparison": {
       "title": "Bekijk je stelling terug"
@@ -1170,6 +1173,12 @@
         "bishop": "Loper",
         "knight": "Paard",
         "pawn": "Pion"
+      },
+      "notation": {
+        "label": "De stelling in notatie",
+        "white": "Wit",
+        "black": "Zwart",
+        "pawns": "een veld alleen is een pion"
       }
     }
   },
@@ -1208,6 +1217,13 @@
       "setting": "{pieces, plural, one {# stuk} other {# stukken}} · {seconds} s kijktijd",
       "resetsAtUtc": "Reset om {utc} UTC",
       "resetsAt": "Reset om {utc} UTC ({local} bij jou), over {timeLeft}"
+    },
+    "mode": {
+      "label": "Studiemodus",
+      "board": "Bord",
+      "blindfold": "Blind",
+      "note": "Blinde rondes worden als notatie bestudeerd, zonder stukken op het bord, en hebben daarom eigen ranglijsten.",
+      "loading": "De blinde ranglijst wordt geladen."
     }
   },
   "country": {

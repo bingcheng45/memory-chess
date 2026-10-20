@@ -973,7 +973,9 @@
         "loss": "Höchstens <num>−{value}</num>",
         "announce": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}. Wenn es misslingt, höchstens −{loss}.",
         "announceProvisional": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}."
-      }
+      },
+      "blindfold": "Blind",
+      "blindfoldHint": "Präge dir die Stellung als Notation ein, ohne Figuren auf dem Brett."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1089,8 @@
       "savedToast": {
         "message": "Runde gespeichert. Deine neuen Werte stehen gleich darunter.",
         "action": "Zeigen"
-      }
+      },
+      "blindfoldRound": "Blindrunde: Du hast die Stellung als Notation gelernt."
     },
     "comparison": {
       "title": "Deine Stellung im Rückblick"
@@ -1170,6 +1173,12 @@
         "bishop": "Läufer",
         "knight": "Springer",
         "pawn": "Bauer"
+      },
+      "notation": {
+        "label": "Die Stellung in Notation",
+        "white": "Weiß",
+        "black": "Schwarz",
+        "pawns": "ein Feld allein ist ein Bauer"
       }
     }
   },
@@ -1208,6 +1217,13 @@
       "setting": "{pieces, plural, one {# Figur} other {# Figuren}} · {seconds} s zum Einprägen",
       "resetsAtUtc": "Wird um {utc} UTC zurückgesetzt",
       "resetsAt": "Wird um {utc} UTC zurückgesetzt ({local} bei dir), in {timeLeft}"
+    },
+    "mode": {
+      "label": "Lernmodus",
+      "board": "Brett",
+      "blindfold": "Blind",
+      "note": "Blindrunden werden als Notation gelernt, ohne Figuren auf dem Brett, und haben deshalb eigene Ranglisten.",
+      "loading": "Die Blind-Rangliste wird geladen."
     }
   },
   "country": {

@@ -136,6 +136,10 @@ export type BodyBlock =
       readonly rows: readonly { readonly label: string; readonly cells: readonly string[] }[];
     }
   | { readonly kind: "plan"; readonly steps: readonly PlanStep[] }
+  /** The wooden Memory Chess set and its Amazon link. Draws nothing while the link in `AFFILIATE` is empty. */
+  | { readonly kind: "affiliate"; readonly label: string }
+  /** The animated wooden-board game. The written rules must also be on the page, as the demo loads on scroll. */
+  | { readonly kind: "rulesDemo"; readonly caption: string }
   | CtaBlock;
 
 export type CtaTarget =

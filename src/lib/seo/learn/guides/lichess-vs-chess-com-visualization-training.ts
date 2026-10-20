@@ -31,7 +31,7 @@ const guide: LearnDocument = {
     disclosure: "Memory Chess publishes this page. It is not affiliated with Lichess or Chess.com, and every fact about them comes from their own public pages.",
   },
   intro: {
-    quickAnswer: "Both sites offer a free 30-second coordinate drill and a way to play with the pieces hidden. Lichess makes every feature free with no ads. On Chess.com the Vision trainer is free, but a free account gets 3 puzzles a day, plus the daily puzzle and a daily Puzzle Rush and Puzzle Battle. We found no drill on either site that asks you to rebuild a whole position from memory.",
+    quickAnswer: "Both sites offer a free 30-second coordinate drill and a way to play with the pieces hidden. Lichess makes every feature free with no ads. On Chess.com the Vision trainer is free, but a free account gets 3 puzzles a day, plus the daily puzzle and limited Puzzle Rush and Puzzle Battle. We found no drill on either site that asks you to rebuild a whole position from memory.",
     takeaways: [
       "Lichess's coordinate trainer has a find-the-square mode and a name-the-square mode, timed at 30 seconds or untimed.",
       "Chess.com's Vision trainer drills coordinates, moves, or both, 30 seconds at a time.",

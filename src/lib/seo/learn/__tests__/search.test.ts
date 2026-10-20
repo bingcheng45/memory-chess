@@ -85,6 +85,11 @@ describe("Learn search", () => {
     expect(outcomeOf(search(query, server))).toBe("weak");
   });
 
+  it("reads the title match from the page title, not its h1", () => {
+    expect(top("pass mark", server)).toMatchObject({ slug: "blindfold-chess-training-for-beginners", titleMatch: false });
+    expect(top("blindfold", server)).toMatchObject({ slug: "blindfold-chess-training-for-beginners", titleMatch: true });
+  });
+
   it("gives no title match for a number word, written out or as digits", () => {
     expect(top("four")?.titleMatch).toBe(false);
     expect(top("20")).toMatchObject({ slug: "20-minute-daily-chess-study-plan", titleMatch: false });

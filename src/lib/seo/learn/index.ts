@@ -21,8 +21,8 @@ export const FAQ_LABEL = "Questions";
 function primaryCtaOf(doc: LearnDocument): LearnPage["primaryCta"] {
   for (const block of doc.end) {
     if (block.kind === "cta" && block.target.kind === "game") {
-      const { label, pieceCount, memorizeTime } = block.target;
-      return { label, pieceCount, memorizeTime };
+      const { label, pieceCount, memorizeTime, blindfold } = block.target;
+      return { label, pieceCount, memorizeTime, ...(blindfold ? { blindfold } : {}) };
     }
   }
   for (const block of doc.sections.flatMap((section) => section.blocks)) {

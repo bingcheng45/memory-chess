@@ -5,11 +5,11 @@ const guide: LearnDocument = {
     slug: "20-minute-daily-chess-study-plan",
     title: "20-Minute Daily Chess Study Plan for Beginners",
     h1: "A 20-minute daily chess study plan for beginners",
-    description: "A 20-minute daily chess study plan in four fixed blocks. Three memory rounds, six slow puzzles, one of your own games, and one written line for tomorrow.",
+    description: "This 20-minute daily chess study plan spends 3 minutes on memory rounds, 7 on six slow puzzles, 7 on your latest game and 3 on one written line.",
     group: "practice",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
-    updatedAt: "2026-10-13T00:00:00.000Z",
+    updatedAt: "2026-10-20T00:00:00.000Z",
     questions: [
       "How should I spend 20 minutes a day on chess?",
       "What is a good daily chess routine for beginners?",
@@ -17,7 +17,7 @@ const guide: LearnDocument = {
       "What if I miss a day of chess study?",
     ],
     keywords: {
-      primary: "20 minute daily chess study plan",
+      primary: "20-minute daily chess study plan",
       secondary: [
         "daily chess routine for beginners",
         "short chess study plan",
@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "A 20-minute daily chess study plan works best as four fixed blocks in the same order. Spend 3 minutes on three memory rounds of 6 pieces and 7 on six slow puzzles with the reply checked. Then spend 7 replaying your latest game and 3 writing one line about the move you would take back.",
+    quickAnswer: "A 20-minute daily chess study plan works best as four fixed blocks in the same order. The memory rounds are three of 6 pieces at 10 seconds, and each puzzle gets a little over a minute with the reply checked. The written line names the move you would take back.",
     takeaways: [
       "Same four blocks, same order, five days a week.",
       "Six puzzles in seven minutes leaves time to name the reply before each move.",
@@ -66,7 +66,7 @@ const guide: LearnDocument = {
             {
               label: "Minutes 0 to 3",
               duration: "3 minutes",
-              detail: "Three rounds of 6 pieces, 10 seconds. Name each piece and square while it is on screen, then rebuild it.",
+              detail: "Three rounds of 6 pieces, 10 seconds, pressing Try again between rounds. Name each piece and square while it is on screen, then rebuild it.",
             },
             {
               label: "Minutes 3 to 10",
@@ -95,7 +95,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "The medium preset in Memory Chess is 6 pieces with 10 seconds to look. Three rounds of it fit in three minutes, with a moment to read each result.",
-            "Press Try Again on the result screen for the next round. It keeps the settings and deals a new position, so no round can be remembered from yesterday.",
+            "Press Try again on the result screen for each new round. It keeps the settings and deals a new position, so no round can be remembered from yesterday. Next round would add a piece after a round of 90 percent or better.",
             "Name each piece and its square aloud while the board is up. The session then opens with a full read of a board, which the puzzles and your game ask for next.",
           ],
         },
@@ -104,7 +104,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Three rounds at the medium preset",
-              description: "Play 6 pieces with 10 seconds to look, 3 rounds in a row. Say each piece and its square while the position is up.",
+              description: "Play 6 pieces with 10 seconds to look, 3 rounds in a row, pressing Try again between rounds. Say each piece and its square while the position is up.",
               duration: "about 3 minutes",
               goal: "Three rounds with every piece on the right square.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
@@ -176,7 +176,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Two rounds of eight, once six is clean",
-              description: "Play 8 pieces with 10 seconds to look, 2 rounds. Name the pieces in groups of two or three rather than one at a time.",
+              description: "Play 8 pieces with 10 seconds to look, 2 rounds, pressing Try again between them. Name the pieces in groups of two or three rather than one at a time.",
               duration: "about 2 minutes",
               goal: "Two rounds with every piece on the right square.",
               play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },
@@ -190,7 +190,7 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
-      why: "This is the first block of the twenty minutes. Three rounds at this setting and today's session has started.",
+      why: "This is the first block of the twenty minutes. Three rounds at this setting, with Try again between them, and today's session has started.",
     },
     {
       kind: "cta",

@@ -19,7 +19,7 @@ function readStored(): string | null {
 
 const serverStored = () => null;
 
-export function useReaderRound(): GameSettings {
+export function useReaderRound(unrated?: GameSettings): GameSettings {
   const stored = useSyncExternalStore(subscribe, readStored, serverStored);
-  return useMemo(() => readerRoundOf(stored), [stored]);
+  return useMemo(() => readerRoundOf(stored, unrated), [stored, unrated]);
 }

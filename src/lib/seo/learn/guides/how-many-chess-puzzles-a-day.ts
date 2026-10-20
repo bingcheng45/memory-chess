@@ -5,11 +5,11 @@ const guide: LearnDocument = {
     slug: "how-many-chess-puzzles-a-day",
     title: "How Many Chess Puzzles a Day Should Beginners Do?",
     h1: "How many chess puzzles a day should a beginner do?",
-    description: "Work out how many chess puzzles a day to do from your minutes. Get a count for each kind of session, four signs of too many, and a check for when to stop.",
+    description: "How many chess puzzles a day? About one a minute, so 10 to 15 in a 10- to 15-minute block. Stop once you play moves just to see if they work.",
     group: "practice",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
-    updatedAt: "2026-10-13T00:00:00.000Z",
+    updatedAt: "2026-10-20T00:00:00.000Z",
     questions: [
       "How many chess puzzles should I do a day?",
       "Is one puzzle a day enough?",
@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Most beginners should do 10 to 15 chess puzzles a day, at about one a minute in a 10- to 15-minute block. Before each move, look for the opponent's reply that would refute it. Stop sooner once you start playing moves just to see whether they work.",
+    quickAnswer: "Your daily count is your study minutes at one checked puzzle a minute, so a 10-minute block is about ten puzzles. Before each move, look for the opponent's reply that would refute it. Fifty puzzles in twenty minutes is under half a minute each, too fast for that check in our judgement.",
     takeaways: [
       "Your daily count is your minutes at one checked puzzle a minute.",
       "Treat the count as a ceiling. Stop earlier when you start guessing moves.",
@@ -143,7 +143,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Memory Chess gives you a quick way to see whether the block wore you out. Play three rounds of 6 pieces with 10 seconds to look, before your puzzles and again after.",
+            "Memory Chess gives you a quick way to see whether the block wore you out. Play three rounds of 6 pieces with 10 seconds to look before your puzzles and again after. Press Try again between rounds so the settings stay.",
             "Write down how many pieces you placed correctly. Three rounds give you 18 pieces to place, so each total is a number out of 18.",
             "A single round is too coarse for this. At 6 pieces, one missed piece turns a Perfect Score into Great Job at 83 percent, and a second miss gives Good Effort at 67 percent.",
             "The check does not measure puzzle skill. It shows whether you can still take in a whole board after the block, which the last puzzles needed too.",
@@ -154,7 +154,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Three rounds on each side of the block",
-              description: "Play 6 pieces with 10 seconds to look, 3 rounds before your puzzles and 3 rounds after. Write down correct pieces out of 18 each time.",
+              description: "Play 6 pieces with 10 seconds to look, 3 rounds before your puzzles and 3 rounds after, pressing Try again between rounds. Write down correct pieces out of 18 each time.",
               duration: "about 3 minutes before and 3 after",
               goal: "The total after the block within one piece of the total before it.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
@@ -181,7 +181,7 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
-      why: "Play three rounds before your puzzles and three after. If the second total is two or more pieces lower out of 18, cut five minutes from tomorrow's block.",
+      why: "Play three rounds before your puzzles and three after, pressing Try again between rounds. If the second total is two or more pieces lower out of 18, cut five minutes from tomorrow's block.",
     },
     {
       kind: "faq",

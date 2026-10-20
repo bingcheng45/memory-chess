@@ -5,11 +5,11 @@ const guide: LearnDocument = {
     slug: "chess-memory-training",
     title: "Chess Memory Training: A 6-to-12 Piece Ladder",
     h1: "Chess memory training with a score that tells you when to move up",
-    description: "Chess memory training you can score. Rebuild boards from 6 pieces to 12, with a clear rule for when to add pieces and what each result message means.",
+    description: "Begin chess memory training at 6 pieces with a 10-second look. Add two pieces after three perfect rounds in a row, and climb to 12 pieces at 8 seconds.",
     group: "memory",
     level: "beginner",
     publishedAt: "2026-03-06T00:00:00.000Z",
-    updatedAt: "2026-10-18T00:00:00.000Z",
+    updatedAt: "2026-10-20T00:00:00.000Z",
     questions: [
       "How do I train my chess memory?",
       "Is 4 out of 6 a good score in Memory Chess?",
@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the board from memory and scoring it square by square. Start at 6 pieces and 10 seconds, and add two pieces after three perfect rounds in a row. Keep the look at 10 seconds until 12 pieces comes back perfect three times, then lower it to 8.",
+    quickAnswer: "Chess memory training means looking at a position for a few seconds, rebuilding the board from memory and scoring it square by square. Five rungs take you from 6 pieces to 12. Keep the look at 10 seconds until 12 pieces comes back perfect three times in a row, then lower it to 8.",
     takeaways: [
       "A piece scores only when its square, type and colour all match, so a near miss is a miss.",
       "At 6 pieces one missed piece already costs 17 points, so the result messages are blunt at low counts.",
@@ -68,7 +68,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "The message on the result screen comes straight from your accuracy. 100 percent is Perfect Score, 90 or more is Excellent Memory, 80 is Great Job, 70 is Well Done and 50 is Good Effort. Below 50 the screen says Keep Practicing. Those are the only six messages, and the thresholds are the same at every piece count.",
-            "At 6 pieces each piece is worth about 17 points, so the steps are steep. Four out of 6 is 67 percent, Good Effort. It means two pieces were missing or wrong. Before you press Try Again, find those two pieces on the result board and note what kind of piece each was.",
+            "At 6 pieces each piece is worth about 17 points, so the steps are steep. Four out of 6 is 67 percent, Good Effort. It means two pieces were missing or wrong. Before you start the next round, find those two pieces on the result board and note what kind of piece each was.",
             "With no extra pieces on the board, a 6-piece round goes straight from Great Job at five correct to Perfect Score at six. So it never shows Excellent Memory. Six correct plus one extra piece shows Excellent Memory, at 90, which is why the piece count tells you more than the message. The table shows how much one miss costs at 6 pieces against 12.",
           ],
         },
@@ -110,8 +110,9 @@ const guide: LearnDocument = {
           kind: "list",
           ordered: false,
           items: [
-            "Three Perfect Score rounds in a row at your current settings: add two pieces. The piece slider runs from 2 to 32, so every rung exists.",
-            "Two rounds in a row below Well Done, which is 70 percent: take two pieces away and rebuild the streak there.",
+            "The result screen's Next round button changes one piece at a time. After 90 percent or better it offers one more piece with the same look. Below 50 percent it offers one fewer, down to 3, and in between it keeps the size.",
+            "To climb this ladder instead, press Try again, which keeps your settings. After three Perfect Score rounds in a row, press Change settings and add two pieces. The piece slider runs from 2 to 32, so every rung exists.",
+            "Two rounds in a row below Well Done, which is 70 percent, send you down a rung. Press Change settings, take two pieces away and rebuild the streak there.",
             "Change one setting at a time. Hold the look at 10 seconds until 12 pieces gives three Perfect Score rounds in a row, then drop it to 8. If you change both at once, you cannot tell which one broke.",
             "Rungs 2 and 3 use 8 and 10 pieces. Counts other than 2, 6, 12 and 20 are not preset counts, so those rounds are custom games and stay off the leaderboard. While you climb, that does not matter.",
             "The look slider runs from 1 to 60 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
@@ -122,21 +123,21 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "The honest baseline",
-              description: "5 rounds of 6 pieces, 10 seconds, about 5 minutes. Place the kings first, then only the pieces you are sure of, then submit. Leave guesses off so the result shows what you actually remembered. A lucky guess scores the same as a remembered piece, and a wrong one costs nothing, so guesses make the score claim more than you know.",
+              description: "5 rounds of 6 pieces, 10 seconds, about 5 minutes. Press Try again between rounds. Place the kings first, then only the pieces you are sure of, then submit. Leave guesses off so the result shows what you actually remembered. A lucky guess scores the same as a remembered piece, and a wrong one costs nothing, so guesses make the score claim more than you know.",
               duration: "About 5 minutes",
               goal: "Three Perfect Score rounds in a row before you add a single piece.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
             },
             {
               title: "The first climb",
-              description: "3 rounds of 8 pieces, 10 seconds, about 4 minutes. Keep the same routine with two more pieces. After each round, note which pieces you lost: the pawns, the pieces far from the kings, or the last ones you looked at.",
+              description: "3 rounds of 8 pieces, 10 seconds, about 4 minutes. Press Try again between rounds. Keep the same routine with two more pieces. After each round, note which pieces you lost: the pawns, the pieces far from the kings, or the last ones you looked at.",
               duration: "About 4 minutes",
               goal: "Three Perfect Score rounds in a row, then move to 10 pieces.",
               play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },
             },
             {
               title: "The hard preset",
-              description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Play these once 12 pieces at 10 seconds gives three Perfect Score rounds in a row. Read the board in three or four groups of three or four pieces, starting with the kings. A group is pieces that touch or share a rank or file, such as a pawn pair on f2 and g2.",
+              description: "4 rounds of 12 pieces, 8 seconds, about 6 minutes. Press Try again between rounds. Play these once 12 pieces at 10 seconds gives three Perfect Score rounds in a row. Read the board in three or four groups of three or four pieces, starting with the kings. A group is pieces that touch or share a rank or file, such as a pawn pair on f2 and g2.",
               duration: "About 6 minutes",
               goal: "Excellent Memory or Perfect Score, which at this count means at least 11 of the 12, in three of four rounds. Then try the 20-piece preset.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
@@ -147,13 +148,13 @@ const guide: LearnDocument = {
     },
     {
       id: "skip-and-try-again",
-      heading: "Skip, Try Again, and what the clock records",
+      heading: "Hide board, Try again, and what the clock records",
       blocks: [
         {
           kind: "prose",
           paragraphs: [
-            "Skip ends the look early. The game records how long you actually looked, and the result screen and the leaderboard use that number. So once you have the board, skip.",
-            "Try Again keeps your piece count and look time and deals a new position. You never see the same board twice. That suits training, and it means one perfect round might be an easy draw. Three perfect rounds in a row at the same settings is a signal.",
+            "Hide board ends the look early. The game records how long you actually looked, and the result screen and the leaderboard use that number. So once you have the board, hide it.",
+            "Try again keeps your piece count and look time and deals a new position. Next round also deals a new position, but after 90 percent or better it adds a piece. You never see the same board twice. That suits training, and it means one perfect round might be an easy draw. Three perfect rounds in a row at the same settings is a signal.",
             "On the result board under Review Your Position, a piece you placed is marked correct or wrong placement. An original square you left empty is marked missed square and shows the piece that stood there.",
           ],
         },
@@ -168,7 +169,9 @@ const guide: LearnDocument = {
           paragraphs: [
             "Rebuilding from an empty board is a recall test, and recall tests help a memory last. Roediger and Karpicke had students study a prose passage, then either reread it or write down what they recalled. A week later the tested students remembered more. On a board, rebuilding is the written recall and staring longer is the rereading.",
             "Gobet and Simon showed strong players several boards in a row for a few seconds each, and the players still recalled much of each one. The authors explain it with templates, large familiar patterns held in long-term memory.",
-            "Memory Chess positions are random, so you rarely meet a familiar template. The plain groups from the hard-preset drill, pieces that touch or share a rank or file, take their place.",
+            "Chase and Simon timed the look at 5 seconds and used middle-game positions of 24 to 26 pieces. Their master recalled about twice as many pieces as their Class A player. On the same pieces set out on random squares, every player recalled only about three or four.",
+            "Random boards shrink the expert's edge but do not erase it. Gobet and Simon checked thirteen experiments with looks of 10 seconds or less. They put the edge at about one extra piece per 400 Elo points on random boards, against about five on positions from games.",
+            "Memory Chess positions are random, so you rarely meet a familiar template, and a strong player's lead over you is smaller here than in a game. The plain groups from the hard-preset drill, pieces that touch or share a rank or file, take the place of templates.",
             "Groups are what make the hard preset possible. Piece by piece, 12 pieces in 8 seconds leaves two thirds of a second each. In three or four groups it leaves two seconds or more each.",
           ],
         },
@@ -179,7 +182,7 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Open the 6-piece, 10-second round", pieceCount: 6, memorizeTime: 10 },
-      why: "Rung one is six pieces and ten seconds. Stay there until three rounds in a row come back perfect.",
+      why: "Rung one is six pieces and ten seconds. Stay there, pressing Try again, until three rounds in a row come back perfect.",
     },
     {
       kind: "cta",
@@ -244,6 +247,21 @@ const guide: LearnDocument = {
           title: "Templates in Chess Memory: A Mechanism for Recalling Several Boards",
           note: "Supports the claim that strong players shown several boards briefly could still recall much of each, explained by templates held in long-term memory.",
           url: "https://doi.org/10.1006/cogp.1996.0011",
+        },
+        {
+          title: "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+          note: "Supports the 5-second look and the middle-game positions of 24 to 26 pieces.",
+          url: "https://andymatuschak.org/prompts/Chase1973.pdf",
+        },
+        {
+          title: "Skill in Chess, Herbert A. Simon and William G. Chase, American Scientist 61(4), pages 394 to 403 (1973)",
+          note: "Supports the master recalling about twice as many pieces as the Class A player, and every player recalling about three or four pieces on random boards.",
+          url: "https://paulogentil.com/pdf/Skill%20in%20chess.pdf",
+        },
+        {
+          title: "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+          note: "Supports the thirteen experiments with looks of 10 seconds or less. Also supports the edge of about one piece per 400 Elo points on random boards, against about five on game positions.",
+          url: "https://bura.brunel.ac.uk/bitstream/2438/1346/1/FullText.pdf",
         },
       ],
     },

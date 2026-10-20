@@ -179,7 +179,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Rebuild eight pieces, then read the marks",
-              description: "Play 8 pieces with 10 seconds to look, 3 rounds. After each round, count the squares marked missed square. Each one is a piece you did not put back where it stood.",
+              description: "Play 8 pieces with 10 seconds to look, 3 rounds, pressing Try again between rounds. After each round, count the squares marked missed square. Each one is a piece you did not put back where it stood.",
               duration: "about 4 minutes",
               goal: "Three rounds in a row with no more than one missed square.",
               play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },

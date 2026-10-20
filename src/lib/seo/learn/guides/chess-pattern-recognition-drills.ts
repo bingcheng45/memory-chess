@@ -5,11 +5,11 @@ const guide: LearnDocument = {
     slug: "chess-pattern-recognition-drills",
     title: "Chess Pattern Recognition Drills, From Memory",
     h1: "Chess pattern recognition drills for the first four tactics",
-    description: "Chess pattern recognition drills for four tactics: the exact squares, the one condition each needs, and a six-minute rebuild routine that makes them stick.",
+    description: "Base your first chess pattern recognition drills on the knight fork, back-rank mate, bishop pin and smothered mate. Drill one a session, six minutes each.",
     group: "memory",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
-    updatedAt: "2026-10-13T00:00:00.000Z",
+    updatedAt: "2026-10-20T00:00:00.000Z",
     questions: [
       "How do I train pattern recognition in chess?",
       "Which chess patterns should beginners learn first?",
@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Start chess pattern recognition drills with four patterns, the knight fork, back-rank mate, bishop pin and smothered mate, each a shape plus one condition. Set up the shape on a board, clear it and rebuild it from memory. Then add one black piece that breaks the condition, watch the tactic fail, and look for the shape in your own games.",
+    quickAnswer: "Chess pattern recognition drills treat each pattern as a shape plus one condition, such as a knight fork on c7 that nothing black can capture. Rebuild the shape from memory, then add one black piece that breaks the condition. Add a fifth only after you find each of the first four, or its early form, in your own games.",
     takeaways: [
       "A knight fork on c7 is three squares, e8, a8 and c7, plus one condition, that nothing black can take on c7.",
       "Rebuild each shape from an empty board until you can place it without the table, then look for it in your own games.",
@@ -267,6 +267,7 @@ const guide: LearnDocument = {
             "Memory Chess positions are random and fresh each round, so a back-rank mate shows up only by chance. What a round trains is reading a cluster, two to four pieces that touch or guard each other, as one unit. Twenty pieces in five seconds is a quarter of a second per piece, too little to read square by square.",
             "The generator weights piece types as a real set holds them, eight pawns to one queen per side. On a 12-piece board the ten pieces beyond the kings are split five and five, and about half of them are pawns. So read the kings first, then the pawns that touch, then the odd pieces.",
             "Two more rules shrink the search. A side's two bishops never share a square colour, and no pawn ever stands on the first or eighth rank.",
+            "Chase and Simon saw a master group pawns too. They filmed him rebuilding positions from master games and split his work into chunks at every pause longer than 2 seconds. Of his 77 chunks across fourteen positions, 47 contained a pawn chain. On the middle-game positions his first chunk averaged 3.8 pieces, against 2.6 for the Class A player.",
           ],
         },
         {
@@ -274,14 +275,14 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Pawns before pieces",
-              description: "3 rounds of 12 pieces, 8 seconds, about 5 minutes. Place the kings, then each pair of touching pawns as one cluster, then the rest. Say each pair aloud, such as f2 g3.",
+              description: "3 rounds of 12 pieces, 8 seconds, about 5 minutes. Press Try again between rounds. Place the kings, then each pair of touching pawns as one cluster, then the rest. Say each pair aloud, such as f2 g3.",
               duration: "About 5 minutes",
               goal: "Every pawn on its square in all three rounds.",
               play: { label: "Start 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
             {
               title: "The quarter-second board",
-              description: "2 rounds of 20 pieces, 5 seconds, about 4 minutes. Try it only once 12 pieces at 8 seconds gives you Excellent Memory or Perfect Score, 90 percent or better, in most rounds. Before that, a round is likely to end in Keep Practicing. Watch for the moment you start reading clusters.",
+              description: "2 rounds of 20 pieces, 5 seconds, about 4 minutes. Press Try again between rounds. Try it only once 12 pieces at 8 seconds gives you Excellent Memory or Perfect Score, 90 percent or better, in most rounds. Before that, a round is likely to end in Keep Practicing. Watch for the moment you start reading clusters.",
               duration: "About 4 minutes",
               goal: "At least 50 percent on the second round, which the result screen calls Good Effort or better.",
               play: { label: "Try 20 pieces, 5 seconds", pieceCount: 20, memorizeTime: 5 },
@@ -368,6 +369,11 @@ const guide: LearnDocument = {
           title: "The Roles of Recognition Processes and Look-Ahead Search in Time-Constrained Expert Problem Solving: Evidence From Grand-Master-Level Chess",
           note: "Supports the claim that Kasparov's performance with far less time per move in simultaneous displays fell only slightly, read as evidence for recognition over search.",
           url: "https://doi.org/10.1111/j.1467-9280.1996.tb00666.x",
+        },
+        {
+          title: "Perception in Chess, William G. Chase and Herbert A. Simon, Cognitive Psychology 4, pages 55 to 81 (1973)",
+          note: "Supports the 2-second pause as the chunk boundary and 47 pawn chains among the master's 77 chunks over fourteen positions. Also supports first chunks of 3.8 and 2.6 pieces on the middle-game positions.",
+          url: "https://andymatuschak.org/prompts/Chase1973.pdf",
         },
       ],
     },

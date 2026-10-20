@@ -142,21 +142,21 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Four pieces, read out loud",
-              description: "Play 4 pieces with 10 seconds to look, 5 rounds. While the position is up, say each piece and its square out loud, like white knight c3. Then rebuild it.",
+              description: "Play 4 pieces with 10 seconds to look, 5 rounds, pressing Try again between rounds. While the position is up, say each piece and its square out loud, like white knight c3. Then rebuild it.",
               duration: "about 4 minutes",
               goal: "All five rounds at 100 percent in one session before week 2 starts.",
               play: { label: "Play 4 pieces, 10 seconds", pieceCount: 4, memorizeTime: 10 },
             },
             {
               title: "Six pieces, same ten seconds",
-              description: "Play 6 pieces with 10 seconds to look, 5 rounds. Keep naming every piece aloud, and start with the two kings so they are never the ones you miss.",
+              description: "Play 6 pieces with 10 seconds to look, 5 rounds, pressing Try again between rounds. Keep naming every piece aloud, and start with the two kings so they are never the ones you miss.",
               duration: "about 5 minutes",
               goal: "All five rounds at 100 percent in one session before week 3 starts.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
             },
             {
               title: "Eight pieces, where this stage stops",
-              description: "Play 8 pieces with 10 seconds to look, 5 rounds. Naming every piece gets tight here, so name the pairs that attack or guard each other.",
+              description: "Play 8 pieces with 10 seconds to look, 5 rounds, pressing Try again between rounds. Naming every piece gets tight here, so name the pairs that attack or guard each other.",
               duration: "about 6 minutes",
               goal: "Most rounds at 100 percent. Eight is as far as this plan goes.",
               play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },
@@ -267,17 +267,17 @@ const guide: LearnDocument = {
             {
               label: "Week 1",
               duration: "4 minutes plus one slow game",
-              detail: "Five rounds of 4 pieces, 10 seconds, each piece named out loud. Then one 15+10 game with the question asked before every move, and one line afterwards.",
+              detail: "Five rounds of 4 pieces, 10 seconds, with Try again between rounds and each piece named out loud. Then one 15+10 game with the question asked before every move, and one line afterwards.",
             },
             {
               label: "Week 2",
               duration: "5 minutes plus one slow game",
-              detail: "Five rounds of 6 pieces, 10 seconds. Same game, same question. Read your week 1 lines before you play.",
+              detail: "Five rounds of 6 pieces, 10 seconds, with Try again between rounds. Same game, same question. Read your week 1 lines before you play.",
             },
             {
               label: "Week 3",
               duration: "6 minutes plus one slow game",
-              detail: "Five rounds of 8 pieces, 10 seconds, naming the pairs that attack or guard each other. Same game, question and line.",
+              detail: "Five rounds of 8 pieces, 10 seconds, with Try again between rounds, naming the pairs that attack or guard each other. Same game, question and line.",
             },
             {
               label: "Week 4",

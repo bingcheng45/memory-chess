@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import LearnGuideRoute from "@/app/[locale]/learn/[slug]/page";
 import LearnHub from "@/app/[locale]/learn/page";
 import LearnSearchRoute, { metadata as searchMetadata } from "@/app/[locale]/learn/search/page";
+import { EN_LEARN_PAGES } from "@/lib/seo/learn";
 import messages from "../../../../messages/en.json";
 import { AFFILIATE } from "@/lib/affiliate/amazon";
 
@@ -78,6 +79,28 @@ describe("a guide page", () => {
     expect(markup.indexOf("Before every move, run one scan")).toBeLessThan(markup.indexOf('id="puzzle-vs-game"'));
   });
 
+  it("opens with the direct answer as the first paragraph under the h1 and in the Article and WebPage description", async () => {
+    const answer =
+      "Plan on about five weeks of blindfold chess training to a first full blind game. Drill 3 to 6 minutes a day for four weeks, then a game every other day.";
+    const markup = await guide("blindfold-chess-training-for-beginners");
+    const nodes = graph(markup);
+
+    expect(texts(markup.slice(markup.indexOf("</h1>")), "p")[0]).toBe(answer);
+    expect(nodes.find((node) => node["@type"] === "Article")?.description).toBe(answer);
+    expect(nodes.find((node) => node["@type"] === "WebPage")?.description).toBe(answer);
+  });
+
+  it("puts every guide's answer first under its h1", async () => {
+    const firstParagraphs = await Promise.all(
+      EN_LEARN_PAGES.map(async ({ meta }) => {
+        const markup = await guide(meta.slug);
+        return [meta.slug, texts(markup.slice(markup.indexOf("</h1>")), "p")[0]];
+      }),
+    );
+
+    expect(firstParagraphs).toEqual(EN_LEARN_PAGES.map(({ meta }) => [meta.slug, meta.description]));
+  });
+
   it("serves a beginner's round and today's daily board under the lede, before the byline and the quick answer", async () => {
     const markup = await guide("how-to-get-better-at-chess-for-beginners");
     const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
@@ -87,6 +110,52 @@ describe("a guide page", () => {
     expect(markup.indexOf('class="lg-lede"')).toBeLessThan(markup.indexOf('class="lg-quickplay"'));
     expect(markup.indexOf('class="lg-quickplay"')).toBeLessThan(markup.indexOf('class="lg-meta"'));
     expect(markup.indexOf('class="lg-quickplay"')).toBeLessThan(markup.indexOf('class="lg-answer"'));
+  });
+
+  it("offers a new reader the guide's own round in the hero, the same round its answer and closing call to action name", async () => {
+    const markup = await guide("chess-coordinates-practice");
+    const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
+
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=12&amp;source=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 12 seconds</a>');
+  });
+
+  it("offers a new reader the guide's closing round in the hero only when it is sighted, up to 6 pieces with 10 seconds or more, and the beginner round otherwise", async () => {
+    const heroes = await Promise.all(
+      EN_LEARN_PAGES.map(async ({ meta }) => {
+        const markup = await guide(meta.slug);
+        return [meta.slug, markup.match(/data-reader-round="([^"]+)"/)?.[1]];
+      }),
+    );
+
+    expect(Object.fromEntries(heroes)).toEqual({
+      "how-to-get-better-at-chess-for-beginners": "4/10",
+      "how-to-stop-blundering-in-chess": "6/10",
+      "why-puzzle-rating-doesnt-transfer-to-games": "4/10",
+      "chess-coordinates-practice": "4/12",
+      "chess-visualization-exercises": "6/10",
+      "how-to-see-the-whole-board-in-chess": "4/10",
+      "chess-calculation-exercises-for-beginners": "4/10",
+      "blindfold-chess-training-for-beginners": "4/10",
+      "chess-memory-training": "6/10",
+      "chess-pattern-recognition-drills": "4/10",
+      "how-to-think-in-chess-for-beginners": "6/20",
+      "20-minute-daily-chess-study-plan": "6/10",
+      "how-many-chess-puzzles-a-day": "6/10",
+      "how-to-analyze-chess-games-for-beginners": "4/10",
+      "how-to-play-memory-chess-board-game": "4/10",
+      "chess-position-memory-trainers-compared": "6/10",
+      "lichess-vs-chess-com-visualization-training": "6/10",
+      "memory-chess-vs-darksquares": "4/10",
+      "memory-chess-vs-lichess-coordinate-trainer": "4/12",
+    });
+  });
+
+  it("keeps a hard guide's own round in its closing call to action while the hero offers the beginner round", async () => {
+    const markup = await guide("how-to-see-the-whole-board-in-chess");
+    const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
+
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;source=guide_cta" class="lab-btn lab-btn-primary">');
+    expect(markup).toContain("/game?pieceCount=12&amp;memorizeTime=8&amp;source=guide_cta");
   });
 
   it("links today's daily board under a drill box that plays a round, not under one done at a board", async () => {

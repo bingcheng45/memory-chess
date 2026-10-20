@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "chess-visualization-exercises",
     title: "Chess Visualization Training: See the Board",
     h1: "Chess visualization exercises that find and fix your weak spot",
-    description: "Chess visualization exercises built on a four-minute test that shows whether pieces vanish, drift or change identity, and a cover-and-move drill to fix it.",
+    description: "Test your mental board with four 6-piece rounds at 10 seconds. Then spend 8 to 12 minutes a day on chess visualization exercises that target how it fails.",
     group: "visualization",
     level: "beginner",
     publishedAt: "2026-03-06T00:00:00.000Z",
@@ -30,7 +30,7 @@ const guide: LearnDocument = {
     featured: true,
   },
   intro: {
-    quickAnswer: "The best chess visualization exercises train the failure you actually have. A four-minute test of four 6-piece rounds shows whether pieces vanish, drift a square or change identity in your head. Then cover a position, play a capture from memory and name every square on the file behind it before you uncover the board.",
+    quickAnswer: "The best chess visualization exercises train the failure you actually have. Four 6-piece rounds show whether pieces vanish, drift a square or change identity in your head. Then cover a position, play a capture from memory and name every square on the file behind it before you uncover the board.",
     takeaways: [
       "Four 6-piece, 10-second rounds are a four-minute test of which way your picture breaks.",
       "The result board tells a vanished piece from a drifted one. The accuracy number cannot.",
@@ -80,7 +80,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Six pieces, ten seconds, four rounds",
-              description: "Play 4 rounds of 6 pieces with 10 seconds to look. Place the pieces and submit. Before the next round, write one word for each miss: vanished, drifted, changed or phantom.",
+              description: "Play 4 rounds of 6 pieces with 10 seconds to look, pressing Try again between rounds. Place the pieces and submit. Before the next round, write one word for each miss: vanished, drifted, changed or phantom.",
               duration: "About 4 minutes",
               goal: "A tally that shows which failure you make most often.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
@@ -254,7 +254,7 @@ const guide: LearnDocument = {
     {
       kind: "cta",
       target: { kind: "game", label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
-      why: "Four rounds at six pieces show whether your pieces vanish, drift a square or change identity on the way back.",
+      why: "Four rounds at six pieces, with Try again between them, show whether your pieces vanish, drift a square or change identity on the way back.",
     },
     {
       kind: "faq",

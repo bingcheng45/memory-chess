@@ -489,8 +489,6 @@ const PLAN_ROUNDS = /(\w+) rounds of (\d+) pieces, (\d+) seconds/i;
  * PLAN_ROUNDS.
  */
 const UNCHECKED_PLAN_STEPS: Record<string, string> = {
-  "blindfold-chess-training-for-beginners Stage one":
-    "Six perfect rounds in a row is the pass mark, not the day's session.",
   "chess-visualization-exercises Weeks 1 and 2":
     "The minutes add a cover-and-move question to the four-minute check.",
   "chess-visualization-exercises Weeks 5 and 6":

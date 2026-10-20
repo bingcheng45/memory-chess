@@ -5,12 +5,28 @@ import { LEARN_GUIDES } from "../guides";
 import { EN_LEARN_PAGES, LEARN_SLUGS, RESERVED_LEARN_SLUGS, groupPages, toPage } from "..";
 import { guidePath } from "../links";
 import type { BodyBlock, InlineLink, LearnDocument, Rich } from "../schema";
-import { readingMinutes } from "../text";
+import { readingMinutes, richText } from "../text";
+import messages from "../../../../../messages/en.json";
 
 const SITE_PATHS = ["/", "/settings", "/game", "/dashboard", "/learn", "/articles"];
 
 const blocks = (doc: LearnDocument): BodyBlock[] => doc.sections.flatMap((section) => section.blocks);
 const linksIn = (rich: Rich): InlineLink[] => (typeof rich === "string" ? [] : rich.filter((part) => typeof part !== "string"));
+const CURRENT_BUTTONS = [...Object.values(messages.game.result), ...Object.values(messages.game.round)].filter((value): value is string => typeof value === "string");
+const RETIRED_BUTTONS = /(?<!(?:^|[.?!]\s+))\bSkip\b|(?<!Well\s)\b(?:Try Again|Done)\b/g;
+const ROUND_COUNT = /\b(?:\d+|two|three|four|five|six|seven|eight|nine|ten) rounds\b/i;
+
+const stringsIn = (value: unknown): string[] =>
+  typeof value === "string" ? [value] : typeof value === "object" && value !== null ? Object.values(value).flatMap(stringsIn) : [];
+
+function misnamedButtons(text: string): string[] {
+  const pressed = [...text.matchAll(/\bpress(?:es|ing|ed)?\s+(\S+(?:\s+\S+)?)/gi)]
+    .filter(([, after]) => !CURRENT_BUTTONS.some((label) => after.startsWith(label) && !/\w/.test(after.charAt(label.length))))
+    .map(([found]) => found);
+  const retired = [...text.matchAll(RETIRED_BUTTONS)].map(([found]) => found).filter((found) => !pressed.some((match) => match.includes(found)));
+  return [...pressed, ...retired];
+}
+
 const faqQuestions = (doc: LearnDocument) => doc.end.flatMap((block) => (block.kind === "faq" ? block.items : [])).map((item) => item.question);
 
 function words(count: number): string {
@@ -52,12 +68,12 @@ describe("derived page values", () => {
       "how-to-get-better-at-chess-for-beginners": 7,
       "how-to-stop-blundering-in-chess": 6,
       "why-puzzle-rating-doesnt-transfer-to-games": 6,
-      "chess-coordinates-practice": 5,
+      "chess-coordinates-practice": 6,
       "chess-visualization-exercises": 6,
       "how-to-see-the-whole-board-in-chess": 6,
       "chess-calculation-exercises-for-beginners": 7,
       "blindfold-chess-training-for-beginners": 8,
-      "chess-memory-training": 7,
+      "chess-memory-training": 8,
       "chess-pattern-recognition-drills": 6,
       "how-to-think-in-chess-for-beginners": 5,
       "20-minute-daily-chess-study-plan": 5,
@@ -130,6 +146,54 @@ describe("rules the types cannot hold", () => {
     ]);
 
     expect(long).toEqual([]);
+  });
+
+  it("keeps eight answer-first descriptions to 155 characters with the exact primary keyword", () => {
+    const answerFirst = [
+      "20-minute-daily-chess-study-plan",
+      "blindfold-chess-training-for-beginners",
+      "chess-coordinates-practice",
+      "chess-memory-training",
+      "chess-pattern-recognition-drills",
+      "chess-visualization-exercises",
+      "how-many-chess-puzzles-a-day",
+      "how-to-see-the-whole-board-in-chess",
+    ];
+    const misses = LEARN_GUIDES.filter(({ meta }) => answerFirst.includes(meta.slug)).flatMap(({ meta }) => [
+      ...(meta.description.length > 155 ? [`${meta.slug} description ${meta.description.length}`] : []),
+      ...(meta.description.toLowerCase().includes(meta.keywords.primary) ? [] : [`${meta.slug} description lacks ${meta.keywords.primary}`]),
+    ]);
+
+    expect(misses).toEqual([]);
+  });
+
+  it("names only the game's current buttons, and catches a retired or miscased name", () => {
+    expect(misnamedButtons("Press Skip to end the look.")).toEqual(["Press Skip to"]);
+    expect(misnamedButtons("Then press try again.")).toEqual(["press try again."]);
+    expect(misnamedButtons("A Done button ends the look, and Try Again repeats it.")).toEqual(["Done", "Try Again"]);
+    expect(misnamedButtons("Done when certain")).toEqual(["Done"]);
+    expect(misnamedButtons("Done ends the look. Try Again keeps the size.")).toEqual(["Done", "Try Again"]);
+    expect(misnamedButtons("Press Try again, then press Change settings. Skip the full replay below Well Done.")).toEqual([]);
+
+    expect(LEARN_GUIDES.flatMap((doc) => stringsIn(doc).flatMap(misnamedButtons).map((found) => `${doc.meta.slug}: ${found}`))).toEqual([]);
+  });
+
+  it("tells every fixed-size drill and closing round that names a round count to press Try again, since Next round resizes the board", () => {
+    const missing = LEARN_GUIDES.flatMap((doc) =>
+      blocks(doc)
+        .flatMap((block) =>
+          block.kind === "drills"
+            ? block.drills.map((drill) => [drill.title, `${richText(drill.description)} ${drill.duration}`])
+            : block.kind === "plan"
+              ? block.steps.map((step) => [step.label, step.detail])
+              : [],
+        )
+        .concat(doc.end.flatMap((block) => (block.kind === "cta" && block.target.kind === "game" ? [["closing call to action", block.why]] : [])))
+        .filter(([, text]) => ROUND_COUNT.test(text) && !text.includes(messages.game.result.tryAgain))
+        .map(([title]) => `${doc.meta.slug}: ${title}`),
+    );
+
+    expect(missing).toEqual([]);
   });
 
   it("asks questions that end in a question mark and repeat no FAQ question", () => {

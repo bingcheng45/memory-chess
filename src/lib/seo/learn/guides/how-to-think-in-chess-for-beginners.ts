@@ -191,18 +191,18 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "A Memory Chess round shows a position, clears the board and asks you to rebuild it. While the position is showing, a Done button ends the look early. The result then shows the study time you actually used.",
-            "The leaderboard ranks rounds by correct pieces first, then fewest wrong pieces, and only then by shorter study time. An early Done never makes up for a missed piece. That is the same bargain as letting go of a piece in a game.",
+            "A Memory Chess round shows a position, clears the board and asks you to rebuild it. While the position is showing, a Hide board button ends the look early. The result then shows the study time you actually used.",
+            "The leaderboard ranks rounds by correct pieces first, then fewest wrong pieces, and only then by shorter study time. Hiding the board early never makes up for a missed piece. That is the same bargain as letting go of a piece in a game.",
                       ],
         },
         {
           kind: "drills",
           drills: [
             {
-              title: "Done when certain",
-              description: "Play 5 rounds of 6 pieces with 20 seconds to look. Press Done the moment you can name all six squares in your head. A miss after a short look means you stopped early, often because holding the picture got dull.",
+              title: "Hide the board when certain",
+              description: "Play 5 rounds of 6 pieces with 20 seconds to look, pressing Try again between rounds. Press Hide board the moment you can name all six squares in your head. A miss after a short look means you stopped early, often because holding the picture got dull.",
               duration: "5 rounds, about 6 minutes",
-              goal: "Five perfect rounds, each ended with Done before the 20 seconds ran out.",
+              goal: "Five perfect rounds, each ended with Hide board before the 20 seconds ran out.",
               play: { label: "Play 6 pieces, 20 seconds", pieceCount: 6, memorizeTime: 20 },
             },
             {
@@ -225,7 +225,7 @@ const guide: LearnDocument = {
         pieceCount: 6,
         memorizeTime: 20,
       },
-      why: "Twenty seconds on six pieces leaves time to spare, so the only decision is when you press Done.",
+      why: "Twenty seconds on six pieces leaves time to spare, so the only decision is when you press Hide board.",
     },
     {
       kind: "faq",

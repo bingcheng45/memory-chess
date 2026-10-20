@@ -5,11 +5,11 @@ const guide: LearnDocument = {
     slug: "blindfold-chess-training-for-beginners",
     title: "Blindfold Chess Training for Beginners: 4 Stages",
     h1: "How to learn blindfold chess in four stages, each with a pass mark",
-    description: "Blindfold chess training in four stages, from two kings held without a board to a full game. Each stage has a pass mark that tells you when to move on.",
+    description: "Plan on about five weeks of blindfold chess training to a first full blind game. Drill 3 to 6 minutes a day for four weeks, then a game every other day.",
     group: "visualization",
     level: "improver",
     publishedAt: "2026-03-06T00:00:00.000Z",
-    updatedAt: "2026-10-18T00:00:00.000Z",
+    updatedAt: "2026-10-20T00:00:00.000Z",
     questions: [
       "How do I start playing blindfold chess?",
       "How long does it take to learn blindfold chess?",
@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Blindfold chess training for beginners starts with two kings held without a board, not a game. Next, learn six checks that catch the worst errors in your mental picture, then replay ten moves of your own games from the move list alone. Play a full game blind only after each stage passes its test.",
+    quickAnswer: "Blindfold chess training runs on a five-week schedule that starts with two kings held without a board, and pass marks decide when you move on. Then learn six checks that catch a drifting mental picture, and replay ten moves of your own games from the move list. Play a full game blind only after each stage passes.",
     takeaways: [
       "Each stage has a pass mark, so you know when to move on and when to repeat.",
       "Six checks that every Memory Chess position passes also catch the worst errors in a mental board that has drifted.",
@@ -83,7 +83,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Two kings, eyes shut",
-              description: "Play 6 rounds of 2 pieces with 10 seconds to look. Say both squares aloud, shut your eyes, name the colour of each square, then open them and place the kings.",
+              description: "Play 6 rounds of 2 pieces with 10 seconds to look, pressing Try again between rounds. Say both squares aloud, shut your eyes, name the colour of each square, then open them and place the kings.",
               duration: "About 3 minutes",
               goal: "Hold two named squares without the board in front of you.",
               play: { label: "Play 2 pieces, 10 seconds, kings only", pieceCount: 2, memorizeTime: 10 },
@@ -240,31 +240,32 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "The first three stages take about four weeks. Stage four takes at least another week. You need two clean 15-move games and then one clean full game, playing one game every other day. That puts your first full blind game, a whole game with the list hidden, about five weeks from today. Repeat a stage you fail instead of skipping ahead.",
+            "The first three stages take about four weeks at 3 to 6 minutes a day. Stage four takes at least another week. You need two clean 15-move games and then one clean full game, playing one game every other day. That puts your first full blind game, a whole game with the list hidden, about five weeks from today.",
+            "Five weeks is the schedule, not a floor or a promise. Each stage ends on a pass mark, not a date. If every test passes the first time, the fastest path is about 13 days. That is two days for each of the first three stages, then a game every other day. A stage you fail adds days, so repeat it instead of skipping ahead.",
           ],
         },
         {
           kind: "plan",
           steps: [
             {
-              label: "Stage one",
-              duration: "3 minutes a day for a week",
-              detail: "Six perfect two-king rounds in a row, colours included, on two separate days.",
+              label: "Stage one, week 1",
+              duration: "3 minutes a day",
+              detail: "Six rounds of 2 pieces, 10 seconds, which are the two kings. Press Try again between rounds, since Next round after a perfect round offers 3 pieces. Move on when all six are perfect in a row, colours included, on two separate days.",
             },
             {
-              label: "Stage two",
-              duration: "5 minutes a day for a week",
-              detail: "Replay Scholar's mate with no board, name all 31 pieces and run the six checks, until two days come out clean.",
+              label: "Stage two, week 2",
+              duration: "5 minutes a day",
+              detail: "Replay Scholar's mate with no board, name all 31 pieces and run the six checks. Move on when two days come out clean.",
             },
             {
-              label: "Stage three",
-              duration: "6 minutes a day for two weeks",
-              detail: "Ten moves each from one of your own games a day, until two different games pass on different days.",
+              label: "Stage three, weeks 3 and 4",
+              duration: "6 minutes a day",
+              detail: "Ten moves each from one of your own games a day. Move on when two different games pass on different days with no piece on a wrong square.",
             },
             {
-              label: "Stage four",
-              duration: "One game every other day, a week or more",
-              detail: "Fifteen moves with the move list in view until two games in a row come out clean, then one clean full game with the list still in view.",
+              label: "Stage four, week 5 on",
+              duration: "One game every other day",
+              detail: "Fifteen moves with the move list in view. Move on to full games when two in a row come out clean, and to a game with the list hidden after one clean full game.",
             },
           ],
         },

@@ -11,6 +11,7 @@ jest.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ replace: jest.fn() }),
 }));
 jest.mock("@/lib/articles/translatedLocales");
+jest.mock("@/lib/supabase", () => ({ supabase: {} }));
 jest.mock("@/lib/services/gameStatsService", () => ({
   getGameMetric: async () => ({
     data: { id: "1", metric_name: "total_plays", metric_value: "49631", last_updated: "2026-10-19T18:30:00.000Z" },
@@ -129,5 +130,7 @@ describe("AboutPage", () => {
       ["WebSite", "https://thememorychess.com/#website"],
     ]);
     expect(graph[0].name).toBe("About Memory Chess");
+    expect(graph[0].isPartOf).toEqual({ "@id": "https://thememorychess.com/#website" });
+    expect(graph.filter((node: { "@id": string }) => node["@id"] === graph[0].isPartOf["@id"])).toHaveLength(1);
   });
 });

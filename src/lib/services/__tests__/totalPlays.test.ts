@@ -2,6 +2,7 @@ import { getGameMetric } from "@/lib/services/gameStatsService";
 import { getTotalPlays } from "@/lib/services/totalPlays";
 
 jest.mock("@/lib/services/gameStatsService", () => ({ getGameMetric: jest.fn() }));
+jest.mock("@/lib/supabase", () => ({ supabase: {} }));
 
 const metric = (metric_value: unknown) => ({
   data: { id: "1", metric_name: "total_plays", metric_value, last_updated: "2026-10-19T18:30:00.000Z" },
@@ -10,9 +11,14 @@ const metric = (metric_value: unknown) => ({
 const env = process.env as Record<string, string | undefined>;
 const original = { NODE_ENV: env.NODE_ENV, NEXT_PHASE: env.NEXT_PHASE };
 
+function restore(name: keyof typeof original) {
+  if (original[name] === undefined) delete env[name];
+  else env[name] = original[name];
+}
+
 afterEach(() => {
-  env.NODE_ENV = original.NODE_ENV;
-  env.NEXT_PHASE = original.NEXT_PHASE;
+  restore("NODE_ENV");
+  restore("NEXT_PHASE");
 });
 
 describe("getTotalPlays", () => {
@@ -78,6 +84,19 @@ describe("getTotalPlays when the count cannot be read", () => {
     jest.mocked(getGameMetric).mockResolvedValue(down);
 
     expect(await getTotalPlays()).toBeNull();
+  });
+
+  it("gives nothing without a throw in a production revalidation when Supabase is not configured", async () => {
+    env.NODE_ENV = "production";
+    delete env.NEXT_PHASE;
+    jest.mocked(getGameMetric).mockResolvedValue(down);
+    const supabaseModule = jest.requireMock<{ supabase: object | null }>("@/lib/supabase");
+    supabaseModule.supabase = null;
+    try {
+      expect(await getTotalPlays()).toBeNull();
+    } finally {
+      supabaseModule.supabase = {};
+    }
   });
 
   it("still reads a good count in a production revalidation", async () => {

@@ -1,5 +1,6 @@
 import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import { getGameMetric } from "@/lib/services/gameStatsService";
+import { supabase } from "@/lib/supabase";
 
 export interface PlayCount {
   readonly plays: number;
@@ -23,8 +24,10 @@ async function readTotalPlays(): Promise<PlayCount | string> {
  * A revalidation that throws keeps serving the last good page, while one that
  * renders would cache a page without the count for the whole window. A build
  * has no last good page and `next dev` caches nothing, so both render without it.
+ * Without Supabase configured there never was a count to keep.
  */
 export async function getTotalPlays(): Promise<PlayCount | null> {
+  if (!supabase) return null;
   const result = await readTotalPlays();
   if (typeof result !== "string") return result;
   if (process.env.NODE_ENV === "production" && process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD) {

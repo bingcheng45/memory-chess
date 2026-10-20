@@ -190,3 +190,21 @@ describe("LeaderboardTable ELO column", () => {
   });
 });
 
+describe("LeaderboardTable rating column", () => {
+  const headers = (blindfold: boolean) =>
+    Array.from(
+      render(<LeaderboardTable error={null} activeTab="medium" data={[{ ...sameName[0], skill_rating: 1450 }]} blindfold={blindfold} />).container.querySelectorAll("thead th, tbody tr:first-child td"),
+      (cell) => cell.textContent,
+    );
+
+  it("shows ELO on a board tab and leaves it off the blindfold tab, whose rounds never move the rating", () => {
+    const board = headers(false);
+    const blindfold = headers(true);
+
+    expect(board.slice(0, 3)).toEqual(["Rank", "Player", "ELO"]);
+    expect(board).toContain("1450");
+    expect(blindfold.slice(0, 3)).toEqual(["Rank", "Player", "Pieces"]);
+    expect(blindfold).not.toContain("1450");
+    expect(blindfold).toHaveLength(board.length - 2);
+  });
+});

@@ -32,4 +32,18 @@ describe("the Blindfold option", () => {
     expect(screen.getByRole("checkbox", { name: "Blindfold" })).toBeChecked();
     expect(screen.getByLabelText("Number of pieces")).toHaveValue("2");
   });
+
+  it("shows the rating preview for a board round only, since a blindfold round never moves the rating", () => {
+    window.history.pushState({}, "", "/game");
+    const { container } = render(<GameConfig onStart={jest.fn()} />);
+    const preview = () => container.querySelector("[data-rating-preview]") !== null;
+
+    const shown = [preview()];
+    fireEvent.click(screen.getByRole("checkbox", { name: "Blindfold" }));
+    shown.push(preview());
+    fireEvent.click(screen.getByRole("checkbox", { name: "Blindfold" }));
+    shown.push(preview());
+
+    expect(shown).toEqual([true, false, true]);
+  });
 });

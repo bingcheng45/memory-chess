@@ -116,7 +116,7 @@ describe("indexnow-wait-deploy command line", () => {
   it("exits 1 without a token", () => {
     const result = spawnSync("node", [join(__dirname, "..", "indexnow-wait-deploy.mjs"), "--sha", SHA], {
       encoding: "utf8",
-      env: { PATH: process.env.PATH, GITHUB_REPOSITORY: "o/r" },
+      env: { ...process.env, GITHUB_TOKEN: "", GITHUB_REPOSITORY: "o/r" },
     });
     expect(result.status).toBe(1);
     expect(result.stderr).toBe("GITHUB_TOKEN and GITHUB_REPOSITORY are required.\n");
@@ -128,7 +128,7 @@ describe("indexnow-wait-deploy command line", () => {
       const output = join(dir, "out");
       const result = spawnSync("node", [join(__dirname, "..", "indexnow-wait-deploy.mjs"), "--sha", SHA, "--no-deployment-minutes", "0"], {
         encoding: "utf8",
-        env: { PATH: process.env.PATH, GITHUB_TOKEN: "t", GITHUB_REPOSITORY: "o/r", GITHUB_OUTPUT: output, GITHUB_API_URL: "http://127.0.0.1:9" },
+        env: { ...process.env, GITHUB_TOKEN: "t", GITHUB_REPOSITORY: "o/r", GITHUB_OUTPUT: output, GITHUB_API_URL: "http://127.0.0.1:9" },
       });
       expect(result.status).toBe(0);
       expect(readFileSync(output, "utf8")).toBe("deployed=false\n");

@@ -1,0 +1,255 @@
+{
+  "sourceHash": "fe30fe527e7e3dbc662ae5862afd6102419ffbb7ddffdeba868f4e9c710bf7ae",
+  "approvedHash": "b4f25004cb48f6de94503988ecf00ceb560068df2f0d242e8fa1cd350fafcb8b",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Cómo mejorar en ajedrez si eres principiante",
+      "h1": "Cómo mejorar en ajedrez si eres principiante",
+      "description": "Plan de ajedrez para principiantes en cuatro semanas: lee todo el tablero, una pregunta de seguridad por jugada, partidas lentas y una nota por derrota.",
+      "keywords": {
+        "primary": "cómo mejorar en ajedrez",
+        "secondary": [
+          "cómo mejorar en el ajedrez siendo principiante",
+          "plan para mejorar en ajedrez",
+          "entrenamiento de ajedrez para principiantes",
+          "rutina de ajedrez para principiantes",
+          "cómo dejar de regalar piezas en ajedrez"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Para mejorar en ajedrez como principiante, deja de regalar piezas antes de estudiar aperturas. Cada día, juega cinco rondas cortas de lectura del tablero y luego una partida lenta en la que te haces una pregunta de seguridad antes de cada jugada. Después de la partida, escribe una línea sobre la jugada que perdió material.",
+      "takeaways": [
+        "Añade dos piezas cada semana, pero solo después de una sesión de cinco rondas perfectas con el número actual.",
+        "Una línea después de cada partida te dice si falló la lectura del tablero, la pregunta o el ritmo."
+      ],
+      "audience": [
+        "Sabes cómo se mueven las piezas y pierdes la mayoría de las partidas por una pieza que dejas colgada.",
+        "Has visto vídeos de aperturas y no sabes decir por qué sigues perdiendo.",
+        "Quieres un orden de trabajo, con un siguiente paso claro cada semana."
+      ]
+    },
+    "sections": {
+      "where-games-go": {
+        "heading": "Dónde se pierden de verdad las partidas de principiantes",
+        "blocks": [
+          {
+            "paragraphs": [
+              "A nivel de principiante, una partida suele decidirse por una pieza perdida a cambio de nada o de un peón. Un caballo perdido pesa más que cualquier cosa que te haya dado la apertura.",
+              "Tu caballo de f3 está clavado contra tu dama de d1 por el alfil negro de g4. Las negras avanzan el peón de e5 a e4, y ataca al caballo. Los peones de d6, f7 y h5 tapan todos los jaques de dama y protegen el alfil."
+            ]
+          },
+          {
+            "caption": "El peón de e4 ataca al caballo de f3, y el caballo no puede irse sin dejar la dama de d1 expuesta al alfil de g4."
+          },
+          {
+            "paragraphs": [
+              "Si el caballo se queda, el peón lo captura y solo recuperas un peón. Si el caballo se aparta, el alfil captura la dama. Ningún estudio de aperturas arregla eso.",
+              "Dos hábitos sí lo arreglan. Ves cada pieza que está atacada, y compruebas primero cada jugada contra la respuesta del rival."
+            ]
+          },
+          {
+            "title": "El orden que sigue esta guía",
+            "body": "Primero la lectura del tablero, después la pregunta de seguridad, después partidas más lentas y después una línea tras cada partida. Las aperturas esperan hasta que las tres primeras cosas sean automáticas."
+          }
+        ]
+      },
+      "read-the-board": {
+        "heading": "Etapa 1. Retén todo el tablero en la cabeza",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Una pieza suele quedarse colgada porque nadie la miró. Estudiaste la pieza que ibas a mover, y el resto del tablero no recibió ni una mirada.",
+              "Una ronda de Memory Chess entrena el hábito contrario. Muestra una posición durante un número fijo de segundos, vacía el tablero y te pide que la reconstruyas. Una pieza cuenta como correcta solo cuando su casilla, su tipo y su color coinciden.",
+              "Adivinar no ayuda, porque las piezas de más restan puntos. Pon cinco piezas en una ronda de 4 piezas y tu precisión baja diez puntos, sin importar cuántas de las cinco estén bien.",
+              "Empieza con 4 piezas y añade dos cada vez, manteniendo la mirada en 10 segundos. Toda posición tiene los dos reyes, así que una ronda de 4 piezas son dos reyes y otras dos piezas."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Cuatro piezas, en voz alta",
+                "description": "Juega 4 piezas con 10 segundos para mirar, 5 rondas, y pulsa «Reintentar» entre ronda y ronda. Mientras la posición está a la vista, di en voz alta cada pieza y su casilla, por ejemplo caballo blanco c3. Después reconstrúyela.",
+                "duration": "unos 4 minutos",
+                "goal": "Las cinco rondas al 100 por ciento en una misma sesión antes de que empiece la semana 2.",
+                "play": {
+                  "label": "Jugar 4 piezas, 10 segundos"
+                }
+              },
+              {
+                "title": "Seis piezas, los mismos diez segundos",
+                "description": "Juega 6 piezas con 10 segundos para mirar, 5 rondas, y pulsa «Reintentar» entre ronda y ronda. Sigue nombrando cada pieza en voz alta, y empieza por los dos reyes para que nunca sean los que se te escapan.",
+                "duration": "unos 5 minutos",
+                "goal": "Las cinco rondas al 100 por ciento en una misma sesión antes de que empiece la semana 3.",
+                "play": {
+                  "label": "Jugar 6 piezas, 10 segundos"
+                }
+              },
+              {
+                "title": "Ocho piezas, donde termina esta etapa",
+                "description": "Juega 8 piezas con 10 segundos para mirar, 5 rondas, y pulsa «Reintentar» entre ronda y ronda. Aquí nombrar cada pieza va justo de tiempo, así que nombra los pares que se atacan o se protegen entre sí.",
+                "duration": "unos 6 minutos",
+                "goal": "La mayoría de las rondas al 100 por ciento. Ocho es el límite de este plan.",
+                "play": {
+                  "label": "Jugar 8 piezas, 10 segundos"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "move-question": {
+        "heading": "Etapa 2. Una pregunta antes de cada jugada",
+        "blocks": [
+          {
+            "paragraphs": [
+              "La pregunta de seguridad es siempre la misma. Después de mi jugada, ¿puede mi rival capturar algo gratis, o atacar una pieza que no puede apartarse? Hazla en cada jugada, también en las tranquilas.",
+              "Empieza por la última jugada de tu rival. Supón que llevas las negras tras 1.e4 e5. Si las blancas juegan 2.Bc4, el alfil apunta ahora a f7. Si en cambio juegan 2.Qh5, la dama apunta a f7, e5 y h7.",
+              "Después comprueba tu propia jugada. La pieza que mueves deja de proteger lo que protegía. Supón que respondiste a 2.Qh5 con 2...Nc6. El caballo protege ahora e5, que la dama ataca. Si más adelante mueves ese caballo, el peón de e5 queda indefenso y la dama lo captura con jaque."
+            ]
+          },
+          {
+            "items": [
+              "Nombra la última jugada de tu rival y cada casilla nueva que ataca.",
+              "Elige tu jugada, pero no toques la pieza.",
+              "Hazte la pregunta de seguridad sobre la posición resultante, incluido todo lo que protegía la pieza que mueves.",
+              "Si la respuesta es sí, elige otra."
+            ]
+          },
+          {
+            "title": "Por qué funciona la pregunta",
+            "body": "Evitar una pérdida tonta no exige un cálculo largo, solo mirar la pieza adecuada. La pregunta te obliga a mirar en cada jugada."
+          }
+        ]
+      },
+      "slow-games": {
+        "heading": "Etapa 3. Juega lo bastante lento para usar la pregunta",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Juega una partida al día con 15 minutos por jugador y 10 segundos de incremento por jugada, lo que se escribe 15+10, o más lenta.",
+              "Una partida de 3 minutos y 40 jugadas te deja menos de 5 segundos por jugada. Mientras la pregunta es nueva lleva más tiempo que eso, así que en blitz te la saltas. A 15+10 hay tiempo para hacerla en cada jugada."
+            ]
+          }
+        ]
+      },
+      "one-line": {
+        "heading": "Etapa 4. Una línea después de cada partida",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Olvídate por ahora del análisis completo con motor. Busca la primera jugada en la que perdiste material y escribe una línea sobre ella. La línea nombra la etapa que falló. Si no perdiste nada, escribe eso."
+            ]
+          },
+          {
+            "items": [
+              "Falló la etapa 1 si nunca viste la pieza que capturó la tuya.",
+              "Falló la etapa 2 si la viste pero no te hiciste la pregunta antes de mover.",
+              "Falló la etapa 3 si te hiciste la pregunta y respondiste con prisas."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Guarda las líneas en un mismo sitio. Cada diez partidas, cuenta qué etapa nombran más, y practica esa etapa a continuación."
+            ]
+          }
+        ]
+      },
+      "four-weeks": {
+        "heading": "Cuatro semanas en el orden correcto",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Cada día tiene dos partes, unos minutos de rondas y una partida lenta. Sube el número de piezas solo al empezar una semana nueva, y solo si cumpliste el objetivo del ejercicio de la semana anterior. Si no, repite la semana."
+            ]
+          },
+          {
+            "steps": [
+              {
+                "label": "Semana 1",
+                "duration": "4 minutos más una partida lenta",
+                "detail": "Cinco rondas de 4 piezas, 10 segundos, con «Reintentar» entre ronda y ronda y cada pieza nombrada en voz alta. Después una partida a 15+10 haciéndote la pregunta antes de cada jugada, y una línea al terminar."
+              },
+              {
+                "label": "Semana 2",
+                "duration": "5 minutos más una partida lenta",
+                "detail": "Cinco rondas de 6 piezas, 10 segundos, con «Reintentar» entre ronda y ronda. La misma partida, la misma pregunta. Lee tus líneas de la semana 1 antes de jugar."
+              },
+              {
+                "label": "Semana 3",
+                "duration": "6 minutos más una partida lenta",
+                "detail": "Cinco rondas de 8 piezas, 10 segundos, con «Reintentar» entre ronda y ronda, nombrando los pares que se atacan o se protegen entre sí. La misma partida, la misma pregunta y la misma línea."
+              },
+              {
+                "label": "Semana 4",
+                "duration": "6 minutos más una partida lenta",
+                "detail": "Mantén las rondas de 8 piezas. Cuenta tus líneas por etapa. La etapa que más aparezca es tu primera tarea del mes que viene."
+              }
+            ]
+          }
+        ]
+      },
+      "openings-last": {
+        "heading": "¿Cuándo deben estudiar aperturas los principiantes?",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Empieza cuando pase una semana entera de partidas sin regalar material. Antes de eso, una variante memorizada solo te lleva a la jugada diez en una posición que todavía no sabes leer.",
+              "Mantén pequeño tu primer repertorio. Con blancas, juega 1.e4 y saca los caballos antes que los alfiles. Con negras, responde a 1.e4 con 1...e5 y a 1.d4 con 1...d5.",
+              "Aprende por qué se juega cada jugada antes de aprender la siguiente. Cuando tu rival se sale de la teoría, las razones son lo único que te queda."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jugar 4 piezas, 10 segundos",
+        "why": "Cuatro piezas son el primer peldaño del hábito de leer el tablero. Mira, reconstruye y solo entonces piensa en una jugada."
+      },
+      {
+        "items": [
+          {
+            "question": "¿Cuánto tardará esto en notarse en mi Elo?",
+            "answer": "El Elo se mueve despacio y depende de contra quién te emparejen, así que una semana de resultados dice poco. Mira en cambio tus últimas diez líneas de la etapa 4 y cuenta las partidas en las que perdiste material. Si esa cifra baja, el plan funciona."
+          },
+          {
+            "question": "¿Basta con Memory Chess?",
+            "answer": "No. Una ronda entrena la etapa 1, leer cada pieza del tablero. No puede hacer que te hagas la pregunta de seguridad con un reloj real ni mostrarte dónde fallan tus propias partidas. Las etapas 2 a 4 necesitan partidas reales."
+          },
+          {
+            "question": "¿Debo hacer también problemas?",
+            "answer": "Sí, unos pocos al día una vez que la partida lenta forme parte de tu rutina. Resuelve cada uno despacio y comprueba la mejor respuesta del rival antes de decidirte, que es otra vez la pregunta de seguridad. Dedica más o menos un minuto a cada problema."
+          },
+          {
+            "question": "¿En qué número de piezas debo parar?",
+            "answer": "Ocho piezas con 10 segundos es donde termina este plan. Más allá, las piezas de más entrenan la memoria más que el hábito de mirar cada pieza en tus partidas. La guía de entrenamiento de memoria en ajedrez sube la escalera hasta 12 piezas."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Una lista de comprobación más larga para la etapa 2 cuando la pregunta única ya sea automática."
+          },
+          {
+            "reason": "Añade un plan para la jugada encima de la pregunta de seguridad cuando esta salga sin esfuerzo."
+          },
+          {
+            "reason": "Convierte la línea de la etapa 4 en un análisis de diez minutos."
+          },
+          {
+            "reason": "La escalera de lectura del tablero más allá de ocho piezas, para jugadores que disfrutan de las rondas."
+          },
+          {
+            "reason": "Cómo dimensionar el hábito de los problemas que acompaña a estas etapas."
+          },
+          {
+            "reason": "Encaja las cuatro etapas en una sesión fija de veinte minutos para los días sin tiempo para una partida lenta."
+          }
+        ]
+      }
+    ]
+  }
+}

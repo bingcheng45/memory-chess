@@ -1,0 +1,219 @@
+{
+  "sourceHash": "1e76a79b0ae5ab6f6b4238980f8e2d254e771ef3830048abdda935ebf8dfcf2f",
+  "approvedHash": "be86011562a4c575e64fae657d2b18fb9fb4b4def3c279a4966b10c720f6c02d",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Visualización en ajedrez: ejercicios para ver el tablero",
+      "h1": "Ejercicios de visualización en ajedrez que encuentran y corrigen tu punto débil",
+      "description": "Prueba tu tablero mental con cuatro rondas de 6 piezas y 10 segundos. Luego dedica de 8 a 12 minutos al día a ejercicios de visualización que corrigen tu fallo.",
+      "keywords": {
+        "primary": "ejercicios de visualización en ajedrez",
+        "secondary": [
+          "entrenamiento de visualización en ajedrez",
+          "visualizar jugadas de ajedrez",
+          "visualización del tablero de ajedrez",
+          "ejercicio de tapar el tablero",
+          "entrenar el tablero mental en ajedrez"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Los mejores ejercicios de visualización en ajedrez entrenan el fallo que de verdad tienes. Cuatro rondas de 6 piezas muestran si en tu cabeza las piezas desaparecen, se desplazan una casilla o cambian de identidad. Después tapa una posición, haz una captura de memoria y nombra cada casilla de la columna que queda detrás antes de destapar el tablero.",
+      "takeaways": [
+        "Cuatro rondas de 6 piezas y 10 segundos son una prueba de cuatro minutos que muestra por dónde se rompe tu imagen.",
+        "El tablero de resultados distingue una pieza desaparecida de una desplazada. La cifra de precisión no puede.",
+        "Tapar y mover entrena a actualizar la imagen después de una captura."
+      ],
+      "audience": [
+        "Jugadores que calculan dos jugadas, vuelven a mirar el tablero y empiezan de nuevo.",
+        "Cualquiera que ve la jugada pero no la posición que deja."
+      ]
+    },
+    "sections": {
+      "how-the-picture-fails": {
+        "heading": "Por qué en tu cabeza las piezas desaparecen, se desplazan o cambian",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Tu imagen es la posición que retienes en la cabeza. Cuando una variante se tuerce ahí, ha pasado una de tres cosas, y cada una necesita un remedio distinto."
+            ]
+          },
+          {
+            "items": [
+              "Una pieza desaparece. Una pieza que está fuera de la variante, como un peón en e4, se cae de tu imagen, y calculas como si su casilla estuviera vacía.",
+              "Una pieza se desplaza. La torre está en d7, pero en tu imagen está en d6, a una casilla.",
+              "Una pieza cambia de identidad. Un alfil se convierte en caballo, o una torre blanca en una negra."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Un cuarto fallo es más raro. Aparece una pieza fantasma, y calculas contando con un defensor que no existe.",
+              "Memory Chess cuenta una pieza colocada como correcta solo cuando su casilla, su tipo y su color coinciden con el original. Esa regla estricta permite que una sola ronda distinga los fallos."
+            ]
+          }
+        ]
+      },
+      "four-minute-check": {
+        "heading": "La prueba de visualización de cuatro minutos",
+        "summary": "Hazla antes que cualquier otro ejercicio, y luego a diario como indica el plan de seis semanas de más abajo.",
+        "blocks": [
+          {
+            "drills": [
+              {
+                "title": "Seis piezas, diez segundos, cuatro rondas",
+                "description": "Juega 4 rondas de 6 piezas con 10 segundos para mirar, y pulsa «Reintentar» entre ronda y ronda. Coloca las piezas y envía. Antes de la siguiente ronda, escribe una palabra por cada fallo: desaparecida, desplazada, cambiada o fantasma.",
+                "duration": "Unos 4 minutos",
+                "goal": "Un recuento que muestre qué fallo cometes más a menudo.",
+                "play": {
+                  "label": "Jugar 6 piezas, 10 segundos"
+                }
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Después de enviar, el tablero muestra las piezas que colocaste. Una casilla verde es correcta. Una casilla roja tiene una pieza que no va ahí. Un círculo rojo marca una casilla donde había una pieza en el original y tú no la volviste a poner. Si dejaste esa casilla vacía, dentro del círculo aparece una copia atenuada de la pieza que falta.",
+              "Lee esas marcas, no la cifra de precisión. Una pieza fantasma no tiene círculo propio. Una séptima pieza aparece como una casilla roja más, y la precisión baja diez puntos por ella."
+            ]
+          }
+        ]
+      },
+      "which-drill-for-which-failure": {
+        "heading": "Qué ejercicio corrige cada fallo",
+        "blocks": [
+          {
+            "columns": [
+              "Fallo",
+              "Qué muestra el tablero de resultados",
+              "Qué entrenar"
+            ],
+            "rows": [
+              {
+                "label": "Pieza desaparecida",
+                "cells": [
+                  "Un círculo con una pieza atenuada dentro y ninguna casilla roja suelta cerca.",
+                  "Mira por grupos. Nombra primero el rey y sus vecinas, y luego las piezas apartadas."
+                ]
+              },
+              {
+                "label": "Pieza desplazada",
+                "cells": [
+                  "Una casilla roja a un paso de un círculo con una copia atenuada de la misma pieza.",
+                  "Di en voz baja el nombre de cada casilla mientras miras."
+                ]
+              },
+              {
+                "label": "Pieza cambiada",
+                "cells": [
+                  "Una casilla roja dentro de un círculo. Encontraste la casilla y perdiste el tipo o el color.",
+                  "Di el color y el tipo junto con la casilla, por ejemplo caballo blanco f3."
+                ]
+              },
+              {
+                "label": "Pieza fantasma",
+                "cells": [
+                  "Una pieza más de las que tenía la posición, y diez puntos de precisión perdidos.",
+                  "Cuenta tus piezas antes de enviar. En una variante, cuenta las capturas sobre la marcha."
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cover-and-move": {
+        "heading": "El ejercicio de tapar y mover para actualizar la imagen",
+        "summary": "Una ronda de memoria pone a prueba retener una imagen. Este ejercicio pone a prueba cambiarla.",
+        "blocks": [
+          {
+            "caption": "Juegan las blancas: estudia este tablero, tápalo y decide si 1.Nxe5 gana un peón."
+          },
+          {
+            "paragraphs": [
+              "Estudia el tablero, o móntalo en uno real. Las blancas tienen rey en g1, torre en e1, caballo en f3 y peones en e4, f2, g2 y h2. Las negras tienen rey en g8, torre en e8, caballo en f6 y peones en e5, f7, g7 y h7.",
+              "Tapa el tablero. Ahora responde sin destaparlo. ¿Gana un peón 1.Nxe5?"
+            ]
+          },
+          {
+            "items": [
+              "Juega 1.Nxe5 en tu cabeza. Recorre la columna e de arriba abajo: torre en e8, luego e7 y e6 vacías, caballo en e5, peón en e4, luego e3 y e2 vacías, torre en e1.",
+              "Cuenta los atacantes de e5. La torre de e8 la ataca una vez.",
+              "Cuenta los defensores de e5. La torre de e1 la defendería, pero tu propio peón de e4 se interpone. Cero.",
+              "Saca la conclusión. 1.Nxe5 pierde un caballo por un peón tras 1...Rxe5. Destapa el tablero y comprueba cada casilla que nombraste."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Ahora lleva el peón blanco de e4 a d3 y hazte la misma pregunta. Esta vez la columna e detrás del caballo está vacía, así que la torre de e1 defiende e5. Tras 1.Nxe5 Rxe5 2.Rxe5 las blancas han ganado una torre y un peón por un caballo, así que las negras no deben recapturar, y 1.Nxe5 gana un peón limpio.",
+              "Un peón se movió una casilla y la respuesta cambió. El peón de e4 es fácil de olvidar porque nunca se mueve en la variante. Antes de juzgar una captura, recorre en voz alta toda la columna o diagonal que hay detrás, hasta el borde.",
+              "Haz dos posiciones propias cada día. Tapa un problema que resolviste ayer y juega la solución en tu cabeza. Di dónde está ahora cada pieza que se movió y qué piezas han desaparecido. Luego destapa, juega la solución en el tablero y comprueba cada casilla que nombraste. Ha funcionado si coinciden todas.",
+              "Cuando las posiciones tapadas salgan limpias, el <l0>entrenamiento de ajedrez a ciegas</l0> lleva el mismo hábito de una posición a una partida entera sin ningún tablero."
+            ]
+          }
+        ]
+      },
+      "six-week-progression": {
+        "heading": "Seis semanas con una sola cifra que vigilar",
+        "blocks": [
+          {
+            "steps": [
+              {
+                "label": "Semanas 1 y 2",
+                "duration": "8 minutos al día",
+                "detail": "La prueba de cuatro minutos a diario, y luego dos posiciones de tapar y mover, cada una con una sola captura. La cifra que vigilar son las rondas perfectas de cada cuatro."
+              },
+              {
+                "label": "Semanas 3 y 4",
+                "duration": "10 minutos al día",
+                "detail": "Mantén la prueba. Amplía tapar y mover a dos jugadas de cada bando, y termina recorriendo la columna o diagonal que hay detrás de la última captura. Abre «Recuerdo por tipo de pieza» en tu registro del laboratorio. El tipo que se queda bajo es el que pierde tu imagen."
+              },
+              {
+                "label": "Semanas 5 y 6",
+                "duration": "12 minutos al día",
+                "detail": "Si tres de tus últimas cinco pruebas de la semana 4 tuvieron tres rondas perfectas de cuatro, la imagen aguanta con seis piezas. Pasa la prueba a 8 piezas con 10 segundos y vuelve a empezar tapar y mover desde una captura. Si no, repite las semanas 3 y 4."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jugar 6 piezas, 10 segundos",
+        "why": "Cuatro rondas de seis piezas, con «Reintentar» entre ellas, muestran si al reconstruir tus piezas desaparecen, se desplazan una casilla o cambian de identidad."
+      },
+      {
+        "items": [
+          {
+            "question": "¿Por qué no jugar más rondas hasta que suba la precisión?",
+            "answer": "La precisión oculta qué fallo tienes. Dos jugadores con un 67% en seis piezas pueden tener problemas opuestos. Uno pierde las piezas apartadas y necesita mirar por grupos. El otro acierta todas las casillas, confunde las piezas y necesita nombrar color y tipo."
+          },
+          {
+            "question": "¿Debo poner a prueba la visualización con más piezas?",
+            "answer": "No hasta que seis piezas te resulten fáciles. En un tablero con muchos fallos, los círculos y las casillas rojas se amontonan y no puedes saber qué fallo causó cada cosa. Pasa a ocho cuando tres de tus últimas cinco pruebas tengan tres rondas perfectas de cuatro. El nivel Difícil de 12 piezas y 8 segundos viene después."
+          },
+          {
+            "question": "¿Puedo hacer ejercicios de visualización sin tablero de ajedrez?",
+            "answer": "Sí. Tapar y mover funciona con cualquier diagrama que puedas ocultar, en papel o en pantalla. Colocar las piezas a mano ayuda un poco, porque si pones tú el peón de e4 es más difícil olvidarlo."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Cuando un tablero tapado te resulte fácil, el siguiente paso es una partida entera sin él."
+          },
+          {
+            "reason": "Aplica el hábito de tapar y mover a variantes más largas."
+          },
+          {
+            "reason": "Recorre cada línea de alfil, torre y dama hasta el borde, el hábito en el que se apoya tapar y mover."
+          },
+          {
+            "reason": "La escalera de número de piezas que subir cuando seis piezas aguanten tres rondas de cuatro."
+          }
+        ]
+      }
+    ]
+  }
+}

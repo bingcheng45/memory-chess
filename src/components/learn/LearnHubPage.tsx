@@ -3,11 +3,25 @@ import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { ARTICLES_PATH } from "@/lib/articles/paths";
 import { RECALL_PATH } from "@/lib/data/recall";
-import { LEARN_GUIDE_COPY, LEARN_HUB_COPY as COPY, LEARN_SEARCH_COPY } from "@/lib/seo/learn/copy";
-import { dashboardTileHref, guidePath, guideRoundHref, learnSearchHref } from "@/lib/seo/learn/links";
-import { stageGuideNumber, type LearnShelves, type LearnStage } from "@/lib/seo/learn/path";
+import {
+  LEARN_GUIDE_COPY,
+  LEARN_HUB_COPY as COPY,
+  LEARN_SEARCH_COPY,
+} from "@/lib/seo/learn/copy";
+import {
+  dashboardTileHref,
+  guidePath,
+  guideRoundHref,
+  learnSearchHref,
+} from "@/lib/seo/learn/links";
+import {
+  stageGuideNumber,
+  type LearnShelves,
+  type LearnStage,
+} from "@/lib/seo/learn/path";
 import type { LearnGroupPages, LearnPage } from "@/lib/seo/learn";
 import { hubStructuredData } from "@/lib/seo/learn/structuredData";
+import GuideTranslations from "./GuideTranslations";
 import LearnSearch from "./LearnSearch";
 import "./learn.css";
 
@@ -22,7 +36,9 @@ function StageMap({ stages }: { readonly stages: readonly LearnStage[] }) {
             <a href={`#${stage.group.id}`}>
               <span className="lh-dot">{stage.number}</span>
               <b>{stage.group.label}</b>
-              <span className="lh-map-count">{COPY.guideCount(stage.pages.length)}</span>
+              <span className="lh-map-count">
+                {COPY.guideCount(stage.pages.length)}
+              </span>
             </a>
           </li>
         ))}
@@ -31,25 +47,39 @@ function StageMap({ stages }: { readonly stages: readonly LearnStage[] }) {
   );
 }
 
-function GuideCard({ page, number }: { readonly page: LearnPage; readonly number?: string }) {
+function GuideCard({
+  page,
+  number,
+}: {
+  readonly page: LearnPage;
+  readonly number?: string;
+}) {
   return (
-    <Link href={guidePath(page.meta.slug)} className="lh-guide">
-      {number ? <span className="lh-guide-n">{number}</span> : null}
-      <span className="lh-guide-text">
-        <b>{page.meta.title}</b>
-        <span>{page.meta.description}</span>
-        <span className="lh-guide-meta">
-          {LEARN_GUIDE_COPY.minRead(page.readingMinutes)} · {COPY.endsWith(page.primaryCta)}
+    <>
+      <Link href={guidePath(page.meta.slug)} className="lh-guide">
+        {number ? <span className="lh-guide-n">{number}</span> : null}
+        <span className="lh-guide-text">
+          <b>{page.meta.title}</b>
+          <span>{page.meta.description}</span>
+          <span className="lh-guide-meta">
+            {LEARN_GUIDE_COPY.minRead(page.readingMinutes)} ·{" "}
+            {COPY.endsWith(page.primaryCta)}
+          </span>
         </span>
-      </span>
-    </Link>
+      </Link>
+      <GuideTranslations slug={page.meta.slug} />
+    </>
   );
 }
 
 function OffPath({ entry }: { readonly entry: LearnGroupPages }) {
   const headingId = `${entry.group.id}-h`;
   return (
-    <section id={entry.group.id} className="lh-shelf" aria-labelledby={headingId}>
+    <section
+      id={entry.group.id}
+      className="lh-shelf"
+      aria-labelledby={headingId}
+    >
       <h2 id={headingId}>{entry.group.label}</h2>
       <p className="lh-stage-desc">{entry.group.description}</p>
       <ul className="lh-guides">
@@ -63,10 +93,20 @@ function OffPath({ entry }: { readonly entry: LearnGroupPages }) {
   );
 }
 
-function Stage({ stage, total }: { readonly stage: LearnStage; readonly total: number }) {
+function Stage({
+  stage,
+  total,
+}: {
+  readonly stage: LearnStage;
+  readonly total: number;
+}) {
   const headingId = `${stage.group.id}-h`;
   return (
-    <section id={stage.group.id} className="lh-stage" aria-labelledby={headingId}>
+    <section
+      id={stage.group.id}
+      className="lh-stage"
+      aria-labelledby={headingId}
+    >
       <span className="lh-dot lh-stage-dot" aria-hidden="true">
         {stage.number}
       </span>
@@ -91,7 +131,9 @@ function Stage({ stage, total }: { readonly stage: LearnStage; readonly total: n
 
 export default function LearnHubPage({ stages, offPath }: LearnShelves) {
   const pages = [...stages, ...offPath].flatMap((entry) => entry.pages);
-  const asked = pages.filter((page) => page.meta.featured).map((page) => page.meta.questions[0]);
+  const asked = pages
+    .filter((page) => page.meta.featured)
+    .map((page) => page.meta.questions[0]);
 
   return (
     <div className={LAB_PAPER_CLASS}>
@@ -103,7 +145,12 @@ export default function LearnHubPage({ stages, offPath }: LearnShelves) {
           <p className="lab-lede">{COPY.lede(stages.length)}</p>
         </header>
         <div className="lh-search">
-          <LearnSearch stages={stages.map(({ group }) => ({ id: group.id, label: group.label }))} />
+          <LearnSearch
+            stages={stages.map(({ group }) => ({
+              id: group.id,
+              label: group.label,
+            }))}
+          />
           {asked.length > 0 ? (
             <div className="lh-ask">
               <p className="lh-ask-label">{LEARN_SEARCH_COPY.peopleAsk}</p>
@@ -122,20 +169,32 @@ export default function LearnHubPage({ stages, offPath }: LearnShelves) {
           {stages.map((stage) => (
             <Stage key={stage.group.id} stage={stage} total={stages.length} />
           ))}
-          <section className="lh-stage lh-closing" aria-labelledby="lh-closing-h">
-            <span className="lh-dot lh-stage-dot lh-dot-done" aria-hidden="true">
+          <section
+            className="lh-stage lh-closing"
+            aria-labelledby="lh-closing-h"
+          >
+            <span
+              className="lh-dot lh-stage-dot lh-dot-done"
+              aria-hidden="true"
+            >
               {"\u2713"}
             </span>
             <h2 id="lh-closing-h">{COPY.closing.title}</h2>
             <p className="lh-stage-desc">{COPY.closing.body}</p>
             <p className="lh-closing-actions">
-              <Link href={guideRoundHref(CLOSING_ROUND)} className="lab-btn lab-btn-primary">
+              <Link
+                href={guideRoundHref(CLOSING_ROUND)}
+                className="lab-btn lab-btn-primary"
+              >
                 {COPY.closing.play}
               </Link>
               <Link href={ARTICLES_PATH} className="lab-btn lab-btn-secondary">
                 {COPY.closing.articles}
               </Link>
-              <Link href={dashboardTileHref("days")} className="lh-closing-stat">
+              <Link
+                href={dashboardTileHref("days")}
+                className="lh-closing-stat"
+              >
                 {COPY.closing.stat}
               </Link>
             </p>
@@ -151,7 +210,9 @@ export default function LearnHubPage({ stages, offPath }: LearnShelves) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify(hubStructuredData(pages, COPY.meta.title, COPY.meta.description)),
+          __html: JSON.stringify(
+            hubStructuredData(pages, COPY.meta.title, COPY.meta.description),
+          ),
         }}
       />
     </div>

@@ -4,7 +4,7 @@ import { type NextFetchEvent, NextRequest, NextResponse } from "next/server";
 import { routing, LOCALES, DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
 import { chineseLocaleFor } from "@/i18n/chineseLocale";
 import { isCrawler, localeForCountry } from "@/i18n/countryLocale";
-import { isIndexedInDefaultLocaleOnly, isServedAtBareEnglishUrl, unprefixedPath } from "@/lib/seo/englishOnly";
+import { isIndexedInDefaultLocaleOnly, isPartlyTranslatedPath, isServedAtBareEnglishUrl, unprefixedPath } from "@/lib/seo/englishOnly";
 import { resolveRetiredLearnPath } from "@/lib/seo/learn/retired";
 import { localizedPath } from "@/lib/seo/alternates";
 
@@ -82,8 +82,11 @@ export default function middleware(request: NextRequest, event?: NextFetchEvent)
 
   const response = route(request);
   // next-intl advertises every locale in a hreflang Link header. For a route
-  // indexed only in English that would point crawlers at noindex pages.
-  if (isIndexedInDefaultLocaleOnly(unprefixedPath(request.nextUrl.pathname))) {
+  // indexed only in English that would point crawlers at noindex pages, and for
+  // a route served in a few locales at URLs that redirect. The page's own
+  // <link rel="alternate"> tags list the locales that exist.
+  const path = unprefixedPath(request.nextUrl.pathname);
+  if (isIndexedInDefaultLocaleOnly(path) || isPartlyTranslatedPath(path)) {
     response.headers.delete("Link");
   }
   return response;

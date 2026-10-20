@@ -1,0 +1,219 @@
+{
+  "sourceHash": "1e76a79b0ae5ab6f6b4238980f8e2d254e771ef3830048abdda935ebf8dfcf2f",
+  "approvedHash": "3ff7ee881e8716c1a7a1ae2542d21655a46290b9c959b273aae6f1fea3437da6",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Visualisation aux échecs : voir l’échiquier en tête",
+      "h1": "Des exercices de visualisation aux échecs qui trouvent et corrigent votre point faible",
+      "description": "Testez votre échiquier mental en quatre manches de 6 pièces à 10 secondes, puis faites 8 à 12 minutes par jour d’exercices de visualisation ciblant ses failles.",
+      "keywords": {
+        "primary": "exercices de visualisation échecs",
+        "secondary": [
+          "visualisation aux échecs",
+          "entraînement visualisation échecs",
+          "visualiser les coups aux échecs",
+          "visualiser une position aux échecs",
+          "échiquier mental"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Les meilleurs exercices de visualisation aux échecs entraînent la défaillance que vous avez réellement. Quatre manches de 6 pièces montrent si, dans votre tête, les pièces disparaissent, se décalent d’une case ou changent d’identité. Ensuite, couvrez une position, jouez une prise de mémoire et nommez chaque case de la colonne derrière elle avant de découvrir l’échiquier.",
+      "takeaways": [
+        "Quatre manches de 6 pièces à 10 secondes forment un test de quatre minutes qui montre de quelle façon votre image se brise.",
+        "L’échiquier de résultat distingue une pièce disparue d’une pièce décalée. Le chiffre de précision, non.",
+        "L’exercice « couvrir et jouer » entraîne la mise à jour de l’image après une prise."
+      ],
+      "audience": [
+        "Les joueurs qui calculent deux coups, puis regardent de nouveau l’échiquier et recommencent.",
+        "Tous ceux qui voient le coup, mais pas la position qu’il laisse derrière lui."
+      ]
+    },
+    "sections": {
+      "how-the-picture-fails": {
+        "heading": "Pourquoi les pièces disparaissent, se décalent ou changent dans votre tête",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Votre image, c’est la position que vous gardez en tête. Quand une variante s’y dérègle, l’une de trois choses s’est produite, et chacune demande un remède différent."
+            ]
+          },
+          {
+            "items": [
+              "Une pièce disparaît. Une pièce hors de la variante, comme un pion en e4, sort de votre image, et vous calculez comme si sa case était vide.",
+              "Une pièce se décale. La tour est en d7, mais votre image la place en d6, une case à côté.",
+              "Une pièce change d’identité. Un fou devient un cavalier, ou une tour blanche devient noire."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Une quatrième défaillance est plus rare. Une pièce fantôme apparaît, et vous calculez autour d’un défenseur qui n’existe pas.",
+              "Memory Chess ne compte une pièce placée comme correcte que si sa case, son type et sa couleur correspondent tous à l’original. Cette règle stricte permet à une seule manche de distinguer les défaillances."
+            ]
+          }
+        ]
+      },
+      "four-minute-check": {
+        "heading": "Le test de visualisation en quatre minutes",
+        "summary": "Faites-le avant tout autre exercice, puis chaque jour, comme le prévoit le programme de six semaines ci-dessous.",
+        "blocks": [
+          {
+            "drills": [
+              {
+                "title": "Six pièces, dix secondes, quatre manches",
+                "description": "Jouez 4 manches de 6 pièces avec 10 secondes pour observer, en appuyant sur « Réessayer » entre les manches. Placez les pièces et validez. Avant la manche suivante, notez un mot pour chaque erreur : disparue, décalée, changée ou fantôme.",
+                "duration": "Environ 4 minutes",
+                "goal": "Un décompte qui montre la défaillance que vous faites le plus souvent.",
+                "play": {
+                  "label": "Jouer 6 pièces, 10 secondes"
+                }
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Après validation, l’échiquier montre les pièces que vous avez placées. Une case verte est correcte. Une case rouge contient une pièce qui n’a rien à y faire. Un anneau rouge marque une case où se trouvait une pièce dans l’original et où vous ne l’avez pas remise. Si vous avez laissé cette case vide, une copie estompée de la pièce manquante apparaît dans l’anneau.",
+              "Lisez ces marques, pas le chiffre de précision. Un fantôme n’a pas d’anneau à lui. Une septième pièce apparaît comme une case rouge de plus, et la précision perd dix points à cause d’elle."
+            ]
+          }
+        ]
+      },
+      "which-drill-for-which-failure": {
+        "heading": "Quel exercice corrige quelle défaillance",
+        "blocks": [
+          {
+            "columns": [
+              "Défaillance",
+              "Ce que montre l’échiquier de résultat",
+              "Ce qu’il faut travailler"
+            ],
+            "rows": [
+              {
+                "label": "Pièce disparue",
+                "cells": [
+                  "Un anneau avec une pièce estompée à l’intérieur, sans case rouge isolée à côté.",
+                  "Regardez par groupes. Nommez d’abord le roi et ses voisines, puis les pièces isolées."
+                ]
+              },
+              {
+                "label": "Pièce décalée",
+                "cells": [
+                  "Une case rouge à un pas d’un anneau qui contient une copie estompée de la même pièce.",
+                  "Dites le nom de chaque case à mi-voix pendant que vous regardez."
+                ]
+              },
+              {
+                "label": "Pièce changée",
+                "cells": [
+                  "Une case rouge à l’intérieur d’un anneau. Vous avez trouvé la case, mais perdu le type ou la couleur.",
+                  "Dites la couleur et le type avec la case, par exemple cavalier blanc f3."
+                ]
+              },
+              {
+                "label": "Pièce fantôme",
+                "cells": [
+                  "Une pièce de plus que dans la position, et dix points de précision en moins.",
+                  "Comptez vos pièces avant de valider. Dans une variante, comptez les prises au fur et à mesure."
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "cover-and-move": {
+        "heading": "L’exercice « couvrir et jouer » pour mettre l’image à jour",
+        "summary": "Une manche de mémoire teste votre capacité à garder une image. Cet exercice teste votre capacité à la modifier.",
+        "blocks": [
+          {
+            "caption": "Les Blancs jouent : étudiez cet échiquier, couvrez-le, puis décidez si 1.Nxe5 gagne un pion."
+          },
+          {
+            "paragraphs": [
+              "Étudiez l’échiquier, ou installez la position sur un vrai échiquier. Les Blancs ont le roi en g1, une tour en e1, un cavalier en f3 et des pions en e4, f2, g2 et h2. Les Noirs ont le roi en g8, une tour en e8, un cavalier en f6 et des pions en e5, f7, g7 et h7.",
+              "Couvrez l’échiquier. Répondez maintenant sans le découvrir. 1.Nxe5 gagne-t-il un pion ?"
+            ]
+          },
+          {
+            "items": [
+              "Jouez 1.Nxe5 dans votre tête. Récitez la colonne e de haut en bas : tour en e8, puis e7 et e6 vides, cavalier en e5, pion en e4, puis e3 et e2 vides, tour en e1.",
+              "Comptez les attaquants de la case e5. La tour en e8 l’attaque une fois.",
+              "Comptez les défenseurs de la case e5. La tour en e1 la défendrait, mais votre propre pion e4 lui barre la route. Zéro.",
+              "Concluez. 1.Nxe5 perd un cavalier contre un pion après 1...Rxe5. Découvrez l’échiquier et vérifiez chaque case que vous avez nommée."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Déplacez maintenant le pion blanc de e4 en d3 et posez la même question. Cette fois, la colonne e derrière le cavalier est vide, donc la tour en e1 défend e5. Après 1.Nxe5 Rxe5 2.Rxe5, les Blancs ont gagné une tour et un pion contre un cavalier : les Noirs ne doivent donc pas reprendre, et 1.Nxe5 gagne un pion net.",
+              "Un pion a bougé d’une case, et la réponse s’est inversée. Le pion e4 est facile à oublier, car il ne bouge jamais dans la variante. Avant de juger une prise, récitez toute la colonne ou la diagonale derrière elle, jusqu’au bord.",
+              "Travaillez chaque jour deux positions de votre cru. Couvrez un exercice tactique résolu la veille et jouez la solution dans votre tête. Dites où se trouve maintenant chaque pièce qui a bougé et quelles pièces ont disparu. Puis découvrez l’échiquier, jouez la solution dessus et vérifiez chaque case que vous avez nommée. C’est réussi si toutes correspondent.",
+              "Une fois les positions couvertes réussies sans faute, <l0>l’entraînement aux échecs à l’aveugle</l0> étend la même habitude d’une seule position à une partie entière, sans aucun échiquier."
+            ]
+          }
+        ]
+      },
+      "six-week-progression": {
+        "heading": "Six semaines, un seul chiffre à surveiller",
+        "blocks": [
+          {
+            "steps": [
+              {
+                "label": "Semaines 1 et 2",
+                "duration": "8 minutes par jour",
+                "detail": "Le test de quatre minutes chaque jour, puis deux positions « couvrir et jouer », chacune avec une seule prise. Le chiffre à surveiller : le nombre de manches parfaites sur quatre."
+              },
+              {
+                "label": "Semaines 3 et 4",
+                "duration": "10 minutes par jour",
+                "detail": "Gardez le test. Étendez « couvrir et jouer » à deux coups de chaque camp, et terminez en récitant la colonne ou la diagonale derrière la dernière prise. Ouvrez « Mémorisation par type de pièce » dans votre registre du labo. Un type qui reste bas est celui que votre image perd."
+              },
+              {
+                "label": "Semaines 5 et 6",
+                "duration": "12 minutes par jour",
+                "detail": "Si trois de vos cinq derniers tests de la semaine 4 comptaient trois manches parfaites sur quatre, l’image tient à six pièces. Passez le test à 8 pièces avec 10 secondes et reprenez « couvrir et jouer » à partir d’une seule prise. Sinon, refaites les semaines 3 et 4."
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jouer 6 pièces, 10 secondes",
+        "why": "Quatre manches à six pièces, avec « Réessayer » entre elles, montrent si vos pièces disparaissent, se décalent d’une case ou changent d’identité au moment de les replacer."
+      },
+      {
+        "items": [
+          {
+            "question": "Pourquoi ne pas simplement jouer plus de manches jusqu’à ce que la précision monte ?",
+            "answer": "La précision cache la défaillance que vous avez. Deux joueurs à 67 % sur six pièces peuvent avoir des problèmes opposés. L’un oublie les pièces isolées et doit regarder par groupes. L’autre retient chaque case, intervertit les pièces et doit nommer la couleur et le type."
+          },
+          {
+            "question": "Faut-il tester la visualisation avec plus de pièces ?",
+            "answer": "Pas avant que six pièces soient faciles. Sur un échiquier avec beaucoup d’erreurs, anneaux et cases rouges s’entassent, et vous ne pouvez plus dire quelle défaillance a causé quoi. Passez à huit une fois que trois de vos cinq derniers tests comptent trois manches parfaites sur quatre. Le réglage Difficile, 12 pièces et 8 secondes, vient ensuite."
+          },
+          {
+            "question": "Peut-on faire des exercices de visualisation sans échiquier ?",
+            "answer": "Oui. « Couvrir et jouer » fonctionne avec n’importe quel diagramme que vous pouvez cacher, sur papier ou à l’écran. Installer les pièces à la main aide un peu, car placer soi-même le pion e4 le rend plus difficile à oublier."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Quand un échiquier couvert paraît facile, l’étape suivante est une partie entière sans échiquier."
+          },
+          {
+            "reason": "Applique l’habitude « couvrir et jouer » à des variantes plus longues."
+          },
+          {
+            "reason": "Suit chaque ligne de fou, de tour et de dame jusqu’au bord, l’habitude sur laquelle repose « couvrir et jouer »."
+          },
+          {
+            "reason": "L’échelle du nombre de pièces à gravir une fois que six pièces tiennent trois manches sur quatre."
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "sourceHash": "fe30fe527e7e3dbc662ae5862afd6102419ffbb7ddffdeba868f4e9c710bf7ae",
+  "approvedHash": "078d996347e658ea047c386b29b41725b8931c0f57cef27a15ca8d517344c0f6",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Besser Schach spielen als Anfänger",
+      "h1": "So wirst du als Anfänger besser im Schach",
+      "description": "Ein Plan für vier Wochen, um als Anfänger besser Schach zu spielen: das ganze Brett lesen, eine Sicherheitsfrage pro Zug, lange Partien, Niederlagen notieren.",
+      "keywords": {
+        "primary": "besser Schach spielen",
+        "secondary": [
+          "im Schach besser werden",
+          "Schach Trainingsplan",
+          "Schachtraining für Anfänger",
+          "Schach Routine für Anfänger",
+          "keine Figuren mehr einstellen"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Um als Anfänger besser Schach zu spielen, hörst du zuerst auf, Figuren einzustellen, und lernst erst danach Eröffnungen. Spiel jeden Tag fünf kurze Runden zum Lesen des Bretts und dann eine lange Partie, in der du vor jedem Zug eine Sicherheitsfrage stellst. Schreib nach der Partie eine Zeile über den Zug, der Material gekostet hat.",
+      "takeaways": [
+        "Nimm jede Woche zwei Figuren dazu, aber erst nach einer Einheit mit fünf perfekten Runden bei der aktuellen Anzahl.",
+        "Eine Zeile nach jeder Partie zeigt dir, ob das Lesen des Bretts, die Frage oder das Tempo versagt hat."
+      ],
+      "audience": [
+        "Du weißt, wie die Figuren ziehen, und verlierst die meisten Partien durch eine hängende Figur.",
+        "Du hast Eröffnungsvideos geschaut und kannst nicht sagen, warum du trotzdem verlierst.",
+        "Du willst eine feste Reihenfolge, mit einem klaren nächsten Schritt jede Woche."
+      ]
+    },
+    "sections": {
+      "where-games-go": {
+        "heading": "Wo Anfängerpartien wirklich verloren gehen",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Auf Anfängerniveau entscheidet meist eine Figur, die für nichts oder für einen Bauern verloren geht. Ein verlorener Springer wiegt mehr als alles, was dir die Eröffnung gebracht hat.",
+              "Dein Springer auf f3 ist durch den schwarzen Läufer auf g4 an deine Dame auf d1 gefesselt. Schwarz zieht den Bauern von e5 nach e4, und er greift den Springer an. Bauern auf d6, f7 und h5 verhindern jedes Damenschach und decken den Läufer."
+            ]
+          },
+          {
+            "caption": "Der Bauer auf e4 greift den Springer auf f3 an, und der Springer kann nicht weg, ohne die Dame auf d1 dem Läufer auf g4 preiszugeben."
+          },
+          {
+            "paragraphs": [
+              "Bleibt der Springer stehen, schlägt ihn der Bauer, und du bekommst nur einen Bauern zurück. Zieht der Springer weg, schlägt der Läufer die Dame. Kein Eröffnungsstudium behebt das.",
+              "Zwei Gewohnheiten schon. Du siehst jede Figur, die angegriffen ist, und du prüfst jeden Zug zuerst gegen die Antwort darauf."
+            ]
+          },
+          {
+            "title": "Die Reihenfolge dieses Guides",
+            "body": "Zuerst das Lesen des Bretts, dann die Sicherheitsfrage, dann langsamere Partien, dann eine Zeile nach jeder Partie. Eröffnungen warten, bis die ersten drei automatisch laufen."
+          }
+        ]
+      },
+      "read-the-board": {
+        "heading": "Stufe 1. Behalte das ganze Brett im Kopf",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Eine Figur hängt meist, weil niemand auf sie geschaut hat. Du hast die Figur betrachtet, die du ziehen wolltest, und der Rest des Bretts bekam keinen Blick.",
+              "Eine Runde bei Memory Chess trainiert die gegenteilige Gewohnheit. Sie zeigt eine Stellung für eine feste Zahl von Sekunden, leert das Brett und lässt dich die Stellung nachbauen. Eine Figur zählt nur dann als richtig, wenn Feld, Figurentyp und Farbe übereinstimmen.",
+              "Raten hilft nicht, weil zusätzliche Figuren Punkte kosten. Setz fünf Figuren in einer Runde mit 4 Figuren, und deine Genauigkeit sinkt um zehn Punkte, egal wie viele der fünf richtig sind.",
+              "Fang mit 4 Figuren an und nimm jeweils zwei dazu, bei weiterhin 10 Sekunden zum Einprägen. Jede Stellung hat beide Könige, eine Runde mit 4 Figuren besteht also aus zwei Königen und zwei weiteren Figuren."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Vier Figuren, laut vorgelesen",
+                "description": "Spiel 4 Figuren mit 10 Sekunden zum Einprägen, 5 Runden, und drück zwischen den Runden auf „Nochmal“. Sag, solange die Stellung zu sehen ist, jede Figur und ihr Feld laut, etwa weißer Springer c3. Bau sie dann nach.",
+                "duration": "etwa 4 Minuten",
+                "goal": "Alle fünf Runden mit 100 Prozent in einer Einheit, bevor Woche 2 beginnt.",
+                "play": {
+                  "label": "4 Figuren, 10 Sekunden spielen"
+                }
+              },
+              {
+                "title": "Sechs Figuren, dieselben zehn Sekunden",
+                "description": "Spiel 6 Figuren mit 10 Sekunden zum Einprägen, 5 Runden, und drück zwischen den Runden auf „Nochmal“. Nenne weiter jede Figur laut und fang mit den beiden Königen an, damit du sie nie übersiehst.",
+                "duration": "etwa 5 Minuten",
+                "goal": "Alle fünf Runden mit 100 Prozent in einer Einheit, bevor Woche 3 beginnt.",
+                "play": {
+                  "label": "6 Figuren, 10 Sekunden spielen"
+                }
+              },
+              {
+                "title": "Acht Figuren, hier endet diese Stufe",
+                "description": "Spiel 8 Figuren mit 10 Sekunden zum Einprägen, 5 Runden, und drück zwischen den Runden auf „Nochmal“. Jede Figur zu nennen wird hier knapp, also nenne die Paare, die sich gegenseitig angreifen oder decken.",
+                "duration": "etwa 6 Minuten",
+                "goal": "Die meisten Runden mit 100 Prozent. Weiter als acht geht dieser Plan nicht.",
+                "play": {
+                  "label": "8 Figuren, 10 Sekunden spielen"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "move-question": {
+        "heading": "Stufe 2. Eine Frage vor jedem Zug",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Die Sicherheitsfrage ist immer dieselbe: Kann mein Gegenüber nach meinem Zug etwas umsonst schlagen oder eine Figur angreifen, die nicht wegziehen kann? Stell sie bei jedem Zug, auch bei den ruhigen.",
+              "Fang beim letzten Zug deines Gegenübers an. Nimm an, du spielst Schwarz und die Partie begann mit 1.e4 e5. Spielt Weiß 2.Bc4, blickt der Läufer jetzt auf f7. Spielt Weiß stattdessen 2.Qh5, blickt die Dame auf f7, e5 und h7.",
+              "Prüf dann deinen eigenen Zug. Die Figur, die du ziehst, deckt nicht mehr, was sie gedeckt hat. Nimm an, du hast auf 2.Qh5 mit 2...Nc6 geantwortet. Der Springer deckt jetzt e5, das die Dame angreift. Ziehst du diesen Springer später weg, ist der Bauer auf e5 ungedeckt, und die Dame schlägt ihn mit Schach."
+            ]
+          },
+          {
+            "items": [
+              "Nenne den letzten Zug deines Gegenübers und jedes neue Feld, das er angreift.",
+              "Wähl deinen Zug, aber lass die Hand noch von der Figur.",
+              "Stell die Sicherheitsfrage für die Stellung danach, auch für alles, was deine ziehende Figur bisher gedeckt hat.",
+              "Lautet die Antwort ja, wähl neu."
+            ]
+          },
+          {
+            "title": "Warum die Frage wirkt",
+            "body": "Um einen billigen Verlust zu vermeiden, brauchst du keine lange Berechnung, nur einen Blick auf die richtige Figur. Die Frage erzwingt diesen Blick bei jedem Zug."
+          }
+        ]
+      },
+      "slow-games": {
+        "heading": "Stufe 3. Spiel langsam genug für die Frage",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Spiel jeden Tag eine Partie mit 15 Minuten pro Seite und 10 Sekunden Inkrement pro Zug, geschrieben 15+10, oder langsamer.",
+              "Eine Partie mit 3 Minuten und 40 Zügen lässt dir weniger als 5 Sekunden pro Zug. Solange die Frage neu ist, dauert sie länger, im Blitz lässt du sie also weg. Bei 15+10 bleibt Zeit, sie bei jedem Zug zu stellen."
+            ]
+          }
+        ]
+      },
+      "one-line": {
+        "heading": "Stufe 4. Eine Zeile nach jeder Partie",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Lass die vollständige Engine-Analyse vorerst weg. Such den ersten Zug, mit dem du Material verloren hast, und schreib eine Zeile darüber. Die Zeile nennt die Stufe, die versagt hat. Wenn du nichts verloren hast, schreib das auf."
+            ]
+          },
+          {
+            "items": [
+              "Stufe 1 hat versagt, wenn du die Figur, die deine geschlagen hat, nie gesehen hast.",
+              "Stufe 2 hat versagt, wenn du sie gesehen, aber vor dem Zug die Frage nicht gestellt hast.",
+              "Stufe 3 hat versagt, wenn du die Frage gestellt und die Antwort überhastet hast."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Sammle die Zeilen an einem Ort. Zähl alle zehn Partien, welche Stufe am häufigsten genannt wird, und übe als Nächstes diese Stufe."
+            ]
+          }
+        ]
+      },
+      "four-weeks": {
+        "heading": "Vier Wochen in der richtigen Reihenfolge",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Jeder Tag hat zwei Teile: ein paar Minuten Runden und eine lange Partie. Erhöhe die Figurenzahl nur zu Beginn einer neuen Woche und nur, wenn das Ziel der Übung der letzten Woche erreicht ist. Sonst wiederholst du die Woche."
+            ]
+          },
+          {
+            "steps": [
+              {
+                "label": "Woche 1",
+                "duration": "4 Minuten plus eine lange Partie",
+                "detail": "Fünf Runden mit 4 Figuren und 10 Sekunden, mit „Nochmal“ zwischen den Runden und jeder Figur laut genannt. Dann eine Partie mit 15+10, in der du vor jedem Zug die Frage stellst, und danach eine Zeile."
+              },
+              {
+                "label": "Woche 2",
+                "duration": "5 Minuten plus eine lange Partie",
+                "detail": "Fünf Runden mit 6 Figuren und 10 Sekunden, mit „Nochmal“ zwischen den Runden. Dieselbe Partie, dieselbe Frage. Lies deine Zeilen aus Woche 1, bevor du spielst."
+              },
+              {
+                "label": "Woche 3",
+                "duration": "6 Minuten plus eine lange Partie",
+                "detail": "Fünf Runden mit 8 Figuren und 10 Sekunden, mit „Nochmal“ zwischen den Runden, wobei du die Paare nennst, die sich gegenseitig angreifen oder decken. Dieselbe Partie, Frage und Zeile."
+              },
+              {
+                "label": "Woche 4",
+                "duration": "6 Minuten plus eine lange Partie",
+                "detail": "Bleib bei den Runden mit 8 Figuren. Zähl deine Zeilen nach Stufen. Die Stufe, die am häufigsten vorkommt, ist deine erste Aufgabe im nächsten Monat."
+              }
+            ]
+          }
+        ]
+      },
+      "openings-last": {
+        "heading": "Wann sollten Anfänger Eröffnungen lernen?",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Fang an, sobald eine ganze Woche Partien vergeht, ohne dass du Material verschenkst. Vorher bringt dich eine auswendig gelernte Variante nur bis zum zehnten Zug in eine Stellung, die du noch nicht lesen kannst.",
+              "Halte das erste Repertoire klein. Spiel mit Weiß 1.e4 und entwickle die Springer vor den Läufern. Antworte mit Schwarz auf 1.e4 mit 1...e5 und auf 1.d4 mit 1...d5.",
+              "Lerne, warum ein Zug gespielt wird, bevor du den nächsten lernst. Wenn dein Gegenüber die Theorie verlässt, sind die Gründe alles, was dir bleibt."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "4 Figuren, 10 Sekunden spielen",
+        "why": "Vier Figuren sind die erste Sprosse der Gewohnheit, das Brett zu lesen. Schau, bau nach und denk erst dann über einen Zug nach."
+      },
+      {
+        "items": [
+          {
+            "question": "Wie lange dauert es, bis sich das in meiner Wertungszahl zeigt?",
+            "answer": "Die Wertungszahl bewegt sich langsam und hängt davon ab, gegen wen du gelost wirst, eine Woche Ergebnisse sagt also wenig. Schau stattdessen auf deine letzten zehn Zeilen aus Stufe 4 und zähl die Partien, in denen du Material verloren hast. Sinkt diese Zahl, wirkt der Plan."
+          },
+          {
+            "question": "Reicht Memory Chess allein?",
+            "answer": "Nein. Eine Runde trainiert Stufe 1, das Lesen jeder Figur auf dem Brett. Sie kann dich nicht dazu bringen, die Sicherheitsfrage gegen eine echte Uhr zu stellen, und nicht zeigen, wo deine eigenen Partien schiefgehen. Die Stufen 2 bis 4 brauchen echte Partien."
+          },
+          {
+            "question": "Soll ich auch Taktikaufgaben lösen?",
+            "answer": "Ja, ein paar am Tag, sobald die lange Partie fest im Ablauf ist. Löse jede langsam und prüf die beste Antwort der Gegenseite, bevor du dich festlegst. Das ist wieder die Sicherheitsfrage. Plane etwa eine Minute pro Aufgabe ein."
+          },
+          {
+            "question": "Bei welcher Figurenzahl soll ich aufhören?",
+            "answer": "Acht Figuren bei 10 Sekunden sind der Punkt, an dem dieser Plan aufhört. Darüber hinaus trainieren zusätzliche Figuren eher das Gedächtnis als die Gewohnheit, in deinen Partien auf jede Figur zu schauen. Der Guide zum Schachgedächtnistraining führt die Leiter bis 12 Figuren weiter."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Eine längere Checkliste für Stufe 2, sobald die einzelne Frage automatisch läuft."
+          },
+          {
+            "reason": "Ergänzt die Sicherheitsfrage um einen Plan für den Zug, sobald sie mühelos läuft."
+          },
+          {
+            "reason": "Macht aus der einen Zeile aus Stufe 4 eine Auswertung von zehn Minuten."
+          },
+          {
+            "reason": "Die Leiter zum Lesen des Bretts über acht Figuren hinaus, für alle, denen die Runden Spaß machen."
+          },
+          {
+            "reason": "Wie du die Gewohnheit mit Taktikaufgaben bemisst, die neben diesen Stufen steht."
+          },
+          {
+            "reason": "Passt die vier Stufen in eine feste Einheit von zwanzig Minuten für Tage ohne Zeit für eine lange Partie."
+          }
+        ]
+      }
+    ]
+  }
+}

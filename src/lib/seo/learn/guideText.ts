@@ -48,7 +48,7 @@ export type GuideText = {
   readonly end: readonly EndText[];
 };
 
-const LINK_TAG = /<l(\d+)>(.*?)<\/l\1>/gs;
+const LINK_TAG = /<l(\d+)>(.*?)<\/l\1>/g;
 
 /** A string as is, or its parts with link `n` written `<ln>text</ln>`, the tag an ICU message carries. */
 export function richMessage(rich: Rich): string {
@@ -166,7 +166,7 @@ function withBlockText(block: BodyBlock, text: unknown): BodyBlock {
           duration: drills[i].duration,
           goal: drills[i].goal,
           ...(drill.play ? { play: { ...drill.play, label: drills[i].play?.label ?? drill.play.label } } : {}),
-        })) as typeof block.drills,
+        })) as unknown as typeof block.drills,
       };
     }
     case "table": {
@@ -195,17 +195,17 @@ function withEndText(block: EndBlock, text: unknown): EndBlock {
       return { ...block, target: { ...block.target, label: t.label as string }, why: t.why as string };
     case "faq": {
       const items = t.items as readonly { question: string; answer: string }[];
-      return { ...block, items: block.items.map((_, i) => ({ question: items[i].question, answer: items[i].answer })) as typeof block.items };
+      return { ...block, items: block.items.map((_, i) => ({ question: items[i].question, answer: items[i].answer })) as unknown as typeof block.items };
     }
     case "furtherReading": {
       const items = t.items as readonly { reason: string }[];
-      return { ...block, items: block.items.map((item, i) => ({ ...item, reason: items[i].reason })) as typeof block.items };
+      return { ...block, items: block.items.map((item, i) => ({ ...item, reason: items[i].reason })) as unknown as typeof block.items };
     }
     case "sources": {
       const items = t.items as readonly { note?: string }[];
       return {
         ...block,
-        items: block.items.map((item, i) => (item.note === undefined ? item : { ...item, note: items[i].note })) as typeof block.items,
+        items: block.items.map((item, i) => (item.note === undefined ? item : { ...item, note: items[i].note })) as unknown as typeof block.items,
       };
     }
   }

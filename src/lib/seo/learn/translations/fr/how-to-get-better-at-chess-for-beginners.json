@@ -1,0 +1,255 @@
+{
+  "sourceHash": "fe30fe527e7e3dbc662ae5862afd6102419ffbb7ddffdeba868f4e9c710bf7ae",
+  "approvedHash": "9d8510902c0a7eda001329572c7d8e7689f4fd603456207be23b4f3688428798",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Comment progresser aux échecs quand on débute",
+      "h1": "Comment progresser aux échecs quand on débute",
+      "description": "Plan de quatre semaines pour progresser aux échecs en débutant : lire tout l’échiquier, une question de sécurité par coup, parties lentes, une note par défaite.",
+      "keywords": {
+        "primary": "progresser aux échecs",
+        "secondary": [
+          "comment progresser aux échecs",
+          "s'améliorer aux échecs",
+          "plan d'entraînement échecs",
+          "entraînement échecs débutant",
+          "ne plus laisser de pièces en prise"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Pour progresser aux échecs quand on débute, arrêtez de donner des pièces avant d’étudier les ouvertures. Chaque jour, jouez cinq courtes manches de lecture de l’échiquier, puis une partie lente où vous posez une question de sécurité avant chaque coup. Après la partie, écrivez une ligne sur le coup qui a perdu du matériel.",
+      "takeaways": [
+        "Ajoutez deux pièces chaque semaine, mais seulement après une séance de cinq manches parfaites au nombre actuel.",
+        "Une ligne après chaque partie vous dit ce qui a flanché : la lecture de l’échiquier, la question ou le rythme."
+      ],
+      "audience": [
+        "Vous savez comment se déplacent les pièces et vous perdez la plupart de vos parties sur une pièce laissée en prise.",
+        "Vous avez regardé des vidéos d’ouvertures et ne savez pas dire pourquoi vous perdez encore.",
+        "Vous voulez un seul ordre de travail, avec une étape suivante claire chaque semaine."
+      ]
+    },
+    "sections": {
+      "where-games-go": {
+        "heading": "Où se perdent vraiment les parties de débutants",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Au niveau débutant, une partie se joue généralement sur une pièce perdue pour rien ou pour un pion. Un cavalier perdu pèse plus lourd que tout ce que l’ouverture vous a apporté.",
+              "Votre cavalier en f3 est cloué sur votre dame en d1 par le fou noir en g4. Les Noirs poussent le pion de e5 en e4, et il attaque le cavalier. Des pions en d6, f7 et h5 bloquent tous les échecs de la dame et protègent le fou."
+            ]
+          },
+          {
+            "caption": "Le pion e4 attaque le cavalier en f3, et le cavalier ne peut pas partir sans exposer la dame en d1 au fou en g4."
+          },
+          {
+            "paragraphs": [
+              "Si le cavalier reste, le pion le prend et vous ne récupérez qu’un pion. Si le cavalier s’en va, le fou prend la dame. Aucune étude d’ouverture ne règle ça.",
+              "Deux habitudes le font. Vous voyez chaque pièce attaquée, et vous vérifiez d’abord chaque coup face à la réponse adverse."
+            ]
+          },
+          {
+            "title": "L’ordre que suit ce guide",
+            "body": "D’abord la lecture de l’échiquier, puis la question de sécurité, puis des parties plus lentes, puis une ligne après chaque partie. Les ouvertures attendent que les trois premières soient devenues automatiques."
+          }
+        ]
+      },
+      "read-the-board": {
+        "heading": "Étape 1. Garder tout l’échiquier en tête",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Une pièce reste généralement en prise parce que personne ne l’a regardée. Vous avez étudié la pièce que vous jouiez, et le reste de l’échiquier n’a eu droit à aucun regard.",
+              "Une manche de Memory Chess entraîne l’habitude inverse. Elle montre une position pendant un nombre fixe de secondes, vide l’échiquier et vous demande de la reconstituer. Une pièce ne compte comme correcte que si sa case, son type et sa couleur correspondent tous.",
+              "Deviner ne sert à rien, car les pièces en trop coûtent des points. Placez cinq pièces dans une manche de 4 pièces et votre précision perd dix points, quel que soit le nombre de pièces justes parmi les cinq.",
+              "Commencez à 4 pièces et ajoutez-en deux à la fois, en gardant 10 secondes d’observation. Chaque position contient les deux rois : une manche de 4 pièces, c’est donc deux rois et deux autres pièces."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Quatre pièces, à voix haute",
+                "description": "Jouez 4 pièces avec 10 secondes pour observer, 5 manches, en appuyant sur « Réessayer » entre les manches. Pendant que la position est affichée, dites chaque pièce et sa case à voix haute, par exemple cavalier blanc c3. Puis reconstituez-la.",
+                "duration": "environ 4 minutes",
+                "goal": "Les cinq manches à 100 % en une séance avant le début de la semaine 2.",
+                "play": {
+                  "label": "Jouer 4 pièces, 10 secondes"
+                }
+              },
+              {
+                "title": "Six pièces, toujours dix secondes",
+                "description": "Jouez 6 pièces avec 10 secondes pour observer, 5 manches, en appuyant sur « Réessayer » entre les manches. Continuez à nommer chaque pièce à voix haute, et commencez par les deux rois pour qu’ils ne soient jamais ceux que vous oubliez.",
+                "duration": "environ 5 minutes",
+                "goal": "Les cinq manches à 100 % en une séance avant le début de la semaine 3.",
+                "play": {
+                  "label": "Jouer 6 pièces, 10 secondes"
+                }
+              },
+              {
+                "title": "Huit pièces, là où s’arrête cette étape",
+                "description": "Jouez 8 pièces avec 10 secondes pour observer, 5 manches, en appuyant sur « Réessayer » entre les manches. Nommer chaque pièce devient juste ici : nommez plutôt les paires qui s’attaquent ou se protègent.",
+                "duration": "environ 6 minutes",
+                "goal": "La plupart des manches à 100 %. Huit, c’est le maximum de ce plan.",
+                "play": {
+                  "label": "Jouer 8 pièces, 10 secondes"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "move-question": {
+        "heading": "Étape 2. Une question avant chaque coup",
+        "blocks": [
+          {
+            "paragraphs": [
+              "La question de sécurité est toujours la même. Après mon coup, mon adversaire peut-il prendre quelque chose gratuitement, ou attaquer une pièce qui ne peut pas s’échapper ? Posez-la à chaque coup, y compris les coups calmes.",
+              "Partez du dernier coup de votre adversaire. Disons que vous avez les Noirs après 1.e4 e5. Si les Blancs jouent 2.Bc4, le fou vise maintenant f7. Si les Blancs jouent plutôt 2.Qh5, la dame vise f7, e5 et h7.",
+              "Vérifiez ensuite votre propre coup. La pièce que vous déplacez cesse de protéger ce qu’elle protégeait. Disons que vous avez répondu à 2.Qh5 par 2...Nc6. Le cavalier protège maintenant e5, que la dame attaque. Si vous déplacez ce cavalier plus tard, le pion e5 n’est plus défendu et la dame le prend avec échec."
+            ]
+          },
+          {
+            "items": [
+              "Nommez le dernier coup de votre adversaire et chaque nouvelle case qu’il attaque.",
+              "Choisissez votre coup, mais gardez la main loin de la pièce.",
+              "Posez la question de sécurité sur la position qui suit, y compris pour tout ce que protégeait la pièce que vous déplacez.",
+              "Si la réponse est oui, choisissez un autre coup."
+            ]
+          },
+          {
+            "title": "Pourquoi la question fonctionne",
+            "body": "Éviter une perte bête ne demande aucun long calcul, seulement un regard sur la bonne pièce. La question impose ce regard à chaque coup."
+          }
+        ]
+      },
+      "slow-games": {
+        "heading": "Étape 3. Jouer assez lentement pour poser la question",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Jouez une partie par jour avec 15 minutes chacun et 10 secondes ajoutées par coup, ce qui s’écrit 15+10, ou plus lentement.",
+              "Une partie de 3 minutes en 40 coups vous laisse moins de 5 secondes par coup. Tant que la question est nouvelle, elle prend plus de temps que ça : en blitz, vous la sautez donc. En 15+10, vous avez le temps de la poser à chaque coup."
+            ]
+          }
+        ]
+      },
+      "one-line": {
+        "heading": "Étape 4. Une ligne après chaque partie",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Laissez de côté l’analyse complète au moteur pour l’instant. Trouvez le premier coup où vous avez perdu du matériel, et écrivez une ligne à son sujet. Cette ligne nomme l’étape qui a flanché. Si vous n’avez rien perdu, écrivez-le."
+            ]
+          },
+          {
+            "items": [
+              "L’étape 1 a flanché si vous n’avez jamais vu la pièce qui a pris la vôtre.",
+              "L’étape 2 a flanché si vous l’avez vue, mais n’avez pas posé la question avant de jouer.",
+              "L’étape 3 a flanché si vous avez posé la question et bâclé la réponse."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Gardez toutes les lignes au même endroit. Toutes les dix parties, comptez l’étape qu’elles nomment le plus souvent, et travaillez ensuite cette étape."
+            ]
+          }
+        ]
+      },
+      "four-weeks": {
+        "heading": "Quatre semaines dans le bon ordre",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Chaque journée comporte deux temps : quelques minutes de manches et une partie lente. N’augmentez le nombre de pièces qu’au début d’une nouvelle semaine, et seulement si l’objectif de l’exercice de la semaine précédente a été atteint. Sinon, refaites la semaine."
+            ]
+          },
+          {
+            "steps": [
+              {
+                "label": "Semaine 1",
+                "duration": "4 minutes plus une partie lente",
+                "detail": "Cinq manches de 4 pièces, 10 secondes, avec « Réessayer » entre les manches et chaque pièce nommée à voix haute. Puis une partie en 15+10 avec la question posée avant chaque coup, et une ligne après."
+              },
+              {
+                "label": "Semaine 2",
+                "duration": "5 minutes plus une partie lente",
+                "detail": "Cinq manches de 6 pièces, 10 secondes, avec « Réessayer » entre les manches. Même partie, même question. Relisez vos lignes de la semaine 1 avant de jouer."
+              },
+              {
+                "label": "Semaine 3",
+                "duration": "6 minutes plus une partie lente",
+                "detail": "Cinq manches de 8 pièces, 10 secondes, avec « Réessayer » entre les manches, en nommant les paires qui s’attaquent ou se protègent. Même partie, même question, même ligne."
+              },
+              {
+                "label": "Semaine 4",
+                "duration": "6 minutes plus une partie lente",
+                "detail": "Gardez les manches à 8 pièces. Comptez vos lignes par étape. L’étape qui revient le plus souvent est votre premier chantier du mois prochain."
+              }
+            ]
+          }
+        ]
+      },
+      "openings-last": {
+        "heading": "Quand un débutant doit-il étudier les ouvertures ?",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Commencez quand une semaine entière de parties passe sans matériel donné. Avant cela, une variante apprise par cœur vous mène seulement jusqu’au dixième coup, dans une position que vous ne savez pas encore lire.",
+              "Gardez un premier répertoire réduit. Avec les Blancs, jouez 1.e4 et sortez les cavaliers avant les fous. Avec les Noirs, répondez à 1.e4 par 1...e5 et à 1.d4 par 1...d5.",
+              "Apprenez pourquoi chaque coup est joué avant d’apprendre le suivant. Quand votre adversaire sort de la théorie, les raisons sont tout ce qui vous reste."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jouer 4 pièces, 10 secondes",
+        "why": "Quatre pièces, c’est le premier échelon de l’habitude de lire l’échiquier. Regardez, reconstituez, et seulement ensuite pensez à un coup."
+      },
+      {
+        "items": [
+          {
+            "question": "Combien de temps avant que ma cote s’en ressente ?",
+            "answer": "La cote évolue lentement et dépend des adversaires qu’on vous attribue : une semaine de résultats en dit donc peu. Regardez plutôt vos dix dernières lignes de l’étape 4 et comptez les parties où vous avez perdu du matériel. Si ce nombre baisse, le plan fonctionne."
+          },
+          {
+            "question": "Memory Chess suffit-il à lui seul ?",
+            "answer": "Non. Une manche entraîne l’étape 1, la lecture de chaque pièce sur l’échiquier. Elle ne peut pas vous faire poser la question de sécurité face à une vraie pendule, ni montrer où vos propres parties dérapent. Les étapes 2 à 4 demandent de vraies parties."
+          },
+          {
+            "question": "Faut-il aussi faire des exercices tactiques ?",
+            "answer": "Oui, quelques-uns par jour une fois la partie lente installée. Résolvez chacun lentement et vérifiez la meilleure réponse de l’adversaire avant de vous décider : c’est de nouveau la question de sécurité. Comptez environ une minute par exercice."
+          },
+          {
+            "question": "À quel nombre de pièces faut-il s’arrêter ?",
+            "answer": "Huit pièces à 10 secondes, c’est là que s’arrête ce plan. Au-delà, les pièces en plus entraînent davantage la mémoire que l’habitude de regarder chaque pièce dans vos parties. Le guide d’entraînement de la mémoire aux échecs fait monter l’échelle jusqu’à 12 pièces."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Une liste de vérification plus longue pour l’étape 2, une fois la question unique devenue automatique."
+          },
+          {
+            "reason": "Ajoute un plan pour le coup par-dessus la question de sécurité, une fois qu’elle se fait sans effort."
+          },
+          {
+            "reason": "Transforme la ligne de l’étape 4 en une analyse de dix minutes."
+          },
+          {
+            "reason": "L’échelle de lecture de l’échiquier au-delà de huit pièces, pour les joueurs qui aiment les manches."
+          },
+          {
+            "reason": "Comment doser l’habitude des exercices tactiques qui accompagne ces étapes."
+          },
+          {
+            "reason": "Fait tenir les quatre étapes dans une séance fixe de vingt minutes, pour les jours sans temps pour une partie lente."
+          }
+        ]
+      }
+    ]
+  }
+}

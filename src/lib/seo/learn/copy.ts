@@ -1,34 +1,42 @@
-/**
- * Chrome for the Learn hub and guides. Learn is English-only (see ENGLISH_ONLY_ROUTES), so this copy lives here
- * instead of in 24 catalogues. Every guide repeats these strings, so each stays under five words (seo.md, the
- * AdSense repeated-sentence rule) and renders as a label, never as an h2.
- */
-export const LEARN_GUIDE_COPY = {
-  breadcrumbHome: "Home",
-  breadcrumbLearn: "Learn",
-  quickAnswer: "Quick answer",
-  takeaways: "Takeaways",
-  audience: "Who this is for",
-  contents: "On this page",
-  allGuides: "All guides",
-  aimFor: "Aim for:",
-  atABoard: "At a real board",
-  readNext: "Read next",
-  sources: "Sources",
-  minRead: (minutes: number) => `${minutes} min read`,
-  updated: (date: string) => `Updated ${date}`,
-  checked: (date: string) => `Checked ${date}`,
-  by: "By",
-  figure: (n: number) => `Fig. ${n}`,
-  toMove: (side: "w" | "b") => (side === "w" ? "White to move." : "Black to move."),
-  pieces: (count: number) => `${count} pieces`,
-  secondsToLook: (seconds: number) => `${seconds} s to look`,
-  ctaAction: { game: "Play", article: "Read", stat: "Open" },
-  quickPlay: "Try a round now",
-  tryRound: (pieces: number, seconds: number) => `Try ${pieces} pieces, ${seconds} seconds`,
-  dailyBoard: "Play today's daily board",
-  ctaTag: { article: "Article", stat: "Dashboard" },
-} as const;
+import { IntlMessageFormat } from "intl-messageformat";
+import en from "../../../../messages/en.json";
+import GUIDE_CHROME, { type GuideChrome } from "./guideChrome";
+import type { LearnGroupId, LearnLevel } from "./schema";
+
+type Values = Record<string, string | number>;
+
+/** The chrome of a guide in one locale, its ICU messages ready to call. `statLabel` names a dashboard tile in that locale. */
+export function guideCopyOf(locale: string, chrome: GuideChrome, statLabels: Readonly<Record<string, string>>) {
+  const format = (message: string, values: Values) => String(new IntlMessageFormat(message, locale).format(values));
+  const dateFormat = new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, {
+    day: "numeric",
+    month: "long",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+
+  return {
+    ...chrome,
+    chrome,
+    level: (level: LearnLevel) => chrome.levels[level],
+    group: (id: LearnGroupId) => chrome.groups[id],
+    date: (iso: string) => dateFormat.format(new Date(iso)),
+    minRead: (minutes: number) => format(chrome.minRead, { minutes }),
+    updated: (date: string) => format(chrome.updated, { date }),
+    checked: (date: string) => format(chrome.checked, { date }),
+    figure: (n: number) => format(chrome.figure, { n }),
+    toMove: (side: "w" | "b") => (side === "w" ? chrome.whiteToMove : chrome.blackToMove),
+    pieces: (count: number) => format(chrome.pieces, { count }),
+    secondsToLook: (seconds: number) => format(chrome.secondsToLook, { seconds }),
+    tryRound: (pieces: number, seconds: number) => format(chrome.tryRound, { pieces, seconds }),
+    statLabel: (tile: string) => statLabels[tile] ?? tile,
+  };
+}
+
+export type GuideCopy = ReturnType<typeof guideCopyOf>;
+
+/** The English chrome of the Learn hub and guides. */
+export const LEARN_GUIDE_COPY: GuideCopy = guideCopyOf("en", GUIDE_CHROME, en.dashboard.label);
 
 const COUNT_WORDS = ["No", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"];
 const countWord = (n: number) => COUNT_WORDS[n] ?? String(n);
@@ -44,6 +52,7 @@ export const LEARN_HUB_COPY = {
   lede: (stages: number) =>
     `${countWord(stages)} stages, each a few short guides. Read them in order, or start at the stage that matches your problem.`,
   stageMap: "Stages",
+  alsoIn: "Also in",
   stageOf: (n: number, total: number) => `Stage ${n} of ${total}`,
   guideCount: (count: number) => `${count} ${count === 1 ? "guide" : "guides"}`,
   endsWith: ({ pieceCount, memorizeTime }: { pieceCount: number; memorizeTime: number }) =>

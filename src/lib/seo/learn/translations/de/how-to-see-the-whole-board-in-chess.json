@@ -1,0 +1,204 @@
+{
+  "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
+  "approvedHash": "afe1bcc71ead1f39056f9fd62bfa3d54aadadba52f35786840b9474209562e27",
+  "sameAsEnglish": [
+    "sections.far-corner-glance.blocks[1].columns[0]"
+  ],
+  "text": {
+    "meta": {
+      "title": "Im Schach das ganze Brett sehen",
+      "h1": "So siehst du im Schach das ganze Brett",
+      "description": "So siehst du im Schach das ganze Brett: Nenne vor jedem Zug jede Figur an den vier Rändern. Verfolge nach Schlag- oder Bauernzügen die gegnerischen Linien.",
+      "keywords": {
+        "primary": "Schach das ganze Brett sehen",
+        "secondary": [
+          "Tunnelblick Schach",
+          "Brettübersicht Schach",
+          "Schach Brett absuchen",
+          "Linienfiguren Schach",
+          "Drohungen erkennen Schach"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Um im Schach das ganze Brett zu sehen, machst du vor der Wahl deines Zuges einen Rundgang in fünf Schritten, vom Rand nach innen. Nenne jede Figur auf der a-Linie, der h-Linie, der ersten Reihe und der achten Reihe. Verfolge dann jeden gegnerischen Läufer, Turm und jede Dame bis zum Rand und prüf die Springer und deine eigenen Linienfiguren.",
+      "takeaways": [
+        "Eine Linienfigur gewinnt Material, ohne zu ziehen. Wenn ein Bauer ihre Linie verlässt, folgen deine Augen dem Bauern und übersehen die Linie, die er geöffnet hat.",
+        "Verfolge jede Linie bis zum Brettrand, denn die erste Figur auf der Linie kann deine eigene und gefesselt sein.",
+        "Beginne den Rundgang an den Rändern, denn ein Blick, der sich von deinem eigenen Zug nach außen arbeitet, erreicht sie zuletzt."
+      ],
+      "audience": [
+        "Wer Material an einen Läufer oder Turm verliert, der viele Züge lang nicht gezogen hatte.",
+        "Wer Patzer auf der Brettseite macht, die fern vom Geschehen liegt."
+      ]
+    },
+    "sections": {
+      "bishop-on-a2": {
+        "heading": "Warum du Läufer und Türme auf langen Linien übersiehst",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Bau diese Stellung mit Schwarz am Zug auf. Weiß hat Kg1, Ra1, Rf1, Ba2, Nc3, Ng5 und Bauern auf a3, b2, c2, f2, g2 und h2. Schwarz hat Kg8, Ra8, Rd8, Bc8, Nf6 und Bauern auf a7, b7, c7, e6, f7, g7 und h7.",
+              "Der Läufer auf a2 blickt über b3, c4, d5, e6, f7 und g8. Die schwarzen Bauern auf e6 und f7 stehen im Weg, und am Ende wartet der schwarze König.",
+              "Zieh ...e5 für Raum im Zentrum, und es folgt Bxf7+. Der König kann nicht zurückschlagen, weil auch der Springer auf g5 das Feld f7 deckt. Weiß gewinnt also einen Bauern mit Schach."
+            ]
+          },
+          {
+            "caption": "Nach ...e5 greifen der Läufer auf a2 und der Springer auf g5 beide f7 an, obwohl der Läufer nicht gezogen hat."
+          },
+          {
+            "paragraphs": [
+              "Nxf7 ist sogar noch stärker. Auch den Springer kann der König nicht schlagen, weil jetzt der Läufer f7 deckt, und der Springer greift den Turm auf d8 an.",
+              "Am Läufer hat sich nichts geändert. Gezogen hat nur ein schwarzer Bauer. Das ist Tunnelblick. Deine Augen folgen dem Bauern nach e5 und dem Raum, den er gewinnt, und so fällt ein Läufer, der zehn Züge lang stillstand, aus dem Bild.",
+              "Türme tun dasselbe, nur leiser. Ein Turm kann die ganze Partie auf h1 stehen, bis die h-Bauern getauscht sind, und dann beherrscht er eine offene Linie, ohne gezogen zu haben."
+            ]
+          }
+        ]
+      },
+      "edge-sweep": {
+        "heading": "So suchst du das Brett vom Rand nach innen ab",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Der Rundgang ist das Mittel gegen Tunnelblick. Die Reihenfolge zählt mehr als das Tempo. Geh diese fünf Schritte durch, bevor du deinen Zug wählst."
+            ]
+          },
+          {
+            "items": [
+              "Die Ränder. Nenne jede Figur auf der a-Linie, der h-Linie, der ersten und der achten Reihe, für beide Seiten. Hier stehen Türme, die noch auf ihren Ausgangsfeldern sind, und Läufer, die an den Rand zurückgezogen wurden.",
+              "Jeder gegnerische Läufer, Turm und jede gegnerische Dame. Folge jeder Linie durch jede Figur auf ihr hindurch bis zum Brettrand und sag, wem jede Figur gehört.",
+              "Jeder gegnerische Springer. Nenne die Felder, die er erreicht, denn ein Rundgang entlang der Linien berührt sie nie.",
+              "Deine eigenen Läufer, Türme und deine Dame, auf dieselbe Weise verfolgt.",
+              "Zuletzt dein eigener Zug. Prüf das Feld, auf dem er landet, und jede Linie, die er öffnet, wenn er sein altes Feld verlässt."
+            ]
+          },
+          {
+            "paragraphs": [
+              "Mach den Rundgang in der Läuferstellung als Schwarz. Schritt eins findet den Läufer auf a2. Schritt zwei folgt ihm über e6 und f7 bis g8 und nennt jede Figur auf dem Weg: deinen Bauern, deinen anderen Bauern und deinen König. Jetzt liest sich ...e5 als ein Zug, der nur noch einen Bauern zwischen diesem Läufer und deinem König lässt."
+            ]
+          }
+        ]
+      },
+      "last-square": {
+        "heading": "Verfolge eine Linie bis zum Rand, nicht bis zur ersten Figur",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Ein Fehler ist, die Verfolgung bei der ersten Figur auf der Linie abzubrechen. Wenn diese Figur deine ist, hast du keinen Blocker gefunden. Vielleicht hast du eine Fesselung gefunden.",
+              "Stell einen weißen Turm auf e1, einen schwarzen Springer auf e5 und den schwarzen König auf e8, mit leeren Feldern dazwischen. Der Springer kann überhaupt nicht ziehen.",
+              "Sag deshalb als Schwarz, dass der Turm e8 sieht, nie, dass der Turm von deinem Springer blockiert wird. Die erste Fassung kündigt die Fesselung an, die zweite versteckt sie."
+            ]
+          }
+        ]
+      },
+      "generated-positions": {
+        "heading": "Warum eine erzeugte Stellung mit 12 Figuren den Rundgang trainiert",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Eine Partiestellung ballt sich. Bauern verkeilen sich im Zentrum, Figuren sammeln sich um die Könige, und eine Ecke kann zwanzig Züge lang leer bleiben. Genau wegen dieser Ballung brauchst du den Rundgang.",
+              "Memory Chess erzeugt für jede Runde eine neue Stellung, ohne einen Plan dahinter. Die beiden Könige kommen auf zufällige Felder, die nie benachbart sind. Jede andere Figur kommt auf ein zufälliges leeres Feld, im Rahmen der Regeln einer legalen Stellung.",
+              "Nichts zieht die Figuren zum Zentrum oder zu den Königen, also kann ein Brett mit 12 Figuren in jeder Ecke eine Figur haben. Zuerst die Ränder lesen und die Mitte zuletzt ist der Rundgang, aus dem Gedächtnis gemacht.",
+              "Sobald der Rundgang aus dem Gedächtnis hält, verlangt das <l0>Blindschach-Training</l0> dasselbe Bild ohne Brett vor dir."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Erinnerungsrunde mit den Rändern zuerst",
+                "description": "Spiel 3 Runden mit 12 Figuren und 8 Sekunden zum Einprägen und drück zwischen den Runden auf „Nochmal“. Lies beim Einprägen zuerst die Ränder, dann die Mitte. Setz zuerst die Randfiguren. Das Ergebnisbrett zeigt jedes verpasste Feld mit einem Ring. Bestanden hast du, wenn kein Ring auf einem Randfeld landet.",
+                "duration": "3 Runden, etwa 5 Minuten",
+                "goal": "Ränder und Mitte gleichzeitig behalten statt nur einer Gruppe.",
+                "play": {
+                  "label": "12 Figuren, 8 Sekunden spielen"
+                }
+              },
+              {
+                "title": "Bestandsaufnahme der Ränder",
+                "description": "Öffne eine kommentierte Partie bei einem beliebigen Diagramm aus dem Mittelspiel. Schreib jede Figur an den vier Rändern auf. Verfolge bei jedem Läufer, Turm und jeder Dame darunter die Linien bis zum Rand und notiere jede Figur auf dem Weg. Prüf dann in einem zweiten Durchgang. Fahr mit dem Finger von a1 nach h1, h8, a8 und zurück nach a1, hak jede Figur auf deiner Liste ab und berühre jedes Feld jeder Linie. Bestanden hast du, wenn der zweite Durchgang nichts hinzufügt.",
+                "duration": "4 Minuten",
+                "goal": "Die Figuren, die du sonst überspringst, als Erste aufschreiben."
+              }
+            ]
+          }
+        ]
+      },
+      "far-corner-glance": {
+        "heading": "Ein letzter Blick in die ferne Ecke, bevor du loslässt",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Der Rundgang eröffnet dein Nachdenken. Die Tabelle deckt die Momente drumherum ab."
+            ]
+          },
+          {
+            "columns": [
+              "Moment",
+              "Blick aufs Geschehen",
+              "Blick aufs ganze Brett"
+            ],
+            "rows": [
+              {
+                "label": "Letzter Zug des Gegners",
+                "cells": [
+                  "Du schaust auf die Figur, die gezogen hat, und auf das Feld, das sie erreicht hat.",
+                  "Du schaust auf die Linie, die sie hinter sich geöffnet hat, und auf das Feld, das sie nicht mehr deckt."
+                ]
+              },
+              {
+                "label": "Nach einem Abtausch",
+                "cells": [
+                  "Du zählst das Material.",
+                  "Du verfolgst jede Linie neu, die der Abtausch geöffnet hat, für beide Seiten."
+                ]
+              },
+              {
+                "label": "Bevor du eine Figur loslässt",
+                "cells": [
+                  "Du prüfst die Felder neben deinem Zug.",
+                  "Du prüfst die Ecke, die am weitesten von deinem Zug entfernt ist."
+                ]
+              }
+            ]
+          },
+          {
+            "paragraphs": [
+              "Das Letzte, was deine Augen vor einem Zug berühren, ist die ferne Ecke, und der Läufer auf a2 ist der Grund dafür."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "12 Figuren mit 8 Sekunden zum Einprägen spielen",
+        "why": "Zwölf zufällig gesetzte Figuren können auf jeder Linie und Reihe landen, also werden die Ränder genauso hart getestet wie die Mitte."
+      },
+      {
+        "items": [
+          {
+            "question": "Wann sollte ich den vollständigen Rundgang machen?",
+            "answer": "Mach ihn vollständig nach jedem Bauernzug, Schlagzug oder Abtausch, denn das sind die Züge, die Linien öffnen. Bei einem ruhigen Zug, bei dem kein Blocker gezogen hat, prüf die vier Ränder und die Linie hinter der Figur, die gerade gezogen hat, und spiel dann."
+          },
+          {
+            "question": "Was, wenn mich der Rundgang zu langsam macht?",
+            "answer": "Behalte die Reihenfolge bei und verkürze jeden Schritt. Wenn sich an einem Rand seit deinem letzten Zug nichts geändert hat, bestätigt das ein kurzer Blick, und du gehst weiter. Übe die Reihenfolge zuerst in langen Partien und in Runden bei Memory Chess, damit sie von selbst läuft, bevor du Blitz spielst."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Trainiert, eine Stellung im Kopf zu behalten, was die Erinnerungsrunde mit den Rändern zuerst im Eiltempo verlangt."
+          },
+          {
+            "reason": "Übungen, um ein Feld ohne Abzählen zu benennen, damit das Benennen jedes Feldes entlang einer Linie den Rundgang nicht bremst."
+          },
+          {
+            "reason": "Behandelt den Phantomverteidiger und die ungedeckte Figur, die anderen Arten, wie dein Bild vom Brett falsch wird."
+          }
+        ]
+      }
+    ]
+  }
+}

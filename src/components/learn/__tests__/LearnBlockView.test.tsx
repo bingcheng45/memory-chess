@@ -1,6 +1,7 @@
 import type { ComponentProps } from "react";
 import { fireEvent, render, screen, within } from "@/test-utils/intl";
 import LearnBlockView, { type TitleLookup } from "@/components/learn/LearnBlockView";
+import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/copy";
 import type { LearnBlock } from "@/lib/seo/learn/schema";
 import { AFFILIATE } from "@/lib/affiliate/amazon";
 
@@ -21,7 +22,7 @@ const TITLES: TitleLookup = {
 };
 
 function draw(block: LearnBlock, figure?: number) {
-  return render(<LearnBlockView block={block} figure={figure} titles={TITLES} />).container;
+  return render(<LearnBlockView block={block} figure={figure} titles={TITLES} context={{ copy: LEARN_GUIDE_COPY, locale: "en" }} />).container;
 }
 
 describe("LearnBlockView", () => {

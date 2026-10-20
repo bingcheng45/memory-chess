@@ -1,6 +1,10 @@
+import { DEFAULT_LOCALE } from "@/i18n/routing";
+import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import { BRAND_ORGANIZATION, BRAND_WEBSITE, ORGANIZATION_ID, WEBSITE_ID } from "@/lib/seo/brand";
 import type { LearnPage } from ".";
-import { type ComparedProduct, LEARN_AUTHOR, LEARN_LEVELS } from "./schema";
+import { LEARN_GUIDE_COPY, type GuideCopy } from "./copy";
+import { guidePath } from "./links";
+import { type ComparedProduct, LEARN_AUTHOR } from "./schema";
 
 const SITE_URL = "https://thememorychess.com";
 const HUB_URL = `${SITE_URL}/learn`;
@@ -10,9 +14,11 @@ const guideUrl = (slug: string) => `${HUB_URL}/${slug}`;
 /** Alphabetical, so the publisher's own product is not listed first by default. */
 const byName = (a: ComparedProduct, b: ComparedProduct) => a.name.localeCompare(b.name, "en", { sensitivity: "base" });
 
-export function guideStructuredData(page: LearnPage) {
+/** `locale` and `copy` are the language the page is read in; a translation names the English guide it was made from. */
+export function guideStructuredData(page: LearnPage, locale: string = DEFAULT_LOCALE, copy: GuideCopy = LEARN_GUIDE_COPY) {
   const { meta } = page;
-  const url = guideUrl(meta.slug);
+  const url = localizedUrl(guidePath(meta.slug), locale);
+  const englishUrl = guideUrl(meta.slug);
 
   return {
     "@context": "https://schema.org",
@@ -23,13 +29,14 @@ export function guideStructuredData(page: LearnPage) {
         headline: meta.h1,
         name: meta.title,
         description: meta.description,
-        image: { "@type": "ImageObject", url: `${url}/opengraph-image`, width: 1200, height: 630 },
+        image: { "@type": "ImageObject", url: `${englishUrl}/opengraph-image`, width: 1200, height: 630 },
         datePublished: meta.publishedAt,
         dateModified: meta.updatedAt,
-        inLanguage: "en-US",
+        inLanguage: languageTag(locale),
+        ...(locale === DEFAULT_LOCALE ? {} : { translationOfWork: { "@id": `${englishUrl}#article` } }),
         isAccessibleForFree: true,
         articleSection: page.group.label,
-        educationalLevel: LEARN_LEVELS[meta.level],
+        educationalLevel: copy.level(meta.level),
         timeRequired: `PT${page.readingMinutes}M`,
         about: { "@type": "Thing", name: meta.keywords.primary },
         author: { "@type": "Person", "@id": LEARN_AUTHOR.id, name: LEARN_AUTHOR.name, url: LEARN_AUTHOR.url },
@@ -43,6 +50,7 @@ export function guideStructuredData(page: LearnPage) {
         url,
         name: meta.title,
         description: meta.description,
+        inLanguage: languageTag(locale),
         isPartOf: { "@type": "CollectionPage", "@id": `${HUB_URL}#webpage` },
         mainEntity: { "@id": `${url}#article` },
         breadcrumb: { "@id": `${url}#breadcrumb` },
@@ -51,8 +59,8 @@ export function guideStructuredData(page: LearnPage) {
         "@type": "BreadcrumbList",
         "@id": `${url}#breadcrumb`,
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-          { "@type": "ListItem", position: 2, name: "Learn", item: HUB_URL },
+          { "@type": "ListItem", position: 1, name: copy.breadcrumbHome, item: localizedUrl("/", locale) },
+          { "@type": "ListItem", position: 2, name: copy.breadcrumbLearn, item: HUB_URL },
           { "@type": "ListItem", position: 3, name: meta.title, item: url },
         ],
       },

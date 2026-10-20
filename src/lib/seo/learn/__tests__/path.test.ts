@@ -55,7 +55,7 @@ describe("the Learn path", () => {
   });
 
   it("renumbers the stages when a group has no guide yet", () => {
-    const withoutFoundations = LEARN_GUIDES.filter((doc) => doc.meta.group !== "foundations").map(toPage);
+    const withoutFoundations = LEARN_GUIDES.filter((doc) => doc.meta.group !== "foundations").map((doc) => toPage(doc));
 
     expect(pathStages(groupPages(withoutFoundations)).stages.map((stage) => `${stage.number} ${stage.group.id}`)).toEqual([
       "1 board-vision",

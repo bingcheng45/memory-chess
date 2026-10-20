@@ -209,6 +209,10 @@
 .lab-paper a.lh-guide:hover b { color: var(--lp-accent); }
 .lab-paper .lh-guide-text > span { font: 400 16px/1.55 var(--lp-body); }
 .lab-paper .lh-guide-text > .lh-guide-meta { font: 500 14px/1.4 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lh-also { margin: 6px 0 0 20px; font: 500 14px/1.5 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .lh-also a { color: var(--lp-accent); text-decoration: none; }
+.lab-paper .lh-also a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.lab-paper .ls-results .lh-also { margin-left: 16px; }
 .lab-paper .lh-stage-cta { margin-top: 16px; font: 600 16px/1.4 var(--lp-ui); }
 .lab-paper .lh-stage-cta a { color: var(--lp-accent); text-decoration: none; }
 .lab-paper .lh-stage-cta a::after, .lab-paper a.lh-closing-stat::after { content: " \2192"; }

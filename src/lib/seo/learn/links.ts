@@ -2,9 +2,13 @@ import { articlePath } from "@/lib/articles/paths";
 import { playHref } from "@/lib/game/roundLink";
 import type { DashboardTileId } from "@/lib/lab/dashboard";
 import { tileAnchor } from "@/lib/lab/tileAnchor";
+import { servedLocalesOf } from "@/lib/seo/englishOnly";
 import type { CtaTarget, GameSetup } from "./schema";
 
 export const guidePath = (slug: string) => `/learn/${slug}`;
+
+/** The locales a guide is served in, English first. */
+export const guideLocalesOf = (slug: string): readonly string[] => servedLocalesOf(guidePath(slug));
 
 export const groupAnchor = (groupId: string) => `/learn#${groupId}`;
 

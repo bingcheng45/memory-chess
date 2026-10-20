@@ -1,0 +1,222 @@
+{
+  "sourceHash": "2e876d5b5c5c75ebdb4f87c75fb7520a2ca35c59bc6d792af9a70faa80dfd00b",
+  "approvedHash": "102004b906d71cef2280bbb63e17e3ba7e3e30d32e0cc4e828be36a3a900a010",
+  "sameAsEnglish": [],
+  "text": {
+    "meta": {
+      "title": "Cómo dejar de cometer errores graves en ajedrez",
+      "h1": "Cómo dejar de cometer errores graves en ajedrez",
+      "description": "Deja de cometer errores graves en ajedrez con una revisión de cinco pasos antes de cada jugada, un control de piezas indefensas y ejercicios con tus derrotas.",
+      "keywords": {
+        "primary": "cómo dejar de cometer errores graves en ajedrez",
+        "secondary": [
+          "visión del tablero en ajedrez",
+          "piezas indefensas en ajedrez",
+          "jaques, capturas y amenazas",
+          "por qué dejo piezas colgadas en ajedrez",
+          "cómo dejar de regalar piezas en ajedrez"
+        ]
+      }
+    },
+    "intro": {
+      "quickAnswer": "Antes de cada jugada, haz una revisión de cinco pasos en un orden fijo. Comprueba qué ataca la última jugada de tu rival, enumera sus jaques, capturas y amenazas, y localiza tus piezas indefensas, las que no tienen defensor. Después pregúntate si tu jugada cae en una casilla defendida y qué deja de proteger, y solo entonces busca tus propios jaques y capturas.",
+      "takeaways": [
+        "Un error grave de una sola jugada es una jugada que solo funciona en el tablero de tu cabeza.",
+        "Una pieza indefensa no tiene defensor, así que enumera las tuyas antes de que un jaque de tu rival encuentre una.",
+        "Mide el hábito con un recuento de errores graves por partida, porque el Elo también depende de las aperturas, los finales y los emparejamientos."
+      ],
+      "audience": [
+        "Jugadores que resuelven bien los problemas y aun así pierden piezas por una respuesta de una sola jugada.",
+        "Cualquiera que ve la captura solo después de soltar la pieza.",
+        "Principiantes a los que dijeron que fueran más despacio y comprobaron que el tiempo extra por sí solo no cambiaba nada."
+      ]
+    },
+    "sections": {
+      "puzzle-vs-game": {
+        "heading": "Por qué se pierden piezas en las partidas y no en los problemas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Un problema te dice dos cosas antes de mirar. Hay una táctica, y te toca mover. Una partida no te dice ninguna de las dos, así que una horquilla que encontrarías en un problema puede pasar sin que la veas.",
+              "Un error grave de una sola jugada no exige una variante profunda para evitarlo. Es una jugada que funciona en el tablero de tu cabeza y falla en el tablero de la mesa.",
+              "Los dos tableros suelen diferir de tres maneras. La primera es el defensor fantasma, una pieza con la que cuentas para recapturar y que no puede hacer esa captura de forma legal.",
+              "Pon un alfil blanco en b5, un caballo negro en c6, el rey negro en e8 y un peón blanco en e5, con d7 vacía. El peón acaba de capturar una pieza negra en e5. Las negras contaban con el caballo como defensor y pensaban recapturar. El caballo está clavado contra el rey, así que Nxe5 es ilegal y la pieza simplemente se pierde."
+            ]
+          },
+          {
+            "caption": "Las negras contaban con recapturar con Nxe5, pero el alfil de b5 clava el caballo contra el rey de e8."
+          },
+          {
+            "paragraphs": [
+              "La segunda es la pieza olvidada, un alfil o una torre que lleva muchas jugadas sin moverse, así que dejas de mirarla.",
+              "La tercera es la tarea abandonada. Si el peón de d2 es el único que protege tu caballo de c3, jugar d2-d4 deja el caballo indefenso aunque el caballo nunca se movió."
+            ]
+          },
+          {
+            "caption": "Tras d2-d4 el caballo de c3 no tiene defensor, aunque nunca se movió."
+          }
+        ]
+      },
+      "pre-move-scan": {
+        "heading": "La revisión antes de mover: jaques, capturas, amenazas y piezas indefensas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "La visión del tablero es una revisión que haces en el mismo orden antes de cada jugada. Un orden fijo hace que nada dependa de dónde se te vayan los ojos."
+            ]
+          },
+          {
+            "items": [
+              "La última jugada. Nombra cada casilla que ataca ahora la pieza que se movió, y cualquier línea que abrió al dejar su casilla anterior.",
+              "Las jugadas forzantes de tu rival. Enumera cada jaque que podría dar, cada captura que podría hacer y cada jugada que atacaría una de tus piezas.",
+              "Tus piezas indefensas. Una pieza indefensa es la que no tiene defensor. Un defensor clavado solo cuenta si puede recapturar de forma legal. Nombra cada pieza indefensa por su casilla, y luego nombra cualquier pieza atacada más veces de las que está defendida.",
+              "La jugada que piensas hacer. Cuenta los defensores de la pieza en su nueva casilla. Después pregúntate qué protegía desde su casilla anterior y qué línea bloqueaba.",
+              "Tus propias jugadas forzantes. Solo ahora busca jaques y capturas para ti, empezando por cualquier pieza rival indefensa."
+            ]
+          },
+          {
+            "title": "Por qué las piezas indefensas van antes que tus propias ideas",
+            "body": "Un doble ataque gana material cuando uno de sus dos objetivos no se puede salvar. Cualquier ataque a una pieza indefensa ya es una amenaza, así que cada pieza indefensa es media táctica a la espera de su otra mitad."
+          }
+        ]
+      },
+      "loose-bishop-b4": {
+        "heading": "Un jaque de dama contra un alfil indefenso en b4",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Monta esta posición con turno de las blancas. Las blancas tienen Kg1, Qd1, Ra1, Rf1, Bc1, Nb1, Nf3 y peones en a2, b2, f2, g2 y h2.",
+              "Las negras tienen Ke8, Ra8, Rh8, Bc8, Bb4 y peones en a7, b7, c7, f7, g7 y h7. Ninguna pieza negra defiende el alfil de b4.",
+              "Las blancas juegan Qa4+. La dama da jaque por b5, c6 y d7 al rey de e8, y ataca el alfil por la cuarta fila."
+            ]
+          },
+          {
+            "caption": "Qa4+ da jaque por b5, c6 y d7 y ataca el alfil indefenso de b4."
+          },
+          {
+            "paragraphs": [
+              "Las negras tienen que responder primero al jaque. Tapar con ...c6, ...b5 o ...Bd7 no defiende b4, y tampoco ninguna jugada de rey, así que llega Qxb4.",
+              "El paso cuatro habría avisado a las negras una jugada antes. Cuenta los defensores del alfil en b4 antes de jugarlo, y no hay ninguno."
+            ]
+          }
+        ]
+      },
+      "invented-pieces": {
+        "heading": "Lo que cuesta una pieza inventada en una ronda de Memory Chess",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Una ronda de Memory Chess compara tu tablero reconstruido con el original, casilla a casilla. Una pieza solo puntúa cuando la casilla, el tipo y el color coinciden.",
+              "Colocar más piezas de las que tenía la posición se castiga dos veces. Cada pieza que pasa del número se cuenta como errónea y además resta diez puntos a tu precisión.",
+              "Una pieza errónea dentro del número no cuesta más que una casilla vacía, así que el castigo extra solo recae en las piezas inventadas.",
+              "Eso hace de una ronda una prueba limpia de un hábito que lleva a errores graves. Una séptima pieza en un tablero de seis piezas es una pieza que añadió tu memoria, el mismo despiste que fiarte de un defensor que el tablero real no tiene."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Ninguna séptima pieza",
+                "description": "Juega 4 rondas de 6 piezas con 10 segundos para mirar, y pulsa «Reintentar» en la pantalla de resultados para mantener los ajustes. Antes de cada envío, cuenta tus piezas. Si tienes más de seis, quita las que menos seguro estés de haber visto. Superas la prueba cuando las cuatro rondas se envían con seis piezas o menos.",
+                "duration": "4 rondas, unos 4 minutos",
+                "goal": "Distinguir una pieza que viste de una pieza que supusiste que estaba.",
+                "play": {
+                  "label": "Jugar 6 piezas, 10 segundos"
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "own-games-drills": {
+        "heading": "Ejercicios de piezas indefensas y de última jugada con tus propias derrotas",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Los dos ejercicios usan tus propias partidas, porque en ellas están los errores graves que cometes de verdad."
+            ]
+          },
+          {
+            "drills": [
+              {
+                "title": "Inventario de piezas indefensas",
+                "description": "Monta una posición de medio juego de una de tus partidas. Para cada una de tus piezas, escribe dos números: primero los atacantes rivales, luego tus defensores, sin contar ningún defensor clavado que no pueda recapturar. Rodea con un círculo cada pieza sin defensores. Marca con una estrella cada pieza con más atacantes que defensores.",
+                "duration": "5 minutos",
+                "goal": "Ver tus piezas indefensas antes de que un jaque del rival caiga sobre una."
+              },
+              {
+                "title": "Repaso de la última jugada",
+                "description": "Reproduce una partida que perdiste. Antes de cada una de tus jugadas, di en voz alta qué ataca la jugada anterior del rival. Donde la respuesta te sorprenda, has encontrado la causa.",
+                "duration": "10 minutos",
+                "goal": "Aprender cómo era una amenaza que se te escapó una jugada antes de que se cumpliera."
+              }
+            ]
+          }
+        ]
+      },
+      "blunder-tally": {
+        "heading": "Un recuento de errores graves junto a cada resultado",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Para el recuento, un error grave es una jugada que pierde un peón o más ante una respuesta de una o dos jugadas de profundidad. Un deterioro posicional lento no cuenta, porque ninguna revisión lo detectaría.",
+              "Escribe el número junto a cada resultado, también en las victorias. Cuenta la jugada aunque tu rival no viera la respuesta, porque el hábito que se mide es el tuyo.",
+              "El Elo es una mala medida de este hábito concreto. También depende de tus aperturas, tus finales y tus emparejamientos, mientras que el recuento solo cambia con la revisión."
+            ]
+          }
+        ]
+      },
+      "low-clock-scan": {
+        "heading": "Con menos de treinta segundos, revisa solo la última jugada",
+        "blocks": [
+          {
+            "paragraphs": [
+              "Con poco tiempo en el reloj la revisión completa no cabe, así que quédate con el paso uno y olvida el resto. Una pieza que acaba de moverse tiene objetivos nuevos, y el paso uno también detecta cualquier línea que haya abierto."
+            ]
+          }
+        ]
+      }
+    },
+    "end": [
+      {
+        "label": "Jugar 6 piezas con 10 segundos para mirar",
+        "why": "Seis piezas con diez segundos para mirar es donde aparece por primera vez una séptima pieza inventada, así que cuenta antes de enviar."
+      },
+      {
+        "label": "Ver tu precisión reciente",
+        "why": "Una ronda con una séptima pieza inventada aparece como un bajón en tu precisión reciente, así que mira cómo se recupera a medida que se asienta el hábito de contar."
+      },
+      {
+        "items": [
+          {
+            "question": "¿Jugar más despacio evita los errores graves?",
+            "answer": "Solo cuando dedicas el tiempo extra a una pregunta fija. Una reflexión lenta sin lista de comprobación se va casi toda en tu propio plan. Dedícalo a la revisión, empezando por lo que ataca la última jugada, y los minutos extra empiezan a detectar las respuestas que antes se te escapaban."
+          },
+          {
+            "question": "¿Tengo que hacer la revisión entera en cada jugada?",
+            "answer": "Haz los cinco pasos después de cualquier captura, cualquier jaque y cualquier jugada de peón que abra una línea, porque esas jugadas cambian más casillas. En una jugada tranquila, haz al menos los pasos uno y tres, la última jugada y tus piezas indefensas."
+          },
+          {
+            "question": "¿Debo dejar una casilla vacía en una ronda cuando no estoy seguro?",
+            "answer": "Coloca la pieza cuando la apuesta te mantenga dentro del número de piezas. Una apuesta dentro del número cuesta lo mismo que una casilla vacía, y una apuesta acertada puntúa. Una apuesta que te hace pasar del número se marca como errónea y además cuesta diez puntos de precisión."
+          }
+        ]
+      },
+      {
+        "items": [
+          {
+            "reason": "Explica por qué las tácticas que encuentras en los problemas desaparecen en las partidas, la brecha que esta revisión quiere cerrar."
+          },
+          {
+            "reason": "Trata la pieza olvidada, el alfil o la torre de largo alcance que te gana desde el otro lado."
+          },
+          {
+            "reason": "Da las tres preguntas que hacerse antes de cada jugada, con un control de seguridad que esta revisión amplía a casillas concretas."
+          },
+          {
+            "reason": "Muestra cómo analizar una partida perdida para que cada entrada del recuento tenga una causa."
+          }
+        ]
+      }
+    ]
+  }
+}

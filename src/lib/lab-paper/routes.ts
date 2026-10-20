@@ -1,4 +1,5 @@
 import { servedLocalesOf } from "@/lib/seo/englishOnly";
+import { TRANSLATED_GUIDE_SLUGS } from "@/lib/seo/learn/translatedGuides";
 
 /**
  * A route drawn in the Lab Paper shell (docs/design/brand-directions/lab-paper.md, "Using the shell on a page").
@@ -20,8 +21,9 @@ export const LAB_PAPER_ROUTES: readonly LabPaperRoute[] = [
   { path: "/contact-us", scope: "page", locales: "all" },
   { path: "/leaderboard", scope: "page", locales: "all" },
   { path: "/articles", scope: "subtree", locales: "all" },
-  // English-only (ENGLISH_ONLY_ROUTES): no other locale reaches it, so none draws the Lab Paper banner and footer.
+  // English-only (ENGLISH_ONLY_ROUTES) apart from the translated guides: no other locale reaches the rest.
   { path: "/learn", scope: "subtree", locales: ["en"] },
+  ...TRANSLATED_GUIDE_SLUGS.map((slug) => ({ path: `/learn/${slug}` as const, scope: "page" as const, locales: servedLocalesOf(`/learn/${slug}`) })),
   { path: "/game", scope: "page", locales: "all" },
   { path: "/dashboard", scope: "page", locales: "all" },
   { path: "/daily", scope: "page", locales: "all" },

@@ -6,7 +6,7 @@ import { RECALL_DATA, RECALL_PATH } from "@/lib/data/recall";
 import { EN_LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";
 import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
-import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly } from "@/lib/seo/englishOnly";
+import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly, isPartlyTranslatedPath, servedLocalesOf } from "@/lib/seo/englishOnly";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
 import { TERMS_LAST_UPDATED } from "@/lib/seo/termsOfService";
 
@@ -130,12 +130,12 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   })),
 ];
 
-/** hreflang block for one route across every locale, matching buildAlternates. */
-function alternatesFor(routePath: string) {
+/** hreflang block for one route across `locales`, matching the page's own alternates. */
+function alternatesFor(routePath: string, locales: readonly string[]) {
   return {
     languages: {
       ...Object.fromEntries(
-        LOCALES.map((locale) => [
+        locales.map((locale) => [
           locale,
           `${SITE_URL}${localizedPath(routePath, locale)}`,
         ]),
@@ -157,13 +157,18 @@ function entryFor(
   };
 }
 
+/** The locales whose URL of a route the sitemap lists: English alone, the locales that serve it, or every locale. */
+function listedLocalesOf(entry: SitemapEntryConfig): readonly string[] {
+  if (entry.sitemapEnglishUrlOnly || isEnglishOnlyPath(entry.path) || isIndexedInDefaultLocaleOnly(entry.path)) {
+    return [DEFAULT_LOCALE];
+  }
+  return isPartlyTranslatedPath(entry.path) ? servedLocalesOf(entry.path) : LOCALES;
+}
+
 export default function sitemap(): MetadataRoute.Sitemap {
-  return SITEMAP_ENTRIES.flatMap((entry) =>
-    entry.sitemapEnglishUrlOnly || isEnglishOnlyPath(entry.path) || isIndexedInDefaultLocaleOnly(entry.path)
-      ? [entryFor(entry, DEFAULT_LOCALE)]
-      : LOCALES.map((locale) => ({
-          ...entryFor(entry, locale),
-          alternates: alternatesFor(entry.path),
-        })),
-  );
+  return SITEMAP_ENTRIES.flatMap((entry) => {
+    const locales = listedLocalesOf(entry);
+    if (locales.length === 1) return [entryFor(entry, DEFAULT_LOCALE)];
+    return locales.map((locale) => ({ ...entryFor(entry, locale), alternates: alternatesFor(entry.path, locales) }));
+  });
 }

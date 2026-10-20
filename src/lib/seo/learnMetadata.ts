@@ -1,24 +1,32 @@
 import type { Metadata } from 'next';
+import { DEFAULT_LOCALE } from '@/i18n/routing';
+import { localizedPath, localizedUrl } from '@/lib/seo/alternates';
 import { LEARN_AUTHOR, type LearnPage } from '@/lib/seo/learn';
+import { guideLocalesOf, guidePath } from '@/lib/seo/learn/links';
 
-const SITE_URL = 'https://thememorychess.com';
-
-/** Learn is English-only: one bare URL, its own canonical, no alternates. */
-export function buildLearnPageMetadata(page: LearnPage): Metadata {
+/**
+ * A guide is canonical to its own URL in each locale it is served in. A translated guide lists the English guide and
+ * every translation as alternates, and an English-only guide lists none.
+ */
+export function buildLearnPageMetadata(page: LearnPage, locale: string = DEFAULT_LOCALE): Metadata {
   const { slug, title, description, publishedAt, updatedAt, keywords } = page.meta;
-  const articlePath = `/learn/${slug}`;
-  const pageUrl = `${SITE_URL}${articlePath}`;
-  const imageUrl = `${pageUrl}/opengraph-image`;
+  const path = guidePath(slug);
+  const locales = guideLocalesOf(slug);
+  const imageUrl = `${localizedUrl(path, DEFAULT_LOCALE)}/opengraph-image`;
   const tags = [keywords.primary, ...keywords.secondary];
+  const languages =
+    locales.length > 1
+      ? { languages: { ...Object.fromEntries(locales.map((served) => [served, localizedPath(path, served)])), 'x-default': path } }
+      : {};
 
   return {
     title,
     description,
-    alternates: { canonical: articlePath },
+    alternates: { canonical: localizedPath(path, locale), ...languages },
     openGraph: {
       title,
       description,
-      url: pageUrl,
+      url: localizedUrl(path, locale),
       type: 'article',
       publishedTime: publishedAt,
       modifiedTime: updatedAt,

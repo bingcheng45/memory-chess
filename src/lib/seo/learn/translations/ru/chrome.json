@@ -1,0 +1,58 @@
+{
+  "sourceHash": "cab333855dcc71fb8c25364857b8a3ec71be0567d803b6d8e2b2ee53e84b48d5",
+  "approvedHash": "b8a75c22790ae999244229abc1b46c1ddd952542f783068e123c60668872d820",
+  "sameAsEnglish": [],
+  "text": {
+    "breadcrumbHome": "Главная",
+    "breadcrumbLearn": "Обучение",
+    "quickAnswer": "Коротко",
+    "takeaways": "Главное",
+    "audience": "Для кого это",
+    "contents": "На этой странице",
+    "allGuides": "Все руководства",
+    "aimFor": "Цель:",
+    "atABoard": "За настоящей доской",
+    "readNext": "Читайте дальше",
+    "sources": "Источники",
+    "faq": "Вопросы",
+    "minRead": "{minutes} мин чтения",
+    "updated": "Обновлено {date}",
+    "checked": "Проверено {date}",
+    "by": "Автор",
+    "figure": "Рис. {n}",
+    "whiteToMove": "Ход белых.",
+    "blackToMove": "Ход чёрных.",
+    "pieces": "{count, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}}",
+    "secondsToLook": "{seconds} с на запоминание",
+    "ctaAction": {
+      "game": "Играть",
+      "article": "Читать",
+      "stat": "Открыть"
+    },
+    "ctaTag": {
+      "article": "Статья",
+      "stat": "Статистика"
+    },
+    "quickPlay": "Сыграйте раунд прямо сейчас",
+    "tryRound": "Сыграйте: {pieces, plural, one {# фигура} few {# фигуры} many {# фигур} other {# фигуры}}, {seconds, plural, one {# секунда} few {# секунды} many {# секунд} other {# секунды}}",
+    "dailyBoard": "Сыграйте сегодняшнюю доску дня",
+    "authorshipNote": "Написано с помощью ИИ; шахматные позиции проверены скриптом, а факты об игре сверены с кодом.",
+    "translationNote": "Переведено с английского с помощью ИИ и проверено вторым ИИ, но ещё не прочитано носителем языка.",
+    "readInEnglish": "Читать на английском",
+    "levels": {
+      "beginner": "Начинающим",
+      "improver": "От начинающих до среднего уровня",
+      "intermediate": "Средний уровень"
+    },
+    "groups": {
+      "foundations": "С чего начать",
+      "board-vision": "Видение доски и зевки",
+      "visualization": "Визуализация и расчёт вариантов",
+      "memory": "Память и паттерны",
+      "practice": "Практика и разбор",
+      "science": "Наука о шахматной памяти",
+      "using-memory-chess": "Как пользоваться Memory Chess",
+      "compare": "Сравнение тренажёров"
+    }
+  }
+}

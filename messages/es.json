@@ -64,6 +64,10 @@
       "leaderboard": "Ver la clasificación",
       "chooseSettings": "Elige piezas y tiempo"
     },
+    "gameVideo": {
+      "play": "Reproducir vídeo: {title}",
+      "caption": "Una ronda de principio a fin: estudia la posición, reconstrúyela de memoria y consulta tu puntuación."
+    },
     "video": {
       "title": "Entrena la habilidad detrás del juego",
       "subtitle": "Un vídeo breve de Colin Galen sobre la visualización, la habilidad que entrena cada ronda.",

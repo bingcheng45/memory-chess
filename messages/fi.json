@@ -64,6 +64,10 @@
       "leaderboard": "Katso tulostaulukko",
       "chooseSettings": "Valitse nappulat ja aika"
     },
+    "gameVideo": {
+      "play": "Toista video: {title}",
+      "caption": "Yksi kierros alusta loppuun: tutki asema, rakenna se muistista ja katso tuloksesi."
+    },
     "video": {
       "title": "Harjoita taitoa, jota peli vaatii",
       "subtitle": "Colin Galenin lyhyt video visualisoinnista, jota jokainen kierros harjoittaa.",

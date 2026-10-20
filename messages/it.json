@@ -64,6 +64,10 @@
       "leaderboard": "Vedi la classifica",
       "chooseSettings": "Scegli pezzi e tempo"
     },
+    "gameVideo": {
+      "play": "Riproduci video: {title}",
+      "caption": "Un round dall'inizio alla fine: studia la posizione, ricostruiscila a memoria, leggi il punteggio."
+    },
     "video": {
       "title": "Allena l’abilità alla base del gioco",
       "subtitle": "Un breve video di Colin Galen sulla visualizzazione, l’abilità che ogni partita allena.",

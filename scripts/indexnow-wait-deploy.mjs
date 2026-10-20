@@ -31,7 +31,6 @@ const result = await waitForDeployment({
   sleep,
   log: console.log,
   pollMs: 20_000,
-  noDeploymentMs: Number(option("--no-deployment-minutes", 6)) * MINUTE,
   timeoutMs: Number(option("--timeout-minutes", 15)) * MINUTE,
 });
 

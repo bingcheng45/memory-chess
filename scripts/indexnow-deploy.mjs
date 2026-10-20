@@ -1,29 +1,23 @@
-const FAILED = new Set(["failure", "error"]);
+const NOT_LIVE = { inactive: "was canceled", failure: "ended with failure", error: "ended with error" };
 const MINUTE = 60_000;
 
-export async function waitForDeployment({ api, sha, now, sleep, log, pollMs, noDeploymentMs, timeoutMs }) {
+export async function waitForDeployment({ api, sha, now, sleep, log, pollMs, timeoutMs }) {
   const short = sha.slice(0, 12);
   const start = now();
-  let seen = false;
   for (;;) {
-    const elapsed = now() - start;
-    let newest = [];
+    let deployments = [];
     try {
-      const deployments = await api(`/deployments?sha=${sha}&environment=Production`);
-      newest = await Promise.all(deployments.map(async ({ id }) => (await api(`/deployments/${id}/statuses`)).map((s) => s.state)));
+      const listed = await api(`/deployments?sha=${sha}&environment=Production`);
+      deployments = await Promise.all(listed.map(async ({ id }) => (await api(`/deployments/${id}/statuses`)).map((s) => s.state)));
     } catch (cause) {
       log(cause.message);
     }
-    seen ||= newest.length > 0;
-    if (newest.some((states) => states.includes("success"))) return { deployed: true };
-    if (newest.length > 0 && newest.every(([latest]) => FAILED.has(latest))) {
-      return { deployed: false, reason: `the Production deployment of ${short} ended with ${newest[0][0]}` };
+    if (deployments.some((states) => states.includes("success"))) return { deployed: true };
+    if (deployments.length > 0 && deployments.every(([latest]) => latest in NOT_LIVE)) {
+      return { deployed: false, reason: `the Production deployment of ${short} ${NOT_LIVE[deployments[0][0]]}` };
     }
-    if (!seen && elapsed >= noDeploymentMs) {
-      return { deployed: false, reason: `no Production deployment of ${short} appeared within ${noDeploymentMs / MINUTE} minutes` };
-    }
-    if (elapsed >= timeoutMs) {
-      return { deployed: false, reason: `the Production deployment of ${short} did not finish within ${timeoutMs / MINUTE} minutes` };
+    if (now() - start >= timeoutMs) {
+      return { deployed: false, reason: `no successful Production deployment of ${short} within ${timeoutMs / MINUTE} minutes` };
     }
     await sleep(pollMs);
   }

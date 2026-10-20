@@ -198,8 +198,30 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
     retranslated and approved again, or is removed from `TRANSLATED_PAGE_LOCALES`.
   - The owner's gender is not stated. First-person sentences in pl, cs, ru, ro and hi use forms that carry no
     gender, and the operator confirmed on 2026-10-14 that they stay that way.
-  - What stays English. /changelog, because every release would wait on 23 translations. /learn, because it is
-    the content removed after the first rejections. Revisit /learn only after AdSense approves the site.
+  - What stays English. /changelog, because every release would wait on 23 translations. The Learn hub, the
+    search page and every other guide, because Learn is the content removed after the first rejections.
+- Five Learn guides are readable in ru, pt-BR, fr, de and es and indexed only in English, decided 2026-10-21 by
+  the program's root coordinator (PR 143); the operator can reverse it. They follow the articles' model above,
+  with these differences:
+  - Which guides. Blindfold training, seeing the whole board, visualization exercises, stopping blunders and
+    getting better as a beginner, the five with AI-assistant landings in the 90 days before PR 143.
+  - Who wrote the text. Opus agents translated, a separate Sonnet agent reviewed each language, and a separate
+    Opus agent reviewed the piece-letter legend added in fix round 1. No native speaker has read any of it.
+  - What the reader sees. The disclosure under the byline says the guide was translated with AI assistance and
+    checked by a second AI, and links to the English guide. The hub and search page link each translation.
+  - What search sees. Each translation is `noindex, follow` with a self canonical, no `hreflang`, no hreflang
+    Link header and no sitemap entry. The English guide keeps its bare self canonical, no alternates and its one
+    sitemap entry, exactly as before PR 143.
+  - The switch. `GUIDE_LOCALE_INDEXING` in `src/lib/seo/learn/translatedGuides.ts` holds `indexed: false` for
+    each locale. Setting one locale to `indexed: true` makes its translations indexable and lists them, with the
+    English guide, in the HTML `hreflang`, the Link header and the sitemap, all together. Turn a locale on only
+    after AdSense approves the site, or after a native speaker has read that locale's guides.
+  - What an edit costs. An English edit to one of the five guides, or to the chrome every guide shares, does not
+    fail the build. `--guides verify` withholds each translation that is no longer current, prints a warning
+    naming it and the commands to approve it again, and writes the rest to `src/lib/seo/learn/servedGuides.json`.
+    A withheld translation's URL answers a 307 to the English guide until it is translated and approved again.
+    A changed game button label in a locale withholds the guides that name it the same way. A translation no
+    reviewer approved, or a current one that breaks a rule, still fails the build.
 
 ## Follow-ups
 

@@ -1,4 +1,11 @@
-import { isEnglishOnlyPath, isServedAtBareEnglishUrl, robotsFor, servedLocalesOf } from "@/lib/seo/englishOnly";
+import {
+  alternatesLinkHeader,
+  indexedLocalesOf,
+  isEnglishOnlyPath,
+  isServedAtBareEnglishUrl,
+  robotsFor,
+  servedLocalesOf,
+} from "@/lib/seo/englishOnly";
 
 const BLINDFOLD = "/learn/blindfold-chess-training-for-beginners";
 
@@ -25,8 +32,12 @@ describe("the translated Learn guides in the routing table", () => {
     expect(isEnglishOnlyPath("/learn")).toBe(true);
   });
 
-  it("keeps a translated guide indexable in its own locale", () => {
-    expect(robotsFor(BLINDFOLD, "de")).toBeUndefined();
-    expect(robotsFor("/about", "de")).toEqual({ index: false, follow: true, googleBot: { index: false, follow: true } });
+  it("keeps every translated guide out of search while no locale is indexed, and the English guide in it", () => {
+    expect(robotsFor(BLINDFOLD, "de")).toEqual({ index: false, follow: true, googleBot: { index: false, follow: true } });
+    expect(robotsFor(BLINDFOLD, "ru")).toEqual({ index: false, follow: true, googleBot: { index: false, follow: true } });
+    expect(robotsFor(BLINDFOLD, "en")).toBeUndefined();
+    expect(robotsFor("/learn/chess-memory-training", "en")).toBeUndefined();
+    expect(indexedLocalesOf(BLINDFOLD)).toEqual(["en"]);
+    expect(alternatesLinkHeader(BLINDFOLD, "https://thememorychess.com")).toBeNull();
   });
 });

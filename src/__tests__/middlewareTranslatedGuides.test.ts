@@ -29,7 +29,7 @@ describe("middleware on the translated Learn guides", () => {
     "/pt-BR/learn/chess-visualization-exercises",
     "/fr/learn/how-to-stop-blundering-in-chess",
     "/es/learn/how-to-get-better-at-chess-for-beginners",
-  ])("serves %s in its language with no redirect and no all-locales hreflang header", (path) => {
+  ])("serves %s in its language with no redirect and no hreflang header", (path) => {
     const response = run(path);
 
     expect(response.status).toBe(200);

@@ -4,9 +4,9 @@ import { ARTICLES_PATH, articlePath } from "@/lib/articles/paths";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { RECALL_DATA, RECALL_PATH } from "@/lib/data/recall";
 import { EN_LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";
-import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
-import { isEnglishOnlyPath, isIndexedInDefaultLocaleOnly, isPartlyTranslatedPath, servedLocalesOf } from "@/lib/seo/englishOnly";
+import { indexedLocalesOf } from "@/lib/seo/englishOnly";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
 import { TERMS_LAST_UPDATED } from "@/lib/seo/termsOfService";
 
@@ -156,12 +156,8 @@ function entryFor(
   };
 }
 
-function listedLocalesOf(entry: SitemapEntryConfig): readonly string[] {
-  if (entry.sitemapEnglishUrlOnly || isEnglishOnlyPath(entry.path) || isIndexedInDefaultLocaleOnly(entry.path)) {
-    return [DEFAULT_LOCALE];
-  }
-  return isPartlyTranslatedPath(entry.path) ? servedLocalesOf(entry.path) : LOCALES;
-}
+const listedLocalesOf = (entry: SitemapEntryConfig): readonly string[] =>
+  entry.sitemapEnglishUrlOnly ? [DEFAULT_LOCALE] : indexedLocalesOf(entry.path);
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return SITEMAP_ENTRIES.flatMap((entry) => {

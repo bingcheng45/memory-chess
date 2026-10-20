@@ -8,12 +8,11 @@ const DIST = ".next";
 const MANIFEST = join(DIST, "prerender-manifest.json");
 
 const { LEARN_SLUGS: slugs } = await import(pathToFileURL(join(process.cwd(), "src/lib/seo/learn/index.ts")).href);
-const { TRANSLATED_GUIDE_SLUGS, TRANSLATED_GUIDE_LOCALES } = await import(
-  pathToFileURL(join(process.cwd(), "src/lib/seo/learn/translatedGuides.ts")).href
-);
+const { SERVED_GUIDES_FILE } = await import(pathToFileURL(join(process.cwd(), "src/lib/seo/learn/translatedGuides.ts")).href);
+const served = JSON.parse(readFileSync(join(process.cwd(), SERVED_GUIDES_FILE), "utf8"));
 const pages = [
   ...slugs.map((slug) => ["en", slug]),
-  ...TRANSLATED_GUIDE_LOCALES.flatMap((locale) => TRANSLATED_GUIDE_SLUGS.map((slug) => [locale, slug])),
+  ...Object.entries(served).flatMap(([slug, locales]) => locales.map((locale) => [locale, slug])),
 ];
 
 if (!existsSync(MANIFEST)) {

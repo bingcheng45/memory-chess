@@ -30,28 +30,20 @@ describe("buildLearnPageMetadata", () => {
     expect(metadata.robots).toBeUndefined();
   });
 
-  const BLUNDERING_ALTERNATES = {
-    en: "/learn/how-to-stop-blundering-in-chess",
-    ru: "/ru/learn/how-to-stop-blundering-in-chess",
-    "pt-BR": "/pt-BR/learn/how-to-stop-blundering-in-chess",
-    fr: "/fr/learn/how-to-stop-blundering-in-chess",
-    de: "/de/learn/how-to-stop-blundering-in-chess",
-    es: "/es/learn/how-to-stop-blundering-in-chess",
-    "x-default": "/learn/how-to-stop-blundering-in-chess",
-  };
+  const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } };
 
-  it("lists the English guide and each translation of a translated guide, and no other locale", () => {
+  it("gives a translated guide's English page a bare self canonical, no alternates and no robots override", () => {
     const metadata = buildLearnPageMetadata(pageFor("how-to-stop-blundering-in-chess"));
 
-    expect(metadata.alternates).toEqual({ canonical: "/learn/how-to-stop-blundering-in-chess", languages: BLUNDERING_ALTERNATES });
+    expect(metadata.alternates).toEqual({ canonical: "/learn/how-to-stop-blundering-in-chess" });
     expect(metadata.robots).toBeUndefined();
   });
 
-  it("makes a translation canonical to itself, indexable, with the same alternates", () => {
+  it("makes a translation noindex, follow and canonical to itself, with no alternates", () => {
     const metadata = buildLearnPageMetadata(pageFor("how-to-stop-blundering-in-chess"), "de");
 
-    expect(metadata.alternates).toEqual({ canonical: "/de/learn/how-to-stop-blundering-in-chess", languages: BLUNDERING_ALTERNATES });
-    expect(metadata.robots).toBeUndefined();
+    expect(metadata.alternates).toEqual({ canonical: "/de/learn/how-to-stop-blundering-in-chess" });
+    expect(metadata.robots).toEqual(NOINDEX_FOLLOW);
     expect(metadata.openGraph?.url).toBe("https://thememorychess.com/de/learn/how-to-stop-blundering-in-chess");
   });
 

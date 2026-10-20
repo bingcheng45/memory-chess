@@ -2,12 +2,13 @@ import type { Metadata } from 'next';
 import { DEFAULT_LOCALE } from '@/i18n/routing';
 import { localizedPath, localizedUrl } from '@/lib/seo/alternates';
 import { LEARN_AUTHOR, type LearnPage } from '@/lib/seo/learn';
-import { guideLocalesOf, guidePath } from '@/lib/seo/learn/links';
+import { indexedLocalesOf, robotsFor } from '@/lib/seo/englishOnly';
+import { guidePath } from '@/lib/seo/learn/links';
 
 export function buildLearnPageMetadata(page: LearnPage, locale: string = DEFAULT_LOCALE): Metadata {
   const { slug, title, description, publishedAt, updatedAt, keywords } = page.meta;
   const path = guidePath(slug);
-  const locales = guideLocalesOf(slug);
+  const locales = indexedLocalesOf(path);
   const imageUrl = `${localizedUrl(path, DEFAULT_LOCALE)}/opengraph-image`;
   const tags = [keywords.primary, ...keywords.secondary];
   const languages =
@@ -19,6 +20,7 @@ export function buildLearnPageMetadata(page: LearnPage, locale: string = DEFAULT
     title,
     description,
     alternates: { canonical: localizedPath(path, locale), ...languages },
+    robots: robotsFor(path, locale),
     openGraph: {
       title,
       description,

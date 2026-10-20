@@ -4,7 +4,8 @@ import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { ARTICLES_PATH } from "@/lib/articles/paths";
 import { LEARN_GUIDE_COPY, LEARN_HUB_COPY as COPY, LEARN_SEARCH_COPY } from "@/lib/seo/learn/copy";
 import { dashboardTileHref, guidePath, guideRoundHref, learnSearchHref } from "@/lib/seo/learn/links";
-import { stageGuideNumber, type LearnStage } from "@/lib/seo/learn/path";
+import { stageGuideNumber, type LearnShelves, type LearnStage } from "@/lib/seo/learn/path";
+import type { LearnGroupPages, LearnPage } from "@/lib/seo/learn";
 import { hubStructuredData } from "@/lib/seo/learn/structuredData";
 import LearnSearch from "./LearnSearch";
 import "./learn.css";
@@ -29,6 +30,38 @@ function StageMap({ stages }: { readonly stages: readonly LearnStage[] }) {
   );
 }
 
+function GuideCard({ page, number }: { readonly page: LearnPage; readonly number?: string }) {
+  return (
+    <Link href={guidePath(page.meta.slug)} className="lh-guide">
+      {number ? <span className="lh-guide-n">{number}</span> : null}
+      <span className="lh-guide-text">
+        <b>{page.meta.title}</b>
+        <span>{page.meta.description}</span>
+        <span className="lh-guide-meta">
+          {LEARN_GUIDE_COPY.minRead(page.readingMinutes)} · {COPY.endsWith(page.primaryCta)}
+        </span>
+      </span>
+    </Link>
+  );
+}
+
+function OffPath({ entry }: { readonly entry: LearnGroupPages }) {
+  const headingId = `${entry.group.id}-h`;
+  return (
+    <section id={entry.group.id} className="lh-shelf" aria-labelledby={headingId}>
+      <h2 id={headingId}>{entry.group.label}</h2>
+      <p className="lh-stage-desc">{entry.group.description}</p>
+      <ul className="lh-guides">
+        {entry.pages.map((page) => (
+          <li key={page.meta.slug}>
+            <GuideCard page={page} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
 function Stage({ stage, total }: { readonly stage: LearnStage; readonly total: number }) {
   const headingId = `${stage.group.id}-h`;
   return (
@@ -42,16 +75,7 @@ function Stage({ stage, total }: { readonly stage: LearnStage; readonly total: n
       <ol className="lh-guides">
         {stage.pages.map((page, index) => (
           <li key={page.meta.slug}>
-            <Link href={guidePath(page.meta.slug)} className="lh-guide">
-              <span className="lh-guide-n">{stageGuideNumber(stage, index)}</span>
-              <span className="lh-guide-text">
-                <b>{page.meta.title}</b>
-                <span>{page.meta.description}</span>
-                <span className="lh-guide-meta">
-                  {LEARN_GUIDE_COPY.minRead(page.readingMinutes)} · {COPY.endsWith(page.primaryCta)}
-                </span>
-              </span>
-            </Link>
+            <GuideCard page={page} number={stageGuideNumber(stage, index)} />
           </li>
         ))}
       </ol>
@@ -64,8 +88,8 @@ function Stage({ stage, total }: { readonly stage: LearnStage; readonly total: n
   );
 }
 
-export default function LearnHubPage({ stages }: { readonly stages: readonly LearnStage[] }) {
-  const pages = stages.flatMap((stage) => stage.pages);
+export default function LearnHubPage({ stages, offPath }: LearnShelves) {
+  const pages = [...stages, ...offPath].flatMap((entry) => entry.pages);
   const asked = pages.filter((page) => page.meta.featured).map((page) => page.meta.questions[0]);
 
   return (
@@ -116,6 +140,9 @@ export default function LearnHubPage({ stages }: { readonly stages: readonly Lea
             </p>
           </section>
         </div>
+        {offPath.map((entry) => (
+          <OffPath key={entry.group.id} entry={entry} />
+        ))}
       </main>
       <script
         type="application/ld+json"

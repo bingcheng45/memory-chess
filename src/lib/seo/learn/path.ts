@@ -22,11 +22,16 @@ const STAGE_CTAS: Partial<Record<LearnGroupId, { readonly label: string; readonl
 
 export type LearnStage = LearnGroupPages & { readonly number: number; readonly cta?: StageCta };
 
-export function pathStages(groups: readonly LearnGroupPages[]): LearnStage[] {
-  return groups.map((entry, index) => {
+export type LearnShelves = { readonly stages: readonly LearnStage[]; readonly offPath: readonly LearnGroupPages[] };
+
+const isOnPath = ({ group }: LearnGroupPages) => !("onPath" in group);
+
+export function pathStages(groups: readonly LearnGroupPages[]): LearnShelves {
+  const stages = groups.filter(isOnPath).map((entry, index) => {
     const cta = STAGE_CTAS[entry.group.id];
     return { ...entry, number: index + 1, ...(cta ? { cta: { label: cta.label, href: ctaHref(cta.target) } } : {}) };
   });
+  return { stages, offPath: groups.filter((entry) => !isOnPath(entry)) };
 }
 
 export const stageGuideNumber = (stage: LearnStage, index: number) => `${stage.number}.${index + 1}`;

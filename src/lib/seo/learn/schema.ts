@@ -51,12 +51,15 @@ export const LEARN_GROUPS = [
     label: "Compare training tools",
     description: "What each memory and visualization trainer offers, read from its own pages and dated.",
     status: "live",
+    onPath: false,
   },
 ] as const satisfies readonly {
   readonly id: string;
   readonly label: string;
   readonly description: string;
   readonly status: "live" | "planned";
+  /** A group read when needed, not in order: the hub lists it after the numbered stages. */
+  readonly onPath?: false;
 }[];
 
 export type LearnGroup = (typeof LEARN_GROUPS)[number];
@@ -175,7 +178,8 @@ export type LearnSection = {
   readonly facts?: readonly LearnPosition[];
 };
 
-export type ComparedProduct = { readonly name: string; readonly url: `https://${string}` };
+/** `url` is the product's own page; a product whose page could not be opened when checked has none. */
+export type ComparedProduct = { readonly name: string; readonly url?: `https://${string}` };
 
 export type Comparison = {
   /** The day every fact about another product on the page was read from that product's live public page. */

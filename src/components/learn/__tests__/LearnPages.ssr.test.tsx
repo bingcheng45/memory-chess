@@ -140,7 +140,7 @@ describe("a guide page", () => {
 });
 
 describe("the hub", () => {
-  it("walks five numbered stages, each guide numbered within its stage, then the closing routine", () => {
+  it("walks five numbered stages, each guide numbered within its stage, then the closing routine and the unnumbered compare group", () => {
     const markup = html(LearnHub());
 
     expect(texts(markup, "h2")).toEqual([
@@ -150,6 +150,7 @@ describe("the hub", () => {
       "Memory and patterns",
       "Practice and review",
       "Then keep the routine going",
+      "Compare training tools",
     ]);
     expect(texts(markup, "p").find((text) => text.endsWith("matches your problem."))).toBe(
       "Five stages, each a few short guides. Read them in order, or start at the stage that matches your problem.",
@@ -170,7 +171,13 @@ describe("the hub", () => {
     const items = graph(markup).find((node) => node["@type"] === "ItemList")?.itemListElement as { name: string }[];
     const shown = [...markup.matchAll(/class="lh-guide"[^]*?<b>(.*?)<\/b>/g)].map((match) => match[1].replace(/&#x27;/g, "'"));
 
-    expect(shown).toHaveLength(14);
+    expect(shown).toHaveLength(18);
+    expect(shown.slice(-4)).toEqual([
+      "Chess Position Memory Trainers Compared",
+      "Lichess vs Chess.com for Visualization Training",
+      "Memory Chess vs the Lichess Coordinate Trainer",
+      "Memory Chess vs DarkSquares Compared",
+    ]);
     expect(items.map((item) => item.name)).toEqual(shown);
   });
 
@@ -221,5 +228,51 @@ describe("the server search page", () => {
   it("keeps itself out of the index and canonical without the query", () => {
     expect(searchMetadata.robots).toEqual({ index: false, follow: true });
     expect(searchMetadata.alternates).toEqual({ canonical: "/learn/search" });
+  });
+});
+
+describe("a comparison page", () => {
+  const COMPARE_SLUGS = [
+    "chess-position-memory-trainers-compared",
+    "lichess-vs-chess-com-visualization-training",
+    "memory-chess-vs-lichess-coordinate-trainer",
+    "memory-chess-vs-darksquares",
+  ];
+
+  it.each(COMPARE_SLUGS)("%s says who publishes it and when it was checked, before the lede, and serves a table", async (slug) => {
+    const markup = await guide(slug);
+    const disclosure = markup.indexOf("data-compare-disclosure");
+
+    expect(markup).toContain('<time dateTime="2026-10-20T00:00:00.000Z">Checked 20 October 2026</time>');
+    expect(disclosure).toBeGreaterThan(markup.indexOf("<h1"));
+    expect(disclosure).toBeLessThan(markup.indexOf('class="lg-lede"'));
+    expect(texts(markup, "p").find((text) => text.includes("Checked 20 October 2026"))).toMatch(/^Memory Chess (publishes|makes)/);
+    expect(markup).toContain("<table>");
+    expect(markup).toContain('<a href="/learn#compare">Compare training tools</a>');
+    expect(graph(markup).map((node) => node["@type"])).toEqual(
+      slug === "chess-position-memory-trainers-compared"
+        ? ["Article", "WebPage", "BreadcrumbList", "ItemList", "Organization", "WebSite"]
+        : ["Article", "WebPage", "BreadcrumbList", "Organization", "WebSite"],
+    );
+  });
+
+  it("lists the seven position-memory trainers in the ItemList in table order", async () => {
+    const list = graph(await guide("chess-position-memory-trainers-compared")).find((node) => node["@type"] === "ItemList") as {
+      itemListElement: { name: string }[];
+    };
+
+    expect(list.itemListElement.map((item) => item.name)).toEqual([
+      "Memory Chess",
+      "DarkSquares Position Memory",
+      "ChessWorld memory trainer",
+      "BoardWithin",
+      "chessO",
+      "Lucas Chess memory exercise",
+      "Chess Memory (Android)",
+    ]);
+  });
+
+  it("shows no disclosure on an ordinary guide", async () => {
+    expect(await guide("chess-memory-training")).not.toContain("data-compare-disclosure");
   });
 });

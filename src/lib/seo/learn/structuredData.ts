@@ -64,7 +64,7 @@ export function guideStructuredData(page: LearnPage) {
                 "@type": "ListItem",
                 position: index + 1,
                 name: product.name,
-                url: product.url,
+                ...(product.url ? { url: product.url } : {}),
               })),
             },
           ]

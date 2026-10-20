@@ -418,3 +418,32 @@ describe("a comparison page", () => {
     expect(await guide("chess-memory-training")).not.toContain("data-compare-disclosure");
   });
 });
+
+describe("the Also in line on the hub and the search page", () => {
+  const alsoInOf = (markup: string, slug: string) => {
+    const line = markup.match(new RegExp(`<p class="lh-also" data-guide-translations="${slug}">(.*?)</p>`))?.[1];
+    return line === undefined ? null : [...line.matchAll(/<a [^>]*href="([^"]+)"[^>]*>([^<]+)<\/a>/g)].map(([, href, label]) => [label, href]);
+  };
+  const BLINDFOLD_TRANSLATIONS = [
+    ["Русский", "/ru/learn/blindfold-chess-training-for-beginners"],
+    ["Português (BR)", "/pt-BR/learn/blindfold-chess-training-for-beginners"],
+    ["Français", "/fr/learn/blindfold-chess-training-for-beginners"],
+    ["Deutsch", "/de/learn/blindfold-chess-training-for-beginners"],
+    ["Español", "/es/learn/blindfold-chess-training-for-beginners"],
+  ];
+
+  it("links each translation of a translated guide from its hub card, and adds no line to an untranslated guide", () => {
+    const markup = html(LearnHub());
+
+    expect(alsoInOf(markup, "blindfold-chess-training-for-beginners")).toEqual(BLINDFOLD_TRANSLATIONS);
+    expect(alsoInOf(markup, "chess-memory-training")).toBeNull();
+  });
+
+  it("links each translation from a translated guide's search result, and adds no line to an untranslated one", async () => {
+    const markup = html(await LearnSearchRoute({ searchParams: Promise.resolve({ q: "blindfold chess memory training" }) }));
+
+    expect(alsoInOf(markup, "blindfold-chess-training-for-beginners")).toEqual(BLINDFOLD_TRANSLATIONS);
+    expect(markup).toContain('href="/learn/chess-memory-training"');
+    expect(alsoInOf(markup, "chess-memory-training")).toBeNull();
+  });
+});

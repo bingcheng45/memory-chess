@@ -276,11 +276,12 @@ const guide: LearnDocument = {
       kind: "cta",
       target: {
         kind: "game",
-        label: "Play 2 pieces, 10 seconds, kings only",
+        label: "Play 2 kings blindfold, from notation only",
         pieceCount: 2,
         memorizeTime: 10,
+        blindfold: true,
       },
-      why: "Two kings and ten seconds is stage one of the plan: hold both squares with nothing else on the board.",
+      why: "Blindfold mode shows the two kings as notation, never on the board, so you picture both squares before placing them.",
     },
     {
       kind: "cta",

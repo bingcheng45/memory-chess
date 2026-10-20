@@ -10,7 +10,7 @@ export const groupAnchor = (groupId: string) => `/learn#${groupId}`;
 
 export const DAILY_PATH = "/daily";
 
-export const guideRoundHref = ({ pieceCount, memorizeTime }: GameSetup) => playHref(pieceCount, memorizeTime, "guide_cta");
+export const guideRoundHref = ({ pieceCount, memorizeTime, blindfold }: GameSetup) => playHref(pieceCount, memorizeTime, "guide_cta", blindfold);
 
 export const dashboardTileHref = (tile: DashboardTileId) => `/dashboard#${tileAnchor(tile)}`;
 

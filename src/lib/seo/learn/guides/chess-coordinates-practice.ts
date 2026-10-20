@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "chess-coordinates-practice",
     title: "Chess Coordinates Practice: Name Squares Faster",
     h1: "Chess coordinates practice, from counting squares to reading them",
-    description: "Chess coordinates practice starts with eight anchor squares and a colour rule. Then name squares aloud in 4-piece, 12-second rounds, five clean in a row.",
+    description: "For chess coordinates practice, learn eight anchor squares and a colour rule, then name squares aloud in 4-piece, 12-second rounds until five are clean.",
     group: "board-vision",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. The anchor test is ten squares called at random, each colour said before the name is finished. Then play short Memory Chess rounds naming every square aloud, first reading the labels, then naming each square before reading its label.",
+    quickAnswer: "Chess coordinates practice should make a square's name and its place arrive in one look, without counting files and ranks. The anchor test is ten squares called at random, each colour said before the name is finished. Then play Memory Chess rounds naming every square aloud, first with the edge labels in view, then before you glance at them.",
     takeaways: [
       "A square you count takes two lookups, the file and then the rank. A square you recognise takes one.",
       "Add the file number to the rank number. An even total is a dark square, an odd total is light.",

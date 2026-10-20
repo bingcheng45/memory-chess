@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "chess-pattern-recognition-drills",
     title: "Chess Pattern Recognition Drills, From Memory",
     h1: "Chess pattern recognition drills for the first four tactics",
-    description: "Chess pattern recognition drills start with the knight fork, back-rank mate, bishop pin and smothered mate. Drill one a session, six minutes at a time.",
+    description: "Base your first chess pattern recognition drills on the knight fork, back-rank mate, bishop pin and smothered mate. Drill one a session, six minutes each.",
     group: "memory",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
@@ -27,7 +27,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Chess pattern recognition drills start with four patterns, the knight fork, back-rank mate, bishop pin and smothered mate. Each is a shape plus one condition. Rebuild the shape from memory, then add one black piece that breaks the condition. Add a fifth pattern only after you find each of the four, or its early form, in your own games.",
+    quickAnswer: "Chess pattern recognition drills treat each pattern as a shape plus one condition, such as a knight fork on c7 that nothing black can capture. Rebuild the shape from memory, then add one black piece that breaks the condition. Add a fifth only after you find each of the first four, or its early form, in your own games.",
     takeaways: [
       "A knight fork on c7 is three squares, e8, a8 and c7, plus one condition, that nothing black can take on c7.",
       "Rebuild each shape from an empty board until you can place it without the table, then look for it in your own games.",
@@ -275,14 +275,14 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Pawns before pieces",
-              description: "3 rounds of 12 pieces, 8 seconds, about 5 minutes. Place the kings, then each pair of touching pawns as one cluster, then the rest. Say each pair aloud, such as f2 g3.",
+              description: "3 rounds of 12 pieces, 8 seconds, about 5 minutes. Press Try again between rounds. Place the kings, then each pair of touching pawns as one cluster, then the rest. Say each pair aloud, such as f2 g3.",
               duration: "About 5 minutes",
               goal: "Every pawn on its square in all three rounds.",
               play: { label: "Start 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
             },
             {
               title: "The quarter-second board",
-              description: "2 rounds of 20 pieces, 5 seconds, about 4 minutes. Try it only once 12 pieces at 8 seconds gives you Excellent Memory or Perfect Score, 90 percent or better, in most rounds. Before that, a round is likely to end in Keep Practicing. Watch for the moment you start reading clusters.",
+              description: "2 rounds of 20 pieces, 5 seconds, about 4 minutes. Press Try again between rounds. Try it only once 12 pieces at 8 seconds gives you Excellent Memory or Perfect Score, 90 percent or better, in most rounds. Before that, a round is likely to end in Keep Practicing. Watch for the moment you start reading clusters.",
               duration: "About 4 minutes",
               goal: "At least 50 percent on the second round, which the result screen calls Good Effort or better.",
               play: { label: "Try 20 pieces, 5 seconds", pieceCount: 20, memorizeTime: 5 },

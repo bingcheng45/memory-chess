@@ -119,7 +119,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Flag the square you doubt",
-              description: "Run 3 rounds in a row at 12 pieces and 8 seconds. Before you submit each rebuild, say aloud the one square you are least sure of. On the result board, compare that square with the squares marked wrong or missed.",
+              description: "Run 3 rounds in a row at 12 pieces and 8 seconds, pressing Try again between rounds. Before you submit each rebuild, say aloud the one square you are least sure of. On the result board, compare that square with the squares marked wrong or missed.",
               duration: "about 5 minutes",
               goal: "In each round, no square is marked wrong or missed except, at most, the one you flagged. An unflagged miss is a piece your picture lost without warning, the same slip that drops a piece in a game.",
               play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },

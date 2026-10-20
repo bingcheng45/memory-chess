@@ -20,6 +20,8 @@ function playerOf(stored: string | null): PlayerRating | null {
   }
 }
 
+export const newReaderRound = (page: GameSettings): GameSettings => (page.pieceCount <= 6 && page.memorizeTime >= 10 ? page : BEGINNER_ROUND);
+
 export function readerRoundOf(stored: string | null, unrated: GameSettings = BEGINNER_ROUND): GameSettings {
   const player = playerOf(stored);
   if (!player) return unrated;

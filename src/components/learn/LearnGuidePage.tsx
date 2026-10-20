@@ -1,6 +1,7 @@
 import { Link } from "@/i18n/navigation";
 import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
+import { newReaderRound } from "@/lib/game/readerRound";
 import { FAQ_ANCHOR, FAQ_LABEL, LEARN_AUTHOR, LEARN_AUTHORSHIP_NOTE, LEARN_LEVELS, type LearnPage } from "@/lib/seo/learn";
 import { LEARN_GUIDE_COPY as COPY } from "@/lib/seo/learn/copy";
 import { groupAnchor, guidePath } from "@/lib/seo/learn/links";
@@ -99,7 +100,7 @@ export default function LearnGuidePage({ page, siblings, titles }: LearnGuidePag
           </nav>
           <h1>{meta.h1}</h1>
           <p className="lg-lede">{meta.description}</p>
-          <LearnQuickPlay unrated={page.primaryCta} />
+          <LearnQuickPlay unrated={newReaderRound(page.primaryCta)} />
           <ul className="lg-meta">
             <li>{LEARN_LEVELS[meta.level]}</li>
             <li>{COPY.minRead(page.readingMinutes)}</li>

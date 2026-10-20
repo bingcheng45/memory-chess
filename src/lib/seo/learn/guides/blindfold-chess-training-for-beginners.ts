@@ -28,7 +28,7 @@ const guide: LearnDocument = {
     },
   },
   intro: {
-    quickAnswer: "Blindfold chess training runs on a five-week schedule, and pass marks decide when you move on. Start with two kings held without a board. Then learn six checks that catch a drifting mental picture, and replay ten moves of your own games from the move list. Play a full game blind only after each stage passes.",
+    quickAnswer: "Blindfold chess training runs on a five-week schedule that starts with two kings held without a board, and pass marks decide when you move on. Then learn six checks that catch a drifting mental picture, and replay ten moves of your own games from the move list. Play a full game blind only after each stage passes.",
     takeaways: [
       "Each stage has a pass mark, so you know when to move on and when to repeat.",
       "Six checks that every Memory Chess position passes also catch the worst errors in a mental board that has drifted.",
@@ -83,7 +83,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Two kings, eyes shut",
-              description: "Play 6 rounds of 2 pieces with 10 seconds to look. Say both squares aloud, shut your eyes, name the colour of each square, then open them and place the kings.",
+              description: "Play 6 rounds of 2 pieces with 10 seconds to look, pressing Try again between rounds. Say both squares aloud, shut your eyes, name the colour of each square, then open them and place the kings.",
               duration: "About 3 minutes",
               goal: "Hold two named squares without the board in front of you.",
               play: { label: "Play 2 pieces, 10 seconds, kings only", pieceCount: 2, memorizeTime: 10 },

@@ -66,7 +66,7 @@ const guide: LearnDocument = {
             {
               label: "Minutes 0 to 3",
               duration: "3 minutes",
-              detail: "Three rounds of 6 pieces, 10 seconds. Name each piece and square while it is on screen, then rebuild it.",
+              detail: "Three rounds of 6 pieces, 10 seconds, pressing Try again between rounds. Name each piece and square while it is on screen, then rebuild it.",
             },
             {
               label: "Minutes 3 to 10",
@@ -104,7 +104,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Three rounds at the medium preset",
-              description: "Play 6 pieces with 10 seconds to look, 3 rounds in a row. Say each piece and its square while the position is up.",
+              description: "Play 6 pieces with 10 seconds to look, 3 rounds in a row, pressing Try again between rounds. Say each piece and its square while the position is up.",
               duration: "about 3 minutes",
               goal: "Three rounds with every piece on the right square.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },
@@ -176,7 +176,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Two rounds of eight, once six is clean",
-              description: "Play 8 pieces with 10 seconds to look, 2 rounds. Name the pieces in groups of two or three rather than one at a time.",
+              description: "Play 8 pieces with 10 seconds to look, 2 rounds, pressing Try again between them. Name the pieces in groups of two or three rather than one at a time.",
               duration: "about 2 minutes",
               goal: "Two rounds with every piece on the right square.",
               play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },

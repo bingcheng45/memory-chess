@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "chess-visualization-exercises",
     title: "Chess Visualization Training: See the Board",
     h1: "Chess visualization exercises that find and fix your weak spot",
-    description: "Chess visualization exercises start with four 6-piece rounds at 10 seconds, a test of how your mental board fails. Then train that 8 to 12 minutes a day.",
+    description: "Test your mental board with four 6-piece rounds at 10 seconds. Then spend 8 to 12 minutes a day on chess visualization exercises that target how it fails.",
     group: "visualization",
     level: "beginner",
     publishedAt: "2026-03-06T00:00:00.000Z",

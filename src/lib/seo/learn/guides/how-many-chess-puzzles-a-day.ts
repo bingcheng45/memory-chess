@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "how-many-chess-puzzles-a-day",
     title: "How Many Chess Puzzles a Day Should Beginners Do?",
     h1: "How many chess puzzles a day should a beginner do?",
-    description: "How many chess puzzles a day? One a minute, so a 10- to 15-minute block is 10 to 15. Stop sooner once you start playing moves just to see if they work.",
+    description: "How many chess puzzles a day? About one a minute, so 10 to 15 in a 10- to 15-minute block. Stop once you play moves just to see if they work.",
     group: "practice",
     level: "beginner",
     publishedAt: "2026-03-24T00:00:00.000Z",
@@ -143,7 +143,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Memory Chess gives you a quick way to see whether the block wore you out. Play three rounds of 6 pieces with 10 seconds to look, before your puzzles and again after.",
+            "Memory Chess gives you a quick way to see whether the block wore you out. Play three rounds of 6 pieces with 10 seconds to look before your puzzles and again after. Press Try again between rounds so the settings stay.",
             "Write down how many pieces you placed correctly. Three rounds give you 18 pieces to place, so each total is a number out of 18.",
             "A single round is too coarse for this. At 6 pieces, one missed piece turns a Perfect Score into Great Job at 83 percent, and a second miss gives Good Effort at 67 percent.",
             "The check does not measure puzzle skill. It shows whether you can still take in a whole board after the block, which the last puzzles needed too.",
@@ -154,7 +154,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Three rounds on each side of the block",
-              description: "Play 6 pieces with 10 seconds to look, 3 rounds before your puzzles and 3 rounds after. Write down correct pieces out of 18 each time.",
+              description: "Play 6 pieces with 10 seconds to look, 3 rounds before your puzzles and 3 rounds after, pressing Try again between rounds. Write down correct pieces out of 18 each time.",
               duration: "about 3 minutes before and 3 after",
               goal: "The total after the block within one piece of the total before it.",
               play: { label: "Play 6 pieces, 10 seconds", pieceCount: 6, memorizeTime: 10 },

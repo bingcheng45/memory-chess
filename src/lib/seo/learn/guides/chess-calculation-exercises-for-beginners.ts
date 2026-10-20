@@ -208,7 +208,7 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Hold it while the board is empty",
-              description: "4 rounds of 8 pieces, 10 seconds, about 5 minutes. Place both kings first, then the pieces you are sure of. Never place a ninth piece. Each piece past the count costs ten accuracy points. A guess inside the eight costs nothing extra.",
+              description: "4 rounds of 8 pieces, 10 seconds, about 5 minutes. Press Try again between rounds. Place both kings first, then the pieces you are sure of. Never place a ninth piece. Each piece past the count costs ten accuracy points. A guess inside the eight costs nothing extra.",
               duration: "About 5 minutes",
               goal: "At least 7 of the 8 correct in three of the four rounds.",
               play: { label: "Play 8 pieces, 10 seconds", pieceCount: 8, memorizeTime: 10 },

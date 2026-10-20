@@ -118,7 +118,7 @@ describe("a guide page", () => {
     expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=12&amp;source=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 12 seconds</a>');
   });
 
-  it("matches every guide's hero round to its closing round", async () => {
+  it("offers a new reader the guide's closing round in the hero only up to 6 pieces with 10 seconds or more, and the beginner round otherwise", async () => {
     const heroes = await Promise.all(
       EN_LEARN_PAGES.map(async ({ meta }) => {
         const markup = await guide(meta.slug);
@@ -126,7 +126,30 @@ describe("a guide page", () => {
       }),
     );
 
-    expect(heroes).toEqual(EN_LEARN_PAGES.map(({ meta, primaryCta }) => [meta.slug, `${primaryCta.pieceCount}/${primaryCta.memorizeTime}`]));
+    expect(Object.fromEntries(heroes)).toEqual({
+      "how-to-get-better-at-chess-for-beginners": "4/10",
+      "how-to-stop-blundering-in-chess": "6/10",
+      "why-puzzle-rating-doesnt-transfer-to-games": "4/10",
+      "chess-coordinates-practice": "4/12",
+      "chess-visualization-exercises": "6/10",
+      "how-to-see-the-whole-board-in-chess": "4/10",
+      "chess-calculation-exercises-for-beginners": "4/10",
+      "blindfold-chess-training-for-beginners": "2/10",
+      "chess-memory-training": "6/10",
+      "chess-pattern-recognition-drills": "4/10",
+      "how-to-think-in-chess-for-beginners": "6/20",
+      "20-minute-daily-chess-study-plan": "6/10",
+      "how-many-chess-puzzles-a-day": "6/10",
+      "how-to-analyze-chess-games-for-beginners": "4/10",
+    });
+  });
+
+  it("keeps a hard guide's own round in its closing call to action while the hero offers the beginner round", async () => {
+    const markup = await guide("how-to-see-the-whole-board-in-chess");
+    const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
+
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;source=guide_cta" class="lab-btn lab-btn-primary">');
+    expect(markup).toContain("/game?pieceCount=12&amp;memorizeTime=8&amp;source=guide_cta");
   });
 
   it("links today's daily board under a drill box that plays a round, not under one done at a board", async () => {

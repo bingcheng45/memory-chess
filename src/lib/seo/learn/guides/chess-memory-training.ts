@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "chess-memory-training",
     title: "Chess Memory Training: A 6-to-12 Piece Ladder",
     h1: "Chess memory training with a score that tells you when to move up",
-    description: "Chess memory training starts with 6 pieces and a 10-second look. Add two after three perfect rounds in a row, and climb to 12 pieces at 8 seconds.",
+    description: "Begin chess memory training at 6 pieces with a 10-second look. Add two pieces after three perfect rounds in a row, and climb to 12 pieces at 8 seconds.",
     group: "memory",
     level: "beginner",
     publishedAt: "2026-03-06T00:00:00.000Z",

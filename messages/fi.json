@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Harjoita shakkimuistiasi ja hahmotustasi",
-      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>."
+      "freeToPlay": "Ilmainen pelata, tiliä ei tarvita. Voit myös verrata tulostasi <link>tulostaulukossa</link>.",
+      "boardGame": "Etsitkö puista Memory Chess -lautapeliä? <link>Lue säännöt</link>."
     },
     "cta": {
       "leaderboard": "Katso tulostaulukko",
@@ -107,8 +108,7 @@
           "question": "Kuinka usein kannattaa harjoitella?",
           "answer": "Muutama keskittynyt kierros säännöllisesti on hyvä alku. Pidä harjoitukset niin lyhyinä, että jaksat yhä tutkia jokaisen aseman huolellisesti."
         }
-      ],
-      "boardGame": "Etsitkö puista Memory Chess -lautapeliä? <link>Lue säännöt</link>."
+      ]
     },
     "lab": {
       "index": {

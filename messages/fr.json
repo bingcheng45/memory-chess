@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Entraînez votre mémoire et votre visualisation aux échecs",
-      "freeToPlay": "Gratuit, sans création de compte. Vous pouvez aussi comparer votre score dans le <link>classement</link>."
+      "freeToPlay": "Gratuit, sans création de compte. Vous pouvez aussi comparer votre score dans le <link>classement</link>.",
+      "boardGame": "Vous cherchez le jeu de société en bois Memory Chess ? <link>Lisez ses règles</link>."
     },
     "cta": {
       "leaderboard": "Voir le classement",
@@ -107,8 +108,7 @@
           "question": "À quelle fréquence s’entraîner ?",
           "answer": "Quelques manches bien concentrées, à un rythme régulier, constituent un bon point de départ. Gardez des sessions assez courtes pour continuer à étudier chaque position avec attention."
         }
-      ],
-      "boardGame": "Vous cherchez le jeu de société en bois Memory Chess ? <link>Lisez ses règles</link>."
+      ]
     },
     "lab": {
       "index": {

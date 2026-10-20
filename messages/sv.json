@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Träna ditt schackminne och din visualisering",
-      "freeToPlay": "Gratis att spela, inget konto behövs. Du kan också jämföra din poäng på <link>topplistan</link>."
+      "freeToPlay": "Gratis att spela, inget konto behövs. Du kan också jämföra din poäng på <link>topplistan</link>.",
+      "boardGame": "Letar du efter brädspelet Memory Chess i trä? <link>Läs reglerna</link>."
     },
     "cta": {
       "leaderboard": "Visa topplistan",
@@ -107,8 +108,7 @@
           "question": "Hur ofta bör jag öva?",
           "answer": "Några fokuserade omgångar med jämna mellanrum är en bra början. Håll passen så korta att du fortfarande orkar studera varje ställning noggrant."
         }
-      ],
-      "boardGame": "Letar du efter brädspelet Memory Chess i trä? <link>Läs reglerna</link>."
+      ]
     },
     "lab": {
       "index": {

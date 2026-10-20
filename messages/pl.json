@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Trenuj szachową pamięć i wyobraźnię",
-      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>."
+      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>.",
+      "boardGame": "Szukasz drewnianej gry planszowej Memory Chess? <link>Przeczytaj zasady</link>."
     },
     "cta": {
       "leaderboard": "Zobacz ranking",
@@ -107,8 +108,7 @@
           "question": "Jak często ćwiczyć?",
           "answer": "Kilka skupionych rund w regularnym rytmie to dobry początek. Sesje powinny być na tyle krótkie, żebyś wciąż uważnie analizował każdą pozycję."
         }
-      ],
-      "boardGame": "Szukasz drewnianej gry planszowej Memory Chess? <link>Przeczytaj zasady</link>."
+      ]
     },
     "lab": {
       "index": {

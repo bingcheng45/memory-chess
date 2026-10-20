@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: 체스 기억력과 시각화 능력을 훈련하세요",
-      "freeToPlay": "계정 없이 무료로 즐길 수 있습니다. <link>리더보드</link>에서 점수를 비교할 수도 있습니다."
+      "freeToPlay": "계정 없이 무료로 즐길 수 있습니다. <link>리더보드</link>에서 점수를 비교할 수도 있습니다.",
+      "boardGame": "나무로 된 보드게임 Memory Chess를 찾으시나요? <link>규칙 보기</link>."
     },
     "cta": {
       "leaderboard": "리더보드 보기",
@@ -107,8 +108,7 @@
           "question": "얼마나 자주 연습해야 하나요?",
           "answer": "집중해서 몇 판씩 꾸준히 하는 것이 좋은 시작입니다. 매 국면을 차분히 살펴볼 수 있을 만큼 짧게 유지하세요."
         }
-      ],
-      "boardGame": "나무로 된 보드게임 Memory Chess를 찾으시나요? <link>규칙 보기</link>."
+      ]
     },
     "lab": {
       "index": {

@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Satranç hafızanı ve görselleştirmeni geliştir",
-      "freeToPlay": "Ücretsiz, hesap açmaya gerek yok. Puanını <link>sıralama tablosunda</link> da karşılaştırabilirsin."
+      "freeToPlay": "Ücretsiz, hesap açmaya gerek yok. Puanını <link>sıralama tablosunda</link> da karşılaştırabilirsin.",
+      "boardGame": "Ahşap kutu oyunu Memory Chess'i mi arıyorsun? <link>Kurallarını oku</link>."
     },
     "cta": {
       "leaderboard": "Sıralamayı gör",
@@ -107,8 +108,7 @@
           "question": "Ne sıklıkla çalışmalıyım?",
           "answer": "Düzenli aralıklarla birkaç odaklı tur iyi bir başlangıçtır. Her konumu dikkatle inceleyebilecek kadar kısa seanslar tut."
         }
-      ],
-      "boardGame": "Ahşap kutu oyunu Memory Chess'i mi arıyorsun? <link>Kurallarını oku</link>."
+      ]
     },
     "lab": {
       "index": {

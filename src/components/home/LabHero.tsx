@@ -2,6 +2,7 @@
 
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import { LOCALES } from "@/i18n/routing";
 import { MEMORIZE_SECONDS_RANGE, PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import { LAB_SECTIONS } from "./SectionHeading";
@@ -13,6 +14,7 @@ import type { TotalPlays } from "./useLabEffects";
 const PLAYS_PENDING = "–";
 // Any count that takes the general plural in every catalogue, so the label reads naturally with no number known.
 const GENERAL_COUNT = 100;
+const BOARD_GAME_GUIDE = "/learn/how-to-play-memory-chess-board-game";
 
 function range(min: number, max: number, unit = ""): string {
   return `${min}–${max}${unit}`;
@@ -66,6 +68,20 @@ export function LabHero({ totalPlays }: { totalPlays: TotalPlays }) {
             <span>
               {lab.rich("hero.dailyLink", {
                 link: (chunks) => <Link href="/daily">{chunks}</Link>,
+              })}
+            </span>{" "}
+            <span>
+              {t.rich("hero.boardGame", {
+                link: (chunks) => (
+                  <EnglishOnlyLink href={BOARD_GAME_GUIDE}>
+                    {(suffix) => (
+                      <>
+                        {chunks}
+                        {suffix}
+                      </>
+                    )}
+                  </EnglishOnlyLink>
+                ),
               })}
             </span>
           </p>

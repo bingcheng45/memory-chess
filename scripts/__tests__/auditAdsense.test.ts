@@ -166,4 +166,18 @@ describe("audit-adsense boilerplate prose", () => {
     expect(prose).not.toContain("Bing Cheng");
     expect(prose).not.toContain("cited paper");
   });
+
+  it("drops a translated guide's translation note and its block labels, and keeps the sentences they label", () => {
+    const html = [
+      "<main>",
+      '<p data-translation-note="true" data-authorship-note="true">Traduit de l’anglais avec l’aide de l’IA. <a href="/learn/x">Lire en anglais</a></p>',
+      '<p data-interface-label="true" class="lg-answer-label">À qui s’adresse ce guide</p>',
+      "<ul><li>Les joueurs qui débutent aux échecs à l’aveugle.</li></ul>",
+      "</main>",
+    ].join("");
+
+    const prose = runAudit(`audit.parsePage("http://127.0.0.1/fr/learn/x", 200, ${JSON.stringify(html)}).proseText`);
+
+    expect(prose).toBe("Les joueurs qui débutent aux échecs à l’aveugle. ¶");
+  });
 });

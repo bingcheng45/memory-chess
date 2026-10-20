@@ -59,14 +59,14 @@ function EndPart({ block, titles, context }: PartProps & { block: EndBlock }) {
     case "furtherReading":
       return (
         <div className="lg-after">
-          <p className="lg-after-label">{context.copy.readNext}</p>
+          <p data-interface-label className="lg-after-label">{context.copy.readNext}</p>
           {view}
         </div>
       );
     case "sources":
       return (
         <div className="lg-after">
-          <p className="lg-after-label">{context.copy.sources}</p>
+          <p data-interface-label className="lg-after-label">{context.copy.sources}</p>
           {view}
         </div>
       );
@@ -133,7 +133,7 @@ export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGui
             {COPY.authorshipNote}
           </p>
           {locale === DEFAULT_LOCALE ? null : (
-            <p data-translation-note className="lg-note">
+            <p data-translation-note data-authorship-note className="lg-note">
               {COPY.translationNote}{" "}
               <NextLink href={guidePath(meta.slug)} hrefLang={DEFAULT_LOCALE} className="lg-link">
                 {COPY.readInEnglish}
@@ -170,13 +170,13 @@ export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGui
 
           <div className="lg-main">
             <section className="lg-answer" aria-labelledby="lg-answer-label">
-              <p id="lg-answer-label" className="lg-answer-label">
+              <p id="lg-answer-label" data-interface-label className="lg-answer-label">
                 {COPY.quickAnswer}
               </p>
               <p className="lg-answer-text">{intro.quickAnswer}</p>
               {intro.takeaways.length > 0 ? (
                 <>
-                  <p className="lg-answer-label">{COPY.takeaways}</p>
+                  <p data-interface-label className="lg-answer-label">{COPY.takeaways}</p>
                   <ul>
                     {intro.takeaways.map((takeaway) => (
                       <li key={takeaway}>{takeaway}</li>
@@ -186,7 +186,7 @@ export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGui
               ) : null}
               {intro.audience.length > 0 ? (
                 <>
-                  <p className="lg-answer-label">{COPY.audience}</p>
+                  <p data-interface-label className="lg-answer-label">{COPY.audience}</p>
                   <ul>
                     {intro.audience.map((reader) => (
                       <li key={reader}>{reader}</li>
@@ -209,7 +209,7 @@ export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGui
                 <EndPart key={block.kind} block={block} titles={titles} context={context} />
               ))}
               <div className="lg-after">
-                <p className="lg-after-label">{group.label}</p>
+                <p data-interface-label className="lg-after-label">{group.label}</p>
                 {siblingSlugs.length > 0 ? (
                   <ul className="lg-siblings">
                     {siblingSlugs.map((slug) => (

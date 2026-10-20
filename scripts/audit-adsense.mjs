@@ -61,6 +61,12 @@ function stripBlocks(html, tags) {
 
 const markedElement = (attribute, flags) => new RegExp(`<([a-zA-Z][\\w-]*)\\b[^>]*\\s${attribute}(?:="[^"]*")?[^>]*>([\\s\\S]*?)<\\/\\1>`, flags);
 
+/**
+ * What the boilerplate rule does not read as content: the note saying how a page was written or translated, and an
+ * interface label such as "Who this is for", which names a block the same way on every page, as navigation does.
+ */
+const PROSE_EXEMPT_MARKS = ["data-authorship-note", "data-interface-label"];
+
 /** Drops every element carrying `attribute`, such as the guides' AI-assistance note. */
 function stripMarked(html, attribute) {
   return html.replace(markedElement(attribute, "gi"), " ");
@@ -187,7 +193,7 @@ export function parsePage(url, status, html, linkHeader = "") {
     h1Count: (body.match(/<h1\b/gi) ?? []).length,
     headings: [...main.matchAll(/<h2\b[^>]*>([\s\S]*?)<\/h2>/gi)].map((m) => toText(m[1]).replace(/¶/g, "").trim()),
     mainText,
-    proseText: toText(stripBlocks(stripMarked(main, "data-authorship-note"), ["cite", "a"])),
+    proseText: toText(stripBlocks(PROSE_EXEMPT_MARKS.reduce((html, mark) => stripMarked(html, mark), main), ["cite", "a"])),
     mainWords: countUnits(mainText),
     hiddenWords: countUnits(hiddenText(main)),
     adUnits: (html.match(/<ins\b[^>]*class="[^"]*adsbygoogle/gi) ?? []).length,
@@ -357,7 +363,7 @@ export const RULES = [
   },
   {
     id: "boilerplate",
-    guideline: "G6 no content sentence stamped onto many pages of a language (citations, authorship notes and link text excepted)",
+    guideline: "G6 no content sentence stamped onto many pages of a language (citations, authorship notes, interface labels and link text excepted)",
     site: (pages) => {
       const problems = new Map();
       const pagesBySentence = new Map();

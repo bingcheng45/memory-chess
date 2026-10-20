@@ -1812,5 +1812,48 @@
       "secondsRange": "{min} ila {max} sn",
       "secondsExact": "{count} sn"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Satranç konumları ne kadar iyi hatırlanıyor?",
+      "description": "Taş sayısına ve inceleme süresine göre satranç konumlarının ortalama hatırlanma oranı, Memory Chess'te bitirilen {rounds, number} turdan. CC BY 4.0 açık veri.",
+      "socialTitle": "İnsanlar satranç konumlarını ne kadar iyi hatırlıyor?",
+      "socialDescription": "Taş sayısına ve inceleme süresine göre hatırlama oranı, Memory Chess'te bitirilen {rounds, number} turdan. CC BY 4.0 lisanslı açık veri."
+    },
+    "kicker": "Açık veri",
+    "title": "İnsanlar satranç konumlarını ne kadar iyi hatırlıyor?",
+    "answer": "{start} ile {end} arasında Memory Chess'te bitirilen {rounds, number} turda, inceleme süresi 10 saniyeye ayarlanan turların isabeti 2 taşta ortalama {two} ({twoRounds, number} tur), varsayılan ayar olan 6 taşta {six} oldu ({sixRounds, number} tur). Bu 6 taşlı turlarda kusursuz olanların oranı {sixPerfect} idi. Daha az oyuncunun seçtiği 12 taş ve 8 saniye ayarında ortalama {twelve}, kusursuz turların oranı {twelvePerfect} oldu ({twelveRounds, number} tur).",
+    "englishNote": "Aşağıdaki yöntem, sınırlar ve kaynak gösterme notları İngilizcedir.",
+    "chart": {
+      "byPieces": "İnceleme süresi {seconds} saniyeye ayarlanmış turlarda ortalama hatırlama",
+      "byPiecesNote": "Her taş sayısını farklı oyuncular seçti ve bazı satırlar yalnızca birkaç oyuncudan geliyor, bu yüzden çubukları karşılaştırmadan önce tablodaki Oyuncular sütununa bak.",
+      "bySeconds": "{pieces} taşın ortalama hatırlanma oranı, inceleme süresine göre",
+      "bySecondsNote": "Her inceleme süresini farklı oyuncular seçti, bu yüzden bu çubuklar ek sürenin ne kadar yardımcı olduğunu göstermez.",
+      "pieces": "{count, plural, one {# taş} other {# taş}}",
+      "seconds": "{count} sn",
+      "rounds": "{count, plural, one {# tur} other {# tur}}",
+      "scale": "Her çubuk %0 ile %100 isabet aralığında ölçeğe uygun çizilmiştir."
+    },
+    "table": {
+      "title": "Yayımlanan tüm ayarlar",
+      "caption": "Taş sayısına ve inceleme süresine göre isabet. {minRounds, number} turdan veya {minPlayers, number} oyuncudan az olan ayarlar dışarıda bırakılmıştır.",
+      "pieces": "Taş",
+      "seconds": "İnceleme süresi",
+      "rounds": "Tur",
+      "players": "Oyuncu",
+      "mean": "Ortalama",
+      "median": "Medyan",
+      "middle": "Ortadaki yarı",
+      "middleValue": "{low} ile {high} arası",
+      "perfect": "Kusursuz",
+      "zero": "0 puan"
+    },
+    "links": {
+      "csv": "CSV'yi indir",
+      "notes": "GitHub'daki saha notları",
+      "play": "Bir tur oyna"
+    },
+    "aboutLine": "Google Analytics'te kaydedilen turlardan elde edilen toplu hatırlama istatistikleri, yeterli tur ve oyuncu sayısına sahip ayarlar için yayımlanır.",
+    "aboutLink": "Hatırlama verilerini gör"
   }
 }

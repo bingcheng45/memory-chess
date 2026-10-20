@@ -4,6 +4,8 @@ const ARTICLES_NAMESPACE = "articles";
 const HOME_NAMESPACE = "home";
 const DASHBOARD_NAMESPACE = "dashboard";
 const DAILY_NAMESPACE = "daily";
+/** The /data page and its line on /about, which only server components print. */
+const DATA_NAMESPACE = "data";
 /** The daily page's metadata and explainer, which only server components print. */
 const DAILY_SERVER_GROUPS: ReadonlySet<string> = new Set(["meta", "reference"]);
 const LAB_GROUP = "lab";
@@ -48,7 +50,7 @@ export function splitClientMessages(messages: AbstractIntlMessages): ScopedMessa
   const figures = typeof dashboard === "object" ? Object.fromEntries(RESULT_FIGURE_GROUPS.flatMap((group) => (group in dashboard ? [[group, dashboard[group]]] : []))) : {};
 
   return {
-    shared: { ...rest, [HOME_NAMESPACE]: homeShared },
+    shared: { ...Object.fromEntries(Object.entries(rest).filter(([name]) => name !== DATA_NAMESPACE)), [HOME_NAMESPACE]: homeShared },
     articles,
     lab: lab === undefined ? {} : underLab(homeLab),
     game: {

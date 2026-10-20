@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "59225ca832b918d02df4372ae127d4853f9eb3ed16df32c9b67fd550c179f9d4",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "ec09d8262b926b203a7d5d5ea57c0845d2fd860d1bf9f32fd2cf294b5d96c6ca",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Wanneer je een artikel opent of leuk vindt, slaat Supabase per artikel alleen een totaal aantal weergaven en een totaal aantal likes op, met het tijdstip van de laatste wijziging en zonder identificatie van de bezoeker."
+          },
+          {
+            "p": "Op de <data>pagina met geheugendata</data> publiceren we aantallen voltooide rondes per aantal stukken, studietijd en nauwkeurigheid, afkomstig uit Google Analytics. Het zijn alleen geaggregeerde aantallen, zonder namen, speler-ID’s of stellingen, en een groep van minder dan 30 rondes of 5 spelers wordt weggelaten."
           }
         ]
       },

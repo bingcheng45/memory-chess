@@ -1812,5 +1812,48 @@
       "secondsRange": "{min} bis {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Wie gut merkt man sich Schachstellungen?",
+      "description": "Wie gut man sich Schachstellungen merkt, nach Figurenzahl und Einprägezeit, aus {rounds, number} beendeten Runden Memory Chess. Offene Daten unter CC BY 4.0.",
+      "socialTitle": "Wie gut merken sich Menschen Schachstellungen?",
+      "socialDescription": "Erinnerung nach Figurenzahl und Einprägezeit, aus {rounds, number} beendeten Runden Memory Chess. Offene Daten unter CC BY 4.0."
+    },
+    "kicker": "Offene Daten",
+    "title": "Wie gut merken sich Menschen Schachstellungen?",
+    "answer": "In {rounds, number} beendeten Runden Memory Chess vom {start} bis zum {end} erreichten Runden mit einer eingestellten Einprägezeit von 10 Sekunden im Schnitt eine Genauigkeit von {two} mit 2 Figuren ({twoRounds, number} Runden) und {six} mit 6 Figuren, der Standardeinstellung ({sixRounds, number} Runden). {sixPerfect} dieser Runden mit 6 Figuren waren perfekt. Mit 12 Figuren und 8 Sekunden, einer Einstellung, die weniger Spielende wählten, lag der Schnitt bei {twelve}, mit {twelvePerfect} perfekten Runden ({twelveRounds, number} Runden).",
+    "englishNote": "Die Hinweise zu Methode, Grenzen und Zitierweise unten sind auf Englisch.",
+    "chart": {
+      "byPieces": "Durchschnittliche Erinnerung in Runden mit eingestellter Einprägezeit von {seconds} Sekunden",
+      "byPiecesNote": "Jede Figurenzahl wurde von anderen Spielenden gewählt, und manche Zeilen stammen von nur wenigen Spielenden. Prüfe daher die Spalte Spielende in der Tabelle, bevor du Balken vergleichst.",
+      "bySeconds": "Durchschnittliche Erinnerung an {pieces} Figuren, nach Einprägezeit",
+      "bySecondsNote": "Jede Einprägezeit wurde von anderen Spielenden gewählt, daher zeigen diese Balken nicht, wie viel zusätzliche Zeit hilft.",
+      "pieces": "{count, plural, one {# Figur} other {# Figuren}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# Runde} other {# Runden}}",
+      "scale": "Jeder Balken ist maßstabsgetreu von 0 bis 100 % Genauigkeit gezeichnet."
+    },
+    "table": {
+      "title": "Alle veröffentlichten Einstellungen",
+      "caption": "Genauigkeit nach Figurenzahl und Einprägezeit. Einstellungen mit weniger als {minRounds, number} Runden oder {minPlayers, number} Spielenden sind nicht enthalten.",
+      "pieces": "Figuren",
+      "seconds": "Einprägezeit",
+      "rounds": "Runden",
+      "players": "Spielende",
+      "mean": "Mittelwert",
+      "median": "Median",
+      "middle": "Mittlere Hälfte",
+      "middleValue": "{low} bis {high}",
+      "perfect": "Perfekt",
+      "zero": "Ergebnis 0"
+    },
+    "links": {
+      "csv": "CSV herunterladen",
+      "notes": "Feldnotizen auf GitHub",
+      "play": "Eine Runde spielen"
+    },
+    "aboutLine": "Aggregierte Statistiken zum Merken aus den in Google Analytics erfassten Runden werden veröffentlicht, für Einstellungen mit genügend Runden und Spielenden.",
+    "aboutLink": "Zu den Gedächtnisdaten"
   }
 }

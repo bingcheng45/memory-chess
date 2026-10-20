@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "bd6130e05a7700ed0486cb43662ec476080f8794ec7ab6fd3f14eb74985c8b3f",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "9a25418e1c54e2884381dc0c57148e34c2046c5638258445ae0d282488bc9168",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Khi bạn mở hoặc thích một bài viết, Supabase chỉ lưu tổng số lượt xem và tổng số lượt thích cho mỗi bài viết, cùng thời điểm thay đổi gần nhất và không có mã nhận dạng khách truy cập nào."
+          },
+          {
+            "p": "Trên <data>trang dữ liệu ghi nhớ</data>, chúng tôi công bố số ván đã chơi xong theo số quân, thời gian ghi nhớ và độ chính xác, lấy từ Google Analytics. Đây chỉ là số liệu tổng hợp, không có tên, mã người chơi hay thế cờ, và nhóm nào có ít hơn 30 ván hoặc 5 người chơi sẽ bị loại ra."
           }
         ]
       },

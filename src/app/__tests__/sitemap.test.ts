@@ -99,6 +99,15 @@ describe("sitemap", () => {
     }
   });
 
+  it("lists the recall data page once, in English, dated by the last day its data covers, and keeps translations out of search", async () => {
+    const data = (await sitemap()).filter((entry) => /\/data$/.test(entry.url));
+
+    expect(data.map((entry) => [entry.url, entry.alternates])).toEqual([["https://thememorychess.com/data", undefined]]);
+    expect(data[0].lastModified).toEqual(new Date("2026-10-19T00:00:00.000Z"));
+    expect(robotsFor("/data", "de")).toMatchObject({ index: false, follow: true });
+    expect(robotsFor("/data", "en")).toBeUndefined();
+  });
+
   it("lists the contact page once, in English, while its translations stay indexable", async () => {
     const contact = (await sitemap()).filter((entry) => /\/contact-us$/.test(entry.url));
 

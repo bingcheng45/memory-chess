@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "f18b5a5a473f1c395adb795b8bf1d08a74f3d1a92cc1edd6eb8f9182dd243d47",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "1e3f8074e18421f2b48034e042f8c62d462eae7b3f3f1e6e34b24e299597df5d",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Când deschizi sau apreciezi un articol, Supabase stochează doar un total al vizualizărilor și un total al aprecierilor pentru fiecare articol, cu momentul ultimei modificări și fără niciun identificator al vizitatorului."
+          },
+          {
+            "p": "Pe <data>pagina cu datele despre memorare</data> publicăm numărul de runde terminate în funcție de numărul de piese, timpul de studiu și precizie, preluat din Google Analytics. Sunt doar totaluri agregate, fără nume, identificatori de jucător sau poziții, iar un grup cu mai puțin de 30 de runde sau 5 jucători este omis."
           }
         ]
       },

@@ -1812,5 +1812,48 @@
       "secondsRange": "{min} to {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "How well do people remember chess positions?",
+      "description": "Average chess position recall by piece count and study time, from {rounds, number} finished rounds of Memory Chess. Open CC BY 4.0 data with its method and limits.",
+      "socialTitle": "How well do people remember chess positions?",
+      "socialDescription": "Recall by number of pieces and study time, from {rounds, number} finished rounds of Memory Chess. Open data under CC BY 4.0."
+    },
+    "kicker": "Open data",
+    "title": "How well do people remember chess positions?",
+    "answer": "In {rounds, number} finished rounds of Memory Chess from {start} to {end}, rounds set to 10 seconds of study scored {two} accuracy on average with 2 pieces ({twoRounds, number} rounds) and {six} with 6 pieces, the default setting ({sixRounds, number} rounds). {sixPerfect} of those 6-piece rounds were perfect. With 12 pieces and 8 seconds, a setting fewer players chose, the average was {twelve}, with {twelvePerfect} perfect ({twelveRounds, number} rounds).",
+    "englishNote": "The notes on method, limits and citation below are in English.",
+    "chart": {
+      "byPieces": "Average recall in rounds set to {seconds} seconds of study",
+      "byPiecesNote": "Different players chose each number of pieces, and some rows come from only a few players, so check the Players column in the table before comparing bars.",
+      "bySeconds": "Average recall of {pieces} pieces, by study time",
+      "bySecondsNote": "Different players chose each study time, so these bars do not show how much extra time helps.",
+      "pieces": "{count, plural, one {# piece} other {# pieces}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# round} other {# rounds}}",
+      "scale": "Each bar is drawn to scale from 0 to 100% accuracy."
+    },
+    "table": {
+      "title": "Every published setting",
+      "caption": "Accuracy by number of pieces and study time. Settings with fewer than {minRounds, number} rounds or {minPlayers, number} players are left out.",
+      "pieces": "Pieces",
+      "seconds": "Study time",
+      "rounds": "Rounds",
+      "players": "Players",
+      "mean": "Mean",
+      "median": "Median",
+      "middle": "Middle half",
+      "middleValue": "{low} to {high}",
+      "perfect": "Perfect",
+      "zero": "Scored 0"
+    },
+    "links": {
+      "csv": "Download the CSV",
+      "notes": "Field notes on GitHub",
+      "play": "Play a round"
+    },
+    "aboutLine": "Aggregate recall statistics from rounds recorded in Google Analytics are published, for settings with enough rounds and players.",
+    "aboutLink": "See the recall data"
   }
 }

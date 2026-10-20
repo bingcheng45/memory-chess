@@ -54,6 +54,7 @@ export const LEARN_HUB_COPY = {
     play: "Play a 6-piece round",
     articles: "Read the articles",
     stat: "Count your days played on the dashboard",
+    data: "See how well other players recall positions, by piece count and study time",
   },
 };
 

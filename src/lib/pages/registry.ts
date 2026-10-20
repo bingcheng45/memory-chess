@@ -49,6 +49,7 @@ export const PAGES: Readonly<Record<PageName, PageSpec>> = {
       partnerSites: "https://policies.google.com/technologies/partner-sites",
       adCenter: "https://myadcenter.google.com/",
       adChoices: "https://optout.aboutads.info/",
+      data: "/data",
       contact: "/contact-us",
       mail: MAILTO,
     },

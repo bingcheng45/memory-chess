@@ -57,7 +57,7 @@ describe("a trust page served in German", () => {
     expect(note).toHaveAttribute("data-english-governs");
     expect(screen.getByRole("link", { name: "Auf Englisch lesen" })).toHaveAttribute("href", "/privacy");
     expect(screen.getByRole("link", { name: "Auf Englisch lesen" })).toHaveAttribute("hrefLang", "en");
-    expect(screen.getByText("14. Oktober 2026").tagName).toBe("TIME");
+    expect(screen.getByText("20. Oktober 2026").tagName).toBe("TIME");
     expect(screen.getByRole("navigation", { name: "Auf dieser Seite" })).toBeInTheDocument();
   });
 

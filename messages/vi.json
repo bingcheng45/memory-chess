@@ -1812,5 +1812,48 @@
       "secondsRange": "{min} đến {max} giây",
       "secondsExact": "{count} giây"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "Mọi người nhớ thế cờ vua tốt đến mức nào?",
+      "description": "Mức ghi nhớ trung bình các thế cờ vua theo số quân và thời gian ghi nhớ, từ {rounds, number} ván Memory Chess đã chơi xong. Dữ liệu mở theo giấy phép CC BY 4.0.",
+      "socialTitle": "Mọi người nhớ thế cờ vua tốt đến mức nào?",
+      "socialDescription": "Mức ghi nhớ theo số quân và thời gian ghi nhớ, từ {rounds, number} ván Memory Chess đã chơi xong. Dữ liệu mở theo giấy phép CC BY 4.0."
+    },
+    "kicker": "Dữ liệu mở",
+    "title": "Mọi người nhớ thế cờ vua tốt đến mức nào?",
+    "answer": "Trong {rounds, number} ván Memory Chess đã chơi xong từ {start} đến {end}, các ván được đặt thời gian ghi nhớ 10 giây đạt độ chính xác trung bình {two} với 2 quân ({twoRounds, number} ván) và {six} với 6 quân, mức cài đặt mặc định ({sixRounds, number} ván). Có {sixPerfect} số ván 6 quân đó đạt điểm tuyệt đối. Với 12 quân và 8 giây, một mức cài đặt ít người chơi chọn hơn, mức trung bình là {twelve}, với {twelvePerfect} đạt điểm tuyệt đối ({twelveRounds, number} ván).",
+    "englishNote": "Các ghi chú về phương pháp, giới hạn và cách trích dẫn bên dưới được viết bằng tiếng Anh.",
+    "chart": {
+      "byPieces": "Mức ghi nhớ trung bình ở các ván đặt thời gian ghi nhớ {seconds} giây",
+      "byPiecesNote": "Mỗi số quân do những người chơi khác nhau chọn, và một số hàng chỉ đến từ vài người chơi, nên hãy xem cột Người chơi trong bảng trước khi so sánh các thanh.",
+      "bySeconds": "Mức ghi nhớ trung bình với {pieces} quân, theo thời gian ghi nhớ",
+      "bySecondsNote": "Mỗi mức thời gian ghi nhớ do những người chơi khác nhau chọn, nên các cột này không cho thấy thêm thời gian giúp ích bao nhiêu.",
+      "pieces": "{count, plural, other {# quân}}",
+      "seconds": "{count} giây",
+      "rounds": "{count, plural, other {# ván}}",
+      "scale": "Mỗi thanh được vẽ theo đúng tỉ lệ từ 0 đến 100% độ chính xác."
+    },
+    "table": {
+      "title": "Mọi thiết lập được công bố",
+      "caption": "Độ chính xác theo số quân và thời gian ghi nhớ. Các thiết lập có ít hơn {minRounds, number} ván hoặc {minPlayers, number} người chơi không được đưa vào.",
+      "pieces": "Số quân",
+      "seconds": "Thời gian ghi nhớ",
+      "rounds": "Số ván",
+      "players": "Người chơi",
+      "mean": "Trung bình",
+      "median": "Trung vị",
+      "middle": "Nửa giữa",
+      "middleValue": "{low} đến {high}",
+      "perfect": "Điểm tuyệt đối",
+      "zero": "0 điểm"
+    },
+    "links": {
+      "csv": "Tải xuống tệp CSV",
+      "notes": "Ghi chép thực địa trên GitHub",
+      "play": "Chơi một ván"
+    },
+    "aboutLine": "Thống kê tổng hợp về khả năng ghi nhớ từ các ván được Google Analytics ghi lại được công bố cho những mức cài đặt có đủ số ván và người chơi.",
+    "aboutLink": "Xem dữ liệu ghi nhớ"
   }
 }

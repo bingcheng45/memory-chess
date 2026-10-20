@@ -1,6 +1,6 @@
 {
-  "sourceHash": "979992c4a996146dde02317a163fbfafff7f6667b83e461f7406a9a08e76d72d",
-  "approvedHash": "c0207fe294df19d2c45f16276a9135f3af51fed749b006516df6c8c0bba0e50b",
+  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
+  "approvedHash": "957bcceaf115584a4e3556793935b40c7e81c4f7f44a1f807f19c582a66e8e0a",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -126,6 +126,9 @@
           },
           {
             "p": "Amikor megnyitsz vagy kedvelsz egy cikket, a Supabase cikkenként csak a megtekintések és a kedvelések összesített számát tárolja, az utolsó változás időpontjával, látogatóazonosító nélkül."
+          },
+          {
+            "p": "A <data>felidézési adatok oldalán</data> a befejezett körök számát tesszük közzé a bábuk száma, a megfigyelési idő és a pontosság szerint, a Google Analytics adatai alapján. Ezek kizárólag összesített számok, nevek, játékosazonosítók és állások nélkül, és a 30-nál kevesebb kört vagy 5-nél kevesebb játékost tartalmazó csoportokat kihagyjuk."
           }
         ]
       },

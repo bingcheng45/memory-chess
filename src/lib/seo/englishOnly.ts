@@ -49,7 +49,7 @@ export const UNLISTED_ROUTES = ["/share"] as const;
  * `TRANSLATED_ARTICLE_LOCALES` says which locales have translated articles,
  * and `TRANSLATED_PAGE_LOCALES` which have the trust pages.
  */
-export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", ARTICLES_PATH, ...PAGE_ROUTES] as const;
+export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", "/data", ARTICLES_PATH, ...PAGE_ROUTES] as const;
 
 /** Whether an unprefixed path is served in translation but indexed only in English. */
 export function isIndexedInDefaultLocaleOnly(path: string): boolean {

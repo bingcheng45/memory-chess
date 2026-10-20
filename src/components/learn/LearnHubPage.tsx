@@ -2,6 +2,7 @@ import { Link } from "@/i18n/navigation";
 import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { ARTICLES_PATH } from "@/lib/articles/paths";
+import { RECALL_PATH } from "@/lib/data/recall";
 import { LEARN_GUIDE_COPY, LEARN_HUB_COPY as COPY, LEARN_SEARCH_COPY } from "@/lib/seo/learn/copy";
 import { dashboardTileHref, guidePath, guideRoundHref, learnSearchHref } from "@/lib/seo/learn/links";
 import { stageGuideNumber, type LearnShelves, type LearnStage } from "@/lib/seo/learn/path";
@@ -137,6 +138,9 @@ export default function LearnHubPage({ stages, offPath }: LearnShelves) {
               <Link href={dashboardTileHref("days")} className="lh-closing-stat">
                 {COPY.closing.stat}
               </Link>
+            </p>
+            <p className="lh-stage-cta">
+              <Link href={RECALL_PATH}>{COPY.closing.data}</Link>
             </p>
           </section>
         </div>

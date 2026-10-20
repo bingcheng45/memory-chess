@@ -79,6 +79,18 @@ describe("WoodenGameDemo", () => {
     expect(caption()).toContain(FRAMES[5].caption);
   });
 
+  it("keeps playing when the disabled Previous is pressed on the first step", () => {
+    reduceMotion(false);
+    jest.useFakeTimers();
+    render(<WoodenGameDemo />);
+
+    fireEvent.click(screen.getByRole("button", { name: "Previous" }));
+    act(() => jest.advanceTimersByTime(3200));
+
+    expect(caption()).toBe(`2 / ${FRAMES.length} ${FRAMES[1].caption}`);
+    expect(screen.getByRole("button", { name: "Pause" })).toBeInTheDocument();
+  });
+
   it("pauses on request", () => {
     reduceMotion(false);
     jest.useFakeTimers();

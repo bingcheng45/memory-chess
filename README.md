@@ -49,7 +49,7 @@ Open [http://localhost:3000](http://localhost:3000). The dev server uses Turbopa
 
 Put these in `.env.local`. The names come from `src/`.
 
-- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`: the leaderboard. Set `SUPABASE_READ_ONLY=true` to block every write from a local run.
+- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`: the leaderboard. Set `SUPABASE_READ_ONLY=true` to stop writes that go through the shared Supabase client in `src/lib/supabase.js`. It does not cover the Google Sheets writes below, and the opt-in lab backup (`LAB_BACKUP=on`) builds its own service-role client that ignores it, so leave `LAB_BACKUP` unset locally.
 - `GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_ACCOUNT_KEY`: where feedback and contact messages are appended. Feedback goes to a worksheet tab named `Game Feedback` with headers `Submitted At`, `Rating`, `Feedback`, `Accuracy`, `Correct Pieces`, `Piece Count`, `Difficulty`, `Memorization Time`, `Solution Time`, `App Version` in columns A to J.
 - `NEXT_PUBLIC_DATABUDDY_CLIENT_ID`: analytics.
 
@@ -75,7 +75,7 @@ npx tsc --noEmit
 
 There is no `test` script. Jest runs every `__tests__/**/*.test.ts(x)` file under `src/` and `scripts/`.
 
-**Adding or changing text.** New user-facing strings go into `messages/en.json` and the other 23 locale files. Run `npm run validate:messages` before you open a pull request.
+**Adding or changing text.** Interface strings (next-intl) go into `messages/en.json` and the other 23 locale files. Article and trust-page translations live elsewhere: articles in `src/lib/articles/translations/`, and About, Privacy and Terms in `src/lib/pages/translations/`. Those are written and checked with `node scripts/articles-i18n.mjs` (add `--pages` for the trust pages). Run `npm run validate` before you open a pull request. It checks both the message files and these translations.
 
 ## Contributing
 

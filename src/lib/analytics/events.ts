@@ -69,7 +69,7 @@ export type FunnelEvent =
       name: "round_start";
       params: RoundStartParams;
     }
-  /** Once per first-ever round from a link, when its one-line rule and Start show; its round_start follows on Start. */
+  /** Once per round from a link, when its one-line rule and Start show; its round_start follows on Start. */
   | {
       name: "round_intro_view";
       params: RoundStartParams;

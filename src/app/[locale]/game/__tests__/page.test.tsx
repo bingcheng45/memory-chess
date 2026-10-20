@@ -74,12 +74,12 @@ afterEach(() => {
 });
 
 describe("GamePage URL-driven start", () => {
-  it("auto-starts the round a drill link names", async () => {
+  it("holds the round a drill link names behind Start", async () => {
     window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8");
 
     render(<GamePage />);
 
-    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(12, 8, "link"));
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(12, 8, "link"));
   });
 
   it("starts a challenge link with the default memorize time", async () => {
@@ -87,7 +87,7 @@ describe("GamePage URL-driven start", () => {
 
     render(<GamePage />);
 
-    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link"));
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(6, 10, "link"));
   });
 
   it("clears the round params from the address after the URL start", async () => {
@@ -95,7 +95,7 @@ describe("GamePage URL-driven start", () => {
 
     render(<GamePage />);
 
-    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(6, 10, "link"));
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(6, 10, "link"));
     expect(window.location.pathname + window.location.search).toBe("/game");
   });
 
@@ -112,7 +112,7 @@ describe("GamePage URL-driven start", () => {
 
     render(<GamePage />);
 
-    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(12, 8, "guide_cta"));
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(12, 8, "guide_cta"));
     expect(window.location.pathname + window.location.search).toBe("/game");
   });
 
@@ -121,7 +121,7 @@ describe("GamePage URL-driven start", () => {
 
     render(<GamePage />);
 
-    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(12, 8, "link"));
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(12, 8, "link"));
   });
 
   it("starts a round at the longest study time a link can name", async () => {
@@ -129,7 +129,7 @@ describe("GamePage URL-driven start", () => {
 
     render(<GamePage />);
 
-    await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(8, 60, "plan"));
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(8, 60, "plan"));
   });
 
   it("opens the configuration form for a link past the longest study time", () => {
@@ -137,7 +137,7 @@ describe("GamePage URL-driven start", () => {
 
     render(<GamePage />);
 
-    expect(mockStartGame).not.toHaveBeenCalled();
+    expect(mockPrepareGame).not.toHaveBeenCalled();
     expect(document.querySelector("[data-game-config]")).not.toBeNull();
     expect(window.location.search).toBe("");
   });
@@ -147,7 +147,7 @@ describe("GamePage URL-driven start", () => {
 
     render(<GamePage />);
 
-    expect(mockStartGame).not.toHaveBeenCalled();
+    expect(mockPrepareGame).not.toHaveBeenCalled();
   });
 
   it("leaves the address alone without round params", () => {
@@ -211,7 +211,7 @@ describe("GamePage daily board link", () => {
     render(<GamePage />, { locale: "de" });
 
     await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(6, 10, "daily", BOARD));
-    expect(mockStartGame).not.toHaveBeenCalledWith(6, 10, "link");
+    expect(mockPrepareGame).not.toHaveBeenCalledWith(6, 10, "link");
   });
 });
 
@@ -272,20 +272,20 @@ describe("GamePage review link", () => {
     render(<GamePage />, { locale: "de" });
 
     await waitFor(() => expect(mockStartGame).toHaveBeenCalledWith(4, 10, "review", BOARD));
-    expect(mockStartGame).not.toHaveBeenCalledWith(4, 10, "link");
+    expect(mockPrepareGame).not.toHaveBeenCalledWith(4, 10, "link");
   });
 });
 
 describe("GamePage URL-driven start under StrictMode", () => {
-  it("starts the round after the remount's reset and clears the address", async () => {
+  it("sets the round out after the remount's reset and clears the address", async () => {
     window.history.pushState({}, "", "/game?pieceCount=6&memorizeTime=10");
 
     render(<GamePage />, { reactStrictMode: true });
-    await waitFor(() => expect(mockStartGame).toHaveBeenCalled());
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalled());
 
-    const lastStart = Math.max(...mockStartGame.mock.invocationCallOrder);
+    const lastStart = Math.max(...mockPrepareGame.mock.invocationCallOrder);
     const lastReset = Math.max(0, ...mockResetGame.mock.invocationCallOrder);
-    expect(mockStartGame).toHaveBeenLastCalledWith(6, 10, "link");
+    expect(mockPrepareGame).toHaveBeenLastCalledWith(6, 10, "link");
     expect(lastStart).toBeGreaterThan(lastReset);
     expect(window.location.pathname + window.location.search).toBe("/game");
   });

@@ -1,4 +1,4 @@
-import { cellsAtSeconds, cellsWithPieces, headlineOf, recallStructuredData, type RecallCell, type RecallDataset } from "../recall";
+import { cellsAtSeconds, cellsWithPieces, presetCells, recallStructuredData, type RecallCell, type RecallDataset } from "../recall";
 
 const cell = (pieceCount: number, memorizeSeconds: number, meanAccuracy: number): RecallCell => ({
   pieceCount,
@@ -25,15 +25,15 @@ const DATASET: RecallDataset = {
 };
 
 it("picks the easy, default and hard presets for the answer", () => {
-  const { two, six, twelve } = headlineOf(DATASET);
+  const { easy, medium, hard } = presetCells(DATASET);
 
-  expect([two.meanAccuracy, six.meanAccuracy, twelve.meanAccuracy]).toEqual([82, 48, 40]);
+  expect([easy.meanAccuracy, medium.meanAccuracy, hard.meanAccuracy]).toEqual([82, 48, 40]);
 });
 
 it("fails loudly when a quoted preset dropped out of the data", () => {
   const withoutTwelve = { ...DATASET, cells: DATASET.cells.filter((entry) => entry.pieceCount !== 12) };
 
-  expect(() => headlineOf(withoutTwelve)).toThrow("The recall data has no published cell for 12 pieces at 8 seconds");
+  expect(() => presetCells(withoutTwelve)).toThrow("The recall data has no published cell for 12 pieces at 8 seconds");
 });
 
 it("orders one study time by piece count and one piece count by study time", () => {

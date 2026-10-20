@@ -3,13 +3,13 @@ import { Link } from "@/i18n/navigation";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { LabReadingPage, LabReadingSection } from "@/components/lab-paper/LabReadingPage";
 import {
-  CHART_PIECES,
-  CHART_SECONDS,
+  DEFAULT_ROUND_PIECES,
+  DEFAULT_ROUND_SECONDS,
   RECALL_CSV_PAGE,
   RECALL_README_PAGE,
   cellsAtSeconds,
   cellsWithPieces,
-  headlineOf,
+  presetCells,
   recallStructuredData,
   type RecallCell,
   type RecallDataset,
@@ -94,21 +94,21 @@ export async function RecallDataPage({ data, locale }: { readonly data: RecallDa
   const whole = (value: number) => format.number(value / 100, { style: "percent", maximumFractionDigits: 0 });
   const tenth = (value: number) => format.number(value / 100, { style: "percent", maximumFractionDigits: 1 });
   const day = (iso: string) => format.dateTime(new Date(`${iso}T12:00:00Z`), { dateStyle: "long", timeZone: "UTC" });
-  const { two, six, twelve } = headlineOf(data);
+  const { easy, medium, hard } = presetCells(data);
   const isEnglish = locale === DEFAULT_LOCALE;
 
   const answer = t("answer", {
     rounds: data.totalRounds,
     start: day(data.start),
     end: day(data.end),
-    two: whole(two.meanAccuracy),
-    twoRounds: two.rounds,
-    six: whole(six.meanAccuracy),
-    sixRounds: six.rounds,
-    sixPerfect: tenth(six.perfectShare),
-    twelve: whole(twelve.meanAccuracy),
-    twelvePerfect: tenth(twelve.perfectShare),
-    twelveRounds: twelve.rounds,
+    two: whole(easy.meanAccuracy),
+    twoRounds: easy.rounds,
+    six: whole(medium.meanAccuracy),
+    sixRounds: medium.rounds,
+    sixPerfect: tenth(medium.perfectShare),
+    twelve: whole(hard.meanAccuracy),
+    twelvePerfect: tenth(hard.perfectShare),
+    twelveRounds: hard.rounds,
   });
   const structuredData = recallStructuredData(data, {
     name: t("meta.title", { rounds: data.totalRounds }),
@@ -120,15 +120,15 @@ export async function RecallDataPage({ data, locale }: { readonly data: RecallDa
       <section className="lab-read-sec recall-figures" aria-label={t("table.title")}>
         <RecallChart
           id="recall-by-pieces"
-          title={t("chart.byPieces", { seconds: CHART_SECONDS })}
-          rows={cellsAtSeconds(data, CHART_SECONDS).map((cell) => ({ cell, label: t("chart.pieces", { count: cell.pieceCount }) }))}
+          title={t("chart.byPieces", { seconds: DEFAULT_ROUND_SECONDS })}
+          rows={cellsAtSeconds(data, DEFAULT_ROUND_SECONDS).map((cell) => ({ cell, label: t("chart.pieces", { count: cell.pieceCount }) }))}
           t={t}
           percent={whole}
         />
         <RecallChart
           id="recall-by-seconds"
-          title={t("chart.bySeconds", { pieces: CHART_PIECES })}
-          rows={cellsWithPieces(data, CHART_PIECES).map((cell) => ({ cell, label: t("chart.seconds", { count: cell.memorizeSeconds }) }))}
+          title={t("chart.bySeconds", { pieces: DEFAULT_ROUND_PIECES })}
+          rows={cellsWithPieces(data, DEFAULT_ROUND_PIECES).map((cell) => ({ cell, label: t("chart.seconds", { count: cell.memorizeSeconds }) }))}
           t={t}
           percent={whole}
         />

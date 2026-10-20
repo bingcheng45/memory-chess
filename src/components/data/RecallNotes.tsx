@@ -1,17 +1,16 @@
 import { Link } from "@/i18n/navigation";
 import { LabReadingSection } from "@/components/lab-paper/LabReadingPage";
 import { articlePath } from "@/lib/articles/paths";
-import { CHART_PIECES, CHART_SECONDS, RECALL_CSV_PAGE, RECALL_README_PAGE, findCell, type RecallDataset } from "@/lib/data/recall";
+import { DEFAULT_ROUND_PIECES, DEFAULT_ROUND_SECONDS, RECALL_CSV_PAGE, RECALL_README_PAGE, findCell, type RecallDataset } from "@/lib/data/recall";
 
 const englishNumber = new Intl.NumberFormat("en");
 const englishDate = new Intl.DateTimeFormat("en", { dateStyle: "long", timeZone: "UTC" });
 export const englishDay = (iso: string) => englishDate.format(new Date(`${iso}T12:00:00Z`));
 
-/** The method, limits and citation, kept in English in every locale like the Learn guides. */
 export function RecallNotes({ data }: { readonly data: RecallDataset }) {
   const n = (value: number) => englishNumber.format(value);
   const range = `${englishDay(data.start)} to ${englishDay(data.end)}`;
-  const defaultRound = findCell(data, CHART_PIECES, CHART_SECONDS);
+  const defaultRound = findCell(data, DEFAULT_ROUND_PIECES, DEFAULT_ROUND_SECONDS);
 
   return (
     <>
@@ -44,7 +43,7 @@ export function RecallNotes({ data }: { readonly data: RecallDataset }) {
           </li>
           <li>Repeat players weigh more: one player&apos;s 50 rounds count 50 times. Compare the Rounds and Players columns.</li>
           <li>
-            {CHART_PIECES} pieces with {CHART_SECONDS} seconds is the default round, so it holds the most players ({n(defaultRound.players)})
+            {DEFAULT_ROUND_PIECES} pieces with {DEFAULT_ROUND_SECONDS} seconds is the default round, so it holds the most players ({n(defaultRound.players)})
             and likely many first rounds.
           </li>
           <li>A player is a browser as Google Analytics counts it. One person on two devices counts twice.</li>

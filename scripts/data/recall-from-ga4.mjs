@@ -1,17 +1,4 @@
 #!/usr/bin/env node
-/**
- * Turns saved GA4 reports of `round_complete` into the published recall dataset: one record per piece count and study
- * time, written as `<end>.json`, `latest.json` and `latest.csv`. The same reports always give the same files.
- *
- * Usage, from the repo root:
- *   node scripts/data/recall-from-ga4.mjs --start 2026-09-29 --end 2026-10-19 [--out data/recall] <report.json>...
- *
- * Each file is a GA4 Data API runReport response (camelCase from the REST API, snake_case from the analytics MCP
- * tool) or a batchRunReports response holding several. Two reports are needed, told apart by their columns:
- *   accuracy histogram: dimensions piece_count, memorize_time, accuracy; metric eventCount
- *   players per cell:   dimensions piece_count, memorize_time; metrics eventCount, totalUsers
- * `data/recall/README.md` gives the exact requests.
- */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
@@ -88,8 +75,7 @@ function playersByCell(table) {
   return new Map(table.rows.map(({ dimensions: [pieces, seconds], metrics: [, users] }) => [cellKey(pieces, seconds), users]));
 }
 
-/** The smallest accuracy at or below which at least `share` of the rounds fall: the nearest-rank percentile. */
-function percentile(sorted, rounds, share) {
+function nearestRankPercentile(sorted, rounds, share) {
   const rank = Math.max(1, Math.ceil(share * rounds));
   let seen = 0;
   for (const [accuracy, count] of sorted) {
@@ -111,9 +97,9 @@ function summarize({ pieces, seconds, counts }, players) {
     rounds,
     players,
     meanAccuracy: oneDecimal(points / rounds),
-    medianAccuracy: percentile(sorted, rounds, 0.5),
-    p25Accuracy: percentile(sorted, rounds, 0.25),
-    p75Accuracy: percentile(sorted, rounds, 0.75),
+    medianAccuracy: nearestRankPercentile(sorted, rounds, 0.5),
+    p25Accuracy: nearestRankPercentile(sorted, rounds, 0.25),
+    p75Accuracy: nearestRankPercentile(sorted, rounds, 0.75),
     perfectShare: oneDecimal(((counts.get(100) ?? 0) / rounds) * 100),
   };
 }

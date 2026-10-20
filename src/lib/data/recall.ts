@@ -1,6 +1,5 @@
 import latest from "../../../data/recall/latest.json";
 
-/** One published setting: every finished round with this piece count and study time. Accuracies are 0 to 100. */
 export interface RecallCell {
   readonly pieceCount: number;
   readonly memorizeSeconds: number;
@@ -13,7 +12,6 @@ export interface RecallCell {
   readonly perfectShare: number;
 }
 
-/** What `scripts/data/recall-from-ga4.mjs` writes. `start` and `end` are ISO dates in the GA4 property's time zone. */
 export interface RecallDataset {
   readonly start: string;
   readonly end: string;
@@ -36,10 +34,8 @@ export const RECALL_CSV_PAGE = `${REPO_FILE}/latest.csv`;
 export const RECALL_README_PAGE = `${REPO_FILE}/README.md`;
 const SITE_URL = "https://thememorychess.com";
 
-/** The study time of the default round, and of the piece-count chart. */
-export const CHART_SECONDS = 10;
-/** The piece count of the default round, and of the study-time chart. */
-export const CHART_PIECES = 6;
+export const DEFAULT_ROUND_SECONDS = 10;
+export const DEFAULT_ROUND_PIECES = 6;
 
 export function findCell(dataset: RecallDataset, pieceCount: number, memorizeSeconds: number): RecallCell {
   const cell = dataset.cells.find((candidate) => candidate.pieceCount === pieceCount && candidate.memorizeSeconds === memorizeSeconds);
@@ -47,12 +43,11 @@ export function findCell(dataset: RecallDataset, pieceCount: number, memorizeSec
   return cell;
 }
 
-/** The three settings the page's answer quotes: the easy, default and hard presets. */
-export function headlineOf(dataset: RecallDataset) {
+export function presetCells(dataset: RecallDataset) {
   return {
-    two: findCell(dataset, 2, CHART_SECONDS),
-    six: findCell(dataset, CHART_PIECES, CHART_SECONDS),
-    twelve: findCell(dataset, 12, 8),
+    easy: findCell(dataset, 2, DEFAULT_ROUND_SECONDS),
+    medium: findCell(dataset, DEFAULT_ROUND_PIECES, DEFAULT_ROUND_SECONDS),
+    hard: findCell(dataset, 12, 8),
   };
 }
 
@@ -64,7 +59,6 @@ export function cellsWithPieces(dataset: RecallDataset, pieceCount: number): Rec
   return dataset.cells.filter((cell) => cell.pieceCount === pieceCount).sort((a, b) => a.memorizeSeconds - b.memorizeSeconds);
 }
 
-/** schema.org Dataset for the page. The creator is the site's developer, as on /about. */
 export function recallStructuredData(dataset: RecallDataset, { name, description }: { name: string; description: string }) {
   const url = `${SITE_URL}${RECALL_PATH}`;
   return {

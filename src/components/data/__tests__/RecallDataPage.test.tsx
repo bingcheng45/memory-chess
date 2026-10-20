@@ -97,3 +97,13 @@ it("embeds a Dataset JSON-LD block named for the rounds it covers", async () => 
     "2026-09-29/2026-10-19",
   ]);
 });
+
+it("translates the answer and labels, and marks the English notes as English on a translated page", async () => {
+  render(await RecallDataPage({ data: DATA, locale: "de" }));
+
+  expect(screen.getByRole("heading", { level: 1 }).textContent).not.toBe("How well do people remember chess positions?");
+  expect(document.querySelector(".lab-lede")?.textContent).toContain("1.200");
+  const method = screen.getByRole("heading", { name: "Method" });
+  expect(method.closest("[lang]")).toHaveAttribute("lang", "en");
+  expect(document.querySelector('p.lab-read-note[lang="de"]')).not.toBeNull();
+});

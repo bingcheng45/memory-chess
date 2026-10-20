@@ -32,6 +32,12 @@ describe("getTotalPlays", () => {
     expect(await getTotalPlays()).toBeNull();
   });
 
+  it.each([null, ""])("gives nothing rather than zero when the stored value is %p", async (value) => {
+    jest.mocked(getGameMetric).mockResolvedValue(metric(value) as never);
+
+    expect(await getTotalPlays()).toBeNull();
+  });
+
   it("gives nothing when the stored value is not a number", async () => {
     jest.mocked(getGameMetric).mockResolvedValue(metric("lots") as never);
 

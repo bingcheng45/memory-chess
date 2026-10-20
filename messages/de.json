@@ -47,7 +47,7 @@
     },
     "about": {
       "facts": "Memory Chess wird von einem einzigen Entwickler, Bing Cheng, gebaut und betrieben. Es ging im März 2025 erstmals online und lässt sich in {languages} Sprachen spielen.",
-      "plays": "Bis zum <time>{date}</time> hatten Spieler {count}+ Partien beendet."
+      "plays": "Bis zum <time>{date}</time> hatten Spielende {count}+ Partien beendet."
     }
   },
   "home": {

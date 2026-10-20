@@ -21,9 +21,14 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - name: Submit pages changed in the last two days
+      - uses: actions/cache@v4
+        with:
+          path: .indexnow/state.json
+          key: indexnow-state-${{ github.run_id }}
+          restore-keys: indexnow-state-
+      - name: Submit URLs whose lastmod is newer than the last submission
         if: github.event_name == 'deployment_status'
-        run: node scripts/indexnow-submit.mjs --since "$(date -u -d '2 days ago' +%F)"
+        run: node scripts/indexnow-submit.mjs --state .indexnow/state.json
       - name: Submit the whole sitemap
         if: github.event_name == 'workflow_dispatch'
-        run: node scripts/indexnow-submit.mjs
+        run: node scripts/indexnow-submit.mjs --state .indexnow/state.json --all

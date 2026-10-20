@@ -31,7 +31,7 @@ const guide: LearnDocument = {
     disclosure: "Memory Chess publishes this page. It is not affiliated with Lichess or Chess.com, and every fact about them comes from their own public pages.",
   },
   intro: {
-    quickAnswer: "Both sites offer a free 30-second coordinate drill and a way to play with the pieces hidden. Lichess makes every feature free with no ads. On Chess.com the Vision trainer is free, but the free account gets 3 puzzles a day. Neither site has a drill that asks you to rebuild a whole position from memory.",
+    quickAnswer: "Both sites offer a free 30-second coordinate drill and a way to play with the pieces hidden. Lichess makes every feature free with no ads. On Chess.com the Vision trainer is free, but the free account gets 3 puzzles a day. We found no drill on either site that asks you to rebuild a whole position from memory.",
     takeaways: [
       "Lichess's coordinate trainer has a find-the-square mode and a name-the-square mode, timed at 30 seconds or untimed.",
       "Chess.com's Vision trainer drills coordinates, moves, or both, 30 seconds at a time.",
@@ -71,7 +71,7 @@ const guide: LearnDocument = {
               label: "Playing with the pieces hidden",
               cells: [
                 "A Blindfold option in the board menu on the puzzle page.",
-                "Blindfold Chess, a game variant in which all the pieces are invisible. Variants are on the website only.",
+                "Blindfold Chess, a game variant in which all the pieces are invisible. Most variants are on the website only.",
               ],
             },
             {
@@ -89,7 +89,7 @@ const guide: LearnDocument = {
               label: "Cost",
               cells: [
                 "Free for everyone. Patron is a donation that adds wings to your profile.",
-                "Free Basic account. Paid plans are Gold, Platinum and Diamond, each with a 7-day trial.",
+                "Free Basic account. Paid plans are Gold, Platinum, Diamond and Friends and Family, each with a 7-day trial.",
               ],
             },
             {
@@ -108,7 +108,7 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "The coordinate drills are close. Lichess lets you drill only some files and ranks, and turn the pieces and labels on or off. Chess.com adds a Moves mode, so you practise reading notation as well as squares.",
-            "Chess.com's own help page on Vision says it may not directly help your game, though it makes learning easier. That is a fair description of both drills. They teach the map, not what the pieces are doing on it.",
+            "Chess.com's own help page on Vision says it may not directly help your game, though it makes learning easier. In our view the Lichess drill is similar. Both teach the map, not what the pieces are doing on it.",
             "For hidden-piece play, Lichess puts Blindfold in the board menu of its puzzle page. A Lichess user's forum post says it is on game pages too, but no official help page states it. Chess.com lists Blindfold Chess among its variants, and its help page says only your opponent's latest move is shown.",
             "Price is the clearest difference. Lichess says all of its features are free for all and forever. Chess.com gives Vision to free accounts, but a free account gets 3 puzzles and one extra lesson a day.",
           ],
@@ -122,7 +122,7 @@ const guide: LearnDocument = {
         {
           kind: "prose",
           paragraphs: [
-            "Neither site offers a drill that shows you a full position, hides it and asks you to put every piece back. In our judgement, that is the step between naming squares and playing blind.",
+            "We found no drill on either site's training pages that shows you a full position, hides it and asks you to put every piece back. In our judgement, that is the step between naming squares and playing blind.",
             "Memory Chess, which publishes this page, is a free browser trainer for that one step. It works beside either site, with no account.",
           ],
         },

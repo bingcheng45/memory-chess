@@ -32,7 +32,7 @@ const guide: LearnDocument = {
   intro: {
     quickAnswer: "DarkSquares is a full blindfold chess course, with seven levels from square colours to blindfold games against Stockfish. Its position memory drill is one part of it. Memory Chess does only position memory, from 2 to 32 pieces, with no account and in 24 languages. Pick DarkSquares to learn to play blindfold, and Memory Chess for recall alone.",
     takeaways: [
-      "DarkSquares has far more training: seven levels, blindfold games, voice moves, famous games and endgames.",
+      "DarkSquares has more kinds of training, with seven levels, blindfold games, voice moves, famous games and endgames.",
       "DarkSquares is free to start. Pro Lifetime is a one-time €39 launch price, €59 regular.",
       "Memory Chess is free, with no paid tier and no account.",
       "DarkSquares' position memory uses fixed tiers. Memory Chess lets you set the piece count and the look time.",
@@ -164,7 +164,7 @@ const guide: LearnDocument = {
         {
           kind: "guide",
           slug: "chess-position-memory-trainers-compared",
-          reason: "Five more position-memory trainers in the same tables.",
+          reason: "The other position-memory trainers in the same tables.",
         },
         {
           kind: "guide",

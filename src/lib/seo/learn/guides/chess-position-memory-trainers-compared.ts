@@ -5,7 +5,7 @@ const guide: LearnDocument = {
     slug: "chess-position-memory-trainers-compared",
     title: "Chess Position Memory Trainers Compared",
     h1: "Chess position-memory trainers compared",
-    description: "Seven tools that show a chess position, hide it and ask you to rebuild it, compared on price, platforms, piece counts and look times.",
+    description: "Trainers that show a chess position, hide it and ask you to rebuild it, compared on price, platforms, piece counts and look times.",
     group: "compare",
     level: "improver",
     publishedAt: "2026-10-20T00:00:00.000Z",
@@ -28,7 +28,7 @@ const guide: LearnDocument = {
   },
   comparison: {
     checkedAt: "2026-10-20T00:00:00.000Z",
-    disclosure: "Memory Chess publishes this page and is one of the seven tools in it. Every fact about the other six comes from their own public pages.",
+    disclosure: "Memory Chess publishes this page and is one of the tools in it. Facts about the others come from their own public pages, or from their source code where a cell says so.",
     products: [
       { name: "Memory Chess", url: "https://thememorychess.com" },
       { name: "DarkSquares Position Memory", url: "https://darksquares.net/train/position-memory" },
@@ -40,12 +40,12 @@ const guide: LearnDocument = {
     ],
   },
   intro: {
-    quickAnswer: "Seven tools train position memory: a position appears, it disappears, and you rebuild it. Memory Chess and DarkSquares start free in a browser, BoardWithin costs $4.99 on iPhone and iPad, and Lucas Chess is a free Windows and Linux program. Chessable trains a different skill, memorising opening lines, so it is not in the tables.",
+    quickAnswer: "Six trainers we could check show a position, hide it and ask you to rebuild it. Memory Chess and DarkSquares start free in a browser, BoardWithin costs $4.99 on iPhone and iPad, and Lucas Chess is a free Windows and Linux program. A seventh, chessO, could not be checked. Chessable trains a different skill, learning lines from courses, so it is not in the tables.",
     takeaways: [
       "DarkSquares uses fixed tiers: 3 to 8 pieces, then 9 to 16 pieces in 60 seconds, then 17 to 24 pieces in 120 seconds.",
       "Memory Chess lets you set any count from 2 to 32 pieces and a look of 1 to 60 seconds.",
       "DarkSquares and BoardWithin also teach blindfold play and include blindfold games. Memory Chess and ChessWorld do not.",
-      "Lucas Chess, per its source code, takes its positions from checkmates in grandmaster games. Memory Chess generates new positions instead.",
+      "Lucas Chess, per its source code, reads its positions from a folder of checkmates in grandmaster games. Memory Chess generates new positions instead.",
       "The App Store listing for chessO returned a not-found page, so nothing about it could be checked.",
     ],
     audience: [
@@ -62,8 +62,8 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "A chess memory app can mean two things. One kind drills move sequences, such as the first fifteen moves of your repertoire, until you can play them without thinking. The other kind shows you a position and checks whether you can put every piece back on its square.",
-            "Chessable is built for the first kind. Its MoveTrainer page says it turns chess books and videos into interactive courses. That is useful for openings, but it does not test whether you can hold a position you have only seen for a few seconds.",
-            "Every tool below does the second kind. You study a board, the pieces vanish, and you place them again. The tables say what each tool's own pages state, and \"not stated\" where they are silent.",
+            "Chessable is built around the first kind. Its MoveTrainer page says it turns chess books and videos into interactive courses, and its home page lists openings, tactics, endgame patterns and more. Its pages do not describe a drill that shows a position briefly and then asks you to rebuild it.",
+            "The tools below do the second kind, as their own pages describe them. You study a board, the pieces vanish, and you place them again. The tables say what each page states, and \"not stated\" where it is silent.",
           ],
         },
       ],
@@ -159,8 +159,8 @@ const guide: LearnDocument = {
               label: "ChessWorld memory trainer",
               cells: [
                 "Easy 3, Medium 5, Hard 8, Grandmaster 12.",
-                "Not stated on the page.",
-                "Not stated on the page.",
+                "10 seconds, set in the page's script. The visible text does not say.",
+                "A score, shown by the page's script. Its format is not stated.",
                 "Questions and answers on memory on the same page.",
               ],
             },
@@ -207,16 +207,16 @@ const guide: LearnDocument = {
           kind: "list",
           ordered: false,
           items: [
-            "Pick DarkSquares if you want position memory as one step in a full blindfold course. It has more training than Memory Chess, across seven levels with games against an engine.",
+            "Pick DarkSquares if you want position memory as one step in a full blindfold course. It has more kinds of training than Memory Chess, across seven levels with games against an engine.",
             "Pick BoardWithin if you train on an iPhone or iPad and want one paid app with coordinates, recall and blindfold play together.",
-            "Pick Lucas Chess if you use Windows or Linux and want positions taken from real grandmaster games, as its source code shows.",
+            "Pick Lucas Chess if you use Windows or Linux and want positions from grandmaster games, as its source code shows.",
             "Pick Memory Chess if you want only position memory, with your own piece count and look time, a score after every round and no account.",
           ],
         },
         {
           kind: "prose",
           paragraphs: [
-            "Real game positions and generated ones test slightly different things. In real positions, pawn chains and castled kings repeat, so strong players recall them in chunks. Generated positions break those patterns more often, so they lean harder on raw memory.",
+            "Positions from real games and generated ones may test slightly different things, which is a judgement, not a measured result. Memory Chess generates legal positions for each round rather than taking them from games.",
           ],
         },
       ],

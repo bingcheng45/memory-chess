@@ -63,7 +63,7 @@ describe("the de Groot article opens with its answer", () => {
 
   it("serves the English answer as the first paragraph of the body", async () => {
     expect(await firstBodyParagraph("en")).toBe(
-      "Grandmasters remember a position from a real game as a few familiar groups of pieces, not square by square. Those groups are the chunks William Chase and Herbert Simon measured in 1973. In de Groot's 1944 test, former world champion Max Euwe saw a 22-piece position for 5 seconds and got all 22 right, while a weaker class player scored 9. On random boards the edge shrinks to about one extra piece per 400 Elo points, against about five on game positions (Gobet and Simon, 1996).",
+      "Grandmasters remember a position from a real game as a few familiar groups of pieces, not square by square. Those groups are the chunks William Chase and Herbert Simon measured in 1973. In de Groot's 1944 test, former world champion Max Euwe saw a 22-piece position for 5 seconds and recalled all 22, while a weaker class player scored 9. On random boards the edge shrinks to about one extra piece per 400 Elo points, against about five on game positions (Gobet and Simon, 1996).",
     );
   });
 

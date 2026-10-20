@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Træn din skakhukommelse og forestillingsevne",
-      "freeToPlay": "Gratis at spille, uden konto. Du kan også sammenligne din score på <link>ranglisten</link>."
+      "freeToPlay": "Gratis at spille, uden konto. Du kan også sammenligne din score på <link>ranglisten</link>.",
+      "boardGame": "Leder du efter brætspillet Memory Chess i træ? <link>Læs reglerne</link>."
     },
     "cta": {
       "leaderboard": "Se ranglisten",

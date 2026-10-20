@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Antrenează-ți memoria și vizualizarea la șah",
-      "freeToPlay": "Gratuit, fără cont. Îți poți compara punctajul și în <link>clasament</link>."
+      "freeToPlay": "Gratuit, fără cont. Îți poți compara punctajul și în <link>clasament</link>.",
+      "boardGame": "Cauți jocul de societate din lemn Memory Chess? <link>Citește regulile</link>."
     },
     "cta": {
       "leaderboard": "Vezi clasamentul",

@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: 체스 기억력과 시각화 능력을 훈련하세요",
-      "freeToPlay": "계정 없이 무료로 즐길 수 있습니다. <link>리더보드</link>에서 점수를 비교할 수도 있습니다."
+      "freeToPlay": "계정 없이 무료로 즐길 수 있습니다. <link>리더보드</link>에서 점수를 비교할 수도 있습니다.",
+      "boardGame": "나무로 된 보드게임 Memory Chess를 찾으시나요? <link>규칙 보기</link>."
     },
     "cta": {
       "leaderboard": "리더보드 보기",

@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: 训练你的国际象棋记忆与盘面想象力",
-      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。"
+      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。",
+      "boardGame": "在找木制桌游 Memory Chess？<link>阅读玩法规则</link>。"
     },
     "cta": {
       "leaderboard": "查看排行榜",

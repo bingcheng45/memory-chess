@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Latih ingatan dan visualisasi catur Anda",
-      "freeToPlay": "Gratis dimainkan, tanpa perlu akun. Anda juga bisa membandingkan skor di <link>papan peringkat</link>."
+      "freeToPlay": "Gratis dimainkan, tanpa perlu akun. Anda juga bisa membandingkan skor di <link>papan peringkat</link>.",
+      "boardGame": "Mencari permainan papan kayu Memory Chess? <link>Baca aturannya</link>."
     },
     "cta": {
       "leaderboard": "Lihat papan peringkat",

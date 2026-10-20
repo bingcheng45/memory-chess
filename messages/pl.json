@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Trenuj szachową pamięć i wyobraźnię",
-      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>."
+      "freeToPlay": "Za darmo, bez zakładania konta. Swój wynik możesz też porównać w <link>rankingu</link>.",
+      "boardGame": "Szukasz drewnianej gry planszowej Memory Chess? <link>Przeczytaj zasady</link>."
     },
     "cta": {
       "leaderboard": "Zobacz ranking",

@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Allena la tua memoria e visualizzazione negli scacchi",
-      "freeToPlay": "Gratis e senza bisogno di un account. Puoi anche confrontare il tuo punteggio nella <link>classifica</link>."
+      "freeToPlay": "Gratis e senza bisogno di un account. Puoi anche confrontare il tuo punteggio nella <link>classifica</link>.",
+      "boardGame": "Cerchi il gioco da tavolo in legno Memory Chess? <link>Leggi le regole</link>."
     },
     "cta": {
       "leaderboard": "Vedi la classifica",

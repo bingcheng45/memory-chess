@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Entrena tu memoria y tu visualización en el ajedrez",
-      "freeToPlay": "Gratis y sin necesidad de crear una cuenta. También puedes comparar tu puntuación en la <link>clasificación</link>."
+      "freeToPlay": "Gratis y sin necesidad de crear una cuenta. También puedes comparar tu puntuación en la <link>clasificación</link>.",
+      "boardGame": "¿Buscas el juego de mesa de madera Memory Chess? <link>Lee sus reglas</link>."
     },
     "cta": {
       "leaderboard": "Ver la clasificación",

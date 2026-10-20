@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Träna ditt schackminne och din visualisering",
-      "freeToPlay": "Gratis att spela, inget konto behövs. Du kan också jämföra din poäng på <link>topplistan</link>."
+      "freeToPlay": "Gratis att spela, inget konto behövs. Du kan också jämföra din poäng på <link>topplistan</link>.",
+      "boardGame": "Letar du efter brädspelet Memory Chess i trä? <link>Läs reglerna</link>."
     },
     "cta": {
       "leaderboard": "Visa topplistan",

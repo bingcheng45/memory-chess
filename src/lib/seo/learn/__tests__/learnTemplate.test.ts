@@ -6,7 +6,7 @@ import { EN_LEARN_PAGES, LEARN_SLUGS, RESERVED_LEARN_SLUGS, groupPages, toPage }
 import type { BodyBlock, InlineLink, LearnDocument, Rich } from "../schema";
 import { readingMinutes } from "../text";
 
-const SITE_PATHS = ["/settings", "/game", "/dashboard", "/learn", "/articles"];
+const SITE_PATHS = ["/", "/settings", "/game", "/dashboard", "/learn", "/articles"];
 
 const blocks = (doc: LearnDocument): BodyBlock[] => doc.sections.flatMap((section) => section.blocks);
 const linksIn = (rich: Rich): InlineLink[] => (typeof rich === "string" ? [] : rich.filter((part) => typeof part !== "string"));
@@ -62,6 +62,7 @@ describe("derived page values", () => {
       "20-minute-daily-chess-study-plan": 5,
       "how-to-analyze-chess-games-for-beginners": 6,
       "how-many-chess-puzzles-a-day": 4,
+      "how-to-play-memory-chess-board-game": 5,
     });
   });
 
@@ -94,7 +95,7 @@ describe("hub grouping", () => {
         "visualization",
         ["chess-visualization-exercises", "chess-calculation-exercises-for-beginners", "blindfold-chess-training-for-beginners"],
       ],
-      ["memory", ["chess-memory-training", "chess-pattern-recognition-drills"]],
+      ["memory", ["chess-memory-training", "chess-pattern-recognition-drills", "how-to-play-memory-chess-board-game"]],
       [
         "practice",
         ["20-minute-daily-chess-study-plan", "how-to-analyze-chess-games-for-beginners", "how-many-chess-puzzles-a-day"],

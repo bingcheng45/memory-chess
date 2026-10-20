@@ -55,6 +55,55 @@ describe("Learn search", () => {
     expect(outcomeOf(search("memory", browser))).toBe("strong");
   });
 
+  it("labels a query strong when every word is in the top guide's title, however many pages use the word", () => {
+    const doc = (slug: string, title: string, description: string) => ({
+      kind: "guide" as const,
+      slug,
+      url: `/learn/${slug}`,
+      title,
+      group: "Memory and patterns",
+      questions: [],
+      fields: { questions: "", title, keywords: "", headings: "", description, body: "" },
+    });
+    const crowded = prepareIndex([
+      doc("memory-training", "Memory training", "Train recall."),
+      ...Array.from({ length: 30 }, (_, i) => doc(`other-${i}`, `Other ${i}`, "Remember to recall the position.")),
+    ]);
+
+    expect(search("memory", crowded)[0]).toMatchObject({ slug: "memory-training", score: 0.04 });
+    expect(outcomeOf(search("memory", crowded))).toBe("strong");
+    expect(outcomeOf(search("memory position", crowded))).toBe("weak");
+  });
+
+  it.each([
+    ["two", "chess-calculation-exercises-for-beginners"],
+    ["number", "adriaan-de-groot"],
+    ["seven", "judit-polgar"],
+    ["played", "judit-polgar"],
+  ])("leaves %p weak on the search page though %s has it in its title or h1, since a number or filler word names no subject", (query, slug) => {
+    expect(search(query, server)[0]).toMatchObject({ slug, titleMatch: false });
+    expect(outcomeOf(search(query, server))).toBe("weak");
+  });
+
+  it("reads the title match from the page title, not its h1", () => {
+    expect(top("pass mark", server)).toMatchObject({ slug: "blindfold-chess-training-for-beginners", titleMatch: false });
+    expect(top("blindfold", server)).toMatchObject({ slug: "blindfold-chess-training-for-beginners", titleMatch: true });
+  });
+
+  it("gives no title match for a number word, written out or as digits", () => {
+    expect(top("four")?.titleMatch).toBe(false);
+    expect(top("20")).toMatchObject({ slug: "20-minute-daily-chess-study-plan", titleMatch: false });
+    expect(outcomeOf(search("four", server))).toBe("weak");
+  });
+
+  it.each([
+    ["memory", "chess-memory-training"],
+    ["position", "chess-position-memory-trainers-compared"],
+  ])("keeps %p strong in the hub on its title match at %s", (query, slug) => {
+    expect(search(query, browser)[0]).toMatchObject({ slug, titleMatch: true });
+    expect(outcomeOf(search(query, browser))).toBe("strong");
+  });
+
   it("marks the question words that mean a query term, synonyms included", () => {
     expect(
       markQueryWords("How do I stop blundering pieces?", "why do i keep hanging pieces")

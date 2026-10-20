@@ -13,6 +13,7 @@
 .lab-paper .lg-crumbs a { color: var(--lp-ink-2); text-decoration: none; }
 .lab-paper .lg-crumbs a:hover { color: var(--lp-accent); }
 .lab-paper .lg-head h1 { font: 650 clamp(36px, 4.6vw, 52px)/1.08 var(--lp-ui); letter-spacing: -0.025em; }
+.lab-paper .lg-disclosure { margin-top: 16px; padding: 12px 16px; background: var(--lp-surface-2); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
 .lab-paper .lg-lede { margin-top: 20px; font: 400 20px/1.6 var(--lp-body); color: var(--lp-ink-2); }
 .lab-paper .lg-meta { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 0; margin-top: 20px; font: 500 15px/1.5 var(--lp-ui); color: var(--lp-ink-2); }
 .lab-paper .lg-meta > :not(:last-child)::after { content: "\00b7"; margin: 0 10px; color: var(--lp-muted); }
@@ -212,6 +213,9 @@
 .lab-paper .lh-stage-cta a { color: var(--lp-accent); text-decoration: none; }
 .lab-paper .lh-stage-cta a::after, .lab-paper a.lh-closing-stat::after { content: " \2192"; }
 .lab-paper .lh-stage-cta a:hover { text-decoration: underline; text-underline-offset: 3px; }
+.lab-paper .lh-shelf { max-width: 760px; margin-top: 64px; padding: 48px 0 0 64px; border-top: 1px solid var(--lp-line); scroll-margin-top: calc(var(--lp-header-h) + 16px); }
+.lab-paper .lh-shelf h2 { font: 650 28px/1.2 var(--lp-ui); letter-spacing: -0.015em; }
+.lab-paper .lh-shelf a.lh-guide { grid-template-columns: 1fr; }
 .lab-paper .lh-closing-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 16px; margin-top: 20px; }
 .lab-paper a.lh-closing-stat { font: 600 16px/1.4 var(--lp-ui); color: var(--lp-accent); text-decoration: none; }
 .lab-paper a.lh-closing-stat:hover { text-decoration: underline; text-underline-offset: 3px; }
@@ -228,7 +232,8 @@
   .lab-paper .lh-stage { padding-top: 40px; }
   .lab-paper .lh-closing::before { top: 68px; left: -48px; width: 32px; }
   .lab-paper .lh-stage-dot { top: 40px; left: -48px; width: 28px; height: 28px; font-size: 13px; }
-  .lab-paper .lh-stage h2 { font-size: 24px; }
+  .lab-paper .lh-stage h2, .lab-paper .lh-shelf h2 { font-size: 24px; }
+  .lab-paper .lh-shelf { margin-top: 48px; padding: 40px 0 0 48px; }
   .lab-paper a.lh-guide { grid-template-columns: 1fr; gap: 4px; padding: 16px; }
 }
 

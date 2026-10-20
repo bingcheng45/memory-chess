@@ -25,6 +25,8 @@ export type SearchResult = {
   readonly group: string | null;
   readonly score: number;
   readonly matchedQuestion: string | null;
+  /** Every query term is a content word in the page's title. IDF falls for a word most pages use ("memory" here), so the score alone undersells this. */
+  readonly titleMatch: boolean;
 };
 
 const FIELD_WEIGHTS: Readonly<Record<SearchField, number>> = {
@@ -54,6 +56,12 @@ const STOP_WORDS = new Set(
     " ",
   ),
 );
+
+/** A title holding one of these ("seven", "by the numbers", "played") says nothing about what the page teaches. */
+const FILLER_WORDS = new Set(
+  "zero one two three four five six seven eight nine ten eleven twelve fifteen twenty hundred thousand number played".split(" "),
+);
+const isContentWord = (term: string) => !FILLER_WORDS.has(term) && !/^\d+$/.test(term);
 
 const SYNONYM_RINGS: readonly (readonly string[])[] = [
   ["blunder", "hang", "hanging", "drop", "lose piece", "mistake", "loose"],
@@ -142,6 +150,7 @@ const typoBudget = (word: string) => (word.length >= 8 ? 2 : word.length >= 4 ? 
 
 type PreparedDoc = SearchDoc & {
   readonly terms: Readonly<Record<SearchField, readonly string[]>>;
+  readonly titleTerms: ReadonlySet<string>;
   readonly questionTerms: readonly { readonly text: string; readonly terms: ReadonlySet<string> }[];
 };
 
@@ -156,6 +165,7 @@ export function prepareIndex(docs: readonly SearchDoc[]): SearchIndex {
     (doc): PreparedDoc => ({
       ...doc,
       terms: Object.fromEntries(SEARCH_FIELDS.map((field) => [field, terms(doc.fields[field])])) as Record<SearchField, string[]>,
+      titleTerms: new Set(terms(doc.title)),
       questionTerms: doc.questions.map((text) => ({ text, terms: new Set(terms(text)) })),
     }),
   );
@@ -229,6 +239,7 @@ export function search(query: string, index: SearchIndex, limit = RESULT_LIMIT):
         group: doc.group,
         score: Math.round(score * 100) / 100,
         matchedQuestion: question?.text ?? null,
+        titleMatch: queryTerms.every((term) => isContentWord(term) && doc.titleTerms.has(term)),
       },
     ];
   });
@@ -248,5 +259,5 @@ export type SearchOutcome = "none" | "weak" | "strong";
 
 export function outcomeOf(results: readonly SearchResult[]): SearchOutcome {
   if (results.length === 0) return "none";
-  return results[0].score < WEAK_SCORE ? "weak" : "strong";
+  return results[0].score >= WEAK_SCORE || results[0].titleMatch ? "strong" : "weak";
 }

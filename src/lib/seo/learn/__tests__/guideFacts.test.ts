@@ -11,6 +11,7 @@ import { useGameStore } from "@/lib/store/gameStore";
 import { PIECE_TYPE_ORDER, type LabPiece } from "@/lib/round/round";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { DIFFICULTY_PRESETS } from "@/types/game";
+import { LOCALES } from "@/i18n/routing";
 import { LEARN_GUIDES } from "../guides";
 import { chessOf, tokenSquare, type LearnPosition, type PositionClaim, type Side } from "../positions";
 import type { LearnDocument, LearnSection } from "../schema";
@@ -23,7 +24,7 @@ function guideText(guide: LearnDocument): string {
     guide.intro.quickAnswer,
     ...guide.intro.takeaways,
     ...guide.sections.flatMap(sectionText),
-    ...guide.end.flatMap((block) => (block.kind === "faq" ? blockText(block) : [])),
+    ...guide.end.flatMap((block) => (block.kind === "faq" || block.kind === "cta" ? blockText(block) : [])),
   ].join("\n");
 }
 
@@ -412,6 +413,22 @@ function guideFacts(): Record<string, string[]> {
     ],
     "how-to-analyze-chess-games-for-beginners": [
       `start at 8 pieces with ${medium.memorizeTime} seconds. that is ${word(8 - medium.pieceCount)} more pieces than the ${medium.pieceCount}-piece medium preset`,
+    ],
+    "chess-position-memory-trainers-compared": [
+      `any count from ${PIECE_COUNT_RANGE.min} to ${PIECE_COUNT_RANGE.max}. presets are ${easy.pieceCount}, ${medium.pieceCount}, ${hard.pieceCount} and ${grandmaster.pieceCount}`,
+      `any time from ${MEMORIZE_SECONDS_RANGE.min} to ${MEMORIZE_SECONDS_RANGE.max} seconds`,
+      `set any count from ${PIECE_COUNT_RANGE.min} to ${PIECE_COUNT_RANGE.max} pieces and a look of ${MEMORIZE_SECONDS_RANGE.min} to ${MEMORIZE_SECONDS_RANGE.max} seconds`,
+      `${word(medium.pieceCount)} pieces with ${word(medium.memorizeTime)} seconds is the medium preset`,
+    ],
+    "memory-chess-vs-lichess-coordinate-trainer": [
+      `shows a position for ${MEMORIZE_SECONDS_RANGE.min} to ${MEMORIZE_SECONDS_RANGE.max} seconds`,
+      `presets of ${easy.pieceCount}, ${medium.pieceCount}, ${hard.pieceCount} and ${grandmaster.pieceCount} pieces, or any count from ${PIECE_COUNT_RANGE.min} to ${PIECE_COUNT_RANGE.max}`,
+    ],
+    "memory-chess-vs-darksquares": [
+      `from ${PIECE_COUNT_RANGE.min} to ${PIECE_COUNT_RANGE.max} pieces, with no account and in ${LOCALES.length} languages`,
+      `any look from ${MEMORIZE_SECONDS_RANGE.min} to ${MEMORIZE_SECONDS_RANGE.max} seconds`,
+      `${word(hard.pieceCount)} pieces in ${word(hard.memorizeTime)} seconds is the hard preset`,
+      `the site is in ${LOCALES.length} languages`,
     ],
     "blindfold-chess-training-for-beginners": [
       `the easiest preset in memory chess is ${easy.pieceCount} pieces`,

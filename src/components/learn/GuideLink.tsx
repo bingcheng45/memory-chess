@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
@@ -15,7 +16,10 @@ type GuideLinkProps = DataAttributes & {
   readonly children: ReactNode;
 };
 
-/** A link from a guide: in the reader's locale where the target is served in it, else to the bare English URL. */
+/**
+ * A link from a guide: in the reader's locale where the target is served in it, else to the bare English URL. The
+ * locale-aware Link given `locale="en"` writes `/en/...`, which costs a redirect, so the English link is a plain one.
+ */
 export default function GuideLink({ href, locale, className, marked = true, children, ...data }: GuideLinkProps) {
   const path = href.split(/[?#]/)[0];
   if (locale === DEFAULT_LOCALE || !isServedAtBareEnglishUrl(path, locale)) {
@@ -26,9 +30,9 @@ export default function GuideLink({ href, locale, className, marked = true, chil
     );
   }
   return (
-    <Link href={href} locale={DEFAULT_LOCALE} hrefLang={DEFAULT_LOCALE} className={className} {...data}>
+    <NextLink href={href} hrefLang={DEFAULT_LOCALE} className={className} {...data}>
       {children}
       {marked ? englishOnlyLinkSuffix(locale) : null}
-    </Link>
+    </NextLink>
   );
 }

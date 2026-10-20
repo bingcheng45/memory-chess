@@ -1,11 +1,6 @@
 import { articlePath } from "@/lib/articles/paths";
 import type { GuideCopy } from "@/lib/seo/learn/copy";
-import {
-  ctaHref,
-  DAILY_PATH,
-  guidePath,
-  guideRoundHref,
-} from "@/lib/seo/learn/links";
+import { ctaHref, DAILY_PATH, guidePath, guideRoundHref } from "@/lib/seo/learn/links";
 import type { CtaBlock, LearnBlock, Rich } from "@/lib/seo/learn/schema";
 import { AFFILIATE, AMAZON_DISCLOSURE } from "@/lib/affiliate/amazon";
 import GuideLink from "./GuideLink";
@@ -14,35 +9,18 @@ import LearnBoard from "./LearnBoard";
 import LearnRulesDemo from "./LearnRulesDemo";
 import { WoodenSetIllustration } from "./WoodenSet";
 
-export type TitleLookup = {
-  readonly guide: (slug: string) => string;
-  readonly article: (slug: string) => string;
-};
+export type TitleLookup = { readonly guide: (slug: string) => string; readonly article: (slug: string) => string };
 
 /** The language a guide is read in: its chrome and its locale, which decides where each link goes. */
-export type GuideContext = {
-  readonly copy: GuideCopy;
-  readonly locale: string;
-};
+export type GuideContext = { readonly copy: GuideCopy; readonly locale: string };
 
-function RichText({
-  value,
-  locale,
-}: {
-  readonly value: Rich;
-  readonly locale: string;
-}) {
+function RichText({ value, locale }: { readonly value: Rich; readonly locale: string }) {
   if (typeof value === "string") return value;
   return value.map((part, index) =>
     typeof part === "string" ? (
       part
     ) : (
-      <GuideLink
-        key={`${part.href}-${index}`}
-        href={part.href}
-        locale={locale}
-        className="lg-link"
-      >
+      <GuideLink key={`${part.href}-${index}`} href={part.href} locale={locale} className="lg-link">
         {part.text}
       </GuideLink>
     ),
@@ -61,21 +39,9 @@ function ctaTag(block: CtaBlock, copy: GuideCopy): string {
   }
 }
 
-function Cta({
-  block,
-  context: { copy, locale },
-}: {
-  readonly block: CtaBlock;
-  readonly context: GuideContext;
-}) {
+function Cta({ block, context: { copy, locale } }: { readonly block: CtaBlock; readonly context: GuideContext }) {
   return (
-    <GuideLink
-      href={ctaHref(block.target)}
-      locale={locale}
-      marked={false}
-      className="lg-cta"
-      data-cta-kind={block.target.kind}
-    >
+    <GuideLink href={ctaHref(block.target)} locale={locale} marked={false} className="lg-cta" data-cta-kind={block.target.kind}>
       <span className="lg-cta-text">
         <span className="lg-cta-tag">{ctaTag(block, copy)}</span>
         <b>{block.target.label}</b>
@@ -95,12 +61,7 @@ interface LearnBlockViewProps {
   readonly context: GuideContext;
 }
 
-export default function LearnBlockView({
-  block,
-  figure = 0,
-  titles,
-  context,
-}: LearnBlockViewProps) {
+export default function LearnBlockView({ block, figure = 0, titles, context }: LearnBlockViewProps) {
   const { copy, locale } = context;
   switch (block.kind) {
     case "prose":
@@ -119,11 +80,7 @@ export default function LearnBlockView({
           <RichText value={item} locale={locale} />
         </li>
       ));
-      return block.ordered ? (
-        <ol className="lg-list">{items}</ol>
-      ) : (
-        <ul className="lg-list">{items}</ul>
-      );
+      return block.ordered ? <ol className="lg-list">{items}</ol> : <ul className="lg-list">{items}</ul>;
     }
     case "takeaway":
       return (
@@ -138,24 +95,13 @@ export default function LearnBlockView({
       return (
         <figure className="lg-image">
           {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src={block.src}
-            width={block.width}
-            height={block.height}
-            alt={block.alt}
-            loading="lazy"
-            decoding="async"
-          />
+          <img src={block.src} width={block.width} height={block.height} alt={block.alt} loading="lazy" decoding="async" />
           <figcaption>
             {block.caption}
             {block.credit === "own" ? null : (
               <>
                 {" "}
-                <a
-                  className="lg-link"
-                  href={block.credit.sourceUrl}
-                  rel="noopener noreferrer"
-                >
+                <a className="lg-link" href={block.credit.sourceUrl} rel="noopener noreferrer">
                   {block.credit.author}, {block.credit.license}
                 </a>
               </>
@@ -172,8 +118,7 @@ export default function LearnBlockView({
                 <span>{drill.duration}</span>
                 {drill.play ? (
                   <span className="lg-chip">
-                    {copy.pieces(drill.play.pieceCount)} ·{" "}
-                    {copy.secondsToLook(drill.play.memorizeTime)}
+                    {copy.pieces(drill.play.pieceCount)} · {copy.secondsToLook(drill.play.memorizeTime)}
                   </span>
                 ) : (
                   <span className="lg-chip">{copy.atABoard}</span>
@@ -187,11 +132,7 @@ export default function LearnBlockView({
                 <b>{copy.aimFor}</b> {drill.goal}
               </p>
               {drill.play ? (
-                <GuideLink
-                  href={guideRoundHref(drill.play)}
-                  locale={locale}
-                  className="lab-btn lab-btn-secondary lab-btn-sm"
-                >
+                <GuideLink href={guideRoundHref(drill.play)} locale={locale} className="lab-btn lab-btn-secondary lab-btn-sm">
                   {drill.play.label}
                 </GuideLink>
               ) : null}
@@ -278,17 +219,11 @@ export default function LearnBlockView({
           {block.items.map((item) => (
             <li key={item.slug}>
               <GuideLink
-                href={
-                  item.kind === "guide"
-                    ? guidePath(item.slug)
-                    : articlePath(item.slug)
-                }
+                href={item.kind === "guide" ? guidePath(item.slug) : articlePath(item.slug)}
                 locale={locale}
                 className="lg-further-title"
               >
-                {item.kind === "guide"
-                  ? titles.guide(item.slug)
-                  : titles.article(item.slug)}
+                {item.kind === "guide" ? titles.guide(item.slug) : titles.article(item.slug)}
               </GuideLink>
               <p>{item.reason}</p>
             </li>
@@ -301,12 +236,7 @@ export default function LearnBlockView({
           {block.items.map((source) => (
             <li key={source.url}>
               <cite>
-                <a
-                  className="lg-link"
-                  href={source.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <a className="lg-link" href={source.url} target="_blank" rel="noopener noreferrer">
                   {source.title}
                 </a>
               </cite>

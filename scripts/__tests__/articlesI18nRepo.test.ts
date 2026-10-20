@@ -20,4 +20,11 @@ describe("the translations this repo serves", () => {
     expect({ stderr: run.stderr, status: run.status }).toEqual({ stderr: "", status: 0 });
     expect(run.stdout).toMatch(/^ok verify --pages: /);
   });
+
+  it("pass the lever's verify of the guides, so every locale that serves them has reviewed, current translations", () => {
+    const run = spawnSync(process.execPath, [LEVER_PATH, "--guides", "verify"], { cwd: REPO_ROOT, encoding: "utf8" });
+
+    expect({ stderr: run.stderr, status: run.status }).toEqual({ stderr: "", status: 0 });
+    expect(run.stdout).toBe("ok verify --guides: ru, pt-BR, fr, de, es\n");
+  });
 });

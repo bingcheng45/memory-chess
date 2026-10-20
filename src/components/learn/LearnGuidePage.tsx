@@ -1,3 +1,4 @@
+import NextLink from "next/link";
 import { Link } from "@/i18n/navigation";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { LabPaperHeader } from "@/components/lab-paper/LabPaperHeader";
@@ -9,10 +10,7 @@ import type { LocalizedGuide } from "@/lib/seo/learn/load";
 import { guideStructuredData } from "@/lib/seo/learn/structuredData";
 import type { BodyBlock, EndBlock, LearnSection } from "@/lib/seo/learn/schema";
 import GuideLink from "./GuideLink";
-import LearnBlockView, {
-  type GuideContext,
-  type TitleLookup,
-} from "./LearnBlockView";
+import LearnBlockView, { type GuideContext, type TitleLookup } from "./LearnBlockView";
 import LearnQuickPlay from "./LearnQuickPlay";
 import LearnRailTracker from "./LearnRailTracker";
 import "./learn.css";
@@ -21,12 +19,8 @@ const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-function figureNumbers(
-  sections: readonly LearnSection[],
-): Map<BodyBlock, number> {
-  const boards = sections
-    .flatMap((section) => section.blocks)
-    .filter((block) => block.kind === "board");
+function figureNumbers(sections: readonly LearnSection[]): Map<BodyBlock, number> {
+  const boards = sections.flatMap((section) => section.blocks).filter((block) => block.kind === "board");
   return new Map(boards.map((block, index) => [block, index + 1]));
 }
 
@@ -37,52 +31,28 @@ interface LearnGuidePageProps {
   readonly titles: TitleLookup;
 }
 
-type PartProps = {
-  readonly titles: TitleLookup;
-  readonly context: GuideContext;
-};
+type PartProps = { readonly titles: TitleLookup; readonly context: GuideContext };
 
-function Section({
-  section,
-  figures,
-  titles,
-  context,
-}: PartProps & { section: LearnSection; figures: Map<BodyBlock, number> }) {
+function Section({ section, figures, titles, context }: PartProps & { section: LearnSection; figures: Map<BodyBlock, number> }) {
   return (
-    <section
-      id={section.id}
-      className="lg-section"
-      aria-labelledby={`${section.id}-h`}
-    >
+    <section id={section.id} className="lg-section" aria-labelledby={`${section.id}-h`}>
       <h2 id={`${section.id}-h`}>{section.heading}</h2>
       {section.summary ? <p className="lg-summary">{section.summary}</p> : null}
       {section.blocks.map((block, index) => (
-        <LearnBlockView
-          key={index}
-          block={block}
-          figure={figures.get(block)}
-          titles={titles}
-          context={context}
-        />
+        <LearnBlockView key={index} block={block} figure={figures.get(block)} titles={titles} context={context} />
       ))}
     </section>
   );
 }
 
 function EndPart({ block, titles, context }: PartProps & { block: EndBlock }) {
-  const view = (
-    <LearnBlockView block={block} titles={titles} context={context} />
-  );
+  const view = <LearnBlockView block={block} titles={titles} context={context} />;
   switch (block.kind) {
     case "cta":
       return view;
     case "faq":
       return (
-        <section
-          id={FAQ_ANCHOR}
-          className="lg-section"
-          aria-labelledby={`${FAQ_ANCHOR}-h`}
-        >
+        <section id={FAQ_ANCHOR} className="lg-section" aria-labelledby={`${FAQ_ANCHOR}-h`}>
           <h2 id={`${FAQ_ANCHOR}-h`}>{context.copy.faq}</h2>
           {view}
         </section>
@@ -104,11 +74,7 @@ function EndPart({ block, titles, context }: PartProps & { block: EndBlock }) {
   }
 }
 
-export default function LearnGuidePage({
-  guide,
-  siblings,
-  titles,
-}: LearnGuidePageProps) {
+export default function LearnGuidePage({ guide, siblings, titles }: LearnGuidePageProps) {
   const { page, copy: COPY, locale } = guide;
   const context: GuideContext = { copy: COPY, locale };
   const { meta, intro, group } = page;
@@ -146,28 +112,19 @@ export default function LearnGuidePage({
           {page.comparison ? (
             <p className="lg-disclosure" data-compare-disclosure>
               {page.comparison.disclosure}{" "}
-              <time dateTime={page.comparison.checkedAt}>
-                {COPY.checked(COPY.date(page.comparison.checkedAt))}
-              </time>
-              .
+              <time dateTime={page.comparison.checkedAt}>{COPY.checked(COPY.date(page.comparison.checkedAt))}</time>.
             </p>
           ) : null}
           <LearnQuickPlay
             unrated={newReaderRound(page.primaryCta)}
             locale={locale}
-            copy={{
-              quickPlay: COPY.quickPlay,
-              tryRound: COPY.chrome.tryRound,
-              dailyBoard: COPY.dailyBoard,
-            }}
+            copy={{ quickPlay: COPY.quickPlay, tryRound: COPY.chrome.tryRound, dailyBoard: COPY.dailyBoard }}
           />
           <ul className="lg-meta">
             <li>{COPY.level(meta.level)}</li>
             <li>{COPY.minRead(page.readingMinutes)}</li>
             <li>
-              <time dateTime={meta.updatedAt}>
-                {COPY.updated(COPY.date(meta.updatedAt))}
-              </time>
+              <time dateTime={meta.updatedAt}>{COPY.updated(COPY.date(meta.updatedAt))}</time>
             </li>
             <li data-learn-byline>
               {COPY.by} <Link href={AUTHOR_PATH}>{LEARN_AUTHOR.name}</Link>
@@ -179,14 +136,9 @@ export default function LearnGuidePage({
           {locale === DEFAULT_LOCALE ? null : (
             <p data-translation-note className="lg-note">
               {COPY.translationNote}{" "}
-              <Link
-                href={guidePath(meta.slug)}
-                locale={DEFAULT_LOCALE}
-                hrefLang={DEFAULT_LOCALE}
-                className="lg-link"
-              >
+              <NextLink href={guidePath(meta.slug)} hrefLang={DEFAULT_LOCALE} className="lg-link">
                 {COPY.readInEnglish}
-              </Link>
+              </NextLink>
             </p>
           )}
         </header>
@@ -247,31 +199,15 @@ export default function LearnGuidePage({
 
             <div className="lg-body">
               {page.sections.map((section) => (
-                <Section
-                  key={section.id}
-                  section={section}
-                  figures={figures}
-                  titles={titles}
-                  context={context}
-                />
+                <Section key={section.id} section={section} figures={figures} titles={titles} context={context} />
               ))}
               <div className="lg-ctas">
                 {ctas.map((block, index) => (
-                  <EndPart
-                    key={index}
-                    block={block}
-                    titles={titles}
-                    context={context}
-                  />
+                  <EndPart key={index} block={block} titles={titles} context={context} />
                 ))}
               </div>
               {rest.map((block) => (
-                <EndPart
-                  key={block.kind}
-                  block={block}
-                  titles={titles}
-                  context={context}
-                />
+                <EndPart key={block.kind} block={block} titles={titles} context={context} />
               ))}
               <div className="lg-after">
                 <p className="lg-after-label">{group.label}</p>

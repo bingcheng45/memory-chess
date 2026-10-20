@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Entrena tu memoria y tu visualización en el ajedrez",
-      "freeToPlay": "Gratis y sin necesidad de crear una cuenta. También puedes comparar tu puntuación en la <link>clasificación</link>."
+      "freeToPlay": "Gratis y sin necesidad de crear una cuenta. También puedes comparar tu puntuación en la <link>clasificación</link>.",
+      "boardGame": "¿Buscas el juego de mesa de madera Memory Chess? <link>Lee sus reglas</link>."
     },
     "cta": {
       "leaderboard": "Ver la clasificación",
@@ -111,8 +112,7 @@
           "question": "¿Con qué frecuencia debería practicar?",
           "answer": "Unas pocas rondas concentradas de forma regular es un buen punto de partida. Mantén las sesiones lo bastante cortas como para poder estudiar cada posición con calma."
         }
-      ],
-      "boardGame": "¿Buscas el juego de mesa de madera Memory Chess? <link>Lee sus reglas</link>."
+      ]
     },
     "lab": {
       "index": {

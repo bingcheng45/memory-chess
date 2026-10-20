@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: チェスの記憶力とイメージ力を鍛える",
-      "freeToPlay": "アカウント不要、無料で遊べます。スコアは<link>ランキング</link>で比べることもできます。"
+      "freeToPlay": "アカウント不要、無料で遊べます。スコアは<link>ランキング</link>で比べることもできます。",
+      "boardGame": "木製ボードゲームの Memory Chess をお探しですか？<link>遊び方を読む</link>。"
     },
     "cta": {
       "leaderboard": "ランキングを見る",
@@ -111,8 +112,7 @@
           "question": "どのくらいの頻度で練習すべきですか？",
           "answer": "集中して数ラウンドを定期的に、が良い出発点です。1 局面ずつしっかり見られる程度の短さに保ちましょう。"
         }
-      ],
-      "boardGame": "木製ボードゲームの Memory Chess をお探しですか？<link>遊び方を読む</link>。"
+      ]
     },
     "lab": {
       "index": {

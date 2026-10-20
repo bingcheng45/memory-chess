@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: 训练你的国际象棋记忆与盘面想象力",
-      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。"
+      "freeToPlay": "完全免费，无需注册。你还可以在<link>排行榜</link>上比较自己的成绩。",
+      "boardGame": "在找木制桌游 Memory Chess？<link>阅读玩法规则</link>。"
     },
     "cta": {
       "leaderboard": "查看排行榜",
@@ -111,8 +112,7 @@
           "question": "应该多久练一次？",
           "answer": "保持规律，每次专注地玩几轮，就是很好的开始。每次时间别太长，确保你还能认真观察每一个棋局。"
         }
-      ],
-      "boardGame": "在找木制桌游 Memory Chess？<link>阅读玩法规则</link>。"
+      ]
     },
     "lab": {
       "index": {

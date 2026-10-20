@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory chess game · chess memory trainer",
-      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>."
+      "freeToPlay": "Free to play, with no account needed. You can also compare your score on the <link>leaderboard</link>.",
+      "boardGame": "Looking for the wooden Memory Chess board game? <link>Read its rules</link>."
     },
     "cta": {
       "leaderboard": "View leaderboard",
@@ -111,8 +112,7 @@
           "question": "How often should I practice?",
           "answer": "A few focused rounds on a regular schedule is a good place to start. Keep sessions short enough that you can still study each position carefully."
         }
-      ],
-      "boardGame": "Looking for the wooden Memory Chess board game? <link>Read its rules</link>."
+      ]
     },
     "lab": {
       "index": {

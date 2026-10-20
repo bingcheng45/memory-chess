@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Trénujte šachovou paměť a představivost",
-      "freeToPlay": "Zdarma a bez zakládání účtu. Své skóre můžete porovnat i v <link>žebříčku</link>."
+      "freeToPlay": "Zdarma a bez zakládání účtu. Své skóre můžete porovnat i v <link>žebříčku</link>.",
+      "boardGame": "Hledáte dřevěnou deskovou hru Memory Chess? <link>Přečtěte si pravidla</link>."
     },
     "cta": {
       "leaderboard": "Zobrazit žebříček",
@@ -111,8 +112,7 @@
           "question": "Jak často trénovat?",
           "answer": "Pár soustředěných kol pravidelně je dobrý začátek. Udržujte lekce dost krátké na to, abyste si každou pozici stále pečlivě prohlédli."
         }
-      ],
-      "boardGame": "Hledáte dřevěnou deskovou hru Memory Chess? <link>Přečtěte si pravidla</link>."
+      ]
     },
     "lab": {
       "index": {

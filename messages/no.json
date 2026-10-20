@@ -57,7 +57,8 @@
     },
     "hero": {
       "title": "Memory Chess: Tren sjakkhukommelsen og forestillingsevnen din",
-      "freeToPlay": "Gratis å spille, uten konto. Du kan også sammenligne poengsummen din på <link>topplisten</link>."
+      "freeToPlay": "Gratis å spille, uten konto. Du kan også sammenligne poengsummen din på <link>topplisten</link>.",
+      "boardGame": "Leter du etter brettspillet Memory Chess i tre? <link>Les reglene</link>."
     },
     "cta": {
       "leaderboard": "Se topplisten",
@@ -111,8 +112,7 @@
           "question": "Hvor ofte bør jeg trene?",
           "answer": "Noen fokuserte runder jevnlig er en god start. Hold øktene korte nok til at du fortsatt studerer hver stilling grundig."
         }
-      ],
-      "boardGame": "Leter du etter brettspillet Memory Chess i tre? <link>Les reglene</link>."
+      ]
     },
     "lab": {
       "index": {

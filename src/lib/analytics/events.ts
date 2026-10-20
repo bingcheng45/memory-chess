@@ -135,6 +135,11 @@ export type FunnelEvent =
   | {
       name: "result_share";
       params: ShareParams;
+    }
+  /** A shop link followed from a guide. GA4's page_location already names the guide. */
+  | {
+      name: "affiliate_click";
+      params: { store: "amazon" };
     };
 
 export type LearnSearchSurface = "hub" | "server";

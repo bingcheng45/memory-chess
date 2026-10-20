@@ -34,6 +34,7 @@ const EVENTS: FunnelEvent[] = [
   },
   { name: "learn_search_select", params: { slug: "chess-memory-training", rank: 1, matched_question: false, surface: "server" } },
   { name: "round_intro_view", params: { piece_count: 3, memorize_time: 10, round_source: "link" } },
+  { name: "affiliate_click", params: { store: "amazon" } },
 ];
 
 afterEach(() => {

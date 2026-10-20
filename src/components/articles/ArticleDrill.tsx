@@ -12,15 +12,14 @@ const DRILL_WHY_ID = "article-drill-why";
 const articleRoundHref = ({ pieceCount, memorizeTime }: { pieceCount: number; memorizeTime: number }) =>
   playHref(pieceCount, memorizeTime, "article_cta");
 
-export function EarlyDrillLink() {
+export function EarlyDrillLink({ drill }: { drill: Drill }) {
   const t = useTranslations("articles.page");
-  const round = useReaderRound();
 
   return (
     <p className="art-early mt-5">
-      <Link href={articleRoundHref(round)} data-article-early-drill className="art-early-link inline-flex min-h-11 items-center gap-2">
+      <Link href={articleRoundHref(drill)} data-article-early-drill className="art-early-link inline-flex min-h-11 items-center gap-2">
         <b>{t("drillHeading")}</b>
-        <span>{t("drillAction", { pieces: round.pieceCount, seconds: round.memorizeTime })}</span>
+        <span>{t("drillAction", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}</span>
         <span aria-hidden="true">→</span>
       </Link>
     </p>

@@ -21,7 +21,7 @@ Keep the Search Console connection. Bing states it "will periodically validate y
 
 ## Check the old Vercel address
 
-1. Open **URL Inspection** and enter `https://memory-chess.vercel.app/`. Bing can only inspect hosts you have verified. If Bing refuses it, add that host as its own site and verify it first. It should show the permanent redirect to `https://thememorychess.com/`.
+1. Open **URL Inspection** and enter `https://memory-chess.vercel.app/`. If Bing refuses it, add that host as its own site and verify it first. It should show the permanent redirect to `https://thememorychess.com/`.
 2. Then inspect `https://thememorychess.com/` and, if it is not indexed or shows the old title, use **Request indexing**.
 
 ## Push changes with IndexNow
@@ -34,5 +34,9 @@ The key file is served at `https://thememorychess.com/5a02a3bb61bac459c5a1003403
 - Removed URLs are dropped from the state. A URL that comes back is submitted as new.
 - To submit the whole sitemap by hand, run `npm run indexnow:submit` locally, or start the IndexNow workflow from the Actions tab, which sends the whole sitemap and records it in the state. Add `--state .indexnow/state.json` to a local run to use the diff and record it.
 - To see the payload without sending it, run `npm run indexnow:submit -- --dry-run`. Use `--urls a,b` for a subset.
-- IndexNow shares the submission with Bing and the other participating engines. A 200 or 202 answer means received, not indexed.
-- Any answer other than 200 or 202 fails the run and prints the response body. 400 means a bad request, 403 means the key is not valid or its file was not found, 422 means a URL does not belong to the host or the key does not match, and 429 means too many requests or potential spam.
+- IndexNow shares the submission with Bing and the other participating engines. A 200 or 202 answer means received, not indexed: the documentation says the 200 code "only indicates that the search engine has received your URL" ([indexnow.org/documentation](https://www.indexnow.org/documentation)).
+- Any answer other than 200 or 202 fails the run and prints the response body. The status meanings come from the same documentation table: 400 invalid format, 403 key not valid, 422 a URL does not belong to the host or the key is not matching the schema, 429 too many requests (potential spam).
+
+## After merge
+
+After the first two Production deploys, run `gh api repos/bingcheng45/memory-chess/actions/caches` and check that an `indexnow-state-*` entry exists, and that the second run logged "nothing to submit". If it did not, the cache is not restoring for `deployment_status` runs.

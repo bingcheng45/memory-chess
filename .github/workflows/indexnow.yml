@@ -4,16 +4,15 @@ on:
   deployment_status:
   workflow_dispatch:
 
-concurrency:
-  group: indexnow
-  cancel-in-progress: false
-
 permissions:
   contents: read
 
 jobs:
   submit:
     if: github.event_name == 'workflow_dispatch' || (github.event.deployment_status.state == 'success' && github.event.deployment.environment == 'Production')
+    concurrency:
+      group: indexnow
+      cancel-in-progress: false
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:

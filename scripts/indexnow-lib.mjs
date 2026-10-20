@@ -8,10 +8,10 @@ export const MAX_URLS = 10_000;
 const MAX_BODY_CHARS = 500;
 
 const STATUS_MEANING = {
-  400: "Bad request: the payload is not valid JSON or a field is missing.",
-  403: "Forbidden: the key is not valid, or the key file was not found at keyLocation.",
-  422: "Unprocessable: a URL does not belong to the host, or the key does not match the schema.",
-  429: "Too many requests: the host was flagged as potential spam, or submissions are too frequent.",
+  400: "Bad request: invalid format.",
+  403: "Forbidden: the key is not valid (for example the key was not found, or the file was found but the key is not in it).",
+  422: "Unprocessable: a URL does not belong to the host, or the key is not matching the schema in the protocol.",
+  429: "Too many requests (potential spam).",
 };
 
 const XML_ENTITIES = { "&amp;": "&", "&lt;": "<", "&gt;": ">", "&quot;": '"', "&apos;": "'" };

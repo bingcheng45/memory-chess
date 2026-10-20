@@ -211,10 +211,10 @@ describe("run", () => {
   });
 
   it.each([
-    [400, "Bad request: the payload is not valid JSON or a field is missing."],
-    [403, "Forbidden: the key is not valid, or the key file was not found at keyLocation."],
-    [422, "Unprocessable: a URL does not belong to the host, or the key does not match the schema."],
-    [429, "Too many requests: the host was flagged as potential spam, or submissions are too frequent."],
+    [400, "Bad request: invalid format."],
+    [403, "Forbidden: the key is not valid (for example the key was not found, or the file was found but the key is not in it)."],
+    [422, "Unprocessable: a URL does not belong to the host, or the key is not matching the schema in the protocol."],
+    [429, "Too many requests (potential spam)."],
   ])("on %i prints the body and the meaning, exits 1 and keeps the old state", async (status, meaning) => {
     const h = harness({ status, body: '{"detail":"nope"}' });
     expect(await h.exec("--state", STATE)).toBe(1);

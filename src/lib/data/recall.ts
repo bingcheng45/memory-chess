@@ -19,6 +19,7 @@ export interface RecallDataset {
   readonly minRounds: number;
   readonly minPlayers: number;
   readonly totalRounds: number;
+  readonly totalPlayers: number;
   readonly roundsWithoutSettings: number;
   readonly roundsInSmallCells: number;
   readonly publishedRounds: number;

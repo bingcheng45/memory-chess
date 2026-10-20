@@ -41,8 +41,11 @@ const mcpReport = (dimensions: string[], metrics: string[], rows: (string | numb
   })),
 });
 
+const TOTAL_ROWS: number[][] = [[91, 12]];
+
 const HISTOGRAM_COLUMNS = [["customEvent:piece_count", "customEvent:memorize_time", "customEvent:accuracy"], ["eventCount"]] as const;
 const PLAYER_COLUMNS = [["customEvent:piece_count", "customEvent:memorize_time"], ["eventCount", "totalUsers"]] as const;
+const TOTAL_METRICS = ["eventCount", "totalUsers"];
 
 let dir: string;
 
@@ -72,6 +75,7 @@ it("summarizes each cell with enough rounds and players, and counts the rounds i
   const result = run([
     save("histogram.json", restReport([...HISTOGRAM_COLUMNS[0]], [...HISTOGRAM_COLUMNS[1]], HISTOGRAM_ROWS)),
     save("players.json", restReport([...PLAYER_COLUMNS[0]], [...PLAYER_COLUMNS[1]], PLAYER_ROWS)),
+    save("total.json", restReport([], TOTAL_METRICS, TOTAL_ROWS)),
   ]);
 
   expect(result.stdout).toBe("ok 1 cells, 33 of 87 rounds, 2026-09-29 to 2026-10-19\n");
@@ -84,6 +88,7 @@ it("summarizes each cell with enough rounds and players, and counts the rounds i
     minRounds: 30,
     minPlayers: 5,
     totalRounds: 87,
+    totalPlayers: 12,
     roundsWithoutSettings: 4,
     roundsInSmallCells: 50,
     publishedRounds: 33,
@@ -114,6 +119,7 @@ it("reads the analytics tool's snake_case reports in one batch file and writes t
   run([
     save("histogram.json", restReport([...HISTOGRAM_COLUMNS[0]], [...HISTOGRAM_COLUMNS[1]], HISTOGRAM_ROWS)),
     save("players.json", restReport([...PLAYER_COLUMNS[0]], [...PLAYER_COLUMNS[1]], PLAYER_ROWS)),
+    save("total.json", restReport([], TOTAL_METRICS, TOTAL_ROWS)),
   ]);
   const fromRest = read("latest.csv") + read("latest.json");
 
@@ -121,6 +127,7 @@ it("reads the analytics tool's snake_case reports in one batch file and writes t
     reports: [
       mcpReport([...PLAYER_COLUMNS[0]], [...PLAYER_COLUMNS[1]], PLAYER_ROWS),
       mcpReport([...HISTOGRAM_COLUMNS[0]], [...HISTOGRAM_COLUMNS[1]], HISTOGRAM_ROWS),
+      mcpReport([], TOTAL_METRICS, TOTAL_ROWS),
     ],
   };
   const result = run([save("batch.json", batch)]);
@@ -133,6 +140,6 @@ it("refuses an export without the players report and writes nothing", () => {
   const result = run([save("histogram.json", restReport([...HISTOGRAM_COLUMNS[0]], [...HISTOGRAM_COLUMNS[1]], HISTOGRAM_ROWS))]);
 
   expect(result.status).toBe(2);
-  expect(result.stderr).toBe("recall-from-ga4: need exactly one accuracy histogram report and one players report, got 1 and 0\n");
+  expect(result.stderr).toBe("recall-from-ga4: need exactly one accuracy histogram report, one players report and one total players report, got 1, 0 and 0\n");
   expect(readdirSync(dir)).toEqual(["histogram.json"]);
 });

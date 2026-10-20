@@ -19,6 +19,7 @@ const DATASET: RecallDataset = {
   minRounds: 30,
   minPlayers: 5,
   totalRounds: 300,
+  totalPlayers: 40,
   roundsWithoutSettings: 0,
   roundsInSmallCells: 60,
   publishedRounds: 240,

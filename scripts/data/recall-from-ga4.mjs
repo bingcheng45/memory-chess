@@ -32,7 +32,7 @@ function tableOf(report) {
     dimensions: names(pick(report, "dimensionHeaders", "dimension_headers")),
     metrics: names(pick(report, "metricHeaders", "metric_headers")),
     rows: (report.rows ?? []).map((row) => ({
-      dimensions: pick(row, "dimensionValues", "dimension_values").map((cell) => cell.value),
+      dimensions: (pick(row, "dimensionValues", "dimension_values") ?? []).map((cell) => cell.value),
       metrics: pick(row, "metricValues", "metric_values").map((cell) => Number(cell.value)),
     })),
   };
@@ -43,10 +43,13 @@ const sameColumns = (actual, expected) => actual.length === expected.length && a
 function classify(tables) {
   const histogram = tables.filter((table) => sameColumns(table.dimensions, [PIECES, SECONDS, ACCURACY]) && sameColumns(table.metrics, ["eventCount"]));
   const players = tables.filter((table) => sameColumns(table.dimensions, [PIECES, SECONDS]) && sameColumns(table.metrics, ["eventCount", "totalUsers"]));
-  if (histogram.length !== 1 || players.length !== 1) {
-    throw new UsageError(`need exactly one accuracy histogram report and one players report, got ${histogram.length} and ${players.length}`);
+  const total = tables.filter((table) => table.dimensions.length === 0 && sameColumns(table.metrics, ["eventCount", "totalUsers"]));
+  if (histogram.length !== 1 || players.length !== 1 || total.length !== 1) {
+    throw new UsageError(
+      `need exactly one accuracy histogram report, one players report and one total players report, got ${histogram.length}, ${players.length} and ${total.length}`,
+    );
   }
-  return { histogram: histogram[0], players: players[0] };
+  return { histogram: histogram[0], players: players[0], total: total[0] };
 }
 
 const wholeNumber = (value) => (/^\d+$/.test(value) ? Number(value) : null);
@@ -108,7 +111,7 @@ function summarize({ pieces, seconds, counts }, players) {
 }
 
 function recallDataset(reports, { start, end }) {
-  const { histogram, players } = classify(reports.flatMap((report) => (report.reports ?? [report]).map(tableOf)));
+  const { histogram, players, total: totals } = classify(reports.flatMap((report) => (report.reports ?? [report]).map(tableOf)));
   const { cells, total, unset } = histogramCells(histogram);
   const users = playersByCell(players);
   const summaries = [...cells].map(([key, cell]) => summarize(cell, users.get(key) ?? 0));
@@ -125,6 +128,7 @@ function recallDataset(reports, { start, end }) {
     minRounds: MIN_ROUNDS,
     minPlayers: MIN_PLAYERS,
     totalRounds: total,
+    totalPlayers: totals.rows[0].metrics[1],
     roundsWithoutSettings: unset,
     roundsInSmallCells: total - unset - publishedRounds,
     publishedRounds,

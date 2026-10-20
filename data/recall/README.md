@@ -5,7 +5,7 @@ How well people recall chess positions in [Memory Chess](https://thememorychess.
 - `latest.csv` and `latest.json`: the current release.
 - `<yyyy-mm-dd>.json`: each release, named by the last day it covers.
 
-Current release: 29 September to 19 October 2026, 3,734 finished rounds, of which 2,564 fall in the 11 published cells.
+Current release: 29 September to 19 October 2026, 3,734 finished rounds from 347 players, of which 2,564 fall in the 11 published cells.
 
 ## Fields
 
@@ -21,7 +21,7 @@ Current release: 29 September to 19 October 2026, 3,734 finished rounds, of whic
 | `perfect_share` | `perfectShare` | Percent of rounds scored 100: every piece on its square, nothing extra. |
 | `zero_share` | `zeroShare` | Percent of rounds scored 0, which includes empty boards (see Limits). |
 
-The JSON also gives the totals: `totalRounds` in the date range, `roundsWithoutSettings` (events that reached GA4 without their parameters), `roundsInSmallCells` (left out by the thresholds below) and `publishedRounds`.
+The JSON also gives the totals: `totalRounds` in the date range, `totalPlayers` (distinct GA4 users who finished a round in the range, from a third report), `roundsWithoutSettings` (events that reached GA4 without their parameters), `roundsInSmallCells` (left out by the thresholds below) and `publishedRounds`.
 
 ## Method
 
@@ -39,8 +39,8 @@ The JSON also gives the totals: `totalRounds` in the date range, `roundsWithoutS
 - Players chose to play and chose their settings, so a cell describes the people who chose it, not everyone. There are no ratings; that stronger players pick harder settings is a judgement, not a measurement.
 - Repeat players weigh more. A player who finished 50 rounds counts 50 times. Compare `rounds` with `players`.
 - 6 pieces with 10 seconds is the default round, and the home page's calibration round uses the same setting and is pooled into it. That cell holds the most players.
-- The game changed during this release. The calibration round's event, review rounds, the daily board and the free skip were all added between 8 and 14 October, so the earliest days hold none of them.
-- An empty board counts as a round that scored 0. Since mid-October the game has accepted one empty board a day as a free skip, and the event cannot tell a skip from a real 0 (it sends no count of pieces placed), so skips are in the data. `zero_share` gives each setting's share of rounds that scored 0: 15.7% at 6 pieces and 10 seconds in this release.
+- The game changed during this release. The calibration round's event, review rounds, the daily board and the free skip all reached players on 14 October, so the 15 days before then hold none of them.
+- An empty board counts as a round that scored 0. Since 14 October the game has accepted one empty board a day as a free skip, and the event cannot tell a skip from a real 0 (it sends no count of pieces placed), so skips are in the data. `zero_share` gives each setting's share of rounds that scored 0: 15.7% at 6 pieces and 10 seconds in this release.
 - Review rounds and the daily board are pooled with the other rounds. The event's `round_source` parameter is not a registered GA4 dimension, and the older `source` parameter it replaced (PR 118, 18 October) reached GA4 for under a quarter of this release's rounds, so the data cannot separate them.
 - A GA4 user is a browser. One person on two devices counts twice.
 - Rounds from visitors who blocked analytics or declined analytics cookies are missing.
@@ -56,7 +56,7 @@ CC BY 4.0 (https://creativecommons.org/licenses/by/4.0/). Use it for anything, w
 
 Anyone with read access to GA4 property 483086308 can do this. It needs no code changes unless a cell named on the page drops out.
 
-1. Pull two reports for the new range, from 2026-09-29 (or the first day you want) to yesterday. Either use the analytics MCP tool `run_report` and save each response as a JSON file, or open the [batchRunReports API Explorer](https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/batchRunReports), set `property` to `properties/483086308`, send this body with your dates and save the response:
+1. Pull three reports for the new range, from 2026-09-29 (or the first day you want) to yesterday. Either use the analytics MCP tool `run_report` and save each response as a JSON file, or open the [batchRunReports API Explorer](https://developers.google.com/analytics/devguides/reporting/data/v1/rest/v1beta/properties/batchRunReports), set `property` to `properties/483086308`, send this body with your dates and save the response:
 
    ```json
    {
@@ -74,12 +74,17 @@ Anyone with read access to GA4 property 483086308 can do this. It needs no code 
          "metrics": [{ "name": "eventCount" }, { "name": "totalUsers" }],
          "dimensionFilter": { "filter": { "fieldName": "eventName", "stringFilter": { "matchType": "EXACT", "value": "round_complete" } } },
          "limit": 100000
+       },
+       {
+         "dateRanges": [{ "startDate": "2026-09-29", "endDate": "2026-10-19" }],
+         "metrics": [{ "name": "eventCount" }, { "name": "totalUsers" }],
+         "dimensionFilter": { "filter": { "fieldName": "eventName", "stringFilter": { "matchType": "EXACT", "value": "round_complete" } } }
        }
      ]
    }
    ```
 
-   Check the response has no `rowCount` above the rows it returned, that `metadata.dataLossFromOtherRow` is false and that `metadata.samplingMetadatas` is empty, so nothing was cut, folded or sampled. End the range at least two days before the pull: GA4 keeps adding late events for a day or two, so a re-pull of the same range can differ by a few rounds (this release's histogram summed to 3,734 rounds, and a total pulled minutes later read 3,736).
+   Check the response has no `rowCount` above the rows it returned, that `metadata.dataLossFromOtherRow` is false and that `metadata.samplingMetadatas` is empty, so nothing was cut, folded or sampled. End the range at least two days before the pull: GA4 keeps adding late events for a day or two, so a re-pull of the same range can differ by a few rounds (this release's histogram summed to 3,734 rounds, and the total players report, pulled hours later, counted 3,738 rounds from 347 players).
 
 2. Keep the saved files outside the repo. From the repo root run:
 

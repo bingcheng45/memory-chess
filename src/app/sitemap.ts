@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { ARTICLES, ARTICLES_LAST_UPDATED } from "@/lib/articles/registry";
 import { ARTICLES_PATH, articlePath } from "@/lib/articles/paths";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
+import { RECALL_DATA, RECALL_PATH } from "@/lib/data/recall";
 import { EN_LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";
 import { DEFAULT_LOCALE, LOCALES } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
@@ -65,6 +66,12 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "daily",
     priority: 0.8,
+  },
+  {
+    path: RECALL_PATH,
+    lastModified: `${RECALL_DATA.end}T00:00:00.000Z`,
+    changeFrequency: "monthly",
+    priority: 0.7,
   },
   {
     path: "/contact-us",

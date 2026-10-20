@@ -1791,5 +1791,45 @@
       "secondsRange": "{min} to {max} s",
       "secondsExact": "{count} s"
     }
+  },
+  "data": {
+    "meta": {
+      "title": "How well do people remember chess positions? Data from {rounds, number} rounds of Memory Chess",
+      "description": "Average recall of chess positions by number of pieces and study time, from {rounds, number} finished rounds of Memory Chess. Open data under CC BY 4.0, with the method and its limits.",
+      "socialTitle": "How well do people remember chess positions?",
+      "socialDescription": "Recall by number of pieces and study time, from {rounds, number} finished rounds of Memory Chess. Open data under CC BY 4.0."
+    },
+    "kicker": "Open data",
+    "title": "How well do people remember chess positions?",
+    "answer": "In {rounds, number} finished rounds of Memory Chess from {start} to {end}, players who studied a position for 10 seconds placed {two} of 2 pieces correctly on average ({twoRounds, number} rounds), but only {six} of 6 pieces ({sixRounds, number} rounds). Just {sixPerfect} of those 6-piece rounds were perfect, and with 12 pieces and 8 seconds the average fell to {twelve}, with {twelvePerfect} perfect ({twelveRounds, number} rounds).",
+    "englishNote": "The notes on method, limits and citation below are in English.",
+    "chart": {
+      "byPieces": "Average recall with {seconds} seconds to study",
+      "bySeconds": "Average recall of {pieces} pieces, by study time",
+      "pieces": "{count, plural, one {# piece} other {# pieces}}",
+      "seconds": "{count} s",
+      "rounds": "{count, plural, one {# round} other {# rounds}}",
+      "scale": "Each bar is drawn to scale from 0 to 100% accuracy."
+    },
+    "table": {
+      "title": "Every published setting",
+      "caption": "Accuracy by number of pieces and study time. Settings with fewer than {minRounds, number} rounds or {minPlayers, number} players are left out.",
+      "pieces": "Pieces",
+      "seconds": "Study time",
+      "rounds": "Rounds",
+      "players": "Players",
+      "mean": "Mean",
+      "median": "Median",
+      "middle": "Middle half",
+      "middleValue": "{low} to {high}",
+      "perfect": "Perfect"
+    },
+    "links": {
+      "csv": "Download the CSV",
+      "notes": "Field notes on GitHub",
+      "play": "Play a round"
+    },
+    "aboutLine": "The results of every finished round are published in aggregate.",
+    "aboutLink": "See the recall data"
   }
 }

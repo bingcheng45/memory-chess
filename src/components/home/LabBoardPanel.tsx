@@ -4,12 +4,11 @@ import { useId, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { trackEvent } from "@/lib/analytics/events";
-import { withoutEntry, type StoredEntries, type StoredEntry } from "@/lib/lab/entries";
+import { ENTRY_BOARDS, entryKey, withoutEntry, type EntryKey, type StoredEntries, type StoredEntry } from "@/lib/lab/entries";
 import { countryName, flagEmoji, WORLD_CODE } from "@/lib/leaderboard/countries";
 import type { StandingScope } from "@/lib/leaderboard/standing";
 import { checkStanding, type StandingCheck } from "@/lib/leaderboard/standingClient";
 import { LEADERBOARD_ROW_LIMIT, RANKED_DIFFICULTIES } from "@/lib/reference/facts";
-import type { LeaderboardDifficulty } from "@/types/leaderboard";
 import { entriesChoice } from "./labChoices";
 import { figureOf, PanelHead, useTags } from "./LabRecordPanels";
 
@@ -78,11 +77,18 @@ function Choice<T extends string>({ label, options, value, onChange }: { label: 
   );
 }
 
-function Standing({ t, entries, check, onCheck }: { t: Translate; entries: StoredEntries; check: Check; onCheck: (entry: StoredEntry, scope: StandingScope) => void }) {
+/** A blindfold entry ranks on its own board, so its name says so. */
+function useBoardName(): (entry: StoredEntry) => string {
   const presets = useTranslations("game.presets");
-  const kept = RANKED_DIFFICULTIES.flatMap((difficulty) => entries[difficulty] ?? []);
+  const config = useTranslations("game.config");
+  return (entry) => (entry.mode ? `${presets(`${entry.difficulty}.label`)} · ${config("blindfold")}` : presets(`${entry.difficulty}.label`));
+}
+
+function Standing({ t, entries, check, onCheck }: { t: Translate; entries: StoredEntries; check: Check; onCheck: (entry: StoredEntry, scope: StandingScope) => void }) {
+  const boardName = useBoardName();
+  const kept = ENTRY_BOARDS.flatMap((board) => entries[entryKey(board)] ?? []);
   const latest = kept.reduce((newest, entry) => (entry.submittedAt > newest.submittedAt ? entry : newest));
-  const [picked, setPicked] = useState<LeaderboardDifficulty>(latest.difficulty);
+  const [picked, setPicked] = useState<EntryKey>(entryKey(latest));
   const [scope, setScope] = useState<StandingScope>("world");
   const entry = entries[picked] ?? latest;
   const hasCountry = entry.country !== WORLD_CODE;
@@ -93,8 +99,8 @@ function Standing({ t, entries, check, onCheck }: { t: Translate; entries: Store
       {kept.length > 1 && (
         <Choice
           label={t("difficulty")}
-          options={kept.map(({ difficulty }) => ({ value: difficulty, text: presets(`${difficulty}.label`) }))}
-          value={entry.difficulty}
+          options={kept.map((option) => ({ value: entryKey(option), text: boardName(option) }))}
+          value={entryKey(entry)}
           onChange={setPicked}
         />
       )}
@@ -111,7 +117,7 @@ function Standing({ t, entries, check, onCheck }: { t: Translate; entries: Store
       )}
       <p className="lab-note">
         {t("entry", {
-          difficulty: presets(`${entry.difficulty}.label`),
+          difficulty: boardName(entry),
           correct: entry.score.correctPieces,
           date: new Date(entry.submittedAt).toLocaleDateString("en", { day: "numeric", month: "short" }),
         })}
@@ -126,6 +132,7 @@ function Standing({ t, entries, check, onCheck }: { t: Translate; entries: Store
 export function BoardPanel({ ready }: { ready: boolean }) {
   const t = useTranslations("home.lab.record.board");
   const presets = useTranslations("game.presets");
+  const boardName = useBoardName();
   const tags = useTags();
   const stored = entriesChoice.useValue();
   const entries = ready ? stored : null;
@@ -170,7 +177,7 @@ export function BoardPanel({ ready }: { ready: boolean }) {
         </>
       )}
       <p className="lab-note lab-board-status" role="status" data-reserve={entries ? "" : undefined}>
-        {check.state === "done" ? statusOf(t, presets(`${check.entry.difficulty}.label`), check) : ""}
+        {check.state === "done" ? statusOf(t, boardName(check.entry), check) : ""}
       </p>
       <Link className="lab-go" href="/leaderboard">
         {t("open")} →

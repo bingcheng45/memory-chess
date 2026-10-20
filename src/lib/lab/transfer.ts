@@ -104,7 +104,8 @@ function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
     reviewed === (raw.reviewDelayDays !== undefined) &&
     (!reviewed || (kind === "review" && isId(raw.reviewOf) && isCount(raw.reviewDelayDays, MAX_REVIEW_DELAY_DAYS))) &&
     (raw.placements === undefined) === (raw.removals === undefined) &&
-    (raw.placements === undefined || (isPlacementList(raw.placements) && isCount(raw.removals, MAX_REMOVALS)));
+    (raw.placements === undefined || (isPlacementList(raw.placements) && isCount(raw.removals, MAX_REMOVALS))) &&
+    (raw.blindfold === undefined || raw.blindfold === true);
   if (!valid) return null;
   return {
     kind: kind as RoundKind,
@@ -116,6 +117,7 @@ function parseCapture(raw: Record<string, unknown>): RoundCapture | null {
     tzOffsetMin: raw.tzOffsetMin as number | undefined,
     placements: raw.placements as PlacementEvent[] | undefined,
     removals: raw.removals as number | undefined,
+    blindfold: raw.blindfold as true | undefined,
   };
 }
 

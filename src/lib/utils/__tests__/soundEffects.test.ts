@@ -1,80 +1,105 @@
-class FakeAudio {
-  static created: FakeAudio[] = [];
-  volume = 1;
-  paused = true;
-  currentTime = 0;
-  preload = "";
-  error = null;
-  loads = 0;
-  plays = 0;
-  constructor(readonly src: string) {
-    FakeAudio.created.push(this);
+export {};
+
+class FakeSource {
+  buffer: { url: string } | null = null;
+  started = false;
+  stopped = false;
+  connect() {}
+  start() {
+    this.started = true;
   }
-  play() {
-    this.plays += 1;
-    this.paused = false;
+  stop() {
+    this.stopped = true;
+  }
+}
+
+class FakeAudioContext {
+  static created: FakeAudioContext[] = [];
+  readonly gain = { gain: { value: 1 }, connect() {} };
+  readonly sources: FakeSource[] = [];
+  resumes = 0;
+  constructor() {
+    FakeAudioContext.created.push(this);
+  }
+  createGain() {
+    return this.gain;
+  }
+  createBufferSource() {
+    const source = new FakeSource();
+    this.sources.push(source);
+    return source;
+  }
+  decodeAudioData(data: { url: string }) {
+    return Promise.resolve(data);
+  }
+  resume() {
+    this.resumes += 1;
     return Promise.resolve();
   }
-  pause() {
-    this.paused = true;
-  }
-  load() {
-    this.loads += 1;
-  }
-  addEventListener() {}
-  cloneNode() {
-    return new FakeAudio(this.src);
+  get destination() {
+    return {};
   }
 }
 
 const loadModule = () => import("@/lib/utils/soundEffects");
-const createdSrcs = () => FakeAudio.created.map((audio) => audio.src);
+const context = () => FakeAudioContext.created[0];
+const played = () => context().sources.filter((source) => source.started).map((source) => source.buffer?.url);
+const settle = () => new Promise((resolve) => setTimeout(resolve, 0));
 
 describe("sound effects", () => {
   let fetchSpy: jest.Mock;
+  let release: (() => void) | null;
 
   beforeEach(() => {
     jest.resetModules();
-    jest.useFakeTimers();
-    FakeAudio.created = [];
-    fetchSpy = jest.fn();
-    Object.assign(globalThis, { Audio: FakeAudio, fetch: fetchSpy });
+    FakeAudioContext.created = [];
+    release = null;
+    fetchSpy = jest.fn((url: string) => Promise.resolve({ ok: true, arrayBuffer: () => Promise.resolve({ url }) }));
+    Object.assign(globalThis, { AudioContext: FakeAudioContext, fetch: fetchSpy });
   });
 
   afterEach(() => {
-    jest.useRealTimers();
+    Reflect.deleteProperty(globalThis, "AudioContext");
   });
 
-  it("downloads nothing on import, after the old preload delay, or on a click", async () => {
+  const holdDownloads = () => {
+    fetchSpy.mockImplementation(
+      (url: string) =>
+        new Promise((resolve) => {
+          release = () => resolve({ ok: true, arrayBuffer: () => Promise.resolve({ url }) });
+        }),
+    );
+  };
+
+  it("downloads nothing and opens no audio on import or on a click", async () => {
     await loadModule();
-    jest.advanceTimersByTime(5000);
     window.dispatchEvent(new MouseEvent("click"));
 
-    expect(FakeAudio.created.length).toBe(0);
-    expect(fetchSpy.mock.calls.length).toBe(0);
+    expect([FakeAudioContext.created.length, fetchSpy.mock.calls.length]).toEqual([0, 0]);
   });
 
-  it("creates one element for a sound on its first play and reuses it on the next", async () => {
+  it("plays through one gain node at the quiet 5% default", async () => {
     const { playSound } = await loadModule();
 
     playSound("click");
-    expect(createdSrcs()).toEqual(["/sounds/click.mp3"]);
-    expect(FakeAudio.created[0].volume).toBe(0.1);
+    await settle();
 
-    FakeAudio.created[0].paused = true;
-    playSound("click");
-    expect(createdSrcs()).toEqual(["/sounds/click.mp3"]);
-    expect(FakeAudio.created[0].plays).toBe(2);
+    expect(FakeAudioContext.created.length).toBe(1);
+    expect(context().gain.gain.value).toBe(0.05);
+    expect(played()).toEqual(["/sounds/click.mp3"]);
   });
 
-  it("shares one element between names for the same file", async () => {
+  it("downloads a file once and reuses it, also across names for the same file", async () => {
     const { playSound } = await loadModule();
 
     playSound("success");
-    FakeAudio.created[0].paused = true;
+    await settle();
     playSound("match");
+    playSound("success");
+    await settle();
 
-    expect(createdSrcs()).toEqual(["/sounds/success.mp3"]);
+    expect(fetchSpy.mock.calls.map(([url]) => url)).toEqual(["/sounds/success.mp3"]);
+    expect(played()).toEqual(["/sounds/success.mp3", "/sounds/success.mp3", "/sounds/success.mp3"]);
   });
 
   it("overlaps a sound with its own play still in progress", async () => {
@@ -82,33 +107,25 @@ describe("sound effects", () => {
 
     playSound("click");
     playSound("click");
+    await settle();
 
-    expect(createdSrcs()).toEqual(["/sounds/click.mp3", "/sounds/click.mp3"]);
-    expect(FakeAudio.created.map((audio) => audio.plays)).toEqual([1, 1]);
+    expect(played()).toEqual(["/sounds/click.mp3", "/sounds/click.mp3"]);
   });
 
-  it("warms exactly the round's sounds, once", async () => {
-    const { warmRoundSounds, playSound } = await loadModule();
+  it("warms exactly the round's sounds, once, without playing them", async () => {
+    const { warmRoundSounds } = await loadModule();
 
     warmRoundSounds();
     warmRoundSounds();
+    await settle();
 
-    expect(createdSrcs()).toEqual([
+    expect(fetchSpy.mock.calls.map(([url]) => url)).toEqual([
       "/sounds/success.mp3",
       "/sounds/timer.mp3",
       "/sounds/timer-end.mp3",
       "/sounds/failure.mp3",
     ]);
-    expect(FakeAudio.created.map((audio) => [audio.preload, audio.loads])).toEqual([
-      ["auto", 2],
-      ["auto", 2],
-      ["auto", 2],
-      ["auto", 2],
-    ]);
-
-    playSound("timer");
-    expect(FakeAudio.created.length).toBe(4);
-    expect(FakeAudio.created[1].plays).toBe(1);
+    expect(played()).toEqual([]);
   });
 
   it("downloads nothing while sound is off", async () => {
@@ -117,44 +134,68 @@ describe("sound effects", () => {
     setSoundEnabled(false);
     warmRoundSounds();
     playSound("click");
-    expect(FakeAudio.created.length).toBe(0);
+    await settle();
+    expect(fetchSpy.mock.calls.length).toBe(0);
 
     setSoundEnabled(true);
     playSound("click");
-    expect(createdSrcs()).toEqual(["/sounds/click.mp3"]);
+    await settle();
+    expect(played()).toEqual(["/sounds/click.mp3"]);
   });
 
-  it("stops and rewinds the timer, and restarts it from the start", async () => {
+  it("stops the timer, and a new timer replaces the one playing", async () => {
     const { playSound, stopTimerSound } = await loadModule();
 
     playSound("timer");
-    const timer = FakeAudio.created[0];
-    timer.currentTime = 3.5;
+    await settle();
+    const first = context().sources[0];
+    playSound("timer");
+    await settle();
+    const second = context().sources[1];
     stopTimerSound();
-    expect([timer.paused, timer.currentTime]).toEqual([true, 0]);
 
-    playSound("timer");
-    timer.currentTime = 2;
-    playSound("timer");
-    expect([FakeAudio.created.length, timer.plays, timer.currentTime]).toEqual([1, 3, 0]);
+    expect([first.stopped, second.started, second.stopped]).toEqual([true, true, true]);
   });
 
-  it("applies volume changes to elements already created", async () => {
+  it("never starts a timer that was stopped while it was still downloading", async () => {
+    const { playSound, stopTimerSound } = await loadModule();
+    holdDownloads();
+
+    playSound("timer");
+    stopTimerSound();
+    release?.();
+    await settle();
+
+    expect(played()).toEqual([]);
+  });
+
+  it("applies a volume change to the gain already playing", async () => {
     const { playSound, setVolume, getVolume } = await loadModule();
 
     playSound("place");
     setVolume(0.6);
 
-    expect([getVolume(), FakeAudio.created[0].volume]).toEqual([0.6, 0.6]);
+    expect([getVolume(), context().gain.gain.value]).toEqual([0.6, 0.6]);
   });
 
-  it("starts at the quieter 10% default and keeps the full 0–100% range", async () => {
+  it("keeps the full 0 to 100% range", async () => {
     const { getVolume, setVolume } = await loadModule();
 
-    expect(getVolume()).toBe(0.1);
+    expect(getVolume()).toBe(0.05);
     setVolume(-1);
     expect(getVolume()).toBe(0);
     setVolume(2);
     expect(getVolume()).toBe(1);
+  });
+
+  it("stays silent, without errors, where the browser has no Web Audio", async () => {
+    Reflect.deleteProperty(globalThis, "AudioContext");
+    const { playSound, warmRoundSounds } = await loadModule();
+
+    playSound("click");
+    warmRoundSounds();
+    await settle();
+
+    expect(fetchSpy.mock.calls.length).toBe(0);
   });
 });

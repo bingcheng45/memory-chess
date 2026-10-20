@@ -187,6 +187,11 @@ const guide: LearnDocument = {
             "A game position clusters. Pawns lock in the centre, pieces gather near the kings, and a corner can stay empty for twenty moves. That clustering is why you need the sweep.",
             "Memory Chess builds a fresh position for every round, with no plan behind it. The two kings go on random squares that are never adjacent. Every other piece goes on a random empty square, within the rules of a legal position.",
             "Nothing pulls the pieces toward the centre or the kings, so a 12-piece board can have a piece in every corner. Reading the edges first and the middle last is the sweep, done from memory.",
+            [
+              "Once the sweep holds from memory, ",
+              { text: "blindfold chess training", href: "/learn/blindfold-chess-training-for-beginners" },
+              " asks for the same picture with no board in front of you.",
+            ],
           ],
         },
         {

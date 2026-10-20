@@ -145,6 +145,15 @@ describe("a guide page", () => {
     expect(markup).toContain('<a href="/learn/chess-coordinates-practice">Chess Coordinates Practice: Name Squares Faster</a>');
   });
 
+  it.each(["chess-visualization-exercises", "how-to-see-the-whole-board-in-chess"])(
+    "links the blindfold guide from the %s prose with its search phrase",
+    async (slug) => {
+      const markup = await guide(slug);
+
+      expect(markup).toContain('<a href="/learn/blindfold-chess-training-for-beginners" class="lg-link">blindfold chess training</a>');
+    },
+  );
+
   it("hides no text from a crawler", async () => {
     const markup = await guide("20-minute-daily-chess-study-plan");
 

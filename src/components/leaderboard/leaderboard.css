@@ -8,6 +8,10 @@
 /* difficulty tabs: the active board is ink with an accent bar beneath it, so the state is a shape as well as a colour */
 .lab-paper .lb-tabs { display: flex; gap: 4px; margin-bottom: 24px; overflow-x: auto; scrollbar-width: none; box-shadow: inset 0 -1px var(--lp-line); }
 .lab-paper .lb-tabs::-webkit-scrollbar { display: none; }
+.lab-paper .lb-mode { display: inline-flex; gap: 4px; margin: 0 0 16px; padding: 4px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-md, 10px); }
+.lab-paper .lb-mode-option { min-height: 40px; padding: 0 16px; border: 0; border-radius: var(--lp-r-sm); background: none; font: 500 15px/1 var(--lp-ui); color: var(--lp-ink-2); cursor: pointer; }
+.lab-paper .lb-mode-option[aria-pressed="true"] { background: var(--lp-accent-soft); color: var(--lp-ink); font-weight: 600; }
+.lab-paper .lb-mode-note { margin: 0 0 16px; }
 .lab-paper .lb-tab { position: relative; flex: none; min-height: 44px; padding: 0 16px; border: 0; border-radius: var(--lp-r-sm) var(--lp-r-sm) 0 0; background: none; font: 500 16px/1 var(--lp-ui); color: var(--lp-ink-2); white-space: nowrap; cursor: pointer; }
 .lab-paper .lb-tab:hover { background: var(--lp-surface-2); color: var(--lp-ink); }
 .lab-paper .lb-tab[data-state="active"] { color: var(--lp-ink); }

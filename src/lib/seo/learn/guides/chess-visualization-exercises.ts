@@ -179,6 +179,11 @@ const guide: LearnDocument = {
             "Now move the white pawn from e4 to d3 and ask the same question. This time the e-file behind the knight is empty, so the rook on e1 defends e5. After 1.Nxe5 Rxe5 2.Rxe5 White has won a rook and a pawn for a knight, so Black should not recapture, and 1.Nxe5 wins a clean pawn.",
             "One pawn moved one square and the answer flipped. The e4 pawn is easy to forget because it never moves in the line. Before you judge a capture, say the whole file or diagonal behind it, all the way to the edge.",
             "Do two positions of your own each day. Cover a puzzle you solved yesterday and play the solution in your head. Say where every moved piece now stands and which pieces are gone. Then uncover, play the solution out on the board and check each square you named. It worked if every one matches.",
+            [
+              "Once covered positions come out clean, ",
+              { text: "blindfold chess training", href: "/learn/blindfold-chess-training-for-beginners" },
+              " takes the same habit from one position to a whole game with no board at all.",
+            ],
           ],
         },
       ],

@@ -973,7 +973,9 @@
         "loss": "Højst <num>−{value}</num>",
         "announce": "Brættets rating {board}. Din rating {rating}. Forventet præcision {expected} %. Hvis du klarer den, op til +{gain}. Hvis det går galt, højst −{loss}.",
         "announceProvisional": "Brættets rating {board}. Din rating {rating}. Forventet præcision {expected} %. Hvis du klarer den, op til +{gain}."
-      }
+      },
+      "blindfold": "Blindskak",
+      "blindfoldHint": "Studér stillingen som notation, uden brikker på brættet."
     },
     "presets": {
       "easy": {
@@ -1087,7 +1089,8 @@
       "savedToast": {
         "message": "Runden er gemt. Dine opdaterede tal står lige herunder.",
         "action": "Vis mig"
-      }
+      },
+      "blindfoldRound": "Blindrunde: du studerede stillingen som notation."
     },
     "comparison": {
       "title": "Gennemgå din stilling"
@@ -1170,6 +1173,12 @@
         "bishop": "Løber",
         "knight": "Springer",
         "pawn": "Bonde"
+      },
+      "notation": {
+        "label": "Stillingen i notation",
+        "white": "Hvid",
+        "black": "Sort",
+        "pawns": "et felt alene er en bonde"
       }
     }
   },
@@ -1208,6 +1217,13 @@
       "setting": "{pieces, plural, one {# brik} other {# brikker}} · {seconds} s husketid",
       "resetsAtUtc": "Nulstilles kl. {utc} UTC",
       "resetsAt": "Nulstilles kl. {utc} UTC ({local} din tid), om {timeLeft}"
+    },
+    "mode": {
+      "label": "Studieform",
+      "board": "Bræt",
+      "blindfold": "Blindskak",
+      "note": "Blindrunder studeres som notation uden brikker på brættet, så de har deres egne ranglister.",
+      "loading": "Indlæser blindranglisten."
     }
   },
   "country": {

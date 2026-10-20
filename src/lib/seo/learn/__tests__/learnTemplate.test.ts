@@ -3,6 +3,7 @@ import { join } from "node:path";
 import { ARTICLE_SLUGS } from "@/lib/articles";
 import { LEARN_GUIDES } from "../guides";
 import { EN_LEARN_PAGES, LEARN_SLUGS, RESERVED_LEARN_SLUGS, groupPages, toPage } from "..";
+import { guidePath } from "../links";
 import type { BodyBlock, InlineLink, LearnDocument, Rich } from "../schema";
 import { readingMinutes } from "../text";
 import messages from "../../../../../messages/en.json";
@@ -54,7 +55,7 @@ describe("derived page values", () => {
       "why-puzzle-rating-doesnt-transfer-to-games": 6,
       "chess-coordinates-practice": 6,
       "chess-visualization-exercises": 6,
-      "how-to-see-the-whole-board-in-chess": 5,
+      "how-to-see-the-whole-board-in-chess": 6,
       "chess-calculation-exercises-for-beginners": 7,
       "blindfold-chess-training-for-beginners": 8,
       "chess-memory-training": 8,
@@ -172,7 +173,7 @@ describe("rules the types cannot hold", () => {
         return [];
       });
       const targets = [
-        ...inline.filter(({ href }) => !SITE_PATHS.includes(href)).map(({ href }) => href),
+        ...inline.filter(({ href }) => !SITE_PATHS.includes(href) && !LEARN_SLUGS.map(guidePath).includes(href)).map(({ href }) => href),
         ...doc.end.flatMap((block) => {
           if (block.kind === "furtherReading") {
             return block.items

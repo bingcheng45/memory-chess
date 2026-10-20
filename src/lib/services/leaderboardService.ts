@@ -4,6 +4,7 @@ import { LEADERBOARD_ROW_LIMIT } from '@/lib/reference/facts';
 import { reportServerError } from '@/lib/server/serverErrors';
 import { RANKING_ORDER, type BoardCutoff, type LeaderboardCutoffs } from '@/lib/leaderboard/ranking';
 import { parseBoard } from '@/lib/leaderboard/board';
+import { blindfoldBoardOpen } from '@/lib/leaderboard/mode';
 import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { rankedAboveFilter, type Standing, type StandingScope } from '@/lib/leaderboard/standing';
 import { WORLD_CODE } from '@/lib/leaderboard/countries';
@@ -46,10 +47,22 @@ function orderByRanking<T extends OrderableQuery<T>>(query: T): T {
   );
 }
 
-/** Filtering on both columns is what lets the query read the partial daily index. */
+/**
+ * Which mode's rows a ranked board reads. Before the blindfold board opens the column may not exist, and every row is
+ * a board-study row, so the query names no mode at all, exactly as it did before.
+ */
+function modeOf(board: LeaderboardBoard): 'board' | 'blindfold' | null {
+  if (board.difficulty === DAILY_BOARD) return null;
+  if (board.mode) return board.mode;
+  return blindfoldBoardOpen() ? 'board' : null;
+}
+
+/** Filtering on both columns is what lets the query read the partial daily index, and the mode the partial blindfold one. */
 function rankedRows<Columns extends '*' | 'id'>(client: SupabaseClient, board: LeaderboardBoard, columns: Columns, options?: { count: 'exact'; head: true }) {
   const rows = client.from('leaderboard_entries').select(columns, options).eq('difficulty', board.difficulty).gt('correct_pieces', 0);
-  return board.difficulty === DAILY_BOARD ? rows.eq('daily_day', board.daily_day) : rows;
+  if (board.difficulty === DAILY_BOARD) return rows.eq('daily_day', board.daily_day);
+  const mode = modeOf(board);
+  return mode === null ? rows : rows.eq('mode', mode);
 }
 
 /**
@@ -117,13 +130,13 @@ async function readBoardCutoff(
   client: SupabaseClient,
   difficulty: LeaderboardDifficulty,
 ): Promise<BoardCutoff | null> {
-  const ranked = orderByRanking(
-    client
-      .from('leaderboard_entries')
-      .select('correct_pieces,total_wrong_pieces,memorize_time,solution_time')
-      .eq('difficulty', difficulty)
-      .gt('correct_pieces', 0),
-  );
+  const board = client
+    .from('leaderboard_entries')
+    .select('correct_pieces,total_wrong_pieces,memorize_time,solution_time')
+    .eq('difficulty', difficulty)
+    .gt('correct_pieces', 0);
+  const mode = modeOf({ difficulty });
+  const ranked = orderByRanking(mode === null ? board : board.eq('mode', mode));
 
   // The board shows LEADERBOARD_ROW_LIMIT rows, so the last row it shows is the
   // score a newcomer has to beat. Reading only that row leaves the other 199 on
@@ -255,7 +268,8 @@ export async function submitLeaderboardEntry(
   if (!isMissingColumn(first.error)) {
     return { status: 'failed', cause: first.error };
   }
-  if (entry.difficulty === DAILY_BOARD) {
+  // A daily row needs 0004's columns and a blindfold row 0008's; neither is stored on a board it does not name.
+  if (entry.difficulty === DAILY_BOARD || entry.mode) {
     return { status: 'unavailable', cause: first.error };
   }
 
@@ -305,7 +319,7 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
   if (entry === null) {
     return { status: 'missing' };
   }
-  const board = parseBoard(entry.difficulty, entry.daily_day);
+  const board = parseBoard(entry.difficulty, entry.daily_day, entry.mode);
   if (board === null) {
     return { status: 'unavailable', cause: `entry ${id} names no board: ${entry.difficulty} ${entry.daily_day}` };
   }

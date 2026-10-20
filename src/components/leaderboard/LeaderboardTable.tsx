@@ -8,6 +8,7 @@ import { CloudOff, TriangleAlert } from "lucide-react";
 
 import { useFormatter, useLocale, useTranslations } from "next-intl";
 import { countryName, flagEmoji, parseCountryCode, WORLD_CODE } from "@/lib/leaderboard/countries";
+import { BLINDFOLD_MODE, MODE_PARAM } from "@/lib/game/roundLink";
 
 export interface EntryDetails {
   player: string | null;
@@ -24,11 +25,14 @@ interface LeaderboardTableProps {
   error: string | null;
   entryDetails?: EntryDetails;
   activeTab?: string;
+  /** The blindfold board of `activeTab`, whose play link starts a blindfold round. */
+  blindfold?: boolean;
 }
 
 const COLUMN_COUNT = 7;
 
-export const playHrefOf = (board: string) => (board === DAILY_BOARD ? "/daily" : `/game?difficulty=${board}`);
+export const playHrefOf = (board: string, blindfold = false) =>
+  board === DAILY_BOARD ? "/daily" : `/game?difficulty=${board}${blindfold ? `&${MODE_PARAM}=${BLINDFOLD_MODE}` : ""}`;
 const PODIUM_MEDALS = ["🏆", "🥈", "🥉"];
 
 export function TimeDisplay({ seconds }: { seconds: number }) {
@@ -49,7 +53,8 @@ export function TimeDisplay({ seconds }: { seconds: number }) {
 }
 
 /** Every state of a board draws the same frame and column head, so switching tabs or failing to load keeps the page's shape. */
-function BoardFrame({ isState, children }: { isState: boolean; children: ReactNode }) {
+/** `elo` is false on a blindfold board: its rounds never move the rating, so the column would only mislead. */
+function BoardFrame({ isState, elo, children }: { isState: boolean; elo: boolean; children: ReactNode }) {
   const t = useTranslations("leaderboard");
   return (
     <div className="lb-plate">
@@ -59,7 +64,7 @@ function BoardFrame({ isState, children }: { isState: boolean; children: ReactNo
             <tr>
               <th scope="col" className="lb-num lb-rank">{t("columns.rank")}</th>
               <th scope="col" className="lb-who">{t("columns.player")}</th>
-              <th scope="col" className="lb-num">{t("columns.elo")}</th>
+              {elo && <th scope="col" className="lb-num">{t("columns.elo")}</th>}
               <th scope="col" className="lb-num">{t("columns.pieces")}</th>
               <th scope="col" className="lb-num">{t("columns.memorizeTime")}</th>
               <th scope="col" className="lb-num">{t("columns.solutionTime")}</th>
@@ -73,11 +78,11 @@ function BoardFrame({ isState, children }: { isState: boolean; children: ReactNo
   );
 }
 
-function BoardState({ icon, children }: { icon: ReactNode; children: ReactNode }) {
+function BoardState({ icon, elo, children }: { icon: ReactNode; elo: boolean; children: ReactNode }) {
   return (
-    <BoardFrame isState>
+    <BoardFrame isState elo={elo}>
       <tr>
-        <td colSpan={COLUMN_COUNT} className="lb-state-cell">
+        <td colSpan={elo ? COLUMN_COUNT : COLUMN_COUNT - 1} className="lb-state-cell">
           <div className="lb-state">
             <span className="lb-state-icon" aria-hidden="true">{icon}</span>
             <div>{children}</div>
@@ -88,7 +93,7 @@ function BoardState({ icon, children }: { icon: ReactNode; children: ReactNode }
   );
 }
 
-function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardTableProps) {
+function LeaderboardTable({ data, error, entryDetails, activeTab, blindfold = false }: LeaderboardTableProps) {
   const t = useTranslations("leaderboard");
   const tCountry = useTranslations("country");
   const locale = useLocale();
@@ -113,7 +118,7 @@ function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardT
     const isDailyBoard = activeTab === DAILY_BOARD;
     if (isDailyBoard || error === LEADERBOARD_UNAVAILABLE) {
       return (
-        <BoardState icon={<CloudOff size={20} strokeWidth={1.75} />}>
+        <BoardState elo={!blindfold} icon={<CloudOff size={20} strokeWidth={1.75} />}>
           <p className="lb-state-title">{t("unavailableTitle")}</p>
           <p className="lb-state-body">{t("unavailableBody")}</p>
           <p className="lb-state-note">{t("unavailableNote")}</p>
@@ -122,7 +127,7 @@ function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardT
     }
 
     return (
-      <BoardState icon={<TriangleAlert size={20} strokeWidth={1.75} />}>
+      <BoardState elo={!blindfold} icon={<TriangleAlert size={20} strokeWidth={1.75} />}>
         <p className="lb-state-title lb-state-error">{t("errorLoading", { error })}</p>
         <p className="lb-state-body">{t("retryLater")}</p>
       </BoardState>
@@ -132,6 +137,7 @@ function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardT
   if (data.length === 0) {
     return (
       <BoardState
+        elo={!blindfold}
         icon={
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
@@ -141,7 +147,7 @@ function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardT
         <p className="lb-state-title">{t("emptyTitle")}</p>
         <p className="lb-state-body">{t("emptyBody")}</p>
         <p className="lb-state-note">{t("emptyCta")}</p>
-        <Link href={playHrefOf(activeTab || 'medium')} className="lab-btn lab-btn-secondary">
+        <Link href={playHrefOf(activeTab || 'medium', blindfold)} className="lab-btn lab-btn-secondary">
           {t("startPlaying")}
         </Link>
       </BoardState>
@@ -149,7 +155,7 @@ function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardT
   }
 
   return (
-    <BoardFrame isState={false}>
+    <BoardFrame isState={false} elo={!blindfold}>
       {data.map((entry, index) => {
         // A name alone matches every round that player submitted, so a row is
         // only highlighted when the link also carries that round's times.
@@ -189,7 +195,7 @@ function LeaderboardTable({ data, error, entryDetails, activeTab }: LeaderboardT
                 {isHighlighted && <span className="lb-you">{t("you")}</span>}
               </div>
             </td>
-            <td className="lb-num">{entry.skill_rating ?? START_RATING}</td>
+            {!blindfold && <td className="lb-num">{entry.skill_rating ?? START_RATING}</td>}
             <td className="lb-num">
               {entry.correct_pieces}
               {entry.total_wrong_pieces !== undefined &&

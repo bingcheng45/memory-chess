@@ -989,7 +989,7 @@
     "presets": {
       "easy": {
         "label": "Leicht",
-        "description": "Nur die Könige – ideal für den Einstieg"
+        "description": "Nur die Könige - ideal für den Einstieg"
       },
       "medium": {
         "label": "Mittel",

@@ -4,9 +4,9 @@
       "heading": "Hukommelsestesten i sjakk",
       "what": "I en hukommelsestest i sjakk ser du en stilling i noen få sekunder og skal deretter gjenskape den på et tomt brett. Det er den gjenkallingsoppgaven {deGroot} ga sjakkspillere i 1944, og William Chase og Herbert Simons artikkel «Perception in Chess» fra 1973 er standardverket om den.",
       "deGroot": "Adriaan de Groot",
-      "scoring": "Memory Chess regner en brikke som riktig bare når riktig brikke i riktig farge står på riktig rute. Treffsikkerheten din er andelen av brikkene i stillingen som du satte ut slik, minus {penalty} poeng for hver brikke du satte ut utover antallet i stillingen, og den går aldri under null.",
+      "scoring": "Memory Chess regner en brikke som riktig bare når riktig brikke i riktig farge står på riktig rute. Treffsikkerheten din er andelen av brikkene i stillingen som du satte ut slik, minus {penalty} poeng for hver brikke du satte ut utover antallet i stillingen, og den går aldri under 0.",
       "typical": "I {rounds} runder Memory Chess med {pieces} brikker og {seconds} sekunder, spilt fra {start} til {end}, var gjennomsnittlig treffsikkerhet {mean}, og {perfect} av rundene var feilfrie. Med {easyPieces} brikker var gjennomsnittet {easyMean} over {easyRounds} runder, og med {hardPieces} brikker på {hardSeconds} sekunder var det {hardMean} over {hardRounds} runder.",
-      "limits": "Dette er spillere som selv valgte å spille og selv valgte innstillingen, ikke et utvalg av alle sjakkspillere, og et tomt brett teller som null, også dagens ene gratis hopp over.",
+      "limits": "Dette er spillere som selv valgte å spille og selv valgte innstillingen, ikke et utvalg av alle sjakkspillere, og et tomt brett teller som 0, også dagens ene gratis hopp over.",
       "dataLink": "Datasiden beskriver metoden og alle begrensningene."
     },
     "title": "Slik spiller du Memory Chess",

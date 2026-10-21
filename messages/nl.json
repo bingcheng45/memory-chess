@@ -316,7 +316,7 @@
           "study": {
             "name": "Bekijken",
             "title": "Elf stukken, tien seconden.",
-            "body": "De slotstelling van Kasparovs Onsterfelijke, na 44.Qa7. Hier gaf Topalov op. Neem het hele bord in je op, niet veld voor veld. In de experimenten van de Groot reconstrueerden meesters een kort getoonde partijstelling veel beter dan zwakkere spelers.",
+            "body": "De slotstelling van Kasparovs Onsterfelijke, na 44.Qa7. Hier gaf Topalov op. Neem het hele bord in je op, niet veld voor veld. In de experimenten van De Groot reconstrueerden meesters een kort getoonde partijstelling veel beter dan zwakkere spelers.",
             "note": "Fig. Wit: koning c1, dame a7, pionnen f4, g3, h2. Zwart: koning e1, toren d2, pionnen c3, f5, g6, h7."
           },
           "anchors": {
@@ -989,7 +989,7 @@
     "presets": {
       "easy": {
         "label": "Makkelijk",
-        "description": "Alleen de koningen – ideaal om te beginnen"
+        "description": "Alleen de koningen - ideaal om te beginnen"
       },
       "medium": {
         "label": "Gemiddeld",

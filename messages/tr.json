@@ -989,7 +989,7 @@
     "presets": {
       "easy": {
         "label": "Kolay",
-        "description": "Sadece şahlar — başlangıç için ideal"
+        "description": "Sadece şahlar, başlangıç için ideal"
       },
       "medium": {
         "label": "Orta",

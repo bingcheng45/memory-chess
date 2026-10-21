@@ -989,7 +989,7 @@
     "presets": {
       "easy": {
         "label": "쉬움",
-        "description": "킹만 — 시작하기에 딱 좋습니다"
+        "description": "킹만 - 시작하기에 딱 좋습니다"
       },
       "medium": {
         "label": "보통",

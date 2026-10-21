@@ -18,7 +18,8 @@ describe("leaderboard metadata", () => {
   it("keeps the English leaderboard indexable with no hreflang to translated boards", async () => {
     const metadata = await metadataFor("en");
 
-    expect(metadata.robots).toBeUndefined();
+    // An explicit `robots: undefined` would erase the root layout's index, follow tags, so the key must be absent.
+    expect("robots" in metadata).toBe(false);
     expect(metadata.alternates).toEqual({ canonical: "/leaderboard" });
   });
 

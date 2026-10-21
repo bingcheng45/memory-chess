@@ -17,10 +17,27 @@
     radial-gradient(farthest-side at 0 50%, var(--recall-edge), transparent) left / 16px 100% no-repeat scroll,
     radial-gradient(farthest-side at 100% 50%, var(--recall-edge), transparent) right / 16px 100% no-repeat scroll;
 }
+@property --recall-start { syntax: "<number>"; inherits: false; initial-value: 0; }
+@property --recall-end { syntax: "<number>"; inherits: false; initial-value: 0; }
+@keyframes recall-cue {
+  0% { --recall-start: 0; --recall-end: 1; }
+  0.001% { --recall-start: 1; }
+  99.999% { --recall-end: 1; }
+  100% { --recall-start: 1; --recall-end: 0; }
+}
+@supports (animation-timeline: scroll()) {
+  .lab-paper .recall-scroll {
+    animation: recall-cue linear both;
+    animation-timeline: scroll(self inline);
+    background:
+      radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--recall-edge) calc(100% * var(--recall-start)), transparent), transparent) left / 16px 100% no-repeat,
+      radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--recall-edge) calc(100% * var(--recall-end)), transparent), transparent) right / 16px 100% no-repeat;
+  }
+}
 .lab-paper .recall-scroll:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
 .lab-paper .recall-table { width: 100%; border-collapse: collapse; font: 400 15px/1.4 var(--lp-body); color: var(--lp-ink-2); }
 .lab-paper .recall-table th, .lab-paper .recall-table td { padding: 10px 8px; text-align: left; white-space: nowrap; border-bottom: 1px solid var(--lp-line); }
-.lab-paper .recall-table thead th { white-space: normal; vertical-align: bottom; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); }
+.lab-paper .recall-table thead th { white-space: normal; word-break: keep-all; vertical-align: bottom; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .recall-table tbody th { font: 500 15px/1.4 var(--lp-ui); color: var(--lp-ink); }
 .lab-paper .recall-table .recall-num { text-align: right; font-variant-numeric: tabular-nums; }
 .lab-paper .recall-table td.recall-num { font-family: var(--lp-data); }

@@ -16,6 +16,12 @@ describe("TimeDisplay", () => {
     expect(textOf(8.558)).toBe("00:08:558");
     expect(textOf(95.072)).toBe("01:35:072");
   });
+
+  it("serves the minutes and seconds as one text node beside the milliseconds", () => {
+    const time = render(<TimeDisplay seconds={18.887} />).container.querySelector(".lb-time");
+
+    expect(time?.innerHTML).toBe('00:18:<span class="lb-ms">887</span>');
+  });
 });
 
 const row = (id: string, memorize_time: number, solution_time: number, correct_pieces: number): LeaderboardEntry => ({

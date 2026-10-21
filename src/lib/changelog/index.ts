@@ -43,6 +43,143 @@ export interface ChangelogTable {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "2.0.1",
+    publishedAt: "2026-10-21T23:00:00.000+08:00",
+    title: "Blindfold mode, a rating chart, and a smarter result screen",
+    summary:
+      "A week of updates since 2.0. You can now play blindfold, watch your rating climb on a chart, and get a one-tap Next round after every result. Everything also loads and plays faster.",
+    groups: [
+      {
+        title: "Play blindfold",
+        description: "Study the position as text instead of pieces, then rebuild it on an empty board.",
+        changes: [
+          "Turn on Blindfold in the round settings. During study the board stays empty and you see the position written out. Each side's pieces are listed in K, Q, R, B, N order, then the pawns by square.",
+          "Rebuilding and scoring work the same as a normal round.",
+          {
+            segments: [
+              "Blindfold scores have their own leaderboard, with a Board or Blindfold switch at the top of the ",
+              { text: "leaderboard", href: "/leaderboard" },
+              ". They never mix with board scores.",
+            ],
+          },
+          {
+            segments: [
+              "The ",
+              { text: "blindfold guide", href: "/learn/blindfold-chess-training-for-beginners" },
+              " now ends with a blindfold round to try.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Watch your rating move",
+        changes: [
+          {
+            segments: [
+              "A new Rating over time card on your ",
+              { text: "dashboard", href: "/dashboard" },
+              " shows your rating after every rated round. It also shows how far it moved in the last 7 days, and rings your peak. It says New peak when your latest round set one.",
+            ],
+          },
+          "The accuracy and recall pace charts are redrawn. Each round is a faint dot behind a smooth 5-round average, your best round is ringed, and accuracy has a line at the 70% win mark.",
+          "Played times now show in your own time zone. Before, a round played early in the morning could show up as the day before.",
+        ],
+      },
+      {
+        title: "A dashboard that tells you what to do next",
+        changes: [
+          "The locked figures now sit in one short Unlocks next list, nearest first. Each one says exactly what it still needs, such as \"4 more rounds at 6 pieces, 10 s\", with a button to play it.",
+          "The top of the dashboard leads with your day streak and today's daily board.",
+          "If your browser might clear your record, a quiet card offers to download a copy in one click.",
+        ],
+      },
+      {
+        title: "One clear next step after every round",
+        changes: [
+          "The result screen has one main button, Next round, and it shows the board it will start, such as \"7 pcs / 10s\". It adds a piece after a round of 90% or better, takes one away under 50%, and otherwise repeats the board.",
+          "On a phone, the button stays pinned to the bottom of the screen, so you never scroll to find it.",
+          "Try again and Change settings sit just below. Submit, Share and the leaderboard link fold under More options.",
+          "The submit prompt only appears when your score would actually make a full leaderboard.",
+          "When a wrong piece sits on a square that needed a different piece, that square now splits in two. Your piece shows in the red half, and the right piece in the green half.",
+        ],
+      },
+      {
+        title: "Easier to start",
+        changes: [
+          "Every round you open from a link, a guide or the home page now waits on a short card with one line of rules and a Start button. Then it counts 3, 2, 1. Your study time never starts before you are ready.",
+          "The Done button during study is now called Hide board, which says what it does.",
+          "The \"Thanks for playing\" feedback box now waits until you have played a few rounds. It never interrupts your first result.",
+          {
+            segments: [
+              "Every ",
+              { text: "Learn", href: "/learn" },
+              " guide starts with a round to play near the top, sized to you. New players get 4 pieces for 10 seconds, and returning players get the board the setup card would suggest.",
+            ],
+          },
+        ],
+      },
+      {
+        title: "Faster and smoother",
+        changes: [
+          "The game reacts faster to taps and drags. Its slowest moment went from 208 ms to 144 ms on a slowed-down phone in our tests.",
+          "The daily leaderboard loads in about a quarter of the time, and leaderboard tabs switch at once.",
+          "Pages in Russian, Hindi, Vietnamese and other languages no longer jump when their fonts arrive.",
+          "Sounds load the first time they play, so pages open lighter.",
+          "A quickly flicked piece now lands where you let go of it.",
+          "On a phone inside another app's browser, such as ChatGPT's, the board no longer sits low with pieces hidden under the app's toolbar.",
+        ],
+      },
+      {
+        title: "Quieter sounds on iPhone",
+        changes: [
+          "Game sounds now play at 5% by default, down from 10%.",
+          "On iPhone and iPad the volume setting now actually works. Before, those devices played every sound at full volume.",
+          "On iPhone, game sounds now follow the silent switch. If your phone is on silent, the game is too.",
+        ],
+      },
+      {
+        title: "More to read and learn",
+        changes: [
+          {
+            segments: [
+              "A new ",
+              { text: "data page", href: "/data" },
+              " shares how well players remember positions, from 3,734 rounds. With 6 pieces and 10 seconds, the average is 48%, so if that board feels hard, you are in good company.",
+            ],
+          },
+          {
+            segments: [
+              "The ",
+              { text: "game page", href: "/game" },
+              " now explains what a chess memory test is and how your score is counted.",
+            ],
+          },
+          "Four comparison pages show how Memory Chess stacks up against DarkSquares, the Lichess coordinate trainer, and Lichess and Chess.com for visualization. They say plainly where each one is the better choice.",
+          "Eight popular guides now open with a straight answer and a number.",
+          "A new guide explains the rules of the wooden Memory Chess board game, for anyone who came looking for the toy.",
+          "Five guides are now in Russian, Brazilian Portuguese, French, German and Spanish.",
+          "Learn search no longer treats a bare number such as \"20\" as a strong match.",
+        ],
+      },
+      {
+        title: "Smaller things you might notice",
+        changes: [
+          {
+            segments: [
+              "Join the Memory Chess community on ",
+              { text: "Telegram", href: "https://t.me/TheMemoryChess" },
+              ". The link sits in the footer, on the daily board and on your dashboard once you have played a few rounds.",
+            ],
+          },
+          "Copy caption and Copy image say \"Copied\" on the button itself.",
+          "Translation fixes in 20 languages, including a doubled \"de de Groot\" in French, Spanish and Italian.",
+          "The data table shows a soft shadow when it has more columns to scroll to.",
+        ],
+        note: "Thank you for playing and for every note in the feedback box. Keep them coming.",
+      },
+    ],
+  },
+  {
     version: "2.0.0",
     publishedAt: "2026-10-14T20:45:00.000+08:00",
     title: "Memory Chess 2.0: a daily board, your own dashboard, and a whole new look",

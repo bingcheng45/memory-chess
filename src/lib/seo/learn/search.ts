@@ -257,7 +257,9 @@ export function markQueryWords(text: string, query: string): { readonly text: st
 
 export type SearchOutcome = "none" | "weak" | "strong";
 
-export function outcomeOf(results: readonly SearchResult[]): SearchOutcome {
+/** A query of only number or filler words ("seven", "20") names no subject, so however high it scores its match is loose. */
+export function outcomeOf(results: readonly SearchResult[], query: string): SearchOutcome {
   if (results.length === 0) return "none";
+  if (!terms(query).some(isContentWord)) return "weak";
   return results[0].score >= WEAK_SCORE || results[0].titleMatch ? "strong" : "weak";
 }

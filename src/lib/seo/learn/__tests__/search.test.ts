@@ -1,10 +1,11 @@
-import { markQueryWords, outcomeOf, prepareIndex, search } from "../search";
+import { markQueryWords, outcomeOf, prepareIndex, search, type SearchIndex } from "../search";
 import { learnSearchDocs } from "../searchDocs";
 
 const browser = prepareIndex(learnSearchDocs({ withBody: false }));
 const server = prepareIndex(learnSearchDocs({ withBody: true }));
 
 const top = (query: string, index = browser) => search(query, index)[0] ?? null;
+const outcome = (query: string, index: SearchIndex) => outcomeOf(search(query, index), query);
 
 describe("Learn search", () => {
   it("answers a question in the reader's words with the guide that answers it", () => {
@@ -20,7 +21,7 @@ describe("Learn search", () => {
 
   it("finds nothing for a word no guide uses", () => {
     expect(search("xyzzy", browser)).toEqual([]);
-    expect(outcomeOf(search("xyzzy", browser))).toBe("none");
+    expect(outcome("xyzzy", browser)).toBe("none");
   });
 
   it.each([
@@ -49,10 +50,10 @@ describe("Learn search", () => {
   });
 
   it("labels a loose match weak and a question match strong", () => {
-    expect(outcomeOf(search("elo stuck", browser))).toBe("weak");
-    expect(outcomeOf(search("why do i keep hanging pieces", browser))).toBe("strong");
-    expect(outcomeOf(search("blindfod chess", browser))).toBe("strong");
-    expect(outcomeOf(search("memory", browser))).toBe("strong");
+    expect(outcome("elo stuck", browser)).toBe("weak");
+    expect(outcome("why do i keep hanging pieces", browser)).toBe("strong");
+    expect(outcome("blindfod chess", browser)).toBe("strong");
+    expect(outcome("memory", browser)).toBe("strong");
   });
 
   it("labels a query strong when every word is in the top guide's title, however many pages use the word", () => {
@@ -71,18 +72,26 @@ describe("Learn search", () => {
     ]);
 
     expect(search("memory", crowded)[0]).toMatchObject({ slug: "memory-training", score: 0.04 });
-    expect(outcomeOf(search("memory", crowded))).toBe("strong");
-    expect(outcomeOf(search("memory position", crowded))).toBe("weak");
+    expect(outcome("memory", crowded)).toBe("strong");
+    expect(outcome("memory position", crowded)).toBe("weak");
   });
 
   it.each([
-    ["two", "chess-calculation-exercises-for-beginners"],
-    ["number", "adriaan-de-groot"],
-    ["seven", "judit-polgar"],
-    ["played", "judit-polgar"],
-  ])("leaves %p weak on the search page though %s has it in its title or h1, since a number or filler word names no subject", (query, slug) => {
-    expect(search(query, server)[0]).toMatchObject({ slug, titleMatch: false });
-    expect(outcomeOf(search(query, server))).toBe("weak");
+    ["two", "chess-calculation-exercises-for-beginners", 3.06],
+    ["number", "adriaan-de-groot", 2.57],
+    ["seven", "judit-polgar", 3.03],
+    ["played", "judit-polgar", 3.72],
+    ["20", "20-minute-daily-chess-study-plan", 8.32],
+  ])("leaves %p weak in the hub and on the search page though %s scores it high, since a number or filler word names no subject", (query, slug, hubScore) => {
+    expect(search(query, browser)[0]).toMatchObject({ slug, score: hubScore, titleMatch: false });
+    expect(outcome(query, browser)).toBe("weak");
+    expect(outcome(query, server)).toBe("weak");
+  });
+
+  it("keeps a query strong when a number sits beside the words that name its subject", () => {
+    expect(top("20 minute study routine")?.slug).toBe("20-minute-daily-chess-study-plan");
+    expect(outcome("20 minute study routine", browser)).toBe("strong");
+    expect(outcome("20 minute study routine", server)).toBe("strong");
   });
 
   it("reads the title match from the page title, not its h1", () => {
@@ -93,7 +102,7 @@ describe("Learn search", () => {
   it("gives no title match for a number word, written out or as digits", () => {
     expect(top("four")?.titleMatch).toBe(false);
     expect(top("20")).toMatchObject({ slug: "20-minute-daily-chess-study-plan", titleMatch: false });
-    expect(outcomeOf(search("four", server))).toBe("weak");
+    expect(outcome("four", server)).toBe("weak");
   });
 
   it.each([
@@ -101,7 +110,7 @@ describe("Learn search", () => {
     ["position", "chess-position-memory-trainers-compared"],
   ])("keeps %p strong in the hub on its title match at %s", (query, slug) => {
     expect(search(query, browser)[0]).toMatchObject({ slug, titleMatch: true });
-    expect(outcomeOf(search(query, browser))).toBe("strong");
+    expect(outcome(query, browser)).toBe("strong");
   });
 
   it("marks the question words that mean a query term, synonyms included", () => {

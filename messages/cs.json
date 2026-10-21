@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Obnoví se v {utc} UTC",
       "resetsAt": "Obnoví se v {utc} UTC ({local} u vás), za {timeLeft}"
     },
+    "loading": "Načítání žebříčku.",
     "mode": {
       "label": "Režim studia",
       "board": "Šachovnice",

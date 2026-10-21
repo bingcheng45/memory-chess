@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Direset pukul {utc} UTC",
       "resetsAt": "Direset pukul {utc} UTC ({local} waktu Anda), dalam {timeLeft}"
     },
+    "loading": "Memuat papan peringkat.",
     "mode": {
       "label": "Mode belajar",
       "board": "Papan",

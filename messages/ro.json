@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Se resetează la {utc} UTC",
       "resetsAt": "Se resetează la {utc} UTC ({local} la tine), în {timeLeft}"
     },
+    "loading": "Se încarcă clasamentul.",
     "mode": {
       "label": "Mod de studiu",
       "board": "Tablă",

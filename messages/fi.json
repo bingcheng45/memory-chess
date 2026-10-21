@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Nollautuu klo {utc} UTC",
       "resetsAt": "Nollautuu klo {utc} UTC (sinun aikaasi {local}), {timeLeft} päästä"
     },
+    "loading": "Ladataan tulostaulua.",
     "mode": {
       "label": "Opettelutapa",
       "board": "Lauta",

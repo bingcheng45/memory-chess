@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Nulstilles kl. {utc} UTC",
       "resetsAt": "Nulstilles kl. {utc} UTC ({local} din tid), om {timeLeft}"
     },
+    "loading": "Indlæser ranglisten.",
     "mode": {
       "label": "Studieform",
       "board": "Bræt",

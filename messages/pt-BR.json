@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Reinicia às {utc} UTC",
       "resetsAt": "Reinicia às {utc} UTC ({local} no seu horário), em {timeLeft}"
     },
+    "loading": "Carregando o ranking.",
     "mode": {
       "label": "Modo de estudo",
       "board": "Tabuleiro",

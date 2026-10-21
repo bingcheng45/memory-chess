@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Se reinicia a las {utc} UTC",
       "resetsAt": "Se reinicia a las {utc} UTC ({local} en tu hora), en {timeLeft}"
     },
+    "loading": "Cargando la clasificación.",
     "mode": {
       "label": "Modo de estudio",
       "board": "Tablero",

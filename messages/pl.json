@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Reset o {utc} UTC",
       "resetsAt": "Reset o {utc} UTC ({local} u Ciebie), za {timeLeft}"
     },
+    "loading": "Wczytywanie rankingu.",
     "mode": {
       "label": "Tryb nauki",
       "board": "Szachownica",

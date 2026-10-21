@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Wird um {utc} UTC zurückgesetzt",
       "resetsAt": "Wird um {utc} UTC zurückgesetzt ({local} bei dir), in {timeLeft}"
     },
+    "loading": "Rangliste wird geladen.",
     "mode": {
       "label": "Lernmodus",
       "board": "Brett",

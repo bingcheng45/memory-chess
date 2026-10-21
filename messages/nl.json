@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Reset om {utc} UTC",
       "resetsAt": "Reset om {utc} UTC ({local} bij jou), over {timeLeft}"
     },
+    "loading": "Ranglijst wordt geladen.",
     "mode": {
       "label": "Studiemodus",
       "board": "Bord",

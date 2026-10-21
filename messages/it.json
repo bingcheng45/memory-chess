@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Si azzera alle {utc} UTC",
       "resetsAt": "Si azzera alle {utc} UTC (le {local} da te), tra {timeLeft}"
     },
+    "loading": "Caricamento della classifica.",
     "mode": {
       "label": "Modalità di studio",
       "board": "Scacchiera",

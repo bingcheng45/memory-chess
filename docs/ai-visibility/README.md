@@ -82,12 +82,12 @@ To check for a new AI assistant, run the same report once without `dimension_fil
 
 ### 3. Update the mentions list
 
-1. Search Google, Bing and WebSearch for `"thememorychess"` and for `"Memory Chess" chess trainer`.
-2. Open each Phase 4 target in [mentions.md](mentions.md) and look for Memory Chess on the page.
-3. Add a row to the first table in mentions.md for each new third-party page that names Memory Chess. Fill in the URL, the date seen and how the page describes the site.
-4. Set the "Last checked" date on the rows you re-opened.
+1. Reopen every row in the first table of [mentions.md](mentions.md). Set "Last checked" to today. If the page still names Memory Chess, set its status to "live". If the page is gone or no longer names Memory Chess, set its status to "removed" or "offline" and keep the row.
+2. Search Google, Bing and WebSearch for `"thememorychess"` and for `"Memory Chess" chess trainer`.
+3. Open each Phase 4 target in mentions.md and look for Memory Chess on the page.
+4. Add a row to the first table for each new third-party page that names Memory Chess. Fill in the URL, the date seen, today as "Last checked", and how the page describes the site.
 
-The measure is the count of rows in the first table whose status is "live".
+The measure is the count of rows in the first table whose status is "live" and whose "Last checked" date is in this check. A row that was not reopened this month does not count.
 
 ### 4. Check Bing's host
 

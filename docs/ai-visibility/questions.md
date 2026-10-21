@@ -56,7 +56,7 @@ Column meanings:
 | 32 | lichess vs chess.com for visualization training | Bing | no box | - | org: discusschess.com, chess.com forums, firechess.com, a Lichess study |
 | 33 | lichess coordinate trainer alternatives | Bing | no box | - | org: auditchess.com, lichess.org/training/coordinate, chessnotate.com, worldmetrics |
 | 34 | chessable visualization course free alternative | Bing | no box | - | org: chessatlas.net, Reddit, trychessmate.com, auditchess.com, alternativeto.net |
-| 35 | darksquares alternative | Bing / WebSearch | no | - | alternativeto.net/software/darksquares, saashub.com, darksquares.net, chessatlas.net |
+| 35 | darksquares alternative | Bing | no | - | alternativeto.net/software/darksquares, saashub.com, darksquares.net, chessatlas.net (see note 4) |
 | 36 | is chess good for memory | Google | no | - | Chess.com, Instagram, YouTube, Healthline |
 | 37 | is chess good for memory | Bing | no | - | Chess.com, helpdementia.com, UChicago, aa-chess.com |
 | 38 | adriaan de groot chess memory experiment | Google | no box | - | org: blindfoldchess.net, wired.com, chessbase.com, wikipedia |
@@ -73,6 +73,7 @@ Notes:
 1. Row 15 named "Memory Chess (Product Hunt launch)" with no domain, and said it found no web-based version. It does not count, because the answer did not point to thememorychess.com.
 2. For rows 41 and 42 the research lists what showed but does not say whether a Copilot box was present. Memory Chess was absent from both.
 3. Row 43 has no baseline. Run it from the first monthly check onward.
+4. The research ran row 35 on both Bing and WebSearch and recorded one merged result. The listed sources read as a results page, so the check runs row 35 on Bing only. Memory Chess was absent from both runs, so the baseline "no" holds either way.
 
 ## Monthly results
 

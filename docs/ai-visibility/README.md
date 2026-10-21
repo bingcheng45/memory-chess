@@ -16,7 +16,7 @@ The goals are targets the plan proposed, not predictions. The 3-month goal date 
 | AI answers that name the Memory Chess trainer at thememorychess.com, out of the 43 rows in questions.md | 4 of 43 | Searches run 2026-10-20 | 12 of 43 |
 | Visits from AI assistants | about 66 a month | GA4, 90 days to 2026-10-18 (about 198 sessions), pulled 2026-10-20 | 150 a month |
 | Share of AI-assistant visits that land on a guide or the data page | about 7% | GA4, same 90 days | 25% |
-| Independent third-party pages that name Memory Chess | 0 | Research on 2026-10-20, rule rechecked 2026-10-21 | 10 |
+| Independent third-party pages that name Memory Chess | 1 | Research on 2026-10-20, rule rechecked 2026-10-21, thistools.app confirmed independent by the owner 2026-10-21 | 10 |
 | Bing ranks thememorychess.com, not memory-chess.vercel.app | no | Bing search on 2026-10-20 | yes |
 
 Two details sit behind the GA4 baselines:
@@ -24,7 +24,7 @@ Two details sit behind the GA4 baselines:
 - The research summed about 198 AI-assistant sessions over 90 days. A rerun of the same report on 2026-10-21 returned 199, because GA4 still adds late hits for a few days. 198 divided by 3 gives the "about 66 a month".
 - The rerun on 2026-10-21 found 14 of the 199 sessions landing on a `/learn` page, which is 7.0%. The `/data` page did not exist yet in that window.
 
-The mentions baseline is 0, not the plan's 2. The plan's 2 matches the only two pages in the research on hosts the owner does not run, thistools.app and the TrustMRR listing, counted under that looser rule. The rule in [mentions.md](mentions.md) now counts only independent pages. A counted page is on a host the owner does not run, was not written or submitted by the owner, and is not an automatic copy. TrustMRR is a listing the owner wrote, so it moves to the owner-submitted table. Nobody has confirmed who submitted the thistools.app listing, so it waits as "unconfirmed" until the owner says. The goal stays at 10, and it counts only independent pages.
+The mentions baseline is 1, not the plan's 2. The plan's 2 matches the only two pages in the research on hosts the owner does not run, thistools.app and the TrustMRR listing, counted under that looser rule. The rule in [mentions.md](mentions.md) now counts only independent pages. A counted page is on a host the owner does not run, was not written or submitted by the owner, and is not an automatic copy. TrustMRR is a listing the owner wrote, so it moves to the owner-submitted table. The owner confirmed on 2026-10-21 that they did not submit the thistools.app listing, so it is the one counted page. The goal stays at 10, and it counts only independent pages.
 
 ## Run the monthly check
 
@@ -130,4 +130,4 @@ Append one row to the table below and open a docs pull request with the changes 
 
 | Check date | Month covered | AI answers naming MC | AI-assistant visits | Guide or data share | Third-party mentions | Bing host is thememorychess.com | Notes |
 |---|---|---|---|---|---|---|---|
-| 2026-10-20 | 90 days to 2026-10-18 (baseline) | 4 of 43 | about 66 a month (about 198 in 90 days) | about 7% (14 of 199 on the 2026-10-21 rerun) | 0 (the plan's 2 used a looser rule; thistools.app unconfirmed) | no (#1 is memory-chess.vercel.app) | Row 43 page blank, recorded as failed. Perplexity and ChatGPT not read. Google rows were run in a browser that already had a Google session, so a signed-out run may differ. |
+| 2026-10-20 | 90 days to 2026-10-18 (baseline) | 4 of 43 | about 66 a month (about 198 in 90 days) | about 7% (14 of 199 on the 2026-10-21 rerun) | 1 (thistools.app; the plan's 2 used a looser rule) | no (#1 is memory-chess.vercel.app) | Row 43 page blank, recorded as failed. Perplexity and ChatGPT not read. Google rows were run in a browser that already had a Google session, so a signed-out run may differ. |

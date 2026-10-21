@@ -25,11 +25,11 @@ The measure is the count of first-table rows whose status is "live" and whose "L
 
 | # | Page | First seen | Last checked | How it describes Memory Chess | Status |
 |---|---|---|---|---|---|
-| 1 | https://thistools.app/projects/memory-chess | 2026-10-20 | 2026-10-21 | A directory listing that links to https://thememorychess.com/, dated 2026-10-17, the day after the Product Hunt launch. Its long write-up of the game cites Product Hunt twice. The page shows no submitter, and the site has a "Submit Project" form. It ranked on Google page 1 for "chess memory test" on 2026-10-20. | unconfirmed |
+| 1 | https://thistools.app/projects/memory-chess | 2026-10-20 | 2026-10-21 | A directory listing that links to https://thememorychess.com/, dated 2026-10-17, the day after the Product Hunt launch. Its long write-up of the game cites Product Hunt twice. The page shows no submitter. The owner confirmed on 2026-10-21 that they did not submit it. It ranked on Google page 1 for "chess memory test" on 2026-10-20. | live |
 
-Count on 2026-10-20: **0**. Goal by 2027-01-20: **10** independent pages.
+Count on 2026-10-21: **1**. Goal by 2027-01-20: **10** independent pages.
 
-The plan gave a count of 2 without naming the pages. The only two pages in the October 2026 research that describe Memory Chess on a host the owner does not run are thistools.app and TrustMRR, so the 2 counted those, under the looser rule of any host the owner does not run. Under the rule above, TrustMRR is a listing the owner wrote, so it moves to the second table. Neither the research (`aivis/2-landscape.md` section C, `aivis/3-distribution.md` tables 1 and 3) nor the live page on 2026-10-21 says who submitted thistools.app, so it stays out of the count until the owner confirms. If the owner confirms they did not submit it, set its status to "live" and the baseline becomes 1. If the owner did submit it, move the row to the owner-submitted table.
+The plan gave a count of 2 without naming the pages. The only two pages in the October 2026 research that describe Memory Chess on a host the owner does not run are thistools.app and TrustMRR, so the 2 counted those, under the looser rule of any host the owner does not run. Under the rule above, TrustMRR is a listing the owner wrote, so it moves to the second table. The owner confirmed on 2026-10-21 that they did not submit thistools.app, so it counts and the baseline is 1.
 
 ## Owner-submitted listings (tracked, not counted)
 

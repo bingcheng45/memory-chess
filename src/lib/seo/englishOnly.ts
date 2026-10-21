@@ -93,7 +93,7 @@ function guideRoute(slug: string): TranslatedRoute {
   return {
     route: `/learn/${slug}`,
     translatedLocales,
-    indexed: translatedLocales.filter(isIndexedGuideLocale),
+    indexed: translatedLocales.filter((locale) => isIndexedGuideLocale(locale)),
     withheld: TRANSLATED_GUIDE_LOCALES.filter((locale) => !translatedLocales.includes(locale)),
   };
 }

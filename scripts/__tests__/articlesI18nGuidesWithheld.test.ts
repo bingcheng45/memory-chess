@@ -1,30 +1,16 @@
 /** @jest-environment node */
-import { cpSync, mkdtempSync, readFileSync, readdirSync, realpathSync, rmSync, writeFileSync } from "node:fs";
-import { tmpdir } from "node:os";
+import { readFileSync, readdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { approvalHashOf } from "@/lib/articles/articleText";
-import { put, putJson, readJson, runLever } from "./articlesI18nSandbox";
+import { inGuideSandbox, put, putJson, readJson, runLever } from "./articlesI18nSandbox";
 
 jest.setTimeout(60_000);
 
-const REPO_ROOT = join(__dirname, "..", "..");
-const COPIED = ["messages", "src/i18n/routing.ts", "src/lib/articles/articleText.ts", "src/lib/articles/schema.ts", "src/lib/seo/learn"];
 const LEARN = "src/lib/seo/learn";
 const SERVED = `${LEARN}/servedGuides.json`;
 const BLUNDERING = "how-to-stop-blundering-in-chess";
 const BLINDFOLD = "blindfold-chess-training-for-beginners";
 const ALL = ["ru", "pt-BR", "fr", "de", "es"];
-
-function inGuideSandbox<T>(body: (root: string) => T): T {
-  const root = realpathSync(mkdtempSync(join(tmpdir(), "articles-i18n-guides-")));
-  try {
-    COPIED.forEach((path) => cpSync(join(REPO_ROOT, path), join(root, path), { recursive: true }));
-    putJson(root, "package.json", { name: "sandbox", private: true });
-    return body(root);
-  } finally {
-    rmSync(root, { recursive: true, force: true });
-  }
-}
 
 function editFile(root: string, file: string, from: string, to: string): void {
   const source = readFileSync(join(root, file), "utf8");

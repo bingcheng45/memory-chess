@@ -16,8 +16,8 @@ Source: the research file `aivis/2-landscape.md`, section A, run on 2026-10-20 (
 
 Column meanings:
 
-- **AI names MC.** "yes" when the AI answer names Memory Chess or cites thememorychess.com. "no" when an AI answer showed and did not. "no box" when no AI answer showed.
-- **MC organic.** Organic rank of a thememorychess.com page, or "-" when absent from the results read.
+- **AI names MC.** Scored by the "AI" cell rule in [README.md](README.md). "yes" only when the answer names the trainer at thememorychess.com by domain, link or unambiguous description. Other games called "Memory Chess" and Product Hunt mentions with no domain score "no".
+- **MC organic.** Scored by the "org" cell rule in README.md. The rank of the first thememorychess.com or memory-chess.vercel.app result, "-" when neither is in the top 10, "n/a" on WebSearch rows, and "failed" when the page did not load.
 - **Named in the AI answer.** The rivals and sources the AI answer named or cited. For "no box" rows the top organic results are listed instead, marked "org".
 
 | # | Question | Engine | AI names MC | MC organic | Named in the AI answer |
@@ -64,20 +64,28 @@ Column meanings:
 | 40 | chess position recall training app | Bing | no box | - | org: ChessRecall, recallchess.app, repertree, chessmind.ai, chessworld memory trainer |
 | 41 | how to calculate more moves ahead in chess | Bing | not recorded (see note 2) | - | Chess.com blogs, chessmind.ai, tactical-chess.com, chesslab.academy, thechessworld.com |
 | 42 | chess memory game for kids online free | Bing | not recorded (see note 2) | - | chesskid.com, toytheater, brainplay (dice game), culinaryschools |
-| 43 | chess brain training for seniors memory | Bing | n/a (see note 3) | n/a | The results page returned blank and was not retried |
+| 43 | chess brain training for seniors memory | Bing | failed (see note 3) | failed | The results page returned blank and was not retried |
 
-Baseline score: **4 of 43** rows name Memory Chess in the AI answer (rows 5, 20, 22 and 27). Two on Google and two on Bing.
+Baseline score: **4 of 43** rows name the trainer at thememorychess.com in the AI answer (rows 5, 20, 22 and 27). Two on Google and two on Bing. Re-scored on 2026-10-21 under the README rule, row by row:
+
+- Row 5 cites thememorychess.com. Yes.
+- Row 20 names "MemoryChess" and the "Memory Chess Trainer" for a drill of 6 to 12 pieces shown for 8 to 10 seconds and then rebuilt. That is an unambiguous description. Yes.
+- Row 22 cites thememorychess.com and a thememorychess.com/learn page. Yes.
+- Row 27 cites thememorychess.com. Yes.
+- Row 15 names a Product Hunt launch with no domain and says it found no web version. Excluded, so no.
+- Row 19 names the itch.io dice-and-colour game. Excluded, so no.
+- Every other row with an AI answer names neither the domain nor the trainer. No.
 
 Notes:
 
-1. Row 15 named "Memory Chess (Product Hunt launch)" with no domain, and said it found no web-based version. It does not count, because the answer did not point to thememorychess.com.
+1. Row 15 named "Memory Chess (Product Hunt launch)" with no domain, and said it found no web-based version. The README rule excludes both cases, so it scores "no".
 2. For rows 41 and 42 the research lists what showed but does not say whether a Copilot box was present. Memory Chess was absent from both.
-3. Row 43 has no baseline. Run it from the first monthly check onward.
+3. Row 43 has no baseline. The page came back blank and was not retried, which the README rule now records as "failed". Run it from the first monthly check onward.
 4. The research ran row 35 on both Bing and WebSearch and recorded one merged result. The listed sources read as a results page, so the check runs row 35 on Bing only. Memory Chess was absent from both runs, so the baseline "no" holds either way.
 
 ## Monthly results
 
-Append one column block per month below, keyed by row number. Record "yes" or "no" for "AI names MC" and the MC organic rank. Put any change in the rivals named in the notes.
+Append one column block per month below, keyed by row number. Use only the values README.md defines. The AI column takes "yes", "no", "no box" or "failed". The org column takes "#n", "#n old host", "-", "n/a" (WebSearch rows only) or "failed". The baseline's "not recorded" on rows 41 and 42 is never used again. Put any change in the rivals named in the notes.
 
 | # | 2026-10-20 AI | 2026-10-20 org |
 |---|---|---|
@@ -123,4 +131,4 @@ Append one column block per month below, keyed by row number. Record "yes" or "n
 | 40 | no box | - |
 | 41 | not recorded | - |
 | 42 | not recorded | - |
-| 43 | n/a | n/a |
+| 43 | failed | failed |

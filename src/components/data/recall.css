@@ -27,8 +27,9 @@
 }
 @supports (animation-timeline: scroll()) {
   .lab-paper .recall-scroll {
-    animation: recall-cue linear both;
-    animation-timeline: scroll(self inline);
+    /* Exempt from the reduced-motion reset in lab-paper.css because it is scroll-linked and never moves on its own. */
+    animation: recall-cue linear both !important;
+    animation-timeline: scroll(self inline) !important;
     background:
       radial-gradient(farthest-side at 0 50%, color-mix(in srgb, var(--recall-edge) calc(100% * var(--recall-start)), transparent), transparent) left / 16px 100% no-repeat,
       radial-gradient(farthest-side at 100% 50%, color-mix(in srgb, var(--recall-edge) calc(100% * var(--recall-end)), transparent), transparent) right / 16px 100% no-repeat;

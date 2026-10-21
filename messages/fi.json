@@ -989,7 +989,7 @@
     "presets": {
       "easy": {
         "label": "Helppo",
-        "description": "Vain kuninkaat – täydellinen aloitukseen"
+        "description": "Vain kuninkaat - täydellinen aloitukseen"
       },
       "medium": {
         "label": "Keskitaso",
@@ -1765,7 +1765,7 @@
       "title": "Osallistu päivän lautaan",
       "lateTitle": "Liity sen päivän laudalle",
       "name": "Nimi",
-      "nameHint": "4–16 merkkiä, näkyy pistemääräsi vieressä.",
+      "nameHint": "4-16 merkkiä, näkyy pistemääräsi vieressä.",
       "nameShort": "Liian lyhyt. Käytä vähintään 4 merkkiä.",
       "nameLong": "Liian pitkä. Käytä enintään 16 merkkiä.",
       "country": "Maa",
@@ -1806,15 +1806,15 @@
       "shared": "Joka päivä keskiyöllä UTC arvotaan uusi asetelma, ja jokainen pelaaja maailmassa saa saman. Asetelma syntyy päivämäärästä muodostetusta siemenestä, joten lauta on kaikille sama eikä kukaan saa helpompaa versiota. Koska lauta on yhteinen, tulos tarkoittaa samaa kaikille, jotka pelasivat sen sinä päivänä.",
       "oneTry": "Saat yhden yrityksen. Laudan avaaminen lasketaan yritykseksi, joten opetteluvaiheessa poistuminen ja takaisin tuleminen ei näytä sitä sinulle kahdesti. Laitteesi muistaa yrityksen, kunnes seuraava lauta aukeaa.",
       "grid": "Kun olet rakentanut asetelman, näet, mitkä ruudut menivät oikein, missä oli väärä nappula, mitkä unohtuivat ja minne asetit ylimääräisen nappulan. Jakorivillä on yksi ruutu nappulaa kohden tuloksen mukaan järjestettynä, eikä siinä näy, missä nappula oli, joten sen julkaiseminen ei paljasta lautaa niille, jotka eivät ole vielä pelanneet.",
-      "join": "Liittyäksesi lautaan valitse 4–16 merkin nimi ja maa, jonka edustajana pelaat. Maa haetaan ensin aiemmin valitsemastasi, sitten yhteytesi perusteella ja sitten selaimesi kielestä, ja voit aina vaihtaa sen. Liittyessäsi voimassa oleva luokituksesi näkyy nimesi vieressä.",
+      "join": "Liittyäksesi lautaan valitse 4-16 merkin nimi ja maa, jonka edustajana pelaat. Maa haetaan ensin aiemmin valitsemastasi, sitten yhteytesi perusteella ja sitten selaimesi kielestä, ja voit aina vaihtaa sen. Liittyessäsi voimassa oleva luokituksesi näkyy nimesi vieressä.",
       "ranking": "Rivit järjestetään oikein sijoitettujen nappuloiden määrän mukaan, sitten vähiten väärien nappuloiden mukaan ja sitten nopeimman rakennuksen mukaan. Kaikki opettelevat yhtä monta sekuntia, joten opetteluaika ei koskaan erota kahta pelaajaa päivän laudalla.",
       "arcTitle": "Nappulat ja opetteluaika viikon aikana",
       "arcIntro": "Asetukset noudattavat viikon kaarta. Maanantai alkaa rauhallisesti, jotta viikonlopun tauko ei katkaise putkea, kuorma kasvaa viikon mittaan, lauantai on pikalauta, jonka näet vain muutaman sekunnin, ja sunnuntai on kaikista vaikein lauta. Kunkin päivän vaihteluvälin sisällä päivämäärä valitsee yhden asetuksen, joka on sama kaikille pelaajille.",
       "day": "Päivä",
       "pieces": "Nappulat",
       "seconds": "Opetteluaika",
-      "range": "{min}–{max}",
-      "secondsRange": "{min}–{max} s",
+      "range": "{min}-{max}",
+      "secondsRange": "{min}-{max} s",
       "secondsExact": "{count} s"
     }
   },

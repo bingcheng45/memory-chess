@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Resets at {utc} UTC",
       "resetsAt": "Resets at {utc} UTC ({local} your time), in {timeLeft}"
     },
+    "loading": "Loading the board.",
     "mode": {
       "label": "Study mode",
       "board": "Board",

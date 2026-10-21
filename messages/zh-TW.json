@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "UTC {utc} 重設",
       "resetsAt": "UTC {utc} 重設（你的時間 {local}），{timeLeft}後"
     },
+    "loading": "正在載入排行榜。",
     "mode": {
       "label": "練習方式",
       "board": "棋盤",

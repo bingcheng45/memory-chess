@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "{utc} UTC itibarıyla sıfırlanır",
       "resetsAt": "{utc} UTC itibarıyla sıfırlanır (sizin saatinizle {local}), {timeLeft} sonra"
     },
+    "loading": "Sıralama yükleniyor.",
     "mode": {
       "label": "Çalışma modu",
       "board": "Tahta",

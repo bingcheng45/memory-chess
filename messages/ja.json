@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "UTC {utc} にリセット",
       "resetsAt": "UTC {utc}（あなたの時刻で {local}）にリセット、あと{timeLeft}"
     },
+    "loading": "ランキングを読み込んでいます。",
     "mode": {
       "label": "学習モード",
       "board": "盤",

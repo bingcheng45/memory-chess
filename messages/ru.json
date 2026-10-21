@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Сброс в {utc} UTC",
       "resetsAt": "Сброс в {utc} UTC ({local} по вашему времени), через {timeLeft}"
     },
+    "loading": "Загрузка таблицы лидеров.",
     "mode": {
       "label": "Режим изучения",
       "board": "Доска",

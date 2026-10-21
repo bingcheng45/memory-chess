@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Nollställs kl. {utc} UTC",
       "resetsAt": "Nollställs kl. {utc} UTC ({local} hos dig), om {timeLeft}"
     },
+    "loading": "Läser in topplistan.",
     "mode": {
       "label": "Studieläge",
       "board": "Bräde",

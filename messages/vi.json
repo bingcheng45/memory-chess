@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Đặt lại lúc {utc} UTC",
       "resetsAt": "Đặt lại lúc {utc} UTC ({local} giờ của bạn), còn {timeLeft}"
     },
+    "loading": "Đang tải bảng xếp hạng.",
     "mode": {
       "label": "Cách học",
       "board": "Bàn cờ",

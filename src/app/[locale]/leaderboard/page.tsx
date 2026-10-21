@@ -1,38 +1,26 @@
 import { PHASE_PRODUCTION_BUILD } from 'next/constants';
-import LeaderboardTabs, { type LeaderboardBoards } from '@/components/leaderboard/LeaderboardTabs';
-import { utcDayOf } from '@/lib/lab/daily';
-import { RANKED_DIFFICULTIES } from '@/lib/reference/facts';
+import LeaderboardTabs from '@/components/leaderboard/LeaderboardTabs';
+import { DEFAULT_BOARD } from '@/lib/leaderboard/defaultBoard';
 import { getLeaderboard } from '@/lib/services/leaderboardService';
-import { DAILY_BOARD } from '@/types/leaderboard';
 
 export const revalidate = 900;
 
 export default async function LeaderboardPage() {
-  const day = utcDayOf(Date.now());
-  const [daily, ...rankedResults] = await Promise.all([
-    getLeaderboard({ difficulty: DAILY_BOARD, daily_day: day }),
-    ...RANKED_DIFFICULTIES.map((difficulty) => getLeaderboard({ difficulty })),
-  ]);
+  // Only the board the page opens on is served. Every board embedded here is
+  // written again on each revalidation in every locale, so the other tabs are
+  // read in the browser, from the CDN-cached API, when first opened.
+  const board = await getLeaderboard({ difficulty: DEFAULT_BOARD });
   // A failed revalidation that throws keeps serving the last good page; one that
   // renders would cache the error for the whole window. A build has no last
   // good page and `next dev` caches nothing, so both render the unavailable
   // state instead.
-  const rankedFailure = rankedResults.find((result) => result.error);
-  if (
-    rankedFailure &&
-    process.env.NODE_ENV === 'production' &&
-    process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD
-  ) {
-    throw new Error(`Leaderboard refresh failed: ${rankedFailure.error}`);
+  if (board.error && process.env.NODE_ENV === 'production' && process.env.NEXT_PHASE !== PHASE_PRODUCTION_BUILD) {
+    throw new Error(`Leaderboard refresh failed: ${board.error}`);
   }
-  const boards = {
-    ...Object.fromEntries(RANKED_DIFFICULTIES.map((difficulty, index) => [difficulty, rankedResults[index]])),
-    daily: { ...daily, day },
-  } as LeaderboardBoards;
 
   return (
     <main className="lab-wrap lb-main">
-      <LeaderboardTabs boards={boards} />
+      <LeaderboardTabs boards={{ [DEFAULT_BOARD]: board }} />
     </main>
   );
 }

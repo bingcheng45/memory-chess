@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Réinitialisation à {utc} UTC",
       "resetsAt": "Réinitialisation à {utc} UTC ({local} chez vous), dans {timeLeft}"
     },
+    "loading": "Chargement du classement.",
     "mode": {
       "label": "Mode d'étude",
       "board": "Échiquier",

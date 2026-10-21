@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Nullstilles kl. {utc} UTC",
       "resetsAt": "Nullstilles kl. {utc} UTC ({local} hos deg), om {timeLeft}"
     },
+    "loading": "Laster inn resultatlisten.",
     "mode": {
       "label": "Studiemodus",
       "board": "Brett",

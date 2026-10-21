@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "Újraindul {utc} UTC-kor",
       "resetsAt": "Újraindul {utc} UTC-kor (nálad {local}), {timeLeft} múlva"
     },
+    "loading": "A ranglista betöltése.",
     "mode": {
       "label": "Tanulási mód",
       "board": "Tábla",

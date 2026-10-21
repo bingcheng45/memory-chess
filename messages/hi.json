@@ -1227,6 +1227,7 @@
       "resetsAtUtc": "{utc} UTC पर रीसेट होता है",
       "resetsAt": "{utc} UTC पर रीसेट होता है (आपके समय से {local}), {timeLeft} में"
     },
+    "loading": "लीडरबोर्ड लोड हो रहा है।",
     "mode": {
       "label": "अभ्यास का तरीका",
       "board": "बोर्ड",

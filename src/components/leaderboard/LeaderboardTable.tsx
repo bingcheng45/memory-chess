@@ -41,12 +41,11 @@ export function TimeDisplay({ seconds }: { seconds: number }) {
   const wholeSeconds = String(Math.floor(totalMs / 1000) % 60).padStart(2, "0");
   const milliseconds = String(totalMs % 1000).padStart(3, "0");
 
+  // One text node for the minutes and seconds: every cell is served in every
+  // locale's page, so separate spans and React's text separators added up.
   return (
     <span className="lb-time">
-      <span>{minutes}</span>
-      <span>:</span>
-      <span>{wholeSeconds}</span>
-      <span>:</span>
+      {`${minutes}:${wholeSeconds}:`}
       <span className="lb-ms">{milliseconds}</span>
     </span>
   );

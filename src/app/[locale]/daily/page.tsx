@@ -9,7 +9,7 @@ import { readDailyBoard } from "@/lib/daily/readDailyBoard";
 import { readTodayOrYesterday } from "@/lib/daily/topTen";
 import { utcDayOf } from "@/lib/lab/daily";
 
-export const revalidate = 60;
+export const revalidate = 300;
 
 async function dailySchema(locale: string) {
   const t = await getTranslations({ locale });

@@ -5,7 +5,7 @@ import { RANKED_DIFFICULTIES } from '@/lib/reference/facts';
 import { getLeaderboard } from '@/lib/services/leaderboardService';
 import { DAILY_BOARD } from '@/types/leaderboard';
 
-export const revalidate = 300;
+export const revalidate = 900;
 
 export default async function LeaderboardPage() {
   const day = utcDayOf(Date.now());

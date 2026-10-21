@@ -13,13 +13,13 @@ import { RANKED_DIFFICULTIES, type RankedDifficulty } from '@/lib/reference/fact
 import { BLINDFOLD_MODE, isBlindfoldSearch } from '@/lib/game/roundLink';
 import { blindfoldBoardOpen } from '@/lib/leaderboard/mode';
 import { DEFAULT_BOARD } from '@/lib/leaderboard/defaultBoard';
-import { DAILY_BOARD, type LeaderboardEntry } from '@/types/leaderboard';
+import { DAILY_BOARD, type BoardRow, type LeaderboardEntry } from '@/types/leaderboard';
 
 const LEADERBOARD_TABS = [DAILY_BOARD, ...RANKED_DIFFICULTIES] as const;
 type LeaderboardTab = (typeof LEADERBOARD_TABS)[number];
 
 interface Board {
-  data: LeaderboardEntry[];
+  data: BoardRow[];
   error?: string;
   day?: string;
 }

@@ -59,3 +59,30 @@ export type LeaderboardBoard =
   | { difficulty: typeof DAILY_BOARD; daily_day: string };
 
 export type LeaderboardSubmission = SubmittedRound & LeaderboardBoard;
+
+/** A row as a board draws it. The fields every row of one board shares are left out of the page that serves it. */
+export type BoardRow = Omit<LeaderboardEntry, 'difficulty' | 'daily_day' | 'mode'>;
+
+export const boardRowOf = ({
+  id,
+  player_name,
+  country_code,
+  piece_count,
+  correct_pieces,
+  memorize_time,
+  solution_time,
+  total_wrong_pieces,
+  skill_rating,
+  created_at,
+}: LeaderboardEntry): BoardRow => ({
+  id,
+  player_name,
+  country_code,
+  piece_count,
+  correct_pieces,
+  memorize_time,
+  solution_time,
+  total_wrong_pieces,
+  skill_rating,
+  created_at,
+});

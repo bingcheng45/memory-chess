@@ -119,7 +119,6 @@ describe("LeaderboardTable", () => {
           {
             id: "row-1",
             player_name: "Dino beta",
-            difficulty: "medium",
             piece_count: 6,
             correct_pieces: 6,
             memorize_time: 0.648,

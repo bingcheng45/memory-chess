@@ -1,7 +1,7 @@
 'use client';
 
 import { START_RATING } from "@/lib/game/rating";
-import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardEntry } from "@/types/leaderboard";
+import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type BoardRow } from "@/types/leaderboard";
 import { Link } from "@/i18n/navigation";
 import { memo, useEffect, useRef, type ReactNode } from "react";
 import { CloudOff, TriangleAlert } from "lucide-react";
@@ -21,7 +21,7 @@ export interface EntryDetails {
 }
 
 interface LeaderboardTableProps {
-  data: LeaderboardEntry[];
+  data: BoardRow[];
   error: string | null;
   entryDetails?: EntryDetails;
   activeTab?: string;

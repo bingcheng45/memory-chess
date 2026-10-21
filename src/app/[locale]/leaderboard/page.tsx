@@ -2,6 +2,7 @@ import { PHASE_PRODUCTION_BUILD } from 'next/constants';
 import LeaderboardTabs from '@/components/leaderboard/LeaderboardTabs';
 import { DEFAULT_BOARD } from '@/lib/leaderboard/defaultBoard';
 import { getLeaderboard } from '@/lib/services/leaderboardService';
+import { boardRowOf } from '@/types/leaderboard';
 
 export const revalidate = 900;
 
@@ -20,7 +21,7 @@ export default async function LeaderboardPage() {
 
   return (
     <main className="lab-wrap lb-main">
-      <LeaderboardTabs boards={{ [DEFAULT_BOARD]: board }} />
+      <LeaderboardTabs boards={{ [DEFAULT_BOARD]: { ...board, data: board.data.map(boardRowOf) } }} />
     </main>
   );
 }

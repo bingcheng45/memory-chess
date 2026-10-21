@@ -154,7 +154,19 @@ it("refuses a total players report with no row instead of crashing, and writes n
   ]);
 
   expect(result.status).toBe(2);
-  expect(result.stderr).toBe("recall-from-ga4: the total players report has no row; export it again for 2026-09-29 to 2026-10-19\n");
+  expect(result.stderr).toBe("recall-from-ga4: the total players report has 0 rows, expected 1; export it again for 2026-09-29 to 2026-10-19\n");
+  expect(readdirSync(dir).sort()).toEqual(["histogram.json", "players.json", "total.json"]);
+});
+
+it("refuses a total players report with two rows and says how many it found", () => {
+  const result = run([
+    save("histogram.json", restReport([...HISTOGRAM_COLUMNS[0]], [...HISTOGRAM_COLUMNS[1]], HISTOGRAM_ROWS)),
+    save("players.json", restReport([...PLAYER_COLUMNS[0]], [...PLAYER_COLUMNS[1]], PLAYER_ROWS)),
+    save("total.json", restReport([], TOTAL_METRICS, [...TOTAL_ROWS, ...TOTAL_ROWS])),
+  ]);
+
+  expect(result.status).toBe(2);
+  expect(result.stderr).toBe("recall-from-ga4: the total players report has 2 rows, expected 1; export it again for 2026-09-29 to 2026-10-19\n");
   expect(readdirSync(dir).sort()).toEqual(["histogram.json", "players.json", "total.json"]);
 });
 

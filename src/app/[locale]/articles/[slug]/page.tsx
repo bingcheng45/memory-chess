@@ -10,8 +10,6 @@ import { servesArticlesIn } from "@/lib/articles/articleLocales";
 import { buildArticleMetadata } from "@/lib/seo/articleMetadata";
 import { getArticleStats } from "@/lib/services/articleStatsService";
 
-export const revalidate = 300;
-
 type ArticleRouteProps = {
   params: Promise<{
     slug: string;

@@ -1,5 +1,5 @@
 import type { ComponentProps } from "react";
-import { render, screen, within } from "@/test-utils/intl";
+import { render, screen, waitFor, within } from "@/test-utils/intl";
 import ArticlePage from "@/components/articles/ArticlePage";
 import { makeArticle, summaryOf } from "@/lib/articles/__tests__/fixtures";
 import type { ArticleCounts } from "@/lib/articles/stats";
@@ -29,6 +29,7 @@ const article = makeArticle(0);
 const next = summaryOf(makeArticle(1));
 
 let fetchMock: jest.Mock;
+let liveRows: unknown[] | null;
 
 function renderPage(counts?: ArticleCounts) {
   const view = render(<ArticlePage article={article} nextArticle={next} counts={counts} />);
@@ -40,7 +41,12 @@ function renderPage(counts?: ArticleCounts) {
 const likeButton = () => screen.getByRole("button", { name: "Like this article" });
 
 beforeEach(() => {
-  fetchMock = jest.fn().mockResolvedValue({ status: 200, json: async () => ({ views: 1, likes: 0 }) });
+  liveRows = null;
+  fetchMock = jest.fn(async (url: string) =>
+    url === "/api/articles/stats"
+      ? { status: liveRows === null ? 503 : 200, json: async () => liveRows }
+      : { status: 200, json: async () => ({ views: 1, likes: 0 }) },
+  );
   global.fetch = fetchMock;
 });
 
@@ -99,10 +105,27 @@ describe("ArticlePage counts", () => {
     expect(container.querySelectorAll("[hidden], [style*='opacity'], [style*='display'], [style*='visibility']")).toHaveLength(0);
   });
 
+  it("replaces the built counts with the current ones once the page has loaded", async () => {
+    liveRows = [{ slug: article.slug, views: 2300, likes: 190 }];
+    const { header } = renderPage({ views: 2140, likes: 187 });
+
+    expect(await within(header).findByText("2,300 views")).toBeInTheDocument();
+    expect(likeButton()).toHaveTextContent(/^190$/);
+  });
+
+  it("keeps the built counts when the current ones cannot be read", async () => {
+    const { header } = renderPage({ views: 2140, likes: 187 });
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledWith("/api/articles/stats", expect.anything()));
+    expect(within(header).getByText("2,140 views")).toBeInTheDocument();
+    expect(likeButton()).toHaveTextContent(/^187$/);
+  });
+
   it("records one view for the article it shows", () => {
     renderPage({ views: 2140, likes: 187 });
 
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    const views = fetchMock.mock.calls.filter(([url]) => url === `/api/articles/${article.slug}/stats`);
+    expect(views).toHaveLength(1);
     expect(fetchMock).toHaveBeenCalledWith(
       `/api/articles/${article.slug}/stats`,
       expect.objectContaining({ body: JSON.stringify({ event: "view" }) }),

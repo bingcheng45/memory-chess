@@ -113,7 +113,7 @@ function summarize({ pieces, seconds, counts }, players) {
 function recallDataset(reports, { start, end }) {
   const { histogram, players, total: totals } = classify(reports.flatMap((report) => (report.reports ?? [report]).map(tableOf)));
   const range = `${start} to ${end}`;
-  if (totals.rows.length !== 1) throw new UsageError(`the total players report has no row; export it again for ${range}`);
+  if (totals.rows.length !== 1) throw new UsageError(`the total players report has ${totals.rows.length} rows, expected 1; export it again for ${range}`);
   const { cells, total, unset } = histogramCells(histogram);
   if (total === 0) throw new UsageError(`GA4 returned no rounds for ${range}`);
   const users = playersByCell(players);

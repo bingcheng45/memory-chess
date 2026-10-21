@@ -179,6 +179,19 @@ export function inSandbox<T>(kind: "real" | "fixture", body: (root: string) => T
   }
 }
 
+const COPIED_FOR_GUIDES = ["messages", "src/i18n/routing.ts", "src/lib/articles/articleText.ts", "src/lib/articles/schema.ts", "src/lib/seo/learn"];
+
+export function inGuideSandbox<T>(body: (root: string) => T): T {
+  const root = realpathSync(mkdtempSync(join(tmpdir(), "articles-i18n-guides-")));
+  try {
+    COPIED_FOR_GUIDES.forEach((path) => cpSync(join(REPO_ROOT, path), join(root, path), { recursive: true }));
+    putJson(root, "package.json", { name: "sandbox", private: true });
+    return body(root);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+}
+
 export function runLever(root: string, ...args: string[]): LeverRun {
   const run = spawnSync(process.execPath, [LEVER_PATH, ...args], { cwd: root, encoding: "utf8" });
   return { status: run.status, stdout: run.stdout, failures: run.stderr.split("\n").filter((line) => line !== "") };

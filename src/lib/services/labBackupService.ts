@@ -31,6 +31,9 @@ async function rpc(name: string, args: Record<string, string | null>): Promise<u
 }
 
 async function call(request: BackupRequest): Promise<BackupResult> {
+  if (request.action !== "get" && process.env.SUPABASE_READ_ONLY === "true") {
+    throw new Error("Supabase is read-only (SUPABASE_READ_ONLY=true)");
+  }
   switch (request.action) {
     case "put": {
       const args = { p_lookup: request.lookup, p_sealed: request.sealed, p_expected: request.expectedSavedAt };

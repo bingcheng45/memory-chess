@@ -1,12 +1,12 @@
 -- Leaderboard database schema for Memory Chess
 --
 -- This describes leaderboard_entries as it stands after
--- schema/migrations/0006_leaderboard_write_lockdown.sql. The column list and its
+-- schema/migrations/0008_leaderboard_mode.sql. The column list and its
 -- order were taken from the live table, not from an earlier copy of this file:
 -- an older version omitted total_wrong_pieces for as long as that column had
 -- existed in production.
 --
--- total_wrong_pieces, country_code, skill_rating and daily_day are declared
+-- total_wrong_pieces, country_code, skill_rating, daily_day and mode are declared
 -- last because they arrived by ALTER TABLE, which appends. Reordering them here would make the file
 -- disagree with what SELECT * returns.
 --
@@ -31,6 +31,9 @@ CREATE TABLE leaderboard_entries (
   country_code TEXT NOT NULL DEFAULT 'ZZ',
   skill_rating INTEGER NOT NULL DEFAULT 1000,
   daily_day DATE,
+  -- 'blindfold' rounds study the position as notation and rank on boards of
+  -- their own. Every row stored before 0008 reads 'board'.
+  mode TEXT NOT NULL DEFAULT 'board',
 
   CHECK (correct_pieces <= piece_count),
   CHECK (memorize_time > 0),
@@ -84,6 +87,15 @@ ALTER TABLE leaderboard_entries
   ADD CONSTRAINT check_memorize_time_longest
   CHECK (memorize_time <= 60);
 
+-- Added by 0008. The daily board is always studied on the board.
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_mode_known
+  CHECK (mode IN ('board', 'blindfold'));
+
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_daily_board_mode
+  CHECK (difficulty <> 'daily' OR mode = 'board');
+
 CREATE FUNCTION leaderboard_daily_created_at() RETURNS trigger
 LANGUAGE plpgsql
 SET search_path = ''
@@ -117,6 +129,16 @@ CREATE INDEX idx_leaderboard_daily_ranking ON leaderboard_entries (
   memorize_time ASC,
   solution_time ASC
 ) WHERE difficulty = 'daily';
+
+-- Added by 0008, in the same RANKING_ORDER after the difficulty, so one
+-- blindfold board reads straight off the index.
+CREATE INDEX idx_leaderboard_blindfold_ranking ON leaderboard_entries (
+  difficulty,
+  correct_pieces DESC,
+  total_wrong_pieces ASC NULLS LAST,
+  memorize_time ASC,
+  solution_time ASC
+) WHERE mode = 'blindfold';
 
 -- Only the server writes the table, with the service_role key, which
 -- bypasses row level security. Row level security does not gate TRUNCATE,

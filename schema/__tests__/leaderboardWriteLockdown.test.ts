@@ -1,6 +1,8 @@
 /** @jest-environment node */
 
 import type { Database, SqlResult } from "./database";
+import { readFileSync } from "node:fs";
+import path from "node:path";
 import { MIGRATION, ROLLBACK, SNAPSHOT, leaderboardDatabases } from "./leaderboardWriteLockdownDatabase";
 
 jest.setTimeout(20_000);
@@ -289,8 +291,9 @@ describe("applying and rolling back", () => {
 });
 
 describe("schema/leaderboard_schema.sql", () => {
-  it("describes the same table, checks, policies and grants as production after the migration", async () => {
+  it("describes the same table, checks, policies and grants as production after the latest leaderboard migration", async () => {
     const fromMigration = await migrated();
+    await fromMigration.rows(readFileSync(path.join(__dirname, "../migrations/0008_leaderboard_mode.sql"), "utf8"));
     const fromSnapshot = await supabaseLike();
     await fromSnapshot.rows(SNAPSHOT);
 

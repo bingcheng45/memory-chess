@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { render, screen, within } from "@/test-utils/intl";
 import * as pageModule from "@/app/[locale]/articles/page";
-import ArticlesPage, { generateMetadata, revalidate } from "@/app/[locale]/articles/page";
+import ArticlesPage, { generateMetadata } from "@/app/[locale]/articles/page";
 import ArticleList from "@/components/articles/ArticleList";
 import { GERMAN_MESSAGES } from "@/components/articles/__tests__/chromeCatalogues";
 import { sortedFirstPaintInlineScript } from "@/components/articles/sortedFirstPaint";
@@ -91,8 +91,8 @@ describe("ArticlesPage", () => {
     jest.mocked(getArticleStats).mockResolvedValue(STATS);
   });
 
-  it("revalidates every five minutes and exports no dynamic mode", () => {
-    expect(revalidate).toBe(300);
+  it("is built once per deploy, with no revalidation window and no dynamic mode", () => {
+    expect(Object.keys(pageModule)).not.toContain("revalidate");
     expect(Object.keys(pageModule)).not.toContain("dynamic");
   });
 

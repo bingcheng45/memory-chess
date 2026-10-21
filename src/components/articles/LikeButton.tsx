@@ -35,9 +35,9 @@ export default function LikeButton({ slug, likes }: LikeButtonProps) {
   const countId = useId();
   const likesSeen = useLikesSeen(slug);
   const isLiked = likesSeen !== NOT_LIKED;
-  const [shown, setShown] = useState<Shown>({ likes: likes ?? 0, hasFailed: false });
+  const [shown, setShown] = useState<Shown | null>(null);
   const isSending = useRef(false);
-  const likesShown = Math.max(shown.likes, likesSeen);
+  const likesShown = Math.max(shown?.likes ?? likes ?? 0, likesSeen);
 
   async function toggle() {
     if (isSending.current) return;
@@ -80,7 +80,7 @@ export default function LikeButton({ slug, likes }: LikeButtonProps) {
         {hasCount ? <span id={countId}>{formatCount(likesShown, locale)}</span> : null}
       </button>
       <p role="status" aria-live="polite" className="art-like-failed">
-        {shown.hasFailed ? t("failed") : null}
+        {shown?.hasFailed ? t("failed") : null}
       </p>
     </>
   );

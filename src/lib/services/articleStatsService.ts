@@ -22,8 +22,12 @@ export type RecordArticleEventResult =
   | { status: "unavailable"; cause: unknown }
   | { status: "failed"; cause: unknown };
 
-export async function getArticleStats(slugs: readonly string[]): Promise<ArticleStats> {
-  if (slugs.length === 0 || !supabase) return NO_ARTICLE_STATS;
+/**
+ * Null when the counts could not be read, so a caller that caches the answer can keep no copy of a failure.
+ */
+export async function readArticleStats(slugs: readonly string[]): Promise<ArticleStats | null> {
+  if (slugs.length === 0) return NO_ARTICLE_STATS;
+  if (!supabase) return null;
 
   try {
     const { data, error } = await supabase
@@ -37,8 +41,12 @@ export async function getArticleStats(slugs: readonly string[]): Promise<Article
     return toArticleStats(data);
   } catch (cause) {
     console.error("Article stats read failed:", cause);
-    return NO_ARTICLE_STATS;
+    return null;
   }
+}
+
+export async function getArticleStats(slugs: readonly string[]): Promise<ArticleStats> {
+  return (await readArticleStats(slugs)) ?? NO_ARTICLE_STATS;
 }
 
 export async function recordArticleEvent(

@@ -4,7 +4,6 @@ import * as routeModule from "@/app/[locale]/articles/[slug]/page";
 import ArticleRoute, {
   generateMetadata,
   generateStaticParams,
-  revalidate,
 } from "@/app/[locale]/articles/[slug]/page";
 import ArticlePage from "@/components/articles/ArticlePage";
 import { ARTICLE_SLUGS, getArticle, getNextArticle } from "@/lib/articles";
@@ -61,8 +60,8 @@ beforeEach(() => {
 });
 
 describe("ArticleRoute", () => {
-  it("revalidates every five minutes and exports no dynamic mode", () => {
-    expect(revalidate).toBe(300);
+  it("is built once per deploy, with no revalidation window and no dynamic mode", () => {
+    expect(Object.keys(routeModule)).not.toContain("revalidate");
     expect(Object.keys(routeModule)).not.toContain("dynamic");
   });
 

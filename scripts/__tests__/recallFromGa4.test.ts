@@ -143,3 +143,53 @@ it("refuses an export without the players report and writes nothing", () => {
   expect(result.stderr).toBe("recall-from-ga4: need exactly one accuracy histogram report, one players report and one total players report, got 1, 0 and 0\n");
   expect(readdirSync(dir)).toEqual(["histogram.json"]);
 });
+
+it("refuses a total players report with no row instead of crashing, and writes nothing", () => {
+  const total = restReport([], TOTAL_METRICS, []);
+  delete (total as { rows?: unknown }).rows;
+  const result = run([
+    save("histogram.json", restReport([...HISTOGRAM_COLUMNS[0]], [...HISTOGRAM_COLUMNS[1]], HISTOGRAM_ROWS)),
+    save("players.json", restReport([...PLAYER_COLUMNS[0]], [...PLAYER_COLUMNS[1]], PLAYER_ROWS)),
+    save("total.json", total),
+  ]);
+
+  expect(result.status).toBe(2);
+  expect(result.stderr).toBe("recall-from-ga4: the total players report has 0 rows, expected 1; export it again for 2026-09-29 to 2026-10-19\n");
+  expect(readdirSync(dir).sort()).toEqual(["histogram.json", "players.json", "total.json"]);
+});
+
+it("refuses a total players report with two rows and says how many it found", () => {
+  const result = run([
+    save("histogram.json", restReport([...HISTOGRAM_COLUMNS[0]], [...HISTOGRAM_COLUMNS[1]], HISTOGRAM_ROWS)),
+    save("players.json", restReport([...PLAYER_COLUMNS[0]], [...PLAYER_COLUMNS[1]], PLAYER_ROWS)),
+    save("total.json", restReport([], TOTAL_METRICS, [...TOTAL_ROWS, ...TOTAL_ROWS])),
+  ]);
+
+  expect(result.status).toBe(2);
+  expect(result.stderr).toBe("recall-from-ga4: the total players report has 2 rows, expected 1; export it again for 2026-09-29 to 2026-10-19\n");
+  expect(readdirSync(dir).sort()).toEqual(["histogram.json", "players.json", "total.json"]);
+});
+
+it("refuses a range with no rounds rather than publish a dataset of zeros", () => {
+  const result = run([
+    save("histogram.json", restReport([...HISTOGRAM_COLUMNS[0]], [...HISTOGRAM_COLUMNS[1]], [])),
+    save("players.json", restReport([...PLAYER_COLUMNS[0]], [...PLAYER_COLUMNS[1]], [])),
+    save("total.json", restReport([], TOTAL_METRICS, [[0, 0]])),
+  ]);
+
+  expect(result.status).toBe(2);
+  expect(result.stderr).toBe("recall-from-ga4: GA4 returned no rounds for 2026-09-29 to 2026-10-19\n");
+  expect(readdirSync(dir).sort()).toEqual(["histogram.json", "players.json", "total.json"]);
+});
+
+it("refuses rounds where no cell reaches the publishing floor", () => {
+  const result = run([
+    save("histogram.json", restReport([...HISTOGRAM_COLUMNS[0]], [...HISTOGRAM_COLUMNS[1]], [["6", "10", "50", 12]])),
+    save("players.json", restReport([...PLAYER_COLUMNS[0]], [...PLAYER_COLUMNS[1]], [["6", "10", 12, 3]])),
+    save("total.json", restReport([], TOTAL_METRICS, [[12, 3]])),
+  ]);
+
+  expect(result.status).toBe(2);
+  expect(result.stderr).toBe("recall-from-ga4: no cell has 30 rounds from 5 players in 2026-09-29 to 2026-10-19, so there is nothing to publish\n");
+  expect(readdirSync(dir).sort()).toEqual(["histogram.json", "players.json", "total.json"]);
+});

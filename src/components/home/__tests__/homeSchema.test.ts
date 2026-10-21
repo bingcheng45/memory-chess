@@ -73,8 +73,15 @@ describe("homeSchema", () => {
     });
     const graph = homeSchema("de", "Beschreibung", video)["@graph"];
 
-    expect(graph).toHaveLength(5);
-    expect(graph[4]).toEqual({
+    expect(graph.map((node) => node["@type"])).toEqual([
+      "Organization",
+      "WebSite",
+      "Person",
+      ["SoftwareApplication", "WebApplication"],
+      "VideoObject",
+      "VideoObject",
+    ]);
+    expect(graph[5]).toEqual({
       "@type": "VideoObject",
       "@id": "https://thememorychess.com/#game-video",
       name: "Memory Chess: one round from study to score",
@@ -94,6 +101,7 @@ describe("homeSchema", () => {
     expect(graph.map((node) => node["@id"] ?? node["@type"])).toEqual([
       "https://thememorychess.com/#organization",
       "https://thememorychess.com/#website",
+      "https://thememorychess.com/about#bing-cheng",
       "https://thememorychess.com/#app",
       "https://thememorychess.com/#tutorial-video",
     ]);

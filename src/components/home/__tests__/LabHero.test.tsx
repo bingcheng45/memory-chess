@@ -47,7 +47,7 @@ describe("LabHero games-played stat", () => {
   it("leads the stats row with the live count once it loads, and drops the accuracy reading", async () => {
     global.fetch = jest.fn().mockResolvedValue({
       ok: true,
-      json: async () => ({ data: { metric_name: "total_plays", metric_value: 46543 } }),
+      json: async () => ({ data: { metric_name: "total_plays", metric_value: 46543, last_updated: "2026-10-19T18:30:00.000Z" } }),
     });
     renderWithIntl(<HeroWithLivePlays />);
 
@@ -69,7 +69,7 @@ describe("LabHero games-played stat", () => {
     renderWithIntl(<HeroFromServer />);
 
     expect(factTexts()[0]).toEqual(["49,631", "49,631games played"]);
-    answer({ ok: true, json: async () => ({ data: { metric_name: "total_plays", metric_value: "49702" } }) });
+    answer({ ok: true, json: async () => ({ data: { metric_name: "total_plays", metric_value: "49702", last_updated: "2026-10-19T18:30:00.000Z" } }) });
     expect(await statsRow().findByText("49,702")).toBeInTheDocument();
   });
 

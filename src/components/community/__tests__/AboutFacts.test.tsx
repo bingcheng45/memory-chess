@@ -1,4 +1,4 @@
-import { render } from "@/test-utils/intl";
+import { render, waitFor } from "@/test-utils/intl";
 import { AboutFacts } from "@/components/community/AboutFacts";
 import german from "../../../../messages/de.json";
 import japanese from "../../../../messages/ja.json";
@@ -35,5 +35,32 @@ describe("AboutFacts", () => {
     const { container } = render(<AboutFacts plays={PLAYS} />, { locale: "ja", messages: japanese });
 
     expect(container.textContent).toContain("遊べます。2026年10月20日までに");
+  });
+});
+
+describe("AboutFacts on the built page", () => {
+  const fetchMock = jest.fn();
+
+  beforeEach(() => {
+    global.fetch = fetchMock as unknown as typeof fetch;
+  });
+
+  it("replaces the count the page was built with by the current one", async () => {
+    fetchMock.mockResolvedValue({
+      ok: true,
+      json: async () => ({ data: { metric_value: "52310", last_updated: "2026-10-21T18:30:00.000Z" } }),
+    });
+    const { container } = render(<AboutFacts plays={PLAYS} />);
+
+    await waitFor(() => expect(container.textContent).toContain("52,000+ games by October 22, 2026"));
+    expect(fetchMock).toHaveBeenCalledWith("/api/game-stats?metric=total_plays");
+  });
+
+  it("keeps the built count when the current one cannot be read", async () => {
+    fetchMock.mockResolvedValue({ ok: false, json: async () => ({}) });
+    const { container } = render(<AboutFacts plays={PLAYS} />);
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalled());
+    expect(container.textContent).toContain("49,000+ games by October 20, 2026");
   });
 });

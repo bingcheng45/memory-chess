@@ -44,7 +44,7 @@ export interface ChangelogTable {
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
     version: "2.0.2",
-    publishedAt: "2026-10-23T18:00:00.000+08:00",
+    publishedAt: "2026-10-23T17:30:00.000+08:00",
     title: "Set up a round on the board, and see your board beside the position",
     summary:
       "A small update. You now pick a round while watching the board you will get, and the result screen puts your board beside the position again.",

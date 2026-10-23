@@ -79,7 +79,7 @@ describe("ChangelogPage", () => {
     const { container } = render(<ChangelogPage />);
 
     const newest = container.querySelector("article#v2-0-2") as HTMLElement;
-    expect(within(newest).getByText("October 23, 2026")).toHaveAttribute("datetime", "2026-10-23T18:00:00.000+08:00");
+    expect(within(newest).getByText("October 23, 2026")).toHaveAttribute("datetime", "2026-10-23T17:30:00.000+08:00");
     expect(within(newest).getByText("Latest")).toBeInTheDocument();
     expect(screen.getAllByText("Latest")).toHaveLength(1);
   });
@@ -92,7 +92,7 @@ describe("ChangelogPage", () => {
     expect(links).toHaveLength(CHANGELOG_ENTRIES.length);
     expect(links[0]).toHaveAttribute("href", "#v2-0-2");
     expect(links[0]).toHaveTextContent("v2.0.2October 23, 2026Set up a round on the board, and see your board beside the position");
-    expect(within(links[0]).getByText("October 23, 2026")).toHaveAttribute("datetime", "2026-10-23T18:00:00.000+08:00");
+    expect(within(links[0]).getByText("October 23, 2026")).toHaveAttribute("datetime", "2026-10-23T17:30:00.000+08:00");
     expect(links.map((link) => link.getAttribute("href"))).toEqual(
       CHANGELOG_ENTRIES.map((entry) => `#v${entry.version.replaceAll(".", "-")}`),
     );

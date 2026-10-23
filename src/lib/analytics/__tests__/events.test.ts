@@ -93,7 +93,7 @@ describe("Databuddy", () => {
   });
 
   it("receives no lab, article, search or round intro events", () => {
-    EVENTS.slice(4).forEach(trackEvent);
+    EVENTS.filter(({ name }) => !["round_start", "round_complete", "score_submit"].includes(name)).forEach(trackEvent);
 
     expect(databuddyTrack).not.toHaveBeenCalled();
   });

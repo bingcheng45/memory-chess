@@ -1102,7 +1102,19 @@
       "blindfoldRound": "ब्लाइंडफ़ोल्ड राउंड: आपने स्थिति नोटेशन में पढ़कर याद की।"
     },
     "comparison": {
-      "title": "अपनी स्थिति देखें"
+      "title": "अपनी स्थिति देखें",
+      "viewLabel": "परिणाम का दृश्य",
+      "view": {
+        "side": "साथ-साथ",
+        "overlay": "एक बोर्ड"
+      },
+      "yourBoard": "आपका बोर्ड",
+      "position": "मूल स्थिति",
+      "yourBoardLabel": "आपका बोर्ड, सही और गलत मोहरे चिह्नित",
+      "positionLabel": "मूल स्थिति, सही और छूटे हुए खाने चिह्नित",
+      "legendCorrect": "सही",
+      "legendWrong": "गलत, आपके बोर्ड पर",
+      "legendMissed": "छूटा हुआ, मूल स्थिति में"
     },
     "feedback": {
       "title": "Memory Chess खेलने के लिए धन्यवाद!",

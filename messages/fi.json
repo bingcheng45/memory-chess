@@ -1102,7 +1102,19 @@
       "blindfoldRound": "Sokkokierros: opettelit aseman notaationa."
     },
     "comparison": {
-      "title": "Käy asemasi läpi"
+      "title": "Käy asemasi läpi",
+      "viewLabel": "Tulosnäkymä",
+      "view": {
+        "side": "Rinnakkain",
+        "overlay": "Yksi lauta"
+      },
+      "yourBoard": "Sinun lautasi",
+      "position": "Asema",
+      "yourBoardLabel": "Sinun lautasi, oikeat ja väärät nappulat merkitty",
+      "positionLabel": "Asema, oikeat ja puuttuvat ruudut merkitty",
+      "legendCorrect": "Oikein",
+      "legendWrong": "Väärin, sinun laudallasi",
+      "legendMissed": "Puuttuu, asemassa"
     },
     "feedback": {
       "title": "Kiitos, että pelasit Memory Chessiä!",

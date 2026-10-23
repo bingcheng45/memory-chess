@@ -1102,7 +1102,19 @@
       "blindfoldRound": "Blinde ronde: je hebt de stelling als notatie bestudeerd."
     },
     "comparison": {
-      "title": "Bekijk je stelling terug"
+      "title": "Bekijk je stelling terug",
+      "viewLabel": "Resultaatweergave",
+      "view": {
+        "side": "Naast elkaar",
+        "overlay": "Eén bord"
+      },
+      "yourBoard": "Jouw bord",
+      "position": "De stelling",
+      "yourBoardLabel": "Jouw bord, met goede en foute stukken gemarkeerd",
+      "positionLabel": "De stelling, met goede en gemiste velden gemarkeerd",
+      "legendCorrect": "Goed",
+      "legendWrong": "Fout, op jouw bord",
+      "legendMissed": "Gemist, in de stelling"
     },
     "feedback": {
       "title": "Bedankt voor het spelen van Memory Chess!",

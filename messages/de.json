@@ -1102,7 +1102,19 @@
       "blindfoldRound": "Blindrunde: Du hast die Stellung als Notation gelernt."
     },
     "comparison": {
-      "title": "Deine Stellung im Rückblick"
+      "title": "Deine Stellung im Rückblick",
+      "viewLabel": "Ergebnisansicht",
+      "view": {
+        "side": "Nebeneinander",
+        "overlay": "Ein Brett"
+      },
+      "yourBoard": "Dein Brett",
+      "position": "Die Stellung",
+      "yourBoardLabel": "Dein Brett, richtige und falsche Figuren markiert",
+      "positionLabel": "Die Stellung, richtige und verpasste Felder markiert",
+      "legendCorrect": "Richtig",
+      "legendWrong": "Falsch, auf deinem Brett",
+      "legendMissed": "Verpasst, in der Stellung"
     },
     "feedback": {
       "title": "Danke, dass du Memory Chess gespielt hast!",

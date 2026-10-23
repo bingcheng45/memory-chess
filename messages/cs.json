@@ -1102,7 +1102,19 @@
       "blindfoldRound": "Kolo naslepo: pozici jste si zapamatovali ze zápisu."
     },
     "comparison": {
-      "title": "Projděte si svou pozici"
+      "title": "Projděte si svou pozici",
+      "viewLabel": "Zobrazení výsledku",
+      "view": {
+        "side": "Vedle sebe",
+        "overlay": "Jedna šachovnice"
+      },
+      "yourBoard": "Vaše šachovnice",
+      "position": "Pozice",
+      "yourBoardLabel": "Vaše šachovnice s vyznačenými správnými a špatnými figurami",
+      "positionLabel": "Pozice s vyznačenými správnými a vynechanými poli",
+      "legendCorrect": "Správně",
+      "legendWrong": "Špatně, na vaší šachovnici",
+      "legendMissed": "Vynecháno, v pozici"
     },
     "feedback": {
       "title": "Díky, že jste si zahráli Memory Chess!",

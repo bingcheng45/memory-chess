@@ -43,6 +43,44 @@ export interface ChangelogTable {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "2.0.2",
+    publishedAt: "2026-10-23T17:30:00.000+08:00",
+    title: "Set up a round on the board, and see your board beside the position",
+    summary:
+      "A small update. You now pick a round while watching the board you will get, and the result screen puts your board beside the position again.",
+    groups: [
+      {
+        title: "Set up your round on the board",
+        changes: [
+          "The sliders are gone. The setup card now shows a live board with exactly as many pieces as you picked, and a ring around it that fills with your study time.",
+          "Use the − and + buttons to change the pieces and the time. Time goes up by 1 second to 10 seconds, then by 5 seconds to 60.",
+          "Easy, Medium, Hard and Grandmaster sit in one row above the board.",
+          "A line under the board sums up the round, such as \"Medium, 6 pcs / 10s\", with the board's rating and the score to expect. Tap Rating details for the full preview.",
+        ],
+      },
+      {
+        title: "Your board beside the position",
+        changes: [
+          "After a round, Your board shows what you placed, marked correct or wrong. The position sits beside it, with the pieces you missed outlined in red.",
+          "Prefer every mark on one board? Tap One board above the boards. The game remembers your choice for later rounds.",
+          "A perfect round or an empty board opens on One board, since side by side would show nothing new. You can still switch.",
+        ],
+      },
+      {
+        title: "A lighter leaderboard",
+        changes: [
+          {
+            segments: [
+              "The ",
+              { text: "leaderboard", href: "/leaderboard" },
+              " page is about a third smaller. It loads the Medium board first, and each other board loads when you open its tab.",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     version: "2.0.1",
     publishedAt: "2026-10-21T23:00:00.000+08:00",
     title: "Blindfold mode, a rating chart, and a smarter result screen",

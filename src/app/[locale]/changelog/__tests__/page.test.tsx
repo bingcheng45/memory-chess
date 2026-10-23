@@ -68,8 +68,8 @@ describe("ChangelogPage", () => {
     );
     const menu = screen.getByRole("button", { name: "Releases" }).parentElement as HTMLElement;
     const links = within(menu).getAllByRole("link", { hidden: true });
-    expect(links[0]).toHaveAttribute("href", "#v2-0-1");
-    expect(links[0]).toHaveTextContent("v2.0.1October 21, 2026");
+    expect(links[0]).toHaveAttribute("href", "#v2-0-2");
+    expect(links[0]).toHaveTextContent("v2.0.2October 23, 2026");
     expect(links.map((link) => link.getAttribute("href"))).toEqual(
       CHANGELOG_ENTRIES.map((entry) => `#v${entry.version.replaceAll(".", "-")}`),
     );
@@ -78,8 +78,8 @@ describe("ChangelogPage", () => {
   it("dates each release in a time element and tags only the newest as latest", () => {
     const { container } = render(<ChangelogPage />);
 
-    const newest = container.querySelector("article#v2-0-1") as HTMLElement;
-    expect(within(newest).getByText("October 21, 2026")).toHaveAttribute("datetime", "2026-10-21T23:00:00.000+08:00");
+    const newest = container.querySelector("article#v2-0-2") as HTMLElement;
+    expect(within(newest).getByText("October 23, 2026")).toHaveAttribute("datetime", "2026-10-23T17:30:00.000+08:00");
     expect(within(newest).getByText("Latest")).toBeInTheDocument();
     expect(screen.getAllByText("Latest")).toHaveLength(1);
   });
@@ -90,9 +90,9 @@ describe("ChangelogPage", () => {
     const index = screen.getByRole("navigation", { name: "Releases" });
     const links = within(index).getAllByRole("link");
     expect(links).toHaveLength(CHANGELOG_ENTRIES.length);
-    expect(links[0]).toHaveAttribute("href", "#v2-0-1");
-    expect(links[0]).toHaveTextContent("v2.0.1October 21, 2026Blindfold mode, a rating chart, and a smarter result screen");
-    expect(within(links[0]).getByText("October 21, 2026")).toHaveAttribute("datetime", "2026-10-21T23:00:00.000+08:00");
+    expect(links[0]).toHaveAttribute("href", "#v2-0-2");
+    expect(links[0]).toHaveTextContent("v2.0.2October 23, 2026Set up a round on the board, and see your board beside the position");
+    expect(within(links[0]).getByText("October 23, 2026")).toHaveAttribute("datetime", "2026-10-23T17:30:00.000+08:00");
     expect(links.map((link) => link.getAttribute("href"))).toEqual(
       CHANGELOG_ENTRIES.map((entry) => `#v${entry.version.replaceAll(".", "-")}`),
     );

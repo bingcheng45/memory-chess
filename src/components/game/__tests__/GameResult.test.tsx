@@ -35,8 +35,17 @@ let mockGameState: typeof baseGameState & { board?: SetBoard; rating?: RoundOutc
 let mockHistory: readonly { readonly id: string }[] = [];
 const historyOf = (rounds: number) => Array.from({ length: rounds }, (_, index) => ({ id: `round-${index}` }));
 
+let mockResultView: "side" | "overlay" = "side";
+const mockSetResultView = jest.fn();
+
 jest.mock("@/lib/store/gameStore", () => ({
-  useGameStore: () => ({ gameState: mockGameState, round: mockRound, history: mockHistory }),
+  useGameStore: () => ({
+    gameState: mockGameState,
+    round: mockRound,
+    history: mockHistory,
+    resultView: mockResultView,
+    setResultView: mockSetResultView,
+  }),
 }));
 
 jest.mock("@/lib/leaderboard/cutoffsClient", () => ({
@@ -118,6 +127,8 @@ describe("GameResult", () => {
     jest.restoreAllMocks();
     mockGameState = baseGameState;
     mockHistory = [];
+    mockResultView = "side";
+    mockSetResultView.mockReset();
   });
 
   describe("the Telegram invite", () => {
@@ -151,10 +162,36 @@ describe("GameResult", () => {
     expect(screen.getByText("Placing rate")).toBeInTheDocument();
     expect(document.querySelector(".lab-rc-big")).toHaveTextContent("80%");
 
+    const marks = (board: string) =>
+      ["a2", "e1", "d4", "h8"].map(
+        (square) => screen.getByRole("group", { name: board }).querySelector(`[data-coordinate="${square}"]`)?.getAttribute("data-mark") ?? null,
+      );
+    expect(marks("Your board, with correct and wrong pieces marked")).toEqual(["ok", "ok", null, null]);
+    expect(marks("The position, with correct and missed squares marked")).toEqual(["ok", "ok", "miss", null]);
+    expect(screen.getByText("Missed, on the position")).toBeInTheDocument();
+  });
+
+  it("offers the two result views and keeps the one picked", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    const views = within(screen.getByRole("group", { name: "Result view" }));
+
+    expect(views.getByRole("button", { name: "Side by side" })).toHaveAttribute("aria-pressed", "true");
+    fireEvent.click(views.getByRole("button", { name: "One board" }));
+    expect(mockSetResultView.mock.calls).toEqual([["overlay"]]);
+  });
+
+  it("lays every mark on one board in the one-board view", () => {
+    mockResultView = "overlay";
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+    expect(screen.getByRole("button", { name: "One board" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.queryByRole("group", { name: "Your board, with correct and wrong pieces marked" })).toBeNull();
     const board = document.querySelector<HTMLElement>('[data-result-board="scored"]')!;
     expect(
       ["a2", "e1", "d4", "h8"].map((square) => board.querySelector(`[data-coordinate="${square}"]`)?.getAttribute("data-mark") ?? null),
     ).toEqual(["ok", "ok", "miss", null]);
+    expect(board.querySelector('[data-coordinate="d4"] .lab-piece')?.getAttribute("data-state")).toBe("ghost");
+    expect(screen.getByText("missed square")).toBeInTheDocument();
   });
 
   describe("the next step", () => {

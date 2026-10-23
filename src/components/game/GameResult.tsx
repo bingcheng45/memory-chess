@@ -34,10 +34,9 @@ import { localDayOf } from "@/lib/lab/record";
 import type { LabRound } from "@/lib/lab/recordRound";
 import { nextBoardOf, type BoardSize } from "@/lib/game/nextBoard";
 import type { RecordBefore } from "@/components/game/ResultDeltas";
-import { RoundBoard } from "@/components/round/RoundBoard";
+import ResultBoards from "@/components/game/ResultBoards";
 import { ReadoutCard } from "@/components/round/ReadoutCard";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
-import type { BoardAction } from "@/lib/round/round";
 import { BLINDFOLD_MODE } from "@/lib/game/roundLink";
 import { blindfoldBoardOpen } from "@/lib/leaderboard/mode";
 import ArticleTile from "@/components/game/ArticleTile";
@@ -56,9 +55,6 @@ import type { RoundOutcome } from "@/lib/game/roundOutcome";
 // Loaded only once a round has a result, so /game pays nothing for the lab record before then. The result screen
 // never renders on the server, so React.lazy is enough, and it costs /game none of next/dynamic's loader code.
 const ResultLabCard = lazy(() => import("@/components/game/ResultLabCard"));
-
-// The scored board only shows the round: it takes no input.
-const ignoreBoard: (action: BoardAction) => void = () => {};
 
 // Extended GameState type with skillRatingChange
 type GameStateWithRating = GameState & {
@@ -110,10 +106,9 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const showsLab = keepsRecord;
   const tCommunity = useTranslations("common.community");
   const tCountry = useTranslations("country");
-  const tComparison = useTranslations("game.comparison");
   const tDaily = useTranslations("daily.round");
   const tConfig = useTranslations("game.config");
-  const { gameState, round, history } = useGameStore();
+  const { gameState, round, history, resultView, setResultView } = useGameStore();
   const { labRound } = gameState;
   const blindfold = round.phase === "scored" && round.config.blindfold === true;
   const { countryCode, setCountryCode } = useSettingsStore();
@@ -390,11 +385,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
 
         {round.phase === "scored" && (
           <div className="lab-result-grid">
-            <figure data-result-board="scored" className="lab-plate lab-plate-grid lab-result-board">
-              <figcaption className="lab-k">{tComparison("title")}</figcaption>
-              <RoundBoard state={round} dispatch={ignoreBoard} copy="game.round" />
-            </figure>
-            <ReadoutCard state={round} copy="game.round" expected={round.config} />
+            <ResultBoards round={round} view={resultView} onViewChange={setResultView} />
+            <ReadoutCard state={round} copy="game.round" expected={round.config} legend={false} />
           </div>
         )}
 

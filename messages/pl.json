@@ -1102,7 +1102,19 @@
       "blindfoldRound": "Runda na ślepo: pozycja zapamiętana z zapisu."
     },
     "comparison": {
-      "title": "Przejrzyj swoją pozycję"
+      "title": "Przejrzyj swoją pozycję",
+      "viewLabel": "Widok wyniku",
+      "view": {
+        "side": "Obok siebie",
+        "overlay": "Jedna szachownica"
+      },
+      "yourBoard": "Twoja szachownica",
+      "position": "Pozycja",
+      "yourBoardLabel": "Twoja szachownica z zaznaczonymi poprawnymi i błędnymi bierkami",
+      "positionLabel": "Pozycja z zaznaczonymi poprawnymi i pominiętymi polami",
+      "legendCorrect": "Poprawne",
+      "legendWrong": "Błędne, na twojej szachownicy",
+      "legendMissed": "Pominięte, w pozycji"
     },
     "feedback": {
       "title": "Dziękujemy za grę w Memory Chess!",

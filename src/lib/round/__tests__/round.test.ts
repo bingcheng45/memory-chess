@@ -5,6 +5,7 @@ import {
   remainingOf,
   roundReducer,
   scoreReading,
+  scoredSquare,
   squareVerdict,
   type LabPosition,
   type RoundAction,
@@ -83,6 +84,44 @@ describe("scoreReading", () => {
     const recalled: LabPosition = { ...eight, f3: undefined, e3: WN };
 
     expect(scoreReading(eight, recalled).accuracy).toBe(88);
+  });
+});
+
+describe("scoredSquare", () => {
+  const target: LabPosition = { g1: WK, f3: WN, d8: BQ };
+  const placed: LabPosition = { g1: WK, e3: WN, f3: BP };
+  const squares = ["g1", "e3", "f3", "d8", "a1"] as const;
+  const board = (lens: "overlay" | "placed" | "target") =>
+    Object.fromEntries(squares.map((square) => [square, scoredSquare(lens, target, placed, square)]));
+
+  it("shows the player's pieces marked correct or wrong, a wrong piece over a target square included", () => {
+    expect(board("placed")).toEqual({
+      g1: { piece: WK, mark: "ok" },
+      e3: { piece: WN, mark: "wrong" },
+      f3: { piece: BP, mark: "wrong" },
+      d8: { piece: undefined, mark: undefined },
+      a1: { piece: undefined, mark: undefined },
+    });
+  });
+
+  it("shows the position's pieces marked correct or missed", () => {
+    expect(board("target")).toEqual({
+      g1: { piece: WK, mark: "ok" },
+      e3: { piece: undefined, mark: undefined },
+      f3: { piece: WN, mark: "miss" },
+      d8: { piece: BQ, mark: "miss" },
+      a1: { piece: undefined, mark: undefined },
+    });
+  });
+
+  it("overlays both on one board, with a ghost for a missed piece and the answer beside a wrong one", () => {
+    expect(board("overlay")).toEqual({
+      g1: { piece: WK, ghost: undefined, answer: undefined, mark: "ok" },
+      e3: { piece: WN, ghost: undefined, answer: undefined, mark: "wrong" },
+      f3: { piece: BP, ghost: undefined, answer: WN, mark: "wrong miss" },
+      d8: { piece: undefined, ghost: BQ, answer: undefined, mark: "miss" },
+      a1: { piece: undefined, ghost: undefined, answer: undefined, mark: undefined },
+    });
   });
 });
 

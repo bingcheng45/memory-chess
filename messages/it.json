@@ -1102,7 +1102,19 @@
       "blindfoldRound": "Partita alla cieca: hai studiato la posizione in notazione."
     },
     "comparison": {
-      "title": "Rivedi la tua posizione"
+      "title": "Rivedi la tua posizione",
+      "viewLabel": "Vista del risultato",
+      "view": {
+        "side": "Affiancate",
+        "overlay": "Una scacchiera"
+      },
+      "yourBoard": "La tua scacchiera",
+      "position": "La posizione",
+      "yourBoardLabel": "La tua scacchiera, con i pezzi giusti e sbagliati segnati",
+      "positionLabel": "La posizione, con le case giuste e mancate segnate",
+      "legendCorrect": "Giusto",
+      "legendWrong": "Sbagliato, sulla tua scacchiera",
+      "legendMissed": "Mancato, nella posizione"
     },
     "feedback": {
       "title": "Grazie per aver giocato a Memory Chess!",

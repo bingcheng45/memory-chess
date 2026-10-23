@@ -1102,7 +1102,19 @@
       "blindfoldRound": "盲棋回合：你透過記譜記住了局面。"
     },
     "comparison": {
-      "title": "回顧你的棋局"
+      "title": "回顧你的棋局",
+      "viewLabel": "結果檢視",
+      "view": {
+        "side": "並排顯示",
+        "overlay": "單一棋盤"
+      },
+      "yourBoard": "你的棋盤",
+      "position": "原局面",
+      "yourBoardLabel": "你的棋盤，標出正確和放錯的棋子",
+      "positionLabel": "原局面，標出正確和漏掉的格子",
+      "legendCorrect": "正確",
+      "legendWrong": "放錯（你的棋盤）",
+      "legendMissed": "漏掉（原局面）"
     },
     "feedback": {
       "title": "感謝你玩 Memory Chess！",

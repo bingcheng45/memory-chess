@@ -1102,7 +1102,19 @@
       "blindfoldRound": "目隠しラウンド：局面を棋譜表記で覚えました。"
     },
     "comparison": {
-      "title": "自分の局面を振り返る"
+      "title": "自分の局面を振り返る",
+      "viewLabel": "結果の表示方法",
+      "view": {
+        "side": "並べて表示",
+        "overlay": "重ねて表示"
+      },
+      "yourBoard": "自分の盤",
+      "position": "元の局面",
+      "yourBoardLabel": "自分の盤。正解と配置ミスを表示",
+      "positionLabel": "元の局面。正解と見落としたマスを表示",
+      "legendCorrect": "正解",
+      "legendWrong": "配置ミス（自分の盤）",
+      "legendMissed": "見落とし（元の局面）"
     },
     "feedback": {
       "title": "Memory Chess で遊んでいただきありがとうございます！",

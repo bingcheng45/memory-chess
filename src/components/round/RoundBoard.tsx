@@ -4,15 +4,16 @@ import { memo, useEffect, useRef, useState, type KeyboardEvent } from "react";
 import { useTranslations } from "next-intl";
 import { BOARD_SQUARES, type SquareName } from "@/lib/game/board";
 import {
-  hiddenAnswer,
   isDarkSquare,
   PIECE_TYPE_ORDER,
   remainingOf,
-  squareVerdict,
+  scoredSquare,
   type BoardAction,
   type LabPiece,
   type Refusal,
   type RoundState,
+  type ScoredLens,
+  type SquareView,
 } from "@/lib/round/round";
 import type { PieceColor } from "@/types/chess";
 import { BoardFigure, PieceImage, usePieceName } from "./BoardFigure";
@@ -41,31 +42,18 @@ function nextIndex(from: number, key: string): number | null {
   return to < 0 || to > 63 || leavesRow ? null : to;
 }
 
-interface SquareView {
-  readonly piece?: LabPiece;
-  readonly ghost?: LabPiece;
-  /** The piece that belonged under a wrong one, which the square shows beside it. */
-  readonly answer?: LabPiece;
-  readonly mark?: string;
-}
-
-function squareView(state: RoundState, square: SquareName): SquareView {
+function squareView(state: RoundState, square: SquareName, lens: ScoredLens): SquareView {
   switch (state.phase) {
     case "idle":
     case "ready":
     case "countdown":
-      return { piece: undefined, ghost: undefined, mark: undefined };
+      return {};
     case "study":
-      return { piece: state.config.blindfold ? undefined : state.target[square], ghost: undefined, mark: undefined };
+      return { piece: state.config.blindfold ? undefined : state.target[square] };
     case "rebuild":
-      return { piece: state.placed[square], ghost: undefined, mark: undefined };
+      return { piece: state.placed[square] };
     case "scored":
-      return {
-        piece: state.placed[square],
-        ghost: state.placed[square] ? undefined : state.target[square],
-        answer: hiddenAnswer(state.target, state.placed, square),
-        mark: squareVerdict(state.target, state.placed, square),
-      };
+      return scoredSquare(lens, state.target, state.placed, square);
   }
 }
 
@@ -73,10 +61,14 @@ interface RoundBoardProps {
   readonly state: RoundState;
   readonly dispatch: (action: BoardAction) => void;
   readonly copy: RoundCopy;
+  /** Which side of a scored round to show; every other phase ignores it. */
+  readonly lens?: ScoredLens;
+  /** The board's accessible name, when the copy's own label would not say which board this is. */
+  readonly label?: string;
 }
 
 // Memoized: the round's clock ticks every frame, and the board changes only with the round.
-export const RoundBoard = memo(function RoundBoard({ state, dispatch, copy }: RoundBoardProps) {
+export const RoundBoard = memo(function RoundBoard({ state, dispatch, copy, lens = "overlay", label }: RoundBoardProps) {
   const t = useTranslations(copy);
   const pieceName = usePieceName();
   const [focusIndex, setFocusIndex] = useState(0);
@@ -108,13 +100,13 @@ export const RoundBoard = memo(function RoundBoard({ state, dispatch, copy }: Ro
       <div
         className="lab-board lab-cal-grid"
         role="group"
-        aria-label={t("boardLabel")}
+        aria-label={label ?? t("boardLabel")}
         data-live={live || undefined}
         data-round-phase={state.phase}
         onKeyDown={onKeyDown}
       >
         {BOARD_SQUARES.map((square, index) => {
-          const view = squareView(state, square);
+          const view = squareView(state, square, lens);
           const occupant = view.piece;
           const draggable = live && occupant;
           return (

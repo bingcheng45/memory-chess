@@ -1102,7 +1102,19 @@
       "blindfoldRound": "블라인드 라운드: 포지션을 기보로 익혔습니다."
     },
     "comparison": {
-      "title": "내 국면 되돌아보기"
+      "title": "내 국면 되돌아보기",
+      "viewLabel": "결과 보기 방식",
+      "view": {
+        "side": "나란히 보기",
+        "overlay": "겹쳐 보기"
+      },
+      "yourBoard": "내 체스판",
+      "position": "원래 국면",
+      "yourBoardLabel": "내 체스판, 정답과 잘못 놓은 기물 표시",
+      "positionLabel": "원래 국면, 정답과 놓친 칸 표시",
+      "legendCorrect": "정답",
+      "legendWrong": "잘못 배치, 내 체스판",
+      "legendMissed": "놓친 칸, 원래 국면"
     },
     "feedback": {
       "title": "Memory Chess를 플레이해 주셔서 감사합니다!",

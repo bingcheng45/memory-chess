@@ -1102,7 +1102,19 @@
       "blindfoldRound": "Ronde tutup mata: kamu mempelajari posisi sebagai notasi."
     },
     "comparison": {
-      "title": "Tinjau posisi Anda"
+      "title": "Tinjau posisi Anda",
+      "viewLabel": "Tampilan hasil",
+      "view": {
+        "side": "Berdampingan",
+        "overlay": "Satu papan"
+      },
+      "yourBoard": "Papan Anda",
+      "position": "Posisi",
+      "yourBoardLabel": "Papan Anda, bidak benar dan salah ditandai",
+      "positionLabel": "Posisi, petak benar dan terlewat ditandai",
+      "legendCorrect": "Benar",
+      "legendWrong": "Salah, di papan Anda",
+      "legendMissed": "Terlewat, di posisi"
     },
     "feedback": {
       "title": "Terima kasih sudah memainkan Memory Chess!",

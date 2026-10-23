@@ -1102,7 +1102,19 @@
       "blindfoldRound": "Rundă pe orbește: ai studiat poziția în notație."
     },
     "comparison": {
-      "title": "Revezi-ți poziția"
+      "title": "Revezi-ți poziția",
+      "viewLabel": "Afișarea rezultatului",
+      "view": {
+        "side": "Una lângă alta",
+        "overlay": "O singură tablă"
+      },
+      "yourBoard": "Tabla ta",
+      "position": "Poziția",
+      "yourBoardLabel": "Tabla ta, cu piesele corecte și greșite marcate",
+      "positionLabel": "Poziția, cu pătratele corecte și ratate marcate",
+      "legendCorrect": "Corect",
+      "legendWrong": "Greșit, pe tabla ta",
+      "legendMissed": "Ratat, în poziție"
     },
     "feedback": {
       "title": "Mulțumim că ai jucat Memory Chess!",

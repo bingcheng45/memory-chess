@@ -25,16 +25,17 @@ interface ReadoutCardProps {
   readonly expected: { readonly pieceCount: number; readonly studyMs: number };
   /** A block under the recall bars, such as the homepage's suggested difficulty. */
   readonly next?: ReactNode;
+  /** False when the board beside the card carries its own legend. */
+  readonly legend?: boolean;
 }
 
 // Memoized: the round's clock ticks every frame, and this changes only with the round.
-export const ReadoutCard = memo(function ReadoutCard({ state, copy, expected, next }: ReadoutCardProps) {
+export const ReadoutCard = memo(function ReadoutCard({ state, copy, expected, next, legend = true }: ReadoutCardProps) {
   const t = useTranslations(copy);
   const scored = state.phase === "scored" ? state : null;
   const score = scored?.score;
   const exposure = formatSecondsMs(state.phase === "rebuild" || state.phase === "scored" ? state.studyMs : expected.studyMs);
   const pieceCount = state.phase === "idle" ? expected.pieceCount : state.config.pieceCount;
-  const hasSplit = scored ? BOARD_SQUARES.some((square) => hiddenAnswer(scored.target, scored.placed, square)) : false;
 
   return (
     <div className="lab-card">
@@ -83,26 +84,36 @@ export const ReadoutCard = memo(function ReadoutCard({ state, copy, expected, ne
         )}
       </div>
       {next}
-      <div className="lab-legend">
-        <span>
-          <i data-key="ok" aria-hidden="true" />
-          {t("readout.legendCorrect")}
-        </span>
-        <span>
-          <i data-key="wrong" aria-hidden="true" />
-          {t("readout.legendWrong")}
-        </span>
-        <span>
-          <i data-key="miss" aria-hidden="true" />
-          {t("readout.legendMissed")}
-        </span>
-        {hasSplit && (
-          <span>
-            <i data-key="split" aria-hidden="true" />
-            {t("readout.legendSplit")}
-          </span>
-        )}
-      </div>
+      {legend && <OverlayLegend state={state} copy={copy} />}
     </div>
   );
 });
+
+/** The marks of a board that lays the player's pieces over the position. */
+export function OverlayLegend({ state, copy }: { state: RoundState; copy: RoundCopy }) {
+  const t = useTranslations(copy);
+  const hasSplit =
+    state.phase === "scored" && BOARD_SQUARES.some((square) => hiddenAnswer(state.target, state.placed, square));
+  return (
+    <div className="lab-legend">
+      <span>
+        <i data-key="ok" aria-hidden="true" />
+        {t("readout.legendCorrect")}
+      </span>
+      <span>
+        <i data-key="wrong" aria-hidden="true" />
+        {t("readout.legendWrong")}
+      </span>
+      <span>
+        <i data-key="miss" aria-hidden="true" />
+        {t("readout.legendMissed")}
+      </span>
+      {hasSplit && (
+        <span>
+          <i data-key="split" aria-hidden="true" />
+          {t("readout.legendSplit")}
+        </span>
+      )}
+    </div>
+  );
+}

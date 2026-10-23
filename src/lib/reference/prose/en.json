@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Custom settings",
-        "body": "The two sliders move independently of the presets. Piece count runs from {minPieces} to {maxPieces} and look time from {minSeconds} to {maxSeconds} seconds. The leaderboard recognizes a round by its piece count, so any count other than the four preset counts makes it a custom game, and custom games stay off the leaderboard."
+        "body": "The − and + buttons under the board change piece count and time independently of the presets. Piece count runs from {minPieces} to {maxPieces} and look time from {minSeconds} to {maxSeconds} seconds. The leaderboard recognizes a round by its piece count, so any count other than the four preset counts makes it a custom game, and custom games stay off the leaderboard."
       }
     },
     "scoring": {

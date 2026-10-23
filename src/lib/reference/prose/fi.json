@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Omat asetukset",
-        "body": "Kaksi liukusäädintä liikkuvat vaikeustasoista riippumatta. Nappulamäärän alaraja on {minPieces} ja yläraja {maxPieces}, ja katseluaika on lyhimmillään {minSeconds} ja pisimmillään {maxSeconds} sekuntia. Tulostaulukko tunnistaa kierroksen nappulamäärästä, joten mikä tahansa muu määrä kuin neljän vaikeustason määrät tekee pelistä omilla asetuksilla pelatun pelin, eivätkä tällaiset pelit koskaan päädy tulostaulukkoon."
+        "body": "Laudan alla olevat − ja + -painikkeet muuttavat nappulamäärää ja aikaa vaikeustasoista riippumatta. Nappulamäärän alaraja on {minPieces} ja yläraja {maxPieces}, ja katseluaika on lyhimmillään {minSeconds} ja pisimmillään {maxSeconds} sekuntia. Tulostaulukko tunnistaa kierroksen nappulamäärästä, joten mikä tahansa muu määrä kuin neljän vaikeustason määrät tekee pelistä omilla asetuksilla pelatun pelin, eivätkä tällaiset pelit koskaan päädy tulostaulukkoon."
       }
     },
     "scoring": {

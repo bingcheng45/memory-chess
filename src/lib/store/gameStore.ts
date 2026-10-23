@@ -10,7 +10,7 @@ import {
   type GameSettings,
 } from '@/lib/game/configPrefill';
 import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
-import { trackEvent, type RoundSource } from '@/lib/analytics/events';
+import { rememberResultView, trackEvent, type RoundSource } from '@/lib/analytics/events';
 import type { LabRound } from '@/lib/lab/recordRound';
 import { now as monotonicNow } from '@/lib/game/clock';
 import {
@@ -196,7 +196,12 @@ export const useGameStore = create<GameStore>()(
       round: IDLE_ROUND,
       resultView: 'side',
 
-      setResultView: (resultView) => set({ resultView }),
+      setResultView: (resultView) => {
+        if (resultView === get().resultView) return;
+        set({ resultView });
+        rememberResultView(resultView);
+        trackEvent({ name: 'result_view_select', params: { result_view: resultView } });
+      },
 
       startGame: (pieceCount, memorizeTime, source, board, blindfold) => {
         const generated = board ? null : generateMemorizationPosition(pieceCount);
@@ -398,6 +403,7 @@ export const useGameStore = create<GameStore>()(
           certainty: 'player' in rating ? { rd: rating.player.rd, rounds: rating.player.rounds } : certainty,
         }));
 
+        rememberResultView(get().resultView);
         trackEvent({
           name: 'round_complete',
           params: {
@@ -407,6 +413,7 @@ export const useGameStore = create<GameStore>()(
             accuracy: score.accuracy,
             round_source: gameState.startSource ?? 'link',
             ...modeParam(playing.config.blindfold),
+            result_view: get().resultView,
           },
         });
 

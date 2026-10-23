@@ -59,7 +59,8 @@ describe("a blindfold round in the store", () => {
     await store().submitSolution();
 
     expect(gtag.mock.calls).toEqual([
-      ["event", "round_complete", { piece_count: 2, memorize_time: 10, correct_pieces: 0, accuracy: 0, round_source: "game_form", round_mode: "blindfold" }],
+      ["set", "user_properties", { result_view: "side" }],
+      ["event", "round_complete", { piece_count: 2, memorize_time: 10, correct_pieces: 0, accuracy: 0, round_source: "game_form", round_mode: "blindfold", result_view: "side" }],
     ]);
     expect(store().gameState.labRound?.facts.blindfold).toBe(true);
   });

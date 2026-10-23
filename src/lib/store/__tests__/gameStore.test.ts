@@ -158,7 +158,8 @@ describe("reporting a round", () => {
     store().submitSolution();
 
     expect(gtag.mock.calls).toEqual([
-      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, round_source: "plan" }],
+      ["set", "user_properties", { result_view: "side" }],
+      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, round_source: "plan", result_view: "side" }],
     ]);
   });
 });
@@ -380,6 +381,20 @@ describe("remembering how the result is shown", () => {
 
     expect(JSON.parse(localStorage.getItem(STORAGE_KEY)!).state.resultView).toBe("overlay");
     await expect(rehydrateFrom("overlay")).resolves.toBe("overlay");
+  });
+
+  it("sends result_view_select and sets the user property when the player switches views", () => {
+    const gtag = jest.fn();
+    window.gtag = gtag;
+
+    useGameStore.getState().setResultView("overlay");
+    useGameStore.getState().setResultView("overlay");
+
+    expect(gtag.mock.calls).toEqual([
+      ["set", "user_properties", { result_view: "overlay" }],
+      ["event", "result_view_select", { result_view: "overlay" }],
+    ]);
+    Reflect.deleteProperty(window, "gtag");
   });
 
   it.each([undefined, "sideways", 3])("shows the boards side by side when storage holds %p", async (stored) => {

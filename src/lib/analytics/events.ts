@@ -2,6 +2,7 @@ import { isTrackerAvailable, track } from "@databuddy/sdk";
 import type { DAILY_BOARD, LeaderboardDifficulty } from "@/types/leaderboard";
 import type { SearchOutcome } from "@/lib/seo/learn/search";
 import type { ShareNetwork } from "@/lib/shareIntents";
+import type { ResultView } from "@/lib/store/gameStore";
 
 /** Where a round was started from. `link` is a round link that names no known source. */
 export const ROUND_SOURCES = [
@@ -86,7 +87,14 @@ export type FunnelEvent =
         accuracy: number;
         round_source: RoundSource;
         round_mode?: RoundMode;
+        /** The result view the round was reviewed in. Sent by game rounds only; the homepage calibration has no toggle. */
+        result_view?: ResultView;
       };
+    }
+  /** The player switched the result screen between side by side and one board. */
+  | {
+      name: "result_view_select";
+      params: { result_view: ResultView };
     }
   | {
       name: "score_submit";
@@ -185,4 +193,10 @@ export function trackEvent(event: FunnelEvent): void {
   // The tracker loads only on production; without it, track() would queue the call and poll for the script.
   const mirrored = databuddyEvent(event);
   if (mirrored && isTrackerAvailable()) track(...mirrored);
+}
+
+/** Keeps the player's result view on every later GA4 event, so reports can split any event by it. */
+export function rememberResultView(resultView: ResultView): void {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  window.gtag("set", "user_properties", { result_view: resultView });
 }

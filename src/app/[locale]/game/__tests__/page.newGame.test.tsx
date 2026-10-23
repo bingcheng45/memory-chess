@@ -38,7 +38,7 @@ describe("GamePage new game after a round", () => {
 
     expect(screen.getByRole("button", { name: /Hard/ })).toHaveAttribute("aria-pressed", "true");
     expect(screen.getByRole("button", { name: /Medium/ })).toHaveAttribute("aria-pressed", "false");
-    expect(screen.getByLabelText("Number of pieces")).toHaveValue("12");
-    expect(screen.getByLabelText("Memorization time")).toHaveValue("8");
+    expect(screen.getByLabelText("Number of pieces")).toHaveTextContent("12");
+    expect(screen.getByLabelText("Memorization time")).toHaveTextContent("8s");
   });
 });

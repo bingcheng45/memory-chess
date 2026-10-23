@@ -21,20 +21,20 @@ const saved = (pieceCount: number, memorizeTime: number) =>
 
 function formState(container: HTMLElement) {
   const buttons = [...container.querySelectorAll<HTMLButtonElement>("[data-preset]")];
-  const slider = (id: string) => {
-    const input = container.querySelector<HTMLInputElement>(`#${id}`)!;
-    return {
-      value: input.value,
-      fill: input.style.getPropertyValue("--fill"),
-      label: container.querySelector(`[data-value-for="${id}"]`)?.textContent,
-    };
-  };
+  const preview = container.querySelector<HTMLElement>("[data-setup-preview]")!;
   return {
     pressed: buttons.filter((b) => b.getAttribute("aria-pressed") === "true").map((b) => b.dataset.preset),
     classes: buttons.map((b) => b.className),
     description: container.querySelector("[data-preset-description]")?.textContent,
-    pieceCount: slider("pieceCount"),
-    memorizeTime: slider("memorizeTime"),
+    pieceCount: container.querySelector("output#pieceCount")?.textContent,
+    memorizeTime: container.querySelector("output#memorizeTime")?.textContent,
+    stepsUnavailable: [...container.querySelectorAll("[data-stepper]")].map((b) => b.getAttribute("aria-disabled")),
+    board: {
+      label: preview.getAttribute("aria-label"),
+      count: preview.style.getPropertyValue("--count"),
+      study: preview.style.getPropertyValue("--study"),
+    },
+    summary: container.querySelector("[data-preview-summary] [data-template]")?.textContent,
   };
 }
 
@@ -93,6 +93,7 @@ const medium = { pressed: ["medium"], pieceCount: "6", memorizeTime: "10s" };
 describe("GameConfig prefill script", () => {
   it.each([
     ["saved 3/18 shows Custom 3/18", "/game", saved(3, 18), { pressed: [], pieceCount: "3", memorizeTime: "18s" }],
+    ["saved 32/1 shows Custom 32/1", "/game", saved(32, 1), { pressed: [], pieceCount: "32", memorizeTime: "1s" }],
     ["saved 12/8 shows Hard", "/game", saved(12, 8), { pressed: ["hard"], pieceCount: "12", memorizeTime: "8s" }],
     ["?difficulty=easy wins over saved 12/8", "/game?difficulty=easy", saved(12, 8), { pressed: ["easy"], pieceCount: "2", memorizeTime: "10s" }],
     ["?pieceCount= leaves Medium", "/game?pieceCount=5", saved(12, 8), medium],
@@ -106,8 +107,8 @@ describe("GameConfig prefill script", () => {
 
     expect({
       pressed: served.pressed,
-      pieceCount: served.pieceCount.label,
-      memorizeTime: served.memorizeTime.label,
+      pieceCount: served.pieceCount,
+      memorizeTime: served.memorizeTime,
     }).toEqual(expected);
     expect(served).toEqual(formState(await clientRender()));
   });
@@ -140,22 +141,32 @@ describe("GameConfig prefill script", () => {
     expect(container.querySelector("[data-prefilled]")).toBeNull();
   });
 
-  it("never writes the served Medium values back while hydrating a prefilled 3/18", async () => {
+  it("paints a prefilled 2/60 with the ends unavailable, the kings alone and the ring full", () => {
+    visit("/game", saved(2, 60));
+
+    expect(formState(serveWithPrefill())).toMatchObject({
+      pressed: [],
+      pieceCount: "2",
+      memorizeTime: "60s",
+      stepsUnavailable: ["true", "false", "false", "true"],
+      board: { label: "Board preview. Pieces on the board: 2", count: "2", study: "100%" },
+      summary: "Custom settings, 2 pcs / 60s",
+    });
+  });
+
+  it("never writes the served Medium values back to the controls while hydrating a prefilled 3/18", async () => {
     visit("/game", saved(3, 18));
     const container = serveWithPrefill();
-    const written: string[] = [];
-    for (const input of container.querySelectorAll("input")) {
-      const { get, set } = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value")!;
-      Object.defineProperty(input, "value", {
-        get() { return get!.call(this); },
-        set(value: string) { written.push(`${this.id}=${value}`); set!.call(this, value); },
-      });
-    }
+    const watched = container.querySelectorAll("[data-preset], [data-preset-description], output, [data-stepper], [data-setup-preview]");
+    const observer = new MutationObserver(() => {});
+    watched.forEach((element) => observer.observe(element, { attributes: true, childList: true, characterData: true, subtree: true }));
 
     await hydrate(container);
+    const mutations = observer.takeRecords();
+    observer.disconnect();
 
-    expect(written.filter((write) => !["pieceCount=3", "memorizeTime=18"].includes(write))).toEqual([]);
-    expect(formState(container).pieceCount.value).toBe("3");
+    expect(mutations.map((mutation) => `${mutation.type} ${mutation.attributeName ?? ""}`)).toEqual([]);
+    expect(formState(container).pieceCount).toBe("3");
   });
 
   it("follows the store when it settles somewhere else than the prefill", async () => {

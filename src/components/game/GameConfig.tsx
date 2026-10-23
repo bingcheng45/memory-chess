@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef, type CSSProperties } from 'react';
+import { useState, useEffect, useRef, type CSSProperties, type MouseEvent } from 'react';
 import { useGameStore } from '@/lib/store/gameStore';
 import type { RoundSource } from '@/lib/analytics/events';
 import { useTranslations } from 'next-intl';
@@ -9,18 +9,25 @@ import RatingPreview from './RatingPreview';
 import { useDailyState, type DailyState } from '@/hooks/useDailyState';
 import { useTimeLeftText } from '@/hooks/useTimeLeftText';
 import {
-  MEMORIZE_SECONDS_RANGE,
-  PIECE_COUNT_RANGE,
-} from '@/lib/reference/facts';
-import {
   DEFAULT_PRESET,
   GAME_CONFIG_RULES,
   presetIdFor,
+  previewStyleOf,
   readPrefilledSettings,
   resolveGameSettings,
-  VALUE_PLACEHOLDER,
+  TEMPLATE_TOKENS,
+  type GameSettings,
 } from '@/lib/game/configPrefill';
+import {
+  previewOrderOf,
+  PREVIEW_POSITION,
+  stepMemorizeTime,
+  stepPieceCount,
+  type StepDirection,
+} from '@/lib/game/setupControls';
+import { StaticBoard } from '@/components/round/BoardFigure';
 import { BLINDFOLD_MODE, isBlindfoldSearch, MODE_PARAM } from '@/lib/game/roundLink';
+import '@/components/round/round.css';
 
 interface GameConfigProps {
   /** `blindfold` is passed only when the option is on, so a board round starts exactly as it always did. */
@@ -36,6 +43,21 @@ function writeBlindfold(on: boolean): void {
 }
 
 const { presets: DIFFICULTY_PRESETS } = GAME_CONFIG_RULES;
+
+type SettingName = keyof GameSettings;
+
+/** Shift on a computer jumps pieces by 5; study time already takes coarse steps above 10s. */
+const COARSE_PIECE_STEP = 5;
+
+const STEP: Record<SettingName, (value: number, direction: StepDirection, coarse: boolean) => number> = {
+  pieceCount: (value, direction, coarse) => stepPieceCount(value, direction * (coarse ? COARSE_PIECE_STEP : 1)),
+  memorizeTime: (value, direction) => stepMemorizeTime(value, direction),
+};
+
+const STEPPER_LABELS = {
+  pieceCount: { label: 'config.pieceCount', fewer: 'config.fewerPieces', more: 'config.morePieces' },
+  memorizeTime: { label: 'config.memorizeTime', fewer: 'config.lessTime', more: 'config.moreTime' },
+} as const;
 
 function DailyBoardLink() {
   const t = useTranslations('dailyEntry');
@@ -55,18 +77,61 @@ function DailyBoardLink() {
   );
 }
 
-const scaleOf = ({ min, max }: { min: number; max: number }) => [min, Math.round((min + max) / 2), max];
+interface StepperProps {
+  readonly name: SettingName;
+  readonly value: number;
+  readonly text: string;
+  readonly template: string;
+  readonly onStep: (name: SettingName, direction: StepDirection, coarse: boolean) => void;
+}
+
+// aria-disabled rather than disabled, so a keyboard press that reaches an end
+// keeps focus on the button instead of dropping it to the page.
+function Stepper({ name, value, text, template, onStep }: StepperProps) {
+  const t = useTranslations('game');
+  const labels = STEPPER_LABELS[name];
+  const range = GAME_CONFIG_RULES[name];
+  const button = (direction: StepDirection, atEnd: boolean, label: string, sign: string) => (
+    <button
+      type="button"
+      className="lab-stepper-btn"
+      aria-label={label}
+      aria-disabled={atEnd}
+      data-stepper={name}
+      data-direction={direction}
+      onClick={(event: MouseEvent) => !atEnd && onStep(name, direction, event.shiftKey)}
+      suppressHydrationWarning
+    >
+      <span aria-hidden="true">{sign}</span>
+    </button>
+  );
+
+  return (
+    <div className="lab-stepper">
+      <label htmlFor={name} className="lab-stepper-label">
+        {t(labels.label)}
+      </label>
+      <div className="lab-stepper-row">
+        {button(-1, value <= range.min, t(labels.fewer), '−')}
+        <output id={name} aria-live="polite" className="lab-stepper-value" data-template={template} suppressHydrationWarning>
+          {text}
+        </output>
+        {button(1, value >= range.max, t(labels.more), '+')}
+      </div>
+    </div>
+  );
+}
 
 export default function GameConfig({ onStart }: GameConfigProps) {
   const t = useTranslations('game');
-  const { 
-    startGame, 
+  const {
+    startGame,
     gameState
   } = useGameStore();
-  const [pieceCount, setPieceCount] = useState(() => readPrefilledSettings().pieceCount);
-  const [memorizeTime, setMemorizeTime] = useState(() => readPrefilledSettings().memorizeTime);
+  const [settings, setSettings] = useState<GameSettings>(readPrefilledSettings);
+  const { pieceCount, memorizeTime } = settings;
   const [blindfold, setBlindfold] = useState(false);
-  const selectedPreset = presetIdFor({ pieceCount, memorizeTime }, DIFFICULTY_PRESETS);
+  const selectedPreset = presetIdFor(settings, DIFFICULTY_PRESETS);
   const formRef = useRef<HTMLDivElement>(null);
   const [announceKey, setAnnounceKey] = useState(0);
   const announce = () => setAnnounceKey((key) => key + 1);
@@ -80,23 +145,26 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   // without this form.
   useEffect(() => {
     delete formRef.current?.dataset.prefilled;
-    const settings =
+    const { pieceCount, memorizeTime } =
       resolveGameSettings(
         window.location.search,
         useGameStore.getState().lastSettings,
         GAME_CONFIG_RULES,
       ) ?? DEFAULT_PRESET;
-    setPieceCount(settings.pieceCount);
-    setMemorizeTime(settings.memorizeTime);
+    setSettings({ pieceCount, memorizeTime });
     setBlindfold(isBlindfoldSearch(window.location.search));
   }, []);
-  
+
   function selectBoard(pieces: number, seconds: number) {
-    setPieceCount(pieces);
-    setMemorizeTime(seconds);
+    setSettings({ pieceCount: pieces, memorizeTime: seconds });
     announce();
   }
-  
+
+  function step(name: SettingName, direction: StepDirection, coarse: boolean) {
+    setSettings((current) => ({ ...current, [name]: STEP[name](current[name], direction, coarse) }));
+    announce();
+  }
+
   const handleStart = () =>
     blindfold
       ? (onStart ? onStart(pieceCount, memorizeTime, 'game_form', true) : startGame(pieceCount, memorizeTime, 'game_form', undefined, true))
@@ -106,9 +174,10 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     setBlindfold(on);
     writeBlindfold(on);
   };
-  
-  const fillOf = (value: number, range: { min: number; max: number }) =>
-    ({ '--fill': `${((value - range.min) / (range.max - range.min)) * 100}%` }) as CSSProperties;
+
+  const presetName = selectedPreset ? t(`presets.${selectedPreset}.label`) : t('config.customLabel');
+  const summaryOf = (preset: string, pieces: number | string, seconds: number | string) =>
+    t('config.summarySetting', { preset, setting: t('config.presetSummary', { pieces, seconds }) });
 
   return (
     <div
@@ -120,8 +189,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
       <h1 className="lab-config-h">{t('config.title')}</h1>
 
       <div className="lab-config-group">
-        <h2 className="lab-config-label">{t('config.presetsLabel')}</h2>
-        <div className="lab-config-presets">
+        <h2 id="config-presets" className="lab-config-label">{t('config.presetsLabel')}</h2>
+        <div className="lab-config-presets" role="group" aria-labelledby="config-presets">
           {DIFFICULTY_PRESETS.map((preset) => (
             <button
               key={preset.id}
@@ -129,17 +198,14 @@ export default function GameConfig({ onStart }: GameConfigProps) {
               onClick={() => selectBoard(preset.pieceCount, preset.memorizeTime)}
               className="lab-preset"
               aria-pressed={selectedPreset === preset.id}
+              aria-label={t(`presets.${preset.id}.label`)}
               data-preset={preset.id}
+              data-name={t(`presets.${preset.id}.label`)}
               data-description={t(`presets.${preset.id}.description`)}
               suppressHydrationWarning
             >
               <span className="lab-preset-name">{t(`presets.${preset.id}.label`)}</span>
-              <span className="lab-preset-meta">
-                {t('config.presetSummary', {
-                  pieces: preset.pieceCount,
-                  seconds: preset.memorizeTime,
-                })}
-              </span>
+              <span className="lab-preset-short" aria-hidden="true">{t(`config.presetShort.${preset.id}`)}</span>
             </button>
           ))}
         </div>
@@ -155,78 +221,35 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </p>
       </div>
 
-      <div className="lab-config-group">
-        <div className="lab-config-row">
-          <label htmlFor="pieceCount" className="lab-config-label">
-            {t('config.pieceCount')}
-          </label>
-          <span
-            data-value-for="pieceCount"
-            data-template={VALUE_PLACEHOLDER}
-            suppressHydrationWarning
-            className="lab-config-value"
-          >
-            {pieceCount}
-          </span>
-        </div>
-        <input
-          id="pieceCount"
-          type="range"
-          min={PIECE_COUNT_RANGE.min}
-          max={PIECE_COUNT_RANGE.max}
-          step="1"
-          value={pieceCount}
-          onChange={(e) => {
-            setPieceCount(parseInt(e.target.value));
-          }}
-          onPointerUp={announce}
-          onKeyUp={announce}
-          className="lab-range"
-          style={fillOf(pieceCount, PIECE_COUNT_RANGE)}
-          suppressHydrationWarning
-        />
-        <div className="lab-range-scale" aria-hidden="true">
-          {scaleOf(PIECE_COUNT_RANGE).map((tick) => (
-            <span key={tick}>{tick}</span>
-          ))}
+      <div
+        className="lab-setup-preview"
+        data-setup-preview
+        role="img"
+        aria-label={t('config.boardPreview', { count: pieceCount })}
+        data-label-template={t('config.boardPreview', { count: TEMPLATE_TOKENS.pieceCount })}
+        style={previewStyleOf(settings, GAME_CONFIG_RULES) as CSSProperties}
+        suppressHydrationWarning
+      >
+        <div className="lab-setup-ring">
+          <StaticBoard position={PREVIEW_POSITION} revealOrder={previewOrderOf} />
         </div>
       </div>
 
-      <div className="lab-config-group">
-        <div className="lab-config-row">
-          <label htmlFor="memorizeTime" className="lab-config-label">
-            {t('config.memorizeTime')}
-          </label>
-          <span
-            data-value-for="memorizeTime"
-            data-template={t('config.seconds', { seconds: VALUE_PLACEHOLDER })}
-            suppressHydrationWarning
-            className="lab-config-value"
-          >
-            {t('config.seconds', { seconds: memorizeTime })}
-          </span>
-        </div>
-        <input
-          id="memorizeTime"
-          type="range"
-          min={MEMORIZE_SECONDS_RANGE.min}
-          max={MEMORIZE_SECONDS_RANGE.max}
-          step="1"
-          value={memorizeTime}
-          onChange={(e) => {
-            setMemorizeTime(parseInt(e.target.value));
-          }}
-          onPointerUp={announce}
-          onKeyUp={announce}
-          className="lab-range"
-          style={fillOf(memorizeTime, MEMORIZE_SECONDS_RANGE)}
-          suppressHydrationWarning
+      <div className="lab-steppers">
+        <Stepper
+          name="pieceCount"
+          value={pieceCount}
+          text={String(pieceCount)}
+          template={TEMPLATE_TOKENS.pieceCount}
+          onStep={step}
         />
-        <div className="lab-range-scale" aria-hidden="true">
-          {scaleOf(MEMORIZE_SECONDS_RANGE).map((tick) => (
-            <span key={tick}>{t('config.seconds', { seconds: tick })}</span>
-          ))}
-        </div>
+        <Stepper
+          name="memorizeTime"
+          value={memorizeTime}
+          text={t('config.seconds', { seconds: memorizeTime })}
+          template={t('config.seconds', { seconds: TEMPLATE_TOKENS.memorizeTime })}
+          onStep={step}
+        />
       </div>
 
       <div className="lab-config-group lab-config-mode">
@@ -246,7 +269,22 @@ export default function GameConfig({ onStart }: GameConfigProps) {
         </p>
       </div>
 
-      {!blindfold && <RatingPreview pieceCount={pieceCount} memorizeTime={memorizeTime} announceKey={announceKey} onSuggest={selectBoard} />}
+      {!blindfold && (
+        <RatingPreview
+          pieceCount={pieceCount}
+          memorizeTime={memorizeTime}
+          announceKey={announceKey}
+          onSuggest={selectBoard}
+          setting={
+            <span
+              data-template={summaryOf(TEMPLATE_TOKENS.preset, TEMPLATE_TOKENS.pieceCount, TEMPLATE_TOKENS.memorizeTime)}
+              suppressHydrationWarning
+            >
+              {summaryOf(presetName, pieceCount, memorizeTime)}
+            </span>
+          }
+        />
+      )}
 
       <button type="button" onClick={handleStart} data-start-round className="lab-btn lab-btn-primary lab-config-start">
         {t('config.start')}

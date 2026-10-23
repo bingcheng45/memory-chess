@@ -981,10 +981,24 @@
         "gain": "Bis zu <num>+{value}</num>",
         "loss": "Höchstens <num>−{value}</num>",
         "announce": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}. Wenn es misslingt, höchstens −{loss}.",
-        "announceProvisional": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}."
+        "announceProvisional": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}.",
+        "summary": "Brett {board} · erwartet {expected} %",
+        "details": "Details zur Wertung"
       },
       "blindfold": "Blind",
-      "blindfoldHint": "Präge dir die Stellung als Notation ein, ohne Figuren auf dem Brett."
+      "blindfoldHint": "Präge dir die Stellung als Notation ein, ohne Figuren auf dem Brett.",
+      "presetShort": {
+        "easy": "Leicht",
+        "medium": "Mittel",
+        "hard": "Schwer",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Weniger Figuren",
+      "morePieces": "Mehr Figuren",
+      "lessTime": "Weniger Einprägezeit",
+      "moreTime": "Mehr Einprägezeit",
+      "boardPreview": "Brettvorschau. Figuren auf dem Brett: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

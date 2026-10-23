@@ -981,10 +981,24 @@
         "gain": "Do <num>+{value}</num>",
         "loss": "Najwyżej <num>−{value}</num>",
         "announce": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}.",
-        "announceProvisional": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}."
+        "announceProvisional": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}.",
+        "summary": "Plansza {board} · oczekiwane {expected}%",
+        "details": "Szczegóły oceny"
       },
       "blindfold": "Na ślepo",
-      "blindfoldHint": "Zapamiętaj pozycję z zapisu, bez bierek na szachownicy."
+      "blindfoldHint": "Zapamiętaj pozycję z zapisu, bez bierek na szachownicy.",
+      "presetShort": {
+        "easy": "Łatwy",
+        "medium": "Średni",
+        "hard": "Trudny",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Mniej bierek",
+      "morePieces": "Więcej bierek",
+      "lessTime": "Krótszy czas na zapamiętanie",
+      "moreTime": "Dłuższy czas na zapamiętanie",
+      "boardPreview": "Podgląd planszy. Bierki na planszy: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

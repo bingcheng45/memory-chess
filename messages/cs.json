@@ -981,10 +981,24 @@
         "gain": "Až <num>+{value}</num>",
         "loss": "Nejvýše <num>−{value}</num>",
         "announce": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}. Když to nevyjde, nejvýše −{loss}.",
-        "announceProvisional": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}."
+        "announceProvisional": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}.",
+        "summary": "Deska {board} · očekávaná přesnost {expected} %",
+        "details": "Podrobnosti hodnocení"
       },
       "blindfold": "Naslepo",
-      "blindfoldHint": "Pozici si zapamatujte ze zápisu, bez figur na šachovnici."
+      "blindfoldHint": "Pozici si zapamatujte ze zápisu, bez figur na šachovnici.",
+      "presetShort": {
+        "easy": "Lehká",
+        "medium": "Střední",
+        "hard": "Těžká",
+        "grandmaster": "VM"
+      },
+      "fewerPieces": "Méně figurek",
+      "morePieces": "Více figurek",
+      "lessTime": "Kratší čas na zapamatování",
+      "moreTime": "Delší čas na zapamatování",
+      "boardPreview": "Náhled desky. Figurek na desce: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

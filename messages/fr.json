@@ -981,10 +981,24 @@
         "gain": "Jusqu’à <num>+{value}</num>",
         "loss": "Au plus <num>−{value}</num>",
         "announce": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}. Si vous échouez, au plus −{loss}.",
-        "announceProvisional": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}."
+        "announceProvisional": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}.",
+        "summary": "Plateau {board} · attendu {expected} %",
+        "details": "Détails de la cote"
       },
       "blindfold": "À l'aveugle",
-      "blindfoldHint": "Étudiez la position en notation, sans pièces sur l'échiquier."
+      "blindfoldHint": "Étudiez la position en notation, sans pièces sur l'échiquier.",
+      "presetShort": {
+        "easy": "Facile",
+        "medium": "Moyen",
+        "hard": "Difficile",
+        "grandmaster": "GMI"
+      },
+      "fewerPieces": "Moins de pièces",
+      "morePieces": "Plus de pièces",
+      "lessTime": "Moins de temps de mémorisation",
+      "moreTime": "Plus de temps de mémorisation",
+      "boardPreview": "Aperçu du plateau. Pièces sur le plateau : {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

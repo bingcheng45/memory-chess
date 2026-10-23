@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Egne indstillinger",
-        "body": "De to skydere kan indstilles uafhængigt af sværhedsgraderne. Antallet af brikker går fra {minPieces} til {maxPieces}, og indlæringstiden fra {minSeconds} til {maxSeconds} sekunder. Ranglisten genkender en runde på dens antal brikker, så ethvert andet antal end de fire faste gør runden til et parti med egne indstillinger, og den slags partier kommer ikke på ranglisten."
+        "body": "Knapperne − og + under brættet ændrer antal brikker og tid uafhængigt af sværhedsgraderne. Antallet af brikker går fra {minPieces} til {maxPieces}, og indlæringstiden fra {minSeconds} til {maxSeconds} sekunder. Ranglisten genkender en runde på dens antal brikker, så ethvert andet antal end de fire faste gør runden til et parti med egne indstillinger, og den slags partier kommer ikke på ranglisten."
       }
     },
     "scoring": {

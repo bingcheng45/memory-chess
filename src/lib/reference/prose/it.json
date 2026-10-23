@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Impostazioni personalizzate",
-        "body": "I due cursori si muovono indipendentemente dai livelli predefiniti. Il numero di pezzi va da {minPieces} a {maxPieces} e il tempo di memorizzazione da {minSeconds} a {maxSeconds} secondi. La classifica riconosce un turno dal numero di pezzi, quindi qualsiasi numero diverso dai quattro valori predefiniti rende la partita personalizzata, e le partite personalizzate restano fuori dalla classifica."
+        "body": "I pulsanti − e + sotto la scacchiera cambiano il numero di pezzi e il tempo indipendentemente dai livelli predefiniti. Il numero di pezzi va da {minPieces} a {maxPieces} e il tempo di memorizzazione da {minSeconds} a {maxSeconds} secondi. La classifica riconosce un turno dal numero di pezzi, quindi qualsiasi numero diverso dai quattro valori predefiniti rende la partita personalizzata, e le partite personalizzate restano fuori dalla classifica."
       }
     },
     "scoring": {

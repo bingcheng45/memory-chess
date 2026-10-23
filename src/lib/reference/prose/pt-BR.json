@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Configurações personalizadas",
-        "body": "Os dois controles deslizantes se movem independentemente dos níveis. O número de peças vai de {minPieces} a {maxPieces}, e o tempo de observação, de {minSeconds} a {maxSeconds} segundos. O ranking reconhece uma rodada pelo número de peças, então qualquer contagem diferente das quatro contagens predefinidas cria uma partida personalizada, e partidas personalizadas ficam fora do ranking."
+        "body": "Os botões − e + abaixo do tabuleiro mudam o número de peças e o tempo independentemente dos níveis. O número de peças vai de {minPieces} a {maxPieces}, e o tempo de observação, de {minSeconds} a {maxSeconds} segundos. O ranking reconhece uma rodada pelo número de peças, então qualquer contagem diferente das quatro contagens predefinidas cria uma partida personalizada, e partidas personalizadas ficam fora do ranking."
       }
     },
     "scoring": {

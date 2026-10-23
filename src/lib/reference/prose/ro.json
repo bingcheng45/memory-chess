@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Setări personalizate",
-        "body": "Cele două glisoare se mișcă independent de nivelurile presetate. Numărul de piese merge de la {minPieces} la {maxPieces}, iar timpul de memorare de la {minSeconds} la {maxSeconds} secunde. Clasamentul recunoaște o rundă după numărul ei de piese, așa că orice număr diferit de cele patru valori presetate o transformă într-o partidă personalizată, iar partidele personalizate rămân în afara clasamentului."
+        "body": "Butoanele − și + de sub tablă schimbă numărul de piese și timpul independent de nivelurile presetate. Numărul de piese merge de la {minPieces} la {maxPieces}, iar timpul de memorare de la {minSeconds} la {maxSeconds} secunde. Clasamentul recunoaște o rundă după numărul ei de piese, așa că orice număr diferit de cele patru valori presetate o transformă într-o partidă personalizată, iar partidele personalizate rămân în afara clasamentului."
       }
     },
     "scoring": {

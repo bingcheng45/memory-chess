@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Ustawienia niestandardowe",
-        "body": "Oba suwaki poruszają się niezależnie od poziomów. Liczba bierek biegnie od {minPieces} do {maxPieces}, a czas podglądu od {minSeconds} do {maxSeconds} sekund. Ranking rozpoznaje rundę po liczbie bierek, więc każda liczba inna niż te z czterech poziomów czyni grę niestandardową, a gry niestandardowe nie trafiają do rankingu."
+        "body": "Przyciski − i + pod planszą zmieniają liczbę bierek i czas niezależnie od poziomów. Liczba bierek biegnie od {minPieces} do {maxPieces}, a czas podglądu od {minSeconds} do {maxSeconds} sekund. Ranking rozpoznaje rundę po liczbie bierek, więc każda liczba inna niż te z czterech poziomów czyni grę niestandardową, a gry niestandardowe nie trafiają do rankingu."
       }
     },
     "scoring": {

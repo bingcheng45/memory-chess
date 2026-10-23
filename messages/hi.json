@@ -981,10 +981,24 @@
         "gain": "अधिकतम <num>+{value}</num>",
         "loss": "अधिकतम <num>−{value}</num>",
         "announce": "बोर्ड रेटिंग {board}। आपकी रेटिंग {rating}। अपेक्षित सटीकता {expected}%। अगर आप इसे पूरा करें, तो अधिकतम +{gain}। अगर चूक जाएँ, तो अधिकतम −{loss}।",
-        "announceProvisional": "बोर्ड रेटिंग {board}। आपकी रेटिंग {rating}। अपेक्षित सटीकता {expected}%। अगर आप इसे पूरा करें, तो अधिकतम +{gain}।"
+        "announceProvisional": "बोर्ड रेटिंग {board}। आपकी रेटिंग {rating}। अपेक्षित सटीकता {expected}%। अगर आप इसे पूरा करें, तो अधिकतम +{gain}।",
+        "summary": "बोर्ड {board} · अपेक्षित {expected}%",
+        "details": "रेटिंग का विवरण"
       },
       "blindfold": "ब्लाइंडफ़ोल्ड",
-      "blindfoldHint": "बोर्ड पर मोहरों के बिना, स्थिति को नोटेशन में पढ़कर याद करें।"
+      "blindfoldHint": "बोर्ड पर मोहरों के बिना, स्थिति को नोटेशन में पढ़कर याद करें।",
+      "presetShort": {
+        "easy": "आसान",
+        "medium": "मध्यम",
+        "hard": "कठिन",
+        "grandmaster": "जीएम"
+      },
+      "fewerPieces": "कम मोहरे",
+      "morePieces": "ज़्यादा मोहरे",
+      "lessTime": "याद करने का कम समय",
+      "moreTime": "याद करने का ज़्यादा समय",
+      "boardPreview": "बोर्ड पूर्वावलोकन। बोर्ड पर मोहरे: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

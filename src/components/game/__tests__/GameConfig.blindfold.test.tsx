@@ -30,7 +30,7 @@ describe("the Blindfold option", () => {
     render(<GameConfig onStart={jest.fn()} />);
 
     expect(screen.getByRole("checkbox", { name: "Blindfold" })).toBeChecked();
-    expect(screen.getByLabelText("Number of pieces")).toHaveValue("2");
+    expect(screen.getByLabelText("Number of pieces")).toHaveTextContent("2");
   });
 
   it("shows the rating preview for a board round only, since a blindfold round never moves the rating", () => {

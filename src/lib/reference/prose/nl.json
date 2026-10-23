@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Eigen instellingen",
-        "body": "De 2 schuifregelaars staan los van de moeilijkheidsgraden. Het aantal stukken loopt van {minPieces} tot {maxPieces} en de kijktijd van {minSeconds} tot {maxSeconds} seconden. De ranglijst herkent een ronde aan het aantal stukken; elk ander aantal dan de 4 vaste aantallen maakt er dus een ronde met eigen instellingen van, en die rondes komen niet op de ranglijst."
+        "body": "De knoppen − en + onder het bord veranderen het aantal stukken en de tijd los van de moeilijkheidsgraden. Het aantal stukken loopt van {minPieces} tot {maxPieces} en de kijktijd van {minSeconds} tot {maxSeconds} seconden. De ranglijst herkent een ronde aan het aantal stukken; elk ander aantal dan de 4 vaste aantallen maakt er dus een ronde met eigen instellingen van, en die rondes komen niet op de ranglijst."
       }
     },
     "scoring": {

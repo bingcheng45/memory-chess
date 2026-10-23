@@ -981,10 +981,24 @@
         "gain": "Până la <num>+{value}</num>",
         "loss": "Cel mult <num>−{value}</num>",
         "announce": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}. Dacă greșești, cel mult −{loss}.",
-        "announceProvisional": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}."
+        "announceProvisional": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}.",
+        "summary": "Tabla {board} · estimat {expected}%",
+        "details": "Detaliile ratingului"
       },
       "blindfold": "Pe orbește",
-      "blindfoldHint": "Studiază poziția în notație, fără piese pe tablă."
+      "blindfoldHint": "Studiază poziția în notație, fără piese pe tablă.",
+      "presetShort": {
+        "easy": "Ușor",
+        "medium": "Mediu",
+        "hard": "Dificil",
+        "grandmaster": "MM"
+      },
+      "fewerPieces": "Mai puține piese",
+      "morePieces": "Mai multe piese",
+      "lessTime": "Timp de memorare mai scurt",
+      "moreTime": "Timp de memorare mai lung",
+      "boardPreview": "Previzualizarea tablei. Piese pe tablă: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

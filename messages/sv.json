@@ -981,10 +981,24 @@
         "gain": "Upp till <num>+{value}</num>",
         "loss": "Högst <num>−{value}</num>",
         "announce": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}. Om det går fel, högst −{loss}.",
-        "announceProvisional": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}."
+        "announceProvisional": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}.",
+        "summary": "Bräde {board} · förväntat {expected} %",
+        "details": "Ratingdetaljer"
       },
       "blindfold": "Blindschack",
-      "blindfoldHint": "Studera ställningen som notation, utan pjäser på brädet."
+      "blindfoldHint": "Studera ställningen som notation, utan pjäser på brädet.",
+      "presetShort": {
+        "easy": "Lätt",
+        "medium": "Medel",
+        "hard": "Svår",
+        "grandmaster": "SM"
+      },
+      "fewerPieces": "Färre pjäser",
+      "morePieces": "Fler pjäser",
+      "lessTime": "Kortare memoreringstid",
+      "moreTime": "Längre memoreringstid",
+      "boardPreview": "Förhandsvisning av brädet. Pjäser på brädet: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

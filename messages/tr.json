@@ -981,10 +981,24 @@
         "gain": "En fazla <num>+{value}</num>",
         "loss": "En fazla <num>−{value}</num>",
         "announce": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}. Kaçırırsan en fazla −{loss}.",
-        "announceProvisional": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}."
+        "announceProvisional": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}.",
+        "summary": "Tahta {board} · beklenen %{expected}",
+        "details": "Puan ayrıntıları"
       },
       "blindfold": "Körleme",
-      "blindfoldHint": "Konumu tahtada taş olmadan, notasyon olarak çalışın."
+      "blindfoldHint": "Konumu tahtada taş olmadan, notasyon olarak çalışın.",
+      "presetShort": {
+        "easy": "Kolay",
+        "medium": "Orta",
+        "hard": "Zor",
+        "grandmaster": "BU"
+      },
+      "fewerPieces": "Daha az taş",
+      "morePieces": "Daha çok taş",
+      "lessTime": "Daha kısa ezberleme süresi",
+      "moreTime": "Daha uzun ezberleme süresi",
+      "boardPreview": "Tahta önizlemesi. Tahtadaki taşlar: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

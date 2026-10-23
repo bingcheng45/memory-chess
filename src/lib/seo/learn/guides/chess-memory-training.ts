@@ -111,11 +111,11 @@ const guide: LearnDocument = {
           ordered: false,
           items: [
             "The result screen's Next round button changes one piece at a time. After 90 percent or better it offers one more piece with the same look. Below 50 percent it offers one fewer, down to 3, and in between it keeps the size.",
-            "To climb this ladder instead, press Try again, which keeps your settings. After three Perfect Score rounds in a row, press Change settings and add two pieces. The piece slider runs from 2 to 32, so every rung exists.",
+            "To climb this ladder instead, press Try again, which keeps your settings. After three Perfect Score rounds in a row, press Change settings and add two pieces. The piece count runs from 2 to 32, so every rung exists.",
             "Two rounds in a row below Well Done, which is 70 percent, send you down a rung. Press Change settings, take two pieces away and rebuild the streak there.",
             "Change one setting at a time. Hold the look at 10 seconds until 12 pieces gives three Perfect Score rounds in a row, then drop it to 8. If you change both at once, you cannot tell which one broke.",
             "Rungs 2 and 3 use 8 and 10 pieces. Counts other than 2, 6, 12 and 20 are not preset counts, so those rounds are custom games and stay off the leaderboard. While you climb, that does not matter.",
-            "The look slider runs from 1 to 60 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
+            "The look time runs from 1 to 60 seconds. Under 5 seconds even 6 pieces leaves less than a second per piece, so save short looks until 12 pieces at 8 seconds feels ordinary.",
           ],
         },
         {

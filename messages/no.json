@@ -981,10 +981,24 @@
         "gain": "Opptil <num>+{value}</num>",
         "loss": "Høyst <num>−{value}</num>",
         "announce": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}. Hvis det går galt, høyst −{loss}.",
-        "announceProvisional": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}."
+        "announceProvisional": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}.",
+        "summary": "Brett {board} · forventet {expected} %",
+        "details": "Ratingdetaljer"
       },
       "blindfold": "Blindsjakk",
-      "blindfoldHint": "Studer stillingen som notasjon, uten brikker på brettet."
+      "blindfoldHint": "Studer stillingen som notasjon, uten brikker på brettet.",
+      "presetShort": {
+        "easy": "Lett",
+        "medium": "Middels",
+        "hard": "Vanskelig",
+        "grandmaster": "SM"
+      },
+      "fewerPieces": "Færre brikker",
+      "morePieces": "Flere brikker",
+      "lessTime": "Kortere innlæringstid",
+      "moreTime": "Lengre innlæringstid",
+      "boardPreview": "Forhåndsvisning av brettet. Brikker på brettet: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Egne innstillinger",
-        "body": "De to glidebryterne beveger seg uavhengig av vanskelighetsgradene. Antallet brikker går fra {minPieces} til {maxPieces}, og innlæringstiden fra {minSeconds} til {maxSeconds} sekunder. Topplisten kjenner igjen en runde på antallet brikker, så alle andre antall enn de fire faste gjør runden til et parti med egne innstillinger, og slike partier holdes utenfor topplisten."
+        "body": "Knappene − og + under brettet endrer antall brikker og tid uavhengig av vanskelighetsgradene. Antallet brikker går fra {minPieces} til {maxPieces}, og innlæringstiden fra {minSeconds} til {maxSeconds} sekunder. Topplisten kjenner igjen en runde på antallet brikker, så alle andre antall enn de fire faste gjør runden til et parti med egne innstillinger, og slike partier holdes utenfor topplisten."
       }
     },
     "scoring": {

@@ -1,4 +1,4 @@
-import { roundSourceFrom, trackEvent, type FunnelEvent } from "@/lib/analytics/events";
+import { rememberResultView, roundSourceFrom, trackEvent, type FunnelEvent } from "@/lib/analytics/events";
 
 const EVENTS: FunnelEvent[] = [
   { name: "round_start", params: { piece_count: 6, memorize_time: 10, round_source: "home_quick" } },
@@ -35,6 +35,11 @@ const EVENTS: FunnelEvent[] = [
   { name: "learn_search_select", params: { slug: "chess-memory-training", rank: 1, matched_question: false, surface: "server" } },
   { name: "round_intro_view", params: { piece_count: 3, memorize_time: 10, round_source: "link" } },
   { name: "affiliate_click", params: { store: "amazon" } },
+  {
+    name: "round_complete",
+    params: { piece_count: 6, memorize_time: 10, correct_pieces: 5, accuracy: 83, round_source: "game_form", result_view: "overlay" },
+  },
+  { name: "result_view_select", params: { result_view: "side" } },
 ];
 
 afterEach(() => {
@@ -111,4 +116,17 @@ it("does nothing when gtag is absent", () => {
 it("requires every param of an event", () => {
   // @ts-expect-error memorize_time is required
   expect(() => trackEvent({ name: "round_start", params: { piece_count: 6 } })).not.toThrow();
+});
+
+it("sets the result view as a GA4 user property", () => {
+  const gtag = jest.fn();
+  window.gtag = gtag;
+
+  rememberResultView("overlay");
+
+  expect(gtag).toHaveBeenCalledWith("set", "user_properties", { result_view: "overlay" });
+});
+
+it("sets no user property when gtag has not loaded", () => {
+  expect(() => rememberResultView("side")).not.toThrow();
 });

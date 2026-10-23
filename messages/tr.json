@@ -1116,7 +1116,19 @@
       "blindfoldRound": "Körleme tur: konumu notasyon olarak çalıştınız."
     },
     "comparison": {
-      "title": "Konumunu incele"
+      "title": "Konumunu incele",
+      "viewLabel": "Sonuç görünümü",
+      "view": {
+        "side": "Yan yana",
+        "overlay": "Tek tahta"
+      },
+      "yourBoard": "Senin tahtan",
+      "position": "Konum",
+      "yourBoardLabel": "Senin tahtan, doğru ve yanlış taşlar işaretli",
+      "positionLabel": "Konum, doğru ve atlanan kareler işaretli",
+      "legendCorrect": "Doğru",
+      "legendWrong": "Yanlış, senin tahtanda",
+      "legendMissed": "Atlandı, konumda"
     },
     "feedback": {
       "title": "Memory Chess oynadığın için teşekkürler!",

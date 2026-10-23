@@ -1116,7 +1116,19 @@
       "blindfoldRound": "Blindrunde: du studerte stillingen som notasjon."
     },
     "comparison": {
-      "title": "Gå gjennom stillingen din"
+      "title": "Gå gjennom stillingen din",
+      "viewLabel": "Resultatvisning",
+      "view": {
+        "side": "Side om side",
+        "overlay": "Ett brett"
+      },
+      "yourBoard": "Ditt brett",
+      "position": "Stillingen",
+      "yourBoardLabel": "Ditt brett, med riktige og feil brikker merket",
+      "positionLabel": "Stillingen, med riktige og oversette felt merket",
+      "legendCorrect": "Riktig",
+      "legendWrong": "Feil, på brettet ditt",
+      "legendMissed": "Oversett, i stillingen"
     },
     "feedback": {
       "title": "Takk for at du spilte Memory Chess!",

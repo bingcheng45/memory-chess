@@ -117,6 +117,40 @@ export function hiddenAnswer(target: LabPosition, placed: LabPosition, square: S
   return placed[square] && !samePiece(target[square], placed[square]) ? target[square] : undefined;
 }
 
+/** What a board shows on one square: its piece, a faded missed piece, the answer beside a wrong piece, and its marks. */
+export interface SquareView {
+  readonly piece?: LabPiece;
+  readonly ghost?: LabPiece;
+  readonly answer?: LabPiece;
+  readonly mark?: string;
+}
+
+/** Which side of a scored round a board shows: both at once, the pieces the player placed, or the position to rebuild. */
+export type ScoredLens = "overlay" | "placed" | "target";
+
+type ScoredSquare = (target: LabPosition, placed: LabPosition, square: SquareName) => SquareView;
+
+const SCORED_SQUARE: Readonly<Record<ScoredLens, ScoredSquare>> = {
+  overlay: (target, placed, square) => ({
+    piece: placed[square],
+    ghost: placed[square] ? undefined : target[square],
+    answer: hiddenAnswer(target, placed, square),
+    mark: squareVerdict(target, placed, square),
+  }),
+  placed: (target, placed, square) => ({
+    piece: placed[square],
+    mark: placed[square] && (samePiece(target[square], placed[square]) ? "ok" : "wrong"),
+  }),
+  target: (target, placed, square) => ({
+    piece: target[square],
+    mark: target[square] && (samePiece(target[square], placed[square]) ? "ok" : "miss"),
+  }),
+};
+
+export function scoredSquare(lens: ScoredLens, target: LabPosition, placed: LabPosition, square: SquareName): SquareView {
+  return SCORED_SQUARE[lens](target, placed, square);
+}
+
 /**
  * What a round is played at and where it came from. `board` is set when the round plays a set position. `blindfold`
  * studies the position as notation over an empty board; absent, the round studies the pieces on the board.

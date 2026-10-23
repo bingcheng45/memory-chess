@@ -1116,7 +1116,19 @@
       "blindfoldRound": "Vakkör: az állást lejegyzésből jegyezted meg."
     },
     "comparison": {
-      "title": "Nézd át az állásodat"
+      "title": "Nézd át az állásodat",
+      "viewLabel": "Eredménynézet",
+      "view": {
+        "side": "Egymás mellett",
+        "overlay": "Egy tábla"
+      },
+      "yourBoard": "A te táblád",
+      "position": "Az állás",
+      "yourBoardLabel": "A te táblád, a helyes és rossz bábuk megjelölve",
+      "positionLabel": "Az állás, a helyes és kihagyott mezők megjelölve",
+      "legendCorrect": "Helyes",
+      "legendWrong": "Rossz, a te tábládon",
+      "legendMissed": "Kihagyva, az állásban"
     },
     "feedback": {
       "title": "Köszönjük, hogy Memory Chesst játszottál!",

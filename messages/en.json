@@ -1116,7 +1116,19 @@
       "blindfoldRound": "Blindfold round: you studied the position as notation."
     },
     "comparison": {
-      "title": "Review your position"
+      "title": "Review your position",
+      "viewLabel": "Result view",
+      "view": {
+        "side": "Side by side",
+        "overlay": "One board"
+      },
+      "yourBoard": "Your board",
+      "position": "The position",
+      "yourBoardLabel": "Your board, with correct and wrong pieces marked",
+      "positionLabel": "The position, with correct and missed squares marked",
+      "legendCorrect": "Correct",
+      "legendWrong": "Wrong, on your board",
+      "legendMissed": "Missed, on the position"
     },
     "feedback": {
       "title": "Thanks for playing Memory Chess!",

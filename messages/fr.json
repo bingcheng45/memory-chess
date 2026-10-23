@@ -1116,7 +1116,19 @@
       "blindfoldRound": "Partie à l'aveugle : vous avez étudié la position en notation."
     },
     "comparison": {
-      "title": "Revoyez votre position"
+      "title": "Revoyez votre position",
+      "viewLabel": "Affichage du résultat",
+      "view": {
+        "side": "Côte à côte",
+        "overlay": "Un seul échiquier"
+      },
+      "yourBoard": "Votre échiquier",
+      "position": "La position",
+      "yourBoardLabel": "Votre échiquier, pièces correctes et erronées marquées",
+      "positionLabel": "La position, cases correctes et manquées marquées",
+      "legendCorrect": "Correcte",
+      "legendWrong": "Erronée, sur votre échiquier",
+      "legendMissed": "Manquée, dans la position"
     },
     "feedback": {
       "title": "Merci d’avoir joué à Memory Chess !",

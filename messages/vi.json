@@ -1116,7 +1116,19 @@
       "blindfoldRound": "Ván bịt mắt: bạn đã học thế cờ qua ký hiệu."
     },
     "comparison": {
-      "title": "Xem lại thế cờ của bạn"
+      "title": "Xem lại thế cờ của bạn",
+      "viewLabel": "Chế độ xem kết quả",
+      "view": {
+        "side": "Cạnh nhau",
+        "overlay": "Một bàn cờ"
+      },
+      "yourBoard": "Bàn cờ của bạn",
+      "position": "Thế cờ",
+      "yourBoardLabel": "Bàn cờ của bạn, đánh dấu quân đúng và sai",
+      "positionLabel": "Thế cờ, đánh dấu ô đúng và ô bị bỏ sót",
+      "legendCorrect": "Đúng",
+      "legendWrong": "Sai, trên bàn cờ của bạn",
+      "legendMissed": "Bỏ sót, trên thế cờ"
     },
     "feedback": {
       "title": "Cảm ơn bạn đã chơi Memory Chess!",

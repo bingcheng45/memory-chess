@@ -1116,7 +1116,19 @@
       "blindfoldRound": "Blindrunda: du studerade ställningen som notation."
     },
     "comparison": {
-      "title": "Gå igenom din ställning"
+      "title": "Gå igenom din ställning",
+      "viewLabel": "Resultatvy",
+      "view": {
+        "side": "Sida vid sida",
+        "overlay": "Ett bräde"
+      },
+      "yourBoard": "Ditt bräde",
+      "position": "Ställningen",
+      "yourBoardLabel": "Ditt bräde, med rätt och fel pjäser markerade",
+      "positionLabel": "Ställningen, med rätt och missade rutor markerade",
+      "legendCorrect": "Rätt",
+      "legendWrong": "Fel, på ditt bräde",
+      "legendMissed": "Missad, i ställningen"
     },
     "feedback": {
       "title": "Tack för att du spelade Memory Chess!",

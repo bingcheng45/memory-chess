@@ -1116,7 +1116,19 @@
       "blindfoldRound": "Ronda a ciegas: estudiaste la posición en notación."
     },
     "comparison": {
-      "title": "Revisa tu posición"
+      "title": "Revisa tu posición",
+      "viewLabel": "Vista del resultado",
+      "view": {
+        "side": "Lado a lado",
+        "overlay": "Un tablero"
+      },
+      "yourBoard": "Tu tablero",
+      "position": "La posición",
+      "yourBoardLabel": "Tu tablero, con las piezas correctas e incorrectas marcadas",
+      "positionLabel": "La posición, con las casillas correctas y omitidas marcadas",
+      "legendCorrect": "Correcta",
+      "legendWrong": "Incorrecta, en tu tablero",
+      "legendMissed": "Omitida, en la posición"
     },
     "feedback": {
       "title": "¡Gracias por jugar a Memory Chess!",

@@ -51,6 +51,8 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-view-option[aria-pressed="true"] { background: var(--lp-accent-soft); color: var(--lp-ink); font-weight: 600; }
 .lab-game .lab-view-option:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
 @media (pointer: coarse), (max-width: 767px) { .lab-game .lab-view-option { min-height: 44px; } }
+/* Two boards beside the readout leave each one too small to compare, so the side view takes the full width. */
+.lab-game .lab-result-grid:has(> [data-result-view="side"]) { grid-template-columns: minmax(0, 1fr); }
 .lab-game .lab-result-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
 .lab-game .lab-result-pair figure { margin: 0; min-width: 0; }
 .lab-game .lab-result-pair figcaption { margin-bottom: 4px; }

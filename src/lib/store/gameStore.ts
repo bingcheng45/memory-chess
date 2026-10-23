@@ -67,6 +67,10 @@ export { WIN_ACCURACY };
 
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
 
+/** How the result screen shows a scored round: the player's board beside the position, or both on one board. */
+export type ResultView = 'side' | 'overlay';
+const parseResultView = (value: unknown): ResultView => (value === 'overlay' ? 'overlay' : 'side');
+
 interface GameStore {
   gameState: GameState;
   lastSettings: GameSettings | null;
@@ -77,6 +81,8 @@ interface GameStore {
   certainty: Omit<PlayerRating, 'rating'>;
   /** The round being played, run by the shared round reducer. Never persisted. */
   round: RoundState;
+  resultView: ResultView;
+  setResultView: (view: ResultView) => void;
 
   startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard, blindfold?: boolean) => void;
   /** Sets a board out behind its Start button; the round studies on endCountdown. */
@@ -188,6 +194,9 @@ export const useGameStore = create<GameStore>()(
       certainty: { rd: NEW_PLAYER.rd, rounds: NEW_PLAYER.rounds },
       lastSettings: null,
       round: IDLE_ROUND,
+      resultView: 'side',
+
+      setResultView: (resultView) => set({ resultView }),
 
       startGame: (pieceCount, memorizeTime, source, board, blindfold) => {
         const generated = board ? null : generateMemorizationPosition(pieceCount);
@@ -445,6 +454,7 @@ export const useGameStore = create<GameStore>()(
         lastSettings: state.lastSettings,
         freeSkipDay: state.freeSkipDay,
         certainty: state.certainty,
+        resultView: state.resultView,
       }),
       // localStorage is user-editable and outlives app versions, so a stored
       // value that would put the configuration form out of range is dropped.
@@ -464,6 +474,7 @@ export const useGameStore = create<GameStore>()(
           lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
           freeSkipDay: parseLocalDay(stored.freeSkipDay),
           certainty: parseCertainty(stored.certainty),
+          resultView: parseResultView(stored.resultView),
         };
       },
     }

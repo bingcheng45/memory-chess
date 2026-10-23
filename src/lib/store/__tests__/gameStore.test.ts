@@ -361,6 +361,34 @@ describe("remembering the last settings played", () => {
   });
 });
 
+describe("remembering how the result is shown", () => {
+  const STORAGE_KEY = "memory-chess-storage";
+
+  const rehydrateFrom = async (resultView: unknown) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { resultView }, version: 3 }));
+    await useGameStore.persist.rehydrate();
+    return useGameStore.getState().resultView;
+  };
+
+  afterEach(() => {
+    useGameStore.setState({ resultView: "side" });
+    localStorage.clear();
+  });
+
+  it("keeps the chosen view in storage and reads it back", async () => {
+    useGameStore.getState().setResultView("overlay");
+
+    expect(JSON.parse(localStorage.getItem(STORAGE_KEY)!).state.resultView).toBe("overlay");
+    await expect(rehydrateFrom("overlay")).resolves.toBe("overlay");
+  });
+
+  it.each([undefined, "sideways", 3])("shows the boards side by side when storage holds %p", async (stored) => {
+    useGameStore.setState({ resultView: "overlay" });
+
+    await expect(rehydrateFrom(stored)).resolves.toBe("side");
+  });
+});
+
 const STORAGE_KEY = "memory-chess-storage";
 const storedState = () => JSON.parse(localStorage.getItem(STORAGE_KEY)!).state;
 

@@ -981,10 +981,24 @@
         "gain": "Enintään <num>+{value}</num>",
         "loss": "Enintään <num>−{value}</num>",
         "announce": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}. Jos epäonnistut, enintään −{loss}.",
-        "announceProvisional": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}."
+        "announceProvisional": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}.",
+        "summary": "Lauta {board} · odotettu {expected} %",
+        "details": "Taitoluvun tiedot"
       },
       "blindfold": "Sokko",
-      "blindfoldHint": "Opettele asema notaationa, ilman nappuloita laudalla."
+      "blindfoldHint": "Opettele asema notaationa, ilman nappuloita laudalla.",
+      "presetShort": {
+        "easy": "Helppo",
+        "medium": "Keski",
+        "hard": "Vaikea",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Vähemmän nappuloita",
+      "morePieces": "Enemmän nappuloita",
+      "lessTime": "Lyhyempi muistiinpainamisaika",
+      "moreTime": "Pidempi muistiinpainamisaika",
+      "boardPreview": "Laudan esikatselu. Nappuloita laudalla: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

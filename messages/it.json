@@ -981,10 +981,24 @@
         "gain": "Fino a <num>+{value}</num>",
         "loss": "Al massimo <num>−{value}</num>",
         "announce": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}. Se sbagli, al massimo −{loss}.",
-        "announceProvisional": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}."
+        "announceProvisional": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}.",
+        "summary": "Scacchiera {board} · previsto {expected}%",
+        "details": "Dettagli del punteggio"
       },
       "blindfold": "Alla cieca",
-      "blindfoldHint": "Studia la posizione in notazione, senza pezzi sulla scacchiera."
+      "blindfoldHint": "Studia la posizione in notazione, senza pezzi sulla scacchiera.",
+      "presetShort": {
+        "easy": "Facile",
+        "medium": "Medio",
+        "hard": "Difficile",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Meno pezzi",
+      "morePieces": "Più pezzi",
+      "lessTime": "Meno tempo di memorizzazione",
+      "moreTime": "Più tempo di memorizzazione",
+      "boardPreview": "Anteprima della scacchiera. Pezzi sulla scacchiera: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

@@ -981,10 +981,24 @@
         "gain": "最多 <num>+{value}</num>",
         "loss": "最多 <num>−{value}</num>",
         "announce": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。如果失手，最多 −{loss}。",
-        "announceProvisional": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。"
+        "announceProvisional": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。",
+        "summary": "棋盤 {board} · 預計 {expected}%",
+        "details": "評分詳情"
       },
       "blindfold": "盲棋",
-      "blindfoldHint": "以記譜方式記住局面，棋盤上不擺棋子。"
+      "blindfoldHint": "以記譜方式記住局面，棋盤上不擺棋子。",
+      "presetShort": {
+        "easy": "簡單",
+        "medium": "中等",
+        "hard": "困難",
+        "grandmaster": "特大"
+      },
+      "fewerPieces": "減少棋子",
+      "morePieces": "增加棋子",
+      "lessTime": "縮短記憶時間",
+      "moreTime": "延長記憶時間",
+      "boardPreview": "棋盤預覽。棋盤上的棋子：{count}",
+      "summarySetting": "{preset}，{setting}"
     },
     "presets": {
       "easy": {

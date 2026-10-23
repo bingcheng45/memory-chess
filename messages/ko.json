@@ -981,10 +981,24 @@
         "gain": "최대 <num>+{value}</num>",
         "loss": "최대 <num>−{value}</num>",
         "announce": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}. 실패하면 최대 −{loss}.",
-        "announceProvisional": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}."
+        "announceProvisional": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}.",
+        "summary": "보드 {board} · 예상 {expected}%",
+        "details": "레이팅 세부 정보"
       },
       "blindfold": "블라인드",
-      "blindfoldHint": "보드에 기물 없이 기보로 포지션을 익히세요."
+      "blindfoldHint": "보드에 기물 없이 기보로 포지션을 익히세요.",
+      "presetShort": {
+        "easy": "쉬움",
+        "medium": "보통",
+        "hard": "어려움",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "기물 줄이기",
+      "morePieces": "기물 늘리기",
+      "lessTime": "암기 시간 줄이기",
+      "moreTime": "암기 시간 늘리기",
+      "boardPreview": "보드 미리보기. 보드 위 기물: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

@@ -981,10 +981,24 @@
         "gain": "Tối đa <num>+{value}</num>",
         "loss": "Tối đa <num>−{value}</num>",
         "announce": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}. Nếu bạn trượt, tối đa −{loss}.",
-        "announceProvisional": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}."
+        "announceProvisional": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}.",
+        "summary": "Bàn cờ {board} · dự kiến {expected}%",
+        "details": "Chi tiết điểm"
       },
       "blindfold": "Bịt mắt",
-      "blindfoldHint": "Học thế cờ qua ký hiệu, không có quân trên bàn cờ."
+      "blindfoldHint": "Học thế cờ qua ký hiệu, không có quân trên bàn cờ.",
+      "presetShort": {
+        "easy": "Dễ",
+        "medium": "Vừa",
+        "hard": "Khó",
+        "grandmaster": "ĐKT"
+      },
+      "fewerPieces": "Bớt quân",
+      "morePieces": "Thêm quân",
+      "lessTime": "Bớt thời gian ghi nhớ",
+      "moreTime": "Thêm thời gian ghi nhớ",
+      "boardPreview": "Xem trước bàn cờ. Số quân trên bàn cờ: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

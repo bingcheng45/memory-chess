@@ -981,10 +981,24 @@
         "gain": "Legfeljebb <num>+{value}</num>",
         "loss": "Legfeljebb <num>−{value}</num>",
         "announce": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}. Ha nem sikerül, legfeljebb −{loss}.",
-        "announceProvisional": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}."
+        "announceProvisional": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}.",
+        "summary": "Tábla {board} · várható {expected}%",
+        "details": "A pontszám részletei"
       },
       "blindfold": "Vakon",
-      "blindfoldHint": "Az állást lejegyzésből jegyezd meg, bábuk nélkül a táblán."
+      "blindfoldHint": "Az állást lejegyzésből jegyezd meg, bábuk nélkül a táblán.",
+      "presetShort": {
+        "easy": "Könnyű",
+        "medium": "Közepes",
+        "hard": "Nehéz",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Kevesebb bábu",
+      "morePieces": "Több bábu",
+      "lessTime": "Rövidebb memorizálási idő",
+      "moreTime": "Hosszabb memorizálási idő",
+      "boardPreview": "Táblaelőnézet. Bábuk a táblán: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

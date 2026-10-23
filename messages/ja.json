@@ -981,10 +981,24 @@
         "gain": "最大 <num>+{value}</num>",
         "loss": "最大 <num>−{value}</num>",
         "announce": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。失敗した場合は最大 −{loss}。",
-        "announceProvisional": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。"
+        "announceProvisional": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。",
+        "summary": "盤面 {board} · 予想 {expected}%",
+        "details": "レーティングの詳細"
       },
       "blindfold": "目隠し",
-      "blindfoldHint": "盤上に駒を置かず、局面を棋譜表記で覚えます。"
+      "blindfoldHint": "盤上に駒を置かず、局面を棋譜表記で覚えます。",
+      "presetShort": {
+        "easy": "やさしい",
+        "medium": "ふつう",
+        "hard": "むずかしい",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "駒を減らす",
+      "morePieces": "駒を増やす",
+      "lessTime": "記憶時間を短く",
+      "moreTime": "記憶時間を長く",
+      "boardPreview": "盤面プレビュー。盤上の駒: {count}",
+      "summarySetting": "{preset}、{setting}"
     },
     "presets": {
       "easy": {

@@ -981,10 +981,24 @@
         "gain": "Hasta <num>+{value}</num>",
         "loss": "Como máximo <num>−{value}</num>",
         "announce": "Puntuación del tablero {board}. Tu puntuación {rating}. Precisión esperada {expected} %. Si lo superas, hasta +{gain}. Si fallas, como máximo −{loss}.",
-        "announceProvisional": "Puntuación del tablero {board}. Tu puntuación {rating}. Precisión esperada {expected} %. Si lo superas, hasta +{gain}."
+        "announceProvisional": "Puntuación del tablero {board}. Tu puntuación {rating}. Precisión esperada {expected} %. Si lo superas, hasta +{gain}.",
+        "summary": "Tablero {board} · se espera {expected} %",
+        "details": "Detalles de la puntuación"
       },
       "blindfold": "A ciegas",
-      "blindfoldHint": "Estudia la posición en notación, sin piezas en el tablero."
+      "blindfoldHint": "Estudia la posición en notación, sin piezas en el tablero.",
+      "presetShort": {
+        "easy": "Fácil",
+        "medium": "Medio",
+        "hard": "Difícil",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Menos piezas",
+      "morePieces": "Más piezas",
+      "lessTime": "Menos tiempo de memorización",
+      "moreTime": "Más tiempo de memorización",
+      "boardPreview": "Vista previa del tablero. Piezas en el tablero: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

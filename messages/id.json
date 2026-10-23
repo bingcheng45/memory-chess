@@ -981,10 +981,24 @@
         "gain": "Hingga <num>+{value}</num>",
         "loss": "Paling banyak <num>−{value}</num>",
         "announce": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}. Jika kamu gagal, paling banyak −{loss}.",
-        "announceProvisional": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}."
+        "announceProvisional": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}.",
+        "summary": "Papan {board} · perkiraan {expected}%",
+        "details": "Detail rating"
       },
       "blindfold": "Tutup mata",
-      "blindfoldHint": "Pelajari posisi sebagai notasi, tanpa bidak di papan."
+      "blindfoldHint": "Pelajari posisi sebagai notasi, tanpa bidak di papan.",
+      "presetShort": {
+        "easy": "Mudah",
+        "medium": "Sedang",
+        "hard": "Sulit",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Lebih sedikit bidak",
+      "morePieces": "Lebih banyak bidak",
+      "lessTime": "Waktu menghafal lebih singkat",
+      "moreTime": "Waktu menghafal lebih lama",
+      "boardPreview": "Pratinjau papan. Bidak di papan: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

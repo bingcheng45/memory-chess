@@ -981,10 +981,24 @@
         "gain": "Tot <num>+{value}</num>",
         "loss": "Hooguit <num>−{value}</num>",
         "announce": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}. Als het misgaat, hooguit −{loss}.",
-        "announceProvisional": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}."
+        "announceProvisional": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}.",
+        "summary": "Bord {board} · verwacht {expected}%",
+        "details": "Ratingdetails"
       },
       "blindfold": "Blind",
-      "blindfoldHint": "Bestudeer de stelling als notatie, zonder stukken op het bord."
+      "blindfoldHint": "Bestudeer de stelling als notatie, zonder stukken op het bord.",
+      "presetShort": {
+        "easy": "Makkelijk",
+        "medium": "Middel",
+        "hard": "Moeilijk",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Minder stukken",
+      "morePieces": "Meer stukken",
+      "lessTime": "Minder kijktijd",
+      "moreTime": "Meer kijktijd",
+      "boardPreview": "Voorbeeld van het bord. Stukken op het bord: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {

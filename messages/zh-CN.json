@@ -981,10 +981,24 @@
         "gain": "最多 <num>+{value}</num>",
         "loss": "最多 <num>−{value}</num>",
         "announce": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。如果失手，最多 −{loss}。",
-        "announceProvisional": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。"
+        "announceProvisional": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。",
+        "summary": "棋盘 {board} · 预计 {expected}%",
+        "details": "评分详情"
       },
       "blindfold": "盲棋",
-      "blindfoldHint": "以记谱方式记住局面，棋盘上不摆棋子。"
+      "blindfoldHint": "以记谱方式记住局面，棋盘上不摆棋子。",
+      "presetShort": {
+        "easy": "简单",
+        "medium": "中等",
+        "hard": "困难",
+        "grandmaster": "特大"
+      },
+      "fewerPieces": "减少棋子",
+      "morePieces": "增加棋子",
+      "lessTime": "缩短记忆时间",
+      "moreTime": "延长记忆时间",
+      "boardPreview": "棋盘预览。棋盘上的棋子：{count}",
+      "summarySetting": "{preset}，{setting}"
     },
     "presets": {
       "easy": {

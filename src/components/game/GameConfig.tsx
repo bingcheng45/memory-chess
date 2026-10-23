@@ -202,10 +202,10 @@ export default function GameConfig({ onStart }: GameConfigProps) {
               data-preset={preset.id}
               data-name={t(`presets.${preset.id}.label`)}
               data-description={t(`presets.${preset.id}.description`)}
+              data-short={t(`config.presetShort.${preset.id}`)}
               suppressHydrationWarning
             >
               <span className="lab-preset-name">{t(`presets.${preset.id}.label`)}</span>
-              <span className="lab-preset-short" aria-hidden="true">{t(`config.presetShort.${preset.id}`)}</span>
             </button>
           ))}
         </div>

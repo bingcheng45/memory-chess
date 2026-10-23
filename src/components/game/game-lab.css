@@ -122,11 +122,13 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-preset:hover { border-color: var(--lp-ink-2); }
 .lab-game .lab-preset[aria-pressed="true"] { background: var(--lp-accent-soft); border-color: var(--lp-accent); box-shadow: inset 0 0 0 1px var(--lp-accent); }
 .lab-game .lab-preset:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
-.lab-game .lab-preset-short { display: none; }
+/* A phone shows the short label as generated content, so the page text and the button's name keep the full one. */
 @media (max-width: 480px) {
   .lab-game .lab-preset { font-size: 14px; }
   .lab-game .lab-preset-name { display: none; }
-  .lab-game .lab-preset-short { display: inline; }
+  .lab-game .lab-preset::after { content: attr(data-short); }
+  /* Two lines held for every preset's description, so picking one never moves the board under the finger. */
+  .lab-game .lab-config-description { min-height: 3.1em; }
 }
 
 /* The board is the control: its first --count pieces show, and the ring around it fills clockwise to --study. */

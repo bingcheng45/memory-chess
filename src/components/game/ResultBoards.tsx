@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { RoundBoard } from "@/components/round/RoundBoard";
 import { OverlayLegend } from "@/components/round/ReadoutCard";
@@ -16,14 +17,27 @@ const SIDES = [
   { lens: "target", caption: "position", label: "positionLabel" },
 ] as const satisfies readonly { lens: ScoredLens; caption: string; label: string }[];
 
+type ScoredRound = Extract<RoundState, { phase: "scored" }>;
+
+// A perfect round's two boards match, and an empty one leaves yours blank: side by side has nothing to compare.
+const nothingToCompare = ({ score, placed }: ScoredRound) => score.wrong === 0 || Object.keys(placed).length === 0;
+
 interface ResultBoardsProps {
-  readonly round: Extract<RoundState, { phase: "scored" }>;
+  readonly round: ScoredRound;
   readonly view: ResultView;
   readonly onViewChange: (view: ResultView) => void;
 }
 
-export default function ResultBoards({ round, view, onViewChange }: ResultBoardsProps) {
+export default function ResultBoards({ round, view: preferred, onViewChange }: ResultBoardsProps) {
   const t = useTranslations("game.comparison");
+  const [picked, setPicked] = useState<ResultView | null>(null);
+  const view = picked ?? (nothingToCompare(round) ? "overlay" : preferred);
+
+  const pick = (option: ResultView) => {
+    if (option === view) return;
+    setPicked(option);
+    onViewChange(option);
+  };
 
   return (
     <figure data-result-board="scored" data-result-view={view} className="lab-plate lab-plate-grid lab-result-board">
@@ -36,7 +50,7 @@ export default function ResultBoards({ round, view, onViewChange }: ResultBoards
               type="button"
               className="lab-view-option"
               aria-pressed={view === option}
-              onClick={() => onViewChange(option)}
+              onClick={() => pick(option)}
             >
               {t(`view.${option}`)}
             </button>

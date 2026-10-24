@@ -2,9 +2,8 @@
 
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
-import { INTRO_MARK } from "@/lib/home/intro/introGate";
+import { INTRO_MARK, INTRO_REPLAY_EVENT } from "@/lib/home/intro/introGate";
 import { captionAt, counterAt, INTRO_SECONDS, nextBeatTime, type CaptionId } from "@/lib/home/intro/introBeats";
-import { INTRO_SEEN_KEY } from "@/lib/lab/storage";
 import type { SimulScene } from "./simulScene";
 
 const CAPTIONS: readonly CaptionId[] = ["one", "many", "dark", "you"];
@@ -31,14 +30,6 @@ function coveredBy(layer: Element): Element[] {
   }
   return covered;
 }
-
-const hasSeen = () => {
-  try {
-    return window.localStorage.getItem(INTRO_SEEN_KEY) !== null;
-  } catch {
-    return false;
-  }
-};
 
 interface Playback {
   readonly jump: () => void;
@@ -112,7 +103,7 @@ function play(canvas: HTMLCanvasElement, onTime: (t: number) => void, onDone: ()
 }
 
 /**
- * The 45-board intro: plays on its own when the gate marked its script, and again from the replay chip. While it plays,
+ * The 45-board intro: plays on its own when the gate marked its script, and again from the hero's replay link. While it plays,
  * Skip holds focus and the page under the layer is inert. A tap, a jump key, a scroll or a swipe moves to the next beat.
  */
 export function IntroLayer() {
@@ -121,26 +112,22 @@ export function IntroLayer() {
   const canvas = useRef<HTMLCanvasElement>(null);
   const bar = useRef<HTMLSpanElement>(null);
   const skip = useRef<HTMLButtonElement>(null);
-  const replay = useRef<HTMLButtonElement>(null);
   const jump = useRef(() => {});
-  const replayed = useRef(false);
+  /** Where focus was when a replay started, so it can go back there. */
+  const returnFocus = useRef<HTMLElement | null>(null);
   const [phase, setPhase] = useState<Phase>("idle");
   const [caption, setCaption] = useState<CaptionId>("one");
   const [boards, setBoards] = useState(1);
   const [dark, setDark] = useState(false);
-  const [canReplay, setCanReplay] = useState(false);
-  const [nearTop, setNearTop] = useState(true);
 
   useEffect(() => {
     if (document.querySelector(`script[${INTRO_MARK}]`)) setPhase("playing");
-    else setCanReplay(hasSeen());
-  }, []);
-
-  useEffect(() => {
-    const onScroll = () => setNearTop(window.scrollY < window.innerHeight / 2);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+    const onReplay = () => {
+      returnFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      setPhase((current) => (current === "idle" ? "playing" : current));
+    };
+    window.addEventListener(INTRO_REPLAY_EVENT, onReplay);
+    return () => window.removeEventListener(INTRO_REPLAY_EVENT, onReplay);
   }, []);
 
   useEffect(() => {
@@ -209,13 +196,14 @@ export function IntroLayer() {
     const timer = window.setTimeout(() => {
       document.querySelector(`script[${INTRO_MARK}]`)?.removeAttribute(INTRO_MARK);
       setPhase("idle");
-      setCanReplay(true);
     }, FADE_MS);
     return () => window.clearTimeout(timer);
   }, [phase]);
 
   useEffect(() => {
-    if (phase === "idle" && replayed.current) replay.current?.focus({ preventScroll: true });
+    if (phase !== "idle" || !returnFocus.current) return;
+    returnFocus.current.focus({ preventScroll: true });
+    returnFocus.current = null;
   }, [phase]);
 
   const onLayerClick = (event: MouseEvent) => {
@@ -247,18 +235,6 @@ export function IntroLayer() {
           <span ref={bar} />
         </span>
       </section>
-      <button
-        ref={replay}
-        type="button"
-        className="home-intro-replay"
-        hidden={!canReplay || phase !== "idle" || !nearTop}
-        onClick={() => {
-          replayed.current = true;
-          setPhase("playing");
-        }}
-      >
-        <span aria-hidden="true">▶</span> {t("replay")}
-      </button>
     </>
   );
 }

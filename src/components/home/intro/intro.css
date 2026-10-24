@@ -131,23 +131,21 @@ html:has(.home-intro[data-phase="playing"]) { overflow: hidden; }
   transform-origin: left;
 }
 
-.home-intro-replay {
-  position: fixed;
-  left: max(16px, env(safe-area-inset-left));
-  bottom: max(16px, env(safe-area-inset-bottom));
-  z-index: 40;
+/* The replay link under the hero's buttons, styled as the hero's other text links. */
+.lab-paper .lab-intro-replay { margin: 12px 0 0; }
+
+.lab-paper .lab-intro-replay button {
   min-height: 44px;
-  padding: 0 16px;
+  padding: 0;
   border: 0;
-  border-radius: 999px;
-  background: #16120f;
-  color: #f4efea;
-  font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
-  font-size: 14px;
+  background: none;
+  color: var(--lp-accent);
+  font: inherit;
+  font-size: 15px;
   font-weight: 600;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
   cursor: pointer;
 }
 
-.home-intro-replay[hidden] { display: none; }
-.home-intro-replay:focus-visible { outline: 2px solid var(--intro-accent); outline-offset: 3px; }
+.lab-paper .lab-intro-replay button:hover { color: var(--lp-accent-hover); text-decoration: underline; text-underline-offset: 3px; }
+.lab-paper .lab-intro-replay button:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; border-radius: 4px; }
+.lab-paper .lab-intro-replay span { font-size: 0.8em; margin-right: 2px; }

@@ -23,8 +23,4 @@ describe("the intro shell server render", () => {
       '<p class="home-intro-caption" data-on="true" aria-hidden="false">One board. <em>You can see it.</em><small>Morphy&#x27;s Opera Game, Paris, 1858. Every move is real.</small></p>',
     );
   });
-
-  it("keeps the replay chip hidden until the browser says the intro was seen", () => {
-    expect(html).toContain('<button type="button" class="home-intro-replay" hidden=""><span aria-hidden="true">▶</span> <!-- -->Najdorf&#x27;s 45 boards</button>');
-  });
 });

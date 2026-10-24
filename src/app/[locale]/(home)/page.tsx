@@ -1,9 +1,8 @@
 import { BrainLabHome } from "@/components/home/BrainLabHome";
 import { IntroShell } from "@/components/home/intro/IntroShell";
 import { RECORD_HINT } from "@/components/home/recordHint";
+import { HOME_INTRO } from "@/lib/home/intro/introGate";
 import { getTotalPlays } from "@/lib/services/totalPlays";
-
-const HOME_INTRO = process.env.NEXT_PUBLIC_HOME_INTRO === "1";
 
 export default async function Home() {
   const plays = await getTotalPlays();

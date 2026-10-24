@@ -1,19 +1,20 @@
 import { act, fireEvent, render, screen } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 import { IntroLayer } from "@/components/home/intro/IntroLayer";
+import { IntroReplayLink } from "@/components/home/intro/IntroReplayLink";
 import messages from "../../../../../messages/en.json";
 
 const draw = jest.fn();
 jest.mock("@/components/home/intro/simulScene", () => ({ createScene: () => ({ resize: () => {}, draw }) }));
 
-function homePage({ marked, seen = false }: { marked: boolean; seen?: boolean }) {
-  if (seen) window.localStorage.setItem("memory-chess-home-intro-seen", "1");
+function homePage({ marked }: { marked: boolean }) {
   const gate = document.createElement("script");
   if (marked) gate.setAttribute("data-home-intro", "");
   document.body.append(gate);
   render(
     <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
       <button type="button">Play</button>
+      <IntroReplayLink />
       <IntroLayer />
     </NextIntlClientProvider>,
   );
@@ -22,7 +23,7 @@ function homePage({ marked, seen = false }: { marked: boolean; seen?: boolean })
     page: screen.getByRole("button", { name: "Play", hidden: true }),
     layer: screen.getByRole("region", { name: "The 45-board intro", hidden: true }),
     skip: screen.getByRole("button", { name: "Skip intro", hidden: true }),
-    replay: document.querySelector<HTMLButtonElement>(".home-intro-replay")!,
+    replay: screen.getByRole("button", { name: "Najdorf's 45 boards", hidden: true }),
   };
 }
 
@@ -61,15 +62,14 @@ describe("the intro on a first visit", () => {
     expect(screen.getByText("45 boards · none seen")).toBeTruthy();
   });
 
-  it("ends by itself after ten seconds and a fade, giving the page back and offering a replay", async () => {
-    const { gate, layer, page, replay } = homePage({ marked: true });
+  it("ends by itself after ten seconds and a fade, giving the page back", async () => {
+    const { gate, layer, page } = homePage({ marked: true });
     await advance(10_100);
     expect(layer.dataset.phase).toBe("ending");
     await advance(400);
     expect(layer.dataset.phase).toBeUndefined();
     expect(gate.hasAttribute("data-home-intro")).toBe(false);
     expect(page.hasAttribute("inert")).toBe(false);
-    expect(replay.hidden).toBe(false);
   });
 
   it("ends early on Skip or Escape", async () => {
@@ -114,22 +114,21 @@ describe("a swipe on a phone", () => {
   });
 });
 
-describe("the replay chip", () => {
-  it("stays away on a first visit the gate skipped", async () => {
-    const { layer, replay } = homePage({ marked: false });
+describe("the hero's replay link", () => {
+  it("leaves the intro alone until it is pressed", async () => {
+    const { layer } = homePage({ marked: false });
     await advance(100);
     expect(layer.dataset.phase).toBeUndefined();
-    expect(replay.hidden).toBe(true);
   });
 
-  it("plays the intro again for a visitor who has seen it, then hands focus back to the chip", async () => {
-    const { layer, replay } = homePage({ marked: false, seen: true });
+  it("plays the intro again, then hands focus back to the link", async () => {
+    const { layer, replay } = homePage({ marked: false });
     await advance(100);
-    expect(replay.hidden).toBe(false);
+    replay.focus();
     fireEvent.click(replay);
     await advance(100);
     expect(layer.dataset.phase).toBe("playing");
-    expect(replay.hidden).toBe(true);
+    expect(replay.hasAttribute("inert") || replay.closest("[inert]") !== null).toBe(true);
     fireEvent.keyDown(window, { key: "Escape" });
     await advance(400);
     expect(layer.dataset.phase).toBeUndefined();

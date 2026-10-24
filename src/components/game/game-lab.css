@@ -1,31 +1,122 @@
 /* /game in the Lab Paper shell. The round's own rules are components/round/round.css; these fit it to the pinned
-   layout, where ActiveGameLayout fixes the rows' heights and hands the board an exact size. */
+   layout, where the board takes an exact size from the room the round's fixed rows leave. */
 
-/* While pinned, globals.css makes body a fixed flex column. The page's block is its flex item and passes the column
-   on, so main takes what the banner and the header leave. The shell's visible root overflow is for its sticky
-   header, and nothing scrolls the document while pinned. */
+/* While pinned, globals.css makes body a fixed flex column and hides the banner and the header. The page's block is
+   its flex item and passes the column on, so main takes the whole screen. The shell's visible root overflow is for
+   its sticky header, and nothing scrolls the document while pinned. */
 body.game-fixed .lab-game { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
 html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow-x: hidden; }
 
-/* The board's side, from the figures ActiveGameLayout sets on the column: the largest square the column fits under
-   both rows. A browser without container units (Safari before 16, Chrome before 105, Firefox before 110) keeps the
-   custom property whatever it holds and then fails every width that reads it, so it gets the viewport-based size below. */
-.lab-active-column { --board-size: min(100cqw, 100cqh - var(--board-rows), var(--board-max)); }
+/* The active round: the status row (leave, phase, clock, restart, eraser, meter), the board, and the controls (the
+   palette and the phase's primary button), in one of two layouts named by grid areas.
+
+     stack  "status" / "board" / "controls"            the default: a phone, a tablet, any tall screen
+     panel  "board status" / "board controls"          wide and short: a phone on its side, a laptop
+
+   Every row and the panel are fixed sizes, so the board never moves between phases. Sized by their contents, a
+   phase change or a longer translation moved the board, and on iOS the change in page height made Safari collapse
+   its toolbar, which resized the board on top of that.
+
+   The board's side uses container units rather than a measured size, so it is right on the first painted frame:
+   measured, the size lived in React state, and on a slow phone the update after the first commit reached the screen
+   frames late, painting the board at zero. --cw and --ch are the column's size; they stay unresolved tokens until a
+   descendant reads them, so they resolve against the column, the descendants' container. Each layout floors the
+   board at --board-min: a viewport too short for it overflows, and main scrolls to it, rather than the board being
+   crushed. --board-min, --board-max and --row-min come from src/lib/layout.ts through ActiveGameLayout. */
+.lab-game .lab-active-page { --page-pad-x: 8px; --page-pad-y: 6px; padding: var(--page-pad-y) var(--page-pad-x); }
+.lab-active-column {
+  container-type: size;
+  display: grid;
+  align-content: start;
+  width: 100%;
+  height: 100%;
+  --cw: 100cqw;
+  --ch: 100cqh;
+  --gap: 8px;
+  --status-h: 48px;
+  --meter-h: 4px;
+  --controls-h: 84px;
+  --primary-w: 76px;
+  --board-size: min(var(--cw), max(var(--board-min), var(--ch) - var(--status-h) - var(--meter-h) - 2 * var(--gap) - var(--controls-h)), var(--board-max));
+}
+/* Safari before 16, Chrome before 105 and Firefox before 110 keep a custom property whatever it holds and then fail
+   every width that reads it. Focus mode leaves nothing on the page but its padding, so the viewport stands in. */
 @supports not (width: 1cqw) {
-  .lab-active-column {
-    --board-size: min(100vw - var(--page-gutters), max(var(--board-min), 100vh - var(--page-chrome) - var(--board-rows)), var(--board-max));
-  }
+  .lab-active-column { --cw: calc(100vw - 2 * var(--page-pad-x)); --ch: calc(100vh - 2 * var(--page-pad-y)); }
 }
 
-.lab-game [data-round-board] { flex: none; }
+/* stack. The rows are held to the board's width so the controls line up with the squares they act on, down to
+   --row-min, where the status row's contents stop fitting. The group sits at the top with spare height under it, not
+   above: an in-app browser sheet, ChatGPT's, lays the page out taller than it shows and floats its toolbar over the
+   bottom, so space above pushed the palette out of reach. */
+.lab-active-round {
+  display: grid;
+  grid-template-columns: max(var(--board-size), min(var(--row-min), 100%));
+  grid-template-rows: calc(var(--status-h) + var(--meter-h)) var(--board-size) auto;
+  grid-template-areas: "status" "board" "controls";
+  gap: var(--gap);
+  justify-content: center;
+}
+.lab-active-status { grid-area: status; display: grid; grid-template-columns: 40px minmax(0, 1fr) auto 40px 40px; grid-template-rows: var(--status-h) var(--meter-h); grid-template-areas: "leave head clock restart clear" "meter meter meter meter meter"; column-gap: 6px; align-items: center; }
+.lab-active-board { grid-area: board; justify-self: center; width: var(--board-size); height: var(--board-size); }
+.lab-active-controls { grid-area: controls; container: round-controls / inline-size; }
+
+/* The status row's pieces, laid out by its grid areas rather than by the shared head's own boxes. */
+.lab-active-status .lab-cal-head, .lab-active-status .lab-cal-head-end { display: contents; }
+.lab-active-status .lab-leave { grid-area: leave; }
+.lab-active-status .lab-cal-head .lab-k { grid-area: head; display: -webkit-box; min-height: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; font-size: 13px; line-height: 1.15; }
+.lab-active-status [role="timer"] { grid-area: clock; }
+.lab-active-status .lab-cal-head-end .lab-mono { font-size: 17px; }
+.lab-active-status .lab-restart { grid-area: restart; }
+.lab-active-status .lab-cal-head-end > :last-child { grid-area: clear; }
+.lab-active-status .lab-meter { grid-area: meter; margin: 0; }
+.lab-active-status .lab-icon-btn { padding: 0 !important; }
+
+/* The palette as a white row over a black row beside a tall primary button, or one row of twelve where each piece
+   still gets 40px. The single row's button is short, so it takes the width the gaps give up to keep the longest
+   labels ("Ukryj szachownicę") to two lines: 12 x 40 + 11 x 2 + 6 + 92 = 600px. */
+.lab-game-controls { display: grid; grid-template-columns: minmax(0, 1fr) var(--primary-w); grid-template-areas: "palette primary"; column-gap: var(--gap); height: var(--controls-h); }
+.lab-game-controls .lab-palette { grid-area: palette; margin: 0; grid-auto-rows: minmax(0, 1fr); gap: 4px; }
+.lab-game-controls .lab-palette button { height: auto; min-height: 0; max-height: none; aspect-ratio: auto; }
+.lab-game-controls .lab-primary-slot { grid-area: primary; height: 100%; min-height: 0; padding: 4px !important; font-size: 14px; line-height: 1.2; white-space: normal; overflow-wrap: anywhere; hyphens: auto; }
+@container round-controls (min-width: 600px) {
+  .lab-game-controls { --primary-w: 92px; height: 44px; column-gap: 6px; }
+  .lab-game-controls .lab-palette { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2px; }
+  .lab-game-controls .lab-primary-slot { padding: 2px 4px !important; font-size: 13px; line-height: 1.15; }
+}
+
+/* panel. Below the board the stack spends 152px of height; beside it the panel spends 276px of width (260 + 16). Until
+   either reaches the 600px cap, the panel seats the bigger board once the viewport is more than 128px wider than it
+   is tall. A media query cannot subtract, so the rule picks ratios that guarantee that margin: 6/5 from 768px wide
+   (768 / 6 = 128) and 4/3 from 560px (560 / 4 = 140). 560px takes in a 568 x 320 phone on its side and is about the
+   narrowest that seats the panel beside a board above the floor. */
+@media (min-aspect-ratio: 6/5) and (min-width: 768px), (min-aspect-ratio: 4/3) and (min-width: 560px) {
+  .lab-active-column {
+    --panel-min: 260px;
+    --panel-max: 340px;
+    --panel-gap: 16px;
+    align-content: center;
+    --board-size: min(max(var(--board-min), var(--ch)), var(--cw) - var(--panel-min) - var(--panel-gap), var(--board-max));
+  }
+  .lab-active-round {
+    grid-template-columns: var(--board-size) min(var(--panel-max), var(--cw) - var(--board-size) - var(--panel-gap));
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas: "board status" "board controls";
+    gap: 12px var(--panel-gap);
+    height: var(--board-size);
+  }
+  .lab-active-status { grid-template-columns: 40px minmax(0, 1fr) 40px 40px; grid-template-rows: var(--status-h) 40px var(--meter-h); grid-template-areas: "leave head restart clear" "clock clock clock clock" "meter meter meter meter"; row-gap: 4px; }
+  .lab-active-status [role="timer"] { justify-self: start; }
+  .lab-active-status .lab-cal-head-end .lab-mono { font-size: 32px; }
+  .lab-active-status .lab-cal-head-end [role="timer"] > span { block-size: 40px; line-height: 40px; text-align: start; }
+  .lab-active-status .lab-cal-head .lab-k { font-size: 14px; line-height: 1.3; }
+  .lab-game-controls { height: 100%; grid-template-columns: minmax(0, 1fr); grid-template-rows: 92px minmax(0, 1fr); grid-template-areas: "palette" "primary"; row-gap: 12px; }
+  .lab-game-controls .lab-primary-slot { align-self: end; height: 52px; font-size: 16px; }
+}
+
 .lab-game [data-round-board] .lab-figure { height: 100%; padding: 16px; }
 .lab-game [data-round-board] .lab-files { left: 16px; right: 16px; bottom: 1px; }
 .lab-game [data-round-board] .lab-ranks { top: 16px; bottom: 16px; left: 3px; }
-
-.lab-game .lab-cal-head { padding: 0 0 8px; }
-.lab-game .lab-meter { margin: 0; }
-.lab-game .lab-palette { margin-top: 0; }
-.lab-game .lab-palette button { aspect-ratio: auto; height: 44px; max-height: none; }
 
 /* result screen */
 .lab-game .lab-result { max-width: 1000px; }

@@ -350,11 +350,15 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 .lab-game .lab-preset:hover { border-color: var(--lp-ink-2); }
 .lab-game .lab-preset[aria-pressed="true"] { background: var(--lp-accent-soft); border-color: var(--lp-accent); box-shadow: inset 0 0 0 1px var(--lp-accent); }
 .lab-game .lab-preset:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
-/* A phone shows the short label as generated content, so the page text and the button's name keep the full one. */
-@media (max-width: 480px) {
+/* A narrow row shows the short label as generated content, so the page text and the button's name keep the full one.
+   It keys off the row's own width: the split setup's settings column is as narrow as a phone on a window 800px wide. */
+.lab-game .lab-config-presets-group { container: config-presets / inline-size; }
+@container config-presets (max-width: 360px) {
   .lab-game .lab-preset { font-size: 14px; }
   .lab-game .lab-preset-name { display: none; }
   .lab-game .lab-preset::after { content: attr(data-short); }
+}
+@media (max-width: 480px) {
   /* Two lines held for every preset's description, so picking one never moves the board under the finger. */
   .lab-game .lab-config-description { min-height: 3.1em; }
 }
@@ -423,8 +427,12 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 
 @media (min-aspect-ratio: 4/3) and (min-width: 560px) {
   .lab-game .lab-config {
-    /* As large as the card's height allows on the first screen, between a floor that still reads as a board and the 480px past which it only crowds the settings. */
-    --setup-board: clamp(160px, 100svh - var(--chrome-h) - var(--scroll-pad-y) - 2 * var(--config-pad), 480px);
+    /* As large as the card's height allows on the first screen, between a floor that still reads as a board and the 480px past which it only crowds the settings.
+       The width term keeps the settings column wide enough for four presets and two steppers: sized from height alone, a
+       short-and-narrow window (800 x 600) handed the board so much width that the stepper values collapsed to nothing.
+       100vw - 32px is the card's width inside the page's side padding; 336px is the column, with room for a scrollbar. */
+    --setup-settings-min: 336px;
+    --setup-board: clamp(160px, min(100svh - var(--chrome-h) - var(--scroll-pad-y) - 2 * var(--config-pad), min(100vw - 32px, 1040px) - 2 * var(--config-pad) - var(--setup-settings-min) - clamp(24px, 4vw, 40px)), 480px);
     display: grid;
     grid-template-columns: var(--setup-board) repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(8, auto);

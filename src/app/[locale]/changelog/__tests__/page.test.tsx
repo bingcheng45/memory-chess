@@ -91,7 +91,7 @@ describe("ChangelogPage", () => {
     const links = within(index).getAllByRole("link");
     expect(links).toHaveLength(CHANGELOG_ENTRIES.length);
     expect(links[0]).toHaveAttribute("href", "#v2-0-3");
-    expect(links[0]).toHaveTextContent("v2.0.3October 25, 2026A game that fits your screen, and a rank for every score");
+    expect(links[0]).toHaveTextContent("v2.0.3October 25, 2026A board that fits your screen, and your rank on every score");
     expect(within(links[0]).getByText("October 25, 2026")).toHaveAttribute("datetime", "2026-10-25T00:00:00.000+08:00");
     expect(links.map((link) => link.getAttribute("href"))).toEqual(
       CHANGELOG_ENTRIES.map((entry) => `#v${entry.version.replaceAll(".", "-")}`),

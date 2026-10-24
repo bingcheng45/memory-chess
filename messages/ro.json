@@ -1152,6 +1152,7 @@
       "intro": "Memorează {count, plural, one {# piesă} few {# piese} other {# de piese}} timp de {seconds} s, apoi refă poziția din memorie.",
       "hide": "Ascunde tabla",
       "restart": "Reîncepe",
+      "leave": "Părăsește runda",
       "again": "Joacă din nou",
       "submit": "Trimite",
       "clear": "Golește tabla",

@@ -41,4 +41,23 @@ describe("GamePage new game after a round", () => {
     expect(screen.getByLabelText("Number of pieces")).toHaveTextContent("12");
     expect(screen.getByLabelText("Memorization time")).toHaveTextContent("8s");
   });
+
+  it.each([
+    ["study", () => {}],
+    ["rebuild", () => fireEvent.click(screen.getByRole("button", { name: "Hide board" }))],
+  ])("leaves a round in %s for the configuration, unscored", (phase, reach) => {
+    render(<GamePage />);
+    fireEvent.click(screen.getByRole("button", { name: "Start round" }));
+    act(() => useGameStore.getState().endCountdown());
+    reach();
+    const before = useGameStore.getState().round.phase;
+    const rounds = useGameStore.getState().history.length;
+
+    fireEvent.click(screen.getByRole("button", { name: "Leave the round" }));
+
+    expect(before).toBe(phase);
+    expect(useGameStore.getState().round.phase).toBe("idle");
+    expect(useGameStore.getState().history).toHaveLength(rounds);
+    expect(screen.getByRole("button", { name: "Start round" })).toBeEnabled();
+  });
 });

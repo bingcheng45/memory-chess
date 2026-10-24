@@ -1152,6 +1152,7 @@
       "intro": "用 {seconds} 秒记住 {count} 枚棋子，然后凭记忆还原局面。",
       "hide": "隐藏棋盘",
       "restart": "重新开始",
+      "leave": "退出本局",
       "again": "再玩一次",
       "submit": "提交",
       "clear": "清空棋盘",

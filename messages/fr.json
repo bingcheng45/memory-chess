@@ -1152,6 +1152,7 @@
       "intro": "Mémorisez {count, plural, one {# pièce} many {# de pièces} other {# pièces}} pendant {seconds} s, puis reconstituez la position de mémoire.",
       "hide": "Masquer l’échiquier",
       "restart": "Recommencer",
+      "leave": "Quitter la manche",
       "again": "Rejouer",
       "submit": "Valider",
       "clear": "Vider l’échiquier",

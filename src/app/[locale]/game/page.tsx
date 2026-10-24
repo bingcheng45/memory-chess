@@ -276,6 +276,9 @@ function GamePageContent() {
     stopTimerSound(); // Stop any playing timer sound
     playSound('click');
     setSavingDaily(false);
+    // The link's round is spent; still held, it would keep the page blank where the form goes.
+    urlRoundRef.current = null;
+    setUrlRound(null);
     resetGame();
   };
 
@@ -287,15 +290,13 @@ function GamePageContent() {
 
   const renderGameContent = () => {
     const containerClass = "w-full max-w-4xl mx-auto flex flex-col items-center justify-center";
-    // `flex-1` without `min-h-0`: the wrapper still takes the leftover
-    // height, but no longer shrinks below what ActiveGameLayout says the
-    // board needs. On a viewport too short for that floor it overflows, and
-    // `main` below scrolls to it.
-    const activePhaseClass = `${containerClass} flex-1`;
+    // Full width, unlike the scrolling pages: the side panel and the split layout place the board against the
+    // viewport's own edges. `main` below scrolls to a round too tall for a short viewport.
+    const activePhaseClass = 'flex w-full flex-1 flex-col items-center justify-center';
     const activeRound = (playing: ActiveRoundState, gate: GateFacts | null) => (
       <div className={activePhaseClass}>
         <ErrorBoundary>
-          <ActiveRound round={playing} gate={gate} onStart={handleStart} onRestart={handleTryAgain} onSubmit={handleSubmitSolution} />
+          <ActiveRound round={playing} gate={gate} onStart={handleStart} onRestart={handleTryAgain} onSubmit={handleSubmitSolution} onLeave={handleNewGame} />
         </ErrorBoundary>
       </div>
     );
@@ -386,8 +387,8 @@ function GamePageContent() {
           overflows this box and `main` above scrolls to it.
         */}
         <div
-          className={`container mx-auto flex flex-col items-center justify-start ${
-            isActivePhase ? 'h-full px-4 py-2' : `${PAGE_BELOW_BANNER_MIN_HEIGHT} px-4 py-8 sm:py-12`
+          className={`mx-auto flex flex-col items-center justify-start ${
+            isActivePhase ? 'lab-active-page h-full w-full' : `container ${PAGE_BELOW_BANNER_MIN_HEIGHT} px-4 py-8 sm:py-12`
           }`}
         >
           <ErrorBoundary>

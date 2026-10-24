@@ -1152,6 +1152,7 @@
       "intro": "Se på {count, plural, one {# brik} other {# brikker}} i {seconds} s, og genopbyg så stillingen efter hukommelsen.",
       "hide": "Skjul brættet",
       "restart": "Forfra",
+      "leave": "Forlad runden",
       "again": "Spil igen",
       "submit": "Send",
       "clear": "Ryd brættet",

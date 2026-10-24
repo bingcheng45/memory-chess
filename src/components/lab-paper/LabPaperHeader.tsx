@@ -145,7 +145,7 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
   const currentOf = (href: string) => (isCurrent(pathname, href) ? ("page" as const) : undefined);
 
   return (
-    <header className="lab-header">
+    <header className="lab-header" data-site-chrome>
       <div className="lab-wrap" ref={menu.rootRef}>
         <div className="lab-header-row">
           <Link className="lab-wordmark" href="/">

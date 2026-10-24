@@ -156,6 +156,15 @@ describe("the calibration round controls", () => {
     expect(screen.getByRole("button", { name: "Clear board" })).toBeDisabled();
   });
 
+  it("keeps both buttons under the palette, and only the eraser beside the clock", async () => {
+    renderWithIntl(<CalibrationSection />);
+    await startRound();
+    fireEvent.click(controls().getByRole("button", { name: "Hide board" }));
+
+    expect(buttonState()).toEqual([["Restart", false], ["Submit reading", false]]);
+    expect(Array.from(document.querySelectorAll(".lab-cal-head button"), (button) => button.getAttribute("aria-label"))).toEqual(["Clear board"]);
+  });
+
   it("swaps Start for Hide board while studying, with Submit still disabled", async () => {
     renderWithIntl(<CalibrationSection />);
     await startRound();

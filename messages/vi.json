@@ -1152,6 +1152,7 @@
       "intro": "Ghi nhớ {count} quân trong {seconds} giây, rồi xếp lại thế cờ theo trí nhớ.",
       "hide": "Ẩn bàn cờ",
       "restart": "Làm lại",
+      "leave": "Rời ván",
       "again": "Chơi lại",
       "submit": "Gửi",
       "clear": "Xóa bàn cờ",

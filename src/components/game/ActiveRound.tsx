@@ -7,7 +7,7 @@ import { useGameStore } from '@/lib/store/gameStore';
 import type { RoundState } from '@/lib/round/round';
 import { ROUND_CONTROLS } from '@/lib/round/controls';
 import { RefusalAnnouncement, RoundBoard, RoundPalette } from '@/components/round/RoundBoard';
-import { RoundControls } from '@/components/round/RoundControls';
+import { RoundPrimaryControl, RoundRestartControl } from '@/components/round/RoundControls';
 import { StudyNotation } from '@/components/round/StudyNotation';
 import { clockFace, RoundHead } from '@/components/round/RoundHead';
 import { useCountdown } from '@/components/round/useCountdown';
@@ -48,6 +48,7 @@ export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit,
   const controlsPhase = round.phase === 'idle' ? 'ready' : round.phase;
   const notation = round.phase === 'study' && round.config.blindfold ? round.target : null;
   const boardHidden = veiled || notation !== null;
+  const press = { start: onRestart, endStudy: () => onStudyEnded(performance.now()), submit: onSubmit };
 
   const heading = veiled ? (gateDate ?? t('phaseStudy')) : round.phase === 'study' ? t('phaseStudy') : t('phaseRebuild');
   const announcement =
@@ -74,6 +75,7 @@ export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit,
                 <X size={20} aria-hidden="true" />
               </button>
             }
+            trail={<RoundRestartControl phase={controlsPhase} copy={COPY} press={press} />}
           />
         }
         board={
@@ -87,20 +89,10 @@ export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit,
           </div>
         }
         controls={
-          <>
+          <div className="lab-game-controls">
             <RoundPalette state={round} dispatch={dispatch} copy={COPY} />
-            <div className="lab-cal-actions">
-              <RoundControls
-                phase={controlsPhase}
-                copy={COPY}
-                press={{
-                  start: onRestart,
-                  endStudy: () => onStudyEnded(performance.now()),
-                  submit: onSubmit,
-                }}
-              />
-            </div>
-          </>
+            <RoundPrimaryControl phase={controlsPhase} copy={COPY} press={press} />
+          </div>
         }
       />
       <p className="lab-sr" aria-live="polite">

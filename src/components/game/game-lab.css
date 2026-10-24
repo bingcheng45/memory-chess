@@ -26,12 +26,6 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-meter { margin: 0; }
 .lab-game .lab-palette { margin-top: 0; }
 .lab-game .lab-palette button { aspect-ratio: auto; height: 44px; max-height: none; }
-.lab-game .lab-cal-actions { margin-top: 8px; }
-.lab-game .lab-cal-main .lab-btn { min-height: 44px; height: 44px; padding: 0 8px; font-size: 15px; line-height: 1.15; white-space: normal; }
-@media (max-width: 639px) {
-  .lab-game .lab-cal-main { gap: 16px; }
-  .lab-game .lab-cal-main[data-phase="rebuild"] > .lab-btn:first-child { justify-self: start; width: auto; padding: 0 20px; }
-}
 
 /* result screen */
 .lab-game .lab-result { max-width: 1000px; }

@@ -54,3 +54,15 @@ export const ROUND_CONTROLS = {
     clearEnabled: false,
   },
 } as const satisfies Record<RoundPhase, PhaseControls>;
+
+export interface GameSlots {
+  readonly primary: RoundControl;
+  readonly restart: RoundControl | null;
+}
+
+/** /game's placement of a phase's controls: the primary in the tall slot by the palette, a restart as the status row's icon. */
+export function gameSlotsOf(phase: RoundPhase): GameSlots {
+  const controls = ROUND_CONTROLS[phase];
+  const other: RoundControl = controls[controls.primary === "first" ? "second" : "first"];
+  return { primary: controls[controls.primary], restart: other.intent === "start" ? other : null };
+}

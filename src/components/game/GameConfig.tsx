@@ -64,15 +64,17 @@ function DailyBoardLink() {
   const timeLeftText = useTimeLeftText();
   const daily = useDailyState();
 
-  function labelOf(state: DailyState) {
+  function detailsOf(state: DailyState) {
     const timeLeft = timeLeftText(state.left);
     if (state.status === 'used') return t('next', { timeLeft });
-    return t('ready', { pieceCount: state.setting.pieceCount, seconds: state.setting.memorizeTime, timeLeft });
+    return t('readyDetails', { pieceCount: state.setting.pieceCount, seconds: state.setting.memorizeTime, timeLeft });
   }
 
+  // The title and details stack on two lines so the button matches Start round's height.
   return (
     <Link href="/daily" data-daily-entry={daily?.status ?? 'pending'} className="lab-btn lab-btn-secondary lab-config-daily">
-      {daily ? labelOf(daily) : t('pending')}
+      <span className="lab-config-daily-title">{t('pending')}</span>
+      {daily && <span className="lab-config-daily-details">{detailsOf(daily)}</span>}
     </Link>
   );
 }

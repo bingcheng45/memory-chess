@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "under a minute",
     "ready": "Today's board · {pieceCount, plural, one {# piece} other {# pieces}} · {seconds} s · {timeLeft} left",
+    "readyDetails": "{pieceCount, plural, one {# piece} other {# pieces}} · {seconds} s · {timeLeft} left",
     "next": "Next board in {timeLeft}",
     "pending": "Today's board",
     "navReady": "{label}, today's daily board is ready",

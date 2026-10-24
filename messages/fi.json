@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Päivän lauta · {pieceCount, plural, one {# nappula} other {# nappulaa}} · {seconds} s · {timeLeft} jäljellä",
+    "readyDetails": "{pieceCount, plural, one {# nappula} other {# nappulaa}} · {seconds} s · {timeLeft} jäljellä",
     "next": "Seuraava lauta {timeLeft} päästä",
     "pending": "Päivän lauta",
     "navReady": "{label}, tämän päivän lauta on valmiina",

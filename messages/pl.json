@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} godz. {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Dzisiejsza plansza · {pieceCount, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} · {seconds} s · zostało {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} · {seconds} s · zostało {timeLeft}",
     "next": "Następna plansza za {timeLeft}",
     "pending": "Dzisiejsza plansza",
     "navReady": "{label}, dzisiejsza plansza dnia jest gotowa",

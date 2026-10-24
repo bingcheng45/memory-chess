@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} Std. {minutes} Min.",
     "underMinute": "< 1 Min.",
     "ready": "Heutiges Brett · {pieceCount, plural, one {# Figur} other {# Figuren}} · {seconds} s · noch {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# Figur} other {# Figuren}} · {seconds} s · noch {timeLeft}",
     "next": "Nächstes Brett in {timeLeft}",
     "pending": "Heutiges Brett",
     "navReady": "{label}, das heutige Tagesbrett ist bereit",

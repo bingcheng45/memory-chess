@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Tabla de azi · {pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s · mai sunt {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s · mai sunt {timeLeft}",
     "next": "Următoarea tablă în {timeLeft}",
     "pending": "Tabla de azi",
     "navReady": "{label}, tabla zilei de azi este gata",

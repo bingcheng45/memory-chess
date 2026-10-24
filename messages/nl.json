@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} u {minutes} min",
     "underMinute": "minder dan een minuut",
     "ready": "Bord van vandaag · {pieceCount, plural, one {# stuk} other {# stukken}} · {seconds} s · nog {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# stuk} other {# stukken}} · {seconds} s · nog {timeLeft}",
     "next": "Volgend bord over {timeLeft}",
     "pending": "Bord van vandaag",
     "navReady": "{label}, het dagelijkse bord van vandaag staat klaar",

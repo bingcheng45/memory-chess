@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} 小时 {minutes} 分钟",
     "underMinute": "不到 1 分钟",
     "ready": "今日棋局 · {pieceCount} 子 · {seconds} 秒 · 剩余 {timeLeft}",
+    "readyDetails": "{pieceCount} 子 · {seconds} 秒 · 剩余 {timeLeft}",
     "next": "{timeLeft}后开放下一局",
     "pending": "今日棋局",
     "navReady": "{label}，今日每日棋局已就绪",

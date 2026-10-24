@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Tablero de hoy · {pieceCount, plural, one {# pieza} many {# piezas} other {# piezas}} · {seconds} s · quedan {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# pieza} many {# piezas} other {# piezas}} · {seconds} s · quedan {timeLeft}",
     "next": "Próximo tablero en {timeLeft}",
     "pending": "Tablero de hoy",
     "navReady": "{label}, el tablero diario de hoy está listo",

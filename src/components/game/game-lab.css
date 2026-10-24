@@ -422,22 +422,26 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 .lab-game .lab-config-start { width: 100%; min-height: 48px; }
 /* globals.css sets every h1 on a phone to 28px with !important. */
 @media (max-width: 640px) { .lab-game .lab-config-h { font-size: 24px !important; } }
-.lab-game .lab-config-daily { width: 100%; min-height: 52px; margin-top: 12px; padding: 6px 16px; font-size: 15px; font-weight: 500; line-height: 1.25; font-variant-numeric: tabular-nums; text-wrap: balance; }
+.lab-game .lab-config-daily { width: 100%; min-height: 52px; margin-top: 12px; padding: 6px 12px; flex-direction: column; gap: 2px; line-height: 1.2; text-align: center; }
+.lab-game .lab-config-daily-title { font: 600 15px/1.2 var(--lp-ui); }
+.lab-game .lab-config-daily-details { font: 400 13px/1.25 var(--lp-ui); text-wrap: balance; color: var(--lp-ink-2); font-variant-numeric: tabular-nums; }
 .lab-game .lab-config-last { margin-top: 16px; text-align: center; }
 
 @media (min-aspect-ratio: 4/3) and (min-width: 560px) {
+  .lab-game :has(> .lab-config) { container: setup-page / inline-size; }
   .lab-game .lab-config {
     /* As large as the card's height allows on the first screen, between a floor that still reads as a board and the 480px past which it only crowds the settings.
        The width term keeps the settings column wide enough for four presets and two steppers: sized from height alone, a
        short-and-narrow window (800 x 600) handed the board so much width that the stepper values collapsed to nothing.
-       100vw - 32px is the card's width inside the page's side padding; 336px is the column, with room for a scrollbar. */
+       100cqw is the card's own width, from the wrapper below (the page container's padding changes by breakpoint); 336px is the column, with room for a scrollbar. */
     --setup-settings-min: 336px;
-    --setup-board: clamp(160px, min(100svh - var(--chrome-h) - var(--scroll-pad-y) - 2 * var(--config-pad), min(100vw - 32px, 1040px) - 2 * var(--config-pad) - var(--setup-settings-min) - clamp(24px, 4vw, 40px)), 480px);
+    --setup-gap: clamp(24px, 4vw, 40px);
+    --setup-board: clamp(160px, min(100svh - var(--chrome-h) - var(--scroll-pad-y) - 2 * var(--config-pad), min(100cqw, 1040px) - 2 * var(--config-pad) - var(--setup-settings-min) - var(--setup-gap)), 480px);
     display: grid;
     grid-template-columns: var(--setup-board) repeat(2, minmax(0, 1fr));
     grid-template-rows: repeat(8, auto);
     grid-template-areas: "board title title" "board presets presets" "board steppers steppers" "board mode mode" "board rating rating" "board start start" "board daily daily" "board last last";
-    column-gap: clamp(24px, 4vw, 40px);
+    column-gap: var(--setup-gap);
     align-items: start;
     max-width: 1040px;
   }
@@ -452,15 +456,22 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
   .lab-game .lab-config-daily { grid-area: daily; }
   .lab-game .lab-config-last { grid-area: last; }
 }
+/* The Start round row only once the card is near full width: narrower, the two buttons each get under 170px and the row drops below the first screen. */
 @media (min-aspect-ratio: 4/3) and (min-width: 900px) and (min-height: 680px) {
-  .lab-game .lab-config {
-    grid-template-rows: repeat(6, auto) minmax(0, 1fr);
-    grid-template-areas: "board title title" "board presets presets" "board steppers steppers" "board mode mode" "board rating rating" "board start daily" "board last last";
+  @container setup-page (min-width: 990px) {
+    .lab-game .lab-config {
+      grid-template-rows: repeat(6, auto) minmax(0, 1fr);
+      grid-template-areas: "board title title" "board presets presets" "board steppers steppers" "board mode mode" "board rating rating" "board start daily" "board last last";
+    }
+    /* Start round and Today's board share a row; each reaches halfway into the column gap so the pair sits 12px apart. */
+    .lab-game .lab-config-bar { position: static; margin-inline: 0 calc((12px - var(--setup-gap)) / 2); padding: 0; border: 0; background: none; }
+    .lab-game .lab-config-daily { margin-inline-start: calc((12px - var(--setup-gap)) / 2); width: auto; }
+    /* A longer language wraps the details onto a second line; both buttons then grow together. */
+    .lab-game .lab-config-bar, .lab-game .lab-config-daily { align-self: stretch; }
+    .lab-game .lab-config-bar-summary { display: none; }
+    .lab-game .lab-config .lab-preview-line { display: block; }
+    .lab-game .lab-config-start { min-height: 52px; }
   }
-  .lab-game .lab-config-bar { position: static; margin-inline: 0; padding: 0; border: 0; background: none; }
-  .lab-game .lab-config-bar-summary { display: none; }
-  .lab-game .lab-config .lab-preview-line { display: block; }
-  .lab-game .lab-config-start { min-height: 52px; }
 }
 
 /* A set board before study: the empty board blurred under its Start card, then the 3, 2, 1, then the board clears.

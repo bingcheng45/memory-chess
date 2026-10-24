@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours}시간 {minutes}분",
     "underMinute": "1분 미만",
     "ready": "오늘의 보드 · 기물 {pieceCount}개 · {seconds}초 · {timeLeft} 남음",
+    "readyDetails": "기물 {pieceCount}개 · {seconds}초 · {timeLeft} 남음",
     "next": "다음 보드까지 {timeLeft}",
     "pending": "오늘의 보드",
     "navReady": "{label}, 오늘의 데일리 보드가 준비됐어요",

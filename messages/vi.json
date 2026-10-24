@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} giờ {minutes} phút",
     "underMinute": "< 1 phút",
     "ready": "Bàn cờ hôm nay · {pieceCount} quân · {seconds} giây · còn {timeLeft}",
+    "readyDetails": "{pieceCount} quân · {seconds} giây · còn {timeLeft}",
     "next": "Bàn cờ tiếp theo sau {timeLeft}",
     "pending": "Bàn cờ hôm nay",
     "navReady": "{label}, bàn cờ hằng ngày hôm nay đã sẵn sàng",

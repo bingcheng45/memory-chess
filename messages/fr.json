@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Plateau du jour · {pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}} · {seconds} s · encore {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}} · {seconds} s · encore {timeLeft}",
     "next": "Prochain plateau dans {timeLeft}",
     "pending": "Plateau du jour",
     "navReady": "{label}, le plateau du jour est prêt",

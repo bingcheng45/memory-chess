@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Dnešní pozice · {pieceCount, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} · {seconds} s · zbývá {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} · {seconds} s · zbývá {timeLeft}",
     "next": "Další pozice za {timeLeft}",
     "pending": "Dnešní pozice",
     "navReady": "{label}, dnešní denní pozice je připravena",

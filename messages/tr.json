@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} sa {minutes} dk",
     "underMinute": "< 1 dk",
     "ready": "Bugünün tahtası · {pieceCount} taş · {seconds} sn · {timeLeft} kaldı",
+    "readyDetails": "{pieceCount} taş · {seconds} sn · {timeLeft} kaldı",
     "next": "Sonraki tahta {timeLeft} sonra",
     "pending": "Bugünün tahtası",
     "navReady": "{label}, bugünün günlük tahtası hazır",

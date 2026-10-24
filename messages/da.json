@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} t {minutes} min",
     "underMinute": "under et minut",
     "ready": "Dagens bræt · {pieceCount, plural, one {# brik} other {# brikker}} · {seconds} s · {timeLeft} tilbage",
+    "readyDetails": "{pieceCount, plural, one {# brik} other {# brikker}} · {seconds} s · {timeLeft} tilbage",
     "next": "Næste bræt om {timeLeft}",
     "pending": "Dagens bræt",
     "navReady": "{label}, dagens bræt er klar",

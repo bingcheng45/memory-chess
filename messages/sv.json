@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} tim {minutes} min",
     "underMinute": "under en minut",
     "ready": "Dagens bräde · {pieceCount, plural, one {# pjäs} other {# pjäser}} · {seconds} s · {timeLeft} kvar",
+    "readyDetails": "{pieceCount, plural, one {# pjäs} other {# pjäser}} · {seconds} s · {timeLeft} kvar",
     "next": "Nästa bräde om {timeLeft}",
     "pending": "Dagens bräde",
     "navReady": "{label}, dagens bräde är redo",

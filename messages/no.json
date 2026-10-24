@@ -1725,6 +1725,7 @@
     "hoursLeft": "{hours} t {minutes} min",
     "underMinute": "under ett minutt",
     "ready": "Dagens brett · {pieceCount, plural, one {# brikke} other {# brikker}} · {seconds} s · {timeLeft} igjen",
+    "readyDetails": "{pieceCount, plural, one {# brikke} other {# brikker}} · {seconds} s · {timeLeft} igjen",
     "next": "Neste brett om {timeLeft}",
     "pending": "Dagens brett",
     "navReady": "{label}, dagens brett er klart",

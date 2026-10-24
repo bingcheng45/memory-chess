@@ -22,6 +22,7 @@ import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
+  compareRanking,
   pushesOffLast,
   type LeaderboardCutoffs,
   type RankingScore,
@@ -48,6 +49,7 @@ import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import { CommunityInvite } from "@/components/community/CommunityLink";
 import { isReturningPlayer } from "@/lib/community";
 import ShareResult from "@/components/game/ShareResult";
+import { SubmittedStanding } from "@/components/game/SubmittedStanding";
 import { Trophy } from "lucide-react";
 import { roundShareOf } from "@/components/game/roundShare";
 import { START_RATING } from "@/lib/game/rating";
@@ -97,7 +99,9 @@ function qualifiesForLeaderboard(
   if (cutoffs === null || difficulty === "custom") {
     return false;
   }
-  return pushesOffLast(score, cutoffs[difficulty]);
+  // A board with room takes every score, so any score makes it.
+  const cutoff = cutoffs[difficulty];
+  return cutoff.kind === "open" || pushesOffLast(score, cutoff);
 }
 
 export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResultProps) {
@@ -114,14 +118,16 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const { labRound } = gameState;
   const blindfold = round.phase === "scored" && round.config.blindfold === true;
   const scored = round.phase === "scored" ? round : null;
-  const { countryCode, setCountryCode } = useSettingsStore();
+  const { countryCode, setCountryCode, playerName: savedName, setPlayerName: saveName } = useSettingsStore();
 
   // Leaderboard submission state
   const [showLeaderboardDialog, setShowLeaderboardDialog] = useState(false);
-  const [playerName, setPlayerName] = useState("");
+  const [playerName, setPlayerName] = useState(savedName);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submittedId, setSubmittedId] = useState<string | null>(null);
+  const [personalBest, setPersonalBest] = useState(false);
   const submitRef = useRef<HTMLButtonElement>(null);
   const leaderboardLinkRef = useRef<HTMLAnchorElement>(null);
   // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
@@ -298,6 +304,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     try {
       const posted = await postLeaderboardEntry(prepareLeaderboardEntry(playerName.trim()));
       if (!posted.ok) throw new Error(posted.message ?? t("dialog.submitFailed"));
+      saveName(playerName);
+      setSubmittedId(posted.entry?.id ?? null);
       setSubmitSuccess(true);
     } catch (err) {
       console.error("Error submitting to leaderboard:", err);
@@ -323,19 +331,30 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       : t("piecesPerSecond", { value: "0.0" });
   const leaderboardEligible = isEligibleForLeaderboard();
   // The cutoffs are the board-study boards', so a blindfold round never claims it makes the board; it can still submit.
-  const ranks =
-    leaderboardEligible &&
-    !blindfold &&
-    qualifiesForLeaderboard(
-      determineDifficulty(gameState.pieceCount),
-      {
-        correctPieces: extendedGameState.correctPlacements || 0,
-        totalWrongPieces: piecesInfo.totalWrong,
-        memorizeTime: gameState.actualMemorizeTime || gameState.memorizeTime,
-        solutionTime: gameState.completionTime || 0,
-      },
-      cutoffs,
-    );
+  const roundScore: RankingScore = {
+    correctPieces: extendedGameState.correctPlacements || 0,
+    totalWrongPieces: piecesInfo.totalWrong,
+    memorizeTime: gameState.actualMemorizeTime || gameState.memorizeTime,
+    solutionTime: gameState.completionTime || 0,
+  };
+  const roundDifficulty = determineDifficulty(gameState.pieceCount);
+  const ranks = leaderboardEligible && !blindfold && qualifiesForLeaderboard(roundDifficulty, roundScore, cutoffs);
+  // Beats the best score this device sent to the same board. Read once per result: the stored entries load lazily, as
+  // they do on submit, so a result with nothing to submit pays nothing for them.
+  useEffect(() => {
+    if (!leaderboardEligible || roundDifficulty === "custom") return;
+    let live = true;
+    void import("@/lib/lab/entries")
+      .then(({ ENTRIES_KEY, entryKey, parseEntries }) => {
+        const kept = parseEntries(window.localStorage.getItem(ENTRIES_KEY))?.[entryKey({ difficulty: roundDifficulty, ...(blindfold && { mode: BLINDFOLD_MODE }) })];
+        if (live && kept && compareRanking(roundScore, kept.score) < 0) setPersonalBest(true);
+      })
+      .catch(() => undefined);
+    return () => {
+      live = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- the round's score is fixed for the life of this result
+  }, [labRound?.facts.id]);
   const ratingNote = ratingNoteOf(gameState.rating, t);
   const isPlayerSizedBoard = gameState.board === undefined;
   const next = isPlayerSizedBoard && nextBoardOf({ pieceCount: gameState.pieceCount, memorizeSeconds: gameState.memorizeTime }, accuracy);
@@ -350,7 +369,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   };
   const submitButton = leaderboardEligible && (
     <button ref={submitRef} type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
-      {t("submitToLeaderboard")}
+      {ranks ? t("claimSpot") : t("submitToLeaderboard")}
     </button>
   );
 
@@ -411,7 +430,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                   <div className="lab-result-callout">
                     <Trophy aria-hidden size={20} />
                     <p role={ranks ? "status" : undefined}>
-                      {ranks ? t("leaderboardQualifies") : t("submitPrompt", { accuracy: scored.score.accuracy })}
+                      {ranks ? t("leaderboardQualifies") : personalBest ? t("personalBest") : t("submitPrompt")}
                     </p>
                     {submitButton}
                   </div>
@@ -604,6 +623,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                 <p className="lab-dialog-text">
                   {t("dialog.thanks", { name: playerName })}
                 </p>
+                {submittedId && <SubmittedStanding entryId={submittedId} country={countryCode} />}
               </div>
 
               <div className="flex justify-center gap-2">

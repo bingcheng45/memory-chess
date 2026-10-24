@@ -24,7 +24,7 @@ describe("settingsStore migration", () => {
 
     expect(store.getState().countryCode).toBe(WORLD_CODE);
     expect(store.getState()).not.toHaveProperty("showCoordinates");
-    expect(persisted()).toEqual({ state: { countryCode: WORLD_CODE }, version: 3 });
+    expect(persisted()).toEqual({ state: { countryCode: WORLD_CODE, playerName: "" }, version: 4 });
   });
 
   it("ignores a v2 player's stored showCoordinates false and keeps their country", async () => {
@@ -32,7 +32,7 @@ describe("settingsStore migration", () => {
 
     expect(store.getState()).not.toHaveProperty("showCoordinates");
     expect(store.getState().countryCode).toBe("SG");
-    expect(persisted()).toEqual({ state: { countryCode: "SG" }, version: 3 });
+    expect(persisted()).toEqual({ state: { countryCode: "SG", playerName: "" }, version: 4 });
   });
 
   it("defaults the country to the world code when nothing is stored", async () => {
@@ -57,5 +57,17 @@ describe("settingsStore migration", () => {
     const store = await loadWith({ state: { countryCode: "SG" }, version: 3 });
 
     expect(store.getState().countryCode).toBe("SG");
+  });
+
+  it("keeps a stored player name the leaderboard would take, trimmed", async () => {
+    const store = await loadWith({ state: { countryCode: "SG", playerName: "  Poteto " }, version: 4 });
+
+    expect(store.getState().playerName).toBe("Poteto");
+  });
+
+  it("drops a stored player name the leaderboard would refuse", async () => {
+    const store = await loadWith({ state: { countryCode: "SG", playerName: "abc" }, version: 4 });
+
+    expect(store.getState().playerName).toBe("");
   });
 });

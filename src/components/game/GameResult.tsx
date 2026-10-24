@@ -35,7 +35,7 @@ import type { LabRound } from "@/lib/lab/recordRound";
 import { nextBoardOf, type BoardSize } from "@/lib/game/nextBoard";
 import type { RecordBefore } from "@/components/game/ResultDeltas";
 import ResultBoards from "@/components/game/ResultBoards";
-import { ReadoutCard } from "@/components/round/ReadoutCard";
+import { ResultReadout } from "./ResultReadout";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { BLINDFOLD_MODE } from "@/lib/game/roundLink";
 import { blindfoldBoardOpen } from "@/lib/leaderboard/mode";
@@ -48,6 +48,7 @@ import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import { CommunityInvite } from "@/components/community/CommunityLink";
 import { isReturningPlayer } from "@/lib/community";
 import ShareResult from "@/components/game/ShareResult";
+import { Trophy } from "lucide-react";
 import { roundShareOf } from "@/components/game/roundShare";
 import { START_RATING } from "@/lib/game/rating";
 import type { RoundOutcome } from "@/lib/game/roundOutcome";
@@ -122,7 +123,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const submitRef = useRef<HTMLButtonElement>(null);
-  const moreRef = useRef<HTMLElement>(null);
+  const leaderboardLinkRef = useRef<HTMLAnchorElement>(null);
   // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
   // effect below would insert it a frame later and push down everything under it.
   const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(readCachedCutoffs);
@@ -335,7 +336,6 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       },
       cutoffs,
     );
-  const showLeaderboardQualifier = ranks && !submitSuccess;
   const ratingNote = ratingNoteOf(gameState.rating, t);
   const isPlayerSizedBoard = gameState.board === undefined;
   const next = isPlayerSizedBoard && nextBoardOf({ pieceCount: gameState.pieceCount, memorizeSeconds: gameState.memorizeTime }, accuracy);
@@ -345,8 +345,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   };
   const returnFocus = (event: Event) => {
     event.preventDefault();
-    const opener = submitRef.current;
-    (opener?.closest("details:not([open])") ? moreRef.current : opener)?.focus();
+    // A submitted score takes the prompt away, so focus moves on to the leaderboard link.
+    (submitRef.current?.isConnected ? submitRef.current : leaderboardLinkRef.current)?.focus();
   };
   const submitButton = leaderboardEligible && (
     <button ref={submitRef} type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
@@ -399,18 +399,24 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
             </p>
           )}
 
-          {showLeaderboardQualifier && (
-            <p role="status" className="lab-result-qualifies">
-              {t("leaderboardQualifies")}
-            </p>
-          )}
         </div>
 
         {scored && (
           <>
             <ResultBoards round={scored} view={resultView} onViewChange={setResultView} />
             <div className="lab-result-readout">
-              <ReadoutCard state={scored} copy="game.round" expected={scored.config} legend={false} />
+              <ResultReadout
+                round={scored}
+                callout={leaderboardEligible && !submitSuccess && (
+                  <div className="lab-result-callout">
+                    <Trophy aria-hidden size={20} />
+                    <p role={ranks ? "status" : undefined}>
+                      {ranks ? t("leaderboardQualifies") : t("submitPrompt", { accuracy: scored.score.accuracy })}
+                    </p>
+                    {submitButton}
+                  </div>
+                )}
+              />
             </div>
           </>
         )}
@@ -437,31 +443,24 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <button type="button" onClick={onNewGame} className="lab-btn lab-btn-secondary">
             {t("changeSettings")}
           </button>
-          {ranks && submitButton}
-          <details className="lab-result-more">
-            <summary ref={moreRef} className="lab-result-more-toggle">{t("moreOptions")}</summary>
-            <div className="lab-result-more-list">
-              {gameState.board?.kind === "daily" && keepsRecord && (
-                <Link href="/daily" className="lab-btn lab-btn-secondary">
-                  {tDaily("join")}
-                </Link>
-              )}
-              {!ranks && submitButton}
-              {round.phase === "scored" && (
-                <ShareResult
-                  key={labRound?.facts.id}
-                  share={roundShareOf(round, {
-                    rating: gameState.skillRating ?? START_RATING,
-                    change: extendedGameState.skillRatingChange ?? 0,
-                    winStreak: gameState.streak ?? 0,
-                  })}
-                />
-              )}
-              <Link href="/leaderboard" className="lab-result-link">
-                {t("viewLeaderboard")}
-              </Link>
-            </div>
-          </details>
+          {gameState.board?.kind === "daily" && keepsRecord && (
+            <Link href="/daily" className="lab-btn lab-btn-secondary">
+              {tDaily("join")}
+            </Link>
+          )}
+          {round.phase === "scored" && (
+            <ShareResult
+              key={labRound?.facts.id}
+              share={roundShareOf(round, {
+                rating: gameState.skillRating ?? START_RATING,
+                change: extendedGameState.skillRatingChange ?? 0,
+                winStreak: gameState.streak ?? 0,
+              })}
+            />
+          )}
+          <Link ref={leaderboardLinkRef} href="/leaderboard" className="lab-result-link">
+            {t("viewLeaderboard")}
+          </Link>
         </nav>
         {isReturningPlayer(history.length) && (
           <CommunityInvite placement="result" line={tCommunity("resultLine")} link={tCommunity("link")} />

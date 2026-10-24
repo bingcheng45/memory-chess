@@ -1067,10 +1067,10 @@
       "tryAgain": "Riprova",
       "nextRound": "Round successivo",
       "changeSettings": "Cambia impostazioni",
-      "moreOptions": "Altre opzioni",
       "tileDrill": "Questo esercizio al tuo livello",
       "tileDrillWhy": "Calibrato sul tuo livello, per esercitarti su ciò che descrive l'articolo.",
       "submitToLeaderboard": "Invia alla classifica",
+      "submitPrompt": "Porta il tuo {accuracy}% in classifica.",
       "leaderboardQualifies": "Il tuo punteggio entra in classifica. Invialo prima che sfumi.",
       "viewLeaderboard": "Vedi la classifica",
       "dialog": {

@@ -1067,10 +1067,10 @@
       "tryAgain": "Prøv igen",
       "nextRound": "Næste runde",
       "changeSettings": "Ændr indstillinger",
-      "moreOptions": "Flere muligheder",
       "tileDrill": "Denne øvelse på dit niveau",
       "tileDrillWhy": "Tilpasset dit niveau, så du kan øve det, artiklen beskriver.",
       "submitToLeaderboard": "Send til ranglisten",
+      "submitPrompt": "Sæt dine {accuracy} % på ranglisten.",
       "leaderboardQualifies": "Dit resultat rækker til ranglisten. Send det ind, før chancen ryger.",
       "viewLeaderboard": "Se ranglisten",
       "dialog": {

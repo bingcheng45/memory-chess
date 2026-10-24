@@ -1067,10 +1067,10 @@
       "tryAgain": "Opnieuw",
       "nextRound": "Volgende ronde",
       "changeSettings": "Instellingen wijzigen",
-      "moreOptions": "Meer opties",
       "tileDrill": "Deze oefening op jouw niveau",
       "tileDrillWhy": "Afgestemd op jouw niveau, om te oefenen wat het artikel beschrijft.",
       "submitToLeaderboard": "Naar de ranglijst sturen",
+      "submitPrompt": "Zet je {accuracy}% op het klassement.",
       "leaderboardQualifies": "Je score haalt de ranglijst. Stuur hem in voordat het te laat is.",
       "viewLeaderboard": "Bekijk de ranglijst",
       "dialog": {

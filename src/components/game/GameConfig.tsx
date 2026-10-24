@@ -70,11 +70,16 @@ function DailyBoardLink() {
     return t('readyDetails', { pieceCount: state.setting.pieceCount, seconds: state.setting.memorizeTime, timeLeft });
   }
 
-  // The title and details stack on two lines so the button matches Start round's height.
+  // The title and details stack on two lines so the button matches Start round's height; the hidden dot keeps them apart in the link's name.
   return (
     <Link href="/daily" data-daily-entry={daily?.status ?? 'pending'} className="lab-btn lab-btn-secondary lab-config-daily">
       <span className="lab-config-daily-title">{t('pending')}</span>
-      {daily && <span className="lab-config-daily-details">{detailsOf(daily)}</span>}
+      {daily && (
+        <>
+          <span className="sr-only"> · </span>
+          <span className="lab-config-daily-details">{detailsOf(daily)}</span>
+        </>
+      )}
     </Link>
   );
 }

@@ -136,8 +136,8 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
             toggle and the legend under it. The notes, the readout, the actions and the cards below the card follow.
             Side by side, the toggle leads and the two boards share the width. Either way the boards' foot clears
             the pinned Next round bar on the first screen.
-     wide   landscape from 900px. One board: the board on the left; the title, the score lines, the readout's score
-            and figures, Next round inline and the actions beside it, the recall by piece type lower down. Side by
+     wide   landscape from 900px. One board: the board on the left; the title, the score lines, Next round, then
+            the readout and the actions beside it. Side by
             side: the title and Next round across the top, the two boards under them, the readout below.
 
    Each board's side is the room left once the chrome above it and the fixed rows of its layout are added up, so it
@@ -170,8 +170,28 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 .lab-game .lab-result-notes { grid-area: notes; }
 .lab-game .lab-result-sub { margin-top: 8px; font: 400 16px/1.5 var(--lp-body); color: var(--lp-ink-2); }
 .lab-game .lab-result-sub .lab-mono { color: var(--lp-ink); font-weight: 500; }
-.lab-game .lab-result-qualifies { margin-top: 16px; padding: 12px 16px; border-radius: var(--lp-r-md); background: var(--lp-correct-soft); color: var(--lp-correct); font: 600 15px/1.45 var(--lp-ui); }
 .lab-game .lab-result-readout { grid-area: readout; margin-top: 24px; }
+/* The readout: the score and its figures beside the recall by piece type, stacked when the card is narrow, then the leaderboard prompt. */
+.lab-game .lab-rr { container: readout / inline-size; padding: clamp(16px, 3vw, 24px); }
+.lab-game .lab-rr-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 16px 32px; }
+.lab-game .lab-rr .lab-rc-big { font-size: 48px; }
+.lab-game .lab-rr-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; margin: 12px 0 0; }
+.lab-game .lab-rr-stats dt { font: 500 13px/1.4 var(--lp-ui); color: var(--lp-muted); }
+.lab-game .lab-rr-stats dd { margin: 0; font: 500 16px/1.4 var(--lp-data); font-variant-numeric: tabular-nums; color: var(--lp-ink); }
+.lab-game .lab-rr-bars { align-content: start; gap: 8px; padding: 0; }
+.lab-game .lab-rr-bars .lab-bar { grid-template-columns: 64px 1fr 36px; gap: 10px; }
+@container readout (max-width: 440px) { .lab-game .lab-rr-cols { grid-template-columns: minmax(0, 1fr); } }
+/* Stacked but with room: the score sits beside its four figures, so the leaderboard prompt stays on the first screen. */
+@container readout (min-width: 340px) and (max-width: 440px) {
+  .lab-game .lab-rr-score { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "label stats" "big stats"; column-gap: 28px; align-items: start; }
+  .lab-game .lab-rr-score > .lab-k { grid-area: label; }
+  .lab-game .lab-rr-score > .lab-rc-big { grid-area: big; }
+  .lab-game .lab-rr-score > .lab-rr-stats { grid-area: stats; margin: 0; }
+}
+.lab-game .lab-result-callout { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 20px; padding: 12px 12px 12px 16px; border-radius: var(--lp-r-md); background: var(--lp-accent-soft); }
+.lab-game .lab-result-callout > svg { flex: none; color: var(--lp-accent); }
+.lab-game .lab-result-callout p { flex: 1 1 180px; margin: 0; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-ink); text-wrap: balance; }
+.lab-game .lab-result-callout .lab-btn { min-height: 44px; }
 .lab-game .lab-result-actions { grid-area: actions; }
 .lab-game .lab-result-card > .lab-community { grid-area: invite; }
 
@@ -229,8 +249,8 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
     --head-h: 58px;
     --board-fit: clamp(240px, 100svh - var(--chrome-h) - var(--scroll-pad-y) - var(--card-pad) - 1px - var(--plate-pad) - var(--head-h) - 8px, 480px);
     grid-template-columns: calc(var(--board-fit) + 2 * var(--plate-pad) + 2px) minmax(0, 1fr);
-    grid-template-rows: repeat(6, auto) 1fr auto;
-    grid-template-areas: "board title" "board notes" "board readout" "board stats" "board next" "board actions" "board bytype" "invite invite";
+    grid-template-rows: repeat(5, auto) 1fr auto;
+    grid-template-areas: "board title" "board notes" "board next" "board readout" "board actions" "board ." "invite invite";
     column-gap: 32px;
     align-items: start;
   }
@@ -238,11 +258,7 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
   .lab-game .lab-result-score, .lab-game .lab-result-summary { display: none; }
   .lab-game .lab-result-board { margin: 0; }
   .lab-game .lab-result-board > .lab-figure { width: var(--board-fit); }
-  /* The readout's parts join the column, so Next round follows the score and figures and the recall by piece type goes under it. */
-  .lab-game .lab-result-readout, .lab-game .lab-result-readout > .lab-card { display: contents; }
-  .lab-game .lab-result-readout .lab-rc-top { grid-area: readout; margin-top: 16px; }
-  .lab-game .lab-result-readout .lab-rc-grid { grid-area: stats; }
-  .lab-game .lab-result-readout .lab-bars { grid-area: bytype; }
+  .lab-game .lab-result-readout { margin-top: 16px; }
   .lab-game .lab-result-next { position: static; margin: 20px 0 0; padding: 0; border: 0; background: none; }
   .lab-game .lab-result-next .lab-btn { width: 100%; }
   .lab-game .lab-result-actions { margin-top: 12px; }
@@ -261,24 +277,13 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-score { display: inline; font-size: 34px; line-height: 1.15; }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) > .lab-result-board { margin-top: 16px; }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-notes { margin-top: 8px; }
-  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-readout,
-  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-readout > .lab-card { display: block; }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-readout { margin-top: 24px; }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-next { align-self: center; margin: 0; }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-next .lab-btn { width: auto; min-width: 280px; }
 }
 .lab-game .lab-result-next-board { font-weight: 500; opacity: 0.85; font-variant-numeric: tabular-nums; }
-.lab-game .lab-result-actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px; margin-top: 16px; }
+.lab-game .lab-result-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; }
 .lab-game .lab-result-link { font: 500 15px/1.4 var(--lp-ui); }
-.lab-game .lab-result-more { flex: 1 1 100%; }
-.lab-game .lab-result-more-toggle { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 4px; border-radius: var(--lp-r-md); font: 500 15px/1.4 var(--lp-ui); color: var(--lp-ink-2); cursor: pointer; list-style: none; }
-.lab-game .lab-result-more-toggle::-webkit-details-marker { display: none; }
-.lab-game .lab-result-more-toggle::after { content: ""; width: 7px; height: 7px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform 0.15s; }
-.lab-game .lab-result-more[open] > .lab-result-more-toggle::after { margin-top: 3px; transform: rotate(-135deg); }
-.lab-game .lab-result-more-toggle:hover { color: var(--lp-ink); }
-.lab-game .lab-result-more-toggle:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
-.lab-game .lab-result-more-list { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-top: 8px; }
-@media (prefers-reduced-motion: reduce) { .lab-game .lab-result-more-toggle::after { transition: none; } }
 
 .lab-game .lab-tomorrow { padding: clamp(16px, 3vw, 24px); }
 .lab-game .lab-tomorrow-h { margin: 0; font: 650 18px/1.3 var(--lp-ui); }

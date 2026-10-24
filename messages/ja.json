@@ -1067,10 +1067,10 @@
       "tryAgain": "もう一度",
       "nextRound": "次のラウンド",
       "changeSettings": "設定を変更",
-      "moreOptions": "その他のオプション",
       "tileDrill": "あなたのレベルに合わせたドリル",
       "tileDrillWhy": "あなたのレベルに合わせてあり、記事の内容を練習できます。",
       "submitToLeaderboard": "ランキングに登録",
+      "submitPrompt": "{accuracy}%の結果をランキングに登録しましょう。",
       "leaderboardQualifies": "このスコアならランキング入りです。今すぐ登録しましょう。",
       "viewLeaderboard": "ランキングを見る",
       "dialog": {

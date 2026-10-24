@@ -1067,10 +1067,10 @@
       "tryAgain": "Yritä uudelleen",
       "nextRound": "Seuraava kierros",
       "changeSettings": "Muuta asetuksia",
-      "moreOptions": "Lisää vaihtoehtoja",
       "tileDrill": "Tämä harjoitus tasollasi",
       "tileDrillWhy": "Mitoitettu tasollesi, jotta voit harjoitella sitä, mitä artikkeli kuvaa.",
       "submitToLeaderboard": "Lähetä tulostaulukkoon",
+      "submitPrompt": "Vie {accuracy} %:n tuloksesi tulostaululle.",
       "leaderboardQualifies": "Tuloksesi yltää tulostaulukkoon. Lähetä se heti.",
       "viewLeaderboard": "Katso tulostaulukko",
       "dialog": {

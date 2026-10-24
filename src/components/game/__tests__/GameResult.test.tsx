@@ -269,30 +269,32 @@ describe("GameResult", () => {
 
       expect(primaries).toEqual(["Try again"]);
       expect(screen.queryByRole("button", { name: /Next round/ })).toBeNull();
-      expect([...actions.children].map((child) => (child.tagName === "DETAILS" ? "details" : child.textContent))).toEqual(["Change settings", "details"]);
+      expect([...actions.children].map((child) => child.textContent)).toEqual(["Change settings", "Share result", "View leaderboard"]);
       expect([onTryAgain.mock.calls.length, onPlay.mock.calls.length, jest.mocked(window.gtag).mock.calls]).toEqual([1, 0, []]);
     });
 
-    it("keeps Try again and Change settings in the row under it, and folds Submit, sharing and the leaderboard into More options", () => {
+    it("keeps Try again, Change settings, sharing and the leaderboard in the row under it, with nothing folded away", () => {
       const onTryAgain = jest.fn();
       const onNewGame = jest.fn();
       render(<GameResult onTryAgain={onTryAgain} onNewGame={onNewGame} onPlay={jest.fn()} />);
       const actions = screen.getByRole("navigation", { name: "Result actions" });
-      const more = actions.querySelector("details")!;
 
       fireEvent.click(within(actions).getByRole("button", { name: "Try again" }));
       fireEvent.click(within(actions).getByRole("button", { name: "Change settings" }));
 
-      expect([...actions.children].map((child) => (child.tagName === "DETAILS" ? "details" : child.textContent))).toEqual(["Try again", "Change settings", "details"]);
-      expect([more.querySelector("summary")?.textContent, more.open]).toEqual(["More options", false]);
-      expect(
-        [
-          within(more).getByRole("button", { name: "Submit to leaderboard" }),
-          within(more).getByRole("button", { name: "Share result" }),
-          within(more).getByRole("link", { name: "View leaderboard" }),
-        ].map((control) => more.contains(control)),
-      ).toEqual([true, true, true]);
+      expect([...actions.children].map((child) => child.textContent)).toEqual(["Try again", "Change settings", "Share result", "View leaderboard"]);
+      expect(actions.querySelector("details")).toBeNull();
       expect([onTryAgain.mock.calls.length, onNewGame.mock.calls.length]).toEqual([1, 1]);
+    });
+
+    it("asks for the score in a prompt under the readout, with Submit to leaderboard beside it", () => {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      const callout = document.querySelector<HTMLElement>(".lab-result-callout")!;
+
+      expect([callout.textContent, document.querySelector(".lab-rr")?.contains(callout)]).toEqual([
+        "Put your 80% on the leaderboard.Submit to leaderboard",
+        true,
+      ]);
     });
   });
 
@@ -393,34 +395,15 @@ describe("GameResult", () => {
     });
   });
 
-  describe("focus after the Submit dialog closes", () => {
-    function openFromMoreOptions() {
-      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
-      const more = screen.getByRole("navigation", { name: "Result actions" }).querySelector("details")!;
-      more.open = true;
-      const submit = within(more).getByRole("button", { name: "Submit to leaderboard" });
-      fireEvent.click(submit);
-      return { more, submit };
-    }
+  it("returns focus to Submit to leaderboard when the dialog closes without a score", async () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    const submit = screen.getByRole("button", { name: "Submit to leaderboard" });
+    fireEvent.click(submit);
 
-    it("lands on the Submit button inside More options when the player presses Escape", async () => {
-      const { submit } = openFromMoreOptions();
+    fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
 
-      fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
-
-      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
-      await waitFor(() => expect(document.activeElement).toBe(submit));
-    });
-
-    it("lands on the More options summary when More options was closed meanwhile", async () => {
-      const { more } = openFromMoreOptions();
-
-      more.open = false;
-      fireEvent.click(screen.getByRole("button", { name: "Cancel" }));
-
-      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
-      await waitFor(() => expect(document.activeElement?.textContent).toBe("More options"));
-    });
+    await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+    await waitFor(() => expect(document.activeElement).toBe(submit));
   });
 
   it("shows the reason the server gave, not a generic failure", async () => {
@@ -772,50 +755,35 @@ describe("GameResult", () => {
       expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
     });
 
-    it("brings Submit out of More options, beside Try again, while the score would push someone off the board", async () => {
+    it("says the score makes the board in the prompt under the readout, beside Submit to leaderboard", async () => {
       mockGameState = perfectEasyGame;
       loadCutoffsMock.mockResolvedValue(CUTOFFS);
 
+      await renderSettled();
+      const callout = document.querySelector<HTMLElement>(".lab-result-callout")!;
+
+      expect([
+        within(callout).getByRole("status").textContent,
+        within(callout).getByRole("button").textContent,
+        document.querySelector(".lab-rr")?.contains(callout),
+      ]).toEqual([QUALIFIES_SENTENCE, "Submit to leaderboard", true]);
+    });
+
+    it("moves focus to View leaderboard when the dialog closes after a submit, since the prompt is gone", async () => {
+      mockGameState = perfectEasyGame;
+      loadCutoffsMock.mockResolvedValue(CUTOFFS);
       await renderSettled();
       const actions = screen.getByRole("navigation", { name: "Result actions" });
 
-      expect([...actions.children].map((child) => (child.tagName === "DETAILS" ? "details" : child.textContent))).toEqual([
-        "Try again",
-        "Change settings",
-        "Submit to leaderboard",
-        "details",
-      ]);
-    });
-
-    it("keeps Submit in the row after the score is submitted, so focus can return to it when the dialog closes", async () => {
-      mockGameState = perfectEasyGame;
-      loadCutoffsMock.mockResolvedValue(CUTOFFS);
-      await renderSettled();
-      const actions = screen.getByRole("navigation", { name: "Result actions" });
-      const submit = within(actions).getByRole("button", { name: "Submit to leaderboard" });
-
-      fireEvent.click(submit);
-      fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
-      fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
-      await screen.findByRole("heading", { name: "Score submitted!" });
-
-      expect([submit.isConnected, submit.parentElement === actions]).toEqual([true, true]);
-    });
-
-    it("returns focus to Submit when the dialog closes after a submit", async () => {
-      mockGameState = perfectEasyGame;
-      loadCutoffsMock.mockResolvedValue(CUTOFFS);
-      await renderSettled();
-      const submit = screen.getByRole("button", { name: "Submit to leaderboard" });
-
-      fireEvent.click(submit);
+      fireEvent.click(screen.getByRole("button", { name: "Submit to leaderboard" }));
       fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
       fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
       await screen.findByRole("heading", { name: "Score submitted!" });
       fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
 
       await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
-      await waitFor(() => expect(document.activeElement).toBe(submit));
+      await waitFor(() => expect(document.activeElement).toBe(within(actions).getByRole("link", { name: "View leaderboard" })));
+      expect(document.querySelector(".lab-result-callout")).toBeNull();
     });
 
     it("drops the nudge once the score has been submitted", async () => {

@@ -1067,10 +1067,10 @@
       "tryAgain": "Zkusit znovu",
       "nextRound": "Další kolo",
       "changeSettings": "Změnit nastavení",
-      "moreOptions": "Další možnosti",
       "tileDrill": "Toto cvičení na vaší úrovni",
       "tileDrillWhy": "Upraveno na vaši úroveň, abyste si vyzkoušeli, co článek popisuje.",
       "submitToLeaderboard": "Odeslat do žebříčku",
+      "submitPrompt": "Zapište svých {accuracy} % do žebříčku.",
       "leaderboardQualifies": "Váš výsledek stačí na žebříček. Odešlete ho, než zmizí.",
       "viewLeaderboard": "Zobrazit žebříček",
       "dialog": {

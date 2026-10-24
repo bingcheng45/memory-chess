@@ -1067,10 +1067,10 @@
       "tryAgain": "再来一局",
       "nextRound": "下一轮",
       "changeSettings": "更改设置",
-      "moreOptions": "更多选项",
       "tileDrill": "适合你水平的这道练习",
       "tileDrillWhy": "按你的水平设定，用来练习文章所讲的内容。",
       "submitToLeaderboard": "提交到排行榜",
+      "submitPrompt": "把你的 {accuracy}% 成绩提交到排行榜。",
       "leaderboardQualifies": "你的成绩能上排行榜，趁还有机会赶紧提交。",
       "viewLeaderboard": "查看排行榜",
       "dialog": {

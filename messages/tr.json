@@ -1067,10 +1067,10 @@
       "tryAgain": "Tekrar dene",
       "nextRound": "Sonraki tur",
       "changeSettings": "Ayarları değiştir",
-      "moreOptions": "Daha fazla seçenek",
       "tileDrill": "Bu alıştırma senin seviyende",
       "tileDrillWhy": "Seviyene göre ayarlandı, makalenin anlattığını çalışabilmen için.",
       "submitToLeaderboard": "Sıralamaya gönder",
+      "submitPrompt": "%{accuracy} sonucunu sıralamaya ekle.",
       "leaderboardQualifies": "Skorun sıralamaya giriyor. Fırsatı kaçırmadan hemen gönder.",
       "viewLeaderboard": "Sıralamayı gör",
       "dialog": {

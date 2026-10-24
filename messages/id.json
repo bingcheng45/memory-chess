@@ -1067,10 +1067,10 @@
       "tryAgain": "Coba lagi",
       "nextRound": "Ronde berikutnya",
       "changeSettings": "Ubah pengaturan",
-      "moreOptions": "Opsi lainnya",
       "tileDrill": "Latihan ini di levelmu",
       "tileDrillWhy": "Disesuaikan dengan levelmu, untuk melatih apa yang dijelaskan artikel ini.",
       "submitToLeaderboard": "Kirim ke papan peringkat",
+      "submitPrompt": "Masukkan {accuracy}% Anda ke papan peringkat.",
       "leaderboardQualifies": "Skor Anda masuk papan peringkat. Kirim sekarang sebelum terlewat.",
       "viewLeaderboard": "Lihat papan peringkat",
       "dialog": {

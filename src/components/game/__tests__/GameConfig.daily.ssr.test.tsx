@@ -11,5 +11,5 @@ it("serves the daily board link with a neutral label and no clock, so the served
     </NextIntlClientProvider>,
   );
 
-  expect(html).toMatch(/<a [^>]*data-daily-entry="pending"[^>]*>Today&#x27;s board<\/a>/);
+  expect(html).toMatch(/<a [^>]*data-daily-entry="pending"[^>]*><span class="lab-config-daily-title">Today&#x27;s board<\/span><\/a>/);
 });

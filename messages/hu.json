@@ -1067,10 +1067,10 @@
       "tryAgain": "Újra",
       "nextRound": "Következő kör",
       "changeSettings": "Beállítások módosítása",
-      "moreOptions": "További lehetőségek",
       "tileDrill": "Ez a gyakorlat a te szintedre",
       "tileDrillWhy": "A te szintedhez igazítva, hogy gyakorolhasd, amit a cikk leír.",
       "submitToLeaderboard": "Beküldés a ranglistára",
+      "submitPrompt": "Tedd fel a(z) {accuracy}%-os eredményed a ranglistára.",
       "leaderboardQualifies": "Az eredményed felfér a ranglistára. Küldd be, mielőtt lecsúszik.",
       "viewLeaderboard": "Ranglista megtekintése",
       "dialog": {

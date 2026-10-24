@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Точность",
       "piecesCorrectCaption": "фигур верно",
+      "summary": "{correct} / {total} верно · {wrong} неверно · расставлено за {seconds} с",
       "piecesCorrect": "Верных фигур",
       "memorizationTime": "Время запоминания",
       "solutionTime": "Время решения",

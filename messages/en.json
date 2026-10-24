@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Accuracy",
       "piecesCorrectCaption": "pieces correct",
+      "summary": "{correct} / {total} correct · {wrong} wrong · rebuilt in {seconds}s",
       "piecesCorrect": "Pieces correct",
       "memorizationTime": "Memorization time",
       "solutionTime": "Solution time",

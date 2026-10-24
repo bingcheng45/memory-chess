@@ -1055,6 +1055,7 @@
       },
       "accuracy": "准确率",
       "piecesCorrectCaption": "颗棋子正确",
+      "summary": "{correct} / {total} 正确 · {wrong} 错误 · 用时 {seconds} 秒",
       "piecesCorrect": "正确棋子",
       "memorizationTime": "记忆时间",
       "solutionTime": "还原用时",

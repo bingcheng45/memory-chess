@@ -1055,6 +1055,7 @@
       },
       "accuracy": "정확도",
       "piecesCorrectCaption": "개 기물 정답",
+      "summary": "{correct} / {total} 정답 · 오답 {wrong} · 배치 {seconds}초",
       "piecesCorrect": "맞힌 기물",
       "memorizationTime": "암기 시간",
       "solutionTime": "풀이 시간",

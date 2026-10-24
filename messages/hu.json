@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Pontosság",
       "piecesCorrectCaption": "bábu helyesen",
+      "summary": "{correct} / {total} helyes · {wrong} hibás · kirakva {seconds} mp alatt",
       "piecesCorrect": "Helyes bábuk",
       "memorizationTime": "Memorizálási idő",
       "solutionTime": "Megoldási idő",

@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Träffsäkerhet",
       "piecesCorrectCaption": "pjäser rätt",
+      "summary": "{correct} / {total} rätt · {wrong} fel · placerat på {seconds} s",
       "piecesCorrect": "Rätta pjäser",
       "memorizationTime": "Memoreringstid",
       "solutionTime": "Lösningstid",

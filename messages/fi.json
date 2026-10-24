@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Tarkkuus",
       "piecesCorrectCaption": "nappulaa oikein",
+      "summary": "{correct} / {total} oikein · {wrong} väärin · asettelu {seconds} s",
       "piecesCorrect": "Oikeat nappulat",
       "memorizationTime": "Muistiinpainamisaika",
       "solutionTime": "Ratkaisuaika",

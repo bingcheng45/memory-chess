@@ -1055,6 +1055,7 @@
       },
       "accuracy": "正答率",
       "piecesCorrectCaption": "駒が正解",
+      "summary": "{correct} / {total} 正解 · 誤り {wrong} · 配置 {seconds}秒",
       "piecesCorrect": "正解した駒",
       "memorizationTime": "記憶時間",
       "solutionTime": "解答時間",

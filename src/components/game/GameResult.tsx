@@ -6,7 +6,7 @@ import { GameState } from "@/lib/types/game";
 import { lazy, Suspense, useDeferredValue, useState, useEffect, useRef } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -108,9 +108,11 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const tCountry = useTranslations("country");
   const tDaily = useTranslations("daily.round");
   const tConfig = useTranslations("game.config");
+  const format = useFormatter();
   const { gameState, round, history, resultView, setResultView } = useGameStore();
   const { labRound } = gameState;
   const blindfold = round.phase === "scored" && round.config.blindfold === true;
+  const scored = round.phase === "scored" ? round : null;
   const { countryCode, setCountryCode } = useSettingsStore();
 
   // Leaderboard submission state
@@ -355,39 +357,62 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   return (
     <div className="lab-result w-full space-y-6 pb-4">
       <section aria-labelledby="game-result-heading" className="lab-card lab-result-card">
-        <h2 id="game-result-heading" className="lab-result-h">
-          {getResultMessage()}
-        </h2>
-        <p className="lab-result-sub">
-          <span className="lab-mono">
-            {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
-          </span>{" "}
-          {t("piecesCorrectCaption")}
-          <span aria-hidden="true"> · </span>
-          <span>{t("recallSpeed")}</span> <span className="lab-mono">{recallSpeed}</span>
-        </p>
-        {blindfold && (
-          <p className="lab-result-sub" data-round-mode="blindfold">
-            {t("blindfoldRound")}
-          </p>
-        )}
-        {ratingNote && (
-          <p className="lab-result-sub" data-rating-phase={gameState.rating?.phase}>
-            {ratingNote}
-          </p>
-        )}
-
-        {showLeaderboardQualifier && (
-          <p role="status" className="lab-result-qualifies">
-            {t("leaderboardQualifies")}
+        <div className="lab-result-title">
+          <h2 id="game-result-heading" className="lab-result-h">
+            {getResultMessage()}
+          </h2>
+          {scored && (
+            <span className="lab-result-score">
+              {scored.score.accuracy}
+              <small>%</small>
+            </span>
+          )}
+        </div>
+        {scored && (
+          <p className="lab-result-summary" data-result-summary>
+            {t("summary", {
+              correct: scored.score.correct,
+              total: scored.score.total,
+              wrong: scored.score.wrong,
+              seconds: format.number(scored.rebuildMs / 1000, { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
+            })}
           </p>
         )}
 
-        {round.phase === "scored" && (
-          <div className="lab-result-grid">
-            <ResultBoards round={round} view={resultView} onViewChange={setResultView} />
-            <ReadoutCard state={round} copy="game.round" expected={round.config} legend={false} />
-          </div>
+        <div className="lab-result-notes">
+          <p className="lab-result-sub">
+            <span className="lab-mono">
+              {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
+            </span>{" "}
+            {t("piecesCorrectCaption")}
+            <span aria-hidden="true"> · </span>
+            <span>{t("recallSpeed")}</span> <span className="lab-mono">{recallSpeed}</span>
+          </p>
+          {blindfold && (
+            <p className="lab-result-sub" data-round-mode="blindfold">
+              {t("blindfoldRound")}
+            </p>
+          )}
+          {ratingNote && (
+            <p className="lab-result-sub" data-rating-phase={gameState.rating?.phase}>
+              {ratingNote}
+            </p>
+          )}
+
+          {showLeaderboardQualifier && (
+            <p role="status" className="lab-result-qualifies">
+              {t("leaderboardQualifies")}
+            </p>
+          )}
+        </div>
+
+        {scored && (
+          <>
+            <ResultBoards round={scored} view={resultView} onViewChange={setResultView} />
+            <div className="lab-result-readout">
+              <ReadoutCard state={scored} copy="game.round" expected={scored.config} legend={false} />
+            </div>
+          </>
         )}
 
         <div className="lab-result-next">

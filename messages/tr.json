@@ -1055,6 +1055,7 @@
       },
       "accuracy": "İsabet",
       "piecesCorrectCaption": "taş doğru",
+      "summary": "{correct} / {total} doğru · {wrong} yanlış · {seconds} sn'de yerleştirildi",
       "piecesCorrect": "Doğru taş",
       "memorizationTime": "Ezberleme süresi",
       "solutionTime": "Çözüm süresi",

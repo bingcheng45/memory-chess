@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Přesnost",
       "piecesCorrectCaption": "figurek správně",
+      "summary": "{correct} / {total} správně · {wrong} chybně · rozestaveno za {seconds} s",
       "piecesCorrect": "Správné figurky",
       "memorizationTime": "Čas na zapamatování",
       "solutionTime": "Čas řešení",

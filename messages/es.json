@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Precisión",
       "piecesCorrectCaption": "piezas correctas",
+      "summary": "{correct} de {total} bien · {wrong} mal · colocado en {seconds} s",
       "piecesCorrect": "Piezas correctas",
       "memorizationTime": "Tiempo de memorización",
       "solutionTime": "Tiempo de resolución",

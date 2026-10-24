@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Genauigkeit",
       "piecesCorrectCaption": "Figuren richtig",
+      "summary": "{correct} / {total} richtig · {wrong} falsch · aufgebaut in {seconds} s",
       "piecesCorrect": "Richtige Figuren",
       "memorizationTime": "Einprägezeit",
       "solutionTime": "Lösungszeit",

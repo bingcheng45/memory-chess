@@ -1055,6 +1055,7 @@
       },
       "accuracy": "सटीकता",
       "piecesCorrectCaption": "मोहरे सही",
+      "summary": "{correct} / {total} सही · {wrong} गलत · {seconds} सेकंड में रखा",
       "piecesCorrect": "सही मोहरे",
       "memorizationTime": "याद करने का समय",
       "solutionTime": "हल करने का समय",

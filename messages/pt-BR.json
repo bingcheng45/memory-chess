@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Precisão",
       "piecesCorrectCaption": "peças corretas",
+      "summary": "{correct} / {total} {correct, plural, one {acerto} many {acertos} other {acertos}} · {wrong, plural, one {# erro} many {# erros} other {# erros}} · montado em {seconds} s",
       "piecesCorrect": "Peças corretas",
       "memorizationTime": "Tempo de memorização",
       "solutionTime": "Tempo de resolução",

@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Celność",
       "piecesCorrectCaption": "bierek poprawnie",
+      "summary": "{correct} / {total} poprawnie · {wrong} błędnie · ustawione w {seconds} s",
       "piecesCorrect": "Poprawne bierki",
       "memorizationTime": "Czas zapamiętywania",
       "solutionTime": "Czas rozwiązania",

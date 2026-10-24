@@ -180,6 +180,39 @@ describe("GameResult", () => {
     expect(mockSetResultView.mock.calls).toEqual([["overlay"]]);
   });
 
+  it("reads the round in one line under the title, with the score beside it", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+    const title = screen.getByRole("heading", { name: "Great job!" }).parentElement!;
+    expect([title.textContent, title.nextElementSibling?.textContent]).toEqual([
+      "Great job!80%",
+      "4 / 5 correct · 1 wrong · rebuilt in 12.5s",
+    ]);
+  });
+
+  it("puts the review board before the readout and Next round", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+    const order = [
+      document.querySelector("[data-result-summary]"),
+      screen.getByRole("group", { name: "Result view" }),
+      document.querySelector(".lab-rc-big"),
+      screen.getByRole("button", { name: /^Next round/ }),
+    ];
+    const follows = order.slice(1).map((element, index) => Boolean(order[index]!.compareDocumentPosition(element!) & Node.DOCUMENT_POSITION_FOLLOWING));
+    expect(follows).toEqual([true, true, true]);
+  });
+
+  it("swaps the two boards for one when One board is picked", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    const boards = () => document.querySelectorAll('[data-result-board="scored"] [data-round-phase]').length;
+
+    const before = boards();
+    fireEvent.click(screen.getByRole("button", { name: "One board" }));
+
+    expect([before, boards(), document.querySelector("[data-result-board]")?.getAttribute("data-result-view")]).toEqual([2, 1, "overlay"]);
+  });
+
   it("lays every mark on one board in the one-board view", () => {
     mockResultView = "overlay";
     render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);

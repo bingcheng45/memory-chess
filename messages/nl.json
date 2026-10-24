@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Nauwkeurigheid",
       "piecesCorrectCaption": "stukken goed",
+      "summary": "{correct} / {total} goed · {wrong} fout · opgebouwd in {seconds} s",
       "piecesCorrect": "Goede stukken",
       "memorizationTime": "Kijktijd",
       "solutionTime": "Oplostijd",

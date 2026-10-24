@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Precizie",
       "piecesCorrectCaption": "piese corecte",
+      "summary": "{correct} / {total} corect · {wrong} greșit · reconstruit în {seconds} s",
       "piecesCorrect": "Piese corecte",
       "memorizationTime": "Timp de memorare",
       "solutionTime": "Timp de rezolvare",

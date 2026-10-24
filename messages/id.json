@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Akurasi",
       "piecesCorrectCaption": "bidak benar",
+      "summary": "{correct} / {total} benar · {wrong} salah · disusun dalam {seconds} dtk",
       "piecesCorrect": "Bidak benar",
       "memorizationTime": "Waktu menghafal",
       "solutionTime": "Waktu penyelesaian",

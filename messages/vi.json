@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Độ chính xác",
       "piecesCorrectCaption": "quân đúng",
+      "summary": "{correct} / {total} đúng · {wrong} sai · xếp trong {seconds} giây",
       "piecesCorrect": "Quân đúng",
       "memorizationTime": "Thời gian ghi nhớ",
       "solutionTime": "Thời gian hoàn thành",

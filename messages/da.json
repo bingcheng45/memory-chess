@@ -1055,6 +1055,7 @@
       },
       "accuracy": "Præcision",
       "piecesCorrectCaption": "brikker rigtigt",
+      "summary": "{correct} / {total} rigtigt · {wrong} forkert · placeret på {seconds} s",
       "piecesCorrect": "Rigtige brikker",
       "memorizationTime": "Indlæringstid",
       "solutionTime": "Løsningstid",

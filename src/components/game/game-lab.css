@@ -130,15 +130,53 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 .lab-game [data-round-board] .lab-files { left: 16px; right: 16px; bottom: 1px; }
 .lab-game [data-round-board] .lab-ranks { top: 16px; bottom: 16px; left: 3px; }
 
-/* result screen */
-.lab-game .lab-result { max-width: 1000px; }
-.lab-game .lab-result-card { padding: clamp(16px, 3vw, 32px); }
-.lab-game .lab-result-h { font: 650 clamp(28px, 4vw, 36px)/1.15 var(--lp-ui); letter-spacing: -0.02em; margin: 0; }
+/* result screen: the card's parts placed by grid areas, in one of two layouts, each in both review views.
+
+     phone  one column: the title and score in a row, a line of the round's figures, then the board, with the view
+            toggle and the legend under it. The notes, the readout, the actions and the cards below the card follow.
+            Side by side, the toggle leads and the two boards share the width. Either way the boards' foot clears
+            the pinned Next round bar on the first screen.
+     wide   landscape from 900px. One board: the board on the left; the title, the score lines, the readout's score
+            and figures, Next round inline and the actions beside it, the recall by piece type lower down. Side by
+            side: the title and Next round across the top, the two boards under them, the readout below.
+
+   Each board's side is the room left once the chrome above it and the fixed rows of its layout are added up, so it
+   is right on the first painted frame. --lead-h runs to the top of the review plate's content and --pair-top to the
+   top of the two boards; a title long enough to wrap pushes the boards down by its second line. */
+.lab-game .lab-result { max-width: 1040px; }
+.lab-game .lab-result-card {
+  --card-pad: clamp(16px, 3vw, 32px);
+  --plate-pad: 8px;
+  --title-h: 28px;
+  --summary-h: 21px;
+  --toggle-h: 54px;
+  --caption-h: 24px;
+  --next-h: calc(77px + env(safe-area-inset-bottom));
+  --lead-h: calc(var(--chrome-h) + var(--scroll-pad-y) + var(--card-pad) + var(--title-h) + 4px + var(--summary-h) + 12px + 1px + var(--plate-pad));
+  --board-fit: clamp(240px, 100svh - var(--lead-h) - var(--next-h) - 8px, 480px);
+  /* Below the two boards: the legend, which wraps to two lines on a phone, its margin, then the bar. */
+  --pair-top: calc(var(--lead-h) + var(--toggle-h) + 8px + var(--caption-h));
+  --pair-below: calc(54px + var(--next-h));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "title" "summary" "board" "notes" "readout" "next" "actions" "invite";
+  padding: var(--card-pad);
+}
+.lab-game .lab-result-title { grid-area: title; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-height: var(--title-h); }
+.lab-game .lab-result-h { font: 650 22px/1.25 var(--lp-ui); letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+.lab-game .lab-result-score { flex: none; font: 600 22px/1.25 var(--lp-data); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--lp-ink); }
+.lab-game .lab-result-score small { font-size: 0.6em; color: var(--lp-muted); }
+.lab-game .lab-result-summary { grid-area: summary; margin: 4px 0 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 500 15px/var(--summary-h) var(--lp-ui); color: var(--lp-ink-2); font-variant-numeric: tabular-nums; }
+.lab-game .lab-result-notes { grid-area: notes; }
 .lab-game .lab-result-sub { margin-top: 8px; font: 400 16px/1.5 var(--lp-body); color: var(--lp-ink-2); }
 .lab-game .lab-result-sub .lab-mono { color: var(--lp-ink); font-weight: 500; }
 .lab-game .lab-result-qualifies { margin-top: 16px; padding: 12px 16px; border-radius: var(--lp-r-md); background: var(--lp-correct-soft); color: var(--lp-correct); font: 600 15px/1.45 var(--lp-ui); }
-.lab-game .lab-result-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 24px; align-items: start; margin-top: 24px; }
-.lab-game .lab-result-board { margin: 0; padding: 16px; }
+.lab-game .lab-result-readout { grid-area: readout; margin-top: 24px; }
+.lab-game .lab-result-actions { grid-area: actions; }
+.lab-game .lab-result-card > .lab-community { grid-area: invite; }
+
+.lab-game .lab-result-board { grid-area: board; display: flex; flex-direction: column; margin: 12px 0 0; padding: var(--plate-pad); }
+.lab-game .lab-result-board > .lab-figure { width: min(100%, var(--board-fit)); margin-inline: auto; }
 .lab-game .lab-result-board figcaption { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: var(--lp-ink); }
 .lab-game .lab-result-board-head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 16px; margin-bottom: 12px; }
 .lab-game .lab-result-board-head figcaption { margin: 0; }
@@ -148,24 +186,87 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 .lab-game .lab-view-option[aria-pressed="true"] { background: var(--lp-accent-soft); color: var(--lp-ink); font-weight: 600; }
 .lab-game .lab-view-option:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
 @media (pointer: coarse), (max-width: 767px) { .lab-game .lab-view-option { min-height: 44px; } }
-/* Two boards beside the readout leave each one too small to compare, so the side view takes the full width. */
-.lab-game .lab-result-grid:has(> [data-result-view="side"]) { grid-template-columns: minmax(0, 1fr); }
-.lab-game .lab-result-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+/* Two boards share the width, so coordinates sit only on the left and below, where they read, instead of in a frame
+   on all four sides. --pair-fit is a board's side without them. */
+.lab-game .lab-result-pair {
+  --pair-gutter: 16px;
+  --pair-files: 18px;
+  --pair-fit: clamp(120px, 100svh - var(--pair-top) - var(--pair-files) - var(--pair-below), 480px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, calc(var(--pair-fit) + var(--pair-gutter))));
+  justify-content: center;
+  gap: 16px;
+}
 .lab-game .lab-result-pair figure { margin: 0; min-width: 0; }
 .lab-game .lab-result-pair figcaption { margin-bottom: 4px; }
-/* Two boards share the width, so coordinates sit only on the left and below, where they read, instead of in a frame on all four sides. */
-.lab-game .lab-result-pair .lab-figure { padding: 0 0 18px 16px; }
-.lab-game .lab-result-pair .lab-ranks { top: 0; bottom: 18px; left: 2px; }
-.lab-game .lab-result-pair .lab-files { left: 16px; right: 0; bottom: 2px; }
+.lab-game .lab-result-pair .lab-figure { padding: 0 0 var(--pair-files) var(--pair-gutter); }
+.lab-game .lab-result-pair .lab-ranks { top: 0; bottom: var(--pair-files); left: 2px; }
+.lab-game .lab-result-pair .lab-files { left: var(--pair-gutter); right: 0; bottom: 2px; }
 @media (max-width: 767px) {
-  .lab-game .lab-result-board[data-result-view="side"] { padding: 12px; }
-  .lab-game .lab-result-pair { gap: 8px; }
-  .lab-game .lab-result-pair .lab-figure { padding: 0 0 14px 12px; }
-  .lab-game .lab-result-pair .lab-ranks { bottom: 14px; left: 1px; font-size: 10px; }
-  .lab-game .lab-result-pair .lab-files { left: 12px; bottom: 1px; font-size: 10px; }
+  .lab-game .lab-result-pair { --pair-gutter: 12px; --pair-files: 14px; gap: 8px; }
+  .lab-game .lab-result-pair .lab-ranks { left: 1px; font-size: 10px; }
+  .lab-game .lab-result-pair .lab-files { bottom: 1px; font-size: 10px; }
 }
-.lab-game .lab-result-next { position: sticky; bottom: 0; z-index: 5; margin: 24px calc(-1 * clamp(16px, 3vw, 32px)) 0; padding: 12px clamp(16px, 3vw, 32px) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
+
+/* phone. The plate runs to the card's edges, and its caption stays only for assistive technology, so the toggle
+   takes a row of its own: under one board, above two. */
+@media not all and (min-aspect-ratio: 4/3) and (min-width: 900px) {
+  .lab-game .lab-result-board { margin-inline: calc(-1 * var(--card-pad)); border-inline: 0; border-radius: 0; }
+  .lab-game .lab-result-board-head figcaption { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+  .lab-game .lab-result-board-head { margin: 0 0 8px; }
+  .lab-game .lab-view-toggle { display: flex; width: 100%; }
+  .lab-game .lab-view-option { flex: 1 1 0; padding: 0 8px; }
+  .lab-game .lab-result-board[data-result-view="overlay"] > .lab-result-board-head { order: 1; margin: 12px 0 0; }
+  .lab-game .lab-result-board > .lab-legend { margin-top: 8px; }
+}
+
+.lab-game .lab-result-next { grid-area: next; position: sticky; bottom: 0; z-index: 5; margin: 24px calc(-1 * var(--card-pad)) 0; padding: 12px var(--card-pad) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
 .lab-game .lab-result-next .lab-btn { min-height: 52px; min-width: min(320px, 100%); padding: 0 28px; font-size: 17px; }
+
+@media (min-aspect-ratio: 4/3) and (min-width: 900px) {
+  .lab-game .lab-result-card {
+    --plate-pad: 16px;
+    --head-h: 58px;
+    --board-fit: clamp(240px, 100svh - var(--chrome-h) - var(--scroll-pad-y) - var(--card-pad) - 1px - var(--plate-pad) - var(--head-h) - 8px, 480px);
+    grid-template-columns: calc(var(--board-fit) + 2 * var(--plate-pad) + 2px) minmax(0, 1fr);
+    grid-template-rows: repeat(6, auto) 1fr auto;
+    grid-template-areas: "board title" "board notes" "board readout" "board stats" "board next" "board actions" "board bytype" "invite invite";
+    column-gap: 32px;
+    align-items: start;
+  }
+  .lab-game .lab-result-h { font-size: 34px; line-height: 1.15; }
+  .lab-game .lab-result-score, .lab-game .lab-result-summary { display: none; }
+  .lab-game .lab-result-board { margin: 0; }
+  .lab-game .lab-result-board > .lab-figure { width: var(--board-fit); }
+  /* The readout's parts join the column, so Next round follows the score and figures and the recall by piece type goes under it. */
+  .lab-game .lab-result-readout, .lab-game .lab-result-readout > .lab-card { display: contents; }
+  .lab-game .lab-result-readout .lab-rc-top { grid-area: readout; margin-top: 16px; }
+  .lab-game .lab-result-readout .lab-rc-grid { grid-area: stats; }
+  .lab-game .lab-result-readout .lab-bars { grid-area: bytype; }
+  .lab-game .lab-result-next { position: static; margin: 20px 0 0; padding: 0; border: 0; background: none; }
+  .lab-game .lab-result-next .lab-btn { width: 100%; }
+  .lab-game .lab-result-actions { margin-top: 12px; }
+
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) {
+    /* The title row, as tall as Next round, and the gap under it. */
+    --top-h: 68px;
+    --caption-h: 26px;
+    --pair-top: calc(var(--chrome-h) + var(--scroll-pad-y) + var(--card-pad) + var(--top-h) + 1px + var(--plate-pad) + var(--head-h) + var(--caption-h));
+    --pair-below: 8px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: none;
+    grid-template-areas: "title next" "board board" "notes notes" "readout readout" "actions actions" "invite invite";
+  }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-title { align-self: center; justify-content: flex-start; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-score { display: inline; font-size: 34px; line-height: 1.15; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) > .lab-result-board { margin-top: 16px; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-notes { margin-top: 8px; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-readout,
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-readout > .lab-card { display: block; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-readout { margin-top: 24px; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-next { align-self: center; margin: 0; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-next .lab-btn { width: auto; min-width: 280px; }
+}
 .lab-game .lab-result-next-board { font-weight: 500; opacity: 0.85; font-variant-numeric: tabular-nums; }
 .lab-game .lab-result-actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px; margin-top: 16px; }
 .lab-game .lab-result-link { font: 500 15px/1.4 var(--lp-ui); }
@@ -212,8 +313,6 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
   .lab-game .lab-deltas-list { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 767px) {
-  .lab-game .lab-result-grid { grid-template-columns: minmax(0, 1fr); }
-  .lab-game .lab-result-grid > .lab-result-board { order: 1; }
   .lab-game .lab-result-actions > .lab-btn { flex: 1 1 calc(50% - 6px); }
   .lab-game .lab-result-actions > .lab-result-submit { flex-basis: 100%; }
   .lab-game .lab-result-next .lab-btn { width: 100%; }

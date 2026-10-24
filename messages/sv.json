@@ -940,6 +940,11 @@
         "capped": "Dagens {cap} repetitioner är klara på den här enheten.",
         "cappedNext": "Bräden som fortfarande väntar kommer tillbaka i morgon, de som väntat längst först.",
         "schedule": "Bräden där du får under 80 % kommer tillbaka 1, 3, 7 och 14 dagar efter att du först såg dem."
+      },
+      "intro": {
+        "label": "Introt med 45 brädor",
+        "one": "Ett bräde. Du kan se det.",
+        "skip": "Hoppa över intro"
       }
     }
   },

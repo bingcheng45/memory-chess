@@ -940,6 +940,11 @@
         "capped": "I {cap} ripassi di oggi sono completati su questo dispositivo.",
         "cappedNext": "Le scacchiere ancora da ripassare tornano domani, a partire da quella che aspetta da più tempo.",
         "schedule": "Le scacchiere in cui fai meno dell’80% tornano 1, 3, 7 e 14 giorni dopo la prima volta che le vedi."
+      },
+      "intro": {
+        "label": "L'intro delle 45 scacchiere",
+        "one": "Una scacchiera. La puoi vedere.",
+        "skip": "Salta l'intro"
       }
     }
   },

@@ -15,6 +15,8 @@ const MAX_FRAME_MS = 64;
 /** One scroll gesture fires many wheel events; this long after a jump, they are the same gesture. */
 const WHEEL_GAP_MS = 600;
 const WHEEL_MIN_DELTA = 20;
+/** A touch that travels this far is a swipe, the phone's scroll gesture; a shorter one is a tap, which the click handles. */
+const SWIPE_MIN_PX = 40;
 const JUMP_KEYS = new Set([" ", "Enter", "ArrowRight", "ArrowDown"]);
 
 type Phase = "idle" | "playing" | "ending";
@@ -111,7 +113,7 @@ function play(canvas: HTMLCanvasElement, onTime: (t: number) => void, onDone: ()
 
 /**
  * The 45-board intro: plays on its own when the gate marked its script, and again from the replay chip. While it plays,
- * Skip holds focus and the page under the layer is inert. A tap, a jump key or a scroll moves to the next beat.
+ * Skip holds focus and the page under the layer is inert. A tap, a jump key, a scroll or a swipe moves to the next beat.
  */
 export function IntroLayer() {
   const t = useTranslations("home.lab.intro");
@@ -170,6 +172,15 @@ export function IntroLayer() {
       wheelAt = event.timeStamp;
       playback.jump();
     };
+    let touchY: number | null = null;
+    const onTouchStart = (event: TouchEvent) => {
+      touchY = event.touches[0]?.clientY ?? null;
+    };
+    const onTouchEnd = (event: TouchEvent) => {
+      const endY = event.changedTouches[0]?.clientY;
+      if (touchY !== null && endY !== undefined && Math.abs(endY - touchY) >= SWIPE_MIN_PX) playback.jump();
+      touchY = null;
+    };
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") end();
       else if (JUMP_KEYS.has(event.key) && event.target !== skip.current) {
@@ -179,12 +190,16 @@ export function IntroLayer() {
     };
     const section = layer.current;
     section.addEventListener("wheel", onWheel, { passive: true });
+    section.addEventListener("touchstart", onTouchStart, { passive: true });
+    section.addEventListener("touchend", onTouchEnd, { passive: true });
     window.addEventListener("keydown", onKey);
     return () => {
       playback.stop();
       jump.current = () => {};
       covered.forEach((element) => element.removeAttribute("inert"));
       section.removeEventListener("wheel", onWheel);
+      section.removeEventListener("touchstart", onTouchStart);
+      section.removeEventListener("touchend", onTouchEnd);
       window.removeEventListener("keydown", onKey);
     };
   }, [phase]);

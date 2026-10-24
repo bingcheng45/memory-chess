@@ -99,6 +99,21 @@ describe("the intro on a first visit", () => {
   });
 });
 
+describe("a swipe on a phone", () => {
+  it("jumps to the next beat, while a touch that barely moves does not", async () => {
+    const { layer } = homePage({ marked: true });
+    await advance(100);
+    fireEvent.touchStart(layer, { touches: [{ clientY: 500 }] });
+    fireEvent.touchEnd(layer, { changedTouches: [{ clientY: 490 }] });
+    await advance(32);
+    expect(shownCaption(layer)).toMatch(/^One board\./);
+    fireEvent.touchStart(layer, { touches: [{ clientY: 500 }] });
+    fireEvent.touchEnd(layer, { changedTouches: [{ clientY: 380 }] });
+    await advance(32);
+    expect(shownCaption(layer)).toMatch(/^Now forty-five\./);
+  });
+});
+
 describe("the replay chip", () => {
   it("stays away on a first visit the gate skipped", async () => {
     const { layer, replay } = homePage({ marked: false });

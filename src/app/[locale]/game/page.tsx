@@ -276,6 +276,9 @@ function GamePageContent() {
     stopTimerSound(); // Stop any playing timer sound
     playSound('click');
     setSavingDaily(false);
+    // The link's round is spent; still held, it would keep the page blank where the form goes.
+    urlRoundRef.current = null;
+    setUrlRound(null);
     resetGame();
   };
 
@@ -295,7 +298,7 @@ function GamePageContent() {
     const activeRound = (playing: ActiveRoundState, gate: GateFacts | null) => (
       <div className={activePhaseClass}>
         <ErrorBoundary>
-          <ActiveRound round={playing} gate={gate} onStart={handleStart} onRestart={handleTryAgain} onSubmit={handleSubmitSolution} />
+          <ActiveRound round={playing} gate={gate} onStart={handleStart} onRestart={handleTryAgain} onSubmit={handleSubmitSolution} onLeave={handleNewGame} />
         </ErrorBoundary>
       </div>
     );

@@ -1152,6 +1152,7 @@
       "intro": "Zapamiętaj {count, plural, one {# bierkę} few {# bierki} many {# bierek} other {# bierki}} w {seconds} s, a potem odtwórz pozycję z pamięci.",
       "hide": "Ukryj szachownicę",
       "restart": "Od nowa",
+      "leave": "Opuść rundę",
       "again": "Jeszcze raz",
       "submit": "Wyślij",
       "clear": "Wyczyść szachownicę",

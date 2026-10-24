@@ -1152,6 +1152,7 @@
       "intro": "Se på {count, plural, one {# brikke} other {# brikker}} i {seconds} s, og bygg så opp stillingen etter hukommelsen.",
       "hide": "Skjul brettet",
       "restart": "Start på nytt",
+      "leave": "Forlat runden",
       "again": "Spill igjen",
       "submit": "Send inn",
       "clear": "Tøm brettet",

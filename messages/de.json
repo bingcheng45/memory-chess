@@ -1152,6 +1152,7 @@
       "intro": "Präge dir {count, plural, one {# Figur} other {# Figuren}} {seconds} s lang ein und baue die Stellung dann aus dem Gedächtnis nach.",
       "hide": "Brett ausblenden",
       "restart": "Neu starten",
+      "leave": "Runde verlassen",
       "again": "Neue Runde",
       "submit": "Abgeben",
       "clear": "Brett leeren",

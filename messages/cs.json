@@ -1152,6 +1152,7 @@
       "intro": "Prohlédněte si {count, plural, one {# figurku} few {# figurky} many {# figurky} other {# figurek}} po {seconds} s a pak pozici složte zpaměti.",
       "hide": "Skrýt šachovnici",
       "restart": "Od začátku",
+      "leave": "Opustit kolo",
       "again": "Hrát znovu",
       "submit": "Odeslat",
       "clear": "Vyčistit šachovnici",

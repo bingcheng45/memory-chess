@@ -1152,6 +1152,7 @@
       "intro": "Studia {count, plural, one {# pezzo} many {# di pezzi} other {# pezzi}} per {seconds} s, poi ricostruisci la posizione a memoria.",
       "hide": "Nascondi scacchiera",
       "restart": "Ricomincia",
+      "leave": "Esci dal round",
       "again": "Rigioca",
       "submit": "Invia",
       "clear": "Svuota scacchiera",

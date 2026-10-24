@@ -1,6 +1,7 @@
 'use client';
 
 import { useCallback } from 'react';
+import { X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useGameStore } from '@/lib/store/gameStore';
 import type { RoundState } from '@/lib/round/round';
@@ -27,10 +28,12 @@ interface ActiveRoundProps {
   readonly onStart: () => void;
   readonly onRestart: () => void;
   readonly onSubmit: () => void;
+  /** Back to the configuration form, the round dropped. */
+  readonly onLeave: () => void;
 }
 
 /** Memorising and placing, and a set board's wait before them: the shared round, drawn in the pinned layout the board is sized to. */
-export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit }: ActiveRoundProps) {
+export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit, onLeave }: ActiveRoundProps) {
   const t = useTranslations(COPY);
   const tDaily = useTranslations('daily.round');
   const gateDate = useGateDate(gate);
@@ -66,6 +69,11 @@ export default function ActiveRound({ round, gate, onStart, onRestart, onSubmit 
             clearEnabled={ROUND_CONTROLS[controlsPhase].clearEnabled}
             onClear={() => dispatch({ type: 'clear' })}
             copy={COPY}
+            lead={
+              <button type="button" className="lab-icon-btn lab-leave" aria-label={t('leave')} title={t('leave')} onClick={onLeave}>
+                <X size={20} aria-hidden="true" />
+              </button>
+            }
           />
         }
         board={

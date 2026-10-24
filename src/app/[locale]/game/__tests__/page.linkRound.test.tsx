@@ -83,4 +83,14 @@ describe("GamePage round a link starts", () => {
     expect(document.querySelector("[data-study-notation]")).not.toBeNull();
     expect(useGameStore.getState().round).toMatchObject({ phase: "study", config: { blindfold: true, pieceCount: 3 } });
   });
+
+  it("opens the configuration form when the player leaves the link's round", async () => {
+    render(<GamePage />);
+    await screen.findByRole("button", { name: "Start" });
+
+    fireEvent.click(screen.getByRole("button", { name: "Leave the round" }));
+
+    expect(useGameStore.getState().round.phase).toBe("idle");
+    expect(screen.getByRole("button", { name: "Start round" })).toBeEnabled();
+  });
 });

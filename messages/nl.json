@@ -1152,6 +1152,7 @@
       "intro": "Prent {count, plural, one {# stuk} other {# stukken}} in {seconds} s in en zet de stelling daarna uit je hoofd terug.",
       "hide": "Bord verbergen",
       "restart": "Opnieuw",
+      "leave": "Ronde verlaten",
       "again": "Nog een keer",
       "submit": "Verstuur",
       "clear": "Bord leegmaken",

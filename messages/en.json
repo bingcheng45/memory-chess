@@ -1152,6 +1152,7 @@
       "intro": "Study {count, plural, one {# piece} other {# pieces}} for {seconds} s, then rebuild the position from memory.",
       "hide": "Hide board",
       "restart": "Restart",
+      "leave": "Leave the round",
       "again": "Play again",
       "submit": "Submit",
       "clear": "Clear board",

@@ -1152,6 +1152,7 @@
       "intro": "Jegyezz meg {count} bábut {seconds} mp alatt, aztán rakd ki az állást emlékezetből.",
       "hide": "Tábla elrejtése",
       "restart": "Újrakezdés",
+      "leave": "Kilépés a körből",
       "again": "Új kör",
       "submit": "Beküldés",
       "clear": "Tábla törlése",

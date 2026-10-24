@@ -167,6 +167,7 @@ export default function ChangelogBanner({
     <>
       <aside
         id={BANNER_ID}
+        data-site-chrome
         aria-label={t("bannerLabel")}
         // The script below may already have set `hidden` on the served node.
         suppressHydrationWarning
@@ -205,5 +206,5 @@ export default function ChangelogBanner({
     </>
   );
 
-  return appearance === "paper" ? <div className={LAB_PAPER_CLASS}>{banner}</div> : banner;
+  return appearance === "paper" ? <div className={LAB_PAPER_CLASS} data-site-chrome>{banner}</div> : banner;
 }

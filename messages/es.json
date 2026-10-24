@@ -1152,6 +1152,7 @@
       "intro": "Memoriza {count, plural, one {# pieza} many {# de piezas} other {# piezas}} durante {seconds} s y luego reconstruye la posición de memoria.",
       "hide": "Ocultar tablero",
       "restart": "Reiniciar",
+      "leave": "Salir de la ronda",
       "again": "Otra partida",
       "submit": "Enviar",
       "clear": "Vaciar tablero",

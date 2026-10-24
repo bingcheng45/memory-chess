@@ -446,7 +446,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       {painted && (
         <div className="lab-ui-face space-y-6">
           {showsLab && labRound && (
-            <ErrorBoundary key={labRound.facts.id} fallback={<ResultLabEnd />}>
+            <ErrorBoundary key={`lab-${labRound.facts.id}`} fallback={<ResultLabEnd />}>
               <Suspense fallback={<ResultLabSlot />}>
                 <ResultLabCard roundId={labRound.facts.id} onPlay={onPlay} />
               </Suspense>
@@ -456,7 +456,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <TomorrowBoardCard />
 
           {deltas && labRound && (
-            <ErrorBoundary key={labRound.facts.id} fallback={<></>}>
+            <ErrorBoundary key={`deltas-${labRound.facts.id}`} fallback={<></>}>
               <deltas.Deltas before={deltas.before} labRound={labRound} feedbackAsked={asksFeedback} />
             </ErrorBoundary>
           )}

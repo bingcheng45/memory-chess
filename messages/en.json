@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "The 45-board intro",
-        "one": "One board. You can see it.",
-        "skip": "Skip intro"
+        "skip": "Skip intro",
+        "replay": "Najdorf's 45 boards",
+        "counter": "{count, plural, one {# board} other {# boards}}",
+        "counterDark": "{count, plural, one {# board} other {# boards}} · none seen",
+        "one": "One board. <em>You can see it.</em>",
+        "oneNote": "Morphy's Opera Game, Paris, 1858. Every move is real.",
+        "many": "Now <em>forty-five.</em>",
+        "manyNote": "São Paulo, January 1947. Miguel Najdorf against forty-five opponents at once.",
+        "dark": "He saw <em>none of them.</em>",
+        "darkNote": "He played blindfold for more than 23 hours, answering every move from memory. He won 39.",
+        "you": "Start with <em>one.</em>",
+        "youNote": "Look at a position for a few seconds. Then it goes dark, and you rebuild it."
       }
     }
   },

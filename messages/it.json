@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "L'intro delle 45 scacchiere",
-        "one": "Una scacchiera. La puoi vedere.",
-        "skip": "Salta l'intro"
+        "skip": "Salta l'intro",
+        "replay": "Le 45 scacchiere di Najdorf",
+        "counter": "{count, plural, one {# scacchiera} many {# scacchiere} other {# scacchiere}}",
+        "counterDark": "{count, plural, one {# scacchiera} many {# scacchiere} other {# scacchiere}} · nessuna vista",
+        "one": "Una scacchiera. <em>La puoi vedere.</em>",
+        "oneNote": "La partita dell'Opera di Morphy, Parigi, 1858. Ogni mossa è reale.",
+        "many": "Ora <em>quarantacinque.</em>",
+        "manyNote": "San Paolo, gennaio 1947. Miguel Najdorf contro quarantacinque avversari contemporaneamente.",
+        "dark": "Non ne vedeva <em>nessuna.</em>",
+        "darkNote": "Giocò alla cieca per oltre 23 ore, rispondendo a ogni mossa a memoria. Ne vinse 39.",
+        "you": "Inizia da <em>una.</em>",
+        "youNote": "Guarda una posizione per qualche secondo. Poi si oscura e la ricostruisci."
       }
     }
   },

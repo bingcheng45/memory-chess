@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "Wstęp z 45 szachownicami",
-        "one": "Jedna szachownica. Widzisz ją.",
-        "skip": "Pomiń wstęp"
+        "skip": "Pomiń wstęp",
+        "replay": "45 szachownic Najdorfa",
+        "counter": "{count, plural, one {# szachownica} few {# szachownice} many {# szachownic} other {# szachownicy}}",
+        "counterDark": "{count, plural, one {# szachownica} few {# szachownice} many {# szachownic} other {# szachownicy}} · żadnej nie widać",
+        "one": "Jedna szachownica. <em>Widzisz ją.</em>",
+        "oneNote": "Partia w operze Morphy'ego, Paryż, 1858. Każdy ruch jest prawdziwy.",
+        "many": "Teraz <em>czterdzieści pięć.</em>",
+        "manyNote": "São Paulo, styczeń 1947. Miguel Najdorf przeciwko czterdziestu pięciu rywalom naraz.",
+        "dark": "Nie widział <em>żadnej z nich.</em>",
+        "darkNote": "Grał na ślepo przez ponad 23 godziny, odpowiadając na każdy ruch z pamięci. Wygrał 39 partii.",
+        "you": "Zacznij od <em>jednej.</em>",
+        "youNote": "Przyjrzyj się pozycji przez kilka sekund. Potem gaśnie, a ty ją odtwarzasz."
       }
     }
   },

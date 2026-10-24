@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "Intro 45 papan",
-        "one": "Satu papan. Kamu bisa melihatnya.",
-        "skip": "Lewati intro"
+        "skip": "Lewati intro",
+        "replay": "45 papan Najdorf",
+        "counter": "{count, plural, other {# papan}}",
+        "counterDark": "{count, plural, other {# papan}} · tak satu pun terlihat",
+        "one": "Satu papan. <em>Kamu bisa melihatnya.</em>",
+        "oneNote": "Permainan Opera karya Morphy, Paris, 1858. Setiap langkahnya nyata.",
+        "many": "Kini <em>empat puluh lima.</em>",
+        "manyNote": "São Paulo, Januari 1947. Miguel Najdorf melawan empat puluh lima lawan sekaligus.",
+        "dark": "Ia tak melihat <em>satu pun.</em>",
+        "darkNote": "Ia bermain tanpa melihat papan lebih dari 23 jam, menjawab setiap langkah dari ingatan. Ia menang 39.",
+        "you": "Mulai dari <em>satu.</em>",
+        "youNote": "Amati sebuah posisi beberapa detik. Lalu papan menjadi gelap, dan kamu menyusunnya kembali."
       }
     }
   },

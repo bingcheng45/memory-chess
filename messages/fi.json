@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "45 laudan intro",
-        "one": "Yksi lauta. Näet sen.",
-        "skip": "Ohita intro"
+        "skip": "Ohita intro",
+        "replay": "Najdorfin 45 lautaa",
+        "counter": "{count, plural, one {# lauta} other {# lautaa}}",
+        "counterDark": "{count, plural, one {# lauta} other {# lautaa}} · yhtäkään ei nähty",
+        "one": "Yksi lauta. <em>Näet sen.</em>",
+        "oneNote": "Morphyn oopperapeli, Pariisi, 1858. Jokainen siirto on aito.",
+        "many": "Nyt <em>neljäkymmentäviisi.</em>",
+        "manyNote": "São Paulo, tammikuu 1947. Miguel Najdorf neljäkymmentäviisi vastustajaa vastaan yhtä aikaa.",
+        "dark": "Hän ei nähnyt <em>yhtäkään.</em>",
+        "darkNote": "Hän pelasi sokkona yli 23 tuntia ja vastasi jokaiseen siirtoon muistinvaraisesti. Hän voitti 39.",
+        "you": "Aloita <em>yhdestä.</em>",
+        "youNote": "Katso asemaa muutama sekunti. Sitten se pimenee, ja sinä rakennat sen uudelleen."
       }
     }
   },

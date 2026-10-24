@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "Introen med 45 brett",
-        "one": "Ett brett. Du kan se det.",
-        "skip": "Hopp over intro"
+        "skip": "Hopp over intro",
+        "replay": "Najdorfs 45 brett",
+        "counter": "{count, plural, one {# brett} other {# brett}}",
+        "counterDark": "{count, plural, one {# brett} other {# brett}} · ingen sett",
+        "one": "Ett brett. <em>Du kan se det.</em>",
+        "oneNote": "Morphys operaparti, Paris, 1858. Hvert trekk er ekte.",
+        "many": "Nå <em>førtifem.</em>",
+        "manyNote": "São Paulo, januar 1947. Miguel Najdorf mot førtifem motstandere samtidig.",
+        "dark": "Han så <em>ingen av dem.</em>",
+        "darkNote": "Han spilte blindt i over 23 timer og svarte på hvert trekk etter hukommelsen. Han vant 39.",
+        "you": "Begynn med <em>ett.</em>",
+        "youNote": "Se på en stilling i noen sekunder. Så blir den mørk, og du bygger den opp igjen."
       }
     }
   },

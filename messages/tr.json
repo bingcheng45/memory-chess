@@ -940,6 +940,11 @@
         "capped": "Bugünün {cap} tekrarı bu cihazda tamamlandı.",
         "cappedNext": "Sırası gelmiş tahtalar yarın geri gelir, en uzun bekleyen önce.",
         "schedule": "%80'in altında puan aldığın tahtalar, onları ilk gördükten 1, 3, 7 ve 14 gün sonra geri gelir."
+      },
+      "intro": {
+        "label": "45 tahtalı giriş",
+        "one": "Bir tahta. Onu görebiliyorsun.",
+        "skip": "Girişi atla"
       }
     }
   },

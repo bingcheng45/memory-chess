@@ -940,6 +940,11 @@
         "capped": "Tämän päivän {cap} kertausta on tehty tällä laitteella.",
         "cappedNext": "Vielä kerrattavat laudat palaavat huomenna, pisimpään odottaneet ensin.",
         "schedule": "Laudat, joilla saat alle 80 %, palaavat 1, 3, 7 ja 14 päivää sen jälkeen, kun näit ne ensimmäisen kerran."
+      },
+      "intro": {
+        "label": "45 laudan intro",
+        "one": "Yksi lauta. Näet sen.",
+        "skip": "Ohita intro"
       }
     }
   },

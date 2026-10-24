@@ -940,6 +940,11 @@
         "capped": "Les {cap} révisions du jour sont terminées sur cet appareil.",
         "cappedNext": "Toute position encore à réviser revient demain, la plus ancienne en premier.",
         "schedule": "Les positions où vous faites moins de 80 % reviennent 1, 3, 7 et 14 jours après la première fois."
+      },
+      "intro": {
+        "label": "L'intro des 45 échiquiers",
+        "one": "Un échiquier. Vous le voyez.",
+        "skip": "Passer l'intro"
       }
     }
   },

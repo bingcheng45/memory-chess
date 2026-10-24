@@ -940,6 +940,11 @@
         "capped": "Cele {cap} recapitulări de azi sunt gata pe acest dispozitiv.",
         "cappedNext": "Orice tablă încă programată revine mâine, începând cu cea care așteaptă de cel mai mult timp.",
         "schedule": "Tablele la care obții sub 80% revin la 1, 3, 7 și 14 zile după ce le vezi prima dată."
+      },
+      "intro": {
+        "label": "Introducerea cu 45 de table",
+        "one": "O tablă. O poți vedea.",
+        "skip": "Sari peste introducere"
       }
     }
   },

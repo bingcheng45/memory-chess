@@ -940,6 +940,11 @@
         "capped": "Today's {cap} reviews are done on this device.",
         "cappedNext": "Any board still due comes back tomorrow, the longest waiting first.",
         "schedule": "Boards you score under 80% on come back 1, 3, 7 and 14 days after you first see them."
+      },
+      "intro": {
+        "label": "The 45-board intro",
+        "one": "One board. You can see it.",
+        "skip": "Skip intro"
       }
     }
   },

@@ -940,6 +940,11 @@
         "capped": "De {cap} herhalingen van vandaag zijn op dit apparaat gedaan.",
         "cappedNext": "Elk bord dat nog klaarstaat, komt morgen terug, het langst wachtende eerst.",
         "schedule": "Borden waarop je onder de 80% scoort, komen 1, 3, 7 en 14 dagen nadat je ze voor het eerst zag terug."
+      },
+      "intro": {
+        "label": "De intro met 45 borden",
+        "one": "Eén bord. Je kunt het zien.",
+        "skip": "Intro overslaan"
       }
     }
   },

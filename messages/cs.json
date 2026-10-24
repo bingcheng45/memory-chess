@@ -940,6 +940,11 @@
         "capped": "Dnešní opakování ({cap}) jsou na tomto zařízení hotová.",
         "cappedNext": "Desky, které ještě čekají, se vrátí zítra, nejdřív ty, které čekají nejdéle.",
         "schedule": "Desky, na kterých máte méně než 80 %, se vracejí 1, 3, 7 a 14 dní po prvním zobrazení."
+      },
+      "intro": {
+        "label": "Úvod se 45 šachovnicemi",
+        "one": "Jedna šachovnice. Vidíte ji.",
+        "skip": "Přeskočit úvod"
       }
     }
   },

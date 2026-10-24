@@ -940,6 +940,11 @@
         "capped": "{cap} ulasan hari ini sudah selesai di perangkat ini.",
         "cappedNext": "Papan yang masih jatuh tempo kembali besok, yang paling lama menunggu lebih dulu.",
         "schedule": "Papan dengan skor di bawah 80% kembali 1, 3, 7, dan 14 hari setelah pertama kali kamu melihatnya."
+      },
+      "intro": {
+        "label": "Intro 45 papan",
+        "one": "Satu papan. Kamu bisa melihatnya.",
+        "skip": "Lewati intro"
       }
     }
   },

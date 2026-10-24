@@ -940,6 +940,11 @@
         "capped": "Los {cap} repasos de hoy están hechos en este dispositivo.",
         "cappedNext": "Los tableros que sigan pendientes vuelven mañana, primero los que más llevan esperando.",
         "schedule": "Los tableros en los que sacas menos de un 80 % vuelven 1, 3, 7 y 14 días después de verlos por primera vez."
+      },
+      "intro": {
+        "label": "La introducción de 45 tableros",
+        "one": "Un tablero. Puedes verlo.",
+        "skip": "Saltar introducción"
       }
     }
   },

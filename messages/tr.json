@@ -940,6 +940,21 @@
         "capped": "Bugünün {cap} tekrarı bu cihazda tamamlandı.",
         "cappedNext": "Sırası gelmiş tahtalar yarın geri gelir, en uzun bekleyen önce.",
         "schedule": "%80'in altında puan aldığın tahtalar, onları ilk gördükten 1, 3, 7 ve 14 gün sonra geri gelir."
+      },
+      "intro": {
+        "label": "45 tahtalı giriş",
+        "skip": "Girişi atla",
+        "replay": "Najdorf'un 45 tahtası",
+        "counter": "{count, plural, one {# tahta} other {# tahta}}",
+        "counterDark": "{count, plural, one {# tahta} other {# tahta}} · hiçbiri görülmüyor",
+        "one": "Bir tahta. <em>Onu görebiliyorsun.</em>",
+        "oneNote": "Morphy'nin Opera Oyunu, Paris, 1858. Her hamle gerçek.",
+        "many": "Şimdi <em>kırk beş.</em>",
+        "manyNote": "São Paulo, Ocak 1947. Miguel Najdorf aynı anda kırk beş rakibe karşı.",
+        "dark": "Hiçbirini <em>görmedi.</em>",
+        "darkNote": "23 saatten uzun süre gözü kapalı oynadı, her hamleye ezberden yanıt verdi. 39'unu kazandı.",
+        "you": "<em>Bir</em> tahtayla başla.",
+        "youNote": "Bir konuma birkaç saniye bak. Sonra kararır ve onu yeniden kurarsın."
       }
     }
   },

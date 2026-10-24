@@ -940,6 +940,21 @@
         "capped": "I {cap} ripassi di oggi sono completati su questo dispositivo.",
         "cappedNext": "Le scacchiere ancora da ripassare tornano domani, a partire da quella che aspetta da più tempo.",
         "schedule": "Le scacchiere in cui fai meno dell’80% tornano 1, 3, 7 e 14 giorni dopo la prima volta che le vedi."
+      },
+      "intro": {
+        "label": "L'intro delle 45 scacchiere",
+        "skip": "Salta l'intro",
+        "replay": "Le 45 scacchiere di Najdorf",
+        "counter": "{count, plural, one {# scacchiera} many {# scacchiere} other {# scacchiere}}",
+        "counterDark": "{count, plural, one {# scacchiera} many {# scacchiere} other {# scacchiere}} · nessuna vista",
+        "one": "Una scacchiera. <em>La puoi vedere.</em>",
+        "oneNote": "La partita dell'Opera di Morphy, Parigi, 1858. Ogni mossa è reale.",
+        "many": "Ora <em>quarantacinque.</em>",
+        "manyNote": "San Paolo, gennaio 1947. Miguel Najdorf contro quarantacinque avversari contemporaneamente.",
+        "dark": "Non ne vedeva <em>nessuna.</em>",
+        "darkNote": "Giocò alla cieca per oltre 23 ore, rispondendo a ogni mossa a memoria. Ne vinse 39.",
+        "you": "Inizia da <em>una.</em>",
+        "youNote": "Guarda una posizione per qualche secondo. Poi si oscura e la ricostruisci."
       }
     }
   },

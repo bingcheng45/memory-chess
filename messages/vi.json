@@ -940,6 +940,21 @@
         "capped": "Đã xong {cap} lần ôn hôm nay trên thiết bị này.",
         "cappedNext": "Bàn cờ nào còn đến hạn sẽ quay lại vào ngày mai, bàn chờ lâu nhất trước.",
         "schedule": "Những bàn cờ bạn đạt dưới 80% sẽ quay lại sau 1, 3, 7 và 14 ngày kể từ lần đầu bạn thấy chúng."
+      },
+      "intro": {
+        "label": "Phần mở đầu 45 bàn cờ",
+        "skip": "Bỏ qua phần mở đầu",
+        "replay": "45 bàn cờ của Najdorf",
+        "counter": "{count, plural, other {# bàn cờ}}",
+        "counterDark": "{count, plural, other {# bàn cờ}} · không bàn nào được nhìn",
+        "one": "Một bàn cờ. <em>Bạn nhìn thấy nó.</em>",
+        "oneNote": "Ván cờ ở Nhà hát Opera của Morphy, Paris, 1858. Mọi nước đi đều có thật.",
+        "many": "Giờ là <em>bốn mươi lăm.</em>",
+        "manyNote": "São Paulo, tháng 1 năm 1947. Miguel Najdorf đấu cùng lúc với bốn mươi lăm đối thủ.",
+        "dark": "Ông không nhìn thấy <em>bàn nào.</em>",
+        "darkNote": "Ông chơi cờ bịt mắt hơn 23 giờ, đáp lại mọi nước đi bằng trí nhớ. Ông thắng 39 ván.",
+        "you": "Bắt đầu với <em>một.</em>",
+        "youNote": "Nhìn một thế cờ trong vài giây. Rồi nó tối đi, và bạn dựng lại nó."
       }
     }
   },

@@ -940,6 +940,21 @@
         "capped": "Dagens {cap} gentagelser er klaret på denne enhed.",
         "cappedNext": "Bræt, der stadig venter, kommer tilbage i morgen, det der har ventet længst først.",
         "schedule": "Bræt, hvor du får under 80 %, kommer tilbage 1, 3, 7 og 14 dage efter, at du så dem første gang."
+      },
+      "intro": {
+        "label": "Introen med 45 brætter",
+        "skip": "Spring intro over",
+        "replay": "Najdorfs 45 brætter",
+        "counter": "{count, plural, one {# bræt} other {# brætter}}",
+        "counterDark": "{count, plural, one {# bræt} other {# brætter}} · ingen set",
+        "one": "Ét bræt. <em>Du kan se det.</em>",
+        "oneNote": "Morphys Operaparti, Paris, 1858. Hvert træk er ægte.",
+        "many": "Nu <em>femogfyrre.</em>",
+        "manyNote": "São Paulo, januar 1947. Miguel Najdorf mod femogfyrre modstandere på én gang.",
+        "dark": "Han så <em>ingen af dem.</em>",
+        "darkNote": "Han spillede blindt i over 23 timer og svarede på hvert træk efter hukommelsen. Han vandt 39.",
+        "you": "Start med <em>ét.</em>",
+        "youNote": "Se på en stilling i et par sekunder. Så bliver den mørk, og du bygger den op igen."
       }
     }
   },

@@ -940,6 +940,21 @@
         "capped": "As {cap} revisões de hoje estão concluídas neste dispositivo.",
         "cappedNext": "Qualquer tabuleiro ainda pendente volta amanhã, começando pelo que espera há mais tempo.",
         "schedule": "Tabuleiros em que você faz menos de 80% voltam 1, 3, 7 e 14 dias depois da primeira vez que você os vê."
+      },
+      "intro": {
+        "label": "A introdução dos 45 tabuleiros",
+        "skip": "Pular introdução",
+        "replay": "Os 45 tabuleiros de Najdorf",
+        "counter": "{count, plural, one {# tabuleiro} many {# tabuleiros} other {# tabuleiros}}",
+        "counterDark": "{count, plural, one {# tabuleiro} many {# tabuleiros} other {# tabuleiros}} · nenhum visto",
+        "one": "Um tabuleiro. <em>Você consegue vê-lo.</em>",
+        "oneNote": "A partida da Ópera de Morphy, Paris, 1858. Cada lance é real.",
+        "many": "Agora, <em>quarenta e cinco.</em>",
+        "manyNote": "São Paulo, janeiro de 1947. Miguel Najdorf contra quarenta e cinco adversários ao mesmo tempo.",
+        "dark": "Ele não via <em>nenhum.</em>",
+        "darkNote": "Ele jogou às cegas por mais de 23 horas, respondendo a cada lance de memória. Venceu 39.",
+        "you": "Comece com <em>um.</em>",
+        "youNote": "Observe uma posição por alguns segundos. Depois ela escurece, e você a reconstrói."
       }
     }
   },

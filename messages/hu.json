@@ -940,6 +940,21 @@
         "capped": "A mai {cap} ismétlés ezen az eszközön kész.",
         "cappedNext": "A még esedékes táblák holnap visszatérnek, a legrégebben várakozók elsőként.",
         "schedule": "Azok a táblák, amelyeken 80% alatt teljesítesz, az első megtekintés után 1, 3, 7 és 14 nappal visszatérnek."
+      },
+      "intro": {
+        "label": "A 45 táblás bevezető",
+        "skip": "Bevezető kihagyása",
+        "replay": "Najdorf 45 táblája",
+        "counter": "{count, plural, one {# tábla} other {# tábla}}",
+        "counterDark": "{count, plural, one {# tábla} other {# tábla}} · egyiket sem látta",
+        "one": "Egy tábla. <em>Látod.</em>",
+        "oneNote": "Morphy operaházi játszmája, Párizs, 1858. Minden lépés valódi.",
+        "many": "Most <em>negyvenöt.</em>",
+        "manyNote": "São Paulo, 1947 január. Miguel Najdorf negyvenöt ellenféllel szemben egyszerre.",
+        "dark": "Egyiket sem <em>látta.</em>",
+        "darkNote": "Több mint 23 órán át játszott vakon, minden lépésre fejből válaszolt. 39-et megnyert.",
+        "you": "Kezdd <em>eggyel.</em>",
+        "youNote": "Nézz meg egy állást néhány másodpercig. Aztán elsötétül, és te újraépíted."
       }
     }
   },

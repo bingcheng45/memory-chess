@@ -940,6 +940,21 @@
         "capped": "Dagens {cap} repetitioner är klara på den här enheten.",
         "cappedNext": "Bräden som fortfarande väntar kommer tillbaka i morgon, de som väntat längst först.",
         "schedule": "Bräden där du får under 80 % kommer tillbaka 1, 3, 7 och 14 dagar efter att du först såg dem."
+      },
+      "intro": {
+        "label": "Introt med 45 brädor",
+        "skip": "Hoppa över intro",
+        "replay": "Najdorfs 45 brädor",
+        "counter": "{count, plural, one {# bräde} other {# brädor}}",
+        "counterDark": "{count, plural, one {# bräde} other {# brädor}} · inget sett",
+        "one": "Ett bräde. <em>Du kan se det.</em>",
+        "oneNote": "Morphys operaparti, Paris, 1858. Varje drag är äkta.",
+        "many": "Nu <em>fyrtiofem.</em>",
+        "manyNote": "São Paulo, januari 1947. Miguel Najdorf mot fyrtiofem motståndare samtidigt.",
+        "dark": "Han såg <em>inget av dem.</em>",
+        "darkNote": "Han spelade i blindo i över 23 timmar och besvarade varje drag ur minnet. Han vann 39.",
+        "you": "Börja med <em>ett.</em>",
+        "youNote": "Titta på en ställning några sekunder. Sedan blir den mörk, och du bygger upp den igen."
       }
     }
   },

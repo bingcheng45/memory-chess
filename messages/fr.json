@@ -940,6 +940,21 @@
         "capped": "Les {cap} révisions du jour sont terminées sur cet appareil.",
         "cappedNext": "Toute position encore à réviser revient demain, la plus ancienne en premier.",
         "schedule": "Les positions où vous faites moins de 80 % reviennent 1, 3, 7 et 14 jours après la première fois."
+      },
+      "intro": {
+        "label": "L'intro des 45 échiquiers",
+        "skip": "Passer l'intro",
+        "replay": "Les 45 échiquiers de Najdorf",
+        "counter": "{count, plural, one {# échiquier} many {# échiquiers} other {# échiquiers}}",
+        "counterDark": "{count, plural, one {# échiquier} many {# échiquiers} other {# échiquiers}} · aucun vu",
+        "one": "Un échiquier. <em>Vous le voyez.</em>",
+        "oneNote": "La partie de l'Opéra de Morphy, Paris, 1858. Chaque coup est réel.",
+        "many": "Maintenant, <em>quarante-cinq.</em>",
+        "manyNote": "São Paulo, janvier 1947. Miguel Najdorf face à quarante-cinq adversaires à la fois.",
+        "dark": "Il n'en voyait <em>aucun.</em>",
+        "darkNote": "Il a joué à l'aveugle pendant plus de 23 heures, répondant à chaque coup de mémoire. Il en a gagné 39.",
+        "you": "Commencez par <em>un seul.</em>",
+        "youNote": "Regardez une position quelques secondes. Puis elle s'éteint, et vous la reconstruisez."
       }
     }
   },

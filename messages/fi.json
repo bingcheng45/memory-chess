@@ -940,6 +940,21 @@
         "capped": "Tämän päivän {cap} kertausta on tehty tällä laitteella.",
         "cappedNext": "Vielä kerrattavat laudat palaavat huomenna, pisimpään odottaneet ensin.",
         "schedule": "Laudat, joilla saat alle 80 %, palaavat 1, 3, 7 ja 14 päivää sen jälkeen, kun näit ne ensimmäisen kerran."
+      },
+      "intro": {
+        "label": "45 laudan intro",
+        "skip": "Ohita intro",
+        "replay": "Najdorfin 45 lautaa",
+        "counter": "{count, plural, one {# lauta} other {# lautaa}}",
+        "counterDark": "{count, plural, one {# lauta} other {# lautaa}} · yhtäkään ei nähty",
+        "one": "Yksi lauta. <em>Näet sen.</em>",
+        "oneNote": "Morphyn oopperapeli, Pariisi, 1858. Jokainen siirto on aito.",
+        "many": "Nyt <em>neljäkymmentäviisi.</em>",
+        "manyNote": "São Paulo, tammikuu 1947. Miguel Najdorf neljäkymmentäviisi vastustajaa vastaan yhtä aikaa.",
+        "dark": "Hän ei nähnyt <em>yhtäkään.</em>",
+        "darkNote": "Hän pelasi sokkona yli 23 tuntia ja vastasi jokaiseen siirtoon muistinvaraisesti. Hän voitti 39.",
+        "you": "Aloita <em>yhdestä.</em>",
+        "youNote": "Katso asemaa muutama sekunti. Sitten se pimenee, ja sinä rakennat sen uudelleen."
       }
     }
   },

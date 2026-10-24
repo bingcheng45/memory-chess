@@ -43,6 +43,54 @@ export interface ChangelogTable {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "2.0.3",
+    publishedAt: "2026-10-25T00:00:00.000+08:00",
+    title: "A game that fits your screen, and a rank for every score",
+    summary:
+      "The round, the setup and the result now fit every screen, from an iPhone SE to a laptop, with nothing cut off. And every score you send to the leaderboard now tells you where it ranks.",
+    groups: [
+      {
+        title: "A round that fits every screen",
+        changes: [
+          "The board is as big as your screen allows, and the buttons under it are never cut off.",
+          "During a round the site header steps aside, so the board gets the room. The X at the top left takes you out of the round.",
+          "White and black pieces now sit in two rows, so you never switch colours. Submit sits right beside them.",
+          "Restart is now an icon at the top of the round.",
+          "On a laptop, the pieces and Submit move to a panel beside the board.",
+        ],
+      },
+      {
+        title: "Start round always in reach",
+        changes: [
+          "On a phone, Start round is pinned to the bottom of the setup screen, with a one-line summary of the round above it.",
+          "On a laptop, the board sits beside the settings, with Start round and Today's board side by side on the first screen.",
+          "The Today's board button now matches Start round. It shows the pieces, the study time and how long the board stays open on a second line.",
+          "The setup card opens straight on the difficulty presets. The logo at the top already names the game.",
+        ],
+      },
+      {
+        title: "Your board first on the result screen",
+        changes: [
+          "On a phone, your board now sits right under the score, instead of below the readout.",
+          "On a laptop, the whole board stays on screen, with the score, Next round and your figures beside it.",
+          "Side by side fits both boards on the first screen, on phones and laptops.",
+          "The readout is about half as tall. On wider screens, your score and its four figures sit beside the recall by piece type.",
+        ],
+      },
+      {
+        title: "See where every score ranks",
+        changes: [
+          "Submit to leaderboard is no longer hidden under More options. A prompt under the readout offers it after every round that can go on the board.",
+          "After you submit, you see your rank right away, such as \"#346 of 351 worldwide\". Pick a country and you also see your rank there.",
+          "The game remembers the name you last submitted under, so it is filled in next time.",
+          "Beat your best score on a board and the prompt tells you it is a new personal best.",
+          "While a board has fewer than 200 scores, every score makes it, and the prompt now says so. Medium, Hard and Grandmaster all have room right now.",
+          "More options is gone. Share result and View leaderboard sit with Try again and Change settings.",
+        ],
+      },
+    ],
+  },
+  {
     version: "2.0.2",
     publishedAt: "2026-10-23T17:30:00.000+08:00",
     title: "Set up a round on the board, and see your board beside the position",

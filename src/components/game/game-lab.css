@@ -95,6 +95,9 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
     --panel-min: 260px;
     --panel-max: 340px;
     --panel-gap: 16px;
+    /* The panel's own contents: status 100px, the palette 92px and the primary 52px, with two 12px gaps. A board at
+       its floor is shorter than that, and the panel must not shrink under its controls to match it. */
+    --panel-content-min: 268px;
     align-content: center;
     --board-size: min(max(var(--board-min), var(--ch)), var(--cw) - var(--panel-min) - var(--panel-gap), var(--board-max));
   }
@@ -103,7 +106,7 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
     grid-template-rows: auto minmax(0, 1fr);
     grid-template-areas: "board status" "board controls";
     gap: 12px var(--panel-gap);
-    height: var(--board-size);
+    height: max(var(--board-size), var(--panel-content-min));
   }
   .lab-active-status { grid-template-columns: 40px minmax(0, 1fr) 40px 40px; grid-template-rows: var(--status-h) 40px var(--meter-h); grid-template-areas: "leave head restart clear" "clock clock clock clock" "meter meter meter meter"; row-gap: 4px; }
   .lab-active-status [role="timer"] { justify-self: start; }

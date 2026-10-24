@@ -7,6 +7,15 @@
 body.game-fixed .lab-game { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
 html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow-x: hidden; }
 
+/* The scrolling screens, the configuration form and the result, fit their main control to the first screen from
+   lengths CSS can add up before anything is measured: the chrome above the page, the page's padding and each layout's
+   fixed rows. The banner's height is the one estimate: two lines on a phone in every locale, one from 768px. */
+.lab-game { --banner-h: 0px; --scroll-pad-y: 16px; --chrome-h: calc(var(--banner-h) + var(--lp-header-h) + 1px); }
+body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
+@media (min-width: 640px) { .lab-game { --scroll-pad-y: 32px; } }
+@media (min-width: 768px) { body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 41px; } }
+.lab-game .lab-scroll-page { padding-block: var(--scroll-pad-y); }
+
 /* The active round: the status row (leave, phase, clock, restart, eraser, meter), the board, and the controls (the
    palette and the phase's primary button), in one of two layouts named by grid areas.
 
@@ -224,9 +233,17 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-dialog .lab-dialog-done { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--lp-correct-soft); color: var(--lp-correct); }
 .lab-dialog .lab-btn { min-height: 44px; }
 
-/* configuration form */
-.lab-game .lab-config { width: 100%; max-width: 640px; margin: 0 auto; padding: clamp(20px, 4vw, 32px); }
-.lab-game .lab-config-h { display: flex; align-items: flex-end; min-height: 2lh; margin: 0 0 20px; font: 650 clamp(30px, 4vw, 40px)/1.12 var(--lp-ui); letter-spacing: -0.02em; }
+/* configuration form, in one of two layouts.
+
+     stack  the default: one column in the order of the markup, the board between the presets and the steppers
+     split  landscape from 560px: the board on the left, the settings beside it, by grid areas
+
+   Start round is in a bar that names the board it starts. The bar is pinned to the foot of the screen, so Start round
+   stays in reach while the settings scroll under it, until the split has the height to fit the card on the first
+   screen: then the bar is an ordinary row and the rating preview's own line names the board. On a phone on its side
+   the board stays in view beside the settings while they scroll. */
+.lab-game .lab-config { --config-pad: clamp(20px, 4vw, 32px); width: 100%; max-width: 640px; margin: 0 auto; padding: var(--config-pad); }
+.lab-game .lab-config-h { display: flex; align-items: flex-end; min-height: 2lh; margin: 0 0 20px; font: 650 clamp(24px, 4vw, 40px)/1.12 var(--lp-ui); letter-spacing: -0.02em; }
 .lab-game .lab-config-group { margin-top: 24px; }
 .lab-game .lab-config-label { display: block; margin: 0 0 10px; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-ink); }
 .lab-game .lab-config-presets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
@@ -296,9 +313,48 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-preview-gain dd { color: color-mix(in srgb, var(--lp-correct) 80%, var(--lp-ink)); }
 .lab-game .lab-preview-loss { background: var(--lp-wrong-soft); }
 .lab-game .lab-preview-loss dd { color: color-mix(in srgb, var(--lp-wrong) 80%, var(--lp-ink)); }
-.lab-game .lab-config-start { width: 100%; margin-top: 24px; }
+.lab-game .lab-config-bar { position: sticky; bottom: 0; z-index: 5; display: grid; gap: 8px; margin: 24px calc(-1 * var(--config-pad)) 0; padding: 12px var(--config-pad) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
+.lab-game .lab-config-bar-summary { margin: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 500 14px/1.4 var(--lp-ui); color: var(--lp-ink-2); font-variant-numeric: tabular-nums; }
+.lab-game .lab-config .lab-preview-line { display: none; }
+.lab-game .lab-config-start { width: 100%; min-height: 48px; }
+/* globals.css sets every h1 on a phone to 28px with !important. */
+@media (max-width: 640px) { .lab-game .lab-config-h { font-size: 24px !important; } }
 .lab-game .lab-config-daily { width: 100%; min-height: 52px; margin-top: 12px; padding: 6px 16px; font-size: 15px; font-weight: 500; line-height: 1.25; font-variant-numeric: tabular-nums; text-wrap: balance; }
 .lab-game .lab-config-last { margin-top: 16px; text-align: center; }
+
+@media (min-aspect-ratio: 4/3) and (min-width: 560px) {
+  .lab-game .lab-config {
+    /* As large as the card's height allows on the first screen, between a floor that still reads as a board and the 480px past which it only crowds the settings. */
+    --setup-board: clamp(160px, 100svh - var(--chrome-h) - var(--scroll-pad-y) - 2 * var(--config-pad), 480px);
+    display: grid;
+    grid-template-columns: var(--setup-board) repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(8, auto);
+    grid-template-areas: "board title title" "board presets presets" "board steppers steppers" "board mode mode" "board rating rating" "board start start" "board daily daily" "board last last";
+    column-gap: clamp(24px, 4vw, 40px);
+    align-items: start;
+    max-width: 1040px;
+  }
+  .lab-game .lab-config > * { margin-top: 16px; }
+  .lab-game .lab-config-h { grid-area: title; min-height: 0; margin: 0; font-size: 32px; }
+  .lab-game .lab-config-presets-group { grid-area: presets; }
+  .lab-game .lab-setup-preview { grid-area: board; position: sticky; top: calc(var(--lp-header-h) + 9px); width: var(--setup-board); margin: 0; }
+  .lab-game .lab-steppers { grid-area: steppers; }
+  .lab-game .lab-config-mode { grid-area: mode; }
+  .lab-game .lab-config-preview { grid-area: rating; }
+  .lab-game .lab-config-bar { grid-area: start; margin-inline: 0 calc(-1 * var(--config-pad)); padding-inline: 0 var(--config-pad); }
+  .lab-game .lab-config-daily { grid-area: daily; }
+  .lab-game .lab-config-last { grid-area: last; }
+}
+@media (min-aspect-ratio: 4/3) and (min-width: 900px) and (min-height: 680px) {
+  .lab-game .lab-config {
+    grid-template-rows: repeat(6, auto) minmax(0, 1fr);
+    grid-template-areas: "board title title" "board presets presets" "board steppers steppers" "board mode mode" "board rating rating" "board start daily" "board last last";
+  }
+  .lab-game .lab-config-bar { position: static; margin-inline: 0; padding: 0; border: 0; background: none; }
+  .lab-game .lab-config-bar-summary { display: none; }
+  .lab-game .lab-config .lab-preview-line { display: block; }
+  .lab-game .lab-config-start { min-height: 52px; }
+}
 
 /* A set board before study: the empty board blurred under its Start card, then the 3, 2, 1, then the board clears.
    lab-paper.css stills the number's entrance under prefers-reduced-motion. The blur lifts at once: the study clock is already running. */

@@ -983,6 +983,7 @@
         "announce": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}. 실패하면 최대 −{loss}.",
         "announceProvisional": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}.",
         "summary": "보드 {board} · 예상 {expected}%",
+        "expect": "예상 {expected}%",
         "details": "레이팅 세부 정보"
       },
       "blindfold": "블라인드",

@@ -289,7 +289,7 @@ function GamePageContent() {
   };
 
   const renderGameContent = () => {
-    const containerClass = "w-full max-w-4xl mx-auto flex flex-col items-center justify-center";
+    const containerClass = "w-full max-w-[1040px] mx-auto flex flex-col items-center justify-center";
     // Full width, unlike the scrolling pages: the side panel and the split layout place the board against the
     // viewport's own edges. `main` below scrolls to a round too tall for a short viewport.
     const activePhaseClass = 'flex w-full flex-1 flex-col items-center justify-center';
@@ -388,7 +388,7 @@ function GamePageContent() {
         */}
         <div
           className={`mx-auto flex flex-col items-center justify-start ${
-            isActivePhase ? 'lab-active-page h-full w-full' : `container ${PAGE_BELOW_BANNER_MIN_HEIGHT} px-4 py-8 sm:py-12`
+            isActivePhase ? 'lab-active-page h-full w-full' : `container ${PAGE_BELOW_BANNER_MIN_HEIGHT} lab-scroll-page px-4`
           }`}
         >
           <ErrorBoundary>

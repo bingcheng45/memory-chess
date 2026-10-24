@@ -983,6 +983,7 @@
         "announce": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}. Om det går fel, högst −{loss}.",
         "announceProvisional": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}.",
         "summary": "Bräde {board} · förväntat {expected} %",
+        "expect": "förväntat {expected} %",
         "details": "Ratingdetaljer"
       },
       "blindfold": "Blindschack",

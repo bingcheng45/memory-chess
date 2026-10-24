@@ -983,6 +983,7 @@
         "announce": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}. Jika kamu gagal, paling banyak −{loss}.",
         "announceProvisional": "Rating papan {board}. Rating kamu {rating}. Akurasi yang diharapkan {expected}%. Jika kamu berhasil, hingga +{gain}.",
         "summary": "Papan {board} · perkiraan {expected}%",
+        "expect": "perkiraan {expected}%",
         "details": "Detail rating"
       },
       "blindfold": "Tutup mata",

@@ -983,6 +983,7 @@
         "announce": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}. Si vous échouez, au plus −{loss}.",
         "announceProvisional": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}.",
         "summary": "Plateau {board} · attendu {expected} %",
+        "expect": "attendu {expected} %",
         "details": "Détails de la cote"
       },
       "blindfold": "À l'aveugle",

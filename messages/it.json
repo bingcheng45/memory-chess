@@ -983,6 +983,7 @@
         "announce": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}. Se sbagli, al massimo −{loss}.",
         "announceProvisional": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}.",
         "summary": "Scacchiera {board} · previsto {expected}%",
+        "expect": "previsto {expected}%",
         "details": "Dettagli del punteggio"
       },
       "blindfold": "Alla cieca",

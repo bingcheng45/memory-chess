@@ -983,6 +983,7 @@
         "announce": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}. Jos epäonnistut, enintään −{loss}.",
         "announceProvisional": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}.",
         "summary": "Lauta {board} · odotettu {expected} %",
+        "expect": "odotettu {expected} %",
         "details": "Taitoluvun tiedot"
       },
       "blindfold": "Sokko",

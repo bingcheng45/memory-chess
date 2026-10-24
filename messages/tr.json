@@ -983,6 +983,7 @@
         "announce": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}. Kaçırırsan en fazla −{loss}.",
         "announceProvisional": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}.",
         "summary": "Tahta {board} · beklenen %{expected}",
+        "expect": "beklenen %{expected}",
         "details": "Puan ayrıntıları"
       },
       "blindfold": "Körleme",

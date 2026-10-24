@@ -5,7 +5,7 @@ import { useGameStore } from '@/lib/store/gameStore';
 import type { RoundSource } from '@/lib/analytics/events';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
-import RatingPreview from './RatingPreview';
+import RatingPreview, { RatingSummary } from './RatingPreview';
 import { useDailyState, type DailyState } from '@/hooks/useDailyState';
 import { useTimeLeftText } from '@/hooks/useTimeLeftText';
 import {
@@ -178,6 +178,14 @@ export default function GameConfig({ onStart }: GameConfigProps) {
   const presetName = selectedPreset ? t(`presets.${selectedPreset}.label`) : t('config.customLabel');
   const summaryOf = (preset: string, pieces: number | string, seconds: number | string) =>
     t('config.summarySetting', { preset, setting: t('config.presetSummary', { pieces, seconds }) });
+  const setting = (
+    <span
+      data-template={summaryOf(TEMPLATE_TOKENS.preset, TEMPLATE_TOKENS.pieceCount, TEMPLATE_TOKENS.memorizeTime)}
+      suppressHydrationWarning
+    >
+      {summaryOf(presetName, pieceCount, memorizeTime)}
+    </span>
+  );
 
   return (
     <div
@@ -188,7 +196,7 @@ export default function GameConfig({ onStart }: GameConfigProps) {
     >
       <h1 className="lab-config-h">{t('config.title')}</h1>
 
-      <div className="lab-config-group">
+      <div className="lab-config-group lab-config-presets-group">
         <h2 id="config-presets" className="lab-config-label">{t('config.presetsLabel')}</h2>
         <div className="lab-config-presets" role="group" aria-labelledby="config-presets">
           {DIFFICULTY_PRESETS.map((preset) => (
@@ -275,20 +283,19 @@ export default function GameConfig({ onStart }: GameConfigProps) {
           memorizeTime={memorizeTime}
           announceKey={announceKey}
           onSuggest={selectBoard}
-          setting={
-            <span
-              data-template={summaryOf(TEMPLATE_TOKENS.preset, TEMPLATE_TOKENS.pieceCount, TEMPLATE_TOKENS.memorizeTime)}
-              suppressHydrationWarning
-            >
-              {summaryOf(presetName, pieceCount, memorizeTime)}
-            </span>
-          }
+          setting={setting}
         />
       )}
 
-      <button type="button" onClick={handleStart} data-start-round className="lab-btn lab-btn-primary lab-config-start">
-        {t('config.start')}
-      </button>
+      {/* Pinned to the foot of the screen where the settings scroll under it, so it names the board it starts. */}
+      <div className="lab-config-bar" data-start-bar>
+        <p className="lab-config-bar-summary" data-start-summary>
+          {blindfold ? setting : <RatingSummary pieceCount={pieceCount} memorizeTime={memorizeTime} setting={setting} />}
+        </p>
+        <button type="button" onClick={handleStart} data-start-round className="lab-btn lab-btn-primary lab-config-start">
+          {t('config.start')}
+        </button>
+      </div>
       <DailyBoardLink />
 
       {gameState.completionTime !== undefined && (

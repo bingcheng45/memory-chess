@@ -983,6 +983,7 @@
         "announce": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。如果失手，最多 −{loss}。",
         "announceProvisional": "棋盘评分 {board}。你的评分 {rating}。预计准确率 {expected}%。如果全部答对，最多 +{gain}。",
         "summary": "棋盘 {board} · 预计 {expected}%",
+        "expect": "预计 {expected}%",
         "details": "评分详情"
       },
       "blindfold": "盲棋",

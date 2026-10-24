@@ -983,6 +983,7 @@
         "announce": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}. Nếu bạn trượt, tối đa −{loss}.",
         "announceProvisional": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}.",
         "summary": "Bàn cờ {board} · dự kiến {expected}%",
+        "expect": "dự kiến {expected}%",
         "details": "Chi tiết điểm"
       },
       "blindfold": "Bịt mắt",

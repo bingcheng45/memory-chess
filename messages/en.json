@@ -983,6 +983,7 @@
         "announce": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}. If you miss, at most −{loss}.",
         "announceProvisional": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}.",
         "summary": "Board {board} · expect {expected}%",
+        "expect": "expect {expected}%",
         "details": "Rating details"
       },
       "blindfold": "Blindfold",

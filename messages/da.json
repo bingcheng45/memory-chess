@@ -983,6 +983,7 @@
         "announce": "Brættets rating {board}. Din rating {rating}. Forventet præcision {expected} %. Hvis du klarer den, op til +{gain}. Hvis det går galt, højst −{loss}.",
         "announceProvisional": "Brættets rating {board}. Din rating {rating}. Forventet præcision {expected} %. Hvis du klarer den, op til +{gain}.",
         "summary": "Bræt {board} · forventet {expected} %",
+        "expect": "forventet {expected} %",
         "details": "Ratingdetaljer"
       },
       "blindfold": "Blindskak",

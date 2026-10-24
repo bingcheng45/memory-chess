@@ -983,6 +983,7 @@
         "announce": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。失敗した場合は最大 −{loss}。",
         "announceProvisional": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。",
         "summary": "盤面 {board} · 予想 {expected}%",
+        "expect": "予想 {expected}%",
         "details": "レーティングの詳細"
       },
       "blindfold": "目隠し",

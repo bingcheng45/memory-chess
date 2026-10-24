@@ -983,6 +983,7 @@
         "announce": "Рейтинг доски {board}. Ваш рейтинг {rating}. Ожидаемая точность {expected} %. Если справитесь, до +{gain}. Если не выйдет, не более −{loss}.",
         "announceProvisional": "Рейтинг доски {board}. Ваш рейтинг {rating}. Ожидаемая точность {expected} %. Если справитесь, до +{gain}.",
         "summary": "Доска {board} · ожидается {expected} %",
+        "expect": "ожидается {expected} %",
         "details": "Подробнее о рейтинге"
       },
       "blindfold": "Вслепую",

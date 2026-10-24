@@ -983,6 +983,7 @@
         "announce": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}. Hvis det går galt, høyst −{loss}.",
         "announceProvisional": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}.",
         "summary": "Brett {board} · forventet {expected} %",
+        "expect": "forventet {expected} %",
         "details": "Ratingdetaljer"
       },
       "blindfold": "Blindsjakk",

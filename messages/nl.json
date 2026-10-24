@@ -983,6 +983,7 @@
         "announce": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}. Als het misgaat, hooguit −{loss}.",
         "announceProvisional": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}.",
         "summary": "Bord {board} · verwacht {expected}%",
+        "expect": "verwacht {expected}%",
         "details": "Ratingdetails"
       },
       "blindfold": "Blind",

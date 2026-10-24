@@ -983,6 +983,7 @@
         "announce": "Puntuación del tablero {board}. Tu puntuación {rating}. Precisión esperada {expected} %. Si lo superas, hasta +{gain}. Si fallas, como máximo −{loss}.",
         "announceProvisional": "Puntuación del tablero {board}. Tu puntuación {rating}. Precisión esperada {expected} %. Si lo superas, hasta +{gain}.",
         "summary": "Tablero {board} · se espera {expected} %",
+        "expect": "se espera {expected} %",
         "details": "Detalles de la puntuación"
       },
       "blindfold": "A ciegas",

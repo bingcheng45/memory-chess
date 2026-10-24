@@ -983,6 +983,7 @@
         "announce": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}. Wenn es misslingt, höchstens −{loss}.",
         "announceProvisional": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}.",
         "summary": "Brett {board} · erwartet {expected} %",
+        "expect": "erwartet {expected} %",
         "details": "Details zur Wertung"
       },
       "blindfold": "Blind",

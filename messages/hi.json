@@ -983,6 +983,7 @@
         "announce": "बोर्ड रेटिंग {board}। आपकी रेटिंग {rating}। अपेक्षित सटीकता {expected}%। अगर आप इसे पूरा करें, तो अधिकतम +{gain}। अगर चूक जाएँ, तो अधिकतम −{loss}।",
         "announceProvisional": "बोर्ड रेटिंग {board}। आपकी रेटिंग {rating}। अपेक्षित सटीकता {expected}%। अगर आप इसे पूरा करें, तो अधिकतम +{gain}।",
         "summary": "बोर्ड {board} · अपेक्षित {expected}%",
+        "expect": "अपेक्षित {expected}%",
         "details": "रेटिंग का विवरण"
       },
       "blindfold": "ब्लाइंडफ़ोल्ड",

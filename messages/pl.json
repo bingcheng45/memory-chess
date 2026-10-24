@@ -983,6 +983,7 @@
         "announce": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}.",
         "announceProvisional": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}.",
         "summary": "Plansza {board} · oczekiwane {expected}%",
+        "expect": "oczekiwane {expected}%",
         "details": "Szczegóły oceny"
       },
       "blindfold": "Na ślepo",

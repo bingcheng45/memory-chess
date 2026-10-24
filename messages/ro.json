@@ -983,6 +983,7 @@
         "announce": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}. Dacă greșești, cel mult −{loss}.",
         "announceProvisional": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}.",
         "summary": "Tabla {board} · estimat {expected}%",
+        "expect": "estimat {expected}%",
         "details": "Detaliile ratingului"
       },
       "blindfold": "Pe orbește",

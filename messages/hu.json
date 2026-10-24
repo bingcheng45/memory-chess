@@ -983,6 +983,7 @@
         "announce": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}. Ha nem sikerül, legfeljebb −{loss}.",
         "announceProvisional": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}.",
         "summary": "Tábla {board} · várható {expected}%",
+        "expect": "várható {expected}%",
         "details": "A pontszám részletei"
       },
       "blindfold": "Vakon",

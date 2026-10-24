@@ -6,7 +6,7 @@ import { GameState } from "@/lib/types/game";
 import { lazy, Suspense, useDeferredValue, useState, useEffect, useRef } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
-import { useTranslations } from "next-intl";
+import { useFormatter, useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -22,6 +22,7 @@ import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
+  compareRanking,
   pushesOffLast,
   type LeaderboardCutoffs,
   type RankingScore,
@@ -35,7 +36,7 @@ import type { LabRound } from "@/lib/lab/recordRound";
 import { nextBoardOf, type BoardSize } from "@/lib/game/nextBoard";
 import type { RecordBefore } from "@/components/game/ResultDeltas";
 import ResultBoards from "@/components/game/ResultBoards";
-import { ReadoutCard } from "@/components/round/ReadoutCard";
+import { ResultReadout } from "./ResultReadout";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { BLINDFOLD_MODE } from "@/lib/game/roundLink";
 import { blindfoldBoardOpen } from "@/lib/leaderboard/mode";
@@ -48,6 +49,8 @@ import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import { CommunityInvite } from "@/components/community/CommunityLink";
 import { isReturningPlayer } from "@/lib/community";
 import ShareResult from "@/components/game/ShareResult";
+import { SubmittedStanding } from "@/components/game/SubmittedStanding";
+import { Trophy } from "lucide-react";
 import { roundShareOf } from "@/components/game/roundShare";
 import { START_RATING } from "@/lib/game/rating";
 import type { RoundOutcome } from "@/lib/game/roundOutcome";
@@ -96,7 +99,9 @@ function qualifiesForLeaderboard(
   if (cutoffs === null || difficulty === "custom") {
     return false;
   }
-  return pushesOffLast(score, cutoffs[difficulty]);
+  // A board with room takes every score, so any score makes it.
+  const cutoff = cutoffs[difficulty];
+  return cutoff.kind === "open" || pushesOffLast(score, cutoff);
 }
 
 export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResultProps) {
@@ -108,19 +113,23 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const tCountry = useTranslations("country");
   const tDaily = useTranslations("daily.round");
   const tConfig = useTranslations("game.config");
+  const format = useFormatter();
   const { gameState, round, history, resultView, setResultView } = useGameStore();
   const { labRound } = gameState;
   const blindfold = round.phase === "scored" && round.config.blindfold === true;
-  const { countryCode, setCountryCode } = useSettingsStore();
+  const scored = round.phase === "scored" ? round : null;
+  const { countryCode, setCountryCode, playerName: savedName, setPlayerName: saveName } = useSettingsStore();
 
   // Leaderboard submission state
   const [showLeaderboardDialog, setShowLeaderboardDialog] = useState(false);
-  const [playerName, setPlayerName] = useState("");
+  const [playerName, setPlayerName] = useState(savedName);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [submittedId, setSubmittedId] = useState<string | null>(null);
+  const [personalBest, setPersonalBest] = useState(false);
   const submitRef = useRef<HTMLButtonElement>(null);
-  const moreRef = useRef<HTMLElement>(null);
+  const leaderboardLinkRef = useRef<HTMLAnchorElement>(null);
   // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
   // effect below would insert it a frame later and push down everything under it.
   const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(readCachedCutoffs);
@@ -295,6 +304,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     try {
       const posted = await postLeaderboardEntry(prepareLeaderboardEntry(playerName.trim()));
       if (!posted.ok) throw new Error(posted.message ?? t("dialog.submitFailed"));
+      saveName(playerName);
+      setSubmittedId(posted.entry?.id ?? null);
       setSubmitSuccess(true);
     } catch (err) {
       console.error("Error submitting to leaderboard:", err);
@@ -320,20 +331,30 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
       : t("piecesPerSecond", { value: "0.0" });
   const leaderboardEligible = isEligibleForLeaderboard();
   // The cutoffs are the board-study boards', so a blindfold round never claims it makes the board; it can still submit.
-  const ranks =
-    leaderboardEligible &&
-    !blindfold &&
-    qualifiesForLeaderboard(
-      determineDifficulty(gameState.pieceCount),
-      {
-        correctPieces: extendedGameState.correctPlacements || 0,
-        totalWrongPieces: piecesInfo.totalWrong,
-        memorizeTime: gameState.actualMemorizeTime || gameState.memorizeTime,
-        solutionTime: gameState.completionTime || 0,
-      },
-      cutoffs,
-    );
-  const showLeaderboardQualifier = ranks && !submitSuccess;
+  const roundScore: RankingScore = {
+    correctPieces: extendedGameState.correctPlacements || 0,
+    totalWrongPieces: piecesInfo.totalWrong,
+    memorizeTime: gameState.actualMemorizeTime || gameState.memorizeTime,
+    solutionTime: gameState.completionTime || 0,
+  };
+  const roundDifficulty = determineDifficulty(gameState.pieceCount);
+  const ranks = leaderboardEligible && !blindfold && qualifiesForLeaderboard(roundDifficulty, roundScore, cutoffs);
+  // Beats the best score this device sent to the same board. Read once per result: the stored entries load lazily, as
+  // they do on submit, so a result with nothing to submit pays nothing for them.
+  useEffect(() => {
+    if (!leaderboardEligible || roundDifficulty === "custom") return;
+    let live = true;
+    void import("@/lib/lab/entries")
+      .then(({ ENTRIES_KEY, entryKey, parseEntries }) => {
+        const kept = parseEntries(window.localStorage.getItem(ENTRIES_KEY))?.[entryKey({ difficulty: roundDifficulty, ...(blindfold && { mode: BLINDFOLD_MODE }) })];
+        if (live && kept && compareRanking(roundScore, kept.score) < 0) setPersonalBest(true);
+      })
+      .catch(() => undefined);
+    return () => {
+      live = false;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps -- the round's score is fixed for the life of this result
+  }, [labRound?.facts.id]);
   const ratingNote = ratingNoteOf(gameState.rating, t);
   const isPlayerSizedBoard = gameState.board === undefined;
   const next = isPlayerSizedBoard && nextBoardOf({ pieceCount: gameState.pieceCount, memorizeSeconds: gameState.memorizeTime }, accuracy);
@@ -343,51 +364,80 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   };
   const returnFocus = (event: Event) => {
     event.preventDefault();
-    const opener = submitRef.current;
-    (opener?.closest("details:not([open])") ? moreRef.current : opener)?.focus();
+    // A submitted score takes the prompt away, so focus moves on to the leaderboard link.
+    (submitRef.current?.isConnected ? submitRef.current : leaderboardLinkRef.current)?.focus();
   };
   const submitButton = leaderboardEligible && (
     <button ref={submitRef} type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
-      {t("submitToLeaderboard")}
+      {ranks ? t("claimSpot") : t("submitToLeaderboard")}
     </button>
   );
 
   return (
     <div className="lab-result w-full space-y-6 pb-4">
       <section aria-labelledby="game-result-heading" className="lab-card lab-result-card">
-        <h2 id="game-result-heading" className="lab-result-h">
-          {getResultMessage()}
-        </h2>
-        <p className="lab-result-sub">
-          <span className="lab-mono">
-            {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
-          </span>{" "}
-          {t("piecesCorrectCaption")}
-          <span aria-hidden="true"> · </span>
-          <span>{t("recallSpeed")}</span> <span className="lab-mono">{recallSpeed}</span>
-        </p>
-        {blindfold && (
-          <p className="lab-result-sub" data-round-mode="blindfold">
-            {t("blindfoldRound")}
-          </p>
-        )}
-        {ratingNote && (
-          <p className="lab-result-sub" data-rating-phase={gameState.rating?.phase}>
-            {ratingNote}
-          </p>
-        )}
-
-        {showLeaderboardQualifier && (
-          <p role="status" className="lab-result-qualifies">
-            {t("leaderboardQualifies")}
+        <div className="lab-result-title">
+          <h2 id="game-result-heading" className="lab-result-h">
+            {getResultMessage()}
+          </h2>
+          {scored && (
+            <span className="lab-result-score">
+              {scored.score.accuracy}
+              <small>%</small>
+            </span>
+          )}
+        </div>
+        {scored && (
+          <p className="lab-result-summary" data-result-summary>
+            {t("summary", {
+              correct: scored.score.correct,
+              total: scored.score.total,
+              wrong: scored.score.wrong,
+              seconds: format.number(scored.rebuildMs / 1000, { minimumFractionDigits: 1, maximumFractionDigits: 1 }),
+            })}
           </p>
         )}
 
-        {round.phase === "scored" && (
-          <div className="lab-result-grid">
-            <ResultBoards round={round} view={resultView} onViewChange={setResultView} />
-            <ReadoutCard state={round} copy="game.round" expected={round.config} legend={false} />
-          </div>
+        <div className="lab-result-notes">
+          <p className="lab-result-sub">
+            <span className="lab-mono">
+              {piecesInfo.correctPieces} / {piecesInfo.totalPieces}
+            </span>{" "}
+            {t("piecesCorrectCaption")}
+            <span aria-hidden="true"> · </span>
+            <span>{t("recallSpeed")}</span> <span className="lab-mono">{recallSpeed}</span>
+          </p>
+          {blindfold && (
+            <p className="lab-result-sub" data-round-mode="blindfold">
+              {t("blindfoldRound")}
+            </p>
+          )}
+          {ratingNote && (
+            <p className="lab-result-sub" data-rating-phase={gameState.rating?.phase}>
+              {ratingNote}
+            </p>
+          )}
+
+        </div>
+
+        {scored && (
+          <>
+            <ResultBoards round={scored} view={resultView} onViewChange={setResultView} />
+            <div className="lab-result-readout">
+              <ResultReadout
+                round={scored}
+                callout={leaderboardEligible && !submitSuccess && (
+                  <div className="lab-result-callout">
+                    <Trophy aria-hidden size={20} />
+                    <p role={ranks ? "status" : undefined}>
+                      {ranks ? t("leaderboardQualifies") : personalBest ? t("personalBest") : t("submitPrompt")}
+                    </p>
+                    {submitButton}
+                  </div>
+                )}
+              />
+            </div>
+          </>
         )}
 
         <div className="lab-result-next">
@@ -412,31 +462,24 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <button type="button" onClick={onNewGame} className="lab-btn lab-btn-secondary">
             {t("changeSettings")}
           </button>
-          {ranks && submitButton}
-          <details className="lab-result-more">
-            <summary ref={moreRef} className="lab-result-more-toggle">{t("moreOptions")}</summary>
-            <div className="lab-result-more-list">
-              {gameState.board?.kind === "daily" && keepsRecord && (
-                <Link href="/daily" className="lab-btn lab-btn-secondary">
-                  {tDaily("join")}
-                </Link>
-              )}
-              {!ranks && submitButton}
-              {round.phase === "scored" && (
-                <ShareResult
-                  key={labRound?.facts.id}
-                  share={roundShareOf(round, {
-                    rating: gameState.skillRating ?? START_RATING,
-                    change: extendedGameState.skillRatingChange ?? 0,
-                    winStreak: gameState.streak ?? 0,
-                  })}
-                />
-              )}
-              <Link href="/leaderboard" className="lab-result-link">
-                {t("viewLeaderboard")}
-              </Link>
-            </div>
-          </details>
+          {gameState.board?.kind === "daily" && keepsRecord && (
+            <Link href="/daily" className="lab-btn lab-btn-secondary">
+              {tDaily("join")}
+            </Link>
+          )}
+          {round.phase === "scored" && (
+            <ShareResult
+              key={labRound?.facts.id}
+              share={roundShareOf(round, {
+                rating: gameState.skillRating ?? START_RATING,
+                change: extendedGameState.skillRatingChange ?? 0,
+                winStreak: gameState.streak ?? 0,
+              })}
+            />
+          )}
+          <Link ref={leaderboardLinkRef} href="/leaderboard" className="lab-result-link">
+            {t("viewLeaderboard")}
+          </Link>
         </nav>
         {isReturningPlayer(history.length) && (
           <CommunityInvite placement="result" line={tCommunity("resultLine")} link={tCommunity("link")} />
@@ -580,6 +623,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                 <p className="lab-dialog-text">
                   {t("dialog.thanks", { name: playerName })}
                 </p>
+                {submittedId && <SubmittedStanding entryId={submittedId} country={countryCode} />}
               </div>
 
               <div className="flex justify-center gap-2">

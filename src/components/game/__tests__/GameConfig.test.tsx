@@ -147,6 +147,22 @@ describe("GameConfig start", () => {
     expect(screen.getAllByRole("button", { name: /start/i }).map((button) => button.textContent)).toEqual(["Start round"]);
   });
 
+  it("starts from a bar that names the board it starts", () => {
+    render(<GameConfig />);
+    const barLine = () => screen.getByRole("button", { name: "Start round" }).closest("[data-start-bar]")?.querySelector("[data-start-summary]")?.textContent;
+
+    const medium = barLine();
+    press("More pieces");
+    const custom = barLine();
+    fireEvent.click(screen.getByRole("checkbox", { name: "Blindfold" }));
+
+    expect([medium, custom, barLine()]).toEqual([
+      "Medium, 6 pcs / 10s · expect 70%",
+      "Custom settings, 7 pcs / 10s · expect 60%",
+      "Custom settings, 7 pcs / 10s",
+    ]);
+  });
+
   it("starts the preset the form is set to", () => {
     const onStart = jest.fn();
     render(<GameConfig onStart={onStart} />);

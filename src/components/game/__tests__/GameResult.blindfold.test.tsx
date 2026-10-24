@@ -61,7 +61,7 @@ const submittedLink = () =>
 const renderResult = () => render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
 async function submitAs(name: string) {
-  fireEvent.click(screen.getByRole("button", { name: "Submit to leaderboard" }));
+  fireEvent.click(screen.getByRole("button", { name: "Submit and see my rank" }));
   fireEvent.change(screen.getByLabelText("Player name"), { target: { value: name } });
   fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
   await screen.findByText("Score submitted!");
@@ -79,7 +79,7 @@ describe("the result of a blindfold round", () => {
     renderResult();
 
     expect(screen.getByText(BLINDFOLD_LINE)).toBeInTheDocument();
-    expect(screen.queryByRole("button", { name: "Submit to leaderboard" })).toBeNull();
+    expect(screen.queryByRole("button", { name: "Submit and see my rank" })).toBeNull();
     expect(screen.getByRole("link", { name: "View leaderboard" })).toBeInTheDocument();
   });
 

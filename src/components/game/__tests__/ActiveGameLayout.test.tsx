@@ -5,7 +5,7 @@ import ActiveGameLayout, { LAYOUT_INPUTS } from "@/components/game/ActiveGameLay
 
 /** The active round's rules: the stylesheet up to the result screen's, without comments or the shell's --lp- tokens. */
 const activeRules = readFileSync(join(process.cwd(), "src/components/game/game-lab.css"), "utf8")
-  .split("/* result screen */")[0]
+  .split("/* result screen")[0]
   .replace(/\/\*[\s\S]*?\*\//g, "");
 const names = (pattern: RegExp) =>
   new Set(Array.from(activeRules.matchAll(pattern), (match) => match[1]).filter((name) => !name.startsWith("--lp-")));

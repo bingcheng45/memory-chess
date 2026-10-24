@@ -24,12 +24,8 @@ const num = (chunks: ReactNode) => <span className="lab-preview-num">{chunks}</s
 
 const BLANK = '—';
 
-export default function RatingPreview({ pieceCount, memorizeTime, announceKey, onSuggest, setting }: RatingPreviewProps) {
-  const t = useTranslations('game.config.preview');
-  const tConfig = useTranslations('game.config');
-  const format = useFormatter();
-  const detailsId = useId();
-  const [open, setOpen] = useState(false);
+/** The preview's figures for a board, or null until the rating stored in this browser is read. */
+function usePreview(pieceCount: number, memorizeTime: number) {
   // The rating lives in localStorage, which the served HTML and the hydration render cannot read, so both draw the
   // placeholder and the numbers follow in the next render, in the same boxes.
   const hydrated = useSyncExternalStore(subscribeNothing, () => true, () => false);
@@ -37,16 +33,42 @@ export default function RatingPreview({ pieceCount, memorizeTime, announceKey, o
   const certainty = useGameStore((state) => state.certainty);
   const history = useGameStore((state) => state.history);
   const facts = useMemo(() => (hydrated && history ? ratedFactsOf(history) : null), [hydrated, history]);
+  if (facts === null) return null;
   const player = { rating, ...certainty };
+  return {
+    rating,
+    suggested: suggestBoard(player, RANGES),
+    ...ratingPreview(player, facts, { pieceCount, studySeconds: memorizeTime }),
+  };
+}
 
-  const shown =
-    facts === null
-      ? null
-      : {
-          rating,
-          suggested: suggestBoard(player, RANGES),
-          ...ratingPreview(player, facts, { pieceCount, studySeconds: memorizeTime }),
-        };
+interface RatingSummaryProps {
+  readonly pieceCount: number;
+  readonly memorizeTime: number;
+  readonly setting: ReactNode;
+}
+
+/** The board in words and the accuracy expected on it, for a line away from the preview such as the start bar. */
+export function RatingSummary({ pieceCount, memorizeTime, setting }: RatingSummaryProps) {
+  const t = useTranslations('game.config.preview');
+  const format = useFormatter();
+  const shown = usePreview(pieceCount, memorizeTime);
+  return (
+    <>
+      {setting}
+      {' · '}
+      {t('expect', { expected: shown ? format.number(shown.expectedAccuracy) : BLANK })}
+    </>
+  );
+}
+
+export default function RatingPreview({ pieceCount, memorizeTime, announceKey, onSuggest, setting }: RatingPreviewProps) {
+  const t = useTranslations('game.config.preview');
+  const tConfig = useTranslations('game.config');
+  const format = useFormatter();
+  const detailsId = useId();
+  const [open, setOpen] = useState(false);
+  const shown = usePreview(pieceCount, memorizeTime);
   const onSuggested = shown?.suggested.pieceCount === pieceCount && shown.suggested.studySeconds === memorizeTime;
 
   const showsLoss = shown !== null && shown.phase !== 'provisional';

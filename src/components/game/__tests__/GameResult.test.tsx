@@ -645,6 +645,25 @@ describe("GameResult", () => {
     }
   });
 
+  it("keys the lab card and the deltas apart when a recorded round shows both", async () => {
+    mockGameState = { ...baseGameState, labRound: LAB_ROUND };
+    mockRecordBefore = { rounds: 4, days: ["2026-10-18"] };
+    Object.defineProperty(window, "indexedDB", { value: {}, configurable: true });
+    const logged = jest.spyOn(console, "error").mockImplementation(() => {});
+
+    try {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      await act(async () => {});
+
+      expect(logged.mock.calls.flat().join("\n")).not.toContain("same key");
+    } finally {
+      Reflect.deleteProperty(window, "indexedDB");
+      mockGameState = baseGameState;
+      mockRecordBefore = null;
+      mockFeedbackGame = null;
+    }
+  });
+
   describe("leaderboard qualifier", () => {
     afterEach(() => {
       mockGameState = baseGameState;

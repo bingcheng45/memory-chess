@@ -43,6 +43,49 @@ export interface ChangelogTable {
 
 export const CHANGELOG_ENTRIES: readonly ChangelogEntry[] = [
   {
+    version: "2.0.3",
+    publishedAt: "2026-10-25T00:00:00.000+08:00",
+    title: "A board that fits your screen, and your rank on every score",
+    summary:
+      "Every part of the game now fits your screen, from the smallest iPhone to a laptop, with nothing cut off. And when you send a score to the leaderboard, you see right away where it ranks.",
+    groups: [
+      {
+        title: "Play on any screen",
+        changes: [
+          "The board is as big as your screen allows, with every button in view.",
+          "The rest of the site steps out of the way while you play. Tap the X whenever you want to leave the round.",
+          "White and black pieces are both ready to place, so you never switch between them. Submit is right beside them.",
+          "On a laptop, your pieces sit right beside the board.",
+        ],
+      },
+      {
+        title: "Start a round faster",
+        changes: [
+          "On a phone, Start round is always in reach at the bottom of the screen, with a quick summary of your round.",
+          "On a laptop, the board sits beside your settings, so you see everything at once.",
+          "Today's board shows its pieces, its study time and how long it is still open before you start.",
+        ],
+      },
+      {
+        title: "Your results at a glance",
+        changes: [
+          "On a phone, your board now appears right under your score. On a laptop, the whole board stays in view, with your score and Next round beside it.",
+          "Side by side fits both boards on the first screen, so you can compare them in one look.",
+          "Your stats now take about half the space.",
+        ],
+      },
+      {
+        title: "Know where you rank",
+        changes: [
+          "After a round, you are invited to add your score to the leaderboard, with Share result and View leaderboard right alongside.",
+          "Once you submit, you see your rank worldwide, and in your country if you choose one.",
+          "Beat your best and you will know it is a new personal best. If a leaderboard still has room, you will know your score makes the cut.",
+          "Your name is filled in for you next time.",
+        ],
+      },
+    ],
+  },
+  {
     version: "2.0.2",
     publishedAt: "2026-10-23T17:30:00.000+08:00",
     title: "Set up a round on the board, and see your board beside the position",

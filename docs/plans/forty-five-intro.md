@@ -72,6 +72,19 @@ Each step ends in a check, and each is its own PR into `main`.
 5. **Launch.** Turn the flag on for a Vercel preview, then production.
    Check: Lighthouse on the preview with the intro on and off (mobile and desktop), compare LCP, CLS and TBT. Then watch Search Console and the GA4 numbers for two weeks.
 
+## Launch measurements
+
+Lighthouse 13.5.0 on a local production build (`next build && next start`) of the same commit, built once with the flag on and once without it, three runs each, medians. The Vercel previews are SSO-protected, so a local build stood in for the preview. The machine was loaded (load average about 15 on 10 cores), so small gaps are noise. Measured 25 October 2026.
+
+| | Score | LCP | CLS | TBT | FCP |
+|---|---|---|---|---|---|
+| Mobile, intro off | 86 | 4,077 ms | 0 | 44 ms | 1,511 ms |
+| Mobile, intro on | 85 | 4,233 ms (runs 3,940 to 5,176) | 0 | 40 ms | 1,513 ms |
+| Desktop, intro off | 99 | 831 ms | 0 | 0 ms | 413 ms |
+| Desktop, intro on | 99 | 857 ms | 0 | 0 ms | 412 ms |
+
+The intro played in every "on" run (its last frame shows the board counter). It adds 2 requests and about 13 KB of script, the lazy scene and its games. No metric moved beyond the spread between runs.
+
 ## Open decisions
 
 1. **Intrusive interstitial signal.** Showing the intro to search visitors on mobile carries some risk under Google's interstitial guidance. It is kept small by the Skip button from frame one, the 10-second self-ending, and once per browser. Search Console impressions and the home page's position for "memory chess game" are the numbers to watch after launch. If they drop, the fix is one gate rule.

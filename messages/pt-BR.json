@@ -940,6 +940,11 @@
         "capped": "As {cap} revisões de hoje estão concluídas neste dispositivo.",
         "cappedNext": "Qualquer tabuleiro ainda pendente volta amanhã, começando pelo que espera há mais tempo.",
         "schedule": "Tabuleiros em que você faz menos de 80% voltam 1, 3, 7 e 14 dias depois da primeira vez que você os vê."
+      },
+      "intro": {
+        "label": "A introdução dos 45 tabuleiros",
+        "one": "Um tabuleiro. Você consegue vê-lo.",
+        "skip": "Pular introdução"
       }
     }
   },

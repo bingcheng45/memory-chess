@@ -1,0 +1,61 @@
+/* The 45-board intro layer. Hidden unless the gate marked its script (src/lib/home/intro/introGate.ts). */
+.home-intro { display: none; }
+
+script[data-home-intro] ~ .home-intro {
+  --intro-ink: #f2f0ea;
+  --intro-ink-soft: #b9b5ab;
+  --intro-ground: #0b0b0c;
+  --intro-line: rgba(242, 240, 234, 0.28);
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  background: var(--intro-ground);
+  color: var(--intro-ink);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  /* If the player never ends the intro, the layer still goes at 12 seconds, so the page can never stay covered. */
+  animation: home-intro-failsafe 12s step-end forwards;
+}
+
+@keyframes home-intro-failsafe {
+  to { visibility: hidden; }
+}
+
+/* The page under the layer does not scroll while it plays; the lock lapses with the failsafe. */
+html:has(script[data-home-intro]) { animation: home-intro-lock 12s; }
+
+@keyframes home-intro-lock {
+  from, to { overflow: hidden; }
+}
+
+.home-intro-caption {
+  margin: 0;
+  max-width: 18ch;
+  font-size: clamp(30px, 5vw, 56px);
+  line-height: 1.1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-align: center;
+  text-wrap: balance;
+}
+
+.home-intro-skip {
+  position: absolute;
+  top: max(16px, env(safe-area-inset-top));
+  right: max(16px, env(safe-area-inset-right));
+  min-height: 44px;
+  padding: 0 18px;
+  border: 1px solid var(--intro-line);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--intro-ink-soft);
+  font: inherit;
+  font-size: 15px;
+  cursor: pointer;
+  transition: color 150ms, border-color 150ms;
+}
+
+.home-intro-skip:hover { color: var(--intro-ink); border-color: var(--intro-ink-soft); }
+.home-intro-skip:focus-visible { outline: 2px solid var(--intro-ink); outline-offset: 3px; }

@@ -940,6 +940,11 @@
         "capped": "Die {cap} Wiederholungen für heute sind auf diesem Gerät erledigt.",
         "cappedNext": "Jedes noch fällige Brett kommt morgen wieder, das am längsten wartende zuerst.",
         "schedule": "Bretter, bei denen du unter 80 % bleibst, kommen 1, 3, 7 und 14 Tage nach dem ersten Sehen wieder."
+      },
+      "intro": {
+        "label": "Das Intro mit 45 Brettern",
+        "one": "Ein Brett. Du kannst es sehen.",
+        "skip": "Intro überspringen"
       }
     }
   },

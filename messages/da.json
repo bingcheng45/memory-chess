@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "Introen med 45 brætter",
-        "one": "Ét bræt. Du kan se det.",
-        "skip": "Spring intro over"
+        "skip": "Spring intro over",
+        "replay": "Najdorfs 45 brætter",
+        "counter": "{count, plural, one {# bræt} other {# brætter}}",
+        "counterDark": "{count, plural, one {# bræt} other {# brætter}} · ingen set",
+        "one": "Ét bræt. <em>Du kan se det.</em>",
+        "oneNote": "Morphys Operaparti, Paris, 1858. Hvert træk er ægte.",
+        "many": "Nu <em>femogfyrre.</em>",
+        "manyNote": "São Paulo, januar 1947. Miguel Najdorf mod femogfyrre modstandere på én gang.",
+        "dark": "Han så <em>ingen af dem.</em>",
+        "darkNote": "Han spillede blindt i over 23 timer og svarede på hvert træk efter hukommelsen. Han vandt 39.",
+        "you": "Start med <em>ét.</em>",
+        "youNote": "Se på en stilling i et par sekunder. Så bliver den mørk, og du bygger den op igen."
       }
     }
   },

@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "Úvod se 45 šachovnicemi",
-        "one": "Jedna šachovnice. Vidíte ji.",
-        "skip": "Přeskočit úvod"
+        "skip": "Přeskočit úvod",
+        "replay": "Najdorfových 45 šachovnic",
+        "counter": "{count, plural, one {# šachovnice} few {# šachovnice} many {# šachovnice} other {# šachovnic}}",
+        "counterDark": "{count, plural, one {# šachovnice} few {# šachovnice} many {# šachovnice} other {# šachovnic}} · všechny naslepo",
+        "one": "Jedna šachovnice. <em>Vidíte ji.</em>",
+        "oneNote": "Morphyho Operní partie, Paříž, 1858. Každý tah je skutečný.",
+        "many": "Teď <em>čtyřicet pět.</em>",
+        "manyNote": "São Paulo, leden 1947. Miguel Najdorf proti čtyřiceti pěti soupeřům najednou.",
+        "dark": "Neviděl <em>ani jednu.</em>",
+        "darkNote": "Hrál naslepo přes 23 hodin a na každý tah odpovídal zpaměti. Vyhrál 39 partií.",
+        "you": "Začněte <em>jednou.</em>",
+        "youNote": "Na pár sekund si prohlédněte pozici. Pak zhasne a vy ji sestavíte znovu."
       }
     }
   },

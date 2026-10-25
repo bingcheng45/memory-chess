@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "Introducerea cu 45 de table",
-        "one": "O tablă. O poți vedea.",
-        "skip": "Sari peste introducere"
+        "skip": "Sari peste introducere",
+        "replay": "Cele 45 de table ale lui Najdorf",
+        "counter": "{count, plural, one {# tablă} few {# table} other {# de table}}",
+        "counterDark": "{count, plural, one {# tablă} few {# table} other {# de table}} · niciuna văzută",
+        "one": "O tablă. <em>O poți vedea.</em>",
+        "oneNote": "Partida de la Operă a lui Morphy, Paris, 1858. Fiecare mutare este reală.",
+        "many": "Acum, <em>patruzeci și cinci.</em>",
+        "manyNote": "São Paulo, ianuarie 1947. Miguel Najdorf împotriva a patruzeci și cinci de adversari deodată.",
+        "dark": "Nu vedea <em>niciuna.</em>",
+        "darkNote": "A jucat legat la ochi peste 23 de ore, răspunzând la fiecare mutare din memorie. A câștigat 39.",
+        "you": "Începe cu <em>una.</em>",
+        "youNote": "Privește o poziție câteva secunde. Apoi se întunecă, iar tu o reconstruiești."
       }
     }
   },

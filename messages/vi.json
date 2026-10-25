@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "Phần mở đầu 45 bàn cờ",
-        "one": "Một bàn cờ. Bạn nhìn thấy nó.",
-        "skip": "Bỏ qua phần mở đầu"
+        "skip": "Bỏ qua phần mở đầu",
+        "replay": "45 bàn cờ của Najdorf",
+        "counter": "{count, plural, other {# bàn cờ}}",
+        "counterDark": "{count, plural, other {# bàn cờ}} · không bàn nào được nhìn",
+        "one": "Một bàn cờ. <em>Bạn nhìn thấy nó.</em>",
+        "oneNote": "Ván cờ ở Nhà hát Opera của Morphy, Paris, 1858. Mọi nước đi đều có thật.",
+        "many": "Giờ là <em>bốn mươi lăm.</em>",
+        "manyNote": "São Paulo, tháng 1 năm 1947. Miguel Najdorf đấu cùng lúc với bốn mươi lăm đối thủ.",
+        "dark": "Ông không nhìn thấy <em>bàn nào.</em>",
+        "darkNote": "Ông chơi cờ bịt mắt hơn 23 giờ, đáp lại mọi nước đi bằng trí nhớ. Ông thắng 39 ván.",
+        "you": "Bắt đầu với <em>một.</em>",
+        "youNote": "Nhìn một thế cờ trong vài giây. Rồi nó tối đi, và bạn dựng lại nó."
       }
     }
   },

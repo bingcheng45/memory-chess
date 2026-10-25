@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "De intro met 45 borden",
-        "one": "Eén bord. Je kunt het zien.",
-        "skip": "Intro overslaan"
+        "skip": "Intro overslaan",
+        "replay": "De 45 borden van Najdorf",
+        "counter": "{count, plural, one {# bord} other {# borden}}",
+        "counterDark": "{count, plural, one {# bord} other {# borden}} · geen gezien",
+        "one": "Eén bord. <em>Je kunt het zien.</em>",
+        "oneNote": "Morphy's Operapartij, Parijs, 1858. Elke zet is echt.",
+        "many": "Nu <em>vijfenveertig.</em>",
+        "manyNote": "São Paulo, januari 1947. Miguel Najdorf tegen vijfenveertig tegenstanders tegelijk.",
+        "dark": "Hij zag <em>geen enkel bord.</em>",
+        "darkNote": "Hij speelde ruim 23 uur blind en beantwoordde elke zet uit het hoofd. Hij won er 39.",
+        "you": "Begin met <em>één.</em>",
+        "youNote": "Bekijk een stelling een paar seconden. Dan wordt hij donker en bouw jij hem weer op."
       }
     }
   },

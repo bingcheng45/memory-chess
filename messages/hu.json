@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "A 45 táblás bevezető",
-        "one": "Egy tábla. Látod.",
-        "skip": "Bevezető kihagyása"
+        "skip": "Bevezető kihagyása",
+        "replay": "Najdorf 45 táblája",
+        "counter": "{count, plural, one {# tábla} other {# tábla}}",
+        "counterDark": "{count, plural, one {# tábla} other {# tábla}} · egyiket sem látta",
+        "one": "Egy tábla. <em>Látod.</em>",
+        "oneNote": "Morphy operaházi játszmája, Párizs, 1858. Minden lépés valódi.",
+        "many": "Most <em>negyvenöt.</em>",
+        "manyNote": "São Paulo, 1947 január. Miguel Najdorf negyvenöt ellenféllel szemben egyszerre.",
+        "dark": "Egyiket sem <em>látta.</em>",
+        "darkNote": "Több mint 23 órán át játszott vakon, minden lépésre fejből válaszolt. 39-et megnyert.",
+        "you": "Kezdd <em>eggyel.</em>",
+        "youNote": "Nézz meg egy állást néhány másodpercig. Aztán elsötétül, és te újraépíted."
       }
     }
   },

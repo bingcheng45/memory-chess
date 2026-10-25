@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "Das Intro mit 45 Brettern",
-        "one": "Ein Brett. Du kannst es sehen.",
-        "skip": "Intro überspringen"
+        "skip": "Intro überspringen",
+        "replay": "Najdorfs 45 Bretter",
+        "counter": "{count, plural, one {# Brett} other {# Bretter}}",
+        "counterDark": "{count, plural, one {# Brett} other {# Bretter}} · keins gesehen",
+        "one": "Ein Brett. <em>Du kannst es sehen.</em>",
+        "oneNote": "Morphys Opernpartie, Paris, 1858. Jeder Zug ist echt.",
+        "many": "Jetzt <em>fünfundvierzig.</em>",
+        "manyNote": "São Paulo, Januar 1947. Miguel Najdorf gegen fünfundvierzig Gegner gleichzeitig.",
+        "dark": "Er sah <em>keines davon.</em>",
+        "darkNote": "Er spielte über 23 Stunden blind und beantwortete jeden Zug aus dem Gedächtnis. Er gewann 39.",
+        "you": "Fang mit <em>einem</em> an.",
+        "youNote": "Sieh dir eine Stellung ein paar Sekunden an. Dann wird sie dunkel, und du baust sie wieder auf."
       }
     }
   },

@@ -3,6 +3,8 @@
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
+import { IntroReplayLink } from "@/components/home/intro/IntroReplayLink";
+import { HOME_INTRO } from "@/lib/home/intro/introGate";
 import { LOCALES } from "@/i18n/routing";
 import { MEMORIZE_SECONDS_RANGE, PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import { LAB_SECTIONS } from "./SectionHeading";
@@ -53,6 +55,7 @@ export function LabHero({ totalPlays }: { totalPlays: TotalPlays }) {
               {lab("hero.secondaryCta")}
             </a>
           </div>
+          {HOME_INTRO && <IntroReplayLink />}
           <p className="lab-subtle-links">
             <span>
               {lab.rich("hero.settingsLink", {

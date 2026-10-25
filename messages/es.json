@@ -943,8 +943,18 @@
       },
       "intro": {
         "label": "La introducción de 45 tableros",
-        "one": "Un tablero. Puedes verlo.",
-        "skip": "Saltar introducción"
+        "skip": "Saltar introducción",
+        "replay": "Los 45 tableros de Najdorf",
+        "counter": "{count, plural, one {# tablero} many {# tableros} other {# tableros}}",
+        "counterDark": "{count, plural, one {# tablero} many {# tableros} other {# tableros}} · ninguno visto",
+        "one": "Un tablero. <em>Puedes verlo.</em>",
+        "oneNote": "La partida de la Ópera de Morphy, París, 1858. Cada jugada es real.",
+        "many": "Ahora, <em>cuarenta y cinco.</em>",
+        "manyNote": "São Paulo, enero de 1947. Miguel Najdorf contra cuarenta y cinco rivales a la vez.",
+        "dark": "No veía <em>ninguno.</em>",
+        "darkNote": "Jugó a ciegas durante más de 23 horas, respondiendo cada jugada de memoria. Ganó 39.",
+        "you": "Empieza con <em>uno.</em>",
+        "youNote": "Mira una posición unos segundos. Luego se oscurece y la reconstruyes."
       }
     }
   },

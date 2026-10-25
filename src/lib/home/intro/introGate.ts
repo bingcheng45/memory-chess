@@ -9,6 +9,12 @@ export const INTRO_RULES = ["reducedMotion", "saveData", "seen", "deepLink"] as 
 export type IntroSignal = (typeof INTRO_RULES)[number];
 export type IntroSignals = Readonly<Record<IntroSignal, boolean>>;
 
+/** The intro ships only behind this build flag; with it off, the home page gains nothing. */
+export const HOME_INTRO = process.env.NEXT_PUBLIC_HOME_INTRO === "1";
+
+/** The window event the hero's replay link sends to play the intro again. */
+export const INTRO_REPLAY_EVENT = "home-intro:replay";
+
 /** The attribute the gate puts on its own script element; the shell shows only behind it. */
 export const INTRO_MARK = "data-home-intro";
 

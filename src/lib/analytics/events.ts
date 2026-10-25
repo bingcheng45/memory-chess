@@ -3,6 +3,7 @@ import type { DAILY_BOARD, LeaderboardDifficulty } from "@/types/leaderboard";
 import type { SearchOutcome } from "@/lib/seo/learn/search";
 import type { ShareNetwork } from "@/lib/shareIntents";
 import type { ResultView } from "@/lib/store/gameStore";
+import type { BeatId } from "@/lib/home/intro/introBeats";
 
 /** Where a round was started from. `link` is a round link that names no known source. */
 export const ROUND_SOURCES = [
@@ -125,6 +126,25 @@ export type FunnelEvent =
       name: "lab_section_view";
       params: Record<string, never>;
     }
+  /** The home intro played by itself, on a first visit. Never why it did not play for anyone else. */
+  | {
+      name: "home_intro_shown";
+      params: Record<string, never>;
+    }
+  /** The home intro played again from the hero's replay link. */
+  | {
+      name: "home_intro_replayed";
+      params: Record<string, never>;
+    }
+  /** Skip or Esc ended the intro, at this beat. */
+  | {
+      name: "home_intro_skipped";
+      params: { beat: BeatId; play: IntroPlay };
+    }
+  | {
+      name: "home_intro_completed";
+      params: { play: IntroPlay };
+    }
   | {
       name: "lab_panel_action";
       params: { panel: LabPanel; action: LabPanelAction };
@@ -153,6 +173,9 @@ export type FunnelEvent =
       name: "affiliate_click";
       params: { store: "amazon" };
     };
+
+/** Whether an intro event belongs to the first-visit play or to a replay. */
+export type IntroPlay = "first" | "replay";
 
 export type LearnSearchSurface = "hub" | "server";
 

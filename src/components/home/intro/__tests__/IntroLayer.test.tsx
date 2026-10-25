@@ -135,3 +135,48 @@ describe("the hero's replay link", () => {
     expect(document.activeElement).toBe(replay);
   });
 });
+
+describe("what the intro reports to analytics", () => {
+  const events = () => (window.gtag as jest.Mock).mock.calls.map(([, name, params]) => [name, params]);
+
+  beforeEach(() => {
+    window.gtag = jest.fn();
+  });
+
+  afterEach(() => {
+    Reflect.deleteProperty(window, "gtag");
+  });
+
+  it("reports a first-visit play that runs to the end", async () => {
+    homePage({ marked: true });
+    await advance(10_100);
+    expect(events()).toEqual([
+      ["home_intro_shown", {}],
+      ["home_intro_completed", { play: "first" }],
+    ]);
+  });
+
+  it("reports the beat a skip left, once", async () => {
+    const { skip } = homePage({ marked: true });
+    await advance(6000);
+    fireEvent.click(skip);
+    fireEvent.click(skip);
+    await advance(400);
+    expect(events()).toEqual([
+      ["home_intro_shown", {}],
+      ["home_intro_skipped", { beat: "dark", play: "first" }],
+    ]);
+  });
+
+  it("reports a replay, and an Escape during it as a skip of the replay", async () => {
+    const { replay } = homePage({ marked: false });
+    await advance(100);
+    fireEvent.click(replay);
+    await advance(100);
+    fireEvent.keyDown(window, { key: "Escape" });
+    expect(events()).toEqual([
+      ["home_intro_replayed", {}],
+      ["home_intro_skipped", { beat: "one", play: "replay" }],
+    ]);
+  });
+});

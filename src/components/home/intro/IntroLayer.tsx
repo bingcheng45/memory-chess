@@ -3,7 +3,8 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { INTRO_MARK, INTRO_REPLAY_EVENT } from "@/lib/home/intro/introGate";
-import { captionAt, counterAt, INTRO_SECONDS, nextBeatTime, type CaptionId } from "@/lib/home/intro/introBeats";
+import { beatAt, captionAt, counterAt, INTRO_SECONDS, nextBeatTime, type CaptionId } from "@/lib/home/intro/introBeats";
+import { trackEvent, type IntroPlay } from "@/lib/analytics/events";
 import type { SimulScene } from "./simulScene";
 
 const CAPTIONS: readonly CaptionId[] = ["one", "many", "dark", "you"];
@@ -113,8 +114,12 @@ export function IntroLayer() {
   const bar = useRef<HTMLSpanElement>(null);
   const skip = useRef<HTMLButtonElement>(null);
   const jump = useRef(() => {});
+  const skipNow = useRef(() => {});
   /** Where focus was when a replay started, so it can go back there. */
   const returnFocus = useRef<HTMLElement | null>(null);
+  const playKind = useRef<IntroPlay>("first");
+  /** The clock's last reading, so a skip can report the beat it left. */
+  const clock = useRef(0);
   const [phase, setPhase] = useState<Phase>("idle");
   const [caption, setCaption] = useState<CaptionId>("one");
   const [boards, setBoards] = useState(1);
@@ -124,6 +129,7 @@ export function IntroLayer() {
     if (document.querySelector(`script[${INTRO_MARK}]`)) setPhase("playing");
     const onReplay = () => {
       returnFocus.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
+      playKind.current = "replay";
       setPhase((current) => (current === "idle" ? "playing" : current));
     };
     window.addEventListener(INTRO_REPLAY_EVENT, onReplay);
@@ -138,20 +144,31 @@ export function IntroLayer() {
     setCaption("one");
     setBoards(1);
     setDark(false);
+    clock.current = 0;
+    const played = playKind.current;
+    trackEvent(played === "first" ? { name: "home_intro_shown", params: {} } : { name: "home_intro_replayed", params: {} });
 
-    const end = () => setPhase("ending");
+    const skipped = () => {
+      trackEvent({ name: "home_intro_skipped", params: { beat: beatAt(clock.current), play: played } });
+      setPhase("ending");
+    };
     const playback = play(
       canvas.current,
       (now) => {
+        clock.current = now;
         const counter = counterAt(now);
         setCaption(captionAt(now));
         setBoards(counter.boards);
         setDark(counter.dark);
         bar.current?.style.setProperty("transform", `scaleX(${now / INTRO_SECONDS})`);
       },
-      end,
+      () => {
+        trackEvent({ name: "home_intro_completed", params: { play: played } });
+        setPhase("ending");
+      },
     );
     jump.current = playback.jump;
+    skipNow.current = skipped;
 
     let wheelAt = -Infinity;
     const onWheel = (event: WheelEvent) => {
@@ -169,7 +186,7 @@ export function IntroLayer() {
       touchY = null;
     };
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") end();
+      if (event.key === "Escape") skipped();
       else if (JUMP_KEYS.has(event.key) && event.target !== skip.current) {
         event.preventDefault();
         playback.jump();
@@ -183,6 +200,7 @@ export function IntroLayer() {
     return () => {
       playback.stop();
       jump.current = () => {};
+      skipNow.current = () => {};
       covered.forEach((element) => element.removeAttribute("inert"));
       section.removeEventListener("wheel", onWheel);
       section.removeEventListener("touchstart", onTouchStart);
@@ -218,7 +236,7 @@ export function IntroLayer() {
         <div className="home-intro-hud">
           <div className="home-intro-top">
             <p className="home-intro-counter">{dark ? t("counterDark", { count: boards }) : t("counter", { count: boards })}</p>
-            <button ref={skip} type="button" className="home-intro-skip" onClick={() => setPhase("ending")}>
+            <button ref={skip} type="button" className="home-intro-skip" onClick={() => skipNow.current()}>
               {t("skip")}
             </button>
           </div>

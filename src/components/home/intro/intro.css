@@ -85,10 +85,15 @@ html:has(.home-intro[data-phase="playing"]) { overflow: hidden; }
   text-wrap: balance;
   opacity: 0;
   transform: translateY(18px);
-  transition: opacity 450ms ease, transform 450ms ease;
+  /* The caption leaving fades out before the next one fades in, so the two never overlap. */
+  transition: opacity 200ms ease, transform 200ms ease;
 }
 
-.home-intro-caption[data-on] { opacity: 1; transform: none; }
+.home-intro-caption[data-on] {
+  opacity: 1;
+  transform: none;
+  transition: opacity 450ms ease 200ms, transform 450ms ease 200ms;
+}
 .home-intro-caption em { font-style: normal; color: var(--intro-accent); }
 
 .home-intro-caption small {

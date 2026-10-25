@@ -11,7 +11,7 @@ A first-time visitor to the home page sees a 10-second intro over the page, then
 3. Every board goes dark from the centre out. "He saw none of them." About 23 hours, 39 wins.
 4. The camera pushes into one board. "Start with one." The layer fades and the home page is there.
 
-It plays by itself. Nobody has to scroll. Skip shows from the first frame. Esc skips. Tap, Enter, an arrow key or a scroll jumps to the next beat, so a visitor who wants to move on can. It plays once per browser. A "45-board intro" chip on the home page replays it for anyone who wants to see the story again.
+It plays by itself. Nobody has to scroll. Skip shows from the first frame. Esc skips. Tap, Enter, an arrow key or a scroll jumps to the next beat, so a visitor who wants to move on can. It plays once per browser. A small "▶ Najdorf's 45 boards" link under the hero's two buttons replays it for anyone who wants to see the story again.
 
 Search visitors and crawlers see it too (both decided 24 October 2026). The home page's HTML, title, H1, canonical and structured data do not change for anyone.
 
@@ -36,7 +36,7 @@ The gate runs before first paint in an inline script, the same pattern as `RECOR
 | Feature flag off (`NEXT_PUBLIC_HOME_INTRO !== "1"`) | No intro |
 | `prefers-reduced-motion: reduce` | No intro |
 | `navigator.connection.saveData` | No intro |
-| Seen flag in local storage | No intro, replay chip |
+| Seen flag in local storage | No intro (the replay link is always there) |
 | URL has a `#section` | No intro |
 | Anyone else | Intro |
 
@@ -52,10 +52,10 @@ Removed from the prototype: the search-landing rule and the crawler rule. Google
 | Timeline | `src/lib/home/intro/introBeats.ts` | The beats table (`one`, `many`, `dark`, `you`, `end` with start times) and the camera as pure functions of time, so tests can ask "what is on screen at 6.2 s". |
 | Shell | `src/components/home/intro/IntroShell.tsx` | Server rendered. Fixed black layer, first caption and Skip, hidden by CSS unless the gate marked its script (`script[data-home-intro] ~ .home-intro`). A CSS-only failsafe hides it after 12 s, so a failed script can never leave the page black. `body:has(script[data-home-intro])` stops page scroll while it plays. |
 | Player | `src/components/home/intro/FortyFiveIntro.tsx` | Client, loaded with `next/dynamic` only when the gate passed, so other visitors download none of it. Canvas, cached board bitmaps, device pixel ratio capped at 2, pauses when the tab is hidden, stops for good at the end. |
-| Replay chip | `src/components/home/intro/IntroReplay.tsx` | Small fixed button. Clears nothing, just plays again. |
+| Replay link | `src/components/home/intro/IntroReplayLink.tsx` | A text link under the hero's buttons, server rendered so it shifts nothing. Clears nothing, just plays again. |
 | Mount | `src/app/[locale]/(home)/page.tsx` | Adds the gate script and the shell next to `BrainLabHome`, which does not change. |
 | Copy | `messages/*.json` under `home.lab.intro` | Reaches the client through the home layout's existing `home.lab` scope. 23 locales, checked by `npm run validate:messages`. |
-| Analytics | `src/lib/analytics/events.ts` | New `FunnelEvent` members: `home_intro_shown`, `home_intro_skipped` with the beat, `home_intro_completed`, `home_intro_replayed`. GA4 only, not mirrored to Databuddy. |
+| Analytics | `src/lib/analytics/events.ts` | New `FunnelEvent` members: `home_intro_shown` (first-visit play), `home_intro_replayed`, `home_intro_skipped` with the beat it left and `play` (`first` or `replay`), `home_intro_completed` with `play`. GA4 only, not mirrored to Databuddy. |
 
 ## Build order
 
@@ -71,6 +71,19 @@ Each step ends in a check, and each is its own PR into `main`.
    Check: `validate:messages`, and the events showing in GA4 DebugView.
 5. **Launch.** Turn the flag on for a Vercel preview, then production.
    Check: Lighthouse on the preview with the intro on and off (mobile and desktop), compare LCP, CLS and TBT. Then watch Search Console and the GA4 numbers for two weeks.
+
+## Launch measurements
+
+Lighthouse 13.5.0 on a local production build (`next build && next start`) of the same commit, built once with the flag on and once without it, three runs each, medians. The Vercel previews are SSO-protected, so a local build stood in for the preview. The machine was loaded (load average about 15 on 10 cores), so small gaps are noise. Measured 25 October 2026.
+
+| | Score | LCP | CLS | TBT | FCP |
+|---|---|---|---|---|---|
+| Mobile, intro off | 86 | 4,077 ms | 0 | 44 ms | 1,511 ms |
+| Mobile, intro on | 85 | 4,233 ms (runs 3,940 to 5,176) | 0 | 40 ms | 1,513 ms |
+| Desktop, intro off | 99 | 831 ms | 0 | 0 ms | 413 ms |
+| Desktop, intro on | 99 | 857 ms | 0 | 0 ms | 412 ms |
+
+The intro played in every "on" run (its last frame shows the board counter). It adds 2 requests and about 13 KB of script, the lazy scene and its games. No metric moved beyond the spread between runs.
 
 ## Open decisions
 

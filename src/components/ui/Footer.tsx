@@ -9,6 +9,7 @@ export const FOOTER_LINKS = [
   { href: "/learn", labelKey: "nav.learn" },
   { href: "/articles", labelKey: "nav.articles" },
   { href: "/about", labelKey: "nav.about" },
+  { href: "/blindfold", labelKey: "nav.blindfold" },
   { href: "/changelog", labelKey: "nav.changelog" },
   { href: "/contact-us", labelKey: "nav.contactUs" },
   { href: "/privacy", labelKey: "nav.privacy" },

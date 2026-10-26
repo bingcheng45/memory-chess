@@ -1090,7 +1090,7 @@
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% entra no ranking.",
         "open": "{difficulty}: veja em que posição fica {accuracy}%.",
-        "claim": "Garantir",
+        "claim": "Garantir vaga",
         "submit": "Enviar"
       },
       "viewLeaderboard": "Ver o ranking",

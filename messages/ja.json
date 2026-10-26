@@ -1090,7 +1090,7 @@
       "claimLine": {
         "qualifies": "{difficulty}:{accuracy}%ならランキング入りです。",
         "open": "{difficulty}:{accuracy}%の順位を確認しましょう。",
-        "claim": "確保する",
+        "claim": "順位を確保",
         "submit": "送信する"
       },
       "viewLeaderboard": "ランキングを見る",

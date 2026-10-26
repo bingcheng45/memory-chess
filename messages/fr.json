@@ -1090,7 +1090,7 @@
       "claimLine": {
         "qualifies": "{difficulty} : {accuracy} % entre au classement.",
         "open": "{difficulty} : voyez le rang de {accuracy} %.",
-        "claim": "Réserver",
+        "claim": "Réserver ma place",
         "submit": "Envoyer"
       },
       "viewLeaderboard": "Voir le classement",

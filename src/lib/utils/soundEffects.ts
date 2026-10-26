@@ -41,6 +41,42 @@ const outputFor = (): { context: AudioContext; gain: GainNode } | null => {
   return output;
 };
 
+const IDLE_FALLBACK_MS = 200;
+const UNLOCK_EVENTS = ["click", "touchend", "keydown"] as const;
+let preparing = false;
+
+const unlockOnFirstTap = (): void => {
+  const unlock = () => {
+    for (const type of UNLOCK_EVENTS) window.removeEventListener(type, unlock, true);
+    output?.context.resume().catch((err: unknown) => console.error("Error resuming sound:", err));
+  };
+  for (const type of UNLOCK_EVENTS) window.addEventListener(type, unlock, true);
+};
+
+/**
+ * Create the audio context and gain node while the browser is idle, so the first tap does not pay for them.
+ * A context made without a gesture starts suspended; the first tap, or the first play, resumes it.
+ */
+export const prepareSound = (): (() => void) => {
+  if (typeof window === "undefined" || !soundEnabled || preparing || output) return () => {};
+  preparing = true;
+  const create = () => {
+    preparing = false;
+    if (!soundEnabled || !outputFor()) return;
+    unlockOnFirstTap();
+  };
+  const cancel = (clear: () => void) => () => {
+    clear();
+    preparing = false;
+  };
+  if (typeof window.requestIdleCallback === "function") {
+    const id = window.requestIdleCallback(create);
+    return cancel(() => window.cancelIdleCallback(id));
+  }
+  const id = setTimeout(create, IDLE_FALLBACK_MS);
+  return cancel(() => clearTimeout(id));
+};
+
 const bufferFor = (context: AudioContext, soundName: SoundName): Promise<AudioBuffer | null> => {
   const url = SOUND_URLS[soundName];
   const cached = bufferByUrl.get(url);
@@ -111,6 +147,7 @@ export const warmRoundSounds = (): void => {
   if (typeof window === "undefined" || !soundEnabled) return;
   const out = outputFor();
   if (!out) return;
+  out.context.resume().catch((err: unknown) => console.error("Error resuming sound:", err));
   for (const soundName of ROUND_SOUNDS) void bufferFor(out.context, soundName);
 };
 

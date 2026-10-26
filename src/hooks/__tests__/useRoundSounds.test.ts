@@ -1,9 +1,9 @@
 import { renderHook } from "@testing-library/react";
-import { playSound, stopTimerSound, warmRoundSounds } from "@/lib/utils/soundEffects";
+import { playSound, prepareSound, stopTimerSound, warmRoundSounds } from "@/lib/utils/soundEffects";
 import { useRoundSounds } from "@/hooks/useRoundSounds";
 import type { RoundState } from "@/lib/round/round";
 
-jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn(), stopTimerSound: jest.fn(), warmRoundSounds: jest.fn() }));
+jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn(), stopTimerSound: jest.fn(), warmRoundSounds: jest.fn(), prepareSound: jest.fn() }));
 
 const config = { pieceCount: 2, studyMs: 8000, source: "game_form" } as const;
 const target = { e1: { color: "white", type: "king" } } as const;
@@ -76,5 +76,26 @@ describe("useRoundSounds", () => {
     rerender({ round: rebuild(8000) });
 
     expect([warmsWhileIdle, jest.mocked(warmRoundSounds).mock.calls.length]).toEqual([0, 1]);
+  });
+
+  it("prepares the audio output once when the game mounts, not on every phase change", () => {
+    jest.mocked(prepareSound).mockClear();
+    const { rerender } = renderHook(({ round }) => useRoundSounds(round), {
+      initialProps: { round: { phase: "idle" } as RoundState },
+    });
+    rerender({ round: study(3000) });
+
+    expect(jest.mocked(prepareSound).mock.calls.length).toBe(1);
+  });
+
+  it("cancels the pending audio preparation when the game unmounts", () => {
+    const cancel = jest.fn();
+    jest.mocked(prepareSound).mockReturnValueOnce(cancel);
+    const { unmount } = renderHook(() => useRoundSounds({ phase: "idle" }));
+    expect(cancel).not.toHaveBeenCalled();
+
+    unmount();
+
+    expect(cancel).toHaveBeenCalledTimes(1);
   });
 });

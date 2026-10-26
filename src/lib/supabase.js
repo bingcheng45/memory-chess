@@ -47,18 +47,25 @@ export const serviceRoleWriter =
   supabaseWriter && !leaderboardServiceKeyProblem
     ? createClient(supabaseUrl, serviceKey, { auth: { persistSession: false } })
     : null;
-let reportedAnonLeaderboardWriter = false;
 
-export function leaderboardWriter() {
-  if (serviceRoleWriter || !supabaseWriter) return serviceRoleWriter;
-  if (!reportedAnonLeaderboardWriter) {
-    reportedAnonLeaderboardWriter = true;
-    const message = `SUPABASE_SERVICE_ROLE_KEY ${leaderboardServiceKeyProblem}, so leaderboard scores are written with the anon key. Migration 0006 refuses those writes.`;
-    if (serviceKey) console.error(`${message} Set it to the service_role key from Supabase project settings, under API.`);
-    else console.warn(message);
-  }
-  return supabaseWriter;
+function anonFallbackWriter(what, migration) {
+  let reported = false;
+  return () => {
+    if (serviceRoleWriter || !supabaseWriter) return serviceRoleWriter;
+    if (!reported) {
+      reported = true;
+      const message = `SUPABASE_SERVICE_ROLE_KEY ${leaderboardServiceKeyProblem}, so ${what} are written with the anon key. Migration ${migration} refuses those writes.`;
+      if (serviceKey) console.error(`${message} Set it to the service_role key from Supabase project settings, under API.`);
+      else console.warn(message);
+    }
+    return supabaseWriter;
+  };
 }
+
+export const leaderboardWriter = anonFallbackWriter('leaderboard scores', '0006');
+
+// Play and article counters run SECURITY DEFINER functions that migration 0010 closes to the anon key
+export const counterWriter = anonFallbackWriter('play and article counters', '0010');
 
 export const SUPABASE_WRITES_OFF_REASON = readOnly
   ? 'Supabase is read-only (SUPABASE_READ_ONLY=true)'

@@ -13,8 +13,19 @@ jest.mock("@/lib/services/gameStatsService", () => ({
 
 const increment = incrementGameMetric as jest.MockedFunction<typeof incrementGameMetric>;
 
-const post = (body: unknown) =>
-  POST(new NextRequest("http://localhost/api/game-stats", { method: "POST", body: JSON.stringify(body) }));
+let nextAddress = 0;
+const freshAddress = () => `203.0.113.${++nextAddress}`;
+
+const send = (body: string, headers: Record<string, string> = {}) =>
+  POST(
+    new NextRequest("http://localhost/api/game-stats", {
+      method: "POST",
+      body,
+      headers: { "content-type": "application/json", "x-forwarded-for": freshAddress(), ...headers },
+    }),
+  );
+
+const post = (body: unknown) => send(JSON.stringify(body));
 
 describe("POST /api/game-stats", () => {
   it("answers the new total of the metric it was asked to count", async () => {
@@ -40,6 +51,50 @@ describe("POST /api/game-stats", () => {
 
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({ error: "Missing required field: metric" });
+  });
+});
+
+describe("POST /api/game-stats guards", () => {
+  beforeEach(() => increment.mockReset());
+
+  it("answers 415 and counts nothing when the body is not declared as JSON", async () => {
+    const response = await send(JSON.stringify({ metric: "total_plays", increment: 1 }), { "content-type": "text/plain" });
+
+    expect(response.status).toBe(415);
+    expect(await response.json()).toEqual({ error: "Content-Type must be application/json" });
+    expect(increment).not.toHaveBeenCalled();
+  });
+
+  it("answers 413 and counts nothing when the body passes the cap", async () => {
+    const response = await send(JSON.stringify({ metric: "total_plays", increment: 1, padding: "x".repeat(200) }));
+
+    expect(response.status).toBe(413);
+    expect(await response.json()).toEqual({ error: "Request body is too large" });
+    expect(increment).not.toHaveBeenCalled();
+  });
+
+  it("answers 400 to a body that is not JSON", async () => {
+    const response = await send("{nope");
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Invalid JSON request body" });
+  });
+
+  it("answers 429 with Retry-After from the 31st count in a minute from one address, and still counts another address", async () => {
+    increment.mockResolvedValue({ success: true, newValue: 7 });
+    const body = JSON.stringify({ metric: "total_plays", increment: 1 });
+    const script = { "x-forwarded-for": "198.51.100.9" };
+
+    const statuses: number[] = [];
+    for (let i = 0; i < 31; i++) statuses.push((await send(body, script)).status);
+    const refused = await send(body, script);
+
+    expect(statuses.slice(0, 30)).toEqual(Array(30).fill(200));
+    expect(statuses[30]).toBe(429);
+    expect(await refused.json()).toEqual({ error: "Too many requests" });
+    expect(Number(refused.headers.get("retry-after"))).toBeGreaterThan(0);
+    expect(increment).toHaveBeenCalledTimes(30);
+    expect((await send(body)).status).toBe(200);
   });
 });
 

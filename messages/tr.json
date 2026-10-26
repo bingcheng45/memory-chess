@@ -1084,8 +1084,6 @@
       "changeSettings": "Ayarları değiştir",
       "tileDrill": "Bu alıştırma senin seviyende",
       "tileDrillWhy": "Seviyene göre ayarlandı, makalenin anlattığını çalışabilmen için.",
-      "submitToLeaderboard": "Gönder ve sıramı gör",
-      "claimSpot": "Yerimi al",
       "submitPrompt": "Skorunun dünyada ve ülkende kaçıncı olduğunu gör.",
       "personalBest": "Bu seviyede yeni kişisel rekor. Kayda geçir.",
       "leaderboardQualifies": "Skorun sıralamaya girer. Yerini al.",
@@ -1136,10 +1134,6 @@
         "cta": "Geçebilir misin?",
         "text": "{kind, select, daily {Memory Chess günlük tahtasında ({date}) {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} review {Memory Chess tekrar tahtasında {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} other {Memory Chess'te {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.}} Geçebilir misin?",
         "alt": "Memory Chess sonuç kartı: {details}."
-      },
-      "savedToast": {
-        "message": "Tur kaydedildi. Güncel istatistiklerin hemen aşağıda.",
-        "action": "Göster"
       },
       "blindfoldRound": "Körleme tur: konumu notasyon olarak çalıştınız."
     },

@@ -3,7 +3,7 @@
 import { useGameStore } from "@/lib/store/gameStore";
 import { accuracyBandKey } from "@/lib/reference/facts";
 import { GameState } from "@/lib/types/game";
-import { lazy, Suspense, useDeferredValue, useState, useEffect, useRef, type MouseEvent } from "react";
+import { lazy, Suspense, useDeferredValue, useState, useEffect, useRef, useId, type MouseEvent } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
 import { useFormatter, useTranslations } from "next-intl";
@@ -130,6 +130,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const [submittedId, setSubmittedId] = useState<string | null>(null);
   const [personalBest, setPersonalBest] = useState(false);
   const openerRef = useRef<HTMLElement | null>(null);
+  const claimTextId = useId();
   const leaderboardLinkRef = useRef<HTMLAnchorElement>(null);
   // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
   // effect below would insert it a frame later and push down everything under it.
@@ -372,15 +373,12 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     openerRef.current = event.currentTarget;
     setShowLeaderboardDialog(true);
   };
-  const submitButton = leaderboardEligible && (
-    <button type="button" onClick={openLeaderboardDialog} className="lab-btn lab-btn-secondary lab-result-submit">
-      {ranks ? t("claimSpot") : t("submitToLeaderboard")}
-    </button>
-  );
   const claimLine = scored && leaderboardEligible && roundDifficulty !== "custom" && !submitSuccess && (
     <p className="lab-result-claim" data-result-claim>
-      {t(ranks ? "claimLine.qualifies" : "claimLine.open", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })}
-      <button type="button" onClick={openLeaderboardDialog} className="lab-result-claim-action">
+      <span id={claimTextId} className="lab-result-claim-text">
+        {t(ranks ? "claimLine.qualifies" : "claimLine.open", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })}
+      </span>
+      <button type="button" onClick={openLeaderboardDialog} aria-describedby={claimTextId} className="lab-result-claim-action">
         {t(ranks ? "claimLine.claim" : "claimLine.submit")}
       </button>
     </p>
@@ -457,7 +455,6 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                     <p role={ranks ? "status" : undefined}>
                       {ranks ? t("leaderboardQualifies") : personalBest ? t("personalBest") : t("submitPrompt")}
                     </p>
-                    {submitButton}
                   </div>
                 )}
               />
@@ -516,7 +513,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
 
           {deltas && labRound && (
             <ErrorBoundary key={`deltas-${labRound.facts.id}`} fallback={<></>}>
-              <deltas.Deltas before={deltas.before} labRound={labRound} feedbackAsked={asksFeedback} />
+              <deltas.Deltas before={deltas.before} labRound={labRound} />
             </ErrorBoundary>
           )}
 

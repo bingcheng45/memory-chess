@@ -1084,8 +1084,6 @@
       "changeSettings": "Zmień ustawienia",
       "tileDrill": "To ćwiczenie na twoim poziomie",
       "tileDrillWhy": "Dopasowane do twojego poziomu, żeby przećwiczyć to, co opisuje artykuł.",
-      "submitToLeaderboard": "Wyślij i zobacz miejsce",
-      "claimSpot": "Zajmij moje miejsce",
       "submitPrompt": "Sprawdź, które miejsce zajmuje Twój wynik na świecie i w Twoim kraju.",
       "personalBest": "Nowy rekord osobisty na tym poziomie. Zapisz go.",
       "leaderboardQualifies": "Twój wynik zmieściłby się w rankingu. Zajmij swoje miejsce.",
@@ -1136,10 +1134,6 @@
         "cta": "Pobijesz to?",
         "text": "{kind, select, daily {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na dziennej szachownicy Memory Chess z dnia {date}.} review {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na szachownicy powtórkowej Memory Chess.} other {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) w Memory Chess.}} Pobijesz to?",
         "alt": "Karta wyniku Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Runda zapisana. Zaktualizowane statystyki są tuż poniżej.",
-        "action": "Pokaż"
       },
       "blindfoldRound": "Runda na ślepo: pozycja zapamiętana z zapisu."
     },

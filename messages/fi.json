@@ -1084,8 +1084,6 @@
       "changeSettings": "Muuta asetuksia",
       "tileDrill": "Tämä harjoitus tasollasi",
       "tileDrillWhy": "Mitoitettu tasollesi, jotta voit harjoitella sitä, mitä artikkeli kuvaa.",
-      "submitToLeaderboard": "Lähetä ja näe sijoitukseni",
-      "claimSpot": "Varaa paikkani",
       "submitPrompt": "Katso, mihin tuloksesi sijoittuu maailmassa ja omassa maassasi.",
       "personalBest": "Uusi oma ennätys tällä tasolla. Kirjaa se.",
       "leaderboardQualifies": "Tuloksesi pääsisi tulostaulukkoon. Varaa paikkasi.",
@@ -1136,10 +1134,6 @@
         "cta": "Pystytkö parempaan?",
         "text": "{kind, select, daily {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessin päivän laudalla {date}.} review {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessin kertauslaudalla.} other {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessissä.}} Pystytkö parempaan?",
         "alt": "Memory Chessin tuloskortti: {details}."
-      },
-      "savedToast": {
-        "message": "Kierros tallennettu. Päivitetyt tilastosi ovat heti alla.",
-        "action": "Näytä"
       },
       "blindfoldRound": "Sokkokierros: opettelit aseman notaationa."
     },

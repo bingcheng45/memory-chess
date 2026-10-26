@@ -1084,8 +1084,6 @@
       "changeSettings": "Změnit nastavení",
       "tileDrill": "Toto cvičení na vaší úrovni",
       "tileDrillWhy": "Upraveno na vaši úroveň, abyste si vyzkoušeli, co článek popisuje.",
-      "submitToLeaderboard": "Odeslat a zjistit pořadí",
-      "claimSpot": "Zajistit si místo",
       "submitPrompt": "Podívejte se, kde se váš výsledek umístí ve světě i ve vaší zemi.",
       "personalBest": "Nový osobní rekord na této úrovni. Zapište ho.",
       "leaderboardQualifies": "Váš výsledek by se dostal do žebříčku. Zajistěte si místo.",
@@ -1136,10 +1134,6 @@
         "cta": "Překonáš to?",
         "text": "{kind, select, daily {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na denní pozici Memory Chess z {date}.} review {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na opakovací pozici Memory Chess.} other {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) v Memory Chess.}} Překonáš to?",
         "alt": "Karta s výsledkem Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Kolo uloženo. Aktualizované statistiky najdeš hned níž.",
-        "action": "Ukázat"
       },
       "blindfoldRound": "Kolo naslepo: pozici jste si zapamatovali ze zápisu."
     },

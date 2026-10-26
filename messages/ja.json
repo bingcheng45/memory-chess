@@ -1084,8 +1084,6 @@
       "changeSettings": "設定を変更",
       "tileDrill": "あなたのレベルに合わせたドリル",
       "tileDrillWhy": "あなたのレベルに合わせてあり、記事の内容を練習できます。",
-      "submitToLeaderboard": "登録して順位を見る",
-      "claimSpot": "順位を確保する",
       "submitPrompt": "世界と自分の国での順位を確認しましょう。",
       "personalBest": "このレベルの自己ベストを更新。記録に残しましょう。",
       "leaderboardQualifies": "このスコアならランキング入りです。順位を確保しましょう。",
@@ -1136,10 +1134,6 @@
         "cta": "あなたは超えられる?",
         "text": "{kind, select, daily {Memory Chess の{date}のデイリー盤面で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。} review {Memory Chess の復習盤面で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。} other {Memory Chess で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。}}あなたは超えられる?",
         "alt": "Memory Chess の結果カード: {details}。"
-      },
-      "savedToast": {
-        "message": "ラウンドを保存しました。更新された成績はすぐ下にあります。",
-        "action": "見る"
       },
       "blindfoldRound": "目隠しラウンド：局面を棋譜表記で覚えました。"
     },

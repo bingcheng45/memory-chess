@@ -1084,8 +1084,6 @@
       "changeSettings": "Instellingen wijzigen",
       "tileDrill": "Deze oefening op jouw niveau",
       "tileDrillWhy": "Afgestemd op jouw niveau, om te oefenen wat het artikel beschrijft.",
-      "submitToLeaderboard": "Insturen en mijn plek zien",
-      "claimSpot": "Mijn plek claimen",
       "submitPrompt": "Bekijk waar je score staat, wereldwijd en in je eigen land.",
       "personalBest": "Nieuw persoonlijk record op dit niveau. Zet het op de lijst.",
       "leaderboardQualifies": "Je score zou de ranglijst halen. Claim je plek.",
@@ -1136,10 +1134,6 @@
         "cta": "Kun jij het beter?",
         "text": "{kind, select, daily {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) op het dagbord van Memory Chess van {date}.} review {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) op een herhalingsbord van Memory Chess.} other {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) bij Memory Chess.}} Kun jij het beter?",
         "alt": "Resultaatkaart van Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Ronde opgeslagen. Je bijgewerkte statistieken staan hieronder.",
-        "action": "Laat zien"
       },
       "blindfoldRound": "Blinde ronde: je hebt de stelling als notatie bestudeerd."
     },

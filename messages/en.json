@@ -1084,8 +1084,6 @@
       "changeSettings": "Change settings",
       "tileDrill": "This drill at your level",
       "tileDrillWhy": "Sized to your level, to practise what the article describes.",
-      "submitToLeaderboard": "Submit and see my rank",
-      "claimSpot": "Claim my spot",
       "submitPrompt": "See where your score ranks, worldwide and in your country.",
       "personalBest": "New personal best on this board. Put it on the record.",
       "leaderboardQualifies": "Your score would make the leaderboard. Claim your spot.",
@@ -1136,10 +1134,6 @@
         "cta": "Can you beat it?",
         "text": "{kind, select, daily {I recalled {correct, number} of {total, number} pieces ({accuracy}) on the Memory Chess daily board for {date}.} review {I recalled {correct, number} of {total, number} pieces ({accuracy}) on a Memory Chess review board.} other {I recalled {correct, number} of {total, number} pieces ({accuracy}) on Memory Chess.}} Can you beat it?",
         "alt": "Memory Chess result card: {details}."
-      },
-      "savedToast": {
-        "message": "Round saved. Your updated stats are just below.",
-        "action": "Show me"
       },
       "blindfoldRound": "Blindfold round: you studied the position as notation."
     },

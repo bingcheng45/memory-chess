@@ -1084,8 +1084,6 @@
       "changeSettings": "變更設定",
       "tileDrill": "適合你程度的這道練習",
       "tileDrillWhy": "依你的程度設定，用來練習文章所講的內容。",
-      "submitToLeaderboard": "送出並查看排名",
-      "claimSpot": "佔個位置",
       "submitPrompt": "看看你的成績在全球和你所在國家排第幾。",
       "personalBest": "刷新了這個難度的個人最佳，記錄下來吧。",
       "leaderboardQualifies": "你的成績能上排行榜，快來佔個位置。",
@@ -1136,10 +1134,6 @@
         "cta": "你能超越嗎？",
         "text": "{kind, select, daily {我在 Memory Chess {date} 的每日棋盤中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。} review {我在 Memory Chess 的複習棋盤中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。} other {我在 Memory Chess 中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。}}你能超越嗎？",
         "alt": "Memory Chess 結果卡片：{details}。"
-      },
-      "savedToast": {
-        "message": "本局已儲存。更新後的數據就在下方。",
-        "action": "查看"
       },
       "blindfoldRound": "盲棋回合：你透過記譜記住了局面。"
     },

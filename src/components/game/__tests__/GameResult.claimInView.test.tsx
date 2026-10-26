@@ -111,3 +111,12 @@ describe("Share result beside Next round", () => {
     expect(await screen.findByRole("dialog", { name: "Share your result" })).toBeInTheDocument();
   });
 });
+
+describe("the claim line's accessibility", () => {
+  it("describes its button with the sentence it belongs to", async () => {
+    await show(OPEN);
+    const button = within(claim()!).getByRole("button", { name: "Claim it" });
+
+    expect(document.getElementById(button.getAttribute("aria-describedby")!)?.textContent).toBe("Medium: 80% would make the leaderboard.");
+  });
+});

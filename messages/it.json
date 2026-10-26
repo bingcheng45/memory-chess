@@ -1084,8 +1084,6 @@
       "changeSettings": "Cambia impostazioni",
       "tileDrill": "Questo esercizio al tuo livello",
       "tileDrillWhy": "Calibrato sul tuo livello, per esercitarti su ciò che descrive l'articolo.",
-      "submitToLeaderboard": "Invia e scopri la posizione",
-      "claimSpot": "Prenota il mio posto",
       "submitPrompt": "Scopri dove si piazza il tuo punteggio, nel mondo e nel tuo paese.",
       "personalBest": "Nuovo record personale su questo livello. Mettilo agli atti.",
       "leaderboardQualifies": "Il tuo punteggio entrerebbe in classifica. Prenota il tuo posto.",
@@ -1136,10 +1134,6 @@
         "cta": "Riesci a fare di meglio?",
         "text": "{kind, select, daily {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) sulla scacchiera giornaliera di Memory Chess del {date}.} review {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) su una scacchiera di ripasso di Memory Chess.} other {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) su Memory Chess.}} Riesci a fare di meglio?",
         "alt": "Scheda del risultato di Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Partita salvata. Le tue statistiche aggiornate sono qui sotto.",
-        "action": "Mostra"
       },
       "blindfoldRound": "Partita alla cieca: hai studiato la posizione in notazione."
     },

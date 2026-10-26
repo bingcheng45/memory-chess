@@ -1084,8 +1084,6 @@
       "changeSettings": "Ubah pengaturan",
       "tileDrill": "Latihan ini di levelmu",
       "tileDrillWhy": "Disesuaikan dengan levelmu, untuk melatih apa yang dijelaskan artikel ini.",
-      "submitToLeaderboard": "Kirim dan lihat peringkat",
-      "claimSpot": "Amankan tempat saya",
       "submitPrompt": "Lihat peringkat skor Anda di dunia dan di negara Anda.",
       "personalBest": "Rekor pribadi baru di level ini. Catat sekarang.",
       "leaderboardQualifies": "Skor Anda akan masuk papan peringkat. Amankan tempat Anda.",
@@ -1136,10 +1134,6 @@
         "cta": "Bisa kalahkan?",
         "text": "{kind, select, daily {Aku mengingat {correct, number} dari {total, number} bidak ({accuracy}) di papan harian Memory Chess tanggal {date}.} review {Aku mengingat {correct, number} dari {total, number} bidak ({accuracy}) di papan ulasan Memory Chess.} other {Aku mengingat {correct, number} dari {total, number} bidak ({accuracy}) di Memory Chess.}} Bisa kalahkan?",
         "alt": "Kartu hasil Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Ronde tersimpan. Statistik terbarumu ada tepat di bawah.",
-        "action": "Lihat"
       },
       "blindfoldRound": "Ronde tutup mata: kamu mempelajari posisi sebagai notasi."
     },

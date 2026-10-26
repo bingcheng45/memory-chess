@@ -1084,8 +1084,6 @@
       "changeSettings": "Đổi cài đặt",
       "tileDrill": "Bài luyện này ở trình độ của bạn",
       "tileDrillWhy": "Được điều chỉnh theo trình độ của bạn, để luyện điều bài viết mô tả.",
-      "submitToLeaderboard": "Gửi và xem thứ hạng",
-      "claimSpot": "Giữ chỗ của tôi",
       "submitPrompt": "Xem điểm của bạn xếp thứ mấy trên thế giới và ở quốc gia bạn.",
       "personalBest": "Kỷ lục cá nhân mới ở cấp độ này. Ghi lại ngay.",
       "leaderboardQualifies": "Điểm của bạn sẽ lọt vào bảng xếp hạng. Giữ chỗ ngay.",
@@ -1136,10 +1134,6 @@
         "cta": "Bạn có vượt được không?",
         "text": "{kind, select, daily {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở bàn cờ hằng ngày của Memory Chess ngày {date}.} review {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở một bàn cờ ôn tập của Memory Chess.} other {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) trên Memory Chess.}} Bạn có vượt được không?",
         "alt": "Thẻ kết quả Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Đã lưu ván. Số liệu mới của bạn ở ngay bên dưới.",
-        "action": "Xem"
       },
       "blindfoldRound": "Ván bịt mắt: bạn đã học thế cờ qua ký hiệu."
     },

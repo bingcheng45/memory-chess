@@ -1761,7 +1761,7 @@
     "remindNote": "Télécharge un événement de calendrier qui se répète chaque jour à l’ouverture du plateau.",
     "remindDone": "Enregistré. Ouvrez le fichier pour ajouter l’événement quotidien à votre calendrier.",
     "remindTitle": "Plateau du jour Memory Chess",
-    "remindDescription": "Un nouveau plateau ouvre à {time}, heure locale. Tout le monde joue le même plateau, et vous avez un seul essai."
+    "remindDescription": "Un nouveau plateau ouvre chaque jour à minuit UTC. Tout le monde joue le même plateau, et vous avez un seul essai."
   },
   "daily": {
     "meta": {

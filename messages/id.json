@@ -1761,7 +1761,7 @@
     "remindNote": "Mengunduh acara kalender yang berulang setiap hari saat papan dibuka.",
     "remindDone": "Tersimpan. Buka berkasnya untuk menambahkan acara harian ke kalender Anda.",
     "remindTitle": "Papan harian Memory Chess",
-    "remindDescription": "Papan baru dibuka pukul {time} waktu setempat Anda. Semua orang memainkan papan yang sama, dan Anda punya satu kesempatan."
+    "remindDescription": "Papan baru dibuka setiap hari pada tengah malam UTC. Semua orang memainkan papan yang sama, dan Anda punya satu kesempatan."
   },
   "daily": {
     "meta": {

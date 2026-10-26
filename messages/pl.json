@@ -1761,7 +1761,7 @@
     "remindNote": "Pobiera wydarzenie kalendarza, które powtarza się codziennie, gdy plansza się otwiera.",
     "remindDone": "Zapisano. Otwórz plik, aby dodać codzienne wydarzenie do kalendarza.",
     "remindTitle": "Codzienna plansza Memory Chess",
-    "remindDescription": "Nowa plansza otwiera się o {time} czasu lokalnego. Wszyscy grają na tej samej planszy, a ty masz jedną próbę."
+    "remindDescription": "Nowa plansza otwiera się codziennie o północy UTC. Wszyscy grają na tej samej planszy, a ty masz jedną próbę."
   },
   "daily": {
     "meta": {

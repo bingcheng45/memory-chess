@@ -1761,7 +1761,7 @@
     "remindNote": "Descarcă un eveniment de calendar care se repetă în fiecare zi când se deschide tabla.",
     "remindDone": "Salvat. Deschide fișierul ca să adaugi evenimentul zilnic în calendar.",
     "remindTitle": "Tabla zilnică Memory Chess",
-    "remindDescription": "O tablă nouă se deschide la {time}, ora ta locală. Toată lumea joacă aceeași tablă și ai o singură încercare."
+    "remindDescription": "O tablă nouă se deschide în fiecare zi la miezul nopții UTC. Toată lumea joacă aceeași tablă și ai o singură încercare."
   },
   "daily": {
     "meta": {

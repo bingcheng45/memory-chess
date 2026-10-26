@@ -50,6 +50,16 @@ describe("reminderIcs", () => {
     expect(long).not.toContain("�");
   });
 
+  it.each([
+    ["CJK", "新棋局每天在 UTC 午夜开放。".repeat(8)],
+    ["Devanagari", "नया बोर्ड हर दिन मध्यरात्रि को खुलता है। ".repeat(5)],
+  ])("folds %s text within 75 octets without splitting a character", (_script, text) => {
+    const folded = reminderIcs(0, { title: "t", description: text });
+
+    for (const physical of folded.split("\r\n")) expect(Buffer.byteLength(physical, "utf8")).toBeLessThanOrEqual(75);
+    expect(unfold(folded)).toContain(`DESCRIPTION:${text}`);
+  });
+
   it("holds no personal data, only the fixed fields", () => {
     const names = lines.filter((line) => line !== "").map((line) => line.split(/[:;]/)[0]);
     expect(names).not.toEqual(expect.arrayContaining(["ATTENDEE", "ORGANIZER", "LOCATION", "GEO"]));

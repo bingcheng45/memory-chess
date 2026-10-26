@@ -7,6 +7,11 @@ const UID = "daily-board-reminder@thememorychess.com";
 const EVENT_MINUTES = 15;
 const MAX_OCTETS = 75;
 
+const utf8Octets = (char: string): number => {
+  const code = char.codePointAt(0) ?? 0;
+  return code < 0x80 ? 1 : code < 0x800 ? 2 : code < 0x10000 ? 3 : 4;
+};
+
 export interface ReminderCopy {
   readonly title: string;
   readonly description: string;
@@ -22,7 +27,7 @@ function fold(line: string): string {
   let current = "";
   let octets = 0;
   for (const char of line) {
-    const size = Buffer.byteLength(char, "utf8");
+    const size = utf8Octets(char);
     if (octets + size > MAX_OCTETS) {
       parts.push(current);
       current = " ";

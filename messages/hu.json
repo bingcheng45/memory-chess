@@ -1761,7 +1761,7 @@
     "remindNote": "Naptáresemény letöltése, amely minden nap ismétlődik, amikor a tábla megnyílik.",
     "remindDone": "Mentve. Nyisd meg a fájlt, hogy a napi eseményt hozzáadd a naptáradhoz.",
     "remindTitle": "Memory Chess napi tábla",
-    "remindDescription": "Az új tábla helyi idő szerint {time}-kor nyílik. Mindenki ugyanazt a táblát játssza, és egy próbálkozásod van."
+    "remindDescription": "Az új tábla minden nap éjfélkor nyílik, UTC szerint. Mindenki ugyanazt a táblát játssza, és egy próbálkozásod van."
   },
   "daily": {
     "meta": {

@@ -90,7 +90,7 @@ export function DailyTopTen({ rows, today, joined, played }: DailyTopTenProps) {
         )}
       </p>
       {joinedLine !== null && (
-        <p className="daily-note daily-joined">
+        <p className="daily-note daily-count">
           <strong>{t(joinedLine, { count: all.length >= LEADERBOARD_ROW_LIMIT ? `${format.number(LEADERBOARD_ROW_LIMIT)}+` : format.number(all.length) })}</strong>
           {joinedLine === "joinedToday" && <span className="daily-hint"> {t("listFrom", { min: MIN_LISTED })}</span>}
         </p>

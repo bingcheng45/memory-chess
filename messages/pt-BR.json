@@ -1761,7 +1761,7 @@
     "remindNote": "Baixa um evento de calendário que se repete todo dia quando o tabuleiro abre.",
     "remindDone": "Salvo. Abra o arquivo para adicionar o evento diário ao seu calendário.",
     "remindTitle": "Tabuleiro diário do Memory Chess",
-    "remindDescription": "Um novo tabuleiro abre às {time}, no seu horário local. Todos jogam o mesmo tabuleiro e você tem uma tentativa."
+    "remindDescription": "Um novo tabuleiro abre todo dia à meia-noite UTC. Todos jogam o mesmo tabuleiro e você tem uma tentativa."
   },
   "daily": {
     "meta": {

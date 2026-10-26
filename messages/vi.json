@@ -1761,7 +1761,7 @@
     "remindNote": "Tải về một sự kiện lịch lặp lại mỗi ngày vào lúc bàn cờ mở.",
     "remindDone": "Đã lưu. Hãy mở tệp để thêm sự kiện hằng ngày vào lịch của bạn.",
     "remindTitle": "Bàn cờ hằng ngày của Memory Chess",
-    "remindDescription": "Bàn cờ mới mở lúc {time} theo giờ địa phương của bạn. Mọi người chơi cùng một bàn cờ, và bạn có một lượt thử."
+    "remindDescription": "Bàn cờ mới mở mỗi ngày vào nửa đêm UTC. Mọi người chơi cùng một bàn cờ, và bạn có một lượt thử."
   },
   "daily": {
     "meta": {

@@ -1761,7 +1761,7 @@
     "remindNote": "Laddar ned en kalenderhändelse som upprepas varje dag när brädet öppnar.",
     "remindDone": "Sparat. Öppna filen för att lägga till den dagliga händelsen i din kalender.",
     "remindTitle": "Memory Chess dagens bräde",
-    "remindDescription": "Ett nytt bräde öppnar kl. {time} din lokala tid. Alla spelar samma bräde, och du får ett försök."
+    "remindDescription": "Ett nytt bräde öppnar varje dag vid midnatt UTC. Alla spelar samma bräde, och du får ett försök."
   },
   "daily": {
     "meta": {

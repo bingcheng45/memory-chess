@@ -102,3 +102,4 @@
   .lab-paper .daily-card { padding: 16px; }
   .lab-paper .daily-table th, .lab-paper .daily-table td { padding: 8px 4px; }
 }
+.lab-paper .daily-count { margin: 0; }

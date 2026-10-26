@@ -58,38 +58,19 @@ describe("RemindMe", () => {
     expect(window.URL.revokeObjectURL).toHaveBeenCalledWith("blob:reminder-1");
   });
 
-  it("states the opening time in the visitor's own clock inside the event description", async () => {
+  it("says the board opens at midnight UTC and carries no local clock time that a daylight saving change would make stale", async () => {
     render(<RemindMe surface="daily" />);
 
     fireEvent.click(screen.getByRole("button", { name: "Remind me daily" }));
 
     const ics = (await textOf(blobs[0])).replace(/\r\n /g, "");
-    const local = new Intl.DateTimeFormat("en", { hour: "numeric", minute: "2-digit" }).format(Date.parse("2026-10-28T00:00:00Z"));
-    expect(ics).toContain(`DESCRIPTION:A new board opens at ${local.replace(/[,]/g, "\\,")}\\, your local time.`);
+    expect(ics).toContain("DESCRIPTION:A new board opens every day at midnight UTC. Everyone plays the same board\\, and you get one try.");
+    expect(ics).not.toMatch(/\d:\d\d/);
   });
 
   it("sits beside tomorrow's board on the result screen", () => {
     render(<TomorrowBoardCard />);
 
     expect(screen.getByRole("region", { name: "Tomorrow's board" })).toContainElement(screen.getByRole("button", { name: "Remind me daily" }));
-  });
-});
-
-describe("RemindMe in a provider that resolved the server's time zone", () => {
-  it("writes the opening time in the browser's zone, not the provider's", async () => {
-    jest.spyOn(Intl.DateTimeFormat.prototype, "resolvedOptions").mockReturnValue({ timeZone: "Asia/Tokyo" } as Intl.ResolvedDateTimeFormatOptions);
-    const { NextIntlClientProvider } = await import("next-intl");
-    const messages = (await import("../../../../messages/en.json")).default;
-    const { render: plainRender } = await import("@testing-library/react");
-    plainRender(
-      <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
-        <RemindMe surface="daily" />
-      </NextIntlClientProvider>,
-    );
-
-    fireEvent.click(screen.getByRole("button", { name: "Remind me daily" }));
-
-    const ics = (await textOf(blobs[0])).replace(/\r\n /g, "");
-    expect(ics).toContain("DESCRIPTION:A new board opens at 9:00 AM\\, your local time.");
   });
 });

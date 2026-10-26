@@ -1089,6 +1089,12 @@
       "submitPrompt": "전 세계와 우리나라에서 몇 위인지 확인해 보세요.",
       "personalBest": "이 난이도의 개인 최고 기록입니다. 기록으로 남기세요.",
       "leaderboardQualifies": "이 점수면 리더보드에 오릅니다. 자리를 차지하세요.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}%면 리더보드에 오릅니다.",
+        "open": "{difficulty}: {accuracy}%가 몇 위인지 확인해 보세요.",
+        "claim": "자리 차지",
+        "submit": "제출"
+      },
       "viewLeaderboard": "리더보드 보기",
       "dialog": {
         "submitTitle": "리더보드에 등록",

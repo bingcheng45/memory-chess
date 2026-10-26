@@ -1089,6 +1089,12 @@
       "submitPrompt": "Bekijk waar je score staat, wereldwijd en in je eigen land.",
       "personalBest": "Nieuw persoonlijk record op dit niveau. Zet het op de lijst.",
       "leaderboardQualifies": "Je score zou de ranglijst halen. Claim je plek.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% zou de ranglijst halen.",
+        "open": "{difficulty}: kijk waar {accuracy}% eindigt.",
+        "claim": "Claim het",
+        "submit": "Verstuur"
+      },
       "viewLeaderboard": "Bekijk de ranglijst",
       "dialog": {
         "submitTitle": "Naar de ranglijst sturen",

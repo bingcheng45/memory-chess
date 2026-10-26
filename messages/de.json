@@ -1089,6 +1089,12 @@
       "submitPrompt": "Sieh nach, wo dein Ergebnis weltweit und in deinem Land steht.",
       "personalBest": "Neue persönliche Bestleistung auf dieser Stufe. Trag sie ein.",
       "leaderboardQualifies": "Dein Ergebnis würde es in die Bestenliste schaffen. Sichere dir deinen Platz.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy} % kämen in die Bestenliste.",
+        "open": "{difficulty}: sieh, wo {accuracy} % landen.",
+        "claim": "Jetzt sichern",
+        "submit": "Einsenden"
+      },
       "viewLeaderboard": "Bestenliste ansehen",
       "dialog": {
         "submitTitle": "In die Bestenliste eintragen",

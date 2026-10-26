@@ -1089,6 +1089,12 @@
       "submitPrompt": "See where your score ranks, worldwide and in your country.",
       "personalBest": "New personal best on this board. Put it on the record.",
       "leaderboardQualifies": "Your score would make the leaderboard. Claim your spot.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% would make the leaderboard.",
+        "open": "{difficulty}: see where {accuracy}% ranks.",
+        "claim": "Claim it",
+        "submit": "Submit it"
+      },
       "viewLeaderboard": "View leaderboard",
       "dialog": {
         "submitTitle": "Submit to leaderboard",

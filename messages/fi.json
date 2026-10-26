@@ -1089,6 +1089,12 @@
       "submitPrompt": "Katso, mihin tuloksesi sijoittuu maailmassa ja omassa maassasi.",
       "personalBest": "Uusi oma ennätys tällä tasolla. Kirjaa se.",
       "leaderboardQualifies": "Tuloksesi pääsisi tulostaulukkoon. Varaa paikkasi.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy} % pääsisi tulostaulukkoon.",
+        "open": "{difficulty}: katso, mihin {accuracy} % sijoittuu.",
+        "claim": "Varaa paikka",
+        "submit": "Lähetä"
+      },
       "viewLeaderboard": "Katso tulostaulukko",
       "dialog": {
         "submitTitle": "Lähetä tulostaulukkoon",

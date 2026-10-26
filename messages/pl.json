@@ -1089,6 +1089,12 @@
       "submitPrompt": "Sprawdź, które miejsce zajmuje Twój wynik na świecie i w Twoim kraju.",
       "personalBest": "Nowy rekord osobisty na tym poziomie. Zapisz go.",
       "leaderboardQualifies": "Twój wynik zmieściłby się w rankingu. Zajmij swoje miejsce.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% załapałoby się do rankingu.",
+        "open": "{difficulty}: sprawdź, które miejsce da {accuracy}%.",
+        "claim": "Zajmij miejsce",
+        "submit": "Wyślij"
+      },
       "viewLeaderboard": "Zobacz ranking",
       "dialog": {
         "submitTitle": "Wyślij do rankingu",

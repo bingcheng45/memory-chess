@@ -1089,6 +1089,12 @@
       "submitPrompt": "Xem điểm của bạn xếp thứ mấy trên thế giới và ở quốc gia bạn.",
       "personalBest": "Kỷ lục cá nhân mới ở cấp độ này. Ghi lại ngay.",
       "leaderboardQualifies": "Điểm của bạn sẽ lọt vào bảng xếp hạng. Giữ chỗ ngay.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% sẽ vào bảng xếp hạng.",
+        "open": "{difficulty}: xem {accuracy}% xếp hạng thứ mấy.",
+        "claim": "Giành chỗ",
+        "submit": "Gửi điểm"
+      },
       "viewLeaderboard": "Xem bảng xếp hạng",
       "dialog": {
         "submitTitle": "Gửi lên bảng xếp hạng",

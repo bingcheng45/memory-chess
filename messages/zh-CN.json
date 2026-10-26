@@ -1089,6 +1089,12 @@
       "submitPrompt": "看看你的成绩在全球和你所在国家排第几。",
       "personalBest": "刷新了这一难度的个人最佳，记录下来吧。",
       "leaderboardQualifies": "你的成绩能上排行榜，快来占个位置。",
+      "claimLine": {
+        "qualifies": "{difficulty}:{accuracy}% 可以上榜。",
+        "open": "{difficulty}:看看 {accuracy}% 排第几。",
+        "claim": "去上榜",
+        "submit": "提交"
+      },
       "viewLeaderboard": "查看排行榜",
       "dialog": {
         "submitTitle": "提交到排行榜",

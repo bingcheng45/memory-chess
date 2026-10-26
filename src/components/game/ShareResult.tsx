@@ -20,7 +20,7 @@ const prefetch = () => {
   void loadDrawing().catch(() => undefined);
 };
 
-/** The result screen's Share result button and its dialog. The card is drawn the first time the dialog opens, and kept for the round. */
+/** The result screen's Share result icon button and its dialog. The card is drawn the first time the dialog opens, and kept for the round. */
 export default function ShareResult({ share }: { share: RoundShare }) {
   const t = useTranslations("game.result.share");
   const locale = useLocale();
@@ -40,9 +40,8 @@ export default function ShareResult({ share }: { share: RoundShare }) {
 
   return (
     <Dialog.Root open={open} onOpenChange={changeOpen}>
-      <Dialog.Trigger ref={button} className="lab-btn lab-btn-secondary lab-result-share" onPointerEnter={prefetch} onFocus={prefetch}>
-        <Share2 aria-hidden size={18} />
-        {t("button")}
+      <Dialog.Trigger ref={button} className="lab-btn lab-btn-secondary lab-result-share" aria-label={t("button")} title={t("button")} onPointerEnter={prefetch} onFocus={prefetch}>
+        <Share2 aria-hidden size={20} />
       </Dialog.Trigger>
       {open && (
         // A dialog chunk that will not load leaves the button and the rest of the result screen as they were.

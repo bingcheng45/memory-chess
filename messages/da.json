@@ -1089,6 +1089,12 @@
       "submitPrompt": "Se, hvor dit resultat placerer sig i verden og i dit land.",
       "personalBest": "Ny personlig rekord på dette niveau. Få den på listen.",
       "leaderboardQualifies": "Dit resultat ville komme på ranglisten. Tag din plads.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy} % kommer på ranglisten.",
+        "open": "{difficulty}: se, hvor {accuracy} % placerer sig.",
+        "claim": "Tag pladsen",
+        "submit": "Send det"
+      },
       "viewLeaderboard": "Se ranglisten",
       "dialog": {
         "submitTitle": "Send til ranglisten",

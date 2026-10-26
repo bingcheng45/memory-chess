@@ -1089,6 +1089,12 @@
       "submitPrompt": "Nézd meg, hol áll az eredményed a világon és az országodban.",
       "personalBest": "Új egyéni csúcs ezen a szinten. Rögzítsd.",
       "leaderboardQualifies": "Az eredményed felférne a ranglistára. Foglald el a helyed.",
+      "claimLine": {
+        "qualifies": "{difficulty}: a {accuracy}%-os eredmény felférne a ranglistára.",
+        "open": "{difficulty}: nézd meg, hova kerül a {accuracy}%.",
+        "claim": "Foglald el",
+        "submit": "Beküldés"
+      },
       "viewLeaderboard": "Ranglista megtekintése",
       "dialog": {
         "submitTitle": "Beküldés a ranglistára",

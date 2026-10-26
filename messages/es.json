@@ -1089,6 +1089,12 @@
       "submitPrompt": "Mira en qué puesto queda tu puntuación en el mundo y en tu país.",
       "personalBest": "Nuevo récord personal en este nivel. Déjalo registrado.",
       "leaderboardQualifies": "Tu puntuación entraría en la clasificación. Asegura tu puesto.",
+      "claimLine": {
+        "qualifies": "{difficulty}: un {accuracy}% entraría en la clasificación.",
+        "open": "{difficulty}: mira en qué puesto queda un {accuracy}%.",
+        "claim": "Asegurarlo",
+        "submit": "Enviarlo"
+      },
       "viewLeaderboard": "Ver la clasificación",
       "dialog": {
         "submitTitle": "Enviar a la clasificación",

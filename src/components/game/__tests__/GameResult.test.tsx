@@ -270,11 +270,11 @@ describe("GameResult", () => {
 
       expect(primaries).toEqual(["Try again"]);
       expect(screen.queryByRole("button", { name: /Next round/ })).toBeNull();
-      expect([...actions.children].map((child) => child.textContent)).toEqual(["Change settings", "Share result", "View leaderboard"]);
+      expect([...actions.children].map((child) => child.textContent)).toEqual(["Change settings", "View leaderboard"]);
       expect([onTryAgain.mock.calls.length, onPlay.mock.calls.length, jest.mocked(window.gtag).mock.calls]).toEqual([1, 0, []]);
     });
 
-    it("keeps Try again, Change settings, sharing and the leaderboard in the row under it, with nothing folded away", () => {
+    it("keeps Try again, Change settings and the leaderboard in the row under it, with nothing folded away", () => {
       const onTryAgain = jest.fn();
       const onNewGame = jest.fn();
       render(<GameResult onTryAgain={onTryAgain} onNewGame={onNewGame} onPlay={jest.fn()} />);
@@ -283,7 +283,7 @@ describe("GameResult", () => {
       fireEvent.click(within(actions).getByRole("button", { name: "Try again" }));
       fireEvent.click(within(actions).getByRole("button", { name: "Change settings" }));
 
-      expect([...actions.children].map((child) => child.textContent)).toEqual(["Try again", "Change settings", "Share result", "View leaderboard"]);
+      expect([...actions.children].map((child) => child.textContent)).toEqual(["Try again", "Change settings", "View leaderboard"]);
       expect(actions.querySelector("details")).toBeNull();
       expect([onTryAgain.mock.calls.length, onNewGame.mock.calls.length]).toEqual([1, 1]);
     });

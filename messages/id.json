@@ -1089,6 +1089,12 @@
       "submitPrompt": "Lihat peringkat skor Anda di dunia dan di negara Anda.",
       "personalBest": "Rekor pribadi baru di level ini. Catat sekarang.",
       "leaderboardQualifies": "Skor Anda akan masuk papan peringkat. Amankan tempat Anda.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% akan masuk papan peringkat.",
+        "open": "{difficulty}: lihat peringkat untuk {accuracy}%.",
+        "claim": "Amankan sekarang",
+        "submit": "Kirim"
+      },
       "viewLeaderboard": "Lihat papan peringkat",
       "dialog": {
         "submitTitle": "Kirim ke papan peringkat",

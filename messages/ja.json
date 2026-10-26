@@ -1089,6 +1089,12 @@
       "submitPrompt": "世界と自分の国での順位を確認しましょう。",
       "personalBest": "このレベルの自己ベストを更新。記録に残しましょう。",
       "leaderboardQualifies": "このスコアならランキング入りです。順位を確保しましょう。",
+      "claimLine": {
+        "qualifies": "{difficulty}:{accuracy}%ならランキング入りです。",
+        "open": "{difficulty}:{accuracy}%の順位を確認しましょう。",
+        "claim": "確保する",
+        "submit": "送信する"
+      },
       "viewLeaderboard": "ランキングを見る",
       "dialog": {
         "submitTitle": "ランキングに登録",

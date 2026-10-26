@@ -1089,6 +1089,12 @@
       "submitPrompt": "Skorunun dünyada ve ülkende kaçıncı olduğunu gör.",
       "personalBest": "Bu seviyede yeni kişisel rekor. Kayda geçir.",
       "leaderboardQualifies": "Skorun sıralamaya girer. Yerini al.",
+      "claimLine": {
+        "qualifies": "{difficulty}: %{accuracy} sıralamaya girer.",
+        "open": "{difficulty}: sıralamadaki yerini gör (%{accuracy}).",
+        "claim": "Yerini al",
+        "submit": "Gönder"
+      },
       "viewLeaderboard": "Sıralamayı gör",
       "dialog": {
         "submitTitle": "Sıralamaya gönder",

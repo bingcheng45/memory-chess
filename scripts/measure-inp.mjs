@@ -173,7 +173,7 @@ const STUDY_PIECES = `[...document.querySelectorAll("[data-coordinate]")]
 
 /** Opens today's board from its link and taps Start, which veils the board and counts 3, 2, 1 into study. */
 async function startDaily(page, base, act) {
-  const link = (await (await fetch(`${base}/daily`)).text()).match(/href="(\/game\?[^"]*source=daily[^"]*)"/)?.[1];
+  const link = (await (await fetch(`${base}/daily`)).text()).match(/href="(\/game\?[^"]*from=daily[^"]*)"/)?.[1];
   if (!link) throw new Error("no daily board link on /daily");
   await page.evaluate(`location.href = ${JSON.stringify(base + link.replaceAll("&amp;", "&"))}`);
   await page.waitFor(byText("Start game"));

@@ -22,8 +22,11 @@ const validBody = {
   solutionTime: 12.5,
 };
 
+let testNumber = 0;
+const testAddress = () => `203.0.113.${testNumber}`;
+
 function feedbackRequest(init: { body?: string; contentType?: string | null; ip?: string } = {}) {
-  const headers: Record<string, string> = { "x-forwarded-for": init.ip ?? "203.0.113.1" };
+  const headers: Record<string, string> = { "x-forwarded-for": init.ip ?? testAddress() };
   if (init.contentType !== null) headers["Content-Type"] = init.contentType ?? "application/json";
   return new Request("http://localhost/api/feedback", {
     method: "POST",
@@ -34,17 +37,14 @@ function feedbackRequest(init: { body?: string; contentType?: string | null; ip?
 
 describe("POST /api/feedback", () => {
   beforeEach(() => {
+    testNumber += 1;
     mockAppendGoogleSheetRow.mockReset();
     mockAppendGoogleSheetRow.mockResolvedValue();
   });
 
   it("appends a validated response to the feedback worksheet as raw data", async () => {
     const response = await POST(
-      new Request("http://localhost/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validBody),
-      }),
+      feedbackRequest({ body: JSON.stringify(validBody) }),
     );
 
     expect(response.status).toBe(200);
@@ -69,11 +69,7 @@ describe("POST /api/feedback", () => {
 
   it("records a daily board's feedback as daily", async () => {
     const response = await POST(
-      new Request("http://localhost/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...validBody, pieceCount: 7, correctPieces: 5, difficulty: "daily" }),
-      }),
+      feedbackRequest({ body: JSON.stringify({ ...validBody, pieceCount: 7, correctPieces: 5, difficulty: "daily" }) }),
     );
 
     expect(response.status).toBe(200);
@@ -82,11 +78,7 @@ describe("POST /api/feedback", () => {
 
   it("rejects invalid feedback without writing a row", async () => {
     const response = await POST(
-      new Request("http://localhost/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...validBody, rating: 6 }),
-      }),
+      feedbackRequest({ body: JSON.stringify({ ...validBody, rating: 6 }) }),
     );
 
     expect(response.status).toBe(400);
@@ -99,11 +91,7 @@ describe("POST /api/feedback", () => {
     );
 
     const response = await POST(
-      new Request("http://localhost/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validBody),
-      }),
+      feedbackRequest({ body: JSON.stringify(validBody) }),
     );
 
     expect(response.status).toBe(500);
@@ -142,9 +130,9 @@ describe("POST /api/feedback", () => {
   it("answers 429 with Retry-After once one address passes 5 submissions in 10 minutes", async () => {
     const statuses: number[] = [];
     for (let i = 0; i < 6; i++) {
-      statuses.push((await POST(feedbackRequest({ ip: "198.51.100.7" }))).status);
+      statuses.push((await POST(feedbackRequest({ ip: `198.51.100.${testNumber}` }))).status);
     }
-    const blocked = await POST(feedbackRequest({ ip: "198.51.100.7" }));
+    const blocked = await POST(feedbackRequest({ ip: `198.51.100.${testNumber}` }));
 
     expect(statuses).toEqual([200, 200, 200, 200, 200, 429]);
     expect(Number(blocked.headers.get("retry-after"))).toBeGreaterThan(0);
@@ -152,9 +140,9 @@ describe("POST /api/feedback", () => {
   });
 
   it("keeps counting each address on its own", async () => {
-    for (let i = 0; i < 5; i++) await POST(feedbackRequest({ ip: "198.51.100.8" }));
+    for (let i = 0; i < 5; i++) await POST(feedbackRequest({ ip: `198.51.100.${testNumber}` }));
 
-    const otherAddress = await POST(feedbackRequest({ ip: "198.51.100.9" }));
+    const otherAddress = await POST(feedbackRequest({ ip: `198.51.101.${testNumber}` }));
 
     expect(otherAddress.status).toBe(200);
   });

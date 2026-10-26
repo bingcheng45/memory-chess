@@ -45,6 +45,12 @@ async function guide(slug: string) {
 }
 
 describe("a guide page", () => {
+  it("links the blindfold guide to the blindfold trainer under its lede", async () => {
+    const markup = await guide("blindfold-chess-training-for-beginners");
+
+    expect(markup).toContain('<a href="/blindfold" class="lg-link">Practise now in the free blindfold chess trainer</a>');
+  });
+
   it("serves one h1, one h2 per section plus the FAQ, and the contents rail in the same order", async () => {
     const markup = await guide("how-to-stop-blundering-in-chess");
 

@@ -97,6 +97,8 @@ export type LearnMeta = {
   readonly questions: readonly [string, string, ...string[]];
   readonly keywords: { readonly primary: string; readonly secondary: readonly string[] };
   readonly featured?: true;
+  /** A page to practise on, linked under the lede. English-only: it is not in the translated text, so a translation stays valid. */
+  readonly practice?: { readonly href: `/${string}`; readonly label: string };
 };
 
 export type LearnIntro = {

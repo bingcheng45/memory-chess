@@ -28,3 +28,5 @@
 @media (max-width: 767px) { .lab-ref { padding: 40px 0 48px; } .lab-ref h2 { font-size: 24px; } .lab-ref .lab-ref-sec { margin-top: 40px; padding-top: 32px; } }
 .lab-ref .lab-ref-answer { margin-bottom: 48px; padding-bottom: 40px; border-bottom: 1px solid var(--lp-line); }
 @media (max-width: 767px) { .lab-ref .lab-ref-answer { margin-bottom: 40px; padding-bottom: 32px; } }
+.lab-ref .lab-ref-boardgame { margin: 0 0 32px; font-size: 16px; }
+.lab-ref .lab-ref-boardgame a { color: var(--lp-ink); text-decoration: underline; text-underline-offset: 3px; }

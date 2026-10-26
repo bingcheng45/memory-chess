@@ -312,6 +312,85 @@ describe("Google Analytics loading", () => {
       expect(commandsAfterLanding().map((command) => command[1])).toEqual(["page_view", "round_start"]);
     });
 
+    it("leaves the page_view to GA4 when the lapsed visitor's address was replaced, as on a language switch", () => {
+      idleFor(31);
+      window.history.replaceState(null, "", "/fr/game");
+
+      window.gtag("event", "round_intro_view", {});
+
+      expect(commandsAfterLanding()).toEqual([["event", "round_intro_view", {}]]);
+    });
+
+    it("does not treat a replaceState that keeps the address as a navigation", () => {
+      idleFor(31);
+      window.history.replaceState({ seeded: true }, "", window.location.href);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding().map((command) => command[1])).toEqual(["page_view", "round_start"]);
+    });
+
+    it("leaves the page_view to GA4 after a back or forward navigation", () => {
+      idleFor(31);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding()).toEqual([["event", "round_start", {}]]);
+    });
+
+    it("counts a navigation in the same second as the last hit as part of that hit", () => {
+      document.cookie = `_ga_R8BM9EMY9J=GS2.1.s${NOW_SECONDS}$o1$g1$t${NOW_SECONDS}$j0$l0$h0`;
+      jest.setSystemTime(NOW_SECONDS * 1000 + 800);
+      window.history.pushState(null, "", "/learn");
+      jest.setSystemTime((NOW_SECONDS + 31 * 60) * 1000);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding().map((command) => command[1])).toEqual(["page_view", "round_start"]);
+    });
+
+    it("counts a navigation in a later second than the last hit as one GA4 has yet to report", () => {
+      document.cookie = `_ga_R8BM9EMY9J=GS2.1.s${NOW_SECONDS}$o1$g1$t${NOW_SECONDS}$j0$l0$h0`;
+      jest.setSystemTime((NOW_SECONDS + 1) * 1000 + 100);
+      window.history.pushState(null, "", "/learn");
+      jest.setSystemTime((NOW_SECONDS + 31 * 60) * 1000);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding()).toEqual([["event", "round_start", {}]]);
+    });
+
+    it("still sends the event when the cookie cannot be read, as in a sandboxed frame", () => {
+      Object.defineProperty(document, "cookie", {
+        configurable: true,
+        get() {
+          throw new DOMException("sandboxed", "SecurityError");
+        },
+      });
+
+      try {
+        expect(() => window.gtag("event", "round_start", {})).not.toThrow();
+      } finally {
+        Reflect.deleteProperty(document, "cookie");
+      }
+
+      expect(commandsAfterLanding()).toEqual([["event", "round_start", {}]]);
+    });
+
+    it.each(["dclid", "srsltid"])("drops %s from a revived session's address", (tag) => {
+      window.history.replaceState(null, "", `/game?keep=1&${tag}=z`);
+      idleFor(31);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding()[0]).toEqual([
+        "event",
+        "page_view",
+        { page_location: "http://localhost/game?keep=1", page_referrer: "", page_title: "Game" },
+      ]);
+    });
+
     it("sends only the event while the session is still live", () => {
       idleFor(29);
 

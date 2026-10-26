@@ -16,8 +16,9 @@ const GA_SESSION_TIMEOUT_SECONDS = 30 * 60;
  * one. The stub reads the last-hit time gtag.js keeps in its session cookie and sends a page_view first when the
  * session has lapsed, counting events still queued for gtag.js as activity so a page loading its library late sends
  * one. That page_view carries no referrer and no campaign tags, so a revived session is credited to direct, not to the
- * visit's original source. A navigation since the last hit is left to GA4's own history page view, which starts the
- * session itself and would otherwise be counted twice.
+ * visit's original source. A navigation since the last hit (pushState, popstate, or a replaceState that changes the
+ * address) is left to GA4's own history page view, which starts the session itself and would otherwise be counted
+ * twice.
  */
 export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
 (function () {
@@ -31,7 +32,7 @@ export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
     return key === 'player' || key === 'q';
   }
   function isCampaignTag(pair) {
-    return /^(utm_|gclid$|gbraid$|wbraid$|fbclid$|msclkid$)/.test(paramName(pair));
+    return /^(utm_|gclid$|gbraid$|wbraid$|dclid$|fbclid$|msclkid$|srsltid$)/.test(paramName(pair));
   }
   function withoutParams(address, isDropped) {
     if (!address) return address;
@@ -57,8 +58,22 @@ export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
     navigatedAt = Date.now();
     return pushState.apply(this, arguments);
   };
+  var replaceState = history.replaceState;
+  history.replaceState = function () {
+    var before = location.href;
+    var result = replaceState.apply(this, arguments);
+    if (location.href !== before) navigatedAt = Date.now();
+    return result;
+  };
   window.addEventListener('popstate', function () { navigatedAt = Date.now(); });
   function sessionLapsed() {
+    try {
+      return readSessionLapsed();
+    } catch (e) {
+      return false;
+    }
+  }
+  function readSessionLapsed() {
     var cookie = document.cookie.match(/(?:^|; )_ga_${GA_MEASUREMENT_ID.slice(2)}=([^;]*)/);
     var lastHit = cookie && cookie[1].match(/\\$t(\\d+)/);
     if (!lastHit) return false;

@@ -57,16 +57,24 @@ const unlockOnFirstTap = (): void => {
  * Create the audio context and gain node while the browser is idle, so the first tap does not pay for them.
  * A context made without a gesture starts suspended; the first tap, or the first play, resumes it.
  */
-export const prepareSound = (): void => {
-  if (typeof window === "undefined" || !soundEnabled || preparing || output) return;
+export const prepareSound = (): (() => void) => {
+  if (typeof window === "undefined" || !soundEnabled || preparing || output) return () => {};
   preparing = true;
   const create = () => {
     preparing = false;
     if (!soundEnabled || !outputFor()) return;
     unlockOnFirstTap();
   };
-  if (typeof window.requestIdleCallback === "function") window.requestIdleCallback(create);
-  else setTimeout(create, IDLE_FALLBACK_MS);
+  const cancel = (clear: () => void) => () => {
+    clear();
+    preparing = false;
+  };
+  if (typeof window.requestIdleCallback === "function") {
+    const id = window.requestIdleCallback(create);
+    return cancel(() => window.cancelIdleCallback(id));
+  }
+  const id = setTimeout(create, IDLE_FALLBACK_MS);
+  return cancel(() => clearTimeout(id));
 };
 
 const bufferFor = (context: AudioContext, soundName: SoundName): Promise<AudioBuffer | null> => {

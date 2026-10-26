@@ -87,4 +87,15 @@ describe("useRoundSounds", () => {
 
     expect(jest.mocked(prepareSound).mock.calls.length).toBe(1);
   });
+
+  it("cancels the pending audio preparation when the game unmounts", () => {
+    const cancel = jest.fn();
+    jest.mocked(prepareSound).mockReturnValueOnce(cancel);
+    const { unmount } = renderHook(() => useRoundSounds({ phase: "idle" }));
+    expect(cancel).not.toHaveBeenCalled();
+
+    unmount();
+
+    expect(cancel).toHaveBeenCalledTimes(1);
+  });
 });

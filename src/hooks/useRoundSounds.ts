@@ -22,7 +22,7 @@ export function useRoundSounds(round: RoundState): void {
   const started = round.phase === 'countdown' || round.phase === 'study';
 
   useEffect(() => {
-    prepareSound();
+    return prepareSound();
   }, []);
 
   useEffect(() => {

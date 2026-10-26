@@ -206,11 +206,17 @@ describe("sound effects", () => {
 
     beforeEach(() => {
       idleJobs = [];
-      Object.assign(window, { requestIdleCallback: (job: () => void) => idleJobs.push(job) });
+      Object.assign(window, {
+        requestIdleCallback: (job: () => void) => idleJobs.push(job),
+        cancelIdleCallback: (id: number) => {
+          idleJobs[id - 1] = () => {};
+        },
+      });
     });
 
     afterEach(() => {
       Reflect.deleteProperty(window, "requestIdleCallback");
+      Reflect.deleteProperty(window, "cancelIdleCallback");
     });
 
     const runIdle = () => idleJobs.splice(0).forEach((job) => job());
@@ -265,15 +271,21 @@ describe("sound effects", () => {
       expect(FakeAudioContext.created.length).toBe(0);
     });
 
-    it("plays on the tap with the prepared context, resuming it and creating no second one", async () => {
+    it("plays on the tap with the context made earlier, resuming it and creating no second one", async () => {
       const { prepareSound, playSound } = await loadModule();
       prepareSound();
       runIdle();
+      const madeBeforeTap = FakeAudioContext.created.length;
 
       playSound("click");
       await settle();
 
-      expect([FakeAudioContext.created.length, context().resumes, played()]).toEqual([1, 1, ["/sounds/click.mp3"]]);
+      expect([madeBeforeTap, FakeAudioContext.created.length, context().resumes, played()]).toEqual([
+        1,
+        1,
+        1,
+        ["/sounds/click.mp3"],
+      ]);
     });
 
     it("still plays through the lazy path when idle never ran", async () => {
@@ -287,25 +299,66 @@ describe("sound effects", () => {
       expect([FakeAudioContext.created.length, played()]).toEqual([1, ["/sounds/click.mp3"]]);
     });
 
-    it("resumes the prepared context on the first tap, even before a sound plays", async () => {
+    const tap = (type: string) =>
+      window.dispatchEvent(type === "keydown" ? new KeyboardEvent(type) : new Event(type));
+
+    it.each(["click", "touchend", "keydown"])("resumes the prepared context on the first %s, even before a sound plays", async (type) => {
       const { prepareSound } = await loadModule();
       prepareSound();
       runIdle();
 
-      window.dispatchEvent(new MouseEvent("click"));
-      window.dispatchEvent(new MouseEvent("click"));
+      tap(type);
 
       expect([context().resumes, context().state]).toEqual([1, "running"]);
     });
 
-    it("warming the round resumes the prepared context", async () => {
-      const { prepareSound, warmRoundSounds } = await loadModule();
+    it("removes all three listeners after the first event", async () => {
+      const { prepareSound } = await loadModule();
       prepareSound();
       runIdle();
 
-      warmRoundSounds();
+      tap("touchend");
+      tap("click");
+      tap("keydown");
+      tap("touchend");
 
       expect(context().resumes).toBe(1);
+    });
+
+    it("warming the round resumes the context made earlier, without creating one", async () => {
+      const { prepareSound, warmRoundSounds } = await loadModule();
+      prepareSound();
+      runIdle();
+      const madeBefore = FakeAudioContext.created.length;
+
+      warmRoundSounds();
+
+      expect([madeBefore, FakeAudioContext.created.length, context().resumes]).toEqual([1, 1, 1]);
+    });
+
+    it("creates nothing and arms no listener when cancelled before idle, and can be prepared again", async () => {
+      const { prepareSound } = await loadModule();
+
+      prepareSound()();
+      runIdle();
+      tap("click");
+      expect(FakeAudioContext.created.length).toBe(0);
+
+      prepareSound();
+      runIdle();
+      expect(FakeAudioContext.created.length).toBe(1);
+    });
+
+    it("cancels the timer fallback too", async () => {
+      jest.useFakeTimers();
+      Reflect.deleteProperty(window, "requestIdleCallback");
+      const { prepareSound } = await loadModule();
+
+      prepareSound()();
+      jest.runAllTimers();
+      jest.useRealTimers();
+
+      expect(FakeAudioContext.created.length).toBe(0);
     });
   });
 });

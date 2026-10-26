@@ -91,7 +91,7 @@ describe("GET /api/leaderboard/cutoffs", () => {
     expect(getLeaderboardCutoffs).not.toHaveBeenCalled();
   });
 
-  it("redirects a bare question mark too, which reports an empty search", async () => {
+  it("redirects a request whose raw URL still carries an empty query", async () => {
     const response = await GET(cutoffsRequest("?"));
 
     expect(response.status).toBe(308);

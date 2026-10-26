@@ -35,7 +35,7 @@ describe("the blindfold page", () => {
 
   it("serves one h1 and a start link that opens a blindfold round", () => {
     expect(markup.match(/<h1>(.*?)<\/h1>/)?.[1]).toBe("Blindfold chess trainer");
-    expect(markup).toContain('href="/game?pieceCount=6&amp;memorizeTime=10&amp;source=link&amp;mode=blindfold"');
+    expect(markup).toContain('href="/game?pieceCount=6&amp;memorizeTime=10&amp;from=link&amp;mode=blindfold"');
     expect(markup).toContain('href="/game?mode=blindfold"');
   });
 

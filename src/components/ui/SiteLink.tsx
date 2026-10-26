@@ -10,6 +10,7 @@ interface SiteLinkProps {
   readonly href: string;
   readonly label: string;
   readonly className?: string;
+  readonly prefetch?: boolean;
   readonly onClick?: MouseEventHandler<HTMLAnchorElement>;
   readonly "aria-current"?: "page";
 }

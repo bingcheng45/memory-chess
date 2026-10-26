@@ -1,5 +1,3 @@
-"use client";
-
 import NextLink from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { useLocale } from "next-intl";

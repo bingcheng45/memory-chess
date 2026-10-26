@@ -1,6 +1,7 @@
 /** @jest-environment node */
 
-import { GET } from "@/app/api/leaderboard/cutoffs/route";
+import { NextRequest } from "next/server";
+import { GET, dynamic } from "@/app/api/leaderboard/cutoffs/route";
 import { getLeaderboardCutoffs } from "@/lib/services/leaderboardService";
 import type { BoardCutoff, LeaderboardCutoffs } from "@/lib/leaderboard/ranking";
 
@@ -36,6 +37,10 @@ const mixedBoards: LeaderboardCutoffs = {
   grandmaster: { kind: "open" },
 };
 
+const CACHE = "public, s-maxage=300, stale-while-revalidate=3600";
+const cutoffsRequest = (search = "") =>
+  new NextRequest(`http://localhost/api/leaderboard/cutoffs${search}`);
+
 describe("GET /api/leaderboard/cutoffs", () => {
   let logged: jest.SpyInstance;
 
@@ -48,17 +53,22 @@ describe("GET /api/leaderboard/cutoffs", () => {
     logged.mockRestore();
   });
 
+  it("is rendered per request so the CDN, not ISR, holds the answer", () => {
+    expect(dynamic).toBe("force-dynamic");
+  });
+
   it("answers a cutoff for every difficulty when all four boards are full", async () => {
-    const response = await GET();
+    const response = await GET(cutoffsRequest());
 
     expect(response.status).toBe(200);
+    expect(response.headers.get("cache-control")).toBe(CACHE);
     expect(await response.json()).toEqual({ data: fullBoards });
   });
 
   it("keeps open and full boards apart in the same answer", async () => {
     jest.mocked(getLeaderboardCutoffs).mockResolvedValue(mixedBoards);
 
-    const response = await GET();
+    const response = await GET(cutoffsRequest());
 
     expect(response.status).toBe(200);
     expect(await response.json()).toEqual({ data: mixedBoards });
@@ -67,19 +77,29 @@ describe("GET /api/leaderboard/cutoffs", () => {
   it("answers unknown cutoffs as null data rather than as a failure status", async () => {
     jest.mocked(getLeaderboardCutoffs).mockResolvedValue(null);
 
-    const response = await GET();
+    const response = await GET(cutoffsRequest());
 
     expect(response.status).toBe(200);
+    expect(response.headers.get("cache-control")).toBe("no-store");
     expect(await response.json()).toEqual({ data: null });
+  });
+
+  it("redirects a request with a query string to the bare path before any database work", async () => {
+    const response = await GET(cutoffsRequest("?x=123"));
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe("http://localhost/api/leaderboard/cutoffs");
+    expect(getLeaderboardCutoffs).not.toHaveBeenCalled();
   });
 
   it("still answers 200 when the service throws, and logs what threw", async () => {
     const cause = new Error("supabase unreachable");
     jest.mocked(getLeaderboardCutoffs).mockRejectedValue(cause);
 
-    const response = await GET();
+    const response = await GET(cutoffsRequest());
 
     expect(response.status).toBe(200);
+    expect(response.headers.get("cache-control")).toBe("no-store");
     expect(await response.json()).toEqual({ data: null });
     expect(logged).toHaveBeenCalledWith(expect.stringContaining("cutoffs"), cause);
   });

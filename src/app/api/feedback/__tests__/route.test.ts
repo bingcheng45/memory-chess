@@ -120,9 +120,18 @@ describe("POST /api/feedback", () => {
     expect(mockAppendGoogleSheetRow).not.toHaveBeenCalled();
   });
 
-  it("answers 413 to a body over 4096 bytes without writing a row", async () => {
+  it("accepts a full-length comment in CJK, which is about 6000 bytes of UTF-8", async () => {
     const response = await POST(
-      feedbackRequest({ body: JSON.stringify({ ...validBody, feedback: "x".repeat(5000) }) }),
+      feedbackRequest({ body: JSON.stringify({ ...validBody, feedback: "记".repeat(2000) }) }),
+    );
+
+    expect(response.status).toBe(200);
+    expect(mockAppendGoogleSheetRow.mock.calls[0][0].row[2]).toBe("记".repeat(2000));
+  });
+
+  it("answers 413 to a body over 8192 bytes without writing a row", async () => {
+    const response = await POST(
+      feedbackRequest({ body: JSON.stringify({ ...validBody, feedback: "x".repeat(9000) }) }),
     );
 
     expect(response.status).toBe(413);

@@ -3,6 +3,7 @@ import {
   createFeedbackSheetRow,
   feedbackSubmissionSchema,
 } from "@/lib/feedback";
+import { FEEDBACK_MAX_LENGTH } from "@/lib/feedbackLimits";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { appendGoogleSheetRow, SheetsConfigError } from "@/lib/server/googleSheets";
 import { clientAddress, fixedWindowLimiter } from "@/lib/server/rateLimit";
@@ -11,7 +12,12 @@ import { reportServerError } from "@/lib/server/serverErrors";
 
 export const runtime = "nodejs";
 
-const MAX_BODY_BYTES = 4096;
+const UTF8_BYTES_PER_UTF16_UNIT = 3;
+const OTHER_FIELDS_ALLOWANCE_BYTES = 1024;
+const BODY_BYTE_STEP = 4096;
+/** A full-length comment in CJK is 3 bytes a character, so the cap follows the comment limit and rounds up to 8192. */
+const MAX_BODY_BYTES =
+  Math.ceil((FEEDBACK_MAX_LENGTH * UTF8_BYTES_PER_UTF16_UNIT + OTHER_FIELDS_ALLOWANCE_BYTES) / BODY_BYTE_STEP) * BODY_BYTE_STEP;
 
 /** A player sends one response per round at most; more than this from one address is a script filling the sheet the contact form also writes to. */
 const SUBMISSIONS_PER_WINDOW = 5;

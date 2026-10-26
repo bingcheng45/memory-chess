@@ -9,7 +9,8 @@ const guide: LearnDocument = {
     group: "visualization",
     level: "improver",
     publishedAt: "2026-03-06T00:00:00.000Z",
-    updatedAt: "2026-10-20T00:00:00.000Z",
+    updatedAt: "2026-10-26T00:00:00.000Z",
+    practice: { href: "/blindfold", label: "Practise now in the free blindfold chess trainer" },
     questions: [
       "How do I start playing blindfold chess?",
       "How long does it take to learn blindfold chess?",

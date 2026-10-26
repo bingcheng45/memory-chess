@@ -31,7 +31,7 @@ function isUnder(path: string, route: string): boolean {
  * The articles and the trust pages (/about, /privacy, /terms) are not here.
  * They are translated, so they are in `DEFAULT_LOCALE_INDEXED_ROUTES`.
  */
-export const ENGLISH_ONLY_ROUTES = ["/changelog", "/learn"] as const;
+export const ENGLISH_ONLY_ROUTES = ["/changelog", "/learn", "/blindfold"] as const;
 
 /**
  * Routes served only at their bare English URL but kept out of search and the footer: a shared card's page exists

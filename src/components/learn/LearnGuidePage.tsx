@@ -108,6 +108,13 @@ export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGui
           </nav>
           <h1>{meta.h1}</h1>
           <p className="lg-lede">{meta.description}</p>
+          {locale === DEFAULT_LOCALE && meta.practice ? (
+            <p className="lg-lede">
+              <NextLink href={meta.practice.href} className="lg-link">
+                {meta.practice.label}
+              </NextLink>
+            </p>
+          ) : null}
           {page.comparison ? (
             <p className="lg-disclosure" data-compare-disclosure>
               {page.comparison.disclosure}{" "}

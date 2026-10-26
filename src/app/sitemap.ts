@@ -4,6 +4,7 @@ import { ARTICLES_PATH, articlePath } from "@/lib/articles/paths";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { RECALL_DATA, RECALL_PATH } from "@/lib/data/recall";
 import { EN_LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";
+import { BLINDFOLD_PATH } from "@/lib/seo/blindfold/copy";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
 import { indexedLocalesOf } from "@/lib/seo/englishOnly";
@@ -54,6 +55,12 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     lastModified: "2026-10-14T00:00:00.000Z",
     changeFrequency: "weekly",
     priority: 0.9,
+  },
+  {
+    path: BLINDFOLD_PATH,
+    lastModified: "2026-10-26T00:00:00.000Z",
+    changeFrequency: "monthly",
+    priority: 0.8,
   },
   {
     path: "/daily",

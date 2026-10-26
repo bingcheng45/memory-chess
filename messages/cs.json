@@ -1090,8 +1090,8 @@
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy} % stačí do žebříčku.",
         "open": "{difficulty}: zjistěte pořadí pro {accuracy} %.",
-        "claim": "Zajistit",
-        "submit": "Odeslat"
+        "claim": "Zajistit místo",
+        "submit": "Odeslat skóre"
       },
       "viewLeaderboard": "Zobrazit žebříček",
       "dialog": {

@@ -1090,8 +1090,8 @@
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% से लीडरबोर्ड में जगह मिलेगी।",
         "open": "{difficulty}: {accuracy}% की रैंक देखें।",
-        "claim": "पक्का करें",
-        "submit": "भेजें"
+        "claim": "जगह पक्की करें",
+        "submit": "स्कोर भेजें"
       },
       "viewLeaderboard": "लीडरबोर्ड देखें",
       "dialog": {

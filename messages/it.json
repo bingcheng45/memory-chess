@@ -1088,9 +1088,9 @@
       "personalBest": "Nuovo record personale su questo livello. Mettilo agli atti.",
       "leaderboardQualifies": "Il tuo punteggio entrerebbe in classifica. Prenota il tuo posto.",
       "claimLine": {
-        "qualifies": "{difficulty}: {accuracy}% entra in classifica.",
+        "qualifies": "{difficulty}: il {accuracy}% entrerebbe in classifica.",
         "open": "{difficulty}: scopri il piazzamento ({accuracy}%).",
-        "claim": "Riserva",
+        "claim": "Prenota posto",
         "submit": "Invia"
       },
       "viewLeaderboard": "Vedi la classifica",

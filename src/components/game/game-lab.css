@@ -163,7 +163,15 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
   grid-template-areas: "title" "summary" "claim" "board" "notes" "readout" "next" "actions" "invite";
   padding: var(--card-pad);
 }
-.lab-game .lab-result-card:has(> [data-result-claim]) { --claim-h: 52px; }
+.lab-game .lab-result-card:has(> [data-result-claim]) { --claim-h: 48px; }
+/* Measured: with the claim row the legend sat 4px (en) to 19px (fi, hu) under the Next round bar at 375 by 667, since a wrapped title or notes line is not in the model. 24px more room under the board, and a lower floor, keep it clear. */
+@media (max-width: 767px) {
+  .lab-game .lab-result-card:has(> [data-result-claim]) {
+    --pair-below: calc(54px + var(--next-h) + 16px);
+    --board-fit: clamp(176px, 100svh - var(--lead-h) - var(--next-h) - 32px, 480px);
+  }
+}
+@media (max-width: 359px) { .lab-game .lab-result-card:has(> [data-result-claim]) { --claim-h: 60px; --board-fit: clamp(176px, 100svh - var(--lead-h) - var(--next-h) - 96px, 480px); } }
 .lab-game .lab-result-claim { grid-area: claim; display: flex; align-items: center; gap: 8px; margin: 4px 0 0; min-height: 44px; font: 500 15px/1.4 var(--lp-ui); color: var(--lp-ink-2); }
 .lab-game .lab-result-claim-text { min-width: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
 .lab-game .lab-result-claim-action { flex: none; min-height: 44px; padding: 0 4px; border: 0; background: none; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-accent); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
@@ -259,9 +267,14 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
   .lab-game .lab-result-next .lab-btn-primary { position: relative; }
   .lab-game .lab-result-next-board { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 }
-@media (max-width: 359px) {
-  .lab-game .lab-result-claim { margin-top: 0; }
+@media (max-width: 419px) {
+  .lab-game .lab-result-claim { gap: 4px; }
   .lab-game .lab-result-claim, .lab-game .lab-result-claim-action { font-size: 14px; }
+}
+/* Phones this narrow give the sentence a third line, in a row that is that tall whatever the wording, so nothing under it moves. */
+@media (max-width: 359px) {
+  .lab-game .lab-result-claim { margin-top: 0; min-height: 60px; }
+  .lab-game .lab-result-claim-text { -webkit-line-clamp: 3; }
 }
 .lab-game .lab-result-next .lab-result-share { flex: none; width: 52px; min-width: 52px; min-height: 52px; padding: 0; justify-content: center; }
 @media (max-width: 419px) { .lab-game .lab-result-next .lab-result-share { width: 40px; min-width: 40px; } }

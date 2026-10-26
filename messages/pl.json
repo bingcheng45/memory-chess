@@ -1090,8 +1090,8 @@
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% wejdzie do rankingu.",
         "open": "{difficulty}: sprawdź, które miejsce da {accuracy}%.",
-        "claim": "Zajmij",
-        "submit": "Wyślij"
+        "claim": "Zajmij miejsce",
+        "submit": "Wyślij wynik"
       },
       "viewLeaderboard": "Zobacz ranking",
       "dialog": {

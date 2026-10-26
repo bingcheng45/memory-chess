@@ -1090,7 +1090,7 @@
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy} % reichen für die Bestenliste.",
         "open": "{difficulty}: Platz für {accuracy} % ansehen.",
-        "claim": "Sichern",
+        "claim": "Platz sichern",
         "submit": "Senden"
       },
       "viewLeaderboard": "Bestenliste ansehen",

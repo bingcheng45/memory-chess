@@ -1088,10 +1088,10 @@
       "personalBest": "Rekor pribadi baru di level ini. Catat sekarang.",
       "leaderboardQualifies": "Skor Anda akan masuk papan peringkat. Amankan tempat Anda.",
       "claimLine": {
-        "qualifies": "{difficulty}: {accuracy}% masuk papan peringkat.",
+        "qualifies": "{difficulty}: {accuracy}% akan masuk papan peringkat.",
         "open": "{difficulty}: lihat peringkat untuk {accuracy}%.",
-        "claim": "Amankan",
-        "submit": "Kirim"
+        "claim": "Amankan tempat",
+        "submit": "Kirim skor"
       },
       "viewLeaderboard": "Lihat papan peringkat",
       "dialog": {

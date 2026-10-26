@@ -1090,7 +1090,7 @@
       "claimLine": {
         "qualifies": "{difficulty}: felférsz a ranglistára ({accuracy}%).",
         "open": "{difficulty}: nézd meg a helyed ({accuracy}%).",
-        "claim": "Foglald",
+        "claim": "Foglald el",
         "submit": "Beküldés"
       },
       "viewLeaderboard": "Ranglista megtekintése",

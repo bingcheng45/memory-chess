@@ -12,9 +12,10 @@ const requests: URL[] = [];
 function mockFetch(input: RequestInfo | URL): Promise<Response> {
   const url = new URL(String(input));
   requests.push(url);
-  const body = url.searchParams.has("id") ? ENTRY : [];
+  const body = url.searchParams.has("id") ? (found ?? ENTRY) : [];
   return Promise.resolve(new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } }));
 }
+let found: object | null = null;
 const ENTRY = { id: "a", difficulty: "medium", daily_day: null, piece_count: 6, correct_pieces: 6, total_wrong_pieces: 0, memorize_time: 3, solution_time: 9, player_name: "Dino beta", created_at: "2026-10-20T00:00:00Z" };
 
 jest.mock("@/lib/supabase", () => {
@@ -24,6 +25,7 @@ jest.mock("@/lib/supabase", () => {
 
 beforeEach(() => {
   requests.length = 0;
+  found = null;
 });
 
 const floorFilters = () => requests.map((url) => url.searchParams.get("memorize_time"));
@@ -79,6 +81,25 @@ describe("the study floor", () => {
     await getStanding("a", "world");
 
     expect(requests.filter((url) => !url.searchParams.has("id")).map((url) => url.searchParams.get("memorize_time"))).toEqual(["gte.0.6", "gte.0.6"]);
+  });
+});
+
+describe("a standing lookup by id", () => {
+  it.each([
+    ["medium", 6, 0.565],
+    ["easy", 2, 0.067],
+  ])("reports a %s entry studied %f s as missing, as the board hides it, and counts nothing", async (difficulty, piece_count, memorize_time) => {
+    found = { ...ENTRY, difficulty, piece_count, memorize_time };
+
+    expect(await getStanding("a", "world")).toEqual({ status: "missing" });
+    expect(requests.filter((url) => !url.searchParams.has("id"))).toEqual([]);
+  });
+
+  it("still looks up an entry exactly at the floor", async () => {
+    found = { ...ENTRY, memorize_time: 0.6 };
+
+    expect((await getStanding("a", "world")).status).not.toBe("missing");
+    expect(requests.filter((url) => !url.searchParams.has("id"))).toHaveLength(2);
   });
 });
 

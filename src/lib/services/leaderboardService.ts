@@ -329,6 +329,9 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
   if (board === null) {
     return { status: 'unavailable', cause: `entry ${id} names no board: ${entry.difficulty} ${entry.daily_day}` };
   }
+  if (board.difficulty !== DAILY_BOARD && entry.memorize_time < studyFloorSeconds(BOARD_PIECES[board.difficulty])) {
+    return { status: 'missing' };
+  }
   const country = scope === 'country' ? entry.country_code ?? WORLD_CODE : null;
   if (country === WORLD_CODE) {
     return { status: 'noCountry' };

@@ -276,6 +276,42 @@ describe("Google Analytics loading", () => {
       ]);
     });
 
+    it("credits a revived session to direct: no referrer, and the landing's campaign tags dropped", () => {
+      jest.useRealTimers();
+      jest.useFakeTimers({ now: NOW_SECONDS * 1000 });
+      Reflect.deleteProperty(window, "dataLayer");
+      window.history.replaceState(null, "", "/game?mode=daily&utm_source=x&gclid=y&gbraid=a&wbraid=b&fbclid=c&msclkid=d&player=Z&utm_medium=m");
+      Object.defineProperty(document, "referrer", { configurable: true, value: "https://www.google.com/" });
+      new Function(initScript())();
+      idleFor(31);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding()[0]).toEqual([
+        "event",
+        "page_view",
+        { page_location: "http://localhost/game?mode=daily", page_referrer: "", page_title: "Game" },
+      ]);
+    });
+
+    it("leaves the page_view to GA4's history tracking when the lapsed visitor has just navigated", () => {
+      idleFor(31);
+      window.history.pushState(null, "", "/learn/search?q=rating");
+
+      window.gtag("event", "learn_search", { query_length: 6 });
+
+      expect(commandsAfterLanding()).toEqual([["event", "learn_search", { query_length: 6 }]]);
+    });
+
+    it("still sends the page_view for a lapse long after the last navigation", () => {
+      window.history.pushState(null, "", "/learn");
+      idleFor(31);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding().map((command) => command[1])).toEqual(["page_view", "round_start"]);
+    });
+
     it("sends only the event while the session is still live", () => {
       idleFor(29);
 

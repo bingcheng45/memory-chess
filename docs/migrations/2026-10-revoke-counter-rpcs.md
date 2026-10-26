@@ -80,7 +80,7 @@ Paste the whole of `schema/migrations/0010_revoke_counter_rpcs.sql` into the SQL
     {"public_grants":0}
     ```
 
-3. From outside, with the public anon key and no secret, a zero-row probe is now refused. The expected status is `401` or `404` with a permission message, no longer `400` with `22023`.
+3. From outside, with the public anon key and no secret, a zero-row probe is now refused. The expected answer is a permission error (status `401`, code `42501`), no longer `400` with `22023`.
 
     ```bash
     curl -s -o /dev/null -w '%{http_code}\n' -X POST "$SUPABASE_URL/rest/v1/rpc/increment_metric" \

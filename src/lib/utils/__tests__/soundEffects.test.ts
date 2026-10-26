@@ -18,6 +18,7 @@ class FakeAudioContext {
   readonly gain = { gain: { value: 1 }, connect() {} };
   readonly sources: FakeSource[] = [];
   resumes = 0;
+  state = "suspended";
   constructor() {
     FakeAudioContext.created.push(this);
   }
@@ -34,6 +35,7 @@ class FakeAudioContext {
   }
   resume() {
     this.resumes += 1;
+    this.state = "running";
     return Promise.resolve();
   }
   get destination() {
@@ -197,5 +199,113 @@ describe("sound effects", () => {
     await settle();
 
     expect(fetchSpy.mock.calls.length).toBe(0);
+  });
+
+  describe("preparing the audio output while the page is idle", () => {
+    let idleJobs: Array<() => void>;
+
+    beforeEach(() => {
+      idleJobs = [];
+      Object.assign(window, { requestIdleCallback: (job: () => void) => idleJobs.push(job) });
+    });
+
+    afterEach(() => {
+      Reflect.deleteProperty(window, "requestIdleCallback");
+    });
+
+    const runIdle = () => idleJobs.splice(0).forEach((job) => job());
+
+    it("creates the context only when the browser goes idle, suspended and at the default volume", async () => {
+      const { prepareSound } = await loadModule();
+
+      prepareSound();
+      expect(FakeAudioContext.created.length).toBe(0);
+      runIdle();
+
+      expect([FakeAudioContext.created.length, context().state, context().gain.gain.value]).toEqual([1, "suspended", 0.05]);
+      expect(fetchSpy.mock.calls.length).toBe(0);
+    });
+
+    it("schedules once however often it is called", async () => {
+      const { prepareSound } = await loadModule();
+
+      prepareSound();
+      prepareSound();
+      runIdle();
+      prepareSound();
+
+      expect([idleJobs.length, FakeAudioContext.created.length]).toEqual([0, 1]);
+    });
+
+    it("falls back to a timer where requestIdleCallback is missing", async () => {
+      jest.useFakeTimers();
+      Reflect.deleteProperty(window, "requestIdleCallback");
+      const { prepareSound } = await loadModule();
+
+      prepareSound();
+      expect(FakeAudioContext.created.length).toBe(0);
+      jest.runAllTimers();
+      jest.useRealTimers();
+
+      expect(FakeAudioContext.created.length).toBe(1);
+    });
+
+    it("creates nothing when sound is off, now or by the time the page is idle", async () => {
+      const { prepareSound, setSoundEnabled } = await loadModule();
+
+      setSoundEnabled(false);
+      prepareSound();
+      expect(idleJobs.length).toBe(0);
+
+      setSoundEnabled(true);
+      prepareSound();
+      setSoundEnabled(false);
+      runIdle();
+
+      expect(FakeAudioContext.created.length).toBe(0);
+    });
+
+    it("plays on the tap with the prepared context, resuming it and creating no second one", async () => {
+      const { prepareSound, playSound } = await loadModule();
+      prepareSound();
+      runIdle();
+
+      playSound("click");
+      await settle();
+
+      expect([FakeAudioContext.created.length, context().resumes, played()]).toEqual([1, 1, ["/sounds/click.mp3"]]);
+    });
+
+    it("still plays through the lazy path when idle never ran", async () => {
+      const { prepareSound, playSound } = await loadModule();
+      prepareSound();
+
+      playSound("click");
+      await settle();
+      runIdle();
+
+      expect([FakeAudioContext.created.length, played()]).toEqual([1, ["/sounds/click.mp3"]]);
+    });
+
+    it("resumes the prepared context on the first tap, even before a sound plays", async () => {
+      const { prepareSound } = await loadModule();
+      prepareSound();
+      runIdle();
+
+      window.dispatchEvent(new MouseEvent("click"));
+      window.dispatchEvent(new MouseEvent("click"));
+
+      expect([context().resumes, context().state]).toEqual([1, "running"]);
+    });
+
+    it("warming the round resumes the prepared context", async () => {
+      const { prepareSound, warmRoundSounds } = await loadModule();
+      prepareSound();
+      runIdle();
+
+      warmRoundSounds();
+
+      expect(context().resumes).toBe(1);
+    });
   });
 });

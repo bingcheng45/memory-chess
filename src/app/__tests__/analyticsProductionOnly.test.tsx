@@ -106,6 +106,9 @@ describe("Google Analytics loading", () => {
 
   afterEach(() => {
     Reflect.deleteProperty(window, "dataLayer");
+    Reflect.deleteProperty(window, "gtag");
+    document.cookie = "_ga_R8BM9EMY9J=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    jest.useRealTimers();
     Reflect.deleteProperty(document, "referrer");
     document.title = "";
     window.history.replaceState(null, "", "/");
@@ -241,6 +244,208 @@ describe("Google Analytics loading", () => {
         page_title: "Memory Chess",
       },
     ]);
+  });
+
+  describe("a tab that stays open past GA4's 30 minute session timeout", () => {
+    const NOW_SECONDS = 1_800_000_000;
+    const commandsAfterLanding = () =>
+      (window as unknown as { dataLayer: IArguments[] }).dataLayer.slice(3).map((args) => Array.from(args));
+
+    beforeEach(() => {
+      jest.useFakeTimers({ now: NOW_SECONDS * 1000 });
+      window.history.replaceState(null, "", "/game");
+      document.title = "Game";
+      new Function(initScript())();
+    });
+
+    const dataLayer = () => (window as unknown as { dataLayer: IArguments[] }).dataLayer;
+
+    const idleFor = (minutes: number) => {
+      document.cookie = `_ga_R8BM9EMY9J=GS2.1.s${NOW_SECONDS}$o1$g1$t${NOW_SECONDS}$j0$l0$h0`;
+      jest.setSystemTime((NOW_SECONDS + minutes * 60) * 1000);
+    };
+
+    it("sends a page_view before the first event of the new session", () => {
+      idleFor(31);
+
+      window.gtag("event", "round_start", { piece_count: 6 });
+
+      expect(commandsAfterLanding()).toEqual([
+        ["event", "page_view", { page_location: "http://localhost/game", page_referrer: "", page_title: "Game" }],
+        ["event", "round_start", { piece_count: 6 }],
+      ]);
+    });
+
+    it("credits a revived session to direct: no referrer, and the landing's campaign tags dropped", () => {
+      jest.useRealTimers();
+      jest.useFakeTimers({ now: NOW_SECONDS * 1000 });
+      Reflect.deleteProperty(window, "dataLayer");
+      window.history.replaceState(null, "", "/game?mode=daily&utm_source=x&gclid=y&gbraid=a&wbraid=b&fbclid=c&msclkid=d&player=Z&utm_medium=m");
+      Object.defineProperty(document, "referrer", { configurable: true, value: "https://www.google.com/" });
+      new Function(initScript())();
+      idleFor(31);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding()[0]).toEqual([
+        "event",
+        "page_view",
+        { page_location: "http://localhost/game?mode=daily", page_referrer: "", page_title: "Game" },
+      ]);
+    });
+
+    it("leaves the page_view to GA4's history tracking when the lapsed visitor has just navigated", () => {
+      idleFor(31);
+      window.history.pushState(null, "", "/learn/search?q=rating");
+
+      window.gtag("event", "learn_search", { query_length: 6 });
+
+      expect(commandsAfterLanding()).toEqual([["event", "learn_search", { query_length: 6 }]]);
+    });
+
+    it("still sends the page_view for a lapse long after the last navigation", () => {
+      window.history.pushState(null, "", "/learn");
+      idleFor(31);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding().map((command) => command[1])).toEqual(["page_view", "round_start"]);
+    });
+
+    it("leaves the page_view to GA4 when the lapsed visitor's address was replaced, as on a language switch", () => {
+      idleFor(31);
+      window.history.replaceState(null, "", "/fr/game");
+
+      window.gtag("event", "round_intro_view", {});
+
+      expect(commandsAfterLanding()).toEqual([["event", "round_intro_view", {}]]);
+    });
+
+    it("does not treat a replaceState that keeps the address as a navigation", () => {
+      idleFor(31);
+      window.history.replaceState({ seeded: true }, "", window.location.href);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding().map((command) => command[1])).toEqual(["page_view", "round_start"]);
+    });
+
+    it("leaves the page_view to GA4 after a back or forward navigation", () => {
+      idleFor(31);
+      window.dispatchEvent(new PopStateEvent("popstate"));
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding()).toEqual([["event", "round_start", {}]]);
+    });
+
+    it("counts a navigation in the same second as the last hit as part of that hit", () => {
+      document.cookie = `_ga_R8BM9EMY9J=GS2.1.s${NOW_SECONDS}$o1$g1$t${NOW_SECONDS}$j0$l0$h0`;
+      jest.setSystemTime(NOW_SECONDS * 1000 + 800);
+      window.history.pushState(null, "", "/learn");
+      jest.setSystemTime((NOW_SECONDS + 31 * 60) * 1000);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding().map((command) => command[1])).toEqual(["page_view", "round_start"]);
+    });
+
+    it("counts a navigation in a later second than the last hit as one GA4 has yet to report", () => {
+      document.cookie = `_ga_R8BM9EMY9J=GS2.1.s${NOW_SECONDS}$o1$g1$t${NOW_SECONDS}$j0$l0$h0`;
+      jest.setSystemTime((NOW_SECONDS + 1) * 1000 + 100);
+      window.history.pushState(null, "", "/learn");
+      jest.setSystemTime((NOW_SECONDS + 31 * 60) * 1000);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding()).toEqual([["event", "round_start", {}]]);
+    });
+
+    it("still sends the event when the cookie cannot be read, as in a sandboxed frame", () => {
+      Object.defineProperty(document, "cookie", {
+        configurable: true,
+        get() {
+          throw new DOMException("sandboxed", "SecurityError");
+        },
+      });
+
+      try {
+        expect(() => window.gtag("event", "round_start", {})).not.toThrow();
+      } finally {
+        Reflect.deleteProperty(document, "cookie");
+      }
+
+      expect(commandsAfterLanding()).toEqual([["event", "round_start", {}]]);
+    });
+
+    it.each(["dclid", "srsltid"])("drops %s from a revived session's address", (tag) => {
+      window.history.replaceState(null, "", `/game?keep=1&${tag}=z`);
+      idleFor(31);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding()[0]).toEqual([
+        "event",
+        "page_view",
+        { page_location: "http://localhost/game?keep=1", page_referrer: "", page_title: "Game" },
+      ]);
+    });
+
+    it("sends only the event while the session is still live", () => {
+      idleFor(29);
+
+      window.gtag("event", "round_start", { piece_count: 6 });
+      window.gtag("set", "user_properties", { result_view: "overlay" });
+
+      expect(commandsAfterLanding()).toEqual([
+        ["event", "round_start", { piece_count: 6 }],
+        ["set", "user_properties", { result_view: "overlay" }],
+      ]);
+    });
+
+    it("sends one page_view, not one per event, while gtag.js has yet to load and the cookie is stale", () => {
+      jest.setSystemTime((NOW_SECONDS + 5 * 3600) * 1000);
+      document.cookie = `_ga_R8BM9EMY9J=GS2.1.s${NOW_SECONDS}$o1$g1$t${NOW_SECONDS}$j0$l0$h0`;
+      dataLayer().length = 0;
+      new Function(initScript())();
+
+      window.gtag("event", "learn_search", { query_length: 4 });
+      window.gtag("event", "learn_search_select", {});
+
+      const views = dataLayer().map((args) => Array.from(args)).filter((command) => command[1] === "page_view");
+      expect(views).toHaveLength(1);
+    });
+
+    it("sends a page_view again once 30 minutes pass after the last queued event", () => {
+      idleFor(31);
+      window.gtag("event", "round_start", {});
+      jest.setSystemTime((NOW_SECONDS + 62 * 60) * 1000);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding().map((command) => command[1])).toEqual([
+        "page_view",
+        "round_start",
+        "page_view",
+        "round_start",
+      ]);
+    });
+
+    it("sends only the event before gtag.js has written a session cookie", () => {
+      jest.setSystemTime((NOW_SECONDS + 3600) * 1000);
+
+      window.gtag("event", "round_start", { piece_count: 6 });
+
+      expect(commandsAfterLanding()).toEqual([["event", "round_start", { piece_count: 6 }]]);
+    });
+
+    it("does not count a page_view twice when the page_view itself arrives after the lapse", () => {
+      idleFor(31);
+
+      window.gtag("event", "page_view", { page_location: "http://localhost/learn" });
+
+      expect(commandsAfterLanding()).toEqual([["event", "page_view", { page_location: "http://localhost/learn" }]]);
+    });
   });
 
   it("loads gtag.js only once the page is idle", () => {

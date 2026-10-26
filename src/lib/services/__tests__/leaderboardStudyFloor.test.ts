@@ -44,7 +44,10 @@ describe("the study floor", () => {
   it("is cleared by every study time a daily board can set, so the database check never refuses a daily row", () => {
     const settings = Object.values(WEEKLY_ARC).flatMap(settingsIn);
 
-    expect(settings.filter(({ pieceCount, memorizeTime }) => memorizeTime < studyFloorSeconds(pieceCount))).toEqual([]);
+    expect(settings.length).toBeGreaterThan(0);
+    for (const { pieceCount, memorizeTime } of settings) {
+      expect(memorizeTime).toBeGreaterThanOrEqual(studyFloorSeconds(pieceCount));
+    }
   });
 
   it("hides rows under it from each ranked board read", async () => {
@@ -88,7 +91,7 @@ describe("a standing lookup by id", () => {
   it.each([
     ["medium", 6, 0.565],
     ["easy", 2, 0.067],
-  ])("reports a %s entry studied %f s as missing, as the board hides it, and counts nothing", async (difficulty, piece_count, memorize_time) => {
+  ])("reports a %s entry of %i pieces studied %f s as missing, as the board hides it, and counts nothing", async (difficulty, piece_count, memorize_time) => {
     found = { ...ENTRY, difficulty, piece_count, memorize_time };
 
     expect(await getStanding("a", "world")).toEqual({ status: "missing" });
@@ -104,21 +107,46 @@ describe("a standing lookup by id", () => {
 });
 
 describe("the highest rating a client can send", () => {
-  it("is above what the engine reaches on every board a round can be ranked on, played perfectly and as fast as the rules allow", () => {
-    const boards = [
-      ...[2, 6, 12, 20].flatMap((pieces) => [studyFloorSeconds(pieces), 5, 12].map((studySeconds) => ({ pieces, studySeconds }))),
-      ...[12, 32].flatMap((pieces) => [studyFloorSeconds(pieces), 2, 5, 12].map((studySeconds) => ({ pieces, studySeconds }))),
-    ];
-    const peaks = boards.map(({ pieces, studySeconds }) => {
+  const perfect = (pieceCount: number, studySeconds: number) => ({ pieceCount, studySeconds, rebuildSeconds: pieceCount * 0.25, accuracy: 100 });
+  // Custom games are rated too, so the study time is not held to the ranked floor here.
+  const BOARDS = [2, 6, 12, 20, 32].flatMap((pieces) => [1, 5, 12, 60].map((seconds) => ({ pieces, seconds })));
+
+  it("is above what perfect, fastest-possible play on any board reaches, including 32 pieces studied for 1 s", () => {
+    const peaks = BOARDS.map(({ pieces, seconds }) => {
       let player = NEW_PLAYER;
       let peak = 0;
-      for (let round = 0; round < 400; round += 1) {
-        player = ratingAfter(player, { pieceCount: pieces, studySeconds, rebuildSeconds: pieces * 0.25, accuracy: 100 }).player;
+      for (let round = 0; round < 3000; round += 1) {
+        player = ratingAfter(player, perfect(pieces, seconds)).player;
         peak = Math.max(peak, player.rating);
       }
       return peak;
     });
 
-    expect(Math.max(...peaks)).toBeLessThan(SUBMITTABLE_RATING_CEILING - 300);
+    expect(Math.max(...peaks)).toBeGreaterThan(3300);
+    expect(Math.max(...peaks)).toBeLessThan(SUBMITTABLE_RATING_CEILING);
+  });
+
+  it("is above what a climb, a long run of uninformative rounds and one dip then three top rounds reaches", () => {
+    const top = perfect(32, 1);
+    let player = NEW_PLAYER;
+    for (let round = 0; round < 300; round += 1) player = ratingAfter(player, top).player;
+    for (let round = 0; round < 3000; round += 1) player = ratingAfter(player, { pieceCount: 2, studySeconds: 60, rebuildSeconds: 100, accuracy: 100 }).player;
+    const widened = player;
+
+    let peak = 0;
+    for (const pieces of [2, 12, 32]) {
+      for (const studySeconds of [1, 60]) {
+        for (let accuracy = 0; accuracy <= 100; accuracy += 10) {
+          let after = ratingAfter(widened, { pieceCount: pieces, studySeconds, rebuildSeconds: 1000, accuracy }).player;
+          for (let round = 0; round < 3; round += 1) {
+            after = ratingAfter(after, top).player;
+            peak = Math.max(peak, after.rating);
+          }
+        }
+      }
+    }
+
+    expect(peak).toBeGreaterThan(3400);
+    expect(peak).toBeLessThan(SUBMITTABLE_RATING_CEILING);
   });
 });

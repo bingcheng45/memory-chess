@@ -1756,7 +1756,12 @@
     "play": "오늘의 보드 플레이",
     "tomorrowTitle": "내일의 보드",
     "tomorrowOpens": "{timeLeft} 후에 열립니다.",
-    "seeToday": "오늘의 보드 보기"
+    "seeToday": "오늘의 보드 보기",
+    "remindButton": "매일 알림 받기",
+    "remindNote": "보드가 열리는 시간에 매일 반복되는 캘린더 일정을 내려받습니다.",
+    "remindDone": "저장했습니다. 파일을 열어 매일 일정을 캘린더에 추가하세요.",
+    "remindTitle": "Memory Chess 데일리 보드",
+    "remindDescription": "새 보드는 매일 UTC 자정에 열립니다. 모두가 같은 보드를 플레이하며, 기회는 한 번입니다."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "오늘의 보드를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.",
       "joinToRank": "보드에 참가하면 여기에 내 순위가 표시됩니다.",
       "order": "맞힌 기물 수, 오답이 적은 순, 빠른 배치 순으로 순위가 정해집니다.",
-      "all": "모든 보드 보기"
+      "all": "모든 보드 보기",
+      "todayBoard": "오늘의 보드",
+      "yesterdayBoard": "어제의 보드",
+      "joinedToday": "오늘의 보드에 참가한 플레이어: {count}명",
+      "joinedYesterday": "어제의 보드에 참가한 플레이어: {count}명",
+      "listFrom": "{min}명 이상이 참가하면 TOP 10이 표시됩니다."
     },
     "reference": {
       "title": "데일리 보드는 이렇게 진행돼요",

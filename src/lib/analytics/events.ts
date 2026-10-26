@@ -172,7 +172,15 @@ export type FunnelEvent =
   | {
       name: "affiliate_click";
       params: { store: "amazon" };
+    }
+  /** The daily board's calendar file was downloaded. Only where the button was, never the visitor's time zone. */
+  | {
+      name: "reminder_set";
+      params: { surface: ReminderSurface };
     };
+
+/** Where a reminder button sits: under the result screen's tomorrow line, on the dashboard, or on /daily. */
+export type ReminderSurface = "result" | "dashboard" | "daily";
 
 /** Whether an intro event belongs to the first-visit play or to a replay. */
 export type IntroPlay = "first" | "replay";

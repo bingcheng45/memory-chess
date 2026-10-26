@@ -1756,7 +1756,12 @@
     "play": "Speel het bord van vandaag",
     "tomorrowTitle": "Bord van morgen",
     "tomorrowOpens": "Opent over {timeLeft}.",
-    "seeToday": "Bekijk het bord van vandaag"
+    "seeToday": "Bekijk het bord van vandaag",
+    "remindButton": "Herinner me dagelijks",
+    "remindNote": "Downloadt een agenda-item dat zich elke dag herhaalt wanneer het bord opent.",
+    "remindDone": "Opgeslagen. Open het bestand om het dagelijkse item aan je agenda toe te voegen.",
+    "remindTitle": "Dagelijks bord van Memory Chess",
+    "remindDescription": "Een nieuw bord opent elke dag om middernacht UTC. Iedereen speelt hetzelfde bord en je hebt één poging."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Het bord van vandaag kon niet worden geladen. Probeer het zo meteen opnieuw.",
       "joinToRank": "Doe mee met het bord om hier je plek te zien.",
       "order": "Gerangschikt op goede stukken, dan op minste fouten, dan op snelste nabouw.",
-      "all": "Bekijk alle borden"
+      "all": "Bekijk alle borden",
+      "todayBoard": "Bord van vandaag",
+      "yesterdayBoard": "Bord van gisteren",
+      "joinedToday": "Spelers die hebben meegedaan met het bord van vandaag: {count}",
+      "joinedYesterday": "Spelers die hebben meegedaan met het bord van gisteren: {count}",
+      "listFrom": "De top 10 verschijnt zodra {min} of meer spelers hebben meegedaan."
     },
     "reference": {
       "title": "Zo werkt het dagbord",

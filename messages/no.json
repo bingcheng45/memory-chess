@@ -1756,7 +1756,12 @@
     "play": "Spill dagens brett",
     "tomorrowTitle": "Morgendagens brett",
     "tomorrowOpens": "Åpner om {timeLeft}.",
-    "seeToday": "Se dagens brett"
+    "seeToday": "Se dagens brett",
+    "remindButton": "Minn meg på det hver dag",
+    "remindNote": "Laster ned en kalenderhendelse som gjentas hver dag når brettet åpner.",
+    "remindDone": "Lagret. Åpne filen for å legge den daglige hendelsen til i kalenderen din.",
+    "remindTitle": "Memory Chess dagens brett",
+    "remindDescription": "Et nytt brett åpner hver dag ved midnatt UTC. Alle spiller det samme brettet, og du får ett forsøk."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Dagens brett kunne ikke lastes. Prøv igjen om litt.",
       "joinToRank": "Bli med på brettet for å se plasseringen din her.",
       "order": "Rangert etter flest riktige brikker, så færrest feil, så raskest oppbygging.",
-      "all": "Se alle brett"
+      "all": "Se alle brett",
+      "todayBoard": "Dagens brett",
+      "yesterdayBoard": "Gårsdagens brett",
+      "joinedToday": "Spillere som har blitt med på dagens brett: {count}",
+      "joinedYesterday": "Spillere som ble med på gårsdagens brett: {count}",
+      "listFrom": "Topp 10 vises når {min} eller flere spillere har blitt med."
     },
     "reference": {
       "title": "Slik fungerer dagens brett",

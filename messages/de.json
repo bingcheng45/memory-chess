@@ -1756,7 +1756,12 @@
     "play": "Heutiges Brett spielen",
     "tomorrowTitle": "Morgiges Brett",
     "tomorrowOpens": "Öffnet in {timeLeft}.",
-    "seeToday": "Heutiges Brett ansehen"
+    "seeToday": "Heutiges Brett ansehen",
+    "remindButton": "Täglich erinnern",
+    "remindNote": "Lädt einen Kalendertermin herunter, der sich jeden Tag wiederholt, wenn das Brett öffnet.",
+    "remindDone": "Gespeichert. Öffne die Datei, um den täglichen Termin deinem Kalender hinzuzufügen.",
+    "remindTitle": "Memory Chess Tagesbrett",
+    "remindDescription": "Ein neues Brett öffnet jeden Tag um Mitternacht UTC. Alle spielen dasselbe Brett, und du hast einen Versuch."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Das heutige Brett konnte nicht geladen werden. Bitte versuche es gleich noch einmal.",
       "joinToRank": "Tritt dem Brett bei, um hier deinen Platz zu sehen.",
       "order": "Sortiert nach richtigen Figuren, dann nach den wenigsten falschen, dann nach dem schnellsten Nachbau.",
-      "all": "Alle Bretter ansehen"
+      "all": "Alle Bretter ansehen",
+      "todayBoard": "Heutiges Brett",
+      "yesterdayBoard": "Gestriges Brett",
+      "joinedToday": "Personen, die dem heutigen Brett beigetreten sind: {count}",
+      "joinedYesterday": "Personen, die dem gestrigen Brett beigetreten sind: {count}",
+      "listFrom": "Die Top 10 erscheinen, sobald {min} oder mehr Personen beigetreten sind."
     },
     "reference": {
       "title": "So funktioniert das Tagesbrett",

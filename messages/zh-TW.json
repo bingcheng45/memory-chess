@@ -1756,7 +1756,12 @@
     "play": "開始今日棋局",
     "tomorrowTitle": "明日棋局",
     "tomorrowOpens": "{timeLeft}後開放。",
-    "seeToday": "查看今日棋局"
+    "seeToday": "查看今日棋局",
+    "remindButton": "每天提醒我",
+    "remindNote": "下載一個行事曆活動，每天在棋局開放時重複。",
+    "remindDone": "已儲存。開啟該檔案，即可把每日活動加入你的行事曆。",
+    "remindTitle": "Memory Chess 每日棋局",
+    "remindDescription": "新棋局每天在 UTC 午夜開放。所有人玩同一局，你只有一次機會。"
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "無法載入今天的棋盤，請稍後再試。",
       "joinToRank": "加入棋盤後，你的名次會顯示在這裡。",
       "order": "先依答對的棋子數排名，再依答錯最少，最後依重建最快。",
-      "all": "查看所有棋盤"
+      "all": "查看所有棋盤",
+      "todayBoard": "今日棋局",
+      "yesterdayBoard": "昨日棋局",
+      "joinedToday": "已加入今日棋局的玩家：{count}",
+      "joinedYesterday": "加入昨日棋局的玩家：{count}",
+      "listFrom": "有 {min} 位或更多玩家加入後，將顯示前 10 名。"
     },
     "reference": {
       "title": "每日棋盤如何運作",

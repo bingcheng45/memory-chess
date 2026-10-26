@@ -1756,7 +1756,12 @@
     "play": "Játszd a mai táblát",
     "tomorrowTitle": "A holnapi tábla",
     "tomorrowOpens": "{timeLeft} múlva nyílik.",
-    "seeToday": "A mai tábla megtekintése"
+    "seeToday": "A mai tábla megtekintése",
+    "remindButton": "Emlékeztess naponta",
+    "remindNote": "Naptáresemény letöltése, amely minden nap ismétlődik, amikor a tábla megnyílik.",
+    "remindDone": "Mentve. Nyisd meg a fájlt, hogy a napi eseményt hozzáadd a naptáradhoz.",
+    "remindTitle": "Memory Chess napi tábla",
+    "remindDescription": "Az új tábla minden nap éjfélkor nyílik, UTC szerint. Mindenki ugyanazt a táblát játssza, és egy próbálkozásod van."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "A mai táblát nem sikerült betölteni. Próbáld újra egy kis idő múlva.",
       "joinToRank": "Csatlakozz a táblához, hogy itt lásd a helyezésedet.",
       "order": "Sorrend: legtöbb helyes bábu, azután legkevesebb hibás, azután leggyorsabb újraépítés.",
-      "all": "Az összes tábla megtekintése"
+      "all": "Az összes tábla megtekintése",
+      "todayBoard": "Mai tábla",
+      "yesterdayBoard": "Tegnapi tábla",
+      "joinedToday": "A mai táblához csatlakozott játékosok: {count}",
+      "joinedYesterday": "A tegnapi táblához csatlakozott játékosok: {count}",
+      "listFrom": "A top 10 akkor jelenik meg, ha legalább {min} játékos csatlakozott."
     },
     "reference": {
       "title": "Hogyan működik a napi tábla",

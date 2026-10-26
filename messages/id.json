@@ -1756,7 +1756,12 @@
     "play": "Mainkan papan hari ini",
     "tomorrowTitle": "Papan besok",
     "tomorrowOpens": "Dibuka dalam {timeLeft}.",
-    "seeToday": "Lihat papan hari ini"
+    "seeToday": "Lihat papan hari ini",
+    "remindButton": "Ingatkan saya setiap hari",
+    "remindNote": "Mengunduh acara kalender yang berulang setiap hari saat papan dibuka.",
+    "remindDone": "Tersimpan. Buka berkasnya untuk menambahkan acara harian ke kalender Anda.",
+    "remindTitle": "Papan harian Memory Chess",
+    "remindDescription": "Papan baru dibuka setiap hari pada tengah malam UTC. Semua orang memainkan papan yang sama, dan Anda punya satu kesempatan."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Papan hari ini tidak bisa dimuat. Silakan coba lagi sebentar lagi.",
       "joinToRank": "Ikut papan untuk melihat peringkat Anda di sini.",
       "order": "Diurutkan berdasarkan bidak benar, lalu salah paling sedikit, lalu penyusunan tercepat.",
-      "all": "Lihat semua papan"
+      "all": "Lihat semua papan",
+      "todayBoard": "Papan hari ini",
+      "yesterdayBoard": "Papan kemarin",
+      "joinedToday": "Pemain yang sudah ikut papan hari ini: {count}",
+      "joinedYesterday": "Pemain yang ikut papan kemarin: {count}",
+      "listFrom": "10 besar muncul setelah {min} pemain atau lebih ikut."
     },
     "reference": {
       "title": "Cara kerja papan harian",

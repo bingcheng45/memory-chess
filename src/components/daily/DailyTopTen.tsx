@@ -2,6 +2,7 @@
 
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { LEADERBOARD_ROW_LIMIT } from "@/lib/reference/facts";
 import { START_RATING } from "@/lib/game/rating";
 import type { DailyEntry } from "@/lib/lab/entries";
 import { flagEmoji, parseCountryCode, WORLD_CODE } from "@/lib/leaderboard/countries";
@@ -10,6 +11,9 @@ import type { LeaderboardEntry } from "@/types/leaderboard";
 import type { DailyRows } from "./useDailyRows";
 
 const TOP = 10;
+
+/** A table of one or two rows reads as an empty feature, so it waits for this many. */
+export const MIN_LISTED = 3;
 
 const scoreOf = (entry: LeaderboardEntry): RankingScore => ({
   correctPieces: entry.correct_pieces,
@@ -69,10 +73,12 @@ export function DailyTopTen({ rows, today, joined, played }: DailyTopTenProps) {
   const ranks = ranksOf(all);
   const ownIndex = joined ? all.findIndex((entry) => entry.id === joined.id) : -1;
   const own = ownIndex >= TOP ? all[ownIndex] : null;
+  const listed = all.length >= MIN_LISTED;
+  const joinedLine = yesterday ? "joinedYesterday" : !listed && all.length > 0 ? "joinedToday" : null;
 
   return (
     <section className="daily-card daily-top" aria-labelledby="daily-top-title">
-      <h2 id="daily-top-title" className="daily-card-title">{t(yesterday ? "yesterdayTitle" : "title")}</h2>
+      <h2 id="daily-top-title" className="daily-card-title">{t(listed ? (yesterday ? "yesterdayTitle" : "title") : yesterday ? "yesterdayBoard" : "todayBoard")}</h2>
       {/* Always rendered, so the line holds its place before 25 players have joined and the table never moves. */}
       <p className="daily-played">
         {playedLike !== null && (
@@ -83,32 +89,40 @@ export function DailyTopTen({ rows, today, joined, played }: DailyTopTenProps) {
           </>
         )}
       </p>
-      <div className="daily-table-wrap">
-        <table className="daily-table">
-          <thead>
-            <tr>
-              <th scope="col" className="daily-num">{t("rank")}</th>
-              <th scope="col">{t("player")}</th>
-              <th scope="col" className="daily-num">{t("right")}</th>
-              <th scope="col" className="daily-num">{t("wrong")}</th>
-              <th scope="col" className="daily-num">{t("time")}</th>
-            </tr>
-          </thead>
-          <tbody>
-            {all.slice(0, TOP).map((entry, index) => (
-              <Row key={entry.id} entry={entry} rank={ranks[index]} you={entry.id === joined?.id} />
-            ))}
-            {own && (
-              <>
-                <tr className="daily-gap" aria-hidden="true">
-                  <td colSpan={5}>⋯</td>
-                </tr>
-                <Row entry={own} rank={ranks[ownIndex]} you />
-              </>
-            )}
-          </tbody>
-        </table>
-      </div>
+      {joinedLine !== null && (
+        <p className="daily-note daily-count">
+          <strong>{t(joinedLine, { count: all.length >= LEADERBOARD_ROW_LIMIT ? `${format.number(LEADERBOARD_ROW_LIMIT)}+` : format.number(all.length) })}</strong>
+          {joinedLine === "joinedToday" && <span className="daily-hint"> {t("listFrom", { min: MIN_LISTED })}</span>}
+        </p>
+      )}
+      {listed && (
+        <div className="daily-table-wrap">
+          <table className="daily-table">
+            <thead>
+              <tr>
+                <th scope="col" className="daily-num">{t("rank")}</th>
+                <th scope="col">{t("player")}</th>
+                <th scope="col" className="daily-num">{t("right")}</th>
+                <th scope="col" className="daily-num">{t("wrong")}</th>
+                <th scope="col" className="daily-num">{t("time")}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {all.slice(0, TOP).map((entry, index) => (
+                <Row key={entry.id} entry={entry} rank={ranks[index]} you={entry.id === joined?.id} />
+              ))}
+              {own && (
+                <>
+                  <tr className="daily-gap" aria-hidden="true">
+                    <td colSpan={5}>⋯</td>
+                  </tr>
+                  <Row entry={own} rank={ranks[ownIndex]} you />
+                </>
+              )}
+            </tbody>
+          </table>
+        </div>
+      )}
       {board !== null && (yesterday || all.length === 0) && <p className="daily-note">{t("empty")}</p>}
       {rows.state === "failed" && (
         <p className="daily-note daily-error" role="alert">
@@ -117,7 +131,7 @@ export function DailyTopTen({ rows, today, joined, played }: DailyTopTenProps) {
       )}
       {played && !joined && <p className="daily-note">{t("joinToRank")}</p>}
       <div className="daily-top-foot">
-        <p className="daily-hint">{t("order")}</p>
+        {listed && <p className="daily-hint">{t("order")}</p>}
         <Link href="/leaderboard">{t("all")}</Link>
       </div>
     </section>

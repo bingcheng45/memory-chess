@@ -1756,7 +1756,12 @@
     "play": "Pelaa päivän lauta",
     "tomorrowTitle": "Huomisen lauta",
     "tomorrowOpens": "Aukeaa {timeLeft} päästä.",
-    "seeToday": "Katso päivän lauta"
+    "seeToday": "Katso päivän lauta",
+    "remindButton": "Muistuta joka päivä",
+    "remindNote": "Lataa kalenteritapahtuman, joka toistuu joka päivä laudan avautuessa.",
+    "remindDone": "Tallennettu. Avaa tiedosto lisätäksesi päivittäisen tapahtuman kalenteriisi.",
+    "remindTitle": "Memory Chessin päivän lauta",
+    "remindDescription": "Uusi lauta avautuu joka päivä keskiyöllä UTC. Kaikki pelaavat samaa lautaa, ja sinulla on yksi yritys."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Päivän lautaa ei voitu ladata. Yritä hetken kuluttua uudelleen.",
       "joinToRank": "Osallistu lautaan nähdäksesi sijoituksesi täällä.",
       "order": "Järjestys: eniten oikeita nappuloita, sitten vähiten vääriä, sitten nopein rakennus.",
-      "all": "Katso kaikki laudat"
+      "all": "Katso kaikki laudat",
+      "todayBoard": "Päivän lauta",
+      "yesterdayBoard": "Eilisen lauta",
+      "joinedToday": "Päivän lautaan liittyneet pelaajat: {count}",
+      "joinedYesterday": "Eilisen lautaan liittyneet pelaajat: {count}",
+      "listFrom": "Kymmenen parasta näkyy, kun vähintään {min} pelaajaa on liittynyt."
     },
     "reference": {
       "title": "Näin päivän lauta toimii",

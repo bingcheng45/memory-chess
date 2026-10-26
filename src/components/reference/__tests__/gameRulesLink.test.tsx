@@ -14,6 +14,13 @@ jest.mock("next-intl/server", () => {
 const served = async (locale: string) => renderToString(await GameReference({ locale }));
 
 describe("the board game rules line on /game", () => {
+  it("comes after the chess memory test answer, which stays the first text", async () => {
+    const html = await served("en");
+
+    expect(html.indexOf("A chess memory test shows you")).toBeGreaterThan(-1);
+    expect(html.indexOf("A chess memory test shows you")).toBeLessThan(html.indexOf("Looking for the wooden Memory Chess board game?"));
+  });
+
   it("links the English rules guide from the served HTML", async () => {
     const html = await served("en");
 

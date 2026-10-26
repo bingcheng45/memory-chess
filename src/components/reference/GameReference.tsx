@@ -128,6 +128,7 @@ export default async function GameReference({ locale }: { locale: string }) {
 
       <div className="lab-wrap">
         <div className="lab-ref-col">
+          <MemoryTestAnswer answer={prose.answer} locale={locale} />
           <p className="lab-ref-boardgame">
             {home.rich("hero.boardGame", {
               link: (chunks) => (
@@ -138,7 +139,6 @@ export default async function GameReference({ locale }: { locale: string }) {
               ),
             })}
           </p>
-          <MemoryTestAnswer answer={prose.answer} locale={locale} />
           <h2 id="game-reference-title" className="lab-ref-title">
             {prose.title}
           </h2>

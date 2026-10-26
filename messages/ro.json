@@ -1084,11 +1084,15 @@
       "changeSettings": "Schimbă setările",
       "tileDrill": "Acest exercițiu la nivelul tău",
       "tileDrillWhy": "Potrivit nivelului tău, ca să exersezi ce descrie articolul.",
-      "submitToLeaderboard": "Trimite și vezi locul",
-      "claimSpot": "Ocupă-mi locul",
       "submitPrompt": "Vezi pe ce loc se află rezultatul tău, în lume și în țara ta.",
       "personalBest": "Nou record personal la acest nivel. Trece-l în clasament.",
       "leaderboardQualifies": "Rezultatul tău ar intra în clasament. Ocupă-ți locul.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% ar intra în clasament.",
+        "open": "{difficulty}: vezi pe ce loc ajunge {accuracy}%.",
+        "claim": "Ocupă locul",
+        "submit": "Trimite"
+      },
       "viewLeaderboard": "Vezi clasamentul",
       "dialog": {
         "submitTitle": "Trimite în clasament",
@@ -1130,10 +1134,6 @@
         "cta": "Poți mai bine?",
         "text": "{kind, select, daily {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) pe tabla zilnică Memory Chess din {date}.} review {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) pe o tablă de recapitulare Memory Chess.} other {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) la Memory Chess.}} Poți mai bine?",
         "alt": "Card de rezultat Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Runda a fost salvată. Statisticile tale actualizate sunt chiar mai jos.",
-        "action": "Arată-mi"
       },
       "blindfoldRound": "Rundă pe orbește: ai studiat poziția în notație."
     },

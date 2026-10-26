@@ -40,6 +40,8 @@ async function playRound(page, baseUrl) {
   await page.waitFor(phaseIs("study"));
   const pieces = (await page.eval(cells)).map((cell) => ({ square: cell.square, piece: pieceOf(cell) }));
   if (pieces.length === 0) throw new Error("the study board shows no pieces");
+  // The server refuses a study under max(0.3, pieces * 0.1) s, and the result screen then offers no claim line.
+  await page.sleep(1000);
   await page.clickText("button", words.round.hide);
   await page.waitFor(phaseIs("rebuild"));
   for (const { square, piece } of pieces) {
@@ -79,7 +81,7 @@ export default async function drive(page, { baseUrl }) {
     );
     const storedRating = await page.eval(`JSON.parse(localStorage.getItem("memory-chess-storage")).state.gameState.skillRating`);
     await page.screenshot(`${shotPrefix}-${index + 1}-result.png`);
-    await page.clickText("button", "Submit to leaderboard");
+    await page.click("[data-result-claim] button");
     await page.waitFor(`!!document.getElementById("player-name")`);
     await mouseClick(page, "#player-name");
     await page.send("Input.insertText", { text: playerName });

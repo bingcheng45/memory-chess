@@ -1084,11 +1084,15 @@
       "changeSettings": "Ændr indstillinger",
       "tileDrill": "Denne øvelse på dit niveau",
       "tileDrillWhy": "Tilpasset dit niveau, så du kan øve det, artiklen beskriver.",
-      "submitToLeaderboard": "Send og se min placering",
-      "claimSpot": "Tag min plads",
       "submitPrompt": "Se, hvor dit resultat placerer sig i verden og i dit land.",
       "personalBest": "Ny personlig rekord på dette niveau. Få den på listen.",
       "leaderboardQualifies": "Dit resultat ville komme på ranglisten. Tag din plads.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy} % kommer på ranglisten.",
+        "open": "{difficulty}: se, hvor {accuracy} % placerer sig.",
+        "claim": "Tag pladsen",
+        "submit": "Send det"
+      },
       "viewLeaderboard": "Se ranglisten",
       "dialog": {
         "submitTitle": "Send til ranglisten",
@@ -1130,10 +1134,6 @@
         "cta": "Kan du slå det?",
         "text": "{kind, select, daily {Jeg huskede {correct, number} af {total, number} brikker ({accuracy}) på dagens bræt i Memory Chess for {date}.} review {Jeg huskede {correct, number} af {total, number} brikker ({accuracy}) på et repetitionsbræt i Memory Chess.} other {Jeg huskede {correct, number} af {total, number} brikker ({accuracy}) i Memory Chess.}} Kan du slå det?",
         "alt": "Resultatkort fra Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Runden er gemt. Dine opdaterede tal står lige herunder.",
-        "action": "Vis mig"
       },
       "blindfoldRound": "Blindrunde: du studerede stillingen som notation."
     },

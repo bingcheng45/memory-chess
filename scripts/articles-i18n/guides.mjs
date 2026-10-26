@@ -10,7 +10,7 @@ const TRANSLATED_GUIDES_FILE = `${LEARN_DIR}/translatedGuides.ts`;
 const GUIDE_BODY_PATH = /^(meta\.description|intro\.(quickAnswer|takeaways\[\d+\])|sections\..+\.blocks\[\d+\]\.(paragraphs|items)\[\d+\]|end\[\d+\]\.items\[\d+\]\.answer)$/;
 
 const BUTTONS = {
-  result: ["tryAgain", "nextRound", "changeSettings", "submitToLeaderboard", "viewLeaderboard"],
+  result: ["tryAgain", "nextRound", "changeSettings", "viewLeaderboard"],
   round: ["start", "hide", "restart", "again", "submit", "clear"],
 };
 

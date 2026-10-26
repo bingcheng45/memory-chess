@@ -192,7 +192,7 @@ export default async function drive(page, { baseUrl }) {
     await page.waitFor(`!document.getElementById("game-feedback")`);
   }
 
-  await page.clickText("button", "Submit to leaderboard");
+  await page.click("[data-result-claim] button");
   await page.waitFor(`!!document.getElementById("player-name")`);
 
   const fit = {};

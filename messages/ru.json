@@ -1084,11 +1084,15 @@
       "changeSettings": "Изменить настройки",
       "tileDrill": "Это упражнение на вашем уровне",
       "tileDrillWhy": "Подобрано под ваш уровень, чтобы потренировать то, что описано в статье.",
-      "submitToLeaderboard": "Отправить и узнать место",
-      "claimSpot": "Занять место",
       "submitPrompt": "Узнайте, какое место занимает ваш результат в мире и в вашей стране.",
       "personalBest": "Новый личный рекорд на этом уровне. Зафиксируйте его.",
       "leaderboardQualifies": "С этим результатом вы попадёте в таблицу лидеров. Займите своё место.",
+      "claimLine": {
+        "qualifies": "{difficulty}: с {accuracy}% вы попадёте в топ.",
+        "open": "{difficulty}: узнайте место для {accuracy}%.",
+        "claim": "Занять место",
+        "submit": "Отправить"
+      },
       "viewLeaderboard": "Таблица лидеров",
       "dialog": {
         "submitTitle": "Отправить в таблицу лидеров",
@@ -1130,10 +1134,6 @@
         "cta": "Сможете лучше?",
         "text": "{kind, select, daily {Мне удалось запомнить {correct, number} из {total, plural, one {# фигуры} few {# фигур} many {# фигур} other {# фигур}} ({accuracy}) на ежедневной доске Memory Chess за {date}.} review {Мне удалось запомнить {correct, number} из {total, plural, one {# фигуры} few {# фигур} many {# фигур} other {# фигур}} ({accuracy}) на доске для повторения в Memory Chess.} other {Мне удалось запомнить {correct, number} из {total, plural, one {# фигуры} few {# фигур} many {# фигур} other {# фигур}} ({accuracy}) в Memory Chess.}} Сможете лучше?",
         "alt": "Карточка результата Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Раунд сохранён. Обновлённая статистика чуть ниже.",
-        "action": "Показать"
       },
       "blindfoldRound": "Раунд вслепую: позиция изучена по нотации."
     },

@@ -1084,11 +1084,15 @@
       "changeSettings": "Einstellungen ändern",
       "tileDrill": "Diese Übung auf deinem Niveau",
       "tileDrillWhy": "Auf dein Niveau zugeschnitten, damit du übst, was der Artikel beschreibt.",
-      "submitToLeaderboard": "Eintragen und Rang sehen",
-      "claimSpot": "Platz sichern",
       "submitPrompt": "Sieh nach, wo dein Ergebnis weltweit und in deinem Land steht.",
       "personalBest": "Neue persönliche Bestleistung auf dieser Stufe. Trag sie ein.",
       "leaderboardQualifies": "Dein Ergebnis würde es in die Bestenliste schaffen. Sichere dir deinen Platz.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy} % reichen für die Bestenliste.",
+        "open": "{difficulty}: Platz für {accuracy} % ansehen.",
+        "claim": "Platz sichern",
+        "submit": "Senden"
+      },
       "viewLeaderboard": "Bestenliste ansehen",
       "dialog": {
         "submitTitle": "In die Bestenliste eintragen",
@@ -1130,10 +1134,6 @@
         "cta": "Schaffst du das?",
         "text": "{kind, select, daily {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) auf dem Tagesbrett von Memory Chess vom {date} gemerkt.} review {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) auf einem Wiederholungsbrett von Memory Chess gemerkt.} other {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) bei Memory Chess gemerkt.}} Schaffst du das?",
         "alt": "Ergebniskarte von Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Runde gespeichert. Deine neuen Werte stehen gleich darunter.",
-        "action": "Zeigen"
       },
       "blindfoldRound": "Blindrunde: Du hast die Stellung als Notation gelernt."
     },

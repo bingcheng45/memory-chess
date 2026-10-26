@@ -270,11 +270,11 @@ describe("GameResult", () => {
 
       expect(primaries).toEqual(["Try again"]);
       expect(screen.queryByRole("button", { name: /Next round/ })).toBeNull();
-      expect([...actions.children].map((child) => child.textContent)).toEqual(["Change settings", "Share result", "View leaderboard"]);
+      expect([...actions.children].map((child) => child.textContent)).toEqual(["Change settings", "View leaderboard"]);
       expect([onTryAgain.mock.calls.length, onPlay.mock.calls.length, jest.mocked(window.gtag).mock.calls]).toEqual([1, 0, []]);
     });
 
-    it("keeps Try again, Change settings, sharing and the leaderboard in the row under it, with nothing folded away", () => {
+    it("keeps Try again, Change settings and the leaderboard in the row under it, with nothing folded away", () => {
       const onTryAgain = jest.fn();
       const onNewGame = jest.fn();
       render(<GameResult onTryAgain={onTryAgain} onNewGame={onNewGame} onPlay={jest.fn()} />);
@@ -283,17 +283,17 @@ describe("GameResult", () => {
       fireEvent.click(within(actions).getByRole("button", { name: "Try again" }));
       fireEvent.click(within(actions).getByRole("button", { name: "Change settings" }));
 
-      expect([...actions.children].map((child) => child.textContent)).toEqual(["Try again", "Change settings", "Share result", "View leaderboard"]);
+      expect([...actions.children].map((child) => child.textContent)).toEqual(["Try again", "Change settings", "View leaderboard"]);
       expect(actions.querySelector("details")).toBeNull();
       expect([onTryAgain.mock.calls.length, onNewGame.mock.calls.length]).toEqual([1, 1]);
     });
 
-    it("asks for the score in a prompt under the readout, promising the rank in return", () => {
+    it("promises the rank in a prompt under the readout, leaving the one action to the claim line", () => {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
       const callout = document.querySelector<HTMLElement>(".lab-result-callout")!;
 
       expect([callout.textContent, document.querySelector(".lab-rr")?.contains(callout)]).toEqual([
-        "See where your score ranks, worldwide and in your country.Submit and see my rank",
+        "See where your score ranks, worldwide and in your country.",
         true,
       ]);
     });
@@ -330,7 +330,7 @@ describe("GameResult", () => {
       screen.getByRole("link", { name: "View leaderboard" }),
     ).toBeInTheDocument();
     fireEvent.click(
-      screen.getByRole("button", { name: "Submit and see my rank" }),
+      screen.getByRole("button", { name: "Submit it" }),
     );
 
     expect(
@@ -361,7 +361,7 @@ describe("GameResult", () => {
 
       expect(comesBeforeTile(document.querySelector<HTMLElement>('[data-result-board="scored"]')!)).toBe(true);
       expect(
-        ["Next round 6 pcs / 10s", "Try again", "Change settings", "Submit and see my rank", "View leaderboard"].map((name) =>
+        ["Next round 6 pcs / 10s", "Try again", "Change settings", "Submit it", "View leaderboard"].map((name) =>
           comesBeforeTile(screen.getByRole(name === "View leaderboard" ? "link" : "button", { name })),
         ),
       ).toEqual([true, true, true, true, true]);
@@ -382,7 +382,7 @@ describe("GameResult", () => {
       expect(shownSlug()).toBe("alder-fixture");
 
       random.mockReturnValue(0.99);
-      fireEvent.click(screen.getByRole("button", { name: "Submit and see my rank" }));
+      fireEvent.click(screen.getByRole("button", { name: "Submit it" }));
 
       expect(screen.getByLabelText("Player name")).toBeInTheDocument();
       expect(shownSlug()).toBe("alder-fixture");
@@ -398,7 +398,7 @@ describe("GameResult", () => {
 
   it("returns focus to Submit to leaderboard when the dialog closes without a score", async () => {
     render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
-    const submit = screen.getByRole("button", { name: "Submit and see my rank" });
+    const submit = screen.getByRole("button", { name: "Submit it" });
     fireEvent.click(submit);
 
     fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
@@ -420,7 +420,7 @@ describe("GameResult", () => {
     render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
     fireEvent.click(
-      screen.getByRole("button", { name: "Submit and see my rank" }),
+      screen.getByRole("button", { name: "Submit it" }),
     );
     fireEvent.change(screen.getByLabelText("Player name"), {
       target: { value: "Poteto" },
@@ -440,7 +440,7 @@ describe("GameResult", () => {
     function submitScore() {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
       fireEvent.click(
-        screen.getByRole("button", { name: "Submit and see my rank" }),
+        screen.getByRole("button", { name: "Submit it" }),
       );
       fireEvent.change(screen.getByLabelText("Player name"), {
         target: { value: "Poteto" },
@@ -529,7 +529,7 @@ describe("GameResult", () => {
     it("links the leaderboard to the name the board stored, without the spaces typed around it", async () => {
       global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
-      fireEvent.click(screen.getByRole("button", { name: "Submit and see my rank" }));
+      fireEvent.click(screen.getByRole("button", { name: "Submit it" }));
       fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "  Poteto  " } });
       fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
 
@@ -577,7 +577,7 @@ describe("GameResult", () => {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
       expect(
-        screen.queryByRole("button", { name: "Submit and see my rank" }),
+        screen.queryByRole("button", { name: "Submit it" }),
       ).not.toBeInTheDocument();
       expect(
         screen.getByRole("link", { name: "View leaderboard" }),
@@ -596,7 +596,7 @@ describe("GameResult", () => {
     try {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
-      expect(screen.queryByRole("button", { name: "Submit and see my rank" })).not.toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "Submit it" })).not.toBeInTheDocument();
       expect(screen.getByRole("button", { name: "Try again" })).toBeInTheDocument();
     } finally {
       mockGameState = baseGameState;
@@ -729,7 +729,7 @@ describe("GameResult", () => {
 
       await renderSettled();
 
-      expect([screen.getByRole("status").textContent, screen.getByRole("button", { name: "Claim my spot" }).isConnected]).toEqual([QUALIFIES_SENTENCE, true]);
+      expect([screen.getByRole("status").textContent, screen.getByRole("button", { name: "Claim it" }).isConnected]).toEqual([QUALIFIES_SENTENCE, true]);
     });
 
     it("stays silent for a custom game, which no board ranks", async () => {
@@ -755,7 +755,7 @@ describe("GameResult", () => {
       expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
     });
 
-    it("says the score makes the board in the prompt under the readout, beside Claim my spot", async () => {
+    it("says the score makes the board in the prompt under the readout, with Claim it only in the claim line", async () => {
       mockGameState = perfectEasyGame;
       loadCutoffsMock.mockResolvedValue(CUTOFFS);
 
@@ -764,9 +764,10 @@ describe("GameResult", () => {
 
       expect([
         within(callout).getByRole("status").textContent,
-        within(callout).getByRole("button").textContent,
+        within(callout).queryAllByRole("button"),
+        screen.getAllByRole("button", { name: "Claim it" }).map((button) => button.closest("[data-result-claim]") !== null),
         document.querySelector(".lab-rr")?.contains(callout),
-      ]).toEqual([QUALIFIES_SENTENCE, "Claim my spot", true]);
+      ]).toEqual([QUALIFIES_SENTENCE, [], [true], true]);
     });
 
     it("moves focus to View leaderboard when the dialog closes after a submit, since the prompt is gone", async () => {
@@ -775,7 +776,7 @@ describe("GameResult", () => {
       await renderSettled();
       const actions = screen.getByRole("navigation", { name: "Result actions" });
 
-      fireEvent.click(screen.getByRole("button", { name: "Claim my spot" }));
+      fireEvent.click(screen.getByRole("button", { name: "Claim it" }));
       fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
       fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
       await screen.findByRole("heading", { name: "Score submitted!" });
@@ -794,7 +795,7 @@ describe("GameResult", () => {
       expect(screen.getByText(QUALIFIES_SENTENCE)).toBeInTheDocument();
 
       fireEvent.click(
-        screen.getByRole("button", { name: "Claim my spot" }),
+        screen.getByRole("button", { name: "Claim it" }),
       );
       fireEvent.change(screen.getByLabelText("Player name"), {
         target: { value: "Poteto" },
@@ -834,7 +835,7 @@ describe("GameResult", () => {
     }
 
     async function submitAs(name: string) {
-      fireEvent.click(screen.getByRole("button", { name: "Submit and see my rank" }));
+      fireEvent.click(screen.getByRole("button", { name: "Submit it" }));
       fireEvent.change(screen.getByLabelText("Player name"), { target: { value: name } });
       fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
       await screen.findByRole("heading", { name: "Score submitted!" });
@@ -872,7 +873,7 @@ describe("GameResult", () => {
       unmount();
 
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
-      fireEvent.click(screen.getByRole("button", { name: "Submit and see my rank" }));
+      fireEvent.click(screen.getByRole("button", { name: "Submit it" }));
 
       expect(screen.getByLabelText("Player name")).toHaveValue("Poteto");
     });

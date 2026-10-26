@@ -3,7 +3,7 @@
 import { useGameStore } from "@/lib/store/gameStore";
 import { accuracyBandKey } from "@/lib/reference/facts";
 import { GameState } from "@/lib/types/game";
-import { lazy, Suspense, useDeferredValue, useState, useEffect, useRef } from "react";
+import { lazy, Suspense, useDeferredValue, useState, useEffect, useRef, useId, type MouseEvent } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
 import { useFormatter, useTranslations } from "next-intl";
@@ -19,6 +19,7 @@ import { Label } from "@/components/ui/label";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
+import { studyFloorSeconds } from "@/lib/leaderboard/studyFloor";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
@@ -113,6 +114,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const tCountry = useTranslations("country");
   const tDaily = useTranslations("daily.round");
   const tConfig = useTranslations("game.config");
+  const tPresets = useTranslations("game.presets");
   const format = useFormatter();
   const { gameState, round, history, resultView, setResultView } = useGameStore();
   const { labRound } = gameState;
@@ -128,7 +130,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submittedId, setSubmittedId] = useState<string | null>(null);
   const [personalBest, setPersonalBest] = useState(false);
-  const submitRef = useRef<HTMLButtonElement>(null);
+  const openerRef = useRef<HTMLElement | null>(null);
+  const claimTextId = useId();
   const leaderboardLinkRef = useRef<HTMLAnchorElement>(null);
   // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
   // effect below would insert it a frame later and push down everything under it.
@@ -262,8 +265,10 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     // hides rows with no correct piece, so such a round is not submittable.
     // A set board is not ranked: the daily board is the same position for every player, and a review is one the player has seen.
     // A blindfold round ranks only on the blindfold boards, which take scores once they are open.
+    // A study shorter than the floor is refused by the server, so such a round is never offered a spot.
     const difficulty = determineDifficulty(gameState.pieceCount);
-    return difficulty !== "custom" && (extendedGameState.correctPlacements ?? 0) > 0 && gameState.board === undefined && (!blindfold || blindfoldBoardOpen());
+    return difficulty !== "custom" && (extendedGameState.correctPlacements ?? 0) > 0 && gameState.board === undefined && (!blindfold || blindfoldBoardOpen())
+      && (gameState.actualMemorizeTime || gameState.memorizeTime) >= studyFloorSeconds(gameState.pieceCount);
   };
 
   // Prepare leaderboard entry data
@@ -364,13 +369,33 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   };
   const returnFocus = (event: Event) => {
     event.preventDefault();
-    // A submitted score takes the prompt away, so focus moves on to the leaderboard link.
-    (submitRef.current?.isConnected ? submitRef.current : leaderboardLinkRef.current)?.focus();
+    // A submitted score takes both prompts away, so focus moves on to the leaderboard link.
+    (openerRef.current?.isConnected ? openerRef.current : leaderboardLinkRef.current)?.focus();
   };
-  const submitButton = leaderboardEligible && (
-    <button ref={submitRef} type="button" onClick={() => setShowLeaderboardDialog(true)} className="lab-btn lab-btn-secondary lab-result-submit">
-      {ranks ? t("claimSpot") : t("submitToLeaderboard")}
-    </button>
+  const openLeaderboardDialog = (event: MouseEvent<HTMLButtonElement>) => {
+    openerRef.current = event.currentTarget;
+    setShowLeaderboardDialog(true);
+  };
+  const claimLine = scored && leaderboardEligible && roundDifficulty !== "custom" && !submitSuccess && (
+    <p className="lab-result-claim" data-result-claim>
+      <span id={claimTextId} className="lab-result-claim-text">
+        {t(ranks ? "claimLine.qualifies" : "claimLine.open", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })}
+      </span>
+      <button type="button" onClick={openLeaderboardDialog} aria-describedby={claimTextId} className="lab-result-claim-action">
+        {t(ranks ? "claimLine.claim" : "claimLine.submit")}
+      </button>
+    </p>
+  );
+
+  const shareResult = round.phase === "scored" && (
+    <ShareResult
+      key={labRound?.facts.id}
+      share={roundShareOf(round, {
+        rating: gameState.skillRating ?? START_RATING,
+        change: extendedGameState.skillRatingChange ?? 0,
+        winStreak: gameState.streak ?? 0,
+      })}
+    />
   );
 
   return (
@@ -397,6 +422,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
             })}
           </p>
         )}
+        {claimLine}
 
         <div className="lab-result-notes">
           <p className="lab-result-sub">
@@ -432,7 +458,6 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                     <p role={ranks ? "status" : undefined}>
                       {ranks ? t("leaderboardQualifies") : personalBest ? t("personalBest") : t("submitPrompt")}
                     </p>
-                    {submitButton}
                   </div>
                 )}
               />
@@ -451,6 +476,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
               {t("tryAgain")}
             </button>
           )}
+          {shareResult}
         </div>
 
         <nav aria-label={t("actions")} className="lab-result-actions">
@@ -466,16 +492,6 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
             <Link href="/daily" className="lab-btn lab-btn-secondary">
               {tDaily("join")}
             </Link>
-          )}
-          {round.phase === "scored" && (
-            <ShareResult
-              key={labRound?.facts.id}
-              share={roundShareOf(round, {
-                rating: gameState.skillRating ?? START_RATING,
-                change: extendedGameState.skillRatingChange ?? 0,
-                winStreak: gameState.streak ?? 0,
-              })}
-            />
           )}
           <Link ref={leaderboardLinkRef} href="/leaderboard" className="lab-result-link">
             {t("viewLeaderboard")}
@@ -500,7 +516,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
 
           {deltas && labRound && (
             <ErrorBoundary key={`deltas-${labRound.facts.id}`} fallback={<></>}>
-              <deltas.Deltas before={deltas.before} labRound={labRound} feedbackAsked={asksFeedback} />
+              <deltas.Deltas before={deltas.before} labRound={labRound} />
             </ErrorBoundary>
           )}
 

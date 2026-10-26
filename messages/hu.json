@@ -1084,11 +1084,15 @@
       "changeSettings": "Beállítások módosítása",
       "tileDrill": "Ez a gyakorlat a te szintedre",
       "tileDrillWhy": "A te szintedhez igazítva, hogy gyakorolhasd, amit a cikk leír.",
-      "submitToLeaderboard": "Beküldés és helyezés",
-      "claimSpot": "Helyem elfoglalása",
       "submitPrompt": "Nézd meg, hol áll az eredményed a világon és az országodban.",
       "personalBest": "Új egyéni csúcs ezen a szinten. Rögzítsd.",
       "leaderboardQualifies": "Az eredményed felférne a ranglistára. Foglald el a helyed.",
+      "claimLine": {
+        "qualifies": "{difficulty}: felférsz a ranglistára ({accuracy}%).",
+        "open": "{difficulty}: nézd meg a helyed ({accuracy}%).",
+        "claim": "Foglald el",
+        "submit": "Beküldés"
+      },
       "viewLeaderboard": "Ranglista megtekintése",
       "dialog": {
         "submitTitle": "Beküldés a ranglistára",
@@ -1130,10 +1134,6 @@
         "cta": "Meg tudod verni?",
         "text": "{kind, select, daily {{correct, number} / {total, number} bábut ({accuracy}) jegyeztem meg a Memory Chess {date} napi tábláján.} review {{correct, number} / {total, number} bábut ({accuracy}) jegyeztem meg egy Memory Chess ismétlőtáblán.} other {{correct, number} / {total, number} bábut ({accuracy}) jegyeztem meg a Memory Chessben.}} Meg tudod verni?",
         "alt": "Memory Chess eredménykártya: {details}."
-      },
-      "savedToast": {
-        "message": "A kör elmentve. A frissített statisztikáid közvetlenül lent vannak.",
-        "action": "Mutasd"
       },
       "blindfoldRound": "Vakkör: az állást lejegyzésből jegyezted meg."
     },

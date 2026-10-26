@@ -1084,11 +1084,15 @@
       "changeSettings": "Alterar configurações",
       "tileDrill": "Este exercício no seu nível",
       "tileDrillWhy": "Ajustado ao seu nível, para praticar o que o artigo descreve.",
-      "submitToLeaderboard": "Enviar e ver minha posição",
-      "claimSpot": "Garantir minha vaga",
       "submitPrompt": "Veja onde sua pontuação fica no mundo e no seu país.",
       "personalBest": "Novo recorde pessoal neste nível. Registre no ranking.",
       "leaderboardQualifies": "Sua pontuação entraria no ranking. Garanta sua vaga.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% entra no ranking.",
+        "open": "{difficulty}: veja em que posição fica {accuracy}%.",
+        "claim": "Garantir vaga",
+        "submit": "Enviar"
+      },
       "viewLeaderboard": "Ver o ranking",
       "dialog": {
         "submitTitle": "Enviar para o ranking",
@@ -1130,10 +1134,6 @@
         "cta": "Consegue superar?",
         "text": "{kind, select, daily {Lembrei {correct, number} de {total, number} peças ({accuracy}) no tabuleiro diário do Memory Chess de {date}.} review {Lembrei {correct, number} de {total, number} peças ({accuracy}) em um tabuleiro de revisão do Memory Chess.} other {Lembrei {correct, number} de {total, number} peças ({accuracy}) no Memory Chess.}} Consegue superar?",
         "alt": "Cartão de resultado do Memory Chess: {details}."
-      },
-      "savedToast": {
-        "message": "Rodada salva. Suas estatísticas atualizadas estão logo abaixo.",
-        "action": "Ver"
       },
       "blindfoldRound": "Rodada às cegas: você estudou a posição em notação."
     },

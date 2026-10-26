@@ -149,19 +149,34 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
   --plate-pad: 8px;
   --title-h: 28px;
   --summary-h: 21px;
+  --claim-h: 0px;
   --toggle-h: 54px;
   --caption-h: 24px;
   --next-h: calc(77px + env(safe-area-inset-bottom));
-  --lead-h: calc(var(--chrome-h) + var(--scroll-pad-y) + var(--card-pad) + var(--title-h) + 4px + var(--summary-h) + 12px + 1px + var(--plate-pad));
+  --lead-h: calc(var(--chrome-h) + var(--scroll-pad-y) + var(--card-pad) + var(--title-h) + 4px + var(--summary-h) + var(--claim-h) + 12px + 1px + var(--plate-pad));
   --board-fit: clamp(240px, 100svh - var(--lead-h) - var(--next-h) - 8px, 480px);
   /* Below the two boards: the legend, which wraps to two lines on a phone, its margin, then the bar. */
   --pair-top: calc(var(--lead-h) + var(--toggle-h) + 8px + var(--caption-h));
   --pair-below: calc(54px + var(--next-h));
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas: "title" "summary" "board" "notes" "readout" "next" "actions" "invite";
+  grid-template-areas: "title" "summary" "claim" "board" "notes" "readout" "next" "actions" "invite";
   padding: var(--card-pad);
 }
+.lab-game .lab-result-card:has(> [data-result-claim]) { --claim-h: 48px; }
+/* Measured: with the claim row the legend sat 4px (en) to 19px (fi, hu) under the Next round bar at 375 by 667, since a wrapped title or notes line is not in the model. 24px more room under the board, and a lower floor, keep it clear. */
+@media (max-width: 767px) {
+  .lab-game .lab-result-card:has(> [data-result-claim]) {
+    --pair-below: calc(54px + var(--next-h) + 16px);
+    --board-fit: clamp(176px, 100svh - var(--lead-h) - var(--next-h) - 32px, 480px);
+  }
+}
+@media (max-width: 359px) { .lab-game .lab-result-card:has(> [data-result-claim]) { --claim-h: 60px; --board-fit: clamp(176px, 100svh - var(--lead-h) - var(--next-h) - 96px, 480px); } }
+.lab-game .lab-result-claim { grid-area: claim; display: flex; align-items: center; gap: 8px; margin: 4px 0 0; min-height: 44px; font: 500 15px/1.4 var(--lp-ui); color: var(--lp-ink-2); }
+.lab-game .lab-result-claim-text { min-width: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.lab-game .lab-result-claim-action { flex: none; min-height: 44px; padding: 0 4px; border: 0; background: none; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-accent); text-decoration: underline; text-underline-offset: 4px; cursor: pointer; }
+.lab-game .lab-result-claim-action:hover { text-decoration-thickness: 2px; }
+.lab-game .lab-result-claim-action:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; border-radius: var(--lp-r-sm); }
 .lab-game .lab-result-title { grid-area: title; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-height: var(--title-h); }
 .lab-game .lab-result-h { font: 650 22px/1.25 var(--lp-ui); letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
 .lab-game .lab-result-score { flex: none; font: 600 22px/1.25 var(--lp-data); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--lp-ink); }
@@ -191,7 +206,6 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 .lab-game .lab-result-callout { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin-top: 20px; padding: 12px 12px 12px 16px; border-radius: var(--lp-r-md); background: var(--lp-accent-soft); }
 .lab-game .lab-result-callout > svg { flex: none; color: var(--lp-accent); }
 .lab-game .lab-result-callout p { flex: 1 1 180px; margin: 0; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-ink); text-wrap: balance; }
-.lab-game .lab-result-callout .lab-btn { min-height: 44px; }
 .lab-game .lab-result-actions { grid-area: actions; }
 .lab-game .lab-result-card > .lab-community { grid-area: invite; }
 
@@ -240,8 +254,30 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
   .lab-game .lab-result-board > .lab-legend { margin-top: 8px; }
 }
 
-.lab-game .lab-result-next { grid-area: next; position: sticky; bottom: 0; z-index: 5; margin: 24px calc(-1 * var(--card-pad)) 0; padding: 12px var(--card-pad) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
-.lab-game .lab-result-next .lab-btn { min-height: 52px; min-width: min(320px, 100%); padding: 0 28px; font-size: 17px; }
+.lab-game .lab-result-next { display: flex; gap: 8px; grid-area: next; position: sticky; bottom: 0; z-index: 5; margin: 24px calc(-1 * var(--card-pad)) 0; padding: 12px var(--card-pad) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
+.lab-game .lab-result-next .lab-btn-primary { flex: 1 1 auto; min-height: 52px; min-width: min(260px, calc(100% - 60px)); padding: 0 20px; font-size: 17px; }
+.lab-game .lab-result-next .lab-btn-primary { white-space: nowrap; }
+.lab-game .lab-result-next-board { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 419px) {
+  .lab-game .lab-result-next .lab-btn-primary { gap: 6px; padding: 0 6px; font-size: 15px; }
+  .lab-game .lab-result-next-board { font-size: 12px; }
+}
+/* Below 375px the board summary leaves the button's face, kept for assistive technology, so the label stays whole beside Share. */
+@media (max-width: 374px) {
+  .lab-game .lab-result-next .lab-btn-primary { position: relative; }
+  .lab-game .lab-result-next-board { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+}
+@media (max-width: 419px) {
+  .lab-game .lab-result-claim { gap: 4px; }
+  .lab-game .lab-result-claim, .lab-game .lab-result-claim-action { font-size: 14px; }
+}
+/* Phones this narrow give the sentence a third line, in a row that is that tall whatever the wording, so nothing under it moves. */
+@media (max-width: 359px) {
+  .lab-game .lab-result-claim { margin-top: 0; min-height: 60px; }
+  .lab-game .lab-result-claim-text { -webkit-line-clamp: 3; }
+}
+.lab-game .lab-result-next .lab-result-share { flex: none; width: 52px; min-width: 52px; min-height: 52px; padding: 0; justify-content: center; }
+@media (max-width: 419px) { .lab-game .lab-result-next .lab-result-share { width: 40px; min-width: 40px; } }
 
 @media (min-aspect-ratio: 4/3) and (min-width: 900px) {
   .lab-game .lab-result-card {
@@ -249,8 +285,8 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
     --head-h: 58px;
     --board-fit: clamp(240px, 100svh - var(--chrome-h) - var(--scroll-pad-y) - var(--card-pad) - 1px - var(--plate-pad) - var(--head-h) - 8px, 480px);
     grid-template-columns: calc(var(--board-fit) + 2 * var(--plate-pad) + 2px) minmax(0, 1fr);
-    grid-template-rows: repeat(5, auto) 1fr auto;
-    grid-template-areas: "board title" "board notes" "board next" "board readout" "board actions" "board ." "invite invite";
+    grid-template-rows: repeat(6, auto) 1fr auto;
+    grid-template-areas: "board title" "board claim" "board notes" "board next" "board readout" "board actions" "board ." "invite invite";
     column-gap: 32px;
     align-items: start;
   }
@@ -260,18 +296,18 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
   .lab-game .lab-result-board > .lab-figure { width: var(--board-fit); }
   .lab-game .lab-result-readout { margin-top: 16px; }
   .lab-game .lab-result-next { position: static; margin: 20px 0 0; padding: 0; border: 0; background: none; }
-  .lab-game .lab-result-next .lab-btn { width: 100%; }
+  .lab-game .lab-result-next .lab-btn-primary { width: 100%; }
   .lab-game .lab-result-actions { margin-top: 12px; }
 
   .lab-game .lab-result-card:has(> [data-result-view="side"]) {
     /* The title row, as tall as Next round, and the gap under it. */
     --top-h: 68px;
     --caption-h: 26px;
-    --pair-top: calc(var(--chrome-h) + var(--scroll-pad-y) + var(--card-pad) + var(--top-h) + 1px + var(--plate-pad) + var(--head-h) + var(--caption-h));
+    --pair-top: calc(var(--chrome-h) + var(--scroll-pad-y) + var(--card-pad) + var(--top-h) + 1px + var(--plate-pad) + var(--head-h) + var(--caption-h) + var(--claim-h));
     --pair-below: 8px;
     grid-template-columns: minmax(0, 1fr) auto;
     grid-template-rows: none;
-    grid-template-areas: "title next" "board board" "notes notes" "readout readout" "actions actions" "invite invite";
+    grid-template-areas: "title next" "claim claim" "board board" "notes notes" "readout readout" "actions actions" "invite invite";
   }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-title { align-self: center; justify-content: flex-start; }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-score { display: inline; font-size: 34px; line-height: 1.15; }
@@ -279,7 +315,7 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-notes { margin-top: 8px; }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-readout { margin-top: 24px; }
   .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-next { align-self: center; margin: 0; }
-  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-next .lab-btn { width: auto; min-width: 280px; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-next .lab-btn-primary { width: auto; min-width: 280px; }
 }
 .lab-game .lab-result-next-board { font-weight: 500; opacity: 0.85; font-variant-numeric: tabular-nums; }
 .lab-game .lab-result-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; }
@@ -303,24 +339,13 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 .lab-game .lab-delta-from { font: 400 14px/1.4 var(--lp-body); color: var(--lp-muted); }
 .lab-game .lab-delta .lab-tag { align-self: center; }
 .lab-game .lab-deltas-open { display: inline-block; margin-top: 16px; font: 500 15px/1.4 var(--lp-ui); }
-.lab-game .lab-deltas:focus { outline: none; }
-.lab-game .lab-deltas:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
 
-/* "Round saved": the sound toast's chip, laid over the site header. The header is the one band that is never the score
-   or the board; at the foot of a 390 by 844 phone the chip covered the readout's score, and on a shorter screen the board. */
-.lab-game .lab-saved-toast-region { position: fixed; left: 50%; top: calc(8px + env(safe-area-inset-top)); z-index: 60; width: max-content; max-width: min(560px, calc(100vw - 32px)); transform: translateX(-50%); pointer-events: none; }
-.lab-game .lab-saved-toast { display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 20px; border: 1px solid var(--lp-line); border-radius: 999px; background: var(--lp-surface); box-shadow: var(--lp-pop-shadow); font: 500 14px/1.4 var(--lp-ui); color: var(--lp-ink); pointer-events: auto; animation: lab-saved-toast-in 200ms ease-out; }
-.lab-game .lab-saved-toast-action { flex: none; min-height: 32px; padding: 0 12px; border: 0; border-radius: 999px; background: var(--lp-accent-soft); font: 600 14px/1 var(--lp-ui); color: var(--lp-accent); cursor: pointer; }
-.lab-game .lab-saved-toast-action:hover { background: var(--lp-accent); color: var(--lp-on-accent); }
-@keyframes lab-saved-toast-in { from { opacity: 0; transform: translateY(-8px); } }
-@media (prefers-reduced-motion: reduce) { .lab-game .lab-saved-toast { animation: none; } }
 @media (max-width: 639px) {
   .lab-game .lab-deltas-list { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 767px) {
   .lab-game .lab-result-actions > .lab-btn { flex: 1 1 calc(50% - 6px); }
-  .lab-game .lab-result-actions > .lab-result-submit { flex-basis: 100%; }
-  .lab-game .lab-result-next .lab-btn { width: 100%; }
+  .lab-game .lab-result-next .lab-btn-primary { width: 100%; }
 }
 
 /* Text in the lab card, the article tile and the set-board notice is set in Geist, the face the lab card's height reserve was measured in. */

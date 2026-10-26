@@ -1084,11 +1084,15 @@
       "changeSettings": "सेटिंग बदलें",
       "tileDrill": "आपके स्तर पर यह अभ्यास",
       "tileDrillWhy": "आपके स्तर के अनुसार, ताकि आप वह अभ्यास कर सकें जो लेख बताता है।",
-      "submitToLeaderboard": "भेजें और मेरी रैंक देखें",
-      "claimSpot": "मेरी जगह पक्की करें",
       "submitPrompt": "देखें कि आपका स्कोर दुनिया में और आपके देश में कहाँ है।",
       "personalBest": "इस स्तर पर नया व्यक्तिगत सर्वश्रेष्ठ। इसे दर्ज करें।",
       "leaderboardQualifies": "आपका स्कोर लीडरबोर्ड में जगह बना लेगा। अपनी जगह पक्की करें।",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% से लीडरबोर्ड में जगह मिलेगी।",
+        "open": "{difficulty}: {accuracy}% की रैंक देखें।",
+        "claim": "जगह पक्की करें",
+        "submit": "स्कोर भेजें"
+      },
       "viewLeaderboard": "लीडरबोर्ड देखें",
       "dialog": {
         "submitTitle": "लीडरबोर्ड पर भेजें",
@@ -1130,10 +1134,6 @@
         "cta": "क्या आप इसे हरा सकते हैं?",
         "text": "{kind, select, daily {मैंने Memory Chess के {date} के दैनिक बोर्ड पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।} review {मैंने Memory Chess के एक समीक्षा बोर्ड पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।} other {मैंने Memory Chess पर {total, number} में से {correct, number} मोहरे ({accuracy}) याद किए।}} क्या आप इसे हरा सकते हैं?",
         "alt": "Memory Chess नतीजा कार्ड: {details}।"
-      },
-      "savedToast": {
-        "message": "राउंड सेव हो गया। आपके नए आँकड़े ठीक नीचे हैं।",
-        "action": "दिखाएँ"
       },
       "blindfoldRound": "ब्लाइंडफ़ोल्ड राउंड: आपने स्थिति नोटेशन में पढ़कर याद की।"
     },

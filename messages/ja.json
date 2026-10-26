@@ -1756,7 +1756,12 @@
     "play": "今日の盤面をプレイ",
     "tomorrowTitle": "明日の盤面",
     "tomorrowOpens": "{timeLeft}後に公開。",
-    "seeToday": "今日の盤面を見る"
+    "seeToday": "今日の盤面を見る",
+    "remindButton": "毎日リマインドする",
+    "remindNote": "盤面が公開される時刻に毎日繰り返すカレンダーの予定をダウンロードします。",
+    "remindDone": "保存しました。ファイルを開いて、毎日の予定をカレンダーに追加してください。",
+    "remindTitle": "Memory Chess デイリー盤面",
+    "remindDescription": "新しい盤面は現地時間の{time}に公開されます。全員が同じ盤面に挑戦し、チャンスは1回です。"
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "今日の盤面を読み込めませんでした。しばらくしてからもう一度お試しください。",
       "joinToRank": "盤面に参加すると、ここに順位が表示されます。",
       "order": "正解した駒の数、誤りの少なさ、解答の速さの順で順位が決まります。",
-      "all": "すべての盤面を見る"
+      "all": "すべての盤面を見る",
+      "todayBoard": "今日の盤面",
+      "yesterdayBoard": "昨日の盤面",
+      "joinedToday": "今日の盤面に参加したプレイヤー数：{count}",
+      "joinedYesterday": "昨日の盤面に参加したプレイヤー数：{count}",
+      "listFrom": "トップ10は{min}人以上が参加すると表示されます。"
     },
     "reference": {
       "title": "デイリー盤面のしくみ",

@@ -75,3 +75,38 @@ describe("today's top 10", () => {
     expect(screen.queryByText("No one has joined today's board yet. Play it and be the first.")).not.toBeInTheDocument();
   });
 });
+
+describe("the honest board", () => {
+  const view = (rows: LeaderboardEntry[], today: string) =>
+    render(<DailyTopTen rows={{ state: "ready", board: { day: "2026-10-13", rows, playedLike: null } }} today={today} joined={null} played={false} />);
+
+  it("hides the table below three rows and prints the joined count instead", () => {
+    view(ROWS.slice(0, 2), "2026-10-13");
+
+    expect(screen.queryByRole("table")).not.toBeInTheDocument();
+    expect(screen.getByRole("heading", { name: "Today's board" })).toBeInTheDocument();
+    expect(screen.getByText("Players who have joined today's board: 2")).toBeInTheDocument();
+    expect(screen.getByText("The top 10 appears once 3 or more players have joined.")).toBeInTheDocument();
+  });
+
+  it("shows the table from exactly three rows", () => {
+    view(ROWS.slice(0, 3), "2026-10-13");
+
+    expect(screen.getByRole("heading", { name: "Today's top 10" })).toBeInTheDocument();
+    expect(within(screen.getAllByRole("rowgroup")[1]).getAllByRole("row")).toHaveLength(3);
+    expect(screen.queryByText(/Players who have joined/)).not.toBeInTheDocument();
+  });
+
+  it("counts yesterday's joiners above a listed yesterday table, and with one row shows no table", () => {
+    const { unmount } = view(ROWS, "2026-10-14");
+    expect(screen.getByText("Players who joined yesterday's board: 12")).toBeInTheDocument();
+    expect(screen.getByRole("table")).toBeInTheDocument();
+    unmount();
+
+    view(ROWS.slice(0, 1), "2026-10-14");
+    expect(screen.getByRole("heading", { name: "Yesterday's board" })).toBeInTheDocument();
+    expect(screen.getByText("Players who joined yesterday's board: 1")).toBeInTheDocument();
+    expect(screen.getByText("No one has joined today's board yet. Play it and be the first.")).toBeInTheDocument();
+    expect(screen.queryByRole("table")).not.toBeInTheDocument();
+  });
+});

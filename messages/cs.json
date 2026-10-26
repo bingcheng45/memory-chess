@@ -1756,7 +1756,12 @@
     "play": "Hrát dnešní pozici",
     "tomorrowTitle": "Zítřejší pozice",
     "tomorrowOpens": "Otevře se za {timeLeft}.",
-    "seeToday": "Zobrazit dnešní pozici"
+    "seeToday": "Zobrazit dnešní pozici",
+    "remindButton": "Připomínat denně",
+    "remindNote": "Stáhne událost do kalendáře, která se opakuje každý den, kdy se pozice otevře.",
+    "remindDone": "Uloženo. Otevřete soubor a přidejte denní událost do kalendáře.",
+    "remindTitle": "Denní pozice Memory Chess",
+    "remindDescription": "Nová pozice se otevře v {time} vašeho místního času. Všichni hrají stejnou pozici a máte jeden pokus."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Dnešní žebříček se nepodařilo načíst. Zkuste to za chvíli znovu.",
       "joinToRank": "Zapojte se, abyste tady viděli své pořadí.",
       "order": "Řazeno podle počtu správných figurek, pak podle nejméně špatných, pak podle nejrychlejšího postavení.",
-      "all": "Zobrazit všechny pozice"
+      "all": "Zobrazit všechny pozice",
+      "todayBoard": "Dnešní pozice",
+      "yesterdayBoard": "Včerejší pozice",
+      "joinedToday": "Hráči, kteří se připojili k dnešní pozici: {count}",
+      "joinedYesterday": "Hráči, kteří se připojili k včerejší pozici: {count}",
+      "listFrom": "Desítka nejlepších se zobrazí, jakmile se připojí {min} nebo více hráčů."
     },
     "reference": {
       "title": "Jak denní pozice funguje",

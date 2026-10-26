@@ -255,8 +255,10 @@ describe("Dashboard", () => {
 
     const today = document.querySelector('.lab-tiles[data-size="today"]') as HTMLElement;
     expect([...today.querySelectorAll("[data-tile]")].map((tile) => tile.getAttribute("data-tile"))).toEqual(["streak", "daily"]);
-    expect(tileText("streak")).toBe("Day streakUnlocks with 1 more day of play.Come back tomorrow.");
-    expect(within(document.querySelector('[data-tile="streak"]') as HTMLElement).queryByRole("link")).toBeNull();
+    expect(tileText("streak")).toBe("Day streakUnlocks with 1 more day of play.Come back tomorrow.Remind me dailyDownloads a calendar event that repeats every day when the board opens.");
+    const streak = within(document.querySelector('[data-tile="streak"]') as HTMLElement);
+    expect(streak.queryByRole("link")).toBeNull();
+    expect(streak.getByRole("button", { name: "Remind me daily" })).toHaveAccessibleDescription("Downloads a calendar event that repeats every day when the board opens.");
     expect(document.querySelector("#summary .lab-tiles")).toBe(today);
   });
 

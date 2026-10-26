@@ -1756,7 +1756,12 @@
     "play": "Spil dagens bræt",
     "tomorrowTitle": "Morgendagens bræt",
     "tomorrowOpens": "Åbner om {timeLeft}.",
-    "seeToday": "Se dagens bræt"
+    "seeToday": "Se dagens bræt",
+    "remindButton": "Mind mig om det hver dag",
+    "remindNote": "Henter en kalenderbegivenhed, der gentages hver dag, når brættet åbner.",
+    "remindDone": "Gemt. Åbn filen for at føje den daglige begivenhed til din kalender.",
+    "remindTitle": "Memory Chess dagens bræt",
+    "remindDescription": "Et nyt bræt åbner kl. {time} i din lokale tid. Alle spiller det samme bræt, og du får ét forsøg."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Dagens bræt kunne ikke indlæses. Prøv igen om lidt.",
       "joinToRank": "Deltag i brættet for at se din plads her.",
       "order": "Rangeret efter rigtige brikker, derefter færrest forkerte, derefter hurtigste genopbygning.",
-      "all": "Se alle bræt"
+      "all": "Se alle bræt",
+      "todayBoard": "Dagens bræt",
+      "yesterdayBoard": "Gårsdagens bræt",
+      "joinedToday": "Spillere, der har deltaget i dagens bræt: {count}",
+      "joinedYesterday": "Spillere, der deltog i gårsdagens bræt: {count}",
+      "listFrom": "Top 10 vises, når {min} eller flere spillere har deltaget."
     },
     "reference": {
       "title": "Sådan virker dagens bræt",

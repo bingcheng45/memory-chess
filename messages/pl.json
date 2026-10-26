@@ -1756,7 +1756,12 @@
     "play": "Zagraj dzisiejszą planszę",
     "tomorrowTitle": "Jutrzejsza plansza",
     "tomorrowOpens": "Otwiera się za {timeLeft}.",
-    "seeToday": "Zobacz dzisiejszą planszę"
+    "seeToday": "Zobacz dzisiejszą planszę",
+    "remindButton": "Przypominaj codziennie",
+    "remindNote": "Pobiera wydarzenie kalendarza, które powtarza się codziennie, gdy plansza się otwiera.",
+    "remindDone": "Zapisano. Otwórz plik, aby dodać codzienne wydarzenie do kalendarza.",
+    "remindTitle": "Codzienna plansza Memory Chess",
+    "remindDescription": "Nowa plansza otwiera się o {time} czasu lokalnego. Wszyscy grają na tej samej planszy, a ty masz jedną próbę."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Nie udało się wczytać dzisiejszej szachownicy. Spróbuj ponownie za chwilę.",
       "joinToRank": "Dołącz do rankingu, żeby zobaczyć tutaj swoje miejsce.",
       "order": "Kolejność: najwięcej poprawnych bierek, potem najmniej błędnych, potem najszybsze odtworzenie.",
-      "all": "Zobacz wszystkie szachownice"
+      "all": "Zobacz wszystkie szachownice",
+      "todayBoard": "Dzisiejsza plansza",
+      "yesterdayBoard": "Wczorajsza plansza",
+      "joinedToday": "Liczba graczy, którzy dołączyli do dzisiejszej planszy: {count}",
+      "joinedYesterday": "Liczba graczy, którzy dołączyli do wczorajszej planszy: {count}",
+      "listFrom": "Dziesiątka najlepszych pojawi się, gdy dołączy {min} lub więcej graczy."
     },
     "reference": {
       "title": "Jak działa szachownica dnia",

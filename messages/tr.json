@@ -1756,7 +1756,12 @@
     "play": "Bugünün tahtasını oyna",
     "tomorrowTitle": "Yarının tahtası",
     "tomorrowOpens": "{timeLeft} sonra açılır.",
-    "seeToday": "Bugünün tahtasını gör"
+    "seeToday": "Bugünün tahtasını gör",
+    "remindButton": "Her gün hatırlat",
+    "remindNote": "Tahta açıldığında her gün tekrarlanan bir takvim etkinliği indirir.",
+    "remindDone": "Kaydedildi. Günlük etkinliği takvimine eklemek için dosyayı aç.",
+    "remindTitle": "Memory Chess günlük tahtası",
+    "remindDescription": "Yeni bir tahta yerel saatinle {time} saatinde açılır. Herkes aynı tahtayı oynar ve tek bir deneme hakkın var."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Bugünün tahtası yüklenemedi. Lütfen birazdan tekrar dene.",
       "joinToRank": "Sıranı burada görmek için tahtaya katıl.",
       "order": "Sıralama: en çok doğru taş, sonra en az yanlış, sonra en hızlı kurulum.",
-      "all": "Tüm tahtaları gör"
+      "all": "Tüm tahtaları gör",
+      "todayBoard": "Bugünün tahtası",
+      "yesterdayBoard": "Dünün tahtası",
+      "joinedToday": "Bugünün tahtasına katılan oyuncular: {count}",
+      "joinedYesterday": "Dünün tahtasına katılan oyuncular: {count}",
+      "listFrom": "İlk 10, {min} veya daha fazla oyuncu katıldığında görünür."
     },
     "reference": {
       "title": "Günlük tahta nasıl çalışır",

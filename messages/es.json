@@ -1756,7 +1756,12 @@
     "play": "Jugar el tablero de hoy",
     "tomorrowTitle": "Tablero de mañana",
     "tomorrowOpens": "Se abre en {timeLeft}.",
-    "seeToday": "Ver el tablero de hoy"
+    "seeToday": "Ver el tablero de hoy",
+    "remindButton": "Recordármelo cada día",
+    "remindNote": "Descarga un evento de calendario que se repite cada día cuando se abre el tablero.",
+    "remindDone": "Guardado. Abre el archivo para añadir el evento diario a tu calendario.",
+    "remindTitle": "Tablero diario de Memory Chess",
+    "remindDescription": "Un tablero nuevo se abre a las {time}, hora local. Todo el mundo juega el mismo tablero y tienes un intento."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "No se pudo cargar el tablero de hoy. Inténtalo de nuevo en un momento.",
       "joinToRank": "Únete al tablero para ver aquí tu puesto.",
       "order": "Ordenado por piezas correctas, luego por menos erróneas y después por la reconstrucción más rápida.",
-      "all": "Ver todos los tableros"
+      "all": "Ver todos los tableros",
+      "todayBoard": "Tablero de hoy",
+      "yesterdayBoard": "Tablero de ayer",
+      "joinedToday": "Personas que se han unido al tablero de hoy: {count}",
+      "joinedYesterday": "Personas que se unieron al tablero de ayer: {count}",
+      "listFrom": "El top 10 aparece cuando se unen {min} personas o más."
     },
     "reference": {
       "title": "Cómo funciona el tablero diario",

@@ -1756,7 +1756,12 @@
     "play": "Gioca la scacchiera di oggi",
     "tomorrowTitle": "Scacchiera di domani",
     "tomorrowOpens": "Si apre tra {timeLeft}.",
-    "seeToday": "Vedi la scacchiera di oggi"
+    "seeToday": "Vedi la scacchiera di oggi",
+    "remindButton": "Ricordamelo ogni giorno",
+    "remindNote": "Scarica un evento di calendario che si ripete ogni giorno quando si apre la scacchiera.",
+    "remindDone": "Salvato. Apri il file per aggiungere l’evento giornaliero al tuo calendario.",
+    "remindTitle": "Scacchiera giornaliera di Memory Chess",
+    "remindDescription": "Una nuova scacchiera si apre alle {time}, ora locale. Tutti giocano la stessa scacchiera e hai un solo tentativo."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Non è stato possibile caricare la scacchiera di oggi. Riprova tra poco.",
       "joinToRank": "Partecipa alla scacchiera per vedere qui la tua posizione.",
       "order": "In ordine di pezzi corretti, poi meno errori, poi ricostruzione più veloce.",
-      "all": "Vedi tutte le scacchiere"
+      "all": "Vedi tutte le scacchiere",
+      "todayBoard": "Scacchiera di oggi",
+      "yesterdayBoard": "Scacchiera di ieri",
+      "joinedToday": "Persone che hanno partecipato alla scacchiera di oggi: {count}",
+      "joinedYesterday": "Persone che hanno partecipato alla scacchiera di ieri: {count}",
+      "listFrom": "La top 10 compare quando hanno partecipato {min} persone o più."
     },
     "reference": {
       "title": "Come funziona la scacchiera del giorno",

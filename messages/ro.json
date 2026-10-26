@@ -1756,7 +1756,12 @@
     "play": "Joacă tabla de azi",
     "tomorrowTitle": "Tabla de mâine",
     "tomorrowOpens": "Se deschide în {timeLeft}.",
-    "seeToday": "Vezi tabla de azi"
+    "seeToday": "Vezi tabla de azi",
+    "remindButton": "Amintește-mi zilnic",
+    "remindNote": "Descarcă un eveniment de calendar care se repetă în fiecare zi când se deschide tabla.",
+    "remindDone": "Salvat. Deschide fișierul ca să adaugi evenimentul zilnic în calendar.",
+    "remindTitle": "Tabla zilnică Memory Chess",
+    "remindDescription": "O tablă nouă se deschide la {time}, ora ta locală. Toată lumea joacă aceeași tablă și ai o singură încercare."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Tabla de azi nu a putut fi încărcată. Încearcă din nou în scurt timp.",
       "joinToRank": "Intră în tablă ca să-ți vezi aici locul.",
       "order": "Ordonat după piesele corecte, apoi după cele mai puține greșite, apoi după cea mai rapidă reconstrucție.",
-      "all": "Vezi toate tablele"
+      "all": "Vezi toate tablele",
+      "todayBoard": "Tabla de azi",
+      "yesterdayBoard": "Tabla de ieri",
+      "joinedToday": "Persoane care s-au alăturat tablei de azi: {count}",
+      "joinedYesterday": "Persoane care s-au alăturat tablei de ieri: {count}",
+      "listFrom": "Top 10 apare când s-au alăturat {min} sau mai multe persoane."
     },
     "reference": {
       "title": "Cum funcționează tabla zilei",

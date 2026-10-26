@@ -1756,7 +1756,12 @@
     "play": "Play today's board",
     "tomorrowTitle": "Tomorrow's board",
     "tomorrowOpens": "Opens in {timeLeft}.",
-    "seeToday": "See today's board"
+    "seeToday": "See today's board",
+    "remindButton": "Remind me daily",
+    "remindNote": "Downloads a calendar event that repeats every day when the board opens.",
+    "remindDone": "Saved. Open the file to add the daily event to your calendar.",
+    "remindTitle": "Memory Chess daily board",
+    "remindDescription": "A new board opens at {time}, your local time. Everyone plays the same board, and you get one try."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Today's board could not be loaded. Please try again shortly.",
       "joinToRank": "Join the board to see your rank here.",
       "order": "Ranked by pieces right, then fewest wrong, then fastest rebuild.",
-      "all": "See every board"
+      "all": "See every board",
+      "todayBoard": "Today's board",
+      "yesterdayBoard": "Yesterday's board",
+      "joinedToday": "Players who have joined today's board: {count}",
+      "joinedYesterday": "Players who joined yesterday's board: {count}",
+      "listFrom": "The top 10 appears once {min} or more players have joined."
     },
     "reference": {
       "title": "How the daily board works",

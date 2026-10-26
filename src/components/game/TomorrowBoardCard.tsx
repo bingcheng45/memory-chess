@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
 import { useDailyState, type DailyState } from "@/hooks/useDailyState";
 import { useTimeLeftText } from "@/hooks/useTimeLeftText";
+import { RemindMe } from "@/components/daily/RemindMe";
 import { nextDailySettingOf } from "@/lib/daily/schedule";
 
 const TITLE_ID = "tomorrow-board-title";
@@ -32,6 +33,7 @@ export default function TomorrowBoardCard() {
       <Link href="/daily" className="lab-tomorrow-link">
         {text ? text.link : t("pending")}
       </Link>
+      <RemindMe surface="result" />
     </section>
   );
 }

@@ -1756,7 +1756,12 @@
     "play": "Chơi bàn cờ hôm nay",
     "tomorrowTitle": "Bàn cờ ngày mai",
     "tomorrowOpens": "Mở sau {timeLeft}.",
-    "seeToday": "Xem bàn cờ hôm nay"
+    "seeToday": "Xem bàn cờ hôm nay",
+    "remindButton": "Nhắc tôi mỗi ngày",
+    "remindNote": "Tải về một sự kiện lịch lặp lại mỗi ngày vào lúc bàn cờ mở.",
+    "remindDone": "Đã lưu. Hãy mở tệp để thêm sự kiện hằng ngày vào lịch của bạn.",
+    "remindTitle": "Bàn cờ hằng ngày của Memory Chess",
+    "remindDescription": "Bàn cờ mới mở lúc {time} theo giờ địa phương của bạn. Mọi người chơi cùng một bàn cờ, và bạn có một lượt thử."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Không tải được bàn cờ hôm nay. Vui lòng thử lại sau ít phút.",
       "joinToRank": "Hãy tham gia bàn cờ để xem hạng của bạn ở đây.",
       "order": "Xếp hạng theo số quân đúng, rồi ít quân sai nhất, rồi dựng lại nhanh nhất.",
-      "all": "Xem mọi bàn cờ"
+      "all": "Xem mọi bàn cờ",
+      "todayBoard": "Bàn cờ hôm nay",
+      "yesterdayBoard": "Bàn cờ hôm qua",
+      "joinedToday": "Số người đã tham gia bàn cờ hôm nay: {count}",
+      "joinedYesterday": "Số người đã tham gia bàn cờ hôm qua: {count}",
+      "listFrom": "Top 10 sẽ hiện khi có {min} người tham gia trở lên."
     },
     "reference": {
       "title": "Bàn cờ hằng ngày hoạt động thế nào",

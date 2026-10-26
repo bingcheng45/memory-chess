@@ -1756,7 +1756,12 @@
     "play": "Jouer le plateau du jour",
     "tomorrowTitle": "Plateau de demain",
     "tomorrowOpens": "Ouvre dans {timeLeft}.",
-    "seeToday": "Voir le plateau du jour"
+    "seeToday": "Voir le plateau du jour",
+    "remindButton": "Me le rappeler chaque jour",
+    "remindNote": "Télécharge un événement de calendrier qui se répète chaque jour à l’ouverture du plateau.",
+    "remindDone": "Enregistré. Ouvrez le fichier pour ajouter l’événement quotidien à votre calendrier.",
+    "remindTitle": "Plateau du jour Memory Chess",
+    "remindDescription": "Un nouveau plateau ouvre à {time}, heure locale. Tout le monde joue le même plateau, et vous avez un seul essai."
   },
   "daily": {
     "meta": {
@@ -1851,7 +1856,12 @@
       "error": "Le plateau du jour n’a pas pu être chargé. Veuillez réessayer dans un instant.",
       "joinToRank": "Rejoignez le plateau pour voir votre rang ici.",
       "order": "Classé selon les pièces correctes, puis le moins de pièces erronées, puis la reconstitution la plus rapide.",
-      "all": "Voir tous les plateaux"
+      "all": "Voir tous les plateaux",
+      "todayBoard": "Plateau du jour",
+      "yesterdayBoard": "Plateau d’hier",
+      "joinedToday": "Personnes qui ont rejoint le plateau du jour : {count}",
+      "joinedYesterday": "Personnes qui ont rejoint le plateau d’hier : {count}",
+      "listFrom": "Le top 10 apparaît dès que {min} personnes ou plus ont rejoint."
     },
     "reference": {
       "title": "Comment fonctionne le plateau du jour",

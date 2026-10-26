@@ -72,7 +72,8 @@ beforeEach(() => {
 
 afterEach(() => jest.useRealTimers());
 
-const topTen = () => screen.getByRole("region", { name: /top 10/ });
+const topTen = () => screen.getByRole("region", { name: /top 10|^(Today|Yesterday)'s board$/ });
+const CROWD = (day: string) => [row(4, day, "Cy Third"), row(5, day, "Di Fourth")];
 const names = () => [...topTen().querySelectorAll(".daily-name")].map((name) => name.textContent);
 
 describe("the daily board at midnight UTC", () => {
@@ -91,8 +92,9 @@ describe("the daily board at midnight UTC", () => {
     await act(async () => {});
 
     expect(screen.getByText("Daily board · Wednesday, October 14")).toBeInTheDocument();
-    expect(within(topTen()).getByRole("heading", { name: "Yesterday's top 10" })).toBeInTheDocument();
-    expect(names()).toEqual(["🇸🇬 Ada Lovelace"]);
+    expect(within(topTen()).getByRole("heading", { name: "Yesterday's board" })).toBeInTheDocument();
+    expect(within(topTen()).getByText("Players who joined yesterday's board: 1")).toBeInTheDocument();
+    expect(within(topTen()).queryByRole("table")).not.toBeInTheDocument();
     expect(reads).toEqual(["/api/leaderboard?difficulty=daily&daily_day=2026-10-14", "/api/leaderboard?difficulty=daily&daily_day=2026-10-13"]);
   });
 
@@ -104,8 +106,21 @@ describe("the daily board at midnight UTC", () => {
     await act(async () => {});
     await act(async () => {});
 
+    expect(within(topTen()).getByRole("heading", { name: "Today's board" })).toBeInTheDocument();
+    expect(within(topTen()).getByText("Players who have joined today's board: 1")).toBeInTheDocument();
+    expect(within(topTen()).queryByRole("table")).not.toBeInTheDocument();
+  });
+
+  it("lists the new day's top 10 once three players have joined it", async () => {
+    jest.useFakeTimers({ now: Date.parse("2026-10-14T00:05:00Z"), doNotFake: ["queueMicrotask", "nextTick"] });
+    rowsByDay = { "2026-10-13": [ADA], "2026-10-14": [BO, ...CROWD("2026-10-14")] };
+
+    render(<DailyBoard rendered={RENDERED} />);
+    await act(async () => {});
+    await act(async () => {});
+
     expect(within(topTen()).getByRole("heading", { name: "Today's top 10" })).toBeInTheDocument();
-    expect(names()).toEqual(["🇸🇬 Bo Early"]);
+    expect(names()).toEqual(["🇸🇬 Bo Early", "🇸🇬 Cy Third", "🇸🇬 Di Fourth"]);
   });
 });
 
@@ -113,7 +128,7 @@ describe("joining today's board", () => {
   it("reads the board again past the shared cache and highlights the player's own row", async () => {
     jest.useFakeTimers({ now: Date.parse("2026-10-13T23:59:10Z"), doNotFake: ["queueMicrotask", "nextTick"] });
     mockRecords = [ROUND_ON_13];
-    rowsByDay = { "2026-10-13": [ADA] };
+    rowsByDay = { "2026-10-13": [ADA, ...CROWD("2026-10-13")] };
 
     render(<DailyBoard rendered={RENDERED} />);
     await act(async () => {});
@@ -129,7 +144,7 @@ describe("coming back after joining today's board", () => {
   it("reads the board past the shared cache on load, so a fresh render without the player's row is corrected", async () => {
     jest.useFakeTimers({ now: Date.parse("2026-10-13T23:59:10Z"), doNotFake: ["queueMicrotask", "nextTick"] });
     const own = row(3, "2026-10-13", "Poteto");
-    rowsByDay = { "2026-10-13": [ADA, own] };
+    rowsByDay = { "2026-10-13": [ADA, own, ...CROWD("2026-10-13")] };
     window.localStorage.setItem(
       DAILY_ENTRY_KEY,
       JSON.stringify([{ id: own.id, difficulty: "daily", dailyDay: "2026-10-13", country: "SG", score: { correctPieces: 3, totalWrongPieces: 3, memorizeTime: 10, solutionTime: 13 }, submittedAt: 1 }]),

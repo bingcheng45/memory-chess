@@ -10,6 +10,7 @@ import { readDailyEntry, type DailyEntry } from "@/lib/lab/entries";
 import { DailyOpenCard } from "./DailyOpenCard";
 import type { DailyPlayer } from "./DailyPlayer";
 import { DailyResetLine } from "./DailyResetLine";
+import { RemindMe } from "./RemindMe";
 import { DailyTopTen } from "./DailyTopTen";
 import { useDailyRows } from "./useDailyRows";
 import "./daily.css";
@@ -38,7 +39,10 @@ export function DailyBoard({ rendered }: { rendered: DailyTopRender }) {
           <h1 className="daily-title">{t("title")}</h1>
           <p className="daily-lede">{t("lede")}</p>
         </div>
-        <DailyResetLine now={now} />
+        <div className="daily-head-reset">
+          <DailyResetLine now={now} />
+          <RemindMe surface="daily" />
+        </div>
       </header>
       <div className="daily-grid">
         {Player ? <Player day={day} setting={setting} joined={joined} onJoined={setJoined} onPlayed={setPlayed} /> : <DailyOpenCard setting={setting} />}

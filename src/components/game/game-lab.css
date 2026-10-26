@@ -329,7 +329,7 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 @media (max-width: 767px) {
   .lab-game .lab-result-actions > .lab-btn { flex: 1 1 calc(50% - 6px); }
   .lab-game .lab-result-actions > .lab-result-submit { flex-basis: 100%; }
-  .lab-game .lab-result-next .lab-btn { width: 100%; }
+  .lab-game .lab-result-next .lab-btn-primary { width: 100%; }
 }
 
 /* Text in the lab card, the article tile and the set-board notice is set in Geist, the face the lab card's height reserve was measured in. */

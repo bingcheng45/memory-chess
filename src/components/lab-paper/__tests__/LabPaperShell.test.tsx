@@ -47,6 +47,7 @@ describe("the footer the locale layout renders", () => {
       ["Learn", "/learn"],
       ["Articles", "/articles"],
       ["About", "/about"],
+      ["Blindfold", "/blindfold"],
       ["Changelog", "/changelog"],
       ["Contact us", "/contact-us"],
       ["Privacy", "/privacy"],

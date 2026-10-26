@@ -85,6 +85,8 @@ export type LearnMeta = {
   /** The <title>, 60 characters or fewer. */
   readonly title: string;
   readonly h1: string;
+  /** The English `<title>` and share title when they differ from `title`. English-only, so a translation never carries it. */
+  readonly searchTitle?: string;
   /** The meta description and the hub card text, 160 characters or fewer. */
   readonly description: string;
   readonly group: LearnGroupId;

@@ -11,6 +11,7 @@ const article: Article = {
     { slug: "chess-visualization-exercises", anchor: "visualization exercises" },
   ],
   description: "Filmed tests and blindfold displays show what Magnus Carlsen's chess memory can do, and chunk research suggests it rests on studied games.",
+  summary: "Magnus Carlsen has played blindfold displays and named famous games from a single filmed position. This article sets out what was tested, what he says about his own memory, and how chunk research may explain it.",
   person: {
     name: "Magnus Carlsen",
     role: "World Chess Champion, 2013-2023",

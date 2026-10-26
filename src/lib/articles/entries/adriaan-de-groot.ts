@@ -11,6 +11,7 @@ const article: Article = {
     { slug: "how-to-see-the-whole-board-in-chess", anchor: "how to see the whole board" },
   ],
   description: "Adriaan de Groot tested four players on chess positions shown for 2 to 15 seconds in 1944. Here are his real scores and what later research changed.",
+  summary: "In 1944 Adriaan de Groot showed Max Euwe a 22-piece position for five seconds, and Euwe rebuilt every piece. This article sets out de Groot's real scores for four players, why the figures are so often misquoted, and what later random-board research changed.",
   person: {
     name: "Adriaan de Groot",
     role: "Dutch chess master and psychologist",

@@ -268,6 +268,11 @@ const guide: LearnDocument = {
             "The generator weights piece types as a real set holds them, eight pawns to one queen per side. On a 12-piece board the ten pieces beyond the kings are split five and five, and about half of them are pawns. So read the kings first, then the pawns that touch, then the odd pieces.",
             "Two more rules shrink the search. A side's two bishops never share a square colour, and no pawn ever stands on the first or eighth rank.",
             "Chase and Simon saw a master group pawns too. They filmed him rebuilding positions from master games and split his work into chunks at every pause longer than 2 seconds. Of his 77 chunks across fourteen positions, 47 contained a pawn chain. On the middle-game positions his first chunk averaged 3.8 pieces, against 2.6 for the Class A player.",
+            [
+              "The same account fits Magnus Carlsen's filmed memory tests. ",
+              { text: "This article on how Carlsen names a famous game from one position", href: "/articles/magnus-carlsen" },
+              " sets out what he was shown and what he could name.",
+            ],
           ],
         },
         {

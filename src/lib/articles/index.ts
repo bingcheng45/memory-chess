@@ -12,7 +12,7 @@ export * from "./schema";
 export { ARTICLES, ARTICLES_LAST_UPDATED, ARTICLE_SLUGS, newestFirst } from "./registry";
 
 export function summarize(article: Article, locale: Locale): ArticleSummary {
-  const { slug, publishedAt, title, description, person } = article;
+  const { slug, publishedAt, title, description, summary, person } = article;
   const { src, width, height, alt } = article.photo;
   return {
     slug,
@@ -20,6 +20,7 @@ export function summarize(article: Article, locale: Locale): ArticleSummary {
     publishedLabel: formatArticleDate(publishedAt, locale),
     title,
     description,
+    ...(summary === undefined ? {} : { summary }),
     person,
     photo: { src, width, height, alt },
   };

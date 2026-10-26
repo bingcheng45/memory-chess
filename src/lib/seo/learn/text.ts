@@ -1,4 +1,10 @@
-import type { LearnBlock, LearnDocument, LearnSection, Rich } from "./schema";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
+import type { LearnBlock, LearnDocument, LearnMeta, LearnSection, Rich } from "./schema";
+
+/** The title a search result and a share card show: the English `searchTitle` when there is one, else `title`. */
+export function searchTitleOf(meta: Pick<LearnMeta, "title" | "searchTitle">, locale: string): string {
+  return locale === DEFAULT_LOCALE ? (meta.searchTitle ?? meta.title) : meta.title;
+}
 
 export function richText(rich: Rich): string {
   return typeof rich === "string" ? rich : rich.map((part) => (typeof part === "string" ? part : part.text)).join("");

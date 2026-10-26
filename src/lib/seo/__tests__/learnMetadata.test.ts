@@ -84,16 +84,31 @@ describe("buildLearnPageMetadata", () => {
       const openGraph = metadata.openGraph;
       const twitter = metadata.twitter;
 
-      expect(metadata.title).toBe(page.meta.title);
+      expect(metadata.title).toBe(page.meta.searchTitle ?? page.meta.title);
       expect(metadata.description).toBe(page.meta.description);
       expect(metadata.alternates?.canonical).toBe(`/learn/${page.meta.slug}`);
       expect(openGraph && "url" in openGraph ? openGraph.url : undefined).toBe(
         `https://thememorychess.com/learn/${page.meta.slug}`,
       );
-      expect(openGraph?.title).toBe(page.meta.title);
+      expect(openGraph?.title).toBe(page.meta.searchTitle ?? page.meta.title);
       expect(openGraph?.description).toBe(page.meta.description);
-      expect(twitter?.title).toBe(page.meta.title);
+      expect(twitter?.title).toBe(page.meta.searchTitle ?? page.meta.title);
       expect(twitter?.description).toBe(page.meta.description);
     }
+  });
+
+  it("titles the English visualization guide with its search title in the page, Open Graph and X card titles", () => {
+    const metadata = buildLearnPageMetadata(pageFor("chess-visualization-exercises"));
+
+    expect(metadata.title).toBe("Chess Visualization Exercises: Test and Train");
+    expect(metadata.openGraph?.title).toBe("Chess Visualization Exercises: Test and Train");
+    expect(metadata.twitter?.title).toBe("Chess Visualization Exercises: Test and Train");
+  });
+
+  it("keeps a translated page on the title of its translation", () => {
+    const metadata = buildLearnPageMetadata(pageFor("chess-visualization-exercises"), "de");
+
+    expect(metadata.title).toBe(pageFor("chess-visualization-exercises").meta.title);
+    expect(metadata.alternates?.canonical).toBe("/de/learn/chess-visualization-exercises");
   });
 });

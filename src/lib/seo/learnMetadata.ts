@@ -4,9 +4,11 @@ import { localizedPath, localizedUrl } from '@/lib/seo/alternates';
 import { LEARN_AUTHOR, type LearnPage } from '@/lib/seo/learn';
 import { indexedLocalesOf, robotsFor } from '@/lib/seo/englishOnly';
 import { guidePath } from '@/lib/seo/learn/links';
+import { searchTitleOf } from '@/lib/seo/learn/text';
 
 export function buildLearnPageMetadata(page: LearnPage, locale: string = DEFAULT_LOCALE): Metadata {
-  const { slug, title, description, publishedAt, updatedAt, keywords } = page.meta;
+  const { slug, description, publishedAt, updatedAt, keywords } = page.meta;
+  const title = searchTitleOf(page.meta, locale);
   const path = guidePath(slug);
   const locales = indexedLocalesOf(path);
   const robots = robotsFor(path, locale);

@@ -48,6 +48,11 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "To find d5 by counting, you go four files across and then five ranks up. That is two lookups. Seeing d5 the way you see a familiar word takes one.",
+            [
+              "Judit Polgár says knowing the name, place and colour of all 64 squares is what let her play blindfold at about age seven. ",
+              { text: "Her early blindfold games and training", href: "/articles/judit-polgar" },
+              " show how far that one piece of knowledge can go.",
+            ],
             "Nothing about coordinates is hard to understand. The practice is making the name and the square arrive together, so you stop translating one into the other. The table shows where the second lookup costs you.",
           ],
         },

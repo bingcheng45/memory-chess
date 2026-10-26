@@ -55,6 +55,23 @@ describe("links between guides and articles", () => {
     ]);
   });
 
+  it("links each article from the prose of an English guide with a sentence that names it", () => {
+    const articleLinksIn = (slug: string) =>
+      guide(slug).sections.flatMap((section) =>
+        section.blocks.flatMap((block) =>
+          block.kind === "prose"
+            ? block.paragraphs.flatMap((paragraph) =>
+                typeof paragraph === "string" ? [] : paragraph.filter((part) => typeof part !== "string").map((part) => part.href),
+              )
+            : [],
+        ),
+      );
+
+    expect(articleLinksIn("chess-memory-training")).toContain("/articles/adriaan-de-groot");
+    expect(articleLinksIn("chess-pattern-recognition-drills")).toContain("/articles/magnus-carlsen");
+    expect(articleLinksIn("chess-coordinates-practice")).toContain("/articles/judit-polgar");
+  });
+
   it("points every cross-link at a page that exists", () => {
     const guideTargets = ARTICLES.flatMap((entry) => entry.relatedGuides ?? []).map((link) => link.slug);
     const articleTargets = EN_LEARN_PAGES.flatMap(articleCtas).map((target) => target.slug);
@@ -87,7 +104,7 @@ describe("trimmed search titles", () => {
   });
 
   it("fits every guide and article title within 64 characters with the suffix", () => {
-    const titles = [...EN_LEARN_PAGES.map((page) => page.meta.title), ...ARTICLES.map((entry) => entry.searchTitle ?? entry.title)];
+    const titles = [...EN_LEARN_PAGES.map((page) => page.meta.searchTitle ?? page.meta.title), ...ARTICLES.map((entry) => entry.searchTitle ?? entry.title)];
 
     expect(titles.filter((title) => (title + TITLE_SUFFIX).length > MAX_TITLE_WITH_SUFFIX)).toEqual([]);
   });

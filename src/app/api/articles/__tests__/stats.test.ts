@@ -28,8 +28,11 @@ type PostOptions = {
   body?: BodyInit;
 };
 
+let nextAddress = 0;
+
 function post({ slug = SLUG, headers = JSON_HEADERS, body = '{"event":"view"}' }: PostOptions = {}) {
-  const init: RequestInit & { duplex: "half" } = { method: "POST", headers, body, duplex: "half" };
+  const withAddress = { "x-forwarded-for": `203.0.113.${++nextAddress}`, ...headers };
+  const init: RequestInit & { duplex: "half" } = { method: "POST", headers: withAddress, body, duplex: "half" };
   const request = new Request(`http://localhost/api/articles/${encodeURIComponent(slug)}/stats`, init);
   return POST(request, { params: Promise.resolve({ slug }) });
 }
@@ -106,6 +109,21 @@ describe("POST /api/articles/[slug]/stats", () => {
     expect(response.status).toBe(200);
     expect(recordArticleEvent).toHaveBeenCalledWith(SLUG, "like");
     expect(jest.mocked(recordArticleEvent).mock.calls[0]).toHaveLength(2);
+  });
+
+  it("answers 429 with Retry-After from the 11th event in a minute for one address and article, and still records other readers and articles", async () => {
+    const script = { ...JSON_HEADERS, "x-forwarded-for": "198.51.100.9" };
+
+    const statuses: number[] = [];
+    for (let i = 0; i < 11; i++) statuses.push((await post({ headers: script })).status);
+    const refused = await post({ headers: script });
+
+    expect(statuses).toEqual([...Array(10).fill(200), 429]);
+    expect(await refused.json()).toEqual({ error: "Too many requests" });
+    expect(Number(refused.headers.get("retry-after"))).toBeGreaterThan(0);
+    expect(recordArticleEvent).toHaveBeenCalledTimes(10);
+    expect((await post({ headers: script, slug: "judit-polgar" })).status).toBe(200);
+    expect((await post()).status).toBe(200);
   });
 
   it("answers 404 for a slug outside the registry, before anything else", async () => {

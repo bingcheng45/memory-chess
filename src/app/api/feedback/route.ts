@@ -5,15 +5,40 @@ import {
 } from "@/lib/feedback";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { appendGoogleSheetRow, SheetsConfigError } from "@/lib/server/googleSheets";
+import { clientAddress, fixedWindowLimiter } from "@/lib/server/rateLimit";
+import { isJson, readBodyWithinLimit } from "@/lib/server/requestBody";
 import { reportServerError } from "@/lib/server/serverErrors";
 
 export const runtime = "nodejs";
 
+const MAX_BODY_BYTES = 4096;
+
+/** A player sends one response per round at most; more than this from one address is a script filling the sheet the contact form also writes to. */
+const SUBMISSIONS_PER_WINDOW = 5;
+const allowSubmission = fixedWindowLimiter({ limit: SUBMISSIONS_PER_WINDOW, windowMs: 10 * 60_000, maxKeys: 5_000 });
+
 export async function POST(request: Request) {
+  const verdict = allowSubmission(clientAddress(request.headers), Date.now());
+  if (!verdict.allowed) {
+    return NextResponse.json(
+      { error: "Too many submissions" },
+      { status: 429, headers: { "Retry-After": String(verdict.retryAfterSeconds) } },
+    );
+  }
+
+  if (!isJson(request.headers.get("content-type"))) {
+    return NextResponse.json({ error: "Content-Type must be application/json" }, { status: 415 });
+  }
+
+  const text = await readBodyWithinLimit(request, MAX_BODY_BYTES);
+  if (text === null) {
+    return NextResponse.json({ error: "Request body is too large" }, { status: 413 });
+  }
+
   let body: unknown;
 
   try {
-    body = await request.json();
+    body = JSON.parse(text);
   } catch {
     return NextResponse.json(
       { error: "Invalid JSON request body" },

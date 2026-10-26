@@ -22,6 +22,16 @@ const validBody = {
   solutionTime: 12.5,
 };
 
+function feedbackRequest(init: { body?: string; contentType?: string | null; ip?: string } = {}) {
+  const headers: Record<string, string> = { "x-forwarded-for": init.ip ?? "203.0.113.1" };
+  if (init.contentType !== null) headers["Content-Type"] = init.contentType ?? "application/json";
+  return new Request("http://localhost/api/feedback", {
+    method: "POST",
+    headers,
+    body: init.body ?? JSON.stringify(validBody),
+  });
+}
+
 describe("POST /api/feedback", () => {
   beforeEach(() => {
     mockAppendGoogleSheetRow.mockReset();
@@ -100,5 +110,43 @@ describe("POST /api/feedback", () => {
     expect(await response.json()).toEqual({
       error: "Failed to submit feedback",
     });
+  });
+
+  it("answers 415 to a body that is not JSON without writing a row", async () => {
+    const response = await POST(feedbackRequest({ contentType: "text/plain" }));
+
+    expect(response.status).toBe(415);
+    expect(await response.json()).toEqual({ error: "Content-Type must be application/json" });
+    expect(mockAppendGoogleSheetRow).not.toHaveBeenCalled();
+  });
+
+  it("answers 413 to a body over 4096 bytes without writing a row", async () => {
+    const response = await POST(
+      feedbackRequest({ body: JSON.stringify({ ...validBody, feedback: "x".repeat(5000) }) }),
+    );
+
+    expect(response.status).toBe(413);
+    expect(await response.json()).toEqual({ error: "Request body is too large" });
+    expect(mockAppendGoogleSheetRow).not.toHaveBeenCalled();
+  });
+
+  it("answers 429 with Retry-After once one address passes 5 submissions in 10 minutes", async () => {
+    const statuses: number[] = [];
+    for (let i = 0; i < 6; i++) {
+      statuses.push((await POST(feedbackRequest({ ip: "198.51.100.7" }))).status);
+    }
+    const blocked = await POST(feedbackRequest({ ip: "198.51.100.7" }));
+
+    expect(statuses).toEqual([200, 200, 200, 200, 200, 429]);
+    expect(Number(blocked.headers.get("retry-after"))).toBeGreaterThan(0);
+    expect(mockAppendGoogleSheetRow).toHaveBeenCalledTimes(5);
+  });
+
+  it("keeps counting each address on its own", async () => {
+    for (let i = 0; i < 5; i++) await POST(feedbackRequest({ ip: "198.51.100.8" }));
+
+    const otherAddress = await POST(feedbackRequest({ ip: "198.51.100.9" }));
+
+    expect(otherAddress.status).toBe(200);
   });
 });

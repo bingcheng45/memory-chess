@@ -1,7 +1,10 @@
 import { NextResponse } from 'next/server';
 import { getLeaderboardCutoffs } from '@/lib/services/leaderboardService';
 
-export const revalidate = 300;
+/** Rendered per request so the CDN keeps the answer, which costs no ISR writes the way a revalidated segment does. */
+export const dynamic = 'force-dynamic';
+
+const CUTOFFS_CACHE = 'public, s-maxage=300, stale-while-revalidate=3600';
 
 /**
  * Always 200, even when the cutoffs cannot be read. This endpoint feeds a
@@ -10,12 +13,12 @@ export const revalidate = 300;
  * simply says nothing about cutoffs.
  *
  * Takes no request: nothing about the answer varies per caller, which is what
- * lets the segment stay cached for `revalidate` seconds.
+ * lets the CDN keep it for `s-maxage` seconds.
  */
 export async function GET() {
   try {
     const cutoffs = await getLeaderboardCutoffs();
-    return NextResponse.json({ data: cutoffs });
+    return NextResponse.json({ data: cutoffs }, { headers: { 'Cache-Control': CUTOFFS_CACHE } });
   } catch (err) {
     console.error('Unexpected error in GET /api/leaderboard/cutoffs:', err);
     return NextResponse.json({ data: null });

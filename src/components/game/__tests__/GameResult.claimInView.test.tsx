@@ -88,6 +88,17 @@ describe("the claim line under the score", () => {
     expect(claim()).toBeNull();
   });
 
+  it.each([
+    [0.4, false],
+    [0.6, true],
+    [0.7, true],
+  ])("for a 6-piece round studied %s s shows the claim line: %s, since the server refuses a study under 0.6 s", async (actualMemorizeTime, shown) => {
+    mockGame = { ...GAME, actualMemorizeTime } as typeof GAME;
+    await show(OPEN);
+
+    expect([claim() !== null, document.querySelector(".lab-result-callout") !== null]).toEqual([shown, shown]);
+  });
+
   it("returns focus to the button that opened the dialog", async () => {
     await show(OPEN);
     const opener = within(claim()!).getByRole("button", { name: "Claim it" });

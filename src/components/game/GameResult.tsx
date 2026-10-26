@@ -19,6 +19,7 @@ import { Label } from "@/components/ui/label";
 import CountryPicker from "@/components/leaderboard/CountryPicker";
 import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cutoffsClient";
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
+import { studyFloorSeconds } from "@/lib/leaderboard/studyFloor";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
@@ -264,8 +265,10 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     // hides rows with no correct piece, so such a round is not submittable.
     // A set board is not ranked: the daily board is the same position for every player, and a review is one the player has seen.
     // A blindfold round ranks only on the blindfold boards, which take scores once they are open.
+    // A study shorter than the floor is refused by the server, so such a round is never offered a spot.
     const difficulty = determineDifficulty(gameState.pieceCount);
-    return difficulty !== "custom" && (extendedGameState.correctPlacements ?? 0) > 0 && gameState.board === undefined && (!blindfold || blindfoldBoardOpen());
+    return difficulty !== "custom" && (extendedGameState.correctPlacements ?? 0) > 0 && gameState.board === undefined && (!blindfold || blindfoldBoardOpen())
+      && (gameState.actualMemorizeTime || gameState.memorizeTime) >= studyFloorSeconds(gameState.pieceCount);
   };
 
   // Prepare leaderboard entry data

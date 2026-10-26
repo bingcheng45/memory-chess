@@ -1,6 +1,5 @@
 /** @jest-environment node */
 
-import { NextRequest } from "next/server";
 import { GET, dynamic } from "@/app/api/leaderboard/cutoffs/route";
 import { getLeaderboardCutoffs } from "@/lib/services/leaderboardService";
 import type { BoardCutoff, LeaderboardCutoffs } from "@/lib/leaderboard/ranking";
@@ -39,7 +38,7 @@ const mixedBoards: LeaderboardCutoffs = {
 
 const CACHE = "public, s-maxage=300, stale-while-revalidate=3600";
 const cutoffsRequest = (search = "") =>
-  new NextRequest(`http://localhost/api/leaderboard/cutoffs${search}`);
+  new Request(`http://localhost/api/leaderboard/cutoffs${search}`);
 
 describe("GET /api/leaderboard/cutoffs", () => {
   let logged: jest.SpyInstance;
@@ -88,7 +87,15 @@ describe("GET /api/leaderboard/cutoffs", () => {
     const response = await GET(cutoffsRequest("?x=123"));
 
     expect(response.status).toBe(308);
-    expect(response.headers.get("location")).toBe("http://localhost/api/leaderboard/cutoffs");
+    expect(response.headers.get("location")).toBe("/api/leaderboard/cutoffs");
+    expect(getLeaderboardCutoffs).not.toHaveBeenCalled();
+  });
+
+  it("redirects a bare question mark too, which reports an empty search", async () => {
+    const response = await GET(cutoffsRequest("?"));
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe("/api/leaderboard/cutoffs");
     expect(getLeaderboardCutoffs).not.toHaveBeenCalled();
   });
 

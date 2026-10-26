@@ -1,9 +1,10 @@
-import { NextResponse, type NextRequest } from 'next/server';
+import { NextResponse } from 'next/server';
 import { getLeaderboardCutoffs } from '@/lib/services/leaderboardService';
 
 /** Rendered per request so the CDN keeps the answer, which costs no ISR writes the way a revalidated segment does. */
 export const dynamic = 'force-dynamic';
 
+const CUTOFFS_PATH = '/api/leaderboard/cutoffs';
 const NOT_CACHED = 'no-store';
 const CUTOFFS_CACHE = 'public, s-maxage=300, stale-while-revalidate=3600';
 
@@ -18,9 +19,9 @@ const CUTOFFS_CACHE = 'public, s-maxage=300, stale-while-revalidate=3600';
  * path before any work. A null answer means the read failed, so it is never
  * given the shared cache header and an outage is not held at the edge.
  */
-export async function GET(request: NextRequest) {
-  if (request.nextUrl.search !== '') {
-    return NextResponse.redirect(new URL(request.nextUrl.pathname, request.nextUrl), 308);
+export async function GET(request: Request) {
+  if (request.url.includes('?')) {
+    return new Response(null, { status: 308, headers: { Location: CUTOFFS_PATH } });
   }
 
   try {

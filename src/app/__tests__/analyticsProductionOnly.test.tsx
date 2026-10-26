@@ -107,7 +107,7 @@ describe("Google Analytics loading", () => {
   afterEach(() => {
     Reflect.deleteProperty(window, "dataLayer");
     Reflect.deleteProperty(window, "gtag");
-    document.cookie = "_ga_R8BM9EMY9J=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    document.cookie = "_ga_R8BM9EMY9J=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT";
     jest.useRealTimers();
     Reflect.deleteProperty(document, "referrer");
     document.title = "";

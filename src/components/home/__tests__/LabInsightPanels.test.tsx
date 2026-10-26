@@ -58,7 +58,7 @@ describe("insights panel", () => {
       "You miss the a and h files about 5.5 times as often as the centre files, d and e: 68% of 151 pieces against 12% of 138.Play 8 pieces, 15 s →",
       "Of the pieces other than kings seen 20 times or more, queens slip most: you recalled 12 of 26, 46%.Read the pattern recognition drills →",
     ]);
-    expect(within(list).getByRole("link", { name: "Play 8 pieces, 15 s →" })).toHaveAttribute("href", "/game?pieceCount=8&memorizeTime=15&source=insight");
+    expect(within(list).getByRole("link", { name: "Play 8 pieces, 15 s →" })).toHaveAttribute("href", "/game?pieceCount=8&memorizeTime=15&from=insight");
     expect(within(list).getByRole("link", { name: "Read the pattern recognition drills →" })).toHaveAttribute("href", "/learn/chess-pattern-recognition-drills");
     expect(within(panel("Insights")).getByText("From 90 rounds")).toBeInTheDocument();
   });

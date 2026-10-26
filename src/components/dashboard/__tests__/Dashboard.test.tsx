@@ -243,7 +243,7 @@ describe("Dashboard", () => {
 
     fireEvent.click(within(list).getByRole("button", { name: "Show all 9" }));
     expect(unlockText("speed")).toBe("Recall pace4 more rounds at 6 pieces, 10 sPlay 6 pieces, 10 s →");
-    expect(within(document.querySelector('[data-unlock="speed"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
+    expect(within(document.querySelector('[data-unlock="speed"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&from=dashboard");
     expect(unlockText("rating")).toBe("Skill ratingNothing yet.Play a round →");
     expect(unlockText("plans")).toBe("PlanNot set yet.Choose one in the full record →");
     expect(within(document.querySelector('[data-unlock="plans"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/#record");

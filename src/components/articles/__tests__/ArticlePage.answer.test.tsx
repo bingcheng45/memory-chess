@@ -58,8 +58,8 @@ async function headerDrillLinks(locale: Locale) {
 describe("the de Groot article opens with its answer", () => {
   it("offers a new reader's 4-piece round first and de Groot's own 22-piece, 5-second round right above the answer", async () => {
     expect(await headerDrillLinks("en")).toEqual([
-      { href: "/game?pieceCount=4&memorizeTime=10&source=article_cta", text: "Your turnPlay 4 pieces, 10 seconds→" },
-      { href: "/game?pieceCount=22&memorizeTime=5&source=article_cta", text: "Play 22 pieces, 5 seconds" },
+      { href: "/game?pieceCount=4&memorizeTime=10&from=article_cta", text: "Your turnPlay 4 pieces, 10 seconds→" },
+      { href: "/game?pieceCount=22&memorizeTime=5&from=article_cta", text: "Play 22 pieces, 5 seconds" },
     ]);
   });
 

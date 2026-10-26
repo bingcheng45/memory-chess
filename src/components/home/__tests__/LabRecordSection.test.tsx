@@ -179,7 +179,7 @@ describe("LabRecordSection", () => {
     const types = panel("Recall by piece type");
 
     expect(types.querySelector(".lab-need")?.textContent).toBe("Your rounds so far were just the two kings, and recall by piece type needs more pieces. Play a round →");
-    expect(within(types).getByRole("link").getAttribute("href")).toBe("/game?pieceCount=6&memorizeTime=10&source=home_quick");
+    expect(within(types).getByRole("link").getAttribute("href")).toBe("/game?pieceCount=6&memorizeTime=10&from=home_quick");
     expect(within(types).getByText("Kings are in every round, so they are a baseline. Recalled 100 of 100.")).toBeInTheDocument();
     expect(within(types).queryByText(/after your first round/)).toBeNull();
     expect(bars(types).at(-1)).toEqual(["King baseline", "96%"]);

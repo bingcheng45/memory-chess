@@ -57,10 +57,10 @@ describe("starting and stopping a plan", () => {
     renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
     const start = within(card("Edge-file drill")).getByRole("link", { name: "Start Edge-file drill" });
 
-    expect(start).toHaveAttribute("href", "/game?pieceCount=8&memorizeTime=15&source=plan");
+    expect(start).toHaveAttribute("href", "/game?pieceCount=8&memorizeTime=15&from=plan");
     expect(within(card("Step-down ladder")).getByRole("link", { name: "Start Step-down ladder" })).toHaveAttribute(
       "href",
-      "/game?pieceCount=12&memorizeTime=8&source=plan",
+      "/game?pieceCount=12&memorizeTime=8&from=plan",
     );
     fireEvent.click(start);
 
@@ -78,7 +78,7 @@ describe("starting and stopping a plan", () => {
     expect(baseline.querySelector(".lab-plan-progress")).toHaveTextContent(
       "Day 7 of 7" + "5 of 7 days with a Medium round" + "Day 1 67%, day 7 100%: up 33 points.",
     );
-    expect(within(baseline).getByRole("link", { name: `Play 6 pieces, ${seconds(10)} →` })).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=plan");
+    expect(within(baseline).getByRole("link", { name: `Play 6 pieces, ${seconds(10)} →` })).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&from=plan");
   });
 
   it("stops a plan only on the second press, which keeps the day it stopped and touches no round", () => {
@@ -154,7 +154,7 @@ describe("starting and stopping a plan", () => {
     expect(ladder.querySelector(".lab-plan-progress")).toHaveTextContent(
       "Day 3" + "Rung: 6 pieces, 8 s." + "2 of 3 rounds in a row at 90 percent or better." + "Next rung: 6 pieces, 6 s.",
     );
-    expect(within(ladder).getByRole("link", { name: `Play 6 pieces, ${seconds(8)} →` })).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=8&source=plan");
+    expect(within(ladder).getByRole("link", { name: `Play 6 pieces, ${seconds(8)} →` })).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=8&from=plan");
     expect(within(ladder).queryByRole("button", { name: "Finish early" })).toBeNull();
     expect(screen.getByText("Day 10. Rung up: 6 pieces at 8 s.", { exact: false })).toBeInTheDocument();
   });
@@ -234,7 +234,7 @@ describe("the goal", () => {
     renderWithIntl(<LabRecordSection record={persona("thirtyDays")} />);
 
     expect(goalPanel().querySelector(".lab-empty")).toHaveTextContent("No round at 20 or more pieces since you set this goal. Play a round →");
-    expect(within(goalPanel()).getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", "/game?pieceCount=20&memorizeTime=10&source=home_quick");
+    expect(within(goalPanel()).getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", "/game?pieceCount=20&memorizeTime=10&from=home_quick");
     expect(within(goalPanel()).queryByRole("progressbar")).toBeNull();
   });
 });

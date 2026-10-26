@@ -43,7 +43,7 @@ describe("the review and forgetting curve panel", () => {
     panel([seenBoard("a", "2026-10-08", BOARDS[0], KINGS)]);
 
     expect(await screen.findByRole("status")).toHaveTextContent("Review 1 of 5 today");
-    expect(playLink()).toHaveAttribute("href", "/game?pieceCount=4&memorizeTime=10&source=review");
+    expect(playLink()).toHaveAttribute("href", "/game?pieceCount=4&memorizeTime=10&from=review");
   });
 
   it("counts the reviews played today into the number, without naming how many boards wait", async () => {

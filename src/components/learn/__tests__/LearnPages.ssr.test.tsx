@@ -105,7 +105,7 @@ describe("a guide page", () => {
     const markup = await guide("how-to-get-better-at-chess-for-beginners");
     const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
 
-    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;source=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 10 seconds</a>');
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 10 seconds</a>');
     expect(strip).toContain('<a href="/daily" class="lg-link">Play today&#x27;s daily board</a>');
     expect(markup.indexOf('class="lg-lede"')).toBeLessThan(markup.indexOf('class="lg-quickplay"'));
     expect(markup.indexOf('class="lg-quickplay"')).toBeLessThan(markup.indexOf('class="lg-meta"'));
@@ -116,7 +116,7 @@ describe("a guide page", () => {
     const markup = await guide("chess-coordinates-practice");
     const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
 
-    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=12&amp;source=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 12 seconds</a>');
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=12&amp;from=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 12 seconds</a>');
   });
 
   it("offers a new reader the guide's closing round in the hero only when it is sighted, up to 6 pieces with 10 seconds or more, and the beginner round otherwise", async () => {
@@ -154,8 +154,8 @@ describe("a guide page", () => {
     const markup = await guide("how-to-see-the-whole-board-in-chess");
     const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
 
-    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;source=guide_cta" class="lab-btn lab-btn-primary">');
-    expect(markup).toContain("/game?pieceCount=12&amp;memorizeTime=8&amp;source=guide_cta");
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_cta" class="lab-btn lab-btn-primary">');
+    expect(markup).toContain("/game?pieceCount=12&amp;memorizeTime=8&amp;from=guide_cta");
   });
 
   it("links today's daily board under a drill box that plays a round, not under one done at a board", async () => {
@@ -169,7 +169,7 @@ describe("a guide page", () => {
     const markup = await guide("how-to-stop-blundering-in-chess");
 
     expect(markup.match(/class="lg-board"/g)).toHaveLength(3);
-    expect(markup).toContain('href="/game?pieceCount=6&amp;memorizeTime=10&amp;source=guide_cta"');
+    expect(markup).toContain('href="/game?pieceCount=6&amp;memorizeTime=10&amp;from=guide_cta"');
     expect(markup).toContain('href="/dashboard#tile-recentAccuracy"');
     expect(markup).toContain('<a href="/learn/chess-coordinates-practice">Chess Coordinates Practice: Name Squares Faster</a>');
   });
@@ -326,7 +326,7 @@ describe("the hub", () => {
   it("closes stages with their own call to action and never hides text", () => {
     const markup = html(LearnHub());
 
-    expect(markup).toContain('<a href="/game?pieceCount=6&amp;memorizeTime=10&amp;source=guide_cta">Check where you stand first: play a 6-piece round</a>');
+    expect(markup).toContain('<a href="/game?pieceCount=6&amp;memorizeTime=10&amp;from=guide_cta">Check where you stand first: play a 6-piece round</a>');
     expect(markup).toContain('<a href="/dashboard#tile-span">Track your memory span as you climb the ladder</a>');
     expect(markup).not.toMatch(/\shidden(=|\s|>)/);
   });

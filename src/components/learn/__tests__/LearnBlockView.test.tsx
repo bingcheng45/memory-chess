@@ -98,7 +98,7 @@ describe("LearnBlockView", () => {
     const [played, offline] = [...box.querySelectorAll("article")];
     expect(within(played).getByRole("link", { name: "Play 6 pieces, 10 seconds" })).toHaveAttribute(
       "href",
-      "/game?pieceCount=6&memorizeTime=10&source=guide_cta",
+      "/game?pieceCount=6&memorizeTime=10&from=guide_cta",
     );
     expect(played.querySelector(".lg-chip")?.textContent).toBe("6 pieces · 10 s to look");
     expect(within(offline).queryByRole("link")).toBeNull();
@@ -126,7 +126,7 @@ describe("LearnBlockView", () => {
 
     const links = screen.getAllByRole("link");
     expect(links.map((link) => link.getAttribute("href"))).toEqual([
-      "/game?pieceCount=6&memorizeTime=10&source=guide_cta",
+      "/game?pieceCount=6&memorizeTime=10&from=guide_cta",
       "/articles/judit-polgar",
       "/dashboard#tile-recentAccuracy",
     ]);
@@ -239,6 +239,6 @@ describe("LearnBlockView in a German guide", () => {
       { locale: "de" },
     );
 
-    expect(screen.getByRole("link", { name: "Spielen" })).toHaveAttribute("href", "/de/game?pieceCount=2&memorizeTime=10&source=guide_cta");
+    expect(screen.getByRole("link", { name: "Spielen" })).toHaveAttribute("href", "/de/game?pieceCount=2&memorizeTime=10&from=guide_cta");
   });
 });

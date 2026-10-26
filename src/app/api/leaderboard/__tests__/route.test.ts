@@ -196,6 +196,9 @@ describe("POST /api/leaderboard", () => {
     ["fractional", 12.5],
     ["a string", "1200"],
     ["null", null],
+    ["one above what any round can reach", 3701],
+    ["the old 5000 ceiling", 5000],
+    ["7300", 7300],
   ])("rejects a skill rating that is %s", async (_case, skill_rating) => {
     const response = await post({ ...validEntry, skill_rating });
 
@@ -206,8 +209,7 @@ describe("POST /api/leaderboard", () => {
 
   it.each([
     ["the lowest rating", 0, 0],
-    ["the highest rating", 5000, 5000],
-    ["a rating above the highest as the highest", 7300, 5000],
+    ["the highest rating a round can reach", 3700, 3700],
   ])("stores %s", async (_case, sent, stored) => {
     const response = await post({ ...validEntry, skill_rating: sent });
 
@@ -401,7 +403,7 @@ describe("POST /api/leaderboard", () => {
   });
 
   it.each([
-    ["easy", 2, 0.066, 0.5],
+    ["easy", 2, 0.3, 0.5],
     ["medium", 6, 60, 1.5],
     ["hard", 12, 8, 3],
     ["grandmaster", 20, 5, 5],
@@ -423,6 +425,33 @@ describe("POST /api/leaderboard", () => {
 
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({ error });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["easy", 2, 0.3],
+    ["medium", 6, 0.6],
+    ["hard", 12, 1.2],
+    ["grandmaster", 20, 2],
+  ])("stores a %s row of %i pieces studied exactly the %f s floor", async (difficulty, pieces, memorize_time) => {
+    const response = await post({ ...validEntry, difficulty, piece_count: pieces, correct_pieces: pieces, total_wrong_pieces: 0, memorize_time, solution_time: pieces * 3 });
+
+    expect(response.status).toBe(200);
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ difficulty, memorize_time }));
+  });
+
+  it.each([
+    ["easy", 2, 0.067, "0.3"],
+    ["easy", 2, 0.299, "0.3"],
+    ["medium", 6, 0.565, "0.6"],
+    ["medium", 6, 0.599, "0.6"],
+    ["hard", 12, 1.199, "1.2"],
+    ["grandmaster", 20, 1.999, "2"],
+  ])("rejects a %s row of %i pieces studied only %f s", async (difficulty, pieces, memorize_time, floor) => {
+    const response = await post({ ...validEntry, difficulty, piece_count: pieces, correct_pieces: pieces, total_wrong_pieces: 0, memorize_time, solution_time: pieces * 3 });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: `A study of ${pieces} pieces takes at least ${floor} seconds` });
     expect(submitLeaderboardEntry).not.toHaveBeenCalled();
   });
 

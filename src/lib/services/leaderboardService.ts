@@ -5,6 +5,7 @@ import { reportServerError } from '@/lib/server/serverErrors';
 import { RANKING_ORDER, type BoardCutoff, type LeaderboardCutoffs } from '@/lib/leaderboard/ranking';
 import { parseBoard } from '@/lib/leaderboard/board';
 import { blindfoldBoardOpen } from '@/lib/leaderboard/mode';
+import { BOARD_PIECES, studyFloorSeconds } from '@/lib/leaderboard/studyFloor';
 import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { rankedAboveFilter, type Standing, type StandingScope } from '@/lib/leaderboard/standing';
 import { WORLD_CODE } from '@/lib/leaderboard/countries';
@@ -57,12 +58,16 @@ function modeOf(board: LeaderboardBoard): 'board' | 'blindfold' | null {
   return blindfoldBoardOpen() ? 'board' : null;
 }
 
-/** Filtering on both columns is what lets the query read the partial daily index, and the mode the partial blindfold one. */
+/**
+ * Filtering on both columns is what lets the query read the partial daily index, and the mode the partial blindfold one.
+ * A ranked row studied under the study floor is hidden, not deleted: rows written before the route enforced it stay stored.
+ */
 function rankedRows<Columns extends '*' | 'id'>(client: SupabaseClient, board: LeaderboardBoard, columns: Columns, options?: { count: 'exact'; head: true }) {
   const rows = client.from('leaderboard_entries').select(columns, options).eq('difficulty', board.difficulty).gt('correct_pieces', 0);
   if (board.difficulty === DAILY_BOARD) return rows.eq('daily_day', board.daily_day);
+  const studied = rows.gte('memorize_time', studyFloorSeconds(BOARD_PIECES[board.difficulty]));
   const mode = modeOf(board);
-  return mode === null ? rows : rows.eq('mode', mode);
+  return mode === null ? studied : studied.eq('mode', mode);
 }
 
 /**
@@ -134,7 +139,8 @@ async function readBoardCutoff(
     .from('leaderboard_entries')
     .select('correct_pieces,total_wrong_pieces,memorize_time,solution_time')
     .eq('difficulty', difficulty)
-    .gt('correct_pieces', 0);
+    .gt('correct_pieces', 0)
+    .gte('memorize_time', studyFloorSeconds(BOARD_PIECES[difficulty]));
   const mode = modeOf({ difficulty });
   const ranked = orderByRanking(mode === null ? board : board.eq('mode', mode));
 

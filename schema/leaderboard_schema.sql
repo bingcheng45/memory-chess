@@ -1,7 +1,7 @@
 -- Leaderboard database schema for Memory Chess
 --
 -- This describes leaderboard_entries as it stands after
--- schema/migrations/0008_leaderboard_mode.sql. The column list and its
+-- schema/migrations/0009_leaderboard_study_floor.sql. The column list and its
 -- order were taken from the live table, not from an earlier copy of this file:
 -- an older version omitted total_wrong_pieces for as long as that column had
 -- existed in production.
@@ -86,6 +86,12 @@ ALTER TABLE leaderboard_entries
 ALTER TABLE leaderboard_entries
   ADD CONSTRAINT check_memorize_time_longest
   CHECK (memorize_time <= 60);
+
+-- Added by 0009. Production holds it NOT VALID, so rows stored before 0009 may break it.
+-- Here it is plain, since a rebuilt table starts empty.
+ALTER TABLE leaderboard_entries
+  ADD CONSTRAINT check_memorize_time_floor
+  CHECK (memorize_time >= GREATEST(0.3, piece_count * 0.1));
 
 -- Added by 0008. The daily board is always studied on the board.
 ALTER TABLE leaderboard_entries

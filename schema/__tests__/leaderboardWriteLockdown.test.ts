@@ -294,6 +294,7 @@ describe("schema/leaderboard_schema.sql", () => {
   it("describes the same table, checks, policies and grants as production after the latest leaderboard migration", async () => {
     const fromMigration = await migrated();
     await fromMigration.rows(readFileSync(path.join(__dirname, "../migrations/0008_leaderboard_mode.sql"), "utf8"));
+    await fromMigration.rows(readFileSync(path.join(__dirname, "../migrations/0009_leaderboard_study_floor.sql"), "utf8"));
     const fromSnapshot = await supabaseLike();
     await fromSnapshot.rows(SNAPSHOT);
 

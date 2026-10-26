@@ -6,7 +6,8 @@ import { indexedLocalesOf, robotsFor } from '@/lib/seo/englishOnly';
 import { guidePath } from '@/lib/seo/learn/links';
 
 export function buildLearnPageMetadata(page: LearnPage, locale: string = DEFAULT_LOCALE): Metadata {
-  const { slug, title, description, publishedAt, updatedAt, keywords } = page.meta;
+  const { slug, description, publishedAt, updatedAt, keywords } = page.meta;
+  const title = locale === DEFAULT_LOCALE ? (page.meta.searchTitle ?? page.meta.title) : page.meta.title;
   const path = guidePath(slug);
   const locales = indexedLocalesOf(path);
   const robots = robotsFor(path, locale);

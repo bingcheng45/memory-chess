@@ -89,6 +89,21 @@ describe("the article registry", () => {
     }
   });
 
+  it("carries the English-only summary of an article into its list entry, and nothing when it has none", () => {
+    expect(summarize(makeArticle(0, { summary: "A one sentence summary." }), "en").summary).toBe("A one sentence summary.");
+    expect(summarize(makeArticle(0), "en")).not.toHaveProperty("summary");
+  });
+
+  it("gives every published article a summary of one or two sentences for the list", () => {
+    const sentences = (text: string) => text.split(/(?<=[.!?])\s+/);
+
+    for (const article of ARTICLES) {
+      expect(article.summary).toEqual(expect.any(String));
+      expect(sentences(article.summary ?? "").length).toBeGreaterThanOrEqual(1);
+      expect(sentences(article.summary ?? "").length).toBeLessThanOrEqual(2);
+    }
+  });
+
   it("prints the date of a summary on the server, in the language of the page", () => {
     const article = makeArticle(0, { publishedAt: "2026-10-03T00:00:00.000Z" });
 

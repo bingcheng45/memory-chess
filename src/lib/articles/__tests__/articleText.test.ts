@@ -66,6 +66,12 @@ describe("withText", () => {
     expect(translated.photo.changes).toBe("DE Cropped and resized");
   });
 
+  it("leaves the English-only summary off a translation", () => {
+    const withSummary = { ...english, summary: "English summary." };
+
+    expect(withText(withSummary, german)).not.toHaveProperty("summary");
+  });
+
   it("keeps the slug, the dates, the photo file, the drill numbers and the source links", () => {
     expect(translated.slug).toBe("alder-fixture");
     expect(translated.publishedAt).toBe("2026-01-01T00:00:00.000Z");

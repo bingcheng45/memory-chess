@@ -31,7 +31,28 @@ const html = renderToString(
   </NextIntlClientProvider>,
 );
 
+const renderCard = (summary: ReturnType<typeof summaryOf>) =>
+  renderToString(
+    <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
+      <ul>
+        <ArticleCard article={summary} priority />
+      </ul>
+    </NextIntlClientProvider>,
+  );
+
 describe("ArticleCard server HTML", () => {
+  it("prints the summary in place of the description when the article has one", () => {
+    const article = makeArticle(0, { description: "The short meta line.", summary: "The longer summary of the article." });
+    const card = renderCard(summaryOf(article));
+
+    expect(card).toContain("The longer summary of the article.");
+    expect(card).not.toContain("The short meta line.");
+  });
+
+  it("prints the description when the article has no summary", () => {
+    expect(renderCard(summaryOf(makeArticle(0, { description: "The short meta line." })))).toContain("The short meta line.");
+  });
+
   it("carries the parts a transition moves", () => {
     expect(html).toContain('data-flight="portrait"');
     expect(html).toContain('data-flight="title"');

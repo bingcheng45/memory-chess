@@ -20,7 +20,7 @@ const CARD_CLASS =
   "min-[561px]:grid-cols-[148px_minmax(0,1fr)] min-[561px]:gap-6 min-[561px]:p-5";
 
 export default function ArticleCard({ article, counts: listed, priority, style }: ArticleCardProps) {
-  const { slug, photo, person, publishedAt, publishedLabel, title, description } = article;
+  const { slug, photo, person, publishedAt, publishedLabel, title, description, summary } = article;
   const counts = atLeastLikesSeen(listed, useLikesSeen(slug));
   const descriptionId = `${slug}-description`;
   const countsId = `${slug}-counts`;
@@ -66,7 +66,7 @@ export default function ArticleCard({ article, counts: listed, priority, style }
             id={descriptionId}
             className={`art-card-desc ${ARTICLE_LONG_WORDS}`}
           >
-            {description}
+            {summary ?? description}
           </p>
           {hasCounts(counts) ? (
             <p

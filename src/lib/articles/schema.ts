@@ -77,6 +77,8 @@ export type Article = {
   readonly searchTitle?: string;
   readonly relatedGuides?: readonly ArticleRelatedGuide[];
   readonly description: string;
+  /** One or two sentences on what the article covers, printed under its card on the English list. English-only, so not part of `ArticleText`. */
+  readonly summary?: string;
   readonly person: ArticlePerson;
   readonly photo: ArticlePhoto;
   readonly facts: ArticleFacts;
@@ -117,7 +119,7 @@ export type ArticleListMeta = {
   readonly description: string;
 };
 
-export type ArticleSummary = Pick<Article, "slug" | "publishedAt" | "title" | "description" | "person"> & {
+export type ArticleSummary = Pick<Article, "slug" | "publishedAt" | "title" | "description" | "summary" | "person"> & {
   /** `publishedAt` formatted on the server for the page locale, so the browser never formats it with a second ICU. */
   readonly publishedLabel: string;
   readonly photo: PortraitPhoto;

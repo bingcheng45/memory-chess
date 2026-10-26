@@ -1,10 +1,12 @@
+import { setRequestLocale } from "next-intl/server";
 import { BrainLabHome } from "@/components/home/BrainLabHome";
 import { IntroShell } from "@/components/home/intro/IntroShell";
 import { RECORD_HINT } from "@/components/home/recordHint";
 import { HOME_INTRO } from "@/lib/home/intro/introGate";
 import { getTotalPlays } from "@/lib/services/totalPlays";
 
-export default async function Home() {
+export default async function Home({ params }: { readonly params: Promise<{ locale: string }> }) {
+  setRequestLocale((await params).locale);
   const plays = await getTotalPlays();
   return (
     <>

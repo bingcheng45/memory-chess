@@ -14,7 +14,7 @@ const GA_SESSION_TIMEOUT_SECONDS = 30 * 60;
  * GA4 starts a new session once a tab has sent nothing for 30 minutes, and credits its source and landing page to
  * the session's first event. A player who stays on /game sends only round events, so the new session would open on
  * one. The stub reads the last-hit time gtag.js keeps in its session cookie and sends a page_view first when the
- * session has lapsed. Navigations within a session stay with GA4's own history page views.
+ * session has lapsed, counting events still queued for gtag.js as activity so a page loading its library late sends one. Navigations within a session stay with GA4's own history page views.
  */
 export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
 (function () {
@@ -40,10 +40,11 @@ export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
       return address.split('#')[0].split('?')[0];
     }
   }
+  var lastQueued = 0;
   function sessionLapsed() {
     var cookie = document.cookie.match(/(?:^|; )_ga_${GA_MEASUREMENT_ID.slice(2)}=([^;]*)/);
     var lastHit = cookie && cookie[1].match(/\\$t(\\d+)/);
-    return !!lastHit && Date.now() / 1000 - Number(lastHit[1]) > ${GA_SESSION_TIMEOUT_SECONDS};
+    return !!lastHit && Date.now() - Math.max(Number(lastHit[1]) * 1000, lastQueued) > ${GA_SESSION_TIMEOUT_SECONDS * 1000};
   }
   function pageView() {
     var view = { page_location: withoutTypedText(location.href), page_referrer: withoutTypedText(document.referrer) };
@@ -51,7 +52,10 @@ export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
     window.gtag('event', 'page_view', view);
   }
   window.gtag = function () {
-    if (arguments[0] === 'event' && arguments[1] !== 'page_view' && sessionLapsed()) pageView();
+    if (arguments[0] === 'event') {
+      if (arguments[1] !== 'page_view' && sessionLapsed()) pageView();
+      lastQueued = Date.now();
+    }
     window.dataLayer.push(arguments);
   };
   gtag('js', new Date());

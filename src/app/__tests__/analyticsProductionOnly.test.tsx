@@ -258,12 +258,15 @@ describe("Google Analytics loading", () => {
       new Function(initScript())();
     });
 
-    const lastHitAt = (secondsAgo: number) => {
-      document.cookie = `_ga_R8BM9EMY9J=GS2.1.s${NOW_SECONDS - 9000}$o1$g1$t${NOW_SECONDS - secondsAgo}$j0$l0$h0`;
+    const dataLayer = () => (window as unknown as { dataLayer: IArguments[] }).dataLayer;
+
+    const idleFor = (minutes: number) => {
+      document.cookie = `_ga_R8BM9EMY9J=GS2.1.s${NOW_SECONDS}$o1$g1$t${NOW_SECONDS}$j0$l0$h0`;
+      jest.setSystemTime((NOW_SECONDS + minutes * 60) * 1000);
     };
 
     it("sends a page_view before the first event of the new session", () => {
-      lastHitAt(31 * 60);
+      idleFor(31);
 
       window.gtag("event", "round_start", { piece_count: 6 });
 
@@ -274,7 +277,7 @@ describe("Google Analytics loading", () => {
     });
 
     it("sends only the event while the session is still live", () => {
-      lastHitAt(29 * 60);
+      idleFor(29);
 
       window.gtag("event", "round_start", { piece_count: 6 });
       window.gtag("set", "user_properties", { result_view: "overlay" });
@@ -285,14 +288,44 @@ describe("Google Analytics loading", () => {
       ]);
     });
 
+    it("sends one page_view, not one per event, while gtag.js has yet to load and the cookie is stale", () => {
+      jest.setSystemTime((NOW_SECONDS + 5 * 3600) * 1000);
+      document.cookie = `_ga_R8BM9EMY9J=GS2.1.s${NOW_SECONDS}$o1$g1$t${NOW_SECONDS}$j0$l0$h0`;
+      dataLayer().length = 0;
+      new Function(initScript())();
+
+      window.gtag("event", "learn_search", { query_length: 4 });
+      window.gtag("event", "learn_search_select", {});
+
+      const views = dataLayer().map((args) => Array.from(args)).filter((command) => command[1] === "page_view");
+      expect(views).toHaveLength(1);
+    });
+
+    it("sends a page_view again once 30 minutes pass after the last queued event", () => {
+      idleFor(31);
+      window.gtag("event", "round_start", {});
+      jest.setSystemTime((NOW_SECONDS + 62 * 60) * 1000);
+
+      window.gtag("event", "round_start", {});
+
+      expect(commandsAfterLanding().map((command) => command[1])).toEqual([
+        "page_view",
+        "round_start",
+        "page_view",
+        "round_start",
+      ]);
+    });
+
     it("sends only the event before gtag.js has written a session cookie", () => {
+      jest.setSystemTime((NOW_SECONDS + 3600) * 1000);
+
       window.gtag("event", "round_start", { piece_count: 6 });
 
       expect(commandsAfterLanding()).toEqual([["event", "round_start", { piece_count: 6 }]]);
     });
 
     it("does not count a page_view twice when the page_view itself arrives after the lapse", () => {
-      lastHitAt(31 * 60);
+      idleFor(31);
 
       window.gtag("event", "page_view", { page_location: "http://localhost/learn" });
 

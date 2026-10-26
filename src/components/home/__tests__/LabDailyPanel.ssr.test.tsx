@@ -12,7 +12,7 @@ describe("today's board panel server render", () => {
       </NextIntlClientProvider>,
     );
 
-    expect(html).toContain('<a class="lab-btn lab-btn-secondary lab-daily-play" href="/game?pieceCount=6&amp;memorizeTime=10&amp;source=daily">Play today&#x27;s board<!-- --> →</a>');
+    expect(html).toContain('<a class="lab-btn lab-btn-secondary lab-daily-play" href="/game?pieceCount=6&amp;memorizeTime=10&amp;from=daily">Play today&#x27;s board<!-- --> →</a>');
     expect(html).not.toContain("Today&#x27;s board has");
   });
 });

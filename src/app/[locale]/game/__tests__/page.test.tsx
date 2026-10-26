@@ -116,6 +116,23 @@ describe("GamePage URL-driven start", () => {
     expect(window.location.pathname + window.location.search).toBe("/game");
   });
 
+  it("starts the round with the source a from= link names and clears from= from the address", async () => {
+    window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&from=guide_cta&challenge=x");
+
+    render(<GamePage />);
+
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(12, 8, "guide_cta"));
+    expect(window.location.search).toBe("?challenge=x");
+  });
+
+  it("prefers from= over a legacy source= when a link has both", async () => {
+    window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=guide_cta&from=plan");
+
+    render(<GamePage />);
+
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(12, 8, "plan"));
+  });
+
   it("reads an unknown source as a plain link", async () => {
     window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=newsletter%3Cx%3E");
 

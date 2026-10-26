@@ -110,7 +110,7 @@ describe("DashboardRating", () => {
     renderWithIntl(<DashboardRating history={null} />);
 
     expect(screen.getByText("Play a rated round in the game to start your rating line.")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
+    expect(screen.getByRole("link", { name: "Play a round →" })).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&from=dashboard");
     expect(document.querySelector(".lab-pc-svg")).toBeNull();
   });
 

@@ -20,7 +20,7 @@ import { PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 import { warmResultDeltas } from '@/components/game/resultDeltasWarm';
 import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
-import { isBlindfoldSearch, ROUND_PARAMS } from '@/lib/game/roundLink';
+import { isBlindfoldSearch, ROUND_PARAM_NAMES, ROUND_PARAMS, roundSourceParam } from '@/lib/game/roundLink';
 import { GAME_CONFIG_RULES, parseGameSettings } from '@/lib/game/configPrefill';
 import '@/components/game/game-lab.css';
 // Loaded with the page, not with the result figures the round warms: Next commits a stylesheet a lazy chunk brings
@@ -91,7 +91,7 @@ function readUrlRound(): UrlRound | null {
   const memorizeTimeParam = params.get(ROUND_PARAMS.memorizeTime);
   if (!pieceCountParam && !memorizeTimeParam) return null;
 
-  const source = roundSourceFrom(params.get(ROUND_PARAMS.source));
+  const source = roundSourceFrom(roundSourceParam(params));
   const settings = parseGameSettings(
     {
       pieceCount: pieceCountParam ? parseInt(pieceCountParam) : 8,
@@ -106,8 +106,8 @@ function readUrlRound(): UrlRound | null {
 /** A refresh then opens the configuration screen instead of restarting the round. */
 function clearRoundParams(): void {
   const params = new URLSearchParams(window.location.search);
-  if (!Object.values(ROUND_PARAMS).some((name) => params.has(name))) return;
-  Object.values(ROUND_PARAMS).forEach((name) => params.delete(name));
+  if (!ROUND_PARAM_NAMES.some((name) => params.has(name))) return;
+  ROUND_PARAM_NAMES.forEach((name) => params.delete(name));
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
 }

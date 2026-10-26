@@ -65,7 +65,7 @@ describe("CalibrationSection", () => {
     expect(screen.getByText(/start on Easy, 2 pieces at 10s/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Play Easy/ })).toHaveAttribute(
       "href",
-      "/game?pieceCount=2&memorizeTime=10&source=calibration_cta",
+      "/game?pieceCount=2&memorizeTime=10&from=calibration_cta",
     );
   });
 

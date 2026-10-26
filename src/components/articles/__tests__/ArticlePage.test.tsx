@@ -200,10 +200,10 @@ describe("ArticlePage body", () => {
     const { container } = renderPage();
 
     expect(Array.from(container.querySelectorAll('a[href^="/game"]'), (link) => [link.getAttribute("href"), link.textContent])).toEqual([
-      ["/game?pieceCount=4&memorizeTime=10&source=article_cta", "Your turnPlay 4 pieces, 10 seconds→"],
-      ["/game?pieceCount=12&memorizeTime=5&source=article_cta", "Play 12 pieces, 5 seconds"],
-      ["/game?pieceCount=4&memorizeTime=10&source=article_cta", `Your turn${article.drill.why}Play 4 pieces, 10 seconds`],
-      ["/game?pieceCount=12&memorizeTime=5&source=article_cta", "Play 12 pieces, 5 seconds"],
+      ["/game?pieceCount=4&memorizeTime=10&from=article_cta", "Your turnPlay 4 pieces, 10 seconds→"],
+      ["/game?pieceCount=12&memorizeTime=5&from=article_cta", "Play 12 pieces, 5 seconds"],
+      ["/game?pieceCount=4&memorizeTime=10&from=article_cta", `Your turn${article.drill.why}Play 4 pieces, 10 seconds`],
+      ["/game?pieceCount=12&memorizeTime=5&from=article_cta", "Play 12 pieces, 5 seconds"],
     ]);
   });
 
@@ -212,7 +212,7 @@ describe("ArticlePage body", () => {
     try {
       const { container } = renderPage();
 
-      expect(container.querySelector("a[data-article-early-drill]")).toHaveAttribute("href", "/game?pieceCount=8&memorizeTime=10&source=article_cta");
+      expect(container.querySelector("a[data-article-early-drill]")).toHaveAttribute("href", "/game?pieceCount=8&memorizeTime=10&from=article_cta");
       expect(container.querySelector("a[data-article-drill]")).toHaveTextContent("Play 8 pieces, 10 seconds");
     } finally {
       localStorage.clear();

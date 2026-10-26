@@ -81,7 +81,7 @@ describe("LearnSearch", () => {
     expect(screen.getByRole("link", { name: "Practice and review" })).toHaveAttribute("href", "#practice");
     expect(screen.getByRole("link", { name: "Play a 6-piece round" })).toHaveAttribute(
       "href",
-      "/game?pieceCount=6&memorizeTime=10&source=guide_cta",
+      "/game?pieceCount=6&memorizeTime=10&from=guide_cta",
     );
   });
 

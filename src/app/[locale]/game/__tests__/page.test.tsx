@@ -126,11 +126,11 @@ describe("GamePage URL-driven start", () => {
   });
 
   it("prefers from= over a legacy source= when a link has both", async () => {
-    window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=plan&from=review");
+    window.history.pushState({}, "", "/game?pieceCount=12&memorizeTime=8&source=guide_cta&from=plan");
 
     render(<GamePage />);
 
-    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(12, 8, "review"));
+    await waitFor(() => expect(mockPrepareGame).toHaveBeenCalledWith(12, 8, "plan"));
   });
 
   it("reads an unknown source as a plain link", async () => {

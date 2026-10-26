@@ -28,7 +28,7 @@ export function RemindMe({ surface }: { surface: ReminderSurface }) {
   function remind() {
     const now = Date.now();
     const opens = now + msToNextUtcDay(now);
-    const time = format.dateTime(opens, { hour: "numeric", minute: "2-digit" });
+    const time = format.dateTime(opens, { hour: "numeric", minute: "2-digit", timeZone: Intl.DateTimeFormat().resolvedOptions().timeZone });
     download(reminderIcs(now, { title: t("remindTitle"), description: t("remindDescription", { time }) }), REMINDER_FILENAME);
     setSaved(true);
     trackEvent({ name: "reminder_set", params: { surface } });

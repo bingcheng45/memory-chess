@@ -109,4 +109,11 @@ describe("the honest board", () => {
     expect(screen.getByText("No one has joined today's board yet. Play it and be the first.")).toBeInTheDocument();
     expect(screen.queryByRole("table")).not.toBeInTheDocument();
   });
+
+  it("says 200+ rather than an exact count when the read hit its row limit", () => {
+    const many = Array.from({ length: 200 }, (_, i) => row(i + 1, 6, 9 + i));
+    view(many, "2026-10-14");
+
+    expect(screen.getByText("Players who joined yesterday's board: 200+")).toBeInTheDocument();
+  });
 });

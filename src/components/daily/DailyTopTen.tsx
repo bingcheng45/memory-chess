@@ -2,6 +2,7 @@
 
 import { useFormatter, useTranslations } from "next-intl";
 import { Link } from "@/i18n/navigation";
+import { LEADERBOARD_ROW_LIMIT } from "@/lib/reference/facts";
 import { START_RATING } from "@/lib/game/rating";
 import type { DailyEntry } from "@/lib/lab/entries";
 import { flagEmoji, parseCountryCode, WORLD_CODE } from "@/lib/leaderboard/countries";
@@ -90,7 +91,7 @@ export function DailyTopTen({ rows, today, joined, played }: DailyTopTenProps) {
       </p>
       {joinedLine !== null && (
         <p className="daily-note daily-joined">
-          <strong>{t(joinedLine, { count: format.number(all.length) })}</strong>
+          <strong>{t(joinedLine, { count: all.length >= LEADERBOARD_ROW_LIMIT ? `${format.number(LEADERBOARD_ROW_LIMIT)}+` : format.number(all.length) })}</strong>
           {joinedLine === "joinedToday" && <span className="daily-hint"> {t("listFrom", { min: MIN_LISTED })}</span>}
         </p>
       )}

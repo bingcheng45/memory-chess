@@ -74,3 +74,22 @@ describe("RemindMe", () => {
     expect(screen.getByRole("region", { name: "Tomorrow's board" })).toContainElement(screen.getByRole("button", { name: "Remind me daily" }));
   });
 });
+
+describe("RemindMe in a provider that resolved the server's time zone", () => {
+  it("writes the opening time in the browser's zone, not the provider's", async () => {
+    jest.spyOn(Intl.DateTimeFormat.prototype, "resolvedOptions").mockReturnValue({ timeZone: "Asia/Tokyo" } as Intl.ResolvedDateTimeFormatOptions);
+    const { NextIntlClientProvider } = await import("next-intl");
+    const messages = (await import("../../../../messages/en.json")).default;
+    const { render: plainRender } = await import("@testing-library/react");
+    plainRender(
+      <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
+        <RemindMe surface="daily" />
+      </NextIntlClientProvider>,
+    );
+
+    fireEvent.click(screen.getByRole("button", { name: "Remind me daily" }));
+
+    const ics = (await textOf(blobs[0])).replace(/\r\n /g, "");
+    expect(ics).toContain("DESCRIPTION:A new board opens at 9:00 AM\\, your local time.");
+  });
+});

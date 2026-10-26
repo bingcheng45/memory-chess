@@ -5,11 +5,19 @@ import {
   getGameMetric, 
   incrementGameMetric 
 } from '@/lib/services/gameStatsService';
+import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
+import { isJson, readBodyWithinLimit } from '@/lib/server/requestBody';
 import { reportServerError, type ServerErrorKind } from '@/lib/server/serverErrors';
 
 const COUNTED_METRIC = 'total_plays';
 const READ_FAILED = 'Game stats are unavailable';
 const COUNT_FAILED = 'The play could not be counted';
+
+const MAX_BODY_BYTES = 128;
+
+/** A round takes seconds and counts once; this many from one address in a minute is a script inflating total_plays. */
+const COUNTS_PER_WINDOW = 30;
+const allowCount = fixedWindowLimiter({ limit: COUNTS_PER_WINDOW, windowMs: 60_000, maxKeys: 5_000 });
 
 const kindOf = (error: string | undefined): ServerErrorKind =>
   error?.startsWith(DATABASE_CONNECTION_ISSUE) ? 'unavailable' : 'failed';
@@ -89,9 +97,26 @@ export async function GET(request: NextRequest) {
  * Body: { metric: "total_plays", increment: 1 }
  */
 export async function POST(request: NextRequest) {
+  const verdict = allowCount(clientAddress(request.headers), Date.now());
+  if (!verdict.allowed) {
+    return NextResponse.json(
+      { error: 'Too many requests' },
+      { status: 429, headers: { 'Retry-After': String(verdict.retryAfterSeconds) } }
+    );
+  }
+
+  if (!isJson(request.headers.get('content-type'))) {
+    return NextResponse.json({ error: 'Content-Type must be application/json' }, { status: 415 });
+  }
+
+  const text = await readBodyWithinLimit(request, MAX_BODY_BYTES);
+  if (text === null) {
+    return NextResponse.json({ error: 'Request body is too large' }, { status: 413 });
+  }
+
   let body: unknown;
   try {
-    body = await request.json();
+    body = JSON.parse(text);
   } catch {
     return NextResponse.json({ error: 'Invalid JSON request body' }, { status: 400 });
   }

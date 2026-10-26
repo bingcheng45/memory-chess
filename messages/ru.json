@@ -1088,9 +1088,9 @@
       "personalBest": "Новый личный рекорд на этом уровне. Зафиксируйте его.",
       "leaderboardQualifies": "С этим результатом вы попадёте в таблицу лидеров. Займите своё место.",
       "claimLine": {
-        "qualifies": "{difficulty}: с {accuracy}% вы попадёте в таблицу лидеров.",
-        "open": "{difficulty}: узнайте, какое место займёт {accuracy}%.",
-        "claim": "Занять место",
+        "qualifies": "{difficulty}: с {accuracy}% вы в таблице лидеров.",
+        "open": "{difficulty}: узнайте место для {accuracy}%.",
+        "claim": "Занять",
         "submit": "Отправить"
       },
       "viewLeaderboard": "Таблица лидеров",

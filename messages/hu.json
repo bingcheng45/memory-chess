@@ -1088,9 +1088,9 @@
       "personalBest": "Új egyéni csúcs ezen a szinten. Rögzítsd.",
       "leaderboardQualifies": "Az eredményed felférne a ranglistára. Foglald el a helyed.",
       "claimLine": {
-        "qualifies": "{difficulty}: a {accuracy}%-os eredmény felférne a ranglistára.",
-        "open": "{difficulty}: nézd meg, hova kerül a {accuracy}%.",
-        "claim": "Foglald el",
+        "qualifies": "{difficulty}: felférsz a ranglistára ({accuracy}%).",
+        "open": "{difficulty}: nézd meg a helyed ({accuracy}%).",
+        "claim": "Foglald",
         "submit": "Beküldés"
       },
       "viewLeaderboard": "Ranglista megtekintése",

@@ -1088,9 +1088,9 @@
       "personalBest": "Uusi oma ennätys tällä tasolla. Kirjaa se.",
       "leaderboardQualifies": "Tuloksesi pääsisi tulostaulukkoon. Varaa paikkasi.",
       "claimLine": {
-        "qualifies": "{difficulty}: {accuracy} % pääsisi tulostaulukkoon.",
-        "open": "{difficulty}: katso, mihin {accuracy} % sijoittuu.",
-        "claim": "Varaa paikka",
+        "qualifies": "{difficulty}: {accuracy} % pääsee tulostaululle.",
+        "open": "{difficulty}: katso sijoitus ({accuracy} %).",
+        "claim": "Varaa",
         "submit": "Lähetä"
       },
       "viewLeaderboard": "Katso tulostaulukko",

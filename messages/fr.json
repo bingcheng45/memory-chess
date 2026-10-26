@@ -1088,10 +1088,10 @@
       "personalBest": "Nouveau record personnel à ce niveau. Inscrivez-le.",
       "leaderboardQualifies": "Votre score entrerait au classement. Réservez votre place.",
       "claimLine": {
-        "qualifies": "{difficulty} : {accuracy} % entrerait au classement.",
-        "open": "{difficulty} : découvrez le rang de {accuracy} %.",
-        "claim": "Le réclamer",
-        "submit": "L’envoyer"
+        "qualifies": "{difficulty} : {accuracy} % entre au classement.",
+        "open": "{difficulty} : voyez le rang de {accuracy} %.",
+        "claim": "Réserver",
+        "submit": "Envoyer"
       },
       "viewLeaderboard": "Voir le classement",
       "dialog": {

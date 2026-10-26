@@ -1088,10 +1088,10 @@
       "personalBest": "Ny personlig rekord på dette nivået. Få den på listen.",
       "leaderboardQualifies": "Resultatet ditt ville kommet på topplisten. Ta plassen din.",
       "claimLine": {
-        "qualifies": "{difficulty}: {accuracy} % ville kommet på topplisten.",
-        "open": "{difficulty}: se hvor {accuracy} % havner på topplisten.",
+        "qualifies": "{difficulty}: {accuracy} % kommer på topplisten.",
+        "open": "{difficulty}: se plasseringen ({accuracy} %).",
         "claim": "Ta plassen",
-        "submit": "Send inn"
+        "submit": "Send"
       },
       "viewLeaderboard": "Se topplisten",
       "dialog": {

@@ -1088,10 +1088,10 @@
       "personalBest": "इस स्तर पर नया व्यक्तिगत सर्वश्रेष्ठ। इसे दर्ज करें।",
       "leaderboardQualifies": "आपका स्कोर लीडरबोर्ड में जगह बना लेगा। अपनी जगह पक्की करें।",
       "claimLine": {
-        "qualifies": "{difficulty}: {accuracy}% स्कोर लीडरबोर्ड में जगह बना लेगा।",
-        "open": "{difficulty}: देखें कि {accuracy}% कहाँ रैंक करता है।",
-        "claim": "जगह पक्की करें",
-        "submit": "स्कोर भेजें"
+        "qualifies": "{difficulty}: {accuracy}% से लीडरबोर्ड में जगह मिलेगी।",
+        "open": "{difficulty}: {accuracy}% की रैंक देखें।",
+        "claim": "पक्का करें",
+        "submit": "भेजें"
       },
       "viewLeaderboard": "लीडरबोर्ड देखें",
       "dialog": {

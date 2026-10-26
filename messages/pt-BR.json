@@ -1088,9 +1088,9 @@
       "personalBest": "Novo recorde pessoal neste nível. Registre no ranking.",
       "leaderboardQualifies": "Sua pontuação entraria no ranking. Garanta sua vaga.",
       "claimLine": {
-        "qualifies": "{difficulty}: {accuracy}% entraria no ranking.",
+        "qualifies": "{difficulty}: {accuracy}% entra no ranking.",
         "open": "{difficulty}: veja em que posição fica {accuracy}%.",
-        "claim": "Garantir vaga",
+        "claim": "Garantir",
         "submit": "Enviar"
       },
       "viewLeaderboard": "Ver o ranking",

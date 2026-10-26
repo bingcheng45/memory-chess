@@ -5,6 +5,7 @@ import type { LearnPage } from ".";
 import { LEARN_GUIDE_COPY, type GuideCopy } from "./guideCopy";
 import { guidePath } from "./links";
 import { type ComparedProduct, LEARN_AUTHOR } from "./schema";
+import { searchTitleOf } from "./text";
 
 const SITE_URL = "https://thememorychess.com";
 const HUB_URL = `${SITE_URL}/learn`;
@@ -16,6 +17,7 @@ const byName = (a: ComparedProduct, b: ComparedProduct) => a.name.localeCompare(
 
 export function guideStructuredData(page: LearnPage, locale: string = DEFAULT_LOCALE, copy: GuideCopy = LEARN_GUIDE_COPY) {
   const { meta } = page;
+  const title = searchTitleOf(meta, locale);
   const url = localizedUrl(guidePath(meta.slug), locale);
   const englishUrl = guideUrl(meta.slug);
 
@@ -26,7 +28,7 @@ export function guideStructuredData(page: LearnPage, locale: string = DEFAULT_LO
         "@type": "Article",
         "@id": `${url}#article`,
         headline: meta.h1,
-        name: meta.title,
+        name: title,
         description: meta.description,
         image: { "@type": "ImageObject", url: `${englishUrl}/opengraph-image`, width: 1200, height: 630 },
         datePublished: meta.publishedAt,
@@ -47,7 +49,7 @@ export function guideStructuredData(page: LearnPage, locale: string = DEFAULT_LO
         "@type": "WebPage",
         "@id": `${url}#webpage`,
         url,
-        name: meta.title,
+        name: title,
         description: meta.description,
         inLanguage: languageTag(locale),
         isPartOf: { "@type": "CollectionPage", "@id": `${HUB_URL}#webpage` },
@@ -60,7 +62,7 @@ export function guideStructuredData(page: LearnPage, locale: string = DEFAULT_LO
         itemListElement: [
           { "@type": "ListItem", position: 1, name: copy.breadcrumbHome, item: localizedUrl("/", locale) },
           { "@type": "ListItem", position: 2, name: copy.breadcrumbLearn, item: HUB_URL },
-          { "@type": "ListItem", position: 3, name: meta.title, item: url },
+          { "@type": "ListItem", position: 3, name: title, item: url },
         ],
       },
       ...(page.comparison?.products
@@ -68,7 +70,7 @@ export function guideStructuredData(page: LearnPage, locale: string = DEFAULT_LO
             {
               "@type": "ItemList",
               "@id": `${url}#compared`,
-              name: meta.title,
+              name: title,
               itemListOrder: "https://schema.org/ItemListOrderAscending",
               numberOfItems: page.comparison.products.length,
               itemListElement: [...page.comparison.products].sort(byName).map((product, index) => ({

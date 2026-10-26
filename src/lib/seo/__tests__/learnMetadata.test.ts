@@ -97,7 +97,7 @@ describe("buildLearnPageMetadata", () => {
     }
   });
 
-  it("titles the English visualization guide with its search title, in the page, the card and the share image text", () => {
+  it("titles the English visualization guide with its search title in the page, Open Graph and X card titles", () => {
     const metadata = buildLearnPageMetadata(pageFor("chess-visualization-exercises"));
 
     expect(metadata.title).toBe("Chess Visualization Exercises: Test and Train");

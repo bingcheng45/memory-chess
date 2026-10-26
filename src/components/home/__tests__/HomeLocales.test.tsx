@@ -1,3 +1,4 @@
+import { setRequestLocale } from "next-intl/server";
 import Home from "@/app/[locale]/(home)/page";
 import { renderWithIntl, screen } from "@/test-utils/intl";
 import english from "../../../../messages/en.json";
@@ -8,6 +9,8 @@ import japanese from "../../../../messages/ja.json";
 jest.mock("@/components/ui/LanguageSettings", () => function MockLanguageSettings() {
   return null;
 });
+
+jest.mock("next-intl/server", () => ({ ...jest.requireActual("next-intl/server"), setRequestLocale: jest.fn() }));
 
 jest.mock("@/lib/services/totalPlays", () => ({
   getTotalPlays: async () => ({ plays: 49631, asOf: "2026-10-19T18:30:00.000Z" }),
@@ -21,8 +24,14 @@ beforeEach(() => {
 });
 
 describe("homepage locales", () => {
+  it.each(["en", "de", "ja"])("fixes the request locale to %s before it renders, so static rendering does not lean on the layout", async (locale) => {
+    await Home({ params: Promise.resolve({ locale }) });
+
+    expect(setRequestLocale).toHaveBeenLastCalledWith(locale);
+  });
+
   it("serves English the Brain Lab under its one heading", async () => {
-    const { container } = renderWithIntl(await Home());
+    const { container } = renderWithIntl(await Home({ params: Promise.resolve({ locale: "en" }) }));
 
     await screen.findByRole("heading", { level: 1 });
     expect(container.querySelector(".lab-paper")).not.toBeNull();
@@ -39,7 +48,7 @@ describe("homepage locales", () => {
     ["de", german],
     ["ja", japanese],
   ])("serves %s the Brain Lab in its own words", async (locale, messages) => {
-    const { container } = renderWithIntl(await Home(), { locale, messages });
+    const { container } = renderWithIntl(await Home({ params: Promise.resolve({ locale }) }), { locale, messages });
 
     expect(await screen.findByRole("heading", { level: 1 })).toHaveTextContent(messages.home.hero.title);
     expect(container.querySelector(".lab-paper")).not.toBeNull();
@@ -51,7 +60,7 @@ describe("homepage locales", () => {
 describe("homepage play count", () => {
   it("shows the server's finished-game count before the browser's own request answers", async () => {
     global.fetch = jest.fn(() => new Promise<Response>(() => {}));
-    renderWithIntl(await Home());
+    renderWithIntl(await Home({ params: Promise.resolve({ locale: "en" }) }));
 
     const lead = document.querySelector(".lab-fact-lead");
     expect(lead?.textContent).toBe("49,631games played");

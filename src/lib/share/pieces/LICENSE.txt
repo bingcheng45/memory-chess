@@ -1,5 +1,5 @@
 Chess piece artwork by Cburnett, from Wikimedia Commons (https://commons.wikimedia.org/wiki/Category:SVG_chess_pieces).
-The same files the game loads from upload.wikimedia.org (src/utils/chessPieces.ts), copied unchanged:
+The same files the game serves from /pieces (public/pieces, via src/utils/chessPieces.ts), copied unchanged:
 Chess_{k,q,r,b,n,p}{l,d}t45.svg, saved here as <colour>-<piece>.svg.
 
 The author releases them under GFDL, BSD and GPL (and CC BY-SA 3.0 by migration). Memory Chess uses them under the

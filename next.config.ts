@@ -37,6 +37,9 @@ const REPORT_ONLY_POLICY = [
   "form-action 'self'",
 ].join("; ");
 
+/** The piece names are not hashed, so a day is fresh and a week may be served stale while it revalidates. */
+const PIECES_CACHE_CONTROL = "public, max-age=86400, stale-while-revalidate=604800";
+
 const SECURITY_HEADERS = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
@@ -58,7 +61,10 @@ const nextConfig: NextConfig = {
    */
   skipTrailingSlashRedirect: true,
   async headers() {
-    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+    return [
+      { source: "/:path*", headers: SECURITY_HEADERS },
+      { source: "/pieces/:path*", headers: [{ key: "Cache-Control", value: PIECES_CACHE_CONTROL }] },
+    ];
   },
   async redirects() {
     return [
@@ -80,16 +86,6 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["google-auth-library"],
   /** The share preview reads its fonts from disk at request time, which tracing cannot see on its own. */
   outputFileTracingIncludes: { "/api/share/**": ["./src/lib/share/fonts/*.ttf", "./src/lib/share/pieces/*.svg"] },
-  images: {
-    domains: [],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "upload.wikimedia.org",
-        pathname: "/wikipedia/commons/**",
-      },
-    ],
-  },
 };
 
 export default withNextIntl(nextConfig);

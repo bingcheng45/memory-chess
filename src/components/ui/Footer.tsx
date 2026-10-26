@@ -97,7 +97,7 @@ export default function Footer() {
       <div className="container mx-auto px-2 sm:px-4">
         <div className="mb-6 flex flex-wrap justify-center gap-x-6 gap-y-3">
           {FOOTER_LINKS.map((link) => (
-            <SiteLink key={link.href} href={link.href} label={t(link.labelKey)} className={FOOTER_LINK_CLASS} />
+            <SiteLink key={link.href} href={link.href} label={t(link.labelKey)} className={FOOTER_LINK_CLASS} prefetch={false} />
           ))}
           <CommunityLink placement="footer" className={FOOTER_LINK_CLASS}>
             {t("community.footer")}

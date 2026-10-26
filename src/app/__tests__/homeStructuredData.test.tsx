@@ -4,6 +4,8 @@ import HomePage from "@/app/[locale]/(home)/page";
 const ORGANIZATION_ID = "https://thememorychess.com/#organization";
 const WEBSITE_ID = "https://thememorychess.com/#website";
 
+jest.mock("next-intl/server", () => ({ ...jest.requireActual("next-intl/server"), setRequestLocale: jest.fn() }));
+
 jest.mock("@/i18n/navigation", () => ({ ...jest.requireActual("@/i18n/navigation"), usePathname: () => "/" }));
 
 jest.mock("@/lib/services/totalPlays", () => ({ getTotalPlays: async () => null }));
@@ -23,7 +25,7 @@ function jsonLdScripts(container: HTMLElement): Schema[] {
 }
 
 async function renderHome() {
-  const rendered = render(await HomePage());
+  const rendered = render(await HomePage({ params: Promise.resolve({ locale: "en" }) }));
   await screen.findByRole("heading", { level: 1 });
   return rendered;
 }

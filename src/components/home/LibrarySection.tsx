@@ -1,5 +1,3 @@
-"use client";
-
 import { useTranslations } from "next-intl";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";
@@ -24,7 +22,7 @@ export function LibrarySection() {
         <SectionHeading section="library" title={t("title")} lede={t("lede")} />
         <div className="lab-lib">
           {LIBRARY_GUIDES.map(({ id, slug }, index) => (
-            <EnglishOnlyLink key={id} href={`/learn/${slug}`}>
+            <EnglishOnlyLink key={id} href={`/learn/${slug}`} prefetch={false}>
               {(suffix) => (
                 <>
                   <span className="lab-k">{t("ref", { number: String(index + 1) })}</span>
@@ -40,7 +38,7 @@ export function LibrarySection() {
           ))}
         </div>
         <div className="lab-lib-more">
-          <EnglishOnlyLink href="/learn" className="lab-btn lab-btn-secondary">
+          <EnglishOnlyLink href="/learn" className="lab-btn lab-btn-secondary" prefetch={false}>
             {(suffix) => (
               <>
                 {learn("browseCta")}
@@ -48,7 +46,7 @@ export function LibrarySection() {
               </>
             )}
           </EnglishOnlyLink>
-          <EnglishOnlyLink href={`/learn/${BLUNDER_GUIDE}`} className="lab-btn lab-btn-secondary">
+          <EnglishOnlyLink href={`/learn/${BLUNDER_GUIDE}`} className="lab-btn lab-btn-secondary" prefetch={false}>
             {(suffix) => (
               <>
                 {t("blundering")}

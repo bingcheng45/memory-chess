@@ -13,7 +13,18 @@ async function headers(): Promise<Record<string, string>> {
 
 describe("response headers", () => {
   it("apply to every path: pages, API routes and static assets alike", async () => {
-    expect((await rules()).map((rule) => rule.source)).toEqual([EVERY_PATH]);
+    const every = (await rules()).filter((rule) => rule.source === EVERY_PATH);
+
+    expect(every).toHaveLength(1);
+    expect(every[0].headers.map(({ key }) => key)).toContain("X-Frame-Options");
+  });
+
+  it("let the piece images be cached for a day and served stale for a week, while the security headers still reach them", async () => {
+    const all = await rules();
+    const pieces = all.find((rule) => rule.source === "/pieces/:path*");
+
+    expect(pieces?.headers).toEqual([{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }]);
+    expect(all.filter((rule) => rule.source === EVERY_PATH || rule.source === "/pieces/:path*")).toHaveLength(2);
   });
 
   it("set the fixed security headers", async () => {

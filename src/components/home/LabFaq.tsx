@@ -1,5 +1,3 @@
-"use client";
-
 import { useTranslations } from "next-intl";
 import { FaqStructuredData, useFaqs } from "@/components/ui/FaqSection";
 import { LAB_SECTIONS, SectionHeading } from "./SectionHeading";

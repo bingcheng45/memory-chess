@@ -1,5 +1,3 @@
-"use client";
-
 import { useTranslations } from "next-intl";
 import TutorialVideoFrame from "@/components/ui/TutorialVideoFrame";
 import { TUTORIAL_VIDEO } from "@/components/ui/tutorialVideo";

@@ -174,7 +174,7 @@ export default function ChangelogBanner({
         className={look.aside}
       >
         <div className={look.row}>
-          <EnglishOnlyLink href="/changelog" className={look.link}>
+          <EnglishOnlyLink href="/changelog" className={look.link} prefetch={false}>
             {(suffix) => (
               <>
                 <span className={look.lead}>

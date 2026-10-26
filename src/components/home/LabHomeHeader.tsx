@@ -1,5 +1,3 @@
-"use client";
-
 import { useTranslations } from "next-intl";
 import { LabPaperHeader, type PageSections } from "@/components/lab-paper/LabPaperHeader";
 import { LAB_SECTIONS, type LabSectionId } from "./SectionHeading";

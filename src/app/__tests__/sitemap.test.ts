@@ -99,6 +99,14 @@ describe("sitemap", () => {
     }
   });
 
+  it("lists the daily board once, in English, and keeps its translations out of search", async () => {
+    const daily = (await sitemap()).filter((entry) => /\/daily$/.test(entry.url));
+
+    expect(daily.map((entry) => [entry.url, entry.alternates])).toEqual([["https://thememorychess.com/daily", undefined]]);
+    expect(robotsFor("/daily", "de")).toMatchObject({ index: false, follow: true });
+    expect(robotsFor("/daily", "en")).toBeUndefined();
+  });
+
   it("lists the recall data page once, in English, dated by the last day its data covers, and keeps translations out of search", async () => {
     const data = (await sitemap()).filter((entry) => /\/data$/.test(entry.url));
 

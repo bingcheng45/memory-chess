@@ -68,6 +68,8 @@ describe("the report-only content security policy", () => {
         "frame-src",
         "img-src",
         "object-src",
+        "report-to",
+        "report-uri",
         "script-src",
         "style-src",
       ].sort(),
@@ -101,10 +103,19 @@ describe("the report-only content security policy", () => {
     expect(policy["frame-ancestors"]).toEqual(["'none'"]);
   });
 
-  it("sends no report to a third party", async () => {
+  it("reports to this site's own endpoint, by report-uri and by report-to", async () => {
     const policy = (await headers())["Content-Security-Policy-Report-Only"];
 
-    expect(policy).not.toContain("report-uri");
-    expect(policy).not.toContain("report-to");
+    expect(policy).toContain("report-uri /api/csp-report");
+    expect(policy).toContain("report-to csp-endpoint");
+    expect(policy).not.toMatch(/https?:\/\/[^ ;]*(report|csp)/);
+  });
+
+  it("names the report-to group in a Reporting-Endpoints header that points at the same path", async () => {
+    expect((await headers())["Reporting-Endpoints"]).toBe('csp-endpoint="/api/csp-report"');
+  });
+
+  it("leaves the enforced policy at frame-ancestors only", async () => {
+    expect((await headers())["Content-Security-Policy"]).not.toContain("report");
   });
 });

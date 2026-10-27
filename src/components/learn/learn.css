@@ -154,6 +154,7 @@
   .lab-paper .lg-cols { display: flex; flex-direction: column; max-width: 700px; }
   .lab-paper .lg-main { display: contents; }
   .lab-paper .lg-answer { order: 1; width: 100%; }
+  .lab-paper .lg-try { order: 1; width: 100%; }
   .lab-paper .lg-rail { order: 2; position: static; max-height: none; overflow: visible; width: 100%; margin-top: 24px; padding: 20px 24px; background: var(--lp-surface); border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); }
   .lab-paper .lg-rail ol { border-left: 0; }
   .lab-paper .lg-rail ol::before { display: none; }
@@ -166,7 +167,8 @@
   .lab-paper .lg-guide { padding-top: 24px; padding-bottom: 64px; }
   .lab-paper .lg-head h1 { font-size: 34px; line-height: 1.1; }
   .lab-paper .lg-lede { font-size: 18px; }
-  .lab-paper .lg-answer, .lab-paper .lg-rail { padding: 20px; }
+  .lab-paper .lg-answer, .lab-paper .lg-rail, .lab-paper .lg-try { padding: 20px; }
+  .lab-paper .lg-try-board { width: min(100%, 180px); }
   .lab-paper .lg-quickplay { padding: 16px 20px; }
   .lab-paper .lg-answer-text { font-size: 18px; }
   .lab-paper .lg-body { font-size: 17px; line-height: 1.7; }

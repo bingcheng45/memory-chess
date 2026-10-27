@@ -778,11 +778,10 @@ describe("GameResult", () => {
       ]).toEqual([["Next round3 pcs / 10s"], true]);
     });
 
-    it("moves focus to View leaderboard when the dialog closes after a submit, since the prompt is gone", async () => {
+    it("moves focus to the claimed banner's View leaderboard link when the dialog closes after a submit, since the claim button is gone", async () => {
       mockGameState = perfectEasyGame;
       loadCutoffsMock.mockResolvedValue(CUTOFFS);
       await renderSettled();
-      const actions = screen.getByRole("navigation", { name: "Result actions" });
 
       fireEvent.click(screen.getByRole("button", { name: "Claim your spot" }));
       fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
@@ -791,7 +790,8 @@ describe("GameResult", () => {
       fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
 
       await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
-      await waitFor(() => expect(document.activeElement).toBe(within(actions).getByRole("link", { name: "View leaderboard" })));
+      await waitFor(() => expect(document.activeElement).toBe(within(claimBanner()!).getByRole("link", { name: "View leaderboard" })));
+      expect(claimBanner()!.contains(document.activeElement)).toBe(true);
       expect(document.querySelector(".lab-result-callout")).toBeNull();
     });
 

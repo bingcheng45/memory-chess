@@ -133,6 +133,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const openerRef = useRef<HTMLElement | null>(null);
   const claimTextId = useId();
   const leaderboardLinkRef = useRef<HTMLAnchorElement>(null);
+  const claimedLinkRef = useRef<HTMLAnchorElement>(null);
   // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
   // effect below would insert it a frame later and push down everything under it.
   const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(readCachedCutoffs);
@@ -369,8 +370,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   };
   const returnFocus = (event: Event) => {
     event.preventDefault();
-    // A submitted score takes both prompts away, so focus moves on to the leaderboard link.
-    (openerRef.current?.isConnected ? openerRef.current : leaderboardLinkRef.current)?.focus();
+    // A submitted score replaces the claim button, so focus moves to the claimed banner's link, where the confirmation is.
+    (openerRef.current?.isConnected ? openerRef.current : claimedLinkRef.current ?? leaderboardLinkRef.current)?.focus();
   };
   const openLeaderboardDialog = (event: MouseEvent<HTMLButtonElement>) => {
     openerRef.current = event.currentTarget;
@@ -386,7 +387,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <p role="status" className="lab-result-claim-text">
             {t("claimLine.claimed", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })}
           </p>
-          <Link href={submittedStandingHref} className="lab-btn lab-btn-secondary lab-result-claim-action">
+          <Link ref={claimedLinkRef} href={submittedStandingHref} className="lab-btn lab-btn-secondary lab-result-claim-action">
             {t("viewLeaderboard")}
           </Link>
         </>

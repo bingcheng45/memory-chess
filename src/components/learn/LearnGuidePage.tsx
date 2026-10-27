@@ -13,6 +13,7 @@ import GuideLink from "./GuideLink";
 import LearnBlockView, { type GuideContext, type TitleLookup } from "./LearnBlockView";
 import LearnQuickPlay from "./LearnQuickPlay";
 import LearnRailTracker from "./LearnRailTracker";
+import LearnTryIt from "./LearnTryIt";
 import "./learn.css";
 
 const AUTHOR_PATH = new URL(LEARN_AUTHOR.url).pathname;
@@ -202,6 +203,8 @@ export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGui
                 </>
               ) : null}
             </section>
+
+            {page.tryIt ? <LearnTryIt tryIt={page.tryIt} locale={locale} /> : null}
 
             <div className="lg-body">
               {page.sections.map((section) => (

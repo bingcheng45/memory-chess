@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Google Analyticsiin kirjatuista kierroksista julkaistaan koostetut muistamistilastot niille asetuksille, joissa on tarpeeksi kierroksia ja pelaajia.",
     "aboutLink": "Katso muistamistiedot"
+  },
+  "learnTryIt": {
+    "title": "Kokeile tässä",
+    "intro": "Tämän kokoinen kierros näyttää {pieces} nappulaa {seconds} s ajan. Sitten asetat ne muistista tyhjälle laudalle. Tässä on tämän kokoinen asetelma.",
+    "introBlindfold": "Tämän kokoinen kierros näyttää sinulle {pieces} nappulaa merkintätapana {seconds} s ajan, laudalla ei ole nappuloita. Sitten asetat ne muistista tyhjälle laudalle. Tässä on tämän kokoinen asetelma sellaisena kuin sen näkisit.",
+    "position": "Valkoinen: {white}. Musta: {black}.",
+    "start": "Aloita {pieces} nappulan kierros",
+    "startBlindfold": "Aloita {pieces} nappulan sokkokierros"
   }
 }

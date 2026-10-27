@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Samlede statistikker for genkaldelse fra runder registreret i Google Analytics offentliggøres for indstillinger med nok runder og spillere.",
     "aboutLink": "Se hukommelsesdataene"
+  },
+  "learnTryIt": {
+    "title": "Prøv her",
+    "intro": "En runde i denne størrelse viser {pieces} brikker i {seconds} s. Derefter placerer du dem fra hukommelsen på et tomt bræt. Her er en stilling i den størrelse.",
+    "introBlindfold": "En runde i denne størrelse viser dig {pieces} brikker som notation i {seconds} s, uden brikker på brættet. Derefter placerer du dem fra hukommelsen på et tomt bræt. Her er en stilling i den størrelse, som du ville se den.",
+    "position": "Hvid: {white}. Sort: {black}.",
+    "start": "Start en runde med {pieces} brikker",
+    "startBlindfold": "Start en blindrunde med {pieces} brikker"
   }
 }

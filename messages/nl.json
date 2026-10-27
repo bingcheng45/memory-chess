@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Geaggregeerde statistieken over onthouden uit rondes die in Google Analytics zijn vastgelegd, worden gepubliceerd voor instellingen met genoeg rondes en spelers.",
     "aboutLink": "Bekijk de geheugendata"
+  },
+  "learnTryIt": {
+    "title": "Probeer het hier",
+    "intro": "Een ronde van deze grootte toont {pieces} stukken gedurende {seconds} s. Daarna zet je ze uit het hoofd op een leeg bord. Hier is een stelling van die grootte.",
+    "introBlindfold": "Een ronde van deze grootte laat je {pieces} stukken als notatie zien gedurende {seconds} s, zonder stukken op het bord. Daarna zet je ze uit het hoofd op een leeg bord. Hier is een stelling van die grootte, zoals je hem zou zien.",
+    "position": "Wit: {white}. Zwart: {black}.",
+    "start": "Start een ronde met {pieces} stukken",
+    "startBlindfold": "Start een blinde ronde met {pieces} stukken"
   }
 }

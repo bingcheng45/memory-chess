@@ -1,6 +1,6 @@
 {
-  "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
-  "approvedHash": "81f728cb4e2dd1020a365ee88d9894ddc4a447663f6bdc7c0e2014a8aec5dae3",
+  "sourceHash": "c8fe10e00c01f59b9147f4ec2c02f03eafba8dc825e01522385d0897bc25d84e",
+  "approvedHash": "5363dcd8ea136bf28f2c6357ec033760b32b5dcebcf7d144ce62db0b66835df3",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -104,11 +104,11 @@
             "drills": [
               {
                 "title": "Rodada de memória com as bordas primeiro",
-                "description": "Jogue 3 rodadas de 12 peças com 8 segundos para olhar, apertando \"Tentar de novo\" entre as rodadas. Enquanto olha, leia primeiro as bordas, depois o meio. Posicione primeiro as peças das bordas. O tabuleiro de resultado marca com um anel cada casa que você esqueceu. Você passa quando nenhum anel cai numa casa da borda.",
-                "duration": "3 rodadas, cerca de 5 minutos",
+                "description": "Jogue 3 rodadas de 6 peças com 15 segundos para olhar, apertando \"Tentar de novo\" entre as rodadas. Enquanto olha, leia primeiro as bordas, depois o meio. Posicione primeiro as peças das bordas. O tabuleiro de resultado marca com um anel cada casa que você esqueceu. Você passa quando nenhum anel cai numa casa da borda. Quando passar, tente a rodada de 12 peças no fim deste guia.",
+                "duration": "3 rodadas, cerca de 3 minutos",
                 "goal": "Guardar as bordas e o meio ao mesmo tempo, em vez de um único grupo.",
                 "play": {
-                  "label": "Jogar 12 peças, 8 segundos"
+                  "label": "Jogar 6 peças, 15 segundos"
                 }
               },
               {

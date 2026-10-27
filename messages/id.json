@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Statistik agregat ingatan dari ronde yang tercatat di Google Analytics dipublikasikan, untuk pengaturan dengan cukup ronde dan pemain.",
     "aboutLink": "Lihat data ingatan"
+  },
+  "learnTryIt": {
+    "title": "Coba di sini",
+    "intro": "Satu ronde seukuran ini menampilkan {pieces} bidak selama {seconds} detik. Lalu bidak-bidak itu ditempatkan dari ingatan di papan kosong. Ini posisi seukuran itu.",
+    "introBlindfold": "Satu ronde seukuran ini menunjukkan {pieces} bidak dalam notasi selama {seconds} detik, tanpa bidak di papan. Lalu bidak-bidak itu ditempatkan dari ingatan di papan kosong. Ini posisi seukuran itu, seperti yang akan terlihat.",
+    "position": "Putih: {white}. Hitam: {black}.",
+    "start": "Mulai ronde dengan {pieces} bidak",
+    "startBlindfold": "Mulai ronde buta dengan {pieces} bidak"
   }
 }

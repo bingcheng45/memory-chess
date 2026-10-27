@@ -453,3 +453,44 @@ describe("the Also in line on the hub and the search page", () => {
     expect(alsoInOf(markup, "chess-memory-training")).toBeNull();
   });
 });
+
+describe("the Try it here block", () => {
+  const BLOCK = /<aside class="lg-try"[^>]*data-try-it[^>]*>[\s\S]*?<\/aside>/;
+  const blockOf = (markup: string) => markup.match(BLOCK)?.[0] ?? "";
+
+  it.each([
+    ["chess-calculation-exercises-for-beginners", "/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_try", "Start a round of 4 pieces"],
+    ["how-to-get-better-at-chess-for-beginners", "/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_try", "Start a round of 4 pieces"],
+    ["blindfold-chess-training-for-beginners", "/game?pieceCount=4&amp;memorizeTime=15&amp;from=guide_try&amp;mode=blindfold", "Start a blindfold round of 4 pieces"],
+  ])("puts a start link in the served HTML of %s, after the quick answer and before the first section", async (slug, href, label) => {
+    const markup = await guide(slug);
+    const block = blockOf(markup);
+
+    expect(block).toContain(`href="${href}"`);
+    expect([...block.matchAll(/<a [^>]*>(.*?)<\/a>/g)].map((match) => match[1])).toEqual([label]);
+    expect(markup.indexOf("lg-answer-label")).toBeLessThan(markup.indexOf(block));
+    expect(markup.indexOf(block)).toBeLessThan(markup.indexOf('<section id='));
+  });
+
+  it("draws a four-piece board with its pieces written out for a reader without the board", async () => {
+    const block = blockOf(await guide("chess-calculation-exercises-for-beginners"));
+
+    expect(block.match(/class="lg-piece"/g)).toHaveLength(4);
+    expect(block).toContain("White: Kg1, Nf3. Black: Ke8, Bd6.");
+  });
+
+  it("shows notation and no board on the blindfold guide", async () => {
+    const block = blockOf(await guide("blindfold-chess-training-for-beginners"));
+
+    expect(block).not.toContain("lg-board-plate");
+    expect(block).toContain("White: Kg1, Nf3. Black: Ke8, Bd6.");
+  });
+
+  it("adds no h2, so the contents rail and the section count are unchanged", async () => {
+    expect(blockOf(await guide("chess-calculation-exercises-for-beginners"))).not.toContain("<h2");
+  });
+
+  it("leaves a guide without the block alone", async () => {
+    expect(await guide("how-to-stop-blundering-in-chess")).not.toContain("data-try-it");
+  });
+});

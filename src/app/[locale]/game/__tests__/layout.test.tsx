@@ -79,7 +79,8 @@ describe("the game layout's articles for the result screen's tile", () => {
   it("hands a page whose locale serves the articles the translated titles, and no English one", async () => {
     const titles = await titlesGivenTo("de");
 
-    expect(titles).toHaveLength(ARTICLES.length);
+    // The three English-only articles are not served in German.
+    expect(titles).toHaveLength(ARTICLES.length - 3);
     expect(titles).toContain(germanCarlsen.text.title);
     expect(titles).not.toContain(ENGLISH_CARLSEN_TITLE);
   });

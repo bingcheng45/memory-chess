@@ -1,9 +1,9 @@
 import { DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
-import { servesArticlesIn } from "./articleLocales";
+import { isArticleServedIn, servesArticlesIn } from "./articleLocales";
 import { textOf, withText } from "./articleText";
 import { loadArticleChrome } from "./chrome";
 import { formatArticleDate } from "./format";
-import { ARTICLES, ARTICLE_SLUGS } from "./registry";
+import { ARTICLES } from "./registry";
 import type { Article, ArticleSummary } from "./schema";
 import { MAX_TILE_ARTICLES, tileArticleOf, type TileArticle } from "./tile";
 import { loadArticleText } from "./translations";
@@ -41,19 +41,21 @@ async function inLocale(english: Article, locale: Locale): Promise<Article> {
   return withText(english, await loadArticleText(english.slug, locale, textOf(english)));
 }
 
+const articlesIn = (locale: string) => ARTICLES.filter((article) => isArticleServedIn(article.slug, locale));
+
 /**
- * The article in `locale`, or `undefined` for an unknown slug. English is the
- * entry itself. Any other locale throws unless it has a reviewed translation of
+ * The article in `locale`, or `undefined` for a slug that locale does not serve.
+ * English is the entry itself. Any other locale throws unless it has a reviewed translation of
  * the current English text, and reviewed strings for the section, so a page
  * never mixes languages.
  */
 export async function getArticle(slug: string, locale: Locale): Promise<Article | undefined> {
-  const english = ARTICLES.find((article) => article.slug === slug);
+  const english = articlesIn(locale).find((article) => article.slug === slug);
   return english && inLocale(english, locale);
 }
 
 export async function getArticleSummaries(locale: Locale): Promise<readonly ArticleSummary[]> {
-  const articles = await Promise.all(ARTICLES.map((english) => inLocale(english, locale)));
+  const articles = await Promise.all(articlesIn(locale).map((english) => inLocale(english, locale)));
   return articles.map((article) => summarize(article, locale));
 }
 
@@ -63,13 +65,14 @@ export async function getArticleSummaries(locale: Locale): Promise<readonly Arti
  */
 export async function getTileArticles(locale: string): Promise<readonly TileArticle[]> {
   if (!servesArticlesIn(locale)) return [];
-  const newest = ARTICLES.slice(0, MAX_TILE_ARTICLES);
+  const newest = articlesIn(locale).slice(0, MAX_TILE_ARTICLES);
   const articles = await Promise.all(newest.map((english) => inLocale(english, locale)));
   return articles.map(tileArticleOf);
 }
 
 export async function getNextArticle(slug: string, locale: Locale): Promise<ArticleSummary | undefined> {
-  const index = ARTICLE_SLUGS.indexOf(slug);
-  if (index < 0 || ARTICLES.length < 2) return undefined;
-  return summarize(await inLocale(ARTICLES[(index + 1) % ARTICLES.length], locale), locale);
+  const served = articlesIn(locale);
+  const index = served.findIndex((article) => article.slug === slug);
+  if (index < 0 || served.length < 2) return undefined;
+  return summarize(await inLocale(served[(index + 1) % served.length], locale), locale);
 }

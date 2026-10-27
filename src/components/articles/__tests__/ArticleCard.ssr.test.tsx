@@ -59,6 +59,11 @@ describe("ArticleCard server HTML", () => {
     expect(html).toContain('data-flight="date"');
   });
 
+  it("marks the card of an article not yet translated, which only the English list prints", () => {
+    expect(renderCard(summaryOf(makeArticle(0, { slug: "garry-kasparov" })))).toContain("data-english-only-article=\"true\"");
+    expect(html).not.toContain("data-english-only-article");
+  });
+
   it("names none of them at rest, by attribute or by inline style", () => {
     expect(html).not.toContain("data-article-flight");
     expect(html).not.toContain("view-transition-name");

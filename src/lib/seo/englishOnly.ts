@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { DEFAULT_LOCALE, LOCALE_LABELS, LOCALES } from "@/i18n/routing";
-import { ARTICLES_PATH } from "@/lib/articles/paths";
+import { ARTICLES_PATH, articlePath } from "@/lib/articles/paths";
 import { localizedPath } from "@/lib/seo/alternates";
-import { TRANSLATED_ARTICLE_LOCALES } from "@/lib/articles/translatedLocales";
+import { ENGLISH_ONLY_ARTICLE_SLUGS, TRANSLATED_ARTICLE_LOCALES } from "@/lib/articles/translatedLocales";
 import { PAGE_ROUTES, TRANSLATED_PAGE_LOCALES } from "@/lib/pages/translatedLocales";
 import SERVED_GUIDES from "@/lib/seo/learn/servedGuides.json";
 import { TRANSLATED_GUIDE_LOCALES, TRANSLATED_GUIDE_SLUGS, isIndexedGuideLocale } from "@/lib/seo/learn/translatedGuides";
@@ -109,6 +109,8 @@ function guideRoute(slug: string): TranslatedRoute {
  * switcher and the Lab Paper shell all derive from it. A route here covers every path beneath it.
  */
 const TRANSLATED_ROUTES: readonly TranslatedRoute[] = [
+  // Ahead of `ARTICLES_PATH`, which also covers them: the first route that matches wins.
+  ...ENGLISH_ONLY_ARTICLE_SLUGS.map((slug) => ({ route: articlePath(slug), translatedLocales: [], indexed: [], withheld: [] })),
   { route: ARTICLES_PATH, translatedLocales: TRANSLATED_ARTICLE_LOCALES, indexed: [], withheld: [] },
   ...PAGE_ROUTES.map((route) => ({ route, translatedLocales: TRANSLATED_PAGE_LOCALES, indexed: [], withheld: [] })),
   ...TRANSLATED_GUIDE_SLUGS.map(guideRoute),

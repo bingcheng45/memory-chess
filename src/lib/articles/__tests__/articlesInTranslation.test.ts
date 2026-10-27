@@ -1,5 +1,6 @@
 import { ARTICLES, ARTICLE_SLUGS, getArticle, getArticleSummaries, getNextArticle } from "@/lib/articles";
 import { textOf } from "@/lib/articles/articleText";
+import { ENGLISH_ONLY_ARTICLE_SLUGS } from "@/lib/articles/translatedLocales";
 import { loadArticleChrome } from "@/lib/articles/chrome";
 import { loadArticleText, type TranslationSource } from "@/lib/articles/translations";
 import { markEveryString, reviewedTranslationOf } from "./fixtures";
@@ -98,8 +99,12 @@ describe("getArticleSummaries in a translated locale", () => {
     serveFrom(everyArticleInGerman);
     const summaries = await getArticleSummaries("de");
 
-    expect(summaries.map((summary) => summary.slug)).toEqual(ARTICLE_SLUGS);
-    expect(summaries.map((summary) => summary.title)).toEqual(ARTICLES.map((article) => `DE ${article.title}`));
+    // The three English-only articles are not served in German, so the list holds the older ones.
+    const served = ARTICLES.filter((article) => !ENGLISH_ONLY_ARTICLE_SLUGS.includes(article.slug));
+
+    expect(summaries.map((summary) => summary.slug)).toEqual(["magnus-carlsen", "adriaan-de-groot", "judit-polgar"]);
+    expect(summaries.map((summary) => summary.slug)).toEqual(served.map((article) => article.slug));
+    expect(summaries.map((summary) => summary.title)).toEqual(served.map((article) => `DE ${article.title}`));
     expect(summaries.find((summary) => summary.slug === SLUG)).toMatchObject({
       title: `DE ${ENGLISH_TITLE}`,
       person: { name: "DE Magnus Carlsen", role: "DE World Chess Champion, 2013-2023" },

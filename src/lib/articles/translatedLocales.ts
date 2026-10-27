@@ -39,3 +39,12 @@ export const TRANSLATED_ARTICLE_LOCALES: readonly Locale[] = [
   "da",
   "hu",
 ];
+
+/**
+ * Articles published in English before their translations exist. A translated
+ * locale leaves them out of its list, tile and next link, and
+ * `/<locale>/articles/<slug>` redirects to the English URL. The articles-i18n
+ * tool neither exports nor requires them. A slug leaves this list in the PR
+ * that adds its reviewed translations in every locale above.
+ */
+export const ENGLISH_ONLY_ARTICLE_SLUGS: readonly string[] = ["miguel-najdorf", "garry-kasparov", "dominic-obrien"];

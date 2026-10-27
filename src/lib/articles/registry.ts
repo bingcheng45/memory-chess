@@ -1,9 +1,12 @@
 import adriaanDeGroot from "./entries/adriaan-de-groot";
+import dominicObrien from "./entries/dominic-obrien";
+import garryKasparov from "./entries/garry-kasparov";
 import juditPolgar from "./entries/judit-polgar";
 import magnusCarlsen from "./entries/magnus-carlsen";
+import miguelNajdorf from "./entries/miguel-najdorf";
 import type { Article } from "./schema";
 
-const REGISTRY: readonly [Article, ...Article[]] = [magnusCarlsen, adriaanDeGroot, juditPolgar];
+const REGISTRY: readonly [Article, ...Article[]] = [magnusCarlsen, adriaanDeGroot, juditPolgar, miguelNajdorf, garryKasparov, dominicObrien];
 
 export function newestFirst(articles: readonly Article[]): Article[] {
   return [...articles].sort((a, b) => b.publishedAt.localeCompare(a.publishedAt));

@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# stjerne} other {# stjerner}}",
       "chooseRating": "Velg en vurdering i stjerner.",
       "sendFailed": "Vi klarte ikke å sende tilbakemeldingen. Prøv igjen eller velg Ikke nå.",
+      "rateLimited": "For mange meldinger fra denne tilkoblingen. Prøv igjen om {minutes, plural, one {# minutt} other {# minutter}}.",
       "send": "Send tilbakemelding",
       "sending": "Sender …"
     },

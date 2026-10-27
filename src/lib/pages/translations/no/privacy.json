@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "ae4e03e2a34fe6c6a03dccd7da8ff9292ade624251f512ecfeefdb0e0dfc8819",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "dd0b9076d6c2382df1f5a4d0f05fafa781c48566d78a47abb5309b4ec1364fa1",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics mottar en lab_dashboard_share-hendelse når et fremgangskort forlater siden, og en result_share-hendelse når et resultatkort gjør det. Hver av dem oppgir bare hvordan kortet forlot siden, som metode: native for delingsmenyen, download for et nedlastet bilde, copy_image for et kopiert bilde, copy for en kopiert bildetekst, eller post for et nettverks innleggsside, der nettverket oppgis som x, facebook, linkedin, reddit, whatsapp, threads eller bluesky. Ingen av hendelsene inneholder tallene på kortet, brettene eller lenken."
+          },
+          {
+            "p": "Knappen «Minn meg på det hver dag» ved dagens brett lagrer en daglig kalenderhendelse som en fil på enheten din, og filen sendes ikke til Memory Chess. Google Analytics mottar en reminder_set-hendelse når du trykker på knappen. Den oppgir bare hvor knappen var, som surface: result, dashboard eller daily. Den inneholder ingen tidssone, ingen tid og ikke noe brett."
           },
           {
             "p": "Når du sender inn en poengsum til topplisten, lagrer den lokale lagringen på denne enheten også ID-en topplisten gir oppføringen, med vanskelighetsgrad, land, poengsum og tidspunktet du sendte den, for din beste oppføring på hver vanskelighetsgrad. Bare når du trykker på Se plasseringen min i laboratoriejournalen, sender nettleseren denne oppførings-ID-en til Memory Chess, sammen med om den skal rangeres globalt eller innenfor oppføringens eget land. Memory Chess leser oppføringen fra topplisten og svarer med plasseringen og antall oppføringer den ble rangert mot. Svaret lagres ikke. For å begrense hvor ofte plasseringen kan sjekkes, teller serveren sjekker fra hver IP-adresse i minnet sitt i ett minutt, og fjerner en adresse ved den første sjekken etter at minuttet er over. Hvis topplisten ikke lenger har oppføringen, fjernes ID-en fra denne enheten. Google Analytics mottar en hendelse som sier at en sjekk av plasseringen ble gjort, uten oppførings-ID og uten plassering."

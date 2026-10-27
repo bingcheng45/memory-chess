@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "18464daabf790848e982f4142861656e2b8bf37963d264660a1f26cc96bc4bd0",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "90c09340b004b11aac6fd7b35034e83fe3810e4c2792bab548498860a6b8a123",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics otrzymuje zdarzenie lab_dashboard_share, gdy karta postępów opuszcza stronę, i zdarzenie result_share, gdy robi to karta wyniku. Każde z nich podaje jako metodę tylko sposób, w jaki karta opuściła stronę: native dla menu udostępniania, download dla pobranego obrazu, copy_image dla skopiowanego obrazu, copy dla skopiowanego opisu lub post dla strony publikowania w serwisie, przy czym serwis jest podawany jako x, facebook, linkedin, reddit, whatsapp, threads lub bluesky. Żadne z tych zdarzeń nie zawiera danych z karty, jej pozycji ani jej linku."
+          },
+          {
+            "p": "Przycisk „Przypominaj codziennie” przy dzisiejszej planszy zapisuje codzienne wydarzenie kalendarza jako plik na twoim urządzeniu, a ten plik nie jest wysyłany do Memory Chess. Google Analytics otrzymuje zdarzenie reminder_set, gdy naciśniesz przycisk. Podaje ono tylko, gdzie był przycisk, jako surface: result, dashboard lub daily. Nie zawiera strefy czasowej, godziny ani planszy."
           },
           {
             "p": "Gdy przesyłasz wynik do rankingu, pamięć lokalna na tym urządzeniu przechowuje też identyfikator, który ranking nadaje temu wpisowi, wraz z poziomem trudności, krajem, wynikiem i czasem wysłania, dla twojego najlepszego wpisu na każdym poziomie trudności. Dopiero gdy naciśniesz Sprawdź moje miejsce w dzienniku laboratorium, przeglądarka wysyła ten identyfikator wpisu do Memory Chess wraz z informacją, czy ma on zostać sklasyfikowany na świecie, czy w obrębie kraju wpisu. Memory Chess odczytuje wpis z rankingu i odpowiada jego miejscem oraz liczbą wpisów, wśród których został sklasyfikowany. Odpowiedź nie jest przechowywana. Aby ograniczyć częstotliwość sprawdzania miejsca, serwer przez jedną minutę liczy w swojej pamięci sprawdzenia z każdego adresu IP i usuwa adres przy pierwszym sprawdzeniu po upływie tej minuty. Jeśli wpisu nie ma już w rankingu, jego identyfikator jest usuwany z tego urządzenia. Google Analytics otrzymuje zdarzenie informujące, że sprawdzono miejsce, bez identyfikatora wpisu i bez miejsca."

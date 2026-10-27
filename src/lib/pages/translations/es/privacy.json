@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "215cb1b35eafd668984032bc90684fe2c6644422b4d93eb06474c19dab7bdc8e",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "b041ee64f5aaf66422a7c7b11a2c640a95a0a1b1191e8382ac9858a6c431d2ed",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics recibe un evento lab_dashboard_share cuando una tarjeta de progreso sale de la página y un evento result_share cuando lo hace una tarjeta de resultado. Cada uno indica solo cómo salió, como su método: native para el menú para compartir, download para una imagen descargada, copy_image para una imagen copiada, copy para un pie de texto copiado, o post para la página de publicación de una red, con esa red indicada como x, facebook, linkedin, reddit, whatsapp, threads o bluesky. Ninguno de los dos eventos lleva las cifras de la tarjeta, sus tableros ni su enlace."
+          },
+          {
+            "p": "El botón «Recordármelo cada día» del tablero de hoy guarda un evento diario de calendario como archivo en tu dispositivo, y el archivo no se envía a Memory Chess. Google Analytics recibe un evento reminder_set cuando pulsas el botón. Solo indica dónde estaba el botón, como su surface: result, dashboard o daily. No incluye zona horaria, hora ni tablero."
           },
           {
             "p": "Cuando envías una puntuación a la clasificación, el almacenamiento local de este dispositivo también guarda el identificador que la clasificación asigna a esa entrada, con su dificultad, su país, su puntuación y el momento en que la enviaste, para tu mejor entrada en cada dificultad. Solo cuando pulsas Ver mi posición en el registro del laboratorio tu navegador envía ese identificador de entrada a Memory Chess, indicando si se debe clasificar a nivel mundial o dentro del propio país de la entrada. Memory Chess lee la entrada en la clasificación y responde con su posición y el número de entradas con las que se comparó. La respuesta no se guarda. Para limitar la frecuencia con la que se puede consultar la posición, el servidor cuenta en su memoria las consultas de cada dirección IP durante un minuto, y descarta una dirección en la primera consulta posterior a que termine su minuto. Si la clasificación ya no tiene la entrada, su identificador se elimina de este dispositivo. Google Analytics recibe un evento que indica que se hizo una consulta de posición, sin identificador de entrada y sin posición."

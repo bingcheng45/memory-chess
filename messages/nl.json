@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# ster} other {# sterren}}",
       "chooseRating": "Kies een beoordeling in sterren.",
       "sendFailed": "We konden je reactie niet versturen. Probeer het opnieuw of kies Niet nu.",
+      "rateLimited": "Te veel berichten vanaf deze verbinding. Probeer het over {minutes, plural, one {# minuut} other {# minuten}} opnieuw.",
       "send": "Reactie versturen",
       "sending": "Versturen…"
     },

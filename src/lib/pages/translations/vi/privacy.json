@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "9a25418e1c54e2884381dc0c57148e34c2046c5638258445ae0d282488bc9168",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "35349cd283ca0d98706fd435e22babfa1a4a53d5bc6dd43e0dbb4dd17ed8db6c",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics nhận một sự kiện lab_dashboard_share khi một thẻ tiến bộ rời khỏi trang và một sự kiện result_share khi một thẻ kết quả rời khỏi trang. Mỗi sự kiện chỉ nêu cách thẻ rời đi, dưới dạng method của nó: native cho bảng chia sẻ, download cho hình ảnh được tải xuống, copy_image cho hình ảnh được sao chép, copy cho chú thích được sao chép, hoặc post cho trang đăng bài của một mạng xã hội, với tên mạng đó là x, facebook, linkedin, reddit, whatsapp, threads hoặc bluesky. Không sự kiện nào mang theo số liệu, bàn cờ hay liên kết của thẻ."
+          },
+          {
+            "p": "Nút “Nhắc tôi mỗi ngày” trên bàn cờ hôm nay lưu một sự kiện lịch hằng ngày thành tệp trên thiết bị của bạn, và tệp đó không được gửi đến Memory Chess. Google Analytics nhận một sự kiện reminder_set khi bạn nhấn nút. Sự kiện chỉ nêu nút nằm ở đâu, dưới dạng surface: result, dashboard hoặc daily. Sự kiện không mang múi giờ, giờ hay bàn cờ."
           },
           {
             "p": "Khi bạn gửi điểm lên bảng xếp hạng, bộ nhớ cục bộ trên thiết bị này cũng lưu mã mà bảng xếp hạng cấp cho lượt gửi đó, cùng độ khó, quốc gia, điểm số và thời điểm bạn gửi, cho lượt gửi tốt nhất của bạn ở mỗi độ khó. Chỉ khi bạn nhấn “Xem thứ hạng của tôi” trong hồ sơ phòng lab, trình duyệt của bạn mới gửi mã lượt gửi đó đến Memory Chess, kèm theo việc xếp hạng nó trên toàn thế giới hay trong quốc gia của chính lượt gửi đó. Memory Chess đọc lượt gửi từ bảng xếp hạng và trả lời bằng thứ hạng của nó cùng số lượt gửi được dùng để so sánh. Câu trả lời không được lưu lại. Để giới hạn tần suất kiểm tra thứ hạng, máy chủ đếm số lần kiểm tra từ mỗi địa chỉ IP trong bộ nhớ của nó trong một phút, và bỏ một địa chỉ ở lần kiểm tra đầu tiên sau khi một phút của địa chỉ đó đã hết. Nếu bảng xếp hạng không còn lượt gửi đó, mã của nó sẽ bị xóa khỏi thiết bị này. Google Analytics nhận một sự kiện cho biết một lần kiểm tra thứ hạng đã được thực hiện, không kèm mã lượt gửi và không kèm thứ hạng."

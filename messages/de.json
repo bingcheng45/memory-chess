@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# Stern} other {# Sterne}}",
       "chooseRating": "Bitte wähle eine Sternebewertung.",
       "sendFailed": "Wir konnten dein Feedback nicht senden. Versuch es noch einmal oder wähle „Jetzt nicht“.",
+      "rateLimited": "Zu viele Nachrichten von dieser Verbindung. Versuch es in {minutes, plural, one {# Minute} other {# Minuten}} noch einmal.",
       "send": "Feedback senden",
       "sending": "Wird gesendet..."
     },

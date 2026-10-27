@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "ec09d8262b926b203a7d5d5ea57c0845d2fd860d1bf9f32fd2cf294b5d96c6ca",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "35504b6e528608355996c218ac082ca04c3ddfe29c176da0ecf9238309a42859",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics ontvangt een gebeurtenis lab_dashboard_share wanneer een voortgangskaart de pagina verlaat en een gebeurtenis result_share wanneer een resultaatkaart dat doet. Elke gebeurtenis noemt alleen hoe de kaart vertrok, als methode: native voor het deelmenu, download voor een gedownloade afbeelding, copy_image voor een gekopieerde afbeelding, copy voor een gekopieerd bijschrift, of post voor de plaatsingspagina van een netwerk, waarbij dat netwerk wordt genoemd als x, facebook, linkedin, reddit, whatsapp, threads of bluesky. Geen van beide gebeurtenissen bevat de cijfers van de kaart, de borden of de link."
+          },
+          {
+            "p": "De knop “Herinner me dagelijks” bij het bord van vandaag slaat een dagelijks agenda-item op als bestand op je apparaat, en dat bestand wordt niet naar Memory Chess gestuurd. Google Analytics ontvangt een reminder_set-gebeurtenis wanneer je op de knop drukt. Die noemt alleen waar de knop stond, als surface: result, dashboard of daily. Er zit geen tijdzone, tijd of bord in."
           },
           {
             "p": "Wanneer je een score naar de ranglijst stuurt, bewaart de lokale opslag op dit apparaat ook de id die de ranglijst aan die inzending geeft, met de moeilijkheidsgraad, het land, de score en het moment waarop je hem verstuurde, voor je beste inzending op elke moeilijkheidsgraad. Alleen wanneer je in het labverslag op Bekijk mijn positie drukt, stuurt je browser die inzendings-id naar Memory Chess, samen met de keuze of de inzending wereldwijd of binnen het eigen land van de inzending moet worden gerangschikt. Memory Chess leest de inzending uit de ranglijst en antwoordt met de positie en het aantal inzendingen waartegen ze is gerangschikt. Het antwoord wordt niet opgeslagen. Om te beperken hoe vaak de positie kan worden opgevraagd, telt de server de controles per IP-adres één minuut lang in zijn geheugen en laat hij een adres vallen bij de eerste controle nadat de minuut voorbij is. Als de ranglijst de inzending niet meer heeft, wordt de id ervan van dit apparaat verwijderd. Google Analytics ontvangt een gebeurtenis die meldt dat er een positie is opgevraagd, zonder inzendings-id en zonder positie."

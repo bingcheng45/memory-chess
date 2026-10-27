@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# hvězdička} few {# hvězdičky} many {# hvězdičky} other {# hvězdiček}}",
       "chooseRating": "Vyberte prosím hodnocení hvězdičkami.",
       "sendFailed": "Zpětnou vazbu se nepodařilo odeslat. Zkuste to znovu nebo zvolte „Teď ne“.",
+      "rateLimited": "Příliš mnoho zpráv z tohoto připojení. Zkuste to znovu za {minutes, plural, one {# minutu} few {# minuty} many {# minuty} other {# minut}}.",
       "send": "Odeslat zpětnou vazbu",
       "sending": "Odesílání…"
     },

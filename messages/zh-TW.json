@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, other {# 顆星}}",
       "chooseRating": "請先選擇星級評分。",
       "sendFailed": "意見送出失敗。請重試，或選擇「暫不評分」。",
+      "rateLimited": "此網路傳送的訊息過多。請在{minutes, plural, other {#分鐘}}後重試。",
       "send": "送出意見",
       "sending": "送出中…"
     },

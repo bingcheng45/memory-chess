@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "85d525e9211bd0e1062049a3716adcf52e6ee96c2a2bc6530d9e0d4de6f22f27",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "1d37c89d808de1a27ba0b738e05254a00bfd79f394b3f6af3b2a5bb7399faee8",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics menerima peristiwa lab_dashboard_share ketika kartu kemajuan keluar dari halaman dan peristiwa result_share ketika kartu hasil keluar. Masing-masing hanya menyebutkan cara kartu itu keluar, sebagai method-nya: native untuk lembar berbagi, download untuk gambar yang diunduh, copy_image untuk gambar yang disalin, copy untuk keterangan yang disalin, atau post untuk halaman posting sebuah jaringan, dengan jaringan itu disebut sebagai x, facebook, linkedin, reddit, whatsapp, threads, atau bluesky. Tidak satu pun dari kedua peristiwa itu membawa angka-angka kartu, papannya, atau tautannya."
+          },
+          {
+            "p": "Tombol “Ingatkan saya setiap hari” pada papan hari ini menyimpan acara kalender harian sebagai file di perangkat Anda, dan file itu tidak dikirim ke Memory Chess. Google Analytics menerima peristiwa reminder_set saat Anda menekan tombol. Peristiwa itu hanya menyebut di mana tombol berada, sebagai surface: result, dashboard, atau daily. Peristiwa itu tidak membawa zona waktu, waktu, maupun papan."
           },
           {
             "p": "Ketika Anda mengirim skor ke papan peringkat, penyimpanan lokal di perangkat ini juga menyimpan id yang diberikan papan peringkat untuk entri itu, beserta tingkat kesulitan, negara, skor, dan waktu Anda mengirimnya, untuk entri terbaik Anda di setiap tingkat kesulitan. Hanya ketika Anda menekan “Periksa posisiku” di catatan lab, browser Anda mengirim id entri itu ke Memory Chess, beserta pilihan untuk memeringkatnya di seluruh dunia atau di dalam negara entri itu sendiri. Memory Chess membaca entri itu dari papan peringkat dan membalas dengan peringkatnya serta jumlah entri yang menjadi pembandingnya. Balasan itu tidak disimpan. Untuk membatasi seberapa sering peringkat dapat diperiksa, server menghitung pemeriksaan dari setiap alamat IP di memorinya selama satu menit, dan menghapus sebuah alamat pada pemeriksaan pertama setelah satu menitnya habis. Jika papan peringkat tidak lagi memiliki entri itu, id-nya dihapus dari perangkat ini. Google Analytics menerima sebuah peristiwa yang menyatakan bahwa pemeriksaan peringkat telah dilakukan, tanpa id entri dan tanpa peringkat."

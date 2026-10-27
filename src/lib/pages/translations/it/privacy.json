@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "a9b61f8be4f344934149bba0a7f7dfea782ed6fda88efbf7959ba3063364056a",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "e11b6ac31630dedb3f97a8d0911f58c4f7d5e26a2303676ca51a380fa1211e34",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics riceve un evento lab_dashboard_share quando una scheda dei progressi lascia la pagina e un evento result_share quando lo fa una scheda del risultato. Ciascuno indica solo il modo in cui la scheda è uscita, come metodo: native per il menu di condivisione, download per un’immagine scaricata, copy_image per un’immagine copiata, copy per una didascalia copiata, oppure post per la pagina di pubblicazione di un social network, con quel network indicato come x, facebook, linkedin, reddit, whatsapp, threads o bluesky. Nessuno dei due eventi contiene i dati della scheda, le sue scacchiere o il suo link."
+          },
+          {
+            "p": "Il pulsante «Ricordamelo ogni giorno» della scacchiera di oggi salva un evento di calendario giornaliero come file sul tuo dispositivo, e il file non viene inviato a Memory Chess. Google Analytics riceve un evento reminder_set quando premi il pulsante. Indica solo dove si trovava il pulsante, come surface: result, dashboard o daily. Non contiene fuso orario, ora né scacchiera."
           },
           {
             "p": "Quando invii un punteggio alla classifica, l’archiviazione locale di questo dispositivo conserva anche l’identificativo che la classifica assegna a quella voce, con la sua difficoltà, il paese, il punteggio e il momento in cui l’hai inviata, per la tua voce migliore in ogni difficoltà. Solo quando premi Controlla la mia posizione nel registro del laboratorio il tuo browser invia quell’identificativo di voce a Memory Chess, indicando se classificarla a livello mondiale o all’interno del paese della voce stessa. Memory Chess legge la voce dalla classifica e risponde con la sua posizione e il numero di voci con cui è stata confrontata. La risposta non viene conservata. Per limitare la frequenza con cui si può controllare la posizione, il server conta nella propria memoria i controlli provenienti da ogni indirizzo IP per un minuto, e scarta un indirizzo al primo controllo successivo alla scadenza del suo minuto. Se la classifica non contiene più la voce, il suo identificativo viene rimosso da questo dispositivo. Google Analytics riceve un evento che indica che è stato effettuato un controllo della posizione, senza identificativo della voce e senza posizione."

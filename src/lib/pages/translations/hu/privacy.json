@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "957bcceaf115584a4e3556793935b40c7e81c4f7f44a1f807f19c582a66e8e0a",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "dd502f4ac5c792644a7ea984f3e8422a472c5cca223cb20a92be4e344cadd7eb",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "A Google Analytics lab_dashboard_share eseményt kap, amikor egy fejlődési kártya elhagyja az oldalt, és result_share eseményt, amikor egy eredménykártya. Mindegyik módszerként csak azt nevezi meg, hogyan távozott: native a megosztási menünél, download letöltött képnél, copy_image másolt képnél, copy másolt képaláírásnál, vagy post egy hálózat bejegyzésoldalánál, az adott hálózatot x, facebook, linkedin, reddit, whatsapp, threads vagy bluesky néven megnevezve. Egyik esemény sem tartalmazza a kártya adatait, tábláit vagy linkjét."
+          },
+          {
+            "p": "A mai tábla „Emlékeztess naponta” gombja egy naponta ismétlődő naptáreseményt ment fájlként az eszközödre, és ez a fájl nem kerül el a Memory Chess-hez. A Google Analytics reminder_set eseményt kap, amikor megnyomod a gombot. Ez csak azt nevezi meg, hol volt a gomb, surface értékként: result, dashboard vagy daily. Nem tartalmaz sem időzónát, sem időpontot, sem táblát."
           },
           {
             "p": "Amikor beküldesz egy pontszámot a ranglistára, a helyi tárhely ezen az eszközön azt az azonosítót is megőrzi, amelyet a ranglista a bejegyzésnek ad, a nehézséggel, az országgal, a pontszámmal és a beküldés időpontjával együtt, minden nehézségi szinten a legjobb bejegyzésedhez. Csak amikor a laborjegyzőkönyvben megnyomod a „Helyezésem ellenőrzése” gombot, akkor küldi el a böngésződ ezt a bejegyzésazonosítót a Memory Chess-nek, azzal együtt, hogy világszerte vagy a bejegyzés saját országán belül rangsorolja-e. A Memory Chess kiolvassa a bejegyzést a ranglistából, és a helyezésével, valamint azon bejegyzések számával válaszol, amelyekhez képest rangsorolta. A válasz nem kerül tárolásra. Hogy korlátozza, milyen gyakran lehet helyezést ellenőrizni, a szerver egy percig a memóriájában számolja az egyes IP-címekről érkező ellenőrzéseket, és egy címet a perce letelte utáni első ellenőrzéskor töröl. Ha a ranglistán már nincs meg a bejegyzés, az azonosítója törlődik erről az eszközről. A Google Analytics olyan eseményt kap, amely azt jelzi, hogy helyezésellenőrzés történt, bejegyzésazonosító és helyezés nélkül."

@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# csillag} other {# csillag}}",
       "chooseRating": "Kérjük, válassz csillagos értékelést.",
       "sendFailed": "Nem tudtuk elküldeni a visszajelzésed. Próbáld újra, vagy válaszd a Most nem lehetőséget.",
+      "rateLimited": "Túl sok üzenet ettől a kapcsolattól. Próbáld újra {minutes, plural, one {# perc} other {# perc}} múlva.",
       "send": "Visszajelzés küldése",
       "sending": "Küldés…"
     },

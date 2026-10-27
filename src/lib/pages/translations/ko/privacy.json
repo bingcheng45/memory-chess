@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "39e330a34cd6917be4117f5c7483911f9e4ee7aa389ce9dd0a7c91e27eb83e43",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "7bbac885bcf8cc221fedaef0720a20a6f2d046d813712d115471e5f469cb3bb8",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics는 진행 상황 카드가 페이지를 떠날 때 lab_dashboard_share 이벤트를, 결과 카드가 떠날 때 result_share 이벤트를 받습니다. 두 이벤트 모두 어떻게 떠났는지만 method로 나타냅니다. 공유 시트는 native, 내려받은 그림은 download, 복사한 그림은 copy_image, 복사한 캡션은 copy, 소셜 네트워크의 게시 페이지는 post이며, post일 때는 그 네트워크가 x, facebook, linkedin, reddit, whatsapp, threads 또는 bluesky로 표시됩니다. 두 이벤트 모두 카드의 수치, 보드, 링크를 담지 않습니다."
+          },
+          {
+            "p": "오늘의 보드에 있는 “매일 알림 받기” 버튼은 매일 반복되는 캘린더 일정을 파일로 기기에 저장하며, 이 파일은 Memory Chess로 전송되지 않습니다. 버튼을 누르면 Google Analytics가 reminder_set 이벤트를 받습니다. 이 이벤트는 버튼이 있던 위치만 surface로 알려 주며, 값은 result, dashboard, daily 중 하나입니다. 시간대, 시각, 보드는 담기지 않습니다."
           },
           {
             "p": "리더보드에 점수를 제출하면, 이 기기의 로컬 저장소에는 난이도별 최고 기록에 대해 리더보드가 그 기록에 부여한 ID가 난이도, 국가, 점수, 보낸 시각과 함께 보관됩니다. 랩 기록에서 내 순위 확인을 누를 때에만 브라우저가 그 기록 ID를 전 세계 순위로 볼지 기록의 국가 안에서 볼지와 함께 Memory Chess로 보냅니다. Memory Chess는 리더보드에서 그 기록을 읽고, 순위와 비교 대상이 된 기록의 수를 답합니다. 이 답변은 저장되지 않습니다. 순위를 확인할 수 있는 빈도를 제한하기 위해, 서버는 IP 주소별 확인 횟수를 1분 동안 메모리에서 세며, 1분이 지난 뒤 첫 확인 때 그 주소를 지웁니다. 리더보드에 그 기록이 더 이상 없으면 그 ID는 이 기기에서 삭제됩니다. Google Analytics는 순위 확인이 있었다는 이벤트를 받지만, 기록 ID와 순위는 담기지 않습니다."

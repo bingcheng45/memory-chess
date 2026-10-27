@@ -30,6 +30,11 @@ interface FirstGameFeedbackDialogProps {
   game: FeedbackGameContext;
 }
 
+function retryAfterMinutes(header: string | null): number {
+  const seconds = Number(header);
+  return Number.isFinite(seconds) && seconds > 0 ? Math.ceil(seconds / 60) : 1;
+}
+
 export default function FirstGameFeedbackDialog({
   game,
 }: FirstGameFeedbackDialogProps) {
@@ -89,6 +94,11 @@ export default function FirstGameFeedbackDialog({
           feedback: feedback.trim(),
         }),
       });
+
+      if (response.status === 429) {
+        setSubmitError(t("rateLimited", { minutes: retryAfterMinutes(response.headers.get("Retry-After")) }));
+        return;
+      }
 
       if (!response.ok) {
         throw new Error(t("sendFailed"));

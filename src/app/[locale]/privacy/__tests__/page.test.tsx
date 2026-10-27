@@ -47,6 +47,16 @@ describe("PrivacyPage", () => {
     );
   });
 
+  it("says the Remind me calendar file stays on the device and which event the press sends", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(
+        "The Remind me daily button on today's board saves a daily calendar event as a file on your device, and the file is not sent to Memory Chess. Google Analytics receives a reminder_set event when you press the button. It names only where the button was, as its surface: result, dashboard or daily. It carries no time zone, no time and no board.",
+      ),
+    ).toBeInTheDocument();
+  });
+
   it("says what article likes and views keep in the browser and in Supabase", async () => {
     render(await PrivacyPage(IN_ENGLISH));
 

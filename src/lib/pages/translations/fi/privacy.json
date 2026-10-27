@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "fbfe8fbae9f9981542b293b5f16c6c44248f70184c66d8fa463fdebfd31281a8",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "e44d6018d630c31e9094263ee8cf35a6afb8633b4deb8cf0ceb6cc34329238b4",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics saa lab_dashboard_share-tapahtuman, kun edistymiskortti lähtee sivulta, ja result_share-tapahtuman, kun tuloskortti lähtee. Kumpikin nimeää menetelmänään vain sen, miten kortti lähti: native jakovalikolle, download ladatulle kuvalle, copy_image kopioidulle kuvalle, copy kopioidulle saatetekstille tai post verkoston julkaisusivulle, jolloin verkosto nimetään arvolla x, facebook, linkedin, reddit, whatsapp, threads tai bluesky. Kumpikaan tapahtuma ei sisällä kortin lukuja, sen lautoja eikä sen linkkiä."
+          },
+          {
+            "p": "Päivän laudan painike ”Muistuta joka päivä” tallentaa päivittäisen kalenteritapahtuman tiedostona laitteellesi, eikä tiedostoa lähetetä Memory Chessille. Google Analytics saa reminder_set-tapahtuman, kun painat painiketta. Se kertoo vain, missä painike oli, surface-arvona: result, dashboard tai daily. Siinä ei ole aikavyöhykettä, kellonaikaa eikä lautaa."
           },
           {
             "p": "Kun lähetät pisteet tulostaulukkoon, tämän laitteen paikallinen tallennustila säilyttää myös tunnisteen, jonka tulostaulukko antaa merkinnälle, sekä sen vaikeustason, maan, pisteet ja lähetysajan, parhaan merkintäsi osalta kullakin vaikeustasolla. Vain kun painat laboratoriopäiväkirjassa Tarkista sijoitukseni, selaimesi lähettää merkinnän tunnisteen Memory Chessille sekä tiedon siitä, sijoitetaanko se maailmanlaajuisesti vai merkinnän oman maan sisällä. Memory Chess lukee merkinnän tulostaulukosta ja vastaa sen sijoituksella ja sillä, kuinka montaa merkintää vastaan se sijoitettiin. Vastausta ei tallenneta. Rajoittaakseen sitä, kuinka usein sijoitusta voi tarkistaa, palvelin laskee kunkin IP-osoitteen tarkistukset muistissaan yhden minuutin ajan ja poistaa osoitteen ensimmäisellä tarkistuksella sen minuutin kuluttua umpeen. Jos merkintää ei enää ole tulostaulukossa, sen tunniste poistetaan tältä laitteelta. Google Analytics saa tapahtuman, joka kertoo, että sijoitus tarkistettiin, ilman merkinnän tunnistetta ja ilman sijoitusta."

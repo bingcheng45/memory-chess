@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# stella} many {# stelle} other {# stelle}}",
       "chooseRating": "Scegli una valutazione in stelle.",
       "sendFailed": "Non siamo riusciti a inviare il tuo commento. Riprova o scegli «Non ora».",
+      "rateLimited": "Troppi messaggi da questa connessione. Riprova tra {minutes, plural, one {# minuto} many {# di minuti} other {# minuti}}.",
       "send": "Invia il commento",
       "sending": "Invio..."
     },

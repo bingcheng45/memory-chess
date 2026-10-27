@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# stjärna} other {# stjärnor}}",
       "chooseRating": "Välj ett betyg i stjärnor.",
       "sendFailed": "Vi kunde inte skicka din återkoppling. Försök igen eller välj Inte nu.",
+      "rateLimited": "För många meddelanden från den här anslutningen. Försök igen om {minutes, plural, one {# minut} other {# minuter}}.",
       "send": "Skicka återkoppling",
       "sending": "Skickar ..."
     },

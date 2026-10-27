@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, other {# 星}}",
       "chooseRating": "请先选择星级评分。",
       "sendFailed": "反馈发送失败。请重试，或选择“暂不评价”。",
+      "rateLimited": "此网络发送的消息过多。请在{minutes, plural, other {#分钟}}后重试。",
       "send": "提交反馈",
       "sending": "发送中…"
     },

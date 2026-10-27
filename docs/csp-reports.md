@@ -4,10 +4,11 @@ The site enforces `frame-ancestors 'none'` and sends a full policy as `Content-S
 
 ## When it stores anything
 
-`POST /api/csp-report` always answers 204 for a well-formed report. It writes only when both are true:
+`POST /api/csp-report` always answers 204 for a well-formed report. It writes only when all three are true:
 
 1. `SUPABASE_SERVICE_ROLE_KEY` in Production holds the `service_role` JWT (never the anon key; this route does not fall back to it).
 2. Migration 0007 is applied (`docs/migrations/2026-10-server-errors.md`).
+3. The 30-day retention delete is scheduled (step 6 of that runbook, `pg_cron`). This is required, not optional: reports repeat on every page view, and Supabase Free goes read-only at 500 MB, which would stop leaderboard writes.
 
 Until then it is inert: 204, no write, one warning in the runtime log. With the key set but the table missing, each stored report logs `Server error report not stored:` (at most 20 a minute).
 
@@ -15,7 +16,13 @@ Until then it is inert: 204, no write, one warning in the runtime log. With the 
 
 Table `server_errors`, `route = 'POST /api/csp-report'`, `kind = 'violation'`. `message` reads `<directive> blocked <origin>`. `detail` holds `directive`, `blocked` (origin only, or `inline`, `eval`, `data`), `path` (document path, no query string), `disposition` (`report` or `enforce`) and `sample` (first 80 characters of the script sample, redacted). No IP, user agent, full URL or query string is kept. Reports from browser extensions (`chrome-extension:`, `moz-extension:`, `safari-web-extension:`) are dropped.
 
-Limits: 8 KB per request (413), `application/csp-report` or `application/reports+json` only (415), 30 requests a minute per address (429 with `Retry-After`), and the shared 20 rows a minute for this route.
+Limits: 8 KB per request (413), `application/csp-report` or `application/reports+json` only (415), 30 requests a minute per address (429 with `Retry-After`), and at most 3 reports read from one Reporting API array.
+
+Write limits, per server instance: one row per distinct (directive, blocked origin, document path, disposition) per hour, at most 1,000 distinct violations remembered (when full, new ones are dropped until entries expire, none is evicted and rewritten), and at most 5 rows a minute for the route. Worst case is 5 x 1,440 = 7,200 rows a day, about 3.1 MB a day at the measured 428 bytes a row, for each instance. With the 30-day retention that is about 93 MB for each instance at most. Duplicates are dropped without a count.
+
+AdSense's Funding Choices consent script (`fundingchoicesmessages.google.com`) is probably not in `script-src`, so EEA page views may report it steadily. The hourly dedupe covers that to one row per page path.
+
+Follow-up, not in this PR: the privacy page should mention that CSP violation reports (directive, blocked origin, page path) are stored for 30 days.
 
 ## Reading them
 

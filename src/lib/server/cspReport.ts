@@ -1,6 +1,6 @@
 const EXTENSION_SCHEME = /^(?:chrome|moz|safari-web|safari)-extension:/i;
 const SAMPLE_LENGTH = 80;
-const MAX_REPORTS_PER_REQUEST = 10;
+const MAX_REPORTS_PER_REQUEST = 3;
 
 export type CspViolation = {
   readonly directive: string;

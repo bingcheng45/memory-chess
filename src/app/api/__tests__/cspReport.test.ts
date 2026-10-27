@@ -236,4 +236,72 @@ describe("POST /api/csp-report", () => {
     expect(Number(limited.headers.get("retry-after"))).toBeGreaterThan(0);
     expect(other.status).toBe(204);
   });
+
+  describe("write limits", () => {
+    const at = (path: string, directive = "script-src-elem") =>
+      post(reportUri({ ...INLINE_SCRIPT, "document-uri": `https://thememorychess.com${path}?q=1`, "effective-directive": directive }));
+
+    it("stores a repeated violation once, and a different path, directive, origin or disposition as its own row", async () => {
+      const POST = await freshRoute();
+
+      await POST(at("/en/game"));
+      await POST(at("/en/game"));
+      await POST(at("/en/game?again=1"));
+      await POST(at("/en/leaderboard"));
+      await POST(at("/en/game", "img-src"));
+      await POST(post(reportUri({ ...INLINE_SCRIPT, "document-uri": "https://thememorychess.com/en/game", "blocked-uri": "https://a.example.net/x.js" })));
+      await POST(post(reportUri({ ...INLINE_SCRIPT, "document-uri": "https://thememorychess.com/en/game", disposition: "enforce" })));
+      await settle();
+
+      expect(inserts).toHaveLength(5);
+    });
+
+    it("stores the same violation again once an hour has passed", async () => {
+      const POST = await freshRoute();
+      const now = jest.spyOn(Date, "now");
+      now.mockReturnValue(1_000_000);
+
+      await POST(at("/en/game"));
+      now.mockReturnValue(1_000_000 + 59 * 60_000);
+      await POST(at("/en/game"));
+      await settle();
+      expect(inserts).toHaveLength(1);
+
+      now.mockReturnValue(1_000_000 + 60 * 60_000);
+      await POST(at("/en/game"));
+      await settle();
+      expect(inserts).toHaveLength(2);
+    });
+
+    it("stores at most 5 rows a minute whatever the addresses, then again in the next minute, and does not burn a key on a refused row", async () => {
+      const POST = await freshRoute();
+      const now = jest.spyOn(Date, "now");
+      now.mockReturnValue(5_000_000);
+
+      for (let i = 0; i < 8; i++) await POST(post(reportUri({ ...INLINE_SCRIPT, "document-uri": `https://thememorychess.com/p${i}` }), "application/csp-report", `198.51.100.${i}`));
+      await settle();
+      expect(inserts).toHaveLength(5);
+
+      now.mockReturnValue(5_000_000 + 61_000);
+      await POST(post(reportUri({ ...INLINE_SCRIPT, "document-uri": "https://thememorychess.com/p7" })));
+      await settle();
+      expect(inserts).toHaveLength(6);
+      expect(inserts[5].row.detail).toMatchObject({ path: "/p7" });
+    });
+
+    it("reads at most 3 reports from one Reporting API array", async () => {
+      const POST = await freshRoute();
+      const reports = Array.from({ length: 6 }, (_, i) => ({
+        documentURL: `https://thememorychess.com/a${i}`,
+        blockedURL: "inline",
+        effectiveDirective: "script-src-elem",
+        disposition: "report",
+      }));
+
+      await POST(post(reportingApi(...reports), "application/reports+json"));
+      await settle();
+
+      expect(inserts.map(({ row }) => (row.detail as { path: string }).path)).toEqual(["/a0", "/a1", "/a2"]);
+    });
+  });
 });

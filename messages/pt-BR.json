@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Publicamos estatísticas agregadas de memorização das rodadas registradas no Google Analytics, para as configurações com rodadas e jogadores suficientes.",
     "aboutLink": "Ver os dados de lembrança"
+  },
+  "learnTryIt": {
+    "title": "Experimente aqui",
+    "intro": "Uma rodada deste tamanho mostra {pieces} peças por {seconds} s. Depois, as peças são colocadas de memória em um tabuleiro vazio. Aqui está uma posição desse tamanho.",
+    "introBlindfold": "Uma rodada deste tamanho apresenta {pieces} peças em notação por {seconds} s, sem tabuleiro à vista. Depois, as peças são colocadas de memória em um tabuleiro vazio. Aqui está uma posição desse tamanho, do jeito que ela é lida.",
+    "position": "Brancas: {white}. Pretas: {black}.",
+    "start": "Começar uma rodada de {pieces} peças",
+    "startBlindfold": "Começar uma rodada às cegas de {pieces} peças"
   }
 }

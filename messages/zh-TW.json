@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "我們公布 Google Analytics 記錄的回合的彙總記憶統計，僅限回合數和玩家數足夠的設定。",
     "aboutLink": "查看記憶資料"
+  },
+  "learnTryIt": {
+    "title": "在這裡試試",
+    "intro": "這個規模的一局會讓你看 {pieces} 枚棋子 {seconds} 秒。接著你憑記憶把它們擺到空棋盤上。下面是這個規模的一個局面。",
+    "introBlindfold": "這個規模的一局會用記譜的方式給你 {pieces} 枚棋子，持續 {seconds} 秒，沒有棋盤可看。接著你憑記憶把它們擺到空棋盤上。下面是這個規模的一個局面，就是你會讀到的樣子。",
+    "position": "白方：{white}。黑方：{black}。",
+    "start": "開始一局 {pieces} 枚棋子的練習",
+    "startBlindfold": "開始一局 {pieces} 枚棋子的盲棋練習"
   }
 }

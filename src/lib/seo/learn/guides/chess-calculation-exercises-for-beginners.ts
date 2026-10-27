@@ -40,6 +40,7 @@ const guide: LearnDocument = {
       "Anyone who has been told to calculate and never told what to hold in mind.",
     ],
   },
+  tryIt: { memorizeTime: 10 },
   sections: [
     {
       id: "where-a-line-breaks",

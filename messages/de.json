@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Aggregierte Statistiken zum Merken aus den in Google Analytics erfassten Runden werden veröffentlicht, für Einstellungen mit genügend Runden und Spielenden.",
     "aboutLink": "Zu den Gedächtnisdaten"
+  },
+  "learnTryIt": {
+    "title": "Probier es hier aus",
+    "intro": "Eine Runde dieser Größe zeigt {pieces} Figuren für {seconds} s. Danach stellst du sie aus dem Gedächtnis auf ein leeres Brett. Hier ist eine Stellung dieser Größe.",
+    "introBlindfold": "Eine Runde dieser Größe liest dir {pieces} Figuren als Notation vor, {seconds} s lang und ohne Brett im Blick. Danach stellst du sie aus dem Gedächtnis auf ein leeres Brett. Hier ist eine Stellung dieser Größe, so wie du sie lesen würdest.",
+    "position": "Weiß: {white}. Schwarz: {black}.",
+    "start": "Eine Runde mit {pieces} Figuren starten",
+    "startBlindfold": "Eine Blindrunde mit {pieces} Figuren starten"
   }
 }

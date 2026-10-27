@@ -40,6 +40,7 @@ const guide: LearnDocument = {
       "You want one order of work, with a clear next step each week.",
     ],
   },
+  tryIt: { memorizeTime: 10 },
   sections: [
     {
       id: "where-games-go",

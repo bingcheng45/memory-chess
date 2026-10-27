@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Publikujemy zbiorcze statystyki zapamiętywania z rund zarejestrowanych w Google Analytics, dla ustawień z wystarczającą liczbą rund i graczy.",
     "aboutLink": "Zobacz dane o zapamiętywaniu"
+  },
+  "learnTryIt": {
+    "title": "Wypróbuj tutaj",
+    "intro": "Runda tej wielkości pokazuje {pieces} figury przez {seconds} s. Potem ustawiasz je z pamięci na pustej szachownicy. Oto pozycja tej wielkości.",
+    "introBlindfold": "Runda tej wielkości podaje {pieces} figury w notacji przez {seconds} s, bez szachownicy przed oczami. Potem ustawiasz je z pamięci na pustej szachownicy. Oto pozycja tej wielkości, w takiej postaci, w jakiej zostanie podana.",
+    "position": "Białe: {white}. Czarne: {black}.",
+    "start": "Zacznij rundę z {pieces} figurami",
+    "startBlindfold": "Zacznij rundę w ciemno z {pieces} figurami"
   }
 }

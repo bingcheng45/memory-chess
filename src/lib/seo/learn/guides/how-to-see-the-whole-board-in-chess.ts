@@ -199,10 +199,10 @@ const guide: LearnDocument = {
           drills: [
             {
               title: "Edge-first recall round",
-              description: "Play 3 rounds of 12 pieces with 8 seconds to look, pressing Try again between rounds. During the look, read the edges first, then the middle. Place the edge pieces first. The result board rings each square you missed. You pass when no ring lands on an edge square.",
-              duration: "3 rounds, about 5 minutes",
+              description: "Play 3 rounds of 6 pieces with 15 seconds to look, pressing Try again between rounds. During the look, read the edges first, then the middle. Place the edge pieces first. The result board rings each square you missed. You pass when no ring lands on an edge square. Once you pass, try the 12-piece round at the end of this guide.",
+              duration: "3 rounds, about 3 minutes",
               goal: "Hold the edges and the middle at once instead of one cluster.",
-              play: { label: "Play 12 pieces, 8 seconds", pieceCount: 12, memorizeTime: 8 },
+              play: { label: "Play 6 pieces, 15 seconds", pieceCount: 6, memorizeTime: 15 },
             },
             {
               title: "Edge inventory",

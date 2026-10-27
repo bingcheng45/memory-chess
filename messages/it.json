@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Pubblichiamo statistiche aggregate sulla memoria dalle partite registrate in Google Analytics, per le impostazioni con abbastanza partite e giocatori.",
     "aboutLink": "Vedi i dati sulla memoria"
+  },
+  "learnTryIt": {
+    "title": "Provalo qui",
+    "intro": "Un round di questa dimensione mostra {pieces} pezzi per {seconds} s. Poi li piazzi a memoria su una scacchiera vuota. Ecco una posizione di questa dimensione.",
+    "introBlindfold": "Un round di questa dimensione ti dà {pieces} pezzi in notazione per {seconds} s, senza scacchiera davanti. Poi li piazzi a memoria su una scacchiera vuota. Ecco una posizione di questa dimensione, come la leggeresti.",
+    "position": "Bianco: {white}. Nero: {black}.",
+    "start": "Inizia un round da {pieces} pezzi",
+    "startBlindfold": "Inizia un round alla cieca da {pieces} pezzi"
   }
 }

@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Google Analytics'te kaydedilen turlardan elde edilen toplu hatırlama istatistikleri, yeterli tur ve oyuncu sayısına sahip ayarlar için yayımlanır.",
     "aboutLink": "Hatırlama verilerini gör"
+  },
+  "learnTryIt": {
+    "title": "Burada dene",
+    "intro": "Bu boyuttaki bir tur, {pieces} taşı {seconds} sn boyunca gösterir. Sonra onları hafızandan boş bir tahtaya yerleştirirsin. İşte bu boyutta bir konum.",
+    "introBlindfold": "Bu boyuttaki bir tur, {pieces} taşı {seconds} sn boyunca notasyonla verir, tahta görünmez. Sonra onları hafızandan boş bir tahtaya yerleştirirsin. İşte bu boyutta bir konum, okuyacağın biçimde.",
+    "position": "Beyaz: {white}. Siyah: {black}.",
+    "start": "{pieces} taşlı bir tur başlat",
+    "startBlindfold": "{pieces} taşlı gözü kapalı bir tur başlat"
   }
 }

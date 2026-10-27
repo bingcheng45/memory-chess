@@ -1,6 +1,6 @@
 {
-  "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
-  "approvedHash": "e74e1c34422a7bd16587779790e98cb0f2c945df2875b26f5b41475792b694f5",
+  "sourceHash": "c8fe10e00c01f59b9147f4ec2c02f03eafba8dc825e01522385d0897bc25d84e",
+  "approvedHash": "43fb5f0a9bd0aeba8af429878e3eadafca444ca220ebe8ba4f89ffbe65ef842b",
   "sameAsEnglish": [
     "sections.far-corner-glance.blocks[1].columns[0]"
   ],
@@ -106,11 +106,11 @@
             "drills": [
               {
                 "title": "Erinnerungsrunde mit den Rändern zuerst",
-                "description": "Spiel 3 Runden mit 12 Figuren und 8 Sekunden zum Einprägen und drück zwischen den Runden auf „Nochmal“. Lies beim Einprägen zuerst die Ränder, dann die Mitte. Setz zuerst die Randfiguren. Das Ergebnisbrett zeigt jedes verpasste Feld mit einem Ring. Bestanden hast du, wenn kein Ring auf einem Randfeld landet.",
-                "duration": "3 Runden, etwa 5 Minuten",
+                "description": "Spiel 3 Runden mit 6 Figuren und 15 Sekunden zum Einprägen und drück zwischen den Runden auf „Nochmal“. Lies beim Einprägen zuerst die Ränder, dann die Mitte. Setz zuerst die Randfiguren. Das Ergebnisbrett zeigt jedes verpasste Feld mit einem Ring. Bestanden hast du, wenn kein Ring auf einem Randfeld landet. Wenn du bestanden hast, probier die Runde mit 12 Figuren am Ende dieses Guides.",
+                "duration": "3 Runden, etwa 3 Minuten",
                 "goal": "Ränder und Mitte gleichzeitig behalten statt nur einer Gruppe.",
                 "play": {
-                  "label": "12 Figuren, 8 Sekunden spielen"
+                  "label": "6 Figuren, 15 Sekunden spielen"
                 }
               },
               {

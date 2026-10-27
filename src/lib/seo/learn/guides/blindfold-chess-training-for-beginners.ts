@@ -41,6 +41,7 @@ const guide: LearnDocument = {
       "Players who can follow a game from notation with a board, but not without one.",
     ],
   },
+  tryIt: { memorizeTime: 15, blindfold: true },
   sections: [
     {
       id: "how-blindfold-chess-is-played",

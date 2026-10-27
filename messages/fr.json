@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Des statistiques agrégées de mémorisation issues des parties enregistrées dans Google Analytics sont publiées, pour les réglages comptant assez de parties et de joueurs.",
     "aboutLink": "Voir les données de mémorisation"
+  },
+  "learnTryIt": {
+    "title": "Essayez ici",
+    "intro": "Une manche de cette taille montre {pieces} pièces pendant {seconds} s. Ensuite, vous les placez de mémoire sur un échiquier vide. Voici une position de cette taille.",
+    "introBlindfold": "Une manche de cette taille vous donne {pieces} pièces en notation pendant {seconds} s, sans échiquier sous les yeux. Ensuite, vous les placez de mémoire sur un échiquier vide. Voici une position de cette taille, telle que vous la liriez.",
+    "position": "Blancs : {white}. Noirs : {black}.",
+    "start": "Lancer une manche de {pieces} pièces",
+    "startBlindfold": "Lancer une manche à l’aveugle de {pieces} pièces"
   }
 }

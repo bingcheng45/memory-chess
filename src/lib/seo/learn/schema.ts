@@ -110,6 +110,9 @@ export type LearnIntro = {
 /** `blindfold` opens the round with the position shown as notation instead of on the board. */
 export type GameSetup = { readonly pieceCount: number; readonly memorizeTime: number; readonly blindfold?: true };
 
+/** A "Try it here" block under the quick answer: a small round, with its position shown before the reader commits to it. */
+export type TryIt = { readonly memorizeTime: number; readonly blindfold?: true };
+
 export type BoardArrow = { readonly from: Square; readonly to: Square; readonly kind: "attack" | "defend" | "pin" };
 export type BoardMark = { readonly square: Square; readonly kind: "ring" };
 
@@ -204,6 +207,7 @@ export type Comparison = {
 
 type LearnBody = {
   readonly intro: LearnIntro;
+  readonly tryIt?: TryIt;
   readonly sections: readonly [LearnSection, ...LearnSection[]];
   /** In render order. At most one each of faq, furtherReading and sources. */
   readonly end: readonly EndBlock[];

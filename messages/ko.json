@@ -1922,5 +1922,13 @@
     },
     "aboutLine": "Google Analytics에 기록된 라운드를 바탕으로, 라운드와 플레이어 수가 충분한 설정에 대해 기억 정확도 집계 통계를 공개합니다.",
     "aboutLink": "기억 데이터 보기"
+  },
+  "learnTryIt": {
+    "title": "여기서 해 보기",
+    "intro": "이 크기의 라운드는 기물 {pieces}개를 {seconds}초 동안 보여 줍니다. 그다음 빈 보드에 기억으로 배치합니다. 이 크기의 포지션 예시입니다.",
+    "introBlindfold": "이 크기의 라운드는 보드 없이 기물 {pieces}개를 기보로 {seconds}초 동안 알려 줍니다. 그다음 빈 보드에 기억으로 배치합니다. 읽게 될 모습 그대로의 이 크기 포지션 예시입니다.",
+    "position": "백: {white}. 흑: {black}.",
+    "start": "기물 {pieces}개 라운드 시작",
+    "startBlindfold": "기물 {pieces}개 블라인드 라운드 시작"
   }
 }

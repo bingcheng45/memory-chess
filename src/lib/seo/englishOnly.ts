@@ -51,8 +51,12 @@ export const UNLISTED_ROUTES = ["/share"] as const;
  * machine translations in the sitemap got the site rejected by AdSense once.
  * `TRANSLATED_ARTICLE_LOCALES` says which locales have translated articles,
  * and `TRANSLATED_PAGE_LOCALES` which have the trust pages.
+ *
+ * The daily board joined on 2026-10-28. Its 23 translated copies were the same
+ * interface page in 23 languages, and drew 13 landings and no engaged session
+ * in the 60 days to 2026-10-26.
  */
-export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", "/data", ARTICLES_PATH, ...PAGE_ROUTES] as const;
+export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", "/daily", "/data", ARTICLES_PATH, ...PAGE_ROUTES] as const;
 
 /** Whether an unprefixed path is served in translation but indexed only in English. */
 export function isIndexedInDefaultLocaleOnly(path: string): boolean {

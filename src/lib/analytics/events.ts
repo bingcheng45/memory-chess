@@ -13,6 +13,7 @@ export const ROUND_SOURCES = [
   "calibration_cta",
   "guide_cta",
   "guide_try",
+  "blindfold_page",
   "article_cta",
   "game_form",
   "tile_drill",

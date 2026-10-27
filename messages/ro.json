@@ -1085,14 +1085,13 @@
       "changeSettings": "Schimbă setările",
       "tileDrill": "Acest exercițiu la nivelul tău",
       "tileDrillWhy": "Potrivit nivelului tău, ca să exersezi ce descrie articolul.",
-      "submitPrompt": "Vezi pe ce loc se află rezultatul tău, în lume și în țara ta.",
       "personalBest": "Nou record personal la acest nivel. Trece-l în clasament.",
-      "leaderboardQualifies": "Rezultatul tău ar intra în clasament. Ocupă-ți locul.",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% ar intra în clasament.",
         "open": "{difficulty}: vezi pe ce loc ajunge {accuracy}%.",
         "claim": "Ocupă locul",
-        "submit": "Trimite"
+        "submit": "Trimite",
+        "claimed": "În clasament: {difficulty}, {accuracy}%."
       },
       "viewLeaderboard": "Vezi clasamentul",
       "dialog": {

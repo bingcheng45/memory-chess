@@ -1085,14 +1085,13 @@
       "changeSettings": "Beállítások módosítása",
       "tileDrill": "Ez a gyakorlat a te szintedre",
       "tileDrillWhy": "A te szintedhez igazítva, hogy gyakorolhasd, amit a cikk leír.",
-      "submitPrompt": "Nézd meg, hol áll az eredményed a világon és az országodban.",
       "personalBest": "Új egyéni csúcs ezen a szinten. Rögzítsd.",
-      "leaderboardQualifies": "Az eredményed felférne a ranglistára. Foglald el a helyed.",
       "claimLine": {
         "qualifies": "{difficulty}: felférsz a ranglistára ({accuracy}%).",
         "open": "{difficulty}: nézd meg a helyed ({accuracy}%).",
-        "claim": "Foglald el",
-        "submit": "Beküldés"
+        "claim": "Foglald el a helyed",
+        "submit": "Beküldés",
+        "claimed": "A ranglistán: {difficulty}, {accuracy}%."
       },
       "viewLeaderboard": "Ranglista megtekintése",
       "dialog": {

@@ -1085,14 +1085,13 @@
       "changeSettings": "Cambia impostazioni",
       "tileDrill": "Questo esercizio al tuo livello",
       "tileDrillWhy": "Calibrato sul tuo livello, per esercitarti su ciò che descrive l'articolo.",
-      "submitPrompt": "Scopri dove si piazza il tuo punteggio, nel mondo e nel tuo paese.",
       "personalBest": "Nuovo record personale su questo livello. Mettilo agli atti.",
-      "leaderboardQualifies": "Il tuo punteggio entrerebbe in classifica. Prenota il tuo posto.",
       "claimLine": {
         "qualifies": "{difficulty}: con {accuracy}% entreresti in classifica.",
         "open": "{difficulty}: scopri il piazzamento ({accuracy}%).",
         "claim": "Prenota posto",
-        "submit": "Invia"
+        "submit": "Invia",
+        "claimed": "In classifica: {difficulty}, {accuracy}%."
       },
       "viewLeaderboard": "Vedi la classifica",
       "dialog": {

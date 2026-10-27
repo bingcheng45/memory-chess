@@ -1085,14 +1085,13 @@
       "changeSettings": "설정 변경",
       "tileDrill": "내 수준에 맞춘 이 연습",
       "tileDrillWhy": "내 수준에 맞춰, 글에서 설명하는 내용을 연습할 수 있어요.",
-      "submitPrompt": "전 세계와 우리나라에서 몇 위인지 확인해 보세요.",
       "personalBest": "이 난이도의 개인 최고 기록입니다. 기록으로 남기세요.",
-      "leaderboardQualifies": "이 점수면 리더보드에 오릅니다. 자리를 차지하세요.",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}%면 리더보드에 오릅니다.",
         "open": "{difficulty}: {accuracy}%가 몇 위인지 확인해 보세요.",
         "claim": "자리 차지",
-        "submit": "제출"
+        "submit": "제출",
+        "claimed": "리더보드에 올랐습니다: {difficulty}, {accuracy}%."
       },
       "viewLeaderboard": "리더보드 보기",
       "dialog": {

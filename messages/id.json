@@ -1085,14 +1085,13 @@
       "changeSettings": "Ubah pengaturan",
       "tileDrill": "Latihan ini di levelmu",
       "tileDrillWhy": "Disesuaikan dengan levelmu, untuk melatih apa yang dijelaskan artikel ini.",
-      "submitPrompt": "Lihat peringkat skor Anda di dunia dan di negara Anda.",
       "personalBest": "Rekor pribadi baru di level ini. Catat sekarang.",
-      "leaderboardQualifies": "Skor Anda akan masuk papan peringkat. Amankan tempat Anda.",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% akan masuk papan peringkat.",
         "open": "{difficulty}: lihat peringkat untuk {accuracy}%.",
         "claim": "Amankan tempat",
-        "submit": "Kirim skor"
+        "submit": "Kirim skor",
+        "claimed": "Di papan peringkat: {difficulty}, {accuracy}%."
       },
       "viewLeaderboard": "Lihat papan peringkat",
       "dialog": {

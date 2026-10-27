@@ -45,7 +45,7 @@ describe("submitting a score when the stored-entries code fails to load", () => 
   it("says the score was submitted, since the server stored it", async () => {
     render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
-    fireEvent.click(screen.getByRole("button", { name: "Submit it" }));
+    fireEvent.click(screen.getByRole("button", { name: "Submit your score" }));
     fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
     fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
 

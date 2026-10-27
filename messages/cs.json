@@ -1085,14 +1085,13 @@
       "changeSettings": "Změnit nastavení",
       "tileDrill": "Toto cvičení na vaší úrovni",
       "tileDrillWhy": "Upraveno na vaši úroveň, abyste si vyzkoušeli, co článek popisuje.",
-      "submitPrompt": "Podívejte se, kde se váš výsledek umístí ve světě i ve vaší zemi.",
       "personalBest": "Nový osobní rekord na této úrovni. Zapište ho.",
-      "leaderboardQualifies": "Váš výsledek by se dostal do žebříčku. Zajistěte si místo.",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy} % stačí do žebříčku.",
         "open": "{difficulty}: zjistěte pořadí pro {accuracy} %.",
         "claim": "Zajistit místo",
-        "submit": "Odeslat skóre"
+        "submit": "Odeslat skóre",
+        "claimed": "V žebříčku: {difficulty}, {accuracy} %."
       },
       "viewLeaderboard": "Zobrazit žebříček",
       "dialog": {

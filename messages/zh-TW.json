@@ -1085,14 +1085,13 @@
       "changeSettings": "變更設定",
       "tileDrill": "適合你程度的這道練習",
       "tileDrillWhy": "依你的程度設定，用來練習文章所講的內容。",
-      "submitPrompt": "看看你的成績在全球和你所在國家排第幾。",
       "personalBest": "刷新了這個難度的個人最佳，記錄下來吧。",
-      "leaderboardQualifies": "你的成績能上排行榜，快來佔個位置。",
       "claimLine": {
         "qualifies": "{difficulty}:{accuracy}% 可以上榜。",
         "open": "{difficulty}:看看 {accuracy}% 排第幾。",
         "claim": "搶下名次",
-        "submit": "提交"
+        "submit": "提交",
+        "claimed": "已上榜:{difficulty},{accuracy}%。"
       },
       "viewLeaderboard": "查看排行榜",
       "dialog": {

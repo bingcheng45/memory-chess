@@ -1085,14 +1085,13 @@
       "changeSettings": "Endre innstillinger",
       "tileDrill": "Denne øvelsen på ditt nivå",
       "tileDrillWhy": "Tilpasset ditt nivå, så du kan øve på det artikkelen beskriver.",
-      "submitPrompt": "Se hvor resultatet ditt plasserer seg i verden og i landet ditt.",
       "personalBest": "Ny personlig rekord på dette nivået. Få den på listen.",
-      "leaderboardQualifies": "Resultatet ditt ville kommet på topplisten. Ta plassen din.",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy} % kommer på topplisten.",
         "open": "{difficulty}: se plasseringen ({accuracy} %).",
         "claim": "Ta plassen",
-        "submit": "Send"
+        "submit": "Send",
+        "claimed": "På topplisten: {difficulty}, {accuracy} %."
       },
       "viewLeaderboard": "Se topplisten",
       "dialog": {

@@ -1085,14 +1085,13 @@
       "changeSettings": "सेटिंग बदलें",
       "tileDrill": "आपके स्तर पर यह अभ्यास",
       "tileDrillWhy": "आपके स्तर के अनुसार, ताकि आप वह अभ्यास कर सकें जो लेख बताता है।",
-      "submitPrompt": "देखें कि आपका स्कोर दुनिया में और आपके देश में कहाँ है।",
       "personalBest": "इस स्तर पर नया व्यक्तिगत सर्वश्रेष्ठ। इसे दर्ज करें।",
-      "leaderboardQualifies": "आपका स्कोर लीडरबोर्ड में जगह बना लेगा। अपनी जगह पक्की करें।",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% से लीडरबोर्ड में जगह मिलेगी।",
         "open": "{difficulty}: {accuracy}% की रैंक देखें।",
         "claim": "जगह पक्की करें",
-        "submit": "स्कोर भेजें"
+        "submit": "स्कोर भेजें",
+        "claimed": "लीडरबोर्ड पर: {difficulty}, {accuracy}%।"
       },
       "viewLeaderboard": "लीडरबोर्ड देखें",
       "dialog": {

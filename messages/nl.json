@@ -1085,14 +1085,13 @@
       "changeSettings": "Instellingen wijzigen",
       "tileDrill": "Deze oefening op jouw niveau",
       "tileDrillWhy": "Afgestemd op jouw niveau, om te oefenen wat het artikel beschrijft.",
-      "submitPrompt": "Bekijk waar je score staat, wereldwijd en in je eigen land.",
       "personalBest": "Nieuw persoonlijk record op dit niveau. Zet het op de lijst.",
-      "leaderboardQualifies": "Je score zou de ranglijst halen. Claim je plek.",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% zou de ranglijst halen.",
         "open": "{difficulty}: kijk waar {accuracy}% eindigt.",
-        "claim": "Claim het",
-        "submit": "Verstuur"
+        "claim": "Claim je plek",
+        "submit": "Verstuur",
+        "claimed": "Op de ranglijst: {difficulty}, {accuracy}%."
       },
       "viewLeaderboard": "Bekijk de ranglijst",
       "dialog": {

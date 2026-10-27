@@ -54,15 +54,15 @@ describe("the claim line under the score", () => {
   it("names the board a score would make and opens the leaderboard dialog from there", async () => {
     await show(OPEN);
 
-    expect(claim()?.textContent).toBe("Medium: 80% would make the leaderboard.Claim it");
-    fireEvent.click(within(claim()!).getByRole("button", { name: "Claim it" }));
+    expect(claim()?.textContent).toBe("Medium: 80% would make the leaderboard.Claim your spot");
+    fireEvent.click(within(claim()!).getByRole("button", { name: "Claim your spot" }));
 
     expect(screen.getByRole("dialog", { name: "Submit to leaderboard" })).toBeInTheDocument();
   });
 
   it("sends the score with score_submit from the claim line's dialog", async () => {
     await show(OPEN);
-    fireEvent.click(within(claim()!).getByRole("button", { name: "Claim it" }));
+    fireEvent.click(within(claim()!).getByRole("button", { name: "Claim your spot" }));
     fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
     fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
 
@@ -72,13 +72,13 @@ describe("the claim line under the score", () => {
   it("promises no placement when the score would not make a full board, or the cutoffs are unknown", async () => {
     await show(null);
 
-    expect(claim()?.textContent).toBe("Medium: see where 80% ranks.Submit it");
+    expect(claim()?.textContent).toBe("Medium: see where 80% ranks.Submit your score");
   });
 
   it("says the same when the board is full and the score would not push anyone off", async () => {
     await show(FULL_MEDIUM);
 
-    expect(claim()?.textContent).toBe("Medium: see where 80% ranks.Submit it");
+    expect(claim()?.textContent).toBe("Medium: see where 80% ranks.Submit your score");
   });
 
   it("is absent for a custom board, which no leaderboard ranks", async () => {
@@ -96,12 +96,12 @@ describe("the claim line under the score", () => {
     mockGame = { ...GAME, actualMemorizeTime } as typeof GAME;
     await show(OPEN);
 
-    expect([claim() !== null, document.querySelector(".lab-result-callout") !== null]).toEqual([shown, shown]);
+    expect(claim() !== null).toBe(shown);
   });
 
   it("returns focus to the button that opened the dialog", async () => {
     await show(OPEN);
-    const opener = within(claim()!).getByRole("button", { name: "Claim it" });
+    const opener = within(claim()!).getByRole("button", { name: "Claim your spot" });
     fireEvent.click(opener);
     fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
 
@@ -126,7 +126,7 @@ describe("Share result beside Next round", () => {
 describe("the claim line's accessibility", () => {
   it("describes its button with the sentence it belongs to", async () => {
     await show(OPEN);
-    const button = within(claim()!).getByRole("button", { name: "Claim it" });
+    const button = within(claim()!).getByRole("button", { name: "Claim your spot" });
 
     expect(document.getElementById(button.getAttribute("aria-describedby")!)?.textContent).toBe("Medium: 80% would make the leaderboard.");
   });

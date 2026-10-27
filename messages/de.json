@@ -1085,14 +1085,13 @@
       "changeSettings": "Einstellungen ändern",
       "tileDrill": "Diese Übung auf deinem Niveau",
       "tileDrillWhy": "Auf dein Niveau zugeschnitten, damit du übst, was der Artikel beschreibt.",
-      "submitPrompt": "Sieh nach, wo dein Ergebnis weltweit und in deinem Land steht.",
       "personalBest": "Neue persönliche Bestleistung auf dieser Stufe. Trag sie ein.",
-      "leaderboardQualifies": "Dein Ergebnis würde es in die Bestenliste schaffen. Sichere dir deinen Platz.",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy} % reichen für die Bestenliste.",
         "open": "{difficulty}: Platz für {accuracy} % ansehen.",
         "claim": "Platz sichern",
-        "submit": "Senden"
+        "submit": "Senden",
+        "claimed": "In der Bestenliste: {difficulty}, {accuracy} %."
       },
       "viewLeaderboard": "Bestenliste ansehen",
       "dialog": {

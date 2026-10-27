@@ -51,7 +51,7 @@ import { CommunityInvite } from "@/components/community/CommunityLink";
 import { isReturningPlayer } from "@/lib/community";
 import ShareResult from "@/components/game/ShareResult";
 import { SubmittedStanding } from "@/components/game/SubmittedStanding";
-import { Trophy } from "lucide-react";
+import { Check } from "lucide-react";
 import { roundShareOf } from "@/components/game/roundShare";
 import { START_RATING } from "@/lib/game/rating";
 import type { RoundOutcome } from "@/lib/game/roundOutcome";
@@ -133,6 +133,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const openerRef = useRef<HTMLElement | null>(null);
   const claimTextId = useId();
   const leaderboardLinkRef = useRef<HTMLAnchorElement>(null);
+  const claimedLinkRef = useRef<HTMLAnchorElement>(null);
   // The round warmed the cache, so the qualifying banner is usually known before the first paint. Waiting for the
   // effect below would insert it a frame later and push down everything under it.
   const [cutoffs, setCutoffs] = useState<LeaderboardCutoffs | null>(readCachedCutoffs);
@@ -369,23 +370,49 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   };
   const returnFocus = (event: Event) => {
     event.preventDefault();
-    // A submitted score takes both prompts away, so focus moves on to the leaderboard link.
-    (openerRef.current?.isConnected ? openerRef.current : leaderboardLinkRef.current)?.focus();
+    // A submitted score replaces the claim button, so focus moves to the claimed banner's link, where the confirmation is.
+    (openerRef.current?.isConnected ? openerRef.current : claimedLinkRef.current ?? leaderboardLinkRef.current)?.focus();
   };
   const openLeaderboardDialog = (event: MouseEvent<HTMLButtonElement>) => {
     openerRef.current = event.currentTarget;
     setShowLeaderboardDialog(true);
   };
-  const claimLine = scored && leaderboardEligible && roundDifficulty !== "custom" && !submitSuccess && (
-    <p className="lab-result-claim" data-result-claim>
-      <span id={claimTextId} className="lab-result-claim-text">
-        {t(ranks ? "claimLine.qualifies" : "claimLine.open", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })}
-      </span>
-      <button type="button" onClick={openLeaderboardDialog} aria-describedby={claimTextId} className="lab-result-claim-action">
-        {t(ranks ? "claimLine.claim" : "claimLine.submit")}
-      </button>
-    </p>
+  const submittedStandingHref = `/leaderboard?player=${encodeURIComponent(playerName.trim())}&difficulty=${encodeURIComponent(roundDifficulty === "custom" ? "medium" : roundDifficulty)}${blindfold ? `&mode=${BLINDFOLD_MODE}` : ""}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round(((gameState.accuracy || 0) * gameState.pieceCount) / 100)}&totalWrongPieces=${piecesInfo.totalWrong}`;
+  const claimsFirst = ranks && !submitSuccess;
+  const claimLine = scored && leaderboardEligible && roundDifficulty !== "custom" && (
+    <div className="lab-result-claim" data-result-claim data-claim-state={submitSuccess ? "claimed" : ranks ? "qualifies" : "open"}>
+      {submitSuccess ? (
+        <>
+          <Check aria-hidden size={20} className="lab-result-claim-check" />
+          <p role="status" className="lab-result-claim-text">
+            {t("claimLine.claimed", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })}
+          </p>
+          <Link ref={claimedLinkRef} href={submittedStandingHref} className="lab-btn lab-btn-secondary lab-result-claim-action">
+            {t("viewLeaderboard")}
+          </Link>
+        </>
+      ) : (
+        <>
+          <span id={claimTextId} className="lab-result-claim-text">
+            {ranks
+              ? t("claimLine.qualifies", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })
+              : personalBest
+                ? t("personalBest")
+                : t("claimLine.open", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })}
+          </span>
+          <button
+            type="button"
+            onClick={openLeaderboardDialog}
+            aria-describedby={claimTextId}
+            className={`lab-btn lab-result-claim-action ${ranks ? "lab-btn-primary" : "lab-btn-secondary"}`}
+          >
+            {t(ranks ? "claimLine.claim" : "claimLine.submit")}
+          </button>
+        </>
+      )}
+    </div>
   );
+  const nextButtonClass = `lab-btn lab-result-main ${claimsFirst ? "lab-btn-secondary" : "lab-btn-primary"}`;
 
   const shareResult = round.phase === "scored" && (
     <ShareResult
@@ -450,29 +477,19 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <>
             <ResultBoards round={scored} view={resultView} onViewChange={setResultView} />
             <div className="lab-result-readout">
-              <ResultReadout
-                round={scored}
-                callout={leaderboardEligible && !submitSuccess && (
-                  <div className="lab-result-callout">
-                    <Trophy aria-hidden size={20} />
-                    <p role={ranks ? "status" : undefined}>
-                      {ranks ? t("leaderboardQualifies") : personalBest ? t("personalBest") : t("submitPrompt")}
-                    </p>
-                  </div>
-                )}
-              />
+              <ResultReadout round={scored} />
             </div>
           </>
         )}
 
         <div className="lab-result-next">
           {next ? (
-            <button type="button" onClick={() => playNext(next)} className="lab-btn lab-btn-primary">
+            <button type="button" onClick={() => playNext(next)} className={nextButtonClass}>
               {t("nextRound")}
               <span className="lab-result-next-board">{tConfig("presetSummary", { pieces: next.pieceCount, seconds: next.memorizeSeconds })}</span>
             </button>
           ) : (
-            <button type="button" onClick={onTryAgain} className="lab-btn lab-btn-primary">
+            <button type="button" onClick={onTryAgain} className={nextButtonClass}>
               {t("tryAgain")}
             </button>
           )}
@@ -645,14 +662,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
               <div className="flex justify-center gap-2">
                 <Link
                   className="lab-btn lab-btn-primary"
-                  href={`/leaderboard?player=${encodeURIComponent(playerName.trim())}&difficulty=${(() => {
-                    const difficulty = determineDifficulty(
-                      gameState.pieceCount,
-                    );
-                    return encodeURIComponent(
-                      difficulty === "custom" ? "medium" : difficulty,
-                    );
-                  })()}${blindfold ? `&mode=${BLINDFOLD_MODE}` : ""}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round(((gameState.accuracy || 0) * gameState.pieceCount) / 100)}&totalWrongPieces=${piecesInfo.totalWrong}`}
+                  href={submittedStandingHref}
                 >
                   {t("viewLeaderboard")}
                 </Link>

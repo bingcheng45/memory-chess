@@ -40,9 +40,8 @@ export default function ResultBoards({ round, view: preferred, onViewChange }: R
   };
 
   return (
-    <figure data-result-board="scored" data-result-view={view} className="lab-plate lab-plate-grid lab-result-board">
-      <div className="lab-result-board-head">
-        <figcaption className="lab-k">{t("title")}</figcaption>
+    <>
+      <div className="lab-result-views" data-result-views>
         <div className="lab-view-toggle" role="group" aria-label={t("viewLabel")}>
           {VIEWS.map((option) => (
             <button
@@ -57,37 +56,40 @@ export default function ResultBoards({ round, view: preferred, onViewChange }: R
           ))}
         </div>
       </div>
-      {view === "side" ? (
-        <>
-          <div className="lab-result-pair">
-            {SIDES.map(({ lens, caption, label }) => (
-              <figure key={lens} data-board-side={lens}>
-                <figcaption>{t(caption)}</figcaption>
-                <RoundBoard state={round} dispatch={ignoreBoard} copy="game.round" lens={lens} label={t(label)} />
-              </figure>
-            ))}
-          </div>
-          <div className="lab-legend">
-            <span>
-              <i data-key="ok" aria-hidden="true" />
-              {t("legendCorrect")}
-            </span>
-            <span>
-              <i data-key="wrong" aria-hidden="true" />
-              {t("legendWrong")}
-            </span>
-            <span>
-              <i data-key="miss" aria-hidden="true" />
-              {t("legendMissed")}
-            </span>
-          </div>
-        </>
-      ) : (
-        <>
-          <RoundBoard state={round} dispatch={ignoreBoard} copy="game.round" />
-          <OverlayLegend state={round} copy="game.round" />
-        </>
-      )}
-    </figure>
+      <figure data-result-board="scored" data-result-view={view} className="lab-plate lab-plate-grid lab-result-board">
+        <figcaption className="sr-only">{t("title")}</figcaption>
+        {view === "side" ? (
+          <>
+            <div className="lab-result-pair">
+              {SIDES.map(({ lens, caption, label }) => (
+                <figure key={lens} data-board-side={lens}>
+                  <figcaption>{t(caption)}</figcaption>
+                  <RoundBoard state={round} dispatch={ignoreBoard} copy="game.round" lens={lens} label={t(label)} />
+                </figure>
+              ))}
+            </div>
+            <div className="lab-legend">
+              <span>
+                <i data-key="ok" aria-hidden="true" />
+                {t("legendCorrect")}
+              </span>
+              <span>
+                <i data-key="wrong" aria-hidden="true" />
+                {t("legendWrong")}
+              </span>
+              <span>
+                <i data-key="miss" aria-hidden="true" />
+                {t("legendMissed")}
+              </span>
+            </div>
+          </>
+        ) : (
+          <>
+            <RoundBoard state={round} dispatch={ignoreBoard} copy="game.round" />
+            <OverlayLegend state={round} copy="game.round" />
+          </>
+        )}
+      </figure>
+    </>
   );
 }

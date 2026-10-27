@@ -1085,14 +1085,13 @@
       "changeSettings": "Zmień ustawienia",
       "tileDrill": "To ćwiczenie na twoim poziomie",
       "tileDrillWhy": "Dopasowane do twojego poziomu, żeby przećwiczyć to, co opisuje artykuł.",
-      "submitPrompt": "Sprawdź, które miejsce zajmuje Twój wynik na świecie i w Twoim kraju.",
       "personalBest": "Nowy rekord osobisty na tym poziomie. Zapisz go.",
-      "leaderboardQualifies": "Twój wynik zmieściłby się w rankingu. Zajmij swoje miejsce.",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% wejdzie do rankingu.",
         "open": "{difficulty}: sprawdź, które miejsce da {accuracy}%.",
         "claim": "Zajmij miejsce",
-        "submit": "Wyślij wynik"
+        "submit": "Wyślij wynik",
+        "claimed": "W rankingu: {difficulty}, {accuracy}%."
       },
       "viewLeaderboard": "Zobacz ranking",
       "dialog": {

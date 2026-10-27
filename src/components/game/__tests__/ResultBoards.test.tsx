@@ -40,4 +40,24 @@ describe("ResultBoards", () => {
     expect(screen.getByRole("group", { name: YOUR_BOARD })).toBeInTheDocument();
     expect(onViewChange.mock.calls).toEqual([["side"]]);
   });
+
+  it.each([
+    ["side", "4k3/8/8/8/8/8/PP6/4K3"],
+    ["overlay", "4k3/8/8/8/8/8/PP6/4K3"],
+  ] as const)("renders the view toggle before the boards in the %s view, and keeps it first after switching", (view, placed) => {
+    const { container } = render(<ResultBoards round={scoredRound(TARGET, placed)} view={view} onViewChange={jest.fn()} />);
+    const order = () => {
+      const toggle = container.querySelector("[data-result-views]")!;
+      const board = container.querySelector("[data-result-board]")!;
+      return [toggle.compareDocumentPosition(board) & Node.DOCUMENT_POSITION_FOLLOWING, toggle.parentElement === board.parentElement, board.contains(toggle)];
+    };
+
+    const before = order();
+    fireEvent.click(screen.getByRole("button", { name: view === "side" ? "One board" : "Side by side" }));
+
+    expect([before, order()]).toEqual([
+      [Node.DOCUMENT_POSITION_FOLLOWING, true, false],
+      [Node.DOCUMENT_POSITION_FOLLOWING, true, false],
+    ]);
+  });
 });

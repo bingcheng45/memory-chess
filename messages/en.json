@@ -1085,14 +1085,13 @@
       "changeSettings": "Change settings",
       "tileDrill": "This drill at your level",
       "tileDrillWhy": "Sized to your level, to practise what the article describes.",
-      "submitPrompt": "See where your score ranks, worldwide and in your country.",
       "personalBest": "New personal best on this board. Put it on the record.",
-      "leaderboardQualifies": "Your score would make the leaderboard. Claim your spot.",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% would make the leaderboard.",
         "open": "{difficulty}: see where {accuracy}% ranks.",
-        "claim": "Claim it",
-        "submit": "Submit it"
+        "claim": "Claim your spot",
+        "submit": "Submit your score",
+        "claimed": "On the leaderboard: {difficulty}, {accuracy}%."
       },
       "viewLeaderboard": "View leaderboard",
       "dialog": {

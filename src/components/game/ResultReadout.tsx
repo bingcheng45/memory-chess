@@ -1,6 +1,5 @@
 "use client";
 
-import type { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 import type { RoundState } from "@/lib/round/round";
 import { formatSecondsMs } from "@/utils/timer";
@@ -11,12 +10,10 @@ type ScoredRound = Extract<RoundState, { phase: "scored" }>;
 
 interface ResultReadoutProps {
   readonly round: ScoredRound;
-  /** The leaderboard prompt under the two columns, when the round can go on the board. */
-  readonly callout?: ReactNode;
 }
 
 /** The result screen's readout: the score and its figures beside the recall by piece type, in one compact card. */
-export function ResultReadout({ round, callout }: ResultReadoutProps) {
+export function ResultReadout({ round }: ResultReadoutProps) {
   const t = useTranslations("game.round");
   const { score } = round;
   const stats = [
@@ -51,7 +48,6 @@ export function ResultReadout({ round, callout }: ResultReadoutProps) {
           ))}
         </div>
       </div>
-      {callout}
     </div>
   );
 }

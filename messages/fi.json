@@ -1085,14 +1085,13 @@
       "changeSettings": "Muuta asetuksia",
       "tileDrill": "Tämä harjoitus tasollasi",
       "tileDrillWhy": "Mitoitettu tasollesi, jotta voit harjoitella sitä, mitä artikkeli kuvaa.",
-      "submitPrompt": "Katso, mihin tuloksesi sijoittuu maailmassa ja omassa maassasi.",
       "personalBest": "Uusi oma ennätys tällä tasolla. Kirjaa se.",
-      "leaderboardQualifies": "Tuloksesi pääsisi tulostaulukkoon. Varaa paikkasi.",
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy} % pääsisi tulostaulukkoon.",
         "open": "{difficulty}: katso sijoitus ({accuracy} %).",
         "claim": "Varaa paikka",
-        "submit": "Lähetä tulos"
+        "submit": "Lähetä tulos",
+        "claimed": "Tulostaulukossa: {difficulty}, {accuracy} %."
       },
       "viewLeaderboard": "Katso tulostaulukko",
       "dialog": {

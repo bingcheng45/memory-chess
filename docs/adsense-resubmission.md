@@ -1,20 +1,42 @@
 # AdSense resubmission checklist
 
-AdSense has rejected thememorychess.com for "Low value content" three times, the third around 2026-09-28. The fixes
-after the first two (PR 21 merged 2026-09-05, PR 23 merged 2026-09-16) were on-page: word counts, hidden text, boilerplate, machine-translated guides, and the
-`npm run audit:adsense` gate, which production passed before the third rejection. The third rejection names three
-criteria:
+AdSense has rejected thememorychess.com for "Low value content" four times. The rejection emails in the owner's Gmail
+are dated 2026-08-24, 2026-09-13, 2026-09-28 and 2026-10-25. The fixes after the first two (PR 21 merged 2026-09-05,
+PR 23 merged 2026-09-16) were on-page: word counts, hidden text, boilerplate, machine-translated guides, and the
+`npm run audit:adsense` gate, which production passed before the third rejection. The third and fourth rejections name
+three criteria:
 
 1. Provides authentic, high-quality information, tools, or services.
 2. Exhibits ongoing curation and structural maintenance.
 3. Generates and sustains genuine user interest.
 
-Criteria 2 and 3 do not move in the 12 days between submissions, and no code change moves them. Resubmit only when
-every box below is ticked. The dates and thresholds are our heuristics; Google publishes no numbers.
+The fourth submission went in before the 2026-11-23 date below and was rejected 27 days after the third. Criteria 2
+and 3 do not move in a few weeks, and no code change moves them. Resubmit only when every box below is ticked. The
+dates and thresholds are our heuristics; Google publishes no numbers.
+
+## Why the fourth rejection, as measured on 2026-10-28
+
+The full review is at https://claude.ai/artifact/UPqNtC1LBciiv9FMzKNJyq. In short:
+
+- **Google's index is mostly stale translated copies.** Search Console listed 370 indexed pages against 103 in the
+  sitemap. 309 were translated `/xx/learn/*` guides last crawled on 2026-08-29, before they began to redirect or serve
+  noindex on 2026-09-15. PR 190 lists them in `/retired-sitemap.xml` so Google recrawls and drops them.
+- **Two thirds of the sitemap was translated interface pages.** 69 of 104 URLs were home, /game and /daily in 23
+  languages. The 24 /daily URLs drew 22 landings and no engaged session in 60 days. PR 191 indexes /daily in English
+  only. Home and /game stay, as decided below.
+- **No owner-written piece and no steady cadence.** Every guide and article is AI-written and says so. They shipped in
+  batches: 5 guides on 2026-03-06, 11 on 2026-03-24, 3 articles on 2026-10-05, 5 guides on 2026-10-20.
+- **Interest is small.** GA4 weekly active users were 250 to 470 outside the Product Hunt week (1,035 in the week of
+  2026-10-12). The three articles drew about 25 landing sessions in four weeks.
+- **The production audit was failing** on /blindfold and five translated guides, from changes on 2026-10-26 and 27.
+  PR 192 fixes both.
 
 ## Before resubmitting
 
-- [ ] **Not before 2026-11-23**, 8 weeks after the third rejection.
+- [ ] **Not before 2026-12-21**, 8 weeks after the fourth rejection.
+- [ ] **Google's index matches the sitemap.** In Search Console, Pages, the indexed count is within 10% of the sitemap's
+      count (81 after PR 191), and no `/xx/learn/` URL is in the indexed list. Then remove `/retired-sitemap.xml` and its
+      robots.txt line (PR 190).
 - [ ] **Re-enable the AdSense script.** Since 2026-10-18 the `adsbygoogle.js` script is not loaded, because it cost
       221 KB of JavaScript per mobile view and no page has an ad slot. The `google-adsense-account` meta tag and
       `ads.txt` stay, so site verification keeps working. Set `ADSENSE_SCRIPT_ENABLED` to `true` in `src/lib/adsense.ts`,
@@ -46,6 +68,7 @@ every box below is ticked. The dates and thresholds are our heuristics; Google p
 | Date | GA4 weekly active users | GA4 returning users | Search Console clicks (7d) | Impressions (7d) | Note |
 |---|---|---|---|---|---|
 | 2026-09-28 | 247 | 53 | 122 | 3,080 | Baseline, week of Sep 21-27, thememorychess.com host only |
+| 2026-10-28 | 469 | | | | Week of Oct 19-25, the week after the Product Hunt launch week (1,035). GA4 weekly active users only |
 
 Read GA numbers for the `thememorychess.com` hostname only. Until 2026-09-29 the analytics scripts also loaded on local
 and preview builds, so earlier weeks include test runs (257 users from `127.0.0.1` in the week of Sep 14).
@@ -159,7 +182,7 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
     does not compare the blocks of the leaderboard. Both depend on live data, and each locale's copy of a page
     is cached by itself for 300 seconds, so a count of them failed 46 pages with no defect in the first audit
     after a data change. The audit still has to print every sitemap URL and PASS. That was 96 URLs on
-    2026-10-05. From PR 42 on it is 120, because /daily is indexed in all 24 languages. Expect the count to grow
+    2026-10-05. From PR 42 on it was 120, because /daily was indexed in all 24 languages, and from PR 191 it is 81, because /daily is indexed in English only. Expect the count to grow
     with each new indexed route; a drop with no route removed is a finding.
   - What the approval hash is. It is tamper evidence, not access control. It shows that a text is the one
     `approve` saw, in the place where it saw it, and it catches an accident or a careless edit. The recipe is in

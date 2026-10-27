@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: xem {accuracy}% xếp hạng thứ mấy.",
         "claim": "Giành chỗ",
         "submit": "Gửi điểm",
-        "claimed": "Đã lên bảng xếp hạng: {difficulty}, {accuracy}%."
+        "claimed": "Đã lên bảng xếp hạng: {difficulty}, {accuracy}%.",
+        "rank": "Bạn đứng thứ {rank, number} trong {total, number} ({difficulty})",
+        "seeBoard": "Xem bảng xếp hạng"
       },
       "viewLeaderboard": "Xem bảng xếp hạng",
       "dialog": {

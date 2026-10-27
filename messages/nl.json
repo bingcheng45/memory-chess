@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: kijk waar {accuracy}% eindigt.",
         "claim": "Claim je plek",
         "submit": "Verstuur",
-        "claimed": "Op de ranglijst: {difficulty}, {accuracy}%."
+        "claimed": "Op de ranglijst: {difficulty}, {accuracy}%.",
+        "rank": "Je staat #{rank, number} van {total, number} ({difficulty})",
+        "seeBoard": "Bekijk de ranglijst"
       },
       "viewLeaderboard": "Bekijk de ranglijst",
       "dialog": {

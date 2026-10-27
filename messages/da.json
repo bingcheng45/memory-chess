@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: se, hvor {accuracy} % placerer sig.",
         "claim": "Tag pladsen",
         "submit": "Send det",
-        "claimed": "På ranglisten: {difficulty}, {accuracy} %."
+        "claimed": "På ranglisten: {difficulty}, {accuracy} %.",
+        "rank": "Du er #{rank, number} af {total, number} ({difficulty})",
+        "seeBoard": "Se ranglisten"
       },
       "viewLeaderboard": "Se ranglisten",
       "dialog": {

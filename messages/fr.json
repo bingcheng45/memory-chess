@@ -1091,7 +1091,9 @@
         "open": "{difficulty} : voyez le rang de {accuracy} %.",
         "claim": "Réserver ma place",
         "submit": "Envoyer",
-        "claimed": "Au classement : {difficulty}, {accuracy} %."
+        "claimed": "Au classement : {difficulty}, {accuracy} %.",
+        "rank": "Vous êtes n° {rank, number} sur {total, number} ({difficulty})",
+        "seeBoard": "Voir le classement"
       },
       "viewLeaderboard": "Voir le classement",
       "dialog": {

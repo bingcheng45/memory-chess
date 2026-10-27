@@ -1091,7 +1091,9 @@
         "open": "{difficulty}:看看 {accuracy}% 排第幾。",
         "claim": "搶下名次",
         "submit": "提交",
-        "claimed": "已上榜:{difficulty},{accuracy}%。"
+        "claimed": "已上榜:{difficulty},{accuracy}%。",
+        "rank": "{difficulty}:{total, number} 人中第 {rank, number} 名",
+        "seeBoard": "查看排行榜"
       },
       "viewLeaderboard": "查看排行榜",
       "dialog": {

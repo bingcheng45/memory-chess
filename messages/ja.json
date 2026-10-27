@@ -1091,7 +1091,9 @@
         "open": "{difficulty}:{accuracy}%の順位を確認しましょう。",
         "claim": "順位を確保",
         "submit": "送信する",
-        "claimed": "ランキングに登録しました:{difficulty}、{accuracy}%。"
+        "claimed": "ランキングに登録しました:{difficulty}、{accuracy}%。",
+        "rank": "{difficulty}:{total, number}人中{rank, number}位",
+        "seeBoard": "ランキングを見る"
       },
       "viewLeaderboard": "ランキングを見る",
       "dialog": {

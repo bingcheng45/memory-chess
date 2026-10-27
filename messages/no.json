@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: se plasseringen ({accuracy} %).",
         "claim": "Ta plassen",
         "submit": "Send",
-        "claimed": "På topplisten: {difficulty}, {accuracy} %."
+        "claimed": "På topplisten: {difficulty}, {accuracy} %.",
+        "rank": "Du er nr. {rank, number} av {total, number} ({difficulty})",
+        "seeBoard": "Se topplisten"
       },
       "viewLeaderboard": "Se topplisten",
       "dialog": {

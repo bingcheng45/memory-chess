@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: {accuracy}%가 몇 위인지 확인해 보세요.",
         "claim": "자리 차지",
         "submit": "제출",
-        "claimed": "리더보드에 올랐습니다: {difficulty}, {accuracy}%."
+        "claimed": "리더보드에 올랐습니다: {difficulty}, {accuracy}%.",
+        "rank": "{difficulty}: {total, number}명 중 {rank, number}위",
+        "seeBoard": "리더보드 보기"
       },
       "viewLeaderboard": "리더보드 보기",
       "dialog": {

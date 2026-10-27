@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: узнайте место для {accuracy}%.",
         "claim": "Занять место",
         "submit": "Отправить",
-        "claimed": "В таблице лидеров: {difficulty}, {accuracy}%."
+        "claimed": "В таблице лидеров: {difficulty}, {accuracy}%.",
+        "rank": "Вы на {rank, number}-м месте из {total, number} ({difficulty})",
+        "seeBoard": "Смотреть таблицу"
       },
       "viewLeaderboard": "Таблица лидеров",
       "dialog": {

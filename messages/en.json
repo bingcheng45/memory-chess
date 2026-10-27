@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: see where {accuracy}% ranks.",
         "claim": "Claim your spot",
         "submit": "Submit your score",
-        "claimed": "On the leaderboard: {difficulty}, {accuracy}%."
+        "claimed": "On the leaderboard: {difficulty}, {accuracy}%.",
+        "rank": "You're #{rank, number} of {total, number} on {difficulty}",
+        "seeBoard": "See the board"
       },
       "viewLeaderboard": "View leaderboard",
       "dialog": {

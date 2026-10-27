@@ -6,19 +6,18 @@ import { countryName, WORLD_CODE, type CountryCode } from "@/lib/leaderboard/cou
 import type { Standing } from "@/lib/leaderboard/standing";
 import { checkStanding, type StandingCheck } from "@/lib/leaderboard/standingClient";
 
-type Reveal =
+export type Reveal =
   | { readonly status: "loading" }
   | { readonly status: "done"; readonly world: Standing | null; readonly country: Standing | null };
 
 const standingOf = (check: StandingCheck): Standing | null => (check.kind === "ranked" ? check.standing : null);
 
-/** The rank a score that was just sent holds, worldwide and in the player's country, so every submit pays back. */
-export function SubmittedStanding({ entryId, country }: { readonly entryId: string; readonly country: CountryCode }) {
-  const t = useTranslations("game.result.dialog");
-  const locale = useLocale();
+/** The rank a sent score holds, worldwide and in the player's country, looked up once for everything that shows it. */
+export function useSubmittedStanding(entryId: string | null, country: CountryCode): Reveal {
   const [reveal, setReveal] = useState<Reveal>({ status: "loading" });
 
   useEffect(() => {
+    if (entryId === null) return;
     let live = true;
     const inCountry = country === WORLD_CODE ? Promise.resolve(null) : checkStanding(entryId, "country").then(standingOf);
     void Promise.all([checkStanding(entryId, "world").then(standingOf), inCountry]).then(([world, local]) => {
@@ -29,6 +28,13 @@ export function SubmittedStanding({ entryId, country }: { readonly entryId: stri
     };
   }, [entryId, country]);
 
+  return reveal;
+}
+
+/** The rank a score that was just sent holds, worldwide and in the player's country, so every submit pays back. */
+export function SubmittedStanding({ reveal, country }: { readonly reveal: Reveal; readonly country: CountryCode }) {
+  const t = useTranslations("game.result.dialog");
+  const locale = useLocale();
   if (reveal.status === "loading") return <p className="lab-dialog-text">{t("rankLoading")}</p>;
   // The dialog already says the score went up; without a rank there is nothing more to add.
   if (reveal.world === null) return null;

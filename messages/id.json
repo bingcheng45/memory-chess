@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: lihat peringkat untuk {accuracy}%.",
         "claim": "Amankan tempat",
         "submit": "Kirim skor",
-        "claimed": "Di papan peringkat: {difficulty}, {accuracy}%."
+        "claimed": "Di papan peringkat: {difficulty}, {accuracy}%.",
+        "rank": "Anda peringkat #{rank, number} dari {total, number} ({difficulty})",
+        "seeBoard": "Lihat papan peringkat"
       },
       "viewLeaderboard": "Lihat papan peringkat",
       "dialog": {

@@ -6,7 +6,7 @@ import { GameState } from "@/lib/types/game";
 import { lazy, Suspense, useDeferredValue, useState, useEffect, useRef, useId, type MouseEvent } from "react";
 import { playSound } from "@/lib/utils/soundEffects";
 import { Link } from "@/i18n/navigation";
-import { useFormatter, useTranslations } from "next-intl";
+import { useFormatter, useLocale, useTranslations } from "next-intl";
 import {
   Dialog,
   DialogContent,
@@ -50,8 +50,9 @@ import ErrorBoundary from "@/components/ui/ErrorBoundary";
 import { CommunityInvite } from "@/components/community/CommunityLink";
 import { isReturningPlayer } from "@/lib/community";
 import ShareResult from "@/components/game/ShareResult";
-import { SubmittedStanding } from "@/components/game/SubmittedStanding";
+import { SubmittedStanding, useSubmittedStanding } from "@/components/game/SubmittedStanding";
 import { Check } from "lucide-react";
+import { countryName } from "@/lib/leaderboard/countries";
 import { roundShareOf } from "@/components/game/roundShare";
 import { START_RATING } from "@/lib/game/rating";
 import type { RoundOutcome } from "@/lib/game/roundOutcome";
@@ -111,6 +112,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const keepsRecord = browserIndexedDB() !== undefined;
   const showsLab = keepsRecord;
   const tCommunity = useTranslations("common.community");
+  const tDialog = useTranslations("game.result.dialog");
   const tCountry = useTranslations("country");
   const tDaily = useTranslations("daily.round");
   const tConfig = useTranslations("game.config");
@@ -130,6 +132,8 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submittedId, setSubmittedId] = useState<string | null>(null);
   const [personalBest, setPersonalBest] = useState(false);
+  const standing = useSubmittedStanding(submittedId, countryCode);
+  const locale = useLocale();
   const openerRef = useRef<HTMLElement | null>(null);
   const claimTextId = useId();
   const leaderboardLinkRef = useRef<HTMLAnchorElement>(null);
@@ -385,10 +389,19 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
         <>
           <Check aria-hidden size={20} className="lab-result-claim-check" />
           <p role="status" className="lab-result-claim-text">
-            {t("claimLine.claimed", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })}
+            {standing.status === "done" && standing.world ? (
+              <>
+                <span>{t("claimLine.rank", { rank: standing.world.rank, total: standing.world.total, difficulty: tPresets(`${roundDifficulty}.label`) })}</span>
+                {standing.country && (
+                  <span>{tDialog("rankCountry", { rank: standing.country.rank, total: standing.country.total, country: countryName(countryCode, locale) })}</span>
+                )}
+              </>
+            ) : (
+              t("claimLine.claimed", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })
+            )}
           </p>
-          <Link ref={claimedLinkRef} href={submittedStandingHref} className="lab-btn lab-btn-secondary lab-result-claim-action">
-            {t("viewLeaderboard")}
+          <Link ref={claimedLinkRef} href={submittedStandingHref} className="lab-result-claim-link">
+            <span>{t("claimLine.seeBoard")}</span>
           </Link>
         </>
       ) : (
@@ -656,7 +669,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                 <p className="lab-dialog-text">
                   {t("dialog.thanks", { name: playerName })}
                 </p>
-                {submittedId && <SubmittedStanding entryId={submittedId} country={countryCode} />}
+                {submittedId && <SubmittedStanding reveal={standing} country={countryCode} />}
               </div>
 
               <div className="flex justify-center gap-2">

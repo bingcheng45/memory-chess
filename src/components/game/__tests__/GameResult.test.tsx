@@ -778,7 +778,7 @@ describe("GameResult", () => {
       ]).toEqual([["Next round3 pcs / 10s"], true]);
     });
 
-    it("moves focus to the claimed banner's View leaderboard link when the dialog closes after a submit, since the claim button is gone", async () => {
+    it("moves focus to the claimed banner's See the board link when the dialog closes after a submit, since the claim button is gone", async () => {
       mockGameState = perfectEasyGame;
       loadCutoffsMock.mockResolvedValue(CUTOFFS);
       await renderSettled();
@@ -790,7 +790,7 @@ describe("GameResult", () => {
       fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
 
       await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
-      await waitFor(() => expect(document.activeElement).toBe(within(claimBanner()!).getByRole("link", { name: "View leaderboard" })));
+      await waitFor(() => expect(document.activeElement).toBe(within(claimBanner()!).getByRole("link", { name: "See the board" })));
       expect(claimBanner()!.contains(document.activeElement)).toBe(true);
       expect(document.querySelector(".lab-result-callout")).toBeNull();
     });
@@ -812,7 +812,7 @@ describe("GameResult", () => {
       expect([
         claimBanner(),
         within(banner).queryByRole("button"),
-        within(banner).getByRole("link", { name: "View leaderboard" }).getAttribute("href"),
+        within(banner).getByRole("link", { name: "See the board" }).getAttribute("href"),
         banner.getAttribute("data-claim-state"),
         screen.getByRole("button", { name: /^Next round/ }).className.includes("lab-btn-primary"),
       ]).toEqual([banner, null, expect.stringMatching(/^\/leaderboard\?player=Poteto&difficulty=easy&/), "claimed", true]);
@@ -865,6 +865,38 @@ describe("GameResult", () => {
 
       const ranks = await screen.findByText("#312 of 4,180 worldwide");
       expect([...ranks.closest("ul")!.children].map((item) => item.textContent)).toEqual(["#312 of 4,180 worldwide", "#3 of 57 in Singapore"]);
+    });
+
+    it("tells the player their rank in the claimed banner, a quiet link to the board under it, and keeps focus there after the dialog closes", async () => {
+      useSettingsStore.setState({ countryCode: "SG" as never });
+      serveBoard();
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      await submitAs("Poteto");
+      fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+      const banner = claimBanner()!;
+      await waitFor(() => expect(within(banner).getByRole("status").textContent).toBe("You're #312 of 4,180 on Medium#3 of 57 in Singapore"));
+      const link = within(banner).getByRole("link", { name: "See the board" });
+
+      expect([within(banner).queryAllByRole("button"), link.className.includes("lab-btn"), link.getAttribute("href")]).toEqual([[], false, expect.stringMatching(/^\/leaderboard\?player=Poteto&difficulty=medium&/)]);
+      expect(document.activeElement).toBe(link);
+    });
+
+    it("falls back to the plain confirmation when the rank cannot be read", async () => {
+      global.fetch = jest.fn(async (input: RequestInfo | URL) => {
+        const url = String(input);
+        if (url.includes("/api/leaderboard/rank")) return { ok: false, status: 500, json: async () => ({}) };
+        if (url.includes("/api/leaderboard")) return reply({ success: true, data: row });
+        return reply({ data: { value: 1 } });
+      }) as unknown as typeof fetch;
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      await submitAs("Poteto");
+      fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+
+      expect(within(claimBanner()!).getByRole("status")).toHaveTextContent("On the leaderboard: Medium, 80%.");
     });
 
     it("shows only the world rank when the player picked no country", async () => {

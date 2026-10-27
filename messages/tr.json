@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: sıralamadaki yerini gör (%{accuracy}).",
         "claim": "Yerini al",
         "submit": "Gönder",
-        "claimed": "Sıralamada: {difficulty}, %{accuracy}."
+        "claimed": "Sıralamada: {difficulty}, %{accuracy}.",
+        "rank": "{total, number} kişi arasında {rank, number}. sıradasın ({difficulty})",
+        "seeBoard": "Sıralamayı gör"
       },
       "viewLeaderboard": "Sıralamayı gör",
       "dialog": {

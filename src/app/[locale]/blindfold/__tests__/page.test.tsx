@@ -4,6 +4,7 @@ import { renderToString } from "react-dom/server";
 import { NextIntlClientProvider } from "next-intl";
 import BlindfoldPage, { generateMetadata } from "@/app/[locale]/blindfold/page";
 import sitemap from "@/app/sitemap";
+import { RECORDED_ROUND_SOURCES, roundSourceFrom } from "@/lib/analytics/events";
 import messages from "../../../../../messages/en.json";
 
 jest.mock("@/i18n/navigation", () => ({
@@ -35,8 +36,13 @@ describe("the blindfold page", () => {
 
   it("serves one h1 and a start link that opens a blindfold round", () => {
     expect(markup.match(/<h1>(.*?)<\/h1>/)?.[1]).toBe("Blindfold chess trainer");
-    expect(markup).toContain('href="/game?pieceCount=6&amp;memorizeTime=10&amp;from=link&amp;mode=blindfold"');
+    expect(markup).toContain('href="/game?pieceCount=6&amp;memorizeTime=10&amp;from=blindfold_page&amp;mode=blindfold"');
     expect(markup).toContain('href="/game?mode=blindfold"');
+  });
+
+  it("registers blindfold_page as a round source the game page and a lab import accept", () => {
+    expect(roundSourceFrom("blindfold_page")).toBe("blindfold_page");
+    expect(RECORDED_ROUND_SOURCES).toContain("blindfold_page");
   });
 
   it("links the guide and the board game rules", () => {

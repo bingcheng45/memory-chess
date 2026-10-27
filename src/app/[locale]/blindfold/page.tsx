@@ -19,7 +19,7 @@ export function generateMetadata(): Metadata {
   };
 }
 
-const START_HREF = playHref(DEFAULT_ROUND_PIECES, DEFAULT_ROUND_SECONDS, "link", true);
+const START_HREF = playHref(DEFAULT_ROUND_PIECES, DEFAULT_ROUND_SECONDS, "blindfold_page", true);
 const CHOOSE_HREF = "/game?mode=blindfold";
 
 export default function BlindfoldPage() {

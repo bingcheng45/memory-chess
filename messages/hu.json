@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: nézd meg a helyed ({accuracy}%).",
         "claim": "Foglald el a helyed",
         "submit": "Beküldés",
-        "claimed": "A ranglistán: {difficulty}, {accuracy}%."
+        "claimed": "A ranglistán: {difficulty}, {accuracy}%.",
+        "rank": "{rank, number}. helyen állsz a {total, number} közül ({difficulty})",
+        "seeBoard": "Ranglista megtekintése"
       },
       "viewLeaderboard": "Ranglista megtekintése",
       "dialog": {

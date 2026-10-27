@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: mira el puesto de un {accuracy} %.",
         "claim": "Asegurar puesto",
         "submit": "Enviar",
-        "claimed": "En la clasificación: {difficulty}, {accuracy} %."
+        "claimed": "En la clasificación: {difficulty}, {accuracy} %.",
+        "rank": "Eres el n.º {rank, number} de {total, number} ({difficulty})",
+        "seeBoard": "Ver la clasificación"
       },
       "viewLeaderboard": "Ver la clasificación",
       "dialog": {

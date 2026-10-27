@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: katso sijoitus ({accuracy} %).",
         "claim": "Varaa paikka",
         "submit": "Lähetä tulos",
-        "claimed": "Tulostaulukossa: {difficulty}, {accuracy} %."
+        "claimed": "Tulostaulukossa: {difficulty}, {accuracy} %.",
+        "rank": "Olet sijalla {rank, number}/{total, number} ({difficulty})",
+        "seeBoard": "Katso taulukko"
       },
       "viewLeaderboard": "Katso tulostaulukko",
       "dialog": {

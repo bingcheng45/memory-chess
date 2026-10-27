@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: zjistěte pořadí pro {accuracy} %.",
         "claim": "Zajistit místo",
         "submit": "Odeslat skóre",
-        "claimed": "V žebříčku: {difficulty}, {accuracy} %."
+        "claimed": "V žebříčku: {difficulty}, {accuracy} %.",
+        "rank": "Jste #{rank, number} z {total, number} ({difficulty})",
+        "seeBoard": "Zobrazit žebříček"
       },
       "viewLeaderboard": "Zobrazit žebříček",
       "dialog": {

@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: scopri il piazzamento ({accuracy}%).",
         "claim": "Prenota posto",
         "submit": "Invia",
-        "claimed": "In classifica: {difficulty}, {accuracy}%."
+        "claimed": "In classifica: {difficulty}, {accuracy}%.",
+        "rank": "Sei al #{rank, number} su {total, number} ({difficulty})",
+        "seeBoard": "Vedi la classifica"
       },
       "viewLeaderboard": "Vedi la classifica",
       "dialog": {

@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: sprawdź, które miejsce da {accuracy}%.",
         "claim": "Zajmij miejsce",
         "submit": "Wyślij wynik",
-        "claimed": "W rankingu: {difficulty}, {accuracy}%."
+        "claimed": "W rankingu: {difficulty}, {accuracy}%.",
+        "rank": "Jesteś na miejscu {rank, number} z {total, number} ({difficulty})",
+        "seeBoard": "Zobacz ranking"
       },
       "viewLeaderboard": "Zobacz ranking",
       "dialog": {

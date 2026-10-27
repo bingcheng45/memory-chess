@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: veja em que posição fica {accuracy}%.",
         "claim": "Garantir vaga",
         "submit": "Enviar",
-        "claimed": "No ranking: {difficulty}, {accuracy}%."
+        "claimed": "No ranking: {difficulty}, {accuracy}%.",
+        "rank": "Você é o nº {rank, number} de {total, number} ({difficulty})",
+        "seeBoard": "Ver o ranking"
       },
       "viewLeaderboard": "Ver o ranking",
       "dialog": {

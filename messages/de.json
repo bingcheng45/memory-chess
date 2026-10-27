@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: Platz für {accuracy} % ansehen.",
         "claim": "Platz sichern",
         "submit": "Senden",
-        "claimed": "In der Bestenliste: {difficulty}, {accuracy} %."
+        "claimed": "In der Bestenliste: {difficulty}, {accuracy} %.",
+        "rank": "Du bist Platz {rank, number} von {total, number} ({difficulty})",
+        "seeBoard": "Bestenliste ansehen"
       },
       "viewLeaderboard": "Bestenliste ansehen",
       "dialog": {

@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: {accuracy}% की रैंक देखें।",
         "claim": "जगह पक्की करें",
         "submit": "स्कोर भेजें",
-        "claimed": "लीडरबोर्ड पर: {difficulty}, {accuracy}%।"
+        "claimed": "लीडरबोर्ड पर: {difficulty}, {accuracy}%।",
+        "rank": "आप {total, number} में से #{rank, number} पर हैं ({difficulty})",
+        "seeBoard": "लीडरबोर्ड देखें"
       },
       "viewLeaderboard": "लीडरबोर्ड देखें",
       "dialog": {

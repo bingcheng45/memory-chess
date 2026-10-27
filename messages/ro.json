@@ -1091,7 +1091,9 @@
         "open": "{difficulty}: vezi pe ce loc ajunge {accuracy}%.",
         "claim": "Ocupă locul",
         "submit": "Trimite",
-        "claimed": "În clasament: {difficulty}, {accuracy}%."
+        "claimed": "În clasament: {difficulty}, {accuracy}%.",
+        "rank": "Ești pe locul {rank, number} din {total, number} ({difficulty})",
+        "seeBoard": "Vezi clasamentul"
       },
       "viewLeaderboard": "Vezi clasamentul",
       "dialog": {

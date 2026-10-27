@@ -5,6 +5,7 @@ import { NextIntlClientProvider } from "next-intl";
 import BlindfoldPage, { generateMetadata } from "@/app/[locale]/blindfold/page";
 import sitemap from "@/app/sitemap";
 import { RECORDED_ROUND_SOURCES, roundSourceFrom } from "@/lib/analytics/events";
+import { outcomeEffects } from "@/lib/game/roundOutcome";
 import messages from "../../../../../messages/en.json";
 
 jest.mock("@/i18n/navigation", () => ({
@@ -48,6 +49,11 @@ describe("the blindfold page", () => {
   it("links the guide and the board game rules", () => {
     expect(markup).toContain('href="/learn/blindfold-chess-training-for-beginners"');
     expect(markup).toContain('href="/learn/how-to-play-memory-chess-board-game"');
+  });
+
+  it("says a blindfold round leaves the skill rating alone, as the round outcome does", () => {
+    expect(markup).toContain("A blindfold round never changes your skill rating.");
+    expect(outcomeEffects.blindfold.rated).toBe(false);
   });
 
   it("is listed once in the sitemap at its bare URL", async () => {

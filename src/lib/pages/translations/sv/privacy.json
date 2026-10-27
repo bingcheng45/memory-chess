@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "dcd1a9685a128d60441ec3a813b40e0ac30ce9554ab60dedff702576de07ac67",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "f1c9e93b69ffa61de0b92ff5dd4ef5cbf390b26d9980ae0f6e765e0452e3cb28",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Vi ber inte de här verktygen att samla in innehållet i dina kontaktmeddelanden eller i dina kommentarer i spelfeedbacken."
+          },
+          {
+            "p": "Din webbläsare rapporterar också till vår egen server när en sida försöker läsa in något som vår innehållssäkerhetspolicy (Content Security Policy) inte tillåter. En rapport sparar direktivet som överträddes, webbplatsen som det blockerade objektet kom från, sidans sökväg utan frågesträng och, när webbläsaren tar med det, de första 80 tecknen i det blockerade skriptet. Den sparar ingen IP-adress och inga webbläsaruppgifter. Vi använder rapporterna bara för att hålla webbplatsen säker och fungerande, och vi raderar dem efter 30 dagar."
           }
         ]
       },

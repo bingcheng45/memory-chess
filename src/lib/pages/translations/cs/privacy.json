@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "3e352aa069d8137ef83dd75e2ae173b35c1e6b9db6541fc96f04f2783c8077cf",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "11047fc69f07ab83c19f93bfaac65f09ae54ae68f018c77b60371af1c224da94",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Tyto nástroje nežádáme, aby shromažďovaly obsah vašich kontaktních zpráv ani komentářů ve zpětné vazbě ke hře."
+          },
+          {
+            "p": "Váš prohlížeč také hlásí našemu vlastnímu serveru, když se stránka pokusí načíst něco, co naše zásady zabezpečení obsahu (Content Security Policy) nepovolují. Hlášení uchovává porušenou direktivu, web, ze kterého zablokovaná položka pocházela, cestu stránky bez řetězce dotazu a, pokud ji prohlížeč přiloží, prvních 80 znaků zablokovaného skriptu. Neuchovává IP adresu ani údaje o prohlížeči. Tato hlášení používáme jen k tomu, aby byl web zabezpečený a fungoval, a po 30 dnech je mažeme."
           }
         ]
       },

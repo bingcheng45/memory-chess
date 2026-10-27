@@ -17,6 +17,9 @@ const DATABUDDY_EVENTS = ["https://basket.databuddy.cc", "https://api.databuddy.
 const YOUTUBE = "https://www.youtube.com";
 const YOUTUBE_NOCOOKIE = "https://www.youtube-nocookie.com";
 
+const CSP_REPORT_PATH = "/api/csp-report";
+const CSP_REPORT_GROUP = "csp-endpoint";
+
 /**
  * 'unsafe-inline' stays in script-src because Next writes per-build inline
  * scripts into statically rendered pages, which hashes cannot follow and a
@@ -35,6 +38,8 @@ const REPORT_ONLY_POLICY = [
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
+  `report-uri ${CSP_REPORT_PATH}`,
+  `report-to ${CSP_REPORT_GROUP}`,
 ].join("; ");
 
 /** The piece names are not hashed, so a day is fresh and a week may be served stale while it revalidates. */
@@ -44,6 +49,7 @@ const SECURITY_HEADERS = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
   { key: "Content-Security-Policy-Report-Only", value: REPORT_ONLY_POLICY },
+  { key: "Reporting-Endpoints", value: `${CSP_REPORT_GROUP}="${CSP_REPORT_PATH}"` },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },

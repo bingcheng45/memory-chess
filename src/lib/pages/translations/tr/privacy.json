@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "5c5b4e46a381d4b2656756561fe64bded50f3b96e1e16d947a9d709b420e298f",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "df4ae29dec06877473543741607870e7a9f9fa969e3931f96421361e642aeba4",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Bu araçlardan iletişim mesajlarının veya oyun görüşü yorumlarının içeriğini toplamalarını istemiyoruz."
+          },
+          {
+            "p": "Bir sayfa, içerik güvenliği ilkemizin (Content Security Policy) izin vermediği bir şeyi yüklemeye çalıştığında tarayıcınız kendi sunucumuza da rapor gönderir. Bir rapor, ihlal edilen yönergeyi, engellenen öğenin geldiği web sitesini, sorgu dizesi olmadan sayfa yolunu ve tarayıcı eklemişse engellenen betiğin ilk 80 karakterini saklar. IP adresi ve tarayıcı ayrıntılarını saklamaz. Bu raporları yalnızca siteyi güvenli ve çalışır durumda tutmak için kullanır ve 30 gün sonra sileriz."
           }
         ]
       },

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "e44d6018d630c31e9094263ee8cf35a6afb8633b4deb8cf0ceb6cc34329238b4",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "c523e5bd953a23032c152dc8719c714e1d7402ca8649ced9441dd3654c01d52f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Emme pyydä näitä työkaluja keräämään yhteydenottoviestiesi tai pelipalautteen kommenttiesi sisältöä."
+          },
+          {
+            "p": "Selaimesi ilmoittaa myös omalle palvelimellemme, kun sivu yrittää ladata jotain, mitä sisällön tietoturvakäytäntömme (Content Security Policy) ei salli. Ilmoitukseen tallentuu rikottu direktiivi, verkkosivusto, jolta estetty kohde tuli, sivun polku ilman kyselymerkkijonoa ja, kun selain sisällyttää sen, estetyn skriptin 80 ensimmäistä merkkiä. Siihen ei tallennu IP-osoitetta eikä selaimen tietoja. Käytämme näitä ilmoituksia vain sivuston pitämiseen turvallisena ja toimivana, ja poistamme ne 30 päivän kuluttua."
           }
         ]
       },

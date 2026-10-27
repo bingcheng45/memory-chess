@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "35504b6e528608355996c218ac082ca04c3ddfe29c176da0ecf9238309a42859",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "a6ea59d1f8e68dbc5b5225df2d214c90a6418d4decc52bc158df9d62d3d5b7bf",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "We vragen deze tools niet om de inhoud van je contactberichten of je opmerkingen bij de spelfeedback te verzamelen."
+          },
+          {
+            "p": "Je browser meldt ook aan onze eigen server wanneer een pagina iets probeert te laden wat ons contentbeveiligingsbeleid (Content Security Policy) niet toestaat. Een melding bewaart de geschonden richtlijn, de website waar het geblokkeerde item vandaan kwam, het pad van de pagina zonder querystring en, als de browser die meestuurt, de eerste 80 tekens van het geblokkeerde script. Er wordt geen IP-adres en geen browsergegevens bewaard. We gebruiken deze meldingen alleen om de site veilig en werkend te houden en verwijderen ze na 30 dagen."
           }
         ]
       },

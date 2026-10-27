@@ -54,9 +54,10 @@ export const UNLISTED_ROUTES = ["/share"] as const;
  *
  * The daily board joined on 2026-10-28. Its 23 translated copies were the same
  * interface page in 23 languages, and drew 13 landings and no engaged session
- * in the 60 days to 2026-10-26.
+ * in the 60 days to 2026-10-26. The contact page joined the same day: Google
+ * had left 21 of its 23 translations discovered but not indexed.
  */
-export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", "/daily", "/data", ARTICLES_PATH, ...PAGE_ROUTES] as const;
+export const DEFAULT_LOCALE_INDEXED_ROUTES = ["/leaderboard", "/daily", "/data", "/contact-us", ARTICLES_PATH, ...PAGE_ROUTES] as const;
 
 /** Whether an unprefixed path is served in translation but indexed only in English. */
 export function isIndexedInDefaultLocaleOnly(path: string): boolean {

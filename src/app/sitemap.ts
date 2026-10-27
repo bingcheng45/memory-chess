@@ -40,7 +40,6 @@ type SitemapEntryConfig = {
     MetadataRoute.Sitemap[number]["changeFrequency"]
   >;
   priority: number;
-  sitemapEnglishUrlOnly?: true;
 };
 
 const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
@@ -85,7 +84,6 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "monthly",
     priority: 0.5,
-    sitemapEnglishUrlOnly: true,
   },
   {
     path: "/changelog",
@@ -163,12 +161,9 @@ function entryFor(
   };
 }
 
-const listedLocalesOf = (entry: SitemapEntryConfig): readonly string[] =>
-  entry.sitemapEnglishUrlOnly ? [DEFAULT_LOCALE] : indexedLocalesOf(entry.path);
-
 export default function sitemap(): MetadataRoute.Sitemap {
   return SITEMAP_ENTRIES.flatMap((entry) => {
-    const locales = listedLocalesOf(entry);
+    const locales = indexedLocalesOf(entry.path);
     if (locales.length === 1) return [entryFor(entry, DEFAULT_LOCALE)];
     return locales.map((locale) => ({ ...entryFor(entry, locale), alternates: alternatesFor(entry.path, locales) }));
   });

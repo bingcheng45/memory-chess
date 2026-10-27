@@ -116,12 +116,13 @@ describe("sitemap", () => {
     expect(robotsFor("/data", "en")).toBeUndefined();
   });
 
-  it("lists the contact page once, in English, while its translations stay indexable", async () => {
+  it("lists the contact page once, in English, and keeps its translations out of search", async () => {
     const contact = (await sitemap()).filter((entry) => /\/contact-us$/.test(entry.url));
 
     expect(contact.map((entry) => entry.url)).toEqual(["https://thememorychess.com/contact-us"]);
     expect(contact[0].alternates).toBeUndefined();
-    expect(robotsFor("/contact-us", "de")).toBeUndefined();
+    expect(robotsFor("/contact-us", "de")).toMatchObject({ index: false, follow: true });
+    expect(robotsFor("/contact-us", "en")).toBeUndefined();
     expect(robotsFor("/leaderboard", "de")).toMatchObject({ index: false });
   });
 

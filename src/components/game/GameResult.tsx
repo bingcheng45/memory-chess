@@ -401,7 +401,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
             )}
           </p>
           <Link ref={claimedLinkRef} href={submittedStandingHref} className="lab-result-claim-link">
-            {t("claimLine.seeBoard")}
+            <span>{t("claimLine.seeBoard")}</span>
           </Link>
         </>
       ) : (

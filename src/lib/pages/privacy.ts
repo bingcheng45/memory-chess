@@ -51,6 +51,9 @@ const privacy: PageText = {
         {
           p: "We do not ask these tools to collect the content of your contact messages or game-feedback comments.",
         },
+        {
+          p: "Your browser also reports to our own server when a page tries to load something our content security policy does not allow. A report keeps the directive that was violated, the website the blocked item came from, the page path without its query string, and, when the browser includes one, the first 80 characters of the blocked script. It keeps no IP address and no browser details. We use these reports only to keep the site secure and working, and we delete them after 30 days.",
+        },
       ],
     },
     "cookies-and-storage": {

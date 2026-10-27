@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "b041ee64f5aaf66422a7c7b11a2c640a95a0a1b1191e8382ac9858a6c431d2ed",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "f15a11c80612cd5228128b988a0141498da8dfde31fda337319aeb409ef899b6",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "No pedimos a estas herramientas que recopilen el contenido de tus mensajes de contacto ni de tus comentarios sobre el juego."
+          },
+          {
+            "p": "Tu navegador también informa a nuestro propio servidor cuando una página intenta cargar algo que nuestra política de seguridad de contenido (Content Security Policy) no permite. Un informe conserva la directiva infringida, el sitio web del que procedía el elemento bloqueado, la ruta de la página sin su cadena de consulta y, cuando el navegador la incluye, los primeros 80 caracteres del script bloqueado. No conserva ninguna dirección IP ni datos del navegador. Usamos estos informes solo para mantener el sitio seguro y en funcionamiento, y los eliminamos a los 30 días."
           }
         ]
       },

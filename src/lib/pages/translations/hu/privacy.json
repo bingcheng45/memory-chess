@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "dd502f4ac5c792644a7ea984f3e8422a472c5cca223cb20a92be4e344cadd7eb",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "79a3c35fb96af56126b06a0eab35052838bdb879a1c09b78e3c5a56462515c8c",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Nem kérjük ezeket az eszközöket arra, hogy gyűjtsék a kapcsolatfelvételi üzeneteid vagy a játékról írt megjegyzéseid tartalmát."
+          },
+          {
+            "p": "A böngésződ akkor is jelentést küld a saját szerverünknek, ha egy oldal olyasmit próbál betölteni, amit a tartalombiztonsági szabályzatunk (Content Security Policy) nem enged. A jelentés megőrzi a megsértett irányelvet, azt a webhelyet, ahonnan a blokkolt elem érkezett, az oldal elérési útját lekérdezési karakterlánc nélkül, és ha a böngésző mellékeli, a blokkolt szkript első 80 karakterét. Nem őriz IP-címet és böngészőadatokat sem. Ezeket a jelentéseket kizárólag a webhely biztonságának és működőképességének fenntartására használjuk, és 30 nap után töröljük őket."
           }
         ]
       },

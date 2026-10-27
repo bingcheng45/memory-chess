@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "e11b6ac31630dedb3f97a8d0911f58c4f7d5e26a2303676ca51a380fa1211e34",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "e173209e970adae4c0b08101590f7f248487af8c9707c36424f53537388a26a3",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Non chiediamo a questi strumenti di raccogliere il contenuto dei tuoi messaggi di contatto o dei tuoi commenti di feedback sul gioco."
+          },
+          {
+            "p": "Il tuo browser invia anche una segnalazione al nostro server quando una pagina prova a caricare qualcosa che la nostra politica di sicurezza dei contenuti (Content Security Policy) non consente. Una segnalazione conserva la direttiva violata, il sito da cui proveniva l'elemento bloccato, il percorso della pagina senza la stringa di query e, quando il browser la include, i primi 80 caratteri dello script bloccato. Non conserva alcun indirizzo IP né dettagli sul browser. Usiamo queste segnalazioni solo per mantenere il sito sicuro e funzionante, e le eliminiamo dopo 30 giorni."
           }
         ]
       },

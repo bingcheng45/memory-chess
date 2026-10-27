@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "35349cd283ca0d98706fd435e22babfa1a4a53d5bc6dd43e0dbb4dd17ed8db6c",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "905d519941be1495d9bc1e30f8ff6030306767edd649b0e73f4430be60146d96",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Chúng tôi không yêu cầu các công cụ này thu thập nội dung tin nhắn liên hệ hay nhận xét góp ý về trò chơi của bạn."
+          },
+          {
+            "p": "Trình duyệt của bạn cũng báo cáo về máy chủ của chúng tôi khi một trang cố tải thứ mà chính sách bảo mật nội dung (Content Security Policy) của chúng tôi không cho phép. Một báo cáo lưu chỉ thị bị vi phạm, trang web nơi mục bị chặn đến từ, đường dẫn trang không có chuỗi truy vấn và, khi trình duyệt kèm theo, 80 ký tự đầu của tập lệnh bị chặn. Báo cáo không lưu địa chỉ IP hay chi tiết trình duyệt. Chúng tôi chỉ dùng các báo cáo này để giữ cho trang web an toàn và hoạt động tốt, và xóa chúng sau 30 ngày."
           }
         ]
       },

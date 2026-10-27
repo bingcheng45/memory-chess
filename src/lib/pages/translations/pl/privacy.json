@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "90c09340b004b11aac6fd7b35034e83fe3810e4c2792bab548498860a6b8a123",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "55f7b833717d7e40b93f72967f7836b8580da336d841b5728418869a5cfef25d",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Nie prosimy tych narzędzi o zbieranie treści twoich wiadomości kontaktowych ani komentarzy w opiniach o grze."
+          },
+          {
+            "p": "Twoja przeglądarka wysyła też raport do naszego własnego serwera, gdy strona próbuje załadować coś, czego nie dopuszcza nasza polityka bezpieczeństwa treści (Content Security Policy). Raport zawiera naruszoną dyrektywę, witrynę, z której pochodził zablokowany element, ścieżkę strony bez ciągu zapytania oraz, jeśli przeglądarka go dołącza, pierwsze 80 znaków zablokowanego skryptu. Nie zawiera adresu IP ani informacji o przeglądarce. Używamy tych raportów wyłącznie do utrzymania bezpieczeństwa i działania witryny i usuwamy je po 30 dniach."
           }
         ]
       },

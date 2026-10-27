@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "d03a46a1f563b9fe8fc2f6ba4d97072f139acbe1716243515e20fa7da0eca545",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "e16769405680ff5fcf6a52d64d5f1dd94b738d82cb7014987d081232328a2585",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Nu le cerem acestor instrumente să colecteze conținutul mesajelor tale de contact sau al comentariilor tale despre joc."
+          },
+          {
+            "p": "Browserul tău trimite, de asemenea, un raport către propriul nostru server atunci când o pagină încearcă să încarce ceva ce politica noastră de securitate a conținutului (Content Security Policy) nu permite. Un raport păstrează directiva încălcată, site-ul de unde provenea elementul blocat, calea paginii fără șirul de interogare și, când browserul îl include, primele 80 de caractere ale scriptului blocat. Nu păstrează nicio adresă IP și niciun detaliu despre browser. Folosim aceste rapoarte doar pentru a menține site-ul sigur și funcțional și le ștergem după 30 de zile."
           }
         ]
       },

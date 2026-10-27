@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "4ae083639e2c4cdc3175873314dcb4bba2a14c57cabbeadb48352d341cc7dbd6",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "758863609049280f136580c026f6583d510fac126e7972f22cb0b80f86d5f8d2",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Wir beauftragen diese Dienste nicht damit, den Inhalt deiner Kontaktnachrichten oder deiner Kommentare im Spiel-Feedback zu erheben."
+          },
+          {
+            "p": "Dein Browser meldet außerdem an unseren eigenen Server, wenn eine Seite versucht, etwas zu laden, das unsere Content Security Policy nicht erlaubt. Eine Meldung enthält die verletzte Direktive, die Website, von der das blockierte Element stammte, den Seitenpfad ohne Abfragezeichenfolge und, wenn der Browser sie mitsendet, die ersten 80 Zeichen des blockierten Skripts. Sie enthält weder eine IP-Adresse noch Browserangaben. Wir verwenden diese Meldungen nur, um die Website sicher und funktionsfähig zu halten, und löschen sie nach 30 Tagen."
           }
         ]
       },

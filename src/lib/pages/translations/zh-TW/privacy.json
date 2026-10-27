@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "79611aeed18f62266bb7900df54c86da6af94e5dcf02ab40fdfff066132b43dc",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "0d800fdfde98c78f84d4e10755cb0618c6187a3512a5f79d7c26c554b666070f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "我們不會要求這些工具蒐集你的聯絡訊息或遊戲回饋意見的內容。"
+          },
+          {
+            "p": "當頁面嘗試載入我們的內容安全政策（Content Security Policy）不允許的內容時，你的瀏覽器還會向我們自己的伺服器傳送報告。報告會保存被違反的指令、被攔截項目的來源網站、不含查詢字串的頁面路徑，以及瀏覽器附帶時被攔截指令碼的前 80 個字元。報告不保存 IP 位址，也不保存瀏覽器詳細資訊。我們只用這些報告來維護網站安全並保持其正常運作，並在 30 天後刪除。"
           }
         ]
       },

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "1d37c89d808de1a27ba0b738e05254a00bfd79f394b3f6af3b2a5bb7399faee8",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "de74bcdb233526a0ec361b709040041c1f41e7d8a192c9e256259f50bcfa906a",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Kami tidak meminta alat-alat ini untuk mengumpulkan isi pesan kontak atau komentar masukan permainan Anda."
+          },
+          {
+            "p": "Browser Anda juga melapor ke server kami sendiri saat sebuah halaman mencoba memuat sesuatu yang tidak diizinkan oleh kebijakan keamanan konten (Content Security Policy) kami. Satu laporan menyimpan direktif yang dilanggar, situs web asal item yang diblokir, jalur halaman tanpa string kuerinya, dan, bila browser menyertakannya, 80 karakter pertama dari skrip yang diblokir. Laporan itu tidak menyimpan alamat IP maupun detail browser. Kami memakai laporan ini hanya untuk menjaga situs tetap aman dan berfungsi, dan kami menghapusnya setelah 30 hari."
           }
         ]
       },

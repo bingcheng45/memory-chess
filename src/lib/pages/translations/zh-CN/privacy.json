@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "a140de621cbcc5ddc515585d4ba393e8a484fed7f47fa7b235156277914cfe88",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "a43cf7ce34fb2accff7b45ebd22a719afc9d9451f1d84637614b8c9318488380",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "我们不会要求这些工具收集你的联系消息或游戏反馈评论的内容。"
+          },
+          {
+            "p": "当页面尝试加载我们的内容安全策略（Content Security Policy）不允许的内容时，你的浏览器还会向我们自己的服务器发送报告。报告会保存被违反的指令、被拦截项目的来源网站、不含查询字符串的页面路径，以及浏览器附带时被拦截脚本的前 80 个字符。报告不保存 IP 地址，也不保存浏览器详细信息。我们只用这些报告来保障网站安全并保持其正常运行，并在 30 天后删除。"
           }
         ]
       },

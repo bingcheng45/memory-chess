@@ -1,6 +1,6 @@
 {
-  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
-  "approvedHash": "02055eaa51f36c2fa1623705c51448f3a2b3f17da9e5d4e050a7104b39ef87ad",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "5b36889aa8cafc6dc664e10c4a1d62e836d5ccd9cbaeb4e5658a44cd7dda7d1b",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Nous ne demandons pas à ces outils de collecter le contenu de vos messages de contact ni de vos commentaires sur le jeu."
+          },
+          {
+            "p": "Votre navigateur signale aussi à notre propre serveur qu'une page essaie de charger quelque chose que notre politique de sécurité du contenu (Content Security Policy) n'autorise pas. Un rapport conserve la directive enfreinte, le site d'où venait l'élément bloqué, le chemin de la page sans sa chaîne de requête et, quand le navigateur l'inclut, les 80 premiers caractères du script bloqué. Il ne conserve ni adresse IP ni détails sur le navigateur. Nous utilisons ces rapports uniquement pour garder le site sûr et en état de marche, et nous les supprimons au bout de 30 jours."
           }
         ]
       },

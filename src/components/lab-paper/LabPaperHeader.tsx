@@ -21,6 +21,7 @@ const SITE_LINKS = [
   { href: "/about", key: "about", extra: true },
 ] as const;
 
+const PLAY_HREF = "/game";
 const MENU_ONLY_LINKS = [{ href: "/changelog", key: "changelog" }] as const;
 
 export interface PageSectionLink {
@@ -119,9 +120,10 @@ function SiteLinkWithDailyDot({ link, dailyReady, ...props }: SiteLinkWithDailyD
   const nav = useTranslations("common.nav");
   const entry = useTranslations("dailyEntry");
   const label = nav(link.key);
-  if (link.href !== "/dashboard" || !dailyReady) return <SiteLink href={link.href} label={label} {...props} />;
+  const prefetch = link.href === PLAY_HREF ? undefined : false;
+  if (link.href !== "/dashboard" || !dailyReady) return <SiteLink href={link.href} label={label} prefetch={prefetch} {...props} />;
   return (
-    <Link href={link.href} {...props} aria-label={entry("navReady", { label })}>
+    <Link href={link.href} prefetch={prefetch} {...props} aria-label={entry("navReady", { label })}>
       {label}
       <span className="lab-daily-dot" aria-hidden="true" />
     </Link>
@@ -148,7 +150,7 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
     <header className="lab-header" data-site-chrome>
       <div className="lab-wrap" ref={menu.rootRef}>
         <div className="lab-header-row">
-          <Link className="lab-wordmark" href="/">
+          <Link className="lab-wordmark" href="/" prefetch={false}>
             Memory <span className="lab-wordmark-chess">Chess</span>
           </Link>
           <nav className="lab-nav" aria-label="Main">

@@ -1925,8 +1925,8 @@
   },
   "learnTryIt": {
     "title": "Pruébalo aquí",
-    "intro": "Una ronda de este tamaño muestra {pieces} piezas durante {seconds} s. Después las colocas de memoria en un tablero vacío. Aquí tienes una posición de ese tamaño.",
-    "introBlindfold": "Una ronda de este tamaño te da {pieces} piezas en notación durante {seconds} s, sin tablero a la vista. Después las colocas de memoria en un tablero vacío. Aquí tienes una posición de ese tamaño, tal como la leerías.",
+    "intro": "Una ronda de este tamaño muestra {pieces} piezas durante {seconds} s. Después las colocas de memoria en un tablero vacío. Aquí tienes una posición de ese tamaño.",
+    "introBlindfold": "Una ronda de este tamaño te muestra {pieces} piezas en notación durante {seconds} s, sin piezas en el tablero. Después las colocas de memoria en un tablero vacío. Aquí tienes una posición de ese tamaño, tal como la verías.",
     "position": "Blancas: {white}. Negras: {black}.",
     "start": "Empezar una ronda de {pieces} piezas",
     "startBlindfold": "Empezar una ronda a ciegas de {pieces} piezas"

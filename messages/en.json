@@ -1925,8 +1925,8 @@
   },
   "learnTryIt": {
     "title": "Try it here",
-    "intro": "A round this size shows {pieces} pieces for {seconds} s. Then you place them from memory on an empty board. Here is a position that size.",
-    "introBlindfold": "A round this size reads you {pieces} pieces as notation for {seconds} s, with no board in view. Then you place them from memory on an empty board. Here is a position that size, as you would read it.",
+    "intro": "A round this size shows {pieces} pieces for {seconds} s. Then you place them from memory on an empty board. Here is a position that size.",
+    "introBlindfold": "A round this size shows you {pieces} pieces as notation for {seconds} s, with no pieces on the board. Then you place them from memory on an empty board. Here is a position that size, as you would see it.",
     "position": "White: {white}. Black: {black}.",
     "start": "Start a round of {pieces} pieces",
     "startBlindfold": "Start a blindfold round of {pieces} pieces"

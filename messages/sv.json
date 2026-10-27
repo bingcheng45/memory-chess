@@ -1925,8 +1925,8 @@
   },
   "learnTryIt": {
     "title": "Prova här",
-    "intro": "En runda i den här storleken visar {pieces} pjäser i {seconds} s. Sedan placerar du dem ur minnet på ett tomt bräde. Här är en ställning i den storleken.",
-    "introBlindfold": "En runda i den här storleken ger dig {pieces} pjäser som notation i {seconds} s, utan bräde att titta på. Sedan placerar du dem ur minnet på ett tomt bräde. Här är en ställning i den storleken, så som du skulle läsa den.",
+    "intro": "En runda i den här storleken visar {pieces} pjäser i {seconds} s. Sedan placerar du dem ur minnet på ett tomt bräde. Här är en ställning i den storleken.",
+    "introBlindfold": "En runda i den här storleken visar dig {pieces} pjäser som notation i {seconds} s, utan pjäser på brädet. Sedan placerar du dem ur minnet på ett tomt bräde. Här är en ställning i den storleken, så som du skulle se den.",
     "position": "Vit: {white}. Svart: {black}.",
     "start": "Starta en runda med {pieces} pjäser",
     "startBlindfold": "Starta en blindrunda med {pieces} pjäser"

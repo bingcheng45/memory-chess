@@ -1925,8 +1925,8 @@
   },
   "learnTryIt": {
     "title": "Zkuste to tady",
-    "intro": "Kolo této velikosti ukáže {pieces} figurky na {seconds} s. Pak je z paměti rozmístíte na prázdnou šachovnici. Tady je pozice této velikosti.",
-    "introBlindfold": "Kolo této velikosti vám zadá {pieces} figurky zápisem na {seconds} s, bez šachovnice před očima. Pak je z paměti rozmístíte na prázdnou šachovnici. Tady je pozice této velikosti, tak jak ji uvidíte.",
+    "intro": "Kolo této velikosti ukáže {pieces} figurky na {seconds} s. Pak je z paměti rozmístíte na prázdnou šachovnici. Tady je pozice této velikosti.",
+    "introBlindfold": "Kolo této velikosti vám ukáže {pieces} figurky zápisem na {seconds} s, na šachovnici nejsou žádné figurky. Pak je z paměti rozmístíte na prázdnou šachovnici. Tady je pozice této velikosti, tak jak ji uvidíte.",
     "position": "Bílý: {white}. Černý: {black}.",
     "start": "Začít kolo se {pieces} figurami",
     "startBlindfold": "Začít kolo naslepo se {pieces} figurami"

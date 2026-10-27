@@ -1925,8 +1925,8 @@
   },
   "learnTryIt": {
     "title": "Essayez ici",
-    "intro": "Une manche de cette taille montre {pieces} pièces pendant {seconds} s. Ensuite, vous les placez de mémoire sur un échiquier vide. Voici une position de cette taille.",
-    "introBlindfold": "Une manche de cette taille vous donne {pieces} pièces en notation pendant {seconds} s, sans échiquier sous les yeux. Ensuite, vous les placez de mémoire sur un échiquier vide. Voici une position de cette taille, telle que vous la liriez.",
+    "intro": "Une manche de cette taille montre {pieces} pièces pendant {seconds} s. Ensuite, vous les placez de mémoire sur un échiquier vide. Voici une position de cette taille.",
+    "introBlindfold": "Une manche de cette taille vous montre {pieces} pièces en notation pendant {seconds} s, sans pièces sur l’échiquier. Ensuite, vous les placez de mémoire sur un échiquier vide. Voici une position de cette taille, telle que vous la verriez.",
     "position": "Blancs : {white}. Noirs : {black}.",
     "start": "Lancer une manche de {pieces} pièces",
     "startBlindfold": "Lancer une manche à l’aveugle de {pieces} pièces"

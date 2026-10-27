@@ -1925,8 +1925,8 @@
   },
   "learnTryIt": {
     "title": "Burada dene",
-    "intro": "Bu boyuttaki bir tur, {pieces} taşı {seconds} sn boyunca gösterir. Sonra onları hafızandan boş bir tahtaya yerleştirirsin. İşte bu boyutta bir konum.",
-    "introBlindfold": "Bu boyuttaki bir tur, {pieces} taşı {seconds} sn boyunca notasyonla verir, tahta görünmez. Sonra onları hafızandan boş bir tahtaya yerleştirirsin. İşte bu boyutta bir konum, okuyacağın biçimde.",
+    "intro": "Bu boyuttaki bir tur, {pieces} taşı {seconds} sn boyunca gösterir. Sonra onları hafızandan boş bir tahtaya yerleştirirsin. İşte bu boyutta bir konum.",
+    "introBlindfold": "Bu boyuttaki bir tur, {pieces} taşı {seconds} sn boyunca notasyonla gösterir, tahtada taş yoktur. Sonra onları hafızandan boş bir tahtaya yerleştirirsin. İşte bu boyutta bir konum, göreceğin biçimde.",
     "position": "Beyaz: {white}. Siyah: {black}.",
     "start": "{pieces} taşlı bir tur başlat",
     "startBlindfold": "{pieces} taşlı gözü kapalı bir tur başlat"

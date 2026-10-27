@@ -1925,8 +1925,8 @@
   },
   "learnTryIt": {
     "title": "Încearcă aici",
-    "intro": "O rundă de această mărime arată {pieces} piese timp de {seconds} s. Apoi le așezi din memorie pe o tablă goală. Iată o poziție de această mărime.",
-    "introBlindfold": "O rundă de această mărime îți dă {pieces} piese în notație timp de {seconds} s, fără tablă în față. Apoi le așezi din memorie pe o tablă goală. Iată o poziție de această mărime, așa cum ai citi-o.",
+    "intro": "O rundă de această mărime arată {pieces} piese timp de {seconds} s. Apoi le așezi din memorie pe o tablă goală. Iată o poziție de această mărime.",
+    "introBlindfold": "O rundă de această mărime îți arată {pieces} piese în notație timp de {seconds} s, fără piese pe tablă. Apoi le așezi din memorie pe o tablă goală. Iată o poziție de această mărime, așa cum ai vedea-o.",
     "position": "Albe: {white}. Negre: {black}.",
     "start": "Începe o rundă cu {pieces} piese",
     "startBlindfold": "Începe o rundă fără tablă, cu {pieces} piese"

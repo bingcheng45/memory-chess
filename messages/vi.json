@@ -1925,8 +1925,8 @@
   },
   "learnTryIt": {
     "title": "Thử ngay tại đây",
-    "intro": "Một ván cỡ này hiện {pieces} quân trong {seconds} giây. Sau đó bạn đặt chúng lại từ trí nhớ trên bàn cờ trống. Đây là một thế cờ cỡ đó.",
-    "introBlindfold": "Một ván cỡ này đọc cho bạn {pieces} quân bằng ký hiệu trong {seconds} giây, không có bàn cờ để nhìn. Sau đó bạn đặt chúng lại từ trí nhớ trên bàn cờ trống. Đây là một thế cờ cỡ đó, đúng như bạn sẽ đọc.",
+    "intro": "Một ván cỡ này hiện {pieces} quân trong {seconds} giây. Sau đó bạn đặt chúng lại từ trí nhớ trên bàn cờ trống. Đây là một thế cờ cỡ đó.",
+    "introBlindfold": "Một ván cỡ này cho bạn xem {pieces} quân bằng ký hiệu trong {seconds} giây, trên bàn cờ không có quân nào. Sau đó bạn đặt chúng lại từ trí nhớ trên bàn cờ trống. Đây là một thế cờ cỡ đó, đúng như bạn sẽ thấy.",
     "position": "Trắng: {white}. Đen: {black}.",
     "start": "Bắt đầu ván {pieces} quân",
     "startBlindfold": "Bắt đầu ván cờ mù {pieces} quân"

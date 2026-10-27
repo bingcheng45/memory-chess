@@ -1925,8 +1925,8 @@
   },
   "learnTryIt": {
     "title": "Prøv her",
-    "intro": "En runde i denne størrelse viser {pieces} brikker i {seconds} s. Derefter placerer du dem fra hukommelsen på et tomt bræt. Her er en stilling i den størrelse.",
-    "introBlindfold": "En runde i denne størrelse giver dig {pieces} brikker som notation i {seconds} s, uden bræt at se på. Derefter placerer du dem fra hukommelsen på et tomt bræt. Her er en stilling i den størrelse, som du ville læse den.",
+    "intro": "En runde i denne størrelse viser {pieces} brikker i {seconds} s. Derefter placerer du dem fra hukommelsen på et tomt bræt. Her er en stilling i den størrelse.",
+    "introBlindfold": "En runde i denne størrelse viser dig {pieces} brikker som notation i {seconds} s, uden brikker på brættet. Derefter placerer du dem fra hukommelsen på et tomt bræt. Her er en stilling i den størrelse, som du ville se den.",
     "position": "Hvid: {white}. Sort: {black}.",
     "start": "Start en runde med {pieces} brikker",
     "startBlindfold": "Start en blindrunde med {pieces} brikker"

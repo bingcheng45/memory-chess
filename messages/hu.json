@@ -1925,8 +1925,8 @@
   },
   "learnTryIt": {
     "title": "Próbáld ki itt",
-    "intro": "Egy ekkora forduló {pieces} bábut mutat {seconds} másodpercig. Utána emlékezetből felrakod őket egy üres táblára. Itt egy ekkora állás.",
-    "introBlindfold": "Egy ekkora forduló {pieces} bábut ad meg jelöléssel {seconds} másodpercig, tábla nélkül. Utána emlékezetből felrakod őket egy üres táblára. Itt egy ekkora állás, úgy, ahogy olvasnád.",
+    "intro": "Egy ekkora forduló {pieces} bábut mutat {seconds} másodpercig. Utána emlékezetből felrakod őket egy üres táblára. Itt egy ekkora állás.",
+    "introBlindfold": "Egy ekkora forduló {pieces} bábut mutat meg jelöléssel {seconds} másodpercig, a táblán nincs bábu. Utána emlékezetből felrakod őket egy üres táblára. Itt egy ekkora állás, úgy, ahogy látnád.",
     "position": "Világos: {white}. Sötét: {black}.",
     "start": "Indíts egy {pieces} bábus fordulót",
     "startBlindfold": "Indíts egy {pieces} bábus vakfordulót"

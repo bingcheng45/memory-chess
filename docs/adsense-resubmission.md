@@ -140,10 +140,13 @@ events that reach `round_complete`. A rise in starts with no rise in finished ro
 
 ## Decided and not to be redone
 
-- Translated home, /game and /contact-us stay indexed in 24 languages. Noindexing them was proposed and rejected by
+- Translated home and /game stay indexed in 24 languages. Noindexing them was proposed and rejected by
   all three reviewers: a localized UI for a working tool is not scaled content, noindex does not remove pages from
   AdSense review, and it would cut search entry points while interest is the bottleneck. Revisit only with 90 days
-  of GA4 sessions per locale, and then only for locales with negligible traffic, in its own PR.
+  of GA4 sessions per locale, and then only for locales with negligible traffic, in its own PR. /daily and
+  /contact-us left this decision on 2026-10-28 and are indexed in English only, like /leaderboard: the 24 /daily
+  URLs drew 22 landings and no engaged session in 60 days, and Google had left 21 of 23 translated contact pages
+  discovered but not indexed.
 - Guide `updatedAt` dates are truthful and are not bumped to look fresh.
 - Articles are readable in all 24 languages and indexed only in English, decided 2026-10-04 at the operator's
   request. The decision stands. What it rests on, as of fix round 3 of PR 39 on 2026-10-05:

@@ -376,6 +376,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     openerRef.current = event.currentTarget;
     setShowLeaderboardDialog(true);
   };
+  const submittedStandingHref = `/leaderboard?player=${encodeURIComponent(playerName.trim())}&difficulty=${encodeURIComponent(roundDifficulty === "custom" ? "medium" : roundDifficulty)}${blindfold ? `&mode=${BLINDFOLD_MODE}` : ""}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round(((gameState.accuracy || 0) * gameState.pieceCount) / 100)}&totalWrongPieces=${piecesInfo.totalWrong}`;
   const claimsFirst = ranks && !submitSuccess;
   const claimLine = scored && leaderboardEligible && roundDifficulty !== "custom" && (
     <div className="lab-result-claim" data-result-claim data-claim-state={submitSuccess ? "claimed" : ranks ? "qualifies" : "open"}>
@@ -385,6 +386,9 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           <p role="status" className="lab-result-claim-text">
             {t("claimLine.claimed", { difficulty: tPresets(`${roundDifficulty}.label`), accuracy: scored.score.accuracy })}
           </p>
+          <Link href={submittedStandingHref} className="lab-btn lab-btn-secondary lab-result-claim-action">
+            {t("viewLeaderboard")}
+          </Link>
         </>
       ) : (
         <>
@@ -657,14 +661,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
               <div className="flex justify-center gap-2">
                 <Link
                   className="lab-btn lab-btn-primary"
-                  href={`/leaderboard?player=${encodeURIComponent(playerName.trim())}&difficulty=${(() => {
-                    const difficulty = determineDifficulty(
-                      gameState.pieceCount,
-                    );
-                    return encodeURIComponent(
-                      difficulty === "custom" ? "medium" : difficulty,
-                    );
-                  })()}${blindfold ? `&mode=${BLINDFOLD_MODE}` : ""}&memorizeTime=${gameState.actualMemorizeTime || gameState.memorizeTime}&solutionTime=${gameState.completionTime || 0}&pieceCount=${gameState.pieceCount}&correctPieces=${Math.round(((gameState.accuracy || 0) * gameState.pieceCount) / 100)}&totalWrongPieces=${piecesInfo.totalWrong}`}
+                  href={submittedStandingHref}
                 >
                   {t("viewLeaderboard")}
                 </Link>

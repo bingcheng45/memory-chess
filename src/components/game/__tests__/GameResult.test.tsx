@@ -812,9 +812,10 @@ describe("GameResult", () => {
       expect([
         claimBanner(),
         within(banner).queryByRole("button"),
+        within(banner).getByRole("link", { name: "View leaderboard" }).getAttribute("href"),
         banner.getAttribute("data-claim-state"),
         screen.getByRole("button", { name: /^Next round/ }).className.includes("lab-btn-primary"),
-      ]).toEqual([banner, null, "claimed", true]);
+      ]).toEqual([banner, null, expect.stringMatching(/^\/leaderboard\?player=Poteto&difficulty=easy&/), "claimed", true]);
     });
   });
 

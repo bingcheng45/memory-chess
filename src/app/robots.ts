@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { RETIRED_SITEMAP_PATH } from '@/lib/seo/retiredUrls';
 
 /**
  * Crawlers that copy pages to train models and send no visitors back. Each
@@ -21,7 +22,8 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
       },
     ],
-    sitemap: 'https://thememorychess.com/sitemap.xml',
+    // The retired sitemap is temporary: see `retiredUrls`.
+    sitemap: ['https://thememorychess.com/sitemap.xml', `https://thememorychess.com${RETIRED_SITEMAP_PATH}`],
     host: 'https://thememorychess.com',
   };
 }

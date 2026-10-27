@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# gwiazdka} few {# gwiazdki} many {# gwiazdek} other {# gwiazdki}}",
       "chooseRating": "Wybierz ocenę w gwiazdkach.",
       "sendFailed": "Nie udało się wysłać opinii. Spróbuj ponownie albo wybierz „Nie teraz”.",
+      "rateLimited": "Zbyt wiele wiadomości z tego połączenia. Spróbuj ponownie za {minutes, plural, one {# minutę} few {# minuty} many {# minut} other {# minuty}}.",
       "send": "Wyślij opinię",
       "sending": "Wysyłanie…"
     },

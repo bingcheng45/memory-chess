@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "841405ea3a5237a37cf12ec7376d2af5db4a6254b02d5a37d1cf7de642441dc5",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "3e352aa069d8137ef83dd75e2ae173b35c1e6b9db6541fc96f04f2783c8077cf",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics dostává událost lab_dashboard_share, když karta pokroku opustí stránku, a událost result_share, když ji opustí karta výsledku. Každá z nich uvádí jako metodu jen to, jakým způsobem karta odešla: native pro nabídku sdílení, download pro stažený obrázek, copy_image pro zkopírovaný obrázek, copy pro zkopírovaný popisek nebo post pro stránku pro publikování v síti, přičemž síť je uvedena jako x, facebook, linkedin, reddit, whatsapp, threads nebo bluesky. Žádná z událostí neobsahuje údaje z karty, její šachovnice ani její odkaz."
+          },
+          {
+            "p": "Tlačítko „Připomínat denně“ u dnešní šachovnice uloží denní událost kalendáře jako soubor do vašeho zařízení a tento soubor se do Memory Chess neodesílá. Google Analytics dostane událost reminder_set, když tlačítko stisknete. Uvádí jen to, kde tlačítko bylo, jako surface: result, dashboard nebo daily. Neobsahuje časové pásmo, čas ani šachovnici."
           },
           {
             "p": "Když odešlete výsledek do žebříčku, místní úložiště v tomto zařízení uchová také identifikátor, který žebříček záznamu přidělí, spolu s obtížností, zemí, výsledkem a časem odeslání, a to pro váš nejlepší záznam v každé obtížnosti. Pouze když v laboratorním záznamu stisknete Zjistit moje pořadí, odešle prohlížeč tento identifikátor záznamu do Memory Chess spolu s tím, zda se má pořadí určit celosvětově, nebo v rámci země záznamu. Memory Chess přečte záznam ze žebříčku a odpoví jeho pořadím a počtem záznamů, mezi kterými byl seřazen. Odpověď se neukládá. Aby bylo omezeno, jak často lze pořadí zjišťovat, server ve své paměti po dobu jedné minuty počítá dotazy z každé IP adresy a adresu vyřadí při prvním dotazu po uplynutí její minuty. Pokud žebříček záznam už nemá, jeho identifikátor se z tohoto zařízení odstraní. Google Analytics dostane událost o tom, že bylo pořadí zjišťováno, bez identifikátoru záznamu a bez pořadí."

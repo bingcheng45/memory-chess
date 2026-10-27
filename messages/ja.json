@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, other {星 # つ}}",
       "chooseRating": "星の評価を選んでください。",
       "sendFailed": "ご意見を送信できませんでした。もう一度お試しいただくか、「あとで」を選んでください。",
+      "rateLimited": "この接続からのメッセージが多すぎます。{minutes, plural, other {#分}}後にもう一度お試しください。",
       "send": "意見を送信",
       "sending": "送信中…"
     },

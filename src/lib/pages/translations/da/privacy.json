@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "8ae9858e986614bff3cdd61b52c63fcf7c51a9ad6fdbd278d2a5d43917a5c5da",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "c9c2cca88dafc4cb0a84d8206b218d7bc17aa2af8c8ab01c78a5df72d48dfb7f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics modtager en hændelse lab_dashboard_share, når et fremskridtskort forlader siden, og en hændelse result_share, når et resultatkort gør det. Hver af dem nævner kun, hvordan kortet forlod siden, som sin metode: native for delingsmenuen, download for et downloadet billede, copy_image for et kopieret billede, copy for en kopieret billedtekst eller post for et netværks opslagsside, hvor netværket nævnes som x, facebook, linkedin, reddit, whatsapp, threads eller bluesky. Ingen af hændelserne indeholder kortets tal, dets brætter eller dets link."
+          },
+          {
+            "p": "Knappen “Mind mig om det hver dag” ved dagens bræt gemmer en daglig kalenderbegivenhed som en fil på din enhed, og filen sendes ikke til Memory Chess. Google Analytics modtager en reminder_set-hændelse, når du trykker på knappen. Den angiver kun, hvor knappen var, som surface: result, dashboard eller daily. Den indeholder ingen tidszone, intet tidspunkt og intet bræt."
           },
           {
             "p": "Når du indsender en score til ranglisten, gemmer den lokale lagring på denne enhed også det id, ranglisten giver bidraget, med sværhedsgrad, land, score og tidspunktet, du sendte det, for dit bedste bidrag på hver sværhedsgrad. Kun når du trykker på Tjek min placering i laboratoriejournalen, sender din browser det bidrags-id til Memory Chess, sammen med om det skal rangeres på verdensplan eller inden for bidragets eget land. Memory Chess læser bidraget fra ranglisten og svarer med dets placering og antallet af bidrag, det blev rangeret imod. Svaret gemmes ikke. For at begrænse, hvor ofte placeringen kan tjekkes, tæller serveren tjek fra hver IP-adresse i sin hukommelse i ét minut og dropper en adresse ved det første tjek, efter at dens minut er gået. Hvis ranglisten ikke længere har bidraget, fjernes dets id fra denne enhed. Google Analytics modtager en hændelse, der siger, at der er foretaget et tjek af placeringen, uden bidrags-id og uden placering."

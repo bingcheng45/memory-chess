@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# tähti} other {# tähteä}}",
       "chooseRating": "Valitse arvosana tähdillä.",
       "sendFailed": "Palautteen lähettäminen ei onnistunut. Yritä uudelleen tai valitse Ei nyt.",
+      "rateLimited": "Tästä yhteydestä on lähetetty liian monta viestiä. Yritä uudelleen {minutes, plural, one {# minuutin} other {# minuutin}} kuluttua.",
       "send": "Lähetä palaute",
       "sending": "Lähetetään…"
     },

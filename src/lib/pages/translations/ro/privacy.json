@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "1e3f8074e18421f2b48034e042f8c62d462eae7b3f3f1e6e34b24e299597df5d",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "d03a46a1f563b9fe8fc2f6ba4d97072f139acbe1716243515e20fa7da0eca545",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics primește un eveniment lab_dashboard_share când un card de progres părăsește pagina și un eveniment result_share când o face un card de rezultat. Fiecare numește doar modul în care a plecat, ca metodă: native pentru meniul de distribuire, download pentru o imagine descărcată, copy_image pentru o imagine copiată, copy pentru o descriere copiată sau post pentru pagina de postare a unei rețele, cu acea rețea numită x, facebook, linkedin, reddit, whatsapp, threads sau bluesky. Niciunul dintre evenimente nu conține cifrele cardului, tablele lui sau linkul lui."
+          },
+          {
+            "p": "Butonul „Amintește-mi zilnic” de la tabla de azi salvează un eveniment zilnic de calendar ca fișier pe dispozitivul tău, iar fișierul nu este trimis către Memory Chess. Google Analytics primește un eveniment reminder_set când apeși butonul. Acesta numește doar unde era butonul, ca surface: result, dashboard sau daily. Nu conține fusul orar, ora sau tabla."
           },
           {
             "p": "Când trimiți un scor în clasament, stocarea locală de pe acest dispozitiv păstrează și identificatorul pe care clasamentul îl dă acelei intrări, cu dificultatea, țara, scorul și momentul în care l-ai trimis, pentru cea mai bună intrare a ta la fiecare dificultate. Doar când apeși „Verifică-mi locul” în jurnalul de laborator, browserul tău trimite acel identificator de intrare către Memory Chess, împreună cu alegerea de a o clasa la nivel mondial sau în țara intrării. Memory Chess citește intrarea din clasament și răspunde cu locul ei și cu numărul de intrări cu care a fost comparată. Răspunsul nu este stocat. Ca să limiteze cât de des se poate verifica locul, serverul numără în memoria sa, timp de un minut, verificările de la fiecare adresă IP și elimină o adresă la prima verificare de după expirarea minutului ei. Dacă clasamentul nu mai are intrarea, identificatorul ei este șters de pe acest dispozitiv. Google Analytics primește un eveniment care spune că s-a făcut o verificare a locului, fără identificatorul intrării și fără loc."

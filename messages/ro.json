@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# stea} few {# stele} other {# de stele}}",
       "chooseRating": "Te rugăm să alegi o notă în stele.",
       "sendFailed": "Nu am putut trimite părerea ta. Încearcă din nou sau alege „Nu acum”.",
+      "rateLimited": "Prea multe mesaje de la această conexiune. Încearcă din nou peste {minutes, plural, one {# minut} few {# minute} other {# de minute}}.",
       "send": "Trimite părerea",
       "sending": "Se trimite…"
     },

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "6c0b9e655d985c1a45c30829d9a26c332112411f012f7dc79fd911981ee5b0e3",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "dcd1a9685a128d60441ec3a813b40e0ac30ce9554ab60dedff702576de07ac67",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics tar emot en händelse lab_dashboard_share när ett framstegskort lämnar sidan och en händelse result_share när ett resultatkort gör det. Var och en anger bara hur kortet lämnade sidan, som sin metod: native för delningsmenyn, download för en nedladdad bild, copy_image för en kopierad bild, copy för en kopierad bildtext eller post för ett nätverks inläggssida, där nätverket anges som x, facebook, linkedin, reddit, whatsapp, threads eller bluesky. Ingen av händelserna innehåller kortets värden, dess bräden eller dess länk."
+          },
+          {
+            "p": "Knappen ”Påminn mig varje dag” vid dagens bräde sparar en daglig kalenderhändelse som en fil på din enhet, och filen skickas inte till Memory Chess. Google Analytics får en reminder_set-händelse när du trycker på knappen. Den anger bara var knappen fanns, som surface: result, dashboard eller daily. Den innehåller ingen tidszon, ingen tid och inget bräde."
           },
           {
             "p": "När du skickar in ett resultat till topplistan sparar den lokala lagringen på den här enheten också det id som topplistan ger bidraget, med svårighetsgrad, land, poäng och tidpunkten då du skickade det, för ditt bästa bidrag på varje svårighetsgrad. Bara när du trycker på Visa min placering i labbjournalen skickar webbläsaren det bidrags-id:t till Memory Chess, tillsammans med om det ska rankas i hela världen eller inom bidragets eget land. Memory Chess läser bidraget från topplistan och svarar med dess placering och antalet bidrag som det rankades mot. Svaret sparas inte. För att begränsa hur ofta placeringen kan kontrolleras räknar servern kontrollerna från varje IP-adress i sitt minne under en minut och släpper en adress vid den första kontrollen efter att dess minut har gått ut. Om topplistan inte längre har bidraget tas dess id bort från den här enheten. Google Analytics tar emot en händelse som anger att en placering har kontrollerats, utan bidrags-id och utan placering."

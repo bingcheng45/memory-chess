@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# étoile} many {# étoiles} other {# étoiles}}",
       "chooseRating": "Veuillez choisir une note en étoiles.",
       "sendFailed": "Nous n’avons pas pu envoyer votre retour. Réessayez ou choisissez « Pas maintenant ».",
+      "rateLimited": "Trop de messages depuis cette connexion. Réessayez dans {minutes, plural, one {# minute} many {# de minutes} other {# minutes}}.",
       "send": "Envoyer mon retour",
       "sending": "Envoi..."
     },

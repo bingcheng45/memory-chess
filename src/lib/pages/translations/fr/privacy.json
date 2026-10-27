@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "ca3aa820b11147387b5a0dabca2e35157d0697c1387846d11f72257233ad8bf8",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "02055eaa51f36c2fa1623705c51448f3a2b3f17da9e5d4e050a7104b39ef87ad",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics reçoit un événement lab_dashboard_share lorsqu’une carte de progression quitte la page, et un événement result_share lorsqu’une carte de résultat la quitte. Chacun indique uniquement la manière dont la carte est partie, sous forme de méthode : native pour la feuille de partage, download pour une image téléchargée, copy_image pour une image copiée, copy pour une légende copiée, ou post pour la page de publication d’un réseau, ce réseau étant désigné par x, facebook, linkedin, reddit, whatsapp, threads ou bluesky. Aucun des deux événements ne contient les chiffres de la carte, ses échiquiers ni son lien."
+          },
+          {
+            "p": "Le bouton « Me le rappeler chaque jour » du plateau du jour enregistre un événement de calendrier quotidien sous forme de fichier sur votre appareil, et ce fichier n’est pas envoyé à Memory Chess. Google Analytics reçoit un événement reminder_set lorsque vous appuyez sur le bouton. Il indique seulement où se trouvait le bouton, comme sa surface : result, dashboard ou daily. Il ne contient ni fuseau horaire, ni heure, ni plateau."
           },
           {
             "p": "Lorsque vous soumettez un score au classement, le stockage local de cet appareil conserve aussi l’identifiant que le classement attribue à cette entrée, avec sa difficulté, son pays, son score et le moment où vous l’avez envoyée, pour votre meilleure entrée dans chaque difficulté. Ce n’est que lorsque vous appuyez sur « Voir mon classement » dans le registre du labo que votre navigateur envoie cet identifiant d’entrée à Memory Chess, en indiquant s’il faut la classer au niveau mondial ou dans le pays propre à l’entrée. Memory Chess lit l’entrée dans le classement et répond avec son rang et le nombre d’entrées parmi lesquelles elle a été classée. La réponse n’est pas conservée. Pour limiter la fréquence à laquelle la position au classement peut être vérifiée, le serveur compte en mémoire les vérifications provenant de chaque adresse IP pendant une minute, et oublie une adresse à la première vérification qui suit l’expiration de sa minute. Si le classement ne contient plus l’entrée, son identifiant est supprimé de cet appareil. Google Analytics reçoit un événement indiquant qu’une vérification de position a été effectuée, sans identifiant d’entrée ni rang."

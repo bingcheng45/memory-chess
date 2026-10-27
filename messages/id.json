@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, other {# bintang}}",
       "chooseRating": "Silakan pilih penilaian bintang.",
       "sendFailed": "Kami tidak bisa mengirim masukan Anda. Coba lagi atau pilih Nanti saja.",
+      "rateLimited": "Terlalu banyak pesan dari koneksi ini. Coba lagi dalam {minutes, plural, other {# menit}}.",
       "send": "Kirim masukan",
       "sending": "Mengirim…"
     },

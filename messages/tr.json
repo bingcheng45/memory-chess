@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, one {# yıldız} other {# yıldız}}",
       "chooseRating": "Lütfen yıldızla bir puan seç.",
       "sendFailed": "Görüşünü gönderemedik. Tekrar dene ya da “Şimdi değil”i seç.",
+      "rateLimited": "Bu bağlantıdan çok fazla mesaj gönderildi. {minutes, plural, one {# dakika} other {# dakika}} sonra tekrar dene.",
       "send": "Görüşünü gönder",
       "sending": "Gönderiliyor..."
     },

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "f9f771fb4b08f1d1881be33b76fd180869574ea3b070ed41b334e5685e0c3782",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "5c5b4e46a381d4b2656756561fe64bded50f3b96e1e16d947a9d709b420e298f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "Google Analytics, bir ilerleme kartı sayfadan çıktığında lab_dashboard_share olayı, bir sonuç kartı çıktığında ise result_share olayı alır. Her biri yöntem olarak yalnızca kartın nasıl çıktığını belirtir: paylaşım menüsü için native, indirilen resim için download, kopyalanan resim için copy_image, kopyalanan açıklama için copy ya da bir ağın gönderi sayfası için post; bu durumda ağ x, facebook, linkedin, reddit, whatsapp, threads veya bluesky olarak adlandırılır. İki olay da kartın değerlerini, tahtalarını veya bağlantısını taşımaz."
+          },
+          {
+            "p": "Bugünün tahtasındaki “Her gün hatırlat” düğmesi, günlük bir takvim etkinliğini cihazına dosya olarak kaydeder ve bu dosya Memory Chess'e gönderilmez. Düğmeye bastığında Google Analytics bir reminder_set olayı alır. Bu olay yalnızca düğmenin nerede olduğunu surface olarak bildirir: result, dashboard veya daily. Saat dilimi, saat ve tahta içermez."
           },
           {
             "p": "Sıralamaya bir skor gönderdiğinde, bu cihazdaki yerel depolama, her zorluk seviyesindeki en iyi kaydın için sıralamanın o kayda verdiği kimliği de zorluk, ülke, skor ve gönderdiğin zamanla birlikte tutar. Yalnızca laboratuvar kaydında “Sıramı kontrol et” düğmesine bastığında tarayıcın o kayıt kimliğini, kaydın dünya genelinde mi yoksa kendi ülkesi içinde mi sıralanacağı bilgisiyle birlikte Memory Chess'e gönderir. Memory Chess kaydı sıralamadan okur ve sırasını ve kaç kayıt arasında sıralandığını yanıt olarak verir. Yanıt saklanmaz. Sıranın ne sıklıkla kontrol edilebileceğini sınırlamak için sunucu, her IP adresinden gelen kontrolleri bir dakika boyunca belleğinde sayar ve bir adresi, dakikası dolduktan sonraki ilk kontrolde bellekten çıkarır. Sıralamada kayıt artık yoksa kimliği bu cihazdan kaldırılır. Google Analytics, kayıt kimliği ve sıra içermeden, bir sıra kontrolü yapıldığını belirten bir olay alır."

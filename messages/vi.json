@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, other {# sao}}",
       "chooseRating": "Vui lòng chọn số sao đánh giá.",
       "sendFailed": "Chúng tôi không gửi được góp ý của bạn. Hãy thử lại hoặc chọn Để sau.",
+      "rateLimited": "Có quá nhiều tin nhắn từ kết nối này. Hãy thử lại sau {minutes, plural, other {# phút}}.",
       "send": "Gửi góp ý",
       "sending": "Đang gửi…"
     },

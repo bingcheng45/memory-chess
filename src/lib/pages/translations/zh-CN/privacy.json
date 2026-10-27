@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "c261823807fceebe83cd6d29d37e5df016c13b8fa8e5de7274066f6149173307",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "a140de621cbcc5ddc515585d4ba393e8a484fed7f47fa7b235156277914cfe88",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "当一张进度卡片离开页面时，Google Analytics 会收到一个 lab_dashboard_share 事件；当一张结果卡片离开页面时，会收到一个 result_share 事件。每个事件只以 method 写明它是如何离开的：native 表示分享面板，download 表示下载的图片，copy_image 表示复制的图片，copy 表示复制的文案，post 表示某个社交网络的发帖页面，并以 x、facebook、linkedin、reddit、whatsapp、threads 或 bluesky 写明是哪个网络。两个事件都不包含卡片上的数据、棋盘或链接。"
+          },
+          {
+            "p": "今日棋盘上的“每天提醒我”按钮会把一个每天重复的日历事件保存为文件，存放在你的设备上，该文件不会发送给 Memory Chess。你按下按钮时，Google Analytics 会收到一个 reminder_set 事件。它只说明按钮所在的位置，即 surface：result、dashboard 或 daily。它不包含时区、时间和棋盘。"
           },
           {
             "p": "当你向排行榜提交成绩时，这台设备的本地存储还会针对你在每个难度下的最佳记录，保存排行榜为该记录分配的 ID，以及它的难度、国家、分数和你提交的时间。只有当你在实验室记录中按下“查看我的排名”时，你的浏览器才会把该记录 ID 发送给 Memory Chess，并说明是在全球范围内排名，还是在该记录所属的国家内排名。Memory Chess 从排行榜读取该记录，并回复它的名次以及参与排名的记录总数。这条回复不会被保存。为了限制查看排名的频率，服务器会在内存中对每个 IP 地址的查看次数计数一分钟，并在一分钟期满后的第一次查看时丢弃该地址。如果排行榜上已不再有该记录，它的 ID 会从这台设备上删除。Google Analytics 会收到一个表示进行了排名查看的事件，不包含记录 ID，也不包含名次。"

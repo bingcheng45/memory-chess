@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "6a513797f63f96d03b9a78b57822e10852b5882a683604eb76b2d4f3f04aec65",
+  "sourceHash": "b5f6847ddd9e04d827cc66947d1bfc047b9f313e9df4eea3420b279bea68f215",
+  "approvedHash": "649542f9bfbfc60dee696bf09dcbed1c51b2c108fe4b960850ffcc564b060d1a",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -75,6 +75,9 @@
           },
           {
             "p": "O Google Analytics recebe um evento lab_dashboard_share quando um cartão de progresso sai da página e um evento result_share quando um cartão de resultado sai. Cada um informa apenas como o cartão saiu, como o seu método: native para o menu de compartilhamento, download para uma imagem baixada, copy_image para uma imagem copiada, copy para uma legenda copiada, ou post para a página de publicação de uma rede, com essa rede indicada como x, facebook, linkedin, reddit, whatsapp, threads ou bluesky. Nenhum dos dois eventos leva os números do cartão, os seus tabuleiros ou o seu link."
+          },
+          {
+            "p": "O botão “Lembrar todo dia” do tabuleiro de hoje salva um evento diário de calendário como arquivo no seu dispositivo, e o arquivo não é enviado ao Memory Chess. O Google Analytics recebe um evento reminder_set quando você aperta o botão. Ele informa apenas onde o botão estava, como surface: result, dashboard ou daily. Não leva fuso horário, horário nem tabuleiro."
           },
           {
             "p": "Quando você envia uma pontuação ao ranking, o armazenamento local deste dispositivo também guarda o id que o ranking atribui a essa entrada, com a dificuldade, o país, a pontuação e o momento em que você a enviou, para a sua melhor entrada em cada dificuldade. Só quando você pressiona Ver minha posição no registro do laboratório o seu navegador envia esse id de entrada ao Memory Chess, indicando se a classificação deve ser mundial ou dentro do próprio país da entrada. O Memory Chess lê a entrada no ranking e responde com a posição dela e o número de entradas com que ela foi comparada. A resposta não é armazenada. Para limitar a frequência com que a posição pode ser consultada, o servidor conta na memória as consultas de cada endereço IP por um minuto, e descarta um endereço na primeira consulta depois que o minuto dele termina. Se o ranking não tiver mais a entrada, o id dela é removido deste dispositivo. O Google Analytics recebe um evento que informa que uma consulta de posição foi feita, sem id de entrada e sem posição."

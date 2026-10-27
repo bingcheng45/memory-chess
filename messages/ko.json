@@ -1167,6 +1167,7 @@
       "starRating": "{count, plural, other {별 #개}}",
       "chooseRating": "별점을 선택해 주세요.",
       "sendFailed": "의견을 보내지 못했습니다. 다시 시도하시거나 ‘나중에’를 선택해 주세요.",
+      "rateLimited": "이 연결에서 보낸 메시지가 너무 많습니다. {minutes, plural, other {#분}} 후에 다시 시도해 주세요.",
       "send": "의견 보내기",
       "sending": "보내는 중…"
     },

@@ -33,6 +33,15 @@ export const BLINDFOLD_PAGE_COPY = {
       ],
     },
     {
+      id: "first-week",
+      title: "A first week of blindfold rounds",
+      paragraphs: [
+        "The start button above opens a round of 6 pieces with 10 seconds to read them. If that rebuild comes out messy, use Choose pieces and time to drop to fewer pieces and a longer study time, and say each square under your breath as you read it.",
+        "Add one piece once two rebuilds in a row are perfect. Cut the time only after the piece count feels easy, because reading a list of squares takes longer than glancing at a board.",
+        "A blindfold round never changes your skill rating. The rating measures rounds studied on a board, so a hard blindfold session cannot pull it down.",
+      ],
+    },
+    {
       id: "leaderboard",
       title: "Free, with its own leaderboard",
       paragraphs: [

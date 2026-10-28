@@ -1,0 +1,125 @@
+{
+  "sourceHash": "773dbd82f43989d19b1fe9a6d3f497aa041411236b2d1da0893ba364153aac09",
+  "approvedHash": "79cdff0b1180d87b052c3d6ad0e74e35bbcf69d00da86277e75afb35d20be909",
+  "sameAsEnglish": [],
+  "text": {
+    "title": "O palácio da memória de Dominic O'Brien e o que ele significa para o xadrez",
+    "description": "Dominic O'Brien venceu oito Campeonatos Mundiais de Memória com a técnica do palácio da memória. O que os exames do cérebro mostram que ela faz e por que a memória no xadrez é diferente.",
+    "person": {
+      "name": "Dominic O'Brien",
+      "role": "Oito vezes campeão mundial de memória"
+    },
+    "photo": {
+      "alt": "Dominic O'Brien de smoking e gravata-borboleta em 2012",
+      "author": "djbrubru",
+      "license": "CC BY-SA 4.0",
+      "changes": "Recortada e redimensionada"
+    },
+    "facts": {
+      "born": "10 de agosto de 1957",
+      "country": "Reino Unido",
+      "title": "Campeão mundial de memória, de 1991 a 2001",
+      "knownFor": "Oito títulos do Campeonato Mundial de Memória",
+      "memoryFeat": "Memorizou 54 baralhos embaralhados, vendo cada carta uma vez"
+    },
+    "drill": {
+      "why": "O'Brien guarda itens em paradas fixas de um percurso, e Chase e Ericsson concluíram que a memória treinada funciona com grupos de 3 ou 4 itens. Doze peças dão quatro paradas, cerca de 5 segundos cada."
+    },
+    "sections": [
+      {
+        "heading": "Meia dúzia de cartas em 1987",
+        "paragraphs": [
+          "Em 1987, Dominic O'Brien viu Creighton Carvello memorizar um baralho inteiro no programa Record Breakers, da BBC. Em uma entrevista de 2023 ao Naked Scientists, O'Brien lembrou que levou pouco menos de três minutos. O verbete de Carvello na Wikipedia registra 2 minutos e 59 segundos. Então O'Brien se sentou com um baralho próprio. Não conseguia guardar mais do que cerca de meia dúzia de cartas.",
+          "Nada no passado dele sugeria que fosse chegar lá. “Eu era um caso totalmente perdido nos estudos”, disse ele na mesma entrevista. Ele já contou que foi diagnosticado com dislexia. Concluiu que tinha de haver um método e começou a construir um com a própria imaginação.",
+          "Quatro anos depois, venceu o primeiro Campeonato Mundial de Memória, disputado em Londres em 1991. Ele já disse que naquele ano houve só sete competidores. O evento foi criado por Tony Buzan e fundado em parceria com Raymond Keene, grande mestre de xadrez. O'Brien conquistou o título oito vezes entre 1991 e 2001.",
+          "Em 1º de maio de 2002, ele estabeleceu um recorde no Guinness. Memorizou 54 baralhos embaralhados, 2.808 cartas no total, vendo cada carta uma única vez. A Wikipedia registra oito erros na recordação, quatro dos quais ele corrigiu assim que foi avisado. Em 2007, Dave Farrow elevou o recorde para 59 baralhos."
+        ]
+      },
+      {
+        "heading": "Como funciona a técnica do palácio da memória",
+        "paragraphs": [
+          "O método de O'Brien costuma ser chamado de jornada. A maioria das pessoas o conhece como palácio da memória, e os psicólogos o chamam de método de loci. Você escolhe um percurso que conhece bem, como um passeio pela casa onde passou a infância. Transforma cada item em uma imagem vívida e a deixa na parada seguinte do percurso. Para lembrar, você refaz o percurso mentalmente.",
+          "O'Brien monta seus percursos com lugares que conheceu na infância. Na entrevista de 2023, estimou ter cerca de 70 percursos de 50 etapas cada. Ele codifica a informação, dá vida às imagens e prende cada uma ao seu lugar. Para os números, criou o Sistema Dominic, parecido com o Sistema Major.",
+          "O método é antigo. Um artigo de 2003 de Eleanor Maguire e colegas o atribui ao poeta grego Simônides de Ceos. Os autores observam que ele é usado de forma quase inalterada há dois mil e quinhentos anos."
+        ]
+      },
+      {
+        "heading": "O que os exames do cérebro de memorizadores de elite mostraram",
+        "paragraphs": [
+          "A equipe de Maguire, em artigo na Nature Neuroscience, testou dez pessoas com memória superior. Oito tinham chegado aos níveis mais altos dos Campeonatos Mundiais de Memória. O artigo não diz os nomes, por isso não se sabe se O'Brien estava entre elas. A equipe as comparou com dez controles pareados.",
+          "Os memorizadores não tinham intelecto superior ao do grupo de controle. Os exames também não encontraram diferenças na estrutura do cérebro. Nove dos dez usavam o método de loci em algumas ou em todas as tarefas. Durante a memorização, ativavam mais do que o grupo de controle as regiões do cérebro ligadas à memória espacial e à orientação no espaço.",
+          "O ponto mais revelador veio do material dos testes. Os memorizadores reconheceram muito mais números de três dígitos do que o grupo de controle, 25,9 contra 18,5 de 30. Com rostos, a diferença foi pequena. Com desenhos de flocos de neve, difíceis de descrever em palavras, os dois grupos fizeram 19,7. A vantagem deles estava no método, não em uma câmera melhor.",
+          "Um estudo de 2017 na Neuron, liderado por Martin Dresler, foi além. Testou 23 atletas da memória entre os 50 melhores do mundo com uma lista de 72 palavras. Os atletas recordaram quase todas, enquanto o grupo de controle ficou em cerca de 40. Voluntários que praticaram o método de loci por seis semanas mais do que dobraram a recordação. Quatro meses depois, ainda se saíam quase tão bem."
+        ]
+      },
+      {
+        "heading": "Um palácio da memória ajuda no xadrez?",
+        "paragraphs": [
+          "Ajuda a guardar lances, mas não ajuda a ver o tabuleiro. Em uma coluna de 2017 no ChessBase, David Fadul escreveu que um palácio da memória pode guardar centenas de partidas ou aberturas. Acrescentou que ele não vai permitir que você veja um tabuleiro de xadrez na mente.",
+          "Um caso de laboratório famoso mostra como uma memória treinada pode ser estreita. Em um relatório de 1980, William Chase e K. Anders Ericsson descreveram um estudante conhecido como SF, que treinava para recordar dígitos ditados em voz alta. Ao longo de 25 meses e mais de 250 horas de prática, sua amplitude de memória para dígitos subiu de 7 para mais de 80. Chase tinha sido coautor, com Herbert Simon, do estudo de 1973 que mostrou que os mestres lembram posições em chunks, grupos conhecidos de peças guardados como uma unidade.",
+          "SF era um bom corredor de longa distância e codificava grupos de 3 ou 4 dígitos como tempos de corrida. A habilidade ficou presa aos dígitos. Depois de três meses de prática, testaram sua amplitude para consoantes, e ela continuava em torno de 6. Chase e Ericsson não relataram transferência nenhuma.",
+          "Eles ligaram SF diretamente ao xadrez. O relatório de 1980 diz que a pesquisa com especialistas em xadrez sugere que padrões significativos guardados na memória de longo prazo estão na base de uma memória superior. Um campeão de memória transforma itens arbitrários em imagens e os coloca em um percurso. Um mestre de xadrez reconhece grupos conhecidos de peças. Os dois se apoiam em conhecimento, mas em conhecimentos diferentes.",
+          "O material aleatório mostra a separação. Os atletas da memória competem com cartas embaralhadas e dígitos aleatórios, que o método deles transforma em imagens. Os flocos de neve de Maguire mostram que o método tem limites. Os enxadristas perdem a maior parte da vantagem em posições aleatórias. Fernand Gobet e Herbert Simon concluíram em 1996 que os jogadores fortes mantêm ali uma pequena vantagem, bem menor do que em posições de partidas.",
+          "Então o xadrez faz bem à memória, ou o treino de memória faz bem ao xadrez? Os estudos citados aqui mediram ganhos no material que foi treinado. Nenhum deles testou a força no xadrez, e a habilidade de SF não passou nem para as letras. Por isso, eles não resolvem a questão.",
+          "Os percursos de O'Brien e os grupos de SF têm a mesma estrutura. Cada um guarda poucos itens de cada vez e os põe em paradas fixas, numa ordem fixa. Chase e Ericsson chamaram isso de estrutura de recuperação. O tabuleiro de xadrez já tem uma. Seus quadrantes, fileiras e colunas são paradas que você nunca precisa inventar. Esse último passo é uma ideia própria deste artigo, não algo que os estudos testaram."
+        ]
+      },
+      {
+        "heading": "Percorra o tabuleiro em quatro paradas",
+        "paragraphs": [
+          "Use o percurso do próprio tabuleiro. No Memory Chess, escolha 12 peças e 20 segundos. Antes de o tabuleiro aparecer, fixe um percurso de quatro paradas: canto inferior esquerdo, inferior direito, superior direito e, por fim, superior esquerdo. Enquanto o tabuleiro está à mostra, visite cada quadrante nessa ordem. Absorva as peças dele como uma pequena imagem, em geral 3 ou 4. Quando o tabuleiro esvaziar, refaça o percurso e coloque o grupo de cada quadrante. Se um quadrante continuar falhando, comece o percurso por ele na rodada seguinte."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "How to make your memory better, interview with Dominic O'Brien, The Naked Scientists, May 16, 2023",
+        "note": "Sustenta: o quadro de TV de 1987 e o baralho memorizado em pouco menos de três minutos, a incapacidade de lembrar mais do que cerca de meia dúzia de cartas, a citação sobre ser um caso perdido nos estudos, o diagnóstico de dislexia, a construção de um método a partir da imaginação, os sete competidores em 1991, os percursos com lugares da infância, cerca de 70 percursos de 50 etapas, a codificação e a associação de imagens a lugares."
+      },
+      {
+        "title": "Creighton Carvello, Wikipedia",
+        "note": "Sustenta: a participação de Carvello no Record Breakers em 1987, o baralho em 2 minutos e 59 segundos e o fato de que essa façanha inspirou O'Brien."
+      },
+      {
+        "title": "Dominic O'Brien, Wikipedia",
+        "note": "Sustenta: data de nascimento, nacionalidade britânica, os oito títulos do Campeonato Mundial de Memória, o Sistema Dominic e sua semelhança com o Sistema Major, o recorde de 1º de maio de 2002 com 54 baralhos e 2.808 cartas vistas uma vez, oito erros, quatro deles corrigidos quando foi avisado."
+      },
+      {
+        "title": "World Memory Championships, Wikipedia",
+        "note": "Sustenta: o primeiro campeonato, em Londres em 1991, Tony Buzan como criador e cofundador com Ray Keene, os títulos de O'Brien em 1991, 1993, 1995, 1996, 1997, 1999, 2000 e 2001."
+      },
+      {
+        "title": "Most decks of playing cards memorized by a single sighting, Guinness World Records",
+        "note": "Sustenta: o recorde de 59 baralhos de Dave Farrow em 2007."
+      },
+      {
+        "title": "Total recall, Raymond Keene, The Spectator, September 8, 2012",
+        "note": "Sustenta: Keene como grande mestre de xadrez que escreve sobre esporte da memória e O'Brien como oito vezes campeão mundial de memória."
+      },
+      {
+        "title": "Routes to remembering: the brains behind superior memory, Eleanor Maguire, Elizabeth Valentine, John Wilding and Narinder Kapur, Nature Neuroscience 6, pages 90 to 95 (2003)",
+        "note": "Sustenta: dez memorizadores superiores, oito deles dos níveis mais altos dos Campeonatos Mundiais de Memória, dez controles pareados, nenhum intelecto excepcional nem diferenças na estrutura do cérebro, nove dos dez usando o método de loci, Simônides de Ceos, o uso ao longo de dois milênios e meio, a atividade nas regiões ligadas à memória espacial e à orientação, os resultados de reconhecimento de 25,9 contra 18,5 com dígitos e de 19,7 para os dois grupos com flocos de neve, a pequena diferença com rostos."
+      },
+      {
+        "title": "Mental Training Evokes Superior Memory, Transforms Brain Networks, Gwyneth Dickey Zakaib, Alzforum, March 10, 2017, on Dresler and colleagues in Neuron",
+        "note": "Sustenta: 23 atletas da memória entre os 50 melhores do mundo, a lista de 72 palavras, os atletas recordando quase todas e o grupo de controle cerca de 40, seis semanas de treino com o método de loci mais do que dobrando a recordação, uma recordação quase igual quatro meses depois."
+      },
+      {
+        "title": "Mnemonic Training Reshapes Brain Networks to Support Superior Memory, Martin Dresler and colleagues, Neuron 93, pages 1227 to 1235 (2017)",
+        "note": "Sustenta: o estudo de 2017 na Neuron, liderado por Martin Dresler, sobre atletas da memória e seis semanas de treino com o método de loci. Os números do texto foram tirados da reportagem do Alzforum sobre este artigo."
+      },
+      {
+        "title": "Skilled Memory, William G. Chase and K. Anders Ericsson, Carnegie-Mellon University Technical Report No. 5, November 6, 1980 (DTIC ADA114635)",
+        "note": "Sustenta: os 25 meses e mais de 250 horas de prática de SF, a amplitude para dígitos de 7 para mais de 80, a codificação de dígitos como tempos de corrida, os grupos de 3 e 4 dígitos, a amplitude para consoantes em torno de 6, sem transferência depois de três meses, os padrões significativos na memória de longo prazo como base da memória dos especialistas em xadrez, o termo estrutura de recuperação."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Sustenta: a teoria dos chunks de Chase e Simon, de 1973, sobre a memória no xadrez, os jogadores fortes mantendo alguma vantagem em posições aleatórias, bem menor do que em posições de partidas."
+      },
+      {
+        "title": "Memory Techniques: An Introduction, David Fadul, ChessBase, May 30, 2017",
+        "note": "Sustenta: a resposta curta de que um palácio da memória ajuda a guardar lances, mas não a ver o tabuleiro, que ele pode guardar centenas de partidas ou aberturas e que não vai permitir que você veja um tabuleiro de xadrez na mente."
+      }
+    ]
+  }
+}

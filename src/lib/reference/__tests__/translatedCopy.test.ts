@@ -51,7 +51,7 @@ describe("translated copy", () => {
     expect(files).toContain("messages/ru.json");
     expect(files).toContain("src/lib/reference/prose/ru.json");
     expect(files).toContain("src/lib/articles/translations/it/adriaan-de-groot.json");
-    expect(files).toHaveLength(23 * 2 + 23 * 4);
+    expect(files).toHaveLength(23 * 2 + 23 * 7);
   });
 
   it("finds a long dash and a doubled particle where they are", () => {

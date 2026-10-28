@@ -94,8 +94,9 @@ The three launch articles share one week, so together they count as one week of 
 owner-written. Each later article is one row, in its own week.
 
 The three articles of 2026-10-28 also share one week, and none counts as owner-written. Each was reviewed by three
-AI reviewers (fact-check, reader, search) until all three approved. They ship in English only; their translations
-are a later PR.
+AI reviewers (fact-check, reader, search) until all three approved. PR 195 shipped them in English only. The PR
+after it adds their translations in all 23 locales, each made by one AI agent and reviewed by another, noindex like the
+other translated articles.
 
 ### Round funnel events
 

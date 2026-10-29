@@ -277,6 +277,15 @@ describe("check 8: long dashes", () => {
   });
 });
 
+describe("check 8: broken characters", () => {
+  it("fails on UTF-8 that was read as Latin-1", () => {
+    const broken = Buffer.from("f\u00fcr", "utf8").toString("latin1");
+    const run = check("de", (english) => withText(marked(english), (ada) => ({ ...ada, drill: { why: `${ada.drill.why} ${broken}` } })));
+
+    expect(run.failures).toEqual(["ada-example drill.why: has broken characters, UTF-8 read as Latin-1"]);
+  });
+});
+
 describe("check 9: the title length", () => {
   it("fails a title of 91 characters", () => {
     const run = check("de", (english) => withText(marked(english), (ada) => ({ ...ada, title: "Z".repeat(91) })));

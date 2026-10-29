@@ -1,0 +1,125 @@
+{
+  "sourceHash": "773dbd82f43989d19b1fe9a6d3f497aa041411236b2d1da0893ba364153aac09",
+  "approvedHash": "895ab5492cd2cb933034b67d67168a19ce89315c1afebb038109289240b7e7c1",
+  "sameAsEnglish": [],
+  "text": {
+    "title": "Paměťový palác Dominica O'Briena a co znamená pro šachy",
+    "description": "Dominic O'Brien vyhrál osmkrát mistrovství světa v paměťových sportech díky technice paměťového paláce. Co o ní ukazují snímky mozku a proč je šachová paměť jiná.",
+    "person": {
+      "name": "Dominic O'Brien",
+      "role": "Osminásobný mistr světa v paměťových sportech"
+    },
+    "photo": {
+      "alt": "Dominic O'Brien ve smokingu a s motýlkem v roce 2012",
+      "author": "djbrubru",
+      "license": "CC BY-SA 4.0",
+      "changes": "Oříznuto a zmenšeno"
+    },
+    "facts": {
+      "born": "10. srpna 1957",
+      "country": "Spojené království",
+      "title": "Mistr světa v paměťových sportech, 1991 až 2001",
+      "knownFor": "Osm titulů mistra světa v paměťových sportech",
+      "memoryFeat": "Zapamatoval si 54 zamíchaných balíčků, každou kartu viděl jednou"
+    },
+    "drill": {
+      "why": "O'Brien ukládá položky na pevná zastavení na trase a Chase s Ericssonem zjistili, že trénovaná paměť pracuje se skupinami po 3 nebo 4 položkách. Dvanáct figurek dává čtyři zastavení, na každé asi 5 sekund."
+    },
+    "sections": [
+      {
+        "heading": "Půl tuctu karet v roce 1987",
+        "paragraphs": [
+          "V roce 1987 sledoval Dominic O'Brien v pořadu Record Breakers na BBC, jak si Creighton Carvello zapamatoval celý balíček karet. V rozhovoru pro Naked Scientists v roce 2023 O'Brien vzpomínal, že to trvalo necelé tři minuty. Carvellovo heslo na Wikipedii uvádí 2 minuty 59 sekund. Pak si O'Brien sedl s vlastním balíčkem. Neudržel si v hlavě víc než zhruba půl tuctu karet.",
+          "Nic v jeho minulosti nenaznačovalo, že by to mohl dohnat. „Ve škole jsem byl naprosto beznadějný,“ řekl ve stejném rozhovoru. Uvedl, že mu byla diagnostikována dyslexie. Rozhodl se, že musí existovat nějaká metoda, a začal si ji skládat z vlastní představivosti.",
+          "O čtyři roky později vyhrál první mistrovství světa v paměťových sportech, které se konalo v Londýně v roce 1991. Podle jeho slov tehdy soutěžilo jen sedm účastníků. Soutěž vymyslel Tony Buzan a založil ji spolu se šachovým velmistrem Raymondem Keenem. O'Brien vyhrál titul v letech 1991 až 2001 osmkrát.",
+          "Dne 1. května 2002 vytvořil rekord zapsaný v Guinnessově knize. Zapamatoval si 54 zamíchaných balíčků, celkem 2 808 karet, a každou kartu přitom viděl jen jednou. Wikipedie uvádí, že při vybavování udělal osm chyb, z nichž čtyři opravil hned, jak na ně byl upozorněn. V roce 2007 posunul Dave Farrow rekord na 59 balíčků."
+        ]
+      },
+      {
+        "heading": "Jak funguje technika paměťového paláce",
+        "paragraphs": [
+          "O'Brienově metodě se často říká cesta. Většina lidí ji zná jako paměťový palác a psychologové ji nazývají metodou loci. Vezmete si trasu, kterou dobře znáte, třeba procházku domem, kde jste vyrůstali. Každou položku proměníte v živý obraz a necháte ji na dalším zastavení trasy. Když si chcete vzpomenout, projdete trasu v duchu znovu.",
+          "O'Brien si trasy staví z míst, která znal jako dítě. V rozhovoru z roku 2023 odhadl, že má asi 70 tras po 50 zastaveních. Informaci zakóduje, obrazy oživí a každý z nich spojí se svým místem. Pro čísla vymyslel Dominicův systém, podobný major systému.",
+          "Metoda je stará. Práce Eleanor Maguireové a jejích kolegů z roku 2003 ji odvozuje od řeckého básníka Simónida z Keu. Autoři poznamenávají, že se používá téměř beze změny dva a půl tisíce let."
+        ]
+      },
+      {
+        "heading": "Co zjistily snímky mozku špičkových paměťových sportovců",
+        "paragraphs": [
+          "Tým Maguireové v časopise Nature Neuroscience testoval deset lidí s mimořádnou pamětí. Osm z nich se umístilo na nejvyšších příčkách mistrovství světa v paměťových sportech. Práce je nejmenuje, takže není známo, zda byl O'Brien mezi nimi. Tým je porovnal s deseti odpovídajícími kontrolními osobami.",
+          "Paměťoví sportovci neměli vyšší intelekt než kontrolní skupina. Ani snímky mozku neukázaly žádné strukturální rozdíly. Devět z deseti používalo metodu loci v některých úlohách nebo ve všech. Při učení aktivovali oblasti mozku spojené s prostorovou pamětí a orientací víc než kontrolní skupina.",
+          "Nejvíc prozradil samotný testovací materiál. Paměťoví sportovci poznali mnohem víc trojmístných čísel než kontrolní skupina, 25,9 proti 18,5 z 30. U obličejů byl rozdíl malý. U kreseb sněhových vloček, které se těžko popisují slovy, dosáhly obě skupiny 19,7. Jejich výhoda spočívala v metodě, ne v lepším fotoaparátu.",
+          "Studie v časopise Neuron z roku 2017, kterou vedl Martin Dresler, šla dál. Testovala 23 paměťových sportovců z 50 nejlepších na světě na seznamu 72 slov. Sportovci si vybavili téměř všechna, kontrolní skupina zhruba 40. Dobrovolníci, kteří šest týdnů cvičili metodu loci, svůj výsledek více než zdvojnásobili. O čtyři měsíce později si vedli téměř stejně dobře."
+        ]
+      },
+      {
+        "heading": "Pomůže paměťový palác v šachu?",
+        "paragraphs": [
+          "Pomůže vám ukládat tahy, ale nepomůže vám vidět šachovnici. David Fadul v roce 2017 ve sloupku pro ChessBase napsal, že paměťový palác dokáže uložit stovky partií nebo zahájení. Dodal, že vám ale nedovolí vidět šachovnici v duchu.",
+          "Slavný laboratorní případ ukazuje, jak úzká může trénovaná paměť být. William Chase a K. Anders Ericsson v roce 1980 popsali ve zprávě studenta známého jako SF, který cvičil vybavování diktovaných číslic. Za 25 měsíců a více než 250 hodin cvičení se jeho paměťový rozsah pro číslice zvětšil ze 7 na více než 80. Chase byl spoluautorem studie s Herbertem Simonem z roku 1973, která ukázala, že si mistři pamatují pozice v chuncích, tedy známých skupinách figurek uložených jako jeden celek.",
+          "SF byl dobrý vytrvalostní běžec a skupiny 3 nebo 4 číslic si kódoval jako běžecké časy. Dovednost zůstala u číslic. Po třech měsících cvičení mu změřili paměťový rozsah pro souhlásky a byl stále kolem 6. Chase a Ericsson neuvádějí vůbec žádný přenos.",
+          "SF přímo spojili se šachem. Jejich zpráva z roku 1980 uvádí, že výzkum šachových expertů naznačuje, že mimořádná paměť stojí na smysluplných vzorech uložených v dlouhodobé paměti. Šampion v paměťových sportech proměňuje libovolné položky v obrazy a rozmisťuje je na trase. Šachový mistr poznává známé skupiny figurek. Oba se opírají o znalosti, ale o jiné znalosti.",
+          "Ten rozdíl ukazuje náhodný materiál. Paměťoví sportovci soutěží se zamíchanými kartami a náhodnými číslicemi, které jejich metoda proměňuje v obrazy. Sněhové vločky Maguireové ukazují, že metoda má své meze. Šachisté na náhodných pozicích ztrácejí většinu svého náskoku. Fernand Gobet a Herbert Simon v roce 1996 zjistili, že silní hráči si tam drží malou výhodu, mnohem menší než u pozic z partií.",
+          "Je tedy šach dobrý pro paměť, nebo trénink paměti dobrý pro šach? Zde uvedené studie měřily zlepšení na materiálu, který se trénoval. Žádná z nich netestovala šachovou sílu a dovednost SF se nepřenesla ani na písmena. Tuto otázku tedy rozhodnout nemohou.",
+          "O'Brienovy trasy a skupiny SF mají stejnou stavbu. Každá drží několik položek najednou a ukládá je na pevná zastavení v pevném pořadí. Chase a Ericsson to nazvali vybavovací strukturou. Šachovnice už jednu má. Její čtvrtiny, řady a sloupce jsou zastavení, která nikdy nemusíte vymýšlet. Tento poslední krok je vlastní myšlenka tohoto článku, ne něco, co studie ověřily."
+        ]
+      },
+      {
+        "heading": "Projděte šachovnici ve čtyřech zastaveních",
+        "paragraphs": [
+          "Využijte trasu, kterou nabízí sama šachovnice. V Memory Chess zvolte 12 figurek a 20 sekund. Než se šachovnice objeví, stanovte si trasu o čtyřech zastaveních: vlevo dole, vpravo dole, vpravo nahoře a nakonec vlevo nahoře. Dokud je šachovnice vidět, navštivte čtvrtiny v tomto pořadí. Figurky v každé z nich vnímejte jako jeden malý obrázek, obvykle 3 nebo 4. Když se šachovnice vyprázdní, projděte trasu znovu a rozestavte skupinu každé čtvrtiny. Pokud vám jedna čtvrtina opakovaně nevychází, začněte trasu v dalším kole právě tam."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "How to make your memory better, interview with Dominic O'Brien, The Naked Scientists, May 16, 2023",
+        "note": "Dokládá: televizní pořad z roku 1987 a balíček zapamatovaný za necelé tři minuty, to, že si nedokázal zapamatovat víc než zhruba půl tuctu karet, citát o beznadějných školních výsledcích, jeho diagnózu dyslexie, metodu postavenou na představivosti, sedm účastníků v roce 1991, trasy z míst dětství, zhruba 70 tras po 50 zastaveních, kódování a spojování obrazů s místy."
+      },
+      {
+        "title": "Creighton Carvello, Wikipedia",
+        "note": "Dokládá: Carvellovo vystoupení v Record Breakers v roce 1987, balíček za 2 minuty 59 sekund a to, že tento výkon O'Briena inspiroval."
+      },
+      {
+        "title": "Dominic O'Brien, Wikipedia",
+        "note": "Dokládá: datum narození, britskou státní příslušnost, osm titulů mistra světa v paměťových sportech, Dominicův systém a jeho podobnost s major systémem, rekord z 1. května 2002 s 54 balíčky a 2 808 kartami viděnými jednou, osm chyb, z nichž čtyři opravil po upozornění."
+      },
+      {
+        "title": "World Memory Championships, Wikipedia",
+        "note": "Dokládá: první mistrovství v Londýně v roce 1991, Tonyho Buzana jako autora myšlenky a spoluzakladatele s Rayem Keenem, O'Brienovy tituly z let 1991, 1993, 1995, 1996, 1997, 1999, 2000 a 2001."
+      },
+      {
+        "title": "Most decks of playing cards memorized by a single sighting, Guinness World Records",
+        "note": "Dokládá: rekord Davea Farrowa z roku 2007 s 59 balíčky."
+      },
+      {
+        "title": "Total recall, Raymond Keene, The Spectator, September 8, 2012",
+        "note": "Dokládá: Keena jako šachového velmistra, který píše o paměťových sportech, a O'Briena jako osminásobného mistra světa v paměťových sportech."
+      },
+      {
+        "title": "Routes to remembering: the brains behind superior memory, Eleanor Maguire, Elizabeth Valentine, John Wilding and Narinder Kapur, Nature Neuroscience 6, pages 90 to 95 (2003)",
+        "note": "Dokládá: deset lidí s mimořádnou pamětí, osm z nejvyšších příček mistrovství světa v paměťových sportech, deset odpovídajících kontrolních osob, žádný výjimečný intelekt ani strukturální rozdíly v mozku, devět z deseti používajících metodu loci, Simónida z Keu, používání po dva a půl tisíciletí, aktivitu v oblastech spojených s prostorovou pamětí a orientací, výsledky rozpoznávání 25,9 proti 18,5 u číslic a 19,7 u obou skupin u sněhových vloček, malý rozdíl u obličejů."
+      },
+      {
+        "title": "Mental Training Evokes Superior Memory, Transforms Brain Networks, Gwyneth Dickey Zakaib, Alzforum, March 10, 2017, on Dresler and colleagues in Neuron",
+        "note": "Dokládá: 23 paměťových sportovců z 50 nejlepších na světě, seznam 72 slov, sportovce, kteří si vybavili téměř všechna, a kontrolní skupinu se zhruba 40, šest týdnů tréninku metody loci, který výsledek více než zdvojnásobil, téměř stejné výsledky o čtyři měsíce později."
+      },
+      {
+        "title": "Mnemonic Training Reshapes Brain Networks to Support Superior Memory, Martin Dresler and colleagues, Neuron 93, pages 1227 to 1235 (2017)",
+        "note": "Dokládá: studii v časopise Neuron z roku 2017 vedenou Martinem Dreslerem o paměťových sportovcích a šesti týdnech tréninku metody loci. Čísla v textu pocházejí ze zprávy Alzforum o této práci."
+      },
+      {
+        "title": "Skilled Memory, William G. Chase and K. Anders Ericsson, Carnegie-Mellon University Technical Report No. 5, November 6, 1980 (DTIC ADA114635)",
+        "note": "Dokládá: 25 měsíců a přes 250 hodin cvičení SF, paměťový rozsah pro číslice ze 7 na více než 80, kódování číslic jako běžeckých časů, skupiny 3 a 4 číslic, paměťový rozsah pro souhlásky kolem 6 bez přenosu po třech měsících, smysluplné vzory v dlouhodobé paměti jako základ paměti šachových expertů, pojem vybavovací struktura."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Dokládá: chunkovou teorii šachové paměti Chase a Simona z roku 1973, to, že si silní hráči na náhodných pozicích drží určitou výhodu, mnohem menší než u pozic z partií."
+      },
+      {
+        "title": "Memory Techniques: An Introduction, David Fadul, ChessBase, May 30, 2017",
+        "note": "Dokládá: stručnou odpověď, že paměťový palác pomáhá ukládat tahy, ale ne vidět šachovnici, že dokáže uložit stovky partií nebo zahájení a že nedovolí vidět šachovnici v duchu."
+      }
+    ]
+  }
+}

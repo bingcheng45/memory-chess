@@ -166,11 +166,7 @@ describe("the article route's static params", () => {
     const everySlug = ARTICLE_SLUGS.map((slug) => ({ slug }));
 
     expect(generateStaticParams({ params: { locale: "en" } })).toEqual(everySlug);
-    expect(generateStaticParams({ params: { locale: "de" } })).toEqual([
-      { slug: "magnus-carlsen" },
-      { slug: "adriaan-de-groot" },
-      { slug: "judit-polgar" },
-    ]);
+    expect(generateStaticParams({ params: { locale: "de" } })).toEqual(everySlug);
     expect(generateStaticParams({ params: { locale: "de" } })).toContainEqual({ slug: SLUG });
     expect(generateStaticParams({ params: { locale: "fr" } })).toEqual([]);
   });

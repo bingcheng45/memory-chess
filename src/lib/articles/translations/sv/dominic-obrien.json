@@ -1,0 +1,125 @@
+{
+  "sourceHash": "773dbd82f43989d19b1fe9a6d3f497aa041411236b2d1da0893ba364153aac09",
+  "approvedHash": "764e9a0293f4bfa24553e2567b0047f78276251f140f7e03a18be6961edf4ec2",
+  "sameAsEnglish": [],
+  "text": {
+    "title": "Dominic O'Briens minnespalats och vad det betyder för schack",
+    "description": "Dominic O'Brien vann minnes-VM åtta gånger med hjälp av minnespalatset. Vad hjärnavbildningar visar att den gör, och varför schackminnet fungerar annorlunda.",
+    "person": {
+      "name": "Dominic O'Brien",
+      "role": "Åttafaldig världsmästare i minne"
+    },
+    "photo": {
+      "alt": "Dominic O'Brien i smoking och fluga 2012",
+      "author": "djbrubru",
+      "license": "CC BY-SA 4.0",
+      "changes": "Beskuren och storleksändrad"
+    },
+    "facts": {
+      "born": "10 augusti 1957",
+      "country": "Storbritannien",
+      "title": "Världsmästare i minne, 1991-2001",
+      "knownFor": "Åtta segrar i minnes-VM",
+      "memoryFeat": "Memorerade 54 blandade kortlekar och såg varje kort en gång"
+    },
+    "drill": {
+      "why": "O'Brien lagrar saker vid fasta hållplatser längs en väg, och Chase och Ericsson fann att ett tränat minne arbetar med grupper om 3 eller 4 saker. Tolv pjäser blir fyra hållplatser, ungefär 5 sekunder var."
+    },
+    "sections": [
+      {
+        "heading": "Ett halvdussin kort 1987",
+        "paragraphs": [
+          "År 1987 såg Dominic O'Brien Creighton Carvello memorera en hel kortlek i BBC-programmet Record Breakers. O'Brien berättade i en intervju med Naked Scientists 2023 att det tog knappt tre minuter. Carvellos artikel på Wikipedia anger 2 minuter och 59 sekunder. Sedan satte sig O'Brien med en egen kortlek. Han kunde inte hålla fler än ungefär ett halvdussin kort i minnet.",
+          "Ingenting i hans bakgrund tydde på att han skulle komma i kapp. ”Jag var fullständigt hopplös i skolan”, sa han i samma intervju. Han har berättat att han fick diagnosen dyslexi. Han bestämde sig för att det måste finnas en metod och började bygga en med hjälp av sin fantasi.",
+          "Fyra år senare vann han det första minnes-VM:et, som hölls i London 1991. Enligt honom var det bara sju deltagare det året. Tävlingen skapades av Tony Buzan, som grundade den tillsammans med schackstormästaren Raymond Keene. O'Brien vann titeln åtta gånger mellan 1991 och 2001.",
+          "Den 1 maj 2002 satte han ett Guinnessrekord. Han memorerade 54 blandade kortlekar, sammanlagt 2 808 kort, efter att ha sett varje kort bara en gång. Enligt Wikipedia gjorde han åtta fel när han återgav dem, och fyra av dem rättade han så fort han fick veta det. År 2007 höjde Dave Farrow rekordet till 59 kortlekar."
+        ]
+      },
+      {
+        "heading": "Så fungerar tekniken med minnespalats",
+        "paragraphs": [
+          "O'Briens metod kallas ofta resan. De flesta känner den som minnespalatset, och psykologer kallar den loci-metoden. Du väljer en väg som du känner väl, till exempel en promenad genom ditt barndomshem. Du gör om varje sak till en livfull bild och lämnar den vid nästa hållplats längs vägen. När du ska minnas går du vägen igen i tankarna.",
+          "O'Brien bygger sina vägar av platser han kände som barn. I intervjun 2023 uppskattade han att han har ungefär 70 vägar med 50 hållplatser var. Han kodar informationen, gör bilderna levande och knyter var och en till sin plats. För siffror tog han fram Dominic-systemet, som liknar Major-systemet.",
+          "Metoden är gammal. En artikel från 2003 av Eleanor Maguire och hennes kolleger spårar den till den grekiske poeten Simonides från Keos. De noterar att den har använts i nästan oförändrad form i två och ett halvt tusen år."
+        ]
+      },
+      {
+        "heading": "Vad hjärnavbildningar av de bästa minneskonstnärerna visade",
+        "paragraphs": [
+          "Maguires team, som skrev i Nature Neuroscience, testade tio personer med ett exceptionellt minne. Åtta hade placerat sig i toppen av minnes-VM. Artikeln namnger dem inte, så det är okänt om O'Brien var en av dem. Teamet jämförde dem med tio matchade kontrollpersoner.",
+          "Minneskonstnärerna hade inte högre intellekt än kontrollpersonerna. Hjärnavbildningarna visade inte heller några strukturella skillnader. Nio av de tio använde loci-metoden för några av eller alla uppgifterna. Medan de lärde in aktiverade de hjärnområden som hör ihop med rumsligt minne och navigering mer än kontrollpersonerna gjorde.",
+          "Testmaterialet gav det mest talande resultatet. Minneskonstnärerna kände igen långt fler tresiffriga tal än kontrollpersonerna, 25,9 mot 18,5 av 30. För ansikten var skillnaden liten. För teckningar av snöflingor, som är svåra att sätta ord på, fick båda grupperna 19,7. Deras fördel låg i metoden, inte i en bättre kamera.",
+          "En studie i Neuron från 2017, under ledning av Martin Dresler, gick längre. Den testade 23 minnesidrottare från världens 50 bästa på en lista med 72 ord. Idrottarna mindes nästan alla, medan kontrollpersonerna klarade ungefär 40. Frivilliga som övade loci-metoden i sex veckor mer än fördubblade hur mycket de mindes. Fyra månader senare klarade de sig fortfarande nästan lika bra."
+        ]
+      },
+      {
+        "heading": "Kan ett minnespalats hjälpa i schack?",
+        "paragraphs": [
+          "Det hjälper dig att lagra drag, men det hjälper dig inte att se brädet. I en ChessBase-kolumn från 2017 skrev David Fadul att ett minnespalats kan lagra hundratals partier eller öppningar. Han tillade att det inte låter dig se ett schackbräde framför dig i tankarna.",
+          "Ett berömt laboratoriefall visar hur snävt ett tränat minne kan vara. I en rapport från 1980 beskrev William Chase och K. Anders Ericsson en student kallad SF, som övade på att minnas upplästa siffror. Under 25 månader och mer än 250 timmars övning steg hans sifferspann från 7 till över 80. Chase hade tillsammans med Herbert Simon skrivit studien från 1973 som visade att mästare minns ställningar i chunkar, bekanta grupper av pjäser som hålls som en enhet.",
+          "SF var en duktig långdistanslöpare, och han kodade grupper om 3 eller 4 siffror som löptider. Förmågan stannade vid siffrorna. Efter tre månaders övning testades hans spann för konsonanter, och det låg fortfarande kring 6. Chase och Ericsson rapporterade ingen överföring alls.",
+          "De kopplade SF direkt till schack. Deras rapport från 1980 säger att forskningen om schackexperter tyder på att meningsfulla mönster i långtidsminnet ligger bakom ett överlägset minne. En minnesmästare gör om godtyckliga saker till bilder och placerar dem längs en väg. En schackmästare känner igen bekanta grupper av pjäser. Båda lutar sig mot kunskap, men olika slags kunskap.",
+          "Slumpmässigt material visar skillnaden. Minnesidrottare tävlar med blandade kort och slumpade siffror, som deras metod gör om till bilder. Maguires snöflingor visar att metoden har gränser. Schackspelare förlorar det mesta av sitt försprång på slumpade ställningar. Fernand Gobet och Herbert Simon fann 1996 att starka spelare behåller en liten fördel där, mycket mindre än på partiställningar.",
+          "Är schack då bra för minnet, eller är minnesträning bra för schack? Studierna här mätte förbättringar på det material som tränades. Ingen av dem testade spelstyrka i schack, och SF:s förmåga överfördes inte ens till bokstäver. De kan alltså inte avgöra frågan.",
+          "O'Briens vägar och SF:s grupper har samma struktur. Var och en håller några få saker åt gången och lägger dem vid fasta hållplatser i en fast ordning. Chase och Ericsson kallade detta en framplockningsstruktur. Ett schackbräde har redan en. Dess fjärdedelar, rader och linjer är hållplatser som du aldrig behöver hitta på. Det sista steget är den här artikelns egen idé, inte något som studierna prövade."
+        ]
+      },
+      {
+        "heading": "Gå runt brädet i fyra hållplatser",
+        "paragraphs": [
+          "Använd brädets egen väg. Välj 12 pjäser och 20 sekunder i Memory Chess. Innan brädet visas bestämmer du en väg med fyra hållplatser: nere till vänster, nere till höger, uppe till höger och sist uppe till vänster. Medan brädet visas besöker du varje fjärdedel i den ordningen. Ta in dess pjäser som en liten bild, oftast 3 eller 4 stycken. När brädet töms går du vägen igen och placerar varje fjärdedels grupp. Om en fjärdedel fortsätter att gå fel börjar du vägen där nästa runda."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "How to make your memory better, interview with Dominic O'Brien, The Naked Scientists, May 16, 2023",
+        "note": "Stöder: tv-inslaget 1987 och kortleken som memorerades på knappt tre minuter, att han inte kunde minnas fler än ungefär ett halvdussin kort, citatet om att vara hopplös i skolan, hans dyslexidiagnos, att han byggde en metod med hjälp av fantasin, sju deltagare 1991, vägar från platser i barndomen, ungefär 70 vägar med 50 hållplatser, att koda och knyta bilder till platser."
+      },
+      {
+        "title": "Creighton Carvello, Wikipedia",
+        "note": "Stöder: Carvellos medverkan i Record Breakers 1987, kortleken på 2 minuter och 59 sekunder och att den bedriften inspirerade O'Brien."
+      },
+      {
+        "title": "Dominic O'Brien, Wikipedia",
+        "note": "Stöder: födelsedatum, brittisk nationalitet, åtta segrar i minnes-VM, Dominic-systemet och dess likhet med Major-systemet, rekordet den 1 maj 2002 med 54 kortlekar och 2 808 kort som sågs en gång, åtta fel varav fyra rättades när han fick veta det."
+      },
+      {
+        "title": "World Memory Championships, Wikipedia",
+        "note": "Stöder: det första mästerskapet i London 1991, Tony Buzan som upphovsman och medgrundare tillsammans med Ray Keene, O'Briens titlar 1991, 1993, 1995, 1996, 1997, 1999, 2000 och 2001."
+      },
+      {
+        "title": "Most decks of playing cards memorized by a single sighting, Guinness World Records",
+        "note": "Stöder: Dave Farrows rekord från 2007 med 59 kortlekar."
+      },
+      {
+        "title": "Total recall, Raymond Keene, The Spectator, September 8, 2012",
+        "note": "Stöder: Keene som schackstormästare som skriver om minnessport och O'Brien som åttafaldig världsmästare i minne."
+      },
+      {
+        "title": "Routes to remembering: the brains behind superior memory, Eleanor Maguire, Elizabeth Valentine, John Wilding and Narinder Kapur, Nature Neuroscience 6, pages 90 to 95 (2003)",
+        "note": "Stöder: tio personer med exceptionellt minne, åtta från toppen av minnes-VM, tio matchade kontrollpersoner, inget exceptionellt intellekt och inga strukturella skillnader i hjärnan, nio av tio som använde loci-metoden, Simonides från Keos, användning i över två och ett halvt årtusende, aktivitet i områden som hör ihop med rumsligt minne och navigering, igenkänningsresultaten 25,9 mot 18,5 för siffror och 19,7 för båda grupperna på snöflingor, en liten skillnad för ansikten."
+      },
+      {
+        "title": "Mental Training Evokes Superior Memory, Transforms Brain Networks, Gwyneth Dickey Zakaib, Alzforum, March 10, 2017, on Dresler and colleagues in Neuron",
+        "note": "Stöder: 23 minnesidrottare från världens 50 bästa, listan med 72 ord, att idrottarna mindes nästan alla och kontrollpersonerna ungefär 40, att sex veckors träning i loci-metoden mer än fördubblade minnet, nästan lika goda resultat fyra månader senare."
+      },
+      {
+        "title": "Mnemonic Training Reshapes Brain Networks to Support Superior Memory, Martin Dresler and colleagues, Neuron 93, pages 1227 to 1235 (2017)",
+        "note": "Stöder: studien i Neuron från 2017 under ledning av Martin Dresler om minnesidrottare och sex veckors träning i loci-metoden. Siffrorna i texten kommer från Alzforums rapport om artikeln."
+      },
+      {
+        "title": "Skilled Memory, William G. Chase and K. Anders Ericsson, Carnegie-Mellon University Technical Report No. 5, November 6, 1980 (DTIC ADA114635)",
+        "note": "Stöder: SF:s 25 månader och över 250 timmars övning, sifferspann från 7 till över 80, att siffrorna kodades som löptider, grupper om 3 och 4 siffror, konsonantspann kring 6 utan överföring efter tre månader, meningsfulla mönster i långtidsminnet bakom schackexperternas minne, begreppet framplockningsstruktur."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Stöder: Chases och Simons chunkteori för schackminnet från 1973, att starka spelare behåller en viss fördel på slumpade ställningar, mycket mindre än på partiställningar."
+      },
+      {
+        "title": "Memory Techniques: An Introduction, David Fadul, ChessBase, May 30, 2017",
+        "note": "Stöder: det korta svaret att ett minnespalats hjälper till att lagra drag men inte att se brädet, att det kan lagra hundratals partier eller öppningar och att det inte låter dig se ett schackbräde framför dig i tankarna."
+      }
+    ]
+  }
+}

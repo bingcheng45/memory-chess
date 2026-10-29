@@ -55,8 +55,6 @@ const STATS: ArticleStats = {
   "magnus-carlsen": { views: 120, likes: 7 },
   "judit-polgar": { views: 4, likes: 0 },
 };
-// The three English-only articles are left out of the German list.
-const GERMAN_SLUGS = ["magnus-carlsen", "adriaan-de-groot", "judit-polgar"];
 const ENGLISH_META_TITLE = "Articles on chess players and their memory";
 const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } };
 
@@ -202,8 +200,8 @@ describe("ArticlesPage in a locale the articles are translated into", () => {
     await renderPage("de");
 
     expect(setRequestLocale).toHaveBeenCalledWith("de");
-    expect(listProps().articles.map((article) => article.slug)).toEqual(GERMAN_SLUGS);
-    expect(listProps().articles[0]).toMatchObject({
+    expect(listProps().articles.map((article) => article.slug)).toEqual(ARTICLE_SLUGS);
+    expect(listProps().articles.find((article) => article.slug === "magnus-carlsen")).toMatchObject({
       slug: "magnus-carlsen",
       title: "DE How Magnus Carlsen names a famous game from one position",
       person: { name: "DE Magnus Carlsen" },
@@ -258,8 +256,8 @@ describe("ArticlesPage in a locale the articles are translated into", () => {
           {
             "@type": "ListItem",
             position: 1,
-            url: "https://thememorychess.com/de/articles/magnus-carlsen",
-            name: "DE How Magnus Carlsen names a famous game from one position",
+            url: "https://thememorychess.com/de/articles/miguel-najdorf",
+            name: "DE How Miguel Najdorf played 45 blindfold games at once",
           },
         ]),
       },
@@ -279,7 +277,7 @@ describe("ArticlesPage in a locale the articles are not translated into", () => 
     expect(getArticleStats).not.toHaveBeenCalled();
 
     await renderPage("de");
-    expect(loadArticleText).toHaveBeenCalledTimes(GERMAN_SLUGS.length);
+    expect(loadArticleText).toHaveBeenCalledTimes(ARTICLE_SLUGS.length);
     expect(getArticleStats).toHaveBeenCalledTimes(1);
   });
 });
@@ -310,7 +308,7 @@ describe("the list page's metadata", () => {
     expect(metadata.robots).toStrictEqual(NOINDEX_FOLLOW);
     expect(metadata.openGraph).toMatchObject({
       url: "https://thememorychess.com/de/articles",
-      images: [{ alt: "DE Magnus Carlsen at a press conference in 2025" }],
+      images: [{ alt: "DE Miguel Najdorf at the closing banquet of the 1950 Amsterdam chess tournament" }],
     });
   });
 

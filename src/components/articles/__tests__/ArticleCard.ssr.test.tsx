@@ -23,6 +23,11 @@ jest.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ push: jest.fn() }),
 }));
 
+jest.mock("@/lib/articles/translatedLocales", () => ({
+  ...jest.requireActual("@/lib/articles/translatedLocales"),
+  ENGLISH_ONLY_ARTICLE_SLUGS: ["garry-kasparov"],
+}));
+
 const html = renderToString(
   <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
     <ul>

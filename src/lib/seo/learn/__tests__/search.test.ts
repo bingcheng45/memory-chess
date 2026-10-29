@@ -77,11 +77,11 @@ describe("Learn search", () => {
   });
 
   it.each([
-    ["two", "chess-calculation-exercises-for-beginners", 3.06],
-    ["number", "adriaan-de-groot", 2.57],
-    ["seven", "judit-polgar", 3.03],
-    ["played", "judit-polgar", 3.72],
-    ["20", "20-minute-daily-chess-study-plan", 8.32],
+    ["two", "chess-calculation-exercises-for-beginners", 3.39],
+    ["number", "adriaan-de-groot", 2.39],
+    ["seven", "judit-polgar", 3.19],
+    ["played", "miguel-najdorf", 3.19],
+    ["20", "20-minute-daily-chess-study-plan", 8.78],
   ])("leaves %p weak in the hub and on the search page though %s scores it high, since a number or filler word names no subject", (query, slug, hubScore) => {
     expect(search(query, browser)[0]).toMatchObject({ slug, score: hubScore, titleMatch: false });
     expect(outcome(query, browser)).toBe("weak");

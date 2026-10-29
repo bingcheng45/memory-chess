@@ -4,8 +4,9 @@ import { existsSync, mkdtempSync, readdirSync, realpathSync, rmSync, symlinkSync
 import { tmpdir } from "node:os";
 import { basename, join } from "node:path";
 
-import { ARTICLES, ARTICLE_SLUGS } from "@/lib/articles";
+import { ARTICLES } from "@/lib/articles";
 import { sourceHashOf, textOf } from "@/lib/articles/articleText";
+import { ENGLISH_ONLY_ARTICLE_SLUGS } from "@/lib/articles/translatedLocales";
 import {
   ADA,
   FIXTURE_CHROME,
@@ -68,7 +69,8 @@ function withOutsideDir<T>(body: (outside: string) => T): T {
 }
 
 describe("export", () => {
-  it("writes one source file for each entry of the registry, with the hash of its English text", () => {
+  it("writes one source file for each entry of the registry with translations due, with the hash of its English text", () => {
+    const due = ARTICLES.filter((article) => !ENGLISH_ONLY_ARTICLE_SLUGS.includes(article.slug));
     const exported = inSandbox("real", (root) => {
       const run = runLever(root, "export", SOURCE_DIR);
       return { run, files: filesUnder(root, SOURCE_DIR) };
@@ -77,9 +79,9 @@ describe("export", () => {
     expect(exported.run.failures).toEqual([]);
     expect(exported.run.status).toBe(0);
     expect(Object.keys(exported.files).sort()).toEqual(
-      [`${SOURCE_DIR}/chrome.source.json`, ...ARTICLE_SLUGS.map((slug) => `${SOURCE_DIR}/${slug}.source.json`)].sort(),
+      [`${SOURCE_DIR}/chrome.source.json`, ...due.map(({ slug }) => `${SOURCE_DIR}/${slug}.source.json`)].sort(),
     );
-    ARTICLES.forEach((article) => {
+    due.forEach((article) => {
       expect(JSON.parse(exported.files[`${SOURCE_DIR}/${article.slug}.source.json`])).toEqual({
         slug: article.slug,
         sourceHash: sourceHashOf(textOf(article)),

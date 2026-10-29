@@ -86,9 +86,16 @@ Every new piece since 2026-09-28, for the cadence box above. The date is the pie
 | 2026-10-05 | How Magnus Carlsen names a famous game from one position | `/articles/magnus-carlsen` | AI-drafted, fact-checked, owner-reviewed |
 | 2026-10-05 | Adriaan de Groot's 1944 test of chess memory, by the numbers | `/articles/adriaan-de-groot` | AI-drafted, fact-checked, owner-reviewed |
 | 2026-10-05 | How Judit Polgár played blindfold chess at age seven | `/articles/judit-polgar` | AI-drafted, fact-checked, owner-reviewed |
+| 2026-10-28 | How Miguel Najdorf played 45 blindfold games at once | `/articles/miguel-najdorf` | AI-drafted, fact-checked, owner review pending |
+| 2026-10-28 | Garry Kasparov's memory test: 117 of 120 pieces | `/articles/garry-kasparov` | AI-drafted, fact-checked, owner review pending |
+| 2026-10-28 | Dominic O'Brien's memory palace, and what it means for chess | `/articles/dominic-obrien` | AI-drafted, fact-checked, owner review pending |
 
 The three launch articles share one week, so together they count as one week of the cadence. None counts as
 owner-written. Each later article is one row, in its own week.
+
+The three articles of 2026-10-28 also share one week, and none counts as owner-written. Each was reviewed by three
+AI reviewers (fact-check, reader, search) until all three approved. They ship in English only; their translations
+are a later PR.
 
 ### Round funnel events
 

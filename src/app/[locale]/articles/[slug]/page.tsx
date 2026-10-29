@@ -6,7 +6,7 @@ import { typingRateFor } from "@/components/articles/typingPace";
 import { DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
 import { ARTICLE_SLUGS, getArticle, getNextArticle, type Article } from "@/lib/articles";
 import { countsFor } from "@/lib/articles/stats";
-import { servesArticlesIn } from "@/lib/articles/articleLocales";
+import { isArticleServedIn, servesArticlesIn } from "@/lib/articles/articleLocales";
 import { buildArticleMetadata } from "@/lib/seo/articleMetadata";
 import { getArticleStats } from "@/lib/services/articleStatsService";
 
@@ -18,7 +18,7 @@ type ArticleRouteProps = {
 };
 
 export function generateStaticParams({ params }: { params: { locale: string } }) {
-  return servesArticlesIn(params.locale) ? ARTICLE_SLUGS.map((slug) => ({ slug })) : [];
+  return ARTICLE_SLUGS.filter((slug) => isArticleServedIn(slug, params.locale)).map((slug) => ({ slug }));
 }
 
 type ServedArticle = { article: Article; english: Article; locale: Locale };

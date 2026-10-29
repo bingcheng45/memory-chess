@@ -12,12 +12,18 @@ const COUNTED_BLOCKS = [
 /**
  * Elements a translator does not decide on, left out before the blocks are
  * counted: the note only a translation carries, the view and like counts,
- * which a page prints once its article has one, and a link to an English-only
- * page that only the English guide prints. Each locale's copy of a page is
+ * which a page prints once its article has one, a link to an English-only
+ * page that only the English guide prints, and the card of an article not yet
+ * translated, which only the English list prints. Each locale's copy of a page is
  * cached and renewed by itself, so two copies can differ in the counts for
  * minutes with nothing wrong.
  */
-export const UNCOUNTED_MARKS = ["data-translation-note", "data-article-counts", "data-english-only-practice"];
+export const UNCOUNTED_MARKS = [
+  "data-translation-note",
+  "data-article-counts",
+  "data-english-only-practice",
+  "data-english-only-article",
+];
 
 export const COUNTED_BLOCK_NAMES = COUNTED_BLOCKS.map(({ name }) => name).join(", ");
 

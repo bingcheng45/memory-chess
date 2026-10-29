@@ -55,6 +55,8 @@ const STATS: ArticleStats = {
   "magnus-carlsen": { views: 120, likes: 7 },
   "judit-polgar": { views: 4, likes: 0 },
 };
+// The three English-only articles are left out of the German list.
+const GERMAN_SLUGS = ["magnus-carlsen", "adriaan-de-groot", "judit-polgar"];
 const ENGLISH_META_TITLE = "Articles on chess players and their memory";
 const NOINDEX_FOLLOW = { index: false, follow: true, googleBot: { index: false, follow: true } };
 
@@ -114,9 +116,9 @@ describe("ArticlesPage", () => {
       expect.objectContaining({ articles: await getArticleSummaries("en"), stats: STATS }),
     );
     expect(listProps().articles[0]).toMatchObject({
-      slug: "magnus-carlsen",
-      title: "How Magnus Carlsen names a famous game from one position",
-      publishedLabel: "Oct 5, 2026",
+      slug: "miguel-najdorf",
+      title: "How Miguel Najdorf played 45 blindfold games at once",
+      publishedLabel: "Oct 28, 2026",
     });
     expect(Object.keys(listProps()).sort()).toEqual(["articles", "heading", "stats"]);
   });
@@ -200,7 +202,7 @@ describe("ArticlesPage in a locale the articles are translated into", () => {
     await renderPage("de");
 
     expect(setRequestLocale).toHaveBeenCalledWith("de");
-    expect(listProps().articles.map((article) => article.slug)).toEqual(ARTICLE_SLUGS);
+    expect(listProps().articles.map((article) => article.slug)).toEqual(GERMAN_SLUGS);
     expect(listProps().articles[0]).toMatchObject({
       slug: "magnus-carlsen",
       title: "DE How Magnus Carlsen names a famous game from one position",
@@ -277,7 +279,7 @@ describe("ArticlesPage in a locale the articles are not translated into", () => 
     expect(getArticleStats).not.toHaveBeenCalled();
 
     await renderPage("de");
-    expect(loadArticleText).toHaveBeenCalledTimes(ARTICLE_SLUGS.length);
+    expect(loadArticleText).toHaveBeenCalledTimes(GERMAN_SLUGS.length);
     expect(getArticleStats).toHaveBeenCalledTimes(1);
   });
 });
@@ -295,7 +297,7 @@ describe("the list page's metadata", () => {
     expect(metadata).not.toHaveProperty("robots");
     expect(metadata.openGraph).toMatchObject({
       url: "https://thememorychess.com/articles",
-      images: [{ alt: "Magnus Carlsen at a press conference in 2025" }],
+      images: [{ alt: "Miguel Najdorf at the closing banquet of the 1950 Amsterdam chess tournament" }],
     });
   });
 

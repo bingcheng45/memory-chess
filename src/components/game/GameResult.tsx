@@ -21,7 +21,7 @@ import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cut
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { studyFloorSeconds } from "@/lib/leaderboard/studyFloor";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
-import { isBlockedName } from "@/lib/leaderboard/blockedNames";
+import { playerNameProblem } from "@/lib/leaderboard/playerName";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
   compareRanking,
@@ -129,6 +129,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   // Leaderboard submission state
   const [showLeaderboardDialog, setShowLeaderboardDialog] = useState(false);
   const [playerName, setPlayerName] = useState(savedName);
+  const [nameLeft, setNameLeft] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
@@ -306,11 +307,21 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     };
   };
 
-  const nameBlocked = isBlockedName(playerName);
+  const trimmedName = playerName.trim();
+  const nameCheck = playerNameProblem(trimmedName);
+  const nameProblem =
+    nameCheck === "blocked"
+      ? "nameBlocked"
+      : nameCheck === "long"
+        ? "nameLong"
+        : nameCheck === "short" && nameLeft && trimmedName.length > 0
+          ? "nameShort"
+          : null;
+  const nameFits = nameCheck === null;
 
   // Handle score submission
   const submitToLeaderboard = async () => {
-    if (!playerName.trim() || nameBlocked) return;
+    if (!nameFits) return;
 
     setIsSubmitting(true);
     setSubmitError(null);
@@ -604,15 +615,19 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                   id="player-name"
                   value={playerName}
                   onChange={(e) => setPlayerName(e.target.value)}
+                  onBlur={() => setNameLeft(true)}
                   placeholder={t("dialog.playerNamePlaceholder")}
                   disabled={isSubmitting}
-                  aria-invalid={nameBlocked}
-                  aria-describedby={nameBlocked ? "player-name-blocked" : undefined}
+                  aria-invalid={nameProblem !== null}
+                  aria-describedby={nameProblem ? "player-name-hint player-name-error" : "player-name-hint"}
                   className="lab-dialog-input"
                 />
-                {nameBlocked && (
-                  <p id="player-name-blocked" role="alert" className="lab-dialog-error">
-                    {tJoin("nameBlocked")}
+                <p id="player-name-hint" className="lab-dialog-hint">
+                  {tJoin("nameHint")}
+                </p>
+                {nameProblem && (
+                  <p id="player-name-error" role="alert" className="lab-dialog-error">
+                    {tJoin(nameProblem)}
                   </p>
                 )}
               </div>
@@ -647,7 +662,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                 <button
                   type="button"
                   onClick={submitToLeaderboard}
-                  disabled={!playerName.trim() || nameBlocked || isSubmitting}
+                  disabled={!nameFits || isSubmitting}
                   className="lab-btn lab-btn-primary"
                 >
                   {isSubmitting ? t("dialog.submitting") : t("dialog.submit")}

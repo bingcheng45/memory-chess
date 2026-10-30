@@ -15,6 +15,8 @@ const REVIEW_GROUP = "review";
 const TILE_GROUP = "tile";
 /** The dashboard's groups the result screen prints its figures with. */
 const RESULT_FIGURE_GROUPS = ["label", "unit", "deltas"] as const;
+/** The player name rules the result screen's claim dialog shares with the daily join form. */
+const CLAIM_NAME_MESSAGES = ["nameHint", "nameShort", "nameLong", "nameBlocked"] as const;
 
 type ScopedMessages = {
   shared: AbstractIntlMessages;
@@ -34,7 +36,8 @@ const underLab = (group: AbstractIntlMessages): AbstractIntlMessages => ({ [HOME
  * lab groups /game prints, `home.lab.resultCard` on the result screen, and
  * `home.lab.daily` and `home.lab.review` where a link to today's board or to a
  * review cannot open it, with the dashboard groups the result screen's figures
- * print in every locale and `daily.round` for a daily round in every locale, the
+ * print in every locale, `daily.round` for a daily round in every locale and the
+ * claim dialog's name messages from `daily.join`, the
  * dashboard layout adds `dashboard`, and the daily layout adds `daily` less the
  * groups only its server components print, so no page carries strings it never
  * shows.
@@ -47,6 +50,12 @@ export function splitClientMessages(messages: AbstractIntlMessages): ScopedMessa
   const { [RESULT_CARD_GROUP]: resultCard, ...homeLab } = typeof lab === "object" ? lab : {};
   const { [DAILY_GROUP]: daily, [REVIEW_GROUP]: review } = homeLab;
   const dailyClient = typeof dailyPage === "object" ? Object.fromEntries(Object.entries(dailyPage).filter(([group]) => !DAILY_SERVER_GROUPS.has(group))) : {};
+  const join = dailyClient.join;
+  const nameMessages = typeof join === "object" ? Object.fromEntries(CLAIM_NAME_MESSAGES.flatMap((key) => (key in join ? [[key, join[key]]] : []))) : {};
+  const gameDaily = {
+    ...(dailyClient.round !== undefined && { round: dailyClient.round }),
+    ...(Object.keys(nameMessages).length > 0 && { join: nameMessages }),
+  };
   const figures = typeof dashboard === "object" ? Object.fromEntries(RESULT_FIGURE_GROUPS.flatMap((group) => (group in dashboard ? [[group, dashboard[group]]] : []))) : {};
 
   return {
@@ -61,7 +70,7 @@ export function splitClientMessages(messages: AbstractIntlMessages): ScopedMessa
           ...(review !== undefined && { [REVIEW_GROUP]: review }),
         })),
       ...(Object.keys(figures).length > 0 && { [DASHBOARD_NAMESPACE]: figures }),
-      ...(dailyClient.round !== undefined && { [DAILY_NAMESPACE]: { round: dailyClient.round } }),
+      ...(Object.keys(gameDaily).length > 0 && { [DAILY_NAMESPACE]: gameDaily }),
     },
     dashboard: dashboard === undefined ? {} : { [DASHBOARD_NAMESPACE]: dashboard },
     daily: Object.keys(dailyClient).length > 0 ? { [DAILY_NAMESPACE]: dailyClient } : {},

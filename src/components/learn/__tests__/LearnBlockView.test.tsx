@@ -6,9 +6,9 @@ import type { LearnBlock } from "@/lib/seo/learn/schema";
 import { AFFILIATE } from "@/lib/affiliate/amazon";
 
 jest.mock("next/link", () => {
-  function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
+  function MockNextLink({ children, href, prefetch, ...props }: ComponentProps<"a"> & { prefetch?: boolean | null }) {
     return (
-      <a href={typeof href === "string" ? href : "#"} {...props}>
+      <a href={typeof href === "string" ? href : "#"} data-prefetch={prefetch === undefined ? undefined : String(prefetch)} {...props}>
         {children}
       </a>
     );
@@ -86,7 +86,7 @@ describe("LearnBlockView", () => {
     expect(screen.getByRole("link", { name: "Ann, CC BY 4.0" })).toHaveAttribute("href", "https://example.org/a");
   });
 
-  it("gives a drill played on the site a round link and a drill at a board none", () => {
+  it("gives a drill played on the site a round link and a drill at a board none, and a daily board link that does not prefetch", () => {
     const box = draw({
       kind: "drills",
       drills: [
@@ -103,6 +103,7 @@ describe("LearnBlockView", () => {
     expect(played.querySelector(".lg-chip")?.textContent).toBe("6 pieces · 10 s to look");
     expect(within(offline).queryByRole("link")).toBeNull();
     expect(offline.querySelector(".lg-chip")?.textContent).toBe("At a real board");
+    expect(screen.getByRole("link", { name: LEARN_GUIDE_COPY.dailyBoard })).toHaveAttribute("data-prefetch", "false");
   });
 
   it("draws a table with a header row and row headings", () => {

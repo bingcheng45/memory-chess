@@ -10,9 +10,9 @@ import messages from "../../../../messages/en.json";
 import { AFFILIATE } from "@/lib/affiliate/amazon";
 
 jest.mock("next/link", () => {
-  function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
+  function MockNextLink({ children, href, prefetch, ...props }: ComponentProps<"a"> & { prefetch?: boolean }) {
     return (
-      <a href={typeof href === "string" ? href : "#"} {...props}>
+      <a href={typeof href === "string" ? href : "#"} {...(prefetch === false ? { "data-no-prefetch": "" } : {})} {...props}>
         {children}
       </a>
     );
@@ -111,8 +111,8 @@ describe("a guide page", () => {
     const markup = await guide("how-to-get-better-at-chess-for-beginners");
     const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
 
-    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 10 seconds</a>');
-    expect(strip).toContain('<a href="/daily" class="lg-link">Play today&#x27;s daily board</a>');
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_try" class="lab-btn lab-btn-primary">Try 4 pieces, 10 seconds</a>');
+    expect(strip).toContain('<a href="/daily" data-no-prefetch="" class="lg-link">Play today&#x27;s daily board</a>');
     expect(markup.indexOf('class="lg-lede"')).toBeLessThan(markup.indexOf('class="lg-quickplay"'));
     expect(markup.indexOf('class="lg-quickplay"')).toBeLessThan(markup.indexOf('class="lg-meta"'));
     expect(markup.indexOf('class="lg-quickplay"')).toBeLessThan(markup.indexOf('class="lg-answer"'));
@@ -122,10 +122,10 @@ describe("a guide page", () => {
     const markup = await guide("chess-coordinates-practice");
     const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
 
-    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=12&amp;from=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 12 seconds</a>');
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=12&amp;from=guide_try" class="lab-btn lab-btn-primary">Try 4 pieces, 12 seconds</a>');
   });
 
-  it("offers a new reader the guide's closing round in the hero only when it is sighted, up to 6 pieces with 10 seconds or more, and the beginner round otherwise", async () => {
+  it("offers a new reader the 4-piece try round in the hero, with the study time of the guide's own round when that is sighted and 10 seconds or more", async () => {
     const heroes = await Promise.all(
       EN_LEARN_PAGES.map(async ({ meta }) => {
         const markup = await guide(meta.slug);
@@ -135,33 +135,40 @@ describe("a guide page", () => {
 
     expect(Object.fromEntries(heroes)).toEqual({
       "how-to-get-better-at-chess-for-beginners": "4/10",
-      "how-to-stop-blundering-in-chess": "6/10",
+      "how-to-stop-blundering-in-chess": "4/10",
       "why-puzzle-rating-doesnt-transfer-to-games": "4/10",
       "chess-coordinates-practice": "4/12",
-      "chess-visualization-exercises": "6/10",
+      "chess-visualization-exercises": "4/10",
       "how-to-see-the-whole-board-in-chess": "4/10",
       "chess-calculation-exercises-for-beginners": "4/10",
       "blindfold-chess-training-for-beginners": "4/10",
-      "chess-memory-training": "6/10",
+      "chess-memory-training": "4/10",
       "chess-pattern-recognition-drills": "4/10",
-      "how-to-think-in-chess-for-beginners": "6/20",
-      "20-minute-daily-chess-study-plan": "6/10",
-      "how-many-chess-puzzles-a-day": "6/10",
+      "how-to-think-in-chess-for-beginners": "4/20",
+      "20-minute-daily-chess-study-plan": "4/10",
+      "how-many-chess-puzzles-a-day": "4/10",
       "how-to-analyze-chess-games-for-beginners": "4/10",
       "how-to-play-memory-chess-board-game": "4/10",
-      "chess-position-memory-trainers-compared": "6/10",
-      "lichess-vs-chess-com-visualization-training": "6/10",
+      "chess-position-memory-trainers-compared": "4/10",
+      "lichess-vs-chess-com-visualization-training": "4/10",
       "memory-chess-vs-darksquares": "4/10",
       "memory-chess-vs-lichess-coordinate-trainer": "4/12",
     });
   });
 
-  it("keeps a hard guide's own round in its closing call to action while the hero offers the beginner round", async () => {
+  it("keeps a hard guide's own round in its closing call to action while the hero offers the try round", async () => {
     const markup = await guide("how-to-see-the-whole-board-in-chess");
     const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
 
-    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_cta" class="lab-btn lab-btn-primary">');
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_try" class="lab-btn lab-btn-primary">');
     expect(markup).toContain("/game?pieceCount=12&amp;memorizeTime=8&amp;from=guide_cta");
+  });
+
+  it("does not prefetch the home breadcrumb, the author link or the daily board link", async () => {
+    const markup = await guide("how-to-get-better-at-chess-for-beginners");
+    const noPrefetch = [...markup.matchAll(/<a [^>]*data-no-prefetch=""[^>]*href="([^"]+)"|<a href="([^"]+)"[^>]*data-no-prefetch=""/g)].map((m) => m[1] ?? m[2]);
+
+    expect(noPrefetch).toEqual(["/", "/about", "/daily"]);
   });
 
   it("links today's daily board under a drill box that plays a round, not under one done at a board", async () => {

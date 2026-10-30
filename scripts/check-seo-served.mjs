@@ -5,25 +5,45 @@
  *
  * Usage: node scripts/check-seo-served.mjs [baseUrl]   (default http://localhost:3103)
  */
+import { readFileSync } from "node:fs";
+
 const BASE = (process.argv[2] ?? "http://localhost:3103").replace(/\/$/, "");
 const SITE = "https://thememorychess.com";
 const UA = "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)";
 const SOCIAL_IMAGE = `${SITE}/social/v2/memory-chess-1200x630.jpg`;
 const MAX_TITLE = 64;
+const GUIDES_DIR = new URL("../src/lib/seo/learn/guides/", import.meta.url);
+const TITLE_SUFFIX = " | Memory Chess";
+
+const guideField = (source, field) => {
+  const match = source.match(new RegExp(`^    ${field}:\\s*("(?:[^"\\\\]|\\\\.)*")`, "m"));
+  return match ? JSON.parse(match[1]) : undefined;
+};
+const guideSearchMeta = (slug) => {
+  const source = readFileSync(new URL(`${slug}.ts`, GUIDES_DIR), "utf8");
+  return {
+    title: `${guideField(source, "searchTitle") ?? guideField(source, "title")}${TITLE_SUFFIX}`,
+    description: guideField(source, "searchDescription") ?? guideField(source, "description"),
+  };
+};
+const GUIDE_SLUGS = [
+  "chess-calculation-exercises-for-beginners",
+  "chess-pattern-recognition-drills",
+  "chess-memory-training",
+  "blindfold-chess-training-for-beginners",
+  "chess-visualization-exercises",
+  "chess-coordinates-practice",
+  "how-to-play-memory-chess-board-game",
+  "how-to-stop-blundering-in-chess",
+];
 
 const GAME_TITLE = "Chess Memory Game: Rebuild the Position | Memory Chess";
 const GAME_DESCRIPTION =
   "Start a chess memory game in one tap. Memorize a position, rebuild it square by square, and see your accuracy. Pick 2 to 32 pieces and 1 to 60 seconds.";
 
 const TRIMMED_TITLES = {
-  "/learn/chess-calculation-exercises-for-beginners": "Chess Calculation Exercises for Beginners | Memory Chess",
-  "/learn/chess-pattern-recognition-drills": "Chess Pattern Recognition Drills, From Memory | Memory Chess",
-  "/learn/chess-memory-training": "Chess Memory Training: A 6-to-12 Piece Ladder | Memory Chess",
   "/articles/adriaan-de-groot": "De Groot's 1944 chess memory test, in numbers | Memory Chess",
   "/articles/magnus-carlsen": "How Magnus Carlsen names a game from one position | Memory Chess",
-  "/learn/blindfold-chess-training-for-beginners": "Blindfold Chess Training for Beginners: 4 Stages | Memory Chess",
-  "/learn/chess-visualization-exercises": "Chess Visualization Training: See the Board | Memory Chess",
-  "/learn/chess-coordinates-practice": "Chess Coordinates Practice: Name Squares Faster | Memory Chess",
   "/articles/judit-polgar": "How Judit Polgár played blindfold chess at seven | Memory Chess",
   "/de/game": "Memory Chess online spielen",
   "/leaderboard": "Memory Chess Leaderboard",
@@ -121,6 +141,15 @@ check(
   prerender?.split(",").every((value) => value.trim() === "1") && ["HIT", "PRERENDER", "STALE"].includes(cacheState),
   `x-nextjs-prerender=${prerender} cache=${cacheState}`,
 );
+
+for (const slug of GUIDE_SLUGS) {
+  const { html } = await fetchPage(`/learn/${slug}`);
+  const expected = guideSearchMeta(slug);
+  const title = titleOf(html);
+  check(`/learn/${slug} title`, title === expected.title && title.length <= MAX_TITLE, `"${title}" (${title.length})`);
+  const description = metaOf(html, "description");
+  check(`/learn/${slug} description`, description === expected.description, `${description.length} chars`);
+}
 
 for (const [path, expected] of Object.entries(TRIMMED_TITLES)) {
   const title = titleOf((await fetchPage(path)).html);

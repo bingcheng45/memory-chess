@@ -1,4 +1,4 @@
-import { newReaderRound, readerRoundOf } from "../readerRound";
+import { isRatedReader, newReaderRound, readerRoundOf } from "../readerRound";
 
 const saved = (skillRating: unknown, certainty: unknown) => JSON.stringify({ state: { gameState: { skillRating }, certainty }, version: 3 });
 
@@ -44,5 +44,13 @@ describe("newReaderRound", () => {
     expect(newReaderRound({ pieceCount: 8, memorizeTime: 10 })).toEqual({ pieceCount: 4, memorizeTime: 10 });
     expect(newReaderRound({ pieceCount: 6, memorizeTime: 8 })).toEqual({ pieceCount: 4, memorizeTime: 10 });
     expect(newReaderRound({ pieceCount: 2, memorizeTime: 10, blindfold: true })).toEqual({ pieceCount: 4, memorizeTime: 10 });
+  });
+});
+
+describe("isRatedReader", () => {
+  it("is false without stored data and true once rounds were played", () => {
+    expect(isRatedReader(null)).toBe(false);
+    expect(isRatedReader(saved(1000, { rd: 350, rounds: 0 }))).toBe(false);
+    expect(isRatedReader(saved(800, { rd: 60, rounds: 40 }))).toBe(true);
   });
 });

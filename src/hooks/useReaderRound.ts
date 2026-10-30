@@ -2,7 +2,7 @@
 
 import { useMemo, useSyncExternalStore } from "react";
 import { GAME_STORAGE_KEY, type GameSettings } from "@/lib/game/configPrefill";
-import { readerRoundOf } from "@/lib/game/readerRound";
+import { isRatedReader, readerRoundOf } from "@/lib/game/readerRound";
 
 const subscribe = (onChange: () => void) => {
   window.addEventListener("storage", onChange);
@@ -20,6 +20,10 @@ function readStored(): string | null {
 const serverStored = () => null;
 
 export function useReaderRound(unrated?: GameSettings): GameSettings {
+  return useReaderRoundState(unrated).round;
+}
+
+export function useReaderRoundState(unrated?: GameSettings): { readonly round: GameSettings; readonly isRated: boolean } {
   const stored = useSyncExternalStore(subscribe, readStored, serverStored);
-  return useMemo(() => readerRoundOf(stored, unrated), [stored, unrated]);
+  return useMemo(() => ({ round: readerRoundOf(stored, unrated), isRated: isRatedReader(stored) }), [stored, unrated]);
 }

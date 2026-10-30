@@ -845,6 +845,7 @@
           "overCap": "5.000 turluk sınırın içinde kalmak için {count, plural, one {# eski tur} other {# eski tur}} dışarıda bırakıldı.",
           "summaryIgnored": "Bu tarayıcıda zaten turlar vardı, bu yüzden dosyadaki tüm zamanların toplamları değil, yalnızca yeni turlar birleştirildi.",
           "summaryDropped": "Dosyadaki tüm zamanların toplamları okunamadı ya da eski bir sürüme aitti, bu yüzden yalnızca turlar içe aktarıldı.",
+          "playerRestored": "Puanın ve serin geri yüklendi.",
           "safari": "Safari'de gizli bir sekme kapandıktan sonra bu kaydı saklamaz. Safari ayrıca yaklaşık 7 gün ziyaret edilmeyen bir sitenin saklanan verilerini siler. Kaydını korumak için bir kopyasını dışa aktar.",
           "unavailable": "Gizli pencerelerde kaydedilmez. Bu tarayıcı penceresi turlarını saklamıyor.",
           "backup": "Cihazlar arası yedekleme (yakında)",

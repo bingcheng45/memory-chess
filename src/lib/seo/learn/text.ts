@@ -6,6 +6,10 @@ export function searchTitleOf(meta: Pick<LearnMeta, "title" | "searchTitle">, lo
   return locale === DEFAULT_LOCALE ? (meta.searchTitle ?? meta.title) : meta.title;
 }
 
+export function searchDescriptionOf(meta: Pick<LearnMeta, "description" | "searchDescription">, locale: string): string {
+  return locale === DEFAULT_LOCALE ? (meta.searchDescription ?? meta.description) : meta.description;
+}
+
 export function richText(rich: Rich): string {
   return typeof rich === "string" ? rich : rich.map((part) => (typeof part === "string" ? part : part.text)).join("");
 }

@@ -13,10 +13,15 @@ import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardBoard } from '@/t
 import { BOARD_PIECES, studyFloorSeconds } from '@/lib/leaderboard/studyFloor';
 import { MEMORIZE_SECONDS_RANGE } from '@/lib/reference/facts';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
+import { isJson, readBodyWithinLimit } from '@/lib/server/requestBody';
 import { reportServerError } from '@/lib/server/serverErrors';
 
 const RANKED_CACHE = 'public, s-maxage=30, stale-while-revalidate=300';
 const DAILY_DAY_CACHE = 'public, s-maxage=15, stale-while-revalidate=60';
+const OPEN_DAILY_CACHE = 'public, s-maxage=15';
+
+/** A score is about a dozen short fields; the largest legitimate body is well under this. */
+const MAX_BODY_BYTES = 2048;
 
 const SUBMISSION_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
 
@@ -94,7 +99,7 @@ export async function GET(request: NextRequest) {
     }
     const read = await readDailyBoard(board.daily_day);
     if (read === null) return unavailable();
-    return NextResponse.json({ data: read.rows, playedLike: read.playedLike }, namedDay === null ? undefined : { headers: { 'Cache-Control': DAILY_DAY_CACHE } });
+    return NextResponse.json({ data: read.rows, playedLike: read.playedLike }, { headers: { 'Cache-Control': namedDay === null ? OPEN_DAILY_CACHE : DAILY_DAY_CACHE } });
   } catch (err) {
     console.error('Unexpected API error:', err);
     reportServerError('GET /api/leaderboard', 'unexpected', err, { board: board.difficulty });
@@ -111,9 +116,18 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (!isJson(request.headers.get('content-type'))) {
+    return NextResponse.json({ error: 'Content-Type must be application/json' }, { status: 415 });
+  }
+
+  const text = await readBodyWithinLimit(request, MAX_BODY_BYTES);
+  if (text === null) {
+    return NextResponse.json({ error: 'Request body is too large' }, { status: 413 });
+  }
+
   let body;
   try {
-    body = await request.json();
+    body = JSON.parse(text);
   } catch {
     return NextResponse.json({ error: 'Invalid JSON request body' }, { status: 400 });
   }

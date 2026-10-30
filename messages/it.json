@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# partita più vecchia è stata esclusa} many {# partite più vecchie sono state escluse} other {# partite più vecchie sono state escluse}} per restare entro il limite di 5.000 partite.",
           "summaryIgnored": "Questo browser aveva già delle partite, quindi sono state unite solo le partite nuove, non i totali complessivi del file.",
           "summaryDropped": "I totali complessivi del file erano illeggibili o di una versione precedente, quindi sono state importate solo le sue partite.",
+          "playerRestored": "Il tuo punteggio e la tua serie sono stati ripristinati.",
           "safari": "Su Safari, una scheda privata non conserva questo registro dopo la chiusura, e Safari cancella i dati salvati di un sito dopo circa 7 giorni senza visite. Esporta una copia per conservarlo.",
           "unavailable": "Non viene salvato nelle finestre private. Questa finestra del browser non sta conservando le tue partite.",
           "backup": "Backup tra dispositivi (in arrivo)",

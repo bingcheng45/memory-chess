@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# partie plus ancienne a été laissée} many {# parties plus anciennes ont été laissées} other {# parties plus anciennes ont été laissées}} de côté pour respecter la limite de 5 000 parties.",
           "summaryIgnored": "Ce navigateur contenait déjà des parties, seules les nouvelles parties ont donc été fusionnées, pas les totaux cumulés du fichier.",
           "summaryDropped": "Les totaux cumulés du fichier étaient illisibles ou issus d’une ancienne version, seules ses parties ont donc été importées.",
+          "playerRestored": "Votre classement et votre série ont été restaurés.",
           "safari": "Sur Safari, un onglet privé ne garde pas ce registre après sa fermeture, et Safari efface les données d’un site au bout d’environ 7 jours sans visite. Exportez une copie pour le conserver.",
           "unavailable": "Rien n’est enregistré en navigation privée. Cette fenêtre ne conserve pas vos parties.",
           "backup": "Sauvegarde entre appareils (bientôt disponible)",

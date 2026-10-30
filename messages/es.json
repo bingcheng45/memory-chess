@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {Se dejó fuera # ronda antigua} many {Se dejaron fuera # rondas antiguas} other {Se dejaron fuera # rondas antiguas}} para no superar el límite de 5.000 rondas.",
           "summaryIgnored": "Este navegador ya tenía rondas, así que solo se fusionaron las rondas nuevas, no los totales históricos del archivo.",
           "summaryDropped": "Los totales históricos del archivo no se podían leer o eran de una versión anterior, así que solo se importaron sus rondas.",
+          "playerRestored": "Tu puntuación y tu racha se han restaurado.",
           "safari": "En Safari, una pestaña privada no conserva este registro al cerrarse, y Safari borra los datos guardados de un sitio tras unos 7 días sin visitarlo. Exporta una copia para conservarlo.",
           "unavailable": "No se guarda en ventanas privadas. Esta ventana del navegador no está guardando tus rondas.",
           "backup": "Copia de seguridad entre dispositivos (próximamente)",

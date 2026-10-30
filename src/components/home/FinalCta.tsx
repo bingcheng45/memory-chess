@@ -1,5 +1,5 @@
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link } from "./HomeLinks";
 import { LAB_SECTIONS } from "./SectionHeading";
 import { QUICK_START_HREF } from "./links";
 

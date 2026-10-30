@@ -1,13 +1,13 @@
-import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
-import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
+import { useLocale, useTranslations } from "next-intl";
 import { IntroReplayLink } from "@/components/home/intro/IntroReplayLink";
 import { HOME_INTRO } from "@/lib/home/intro/introGate";
 import { LOCALES } from "@/i18n/routing";
+import { englishOnlyLinkSuffix } from "@/lib/seo/englishOnly";
 import { MEMORIZE_SECONDS_RANGE, PIECE_COUNT_RANGE } from "@/lib/reference/facts";
 import { LAB_SECTIONS } from "./SectionHeading";
 import { LabHeroPlays } from "./LabHeroPlays";
 import { ShowcaseBoard } from "./ShowcaseBoard";
+import { Link, NextLink } from "./HomeLinks";
 import { QUICK_START_HREF } from "./links";
 
 const BOARD_GAME_GUIDE = "/learn/how-to-play-memory-chess-board-game";
@@ -19,6 +19,7 @@ function range(min: number, max: number, unit = ""): string {
 export function LabHero({ initialPlays }: { readonly initialPlays?: number }) {
   const t = useTranslations("home");
   const lab = useTranslations("home.lab");
+  const englishSuffix = englishOnlyLinkSuffix(useLocale());
 
   const facts = [
     { value: range(MEMORIZE_SECONDS_RANGE.min, MEMORIZE_SECONDS_RANGE.max, "s"), label: lab("hero.facts.study") },
@@ -68,14 +69,10 @@ export function LabHero({ initialPlays }: { readonly initialPlays?: number }) {
             <span>
               {t.rich("hero.boardGame", {
                 link: (chunks) => (
-                  <EnglishOnlyLink href={BOARD_GAME_GUIDE} prefetch={false}>
-                    {(suffix) => (
-                      <>
-                        {chunks}
-                        {suffix}
-                      </>
-                    )}
-                  </EnglishOnlyLink>
+                  <NextLink href={BOARD_GAME_GUIDE} hrefLang="en" prefetch={false}>
+                    {chunks}
+                    {englishSuffix}
+                  </NextLink>
                 ),
               })}
             </span>

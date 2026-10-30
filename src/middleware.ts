@@ -130,6 +130,13 @@ function withPrefixCase(pathname: string): string {
   return spelling && spelling !== prefix ? ["", spelling, ...rest].join("/") : pathname;
 }
 
+/** The full locale a prefix was re-cased to, which next-intl used to record before redirecting. */
+function recasedLocale(requested: string, folded: string): Locale | null {
+  if (requested === folded) return null;
+  const prefix = folded.split("/")[1];
+  return LOCALES.find((locale) => locale === prefix) ?? null;
+}
+
 /** The language a `/en`, `/pt` or `/zh` prefix stands for, or null for any other path. */
 function localeOfPrefix(request: NextRequest, pathname: string): Locale | null {
   const prefix = pathname.split("/")[1];
@@ -181,7 +188,8 @@ function route(request: NextRequest) {
     url.pathname = canonical;
     const isWithheld = isWithheldTranslation(canonical, prefixLocale ?? pathname.split("/")[1]);
     const redirect = NextResponse.redirect(url, isWithheld ? 307 : 308);
-    return prefixLocale && !crawler ? withLocaleChoice(redirect, request, prefixLocale) : redirect;
+    const chosen = prefixLocale ?? recasedLocale(request.nextUrl.pathname, pathname);
+    return chosen && !crawler ? withLocaleChoice(redirect, request, chosen) : redirect;
   }
 
   if (isServedAtBareEnglishUrl(request.nextUrl.pathname, DEFAULT_LOCALE)) {

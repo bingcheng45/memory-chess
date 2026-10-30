@@ -199,3 +199,24 @@ describe("the contact page at /contact", () => {
     expect(run("/de/contact-us").status).toBe(200);
   });
 });
+
+describe("a prefix in another letter case is still a language choice", () => {
+  it.each([
+    ["/DE/changelog", "/changelog", "de"],
+    ["/zh-cn/changelog", "/changelog", "zh-CN"],
+    ["/ZH-CN/game", "/zh-CN/game", "zh-CN"],
+  ])("%s answers one 308 to %s and records %s", (from, to, locale) => {
+    const response = run(from, { "accept-language": "en", cookie: "NEXT_LOCALE=fr" });
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(`${ORIGIN}${to}`);
+    expect(response.headers.getSetCookie().join(";")).toContain(`NEXT_LOCALE=${locale}`);
+  });
+
+  it("does not record a choice for a crawler", () => {
+    const response = run("/DE/changelog", { "accept-language": "en", "user-agent": "Googlebot/2.1" });
+
+    expect(response.status).toBe(308);
+    expect(response.headers.getSetCookie()).toEqual([]);
+  });
+});

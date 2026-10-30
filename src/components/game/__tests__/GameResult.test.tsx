@@ -10,6 +10,7 @@ import type { SetBoard } from "@/lib/types/game";
 import type { RatingResult } from "@/lib/game/rating";
 import type { RoundOutcome } from "@/lib/game/roundOutcome";
 import { useSettingsStore } from "@/stores/settingsStore";
+import frMessages from "../../../../messages/fr.json";
 
 const baseGameState = {
   isPlaying: false,
@@ -431,6 +432,19 @@ describe("GameResult", () => {
       screen.queryByText("Error: Failed to submit score"),
     ).not.toBeInTheDocument();
     logged.mockRestore();
+  });
+
+  it("says an offensive claim name is not allowed and keeps it off the server", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />, { locale: "fr", messages: frMessages });
+    fireEvent.click(screen.getByRole("button", { name: "Envoyer" }));
+    const input = document.getElementById("player-name") as HTMLInputElement;
+
+    fireEvent.change(input, { target: { value: "p3nis" } });
+
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByText("Ce nom n'est pas autorisé. Choisissez-en un autre.")).toBeVisible();
+    expect(screen.getByRole("button", { name: "Envoyer le score" })).toBeDisabled();
+    expect(global.fetch).not.toHaveBeenCalledWith(expect.stringContaining("/api/leaderboard"), expect.objectContaining({ method: "POST" }));
   });
 
   describe("score_submit event", () => {

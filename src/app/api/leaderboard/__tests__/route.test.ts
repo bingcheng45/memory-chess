@@ -83,14 +83,14 @@ describe("POST /api/leaderboard", () => {
   it("refuses an oversized body that declares no length, counted as it streams", async () => {
     const chunk = new TextEncoder().encode("x".repeat(1024));
     const stream = new ReadableStream({ start(controller) { [chunk, chunk, chunk].forEach((c) => controller.enqueue(c)); controller.close(); } });
-    const request = new NextRequest("http://localhost/api/leaderboard", {
+    const request = new Request("http://localhost/api/leaderboard", {
       method: "POST",
       headers: { "Content-Type": "application/json", "x-forwarded-for": freshAddress() },
       body: stream,
       duplex: "half",
     } as RequestInit);
 
-    expect((await POST(request)).status).toBe(413);
+    expect((await POST(new NextRequest(request))).status).toBe(413);
     expect(submitLeaderboardEntry).not.toHaveBeenCalled();
   });
 

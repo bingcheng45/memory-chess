@@ -6,6 +6,7 @@ import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { newReaderRound } from "@/lib/game/readerRound";
 import { FAQ_ANCHOR, LEARN_AUTHOR } from "@/lib/seo/learn";
 import { groupAnchor, guidePath } from "@/lib/seo/learn/links";
+import { TRY_IT_PIECES } from "@/lib/seo/learn/tryIt";
 import type { LocalizedGuide } from "@/lib/seo/learn/load";
 import { guideStructuredData } from "@/lib/seo/learn/structuredData";
 import type { BodyBlock, EndBlock, LearnSection } from "@/lib/seo/learn/schema";
@@ -93,7 +94,7 @@ export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGui
           <nav aria-label={COPY.breadcrumbs} className="lg-crumbs">
             <ol>
               <li>
-                <Link href="/">{COPY.breadcrumbHome}</Link>
+                <Link href="/" prefetch={false}>{COPY.breadcrumbHome}</Link>
               </li>
               <li>
                 <GuideLink href="/learn" locale={locale}>
@@ -124,7 +125,7 @@ export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGui
             </p>
           ) : null}
           <LearnQuickPlay
-            unrated={newReaderRound(page.primaryCta)}
+            unrated={{ pieceCount: TRY_IT_PIECES, memorizeTime: newReaderRound(page.primaryCta).memorizeTime }}
             locale={locale}
             copy={{ quickPlay: COPY.quickPlay, tryRound: COPY.chrome.tryRound, dailyBoard: COPY.dailyBoard }}
           />
@@ -135,7 +136,7 @@ export default function LearnGuidePage({ guide, siblingSlugs, titles }: LearnGui
               <time dateTime={meta.updatedAt}>{COPY.updated(COPY.date(meta.updatedAt))}</time>
             </li>
             <li data-learn-byline>
-              {COPY.by} <Link href={AUTHOR_PATH}>{LEARN_AUTHOR.name}</Link>
+              {COPY.by} <Link href={AUTHOR_PATH} prefetch={false}>{LEARN_AUTHOR.name}</Link>
             </li>
           </ul>
           <p data-authorship-note className="lg-note">

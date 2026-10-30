@@ -168,7 +168,7 @@ describe("a guide page", () => {
     const markup = await guide("how-to-get-better-at-chess-for-beginners");
     const noPrefetch = [...markup.matchAll(/<a [^>]*data-no-prefetch=""[^>]*href="([^"]+)"|<a href="([^"]+)"[^>]*data-no-prefetch=""/g)].map((m) => m[1] ?? m[2]);
 
-    expect(noPrefetch).toEqual(["/", "/about", "/daily"]);
+    expect(noPrefetch).toEqual(["/", "/daily", "/about"]);
   });
 
   it("links today's daily board under a drill box that plays a round, not under one done at a board", async () => {

@@ -107,7 +107,7 @@ export function DailyJoinForm({ round, onJoined, title }: DailyJoinFormProps) {
         />
         <p id={ids.nameHint} className="daily-hint">{t("nameHint")}</p>
         {nameProblem && (
-          <p id={ids.nameError} className="daily-hint daily-error">
+          <p id={ids.nameError} role="alert" className="daily-hint daily-error">
             {t(nameProblem)}
           </p>
         )}

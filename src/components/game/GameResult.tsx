@@ -611,7 +611,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                   className="lab-dialog-input"
                 />
                 {nameBlocked && (
-                  <p id="player-name-blocked" className="lab-dialog-error">
+                  <p id="player-name-blocked" role="alert" className="lab-dialog-error">
                     {tJoin("nameBlocked")}
                   </p>
                 )}

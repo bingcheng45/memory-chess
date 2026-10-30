@@ -7,6 +7,8 @@ describe('isBlockedName', () => {
     'b!tch', 'n1gg3r', 'd1ck', 'Dick', 'DICK', 'big dick', 'Moby Dick', 'c0ck', 'a55', 'Cunt', 'sluts', 'Pénis',
     'pu55y', 'd1ld0', 'Dickhead', 'BigDick', 'xXDickXx', 'AssMaster', 'bigcock', 'fck', 'fuk', 'fvck', 'phuck',
     'cvnt', 'niqqer', 'Retard', 'Pedo', ' penis ',
+    'shit', 'Shithead', 'ShitShow', 'shitty', 'Bull Shit', 'BullShit', 'Bullshit', 'Horseshit', 'Dipshit', 'pussy',
+    'Big Pussy', 'xx_shit_xx',
   ])('blocks %s', (name) => {
     expect(isBlockedName(name)).toBe(true);
   });
@@ -15,6 +17,9 @@ describe('isBlockedName', () => {
     'Cassandra', 'Scunthorpe', 'Fares Fakhouri', 'Hancock', 'Janus', 'Grapes', 'Assad', 'Classic', 'Titan',
     'Nigeria', 'Mass Effect', 'Mass Hit', 'Richard', 'Dickens', 'Penelope', 'Bing Cheng', 'Player 455', 'Player 717',
     '717', 'Shitake', 'Mishit', 'Snigger', 'Sniggers', 'Penistone', 'Bitchin', 'Fukuoka', 'McDonald',
+    'Matsushita', 'Yoshitaka', 'Takeshita', 'Nishitani', 'Kishita', 'Hashita', 'Ashitaka', 'Mitsushita',
+    'Hashimoto', 'Takashita', 'Moshita', 'Dickinson', 'Peniston', 'Pussycat', 'Pussy Cat', 'PussyCat',
+    'Shitara', 'Rakshit', 'Akshit', 'Kshitij', 'Shitij', 'Hitachi', 'Mishima', 'Pennistone', 'Shitake',
   ])('allows %s', (name) => {
     expect(isBlockedName(name)).toBe(false);
   });

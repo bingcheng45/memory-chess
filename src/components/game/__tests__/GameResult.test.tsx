@@ -442,7 +442,7 @@ describe("GameResult", () => {
     fireEvent.change(input, { target: { value: "p3nis" } });
 
     expect(input).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByText("Ce nom n'est pas autorisé. Choisissez-en un autre.")).toBeVisible();
+    expect(screen.getByRole("alert")).toHaveTextContent("Ce nom n'est pas autorisé. Choisissez-en un autre.");
     expect(screen.getByRole("button", { name: "Envoyer le score" })).toBeDisabled();
     expect(global.fetch).not.toHaveBeenCalledWith(expect.stringContaining("/api/leaderboard"), expect.objectContaining({ method: "POST" }));
   });

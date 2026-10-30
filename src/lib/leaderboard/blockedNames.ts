@@ -1,5 +1,5 @@
 const CONTAINED_ANYWHERE = [
-  'fuck', 'fvck', 'phuck', 'shit', 'penis', 'pussy', 'bitch', 'whore', 'vagina', 'nigger', 'nigga', 'niqqer',
+  'fuck', 'fvck', 'phuck', 'penis', 'pussy', 'bitch', 'whore', 'vagina', 'nigger', 'nigga', 'niqqer',
   'faggot', 'hitler', 'dildo', 'asshole', 'dickhead', 'bigdick', 'bigcock', 'pedophile',
 ];
 
@@ -8,10 +8,15 @@ const WHOLE_WORD = [
   'wank', 'wanker', 'porn', 'fck', 'fuk', 'retard', 'retarded', 'pedo',
 ];
 
+const COMPOUNDS_WITHIN_WORD = ['bullshit', 'horseshit', 'dipshit', 'batshit', 'apeshit'];
+
+/** "shit" hides inside real names (Matsushita, Takeshita), so it counts only at the start of a word, and not before a, i, o or u (Shitara, Shitij). */
+const SHIT_AT_WORD_START = /^shit(?![aiou])/;
+
 const WHOLE_WORDS = new Set(WHOLE_WORD.flatMap((word) => [word, `${word}s`]));
 
 /** Real words and places that contain a blocked term. */
-const ALLOWED_WORD = /^(shi+takes?|mishits?|snigger(s|ed|ing)?|penistone|bitchin)$/;
+const ALLOWED_WORD = /^(shi+takes?|mishits?|snigger(s|ed|ing)?|peniston(e)?|bitchin|pussycats?)$/;
 
 const MIN_LENGTH_ACROSS_WORDS = 5;
 
@@ -34,6 +39,8 @@ function readings(text: string): string[] {
   return [mapped.replaceAll('1', 'i'), mapped.replaceAll('1', 'l')];
 }
 
+const PUSSY_CAT_NAME = /^pussy cats?$/;
+
 function hasTerm(text: string, terms: readonly string[]): boolean {
   return terms.some((term) => text.includes(term));
 }
@@ -46,8 +53,15 @@ function hasTerm(text: string, terms: readonly string[]): boolean {
  */
 export function isBlockedName(name: string): boolean {
   const words = plainWords(name);
+  if (PUSSY_CAT_NAME.test(words.join(' '))) return false;
   const wordsHit = words.some((word) =>
-    readings(word).some((reading) => WHOLE_WORDS.has(reading) || hasTerm(reading, CONTAINED_ANYWHERE)),
+    readings(word).some(
+      (reading) =>
+        WHOLE_WORDS.has(reading) ||
+        SHIT_AT_WORD_START.test(reading) ||
+        hasTerm(reading, CONTAINED_ANYWHERE) ||
+        hasTerm(reading, COMPOUNDS_WITHIN_WORD),
+    ),
   );
   if (wordsHit) return true;
   const longTerms = CONTAINED_ANYWHERE.filter((term) => term.length >= MIN_LENGTH_ACROSS_WORDS);

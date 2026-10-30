@@ -134,7 +134,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Player name must be text' }, { status: 400 });
     }
     const playerName = player_name.trim();
-    if (playerNameProblem(playerName) !== null) {
+    const nameProblem = playerNameProblem(playerName);
+    if (nameProblem === 'blocked') {
+      return NextResponse.json({ error: 'Please choose a different player name' }, { status: 400 });
+    }
+    if (nameProblem !== null) {
       return NextResponse.json(
         { error: 'Player name must be between 4 and 16 characters' },
         { status: 400 }

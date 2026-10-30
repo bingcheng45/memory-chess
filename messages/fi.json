@@ -1827,6 +1827,7 @@
       "nameHint": "4-16 merkkiä, näkyy pistemääräsi vieressä.",
       "nameShort": "Liian lyhyt. Käytä vähintään 4 merkkiä.",
       "nameLong": "Liian pitkä. Käytä enintään 16 merkkiä.",
+      "nameBlocked": "Tämä nimi ei ole sallittu. Valitse toinen nimi.",
       "country": "Maa",
       "chooseCountry": "Valitse maa",
       "from": {

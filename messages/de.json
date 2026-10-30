@@ -1827,6 +1827,7 @@
       "nameHint": "4 bis 16 Zeichen, wird mit deinem Ergebnis angezeigt.",
       "nameShort": "Zu kurz. Verwende mindestens 4 Zeichen.",
       "nameLong": "Zu lang. Verwende höchstens 16 Zeichen.",
+      "nameBlocked": "Dieser Name ist nicht erlaubt. Bitte wähle einen anderen.",
       "country": "Land",
       "chooseCountry": "Land auswählen",
       "from": {

@@ -11,7 +11,7 @@ describe('isBlockedName', () => {
 
   it.each([
     'Cassandra', 'Scunthorpe', 'Fares Fakhouri', 'Hancock', 'Janus', 'Grapes', 'Assad', 'Classic', 'Titan',
-    'Nigeria', 'Mass Effect', 'Richard', 'Dickens', 'Penelope', 'Bing Cheng',
+    'Nigeria', 'Mass Effect', 'Richard', 'Dickens', 'Penelope', 'Bing Cheng', 'Player 455', 'Player 717', '717',
   ])('allows %s', (name) => {
     expect(isBlockedName(name)).toBe(false);
   });

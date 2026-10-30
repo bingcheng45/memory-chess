@@ -6,15 +6,15 @@ const ENTRY_ID = "0b5e8f7c-3c1a-4e2b-9d4f-1a2b3c4d5e6f";
 
 interface Board {
   row: Record<string, unknown> | null;
-  above: number;
-  total: number;
+  above: string[];
+  total: string[];
   failOn?: "row" | "count";
 }
 
-const mockBoard: Board = { row: null, above: 0, total: 0 };
+const mockBoard: Board = { row: null, above: [], total: [] };
 const mockRequests: URL[] = [];
 
-// PostgREST reports a HEAD count in Content-Range.
+const namesOf = (count: number, prefix: string) => Array.from({ length: count }, (_, index) => `${prefix} ${index}`);
 function mockFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Response> {
   const url = new URL(typeof input === "string" ? input : input instanceof URL ? input.toString() : input.url);
   mockRequests.push(url);
@@ -27,8 +27,11 @@ function mockFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Respon
     return Promise.resolve(new Response(JSON.stringify(body), { status: 200, headers: { "Content-Type": "application/json" } }));
   }
   if (mockBoard.failOn === "count") return failure();
-  const count = url.searchParams.has("or") ? mockBoard.above : mockBoard.total;
-  return Promise.resolve(new Response(null, { status: 200, headers: { "content-range": `*/${count}` } }));
+  const names = url.searchParams.has("or") ? mockBoard.above : mockBoard.total;
+  const offset = Number(url.searchParams.get("offset") ?? 0);
+  const limit = Number(url.searchParams.get("limit") ?? names.length);
+  const rows = names.slice(offset, offset + limit).map((player_name) => ({ player_name }));
+  return Promise.resolve(new Response(JSON.stringify(rows), { status: 200, headers: { "Content-Type": "application/json" } }));
 }
 
 jest.mock("@/lib/supabase", () => ({
@@ -56,7 +59,7 @@ const countRequests = () => mockRequests.filter((url) => !url.searchParams.has("
 describe("getStanding", () => {
   beforeEach(() => {
     mockRequests.length = 0;
-    Object.assign(mockBoard, { row: mediumRow, above: 13, total: 200, failOn: undefined });
+    Object.assign(mockBoard, { row: mediumRow, above: namesOf(13, "a"), total: ["Poteto", ...namesOf(13, "a"), ...namesOf(186, "t")], failOn: undefined });
   });
 
   it("ranks the entry one below the entries strictly above it, among every ranked entry on its difficulty", async () => {
@@ -75,8 +78,29 @@ describe("getStanding", () => {
     ]);
   });
 
+  it("counts each name once, and never counts offensive names, so the rank is the displayed position", async () => {
+    Object.assign(mockBoard, {
+      above: ["Ann Lee", "ann lee ", "ANN LEE", "penis", "Bo Chen", "poteto"],
+      total: ["Ann Lee", "ann lee", "Bo Chen", "penis", "Poteto", "poteto", "Cy Park"],
+    });
+
+    await expect(getStanding(ENTRY_ID, "world")).resolves.toEqual({
+      status: "ranked",
+      standing: { difficulty: "medium", country: null, rank: 3, total: 4 },
+    });
+  });
+
+  it("pages through a bucket larger than one page", async () => {
+    Object.assign(mockBoard, { above: namesOf(2500, "a"), total: ["Poteto", ...namesOf(2500, "a")] });
+
+    await expect(getStanding(ENTRY_ID, "world")).resolves.toEqual({
+      status: "ranked",
+      standing: { difficulty: "medium", country: null, rank: 2501, total: 2501 },
+    });
+  });
+
   it("counts only the entry's own country for a country standing", async () => {
-    Object.assign(mockBoard, { above: 0, total: 3 });
+    Object.assign(mockBoard, { above: [], total: ["Poteto", "Ann Lee", "Bo Chen"] });
 
     await expect(getStanding(ENTRY_ID, "country")).resolves.toEqual({
       status: "ranked",

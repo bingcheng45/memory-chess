@@ -1827,6 +1827,7 @@
       "nameHint": "Între 4 și 16 caractere, afișat alături de scorul tău.",
       "nameShort": "Prea scurt. Folosește cel puțin 4 caractere.",
       "nameLong": "Prea lung. Folosește cel mult 16 caractere.",
+      "nameBlocked": "Acest nume nu este permis. Alege altul.",
       "country": "Țară",
       "chooseCountry": "Alege o țară",
       "from": {

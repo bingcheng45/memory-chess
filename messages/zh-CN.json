@@ -1827,6 +1827,7 @@
       "nameHint": "4 到 16 个字符，会和你的成绩一起显示。",
       "nameShort": "太短了，至少需要 4 个字符。",
       "nameLong": "太长了，最多 16 个字符。",
+      "nameBlocked": "该名称不可用，请换一个。",
       "country": "国家/地区",
       "chooseCountry": "选择国家/地区",
       "from": {

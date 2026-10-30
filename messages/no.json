@@ -1827,6 +1827,7 @@
       "nameHint": "4 til 16 tegn, vises sammen med poengsummen din.",
       "nameShort": "For kort. Bruk minst 4 tegn.",
       "nameLong": "For langt. Bruk høyst 16 tegn.",
+      "nameBlocked": "Dette navnet er ikke tillatt. Velg et annet.",
       "country": "Land",
       "chooseCountry": "Velg et land",
       "from": {

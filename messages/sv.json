@@ -1827,6 +1827,7 @@
       "nameHint": "4 till 16 tecken, visas tillsammans med ditt resultat.",
       "nameShort": "För kort. Använd minst 4 tecken.",
       "nameLong": "För långt. Använd högst 16 tecken.",
+      "nameBlocked": "Det namnet är inte tillåtet. Välj ett annat.",
       "country": "Land",
       "chooseCountry": "Välj ett land",
       "from": {

@@ -18,8 +18,9 @@ function plainLowercase(name: string): string {
   return name.normalize('NFKD').replace(/\p{M}/gu, '').toLowerCase();
 }
 
-/** A one is read as an i and as an l, since leetspeak uses it for both. */
+/** Digits alone are numbers, not letters, so "455" is not read as "ass". A one is read as an i and as an l, since leetspeak uses it for both. */
 function readings(text: string): string[] {
+  if (!/\p{L}/u.test(text)) return [text];
   const mapped = [...text].map((char) => LOOKALIKES[char] ?? char).join('');
   return [mapped.replaceAll('1', 'i'), mapped.replaceAll('1', 'l')];
 }

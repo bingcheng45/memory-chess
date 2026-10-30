@@ -1827,6 +1827,7 @@
       "nameHint": "4 to 16 characters, shown with your score.",
       "nameShort": "Too short. Use at least 4 characters.",
       "nameLong": "Too long. Use at most 16 characters.",
+      "nameBlocked": "That name isn't allowed. Please choose a different one.",
       "country": "Country",
       "chooseCountry": "Choose a country",
       "from": {

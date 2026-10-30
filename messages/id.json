@@ -1827,6 +1827,7 @@
       "nameHint": "4 sampai 16 karakter, ditampilkan bersama skor Anda.",
       "nameShort": "Terlalu pendek. Gunakan minimal 4 karakter.",
       "nameLong": "Terlalu panjang. Gunakan maksimal 16 karakter.",
+      "nameBlocked": "Nama itu tidak diizinkan. Pilih nama lain.",
       "country": "Negara",
       "chooseCountry": "Pilih negara",
       "from": {

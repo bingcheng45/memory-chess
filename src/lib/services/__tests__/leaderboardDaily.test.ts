@@ -6,7 +6,7 @@ type Row = Record<string, string | number | null>;
 
 const daily = (id: string, day: string, country: string, correct: number, wrong: number, memorize: number, solve: number): Row => ({
   id,
-  player_name: `Player ${id.slice(0, 4)}`,
+  player_name: `Player ${id.slice(-4)}`,
   difficulty: "daily",
   daily_day: day,
   country_code: country,
@@ -91,7 +91,8 @@ function mockFetch(input: RequestInfo | URL, init?: RequestInit): Promise<Respon
     .filter(([key]) => !CONTROL.has(key))
     .map(([key, value]) => (key === "or" ? ((row: Row) => splitTop(value.slice(1, -1)).some((part) => clause(part)(row))) : test(key, value)));
   const found = ROWS.filter((row) => checks.every((check) => check(row))).sort(order(url.searchParams.get("order")));
-  const page = found.slice(0, Number(url.searchParams.get("limit") ?? found.length));
+  const offset = Number(url.searchParams.get("offset") ?? 0);
+  const page = found.slice(offset, offset + Number(url.searchParams.get("limit") ?? found.length));
   const headers = { "Content-Type": "application/json", "content-range": `*/${found.length}` };
   if (new Headers(init?.headers).get("Accept")?.includes("vnd.pgrst.object")) {
     return Promise.resolve(page.length === 1 ? new Response(JSON.stringify(page[0]), { status: 200, headers }) : new Response(JSON.stringify({ code: "PGRST116" }), { status: 406 }));

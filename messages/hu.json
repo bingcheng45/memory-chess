@@ -1827,6 +1827,7 @@
       "nameHint": "4-16 karakter, a pontszámod mellett jelenik meg.",
       "nameShort": "Túl rövid. Legalább 4 karaktert használj.",
       "nameLong": "Túl hosszú. Legfeljebb 16 karaktert használj.",
+      "nameBlocked": "Ez a név nem engedélyezett. Válassz másikat.",
       "country": "Ország",
       "chooseCountry": "Válassz országot",
       "from": {

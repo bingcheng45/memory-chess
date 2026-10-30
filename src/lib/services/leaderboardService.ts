@@ -62,7 +62,7 @@ function modeOf(board: LeaderboardBoard): 'board' | 'blindfold' | null {
  * Filtering on both columns is what lets the query read the partial daily index, and the mode the partial blindfold one.
  * A ranked row studied under the study floor is hidden, not deleted: rows written before the route enforced it stay stored.
  */
-function rankedRows<Columns extends '*' | 'id'>(client: SupabaseClient, board: LeaderboardBoard, columns: Columns, options?: { count: 'exact'; head: true }) {
+function rankedRows<Columns extends '*' | 'id' | 'player_name'>(client: SupabaseClient, board: LeaderboardBoard, columns: Columns, options?: { count: 'exact'; head: true }) {
   const rows = client.from('leaderboard_entries').select(columns, options).eq('difficulty', board.difficulty).gt('correct_pieces', 0);
   if (board.difficulty === DAILY_BOARD) return rows.eq('daily_day', board.daily_day);
   const studied = rows.gte('memorize_time', studyFloorSeconds(BOARD_PIECES[board.difficulty]));
@@ -80,16 +80,15 @@ export type LeaderboardSubmitResult =
   | { status: 'unavailable'; cause: unknown }
   | { status: 'failed'; cause: unknown };
 
-/** Rows arrive best first, so the first row seen for a name is its best. Names that fail the claim check are never shown. */
-function onePerName(rows: LeaderboardEntry[]): LeaderboardEntry[] {
-  const seen = new Set<string>();
-  return rows.filter((row) => {
-    const name = row.player_name.trim();
-    const key = name.toLowerCase();
-    if (seen.has(key) || playerNameProblem(name) === 'blocked') return false;
-    seen.add(key);
-    return true;
-  });
+const NAME_PAGE_ROWS = 1000;
+const MAX_PAGES = 20;
+
+function nameKey(name: string): string {
+  return name.trim().toLowerCase();
+}
+
+function isShown(name: string): boolean {
+  return playerNameProblem(name.trim()) !== 'blocked';
 }
 
 export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: LeaderboardEntry[], error?: string}> {
@@ -101,10 +100,24 @@ export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: Le
   try {
     if (!supabase) return unavailable('Leaderboard read failed:', 'Supabase is not configured');
 
-    const { data, error } = await orderByRanking(rankedRows(supabase, board, '*')).limit(LEADERBOARD_ROW_LIMIT);
-    if (error) return unavailable('Supabase query error:', error);
+    const seen = new Set<string>();
+    const entries: LeaderboardEntry[] = [];
+    for (let page = 0; page < MAX_PAGES && entries.length < LEADERBOARD_ROW_LIMIT; page++) {
+      const from = page * LEADERBOARD_ROW_LIMIT;
+      const { data, error } = await orderByRanking(rankedRows(supabase, board, '*')).range(from, from + LEADERBOARD_ROW_LIMIT - 1);
+      if (error) return unavailable('Supabase query error:', error);
+      const rows: LeaderboardEntry[] = data ?? [];
+      for (const row of rows) {
+        const key = nameKey(row.player_name);
+        if (entries.length < LEADERBOARD_ROW_LIMIT && !seen.has(key) && isShown(row.player_name)) {
+          seen.add(key);
+          entries.push(row);
+        }
+      }
+      if (rows.length < LEADERBOARD_ROW_LIMIT) break;
+    }
 
-    return { data: onePerName(data || []) };
+    return { data: entries };
   } catch (err) {
     return unavailable('Unexpected error in getLeaderboard:', err);
   }
@@ -353,8 +366,12 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
     return { status: 'noCountry' };
   }
 
+  if (!isShown(entry.player_name)) {
+    return { status: 'missing' };
+  }
+  const own = nameKey(entry.player_name);
   const bucket = () => {
-    const ranked = rankedRows(client, board, 'id', { count: 'exact', head: true });
+    const ranked = rankedRows(client, board, 'player_name');
     return country === null ? ranked : ranked.eq('country_code', country);
   };
   const score = {
@@ -363,12 +380,26 @@ export async function getStanding(id: string, scope: StandingScope): Promise<Sta
     memorizeTime: entry.memorize_time,
     solutionTime: entry.solution_time,
   };
-  const [above, total] = await Promise.all([bucket().or(rankedAboveFilter(score)), bucket()]);
-  if (above.error || total.error || above.count === null || total.count === null) {
-    return { status: 'unavailable', cause: above.error ?? total.error ?? 'no count returned' };
+  const names = async (aboveOnly: boolean) => {
+    const found = new Set<string>();
+    for (let page = 0; page < MAX_PAGES; page++) {
+      const from = page * NAME_PAGE_ROWS;
+      const rows = bucket();
+      const { data, error } = await (aboveOnly ? rows.or(rankedAboveFilter(score)) : rows).order('id').range(from, from + NAME_PAGE_ROWS - 1);
+      if (error) return error;
+      const batch: { player_name: string }[] = data ?? [];
+      for (const row of batch) if (isShown(row.player_name)) found.add(nameKey(row.player_name));
+      if (batch.length < NAME_PAGE_ROWS) break;
+    }
+    return found;
+  };
+  const [above, total] = await Promise.all([names(true), names(false)]);
+  if (!(above instanceof Set) || !(total instanceof Set)) {
+    return { status: 'unavailable', cause: above instanceof Set ? total : above };
   }
+  above.delete(own);
   return {
     status: 'ranked',
-    standing: { ...board, country, rank: above.count + 1, total: total.count },
+    standing: { ...board, country, rank: above.size + 1, total: total.size },
   };
 }

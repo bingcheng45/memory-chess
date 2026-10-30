@@ -1,6 +1,6 @@
 import { summarize, type LabSummary } from "@/lib/lab/summary";
 import { PLACEMENT_KEEP } from "@/lib/lab/storage";
-import { buildExport, parseImport } from "@/lib/lab/transfer";
+import { buildExport, parseImport, prefersImported, type PlayerStanding } from "@/lib/lab/transfer";
 import { round, roundV2, TARGET } from "./fixtures";
 
 const NOW = Date.UTC(2026, 9, 8);
@@ -10,8 +10,8 @@ describe("lab record export and import", () => {
     const rounds = [round({ id: "a" }), round({ id: "b", placedFen: "4k3/8/8/8/8/8/8/4K3" })];
     const file = JSON.stringify(buildExport(rounds, 1700000000000));
 
-    expect(JSON.parse(file)).toMatchObject({ format: "memory-chess-lab", v: 2, exportedAt: 1700000000000 });
-    expect(parseImport(file)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: null });
+    expect(JSON.parse(file)).toMatchObject({ format: "memory-chess-lab", v: 3, exportedAt: 1700000000000 });
+    expect(parseImport(file)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: null, player: null });
   });
 
   it("carries the lifetime summary in the export", () => {
@@ -26,7 +26,7 @@ describe("lab record export and import", () => {
   it("still reads a version 1 file, which has no summary", () => {
     const file = JSON.stringify({ format: "memory-chess-lab", v: 1, exportedAt: 0, rounds: [round({ id: "a" })] });
 
-    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds: [round({ id: "a" })], rejected: 0, overCap: 0, summary: null });
+    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds: [round({ id: "a" })], rejected: 0, overCap: 0, summary: null, player: null });
   });
 
   it.each([
@@ -52,13 +52,13 @@ describe("lab record export and import", () => {
     const rounds = [round({ id: "a", endedAt: 10 }), round({ id: "b", endedAt: 20 })];
     const file = JSON.stringify(buildExport(rounds, NOW, { ...summarize(rounds), ...change } as never));
 
-    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: "dropped" });
+    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: "dropped", player: null });
   });
 
   it("drops a summary that counts no round but lists a day, from a file with no rounds", () => {
     const file = JSON.stringify(buildExport([], NOW, { ...summarize([]), days: ["2026-10-07"] }));
 
-    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds: [], rejected: 0, overCap: 0, summary: "dropped" });
+    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds: [], rejected: 0, overCap: 0, summary: "dropped", player: null });
   });
 
   it("keeps the summary of a record whose only counted rounds are reviews, which set no best", () => {
@@ -106,7 +106,7 @@ describe("lab record export and import", () => {
   it.each([
     ["not JSON", "{", "not-json"],
     ["another app's file", JSON.stringify({ format: "something-else", v: 1, rounds: [] }), "not-a-lab-record"],
-    ["a newer version", JSON.stringify({ format: "memory-chess-lab", v: 3, rounds: [] }), "newer-version"],
+    ["a newer version", JSON.stringify({ format: "memory-chess-lab", v: 4, rounds: [] }), "newer-version"],
   ])("refuses %s", (_, text, reason) => {
     expect(parseImport(text)).toEqual({ ok: false, reason });
   });
@@ -125,7 +125,7 @@ describe("lab record export and import", () => {
   it("round-trips a version 2 round with every new fact", () => {
     const rounds = [round({ id: "old" }), roundV2({ id: "new", endedAt: Date.UTC(2026, 9, 7, 13) })];
 
-    expect(parseImport(JSON.stringify(buildExport(rounds, NOW)), NOW)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: null });
+    expect(parseImport(JSON.stringify(buildExport(rounds, NOW)), NOW)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: null, player: null });
   });
 
   it.each(["insight", "result_next", "plan", "game_quick"] as const)("round-trips a round started from a %s link", (startSource) => {
@@ -148,7 +148,7 @@ describe("lab record export and import", () => {
     const file = JSON.stringify(buildExport([{ ...core, v: 1 } as never], NOW));
 
     expect(v).toBe(2);
-    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds: [round()], rejected: 0, overCap: 0, summary: null });
+    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds: [round()], rejected: 0, overCap: 0, summary: null, player: null });
   });
 
   it("recomputes the position id and drops unknown fields of a version 2 round", () => {
@@ -227,5 +227,48 @@ describe("lab record export and import", () => {
     expect(result.rounds[1]).toEqual(core);
     expect([placements?.length, removals]).toEqual([4, 1]);
     expect(result.rounds.at(-1)).toEqual(rounds.at(-1));
+  });
+});
+
+const STANDING: PlayerStanding = { skillRating: 1234, streak: 7, certainty: { rd: 80.5, rounds: 42 } };
+
+describe("export version 3 carries the player's standing", () => {
+  it("round-trips a rating of 1234, a streak of 7 and the certainty", () => {
+    const rounds = [round({ id: "a" })];
+    const file = JSON.stringify(buildExport(rounds, NOW, summarize(rounds), STANDING));
+
+    expect(JSON.parse(file).player).toEqual({ skillRating: 1234, streak: 7, certainty: { rd: 80.5, rounds: 42 } });
+    expect(parseImport(file, NOW)).toMatchObject({ ok: true, rounds, player: STANDING });
+  });
+
+  it("still imports a version 2 file, with no standing to restore", () => {
+    const rounds = [round({ id: "a" })];
+    const file = JSON.stringify({ format: "memory-chess-lab", v: 2, exportedAt: NOW, rounds, summary: summarize(rounds), player: STANDING });
+
+    expect(parseImport(file, NOW)).toEqual({ ok: true, rounds, rejected: 0, overCap: 0, summary: summarize(rounds), player: null });
+  });
+
+  it.each([
+    ["a rating above the cap", { ...STANDING, skillRating: 5001 }],
+    ["a fractional rating", { ...STANDING, skillRating: 1234.5 }],
+    ["a negative streak", { ...STANDING, streak: -1 }],
+    ["an absurd streak", { ...STANDING, streak: 1e9 }],
+    ["a certainty of text", { ...STANDING, certainty: { rd: "low", rounds: 42 } }],
+    ["a negative round count", { ...STANDING, certainty: { rd: 80, rounds: -3 } }],
+    ["no certainty", { skillRating: 1234, streak: 7 }],
+  ])("drops a standing with %s and keeps the rounds", (_, player) => {
+    const file = JSON.stringify({ ...buildExport([round({ id: "a" })], NOW), player });
+
+    expect(parseImport(file, NOW)).toMatchObject({ ok: true, rejected: 0, player: "dropped", rounds: [{ id: "a" }] });
+  });
+
+  it("prefers the file's standing only when it rests on more rated rounds", () => {
+    const device = { ...STANDING, certainty: { rd: 70, rounds: 42 } };
+
+    expect([
+      prefersImported(device, { ...STANDING, certainty: { rd: 90, rounds: 43 } }),
+      prefersImported(device, { ...STANDING, skillRating: 2000, certainty: { rd: 60, rounds: 42 } }),
+      prefersImported(device, { ...STANDING, certainty: { rd: 60, rounds: 10 } }),
+    ]).toEqual([true, false, false]);
   });
 });

@@ -303,6 +303,14 @@ describe("POST /api/leaderboard", () => {
     expect(submitLeaderboardEntry).not.toHaveBeenCalled();
   });
 
+  it("refuses an offensive name with a message that asks for a different one", async () => {
+    const response = await post({ ...validEntry, player_name: "P3N1S" });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Please choose a different player name" });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
   it("counts a name of three emoji as three characters, as Postgres does, and refuses it", async () => {
     const response = await post({ ...validEntry, player_name: "\u{1F600}\u{1F600}\u{1F600}" });
 

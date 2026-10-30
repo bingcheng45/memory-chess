@@ -21,6 +21,7 @@ import { loadLeaderboardCutoffs, readCachedCutoffs } from "@/lib/leaderboard/cut
 import { trackEvent, type RoundSource } from "@/lib/analytics/events";
 import { studyFloorSeconds } from "@/lib/leaderboard/studyFloor";
 import { postLeaderboardEntry } from "@/lib/leaderboard/postEntry";
+import { isBlockedName } from "@/lib/leaderboard/blockedNames";
 import { browserIndexedDB } from "@/lib/lab/support";
 import {
   compareRanking,
@@ -115,6 +116,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
   const tDialog = useTranslations("game.result.dialog");
   const tCountry = useTranslations("country");
   const tDaily = useTranslations("daily.round");
+  const tJoin = useTranslations("daily.join");
   const tConfig = useTranslations("game.config");
   const tPresets = useTranslations("game.presets");
   const format = useFormatter();
@@ -304,9 +306,11 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
     };
   };
 
+  const nameBlocked = isBlockedName(playerName);
+
   // Handle score submission
   const submitToLeaderboard = async () => {
-    if (!playerName.trim()) return;
+    if (!playerName.trim() || nameBlocked) return;
 
     setIsSubmitting(true);
     setSubmitError(null);
@@ -602,8 +606,15 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                   onChange={(e) => setPlayerName(e.target.value)}
                   placeholder={t("dialog.playerNamePlaceholder")}
                   disabled={isSubmitting}
+                  aria-invalid={nameBlocked}
+                  aria-describedby={nameBlocked ? "player-name-blocked" : undefined}
                   className="lab-dialog-input"
                 />
+                {nameBlocked && (
+                  <p id="player-name-blocked" role="alert" className="lab-dialog-error">
+                    {tJoin("nameBlocked")}
+                  </p>
+                )}
               </div>
 
               <div className="space-y-2">
@@ -636,7 +647,7 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
                 <button
                   type="button"
                   onClick={submitToLeaderboard}
-                  disabled={!playerName.trim() || isSubmitting}
+                  disabled={!playerName.trim() || nameBlocked || isSubmitting}
                   className="lab-btn lab-btn-primary"
                 >
                   {isSubmitting ? t("dialog.submitting") : t("dialog.submit")}

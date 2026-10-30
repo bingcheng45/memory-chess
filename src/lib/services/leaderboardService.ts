@@ -7,6 +7,7 @@ import { parseBoard } from '@/lib/leaderboard/board';
 import { blindfoldBoardOpen } from '@/lib/leaderboard/mode';
 import { BOARD_PIECES, studyFloorSeconds } from '@/lib/leaderboard/studyFloor';
 import { playerNameProblem } from '@/lib/leaderboard/playerName';
+import { isBlockedName } from '@/lib/leaderboard/blockedNames';
 import { rankedAboveFilter, type Standing, type StandingScope } from '@/lib/leaderboard/standing';
 import { WORLD_CODE } from '@/lib/leaderboard/countries';
 import type { DailyResultRow } from '@/lib/daily/boardRating';
@@ -80,6 +81,9 @@ export type LeaderboardSubmitResult =
   | { status: 'unavailable'; cause: unknown }
   | { status: 'failed'; cause: unknown };
 
+/** Rows fetched past the row limit so that hiding offensive names still leaves a full board. */
+const BLOCKED_ROW_MARGIN = 20;
+
 export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: LeaderboardEntry[], error?: string}> {
   const unavailable = (what: string, cause: unknown) => {
     console.error(what, cause);
@@ -89,10 +93,11 @@ export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: Le
   try {
     if (!supabase) return unavailable('Leaderboard read failed:', 'Supabase is not configured');
 
-    const { data, error } = await orderByRanking(rankedRows(supabase, board, '*')).limit(LEADERBOARD_ROW_LIMIT);
+    const { data, error } = await orderByRanking(rankedRows(supabase, board, '*')).limit(LEADERBOARD_ROW_LIMIT + BLOCKED_ROW_MARGIN);
     if (error) return unavailable('Supabase query error:', error);
 
-    return { data: data || [] };
+    const shown = (data ?? []).filter((row: LeaderboardEntry) => !isBlockedName(row.player_name));
+    return { data: shown.slice(0, LEADERBOARD_ROW_LIMIT) };
   } catch (err) {
     return unavailable('Unexpected error in getLeaderboard:', err);
   }
@@ -253,7 +258,11 @@ const DAILY_DAY_CHECK = 'check_daily_day_recent';
 export async function submitLeaderboardEntry(
   entry: LeaderboardSubmission,
 ): Promise<LeaderboardSubmitResult> {
-  if (playerNameProblem(entry.player_name) !== null) {
+  const nameProblem = playerNameProblem(entry.player_name);
+  if (nameProblem === 'blocked') {
+    return { status: 'invalid', message: 'Please choose a different player name' };
+  }
+  if (nameProblem !== null) {
     return { status: 'invalid', message: 'Player name must be between 4 and 16 characters' };
   }
   const client = leaderboardWriter();

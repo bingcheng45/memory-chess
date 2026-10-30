@@ -1828,6 +1828,7 @@
       "nameHint": "De 4 a 16 caracteres, se muestra junto a tu puntuación.",
       "nameShort": "Demasiado corto. Usa al menos 4 caracteres.",
       "nameLong": "Demasiado largo. Usa como máximo 16 caracteres.",
+      "nameBlocked": "Ese nombre no está permitido. Elige otro, por favor.",
       "country": "País",
       "chooseCountry": "Elige un país",
       "from": {

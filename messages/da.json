@@ -1828,6 +1828,7 @@
       "nameHint": "4 til 16 tegn, vises sammen med din score.",
       "nameShort": "For kort. Brug mindst 4 tegn.",
       "nameLong": "For langt. Brug højst 16 tegn.",
+      "nameBlocked": "Det navn er ikke tilladt. Vælg et andet.",
       "country": "Land",
       "chooseCountry": "Vælg et land",
       "from": {

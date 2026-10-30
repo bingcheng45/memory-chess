@@ -1828,6 +1828,7 @@
       "nameHint": "4 až 16 znaků, zobrazí se u vašeho skóre.",
       "nameShort": "Příliš krátké. Použijte alespoň 4 znaky.",
       "nameLong": "Příliš dlouhé. Použijte nejvýše 16 znaků.",
+      "nameBlocked": "Toto jméno není povolené. Zvolte prosím jiné.",
       "country": "Země",
       "chooseCountry": "Vyberte zemi",
       "from": {

@@ -1828,6 +1828,7 @@
       "nameHint": "Từ 4 đến 16 ký tự, hiển thị cùng điểm của bạn.",
       "nameShort": "Quá ngắn. Hãy dùng ít nhất 4 ký tự.",
       "nameLong": "Quá dài. Hãy dùng tối đa 16 ký tự.",
+      "nameBlocked": "Tên này không được phép. Hãy chọn tên khác.",
       "country": "Quốc gia",
       "chooseCountry": "Chọn quốc gia",
       "from": {

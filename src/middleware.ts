@@ -107,6 +107,7 @@ export default function middleware(request: NextRequest, event?: NextFetchEvent)
 const RETIRED_PAGES: Readonly<Record<string, string>> = {
   // It held only the board coordinates switch, and coordinates are now always shown.
   "/settings": "/game",
+  "/contact": "/contact-us",
 };
 
 function retiredPagePath(pathname: string): string | null {
@@ -118,9 +119,27 @@ function retiredPagePath(pathname: string): string | null {
 
 const SHORT_CODES: ReadonlySet<string> = new Set(["pt", "zh"]);
 
+const PREFIX_SPELLINGS: ReadonlyMap<string, string> = new Map(
+  [...LOCALES, ...SHORT_CODES].map((prefix) => [prefix.toLowerCase(), prefix]),
+);
+
+/** `/ZH-cn/game` -> `/zh-CN/game`; a first segment that is not a language prefix is left as is. */
+function withPrefixCase(pathname: string): string {
+  const [, prefix, ...rest] = pathname.split("/");
+  const spelling = PREFIX_SPELLINGS.get(prefix?.toLowerCase() ?? "");
+  return spelling && spelling !== prefix ? ["", spelling, ...rest].join("/") : pathname;
+}
+
+/** The full locale a prefix was re-cased to, which next-intl used to record before redirecting. */
+function recasedLocale(requested: string, folded: string): Locale | null {
+  if (requested === folded) return null;
+  const prefix = folded.split("/")[1];
+  return LOCALES.find((locale) => locale === prefix) ?? null;
+}
+
 /** The language a `/en`, `/pt` or `/zh` prefix stands for, or null for any other path. */
-function localeOfPrefix(request: NextRequest): Locale | null {
-  const prefix = request.nextUrl.pathname.split("/")[1];
+function localeOfPrefix(request: NextRequest, pathname: string): Locale | null {
+  const prefix = pathname.split("/")[1];
   if (prefix === DEFAULT_LOCALE) return DEFAULT_LOCALE;
   if (prefix === "pt") return "pt-BR";
   if (prefix !== "zh") return null;
@@ -160,15 +179,17 @@ function withLocaleChoice(redirect: NextResponse, request: NextRequest, locale: 
 
 function route(request: NextRequest) {
   const crawler = isCrawler(request.headers.get("user-agent"));
-  const prefixLocale = localeOfPrefix(request);
-  const canonical = canonicalPath(request.nextUrl.pathname, prefixLocale);
+  const pathname = withPrefixCase(request.nextUrl.pathname);
+  const prefixLocale = localeOfPrefix(request, pathname);
+  const canonical = canonicalPath(pathname, prefixLocale);
   if (canonical !== request.nextUrl.pathname) {
     // NextURL puts the request's trailing slash back on any pathname it is given.
     const url = new URL(request.url);
     url.pathname = canonical;
-    const isWithheld = isWithheldTranslation(canonical, prefixLocale ?? request.nextUrl.pathname.split("/")[1]);
+    const isWithheld = isWithheldTranslation(canonical, prefixLocale ?? pathname.split("/")[1]);
     const redirect = NextResponse.redirect(url, isWithheld ? 307 : 308);
-    return prefixLocale && !crawler ? withLocaleChoice(redirect, request, prefixLocale) : redirect;
+    const chosen = prefixLocale ?? recasedLocale(request.nextUrl.pathname, pathname);
+    return chosen && !crawler ? withLocaleChoice(redirect, request, chosen) : redirect;
   }
 
   if (isServedAtBareEnglishUrl(request.nextUrl.pathname, DEFAULT_LOCALE)) {

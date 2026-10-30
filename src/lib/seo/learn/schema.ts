@@ -89,6 +89,8 @@ export type LearnMeta = {
   readonly searchTitle?: string;
   /** The meta description and the hub card text, 160 characters or fewer. */
   readonly description: string;
+  /** The English meta description and share description when they differ from `description`. English-only, like `searchTitle`. */
+  readonly searchDescription?: string;
   readonly group: LearnGroupId;
   readonly level: LearnLevel;
   readonly publishedAt: string;
@@ -98,7 +100,7 @@ export type LearnMeta = {
   readonly keywords: { readonly primary: string; readonly secondary: readonly string[] };
   readonly featured?: true;
   /** A page to practise on, linked under the lede. English-only: it is not in the translated text, so a translation stays valid. */
-  readonly practice?: { readonly href: `/${string}`; readonly label: string };
+  readonly practice?: { readonly href: `/${string}`; readonly before: string; readonly label: string };
 };
 
 export type LearnIntro = {

@@ -21,6 +21,30 @@ describe("buildLearnPageMetadata", () => {
     ).toBe("article");
   });
 
+  it.each([
+    ["blindfold-chess-training-for-beginners", "Blindfold Chess Training: 5-Week Plan + Trainer"],
+    ["how-to-play-memory-chess-board-game", "How to Play Memory Chess: Rules and How to Win"],
+    ["chess-coordinates-practice", "Chess Coordinates Practice: Free Trainer + Drills"],
+    ["how-to-stop-blundering-in-chess", "How to Stop Blundering in Chess: A 5-Step Check"],
+  ])("titles the English %s guide %p in search and on its share card", (slug, title) => {
+    const metadata = buildLearnPageMetadata(pageFor(slug));
+
+    expect([metadata.title, metadata.openGraph?.title, metadata.twitter?.title]).toEqual([title, title, title]);
+  });
+
+  it("gives the English blindfold guide its search description and a translation the translated one", () => {
+    const english = buildLearnPageMetadata(pageFor("blindfold-chess-training-for-beginners"));
+    const german = buildLearnPageMetadata(pageFor("blindfold-chess-training-for-beginners"), "de");
+
+    expect([english.description, english.openGraph?.description]).toEqual([
+      "Blindfold chess training in about five weeks: 3 to 6 minutes of drills a day, a pass mark for each of four stages, and a free browser trainer to practise on.",
+      "Blindfold chess training in about five weeks: 3 to 6 minutes of drills a day, a pass mark for each of four stages, and a free browser trainer to practise on.",
+    ]);
+    expect(german.description).toBe(
+      "Plan on about five weeks of blindfold chess training to a first full blind game. Drill 3 to 6 minutes a day for four weeks, then a game every other day.",
+    );
+  });
+
   it("gives an untranslated guide a bare self canonical with no alternates or robots override", () => {
     const metadata = buildLearnPageMetadata(pageFor("chess-memory-training"));
 
@@ -85,15 +109,15 @@ describe("buildLearnPageMetadata", () => {
       const twitter = metadata.twitter;
 
       expect(metadata.title).toBe(page.meta.searchTitle ?? page.meta.title);
-      expect(metadata.description).toBe(page.meta.description);
+      expect(metadata.description).toBe(page.meta.searchDescription ?? page.meta.description);
       expect(metadata.alternates?.canonical).toBe(`/learn/${page.meta.slug}`);
       expect(openGraph && "url" in openGraph ? openGraph.url : undefined).toBe(
         `https://thememorychess.com/learn/${page.meta.slug}`,
       );
       expect(openGraph?.title).toBe(page.meta.searchTitle ?? page.meta.title);
-      expect(openGraph?.description).toBe(page.meta.description);
+      expect(openGraph?.description).toBe(page.meta.searchDescription ?? page.meta.description);
       expect(twitter?.title).toBe(page.meta.searchTitle ?? page.meta.title);
-      expect(twitter?.description).toBe(page.meta.description);
+      expect(twitter?.description).toBe(page.meta.searchDescription ?? page.meta.description);
     }
   });
 

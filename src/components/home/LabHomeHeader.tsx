@@ -1,5 +1,6 @@
 import { useTranslations } from "next-intl";
-import { LabPaperHeader, type PageSections } from "@/components/lab-paper/LabPaperHeader";
+import type { PageSections } from "@/components/lab-paper/LabPaperHeader";
+import { LabPaperHeader } from "./HomeLinks";
 import { LAB_SECTIONS, type LabSectionId } from "./SectionHeading";
 
 const PAGE_SECTIONS = ["notebook", "method", "calibrate", "tiers", "record", "library"] as const satisfies readonly LabSectionId[];

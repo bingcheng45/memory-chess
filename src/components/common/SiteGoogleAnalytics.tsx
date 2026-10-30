@@ -1,5 +1,3 @@
-import Script from "next/script";
-
 export const GA_MEASUREMENT_ID = "G-R8BM9EMY9J";
 export const GA_SCRIPT_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
 
@@ -19,9 +17,13 @@ const GA_SESSION_TIMEOUT_SECONDS = 30 * 60;
  * visit's original source. A navigation since the last hit (pushState, popstate, or a replaceState that changes the
  * address) is left to GA4's own history page view, which starts the session itself and would otherwise be counted
  * twice.
+ *
+ * An automated browser (navigator.webdriver is true) gets no gtag and no library, so headless agent runs stay out of
+ * GA4. The app's event senders already skip when window.gtag is missing.
  */
-export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
-(function () {
+export const GA_INIT_SNIPPET = `(function () {
+  if (navigator.webdriver === true) return;
+  window.dataLayer = window.dataLayer || [];
   function paramName(pair) {
     var key = pair.split('=')[0].replace(/\\+/g, ' ');
     try { key = decodeURIComponent(key); } catch (e) {}
@@ -104,17 +106,25 @@ export const GA_INIT_SNIPPET = `window.dataLayer = window.dataLayer || [];
   gtag('js', new Date());
   gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
   sendPageView({ page_location: withoutTypedText(location.href), page_referrer: withoutTypedText(document.referrer) });
+  function loadLibrary() {
+    var tag = document.createElement('script');
+    tag.async = true;
+    tag.src = '${GA_SCRIPT_URL}';
+    document.head.appendChild(tag);
+  }
+  function loadWhenIdle() {
+    if (window.requestIdleCallback) window.requestIdleCallback(loadLibrary);
+    else setTimeout(loadLibrary, 1);
+  }
+  if (document.readyState === 'complete') loadWhenIdle();
+  else window.addEventListener('load', loadWhenIdle);
 })();`;
 
 /**
  * @next/third-parties preloads the 191 KB library in <head>, where it competes with the app's own scripts.
- * Here the library loads after the page's load event instead, and nothing is lost: page views and events queue.
+ * Here the init script adds the library after the page's load event instead, and nothing is lost: page views and
+ * events queue.
  */
 export default function SiteGoogleAnalytics() {
-  return (
-    <>
-      <script id="_ga-init" dangerouslySetInnerHTML={{ __html: GA_INIT_SNIPPET }} />
-      <Script id="_ga" src={GA_SCRIPT_URL} strategy="lazyOnload" />
-    </>
-  );
+  return <script id="_ga-init" dangerouslySetInnerHTML={{ __html: GA_INIT_SNIPPET }} />;
 }

@@ -1,7 +1,8 @@
 import type { ReactElement, ReactNode } from "react";
 import { isValidElement } from "react";
 import Script from "next/script";
-import SiteGoogleAnalytics from "@/components/common/SiteGoogleAnalytics";
+import SiteGoogleAnalytics, { GA_SCRIPT_URL } from "@/components/common/SiteGoogleAnalytics";
+import { trackEvent, rememberResultView, type FunnelEvent } from "@/lib/analytics/events";
 import SiteDatabuddy from "@/components/common/SiteDatabuddy";
 import LocaleLayout, { generateMetadata } from "@/app/[locale]/layout";
 import { AHREFS_ANALYTICS_SCRIPT_URL } from "@/lib/ahrefs";
@@ -448,13 +449,101 @@ describe("Google Analytics loading", () => {
     });
   });
 
-  it("loads gtag.js only once the page is idle", () => {
-    const library = collect(tree, (element) => element.type === Script);
+  const setWebdriver = (value: boolean) =>
+    Object.defineProperty(navigator, "webdriver", { configurable: true, value });
 
-    expect(library).toHaveLength(1);
-    expect(library[0].props).toMatchObject({
-      src: "https://www.googletagmanager.com/gtag/js?id=G-R8BM9EMY9J",
-      strategy: "lazyOnload",
+  const libraryTags = () =>
+    Array.from(document.head.querySelectorAll("script")).filter((tag) => tag.src === GA_SCRIPT_URL);
+
+  const loadListeners: EventListener[] = [];
+  beforeEach(() => {
+    const addEventListener = window.addEventListener.bind(window);
+    jest.spyOn(window, "addEventListener").mockImplementation((type, listener, options) => {
+      if (type === "load") loadListeners.push(listener as EventListener);
+      else addEventListener(type, listener, options);
     });
+  });
+
+  afterEach(() => {
+    jest.restoreAllMocks();
+    loadListeners.length = 0;
+    Reflect.deleteProperty(navigator, "webdriver");
+    document.head.innerHTML = "";
+    jest.useRealTimers();
+  });
+
+  it("renders no next/script, so the library loads only from the init script", () => {
+    expect(collect(tree, (element) => element.type === Script)).toHaveLength(0);
+  });
+
+  it("loads gtag.js only once the page is idle", () => {
+    jest.useFakeTimers();
+    Object.defineProperty(document, "readyState", { configurable: true, value: "loading" });
+    try {
+      new Function(initScript())();
+      expect(libraryTags()).toHaveLength(0);
+
+      loadListeners.forEach((listener) => listener(new Event("load")));
+      jest.runAllTimers();
+
+      expect(libraryTags()).toHaveLength(1);
+      expect(libraryTags()[0].async).toBe(true);
+    } finally {
+      Reflect.deleteProperty(document, "readyState");
+    }
+  });
+
+  it("loads gtag.js when the page has already finished loading", () => {
+    jest.useFakeTimers();
+    Object.defineProperty(document, "readyState", { configurable: true, value: "complete" });
+    try {
+      new Function(initScript())();
+      jest.runAllTimers();
+
+      expect(libraryTags()).toHaveLength(1);
+    } finally {
+      Reflect.deleteProperty(document, "readyState");
+    }
+  });
+
+  describe("an automated browser (navigator.webdriver is true)", () => {
+    beforeEach(() => {
+      jest.useFakeTimers();
+      setWebdriver(true);
+      new Function(initScript())();
+      loadListeners.forEach((listener) => listener(new Event("load")));
+      jest.runAllTimers();
+    });
+
+    it("never loads gtag.js", () => {
+      expect(libraryTags()).toHaveLength(0);
+    });
+
+    it("leaves no gtag or dataLayer, so the app's guarded senders send nothing", () => {
+      expect(window.gtag).toBeUndefined();
+      expect((window as unknown as { dataLayer?: unknown }).dataLayer).toBeUndefined();
+    });
+
+    it("lets the app's event helpers run without throwing", () => {
+      expect(() => {
+        trackEvent({ name: "round_start", params: {} } as unknown as FunnelEvent);
+        rememberResultView("overlay");
+      }).not.toThrow();
+    });
+  });
+
+  it("treats navigator.webdriver false as a real visitor", () => {
+    jest.useFakeTimers();
+    setWebdriver(false);
+    Object.defineProperty(document, "readyState", { configurable: true, value: "complete" });
+    try {
+      new Function(initScript())();
+      jest.runAllTimers();
+
+      expect(libraryTags()).toHaveLength(1);
+      expect(typeof window.gtag).toBe("function");
+    } finally {
+      Reflect.deleteProperty(document, "readyState");
+    }
   });
 });

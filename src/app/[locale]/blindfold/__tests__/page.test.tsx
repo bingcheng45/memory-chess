@@ -56,6 +56,34 @@ describe("the blindfold page", () => {
     expect(outcomeEffects.blindfold.rated).toBe(false);
   });
 
+  it("serves WebApplication and BreadcrumbList structured data that parses", () => {
+    const blocks = [...markup.matchAll(/<script type="application\/ld\+json">(.*?)<\/script>/g)].map((match) => JSON.parse(match[1]));
+    const graph = blocks.flatMap((block) => block["@graph"]);
+
+    expect(blocks).toHaveLength(1);
+    expect(graph.map((node) => node["@type"])).toEqual(["WebApplication", "BreadcrumbList"]);
+    expect(graph[0]).toMatchObject({
+      "@id": "https://thememorychess.com/blindfold#app",
+      name: "Blindfold Chess Trainer",
+      url: "https://thememorychess.com/blindfold",
+      applicationCategory: "GameApplication",
+      inLanguage: "en-US",
+      offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
+      description:
+        "Train blindfold chess in your browser. Study a position as notation, then rebuild it square by square. Free, no sign-up, with its own leaderboard.",
+    });
+    expect(graph[1].itemListElement).toEqual([
+      { "@type": "ListItem", position: 1, name: "Memory Chess", item: "https://thememorychess.com" },
+      { "@type": "ListItem", position: 2, name: "Blindfold chess trainer", item: "https://thememorychess.com/blindfold" },
+    ]);
+  });
+
+  it("explains what the trainer does, how a session runs and who it is for", () => {
+    const headings = [...markup.matchAll(/<h2[^>]*>(.*?)<\/h2>/g)].map((match) => match[1]);
+
+    expect(headings).toEqual(expect.arrayContaining(["What the trainer does", "How a ten-minute session runs", "Who the trainer is for"]));
+  });
+
   it("is listed once in the sitemap at its bare URL", async () => {
     const urls = (await sitemap()).map((entry) => entry.url);
 

@@ -1,7 +1,7 @@
 'use client';
 
 import { lazy, Suspense, useState, useEffect, useLayoutEffect, useRef, useSyncExternalStore } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { useGameStore } from '@/lib/store/gameStore';
 import GameConfig from '@/components/game/GameConfig';
@@ -22,6 +22,7 @@ import { warmResultDeltas } from '@/components/game/resultDeltasWarm';
 import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
 import { isBlindfoldSearch, ROUND_PARAM_NAMES, ROUND_PARAMS, roundSourceParam } from '@/lib/game/roundLink';
 import { GAME_CONFIG_RULES, parseGameSettings } from '@/lib/game/configPrefill';
+import { webApplicationNode } from '@/lib/seo/webApplication';
 import '@/components/game/game-lab.css';
 // Loaded with the page, not with the result figures the round warms: Next commits a stylesheet a lazy chunk brings
 // through React, which holds the round's next render, the one that sizes the board, until the file arrives.
@@ -400,10 +401,21 @@ function GamePageContent() {
   );
 }
 
+function GameStructuredData() {
+  const locale = useLocale();
+  const t = useTranslations('game.meta');
+  const schema = { '@context': 'https://schema.org', ...webApplicationNode({ path: '/game', locale, name: t('title'), description: t('description') }) };
+
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+}
+
 export default function GamePage() {
   return (
-    <ErrorBoundary>
-      <GamePageContent />
-    </ErrorBoundary>
+    <>
+      <GameStructuredData />
+      <ErrorBoundary>
+        <GamePageContent />
+      </ErrorBoundary>
+    </>
   );
 }

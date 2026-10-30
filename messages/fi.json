@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# vanhempi kierros jätettiin} other {# vanhempaa kierrosta jätettiin}} pois, jotta 5 000 kierroksen raja ei ylity.",
           "summaryIgnored": "Tässä selaimessa oli jo kierroksia, joten vain uudet kierrokset yhdistettiin, ei tiedoston kaikkien aikojen yhteismääriä.",
           "summaryDropped": "Tiedoston kaikkien aikojen yhteismääriä ei voitu lukea tai ne olivat vanhemmasta versiosta, joten vain sen kierrokset tuotiin.",
+          "playerRestored": "Luokituksesi ja putkesi on palautettu.",
           "safari": "Safarissa yksityinen välilehti ei säilytä tätä päiväkirjaa sulkemisen jälkeen, ja Safari poistaa sivuston tallentamat tiedot noin 7 päivän kuluttua, jos sivustolla ei käydä. Vie kopio, niin se säilyy.",
           "unavailable": "Ei tallenneta yksityisissä ikkunoissa. Tämä selainikkuna ei säilytä kierroksiasi.",
           "backup": "Varmuuskopiointi laitteiden välillä (tulossa pian)",

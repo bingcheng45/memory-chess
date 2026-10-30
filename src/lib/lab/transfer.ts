@@ -1,4 +1,5 @@
 import { PIECE_COUNT_RANGE } from "@/lib/reference/facts";
+import { isSkillRating, MAX_SKILL_RATING, parseCertainty, type PlayerRating } from "@/lib/game/rating";
 import { RECORDED_ROUND_SOURCES, type RecordedRoundSource } from "@/lib/analytics/events";
 import { isPieceCode, MAX_PLACEMENT_MS, MAX_PLACEMENTS, MAX_REMOVALS, type PlacementEvent } from "./placements";
 import {
@@ -21,14 +22,27 @@ import { isObject } from "./guards";
 
 const EXPORT_FORMAT = "memory-chess-lab";
 
-/** Version 2 adds the lifetime summary; a version 1 file is the rounds alone. */
-export interface LabExportV2 {
+/** What the game store keeps beside the lab record: the rating, how sure the game is of it, and the win streak. */
+export interface PlayerStanding {
+  readonly skillRating: number;
+  readonly streak: number;
+  readonly certainty: Omit<PlayerRating, "rating">;
+}
+
+/** Version 2 adds the lifetime summary and version 3 the player's standing; a version 1 file is the rounds alone. */
+export interface LabExport {
   readonly format: typeof EXPORT_FORMAT;
-  readonly v: 2;
+  readonly v: 3;
   readonly exportedAt: number;
   readonly rounds: readonly RoundRecord[];
   readonly summary?: LabSummary;
+  readonly player?: PlayerStanding;
 }
+
+const MAX_STREAK = 100_000;
+
+/** Rated rounds a standing may claim. Far beyond what the game can reach, so a hand-edited count cannot outrank every real one. */
+export const MAX_CERTAINTY_ROUNDS = 1_000_000;
 
 /** Far above a full 5,000-round record, so a file this large is not one. */
 export const MAX_IMPORT_BYTES = 5 * 1024 * 1024;
@@ -44,12 +58,31 @@ export type ImportResult =
       readonly overCap: number;
       /** The file's lifetime summary, or "dropped" when it was present but could not be trusted. */
       readonly summary: LabSummary | "dropped" | null;
+      /** The file's player standing, or "dropped" when it was present but could not be trusted. */
+      readonly player: PlayerStanding | "dropped" | null;
     }
   | { readonly ok: false; readonly reason: ImportFailure };
 
-export function buildExport(rounds: readonly RoundRecord[], exportedAt: number, summary?: LabSummary): LabExportV2 {
-  return { format: EXPORT_FORMAT, v: 2, exportedAt, rounds, ...(summary && { summary }) };
+export function buildExport(rounds: readonly RoundRecord[], exportedAt: number, summary?: LabSummary, player?: PlayerStanding): LabExport {
+  return { format: EXPORT_FORMAT, v: 3, exportedAt, rounds, ...(summary && { summary }), ...(player && { player }) };
 }
+
+/** The standing the file carries, rebuilt field by field, or null if any part is out of shape. */
+function parseStanding(raw: unknown): PlayerStanding | null {
+  if (!isObject(raw) || !isObject(raw.certainty)) return null;
+  const certainty = parseCertainty(raw.certainty);
+  const valid =
+    isSkillRating(raw.skillRating) &&
+    raw.skillRating <= MAX_SKILL_RATING &&
+    isCount(raw.streak, MAX_STREAK) &&
+    certainty.rd === raw.certainty.rd &&
+    certainty.rounds === raw.certainty.rounds &&
+    certainty.rounds <= MAX_CERTAINTY_ROUNDS;
+  return valid ? { skillRating: raw.skillRating as number, streak: raw.streak as number, certainty } : null;
+}
+
+/** The file's standing replaces the device's only when it rests on more rated rounds, so a tie or an older file never lowers a rating. */
+export const prefersImported = (device: PlayerStanding, imported: PlayerStanding): boolean => imported.certainty.rounds > device.certainty.rounds;
 
 const MAX_ID_LENGTH = 64;
 const MAX_FEN_LENGTH = 100;
@@ -230,7 +263,7 @@ export function parseImport(text: string, now: number = Date.now()): ImportResul
   if (!isObject(data) || data.format !== EXPORT_FORMAT || !Array.isArray(data.rounds)) {
     return { ok: false, reason: "not-a-lab-record" };
   }
-  if (data.v !== 1 && data.v !== 2) return { ok: false, reason: "newer-version" };
+  if (data.v !== 1 && data.v !== 2 && data.v !== 3) return { ok: false, reason: "newer-version" };
 
   const parsed = data.rounds.map((raw) => parseRoundRecord(raw, now));
   const valid = parsed.filter((round): round is RoundRecord => round !== null);
@@ -243,7 +276,8 @@ export function parseImport(text: string, now: number = Date.now()): ImportResul
     data.v === 1 || data.summary === undefined
       ? null
       : (rejected === 0 && overCap === 0 && parseFileSummary(data.summary, rounds, now)) || "dropped";
-  return { ok: true, rounds, rejected, overCap, summary };
+  const player = data.v !== 3 || data.player === undefined ? null : parseStanding(data.player) ?? "dropped";
+  return { ok: true, rounds, rejected, overCap, summary, player };
 }
 
 export async function readImportFile(file: File, now: number = Date.now()): Promise<ImportResult> {

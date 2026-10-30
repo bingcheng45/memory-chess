@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# ältere Runde wurde} other {# ältere Runden wurden}} weggelassen, um im Limit von 5.000 Runden zu bleiben.",
           "summaryIgnored": "Dieser Browser hatte schon Runden, daher wurden nur neue Runden zusammengeführt, nicht die Gesamtwerte aus der Datei.",
           "summaryDropped": "Die Gesamtwerte aus der Datei waren unlesbar oder stammen aus einer älteren Version, daher wurden nur ihre Runden importiert.",
+          "playerRestored": "Deine Wertung und deine Serie sind wiederhergestellt.",
           "safari": "In Safari behält ein privater Tab diesen Bericht nach dem Schließen nicht, und Safari löscht die gespeicherten Daten einer Website nach etwa 7 Tagen ohne Besuch. Exportiere eine Kopie, um ihn zu behalten.",
           "unavailable": "In privaten Fenstern wird nichts gespeichert. Dieses Browserfenster speichert deine Runden nicht.",
           "backup": "Geräteübergreifend sichern (bald verfügbar)",

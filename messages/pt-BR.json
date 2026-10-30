@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# rodada mais antiga ficou de fora} many {# rodadas mais antigas ficaram de fora} other {# rodadas mais antigas ficaram de fora}} para respeitar o limite de 5.000 rodadas.",
           "summaryIgnored": "Este navegador já tinha rodadas, então só as rodadas novas foram mescladas, não os totais acumulados do arquivo.",
           "summaryDropped": "Os totais acumulados do arquivo estavam ilegíveis ou eram de uma versão mais antiga, então só as rodadas dele foram importadas.",
+          "playerRestored": "Sua pontuação e sua sequência foram restauradas.",
           "safari": "No Safari, uma aba privada não guarda este registro depois de fechada, e o Safari apaga os dados salvos de um site depois de uns 7 dias sem visita. Exporte uma cópia para não perdê-lo.",
           "unavailable": "Não fica salvo em janelas privadas. Esta janela do navegador não está guardando as suas rodadas.",
           "backup": "Backup entre dispositivos (em breve)",

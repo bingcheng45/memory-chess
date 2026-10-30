@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# rundă mai veche a fost lăsată deoparte} few {# runde mai vechi au fost lăsate deoparte} other {# de runde mai vechi au fost lăsate deoparte}} ca să nu se depășească limita de 5.000 de runde.",
           "summaryIgnored": "Acest browser avea deja runde, așa că s-au adăugat doar rundele noi, nu și totalurile cumulate din fișier.",
           "summaryDropped": "Totalurile cumulate din fișier erau ilizibile sau dintr-o versiune mai veche, așa că s-au importat doar rundele lui.",
+          "playerRestored": "Ratingul și seria ta au fost restaurate.",
           "safari": "În Safari, un tab privat nu păstrează acest jurnal după ce îl închizi, iar Safari șterge datele stocate ale unui site după aproximativ 7 zile fără vizită. Exportă o copie ca să-l păstrezi.",
           "unavailable": "Nu se salvează în ferestrele private. Această fereastră de browser nu îți păstrează rundele.",
           "backup": "Backup între dispozitive (în curând)",

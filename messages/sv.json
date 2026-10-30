@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# äldre runda lämnades} other {# äldre rundor lämnades}} utanför för att hålla gränsen på 5 000 rundor.",
           "summaryIgnored": "Den här webbläsaren hade redan rundor, så bara nya rundor slogs samman, inte filens totaler över tid.",
           "summaryDropped": "Filens totaler över tid gick inte att läsa eller kom från en äldre version, så bara dess rundor importerades.",
+          "playerRestored": "Din rating och din svit har återställts.",
           "safari": "I Safari sparar en privat flik inte den här journalen när den stängs, och Safari raderar en webbplats sparade data efter ungefär 7 dagar utan besök. Exportera en kopia för att behålla den.",
           "unavailable": "Sparas inte i privata fönster. Det här webbläsarfönstret sparar inte dina rundor.",
           "backup": "Säkerhetskopiera mellan enheter (kommer snart)",

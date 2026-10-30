@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# eldre runde ble} other {# eldre runder ble}} utelatt for å holde seg innenfor grensen på 5 000 runder.",
           "summaryIgnored": "Denne nettleseren hadde allerede runder, så bare nye runder ble slått sammen, ikke filens totaler over tid.",
           "summaryDropped": "Filens totaler over tid kunne ikke leses eller var fra en eldre versjon, så bare rundene ble importert.",
+          "playerRestored": "Ratingen og vinnerrekken din er gjenopprettet.",
           "safari": "I Safari beholder ikke en privat fane denne journalen etter at den lukkes, og Safari sletter et nettsteds lagrede data etter omtrent 7 dager uten besøk. Eksporter en kopi for å beholde den.",
           "unavailable": "Lagres ikke i private vinduer. Dette nettleservinduet tar ikke vare på rundene dine.",
           "backup": "Sikkerhetskopi på tvers av enheter (kommer snart)",

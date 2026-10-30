@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# starsza runda została pominięta} few {# starsze rundy zostały pominięte} many {# starszych rund zostało pominiętych} other {# starszej rundy zostało pominięte}}, aby zmieścić się w limicie 5000 rund.",
           "summaryIgnored": "Ta przeglądarka miała już rundy, więc dołączono tylko nowe rundy, bez łącznych sum z pliku.",
           "summaryDropped": "Łączne sumy z pliku były nieczytelne albo pochodziły ze starszej wersji, więc zaimportowano tylko jego rundy.",
+          "playerRestored": "Twój ranking i seria zostały przywrócone.",
           "safari": "W Safari karta prywatna nie zachowuje tego dziennika po zamknięciu, a Safari usuwa zapisane dane strony po około 7 dniach bez wizyty. Wyeksportuj kopię, aby go zachować.",
           "unavailable": "W oknach prywatnych nic się nie zapisuje. To okno przeglądarki nie przechowuje twoich rund.",
           "backup": "Kopia zapasowa między urządzeniami (wkrótce)",

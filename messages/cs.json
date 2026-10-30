@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# starší kolo bylo vynecháno} few {# starší kola byla vynechána} many {# staršího kola bylo vynecháno} other {# starších kol bylo vynecháno}}, aby se nepřekročil limit 5 000 kol.",
           "summaryIgnored": "V tomto prohlížeči už nějaká kola byla, takže se sloučila jen nová kola, ne celkové součty ze souboru.",
           "summaryDropped": "Celkové součty v souboru nešly přečíst nebo pocházejí ze starší verze, takže se importovala jen jeho kola.",
+          "playerRestored": "Vaše hodnocení a série výher byly obnoveny.",
           "safari": "V Safari si anonymní panel tento záznam po zavření nepamatuje a Safari maže uložená data webu přibližně po 7 dnech bez návštěvy. Exportujte si kopii, ať o něj nepřijdete.",
           "unavailable": "V anonymních oknech se nic neukládá. Toto okno prohlížeče vaše kola neuchovává.",
           "backup": "Záloha napříč zařízeními (připravujeme)",

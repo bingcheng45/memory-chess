@@ -80,6 +80,18 @@ export type LeaderboardSubmitResult =
   | { status: 'unavailable'; cause: unknown }
   | { status: 'failed'; cause: unknown };
 
+/** Rows arrive best first, so the first row seen for a name is its best. Names that fail the claim check are never shown. */
+function onePerName(rows: LeaderboardEntry[]): LeaderboardEntry[] {
+  const seen = new Set<string>();
+  return rows.filter((row) => {
+    const name = row.player_name.trim();
+    const key = name.toLowerCase();
+    if (seen.has(key) || playerNameProblem(name) === 'blocked') return false;
+    seen.add(key);
+    return true;
+  });
+}
+
 export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: LeaderboardEntry[], error?: string}> {
   const unavailable = (what: string, cause: unknown) => {
     console.error(what, cause);
@@ -92,7 +104,7 @@ export async function getLeaderboard(board: LeaderboardBoard): Promise<{data: Le
     const { data, error } = await orderByRanking(rankedRows(supabase, board, '*')).limit(LEADERBOARD_ROW_LIMIT);
     if (error) return unavailable('Supabase query error:', error);
 
-    return { data: data || [] };
+    return { data: onePerName(data || []) };
   } catch (err) {
     return unavailable('Unexpected error in getLeaderboard:', err);
   }
@@ -253,7 +265,11 @@ const DAILY_DAY_CHECK = 'check_daily_day_recent';
 export async function submitLeaderboardEntry(
   entry: LeaderboardSubmission,
 ): Promise<LeaderboardSubmitResult> {
-  if (playerNameProblem(entry.player_name) !== null) {
+  const nameProblem = playerNameProblem(entry.player_name);
+  if (nameProblem === 'blocked') {
+    return { status: 'invalid', message: 'Please choose a different player name' };
+  }
+  if (nameProblem !== null) {
     return { status: 'invalid', message: 'Player name must be between 4 and 16 characters' };
   }
   const client = leaderboardWriter();

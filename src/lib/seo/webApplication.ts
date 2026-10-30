@@ -1,7 +1,6 @@
 import { languageTag, localizedUrl } from "@/lib/seo/alternates";
 import { ORGANIZATION_ID, SCHEMA_IMAGES, WEBSITE_ID } from "@/lib/seo/brand";
 
-/** A page that is itself something to play in the browser, free. */
 export function webApplicationNode({ path, locale, name, description }: { path: string; locale: string; name: string; description: string }) {
   const url = localizedUrl(path, locale);
   return {

@@ -361,6 +361,7 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 .lab-dialog .lab-dialog-ranks { display: grid; gap: 4px; margin: 12px 0 0; padding: 0; list-style: none; font: 600 17px/1.4 var(--lp-ui); color: var(--lp-ink); font-variant-numeric: tabular-nums; }
 .lab-dialog .lab-dialog-label { font: 600 14px/1.4 var(--lp-ui); color: var(--lp-ink); }
 .lab-dialog .lab-dialog-input { height: 44px; border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-md); background: var(--lp-surface); color: var(--lp-ink); }
+.lab-dialog .lab-dialog-hint { font: 400 14px/1.45 var(--lp-body); color: var(--lp-muted); }
 .lab-dialog .lab-dialog-error { font: 400 14px/1.45 var(--lp-body); color: var(--lp-wrong); }
 .lab-dialog .lab-dialog-done { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--lp-correct-soft); color: var(--lp-correct); }
 .lab-dialog .lab-btn { min-height: 44px; }

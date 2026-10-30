@@ -164,18 +164,18 @@ describe("a guide page", () => {
     expect(markup).toContain("/game?pieceCount=12&amp;memorizeTime=8&amp;from=guide_cta");
   });
 
-  it("does not prefetch the home breadcrumb, the author link or the daily board link", async () => {
+  it("does not prefetch the home breadcrumb, the author link or either daily board link", async () => {
     const markup = await guide("how-to-get-better-at-chess-for-beginners");
     const noPrefetch = [...markup.matchAll(/<a [^>]*data-no-prefetch=""[^>]*href="([^"]+)"|<a href="([^"]+)"[^>]*data-no-prefetch=""/g)].map((m) => m[1] ?? m[2]);
 
-    expect(noPrefetch).toEqual(["/", "/daily", "/about"]);
+    expect(noPrefetch).toEqual(["/", "/daily", "/about", "/daily"]);
   });
 
   it("links today's daily board under a drill box that plays a round, not under one done at a board", async () => {
     const markup = await guide("blindfold-chess-training-for-beginners");
 
     expect(markup.match(/class="lg-drill"/g)).toHaveLength(4);
-    expect(markup.match(/<p class="lg-drills-daily"><a href="\/daily" class="lg-link">Play today&#x27;s daily board<\/a><\/p>/g)).toHaveLength(1);
+    expect(markup.match(/<p class="lg-drills-daily"><a href="\/daily" data-no-prefetch="" class="lg-link">Play today&#x27;s daily board<\/a><\/p>/g)).toHaveLength(1);
   });
 
   it("draws three server-rendered boards and links a round, a dashboard stat and sibling guides", async () => {

@@ -447,6 +447,33 @@ describe("GameResult", () => {
     expect(global.fetch).not.toHaveBeenCalledWith(expect.stringContaining("/api/leaderboard"), expect.objectContaining({ method: "POST" }));
   });
 
+  it("says a claim name over 16 characters is too long while it is typed, and keeps it off the server", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "Submit your score" }));
+    const input = screen.getByLabelText("Player name");
+
+    fireEvent.change(input, { target: { value: "Grandmaster Poteto" } });
+
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByRole("alert")).toHaveTextContent("Too long. Use at most 16 characters.");
+    expect(screen.getByRole("button", { name: "Submit score" })).toBeDisabled();
+    expect(global.fetch).not.toHaveBeenCalledWith(expect.stringContaining("/api/leaderboard"), expect.objectContaining({ method: "POST" }));
+  });
+
+  it("says a claim name under 4 characters is too short once the player leaves the field, not while they type", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "Submit your score" }));
+    const input = screen.getByLabelText("Player name");
+
+    fireEvent.change(input, { target: { value: "Bo" } });
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Submit score" })).toBeDisabled();
+
+    fireEvent.blur(input);
+    expect(screen.getByRole("alert")).toHaveTextContent("Too short. Use at least 4 characters.");
+    expect(screen.getByText("4 to 16 characters, shown with your score.")).toBeInTheDocument();
+  });
+
   describe("score_submit event", () => {
     function submitScore() {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);

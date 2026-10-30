@@ -6,6 +6,7 @@ import { useTranslations } from "next-intl";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import { LAB_PAPER_CLASS } from "@/components/lab-paper/shell";
 import { useIsLabPaperRoute } from "@/lib/lab-paper/useIsLabPaperRoute";
+import { GAME_STORAGE_KEY } from "@/lib/game/configPrefill";
 import {
   CHANGELOG_ANNOUNCEMENT_DURATION_MS,
   CHANGELOG_DISMISSAL_STORAGE_KEY,
@@ -45,8 +46,24 @@ const LOOKS = {
  */
 let hasHydrated = false;
 
+function hasRoundHistory(): boolean {
+  try {
+    const stored = window.localStorage.getItem(GAME_STORAGE_KEY);
+    const history: unknown = stored ? JSON.parse(stored)?.state?.history : undefined;
+    return Array.isArray(history) && history.length > 0;
+  } catch {
+    return false;
+  }
+}
+
+function markSeen(version: string): void {
+  try {
+    window.localStorage.setItem(CHANGELOG_DISMISSAL_STORAGE_KEY, version);
+  } catch {}
+}
+
 function shouldShow(version: string, expiresAt: number): boolean {
-  if (Date.now() >= expiresAt) return false;
+  if (Date.now() >= expiresAt || !hasRoundHistory()) return false;
   try {
     return window.localStorage.getItem(CHANGELOG_DISMISSAL_STORAGE_KEY) !== version;
   } catch {
@@ -56,14 +73,19 @@ function shouldShow(version: string, expiresAt: number): boolean {
 
 /**
  * Hides the served banner as it is parsed, before first paint, for a reader
- * who dismissed this release or arrives after its window. The effect below
+ * with no round history, who dismissed this release or arrives after its window. The effect below
  * then removes it, so the page never moves.
  */
 export function hideDismissedBannerScript(version: string, expiresAt: number): string {
   return `(function () {
   try {
     var banner = document.getElementById(${JSON.stringify(BANNER_ID)});
-    if (banner && (Date.now() >= ${expiresAt} || localStorage.getItem(${JSON.stringify(CHANGELOG_DISMISSAL_STORAGE_KEY)}) === ${JSON.stringify(version)})) {
+    var returning = false;
+    try {
+      var history = JSON.parse(localStorage.getItem(${JSON.stringify(GAME_STORAGE_KEY)})).state.history;
+      returning = Array.isArray(history) && history.length > 0;
+    } catch (error) {}
+    if (banner && (!returning || Date.now() >= ${expiresAt} || localStorage.getItem(${JSON.stringify(CHANGELOG_DISMISSAL_STORAGE_KEY)}) === ${JSON.stringify(version)})) {
       banner.hidden = true;
     }
   } catch (error) {}
@@ -108,6 +130,9 @@ export default function ChangelogBanner({
       return;
     }
 
+    if (!hasRoundHistory()) {
+      markSeen(version);
+    }
     setIsVisible(shouldShow(version, expiresAt));
 
     const handleStorage = (event: StorageEvent) => {
@@ -146,15 +171,7 @@ export default function ChangelogBanner({
   }, [announce, version, publishedAt, expiresAt]);
 
   const handleDismiss = () => {
-    try {
-      window.localStorage.setItem(
-        CHANGELOG_DISMISSAL_STORAGE_KEY,
-        version,
-      );
-    } catch {
-      // Dismiss for this page view even when browser storage is unavailable.
-    }
-
+    markSeen(version);
     setIsVisible(false);
   };
 

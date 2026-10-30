@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# ældre runde blev} other {# ældre runder blev}} udeladt for at holde grænsen på 5.000 runder.",
           "summaryIgnored": "Denne browser havde allerede runder, så kun nye runder blev flettet ind, ikke filens samlede tal.",
           "summaryDropped": "Filens samlede tal kunne ikke læses eller var fra en ældre version, så kun dens runder blev importeret.",
+          "playerRestored": "Din rating og din stime er gendannet.",
           "safari": "I Safari gemmer en privat fane ikke denne journal, når den lukkes, og Safari sletter et websteds gemte data efter cirka 7 dage uden besøg. Eksportér en kopi for at beholde den.",
           "unavailable": "Gemmes ikke i private vinduer. Dette browservindue gemmer ikke dine runder.",
           "backup": "Sikkerhedskopi på tværs af enheder (kommer snart)",

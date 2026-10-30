@@ -2,6 +2,7 @@ import type { AnchorHTMLAttributes } from "react";
 import { fireEvent, renderWithIntl, screen, within } from "@/test-utils/intl";
 import SiteFooter from "@/components/lab-paper/SiteFooter";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
+import { GAME_STORAGE_KEY } from "@/lib/game/configPrefill";
 import { CHANGELOG_DISMISSAL_STORAGE_KEY, LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import deMessages from "../../../../messages/de.json";
 
@@ -25,6 +26,7 @@ beforeEach(() => {
   jest.useFakeTimers();
   jest.setSystemTime(new Date(Date.parse(LATEST_CHANGELOG_ENTRY.publishedAt) + 24 * 60 * 60 * 1000));
   window.localStorage.clear();
+  window.localStorage.setItem(GAME_STORAGE_KEY, JSON.stringify({ state: { history: [{ id: "round-1" }] } }));
 });
 
 afterEach(() => {

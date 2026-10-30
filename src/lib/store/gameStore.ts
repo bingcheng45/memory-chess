@@ -27,6 +27,7 @@ import {
 } from "@/lib/game/rating";
 import { outcomeEffects, roundOutcomeOf } from "@/lib/game/roundOutcome";
 import { localDayOf } from "@/lib/lab/record";
+import { prefersImported, type PlayerStanding } from "@/lib/lab/transfer";
 import {
   IDLE_ROUND,
   labPositionFromFen,
@@ -96,6 +97,8 @@ interface GameStore {
   /** Scores the round; resolves once the lab record has kept it, to whether it did. */
   submitSolution: (now?: number) => Promise<boolean>;
   resetGame: () => void;
+  /** Takes an imported standing over the device's when it rests on more rated rounds; resolves to whether it did. */
+  restoreStanding: (imported: PlayerStanding) => boolean;
 
   getSkillRating: () => number;
   getCurrentStreak: () => number;
@@ -130,6 +133,12 @@ export const ratedFactsOf = (history: readonly Pick<GameHistory, 'facts'>[]): Ra
     const parsed = parseRatedRoundFacts(facts);
     return parsed ? [parsed] : [];
   });
+
+export const standingOf = ({ gameState, certainty }: Pick<GameStore, 'gameState' | 'certainty'>): PlayerStanding => ({
+  skillRating: gameState.skillRating ?? START_RATING,
+  streak: gameState.streak || 0,
+  certainty,
+});
 
 export const playerRatingOf = ({ gameState, certainty }: Pick<GameStore, 'gameState' | 'certainty'>): PlayerRating => ({
   rating: gameState.skillRating ?? START_RATING,
@@ -274,6 +283,16 @@ export const useGameStore = create<GameStore>()(
       },
 
       dispatch: (action) => set({ round: roundReducer(get().round, action) }),
+
+      restoreStanding: (imported) => {
+        const state = get();
+        if (!prefersImported(standingOf(state), imported)) return false;
+        set({
+          gameState: { ...state.gameState, skillRating: imported.skillRating, streak: imported.streak },
+          certainty: imported.certainty,
+        });
+        return true;
+      },
 
       resetGame: () => {
         // Preserve skill rating and streak when resetting

@@ -4,6 +4,7 @@ import en from "../../../../messages/en.json";
 import { CONTACT_MAX_LENGTH, CONTACT_TYPE_VALUES, type ContactFailure } from "@/lib/contact";
 import { appendGoogleSheetRow, SheetsConfigError } from "@/lib/server/googleSheets";
 import { clientAddress, fixedWindowLimiter } from "@/lib/server/rateLimit";
+import { isJson, readBodyWithinLimit } from "@/lib/server/requestBody";
 import { reportServerError } from "@/lib/server/serverErrors";
 
 export const runtime = "nodejs";
@@ -15,6 +16,16 @@ const contactSchema = z.object({
   type: z.enum(CONTACT_TYPE_VALUES),
   message: z.string().min(10).max(CONTACT_MAX_LENGTH.message),
 });
+
+const UTF8_BYTES_PER_UTF16_UNIT = 3;
+const OTHER_FIELDS_ALLOWANCE_BYTES = 1024;
+const BODY_BYTE_STEP = 4096;
+/** A form filled to every limit in CJK is 3 bytes a character, so the cap follows the field limits and rounds up to 20480. */
+const MAX_BODY_BYTES =
+  Math.ceil(
+    ((CONTACT_MAX_LENGTH.name + CONTACT_MAX_LENGTH.email + CONTACT_MAX_LENGTH.message) * UTF8_BYTES_PER_UTF16_UNIT + OTHER_FIELDS_ALLOWANCE_BYTES) /
+      BODY_BYTE_STEP,
+  ) * BODY_BYTE_STEP;
 
 /** A person sends one or two messages; more than this from one address is a script filling the sheet. */
 const MESSAGES_PER_WINDOW = 5;
@@ -42,9 +53,14 @@ export async function POST(request: Request) {
     return failure("unavailable", undefined, { status: 429, headers: { "Retry-After": String(verdict.retryAfterSeconds) } });
   }
 
+  if (!isJson(request.headers.get("content-type"))) return failure("invalid", undefined, { status: 415 });
+
+  const text = await readBodyWithinLimit(request, MAX_BODY_BYTES);
+  if (text === null) return failure("invalid", undefined, { status: 413 });
+
   let body: unknown;
   try {
-    body = await request.json();
+    body = JSON.parse(text);
   } catch {
     return failure("invalid");
   }

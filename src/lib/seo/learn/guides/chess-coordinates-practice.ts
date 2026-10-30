@@ -4,6 +4,7 @@ const guide: LearnDocument = {
   meta: {
     slug: "chess-coordinates-practice",
     title: "Chess Coordinates Practice: Name Squares Faster",
+    searchTitle: "Chess Coordinates Practice: Free Trainer + Drills",
     h1: "Chess coordinates practice, from counting squares to reading them",
     description: "For chess coordinates practice, learn eight anchor squares and a colour rule, then name squares aloud in 4-piece, 12-second rounds until five are clean.",
     group: "board-vision",

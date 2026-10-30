@@ -13,7 +13,7 @@ import { buildRoundRecord, type LabSource, type RoundCapture, type RoundInput, t
 import { utcDayOf } from "./daily";
 import { dailyFen } from "./dailyBoard";
 import { createLabStore, PLACEMENT_KEEP, type LabStore } from "./storage";
-import { buildExport, type LabExportV2 } from "./transfer";
+import { buildExport, type LabExport } from "./transfer";
 
 /**
  * A fixed cast of synthetic players, so every phase tests and screenshots the
@@ -381,7 +381,7 @@ export async function exportPersona(
   store: LabStore,
   today: string = PERSONA_TODAY,
   exportedAt: number = noonUtc(today),
-): Promise<LabExportV2> {
+): Promise<LabExport> {
   await store.mergeRounds(personaRounds(name, today));
   return buildExport(await store.listRounds(), exportedAt, await store.readSummary());
 }

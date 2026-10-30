@@ -1,6 +1,7 @@
 import { render, screen } from "@/test-utils/intl";
 import EnglishOnlyLink from "@/components/ui/EnglishOnlyLink";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
+import { GAME_STORAGE_KEY } from "@/lib/game/configPrefill";
 import jaMessages from "../../../../messages/ja.json";
 
 describe("EnglishOnlyLink", () => {
@@ -27,6 +28,8 @@ describe("EnglishOnlyLink", () => {
 
 describe("ChangelogBanner", () => {
   it("marks its link to the English-only changelog on a translated page", async () => {
+    window.localStorage.clear();
+    window.localStorage.setItem(GAME_STORAGE_KEY, JSON.stringify({ state: { history: [{ id: "round-1" }] } }));
     render(<ChangelogBanner announce version="1.0.0" publishedAt={new Date().toISOString()} />, { locale: "ja", messages: jaMessages });
 
     const link = await screen.findByRole("link");

@@ -149,6 +149,14 @@ describe("rules the types cannot hold", () => {
     expect(long).toEqual([]);
   });
 
+  it("keeps every search description to 160 characters", () => {
+    const long = LEARN_GUIDES.flatMap(({ meta }) =>
+      meta.searchDescription && meta.searchDescription.length > 160 ? [`${meta.slug} searchDescription ${meta.searchDescription.length}`] : [],
+    );
+
+    expect(long).toEqual([]);
+  });
+
   it("keeps eight answer-first descriptions to 155 characters with the exact primary keyword", () => {
     const answerFirst = [
       "20-minute-daily-chess-study-plan",

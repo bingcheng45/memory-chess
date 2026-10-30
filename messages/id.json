@@ -845,6 +845,7 @@
           "overCap": "{count, plural, other {# ronde lama}} tidak disertakan agar tetap dalam batas 5.000 ronde.",
           "summaryIgnored": "Browser ini sudah punya ronde, jadi hanya ronde baru yang digabungkan, bukan total sepanjang waktu dari file.",
           "summaryDropped": "Total sepanjang waktu dari file tidak terbaca atau berasal dari versi lama, jadi hanya rondenya yang diimpor.",
+          "playerRestored": "Peringkat dan rentetan kemenanganmu sudah dipulihkan.",
           "safari": "Di Safari, tab pribadi tidak menyimpan catatan ini setelah ditutup, dan Safari menghapus data tersimpan sebuah situs setelah sekitar 7 hari tanpa kunjungan. Ekspor salinannya agar tetap tersimpan.",
           "unavailable": "Tidak tersimpan di jendela pribadi. Jendela browser ini tidak menyimpan rondemu.",
           "backup": "Cadangan lintas perangkat (segera hadir)",

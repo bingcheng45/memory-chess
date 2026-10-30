@@ -3,7 +3,7 @@ import { useLabData } from "@/hooks/useLabData";
 import { useLabRecord } from "@/components/home/useLabRecord";
 import { labStore, type LabStore } from "@/lib/lab/storage";
 import { EMPTY_SUMMARY, summarize } from "@/lib/lab/summary";
-import { buildExport } from "@/lib/lab/transfer";
+import { buildExport, parseImport } from "@/lib/lab/transfer";
 import { round } from "@/lib/lab/__tests__/fixtures";
 import { FakeChannel } from "@/lib/lab/__tests__/fakeChannel";
 import type { RoundRecord } from "@/lib/lab/record";
@@ -159,6 +159,13 @@ describe("useLabRecord import", () => {
   });
 });
 
+const blobText = (blob: Blob) =>
+  new Promise<string>((resolve) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result));
+    reader.readAsText(blob);
+  });
+
 describe("useLabRecord rating and streak", () => {
   const standing = { skillRating: 1234, streak: 7, certainty: { rd: 80.5, rounds: 42 } };
   const reset = () => useGameStore.setState({ gameState: { ...useGameStore.getState().gameState, skillRating: 1000, streak: 0 }, certainty: { rd: 350, rounds: 0 } });
@@ -170,8 +177,8 @@ describe("useLabRecord rating and streak", () => {
     jest.spyOn(HTMLAnchorElement.prototype, "click").mockImplementation(() => {});
   });
   afterEach(() => {
-    reset();
     jest.restoreAllMocks();
+    reset();
   });
 
   it("exports the rating and streak, and a new device restores them from that file", async () => {
@@ -180,11 +187,7 @@ describe("useLabRecord rating and streak", () => {
     const { result } = renderHook(() => useLabRecord());
     await act(() => result.current.download());
     const blob = jest.mocked(URL.createObjectURL).mock.calls[0][0] as Blob;
-    const exported = await new Promise<string>((resolve) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(String(reader.result));
-      reader.readAsText(blob);
-    });
+    const exported = await blobText(blob);
     reset();
 
     const outcome = await act(() =>
@@ -205,5 +208,36 @@ describe("useLabRecord rating and streak", () => {
 
     expect(outcome).toMatchObject({ ok: true, player: "kept" });
     expect(standingOf(useGameStore.getState())).toEqual({ skillRating: 1500, streak: 2, certainty: { rd: 60, rounds: 90 } });
+  });
+
+  it("still saves a file, without a standing, when the game store cannot be read", async () => {
+    jest.mocked(labStore).mockReturnValue(fakeStore());
+    jest.spyOn(useGameStore, "getState").mockImplementation(() => {
+      throw new Error("chunk failed");
+    });
+    const { result } = renderHook(() => useLabRecord());
+
+    await act(() => result.current.download());
+
+    const blob = jest.mocked(URL.createObjectURL).mock.calls[0][0] as Blob;
+    const exported = JSON.parse(await blobText(blob));
+    expect([exported.v, exported.player]).toEqual([3, undefined]);
+    expect(parseImport(JSON.stringify(exported))).toMatchObject({ ok: true, player: null });
+  });
+
+  it("reports the rounds as imported when the standing cannot be restored", async () => {
+    const store = fakeStore();
+    store.mergeRounds = jest.fn(() => Promise.resolve(2));
+    jest.mocked(labStore).mockReturnValue(store);
+    jest.spyOn(useGameStore, "getState").mockImplementation(() => {
+      throw new Error("chunk failed");
+    });
+    const rounds = [round({ id: "a", endedAt: 1 }), round({ id: "b", endedAt: 2 })];
+    const json = JSON.stringify(buildExport(rounds, 0, undefined, standing));
+    const { result } = renderHook(() => useLabRecord());
+
+    const outcome = await act(() => result.current.importFile(Object.assign(new File([json], "lab.json"), { text: () => Promise.resolve(json) })));
+
+    expect(outcome).toEqual({ ok: true, added: 2, rejected: 0, overCap: 0, summary: null, player: "dropped" });
   });
 });

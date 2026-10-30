@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# régebbi kör kimaradt} other {# régebbi kör kimaradt}}, hogy a jegyzőkönyv az 5000 körös korláton belül maradjon.",
           "summaryIgnored": "Ebben a böngészőben már voltak körök, ezért csak az új körök kerültek be, a fájl összesített adatai nem.",
           "summaryDropped": "A fájl összesített adatai olvashatatlanok voltak vagy régebbi verzióból származnak, ezért csak a körei lettek importálva.",
+          "playerRestored": "Az értékelésed és a sorozatod visszaállt.",
           "safari": "Safariban a privát lap bezárás után nem őrzi meg ezt a jegyzőkönyvet, és a Safari nagyjából 7 nap látogatás nélkül törli a webhely tárolt adatait. Exportálj egy másolatot, hogy megmaradjon.",
           "unavailable": "Privát ablakban nem mentődik. Ez a böngészőablak nem őrzi meg a köreidet.",
           "backup": "Biztonsági mentés eszközök között (hamarosan)",

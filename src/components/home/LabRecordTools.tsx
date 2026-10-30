@@ -32,12 +32,14 @@ export function LabRecordTools({ record, card }: { record: LabRecord; card: Read
     event.target.value = "";
     if (!file) return;
     const result = await record.importFile(file);
+    const standingRestored = result.ok && result.player === "restored";
     setNotice(
       result.ok
         ? {
             kind: "ok",
             text: [
-              t("imported", { added: result.added }),
+              result.added > 0 || !standingRestored ? t("imported", { added: result.added }) : "",
+              standingRestored ? t("playerRestored") : "",
               result.rejected > 0 ? t("skipped", { count: result.rejected }) : "",
               result.overCap > 0 ? t("overCap", { count: result.overCap }) : "",
               result.added > 0 && result.summary === "ignored" ? t("summaryIgnored") : "",

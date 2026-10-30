@@ -845,6 +845,7 @@
           "overCap": "{count, plural, one {# oudere ronde is} other {# oudere rondes zijn}} weggelaten om binnen de limiet van 5.000 rondes te blijven.",
           "summaryIgnored": "Deze browser had al rondes, dus alleen nieuwe rondes zijn samengevoegd, niet de totalen uit het bestand.",
           "summaryDropped": "De totalen uit het bestand waren onleesbaar of van een oudere versie, dus alleen de rondes zijn geïmporteerd.",
+          "playerRestored": "Je rating en je reeks zijn hersteld.",
           "safari": "In Safari bewaart een privétabblad dit verslag niet nadat het sluit, en Safari wist de opgeslagen gegevens van een site na ongeveer 7 dagen zonder bezoek. Exporteer een kopie om het te bewaren.",
           "unavailable": "Niet opgeslagen in privévensters. Dit browservenster bewaart je rondes niet.",
           "backup": "Back-up tussen apparaten (binnenkort)",

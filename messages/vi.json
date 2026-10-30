@@ -845,6 +845,7 @@
           "overCap": "{count, plural, other {# ván cũ hơn đã}} bị bỏ ra để không vượt quá giới hạn 5.000 ván.",
           "summaryIgnored": "Trình duyệt này đã có sẵn các ván, nên chỉ các ván mới được gộp vào, không gộp tổng số tích lũy của tệp.",
           "summaryDropped": "Tổng số tích lũy của tệp không đọc được hoặc thuộc phiên bản cũ hơn, nên chỉ các ván của nó được nhập.",
+          "playerRestored": "Điểm xếp hạng và chuỗi thắng của bạn đã được khôi phục.",
           "safari": "Trên Safari, thẻ riêng tư không giữ hồ sơ này sau khi đóng, và Safari xóa dữ liệu đã lưu của một trang web sau khoảng 7 ngày không ghé thăm. Hãy xuất một bản sao để giữ lại.",
           "unavailable": "Không lưu trong cửa sổ ẩn danh. Cửa sổ trình duyệt này không giữ các ván của bạn.",
           "backup": "Sao lưu giữa các thiết bị (sắp có)",

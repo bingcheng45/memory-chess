@@ -1,6 +1,6 @@
 import { summarize, type LabSummary } from "@/lib/lab/summary";
 import { PLACEMENT_KEEP } from "@/lib/lab/storage";
-import { buildExport, parseImport, prefersImported, type PlayerStanding } from "@/lib/lab/transfer";
+import { buildExport, MAX_CERTAINTY_ROUNDS, parseImport, prefersImported, type PlayerStanding } from "@/lib/lab/transfer";
 import { round, roundV2, TARGET } from "./fixtures";
 
 const NOW = Date.UTC(2026, 9, 8);
@@ -260,6 +260,37 @@ describe("export version 3 carries the player's standing", () => {
     const file = JSON.stringify({ ...buildExport([round({ id: "a" })], NOW), player });
 
     expect(parseImport(file, NOW)).toMatchObject({ ok: true, rejected: 0, player: "dropped", rounds: [{ id: "a" }] });
+  });
+
+  it.each([
+    ["rd 0", { ...STANDING, certainty: { rd: 0, rounds: 42 } }],
+    ["rd 350", { ...STANDING, certainty: { rd: 350, rounds: 42 } }],
+    ["rating 0", { ...STANDING, skillRating: 0 }],
+    ["rating 5000", { ...STANDING, skillRating: 5000 }],
+    ["streak 100000", { ...STANDING, streak: 100_000 }],
+    ["streak 0", { ...STANDING, streak: 0 }],
+    ["rounds at the cap", { ...STANDING, certainty: { rd: 80, rounds: MAX_CERTAINTY_ROUNDS } }],
+  ])("accepts a standing at the edge: %s", (_, player) => {
+    const file = JSON.stringify(buildExport([], NOW, undefined, player));
+
+    expect(parseImport(file, NOW)).toMatchObject({ ok: true, player });
+  });
+
+  it.each([
+    ["rd above 350", { ...STANDING, certainty: { rd: 350.5, rounds: 42 } }],
+    ["rating 5001", { ...STANDING, skillRating: 5001 }],
+    ["rating -1", { ...STANDING, skillRating: -1 }],
+    ["streak 100001", { ...STANDING, streak: 100_001 }],
+    ["rounds above the cap", { ...STANDING, certainty: { rd: 80, rounds: MAX_CERTAINTY_ROUNDS + 1 } }],
+    ["rounds of 9 quadrillion", { ...STANDING, certainty: { rd: 80, rounds: Number.MAX_SAFE_INTEGER } }],
+  ])("drops a standing just past the edge: %s", (_, player) => {
+    const file = JSON.stringify({ ...buildExport([], NOW), player });
+
+    expect(parseImport(file, NOW)).toMatchObject({ ok: true, player: "dropped" });
+  });
+
+  it("accepts a version 3 file with no standing", () => {
+    expect(parseImport(JSON.stringify(buildExport([], NOW)), NOW)).toMatchObject({ ok: true, player: null });
   });
 
   it("prefers the file's standing only when it rests on more rated rounds", () => {

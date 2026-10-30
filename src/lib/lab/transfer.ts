@@ -41,6 +41,9 @@ export interface LabExport {
 
 const MAX_STREAK = 100_000;
 
+/** Rated rounds a standing may claim. Far beyond what the game can reach, so a hand-edited count cannot outrank every real one. */
+export const MAX_CERTAINTY_ROUNDS = 1_000_000;
+
 /** Far above a full 5,000-round record, so a file this large is not one. */
 export const MAX_IMPORT_BYTES = 5 * 1024 * 1024;
 
@@ -73,7 +76,8 @@ function parseStanding(raw: unknown): PlayerStanding | null {
     raw.skillRating <= MAX_SKILL_RATING &&
     isCount(raw.streak, MAX_STREAK) &&
     certainty.rd === raw.certainty.rd &&
-    certainty.rounds === raw.certainty.rounds;
+    certainty.rounds === raw.certainty.rounds &&
+    certainty.rounds <= MAX_CERTAINTY_ROUNDS;
   return valid ? { skillRating: raw.skillRating as number, streak: raw.streak as number, certainty } : null;
 }
 

@@ -31,14 +31,22 @@ const EXPORT_FILE = "memory-chess-lab-record.json";
 // Loaded on demand so the game store stays out of the home bundle until a backup or a restore needs it.
 const gameStore = () => import("@/lib/store/gameStore");
 
-async function readStanding(): Promise<PlayerStanding> {
-  const { useGameStore, standingOf } = await gameStore();
-  return standingOf(useGameStore.getState());
+async function readStanding(): Promise<PlayerStanding | undefined> {
+  try {
+    const { useGameStore, standingOf } = await gameStore();
+    return standingOf(useGameStore.getState());
+  } catch {
+    return undefined;
+  }
 }
 
-async function restoreStanding(imported: PlayerStanding): Promise<boolean> {
-  const { useGameStore } = await gameStore();
-  return useGameStore.getState().restoreStanding(imported);
+async function restoreStanding(imported: PlayerStanding): Promise<"restored" | "kept" | "dropped"> {
+  try {
+    const { useGameStore } = await gameStore();
+    return useGameStore.getState().restoreStanding(imported) ? "restored" : "kept";
+  } catch {
+    return "dropped";
+  }
 }
 
 export function useLabRecord(): LabRecord {
@@ -73,8 +81,7 @@ export function useLabRecord(): LabRecord {
         trackEvent({ name: "lab_import", params: { added, rejected: parsed.rejected } });
         if (restored !== null || added > 0) announceLabChange();
         const summary = parsed.summary === "dropped" ? "dropped" : exported && (restored === null ? "ignored" : "restored");
-        const player =
-          parsed.player === null || parsed.player === "dropped" ? parsed.player : (await restoreStanding(parsed.player)) ? "restored" : "kept";
+        const player = parsed.player === null || parsed.player === "dropped" ? parsed.player : await restoreStanding(parsed.player);
         return { ok: true, added, rejected: parsed.rejected, overCap: parsed.overCap, summary, player };
       } catch {
         return { ok: false, tooLarge: false };

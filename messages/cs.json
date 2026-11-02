@@ -561,7 +561,8 @@
           "line": "{line}: vynecháno {missed} z {shown}",
           "lineThin": "{line}: viděno {shown}, na závěr to nestačí",
           "realAria": "Váš podíl vynechaných figur na každém poli. Šedá pole mají méně než 10 viděných figur.",
-          "realNote": "Tmavší znamená častěji vynecháno. Šedá mají méně než 10 viděných figur."
+          "realNote": "Tmavší znamená častěji vynecháno. Šedá mají méně než 10 viděných figur.",
+          "lines": "Dokud nemá každé pole 10 viděných figur, každé pole je vybarveno podle celého svého sloupce a řady."
         },
         "daily": {
           "fig": "Obr. {number} · Deska dne",
@@ -1609,7 +1610,7 @@
         "desc": "Která pole a linie mineš nejčastěji, napříč všemi koly.",
         "aria": "Tvůj podíl minutých figur na každém poli. Tmavší znamená častěji minuto. Šedá pole mají méně než {minimum} viděných figur.",
         "note": "Tmavší pole jsou minutá častěji. Šedá pole mají méně než {minimum} viděných figur.",
-        "lines": "Dokud nemá každé pole {minimum} viděných figur, mapa ukazuje celé sloupce a řady.",
+        "lines": "Dokud nemá každé pole {minimum} viděných figur, každé pole je vybarveno podle celého svého sloupce a řady.",
         "files": "Sloupce",
         "ranks": "Řady",
         "line": "{line}: minuto {missed} z {shown}",

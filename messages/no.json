@@ -561,7 +561,8 @@
           "line": "{line}: {missed} av {shown} bommet",
           "lineThin": "{line}: {shown} sett, for få til å lese",
           "realAria": "Andelen bom på hvert felt. Grå felt har færre enn 10 sette brikker.",
-          "realNote": "Mørkere betyr oftere bommet. Grå felt har under 10 sette brikker."
+          "realNote": "Mørkere betyr oftere bommet. Grå felt har under 10 sette brikker.",
+          "lines": "Til hvert felt har 10 sette brikker, fargelegges hvert felt etter hele linjen og raden sin."
         },
         "daily": {
           "fig": "Fig. {number} · Dagens brett",
@@ -1609,7 +1610,7 @@
         "desc": "Hvilke felt og linjer du bommer mest på, på tvers av alle runder.",
         "aria": "Andelen bom på hvert felt. Mørkere betyr oftere bommet. Grå felt har færre enn {minimum} sette brikker.",
         "note": "Mørkere felt bommes oftere. Grå felt har færre enn {minimum} sette brikker.",
-        "lines": "Til hvert felt har {minimum} sette brikker, leser kartet hele linjer og rader.",
+        "lines": "Til hvert felt har {minimum} sette brikker, fargelegges hvert felt etter hele linjen og raden sin.",
         "files": "Linjer",
         "ranks": "Rader",
         "line": "{line}: {missed} av {shown} bommet",

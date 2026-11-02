@@ -561,7 +561,8 @@
           "line": "{line}: {missed} din {shown} greșite",
           "lineThin": "{line}: {shown} văzute, prea puține pentru o citire",
           "realAria": "Proporția greșelilor tale pe fiecare câmp. Câmpurile gri au mai puțin de 10 piese văzute.",
-          "realNote": "Mai închis înseamnă greșit mai des. Câmpurile gri au sub 10 piese văzute."
+          "realNote": "Mai închis înseamnă greșit mai des. Câmpurile gri au sub 10 piese văzute.",
+          "lines": "Până când fiecare câmp are 10 piese văzute, fiecare câmp este colorat după întreaga sa coloană și întregul său rând."
         },
         "daily": {
           "fig": "Fig. {number} · Tabla zilei",
@@ -1609,7 +1610,7 @@
         "desc": "Ce câmpuri și linii greșești cel mai des, în toate rundele.",
         "aria": "Proporția greșelilor tale pe fiecare câmp. Mai închis înseamnă greșit mai des. Câmpurile gri au mai puțin de {minimum} piese văzute.",
         "note": "Câmpurile mai închise sunt greșite mai des. Câmpurile gri au mai puțin de {minimum} piese văzute.",
-        "lines": "Până când fiecare câmp are {minimum} piese văzute, harta citește coloane și rânduri întregi.",
+        "lines": "Până când fiecare câmp are {minimum} piese văzute, fiecare câmp este colorat după întreaga sa coloană și întregul său rând.",
         "files": "Coloane",
         "ranks": "Rânduri",
         "line": "{line}: {missed} din {shown} greșite",

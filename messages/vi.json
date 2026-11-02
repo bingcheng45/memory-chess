@@ -561,7 +561,8 @@
           "line": "{line}: sót {missed} trên {shown}",
           "lineThin": "{line}: đã thấy {shown}, chưa đủ để đọc",
           "realAria": "Tỷ lệ sót của bạn trên từng ô. Ô xám có ít hơn 10 quân đã thấy.",
-          "realNote": "Càng đậm nghĩa là càng hay sót. Ô xám có dưới 10 quân đã thấy."
+          "realNote": "Càng đậm nghĩa là càng hay sót. Ô xám có dưới 10 quân đã thấy.",
+          "lines": "Cho đến khi mỗi ô có 10 quân đã thấy, mỗi ô được tô màu theo cả cột và hàng của nó."
         },
         "daily": {
           "fig": "Hình {number} · Bàn cờ hôm nay",
@@ -1609,7 +1610,7 @@
         "desc": "Những ô và đường bạn hay sai nhất, tính trên mọi ván.",
         "aria": "Tỷ lệ sai của bạn trên từng ô. Ô càng đậm càng hay sai. Ô xám có ít hơn {minimum} quân đã thấy.",
         "note": "Ô càng đậm càng hay sai. Ô xám có ít hơn {minimum} quân đã thấy.",
-        "lines": "Cho đến khi mỗi ô có {minimum} quân đã thấy, bản đồ sẽ đọc theo cả cột và hàng.",
+        "lines": "Cho đến khi mỗi ô có {minimum} quân đã thấy, mỗi ô được tô màu theo cả cột và hàng của nó.",
         "files": "Cột",
         "ranks": "Hàng",
         "line": "{line}: sai {missed} trên {shown}",

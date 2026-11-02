@@ -561,7 +561,8 @@
           "line": "{line}: {missed} von {shown} verfehlt",
           "lineThin": "{line}: {shown} gesehen, zu wenig für eine Aussage",
           "realAria": "Dein Fehleranteil auf jedem Feld. Graue Felder haben weniger als 10 gesehene Figuren.",
-          "realNote": "Dunkler heißt öfter verfehlt. Grau heißt weniger als 10 gesehene Figuren."
+          "realNote": "Dunkler heißt öfter verfehlt. Grau heißt weniger als 10 gesehene Figuren.",
+          "lines": "Solange nicht jedes Feld 10 gesehene Figuren hat, wird jedes Feld nach seiner ganzen Linie und Reihe eingefärbt."
         },
         "daily": {
           "fig": "Abb. {number} · Tagesbrett",
@@ -1609,7 +1610,7 @@
         "desc": "Welche Felder und Linien du am häufigsten verfehlst, über alle Runden hinweg.",
         "aria": "Dein Fehleranteil auf jedem Feld. Dunkler heißt öfter verfehlt. Graue Felder haben weniger als {minimum} gesehene Figuren.",
         "note": "Dunklere Felder werden öfter verfehlt. Graue Felder haben weniger als {minimum} gesehene Figuren.",
-        "lines": "Solange nicht jedes Feld {minimum} gesehene Figuren hat, zeigt die Karte ganze Linien und Reihen.",
+        "lines": "Solange nicht jedes Feld {minimum} gesehene Figuren hat, wird jedes Feld nach seiner ganzen Linie und Reihe eingefärbt.",
         "files": "Linien",
         "ranks": "Reihen",
         "line": "{line}: {missed} von {shown} verfehlt",

@@ -16,7 +16,7 @@ import type { LabResults, MissCell, TypeRecall } from "@/lib/lab/metrics";
 import { PROGRESS_WINDOW, progressOf, type ProgressSeries } from "@/lib/lab/progressSeries";
 import { hasFigure, LAB_THRESHOLDS, type Readiness } from "@/lib/lab/readiness";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
-import { MissLines, MissMap, RecallBar } from "@/components/home/LabCharts";
+import { MissLines, MissMap, RecallBar, boardFromLines } from "@/components/home/LabCharts";
 import { oneDecimal } from "@/components/home/LabReadingCharts";
 import { sentenceValues } from "@/components/home/LabInsightPanels";
 import { niceTicks } from "./chartGeometry";
@@ -273,7 +273,6 @@ function MissPanel({ t, result: { readiness, value } }: { t: Translate; result: 
   const lines = (cells: readonly MissCell[], names: readonly string[]) =>
     cells.map((cell, index) => ({
       name: names[index],
-      value: missShare(cell),
       label: cell.ready ? t("miss.line", { line: names[index], missed: cell.missed, shown: cell.shown }) : t("miss.lineThin", { line: names[index], shown: cell.shown }),
     }));
   const drawn = value && hasFigure(readiness);
@@ -286,7 +285,8 @@ function MissPanel({ t, result: { readiness, value } }: { t: Translate; result: 
           ) : (
             <>
               <p className="lab-note">{t("miss.lines", { minimum })}</p>
-              <div className="lab-dash-lines">
+              <MissMap cells={boardFromLines(value.files.map(missShare), value.ranks.map(missShare))} />
+              <div className="lab-sr">
                 <MissLines caption={t("miss.files")} lines={lines(value.files, FILES)} />
                 <MissLines caption={t("miss.ranks")} lines={lines(value.ranks, RANKS)} />
               </div>

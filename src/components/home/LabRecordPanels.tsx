@@ -15,7 +15,7 @@ import { FILES, RANKS } from "@/lib/game/board";
 import { mapChessJsPieceToType } from "@/utils/chessPieces";
 import { formatSeconds } from "@/utils/timer";
 import { seconds, settingValues } from "./labFormat";
-import { AccuracySparkline, MissLines, MissMap, RecallBar, StreakGrid } from "./LabCharts";
+import { AccuracySparkline, MissLines, MissMap, RecallBar, StreakGrid, boardFromLines } from "./LabCharts";
 import { LabPlayLink } from "./LabPlayLink";
 import { QUICK_START_HREF } from "./links";
 import { LabWeek, SampleWeek } from "./LabWeek";
@@ -166,7 +166,6 @@ export function MissPanel({ result: { readiness, value: map }, daysAgo }: { resu
   const lines = (cells: readonly MissCell[], names: readonly string[]) =>
     cells.map((cell, index) => ({
       name: names[index],
-      value: missShare(cell),
       label: cell.ready
         ? t("heat.line", { line: names[index], missed: cell.missed, shown: cell.shown })
         : t("heat.lineThin", { line: names[index], shown: cell.shown }),
@@ -195,10 +194,14 @@ export function MissPanel({ result: { readiness, value: map }, daysAgo }: { resu
           {map.view === "squares" ? (
             <MissMap cells={map.squares.map(missShare)} label={t("heat.realAria")} />
           ) : (
-            <div className="lab-heat-pair">
-              <MissLines caption={t("heat.files")} lines={lines(map.files, FILES)} />
-              <MissLines caption={t("heat.ranks")} lines={lines(map.ranks, RANKS)} />
-            </div>
+            <>
+              <MissMap cells={boardFromLines(map.files.map(missShare), map.ranks.map(missShare))} />
+              <div className="lab-sr">
+                <MissLines caption={t("heat.files")} lines={lines(map.files, FILES)} />
+                <MissLines caption={t("heat.ranks")} lines={lines(map.ranks, RANKS)} />
+              </div>
+              <p className="lab-note">{t("heat.lines")}</p>
+            </>
           )}
           <p className="lab-note">
             {t("heat.realNote")} {t("fromRounds", { count: readiness.sampleSize })}

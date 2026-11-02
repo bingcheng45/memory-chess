@@ -561,7 +561,8 @@
           "line": "{line}: {missed} af {shown} misset",
           "lineThin": "{line}: {shown} set, for få til at sige noget",
           "realAria": "Din andel af missede brikker på hvert felt. Grå felter har færre end 10 sete brikker.",
-          "realNote": "Mørkere betyder oftere misset. Grå har færre end 10 sete brikker."
+          "realNote": "Mørkere betyder oftere misset. Grå har færre end 10 sete brikker.",
+          "lines": "Indtil hvert felt har 10 sete brikker, farves hvert felt efter hele sin linje og række."
         },
         "daily": {
           "fig": "Fig. {number} · Dagens bræt",
@@ -1609,7 +1610,7 @@
         "desc": "Hvilke felter og linjer du oftest misser, på tværs af alle runder.",
         "aria": "Din andel af missede brikker på hvert felt. Mørkere betyder oftere misset. Grå felter har færre end {minimum} sete brikker.",
         "note": "Mørkere felter misses oftere. Grå felter har færre end {minimum} sete brikker.",
-        "lines": "Indtil hvert felt har {minimum} sete brikker, viser kortet hele linjer og rækker.",
+        "lines": "Indtil hvert felt har {minimum} sete brikker, farves hvert felt efter hele sin linje og række.",
         "files": "Linjer",
         "ranks": "Rækker",
         "line": "{line}: {missed} af {shown} misset",

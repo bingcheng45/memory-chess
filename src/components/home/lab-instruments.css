@@ -136,9 +136,6 @@
 /* Sized like the widest panel tag, so the head wraps the same with Sample, Your record or no tag. */
 .lab-tag-slot { display: inline-flex; justify-content: flex-end; font: 600 12px/1 var(--lp-ui); min-width: 8.8em; min-height: 24px; }
 .lab-tag-slot .lab-tag { min-width: 8.8em; text-align: center; justify-content: center; }
-/* As tall as the square map, so the note under the files and ranks stays put. */
-.lab-heat-pair { margin-top: 14px; min-height: var(--lab-heat-w); }
-.lab-heat-pair > :first-child { margin-top: 0; }
 /* Three lines; the em line covers browsers without lh units, such as Safari before 16.4. */
 .lab-p-streak .lab-panel-desc { min-height: 4.65em; min-height: 3lh; }
 [data-lab-record] ~ .lab-paper .lab-p-span { min-height: var(--lab-h-span); }

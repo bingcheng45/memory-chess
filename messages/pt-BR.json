@@ -561,7 +561,8 @@
           "line": "{line}: {missed} de {shown} erradas",
           "lineThin": "{line}: {shown} vistas, poucas para ler",
           "realAria": "Sua taxa de erro em cada casa. As casas cinza têm menos de 10 peças vistas.",
-          "realNote": "Mais escuro quer dizer errado com mais frequência. Cinza tem menos de 10 peças vistas."
+          "realNote": "Mais escuro quer dizer errado com mais frequência. Cinza tem menos de 10 peças vistas.",
+          "lines": "Até cada casa ter 10 peças vistas, cada casa é colorida pela sua coluna e fileira inteiras."
         },
         "daily": {
           "fig": "Fig. {number} · Tabuleiro do dia",
@@ -1609,7 +1610,7 @@
         "desc": "Quais casas e linhas você mais erra, somando todas as rodadas.",
         "aria": "Sua taxa de erro em cada casa. Mais escuro é errado com mais frequência. Casas cinza têm menos de {minimum} peças vistas.",
         "note": "Casas mais escuras são erradas com mais frequência. Casas cinza têm menos de {minimum} peças vistas.",
-        "lines": "Até cada casa ter {minimum} peças vistas, o mapa lê colunas e fileiras inteiras.",
+        "lines": "Até cada casa ter {minimum} peças vistas, cada casa é colorida pela sua coluna e fileira inteiras.",
         "files": "Colunas",
         "ranks": "Fileiras",
         "line": "{line}: {missed} de {shown} erradas",

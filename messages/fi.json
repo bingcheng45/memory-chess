@@ -561,7 +561,8 @@
           "line": "{line}: {missed}/{shown} ohi",
           "lineThin": "{line}: {shown} nähty, liian vähän tulkittavaksi",
           "realAria": "Ohi menneiden osuus kullakin ruudulla. Harmailla ruuduilla on nähty alle 10 nappulaa.",
-          "realNote": "Tummempi tarkoittaa useammin ohi mennyttä. Harmailla ruuduilla on nähty alle 10 nappulaa."
+          "realNote": "Tummempi tarkoittaa useammin ohi mennyttä. Harmailla ruuduilla on nähty alle 10 nappulaa.",
+          "lines": "Kunnes jokaisella ruudulla on nähty 10 nappulaa, jokainen ruutu sävytetään koko linjansa ja rivinsä mukaan."
         },
         "daily": {
           "fig": "Kuva {number} · Päivän lauta",
@@ -1609,7 +1610,7 @@
         "desc": "Mitkä ruudut ja linjat menevät sinulta useimmin ohi, kaikilta kierroksilta.",
         "aria": "Ohi menneiden osuus kullakin ruudulla. Tummempi tarkoittaa useammin ohi mennyttä. Harmailla ruuduilla on nähty alle {minimum} nappulaa.",
         "note": "Tummemmat ruudut menevät useammin ohi. Harmailla ruuduilla on nähty alle {minimum} nappulaa.",
-        "lines": "Kunnes jokaisella ruudulla on nähty {minimum} nappulaa, kartta näyttää kokonaiset linjat ja rivit.",
+        "lines": "Kunnes jokaisella ruudulla on nähty {minimum} nappulaa, jokainen ruutu sävytetään koko linjansa ja rivinsä mukaan.",
         "files": "Linjat",
         "ranks": "Rivit",
         "line": "{line}: {missed}/{shown} ohi",

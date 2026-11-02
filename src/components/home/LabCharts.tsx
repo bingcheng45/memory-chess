@@ -1,7 +1,8 @@
 "use client";
 
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useTranslations } from "next-intl";
+import { FILES, RANKS } from "@/lib/game/board";
 import {
   CURVE_AXIS_DAYS,
   CURVE_REVIEW_DAYS,
@@ -150,32 +151,56 @@ const HEAT_FLOOR = 0.08;
 const HEAT_RANGE = 0.85;
 const heatOpacity = (value: number) => Number((HEAT_FLOOR + value * HEAT_RANGE).toFixed(2));
 
-export function MissMap({ cells = SAMPLE_MISS_MAP, label }: { readonly cells?: readonly (number | null)[]; readonly label: string }) {
+/** Misses on a chessboard, rank 8 at the top. Without a label the board is hidden from screen readers, which read the line lists beside it. */
+export function MissMap({ cells = SAMPLE_MISS_MAP, label }: { readonly cells?: readonly (number | null)[]; readonly label?: string }) {
   return (
-    <div className="lab-heat" role="img" aria-label={label}>
-      {cells.map((value, index) =>
-        value === null ? <i key={index} data-thin="" /> : <i key={index} style={{ opacity: heatOpacity(value) }} />,
-      )}
+    <div className="lab-missboard" {...(label ? { role: "img", "aria-label": label } : { "aria-hidden": true })}>
+      <ol className="lab-missboard-ranks" aria-hidden="true">
+        {RANKS.map((rank) => (
+          <li key={rank}>{rank}</li>
+        ))}
+      </ol>
+      <div className="lab-heat">
+        {cells.map((value, index) => {
+          const dark = (Math.floor(index / 8) + index) % 2 === 1 ? "" : undefined;
+          return value === null ? (
+            <i key={index} data-dark={dark} data-thin="" />
+          ) : (
+            <i key={index} data-dark={dark} style={{ "--heat": `${Math.round(heatOpacity(value) * 100)}%` } as CSSProperties} />
+          );
+        })}
+      </div>
+      <ol className="lab-missboard-files" aria-hidden="true">
+        {FILES.map((file) => (
+          <li key={file}>{file}</li>
+        ))}
+      </ol>
     </div>
   );
 }
 
+/** Until single squares have enough pieces, each square reads as the mean of its file's and its rank's miss share. */
+export function boardFromLines(files: readonly (number | null)[], ranks: readonly (number | null)[]): (number | null)[] {
+  return Array.from({ length: 64 }, (_, index) => {
+    const file = files[index % 8];
+    const rank = ranks[Math.floor(index / 8)];
+    return file === null || rank === null ? null : (file + rank) / 2;
+  });
+}
+
 interface MissLine {
   readonly name: string;
-  readonly value: number | null;
   readonly label: string;
 }
 
+/** The file and rank counts behind a board drawn from lines, for screen readers. */
 export function MissLines({ lines, caption }: { readonly lines: readonly MissLine[]; readonly caption: string }) {
   return (
-    <div className="lab-heat-lines">
-      <span className="lab-k">{caption}</span>
+    <div>
+      <span>{caption}</span>
       <ul>
-        {lines.map(({ name, value, label }) => (
-          <li key={name} aria-label={label}>
-            {value === null ? <i data-thin="" /> : <i style={{ opacity: heatOpacity(value) }} />}
-            <span aria-hidden="true">{name}</span>
-          </li>
+        {lines.map(({ name, label }) => (
+          <li key={name}>{label}</li>
         ))}
       </ul>
     </div>

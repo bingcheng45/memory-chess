@@ -561,7 +561,8 @@
           "line": "{line}: pomyłki w {missed} z {shown}",
           "lineThin": "{line}: zobaczono {shown}, za mało do oceny",
           "realAria": "Udział pomyłek na każdym polu. Szare pola mają mniej niż 10 zobaczonych figur.",
-          "realNote": "Ciemniej znaczy częstsze pomyłki. Szare pola mają mniej niż 10 zobaczonych figur."
+          "realNote": "Ciemniej znaczy częstsze pomyłki. Szare pola mają mniej niż 10 zobaczonych figur.",
+          "lines": "Dopóki każde pole nie ma 10 zobaczonych figur, każde pole jest zabarwione według całej swojej kolumny i rzędu."
         },
         "daily": {
           "fig": "Ryc. {number} · Plansza dnia",
@@ -1609,7 +1610,7 @@
         "desc": "Które pola i linie mylisz najczęściej, we wszystkich rundach.",
         "aria": "Udział pomyłek na każdym polu. Ciemniejsze oznacza częstsze pomyłki. Szare pola mają mniej niż {minimum} zobaczonych figur.",
         "note": "Na ciemniejszych polach mylisz się częściej. Szare pola mają mniej niż {minimum} zobaczonych figur.",
-        "lines": "Dopóki każde pole nie ma {minimum} zobaczonych figur, mapa pokazuje całe kolumny i rzędy.",
+        "lines": "Dopóki każde pole nie ma {minimum} zobaczonych figur, każde pole jest zabarwione według całej swojej kolumny i rzędu.",
         "files": "Kolumny",
         "ranks": "Rzędy",
         "line": "{line}: pomyłki w {missed} z {shown}",

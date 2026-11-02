@@ -561,7 +561,8 @@
           "line": "{line}: {shown} közül {missed} elhibázva",
           "lineThin": "{line}: {shown} látva, ez még kevés",
           "realAria": "A hibaarányod mezőnként. A szürke mezőkön 10-nél kevesebb bábu volt látható.",
-          "realNote": "A sötétebb gyakoribb hibát jelent. A szürke mezőkön 10-nél kevesebb bábu volt látható."
+          "realNote": "A sötétebb gyakoribb hibát jelent. A szürke mezőkön 10-nél kevesebb bábu volt látható.",
+          "lines": "Amíg minden mezőn nem volt látható legalább 10 bábu, minden mező színe a teljes vonalát és sorát mutatja."
         },
         "daily": {
           "fig": "{number}. ábra · A nap táblája",
@@ -1609,7 +1610,7 @@
         "desc": "Mely mezőket és vonalakat hibázod el a legtöbbször, az összes kör alapján.",
         "aria": "A hibaarányod mezőnként. A sötétebb gyakoribb hibát jelent. A szürke mezőkön még nem volt látható legalább {minimum} bábu.",
         "note": "A sötétebb mezőket gyakrabban hibázod el. A szürke mezőkön még nem volt látható legalább {minimum} bábu.",
-        "lines": "Amíg minden mezőn nem volt látható legalább {minimum} bábu, a térkép teljes vonalakat és sorokat mutat.",
+        "lines": "Amíg minden mezőn nem volt látható legalább {minimum} bábu, minden mező színe a teljes vonalát és sorát mutatja.",
         "files": "Vonalak",
         "ranks": "Sorok",
         "line": "{line}: {missed}/{shown} elhibázva",

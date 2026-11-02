@@ -561,7 +561,8 @@
           "line": "{line}: {missed} de {shown} falladas",
           "lineThin": "{line}: {shown} vistas, no bastan para sacar conclusiones",
           "realAria": "Tu proporción de fallos en cada casilla. Las casillas grises tienen menos de 10 piezas vistas.",
-          "realNote": "Más oscuro significa que se falla más a menudo. Gris indica menos de 10 piezas vistas."
+          "realNote": "Más oscuro significa que se falla más a menudo. Gris indica menos de 10 piezas vistas.",
+          "lines": "Hasta que cada casilla tenga 10 piezas vistas, cada casilla se colorea según su columna y fila completas."
         },
         "daily": {
           "fig": "Fig. {number} · Tablero del día",
@@ -1609,7 +1610,7 @@
         "desc": "Qué casillas y líneas fallas más, sumando todas las rondas.",
         "aria": "Tu proporción de fallos en cada casilla. Más oscuro significa que se falla más a menudo. Las casillas grises tienen menos de {minimum} piezas vistas.",
         "note": "Las casillas más oscuras se fallan más a menudo. Las casillas grises tienen menos de {minimum} piezas vistas.",
-        "lines": "Hasta que cada casilla tenga {minimum} piezas vistas, el mapa muestra columnas y filas completas.",
+        "lines": "Hasta que cada casilla tenga {minimum} piezas vistas, cada casilla se colorea según su columna y fila completas.",
         "files": "Columnas",
         "ranks": "Filas",
         "line": "{line}: {missed} de {shown} falladas",

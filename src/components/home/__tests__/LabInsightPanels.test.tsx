@@ -278,7 +278,7 @@ describe("a record panel that is still warming up", () => {
   it("draws the sample heatmap under the miss map need, darkest at h1 and lightest at d4, as its caption says", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
     const map = within(panel("Miss map")).getByRole("img");
-    const shades = [...map.querySelectorAll("i")].map((square) => Number((square as HTMLElement).style.opacity));
+    const shades = [...map.querySelectorAll(".lab-heat i")].map((square) => parseFloat((square as HTMLElement).style.getPropertyValue("--heat")));
 
     expect(map).toHaveAccessibleName("Sample heatmap of missed squares: darkest down the h-file and around h1, with hot spots on b7 and f7, lightest in the centre.");
     expect(BOARD_SQUARES[shades.indexOf(Math.max(...shades))]).toBe("h1");

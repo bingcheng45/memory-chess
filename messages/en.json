@@ -561,7 +561,8 @@
           "line": "{line}: {missed} of {shown} missed",
           "lineThin": "{line}: {shown} seen, not enough to read",
           "realAria": "Your miss share on each square. Grey squares have fewer than 10 pieces seen.",
-          "realNote": "Darker means missed more often. Grey has under 10 pieces seen."
+          "realNote": "Darker means missed more often. Grey has under 10 pieces seen.",
+          "lines": "Until every square has 10 pieces seen, each square is shaded by its whole file and rank."
         },
         "daily": {
           "fig": "Fig. {number} · Today's board",
@@ -1609,7 +1610,7 @@
         "desc": "Which squares and lines you miss most, across every round.",
         "aria": "Your miss share on each square. Darker is missed more often. Grey squares have fewer than {minimum} pieces seen.",
         "note": "Darker squares are missed more often. Grey squares have fewer than {minimum} pieces seen.",
-        "lines": "Until every square has {minimum} pieces seen, the map reads whole files and ranks.",
+        "lines": "Until every square has {minimum} pieces seen, each square is shaded by its whole file and rank.",
         "files": "Files",
         "ranks": "Ranks",
         "line": "{line}: {missed} of {shown} missed",

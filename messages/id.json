@@ -561,7 +561,8 @@
           "line": "{line}: {missed} dari {shown} meleset",
           "lineThin": "{line}: {shown} terlihat, belum cukup untuk dibaca",
           "realAria": "Porsi melesetmu di setiap petak. Petak abu-abu memiliki kurang dari 10 bidak terlihat.",
-          "realNote": "Lebih gelap berarti lebih sering meleset. Abu-abu memiliki kurang dari 10 bidak terlihat."
+          "realNote": "Lebih gelap berarti lebih sering meleset. Abu-abu memiliki kurang dari 10 bidak terlihat.",
+          "lines": "Sampai setiap petak memiliki 10 bidak terlihat, warna tiap petak mengikuti kolom dan barisnya secara utuh."
         },
         "daily": {
           "fig": "Gbr. {number} · Papan hari ini",
@@ -1609,7 +1610,7 @@
         "desc": "Petak dan garis mana yang paling sering kamu lewatkan, dari semua ronde.",
         "aria": "Porsi melesetmu di setiap petak. Lebih gelap berarti lebih sering meleset. Petak abu-abu memiliki kurang dari {minimum} bidak terlihat.",
         "note": "Petak yang lebih gelap lebih sering meleset. Petak abu-abu memiliki kurang dari {minimum} bidak terlihat.",
-        "lines": "Sampai setiap petak memiliki {minimum} bidak terlihat, peta membaca kolom dan baris secara utuh.",
+        "lines": "Sampai setiap petak memiliki {minimum} bidak terlihat, warna tiap petak mengikuti kolom dan barisnya secara utuh.",
         "files": "Kolom",
         "ranks": "Baris",
         "line": "{line}: {missed} dari {shown} meleset",

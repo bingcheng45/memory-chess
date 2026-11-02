@@ -561,7 +561,8 @@
           "line": "{line}: {missed} av {shown} missade",
           "lineThin": "{line}: {shown} sedda, för få för att läsa av",
           "realAria": "Din andel missar på varje ruta. Grå rutor har färre än 10 sedda pjäser.",
-          "realNote": "Mörkare betyder oftare missad. Grå rutor har under 10 sedda pjäser."
+          "realNote": "Mörkare betyder oftare missad. Grå rutor har under 10 sedda pjäser.",
+          "lines": "Tills varje ruta har 10 sedda pjäser färgas varje ruta efter hela sin linje och rad."
         },
         "daily": {
           "fig": "Fig. {number} · Dagens bräde",
@@ -1609,7 +1610,7 @@
         "desc": "Vilka rutor och linjer du missar mest, över alla rundor.",
         "aria": "Din andel missar på varje ruta. Mörkare missas oftare. Grå rutor har färre än {minimum} sedda pjäser.",
         "note": "Mörkare rutor missas oftare. Grå rutor har färre än {minimum} sedda pjäser.",
-        "lines": "Tills varje ruta har {minimum} sedda pjäser visar kartan hela linjer och rader.",
+        "lines": "Tills varje ruta har {minimum} sedda pjäser färgas varje ruta efter hela sin linje och rad.",
         "files": "Linjer",
         "ranks": "Rader",
         "line": "{line}: {missed} av {shown} missade",

@@ -561,7 +561,8 @@
           "line": "{line}: {missed} van {shown} gemist",
           "lineThin": "{line}: {shown} gezien, te weinig om te lezen",
           "realAria": "Je aandeel missers op elk veld. Grijze velden hebben minder dan 10 geziene stukken.",
-          "realNote": "Donkerder betekent vaker gemist. Grijs heeft minder dan 10 geziene stukken."
+          "realNote": "Donkerder betekent vaker gemist. Grijs heeft minder dan 10 geziene stukken.",
+          "lines": "Tot elk veld 10 geziene stukken heeft, krijgt elk veld de kleur van zijn hele lijn en rij."
         },
         "daily": {
           "fig": "Fig. {number} · Bord van de dag",
@@ -1609,7 +1610,7 @@
         "desc": "Welke velden en lijnen je het vaakst mist, over alle rondes.",
         "aria": "Je aandeel missers op elk veld. Donkerder wordt vaker gemist. Grijze velden hebben minder dan {minimum} geziene stukken.",
         "note": "Donkerdere velden worden vaker gemist. Grijze velden hebben minder dan {minimum} geziene stukken.",
-        "lines": "Tot elk veld {minimum} geziene stukken heeft, leest de kaart hele lijnen en rijen.",
+        "lines": "Tot elk veld {minimum} geziene stukken heeft, krijgt elk veld de kleur van zijn hele lijn en rij.",
         "files": "Lijnen",
         "ranks": "Rijen",
         "line": "{line}: {missed} van {shown} gemist",

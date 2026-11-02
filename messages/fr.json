@@ -561,7 +561,8 @@
           "line": "{line} : {missed} manquées sur {shown}",
           "lineThin": "{line} : {shown} vues, pas assez pour conclure",
           "realAria": "Votre part d’oublis sur chaque case. Les cases grises comptent moins de 10 pièces vues.",
-          "realNote": "Plus c’est foncé, plus la case est souvent manquée. Le gris signale moins de 10 pièces vues."
+          "realNote": "Plus c’est foncé, plus la case est souvent manquée. Le gris signale moins de 10 pièces vues.",
+          "lines": "Tant que chaque case n’a pas 10 pièces vues, chaque case est colorée selon sa colonne et sa rangée entières."
         },
         "daily": {
           "fig": "Fig. {number} · Échiquier du jour",
@@ -1609,7 +1610,7 @@
         "desc": "Les cases et les lignes que vous manquez le plus, toutes parties confondues.",
         "aria": "Votre part d’oublis sur chaque case. Plus c’est foncé, plus la case est souvent manquée. Les cases grises comptent moins de {minimum} pièces vues.",
         "note": "Les cases plus foncées sont manquées plus souvent. Les cases grises comptent moins de {minimum} pièces vues.",
-        "lines": "Tant que chaque case n’a pas {minimum} pièces vues, la carte se lit par colonnes et rangées entières.",
+        "lines": "Tant que chaque case n’a pas {minimum} pièces vues, chaque case est colorée selon sa colonne et sa rangée entières.",
         "files": "Colonnes",
         "ranks": "Rangées",
         "line": "{line} : {missed} manquées sur {shown}",

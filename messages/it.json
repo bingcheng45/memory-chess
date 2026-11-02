@@ -561,7 +561,8 @@
           "line": "{line}: {missed} sbagliati su {shown}",
           "lineThin": "{line}: {shown} visti, non abbastanza per una lettura",
           "realAria": "La tua quota di errori su ogni casa. Le case grigie hanno meno di 10 pezzi visti.",
-          "realNote": "Più scuro significa sbagliata più spesso. Il grigio indica meno di 10 pezzi visti."
+          "realNote": "Più scuro significa sbagliata più spesso. Il grigio indica meno di 10 pezzi visti.",
+          "lines": "Finché ogni casa non ha 10 pezzi visti, ogni casa è colorata in base alla sua colonna e traversa intere."
         },
         "daily": {
           "fig": "Fig. {number} · Scacchiera del giorno",
@@ -1609,7 +1610,7 @@
         "desc": "Le case e le linee che sbagli di più, considerando tutte le partite.",
         "aria": "La tua quota di errori su ogni casa. Più scuro significa sbagliata più spesso. Le case grigie hanno meno di {minimum} pezzi visti.",
         "note": "Le case più scure sono sbagliate più spesso. Le case grigie hanno meno di {minimum} pezzi visti.",
-        "lines": "Finché ogni casa non ha {minimum} pezzi visti, la mappa legge colonne e traverse intere.",
+        "lines": "Finché ogni casa non ha {minimum} pezzi visti, ogni casa è colorata in base alla sua colonna e traversa intere.",
         "files": "Colonne",
         "ranks": "Traverse",
         "line": "{line}: {missed} sbagliati su {shown}",

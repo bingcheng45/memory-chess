@@ -1,5 +1,5 @@
 /* Chart primitives every Lab Paper page draws with: the line charts in home/LabCharts.tsx and home/LabReadingCharts.tsx,
-   the miss map and its file and rank strips. Imported by those components, so each page that draws one gets its rules. */
+   the miss map board. Imported by those components, so each page that draws one gets its rules. */
 .lab-chart { width: 100%; height: auto; display: block; margin-top: 14px; overflow: visible; }
 .lab-chart text { font-family: var(--lp-ui); font-size: 11px; font-variant-numeric: tabular-nums; fill: var(--lp-muted); }
 .lab-chart .lab-c-grid { stroke: var(--lp-line); stroke-width: 1; }
@@ -14,12 +14,12 @@
 .lab-chart .lab-c-last { fill: var(--lp-accent); stroke: var(--lp-surface); stroke-width: 2; }
 .lab-chart text.lab-c-last-label { fill: var(--lp-ink); font-weight: 600; }
 .lab-chart .lab-c-partial { fill: none; stroke: var(--lp-accent); stroke-width: 2; stroke-dasharray: 5 4; opacity: 0.6; }
-.lab-heat { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; margin-top: 14px; max-width: var(--lab-heat-w, 260px); }
-.lab-heat i { aspect-ratio: 1; border-radius: 2px; display: block; background: var(--lp-accent); }
-.lab-heat i[data-thin] { background: var(--lp-surface-2); }
-.lab-heat-lines { margin-top: 14px; }
-.lab-heat-lines ul { display: grid; grid-template-columns: repeat(8, 1fr); gap: 2px; max-width: var(--lab-heat-w, 260px); margin: 6px 0 0; padding: 0; list-style: none; }
-.lab-heat-lines li { display: grid; gap: 4px; justify-items: center; font: 500 11px/1.3 var(--lp-data); color: var(--lp-muted); }
-.lab-heat-lines i { width: 100%; aspect-ratio: 1; border-radius: 2px; display: block; background: var(--lp-accent); }
-.lab-heat-lines i[data-thin] { background: var(--lp-surface-2); }
 .lab-bar[data-thin] { color: var(--lp-muted); }
+.lab-missboard { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 6px; margin-top: 14px; max-width: calc(var(--lab-heat-w, 260px) + 18px); }
+.lab-missboard ol { display: grid; margin: 0; padding: 0; list-style: none; font: 500 11px/1 var(--lp-data); color: var(--lp-muted); }
+.lab-missboard-ranks { grid-template-rows: repeat(8, 1fr); align-items: center; }
+.lab-missboard-files { grid-column: 2; grid-template-columns: repeat(8, 1fr); justify-items: center; }
+.lab-heat { display: grid; grid-template-columns: repeat(8, 1fr); border: 1px solid var(--lp-line); border-radius: 4px; overflow: hidden; }
+.lab-heat i { --sq: var(--lp-surface-2); display: block; aspect-ratio: 1; background: var(--sq); background: color-mix(in srgb, var(--lp-accent) var(--heat, 0%), var(--sq)); }
+.lab-heat i[data-dark] { --sq: color-mix(in srgb, var(--lp-ink) 4%, var(--lp-surface-2)); }
+.lab-heat i[data-thin] { background-image: repeating-linear-gradient(135deg, transparent 0 4px, color-mix(in srgb, var(--lp-muted) 22%, transparent) 4px 5px); }

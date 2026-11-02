@@ -561,7 +561,8 @@
           "line": "{line}: {shown} taştan {missed} tanesi kaçırıldı",
           "lineThin": "{line}: {shown} taş görüldü, okumak için yetersiz",
           "realAria": "Her karedeki kaçırma oranın. Gri karelerde görülen taş sayısı 10'un altında.",
-          "realNote": "Koyu renk daha sık kaçırılan demek. Gri karelerde görülen taş sayısı 10'un altında."
+          "realNote": "Koyu renk daha sık kaçırılan demek. Gri karelerde görülen taş sayısı 10'un altında.",
+          "lines": "Her karede 10 taş görülene kadar her kare, ait olduğu sütunun ve sıranın tamamına göre renklendirilir."
         },
         "daily": {
           "fig": "Şek. {number} · Günün tahtası",
@@ -1609,7 +1610,7 @@
         "desc": "Tüm turlar boyunca en çok hangi kareleri ve hatları kaçırdığın.",
         "aria": "Her karedeki kaçırma oranın. Koyu kareler daha sık kaçırılır. Gri karelerde görülen taş sayısı {minimum} altındadır.",
         "note": "Koyu kareler daha sık kaçırılır. Gri karelerde görülen taş sayısı {minimum} altındadır.",
-        "lines": "Her karede {minimum} taş görülene kadar harita tüm sütunları ve sıraları okur.",
+        "lines": "Her karede {minimum} taş görülene kadar her kare, ait olduğu sütunun ve sıranın tamamına göre renklendirilir.",
         "files": "Sütunlar",
         "ranks": "Sıralar",
         "line": "{line}: {shown} taştan {missed} tanesi kaçırıldı",

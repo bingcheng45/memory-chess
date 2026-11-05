@@ -27,6 +27,12 @@ describe("response headers", () => {
     expect(all.filter((rule) => rule.source === EVERY_PATH || rule.source === "/pieces/:path*")).toHaveLength(2);
   });
 
+  it("cache the round sounds like the piece images, so a returning player does not download them again", async () => {
+    const sounds = (await rules()).find((rule) => rule.source === "/sounds/:path*");
+
+    expect(sounds?.headers).toEqual([{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }]);
+  });
+
   it("set the fixed security headers", async () => {
     const sent = await headers();
 

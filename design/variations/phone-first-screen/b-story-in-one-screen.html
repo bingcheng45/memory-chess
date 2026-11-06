@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variation B · The story in one screen</title>
+<!--
+  Stance: keep the drama, lose the wait. The Najdorf intro is the hook, so it
+  stays dark and orange, but the whole story fits in one screen and ends on a
+  question the product answers. Brand at the top, "Play a free round" in the
+  thumb zone from the first frame. The 45 boards are a static grid, so nothing
+  moves for reduced-motion users and nothing has to be scrolled through.
+-->
+<style>
+  :root {
+    --night: #070707; --ink: #f5efe9; --muted: #b9b0a8; --ember: #ff9a5c; --ember-deep: #c2511a;
+    --sq-a: #1d1a18; --sq-b: #2a2522;
+    --space-1: 8px; --space-2: 16px; --space-3: 24px;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--night); color: var(--ink); font: 400 17px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; min-height: 100svh; display: flex; flex-direction: column; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 14px var(--space-2); }
+  .logo { font-weight: 700; font-size: 20px; }
+  .logo span { color: var(--ember); }
+  .menu { width: 44px; height: 44px; border-radius: 10px; border: 1px solid #3a3330; background: transparent; color: var(--ink); font-size: 20px; }
+  main { flex: 1; display: flex; flex-direction: column; padding: var(--space-1) var(--space-2) var(--space-3); max-width: 480px; margin: 0 auto; width: 100%; }
+  .kicker { font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+  .grid { display: grid; grid-template-columns: repeat(9, 1fr); gap: 5px; margin: var(--space-2) 0; }
+  .grid i { aspect-ratio: 1; border-radius: 2px; background: repeating-conic-gradient(var(--sq-b) 0 25%, var(--sq-a) 0 50%) 0 0 / 50% 50%; border: 1px solid #4a2f20; }
+  .grid i:nth-child(7n+3) { border-color: var(--ember-deep); }
+  h1 { font-size: 34px; line-height: 1.08; letter-spacing: -0.025em; }
+  h1 em { font-style: normal; color: var(--ember); }
+  .lede { color: var(--muted); margin-top: var(--space-1); }
+  .actions { margin-top: auto; padding-top: var(--space-3); display: grid; gap: 10px; }
+  .cta { display: block; padding: 16px; border-radius: 12px; background: var(--ember); color: #1a0d05; font-weight: 700; font-size: 18px; text-align: center; text-decoration: none; }
+  .ghost { display: block; padding: 13px; border-radius: 12px; border: 1px solid #3a3330; color: var(--ink); text-align: center; text-decoration: none; font-size: 16px; }
+  a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .fine { text-align: center; font-size: 14px; color: var(--muted); }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Memory <span>Chess</span></div>
+  <button class="menu" aria-label="Menu">&#9776;</button>
+</header>
+<main>
+  <p class="kicker">São Paulo · January 1947</p>
+  <div class="grid" role="img" aria-label="Forty-five chessboards">
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+  </div>
+  <h1>Najdorf held <em>45 boards</em> in his head. How many can you hold?</h1>
+  <p class="lede">Memory Chess shows you a position for a few seconds, then hides it. Rebuild it and get a score.</p>
+  <div class="actions">
+    <a class="cta" href="#">Play a free round</a>
+    <a class="ghost" href="#">Read Najdorf's story</a>
+    <p class="fine">Free · no account · about a minute</p>
+  </div>
+</main>
+</body>
+</html>

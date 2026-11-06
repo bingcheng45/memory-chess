@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variation C · Play on arrival</title>
+<!--
+  Stance: fewest steps. The first screen IS the first round: a four-piece
+  position at its easiest, one sentence of instruction, and a Start button in
+  the thumb zone. No presets, no counters, no story until after the first
+  score, when the visitor has a reason to care. The settings the /game page
+  shows up front (presets, piece count, time, blindfold) stay one tap away.
+-->
+<style>
+  :root {
+    --bg: #f4f6f6; --surface: #fff; --ink: #0f1b24; --muted: #4a5864; --line: #d5dcdf;
+    --blue: #1d4ed8; --brand: #c2511a; --sq-light: #edf1f2; --sq-dark: #c5cfd3;
+    --space-1: 8px; --space-2: 16px; --space-3: 24px;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--ink); font: 400 17px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; min-height: 100svh; display: flex; flex-direction: column; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 14px var(--space-2); border-bottom: 1px solid var(--line); }
+  .logo { font-weight: 700; font-size: 20px; }
+  .logo span { color: var(--brand); }
+  .menu { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-size: 20px; }
+  main { flex: 1; display: flex; flex-direction: column; padding: var(--space-3) var(--space-2); max-width: 480px; margin: 0 auto; width: 100%; }
+  .step { font-size: 14px; font-weight: 600; color: var(--blue); }
+  h1 { font-size: 30px; line-height: 1.12; letter-spacing: -0.02em; margin: 4px 0 6px; }
+  .lede { color: var(--muted); }
+  .board { position: relative; display: grid; grid-template-columns: repeat(8, 1fr); aspect-ratio: 1; margin: var(--space-3) 0 var(--space-2); border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .board i { display: grid; place-items: center; font-style: normal; font-size: 30px; line-height: 1; background: var(--sq-light); }
+  .board i.d { background: var(--sq-dark); }
+  .facts { display: flex; justify-content: space-between; font-size: 15px; color: var(--muted); }
+  .facts b { color: var(--ink); }
+  .start { margin-top: auto; padding-top: var(--space-2); }
+  .cta { display: block; padding: 17px; border-radius: 12px; background: var(--blue); color: #fff; font-weight: 600; font-size: 18px; text-align: center; text-decoration: none; }
+  .alt { display: block; text-align: center; padding: 12px; font-size: 15px; color: var(--blue); }
+  a:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Memory <span>Chess</span></div>
+  <button class="menu" aria-label="Menu">&#9776;</button>
+</header>
+<main>
+  <p class="step">Your first round · free, no account</p>
+  <h1>Remember where the pieces are.</h1>
+  <p class="lede">You get 10 seconds to look. Then the board goes blank and you put them back.</p>
+
+  <div class="board" role="img" aria-label="Four pieces: white king g1, white rook f1, black king g8, black rook f8. Hidden when you press Start.">
+    <i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d">♜</i><i>♚</i><i class="d"></i>
+    <i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i>
+    <i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i>
+    <i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i>
+    <i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i>
+    <i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i>
+    <i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i>
+    <i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i>♖</i><i class="d">♔</i><i></i>
+  </div>
+  <p class="facts"><span><b>4</b> pieces</span><span><b>10 s</b> to look</span><span>About <b>1 min</b></span></p>
+
+  <div class="start">
+    <a class="cta" href="#">Start · 10 seconds</a>
+    <a class="alt" href="#">Choose pieces and time instead</a>
+  </div>
+</main>
+</body>
+</html>

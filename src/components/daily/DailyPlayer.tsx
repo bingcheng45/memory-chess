@@ -17,9 +17,10 @@ interface DailyPlayerProps {
   readonly joined: DailyEntry | null;
   readonly onJoined: (entry: DailyEntry) => void;
   readonly onPlayed: (played: boolean) => void;
+  readonly firstToday?: boolean;
 }
 
-export function DailyPlayer({ day, setting, joined, onJoined, onPlayed }: DailyPlayerProps) {
+export function DailyPlayer({ day, setting, joined, onJoined, onPlayed, firstToday = false }: DailyPlayerProps) {
   const lab = useLabData();
   const read = day !== null && lab.storage !== "loading";
   const board = read ? dailyBoardOf(lab.records, day, readDailyOpened()) : null;
@@ -33,7 +34,7 @@ export function DailyPlayer({ day, setting, joined, onJoined, onPlayed }: DailyP
   return (
     <>
       {late?.status === "played" && <LateJoin key={late.day} round={late.round} />}
-      <DailyCard board={board} setting={setting} joined={joined} standing={standing} onJoined={onJoined} justPlayed={justPlayed} />
+      <DailyCard board={board} setting={setting} joined={joined} standing={standing} onJoined={onJoined} justPlayed={justPlayed} firstToday={firstToday} />
     </>
   );
 }

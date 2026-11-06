@@ -63,9 +63,10 @@ describe("today's top 10", () => {
     );
 
     expect(screen.getByRole("heading", { name: "Yesterday's top 10" })).toBeInTheDocument();
-    expect(screen.getByText("No one has joined today's board yet. Play it and be the first.")).toBeInTheDocument();
+    // Today's card says no one has joined; this card leaves no empty line or gap for it.
+    expect(screen.queryByText("No one has joined today's board yet. Play it and be the first.")).not.toBeInTheDocument();
     expect(within(screen.getAllByRole("rowgroup")[1]).getAllByRole("row")).toHaveLength(10);
-    expect(container.querySelector(".daily-played")).toHaveTextContent(/^$/);
+    expect(container.querySelector(".daily-played")).toBeNull();
   });
 
   it("calls today's rows today's top 10", () => {
@@ -106,7 +107,6 @@ describe("the honest board", () => {
     view(ROWS.slice(0, 1), "2026-10-14");
     expect(screen.getByRole("heading", { name: "Yesterday's board" })).toBeInTheDocument();
     expect(screen.getByText("Players who joined yesterday's board: 1")).toBeInTheDocument();
-    expect(screen.getByText("No one has joined today's board yet. Play it and be the first.")).toBeInTheDocument();
     expect(screen.queryByRole("table")).not.toBeInTheDocument();
   });
 

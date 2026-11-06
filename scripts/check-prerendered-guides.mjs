@@ -28,7 +28,12 @@ const missing = pages.filter(
 
 if (missing.length > 0) {
   console.error(`${missing.length} of ${pages.length} guide pages were not prerendered:`);
-  for (const [locale, slug] of missing) console.error(`  /${locale}/learn/${slug}`);
+  for (const [locale, slug] of missing) {
+    const inManifest = Boolean(routes[`/${locale}/learn/${slug}`]);
+    console.error(`  /${locale}/learn/${slug} (${inManifest ? "listed in the prerender manifest, but its HTML file is missing" : "not in the prerender manifest"})`);
+  }
+  const learnDir = join(DIST, "server/app/en/learn");
+  console.error(`${learnDir} ${existsSync(learnDir) ? "exists" : "does not exist"}.`);
   process.exit(1);
 }
 

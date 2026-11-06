@@ -3,6 +3,7 @@ import "./lab/ts-hooks.mjs";
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { pathToFileURL } from "node:url";
+import { prerenderedHtml } from "./prerendered-html.mjs";
 
 const DIST = ".next";
 const MANIFEST = join(DIST, "prerender-manifest.json");
@@ -22,9 +23,8 @@ if (!existsSync(MANIFEST)) {
 
 const routes = JSON.parse(readFileSync(MANIFEST, "utf8")).routes;
 
-const missing = pages.filter(
-  ([locale, slug]) => !routes[`/${locale}/learn/${slug}`] || !existsSync(join(DIST, `server/app/${locale}/learn`, `${slug}.html`)),
-);
+const html = new Set(prerenderedHtml().map(({ route }) => route));
+const missing = pages.filter(([locale, slug]) => !routes[`/${locale}/learn/${slug}`] || !html.has(`${locale}/learn/${slug}`));
 
 if (missing.length > 0) {
   console.error(`${missing.length} of ${pages.length} guide pages were not prerendered:`);

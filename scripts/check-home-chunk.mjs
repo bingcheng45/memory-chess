@@ -1,26 +1,28 @@
 #!/usr/bin/env node
-import { existsSync, readdirSync, readFileSync } from "node:fs";
-import { join, relative } from "node:path";
+import { readFileSync } from "node:fs";
+import { prerenderedHtml } from "./prerendered-html.mjs";
 
-// Only the home pages (.next/server/app/<locale>.html) may load the home page's chunk. Another page that references it
+// Only the home pages (<locale>.html) may load the home page's chunk. Another page that references it
 // downloads the home page's code; src/components/home/HomeLinks.tsx says how that happens.
-const APP = ".next/server/app";
 const HOME_CHUNK = /\(home\)\/page-[a-z0-9]+\.js/;
 
-if (!existsSync(APP)) {
-  console.error(`${APP} not found. Run \`next build\` before this check.`);
+const pages = prerenderedHtml();
+if (pages.length === 0) {
+  console.error("No prerendered HTML found. Run `next build` before this check.");
   process.exit(1);
 }
 
-const pages = readdirSync(APP, { recursive: true })
-  .filter((file) => file.endsWith(".html"))
-  .map((file) => join(APP, file));
-const isHomePage = (path) => !relative(APP, path).includes("/") && !relative(APP, path).startsWith("_");
-const leaking = pages.filter((path) => !isHomePage(path) && HOME_CHUNK.test(readFileSync(path, "utf8")));
+const isHomePage = (route) => !route.includes("/") && !route.startsWith("_");
+const leaking = pages.filter(({ route, path }) => !isHomePage(route) && HOME_CHUNK.test(readFileSync(path, "utf8")));
+const homePages = pages.filter(({ route }) => isHomePage(route));
+if (!homePages.some(({ path }) => HOME_CHUNK.test(readFileSync(path, "utf8")))) {
+  console.error("No home page loads a chunk named like (home)/page-<hash>.js, so this check cannot see a leak. Build with webpack.");
+  process.exit(1);
+}
 
 if (leaking.length > 0) {
   console.error(`${leaking.length} of ${pages.length} prerendered pages load the home page's chunk:`);
-  for (const path of leaking.slice(0, 20)) console.error(`  ${relative(APP, path)}`);
+  for (const { route } of leaking.slice(0, 20)) console.error(`  ${route}`);
   process.exit(1);
 }
 

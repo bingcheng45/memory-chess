@@ -42,8 +42,8 @@ const REPORT_ONLY_POLICY = [
   `report-to ${CSP_REPORT_GROUP}`,
 ].join("; ");
 
-/** The piece names are not hashed, so a day is fresh and a week may be served stale while it revalidates. */
-const PIECES_CACHE_CONTROL = "public, max-age=86400, stale-while-revalidate=604800";
+/** Piece and sound file names are not hashed, so a day is fresh and a week may be served stale while it revalidates. */
+const UNHASHED_ASSET_CACHE_CONTROL = "public, max-age=86400, stale-while-revalidate=604800";
 
 const SECURITY_HEADERS = [
   { key: "X-Frame-Options", value: "DENY" },
@@ -69,7 +69,8 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       { source: "/:path*", headers: SECURITY_HEADERS },
-      { source: "/pieces/:path*", headers: [{ key: "Cache-Control", value: PIECES_CACHE_CONTROL }] },
+      { source: "/pieces/:path*", headers: [{ key: "Cache-Control", value: UNHASHED_ASSET_CACHE_CONTROL }] },
+      { source: "/sounds/:path*", headers: [{ key: "Cache-Control", value: UNHASHED_ASSET_CACHE_CONTROL }] },
     ];
   },
   async redirects() {

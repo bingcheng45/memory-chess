@@ -1,5 +1,5 @@
 import { act, type ComponentProps } from "react";
-// @ts-expect-error react-dom ships no types for its node entry, which jsdom needs to avoid MessageChannel
+// jsdom needs the node entry of react-dom/server to avoid MessageChannel
 import { renderToString } from "react-dom/server.node";
 import { createRoot, hydrateRoot, type Root } from "react-dom/client";
 import { NextIntlClientProvider } from "next-intl";

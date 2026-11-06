@@ -277,3 +277,18 @@ html:has(.home-intro[data-phase="playing"]) { overflow: hidden; }
   .home-first .home-first-board:nth-child(n + 13) { display: none; }
   .home-first .home-first-title { font-size: 29px; }
 }
+
+/* Safari's toolbars leave far less than the phone's height, so on shorter screens fewer rows are shown, keeping the
+   board size, so "Play a free round" stays on the first screen. */
+@media (max-width: 767px) and (max-height: 740px) {
+  .home-first .home-first-board:nth-child(n + 11) { display: none; }
+}
+@media (max-width: 359px) and (max-height: 740px) {
+  .home-first .home-first-board:nth-child(n + 9) { display: none; }
+}
+@media (max-width: 767px) and (max-height: 620px) {
+  .home-first .home-first-board:nth-child(n + 6) { display: none; }
+}
+@media (max-width: 359px) and (max-height: 620px) {
+  .home-first .home-first-board:nth-child(n + 5) { display: none; }
+}

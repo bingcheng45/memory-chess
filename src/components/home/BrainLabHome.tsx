@@ -3,6 +3,7 @@ import { CalibrationSection } from "./CalibrationSection";
 import { FinalCta } from "./FinalCta";
 import { GAME_VIDEO } from "./gameVideo";
 import { HomeStructuredData } from "./HomeStructuredData";
+import { IntroFirstScreen } from "./intro/IntroFirstScreen";
 import { LabFaq } from "./LabFaq";
 import { LabGameVideo } from "./LabGameVideo";
 import { LabHomeHeader } from "./LabHomeHeader";
@@ -22,6 +23,7 @@ export function BrainLabHome({ initialPlays }: { readonly initialPlays?: number 
       <LabHomeHeader />
       <main>
         <HomeStructuredData />
+        <IntroFirstScreen />
         <LabHero initialPlays={initialPlays} />
         <LabGameVideo video={GAME_VIDEO} />
         <NotebookSection />

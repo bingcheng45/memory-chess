@@ -10,8 +10,10 @@ const PLAY_BEFORE_CLOCK = playHref(DEFAULT_PRESET.pieceCount, DEFAULT_PRESET.mem
 
 const BOARD_CELLS = Array.from({ length: 64 }, (_, index) => (Math.floor(index / 8) + index) % 2);
 
-export function DailyOpenCard({ setting, streak = 0 }: { setting: DailySetting | null; streak?: number }) {
+/** `firstToday`: no one has joined today's board yet, so the card says the player can be the first. */
+export function DailyOpenCard({ setting, streak = 0, firstToday = false }: { setting: DailySetting | null; streak?: number; firstToday?: boolean }) {
   const t = useTranslations("daily.page");
+  const board = useTranslations("daily.board");
   return (
     <section className="daily-card" aria-labelledby="daily-card-title" data-state="open">
       <h2 id="daily-card-title" className="daily-card-title">{t("open")}</h2>
@@ -24,6 +26,7 @@ export function DailyOpenCard({ setting, streak = 0 }: { setting: DailySetting |
       <Link className="lab-btn lab-btn-primary daily-play" href={setting ? playHref(setting.pieceCount, setting.memorizeTime, "daily") : PLAY_BEFORE_CLOCK}>
         {t("play")}
       </Link>
+      {firstToday && <p className="daily-note">{board("empty")}</p>}
       {streak > 0 && <p className="daily-note">{t("streak", { count: streak })}</p>}
     </section>
   );

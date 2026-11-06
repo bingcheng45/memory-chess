@@ -22,9 +22,11 @@ interface DailyCardProps {
   readonly onJoined: (entry: DailyEntry) => void;
   /** The game sent the player here straight after today's round, so the card leads them to join. */
   readonly justPlayed?: boolean;
+  /** No one has joined today's board yet, so the open card invites the player to be first. */
+  readonly firstToday?: boolean;
 }
 
-export function DailyCard({ board, setting, joined, standing, onJoined, justPlayed = false }: DailyCardProps) {
+export function DailyCard({ board, setting, joined, standing, onJoined, justPlayed = false, firstToday = false }: DailyCardProps) {
   const t = useTranslations("daily.page");
   const prompting = justPlayed && board?.status === "played" && !joined && board.round.correct > 0;
   const card = useJoinPrompt(prompting);
@@ -50,7 +52,7 @@ export function DailyCard({ board, setting, joined, standing, onJoined, justPlay
       </section>
     );
   }
-  return <DailyOpenCard setting={setting} streak={board?.streak?.current ?? 0} />;
+  return <DailyOpenCard setting={setting} streak={board?.streak?.current ?? 0} firstToday={firstToday} />;
 }
 
 /** Scrolls the prompt to the top, the join form under it, and puts the cursor in the name field, once, when the card starts prompting. */

@@ -38,6 +38,7 @@ The gate runs before first paint in an inline script, the same pattern as `RECOR
 | `navigator.connection.saveData` | No intro |
 | Seen flag in local storage | No intro (the replay link is always there) |
 | URL has a `#section` | No intro |
+| English page on a phone (`FIRST_SCREEN_LOCALES`, `FIRST_SCREEN_MEDIA`) | No intro; the phone first screen (`IntroFirstScreen`) tells the story, and its "Read Najdorf's story" plays the intro |
 | Anyone else | Intro |
 
 Removed from the prototype: the search-landing rule and the crawler rule. Googlebot renders what a first-time visitor sees, so nothing differs by user agent, and Lighthouse measures the intro's real cost.

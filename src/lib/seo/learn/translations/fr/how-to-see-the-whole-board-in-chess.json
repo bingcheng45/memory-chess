@@ -1,6 +1,6 @@
 {
-  "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
-  "approvedHash": "5731003f8544f9c7b3d63cd4fe674d9f9957cc91debac28b504898f62a98b537",
+  "sourceHash": "c8fe10e00c01f59b9147f4ec2c02f03eafba8dc825e01522385d0897bc25d84e",
+  "approvedHash": "8b16c5f76d867972d53e936bec467eaca80fc6742876139acee1d09a28e974a8",
   "sameAsEnglish": [
     "sections.generated-positions.blocks[1].drills[1].duration",
     "sections.far-corner-glance.blocks[1].columns[0]"
@@ -107,11 +107,11 @@
             "drills": [
               {
                 "title": "Mémoriser en commençant par les bords",
-                "description": "Jouez 3 manches de 12 pièces avec 8 secondes pour observer, en appuyant sur « Réessayer » entre les manches. Pendant l’observation, lisez d’abord les bords, puis le centre. Placez d’abord les pièces des bords. L’échiquier de résultat entoure d’un anneau chaque case manquée. Vous réussissez quand aucun anneau ne tombe sur une case du bord.",
-                "duration": "3 manches, environ 5 minutes",
+                "description": "Jouez 3 manches de 6 pièces avec 15 secondes pour observer, en appuyant sur « Réessayer » entre les manches. Pendant l’observation, lisez d’abord les bords, puis le centre. Placez d’abord les pièces des bords. L’échiquier de résultat entoure d’un anneau chaque case manquée. Vous réussissez quand aucun anneau ne tombe sur une case du bord. Une fois réussi, essayez la manche de 12 pièces à la fin de ce guide.",
+                "duration": "3 manches, environ 3 minutes",
                 "goal": "Tenir à la fois les bords et le centre plutôt qu’un seul groupe.",
                 "play": {
-                  "label": "Jouer 12 pièces, 8 secondes"
+                  "label": "Jouer 6 pièces, 15 secondes"
                 }
               },
               {

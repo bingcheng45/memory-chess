@@ -5,6 +5,7 @@
       "articles": "Articoli",
       "about": "Informazioni",
       "changelog": "Novità",
+      "blindfold": "Scacchi alla cieca",
       "contactUs": "Contattaci",
       "privacy": "Privacy",
       "terms": "Termini",
@@ -316,7 +317,7 @@
           "study": {
             "name": "Studio",
             "title": "Undici pezzi, dieci secondi.",
-            "body": "La posizione finale dell’Immortale di Kasparov, dopo 44.Qa7. Qui Topalov abbandonò. Abbraccia tutta la scacchiera, non una casa alla volta. Negli esperimenti di de Groot, i maestri riproducevano una posizione di partita mostrata per poco molto meglio dei giocatori più deboli.",
+            "body": "La posizione finale dell’Immortale di Kasparov, dopo 44.Qa7. Qui Topalov abbandonò. Abbraccia tutta la scacchiera, non una casa alla volta. Negli esperimenti di De Groot, i maestri riproducevano una posizione di partita mostrata per poco molto meglio dei giocatori più deboli.",
             "note": "Fig. Bianco: re c1, donna a7, pedoni f4, g3, h2. Nero: re e1, torre d2, pedoni c3, f5, g6, h7."
           },
           "anchors": {
@@ -560,7 +561,8 @@
           "line": "{line}: {missed} sbagliati su {shown}",
           "lineThin": "{line}: {shown} visti, non abbastanza per una lettura",
           "realAria": "La tua quota di errori su ogni casa. Le case grigie hanno meno di 10 pezzi visti.",
-          "realNote": "Più scuro significa sbagliata più spesso. Il grigio indica meno di 10 pezzi visti."
+          "realNote": "Più scuro significa sbagliata più spesso. Il grigio indica meno di 10 pezzi visti.",
+          "lines": "Finché ogni casa non ha 10 pezzi visti, ogni casa è colorata in base alla sua colonna e traversa intere."
         },
         "daily": {
           "fig": "Fig. {number} · Scacchiera del giorno",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# partita più vecchia è stata esclusa} many {# partite più vecchie sono state escluse} other {# partite più vecchie sono state escluse}} per restare entro il limite di 5.000 partite.",
           "summaryIgnored": "Questo browser aveva già delle partite, quindi sono state unite solo le partite nuove, non i totali complessivi del file.",
           "summaryDropped": "I totali complessivi del file erano illeggibili o di una versione precedente, quindi sono state importate solo le sue partite.",
+          "playerRestored": "Il tuo punteggio e la tua serie sono stati ripristinati.",
           "safari": "Su Safari, una scheda privata non conserva questo registro dopo la chiusura, e Safari cancella i dati salvati di un sito dopo circa 7 giorni senza visite. Esporta una copia per conservarlo.",
           "unavailable": "Non viene salvato nelle finestre private. Questa finestra del browser non sta conservando le tue partite.",
           "backup": "Backup tra dispositivi (in arrivo)",
@@ -940,6 +943,21 @@
         "capped": "I {cap} ripassi di oggi sono completati su questo dispositivo.",
         "cappedNext": "Le scacchiere ancora da ripassare tornano domani, a partire da quella che aspetta da più tempo.",
         "schedule": "Le scacchiere in cui fai meno dell’80% tornano 1, 3, 7 e 14 giorni dopo la prima volta che le vedi."
+      },
+      "intro": {
+        "label": "L'intro delle 45 scacchiere",
+        "skip": "Salta l'intro",
+        "replay": "Le 45 scacchiere di Najdorf",
+        "counter": "{count, plural, one {# scacchiera} many {# scacchiere} other {# scacchiere}}",
+        "counterDark": "{count, plural, one {# scacchiera} many {# scacchiere} other {# scacchiere}} · nessuna vista",
+        "one": "Una scacchiera. <em>La puoi vedere.</em>",
+        "oneNote": "La partita dell'Opera di Morphy, Parigi, 1858. Ogni mossa è reale.",
+        "many": "Ora <em>quarantacinque.</em>",
+        "manyNote": "San Paolo, gennaio 1947. Miguel Najdorf contro quarantacinque avversari contemporaneamente.",
+        "dark": "Non ne vedeva <em>nessuna.</em>",
+        "darkNote": "Giocò alla cieca per oltre 23 ore, rispondendo a ogni mossa a memoria. Ne vinse 39.",
+        "you": "Inizia da <em>una.</em>",
+        "youNote": "Guarda una posizione per qualche secondo. Poi si oscura e la ricostruisci."
       }
     }
   },
@@ -981,10 +999,25 @@
         "gain": "Fino a <num>+{value}</num>",
         "loss": "Al massimo <num>−{value}</num>",
         "announce": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}. Se sbagli, al massimo −{loss}.",
-        "announceProvisional": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}."
+        "announceProvisional": "Punteggio della scacchiera {board}. Il tuo punteggio {rating}. Precisione attesa {expected}%. Se lo superi, fino a +{gain}.",
+        "summary": "Scacchiera {board} · previsto {expected}%",
+        "expect": "previsto {expected}%",
+        "details": "Dettagli del punteggio"
       },
       "blindfold": "Alla cieca",
-      "blindfoldHint": "Studia la posizione in notazione, senza pezzi sulla scacchiera."
+      "blindfoldHint": "Studia la posizione in notazione, senza pezzi sulla scacchiera.",
+      "presetShort": {
+        "easy": "Facile",
+        "medium": "Medio",
+        "hard": "Difficile",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Meno pezzi",
+      "morePieces": "Più pezzi",
+      "lessTime": "Meno tempo di memorizzazione",
+      "moreTime": "Più tempo di memorizzazione",
+      "boardPreview": "Anteprima della scacchiera. Pezzi sulla scacchiera: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Precisione",
       "piecesCorrectCaption": "pezzi corretti",
+      "summary": "{correct} / {total} {correct, plural, one {corretto} many {corretti} other {corretti}} · {wrong, plural, one {# errato} many {# errati} other {# errati}} · ricostruito in {seconds} s",
       "piecesCorrect": "Pezzi corretti",
       "memorizationTime": "Tempo di memorizzazione",
       "solutionTime": "Tempo di risoluzione",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Riprova",
       "nextRound": "Round successivo",
       "changeSettings": "Cambia impostazioni",
-      "moreOptions": "Altre opzioni",
       "tileDrill": "Questo esercizio al tuo livello",
       "tileDrillWhy": "Calibrato sul tuo livello, per esercitarti su ciò che descrive l'articolo.",
-      "submitToLeaderboard": "Invia alla classifica",
-      "leaderboardQualifies": "Il tuo punteggio entra in classifica. Invialo prima che sfumi.",
+      "personalBest": "Nuovo record personale su questo livello. Mettilo agli atti.",
+      "claimLine": {
+        "qualifies": "{difficulty}: con {accuracy}% entreresti in classifica.",
+        "open": "{difficulty}: scopri il piazzamento ({accuracy}%).",
+        "claim": "Prenota posto",
+        "submit": "Invia",
+        "claimed": "In classifica: {difficulty}, {accuracy}%.",
+        "rank": "Sei al #{rank, number} su {total, number} ({difficulty})",
+        "seeBoard": "Vedi la classifica"
+      },
       "viewLeaderboard": "Vedi la classifica",
       "dialog": {
         "submitTitle": "Invia alla classifica",
-        "submitDescription": "Inserisci il nome da mostrare in classifica.",
+        "submitDescription": "Scegli un nome. Vedrai la tua posizione subito dopo.",
+        "rankLoading": "Cerco la tua posizione…",
+        "rankWorld": "{rank, number}° su {total, number} nel mondo",
+        "rankCountry": "{rank, number}° su {total, number} in {country}",
         "successTitle": "Punteggio inviato!",
         "successDescription": "Il tuo punteggio è stato inviato correttamente alla classifica.",
         "playerName": "Nome del giocatore",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) sulla scacchiera giornaliera di Memory Chess del {date}.} review {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) su una scacchiera di ripasso di Memory Chess.} other {Ho ricordato {correct, number} pezzi su {total, number} ({accuracy}) su Memory Chess.}} Riesci a fare di meglio?",
         "alt": "Scheda del risultato di Memory Chess: {details}."
       },
-      "savedToast": {
-        "message": "Partita salvata. Le tue statistiche aggiornate sono qui sotto.",
-        "action": "Mostra"
-      },
       "blindfoldRound": "Partita alla cieca: hai studiato la posizione in notazione."
     },
     "comparison": {
-      "title": "Rivedi la tua posizione"
+      "title": "Rivedi la tua posizione",
+      "viewLabel": "Vista del risultato",
+      "view": {
+        "side": "Affiancate",
+        "overlay": "Una scacchiera"
+      },
+      "yourBoard": "La tua scacchiera",
+      "position": "La posizione",
+      "yourBoardLabel": "La tua scacchiera, con i pezzi giusti e sbagliati segnati",
+      "positionLabel": "La posizione, con le case giuste e mancate segnate",
+      "legendCorrect": "Giusto",
+      "legendWrong": "Sbagliato, sulla tua scacchiera",
+      "legendMissed": "Mancato, nella posizione"
     },
     "feedback": {
       "title": "Grazie per aver giocato a Memory Chess!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# stella} many {# stelle} other {# stelle}}",
       "chooseRating": "Scegli una valutazione in stelle.",
       "sendFailed": "Non siamo riusciti a inviare il tuo commento. Riprova o scegli «Non ora».",
+      "rateLimited": "Troppi messaggi da questa connessione. Riprova tra {minutes, plural, one {# minuto} many {# di minuti} other {# minuti}}.",
       "send": "Invia il commento",
       "sending": "Invio..."
     },
@@ -1126,6 +1179,7 @@
       "intro": "Studia {count, plural, one {# pezzo} many {# di pezzi} other {# pezzi}} per {seconds} s, poi ricostruisci la posizione a memoria.",
       "hide": "Nascondi scacchiera",
       "restart": "Ricomincia",
+      "leave": "Esci dal round",
       "again": "Rigioca",
       "submit": "Invia",
       "clear": "Svuota scacchiera",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Si azzera alle {utc} UTC",
       "resetsAt": "Si azzera alle {utc} UTC (le {local} da te), tra {timeLeft}"
     },
+    "loading": "Caricamento della classifica.",
     "mode": {
       "label": "Modalità di studio",
       "board": "Scacchiera",
@@ -1555,7 +1610,7 @@
         "desc": "Le case e le linee che sbagli di più, considerando tutte le partite.",
         "aria": "La tua quota di errori su ogni casa. Più scuro significa sbagliata più spesso. Le case grigie hanno meno di {minimum} pezzi visti.",
         "note": "Le case più scure sono sbagliate più spesso. Le case grigie hanno meno di {minimum} pezzi visti.",
-        "lines": "Finché ogni casa non ha {minimum} pezzi visti, la mappa legge colonne e traverse intere.",
+        "lines": "Finché ogni casa non ha {minimum} pezzi visti, ogni casa è colorata in base alla sua colonna e traversa intere.",
         "files": "Colonne",
         "ranks": "Traverse",
         "line": "{line}: {missed} sbagliati su {shown}",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Scacchiera di oggi · {pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}} · {seconds} s · mancano {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# pezzo} many {# pezzi} other {# pezzi}} · {seconds} s · mancano {timeLeft}",
     "next": "Prossima scacchiera tra {timeLeft}",
     "pending": "Scacchiera di oggi",
     "navReady": "{label}, la scacchiera del giorno è pronta",
@@ -1704,7 +1760,12 @@
     "play": "Gioca la scacchiera di oggi",
     "tomorrowTitle": "Scacchiera di domani",
     "tomorrowOpens": "Si apre tra {timeLeft}.",
-    "seeToday": "Vedi la scacchiera di oggi"
+    "seeToday": "Vedi la scacchiera di oggi",
+    "remindButton": "Ricordamelo ogni giorno",
+    "remindNote": "Scarica un evento di calendario che si ripete ogni giorno quando si apre la scacchiera.",
+    "remindDone": "Salvato. Apri il file per aggiungere l’evento giornaliero al tuo calendario.",
+    "remindTitle": "Scacchiera giornaliera di Memory Chess",
+    "remindDescription": "Una nuova scacchiera si apre ogni giorno a mezzanotte UTC. Tutti giocano la stessa scacchiera e hai un solo tentativo."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "Da 4 a 16 caratteri, mostrato insieme al tuo punteggio.",
       "nameShort": "Troppo corto. Usa almeno 4 caratteri.",
       "nameLong": "Troppo lungo. Usa al massimo 16 caratteri.",
+      "nameBlocked": "Questo nome non è consentito. Scegline un altro.",
       "country": "Paese",
       "chooseCountry": "Scegli un paese",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Non è stato possibile caricare la scacchiera di oggi. Riprova tra poco.",
       "joinToRank": "Partecipa alla scacchiera per vedere qui la tua posizione.",
       "order": "In ordine di pezzi corretti, poi meno errori, poi ricostruzione più veloce.",
-      "all": "Vedi tutte le scacchiere"
+      "all": "Vedi tutte le scacchiere",
+      "todayBoard": "Scacchiera di oggi",
+      "yesterdayBoard": "Scacchiera di ieri",
+      "joinedToday": "Persone che hanno partecipato alla scacchiera di oggi: {count}",
+      "joinedYesterday": "Persone che hanno partecipato alla scacchiera di ieri: {count}",
+      "listFrom": "La top 10 compare quando hanno partecipato {min} persone o più."
     },
     "reference": {
       "title": "Come funziona la scacchiera del giorno",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Pubblichiamo statistiche aggregate sulla memoria dalle partite registrate in Google Analytics, per le impostazioni con abbastanza partite e giocatori.",
     "aboutLink": "Vedi i dati sulla memoria"
+  },
+  "learnTryIt": {
+    "title": "Provalo qui",
+    "intro": "Un round di questa dimensione mostra {pieces} pezzi per {seconds} s. Poi li piazzi a memoria su una scacchiera vuota. Ecco una posizione di questa dimensione.",
+    "introBlindfold": "Un round di questa dimensione ti mostra {pieces} pezzi in notazione per {seconds} s, senza pezzi sulla scacchiera. Poi li piazzi a memoria su una scacchiera vuota. Ecco una posizione di questa dimensione, come la vedresti.",
+    "position": "Bianco: {white}. Nero: {black}.",
+    "start": "Inizia un round da {pieces} pezzi",
+    "startBlindfold": "Inizia un round alla cieca da {pieces} pezzi"
   }
 }

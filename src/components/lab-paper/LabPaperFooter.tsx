@@ -22,7 +22,7 @@ export function LabPaperFooter() {
         <div className="lab-wrap">
           <div className="lab-foot-grid">
             <div>
-              <Link className="lab-wordmark" href="/">
+              <Link className="lab-wordmark" href="/" prefetch={false}>
                 Memory <span className="lab-wordmark-chess">Chess</span>
               </Link>
               <p className="lab-foot-about">{t("footer.tagline")}</p>
@@ -32,7 +32,7 @@ export function LabPaperFooter() {
               <ul className="lab-foot-links">
                 {FOOTER_LINKS.map((link) => (
                   <li key={link.href}>
-                    <SiteLink href={link.href} label={t(link.labelKey)} />
+                    <SiteLink href={link.href} label={t(link.labelKey)} prefetch={false} />
                   </li>
                 ))}
                 <li>

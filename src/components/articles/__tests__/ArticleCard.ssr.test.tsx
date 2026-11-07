@@ -23,6 +23,11 @@ jest.mock("@/i18n/navigation", () => ({
   useRouter: () => ({ push: jest.fn() }),
 }));
 
+jest.mock("@/lib/articles/translatedLocales", () => ({
+  ...jest.requireActual("@/lib/articles/translatedLocales"),
+  ENGLISH_ONLY_ARTICLE_SLUGS: ["garry-kasparov"],
+}));
+
 const html = renderToString(
   <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
     <ul>
@@ -31,11 +36,37 @@ const html = renderToString(
   </NextIntlClientProvider>,
 );
 
+const renderCard = (summary: ReturnType<typeof summaryOf>) =>
+  renderToString(
+    <NextIntlClientProvider locale="en" messages={messages} timeZone="UTC">
+      <ul>
+        <ArticleCard article={summary} priority />
+      </ul>
+    </NextIntlClientProvider>,
+  );
+
 describe("ArticleCard server HTML", () => {
+  it("prints the summary in place of the description when the article has one", () => {
+    const article = makeArticle(0, { description: "The short meta line.", summary: "The longer summary of the article." });
+    const card = renderCard(summaryOf(article));
+
+    expect(card).toContain("The longer summary of the article.");
+    expect(card).not.toContain("The short meta line.");
+  });
+
+  it("prints the description when the article has no summary", () => {
+    expect(renderCard(summaryOf(makeArticle(0, { description: "The short meta line." })))).toContain("The short meta line.");
+  });
+
   it("carries the parts a transition moves", () => {
     expect(html).toContain('data-flight="portrait"');
     expect(html).toContain('data-flight="title"');
     expect(html).toContain('data-flight="date"');
+  });
+
+  it("marks the card of an article not yet translated, which only the English list prints", () => {
+    expect(renderCard(summaryOf(makeArticle(0, { slug: "garry-kasparov" })))).toContain("data-english-only-article=\"true\"");
+    expect(html).not.toContain("data-english-only-article");
   });
 
   it("names none of them at rest, by attribute or by inline style", () => {

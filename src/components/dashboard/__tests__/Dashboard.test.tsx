@@ -243,7 +243,7 @@ describe("Dashboard", () => {
 
     fireEvent.click(within(list).getByRole("button", { name: "Show all 9" }));
     expect(unlockText("speed")).toBe("Recall pace4 more rounds at 6 pieces, 10 sPlay 6 pieces, 10 s →");
-    expect(within(document.querySelector('[data-unlock="speed"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
+    expect(within(document.querySelector('[data-unlock="speed"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&from=dashboard");
     expect(unlockText("rating")).toBe("Skill ratingNothing yet.Play a round →");
     expect(unlockText("plans")).toBe("PlanNot set yet.Choose one in the full record →");
     expect(within(document.querySelector('[data-unlock="plans"]') as HTMLElement).getByRole("link")).toHaveAttribute("href", "/#record");
@@ -255,8 +255,10 @@ describe("Dashboard", () => {
 
     const today = document.querySelector('.lab-tiles[data-size="today"]') as HTMLElement;
     expect([...today.querySelectorAll("[data-tile]")].map((tile) => tile.getAttribute("data-tile"))).toEqual(["streak", "daily"]);
-    expect(tileText("streak")).toBe("Day streakUnlocks with 1 more day of play.Come back tomorrow.");
-    expect(within(document.querySelector('[data-tile="streak"]') as HTMLElement).queryByRole("link")).toBeNull();
+    expect(tileText("streak")).toBe("Day streakUnlocks with 1 more day of play.Come back tomorrow.Remind me dailyDownloads a calendar event that repeats every day when the board opens.");
+    const streak = within(document.querySelector('[data-tile="streak"]') as HTMLElement);
+    expect(streak.queryByRole("link")).toBeNull();
+    expect(streak.getByRole("button", { name: "Remind me daily" })).toHaveAccessibleDescription("Downloads a calendar event that repeats every day when the board opens.");
     expect(document.querySelector("#summary .lab-tiles")).toBe(today);
   });
 

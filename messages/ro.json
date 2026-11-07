@@ -5,6 +5,7 @@
       "articles": "Articole",
       "about": "Despre",
       "changelog": "Noutăți",
+      "blindfold": "Șah legat la ochi",
       "contactUs": "Contact",
       "privacy": "Confidențialitate",
       "terms": "Termeni",
@@ -560,7 +561,8 @@
           "line": "{line}: {missed} din {shown} greșite",
           "lineThin": "{line}: {shown} văzute, prea puține pentru o citire",
           "realAria": "Proporția greșelilor tale pe fiecare câmp. Câmpurile gri au mai puțin de 10 piese văzute.",
-          "realNote": "Mai închis înseamnă greșit mai des. Câmpurile gri au sub 10 piese văzute."
+          "realNote": "Mai închis înseamnă greșit mai des. Câmpurile gri au sub 10 piese văzute.",
+          "lines": "Până când fiecare câmp are 10 piese văzute, fiecare câmp este colorat după întreaga sa coloană și întregul său rând."
         },
         "daily": {
           "fig": "Fig. {number} · Tabla zilei",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# rundă mai veche a fost lăsată deoparte} few {# runde mai vechi au fost lăsate deoparte} other {# de runde mai vechi au fost lăsate deoparte}} ca să nu se depășească limita de 5.000 de runde.",
           "summaryIgnored": "Acest browser avea deja runde, așa că s-au adăugat doar rundele noi, nu și totalurile cumulate din fișier.",
           "summaryDropped": "Totalurile cumulate din fișier erau ilizibile sau dintr-o versiune mai veche, așa că s-au importat doar rundele lui.",
+          "playerRestored": "Ratingul și seria ta au fost restaurate.",
           "safari": "În Safari, un tab privat nu păstrează acest jurnal după ce îl închizi, iar Safari șterge datele stocate ale unui site după aproximativ 7 zile fără vizită. Exportă o copie ca să-l păstrezi.",
           "unavailable": "Nu se salvează în ferestrele private. Această fereastră de browser nu îți păstrează rundele.",
           "backup": "Backup între dispozitive (în curând)",
@@ -940,6 +943,21 @@
         "capped": "Cele {cap} recapitulări de azi sunt gata pe acest dispozitiv.",
         "cappedNext": "Orice tablă încă programată revine mâine, începând cu cea care așteaptă de cel mai mult timp.",
         "schedule": "Tablele la care obții sub 80% revin la 1, 3, 7 și 14 zile după ce le vezi prima dată."
+      },
+      "intro": {
+        "label": "Introducerea cu 45 de table",
+        "skip": "Sari peste introducere",
+        "replay": "Cele 45 de table ale lui Najdorf",
+        "counter": "{count, plural, one {# tablă} few {# table} other {# de table}}",
+        "counterDark": "{count, plural, one {# tablă} few {# table} other {# de table}} · niciuna văzută",
+        "one": "O tablă. <em>O poți vedea.</em>",
+        "oneNote": "Partida de la Operă a lui Morphy, Paris, 1858. Fiecare mutare este reală.",
+        "many": "Acum, <em>patruzeci și cinci.</em>",
+        "manyNote": "São Paulo, ianuarie 1947. Miguel Najdorf împotriva a patruzeci și cinci de adversari deodată.",
+        "dark": "Nu vedea <em>niciuna.</em>",
+        "darkNote": "A jucat legat la ochi peste 23 de ore, răspunzând la fiecare mutare din memorie. A câștigat 39.",
+        "you": "Începe cu <em>una.</em>",
+        "youNote": "Privește o poziție câteva secunde. Apoi se întunecă, iar tu o reconstruiești."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "Până la <num>+{value}</num>",
         "loss": "Cel mult <num>−{value}</num>",
         "announce": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}. Dacă greșești, cel mult −{loss}.",
-        "announceProvisional": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}."
+        "announceProvisional": "Ratingul tablei {board}. Ratingul tău {rating}. Precizie așteptată {expected}%. Dacă reușești, până la +{gain}.",
+        "summary": "Tabla {board} · estimat {expected}%",
+        "expect": "estimat {expected}%",
+        "details": "Detaliile ratingului"
       },
       "blindfold": "Pe orbește",
-      "blindfoldHint": "Studiază poziția în notație, fără piese pe tablă."
+      "blindfoldHint": "Studiază poziția în notație, fără piese pe tablă.",
+      "presetShort": {
+        "easy": "Ușor",
+        "medium": "Mediu",
+        "hard": "Dificil",
+        "grandmaster": "MM"
+      },
+      "fewerPieces": "Mai puține piese",
+      "morePieces": "Mai multe piese",
+      "lessTime": "Timp de memorare mai scurt",
+      "moreTime": "Timp de memorare mai lung",
+      "boardPreview": "Previzualizarea tablei. Piese pe tablă: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Ușor",
-        "description": "Doar regii – perfect pentru început"
+        "description": "Doar regii - perfect pentru început"
       },
       "medium": {
         "label": "Mediu",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Precizie",
       "piecesCorrectCaption": "piese corecte",
+      "summary": "{correct} / {total} corect · {wrong} greșit · reconstruit în {seconds} s",
       "piecesCorrect": "Piese corecte",
       "memorizationTime": "Timp de memorare",
       "solutionTime": "Timp de rezolvare",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Încearcă din nou",
       "nextRound": "Runda următoare",
       "changeSettings": "Schimbă setările",
-      "moreOptions": "Mai multe opțiuni",
       "tileDrill": "Acest exercițiu la nivelul tău",
       "tileDrillWhy": "Potrivit nivelului tău, ca să exersezi ce descrie articolul.",
-      "submitToLeaderboard": "Trimite în clasament",
-      "leaderboardQualifies": "Rezultatul tău intră în clasament. Trimite-l până nu e prea târziu.",
+      "personalBest": "Nou record personal la acest nivel. Trece-l în clasament.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% ar intra în clasament.",
+        "open": "{difficulty}: vezi pe ce loc ajunge {accuracy}%.",
+        "claim": "Ocupă locul",
+        "submit": "Trimite",
+        "claimed": "În clasament: {difficulty}, {accuracy}%.",
+        "rank": "Ești pe locul {rank, number} din {total, number} ({difficulty})",
+        "seeBoard": "Vezi clasamentul"
+      },
       "viewLeaderboard": "Vezi clasamentul",
       "dialog": {
         "submitTitle": "Trimite în clasament",
-        "submitDescription": "Scrie numele care va apărea în clasament.",
+        "submitDescription": "Alege un nume. Îți vezi locul imediat după.",
+        "rankLoading": "Îți căutăm locul…",
+        "rankWorld": "Locul {rank, number} din {total, number} în lume",
+        "rankCountry": "Locul {rank, number} din {total, number} în {country}",
         "successTitle": "Rezultat trimis!",
         "successDescription": "Rezultatul tău a fost adăugat în clasament.",
         "playerName": "Numele jucătorului",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) pe tabla zilnică Memory Chess din {date}.} review {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) pe o tablă de recapitulare Memory Chess.} other {Am reținut {correct, number} din {total, plural, one {# piesă} few {# piese} other {# de piese}} ({accuracy}) la Memory Chess.}} Poți mai bine?",
         "alt": "Card de rezultat Memory Chess: {details}."
       },
-      "savedToast": {
-        "message": "Runda a fost salvată. Statisticile tale actualizate sunt chiar mai jos.",
-        "action": "Arată-mi"
-      },
       "blindfoldRound": "Rundă pe orbește: ai studiat poziția în notație."
     },
     "comparison": {
-      "title": "Revezi-ți poziția"
+      "title": "Revezi-ți poziția",
+      "viewLabel": "Afișarea rezultatului",
+      "view": {
+        "side": "Una lângă alta",
+        "overlay": "O singură tablă"
+      },
+      "yourBoard": "Tabla ta",
+      "position": "Poziția",
+      "yourBoardLabel": "Tabla ta, cu piesele corecte și greșite marcate",
+      "positionLabel": "Poziția, cu pătratele corecte și ratate marcate",
+      "legendCorrect": "Corect",
+      "legendWrong": "Greșit, pe tabla ta",
+      "legendMissed": "Ratat, în poziție"
     },
     "feedback": {
       "title": "Mulțumim că ai jucat Memory Chess!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# stea} few {# stele} other {# de stele}}",
       "chooseRating": "Te rugăm să alegi o notă în stele.",
       "sendFailed": "Nu am putut trimite părerea ta. Încearcă din nou sau alege „Nu acum”.",
+      "rateLimited": "Prea multe mesaje de la această conexiune. Încearcă din nou peste {minutes, plural, one {# minut} few {# minute} other {# de minute}}.",
       "send": "Trimite părerea",
       "sending": "Se trimite…"
     },
@@ -1126,6 +1179,7 @@
       "intro": "Memorează {count, plural, one {# piesă} few {# piese} other {# de piese}} timp de {seconds} s, apoi refă poziția din memorie.",
       "hide": "Ascunde tabla",
       "restart": "Reîncepe",
+      "leave": "Părăsește runda",
       "again": "Joacă din nou",
       "submit": "Trimite",
       "clear": "Golește tabla",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Se resetează la {utc} UTC",
       "resetsAt": "Se resetează la {utc} UTC ({local} la tine), în {timeLeft}"
     },
+    "loading": "Se încarcă clasamentul.",
     "mode": {
       "label": "Mod de studiu",
       "board": "Tablă",
@@ -1555,7 +1610,7 @@
         "desc": "Ce câmpuri și linii greșești cel mai des, în toate rundele.",
         "aria": "Proporția greșelilor tale pe fiecare câmp. Mai închis înseamnă greșit mai des. Câmpurile gri au mai puțin de {minimum} piese văzute.",
         "note": "Câmpurile mai închise sunt greșite mai des. Câmpurile gri au mai puțin de {minimum} piese văzute.",
-        "lines": "Până când fiecare câmp are {minimum} piese văzute, harta citește coloane și rânduri întregi.",
+        "lines": "Până când fiecare câmp are {minimum} piese văzute, fiecare câmp este colorat după întreaga sa coloană și întregul său rând.",
         "files": "Coloane",
         "ranks": "Rânduri",
         "line": "{line}: {missed} din {shown} greșite",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Tabla de azi · {pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s · mai sunt {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# piesă} few {# piese} other {# de piese}} · {seconds} s · mai sunt {timeLeft}",
     "next": "Următoarea tablă în {timeLeft}",
     "pending": "Tabla de azi",
     "navReady": "{label}, tabla zilei de azi este gata",
@@ -1704,7 +1760,12 @@
     "play": "Joacă tabla de azi",
     "tomorrowTitle": "Tabla de mâine",
     "tomorrowOpens": "Se deschide în {timeLeft}.",
-    "seeToday": "Vezi tabla de azi"
+    "seeToday": "Vezi tabla de azi",
+    "remindButton": "Amintește-mi zilnic",
+    "remindNote": "Descarcă un eveniment de calendar care se repetă în fiecare zi când se deschide tabla.",
+    "remindDone": "Salvat. Deschide fișierul ca să adaugi evenimentul zilnic în calendar.",
+    "remindTitle": "Tabla zilnică Memory Chess",
+    "remindDescription": "O tablă nouă se deschide în fiecare zi la miezul nopții UTC. Toată lumea joacă aceeași tablă și ai o singură încercare."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "Între 4 și 16 caractere, afișat alături de scorul tău.",
       "nameShort": "Prea scurt. Folosește cel puțin 4 caractere.",
       "nameLong": "Prea lung. Folosește cel mult 16 caractere.",
+      "nameBlocked": "Acest nume nu este permis. Alege altul.",
       "country": "Țară",
       "chooseCountry": "Alege o țară",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Tabla de azi nu a putut fi încărcată. Încearcă din nou în scurt timp.",
       "joinToRank": "Intră în tablă ca să-ți vezi aici locul.",
       "order": "Ordonat după piesele corecte, apoi după cele mai puține greșite, apoi după cea mai rapidă reconstrucție.",
-      "all": "Vezi toate tablele"
+      "all": "Vezi toate tablele",
+      "todayBoard": "Tabla de azi",
+      "yesterdayBoard": "Tabla de ieri",
+      "joinedToday": "Persoane care s-au alăturat tablei de azi: {count}",
+      "joinedYesterday": "Persoane care s-au alăturat tablei de ieri: {count}",
+      "listFrom": "Top 10 apare când s-au alăturat {min} sau mai multe persoane."
     },
     "reference": {
       "title": "Cum funcționează tabla zilei",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Publicăm statistici agregate despre reconstituire din rundele înregistrate în Google Analytics, pentru setările cu suficiente runde și jucători.",
     "aboutLink": "Vezi datele despre memorare"
+  },
+  "learnTryIt": {
+    "title": "Încearcă aici",
+    "intro": "O rundă de această mărime arată {pieces} piese timp de {seconds} s. Apoi le așezi din memorie pe o tablă goală. Iată o poziție de această mărime.",
+    "introBlindfold": "O rundă de această mărime îți arată {pieces} piese în notație timp de {seconds} s, fără piese pe tablă. Apoi le așezi din memorie pe o tablă goală. Iată o poziție de această mărime, așa cum ai vedea-o.",
+    "position": "Albe: {white}. Negre: {black}.",
+    "start": "Începe o rundă cu {pieces} piese",
+    "startBlindfold": "Începe o rundă fără tablă, cu {pieces} piese"
   }
 }

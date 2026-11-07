@@ -49,7 +49,7 @@ const SETTLE_MS = 4500;
 const START_SETTLE_MS = 3000;
 const LATE_CUTOFFS_MS = 1000;
 const CORRECT_PIECES = 4;
-const ROUND_PATH = "/game?pieceCount=6&memorizeTime=10&source=home_quick";
+const ROUND_PATH = "/game?pieceCount=6&memorizeTime=10&from=home_quick";
 const LOCALES = ["en", "de", "fi", "ru", "pt-BR", "pl", "hu", "ja", "zh-CN", "ko", "hi"];
 const CASES = LOCALES.map((name) => ({ name, prefix: name === "en" ? "" : `/${name}` }));
 const SCREENS = ["config", "start", "intro", "memorize", "solve", "result"];

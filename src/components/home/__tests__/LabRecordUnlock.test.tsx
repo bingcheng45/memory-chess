@@ -13,7 +13,7 @@ import { join } from "node:path";
 jest.mock("@/lib/analytics/events", () => ({ trackEvent: jest.fn() }));
 
 const css = readFileSync(join(__dirname, "../lab-instruments.css"), "utf8");
-const PLAY_HREF = "/game?pieceCount=6&memorizeTime=10&source=home_quick";
+const PLAY_HREF = "/game?pieceCount=6&memorizeTime=10&from=home_quick";
 
 const strip = () => screen.queryByRole("list", { name: "Still to unlock" });
 const rows = () => within(strip()!).getAllByRole("listitem").map((item) => Array.from(item.children, (part) => part.textContent));

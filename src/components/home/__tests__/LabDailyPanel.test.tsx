@@ -34,7 +34,7 @@ describe("today's board panel", () => {
     render(<DailyPanel records={[]} ready={false} />);
 
     expect(screen.getByRole("heading", { name: "One board a day, the same for everyone." })).toBeInTheDocument();
-    expect(playLink()).toHaveAttribute("href", "/game?pieceCount=9&memorizeTime=8&source=daily");
+    expect(playLink()).toHaveAttribute("href", "/game?pieceCount=9&memorizeTime=8&from=daily");
     expect(screen.queryByText(/You have not played it yet/)).not.toBeInTheDocument();
   });
 
@@ -106,7 +106,7 @@ describe("today's board panel", () => {
     act(() => jest.advanceTimersByTime(5 * 3_600_000 + 13 * 60_000));
 
     expect(screen.getByText("Today's board has 6 pieces and 2 seconds to study. You have not played it yet.")).toBeInTheDocument();
-    expect(playLink()).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=2&source=daily");
+    expect(playLink()).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=2&from=daily");
     expect(screen.getByText("Daily streak 1 day · longest 1 day")).toBeInTheDocument();
     expect(screen.getByText("Resets in 23 h 59 min")).toBeInTheDocument();
   });

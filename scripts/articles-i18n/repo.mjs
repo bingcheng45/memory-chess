@@ -114,7 +114,7 @@ export async function loadRepo(cwd) {
   });
   muteTypelessPackageWarning();
   const lib = await importTypeScript(root, `${ARTICLES_DIR}/articleText.ts`);
-  const { TRANSLATED_ARTICLE_LOCALES } = await importTypeScript(root, TRANSLATED_LOCALES_FILE);
+  const { TRANSLATED_ARTICLE_LOCALES, ENGLISH_ONLY_ARTICLE_SLUGS } = await importTypeScript(root, TRANSLATED_LOCALES_FILE);
   const namespace = readMessages(root, ENGLISH).articles;
 
   return {
@@ -122,7 +122,7 @@ export async function loadRepo(cwd) {
     locales: shippedLocales(root),
     translatedLocales: TRANSLATED_ARTICLE_LOCALES,
     lib,
-    articles: await englishArticles(root, lib),
+    articles: (await englishArticles(root, lib)).filter(({ slug }) => !ENGLISH_ONLY_ARTICLE_SLUGS.includes(slug)),
     chrome: { namespace, strings: Object.fromEntries(leavesOf(namespace)), sourceHash: lib.sourceHashOf(namespace) },
   };
 }

@@ -15,7 +15,7 @@
 
 - Open `/leaderboard` from the home page footer or nav.
 - Choose `View leaderboard` on a game result screen.
-- Land on `/leaderboard?player=<name>&difficulty=<tab>&...` right after `Submit to leaderboard`.
+- Land on `/leaderboard?player=<name>&difficulty=<tab>&...` right after the claim line's `Claim it` or `Submit it` button and the dialog's `Submit score`.
 
 ## Driving it with cdp.mjs
 

@@ -3,7 +3,8 @@ import { playHref } from "@/lib/game/roundLink";
 import type { DashboardTileId } from "@/lib/lab/dashboard";
 import { tileAnchor } from "@/lib/lab/tileAnchor";
 import { servedLocalesOf } from "@/lib/seo/englishOnly";
-import type { CtaTarget, GameSetup } from "./schema";
+import type { CtaTarget, GameSetup, TryIt } from "./schema";
+import { TRY_IT_PIECES } from "./tryIt";
 
 export const guidePath = (slug: string) => `/learn/${slug}`;
 
@@ -14,6 +15,8 @@ export const groupAnchor = (groupId: string) => `/learn#${groupId}`;
 export const DAILY_PATH = "/daily";
 
 export const guideRoundHref = ({ pieceCount, memorizeTime, blindfold }: GameSetup) => playHref(pieceCount, memorizeTime, "guide_cta", blindfold);
+
+export const guideTryHref = ({ memorizeTime, blindfold }: TryIt) => playHref(TRY_IT_PIECES, memorizeTime, "guide_try", blindfold);
 
 export const dashboardTileHref = (tile: DashboardTileId) => `/dashboard#${tileAnchor(tile)}`;
 

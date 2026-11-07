@@ -5,6 +5,7 @@
       "articles": "Artikler",
       "about": "Om",
       "changelog": "Nyheter",
+      "blindfold": "Blindsjakk",
       "contactUs": "Kontakt oss",
       "privacy": "Personvern",
       "terms": "Vilkår",
@@ -560,7 +561,8 @@
           "line": "{line}: {missed} av {shown} bommet",
           "lineThin": "{line}: {shown} sett, for få til å lese",
           "realAria": "Andelen bom på hvert felt. Grå felt har færre enn 10 sette brikker.",
-          "realNote": "Mørkere betyr oftere bommet. Grå felt har under 10 sette brikker."
+          "realNote": "Mørkere betyr oftere bommet. Grå felt har under 10 sette brikker.",
+          "lines": "Til hvert felt har 10 sette brikker, fargelegges hvert felt etter hele linjen og raden sin."
         },
         "daily": {
           "fig": "Fig. {number} · Dagens brett",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# eldre runde ble} other {# eldre runder ble}} utelatt for å holde seg innenfor grensen på 5 000 runder.",
           "summaryIgnored": "Denne nettleseren hadde allerede runder, så bare nye runder ble slått sammen, ikke filens totaler over tid.",
           "summaryDropped": "Filens totaler over tid kunne ikke leses eller var fra en eldre versjon, så bare rundene ble importert.",
+          "playerRestored": "Ratingen og vinnerrekken din er gjenopprettet.",
           "safari": "I Safari beholder ikke en privat fane denne journalen etter at den lukkes, og Safari sletter et nettsteds lagrede data etter omtrent 7 dager uten besøk. Eksporter en kopi for å beholde den.",
           "unavailable": "Lagres ikke i private vinduer. Dette nettleservinduet tar ikke vare på rundene dine.",
           "backup": "Sikkerhetskopi på tvers av enheter (kommer snart)",
@@ -940,6 +943,21 @@
         "capped": "Dagens {cap} repetisjoner er ferdige på denne enheten.",
         "cappedNext": "Brett som fortsatt venter, kommer tilbake i morgen, de som har ventet lengst først.",
         "schedule": "Brett der du får under 80 %, kommer tilbake 1, 3, 7 og 14 dager etter at du så dem første gang."
+      },
+      "intro": {
+        "label": "Introen med 45 brett",
+        "skip": "Hopp over intro",
+        "replay": "Najdorfs 45 brett",
+        "counter": "{count, plural, one {# brett} other {# brett}}",
+        "counterDark": "{count, plural, one {# brett} other {# brett}} · ingen sett",
+        "one": "Ett brett. <em>Du kan se det.</em>",
+        "oneNote": "Morphys operaparti, Paris, 1858. Hvert trekk er ekte.",
+        "many": "Nå <em>førtifem.</em>",
+        "manyNote": "São Paulo, januar 1947. Miguel Najdorf mot førtifem motstandere samtidig.",
+        "dark": "Han så <em>ingen av dem.</em>",
+        "darkNote": "Han spilte blindt i over 23 timer og svarte på hvert trekk etter hukommelsen. Han vant 39.",
+        "you": "Begynn med <em>ett.</em>",
+        "youNote": "Se på en stilling i noen sekunder. Så blir den mørk, og du bygger den opp igjen."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "Opptil <num>+{value}</num>",
         "loss": "Høyst <num>−{value}</num>",
         "announce": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}. Hvis det går galt, høyst −{loss}.",
-        "announceProvisional": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}."
+        "announceProvisional": "Brettets rating {board}. Din rating {rating}. Forventet nøyaktighet {expected} %. Hvis du klarer det, opptil +{gain}.",
+        "summary": "Brett {board} · forventet {expected} %",
+        "expect": "forventet {expected} %",
+        "details": "Ratingdetaljer"
       },
       "blindfold": "Blindsjakk",
-      "blindfoldHint": "Studer stillingen som notasjon, uten brikker på brettet."
+      "blindfoldHint": "Studer stillingen som notasjon, uten brikker på brettet.",
+      "presetShort": {
+        "easy": "Lett",
+        "medium": "Middels",
+        "hard": "Vanskelig",
+        "grandmaster": "SM"
+      },
+      "fewerPieces": "Færre brikker",
+      "morePieces": "Flere brikker",
+      "lessTime": "Kortere innlæringstid",
+      "moreTime": "Lengre innlæringstid",
+      "boardPreview": "Forhåndsvisning av brettet. Brikker på brettet: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Lett",
-        "description": "Bare kongene – perfekt for å komme i gang"
+        "description": "Bare kongene - perfekt for å komme i gang"
       },
       "medium": {
         "label": "Middels",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Treffsikkerhet",
       "piecesCorrectCaption": "brikker riktig",
+      "summary": "{correct} / {total} riktig · {wrong} feil · plassert på {seconds} s",
       "piecesCorrect": "Riktige brikker",
       "memorizationTime": "Innlæringstid",
       "solutionTime": "Løsningstid",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Prøv igjen",
       "nextRound": "Neste runde",
       "changeSettings": "Endre innstillinger",
-      "moreOptions": "Flere alternativer",
       "tileDrill": "Denne øvelsen på ditt nivå",
       "tileDrillWhy": "Tilpasset ditt nivå, så du kan øve på det artikkelen beskriver.",
-      "submitToLeaderboard": "Send til topplisten",
-      "leaderboardQualifies": "Resultatet ditt når topplisten. Send det inn før sjansen ryker.",
+      "personalBest": "Ny personlig rekord på dette nivået. Få den på listen.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy} % kommer på topplisten.",
+        "open": "{difficulty}: se plasseringen ({accuracy} %).",
+        "claim": "Ta plassen",
+        "submit": "Send",
+        "claimed": "På topplisten: {difficulty}, {accuracy} %.",
+        "rank": "Du er nr. {rank, number} av {total, number} ({difficulty})",
+        "seeBoard": "Se topplisten"
+      },
       "viewLeaderboard": "Se topplisten",
       "dialog": {
         "submitTitle": "Send til topplisten",
-        "submitDescription": "Skriv navnet som skal vises på topplisten.",
+        "submitDescription": "Velg et navn. Du ser plasseringen rett etterpå.",
+        "rankLoading": "Finner plasseringen din…",
+        "rankWorld": "Nr. {rank, number} av {total, number} i verden",
+        "rankCountry": "Nr. {rank, number} av {total, number} i {country}",
         "successTitle": "Resultatet er sendt!",
         "successDescription": "Resultatet ditt er lagt til på topplisten.",
         "playerName": "Spillernavn",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Jeg husket {correct, number} av {total, number} brikker ({accuracy}) på dagens brett i Memory Chess for {date}.} review {Jeg husket {correct, number} av {total, number} brikker ({accuracy}) på et repetisjonsbrett i Memory Chess.} other {Jeg husket {correct, number} av {total, number} brikker ({accuracy}) i Memory Chess.}} Klarer du å slå det?",
         "alt": "Resultatkort fra Memory Chess: {details}."
       },
-      "savedToast": {
-        "message": "Runden er lagret. De oppdaterte tallene dine står rett nedenfor.",
-        "action": "Vis meg"
-      },
       "blindfoldRound": "Blindrunde: du studerte stillingen som notasjon."
     },
     "comparison": {
-      "title": "Gå gjennom stillingen din"
+      "title": "Gå gjennom stillingen din",
+      "viewLabel": "Resultatvisning",
+      "view": {
+        "side": "Side om side",
+        "overlay": "Ett brett"
+      },
+      "yourBoard": "Ditt brett",
+      "position": "Stillingen",
+      "yourBoardLabel": "Ditt brett, med riktige og feil brikker merket",
+      "positionLabel": "Stillingen, med riktige og oversette felt merket",
+      "legendCorrect": "Riktig",
+      "legendWrong": "Feil, på brettet ditt",
+      "legendMissed": "Oversett, i stillingen"
     },
     "feedback": {
       "title": "Takk for at du spilte Memory Chess!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# stjerne} other {# stjerner}}",
       "chooseRating": "Velg en vurdering i stjerner.",
       "sendFailed": "Vi klarte ikke å sende tilbakemeldingen. Prøv igjen eller velg Ikke nå.",
+      "rateLimited": "For mange meldinger fra denne tilkoblingen. Prøv igjen om {minutes, plural, one {# minutt} other {# minutter}}.",
       "send": "Send tilbakemelding",
       "sending": "Sender …"
     },
@@ -1126,6 +1179,7 @@
       "intro": "Se på {count, plural, one {# brikke} other {# brikker}} i {seconds} s, og bygg så opp stillingen etter hukommelsen.",
       "hide": "Skjul brettet",
       "restart": "Start på nytt",
+      "leave": "Forlat runden",
       "again": "Spill igjen",
       "submit": "Send inn",
       "clear": "Tøm brettet",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Nullstilles kl. {utc} UTC",
       "resetsAt": "Nullstilles kl. {utc} UTC ({local} hos deg), om {timeLeft}"
     },
+    "loading": "Laster inn resultatlisten.",
     "mode": {
       "label": "Studiemodus",
       "board": "Brett",
@@ -1555,7 +1610,7 @@
         "desc": "Hvilke felt og linjer du bommer mest på, på tvers av alle runder.",
         "aria": "Andelen bom på hvert felt. Mørkere betyr oftere bommet. Grå felt har færre enn {minimum} sette brikker.",
         "note": "Mørkere felt bommes oftere. Grå felt har færre enn {minimum} sette brikker.",
-        "lines": "Til hvert felt har {minimum} sette brikker, leser kartet hele linjer og rader.",
+        "lines": "Til hvert felt har {minimum} sette brikker, fargelegges hvert felt etter hele linjen og raden sin.",
         "files": "Linjer",
         "ranks": "Rader",
         "line": "{line}: {missed} av {shown} bommet",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} t {minutes} min",
     "underMinute": "under ett minutt",
     "ready": "Dagens brett · {pieceCount, plural, one {# brikke} other {# brikker}} · {seconds} s · {timeLeft} igjen",
+    "readyDetails": "{pieceCount, plural, one {# brikke} other {# brikker}} · {seconds} s · {timeLeft} igjen",
     "next": "Neste brett om {timeLeft}",
     "pending": "Dagens brett",
     "navReady": "{label}, dagens brett er klart",
@@ -1704,7 +1760,12 @@
     "play": "Spill dagens brett",
     "tomorrowTitle": "Morgendagens brett",
     "tomorrowOpens": "Åpner om {timeLeft}.",
-    "seeToday": "Se dagens brett"
+    "seeToday": "Se dagens brett",
+    "remindButton": "Minn meg på det hver dag",
+    "remindNote": "Laster ned en kalenderhendelse som gjentas hver dag når brettet åpner.",
+    "remindDone": "Lagret. Åpne filen for å legge den daglige hendelsen til i kalenderen din.",
+    "remindTitle": "Memory Chess dagens brett",
+    "remindDescription": "Et nytt brett åpner hver dag ved midnatt UTC. Alle spiller det samme brettet, og du får ett forsøk."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "4 til 16 tegn, vises sammen med poengsummen din.",
       "nameShort": "For kort. Bruk minst 4 tegn.",
       "nameLong": "For langt. Bruk høyst 16 tegn.",
+      "nameBlocked": "Dette navnet er ikke tillatt. Velg et annet.",
       "country": "Land",
       "chooseCountry": "Velg et land",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Dagens brett kunne ikke lastes. Prøv igjen om litt.",
       "joinToRank": "Bli med på brettet for å se plasseringen din her.",
       "order": "Rangert etter flest riktige brikker, så færrest feil, så raskest oppbygging.",
-      "all": "Se alle brett"
+      "all": "Se alle brett",
+      "todayBoard": "Dagens brett",
+      "yesterdayBoard": "Gårsdagens brett",
+      "joinedToday": "Spillere som har blitt med på dagens brett: {count}",
+      "joinedYesterday": "Spillere som ble med på gårsdagens brett: {count}",
+      "listFrom": "Topp 10 vises når {min} eller flere spillere har blitt med."
     },
     "reference": {
       "title": "Slik fungerer dagens brett",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Samlet statistikk over gjenkalling fra runder registrert i Google Analytics publiseres for innstillinger med nok runder og spillere.",
     "aboutLink": "Se hukommelsesdataene"
+  },
+  "learnTryIt": {
+    "title": "Prøv her",
+    "intro": "En runde i denne størrelsen viser {pieces} brikker i {seconds} s. Deretter plasserer du dem fra hukommelsen på et tomt brett. Her er en stilling i den størrelsen.",
+    "introBlindfold": "En runde i denne størrelsen viser deg {pieces} brikker som notasjon i {seconds} s, uten brikker på brettet. Deretter plasserer du dem fra hukommelsen på et tomt brett. Her er en stilling i den størrelsen, slik du ville sett den.",
+    "position": "Hvit: {white}. Svart: {black}.",
+    "start": "Start en runde med {pieces} brikker",
+    "startBlindfold": "Start en blindrunde med {pieces} brikker"
   }
 }

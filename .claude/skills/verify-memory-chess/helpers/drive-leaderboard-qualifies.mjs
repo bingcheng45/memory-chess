@@ -88,7 +88,7 @@ export default async function drive(page, { baseUrl }) {
 
   await page.waitFor(`!!document.getElementById("game-result-heading")`, 20_000);
   await page.waitFor(
-    `[...document.querySelectorAll("button")].some(b => b.textContent.includes("Submit to leaderboard"))`,
+    `!!document.querySelector("[data-result-claim] button")`,
     10_000,
   );
 
@@ -152,7 +152,7 @@ export default async function drive(page, { baseUrl }) {
     );
   }
 
-  await page.clickText("button", "Submit to leaderboard");
+  await page.click("[data-result-claim] button");
   await page.waitFor(`!!document.querySelector('input')`);
   await page.eval(
     `(() => {

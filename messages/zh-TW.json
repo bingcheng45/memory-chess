@@ -5,6 +5,7 @@
       "articles": "文章",
       "about": "關於",
       "changelog": "更新紀錄",
+      "blindfold": "盲棋",
       "contactUs": "聯絡我們",
       "privacy": "隱私權",
       "terms": "服務條款",
@@ -560,7 +561,8 @@
           "line": "{line}：{shown} 子中漏記 {missed} 子",
           "lineThin": "{line}：已見 {shown} 子，資料不足",
           "realAria": "你在每個格子上的失誤比例。灰色格子見過的棋子少於 10 個。",
-          "realNote": "顏色越深，失誤越多。灰色表示見過的棋子不到 10 個。"
+          "realNote": "顏色越深，失誤越多。灰色表示見過的棋子不到 10 個。",
+          "lines": "在每個格子都見過 10 個棋子之前，每個格子的顏色依它所在的整條直行和橫列統計。"
         },
         "daily": {
           "fig": "圖 {number} · 今日棋盤",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, other {# 個較早的回合}}沒有匯入，以免超過 5,000 回合的上限。",
           "summaryIgnored": "這個瀏覽器裡已經有回合，所以只合併了新的回合，沒有合併檔案中的累計總數。",
           "summaryDropped": "檔案中的累計總數無法讀取或來自舊版本，所以只匯入了其中的回合。",
+          "playerRestored": "你的評分和連勝紀錄已還原。",
           "safari": "在 Safari 中，私密瀏覽分頁關閉後不會保留這份紀錄；而且網站超過約 7 天沒有造訪，Safari 就會清除它儲存的資料。請匯出一份副本保存。",
           "unavailable": "私密視窗中不會儲存。這個瀏覽器視窗不會保留你的回合。",
           "backup": "跨裝置備份（即將推出）",
@@ -940,6 +943,21 @@
         "capped": "這台裝置今天的 {cap} 次複習已完成。",
         "cappedNext": "還沒複習的棋盤明天會再回來，等最久的優先。",
         "schedule": "得分低於 80% 的棋盤，會在你第一次看到它之後的第 1、3、7 和 14 天回來。"
+      },
+      "intro": {
+        "label": "45 盤棋開場",
+        "skip": "略過開場",
+        "replay": "納道夫的 45 盤棋",
+        "counter": "{count, plural, other {# 盤棋}}",
+        "counterDark": "{count, plural, other {# 盤棋}} · 一盤都沒看",
+        "one": "一盤棋。<em>你看得見。</em>",
+        "oneNote": "莫菲的「歌劇院對局」，巴黎，1858 年。每一步都是真實棋譜。",
+        "many": "現在，<em>四十五盤。</em>",
+        "manyNote": "聖保羅，1947 年 1 月。米格爾·納道夫同時對陣四十五名對手。",
+        "dark": "他<em>一盤都沒看。</em>",
+        "darkNote": "他矇眼下了 23 個多小時，每一步都憑記憶應對。他贏了 39 盤。",
+        "you": "從<em>一盤</em>開始。",
+        "youNote": "看一個局面幾秒鐘。然後棋盤變暗，由你憑記憶復原。"
       }
     }
   },
@@ -981,10 +999,25 @@
         "gain": "最多 <num>+{value}</num>",
         "loss": "最多 <num>−{value}</num>",
         "announce": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。如果失手，最多 −{loss}。",
-        "announceProvisional": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。"
+        "announceProvisional": "棋盤評分 {board}。你的評分 {rating}。預計準確率 {expected}%。如果全部答對，最多 +{gain}。",
+        "summary": "棋盤 {board} · 預計 {expected}%",
+        "expect": "預計 {expected}%",
+        "details": "評分詳情"
       },
       "blindfold": "盲棋",
-      "blindfoldHint": "以記譜方式記住局面，棋盤上不擺棋子。"
+      "blindfoldHint": "以記譜方式記住局面，棋盤上不擺棋子。",
+      "presetShort": {
+        "easy": "簡單",
+        "medium": "中等",
+        "hard": "困難",
+        "grandmaster": "特大"
+      },
+      "fewerPieces": "減少棋子",
+      "morePieces": "增加棋子",
+      "lessTime": "縮短記憶時間",
+      "moreTime": "延長記憶時間",
+      "boardPreview": "棋盤預覽。棋盤上的棋子：{count}",
+      "summarySetting": "{preset}，{setting}"
     },
     "presets": {
       "easy": {
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "準確率",
       "piecesCorrectCaption": "顆棋子正確",
+      "summary": "{correct} / {total} 正確 · {wrong} 錯誤 · 用時 {seconds} 秒",
       "piecesCorrect": "正確棋子",
       "memorizationTime": "記憶時間",
       "solutionTime": "重建用時",
@@ -1051,15 +1085,25 @@
       "tryAgain": "再來一局",
       "nextRound": "下一輪",
       "changeSettings": "變更設定",
-      "moreOptions": "更多選項",
       "tileDrill": "適合你程度的這道練習",
       "tileDrillWhy": "依你的程度設定，用來練習文章所講的內容。",
-      "submitToLeaderboard": "送出到排行榜",
-      "leaderboardQualifies": "你的成績能上排行榜，趁還有機會趕快送出。",
+      "personalBest": "刷新了這個難度的個人最佳，記錄下來吧。",
+      "claimLine": {
+        "qualifies": "{difficulty}:{accuracy}% 可以上榜。",
+        "open": "{difficulty}:看看 {accuracy}% 排第幾。",
+        "claim": "搶下名次",
+        "submit": "提交",
+        "claimed": "已上榜:{difficulty},{accuracy}%。",
+        "rank": "{difficulty}:{total, number} 人中第 {rank, number} 名",
+        "seeBoard": "查看排行榜"
+      },
       "viewLeaderboard": "查看排行榜",
       "dialog": {
         "submitTitle": "送出到排行榜",
-        "submitDescription": "填寫要顯示在排行榜上的名稱。",
+        "submitDescription": "取個名字，送出後馬上就能看到排名。",
+        "rankLoading": "正在查詢排名…",
+        "rankWorld": "全球 {total, number} 人中第 {rank, number} 名",
+        "rankCountry": "{country} {total, number} 人中第 {rank, number} 名",
         "successTitle": "成績已送出！",
         "successDescription": "你的成績已成功送出到排行榜。",
         "playerName": "玩家名稱",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {我在 Memory Chess {date} 的每日棋盤中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。} review {我在 Memory Chess 的複習棋盤中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。} other {我在 Memory Chess 中記住了 {total, number} 子裡的 {correct, number} 子（{accuracy}）。}}你能超越嗎？",
         "alt": "Memory Chess 結果卡片：{details}。"
       },
-      "savedToast": {
-        "message": "本局已儲存。更新後的數據就在下方。",
-        "action": "查看"
-      },
       "blindfoldRound": "盲棋回合：你透過記譜記住了局面。"
     },
     "comparison": {
-      "title": "回顧你的棋局"
+      "title": "回顧你的棋局",
+      "viewLabel": "結果檢視",
+      "view": {
+        "side": "並排顯示",
+        "overlay": "單一棋盤"
+      },
+      "yourBoard": "你的棋盤",
+      "position": "原局面",
+      "yourBoardLabel": "你的棋盤，標出正確和放錯的棋子",
+      "positionLabel": "原局面，標出正確和漏掉的格子",
+      "legendCorrect": "正確",
+      "legendWrong": "放錯（你的棋盤）",
+      "legendMissed": "漏掉（原局面）"
     },
     "feedback": {
       "title": "感謝你玩 Memory Chess！",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, other {# 顆星}}",
       "chooseRating": "請先選擇星級評分。",
       "sendFailed": "意見送出失敗。請重試，或選擇「暫不評分」。",
+      "rateLimited": "此網路傳送的訊息過多。請在{minutes, plural, other {#分鐘}}後重試。",
       "send": "送出意見",
       "sending": "送出中…"
     },
@@ -1126,6 +1179,7 @@
       "intro": "用 {seconds} 秒記住 {count} 枚棋子，然後憑記憶還原局面。",
       "hide": "隱藏棋盤",
       "restart": "重新開始",
+      "leave": "退出本局",
       "again": "再玩一次",
       "submit": "送出",
       "clear": "清空棋盤",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "UTC {utc} 重設",
       "resetsAt": "UTC {utc} 重設（你的時間 {local}），{timeLeft}後"
     },
+    "loading": "正在載入排行榜。",
     "mode": {
       "label": "練習方式",
       "board": "棋盤",
@@ -1555,7 +1610,7 @@
         "desc": "綜合所有回合，你最常失誤的格子和線。",
         "aria": "你在每個格子上的失誤比例。顏色越深，失誤越多。灰色格子見過的棋子少於 {minimum} 個。",
         "note": "顏色越深的格子失誤越多。灰色格子見過的棋子少於 {minimum} 個。",
-        "lines": "在每個格子都見過 {minimum} 個棋子之前，圖中依整條直行和橫列統計。",
+        "lines": "在每個格子都見過 {minimum} 個棋子之前，每個格子的顏色依它所在的整條直行和橫列統計。",
         "files": "直行",
         "ranks": "橫列",
         "line": "{line}：{shown} 子中漏記 {missed} 子",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} 小時 {minutes} 分鐘",
     "underMinute": "不到 1 分鐘",
     "ready": "今日棋局 · {pieceCount} 子 · {seconds} 秒 · 剩餘 {timeLeft}",
+    "readyDetails": "{pieceCount} 子 · {seconds} 秒 · 剩餘 {timeLeft}",
     "next": "{timeLeft}後開放下一局",
     "pending": "今日棋局",
     "navReady": "{label}，今日每日棋局已準備好",
@@ -1704,7 +1760,12 @@
     "play": "開始今日棋局",
     "tomorrowTitle": "明日棋局",
     "tomorrowOpens": "{timeLeft}後開放。",
-    "seeToday": "查看今日棋局"
+    "seeToday": "查看今日棋局",
+    "remindButton": "每天提醒我",
+    "remindNote": "下載一個行事曆活動，每天在棋局開放時重複。",
+    "remindDone": "已儲存。開啟該檔案，即可把每日活動加入你的行事曆。",
+    "remindTitle": "Memory Chess 每日棋局",
+    "remindDescription": "新棋局每天在 UTC 午夜開放。所有人玩同一局，你只有一次機會。"
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "4 到 16 個字元，會和你的成績一起顯示。",
       "nameShort": "太短了，至少需要 4 個字元。",
       "nameLong": "太長了，最多 16 個字元。",
+      "nameBlocked": "此名稱無法使用，請換一個。",
       "country": "國家/地區",
       "chooseCountry": "選擇國家/地區",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "無法載入今天的棋盤，請稍後再試。",
       "joinToRank": "加入棋盤後，你的名次會顯示在這裡。",
       "order": "先依答對的棋子數排名，再依答錯最少，最後依重建最快。",
-      "all": "查看所有棋盤"
+      "all": "查看所有棋盤",
+      "todayBoard": "今日棋局",
+      "yesterdayBoard": "昨日棋局",
+      "joinedToday": "已加入今日棋局的玩家：{count}",
+      "joinedYesterday": "加入昨日棋局的玩家：{count}",
+      "listFrom": "有 {min} 位或更多玩家加入後，將顯示前 10 名。"
     },
     "reference": {
       "title": "每日棋盤如何運作",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "我們公布 Google Analytics 記錄的回合的彙總記憶統計，僅限回合數和玩家數足夠的設定。",
     "aboutLink": "查看記憶資料"
+  },
+  "learnTryIt": {
+    "title": "在這裡試試",
+    "intro": "這個規模的一局會讓你看 {pieces} 枚棋子 {seconds} 秒。接著你憑記憶把它們擺到空棋盤上。下面是這個規模的一個局面。",
+    "introBlindfold": "這個規模的一局會用記譜的方式向你展示 {pieces} 枚棋子，持續 {seconds} 秒，棋盤上沒有棋子。接著你憑記憶把它們擺到空棋盤上。下面是這個規模的一個局面，就是你會看到的樣子。",
+    "position": "白方：{white}。黑方：{black}。",
+    "start": "開始一局 {pieces} 枚棋子的練習",
+    "startBlindfold": "開始一局 {pieces} 枚棋子的盲棋練習"
   }
 }

@@ -1,14 +1,13 @@
 import { useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
-import { ViewCount } from "@/components/articles/ArticleCounts";
+import ArticleCountsRow from "@/components/articles/ArticleCountsRow";
 import { ArticleDrill, EarlyDrillLink } from "@/components/articles/ArticleDrill";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticleRail from "@/components/articles/ArticleRail";
 import ArrivingPortrait from "@/components/articles/ArrivingPortrait";
 import EnglishPageLink from "@/components/articles/EnglishPageLink";
 import FactFile from "@/components/articles/FactFile";
-import LikeButton from "@/components/articles/LikeButton";
 import TranslationNote from "@/components/articles/TranslationNote";
 import TypedBody from "@/components/articles/TypedBody";
 import ViewBeacon from "@/components/articles/ViewBeacon";
@@ -115,13 +114,7 @@ function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "c
         </p>
         <TranslationNote englishPath={articlePath(article.slug)} className={NOTE_CLASS} />
       </div>
-      <div
-        data-article-counts
-        className="art-counts mt-5 flex flex-wrap items-center gap-x-[18px] gap-y-2.5"
-      >
-        <ViewCount count={counts?.views} />
-        <LikeButton key={article.slug} slug={article.slug} likes={counts?.likes} />
-      </div>
+      <ArticleCountsRow slug={article.slug} counts={counts} />
       <EarlyDrillLink drill={article.drill} />
     </header>
   );

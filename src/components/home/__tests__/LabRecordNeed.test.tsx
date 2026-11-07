@@ -11,7 +11,7 @@ const FIG = ".lab-panel-h > .lab-k";
 const panel = (name: string) => screen.getByText(new RegExp(`^Fig\\. \\d+ · ${name}$`), { selector: FIG }).closest(".lab-panel") as HTMLElement;
 const playLinks = (name: string) => within(panel(name)).queryAllByRole("link", { name: "Play a round →" }).map((link) => link.getAttribute("href"));
 
-const QUICK_START = "/game?pieceCount=6&memorizeTime=10&source=home_quick";
+const QUICK_START = "/game?pieceCount=6&memorizeTime=10&from=home_quick";
 
 function showRounds(source: "game" | "calibration", pieceCount: number, memorizeSeconds: number) {
   const records = Array.from({ length: 3 }, (_, index) =>
@@ -49,8 +49,8 @@ describe("a warming record panel", () => {
   it("plays the exact game setting the trend and the speed line are waiting on", () => {
     showRounds("game", 8, 15);
 
-    expect(playLinks("Accuracy over time")).toEqual(["/game?pieceCount=8&memorizeTime=15&source=home_quick"]);
-    expect(playLinks("Recall pace")).toEqual(["/game?pieceCount=8&memorizeTime=15&source=home_quick"]);
+    expect(playLinks("Accuracy over time")).toEqual(["/game?pieceCount=8&memorizeTime=15&from=home_quick"]);
+    expect(playLinks("Recall pace")).toEqual(["/game?pieceCount=8&memorizeTime=15&from=home_quick"]);
   });
 
   it("sends a practice trend and speed line to the practice rounds on the home page", () => {

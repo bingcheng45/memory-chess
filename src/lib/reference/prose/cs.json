@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Vlastní nastavení",
-        "body": "Oba posuvníky se pohybují nezávisle na úrovních. Počet figur jde od {minPieces} do {maxPieces} a čas pozorování od {minSeconds} do {maxSeconds} sekund. Žebříček rozpoznává kolo podle počtu figur, takže jakýkoli jiný počet než u čtyř úrovní z něj dělá vlastní hru, a vlastní hry zůstávají mimo žebříček."
+        "body": "Tlačítka − a + pod šachovnicí mění počet figur a čas nezávisle na úrovních. Počet figur jde od {minPieces} do {maxPieces} a čas pozorování od {minSeconds} do {maxSeconds} sekund. Žebříček rozpoznává kolo podle počtu figur, takže jakýkoli jiný počet než u čtyř úrovní z něj dělá vlastní hru, a vlastní hry zůstávají mimo žebříček."
       }
     },
     "scoring": {

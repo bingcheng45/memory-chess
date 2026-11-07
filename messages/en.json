@@ -5,6 +5,7 @@
       "articles": "Articles",
       "about": "About",
       "changelog": "Changelog",
+      "blindfold": "Blindfold chess",
       "contactUs": "Contact us",
       "privacy": "Privacy",
       "terms": "Terms",
@@ -560,7 +561,8 @@
           "line": "{line}: {missed} of {shown} missed",
           "lineThin": "{line}: {shown} seen, not enough to read",
           "realAria": "Your miss share on each square. Grey squares have fewer than 10 pieces seen.",
-          "realNote": "Darker means missed more often. Grey has under 10 pieces seen."
+          "realNote": "Darker means missed more often. Grey has under 10 pieces seen.",
+          "lines": "Until every square has 10 pieces seen, each square is shaded by its whole file and rank."
         },
         "daily": {
           "fig": "Fig. {number} · Today's board",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# older round was} other {# older rounds were}} left out to stay within the 5,000-round limit.",
           "summaryIgnored": "This browser already had rounds, so only new rounds were merged, not the file's lifetime totals.",
           "summaryDropped": "The file's lifetime totals were unreadable or from an older version, so only its rounds were imported.",
+          "playerRestored": "Your rating and streak are restored.",
           "safari": "On Safari, a private tab does not keep this record after it closes, and Safari erases a site's stored data after about 7 days without a visit. Export a copy to keep it.",
           "unavailable": "Not saved in private windows. This browser window is not keeping your rounds.",
           "backup": "Back up across devices (coming soon)",
@@ -940,6 +943,21 @@
         "capped": "Today's {cap} reviews are done on this device.",
         "cappedNext": "Any board still due comes back tomorrow, the longest waiting first.",
         "schedule": "Boards you score under 80% on come back 1, 3, 7 and 14 days after you first see them."
+      },
+      "intro": {
+        "label": "The 45-board intro",
+        "skip": "Skip intro",
+        "replay": "Najdorf's 45 boards",
+        "counter": "{count, plural, one {# board} other {# boards}}",
+        "counterDark": "{count, plural, one {# board} other {# boards}} · none seen",
+        "one": "One board. <em>You can see it.</em>",
+        "oneNote": "Morphy's Opera Game, Paris, 1858. Every move is real.",
+        "many": "Now <em>forty-five.</em>",
+        "manyNote": "São Paulo, January 1947. Miguel Najdorf against forty-five opponents at once.",
+        "dark": "He saw <em>none of them.</em>",
+        "darkNote": "He played blindfold for more than 23 hours, answering every move from memory. He won 39.",
+        "you": "Start with <em>one.</em>",
+        "youNote": "Look at a position for a few seconds. Then it goes dark, and you rebuild it."
       }
     }
   },
@@ -981,10 +999,25 @@
         "gain": "Up to <num>+{value}</num>",
         "loss": "At most <num>−{value}</num>",
         "announce": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}. If you miss, at most −{loss}.",
-        "announceProvisional": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}."
+        "announceProvisional": "Board rating {board}. Your rating {rating}. Expected accuracy {expected}%. If you clear it, up to +{gain}.",
+        "summary": "Board {board} · expect {expected}%",
+        "expect": "expect {expected}%",
+        "details": "Rating details"
       },
       "blindfold": "Blindfold",
-      "blindfoldHint": "Study the position as notation, with no pieces on the board."
+      "blindfoldHint": "Study the position as notation, with no pieces on the board.",
+      "presetShort": {
+        "easy": "Easy",
+        "medium": "Medium",
+        "hard": "Hard",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Fewer pieces",
+      "morePieces": "More pieces",
+      "lessTime": "Less study time",
+      "moreTime": "More study time",
+      "boardPreview": "Board preview. Pieces on the board: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Accuracy",
       "piecesCorrectCaption": "pieces correct",
+      "summary": "{correct} / {total} correct · {wrong} wrong · rebuilt in {seconds}s",
       "piecesCorrect": "Pieces correct",
       "memorizationTime": "Memorization time",
       "solutionTime": "Solution time",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Try again",
       "nextRound": "Next round",
       "changeSettings": "Change settings",
-      "moreOptions": "More options",
       "tileDrill": "This drill at your level",
       "tileDrillWhy": "Sized to your level, to practise what the article describes.",
-      "submitToLeaderboard": "Submit to leaderboard",
-      "leaderboardQualifies": "Your score makes the leaderboard. Submit it before it's gone.",
+      "personalBest": "New personal best on this board. Put it on the record.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% would make the leaderboard.",
+        "open": "{difficulty}: see where {accuracy}% ranks.",
+        "claim": "Claim your spot",
+        "submit": "Submit your score",
+        "claimed": "On the leaderboard: {difficulty}, {accuracy}%.",
+        "rank": "You're #{rank, number} of {total, number} on {difficulty}",
+        "seeBoard": "See the board"
+      },
       "viewLeaderboard": "View leaderboard",
       "dialog": {
         "submitTitle": "Submit to leaderboard",
-        "submitDescription": "Enter your name to be displayed on the leaderboard.",
+        "submitDescription": "Pick a name. You'll see your rank right after.",
+        "rankLoading": "Finding your rank…",
+        "rankWorld": "#{rank, number} of {total, number} worldwide",
+        "rankCountry": "#{rank, number} of {total, number} in {country}",
         "successTitle": "Score submitted!",
         "successDescription": "Your score has been successfully submitted to the leaderboard.",
         "playerName": "Player name",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {I recalled {correct, number} of {total, number} pieces ({accuracy}) on the Memory Chess daily board for {date}.} review {I recalled {correct, number} of {total, number} pieces ({accuracy}) on a Memory Chess review board.} other {I recalled {correct, number} of {total, number} pieces ({accuracy}) on Memory Chess.}} Can you beat it?",
         "alt": "Memory Chess result card: {details}."
       },
-      "savedToast": {
-        "message": "Round saved. Your updated stats are just below.",
-        "action": "Show me"
-      },
       "blindfoldRound": "Blindfold round: you studied the position as notation."
     },
     "comparison": {
-      "title": "Review your position"
+      "title": "Review your position",
+      "viewLabel": "Result view",
+      "view": {
+        "side": "Side by side",
+        "overlay": "One board"
+      },
+      "yourBoard": "Your board",
+      "position": "The position",
+      "yourBoardLabel": "Your board, with correct and wrong pieces marked",
+      "positionLabel": "The position, with correct and missed squares marked",
+      "legendCorrect": "Correct",
+      "legendWrong": "Wrong, on your board",
+      "legendMissed": "Missed, on the position"
     },
     "feedback": {
       "title": "Thanks for playing Memory Chess!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# star} other {# stars}}",
       "chooseRating": "Please choose a star rating.",
       "sendFailed": "We could not send your feedback. Please try again or choose Not now.",
+      "rateLimited": "Too many messages from this connection. Please try again in {minutes, plural, one {# minute} other {# minutes}}.",
       "send": "Send feedback",
       "sending": "Sending..."
     },
@@ -1126,6 +1179,7 @@
       "intro": "Study {count, plural, one {# piece} other {# pieces}} for {seconds} s, then rebuild the position from memory.",
       "hide": "Hide board",
       "restart": "Restart",
+      "leave": "Leave the round",
       "again": "Play again",
       "submit": "Submit",
       "clear": "Clear board",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Resets at {utc} UTC",
       "resetsAt": "Resets at {utc} UTC ({local} your time), in {timeLeft}"
     },
+    "loading": "Loading the board.",
     "mode": {
       "label": "Study mode",
       "board": "Board",
@@ -1555,7 +1610,7 @@
         "desc": "Which squares and lines you miss most, across every round.",
         "aria": "Your miss share on each square. Darker is missed more often. Grey squares have fewer than {minimum} pieces seen.",
         "note": "Darker squares are missed more often. Grey squares have fewer than {minimum} pieces seen.",
-        "lines": "Until every square has {minimum} pieces seen, the map reads whole files and ranks.",
+        "lines": "Until every square has {minimum} pieces seen, each square is shaded by its whole file and rank.",
         "files": "Files",
         "ranks": "Ranks",
         "line": "{line}: {missed} of {shown} missed",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "under a minute",
     "ready": "Today's board · {pieceCount, plural, one {# piece} other {# pieces}} · {seconds} s · {timeLeft} left",
+    "readyDetails": "{pieceCount, plural, one {# piece} other {# pieces}} · {seconds} s · {timeLeft} left",
     "next": "Next board in {timeLeft}",
     "pending": "Today's board",
     "navReady": "{label}, today's daily board is ready",
@@ -1704,7 +1760,12 @@
     "play": "Play today's board",
     "tomorrowTitle": "Tomorrow's board",
     "tomorrowOpens": "Opens in {timeLeft}.",
-    "seeToday": "See today's board"
+    "seeToday": "See today's board",
+    "remindButton": "Remind me daily",
+    "remindNote": "Downloads a calendar event that repeats every day when the board opens.",
+    "remindDone": "Saved. Open the file to add the daily event to your calendar.",
+    "remindTitle": "Memory Chess daily board",
+    "remindDescription": "A new board opens every day at midnight UTC. Everyone plays the same board, and you get one try."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "4 to 16 characters, shown with your score.",
       "nameShort": "Too short. Use at least 4 characters.",
       "nameLong": "Too long. Use at most 16 characters.",
+      "nameBlocked": "That name isn't allowed. Please choose a different one.",
       "country": "Country",
       "chooseCountry": "Choose a country",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Today's board could not be loaded. Please try again shortly.",
       "joinToRank": "Join the board to see your rank here.",
       "order": "Ranked by pieces right, then fewest wrong, then fastest rebuild.",
-      "all": "See every board"
+      "all": "See every board",
+      "todayBoard": "Today's board",
+      "yesterdayBoard": "Yesterday's board",
+      "joinedToday": "Players who have joined today's board: {count}",
+      "joinedYesterday": "Players who joined yesterday's board: {count}",
+      "listFrom": "The top 10 appears once {min} or more players have joined."
     },
     "reference": {
       "title": "How the daily board works",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Aggregate recall statistics from rounds recorded in Google Analytics are published, for settings with enough rounds and players.",
     "aboutLink": "See the recall data"
+  },
+  "learnTryIt": {
+    "title": "Try it here",
+    "intro": "A round this size shows {pieces} pieces for {seconds} s. Then you place them from memory on an empty board. Here is a position that size.",
+    "introBlindfold": "A round this size shows you {pieces} pieces as notation for {seconds} s, with no pieces on the board. Then you place them from memory on an empty board. Here is a position that size, as you would see it.",
+    "position": "White: {white}. Black: {black}.",
+    "start": "Start a round of {pieces} pieces",
+    "startBlindfold": "Start a blindfold round of {pieces} pieces"
   }
 }

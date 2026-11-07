@@ -1,5 +1,8 @@
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
 import {
   fenToChessPieces,
+  getPieceImageUrl,
   mapChessJsPieceToType,
   pieceTypeToFenChar,
 } from "@/utils/chessPieces";
@@ -106,5 +109,25 @@ describe("fenToChessPieces", () => {
     "7/8/8/8/8/8/8/8",
   ])("rejects malformed FEN board data: %s", (fen) => {
     expect(() => fenToChessPieces(fen)).toThrow("Invalid FEN");
+  });
+});
+
+describe("getPieceImageUrl", () => {
+  it.each([
+    ["white", "king", "/pieces/white-king.svg"],
+    ["black", "knight", "/pieces/black-knight.svg"],
+    ["white", "pawn", "/pieces/white-pawn.svg"],
+  ] as const)("serves the %s %s from the site's own pieces folder", (color, type, url) => {
+    expect(getPieceImageUrl(type, color)).toBe(url);
+  });
+
+  it("has a file in public for every piece, matching the artwork the share card draws", () => {
+    for (const color of ALL_PIECE_COLORS) {
+      for (const type of ALL_PIECE_TYPES) {
+        const served = readFileSync(join(process.cwd(), "public", getPieceImageUrl(type, color)));
+        const shared = readFileSync(join(process.cwd(), "src/lib/share/pieces", `${color}-${type}.svg`));
+        expect(served.equals(shared)).toBe(true);
+      }
+    }
   });
 });

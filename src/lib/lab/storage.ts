@@ -7,6 +7,8 @@ const DB_VERSION = 1;
 const STORE = "rounds";
 const BY_END = "endedAt";
 export const SUMMARY_KEY = "memory-chess-lab-summary";
+/** Set the first time the home page decides to play the 45-board intro, so it plays once per browser. */
+export const INTRO_SEEN_KEY = "memory-chess-home-intro-seen";
 const BACKUP_KEY = "memory-chess-lab-last-backup";
 const PERSIST_ASKED_KEY = "memory-chess-lab-persist-asked";
 const SUMMARY_LOCK = "memory-chess-lab";

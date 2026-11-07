@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "7eb829f134c97e85325380b9d7cb3694aa6a6ea5996df0e45511d98ceae7eef3",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "758863609049280f136580c026f6583d510fac126e7972f22cb0b80f86d5f8d2",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Wir beauftragen diese Dienste nicht damit, den Inhalt deiner Kontaktnachrichten oder deiner Kommentare im Spiel-Feedback zu erheben."
+          },
+          {
+            "p": "Dein Browser meldet außerdem an unseren eigenen Server, wenn eine Seite versucht, etwas zu laden, das unsere Content Security Policy nicht erlaubt. Eine Meldung enthält die verletzte Direktive, die Website, von der das blockierte Element stammte, den Seitenpfad ohne Abfragezeichenfolge und, wenn der Browser sie mitsendet, die ersten 80 Zeichen des blockierten Skripts. Sie enthält weder eine IP-Adresse noch Browserangaben. Wir verwenden diese Meldungen nur, um die Website sicher und funktionsfähig zu halten, und löschen sie nach 30 Tagen."
           }
         ]
       },
@@ -75,6 +78,9 @@
           },
           {
             "p": "Google Analytics erhält ein Ereignis lab_dashboard_share, wenn eine Fortschrittskarte die Seite verlässt, und ein Ereignis result_share, wenn eine Ergebniskarte sie verlässt. Jedes nennt als Methode nur, auf welchem Weg sie die Seite verlassen hat: native für das Teilen-Menü, download für ein heruntergeladenes Bild, copy_image für ein kopiertes Bild, copy für eine kopierte Bildunterschrift oder post für die Seite zum Posten eines Netzwerks, wobei dieses Netzwerk als x, facebook, linkedin, reddit, whatsapp, threads oder bluesky benannt wird. Keines der beiden Ereignisse enthält die Werte der Karte, ihre Bretter oder ihren Link."
+          },
+          {
+            "p": "Die Schaltfläche „Täglich erinnern“ beim heutigen Brett speichert einen täglichen Kalendereintrag als Datei auf deinem Gerät, und die Datei wird nicht an Memory Chess gesendet. Google Analytics erhält ein reminder_set-Ereignis, wenn du die Schaltfläche drückst. Es nennt nur, wo die Schaltfläche war, als surface: result, dashboard oder daily. Es enthält keine Zeitzone, keine Uhrzeit und kein Brett."
           },
           {
             "p": "Wenn du ein Ergebnis in die Bestenliste einträgst, behält der lokale Speicher auf diesem Gerät außerdem die ID, die die Bestenliste diesem Eintrag gibt, mit Schwierigkeitsstufe, Land, Ergebnis und dem Zeitpunkt, an dem du ihn gesendet hast, und zwar für deinen besten Eintrag in jeder Schwierigkeitsstufe. Nur wenn du im Laborbericht auf Meine Platzierung prüfen drückst, sendet dein Browser diese Eintrags-ID an Memory Chess, zusammen mit der Angabe, ob er weltweit oder innerhalb des Landes des Eintrags eingestuft werden soll. Memory Chess liest den Eintrag aus der Bestenliste und antwortet mit seinem Rang und der Anzahl der Einträge, mit denen er verglichen wurde. Die Antwort wird nicht gespeichert. Um zu begrenzen, wie oft die Platzierung geprüft werden kann, zählt der Server die Prüfungen von jeder IP-Adresse eine Minute lang in seinem Arbeitsspeicher und verwirft eine Adresse bei der ersten Prüfung, nachdem ihre Minute abgelaufen ist. Wenn die Bestenliste den Eintrag nicht mehr hat, wird seine ID von diesem Gerät entfernt. Google Analytics erhält ein Ereignis, das besagt, dass eine Platzierung geprüft wurde, ohne Eintrags-ID und ohne Rang."

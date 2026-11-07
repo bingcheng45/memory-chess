@@ -17,6 +17,9 @@ const DATABUDDY_EVENTS = ["https://basket.databuddy.cc", "https://api.databuddy.
 const YOUTUBE = "https://www.youtube.com";
 const YOUTUBE_NOCOOKIE = "https://www.youtube-nocookie.com";
 
+const CSP_REPORT_PATH = "/api/csp-report";
+const CSP_REPORT_GROUP = "csp-endpoint";
+
 /**
  * 'unsafe-inline' stays in script-src because Next writes per-build inline
  * scripts into statically rendered pages, which hashes cannot follow and a
@@ -35,12 +38,18 @@ const REPORT_ONLY_POLICY = [
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
+  `report-uri ${CSP_REPORT_PATH}`,
+  `report-to ${CSP_REPORT_GROUP}`,
 ].join("; ");
+
+/** Piece and sound file names are not hashed, so a day is fresh and a week may be served stale while it revalidates. */
+const UNHASHED_ASSET_CACHE_CONTROL = "public, max-age=86400, stale-while-revalidate=604800";
 
 const SECURITY_HEADERS = [
   { key: "X-Frame-Options", value: "DENY" },
   { key: "Content-Security-Policy", value: "frame-ancestors 'none'" },
   { key: "Content-Security-Policy-Report-Only", value: REPORT_ONLY_POLICY },
+  { key: "Reporting-Endpoints", value: `${CSP_REPORT_GROUP}="${CSP_REPORT_PATH}"` },
   { key: "X-Content-Type-Options", value: "nosniff" },
   { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
   { key: "Permissions-Policy", value: "camera=(), microphone=(), geolocation=()" },
@@ -50,8 +59,6 @@ const SECURITY_HEADERS = [
 const nextConfig: NextConfig = {
   output: "standalone",
   reactStrictMode: true,
-  /** Each page's stylesheets ship inside its HTML, so first paint waits on no stylesheet request. */
-  experimental: { inlineCss: true },
   /**
    * The middleware strips a trailing slash in the same 308 as its locale and
    * retired-guide redirects, so a URL reaches its canonical form in one hop.
@@ -60,7 +67,11 @@ const nextConfig: NextConfig = {
    */
   skipTrailingSlashRedirect: true,
   async headers() {
-    return [{ source: "/:path*", headers: SECURITY_HEADERS }];
+    return [
+      { source: "/:path*", headers: SECURITY_HEADERS },
+      { source: "/pieces/:path*", headers: [{ key: "Cache-Control", value: UNHASHED_ASSET_CACHE_CONTROL }] },
+      { source: "/sounds/:path*", headers: [{ key: "Cache-Control", value: UNHASHED_ASSET_CACHE_CONTROL }] },
+    ];
   },
   async redirects() {
     return [
@@ -82,16 +93,6 @@ const nextConfig: NextConfig = {
   serverExternalPackages: ["google-auth-library"],
   /** The share preview reads its fonts from disk at request time, which tracing cannot see on its own. */
   outputFileTracingIncludes: { "/api/share/**": ["./src/lib/share/fonts/*.ttf", "./src/lib/share/pieces/*.svg"] },
-  images: {
-    domains: [],
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "upload.wikimedia.org",
-        pathname: "/wikipedia/commons/**",
-      },
-    ],
-  },
 };
 
 export default withNextIntl(nextConfig);

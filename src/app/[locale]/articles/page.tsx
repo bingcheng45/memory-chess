@@ -16,8 +16,6 @@ import { servesArticlesIn } from "@/lib/articles/articleLocales";
 import { buildArticleListMetadata } from "@/lib/seo/articleMetadata";
 import { getArticleStats } from "@/lib/services/articleStatsService";
 
-export const revalidate = 300;
-
 const ABOUT_HEADING_ID = "articles-about-heading";
 const ABOUT_PARAGRAPH_CLASS = "art-prose";
 const ABOUT_PARAGRAPHS = ["about1", "about2", "about3"] as const;

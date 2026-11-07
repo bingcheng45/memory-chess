@@ -19,6 +19,8 @@ const HAS_LETTER = /\p{L}/u;
 const HAS_LATIN_LETTER = /\p{Script=Latin}/u;
 const LONG_DASH = new RegExp(`[${String.fromCharCode(0x2013, 0x2014)}]`);
 const ANGLE_BRACKET = /[<>]/;
+// UTF-8 bytes read as Latin-1, such as "f\u00c3\u00bcr" for "f\u00fcr", or a character the decoder could not read.
+const MOJIBAKE = /[\u00c2-\u00df][\u0080-\u00bf]|\u00e2\u20ac|[\u0080-\u009f\ufffd]/;
 const IDEOGRAPHIC_FULL_STOP = String.fromCodePoint(0x3002);
 const DANDA = String.fromCodePoint(0x964);
 const FULL_STOPS = [".", IDEOGRAPHIC_FULL_STOP, DANDA];
@@ -190,6 +192,7 @@ const LEAF_RULES = [
   identicalProblems,
   verbatimProblems,
   ({ value }) => (LONG_DASH.test(value) ? ["has an em dash or an en dash"] : []),
+  ({ value }) => (MOJIBAKE.test(value) ? ["has broken characters, UTF-8 read as Latin-1"] : []),
   titleLengthProblems,
   ({ english, value }) =>
     english.includes(PROTECTED_TERM) && !value.includes(PROTECTED_TERM) ? [`"${PROTECTED_TERM}" is missing`] : [],

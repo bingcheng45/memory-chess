@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Pengaturan khusus",
-        "body": "Kedua penggeser bergerak bebas dari tingkat yang ada. Jumlah bidak berkisar dari {minPieces} hingga {maxPieces}, dan waktu lihat dari {minSeconds} hingga {maxSeconds} detik. Papan peringkat mengenali sebuah ronde dari jumlah bidaknya, jadi jumlah selain dari keempat tingkat baku membuatnya jadi permainan khusus, dan permainan khusus tidak masuk papan peringkat."
+        "body": "Tombol − dan + di bawah papan mengubah jumlah bidak dan waktu, bebas dari tingkat yang ada. Jumlah bidak berkisar dari {minPieces} hingga {maxPieces}, dan waktu lihat dari {minSeconds} hingga {maxSeconds} detik. Papan peringkat mengenali sebuah ronde dari jumlah bidaknya, jadi jumlah selain dari keempat tingkat baku membuatnya jadi permainan khusus, dan permainan khusus tidak masuk papan peringkat."
       }
     },
     "scoring": {

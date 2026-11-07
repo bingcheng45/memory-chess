@@ -397,6 +397,25 @@ describe("the scored board", () => {
     expect(cell("e2")).toHaveAccessibleName("e2, white king");
   });
 
+  it("shows each side of the round on its own named board, with no ghost or split square", () => {
+    const state = scored(["black", "rook", "a6"], ["white", "king", "e2"]);
+    renderWithIntl(
+      <>
+        <RoundBoard state={state} dispatch={() => {}} copy="game.round" lens="placed" label="Your board" />
+        <RoundBoard state={state} dispatch={() => {}} copy="game.round" lens="target" label="The position" />
+      </>,
+    );
+    const marks = (board: string) =>
+      ["a6", "e1", "e2"].map((square) => {
+        const node = screen.getByRole("group", { name: board }).querySelector(`[data-coordinate="${square}"]`);
+        return [node?.getAttribute("data-mark") ?? null, [...(node?.querySelectorAll(".lab-piece") ?? [])].map((piece) => piece.getAttribute("data-state"))];
+      });
+
+    expect(marks("Your board")).toEqual([["wrong", ["on"]], [null, []], ["wrong", ["on"]]]);
+    expect(marks("The position")).toEqual([["miss", ["on"]], ["miss", ["on"]], [null, []]]);
+    expect(document.querySelector("[data-split]")).toBeNull();
+  });
+
   it("adds the split square to the legend only when the board has one", () => {
     const expected = { pieceCount: 3, studyMs: 5000 };
     const { unmount } = renderWithIntl(

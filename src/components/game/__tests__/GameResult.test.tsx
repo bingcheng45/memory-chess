@@ -9,6 +9,8 @@ import { scoredRound } from "@/test-utils/round";
 import type { SetBoard } from "@/lib/types/game";
 import type { RatingResult } from "@/lib/game/rating";
 import type { RoundOutcome } from "@/lib/game/roundOutcome";
+import { useSettingsStore } from "@/stores/settingsStore";
+import frMessages from "../../../../messages/fr.json";
 
 const baseGameState = {
   isPlaying: false,
@@ -35,8 +37,17 @@ let mockGameState: typeof baseGameState & { board?: SetBoard; rating?: RoundOutc
 let mockHistory: readonly { readonly id: string }[] = [];
 const historyOf = (rounds: number) => Array.from({ length: rounds }, (_, index) => ({ id: `round-${index}` }));
 
+let mockResultView: "side" | "overlay" = "side";
+const mockSetResultView = jest.fn();
+
 jest.mock("@/lib/store/gameStore", () => ({
-  useGameStore: () => ({ gameState: mockGameState, round: mockRound, history: mockHistory }),
+  useGameStore: () => ({
+    gameState: mockGameState,
+    round: mockRound,
+    history: mockHistory,
+    resultView: mockResultView,
+    setResultView: mockSetResultView,
+  }),
 }));
 
 jest.mock("@/lib/leaderboard/cutoffsClient", () => ({
@@ -64,8 +75,8 @@ const CUTOFFS: LeaderboardCutoffs = {
   grandmaster: { kind: "open" },
 };
 
-const QUALIFIES_SENTENCE =
-  "Your score makes the leaderboard. Submit it before it's gone.";
+const QUALIFIES_SENTENCE = "Easy: 80% would make the leaderboard.";
+const claimBanner = () => document.querySelector<HTMLElement>("[data-result-claim]");
 
 const perfectEasyGame = {
   ...baseGameState,
@@ -116,8 +127,11 @@ describe("GameResult", () => {
 
   afterEach(() => {
     jest.restoreAllMocks();
+    useSettingsStore.setState({ playerName: "", countryCode: "ZZ" as never });
     mockGameState = baseGameState;
     mockHistory = [];
+    mockResultView = "side";
+    mockSetResultView.mockReset();
   });
 
   describe("the Telegram invite", () => {
@@ -151,10 +165,69 @@ describe("GameResult", () => {
     expect(screen.getByText("Placing rate")).toBeInTheDocument();
     expect(document.querySelector(".lab-rc-big")).toHaveTextContent("80%");
 
+    const marks = (board: string) =>
+      ["a2", "e1", "d4", "h8"].map(
+        (square) => screen.getByRole("group", { name: board }).querySelector(`[data-coordinate="${square}"]`)?.getAttribute("data-mark") ?? null,
+      );
+    expect(marks("Your board, with correct and wrong pieces marked")).toEqual(["ok", "ok", null, null]);
+    expect(marks("The position, with correct and missed squares marked")).toEqual(["ok", "ok", "miss", null]);
+    expect(screen.getByText("Missed, on the position")).toBeInTheDocument();
+  });
+
+  it("offers the two result views and keeps the one picked", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    const views = within(screen.getByRole("group", { name: "Result view" }));
+
+    expect(views.getByRole("button", { name: "Side by side" })).toHaveAttribute("aria-pressed", "true");
+    fireEvent.click(views.getByRole("button", { name: "One board" }));
+    expect(mockSetResultView.mock.calls).toEqual([["overlay"]]);
+  });
+
+  it("reads the round in one line under the title, with the score beside it", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+    const title = screen.getByRole("heading", { name: "Great job!" }).parentElement!;
+    expect([title.textContent, title.nextElementSibling?.textContent]).toEqual([
+      "Great job!80%",
+      "4 / 5 correct · 1 wrong · rebuilt in 12.5s",
+    ]);
+  });
+
+  it("puts the review board before the readout and Next round", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+    const order = [
+      document.querySelector("[data-result-summary]"),
+      screen.getByRole("group", { name: "Result view" }),
+      document.querySelector(".lab-rc-big"),
+      screen.getByRole("button", { name: /^Next round/ }),
+    ];
+    const follows = order.slice(1).map((element, index) => Boolean(order[index]!.compareDocumentPosition(element!) & Node.DOCUMENT_POSITION_FOLLOWING));
+    expect(follows).toEqual([true, true, true]);
+  });
+
+  it("swaps the two boards for one when One board is picked", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    const boards = () => document.querySelectorAll('[data-result-board="scored"] [data-round-phase]').length;
+
+    const before = boards();
+    fireEvent.click(screen.getByRole("button", { name: "One board" }));
+
+    expect([before, boards(), document.querySelector("[data-result-board]")?.getAttribute("data-result-view")]).toEqual([2, 1, "overlay"]);
+  });
+
+  it("lays every mark on one board in the one-board view", () => {
+    mockResultView = "overlay";
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+    expect(screen.getByRole("button", { name: "One board" })).toHaveAttribute("aria-pressed", "true");
+    expect(screen.queryByRole("group", { name: "Your board, with correct and wrong pieces marked" })).toBeNull();
     const board = document.querySelector<HTMLElement>('[data-result-board="scored"]')!;
     expect(
       ["a2", "e1", "d4", "h8"].map((square) => board.querySelector(`[data-coordinate="${square}"]`)?.getAttribute("data-mark") ?? null),
     ).toEqual(["ok", "ok", "miss", null]);
+    expect(board.querySelector('[data-coordinate="d4"] .lab-piece')?.getAttribute("data-state")).toBe("ghost");
+    expect(screen.getByText("missed square")).toBeInTheDocument();
   });
 
   describe("the next step", () => {
@@ -199,30 +272,28 @@ describe("GameResult", () => {
 
       expect(primaries).toEqual(["Try again"]);
       expect(screen.queryByRole("button", { name: /Next round/ })).toBeNull();
-      expect([...actions.children].map((child) => (child.tagName === "DETAILS" ? "details" : child.textContent))).toEqual(["Change settings", "details"]);
+      expect([...actions.children].map((child) => child.textContent)).toEqual(["Change settings", "View leaderboard"]);
       expect([onTryAgain.mock.calls.length, onPlay.mock.calls.length, jest.mocked(window.gtag).mock.calls]).toEqual([1, 0, []]);
     });
 
-    it("keeps Try again and Change settings in the row under it, and folds Submit, sharing and the leaderboard into More options", () => {
+    it("keeps Try again, Change settings and the leaderboard in the row under it, with nothing folded away", () => {
       const onTryAgain = jest.fn();
       const onNewGame = jest.fn();
       render(<GameResult onTryAgain={onTryAgain} onNewGame={onNewGame} onPlay={jest.fn()} />);
       const actions = screen.getByRole("navigation", { name: "Result actions" });
-      const more = actions.querySelector("details")!;
 
       fireEvent.click(within(actions).getByRole("button", { name: "Try again" }));
       fireEvent.click(within(actions).getByRole("button", { name: "Change settings" }));
 
-      expect([...actions.children].map((child) => (child.tagName === "DETAILS" ? "details" : child.textContent))).toEqual(["Try again", "Change settings", "details"]);
-      expect([more.querySelector("summary")?.textContent, more.open]).toEqual(["More options", false]);
-      expect(
-        [
-          within(more).getByRole("button", { name: "Submit to leaderboard" }),
-          within(more).getByRole("button", { name: "Share result" }),
-          within(more).getByRole("link", { name: "View leaderboard" }),
-        ].map((control) => more.contains(control)),
-      ).toEqual([true, true, true]);
+      expect([...actions.children].map((child) => child.textContent)).toEqual(["Try again", "Change settings", "View leaderboard"]);
+      expect(actions.querySelector("details")).toBeNull();
       expect([onTryAgain.mock.calls.length, onNewGame.mock.calls.length]).toEqual([1, 1]);
+    });
+
+    it("has no second leaderboard prompt under the readout, so the claim line is the one place to submit", () => {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      expect([document.querySelector(".lab-result-callout"), screen.getAllByRole("button", { name: "Submit your score" }).length]).toEqual([null, 1]);
     });
   });
 
@@ -257,7 +328,7 @@ describe("GameResult", () => {
       screen.getByRole("link", { name: "View leaderboard" }),
     ).toBeInTheDocument();
     fireEvent.click(
-      screen.getByRole("button", { name: "Submit to leaderboard" }),
+      screen.getByRole("button", { name: "Submit your score" }),
     );
 
     expect(
@@ -288,7 +359,7 @@ describe("GameResult", () => {
 
       expect(comesBeforeTile(document.querySelector<HTMLElement>('[data-result-board="scored"]')!)).toBe(true);
       expect(
-        ["Next round 6 pcs / 10s", "Try again", "Change settings", "Submit to leaderboard", "View leaderboard"].map((name) =>
+        ["Next round 6 pcs / 10s", "Try again", "Change settings", "Submit your score", "View leaderboard"].map((name) =>
           comesBeforeTile(screen.getByRole(name === "View leaderboard" ? "link" : "button", { name })),
         ),
       ).toEqual([true, true, true, true, true]);
@@ -309,7 +380,7 @@ describe("GameResult", () => {
       expect(shownSlug()).toBe("alder-fixture");
 
       random.mockReturnValue(0.99);
-      fireEvent.click(screen.getByRole("button", { name: "Submit to leaderboard" }));
+      fireEvent.click(screen.getByRole("button", { name: "Submit your score" }));
 
       expect(screen.getByLabelText("Player name")).toBeInTheDocument();
       expect(shownSlug()).toBe("alder-fixture");
@@ -323,34 +394,15 @@ describe("GameResult", () => {
     });
   });
 
-  describe("focus after the Submit dialog closes", () => {
-    function openFromMoreOptions() {
-      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
-      const more = screen.getByRole("navigation", { name: "Result actions" }).querySelector("details")!;
-      more.open = true;
-      const submit = within(more).getByRole("button", { name: "Submit to leaderboard" });
-      fireEvent.click(submit);
-      return { more, submit };
-    }
+  it("returns focus to Submit to leaderboard when the dialog closes without a score", async () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    const submit = screen.getByRole("button", { name: "Submit your score" });
+    fireEvent.click(submit);
 
-    it("lands on the Submit button inside More options when the player presses Escape", async () => {
-      const { submit } = openFromMoreOptions();
+    fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
 
-      fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
-
-      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
-      await waitFor(() => expect(document.activeElement).toBe(submit));
-    });
-
-    it("lands on the More options summary when More options was closed meanwhile", async () => {
-      const { more } = openFromMoreOptions();
-
-      more.open = false;
-      fireEvent.click(screen.getByRole("button", { name: "Cancel" }));
-
-      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
-      await waitFor(() => expect(document.activeElement?.textContent).toBe("More options"));
-    });
+    await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+    await waitFor(() => expect(document.activeElement).toBe(submit));
   });
 
   it("shows the reason the server gave, not a generic failure", async () => {
@@ -366,7 +418,7 @@ describe("GameResult", () => {
     render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
     fireEvent.click(
-      screen.getByRole("button", { name: "Submit to leaderboard" }),
+      screen.getByRole("button", { name: "Submit your score" }),
     );
     fireEvent.change(screen.getByLabelText("Player name"), {
       target: { value: "Poteto" },
@@ -382,11 +434,51 @@ describe("GameResult", () => {
     logged.mockRestore();
   });
 
+  it("says an offensive claim name is not allowed and keeps it off the server", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />, { locale: "fr", messages: frMessages });
+    fireEvent.click(screen.getByRole("button", { name: "Envoyer" }));
+    const input = document.getElementById("player-name") as HTMLInputElement;
+
+    fireEvent.change(input, { target: { value: "p3nis" } });
+
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByRole("alert")).toHaveTextContent("Ce nom n'est pas autorisé. Choisissez-en un autre.");
+    expect(screen.getByRole("button", { name: "Envoyer le score" })).toBeDisabled();
+    expect(global.fetch).not.toHaveBeenCalledWith(expect.stringContaining("/api/leaderboard"), expect.objectContaining({ method: "POST" }));
+  });
+
+  it("says a claim name over 16 characters is too long while it is typed, and keeps it off the server", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "Submit your score" }));
+    const input = screen.getByLabelText("Player name");
+
+    fireEvent.change(input, { target: { value: "Grandmaster Poteto" } });
+
+    expect(input).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByRole("alert")).toHaveTextContent("Too long. Use at most 16 characters.");
+    expect(screen.getByRole("button", { name: "Submit score" })).toBeDisabled();
+    expect(global.fetch).not.toHaveBeenCalledWith(expect.stringContaining("/api/leaderboard"), expect.objectContaining({ method: "POST" }));
+  });
+
+  it("says a claim name under 4 characters is too short once the player leaves the field, not while they type", () => {
+    render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+    fireEvent.click(screen.getByRole("button", { name: "Submit your score" }));
+    const input = screen.getByLabelText("Player name");
+
+    fireEvent.change(input, { target: { value: "Bo" } });
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Submit score" })).toBeDisabled();
+
+    fireEvent.blur(input);
+    expect(screen.getByRole("alert")).toHaveTextContent("Too short. Use at least 4 characters.");
+    expect(screen.getByText("4 to 16 characters, shown with your score.")).toBeInTheDocument();
+  });
+
   describe("score_submit event", () => {
     function submitScore() {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
       fireEvent.click(
-        screen.getByRole("button", { name: "Submit to leaderboard" }),
+        screen.getByRole("button", { name: "Submit your score" }),
       );
       fireEvent.change(screen.getByLabelText("Player name"), {
         target: { value: "Poteto" },
@@ -475,7 +567,7 @@ describe("GameResult", () => {
     it("links the leaderboard to the name the board stored, without the spaces typed around it", async () => {
       global.fetch = jest.fn().mockResolvedValue({ ok: true, status: 200, json: async () => ({ success: true }) });
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
-      fireEvent.click(screen.getByRole("button", { name: "Submit to leaderboard" }));
+      fireEvent.click(screen.getByRole("button", { name: "Submit your score" }));
       fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "  Poteto  " } });
       fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
 
@@ -523,7 +615,7 @@ describe("GameResult", () => {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
       expect(
-        screen.queryByRole("button", { name: "Submit to leaderboard" }),
+        screen.queryByRole("button", { name: "Submit your score" }),
       ).not.toBeInTheDocument();
       expect(
         screen.getByRole("link", { name: "View leaderboard" }),
@@ -542,7 +634,7 @@ describe("GameResult", () => {
     try {
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
-      expect(screen.queryByRole("button", { name: "Submit to leaderboard" })).not.toBeInTheDocument();
+      expect(screen.queryByRole("button", { name: "Submit your score" })).not.toBeInTheDocument();
       expect(screen.getByRole("button", { name: "Try again" })).toBeInTheDocument();
     } finally {
       mockGameState = baseGameState;
@@ -608,6 +700,25 @@ describe("GameResult", () => {
     }
   });
 
+  it("keys the lab card and the deltas apart when a recorded round shows both", async () => {
+    mockGameState = { ...baseGameState, labRound: LAB_ROUND };
+    mockRecordBefore = { rounds: 4, days: ["2026-10-18"] };
+    Object.defineProperty(window, "indexedDB", { value: {}, configurable: true });
+    const logged = jest.spyOn(console, "error").mockImplementation(() => {});
+
+    try {
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      await act(async () => {});
+
+      expect(logged.mock.calls.flat().join("\n")).not.toContain("same key");
+    } finally {
+      Reflect.deleteProperty(window, "indexedDB");
+      mockGameState = baseGameState;
+      mockRecordBefore = null;
+      mockFeedbackGame = null;
+    }
+  });
+
   describe("leaderboard qualifier", () => {
     afterEach(() => {
       mockGameState = baseGameState;
@@ -624,7 +735,8 @@ describe("GameResult", () => {
 
       await renderSettled();
 
-      expect(screen.getByRole("status")).toHaveTextContent(QUALIFIES_SENTENCE);
+      expect(claimBanner()).toHaveTextContent(QUALIFIES_SENTENCE);
+      expect(within(claimBanner()!).getByRole("button", { name: "Claim your spot" })).toHaveClass("lab-btn-primary");
     });
 
     it("shows the nudge on the first render when the round left the cutoffs cached, so nothing under it moves", () => {
@@ -634,7 +746,7 @@ describe("GameResult", () => {
 
       render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
 
-      expect(screen.getByRole("status")).toHaveTextContent(QUALIFIES_SENTENCE);
+      expect(claimBanner()).toHaveTextContent(QUALIFIES_SENTENCE);
     });
 
     it("stays silent for a score slower than the worst entry on the board", async () => {
@@ -650,14 +762,13 @@ describe("GameResult", () => {
       expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
     });
 
-    it("stays silent for a medium score on an open board, which no later score can push off", async () => {
+    it("tells a medium score on a board with room that it makes the board, since such a board takes every score", async () => {
       mockGameState = { ...baseGameState, accuracy: 100, correctPlacements: 6, totalPiecesPlaced: 6 };
       loadCutoffsMock.mockResolvedValue(CUTOFFS);
 
       await renderSettled();
 
-      expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
-      expect(screen.getByRole("button", { name: "Submit to leaderboard" })).toBeInTheDocument();
+      expect([claimBanner()?.textContent, screen.getByRole("button", { name: "Claim your spot" }).isConnected]).toEqual(["Medium: 80% would make the leaderboard.Claim your spot", true]);
     });
 
     it("stays silent for a custom game, which no board ranks", async () => {
@@ -683,70 +794,193 @@ describe("GameResult", () => {
       expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
     });
 
-    it("brings Submit out of More options, beside Try again, while the score would push someone off the board", async () => {
+    it("offers Claim your spot as the one primary button and demotes Next round for a qualifying round", async () => {
       mockGameState = perfectEasyGame;
       loadCutoffsMock.mockResolvedValue(CUTOFFS);
 
       await renderSettled();
-      const actions = screen.getByRole("navigation", { name: "Result actions" });
 
-      expect([...actions.children].map((child) => (child.tagName === "DETAILS" ? "details" : child.textContent))).toEqual([
-        "Try again",
-        "Change settings",
-        "Submit to leaderboard",
-        "details",
-      ]);
+      expect([
+        [...document.querySelectorAll(".lab-btn-primary")].map((button) => button.textContent),
+        screen.getByRole("button", { name: /^Next round/ }).className.includes("lab-btn-secondary"),
+        document.querySelector(".lab-result-callout"),
+      ]).toEqual([["Claim your spot"], true, null]);
     });
 
-    it("keeps Submit in the row after the score is submitted, so focus can return to it when the dialog closes", async () => {
+    it("keeps Next round primary and Submit your score secondary for a score that would not make the board", async () => {
       mockGameState = perfectEasyGame;
-      loadCutoffsMock.mockResolvedValue(CUTOFFS);
+      loadCutoffsMock.mockResolvedValue(null);
+
       await renderSettled();
-      const actions = screen.getByRole("navigation", { name: "Result actions" });
-      const submit = within(actions).getByRole("button", { name: "Submit to leaderboard" });
 
-      fireEvent.click(submit);
-      fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
-      fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
-      await screen.findByRole("heading", { name: "Score submitted!" });
-
-      expect([submit.isConnected, submit.parentElement === actions]).toEqual([true, true]);
+      expect([
+        [...document.querySelectorAll(".lab-btn-primary")].map((button) => button.textContent),
+        screen.getByRole("button", { name: "Submit your score" }).className.includes("lab-btn-secondary"),
+      ]).toEqual([["Next round3 pcs / 10s"], true]);
     });
 
-    it("returns focus to Submit when the dialog closes after a submit", async () => {
+    it("moves focus to the claimed banner's See the board link when the dialog closes after a submit, since the claim button is gone", async () => {
       mockGameState = perfectEasyGame;
       loadCutoffsMock.mockResolvedValue(CUTOFFS);
       await renderSettled();
-      const submit = screen.getByRole("button", { name: "Submit to leaderboard" });
 
-      fireEvent.click(submit);
+      fireEvent.click(screen.getByRole("button", { name: "Claim your spot" }));
       fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
       fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
       await screen.findByRole("heading", { name: "Score submitted!" });
       fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
 
       await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
-      await waitFor(() => expect(document.activeElement).toBe(submit));
+      await waitFor(() => expect(document.activeElement).toBe(within(claimBanner()!).getByRole("link", { name: "See the board" })));
+      expect(claimBanner()!.contains(document.activeElement)).toBe(true);
+      expect(document.querySelector(".lab-result-callout")).toBeNull();
     });
 
-    it("drops the nudge once the score has been submitted", async () => {
+    it("swaps the claim button for a claimed state in the same banner once the score is submitted, and Next round is primary again", async () => {
       mockGameState = perfectEasyGame;
       loadCutoffsMock.mockResolvedValue(CUTOFFS);
 
       await renderSettled();
-      expect(screen.getByText(QUALIFIES_SENTENCE)).toBeInTheDocument();
-
-      fireEvent.click(
-        screen.getByRole("button", { name: "Submit to leaderboard" }),
-      );
-      fireEvent.change(screen.getByLabelText("Player name"), {
-        target: { value: "Poteto" },
-      });
+      const banner = claimBanner()!;
+      fireEvent.click(screen.getByRole("button", { name: "Claim your spot" }));
+      fireEvent.change(screen.getByLabelText("Player name"), { target: { value: "Poteto" } });
       fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
 
-      await waitFor(() => {
-        expect(screen.queryByText(QUALIFIES_SENTENCE)).not.toBeInTheDocument();
-      });
+      await screen.findByRole("heading", { name: "Score submitted!" });
+      fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+      expect(within(banner).getByRole("status")).toHaveTextContent("On the leaderboard: Easy, 80%.");
+      expect([
+        claimBanner(),
+        within(banner).queryByRole("button"),
+        within(banner).getByRole("link", { name: "See the board" }).getAttribute("href"),
+        banner.getAttribute("data-claim-state"),
+        screen.getByRole("button", { name: /^Next round/ }).className.includes("lab-btn-primary"),
+      ]).toEqual([banner, null, expect.stringMatching(/^\/leaderboard\?player=Poteto&difficulty=easy&/), "claimed", true]);
+    });
+  });
+
+  describe("what a submit gives back", () => {
+    const ENTRY_ID = "0b5e8f7c-3c1a-4e2b-9d4f-1a2b3c4d5e6f";
+    const row = {
+      id: ENTRY_ID,
+      player_name: "Poteto",
+      difficulty: "medium",
+      piece_count: 6,
+      correct_pieces: 4,
+      total_wrong_pieces: 2,
+      memorize_time: 8.25,
+      solution_time: 12.5,
+      country_code: "SG",
+      created_at: "2026-10-09T01:00:00Z",
+    };
+    const reply = (body: unknown) => ({ ok: true, status: 200, json: async () => body });
+
+    function serveBoard() {
+      global.fetch = jest.fn(async (input: RequestInfo | URL) => {
+        const url = String(input);
+        if (url.includes("scope=world")) return reply({ data: { difficulty: "medium", daily_day: null, country: null, rank: 312, total: 4180 } });
+        if (url.includes("scope=country")) return reply({ data: { difficulty: "medium", daily_day: null, country: "SG", rank: 3, total: 57 } });
+        if (url.includes("/api/leaderboard")) return reply({ success: true, data: row });
+        return reply({ data: { value: 1 } });
+      }) as unknown as typeof fetch;
+    }
+
+    async function submitAs(name: string) {
+      fireEvent.click(screen.getByRole("button", { name: "Submit your score" }));
+      fireEvent.change(screen.getByLabelText("Player name"), { target: { value: name } });
+      fireEvent.click(screen.getByRole("button", { name: "Submit score" }));
+      await screen.findByRole("heading", { name: "Score submitted!" });
+    }
+
+    beforeEach(() => {
+      window.localStorage.clear();
+    });
+
+    it("shows the score's rank worldwide and in the player's country once it is in", async () => {
+      useSettingsStore.setState({ countryCode: "SG" as never });
+      serveBoard();
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      await submitAs("Poteto");
+
+      const ranks = await screen.findByText("#312 of 4,180 worldwide");
+      expect([...ranks.closest("ul")!.children].map((item) => item.textContent)).toEqual(["#312 of 4,180 worldwide", "#3 of 57 in Singapore"]);
+    });
+
+    it("tells the player their rank in the claimed banner, a quiet link to the board under it, and keeps focus there after the dialog closes", async () => {
+      useSettingsStore.setState({ countryCode: "SG" as never });
+      serveBoard();
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      await submitAs("Poteto");
+      fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+      const banner = claimBanner()!;
+      await waitFor(() => expect(within(banner).getByRole("status").textContent).toBe("You're #312 of 4,180 on Medium#3 of 57 in Singapore"));
+      const link = within(banner).getByRole("link", { name: "See the board" });
+
+      expect([within(banner).queryAllByRole("button"), link.className.includes("lab-btn"), link.getAttribute("href")]).toEqual([[], false, expect.stringMatching(/^\/leaderboard\?player=Poteto&difficulty=medium&/)]);
+      expect(document.activeElement).toBe(link);
+    });
+
+    it("falls back to the plain confirmation when the rank cannot be read", async () => {
+      global.fetch = jest.fn(async (input: RequestInfo | URL) => {
+        const url = String(input);
+        if (url.includes("/api/leaderboard/rank")) return { ok: false, status: 500, json: async () => ({}) };
+        if (url.includes("/api/leaderboard")) return reply({ success: true, data: row });
+        return reply({ data: { value: 1 } });
+      }) as unknown as typeof fetch;
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      await submitAs("Poteto");
+      fireEvent.keyDown(screen.getByRole("dialog"), { key: "Escape" });
+      await waitFor(() => expect(screen.queryByRole("dialog")).toBeNull());
+
+      expect(within(claimBanner()!).getByRole("status")).toHaveTextContent("On the leaderboard: Medium, 80%.");
+    });
+
+    it("shows only the world rank when the player picked no country", async () => {
+      serveBoard();
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      await submitAs("Poteto");
+
+      const ranks = await screen.findByText("#312 of 4,180 worldwide");
+      expect(ranks.closest("ul")!.children).toHaveLength(1);
+    });
+
+    it("offers the last name a score went up under on the next submit", async () => {
+      serveBoard();
+      const { unmount } = render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      await submitAs("  Poteto ");
+      unmount();
+
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      fireEvent.click(screen.getByRole("button", { name: "Submit your score" }));
+
+      expect(screen.getByLabelText("Player name")).toHaveValue("Poteto");
+    });
+
+    it("calls a score better than this device's best on the board a new personal best", async () => {
+      window.localStorage.setItem(
+        "memory-chess-lab-entries",
+        JSON.stringify({ medium: { id: ENTRY_ID, difficulty: "medium", country: "ZZ", score: { correctPieces: 2, totalWrongPieces: 3, memorizeTime: 9, solutionTime: 20 }, submittedAt: 1 } }),
+      );
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+
+      expect(await screen.findByText("New personal best on this board. Put it on the record.")).toBeInTheDocument();
+    });
+
+    it("keeps the plain prompt for a score no better than this device's best", async () => {
+      window.localStorage.setItem(
+        "memory-chess-lab-entries",
+        JSON.stringify({ medium: { id: ENTRY_ID, difficulty: "medium", country: "ZZ", score: { correctPieces: 6, totalWrongPieces: 0, memorizeTime: 5, solutionTime: 6 }, submittedAt: 1 } }),
+      );
+      render(<GameResult onTryAgain={jest.fn()} onNewGame={jest.fn()} onPlay={jest.fn()} />);
+      await act(async () => {});
+
+      expect(claimBanner()?.textContent).toBe("Medium: see where 80% ranks.Submit your score");
     });
   });
 });

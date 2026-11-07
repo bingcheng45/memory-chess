@@ -1,13 +1,16 @@
+import { setRequestLocale } from "next-intl/server";
 import { BrainLabHome } from "@/components/home/BrainLabHome";
+import { IntroShell } from "@/components/home/intro/IntroShell";
 import { RECORD_HINT } from "@/components/home/recordHint";
+import { HOME_INTRO } from "@/lib/home/intro/introGate";
 import { getTotalPlays } from "@/lib/services/totalPlays";
 
-export const revalidate = 3600;
-
-export default async function Home() {
+export default async function Home({ params }: { readonly params: Promise<{ locale: string }> }) {
+  setRequestLocale((await params).locale);
   const plays = await getTotalPlays();
   return (
     <>
+      {HOME_INTRO && <IntroShell />}
       {/* Runs while the page is parsed, before §06 paints; it marks itself, which React does not render. */}
       <script suppressHydrationWarning dangerouslySetInnerHTML={{ __html: RECORD_HINT }} />
       <BrainLabHome initialPlays={plays?.plays} />

@@ -179,7 +179,7 @@ describe("LabRecordSection", () => {
     const types = panel("Recall by piece type");
 
     expect(types.querySelector(".lab-need")?.textContent).toBe("Your rounds so far were just the two kings, and recall by piece type needs more pieces. Play a round →");
-    expect(within(types).getByRole("link").getAttribute("href")).toBe("/game?pieceCount=6&memorizeTime=10&source=home_quick");
+    expect(within(types).getByRole("link").getAttribute("href")).toBe("/game?pieceCount=6&memorizeTime=10&from=home_quick");
     expect(within(types).getByText("Kings are in every round, so they are a baseline. Recalled 100 of 100.")).toBeInTheDocument();
     expect(within(types).queryByText(/after your first round/)).toBeNull();
     expect(bars(types).at(-1)).toEqual(["King baseline", "96%"]);
@@ -325,6 +325,13 @@ describe("LabRecordSection", () => {
       "Imported 2 rounds. The file's lifetime totals were unreadable or from an older version, so only its rounds were imported.",
     ],
     [{ ok: true as const, added: 5000, rejected: 0, overCap: 0, summary: "restored" as const }, "Imported 5,000 rounds."],
+    [{ ok: true as const, added: 0, rejected: 0, overCap: 0, summary: "ignored" as const, player: "restored" as const }, "Your rating and streak are restored."],
+    [
+      { ok: true as const, added: 3, rejected: 0, overCap: 0, summary: "restored" as const, player: "restored" as const },
+      "Imported 3 rounds. Your rating and streak are restored.",
+    ],
+    [{ ok: true as const, added: 0, rejected: 0, overCap: 0, summary: null, player: "kept" as const }, "Nothing new to import. Those rounds are already here."],
+    [{ ok: true as const, added: 2, rejected: 0, overCap: 0, summary: null, player: "dropped" as const }, "Imported 2 rounds."],
     [{ ok: false as const, tooLarge: true }, "That file is over 5 MB, larger than any lab record, so nothing was imported."],
     [{ ok: false as const, tooLarge: false }, "That file is not a Memory Chess lab record."],
   ])("shows the import notice for %o", async (outcome, text) => {

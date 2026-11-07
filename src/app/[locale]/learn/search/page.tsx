@@ -45,7 +45,7 @@ export default async function LearnSearchRoute({ searchParams }: LearnSearchRout
   const raw = (await searchParams).q;
   const query = (Array.isArray(raw) ? raw[0] : raw ?? "").trim().slice(0, MAX_QUERY_LENGTH);
   const results = query ? search(query, INDEX) : [];
-  const outcome = outcomeOf(results);
+  const outcome = outcomeOf(results, query);
   const asked = EN_LEARN_PAGES.filter((page) => page.meta.featured).map((page) => page.meta.questions[0]);
 
   return (

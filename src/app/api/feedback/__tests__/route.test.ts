@@ -22,19 +22,29 @@ const validBody = {
   solutionTime: 12.5,
 };
 
+let testNumber = 0;
+const testAddress = () => `203.0.113.${testNumber}`;
+
+function feedbackRequest(init: { body?: string; contentType?: string | null; ip?: string } = {}) {
+  const headers: Record<string, string> = { "x-forwarded-for": init.ip ?? testAddress() };
+  if (init.contentType !== null) headers["Content-Type"] = init.contentType ?? "application/json";
+  return new Request("http://localhost/api/feedback", {
+    method: "POST",
+    headers,
+    body: init.body ?? JSON.stringify(validBody),
+  });
+}
+
 describe("POST /api/feedback", () => {
   beforeEach(() => {
+    testNumber += 1;
     mockAppendGoogleSheetRow.mockReset();
     mockAppendGoogleSheetRow.mockResolvedValue();
   });
 
   it("appends a validated response to the feedback worksheet as raw data", async () => {
     const response = await POST(
-      new Request("http://localhost/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validBody),
-      }),
+      feedbackRequest({ body: JSON.stringify(validBody) }),
     );
 
     expect(response.status).toBe(200);
@@ -59,11 +69,7 @@ describe("POST /api/feedback", () => {
 
   it("records a daily board's feedback as daily", async () => {
     const response = await POST(
-      new Request("http://localhost/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...validBody, pieceCount: 7, correctPieces: 5, difficulty: "daily" }),
-      }),
+      feedbackRequest({ body: JSON.stringify({ ...validBody, pieceCount: 7, correctPieces: 5, difficulty: "daily" }) }),
     );
 
     expect(response.status).toBe(200);
@@ -72,11 +78,7 @@ describe("POST /api/feedback", () => {
 
   it("rejects invalid feedback without writing a row", async () => {
     const response = await POST(
-      new Request("http://localhost/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ ...validBody, rating: 6 }),
-      }),
+      feedbackRequest({ body: JSON.stringify({ ...validBody, rating: 6 }) }),
     );
 
     expect(response.status).toBe(400);
@@ -89,16 +91,59 @@ describe("POST /api/feedback", () => {
     );
 
     const response = await POST(
-      new Request("http://localhost/api/feedback", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(validBody),
-      }),
+      feedbackRequest({ body: JSON.stringify(validBody) }),
     );
 
     expect(response.status).toBe(500);
     expect(await response.json()).toEqual({
       error: "Failed to submit feedback",
     });
+  });
+
+  it("answers 415 to a body that is not JSON without writing a row", async () => {
+    const response = await POST(feedbackRequest({ contentType: "text/plain" }));
+
+    expect(response.status).toBe(415);
+    expect(await response.json()).toEqual({ error: "Content-Type must be application/json" });
+    expect(mockAppendGoogleSheetRow).not.toHaveBeenCalled();
+  });
+
+  it("accepts a full-length comment in CJK, which is about 6000 bytes of UTF-8", async () => {
+    const response = await POST(
+      feedbackRequest({ body: JSON.stringify({ ...validBody, feedback: "记".repeat(2000) }) }),
+    );
+
+    expect(response.status).toBe(200);
+    expect(mockAppendGoogleSheetRow.mock.calls[0][0].row[2]).toBe("记".repeat(2000));
+  });
+
+  it("answers 413 to a body over 8192 bytes without writing a row", async () => {
+    const response = await POST(
+      feedbackRequest({ body: JSON.stringify({ ...validBody, feedback: "x".repeat(9000) }) }),
+    );
+
+    expect(response.status).toBe(413);
+    expect(await response.json()).toEqual({ error: "Request body is too large" });
+    expect(mockAppendGoogleSheetRow).not.toHaveBeenCalled();
+  });
+
+  it("answers 429 with Retry-After once one address passes 5 submissions in 10 minutes", async () => {
+    const statuses: number[] = [];
+    for (let i = 0; i < 6; i++) {
+      statuses.push((await POST(feedbackRequest({ ip: `198.51.100.${testNumber}` }))).status);
+    }
+    const blocked = await POST(feedbackRequest({ ip: `198.51.100.${testNumber}` }));
+
+    expect(statuses).toEqual([200, 200, 200, 200, 200, 429]);
+    expect(Number(blocked.headers.get("retry-after"))).toBeGreaterThan(0);
+    expect(mockAppendGoogleSheetRow).toHaveBeenCalledTimes(5);
+  });
+
+  it("keeps counting each address on its own", async () => {
+    for (let i = 0; i < 5; i++) await POST(feedbackRequest({ ip: `198.51.100.${testNumber}` }));
+
+    const otherAddress = await POST(feedbackRequest({ ip: `198.51.101.${testNumber}` }));
+
+    expect(otherAddress.status).toBe(200);
   });
 });

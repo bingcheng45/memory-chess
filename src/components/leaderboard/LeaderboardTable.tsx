@@ -1,7 +1,7 @@
 'use client';
 
 import { START_RATING } from "@/lib/game/rating";
-import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardEntry } from "@/types/leaderboard";
+import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type BoardRow } from "@/types/leaderboard";
 import { Link } from "@/i18n/navigation";
 import { memo, useEffect, useRef, type ReactNode } from "react";
 import { CloudOff, TriangleAlert } from "lucide-react";
@@ -21,7 +21,7 @@ export interface EntryDetails {
 }
 
 interface LeaderboardTableProps {
-  data: LeaderboardEntry[];
+  data: BoardRow[];
   error: string | null;
   entryDetails?: EntryDetails;
   activeTab?: string;
@@ -41,12 +41,11 @@ export function TimeDisplay({ seconds }: { seconds: number }) {
   const wholeSeconds = String(Math.floor(totalMs / 1000) % 60).padStart(2, "0");
   const milliseconds = String(totalMs % 1000).padStart(3, "0");
 
+  // One text node for the minutes and seconds: every cell is served in every
+  // locale's page, so separate spans and React's text separators added up.
   return (
     <span className="lb-time">
-      <span>{minutes}</span>
-      <span>:</span>
-      <span>{wholeSeconds}</span>
-      <span>:</span>
+      {`${minutes}:${wholeSeconds}:`}
       <span className="lb-ms">{milliseconds}</span>
     </span>
   );
@@ -154,8 +153,12 @@ function LeaderboardTable({ data, error, entryDetails, activeTab, blindfold = fa
     );
   }
 
+  // While every row still sits at the starting rating the column says nothing, and on a phone it pushes Pieces,
+  // the column the board is ranked by, off the screen.
+  const elo = !blindfold && data.some((entry) => (entry.skill_rating ?? START_RATING) !== START_RATING);
+
   return (
-    <BoardFrame isState={false} elo={!blindfold}>
+    <BoardFrame isState={false} elo={elo}>
       {data.map((entry, index) => {
         // A name alone matches every round that player submitted, so a row is
         // only highlighted when the link also carries that round's times.
@@ -195,7 +198,7 @@ function LeaderboardTable({ data, error, entryDetails, activeTab, blindfold = fa
                 {isHighlighted && <span className="lb-you">{t("you")}</span>}
               </div>
             </td>
-            {!blindfold && <td className="lb-num">{entry.skill_rating ?? START_RATING}</td>}
+            {elo && <td className="lb-num">{entry.skill_rating ?? START_RATING}</td>}
             <td className="lb-num">
               {entry.correct_pieces}
               {entry.total_wrong_pieces !== undefined &&

@@ -23,6 +23,7 @@ const KNOWN_ROUTES = [
   "/settings",
   "/daily",
   "/dashboard",
+  "/data",
 ];
 
 describe("changelog data", () => {

@@ -7,6 +7,7 @@ import {
   CHANGELOG_DISMISSAL_STORAGE_KEY,
   LATEST_CHANGELOG_ENTRY,
 } from "@/lib/changelog";
+import { GAME_STORAGE_KEY } from "@/lib/game/configPrefill";
 import { render } from "@/test-utils/intl";
 import messages from "../../../../messages/en.json";
 
@@ -34,6 +35,7 @@ describe("ChangelogBanner across a hydration and a later remount", () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date(publishedAt + 24 * 60 * 60 * 1000));
     window.localStorage.setItem(CHANGELOG_DISMISSAL_STORAGE_KEY, LATEST_CHANGELOG_ENTRY.version);
+    window.localStorage.setItem(GAME_STORAGE_KEY, JSON.stringify({ state: { history: [{ id: "round-1" }] } }));
   });
 
   afterEach(() => {

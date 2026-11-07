@@ -5,6 +5,7 @@ import ArticlePortrait from "@/components/articles/ArticlePortrait";
 import { ARTICLE_LONG_WORDS } from "@/components/articles/articleStyles";
 import { useLikesSeen } from "@/components/articles/useLikesSeen";
 import type { ArticleSummary } from "@/lib/articles/schema";
+import { ENGLISH_ONLY_ARTICLE_SLUGS } from "@/lib/articles/translatedLocales";
 import { hasCounts, atLeastLikesSeen, type ArticleCounts } from "@/lib/articles/stats";
 
 type ArticleCardProps = {
@@ -20,13 +21,13 @@ const CARD_CLASS =
   "min-[561px]:grid-cols-[148px_minmax(0,1fr)] min-[561px]:gap-6 min-[561px]:p-5";
 
 export default function ArticleCard({ article, counts: listed, priority, style }: ArticleCardProps) {
-  const { slug, photo, person, publishedAt, publishedLabel, title, description } = article;
+  const { slug, photo, person, publishedAt, publishedLabel, title, description, summary } = article;
   const counts = atLeastLikesSeen(listed, useLikesSeen(slug));
   const descriptionId = `${slug}-description`;
   const countsId = `${slug}-counts`;
 
   return (
-    <li style={style}>
+    <li style={style} data-english-only-article={ENGLISH_ONLY_ARTICLE_SLUGS.includes(slug) || undefined}>
       <ArticleLink
         article={slug}
         portrait={photo}
@@ -66,7 +67,7 @@ export default function ArticleCard({ article, counts: listed, priority, style }
             id={descriptionId}
             className={`art-card-desc ${ARTICLE_LONG_WORDS}`}
           >
-            {description}
+            {summary ?? description}
           </p>
           {hasCounts(counts) ? (
             <p

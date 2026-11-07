@@ -3,19 +3,25 @@ import { getLeaderboard, submitLeaderboardEntry } from '@/lib/services/leaderboa
 import { readDailyBoard } from '@/lib/daily/readDailyBoard';
 import { checkSupabaseConnection } from '@/lib/supabase';
 import { parseCountryCode, WORLD_CODE } from '@/lib/leaderboard/countries';
-import { isSkillRating, MAX_SKILL_RATING, START_RATING } from '@/lib/game/rating';
+import { isSkillRating, START_RATING } from '@/lib/game/rating';
+import { SUBMITTABLE_RATING_CEILING } from '@/lib/leaderboard/ratingCeiling';
 import { joinableDays, readableDays, readBoard } from '@/lib/leaderboard/board';
 import { playerNameProblem } from '@/lib/leaderboard/playerName';
 import { utcDayOf } from '@/lib/lab/daily';
 import { dailySettingOf } from '@/lib/daily/schedule';
-import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardBoard, type LeaderboardDifficulty } from '@/types/leaderboard';
-import { GAME_CONFIG_RULES } from '@/lib/game/configPrefill';
+import { DAILY_BOARD, LEADERBOARD_UNAVAILABLE, type LeaderboardBoard } from '@/types/leaderboard';
+import { BOARD_PIECES, studyFloorSeconds } from '@/lib/leaderboard/studyFloor';
 import { MEMORIZE_SECONDS_RANGE } from '@/lib/reference/facts';
 import { clientAddress, fixedWindowLimiter } from '@/lib/server/rateLimit';
+import { isJson, readBodyWithinLimit } from '@/lib/server/requestBody';
 import { reportServerError } from '@/lib/server/serverErrors';
 
 const RANKED_CACHE = 'public, s-maxage=30, stale-while-revalidate=300';
 const DAILY_DAY_CACHE = 'public, s-maxage=15, stale-while-revalidate=60';
+const OPEN_DAILY_CACHE = 'public, s-maxage=15';
+
+/** A score is about a dozen short fields; the largest legitimate body is well under this. */
+const MAX_BODY_BYTES = 2048;
 
 const SUBMISSION_UNAVAILABLE = 'The leaderboard is being updated. Please try again shortly.';
 
@@ -24,8 +30,6 @@ const SCORES_PER_MINUTE = 5;
 const allowScore = fixedWindowLimiter({ limit: SCORES_PER_MINUTE, windowMs: 60_000, maxKeys: 5_000 });
 
 const SECONDS_PER_PIECE = 0.25;
-
-const BOARD_PIECES = Object.fromEntries(GAME_CONFIG_RULES.presets.map(({ id, pieceCount }) => [id, pieceCount])) as Record<LeaderboardDifficulty, number>;
 
 const LONGEST_STUDY_SECONDS = MEMORIZE_SECONDS_RANGE.max;
 
@@ -41,6 +45,8 @@ function boardRowMismatch(board: LeaderboardBoard, pieceCount: unknown, memorize
     if (typeof memorizeTime !== 'number' || memorizeTime <= 0 || memorizeTime > LONGEST_STUDY_SECONDS) {
       return `A study lasts more than 0 and at most ${LONGEST_STUDY_SECONDS} seconds`;
     }
+    const floor = studyFloorSeconds(pieces);
+    if (memorizeTime < floor) return `A study of ${pieces} pieces takes at least ${floor} seconds`;
     return rebuildTooFast(pieces, solutionTime);
   }
   const code = parseCountryCode(country);
@@ -67,7 +73,7 @@ function countsAreScored(pieceCount: unknown, correct: unknown, wrong: unknown):
 
 function parseSkillRating(value: unknown): number | null {
   if (value === undefined) return START_RATING;
-  return isSkillRating(value) ? Math.min(value, MAX_SKILL_RATING) : null;
+  return isSkillRating(value) && value <= SUBMITTABLE_RATING_CEILING ? value : null;
 }
 
 export async function GET(request: NextRequest) {
@@ -93,7 +99,7 @@ export async function GET(request: NextRequest) {
     }
     const read = await readDailyBoard(board.daily_day);
     if (read === null) return unavailable();
-    return NextResponse.json({ data: read.rows, playedLike: read.playedLike }, namedDay === null ? undefined : { headers: { 'Cache-Control': DAILY_DAY_CACHE } });
+    return NextResponse.json({ data: read.rows, playedLike: read.playedLike }, { headers: { 'Cache-Control': namedDay === null ? OPEN_DAILY_CACHE : DAILY_DAY_CACHE } });
   } catch (err) {
     console.error('Unexpected API error:', err);
     reportServerError('GET /api/leaderboard', 'unexpected', err, { board: board.difficulty });
@@ -110,9 +116,18 @@ export async function POST(request: NextRequest) {
     );
   }
 
+  if (!isJson(request.headers.get('content-type'))) {
+    return NextResponse.json({ error: 'Content-Type must be application/json' }, { status: 415 });
+  }
+
+  const text = await readBodyWithinLimit(request, MAX_BODY_BYTES);
+  if (text === null) {
+    return NextResponse.json({ error: 'Request body is too large' }, { status: 413 });
+  }
+
   let body;
   try {
-    body = await request.json();
+    body = JSON.parse(text);
   } catch {
     return NextResponse.json({ error: 'Invalid JSON request body' }, { status: 400 });
   }
@@ -133,7 +148,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Player name must be text' }, { status: 400 });
     }
     const playerName = player_name.trim();
-    if (playerNameProblem(playerName) !== null) {
+    const nameProblem = playerNameProblem(playerName);
+    if (nameProblem === 'blocked') {
+      return NextResponse.json({ error: 'Please choose a different player name' }, { status: 400 });
+    }
+    if (nameProblem !== null) {
       return NextResponse.json(
         { error: 'Player name must be between 4 and 16 characters' },
         { status: 400 }

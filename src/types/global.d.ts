@@ -1,7 +1,11 @@
 // Global type definitions
 
 interface Window {
-  gtag: (
+  gtag: ((
+    command: 'set',
+    target: 'user_properties',
+    properties: Record<string, string>
+  ) => void) & ((
     command: 'event',
     eventName: string, // For example 'video_start' or 'video_complete'
     eventParams: {
@@ -11,5 +15,5 @@ interface Window {
       value?: number;
       [key: string]: string | number | boolean | undefined;
     }
-  ) => void;
+  ) => void);
 } 

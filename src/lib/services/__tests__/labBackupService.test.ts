@@ -19,6 +19,7 @@ beforeAll(() => {
 afterEach(() => {
   rpc.mockReset();
   delete process.env.SUPABASE_SERVICE_ROLE_KEY;
+  delete process.env.SUPABASE_READ_ONLY;
 });
 
 describe("runBackup", () => {
@@ -75,6 +76,37 @@ describe("runBackup", () => {
     expect(await runBackup({ action: "get", lookup: LOOKUP })).toEqual({
       status: "unavailable",
       cause: { code: "42883", message: "function lab_backup_get does not exist" },
+    });
+  });
+
+  describe("with SUPABASE_READ_ONLY=true", () => {
+    beforeEach(() => {
+      process.env.NEXT_PUBLIC_SUPABASE_URL = "https://example.supabase.co";
+      process.env.SUPABASE_SERVICE_ROLE_KEY = "service-key";
+      process.env.SUPABASE_READ_ONLY = "true";
+    });
+
+    it("writes nothing: a put and a delete are unavailable and reach no function", async () => {
+      const results = await Promise.all([
+        runBackup({ action: "put", lookup: LOOKUP, sealed: "AAAA", expectedSavedAt: null }),
+        runBackup({ action: "delete", lookup: LOOKUP }),
+      ]);
+
+      expect(results).toEqual([
+        { status: "unavailable", cause: new Error("Supabase is read-only (SUPABASE_READ_ONLY=true)") },
+        { status: "unavailable", cause: new Error("Supabase is read-only (SUPABASE_READ_ONLY=true)") },
+      ]);
+      expect(rpc).not.toHaveBeenCalled();
+    });
+
+    it("still reads a backup", async () => {
+      answers({ data: [{ sealed: "AAAA", updated_at: "2026-10-09T12:00:00+00:00" }], error: null });
+
+      expect(await runBackup({ action: "get", lookup: LOOKUP })).toEqual({
+        status: "ok",
+        data: { sealed: "AAAA", savedAt: "2026-10-09T12:00:00+00:00" },
+      });
+      expect(rpc.mock.calls).toEqual([["lab_backup_get", { p_lookup: LOOKUP }]]);
     });
   });
 });

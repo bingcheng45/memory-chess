@@ -169,6 +169,19 @@ describe("the join form's name and country descriptions", () => {
     expect(screen.queryByText("Too short. Use at least 4 characters.")).toBeNull();
   });
 
+  it("says an offensive name is not allowed and keeps the join button off", async () => {
+    serve("SG");
+    languages(["en-US"]);
+    render(<DailyJoinForm round={ROUND} onJoined={jest.fn()} />);
+    await screen.findByText("From your connection.");
+
+    fireEvent.change(name(), { target: { value: "p3nis" } });
+
+    expect(name()).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByText("That name isn't allowed. Please choose a different one.")).toBeVisible();
+    expect(screen.getByRole("button", { name: "Join the board" })).toBeDisabled();
+  });
+
   it("marks a seventeen-letter name invalid and says why", async () => {
     serve("SG");
     languages(["en-US"]);

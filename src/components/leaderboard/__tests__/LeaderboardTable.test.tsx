@@ -16,6 +16,12 @@ describe("TimeDisplay", () => {
     expect(textOf(8.558)).toBe("00:08:558");
     expect(textOf(95.072)).toBe("01:35:072");
   });
+
+  it("serves the minutes and seconds as one text node beside the milliseconds", () => {
+    const time = render(<TimeDisplay seconds={18.887} />).container.querySelector(".lb-time");
+
+    expect(time?.innerHTML).toBe('00:18:<span class="lb-ms">887</span>');
+  });
 });
 
 const row = (id: string, memorize_time: number, solution_time: number, correct_pieces: number): LeaderboardEntry => ({
@@ -119,7 +125,6 @@ describe("LeaderboardTable", () => {
           {
             id: "row-1",
             player_name: "Dino beta",
-            difficulty: "medium",
             piece_count: 6,
             correct_pieces: 6,
             memorize_time: 0.648,
@@ -142,10 +147,21 @@ describe("LeaderboardTable ELO column", () => {
   const ratings = (container: HTMLElement) =>
     [...container.querySelectorAll("tbody tr")].map((tr) => tr.querySelectorAll("td")[2].textContent);
 
+  const rated = { ...row("a", 1, 2, 6), skill_rating: 1342 };
+
   it("reads Rank, Player, ELO, Pieces, Memorize Time, Solution Time, Date", () => {
-    const { container } = render(<LeaderboardTable error={null} activeTab="medium" data={[row("a", 1, 2, 6)]} />);
+    const { container } = render(<LeaderboardTable error={null} activeTab="medium" data={[rated]} />);
 
     expect(headers(container)).toEqual(["Rank", "Player", "ELO", "Pieces", "Memorize Time", "Solution Time", "Date"]);
+  });
+
+  it("leaves ELO off while every row is still at the starting 1000, so Pieces comes next to the name", () => {
+    const { container } = render(
+      <LeaderboardTable error={null} activeTab="medium" data={[row("a", 1, 2, 6), { ...row("b", 1, 3, 5), skill_rating: 1000 }]} />,
+    );
+
+    expect(headers(container)).toEqual(["Rank", "Player", "Pieces", "Memorize Time", "Solution Time", "Date"]);
+    expect(container.querySelectorAll("tbody tr:first-child td")).toHaveLength(6);
   });
 
   it("shows each row's stored rating, and 1000 for a row stored before the column existed", () => {
@@ -161,7 +177,7 @@ describe("LeaderboardTable ELO column", () => {
   });
 
   it("keeps ELO as ELO in German, between German headers", () => {
-    const { container } = render(<LeaderboardTable error={null} activeTab="medium" data={[row("a", 1, 2, 6)]} />, {
+    const { container } = render(<LeaderboardTable error={null} activeTab="medium" data={[rated]} />, {
       locale: "de",
       messages: deMessages,
     });

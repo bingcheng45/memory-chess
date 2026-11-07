@@ -12,6 +12,7 @@
 .lab-paper .daily-fig { min-height: 1.4em; margin-bottom: 8px; font: 600 14px/1.4 var(--lp-ui); color: var(--lp-accent); }
 .lab-paper .daily-title { font: 650 48px/1.08 var(--lp-ui); letter-spacing: -0.025em; }
 .lab-paper .daily-lede { margin-top: 16px; font: 400 19px/1.6 var(--lp-body); color: var(--lp-ink-2); }
+.lab-paper .daily-head-reset { display: flex; flex-direction: column; gap: 2px; }
 .lab-paper .daily-reset { display: flex; flex-direction: column; gap: 2px; font: 400 14px/1.4 var(--lp-ui); color: var(--lp-muted); font-variant-numeric: tabular-nums; }
 .lab-paper .daily-reset strong { min-height: 1.4em; font-weight: 600; color: var(--lp-ink); }
 
@@ -101,3 +102,4 @@
   .lab-paper .daily-card { padding: 16px; }
   .lab-paper .daily-table th, .lab-paper .daily-table td { padding: 8px 4px; }
 }
+.lab-paper .daily-count { margin: 0; }

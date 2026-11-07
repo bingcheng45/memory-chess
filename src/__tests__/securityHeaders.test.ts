@@ -13,7 +13,24 @@ async function headers(): Promise<Record<string, string>> {
 
 describe("response headers", () => {
   it("apply to every path: pages, API routes and static assets alike", async () => {
-    expect((await rules()).map((rule) => rule.source)).toEqual([EVERY_PATH]);
+    const every = (await rules()).filter((rule) => rule.source === EVERY_PATH);
+
+    expect(every).toHaveLength(1);
+    expect(every[0].headers.map(({ key }) => key)).toContain("X-Frame-Options");
+  });
+
+  it("let the piece images be cached for a day and served stale for a week, while the security headers still reach them", async () => {
+    const all = await rules();
+    const pieces = all.find((rule) => rule.source === "/pieces/:path*");
+
+    expect(pieces?.headers).toEqual([{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }]);
+    expect(all.filter((rule) => rule.source === EVERY_PATH || rule.source === "/pieces/:path*")).toHaveLength(2);
+  });
+
+  it("cache the round sounds like the piece images, so a returning player does not download them again", async () => {
+    const sounds = (await rules()).find((rule) => rule.source === "/sounds/:path*");
+
+    expect(sounds?.headers).toEqual([{ key: "Cache-Control", value: "public, max-age=86400, stale-while-revalidate=604800" }]);
   });
 
   it("set the fixed security headers", async () => {
@@ -57,6 +74,8 @@ describe("the report-only content security policy", () => {
         "frame-src",
         "img-src",
         "object-src",
+        "report-to",
+        "report-uri",
         "script-src",
         "style-src",
       ].sort(),
@@ -90,10 +109,19 @@ describe("the report-only content security policy", () => {
     expect(policy["frame-ancestors"]).toEqual(["'none'"]);
   });
 
-  it("sends no report to a third party", async () => {
+  it("reports to this site's own endpoint, by report-uri and by report-to", async () => {
     const policy = (await headers())["Content-Security-Policy-Report-Only"];
 
-    expect(policy).not.toContain("report-uri");
-    expect(policy).not.toContain("report-to");
+    expect(policy).toContain("report-uri /api/csp-report");
+    expect(policy).toContain("report-to csp-endpoint");
+    expect(policy).not.toMatch(/https?:\/\/[^ ;]*(report|csp)/);
+  });
+
+  it("names the report-to group in a Reporting-Endpoints header that points at the same path", async () => {
+    expect((await headers())["Reporting-Endpoints"]).toBe('csp-endpoint="/api/csp-report"');
+  });
+
+  it("leaves the enforced policy at frame-ancestors only", async () => {
+    expect((await headers())["Content-Security-Policy"]).not.toContain("report");
   });
 });

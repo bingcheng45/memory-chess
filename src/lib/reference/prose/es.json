@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Configuración personalizada",
-        "body": "Los dos controles deslizantes se mueven con independencia de las dificultades predefinidas. El número de piezas va de {minPieces} a {maxPieces} y el tiempo de observación de {minSeconds} a {maxSeconds} segundos. La clasificación reconoce una ronda por su número de piezas, así que cualquier cantidad distinta de las cuatro predefinidas la convierte en una partida personalizada, y las partidas personalizadas quedan fuera de la clasificación."
+        "body": "Los botones − y + bajo el tablero cambian el número de piezas y el tiempo con independencia de las dificultades predefinidas. El número de piezas va de {minPieces} a {maxPieces} y el tiempo de observación de {minSeconds} a {maxSeconds} segundos. La clasificación reconoce una ronda por su número de piezas, así que cualquier cantidad distinta de las cuatro predefinidas la convierte en una partida personalizada, y las partidas personalizadas quedan fuera de la clasificación."
       }
     },
     "scoring": {

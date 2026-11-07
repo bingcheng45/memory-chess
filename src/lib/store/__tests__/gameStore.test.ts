@@ -158,7 +158,8 @@ describe("reporting a round", () => {
     store().submitSolution();
 
     expect(gtag.mock.calls).toEqual([
-      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, round_source: "plan" }],
+      ["set", "user_properties", { result_view: "side" }],
+      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, round_source: "plan", result_view: "side" }],
     ]);
   });
 });
@@ -358,6 +359,48 @@ describe("remembering the last settings played", () => {
     useGameStore.setState({ lastSettings: { pieceCount: 6, memorizeTime: 10 } });
 
     await expect(rehydrateFrom(stored)).resolves.toBeNull();
+  });
+});
+
+describe("remembering how the result is shown", () => {
+  const STORAGE_KEY = "memory-chess-storage";
+
+  const rehydrateFrom = async (resultView: unknown) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { resultView }, version: 3 }));
+    await useGameStore.persist.rehydrate();
+    return useGameStore.getState().resultView;
+  };
+
+  afterEach(() => {
+    useGameStore.setState({ resultView: "side" });
+    localStorage.clear();
+  });
+
+  it("keeps the chosen view in storage and reads it back", async () => {
+    useGameStore.getState().setResultView("overlay");
+
+    expect(JSON.parse(localStorage.getItem(STORAGE_KEY)!).state.resultView).toBe("overlay");
+    await expect(rehydrateFrom("overlay")).resolves.toBe("overlay");
+  });
+
+  it("sends result_view_select and sets the user property when the player switches views", () => {
+    const gtag = jest.fn();
+    window.gtag = gtag;
+
+    useGameStore.getState().setResultView("overlay");
+    useGameStore.getState().setResultView("overlay");
+
+    expect(gtag.mock.calls).toEqual([
+      ["set", "user_properties", { result_view: "overlay" }],
+      ["event", "result_view_select", { result_view: "overlay" }],
+    ]);
+    Reflect.deleteProperty(window, "gtag");
+  });
+
+  it.each([undefined, "sideways", 3])("shows the boards side by side when storage holds %p", async (stored) => {
+    useGameStore.setState({ resultView: "overlay" });
+
+    await expect(rehydrateFrom(stored)).resolves.toBe("side");
   });
 });
 

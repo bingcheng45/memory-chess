@@ -1,27 +1,7 @@
 import { ChessPiece, PieceType, PieceColor } from "@/types/chess";
 
-// Base URL for Wikimedia Commons chess piece images
-const WIKIMEDIA_BASE_URL = "https://upload.wikimedia.org/wikipedia/commons/";
-
-// Map of piece types and colors to their image URLs
-const pieceImages: Record<PieceColor, Record<PieceType, string>> = {
-  white: {
-    king: `${WIKIMEDIA_BASE_URL}4/42/Chess_klt45.svg`,
-    queen: `${WIKIMEDIA_BASE_URL}1/15/Chess_qlt45.svg`,
-    rook: `${WIKIMEDIA_BASE_URL}7/72/Chess_rlt45.svg`,
-    bishop: `${WIKIMEDIA_BASE_URL}b/b1/Chess_blt45.svg`,
-    knight: `${WIKIMEDIA_BASE_URL}7/70/Chess_nlt45.svg`,
-    pawn: `${WIKIMEDIA_BASE_URL}4/45/Chess_plt45.svg`,
-  },
-  black: {
-    king: `${WIKIMEDIA_BASE_URL}f/f0/Chess_kdt45.svg`,
-    queen: `${WIKIMEDIA_BASE_URL}4/47/Chess_qdt45.svg`,
-    rook: `${WIKIMEDIA_BASE_URL}f/ff/Chess_rdt45.svg`,
-    bishop: `${WIKIMEDIA_BASE_URL}9/98/Chess_bdt45.svg`,
-    knight: `${WIKIMEDIA_BASE_URL}e/ef/Chess_ndt45.svg`,
-    pawn: `${WIKIMEDIA_BASE_URL}c/c7/Chess_pdt45.svg`,
-  },
-};
+/** Cburnett's piece artwork, copied into public/pieces with its BSD licence (see LICENSE.txt there). */
+const PIECES_PATH = "/pieces";
 
 /**
  * Gets the image URL for a chess piece.
@@ -31,7 +11,7 @@ const pieceImages: Record<PieceColor, Record<PieceType, string>> = {
  * @returns The URL of the image for the piece
  */
 export function getPieceImageUrl(type: PieceType, color: PieceColor): string {
-  return pieceImages[color][type];
+  return `${PIECES_PATH}/${color}-${type}.svg`;
 }
 
 /**

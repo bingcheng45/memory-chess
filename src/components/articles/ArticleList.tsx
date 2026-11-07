@@ -17,6 +17,7 @@ import {
   writeSort,
 } from "@/components/articles/listAddress";
 import { clearSortedFirstPaint, rankStyles } from "@/components/articles/sortedFirstPaint";
+import { useLiveArticleStats } from "@/components/articles/useLiveArticleStats";
 import { paginate } from "@/lib/articles/paging";
 import type { ArticleSummary } from "@/lib/articles/schema";
 import { hasCountsToSortBy, sortArticles, type SortKey } from "@/lib/articles/sorting";
@@ -38,7 +39,8 @@ function AddressWatcher() {
   return null;
 }
 
-export default function ArticleList({ articles, stats, heading }: ArticleListProps) {
+export default function ArticleList({ articles, stats: built, heading }: ArticleListProps) {
+  const stats = useLiveArticleStats(built);
   const search = useSyncExternalStore(subscribeToAddress, readSearch, () => BARE_SEARCH);
   const sort = sortOf(search);
   const current = paginate(sortArticles(articles, stats, sort), pageOf(search));

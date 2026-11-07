@@ -8,7 +8,7 @@ The core loop on `/game`. A player picks a difficulty, memorizes a random positi
 - `round-memorize` shows the position with a millisecond countdown and a meter; `Hide board` ends it early.
 - `round-place` recreates the position: pick one of the 12 palette pieces, tap squares; tapping a square with that piece, or with none selected, removes it. The eraser (`Clear board`) empties the board, and `Restart` starts a new position at the same setting. Pieces also drag (Pointer Events, mouse and touch): a palette piece onto a square places it, a placed piece onto another square moves it and replaces what stood there, and off the board removes it. A piece with every copy on the board is refused with a message over the palette, also spoken by the live region.
 - `round-submit` scores at once.
-- `round-result` shows accuracy, pieces correct, timings, `Try again`, `New game`, and `Submit to leaderboard`.
+- `round-result` shows accuracy, pieces correct, timings, `Try again`, `New game`, and, under the score, a claim line whose button reads `Claim it` or `Submit it` (`[data-result-claim] button`). The line is absent when the study was shorter than the study floor.
 - `round-article-tile` ends the result screen with one article set beside the round just played, with `Read the article` and `Try that drill`. Every locale that serves the articles shows it in its own language, which today is all 24.
 - `round-persist` updates the persisted skill rating and last-used configuration in localStorage.
 

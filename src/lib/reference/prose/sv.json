@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Egna inställningar",
-        "body": "De två reglagen rör sig oberoende av nivåerna. Antalet pjäser går från {minPieces} till {maxPieces} och memoreringstiden från {minSeconds} till {maxSeconds} sekunder. Topplistan känner igen en omgång på dess antal pjäser, så varje annat antal än de fyra förvalda gör den till en omgång med egna inställningar, och sådana omgångar hamnar aldrig på topplistan."
+        "body": "Knapparna − och + under brädet ändrar antal pjäser och tid oberoende av nivåerna. Antalet pjäser går från {minPieces} till {maxPieces} och memoreringstiden från {minSeconds} till {maxSeconds} sekunder. Topplistan känner igen en omgång på dess antal pjäser, så varje annat antal än de fyra förvalda gör den till en omgång med egna inställningar, och sådana omgångar hamnar aldrig på topplistan."
       }
     },
     "scoring": {

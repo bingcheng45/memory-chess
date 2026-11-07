@@ -28,7 +28,7 @@ The server never learns the code and cannot read a backup.
 | Sealing key, HKDF-SHA-256 of the code, info `seal`, AES-GCM 256 | The browser | Nothing |
 | Sealed record: version byte, 12-byte nonce, AES-GCM of the gzipped export, with the version byte and the label `memory-chess-lab-backup` as associated data | The browser | Ciphertext, its size and when it was written |
 
-What a backup holds is exactly the export file, format `memory-chess-lab` version 2: rounds and lifetime totals. The kept leaderboard entry ids, the plan and goal choices, the daily and review markers and the install note stay out of the export today and so stay out of the backup.
+What a backup holds is exactly the export file, format `memory-chess-lab` version 3: rounds, lifetime totals and the player's rating, streak and certainty. The kept leaderboard entry ids, the plan and goal choices, the daily and review markers and the install note stay out of the export today and so stay out of the backup.
 
 No slow key stretching is needed. A 100-bit random code cannot be guessed the way a password can, so one HKDF step is enough. The lookup is a second derived value rather than the code itself, so a server log or a database leak never holds anything that opens a backup.
 

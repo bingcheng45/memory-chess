@@ -5,6 +5,7 @@
       "articles": "Bài viết",
       "about": "Giới thiệu",
       "changelog": "Có gì mới",
+      "blindfold": "Cờ vua mù",
       "contactUs": "Liên hệ",
       "privacy": "Quyền riêng tư",
       "terms": "Điều khoản",
@@ -560,7 +561,8 @@
           "line": "{line}: sót {missed} trên {shown}",
           "lineThin": "{line}: đã thấy {shown}, chưa đủ để đọc",
           "realAria": "Tỷ lệ sót của bạn trên từng ô. Ô xám có ít hơn 10 quân đã thấy.",
-          "realNote": "Càng đậm nghĩa là càng hay sót. Ô xám có dưới 10 quân đã thấy."
+          "realNote": "Càng đậm nghĩa là càng hay sót. Ô xám có dưới 10 quân đã thấy.",
+          "lines": "Cho đến khi mỗi ô có 10 quân đã thấy, mỗi ô được tô màu theo cả cột và hàng của nó."
         },
         "daily": {
           "fig": "Hình {number} · Bàn cờ hôm nay",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, other {# ván cũ hơn đã}} bị bỏ ra để không vượt quá giới hạn 5.000 ván.",
           "summaryIgnored": "Trình duyệt này đã có sẵn các ván, nên chỉ các ván mới được gộp vào, không gộp tổng số tích lũy của tệp.",
           "summaryDropped": "Tổng số tích lũy của tệp không đọc được hoặc thuộc phiên bản cũ hơn, nên chỉ các ván của nó được nhập.",
+          "playerRestored": "Điểm xếp hạng và chuỗi thắng của bạn đã được khôi phục.",
           "safari": "Trên Safari, thẻ riêng tư không giữ hồ sơ này sau khi đóng, và Safari xóa dữ liệu đã lưu của một trang web sau khoảng 7 ngày không ghé thăm. Hãy xuất một bản sao để giữ lại.",
           "unavailable": "Không lưu trong cửa sổ ẩn danh. Cửa sổ trình duyệt này không giữ các ván của bạn.",
           "backup": "Sao lưu giữa các thiết bị (sắp có)",
@@ -940,6 +943,21 @@
         "capped": "Đã xong {cap} lần ôn hôm nay trên thiết bị này.",
         "cappedNext": "Bàn cờ nào còn đến hạn sẽ quay lại vào ngày mai, bàn chờ lâu nhất trước.",
         "schedule": "Những bàn cờ bạn đạt dưới 80% sẽ quay lại sau 1, 3, 7 và 14 ngày kể từ lần đầu bạn thấy chúng."
+      },
+      "intro": {
+        "label": "Phần mở đầu 45 bàn cờ",
+        "skip": "Bỏ qua phần mở đầu",
+        "replay": "45 bàn cờ của Najdorf",
+        "counter": "{count, plural, other {# bàn cờ}}",
+        "counterDark": "{count, plural, other {# bàn cờ}} · không bàn nào được nhìn",
+        "one": "Một bàn cờ. <em>Bạn nhìn thấy nó.</em>",
+        "oneNote": "Ván cờ ở Nhà hát Opera của Morphy, Paris, 1858. Mọi nước đi đều có thật.",
+        "many": "Giờ là <em>bốn mươi lăm.</em>",
+        "manyNote": "São Paulo, tháng 1 năm 1947. Miguel Najdorf đấu cùng lúc với bốn mươi lăm đối thủ.",
+        "dark": "Ông không nhìn thấy <em>bàn nào.</em>",
+        "darkNote": "Ông chơi cờ bịt mắt hơn 23 giờ, đáp lại mọi nước đi bằng trí nhớ. Ông thắng 39 ván.",
+        "you": "Bắt đầu với <em>một.</em>",
+        "youNote": "Nhìn một thế cờ trong vài giây. Rồi nó tối đi, và bạn dựng lại nó."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "Tối đa <num>+{value}</num>",
         "loss": "Tối đa <num>−{value}</num>",
         "announce": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}. Nếu bạn trượt, tối đa −{loss}.",
-        "announceProvisional": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}."
+        "announceProvisional": "Điểm của bàn cờ {board}. Điểm của bạn {rating}. Độ chính xác dự kiến {expected}%. Nếu bạn vượt qua, tối đa +{gain}.",
+        "summary": "Bàn cờ {board} · dự kiến {expected}%",
+        "expect": "dự kiến {expected}%",
+        "details": "Chi tiết điểm"
       },
       "blindfold": "Bịt mắt",
-      "blindfoldHint": "Học thế cờ qua ký hiệu, không có quân trên bàn cờ."
+      "blindfoldHint": "Học thế cờ qua ký hiệu, không có quân trên bàn cờ.",
+      "presetShort": {
+        "easy": "Dễ",
+        "medium": "Vừa",
+        "hard": "Khó",
+        "grandmaster": "ĐKT"
+      },
+      "fewerPieces": "Bớt quân",
+      "morePieces": "Thêm quân",
+      "lessTime": "Bớt thời gian ghi nhớ",
+      "moreTime": "Thêm thời gian ghi nhớ",
+      "boardPreview": "Xem trước bàn cờ. Số quân trên bàn cờ: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Dễ",
-        "description": "Chỉ có hai vua — rất hợp để bắt đầu"
+        "description": "Chỉ có hai vua, rất hợp để bắt đầu"
       },
       "medium": {
         "label": "Trung bình",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Độ chính xác",
       "piecesCorrectCaption": "quân đúng",
+      "summary": "{correct} / {total} đúng · {wrong} sai · xếp trong {seconds} giây",
       "piecesCorrect": "Quân đúng",
       "memorizationTime": "Thời gian ghi nhớ",
       "solutionTime": "Thời gian hoàn thành",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Thử lại",
       "nextRound": "Ván tiếp theo",
       "changeSettings": "Đổi cài đặt",
-      "moreOptions": "Thêm tùy chọn",
       "tileDrill": "Bài luyện này ở trình độ của bạn",
       "tileDrillWhy": "Được điều chỉnh theo trình độ của bạn, để luyện điều bài viết mô tả.",
-      "submitToLeaderboard": "Gửi lên bảng xếp hạng",
-      "leaderboardQualifies": "Điểm của bạn lọt vào bảng xếp hạng. Gửi ngay kẻo mất cơ hội.",
+      "personalBest": "Kỷ lục cá nhân mới ở cấp độ này. Ghi lại ngay.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% sẽ vào bảng xếp hạng.",
+        "open": "{difficulty}: xem {accuracy}% xếp hạng thứ mấy.",
+        "claim": "Giành chỗ",
+        "submit": "Gửi điểm",
+        "claimed": "Đã lên bảng xếp hạng: {difficulty}, {accuracy}%.",
+        "rank": "Bạn đứng thứ {rank, number} trong {total, number} ({difficulty})",
+        "seeBoard": "Xem bảng xếp hạng"
+      },
       "viewLeaderboard": "Xem bảng xếp hạng",
       "dialog": {
         "submitTitle": "Gửi lên bảng xếp hạng",
-        "submitDescription": "Nhập tên sẽ hiển thị trên bảng xếp hạng.",
+        "submitDescription": "Chọn một tên. Bạn sẽ thấy thứ hạng ngay sau đó.",
+        "rankLoading": "Đang tìm thứ hạng…",
+        "rankWorld": "Hạng {rank, number}/{total, number} trên thế giới",
+        "rankCountry": "Hạng {rank, number}/{total, number} tại {country}",
         "successTitle": "Đã gửi điểm!",
         "successDescription": "Điểm của bạn đã được thêm vào bảng xếp hạng.",
         "playerName": "Tên người chơi",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở bàn cờ hằng ngày của Memory Chess ngày {date}.} review {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) ở một bàn cờ ôn tập của Memory Chess.} other {Tôi đã nhớ {correct, number} trên {total, number} quân ({accuracy}) trên Memory Chess.}} Bạn có vượt được không?",
         "alt": "Thẻ kết quả Memory Chess: {details}."
       },
-      "savedToast": {
-        "message": "Đã lưu ván. Số liệu mới của bạn ở ngay bên dưới.",
-        "action": "Xem"
-      },
       "blindfoldRound": "Ván bịt mắt: bạn đã học thế cờ qua ký hiệu."
     },
     "comparison": {
-      "title": "Xem lại thế cờ của bạn"
+      "title": "Xem lại thế cờ của bạn",
+      "viewLabel": "Chế độ xem kết quả",
+      "view": {
+        "side": "Cạnh nhau",
+        "overlay": "Một bàn cờ"
+      },
+      "yourBoard": "Bàn cờ của bạn",
+      "position": "Thế cờ",
+      "yourBoardLabel": "Bàn cờ của bạn, đánh dấu quân đúng và sai",
+      "positionLabel": "Thế cờ, đánh dấu ô đúng và ô bị bỏ sót",
+      "legendCorrect": "Đúng",
+      "legendWrong": "Sai, trên bàn cờ của bạn",
+      "legendMissed": "Bỏ sót, trên thế cờ"
     },
     "feedback": {
       "title": "Cảm ơn bạn đã chơi Memory Chess!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, other {# sao}}",
       "chooseRating": "Vui lòng chọn số sao đánh giá.",
       "sendFailed": "Chúng tôi không gửi được góp ý của bạn. Hãy thử lại hoặc chọn Để sau.",
+      "rateLimited": "Có quá nhiều tin nhắn từ kết nối này. Hãy thử lại sau {minutes, plural, other {# phút}}.",
       "send": "Gửi góp ý",
       "sending": "Đang gửi…"
     },
@@ -1126,6 +1179,7 @@
       "intro": "Ghi nhớ {count} quân trong {seconds} giây, rồi xếp lại thế cờ theo trí nhớ.",
       "hide": "Ẩn bàn cờ",
       "restart": "Làm lại",
+      "leave": "Rời ván",
       "again": "Chơi lại",
       "submit": "Gửi",
       "clear": "Xóa bàn cờ",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Đặt lại lúc {utc} UTC",
       "resetsAt": "Đặt lại lúc {utc} UTC ({local} giờ của bạn), còn {timeLeft}"
     },
+    "loading": "Đang tải bảng xếp hạng.",
     "mode": {
       "label": "Cách học",
       "board": "Bàn cờ",
@@ -1555,7 +1610,7 @@
         "desc": "Những ô và đường bạn hay sai nhất, tính trên mọi ván.",
         "aria": "Tỷ lệ sai của bạn trên từng ô. Ô càng đậm càng hay sai. Ô xám có ít hơn {minimum} quân đã thấy.",
         "note": "Ô càng đậm càng hay sai. Ô xám có ít hơn {minimum} quân đã thấy.",
-        "lines": "Cho đến khi mỗi ô có {minimum} quân đã thấy, bản đồ sẽ đọc theo cả cột và hàng.",
+        "lines": "Cho đến khi mỗi ô có {minimum} quân đã thấy, mỗi ô được tô màu theo cả cột và hàng của nó.",
         "files": "Cột",
         "ranks": "Hàng",
         "line": "{line}: sai {missed} trên {shown}",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} giờ {minutes} phút",
     "underMinute": "< 1 phút",
     "ready": "Bàn cờ hôm nay · {pieceCount} quân · {seconds} giây · còn {timeLeft}",
+    "readyDetails": "{pieceCount} quân · {seconds} giây · còn {timeLeft}",
     "next": "Bàn cờ tiếp theo sau {timeLeft}",
     "pending": "Bàn cờ hôm nay",
     "navReady": "{label}, bàn cờ hằng ngày hôm nay đã sẵn sàng",
@@ -1704,7 +1760,12 @@
     "play": "Chơi bàn cờ hôm nay",
     "tomorrowTitle": "Bàn cờ ngày mai",
     "tomorrowOpens": "Mở sau {timeLeft}.",
-    "seeToday": "Xem bàn cờ hôm nay"
+    "seeToday": "Xem bàn cờ hôm nay",
+    "remindButton": "Nhắc tôi mỗi ngày",
+    "remindNote": "Tải về một sự kiện lịch lặp lại mỗi ngày vào lúc bàn cờ mở.",
+    "remindDone": "Đã lưu. Hãy mở tệp để thêm sự kiện hằng ngày vào lịch của bạn.",
+    "remindTitle": "Bàn cờ hằng ngày của Memory Chess",
+    "remindDescription": "Bàn cờ mới mở mỗi ngày vào nửa đêm UTC. Mọi người chơi cùng một bàn cờ, và bạn có một lượt thử."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "Từ 4 đến 16 ký tự, hiển thị cùng điểm của bạn.",
       "nameShort": "Quá ngắn. Hãy dùng ít nhất 4 ký tự.",
       "nameLong": "Quá dài. Hãy dùng tối đa 16 ký tự.",
+      "nameBlocked": "Tên này không được phép. Hãy chọn tên khác.",
       "country": "Quốc gia",
       "chooseCountry": "Chọn quốc gia",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Không tải được bàn cờ hôm nay. Vui lòng thử lại sau ít phút.",
       "joinToRank": "Hãy tham gia bàn cờ để xem hạng của bạn ở đây.",
       "order": "Xếp hạng theo số quân đúng, rồi ít quân sai nhất, rồi dựng lại nhanh nhất.",
-      "all": "Xem mọi bàn cờ"
+      "all": "Xem mọi bàn cờ",
+      "todayBoard": "Bàn cờ hôm nay",
+      "yesterdayBoard": "Bàn cờ hôm qua",
+      "joinedToday": "Số người đã tham gia bàn cờ hôm nay: {count}",
+      "joinedYesterday": "Số người đã tham gia bàn cờ hôm qua: {count}",
+      "listFrom": "Top 10 sẽ hiện khi có {min} người tham gia trở lên."
     },
     "reference": {
       "title": "Bàn cờ hằng ngày hoạt động thế nào",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Thống kê tổng hợp về khả năng ghi nhớ từ các ván được Google Analytics ghi lại được công bố cho những mức cài đặt có đủ số ván và người chơi.",
     "aboutLink": "Xem dữ liệu ghi nhớ"
+  },
+  "learnTryIt": {
+    "title": "Thử ngay tại đây",
+    "intro": "Một ván cỡ này hiện {pieces} quân trong {seconds} giây. Sau đó bạn đặt chúng lại từ trí nhớ trên bàn cờ trống. Đây là một thế cờ cỡ đó.",
+    "introBlindfold": "Một ván cỡ này cho bạn xem {pieces} quân bằng ký hiệu trong {seconds} giây, trên bàn cờ không có quân nào. Sau đó bạn đặt chúng lại từ trí nhớ trên bàn cờ trống. Đây là một thế cờ cỡ đó, đúng như bạn sẽ thấy.",
+    "position": "Trắng: {white}. Đen: {black}.",
+    "start": "Bắt đầu ván {pieces} quân",
+    "startBlindfold": "Bắt đầu ván cờ mù {pieces} quân"
   }
 }

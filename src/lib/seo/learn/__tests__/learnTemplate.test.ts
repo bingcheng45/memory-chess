@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import { join } from "node:path";
 import { ARTICLE_SLUGS } from "@/lib/articles";
+import { articlePath } from "@/lib/articles/paths";
 import { LEARN_GUIDES } from "../guides";
 import { EN_LEARN_PAGES, LEARN_SLUGS, RESERVED_LEARN_SLUGS, groupPages, toPage } from "..";
 import { guidePath } from "../links";
@@ -73,7 +74,7 @@ describe("derived page values", () => {
       "how-to-see-the-whole-board-in-chess": 6,
       "chess-calculation-exercises-for-beginners": 7,
       "blindfold-chess-training-for-beginners": 8,
-      "chess-memory-training": 8,
+      "chess-memory-training": 9,
       "chess-pattern-recognition-drills": 6,
       "how-to-think-in-chess-for-beginners": 5,
       "20-minute-daily-chess-study-plan": 5,
@@ -148,6 +149,14 @@ describe("rules the types cannot hold", () => {
     expect(long).toEqual([]);
   });
 
+  it("keeps every search description to 160 characters", () => {
+    const long = LEARN_GUIDES.flatMap(({ meta }) =>
+      meta.searchDescription && meta.searchDescription.length > 160 ? [`${meta.slug} searchDescription ${meta.searchDescription.length}`] : [],
+    );
+
+    expect(long).toEqual([]);
+  });
+
   it("keeps eight answer-first descriptions to 155 characters with the exact primary keyword", () => {
     const answerFirst = [
       "20-minute-daily-chess-study-plan",
@@ -215,7 +224,7 @@ describe("rules the types cannot hold", () => {
         return [];
       });
       const targets = [
-        ...inline.filter(({ href }) => !SITE_PATHS.includes(href) && !LEARN_SLUGS.map(guidePath).includes(href)).map(({ href }) => href),
+        ...inline.filter(({ href }) => !SITE_PATHS.includes(href) && !LEARN_SLUGS.map(guidePath).includes(href) && !ARTICLE_SLUGS.map(articlePath).includes(href)).map(({ href }) => href),
         ...doc.end.flatMap((block) => {
           if (block.kind === "furtherReading") {
             return block.items

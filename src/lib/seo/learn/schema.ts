@@ -85,8 +85,12 @@ export type LearnMeta = {
   /** The <title>, 60 characters or fewer. */
   readonly title: string;
   readonly h1: string;
+  /** The English `<title>` and share title when they differ from `title`. English-only, so a translation never carries it. */
+  readonly searchTitle?: string;
   /** The meta description and the hub card text, 160 characters or fewer. */
   readonly description: string;
+  /** The English meta description and share description when they differ from `description`. English-only, like `searchTitle`. */
+  readonly searchDescription?: string;
   readonly group: LearnGroupId;
   readonly level: LearnLevel;
   readonly publishedAt: string;
@@ -95,6 +99,8 @@ export type LearnMeta = {
   readonly questions: readonly [string, string, ...string[]];
   readonly keywords: { readonly primary: string; readonly secondary: readonly string[] };
   readonly featured?: true;
+  /** A page to practise on, linked under the lede. English-only: it is not in the translated text, so a translation stays valid. */
+  readonly practice?: { readonly href: `/${string}`; readonly before: string; readonly label: string };
 };
 
 export type LearnIntro = {
@@ -105,6 +111,9 @@ export type LearnIntro = {
 
 /** `blindfold` opens the round with the position shown as notation instead of on the board. */
 export type GameSetup = { readonly pieceCount: number; readonly memorizeTime: number; readonly blindfold?: true };
+
+/** A "Try it here" block under the quick answer: a small round, with its position shown before the reader commits to it. */
+export type TryIt = { readonly memorizeTime: number; readonly blindfold?: true };
 
 export type BoardArrow = { readonly from: Square; readonly to: Square; readonly kind: "attack" | "defend" | "pin" };
 export type BoardMark = { readonly square: Square; readonly kind: "ring" };
@@ -200,6 +209,7 @@ export type Comparison = {
 
 type LearnBody = {
   readonly intro: LearnIntro;
+  readonly tryIt?: TryIt;
   readonly sections: readonly [LearnSection, ...LearnSection[]];
   /** In render order. At most one each of faq, furtherReading and sources. */
   readonly end: readonly EndBlock[];

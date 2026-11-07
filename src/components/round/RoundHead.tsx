@@ -31,19 +31,25 @@ interface RoundHeadProps {
   readonly clearEnabled: boolean;
   readonly onClear: () => void;
   readonly copy: RoundCopy;
+  /** Before the phase, for /game's leave button. */
+  readonly lead?: ReactNode;
+  /** Between the clock and the eraser, for /game's restart. */
+  readonly trail?: ReactNode;
 }
 
 /** The phase, the clock, the eraser and the study meter above the board. */
-export function RoundHead({ heading, face, clearEnabled, onClear, copy }: RoundHeadProps) {
+export function RoundHead({ heading, face, clearEnabled, onClear, copy, lead, trail }: RoundHeadProps) {
   const t = useTranslations(copy);
   const meterRef = useRef<HTMLElement>(null);
 
   return (
     <>
       <div className="lab-cal-head">
+        {lead}
         <span className="lab-k">{heading}</span>
         <div className="lab-cal-head-end">
           <RoundClock face={face} meterRef={meterRef} />
+          {trail}
           <button
             type="button"
             className="lab-icon-btn"

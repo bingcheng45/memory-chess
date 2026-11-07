@@ -51,6 +51,9 @@ const privacy: PageText = {
         {
           p: "We do not ask these tools to collect the content of your contact messages or game-feedback comments.",
         },
+        {
+          p: "Your browser also reports to our own server when a page tries to load something our content security policy does not allow. A report keeps the directive that was violated, the website the blocked item came from, the page path without its query string, and, when the browser includes one, the first 80 characters of the blocked script. It keeps no IP address and no browser details. We use these reports only to keep the site secure and working, and we delete them after 30 days.",
+        },
       ],
     },
     "cookies-and-storage": {
@@ -73,6 +76,9 @@ const privacy: PageText = {
         },
         {
           p: "Google Analytics receives a lab_dashboard_share event when a progress card leaves the page and a result_share event when a result card does. Each names only how it left, as its method: native for the share sheet, download for a downloaded picture, copy_image for a copied picture, copy for a copied caption, or post for a network's post page, with that network named as x, facebook, linkedin, reddit, whatsapp, threads or bluesky. Neither event carries the card's figures, its boards or its link.",
+        },
+        {
+          p: "The Remind me daily button on today's board saves a daily calendar event as a file on your device, and the file is not sent to Memory Chess. Google Analytics receives a reminder_set event when you press the button. It names only where the button was, as its surface: result, dashboard or daily. It carries no time zone, no time and no board.",
         },
         {
           p: "When you submit a score to the leaderboard, local storage on this device also keeps the id the leaderboard gives that entry, with its difficulty, country, score and the time you sent it, for your best entry on each difficulty. Only when you press Check my standing in the lab record does your browser send that entry id to Memory Chess, with whether to rank it worldwide or within the entry's own country. Memory Chess reads the entry from the leaderboard and replies with its rank and the number of entries it was ranked against. The reply is not stored. To limit how often standing can be checked, the server counts checks from each IP address in its memory for one minute, and drops an address at the first check after its minute is up. If the leaderboard no longer has the entry, its id is removed from this device. Google Analytics receives an event that says a standing check was made, with no entry id and no rank.",

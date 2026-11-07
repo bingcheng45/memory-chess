@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "fbfe8fbae9f9981542b293b5f16c6c44248f70184c66d8fa463fdebfd31281a8",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "c523e5bd953a23032c152dc8719c714e1d7402ca8649ced9441dd3654c01d52f",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Emme pyydä näitä työkaluja keräämään yhteydenottoviestiesi tai pelipalautteen kommenttiesi sisältöä."
+          },
+          {
+            "p": "Selaimesi ilmoittaa myös omalle palvelimellemme, kun sivu yrittää ladata jotain, mitä sisällön tietoturvakäytäntömme (Content Security Policy) ei salli. Ilmoitukseen tallentuu rikottu direktiivi, verkkosivusto, jolta estetty kohde tuli, sivun polku ilman kyselymerkkijonoa ja, kun selain sisällyttää sen, estetyn skriptin 80 ensimmäistä merkkiä. Siihen ei tallennu IP-osoitetta eikä selaimen tietoja. Käytämme näitä ilmoituksia vain sivuston pitämiseen turvallisena ja toimivana, ja poistamme ne 30 päivän kuluttua."
           }
         ]
       },
@@ -75,6 +78,9 @@
           },
           {
             "p": "Google Analytics saa lab_dashboard_share-tapahtuman, kun edistymiskortti lähtee sivulta, ja result_share-tapahtuman, kun tuloskortti lähtee. Kumpikin nimeää menetelmänään vain sen, miten kortti lähti: native jakovalikolle, download ladatulle kuvalle, copy_image kopioidulle kuvalle, copy kopioidulle saatetekstille tai post verkoston julkaisusivulle, jolloin verkosto nimetään arvolla x, facebook, linkedin, reddit, whatsapp, threads tai bluesky. Kumpikaan tapahtuma ei sisällä kortin lukuja, sen lautoja eikä sen linkkiä."
+          },
+          {
+            "p": "Päivän laudan painike ”Muistuta joka päivä” tallentaa päivittäisen kalenteritapahtuman tiedostona laitteellesi, eikä tiedostoa lähetetä Memory Chessille. Google Analytics saa reminder_set-tapahtuman, kun painat painiketta. Se kertoo vain, missä painike oli, surface-arvona: result, dashboard tai daily. Siinä ei ole aikavyöhykettä, kellonaikaa eikä lautaa."
           },
           {
             "p": "Kun lähetät pisteet tulostaulukkoon, tämän laitteen paikallinen tallennustila säilyttää myös tunnisteen, jonka tulostaulukko antaa merkinnälle, sekä sen vaikeustason, maan, pisteet ja lähetysajan, parhaan merkintäsi osalta kullakin vaikeustasolla. Vain kun painat laboratoriopäiväkirjassa Tarkista sijoitukseni, selaimesi lähettää merkinnän tunnisteen Memory Chessille sekä tiedon siitä, sijoitetaanko se maailmanlaajuisesti vai merkinnän oman maan sisällä. Memory Chess lukee merkinnän tulostaulukosta ja vastaa sen sijoituksella ja sillä, kuinka montaa merkintää vastaan se sijoitettiin. Vastausta ei tallenneta. Rajoittaakseen sitä, kuinka usein sijoitusta voi tarkistaa, palvelin laskee kunkin IP-osoitteen tarkistukset muistissaan yhden minuutin ajan ja poistaa osoitteen ensimmäisellä tarkistuksella sen minuutin kuluttua umpeen. Jos merkintää ei enää ole tulostaulukossa, sen tunniste poistetaan tältä laitteelta. Google Analytics saa tapahtuman, joka kertoo, että sijoitus tarkistettiin, ilman merkinnän tunnistetta ja ilman sijoitusta."

@@ -10,6 +10,7 @@ import { readDailyEntry, type DailyEntry } from "@/lib/lab/entries";
 import { DailyOpenCard } from "./DailyOpenCard";
 import type { DailyPlayer } from "./DailyPlayer";
 import { DailyResetLine } from "./DailyResetLine";
+import { RemindMe } from "./RemindMe";
 import { DailyTopTen } from "./DailyTopTen";
 import { useDailyRows } from "./useDailyRows";
 import "./daily.css";
@@ -25,6 +26,8 @@ export function DailyBoard({ rendered }: { rendered: DailyTopRender }) {
   const [played, setPlayed] = useState(false);
   const rows = useDailyRows(day, rendered, joined?.id ?? null);
   const Player = useDeferredDailyPlayer();
+  // The top-ten card falls back to yesterday's board while today's has no one on it.
+  const firstToday = rows.state === "ready" && rows.board.day !== shownDay;
 
   useEffect(() => {
     if (day !== null) setJoined(readDailyEntry(day));
@@ -38,10 +41,13 @@ export function DailyBoard({ rendered }: { rendered: DailyTopRender }) {
           <h1 className="daily-title">{t("title")}</h1>
           <p className="daily-lede">{t("lede")}</p>
         </div>
-        <DailyResetLine now={now} />
+        <div className="daily-head-reset">
+          <DailyResetLine now={now} />
+          <RemindMe surface="daily" />
+        </div>
       </header>
       <div className="daily-grid">
-        {Player ? <Player day={day} setting={setting} joined={joined} onJoined={setJoined} onPlayed={setPlayed} /> : <DailyOpenCard setting={setting} />}
+        {Player ? <Player day={day} setting={setting} joined={joined} onJoined={setJoined} onPlayed={setPlayed} firstToday={firstToday} /> : <DailyOpenCard setting={setting} firstToday={firstToday} />}
         <DailyTopTen rows={rows} today={shownDay} joined={joined} played={played} />
       </div>
     </>

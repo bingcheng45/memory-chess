@@ -91,7 +91,7 @@ describe("ResultLabCard", () => {
 
     expect([link.closest("p")?.textContent, link.getAttribute("href"), followed]).toEqual([
       `Next. Your span has held at 6 pieces. Play 7 pieces, ${seconds(10)} →`,
-      "/game?pieceCount=7&memorizeTime=10&source=result_next",
+      "/game?pieceCount=7&memorizeTime=10&from=result_next",
       false,
     ]);
     expect(onPlay).toHaveBeenCalledWith(7, 10, "result_next");

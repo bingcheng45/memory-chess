@@ -1,7 +1,7 @@
 'use client';
 
 import { lazy, Suspense, useState, useEffect, useLayoutEffect, useRef, useSyncExternalStore } from 'react';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useRouter } from '@/i18n/navigation';
 import { useGameStore } from '@/lib/store/gameStore';
 import GameConfig from '@/components/game/GameConfig';
@@ -20,8 +20,9 @@ import { PAGE_BELOW_BANNER_MIN_HEIGHT } from '@/lib/layout';
 import { warmLeaderboardCutoffs } from '@/lib/leaderboard/cutoffsClient';
 import { warmResultDeltas } from '@/components/game/resultDeltasWarm';
 import { roundSourceFrom, type RoundSource } from '@/lib/analytics/events';
-import { isBlindfoldSearch, ROUND_PARAMS } from '@/lib/game/roundLink';
+import { isBlindfoldSearch, ROUND_PARAM_NAMES, ROUND_PARAMS, roundSourceParam } from '@/lib/game/roundLink';
 import { GAME_CONFIG_RULES, parseGameSettings } from '@/lib/game/configPrefill';
+import { webApplicationNode } from '@/lib/seo/webApplication';
 import '@/components/game/game-lab.css';
 // Loaded with the page, not with the result figures the round warms: Next commits a stylesheet a lazy chunk brings
 // through React, which holds the round's next render, the one that sizes the board, until the file arrives.
@@ -91,7 +92,7 @@ function readUrlRound(): UrlRound | null {
   const memorizeTimeParam = params.get(ROUND_PARAMS.memorizeTime);
   if (!pieceCountParam && !memorizeTimeParam) return null;
 
-  const source = roundSourceFrom(params.get(ROUND_PARAMS.source));
+  const source = roundSourceFrom(roundSourceParam(params));
   const settings = parseGameSettings(
     {
       pieceCount: pieceCountParam ? parseInt(pieceCountParam) : 8,
@@ -106,8 +107,8 @@ function readUrlRound(): UrlRound | null {
 /** A refresh then opens the configuration screen instead of restarting the round. */
 function clearRoundParams(): void {
   const params = new URLSearchParams(window.location.search);
-  if (!Object.values(ROUND_PARAMS).some((name) => params.has(name))) return;
-  Object.values(ROUND_PARAMS).forEach((name) => params.delete(name));
+  if (!ROUND_PARAM_NAMES.some((name) => params.has(name))) return;
+  ROUND_PARAM_NAMES.forEach((name) => params.delete(name));
   const query = params.toString();
   window.history.replaceState(window.history.state, '', `${window.location.pathname}${query ? `?${query}` : ''}${window.location.hash}`);
 }
@@ -276,6 +277,9 @@ function GamePageContent() {
     stopTimerSound(); // Stop any playing timer sound
     playSound('click');
     setSavingDaily(false);
+    // The link's round is spent; still held, it would keep the page blank where the form goes.
+    urlRoundRef.current = null;
+    setUrlRound(null);
     resetGame();
   };
 
@@ -286,16 +290,14 @@ function GamePageContent() {
   };
 
   const renderGameContent = () => {
-    const containerClass = "w-full max-w-4xl mx-auto flex flex-col items-center justify-center";
-    // `flex-1` without `min-h-0`: the wrapper still takes the leftover
-    // height, but no longer shrinks below what ActiveGameLayout says the
-    // board needs. On a viewport too short for that floor it overflows, and
-    // `main` below scrolls to it.
-    const activePhaseClass = `${containerClass} flex-1`;
+    const containerClass = "w-full max-w-[1040px] mx-auto flex flex-col items-center justify-center";
+    // Full width, unlike the scrolling pages: the side panel and the split layout place the board against the
+    // viewport's own edges. `main` below scrolls to a round too tall for a short viewport.
+    const activePhaseClass = 'flex w-full flex-1 flex-col items-center justify-center';
     const activeRound = (playing: ActiveRoundState, gate: GateFacts | null) => (
       <div className={activePhaseClass}>
         <ErrorBoundary>
-          <ActiveRound round={playing} gate={gate} onStart={handleStart} onRestart={handleTryAgain} onSubmit={handleSubmitSolution} />
+          <ActiveRound round={playing} gate={gate} onStart={handleStart} onRestart={handleTryAgain} onSubmit={handleSubmitSolution} onLeave={handleNewGame} />
         </ErrorBoundary>
       </div>
     );
@@ -386,8 +388,8 @@ function GamePageContent() {
           overflows this box and `main` above scrolls to it.
         */}
         <div
-          className={`container mx-auto flex flex-col items-center justify-start ${
-            isActivePhase ? 'h-full px-4 py-2' : `${PAGE_BELOW_BANNER_MIN_HEIGHT} px-4 py-8 sm:py-12`
+          className={`mx-auto flex flex-col items-center justify-start ${
+            isActivePhase ? 'lab-active-page h-full w-full' : `container ${PAGE_BELOW_BANNER_MIN_HEIGHT} lab-scroll-page px-4`
           }`}
         >
           <ErrorBoundary>
@@ -399,10 +401,21 @@ function GamePageContent() {
   );
 }
 
+function GameStructuredData() {
+  const locale = useLocale();
+  const t = useTranslations('game.meta');
+  const schema = { '@context': 'https://schema.org', ...webApplicationNode({ path: '/game', locale, name: t('title'), description: t('description') }) };
+
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />;
+}
+
 export default function GamePage() {
   return (
-    <ErrorBoundary>
-      <GamePageContent />
-    </ErrorBoundary>
+    <>
+      <GameStructuredData />
+      <ErrorBoundary>
+        <GamePageContent />
+      </ErrorBoundary>
+    </>
   );
 }

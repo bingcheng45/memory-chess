@@ -36,8 +36,8 @@ const MEASURE = `(() => {
   const r = (el) => { const b = el.getBoundingClientRect(); return [Math.round(b.width), Math.round(b.height)]; };
   const board = document.querySelector("[data-round-board]");
   const square = document.querySelector("[data-coordinate]");
-  const rows = [...board.parentElement.parentElement.querySelectorAll(":scope > section")].map(r);
-  const column = board.parentElement.parentElement;
+  const rows = [...board.parentElement.querySelectorAll(":scope > section")].map(r);
+  const column = board.closest(".lab-active-column");
   const cb = column.getBoundingClientRect();
   return { board: r(board), square: r(square), wrapper: r(board.parentElement), rows, column: r(column), columnTop: Math.round(cb.top), overflowX: document.documentElement.scrollWidth - innerWidth, mainScroll: (() => { const m = document.querySelector("main"); return m.scrollHeight - m.clientHeight; })() };
 })()`;

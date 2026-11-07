@@ -5,6 +5,7 @@
       "articles": "Artikel",
       "about": "Über",
       "changelog": "Neuerungen",
+      "blindfold": "Blindschach",
       "contactUs": "Kontakt",
       "privacy": "Datenschutz",
       "terms": "Nutzungsbedingungen",
@@ -560,7 +561,8 @@
           "line": "{line}: {missed} von {shown} verfehlt",
           "lineThin": "{line}: {shown} gesehen, zu wenig für eine Aussage",
           "realAria": "Dein Fehleranteil auf jedem Feld. Graue Felder haben weniger als 10 gesehene Figuren.",
-          "realNote": "Dunkler heißt öfter verfehlt. Grau heißt weniger als 10 gesehene Figuren."
+          "realNote": "Dunkler heißt öfter verfehlt. Grau heißt weniger als 10 gesehene Figuren.",
+          "lines": "Solange nicht jedes Feld 10 gesehene Figuren hat, wird jedes Feld nach seiner ganzen Linie und Reihe eingefärbt."
         },
         "daily": {
           "fig": "Abb. {number} · Tagesbrett",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# ältere Runde wurde} other {# ältere Runden wurden}} weggelassen, um im Limit von 5.000 Runden zu bleiben.",
           "summaryIgnored": "Dieser Browser hatte schon Runden, daher wurden nur neue Runden zusammengeführt, nicht die Gesamtwerte aus der Datei.",
           "summaryDropped": "Die Gesamtwerte aus der Datei waren unlesbar oder stammen aus einer älteren Version, daher wurden nur ihre Runden importiert.",
+          "playerRestored": "Deine Wertung und deine Serie sind wiederhergestellt.",
           "safari": "In Safari behält ein privater Tab diesen Bericht nach dem Schließen nicht, und Safari löscht die gespeicherten Daten einer Website nach etwa 7 Tagen ohne Besuch. Exportiere eine Kopie, um ihn zu behalten.",
           "unavailable": "In privaten Fenstern wird nichts gespeichert. Dieses Browserfenster speichert deine Runden nicht.",
           "backup": "Geräteübergreifend sichern (bald verfügbar)",
@@ -940,6 +943,21 @@
         "capped": "Die {cap} Wiederholungen für heute sind auf diesem Gerät erledigt.",
         "cappedNext": "Jedes noch fällige Brett kommt morgen wieder, das am längsten wartende zuerst.",
         "schedule": "Bretter, bei denen du unter 80 % bleibst, kommen 1, 3, 7 und 14 Tage nach dem ersten Sehen wieder."
+      },
+      "intro": {
+        "label": "Das Intro mit 45 Brettern",
+        "skip": "Intro überspringen",
+        "replay": "Najdorfs 45 Bretter",
+        "counter": "{count, plural, one {# Brett} other {# Bretter}}",
+        "counterDark": "{count, plural, one {# Brett} other {# Bretter}} · keins gesehen",
+        "one": "Ein Brett. <em>Du kannst es sehen.</em>",
+        "oneNote": "Morphys Opernpartie, Paris, 1858. Jeder Zug ist echt.",
+        "many": "Jetzt <em>fünfundvierzig.</em>",
+        "manyNote": "São Paulo, Januar 1947. Miguel Najdorf gegen fünfundvierzig Gegner gleichzeitig.",
+        "dark": "Er sah <em>keines davon.</em>",
+        "darkNote": "Er spielte über 23 Stunden blind und beantwortete jeden Zug aus dem Gedächtnis. Er gewann 39.",
+        "you": "Fang mit <em>einem</em> an.",
+        "youNote": "Sieh dir eine Stellung ein paar Sekunden an. Dann wird sie dunkel, und du baust sie wieder auf."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "Bis zu <num>+{value}</num>",
         "loss": "Höchstens <num>−{value}</num>",
         "announce": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}. Wenn es misslingt, höchstens −{loss}.",
-        "announceProvisional": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}."
+        "announceProvisional": "Wertung des Bretts {board}. Deine Wertungszahl {rating}. Erwartete Genauigkeit {expected} %. Wenn du es schaffst, bis zu +{gain}.",
+        "summary": "Brett {board} · erwartet {expected} %",
+        "expect": "erwartet {expected} %",
+        "details": "Details zur Wertung"
       },
       "blindfold": "Blind",
-      "blindfoldHint": "Präge dir die Stellung als Notation ein, ohne Figuren auf dem Brett."
+      "blindfoldHint": "Präge dir die Stellung als Notation ein, ohne Figuren auf dem Brett.",
+      "presetShort": {
+        "easy": "Leicht",
+        "medium": "Mittel",
+        "hard": "Schwer",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Weniger Figuren",
+      "morePieces": "Mehr Figuren",
+      "lessTime": "Weniger Einprägezeit",
+      "moreTime": "Mehr Einprägezeit",
+      "boardPreview": "Brettvorschau. Figuren auf dem Brett: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Leicht",
-        "description": "Nur die Könige – ideal für den Einstieg"
+        "description": "Nur die Könige - ideal für den Einstieg"
       },
       "medium": {
         "label": "Mittel",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Genauigkeit",
       "piecesCorrectCaption": "Figuren richtig",
+      "summary": "{correct} / {total} richtig · {wrong} falsch · aufgebaut in {seconds} s",
       "piecesCorrect": "Richtige Figuren",
       "memorizationTime": "Einprägezeit",
       "solutionTime": "Lösungszeit",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Nochmal",
       "nextRound": "Nächste Runde",
       "changeSettings": "Einstellungen ändern",
-      "moreOptions": "Weitere Optionen",
       "tileDrill": "Diese Übung auf deinem Niveau",
       "tileDrillWhy": "Auf dein Niveau zugeschnitten, damit du übst, was der Artikel beschreibt.",
-      "submitToLeaderboard": "In die Bestenliste eintragen",
-      "leaderboardQualifies": "Dein Ergebnis schafft es in die Bestenliste. Trag es gleich ein.",
+      "personalBest": "Neue persönliche Bestleistung auf dieser Stufe. Trag sie ein.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy} % reichen für die Bestenliste.",
+        "open": "{difficulty}: Platz für {accuracy} % ansehen.",
+        "claim": "Platz sichern",
+        "submit": "Senden",
+        "claimed": "In der Bestenliste: {difficulty}, {accuracy} %.",
+        "rank": "Du bist Platz {rank, number} von {total, number} ({difficulty})",
+        "seeBoard": "Bestenliste ansehen"
+      },
       "viewLeaderboard": "Bestenliste ansehen",
       "dialog": {
         "submitTitle": "In die Bestenliste eintragen",
-        "submitDescription": "Gib deinen Namen ein, der in der Bestenliste erscheinen soll.",
+        "submitDescription": "Wähle einen Namen. Deinen Rang siehst du gleich danach.",
+        "rankLoading": "Dein Rang wird ermittelt…",
+        "rankWorld": "Platz {rank, number} von {total, number} weltweit",
+        "rankCountry": "Platz {rank, number} von {total, number} in {country}",
         "successTitle": "Ergebnis eingetragen!",
         "successDescription": "Dein Ergebnis wurde erfolgreich in die Bestenliste eingetragen.",
         "playerName": "Spielername",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) auf dem Tagesbrett von Memory Chess vom {date} gemerkt.} review {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) auf einem Wiederholungsbrett von Memory Chess gemerkt.} other {Ich habe mir {correct, number} von {total, number} Figuren ({accuracy}) bei Memory Chess gemerkt.}} Schaffst du das?",
         "alt": "Ergebniskarte von Memory Chess: {details}."
       },
-      "savedToast": {
-        "message": "Runde gespeichert. Deine neuen Werte stehen gleich darunter.",
-        "action": "Zeigen"
-      },
       "blindfoldRound": "Blindrunde: Du hast die Stellung als Notation gelernt."
     },
     "comparison": {
-      "title": "Deine Stellung im Rückblick"
+      "title": "Deine Stellung im Rückblick",
+      "viewLabel": "Ergebnisansicht",
+      "view": {
+        "side": "Nebeneinander",
+        "overlay": "Ein Brett"
+      },
+      "yourBoard": "Dein Brett",
+      "position": "Die Stellung",
+      "yourBoardLabel": "Dein Brett, richtige und falsche Figuren markiert",
+      "positionLabel": "Die Stellung, richtige und verpasste Felder markiert",
+      "legendCorrect": "Richtig",
+      "legendWrong": "Falsch, auf deinem Brett",
+      "legendMissed": "Verpasst, in der Stellung"
     },
     "feedback": {
       "title": "Danke, dass du Memory Chess gespielt hast!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# Stern} other {# Sterne}}",
       "chooseRating": "Bitte wähle eine Sternebewertung.",
       "sendFailed": "Wir konnten dein Feedback nicht senden. Versuch es noch einmal oder wähle „Jetzt nicht“.",
+      "rateLimited": "Zu viele Nachrichten von dieser Verbindung. Versuch es in {minutes, plural, one {# Minute} other {# Minuten}} noch einmal.",
       "send": "Feedback senden",
       "sending": "Wird gesendet..."
     },
@@ -1126,6 +1179,7 @@
       "intro": "Präge dir {count, plural, one {# Figur} other {# Figuren}} {seconds} s lang ein und baue die Stellung dann aus dem Gedächtnis nach.",
       "hide": "Brett ausblenden",
       "restart": "Neu starten",
+      "leave": "Runde verlassen",
       "again": "Neue Runde",
       "submit": "Abgeben",
       "clear": "Brett leeren",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Wird um {utc} UTC zurückgesetzt",
       "resetsAt": "Wird um {utc} UTC zurückgesetzt ({local} bei dir), in {timeLeft}"
     },
+    "loading": "Rangliste wird geladen.",
     "mode": {
       "label": "Lernmodus",
       "board": "Brett",
@@ -1555,7 +1610,7 @@
         "desc": "Welche Felder und Linien du am häufigsten verfehlst, über alle Runden hinweg.",
         "aria": "Dein Fehleranteil auf jedem Feld. Dunkler heißt öfter verfehlt. Graue Felder haben weniger als {minimum} gesehene Figuren.",
         "note": "Dunklere Felder werden öfter verfehlt. Graue Felder haben weniger als {minimum} gesehene Figuren.",
-        "lines": "Solange nicht jedes Feld {minimum} gesehene Figuren hat, zeigt die Karte ganze Linien und Reihen.",
+        "lines": "Solange nicht jedes Feld {minimum} gesehene Figuren hat, wird jedes Feld nach seiner ganzen Linie und Reihe eingefärbt.",
         "files": "Linien",
         "ranks": "Reihen",
         "line": "{line}: {missed} von {shown} verfehlt",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} Std. {minutes} Min.",
     "underMinute": "< 1 Min.",
     "ready": "Heutiges Brett · {pieceCount, plural, one {# Figur} other {# Figuren}} · {seconds} s · noch {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# Figur} other {# Figuren}} · {seconds} s · noch {timeLeft}",
     "next": "Nächstes Brett in {timeLeft}",
     "pending": "Heutiges Brett",
     "navReady": "{label}, das heutige Tagesbrett ist bereit",
@@ -1704,7 +1760,12 @@
     "play": "Heutiges Brett spielen",
     "tomorrowTitle": "Morgiges Brett",
     "tomorrowOpens": "Öffnet in {timeLeft}.",
-    "seeToday": "Heutiges Brett ansehen"
+    "seeToday": "Heutiges Brett ansehen",
+    "remindButton": "Täglich erinnern",
+    "remindNote": "Lädt einen Kalendertermin herunter, der sich jeden Tag wiederholt, wenn das Brett öffnet.",
+    "remindDone": "Gespeichert. Öffne die Datei, um den täglichen Termin deinem Kalender hinzuzufügen.",
+    "remindTitle": "Memory Chess Tagesbrett",
+    "remindDescription": "Ein neues Brett öffnet jeden Tag um Mitternacht UTC. Alle spielen dasselbe Brett, und du hast einen Versuch."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "4 bis 16 Zeichen, wird mit deinem Ergebnis angezeigt.",
       "nameShort": "Zu kurz. Verwende mindestens 4 Zeichen.",
       "nameLong": "Zu lang. Verwende höchstens 16 Zeichen.",
+      "nameBlocked": "Dieser Name ist nicht erlaubt. Bitte wähle einen anderen.",
       "country": "Land",
       "chooseCountry": "Land auswählen",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Das heutige Brett konnte nicht geladen werden. Bitte versuche es gleich noch einmal.",
       "joinToRank": "Tritt dem Brett bei, um hier deinen Platz zu sehen.",
       "order": "Sortiert nach richtigen Figuren, dann nach den wenigsten falschen, dann nach dem schnellsten Nachbau.",
-      "all": "Alle Bretter ansehen"
+      "all": "Alle Bretter ansehen",
+      "todayBoard": "Heutiges Brett",
+      "yesterdayBoard": "Gestriges Brett",
+      "joinedToday": "Personen, die dem heutigen Brett beigetreten sind: {count}",
+      "joinedYesterday": "Personen, die dem gestrigen Brett beigetreten sind: {count}",
+      "listFrom": "Die Top 10 erscheinen, sobald {min} oder mehr Personen beigetreten sind."
     },
     "reference": {
       "title": "So funktioniert das Tagesbrett",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Aggregierte Statistiken zum Merken aus den in Google Analytics erfassten Runden werden veröffentlicht, für Einstellungen mit genügend Runden und Spielenden.",
     "aboutLink": "Zu den Gedächtnisdaten"
+  },
+  "learnTryIt": {
+    "title": "Probier es hier aus",
+    "intro": "Eine Runde dieser Größe zeigt {pieces} Figuren für {seconds} s. Danach stellst du sie aus dem Gedächtnis auf ein leeres Brett. Hier ist eine Stellung dieser Größe.",
+    "introBlindfold": "Eine Runde dieser Größe zeigt dir {pieces} Figuren als Notation, {seconds} s lang und ohne Figuren auf dem Brett. Danach stellst du sie aus dem Gedächtnis auf ein leeres Brett. Hier ist eine Stellung dieser Größe, so wie du sie sehen würdest.",
+    "position": "Weiß: {white}. Schwarz: {black}.",
+    "start": "Eine Runde mit {pieces} Figuren starten",
+    "startBlindfold": "Eine Blindrunde mit {pieces} Figuren starten"
   }
 }

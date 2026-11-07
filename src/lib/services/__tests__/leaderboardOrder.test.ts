@@ -59,7 +59,7 @@ describe("the leaderboard ranking order on the wire", () => {
     expect(params.get("select")).toBe("*");
     expect(params.get("difficulty")).toBe("eq.hard");
     expect(params.get("correct_pieces")).toBe("gt.0");
-    expect(params.get("limit")).toBe("200");
+    expect(params.get("limit")).toBe("220");
   });
 
   it("sends that same ranking order when reading a board's cutoff", async () => {

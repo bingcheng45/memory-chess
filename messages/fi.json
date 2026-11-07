@@ -5,6 +5,7 @@
       "articles": "Artikkelit",
       "about": "Tietoa",
       "changelog": "Uutta",
+      "blindfold": "Sokkoshakki",
       "contactUs": "Ota yhteyttä",
       "privacy": "Tietosuoja",
       "terms": "Käyttöehdot",
@@ -560,7 +561,8 @@
           "line": "{line}: {missed}/{shown} ohi",
           "lineThin": "{line}: {shown} nähty, liian vähän tulkittavaksi",
           "realAria": "Ohi menneiden osuus kullakin ruudulla. Harmailla ruuduilla on nähty alle 10 nappulaa.",
-          "realNote": "Tummempi tarkoittaa useammin ohi mennyttä. Harmailla ruuduilla on nähty alle 10 nappulaa."
+          "realNote": "Tummempi tarkoittaa useammin ohi mennyttä. Harmailla ruuduilla on nähty alle 10 nappulaa.",
+          "lines": "Kunnes jokaisella ruudulla on nähty 10 nappulaa, jokainen ruutu sävytetään koko linjansa ja rivinsä mukaan."
         },
         "daily": {
           "fig": "Kuva {number} · Päivän lauta",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# vanhempi kierros jätettiin} other {# vanhempaa kierrosta jätettiin}} pois, jotta 5 000 kierroksen raja ei ylity.",
           "summaryIgnored": "Tässä selaimessa oli jo kierroksia, joten vain uudet kierrokset yhdistettiin, ei tiedoston kaikkien aikojen yhteismääriä.",
           "summaryDropped": "Tiedoston kaikkien aikojen yhteismääriä ei voitu lukea tai ne olivat vanhemmasta versiosta, joten vain sen kierrokset tuotiin.",
+          "playerRestored": "Luokituksesi ja putkesi on palautettu.",
           "safari": "Safarissa yksityinen välilehti ei säilytä tätä päiväkirjaa sulkemisen jälkeen, ja Safari poistaa sivuston tallentamat tiedot noin 7 päivän kuluttua, jos sivustolla ei käydä. Vie kopio, niin se säilyy.",
           "unavailable": "Ei tallenneta yksityisissä ikkunoissa. Tämä selainikkuna ei säilytä kierroksiasi.",
           "backup": "Varmuuskopiointi laitteiden välillä (tulossa pian)",
@@ -940,6 +943,21 @@
         "capped": "Tämän päivän {cap} kertausta on tehty tällä laitteella.",
         "cappedNext": "Vielä kerrattavat laudat palaavat huomenna, pisimpään odottaneet ensin.",
         "schedule": "Laudat, joilla saat alle 80 %, palaavat 1, 3, 7 ja 14 päivää sen jälkeen, kun näit ne ensimmäisen kerran."
+      },
+      "intro": {
+        "label": "45 laudan intro",
+        "skip": "Ohita intro",
+        "replay": "Najdorfin 45 lautaa",
+        "counter": "{count, plural, one {# lauta} other {# lautaa}}",
+        "counterDark": "{count, plural, one {# lauta} other {# lautaa}} · yhtäkään ei nähty",
+        "one": "Yksi lauta. <em>Näet sen.</em>",
+        "oneNote": "Morphyn oopperapeli, Pariisi, 1858. Jokainen siirto on aito.",
+        "many": "Nyt <em>neljäkymmentäviisi.</em>",
+        "manyNote": "São Paulo, tammikuu 1947. Miguel Najdorf neljäkymmentäviisi vastustajaa vastaan yhtä aikaa.",
+        "dark": "Hän ei nähnyt <em>yhtäkään.</em>",
+        "darkNote": "Hän pelasi sokkona yli 23 tuntia ja vastasi jokaiseen siirtoon muistinvaraisesti. Hän voitti 39.",
+        "you": "Aloita <em>yhdestä.</em>",
+        "youNote": "Katso asemaa muutama sekunti. Sitten se pimenee, ja sinä rakennat sen uudelleen."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "Enintään <num>+{value}</num>",
         "loss": "Enintään <num>−{value}</num>",
         "announce": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}. Jos epäonnistut, enintään −{loss}.",
-        "announceProvisional": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}."
+        "announceProvisional": "Laudan taitoluku {board}. Sinun taitolukusi {rating}. Odotettu tarkkuus {expected} %. Jos onnistut, enintään +{gain}.",
+        "summary": "Lauta {board} · odotettu {expected} %",
+        "expect": "odotettu {expected} %",
+        "details": "Taitoluvun tiedot"
       },
       "blindfold": "Sokko",
-      "blindfoldHint": "Opettele asema notaationa, ilman nappuloita laudalla."
+      "blindfoldHint": "Opettele asema notaationa, ilman nappuloita laudalla.",
+      "presetShort": {
+        "easy": "Helppo",
+        "medium": "Keski",
+        "hard": "Vaikea",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Vähemmän nappuloita",
+      "morePieces": "Enemmän nappuloita",
+      "lessTime": "Lyhyempi muistiinpainamisaika",
+      "moreTime": "Pidempi muistiinpainamisaika",
+      "boardPreview": "Laudan esikatselu. Nappuloita laudalla: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Helppo",
-        "description": "Vain kuninkaat – täydellinen aloitukseen"
+        "description": "Vain kuninkaat - täydellinen aloitukseen"
       },
       "medium": {
         "label": "Keskitaso",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Tarkkuus",
       "piecesCorrectCaption": "nappulaa oikein",
+      "summary": "{correct} / {total} oikein · {wrong} väärin · asettelu {seconds} s",
       "piecesCorrect": "Oikeat nappulat",
       "memorizationTime": "Muistiinpainamisaika",
       "solutionTime": "Ratkaisuaika",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Yritä uudelleen",
       "nextRound": "Seuraava kierros",
       "changeSettings": "Muuta asetuksia",
-      "moreOptions": "Lisää vaihtoehtoja",
       "tileDrill": "Tämä harjoitus tasollasi",
       "tileDrillWhy": "Mitoitettu tasollesi, jotta voit harjoitella sitä, mitä artikkeli kuvaa.",
-      "submitToLeaderboard": "Lähetä tulostaulukkoon",
-      "leaderboardQualifies": "Tuloksesi yltää tulostaulukkoon. Lähetä se heti.",
+      "personalBest": "Uusi oma ennätys tällä tasolla. Kirjaa se.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy} % pääsisi tulostaulukkoon.",
+        "open": "{difficulty}: katso sijoitus ({accuracy} %).",
+        "claim": "Varaa paikka",
+        "submit": "Lähetä tulos",
+        "claimed": "Tulostaulukossa: {difficulty}, {accuracy} %.",
+        "rank": "Olet sijalla {rank, number}/{total, number} ({difficulty})",
+        "seeBoard": "Katso taulukko"
+      },
       "viewLeaderboard": "Katso tulostaulukko",
       "dialog": {
         "submitTitle": "Lähetä tulostaulukkoon",
-        "submitDescription": "Kirjoita nimi, joka näkyy tulostaulukossa.",
+        "submitDescription": "Valitse nimi. Näet sijoituksesi heti sen jälkeen.",
+        "rankLoading": "Haetaan sijoitustasi…",
+        "rankWorld": "Sija {rank, number}/{total, number} maailmassa",
+        "rankCountry": "Sija {rank, number}/{total, number}: {country}",
         "successTitle": "Tulos lähetetty!",
         "successDescription": "Tuloksesi lisättiin tulostaulukkoon.",
         "playerName": "Pelaajan nimi",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessin päivän laudalla {date}.} review {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessin kertauslaudalla.} other {Muistin {correct, number} / {total, number} nappulaa ({accuracy}) Memory Chessissä.}} Pystytkö parempaan?",
         "alt": "Memory Chessin tuloskortti: {details}."
       },
-      "savedToast": {
-        "message": "Kierros tallennettu. Päivitetyt tilastosi ovat heti alla.",
-        "action": "Näytä"
-      },
       "blindfoldRound": "Sokkokierros: opettelit aseman notaationa."
     },
     "comparison": {
-      "title": "Käy asemasi läpi"
+      "title": "Käy asemasi läpi",
+      "viewLabel": "Tulosnäkymä",
+      "view": {
+        "side": "Rinnakkain",
+        "overlay": "Yksi lauta"
+      },
+      "yourBoard": "Sinun lautasi",
+      "position": "Asema",
+      "yourBoardLabel": "Sinun lautasi, oikeat ja väärät nappulat merkitty",
+      "positionLabel": "Asema, oikeat ja puuttuvat ruudut merkitty",
+      "legendCorrect": "Oikein",
+      "legendWrong": "Väärin, sinun laudallasi",
+      "legendMissed": "Puuttuu, asemassa"
     },
     "feedback": {
       "title": "Kiitos, että pelasit Memory Chessiä!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# tähti} other {# tähteä}}",
       "chooseRating": "Valitse arvosana tähdillä.",
       "sendFailed": "Palautteen lähettäminen ei onnistunut. Yritä uudelleen tai valitse Ei nyt.",
+      "rateLimited": "Tästä yhteydestä on lähetetty liian monta viestiä. Yritä uudelleen {minutes, plural, one {# minuutin} other {# minuutin}} kuluttua.",
       "send": "Lähetä palaute",
       "sending": "Lähetetään…"
     },
@@ -1126,6 +1179,7 @@
       "intro": "Opettele {count, plural, one {# nappula} other {# nappulaa}} {seconds} sekunnissa ja rakenna sitten asema muistista.",
       "hide": "Piilota lauta",
       "restart": "Aloita alusta",
+      "leave": "Poistu kierrokselta",
       "again": "Uusi kierros",
       "submit": "Lähetä",
       "clear": "Tyhjennä lauta",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Nollautuu klo {utc} UTC",
       "resetsAt": "Nollautuu klo {utc} UTC (sinun aikaasi {local}), {timeLeft} päästä"
     },
+    "loading": "Ladataan tulostaulua.",
     "mode": {
       "label": "Opettelutapa",
       "board": "Lauta",
@@ -1555,7 +1610,7 @@
         "desc": "Mitkä ruudut ja linjat menevät sinulta useimmin ohi, kaikilta kierroksilta.",
         "aria": "Ohi menneiden osuus kullakin ruudulla. Tummempi tarkoittaa useammin ohi mennyttä. Harmailla ruuduilla on nähty alle {minimum} nappulaa.",
         "note": "Tummemmat ruudut menevät useammin ohi. Harmailla ruuduilla on nähty alle {minimum} nappulaa.",
-        "lines": "Kunnes jokaisella ruudulla on nähty {minimum} nappulaa, kartta näyttää kokonaiset linjat ja rivit.",
+        "lines": "Kunnes jokaisella ruudulla on nähty {minimum} nappulaa, jokainen ruutu sävytetään koko linjansa ja rivinsä mukaan.",
         "files": "Linjat",
         "ranks": "Rivit",
         "line": "{line}: {missed}/{shown} ohi",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Päivän lauta · {pieceCount, plural, one {# nappula} other {# nappulaa}} · {seconds} s · {timeLeft} jäljellä",
+    "readyDetails": "{pieceCount, plural, one {# nappula} other {# nappulaa}} · {seconds} s · {timeLeft} jäljellä",
     "next": "Seuraava lauta {timeLeft} päästä",
     "pending": "Päivän lauta",
     "navReady": "{label}, tämän päivän lauta on valmiina",
@@ -1704,7 +1760,12 @@
     "play": "Pelaa päivän lauta",
     "tomorrowTitle": "Huomisen lauta",
     "tomorrowOpens": "Aukeaa {timeLeft} päästä.",
-    "seeToday": "Katso päivän lauta"
+    "seeToday": "Katso päivän lauta",
+    "remindButton": "Muistuta joka päivä",
+    "remindNote": "Lataa kalenteritapahtuman, joka toistuu joka päivä laudan avautuessa.",
+    "remindDone": "Tallennettu. Avaa tiedosto lisätäksesi päivittäisen tapahtuman kalenteriisi.",
+    "remindTitle": "Memory Chessin päivän lauta",
+    "remindDescription": "Uusi lauta avautuu joka päivä keskiyöllä UTC. Kaikki pelaavat samaa lautaa, ja sinulla on yksi yritys."
   },
   "daily": {
     "meta": {
@@ -1765,9 +1826,10 @@
       "title": "Osallistu päivän lautaan",
       "lateTitle": "Liity sen päivän laudalle",
       "name": "Nimi",
-      "nameHint": "4–16 merkkiä, näkyy pistemääräsi vieressä.",
+      "nameHint": "4-16 merkkiä, näkyy pistemääräsi vieressä.",
       "nameShort": "Liian lyhyt. Käytä vähintään 4 merkkiä.",
       "nameLong": "Liian pitkä. Käytä enintään 16 merkkiä.",
+      "nameBlocked": "Tämä nimi ei ole sallittu. Valitse toinen nimi.",
       "country": "Maa",
       "chooseCountry": "Valitse maa",
       "from": {
@@ -1799,22 +1861,27 @@
       "error": "Päivän lautaa ei voitu ladata. Yritä hetken kuluttua uudelleen.",
       "joinToRank": "Osallistu lautaan nähdäksesi sijoituksesi täällä.",
       "order": "Järjestys: eniten oikeita nappuloita, sitten vähiten vääriä, sitten nopein rakennus.",
-      "all": "Katso kaikki laudat"
+      "all": "Katso kaikki laudat",
+      "todayBoard": "Päivän lauta",
+      "yesterdayBoard": "Eilisen lauta",
+      "joinedToday": "Päivän lautaan liittyneet pelaajat: {count}",
+      "joinedYesterday": "Eilisen lautaan liittyneet pelaajat: {count}",
+      "listFrom": "Kymmenen parasta näkyy, kun vähintään {min} pelaajaa on liittynyt."
     },
     "reference": {
       "title": "Näin päivän lauta toimii",
       "shared": "Joka päivä keskiyöllä UTC arvotaan uusi asetelma, ja jokainen pelaaja maailmassa saa saman. Asetelma syntyy päivämäärästä muodostetusta siemenestä, joten lauta on kaikille sama eikä kukaan saa helpompaa versiota. Koska lauta on yhteinen, tulos tarkoittaa samaa kaikille, jotka pelasivat sen sinä päivänä.",
       "oneTry": "Saat yhden yrityksen. Laudan avaaminen lasketaan yritykseksi, joten opetteluvaiheessa poistuminen ja takaisin tuleminen ei näytä sitä sinulle kahdesti. Laitteesi muistaa yrityksen, kunnes seuraava lauta aukeaa.",
       "grid": "Kun olet rakentanut asetelman, näet, mitkä ruudut menivät oikein, missä oli väärä nappula, mitkä unohtuivat ja minne asetit ylimääräisen nappulan. Jakorivillä on yksi ruutu nappulaa kohden tuloksen mukaan järjestettynä, eikä siinä näy, missä nappula oli, joten sen julkaiseminen ei paljasta lautaa niille, jotka eivät ole vielä pelanneet.",
-      "join": "Liittyäksesi lautaan valitse 4–16 merkin nimi ja maa, jonka edustajana pelaat. Maa haetaan ensin aiemmin valitsemastasi, sitten yhteytesi perusteella ja sitten selaimesi kielestä, ja voit aina vaihtaa sen. Liittyessäsi voimassa oleva luokituksesi näkyy nimesi vieressä.",
+      "join": "Liittyäksesi lautaan valitse 4-16 merkin nimi ja maa, jonka edustajana pelaat. Maa haetaan ensin aiemmin valitsemastasi, sitten yhteytesi perusteella ja sitten selaimesi kielestä, ja voit aina vaihtaa sen. Liittyessäsi voimassa oleva luokituksesi näkyy nimesi vieressä.",
       "ranking": "Rivit järjestetään oikein sijoitettujen nappuloiden määrän mukaan, sitten vähiten väärien nappuloiden mukaan ja sitten nopeimman rakennuksen mukaan. Kaikki opettelevat yhtä monta sekuntia, joten opetteluaika ei koskaan erota kahta pelaajaa päivän laudalla.",
       "arcTitle": "Nappulat ja opetteluaika viikon aikana",
       "arcIntro": "Asetukset noudattavat viikon kaarta. Maanantai alkaa rauhallisesti, jotta viikonlopun tauko ei katkaise putkea, kuorma kasvaa viikon mittaan, lauantai on pikalauta, jonka näet vain muutaman sekunnin, ja sunnuntai on kaikista vaikein lauta. Kunkin päivän vaihteluvälin sisällä päivämäärä valitsee yhden asetuksen, joka on sama kaikille pelaajille.",
       "day": "Päivä",
       "pieces": "Nappulat",
       "seconds": "Opetteluaika",
-      "range": "{min}–{max}",
-      "secondsRange": "{min}–{max} s",
+      "range": "{min}-{max}",
+      "secondsRange": "{min}-{max} s",
       "secondsExact": "{count} s"
     }
   },
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Google Analyticsiin kirjatuista kierroksista julkaistaan koostetut muistamistilastot niille asetuksille, joissa on tarpeeksi kierroksia ja pelaajia.",
     "aboutLink": "Katso muistamistiedot"
+  },
+  "learnTryIt": {
+    "title": "Kokeile tässä",
+    "intro": "Tämän kokoinen kierros näyttää {pieces} nappulaa {seconds} s ajan. Sitten asetat ne muistista tyhjälle laudalle. Tässä on tämän kokoinen asetelma.",
+    "introBlindfold": "Tämän kokoinen kierros näyttää sinulle {pieces} nappulaa merkintätapana {seconds} s ajan, laudalla ei ole nappuloita. Sitten asetat ne muistista tyhjälle laudalle. Tässä on tämän kokoinen asetelma sellaisena kuin sen näkisit.",
+    "position": "Valkoinen: {white}. Musta: {black}.",
+    "start": "Aloita {pieces} nappulan kierros",
+    "startBlindfold": "Aloita {pieces} nappulan sokkokierros"
   }
 }

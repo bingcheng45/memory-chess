@@ -6,6 +6,10 @@ import {
   LATEST_CHANGELOG_ENTRY,
 } from "@/lib/changelog";
 import { LOCALES } from "@/i18n/routing";
+import { GAME_STORAGE_KEY } from "@/lib/game/configPrefill";
+
+const playRound = () =>
+  window.localStorage.setItem(GAME_STORAGE_KEY, JSON.stringify({ state: { history: [{ id: "round-1" }] }, version: 1 }));
 
 describe("ChangelogBanner", () => {
   const publishedAt = Date.parse(LATEST_CHANGELOG_ENTRY.publishedAt);
@@ -14,6 +18,7 @@ describe("ChangelogBanner", () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date(publishedAt + 24 * 60 * 60 * 1000));
     window.localStorage.clear();
+    playRound();
   });
 
   afterEach(() => {
@@ -113,16 +118,75 @@ describe("ChangelogBanner", () => {
     ).not.toBeInTheDocument();
   });
 
-  it("remains usable when local storage cannot be read", async () => {
+  it("shows nothing when local storage cannot be read, as nothing proves a returning player", () => {
     jest.spyOn(Storage.prototype, "getItem").mockImplementation(() => {
       throw new Error("Storage unavailable");
     });
 
     render(<ChangelogBanner announce version={LATEST_CHANGELOG_ENTRY.version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
 
-    expect(
-      await screen.findByLabelText("Memory Chess update"),
-    ).toBeInTheDocument();
+    expect(screen.queryByLabelText("Memory Chess update")).not.toBeInTheDocument();
+  });
+});
+
+describe("ChangelogBanner for a first-time visitor", () => {
+  const publishedAt = Date.parse(LATEST_CHANGELOG_ENTRY.publishedAt);
+  const version = LATEST_CHANGELOG_ENTRY.version;
+
+  beforeEach(() => {
+    jest.useFakeTimers();
+    jest.setSystemTime(new Date(publishedAt + 24 * 60 * 60 * 1000));
+    window.localStorage.clear();
+  });
+
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
+  it("shows nothing and treats this version as seen", () => {
+    render(<ChangelogBanner announce version={version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
+
+    expect(screen.queryByLabelText("Memory Chess update")).not.toBeInTheDocument();
+    expect(window.localStorage.getItem(CHANGELOG_DISMISSAL_STORAGE_KEY)).toBe(version);
+  });
+
+  it("does not show it later for the same version once they have played", () => {
+    const { unmount } = render(<ChangelogBanner announce version={version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
+    unmount();
+    playRound();
+
+    render(<ChangelogBanner announce version={version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
+
+    expect(screen.queryByLabelText("Memory Chess update")).not.toBeInTheDocument();
+  });
+
+  it("shows a newer version to them once they have played", async () => {
+    const { unmount } = render(<ChangelogBanner announce version={version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
+    unmount();
+    playRound();
+
+    render(<ChangelogBanner announce version="99.0.0" publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
+
+    expect(await screen.findByLabelText("Memory Chess update")).toBeInTheDocument();
+  });
+
+  it.each([
+    ["an empty history", { state: { history: [] } }],
+    ["no history field", { state: {} }],
+  ])("shows nothing for %s", (_name, stored) => {
+    window.localStorage.setItem(GAME_STORAGE_KEY, JSON.stringify(stored));
+
+    render(<ChangelogBanner announce version={version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
+
+    expect(screen.queryByLabelText("Memory Chess update")).not.toBeInTheDocument();
+  });
+
+  it("shows nothing when the stored game is not valid JSON", () => {
+    window.localStorage.setItem(GAME_STORAGE_KEY, "{not json");
+
+    render(<ChangelogBanner announce version={version} publishedAt={LATEST_CHANGELOG_ENTRY.publishedAt} />);
+
+    expect(screen.queryByLabelText("Memory Chess update")).not.toBeInTheDocument();
   });
 });
 
@@ -140,6 +204,7 @@ describe("ChangelogBanner in the served HTML", () => {
     jest.useFakeTimers();
     jest.setSystemTime(new Date(publishedAt + 24 * 60 * 60 * 1000));
     window.localStorage.clear();
+    playRound();
   });
 
   afterEach(() => {
@@ -155,6 +220,18 @@ describe("ChangelogBanner in the served HTML", () => {
 
   it("leaves the served banner showing for a reader who has not dismissed it", () => {
     expect(servedBannerAfterScript().hidden).toBe(false);
+  });
+
+  it("hides the served banner before paint for a first-time visitor", () => {
+    window.localStorage.removeItem(GAME_STORAGE_KEY);
+
+    expect(servedBannerAfterScript().hidden).toBe(true);
+  });
+
+  it("hides the served banner before paint when the stored game is not valid JSON", () => {
+    window.localStorage.setItem(GAME_STORAGE_KEY, "{not json");
+
+    expect(servedBannerAfterScript().hidden).toBe(true);
   });
 
   it("hides the served banner before paint for a reader who dismissed this release", () => {

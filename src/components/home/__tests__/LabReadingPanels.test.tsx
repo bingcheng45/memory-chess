@@ -73,7 +73,7 @@ describe("memory span", () => {
     expect(tagOf(span)).toBe("Sample");
     expect(within(span).getByText("Sample record · 12 sessions")).toBeInTheDocument();
     expect(texts(span, ".lab-empty")).toEqual(["Your rounds so far were just the two kings, and a span needs more pieces. Play a round →"]);
-    expect(within(span).getByRole("link").getAttribute("href")).toBe("/game?pieceCount=6&memorizeTime=10&source=home_quick");
+    expect(within(span).getByRole("link").getAttribute("href")).toBe("/game?pieceCount=6&memorizeTime=10&from=home_quick");
   });
 
   it("says how many more rounds at 80 percent the span needs", () => {

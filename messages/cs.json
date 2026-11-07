@@ -5,6 +5,7 @@
       "articles": "Články",
       "about": "O webu",
       "changelog": "Novinky",
+      "blindfold": "Šachy poslepu",
       "contactUs": "Kontakt",
       "privacy": "Soukromí",
       "terms": "Podmínky",
@@ -560,7 +561,8 @@
           "line": "{line}: vynecháno {missed} z {shown}",
           "lineThin": "{line}: viděno {shown}, na závěr to nestačí",
           "realAria": "Váš podíl vynechaných figur na každém poli. Šedá pole mají méně než 10 viděných figur.",
-          "realNote": "Tmavší znamená častěji vynecháno. Šedá mají méně než 10 viděných figur."
+          "realNote": "Tmavší znamená častěji vynecháno. Šedá mají méně než 10 viděných figur.",
+          "lines": "Dokud nemá každé pole 10 viděných figur, každé pole je vybarveno podle celého svého sloupce a řady."
         },
         "daily": {
           "fig": "Obr. {number} · Deska dne",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# starší kolo bylo vynecháno} few {# starší kola byla vynechána} many {# staršího kola bylo vynecháno} other {# starších kol bylo vynecháno}}, aby se nepřekročil limit 5 000 kol.",
           "summaryIgnored": "V tomto prohlížeči už nějaká kola byla, takže se sloučila jen nová kola, ne celkové součty ze souboru.",
           "summaryDropped": "Celkové součty v souboru nešly přečíst nebo pocházejí ze starší verze, takže se importovala jen jeho kola.",
+          "playerRestored": "Vaše hodnocení a série výher byly obnoveny.",
           "safari": "V Safari si anonymní panel tento záznam po zavření nepamatuje a Safari maže uložená data webu přibližně po 7 dnech bez návštěvy. Exportujte si kopii, ať o něj nepřijdete.",
           "unavailable": "V anonymních oknech se nic neukládá. Toto okno prohlížeče vaše kola neuchovává.",
           "backup": "Záloha napříč zařízeními (připravujeme)",
@@ -940,6 +943,21 @@
         "capped": "Dnešní opakování ({cap}) jsou na tomto zařízení hotová.",
         "cappedNext": "Desky, které ještě čekají, se vrátí zítra, nejdřív ty, které čekají nejdéle.",
         "schedule": "Desky, na kterých máte méně než 80 %, se vracejí 1, 3, 7 a 14 dní po prvním zobrazení."
+      },
+      "intro": {
+        "label": "Úvod se 45 šachovnicemi",
+        "skip": "Přeskočit úvod",
+        "replay": "Najdorfových 45 šachovnic",
+        "counter": "{count, plural, one {# šachovnice} few {# šachovnice} many {# šachovnice} other {# šachovnic}}",
+        "counterDark": "{count, plural, one {# šachovnice} few {# šachovnice} many {# šachovnice} other {# šachovnic}} · všechny naslepo",
+        "one": "Jedna šachovnice. <em>Vidíte ji.</em>",
+        "oneNote": "Morphyho Operní partie, Paříž, 1858. Každý tah je skutečný.",
+        "many": "Teď <em>čtyřicet pět.</em>",
+        "manyNote": "São Paulo, leden 1947. Miguel Najdorf proti čtyřiceti pěti soupeřům najednou.",
+        "dark": "Neviděl <em>ani jednu.</em>",
+        "darkNote": "Hrál naslepo přes 23 hodin a na každý tah odpovídal zpaměti. Vyhrál 39 partií.",
+        "you": "Začněte <em>jednou.</em>",
+        "youNote": "Na pár sekund si prohlédněte pozici. Pak zhasne a vy ji sestavíte znovu."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "Až <num>+{value}</num>",
         "loss": "Nejvýše <num>−{value}</num>",
         "announce": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}. Když to nevyjde, nejvýše −{loss}.",
-        "announceProvisional": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}."
+        "announceProvisional": "Hodnocení desky {board}. Vaše hodnocení {rating}. Očekávaná přesnost {expected} %. Když to zvládnete, až +{gain}.",
+        "summary": "Deska {board} · očekávaná přesnost {expected} %",
+        "expect": "očekávaná přesnost {expected} %",
+        "details": "Podrobnosti hodnocení"
       },
       "blindfold": "Naslepo",
-      "blindfoldHint": "Pozici si zapamatujte ze zápisu, bez figur na šachovnici."
+      "blindfoldHint": "Pozici si zapamatujte ze zápisu, bez figur na šachovnici.",
+      "presetShort": {
+        "easy": "Lehká",
+        "medium": "Střední",
+        "hard": "Těžká",
+        "grandmaster": "VM"
+      },
+      "fewerPieces": "Méně figurek",
+      "morePieces": "Více figurek",
+      "lessTime": "Kratší čas na zapamatování",
+      "moreTime": "Delší čas na zapamatování",
+      "boardPreview": "Náhled desky. Figurek na desce: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Lehká",
-        "description": "Jen králové – ideální pro začátek"
+        "description": "Jen králové - ideální pro začátek"
       },
       "medium": {
         "label": "Střední",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Přesnost",
       "piecesCorrectCaption": "figurek správně",
+      "summary": "{correct} / {total} správně · {wrong} chybně · rozestaveno za {seconds} s",
       "piecesCorrect": "Správné figurky",
       "memorizationTime": "Čas na zapamatování",
       "solutionTime": "Čas řešení",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Zkusit znovu",
       "nextRound": "Další kolo",
       "changeSettings": "Změnit nastavení",
-      "moreOptions": "Další možnosti",
       "tileDrill": "Toto cvičení na vaší úrovni",
       "tileDrillWhy": "Upraveno na vaši úroveň, abyste si vyzkoušeli, co článek popisuje.",
-      "submitToLeaderboard": "Odeslat do žebříčku",
-      "leaderboardQualifies": "Váš výsledek stačí na žebříček. Odešlete ho, než zmizí.",
+      "personalBest": "Nový osobní rekord na této úrovni. Zapište ho.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy} % stačí do žebříčku.",
+        "open": "{difficulty}: zjistěte pořadí pro {accuracy} %.",
+        "claim": "Zajistit místo",
+        "submit": "Odeslat skóre",
+        "claimed": "V žebříčku: {difficulty}, {accuracy} %.",
+        "rank": "Jste #{rank, number} z {total, number} ({difficulty})",
+        "seeBoard": "Zobrazit žebříček"
+      },
       "viewLeaderboard": "Zobrazit žebříček",
       "dialog": {
         "submitTitle": "Odeslat do žebříčku",
-        "submitDescription": "Zadejte jméno, které se zobrazí v žebříčku.",
+        "submitDescription": "Zvolte si jméno. Pořadí uvidíte hned potom.",
+        "rankLoading": "Zjišťujeme vaše pořadí…",
+        "rankWorld": "{rank, number}. z {total, number} ve světě",
+        "rankCountry": "{rank, number}. z {total, number} v zemi {country}",
         "successTitle": "Výsledek odeslán!",
         "successDescription": "Váš výsledek byl přidán do žebříčku.",
         "playerName": "Jméno hráče",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na denní pozici Memory Chess z {date}.} review {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na opakovací pozici Memory Chess.} other {Vybavil jsem si {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) v Memory Chess.}} Překonáš to?",
         "alt": "Karta s výsledkem Memory Chess: {details}."
       },
-      "savedToast": {
-        "message": "Kolo uloženo. Aktualizované statistiky najdeš hned níž.",
-        "action": "Ukázat"
-      },
       "blindfoldRound": "Kolo naslepo: pozici jste si zapamatovali ze zápisu."
     },
     "comparison": {
-      "title": "Projděte si svou pozici"
+      "title": "Projděte si svou pozici",
+      "viewLabel": "Zobrazení výsledku",
+      "view": {
+        "side": "Vedle sebe",
+        "overlay": "Jedna šachovnice"
+      },
+      "yourBoard": "Vaše šachovnice",
+      "position": "Pozice",
+      "yourBoardLabel": "Vaše šachovnice s vyznačenými správnými a špatnými figurami",
+      "positionLabel": "Pozice s vyznačenými správnými a vynechanými poli",
+      "legendCorrect": "Správně",
+      "legendWrong": "Špatně, na vaší šachovnici",
+      "legendMissed": "Vynecháno, v pozici"
     },
     "feedback": {
       "title": "Díky, že jste si zahráli Memory Chess!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# hvězdička} few {# hvězdičky} many {# hvězdičky} other {# hvězdiček}}",
       "chooseRating": "Vyberte prosím hodnocení hvězdičkami.",
       "sendFailed": "Zpětnou vazbu se nepodařilo odeslat. Zkuste to znovu nebo zvolte „Teď ne“.",
+      "rateLimited": "Příliš mnoho zpráv z tohoto připojení. Zkuste to znovu za {minutes, plural, one {# minutu} few {# minuty} many {# minuty} other {# minut}}.",
       "send": "Odeslat zpětnou vazbu",
       "sending": "Odesílání…"
     },
@@ -1126,6 +1179,7 @@
       "intro": "Prohlédněte si {count, plural, one {# figurku} few {# figurky} many {# figurky} other {# figurek}} po {seconds} s a pak pozici složte zpaměti.",
       "hide": "Skrýt šachovnici",
       "restart": "Od začátku",
+      "leave": "Opustit kolo",
       "again": "Hrát znovu",
       "submit": "Odeslat",
       "clear": "Vyčistit šachovnici",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Obnoví se v {utc} UTC",
       "resetsAt": "Obnoví se v {utc} UTC ({local} u vás), za {timeLeft}"
     },
+    "loading": "Načítání žebříčku.",
     "mode": {
       "label": "Režim studia",
       "board": "Šachovnice",
@@ -1555,7 +1610,7 @@
         "desc": "Která pole a linie mineš nejčastěji, napříč všemi koly.",
         "aria": "Tvůj podíl minutých figur na každém poli. Tmavší znamená častěji minuto. Šedá pole mají méně než {minimum} viděných figur.",
         "note": "Tmavší pole jsou minutá častěji. Šedá pole mají méně než {minimum} viděných figur.",
-        "lines": "Dokud nemá každé pole {minimum} viděných figur, mapa ukazuje celé sloupce a řady.",
+        "lines": "Dokud nemá každé pole {minimum} viděných figur, každé pole je vybarveno podle celého svého sloupce a řady.",
         "files": "Sloupce",
         "ranks": "Řady",
         "line": "{line}: minuto {missed} z {shown}",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Dnešní pozice · {pieceCount, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} · {seconds} s · zbývá {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# figurka} few {# figurky} many {# figurky} other {# figurek}} · {seconds} s · zbývá {timeLeft}",
     "next": "Další pozice za {timeLeft}",
     "pending": "Dnešní pozice",
     "navReady": "{label}, dnešní denní pozice je připravena",
@@ -1704,7 +1760,12 @@
     "play": "Hrát dnešní pozici",
     "tomorrowTitle": "Zítřejší pozice",
     "tomorrowOpens": "Otevře se za {timeLeft}.",
-    "seeToday": "Zobrazit dnešní pozici"
+    "seeToday": "Zobrazit dnešní pozici",
+    "remindButton": "Připomínat denně",
+    "remindNote": "Stáhne událost do kalendáře, která se opakuje každý den, kdy se pozice otevře.",
+    "remindDone": "Uloženo. Otevřete soubor a přidejte denní událost do kalendáře.",
+    "remindTitle": "Denní pozice Memory Chess",
+    "remindDescription": "Nová pozice se otevře každý den o půlnoci UTC. Všichni hrají stejnou pozici a máte jeden pokus."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "4 až 16 znaků, zobrazí se u vašeho skóre.",
       "nameShort": "Příliš krátké. Použijte alespoň 4 znaky.",
       "nameLong": "Příliš dlouhé. Použijte nejvýše 16 znaků.",
+      "nameBlocked": "Toto jméno není povolené. Zvolte prosím jiné.",
       "country": "Země",
       "chooseCountry": "Vyberte zemi",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Dnešní žebříček se nepodařilo načíst. Zkuste to za chvíli znovu.",
       "joinToRank": "Zapojte se, abyste tady viděli své pořadí.",
       "order": "Řazeno podle počtu správných figurek, pak podle nejméně špatných, pak podle nejrychlejšího postavení.",
-      "all": "Zobrazit všechny pozice"
+      "all": "Zobrazit všechny pozice",
+      "todayBoard": "Dnešní pozice",
+      "yesterdayBoard": "Včerejší pozice",
+      "joinedToday": "Hráči, kteří se připojili k dnešní pozici: {count}",
+      "joinedYesterday": "Hráči, kteří se připojili k včerejší pozici: {count}",
+      "listFrom": "Desítka nejlepších se zobrazí, jakmile se připojí {min} nebo více hráčů."
     },
     "reference": {
       "title": "Jak denní pozice funguje",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Zveřejňujeme souhrnné statistiky vybavení z kol zaznamenaných v Google Analytics, a to pro nastavení s dostatečným počtem kol a hráčů.",
     "aboutLink": "Zobrazit data o zapamatování"
+  },
+  "learnTryIt": {
+    "title": "Zkuste to tady",
+    "intro": "Kolo této velikosti ukáže {pieces} figurky na {seconds} s. Pak je z paměti rozmístíte na prázdnou šachovnici. Tady je pozice této velikosti.",
+    "introBlindfold": "Kolo této velikosti vám ukáže {pieces} figurky zápisem na {seconds} s, na šachovnici nejsou žádné figurky. Pak je z paměti rozmístíte na prázdnou šachovnici. Tady je pozice této velikosti, tak jak ji uvidíte.",
+    "position": "Bílý: {white}. Černý: {black}.",
+    "start": "Začít kolo se {pieces} figurami",
+    "startBlindfold": "Začít kolo naslepo se {pieces} figurami"
   }
 }

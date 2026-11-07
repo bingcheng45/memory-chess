@@ -104,6 +104,29 @@ describe("POST /api/contact", () => {
     expect(consoleError).toHaveBeenCalledWith("Contact form not sent (notDelivered):", "Google Sheets append failed with status 403");
   });
 
+  it("refuses a body that is not labelled JSON with a 415 and no row", async () => {
+    const response = await POST(new Request("http://localhost/api/contact", { method: "POST", headers: { "Content-Type": "text/plain", "x-forwarded-for": freshAddress() }, body: JSON.stringify(validBody) }));
+
+    expect(response.status).toBe(415);
+    expect(await response.json()).toEqual({ error: "Failed to send message", reason: "invalid", details: "Some details were not accepted. Check the form and try again." });
+    expect(mockAppend).not.toHaveBeenCalled();
+  });
+
+  it("takes the largest body the form allows, 100-character name, 254-character email, 5000-character message, all three bytes a character", async () => {
+    const body = JSON.stringify({ name: "名".repeat(100), email: `${"e".repeat(242)}@example.com`.slice(0, 254), type: "business", message: "言".repeat(5000) });
+
+    expect(new TextEncoder().encode(body).byteLength).toBeGreaterThan(15_000);
+    expect((await post(body)).status).toBe(200);
+  });
+
+  it("refuses a body of 20481 bytes with a 413 and no row", async () => {
+    const response = await post(JSON.stringify({ ...validBody, padding: "x".repeat(20_481) }));
+
+    expect(response.status).toBe(413);
+    expect(await response.json()).toEqual({ error: "Failed to send message", reason: "invalid", details: "Some details were not accepted. Check the form and try again." });
+    expect(mockAppend).not.toHaveBeenCalled();
+  });
+
   it.each([
     ["a body that is not JSON", "{"],
     ["a short name", JSON.stringify({ ...validBody, name: "V" })],

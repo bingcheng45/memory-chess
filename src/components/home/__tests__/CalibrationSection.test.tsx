@@ -65,7 +65,7 @@ describe("CalibrationSection", () => {
     expect(screen.getByText(/start on Easy, 2 pieces at 10s/)).toBeInTheDocument();
     expect(screen.getByRole("link", { name: /Play Easy/ })).toHaveAttribute(
       "href",
-      "/game?pieceCount=2&memorizeTime=10&source=calibration_cta",
+      "/game?pieceCount=2&memorizeTime=10&from=calibration_cta",
     );
   });
 
@@ -154,6 +154,15 @@ describe("the calibration round controls", () => {
     expect(buttonState()).toEqual([["Start calibration", false], ["Submit reading", true]]);
     expect(controls().getByRole("button", { name: /Start calibration/ })).toHaveAttribute("data-primary");
     expect(screen.getByRole("button", { name: "Clear board" })).toBeDisabled();
+  });
+
+  it("keeps both buttons under the palette, and only the eraser beside the clock", async () => {
+    renderWithIntl(<CalibrationSection />);
+    await startRound();
+    fireEvent.click(controls().getByRole("button", { name: "Hide board" }));
+
+    expect(buttonState()).toEqual([["Restart", false], ["Submit reading", false]]);
+    expect(Array.from(document.querySelectorAll(".lab-cal-head button"), (button) => button.getAttribute("aria-label"))).toEqual(["Clear board"]);
   });
 
   it("swaps Start for Hide board while studying, with Submit still disabled", async () => {

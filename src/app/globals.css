@@ -260,6 +260,16 @@ body.game-fixed [data-below-game] {
   display: none;
 }
 
+/*
+  A round is played in focus: the changelog banner and the site header leave
+  the screen to the board, and the round's own leave button is the way out.
+  Keyed on the same class as above, so the served HTML keeps them and they go
+  in the same layout pass that pins the page.
+*/
+body.game-fixed [data-site-chrome] {
+  display: none;
+}
+
 /* Game container styles for responsive layout */
 .game-container {
   width: 100%;

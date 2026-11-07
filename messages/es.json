@@ -5,6 +5,7 @@
       "articles": "Artículos",
       "about": "Acerca de",
       "changelog": "Novedades",
+      "blindfold": "Ajedrez a ciegas",
       "contactUs": "Contacto",
       "privacy": "Privacidad",
       "terms": "Términos",
@@ -316,7 +317,7 @@
           "study": {
             "name": "Estudio",
             "title": "Once piezas, diez segundos.",
-            "body": "La posición final de la Inmortal de Kasparov, tras 44.Qa7. Topalov abandonó aquí. Abarca todo el tablero, no casilla a casilla. En los experimentos de de Groot, los maestros reproducían una posición de partida mostrada un instante mucho mejor que los jugadores más débiles.",
+            "body": "La posición final de la Inmortal de Kasparov, tras 44.Qa7. Topalov abandonó aquí. Abarca todo el tablero, no casilla a casilla. En los experimentos de De Groot, los maestros reproducían una posición de partida mostrada un instante mucho mejor que los jugadores más débiles.",
             "note": "Fig. Blancas: rey c1, dama a7, peones f4, g3, h2. Negras: rey e1, torre d2, peones c3, f5, g6, h7."
           },
           "anchors": {
@@ -560,7 +561,8 @@
           "line": "{line}: {missed} de {shown} falladas",
           "lineThin": "{line}: {shown} vistas, no bastan para sacar conclusiones",
           "realAria": "Tu proporción de fallos en cada casilla. Las casillas grises tienen menos de 10 piezas vistas.",
-          "realNote": "Más oscuro significa que se falla más a menudo. Gris indica menos de 10 piezas vistas."
+          "realNote": "Más oscuro significa que se falla más a menudo. Gris indica menos de 10 piezas vistas.",
+          "lines": "Hasta que cada casilla tenga 10 piezas vistas, cada casilla se colorea según su columna y fila completas."
         },
         "daily": {
           "fig": "Fig. {number} · Tablero del día",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {Se dejó fuera # ronda antigua} many {Se dejaron fuera # rondas antiguas} other {Se dejaron fuera # rondas antiguas}} para no superar el límite de 5.000 rondas.",
           "summaryIgnored": "Este navegador ya tenía rondas, así que solo se fusionaron las rondas nuevas, no los totales históricos del archivo.",
           "summaryDropped": "Los totales históricos del archivo no se podían leer o eran de una versión anterior, así que solo se importaron sus rondas.",
+          "playerRestored": "Tu puntuación y tu racha se han restaurado.",
           "safari": "En Safari, una pestaña privada no conserva este registro al cerrarse, y Safari borra los datos guardados de un sitio tras unos 7 días sin visitarlo. Exporta una copia para conservarlo.",
           "unavailable": "No se guarda en ventanas privadas. Esta ventana del navegador no está guardando tus rondas.",
           "backup": "Copia de seguridad entre dispositivos (próximamente)",
@@ -940,6 +943,21 @@
         "capped": "Los {cap} repasos de hoy están hechos en este dispositivo.",
         "cappedNext": "Los tableros que sigan pendientes vuelven mañana, primero los que más llevan esperando.",
         "schedule": "Los tableros en los que sacas menos de un 80 % vuelven 1, 3, 7 y 14 días después de verlos por primera vez."
+      },
+      "intro": {
+        "label": "La introducción de 45 tableros",
+        "skip": "Saltar introducción",
+        "replay": "Los 45 tableros de Najdorf",
+        "counter": "{count, plural, one {# tablero} many {# tableros} other {# tableros}}",
+        "counterDark": "{count, plural, one {# tablero} many {# tableros} other {# tableros}} · ninguno visto",
+        "one": "Un tablero. <em>Puedes verlo.</em>",
+        "oneNote": "La partida de la Ópera de Morphy, París, 1858. Cada jugada es real.",
+        "many": "Ahora, <em>cuarenta y cinco.</em>",
+        "manyNote": "São Paulo, enero de 1947. Miguel Najdorf contra cuarenta y cinco rivales a la vez.",
+        "dark": "No veía <em>ninguno.</em>",
+        "darkNote": "Jugó a ciegas durante más de 23 horas, respondiendo cada jugada de memoria. Ganó 39.",
+        "you": "Empieza con <em>uno.</em>",
+        "youNote": "Mira una posición unos segundos. Luego se oscurece y la reconstruyes."
       }
     }
   },
@@ -981,10 +999,25 @@
         "gain": "Hasta <num>+{value}</num>",
         "loss": "Como máximo <num>−{value}</num>",
         "announce": "Puntuación del tablero {board}. Tu puntuación {rating}. Precisión esperada {expected} %. Si lo superas, hasta +{gain}. Si fallas, como máximo −{loss}.",
-        "announceProvisional": "Puntuación del tablero {board}. Tu puntuación {rating}. Precisión esperada {expected} %. Si lo superas, hasta +{gain}."
+        "announceProvisional": "Puntuación del tablero {board}. Tu puntuación {rating}. Precisión esperada {expected} %. Si lo superas, hasta +{gain}.",
+        "summary": "Tablero {board} · se espera {expected} %",
+        "expect": "se espera {expected} %",
+        "details": "Detalles de la puntuación"
       },
       "blindfold": "A ciegas",
-      "blindfoldHint": "Estudia la posición en notación, sin piezas en el tablero."
+      "blindfoldHint": "Estudia la posición en notación, sin piezas en el tablero.",
+      "presetShort": {
+        "easy": "Fácil",
+        "medium": "Medio",
+        "hard": "Difícil",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Menos piezas",
+      "morePieces": "Más piezas",
+      "lessTime": "Menos tiempo de memorización",
+      "moreTime": "Más tiempo de memorización",
+      "boardPreview": "Vista previa del tablero. Piezas en el tablero: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Precisión",
       "piecesCorrectCaption": "piezas correctas",
+      "summary": "{correct} de {total} bien · {wrong} mal · colocado en {seconds} s",
       "piecesCorrect": "Piezas correctas",
       "memorizationTime": "Tiempo de memorización",
       "solutionTime": "Tiempo de resolución",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Reintentar",
       "nextRound": "Siguiente ronda",
       "changeSettings": "Cambiar ajustes",
-      "moreOptions": "Más opciones",
       "tileDrill": "Este ejercicio a tu nivel",
       "tileDrillWhy": "Ajustado a tu nivel, para practicar lo que describe el artículo.",
-      "submitToLeaderboard": "Enviar a la clasificación",
-      "leaderboardQualifies": "Tu puntuación entra en la clasificación. Envíala ya.",
+      "personalBest": "Nuevo récord personal en este nivel. Déjalo registrado.",
+      "claimLine": {
+        "qualifies": "{difficulty}: un {accuracy} % entraría en la clasificación.",
+        "open": "{difficulty}: mira el puesto de un {accuracy} %.",
+        "claim": "Asegurar puesto",
+        "submit": "Enviar",
+        "claimed": "En la clasificación: {difficulty}, {accuracy} %.",
+        "rank": "Eres el n.º {rank, number} de {total, number} ({difficulty})",
+        "seeBoard": "Ver la clasificación"
+      },
       "viewLeaderboard": "Ver la clasificación",
       "dialog": {
         "submitTitle": "Enviar a la clasificación",
-        "submitDescription": "Escribe tu nombre para que aparezca en la clasificación.",
+        "submitDescription": "Elige un nombre. Verás tu puesto justo después.",
+        "rankLoading": "Buscando tu puesto…",
+        "rankWorld": "N.º {rank, number} de {total, number} en el mundo",
+        "rankCountry": "N.º {rank, number} de {total, number} en {country}",
         "successTitle": "¡Puntuación enviada!",
         "successDescription": "Tu puntuación se ha enviado correctamente a la clasificación.",
         "playerName": "Nombre del jugador",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Recordé {correct, number} de {total, number} piezas ({accuracy}) en el tablero diario de Memory Chess del {date}.} review {Recordé {correct, number} de {total, number} piezas ({accuracy}) en un tablero de repaso de Memory Chess.} other {Recordé {correct, number} de {total, number} piezas ({accuracy}) en Memory Chess.}} ¿Puedes superarlo?",
         "alt": "Tarjeta de resultado de Memory Chess: {details}."
       },
-      "savedToast": {
-        "message": "Ronda guardada. Tus estadísticas actualizadas están justo debajo.",
-        "action": "Ver"
-      },
       "blindfoldRound": "Ronda a ciegas: estudiaste la posición en notación."
     },
     "comparison": {
-      "title": "Revisa tu posición"
+      "title": "Revisa tu posición",
+      "viewLabel": "Vista del resultado",
+      "view": {
+        "side": "Lado a lado",
+        "overlay": "Un tablero"
+      },
+      "yourBoard": "Tu tablero",
+      "position": "La posición",
+      "yourBoardLabel": "Tu tablero, con las piezas correctas e incorrectas marcadas",
+      "positionLabel": "La posición, con las casillas correctas y omitidas marcadas",
+      "legendCorrect": "Correcta",
+      "legendWrong": "Incorrecta, en tu tablero",
+      "legendMissed": "Omitida, en la posición"
     },
     "feedback": {
       "title": "¡Gracias por jugar a Memory Chess!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# estrella} many {# estrellas} other {# estrellas}}",
       "chooseRating": "Elige una puntuación con estrellas.",
       "sendFailed": "No hemos podido enviar tus comentarios. Inténtalo de nuevo o elige Ahora no.",
+      "rateLimited": "Demasiados mensajes desde esta conexión. Inténtalo de nuevo en {minutes, plural, one {# minuto} many {# de minutos} other {# minutos}}.",
       "send": "Enviar comentarios",
       "sending": "Enviando..."
     },
@@ -1126,6 +1179,7 @@
       "intro": "Memoriza {count, plural, one {# pieza} many {# de piezas} other {# piezas}} durante {seconds} s y luego reconstruye la posición de memoria.",
       "hide": "Ocultar tablero",
       "restart": "Reiniciar",
+      "leave": "Salir de la ronda",
       "again": "Otra partida",
       "submit": "Enviar",
       "clear": "Vaciar tablero",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Se reinicia a las {utc} UTC",
       "resetsAt": "Se reinicia a las {utc} UTC ({local} en tu hora), en {timeLeft}"
     },
+    "loading": "Cargando la clasificación.",
     "mode": {
       "label": "Modo de estudio",
       "board": "Tablero",
@@ -1555,7 +1610,7 @@
         "desc": "Qué casillas y líneas fallas más, sumando todas las rondas.",
         "aria": "Tu proporción de fallos en cada casilla. Más oscuro significa que se falla más a menudo. Las casillas grises tienen menos de {minimum} piezas vistas.",
         "note": "Las casillas más oscuras se fallan más a menudo. Las casillas grises tienen menos de {minimum} piezas vistas.",
-        "lines": "Hasta que cada casilla tenga {minimum} piezas vistas, el mapa muestra columnas y filas completas.",
+        "lines": "Hasta que cada casilla tenga {minimum} piezas vistas, cada casilla se colorea según su columna y fila completas.",
         "files": "Columnas",
         "ranks": "Filas",
         "line": "{line}: {missed} de {shown} falladas",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Tablero de hoy · {pieceCount, plural, one {# pieza} many {# piezas} other {# piezas}} · {seconds} s · quedan {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# pieza} many {# piezas} other {# piezas}} · {seconds} s · quedan {timeLeft}",
     "next": "Próximo tablero en {timeLeft}",
     "pending": "Tablero de hoy",
     "navReady": "{label}, el tablero diario de hoy está listo",
@@ -1704,7 +1760,12 @@
     "play": "Jugar el tablero de hoy",
     "tomorrowTitle": "Tablero de mañana",
     "tomorrowOpens": "Se abre en {timeLeft}.",
-    "seeToday": "Ver el tablero de hoy"
+    "seeToday": "Ver el tablero de hoy",
+    "remindButton": "Recordármelo cada día",
+    "remindNote": "Descarga un evento de calendario que se repite cada día cuando se abre el tablero.",
+    "remindDone": "Guardado. Abre el archivo para añadir el evento diario a tu calendario.",
+    "remindTitle": "Tablero diario de Memory Chess",
+    "remindDescription": "Un tablero nuevo se abre cada día a medianoche UTC. Todo el mundo juega el mismo tablero y tienes un intento."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "De 4 a 16 caracteres, se muestra junto a tu puntuación.",
       "nameShort": "Demasiado corto. Usa al menos 4 caracteres.",
       "nameLong": "Demasiado largo. Usa como máximo 16 caracteres.",
+      "nameBlocked": "Ese nombre no está permitido. Elige otro, por favor.",
       "country": "País",
       "chooseCountry": "Elige un país",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "No se pudo cargar el tablero de hoy. Inténtalo de nuevo en un momento.",
       "joinToRank": "Únete al tablero para ver aquí tu puesto.",
       "order": "Ordenado por piezas correctas, luego por menos erróneas y después por la reconstrucción más rápida.",
-      "all": "Ver todos los tableros"
+      "all": "Ver todos los tableros",
+      "todayBoard": "Tablero de hoy",
+      "yesterdayBoard": "Tablero de ayer",
+      "joinedToday": "Personas que se han unido al tablero de hoy: {count}",
+      "joinedYesterday": "Personas que se unieron al tablero de ayer: {count}",
+      "listFrom": "El top 10 aparece cuando se unen {min} personas o más."
     },
     "reference": {
       "title": "Cómo funciona el tablero diario",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Se publican estadísticas agregadas de recuerdo de las rondas registradas en Google Analytics, para las configuraciones con suficientes rondas y jugadores.",
     "aboutLink": "Ver los datos de recuerdo"
+  },
+  "learnTryIt": {
+    "title": "Pruébalo aquí",
+    "intro": "Una ronda de este tamaño muestra {pieces} piezas durante {seconds} s. Después las colocas de memoria en un tablero vacío. Aquí tienes una posición de ese tamaño.",
+    "introBlindfold": "Una ronda de este tamaño te muestra {pieces} piezas en notación durante {seconds} s, sin piezas en el tablero. Después las colocas de memoria en un tablero vacío. Aquí tienes una posición de ese tamaño, tal como la verías.",
+    "position": "Blancas: {white}. Negras: {black}.",
+    "start": "Empezar una ronda de {pieces} piezas",
+    "startBlindfold": "Empezar una ronda a ciegas de {pieces} piezas"
   }
 }

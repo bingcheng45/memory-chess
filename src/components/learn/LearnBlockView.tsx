@@ -139,7 +139,7 @@ export default function LearnBlockView({ block, figure = 0, titles, context }: L
           ))}
           {block.drills.some((drill) => drill.play) ? (
             <p className="lg-drills-daily">
-              <GuideLink href={DAILY_PATH} locale={locale} className="lg-link">
+              <GuideLink href={DAILY_PATH} locale={locale} prefetch={false} className="lg-link">
                 {copy.dailyBoard}
               </GuideLink>
             </p>

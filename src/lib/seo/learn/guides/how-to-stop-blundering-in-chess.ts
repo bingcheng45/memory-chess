@@ -4,6 +4,7 @@ const guide: LearnDocument = {
   meta: {
     slug: "how-to-stop-blundering-in-chess",
     title: "How to Stop Blundering in Chess",
+    searchTitle: "How to Stop Blundering in Chess: A 5-Step Check",
     h1: "How to stop blundering in chess",
     description: "Learn how to stop blundering in chess with a five-step scan before every move, a check for loose pieces, and drills built from your own lost games.",
     group: "board-vision",

@@ -1,6 +1,6 @@
 {
   "sourceHash": "b8a2dc0a9889599a9f90c757b4cb59300ede92aee1a57b2f7196bc0f8c826486",
-  "approvedHash": "89763b1e968243c48523fe1363e1a3707f28e103628353313623e04da76d9f48",
+  "approvedHash": "0ba8e447c291343493d8cb0577b2be8796a002105024628f0a18d82f0cce81b6",
   "sameAsEnglish": [
     "facts.knownFor"
   ],
@@ -12,7 +12,7 @@
       "role": "Hollandalı satranç ustası ve psikolog"
     },
     "photo": {
-      "alt": "Adriaan de Groot, 1930 dolaylarında genç bir adam olarak",
+      "alt": "Adriaan de Groot gençliğinde, 1930 dolaylarında",
       "author": "Bilinmeyen fotoğrafçı",
       "license": "Kamu malı",
       "changes": "Kırpıldı"
@@ -33,7 +33,7 @@
         "paragraphs": [
           "Büyükustalar gerçek bir partiden alınmış bir konumu kare kare değil, birkaç tanıdık taş grubu olarak hatırlar. Bunlar, William Chase ile Herbert Simon'ın 1973'te ölçtüğü öbeklerdir. De Groot'un 1944'teki testinde eski dünya şampiyonu Max Euwe 22 taşlı bir konumu 5 saniye boyunca gördü ve 22 taşın hepsini doğru bildi; daha zayıf sınıftan bir oyuncu ise 9 puan aldı. Rastgele tahtalarda bu üstünlük her 400 Elo puanı için yaklaşık bir fazla taşa iner, oyun konumlarında ise yaklaşık beş taştır (Gobet ile Simon, 1996).",
           "1944'te Adriaan de Groot, Max Euwe'ye bir satranç konumu gösterdi ve beş saniye sonra onu kaldırdı. Konum, Rohacek ile Rabar arasındaki bir partinin beyazın 20. hamlesinden sonraki hâliydi ve tahtada 22 taş vardı. 1935'ten 1937'ye kadar dünya şampiyonu olan Euwe, ardından her taşın nerede durduğunu sesli olarak sıraladı. 22'sini de doğru bildi.",
-          "Kendisi de usta olan De Groot aynı teste girdi, orada olmayan bir piyon ekledi ve 21 puan aldı. 1942 Utrecht şampiyonu A. Fast 17 taşı doğru yerleştirdi, ancak malzemenin eşit olduğuna hükmetti, oysa eşit değildi; 16 puan aldı. Daha zayıf sınıftan bir oyuncu olan G. P. Hauer 9 puan aldı.",
+          "Kendisi de usta olan de Groot aynı teste girdi, orada olmayan bir piyon ekledi ve 21 puan aldı. 1942 Utrecht şampiyonu A. Fast 17 taşı doğru yerleştirdi, ancak malzemenin eşit olduğuna hükmetti, oysa eşit değildi; 16 puan aldı. Daha zayıf sınıftan bir oyuncu olan G. P. Hauer 9 puan aldı.",
           "Anlatımlar gösterim süresi ve yüzdeler konusunda birbirini tutmuyor, bu yüzden aşağıdaki rakamlar de Groot'un kendi kitabından alınmıştır."
         ]
       },
@@ -88,8 +88,8 @@
       {
         "heading": "De Groot'un testini dene",
         "paragraphs": [
-          "Memory Chess'i 22 taş ve 5 saniyeye ayarla. Bu, de Groot'un Rohacek-Rabar konumunun büyüklüğüne ve Euwe'nin ona bakabildiği süreye denk gelir. Tahtayı yeniden kur ve taşların yüzde kaçını doğru yerleştirdiğini hesapla. Yaklaşık yarısı Hauer'in bitirdiği yerdir, yaklaşık %70 Fast'in bitirdiği yer, %93 ise Euwe'nin de, de Groot'un da ortalama puanıdır.",
-          "Karşılaştırma yaklaşıktır, çünkü de Groot hatalar için de puan kırıyordu. Sonra hangi taşları aklında tuttuğuna bak. Büyük olasılıkla gruplar halinde gelmişlerdir, örneğin bir piyon zinciri ya da rok yapılmış bir şah gibi."
+          "Memory Chess'i 22 taş ve 5 saniyeye ayarla. Bu, de Groot'un Rohacek-Rabar konumunun büyüklüğüne ve Euwe'nin ona bakabildiği süreye denk gelir. Tahtayı yeniden kur ve taşların yüzde kaçını doğru yerleştirdiğini hesapla. Yaklaşık yarısı Hauer'in bitirdiği yerdir, yaklaşık %70 Fast'ın bitirdiği yer, %93 ise Euwe'nin de, de Groot'un da ortalama puanıdır.",
+          "Karşılaştırma yaklaşıktır, çünkü de Groot hatalar için de puan kırıyordu. Sonra hangi taşları aklında tuttuğuna bak. Büyük olasılıkla gruplar hâlinde gelmişlerdir, örneğin bir piyon zinciri ya da rok yapılmış bir şah gibi."
         ]
       }
     ],

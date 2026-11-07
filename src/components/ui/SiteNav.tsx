@@ -17,6 +17,8 @@ const NAV_LINKS = [
   { href: "/about", labelKey: "nav.about", itemClass: "hidden sm:list-item" },
 ] as const;
 
+const prefetchOf = (href: string) => (href === "/game" ? undefined : false);
+
 const LINK_CLASS =
   "relative inline-flex min-h-11 items-center gap-1.5 rounded-full px-1 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-peach-300 sm:px-3.5";
 const IDLE_CLASS = "text-text-muted hover:bg-white/5 hover:text-peach-300";
@@ -53,6 +55,7 @@ export default function SiteNav() {
                 // name keeps the full suffix.
                 <EnglishOnlyLink
                   href={href}
+                  prefetch={prefetchOf(href)}
                   {...linkProps}
                   aria-label={englishSuffix ? `${label}${englishSuffix}` : undefined}
                 >
@@ -70,6 +73,7 @@ export default function SiteNav() {
               ) : (
                 <Link
                   href={href}
+                  prefetch={prefetchOf(href)}
                   {...linkProps}
                   aria-label={marked ? entry("navReady", { label }) : undefined}
                 >

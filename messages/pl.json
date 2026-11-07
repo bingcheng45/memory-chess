@@ -5,6 +5,7 @@
       "articles": "Artykuły",
       "about": "O stronie",
       "changelog": "Nowości",
+      "blindfold": "Szachy w ciemno",
       "contactUs": "Kontakt",
       "privacy": "Prywatność",
       "terms": "Regulamin",
@@ -560,7 +561,8 @@
           "line": "{line}: pomyłki w {missed} z {shown}",
           "lineThin": "{line}: zobaczono {shown}, za mało do oceny",
           "realAria": "Udział pomyłek na każdym polu. Szare pola mają mniej niż 10 zobaczonych figur.",
-          "realNote": "Ciemniej znaczy częstsze pomyłki. Szare pola mają mniej niż 10 zobaczonych figur."
+          "realNote": "Ciemniej znaczy częstsze pomyłki. Szare pola mają mniej niż 10 zobaczonych figur.",
+          "lines": "Dopóki każde pole nie ma 10 zobaczonych figur, każde pole jest zabarwione według całej swojej kolumny i rzędu."
         },
         "daily": {
           "fig": "Ryc. {number} · Plansza dnia",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# starsza runda została pominięta} few {# starsze rundy zostały pominięte} many {# starszych rund zostało pominiętych} other {# starszej rundy zostało pominięte}}, aby zmieścić się w limicie 5000 rund.",
           "summaryIgnored": "Ta przeglądarka miała już rundy, więc dołączono tylko nowe rundy, bez łącznych sum z pliku.",
           "summaryDropped": "Łączne sumy z pliku były nieczytelne albo pochodziły ze starszej wersji, więc zaimportowano tylko jego rundy.",
+          "playerRestored": "Twój ranking i seria zostały przywrócone.",
           "safari": "W Safari karta prywatna nie zachowuje tego dziennika po zamknięciu, a Safari usuwa zapisane dane strony po około 7 dniach bez wizyty. Wyeksportuj kopię, aby go zachować.",
           "unavailable": "W oknach prywatnych nic się nie zapisuje. To okno przeglądarki nie przechowuje twoich rund.",
           "backup": "Kopia zapasowa między urządzeniami (wkrótce)",
@@ -940,6 +943,21 @@
         "capped": "Dzisiejsze powtórki ({cap}) na tym urządzeniu są zrobione.",
         "cappedNext": "Każda plansza, która wciąż czeka, wróci jutro, zaczynając od tej, która czeka najdłużej.",
         "schedule": "Plansze, na których masz poniżej 80%, wracają 1, 3, 7 i 14 dni po tym, jak zobaczysz je pierwszy raz."
+      },
+      "intro": {
+        "label": "Wstęp z 45 szachownicami",
+        "skip": "Pomiń wstęp",
+        "replay": "45 szachownic Najdorfa",
+        "counter": "{count, plural, one {# szachownica} few {# szachownice} many {# szachownic} other {# szachownicy}}",
+        "counterDark": "{count, plural, one {# szachownica} few {# szachownice} many {# szachownic} other {# szachownicy}} · żadnej nie widać",
+        "one": "Jedna szachownica. <em>Widzisz ją.</em>",
+        "oneNote": "Partia w operze Morphy'ego, Paryż, 1858. Każdy ruch jest prawdziwy.",
+        "many": "Teraz <em>czterdzieści pięć.</em>",
+        "manyNote": "São Paulo, styczeń 1947. Miguel Najdorf przeciwko czterdziestu pięciu rywalom naraz.",
+        "dark": "Nie widział <em>żadnej z nich.</em>",
+        "darkNote": "Grał na ślepo przez ponad 23 godziny, odpowiadając na każdy ruch z pamięci. Wygrał 39 partii.",
+        "you": "Zacznij od <em>jednej.</em>",
+        "youNote": "Przyjrzyj się pozycji przez kilka sekund. Potem gaśnie, a ty ją odtwarzasz."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "Do <num>+{value}</num>",
         "loss": "Najwyżej <num>−{value}</num>",
         "announce": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}. Jeśli się nie uda, najwyżej −{loss}.",
-        "announceProvisional": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}."
+        "announceProvisional": "Ocena planszy {board}. Twoja ocena {rating}. Oczekiwana dokładność {expected}%. Jeśli się uda, do +{gain}.",
+        "summary": "Plansza {board} · oczekiwane {expected}%",
+        "expect": "oczekiwane {expected}%",
+        "details": "Szczegóły oceny"
       },
       "blindfold": "Na ślepo",
-      "blindfoldHint": "Zapamiętaj pozycję z zapisu, bez bierek na szachownicy."
+      "blindfoldHint": "Zapamiętaj pozycję z zapisu, bez bierek na szachownicy.",
+      "presetShort": {
+        "easy": "Łatwy",
+        "medium": "Średni",
+        "hard": "Trudny",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Mniej bierek",
+      "morePieces": "Więcej bierek",
+      "lessTime": "Krótszy czas na zapamiętanie",
+      "moreTime": "Dłuższy czas na zapamiętanie",
+      "boardPreview": "Podgląd planszy. Bierki na planszy: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Łatwy",
-        "description": "Tylko królowie – idealne na początek"
+        "description": "Tylko króle - idealne na początek"
       },
       "medium": {
         "label": "Średni",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Celność",
       "piecesCorrectCaption": "bierek poprawnie",
+      "summary": "{correct} / {total} poprawnie · {wrong} błędnie · ustawione w {seconds} s",
       "piecesCorrect": "Poprawne bierki",
       "memorizationTime": "Czas zapamiętywania",
       "solutionTime": "Czas rozwiązania",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Spróbuj ponownie",
       "nextRound": "Następna runda",
       "changeSettings": "Zmień ustawienia",
-      "moreOptions": "Więcej opcji",
       "tileDrill": "To ćwiczenie na twoim poziomie",
       "tileDrillWhy": "Dopasowane do twojego poziomu, żeby przećwiczyć to, co opisuje artykuł.",
-      "submitToLeaderboard": "Wyślij do rankingu",
-      "leaderboardQualifies": "Twój wynik łapie się do rankingu. Wyślij go, zanim przepadnie.",
+      "personalBest": "Nowy rekord osobisty na tym poziomie. Zapisz go.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% wejdzie do rankingu.",
+        "open": "{difficulty}: sprawdź, które miejsce da {accuracy}%.",
+        "claim": "Zajmij miejsce",
+        "submit": "Wyślij wynik",
+        "claimed": "W rankingu: {difficulty}, {accuracy}%.",
+        "rank": "Jesteś na miejscu {rank, number} z {total, number} ({difficulty})",
+        "seeBoard": "Zobacz ranking"
+      },
       "viewLeaderboard": "Zobacz ranking",
       "dialog": {
         "submitTitle": "Wyślij do rankingu",
-        "submitDescription": "Podaj nazwę, która pojawi się w rankingu.",
+        "submitDescription": "Wybierz nazwę. Miejsce zobaczysz zaraz potem.",
+        "rankLoading": "Szukamy Twojego miejsca…",
+        "rankWorld": "{rank, number}. z {total, number} na świecie",
+        "rankCountry": "{rank, number}. z {total, number}: {country}",
         "successTitle": "Wynik wysłany!",
         "successDescription": "Twój wynik został dodany do rankingu.",
         "playerName": "Nazwa gracza",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na dziennej szachownicy Memory Chess z dnia {date}.} review {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) na szachownicy powtórkowej Memory Chess.} other {Udało mi się zapamiętać {correct, number} z {total, plural, one {# figury} few {# figur} many {# figur} other {# figur}} ({accuracy}) w Memory Chess.}} Pobijesz to?",
         "alt": "Karta wyniku Memory Chess: {details}."
       },
-      "savedToast": {
-        "message": "Runda zapisana. Zaktualizowane statystyki są tuż poniżej.",
-        "action": "Pokaż"
-      },
       "blindfoldRound": "Runda na ślepo: pozycja zapamiętana z zapisu."
     },
     "comparison": {
-      "title": "Przejrzyj swoją pozycję"
+      "title": "Przejrzyj swoją pozycję",
+      "viewLabel": "Widok wyniku",
+      "view": {
+        "side": "Obok siebie",
+        "overlay": "Jedna szachownica"
+      },
+      "yourBoard": "Twoja szachownica",
+      "position": "Pozycja",
+      "yourBoardLabel": "Twoja szachownica z zaznaczonymi poprawnymi i błędnymi bierkami",
+      "positionLabel": "Pozycja z zaznaczonymi poprawnymi i pominiętymi polami",
+      "legendCorrect": "Poprawne",
+      "legendWrong": "Błędne, na twojej szachownicy",
+      "legendMissed": "Pominięte, w pozycji"
     },
     "feedback": {
       "title": "Dziękujemy za grę w Memory Chess!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# gwiazdka} few {# gwiazdki} many {# gwiazdek} other {# gwiazdki}}",
       "chooseRating": "Wybierz ocenę w gwiazdkach.",
       "sendFailed": "Nie udało się wysłać opinii. Spróbuj ponownie albo wybierz „Nie teraz”.",
+      "rateLimited": "Zbyt wiele wiadomości z tego połączenia. Spróbuj ponownie za {minutes, plural, one {# minutę} few {# minuty} many {# minut} other {# minuty}}.",
       "send": "Wyślij opinię",
       "sending": "Wysyłanie…"
     },
@@ -1126,6 +1179,7 @@
       "intro": "Zapamiętaj {count, plural, one {# bierkę} few {# bierki} many {# bierek} other {# bierki}} w {seconds} s, a potem odtwórz pozycję z pamięci.",
       "hide": "Ukryj szachownicę",
       "restart": "Od nowa",
+      "leave": "Opuść rundę",
       "again": "Jeszcze raz",
       "submit": "Wyślij",
       "clear": "Wyczyść szachownicę",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Reset o {utc} UTC",
       "resetsAt": "Reset o {utc} UTC ({local} u Ciebie), za {timeLeft}"
     },
+    "loading": "Wczytywanie rankingu.",
     "mode": {
       "label": "Tryb nauki",
       "board": "Szachownica",
@@ -1555,7 +1610,7 @@
         "desc": "Które pola i linie mylisz najczęściej, we wszystkich rundach.",
         "aria": "Udział pomyłek na każdym polu. Ciemniejsze oznacza częstsze pomyłki. Szare pola mają mniej niż {minimum} zobaczonych figur.",
         "note": "Na ciemniejszych polach mylisz się częściej. Szare pola mają mniej niż {minimum} zobaczonych figur.",
-        "lines": "Dopóki każde pole nie ma {minimum} zobaczonych figur, mapa pokazuje całe kolumny i rzędy.",
+        "lines": "Dopóki każde pole nie ma {minimum} zobaczonych figur, każde pole jest zabarwione według całej swojej kolumny i rzędu.",
         "files": "Kolumny",
         "ranks": "Rzędy",
         "line": "{line}: pomyłki w {missed} z {shown}",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} godz. {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Dzisiejsza plansza · {pieceCount, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} · {seconds} s · zostało {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# bierka} few {# bierki} many {# bierek} other {# bierki}} · {seconds} s · zostało {timeLeft}",
     "next": "Następna plansza za {timeLeft}",
     "pending": "Dzisiejsza plansza",
     "navReady": "{label}, dzisiejsza plansza dnia jest gotowa",
@@ -1704,7 +1760,12 @@
     "play": "Zagraj dzisiejszą planszę",
     "tomorrowTitle": "Jutrzejsza plansza",
     "tomorrowOpens": "Otwiera się za {timeLeft}.",
-    "seeToday": "Zobacz dzisiejszą planszę"
+    "seeToday": "Zobacz dzisiejszą planszę",
+    "remindButton": "Przypominaj codziennie",
+    "remindNote": "Pobiera wydarzenie kalendarza, które powtarza się codziennie, gdy plansza się otwiera.",
+    "remindDone": "Zapisano. Otwórz plik, aby dodać codzienne wydarzenie do kalendarza.",
+    "remindTitle": "Codzienna plansza Memory Chess",
+    "remindDescription": "Nowa plansza otwiera się codziennie o północy UTC. Wszyscy grają na tej samej planszy, a ty masz jedną próbę."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "Od 4 do 16 znaków, widoczna przy Twoim wyniku.",
       "nameShort": "Za krótka. Użyj co najmniej 4 znaków.",
       "nameLong": "Za długa. Użyj najwyżej 16 znaków.",
+      "nameBlocked": "Ta nazwa nie jest dozwolona. Wybierz inną.",
       "country": "Kraj",
       "chooseCountry": "Wybierz kraj",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Nie udało się wczytać dzisiejszej szachownicy. Spróbuj ponownie za chwilę.",
       "joinToRank": "Dołącz do rankingu, żeby zobaczyć tutaj swoje miejsce.",
       "order": "Kolejność: najwięcej poprawnych bierek, potem najmniej błędnych, potem najszybsze odtworzenie.",
-      "all": "Zobacz wszystkie szachownice"
+      "all": "Zobacz wszystkie szachownice",
+      "todayBoard": "Dzisiejsza plansza",
+      "yesterdayBoard": "Wczorajsza plansza",
+      "joinedToday": "Liczba graczy, którzy dołączyli do dzisiejszej planszy: {count}",
+      "joinedYesterday": "Liczba graczy, którzy dołączyli do wczorajszej planszy: {count}",
+      "listFrom": "Dziesiątka najlepszych pojawi się, gdy dołączy {min} lub więcej graczy."
     },
     "reference": {
       "title": "Jak działa szachownica dnia",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Publikujemy zbiorcze statystyki zapamiętywania z rund zarejestrowanych w Google Analytics, dla ustawień z wystarczającą liczbą rund i graczy.",
     "aboutLink": "Zobacz dane o zapamiętywaniu"
+  },
+  "learnTryIt": {
+    "title": "Wypróbuj tutaj",
+    "intro": "Runda tej wielkości pokazuje {pieces} figury przez {seconds} s. Potem ustawiasz je z pamięci na pustej szachownicy. Oto pozycja tej wielkości.",
+    "introBlindfold": "Runda tej wielkości pokazuje {pieces} figury w notacji przez {seconds} s, bez figur na szachownicy. Potem ustawiasz je z pamięci na pustej szachownicy. Oto pozycja tej wielkości, w takiej postaci, w jakiej zostanie pokazana.",
+    "position": "Białe: {white}. Czarne: {black}.",
+    "start": "Zacznij rundę z {pieces} figurami",
+    "startBlindfold": "Zacznij rundę w ciemno z {pieces} figurami"
   }
 }

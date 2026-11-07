@@ -5,6 +5,7 @@
       "articles": "Artiklar",
       "about": "Om",
       "changelog": "Nyheter",
+      "blindfold": "Blindschack",
       "contactUs": "Kontakta oss",
       "privacy": "Integritet",
       "terms": "Villkor",
@@ -560,7 +561,8 @@
           "line": "{line}: {missed} av {shown} missade",
           "lineThin": "{line}: {shown} sedda, för få för att läsa av",
           "realAria": "Din andel missar på varje ruta. Grå rutor har färre än 10 sedda pjäser.",
-          "realNote": "Mörkare betyder oftare missad. Grå rutor har under 10 sedda pjäser."
+          "realNote": "Mörkare betyder oftare missad. Grå rutor har under 10 sedda pjäser.",
+          "lines": "Tills varje ruta har 10 sedda pjäser färgas varje ruta efter hela sin linje och rad."
         },
         "daily": {
           "fig": "Fig. {number} · Dagens bräde",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# äldre runda lämnades} other {# äldre rundor lämnades}} utanför för att hålla gränsen på 5 000 rundor.",
           "summaryIgnored": "Den här webbläsaren hade redan rundor, så bara nya rundor slogs samman, inte filens totaler över tid.",
           "summaryDropped": "Filens totaler över tid gick inte att läsa eller kom från en äldre version, så bara dess rundor importerades.",
+          "playerRestored": "Din rating och din svit har återställts.",
           "safari": "I Safari sparar en privat flik inte den här journalen när den stängs, och Safari raderar en webbplats sparade data efter ungefär 7 dagar utan besök. Exportera en kopia för att behålla den.",
           "unavailable": "Sparas inte i privata fönster. Det här webbläsarfönstret sparar inte dina rundor.",
           "backup": "Säkerhetskopiera mellan enheter (kommer snart)",
@@ -940,6 +943,21 @@
         "capped": "Dagens {cap} repetitioner är klara på den här enheten.",
         "cappedNext": "Bräden som fortfarande väntar kommer tillbaka i morgon, de som väntat längst först.",
         "schedule": "Bräden där du får under 80 % kommer tillbaka 1, 3, 7 och 14 dagar efter att du först såg dem."
+      },
+      "intro": {
+        "label": "Introt med 45 brädor",
+        "skip": "Hoppa över intro",
+        "replay": "Najdorfs 45 brädor",
+        "counter": "{count, plural, one {# bräde} other {# brädor}}",
+        "counterDark": "{count, plural, one {# bräde} other {# brädor}} · inget sett",
+        "one": "Ett bräde. <em>Du kan se det.</em>",
+        "oneNote": "Morphys operaparti, Paris, 1858. Varje drag är äkta.",
+        "many": "Nu <em>fyrtiofem.</em>",
+        "manyNote": "São Paulo, januari 1947. Miguel Najdorf mot fyrtiofem motståndare samtidigt.",
+        "dark": "Han såg <em>inget av dem.</em>",
+        "darkNote": "Han spelade i blindo i över 23 timmar och besvarade varje drag ur minnet. Han vann 39.",
+        "you": "Börja med <em>ett.</em>",
+        "youNote": "Titta på en ställning några sekunder. Sedan blir den mörk, och du bygger upp den igen."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "Upp till <num>+{value}</num>",
         "loss": "Högst <num>−{value}</num>",
         "announce": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}. Om det går fel, högst −{loss}.",
-        "announceProvisional": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}."
+        "announceProvisional": "Brädets rating {board}. Din rating {rating}. Förväntad precision {expected} %. Om du klarar den, upp till +{gain}.",
+        "summary": "Bräde {board} · förväntat {expected} %",
+        "expect": "förväntat {expected} %",
+        "details": "Ratingdetaljer"
       },
       "blindfold": "Blindschack",
-      "blindfoldHint": "Studera ställningen som notation, utan pjäser på brädet."
+      "blindfoldHint": "Studera ställningen som notation, utan pjäser på brädet.",
+      "presetShort": {
+        "easy": "Lätt",
+        "medium": "Medel",
+        "hard": "Svår",
+        "grandmaster": "SM"
+      },
+      "fewerPieces": "Färre pjäser",
+      "morePieces": "Fler pjäser",
+      "lessTime": "Kortare memoreringstid",
+      "moreTime": "Längre memoreringstid",
+      "boardPreview": "Förhandsvisning av brädet. Pjäser på brädet: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Lätt",
-        "description": "Bara kungarna – perfekt för att komma igång"
+        "description": "Bara kungarna - perfekt för att komma igång"
       },
       "medium": {
         "label": "Medel",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Träffsäkerhet",
       "piecesCorrectCaption": "pjäser rätt",
+      "summary": "{correct} / {total} rätt · {wrong} fel · placerat på {seconds} s",
       "piecesCorrect": "Rätta pjäser",
       "memorizationTime": "Memoreringstid",
       "solutionTime": "Lösningstid",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Försök igen",
       "nextRound": "Nästa runda",
       "changeSettings": "Ändra inställningar",
-      "moreOptions": "Fler alternativ",
       "tileDrill": "Den här övningen på din nivå",
       "tileDrillWhy": "Anpassad efter din nivå, så att du kan öva på det artikeln beskriver.",
-      "submitToLeaderboard": "Skicka till topplistan",
-      "leaderboardQualifies": "Ditt resultat når topplistan. Skicka in det innan det är för sent.",
+      "personalBest": "Nytt personbästa på den här nivån. Få in det på listan.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy} % skulle ta sig in på topplistan.",
+        "open": "{difficulty}: se var {accuracy} % hamnar.",
+        "claim": "Ta platsen",
+        "submit": "Skicka in",
+        "claimed": "På topplistan: {difficulty}, {accuracy} %.",
+        "rank": "Du är nr {rank, number} av {total, number} ({difficulty})",
+        "seeBoard": "Se topplistan"
+      },
       "viewLeaderboard": "Visa topplistan",
       "dialog": {
         "submitTitle": "Skicka till topplistan",
-        "submitDescription": "Skriv namnet som ska visas på topplistan.",
+        "submitDescription": "Välj ett namn. Du ser din placering direkt efteråt.",
+        "rankLoading": "Hämtar din placering…",
+        "rankWorld": "Plats {rank, number} av {total, number} i världen",
+        "rankCountry": "Plats {rank, number} av {total, number} i {country}",
         "successTitle": "Resultatet skickat!",
         "successDescription": "Ditt resultat har lagts till på topplistan.",
         "playerName": "Spelarnamn",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) på dagens bräde i Memory Chess den {date}.} review {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) på ett repetitionsbräde i Memory Chess.} other {Jag mindes {correct, number} av {total, number} pjäser ({accuracy}) i Memory Chess.}} Kan du slå det?",
         "alt": "Resultatkort från Memory Chess: {details}."
       },
-      "savedToast": {
-        "message": "Rundan är sparad. Din uppdaterade statistik finns strax nedanför.",
-        "action": "Visa"
-      },
       "blindfoldRound": "Blindrunda: du studerade ställningen som notation."
     },
     "comparison": {
-      "title": "Gå igenom din ställning"
+      "title": "Gå igenom din ställning",
+      "viewLabel": "Resultatvy",
+      "view": {
+        "side": "Sida vid sida",
+        "overlay": "Ett bräde"
+      },
+      "yourBoard": "Ditt bräde",
+      "position": "Ställningen",
+      "yourBoardLabel": "Ditt bräde, med rätt och fel pjäser markerade",
+      "positionLabel": "Ställningen, med rätt och missade rutor markerade",
+      "legendCorrect": "Rätt",
+      "legendWrong": "Fel, på ditt bräde",
+      "legendMissed": "Missad, i ställningen"
     },
     "feedback": {
       "title": "Tack för att du spelade Memory Chess!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# stjärna} other {# stjärnor}}",
       "chooseRating": "Välj ett betyg i stjärnor.",
       "sendFailed": "Vi kunde inte skicka din återkoppling. Försök igen eller välj Inte nu.",
+      "rateLimited": "För många meddelanden från den här anslutningen. Försök igen om {minutes, plural, one {# minut} other {# minuter}}.",
       "send": "Skicka återkoppling",
       "sending": "Skickar ..."
     },
@@ -1126,6 +1179,7 @@
       "intro": "Studera {count, plural, one {# pjäs} other {# pjäser}} i {seconds} s och bygg sedan upp ställningen ur minnet.",
       "hide": "Dölj brädet",
       "restart": "Börja om",
+      "leave": "Lämna rundan",
       "again": "Spela igen",
       "submit": "Skicka in",
       "clear": "Töm brädet",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Nollställs kl. {utc} UTC",
       "resetsAt": "Nollställs kl. {utc} UTC ({local} hos dig), om {timeLeft}"
     },
+    "loading": "Läser in topplistan.",
     "mode": {
       "label": "Studieläge",
       "board": "Bräde",
@@ -1555,7 +1610,7 @@
         "desc": "Vilka rutor och linjer du missar mest, över alla rundor.",
         "aria": "Din andel missar på varje ruta. Mörkare missas oftare. Grå rutor har färre än {minimum} sedda pjäser.",
         "note": "Mörkare rutor missas oftare. Grå rutor har färre än {minimum} sedda pjäser.",
-        "lines": "Tills varje ruta har {minimum} sedda pjäser visar kartan hela linjer och rader.",
+        "lines": "Tills varje ruta har {minimum} sedda pjäser färgas varje ruta efter hela sin linje och rad.",
         "files": "Linjer",
         "ranks": "Rader",
         "line": "{line}: {missed} av {shown} missade",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} tim {minutes} min",
     "underMinute": "under en minut",
     "ready": "Dagens bräde · {pieceCount, plural, one {# pjäs} other {# pjäser}} · {seconds} s · {timeLeft} kvar",
+    "readyDetails": "{pieceCount, plural, one {# pjäs} other {# pjäser}} · {seconds} s · {timeLeft} kvar",
     "next": "Nästa bräde om {timeLeft}",
     "pending": "Dagens bräde",
     "navReady": "{label}, dagens bräde är redo",
@@ -1704,7 +1760,12 @@
     "play": "Spela dagens bräde",
     "tomorrowTitle": "Morgondagens bräde",
     "tomorrowOpens": "Öppnar om {timeLeft}.",
-    "seeToday": "Se dagens bräde"
+    "seeToday": "Se dagens bräde",
+    "remindButton": "Påminn mig varje dag",
+    "remindNote": "Laddar ned en kalenderhändelse som upprepas varje dag när brädet öppnar.",
+    "remindDone": "Sparat. Öppna filen för att lägga till den dagliga händelsen i din kalender.",
+    "remindTitle": "Memory Chess dagens bräde",
+    "remindDescription": "Ett nytt bräde öppnar varje dag vid midnatt UTC. Alla spelar samma bräde, och du får ett försök."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "4 till 16 tecken, visas tillsammans med ditt resultat.",
       "nameShort": "För kort. Använd minst 4 tecken.",
       "nameLong": "För långt. Använd högst 16 tecken.",
+      "nameBlocked": "Det namnet är inte tillåtet. Välj ett annat.",
       "country": "Land",
       "chooseCountry": "Välj ett land",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Dagens bräde kunde inte laddas. Försök igen om en stund.",
       "joinToRank": "Delta i brädet för att se din plats här.",
       "order": "Rankat efter rätta pjäser, sedan minst fel, sedan snabbast uppbyggnad.",
-      "all": "Se alla bräden"
+      "all": "Se alla bräden",
+      "todayBoard": "Dagens bräde",
+      "yesterdayBoard": "Gårdagens bräde",
+      "joinedToday": "Spelare som har deltagit i dagens bräde: {count}",
+      "joinedYesterday": "Spelare som deltog i gårdagens bräde: {count}",
+      "listFrom": "Topp 10 visas när {min} eller fler spelare har deltagit."
     },
     "reference": {
       "title": "Så fungerar dagens bräde",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Sammanställd statistik över återgivning från rundor som registrerats i Google Analytics publiceras för inställningar med tillräckligt många rundor och spelare.",
     "aboutLink": "Se minnesdata"
+  },
+  "learnTryIt": {
+    "title": "Prova här",
+    "intro": "En runda i den här storleken visar {pieces} pjäser i {seconds} s. Sedan placerar du dem ur minnet på ett tomt bräde. Här är en ställning i den storleken.",
+    "introBlindfold": "En runda i den här storleken visar dig {pieces} pjäser som notation i {seconds} s, utan pjäser på brädet. Sedan placerar du dem ur minnet på ett tomt bräde. Här är en ställning i den storleken, så som du skulle se den.",
+    "position": "Vit: {white}. Svart: {black}.",
+    "start": "Starta en runda med {pieces} pjäser",
+    "startBlindfold": "Starta en blindrunda med {pieces} pjäser"
   }
 }

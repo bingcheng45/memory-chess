@@ -20,6 +20,8 @@ function playerOf(stored: string | null): PlayerRating | null {
   }
 }
 
+export const isRatedReader = (stored: string | null): boolean => playerOf(stored) !== null;
+
 export const newReaderRound = (page: GameSettings & { readonly blindfold?: true }): GameSettings =>
   !page.blindfold && page.pieceCount <= 6 && page.memorizeTime >= 10 ? page : BEGINNER_ROUND;
 

@@ -16,7 +16,7 @@ export function HeaderStreakChip() {
 
   const label = t("streakChipLabel", { count: streak.current, forgiven: streak.forgivenDays.length });
   return (
-    <Link className="lab-streak-chip" href="/dashboard" title={label} aria-label={label}>
+    <Link className="lab-streak-chip" href="/dashboard" prefetch={false} title={label} aria-label={label}>
       {t("streakChip", { count: streak.current })}
     </Link>
   );

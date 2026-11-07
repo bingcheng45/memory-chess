@@ -1,6 +1,6 @@
 {
-  "sourceHash": "ed5900fc67a507f2bc6858c4b05f863518af1ee57068b365c72f051dd6d8a5f8",
-  "approvedHash": "f9f771fb4b08f1d1881be33b76fd180869574ea3b070ed41b334e5685e0c3782",
+  "sourceHash": "7a6a5cc4c19e4d13df022ea5da4918bf4217ba75d58f1116f994cc083ad6d985",
+  "approvedHash": "df4ae29dec06877473543741607870e7a9f9fa969e3931f96421361e642aeba4",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -52,6 +52,9 @@
           },
           {
             "p": "Bu araçlardan iletişim mesajlarının veya oyun görüşü yorumlarının içeriğini toplamalarını istemiyoruz."
+          },
+          {
+            "p": "Bir sayfa, içerik güvenliği ilkemizin (Content Security Policy) izin vermediği bir şeyi yüklemeye çalıştığında tarayıcınız kendi sunucumuza da rapor gönderir. Bir rapor, ihlal edilen yönergeyi, engellenen öğenin geldiği web sitesini, sorgu dizesi olmadan sayfa yolunu ve tarayıcı eklemişse engellenen betiğin ilk 80 karakterini saklar. IP adresi ve tarayıcı ayrıntılarını saklamaz. Bu raporları yalnızca siteyi güvenli ve çalışır durumda tutmak için kullanır ve 30 gün sonra sileriz."
           }
         ]
       },
@@ -75,6 +78,9 @@
           },
           {
             "p": "Google Analytics, bir ilerleme kartı sayfadan çıktığında lab_dashboard_share olayı, bir sonuç kartı çıktığında ise result_share olayı alır. Her biri yöntem olarak yalnızca kartın nasıl çıktığını belirtir: paylaşım menüsü için native, indirilen resim için download, kopyalanan resim için copy_image, kopyalanan açıklama için copy ya da bir ağın gönderi sayfası için post; bu durumda ağ x, facebook, linkedin, reddit, whatsapp, threads veya bluesky olarak adlandırılır. İki olay da kartın değerlerini, tahtalarını veya bağlantısını taşımaz."
+          },
+          {
+            "p": "Bugünün tahtasındaki “Her gün hatırlat” düğmesi, günlük bir takvim etkinliğini cihazına dosya olarak kaydeder ve bu dosya Memory Chess'e gönderilmez. Düğmeye bastığında Google Analytics bir reminder_set olayı alır. Bu olay yalnızca düğmenin nerede olduğunu surface olarak bildirir: result, dashboard veya daily. Saat dilimi, saat ve tahta içermez."
           },
           {
             "p": "Sıralamaya bir skor gönderdiğinde, bu cihazdaki yerel depolama, her zorluk seviyesindeki en iyi kaydın için sıralamanın o kayda verdiği kimliği de zorluk, ülke, skor ve gönderdiğin zamanla birlikte tutar. Yalnızca laboratuvar kaydında “Sıramı kontrol et” düğmesine bastığında tarayıcın o kayıt kimliğini, kaydın dünya genelinde mi yoksa kendi ülkesi içinde mi sıralanacağı bilgisiyle birlikte Memory Chess'e gönderir. Memory Chess kaydı sıralamadan okur ve sırasını ve kaç kayıt arasında sıralandığını yanıt olarak verir. Yanıt saklanmaz. Sıranın ne sıklıkla kontrol edilebileceğini sınırlamak için sunucu, her IP adresinden gelen kontrolleri bir dakika boyunca belleğinde sayar ve bir adresi, dakikası dolduktan sonraki ilk kontrolde bellekten çıkarır. Sıralamada kayıt artık yoksa kimliği bu cihazdan kaldırılır. Google Analytics, kayıt kimliği ve sıra içermeden, bir sıra kontrolü yapıldığını belirten bir olay alır."

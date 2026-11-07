@@ -68,4 +68,13 @@ describe("the leaderboard API by mode", () => {
     expect(jest.mocked(submitLeaderboardEntry).mock.calls.map(([entry]) => [entry.difficulty, "mode" in entry ? entry.mode : undefined])).toEqual([["medium", "blindfold"]]);
     expect(jest.mocked(getLeaderboard).mock.calls).toEqual([[{ difficulty: "hard", mode: "blindfold" }]]);
   });
+
+  it("holds a blindfold round to the same study floor as a board round", async () => {
+    process.env.NEXT_PUBLIC_BLINDFOLD_LEADERBOARD = "1";
+
+    const tooShort = await post({ ...ENTRY, mode: "blindfold", memorize_time: 0.599 });
+    const atFloor = await post({ ...ENTRY, mode: "blindfold", memorize_time: 0.6 });
+
+    expect([tooShort.status, await tooShort.json(), atFloor.status]).toEqual([400, { error: "A study of 6 pieces takes at least 0.6 seconds" }, 200]);
+  });
 });

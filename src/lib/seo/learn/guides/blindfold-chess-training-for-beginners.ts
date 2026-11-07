@@ -4,12 +4,16 @@ const guide: LearnDocument = {
   meta: {
     slug: "blindfold-chess-training-for-beginners",
     title: "Blindfold Chess Training for Beginners: 4 Stages",
+    searchTitle: "Blindfold Chess Training: 5-Week Plan + Trainer",
     h1: "How to learn blindfold chess in four stages, each with a pass mark",
     description: "Plan on about five weeks of blindfold chess training to a first full blind game. Drill 3 to 6 minutes a day for four weeks, then a game every other day.",
+    searchDescription:
+      "Blindfold chess training in about five weeks: 3 to 6 minutes of drills a day, a pass mark for each of four stages, and a free browser trainer to practise on.",
     group: "visualization",
     level: "improver",
     publishedAt: "2026-03-06T00:00:00.000Z",
-    updatedAt: "2026-10-20T00:00:00.000Z",
+    updatedAt: "2026-10-26T00:00:00.000Z",
+    practice: { href: "/blindfold", before: "Practise now in the free ", label: "blindfold chess trainer" },
     questions: [
       "How do I start playing blindfold chess?",
       "How long does it take to learn blindfold chess?",
@@ -40,6 +44,7 @@ const guide: LearnDocument = {
       "Players who can follow a game from notation with a board, but not without one.",
     ],
   },
+  tryIt: { memorizeTime: 15, blindfold: true },
   sections: [
     {
       id: "how-blindfold-chess-is-played",

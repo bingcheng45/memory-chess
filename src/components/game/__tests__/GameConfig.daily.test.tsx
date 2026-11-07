@@ -14,11 +14,11 @@ beforeEach(() => {
 afterEach(() => jest.useRealTimers());
 
 describe("GameConfig daily board link", () => {
-  it("sits directly under Start round and links to the daily page", () => {
+  it("sits directly under the Start round bar and links to the daily page", () => {
     render(<GameConfig />);
 
-    const start = screen.getByRole("button", { name: "Start round" });
-    expect(start.nextElementSibling).toBe(dailyLink());
+    const bar = screen.getByRole("button", { name: "Start round" }).closest("[data-start-bar]");
+    expect(bar?.nextElementSibling).toBe(dailyLink());
     expect(dailyLink()).toHaveAttribute("href", "/daily");
     expect(dailyLink()).toHaveClass("lab-btn-secondary");
   });

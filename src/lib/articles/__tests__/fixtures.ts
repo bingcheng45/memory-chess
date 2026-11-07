@@ -88,7 +88,7 @@ export function makeArticles(count: number): Article[] {
 }
 
 export function summaryOf(article: Article): ArticleSummary {
-  const { slug, publishedAt, title, description, person } = article;
+  const { slug, publishedAt, title, description, summary, person } = article;
   const { src, width, height, alt } = article.photo;
   return {
     slug,
@@ -96,6 +96,7 @@ export function summaryOf(article: Article): ArticleSummary {
     publishedLabel: formatArticleDate(publishedAt, "en"),
     title,
     description,
+    ...(summary === undefined ? {} : { summary }),
     person,
     photo: { src, width, height, alt },
   };

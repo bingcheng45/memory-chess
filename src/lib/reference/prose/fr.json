@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Réglages personnalisés",
-        "body": "Les deux curseurs se règlent indépendamment des niveaux prédéfinis. Le nombre de pièces va de {minPieces} à {maxPieces} et le temps de mémorisation de {minSeconds} à {maxSeconds} secondes. Le classement identifie une manche par son nombre de pièces : tout nombre différent des quatre valeurs prédéfinies en fait une partie personnalisée, et les parties personnalisées n'entrent pas au classement."
+        "body": "Les boutons − et + sous le plateau règlent le nombre de pièces et le temps indépendamment des niveaux prédéfinis. Le nombre de pièces va de {minPieces} à {maxPieces} et le temps de mémorisation de {minSeconds} à {maxSeconds} secondes. Le classement identifie une manche par son nombre de pièces : tout nombre différent des quatre valeurs prédéfinies en fait une partie personnalisée, et les parties personnalisées n'entrent pas au classement."
       }
     },
     "scoring": {

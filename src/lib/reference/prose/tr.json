@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Özel ayarlar",
-        "body": "İki kaydırıcı da seviyelerden bağımsız hareket eder. Taş sayısı {minPieces} ile {maxPieces} arasında, bakma süresi {minSeconds} ile {maxSeconds} saniye arasında değişir. Lider tablosu bir turu taş sayısına göre tanır, bu yüzden dört sabit sayının dışındaki her sayı turu özel oyun yapar ve özel oyunlar lider tablosuna girmez."
+        "body": "Tahtanın altındaki − ve + düğmeleri taş sayısını ve süreyi seviyelerden bağımsız olarak değiştirir. Taş sayısı {minPieces} ile {maxPieces} arasında, bakma süresi {minSeconds} ile {maxSeconds} saniye arasında değişir. Lider tablosu bir turu taş sayısına göre tanır, bu yüzden dört sabit sayının dışındaki her sayı turu özel oyun yapar ve özel oyunlar lider tablosuna girmez."
       }
     },
     "scoring": {

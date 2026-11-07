@@ -1,4 +1,4 @@
-import { supabase, supabaseWriter, SUPABASE_WRITES_OFF_REASON, checkSupabaseConnection } from '@/lib/supabase';
+import { supabase, counterWriter, SUPABASE_WRITES_OFF_REASON, checkSupabaseConnection } from '@/lib/supabase';
 
 export const DATABASE_CONNECTION_ISSUE = 'Database connection issue';
 
@@ -123,14 +123,15 @@ export async function incrementGameMetric(metricName: string, increment: number 
         error: `${DATABASE_CONNECTION_ISSUE}: ${connectionStatus.error || 'Unable to connect to the database'}`
       };
     }
-    if (!supabaseWriter) {
+    const writer = counterWriter();
+    if (!writer) {
       return {
         success: false,
         error: `${DATABASE_CONNECTION_ISSUE}: ${SUPABASE_WRITES_OFF_REASON}`
       };
     }
 
-    const { data, error } = await supabaseWriter
+    const { data, error } = await writer
       .rpc('increment_metric', {
         p_metric_name: metricName,
         p_increment: increment

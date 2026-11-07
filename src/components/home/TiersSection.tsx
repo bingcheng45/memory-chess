@@ -1,7 +1,5 @@
-"use client";
-
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link } from "./HomeLinks";
 import {
   MEMORIZE_SECONDS_RANGE,
   PIECE_COUNT_RANGE,

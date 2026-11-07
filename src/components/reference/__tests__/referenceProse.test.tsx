@@ -93,10 +93,11 @@ describe("game reference guide links", () => {
       link.textContent,
     ]);
 
-  it("links the English page to four guides with descriptive anchors", async () => {
+  it("links the English page to the rules guide and four training guides with descriptive anchors", async () => {
     const { container } = render(await GameReference({ locale: "en" }));
 
     expect(guideLinks(container)).toEqual([
+      ["/learn/how-to-play-memory-chess-board-game", "Read its rules"],
       ["/learn/chess-visualization-exercises", "chess visualization exercises"],
       ["/learn/blindfold-chess-training-for-beginners", "blindfold chess training plan"],
       ["/learn/chess-memory-training", "chess memory training ladder"],
@@ -104,9 +105,9 @@ describe("game reference guide links", () => {
     ]);
   });
 
-  it("leaves the English-only guide list off a translated page", async () => {
+  it("keeps only the rules guide on a translated page", async () => {
     const { container } = render(await GameReference({ locale: "de" }));
 
-    expect(guideLinks(container)).toEqual([]);
+    expect(guideLinks(container)).toEqual([["/learn/how-to-play-memory-chess-board-game", "Read its rules (English)"]]);
   });
 });

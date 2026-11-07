@@ -2,6 +2,8 @@ import { isTrackerAvailable, track } from "@databuddy/sdk";
 import type { DAILY_BOARD, LeaderboardDifficulty } from "@/types/leaderboard";
 import type { SearchOutcome } from "@/lib/seo/learn/search";
 import type { ShareNetwork } from "@/lib/shareIntents";
+import type { ResultView } from "@/lib/store/gameStore";
+import type { BeatId } from "@/lib/home/intro/introBeats";
 
 /** Where a round was started from. `link` is a round link that names no known source. */
 export const ROUND_SOURCES = [
@@ -10,6 +12,8 @@ export const ROUND_SOURCES = [
   "calibration",
   "calibration_cta",
   "guide_cta",
+  "guide_try",
+  "blindfold_page",
   "article_cta",
   "game_form",
   "tile_drill",
@@ -86,7 +90,14 @@ export type FunnelEvent =
         accuracy: number;
         round_source: RoundSource;
         round_mode?: RoundMode;
+        /** The result view the round was reviewed in. Sent by game rounds only; the homepage calibration has no toggle. */
+        result_view?: ResultView;
       };
+    }
+  /** The player switched the result screen between side by side and one board. */
+  | {
+      name: "result_view_select";
+      params: { result_view: ResultView };
     }
   | {
       name: "score_submit";
@@ -117,6 +128,25 @@ export type FunnelEvent =
       name: "lab_section_view";
       params: Record<string, never>;
     }
+  /** The home intro played by itself, on a first visit. Never why it did not play for anyone else. */
+  | {
+      name: "home_intro_shown";
+      params: Record<string, never>;
+    }
+  /** The home intro played again from the hero's replay link. */
+  | {
+      name: "home_intro_replayed";
+      params: Record<string, never>;
+    }
+  /** Skip or Esc ended the intro, at this beat. */
+  | {
+      name: "home_intro_skipped";
+      params: { beat: BeatId; play: IntroPlay };
+    }
+  | {
+      name: "home_intro_completed";
+      params: { play: IntroPlay };
+    }
   | {
       name: "lab_panel_action";
       params: { panel: LabPanel; action: LabPanelAction };
@@ -144,7 +174,18 @@ export type FunnelEvent =
   | {
       name: "affiliate_click";
       params: { store: "amazon" };
+    }
+  /** The daily board's calendar file was downloaded. Only where the button was, never the visitor's time zone. */
+  | {
+      name: "reminder_set";
+      params: { surface: ReminderSurface };
     };
+
+/** Where a reminder button sits: under the result screen's tomorrow line, on the dashboard, or on /daily. */
+export type ReminderSurface = "result" | "dashboard" | "daily";
+
+/** Whether an intro event belongs to the first-visit play or to a replay. */
+export type IntroPlay = "first" | "replay";
 
 export type LearnSearchSurface = "hub" | "server";
 
@@ -185,4 +226,10 @@ export function trackEvent(event: FunnelEvent): void {
   // The tracker loads only on production; without it, track() would queue the call and poll for the script.
   const mirrored = databuddyEvent(event);
   if (mirrored && isTrackerAvailable()) track(...mirrored);
+}
+
+/** Keeps the player's result view on every later GA4 event, so reports can split any event by it. */
+export function rememberResultView(resultView: ResultView): void {
+  if (typeof window === "undefined" || typeof window.gtag !== "function") return;
+  window.gtag("set", "user_properties", { result_view: resultView });
 }

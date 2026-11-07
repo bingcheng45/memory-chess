@@ -1,6 +1,7 @@
 "use client";
 
 import { useFormatter, useTranslations } from "next-intl";
+import { RemindMe } from "@/components/daily/RemindMe";
 import { Link } from "@/i18n/navigation";
 import { BETTER_WHEN, type DashboardTile, type DashboardTileId, type DashboardUnit, type Rig, type Trend } from "@/lib/lab/dashboard";
 import { LAB_THRESHOLDS, type Need } from "@/lib/lab/readiness";
@@ -63,7 +64,10 @@ function TileBody({ tile }: { tile: DashboardTile }) {
         <>
           <p className="lab-tile-need">{needText(tile.need, tile.rig)}</p>
           {tile.href === null ? (
-            <p className="lab-tile-note">{t("tomorrow")}</p>
+            <>
+              <p className="lab-tile-note">{t("tomorrow")}</p>
+              <RemindMe surface="dashboard" />
+            </>
           ) : (
             <Link className="lab-tile-go" href={tile.href}>
               {tile.rig ? t("playAt", tile.rig) : t("play")} →

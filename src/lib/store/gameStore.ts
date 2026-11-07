@@ -10,7 +10,7 @@ import {
   type GameSettings,
 } from '@/lib/game/configPrefill';
 import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
-import { trackEvent, type RoundSource } from '@/lib/analytics/events';
+import { rememberResultView, trackEvent, type RoundSource } from '@/lib/analytics/events';
 import type { LabRound } from '@/lib/lab/recordRound';
 import { now as monotonicNow } from '@/lib/game/clock';
 import {
@@ -27,6 +27,7 @@ import {
 } from "@/lib/game/rating";
 import { outcomeEffects, roundOutcomeOf } from "@/lib/game/roundOutcome";
 import { localDayOf } from "@/lib/lab/record";
+import { prefersImported, type PlayerStanding } from "@/lib/lab/transfer";
 import {
   IDLE_ROUND,
   labPositionFromFen,
@@ -67,6 +68,10 @@ export { WIN_ACCURACY };
 
 const isRecord = (value: unknown): value is Record<string, unknown> => typeof value === 'object' && value !== null;
 
+/** How the result screen shows a scored round: the player's board beside the position, or both on one board. */
+export type ResultView = 'side' | 'overlay';
+const parseResultView = (value: unknown): ResultView => (value === 'overlay' ? 'overlay' : 'side');
+
 interface GameStore {
   gameState: GameState;
   lastSettings: GameSettings | null;
@@ -77,6 +82,8 @@ interface GameStore {
   certainty: Omit<PlayerRating, 'rating'>;
   /** The round being played, run by the shared round reducer. Never persisted. */
   round: RoundState;
+  resultView: ResultView;
+  setResultView: (view: ResultView) => void;
 
   startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard, blindfold?: boolean) => void;
   /** Sets a board out behind its Start button; the round studies on endCountdown. */
@@ -90,6 +97,8 @@ interface GameStore {
   /** Scores the round; resolves once the lab record has kept it, to whether it did. */
   submitSolution: (now?: number) => Promise<boolean>;
   resetGame: () => void;
+  /** Takes an imported standing over the device's when it rests on more rated rounds; resolves to whether it did. */
+  restoreStanding: (imported: PlayerStanding) => boolean;
 
   getSkillRating: () => number;
   getCurrentStreak: () => number;
@@ -124,6 +133,12 @@ export const ratedFactsOf = (history: readonly Pick<GameHistory, 'facts'>[]): Ra
     const parsed = parseRatedRoundFacts(facts);
     return parsed ? [parsed] : [];
   });
+
+export const standingOf = ({ gameState, certainty }: Pick<GameStore, 'gameState' | 'certainty'>): PlayerStanding => ({
+  skillRating: gameState.skillRating ?? START_RATING,
+  streak: gameState.streak || 0,
+  certainty,
+});
 
 export const playerRatingOf = ({ gameState, certainty }: Pick<GameStore, 'gameState' | 'certainty'>): PlayerRating => ({
   rating: gameState.skillRating ?? START_RATING,
@@ -188,6 +203,14 @@ export const useGameStore = create<GameStore>()(
       certainty: { rd: NEW_PLAYER.rd, rounds: NEW_PLAYER.rounds },
       lastSettings: null,
       round: IDLE_ROUND,
+      resultView: 'side',
+
+      setResultView: (resultView) => {
+        if (resultView === get().resultView) return;
+        set({ resultView });
+        rememberResultView(resultView);
+        trackEvent({ name: 'result_view_select', params: { result_view: resultView } });
+      },
 
       startGame: (pieceCount, memorizeTime, source, board, blindfold) => {
         const generated = board ? null : generateMemorizationPosition(pieceCount);
@@ -260,6 +283,16 @@ export const useGameStore = create<GameStore>()(
       },
 
       dispatch: (action) => set({ round: roundReducer(get().round, action) }),
+
+      restoreStanding: (imported) => {
+        const state = get();
+        if (!prefersImported(standingOf(state), imported)) return false;
+        set({
+          gameState: { ...state.gameState, skillRating: imported.skillRating, streak: imported.streak },
+          certainty: imported.certainty,
+        });
+        return true;
+      },
 
       resetGame: () => {
         // Preserve skill rating and streak when resetting
@@ -389,6 +422,7 @@ export const useGameStore = create<GameStore>()(
           certainty: 'player' in rating ? { rd: rating.player.rd, rounds: rating.player.rounds } : certainty,
         }));
 
+        rememberResultView(get().resultView);
         trackEvent({
           name: 'round_complete',
           params: {
@@ -398,6 +432,7 @@ export const useGameStore = create<GameStore>()(
             accuracy: score.accuracy,
             round_source: gameState.startSource ?? 'link',
             ...modeParam(playing.config.blindfold),
+            result_view: get().resultView,
           },
         });
 
@@ -445,6 +480,7 @@ export const useGameStore = create<GameStore>()(
         lastSettings: state.lastSettings,
         freeSkipDay: state.freeSkipDay,
         certainty: state.certainty,
+        resultView: state.resultView,
       }),
       // localStorage is user-editable and outlives app versions, so a stored
       // value that would put the configuration form out of range is dropped.
@@ -464,6 +500,7 @@ export const useGameStore = create<GameStore>()(
           lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
           freeSkipDay: parseLocalDay(stored.freeSkipDay),
           certainty: parseCertainty(stored.certainty),
+          resultView: parseResultView(stored.resultView),
         };
       },
     }

@@ -9,8 +9,6 @@ import { aboutSchema } from "@/lib/seo/aboutSchema";
 import { pageMetadata } from "@/lib/seo/pageMetadata";
 import { getTotalPlays } from "@/lib/services/totalPlays";
 
-export const revalidate = 3600;
-
 type PageProps = { readonly params: Promise<{ locale: string }> };
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {

@@ -12,11 +12,12 @@ const ROUTES = [
   "GET /api/game-stats",
   "POST /api/game-stats",
   "POST /api/articles/stats",
+  "POST /api/csp-report",
 ] as const;
 
 export type ServerErrorRoute = (typeof ROUTES)[number];
 
-export type ServerErrorKind = "unavailable" | "failed" | "unexpected";
+export type ServerErrorKind = "unavailable" | "failed" | "unexpected" | "violation";
 
 type Detail = Readonly<Record<string, string | number | boolean>>;
 

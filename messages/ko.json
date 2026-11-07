@@ -5,6 +5,7 @@
       "articles": "기사",
       "about": "소개",
       "changelog": "업데이트 소식",
+      "blindfold": "블라인드 체스",
       "contactUs": "문의하기",
       "privacy": "개인정보",
       "terms": "이용약관",
@@ -560,7 +561,8 @@
           "line": "{line}: {shown}개 중 {missed}개 놓침",
           "lineThin": "{line}: {shown}개 확인, 읽기에는 부족",
           "realAria": "칸별로 놓친 비율. 회색 칸은 본 기물이 10개 미만입니다.",
-          "realNote": "진할수록 더 자주 놓친 칸입니다. 회색은 본 기물이 10개 미만입니다."
+          "realNote": "진할수록 더 자주 놓친 칸입니다. 회색은 본 기물이 10개 미만입니다.",
+          "lines": "모든 칸에서 말을 10개씩 볼 때까지 각 칸은 해당 파일과 랭크 전체의 결과로 색칠됩니다."
         },
         "daily": {
           "fig": "그림 {number} · 오늘의 보드",
@@ -844,6 +846,7 @@
           "overCap": "5,000라운드 한도를 지키기 위해 오래된 {count, plural, other {#라운드}}를 제외했습니다.",
           "summaryIgnored": "이 브라우저에 이미 라운드가 있어서, 파일의 누적 합계는 쓰지 않고 새 라운드만 합쳤습니다.",
           "summaryDropped": "파일의 누적 합계를 읽을 수 없거나 이전 버전의 것이어서, 라운드만 가져왔습니다.",
+          "playerRestored": "레이팅과 연승 기록을 복원했습니다.",
           "safari": "Safari의 비공개 탭은 닫으면 이 기록을 남기지 않으며, Safari는 약 7일 동안 방문하지 않은 사이트의 저장 데이터를 지웁니다. 사본을 내보내 보관하세요.",
           "unavailable": "비공개 창에서는 저장되지 않습니다. 이 브라우저 창은 라운드를 보관하지 않습니다.",
           "backup": "기기 간 백업(준비 중)",
@@ -940,6 +943,21 @@
         "capped": "이 기기에서 오늘의 복습 {cap}개를 마쳤습니다.",
         "cappedNext": "아직 복습할 보드는 내일, 가장 오래 기다린 것부터 돌아옵니다.",
         "schedule": "80% 미만으로 끝난 보드는 처음 본 날로부터 1일, 3일, 7일, 14일 뒤에 돌아옵니다."
+      },
+      "intro": {
+        "label": "45판 인트로",
+        "skip": "인트로 건너뛰기",
+        "replay": "나이도르프의 45판",
+        "counter": "{count, plural, other {#판}}",
+        "counterDark": "{count, plural, other {#판}} · 하나도 보지 않음",
+        "one": "보드 하나. <em>눈에 보입니다.</em>",
+        "oneNote": "모피의 오페라 게임, 파리, 1858년. 모든 수가 실제 기보입니다.",
+        "many": "이제 <em>마흔다섯.</em>",
+        "manyNote": "상파울루, 1947년 1월. 미겔 나이도르프가 마흔다섯 명을 동시에 상대했습니다.",
+        "dark": "그는 <em>하나도 보지 않았습니다.</em>",
+        "darkNote": "23시간 넘게 눈을 가린 채 두며 모든 수에 기억만으로 답했습니다. 39판을 이겼습니다.",
+        "you": "<em>하나부터</em> 시작하세요.",
+        "youNote": "몇 초 동안 포지션을 보세요. 보드가 어두워지면 기억으로 다시 놓습니다."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "최대 <num>+{value}</num>",
         "loss": "최대 <num>−{value}</num>",
         "announce": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}. 실패하면 최대 −{loss}.",
-        "announceProvisional": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}."
+        "announceProvisional": "보드 레이팅 {board}. 내 레이팅 {rating}. 예상 정확도 {expected}%. 성공하면 최대 +{gain}.",
+        "summary": "보드 {board} · 예상 {expected}%",
+        "expect": "예상 {expected}%",
+        "details": "레이팅 세부 정보"
       },
       "blindfold": "블라인드",
-      "blindfoldHint": "보드에 기물 없이 기보로 포지션을 익히세요."
+      "blindfoldHint": "보드에 기물 없이 기보로 포지션을 익히세요.",
+      "presetShort": {
+        "easy": "쉬움",
+        "medium": "보통",
+        "hard": "어려움",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "기물 줄이기",
+      "morePieces": "기물 늘리기",
+      "lessTime": "암기 시간 줄이기",
+      "moreTime": "암기 시간 늘리기",
+      "boardPreview": "보드 미리보기. 보드 위 기물: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "쉬움",
-        "description": "킹만 — 시작하기에 딱 좋습니다"
+        "description": "킹만 - 시작하기에 딱 좋습니다"
       },
       "medium": {
         "label": "보통",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "정확도",
       "piecesCorrectCaption": "개 기물 정답",
+      "summary": "{correct} / {total} 정답 · 오답 {wrong} · 배치 {seconds}초",
       "piecesCorrect": "맞힌 기물",
       "memorizationTime": "암기 시간",
       "solutionTime": "풀이 시간",
@@ -1051,15 +1085,25 @@
       "tryAgain": "다시 하기",
       "nextRound": "다음 라운드",
       "changeSettings": "설정 변경",
-      "moreOptions": "더 보기",
       "tileDrill": "내 수준에 맞춘 이 연습",
       "tileDrillWhy": "내 수준에 맞춰, 글에서 설명하는 내용을 연습할 수 있어요.",
-      "submitToLeaderboard": "리더보드에 등록",
-      "leaderboardQualifies": "이 점수면 리더보드에 오릅니다. 사라지기 전에 등록하세요.",
+      "personalBest": "이 난이도의 개인 최고 기록입니다. 기록으로 남기세요.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}%면 리더보드에 오릅니다.",
+        "open": "{difficulty}: {accuracy}%가 몇 위인지 확인해 보세요.",
+        "claim": "자리 차지",
+        "submit": "제출",
+        "claimed": "리더보드에 올랐습니다: {difficulty}, {accuracy}%.",
+        "rank": "{difficulty}: {total, number}명 중 {rank, number}위",
+        "seeBoard": "리더보드 보기"
+      },
       "viewLeaderboard": "리더보드 보기",
       "dialog": {
         "submitTitle": "리더보드에 등록",
-        "submitDescription": "리더보드에 표시할 이름을 입력하세요.",
+        "submitDescription": "이름을 정하세요. 등록하면 바로 순위가 보입니다.",
+        "rankLoading": "순위를 찾는 중…",
+        "rankWorld": "전 세계 {total, number}명 중 {rank, number}위",
+        "rankCountry": "{country} {total, number}명 중 {rank, number}위",
         "successTitle": "점수가 등록되었습니다!",
         "successDescription": "점수가 리더보드에 성공적으로 등록되었습니다.",
         "playerName": "플레이어 이름",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Memory Chess {date} 데일리 보드에서 기물 {total, number}개 중 {correct, number}개({accuracy})를 기억했어요.} review {Memory Chess 복습 보드에서 기물 {total, number}개 중 {correct, number}개({accuracy})를 기억했어요.} other {Memory Chess에서 기물 {total, number}개 중 {correct, number}개({accuracy})를 기억했어요.}} 이길 수 있나요?",
         "alt": "Memory Chess 결과 카드: {details}."
       },
-      "savedToast": {
-        "message": "라운드가 저장됐어요. 업데이트된 기록은 바로 아래에 있어요.",
-        "action": "보기"
-      },
       "blindfoldRound": "블라인드 라운드: 포지션을 기보로 익혔습니다."
     },
     "comparison": {
-      "title": "내 국면 되돌아보기"
+      "title": "내 국면 되돌아보기",
+      "viewLabel": "결과 보기 방식",
+      "view": {
+        "side": "나란히 보기",
+        "overlay": "겹쳐 보기"
+      },
+      "yourBoard": "내 체스판",
+      "position": "원래 국면",
+      "yourBoardLabel": "내 체스판, 정답과 잘못 놓은 기물 표시",
+      "positionLabel": "원래 국면, 정답과 놓친 칸 표시",
+      "legendCorrect": "정답",
+      "legendWrong": "잘못 배치, 내 체스판",
+      "legendMissed": "놓친 칸, 원래 국면"
     },
     "feedback": {
       "title": "Memory Chess를 플레이해 주셔서 감사합니다!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, other {별 #개}}",
       "chooseRating": "별점을 선택해 주세요.",
       "sendFailed": "의견을 보내지 못했습니다. 다시 시도하시거나 ‘나중에’를 선택해 주세요.",
+      "rateLimited": "이 연결에서 보낸 메시지가 너무 많습니다. {minutes, plural, other {#분}} 후에 다시 시도해 주세요.",
       "send": "의견 보내기",
       "sending": "보내는 중…"
     },
@@ -1126,6 +1179,7 @@
       "intro": "기물 {count}개를 {seconds}초 동안 외운 뒤, 기억으로 배치를 다시 만드세요.",
       "hide": "보드 가리기",
       "restart": "다시 시작",
+      "leave": "라운드 나가기",
       "again": "다시 하기",
       "submit": "제출",
       "clear": "보드 비우기",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "UTC {utc}에 초기화",
       "resetsAt": "UTC {utc}(현지 시간 {local})에 초기화, {timeLeft} 남음"
     },
+    "loading": "순위표를 불러오는 중입니다.",
     "mode": {
       "label": "학습 방식",
       "board": "보드",
@@ -1555,7 +1610,7 @@
         "desc": "모든 라운드를 통틀어 가장 자주 놓친 칸과 줄입니다.",
         "aria": "칸별로 놓친 비율. 어두울수록 더 자주 놓쳤습니다. 회색 칸은 본 말이 {minimum}개 미만입니다.",
         "note": "어두운 칸일수록 더 자주 놓친 칸입니다. 회색 칸은 본 말이 {minimum}개 미만입니다.",
-        "lines": "모든 칸에서 말을 {minimum}개씩 볼 때까지 지도는 파일과 랭크 단위로 읽습니다.",
+        "lines": "모든 칸에서 말을 {minimum}개씩 볼 때까지 각 칸은 해당 파일과 랭크 전체의 결과로 색칠됩니다.",
         "files": "파일",
         "ranks": "랭크",
         "line": "{line}: {shown}개 중 {missed}개 놓침",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours}시간 {minutes}분",
     "underMinute": "1분 미만",
     "ready": "오늘의 보드 · 기물 {pieceCount}개 · {seconds}초 · {timeLeft} 남음",
+    "readyDetails": "기물 {pieceCount}개 · {seconds}초 · {timeLeft} 남음",
     "next": "다음 보드까지 {timeLeft}",
     "pending": "오늘의 보드",
     "navReady": "{label}, 오늘의 데일리 보드가 준비됐어요",
@@ -1704,7 +1760,12 @@
     "play": "오늘의 보드 플레이",
     "tomorrowTitle": "내일의 보드",
     "tomorrowOpens": "{timeLeft} 후에 열립니다.",
-    "seeToday": "오늘의 보드 보기"
+    "seeToday": "오늘의 보드 보기",
+    "remindButton": "매일 알림 받기",
+    "remindNote": "보드가 열리는 시간에 매일 반복되는 캘린더 일정을 내려받습니다.",
+    "remindDone": "저장했습니다. 파일을 열어 매일 일정을 캘린더에 추가하세요.",
+    "remindTitle": "Memory Chess 데일리 보드",
+    "remindDescription": "새 보드는 매일 UTC 자정에 열립니다. 모두가 같은 보드를 플레이하며, 기회는 한 번입니다."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "4~16자, 점수와 함께 표시됩니다.",
       "nameShort": "너무 짧습니다. 4자 이상 입력하세요.",
       "nameLong": "너무 깁니다. 16자 이하로 입력하세요.",
+      "nameBlocked": "이 이름은 사용할 수 없습니다. 다른 이름을 선택해 주세요.",
       "country": "국가",
       "chooseCountry": "국가 선택",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "오늘의 보드를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.",
       "joinToRank": "보드에 참가하면 여기에 내 순위가 표시됩니다.",
       "order": "맞힌 기물 수, 오답이 적은 순, 빠른 배치 순으로 순위가 정해집니다.",
-      "all": "모든 보드 보기"
+      "all": "모든 보드 보기",
+      "todayBoard": "오늘의 보드",
+      "yesterdayBoard": "어제의 보드",
+      "joinedToday": "오늘의 보드에 참가한 플레이어: {count}명",
+      "joinedYesterday": "어제의 보드에 참가한 플레이어: {count}명",
+      "listFrom": "{min}명 이상이 참가하면 TOP 10이 표시됩니다."
     },
     "reference": {
       "title": "데일리 보드는 이렇게 진행돼요",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Google Analytics에 기록된 라운드를 바탕으로, 라운드와 플레이어 수가 충분한 설정에 대해 기억 정확도 집계 통계를 공개합니다.",
     "aboutLink": "기억 데이터 보기"
+  },
+  "learnTryIt": {
+    "title": "여기서 해 보기",
+    "intro": "이 크기의 라운드는 기물 {pieces}개를 {seconds}초 동안 보여 줍니다. 그다음 빈 보드에 기억으로 배치합니다. 이 크기의 포지션 예시입니다.",
+    "introBlindfold": "이 크기의 라운드는 기물 {pieces}개를 기보로 {seconds}초 동안 보여 주며, 보드 위에는 기물이 없습니다. 그다음 빈 보드에 기억으로 배치합니다. 보게 될 모습 그대로의 이 크기 포지션 예시입니다.",
+    "position": "백: {white}. 흑: {black}.",
+    "start": "기물 {pieces}개 라운드 시작",
+    "startBlindfold": "기물 {pieces}개 블라인드 라운드 시작"
   }
 }

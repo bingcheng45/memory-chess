@@ -5,6 +5,7 @@
       "articles": "Artikelen",
       "about": "Over",
       "changelog": "Nieuw",
+      "blindfold": "Blindschaken",
       "contactUs": "Contact",
       "privacy": "Privacy",
       "terms": "Voorwaarden",
@@ -316,7 +317,7 @@
           "study": {
             "name": "Bekijken",
             "title": "Elf stukken, tien seconden.",
-            "body": "De slotstelling van Kasparovs Onsterfelijke, na 44.Qa7. Hier gaf Topalov op. Neem het hele bord in je op, niet veld voor veld. In de experimenten van de Groot reconstrueerden meesters een kort getoonde partijstelling veel beter dan zwakkere spelers.",
+            "body": "De slotstelling van Kasparovs Onsterfelijke, na 44.Qa7. Hier gaf Topalov op. Neem het hele bord in je op, niet veld voor veld. In de experimenten van De Groot reconstrueerden meesters een kort getoonde partijstelling veel beter dan zwakkere spelers.",
             "note": "Fig. Wit: koning c1, dame a7, pionnen f4, g3, h2. Zwart: koning e1, toren d2, pionnen c3, f5, g6, h7."
           },
           "anchors": {
@@ -560,7 +561,8 @@
           "line": "{line}: {missed} van {shown} gemist",
           "lineThin": "{line}: {shown} gezien, te weinig om te lezen",
           "realAria": "Je aandeel missers op elk veld. Grijze velden hebben minder dan 10 geziene stukken.",
-          "realNote": "Donkerder betekent vaker gemist. Grijs heeft minder dan 10 geziene stukken."
+          "realNote": "Donkerder betekent vaker gemist. Grijs heeft minder dan 10 geziene stukken.",
+          "lines": "Tot elk veld 10 geziene stukken heeft, krijgt elk veld de kleur van zijn hele lijn en rij."
         },
         "daily": {
           "fig": "Fig. {number} · Bord van de dag",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# oudere ronde is} other {# oudere rondes zijn}} weggelaten om binnen de limiet van 5.000 rondes te blijven.",
           "summaryIgnored": "Deze browser had al rondes, dus alleen nieuwe rondes zijn samengevoegd, niet de totalen uit het bestand.",
           "summaryDropped": "De totalen uit het bestand waren onleesbaar of van een oudere versie, dus alleen de rondes zijn geïmporteerd.",
+          "playerRestored": "Je rating en je reeks zijn hersteld.",
           "safari": "In Safari bewaart een privétabblad dit verslag niet nadat het sluit, en Safari wist de opgeslagen gegevens van een site na ongeveer 7 dagen zonder bezoek. Exporteer een kopie om het te bewaren.",
           "unavailable": "Niet opgeslagen in privévensters. Dit browservenster bewaart je rondes niet.",
           "backup": "Back-up tussen apparaten (binnenkort)",
@@ -940,6 +943,21 @@
         "capped": "De {cap} herhalingen van vandaag zijn op dit apparaat gedaan.",
         "cappedNext": "Elk bord dat nog klaarstaat, komt morgen terug, het langst wachtende eerst.",
         "schedule": "Borden waarop je onder de 80% scoort, komen 1, 3, 7 en 14 dagen nadat je ze voor het eerst zag terug."
+      },
+      "intro": {
+        "label": "De intro met 45 borden",
+        "skip": "Intro overslaan",
+        "replay": "De 45 borden van Najdorf",
+        "counter": "{count, plural, one {# bord} other {# borden}}",
+        "counterDark": "{count, plural, one {# bord} other {# borden}} · geen gezien",
+        "one": "Eén bord. <em>Je kunt het zien.</em>",
+        "oneNote": "Morphy's Operapartij, Parijs, 1858. Elke zet is echt.",
+        "many": "Nu <em>vijfenveertig.</em>",
+        "manyNote": "São Paulo, januari 1947. Miguel Najdorf tegen vijfenveertig tegenstanders tegelijk.",
+        "dark": "Hij zag <em>geen enkel bord.</em>",
+        "darkNote": "Hij speelde ruim 23 uur blind en beantwoordde elke zet uit het hoofd. Hij won er 39.",
+        "you": "Begin met <em>één.</em>",
+        "youNote": "Bekijk een stelling een paar seconden. Dan wordt hij donker en bouw jij hem weer op."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "Tot <num>+{value}</num>",
         "loss": "Hooguit <num>−{value}</num>",
         "announce": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}. Als het misgaat, hooguit −{loss}.",
-        "announceProvisional": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}."
+        "announceProvisional": "Rating van het bord {board}. Jouw rating {rating}. Verwachte nauwkeurigheid {expected}%. Als het lukt, tot +{gain}.",
+        "summary": "Bord {board} · verwacht {expected}%",
+        "expect": "verwacht {expected}%",
+        "details": "Ratingdetails"
       },
       "blindfold": "Blind",
-      "blindfoldHint": "Bestudeer de stelling als notatie, zonder stukken op het bord."
+      "blindfoldHint": "Bestudeer de stelling als notatie, zonder stukken op het bord.",
+      "presetShort": {
+        "easy": "Makkelijk",
+        "medium": "Middel",
+        "hard": "Moeilijk",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Minder stukken",
+      "morePieces": "Meer stukken",
+      "lessTime": "Minder kijktijd",
+      "moreTime": "Meer kijktijd",
+      "boardPreview": "Voorbeeld van het bord. Stukken op het bord: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Makkelijk",
-        "description": "Alleen de koningen – ideaal om te beginnen"
+        "description": "Alleen de koningen - ideaal om te beginnen"
       },
       "medium": {
         "label": "Gemiddeld",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Nauwkeurigheid",
       "piecesCorrectCaption": "stukken goed",
+      "summary": "{correct} / {total} goed · {wrong} fout · opgebouwd in {seconds} s",
       "piecesCorrect": "Goede stukken",
       "memorizationTime": "Kijktijd",
       "solutionTime": "Oplostijd",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Opnieuw",
       "nextRound": "Volgende ronde",
       "changeSettings": "Instellingen wijzigen",
-      "moreOptions": "Meer opties",
       "tileDrill": "Deze oefening op jouw niveau",
       "tileDrillWhy": "Afgestemd op jouw niveau, om te oefenen wat het artikel beschrijft.",
-      "submitToLeaderboard": "Naar de ranglijst sturen",
-      "leaderboardQualifies": "Je score haalt de ranglijst. Stuur hem in voordat het te laat is.",
+      "personalBest": "Nieuw persoonlijk record op dit niveau. Zet het op de lijst.",
+      "claimLine": {
+        "qualifies": "{difficulty}: {accuracy}% zou de ranglijst halen.",
+        "open": "{difficulty}: kijk waar {accuracy}% eindigt.",
+        "claim": "Claim je plek",
+        "submit": "Verstuur",
+        "claimed": "Op de ranglijst: {difficulty}, {accuracy}%.",
+        "rank": "Je staat #{rank, number} van {total, number} ({difficulty})",
+        "seeBoard": "Bekijk de ranglijst"
+      },
       "viewLeaderboard": "Bekijk de ranglijst",
       "dialog": {
         "submitTitle": "Naar de ranglijst sturen",
-        "submitDescription": "Vul de naam in die op de ranglijst komt te staan.",
+        "submitDescription": "Kies een naam. Je ziet je plek meteen daarna.",
+        "rankLoading": "Je plek wordt opgezocht…",
+        "rankWorld": "#{rank, number} van {total, number} wereldwijd",
+        "rankCountry": "#{rank, number} van {total, number} in {country}",
         "successTitle": "Score verstuurd!",
         "successDescription": "Je score is toegevoegd aan de ranglijst.",
         "playerName": "Spelersnaam",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) op het dagbord van Memory Chess van {date}.} review {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) op een herhalingsbord van Memory Chess.} other {Ik onthield {correct, number} van de {total, number} stukken ({accuracy}) bij Memory Chess.}} Kun jij het beter?",
         "alt": "Resultaatkaart van Memory Chess: {details}."
       },
-      "savedToast": {
-        "message": "Ronde opgeslagen. Je bijgewerkte statistieken staan hieronder.",
-        "action": "Laat zien"
-      },
       "blindfoldRound": "Blinde ronde: je hebt de stelling als notatie bestudeerd."
     },
     "comparison": {
-      "title": "Bekijk je stelling terug"
+      "title": "Bekijk je stelling terug",
+      "viewLabel": "Resultaatweergave",
+      "view": {
+        "side": "Naast elkaar",
+        "overlay": "Eén bord"
+      },
+      "yourBoard": "Jouw bord",
+      "position": "De stelling",
+      "yourBoardLabel": "Jouw bord, met goede en foute stukken gemarkeerd",
+      "positionLabel": "De stelling, met goede en gemiste velden gemarkeerd",
+      "legendCorrect": "Goed",
+      "legendWrong": "Fout, op jouw bord",
+      "legendMissed": "Gemist, in de stelling"
     },
     "feedback": {
       "title": "Bedankt voor het spelen van Memory Chess!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# ster} other {# sterren}}",
       "chooseRating": "Kies een beoordeling in sterren.",
       "sendFailed": "We konden je reactie niet versturen. Probeer het opnieuw of kies Niet nu.",
+      "rateLimited": "Te veel berichten vanaf deze verbinding. Probeer het over {minutes, plural, one {# minuut} other {# minuten}} opnieuw.",
       "send": "Reactie versturen",
       "sending": "Versturen…"
     },
@@ -1126,6 +1179,7 @@
       "intro": "Prent {count, plural, one {# stuk} other {# stukken}} in {seconds} s in en zet de stelling daarna uit je hoofd terug.",
       "hide": "Bord verbergen",
       "restart": "Opnieuw",
+      "leave": "Ronde verlaten",
       "again": "Nog een keer",
       "submit": "Verstuur",
       "clear": "Bord leegmaken",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Reset om {utc} UTC",
       "resetsAt": "Reset om {utc} UTC ({local} bij jou), over {timeLeft}"
     },
+    "loading": "Ranglijst wordt geladen.",
     "mode": {
       "label": "Studiemodus",
       "board": "Bord",
@@ -1555,7 +1610,7 @@
         "desc": "Welke velden en lijnen je het vaakst mist, over alle rondes.",
         "aria": "Je aandeel missers op elk veld. Donkerder wordt vaker gemist. Grijze velden hebben minder dan {minimum} geziene stukken.",
         "note": "Donkerdere velden worden vaker gemist. Grijze velden hebben minder dan {minimum} geziene stukken.",
-        "lines": "Tot elk veld {minimum} geziene stukken heeft, leest de kaart hele lijnen en rijen.",
+        "lines": "Tot elk veld {minimum} geziene stukken heeft, krijgt elk veld de kleur van zijn hele lijn en rij.",
         "files": "Lijnen",
         "ranks": "Rijen",
         "line": "{line}: {missed} van {shown} gemist",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} u {minutes} min",
     "underMinute": "minder dan een minuut",
     "ready": "Bord van vandaag · {pieceCount, plural, one {# stuk} other {# stukken}} · {seconds} s · nog {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# stuk} other {# stukken}} · {seconds} s · nog {timeLeft}",
     "next": "Volgend bord over {timeLeft}",
     "pending": "Bord van vandaag",
     "navReady": "{label}, het dagelijkse bord van vandaag staat klaar",
@@ -1704,7 +1760,12 @@
     "play": "Speel het bord van vandaag",
     "tomorrowTitle": "Bord van morgen",
     "tomorrowOpens": "Opent over {timeLeft}.",
-    "seeToday": "Bekijk het bord van vandaag"
+    "seeToday": "Bekijk het bord van vandaag",
+    "remindButton": "Herinner me dagelijks",
+    "remindNote": "Downloadt een agenda-item dat zich elke dag herhaalt wanneer het bord opent.",
+    "remindDone": "Opgeslagen. Open het bestand om het dagelijkse item aan je agenda toe te voegen.",
+    "remindTitle": "Dagelijks bord van Memory Chess",
+    "remindDescription": "Een nieuw bord opent elke dag om middernacht UTC. Iedereen speelt hetzelfde bord en je hebt één poging."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "4 tot 16 tekens, wordt getoond bij je score.",
       "nameShort": "Te kort. Gebruik minstens 4 tekens.",
       "nameLong": "Te lang. Gebruik hoogstens 16 tekens.",
+      "nameBlocked": "Deze naam is niet toegestaan. Kies een andere naam.",
       "country": "Land",
       "chooseCountry": "Kies een land",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Het bord van vandaag kon niet worden geladen. Probeer het zo meteen opnieuw.",
       "joinToRank": "Doe mee met het bord om hier je plek te zien.",
       "order": "Gerangschikt op goede stukken, dan op minste fouten, dan op snelste nabouw.",
-      "all": "Bekijk alle borden"
+      "all": "Bekijk alle borden",
+      "todayBoard": "Bord van vandaag",
+      "yesterdayBoard": "Bord van gisteren",
+      "joinedToday": "Spelers die hebben meegedaan met het bord van vandaag: {count}",
+      "joinedYesterday": "Spelers die hebben meegedaan met het bord van gisteren: {count}",
+      "listFrom": "De top 10 verschijnt zodra {min} of meer spelers hebben meegedaan."
     },
     "reference": {
       "title": "Zo werkt het dagbord",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Geaggregeerde statistieken over onthouden uit rondes die in Google Analytics zijn vastgelegd, worden gepubliceerd voor instellingen met genoeg rondes en spelers.",
     "aboutLink": "Bekijk de geheugendata"
+  },
+  "learnTryIt": {
+    "title": "Probeer het hier",
+    "intro": "Een ronde van deze grootte toont {pieces} stukken gedurende {seconds} s. Daarna zet je ze uit het hoofd op een leeg bord. Hier is een stelling van die grootte.",
+    "introBlindfold": "Een ronde van deze grootte laat je {pieces} stukken als notatie zien gedurende {seconds} s, zonder stukken op het bord. Daarna zet je ze uit het hoofd op een leeg bord. Hier is een stelling van die grootte, zoals je hem zou zien.",
+    "position": "Wit: {white}. Zwart: {black}.",
+    "start": "Start een ronde met {pieces} stukken",
+    "startBlindfold": "Start een blinde ronde met {pieces} stukken"
   }
 }

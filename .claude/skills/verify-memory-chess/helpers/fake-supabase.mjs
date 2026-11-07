@@ -106,6 +106,7 @@ const CHECKS = [
     "skill_rating",
     (row) => Number.isInteger(row.skill_rating) && row.skill_rating >= 0 && row.skill_rating <= 5000,
   ],
+  ["check_memorize_time_floor", "memorize_time", (row) => Number(row.memorize_time) >= Math.max(0.3, row.piece_count * 0.1)],
   ["check_mode_known", "mode", (row) => row.mode === "board" || row.mode === "blindfold"],
   ["check_daily_board_mode", "mode", (row) => row.difficulty !== "daily" || row.mode === "board"],
 ].filter(([, column]) => has(column));
@@ -191,6 +192,8 @@ const COMPARE = {
   eq: (x, y) => String(x) === y,
   gt: (x, y) => x != null && Number(x) > Number(y),
   lt: (x, y) => x != null && Number(x) < Number(y),
+  gte: (x, y) => x != null && Number(x) >= Number(y),
+  lte: (x, y) => x != null && Number(x) <= Number(y),
 };
 
 function condition(column, test) {
@@ -280,7 +283,7 @@ createServer(async (req, res) => {
     return;
   }
   const filters = [...url.searchParams].filter(([key]) => !CONTROL_PARAMS.has(key));
-  const unsupported = filters.filter(([key, value]) => key !== "or" && !/^(eq|gt|lt)\./.test(value));
+  const unsupported = filters.filter(([key, value]) => key !== "or" && !/^(eq|gt|gte|lt|lte)\./.test(value));
   if (unsupported.length) {
     sendCannotAnswer(res, unsupported);
     return;

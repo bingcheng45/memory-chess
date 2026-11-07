@@ -153,6 +153,27 @@ describe("FirstGameFeedbackDialog", () => {
     expect(screen.getByRole("button", { name: "Send feedback" })).toBeEnabled();
   });
 
+  it.each([
+    ["125", "Too many messages from this connection. Please try again in 3 minutes."],
+    ["60", "Too many messages from this connection. Please try again in 1 minute."],
+    [null, "Too many messages from this connection. Please try again in 1 minute."],
+    ["soon", "Too many messages from this connection. Please try again in 1 minute."],
+  ])("tells the player when to retry after a 429 with Retry-After %s and keeps the typed text", async (retryAfter, message) => {
+    const headers = new Headers();
+    if (retryAfter !== null) headers.set("Retry-After", retryAfter);
+    jest.mocked(global.fetch).mockResolvedValueOnce({ ok: false, status: 429, headers } as Response);
+    openPrompt();
+    fireEvent.click(screen.getByRole("radio", { name: "4 stars" }));
+    fireEvent.change(screen.getByLabelText(/How did playing feel/i), { target: { value: "Keep this text." } });
+    fireEvent.click(screen.getByRole("button", { name: "Send feedback" }));
+
+    await waitFor(() => {
+      expect(screen.getByRole("alert")).toHaveTextContent(message);
+    });
+    expect(screen.getByLabelText(/How did playing feel/i)).toHaveValue("Keep this text.");
+    expect(screen.getByRole("button", { name: "Send feedback" })).toBeEnabled();
+  });
+
   it("falls back safely when local storage is unavailable", () => {
     jest.setSystemTime(new Date("2030-08-16T04:00:00.000Z"));
     jest.spyOn(Storage.prototype, "getItem").mockImplementation(() => {

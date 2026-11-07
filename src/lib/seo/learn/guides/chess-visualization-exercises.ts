@@ -4,6 +4,7 @@ const guide: LearnDocument = {
   meta: {
     slug: "chess-visualization-exercises",
     title: "Chess Visualization Training: See the Board",
+    searchTitle: "Chess Visualization Exercises: Test and Train",
     h1: "Chess visualization exercises that find and fix your weak spot",
     description: "Test your mental board with four 6-piece rounds at 10 seconds. Then spend 8 to 12 minutes a day on chess visualization exercises that target how it fails.",
     group: "visualization",

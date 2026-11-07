@@ -5,6 +5,7 @@
       "articles": "Cikkek",
       "about": "Névjegy",
       "changelog": "Újdonságok",
+      "blindfold": "Vakjátszma",
       "contactUs": "Kapcsolat",
       "privacy": "Adatvédelem",
       "terms": "Feltételek",
@@ -560,7 +561,8 @@
           "line": "{line}: {shown} közül {missed} elhibázva",
           "lineThin": "{line}: {shown} látva, ez még kevés",
           "realAria": "A hibaarányod mezőnként. A szürke mezőkön 10-nél kevesebb bábu volt látható.",
-          "realNote": "A sötétebb gyakoribb hibát jelent. A szürke mezőkön 10-nél kevesebb bábu volt látható."
+          "realNote": "A sötétebb gyakoribb hibát jelent. A szürke mezőkön 10-nél kevesebb bábu volt látható.",
+          "lines": "Amíg minden mezőn nem volt látható legalább 10 bábu, minden mező színe a teljes vonalát és sorát mutatja."
         },
         "daily": {
           "fig": "{number}. ábra · A nap táblája",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# régebbi kör kimaradt} other {# régebbi kör kimaradt}}, hogy a jegyzőkönyv az 5000 körös korláton belül maradjon.",
           "summaryIgnored": "Ebben a böngészőben már voltak körök, ezért csak az új körök kerültek be, a fájl összesített adatai nem.",
           "summaryDropped": "A fájl összesített adatai olvashatatlanok voltak vagy régebbi verzióból származnak, ezért csak a körei lettek importálva.",
+          "playerRestored": "Az értékelésed és a sorozatod visszaállt.",
           "safari": "Safariban a privát lap bezárás után nem őrzi meg ezt a jegyzőkönyvet, és a Safari nagyjából 7 nap látogatás nélkül törli a webhely tárolt adatait. Exportálj egy másolatot, hogy megmaradjon.",
           "unavailable": "Privát ablakban nem mentődik. Ez a böngészőablak nem őrzi meg a köreidet.",
           "backup": "Biztonsági mentés eszközök között (hamarosan)",
@@ -940,6 +943,21 @@
         "capped": "A mai {cap} ismétlés ezen az eszközön kész.",
         "cappedNext": "A még esedékes táblák holnap visszatérnek, a legrégebben várakozók elsőként.",
         "schedule": "Azok a táblák, amelyeken 80% alatt teljesítesz, az első megtekintés után 1, 3, 7 és 14 nappal visszatérnek."
+      },
+      "intro": {
+        "label": "A 45 táblás bevezető",
+        "skip": "Bevezető kihagyása",
+        "replay": "Najdorf 45 táblája",
+        "counter": "{count, plural, one {# tábla} other {# tábla}}",
+        "counterDark": "{count, plural, one {# tábla} other {# tábla}} · egyiket sem látta",
+        "one": "Egy tábla. <em>Látod.</em>",
+        "oneNote": "Morphy operaházi játszmája, Párizs, 1858. Minden lépés valódi.",
+        "many": "Most <em>negyvenöt.</em>",
+        "manyNote": "São Paulo, 1947 január. Miguel Najdorf negyvenöt ellenféllel szemben egyszerre.",
+        "dark": "Egyiket sem <em>látta.</em>",
+        "darkNote": "Több mint 23 órán át játszott vakon, minden lépésre fejből válaszolt. 39-et megnyert.",
+        "you": "Kezdd <em>eggyel.</em>",
+        "youNote": "Nézz meg egy állást néhány másodpercig. Aztán elsötétül, és te újraépíted."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "Legfeljebb <num>+{value}</num>",
         "loss": "Legfeljebb <num>−{value}</num>",
         "announce": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}. Ha nem sikerül, legfeljebb −{loss}.",
-        "announceProvisional": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}."
+        "announceProvisional": "A tábla pontszáma {board}. A te pontszámod {rating}. Várható pontosság {expected}%. Ha sikerül, legfeljebb +{gain}.",
+        "summary": "Tábla {board} · várható {expected}%",
+        "expect": "várható {expected}%",
+        "details": "A pontszám részletei"
       },
       "blindfold": "Vakon",
-      "blindfoldHint": "Az állást lejegyzésből jegyezd meg, bábuk nélkül a táblán."
+      "blindfoldHint": "Az állást lejegyzésből jegyezd meg, bábuk nélkül a táblán.",
+      "presetShort": {
+        "easy": "Könnyű",
+        "medium": "Közepes",
+        "hard": "Nehéz",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "Kevesebb bábu",
+      "morePieces": "Több bábu",
+      "lessTime": "Rövidebb memorizálási idő",
+      "moreTime": "Hosszabb memorizálási idő",
+      "boardPreview": "Táblaelőnézet. Bábuk a táblán: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Könnyű",
-        "description": "Csak a királyok – tökéletes az induláshoz"
+        "description": "Csak a királyok - tökéletes az induláshoz"
       },
       "medium": {
         "label": "Közepes",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Pontosság",
       "piecesCorrectCaption": "bábu helyesen",
+      "summary": "{correct} / {total} helyes · {wrong} hibás · kirakva {seconds} mp alatt",
       "piecesCorrect": "Helyes bábuk",
       "memorizationTime": "Memorizálási idő",
       "solutionTime": "Megoldási idő",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Újra",
       "nextRound": "Következő kör",
       "changeSettings": "Beállítások módosítása",
-      "moreOptions": "További lehetőségek",
       "tileDrill": "Ez a gyakorlat a te szintedre",
       "tileDrillWhy": "A te szintedhez igazítva, hogy gyakorolhasd, amit a cikk leír.",
-      "submitToLeaderboard": "Beküldés a ranglistára",
-      "leaderboardQualifies": "Az eredményed felfér a ranglistára. Küldd be, mielőtt lecsúszik.",
+      "personalBest": "Új egyéni csúcs ezen a szinten. Rögzítsd.",
+      "claimLine": {
+        "qualifies": "{difficulty}: felférsz a ranglistára ({accuracy}%).",
+        "open": "{difficulty}: nézd meg a helyed ({accuracy}%).",
+        "claim": "Foglald el a helyed",
+        "submit": "Beküldés",
+        "claimed": "A ranglistán: {difficulty}, {accuracy}%.",
+        "rank": "{rank, number}. helyen állsz a {total, number} közül ({difficulty})",
+        "seeBoard": "Ranglista megtekintése"
+      },
       "viewLeaderboard": "Ranglista megtekintése",
       "dialog": {
         "submitTitle": "Beküldés a ranglistára",
-        "submitDescription": "Add meg a nevet, amely a ranglistán megjelenik.",
+        "submitDescription": "Válassz nevet. A helyezésed rögtön utána látod.",
+        "rankLoading": "Helyezés keresése…",
+        "rankWorld": "{rank, number}. hely {total, number} közül a világon",
+        "rankCountry": "{rank, number}. hely {total, number} közül: {country}",
         "successTitle": "Eredmény beküldve!",
         "successDescription": "Az eredményed felkerült a ranglistára.",
         "playerName": "Játékos neve",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {{correct, number} / {total, number} bábut ({accuracy}) jegyeztem meg a Memory Chess {date} napi tábláján.} review {{correct, number} / {total, number} bábut ({accuracy}) jegyeztem meg egy Memory Chess ismétlőtáblán.} other {{correct, number} / {total, number} bábut ({accuracy}) jegyeztem meg a Memory Chessben.}} Meg tudod verni?",
         "alt": "Memory Chess eredménykártya: {details}."
       },
-      "savedToast": {
-        "message": "A kör elmentve. A frissített statisztikáid közvetlenül lent vannak.",
-        "action": "Mutasd"
-      },
       "blindfoldRound": "Vakkör: az állást lejegyzésből jegyezted meg."
     },
     "comparison": {
-      "title": "Nézd át az állásodat"
+      "title": "Nézd át az állásodat",
+      "viewLabel": "Eredménynézet",
+      "view": {
+        "side": "Egymás mellett",
+        "overlay": "Egy tábla"
+      },
+      "yourBoard": "A te táblád",
+      "position": "Az állás",
+      "yourBoardLabel": "A te táblád, a helyes és rossz bábuk megjelölve",
+      "positionLabel": "Az állás, a helyes és kihagyott mezők megjelölve",
+      "legendCorrect": "Helyes",
+      "legendWrong": "Rossz, a te tábládon",
+      "legendMissed": "Kihagyva, az állásban"
     },
     "feedback": {
       "title": "Köszönjük, hogy Memory Chesst játszottál!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# csillag} other {# csillag}}",
       "chooseRating": "Kérjük, válassz csillagos értékelést.",
       "sendFailed": "Nem tudtuk elküldeni a visszajelzésed. Próbáld újra, vagy válaszd a Most nem lehetőséget.",
+      "rateLimited": "Túl sok üzenet ettől a kapcsolattól. Próbáld újra {minutes, plural, one {# perc} other {# perc}} múlva.",
       "send": "Visszajelzés küldése",
       "sending": "Küldés…"
     },
@@ -1126,6 +1179,7 @@
       "intro": "Jegyezz meg {count} bábut {seconds} mp alatt, aztán rakd ki az állást emlékezetből.",
       "hide": "Tábla elrejtése",
       "restart": "Újrakezdés",
+      "leave": "Kilépés a körből",
       "again": "Új kör",
       "submit": "Beküldés",
       "clear": "Tábla törlése",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Újraindul {utc} UTC-kor",
       "resetsAt": "Újraindul {utc} UTC-kor (nálad {local}), {timeLeft} múlva"
     },
+    "loading": "A ranglista betöltése.",
     "mode": {
       "label": "Tanulási mód",
       "board": "Tábla",
@@ -1555,7 +1610,7 @@
         "desc": "Mely mezőket és vonalakat hibázod el a legtöbbször, az összes kör alapján.",
         "aria": "A hibaarányod mezőnként. A sötétebb gyakoribb hibát jelent. A szürke mezőkön még nem volt látható legalább {minimum} bábu.",
         "note": "A sötétebb mezőket gyakrabban hibázod el. A szürke mezőkön még nem volt látható legalább {minimum} bábu.",
-        "lines": "Amíg minden mezőn nem volt látható legalább {minimum} bábu, a térkép teljes vonalakat és sorokat mutat.",
+        "lines": "Amíg minden mezőn nem volt látható legalább {minimum} bábu, minden mező színe a teljes vonalát és sorát mutatja.",
         "files": "Vonalak",
         "ranks": "Sorok",
         "line": "{line}: {missed}/{shown} elhibázva",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} ó {minutes} perc",
     "underMinute": "< 1 perc",
     "ready": "A mai tábla · {pieceCount} bábu · {seconds} mp · még {timeLeft}",
+    "readyDetails": "{pieceCount} bábu · {seconds} mp · még {timeLeft}",
     "next": "Következő tábla {timeLeft} múlva",
     "pending": "A mai tábla",
     "navReady": "{label}, a mai napi tábla elérhető",
@@ -1704,7 +1760,12 @@
     "play": "Játszd a mai táblát",
     "tomorrowTitle": "A holnapi tábla",
     "tomorrowOpens": "{timeLeft} múlva nyílik.",
-    "seeToday": "A mai tábla megtekintése"
+    "seeToday": "A mai tábla megtekintése",
+    "remindButton": "Emlékeztess naponta",
+    "remindNote": "Naptáresemény letöltése, amely minden nap ismétlődik, amikor a tábla megnyílik.",
+    "remindDone": "Mentve. Nyisd meg a fájlt, hogy a napi eseményt hozzáadd a naptáradhoz.",
+    "remindTitle": "Memory Chess napi tábla",
+    "remindDescription": "Az új tábla minden nap éjfélkor nyílik, UTC szerint. Mindenki ugyanazt a táblát játssza, és egy próbálkozásod van."
   },
   "daily": {
     "meta": {
@@ -1765,9 +1826,10 @@
       "title": "Csatlakozás a mai táblához",
       "lateTitle": "Csatlakozz annak a napnak a táblájához",
       "name": "Név",
-      "nameHint": "4–16 karakter, a pontszámod mellett jelenik meg.",
+      "nameHint": "4-16 karakter, a pontszámod mellett jelenik meg.",
       "nameShort": "Túl rövid. Legalább 4 karaktert használj.",
       "nameLong": "Túl hosszú. Legfeljebb 16 karaktert használj.",
+      "nameBlocked": "Ez a név nem engedélyezett. Válassz másikat.",
       "country": "Ország",
       "chooseCountry": "Válassz országot",
       "from": {
@@ -1799,22 +1861,27 @@
       "error": "A mai táblát nem sikerült betölteni. Próbáld újra egy kis idő múlva.",
       "joinToRank": "Csatlakozz a táblához, hogy itt lásd a helyezésedet.",
       "order": "Sorrend: legtöbb helyes bábu, azután legkevesebb hibás, azután leggyorsabb újraépítés.",
-      "all": "Az összes tábla megtekintése"
+      "all": "Az összes tábla megtekintése",
+      "todayBoard": "Mai tábla",
+      "yesterdayBoard": "Tegnapi tábla",
+      "joinedToday": "A mai táblához csatlakozott játékosok: {count}",
+      "joinedYesterday": "A tegnapi táblához csatlakozott játékosok: {count}",
+      "listFrom": "A top 10 akkor jelenik meg, ha legalább {min} játékos csatlakozott."
     },
     "reference": {
       "title": "Hogyan működik a napi tábla",
       "shared": "Minden nap éjfélkor, UTC szerint új állást sorsolunk, és a világ minden játékosa ugyanazt kapja. Az állás a dátumból képzett kezdőértékből jön létre, így a tábla mindenkinek ugyanaz, és senki nem kap könnyebb változatot. Mivel a tábla közös, a pontszám ugyanazt jelenti mindenkinek, aki aznap játszott vele.",
       "oneTry": "Egy próbálkozásod van. A tábla megnyitása már próbálkozásnak számít, ezért ha a tanulás közben kilépsz, majd visszatérsz, nem látod újra. Az eszközöd megjegyzi a próbálkozást a következő tábla megnyitásáig.",
       "grid": "Az állás újraépítése után látod, mely mezőket találtad el, melyiken állt rossz bábu, melyiket hagytad ki, és hova tettél felesleges bábut. A megosztható sor bábunként egy mezőt mutat, eredmény szerint rendezve, anélkül, hogy a bábu helyére utalna, így a közzététel nem árulja el a táblát annak, aki még nem játszott.",
-      "join": "A csatlakozáshoz válassz egy 4–16 karakteres nevet és azt az országot, amelyet képviselsz. Az ország először a korábbi választásodból töltődik ki, aztán a kapcsolatodból, végül a böngésző nyelvéből, és bármikor módosíthatod. A csatlakozáskori értékszámod a neved mellett jelenik meg.",
+      "join": "A csatlakozáshoz válassz egy 4-16 karakteres nevet és azt az országot, amelyet képviselsz. Az ország először a korábbi választásodból töltődik ki, aztán a kapcsolatodból, végül a böngésző nyelvéből, és bármikor módosíthatod. A csatlakozáskori értékszámod a neved mellett jelenik meg.",
       "ranking": "A sorok a helyesen elhelyezett bábuk száma szerint vannak rendezve, azután a hibás bábuk legkisebb száma, végül a leggyorsabb újraépítés szerint. Mindenki ugyanannyi másodpercig tanul, így a tanulási idő a napi táblán soha nem dönt két játékos között.",
       "arcTitle": "Bábuk és tanulási idő a hét során",
       "arcIntro": "A beállítás heti ívet követ. A hétfő szelíden indul, hogy egy hétvégi kihagyás ne szakítsa meg a sorozatot, a terhelés a héten át nő, a szombat villámtábla, amelyet csak néhány másodpercig látsz, a vasárnap pedig az összes közül a legnehezebb. Az egyes napok tartományán belül a dátum választ egy beállítást, amely minden játékosnak ugyanaz.",
       "day": "Nap",
       "pieces": "Bábuk",
       "seconds": "Tanulási idő",
-      "range": "{min}–{max}",
-      "secondsRange": "{min}–{max} mp",
+      "range": "{min}-{max}",
+      "secondsRange": "{min}-{max} mp",
       "secondsExact": "{count} mp"
     }
   },
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "A Google Analytics által rögzített körökből összesített felidézési statisztikákat teszünk közzé azokra a beállításokra, amelyekhez elég kör és játékos tartozik.",
     "aboutLink": "Nézd meg a felidézési adatokat"
+  },
+  "learnTryIt": {
+    "title": "Próbáld ki itt",
+    "intro": "Egy ekkora forduló {pieces} bábut mutat {seconds} másodpercig. Utána emlékezetből felrakod őket egy üres táblára. Itt egy ekkora állás.",
+    "introBlindfold": "Egy ekkora forduló {pieces} bábut mutat meg jelöléssel {seconds} másodpercig, a táblán nincs bábu. Utána emlékezetből felrakod őket egy üres táblára. Itt egy ekkora állás, úgy, ahogy látnád.",
+    "position": "Világos: {white}. Sötét: {black}.",
+    "start": "Indíts egy {pieces} bábus fordulót",
+    "startBlindfold": "Indíts egy {pieces} bábus vakfordulót"
   }
 }

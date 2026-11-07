@@ -5,6 +5,7 @@
       "articles": "記事",
       "about": "サイトについて",
       "changelog": "更新履歴",
+      "blindfold": "ブラインドチェス",
       "contactUs": "お問い合わせ",
       "privacy": "プライバシー",
       "terms": "利用規約",
@@ -560,7 +561,8 @@
           "line": "{line}: {shown}駒中{missed}駒ミス",
           "lineThin": "{line}: {shown}駒出現、判断にはまだ不足",
           "realAria": "マスごとのミスの割合。灰色のマスは、出現した駒が10個未満です。",
-          "realNote": "濃いほど、よくミスするマスです。灰色は出現した駒が10個未満です。"
+          "realNote": "濃いほど、よくミスするマスです。灰色は出現した駒が10個未満です。",
+          "lines": "すべてのマスで駒が10個出現するまでは、各マスをそのファイルとランク全体の結果で色付けします。"
         },
         "daily": {
           "fig": "図{number} · 今日の盤面",
@@ -844,6 +846,7 @@
           "overCap": "5,000ラウンドの上限に収めるため、古い{count, plural, other {#ラウンド}}を除外しました。",
           "summaryIgnored": "このブラウザーにはすでにラウンドがあったため、新しいラウンドだけを統合し、ファイルの累計は使いませんでした。",
           "summaryDropped": "ファイルの累計が読み取れないか古いバージョンのものだったため、ラウンドだけをインポートしました。",
+          "playerRestored": "レーティングと連勝記録を復元しました。",
           "safari": "Safari のプライベートタブでは、閉じるとこの記録は残りません。また Safari は、7日ほどアクセスのないサイトの保存データを消去します。コピーをエクスポートして保管してください。",
           "unavailable": "プライベートウィンドウでは保存されません。このブラウザーウィンドウは、ラウンドを保存していません。",
           "backup": "デバイス間でバックアップ（近日公開）",
@@ -940,6 +943,21 @@
         "capped": "このデバイスでの今日の復習{cap}回は完了しました。",
         "cappedNext": "まだ復習が必要な盤面は明日、待ち時間の長いものから順に戻ってきます。",
         "schedule": "正解率80%未満だった盤面は、初めて見てから1、3、7、14日後に戻ってきます。"
+      },
+      "intro": {
+        "label": "45面のイントロ",
+        "skip": "イントロをスキップ",
+        "replay": "ナイドルフの45面指し",
+        "counter": "{count, plural, other {#面}}",
+        "counterDark": "{count, plural, other {#面}} · すべて目隠し",
+        "one": "盤はひとつ。<em>見えています。</em>",
+        "oneNote": "モーフィーのオペラ座の一局、パリ、1858年。すべて実際の指し手です。",
+        "many": "そして<em>45面。</em>",
+        "manyNote": "サンパウロ、1947年1月。ミゲル・ナイドルフが45人を同時に相手にしました。",
+        "dark": "彼は<em>一面も見ていなかった。</em>",
+        "darkNote": "23時間以上を目隠しで指し、すべての手に記憶だけで応じました。勝ったのは39局。",
+        "you": "まずは<em>一面から。</em>",
+        "youNote": "数秒間、局面を見てください。盤が暗くなったら、記憶から並べ直します。"
       }
     }
   },
@@ -981,10 +999,25 @@
         "gain": "最大 <num>+{value}</num>",
         "loss": "最大 <num>−{value}</num>",
         "announce": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。失敗した場合は最大 −{loss}。",
-        "announceProvisional": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。"
+        "announceProvisional": "盤面のレーティング {board}。あなたのレーティング {rating}。予想正答率 {expected}%。クリアした場合は最大 +{gain}。",
+        "summary": "盤面 {board} · 予想 {expected}%",
+        "expect": "予想 {expected}%",
+        "details": "レーティングの詳細"
       },
       "blindfold": "目隠し",
-      "blindfoldHint": "盤上に駒を置かず、局面を棋譜表記で覚えます。"
+      "blindfoldHint": "盤上に駒を置かず、局面を棋譜表記で覚えます。",
+      "presetShort": {
+        "easy": "やさしい",
+        "medium": "ふつう",
+        "hard": "むずかしい",
+        "grandmaster": "GM"
+      },
+      "fewerPieces": "駒を減らす",
+      "morePieces": "駒を増やす",
+      "lessTime": "記憶時間を短く",
+      "moreTime": "記憶時間を長く",
+      "boardPreview": "盤面プレビュー。盤上の駒: {count}",
+      "summarySetting": "{preset}、{setting}"
     },
     "presets": {
       "easy": {
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "正答率",
       "piecesCorrectCaption": "駒が正解",
+      "summary": "{correct} / {total} 正解 · 誤り {wrong} · 配置 {seconds}秒",
       "piecesCorrect": "正解した駒",
       "memorizationTime": "記憶時間",
       "solutionTime": "解答時間",
@@ -1051,15 +1085,25 @@
       "tryAgain": "もう一度",
       "nextRound": "次のラウンド",
       "changeSettings": "設定を変更",
-      "moreOptions": "その他のオプション",
       "tileDrill": "あなたのレベルに合わせたドリル",
       "tileDrillWhy": "あなたのレベルに合わせてあり、記事の内容を練習できます。",
-      "submitToLeaderboard": "ランキングに登録",
-      "leaderboardQualifies": "このスコアならランキング入りです。今すぐ登録しましょう。",
+      "personalBest": "このレベルの自己ベストを更新。記録に残しましょう。",
+      "claimLine": {
+        "qualifies": "{difficulty}:{accuracy}%ならランキング入りです。",
+        "open": "{difficulty}:{accuracy}%の順位を確認しましょう。",
+        "claim": "順位を確保",
+        "submit": "送信する",
+        "claimed": "ランキングに登録しました:{difficulty}、{accuracy}%。",
+        "rank": "{difficulty}:{total, number}人中{rank, number}位",
+        "seeBoard": "ランキングを見る"
+      },
       "viewLeaderboard": "ランキングを見る",
       "dialog": {
         "submitTitle": "ランキングに登録",
-        "submitDescription": "ランキングに表示する名前を入力してください。",
+        "submitDescription": "名前を決めてください。登録後すぐに順位が表示されます。",
+        "rankLoading": "順位を確認しています…",
+        "rankWorld": "世界 {total, number}人中 {rank, number}位",
+        "rankCountry": "{country} {total, number}人中 {rank, number}位",
         "successTitle": "スコアを登録しました！",
         "successDescription": "スコアがランキングに登録されました。",
         "playerName": "プレイヤー名",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Memory Chess の{date}のデイリー盤面で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。} review {Memory Chess の復習盤面で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。} other {Memory Chess で、{total, number}駒中{correct, number}駒({accuracy})を思い出せました。}}あなたは超えられる?",
         "alt": "Memory Chess の結果カード: {details}。"
       },
-      "savedToast": {
-        "message": "ラウンドを保存しました。更新された成績はすぐ下にあります。",
-        "action": "見る"
-      },
       "blindfoldRound": "目隠しラウンド：局面を棋譜表記で覚えました。"
     },
     "comparison": {
-      "title": "自分の局面を振り返る"
+      "title": "自分の局面を振り返る",
+      "viewLabel": "結果の表示方法",
+      "view": {
+        "side": "並べて表示",
+        "overlay": "重ねて表示"
+      },
+      "yourBoard": "自分の盤",
+      "position": "元の局面",
+      "yourBoardLabel": "自分の盤。正解と配置ミスを表示",
+      "positionLabel": "元の局面。正解と見落としたマスを表示",
+      "legendCorrect": "正解",
+      "legendWrong": "配置ミス（自分の盤）",
+      "legendMissed": "見落とし（元の局面）"
     },
     "feedback": {
       "title": "Memory Chess で遊んでいただきありがとうございます！",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, other {星 # つ}}",
       "chooseRating": "星の評価を選んでください。",
       "sendFailed": "ご意見を送信できませんでした。もう一度お試しいただくか、「あとで」を選んでください。",
+      "rateLimited": "この接続からのメッセージが多すぎます。{minutes, plural, other {#分}}後にもう一度お試しください。",
       "send": "意見を送信",
       "sending": "送信中…"
     },
@@ -1126,6 +1179,7 @@
       "intro": "{count}個の駒を{seconds}秒で覚え、記憶から配置を再現しましょう。",
       "hide": "盤面を隠す",
       "restart": "やり直す",
+      "leave": "ラウンドを終了",
       "again": "もう一度",
       "submit": "送信",
       "clear": "盤面をクリア",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "UTC {utc} にリセット",
       "resetsAt": "UTC {utc}（あなたの時刻で {local}）にリセット、あと{timeLeft}"
     },
+    "loading": "ランキングを読み込んでいます。",
     "mode": {
       "label": "学習モード",
       "board": "盤",
@@ -1555,7 +1610,7 @@
         "desc": "全ラウンドを通して、ミスが多いマスとライン。",
         "aria": "マスごとのミスの割合。濃いほどミスが多いことを示します。灰色のマスは出現した駒が{minimum}個未満です。",
         "note": "濃いマスほどミスが多いマスです。灰色のマスは出現した駒が{minimum}個未満です。",
-        "lines": "すべてのマスで駒が{minimum}個出現するまでは、ファイルとランク単位で表示します。",
+        "lines": "すべてのマスで駒が{minimum}個出現するまでは、各マスをそのファイルとランク全体の結果で色付けします。",
         "files": "ファイル",
         "ranks": "ランク",
         "line": "{line}: {shown}駒中{missed}駒ミス",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours}時間 {minutes}分",
     "underMinute": "1分未満",
     "ready": "今日の盤面 · {pieceCount}駒 · {seconds}秒 · 残り{timeLeft}",
+    "readyDetails": "{pieceCount}駒 · {seconds}秒 · 残り{timeLeft}",
     "next": "次の盤面まで{timeLeft}",
     "pending": "今日の盤面",
     "navReady": "{label}、今日のデイリー盤面をプレイできます",
@@ -1704,7 +1760,12 @@
     "play": "今日の盤面をプレイ",
     "tomorrowTitle": "明日の盤面",
     "tomorrowOpens": "{timeLeft}後に公開。",
-    "seeToday": "今日の盤面を見る"
+    "seeToday": "今日の盤面を見る",
+    "remindButton": "毎日リマインドする",
+    "remindNote": "盤面が公開される時刻に毎日繰り返すカレンダーの予定をダウンロードします。",
+    "remindDone": "保存しました。ファイルを開いて、毎日の予定をカレンダーに追加してください。",
+    "remindTitle": "Memory Chess デイリー盤面",
+    "remindDescription": "新しい盤面は毎日UTCの午前0時に公開されます。全員が同じ盤面に挑戦し、チャンスは1回です。"
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "4〜16文字。スコアと一緒に表示されます。",
       "nameShort": "短すぎます。4文字以上にしてください。",
       "nameLong": "長すぎます。16文字以内にしてください。",
+      "nameBlocked": "この名前は使用できません。別の名前を選んでください。",
       "country": "国",
       "chooseCountry": "国を選択",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "今日の盤面を読み込めませんでした。しばらくしてからもう一度お試しください。",
       "joinToRank": "盤面に参加すると、ここに順位が表示されます。",
       "order": "正解した駒の数、誤りの少なさ、解答の速さの順で順位が決まります。",
-      "all": "すべての盤面を見る"
+      "all": "すべての盤面を見る",
+      "todayBoard": "今日の盤面",
+      "yesterdayBoard": "昨日の盤面",
+      "joinedToday": "今日の盤面に参加したプレイヤー数：{count}",
+      "joinedYesterday": "昨日の盤面に参加したプレイヤー数：{count}",
+      "listFrom": "トップ10は{min}人以上が参加すると表示されます。"
     },
     "reference": {
       "title": "デイリー盤面のしくみ",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Google Analytics に記録されたラウンドをもとに、十分なラウンド数とプレイヤー数がある設定について、記憶の集計統計を公開しています。",
     "aboutLink": "記憶データを見る"
+  },
+  "learnTryIt": {
+    "title": "ここで試す",
+    "intro": "この規模のラウンドでは、駒 {pieces} 個を {seconds} 秒間見られます。そのあと、空の盤に記憶から並べます。この規模の局面の例です。",
+    "introBlindfold": "この規模のラウンドでは、駒 {pieces} 個が棋譜表記で {seconds} 秒間示され、盤上に駒はありません。そのあと、空の盤に記憶から並べます。この規模の局面を、実際に見える形で示します。",
+    "position": "白：{white}。黒：{black}。",
+    "start": "駒 {pieces} 個のラウンドを始める",
+    "startBlindfold": "駒 {pieces} 個のブラインドラウンドを始める"
   }
 }

@@ -4,6 +4,7 @@ const guide: LearnDocument = {
   meta: {
     slug: "chess-coordinates-practice",
     title: "Chess Coordinates Practice: Name Squares Faster",
+    searchTitle: "Chess Coordinates Practice: Free Trainer + Drills",
     h1: "Chess coordinates practice, from counting squares to reading them",
     description: "For chess coordinates practice, learn eight anchor squares and a colour rule, then name squares aloud in 4-piece, 12-second rounds until five are clean.",
     group: "board-vision",
@@ -48,6 +49,11 @@ const guide: LearnDocument = {
           kind: "prose",
           paragraphs: [
             "To find d5 by counting, you go four files across and then five ranks up. That is two lookups. Seeing d5 the way you see a familiar word takes one.",
+            [
+              "Judit Polgár says knowing the name, place and colour of all 64 squares is what let her play blindfold at about age seven. ",
+              { text: "Her early blindfold games and training", href: "/articles/judit-polgar" },
+              " show how far that one piece of knowledge can go.",
+            ],
             "Nothing about coordinates is hard to understand. The practice is making the name and the square arrive together, so you stop translating one into the other. The table shows where the second lookup costs you.",
           ],
         },

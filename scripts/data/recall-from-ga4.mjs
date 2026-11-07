@@ -112,12 +112,18 @@ function summarize({ pieces, seconds, counts }, players) {
 
 function recallDataset(reports, { start, end }) {
   const { histogram, players, total: totals } = classify(reports.flatMap((report) => (report.reports ?? [report]).map(tableOf)));
+  const range = `${start} to ${end}`;
+  if (totals.rows.length !== 1) throw new UsageError(`the total players report has ${totals.rows.length} rows, expected 1; export it again for ${range}`);
   const { cells, total, unset } = histogramCells(histogram);
+  if (total === 0) throw new UsageError(`GA4 returned no rounds for ${range}`);
   const users = playersByCell(players);
   const summaries = [...cells].map(([key, cell]) => summarize(cell, users.get(key) ?? 0));
   const published = summaries
     .filter((cell) => cell.rounds >= MIN_ROUNDS && cell.players >= MIN_PLAYERS)
     .sort((a, b) => a.pieceCount - b.pieceCount || a.memorizeSeconds - b.memorizeSeconds);
+  if (published.length === 0) {
+    throw new UsageError(`no cell has ${MIN_ROUNDS} rounds from ${MIN_PLAYERS} players in ${range}, so there is nothing to publish`);
+  }
   const publishedRounds = published.reduce((sum, cell) => sum + cell.rounds, 0);
   return {
     name: "Memory Chess position recall",

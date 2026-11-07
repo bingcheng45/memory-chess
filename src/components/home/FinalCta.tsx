@@ -1,7 +1,5 @@
-"use client";
-
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
+import { Link } from "./HomeLinks";
 import { LAB_SECTIONS } from "./SectionHeading";
 import { QUICK_START_HREF } from "./links";
 
@@ -21,7 +19,7 @@ export function FinalCta() {
             <Link className="lab-btn lab-btn-primary" href={QUICK_START_HREF}>
               {lab("index.play")}
             </Link>
-            <Link className="lab-btn lab-btn-secondary" href="/leaderboard">
+            <Link className="lab-btn lab-btn-secondary" href="/leaderboard" prefetch={false}>
               {t("cta.leaderboard")}
             </Link>
           </div>

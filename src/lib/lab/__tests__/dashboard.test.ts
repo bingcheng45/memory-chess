@@ -6,7 +6,7 @@ import { personaChoices, personaEntries, personaRounds, PERSONA_TODAY, type Pers
 import { EMPTY_SUMMARY, summarize } from "@/lib/lab/summary";
 import { roundV2 } from "./fixtures";
 
-const QUICK = "/game?pieceCount=6&memorizeTime=10&source=dashboard";
+const QUICK = "/game?pieceCount=6&memorizeTime=10&from=dashboard";
 
 const BEST_ACCURACY = 100;
 const BEST_AT = { source: "game", pieceCount: 14, memorizeSeconds: 10 };
@@ -71,7 +71,7 @@ describe("dashboardOf", () => {
       state: "warming",
       need: { rounds: 1 },
       rig: { pieceCount: 9, memorizeSeconds: 10 },
-      href: "/game?pieceCount=9&memorizeTime=10&source=dashboard",
+      href: "/game?pieceCount=9&memorizeTime=10&from=dashboard",
     });
   });
 
@@ -80,7 +80,7 @@ describe("dashboardOf", () => {
 
     expect(tiles.map(({ id, state, ...rest }) => [id, state, "href" in rest ? rest.href : null])).toEqual([
       ["streak", "empty", QUICK],
-      ["daily", "empty", "/game?pieceCount=7&memorizeTime=9&source=daily"],
+      ["daily", "empty", "/game?pieceCount=7&memorizeTime=9&from=daily"],
       ["rating", "empty", QUICK],
       ["span", "empty", QUICK],
       ["piecesHeld", "empty", QUICK],

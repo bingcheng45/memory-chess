@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Egyéni beállítások",
-        "body": "A két csúszka egymástól függetlenül mozog a szintektől. A bábuszám {minPieces} és {maxPieces} között, a megtekintési idő {minSeconds} és {maxSeconds} másodperc között mozog. A ranglista a bábuszám alapján ismeri fel a kört, így bármely, a négy szinttől eltérő szám egyéni játékká teszi, az egyéni játékok pedig kimaradnak a ranglistából."
+        "body": "A tábla alatti − és + gombok a szintektől függetlenül állítják a bábuszámot és az időt. A bábuszám {minPieces} és {maxPieces} között, a megtekintési idő {minSeconds} és {maxSeconds} másodperc között mozog. A ranglista a bábuszám alapján ismeri fel a kört, így bármely, a négy szinttől eltérő szám egyéni játékká teszi, az egyéni játékok pedig kimaradnak a ranglistából."
       }
     },
     "scoring": {

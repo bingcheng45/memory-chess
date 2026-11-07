@@ -18,6 +18,7 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { locale } = await params;
   const t = await getTranslations({ locale, namespace: 'leaderboard.meta' });
+  const robots = robotsFor('/leaderboard', locale);
 
   return {
     title: titleNamingBrandOnce(t('title')),
@@ -25,7 +26,8 @@ export async function generateMetadata({
     // Translated boards are served to readers but indexed only in English, so
     // no locale advertises another and each canonical points at itself.
     alternates: { canonical: localizedPath('/leaderboard', locale) },
-    robots: robotsFor('/leaderboard', locale),
+    // An `undefined` robots key would erase the layout's own robots, so the English board carries no key at all.
+    ...(robots ? { robots } : {}),
     ...socialMetadata({
       title: t('socialTitle'),
       description: t('socialDescription'),

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "41049fc0ec11eb4a6271f4f59640e1291a2c38d6d1ef1647b1b0d41e322ce768",
-  "approvedHash": "5d835c54580ce60b347fae51decbed7de147159290a630916846f6d16fa1a109",
+  "sourceHash": "c8fe10e00c01f59b9147f4ec2c02f03eafba8dc825e01522385d0897bc25d84e",
+  "approvedHash": "a19d07a8c5eea90d41b8279b794453c39edd5d73de8af807a87ed897f5787e19",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -104,11 +104,11 @@
             "drills": [
               {
                 "title": "Ronda de memoria empezando por los bordes",
-                "description": "Juega 3 rondas de 12 piezas con 8 segundos para mirar, y pulsa «Reintentar» entre ronda y ronda. Mientras miras, lee primero los bordes y después el centro. Coloca primero las piezas de los bordes. El tablero de resultados marca con un círculo cada casilla que fallaste. Superas la prueba cuando ningún círculo cae en una casilla del borde.",
-                "duration": "3 rondas, unos 5 minutos",
+                "description": "Juega 3 rondas de 6 piezas con 15 segundos para mirar, y pulsa «Reintentar» entre ronda y ronda. Mientras miras, lee primero los bordes y después el centro. Coloca primero las piezas de los bordes. El tablero de resultados marca con un círculo cada casilla que fallaste. Superas la prueba cuando ningún círculo cae en una casilla del borde. Cuando la superes, prueba la ronda de 12 piezas al final de esta guía.",
+                "duration": "3 rondas, unos 3 minutos",
                 "goal": "Retener a la vez los bordes y el centro en lugar de un solo grupo.",
                 "play": {
-                  "label": "Jugar 12 piezas, 8 segundos"
+                  "label": "Jugar 6 piezas, 15 segundos"
                 }
               },
               {

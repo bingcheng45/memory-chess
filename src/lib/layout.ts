@@ -43,14 +43,15 @@ export const PAGE_BELOW_BANNER_MIN_HEIGHT = 'min-h-[calc(100dvh-2.5rem-1px)]';
  * width of a fingertip.
  *
  * The active phases size the board from the room left over, which is right
- * until there is no room. A short viewport -- a phone held in landscape, a
- * desktop window dragged flat -- can leave the two fixed rows consuming the
- * whole screen, and the board is handed what remains: at 844x390 that was
- * around 15px, with the timer and palette narrowed to match it.
+ * until there is no room. A short viewport can leave the fixed rows consuming
+ * the whole screen, and the board is handed what remains: at 844x390, before
+ * the side panel existed, that was around 15px.
  *
- * This is the floor the layout refuses to go under. Below it the column keeps
- * its height and the page scrolls instead, which is worse than fitting but
- * far better than a board nobody can see.
+ * This is the floor the layouts in game-lab.css refuse to go under. Below it
+ * the round overflows and the page scrolls instead, which is worse than
+ * fitting but far better than a board nobody can see. The figure is about a
+ * fingertip, not about the rows around the board, so slimmer rows leave it
+ * where it is: they only make the floor rarer.
  */
 export const MIN_BOARD_SIZE = 240;
 
@@ -58,16 +59,15 @@ export const MIN_BOARD_SIZE = 240;
  * The narrowest the rows either side of the board may be drawn, in pixels.
  *
  * Those rows are held to the board's width so the controls line up with the
- * squares they act on. That is right until the board reaches its floor, at
- * which point the rows follow it down and the status row's title wraps to a
- * second line, overflowing a row whose height is fixed. A 240px board took it
- * to 120px of text in an 88px box.
+ * squares they act on. That is right until the board is held short by the
+ * screen's height, at which point the rows follow it down and squeeze the
+ * status row's phase, whose height is fixed.
  *
- * The figure is what the title needs to stay on one line: 175px at its widest
- * across the locales, 88px reserved beside it for the skip control, and 24px
- * of padding on the row's inner box -- the title's own `calc(100% - 88px)`
- * resolves against that inner box, not the row, so the padding counts twice
- * over if it is left out. 287px, rounded up for locales not sampled.
+ * The status row spends 226px beside the phase: three 40px icon buttons, the
+ * 82px clock and four 6px gaps. At 304px the phase keeps 78px, and the
+ * longest sampled, German's "Präge dir die Stellung ein", sets in two lines.
+ * At 290px, the board a 320 x 454 phone gets, it keeps 64px and needs four
+ * lines where the row has room for three.
  *
  * Below this the rows stop following the board. They are then wider than it,
  * which looks looser than the alignment they normally keep, and is much the

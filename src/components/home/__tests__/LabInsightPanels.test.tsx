@@ -58,7 +58,7 @@ describe("insights panel", () => {
       "You miss the a and h files about 5.5 times as often as the centre files, d and e: 68% of 151 pieces against 12% of 138.Play 8 pieces, 15 s →",
       "Of the pieces other than kings seen 20 times or more, queens slip most: you recalled 12 of 26, 46%.Read the pattern recognition drills →",
     ]);
-    expect(within(list).getByRole("link", { name: "Play 8 pieces, 15 s →" })).toHaveAttribute("href", "/game?pieceCount=8&memorizeTime=15&source=insight");
+    expect(within(list).getByRole("link", { name: "Play 8 pieces, 15 s →" })).toHaveAttribute("href", "/game?pieceCount=8&memorizeTime=15&from=insight");
     expect(within(list).getByRole("link", { name: "Read the pattern recognition drills →" })).toHaveAttribute("href", "/learn/chess-pattern-recognition-drills");
     expect(within(panel("Insights")).getByText("From 90 rounds")).toBeInTheDocument();
   });
@@ -278,7 +278,7 @@ describe("a record panel that is still warming up", () => {
   it("draws the sample heatmap under the miss map need, darkest at h1 and lightest at d4, as its caption says", () => {
     renderWithIntl(<LabRecordSection record={persona("twoRounds")} />);
     const map = within(panel("Miss map")).getByRole("img");
-    const shades = [...map.querySelectorAll("i")].map((square) => Number((square as HTMLElement).style.opacity));
+    const shades = [...map.querySelectorAll(".lab-heat i")].map((square) => parseFloat((square as HTMLElement).style.getPropertyValue("--heat")));
 
     expect(map).toHaveAccessibleName("Sample heatmap of missed squares: darkest down the h-file and around h1, with hot spots on b7 and f7, lightest in the centre.");
     expect(BOARD_SQUARES[shades.indexOf(Math.max(...shades))]).toBe("h1");

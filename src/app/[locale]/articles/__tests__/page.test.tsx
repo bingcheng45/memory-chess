@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import { setRequestLocale } from "next-intl/server";
 import { render, screen, within } from "@/test-utils/intl";
 import * as pageModule from "@/app/[locale]/articles/page";
-import ArticlesPage, { generateMetadata, revalidate } from "@/app/[locale]/articles/page";
+import ArticlesPage, { generateMetadata } from "@/app/[locale]/articles/page";
 import ArticleList from "@/components/articles/ArticleList";
 import { GERMAN_MESSAGES } from "@/components/articles/__tests__/chromeCatalogues";
 import { sortedFirstPaintInlineScript } from "@/components/articles/sortedFirstPaint";
@@ -91,8 +91,8 @@ describe("ArticlesPage", () => {
     jest.mocked(getArticleStats).mockResolvedValue(STATS);
   });
 
-  it("revalidates every five minutes and exports no dynamic mode", () => {
-    expect(revalidate).toBe(300);
+  it("is built once per deploy, with no revalidation window and no dynamic mode", () => {
+    expect(Object.keys(pageModule)).not.toContain("revalidate");
     expect(Object.keys(pageModule)).not.toContain("dynamic");
   });
 
@@ -114,9 +114,9 @@ describe("ArticlesPage", () => {
       expect.objectContaining({ articles: await getArticleSummaries("en"), stats: STATS }),
     );
     expect(listProps().articles[0]).toMatchObject({
-      slug: "magnus-carlsen",
-      title: "How Magnus Carlsen names a famous game from one position",
-      publishedLabel: "Oct 5, 2026",
+      slug: "miguel-najdorf",
+      title: "How Miguel Najdorf played 45 blindfold games at once",
+      publishedLabel: "Oct 28, 2026",
     });
     expect(Object.keys(listProps()).sort()).toEqual(["articles", "heading", "stats"]);
   });
@@ -201,7 +201,7 @@ describe("ArticlesPage in a locale the articles are translated into", () => {
 
     expect(setRequestLocale).toHaveBeenCalledWith("de");
     expect(listProps().articles.map((article) => article.slug)).toEqual(ARTICLE_SLUGS);
-    expect(listProps().articles[0]).toMatchObject({
+    expect(listProps().articles.find((article) => article.slug === "magnus-carlsen")).toMatchObject({
       slug: "magnus-carlsen",
       title: "DE How Magnus Carlsen names a famous game from one position",
       person: { name: "DE Magnus Carlsen" },
@@ -256,8 +256,8 @@ describe("ArticlesPage in a locale the articles are translated into", () => {
           {
             "@type": "ListItem",
             position: 1,
-            url: "https://thememorychess.com/de/articles/magnus-carlsen",
-            name: "DE How Magnus Carlsen names a famous game from one position",
+            url: "https://thememorychess.com/de/articles/miguel-najdorf",
+            name: "DE How Miguel Najdorf played 45 blindfold games at once",
           },
         ]),
       },
@@ -295,7 +295,7 @@ describe("the list page's metadata", () => {
     expect(metadata).not.toHaveProperty("robots");
     expect(metadata.openGraph).toMatchObject({
       url: "https://thememorychess.com/articles",
-      images: [{ alt: "Magnus Carlsen at a press conference in 2025" }],
+      images: [{ alt: "Miguel Najdorf at the closing banquet of the 1950 Amsterdam chess tournament" }],
     });
   });
 
@@ -308,7 +308,7 @@ describe("the list page's metadata", () => {
     expect(metadata.robots).toStrictEqual(NOINDEX_FOLLOW);
     expect(metadata.openGraph).toMatchObject({
       url: "https://thememorychess.com/de/articles",
-      images: [{ alt: "DE Magnus Carlsen at a press conference in 2025" }],
+      images: [{ alt: "DE Miguel Najdorf at the closing banquet of the 1950 Amsterdam chess tournament" }],
     });
   });
 

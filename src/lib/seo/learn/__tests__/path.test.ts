@@ -46,7 +46,7 @@ describe("the Learn path", () => {
     const ctas = pathStages(groupPages(EN_LEARN_PAGES)).stages.map((stage) => [stage.group.id, stage.cta?.href ?? null]);
 
     expect(ctas).toEqual([
-      ["foundations", "/game?pieceCount=6&memorizeTime=10&source=guide_cta"],
+      ["foundations", "/game?pieceCount=6&memorizeTime=10&from=guide_cta"],
       ["board-vision", "/dashboard#tile-recentAccuracy"],
       ["visualization", null],
       ["memory", "/dashboard#tile-span"],

@@ -1,62 +1,327 @@
 /* /game in the Lab Paper shell. The round's own rules are components/round/round.css; these fit it to the pinned
-   layout, where ActiveGameLayout fixes the rows' heights and hands the board an exact size. */
+   layout, where the board takes an exact size from the room the round's fixed rows leave. */
 
-/* While pinned, globals.css makes body a fixed flex column. The page's block is its flex item and passes the column
-   on, so main takes what the banner and the header leave. The shell's visible root overflow is for its sticky
-   header, and nothing scrolls the document while pinned. */
+/* While pinned, globals.css makes body a fixed flex column and hides the banner and the header. The page's block is
+   its flex item and passes the column on, so main takes the whole screen. The shell's visible root overflow is for
+   its sticky header, and nothing scrolls the document while pinned. */
 body.game-fixed .lab-game { display: flex; flex-direction: column; flex: 1 1 auto; min-height: 0; }
 html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow-x: hidden; }
 
-/* The board's side, from the figures ActiveGameLayout sets on the column: the largest square the column fits under
-   both rows. A browser without container units (Safari before 16, Chrome before 105, Firefox before 110) keeps the
-   custom property whatever it holds and then fails every width that reads it, so it gets the viewport-based size below. */
-.lab-active-column { --board-size: min(100cqw, 100cqh - var(--board-rows), var(--board-max)); }
+/* The scrolling screens, the configuration form and the result, fit their main control to the first screen from
+   lengths CSS can add up before anything is measured: the chrome above the page, the page's padding and each layout's
+   fixed rows. The banner's height is the one estimate: two lines on a phone in every locale, one from 768px. */
+.lab-game { --banner-h: 0px; --scroll-pad-y: 16px; --chrome-h: calc(var(--banner-h) + var(--lp-header-h) + 1px); }
+body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
+@media (min-width: 640px) { .lab-game { --scroll-pad-y: 32px; } }
+@media (min-width: 768px) { body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 41px; } }
+.lab-game .lab-scroll-page { padding-block: var(--scroll-pad-y); }
+
+/* The active round: the status row (leave, phase, clock, restart, eraser, meter), the board, and the controls (the
+   palette and the phase's primary button), in one of two layouts named by grid areas.
+
+     stack  "status" / "board" / "controls"            the default: a phone, a tablet, any tall screen
+     panel  "board status" / "board controls"          wide and short: a phone on its side, a laptop
+
+   Every row and the panel are fixed sizes, so the board never moves between phases. Sized by their contents, a
+   phase change or a longer translation moved the board, and on iOS the change in page height made Safari collapse
+   its toolbar, which resized the board on top of that.
+
+   The board's side uses container units rather than a measured size, so it is right on the first painted frame:
+   measured, the size lived in React state, and on a slow phone the update after the first commit reached the screen
+   frames late, painting the board at zero. --cw and --ch are the column's size; they stay unresolved tokens until a
+   descendant reads them, so they resolve against the column, the descendants' container. Each layout floors the
+   board at --board-min: a viewport too short for it overflows, and main scrolls to it, rather than the board being
+   crushed. --board-min, --board-max and --row-min come from src/lib/layout.ts through ActiveGameLayout. */
+.lab-game .lab-active-page { --page-pad-x: 8px; --page-pad-y: 6px; padding: var(--page-pad-y) var(--page-pad-x); }
+.lab-active-column {
+  container-type: size;
+  display: grid;
+  align-content: start;
+  width: 100%;
+  height: 100%;
+  --cw: 100cqw;
+  --ch: 100cqh;
+  --gap: 8px;
+  --status-h: 48px;
+  --meter-h: 4px;
+  --controls-h: 84px;
+  --primary-w: 76px;
+  --board-size: min(var(--cw), max(var(--board-min), var(--ch) - var(--status-h) - var(--meter-h) - 2 * var(--gap) - var(--controls-h)), var(--board-max));
+}
+/* Safari before 16, Chrome before 105 and Firefox before 110 keep a custom property whatever it holds and then fail
+   every width that reads it. Focus mode leaves nothing on the page but its padding, so the viewport stands in. */
 @supports not (width: 1cqw) {
-  .lab-active-column {
-    --board-size: min(100vw - var(--page-gutters), max(var(--board-min), 100vh - var(--page-chrome) - var(--board-rows)), var(--board-max));
-  }
+  .lab-active-column { --cw: calc(100vw - 2 * var(--page-pad-x)); --ch: calc(100vh - 2 * var(--page-pad-y)); }
 }
 
-.lab-game [data-round-board] { flex: none; }
+/* stack. The rows are held to the board's width so the controls line up with the squares they act on, down to
+   --row-min, where the status row's contents stop fitting. The group sits at the top with spare height under it, not
+   above: an in-app browser sheet, ChatGPT's, lays the page out taller than it shows and floats its toolbar over the
+   bottom, so space above pushed the palette out of reach. */
+.lab-active-round {
+  display: grid;
+  grid-template-columns: max(var(--board-size), min(var(--row-min), 100%));
+  grid-template-rows: calc(var(--status-h) + var(--meter-h)) var(--board-size) auto;
+  grid-template-areas: "status" "board" "controls";
+  gap: var(--gap);
+  justify-content: center;
+}
+.lab-active-status { grid-area: status; display: grid; grid-template-columns: 40px minmax(0, 1fr) auto 40px 40px; grid-template-rows: var(--status-h) var(--meter-h); grid-template-areas: "leave head clock restart clear" "meter meter meter meter meter"; column-gap: 6px; align-items: center; }
+.lab-active-board { grid-area: board; justify-self: center; width: var(--board-size); height: var(--board-size); }
+.lab-active-controls { grid-area: controls; container: round-controls / inline-size; }
+
+/* The status row's pieces, laid out by its grid areas rather than by the shared head's own boxes. */
+.lab-active-status .lab-cal-head, .lab-active-status .lab-cal-head-end { display: contents; }
+.lab-active-status .lab-leave { grid-area: leave; }
+.lab-active-status .lab-cal-head .lab-k { grid-area: head; display: -webkit-box; min-height: 0; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 3; font-size: 13px; line-height: 1.15; }
+.lab-active-status [role="timer"] { grid-area: clock; }
+.lab-active-status .lab-cal-head-end .lab-mono { font-size: 17px; }
+.lab-active-status .lab-restart { grid-area: restart; }
+.lab-active-status .lab-cal-head-end > :last-child { grid-area: clear; }
+.lab-active-status .lab-meter { grid-area: meter; margin: 0; }
+.lab-active-status .lab-icon-btn { padding: 0 !important; }
+
+/* The palette as a white row over a black row beside a tall primary button, or one row of twelve where each piece
+   still gets 40px. The single row's button is short, so it takes the width the gaps give up to keep the longest
+   labels ("Ukryj szachownicę") to two lines: 12 x 40 + 11 x 2 + 6 + 92 = 600px. */
+.lab-game-controls { display: grid; grid-template-columns: minmax(0, 1fr) var(--primary-w); grid-template-areas: "palette primary"; column-gap: var(--gap); height: var(--controls-h); }
+.lab-game-controls .lab-palette { grid-area: palette; margin: 0; grid-auto-rows: minmax(0, 1fr); gap: 4px; }
+.lab-game-controls .lab-palette button { height: auto; min-height: 0; max-height: none; aspect-ratio: auto; }
+.lab-game-controls .lab-primary-slot { grid-area: primary; height: 100%; min-height: 0; padding: 4px !important; font-size: 14px; line-height: 1.2; white-space: normal; overflow-wrap: anywhere; hyphens: auto; }
+@container round-controls (min-width: 600px) {
+  .lab-game-controls { --primary-w: 92px; height: 44px; column-gap: 6px; }
+  .lab-game-controls .lab-palette { grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 2px; }
+  .lab-game-controls .lab-primary-slot { padding: 2px 4px !important; font-size: 13px; line-height: 1.15; }
+}
+
+/* panel. Below the board the stack spends 152px of height; beside it the panel spends 276px of width (260 + 16). Until
+   either reaches the 600px cap, the panel seats the bigger board once the viewport is more than 128px wider than it
+   is tall. A media query cannot subtract, so the rule picks ratios that guarantee that margin: 6/5 from 768px wide
+   (768 / 6 = 128) and 4/3 from 560px (560 / 4 = 140). 560px takes in a 568 x 320 phone on its side and is about the
+   narrowest that seats the panel beside a board above the floor. */
+@media (min-aspect-ratio: 6/5) and (min-width: 768px), (min-aspect-ratio: 4/3) and (min-width: 560px) {
+  .lab-active-column {
+    --panel-min: 260px;
+    --panel-max: 340px;
+    --panel-gap: 16px;
+    /* The panel's own contents: status 100px, the palette 92px and the primary 52px, with two 12px gaps. A board at
+       its floor is shorter than that, and the panel must not shrink under its controls to match it. */
+    --panel-content-min: 268px;
+    align-content: center;
+    --board-size: min(max(var(--board-min), var(--ch)), var(--cw) - var(--panel-min) - var(--panel-gap), var(--board-max));
+  }
+  .lab-active-round {
+    grid-template-columns: var(--board-size) min(var(--panel-max), var(--cw) - var(--board-size) - var(--panel-gap));
+    grid-template-rows: auto minmax(0, 1fr);
+    grid-template-areas: "board status" "board controls";
+    gap: 12px var(--panel-gap);
+    height: max(var(--board-size), var(--panel-content-min));
+  }
+  .lab-active-status { grid-template-columns: 40px minmax(0, 1fr) 40px 40px; grid-template-rows: var(--status-h) 40px var(--meter-h); grid-template-areas: "leave head restart clear" "clock clock clock clock" "meter meter meter meter"; row-gap: 4px; }
+  .lab-active-status [role="timer"] { justify-self: start; }
+  .lab-active-status .lab-cal-head-end .lab-mono { font-size: 32px; }
+  .lab-active-status .lab-cal-head-end [role="timer"] > span { block-size: 40px; line-height: 40px; text-align: start; }
+  .lab-active-status .lab-cal-head .lab-k { font-size: 14px; line-height: 1.3; }
+  .lab-game-controls { height: 100%; grid-template-columns: minmax(0, 1fr); grid-template-rows: 92px minmax(0, 1fr); grid-template-areas: "palette" "primary"; row-gap: 12px; }
+  .lab-game-controls .lab-primary-slot { align-self: end; height: 52px; font-size: 16px; }
+}
+
 .lab-game [data-round-board] .lab-figure { height: 100%; padding: 16px; }
 .lab-game [data-round-board] .lab-files { left: 16px; right: 16px; bottom: 1px; }
 .lab-game [data-round-board] .lab-ranks { top: 16px; bottom: 16px; left: 3px; }
 
-.lab-game .lab-cal-head { padding: 0 0 8px; }
-.lab-game .lab-meter { margin: 0; }
-.lab-game .lab-palette { margin-top: 0; }
-.lab-game .lab-palette button { aspect-ratio: auto; height: 44px; max-height: none; }
-.lab-game .lab-cal-actions { margin-top: 8px; }
-.lab-game .lab-cal-main .lab-btn { min-height: 44px; height: 44px; padding: 0 8px; font-size: 15px; line-height: 1.15; white-space: normal; }
-@media (max-width: 639px) {
-  .lab-game .lab-cal-main { gap: 16px; }
-  .lab-game .lab-cal-main[data-phase="rebuild"] > .lab-btn:first-child { justify-self: start; width: auto; padding: 0 20px; }
-}
+/* result screen: the card's parts placed by grid areas, in one of two layouts, each in both review views.
 
-/* result screen */
-.lab-game .lab-result { max-width: 1000px; }
-.lab-game .lab-result-card { padding: clamp(16px, 3vw, 32px); }
-.lab-game .lab-result-h { font: 650 clamp(28px, 4vw, 36px)/1.15 var(--lp-ui); letter-spacing: -0.02em; margin: 0; }
+     phone  one column: the title and score in a row, a line of the round's figures, then the board, with the view
+            toggle and the legend under it. The notes, the readout, the actions and the cards below the card follow.
+            Side by side, the toggle leads and the two boards share the width. Either way the boards' foot clears
+            the pinned Next round bar on the first screen.
+     wide   landscape from 900px. One board: the board on the left; the title, the score lines, Next round, then
+            the readout and the actions beside it. Side by
+            side: the title and Next round across the top, the two boards under them, the readout below.
+
+   Each board's side is the room left once the chrome above it and the fixed rows of its layout are added up, so it
+   is right on the first painted frame. --lead-h runs to the top of the review plate's content and --pair-top to the
+   top of the two boards; a title long enough to wrap pushes the boards down by its second line. */
+.lab-game .lab-result { max-width: 1040px; }
+.lab-game .lab-result-card {
+  --card-pad: clamp(16px, 3vw, 32px);
+  --plate-pad: 8px;
+  --title-h: 28px;
+  --summary-h: 21px;
+  --claim-h: 0px;
+  --head-extra: 0px;
+  --toggle-h: 54px;
+  --caption-h: 24px;
+  --next-h: calc(77px + env(safe-area-inset-bottom));
+  --lead-h: calc(var(--chrome-h) + var(--scroll-pad-y) + var(--card-pad) + var(--title-h) + 4px + var(--summary-h) + var(--claim-h) + 12px + 1px + var(--plate-pad) + var(--head-extra));
+  --board-fit: clamp(240px, 100svh - var(--lead-h) - var(--next-h) - 8px, 480px);
+  /* Below the two boards: the legend, which wraps to two lines on a phone, its margin, then the bar. */
+  --pair-top: calc(var(--lead-h) + var(--toggle-h) + 8px + var(--caption-h));
+  --pair-below: calc(54px + var(--next-h));
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas: "title" "summary" "claim" "toggle" "board" "notes" "readout" "next" "actions" "invite";
+  padding: var(--card-pad);
+}
+.lab-game .lab-result-card:has(> [data-result-claim]) { --claim-h: 122px; }
+/* Measured: with the claim row the legend sat 4px (en) to 19px (fi, hu) under the Next round bar at 375 by 667, since a wrapped title or notes line is not in the model. 24px more room under the board, and a lower floor, keep it clear. */
+@media (max-width: 767px) {
+  .lab-game .lab-result-card:has(> [data-result-claim]) {
+    --pair-below: calc(54px + var(--next-h) + 16px);
+    --board-fit: clamp(176px, 100svh - var(--lead-h) - var(--next-h) - 32px, 480px);
+  }
+}
+@media (max-width: 359px) { .lab-game .lab-result-card:has(> [data-result-claim]) { --claim-h: 143px; --board-fit: clamp(176px, 100svh - var(--lead-h) - var(--next-h) - 96px, 480px); } }
+.lab-game .lab-result-claim { grid-area: claim; display: flex; flex-direction: column; gap: 8px; margin: 4px 0 0; padding: 12px; border-radius: var(--lp-r-md, 10px); background: var(--lp-accent-soft); font: 500 14px/1.5 var(--lp-ui); color: var(--lp-ink); }
+.lab-game .lab-result-claim-text { margin: 0; min-height: 42px; min-width: 0; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.lab-game .lab-result-claim-action { flex: none; width: 100%; min-height: 44px; padding: 0 16px; font-size: 15px; }
+.lab-game .lab-result-claim-check { flex: none; margin-top: 1px; color: var(--lp-accent); }
+.lab-game .lab-result-claim[data-claim-state="claimed"] { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: start; column-gap: 8px; }
+.lab-game .lab-result-claim[data-claim-state="claimed"] .lab-result-claim-text > span { display: block; }
+.lab-game .lab-result-claim-link { grid-column: 2; display: inline-flex; align-items: center; justify-self: start; min-height: 44px; padding: 0 2px; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-accent); text-decoration: underline; text-underline-offset: 4px; }
+.lab-game .lab-result-claim-link:hover { text-decoration-thickness: 2px; }
+.lab-game .lab-result-claim-link:focus-visible { outline: 0; }
+.lab-game .lab-result-claim-link:focus-visible > span { outline: 2px solid var(--lp-accent); outline-offset: 3px; border-radius: 3px; }
+@media (min-width: 480px) {
+  .lab-game .lab-result-card:has(> [data-result-claim]) { --claim-h: 72px; }
+  .lab-game .lab-result-claim { flex-direction: row; align-items: center; gap: 16px; margin-top: 8px; padding: 10px 10px 10px 16px; font-size: 15px; }
+  .lab-game .lab-result-claim-text { flex: 1 1 0; }
+  .lab-game .lab-result-claim-action { width: auto; }
+  .lab-game .lab-result-claim[data-claim-state="claimed"] { grid-template-columns: auto minmax(0, 1fr) auto; column-gap: 12px; }
+  .lab-game .lab-result-claim[data-claim-state="claimed"] .lab-result-claim-text { min-height: 44px; line-height: 22px; }
+  .lab-game .lab-result-claim-link { grid-column: 3; align-self: center; }
+}
+.lab-game .lab-result-title { grid-area: title; display: flex; align-items: baseline; justify-content: space-between; gap: 12px; min-height: var(--title-h); }
+.lab-game .lab-result-h { font: 650 22px/1.25 var(--lp-ui); letter-spacing: -0.02em; margin: 0; text-wrap: balance; }
+.lab-game .lab-result-score { flex: none; font: 600 22px/1.25 var(--lp-data); letter-spacing: -0.02em; font-variant-numeric: tabular-nums; color: var(--lp-ink); }
+.lab-game .lab-result-score small { font-size: 0.6em; color: var(--lp-muted); }
+.lab-game .lab-result-summary { grid-area: summary; margin: 4px 0 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 500 15px/var(--summary-h) var(--lp-ui); color: var(--lp-ink-2); font-variant-numeric: tabular-nums; }
+.lab-game .lab-result-notes { grid-area: notes; }
 .lab-game .lab-result-sub { margin-top: 8px; font: 400 16px/1.5 var(--lp-body); color: var(--lp-ink-2); }
 .lab-game .lab-result-sub .lab-mono { color: var(--lp-ink); font-weight: 500; }
-.lab-game .lab-result-qualifies { margin-top: 16px; padding: 12px 16px; border-radius: var(--lp-r-md); background: var(--lp-correct-soft); color: var(--lp-correct); font: 600 15px/1.45 var(--lp-ui); }
-.lab-game .lab-result-grid { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: 24px; align-items: start; margin-top: 24px; }
-.lab-game .lab-result-board { margin: 0; padding: 16px; }
+.lab-game .lab-result-readout { grid-area: readout; margin-top: 24px; }
+/* The readout: the score and its figures beside the recall by piece type, stacked when the card is narrow, then the leaderboard prompt. */
+.lab-game .lab-rr { container: readout / inline-size; padding: clamp(16px, 3vw, 24px); }
+.lab-game .lab-rr-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 16px 32px; }
+.lab-game .lab-rr .lab-rc-big { font-size: 48px; }
+.lab-game .lab-rr-stats { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px 16px; margin: 12px 0 0; }
+.lab-game .lab-rr-stats dt { font: 500 13px/1.4 var(--lp-ui); color: var(--lp-muted); }
+.lab-game .lab-rr-stats dd { margin: 0; font: 500 16px/1.4 var(--lp-data); font-variant-numeric: tabular-nums; color: var(--lp-ink); }
+.lab-game .lab-rr-bars { align-content: start; gap: 8px; padding: 0; }
+.lab-game .lab-rr-bars .lab-bar { grid-template-columns: 64px 1fr 36px; gap: 10px; }
+@container readout (max-width: 440px) { .lab-game .lab-rr-cols { grid-template-columns: minmax(0, 1fr); } }
+/* Stacked but with room: the score sits beside its four figures, so the leaderboard prompt stays on the first screen. */
+@container readout (min-width: 340px) and (max-width: 440px) {
+  .lab-game .lab-rr-score { display: grid; grid-template-columns: auto minmax(0, 1fr); grid-template-areas: "label stats" "big stats"; column-gap: 28px; align-items: start; }
+  .lab-game .lab-rr-score > .lab-k { grid-area: label; }
+  .lab-game .lab-rr-score > .lab-rc-big { grid-area: big; }
+  .lab-game .lab-rr-score > .lab-rr-stats { grid-area: stats; margin: 0; }
+}
+.lab-game .lab-result-actions { grid-area: actions; }
+.lab-game .lab-result-card > .lab-community { grid-area: invite; }
+
+.lab-game .lab-result-board { grid-area: board; display: flex; flex-direction: column; margin: 0; padding: var(--plate-pad); }
+.lab-game .lab-result-board > .lab-figure { width: min(100%, var(--board-fit)); margin-inline: auto; }
 .lab-game .lab-result-board figcaption { display: block; margin-bottom: 8px; font-size: 14px; font-weight: 600; color: var(--lp-ink); }
-.lab-game .lab-result-next { position: sticky; bottom: 0; z-index: 5; margin: 24px calc(-1 * clamp(16px, 3vw, 32px)) 0; padding: 12px clamp(16px, 3vw, 32px) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
-.lab-game .lab-result-next .lab-btn { min-height: 52px; min-width: min(320px, 100%); padding: 0 28px; font-size: 17px; }
+.lab-game .lab-result-views { grid-area: toggle; display: flex; margin: 12px 0 8px; }
+.lab-game .lab-view-toggle { display: inline-flex; gap: 4px; padding: 4px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-md, 10px); background: var(--lp-surface); }
+.lab-game .lab-view-option { min-height: 36px; padding: 0 14px; border: 0; border-radius: var(--lp-r-sm); background: none; font: 500 14px/1 var(--lp-ui); color: var(--lp-ink-2); cursor: pointer; }
+.lab-game .lab-view-option:hover { color: var(--lp-ink); }
+.lab-game .lab-view-option[aria-pressed="true"] { background: var(--lp-accent-soft); color: var(--lp-ink); font-weight: 600; }
+.lab-game .lab-view-option:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
+@media (pointer: coarse), (max-width: 767px) { .lab-game .lab-view-option { min-height: 44px; } }
+/* Two boards share the width, so coordinates sit only on the left and below, where they read, instead of in a frame
+   on all four sides. --pair-fit is a board's side without them. */
+.lab-game .lab-result-pair {
+  --pair-gutter: 16px;
+  --pair-files: 18px;
+  --pair-fit: clamp(120px, 100svh - var(--pair-top) - var(--pair-files) - var(--pair-below), 480px);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, calc(var(--pair-fit) + var(--pair-gutter))));
+  justify-content: center;
+  gap: 16px;
+}
+.lab-game .lab-result-pair figure { margin: 0; min-width: 0; }
+.lab-game .lab-result-pair figcaption { margin-bottom: 4px; }
+.lab-game .lab-result-pair .lab-figure { padding: 0 0 var(--pair-files) var(--pair-gutter); }
+.lab-game .lab-result-pair .lab-ranks { top: 0; bottom: var(--pair-files); left: 2px; }
+.lab-game .lab-result-pair .lab-files { left: var(--pair-gutter); right: 0; bottom: 2px; }
+@media (max-width: 767px) {
+  .lab-game .lab-result-pair { --pair-gutter: 12px; --pair-files: 14px; gap: 8px; }
+  .lab-game .lab-result-pair .lab-ranks { left: 1px; font-size: 10px; }
+  .lab-game .lab-result-pair .lab-files { bottom: 1px; font-size: 10px; }
+}
+
+/* phone. The plate runs to the card's edges, and its caption stays only for assistive technology, so the toggle
+   takes a row of its own: under one board, above two. */
+@media not all and (min-aspect-ratio: 4/3) and (min-width: 900px) {
+  .lab-game .lab-result-board { margin-inline: calc(-1 * var(--card-pad)); border-inline: 0; border-radius: 0; }
+  .lab-game .lab-view-toggle { display: flex; width: 100%; }
+  .lab-game .lab-view-option { flex: 1 1 0; padding: 0 8px; }
+  .lab-game .lab-result-card:has(> [data-result-view="overlay"]) { --head-extra: calc(var(--toggle-h) + 8px); }
+  .lab-game .lab-result-board > .lab-legend { margin-top: 8px; }
+}
+
+.lab-game .lab-result-next { display: flex; gap: 8px; grid-area: next; position: sticky; bottom: 0; z-index: 5; margin: 24px calc(-1 * var(--card-pad)) 0; padding: 12px var(--card-pad) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
+.lab-game .lab-result-next .lab-result-main { flex: 1 1 auto; min-height: 52px; min-width: min(260px, calc(100% - 60px)); padding: 0 20px; font-size: 17px; }
+.lab-game .lab-result-next .lab-result-main { white-space: nowrap; }
+.lab-game .lab-result-next-board { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+@media (max-width: 419px) {
+  .lab-game .lab-result-next .lab-result-main { gap: 6px; padding: 0 6px; font-size: 15px; }
+  .lab-game .lab-result-next-board { font-size: 12px; }
+}
+/* Below 375px the board summary leaves the button's face, kept for assistive technology, so the label stays whole beside Share. */
+@media (max-width: 374px) {
+  .lab-game .lab-result-next .lab-result-main { position: relative; }
+  .lab-game .lab-result-next-board { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+}
+.lab-game .lab-result-next .lab-result-share { flex: none; width: 52px; min-width: 52px; min-height: 52px; padding: 0; justify-content: center; }
+@media (max-width: 419px) { .lab-game .lab-result-next .lab-result-share { width: 40px; min-width: 40px; } }
+
+@media (min-aspect-ratio: 4/3) and (min-width: 900px) {
+  .lab-game .lab-result-card {
+    --plate-pad: 16px;
+    --head-h: 58px;
+    --board-fit: clamp(240px, 100svh - var(--chrome-h) - var(--scroll-pad-y) - var(--card-pad) - 1px - var(--plate-pad) - var(--head-h) - 8px, 480px);
+    grid-template-columns: calc(var(--board-fit) + 2 * var(--plate-pad) + 2px) minmax(0, 1fr);
+    grid-template-rows: repeat(6, auto) 1fr auto;
+    grid-template-areas: "toggle title" "board claim" "board notes" "board next" "board readout" "board actions" "board ." "invite invite";
+    column-gap: 32px;
+    align-items: start;
+  }
+  .lab-game .lab-result-h { font-size: 34px; line-height: 1.15; }
+  .lab-game .lab-result-score, .lab-game .lab-result-summary { display: none; }
+  .lab-game .lab-result-board { margin: 0; }
+  .lab-game .lab-result-views { margin: 0 0 4px; justify-self: start; }
+  .lab-game .lab-result-card:has(> [data-result-view="overlay"]) .lab-result-title { align-self: center; }
+  .lab-game .lab-result-board > .lab-figure { width: var(--board-fit); }
+  .lab-game .lab-result-readout { margin-top: 16px; }
+  .lab-game .lab-result-next { position: static; margin: 20px 0 0; padding: 0; border: 0; background: none; }
+  .lab-game .lab-result-next .lab-result-main { width: 100%; }
+  .lab-game .lab-result-actions { margin-top: 12px; }
+
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) {
+    /* The title row, as tall as Next round, and the gap under it. */
+    --top-h: 68px;
+    --caption-h: 26px;
+    --pair-top: calc(var(--chrome-h) + var(--scroll-pad-y) + var(--card-pad) + var(--top-h) + 1px + var(--plate-pad) + var(--head-h) + var(--caption-h) + var(--claim-h));
+    --pair-below: 8px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-rows: none;
+    grid-template-areas: "toggle toggle" "title next" "claim claim" "board board" "notes notes" "readout readout" "actions actions" "invite invite";
+  }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-title { align-self: center; justify-content: flex-start; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-score { display: inline; font-size: 34px; line-height: 1.15; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) > .lab-result-board { margin-top: 16px; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-notes { margin-top: 8px; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-readout { margin-top: 24px; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-next { align-self: center; margin: 0; }
+  .lab-game .lab-result-card:has(> [data-result-view="side"]) .lab-result-next .lab-result-main { width: auto; min-width: 280px; }
+}
 .lab-game .lab-result-next-board { font-weight: 500; opacity: 0.85; font-variant-numeric: tabular-nums; }
-.lab-game .lab-result-actions { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 12px; margin-top: 16px; }
+.lab-game .lab-result-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; }
 .lab-game .lab-result-link { font: 500 15px/1.4 var(--lp-ui); }
-.lab-game .lab-result-more { flex: 1 1 100%; }
-.lab-game .lab-result-more-toggle { display: inline-flex; align-items: center; gap: 6px; min-height: 44px; padding: 0 4px; border-radius: var(--lp-r-md); font: 500 15px/1.4 var(--lp-ui); color: var(--lp-ink-2); cursor: pointer; list-style: none; }
-.lab-game .lab-result-more-toggle::-webkit-details-marker { display: none; }
-.lab-game .lab-result-more-toggle::after { content: ""; width: 7px; height: 7px; margin-top: -3px; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg); transition: transform 0.15s; }
-.lab-game .lab-result-more[open] > .lab-result-more-toggle::after { margin-top: 3px; transform: rotate(-135deg); }
-.lab-game .lab-result-more-toggle:hover { color: var(--lp-ink); }
-.lab-game .lab-result-more-toggle:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
-.lab-game .lab-result-more-list { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; padding-top: 8px; }
-@media (prefers-reduced-motion: reduce) { .lab-game .lab-result-more-toggle::after { transition: none; } }
 
 .lab-game .lab-tomorrow { padding: clamp(16px, 3vw, 24px); }
 .lab-game .lab-tomorrow-h { margin: 0; font: 650 18px/1.3 var(--lp-ui); }
@@ -76,26 +341,13 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-delta-from { font: 400 14px/1.4 var(--lp-body); color: var(--lp-muted); }
 .lab-game .lab-delta .lab-tag { align-self: center; }
 .lab-game .lab-deltas-open { display: inline-block; margin-top: 16px; font: 500 15px/1.4 var(--lp-ui); }
-.lab-game .lab-deltas:focus { outline: none; }
-.lab-game .lab-deltas:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
 
-/* "Round saved": the sound toast's chip, laid over the site header. The header is the one band that is never the score
-   or the board; at the foot of a 390 by 844 phone the chip covered the readout's score, and on a shorter screen the board. */
-.lab-game .lab-saved-toast-region { position: fixed; left: 50%; top: calc(8px + env(safe-area-inset-top)); z-index: 60; width: max-content; max-width: min(560px, calc(100vw - 32px)); transform: translateX(-50%); pointer-events: none; }
-.lab-game .lab-saved-toast { display: flex; align-items: center; gap: 12px; padding: 8px 8px 8px 20px; border: 1px solid var(--lp-line); border-radius: 999px; background: var(--lp-surface); box-shadow: var(--lp-pop-shadow); font: 500 14px/1.4 var(--lp-ui); color: var(--lp-ink); pointer-events: auto; animation: lab-saved-toast-in 200ms ease-out; }
-.lab-game .lab-saved-toast-action { flex: none; min-height: 32px; padding: 0 12px; border: 0; border-radius: 999px; background: var(--lp-accent-soft); font: 600 14px/1 var(--lp-ui); color: var(--lp-accent); cursor: pointer; }
-.lab-game .lab-saved-toast-action:hover { background: var(--lp-accent); color: var(--lp-on-accent); }
-@keyframes lab-saved-toast-in { from { opacity: 0; transform: translateY(-8px); } }
-@media (prefers-reduced-motion: reduce) { .lab-game .lab-saved-toast { animation: none; } }
 @media (max-width: 639px) {
   .lab-game .lab-deltas-list { grid-template-columns: minmax(0, 1fr); }
 }
 @media (max-width: 767px) {
-  .lab-game .lab-result-grid { grid-template-columns: minmax(0, 1fr); }
-  .lab-game .lab-result-grid > .lab-result-board { order: 1; }
   .lab-game .lab-result-actions > .lab-btn { flex: 1 1 calc(50% - 6px); }
-  .lab-game .lab-result-actions > .lab-result-submit { flex-basis: 100%; }
-  .lab-game .lab-result-next .lab-btn { width: 100%; }
+  .lab-game .lab-result-next .lab-result-main { width: 100%; }
 }
 
 /* Text in the lab card, the article tile and the set-board notice is set in Geist, the face the lab card's height reserve was measured in. */
@@ -106,26 +358,67 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-paper.lab-dialog > button { color: var(--lp-ink-2); }
 .lab-dialog .lab-dialog-title { font: 650 20px/1.3 var(--lp-ui); color: var(--lp-ink); }
 .lab-dialog .lab-dialog-text { font: 400 15px/1.55 var(--lp-body); color: var(--lp-ink-2); }
+.lab-dialog .lab-dialog-ranks { display: grid; gap: 4px; margin: 12px 0 0; padding: 0; list-style: none; font: 600 17px/1.4 var(--lp-ui); color: var(--lp-ink); font-variant-numeric: tabular-nums; }
 .lab-dialog .lab-dialog-label { font: 600 14px/1.4 var(--lp-ui); color: var(--lp-ink); }
 .lab-dialog .lab-dialog-input { height: 44px; border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-md); background: var(--lp-surface); color: var(--lp-ink); }
+.lab-dialog .lab-dialog-hint { font: 400 14px/1.45 var(--lp-body); color: var(--lp-muted); }
 .lab-dialog .lab-dialog-error { font: 400 14px/1.45 var(--lp-body); color: var(--lp-wrong); }
 .lab-dialog .lab-dialog-done { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 50%; background: var(--lp-correct-soft); color: var(--lp-correct); }
 .lab-dialog .lab-btn { min-height: 44px; }
 
-/* configuration form */
-.lab-game .lab-config { width: 100%; max-width: 560px; margin: 0 auto; padding: clamp(20px, 4vw, 32px); }
-.lab-game .lab-config-h { display: flex; align-items: flex-end; min-height: 2lh; margin: 0 0 20px; font: 650 clamp(30px, 4vw, 40px)/1.12 var(--lp-ui); letter-spacing: -0.02em; }
+/* configuration form, in one of two layouts.
+
+     stack  the default: one column in the order of the markup, the board between the presets and the steppers
+     split  landscape from 560px: the board on the left, the settings beside it, by grid areas
+
+   Start round is in a bar that names the board it starts. The bar is pinned to the foot of the screen, so Start round
+   stays in reach while the settings scroll under it, until the split has the height to fit the card on the first
+   screen: then the bar is an ordinary row and the rating preview's own line names the board. On a phone on its side
+   the board stays in view beside the settings while they scroll. */
+.lab-game .lab-config { --config-pad: clamp(20px, 4vw, 32px); width: 100%; max-width: 640px; margin: 0 auto; padding: var(--config-pad); }
+/* The page's one h1, kept for search engines and screen readers; the header's logo already names the game on screen. */
+.lab-game .lab-config-h { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+/* With the title hidden the presets lead the card, so they start at its padding (and, beside the board, at the board's top edge). */
+.lab-game .lab-config .lab-config-presets-group { margin-top: 0; }
 .lab-game .lab-config-group { margin-top: 24px; }
 .lab-game .lab-config-label { display: block; margin: 0 0 10px; font: 600 15px/1.4 var(--lp-ui); color: var(--lp-ink); }
-.lab-game .lab-config-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 10px; }
-.lab-game .lab-config-row .lab-config-label { margin: 0; }
-.lab-game .lab-config-value { min-width: 48px; padding: 4px 10px; border-radius: 999px; background: var(--lp-accent-soft); color: var(--lp-accent); text-align: center; font: 600 15px/1.3 var(--lp-data); font-variant-numeric: tabular-nums; }
-.lab-game .lab-config-presets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px; }
-.lab-game .lab-preset { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 56px; padding: 8px 6px; border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-md); background: var(--lp-surface); color: var(--lp-ink); cursor: pointer; transition: background-color 0.15s, border-color 0.15s; }
+.lab-game .lab-config-presets { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+.lab-game .lab-preset { display: flex; align-items: center; justify-content: center; min-width: 0; min-height: 48px; padding: 6px 4px; border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-md); background: var(--lp-surface); color: var(--lp-ink); font: 600 15px/1.25 var(--lp-ui); text-align: center; cursor: pointer; transition: background-color 0.15s, border-color 0.15s; }
 .lab-game .lab-preset:hover { border-color: var(--lp-ink-2); }
 .lab-game .lab-preset[aria-pressed="true"] { background: var(--lp-accent-soft); border-color: var(--lp-accent); box-shadow: inset 0 0 0 1px var(--lp-accent); }
-.lab-game .lab-preset-name { font: 600 15px/1.25 var(--lp-ui); }
-.lab-game .lab-preset-meta { font: 400 12px/1.3 var(--lp-data); color: var(--lp-muted); font-variant-numeric: tabular-nums; }
+.lab-game .lab-preset:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; }
+/* A narrow row shows the short label as generated content, so the page text and the button's name keep the full one.
+   It keys off the row's own width: the split setup's settings column is as narrow as a phone on a window 800px wide. */
+.lab-game .lab-config-presets-group { container: config-presets / inline-size; }
+@container config-presets (max-width: 360px) {
+  .lab-game .lab-preset { font-size: 14px; }
+  .lab-game .lab-preset-name { display: none; }
+  .lab-game .lab-preset::after { content: attr(data-short); }
+}
+@media (max-width: 480px) {
+  /* Two lines held for every preset's description, so picking one never moves the board under the finger. */
+  .lab-game .lab-config-description { min-height: 3.1em; }
+}
+
+/* The board is the control: its first --count pieces show, and the ring around it fills clockwise to --study. */
+@property --study { syntax: "<percentage>"; inherits: true; initial-value: 0%; }
+.lab-game .lab-setup-preview { width: min(100%, 400px); margin: 20px auto 0; transition: --study 0.22s ease-out; }
+.lab-game .lab-setup-ring { padding: 8px; border-radius: var(--lp-r-lg); background: conic-gradient(var(--lp-accent) 0 var(--study), var(--lp-surface-2) var(--study) 100%); box-shadow: inset 0 0 0 1px var(--lp-line); }
+.lab-game .lab-setup-preview .lab-piece {
+  --shown: clamp(0, calc(var(--count) - var(--reveal)), 1);
+  opacity: var(--shown);
+  transform: scale(calc(0.6 + 0.4 * var(--shown)));
+  transition: opacity 0.2s ease-out, transform 0.2s ease-out;
+}
+.lab-game .lab-steppers { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin-top: 20px; }
+.lab-game .lab-stepper { display: grid; gap: 8px; min-width: 0; }
+.lab-game .lab-stepper-label { font: 600 14px/1.35 var(--lp-ui); color: var(--lp-ink); text-align: center; }
+.lab-game .lab-stepper-row { display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; align-items: center; border: 1px solid var(--lp-line-strong); border-radius: var(--lp-r-md); background: var(--lp-surface); }
+.lab-game .lab-stepper-btn { display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 0; border-radius: var(--lp-r-md); background: none; color: var(--lp-accent); font: 500 24px/1 var(--lp-ui); cursor: pointer; transition: background-color 0.15s; }
+.lab-game .lab-stepper-btn:hover { background: var(--lp-accent-soft); }
+.lab-game .lab-stepper-btn[aria-disabled="true"] { background: none; color: var(--lp-muted); opacity: 0.5; cursor: not-allowed; }
+.lab-game .lab-stepper-btn:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: -2px; }
+.lab-game .lab-stepper-value { overflow: hidden; text-align: center; white-space: nowrap; font: 600 18px/1.3 var(--lp-data); font-variant-numeric: tabular-nums; color: var(--lp-ink); }
 .lab-game .lab-config-mode { display: grid; grid-template-columns: auto 1fr; align-items: center; column-gap: 10px; }
 .lab-game .lab-config-mode .lab-config-label { margin: 0; cursor: pointer; }
 .lab-game .lab-config-check { width: 20px; height: 20px; margin: 0; accent-color: var(--lp-accent); cursor: pointer; }
@@ -137,8 +430,12 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-range::-webkit-slider-thumb { -webkit-appearance: none; width: 22px; height: 22px; margin-top: -8px; border: 2px solid var(--lp-surface); border-radius: 50%; background: var(--lp-accent); box-shadow: 0 0 0 1px var(--lp-accent); }
 .lab-game .lab-range::-moz-range-thumb { width: 18px; height: 18px; border: 2px solid var(--lp-surface); border-radius: 50%; background: var(--lp-accent); }
 .lab-game .lab-range:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 4px; }
-.lab-game .lab-range-scale { display: flex; justify-content: space-between; margin-top: 6px; font: 400 12px/1.3 var(--lp-data); color: var(--lp-muted); }
-.lab-game .lab-config-preview { margin-top: 24px; padding: 12px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); background: var(--lp-paper); }
+.lab-game .lab-config-preview { margin-top: 24px; padding: 8px 12px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); background: var(--lp-paper); }
+.lab-game .lab-preview-summary { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0 12px; }
+.lab-game .lab-preview-line { margin: 0; font: 500 14px/1.45 var(--lp-ui); color: var(--lp-ink-2); font-variant-numeric: tabular-nums; }
+.lab-game .lab-preview-toggle { min-height: 40px; padding: 0 !important; border: 0; background: none; font: 600 14px/1.3 var(--lp-ui); color: var(--lp-accent); text-decoration: underline; text-underline-offset: 3px; cursor: pointer; }
+.lab-game .lab-preview-toggle:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; border-radius: 4px; }
+.lab-game .lab-preview-details { margin: 4px 0 4px; padding-top: 12px; border-top: 1px solid var(--lp-line); }
 .lab-game .lab-preview-phase { min-height: 1.4em; margin: 0 0 8px; font: 600 13px/1.4 var(--lp-ui); color: var(--lp-ink-2); }
 .lab-game .lab-preview-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin: 0; }
 .lab-game .lab-preview-cell { padding: 8px 10px; border-radius: var(--lp-r-md); }
@@ -156,10 +453,60 @@ html.game-fixed:has(.lab-paper), html.game-fixed:has(.lab-paper) body { overflow
 .lab-game .lab-preview-gain dd { color: color-mix(in srgb, var(--lp-correct) 80%, var(--lp-ink)); }
 .lab-game .lab-preview-loss { background: var(--lp-wrong-soft); }
 .lab-game .lab-preview-loss dd { color: color-mix(in srgb, var(--lp-wrong) 80%, var(--lp-ink)); }
-.lab-game .lab-config-start { width: 100%; margin-top: 24px; }
-.lab-game .lab-config-daily { width: 100%; min-height: 52px; margin-top: 12px; padding: 6px 16px; font-size: 15px; font-weight: 500; line-height: 1.25; font-variant-numeric: tabular-nums; text-wrap: balance; }
+.lab-game .lab-config-bar { position: sticky; bottom: 0; z-index: 5; display: grid; gap: 8px; margin: 24px calc(-1 * var(--config-pad)) 0; padding: 12px var(--config-pad) calc(12px + env(safe-area-inset-bottom)); border-top: 1px solid var(--lp-line); background: var(--lp-surface); }
+.lab-game .lab-config-bar-summary { margin: 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; font: 500 14px/1.4 var(--lp-ui); color: var(--lp-ink-2); font-variant-numeric: tabular-nums; }
+.lab-game .lab-config .lab-preview-line { display: none; }
+.lab-game .lab-config-start { width: 100%; min-height: 48px; }
+.lab-game .lab-config-daily { width: 100%; min-height: 52px; margin-top: 12px; padding: 6px 12px; flex-direction: column; gap: 2px; line-height: 1.2; text-align: center; }
+.lab-game .lab-config-daily-title { font: 600 15px/1.2 var(--lp-ui); }
+.lab-game .lab-config-daily-details { font: 400 13px/1.25 var(--lp-ui); text-wrap: balance; color: var(--lp-ink-2); font-variant-numeric: tabular-nums; }
 .lab-game .lab-config-last { margin-top: 16px; text-align: center; }
-@media (max-width: 520px) { .lab-game .lab-config-presets { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+@media (min-aspect-ratio: 4/3) and (min-width: 560px) {
+  .lab-game :has(> .lab-config) { container: setup-page / inline-size; }
+  .lab-game .lab-config {
+    /* As large as the card's height allows on the first screen, between a floor that still reads as a board and the 480px past which it only crowds the settings.
+       The width term keeps the settings column wide enough for four presets and two steppers: sized from height alone, a
+       short-and-narrow window (800 x 600) handed the board so much width that the stepper values collapsed to nothing.
+       100cqw is the card's own width, from the wrapper below (the page container's padding changes by breakpoint); 336px is the column, with room for a scrollbar. */
+    --setup-settings-min: 336px;
+    --setup-gap: clamp(24px, 4vw, 40px);
+    --setup-board: clamp(160px, min(100svh - var(--chrome-h) - var(--scroll-pad-y) - 2 * var(--config-pad), min(100cqw, 1040px) - 2 * var(--config-pad) - var(--setup-settings-min) - var(--setup-gap)), 480px);
+    display: grid;
+    grid-template-columns: var(--setup-board) repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(7, auto);
+    grid-template-areas: "board presets presets" "board steppers steppers" "board mode mode" "board rating rating" "board start start" "board daily daily" "board last last";
+    column-gap: var(--setup-gap);
+    align-items: start;
+    max-width: 1040px;
+  }
+  .lab-game .lab-config > * { margin-top: 16px; }
+  .lab-game .lab-config-presets-group { grid-area: presets; }
+  .lab-game .lab-setup-preview { grid-area: board; position: sticky; top: calc(var(--lp-header-h) + 9px); width: var(--setup-board); margin: 0; }
+  .lab-game .lab-steppers { grid-area: steppers; }
+  .lab-game .lab-config-mode { grid-area: mode; }
+  .lab-game .lab-config-preview { grid-area: rating; }
+  .lab-game .lab-config-bar { grid-area: start; margin-inline: 0 calc(-1 * var(--config-pad)); padding-inline: 0 var(--config-pad); }
+  .lab-game .lab-config-daily { grid-area: daily; }
+  .lab-game .lab-config-last { grid-area: last; }
+}
+/* The Start round row only once the card is near full width: narrower, the two buttons each get under 170px and the row drops below the first screen. */
+@media (min-aspect-ratio: 4/3) and (min-width: 900px) and (min-height: 680px) {
+  @container setup-page (min-width: 990px) {
+    .lab-game .lab-config {
+      grid-template-rows: repeat(5, auto) minmax(0, 1fr);
+      grid-template-areas: "board presets presets" "board steppers steppers" "board mode mode" "board rating rating" "board start daily" "board last last";
+    }
+    /* Start round and Today's board share a row; each reaches halfway into the column gap so the pair sits 12px apart. */
+    .lab-game .lab-config-bar { position: static; margin-inline: 0 calc((12px - var(--setup-gap)) / 2); padding: 0; border: 0; background: none; }
+    .lab-game .lab-config-daily { margin-inline-start: calc((12px - var(--setup-gap)) / 2); width: auto; }
+    /* A longer language wraps the details onto a second line; both buttons then grow together. */
+    .lab-game .lab-config-bar, .lab-game .lab-config-daily { align-self: stretch; }
+    .lab-game .lab-config-bar-summary { display: none; }
+    .lab-game .lab-config .lab-preview-line { display: block; }
+    .lab-game .lab-config-start { min-height: 52px; }
+  }
+}
 
 /* A set board before study: the empty board blurred under its Start card, then the 3, 2, 1, then the board clears.
    lab-paper.css stills the number's entrance under prefers-reduced-motion. The blur lifts at once: the study clock is already running. */

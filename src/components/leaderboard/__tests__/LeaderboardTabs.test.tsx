@@ -183,12 +183,12 @@ describe("the Daily tab", () => {
     );
   });
 
-  it("keeps the new day's board on screen while a read the server is not ready for is retried a few seconds later", async () => {
+  it("keeps the new day's board loading while a read the server is not ready for is retried a few seconds later", async () => {
     fetchMock.mockImplementationOnce(notYet);
     await renderDailyAt("2026-10-14T00:00:05Z", "UTC");
 
     expect(fetchMock).toHaveBeenCalledTimes(1);
-    expect(within(screen.getByRole("tabpanel")).getByText("Be the First Champion!")).toBeInTheDocument();
+    expect(within(screen.getByRole("tabpanel")).getByRole("status")).toHaveTextContent(enMessages.leaderboard.loading);
     expect(screen.queryByText(/Invalid difficulty level/)).not.toBeInTheDocument();
 
     await act(async () => {
@@ -348,6 +348,55 @@ describe("switching boards", () => {
     });
     expect(screen.getByRole("tabpanel")).toContainElement(mediumName);
     expect(mediumName).toBeVisible();
+  });
+});
+
+describe("a board the page was not served with", () => {
+  const easyRow: LeaderboardEntry = { ...mediumRow, id: "eve", player_name: "Eve Easy", difficulty: "easy" };
+
+  it("reads it from the shared cache when first opened and draws it", async () => {
+    fetchMock.mockImplementation(() => Promise.resolve({ json: () => Promise.resolve({ data: [easyRow] }) }));
+    render(<LeaderboardTabs boards={{ medium: { data: [mediumRow] } }} />);
+    expect(fetchMock).not.toHaveBeenCalled();
+
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Easy" }));
+    });
+
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(fetchMock).toHaveBeenLastCalledWith("/api/leaderboard?difficulty=easy", expect.objectContaining({ cache: "default" }));
+    expect(within(screen.getByRole("tabpanel")).getByText("Eve Easy")).toBeInTheDocument();
+
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Medium" }));
+    });
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Easy" }));
+    });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it("says it is loading until the read lands", async () => {
+    fetchMock.mockImplementation(() => new Promise(() => {}));
+    render(<LeaderboardTabs boards={{ medium: { data: [] } }} />);
+
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Hard" }));
+    });
+
+    expect(within(screen.getByRole("tabpanel")).getByRole("status")).toHaveTextContent(enMessages.leaderboard.loading);
+  });
+
+  it("shows the unavailable state when the read fails", async () => {
+    fetchMock.mockImplementation(offline);
+    render(<LeaderboardTabs boards={{ medium: { data: [] } }} />);
+
+    await act(async () => {
+      fireEvent.mouseDown(screen.getByRole("tab", { name: "Hard" }));
+    });
+
+    expect(screen.getByText(enMessages.leaderboard.unavailableTitle)).toBeInTheDocument();
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 });
 

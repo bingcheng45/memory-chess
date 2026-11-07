@@ -40,6 +40,10 @@ function post(body: object, address = freshAddress()) {
   );
 }
 
+function postRaw(body: string, headers: Record<string, string>) {
+  return POST(new NextRequest("http://localhost/api/leaderboard", { method: "POST", headers: { "x-forwarded-for": freshAddress(), ...headers }, body }));
+}
+
 const storedRow = { id: 1, ...validEntry, country_code: WORLD_CODE };
 
 describe("POST /api/leaderboard", () => {
@@ -56,6 +60,45 @@ describe("POST /api/leaderboard", () => {
 
   afterEach(() => {
     logged.mockRestore();
+  });
+
+  it("refuses a body that is not labelled JSON with a 415 before any read of the store", async () => {
+    const response = await postRaw(JSON.stringify(validEntry), { "Content-Type": "text/plain" });
+
+    expect(response.status).toBe(415);
+    expect(await response.json()).toEqual({ error: "Content-Type must be application/json" });
+    expect(checkSupabaseConnection).not.toHaveBeenCalled();
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it("refuses a body of 2049 bytes with a 413 and stores nothing", async () => {
+    const response = await postRaw(JSON.stringify({ ...validEntry, padding: "x".repeat(2049) }), { "Content-Type": "application/json" });
+
+    expect(response.status).toBe(413);
+    expect(await response.json()).toEqual({ error: "Request body is too large" });
+    expect(checkSupabaseConnection).not.toHaveBeenCalled();
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it("refuses an oversized body that declares no length, counted as it streams", async () => {
+    const chunk = new TextEncoder().encode("x".repeat(1024));
+    const stream = new ReadableStream({ start(controller) { [chunk, chunk, chunk].forEach((c) => controller.enqueue(c)); controller.close(); } });
+    const request = new Request("http://localhost/api/leaderboard", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "x-forwarded-for": freshAddress() },
+      body: stream,
+      duplex: "half",
+    } as RequestInit);
+
+    expect((await POST(new NextRequest(request))).status).toBe(413);
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it("answers a body that is JSON-labelled but broken with a 400", async () => {
+    const response = await postRaw("{", { "Content-Type": "application/json; charset=utf-8" });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Invalid JSON request body" });
   });
 
   it("stores a round with at least one correct piece", async () => {
@@ -196,6 +239,9 @@ describe("POST /api/leaderboard", () => {
     ["fractional", 12.5],
     ["a string", "1200"],
     ["null", null],
+    ["one above what any round can reach", 3701],
+    ["the old 5000 ceiling", 5000],
+    ["7300", 7300],
   ])("rejects a skill rating that is %s", async (_case, skill_rating) => {
     const response = await post({ ...validEntry, skill_rating });
 
@@ -206,8 +252,7 @@ describe("POST /api/leaderboard", () => {
 
   it.each([
     ["the lowest rating", 0, 0],
-    ["the highest rating", 5000, 5000],
-    ["a rating above the highest as the highest", 7300, 5000],
+    ["the highest rating a round can reach", 3700, 3700],
   ])("stores %s", async (_case, sent, stored) => {
     const response = await post({ ...validEntry, skill_rating: sent });
 
@@ -255,6 +300,14 @@ describe("POST /api/leaderboard", () => {
 
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({ error: "Player name must be between 4 and 16 characters" });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it("refuses an offensive name with a message that asks for a different one", async () => {
+    const response = await post({ ...validEntry, player_name: "P3N1S" });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: "Please choose a different player name" });
     expect(submitLeaderboardEntry).not.toHaveBeenCalled();
   });
 
@@ -401,7 +454,7 @@ describe("POST /api/leaderboard", () => {
   });
 
   it.each([
-    ["easy", 2, 0.066, 0.5],
+    ["easy", 2, 0.3, 0.5],
     ["medium", 6, 60, 1.5],
     ["hard", 12, 8, 3],
     ["grandmaster", 20, 5, 5],
@@ -423,6 +476,33 @@ describe("POST /api/leaderboard", () => {
 
     expect(response.status).toBe(400);
     expect(await response.json()).toEqual({ error });
+    expect(submitLeaderboardEntry).not.toHaveBeenCalled();
+  });
+
+  it.each([
+    ["easy", 2, 0.3],
+    ["medium", 6, 0.6],
+    ["hard", 12, 1.2],
+    ["grandmaster", 20, 2],
+  ])("stores a %s row of %i pieces studied exactly the %f s floor", async (difficulty, pieces, memorize_time) => {
+    const response = await post({ ...validEntry, difficulty, piece_count: pieces, correct_pieces: pieces, total_wrong_pieces: 0, memorize_time, solution_time: pieces * 3 });
+
+    expect(response.status).toBe(200);
+    expect(submitLeaderboardEntry).toHaveBeenCalledWith(expect.objectContaining({ difficulty, memorize_time }));
+  });
+
+  it.each([
+    ["easy", 2, 0.067, "0.3"],
+    ["easy", 2, 0.299, "0.3"],
+    ["medium", 6, 0.565, "0.6"],
+    ["medium", 6, 0.599, "0.6"],
+    ["hard", 12, 1.199, "1.2"],
+    ["grandmaster", 20, 1.999, "2"],
+  ])("rejects a %s row of %i pieces studied only %f s", async (difficulty, pieces, memorize_time, floor) => {
+    const response = await post({ ...validEntry, difficulty, piece_count: pieces, correct_pieces: pieces, total_wrong_pieces: 0, memorize_time, solution_time: pieces * 3 });
+
+    expect(response.status).toBe(400);
+    expect(await response.json()).toEqual({ error: `A study of ${pieces} pieces takes at least ${floor} seconds` });
     expect(submitLeaderboardEntry).not.toHaveBeenCalled();
   });
 
@@ -571,8 +651,26 @@ describe("GET /api/leaderboard", () => {
       expect(response.headers.get("cache-control")).toBe(cacheControl);
     });
 
-    it("keeps no copy of a daily read without a day, whose answer changes at midnight", async () => {
-      expect((await get("daily")).headers.get("cache-control")).toBeNull();
+    it("lets the edge keep today's open daily board for 15 seconds and no longer, so midnight is at most 15 seconds late", async () => {
+      jest.mocked(getLeaderboard).mockResolvedValue({ data: [{ id: "row-1", player_name: "Dino beta" }] } as never);
+      jest.mocked(getDailyResults).mockResolvedValue([]);
+
+      const response = await get("daily");
+
+      expect(response.status).toBe(200);
+      expect(response.headers.get("cache-control")).toBe("public, s-maxage=15");
+      expect(await response.json()).toEqual({ data: [{ id: "row-1", player_name: "Dino beta" }], playedLike: null });
+      expect(getLeaderboard).toHaveBeenCalledWith({ difficulty: "daily", daily_day: "2026-10-13" });
+    });
+
+    it("keeps no copy of an open daily board that could not be read", async () => {
+      jest.spyOn(console, "error").mockImplementation(() => {});
+      jest.mocked(getLeaderboard).mockResolvedValue({ data: [], error: "connection refused" });
+
+      const response = await get("daily");
+
+      expect(response.status).toBe(503);
+      expect(response.headers.get("cache-control")).toBeNull();
     });
 
     it("keeps no copy of a board that could not be read", async () => {

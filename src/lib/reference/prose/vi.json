@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Thiết lập tùy chỉnh",
-        "body": "Hai thanh trượt di chuyển độc lập với các mức có sẵn. Số quân chạy từ {minPieces} đến {maxPieces} và thời gian nhìn từ {minSeconds} đến {maxSeconds} giây. Bảng xếp hạng nhận diện một ván qua số quân của nó, nên bất kỳ số quân nào khác bốn mức có sẵn đều biến ván đó thành ván tùy chỉnh, và ván tùy chỉnh không xuất hiện trên bảng xếp hạng."
+        "body": "Các nút − và + bên dưới bàn cờ thay đổi số quân và thời gian, độc lập với các mức có sẵn. Số quân chạy từ {minPieces} đến {maxPieces} và thời gian nhìn từ {minSeconds} đến {maxSeconds} giây. Bảng xếp hạng nhận diện một ván qua số quân của nó, nên bất kỳ số quân nào khác bốn mức có sẵn đều biến ván đó thành ván tùy chỉnh, và ván tùy chỉnh không xuất hiện trên bảng xếp hạng."
       }
     },
     "scoring": {

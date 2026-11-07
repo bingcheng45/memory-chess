@@ -153,3 +153,70 @@ describe("every other language prefix, against main", () => {
     expect(locationOf(path)).toBe(location === null ? null : location);
   });
 });
+
+describe("locale prefixes in another letter case", () => {
+  it.each([
+    ["/zh-cn", "/zh-CN"],
+    ["/zh-cn/game?x=1", "/zh-CN/game?x=1"],
+    ["/ZH-CN/game", "/zh-CN/game"],
+    ["/Zh-Cn/", "/zh-CN"],
+    ["/pt-br/leaderboard", "/pt-BR/leaderboard"],
+    ["/ZH-TW", "/zh-TW"],
+    ["/DE/game", "/de/game"],
+    ["/ES/contact-us", "/es/contact-us"],
+    ["/EN/game", "/game"],
+    ["/ZH/game", "/zh-CN/game"],
+    ["/PT", "/pt-BR"],
+    ["/ZH-CN/settings", "/zh-CN/game"],
+  ])("permanently redirects %s to %s in one hop", (from, to) => {
+    expect(run(from).status).toBe(308);
+    expect(locationOf(from)).toBe(to);
+  });
+
+  it.each(["/zh-CN/game", "/zh-TW/game", "/pt-BR/game", "/de/game"])("leaves %s alone", (path) => {
+    expect(run(path).status).toBe(200);
+  });
+});
+
+describe("the contact page at /contact", () => {
+  it.each([
+    ["/contact", "/contact-us"],
+    ["/contact/", "/contact-us"],
+    ["/contact?ref=x", "/contact-us?ref=x"],
+    ["/en/contact", "/contact-us"],
+    ["/de/contact", "/de/contact-us"],
+    ["/zh-CN/contact", "/zh-CN/contact-us"],
+    ["/pt-BR/contact", "/pt-BR/contact-us"],
+    ["/pt/contact", "/pt-BR/contact-us"],
+    ["/ZH-cn/contact", "/zh-CN/contact-us"],
+  ])("permanently redirects %s to %s in one hop", (from, to) => {
+    expect(run(from).status).toBe(308);
+    expect(locationOf(from)).toBe(to);
+  });
+
+  it("leaves /contact-us alone", () => {
+    expect(run("/contact-us").status).toBe(200);
+    expect(run("/de/contact-us").status).toBe(200);
+  });
+});
+
+describe("a prefix in another letter case is still a language choice", () => {
+  it.each([
+    ["/DE/changelog", "/changelog", "de"],
+    ["/zh-cn/changelog", "/changelog", "zh-CN"],
+    ["/ZH-CN/game", "/zh-CN/game", "zh-CN"],
+  ])("%s answers one 308 to %s and records %s", (from, to, locale) => {
+    const response = run(from, { "accept-language": "en", cookie: "NEXT_LOCALE=fr" });
+
+    expect(response.status).toBe(308);
+    expect(response.headers.get("location")).toBe(`${ORIGIN}${to}`);
+    expect(response.headers.getSetCookie().join(";")).toContain(`NEXT_LOCALE=${locale}`);
+  });
+
+  it("does not record a choice for a crawler", () => {
+    const response = run("/DE/changelog", { "accept-language": "en", "user-agent": "Googlebot/2.1" });
+
+    expect(response.status).toBe(308);
+    expect(response.headers.getSetCookie()).toEqual([]);
+  });
+});

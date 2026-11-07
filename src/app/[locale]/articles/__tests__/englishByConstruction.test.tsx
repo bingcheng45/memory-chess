@@ -9,7 +9,7 @@ import ArticlePage from "@/components/articles/ArticlePage";
 import { isServedAtBareEnglishUrl } from "@/lib/seo/englishOnly";
 import { getArticleStats } from "@/lib/services/articleStatsService";
 
-jest.mock("@/lib/articles/translatedLocales", () => ({ TRANSLATED_ARTICLE_LOCALES: [] }));
+jest.mock("@/lib/articles/translatedLocales", () => ({ TRANSLATED_ARTICLE_LOCALES: [], ENGLISH_ONLY_ARTICLE_SLUGS: [] }));
 
 jest.mock("next-intl/server", () => ({
   setRequestLocale: jest.fn(),

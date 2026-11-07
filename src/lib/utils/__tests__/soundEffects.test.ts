@@ -18,6 +18,7 @@ class FakeAudioContext {
   readonly gain = { gain: { value: 1 }, connect() {} };
   readonly sources: FakeSource[] = [];
   resumes = 0;
+  state = "suspended";
   constructor() {
     FakeAudioContext.created.push(this);
   }
@@ -34,6 +35,7 @@ class FakeAudioContext {
   }
   resume() {
     this.resumes += 1;
+    this.state = "running";
     return Promise.resolve();
   }
   get destination() {
@@ -197,5 +199,166 @@ describe("sound effects", () => {
     await settle();
 
     expect(fetchSpy.mock.calls.length).toBe(0);
+  });
+
+  describe("preparing the audio output while the page is idle", () => {
+    let idleJobs: Array<() => void>;
+
+    beforeEach(() => {
+      idleJobs = [];
+      Object.assign(window, {
+        requestIdleCallback: (job: () => void) => idleJobs.push(job),
+        cancelIdleCallback: (id: number) => {
+          idleJobs[id - 1] = () => {};
+        },
+      });
+    });
+
+    afterEach(() => {
+      Reflect.deleteProperty(window, "requestIdleCallback");
+      Reflect.deleteProperty(window, "cancelIdleCallback");
+    });
+
+    const runIdle = () => idleJobs.splice(0).forEach((job) => job());
+
+    it("creates the context only when the browser goes idle, suspended and at the default volume", async () => {
+      const { prepareSound } = await loadModule();
+
+      prepareSound();
+      expect(FakeAudioContext.created.length).toBe(0);
+      runIdle();
+
+      expect([FakeAudioContext.created.length, context().state, context().gain.gain.value]).toEqual([1, "suspended", 0.05]);
+      expect(fetchSpy.mock.calls.length).toBe(0);
+    });
+
+    it("schedules once however often it is called", async () => {
+      const { prepareSound } = await loadModule();
+
+      prepareSound();
+      prepareSound();
+      runIdle();
+      prepareSound();
+
+      expect([idleJobs.length, FakeAudioContext.created.length]).toEqual([0, 1]);
+    });
+
+    it("falls back to a timer where requestIdleCallback is missing", async () => {
+      jest.useFakeTimers();
+      Reflect.deleteProperty(window, "requestIdleCallback");
+      const { prepareSound } = await loadModule();
+
+      prepareSound();
+      expect(FakeAudioContext.created.length).toBe(0);
+      jest.runAllTimers();
+      jest.useRealTimers();
+
+      expect(FakeAudioContext.created.length).toBe(1);
+    });
+
+    it("creates nothing when sound is off, now or by the time the page is idle", async () => {
+      const { prepareSound, setSoundEnabled } = await loadModule();
+
+      setSoundEnabled(false);
+      prepareSound();
+      expect(idleJobs.length).toBe(0);
+
+      setSoundEnabled(true);
+      prepareSound();
+      setSoundEnabled(false);
+      runIdle();
+
+      expect(FakeAudioContext.created.length).toBe(0);
+    });
+
+    it("plays on the tap with the context made earlier, resuming it and creating no second one", async () => {
+      const { prepareSound, playSound } = await loadModule();
+      prepareSound();
+      runIdle();
+      const madeBeforeTap = FakeAudioContext.created.length;
+
+      playSound("click");
+      await settle();
+
+      expect([madeBeforeTap, FakeAudioContext.created.length, context().resumes, played()]).toEqual([
+        1,
+        1,
+        1,
+        ["/sounds/click.mp3"],
+      ]);
+    });
+
+    it("still plays through the lazy path when idle never ran", async () => {
+      const { prepareSound, playSound } = await loadModule();
+      prepareSound();
+
+      playSound("click");
+      await settle();
+      runIdle();
+
+      expect([FakeAudioContext.created.length, played()]).toEqual([1, ["/sounds/click.mp3"]]);
+    });
+
+    const tap = (type: string) =>
+      window.dispatchEvent(type === "keydown" ? new KeyboardEvent(type) : new Event(type));
+
+    it.each(["click", "touchend", "keydown"])("resumes the prepared context on the first %s, even before a sound plays", async (type) => {
+      const { prepareSound } = await loadModule();
+      prepareSound();
+      runIdle();
+
+      tap(type);
+
+      expect([context().resumes, context().state]).toEqual([1, "running"]);
+    });
+
+    it("removes all three listeners after the first event", async () => {
+      const { prepareSound } = await loadModule();
+      prepareSound();
+      runIdle();
+
+      tap("touchend");
+      tap("click");
+      tap("keydown");
+      tap("touchend");
+
+      expect(context().resumes).toBe(1);
+    });
+
+    it("warming the round resumes the context made earlier, without creating one", async () => {
+      const { prepareSound, warmRoundSounds } = await loadModule();
+      prepareSound();
+      runIdle();
+      const madeBefore = FakeAudioContext.created.length;
+
+      warmRoundSounds();
+
+      expect([madeBefore, FakeAudioContext.created.length, context().resumes]).toEqual([1, 1, 1]);
+    });
+
+    it("creates nothing and arms no listener when cancelled before idle, and can be prepared again", async () => {
+      const { prepareSound } = await loadModule();
+
+      prepareSound()();
+      runIdle();
+      tap("click");
+      expect(FakeAudioContext.created.length).toBe(0);
+
+      prepareSound();
+      runIdle();
+      expect(FakeAudioContext.created.length).toBe(1);
+    });
+
+    it("cancels the timer fallback too", async () => {
+      jest.useFakeTimers();
+      Reflect.deleteProperty(window, "requestIdleCallback");
+      const { prepareSound } = await loadModule();
+
+      prepareSound()();
+      jest.runAllTimers();
+      jest.useRealTimers();
+
+      expect(FakeAudioContext.created.length).toBe(0);
+    });
   });
 });

@@ -18,9 +18,11 @@ export type GuideUnit = (typeof GUIDE_UNITS)[number];
 
 export const approvalNameOf = (unit: string): string => `learn/${unit}`;
 
-type GuideIndexing = { readonly indexed: false } | { readonly indexed: true; readonly after: "adsense-approval" | "native-read" };
+export type GuideIndexing = { readonly indexed: false } | { readonly indexed: true; readonly after: "adsense-approval" | "native-read" };
 
-export const GUIDE_LOCALE_INDEXING: Readonly<Partial<Record<Locale, GuideIndexing>>> = {
+export type GuideLocaleIndexing = Readonly<Partial<Record<Locale, GuideIndexing>>>;
+
+export const GUIDE_LOCALE_INDEXING: GuideLocaleIndexing = {
   ru: { indexed: false },
   "pt-BR": { indexed: false },
   fr: { indexed: false },
@@ -30,6 +32,7 @@ export const GUIDE_LOCALE_INDEXING: Readonly<Partial<Record<Locale, GuideIndexin
 
 export const TRANSLATED_GUIDE_LOCALES = Object.keys(GUIDE_LOCALE_INDEXING) as Locale[];
 
-export const isIndexedGuideLocale = (locale: string): boolean => GUIDE_LOCALE_INDEXING[locale as Locale]?.indexed === true;
+export const isIndexedGuideLocale = (locale: string, config: GuideLocaleIndexing = GUIDE_LOCALE_INDEXING): boolean =>
+  config[locale as Locale]?.indexed === true;
 
 export const SERVED_GUIDES_FILE = "src/lib/seo/learn/servedGuides.json";

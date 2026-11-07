@@ -6,12 +6,18 @@ import {
   recordArticleEvent,
   type RecordArticleEventResult,
 } from "@/lib/services/articleStatsService";
+import { clientAddress, fixedWindowLimiter } from "@/lib/server/rateLimit";
 import { isJson, readBodyWithinLimit } from "@/lib/server/requestBody";
 import { reportServerError } from "@/lib/server/serverErrors";
 
 const MAX_BODY_BYTES = 64;
 
+/** A reader sends one view and a few like toggles per article, so this many from one address for one article in a minute is a script. */
+const EVENTS_PER_WINDOW = 10;
+const allowEvent = fixedWindowLimiter({ limit: EVENTS_PER_WINDOW, windowMs: 60_000, maxKeys: 5_000 });
+
 const ERRORS = {
+  tooManyEvents: { status: 429, error: "Too many requests" },
   unknownArticle: { status: 404, error: "Unknown article" },
   notJson: { status: 400, error: "Content-Type must be application/json" },
   bodyTooLarge: { status: 400, error: "Request body is too large" },
@@ -60,6 +66,12 @@ export async function POST(request: Request, { params }: RouteContext) {
   try {
     const { slug } = await params;
     if (!ARTICLE_SLUGS.includes(slug)) return errorResponse("unknownArticle");
+
+    const verdict = allowEvent(`${clientAddress(request.headers)}:${slug}`, Date.now());
+    if (!verdict.allowed) {
+      const { status, error } = ERRORS.tooManyEvents;
+      return NextResponse.json({ error }, { status, headers: { "Retry-After": String(verdict.retryAfterSeconds) } });
+    }
 
     // Without a preflight another site can only POST text/plain or a form type, so this stops it spending its visitors' browsers on likes.
     if (!isJson(request.headers.get("content-type"))) return errorResponse("notJson");

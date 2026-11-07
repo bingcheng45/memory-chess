@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "Eigene Einstellungen",
-        "body": "Die beiden Regler bewegen sich unabhängig von den Stufen. Die Figurenzahl reicht von {minPieces} bis {maxPieces}, die Einprägezeit von {minSeconds} bis {maxSeconds} Sekunden. Die Bestenliste erkennt eine Runde an ihrer Figurenzahl; jede andere Zahl als die Werte der 4 Stufen macht daraus eine Partie mit eigenen Einstellungen, und solche Partien erscheinen nicht in der Bestenliste."
+        "body": "Die Tasten − und + unter dem Brett ändern Figurenzahl und Zeit unabhängig von den Stufen. Die Figurenzahl reicht von {minPieces} bis {maxPieces}, die Einprägezeit von {minSeconds} bis {maxSeconds} Sekunden. Die Bestenliste erkennt eine Runde an ihrer Figurenzahl; jede andere Zahl als die Werte der 4 Stufen macht daraus eine Partie mit eigenen Einstellungen, und solche Partien erscheinen nicht in der Bestenliste."
       }
     },
     "scoring": {

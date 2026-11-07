@@ -41,7 +41,7 @@ describe("sharePageOf", () => {
         { label: "Win streak", value: "3 rounds in a row" },
       ],
       legend: { correct: "Correct", missed: "Missed", wrong: "Wrong" },
-      play: "/game?pieceCount=4&memorizeTime=10&source=share",
+      play: "/game?pieceCount=4&memorizeTime=10&from=share",
     });
   });
 

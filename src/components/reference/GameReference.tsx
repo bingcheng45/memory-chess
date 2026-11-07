@@ -16,6 +16,9 @@ import { articlePath } from "@/lib/articles/paths";
 import { DEFAULT_ROUND_PIECES, DEFAULT_ROUND_SECONDS, RECALL_DATA, RECALL_PATH, presetCells } from "@/lib/data/recall";
 import { EXTRA_PIECE_PENALTY } from "@/lib/game/scoring";
 import { localizedPath } from "@/lib/seo/alternates";
+import { englishOnlyLinkSuffix } from "@/lib/seo/englishOnly";
+
+const BOARD_GAME_GUIDE = "/learn/how-to-play-memory-chess-board-game";
 
 /**
  * The Learn guides are English-only, so the list that links them is too: a
@@ -85,6 +88,7 @@ function MemoryTestAnswer({ answer, locale }: { answer: ReferenceProse["game"]["
 export default async function GameReference({ locale }: { locale: string }) {
   const prose = getReferenceProse(locale).game;
   const t = await getTranslations({ locale, namespace: "game" });
+  const home = await getTranslations({ locale, namespace: "home" });
 
   const phases = [
     prose.phases.memorize,
@@ -125,6 +129,16 @@ export default async function GameReference({ locale }: { locale: string }) {
       <div className="lab-wrap">
         <div className="lab-ref-col">
           <MemoryTestAnswer answer={prose.answer} locale={locale} />
+          <p className="lab-ref-boardgame">
+            {home.rich("hero.boardGame", {
+              link: (chunks) => (
+                <Link href={BOARD_GAME_GUIDE} hrefLang="en">
+                  {chunks}
+                  {englishOnlyLinkSuffix(locale)}
+                </Link>
+              ),
+            })}
+          </p>
           <h2 id="game-reference-title" className="lab-ref-title">
             {prose.title}
           </h2>

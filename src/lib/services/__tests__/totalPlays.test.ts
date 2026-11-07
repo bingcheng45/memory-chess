@@ -59,37 +59,16 @@ describe("getTotalPlays", () => {
   });
 });
 
-describe("getTotalPlays when the count cannot be read", () => {
-  const down = { data: null, error: "Database connection issue: fetch failed" };
-
-  it("throws in a production revalidation, so the last good page keeps serving", async () => {
-    env.NODE_ENV = "production";
-    delete env.NEXT_PHASE;
-    jest.mocked(getGameMetric).mockResolvedValue(down);
-
-    await expect(getTotalPlays()).rejects.toThrow("Play count refresh failed: Database connection issue: fetch failed");
-  });
-
-  it("throws in a production revalidation when the row is missing", async () => {
-    env.NODE_ENV = "production";
-    delete env.NEXT_PHASE;
-    jest.mocked(getGameMetric).mockResolvedValue({ data: null });
-
-    await expect(getTotalPlays()).rejects.toThrow("Play count refresh failed: no total_plays value");
-  });
-
-  it("gives nothing during the production build, so a deploy with Supabase down still succeeds", async () => {
+describe("getTotalPlays in a production build", () => {
+  it("gives nothing when the count cannot be read, so a deploy with Supabase down still succeeds", async () => {
     env.NODE_ENV = "production";
     env.NEXT_PHASE = "phase-production-build";
-    jest.mocked(getGameMetric).mockResolvedValue(down);
+    jest.mocked(getGameMetric).mockResolvedValue({ data: null, error: "Database connection issue: fetch failed" });
 
     expect(await getTotalPlays()).toBeNull();
   });
 
-  it("gives nothing without a throw in a production revalidation when Supabase is not configured", async () => {
-    env.NODE_ENV = "production";
-    delete env.NEXT_PHASE;
-    jest.mocked(getGameMetric).mockResolvedValue(down);
+  it("gives nothing when Supabase is not configured", async () => {
     const supabaseModule = jest.requireMock<{ supabase: object | null }>("@/lib/supabase");
     supabaseModule.supabase = null;
     try {
@@ -97,13 +76,5 @@ describe("getTotalPlays when the count cannot be read", () => {
     } finally {
       supabaseModule.supabase = {};
     }
-  });
-
-  it("still reads a good count in a production revalidation", async () => {
-    env.NODE_ENV = "production";
-    delete env.NEXT_PHASE;
-    jest.mocked(getGameMetric).mockResolvedValue(metric("49631") as never);
-
-    expect(await getTotalPlays()).toEqual({ plays: 49631, asOf: "2026-10-19T18:30:00.000Z" });
   });
 });

@@ -4,6 +4,7 @@ import { ARTICLES_PATH, articlePath } from "@/lib/articles/paths";
 import { LATEST_CHANGELOG_ENTRY } from "@/lib/changelog";
 import { RECALL_DATA, RECALL_PATH } from "@/lib/data/recall";
 import { EN_LEARN_PAGES, LEARN_LAST_UPDATED } from "@/lib/seo/learn";
+import { BLINDFOLD_PATH } from "@/lib/seo/blindfold/copy";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { localizedPath } from "@/lib/seo/alternates";
 import { indexedLocalesOf } from "@/lib/seo/englishOnly";
@@ -39,7 +40,6 @@ type SitemapEntryConfig = {
     MetadataRoute.Sitemap[number]["changeFrequency"]
   >;
   priority: number;
-  sitemapEnglishUrlOnly?: true;
 };
 
 const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
@@ -54,6 +54,12 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     lastModified: "2026-10-14T00:00:00.000Z",
     changeFrequency: "weekly",
     priority: 0.9,
+  },
+  {
+    path: BLINDFOLD_PATH,
+    lastModified: "2026-10-26T00:00:00.000Z",
+    changeFrequency: "monthly",
+    priority: 0.8,
   },
   {
     path: "/daily",
@@ -78,7 +84,6 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
     lastModified: "2026-08-28T00:00:00.000Z",
     changeFrequency: "monthly",
     priority: 0.5,
-    sitemapEnglishUrlOnly: true,
   },
   {
     path: "/changelog",
@@ -156,12 +161,9 @@ function entryFor(
   };
 }
 
-const listedLocalesOf = (entry: SitemapEntryConfig): readonly string[] =>
-  entry.sitemapEnglishUrlOnly ? [DEFAULT_LOCALE] : indexedLocalesOf(entry.path);
-
 export default function sitemap(): MetadataRoute.Sitemap {
   return SITEMAP_ENTRIES.flatMap((entry) => {
-    const locales = listedLocalesOf(entry);
+    const locales = indexedLocalesOf(entry.path);
     if (locales.length === 1) return [entryFor(entry, DEFAULT_LOCALE)];
     return locales.map((locale) => ({ ...entryFor(entry, locale), alternates: alternatesFor(entry.path, locales) }));
   });

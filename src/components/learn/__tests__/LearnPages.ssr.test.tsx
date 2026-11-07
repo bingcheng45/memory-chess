@@ -10,9 +10,9 @@ import messages from "../../../../messages/en.json";
 import { AFFILIATE } from "@/lib/affiliate/amazon";
 
 jest.mock("next/link", () => {
-  function MockNextLink({ children, href, ...props }: ComponentProps<"a">) {
+  function MockNextLink({ children, href, prefetch, ...props }: ComponentProps<"a"> & { prefetch?: boolean }) {
     return (
-      <a href={typeof href === "string" ? href : "#"} {...props}>
+      <a href={typeof href === "string" ? href : "#"} {...(prefetch === false ? { "data-no-prefetch": "" } : {})} {...props}>
         {children}
       </a>
     );
@@ -45,6 +45,12 @@ async function guide(slug: string) {
 }
 
 describe("a guide page", () => {
+  it("links the blindfold guide to the blindfold trainer under its lede", async () => {
+    const markup = await guide("blindfold-chess-training-for-beginners");
+
+    expect(markup).toContain('Practise now in the free <a href="/blindfold" class="lg-link">blindfold chess trainer</a>');
+  });
+
   it("serves one h1, one h2 per section plus the FAQ, and the contents rail in the same order", async () => {
     const markup = await guide("how-to-stop-blundering-in-chess");
 
@@ -105,8 +111,8 @@ describe("a guide page", () => {
     const markup = await guide("how-to-get-better-at-chess-for-beginners");
     const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
 
-    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;source=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 10 seconds</a>');
-    expect(strip).toContain('<a href="/daily" class="lg-link">Play today&#x27;s daily board</a>');
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_try" class="lab-btn lab-btn-primary">Try 4 pieces, 10 seconds</a>');
+    expect(strip).toContain('<a href="/daily" data-no-prefetch="" class="lg-link">Play today&#x27;s daily board</a>');
     expect(markup.indexOf('class="lg-lede"')).toBeLessThan(markup.indexOf('class="lg-quickplay"'));
     expect(markup.indexOf('class="lg-quickplay"')).toBeLessThan(markup.indexOf('class="lg-meta"'));
     expect(markup.indexOf('class="lg-quickplay"')).toBeLessThan(markup.indexOf('class="lg-answer"'));
@@ -116,10 +122,10 @@ describe("a guide page", () => {
     const markup = await guide("chess-coordinates-practice");
     const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
 
-    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=12&amp;source=guide_cta" class="lab-btn lab-btn-primary">Try 4 pieces, 12 seconds</a>');
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=12&amp;from=guide_try" class="lab-btn lab-btn-primary">Try 4 pieces, 12 seconds</a>');
   });
 
-  it("offers a new reader the guide's closing round in the hero only when it is sighted, up to 6 pieces with 10 seconds or more, and the beginner round otherwise", async () => {
+  it("offers a new reader the 4-piece try round in the hero, with the study time of the guide's own round when that is sighted and 10 seconds or more", async () => {
     const heroes = await Promise.all(
       EN_LEARN_PAGES.map(async ({ meta }) => {
         const markup = await guide(meta.slug);
@@ -129,47 +135,54 @@ describe("a guide page", () => {
 
     expect(Object.fromEntries(heroes)).toEqual({
       "how-to-get-better-at-chess-for-beginners": "4/10",
-      "how-to-stop-blundering-in-chess": "6/10",
+      "how-to-stop-blundering-in-chess": "4/10",
       "why-puzzle-rating-doesnt-transfer-to-games": "4/10",
       "chess-coordinates-practice": "4/12",
-      "chess-visualization-exercises": "6/10",
+      "chess-visualization-exercises": "4/10",
       "how-to-see-the-whole-board-in-chess": "4/10",
       "chess-calculation-exercises-for-beginners": "4/10",
       "blindfold-chess-training-for-beginners": "4/10",
-      "chess-memory-training": "6/10",
+      "chess-memory-training": "4/10",
       "chess-pattern-recognition-drills": "4/10",
-      "how-to-think-in-chess-for-beginners": "6/20",
-      "20-minute-daily-chess-study-plan": "6/10",
-      "how-many-chess-puzzles-a-day": "6/10",
+      "how-to-think-in-chess-for-beginners": "4/20",
+      "20-minute-daily-chess-study-plan": "4/10",
+      "how-many-chess-puzzles-a-day": "4/10",
       "how-to-analyze-chess-games-for-beginners": "4/10",
       "how-to-play-memory-chess-board-game": "4/10",
-      "chess-position-memory-trainers-compared": "6/10",
-      "lichess-vs-chess-com-visualization-training": "6/10",
+      "chess-position-memory-trainers-compared": "4/10",
+      "lichess-vs-chess-com-visualization-training": "4/10",
       "memory-chess-vs-darksquares": "4/10",
       "memory-chess-vs-lichess-coordinate-trainer": "4/12",
     });
   });
 
-  it("keeps a hard guide's own round in its closing call to action while the hero offers the beginner round", async () => {
+  it("keeps a hard guide's own round in its closing call to action while the hero offers the try round", async () => {
     const markup = await guide("how-to-see-the-whole-board-in-chess");
     const strip = markup.slice(markup.indexOf('class="lg-quickplay"'), markup.indexOf("</aside>"));
 
-    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;source=guide_cta" class="lab-btn lab-btn-primary">');
-    expect(markup).toContain("/game?pieceCount=12&amp;memorizeTime=8&amp;source=guide_cta");
+    expect(strip).toContain('<a href="/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_try" class="lab-btn lab-btn-primary">');
+    expect(markup).toContain("/game?pieceCount=12&amp;memorizeTime=8&amp;from=guide_cta");
+  });
+
+  it("does not prefetch the home breadcrumb, the author link or either daily board link", async () => {
+    const markup = await guide("how-to-get-better-at-chess-for-beginners");
+    const noPrefetch = [...markup.matchAll(/<a [^>]*data-no-prefetch=""[^>]*href="([^"]+)"|<a href="([^"]+)"[^>]*data-no-prefetch=""/g)].map((m) => m[1] ?? m[2]);
+
+    expect(noPrefetch).toEqual(["/", "/daily", "/about", "/daily"]);
   });
 
   it("links today's daily board under a drill box that plays a round, not under one done at a board", async () => {
     const markup = await guide("blindfold-chess-training-for-beginners");
 
     expect(markup.match(/class="lg-drill"/g)).toHaveLength(4);
-    expect(markup.match(/<p class="lg-drills-daily"><a href="\/daily" class="lg-link">Play today&#x27;s daily board<\/a><\/p>/g)).toHaveLength(1);
+    expect(markup.match(/<p class="lg-drills-daily"><a href="\/daily" data-no-prefetch="" class="lg-link">Play today&#x27;s daily board<\/a><\/p>/g)).toHaveLength(1);
   });
 
   it("draws three server-rendered boards and links a round, a dashboard stat and sibling guides", async () => {
     const markup = await guide("how-to-stop-blundering-in-chess");
 
     expect(markup.match(/class="lg-board"/g)).toHaveLength(3);
-    expect(markup).toContain('href="/game?pieceCount=6&amp;memorizeTime=10&amp;source=guide_cta"');
+    expect(markup).toContain('href="/game?pieceCount=6&amp;memorizeTime=10&amp;from=guide_cta"');
     expect(markup).toContain('href="/dashboard#tile-recentAccuracy"');
     expect(markup).toContain('<a href="/learn/chess-coordinates-practice">Chess Coordinates Practice: Name Squares Faster</a>');
   });
@@ -326,7 +339,7 @@ describe("the hub", () => {
   it("closes stages with their own call to action and never hides text", () => {
     const markup = html(LearnHub());
 
-    expect(markup).toContain('<a href="/game?pieceCount=6&amp;memorizeTime=10&amp;source=guide_cta">Check where you stand first: play a 6-piece round</a>');
+    expect(markup).toContain('<a href="/game?pieceCount=6&amp;memorizeTime=10&amp;from=guide_cta">Check where you stand first: play a 6-piece round</a>');
     expect(markup).toContain('<a href="/dashboard#tile-span">Track your memory span as you climb the ladder</a>');
     expect(markup).not.toMatch(/\shidden(=|\s|>)/);
   });
@@ -445,5 +458,46 @@ describe("the Also in line on the hub and the search page", () => {
     expect(alsoInOf(markup, "blindfold-chess-training-for-beginners")).toEqual(BLINDFOLD_TRANSLATIONS);
     expect(markup).toContain('href="/learn/chess-memory-training"');
     expect(alsoInOf(markup, "chess-memory-training")).toBeNull();
+  });
+});
+
+describe("the Try it here block", () => {
+  const BLOCK = /<aside class="lg-try"[^>]*data-try-it[^>]*>[\s\S]*?<\/aside>/;
+  const blockOf = (markup: string) => markup.match(BLOCK)?.[0] ?? "";
+
+  it.each([
+    ["chess-calculation-exercises-for-beginners", "/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_try", "Start a round of 4 pieces"],
+    ["how-to-get-better-at-chess-for-beginners", "/game?pieceCount=4&amp;memorizeTime=10&amp;from=guide_try", "Start a round of 4 pieces"],
+    ["blindfold-chess-training-for-beginners", "/game?pieceCount=4&amp;memorizeTime=15&amp;from=guide_try&amp;mode=blindfold", "Start a blindfold round of 4 pieces"],
+  ])("puts a start link in the served HTML of %s, after the quick answer and before the first section", async (slug, href, label) => {
+    const markup = await guide(slug);
+    const block = blockOf(markup);
+
+    expect(block).toContain(`href="${href}"`);
+    expect([...block.matchAll(/<a [^>]*>(.*?)<\/a>/g)].map((match) => match[1])).toEqual([label]);
+    expect(markup.indexOf("lg-answer-label")).toBeLessThan(markup.indexOf(block));
+    expect(markup.indexOf(block)).toBeLessThan(markup.indexOf('<section id='));
+  });
+
+  it("draws a four-piece board with its pieces written out for a reader without the board", async () => {
+    const block = blockOf(await guide("chess-calculation-exercises-for-beginners"));
+
+    expect(block.match(/class="lg-piece"/g)).toHaveLength(4);
+    expect(block).toContain("White: Kg1, Nf3. Black: Ke8, Bd6.");
+  });
+
+  it("shows notation and no board on the blindfold guide", async () => {
+    const block = blockOf(await guide("blindfold-chess-training-for-beginners"));
+
+    expect(block).not.toContain("lg-board-plate");
+    expect(block).toContain("White: Kg1, Nf3. Black: Ke8, Bd6.");
+  });
+
+  it("adds no h2, so the contents rail and the section count are unchanged", async () => {
+    expect(blockOf(await guide("chess-calculation-exercises-for-beginners"))).not.toContain("<h2");
+  });
+
+  it("leaves a guide without the block alone", async () => {
+    expect(await guide("how-to-stop-blundering-in-chess")).not.toContain("data-try-it");
   });
 });

@@ -44,7 +44,7 @@
       },
       "custom": {
         "title": "自定义设置",
-        "body": "两个滑块与难度档互不牵扯：棋子数可以从 {minPieces} 调到 {maxPieces}，观看时间从 {minSeconds} 到 {maxSeconds} 秒。排行榜靠棋子数来识别一局，只要数量不在四档之内，这局就算自定义游戏，而自定义游戏不上榜。"
+        "body": "棋盘下方的 − 和 + 按钮与难度档互不牵扯：棋子数可以从 {minPieces} 调到 {maxPieces}，观看时间从 {minSeconds} 到 {maxSeconds} 秒。排行榜靠棋子数来识别一局，只要数量不在四档之内，这局就算自定义游戏，而自定义游戏不上榜。"
       }
     },
     "scoring": {

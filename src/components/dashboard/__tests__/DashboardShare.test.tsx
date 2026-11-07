@@ -91,7 +91,7 @@ describe("DashboardShare", () => {
     renderWithIntl(<DashboardShare card={null} />);
 
     expect(screen.queryByRole("button", { name: "Share my progress" })).toBeNull();
-    expect(screen.getByRole("link", { name: "Play a round" })).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&source=dashboard");
+    expect(screen.getByRole("link", { name: "Play a round" })).toHaveAttribute("href", "/game?pieceCount=6&memorizeTime=10&from=dashboard");
   });
 
   it("opens a dialog with the card the share makes, described in words, and focus inside it", async () => {

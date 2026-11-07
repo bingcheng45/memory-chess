@@ -5,7 +5,14 @@ import { reviewedTranslationOf } from "./fixtures";
 jest.mock("@/lib/articles/translatedLocales");
 jest.mock("@/lib/articles/translations", () => ({ loadArticleText: jest.fn() }));
 
-const SLUGS_NEWEST_FIRST = ["magnus-carlsen", "judit-polgar", "adriaan-de-groot"];
+const SLUGS_NEWEST_FIRST = [
+  "miguel-najdorf",
+  "garry-kasparov",
+  "dominic-obrien",
+  "magnus-carlsen",
+  "judit-polgar",
+  "adriaan-de-groot",
+];
 
 const everyArticleInGerman: TranslationSource = async (locale, slug) => {
   const english = ARTICLES.find((article) => article.slug === slug);
@@ -76,7 +83,7 @@ describe("getTileArticles", () => {
     serveFrom(noTranslations);
 
     expect(await getTileArticles("fr")).toEqual([]);
-    expect(await getTileArticles("en")).toHaveLength(3);
+    expect(await getTileArticles("en")).toHaveLength(6);
   });
 
   it("fails instead of answering in English when a listed locale has no translation", async () => {

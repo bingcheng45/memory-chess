@@ -4,6 +4,7 @@ const guide: LearnDocument = {
   meta: {
     slug: "how-to-play-memory-chess-board-game",
     title: "How to Play Memory Chess: Wooden Board Game Rules",
+    searchTitle: "How to Play Memory Chess: Rules and How to Win",
     h1: "How to play Memory Chess, the wooden board game",
     description:
       "Learn how to play Memory Chess, the wooden peg board game. See what is in the box, how to set up, take a turn and win, and the common variants.",

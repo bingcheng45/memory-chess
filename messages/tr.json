@@ -5,6 +5,7 @@
       "articles": "Makaleler",
       "about": "Hakkında",
       "changelog": "Yenilikler",
+      "blindfold": "Gözü kapalı satranç",
       "contactUs": "Bize ulaşın",
       "privacy": "Gizlilik",
       "terms": "Koşullar",
@@ -560,7 +561,8 @@
           "line": "{line}: {shown} taştan {missed} tanesi kaçırıldı",
           "lineThin": "{line}: {shown} taş görüldü, okumak için yetersiz",
           "realAria": "Her karedeki kaçırma oranın. Gri karelerde görülen taş sayısı 10'un altında.",
-          "realNote": "Koyu renk daha sık kaçırılan demek. Gri karelerde görülen taş sayısı 10'un altında."
+          "realNote": "Koyu renk daha sık kaçırılan demek. Gri karelerde görülen taş sayısı 10'un altında.",
+          "lines": "Her karede 10 taş görülene kadar her kare, ait olduğu sütunun ve sıranın tamamına göre renklendirilir."
         },
         "daily": {
           "fig": "Şek. {number} · Günün tahtası",
@@ -844,6 +846,7 @@
           "overCap": "5.000 turluk sınırın içinde kalmak için {count, plural, one {# eski tur} other {# eski tur}} dışarıda bırakıldı.",
           "summaryIgnored": "Bu tarayıcıda zaten turlar vardı, bu yüzden dosyadaki tüm zamanların toplamları değil, yalnızca yeni turlar birleştirildi.",
           "summaryDropped": "Dosyadaki tüm zamanların toplamları okunamadı ya da eski bir sürüme aitti, bu yüzden yalnızca turlar içe aktarıldı.",
+          "playerRestored": "Puanın ve serin geri yüklendi.",
           "safari": "Safari'de gizli bir sekme kapandıktan sonra bu kaydı saklamaz. Safari ayrıca yaklaşık 7 gün ziyaret edilmeyen bir sitenin saklanan verilerini siler. Kaydını korumak için bir kopyasını dışa aktar.",
           "unavailable": "Gizli pencerelerde kaydedilmez. Bu tarayıcı penceresi turlarını saklamıyor.",
           "backup": "Cihazlar arası yedekleme (yakında)",
@@ -940,6 +943,21 @@
         "capped": "Bugünün {cap} tekrarı bu cihazda tamamlandı.",
         "cappedNext": "Sırası gelmiş tahtalar yarın geri gelir, en uzun bekleyen önce.",
         "schedule": "%80'in altında puan aldığın tahtalar, onları ilk gördükten 1, 3, 7 ve 14 gün sonra geri gelir."
+      },
+      "intro": {
+        "label": "45 tahtalı giriş",
+        "skip": "Girişi atla",
+        "replay": "Najdorf'un 45 tahtası",
+        "counter": "{count, plural, one {# tahta} other {# tahta}}",
+        "counterDark": "{count, plural, one {# tahta} other {# tahta}} · hiçbiri görülmüyor",
+        "one": "Bir tahta. <em>Onu görebiliyorsun.</em>",
+        "oneNote": "Morphy'nin Opera Oyunu, Paris, 1858. Her hamle gerçek.",
+        "many": "Şimdi <em>kırk beş.</em>",
+        "manyNote": "São Paulo, Ocak 1947. Miguel Najdorf aynı anda kırk beş rakibe karşı.",
+        "dark": "Hiçbirini <em>görmedi.</em>",
+        "darkNote": "23 saatten uzun süre gözü kapalı oynadı, her hamleye ezberden yanıt verdi. 39'unu kazandı.",
+        "you": "<em>Bir</em> tahtayla başla.",
+        "youNote": "Bir konuma birkaç saniye bak. Sonra kararır ve onu yeniden kurarsın."
       }
     }
   },
@@ -981,15 +999,30 @@
         "gain": "En fazla <num>+{value}</num>",
         "loss": "En fazla <num>−{value}</num>",
         "announce": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}. Kaçırırsan en fazla −{loss}.",
-        "announceProvisional": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}."
+        "announceProvisional": "Tahta puanı {board}. Senin puanın {rating}. Beklenen doğruluk %{expected}. Başarırsan en fazla +{gain}.",
+        "summary": "Tahta {board} · beklenen %{expected}",
+        "expect": "beklenen %{expected}",
+        "details": "Puan ayrıntıları"
       },
       "blindfold": "Körleme",
-      "blindfoldHint": "Konumu tahtada taş olmadan, notasyon olarak çalışın."
+      "blindfoldHint": "Konumu tahtada taş olmadan, notasyon olarak çalışın.",
+      "presetShort": {
+        "easy": "Kolay",
+        "medium": "Orta",
+        "hard": "Zor",
+        "grandmaster": "BU"
+      },
+      "fewerPieces": "Daha az taş",
+      "morePieces": "Daha çok taş",
+      "lessTime": "Daha kısa ezberleme süresi",
+      "moreTime": "Daha uzun ezberleme süresi",
+      "boardPreview": "Tahta önizlemesi. Tahtadaki taşlar: {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
         "label": "Kolay",
-        "description": "Sadece şahlar — başlangıç için ideal"
+        "description": "Sadece şahlar, başlangıç için ideal"
       },
       "medium": {
         "label": "Orta",
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "İsabet",
       "piecesCorrectCaption": "taş doğru",
+      "summary": "{correct} / {total} doğru · {wrong} yanlış · {seconds} sn'de yerleştirildi",
       "piecesCorrect": "Doğru taş",
       "memorizationTime": "Ezberleme süresi",
       "solutionTime": "Çözüm süresi",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Tekrar dene",
       "nextRound": "Sonraki tur",
       "changeSettings": "Ayarları değiştir",
-      "moreOptions": "Daha fazla seçenek",
       "tileDrill": "Bu alıştırma senin seviyende",
       "tileDrillWhy": "Seviyene göre ayarlandı, makalenin anlattığını çalışabilmen için.",
-      "submitToLeaderboard": "Sıralamaya gönder",
-      "leaderboardQualifies": "Skorun sıralamaya giriyor. Fırsatı kaçırmadan hemen gönder.",
+      "personalBest": "Bu seviyede yeni kişisel rekor. Kayda geçir.",
+      "claimLine": {
+        "qualifies": "{difficulty}: %{accuracy} sıralamaya girer.",
+        "open": "{difficulty}: sıralamadaki yerini gör (%{accuracy}).",
+        "claim": "Yerini al",
+        "submit": "Gönder",
+        "claimed": "Sıralamada: {difficulty}, %{accuracy}.",
+        "rank": "{total, number} kişi arasında {rank, number}. sıradasın ({difficulty})",
+        "seeBoard": "Sıralamayı gör"
+      },
       "viewLeaderboard": "Sıralamayı gör",
       "dialog": {
         "submitTitle": "Sıralamaya gönder",
-        "submitDescription": "Sıralamada görünecek adını yaz.",
+        "submitDescription": "Bir ad seç. Sıranı hemen ardından görürsün.",
+        "rankLoading": "Sıran bulunuyor…",
+        "rankWorld": "Dünyada {total, number} kişi içinde {rank, number}.",
+        "rankCountry": "{country} içinde {total, number} kişiden {rank, number}.",
         "successTitle": "Skor gönderildi!",
         "successDescription": "Skorun sıralamaya başarıyla eklendi.",
         "playerName": "Oyuncu adı",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {Memory Chess günlük tahtasında ({date}) {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} review {Memory Chess tekrar tahtasında {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.} other {Memory Chess'te {total, number} taşın {correct, number} tanesini ({accuracy}) hatırladım.}} Geçebilir misin?",
         "alt": "Memory Chess sonuç kartı: {details}."
       },
-      "savedToast": {
-        "message": "Tur kaydedildi. Güncel istatistiklerin hemen aşağıda.",
-        "action": "Göster"
-      },
       "blindfoldRound": "Körleme tur: konumu notasyon olarak çalıştınız."
     },
     "comparison": {
-      "title": "Konumunu incele"
+      "title": "Konumunu incele",
+      "viewLabel": "Sonuç görünümü",
+      "view": {
+        "side": "Yan yana",
+        "overlay": "Tek tahta"
+      },
+      "yourBoard": "Senin tahtan",
+      "position": "Konum",
+      "yourBoardLabel": "Senin tahtan, doğru ve yanlış taşlar işaretli",
+      "positionLabel": "Konum, doğru ve atlanan kareler işaretli",
+      "legendCorrect": "Doğru",
+      "legendWrong": "Yanlış, senin tahtanda",
+      "legendMissed": "Atlandı, konumda"
     },
     "feedback": {
       "title": "Memory Chess oynadığın için teşekkürler!",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# yıldız} other {# yıldız}}",
       "chooseRating": "Lütfen yıldızla bir puan seç.",
       "sendFailed": "Görüşünü gönderemedik. Tekrar dene ya da “Şimdi değil”i seç.",
+      "rateLimited": "Bu bağlantıdan çok fazla mesaj gönderildi. {minutes, plural, one {# dakika} other {# dakika}} sonra tekrar dene.",
       "send": "Görüşünü gönder",
       "sending": "Gönderiliyor..."
     },
@@ -1126,6 +1179,7 @@
       "intro": "{count} taşı {seconds} sn boyunca incele, sonra konumu hafızandan yeniden kur.",
       "hide": "Tahtayı gizle",
       "restart": "Yeniden başla",
+      "leave": "Turdan çık",
       "again": "Tekrar oyna",
       "submit": "Gönder",
       "clear": "Tahtayı temizle",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "{utc} UTC itibarıyla sıfırlanır",
       "resetsAt": "{utc} UTC itibarıyla sıfırlanır (sizin saatinizle {local}), {timeLeft} sonra"
     },
+    "loading": "Sıralama yükleniyor.",
     "mode": {
       "label": "Çalışma modu",
       "board": "Tahta",
@@ -1555,7 +1610,7 @@
         "desc": "Tüm turlar boyunca en çok hangi kareleri ve hatları kaçırdığın.",
         "aria": "Her karedeki kaçırma oranın. Koyu kareler daha sık kaçırılır. Gri karelerde görülen taş sayısı {minimum} altındadır.",
         "note": "Koyu kareler daha sık kaçırılır. Gri karelerde görülen taş sayısı {minimum} altındadır.",
-        "lines": "Her karede {minimum} taş görülene kadar harita tüm sütunları ve sıraları okur.",
+        "lines": "Her karede {minimum} taş görülene kadar her kare, ait olduğu sütunun ve sıranın tamamına göre renklendirilir.",
         "files": "Sütunlar",
         "ranks": "Sıralar",
         "line": "{line}: {shown} taştan {missed} tanesi kaçırıldı",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} sa {minutes} dk",
     "underMinute": "< 1 dk",
     "ready": "Bugünün tahtası · {pieceCount} taş · {seconds} sn · {timeLeft} kaldı",
+    "readyDetails": "{pieceCount} taş · {seconds} sn · {timeLeft} kaldı",
     "next": "Sonraki tahta {timeLeft} sonra",
     "pending": "Bugünün tahtası",
     "navReady": "{label}, bugünün günlük tahtası hazır",
@@ -1704,7 +1760,12 @@
     "play": "Bugünün tahtasını oyna",
     "tomorrowTitle": "Yarının tahtası",
     "tomorrowOpens": "{timeLeft} sonra açılır.",
-    "seeToday": "Bugünün tahtasını gör"
+    "seeToday": "Bugünün tahtasını gör",
+    "remindButton": "Her gün hatırlat",
+    "remindNote": "Tahta açıldığında her gün tekrarlanan bir takvim etkinliği indirir.",
+    "remindDone": "Kaydedildi. Günlük etkinliği takvimine eklemek için dosyayı aç.",
+    "remindTitle": "Memory Chess günlük tahtası",
+    "remindDescription": "Yeni bir tahta her gün gece yarısı UTC'de açılır. Herkes aynı tahtayı oynar ve tek bir deneme hakkın var."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "4 ila 16 karakter, skorunla birlikte gösterilir.",
       "nameShort": "Çok kısa. En az 4 karakter kullan.",
       "nameLong": "Çok uzun. En fazla 16 karakter kullan.",
+      "nameBlocked": "Bu isim kullanılamaz. Lütfen başka bir isim seç.",
       "country": "Ülke",
       "chooseCountry": "Bir ülke seç",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Bugünün tahtası yüklenemedi. Lütfen birazdan tekrar dene.",
       "joinToRank": "Sıranı burada görmek için tahtaya katıl.",
       "order": "Sıralama: en çok doğru taş, sonra en az yanlış, sonra en hızlı kurulum.",
-      "all": "Tüm tahtaları gör"
+      "all": "Tüm tahtaları gör",
+      "todayBoard": "Bugünün tahtası",
+      "yesterdayBoard": "Dünün tahtası",
+      "joinedToday": "Bugünün tahtasına katılan oyuncular: {count}",
+      "joinedYesterday": "Dünün tahtasına katılan oyuncular: {count}",
+      "listFrom": "İlk 10, {min} veya daha fazla oyuncu katıldığında görünür."
     },
     "reference": {
       "title": "Günlük tahta nasıl çalışır",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Google Analytics'te kaydedilen turlardan elde edilen toplu hatırlama istatistikleri, yeterli tur ve oyuncu sayısına sahip ayarlar için yayımlanır.",
     "aboutLink": "Hatırlama verilerini gör"
+  },
+  "learnTryIt": {
+    "title": "Burada dene",
+    "intro": "Bu boyuttaki bir tur, {pieces} taşı {seconds} sn boyunca gösterir. Sonra onları hafızandan boş bir tahtaya yerleştirirsin. İşte bu boyutta bir konum.",
+    "introBlindfold": "Bu boyuttaki bir tur, {pieces} taşı {seconds} sn boyunca notasyonla gösterir, tahtada taş yoktur. Sonra onları hafızandan boş bir tahtaya yerleştirirsin. İşte bu boyutta bir konum, göreceğin biçimde.",
+    "position": "Beyaz: {white}. Siyah: {black}.",
+    "start": "{pieces} taşlı bir tur başlat",
+    "startBlindfold": "{pieces} taşlı gözü kapalı bir tur başlat"
   }
 }

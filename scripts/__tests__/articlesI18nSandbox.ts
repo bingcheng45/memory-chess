@@ -4,6 +4,7 @@ import { tmpdir } from "node:os";
 import { dirname, join } from "node:path";
 import { pathToFileURL } from "node:url";
 import type { Article, ArticleText } from "@/lib/articles/schema";
+import { ENGLISH_ONLY_ARTICLE_SLUGS } from "@/lib/articles/translatedLocales";
 
 const REPO_ROOT = join(__dirname, "..", "..");
 const LEVER_PATH = join(REPO_ROOT, "scripts", "articles-i18n.mjs");
@@ -141,11 +142,12 @@ export function putEnglishChrome(root: string, chrome: unknown): void {
   putJson(root, "messages/en.json", { common: { play: "Play" }, articles: chrome, home: { title: "Home" } });
 }
 
-export function setTranslatedLocales(root: string, locales: readonly string[]): void {
+export function setTranslatedLocales(root: string, locales: readonly string[], englishOnlySlugs: readonly string[] = ENGLISH_ONLY_ARTICLE_SLUGS): void {
   put(
     root,
     "src/lib/articles/translatedLocales.ts",
-    `import type { Locale } from "@/i18n/routing";\n\nexport const TRANSLATED_ARTICLE_LOCALES: readonly Locale[] = ${JSON.stringify(locales)};\n`,
+    `import type { Locale } from "@/i18n/routing";\n\nexport const TRANSLATED_ARTICLE_LOCALES: readonly Locale[] = ${JSON.stringify(locales)};\n` +
+      `\nexport const ENGLISH_ONLY_ARTICLE_SLUGS: readonly string[] = ${JSON.stringify(englishOnlySlugs)};\n`,
   );
 }
 
@@ -173,6 +175,19 @@ export function inSandbox<T>(kind: "real" | "fixture", body: (root: string) => T
     // No "type", as in the repo, so Node warns about each .ts file.
     putJson(root, "package.json", { name: "sandbox", private: true });
     setTranslatedLocales(root, ["en"]);
+    return body(root);
+  } finally {
+    rmSync(root, { recursive: true, force: true });
+  }
+}
+
+const COPIED_FOR_GUIDES = ["messages", "src/i18n/routing.ts", "src/lib/articles/articleText.ts", "src/lib/articles/schema.ts", "src/lib/seo/learn"];
+
+export function inGuideSandbox<T>(body: (root: string) => T): T {
+  const root = realpathSync(mkdtempSync(join(tmpdir(), "articles-i18n-guides-")));
+  try {
+    COPIED_FOR_GUIDES.forEach((path) => cpSync(join(REPO_ROOT, path), join(root, path), { recursive: true }));
+    putJson(root, "package.json", { name: "sandbox", private: true });
     return body(root);
   } finally {
     rmSync(root, { recursive: true, force: true });

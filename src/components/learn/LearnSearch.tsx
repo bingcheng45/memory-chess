@@ -43,7 +43,7 @@ function report(query: string, results: readonly SearchResult[]) {
       query_length: query.length,
       results: results.length,
       top: results[0]?.slug ?? "none",
-      outcome: outcomeOf(results),
+      outcome: outcomeOf(results, query),
       surface: "hub",
     },
   });
@@ -64,7 +64,7 @@ export default function LearnSearch({ stages }: { readonly stages: readonly Stag
 
   const trimmed = query.trim();
   const results = index && trimmed ? search(trimmed, index) : [];
-  const outcome = outcomeOf(results);
+  const outcome = outcomeOf(results, trimmed);
   const showPanel = open && trimmed.length > 0 && index !== null;
 
   useEffect(() => {

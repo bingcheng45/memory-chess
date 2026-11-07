@@ -20,7 +20,7 @@ export const PRESET_FACTS = RANKED_DIFFICULTIES.map((difficulty) => ({
   memorizeSeconds: DIFFICULTY_PRESETS[difficulty].memorizeTime,
 }));
 
-/** Bounds of the custom sliders, enforced by the position generator's clamp. */
+/** Bounds of the setup steppers, enforced by the position generator's clamp. */
 export const PIECE_COUNT_RANGE = { min: 2, max: 32 } as const;
 export const MEMORIZE_SECONDS_RANGE = { min: 1, max: 60 } as const;
 

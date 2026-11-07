@@ -1,6 +1,8 @@
 import { ImageResponse } from "next/og";
+import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { findLearnPage } from "@/lib/seo/learn";
 import { LEARN_GUIDE_COPY } from "@/lib/seo/learn/guideCopy";
+import { searchTitleOf } from "@/lib/seo/learn/text";
 
 export const size = {
   width: 1200,
@@ -99,7 +101,7 @@ export default async function LearnOpenGraphImage({
               lineHeight: 1.06,
             }}
           >
-            {page.meta.title}
+            {searchTitleOf(page.meta, DEFAULT_LOCALE)}
           </div>
           <div
             style={{

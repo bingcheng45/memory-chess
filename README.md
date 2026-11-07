@@ -49,7 +49,7 @@ Open [http://localhost:3000](http://localhost:3000). The dev server uses Turbopa
 
 Put these in `.env.local`. The names come from `src/`.
 
-- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`: the leaderboard. Set `SUPABASE_READ_ONLY=true` to stop writes that go through the shared Supabase client in `src/lib/supabase.js`. It does not cover the Google Sheets writes below, and the opt-in lab backup (`LAB_BACKUP=on`) builds its own service-role client that ignores it, so leave `LAB_BACKUP` unset locally.
+- `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`: the leaderboard. Set `SUPABASE_READ_ONLY=true` to stop writes that go through the shared Supabase client in `src/lib/supabase.js`. It does not cover the Google Sheets writes below. The opt-in lab backup (`LAB_BACKUP=on`) builds its own service-role client and honours it too: a put or delete answers 503 and a get still works.
 - `GOOGLE_SHEET_ID`, `GOOGLE_SERVICE_ACCOUNT_KEY`: where feedback and contact messages are appended. Feedback goes to a worksheet tab named `Game Feedback` with headers `Submitted At`, `Rating`, `Feedback`, `Accuracy`, `Correct Pieces`, `Piece Count`, `Difficulty`, `Memorization Time`, `Solution Time`, `App Version` in columns A to J.
 - `NEXT_PUBLIC_DATABUDDY_CLIENT_ID`: analytics.
 

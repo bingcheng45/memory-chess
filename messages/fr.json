@@ -5,6 +5,7 @@
       "articles": "Articles",
       "about": "À propos",
       "changelog": "Nouveautés",
+      "blindfold": "Échecs à l’aveugle",
       "contactUs": "Nous contacter",
       "privacy": "Confidentialité",
       "terms": "Conditions",
@@ -316,7 +317,7 @@
           "study": {
             "name": "Étude",
             "title": "Onze pièces, dix secondes.",
-            "body": "La position finale de l’Immortelle de Kasparov, après 44.Qa7. Topalov a abandonné ici. Embrassez tout l’échiquier, pas case par case. Dans les expériences de de Groot, les maîtres reproduisaient une position de partie montrée brièvement bien mieux que les joueurs plus faibles.",
+            "body": "La position finale de l’Immortelle de Kasparov, après 44.Qa7. Topalov a abandonné ici. Embrassez tout l’échiquier, pas case par case. Dans les expériences de De Groot, les maîtres reproduisaient une position de partie montrée brièvement bien mieux que les joueurs plus faibles.",
             "note": "Fig. Blancs : roi c1, dame a7, pions f4, g3, h2. Noirs : roi e1, tour d2, pions c3, f5, g6, h7."
           },
           "anchors": {
@@ -560,7 +561,8 @@
           "line": "{line} : {missed} manquées sur {shown}",
           "lineThin": "{line} : {shown} vues, pas assez pour conclure",
           "realAria": "Votre part d’oublis sur chaque case. Les cases grises comptent moins de 10 pièces vues.",
-          "realNote": "Plus c’est foncé, plus la case est souvent manquée. Le gris signale moins de 10 pièces vues."
+          "realNote": "Plus c’est foncé, plus la case est souvent manquée. Le gris signale moins de 10 pièces vues.",
+          "lines": "Tant que chaque case n’a pas 10 pièces vues, chaque case est colorée selon sa colonne et sa rangée entières."
         },
         "daily": {
           "fig": "Fig. {number} · Échiquier du jour",
@@ -844,6 +846,7 @@
           "overCap": "{count, plural, one {# partie plus ancienne a été laissée} many {# parties plus anciennes ont été laissées} other {# parties plus anciennes ont été laissées}} de côté pour respecter la limite de 5 000 parties.",
           "summaryIgnored": "Ce navigateur contenait déjà des parties, seules les nouvelles parties ont donc été fusionnées, pas les totaux cumulés du fichier.",
           "summaryDropped": "Les totaux cumulés du fichier étaient illisibles ou issus d’une ancienne version, seules ses parties ont donc été importées.",
+          "playerRestored": "Votre classement et votre série ont été restaurés.",
           "safari": "Sur Safari, un onglet privé ne garde pas ce registre après sa fermeture, et Safari efface les données d’un site au bout d’environ 7 jours sans visite. Exportez une copie pour le conserver.",
           "unavailable": "Rien n’est enregistré en navigation privée. Cette fenêtre ne conserve pas vos parties.",
           "backup": "Sauvegarde entre appareils (bientôt disponible)",
@@ -940,6 +943,21 @@
         "capped": "Les {cap} révisions du jour sont terminées sur cet appareil.",
         "cappedNext": "Toute position encore à réviser revient demain, la plus ancienne en premier.",
         "schedule": "Les positions où vous faites moins de 80 % reviennent 1, 3, 7 et 14 jours après la première fois."
+      },
+      "intro": {
+        "label": "L'intro des 45 échiquiers",
+        "skip": "Passer l'intro",
+        "replay": "Les 45 échiquiers de Najdorf",
+        "counter": "{count, plural, one {# échiquier} many {# échiquiers} other {# échiquiers}}",
+        "counterDark": "{count, plural, one {# échiquier} many {# échiquiers} other {# échiquiers}} · aucun vu",
+        "one": "Un échiquier. <em>Vous le voyez.</em>",
+        "oneNote": "La partie de l'Opéra de Morphy, Paris, 1858. Chaque coup est réel.",
+        "many": "Maintenant, <em>quarante-cinq.</em>",
+        "manyNote": "São Paulo, janvier 1947. Miguel Najdorf face à quarante-cinq adversaires à la fois.",
+        "dark": "Il n'en voyait <em>aucun.</em>",
+        "darkNote": "Il a joué à l'aveugle pendant plus de 23 heures, répondant à chaque coup de mémoire. Il en a gagné 39.",
+        "you": "Commencez par <em>un seul.</em>",
+        "youNote": "Regardez une position quelques secondes. Puis elle s'éteint, et vous la reconstruisez."
       }
     }
   },
@@ -981,10 +999,25 @@
         "gain": "Jusqu’à <num>+{value}</num>",
         "loss": "Au plus <num>−{value}</num>",
         "announce": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}. Si vous échouez, au plus −{loss}.",
-        "announceProvisional": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}."
+        "announceProvisional": "Cote du plateau {board}. Votre cote {rating}. Précision attendue {expected} %. Si vous réussissez, jusqu’à +{gain}.",
+        "summary": "Plateau {board} · attendu {expected} %",
+        "expect": "attendu {expected} %",
+        "details": "Détails de la cote"
       },
       "blindfold": "À l'aveugle",
-      "blindfoldHint": "Étudiez la position en notation, sans pièces sur l'échiquier."
+      "blindfoldHint": "Étudiez la position en notation, sans pièces sur l'échiquier.",
+      "presetShort": {
+        "easy": "Facile",
+        "medium": "Moyen",
+        "hard": "Difficile",
+        "grandmaster": "GMI"
+      },
+      "fewerPieces": "Moins de pièces",
+      "morePieces": "Plus de pièces",
+      "lessTime": "Moins de temps de mémorisation",
+      "moreTime": "Plus de temps de mémorisation",
+      "boardPreview": "Aperçu du plateau. Pièces sur le plateau : {count}",
+      "summarySetting": "{preset}, {setting}"
     },
     "presets": {
       "easy": {
@@ -1040,6 +1073,7 @@
       },
       "accuracy": "Précision",
       "piecesCorrectCaption": "pièces correctes",
+      "summary": "{correct} / {total} {correct, plural, one {correcte} many {correctes} other {correctes}} · {wrong, plural, one {# erreur} many {# erreurs} other {# erreurs}} · placé en {seconds} s",
       "piecesCorrect": "Pièces correctes",
       "memorizationTime": "Temps de mémorisation",
       "solutionTime": "Temps de résolution",
@@ -1051,15 +1085,25 @@
       "tryAgain": "Réessayer",
       "nextRound": "Manche suivante",
       "changeSettings": "Modifier les réglages",
-      "moreOptions": "Plus d’options",
       "tileDrill": "Cet exercice à votre niveau",
       "tileDrillWhy": "Adapté à votre niveau, pour pratiquer ce que décrit l'article.",
-      "submitToLeaderboard": "Envoyer au classement",
-      "leaderboardQualifies": "Votre score entre au classement. Envoyez-le avant qu’il disparaisse.",
+      "personalBest": "Nouveau record personnel à ce niveau. Inscrivez-le.",
+      "claimLine": {
+        "qualifies": "{difficulty} : {accuracy} % entre au classement.",
+        "open": "{difficulty} : voyez le rang de {accuracy} %.",
+        "claim": "Réserver ma place",
+        "submit": "Envoyer",
+        "claimed": "Au classement : {difficulty}, {accuracy} %.",
+        "rank": "Vous êtes n° {rank, number} sur {total, number} ({difficulty})",
+        "seeBoard": "Voir le classement"
+      },
       "viewLeaderboard": "Voir le classement",
       "dialog": {
         "submitTitle": "Envoyer au classement",
-        "submitDescription": "Saisissez le nom qui apparaîtra dans le classement.",
+        "submitDescription": "Choisissez un nom. Votre rang s’affiche juste après.",
+        "rankLoading": "Recherche de votre rang…",
+        "rankWorld": "{rank, number}e sur {total, number} dans le monde",
+        "rankCountry": "{rank, number}e sur {total, number} en {country}",
         "successTitle": "Score envoyé !",
         "successDescription": "Votre score a bien été ajouté au classement.",
         "playerName": "Nom du joueur",
@@ -1095,14 +1139,22 @@
         "text": "{kind, select, daily {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur le plateau du jour de Memory Chess du {date}.} review {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur un plateau de révision de Memory Chess.} other {J’ai retenu {correct, number} pièces sur {total, number} ({accuracy}) sur Memory Chess.}} Saurez-vous faire mieux ?",
         "alt": "Carte de résultat Memory Chess : {details}."
       },
-      "savedToast": {
-        "message": "Partie enregistrée. Vos statistiques à jour sont juste en dessous.",
-        "action": "Voir"
-      },
       "blindfoldRound": "Partie à l'aveugle : vous avez étudié la position en notation."
     },
     "comparison": {
-      "title": "Revoyez votre position"
+      "title": "Revoyez votre position",
+      "viewLabel": "Affichage du résultat",
+      "view": {
+        "side": "Côte à côte",
+        "overlay": "Un seul échiquier"
+      },
+      "yourBoard": "Votre échiquier",
+      "position": "La position",
+      "yourBoardLabel": "Votre échiquier, pièces correctes et erronées marquées",
+      "positionLabel": "La position, cases correctes et manquées marquées",
+      "legendCorrect": "Correcte",
+      "legendWrong": "Erronée, sur votre échiquier",
+      "legendMissed": "Manquée, dans la position"
     },
     "feedback": {
       "title": "Merci d’avoir joué à Memory Chess !",
@@ -1118,6 +1170,7 @@
       "starRating": "{count, plural, one {# étoile} many {# étoiles} other {# étoiles}}",
       "chooseRating": "Veuillez choisir une note en étoiles.",
       "sendFailed": "Nous n’avons pas pu envoyer votre retour. Réessayez ou choisissez « Pas maintenant ».",
+      "rateLimited": "Trop de messages depuis cette connexion. Réessayez dans {minutes, plural, one {# minute} many {# de minutes} other {# minutes}}.",
       "send": "Envoyer mon retour",
       "sending": "Envoi..."
     },
@@ -1126,6 +1179,7 @@
       "intro": "Mémorisez {count, plural, one {# pièce} many {# de pièces} other {# pièces}} pendant {seconds} s, puis reconstituez la position de mémoire.",
       "hide": "Masquer l’échiquier",
       "restart": "Recommencer",
+      "leave": "Quitter la manche",
       "again": "Rejouer",
       "submit": "Valider",
       "clear": "Vider l’échiquier",
@@ -1227,6 +1281,7 @@
       "resetsAtUtc": "Réinitialisation à {utc} UTC",
       "resetsAt": "Réinitialisation à {utc} UTC ({local} chez vous), dans {timeLeft}"
     },
+    "loading": "Chargement du classement.",
     "mode": {
       "label": "Mode d'étude",
       "board": "Échiquier",
@@ -1555,7 +1610,7 @@
         "desc": "Les cases et les lignes que vous manquez le plus, toutes parties confondues.",
         "aria": "Votre part d’oublis sur chaque case. Plus c’est foncé, plus la case est souvent manquée. Les cases grises comptent moins de {minimum} pièces vues.",
         "note": "Les cases plus foncées sont manquées plus souvent. Les cases grises comptent moins de {minimum} pièces vues.",
-        "lines": "Tant que chaque case n’a pas {minimum} pièces vues, la carte se lit par colonnes et rangées entières.",
+        "lines": "Tant que chaque case n’a pas {minimum} pièces vues, chaque case est colorée selon sa colonne et sa rangée entières.",
         "files": "Colonnes",
         "ranks": "Rangées",
         "line": "{line} : {missed} manquées sur {shown}",
@@ -1695,6 +1750,7 @@
     "hoursLeft": "{hours} h {minutes} min",
     "underMinute": "< 1 min",
     "ready": "Plateau du jour · {pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}} · {seconds} s · encore {timeLeft}",
+    "readyDetails": "{pieceCount, plural, one {# pièce} many {# pièces} other {# pièces}} · {seconds} s · encore {timeLeft}",
     "next": "Prochain plateau dans {timeLeft}",
     "pending": "Plateau du jour",
     "navReady": "{label}, le plateau du jour est prêt",
@@ -1704,7 +1760,12 @@
     "play": "Jouer le plateau du jour",
     "tomorrowTitle": "Plateau de demain",
     "tomorrowOpens": "Ouvre dans {timeLeft}.",
-    "seeToday": "Voir le plateau du jour"
+    "seeToday": "Voir le plateau du jour",
+    "remindButton": "Me le rappeler chaque jour",
+    "remindNote": "Télécharge un événement de calendrier qui se répète chaque jour à l’ouverture du plateau.",
+    "remindDone": "Enregistré. Ouvrez le fichier pour ajouter l’événement quotidien à votre calendrier.",
+    "remindTitle": "Plateau du jour Memory Chess",
+    "remindDescription": "Un nouveau plateau ouvre chaque jour à minuit UTC. Tout le monde joue le même plateau, et vous avez un seul essai."
   },
   "daily": {
     "meta": {
@@ -1768,6 +1829,7 @@
       "nameHint": "De 4 à 16 caractères, affiché avec votre score.",
       "nameShort": "Trop court. Utilisez au moins 4 caractères.",
       "nameLong": "Trop long. Utilisez au plus 16 caractères.",
+      "nameBlocked": "Ce nom n'est pas autorisé. Choisissez-en un autre.",
       "country": "Pays",
       "chooseCountry": "Choisissez un pays",
       "from": {
@@ -1799,7 +1861,12 @@
       "error": "Le plateau du jour n’a pas pu être chargé. Veuillez réessayer dans un instant.",
       "joinToRank": "Rejoignez le plateau pour voir votre rang ici.",
       "order": "Classé selon les pièces correctes, puis le moins de pièces erronées, puis la reconstitution la plus rapide.",
-      "all": "Voir tous les plateaux"
+      "all": "Voir tous les plateaux",
+      "todayBoard": "Plateau du jour",
+      "yesterdayBoard": "Plateau d’hier",
+      "joinedToday": "Personnes qui ont rejoint le plateau du jour : {count}",
+      "joinedYesterday": "Personnes qui ont rejoint le plateau d’hier : {count}",
+      "listFrom": "Le top 10 apparaît dès que {min} personnes ou plus ont rejoint."
     },
     "reference": {
       "title": "Comment fonctionne le plateau du jour",
@@ -1860,5 +1927,13 @@
     },
     "aboutLine": "Des statistiques agrégées de mémorisation issues des parties enregistrées dans Google Analytics sont publiées, pour les réglages comptant assez de parties et de joueurs.",
     "aboutLink": "Voir les données de mémorisation"
+  },
+  "learnTryIt": {
+    "title": "Essayez ici",
+    "intro": "Une manche de cette taille montre {pieces} pièces pendant {seconds} s. Ensuite, vous les placez de mémoire sur un échiquier vide. Voici une position de cette taille.",
+    "introBlindfold": "Une manche de cette taille vous montre {pieces} pièces en notation pendant {seconds} s, sans pièces sur l’échiquier. Ensuite, vous les placez de mémoire sur un échiquier vide. Voici une position de cette taille, telle que vous la verriez.",
+    "position": "Blancs : {white}. Noirs : {black}.",
+    "start": "Lancer une manche de {pieces} pièces",
+    "startBlindfold": "Lancer une manche à l’aveugle de {pieces} pièces"
   }
 }

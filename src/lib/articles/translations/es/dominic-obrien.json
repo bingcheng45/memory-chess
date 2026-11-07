@@ -1,0 +1,125 @@
+{
+  "sourceHash": "773dbd82f43989d19b1fe9a6d3f497aa041411236b2d1da0893ba364153aac09",
+  "approvedHash": "af520d1844548981ec31803480057c85ba062adc9c6bf64a4f7c03e57d3ff38c",
+  "sameAsEnglish": [],
+  "text": {
+    "title": "El palacio de la memoria de Dominic O'Brien y lo que significa para el ajedrez",
+    "description": "Dominic O'Brien ganó ocho Campeonatos Mundiales de Memoria con la técnica del palacio de la memoria. Qué efecto muestran los escáneres cerebrales y por qué la memoria ajedrecística es distinta.",
+    "person": {
+      "name": "Dominic O'Brien",
+      "role": "Ocho veces campeón mundial de memoria"
+    },
+    "photo": {
+      "alt": "Dominic O'Brien con esmoquin y pajarita en 2012",
+      "author": "djbrubru",
+      "license": "CC BY-SA 4.0",
+      "changes": "Imagen recortada y redimensionada"
+    },
+    "facts": {
+      "born": "10 de agosto de 1957",
+      "country": "Reino Unido",
+      "title": "Campeón mundial de memoria, de 1991 a 2001",
+      "knownFor": "Ocho títulos del Campeonato Mundial de Memoria",
+      "memoryFeat": "Memorizó 54 barajas mezcladas viendo cada carta una sola vez"
+    },
+    "drill": {
+      "why": "O'Brien guarda los elementos en paradas fijas de un recorrido, y Chase y Ericsson observaron que la memoria entrenada funciona con grupos de 3 o 4 elementos. Doce piezas dan cuatro paradas, unos 5 segundos cada una."
+    },
+    "sections": [
+      {
+        "heading": "Media docena de cartas en 1987",
+        "paragraphs": [
+          "En 1987 Dominic O'Brien vio cómo Creighton Carvello memorizaba una baraja entera en el programa de la BBC Record Breakers. O'Brien recordó en una entrevista de 2023 con The Naked Scientists que le llevó algo menos de tres minutos. La entrada de Carvello en Wikipedia da 2 minutos y 59 segundos. Después O'Brien se sentó con una baraja propia. No logró retener más de una media docena de cartas.",
+          "Nada en su pasado hacía pensar que fuera a ponerse a su altura. «Era un completo desastre en los estudios», dijo en la misma entrevista. Ha contado que le diagnosticaron dislexia. Decidió que tenía que haber un método y empezó a construirlo con su imaginación.",
+          "Cuatro años después ganó el primer Campeonato Mundial de Memoria, celebrado en Londres en 1991. Ha dicho que aquel año solo hubo siete participantes. La competición la creó Tony Buzan, que la fundó junto con Raymond Keene, gran maestro de ajedrez. O'Brien ganó el título ocho veces entre 1991 y 2001.",
+          "El 1 de mayo de 2002 estableció un récord Guinness. Memorizó 54 barajas mezcladas, 2808 cartas en total, tras ver cada carta una sola vez. Según Wikipedia, cometió ocho errores al recordarlas, cuatro de los cuales corrigió en cuanto se lo dijeron. En 2007 Dave Farrow elevó el récord a 59 barajas."
+        ]
+      },
+      {
+        "heading": "Cómo funciona la técnica del palacio de la memoria",
+        "paragraphs": [
+          "Al método de O'Brien se le suele llamar el viaje. La mayoría lo conoce como el palacio de la memoria, y los psicólogos lo llaman método de los loci. Tomas un recorrido que conoces bien, como un paseo por la casa de tu infancia. Conviertes cada elemento en una imagen vívida y la dejas en la siguiente parada del recorrido. Para recordar, vuelves a hacer el recorrido mentalmente.",
+          "O'Brien construye sus recorridos con lugares que conoció de niño. En la entrevista de 2023 calculó que tiene unos 70 recorridos de 50 etapas cada uno. Codifica la información, da vida a las imágenes y ata cada una a su lugar. Para los números ideó el Sistema Dominic, parecido al Sistema Mayor.",
+          "El método es antiguo. Un artículo de 2003 de Eleanor Maguire y sus colegas lo remonta al poeta griego Simónides de Ceos. Señalan que se ha usado casi sin cambios durante dos mil quinientos años."
+        ]
+      },
+      {
+        "heading": "Lo que encontraron los escáneres cerebrales de los mejores memorizadores",
+        "paragraphs": [
+          "El equipo de Maguire, en un artículo de Nature Neuroscience, evaluó a diez personas con una memoria superior. Ocho habían quedado en los primeros puestos de los Campeonatos Mundiales de Memoria. El artículo no da sus nombres, así que no se sabe si O'Brien era uno de ellos. El equipo los comparó con diez sujetos de control emparejados.",
+          "Los memorizadores no tenían un intelecto superior al de los controles. Los escáneres cerebrales tampoco hallaron diferencias estructurales. Nueve de los diez usaron el método de los loci en algunas tareas o en todas. Mientras aprendían, activaban más que los controles las regiones cerebrales ligadas a la memoria espacial y a la orientación.",
+          "Lo más revelador lo aportó el material de las pruebas. Los memorizadores reconocieron muchos más números de tres cifras que los controles, 25,9 frente a 18,5 sobre 30. Con caras la diferencia era pequeña. Con dibujos de copos de nieve, difíciles de expresar con palabras, ambos grupos obtuvieron 19,7. Su ventaja estaba en el método, no en una cámara mejor.",
+          "Un estudio de 2017 publicado en Neuron y dirigido por Martin Dresler fue más allá. Evaluó a 23 atletas de la memoria del top 50 mundial con una lista de 72 palabras. Los atletas recordaron casi todas, mientras que los controles se quedaron en unas 40. Unos voluntarios que practicaron el método de los loci durante seis semanas duplicaron con creces su recuerdo. Cuatro meses después seguían rindiendo casi igual de bien."
+        ]
+      },
+      {
+        "heading": "¿Puede un palacio de la memoria ayudar en el ajedrez?",
+        "paragraphs": [
+          "Ayuda a guardar jugadas, pero no a ver el tablero. En una columna de ChessBase de 2017, David Fadul escribió que un palacio de la memoria puede almacenar cientos de partidas o aperturas. Añadió que no te permitirá ver un tablero de ajedrez en la mente.",
+          "Un caso de laboratorio famoso muestra lo estrecha que puede ser una memoria entrenada. En un informe de 1980, William Chase y K. Anders Ericsson describieron a un estudiante conocido como SF, que practicaba el recuerdo de dígitos dictados en voz alta. A lo largo de 25 meses y más de 250 horas de práctica, su amplitud de dígitos pasó de 7 a más de 80. Chase había firmado con Herbert Simon el estudio de 1973 que mostró que los maestros recuerdan las posiciones en chunks, grupos de piezas familiares que se retienen como una sola unidad.",
+          "SF era un buen corredor de fondo, y codificaba grupos de 3 o 4 dígitos como tiempos de carrera. La habilidad se quedó en los dígitos. Tras tres meses de práctica se midió su amplitud con consonantes, y seguía rondando 6. Chase y Ericsson no observaron ninguna transferencia.",
+          "Relacionaron directamente a SF con el ajedrez. Su informe de 1980 dice que la investigación sobre expertos en ajedrez sugiere que la memoria superior se apoya en patrones con sentido almacenados en la memoria a largo plazo. Un campeón de memoria convierte elementos arbitrarios en imágenes y los coloca en un recorrido. Un maestro de ajedrez reconoce grupos de piezas familiares. Ambos se apoyan en el conocimiento, pero en conocimientos distintos.",
+          "El material aleatorio deja ver la diferencia. Los atletas de la memoria compiten con cartas mezcladas y dígitos aleatorios, que su método convierte en imágenes. Los copos de nieve de Maguire muestran que el método tiene límites. Los ajedrecistas pierden casi toda su ventaja en posiciones aleatorias. Fernand Gobet y Herbert Simon hallaron en 1996 que los jugadores fuertes conservan ahí una pequeña ventaja, mucho menor que en posiciones de partida.",
+          "Entonces, ¿el ajedrez es bueno para la memoria, o el entrenamiento de la memoria es bueno para el ajedrez? Los estudios citados aquí midieron mejoras en el material que se entrenó. Ninguno midió la fuerza de juego, y la habilidad de SF ni siquiera se trasladó a las letras. Así que no pueden zanjar la cuestión.",
+          "Los recorridos de O'Brien y los grupos de SF comparten una misma estructura. Cada uno retiene unos pocos elementos a la vez y los coloca en paradas fijas en un orden fijo. Chase y Ericsson lo llamaron estructura de recuperación. Un tablero de ajedrez ya tiene una. Sus cuadrantes, filas y columnas son paradas que nunca tienes que inventar. Este último paso es una idea propia de este artículo, no algo que los estudios hayan comprobado."
+        ]
+      },
+      {
+        "heading": "Recorre el tablero en cuatro paradas",
+        "paragraphs": [
+          "Usa el recorrido del propio tablero. En Memory Chess, elige 12 piezas y 20 segundos. Antes de que aparezca el tablero, fija un recorrido de cuatro paradas: abajo a la izquierda, abajo a la derecha, arriba a la derecha y, por último, arriba a la izquierda. Mientras el tablero esté a la vista, visita cada cuadrante en ese orden. Capta sus piezas como una pequeña imagen, normalmente de 3 o 4. Cuando el tablero se vacíe, vuelve a hacer el recorrido y coloca el grupo de cada cuadrante. Si un cuadrante falla una y otra vez, empieza por él el recorrido en la siguiente ronda."
+        ]
+      }
+    ],
+    "sources": [
+      {
+        "title": "How to make your memory better, interview with Dominic O'Brien, The Naked Scientists, May 16, 2023",
+        "note": "Respalda: el programa de televisión de 1987 y la baraja memorizada en algo menos de tres minutos, que no lograra recordar más de una media docena de cartas, la cita sobre ser un desastre en los estudios, su diagnóstico de dislexia, la construcción de un método a partir de la imaginación, los siete participantes de 1991, los recorridos por lugares de su infancia, unos 70 recorridos de 50 etapas, la codificación y la asociación de imágenes con lugares."
+      },
+      {
+        "title": "Creighton Carvello, Wikipedia",
+        "note": "Respalda: la aparición de Carvello en Record Breakers en 1987, la baraja en 2 minutos y 59 segundos, y que esta hazaña inspiró a O'Brien."
+      },
+      {
+        "title": "Dominic O'Brien, Wikipedia",
+        "note": "Respalda: la fecha de nacimiento, la nacionalidad británica, los ocho títulos del Campeonato Mundial de Memoria, el Sistema Dominic y su parecido con el Sistema Mayor, el récord del 1 de mayo de 2002 de 54 barajas y 2808 cartas vistas una sola vez, los ocho errores con cuatro corregidos al decírselo."
+      },
+      {
+        "title": "World Memory Championships, Wikipedia",
+        "note": "Respalda: el primer campeonato en Londres en 1991, Tony Buzan como creador y cofundador junto con Ray Keene, los títulos de O'Brien en 1991, 1993, 1995, 1996, 1997, 1999, 2000 y 2001."
+      },
+      {
+        "title": "Most decks of playing cards memorized by a single sighting, Guinness World Records",
+        "note": "Respalda: el récord de 59 barajas de Dave Farrow en 2007."
+      },
+      {
+        "title": "Total recall, Raymond Keene, The Spectator, September 8, 2012",
+        "note": "Respalda: Keene como gran maestro de ajedrez que escribe sobre el deporte de la memoria y O'Brien como ocho veces campeón mundial de memoria."
+      },
+      {
+        "title": "Routes to remembering: the brains behind superior memory, Eleanor Maguire, Elizabeth Valentine, John Wilding and Narinder Kapur, Nature Neuroscience 6, pages 90 to 95 (2003)",
+        "note": "Respalda: diez memorizadores superiores, ocho de los primeros puestos de los Campeonatos Mundiales de Memoria, diez controles emparejados, la ausencia de un intelecto excepcional y de diferencias cerebrales estructurales, nueve de diez usando el método de los loci, Simónides de Ceos, el uso durante dos milenios y medio, la actividad en regiones ligadas a la memoria espacial y a la orientación, las puntuaciones de reconocimiento de 25,9 frente a 18,5 en dígitos y de 19,7 para ambos grupos en copos de nieve, la pequeña diferencia con las caras."
+      },
+      {
+        "title": "Mental Training Evokes Superior Memory, Transforms Brain Networks, Gwyneth Dickey Zakaib, Alzforum, March 10, 2017, on Dresler and colleagues in Neuron",
+        "note": "Respalda: 23 atletas de la memoria del top 50 mundial, la lista de 72 palabras, los atletas que recordaron casi todas y los controles unas 40, seis semanas de entrenamiento con el método de los loci que duplicaron con creces el recuerdo, un recuerdo casi igual cuatro meses después."
+      },
+      {
+        "title": "Mnemonic Training Reshapes Brain Networks to Support Superior Memory, Martin Dresler and colleagues, Neuron 93, pages 1227 to 1235 (2017)",
+        "note": "Respalda: el estudio de 2017 en Neuron dirigido por Martin Dresler sobre atletas de la memoria y seis semanas de entrenamiento con el método de los loci. Las cifras del texto proceden del reportaje de Alzforum sobre este artículo."
+      },
+      {
+        "title": "Skilled Memory, William G. Chase and K. Anders Ericsson, Carnegie-Mellon University Technical Report No. 5, November 6, 1980 (DTIC ADA114635)",
+        "note": "Respalda: los 25 meses y más de 250 horas de práctica de SF, la amplitud de dígitos de 7 a más de 80, la codificación de dígitos como tiempos de carrera, los grupos de 3 y 4 dígitos, la amplitud con consonantes en torno a 6 sin transferencia tras tres meses, los patrones con sentido en la memoria a largo plazo como base de la memoria de los expertos en ajedrez, el término estructura de recuperación."
+      },
+      {
+        "title": "Recall of rapidly presented random chess positions is a function of skill, Fernand Gobet and Herbert A. Simon, Psychonomic Bulletin and Review 3, pages 159 to 163 (1996)",
+        "note": "Respalda: la teoría de los chunks de Chase y Simon de 1973 sobre la memoria ajedrecística, que los jugadores fuertes conservan cierta ventaja en posiciones aleatorias, mucho menor que en posiciones de partida."
+      },
+      {
+        "title": "Memory Techniques: An Introduction, David Fadul, ChessBase, May 30, 2017",
+        "note": "Respalda: la respuesta breve de que un palacio de la memoria ayuda a guardar jugadas pero no a ver el tablero, que puede almacenar cientos de partidas o aperturas y que no te permitirá ver un tablero de ajedrez en la mente."
+      }
+    ]
+  }
+}

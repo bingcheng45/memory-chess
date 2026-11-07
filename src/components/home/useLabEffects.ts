@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { REDUCED_MOTION_QUERY } from "@/components/articles/articleFlight";
+import { fetchPlayCount } from "@/lib/stats/playCount";
 
 /** The site-wide games-played count: still loading, known, or not available (no Supabase, a failed request). */
 export type TotalPlays =
@@ -12,17 +13,8 @@ export type TotalPlays =
 const UNAVAILABLE: TotalPlays = { status: "unavailable" };
 
 async function fetchTotalPlays(): Promise<TotalPlays> {
-  try {
-    const response = await fetch("/api/game-stats?metric=total_plays");
-    if (!response.ok) return UNAVAILABLE;
-    const data = await response.json();
-    const raw = data?.data?.metric_value;
-    // Postgres bigint columns can arrive as numeric strings.
-    const plays = raw === undefined || raw === null ? NaN : Number(raw);
-    return Number.isFinite(plays) ? { status: "known", plays } : UNAVAILABLE;
-  } catch {
-    return UNAVAILABLE;
-  }
+  const count = await fetchPlayCount();
+  return count ? { status: "known", plays: count.plays } : UNAVAILABLE;
 }
 
 const keepKnownCountOnFailure = (current: TotalPlays, next: TotalPlays): TotalPlays =>

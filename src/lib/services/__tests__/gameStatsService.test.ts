@@ -7,7 +7,7 @@ jest.mock("@/lib/supabase", () => {
   const from = jest.fn();
   return {
     supabase: { from, rpc },
-    supabaseWriter: { from, rpc },
+    counterWriter: () => ({ from, rpc }),
     SUPABASE_WRITES_OFF_REASON: "Supabase is not configured",
     checkSupabaseConnection: async () => ({ connected: true }),
     stub: { rpc, from },

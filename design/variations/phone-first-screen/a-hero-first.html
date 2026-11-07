@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variation A · Hero first, story on tap</title>
+<!--
+  Stance: calmer. The phone gets the same promise the desktop already shows.
+  Brand, one-line explainer and "Play a free round" sit in the first 844px.
+  The Najdorf story moves behind a single "Watch" link instead of autoplaying
+  for six screens with no way forward except "Skip intro".
+-->
+<style>
+  :root {
+    --bg: #f4f6f6; --surface: #fff; --ink: #0f1b24; --muted: #4a5864; --line: #d5dcdf;
+    --blue: #1d4ed8; --blue-soft: #e5ebfd; --brand: #c2511a;
+    --sq-light: #edf1f2; --sq-dark: #c5cfd3;
+    --space-1: 8px; --space-2: 16px; --space-3: 24px; --space-4: 32px;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--bg); color: var(--ink); font: 400 17px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 14px var(--space-2); border-bottom: 1px solid var(--line); }
+  .logo { font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
+  .logo span { color: var(--brand); }
+  .menu { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); font-size: 20px; }
+  main { padding: var(--space-3) var(--space-2) var(--space-4); max-width: 480px; margin: 0 auto; }
+  .tag { display: inline-block; font-size: 13px; font-weight: 600; color: var(--blue); background: var(--blue-soft); padding: 2px 10px; border-radius: 999px; }
+  h1 { font-size: 38px; line-height: 1.08; letter-spacing: -0.025em; margin: 12px 0 var(--space-1); }
+  h1 em { font-style: normal; color: var(--blue); }
+  .lede { color: var(--muted); max-width: 34ch; }
+  .board { display: grid; grid-template-columns: repeat(8, 1fr); aspect-ratio: 1; width: 62%; margin: var(--space-3) auto; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; box-shadow: 0 10px 30px -18px rgb(15 27 36 / .5); }
+  .board i { display: grid; place-items: center; font-style: normal; font-size: 22px; line-height: 1; background: var(--sq-light); }
+  .board i.d { background: var(--sq-dark); }
+  .cta { display: block; width: 100%; padding: 16px; border: 0; border-radius: 12px; background: var(--blue); color: #fff; font: 600 18px/1 inherit; text-align: center; text-decoration: none; }
+  .cta:focus-visible, .story:focus-visible { outline: 3px solid var(--brand); outline-offset: 3px; }
+  .sub { text-align: center; color: var(--muted); font-size: 14px; margin-top: var(--space-1); }
+  .story { display: flex; align-items: center; gap: 12px; margin-top: var(--space-3); padding: 12px var(--space-2); min-height: 56px; border-radius: 12px; background: #0b0b0b; color: #f5efe9; text-decoration: none; font-size: 15px; }
+  .story b { color: #ff9a5c; font-weight: 600; }
+  .play { flex: none; width: 32px; height: 32px; border-radius: 50%; border: 2px solid #ff9a5c; display: grid; place-items: center; font-size: 12px; color: #ff9a5c; }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Memory <span>Chess</span></div>
+  <button class="menu" aria-label="Menu">&#9776;</button>
+</header>
+<main>
+  <span class="tag">Free · no account</span>
+  <h1>Put a number on your <em>mind's eye.</em></h1>
+  <p class="lede">Study a chess position for a few seconds. It disappears. Rebuild it from memory and get a score.</p>
+
+  <div class="board" aria-label="Example position with six pieces" role="img">
+    <i></i><i class="d"></i><i></i><i class="d">♛</i><i></i><i class="d">♜</i><i>♚</i><i class="d"></i>
+    <i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i>
+    <i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i>
+    <i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i>
+    <i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i>
+    <i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i>
+    <i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i><i></i><i class="d"></i>
+    <i class="d"></i><i></i><i class="d"></i><i>♕</i><i class="d"></i><i>♖</i><i class="d">♔</i><i></i>
+  </div>
+
+  <a class="cta" href="#">Play a free round</a>
+  <p class="sub">About a minute · 53,748 games played</p>
+
+  <a class="story" href="#">
+    <span class="play" aria-hidden="true">▶</span>
+    <span>Watch how Najdorf played <b>45 boards blindfold</b></span>
+  </a>
+</main>
+</body>
+</html>

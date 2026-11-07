@@ -3,13 +3,14 @@ import { FIRST_SCREEN_MEDIA, INTRO_GATE, INTRO_RULES, decideIntro, type IntroSig
 const NONE: IntroSignals = { reducedMotion: false, saveData: false, seen: false, deepLink: false, firstScreen: false };
 
 /**
- * Runs the inline gate the way the page does, in a browser set up to give these signals. firstScreen is an English
- * page on a phone; without it the page is English on a desktop, so the locale alone never stops the intro.
+ * Runs the inline gate the way the page does, in a browser set up to give these signals. firstScreen is a phone
+ * (FIRST_SCREEN_MEDIA matches) on a page in `lang`, English unless a test says otherwise; without it the page is on a
+ * desktop, so the locale alone never stops the intro.
  */
-function runGate(signals: IntroSignals): { played: boolean; seen: string | null } {
+function runGate(signals: IntroSignals, lang = "en"): { played: boolean; seen: string | null } {
   if (signals.seen) window.localStorage.setItem("memory-chess-home-intro-seen", "1");
   window.location.hash = signals.deepLink ? "#faq" : "";
-  document.documentElement.lang = "en";
+  document.documentElement.lang = lang;
   window.matchMedia = ((query: string) => ({
     matches: query.includes("reduce") ? signals.reducedMotion : query === FIRST_SCREEN_MEDIA && signals.firstScreen,
   })) as typeof window.matchMedia;
@@ -59,6 +60,14 @@ describe("the inline gate", () => {
   it("records the visit when it plays, so the next visit skips", () => {
     expect(runGate(NONE)).toEqual({ played: true, seen: "1" });
     expect(runGate(NONE).played).toBe(false);
+  });
+
+  it("still plays for a phone whose page is not in a first-screen language", () => {
+    expect(runGate({ ...NONE, firstScreen: true }, "de")).toEqual({ played: true, seen: "1" });
+  });
+
+  it("skips a phone whose page is in a first-screen language", () => {
+    expect(runGate({ ...NONE, firstScreen: true }, "en")).toEqual({ played: false, seen: null });
   });
 
   it("writes nothing for a visitor it skips", () => {

@@ -30,7 +30,10 @@
     "lab:dash-heights": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/lab/dash-heights.mjs",
     "lab:cls-dashboard": "node scripts/lab/cls-dashboard.mjs",
     "lab:fallback-widths": "node scripts/lab/fallback-widths.mjs",
-    "indexnow:submit": "node scripts/indexnow-submit.mjs"
+    "indexnow:submit": "node scripts/indexnow-submit.mjs",
+    "cf:build": "opennextjs-cloudflare build",
+    "cf:deploy": "opennextjs-cloudflare deploy",
+    "cf:preview": "opennextjs-cloudflare upload"
   },
   "dependencies": {
     "@databuddy/sdk": "^3.2.1",
@@ -60,6 +63,7 @@
   },
   "devDependencies": {
     "@electric-sql/pglite": "^0.5.8",
+    "@opennextjs/cloudflare": "^1.20.12",
     "@supabase/supabase-js": "^2.49.4",
     "@testing-library/dom": "^10.4.1",
     "@testing-library/jest-dom": "^6.9.1",
@@ -84,6 +88,7 @@
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.5.11",
     "tailwindcss": "^3.4.1",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.157.0"
   }
 }

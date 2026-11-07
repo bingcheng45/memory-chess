@@ -14,6 +14,10 @@ describe("GET /api/geo", () => {
     expect(response.headers.get("Cache-Control")).toBe("private, no-store");
   });
 
+  it("answers the country Cloudflare's edge read when the site runs on Cloudflare", async () => {
+    expect(await (await get({ "cf-ipcountry": "JP" })).json()).toEqual({ country: "JP" });
+  });
+
   it.each([
     ["no header", {}],
     ["an unknown code", { "x-vercel-ip-country": "XX" }],

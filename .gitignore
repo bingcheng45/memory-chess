@@ -51,3 +51,7 @@ next-env.d.ts
 .lab-header-fit/
 .lab-dash-heights/
 .lab-cls-dashboard/
+
+# Cloudflare build output
+.open-next
+.wrangler

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Variation B · The story in one screen</title>
+<!--
+  Stance: keep the drama, lose the wait. The Najdorf intro is the hook, so it stays dark and orange, but the whole
+  story fits in one screen and ends on a question the product answers. "Play a free round" sits in the thumb zone.
+
+  Board fix (round 2): every board is a real 8x8 board with pieces, drawn the way the live intro draws them (same
+  squares, same piece colours, the last move lit). Phones show 15 boards in 5 columns (12 in 4 below 360px), each
+  at least 56px, labelled "45 boards, like these". Desktop has room for all 45 at 9 x 5.
+-->
+<style>
+  :root {
+    --night: #070707; --ink: #f4efea; --muted: #b9b0a8; --ember: #ff9f66;
+    --sq-light: #2d2723; --sq-dark: #1b1714; --pc-white: #fbf6f1; --pc-black: #e9a679; --moved: rgba(255, 159, 102, 0.45);
+    --line: rgba(244, 239, 234, 0.2);
+    --gutter: 20px; --gap: 8px;
+  }
+  * { box-sizing: border-box; margin: 0; }
+  body { background: var(--night); color: var(--ink); font: 400 17px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; min-height: 100svh; display: flex; flex-direction: column; }
+  header { display: flex; align-items: center; justify-content: space-between; padding: 14px var(--gutter); }
+  .logo { font-weight: 700; font-size: 20px; }
+  .logo span { color: var(--ember); }
+  .menu { width: 44px; height: 44px; border-radius: 10px; border: 1px solid var(--line); background: transparent; color: var(--ink); font-size: 20px; }
+  main { flex: 1; width: 100%; max-width: 480px; margin: 0 auto; padding: 4px var(--gutter) 24px; display: flex; flex-direction: column; }
+  .kicker { font-size: 13px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+
+  figure { margin: 12px 0 0; }
+  .boards { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--gap); }
+  .board {
+    display: block; width: 100%; aspect-ratio: 1; border-radius: 2px;
+    /* 8x8 squares: one conic tile is 2x2 squares, a quarter of the board. a8 is light. */
+    background: repeating-conic-gradient(var(--sq-dark) 0 25%, var(--sq-light) 0 50%) 0 0 / 25% 25%;
+  }
+  .board text { font-family: "Apple Symbols", "Segoe UI Symbol", "Noto Sans Symbols 2", serif; font-size: .86px; text-anchor: middle; dominant-baseline: central; }
+  .board .w { fill: var(--pc-white); }
+  .board .b { fill: var(--pc-black); }
+  .board rect { fill: var(--moved); }
+  figcaption { margin-top: 8px; font-size: 13px; color: var(--muted); text-align: right; }
+
+  h1 { margin-top: 18px; font-size: 32px; line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance; }
+  h1 em { font-style: normal; color: var(--ember); }
+  .lede { color: var(--muted); margin-top: 10px; }
+  .actions { margin-top: auto; padding-top: 22px; display: grid; gap: 10px; }
+  .cta { display: block; padding: 16px; border-radius: 12px; background: var(--ember); color: #1a0d05; font-weight: 700; font-size: 18px; text-align: center; text-decoration: none; }
+  .ghost { display: block; padding: 12px; min-height: 48px; border-radius: 12px; border: 1px solid var(--line); color: var(--ink); text-align: center; text-decoration: none; font-size: 16px; font-weight: 600; }
+  .cta:hover { background: #ffb487; }
+  .ghost:hover { border-color: var(--ember); }
+  a:focus-visible { outline: 3px solid var(--ink); outline-offset: 3px; }
+  .fine { text-align: center; font-size: 14px; color: var(--muted); }
+
+  /* Below 360px five columns would drop under 56px, so show 12 boards in four. */
+  @media (max-width: 359px) {
+    .boards { grid-template-columns: repeat(4, 1fr); }
+    .board:nth-child(n + 13) { display: none; }
+    h1 { font-size: 29px; }
+  }
+
+  /* Desktop: text left, all 45 boards right. */
+  @media (min-width: 900px) {
+    header { padding: 20px 48px; }
+    main { max-width: 1280px; padding: 48px 48px 64px; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); grid-template-rows: auto 1fr; column-gap: 72px; align-items: start; }
+    .kicker { grid-column: 1; }
+    figure { grid-column: 2; grid-row: 1 / span 2; margin: 0; }
+    .boards { grid-template-columns: repeat(9, 1fr); }
+    .board:nth-child(n) { display: block; }
+    .copy { grid-column: 1; }
+    h1 { font-size: 52px; margin-top: 20px; }
+    .lede { font-size: 19px; max-width: 34ch; margin-top: 16px; }
+    .actions { margin-top: 32px; padding-top: 0; max-width: 360px; }
+    .fine { text-align: left; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">Memory <span>Chess</span></div>
+  <button class="menu" aria-label="Menu">&#9776;</button>
+</header>
+<main>
+  <p class="kicker">São Paulo · January 1947</p>
+  <figure>
+    <div class="boards" id="boards" role="img" aria-label="Chessboards from a blindfold simultaneous exhibition"></div>
+    <figcaption id="caption">45 boards, like these</figcaption>
+  </figure>
+  <div class="copy">
+    <h1>Najdorf held <em>45 boards</em> in his head. How many can you hold?</h1>
+    <p class="lede">Memory Chess shows you a position for a few seconds, then hides it. Rebuild it and get a score.</p>
+    <div class="actions">
+      <a class="cta" href="#">Play a free round</a>
+      <a class="ghost" href="#">Read Najdorf's story</a>
+      <p class="fine">Free · no account · about a minute</p>
+    </div>
+  </div>
+</main>
+<script>
+  // The opening positions of the live intro's games (src/lib/home/intro/simulGames.ts), and the last move on each.
+  const games = [
+    ["r1b1k2r/2pqbppp/p1p5/8/4n3/8/PPPP1PPP/RNBQ1RK1", "e4"], ["r1b5/ppp2kpr/3p4/8/4n3/N1P1P3/Pn6/R3K3", "b2"],
+    ["4kb1r/1p4pp/2np4/4p3/1P6/2N1P3/2P3PP/R3K1R1", "g1"], ["rn6/ppp1kp1p/6p1/4P3/8/7P/PPP1RK1P/R7", "e2"],
+    ["rn2kbnr/p3pppp/2p5/8/3q3P/6N1/PP3PP1/R1B1KBNR", "d4"], ["rnb3k1/pp3pp1/2p4p/3p4/3P4/1P3P2/P3N1PP/R3KB1R", "e2"],
+    ["rn1qkb1r/pp2pppp/2p5/3n1b2/P1pP4/5N2/1P2PPPP/R1BQKB1R", "a4"], ["rn3k2/pp3p1p/6p1/2p2p2/2P5/5N1R/PP3PP1/R2NKB2", "h3"],
+    ["rnb2rk1/ppp2ppn/4p3/3q4/3P4/1QP1P3/P4PPP/R1B1K1NR", "b3"], ["rn1qkb1r/pbp2ppp/8/4p3/N7/6P1/PP1PPP1P/R1B1K1NR", "a4"],
+    ["r1bqkb1r/pp3ppp/2n1pn2/2pp4/3P1B2/2P1PN2/PP3PPP/RN1QKB1R", "f4"], ["r3k2r/p1p1pp2/2p2p2/8/8/2N5/PP3PPP/R1b1K2R", "c1"],
+    ["1r2k2r/p1p3pp/8/2p5/8/P1N1P1P1/1P5P/1b2K2R", "b1"], ["rn3k2/ppp1pp1p/8/6p1/4P3/2P5/P4PBP/R1B1K1NR", "g2"],
+    ["r1bqk2r/1pppbppp/p1B2n2/4p3/4P3/5N2/PPPP1PPP/RNBQ1RK1", "c6"],
+  ];
+  const glyph = { K: "♔", Q: "♕", R: "♖", B: "♗", N: "♘", P: "♙", k: "♚", q: "♛", r: "♜", b: "♝", n: "♞", p: "♟" };
+  const svg = ([fen, last]) => {
+    const lit = `<rect x="${last.charCodeAt(0) - 97}" y="${8 - Number(last[1])}" width="1" height="1"/>`;
+    const pieces = fen.split("/").flatMap((rank, row) => {
+      let col = 0;
+      return [...rank].map((c) => {
+        if (/\d/.test(c)) { col += Number(c); return ""; }
+        const t = `<text class="${c === c.toUpperCase() ? "w" : "b"}" x="${col + 0.5}" y="${row + 0.54}">${glyph[c]}&#xFE0E;</text>`;
+        col += 1;
+        return t;
+      });
+    }).join("");
+    return `<svg class="board" viewBox="0 0 8 8" aria-hidden="true">${lit}${pieces}</svg>`;
+  };
+  const wide = matchMedia("(min-width: 900px)").matches;
+  const list = wide ? Array.from({ length: 45 }, (_, i) => games[i % games.length]) : games;
+  document.getElementById("boards").innerHTML = list.map(svg).join("");
+  if (wide) document.getElementById("caption").textContent = "45 boards. He saw none of them.";
+</script>
+</body>
+</html>

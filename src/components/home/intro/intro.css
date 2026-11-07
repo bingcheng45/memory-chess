@@ -2,13 +2,25 @@
    is running it (data-phase), which is how the replay chip shows it again. */
 .home-intro { display: none; }
 
-script[data-home-intro] ~ .home-intro,
-.home-intro[data-phase] {
+/* The intro's palette, shared with the phone first screen. The board colours match simulScene.ts. */
+.home-intro,
+.home-first {
   --intro-ground: #070707;
   --intro-ink: #f4efea;
   --intro-ink-soft: #b9b0a8;
   --intro-accent: #ff9f66;
+  --intro-accent-hover: #ffb487;
+  --intro-on-accent: #1a0d05;
   --intro-line: rgba(244, 239, 234, 0.2);
+  --intro-square-light: #2d2723;
+  --intro-square-dark: #1b1714;
+  --intro-piece-white: #fbf6f1;
+  --intro-piece-black: #e9a679;
+  --intro-moved: rgba(255, 159, 102, 0.45);
+}
+
+script[data-home-intro] ~ .home-intro,
+.home-intro[data-phase] {
   position: fixed;
   inset: 0;
   z-index: 100;
@@ -154,3 +166,129 @@ html:has(.home-intro[data-phase="playing"]) { overflow: hidden; }
 .lab-paper .lab-intro-replay button:hover { color: var(--lp-accent-hover); text-decoration: underline; text-underline-offset: 3px; }
 .lab-paper .lab-intro-replay button:focus-visible { outline: 2px solid var(--lp-accent); outline-offset: 2px; border-radius: 4px; }
 .lab-paper .lab-intro-replay span { font-size: 0.8em; margin-right: 2px; }
+
+/* The phone first screen (IntroFirstScreen): the story as a still screen, under the header, phones only. The width
+   matches FIRST_SCREEN_MEDIA in src/lib/home/intro/introGate.ts. The mockup is
+   design/variations/phone-first-screen/b-story-in-one-screen.html. */
+.home-first { display: none; }
+
+@media (max-width: 767px) {
+  .home-first {
+    --first-gutter: var(--lp-gutter, 16px);
+    --first-gap: 8px;
+    display: block;
+    padding: 20px var(--first-gutter) 28px;
+    background: var(--intro-ground);
+    color: var(--intro-ink);
+    font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+}
+
+.home-first .home-first-kicker {
+  margin: 0;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--intro-ink-soft);
+}
+
+.home-first .home-first-figure { margin: 12px 0 0; }
+.home-first .home-first-boards { display: grid; grid-template-columns: repeat(5, 1fr); gap: var(--first-gap); }
+
+.home-first .home-first-board {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1;
+  border-radius: 2px;
+  /* One conic tile is 2 by 2 squares, a quarter of the board, so this paints 8 by 8 with a8 light. */
+  background: repeating-conic-gradient(var(--intro-square-dark) 0 25%, var(--intro-square-light) 0 50%) 0 0 / 25% 25%;
+}
+
+.home-first .home-first-board rect { fill: var(--intro-moved); }
+
+.home-first .home-first-board text {
+  font-family: "Apple Symbols", "Segoe UI Symbol", "Noto Sans Symbols 2", serif;
+  font-size: 0.86px;
+  text-anchor: middle;
+  dominant-baseline: central;
+  fill: var(--intro-piece-black);
+}
+
+.home-first .home-first-board text[data-white] { fill: var(--intro-piece-white); }
+
+.home-first figcaption { margin-top: 8px; font-size: 13px; text-align: right; color: var(--intro-ink-soft); }
+
+.home-first .home-first-title {
+  margin: 18px 0 0;
+  font-size: 32px;
+  line-height: 1.1;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+  color: var(--intro-ink);
+}
+
+.home-first .home-first-title em { font-style: normal; color: var(--intro-accent); }
+.home-first .home-first-lede { margin: 10px 0 0; font-size: 17px; line-height: 1.5; color: var(--intro-ink-soft); }
+.home-first .home-first-actions { display: grid; gap: 10px; margin-top: 22px; }
+
+.home-first .home-first-play,
+.home-first .home-first-story {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-radius: 12px;
+  font: inherit;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.home-first .home-first-play {
+  min-height: 56px;
+  background: var(--intro-accent);
+  color: var(--intro-on-accent);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.home-first .home-first-story {
+  min-height: 48px;
+  border: 1px solid var(--intro-line);
+  background: none;
+  color: var(--intro-ink);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.home-first .home-first-play:hover { background: var(--intro-accent-hover); }
+.home-first .home-first-story:hover { border-color: var(--intro-accent); }
+.home-first .home-first-play:focus-visible,
+.home-first .home-first-story:focus-visible { outline: 3px solid var(--intro-ink); outline-offset: 3px; }
+
+.home-first .home-first-fine { margin: 0; font-size: 14px; text-align: center; color: var(--intro-ink-soft); }
+
+/* Below 360px five columns would drop under 56px a board, so show twelve boards in four. */
+@media (max-width: 359px) {
+  .home-first .home-first-boards { grid-template-columns: repeat(4, 1fr); }
+  .home-first .home-first-board:nth-child(n + 13) { display: none; }
+  .home-first .home-first-title { font-size: 29px; }
+}
+
+/* Safari's toolbars leave far less than the phone's height, so on shorter screens fewer rows are shown, keeping the
+   board size, so "Play a free round" stays on the first screen. */
+@media (max-width: 767px) and (max-height: 740px) {
+  .home-first .home-first-board:nth-child(n + 11) { display: none; }
+}
+@media (max-width: 359px) and (max-height: 740px) {
+  .home-first .home-first-board:nth-child(n + 9) { display: none; }
+}
+@media (max-width: 767px) and (max-height: 620px) {
+  .home-first .home-first-board:nth-child(n + 6) { display: none; }
+}
+@media (max-width: 359px) and (max-height: 620px) {
+  .home-first .home-first-board:nth-child(n + 5) { display: none; }
+}

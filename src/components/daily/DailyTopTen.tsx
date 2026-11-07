@@ -79,16 +79,19 @@ export function DailyTopTen({ rows, today, joined, played }: DailyTopTenProps) {
   return (
     <section className="daily-card daily-top" aria-labelledby="daily-top-title">
       <h2 id="daily-top-title" className="daily-card-title">{t(listed ? (yesterday ? "yesterdayTitle" : "title") : yesterday ? "yesterdayBoard" : "todayBoard")}</h2>
-      {/* Always rendered, so the line holds its place before 25 players have joined and the table never moves. */}
-      <p className="daily-played">
-        {playedLike !== null && (
-          <>
-            <strong>{t("playedLike", { rating: format.number(playedLike) })}</strong>
-            <span aria-hidden="true"> · </span>
-            <span className="daily-hint">{t("playedLikeNote")}</span>
-          </>
-        )}
-      </p>
+      {/* Rendered on today's board even when empty, so the line holds its place before 25 players have joined and the
+          table never moves. Yesterday's board never shows it, so there it would only leave a gap. */}
+      {!yesterday && (
+        <p className="daily-played">
+          {playedLike !== null && (
+            <>
+              <strong>{t("playedLike", { rating: format.number(playedLike) })}</strong>
+              <span aria-hidden="true"> · </span>
+              <span className="daily-hint">{t("playedLikeNote")}</span>
+            </>
+          )}
+        </p>
+      )}
       {joinedLine !== null && (
         <p className="daily-note daily-count">
           <strong>{t(joinedLine, { count: all.length >= LEADERBOARD_ROW_LIMIT ? `${format.number(LEADERBOARD_ROW_LIMIT)}+` : format.number(all.length) })}</strong>
@@ -123,7 +126,8 @@ export function DailyTopTen({ rows, today, joined, played }: DailyTopTenProps) {
           </table>
         </div>
       )}
-      {board !== null && (yesterday || all.length === 0) && <p className="daily-note">{t("empty")}</p>}
+      {/* While yesterday's board stands in, today's card says no one has joined yet (DailyOpenCard). */}
+      {board !== null && !yesterday && all.length === 0 && <p className="daily-note">{t("empty")}</p>}
       {rows.state === "failed" && (
         <p className="daily-note daily-error" role="alert">
           {t("error")}

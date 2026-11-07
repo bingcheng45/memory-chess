@@ -153,8 +153,12 @@ function LeaderboardTable({ data, error, entryDetails, activeTab, blindfold = fa
     );
   }
 
+  // While every row still sits at the starting rating the column says nothing, and on a phone it pushes Pieces,
+  // the column the board is ranked by, off the screen.
+  const elo = !blindfold && data.some((entry) => (entry.skill_rating ?? START_RATING) !== START_RATING);
+
   return (
-    <BoardFrame isState={false} elo={!blindfold}>
+    <BoardFrame isState={false} elo={elo}>
       {data.map((entry, index) => {
         // A name alone matches every round that player submitted, so a row is
         // only highlighted when the link also carries that round's times.
@@ -194,7 +198,7 @@ function LeaderboardTable({ data, error, entryDetails, activeTab, blindfold = fa
                 {isHighlighted && <span className="lb-you">{t("you")}</span>}
               </div>
             </td>
-            {!blindfold && <td className="lb-num">{entry.skill_rating ?? START_RATING}</td>}
+            {elo && <td className="lb-num">{entry.skill_rating ?? START_RATING}</td>}
             <td className="lb-num">
               {entry.correct_pieces}
               {entry.total_wrong_pieces !== undefined &&

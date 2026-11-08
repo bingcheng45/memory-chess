@@ -2,6 +2,8 @@ import { act, fireEvent, render, screen } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 import { IntroLayer } from "@/components/home/intro/IntroLayer";
 import { IntroReplayLink } from "@/components/home/intro/IntroReplayLink";
+import { QUICK_START_HREF } from "@/components/home/links";
+import { roundSourceFrom } from "@/lib/analytics/events";
 import messages from "../../../../../messages/en.json";
 
 const draw = jest.fn();
@@ -23,6 +25,7 @@ function homePage({ marked }: { marked: boolean }) {
     page: screen.getByRole("button", { name: "Play", hidden: true }),
     layer: screen.getByRole("region", { name: "The 45-board intro", hidden: true }),
     skip: screen.getByRole("button", { name: "Skip intro", hidden: true }),
+    play: screen.getByRole("link", { name: "Play a free round", hidden: true }),
     replay: screen.getByRole("button", { name: "Najdorf's 45 boards", hidden: true }),
   };
 }
@@ -114,6 +117,55 @@ describe("a swipe on a phone", () => {
   });
 });
 
+describe("Play in the intro", () => {
+  it("links the hero's quick round, told apart only by its round source", () => {
+    const { layer, play } = homePage({ marked: true });
+    const [path, query] = play.getAttribute("href")!.split("?");
+    const [heroPath, heroQuery] = QUICK_START_HREF.split("?");
+    const params = new URLSearchParams(query);
+    const hero = new URLSearchParams(heroQuery);
+
+    expect(layer.contains(play)).toBe(true);
+    expect(path).toBe(heroPath);
+    expect(roundSourceFrom(params.get("from"))).toBe("home_intro");
+    params.delete("from");
+    hero.delete("from");
+    expect(params.toString()).toBe(hero.toString());
+  });
+
+  it("comes after Skip in the tab order, and leaves Enter on it to the link instead of jumping a beat", async () => {
+    const { layer, play, skip } = homePage({ marked: true });
+    await advance(100);
+    expect(document.activeElement).toBe(skip);
+    expect(skip.compareDocumentPosition(play) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(play).not.toHaveAttribute("tabindex");
+    play.focus();
+    expect(document.activeElement).toBe(play);
+    expect(fireEvent.keyDown(play, { key: "Enter" })).toBe(true);
+    await advance(32);
+    expect(shownCaption(layer)).toMatch(/^One board\./);
+  });
+
+  it("stops the clock on a plain click, so the layer holds still while the round loads, and Skip still ends it", async () => {
+    const { layer, play, skip } = homePage({ marked: true });
+    await advance(100);
+    fireEvent.click(play);
+    await advance(10_100);
+    expect(layer.dataset.phase).toBe("playing");
+    expect(shownCaption(layer)).toMatch(/^One board\./);
+    fireEvent.click(skip);
+    expect(layer.dataset.phase).toBe("ending");
+  });
+
+  it("keeps the intro running here when the round opens in a new tab", async () => {
+    const { layer, play } = homePage({ marked: true });
+    await advance(100);
+    fireEvent.click(play, { metaKey: true });
+    await advance(10_100);
+    expect(layer.dataset.phase).toBe("ending");
+  });
+});
+
 describe("the hero's replay link", () => {
   it("leaves the intro alone until it is pressed", async () => {
     const { layer } = homePage({ marked: false });
@@ -166,6 +218,14 @@ describe("what the intro reports to analytics", () => {
       ["home_intro_shown", {}],
       ["home_intro_skipped", { beat: "dark", play: "first" }],
     ]);
+  });
+
+  it("reports nothing of its own on Play, and no end after it; the round itself sends round_start", async () => {
+    const { play } = homePage({ marked: true });
+    await advance(6000);
+    fireEvent.click(play);
+    await advance(10_100);
+    expect(events()).toEqual([["home_intro_shown", {}]]);
   });
 
   it("reports a replay, and an Escape during it as a skip of the replay", async () => {

@@ -5,6 +5,8 @@ import { useEffect, useRef, useState, type MouseEvent } from "react";
 import { INTRO_MARK, INTRO_REPLAY_EVENT } from "@/lib/home/intro/introGate";
 import { beatAt, captionAt, counterAt, INTRO_SECONDS, nextBeatTime, type CaptionId } from "@/lib/home/intro/introBeats";
 import { trackEvent, type IntroPlay } from "@/lib/analytics/events";
+import { Link } from "../HomeLinks";
+import { INTRO_START_HREF } from "../links";
 import type { SimulScene } from "./simulScene";
 
 const CAPTIONS: readonly CaptionId[] = ["one", "many", "dark", "you"];
@@ -106,15 +108,19 @@ function play(canvas: HTMLCanvasElement, onTime: (t: number) => void, onDone: ()
 /**
  * The 45-board intro: plays on its own when the gate marked its script, and again from the hero's replay link. While it plays,
  * Skip holds focus and the page under the layer is inert. A tap, a jump key, a scroll or a swipe moves to the next beat.
+ * Play, after Skip in the tab order, opens the hero's quick round and stops the clock while the round loads.
  */
 export function IntroLayer() {
   const t = useTranslations("home.lab.intro");
+  const lab = useTranslations("home.lab");
   const layer = useRef<HTMLElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const bar = useRef<HTMLSpanElement>(null);
   const skip = useRef<HTMLButtonElement>(null);
+  const playLink = useRef<HTMLAnchorElement>(null);
   const jump = useRef(() => {});
   const skipNow = useRef(() => {});
+  const stopNow = useRef(() => {});
   /** Where focus was when a replay started, so it can go back there. */
   const returnFocus = useRef<HTMLElement | null>(null);
   const playKind = useRef<IntroPlay>("first");
@@ -169,6 +175,7 @@ export function IntroLayer() {
     );
     jump.current = playback.jump;
     skipNow.current = skipped;
+    stopNow.current = playback.stop;
 
     let wheelAt = -Infinity;
     const onWheel = (event: WheelEvent) => {
@@ -187,7 +194,7 @@ export function IntroLayer() {
     };
     const onKey = (event: KeyboardEvent) => {
       if (event.key === "Escape") skipped();
-      else if (JUMP_KEYS.has(event.key) && event.target !== skip.current) {
+      else if (JUMP_KEYS.has(event.key) && event.target !== skip.current && event.target !== playLink.current) {
         event.preventDefault();
         playback.jump();
       }
@@ -201,6 +208,7 @@ export function IntroLayer() {
       playback.stop();
       jump.current = () => {};
       skipNow.current = () => {};
+      stopNow.current = () => {};
       covered.forEach((element) => element.removeAttribute("inert"));
       section.removeEventListener("wheel", onWheel);
       section.removeEventListener("touchstart", onTouchStart);
@@ -225,7 +233,12 @@ export function IntroLayer() {
   }, [phase]);
 
   const onLayerClick = (event: MouseEvent) => {
-    if (event.target !== skip.current) jump.current();
+    if (event.target !== skip.current && event.target !== playLink.current) jump.current();
+  };
+
+  /** A plain click leaves for the round, so the clock stops; a click that opens a new tab leaves the intro running here. */
+  const onPlayClick = (event: MouseEvent) => {
+    if (event.button === 0 && !event.metaKey && !event.ctrlKey && !event.shiftKey && !event.altKey) stopNow.current();
   };
 
   return (
@@ -236,9 +249,14 @@ export function IntroLayer() {
         <div className="home-intro-hud">
           <div className="home-intro-top">
             <p className="home-intro-counter">{dark ? t("counterDark", { count: boards }) : t("counter", { count: boards })}</p>
-            <button ref={skip} type="button" className="home-intro-skip" onClick={() => skipNow.current()}>
-              {t("skip")}
-            </button>
+            <div className="home-intro-actions">
+              <button ref={skip} type="button" className="home-intro-skip" onClick={() => skipNow.current()}>
+                {t("skip")}
+              </button>
+              <Link ref={playLink} className="home-intro-play" href={INTRO_START_HREF} onClick={onPlayClick}>
+                {lab("index.play")}
+              </Link>
+            </div>
           </div>
           <div className="home-intro-captions" aria-live="polite">
             {CAPTIONS.map((id) => (

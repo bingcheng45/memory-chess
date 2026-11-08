@@ -138,6 +138,39 @@ html:has(.home-intro[data-phase="playing"]) { overflow: hidden; }
 .home-intro-skip:hover { border-color: var(--intro-accent); }
 .home-intro-skip:focus-visible { outline: 2px solid var(--intro-accent); outline-offset: 3px; }
 
+/* Skip, then Play, the primary action: filled like the first screen's Play. It adds no motion of its own. */
+.home-intro-actions { display: flex; align-items: stretch; gap: 8px; }
+
+.home-intro-play {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  padding: 6px 20px;
+  border: 1px solid var(--intro-accent);
+  border-radius: 999px;
+  background: var(--intro-accent);
+  color: var(--intro-on-accent);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-align: center;
+  text-decoration: none;
+  pointer-events: auto;
+}
+
+.home-intro-play:hover { border-color: var(--intro-accent-hover); background: var(--intro-accent-hover); }
+.home-intro-play:focus-visible { outline: 3px solid var(--intro-ink); outline-offset: 3px; }
+
+/* On a phone the counter takes its own line, so the buttons never move as it grows, and the buttons share the next
+   one. Play takes the room Skip leaves, wrapping its words before it would push Skip off the screen. */
+@media (max-width: 599px) {
+  .home-intro-top { flex-wrap: wrap; }
+  .home-intro-counter { flex-basis: 100%; }
+  .home-intro-actions { flex-basis: 100%; }
+  .home-intro-play { flex: 1 1 0; min-width: 0; }
+}
+
 .home-intro-progress { position: absolute; inset: auto 0 0; height: 3px; background: rgba(255, 255, 255, 0.08); }
 
 .home-intro-progress > span {

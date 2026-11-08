@@ -82,6 +82,7 @@ it.each(EVENTS)("forwards $name to gtag with exactly its params", (event) => {
 });
 
 it.each([
+  ["home_intro", "home_intro"],
   ["insight", "insight"],
   ["tile_drill", "tile_drill"],
   ["result_next", "result_next"],

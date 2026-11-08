@@ -8,6 +8,7 @@ import type { BeatId } from "@/lib/home/intro/introBeats";
 /** Where a round was started from. `link` is a round link that names no known source. */
 export const ROUND_SOURCES = [
   "home_quick",
+  "home_intro",
   "home_tier",
   "calibration",
   "calibration_cta",

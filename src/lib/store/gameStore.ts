@@ -178,15 +178,20 @@ function withCertainty(persisted: Record<string, unknown>, version: number): Rec
 }
 
 /**
- * A record saved before version 4 never kept its first round's day. If it holds a scored round, that day stays unknown
- * and the count starts from the rated rounds the rating has seen. A record with no scored round, such as one a play
- * link or the daily board saved before any round, starts the count at its next finished round.
+ * The first round's day and the count are saved only once rounds are counted, so a player who played before that, or
+ * while RETURN_VISIT_DISCLOSED was off, has scored rounds but no day. Their first round's day is unknown, never today's,
+ * and the count carries on from the rated rounds the rating has seen. A player with no scored round, such as one a play
+ * link or the daily board saved before any round, starts at this round.
  */
-function withReturnVisit(persisted: Record<string, unknown>): Record<string, unknown> {
-  const rounds = parseCertainty(persisted.certainty).rounds;
-  const hasHistory = Array.isArray(persisted.history) && persisted.history.length > 0;
-  if (rounds === 0 && !hasHistory) return { ...persisted, firstRoundDay: null, roundsPlayed: 0 };
-  return { ...persisted, firstRoundDay: UNKNOWN_FIRST_DAY, roundsPlayed: rounds };
+function countReturnVisit(
+  { firstRoundDay, roundsPlayed, certainty, history }: Pick<GameStore, 'firstRoundDay' | 'roundsPlayed' | 'certainty' | 'history'>,
+  day: string,
+): { firstRoundDay: FirstRoundDay; roundsPlayed: number } {
+  const hasScoredRound = certainty.rounds > 0 || history.length > 0;
+  return {
+    firstRoundDay: firstRoundDay ?? (hasScoredRound ? UNKNOWN_FIRST_DAY : day),
+    roundsPlayed: Math.max(roundsPlayed, certainty.rounds) + 1,
+  };
 }
 
 interface StudyStart {
@@ -448,7 +453,7 @@ export const useGameStore = create<GameStore>()(
         };
         const kept = get();
         const returnVisit = RETURN_VISIT_DISCLOSED
-          ? { firstRoundDay: kept.firstRoundDay ?? day, roundsPlayed: kept.roundsPlayed + 1 }
+          ? countReturnVisit(kept, day)
           : { firstRoundDay: kept.firstRoundDay, roundsPlayed: kept.roundsPlayed };
         set(({ history, freeSkipDay, certainty }) => ({
           round,
@@ -514,7 +519,7 @@ export const useGameStore = create<GameStore>()(
       // already has its uncertainty, so it is not replayed again.
       migrate: (persisted, version) => {
         if (!isRecord(persisted)) return persisted;
-        return withReturnVisit(version < CERTAINTY_VERSION ? withCertainty(persisted, version) : persisted);
+        return version < CERTAINTY_VERSION ? withCertainty(persisted, version) : persisted;
       },
       partialize: (state) => ({
         gameState: {

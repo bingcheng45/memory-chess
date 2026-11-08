@@ -10,7 +10,7 @@ A game round's `round_complete` event says whether it is the player's first roun
 | `rounds_played` | `1`, `2-5`, `6+` | This round's count among the game rounds on this device, rated or not, this one included. |
 | `board_type` | `daily`, `free` | `daily` for today's daily board, `free` for every other round, reviews included. |
 
-They are worked out in the browser from the game record in local storage (`memory-chess-storage`). That record now also keeps `firstRoundDay` (a local day such as `2026-11-08`, never a time) and `roundsPlayed` (a count). No id, cookie, name, date or score tied to a name is added to the event. A record saved before this change keeps `firstRoundDay` as `unknown` for good, and its count starts from the rated rounds its rating had seen.
+They are worked out in the browser from the game record in local storage (`memory-chess-storage`). That record now also keeps `firstRoundDay` (a local day such as `2026-11-08`, never a time) and `roundsPlayed` (a count). No id, cookie, name, date or score tied to a name is added to the event. A player who has scored rounds but no saved `firstRoundDay`, because they played before this change or while `RETURN_VISIT_DISCLOSED` was `false`, gets `unknown` on their next counted round and keeps it for good. Their count continues from the rated rounds their rating had seen.
 
 ## Register them in GA4 (manual)
 

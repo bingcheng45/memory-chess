@@ -991,12 +991,32 @@ describe("marking a return visit on round_complete", () => {
     playedOn(TODAY);
     playedOn(TODAY + 7 * DAY_MS);
 
-    expect(restored).toEqual({ rating: 1300, certainty: { rd: 120, rounds: 4 }, firstRoundDay: "unknown", roundsPlayed: 4 });
+    expect(restored).toEqual({ rating: 1300, certainty: { rd: 120, rounds: 4 }, firstRoundDay: null, roundsPlayed: 0 });
     expect(returnParams()).toEqual([
       ["unknown", "2-5", "free"],
       ["unknown", "6+", "free"],
     ]);
-    expect(storedState().firstRoundDay).toBe("unknown");
+    expect([storedState().firstRoundDay, storedState().roundsPlayed]).toEqual(["unknown", 6]);
+  });
+
+  it("sends unknown days, never today, for rounds played while the privacy page did not name them", async () => {
+    localStorage.setItem(
+      STORAGE_KEY,
+      JSON.stringify({ state: { gameState: { skillRating: 1100, streak: 0 }, certainty: { rd: 200, rounds: 3 }, firstRoundDay: null, roundsPlayed: 0 }, version: 4 }),
+    );
+    await useGameStore.persist.rehydrate();
+
+    playedOn(TODAY);
+
+    expect(returnParams()).toEqual([["unknown", "2-5", "free"]]);
+  });
+
+  it("saves no day or count for a record saved before the first round's day was kept, while the privacy page does not name them", async () => {
+    mockDisclosed = false;
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { gameState: { skillRating: 1300, streak: 2 }, certainty: { rd: 120, rounds: 4 } }, version: 3 }));
+    await useGameStore.persist.rehydrate();
+
+    expect([storedState().firstRoundDay ?? null, storedState().roundsPlayed ?? 0]).toEqual([null, 0]);
   });
 
   it.each([

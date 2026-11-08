@@ -132,6 +132,16 @@ describe("PrivacyPage", () => {
     expect(screen.queryByText(/never sent to Memory Chess or to analytics/)).not.toBeInTheDocument();
   });
 
+  it("names the return-visit figures a game round sends and keeps, the backup event's result screen, and what the homepage intro sends", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(
+        "A round you finish in the game also tells Google Analytics how many days have passed since your first round on this device, roughly how many rounds you have played on it (1, 2 to 5, or 6 or more), and whether it was today's board. To work these out, local storage on this device keeps the day of your first round, a date and never a time, and a count of your rounds. None of this names or identifies you, and we use it only to learn how many players come back. When you ask for cross-device backup from the game's result screen, that event also says it came from the result screen. The intro on the homepage plays by itself at most once, and local storage notes that it has played. Google Analytics receives an event when the intro plays, is replayed, is skipped or finishes. A skip names the step it reached, a skip or a finish says whether it was a replay, and a round started from the intro names it as where the round started.",
+      ),
+    ).toBeInTheDocument();
+  });
+
   it("says what the progress and result cards draw, and that nothing leaves the device until the player picks a way to share", async () => {
     render(await PrivacyPage(IN_ENGLISH));
 

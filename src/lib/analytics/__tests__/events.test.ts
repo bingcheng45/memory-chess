@@ -1,4 +1,11 @@
-import { rememberResultView, roundSourceFrom, trackEvent, type FunnelEvent } from "@/lib/analytics/events";
+import {
+  daysSinceFirstRound,
+  rememberResultView,
+  roundsPlayedGroup,
+  roundSourceFrom,
+  trackEvent,
+  type FunnelEvent,
+} from "@/lib/analytics/events";
 
 const EVENTS: FunnelEvent[] = [
   { name: "round_start", params: { piece_count: 6, memorize_time: 10, round_source: "home_quick" } },
@@ -43,6 +50,20 @@ const EVENTS: FunnelEvent[] = [
     params: { piece_count: 6, memorize_time: 10, correct_pieces: 5, accuracy: 83, round_source: "game_form", result_view: "overlay" },
   },
   { name: "result_view_select", params: { result_view: "side" } },
+  {
+    name: "round_complete",
+    params: {
+      piece_count: 5,
+      memorize_time: 20,
+      correct_pieces: 5,
+      accuracy: 100,
+      round_source: "daily",
+      result_view: "side",
+      days_since_first_round: 7,
+      rounds_played: "6+",
+      board_type: "daily",
+    },
+  },
 ];
 
 afterEach(() => {
@@ -72,6 +93,33 @@ it.each([
   expect(roundSourceFrom(value)).toBe(source);
 });
 
+it.each([
+  [1, "1"],
+  [2, "2-5"],
+  [5, "2-5"],
+  [6, "6+"],
+  [250, "6+"],
+])("groups %p rounds played as %p", (rounds, group) => {
+  expect(roundsPlayedGroup(rounds)).toBe(group);
+});
+
+it.each([
+  ["the same day", "2026-10-14", "2026-10-14", 0],
+  ["the next day", "2026-10-14", "2026-10-15", 1],
+  ["7 days on", "2026-10-14", "2026-10-21", 7],
+  ["7 days on across a month end and a clock change", "2026-10-27", "2026-11-03", 7],
+  ["a clock set back before the first day", "2026-10-14", "2026-10-13", "unknown"],
+])("counts %s, from a first round on %s to %s, as %p days", (_case, firstRoundDay, today, days) => {
+  expect(daysSinceFirstRound(firstRoundDay, today)).toBe(days);
+});
+
+it.each([
+  ["missing", null],
+  ["unknown, from a record saved before it was kept", "unknown"],
+])("sends unknown days when the first round's day is %s", (_case, firstRoundDay) => {
+  expect(daysSinceFirstRound(firstRoundDay, "2026-10-14")).toBe("unknown");
+});
+
 describe("Databuddy", () => {
   const databuddyTrack = jest.fn();
 
@@ -93,6 +141,12 @@ describe("Databuddy", () => {
 
     expect(databuddyTrack).toHaveBeenCalledTimes(1);
     expect(databuddyTrack).toHaveBeenCalledWith(name, properties);
+  });
+
+  it("sends round_completed without the return-visit params", () => {
+    trackEvent(EVENTS[EVENTS.length - 1]);
+
+    expect(databuddyTrack).toHaveBeenCalledWith("round_completed", { piece_count: 5, memorize_time: 20, source: "daily" });
   });
 
   it("receives no lab, article, search or round intro events", () => {

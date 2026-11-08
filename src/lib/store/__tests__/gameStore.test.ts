@@ -148,6 +148,7 @@ describe("reporting a round", () => {
 
   it("sends round_complete once when the round is scored, with what the player got right, and no other event", () => {
     const gtag = jest.fn();
+    useGameStore.setState({ firstRoundDay: null, roundsPlayed: 0 });
     store().startGame(6, 10, "plan");
     const [square, piece] = Object.entries(target())[0] as [SquareName, LabPiece];
     store().dispatch({ type: "studyEnded", now: performance.now() });
@@ -159,7 +160,21 @@ describe("reporting a round", () => {
 
     expect(gtag.mock.calls).toEqual([
       ["set", "user_properties", { result_view: "side" }],
-      ["event", "round_complete", { piece_count: 6, memorize_time: 10, correct_pieces: 1, accuracy: 17, round_source: "plan", result_view: "side" }],
+      [
+        "event",
+        "round_complete",
+        {
+          piece_count: 6,
+          memorize_time: 10,
+          correct_pieces: 1,
+          accuracy: 17,
+          round_source: "plan",
+          result_view: "side",
+          days_since_first_round: 0,
+          rounds_played: "1",
+          board_type: "free",
+        },
+      ],
     ]);
   });
 });
@@ -429,6 +444,8 @@ const SETTLED = { rd: 47, rounds: 100 };
 const freshPlayer = () =>
   useGameStore.setState({
     freeSkipDay: null,
+    firstRoundDay: null,
+    roundsPlayed: 0,
     certainty: NEW_CERTAINTY,
     history: [],
     gameState: { pieceCount: 8, memorizeTime: 10, currentLevel: 1, level: 1, skillRating: 1000, streak: 0 },
@@ -882,5 +899,129 @@ describe("giving a stored rating its uncertainty", () => {
 
   it("starts a player with no rated rounds as a new player", async () => {
     await expect(rehydrateFrom(1300, [row(0, 83, false)])).resolves.toEqual({ rating: 1000, certainty: { rd: 350, rounds: 0 }, history: 1 });
+  });
+});
+
+describe("marking a return visit on round_complete", () => {
+  let gtag: jest.Mock;
+  const sent = () => gtag.mock.calls.filter(([, name]) => name === "round_complete").map(([, , params]) => params);
+  const returnParams = () => sent().map(({ days_since_first_round, rounds_played, board_type }) => [days_since_first_round, rounds_played, board_type]);
+  const playedOn = (at: number) => {
+    jest.spyOn(Date, "now").mockReturnValue(at);
+    playRound({ pieceCount: 2, solveMs: 4000 });
+  };
+  const HOUR_MS = 60 * 60 * 1000;
+
+  beforeEach(() => {
+    gtag = jest.fn();
+    window.gtag = gtag;
+    jest.spyOn(performance, "now").mockReturnValue(0);
+    localStorage.clear();
+    freshPlayer();
+  });
+
+  afterEach(() => {
+    store().resetGame();
+    Reflect.deleteProperty(window, "gtag");
+    jest.restoreAllMocks();
+    freshPlayer();
+    localStorage.clear();
+  });
+
+  it("counts the days from the first round's day: 0 later the same day, 1 the next day and 7 a week on", () => {
+    playedOn(TODAY);
+    playedOn(TODAY + 6 * HOUR_MS);
+    playedOn(TODAY + DAY_MS);
+    playedOn(TODAY + 7 * DAY_MS);
+
+    expect(returnParams()).toEqual([
+      [0, "1", "free"],
+      [0, "2-5", "free"],
+      [1, "2-5", "free"],
+      [7, "2-5", "free"],
+    ]);
+    expect(storedState()).toMatchObject({ firstRoundDay: "2026-10-14", roundsPlayed: 4 });
+  });
+
+  it("groups the rounds played as 1, 2-5 and 6+", () => {
+    for (let i = 0; i < 6; i++) playedOn(TODAY);
+
+    expect(sent().map(({ rounds_played }) => rounds_played)).toEqual(["1", "2-5", "2-5", "2-5", "2-5", "6+"]);
+  });
+
+  it("marks today's daily board as daily and a review or a random board as free", () => {
+    jest.spyOn(Date, "now").mockReturnValue(TODAY);
+    store().startGame(3, 10, "daily", { kind: "daily", day: "2026-10-14", fen: "4k3/8/8/8/8/8/8/R3K3 w - - 0 1" });
+    store().dispatch({ type: "studyEnded", now: 10000 });
+    store().submitSolution(12000);
+    store().startGame(2, 10, "review", { kind: "review", fen: "8/8/8/8/8/8/8/K6k w - - 0 1", reviewOf: "first", firstDay: "2026-10-01", step: 0 });
+    store().dispatch({ type: "studyEnded", now: 10000 });
+    store().submitSolution(12000);
+    playRound({ pieceCount: 2, solveMs: 4000 });
+
+    expect(sent().map(({ round_source, board_type }) => [round_source, board_type])).toEqual([
+      ["daily", "daily"],
+      ["review", "free"],
+      ["game_form", "free"],
+    ]);
+  });
+
+  it("sends unknown days, never a guess, for a record saved before the first round's day was kept, and counts on from its rated rounds", async () => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { gameState: { skillRating: 1300, streak: 2 }, certainty: { rd: 120, rounds: 4 } }, version: 3 }));
+    await useGameStore.persist.rehydrate();
+    const restored = { rating: store().gameState.skillRating, certainty: store().certainty, firstRoundDay: store().firstRoundDay, roundsPlayed: store().roundsPlayed };
+
+    playedOn(TODAY);
+    playedOn(TODAY + 7 * DAY_MS);
+
+    expect(restored).toEqual({ rating: 1300, certainty: { rd: 120, rounds: 4 }, firstRoundDay: "unknown", roundsPlayed: 4 });
+    expect(returnParams()).toEqual([
+      ["unknown", "2-5", "free"],
+      ["unknown", "6+", "free"],
+    ]);
+    expect(storedState().firstRoundDay).toBe("unknown");
+  });
+
+  it.each([
+    ["a time instead of a day", "2026-10-14T09:00:00.000Z", null],
+    ["a number", 20261014, null],
+    ["kept", "2026-10-07", "2026-10-07"],
+  ])("restores a stored first round's day, %s", async (_case, stored, restored) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { firstRoundDay: stored, roundsPlayed: 3 }, version: 4 }));
+    await useGameStore.persist.rehydrate();
+
+    expect([store().firstRoundDay, store().roundsPlayed]).toEqual([restored, 3]);
+  });
+
+  it("adds only the first round's day and a count to the saved record, and no id, time or day to the event", () => {
+    playedOn(TODAY);
+    const [params] = sent();
+    const event = JSON.stringify(params);
+
+    expect(Object.keys(params).sort()).toEqual([
+      "accuracy",
+      "board_type",
+      "correct_pieces",
+      "days_since_first_round",
+      "memorize_time",
+      "piece_count",
+      "result_view",
+      "round_source",
+      "rounds_played",
+    ]);
+    expect(event).not.toContain(store().gameState.labRound!.facts.id);
+    expect(event).not.toContain(String(TODAY));
+    expect(event).not.toContain("2026-10-14");
+    expect(Object.keys(storedState()).sort()).toEqual([
+      "certainty",
+      "firstRoundDay",
+      "freeSkipDay",
+      "gameState",
+      "history",
+      "lastSettings",
+      "resultView",
+      "roundsPlayed",
+    ]);
+    expect([storedState().firstRoundDay, storedState().roundsPlayed]).toEqual(["2026-10-14", 1]);
   });
 });

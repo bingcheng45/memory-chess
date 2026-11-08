@@ -10,7 +10,15 @@ import {
   type GameSettings,
 } from '@/lib/game/configPrefill';
 import { placementFromFen, scorePlacement } from '@/lib/game/scoring';
-import { rememberResultView, trackEvent, type RoundSource } from '@/lib/analytics/events';
+import {
+  daysSinceFirstRound,
+  rememberResultView,
+  roundsPlayedGroup,
+  trackEvent,
+  UNKNOWN_FIRST_DAY,
+  type FirstRoundDay,
+  type RoundSource,
+} from '@/lib/analytics/events';
 import type { LabRound } from '@/lib/lab/recordRound';
 import { now as monotonicNow } from '@/lib/game/clock';
 import {
@@ -56,13 +64,18 @@ const HISTORY_LIMIT = 30;
 /**
  * The persisted shape's version. Version 1 replaced a rating that only went up with an Elo rating, so a rating stored
  * before it starts again from START_RATING. Version 2 added the free-skip day, which starts unspent. Version 3 gave the
- * rating its uncertainty, found by replaying the stored rated rounds.
+ * rating its uncertainty, found by replaying the stored rated rounds. Version 4 added the first round's day and the
+ * count of rounds played, for the return-visit analytics params.
  */
-const STORE_VERSION = 3;
+const STORE_VERSION = 4;
 const RATING_RESET_VERSION = 1;
+const CERTAINTY_VERSION = 3;
 
 const LOCAL_DAY = /^\d{4}-\d{2}-\d{2}$/;
 const parseLocalDay = (value: unknown): string | null => (typeof value === 'string' && LOCAL_DAY.test(value) ? value : null);
+const parseFirstRoundDay = (value: unknown): FirstRoundDay => (value === UNKNOWN_FIRST_DAY ? UNKNOWN_FIRST_DAY : parseLocalDay(value));
+const parseRoundsPlayed = (value: unknown): number =>
+  typeof value === 'number' && Number.isSafeInteger(value) && value >= 0 ? value : 0;
 
 export { WIN_ACCURACY };
 
@@ -80,6 +93,10 @@ interface GameStore {
   freeSkipDay: string | null;
   /** How sure the game is of `gameState.skillRating`, which together with it is the player's rating. */
   certainty: Omit<PlayerRating, 'rating'>;
+  /** The local day of the first scored round on this device; unknown for a record saved before it was kept. Only a day, never a time. */
+  firstRoundDay: FirstRoundDay;
+  /** Every scored round on this device, rated or not. A record saved before it was kept starts from its rated rounds. */
+  roundsPlayed: number;
   /** The round being played, run by the shared round reducer. Never persisted. */
   round: RoundState;
   resultView: ResultView;
@@ -159,6 +176,11 @@ function withCertainty(persisted: Record<string, unknown>, version: number): Rec
   return { ...persisted, gameState: { ...gameState, skillRating: rating }, certainty };
 }
 
+/** A record saved before version 4 never kept its first round's day, so that stays unknown; its count starts from the rated rounds the rating has seen. */
+function withReturnVisit(persisted: Record<string, unknown>): Record<string, unknown> {
+  return { ...persisted, firstRoundDay: UNKNOWN_FIRST_DAY, roundsPlayed: parseCertainty(persisted.certainty).rounds };
+}
+
 interface StudyStart {
   readonly pieceCount: number;
   readonly memorizeTime: number;
@@ -201,6 +223,8 @@ export const useGameStore = create<GameStore>()(
       history: [], // Empty history array
       freeSkipDay: null,
       certainty: { rd: NEW_PLAYER.rd, rounds: NEW_PLAYER.rounds },
+      firstRoundDay: null,
+      roundsPlayed: 0,
       lastSettings: null,
       round: IDLE_ROUND,
       resultView: 'side',
@@ -414,12 +438,16 @@ export const useGameStore = create<GameStore>()(
           streak,
           facts,
         };
+        const firstRoundDay = get().firstRoundDay ?? day;
+        const roundsPlayed = get().roundsPlayed + 1;
         set(({ history, freeSkipDay, certainty }) => ({
           round,
           gameState: updatedGameState as GameState,
           history: effects.rated ? [played, ...history].slice(0, HISTORY_LIMIT) : history,
           freeSkipDay: effects.spendsFreeSkip ? day : freeSkipDay,
           certainty: 'player' in rating ? { rd: rating.player.rd, rounds: rating.player.rounds } : certainty,
+          firstRoundDay,
+          roundsPlayed,
         }));
 
         rememberResultView(get().resultView);
@@ -433,6 +461,9 @@ export const useGameStore = create<GameStore>()(
             round_source: gameState.startSource ?? 'link',
             ...modeParam(playing.config.blindfold),
             result_view: get().resultView,
+            days_since_first_round: daysSinceFirstRound(firstRoundDay, day),
+            rounds_played: roundsPlayedGroup(roundsPlayed),
+            board_type: gameState.board?.kind === 'daily' ? 'daily' : 'free',
           },
         });
 
@@ -466,8 +497,12 @@ export const useGameStore = create<GameStore>()(
       name: GAME_STORAGE_KEY,
       version: STORE_VERSION,
       // A rating stored before version 1 was earned under a formula that only went up, so it starts again. The win
-      // streak and the history rows stay; rows without rated facts are shown but are not replayed.
-      migrate: (persisted, version) => (isRecord(persisted) ? withCertainty(persisted, version) : persisted),
+      // streak and the history rows stay; rows without rated facts are shown but are not replayed. A version 3 record
+      // already has its uncertainty, so it is not replayed again.
+      migrate: (persisted, version) => {
+        if (!isRecord(persisted)) return persisted;
+        return withReturnVisit(version < CERTAINTY_VERSION ? withCertainty(persisted, version) : persisted);
+      },
       partialize: (state) => ({
         gameState: {
           pieceCount: state.gameState.pieceCount,
@@ -480,6 +515,8 @@ export const useGameStore = create<GameStore>()(
         lastSettings: state.lastSettings,
         freeSkipDay: state.freeSkipDay,
         certainty: state.certainty,
+        firstRoundDay: state.firstRoundDay,
+        roundsPlayed: state.roundsPlayed,
         resultView: state.resultView,
       }),
       // localStorage is user-editable and outlives app versions, so a stored
@@ -500,6 +537,8 @@ export const useGameStore = create<GameStore>()(
           lastSettings: parseGameSettings(stored.lastSettings, GAME_CONFIG_RULES),
           freeSkipDay: parseLocalDay(stored.freeSkipDay),
           certainty: parseCertainty(stored.certainty),
+          firstRoundDay: parseFirstRoundDay(stored.firstRoundDay),
+          roundsPlayed: parseRoundsPlayed(stored.roundsPlayed),
           resultView: parseResultView(stored.resultView),
         };
       },

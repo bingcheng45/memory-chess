@@ -52,6 +52,7 @@ describe("a blindfold round in the store", () => {
   });
 
   it("reports the mode on round_complete and records it with the round", async () => {
+    useGameStore.setState({ firstRoundDay: null, roundsPlayed: 0 });
     store().startGame(2, 10, "game_form", undefined, true);
     store().dispatch({ type: "studyEnded", now: performance.now() });
     gtag.mockClear();
@@ -60,7 +61,22 @@ describe("a blindfold round in the store", () => {
 
     expect(gtag.mock.calls).toEqual([
       ["set", "user_properties", { result_view: "side" }],
-      ["event", "round_complete", { piece_count: 2, memorize_time: 10, correct_pieces: 0, accuracy: 0, round_source: "game_form", round_mode: "blindfold", result_view: "side" }],
+      [
+        "event",
+        "round_complete",
+        {
+          piece_count: 2,
+          memorize_time: 10,
+          correct_pieces: 0,
+          accuracy: 0,
+          round_source: "game_form",
+          round_mode: "blindfold",
+          result_view: "side",
+          days_since_first_round: 0,
+          rounds_played: "1",
+          board_type: "free",
+        },
+      ],
     ]);
     expect(store().gameState.labRound?.facts.blindfold).toBe(true);
   });

@@ -1088,6 +1088,11 @@
       "tileDrill": "This drill at your level",
       "tileDrillWhy": "Sized to your level, to practise what the article describes.",
       "personalBest": "New personal best on this board. Put it on the record.",
+      "saveLine": {
+        "text": "Your record lives only in this browser.",
+        "download": "Download a copy",
+        "hide": "Hide for now"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% would make the leaderboard.",
         "open": "{difficulty}: see where {accuracy}% ranks.",

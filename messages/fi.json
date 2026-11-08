@@ -1088,6 +1088,11 @@
       "tileDrill": "Tämä harjoitus tasollasi",
       "tileDrillWhy": "Mitoitettu tasollesi, jotta voit harjoitella sitä, mitä artikkeli kuvaa.",
       "personalBest": "Uusi oma ennätys tällä tasolla. Kirjaa se.",
+      "saveLine": {
+        "text": "Päiväkirjasi on tallessa vain tässä selaimessa.",
+        "download": "Lataa kopio",
+        "hide": "Piilota toistaiseksi"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy} % pääsisi tulostaulukkoon.",
         "open": "{difficulty}: katso sijoitus ({accuracy} %).",

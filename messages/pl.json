@@ -1088,6 +1088,11 @@
       "tileDrill": "To ćwiczenie na twoim poziomie",
       "tileDrillWhy": "Dopasowane do twojego poziomu, żeby przećwiczyć to, co opisuje artykuł.",
       "personalBest": "Nowy rekord osobisty na tym poziomie. Zapisz go.",
+      "saveLine": {
+        "text": "Twój dziennik jest zapisany tylko w tej przeglądarce.",
+        "download": "Pobierz kopię",
+        "hide": "Ukryj na razie"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% wejdzie do rankingu.",
         "open": "{difficulty}: sprawdź, które miejsce da {accuracy}%.",

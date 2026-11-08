@@ -1088,6 +1088,11 @@
       "tileDrill": "Toto cvičení na vaší úrovni",
       "tileDrillWhy": "Upraveno na vaši úroveň, abyste si vyzkoušeli, co článek popisuje.",
       "personalBest": "Nový osobní rekord na této úrovni. Zapište ho.",
+      "saveLine": {
+        "text": "Váš záznam je uložený jen v tomto prohlížeči.",
+        "download": "Stáhnout kopii",
+        "hide": "Zatím skrýt"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy} % stačí do žebříčku.",
         "open": "{difficulty}: zjistěte pořadí pro {accuracy} %.",

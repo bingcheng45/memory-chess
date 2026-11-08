@@ -1088,6 +1088,11 @@
       "tileDrill": "Acest exercițiu la nivelul tău",
       "tileDrillWhy": "Potrivit nivelului tău, ca să exersezi ce descrie articolul.",
       "personalBest": "Nou record personal la acest nivel. Trece-l în clasament.",
+      "saveLine": {
+        "text": "Jurnalul tău există doar în acest browser.",
+        "download": "Descarcă o copie",
+        "hide": "Ascunde deocamdată"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% ar intra în clasament.",
         "open": "{difficulty}: vezi pe ce loc ajunge {accuracy}%.",

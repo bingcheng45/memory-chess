@@ -44,6 +44,7 @@ import { BLINDFOLD_MODE } from "@/lib/game/roundLink";
 import { blindfoldBoardOpen } from "@/lib/leaderboard/mode";
 import ArticleTile from "@/components/game/ArticleTile";
 import TomorrowBoardCard from "@/components/game/TomorrowBoardCard";
+import ResultSaveLine, { SAVE_LINE_MIN_ROUNDS } from "@/components/game/ResultSaveLine";
 import { countWrong } from "@/lib/game/scoring";
 import ResultLabSlot, { ResultLabEnd } from "@/components/game/ResultLabSlot";
 import { recordReadDuringRound, warmedResultDeltas } from "@/components/game/resultDeltasWarm";
@@ -524,6 +525,10 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
           {shareResult}
         </div>
 
+        {/* The reason to come back sits right under the readout, above the secondary actions and the lab card. */}
+        {painted && <TomorrowBoardCard />}
+        {painted && keepsRecord && history.length >= SAVE_LINE_MIN_ROUNDS && <ResultSaveLine />}
+
         <nav aria-label={t("actions")} className="lab-result-actions">
           {next && (
             <button type="button" onClick={onTryAgain} className="lab-btn lab-btn-secondary">
@@ -556,8 +561,6 @@ export default function GameResult({ onTryAgain, onNewGame, onPlay }: GameResult
               </Suspense>
             </ErrorBoundary>
           )}
-
-          <TomorrowBoardCard />
 
           {deltas && labRound && (
             <ErrorBoundary key={`deltas-${labRound.facts.id}`} fallback={<></>}>

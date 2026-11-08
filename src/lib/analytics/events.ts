@@ -119,9 +119,10 @@ export type FunnelEvent =
       name: "lab_import";
       params: { added: number; rejected: number };
     }
+  /** `surface` is sent only from the result screen's save line; the home record tools send none. Never `source`, as above. */
   | {
       name: "lab_backup_interest";
-      params: { rounds: number };
+      params: { rounds: number; surface?: BackupInterestSurface };
     }
   /** Once per page view, when §06 first scrolls into sight. */
   | {
@@ -183,6 +184,9 @@ export type FunnelEvent =
 
 /** Where a reminder button sits: under the result screen's tomorrow line, on the dashboard, or on /daily. */
 export type ReminderSurface = "result" | "dashboard" | "daily";
+
+/** Where a backup-interest press came from, when not the home record tools: the save line on the result screen. */
+export type BackupInterestSurface = "result_screen";
 
 /** Whether an intro event belongs to the first-visit play or to a replay. */
 export type IntroPlay = "first" | "replay";

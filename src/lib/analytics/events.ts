@@ -66,9 +66,44 @@ export type RoundMode = "blindfold";
 
 export type RoundStartParams = { piece_count: number; memorize_time: number; round_source: RoundSource; round_mode?: RoundMode };
 
+/** A round's count among the player's game rounds on this device, in groups so the GA4 dimension keeps few values. */
+export type RoundsPlayedGroup = "1" | "2-5" | "6+";
+
+export const roundsPlayedGroup = (rounds: number): RoundsPlayedGroup => (rounds <= 1 ? "1" : rounds <= 5 ? "2-5" : "6+");
+
+/** A record saved before the first round's day was kept. Its days since the first round stay unknown, never guessed. */
+export const UNKNOWN_FIRST_DAY = "unknown";
+
+/** The local day of the player's first game round on this device, UNKNOWN_FIRST_DAY, or null before any round. */
+export type FirstRoundDay = string | typeof UNKNOWN_FIRST_DAY | null;
+
+const utcDayMs = (day: string) => {
+  const [year, month, date] = day.split("-").map(Number);
+  return Date.UTC(year, month - 1, date);
+};
+
+/** Whole local days from the first round's day to `today`, 0 on the first day. A clock set back before the first day is unknown too. */
+export function daysSinceFirstRound(firstRoundDay: FirstRoundDay, today: string): number | typeof UNKNOWN_FIRST_DAY {
+  if (firstRoundDay === null || firstRoundDay === UNKNOWN_FIRST_DAY) return UNKNOWN_FIRST_DAY;
+  const days = Math.round((utcDayMs(today) - utcDayMs(firstRoundDay)) / 86_400_000);
+  return days >= 0 ? days : UNKNOWN_FIRST_DAY;
+}
+
+/**
+ * Whether a finished game round is a return visit, read from the device's own game record: GA4 event-scoped custom
+ * dimensions `days_since_first_round`, `rounds_played` and `board_type`. No id, name, date or score is added.
+ */
+export type ReturnVisitParams = {
+  days_since_first_round: number | typeof UNKNOWN_FIRST_DAY;
+  rounds_played: RoundsPlayedGroup;
+  /** `daily` for today's daily board, `free` for every other round, a review included. */
+  board_type: "daily" | "free";
+};
+
 /**
  * The GA4 event contract. Round events carry the setting, the score and `round_source`, never `source`, which
- * GA4 reads as the session's traffic source. Lab events carry counts and fixed ids only, never positions,
+ * GA4 reads as the session's traffic source. A game round's round_complete also carries ReturnVisitParams, which
+ * the homepage calibration does not send. Lab events carry counts and fixed ids only, never positions,
  * squares, round ids, dates or streak lengths, which the privacy page promises.
  */
 export type FunnelEvent =
@@ -92,7 +127,7 @@ export type FunnelEvent =
         round_mode?: RoundMode;
         /** The result view the round was reviewed in. Sent by game rounds only; the homepage calibration has no toggle. */
         result_view?: ResultView;
-      };
+      } & Partial<ReturnVisitParams>;
     }
   /** The player switched the result screen between side by side and one board. */
   | {

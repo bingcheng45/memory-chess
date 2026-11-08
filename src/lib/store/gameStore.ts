@@ -19,6 +19,7 @@ import {
   type FirstRoundDay,
   type RoundSource,
 } from '@/lib/analytics/events';
+import { RETURN_VISIT_DISCLOSED } from '@/lib/analytics/returnVisitDisclosure';
 import type { LabRound } from '@/lib/lab/recordRound';
 import { now as monotonicNow } from '@/lib/game/clock';
 import {
@@ -176,9 +177,16 @@ function withCertainty(persisted: Record<string, unknown>, version: number): Rec
   return { ...persisted, gameState: { ...gameState, skillRating: rating }, certainty };
 }
 
-/** A record saved before version 4 never kept its first round's day, so that stays unknown; its count starts from the rated rounds the rating has seen. */
+/**
+ * A record saved before version 4 never kept its first round's day. If it holds a scored round, that day stays unknown
+ * and the count starts from the rated rounds the rating has seen. A record with no scored round, such as one a play
+ * link or the daily board saved before any round, starts the count at its next finished round.
+ */
 function withReturnVisit(persisted: Record<string, unknown>): Record<string, unknown> {
-  return { ...persisted, firstRoundDay: UNKNOWN_FIRST_DAY, roundsPlayed: parseCertainty(persisted.certainty).rounds };
+  const rounds = parseCertainty(persisted.certainty).rounds;
+  const hasHistory = Array.isArray(persisted.history) && persisted.history.length > 0;
+  if (rounds === 0 && !hasHistory) return { ...persisted, firstRoundDay: null, roundsPlayed: 0 };
+  return { ...persisted, firstRoundDay: UNKNOWN_FIRST_DAY, roundsPlayed: rounds };
 }
 
 interface StudyStart {
@@ -438,16 +446,17 @@ export const useGameStore = create<GameStore>()(
           streak,
           facts,
         };
-        const firstRoundDay = get().firstRoundDay ?? day;
-        const roundsPlayed = get().roundsPlayed + 1;
+        const kept = get();
+        const returnVisit = RETURN_VISIT_DISCLOSED
+          ? { firstRoundDay: kept.firstRoundDay ?? day, roundsPlayed: kept.roundsPlayed + 1 }
+          : { firstRoundDay: kept.firstRoundDay, roundsPlayed: kept.roundsPlayed };
         set(({ history, freeSkipDay, certainty }) => ({
           round,
           gameState: updatedGameState as GameState,
           history: effects.rated ? [played, ...history].slice(0, HISTORY_LIMIT) : history,
           freeSkipDay: effects.spendsFreeSkip ? day : freeSkipDay,
           certainty: 'player' in rating ? { rd: rating.player.rd, rounds: rating.player.rounds } : certainty,
-          firstRoundDay,
-          roundsPlayed,
+          ...returnVisit,
         }));
 
         rememberResultView(get().resultView);
@@ -461,9 +470,13 @@ export const useGameStore = create<GameStore>()(
             round_source: gameState.startSource ?? 'link',
             ...modeParam(playing.config.blindfold),
             result_view: get().resultView,
-            days_since_first_round: daysSinceFirstRound(firstRoundDay, day),
-            rounds_played: roundsPlayedGroup(roundsPlayed),
-            board_type: gameState.board?.kind === 'daily' ? 'daily' : 'free',
+            ...(RETURN_VISIT_DISCLOSED
+              ? {
+                  days_since_first_round: daysSinceFirstRound(returnVisit.firstRoundDay, day),
+                  rounds_played: roundsPlayedGroup(returnVisit.roundsPlayed),
+                  board_type: gameState.board?.kind === 'daily' ? ('daily' as const) : ('free' as const),
+                }
+              : {}),
           },
         });
 

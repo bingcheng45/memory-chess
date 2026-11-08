@@ -6,6 +6,13 @@ import type { PieceColor, PieceType } from "@/types/chess";
 import type { GameHistory, GameState } from "@/lib/types/game";
 import { localDayOf } from "@/lib/lab/record";
 
+let mockDisclosed = true;
+jest.mock("@/lib/analytics/returnVisitDisclosure", () => ({
+  get RETURN_VISIT_DISCLOSED() {
+    return mockDisclosed;
+  },
+}));
+
 const store = () => useGameStore.getState();
 const boardPlacement = (fen: string) => fen.split(" ")[0];
 
@@ -921,11 +928,21 @@ describe("marking a return visit on round_complete", () => {
   });
 
   afterEach(() => {
+    mockDisclosed = true;
     store().resetGame();
     Reflect.deleteProperty(window, "gtag");
     jest.restoreAllMocks();
     freshPlayer();
     localStorage.clear();
+  });
+
+  it("sends no return-visit params and saves no day or count while the privacy page does not name them", () => {
+    mockDisclosed = false;
+    playedOn(TODAY);
+    playedOn(TODAY + DAY_MS);
+
+    expect(sent().map((params) => Object.keys(params).filter((key) => ["days_since_first_round", "rounds_played", "board_type"].includes(key)))).toEqual([[], []]);
+    expect([storedState().firstRoundDay, storedState().roundsPlayed]).toEqual([null, 0]);
   });
 
   it("counts the days from the first round's day: 0 later the same day, 1 the next day and 7 a week on", () => {
@@ -980,6 +997,36 @@ describe("marking a return visit on round_complete", () => {
       ["unknown", "6+", "free"],
     ]);
     expect(storedState().firstRoundDay).toBe("unknown");
+  });
+
+  it.each([
+    ["no history key", { gameState: { skillRating: 1000, streak: 0 }, certainty: { rd: 350, rounds: 0 } }],
+    ["an empty history", { gameState: { skillRating: 1000, streak: 0 }, certainty: { rd: 350, rounds: 0 }, history: [] }],
+    ["no certainty yet", { gameState: { skillRating: 1000, streak: 0 } }],
+  ])("starts the count at the first finished round of a version 3 record with no rounds, %s, rather than leaving it unknown", async (_case, state) => {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state, version: 3 }));
+    await useGameStore.persist.rehydrate();
+    const restored = [store().firstRoundDay, store().roundsPlayed];
+
+    playedOn(TODAY);
+    playedOn(TODAY + 7 * DAY_MS);
+
+    expect(restored).toEqual([null, 0]);
+    expect(returnParams()).toEqual([
+      [0, "1", "free"],
+      [7, "2-5", "free"],
+    ]);
+    expect(storedState()).toMatchObject({ firstRoundDay: "2026-10-14", roundsPlayed: 2 });
+  });
+
+  it("keeps the first round's day unknown for a version 3 record whose only rounds are unrated history rows", async () => {
+    const unrated = { id: "r1", date: new Date(TODAY).toISOString(), pieceCount: 6, accuracy: 50, duration: 15 };
+    localStorage.setItem(STORAGE_KEY, JSON.stringify({ state: { gameState: { skillRating: 1000, streak: 0 }, certainty: { rd: 350, rounds: 0 }, history: [unrated] }, version: 3 }));
+    await useGameStore.persist.rehydrate();
+
+    playedOn(TODAY);
+
+    expect(returnParams()).toEqual([["unknown", "1", "free"]]);
   });
 
   it.each([

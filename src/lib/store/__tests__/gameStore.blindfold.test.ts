@@ -1,6 +1,8 @@
 import { localDayOf } from "@/lib/lab/record";
 import { useGameStore } from "@/lib/store/gameStore";
 
+jest.mock("@/lib/analytics/returnVisitDisclosure", () => ({ RETURN_VISIT_DISCLOSED: true }));
+
 const store = () => useGameStore.getState();
 const configOf = () => {
   const { round } = store();

@@ -1088,6 +1088,11 @@
       "tileDrill": "Cet exercice à votre niveau",
       "tileDrillWhy": "Adapté à votre niveau, pour pratiquer ce que décrit l'article.",
       "personalBest": "Nouveau record personnel à ce niveau. Inscrivez-le.",
+      "saveLine": {
+        "text": "Votre registre n’existe que dans ce navigateur.",
+        "download": "Télécharger une copie",
+        "hide": "Masquer pour l’instant"
+      },
       "claimLine": {
         "qualifies": "{difficulty} : {accuracy} % entre au classement.",
         "open": "{difficulty} : voyez le rang de {accuracy} %.",

@@ -1088,6 +1088,11 @@
       "tileDrill": "Bu alıştırma senin seviyende",
       "tileDrillWhy": "Seviyene göre ayarlandı, makalenin anlattığını çalışabilmen için.",
       "personalBest": "Bu seviyede yeni kişisel rekor. Kayda geçir.",
+      "saveLine": {
+        "text": "Kaydın yalnızca bu tarayıcıda duruyor.",
+        "download": "Bir kopya indir",
+        "hide": "Şimdilik gizle"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: %{accuracy} sıralamaya girer.",
         "open": "{difficulty}: sıralamadaki yerini gör (%{accuracy}).",

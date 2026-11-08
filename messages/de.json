@@ -1088,6 +1088,11 @@
       "tileDrill": "Diese Übung auf deinem Niveau",
       "tileDrillWhy": "Auf dein Niveau zugeschnitten, damit du übst, was der Artikel beschreibt.",
       "personalBest": "Neue persönliche Bestleistung auf dieser Stufe. Trag sie ein.",
+      "saveLine": {
+        "text": "Dein Bericht ist nur in diesem Browser gespeichert.",
+        "download": "Eine Kopie herunterladen",
+        "hide": "Vorerst ausblenden"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy} % reichen für die Bestenliste.",
         "open": "{difficulty}: Platz für {accuracy} % ansehen.",

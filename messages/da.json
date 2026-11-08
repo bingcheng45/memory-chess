@@ -1088,6 +1088,11 @@
       "tileDrill": "Denne øvelse på dit niveau",
       "tileDrillWhy": "Tilpasset dit niveau, så du kan øve det, artiklen beskriver.",
       "personalBest": "Ny personlig rekord på dette niveau. Få den på listen.",
+      "saveLine": {
+        "text": "Din journal findes kun i denne browser.",
+        "download": "Download en kopi",
+        "hide": "Skjul for nu"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy} % kommer på ranglisten.",
         "open": "{difficulty}: se, hvor {accuracy} % placerer sig.",

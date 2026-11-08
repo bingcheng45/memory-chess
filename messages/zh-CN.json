@@ -1088,6 +1088,11 @@
       "tileDrill": "适合你水平的这道练习",
       "tileDrillWhy": "按你的水平设定，用来练习文章所讲的内容。",
       "personalBest": "刷新了这一难度的个人最佳，记录下来吧。",
+      "saveLine": {
+        "text": "你的记录只保存在这个浏览器中。",
+        "download": "下载副本",
+        "hide": "暂时隐藏"
+      },
       "claimLine": {
         "qualifies": "{difficulty}:{accuracy}% 可以上榜。",
         "open": "{difficulty}:看看 {accuracy}% 排第几。",

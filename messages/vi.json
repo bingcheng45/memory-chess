@@ -1088,6 +1088,11 @@
       "tileDrill": "Bài luyện này ở trình độ của bạn",
       "tileDrillWhy": "Được điều chỉnh theo trình độ của bạn, để luyện điều bài viết mô tả.",
       "personalBest": "Kỷ lục cá nhân mới ở cấp độ này. Ghi lại ngay.",
+      "saveLine": {
+        "text": "Hồ sơ của bạn chỉ được lưu trong trình duyệt này.",
+        "download": "Tải xuống bản sao",
+        "hide": "Ẩn lúc này"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% sẽ vào bảng xếp hạng.",
         "open": "{difficulty}: xem {accuracy}% xếp hạng thứ mấy.",

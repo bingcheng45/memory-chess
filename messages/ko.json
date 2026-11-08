@@ -1088,6 +1088,11 @@
       "tileDrill": "내 수준에 맞춘 이 연습",
       "tileDrillWhy": "내 수준에 맞춰, 글에서 설명하는 내용을 연습할 수 있어요.",
       "personalBest": "이 난이도의 개인 최고 기록입니다. 기록으로 남기세요.",
+      "saveLine": {
+        "text": "기록은 이 브라우저에만 저장됩니다.",
+        "download": "사본 내려받기",
+        "hide": "지금은 숨기기"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}%면 리더보드에 오릅니다.",
         "open": "{difficulty}: {accuracy}%가 몇 위인지 확인해 보세요.",

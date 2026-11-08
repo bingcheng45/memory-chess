@@ -1088,6 +1088,11 @@
       "tileDrill": "適合你程度的這道練習",
       "tileDrillWhy": "依你的程度設定，用來練習文章所講的內容。",
       "personalBest": "刷新了這個難度的個人最佳，記錄下來吧。",
+      "saveLine": {
+        "text": "你的紀錄只存在這個瀏覽器中。",
+        "download": "下載副本",
+        "hide": "暫時隱藏"
+      },
       "claimLine": {
         "qualifies": "{difficulty}:{accuracy}% 可以上榜。",
         "open": "{difficulty}:看看 {accuracy}% 排第幾。",

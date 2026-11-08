@@ -1088,6 +1088,11 @@
       "tileDrill": "Latihan ini di levelmu",
       "tileDrillWhy": "Disesuaikan dengan levelmu, untuk melatih apa yang dijelaskan artikel ini.",
       "personalBest": "Rekor pribadi baru di level ini. Catat sekarang.",
+      "saveLine": {
+        "text": "Catatanmu hanya tersimpan di browser ini.",
+        "download": "Unduh salinan",
+        "hide": "Sembunyikan dulu"
+      },
       "claimLine": {
         "qualifies": "{difficulty}: {accuracy}% akan masuk papan peringkat.",
         "open": "{difficulty}: lihat peringkat untuk {accuracy}%.",

@@ -1088,6 +1088,11 @@
       "tileDrill": "あなたのレベルに合わせたドリル",
       "tileDrillWhy": "あなたのレベルに合わせてあり、記事の内容を練習できます。",
       "personalBest": "このレベルの自己ベストを更新。記録に残しましょう。",
+      "saveLine": {
+        "text": "記録はこのブラウザーにだけ保存されています。",
+        "download": "コピーをダウンロード",
+        "hide": "今は非表示にする"
+      },
       "claimLine": {
         "qualifies": "{difficulty}:{accuracy}%ならランキング入りです。",
         "open": "{difficulty}:{accuracy}%の順位を確認しましょう。",

@@ -155,7 +155,7 @@ describe("reporting a round", () => {
 
   it("sends round_complete once when the round is scored, with what the player got right, and no other event", () => {
     const gtag = jest.fn();
-    useGameStore.setState({ firstRoundDay: null, roundsPlayed: 0 });
+    useGameStore.setState({ firstRoundDay: null, roundsPlayed: 0, certainty: { rd: 350, rounds: 0 }, history: [] });
     store().startGame(6, 10, "plan");
     const [square, piece] = Object.entries(target())[0] as [SquareName, LabPiece];
     store().dispatch({ type: "studyEnded", now: performance.now() });

@@ -25,6 +25,10 @@ describe("Workers Cache policy", () => {
     expect(withWorkersCachePolicy(page(PAGE_CACHE), get("/"), true).headers.get("cache-control")).toBe(PAGE_CACHE);
   });
 
+  test("still refuses to store an API response with no Cache-Control when the locale is decided", () => {
+    expect(withWorkersCachePolicy(page(), get("/api/game-stats"), true).headers.get("cache-control")).toBe("private, no-store");
+  });
+
   test.each(["/learn", "/changelog", "/de", "/de/leaderboard", "/pt-br/game", "/zh-CN"])("keeps the app's caching for %s", (path) => {
     expect(isSameForEveryVisitor(path)).toBe(true);
     expect(withWorkersCachePolicy(page(PAGE_CACHE), get(path)).headers.get("cache-control")).toBe(PAGE_CACHE);

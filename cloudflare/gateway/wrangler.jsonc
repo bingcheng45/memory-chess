@@ -1,0 +1,16 @@
+{
+  "$schema": "../../node_modules/wrangler/config-schema.json",
+  "name": "memory-chess-gateway",
+  "main": "worker.ts",
+  "compatibility_date": "2026-11-01",
+  "compatibility_flags": ["nodejs_compat"],
+  // next/server is CommonJS and reads __dirname, which Workers do not define.
+  "define": { "__dirname": "\"/\"" },
+  "services": [
+    { "binding": "APP", "service": "memory-chess" },
+    { "binding": "APP_LOCALE_DECIDED", "service": "memory-chess", "props": { "localeDecided": true } }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

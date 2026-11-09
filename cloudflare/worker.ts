@@ -3,10 +3,14 @@ import { withWorkersCachePolicy } from "../src/lib/cloudflare/workersCache";
 
 export { DOQueueHandler, DOShardedTagCache, BucketCachePurge } from "../.open-next/worker.js";
 
+interface Context {
+  props?: { localeDecided?: boolean };
+}
+
 const worker = {
-  async fetch(request: Request, env: unknown, ctx: unknown): Promise<Response> {
+  async fetch(request: Request, env: unknown, ctx: Context): Promise<Response> {
     const response = await handler.fetch(request, env, ctx);
-    return withWorkersCachePolicy(response, new URL(request.url).pathname);
+    return withWorkersCachePolicy(response, new URL(request.url).pathname, ctx.props?.localeDecided === true);
   },
 };
 

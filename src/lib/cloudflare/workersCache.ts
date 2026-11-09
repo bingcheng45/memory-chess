@@ -20,10 +20,14 @@ export function isSameForEveryVisitor(pathname: string): boolean {
   return isServedAtBareEnglishUrl(pathname, DEFAULT_LOCALE);
 }
 
-/** An API response without its own Cache-Control would otherwise be cached for 2 hours by heuristic freshness. */
-export function withWorkersCachePolicy(response: Response, pathname: string): Response {
+/**
+ * An API response without its own Cache-Control would otherwise be cached for 2 hours by heuristic freshness.
+ * `localeDecided` is true only for a request the gateway sent with the locale fixed as English, which arrives
+ * with its own `ctx.props` and so under its own cache key.
+ */
+export function withWorkersCachePolicy(response: Response, pathname: string, localeDecided = false): Response {
   const isApi = pathname === "/api" || pathname.startsWith("/api/");
-  const mustNotStore = isApi ? !response.headers.has("cache-control") : !isSameForEveryVisitor(pathname);
+  const mustNotStore = isApi ? !response.headers.has("cache-control") : !localeDecided && !isSameForEveryVisitor(pathname);
   if (!mustNotStore) return response;
 
   const guarded = new Response(response.body, response);

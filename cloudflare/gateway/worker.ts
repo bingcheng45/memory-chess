@@ -7,7 +7,7 @@ interface Env {
 
 const gateway = {
   fetch(request: Request, env: Env, ctx: { waitUntil(promise: Promise<unknown>): void }): Promise<Response> {
-    return handleGatewayRequest(request, { app: env.APP, englishApp: env.APP_LOCALE_DECIDED }, ctx);
+    return handleGatewayRequest(request, { app: env.APP, englishApp: env.APP_LOCALE_DECIDED, pages: env.APP }, ctx);
   },
 };
 

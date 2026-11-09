@@ -32,6 +32,11 @@ export function isSameForEveryVisitor(pathname: string): boolean {
   return isServedAtBareEnglishUrl(pathname, DEFAULT_LOCALE);
 }
 
+/** The middleware writes the request's origin into the hreflang `Link` header; a shared copy must name the site. */
+export function linkWithSiteOrigin(link: string, requestOrigin: string): string {
+  return requestOrigin === SITE_ORIGIN ? link : link.replaceAll(`<${requestOrigin}`, `<${SITE_ORIGIN}`);
+}
+
 function mustNotStore(response: Response, request: Request, pathname: string, localeDecided: boolean): boolean {
   if (request.headers.has(REGENERATION_HEADER)) return true;
   // A redirect can carry the locale cookie for one visitor and not the next.
@@ -59,7 +64,7 @@ export function withWorkersCachePolicy(response: Response, request: Request, loc
   }
 
   const link = guarded.headers.get("link");
-  if (link && url.origin !== SITE_ORIGIN) guarded.headers.set("link", link.replaceAll(`<${url.origin}`, `<${SITE_ORIGIN}`));
+  if (link) guarded.headers.set("link", linkWithSiteOrigin(link, url.origin));
   guarded.headers.append("vary", REGENERATION_HEADER);
   return guarded;
 }

@@ -32,7 +32,7 @@
     "lab:fallback-widths": "node scripts/lab/fallback-widths.mjs",
     "indexnow:submit": "node scripts/indexnow-submit.mjs",
     "cf:build": "opennextjs-cloudflare build",
-    "cf:deploy": "opennextjs-cloudflare deploy && wrangler deploy -c cloudflare/gateway/wrangler.jsonc",
+    "cf:deploy": "node scripts/cf-static-page-cache.mjs && opennextjs-cloudflare deploy && wrangler deploy -c cloudflare/gateway/wrangler.jsonc",
     "cf:preview": "opennextjs-cloudflare upload"
   },
   "dependencies": {

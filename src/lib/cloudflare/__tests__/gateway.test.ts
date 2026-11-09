@@ -61,6 +61,12 @@ describe("Cloudflare gateway", () => {
     expect(calls.map((call) => call.via)).toEqual(["englishApp"]);
   });
 
+  test("records the language of an opened /de link for a visitor whose saved choice was French", async () => {
+    const { response, calls } = await visit("/de/game", { "accept-language": "en-US", cookie: "NEXT_LOCALE=fr" });
+    expect(calls.map((call) => call.via)).toEqual(["app"]);
+    expect(response.headers.get("set-cookie")).toContain("NEXT_LOCALE=de");
+  });
+
   test.each(["/learn", "/de", "/api/game-stats", "/favicon.ico"])("passes %s straight to the app", async (path) => {
     const { calls } = await visit(path, { "accept-language": "de" });
     expect(calls.map((call) => call.via)).toEqual(["app"]);

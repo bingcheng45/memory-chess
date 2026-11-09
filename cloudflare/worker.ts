@@ -10,7 +10,7 @@ interface Context {
 const worker = {
   async fetch(request: Request, env: unknown, ctx: Context): Promise<Response> {
     const response = await handler.fetch(request, env, ctx);
-    return withWorkersCachePolicy(response, new URL(request.url).pathname, ctx.props?.localeDecided === true);
+    return withWorkersCachePolicy(response, request, ctx.props?.localeDecided === true);
   },
 };
 

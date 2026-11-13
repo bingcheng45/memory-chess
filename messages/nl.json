@@ -15,7 +15,9 @@
       "menu": "Menu",
       "site": "Site",
       "streakChip": "Dag {count}",
-      "streakChipLabel": "Dag {count} van je reeks{forgiven, plural, =0 {} one {, # gemiste dag vergeven} other {, # gemiste dagen vergeven}}. Open je dashboard."
+      "streakChipLabel": "Dag {count} van je reeks{forgiven, plural, =0 {} one {, # gemiste dag vergeven} other {, # gemiste dagen vergeven}}. Open je dashboard.",
+      "streakEndsTodayChip": "Dag {count}, eindigt vandaag",
+      "streakEndsTodayChipLabel": "Dag {count} van je reeks. Die eindigt vandaag als je geen ronde speelt. Open het dagbord."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle rechten voorbehouden.",

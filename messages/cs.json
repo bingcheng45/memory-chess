@@ -15,7 +15,9 @@
       "menu": "Menu",
       "site": "Web",
       "streakChip": "Den {count}",
-      "streakChipLabel": "Den {count} tvé série{forgiven, plural, =0 {} one {, # vynechaný den odpuštěn} few {, # vynechané dny odpuštěny} many {, # vynechaného dne odpuštěno} other {, # vynechaných dní odpuštěno}}. Otevřít přehled."
+      "streakChipLabel": "Den {count} tvé série{forgiven, plural, =0 {} one {, # vynechaný den odpuštěn} few {, # vynechané dny odpuštěny} many {, # vynechaného dne odpuštěno} other {, # vynechaných dní odpuštěno}}. Otevřít přehled.",
+      "streakEndsTodayChip": "Den {count}, končí dnes",
+      "streakEndsTodayChipLabel": "Den {count} tvé série. Pokud dnes nezahraješ kolo, série skončí. Otevřít denní šachovnici."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Všechna práva vyhrazena.",

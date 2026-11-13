@@ -15,7 +15,9 @@
       "menu": "Menu",
       "site": "Site",
       "streakChip": "Day {count}",
-      "streakChipLabel": "Day {count} of your streak{forgiven, plural, =0 {} one {, # missed day forgiven} other {, # missed days forgiven}}. Open your dashboard."
+      "streakChipLabel": "Day {count} of your streak{forgiven, plural, =0 {} one {, # missed day forgiven} other {, # missed days forgiven}}. Open your dashboard.",
+      "streakEndsTodayChip": "Day {count}, ends today",
+      "streakEndsTodayChipLabel": "Day {count} of your streak. It ends today unless you play a round. Open the daily board."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. All rights reserved.",

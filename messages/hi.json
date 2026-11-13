@@ -15,7 +15,9 @@
       "menu": "मेन्यू",
       "site": "साइट",
       "streakChip": "दिन {count}",
-      "streakChipLabel": "आपकी लगातार श्रृंखला का दिन {count}{forgiven, plural, =0 {} one {, # छूटा दिन माफ़} other {, # छूटे दिन माफ़}}। अपना डैशबोर्ड खोलें।"
+      "streakChipLabel": "आपकी लगातार श्रृंखला का दिन {count}{forgiven, plural, =0 {} one {, # छूटा दिन माफ़} other {, # छूटे दिन माफ़}}। अपना डैशबोर्ड खोलें।",
+      "streakEndsTodayChip": "दिन {count}, आज खत्म",
+      "streakEndsTodayChipLabel": "आपकी लगातार श्रृंखला का दिन {count}। अगर आज एक भी राउंड नहीं खेला, तो यह आज खत्म हो जाएगी। दैनिक बोर्ड खोलें।"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. सर्वाधिकार सुरक्षित।",

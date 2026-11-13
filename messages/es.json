@@ -15,7 +15,9 @@
       "menu": "Menú",
       "site": "Sitio",
       "streakChip": "Día {count}",
-      "streakChipLabel": "Día {count} de tu racha{forgiven, plural, =0 {} one {, # día perdido perdonado} many {, # días perdidos perdonados} other {, # días perdidos perdonados}}. Abre tu panel."
+      "streakChipLabel": "Día {count} de tu racha{forgiven, plural, =0 {} one {, # día perdido perdonado} many {, # días perdidos perdonados} other {, # días perdidos perdonados}}. Abre tu panel.",
+      "streakEndsTodayChip": "Día {count}, termina hoy",
+      "streakEndsTodayChipLabel": "Día {count} de tu racha. Termina hoy si no juegas una ronda. Abre el tablero diario."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Todos los derechos reservados.",

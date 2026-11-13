@@ -15,7 +15,9 @@
       "menu": "메뉴",
       "site": "사이트",
       "streakChip": "{count}일째",
-      "streakChipLabel": "연속 기록 {count}일째{forgiven, plural, =0 {} other {, 놓친 #일 면제}}. 대시보드 열기."
+      "streakChipLabel": "연속 기록 {count}일째{forgiven, plural, =0 {} other {, 놓친 #일 면제}}. 대시보드 열기.",
+      "streakEndsTodayChip": "{count}일째, 오늘 끊김",
+      "streakEndsTodayChipLabel": "연속 기록 {count}일째. 오늘 한 판도 하지 않으면 기록이 끊깁니다. 오늘의 보드 열기."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 모든 권리 보유.",

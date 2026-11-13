@@ -210,10 +210,28 @@ describe("streak chip in the header", () => {
     expect(chip).toHaveAttribute("href", "/dashboard");
   });
 
-  it("played yesterday, not today: warns the streak ends today and links to the daily board", () => {
+  it("played yesterday, not today, with the week's missed day still unused: keeps the day count and the dashboard link", () => {
     mockLabData = days("2026-10-05", "2026-10-06");
     renderWithIntl(<LabPaperHeader />);
-    const chip = screen.getByRole("link", { name: "Day 2 of your streak. It ends today unless you play a round. Open the daily board." });
+    const chip = screen.getByRole("link", { name: /^Day/ });
+
+    expect(chip).toHaveTextContent(/^Day 2$/);
+    expect(chip).toHaveAttribute("href", "/dashboard");
+  });
+
+  it("played yesterday, not today, with the missed day already used this week: warns the streak ends today and links to the daily board", () => {
+    mockLabData = days("2026-10-01", "2026-10-02", "2026-10-03", "2026-10-05", "2026-10-06");
+    renderWithIntl(<LabPaperHeader />);
+    const chip = screen.getByRole("link", { name: "Day 5 of your streak. It ends today unless you play a round. Open the daily board." });
+
+    expect(chip).toHaveTextContent(/^Day 5, ends today$/);
+    expect(chip).toHaveAttribute("href", "/daily");
+  });
+
+  it("yesterday was the forgiven day: warns the streak ends today", () => {
+    mockLabData = days("2026-10-04", "2026-10-05");
+    renderWithIntl(<LabPaperHeader />);
+    const chip = screen.getByRole("link", { name: /^Day/ });
 
     expect(chip).toHaveTextContent(/^Day 2, ends today$/);
     expect(chip).toHaveAttribute("href", "/daily");

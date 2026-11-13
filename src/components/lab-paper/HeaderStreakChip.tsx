@@ -3,12 +3,15 @@
 import { useTranslations } from "next-intl";
 import { useLabSummary } from "@/hooks/useLabData";
 import { Link } from "@/i18n/navigation";
+import { shiftDay } from "@/lib/lab/engine";
 import { LAB_METRICS } from "@/lib/lab/metrics";
 import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
+import { streakOf } from "@/lib/lab/streak";
 
 /**
  * The current run of days played, on every Lab Paper page once it reaches the streak threshold, linking to the dashboard.
- * Before today's first round the run still counts yesterday, so the chip warns it ends today and links to the daily board.
+ * When skipping today would shorten the run, because no missed day is left to forgive, the chip warns it ends today and
+ * links to the daily board.
  */
 export function HeaderStreakChip() {
   const t = useTranslations("common.nav");
@@ -18,7 +21,7 @@ export function HeaderStreakChip() {
   if (!streak || streak.current < LAB_THRESHOLDS.streakDays) return null;
 
   const count = streak.current;
-  if (streak.window.at(-1) === "today") {
+  if (streakOf(summary.days, shiftDay(today, 1)).current < count) {
     const label = t("streakEndsTodayChipLabel", { count });
     return (
       <Link className="lab-streak-chip" href="/daily" prefetch={false} title={label} aria-label={label}>

@@ -14,6 +14,7 @@ describe("sharePageOf", () => {
       image: `https://thememorychess.com/api/share/result/${RESULT}`,
       alt: expect.stringMatching(/^Memory Chess result card: Round result, Accuracy 50%, 2 of 4 pieces, .*Rating 1,214 \(-14\), Win streak 3 rounds in a row\.$/),
       round: expect.anything(),
+      day: null,
     });
   });
 
@@ -45,8 +46,8 @@ describe("sharePageOf", () => {
     });
   });
 
-  it("keeps the daily board's page to its card, since the card draws no board", () => {
-    expect(sharePageOf("result", "1_d_4_100_84_383_75_3_4_1000_0_0_20261012")?.round).toBeNull();
+  it("keeps the daily board's page to its card, since the card draws no board, and names the board's day", () => {
+    expect(sharePageOf("result", "1_d_4_100_84_383_75_3_4_1000_0_0_20261012")).toMatchObject({ round: null, day: "2026-10-12" });
   });
 
   it("reads a progress card's page in English, whatever language it was shared from", () => {

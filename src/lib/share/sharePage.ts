@@ -32,6 +32,8 @@ export interface SharePage {
   readonly alt: string;
   /** Null for a progress card and the daily board, whose cards draw no board. */
   readonly round: SharedRound | null;
+  /** The UTC day of a shared daily board, whose page leads to today's board; null for every other card. */
+  readonly day: string | null;
 }
 
 function sharedRound(share: RoundShare, copy: ResultPreview): SharedRound | null {
@@ -49,7 +51,7 @@ export function sharePageOf(kind: string, code: string): SharePage | null {
     const progress = parseProgress(code);
     if (!progress) return null;
     const copy = progressPreview(progress);
-    return { kicker: "Shared progress", title: "A Memory Chess lab record", caption: copy.caption, image: shareImageUrl(kind, code), alt: copy.alt, round: null };
+    return { kicker: "Shared progress", title: "A Memory Chess lab record", caption: copy.caption, image: shareImageUrl(kind, code), alt: copy.alt, round: null, day: null };
   }
   if (kind === "result") {
     const share = parseResult(code);
@@ -62,6 +64,7 @@ export function sharePageOf(kind: string, code: string): SharePage | null {
       image: shareImageUrl(kind, code),
       alt: copy.alt,
       round: sharedRound(share, copy),
+      day: share.kind === "daily" ? share.day : null,
     };
   }
   return null;

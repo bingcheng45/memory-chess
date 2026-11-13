@@ -1181,7 +1181,6 @@
     },
     "round": {
       "start": "Başla",
-      "intro": "{count} taşı {seconds} sn boyunca incele, sonra konumu hafızandan yeniden kur.",
       "hide": "Tahtayı gizle",
       "restart": "Yeniden başla",
       "leave": "Turdan çık",

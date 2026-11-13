@@ -532,7 +532,6 @@ body:has(#changelog-banner:not([hidden])) .lab-game { --banner-h: 56px; }
 .lab-game .round-gate-facts { margin: 0; font: 600 16px/1.35 var(--lp-ui); color: var(--lp-ink); font-variant-numeric: tabular-nums; }
 .lab-game .round-gate-rule { margin: 0 0 8px; font: 400 14px/1.5 var(--lp-body); color: var(--lp-muted); text-wrap: balance; }
 .lab-game .round-gate-card .lab-btn { min-width: 180px; }
-.lab-game .round-gate-intro { margin-bottom: 8px; text-wrap: balance; }
 .lab-game .round-notation { position: absolute; inset: 0; display: grid; place-items: center; padding: 12px; }
 .lab-game .round-notation-card { display: grid; gap: 16px; width: 100%; max-width: 440px; max-height: 100%; overflow-y: auto; padding: 20px 24px; border: 1px solid var(--lp-line); border-radius: var(--lp-r-lg); background: var(--lp-surface); box-shadow: var(--lp-pop-shadow); }
 .lab-game .round-notation-list { display: grid; gap: 12px; margin: 0; padding: 0; list-style: none; font: 600 clamp(20px, 5.5cqmin, 28px)/1.4 var(--lp-data); color: var(--lp-ink); overflow-wrap: anywhere; }

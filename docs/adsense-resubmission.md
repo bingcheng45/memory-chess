@@ -107,7 +107,7 @@ The round-funnel events start the day PR #33 merges. From then on production sen
 | `round_start` | a round enters the memorize phase | `piece_count`, `memorize_time` |
 | `round_complete` | a round reaches its result | `piece_count`, `memorize_time`, `correct_pieces`, `accuracy` |
 | `score_submit` | the leaderboard accepts a submitted score | `difficulty`, `piece_count` |
-| `round_intro_view` | a round from a link shows its one-line rule and Start (every such round since the free-round countdown fix; before it, only a first-ever round) | `piece_count`, `memorize_time`, `round_source` |
+| `round_intro_view` | retired: a round from a link showed its one-line rule and Start, until every round began counting straight in (see the note below) | `piece_count`, `memorize_time`, `round_source` |
 
 The clean production-only series for these events starts 2026-09-29. Read nothing earlier as comparable.
 
@@ -120,6 +120,13 @@ start rate. Daily boards, replays and later rounds are unchanged. Databuddy's `r
 `round_start`) shifts on the same merge date, and `round_intro_view` is not mirrored to Databuddy. Like
 `round_start` and `round_complete` since PR #118, `round_intro_view` names where the round began as `round_source`,
 never `source`, which GA4 reads as the traffic source. Databuddy's mirrors keep `source`.
+
+Note added 2026-11-13 for the one-start change. From the day it merges, a round from a link (Play a free round, a tier,
+a plan step, a guide's button, Next round, the article drill) counts 3, 2, 1 and studies, exactly as the form's Start
+round does, with no rule card and no Start to press. `round_intro_view` stops. Every round's `round_start`, the daily
+board's included, now fires once, when the countdown ends and study begins, so a link round's `round_start` means
+"stayed three seconds", not "pressed Start". Read the `home_quick` and other link `round_start` series as broken again on
+the merge date. Only the daily board keeps its card and Start, because pressing Start spends the day's one try.
 
 `sound_settings` fired once per finished round beside `round_complete` for four weeks after that merge, so the weekly
 rounds series has no gap. It was retired in its own PR on 2026-10-16, eleven days early, because the counts already

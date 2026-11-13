@@ -40,7 +40,6 @@ const EVENTS: FunnelEvent[] = [
     params: { query_length: 28, results: 2, top: "how-to-stop-blundering-in-chess", outcome: "strong", surface: "hub" },
   },
   { name: "learn_search_select", params: { slug: "chess-memory-training", rank: 1, matched_question: false, surface: "server" } },
-  { name: "round_intro_view", params: { piece_count: 3, memorize_time: 10, round_source: "link" } },
   { name: "affiliate_click", params: { store: "amazon" } },
   { name: "reminder_set", params: { surface: "result" } },
   { name: "reminder_set", params: { surface: "dashboard" } },

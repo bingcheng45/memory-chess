@@ -1181,7 +1181,6 @@
     },
     "round": {
       "start": "Aloita",
-      "intro": "Opettele {count, plural, one {# nappula} other {# nappulaa}} {seconds} sekunnissa ja rakenna sitten asema muistista.",
       "hide": "Piilota lauta",
       "restart": "Aloita alusta",
       "leave": "Poistu kierrokselta",

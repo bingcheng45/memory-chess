@@ -53,7 +53,6 @@ afterEach(() => {
 async function playToRebuild() {
   render(<GamePage />);
   await act(async () => {});
-  fireEvent.click(screen.getByText("Start", { selector: "button" }));
   act(() => useGameStore.getState().endCountdown());
   fireEvent.click(screen.getByText("Hide board", { selector: "button" }));
 }

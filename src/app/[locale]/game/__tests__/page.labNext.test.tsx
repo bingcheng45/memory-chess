@@ -50,8 +50,11 @@ describe("GamePage starting the lab card's next round", () => {
     jest.mocked(playSound).mockClear();
     jest.mocked(stopTimerSound).mockClear();
     fireEvent.click(next);
+    const counting = useGameStore.getState().round.phase;
+    act(() => useGameStore.getState().endCountdown());
 
     const { gameState } = useGameStore.getState();
+    expect(counting).toBe("countdown");
     expect({
       pieceCount: gameState.pieceCount,
       memorizeTime: gameState.memorizeTime,

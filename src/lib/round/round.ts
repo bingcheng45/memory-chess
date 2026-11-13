@@ -175,7 +175,7 @@ export const COUNTDOWN_MS = 3000;
 export type RoundState =
   | { readonly phase: "idle" }
   | { readonly phase: "ready"; readonly config: RoundConfig; readonly fen: string }
-  | { readonly phase: "countdown"; readonly config: RoundConfig; readonly fen: string; readonly endsAt: number; readonly afterIntro?: true }
+  | { readonly phase: "countdown"; readonly config: RoundConfig; readonly fen: string; readonly endsAt: number }
   | { readonly phase: "study"; readonly config: RoundConfig; readonly target: LabPosition; readonly startedAt: number }
   | {
       readonly phase: "rebuild";
@@ -288,7 +288,7 @@ export function roundReducer(state: RoundState, action: RoundAction): RoundState
   if (action.type === "prepare") return state.phase === "idle" ? { phase: "ready", config: action.config, fen: action.fen } : state;
   if (action.type === "begin") {
     return state.phase === "ready"
-      ? { phase: "countdown", config: state.config, fen: state.fen, endsAt: action.now + COUNTDOWN_MS, ...(state.config.board ? {} : { afterIntro: true }) }
+      ? { phase: "countdown", config: state.config, fen: state.fen, endsAt: action.now + COUNTDOWN_MS }
       : state;
   }
   if (action.type === "countIn") {

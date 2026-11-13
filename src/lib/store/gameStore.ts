@@ -39,7 +39,6 @@ import { localDayOf } from "@/lib/lab/record";
 import { prefersImported, type PlayerStanding } from "@/lib/lab/transfer";
 import {
   IDLE_ROUND,
-  labPositionFromFen,
   labPositionToFen,
   roundReducer,
   type RoundAction,
@@ -103,12 +102,11 @@ interface GameStore {
   resultView: ResultView;
   setResultView: (view: ResultView) => void;
 
-  startGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard, blindfold?: boolean) => void;
   /** Sets a board out behind its Start button; the round studies on endCountdown. */
   prepareGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard, blindfold?: boolean) => void;
   beginRound: (now?: number) => void;
-  /** Counts a new random board in over the veil, without a Start button; the round studies on endCountdown. */
-  countInGame: (pieceCount: number, memorizeTime: number, source: RoundSource, blindfold?: boolean) => void;
+  /** Counts a board in over the veil, without a Start button: every round but the daily board starts this way. The round studies on endCountdown. */
+  countInGame: (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard, blindfold?: boolean) => void;
   endCountdown: (now?: number) => void;
   /** Hide board, the study deadline, the palette, the board and the eraser. Submit goes through submitSolution. */
   dispatch: (action: Exclude<RoundAction, { type: 'start' | 'prepare' | 'begin' | 'countIn' | 'countdownEnded' | 'submit' }>) => void;
@@ -225,8 +223,8 @@ const configOf = (pieceCount: number, memorizeTime: number, source: RoundSource,
 
 const modeParam = (blindfold: true | undefined) => (blindfold ? { round_mode: "blindfold" as const } : {});
 
-const trackRound = (name: "round_start" | "round_intro_view", { pieceCount, studyMs, source, blindfold }: RoundConfig) =>
-  trackEvent({ name, params: { piece_count: pieceCount, memorize_time: studyMs / 1000, round_source: source, ...modeParam(blindfold) } });
+const trackRoundStart = ({ pieceCount, studyMs, source, blindfold }: RoundConfig) =>
+  trackEvent({ name: "round_start", params: { piece_count: pieceCount, memorize_time: studyMs / 1000, round_source: source, ...modeParam(blindfold) } });
 
 // Initialize the store
 export const useGameStore = create<GameStore>()(
@@ -249,28 +247,6 @@ export const useGameStore = create<GameStore>()(
         trackEvent({ name: 'result_view_select', params: { result_view: resultView } });
       },
 
-      startGame: (pieceCount, memorizeTime, source, board, blindfold) => {
-        const generated = board ? null : generateMemorizationPosition(pieceCount);
-        const originalPosition = board ? board.fen : generated?.fen();
-        if (!originalPosition) {
-          console.error('Failed to generate random position');
-          return;
-        }
-
-        const config = configOf(pieceCount, memorizeTime, source, board, blindfold);
-        set({
-          round: roundReducer(get().round, {
-            type: 'start',
-            config,
-            target: labPositionFromFen(originalPosition),
-            now: monotonicNow(),
-          }),
-          gameState: studyGameState(get().gameState, { pieceCount, memorizeTime, source, board, originalPosition }),
-          lastSettings: { pieceCount, memorizeTime },
-        });
-        trackRound('round_start', config);
-      },
-
       prepareGame: (pieceCount, memorizeTime, source, board, blindfold) => {
         const fen = board ? board.fen : generateMemorizationPosition(pieceCount)?.fen();
         if (!fen) {
@@ -281,17 +257,15 @@ export const useGameStore = create<GameStore>()(
         const round = roundReducer(get().round, { type: 'prepare', config, fen });
         if (round === get().round) return;
         set({ round });
-        if (round.phase === 'ready' && !board) trackRound('round_intro_view', config);
       },
 
       beginRound: (now = monotonicNow()) => {
         const round = roundReducer(get().round, { type: 'begin', now });
         set({ round });
-        if (round.phase === 'countdown' && round.afterIntro) trackRound('round_start', round.config);
       },
 
-      countInGame: (pieceCount, memorizeTime, source, blindfold) => {
-        const fen = generateMemorizationPosition(pieceCount)?.fen();
+      countInGame: (pieceCount, memorizeTime, source, board, blindfold) => {
+        const fen = board ? board.fen : generateMemorizationPosition(pieceCount)?.fen();
         if (!fen) {
           console.error('Failed to generate random position');
           return;
@@ -299,7 +273,7 @@ export const useGameStore = create<GameStore>()(
         set({
           round: roundReducer(get().round, {
             type: 'countIn',
-            config: configOf(pieceCount, memorizeTime, source, undefined, blindfold),
+            config: configOf(pieceCount, memorizeTime, source, board, blindfold),
             fen,
             now: monotonicNow(),
           }),
@@ -316,7 +290,7 @@ export const useGameStore = create<GameStore>()(
           gameState: studyGameState(get().gameState, { pieceCount, memorizeTime, source, board, originalPosition: counting.fen }),
           lastSettings: { pieceCount, memorizeTime },
         });
-        if (!counting.afterIntro) trackRound('round_start', counting.config);
+        trackRoundStart(counting.config);
       },
 
       dispatch: (action) => set({ round: roundReducer(get().round, action) }),

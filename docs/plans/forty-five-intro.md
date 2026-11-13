@@ -33,7 +33,7 @@ The gate runs before first paint in an inline script, the same pattern as `RECOR
 
 | Rule | Result |
 |---|---|
-| Feature flag off (`NEXT_PUBLIC_HOME_INTRO !== "1"`) | No intro |
+| Feature flag off (`NEXT_PUBLIC_HOME_INTRO` is `"0"`, or unset outside a production build) | No intro |
 | `prefers-reduced-motion: reduce` | No intro |
 | `navigator.connection.saveData` | No intro |
 | Seen flag in local storage | No intro (the replay link is always there) |

@@ -16,8 +16,11 @@ export const FIRST_SCREEN_MEDIA = "(max-width: 767px)";
 export type IntroSignal = (typeof INTRO_RULES)[number];
 export type IntroSignals = Readonly<Record<IntroSignal, boolean>>;
 
-/** The intro ships only behind this build flag; with it off, the home page gains nothing. */
-export const HOME_INTRO = process.env.NEXT_PUBLIC_HOME_INTRO === "1";
+/**
+ * The intro ships only behind this build flag; with it off, the home page gains nothing. Unset, it is on in a
+ * production build and off in dev and tests; "0" turns it off and "1" on anywhere.
+ */
+export const HOME_INTRO = (process.env.NEXT_PUBLIC_HOME_INTRO || (process.env.NODE_ENV === "production" ? "1" : "0")) === "1";
 
 /** The window event the hero's replay link sends to play the intro again. */
 export const INTRO_REPLAY_EVENT = "home-intro:replay";

@@ -201,6 +201,24 @@ describe("streak chip in the header", () => {
     expect(chip).toHaveAttribute("href", "/dashboard");
   });
 
+  it("played today: keeps the day count and the dashboard link", () => {
+    mockLabData = days("2026-10-06", "2026-10-07");
+    renderWithIntl(<LabPaperHeader />);
+    const chip = screen.getByRole("link", { name: /^Day/ });
+
+    expect(chip).toHaveTextContent(/^Day 2$/);
+    expect(chip).toHaveAttribute("href", "/dashboard");
+  });
+
+  it("played yesterday, not today: warns the streak ends today and links to the daily board", () => {
+    mockLabData = days("2026-10-05", "2026-10-06");
+    renderWithIntl(<LabPaperHeader />);
+    const chip = screen.getByRole("link", { name: "Day 2 of your streak. It ends today unless you play a round. Open the daily board." });
+
+    expect(chip).toHaveTextContent(/^Day 2, ends today$/);
+    expect(chip).toHaveAttribute("href", "/daily");
+  });
+
   it("names the missed days its streak forgave", () => {
     mockLabData = days("2026-10-03", "2026-10-04", "2026-10-06", "2026-10-07");
     renderWithIntl(<LabPaperHeader />);

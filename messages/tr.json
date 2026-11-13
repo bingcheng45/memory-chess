@@ -15,7 +15,9 @@
       "menu": "Menü",
       "site": "Site",
       "streakChip": "{count}. gün",
-      "streakChipLabel": "Serinin {count}. günü{forgiven, plural, =0 {} one {, # kaçırılan gün affedildi} other {, # kaçırılan gün affedildi}}. Panonu aç."
+      "streakChipLabel": "Serinin {count}. günü{forgiven, plural, =0 {} one {, # kaçırılan gün affedildi} other {, # kaçırılan gün affedildi}}. Panonu aç.",
+      "streakEndsTodayChip": "{count}. gün, bugün bitiyor",
+      "streakEndsTodayChipLabel": "Serinin {count}. günü. Bugün bir tur oynamazsan seri bitiyor. Günlük tahtayı aç."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tüm hakları saklıdır.",

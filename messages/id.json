@@ -15,7 +15,9 @@
       "menu": "Menu",
       "site": "Situs",
       "streakChip": "Hari ke-{count}",
-      "streakChipLabel": "Hari ke-{count} beruntunmu{forgiven, plural, =0 {} other {, # hari terlewat dimaafkan}}. Buka dasbor."
+      "streakChipLabel": "Hari ke-{count} beruntunmu{forgiven, plural, =0 {} other {, # hari terlewat dimaafkan}}. Buka dasbor.",
+      "streakEndsTodayChip": "Hari ke-{count}, berakhir hari ini",
+      "streakEndsTodayChipLabel": "Hari ke-{count} beruntunmu. Beruntun berakhir hari ini jika kamu tidak memainkan satu ronde. Buka papan harian."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Seluruh hak cipta dilindungi.",

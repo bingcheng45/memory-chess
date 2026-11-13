@@ -15,7 +15,9 @@
       "menu": "菜单",
       "site": "网站",
       "streakChip": "第 {count} 天",
-      "streakChipLabel": "连续第 {count} 天{forgiven, plural, =0 {} other {，已宽限 # 个缺席日}}。打开你的仪表盘。"
+      "streakChipLabel": "连续第 {count} 天{forgiven, plural, =0 {} other {，已宽限 # 个缺席日}}。打开你的仪表盘。",
+      "streakEndsTodayChip": "第 {count} 天，今天中断",
+      "streakEndsTodayChipLabel": "连续第 {count} 天。今天不玩一局，连续记录就会中断。打开每日棋盘。"
     },
     "footer": {
       "copyright": "© {year} Memory Chess. 保留所有权利。",

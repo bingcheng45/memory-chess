@@ -15,7 +15,9 @@
       "menu": "Menu",
       "site": "Serwis",
       "streakChip": "Dzień {count}",
-      "streakChipLabel": "Dzień {count} Twojej serii{forgiven, plural, =0 {} one {, # opuszczony dzień wybaczony} few {, # opuszczone dni wybaczone} many {, # opuszczonych dni wybaczonych} other {, # opuszczonego dnia wybaczone}}. Otwórz panel."
+      "streakChipLabel": "Dzień {count} Twojej serii{forgiven, plural, =0 {} one {, # opuszczony dzień wybaczony} few {, # opuszczone dni wybaczone} many {, # opuszczonych dni wybaczonych} other {, # opuszczonego dnia wybaczone}}. Otwórz panel.",
+      "streakEndsTodayChip": "Dzień {count}, kończy się dziś",
+      "streakEndsTodayChipLabel": "Dzień {count} Twojej serii. Skończy się dziś, jeśli nie zagrasz rundy. Otwórz planszę dnia."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Wszelkie prawa zastrzeżone.",

@@ -15,7 +15,9 @@
       "menu": "Valikko",
       "site": "Sivusto",
       "streakChip": "Päivä {count}",
-      "streakChipLabel": "Putkesi päivä {count}{forgiven, plural, =0 {} one {, # väliin jäänyt päivä annettu anteeksi} other {, # väliin jäänyttä päivää annettu anteeksi}}. Avaa koontinäyttö."
+      "streakChipLabel": "Putkesi päivä {count}{forgiven, plural, =0 {} one {, # väliin jäänyt päivä annettu anteeksi} other {, # väliin jäänyttä päivää annettu anteeksi}}. Avaa koontinäyttö.",
+      "streakEndsTodayChip": "Päivä {count}, päättyy tänään",
+      "streakEndsTodayChipLabel": "Putkesi päivä {count}. Putki päättyy tänään, jos et pelaa kierrosta. Avaa päivän lauta."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Kaikki oikeudet pidätetään.",

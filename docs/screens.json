@@ -1,0 +1,5 @@
+[
+  { "name": "Link round, 3, 2, 1 countdown over the veiled board", "path": "/game?pieceCount=3&memorizeTime=10&from=home_quick" },
+  { "name": "Home page, Play a free round", "path": "/" },
+  { "name": "Daily board link, rule card and Start unchanged", "path": "/game?pieceCount=6&memorizeTime=10&from=daily" }
+]

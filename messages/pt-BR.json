@@ -1181,7 +1181,6 @@
     },
     "round": {
       "start": "Começar",
-      "intro": "Memorize {count, plural, one {# peça} many {# de peças} other {# peças}} por {seconds} s e depois reconstrua a posição de memória.",
       "hide": "Ocultar tabuleiro",
       "restart": "Reiniciar",
       "leave": "Sair da rodada",

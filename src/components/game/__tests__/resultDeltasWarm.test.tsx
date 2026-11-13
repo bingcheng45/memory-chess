@@ -20,7 +20,8 @@ const figures = () => screen.queryByRole("region", { name: "Your dashboard after
 const said = (section: HTMLElement) => [...section.querySelectorAll(".lab-sr")].map((line) => line.textContent);
 
 function playRound() {
-  store().startGame(4, 10, "game_form");
+  store().countInGame(4, 10, "game_form");
+  store().endCountdown();
   store().dispatch({ type: "studyEnded", now: 0 });
   store().submitSolution(4000);
 }

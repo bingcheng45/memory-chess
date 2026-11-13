@@ -3,9 +3,8 @@
 import { useEffect, useRef } from 'react';
 import { useFormatter, useTranslations } from 'next-intl';
 
-export type GateFacts =
-  | { readonly kind: 'daily'; readonly day: string; readonly pieceCount: number; readonly memorizeTime: number }
-  | { readonly kind: 'link'; readonly pieceCount: number; readonly memorizeTime: number };
+/** The daily board's card. Every other round counts straight in, with no card or Start. */
+export type GateFacts = { readonly kind: 'daily'; readonly day: string; readonly pieceCount: number; readonly memorizeTime: number };
 
 /** "Daily board · Wednesday, 14 October", in the board's own UTC day. */
 export function useGateDate(gate: GateFacts | null): string | null {
@@ -29,7 +28,6 @@ interface RoundGateProps {
 /** Over the veiled board: what the board asks and Start, then the 3, 2, 1 that leads into study. */
 export function RoundGate({ facts, count, ready, onStart }: RoundGateProps) {
   const t = useTranslations('daily.round');
-  const tRound = useTranslations('game.round');
   const start = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
@@ -52,18 +50,12 @@ export function RoundGate({ facts, count, ready, onStart }: RoundGateProps) {
   return (
     <div className="round-gate">
       <div className="round-gate-card">
-        {facts.kind === 'daily' ? (
-          <>
-            <p className="round-gate-facts">
-              {t('pieces', { count: facts.pieceCount })} · {t('seconds', { count: facts.memorizeTime })}
-            </p>
-            <p className="round-gate-rule">{t('rule')}</p>
-          </>
-        ) : (
-          <p className="round-gate-facts round-gate-intro">{tRound('intro', { count: facts.pieceCount, seconds: facts.memorizeTime })}</p>
-        )}
+        <p className="round-gate-facts">
+          {t('pieces', { count: facts.pieceCount })} · {t('seconds', { count: facts.memorizeTime })}
+        </p>
+        <p className="round-gate-rule">{t('rule')}</p>
         <button ref={start} type="button" className="lab-btn lab-btn-primary" disabled={!ready} aria-busy={!ready || undefined} onClick={onStart}>
-          {facts.kind === 'daily' ? t('start') : tRound('start')}
+          {t('start')}
         </button>
       </div>
     </div>

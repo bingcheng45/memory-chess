@@ -85,7 +85,7 @@ function TileHeader({ article }: { article: TileArticle }) {
 function ShownTile({ article, round }: { article: TileArticle; round: RoundSize }) {
   const t = useTranslations("articles.tile");
   const tResult = useTranslations("game.result");
-  const { startGame } = useGameStore();
+  const { countInGame } = useGameStore();
   const drillRound = useReaderRound();
   const { slug, drill } = article;
   const isArticleRound = drillRound.pieceCount === drill.pieceCount && drillRound.memorizeTime === drill.memorizeTime;
@@ -93,7 +93,7 @@ function ShownTile({ article, round }: { article: TileArticle; round: RoundSize 
   function startDrill(action: "drill" | "drill_original", { pieceCount, memorizeTime }: RoundSize) {
     trackEvent({ name: "article_tile_click", params: { slug, action } });
     playSound("click");
-    startGame(pieceCount, memorizeTime, "tile_drill");
+    countInGame(pieceCount, memorizeTime, "tile_drill");
   }
 
   return (

@@ -114,7 +114,6 @@ function clearRoundParams(): void {
 }
 
 /** A board round is started with the same arguments it always was; only a blindfold round adds the mode. */
-const blindfoldArg = (blindfold: boolean | undefined) => (blindfold ? ([true] as const) : ([] as const));
 type StartRound = (pieceCount: number, memorizeTime: number, source: RoundSource, board?: SetBoard, blindfold?: boolean) => void;
 const startAs = (start: StartRound, blindfold: boolean | undefined, pieceCount: number, memorizeTime: number, source: RoundSource) =>
   blindfold ? start(pieceCount, memorizeTime, source, undefined, true) : start(pieceCount, memorizeTime, source);
@@ -132,7 +131,6 @@ function GamePageContent() {
   const router = useRouter();
   const round = useGameStore((state) => state.round);
   const gameState = useGameStore((state) => state.gameState);
-  const startGame = useGameStore((state) => state.startGame);
   const prepareGame = useGameStore((state) => state.prepareGame);
   const countInGame = useGameStore((state) => state.countInGame);
   const beginRound = useGameStore((state) => state.beginRound);
@@ -192,7 +190,7 @@ function GamePageContent() {
     if (!urlRound) return;
     const { source } = urlRound;
     if (!isSetBoardSource(source)) {
-      startAs(prepareGame, urlRound.blindfold, urlRound.pieceCount, urlRound.memorizeTime, source);
+      startAs(countInGame, urlRound.blindfold, urlRound.pieceCount, urlRound.memorizeTime, source);
       return;
     }
 
@@ -213,7 +211,7 @@ function GamePageContent() {
           return;
         }
         opened.markOpened();
-        startGame(opened.pieceCount, opened.memorizeTime, source, opened.board);
+        countInGame(opened.pieceCount, opened.memorizeTime, source, opened.board);
       })
       .catch((error) => {
         if (live) setDailyRead(true);
@@ -222,7 +220,7 @@ function GamePageContent() {
     return () => {
       live = false;
     };
-  }, [urlRound, startGame, prepareGame]);
+  }, [urlRound, countInGame, prepareGame]);
 
   useEffect(() => {
     if (round.phase !== 'study') return;
@@ -263,14 +261,14 @@ function GamePageContent() {
   // Next round and the lab card's suggestions keep the mode of the round just played.
   const handlePlay = (pieceCount: number, memorizeTime: number, source: RoundSource) => {
     const blindfold = round.phase !== 'idle' && round.config.blindfold === true;
-    replay(() => startAs(startGame, blindfold, pieceCount, memorizeTime, source));
+    replay(() => startAs(countInGame, blindfold, pieceCount, memorizeTime, source));
   };
 
   // The player has just pressed a button, so the new board counts in over the veil without a second one.
   const handleTryAgain = () => {
     if (round.phase === 'idle') return;
     const { pieceCount, studyMs, blindfold } = round.config;
-    replay(() => countInGame(pieceCount, studyMs / 1000, 'try_again', ...blindfoldArg(blindfold)));
+    replay(() => startAs(countInGame, blindfold, pieceCount, studyMs / 1000, 'try_again'));
   };
 
   const handleNewGame = () => {
@@ -286,7 +284,7 @@ function GamePageContent() {
   const handleStartGame = (pieceCount: number, memorizeTime: number, source: RoundSource, blindfold = false) => {
     playSound('click');
     startedByHandRef.current = true;
-    countInGame(pieceCount, memorizeTime, source, ...blindfoldArg(blindfold));
+    startAs(countInGame, blindfold, pieceCount, memorizeTime, source);
   };
 
   const renderGameContent = () => {
@@ -329,10 +327,10 @@ function GamePageContent() {
 
       case 'ready':
       case 'countdown': {
+        // Only the daily board waits behind its card and Start; every other round counts straight in.
         const { pieceCount, studyMs, board } = round.config;
-        const memorizeTime = studyMs / 1000;
-        if (board) return activeRound(round, { kind: 'daily', day: board.kind === 'daily' ? board.day : utcDayOf(Date.now()), pieceCount, memorizeTime });
-        return activeRound(round, round.phase === 'ready' ? { kind: 'link', pieceCount, memorizeTime } : null);
+        if (board?.kind === 'daily') return activeRound(round, { kind: 'daily', day: board.day, pieceCount, memorizeTime: studyMs / 1000 });
+        return activeRound(round, null);
       }
 
       case 'study':

@@ -1181,7 +1181,6 @@
     },
     "round": {
       "start": "Mulai",
-      "intro": "Hafalkan {count} bidak selama {seconds} dtk, lalu susun kembali posisinya dari ingatan.",
       "hide": "Sembunyikan papan",
       "restart": "Ulangi",
       "leave": "Keluar dari ronde",

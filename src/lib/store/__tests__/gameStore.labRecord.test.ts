@@ -33,7 +33,8 @@ describe("lab record from a finished game round", () => {
   });
 
   it("records both positions, the timings, where the round started and the placement", async () => {
-    store().startGame(6, 10, "game_form");
+    store().countInGame(6, 10, "game_form");
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: 9500 });
     tap("e1", WK, 10900);
     store().submitSolution(21750);
@@ -60,7 +61,8 @@ describe("lab record from a finished game round", () => {
   });
 
   it("keeps the placements in the order played, timed from the start of the rebuild, and counts the lift", async () => {
-    store().startGame(6, 10, "home_quick");
+    store().countInGame(6, 10, "home_quick");
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: 500 });
     tap("d4", BQ, 1500);
     tap("a8", BK, 2600);
@@ -77,7 +79,8 @@ describe("lab record from a finished game round", () => {
   });
 
   it("leaves out a placement the inventory refuses", async () => {
-    store().startGame(6, 10, "try_again");
+    store().countInGame(6, 10, "try_again");
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: 0 });
     tap("e1", WK, 0);
     tap("e2", WK, 0);
@@ -92,14 +95,16 @@ describe("lab record from a finished game round", () => {
   });
 
   it("starts a reset or a try again with no placements and only the new start", () => {
-    store().startGame(6, 10, "home_quick");
+    store().countInGame(6, 10, "home_quick");
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: 0 });
     tap("e1", WK, 0);
     const played = store().round;
 
     store().resetGame();
     const reset = store();
-    store().startGame(6, 10, "try_again");
+    store().countInGame(6, 10, "try_again");
+    store().endCountdown();
     const again = store();
 
     expect(played.phase === "rebuild" && played.log.placements).toEqual([[0, 60, "K"]]);
@@ -109,13 +114,15 @@ describe("lab record from a finished game round", () => {
 
   it("gives each scored round its own lab id, clears it with the round and never stores it", async () => {
     const scoreRound = () => {
-      store().startGame(6, 10, "home_quick");
+      store().countInGame(6, 10, "home_quick");
+      store().endCountdown();
       store().dispatch({ type: "studyEnded", now: 0 });
       store().submitSolution(4000);
       return store().gameState.labRound?.facts.id;
     };
     const first = scoreRound();
-    store().startGame(6, 10, "try_again");
+    store().countInGame(6, 10, "try_again");
+    store().endCountdown();
     const afterTryAgain = store().gameState.labRound?.facts.id;
     const second = scoreRound();
     store().resetGame();
@@ -131,12 +138,14 @@ describe("lab record from a finished game round", () => {
 
   it("plays a set board's position and records the round as that day's daily board, and a try again after it as a normal round", async () => {
     const fen = "8/8/8/1pQ4k/P2p4/8/8/1K6 b - - 0 1";
-    store().startGame(6, 10, "daily", { kind: "daily", day: "2026-10-09", fen });
+    store().countInGame(6, 10, "daily", { kind: "daily", day: "2026-10-09", fen });
+    store().endCountdown();
     const shown = store().gameState.originalPosition;
     const round = store().round;
     store().dispatch({ type: "studyEnded", now: 10000 });
     store().submitSolution(14000);
-    store().startGame(6, 10, "try_again");
+    store().countInGame(6, 10, "try_again");
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: 10000 });
     store().submitSolution(14000);
     await flush();
@@ -182,7 +191,8 @@ describe("lab record from a finished game round", () => {
 
   it("replays a board from the lab record for review and hands the review's link to the record", async () => {
     const board = { kind: "review", fen: "4k3/8/8/3q4/8/5N2/8/4K3 w - - 0 1", reviewOf: "first-round", firstDay: "2026-10-06", step: 1 } as const;
-    store().startGame(4, 10, "review", board);
+    store().countInGame(4, 10, "review", board);
+    store().endCountdown();
     const shown = store().gameState.originalPosition;
     store().dispatch({ type: "studyEnded", now: 10000 });
     store().submitSolution(14000);
@@ -195,7 +205,8 @@ describe("lab record from a finished game round", () => {
   it("keeps the skill rating, win streak and history through a review round, while a daily round moves all three", () => {
     const fen = "4k3/8/8/8/8/8/8/4K3 w - - 0 1";
     const playPerfect = (source: "daily" | "review", board: SetBoard) => {
-      store().startGame(2, 10, source, board);
+      store().countInGame(2, 10, source, board);
+      store().endCountdown();
       store().dispatch({ type: "studyEnded", now: 10000 });
       tap("e8", BK, 11000);
       tap("e1", WK, 12000);

@@ -1,5 +1,5 @@
 import { StrictMode, type ComponentProps } from "react";
-import { fireEvent, render, screen, within } from "@/test-utils/intl";
+import { act, fireEvent, render, screen, within } from "@/test-utils/intl";
 import { peekArrival } from "@/components/articles/articleArrival";
 import ArticleTile from "@/components/game/ArticleTile";
 import TileArticlesProvider from "@/components/game/TileArticlesProvider";
@@ -246,14 +246,18 @@ describe("which article the tile shows", () => {
 });
 
 describe("the tile's actions", () => {
+  const endCountdown = () => act(() => useGameStore.getState().endCountdown());
+
   it("starts the round sized to a new player, not the article's 20 pieces at 3 seconds", () => {
     render(tile({ random: first }));
     expect(useGameStore.getState().round.phase).toBe("idle");
 
     fireEvent.click(screen.getByRole("button", { name: "Try that drill" }));
+    const counting = useGameStore.getState().round.phase;
+    endCountdown();
 
     const { gameState, lastSettings, round } = useGameStore.getState();
-    expect([round.phase, gameState.pieceCount, gameState.memorizeTime]).toEqual(["study", 4, 10]);
+    expect([counting, round.phase, gameState.pieceCount, gameState.memorizeTime]).toEqual(["countdown", "study", 4, 10]);
     expect(lastSettings).toEqual({ pieceCount: 4, memorizeTime: 10 });
   });
 
@@ -264,6 +268,7 @@ describe("the tile's actions", () => {
       const shownSize = screen.getByText("This drill at your level").closest("div")?.textContent;
 
       fireEvent.click(screen.getByRole("button", { name: "Try that drill" }));
+      endCountdown();
 
       const { gameState } = useGameStore.getState();
       expect([shownSize, gameState.pieceCount, gameState.memorizeTime]).toEqual(["This drill at your level8 pieces, 10 seconds", 8, 10]);
@@ -276,6 +281,7 @@ describe("the tile's actions", () => {
     render(tile({ random: first }));
 
     fireEvent.click(screen.getByRole("button", { name: "Try that drill" }));
+    endCountdown();
 
     expect(gtag.mock.calls).toEqual([
       ["event", "article_tile_click", { slug: "alder-fixture", action: "drill" }],
@@ -288,6 +294,7 @@ describe("the tile's actions", () => {
     const original = screen.getByRole("button", { name: "This article's drill 20 pieces, 3 seconds" });
 
     fireEvent.click(original);
+    endCountdown();
 
     const { gameState, round } = useGameStore.getState();
     expect([original.hasAttribute("data-article-drill-original"), round.phase, gameState.pieceCount, gameState.memorizeTime]).toEqual([true, "study", 20, 3]);

@@ -291,7 +291,8 @@ const WRONG_PIECES: readonly LabPiece[] = (["white", "black"] as const).flatMap(
  */
 function accuracy(correct: number, total: number, extra = 0): number {
   const store = useGameStore.getState();
-  store.startGame(total, 10, "game_form");
+  store.countInGame(total, 10, "game_form");
+  store.endCountdown();
   store.dispatch({ type: "studyEnded", now: performance.now() });
   const original = new Chess(useGameStore.getState().gameState.originalPosition!, { skipValidation: true });
   const occupied = SQUARES.filter((square) => original.get(square));

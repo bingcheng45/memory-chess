@@ -24,14 +24,16 @@ describe("a blindfold round in the store", () => {
   });
 
   it("studies with the blindfold flag and reports the mode on round_start", () => {
-    store().startGame(6, 10, "guide_cta", undefined, true);
+    store().countInGame(6, 10, "guide_cta", undefined, true);
+    store().endCountdown();
 
     expect(configOf()).toEqual({ pieceCount: 6, studyMs: 10_000, source: "guide_cta", blindfold: true });
     expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, round_source: "guide_cta", round_mode: "blindfold" }]]);
   });
 
   it("does not carry the flag into the next board round", () => {
-    store().startGame(6, 10, "guide_cta", undefined, true);
+    store().countInGame(6, 10, "guide_cta", undefined, true);
+    store().endCountdown();
     store().resetGame();
     gtag.mockClear();
 
@@ -43,19 +45,16 @@ describe("a blindfold round in the store", () => {
     expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, round_source: "game_form" }]]);
   });
 
-  it("counts a blindfold round in, and the first-round intro keeps the flag", () => {
-    store().countInGame(4, 8, "try_again", true);
-    expect(configOf()).toMatchObject({ blindfold: true });
-    store().resetGame();
-
-    store().prepareGame(4, 8, "guide_cta", undefined, true);
-    expect(store().round.phase).toBe("ready");
+  it("counts a blindfold round in with the flag", () => {
+    store().countInGame(4, 8, "try_again", undefined, true);
+    expect(store().round.phase).toBe("countdown");
     expect(configOf()).toMatchObject({ blindfold: true });
   });
 
   it("reports the mode on round_complete and records it with the round", async () => {
     useGameStore.setState({ firstRoundDay: null, roundsPlayed: 0 });
-    store().startGame(2, 10, "game_form", undefined, true);
+    store().countInGame(2, 10, "game_form", undefined, true);
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: performance.now() });
     gtag.mockClear();
 
@@ -86,8 +85,9 @@ describe("a blindfold round in the store", () => {
   it("leaves the rating, its certainty, the rated history and the win streak as they were, while the same board round still moves them", async () => {
     const play = async (blindfold: boolean) => {
       useGameStore.setState({ gameState: { ...store().gameState, skillRating: 1300, streak: 2 }, history: [], certainty: { rd: 200, rounds: 4 }, freeSkipDay: localDayOf(new Date()) });
-      if (blindfold) store().startGame(2, 10, "game_form", undefined, true);
-      else store().startGame(2, 10, "game_form");
+      if (blindfold) store().countInGame(2, 10, "game_form", undefined, true);
+      else store().countInGame(2, 10, "game_form");
+      store().endCountdown();
       store().dispatch({ type: "studyEnded", now: performance.now() });
       await store().submitSolution();
       const { gameState, history, certainty, freeSkipDay } = store();

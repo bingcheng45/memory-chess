@@ -132,7 +132,7 @@ function Stepper({ name, value, text, template, onStep }: StepperProps) {
 export default function GameConfig({ onStart }: GameConfigProps) {
   const t = useTranslations('game');
   const {
-    startGame,
+    countInGame,
     gameState
   } = useGameStore();
   const [settings, setSettings] = useState<GameSettings>(readPrefilledSettings);
@@ -174,8 +174,8 @@ export default function GameConfig({ onStart }: GameConfigProps) {
 
   const handleStart = () =>
     blindfold
-      ? (onStart ? onStart(pieceCount, memorizeTime, 'game_form', true) : startGame(pieceCount, memorizeTime, 'game_form', undefined, true))
-      : (onStart ?? startGame)(pieceCount, memorizeTime, 'game_form');
+      ? (onStart ? onStart(pieceCount, memorizeTime, 'game_form', true) : countInGame(pieceCount, memorizeTime, 'game_form', undefined, true))
+      : (onStart ?? countInGame)(pieceCount, memorizeTime, 'game_form');
 
   const toggleBlindfold = (on: boolean) => {
     setBlindfold(on);

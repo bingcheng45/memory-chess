@@ -1181,7 +1181,6 @@
     },
     "round": {
       "start": "開始",
-      "intro": "用 {seconds} 秒記住 {count} 枚棋子，然後憑記憶還原局面。",
       "hide": "隱藏棋盤",
       "restart": "重新開始",
       "leave": "退出本局",

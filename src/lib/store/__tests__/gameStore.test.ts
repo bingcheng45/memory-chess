@@ -38,7 +38,8 @@ describe("starting a round", () => {
   afterEach(() => store().resetGame());
 
   it("studies a validated position with the requested piece count, at the round's own settings", () => {
-    store().startGame(12, 8, "game_form");
+    store().countInGame(12, 8, "game_form");
+    store().endCountdown();
 
     const { gameState, round } = store();
     expect(round.phase).toBe("study");
@@ -49,33 +50,38 @@ describe("starting a round", () => {
   });
 });
 
-describe("a first round's intro", () => {
+describe("starting a round", () => {
   afterEach(() => {
     store().resetGame();
     Reflect.deleteProperty(window, "gtag");
     jest.restoreAllMocks();
   });
 
-  it("sends round_intro_view when the intro shows and round_start when Start is pressed, not again when study begins", () => {
+  it("counts a round from a link in for three seconds with no Start, and sends round_start once as study begins", () => {
     const gtag = jest.fn();
     window.gtag = gtag;
     let clock = 1_000;
     jest.spyOn(performance, "now").mockImplementation(() => clock);
 
-    store().prepareGame(3, 10, "home_quick");
-    const atIntro = [...gtag.mock.calls];
-    store().beginRound();
-    const atStart = [...gtag.mock.calls];
+    store().countInGame(3, 10, "home_quick");
+    const counting = store().round;
+    const atCountIn = gtag.mock.calls.length;
     clock = 4_050;
     store().endCountdown();
 
-    expect(atIntro).toEqual([["event", "round_intro_view", { piece_count: 3, memorize_time: 10, round_source: "home_quick" }]]);
-    expect(atStart).toEqual([
-      ["event", "round_intro_view", { piece_count: 3, memorize_time: 10, round_source: "home_quick" }],
-      ["event", "round_start", { piece_count: 3, memorize_time: 10, round_source: "home_quick" }],
-    ]);
+    expect(counting.phase === "countdown" && counting.endsAt).toBe(4_000);
+    expect(atCountIn).toBe(0);
     expect(store().round.phase).toBe("study");
-    expect(gtag.mock.calls).toHaveLength(2);
+    expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 3, memorize_time: 10, round_source: "home_quick" }]]);
+  });
+
+  it("counts a review board in on its own position", () => {
+    const board = { kind: "review", fen: "4k3/8/8/3q4/8/5N2/8/4K3 w - - 0 1", reviewOf: "first-round", firstDay: "2026-10-06", step: 1 } as const;
+
+    store().countInGame(3, 10, "review", board);
+    store().endCountdown();
+
+    expect(store().gameState.originalPosition).toBe(board.fen);
   });
 
   it("keeps a daily board's round_start at the end of its countdown, with no intro event", () => {
@@ -148,7 +154,8 @@ describe("reporting a round", () => {
     const gtag = jest.fn();
     window.gtag = gtag;
 
-    store().startGame(6, 10, "home_quick");
+    store().countInGame(6, 10, "home_quick");
+    store().endCountdown();
 
     expect(gtag.mock.calls).toEqual([["event", "round_start", { piece_count: 6, memorize_time: 10, round_source: "home_quick" }]]);
   });
@@ -156,7 +163,8 @@ describe("reporting a round", () => {
   it("sends round_complete once when the round is scored, with what the player got right, and no other event", () => {
     const gtag = jest.fn();
     useGameStore.setState({ firstRoundDay: null, roundsPlayed: 0, certainty: { rd: 350, rounds: 0 }, history: [] });
-    store().startGame(6, 10, "plan");
+    store().countInGame(6, 10, "plan");
+    store().endCountdown();
     const [square, piece] = Object.entries(target())[0] as [SquareName, LabPiece];
     store().dispatch({ type: "studyEnded", now: performance.now() });
     place(square, piece.type, piece.color);
@@ -188,7 +196,8 @@ describe("reporting a round", () => {
 
 describe("the player's rebuild", () => {
   beforeEach(() => {
-    store().startGame(6, 10, "game_form");
+    store().countInGame(6, 10, "game_form");
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: performance.now() });
   });
 
@@ -239,11 +248,13 @@ describe("ending study early", () => {
   it("keeps the time the player actually looked, and never more than the round gave", () => {
     let clock = 0;
     jest.spyOn(performance, "now").mockImplementation(() => clock);
-    store().startGame(6, 10, "game_form");
+    store().countInGame(6, 10, "game_form");
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: 3250 });
     store().submitSolution(5250);
     const early = store().gameState;
-    store().startGame(6, 10, "try_again");
+    store().countInGame(6, 10, "try_again");
+    store().endCountdown();
     clock = 100;
     store().dispatch({ type: "studyEnded", now: 60000 });
     store().submitSolution(64000);
@@ -263,7 +274,8 @@ describe("scoring and the skill rating", () => {
   it("scores a new player's perfect rebuild as a provisional round, raises the rating and the streak, and leaves the round on its score", () => {
     jest.spyOn(performance, "now").mockReturnValue(0);
     useGameStore.setState(({ gameState }) => ({ history: [], certainty: { rd: 350, rounds: 0 }, gameState: { ...gameState, skillRating: 1000, streak: 0 } }));
-    store().startGame(6, 10, "game_form");
+    store().countInGame(6, 10, "game_form");
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: 10000 });
     for (const [square, piece] of Object.entries(target()) as [SquareName, LabPiece][]) place(square, piece.type, piece.color, 11000);
     store().submitSolution(14000);
@@ -286,7 +298,8 @@ describe("scoring and the skill rating", () => {
 
   it("restarts a placement with a new position at the same settings after a count-in, rating untouched", () => {
     useGameStore.setState(({ gameState }) => ({ gameState: { ...gameState, skillRating: 1234, streak: 3 } }));
-    store().startGame(6, 10, "game_form");
+    store().countInGame(6, 10, "game_form");
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: performance.now() });
     store().countInGame(6, 10, "try_again");
     const counting = store().round.phase;
@@ -317,20 +330,23 @@ describe("remembering the last settings played", () => {
   });
 
   it("records the settings a round was started with", () => {
-    useGameStore.getState().startGame(12, 8, "game_form");
+    useGameStore.getState().countInGame(12, 8, "game_form");
+    useGameStore.getState().endCountdown();
 
     expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 12, memorizeTime: 8 });
   });
 
   it("keeps the last settings through a new-game reset", () => {
-    useGameStore.getState().startGame(12, 8, "game_form");
+    useGameStore.getState().countInGame(12, 8, "game_form");
+    useGameStore.getState().endCountdown();
     useGameStore.getState().resetGame();
 
     expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 12, memorizeTime: 8 });
   });
 
   it("keeps custom settings of 3 pieces at 18 seconds through a new-game reset", () => {
-    useGameStore.getState().startGame(3, 18, "game_form");
+    useGameStore.getState().countInGame(3, 18, "game_form");
+    useGameStore.getState().endCountdown();
     expect(useGameStore.getState().lastSettings).toEqual({ pieceCount: 3, memorizeTime: 18 });
 
     useGameStore.getState().resetGame();
@@ -339,7 +355,8 @@ describe("remembering the last settings played", () => {
   });
 
   it("persists the last settings", () => {
-    useGameStore.getState().startGame(7, 9, "game_form");
+    useGameStore.getState().countInGame(7, 9, "game_form");
+    useGameStore.getState().endCountdown();
 
     const { partialize } = useGameStore.persist.getOptions();
     expect(partialize!(useGameStore.getState())).toMatchObject({
@@ -431,7 +448,8 @@ const storedState = () => JSON.parse(localStorage.getItem(STORAGE_KEY)!).state;
 
 /** Plays a round from a clock at 0: studies for `studyMs`, rebuilds `correct` of the pieces and submits `solveMs` later. */
 function playRound({ pieceCount, solveMs, correct = pieceCount, studyMs = 10000 }: { pieceCount: number; solveMs: number; correct?: number; studyMs?: number }) {
-  store().startGame(pieceCount, 10, "game_form");
+  store().countInGame(pieceCount, 10, "game_form");
+  store().endCountdown();
   store().dispatch({ type: "studyEnded", now: studyMs });
   for (const [square, piece] of (Object.entries(target()) as [SquareName, LabPiece][]).slice(0, correct)) {
     place(square, piece.type, piece.color, studyMs);
@@ -841,7 +859,8 @@ describe("the day's free skip", () => {
   it("leaves an empty review unrated without spending the free skip", () => {
     jest.spyOn(Date, "now").mockReturnValue(TODAY);
     const fen = "8/8/8/8/8/8/8/K6k w - - 0 1";
-    store().startGame(2, 10, "review", { kind: "review", fen, reviewOf: "first", firstDay: "2026-10-01", step: 0 });
+    store().countInGame(2, 10, "review", { kind: "review", fen, reviewOf: "first", firstDay: "2026-10-01", step: 0 });
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: 10000 });
     store().submitSolution(12000);
     const review = store().gameState;
@@ -968,10 +987,12 @@ describe("marking a return visit on round_complete", () => {
 
   it("marks today's daily board as daily and a review or a random board as free", () => {
     jest.spyOn(Date, "now").mockReturnValue(TODAY);
-    store().startGame(3, 10, "daily", { kind: "daily", day: "2026-10-14", fen: "4k3/8/8/8/8/8/8/R3K3 w - - 0 1" });
+    store().countInGame(3, 10, "daily", { kind: "daily", day: "2026-10-14", fen: "4k3/8/8/8/8/8/8/R3K3 w - - 0 1" });
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: 10000 });
     store().submitSolution(12000);
-    store().startGame(2, 10, "review", { kind: "review", fen: "8/8/8/8/8/8/8/K6k w - - 0 1", reviewOf: "first", firstDay: "2026-10-01", step: 0 });
+    store().countInGame(2, 10, "review", { kind: "review", fen: "8/8/8/8/8/8/8/K6k w - - 0 1", reviewOf: "first", firstDay: "2026-10-01", step: 0 });
+    store().endCountdown();
     store().dispatch({ type: "studyEnded", now: 10000 });
     store().submitSolution(12000);
     playRound({ pieceCount: 2, solveMs: 4000 });

@@ -50,31 +50,29 @@ describe("GamePage round a link starts", () => {
       () =>
         recordLabRound({ id: "first", source: "game", pieceCount: 3, memorizeSeconds: 10, targetFen: TARGET, placedFen: TARGET, memorizeMs: 10_000, solveMs: 9_000 }),
     ],
-  ])("holds %s behind the rule and Start, then counts in before study", async (_, arrange) => {
+  ])("counts %s in for three seconds with no Start, as the form's Start round does", async (_, arrange) => {
     await arrange();
 
     render(<GamePage />);
-    const start = await screen.findByRole("button", { name: "Start" });
-    const waiting = { rule: screen.getByText("Study 3 pieces for 10 s, then rebuild the position from memory.").tagName, ...view() };
-    await advance(15_000);
-    const afterWaiting = view();
-
-    fireEvent.click(start);
+    await act(async () => {});
     const counting = view();
-    await advance(3_000);
+    const startShown = screen.queryByRole("button", { name: "Start" });
+    await advance(2_000);
+    const lastSecond = view();
+    await advance(1_000);
 
-    expect(waiting).toEqual({ rule: "P", phase: "ready", pieces: 0, count: undefined });
-    expect(afterWaiting).toEqual({ phase: "ready", pieces: 0, count: undefined });
     expect(counting).toEqual({ phase: "countdown", pieces: 0, count: "3" });
+    expect(startShown).toBeNull();
+    expect(lastSecond).toEqual({ phase: "countdown", pieces: 0, count: "1" });
     expect(view()).toEqual({ phase: "study", pieces: 3, count: undefined });
     expect(screen.getByRole("button", { name: "Hide board" })).toBeEnabled();
   });
 
-  it("holds a blindfold link round behind Start too, then studies it as notation with no pieces on the board", async () => {
+  it("counts a blindfold link round in too, then studies it as notation with no pieces on the board", async () => {
     window.history.pushState({}, "", "/game?pieceCount=3&memorizeTime=10&source=guide_cta&mode=blindfold");
 
     render(<GamePage />);
-    fireEvent.click(await screen.findByRole("button", { name: "Start" }));
+    await act(async () => {});
     const counting = view();
     await advance(3_000);
 
@@ -84,9 +82,9 @@ describe("GamePage round a link starts", () => {
     expect(useGameStore.getState().round).toMatchObject({ phase: "study", config: { blindfold: true, pieceCount: 3 } });
   });
 
-  it("opens the configuration form when the player leaves the link's round", async () => {
+  it("opens the configuration form when the player leaves the link's round during the countdown", async () => {
     render(<GamePage />);
-    await screen.findByRole("button", { name: "Start" });
+    await act(async () => {});
 
     fireEvent.click(screen.getByRole("button", { name: "Leave the round" }));
 

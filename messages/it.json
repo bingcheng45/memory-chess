@@ -15,7 +15,9 @@
       "menu": "Menu",
       "site": "Sito",
       "streakChip": "Giorno {count}",
-      "streakChipLabel": "Giorno {count} della tua serie{forgiven, plural, =0 {} one {, # giorno saltato perdonato} many {, # giorni saltati perdonati} other {, # giorni saltati perdonati}}. Apri la dashboard."
+      "streakChipLabel": "Giorno {count} della tua serie{forgiven, plural, =0 {} one {, # giorno saltato perdonato} many {, # giorni saltati perdonati} other {, # giorni saltati perdonati}}. Apri la dashboard.",
+      "streakEndsTodayChip": "Giorno {count}, finisce oggi",
+      "streakEndsTodayChipLabel": "Giorno {count} della tua serie. Finisce oggi se non giochi un round. Apri la scacchiera del giorno."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tutti i diritti riservati.",

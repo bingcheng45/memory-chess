@@ -5,6 +5,8 @@
  * Days count back from today, so streaks and staleness read the same on any day.
  * The players in AWAY also get a <name>Away copy built as if their last day were
  * one day past the welcome back threshold, so the greeting is measured and driven.
+ * threeDaysEndsToday is threeDays built as if its last day were two days ago: yesterday is forgiven, so the header
+ * chip warns the streak ends today.
  * A persona with a chosen plan or goal, or kept leaderboard entries, carries them under
  * `local`, the localStorage entries the drivers write before loading the page. A daily board persona carries
  * `clock`, noon UTC on its day, which the drivers set the browser's clock to, so its
@@ -42,7 +44,11 @@ const outDirs = outs.length > 0 ? outs : [".lab-personas"];
 
 for (const dir of outDirs) mkdirSync(resolve(dir), { recursive: true });
 const awayToday = shiftDay(today, -(LAB_THRESHOLDS.awayDays + 1));
-const builds = [...PERSONA_NAMES.map((name) => [name, name, today]), ...AWAY.map((name) => [`${name}Away`, name, awayToday])];
+const builds = [
+  ...PERSONA_NAMES.map((name) => [name, name, today]),
+  ...AWAY.map((name) => [`${name}Away`, name, awayToday]),
+  ["threeDaysEndsToday", "threeDays", shiftDay(today, -2)],
+];
 for (const [fileName, name, day] of builds) {
   const file = await exportPersona(name, memoryLabStore(new IDBFactory()), day, Date.now());
   const { plan, target } = personaChoices(name, day);

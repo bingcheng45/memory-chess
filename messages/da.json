@@ -15,7 +15,9 @@
       "menu": "Menu",
       "site": "Websted",
       "streakChip": "Dag {count}",
-      "streakChipLabel": "Dag {count} i din stime{forgiven, plural, =0 {} one {, # misset dag tilgivet} other {, # missede dage tilgivet}}. Åbn dit dashboard."
+      "streakChipLabel": "Dag {count} i din stime{forgiven, plural, =0 {} one {, # misset dag tilgivet} other {, # missede dage tilgivet}}. Åbn dit dashboard.",
+      "streakEndsTodayChip": "Dag {count}, slutter i dag",
+      "streakEndsTodayChipLabel": "Dag {count} i din stime. Den slutter i dag, hvis du ikke spiller en runde. Åbn dagens bræt."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Alle rettigheder forbeholdes.",

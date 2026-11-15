@@ -15,7 +15,9 @@
       "menu": "Meniu",
       "site": "Site",
       "streakChip": "Ziua {count}",
-      "streakChipLabel": "Ziua {count} din seria ta{forgiven, plural, =0 {} one {, # zi ratată iertată} few {, # zile ratate iertate} other {, # de zile ratate iertate}}. Deschide panoul."
+      "streakChipLabel": "Ziua {count} din seria ta{forgiven, plural, =0 {} one {, # zi ratată iertată} few {, # zile ratate iertate} other {, # de zile ratate iertate}}. Deschide panoul.",
+      "streakEndsTodayChip": "Ziua {count}, se termină azi",
+      "streakEndsTodayChipLabel": "Ziua {count} din seria ta. Se termină azi dacă nu joci o rundă. Deschide tabla zilnică."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Toate drepturile rezervate.",

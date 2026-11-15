@@ -15,7 +15,9 @@
       "menu": "Menü",
       "site": "Webhely",
       "streakChip": "{count}. nap",
-      "streakChipLabel": "Sorozatod {count}. napja{forgiven, plural, =0 {} one {, # kihagyott nap megbocsátva} other {, # kihagyott nap megbocsátva}}. Irányítópult megnyitása."
+      "streakChipLabel": "Sorozatod {count}. napja{forgiven, plural, =0 {} one {, # kihagyott nap megbocsátva} other {, # kihagyott nap megbocsátva}}. Irányítópult megnyitása.",
+      "streakEndsTodayChip": "{count}. nap, ma véget ér",
+      "streakEndsTodayChipLabel": "Sorozatod {count}. napja. Ma véget ér, ha nem játszol egy kört. Napi tábla megnyitása."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Minden jog fenntartva.",

@@ -15,7 +15,9 @@
       "menu": "Meny",
       "site": "Nettsted",
       "streakChip": "Dag {count}",
-      "streakChipLabel": "Dag {count} i rekken din{forgiven, plural, =0 {} one {, # tapt dag tilgitt} other {, # tapte dager tilgitt}}. Åpne oversikten din."
+      "streakChipLabel": "Dag {count} i rekken din{forgiven, plural, =0 {} one {, # tapt dag tilgitt} other {, # tapte dager tilgitt}}. Åpne oversikten din.",
+      "streakEndsTodayChip": "Dag {count}, slutter i dag",
+      "streakEndsTodayChipLabel": "Dag {count} i rekken din. Den slutter i dag hvis du ikke spiller en runde. Åpne dagens brett."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Med enerett.",

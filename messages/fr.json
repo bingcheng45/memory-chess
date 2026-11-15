@@ -15,7 +15,9 @@
       "menu": "Menu",
       "site": "Site",
       "streakChip": "Jour {count}",
-      "streakChipLabel": "Jour {count} de ta série{forgiven, plural, =0 {} one {, # jour manqué pardonné} many {, # jours manqués pardonnés} other {, # jours manqués pardonnés}}. Ouvrir ton tableau de bord."
+      "streakChipLabel": "Jour {count} de ta série{forgiven, plural, =0 {} one {, # jour manqué pardonné} many {, # jours manqués pardonnés} other {, # jours manqués pardonnés}}. Ouvrir ton tableau de bord.",
+      "streakEndsTodayChip": "Jour {count}, finit aujourd’hui",
+      "streakEndsTodayChipLabel": "Jour {count} de ta série. Elle s’arrête aujourd’hui si tu ne joues pas une partie. Ouvrir le plateau du jour."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Tous droits réservés.",

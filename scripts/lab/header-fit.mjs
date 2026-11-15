@@ -5,11 +5,11 @@
  * Check (the default): each page loads once per locale and is resized through WIDTHS. At each width the header row
  * must not scroll sideways, no header element may end past the viewport, Play must show (except on /game, and below
  * 360px where it moves into the menu), and the streak chip must show for a player with a streak. Runs for a new
- * visitor and for threeDays, whose chip shows. Prints the failing cells and writes every measurement to table.json.
+ * visitor, for threeDays, whose chip shows, and for threeDaysEndsToday, whose chip warns the streak ends today. Prints the failing cells and writes every measurement to table.json.
  *
- * --write: measures each header part's natural width per locale and page, with the chip showing, and writes
- * FIT_CSS: per locale, the viewport widths below which Play drops its long label, About leaves the row, and the nav
- * and language picker fold into the menu. Each width is the narrowest at which the part fits on every page, so a link
+ * --write: measures each header part's natural width per locale and page, with the chip warning the streak ends today,
+ * and writes FIT_CSS: per locale, the viewport widths below which the chip drops the warning's words for its day count
+ * and a dot, Play drops its long label, About leaves the row, and the nav and language picker fold into the menu. Each width is the narrowest at which the part fits on every page, so a link
  * is in the same place on every page. Rerun it after changing nav, Play or section-menu copy, then run the check.
  *
  *   npm run lab:personas && npm run lab:header-fit -- --base http://localhost:4531 --out <dir> [--only <locale>] [--write]
@@ -25,10 +25,11 @@ const RESULT_FILE = "header.json";
 const FIT_CSS = "src/components/lab-paper/lab-header-fit.css";
 const { LOCALES } = await import(pathToFileURL(join(process.cwd(), "src/i18n/routing.ts")).href);
 const PATHS = ["/", "/game", "/dashboard", "/changelog", "/terms"];
-const WIDTHS = [1440, 1280, 1180, 1081, 1080, 1024, 900, 861, 860, 768, 600, 481, 480, 390, 360, 320];
+const WIDTHS = [1440, 1280, 1180, 1081, 1080, 1024, 900, 861, 860, 768, 600, 481, 480, 390, 375, 360, 320];
 const PERSONAS = [
   { name: "newVisitor", streak: false },
   { name: "threeDays", streak: true },
+  { name: "threeDaysEndsToday", streak: true },
 ];
 const PLAY_MIN_WIDTH = 360;
 const CONCURRENCY = 4;
@@ -83,7 +84,16 @@ const PARTS = `(() => {
     play.querySelector(".lab-play-short").style.display = long ? "none" : "inline";
     return width(play);
   };
+  const chip = row.querySelector(".lab-streak-chip");
+  const chipForm = (long) => {
+    chip.querySelector(".lab-streak-long").style.display = long ? "inline" : "none";
+    chip.querySelector(".lab-streak-short").style.display = long ? "none" : "inline";
+    return width(chip);
+  };
+  const chipLong = chipForm(true);
+  const chipShort = chipForm(false);
   const parts = {
+    chipExtra: chipLong - chipShort,
     wordmark: width(row.querySelector(".lab-wordmark")),
     links: [...row.querySelectorAll(".lab-nav-link")].map((link) => ({ width: width(link), extra: link.classList.contains("lab-nav-extra") })),
     sections: width(row.querySelector(".lab-nav-item")),
@@ -163,11 +173,12 @@ function viewportFor(need) {
   return null;
 }
 
-/** Per locale: Play's long label, About and the nav each show from these viewport widths; null never shows it. */
+/** Per locale: the chip's warning words, Play's long label, About and the nav each show from these viewport widths; null never shows it. */
 function foldsOf(partsByPath) {
   const pages = Object.values(partsByPath);
   const widest = (needs) => (needs.includes(null) ? null : Math.max(...needs));
   return {
+    chip: widest(pages.map((part) => viewportFor(rowNeed(part, { about: true, long: true }) + Math.ceil(part.chipExtra)))),
     long: widest(pages.filter((part) => part.playLong > part.playShort).map((part) => viewportFor(rowNeed(part, { about: true, long: true })))),
     about: widest(pages.map((part) => viewportFor(rowNeed(part, { about: true, long: false })))),
     nav: widest(pages.map((part) => viewportFor(rowNeed(part, { about: false, long: false })))),
@@ -179,6 +190,7 @@ const labels = (long) => [`.lab-play-long { display: ${long ? "inline" : "none"}
 
 /** In cascade order, so the folded nav brings the long label back. Phones get their folded layout from lab-paper.css. */
 const FOLDS = [
+  { from: "chip", media: below, rules: [".lab-streak-long { display: none; }", ".lab-streak-short { display: inline; }"] },
   { from: "long", media: below, rules: labels(false) },
   { from: "about", media: below, rules: [".lab-nav-extra { display: none; }", ".lab-dropdown { left: auto; right: 0; }"] },
   {
@@ -204,11 +216,14 @@ function fitCss(foldsByLocale) {
     const rules = fold.rules.map((rule) => `  ${rule.split(", ").map((selector) => `${scope} ${selector}`).join(", ")}`);
     return `@media ${media} {\n${rules.join("\n")}\n}`;
   });
-  const table = Object.entries(foldsByLocale).map(([locale, { long, about, nav }]) => ` * ${locale.padEnd(6)} long ${String(long ?? "never").padEnd(6)} about ${String(about ?? "never").padEnd(6)} nav ${nav}`);
+  const table = Object.entries(foldsByLocale).map(
+    ([locale, { chip, long, about, nav }]) => ` * ${locale.padEnd(6)} chip ${String(chip ?? "never").padEnd(6)} long ${String(long ?? "never").padEnd(6)} about ${String(about ?? "never").padEnd(6)} nav ${nav}`,
+  );
   return [
     "/* Generated by `npm run lab:header-fit -- --write` (scripts/lab/header-fit.mjs); do not edit by hand.",
-    " * The viewport width from which each locale's header shows Play's long label, the About link, and the nav with the",
-    " * language picker. Below the nav width they fold into the menu, where the long label returns above phone widths.",
+    " * The viewport width from which each locale's header shows the streak chip's warning words, Play's long label, the",
+    " * About link, and the nav with the language picker. Below the nav width they fold into the menu, where the long",
+    " * label returns above phone widths.",
     ...table,
     " */",
     ...blocks,
@@ -228,7 +243,7 @@ async function runAll(args, runs) {
 }
 
 async function write(args, locales) {
-  const outcomes = await runAll(args, locales.map((locale) => ({ persona: "threeDays", locale, write: true })));
+  const outcomes = await runAll(args, locales.map((locale) => ({ persona: "threeDaysEndsToday", locale, write: true })));
   const failed = outcomes.filter(({ measured }) => !measured);
   if (failed.length > 0) throw new Error(failed.map(({ locale, run }) => `${locale}: ${run.log}`).join("\n"));
   const folds = Object.fromEntries(outcomes.map(({ locale, measured }) => [locale, foldsOf(measured)]));

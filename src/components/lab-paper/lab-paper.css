@@ -97,9 +97,11 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
 .lab-paper .lab-dropdown a span { font-size: 13px; font-weight: 400; color: var(--lp-muted); }
 .lab-paper .lab-panel-label { padding: 8px 12px 4px; font: 600 13px/1.3 var(--lp-ui); color: var(--lp-muted); }
 .lab-paper .lab-header-tools { display: flex; align-items: center; gap: 8px; margin-left: auto; }
-.lab-paper .lab-streak-chip { display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 999px; font: 600 13px/1 var(--lp-ui); background: var(--lp-accent-soft); color: var(--lp-accent); text-decoration: none; white-space: nowrap; }
+.lab-paper .lab-streak-chip { position: relative; display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: 999px; font: 600 13px/1 var(--lp-ui); background: var(--lp-accent-soft); color: var(--lp-accent); text-decoration: none; white-space: nowrap; }
 .lab-paper .lab-streak-chip:hover { text-decoration: underline; }
 .lab-paper .lab-play-short { display: none; }
+.lab-paper .lab-streak-short { display: none; }
+.lab-paper .lab-streak-chip .lab-daily-dot { top: -2px; right: -2px; box-shadow: 0 0 0 2px var(--lp-paper); }
 .lab-paper .lab-menu-btn { display: none; }
 .lab-paper .lab-menu { padding: 16px 0 24px; border-top: 1px solid var(--lp-line); max-height: calc(100vh - var(--lp-header-h)); overflow-y: auto; }
 .lab-paper .lab-menu-cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px; }
@@ -116,6 +118,8 @@ html:has(.lab-paper) body { background-color: var(--lp-paper); }
   .lab-paper .lab-menu-btn { display: inline-flex; }
   .lab-paper .lab-play-long { display: none; }
   .lab-paper .lab-play-short { display: inline; }
+  .lab-paper .lab-streak-long { display: none; }
+  .lab-paper .lab-streak-short { display: inline; }
   /* Room for the streak chip beside Play: the menu folds to its icon and the row's spacing tightens. */
   .lab-paper .lab-header-row { gap: 8px; }
   .lab-paper .lab-header-tools { gap: 6px; }

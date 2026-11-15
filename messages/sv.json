@@ -15,7 +15,9 @@
       "menu": "Meny",
       "site": "Webbplats",
       "streakChip": "Dag {count}",
-      "streakChipLabel": "Dag {count} i din svit{forgiven, plural, =0 {} one {, # missad dag förlåten} other {, # missade dagar förlåtna}}. Öppna din översikt."
+      "streakChipLabel": "Dag {count} i din svit{forgiven, plural, =0 {} one {, # missad dag förlåten} other {, # missade dagar förlåtna}}. Öppna din översikt.",
+      "streakEndsTodayChip": "Dag {count}, slutar i dag",
+      "streakEndsTodayChipLabel": "Dag {count} i din svit. Den slutar i dag om du inte spelar en runda. Öppna dagens bräde."
     },
     "footer": {
       "copyright": "© {year} Memory Chess. Med ensamrätt.",

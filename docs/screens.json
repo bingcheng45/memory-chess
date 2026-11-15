@@ -1,4 +1,6 @@
 [
   { "name": "Home page header, streak chip", "path": "/" },
-  { "name": "Dashboard header, streak chip", "path": "/dashboard" }
+  { "name": "Dashboard header, streak chip", "path": "/dashboard" },
+  { "name": "Shared daily card from a past day, Play today's board and the closed line", "path": "/share/result/1_d_4_100_84_383_75_3_4_1000_0_0_20261012" },
+  { "name": "Shared round card, Play the same setting unchanged", "path": "/share/result/1_g_4_100_84_383_1214_d14_3_4k3-8-8-3q4-8-8-4P3-4K3_4k3-8-8-8-8-8-8-R3K3_e131e819a174" }
 ]

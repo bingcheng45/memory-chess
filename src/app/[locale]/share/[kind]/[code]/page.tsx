@@ -5,6 +5,7 @@ import { setRequestLocale } from "next-intl/server";
 import { LabReadingPage } from "@/components/lab-paper/LabReadingPage";
 import { RoundReplay } from "@/components/share/RoundReplay";
 import { SharedCard } from "@/components/share/SharedCard";
+import { SharedDayClosed } from "@/components/share/SharedDayClosed";
 import { Link } from "@/i18n/navigation";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { sharePageMetadata, sharePageOf, type SharePage, type SharedRound } from "@/lib/share/sharePage";
@@ -55,18 +56,23 @@ function Figures({ round }: { round: SharedRound }) {
   );
 }
 
-function Next({ round }: { round: SharedRound | null }) {
+/** A shared round leads to a round at its setting, a shared daily board to today's board, and any other card to the game. */
+function nextOf({ round, day }: SharePage) {
+  if (round) return { text: "Play a round at the same setting and see how your memory compares. Free, no sign-up.", href: round.play, label: "Play the same setting" };
+  if (day) return { text: "Everyone plays the same board each day. Play today's and see how your memory compares. Free, no sign-up.", href: "/daily", label: "Play today's board" };
+  return { text: "Study a chess position for a few seconds, rebuild it from memory, and get your score. Free, no sign-up.", href: "/game", label: "Play Memory Chess" };
+}
+
+function Next({ page }: { page: SharePage }) {
+  const next = nextOf(page);
   return (
     <section className="lab-shared-next" aria-labelledby="lab-shared-next-title">
       <h2 id="lab-shared-next-title">Your turn.</h2>
-      <p>
-        {round
-          ? "Play a round at the same setting and see how your memory compares. Free, no sign-up."
-          : "Study a chess position for a few seconds, rebuild it from memory, and get your score. Free, no sign-up."}
-      </p>
+      <p>{next.text}</p>
+      {page.day && <SharedDayClosed day={page.day} />}
       <div className="lab-shared-actions">
-        <Link className="lab-btn lab-btn-primary" href={round ? round.play : "/game"}>
-          {round ? "Play the same setting" : "Play Memory Chess"}
+        <Link className="lab-btn lab-btn-primary" href={next.href}>
+          {next.label}
         </Link>
         <Link className="lab-btn lab-btn-secondary" href="/">
           How the game works
@@ -96,13 +102,13 @@ export default async function SharePage({ params }: Props) {
             </div>
             <div className="lab-shared-aside">
               <Card page={page} />
-              <Next round={round} />
+              <Next page={page} />
             </div>
           </>
         ) : (
           <>
             <Card page={page} />
-            <Next round={null} />
+            <Next page={page} />
           </>
         )}
       </div>

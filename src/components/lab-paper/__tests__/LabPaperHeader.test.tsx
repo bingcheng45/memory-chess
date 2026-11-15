@@ -224,7 +224,8 @@ describe("streak chip in the header", () => {
     renderWithIntl(<LabPaperHeader />);
     const chip = screen.getByRole("link", { name: "Day 5 of your streak. It ends today unless you play a round. Open the daily board." });
 
-    expect(chip).toHaveTextContent(/^Day 5, ends today$/);
+    expect(within(chip).getByText("Day 5, ends today")).toHaveClass("lab-streak-long");
+    expect(within(chip).getByText("Day 5")).toHaveClass("lab-streak-short");
     expect(chip).toHaveAttribute("href", "/daily");
   });
 
@@ -233,7 +234,7 @@ describe("streak chip in the header", () => {
     renderWithIntl(<LabPaperHeader />);
     const chip = screen.getByRole("link", { name: /^Day/ });
 
-    expect(chip).toHaveTextContent(/^Day 2, ends today$/);
+    expect(within(chip).getByText("Day 2, ends today")).toHaveClass("lab-streak-long");
     expect(chip).toHaveAttribute("href", "/daily");
   });
 

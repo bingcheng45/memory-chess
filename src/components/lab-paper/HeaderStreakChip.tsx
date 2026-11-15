@@ -11,7 +11,8 @@ import { streakOf } from "@/lib/lab/streak";
 /**
  * The current run of days played, on every Lab Paper page once it reaches the streak threshold, linking to the dashboard.
  * When skipping today would shorten the run, because no missed day is left to forgive, the chip warns it ends today and
- * links to the daily board.
+ * links to the daily board. Where the header has no room for the warning's words, lab-header-fit.css swaps them for the
+ * day count and the daily board's dot, which takes no room.
  */
 export function HeaderStreakChip() {
   const t = useTranslations("common.nav");
@@ -25,7 +26,11 @@ export function HeaderStreakChip() {
     const label = t("streakEndsTodayChipLabel", { count });
     return (
       <Link className="lab-streak-chip" href="/daily" prefetch={false} title={label} aria-label={label}>
-        {t("streakEndsTodayChip", { count })}
+        <span className="lab-streak-long">{t("streakEndsTodayChip", { count })}</span>
+        <span className="lab-streak-short">
+          {t("streakChip", { count })}
+          <span className="lab-daily-dot" aria-hidden="true" />
+        </span>
       </Link>
     );
   }

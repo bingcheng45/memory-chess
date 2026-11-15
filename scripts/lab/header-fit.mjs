@@ -5,7 +5,7 @@
  * Check (the default): each page loads once per locale and is resized through WIDTHS. At each width the header row
  * must not scroll sideways, no header element may end past the viewport, Play must show (except on /game, and below
  * 360px where it moves into the menu), and the streak chip must show for a player with a streak. Runs for a new
- * visitor and for threeDays, whose chip shows. Prints the failing cells and writes every measurement to table.json.
+ * visitor, for threeDays, whose chip shows, and for threeDaysEndsToday, whose chip warns the streak ends today. Prints the failing cells and writes every measurement to table.json.
  *
  * --write: measures each header part's natural width per locale and page, with the chip showing, and writes
  * FIT_CSS: per locale, the viewport widths below which Play drops its long label, About leaves the row, and the nav
@@ -25,10 +25,11 @@ const RESULT_FILE = "header.json";
 const FIT_CSS = "src/components/lab-paper/lab-header-fit.css";
 const { LOCALES } = await import(pathToFileURL(join(process.cwd(), "src/i18n/routing.ts")).href);
 const PATHS = ["/", "/game", "/dashboard", "/changelog", "/terms"];
-const WIDTHS = [1440, 1280, 1180, 1081, 1080, 1024, 900, 861, 860, 768, 600, 481, 480, 390, 360, 320];
+const WIDTHS = [1440, 1280, 1180, 1081, 1080, 1024, 900, 861, 860, 768, 600, 481, 480, 390, 375, 360, 320];
 const PERSONAS = [
   { name: "newVisitor", streak: false },
   { name: "threeDays", streak: true },
+  { name: "threeDaysEndsToday", streak: true },
 ];
 const PLAY_MIN_WIDTH = 360;
 const CONCURRENCY = 4;

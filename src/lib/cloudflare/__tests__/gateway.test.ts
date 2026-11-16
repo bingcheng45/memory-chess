@@ -2,6 +2,7 @@
  * @jest-environment node
  */
 import { handleGatewayRequest } from "../gateway";
+import type { PageCache, PageStore } from "../gatewayPages";
 
 jest.mock("@/lib/articles/translatedLocales");
 
@@ -75,38 +76,59 @@ describe("Cloudflare gateway", () => {
 });
 
 const STORE_MANIFEST = {
+  version: "v1",
   headers: { "content-type": "text/html; charset=utf-8", "cache-control": "s-maxage=31536000, stale-while-revalidate=2592000", "x-frame-options": "DENY" },
   pages: { "/en/about": { "x-nextjs-prerender": "1" }, "/de/game": { "x-nextjs-prerender": "1" }, "/en/game": { "x-nextjs-prerender": "1" } },
 };
+const STORED_FILES = { "/en/about": "<p>about</p>", "/de/game": "<p>Spiel</p>", "/en/game": "<p>game</p>" };
 
-function pageStore(calls: string[], files: Record<string, string> = { "/en/about": "<p>about</p>", "/de/game": "<p>Spiel</p>", "/en/game": "<p>game</p>" }) {
+function memoryCache(entries = new Map<string, string>()): PageCache & { entries: Map<string, string> } {
   return {
-    fetch: async (request: Request) => {
-      const { pathname } = new URL(request.url);
-      calls.push(pathname);
-      if (pathname === "/_gateway/pages.json") return Response.json(STORE_MANIFEST);
-      const page = files[pathname.replace(/^\/_gateway\/pages/, "").replace(/\.page$/, "")];
-      return page === undefined ? new Response("missing", { status: 404 }) : new Response(page);
+    entries,
+    match: async (request) => (entries.has(request.url) ? new Response(entries.get(request.url)) : undefined),
+    put: async (request, response) => {
+      entries.set(request.url, await response.text());
     },
   };
 }
 
-async function visitWithStore(path: string, headers: Record<string, string>, files?: Record<string, string>, method = "GET") {
+function pageStore(calls: string[], files: Record<string, string> = STORED_FILES, cache?: PageCache, version = "v1"): PageStore {
+  const store = {
+    fetch: async (request: Request) => {
+      const { pathname } = new URL(request.url);
+      calls.push(pathname);
+      const page = files[pathname.replace(/^\/_gateway\/pages/, "").replace(/\.page$/, "")];
+      return page === undefined ? new Response("missing", { status: 404 }) : new Response(page);
+    },
+  };
+  return { manifest: { ...STORE_MANIFEST, version }, files: store, cache };
+}
+
+async function visitWithStore(
+  path: string,
+  headers: Record<string, string>,
+  files?: Record<string, string>,
+  method = "GET",
+  options: { cache?: PageCache; version?: string } = {},
+) {
   const appCalls: { via: string; request: Request }[] = [];
   const storeCalls: string[] = [];
+  const pending: Promise<unknown>[] = [];
   const response = await handleGatewayRequest(
     new Request(`https://cf-test.thememorychess.com${path}`, { method, headers: { "user-agent": BROWSER, ...headers } }),
-    { app: recordingApp("app", appCalls), englishApp: recordingApp("englishApp", appCalls), pages: pageStore(storeCalls, files) },
-    { waitUntil: () => undefined },
+    { app: recordingApp("app", appCalls), englishApp: recordingApp("englishApp", appCalls), pages: pageStore(storeCalls, files, options.cache, options.version) },
+    { waitUntil: (promise) => void pending.push(promise) },
   );
-  return { response, appVia: appCalls.map((call) => call.via), storeCalls };
+  const text = await response.clone().text();
+  await Promise.all(pending);
+  return { response, text, appVia: appCalls.map((call) => call.via), storeCalls };
 }
 
 describe("Cloudflare gateway stored pages", () => {
   test("answers an English visitor's /about with the stored HTML and headers, without the app", async () => {
-    const { response, appVia } = await visitWithStore("/about", { "accept-language": "en-US,en;q=0.9" });
+    const { response, text, appVia } = await visitWithStore("/about", { "accept-language": "en-US,en;q=0.9" });
     expect(appVia).toEqual([]);
-    expect(await response.text()).toBe("<p>about</p>");
+    expect(text).toBe("<p>about</p>");
     expect(response.headers.get("content-type")).toBe("text/html; charset=utf-8");
     expect(response.headers.get("x-frame-options")).toBe("DENY");
     expect(response.headers.get("x-nextjs-prerender")).toBe("1");
@@ -114,9 +136,9 @@ describe("Cloudflare gateway stored pages", () => {
   });
 
   test("answers a /de link with the German page, the site's hreflang links and the locale cookie", async () => {
-    const { response, appVia } = await visitWithStore("/de/game", { "accept-language": "en-US", cookie: "NEXT_LOCALE=fr" });
+    const { response, text, appVia } = await visitWithStore("/de/game", { "accept-language": "en-US", cookie: "NEXT_LOCALE=fr" });
     expect(appVia).toEqual([]);
-    expect(await response.text()).toBe("<p>Spiel</p>");
+    expect(text).toBe("<p>Spiel</p>");
     expect(response.headers.get("set-cookie")).toContain("NEXT_LOCALE=de");
     const link = response.headers.get("link") ?? "";
     expect(link).toContain('<https://thememorychess.com/de/game>; rel="alternate"; hreflang="de"');
@@ -157,8 +179,28 @@ describe("Cloudflare gateway stored pages", () => {
     expect(appVia).toEqual(["app"]);
   });
 
+  test("keeps a copy on this machine, then answers from it without reading the stored file", async () => {
+    const cache = memoryCache();
+    const first = await visitWithStore("/about", { "accept-language": "en" }, undefined, "GET", { cache });
+    expect(first.text).toBe("<p>about</p>");
+    expect(first.storeCalls).toEqual(["/_gateway/pages/en/about.page"]);
+    expect([...cache.entries.keys()]).toEqual(["https://gateway-pages.local/v1/_gateway/pages/en/about.page"]);
+
+    const second = await visitWithStore("/about", { "accept-language": "en" }, undefined, "GET", { cache });
+    expect(second.text).toBe("<p>about</p>");
+    expect(second.storeCalls).toEqual([]);
+    expect(second.response.headers.get("x-gateway-cache")).toBe("HIT");
+  });
+
+  test("never answers from a copy an older deploy left in the cache", async () => {
+    const cache = memoryCache(new Map([["https://gateway-pages.local/v1/_gateway/pages/en/about.page", "<p>old about</p>"]]));
+    const { text, storeCalls } = await visitWithStore("/about", { "accept-language": "en" }, undefined, "GET", { cache, version: "v2" });
+    expect(text).toBe("<p>about</p>");
+    expect(storeCalls).toEqual(["/_gateway/pages/en/about.page"]);
+  });
+
   test("refuses the stored files to visitors", async () => {
-    const { response, appVia, storeCalls } = await visitWithStore("/_gateway/pages.json", {});
+    const { response, appVia, storeCalls } = await visitWithStore("/_gateway/pages/en/about.page", {});
     expect(response.status).toBe(404);
     expect(appVia).toEqual([]);
     expect(storeCalls).toEqual([]);

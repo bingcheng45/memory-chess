@@ -1,7 +1,7 @@
 import { NextRequest, type NextFetchEvent } from "next/server";
 import middleware from "@/middleware";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
-import { isGatewayFile, renderedPath, storedPage, wantsStoredHtml } from "./gatewayPages";
+import { isGatewayFile, renderedPath, storedPage, wantsStoredHtml, type PageStore } from "./gatewayPages";
 import { isApiPath, isSameForEveryVisitor, isStaticFile, linkWithSiteOrigin } from "./workersCache";
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
@@ -21,8 +21,8 @@ export interface GatewayBindings {
   app: AppBinding;
   /** The app, reached with `ctx.props` saying the locale is already decided as English, which lets it cache the page. */
   englishApp: AppBinding;
-  /** The app's static assets, which hold the HTML of pages that never change after the build. */
-  pages?: AppBinding;
+  /** The HTML of pages that never change after the build. */
+  pages?: PageStore;
 }
 
 /** A page request, which the middleware would see; API routes and files skip it. */
@@ -47,10 +47,15 @@ function fetchEnglish(request: Request, englishApp: AppBinding): Promise<Respons
   return englishApp.fetch(new Request(request.url, { method: request.method, headers }));
 }
 
-async function fromStore(request: Request, decision: Response, pages: AppBinding | undefined): Promise<Response | null> {
+async function fromStore(
+  request: Request,
+  decision: Response,
+  pages: PageStore | undefined,
+  event: Pick<NextFetchEvent, "waitUntil">,
+): Promise<Response | null> {
   if (!pages || !wantsStoredHtml(request)) return null;
   const path = renderedPath(request, decision);
-  const page = path === null ? null : await storedPage(path, pages);
+  const page = path === null ? null : await storedPage(path, pages, (promise) => event.waitUntil(promise));
   const link = decision.headers.get("link");
   if (page && link) page.headers.set("link", linkWithSiteOrigin(link, new URL(request.url).origin));
   return page;
@@ -77,7 +82,7 @@ export async function handleGatewayRequest(
 
   const decision = await middleware(new NextRequest(request), event as NextFetchEvent);
   const isNegotiated = !isSameForEveryVisitor(new URL(request.url).pathname);
-  const stored = await fromStore(request, decision, bindings.pages);
+  const stored = await fromStore(request, decision, bindings.pages, event);
   const page = stored
     ?? (isNegotiated && isEnglishPage(decision)
       ? await fetchEnglish(request, bindings.englishApp)

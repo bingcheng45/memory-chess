@@ -5,7 +5,6 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/navigation";
 import LanguageSettings from "@/components/ui/LanguageSettings";
 import SiteLink from "@/components/ui/SiteLink";
-import { QUICK_START_HREF } from "@/components/home/links";
 import { useDailyState } from "@/hooks/useDailyState";
 import { HeaderStreakChip } from "./HeaderStreakChip";
 import "./lab-paper.css";
@@ -190,7 +189,7 @@ export function LabPaperHeader({ sections, playLabel, tools, showPlay = true }: 
             <HeaderStreakChip />
             {tools}
             {showPlay && (
-              <Link className="lab-btn lab-btn-primary lab-btn-sm" href={QUICK_START_HREF} aria-label={playLabel}>
+              <Link className="lab-btn lab-btn-primary lab-btn-sm" href={PLAY_HREF} aria-label={playLabel}>
                 <span className="lab-play-long">{playLabel ?? nav("play")}</span>
                 <span className="lab-play-short">{nav("play")}</span>
               </Link>

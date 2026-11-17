@@ -3,6 +3,7 @@ import middleware from "@/middleware";
 import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { isGatewayFile, renderedPath, storedPage, wantsStoredHtml, type PageStore } from "./gatewayPages";
 import { isApiPath, isSameForEveryVisitor, isStaticFile, linkWithSiteOrigin } from "./workersCache";
+import { AGENT_COUNTED_HEADER } from "@/lib/liveSite";
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 /**
@@ -40,10 +41,18 @@ function isEnglishPage(decision: Response): boolean {
   return locale === DEFAULT_LOCALE;
 }
 
+/** The request as the app should see it once the gateway's middleware has run, and counted any AI crawler. */
+function afterMiddleware(request: Request): Request {
+  const headers = new Headers(request.headers);
+  headers.set(AGENT_COUNTED_HEADER, "1");
+  return new Request(request, { headers });
+}
+
 function fetchEnglish(request: Request, englishApp: AppBinding): Promise<Response> {
   const headers = new Headers(request.headers);
   headers.set("accept-language", DEFAULT_LOCALE);
   headers.set("cookie", `${LOCALE_COOKIE}=${DEFAULT_LOCALE}`);
+  headers.set(AGENT_COUNTED_HEADER, "1");
   return englishApp.fetch(new Request(request.url, { method: request.method, headers }));
 }
 
@@ -86,7 +95,7 @@ export async function handleGatewayRequest(
   const page = stored
     ?? (isNegotiated && isEnglishPage(decision)
       ? await fetchEnglish(request, bindings.englishApp)
-      : await bindings.app.fetch(request));
+      : await bindings.app.fetch(afterMiddleware(request)));
 
   const visible = new Response(page.body, page);
   if (visible.headers.get("cache-control")?.includes("s-maxage")) visible.headers.set("cache-control", VISITOR_CACHE_CONTROL);

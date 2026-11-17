@@ -376,6 +376,22 @@ describe("middleware on text and markdown files", () => {
     }
   });
 
+  it("leaves a crawler's visit the gateway already counted alone", () => {
+    const waitUntil = jest.fn();
+    process.env.SITE_ENV = "production";
+    try {
+      const request = new NextRequest("https://thememorychess.com/game", {
+        headers: new Headers({ "user-agent": "GPTBot/1.2", "x-agent-counted": "1" }),
+      });
+
+      middleware(request, { waitUntil } as unknown as Parameters<typeof middleware>[1]);
+
+      expect(waitUntil).not.toHaveBeenCalled();
+    } finally {
+      delete process.env.SITE_ENV;
+    }
+  });
+
   it("sends nothing off production", () => {
     const waitUntil = jest.fn();
     delete process.env.SITE_ENV;

@@ -38,7 +38,7 @@
     "binding": "IMAGES"
   },
   "vars": {
-    "SUPABASE_READ_ONLY": "true"
+    "SUPABASE_READ_ONLY": "false"
   },
   "cache": {
     "enabled": true

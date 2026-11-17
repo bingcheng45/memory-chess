@@ -2,7 +2,7 @@ import { createHash } from "node:crypto";
 import { readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 
-const PAGES_MANIFEST = ".open-next/assets/_gateway/pages.json";
+const PAGES_MANIFEST = "cloudflare/gateway/pages.json";
 const SITE_ORIGIN = "https://thememorychess.com";
 const BROWSER = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126 Safari/537.36";
 /** Set per response or per hop by Cloudflare, or the gateway's own marker. */

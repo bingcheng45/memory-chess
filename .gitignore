@@ -55,3 +55,6 @@ next-env.d.ts
 # Cloudflare build output
 .open-next
 .wrangler
+
+# Written at deploy by scripts/cf-static-page-cache.mjs and bundled into the gateway Worker
+cloudflare/gateway/pages.json

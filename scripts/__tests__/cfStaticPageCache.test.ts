@@ -1,6 +1,6 @@
 /** @jest-environment node */
 
-import { gatewayPage, headersForEveryPath, staticPageCacheFiles } from "../cf-static-page-cache.mjs";
+import { gatewayPage, headersForEveryPath, manifestVersion, staticPageCacheFiles } from "../cf-static-page-cache.mjs";
 
 const manifest = {
   routes: {
@@ -55,5 +55,23 @@ describe("headersForEveryPath", () => {
       ],
     };
     expect(headersForEveryPath(routesManifest)).toEqual({ "x-frame-options": "DENY" });
+  });
+});
+
+describe("manifestVersion", () => {
+  const headers = { "x-frame-options": "DENY" };
+  const pages = { "/en/about": {}, "/de/about": {} };
+  const html = { "/en/about": "<p>about</p>", "/de/about": "<p>über</p>" };
+
+  it("stays the same for the same pages, whatever order they were found in", () => {
+    const reordered = { "/de/about": {}, "/en/about": {} };
+    expect(manifestVersion(headers, reordered, html)).toBe(manifestVersion(headers, pages, html));
+    expect(manifestVersion(headers, pages, html)).toMatch(/^[0-9a-f]{16}$/);
+  });
+
+  it("changes when a page's HTML or the shared headers change", () => {
+    const before = manifestVersion(headers, pages, html);
+    expect(manifestVersion(headers, pages, { ...html, "/de/about": "<p>Über uns</p>" })).not.toBe(before);
+    expect(manifestVersion({ "x-frame-options": "SAMEORIGIN" }, pages, html)).not.toBe(before);
   });
 });

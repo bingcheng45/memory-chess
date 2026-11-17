@@ -1,3 +1,4 @@
+import { createHash } from "node:crypto";
 import { cpSync, mkdirSync, readdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
@@ -7,6 +8,8 @@ const CACHE = ".open-next/cache";
 const ASSETS_CACHE = ".open-next/assets/cdn-cgi/_next_cache";
 // The gateway reads these through its binding to the app and refuses them to visitors (src/lib/cloudflare/gatewayPages.ts).
 const GATEWAY_DIR = ".open-next/assets/_gateway";
+// Bundled into the gateway Worker (cloudflare/gateway/worker.ts), so it never has to be read at request time.
+const GATEWAY_MANIFEST = "cloudflare/gateway/pages.json";
 const MANIFEST = ".next/prerender-manifest.json";
 const ROUTES_MANIFEST = ".next/routes-manifest.json";
 
@@ -48,6 +51,13 @@ export function gatewayPage(route, entry) {
   return { html: entry.html, headers };
 }
 
+/** A short hash of every stored page and its headers, which changes when any of them does. */
+export function manifestVersion(headers, pages, htmlByRoute) {
+  const hash = createHash("sha256").update(JSON.stringify(headers));
+  for (const route of Object.keys(pages).sort()) hash.update(route).update(JSON.stringify(pages[route])).update(htmlByRoute[route]);
+  return hash.digest("hex").slice(0, 16);
+}
+
 /** The headers next.config.ts sends with every path, from Next's routes manifest. */
 export function headersForEveryPath(routesManifest) {
   return Object.fromEntries(
@@ -65,6 +75,7 @@ function copyStaticPageCache() {
   rmSync(GATEWAY_DIR, { recursive: true, force: true });
 
   const pages = {};
+  const htmlByRoute = {};
   for (const file of files) {
     mkdirSync(dirname(join(ASSETS_CACHE, file)), { recursive: true });
     cpSync(join(CACHE, file), join(ASSETS_CACHE, file));
@@ -76,10 +87,11 @@ function copyStaticPageCache() {
     mkdirSync(dirname(target), { recursive: true });
     writeFileSync(target, page.html);
     pages[route] = page.headers;
+    htmlByRoute[route] = page.html;
   }
 
   const headers = { ...STORED_PAGE_HEADERS, ...headersForEveryPath(routesManifest) };
-  writeFileSync(join(GATEWAY_DIR, "pages.json"), JSON.stringify({ headers, pages }));
+  writeFileSync(GATEWAY_MANIFEST, JSON.stringify({ version: manifestVersion(headers, pages, htmlByRoute), headers, pages }));
   console.log(`Copied ${files.length} never-revalidating pages into static assets, ${Object.keys(pages).length} of them for the gateway.`);
 }
 

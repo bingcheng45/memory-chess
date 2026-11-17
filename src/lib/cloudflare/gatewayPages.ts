@@ -1,17 +1,32 @@
 import type { AppBinding } from "./gateway";
 
-/** Written into the app's static assets at deploy by scripts/cf-static-page-cache.mjs. */
+/** Written by scripts/cf-static-page-cache.mjs at deploy and bundled into the gateway, so reading it costs nothing. */
 export interface PageManifest {
+  /** Changes whenever any stored page does, so a deploy never answers from an older deploy's cached copy. */
+  version: string;
   /** Sent with every stored page. */
   headers: Record<string, string>;
   /** The pages the gateway may serve, by the path the app renders (`/en/about`), with their own headers. */
   pages: Record<string, Record<string, string>>;
 }
 
+/** The parts of the Workers Cache API the gateway uses; it keeps a copy on the Cloudflare machine that served it. */
+export interface PageCache {
+  match(request: Request): Promise<Response | undefined>;
+  put(request: Request, response: Response): Promise<void>;
+}
+
+export interface PageStore {
+  manifest: PageManifest;
+  /** The app's static assets, which hold the HTML. */
+  files: AppBinding;
+  cache?: PageCache;
+}
+
 const FILES_PREFIX = "/_gateway/";
 const FILES_ORIGIN = "https://gateway-pages.local";
-/** A manifest is reused this long, so a deploy that drops a page is seen within a minute. */
-const MANIFEST_TTL_MS = 60_000;
+/** The cached copy is keyed by the manifest version, so it can live as long as the machine keeps it. */
+const CACHED_COPY_CONTROL = "public, max-age=31536000, immutable";
 /** Requests from the Next router, regeneration and server actions want something other than the stored HTML. */
 const APP_ONLY_HEADERS = [
   "rsc",
@@ -22,9 +37,6 @@ const APP_ONLY_HEADERS = [
   "next-action",
   "x-prerender-revalidate",
 ];
-
-// Holds the loaded manifest, never the pending fetch: a promise started by one request must not be awaited by another.
-const manifests = new WeakMap<AppBinding, { loadedAt: number; manifest: PageManifest | null }>();
 
 /** The gateway's own files sit among the app's static assets, which must not be reachable from outside. */
 export function isGatewayFile(pathname: string): boolean {
@@ -45,39 +57,43 @@ export function renderedPath(request: Request, decision: Response): string | nul
   return new URL(rewrite ?? request.url).pathname;
 }
 
-async function loadManifest(files: AppBinding): Promise<PageManifest | null> {
-  try {
-    const response = await files.fetch(new Request(`${FILES_ORIGIN}${FILES_PREFIX}pages.json`));
-    return response.ok ? ((await response.json()) as PageManifest) : null;
-  } catch {
+/** The page's HTML, from this machine's cache when it has it, else from the static assets, which then fill the cache. */
+async function pageBody(
+  path: string,
+  store: PageStore,
+  waitUntil: (promise: Promise<unknown>) => void,
+): Promise<ReadableStream | null> {
+  const file = `${FILES_PREFIX}pages${path}.page`;
+  const key = new Request(`${FILES_ORIGIN}/${store.manifest.version}${file}`);
+  const cached = await store.cache?.match(key);
+  if (cached?.body) return cached.body;
+
+  const fetched = await store.files.fetch(new Request(`${FILES_ORIGIN}${file}`));
+  if (!fetched.ok || !fetched.body) {
+    await fetched.body?.cancel();
     return null;
   }
-}
-
-async function manifestFrom(files: AppBinding): Promise<PageManifest | null> {
-  const cached = manifests.get(files);
-  if (cached && Date.now() - cached.loadedAt < MANIFEST_TTL_MS) return cached.manifest;
-  const manifest = await loadManifest(files);
-  manifests.set(files, { loadedAt: Date.now(), manifest });
-  return manifest;
+  if (!store.cache) return fetched.body;
+  const [visitor, copy] = fetched.body.tee();
+  waitUntil(store.cache.put(key, new Response(copy, { headers: { "cache-control": CACHED_COPY_CONTROL } })));
+  return visitor;
 }
 
 /**
- * The stored HTML of a page that never changes after the build, read from the
- * app's static assets without starting the app, or null when the page is not
- * stored. The app answers anything else.
+ * The stored HTML of a page that never changes after the build, without
+ * starting the app, or null when the page is not stored. The app answers
+ * anything else.
  */
-export async function storedPage(path: string, files: AppBinding): Promise<Response | null> {
-  const manifest = await manifestFrom(files);
-  const pageHeaders = manifest?.pages[path];
-  if (!manifest || !pageHeaders) return null;
-
-  const file = await files.fetch(new Request(`${FILES_ORIGIN}${FILES_PREFIX}pages${path}.page`));
-  if (!file.ok) {
-    await file.body?.cancel();
-    return null;
-  }
-  const headers = new Headers({ ...manifest.headers, ...pageHeaders });
+export async function storedPage(
+  path: string,
+  store: PageStore,
+  waitUntil: (promise: Promise<unknown>) => void,
+): Promise<Response | null> {
+  const pageHeaders = store.manifest.pages[path];
+  if (!pageHeaders) return null;
+  const body = await pageBody(path, store, waitUntil);
+  if (body === null) return null;
+  const headers = new Headers({ ...store.manifest.headers, ...pageHeaders });
   headers.set("x-gateway-cache", "HIT");
-  return new Response(file.body, { status: 200, headers });
+  return new Response(body, { status: 200, headers });
 }

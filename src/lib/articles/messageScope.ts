@@ -17,6 +17,12 @@ const TILE_GROUP = "tile";
 const RESULT_FIGURE_GROUPS = ["label", "unit", "deltas"] as const;
 /** The player name rules the result screen's claim dialog shares with the daily join form. */
 const CLAIM_NAME_MESSAGES = ["nameHint", "nameShort", "nameLong", "nameBlocked"] as const;
+const RECORD_GROUP = "record";
+const TOOLS_GROUP = "tools";
+const BACKUP_GROUP = "backup";
+/** The result screen's save line: its backup button and notice from `home.lab.record.tools`, and its download notice from `dashboard.backup`. */
+const SAVE_LINE_TOOL_MESSAGES = ["backup", "backupNoted"] as const;
+const SAVE_LINE_BACKUP_MESSAGES = ["started"] as const;
 
 type ScopedMessages = {
   shared: AbstractIntlMessages;
@@ -29,6 +35,10 @@ type ScopedMessages = {
 
 const underLab = (group: AbstractIntlMessages): AbstractIntlMessages => ({ [HOME_NAMESPACE]: { [LAB_GROUP]: group } });
 
+/** The named messages of a group, or none when the group is missing. */
+const pick = (group: AbstractIntlMessages[string] | undefined, keys: readonly string[]): AbstractIntlMessages =>
+  typeof group === "object" ? Object.fromEntries(keys.flatMap((key) => (key in group ? [[key, group[key]]] : []))) : {};
+
 /**
  * Parts the catalogue a layout sends to client components. The root layout
  * sends `shared` to every page, the articles layout adds `articles` for its
@@ -36,7 +46,8 @@ const underLab = (group: AbstractIntlMessages): AbstractIntlMessages => ({ [HOME
  * lab groups /game prints, `home.lab.resultCard` on the result screen, and
  * `home.lab.daily` and `home.lab.review` where a link to today's board or to a
  * review cannot open it, with the dashboard groups the result screen's figures
- * print in every locale, `daily.round` for a daily round in every locale and the
+ * print in every locale, the save line's messages from `home.lab.record.tools`
+ * and `dashboard.backup`, `daily.round` for a daily round in every locale and the
  * claim dialog's name messages from `daily.join`, the
  * dashboard layout adds `dashboard`, and the daily layout adds `daily` less the
  * groups only its server components print, so no page carries strings it never
@@ -48,15 +59,20 @@ export function splitClientMessages(messages: AbstractIntlMessages): ScopedMessa
   const { [ARTICLES_NAMESPACE]: articles, [HOME_NAMESPACE]: home, [DASHBOARD_NAMESPACE]: dashboard, [DAILY_NAMESPACE]: dailyPage, ...rest } = messages;
   const { [LAB_GROUP]: lab, ...homeShared } = typeof home === "object" ? home : {};
   const { [RESULT_CARD_GROUP]: resultCard, ...homeLab } = typeof lab === "object" ? lab : {};
-  const { [DAILY_GROUP]: daily, [REVIEW_GROUP]: review } = homeLab;
+  const { [DAILY_GROUP]: daily, [REVIEW_GROUP]: review, [RECORD_GROUP]: record } = homeLab;
+  const saveLineTools = pick(typeof record === "object" ? record[TOOLS_GROUP] : undefined, SAVE_LINE_TOOL_MESSAGES);
+  const saveLineBackup = pick(typeof dashboard === "object" ? dashboard[BACKUP_GROUP] : undefined, SAVE_LINE_BACKUP_MESSAGES);
   const dailyClient = typeof dailyPage === "object" ? Object.fromEntries(Object.entries(dailyPage).filter(([group]) => !DAILY_SERVER_GROUPS.has(group))) : {};
   const join = dailyClient.join;
-  const nameMessages = typeof join === "object" ? Object.fromEntries(CLAIM_NAME_MESSAGES.flatMap((key) => (key in join ? [[key, join[key]]] : []))) : {};
+  const nameMessages = pick(join, CLAIM_NAME_MESSAGES);
   const gameDaily = {
     ...(dailyClient.round !== undefined && { round: dailyClient.round }),
     ...(Object.keys(nameMessages).length > 0 && { join: nameMessages }),
   };
-  const figures = typeof dashboard === "object" ? Object.fromEntries(RESULT_FIGURE_GROUPS.flatMap((group) => (group in dashboard ? [[group, dashboard[group]]] : []))) : {};
+  const figures = {
+    ...pick(dashboard, RESULT_FIGURE_GROUPS),
+    ...(Object.keys(saveLineBackup).length > 0 && { [BACKUP_GROUP]: saveLineBackup }),
+  };
 
   return {
     shared: { ...Object.fromEntries(Object.entries(rest).filter(([name]) => name !== DATA_NAMESPACE)), [HOME_NAMESPACE]: homeShared },
@@ -68,6 +84,7 @@ export function splitClientMessages(messages: AbstractIntlMessages): ScopedMessa
           [RESULT_CARD_GROUP]: resultCard,
           ...(daily !== undefined && { [DAILY_GROUP]: daily }),
           ...(review !== undefined && { [REVIEW_GROUP]: review }),
+          ...(Object.keys(saveLineTools).length > 0 && { [RECORD_GROUP]: { [TOOLS_GROUP]: saveLineTools } }),
         })),
       ...(Object.keys(figures).length > 0 && { [DASHBOARD_NAMESPACE]: figures }),
       ...(Object.keys(gameDaily).length > 0 && { [DAILY_NAMESPACE]: gameDaily }),

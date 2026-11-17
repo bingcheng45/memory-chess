@@ -1,7 +1,8 @@
-import { render, screen, within } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor, within } from "@testing-library/react";
 import { NextIntlClientProvider } from "next-intl";
 import GameLayout from "@/app/[locale]/game/layout";
 import GameResult from "@/components/game/GameResult";
+import { resetSaveLine } from "@/components/game/ResultSaveLine";
 import { routing } from "@/i18n/routing";
 import { useGameStore } from "@/lib/store/gameStore";
 import { localeLayoutClientMessages } from "@/test-utils/localeLayoutMessages";
@@ -24,6 +25,10 @@ jest.mock("@/components/reference/GameReference", () => {
 
 jest.mock("@/lib/leaderboard/cutoffsClient", () => ({ loadLeaderboardCutoffs: jest.fn(async () => null), readCachedCutoffs: () => null }));
 jest.mock("@/lib/utils/soundEffects", () => ({ playSound: jest.fn() }));
+jest.mock("@/components/home/labDownload", () => ({
+  downloadLabRecord: jest.fn(async () => 1),
+  lifetimeRounds: jest.fn(async () => 2),
+}));
 
 const FINISHED_ROUND = {
   isPlaying: false,
@@ -71,6 +76,8 @@ beforeEach(() => {
 
 afterEach(() => {
   jest.restoreAllMocks();
+  Reflect.deleteProperty(window, "indexedDB");
+  resetSaveLine();
 });
 
 describe("the result screen under the messages its route's layouts send", () => {
@@ -92,5 +99,25 @@ describe("the result screen under the messages its route's layouts send", () => 
     expect(within(tile).getByText("Deine Runde").closest("div")).toHaveTextContent("Deine Runde6 Figuren, 10 Sekunden");
     expect(within(tile).getByRole("link", { name: "Artikel lesen" })).toBeInTheDocument();
     expect(within(tile).getByRole("button", { name: "Diese Übung ausprobieren" })).toBeInTheDocument();
+  });
+});
+
+describe("the save line under the messages the game route sends", () => {
+  type Messages = { home: { lab: { record: { tools: Record<string, string> } } }; dashboard: { backup: Record<string, string> } };
+  const catalogueOf = (locale: string): Messages => jest.requireActual(`../../../../../messages/${locale}.json`);
+
+  it.each(routing.locales)("prints its buttons and both notices in %s", async (locale) => {
+    const { home, dashboard } = catalogueOf(locale);
+    Object.defineProperty(window, "indexedDB", { value: {}, configurable: true });
+    const history = useGameStore.getState().history;
+    useGameStore.setState({ history: [{ id: "round-1" }, { id: "round-2" }] as unknown as typeof history });
+
+    const missing = await renderResultScreen(locale);
+    fireEvent.click(await screen.findByRole("button", { name: home.lab.record.tools.backup }));
+    expect(screen.getByText(home.lab.record.tools.backupNoted)).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: home.lab.record.tools.backup }).previousElementSibling as HTMLElement);
+    await waitFor(() => expect(screen.getByText(dashboard.backup.started)).toBeInTheDocument());
+
+    expect(missing).toEqual([]);
   });
 });

@@ -29,6 +29,16 @@ async function visit(path: string, headers: Record<string, string>) {
 }
 
 describe("Cloudflare gateway", () => {
+  test("tells the app a page request was already counted, so an AI crawler's visit is counted once", async () => {
+    const english = await visit("/", { "accept-language": "en" });
+    const german = await visit("/game", { "accept-language": "de" });
+    const api = await visit("/api/game-stats", {});
+
+    expect(english.calls.map((call) => [call.via, call.request.headers.get("x-agent-counted")])).toEqual([["englishApp", "1"]]);
+    expect(german.calls.map((call) => [call.via, call.request.headers.get("x-agent-counted")])).toEqual([["app", "1"]]);
+    expect(api.calls.map((call) => [call.via, call.request.headers.get("x-agent-counted")])).toEqual([["app", null]]);
+  });
+
   test("sends an English visitor's home page to the cacheable English app with the locale fixed", async () => {
     const { calls } = await visit("/", { "accept-language": "en-US,en;q=0.9", cookie: "_ga=1" });
     expect(calls.map((call) => call.via)).toEqual(["englishApp"]);

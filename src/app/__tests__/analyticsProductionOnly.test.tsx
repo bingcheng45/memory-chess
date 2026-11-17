@@ -40,16 +40,16 @@ async function renderLayout() {
   return LocaleLayout({ children: <div />, params: Promise.resolve({ locale: "en" }) });
 }
 
-const originalVercelEnv = process.env.VERCEL_ENV;
+const originalSiteEnv = process.env.SITE_ENV;
 
 afterEach(() => {
-  if (originalVercelEnv === undefined) delete process.env.VERCEL_ENV;
-  else process.env.VERCEL_ENV = originalVercelEnv;
+  if (originalSiteEnv === undefined) delete process.env.SITE_ENV;
+  else process.env.SITE_ENV = originalSiteEnv;
 });
 
 describe("visitor analytics", () => {
-  it("load on the production deployment", async () => {
-    process.env.VERCEL_ENV = "production";
+  it("load on the live site", async () => {
+    process.env.SITE_ENV = "production";
     const tree = await renderLayout();
 
     expect(collect(tree, (element) => element.type === SiteGoogleAnalytics)).toHaveLength(1);
@@ -58,11 +58,11 @@ describe("visitor analytics", () => {
   });
 
   it.each([
-    ["a preview deployment", "preview"],
+    ["a test deploy", "preview"],
     ["a local build", undefined],
-  ])("stay off %s so test visits are not counted", async (_name, vercelEnv) => {
-    if (vercelEnv === undefined) delete process.env.VERCEL_ENV;
-    else process.env.VERCEL_ENV = vercelEnv;
+  ])("stay off %s so test visits are not counted", async (_name, siteEnv) => {
+    if (siteEnv === undefined) delete process.env.SITE_ENV;
+    else process.env.SITE_ENV = siteEnv;
     const tree = await renderLayout();
 
     expect(collect(tree, (element) => element.type === SiteGoogleAnalytics)).toHaveLength(0);
@@ -82,7 +82,7 @@ describe("AdSense", () => {
   });
 
   it("keeps the site verification tag and loads no script while the flag is off", async () => {
-    process.env.VERCEL_ENV = "production";
+    process.env.SITE_ENV = "production";
     const tree = await renderLayout();
 
     expect(collect(tree, scriptWithSrc(ADSENSE_SCRIPT_URL))).toHaveLength(0);
@@ -91,7 +91,7 @@ describe("AdSense", () => {
 
   it("loads the script, beside the verification tag, once the flag is on", async () => {
     mockAdsenseFlag.enabled = true;
-    process.env.VERCEL_ENV = "production";
+    process.env.SITE_ENV = "production";
     const tree = await renderLayout();
 
     expect(collect(tree, scriptWithSrc(ADSENSE_SCRIPT_URL))).toHaveLength(1);

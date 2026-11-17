@@ -12,6 +12,9 @@
     { "binding": "APP", "service": "memory-chess" },
     { "binding": "APP_LOCALE_DECIDED", "service": "memory-chess", "props": { "localeDecided": true } }
   ],
+  "vars": {
+    "SITE_ENV": "production"
+  },
   "observability": {
     "enabled": true
   }

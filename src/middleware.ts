@@ -14,6 +14,7 @@ import {
 } from "@/lib/seo/englishOnly";
 import { resolveRetiredLearnPath } from "@/lib/seo/learn/retired";
 import { localizedPath } from "@/lib/seo/alternates";
+import { isLiveSite } from "@/lib/liveSite";
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -84,7 +85,7 @@ const AGENT_FILE = /\.(?:md|txt)$/;
 
 export default function middleware(request: NextRequest, event?: NextFetchEvent) {
   // AI crawlers run no JavaScript, so the browser tracker never sees them.
-  if (process.env.VERCEL_ENV === "production") event?.waitUntil(trackAgents(request));
+  if (isLiveSite()) event?.waitUntil(trackAgents(request));
   if (AGENT_FILE.test(request.nextUrl.pathname)) return NextResponse.next();
 
   const response = route(request);

@@ -40,7 +40,8 @@
     "binding": "IMAGES"
   },
   "vars": {
-    "SUPABASE_READ_ONLY": "false"
+    "SUPABASE_READ_ONLY": "false",
+    "SITE_ENV": "production"
   },
   "cache": {
     "enabled": true

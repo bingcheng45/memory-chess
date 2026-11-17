@@ -356,7 +356,7 @@ describe("middleware on text and markdown files", () => {
   it("counts an AI crawler's read on production without holding up the response", async () => {
     const fetchSpy = jest.spyOn(global, "fetch").mockResolvedValue(new Response(null, { status: 200 }));
     const waitUntil = jest.fn();
-    process.env.VERCEL_ENV = "production";
+    process.env.SITE_ENV = "production";
     process.env.NEXT_PUBLIC_DATABUDDY_CLIENT_ID = "test-site";
     try {
       const request = new NextRequest("https://thememorychess.com/llms.txt", {
@@ -370,7 +370,7 @@ describe("middleware on text and markdown files", () => {
       expect(fetchSpy).toHaveBeenCalledWith("https://basket.databuddy.cc/ai-traffic", expect.objectContaining({ method: "POST" }));
       expect(JSON.parse(String(fetchSpy.mock.calls[0][1]?.body))).toMatchObject({ path: "/llms.txt", format: "llms", websiteId: "test-site" });
     } finally {
-      delete process.env.VERCEL_ENV;
+      delete process.env.SITE_ENV;
       delete process.env.NEXT_PUBLIC_DATABUDDY_CLIENT_ID;
       fetchSpy.mockRestore();
     }
@@ -378,7 +378,7 @@ describe("middleware on text and markdown files", () => {
 
   it("sends nothing off production", () => {
     const waitUntil = jest.fn();
-    delete process.env.VERCEL_ENV;
+    delete process.env.SITE_ENV;
 
     middleware(new NextRequest("https://thememorychess.com/llms.txt"), { waitUntil } as unknown as Parameters<typeof middleware>[1]);
 

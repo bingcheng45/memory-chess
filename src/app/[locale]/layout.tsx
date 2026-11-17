@@ -14,6 +14,7 @@ const SpeedInsights = dynamic(() =>
 );
 import SiteGoogleAnalytics from "@/components/common/SiteGoogleAnalytics";
 import SiteDatabuddy from "@/components/common/SiteDatabuddy";
+import { isLiveSite } from "@/lib/liveSite";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
 import {
@@ -149,8 +150,7 @@ export default async function LocaleLayout({
   // whole SEO story depends on.
   setRequestLocale(locale);
 
-  // Local and preview builds would otherwise count test runs as real visitors.
-  const countsVisitors = process.env.VERCEL_ENV === "production";
+  const countsVisitors = isLiveSite();
 
   // The articles, home and game layouts add their own groups, so no other page carries them.
   const { shared: messages } = splitClientMessages(await getMessages({ locale }));

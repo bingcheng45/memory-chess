@@ -4,14 +4,6 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getMessages, getTranslations, setRequestLocale } from "next-intl/server";
 import "../globals.css";
 
-// Import Vercel packages dynamically to avoid build errors
-import dynamic from "next/dynamic";
-const Analytics = dynamic(() =>
-  import("@vercel/analytics/react").then((mod) => mod.Analytics),
-);
-const SpeedInsights = dynamic(() =>
-  import("@vercel/speed-insights/next").then((mod) => mod.SpeedInsights),
-);
 import SiteGoogleAnalytics from "@/components/common/SiteGoogleAnalytics";
 import SiteDatabuddy from "@/components/common/SiteDatabuddy";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
@@ -180,8 +172,6 @@ export default async function LocaleLayout({
           />
           {children}
           <SiteFooter />
-          <Analytics />
-          <SpeedInsights />
           {countsVisitors && <SiteGoogleAnalytics />}
           {countsVisitors && <SiteDatabuddy />}
           <SoundStopNavigator />

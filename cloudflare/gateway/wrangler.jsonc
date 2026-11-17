@@ -2,6 +2,8 @@
   "$schema": "../../node_modules/wrangler/config-schema.json",
   "name": "memory-chess-gateway",
   "main": "worker.ts",
+  "workers_dev": false,
+  "preview_urls": false,
   "compatibility_date": "2026-11-01",
   "compatibility_flags": ["nodejs_compat"],
   // next/server is CommonJS and reads __dirname, which Workers do not define.

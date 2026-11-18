@@ -60,7 +60,7 @@ describe("the Lab Paper header", () => {
 
     expect(hrefsOf(screen.getByRole("navigation", { name: "Main" }))).toEqual(SITE);
     expect(screen.queryByRole("button", { name: "Lab" })).toBeNull();
-    expect(screen.getByRole("link", { name: "Play Play" }).getAttribute("href")).toMatch(/^\/game\?/);
+    expect(screen.getByRole("link", { name: "Play Play" }).getAttribute("href")).toBe("/game");
     expect(screen.getByRole("button", { name: /change language/i })).toBeInTheDocument();
   });
 
@@ -136,7 +136,7 @@ describe("the homepage's header", () => {
     const trigger = screen.getByRole("button", { name: "Lab" });
 
     expect(hrefsOf(screen.getByRole("navigation", { name: "Main" }))).toEqual(SITE);
-    expect(screen.getByRole("link", { name: "Play a free round" }).getAttribute("href")).toMatch(/^\/game\?/);
+    expect(screen.getByRole("link", { name: "Play a free round" }).getAttribute("href")).toBe("/game");
     expect(trigger).toHaveAttribute("aria-expanded", "false");
     expect(screen.queryByRole("link", { name: /^Notebook/ })).toBeNull();
 

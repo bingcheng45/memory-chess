@@ -38,8 +38,12 @@ export function fixedWindowLimiter({ limit, windowMs, maxKeys }: { limit: number
   return Object.assign(check, { size: () => windows.size });
 }
 
-/** Vercel puts the caller first in x-forwarded-for. */
+/**
+ * Cloudflare sets cf-connecting-ip to the caller, but keeps a client's own x-forwarded-for and appends to it,
+ * so that header's first entry is whatever the caller wrote. The fallbacks only serve tests and local runs.
+ */
 export function clientAddress(headers: Headers): string {
+  const connecting = headers.get("cf-connecting-ip")?.trim();
   const forwarded = headers.get("x-forwarded-for")?.split(",")[0]?.trim();
-  return forwarded || headers.get("x-real-ip") || "unknown";
+  return connecting || forwarded || headers.get("x-real-ip") || "unknown";
 }

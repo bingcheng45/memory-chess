@@ -49,4 +49,9 @@ describe("clientAddress", () => {
       ].map(clientAddress),
     ).toEqual(["203.0.113.7", "198.51.100.2", "unknown"]);
   });
+
+  it("ignores a forged forwarded address when Cloudflare names the caller", () => {
+    const headers = new Headers({ "cf-connecting-ip": "192.0.2.44", "x-forwarded-for": "203.0.113.99, 192.0.2.44" });
+    expect(clientAddress(headers)).toBe("192.0.2.44");
+  });
 });

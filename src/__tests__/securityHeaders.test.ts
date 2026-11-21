@@ -90,7 +90,6 @@ describe("the report-only content security policy", () => {
         "https://*.googlesyndication.com",
         "https://www.googletagmanager.com",
         "https://analytics.ahrefs.com",
-        "https://cdn.databuddy.cc",
         "https://www.youtube.com",
       ]),
     );

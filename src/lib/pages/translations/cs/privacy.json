@@ -1,6 +1,6 @@
 {
-  "sourceHash": "32649f71087d6dde37e52f0db6b048183b37788a7220c0b047396ae28ca4c132",
-  "approvedHash": "0ae4995422a3778a38ff0b0493b3ed6025234fedbddbcb6a2a745b3536c51e86",
+  "sourceHash": "f260b577b05e2e71f6c724e36103144f0f203d4f93e76f8466d3b2810bb812a8",
+  "approvedHash": "c98a9fc2ab6625cbfbeda28bf03d2b3ed215b082df54e43f9f8d957ec61d0222",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,10 +45,10 @@
         "title": "Informace shromažďované automaticky",
         "blocks": [
           {
-            "p": "Naši poskytovatelé měřicích služeb mohou získávat technické údaje a údaje o používání, například zobrazené stránky, přibližnou polohu, typ prohlížeče a zařízení, odkazující stránku, IP adresu a časy načítání. Memory Chess používá Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics a Databuddy, aby porozuměl návštěvnosti a udržel web rychlý a spolehlivý."
+            "p": "Naši poskytovatelé měřicích služeb mohou získávat technické údaje a údaje o používání, například zobrazené stránky, přibližnou polohu, typ prohlížeče a zařízení, odkazující stránku, IP adresu a časy načítání. Memory Chess používá Google Analytics, PostHog a Ahrefs Analytics, aby porozuměl návštěvnosti a udržel web rychlý a spolehlivý."
           },
           {
-            "p": "Databuddy nepoužívá žádné soubory cookie. Uchovává náhodný identifikátor návštěvníka v místním úložišti vašeho prohlížeče a identifikátor relace v úložišti relace prohlížeče. Zaznamenává stránky, které zobrazíte, časy načítání, chyby JavaScriptu, kliknutí na odkazy, které vedou mimo web, kliknutí, která se opakují nebo na která nic nereaguje, a formuláře opuštěné před odesláním. Dostává také událost, když kolo začne nebo skončí, s počtem figur, dobou na zapamatování a místem, kde kolo začalo, a událost, když je výsledek odeslán do žebříčku nebo na desku dne, s jeho obtížností a počtem figur. Tyto události nikdy neobsahují vaši přesnost, vaše jméno hráče ani pozice, které jste hráli."
+            "p": "PostHog nepoužívá žádné soubory cookie. Uchovává náhodný identifikátor návštěvníka a své nastavení v místním úložišti vašeho prohlížeče. Váš prohlížeč odesílá data služby PostHog na adresu na tomto webu, /relay, která je předává službě PostHog spolu s vaší IP adresou, aby PostHog mohl určit vaši přibližnou polohu. PostHog zaznamenává stránky, které zobrazíte, a kdy je opustíte, kliknutí na tlačítka a odkazy bez textu, který je na nich zobrazen, chyby JavaScriptu a časy načítání. Nenahrává vaši obrazovku ani to, co píšete, a jména hráčů a hledaná slova se odstraňují z adres stránek, které dostává. Dostává také každou událost, kterou tyto zásady popisují u Google Analytics, se stejným obsahem, a událost, když výukové video začne, přehraje se znovu, pozastaví se, dosáhne čtvrtiny, poloviny, tří čtvrtin nebo devíti desetin, nebo skončí. Když stránku čte crawler AI nebo asistent AI, náš server sdělí službě PostHog název crawleru, danou stránku a stránku, ze které na ni crawler přišel. PostHog si o vás nevytváří žádný profil a jeho data nepropojujeme s vaším jménem ani e-mailovou adresou."
           },
           {
             "p": "Tyto nástroje nežádáme, aby shromažďovaly obsah vašich kontaktních zpráv ani komentářů ve zpětné vazbě ke hře."
@@ -131,7 +131,7 @@
             "p": "Informace používáme k poskytování a zabezpečení Memory Chess, výpočtu výsledků, zveřejňování odeslaných výsledků v žebříčku, odpovídání na kontaktní zprávy, posuzování zpětné vazby, měření výkonu webu, předcházení zneužívání a podpoře webu reklamou. Kontaktní údaje ani zpětnou vazbu, které odešlete, neprodáváme."
           },
           {
-            "p": "S daty pracují poskytovatelé služeb pouze tam, kde je to potřeba: Google Sheets u kontaktních zpráv a zpětné vazby ke hře, Supabase u herních statistik, záznamů v žebříčku a celkových počtů zobrazení a lajků u článků, Vercel u hostingu a měření výkonu, Ahrefs a Databuddy u analytiky a Google u analytiky, souhlasu a reklamy. Tito poskytovatelé mohou zpracovávat data v jiných zemích podle svých vlastních zásad ochrany soukromí."
+            "p": "S daty pracují poskytovatelé služeb pouze tam, kde je to potřeba: Google Sheets u kontaktních zpráv a zpětné vazby ke hře, Supabase u herních statistik, záznamů v žebříčku a celkových počtů zobrazení a lajků u článků, Cloudflare u hostingu, Ahrefs a PostHog u analytiky a Google u analytiky, souhlasu a reklamy. Tito poskytovatelé mohou zpracovávat data v jiných zemích podle svých vlastních zásad ochrany soukromí."
           },
           {
             "p": "Když článek otevřete nebo mu dáte lajk, Supabase ukládá u každého článku pouze celkový počet zobrazení a celkový počet lajků, s časem poslední změny a bez jakéhokoli identifikátoru návštěvníka."

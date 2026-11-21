@@ -1,6 +1,6 @@
 {
-  "sourceHash": "32649f71087d6dde37e52f0db6b048183b37788a7220c0b047396ae28ca4c132",
-  "approvedHash": "0db6f81a18e554c3d6c6ac0901f3f4d789ad3ca84884e1ab82be958c4e643858",
+  "sourceHash": "f260b577b05e2e71f6c724e36103144f0f203d4f93e76f8466d3b2810bb812a8",
+  "approvedHash": "e14e3b602bb63e8c816f5070ad622ca98f50a93300fc1b19566daaf0048fb2e8",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,10 +45,10 @@
         "title": "Automatisch verzamelde gegevens",
         "blocks": [
           {
-            "p": "Onze meetdiensten kunnen technische en gebruiksgegevens ontvangen, zoals bekeken pagina's, je geschatte locatie, het type browser en apparaat, de verwijzende pagina, je IP-adres en laadtijden. Memory Chess gebruikt Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics en Databuddy om het verkeer te begrijpen en de site snel en betrouwbaar te houden."
+            "p": "Onze meetdiensten kunnen technische en gebruiksgegevens ontvangen, zoals bekeken pagina's, je geschatte locatie, het type browser en apparaat, de verwijzende pagina, je IP-adres en laadtijden. Memory Chess gebruikt Google Analytics, PostHog en Ahrefs Analytics om het verkeer te begrijpen en de site snel en betrouwbaar te houden."
           },
           {
-            "p": "Databuddy gebruikt geen cookies. Het bewaart een willekeurige bezoekers-id in de lokale opslag van je browser en een sessie-id in de sessieopslag ervan. Het registreert de pagina's die je bekijkt, laadtijden, JavaScript-fouten, klikken op links die de site verlaten, klikken die worden herhaald of geen reactie krijgen, en formulieren die worden verlaten voordat ze zijn verstuurd. Het ontvangt ook een gebeurtenis wanneer een ronde begint of eindigt, met het aantal stukken, de studietijd en waar de ronde begon, en een gebeurtenis wanneer een score naar een ranglijst of het bord van de dag wordt gestuurd, met de moeilijkheidsgraad en het aantal stukken. Deze gebeurtenissen bevatten nooit je nauwkeurigheid, je spelersnaam of de stellingen die je hebt gespeeld."
+            "p": "PostHog gebruikt geen cookies. Het bewaart een willekeurige bezoekers-id en zijn instellingen in de lokale opslag van je browser. Je browser stuurt de gegevens voor PostHog naar een adres op deze site, /relay, dat ze samen met je IP-adres doorstuurt naar PostHog, zodat PostHog je geschatte locatie kan bepalen. Het registreert de pagina's die je bekijkt en wanneer je ze verlaat, klikken op knoppen en links zonder de tekst die erop staat, JavaScript-fouten en laadtijden. Het neemt je scherm niet op en registreert niet wat je typt, en spelersnamen en zoekwoorden worden verwijderd uit de paginaadressen die het ontvangt. Het ontvangt ook elke gebeurtenis die dit beleid voor Google Analytics beschrijft, met dezelfde inhoud, en een gebeurtenis wanneer de uitlegvideo start, opnieuw wordt afgespeeld, wordt gepauzeerd, een kwart, de helft, driekwart of negen tiende bereikt, of eindigt. Wanneer een AI-crawler of AI-assistent een pagina leest, geeft onze server aan PostHog de naam van de crawler door, de pagina en de pagina waar de crawler vandaan kwam. PostHog maakt geen profiel van je, en we koppelen de gegevens ervan niet aan je naam of e-mailadres."
           },
           {
             "p": "We vragen deze tools niet om de inhoud van je contactberichten of je opmerkingen bij de spelfeedback te verzamelen."
@@ -131,7 +131,7 @@
             "p": "We gebruiken gegevens om Memory Chess aan te bieden en te beveiligen, resultaten te berekenen, ingezonden scores op de ranglijst te publiceren, contactberichten te beantwoorden, feedback te bekijken, de prestaties van de site te meten, misbruik te voorkomen en de site met advertenties te ondersteunen. We verkopen de contactgegevens of feedback die je inzendt niet."
           },
           {
-            "p": "Gegevens worden alleen door dienstverleners verwerkt waar dat nodig is: Google Sheets voor contactberichten en spelfeedback, Supabase voor spelstatistieken, inzendingen voor de ranglijst en de totalen van weergaven en likes van artikelen, Vercel voor hosting en prestatiemeting, Ahrefs en Databuddy voor analyse, en Google voor analyse, toestemming en advertenties. Deze dienstverleners kunnen gegevens in andere landen verwerken onder hun eigen privacyvoorwaarden."
+            "p": "Gegevens worden alleen door dienstverleners verwerkt waar dat nodig is: Google Sheets voor contactberichten en spelfeedback, Supabase voor spelstatistieken, inzendingen voor de ranglijst en de totalen van weergaven en likes van artikelen, Cloudflare voor hosting, Ahrefs en PostHog voor analyse, en Google voor analyse, toestemming en advertenties. Deze dienstverleners kunnen gegevens in andere landen verwerken onder hun eigen privacyvoorwaarden."
           },
           {
             "p": "Wanneer je een artikel opent of leuk vindt, slaat Supabase per artikel alleen een totaal aantal weergaven en een totaal aantal likes op, met het tijdstip van de laatste wijziging en zonder identificatie van de bezoeker."

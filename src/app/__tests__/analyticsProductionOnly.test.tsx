@@ -3,7 +3,7 @@ import { isValidElement } from "react";
 import Script from "next/script";
 import SiteGoogleAnalytics, { GA_SCRIPT_URL } from "@/components/common/SiteGoogleAnalytics";
 import { trackEvent, rememberResultView, type FunnelEvent } from "@/lib/analytics/events";
-import SiteDatabuddy from "@/components/common/SiteDatabuddy";
+import SitePostHog from "@/components/common/SitePostHog";
 import LocaleLayout, { generateMetadata } from "@/app/[locale]/layout";
 import { AHREFS_ANALYTICS_SCRIPT_URL } from "@/lib/ahrefs";
 import { ADSENSE_SCRIPT_URL } from "@/lib/adsense";
@@ -53,7 +53,7 @@ describe("visitor analytics", () => {
     const tree = await renderLayout();
 
     expect(collect(tree, (element) => element.type === SiteGoogleAnalytics)).toHaveLength(1);
-    expect(collect(tree, (element) => element.type === SiteDatabuddy)).toHaveLength(1);
+    expect(collect(tree, (element) => element.type === SitePostHog)).toHaveLength(1);
     expect(collect(tree, scriptWithSrc(AHREFS_ANALYTICS_SCRIPT_URL))).toHaveLength(1);
   });
 
@@ -66,7 +66,7 @@ describe("visitor analytics", () => {
     const tree = await renderLayout();
 
     expect(collect(tree, (element) => element.type === SiteGoogleAnalytics)).toHaveLength(0);
-    expect(collect(tree, (element) => element.type === SiteDatabuddy)).toHaveLength(0);
+    expect(collect(tree, (element) => element.type === SitePostHog)).toHaveLength(0);
     expect(collect(tree, scriptWithSrc(AHREFS_ANALYTICS_SCRIPT_URL))).toHaveLength(0);
   });
 });

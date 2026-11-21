@@ -357,7 +357,6 @@ describe("middleware on text and markdown files", () => {
     const fetchSpy = jest.spyOn(global, "fetch").mockResolvedValue(new Response(null, { status: 200 }));
     const waitUntil = jest.fn();
     process.env.SITE_ENV = "production";
-    process.env.NEXT_PUBLIC_DATABUDDY_CLIENT_ID = "test-site";
     try {
       const request = new NextRequest("https://thememorychess.com/llms.txt", {
         headers: new Headers({ "user-agent": "GPTBot/1.2" }),
@@ -367,11 +366,14 @@ describe("middleware on text and markdown files", () => {
       await Promise.all(waitUntil.mock.calls.map(([tracking]) => tracking));
 
       expect(waitUntil).toHaveBeenCalledTimes(1);
-      expect(fetchSpy).toHaveBeenCalledWith("https://basket.databuddy.cc/ai-traffic", expect.objectContaining({ method: "POST" }));
-      expect(JSON.parse(String(fetchSpy.mock.calls[0][1]?.body))).toMatchObject({ path: "/llms.txt", format: "llms", websiteId: "test-site" });
+      expect(fetchSpy).toHaveBeenCalledWith("https://us.i.posthog.com/i/v0/e/", expect.objectContaining({ method: "POST" }));
+      expect(JSON.parse(String(fetchSpy.mock.calls[0][1]?.body))).toMatchObject({
+        event: "ai_crawler_visit",
+        distinct_id: "ai-crawler:GPTBot",
+        properties: { agent: "GPTBot", path: "/llms.txt", format: "llms", $process_person_profile: false },
+      });
     } finally {
       delete process.env.SITE_ENV;
-      delete process.env.NEXT_PUBLIC_DATABUDDY_CLIENT_ID;
       fetchSpy.mockRestore();
     }
   });

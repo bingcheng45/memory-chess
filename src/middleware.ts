@@ -1,4 +1,3 @@
-import { trackAgents } from "@databuddy/sdk/agents";
 import createMiddleware from "next-intl/middleware";
 import { type NextFetchEvent, NextRequest, NextResponse } from "next/server";
 import { routing, LOCALES, DEFAULT_LOCALE, type Locale } from "@/i18n/routing";
@@ -15,6 +14,7 @@ import {
 import { resolveRetiredLearnPath } from "@/lib/seo/learn/retired";
 import { localizedPath } from "@/lib/seo/alternates";
 import { AGENT_COUNTED_HEADER, isLiveSite } from "@/lib/liveSite";
+import { reportAiCrawlerVisit } from "@/lib/analytics/aiCrawlers";
 
 const handleI18nRouting = createMiddleware(routing);
 
@@ -85,7 +85,7 @@ const AGENT_FILE = /\.(?:md|txt)$/;
 
 export default function middleware(request: NextRequest, event?: NextFetchEvent) {
   // AI crawlers run no JavaScript, so the browser tracker never sees them.
-  if (isLiveSite() && !request.headers.has(AGENT_COUNTED_HEADER)) event?.waitUntil(trackAgents(request));
+  if (isLiveSite() && !request.headers.has(AGENT_COUNTED_HEADER)) event?.waitUntil(reportAiCrawlerVisit(request));
   if (AGENT_FILE.test(request.nextUrl.pathname)) return NextResponse.next();
 
   const response = route(request);

@@ -1,6 +1,6 @@
 {
-  "sourceHash": "32649f71087d6dde37e52f0db6b048183b37788a7220c0b047396ae28ca4c132",
-  "approvedHash": "40d0f4ebb63792cc1df8c5fa142537228fed5daccd85f61147886fcf1df28f9e",
+  "sourceHash": "f260b577b05e2e71f6c724e36103144f0f203d4f93e76f8466d3b2810bb812a8",
+  "approvedHash": "f9b04d84d665d19b692c9ba7361d8ae196a1ff75c4b90dccfb930c026d0cf014",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,10 +45,10 @@
         "title": "Automatikusan gyűjtött adatok",
         "blocks": [
           {
-            "p": "Mérési szolgáltatóink műszaki és használati adatokat kaphatnak, például a megtekintett oldalakat, a hozzávetőleges helyet, a böngésző és az eszköz típusát, a hivatkozó oldalt, az IP-címet és a teljesítményidőket. A Memory Chess a Google Analytics, a Vercel Analytics, a Vercel Speed Insights, az Ahrefs Analytics és a Databuddy szolgáltatást használja, hogy megértse a forgalmat, és gyorsan és megbízhatóan tartsa működésben az oldalt."
+            "p": "Mérési szolgáltatóink műszaki és használati adatokat kaphatnak, például a megtekintett oldalakat, a hozzávetőleges helyet, a böngésző és az eszköz típusát, a hivatkozó oldalt, az IP-címet és a teljesítményidőket. A Memory Chess a Google Analytics, a PostHog és az Ahrefs Analytics szolgáltatást használja, hogy megértse a forgalmat, és gyorsan és megbízhatóan tartsa működésben az oldalt."
           },
           {
-            "p": "A Databuddy nem használ sütiket. Egy véletlenszerű látogatóazonosítót tárol a böngésződ helyi tárhelyén, és egy munkamenet-azonosítót a böngésző munkamenet-tárhelyén. Rögzíti az általad megtekintett oldalakat, a teljesítményidőket, a JavaScript-hibákat, az oldalról kivezető linkekre leadott kattintásokat, az ismételt vagy válasz nélkül maradó kattintásokat, valamint az elküldésük előtt elhagyott űrlapokat. Emellett kap egy eseményt, amikor egy kör elindul vagy véget ér, a bábuk számával, a megfigyelési idővel és azzal, honnan indult a kör, valamint egy eseményt, amikor egy pontszámot beküldenek egy ranglistára vagy a napi táblára, annak nehézségével és a bábuk számával. Ezek az események soha nem tartalmazzák a pontosságodat, a játékosnevedet vagy az általad játszott állásokat."
+            "p": "A PostHog nem használ sütiket. Egy véletlenszerű látogatóazonosítót és a saját beállításait tárolja a böngésződ helyi tárhelyén. A böngésződ a PostHog adatait ennek az oldalnak egy címére, a /relay címre küldi, amely az IP-címeddel együtt továbbítja őket a PostHognak, hogy a PostHog meg tudja állapítani a hozzávetőleges helyedet. A PostHog rögzíti az általad megtekintett oldalakat és azt, hogy mikor hagyod el őket, a gombokra és linkekre leadott kattintásokat a rajtuk megjelenő szöveg nélkül, a JavaScript-hibákat és a teljesítményidőket. Nem rögzíti a képernyődet, sem azt, amit begépelsz, a játékosnevek és a keresett szavak pedig kikerülnek a hozzá érkező oldalcímekből. Emellett megkap minden eseményt, amelyet ez a tájékoztató a Google Analytics kapcsán leír, ugyanazzal a tartalommal, valamint egy eseményt, amikor az oktatóvideó elindul, újra lejátszódik, szünetel, eléri a negyedét, a felét, a háromnegyedét vagy a kilenctizedét, illetve véget ér. Amikor egy AI-crawler vagy AI-asszisztens elolvas egy oldalt, a szerverünk közli a PostHoggal a crawler nevét, az adott oldalt és azt az oldalt, ahonnan a crawler érkezett. A PostHog nem készít rólad profilt, és az adatait nem kapcsoljuk össze a neveddel vagy az e-mail-címeddel."
           },
           {
             "p": "Nem kérjük ezeket az eszközöket arra, hogy gyűjtsék a kapcsolatfelvételi üzeneteid vagy a játékról írt megjegyzéseid tartalmát."
@@ -131,7 +131,7 @@
             "p": "Az adatokat arra használjuk, hogy biztosítsuk és védjük a Memory Chess-t, kiszámítsuk az eredményeket, közzétegyük a ranglistára beküldött pontszámokat, válaszoljunk a kapcsolatfelvételi üzenetekre, áttekintsük a visszajelzéseket, mérjük az oldal teljesítményét, megelőzzük a visszaéléseket, és hirdetésekkel támogassuk az oldalt. Az általad beküldött elérhetőségeket és visszajelzéseket nem adjuk el."
           },
           {
-            "p": "Az adatokat szolgáltatók csak ott kezelik, ahol szükséges: a Google Sheets a kapcsolatfelvételi üzenetekhez és a játékról szóló visszajelzésekhez, a Supabase a játékstatisztikákhoz, a ranglista-bejegyzésekhez, valamint a cikkek megtekintési és kedvelési összesítéseihez, a Vercel a tárhelyszolgáltatáshoz és a teljesítményméréshez, az Ahrefs és a Databuddy az analitikához, a Google pedig az analitikához, a hozzájárulás kezeléséhez és a hirdetésekhez. Ezek a szolgáltatók más országokban is kezelhetnek adatokat, saját adatvédelmi feltételeik szerint."
+            "p": "Az adatokat szolgáltatók csak ott kezelik, ahol szükséges: a Google Sheets a kapcsolatfelvételi üzenetekhez és a játékról szóló visszajelzésekhez, a Supabase a játékstatisztikákhoz, a ranglista-bejegyzésekhez, valamint a cikkek megtekintési és kedvelési összesítéseihez, a Cloudflare a tárhelyszolgáltatáshoz, az Ahrefs és a PostHog az analitikához, a Google pedig az analitikához, a hozzájárulás kezeléséhez és a hirdetésekhez. Ezek a szolgáltatók más országokban is kezelhetnek adatokat, saját adatvédelmi feltételeik szerint."
           },
           {
             "p": "Amikor megnyitsz vagy kedvelsz egy cikket, a Supabase cikkenként csak a megtekintések és a kedvelések összesített számát tárolja, az utolsó változás időpontjával, látogatóazonosító nélkül."

@@ -11,9 +11,6 @@ const customJestConfig = {
   testEnvironment: 'jest-environment-jsdom',
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1',
-    // The SDK's exports map offers only an `import` condition, which Jest's CommonJS resolver never asks for.
-    '^@databuddy/sdk$': '<rootDir>/node_modules/@databuddy/sdk/dist/core/index.mjs',
-    '^@databuddy/sdk/(react|agents)$': '<rootDir>/node_modules/@databuddy/sdk/dist/$1/index.mjs',
   },
   testMatch: ['**/__tests__/**/*.test.[jt]s?(x)'],
   // Agent worktrees under .claude/ carry a full copy of the repo, so without
@@ -44,7 +41,6 @@ module.exports = async () => {
     'use-intl',
     'intl-messageformat',
     '@formatjs/[^/]+',
-    '@databuddy/sdk',
   ].join('|');
 
   config.transformIgnorePatterns = [

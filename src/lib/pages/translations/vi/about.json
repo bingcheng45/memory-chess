@@ -1,6 +1,6 @@
 {
   "sourceHash": "561692d566e90f3cdcf74cd667de64e3ed16036b09225d75f7ec5427ecbd67da",
-  "approvedHash": "10a9dede11cddd09a0e813ddcc45a8e4f718fac039c6761d4425c07d1c1d662e",
+  "approvedHash": "560ccd2f4abcd438b0f20f46c9987849ed0c214d46168e3e1799a3126f58a94d",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -59,7 +59,7 @@
         "title": "Các bài hướng dẫn trong mục Học được viết thế nào",
         "blocks": [
           {
-            "p": "<learn>Thư viện Học</learn> có {count, plural, other {# bài hướng dẫn}} về tầm nhìn bàn cờ, hình dung và luyện trí nhớ. Các bài này được viết với sự hỗ trợ của AI. Mọi thế cờ trong đó đều được một đoạn mã kiểm tra về số quân, tính hợp lệ và từng đòn tấn công mà bài viết nêu ra. Mọi nhận định về cách Memory Chess hoạt động đều được đối chiếu với mã nguồn của trò chơi. Mỗi bài hướng dẫn đều có bài luyện. Một số bài luyện mở một ván trong trò chơi với thiết lập phù hợp. Số còn lại dành cho bàn cờ thật."
+            "p": "<learn>Thư viện Học</learn> có {count, plural, one {# bài hướng dẫn} other {# bài hướng dẫn}} về tầm nhìn bàn cờ, hình dung và luyện trí nhớ. Các bài này được viết với sự hỗ trợ của AI. Mọi thế cờ trong đó đều được một đoạn mã kiểm tra về số quân, tính hợp lệ và từng đòn tấn công mà bài viết nêu ra. Mọi nhận định về cách Memory Chess hoạt động đều được đối chiếu với mã nguồn của trò chơi. Mỗi bài hướng dẫn đều có bài luyện. Một số bài luyện mở một ván trong trò chơi với thiết lập phù hợp. Số còn lại dành cho bàn cờ thật."
           },
           {
             "p": "Khi các bài hướng dẫn đưa ra nhận định về trí nhớ và việc học, chúng trích dẫn các nghiên cứu đã công bố, bao gồm công trình của Gobet và Simon về trí nhớ trong cờ vua và các tài liệu thực nghiệm về việc gợi nhớ (retrieval) và luyện tập giãn cách. Mỗi trích dẫn đều có liên kết đến nguồn. Tôi chưa tự thực hiện nghiên cứu nào, và các bài hướng dẫn không giả vờ là có."

@@ -43,10 +43,10 @@ const privacy: PageText = {
       title: "Information collected automatically",
       blocks: [
         {
-          p: "Our measurement providers may receive technical and usage information such as pages viewed, approximate location, browser and device type, referring page, IP address, and performance timings. Memory Chess uses Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics, and Databuddy to understand traffic and keep the site fast and reliable.",
+          p: "Our measurement providers may receive technical and usage information such as pages viewed, approximate location, browser and device type, referring page, IP address, and performance timings. Memory Chess uses Google Analytics, PostHog, and Ahrefs Analytics to understand traffic and keep the site fast and reliable.",
         },
         {
-          p: "Databuddy uses no cookies. It keeps a random visitor id in your browser's local storage and a session id in its session storage. It records the pages you view, performance timings, JavaScript errors, clicks on links that leave the site, clicks that are repeated or get no response, and forms left before they are sent. It also receives an event when a round starts or finishes, with the number of pieces, the study time and where the round started, and an event when a score is sent to a leaderboard or the daily board, with its difficulty and number of pieces. These events never carry your accuracy, your player name or the positions you played.",
+          p: "PostHog uses no cookies. It keeps a random visitor id and its settings in your browser's local storage. Your browser sends its data to an address on this site, /relay, which passes it on to PostHog with your IP address so PostHog can work out your approximate location. It records the pages you view and when you leave them, clicks on buttons and links without the text shown on them, JavaScript errors, and performance timings. It does not record your screen or what you type, and player names and search words are removed from the page addresses it receives. It also receives every event this policy describes for Google Analytics, with the same contents, and an event when the tutorial video starts, plays again, pauses, reaches a quarter, half, three quarters or nine tenths, or ends. When an AI crawler or assistant reads a page, our server tells PostHog the crawler's name, the page and the page it came from. PostHog builds no profile of you, and we do not link its data to your name or email address.",
         },
         {
           p: "We do not ask these tools to collect the content of your contact messages or game-feedback comments.",
@@ -129,7 +129,7 @@ const privacy: PageText = {
           p: "We use information to provide and secure Memory Chess, calculate results, publish submitted leaderboard scores, reply to contact messages, review feedback, measure site performance, prevent abuse, and support the site with advertising. We do not sell the contact details or feedback you submit.",
         },
         {
-          p: "Data is handled by service providers only where needed: Google Sheets for contact messages and game feedback, Supabase for game statistics, leaderboard entries, and article view and like totals, Vercel for hosting and performance measurement, Ahrefs and Databuddy for analytics, and Google for analytics, consent, and advertising. These providers may process data in other countries under their own privacy terms.",
+          p: "Data is handled by service providers only where needed: Google Sheets for contact messages and game feedback, Supabase for game statistics, leaderboard entries, and article view and like totals, Cloudflare for hosting, Ahrefs and PostHog for analytics, and Google for analytics, consent, and advertising. These providers may process data in other countries under their own privacy terms.",
         },
         {
           p: "When you open or like an article, Supabase stores only a total of views and a total of likes for each article, with the time of the last change and no visitor identifier.",

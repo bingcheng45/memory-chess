@@ -1,6 +1,6 @@
 {
-  "sourceHash": "32649f71087d6dde37e52f0db6b048183b37788a7220c0b047396ae28ca4c132",
-  "approvedHash": "5b98e1c467cb275077c02ce46158120f163061c2d9483b65138c368c328d6a3a",
+  "sourceHash": "f260b577b05e2e71f6c724e36103144f0f203d4f93e76f8466d3b2810bb812a8",
+  "approvedHash": "4e607355e117e6fcf5912c9b5bba3fb449b371e717ea04cb62fd9134b1d33856",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,10 +45,10 @@
         "title": "Automaattisesti kerättävät tiedot",
         "blocks": [
           {
-            "p": "Mittauspalveluiden tarjoajamme voivat saada teknisiä tietoja ja käyttötietoja, kuten katsotut sivut, likimääräisen sijainnin, selaimen ja laitteen tyypin, viittaavan sivun, IP-osoitteen ja suorituskyvyn ajoitukset. Memory Chess käyttää Google Analyticsia, Vercel Analyticsia, Vercel Speed Insightsia, Ahrefs Analyticsia ja Databuddya ymmärtääkseen liikennettä ja pitääkseen sivuston nopeana ja luotettavana."
+            "p": "Mittauspalveluiden tarjoajamme voivat saada teknisiä tietoja ja käyttötietoja, kuten katsotut sivut, likimääräisen sijainnin, selaimen ja laitteen tyypin, viittaavan sivun, IP-osoitteen ja suorituskyvyn ajoitukset. Memory Chess käyttää Google Analyticsia, PostHogia ja Ahrefs Analyticsia ymmärtääkseen liikennettä ja pitääkseen sivuston nopeana ja luotettavana."
           },
           {
-            "p": "Databuddy ei käytä evästeitä. Se säilyttää satunnaisen kävijätunnisteen selaimesi paikallisessa tallennustilassa ja istuntotunnisteen sen istuntotallennuksessa. Se kirjaa katsomasi sivut, suorituskyvyn ajoitukset, JavaScript-virheet, klikkaukset linkkeihin, jotka vievät pois sivustolta, klikkaukset, jotka toistuvat tai jäävät ilman vastetta, sekä lomakkeet, jotka jätetään kesken ennen lähettämistä. Se saa myös tapahtuman, kun kierros alkaa tai päättyy, ja siinä on nappuloiden määrä, tutkimisaika ja mistä kierros alkoi, sekä tapahtuman, kun pisteet lähetetään tulostaulukkoon tai päivän laudalle, ja siinä on niiden vaikeustaso ja nappuloiden määrä. Nämä tapahtumat eivät koskaan sisällä tarkkuuttasi, pelaajanimeäsi eivätkä pelaamiasi asemia."
+            "p": "PostHog ei käytä evästeitä. Se säilyttää satunnaisen kävijätunnisteen ja omat asetuksensa selaimesi paikallisessa tallennustilassa. Selaimesi lähettää PostHogin tiedot tämän sivuston osoitteeseen /relay, joka välittää ne PostHogille yhdessä IP-osoitteesi kanssa, jotta PostHog voi päätellä likimääräisen sijaintisi. Se kirjaa katsomasi sivut ja sen, milloin poistut niiltä, klikkaukset painikkeisiin ja linkkeihin ilman niissä näkyvää tekstiä, JavaScript-virheet ja suorituskyvyn ajoitukset. Se ei tallenna näyttöäsi eikä sitä, mitä kirjoitat, ja pelaajanimet ja hakusanat poistetaan sivujen osoitteista, jotka se vastaanottaa. Se saa myös jokaisen tapahtuman, jonka tämä seloste kuvaa Google Analyticsin osalta, samalla sisällöllä, sekä tapahtuman, kun opetusvideo alkaa, toistetaan uudelleen, keskeytetään, saavuttaa neljänneksen, puolivälin, kolme neljännestä tai yhdeksän kymmenesosaa tai päättyy. Kun tekoälyn indeksointirobotti tai tekoälyavustaja lukee sivun, palvelimemme kertoo PostHogille indeksointirobotin nimen, sivun ja sivun, jolta se tuli. PostHog ei rakenna sinusta profiilia, emmekä yhdistä sen tietoja nimeesi tai sähköpostiosoitteeseesi."
           },
           {
             "p": "Emme pyydä näitä työkaluja keräämään yhteydenottoviestiesi tai pelipalautteen kommenttiesi sisältöä."
@@ -131,7 +131,7 @@
             "p": "Käytämme tietoja Memory Chessin tarjoamiseen ja suojaamiseen, tulosten laskemiseen, lähetettyjen tulostaulukon pisteiden julkaisemiseen, yhteydenottoviesteihin vastaamiseen, palautteen läpikäyntiin, sivuston suorituskyvyn mittaamiseen, väärinkäytön estämiseen ja sivuston tukemiseen mainonnalla. Emme myy lähettämiäsi yhteystietoja emmekä palautetta."
           },
           {
-            "p": "Palveluntarjoajat käsittelevät tietoja vain tarpeen mukaan: Google Sheets yhteydenottoviestien ja pelipalautteen osalta, Supabase pelitilastojen, tulostaulukon merkintöjen sekä artikkelien katselu- ja tykkäysmäärien osalta, Vercel palvelintilan ja suorituskyvyn mittauksen osalta, Ahrefs ja Databuddy analytiikan osalta ja Google analytiikan, suostumusten ja mainonnan osalta. Nämä palveluntarjoajat voivat käsitellä tietoja muissa maissa omien tietosuojaehtojensa mukaisesti."
+            "p": "Palveluntarjoajat käsittelevät tietoja vain tarpeen mukaan: Google Sheets yhteydenottoviestien ja pelipalautteen osalta, Supabase pelitilastojen, tulostaulukon merkintöjen sekä artikkelien katselu- ja tykkäysmäärien osalta, Cloudflare palvelintilan osalta, Ahrefs ja PostHog analytiikan osalta ja Google analytiikan, suostumusten ja mainonnan osalta. Nämä palveluntarjoajat voivat käsitellä tietoja muissa maissa omien tietosuojaehtojensa mukaisesti."
           },
           {
             "p": "Kun avaat artikkelin tai tykkäät siitä, Supabase tallentaa kustakin artikkelista vain katselukertojen kokonaismäärän ja tykkäysten kokonaismäärän sekä viimeisimmän muutoksen ajan, ilman kävijän tunnistetta."

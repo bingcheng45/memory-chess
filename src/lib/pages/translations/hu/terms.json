@@ -1,6 +1,6 @@
 {
-  "sourceHash": "39d0a02577083780ff0b0e7f7472146a84ce5b8ab65da823e34717436a3d3bd2",
-  "approvedHash": "47f41c3830f9ff1fe8429a4ef92a493df69907c1aa37df028aeed7d93f3169e6",
+  "sourceHash": "63f327541468f221197d487da4206ee6b5ac43e05b17bc5e8d58bd77ecfd7676",
+  "approvedHash": "f53de06a9bc7b22cfdcab6082df58f0e0b4826612953c24eba449ce261e33867",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -70,7 +70,7 @@
         "title": "Harmadik féltől származó szolgáltatások",
         "blocks": [
           {
-            "p": "Az oldal néhány külső szolgáltatásra épül. A Google AdSense jeleníti meg a hirdetéseket, amelyek az oldalt ingyenesen tartják. A Google Analytics, a Vercel Analytics, a Vercel Speed Insights, az Ahrefs Analytics és a Databuddy a forgalmat és a teljesítményt méri. A Supabase tárolja a játékstatisztikákat és a ranglista-bejegyzéseket. Mindegyiknek saját feltételei vannak, az <privacy>adatvédelmi tájékoztató</privacy> pedig elmagyarázza, melyik milyen adatokhoz fér hozzá, és milyen lehetőségeid vannak."
+            "p": "Az oldal néhány külső szolgáltatásra épül. A Google AdSense jeleníti meg a hirdetéseket, amelyek az oldalt ingyenesen tartják. A Google Analytics, a PostHog és az Ahrefs Analytics a forgalmat és a teljesítményt méri. A Supabase tárolja a játékstatisztikákat és a ranglista-bejegyzéseket. Mindegyiknek saját feltételei vannak, az <privacy>adatvédelmi tájékoztató</privacy> pedig elmagyarázza, melyik milyen adatokhoz fér hozzá, és milyen lehetőségeid vannak."
           }
         ]
       },

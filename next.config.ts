@@ -12,8 +12,6 @@ const SKIPPED_BY_MIDDLEWARE = "(?:api|_vercel).*|.*\\..*";
 const GOOGLE_ADS = ["https://*.googlesyndication.com", "https://*.doubleclick.net", "https://*.adtrafficquality.google", "https://www.google.com"];
 const GOOGLE_ANALYTICS = ["https://www.googletagmanager.com", "https://*.google-analytics.com", "https://analytics.google.com", "https://*.analytics.google.com"];
 const AHREFS = "https://analytics.ahrefs.com";
-const DATABUDDY_SCRIPT = "https://cdn.databuddy.cc";
-const DATABUDDY_EVENTS = ["https://basket.databuddy.cc", "https://api.databuddy.cc"];
 const YOUTUBE = "https://www.youtube.com";
 const YOUTUBE_NOCOOKIE = "https://www.youtube-nocookie.com";
 
@@ -28,11 +26,11 @@ const CSP_REPORT_GROUP = "csp-endpoint";
  */
 const REPORT_ONLY_POLICY = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' ${[...GOOGLE_ADS, ...GOOGLE_ANALYTICS, AHREFS, DATABUDDY_SCRIPT, YOUTUBE].join(" ")}`,
+  `script-src 'self' 'unsafe-inline' ${[...GOOGLE_ADS, ...GOOGLE_ANALYTICS, AHREFS, YOUTUBE].join(" ")}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' data: blob: https:",
   "font-src 'self' data:",
-  `connect-src 'self' ${[...GOOGLE_ADS, ...GOOGLE_ANALYTICS, AHREFS, ...DATABUDDY_EVENTS].join(" ")}`,
+  `connect-src 'self' ${[...GOOGLE_ADS, ...GOOGLE_ANALYTICS, AHREFS].join(" ")}`,
   `frame-src ${[...GOOGLE_ADS, YOUTUBE, YOUTUBE_NOCOOKIE].join(" ")}`,
   "frame-ancestors 'none'",
   "object-src 'none'",

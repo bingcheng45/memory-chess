@@ -1387,8 +1387,8 @@
       "showing": "Hiển thị {first} đến {last} trong tổng số {total}"
     },
     "counts": {
-      "views": "{count, plural, other {# lượt xem}}",
-      "likes": "{count, plural, other {# lượt thích}}"
+      "views": "{count, plural, one {# lượt xem} other {# lượt xem}}",
+      "likes": "{count, plural, one {# lượt thích} other {# lượt thích}}"
     },
     "like": {
       "button": "Thích bài viết này",
@@ -1414,7 +1414,7 @@
         "memoryFeat": "Thành tích về trí nhớ"
       },
       "drillHeading": "Đến lượt bạn",
-      "drillAction": "Chơi {pieces, plural, other {# quân}}, {seconds, plural, other {# giây}}",
+      "drillAction": "Chơi {pieces, plural, one {# quân} other {# quân}}, {seconds, plural, one {# giây} other {# giây}}",
       "sources": "Nguồn",
       "nextArticle": "Bài tiếp theo"
     },
@@ -1422,7 +1422,7 @@
       "eyebrow": "Bài đọc tiếp theo",
       "yourRound": "Vòng chơi của bạn",
       "articleDrill": "Bài tập của bài viết này",
-      "roundSize": "{pieces, plural, other {# quân}}, {seconds, plural, other {# giây}}",
+      "roundSize": "{pieces, plural, one {# quân} other {# quân}}, {seconds, plural, one {# giây} other {# giây}}",
       "read": "Đọc bài viết",
       "tryDrill": "Thử bài tập đó"
     }
@@ -1526,7 +1526,7 @@
       "entry": "Số quân đúng trong lượt gửi tốt nhất, {difficulty, select, easy {mức Dễ} medium {mức Trung bình} hard {mức Khó} other {mức Đại kiện tướng}}",
       "overDays": "Trong {days, plural, other {# ngày}}",
       "firstDay": "Từ {date}",
-      "rating": "{sign, select, up {Tăng {change}} down {Giảm {change}} other {Không đổi}} qua {rounds, plural, other {# ván tính điểm}} gần nhất",
+      "rating": "{sign, select, up {Tăng {change}} down {Giảm {change}} other {Không đổi}} qua {rounds, plural, one {ván tính điểm} other {# ván tính điểm}} gần nhất",
       "ratingSince": "Từ các ván đấu tính điểm của bạn",
       "winStreak": "Số ván đấu liên tiếp đạt {accuracy}% trở lên",
       "bestAt": "{source, select, calibration {Luyện tập} other {Ván đấu}} với {pieceCount} quân, {memorizeSeconds} giây"

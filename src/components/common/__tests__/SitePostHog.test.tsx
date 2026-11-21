@@ -1,5 +1,5 @@
 import { render } from "@testing-library/react";
-import SitePostHog, { POSTHOG_OPTIONS, startPostHog, withoutTypedTextInEvent } from "@/components/common/SitePostHog";
+import SitePostHog, { POSTHOG_OPTIONS, resetLandingPageviewForTests, startPostHog, withLandingTime, withoutTypedTextInEvent } from "@/components/common/SitePostHog";
 
 const mockInit = jest.fn();
 jest.mock("posthog-js", () => ({
@@ -24,7 +24,7 @@ describe("SitePostHog", () => {
       disable_surveys: true,
       advanced_disable_flags: true,
     });
-    expect(POSTHOG_OPTIONS.before_send).toBe(withoutTypedTextInEvent);
+    expect(POSTHOG_OPTIONS.before_send).toEqual([withLandingTime, withoutTypedTextInEvent]);
   });
 
   it("starts PostHog with those settings and the project key", async () => {
@@ -43,5 +43,16 @@ describe("SitePostHog", () => {
     await new Promise((resolve) => setTimeout(resolve, 0));
     expect(mockInit).toHaveBeenCalledTimes(1);
     readyState.mockRestore();
+  });
+
+  it("dates the first page view to when the page began loading, so earlier queued events follow it", () => {
+    resetLandingPageviewForTests();
+    const landing = withLandingTime({ event: "$pageview", timestamp: new Date("2026-11-21T10:00:09Z") });
+    const later = withLandingTime({ event: "$pageview", timestamp: new Date("2026-11-21T10:01:00Z") });
+    const round = withLandingTime({ event: "round_start", timestamp: new Date("2026-11-21T10:00:03Z") });
+
+    expect(landing?.timestamp).toEqual(new Date(performance.timeOrigin));
+    expect(later?.timestamp).toEqual(new Date("2026-11-21T10:01:00Z"));
+    expect(round?.timestamp).toEqual(new Date("2026-11-21T10:00:03Z"));
   });
 });

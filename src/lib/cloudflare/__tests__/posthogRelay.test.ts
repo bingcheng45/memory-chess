@@ -40,7 +40,7 @@ describe("PostHog relay", () => {
       new Request("https://thememorychess.com/relay/e/?ver=1", {
         method: "POST",
         body: '{"event":"round_start"}',
-        headers: { cookie: "NEXT_LOCALE=de", "cf-connecting-ip": "203.0.113.7" },
+        headers: { cookie: "NEXT_LOCALE=de", "cf-connecting-ip": "203.0.113.7", referer: "https://thememorychess.com/leaderboard?player=Ann" },
       }),
       { app, englishApp: app },
       { waitUntil: () => undefined },
@@ -52,6 +52,7 @@ describe("PostHog relay", () => {
     expect(forwarded[0].method).toBe("POST");
     expect(await forwarded[0].text()).toBe('{"event":"round_start"}');
     expect(forwarded[0].headers.get("cookie")).toBeNull();
+    expect(forwarded[0].headers.get("referer")).toBeNull();
     expect(forwarded[0].headers.get("x-forwarded-for")).toBe("203.0.113.7");
     expect(response.headers.get("set-cookie")).toBeNull();
     expect(response.headers.get("cache-control")).toBe("private, no-store");

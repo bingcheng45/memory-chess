@@ -21,7 +21,7 @@ export function postHogUpstreamUrl(url: URL): URL {
 }
 
 /**
- * Forwards the request without the site's cookies, and with the visitor's IP
+ * Forwards the request without the site's cookies or the page address, and with the visitor's IP
  * so PostHog places them in the right country instead of in a Cloudflare data
  * centre. Only the SDK's scripts may be kept by a cache: events and their
  * replies are never stored.
@@ -30,6 +30,8 @@ export async function relayToPostHog(request: Request): Promise<Response> {
   const upstream = postHogUpstreamUrl(new URL(request.url));
   const headers = new Headers(request.headers);
   headers.delete("cookie");
+  // The page address can hold a player name or a search, which events never carry; PostHog does not need it.
+  headers.delete("referer");
   headers.set("host", upstream.host);
   const visitorIp = request.headers.get("cf-connecting-ip");
   if (visitorIp) headers.set("x-forwarded-for", visitorIp);

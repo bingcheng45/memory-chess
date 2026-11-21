@@ -9,12 +9,30 @@ import { POSTHOG_PROJECT_KEY } from "@/lib/analytics/posthogKey";
 
 const POSTHOG_UI_HOST = "https://us.posthog.com";
 
-type CaptureResult = { properties?: Record<string, unknown>; $set?: unknown; $set_once?: unknown } | null;
+type CaptureResult = { event?: string; timestamp?: Date; properties?: Record<string, unknown>; $set?: unknown; $set_once?: unknown } | null;
 
 /** Drops typed text (a player name or a search) from every address an event carries, as the privacy page promises. */
 export function withoutTypedTextInEvent<T extends CaptureResult>(event: T): T {
   if (!event) return event;
   return { ...event, properties: scrubTypedText(event.properties), $set: scrubTypedText(event.$set), $set_once: scrubTypedText(event.$set_once) };
+}
+
+let landingPageviewSent = false;
+
+/**
+ * PostHog sends the first page view when it starts, after the page's load event, but events sent before then keep the
+ * time they happened. Dating the first page view to when the page began loading keeps it ahead of them, so a round
+ * started on a slow load still counts in the page view → round funnel.
+ */
+export function withLandingTime<T extends CaptureResult>(event: T): T {
+  if (!event || event.event !== "$pageview" || landingPageviewSent) return event;
+  landingPageviewSent = true;
+  return { ...event, timestamp: new Date(performance.timeOrigin) };
+}
+
+/** For tests: treat the next page view as the landing one again. */
+export function resetLandingPageviewForTests(): void {
+  landingPageviewSent = false;
 }
 
 /**
@@ -41,7 +59,7 @@ export const POSTHOG_OPTIONS = {
   disable_session_recording: true,
   disable_surveys: true,
   advanced_disable_flags: true,
-  before_send: withoutTypedTextInEvent,
+  before_send: [withLandingTime, withoutTypedTextInEvent],
 } satisfies Partial<PostHogConfig>;
 
 export async function startPostHog(): Promise<void> {

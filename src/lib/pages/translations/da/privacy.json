@@ -1,6 +1,6 @@
 {
-  "sourceHash": "32649f71087d6dde37e52f0db6b048183b37788a7220c0b047396ae28ca4c132",
-  "approvedHash": "4a42917c3529d6655a7977da82ec30c83754a82bbbcb5197526270a1cb16d532",
+  "sourceHash": "f260b577b05e2e71f6c724e36103144f0f203d4f93e76f8466d3b2810bb812a8",
+  "approvedHash": "02adb7d2949f0170719daa4489972b5045eb4070e3e1d563184c7f7af9bb737d",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,10 +45,10 @@
         "title": "Oplysninger, der indsamles automatisk",
         "blocks": [
           {
-            "p": "Vores måletjenester kan modtage tekniske oplysninger og brugsoplysninger som viste sider, omtrentlig placering, type af browser og enhed, henvisende side, IP-adresse og indlæsningstider. Memory Chess bruger Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics og Databuddy til at forstå trafikken og holde siden hurtig og pålidelig."
+            "p": "Vores måletjenester kan modtage tekniske oplysninger og brugsoplysninger som viste sider, omtrentlig placering, type af browser og enhed, henvisende side, IP-adresse og indlæsningstider. Memory Chess bruger Google Analytics, PostHog og Ahrefs Analytics til at forstå trafikken og holde siden hurtig og pålidelig."
           },
           {
-            "p": "Databuddy bruger ingen cookies. Den gemmer et tilfældigt id for den besøgende i din browsers lokale lagring og et sessions-id i browserens sessionslagring. Den registrerer de sider, du ser, indlæsningstider, JavaScript-fejl, klik på links, der fører væk fra siden, klik, der gentages eller ikke får noget svar, og formularer, der forlades, før de sendes. Den modtager også en hændelse, når en runde starter eller slutter, med antallet af brikker, studietiden og hvor runden startede, og en hændelse, når en score sendes til en rangliste eller dagens bræt, med dens sværhedsgrad og antallet af brikker. Disse hændelser indeholder aldrig din præcision, dit spillernavn eller de stillinger, du spillede."
+            "p": "PostHog bruger ingen cookies. Den gemmer et tilfældigt id for den besøgende og sine indstillinger i din browsers lokale lagring. Din browser sender dataene til PostHog til en adresse på denne side, /relay, som sender dem videre til PostHog sammen med din IP-adresse, så PostHog kan finde frem til din omtrentlige placering. Den registrerer de sider, du ser, og hvornår du forlader dem, klik på knapper og links uden den tekst, der står på dem, JavaScript-fejl og indlæsningstider. Den optager ikke din skærm eller det, du skriver, og spillernavne og søgeord fjernes fra de sideadresser, den modtager. Den modtager også hver hændelse, som denne politik beskriver for Google Analytics, med samme indhold, og en hændelse, når instruktionsvideoen starter, afspilles igen, sættes på pause, når en fjerdedel, halvdelen, tre fjerdedele eller ni tiendedele eller slutter. Når en AI-crawler eller AI-assistent læser en side, oplyser vores server PostHog om crawlerens navn, siden og den side, den kom fra. PostHog opbygger ingen profil af dig, og vi kobler ikke dens data til dit navn eller din e-mailadresse."
           },
           {
             "p": "Vi beder ikke disse værktøjer om at indsamle indholdet af dine kontaktbeskeder eller af dine kommentarer i spilfeedbacken."
@@ -131,7 +131,7 @@
             "p": "Vi bruger oplysninger til at levere og sikre Memory Chess, beregne resultater, offentliggøre indsendte scorer på ranglisten, svare på kontaktbeskeder, gennemgå feedback, måle sidens ydeevne, forhindre misbrug og støtte siden med annoncer. Vi sælger ikke de kontaktoplysninger eller den feedback, du indsender."
           },
           {
-            "p": "Data håndteres kun af tjenesteudbydere, hvor det er nødvendigt: Google Sheets til kontaktbeskeder og spilfeedback, Supabase til spilstatistik, bidrag til ranglisten og totaler for visninger og likes af artikler, Vercel til hosting og måling af ydeevne, Ahrefs og Databuddy til analyse og Google til analyse, samtykke og annoncering. Disse udbydere kan behandle data i andre lande efter deres egne privatlivsvilkår."
+            "p": "Data håndteres kun af tjenesteudbydere, hvor det er nødvendigt: Google Sheets til kontaktbeskeder og spilfeedback, Supabase til spilstatistik, bidrag til ranglisten og totaler for visninger og likes af artikler, Cloudflare til hosting, Ahrefs og PostHog til analyse og Google til analyse, samtykke og annoncering. Disse udbydere kan behandle data i andre lande efter deres egne privatlivsvilkår."
           },
           {
             "p": "Når du åbner eller synes godt om en artikel, gemmer Supabase kun et samlet antal visninger og et samlet antal likes for hver artikel, med tidspunktet for den seneste ændring og uden nogen identifikator for den besøgende."

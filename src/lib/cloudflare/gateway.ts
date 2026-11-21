@@ -4,6 +4,7 @@ import { DEFAULT_LOCALE } from "@/i18n/routing";
 import { isGatewayFile, renderedPath, storedPage, wantsStoredHtml, type PageStore } from "./gatewayPages";
 import { isApiPath, isSameForEveryVisitor, isStaticFile, linkWithSiteOrigin } from "./workersCache";
 import { AGENT_COUNTED_HEADER } from "@/lib/liveSite";
+import { isPostHogRelayPath, relayToPostHog } from "./posthogRelay";
 
 const LOCALE_COOKIE = "NEXT_LOCALE";
 /**
@@ -86,7 +87,9 @@ export async function handleGatewayRequest(
   bindings: GatewayBindings,
   event: Pick<NextFetchEvent, "waitUntil">,
 ): Promise<Response> {
-  if (isGatewayFile(new URL(request.url).pathname)) return new Response("Not Found", { status: 404 });
+  const { pathname } = new URL(request.url);
+  if (isPostHogRelayPath(pathname)) return relayToPostHog(request);
+  if (isGatewayFile(pathname)) return new Response("Not Found", { status: 404 });
   if (!isPageRequest(request)) return bindings.app.fetch(request);
 
   const decision = await middleware(new NextRequest(request), event as NextFetchEvent);

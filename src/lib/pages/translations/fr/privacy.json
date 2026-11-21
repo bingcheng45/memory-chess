@@ -1,6 +1,6 @@
 {
-  "sourceHash": "32649f71087d6dde37e52f0db6b048183b37788a7220c0b047396ae28ca4c132",
-  "approvedHash": "70002cd602fcdce547c750efb1f1236026509f6524b178eea45a24e5d26c6fbc",
+  "sourceHash": "f260b577b05e2e71f6c724e36103144f0f203d4f93e76f8466d3b2810bb812a8",
+  "approvedHash": "8a71e08d0cd69103f66c1ff159f2736a8e1cdcf1de60877d5b64501f5516000e",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,10 +45,10 @@
         "title": "Les informations collectées automatiquement",
         "blocks": [
           {
-            "p": "Nos fournisseurs de mesure d’audience peuvent recevoir des informations techniques et d’utilisation, telles que les pages consultées, la localisation approximative, le type de navigateur et d’appareil, la page de provenance, l’adresse IP et des mesures de performance. Memory Chess utilise Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics et Databuddy pour comprendre le trafic et garder le site rapide et fiable."
+            "p": "Nos fournisseurs de mesure d’audience peuvent recevoir des informations techniques et d’utilisation, telles que les pages consultées, la localisation approximative, le type de navigateur et d’appareil, la page de provenance, l’adresse IP et des mesures de performance. Memory Chess utilise Google Analytics, PostHog et Ahrefs Analytics pour comprendre le trafic et garder le site rapide et fiable."
           },
           {
-            "p": "Databuddy n’utilise aucun cookie. Il conserve un identifiant de visiteur aléatoire dans le stockage local de votre navigateur et un identifiant de session dans son stockage de session. Il enregistre les pages que vous consultez, les mesures de performance, les erreurs JavaScript, les clics sur des liens qui quittent le site, les clics répétés ou restés sans réponse, et les formulaires abandonnés avant d’être envoyés. Il reçoit aussi un événement lorsqu’une partie commence ou se termine, avec le nombre de pièces, le temps d’étude et l’endroit où la partie a commencé, et un événement lorsqu’un score est envoyé à un classement ou au plateau du jour, avec sa difficulté et son nombre de pièces. Ces événements ne contiennent jamais votre précision, votre nom de joueur ni les positions que vous avez jouées."
+            "p": "PostHog n’utilise aucun cookie. Il conserve un identifiant de visiteur aléatoire et ses propres réglages dans le stockage local de votre navigateur. Votre navigateur envoie les données de PostHog à une adresse de ce site, /relay, qui les transmet à PostHog avec votre adresse IP afin que PostHog puisse déterminer votre localisation approximative. PostHog enregistre les pages que vous consultez et le moment où vous les quittez, les clics sur les boutons et les liens sans le texte qui y est affiché, les erreurs JavaScript et les mesures de performance. Il n’enregistre ni votre écran ni ce que vous tapez, et les noms de joueur et les mots de recherche sont retirés des adresses de page qu’il reçoit. Il reçoit aussi chaque événement que cette politique décrit pour Google Analytics, avec le même contenu, et un événement lorsque la vidéo du tutoriel démarre, est relancée, est mise en pause, atteint un quart, la moitié, les trois quarts ou les neuf dixièmes, ou se termine. Lorsqu’un robot d’exploration d’IA ou un assistant d’IA lit une page, notre serveur communique à PostHog le nom du robot, la page et la page d’où il venait. PostHog n’établit aucun profil à votre sujet, et nous ne relions pas ses données à votre nom ni à votre adresse e-mail."
           },
           {
             "p": "Nous ne demandons pas à ces outils de collecter le contenu de vos messages de contact ni de vos commentaires sur le jeu."
@@ -131,7 +131,7 @@
             "p": "Nous utilisons les informations pour fournir et sécuriser Memory Chess, calculer les résultats, publier les scores soumis au classement, répondre aux messages de contact, examiner les avis, mesurer les performances du site, prévenir les abus et soutenir le site grâce à la publicité. Nous ne vendons pas les coordonnées ni les avis que vous soumettez."
           },
           {
-            "p": "Les données ne sont traitées par des prestataires que lorsque c’est nécessaire : Google Sheets pour les messages de contact et les avis sur le jeu, Supabase pour les statistiques de jeu, les entrées du classement et les totaux de vues et de « j’aime » des articles, Vercel pour l’hébergement et la mesure des performances, Ahrefs et Databuddy pour l’analyse d’audience, et Google pour l’analyse d’audience, le consentement et la publicité. Ces prestataires peuvent traiter des données dans d’autres pays, selon leurs propres conditions de confidentialité."
+            "p": "Les données ne sont traitées par des prestataires que lorsque c’est nécessaire : Google Sheets pour les messages de contact et les avis sur le jeu, Supabase pour les statistiques de jeu, les entrées du classement et les totaux de vues et de « j’aime » des articles, Cloudflare pour l’hébergement, Ahrefs et PostHog pour l’analyse d’audience, et Google pour l’analyse d’audience, le consentement et la publicité. Ces prestataires peuvent traiter des données dans d’autres pays, selon leurs propres conditions de confidentialité."
           },
           {
             "p": "Lorsque vous ouvrez ou aimez un article, Supabase stocke uniquement un total de vues et un total de « j’aime » pour chaque article, avec l’heure de la dernière modification et sans aucun identifiant de visiteur."

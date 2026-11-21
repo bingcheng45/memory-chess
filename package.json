@@ -36,7 +36,6 @@
     "cf:preview": "opennextjs-cloudflare upload"
   },
   "dependencies": {
-    "@databuddy/sdk": "^3.2.1",
     "@hookform/resolvers": "^5.0.1",
     "@next/third-parties": "^16.4.3",
     "@radix-ui/react-dialog": "^1.1.6",
@@ -50,6 +49,7 @@
     "lucide-react": "^0.487.0",
     "next": "16.4.3",
     "next-intl": "^4.13.7",
+    "posthog-js": "^1.453.2",
     "react": "^19.3.1",
     "react-dom": "^19.3.1",
     "react-hook-form": "^7.56.1",

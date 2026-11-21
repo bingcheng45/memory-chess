@@ -33,9 +33,9 @@ describe("TermsPage", () => {
     const { container } = render(await TermsPage(IN_ENGLISH));
 
     expect(container.firstElementChild).toHaveClass("lab-paper");
-    const updated = screen.getByText("October 14, 2026");
+    const updated = screen.getByText("November 21, 2026");
     expect(updated.tagName).toBe("TIME");
-    expect(updated).toHaveAttribute("dateTime", "2026-10-14");
+    expect(updated).toHaveAttribute("dateTime", "2026-11-21");
   });
 
   it("lists every section near the top, each link landing on its heading", async () => {

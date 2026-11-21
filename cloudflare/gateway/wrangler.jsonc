@@ -13,9 +13,8 @@
     { "binding": "APP_LOCALE_DECIDED", "service": "memory-chess", "props": { "localeDecided": true } }
   ],
   "vars": {
-    "SITE_ENV": "production",
-    // Public: the same ID is in every page's HTML. The gateway counts AI crawlers for the whole site.
-    "NEXT_PUBLIC_DATABUDDY_CLIENT_ID": "1b4dd0dc-cad9-47f1-bd14-78a832902515"
+    // The gateway counts AI crawlers for the whole site, and only where this says production.
+    "SITE_ENV": "production"
   },
   "observability": {
     "enabled": true

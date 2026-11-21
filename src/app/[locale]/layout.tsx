@@ -5,7 +5,7 @@ import { getMessages, getTranslations, setRequestLocale } from "next-intl/server
 import "../globals.css";
 
 import SiteGoogleAnalytics from "@/components/common/SiteGoogleAnalytics";
-import SiteDatabuddy from "@/components/common/SiteDatabuddy";
+import SitePostHog from "@/components/common/SitePostHog";
 import { isLiveSite } from "@/lib/liveSite";
 import SoundStopNavigator from "@/components/common/SoundStopNavigator";
 import ChangelogBanner from "@/components/ui/ChangelogBanner";
@@ -173,7 +173,7 @@ export default async function LocaleLayout({
           {children}
           <SiteFooter />
           {countsVisitors && <SiteGoogleAnalytics />}
-          {countsVisitors && <SiteDatabuddy />}
+          {countsVisitors && <SitePostHog />}
           <SoundStopNavigator />
         </NextIntlClientProvider>
       </body>

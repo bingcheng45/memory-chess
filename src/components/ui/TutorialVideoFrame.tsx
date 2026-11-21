@@ -3,6 +3,13 @@
 import { useRef, useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { TUTORIAL_VIDEO } from "./tutorialVideo";
+import { capturePostHog } from "@/lib/analytics/posthog";
+
+/** The tutorial's playback events, sent to GA4 and PostHog alike. */
+function sendVideoEvent(name: string, params: Record<string, string | number>): void {
+  if (typeof window.gtag === "function") window.gtag("event", name, params);
+  capturePostHog(name, params);
+}
 
 /** The tutorial video's player, with its YouTube engagement events. Shared by the homepage video sections. */
 export default function TutorialVideoFrame({ className }: { className?: string }) {
@@ -50,15 +57,13 @@ export default function TutorialVideoFrame({ className }: { className?: string }
             setVideoStarted(true);
 
             // Send start event
-            if (typeof window !== "undefined" && window.gtag) {
-              window.gtag("event", "video_start", {
+            sendVideoEvent("video_start", {
                 event_category: "engagement",
                 event_label: "YouTube Tutorial Video",
                 video_title: "Memory Chess Tutorial",
                 video_provider: "YouTube",
                 video_url: "https://www.youtube.com/watch?v=p4xFVJTyJZg",
               });
-            }
 
             // Start progress tracking
             startProgressTracking();
@@ -66,15 +71,13 @@ export default function TutorialVideoFrame({ className }: { className?: string }
           // Handle video resumed (state 1 = playing)
           else if (playerState === 1 && videoStarted) {
             console.log("Video resumed playing");
-            if (typeof window !== "undefined" && window.gtag) {
-              window.gtag("event", "video_play", {
+            sendVideoEvent("video_play", {
                 event_category: "engagement",
                 event_label: "YouTube Tutorial Video",
                 video_title: "Memory Chess Tutorial",
                 video_provider: "YouTube",
                 video_url: "https://www.youtube.com/watch?v=p4xFVJTyJZg",
               });
-            }
           }
           // Handle pause (state 2 = paused)
           else if (playerState === 2 && videoStarted) {
@@ -83,8 +86,7 @@ export default function TutorialVideoFrame({ className }: { className?: string }
               if (currentTime > 2 && currentTime < duration - 2) {
                 console.log("Video paused at:", currentTime);
 
-                if (typeof window !== "undefined" && window.gtag) {
-                  window.gtag("event", "video_pause", {
+                sendVideoEvent("video_pause", {
                     event_category: "engagement",
                     event_label: "YouTube Tutorial Video",
                     video_title: "Memory Chess Tutorial",
@@ -92,7 +94,6 @@ export default function TutorialVideoFrame({ className }: { className?: string }
                     video_url: "https://www.youtube.com/watch?v=p4xFVJTyJZg",
                     time_position: Math.round(currentTime),
                   });
-                }
               }
             });
           }
@@ -100,15 +101,13 @@ export default function TutorialVideoFrame({ className }: { className?: string }
           else if (playerState === 0 && videoStarted) {
             console.log("Video completed");
 
-            if (typeof window !== "undefined" && window.gtag) {
-              window.gtag("event", "video_complete", {
+            sendVideoEvent("video_complete", {
                 event_category: "engagement",
                 event_label: "YouTube Tutorial Video",
                 video_title: "Memory Chess Tutorial",
                 video_provider: "YouTube",
                 video_url: "https://www.youtube.com/watch?v=p4xFVJTyJZg",
               });
-            }
 
             // Stop progress tracking
             if (progressCheckInterval) {
@@ -209,8 +208,7 @@ export default function TutorialVideoFrame({ className }: { className?: string }
             setTrackedProgress((prev) => ({ ...prev, [milestone]: true }));
 
             console.log(`Video reached ${milestone}% milestone`);
-            if (typeof window !== "undefined" && window.gtag) {
-              window.gtag("event", "video_progress", {
+            sendVideoEvent("video_progress", {
                 event_category: "engagement",
                 event_label: "YouTube Tutorial Video",
                 video_title: "Memory Chess Tutorial",
@@ -218,7 +216,6 @@ export default function TutorialVideoFrame({ className }: { className?: string }
                 video_url: "https://www.youtube.com/watch?v=p4xFVJTyJZg",
                 percent_complete: milestone,
               });
-            }
           }
         });
       } catch (error) {

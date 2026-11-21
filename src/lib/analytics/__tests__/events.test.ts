@@ -6,6 +6,7 @@ import {
   trackEvent,
   type FunnelEvent,
 } from "@/lib/analytics/events";
+import { attachPostHog, resetPostHogForTests } from "@/lib/analytics/posthog";
 
 const EVENTS: FunnelEvent[] = [
   { name: "round_start", params: { piece_count: 6, memorize_time: 10, round_source: "home_quick" } },
@@ -120,46 +121,48 @@ it.each([
   expect(daysSinceFirstRound(firstRoundDay, "2026-10-14")).toBe("unknown");
 });
 
-describe("Databuddy", () => {
-  const databuddyTrack = jest.fn();
+describe("PostHog", () => {
+  const capture = jest.fn();
+  const register = jest.fn();
 
   beforeEach(() => {
-    databuddyTrack.mockClear();
-    Object.assign(window, { databuddy: { track: databuddyTrack } });
+    resetPostHogForTests();
+    capture.mockClear();
+    register.mockClear();
   });
 
-  afterEach(() => {
-    Reflect.deleteProperty(window, "databuddy");
+  it("receives every event under GA4's name and parameters", () => {
+    attachPostHog({ capture, register });
+    EVENTS.forEach(trackEvent);
+
+    expect(capture.mock.calls).toEqual(EVENTS.map(({ name, params }) => [name, params, { timestamp: expect.any(Date) }]));
   });
 
-  it.each([
-    ["round_started", EVENTS[0], { piece_count: 6, memorize_time: 10, source: "home_quick" }],
-    ["round_completed", EVENTS[1], { piece_count: 6, memorize_time: 10, source: "try_again" }],
-    ["score_submitted", EVENTS[3], { difficulty: "medium", piece_count: 6 }],
-  ])("sends %s with no accuracy or recalled count", (name, event, properties) => {
-    trackEvent(event);
+  it("replays events sent before its library loaded, in order", () => {
+    trackEvent(EVENTS[0]);
+    trackEvent(EVENTS[1]);
+    expect(capture).not.toHaveBeenCalled();
 
-    expect(databuddyTrack).toHaveBeenCalledTimes(1);
-    expect(databuddyTrack).toHaveBeenCalledWith(name, properties);
+    attachPostHog({ capture, register });
+
+    expect(capture.mock.calls.map(([name]) => name)).toEqual([EVENTS[0].name, EVENTS[1].name]);
   });
 
-  it("sends round_completed without the return-visit params", () => {
-    trackEvent(EVENTS[EVENTS.length - 1]);
+  it("keeps the time a queued event happened, not the time the library loaded", () => {
+    jest.useFakeTimers().setSystemTime(new Date("2026-11-21T10:00:00Z"));
+    trackEvent(EVENTS[0]);
+    jest.setSystemTime(new Date("2026-11-21T10:00:09Z"));
+    attachPostHog({ capture, register });
+    jest.useRealTimers();
 
-    expect(databuddyTrack).toHaveBeenCalledWith("round_completed", { piece_count: 5, memorize_time: 20, source: "daily" });
+    expect(capture.mock.calls[0][2]).toEqual({ timestamp: new Date("2026-11-21T10:00:00Z") });
   });
 
-  it("receives no lab, article, search or round intro events", () => {
-    EVENTS.filter(({ name }) => !["round_start", "round_complete", "score_submit"].includes(name)).forEach(trackEvent);
+  it("keeps the result view on later events without a person profile", () => {
+    rememberResultView("overlay");
+    attachPostHog({ capture, register });
 
-    expect(databuddyTrack).not.toHaveBeenCalled();
-  });
-
-  it("is not called before its script has loaded", () => {
-    Reflect.deleteProperty(window, "databuddy");
-
-    expect(() => trackEvent(EVENTS[0])).not.toThrow();
-    expect(databuddyTrack).not.toHaveBeenCalled();
+    expect(register).toHaveBeenCalledWith({ result_view: "overlay" });
   });
 });
 

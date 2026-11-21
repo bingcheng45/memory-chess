@@ -1,6 +1,6 @@
 {
-  "sourceHash": "32649f71087d6dde37e52f0db6b048183b37788a7220c0b047396ae28ca4c132",
-  "approvedHash": "dfc26f5f68e1f69fd064dade3ae499a7661393f98ad5e47d0c5491c7627e8012",
+  "sourceHash": "f260b577b05e2e71f6c724e36103144f0f203d4f93e76f8466d3b2810bb812a8",
+  "approvedHash": "8cf04b4c97741c47ed4d770a09db83c33c27de3d988d3ba586110b44c44970ac",
   "sameAsEnglish": [],
   "text": {
     "meta": {
@@ -45,10 +45,10 @@
         "title": "Informasi yang dikumpulkan secara otomatis",
         "blocks": [
           {
-            "p": "Penyedia pengukuran kami dapat menerima informasi teknis dan penggunaan, seperti halaman yang dilihat, perkiraan lokasi, jenis browser dan perangkat, halaman perujuk, alamat IP, dan catatan waktu kinerja. Memory Chess menggunakan Google Analytics, Vercel Analytics, Vercel Speed Insights, Ahrefs Analytics, dan Databuddy untuk memahami lalu lintas serta menjaga situs tetap cepat dan andal."
+            "p": "Penyedia pengukuran kami dapat menerima informasi teknis dan penggunaan, seperti halaman yang dilihat, perkiraan lokasi, jenis browser dan perangkat, halaman perujuk, alamat IP, dan catatan waktu kinerja. Memory Chess menggunakan Google Analytics, PostHog, dan Ahrefs Analytics untuk memahami lalu lintas serta menjaga situs tetap cepat dan andal."
           },
           {
-            "p": "Databuddy tidak menggunakan cookie. Databuddy menyimpan id pengunjung acak di penyimpanan lokal browser Anda dan id sesi di penyimpanan sesinya. Databuddy mencatat halaman yang Anda lihat, catatan waktu kinerja, kesalahan JavaScript, klik pada tautan yang keluar dari situs, klik yang diulang atau tidak mendapat respons, serta formulir yang ditinggalkan sebelum dikirim. Databuddy juga menerima sebuah peristiwa ketika ronde dimulai atau selesai, berisi jumlah bidak, waktu menghafal, dan tempat ronde dimulai, serta sebuah peristiwa ketika skor dikirim ke papan peringkat atau papan harian, berisi tingkat kesulitan dan jumlah bidaknya. Peristiwa-peristiwa ini tidak pernah membawa akurasi Anda, nama pemain Anda, atau posisi yang Anda mainkan."
+            "p": "PostHog tidak menggunakan cookie. PostHog menyimpan id pengunjung acak dan pengaturannya sendiri di penyimpanan lokal browser Anda. Browser Anda mengirim datanya ke sebuah alamat di situs ini, /relay, yang meneruskannya ke PostHog bersama alamat IP Anda agar PostHog dapat memperkirakan lokasi Anda. PostHog mencatat halaman yang Anda lihat dan kapan Anda meninggalkannya, klik pada tombol dan tautan tanpa teks yang tertera padanya, kesalahan JavaScript, dan catatan waktu kinerja. PostHog tidak merekam layar Anda atau apa yang Anda ketik, dan nama pemain serta kata pencarian dihapus dari alamat halaman yang diterimanya. PostHog juga menerima setiap peristiwa yang dijelaskan kebijakan ini untuk Google Analytics, dengan isi yang sama, serta sebuah peristiwa ketika video tutorial dimulai, diputar ulang, dijeda, mencapai seperempat, setengah, tiga perempat, atau sembilan persepuluh, atau selesai. Ketika crawler AI atau asisten AI membaca sebuah halaman, server kami memberi tahu PostHog nama crawler tersebut, halaman itu, dan halaman asalnya. PostHog tidak membuat profil tentang Anda, dan kami tidak menautkan datanya dengan nama atau alamat email Anda."
           },
           {
             "p": "Kami tidak meminta alat-alat ini untuk mengumpulkan isi pesan kontak atau komentar masukan permainan Anda."
@@ -131,7 +131,7 @@
             "p": "Kami menggunakan informasi untuk menyediakan dan mengamankan Memory Chess, menghitung hasil, memublikasikan skor papan peringkat yang dikirim, membalas pesan kontak, meninjau masukan, mengukur kinerja situs, mencegah penyalahgunaan, dan mendukung situs dengan iklan. Kami tidak menjual detail kontak atau masukan yang Anda kirim."
           },
           {
-            "p": "Data ditangani oleh penyedia layanan hanya jika diperlukan: Google Sheets untuk pesan kontak dan masukan permainan, Supabase untuk statistik permainan, entri papan peringkat, serta total tayangan dan suka artikel, Vercel untuk hosting dan pengukuran kinerja, Ahrefs dan Databuddy untuk analitik, dan Google untuk analitik, persetujuan, dan iklan. Penyedia ini dapat memproses data di negara lain berdasarkan ketentuan privasi mereka sendiri."
+            "p": "Data ditangani oleh penyedia layanan hanya jika diperlukan: Google Sheets untuk pesan kontak dan masukan permainan, Supabase untuk statistik permainan, entri papan peringkat, serta total tayangan dan suka artikel, Cloudflare untuk hosting, Ahrefs dan PostHog untuk analitik, dan Google untuk analitik, persetujuan, dan iklan. Penyedia ini dapat memproses data di negara lain berdasarkan ketentuan privasi mereka sendiri."
           },
           {
             "p": "Ketika Anda membuka atau menyukai sebuah artikel, Supabase hanya menyimpan total tayangan dan total suka untuk setiap artikel, beserta waktu perubahan terakhir dan tanpa pengenal pengunjung."

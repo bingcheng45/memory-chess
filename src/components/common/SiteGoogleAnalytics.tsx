@@ -1,3 +1,5 @@
+import { TYPED_TEXT_PARAMS } from "@/lib/analytics/typedText";
+
 export const GA_MEASUREMENT_ID = "G-R8BM9EMY9J";
 export const GA_SCRIPT_URL = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
 
@@ -31,7 +33,7 @@ export const GA_INIT_SNIPPET = `(function () {
   }
   function isTypedText(pair) {
     var key = paramName(pair);
-    return key === 'player' || key === 'q';
+    return ${JSON.stringify(TYPED_TEXT_PARAMS)}.indexOf(key) >= 0;
   }
   function isCampaignTag(pair) {
     return /^(utm_|gclid$|gbraid$|wbraid$|dclid$|fbclid$|msclkid$|srsltid$)/.test(paramName(pair));

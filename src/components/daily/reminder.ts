@@ -1,9 +1,10 @@
-import { msToNextUtcDay } from "@/lib/lab/daily";
+import { DAY_MS } from "@/lib/lab/readiness";
 
 export const REMINDER_URL = "https://thememorychess.com/daily";
 export const REMINDER_FILENAME = "memory-chess-daily-board.ics";
 
 const UID = "daily-board-reminder@thememorychess.com";
+const MINUTE_MS = 60_000;
 const EVENT_MINUTES = 15;
 const MAX_OCTETS = 75;
 
@@ -40,9 +41,13 @@ function fold(line: string): string {
   return parts.join("\r\n");
 }
 
-/** A calendar file with one event that repeats daily from the next 00:00 UTC, when the day's board opens. */
+/**
+ * A calendar file with one event that repeats daily at the minute the player asked. The next 00:00 UTC, when a new board
+ * opens, is at most a day away, so the first event is exactly a day later, at the same clock time in any fixed offset.
+ * Times are UTC, which every calendar reads the same way, so the clock time moves by an hour when daylight saving changes.
+ */
 export function reminderIcs(now: number, copy: ReminderCopy): string {
-  const start = now + msToNextUtcDay(now);
+  const start = Math.floor((now + DAY_MS) / MINUTE_MS) * MINUTE_MS;
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -52,7 +57,7 @@ export function reminderIcs(now: number, copy: ReminderCopy): string {
     `UID:${UID}`,
     `DTSTAMP:${stamp(now)}`,
     `DTSTART:${stamp(start)}`,
-    `DTEND:${stamp(start + EVENT_MINUTES * 60_000)}`,
+    `DTEND:${stamp(start + EVENT_MINUTES * MINUTE_MS)}`,
     "RRULE:FREQ=DAILY",
     `SUMMARY:${escapeText(copy.title)}`,
     `DESCRIPTION:${escapeText(copy.description)}`,

@@ -17,7 +17,7 @@ function download(file: string, name: string): void {
   window.setTimeout(() => URL.revokeObjectURL(url), 10_000);
 }
 
-/** Saves a calendar event that repeats daily when the board opens. Nothing is sent anywhere but the count of presses. */
+/** Saves a calendar event that repeats daily at the time of the press. Nothing is sent anywhere but the count of presses. */
 export function RemindMe({ surface }: { surface: ReminderSurface }) {
   const t = useTranslations("dailyEntry");
   const noteId = useId();

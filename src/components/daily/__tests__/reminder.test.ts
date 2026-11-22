@@ -18,14 +18,32 @@ describe("reminderIcs", () => {
     expect(lines.filter((line) => line === "END:VEVENT")).toHaveLength(1);
   });
 
-  it("starts at the next midnight UTC and repeats daily", () => {
-    expect(lines).toContain("DTSTART:20261028T000000Z");
-    expect(lines).toContain("DTEND:20261028T001500Z");
+  it("starts a day after the click, to the minute, and repeats daily", () => {
+    expect(lines).toContain("DTSTART:20261028T134500Z");
+    expect(lines).toContain("DTEND:20261028T140000Z");
     expect(lines).toContain("RRULE:FREQ=DAILY");
   });
 
   it("starts a day later when asked exactly at midnight, so the first event is never in the past", () => {
     expect(unfold(reminderIcs(Date.parse("2026-10-28T00:00:00Z"), copy))).toContain("DTSTART:20261029T000000Z");
+  });
+
+  const startOf = (file: string): number => {
+    const value = unfold(file).find((line) => line.startsWith("DTSTART:"))!.slice("DTSTART:".length);
+    return Date.parse(value.replace(/^(\d{4})(\d{2})(\d{2})T(\d{2})(\d{2})(\d{2})Z$/, "$1-$2-$3T$4:$5:$6Z"));
+  };
+
+  it.each([
+    ["UTC+1", 60, "2026-11-23T09:00:30+01:00", "DTSTART:20261124T080000Z", "2026-11-24 09:00", "2026-11-24T00:00:00Z"],
+    ["UTC-5", -300, "2026-11-23T21:30:45-05:00", "DTSTART:20261125T023000Z", "2026-11-24 21:30", "2026-11-25T00:00:00Z"],
+    ["UTC+8", 480, "2026-11-24T07:15:20+08:00", "DTSTART:20261124T231500Z", "2026-11-25 07:15", "2026-11-24T00:00:00Z"],
+  ])("in %s, starts at the click's local clock time, after the next board opens", (_zone, offset, click, line, local, boardOpens) => {
+    const file = reminderIcs(Date.parse(click), copy);
+    const start = startOf(file);
+
+    expect(unfold(file)).toContain(line);
+    expect(new Date(start + offset * 60_000).toISOString().slice(0, 16).replace("T", " ")).toBe(local);
+    expect(start).toBeGreaterThanOrEqual(Date.parse(boardOpens));
   });
 
   it("carries a stable UID, the moment it was made, the title and the daily page", () => {

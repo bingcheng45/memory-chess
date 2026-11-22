@@ -47,7 +47,7 @@ describe("RemindMe", () => {
     expect(downloads).toEqual([{ name: "memory-chess-daily-board.ics", href: "blob:reminder-1" }]);
     expect(blobs[0].type).toBe("text/calendar;charset=utf-8");
     const ics = await textOf(blobs[0]);
-    expect(ics).toContain("\r\nDTSTART:20261028T000000Z\r\n");
+    expect(ics).toContain("\r\nDTSTART:20261028T134500Z\r\n");
     expect(ics).toContain("\r\nRRULE:FREQ=DAILY\r\n");
     expect(ics).toContain("\r\nSUMMARY:Memory Chess daily board\r\n");
     expect(ics).toContain("\r\nURL:https://thememorychess.com/daily\r\n");
@@ -58,7 +58,7 @@ describe("RemindMe", () => {
     expect(window.URL.revokeObjectURL).toHaveBeenCalledWith("blob:reminder-1");
   });
 
-  it("says the board opens at midnight UTC and carries no local clock time that a daylight saving change would make stale", async () => {
+  it("says the board opens at midnight UTC and writes no clock time into its text", async () => {
     render(<RemindMe surface="daily" />);
 
     fireEvent.click(screen.getByRole("button", { name: "Remind me daily" }));

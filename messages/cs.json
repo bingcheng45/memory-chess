@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "Otevře se za {timeLeft}.",
     "seeToday": "Zobrazit dnešní pozici",
     "remindButton": "Připomínat denně",
-    "remindNote": "Stáhne událost do kalendáře, která se opakuje každý den, kdy se pozice otevře.",
+    "remindNote": "Stáhne událost do kalendáře, která se opakuje každý den ve stejnou denní dobu, kdy bylo stisknuto tlačítko.",
     "remindDone": "Uloženo. Otevřete soubor a přidejte denní událost do kalendáře.",
     "remindTitle": "Denní pozice Memory Chess",
     "remindDescription": "Nová pozice se otevře každý den o půlnoci UTC. Všichni hrají stejnou pozici a máte jeden pokus."

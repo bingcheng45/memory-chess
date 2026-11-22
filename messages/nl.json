@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "Opent over {timeLeft}.",
     "seeToday": "Bekijk het bord van vandaag",
     "remindButton": "Herinner me dagelijks",
-    "remindNote": "Downloadt een agenda-item dat zich elke dag herhaalt wanneer het bord opent.",
+    "remindNote": "Downloadt een agenda-item dat zich elke dag herhaalt op het tijdstip waarop je op de knop drukte.",
     "remindDone": "Opgeslagen. Open het bestand om het dagelijkse item aan je agenda toe te voegen.",
     "remindTitle": "Dagelijks bord van Memory Chess",
     "remindDescription": "Een nieuw bord opent elke dag om middernacht UTC. Iedereen speelt hetzelfde bord en je hebt één poging."

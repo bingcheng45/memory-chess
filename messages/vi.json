@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "Mở sau {timeLeft}.",
     "seeToday": "Xem bàn cờ hôm nay",
     "remindButton": "Nhắc tôi mỗi ngày",
-    "remindNote": "Tải về một sự kiện lịch lặp lại mỗi ngày vào lúc bàn cờ mở.",
+    "remindNote": "Tải về một sự kiện lịch lặp lại mỗi ngày vào đúng giờ bạn nhấn nút.",
     "remindDone": "Đã lưu. Hãy mở tệp để thêm sự kiện hằng ngày vào lịch của bạn.",
     "remindTitle": "Bàn cờ hằng ngày của Memory Chess",
     "remindDescription": "Bàn cờ mới mở mỗi ngày vào nửa đêm UTC. Mọi người chơi cùng một bàn cờ, và bạn có một lượt thử."

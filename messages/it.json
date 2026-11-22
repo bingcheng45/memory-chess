@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "Si apre tra {timeLeft}.",
     "seeToday": "Vedi la scacchiera di oggi",
     "remindButton": "Ricordamelo ogni giorno",
-    "remindNote": "Scarica un evento di calendario che si ripete ogni giorno quando si apre la scacchiera.",
+    "remindNote": "Scarica un evento di calendario che si ripete ogni giorno all’ora in cui hai premuto il pulsante.",
     "remindDone": "Salvato. Apri il file per aggiungere l’evento giornaliero al tuo calendario.",
     "remindTitle": "Scacchiera giornaliera di Memory Chess",
     "remindDescription": "Una nuova scacchiera si apre ogni giorno a mezzanotte UTC. Tutti giocano la stessa scacchiera e hai un solo tentativo."

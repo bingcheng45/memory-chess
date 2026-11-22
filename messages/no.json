@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "Åpner om {timeLeft}.",
     "seeToday": "Se dagens brett",
     "remindButton": "Minn meg på det hver dag",
-    "remindNote": "Laster ned en kalenderhendelse som gjentas hver dag når brettet åpner.",
+    "remindNote": "Laster ned en kalenderhendelse som gjentas hver dag på tidspunktet da du trykket på knappen.",
     "remindDone": "Lagret. Åpne filen for å legge den daglige hendelsen til i kalenderen din.",
     "remindTitle": "Memory Chess dagens brett",
     "remindDescription": "Et nytt brett åpner hver dag ved midnatt UTC. Alle spiller det samme brettet, og du får ett forsøk."

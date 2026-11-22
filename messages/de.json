@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "Öffnet in {timeLeft}.",
     "seeToday": "Heutiges Brett ansehen",
     "remindButton": "Täglich erinnern",
-    "remindNote": "Lädt einen Kalendertermin herunter, der sich jeden Tag wiederholt, wenn das Brett öffnet.",
+    "remindNote": "Lädt einen Kalendertermin herunter, der sich jeden Tag zu der Uhrzeit wiederholt, zu der du die Schaltfläche gedrückt hast.",
     "remindDone": "Gespeichert. Öffne die Datei, um den täglichen Termin deinem Kalender hinzuzufügen.",
     "remindTitle": "Memory Chess Tagesbrett",
     "remindDescription": "Ein neues Brett öffnet jeden Tag um Mitternacht UTC. Alle spielen dasselbe Brett, und du hast einen Versuch."

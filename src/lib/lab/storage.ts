@@ -1,5 +1,6 @@
 import { withoutPlacements, type RoundRecord } from "./record";
 import { addToSummary, parseSummary, summarize, type LabSummary } from "./summary";
+import { seededSummary } from "./seed";
 import { browserIndexedDB } from "./support";
 
 const DB_NAME = "memory-chess-lab";
@@ -308,19 +309,36 @@ export function createLabStore(deps: LabStoreDeps): LabStore {
 
 let browserStore: LabStore | null = null;
 
+function browserLocalStorage(): Storage | undefined {
+  try {
+    return window.localStorage;
+  } catch {
+    return undefined;
+  }
+}
+
+/** A `?lab-seed=` address replaces the summary before this page reads it; see seededSummary for where that is allowed. */
+function writeSeed(storage: Storage | undefined): void {
+  const seeded = seededSummary(new URL(window.location.href), new Date());
+  if (!seeded) return;
+  try {
+    storage?.setItem(SUMMARY_KEY, JSON.stringify(seeded));
+  } catch {
+    // A browser that refuses the write shows its own record, as without the seed.
+  }
+}
+
 export function labStore(): LabStore | null {
   if (typeof window === "undefined") return null;
-  browserStore ??= createLabStore({
-    indexedDB: browserIndexedDB(),
-    localStorage: (() => {
-      try {
-        return window.localStorage;
-      } catch {
-        return undefined;
-      }
-    })(),
-    storageManager: typeof navigator === "undefined" ? undefined : navigator.storage,
-    locks: typeof navigator === "undefined" ? undefined : navigator.locks,
-  });
+  if (!browserStore) {
+    const storage = browserLocalStorage();
+    writeSeed(storage);
+    browserStore = createLabStore({
+      indexedDB: browserIndexedDB(),
+      localStorage: storage,
+      storageManager: typeof navigator === "undefined" ? undefined : navigator.storage,
+      locks: typeof navigator === "undefined" ? undefined : navigator.locks,
+    });
+  }
   return browserStore;
 }

@@ -1,4 +1,4 @@
-import { msToNextUtcDay } from "@/lib/lab/daily";
+import { DAY_MS } from "@/lib/lab/readiness";
 
 export const REMINDER_URL = "https://thememorychess.com/daily";
 export const REMINDER_FILENAME = "memory-chess-daily-board.ics";
@@ -18,6 +18,9 @@ export interface ReminderCopy {
 }
 
 const stamp = (at: number): string => new Date(at).toISOString().replace(/[-:]|\.\d{3}/g, "");
+
+/** RFC 5545 floating time, with no Z and no TZID: calendars read it on the device's own clock, so it keeps its hour across daylight saving. */
+const floatingStamp = (localAt: number): string => stamp(localAt).slice(0, -1);
 
 const escapeText = (value: string): string => value.replace(/[;,\\]/g, "\\$&").replace(/\r?\n/g, "\\n");
 
@@ -40,9 +43,12 @@ function fold(line: string): string {
   return parts.join("\r\n");
 }
 
-/** A calendar file with one event that repeats daily from the next 00:00 UTC, when the day's board opens. */
-export function reminderIcs(now: number, copy: ReminderCopy): string {
-  const start = now + msToNextUtcDay(now);
+/**
+ * A calendar file with one event that repeats daily at the player's clock time when they asked, from tomorrow.
+ * Tomorrow at that time is the first match after the next 00:00 UTC, when the next board opens.
+ */
+export function reminderIcs(now: number, utcOffsetMinutes: number, copy: ReminderCopy): string {
+  const start = now + utcOffsetMinutes * 60_000 + DAY_MS;
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -51,8 +57,8 @@ export function reminderIcs(now: number, copy: ReminderCopy): string {
     "BEGIN:VEVENT",
     `UID:${UID}`,
     `DTSTAMP:${stamp(now)}`,
-    `DTSTART:${stamp(start)}`,
-    `DTEND:${stamp(start + EVENT_MINUTES * 60_000)}`,
+    `DTSTART:${floatingStamp(start)}`,
+    `DTEND:${floatingStamp(start + EVENT_MINUTES * 60_000)}`,
     "RRULE:FREQ=DAILY",
     `SUMMARY:${escapeText(copy.title)}`,
     `DESCRIPTION:${escapeText(copy.description)}`,

@@ -40,6 +40,7 @@ const textOf = (blob: Blob) =>
 
 describe("RemindMe", () => {
   it.each(["result", "dashboard", "daily"] as const)("downloads the daily calendar file and reports a reminder from the %s surface", async (surface) => {
+    jest.spyOn(Date.prototype, "getTimezoneOffset").mockReturnValue(-60);
     render(<RemindMe surface={surface} />);
 
     fireEvent.click(screen.getByRole("button", { name: "Remind me daily" }));
@@ -47,7 +48,7 @@ describe("RemindMe", () => {
     expect(downloads).toEqual([{ name: "memory-chess-daily-board.ics", href: "blob:reminder-1" }]);
     expect(blobs[0].type).toBe("text/calendar;charset=utf-8");
     const ics = await textOf(blobs[0]);
-    expect(ics).toContain("\r\nDTSTART:20261028T000000Z\r\n");
+    expect(ics).toContain("\r\nDTSTART:20261028T144510\r\n");
     expect(ics).toContain("\r\nRRULE:FREQ=DAILY\r\n");
     expect(ics).toContain("\r\nSUMMARY:Memory Chess daily board\r\n");
     expect(ics).toContain("\r\nURL:https://thememorychess.com/daily\r\n");

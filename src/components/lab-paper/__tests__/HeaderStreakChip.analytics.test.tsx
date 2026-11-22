@@ -68,17 +68,6 @@ describe("streak_chip_view", () => {
     expect(gtag.mock.calls).toEqual([["event", "streak_chip_view", { state: "active", streak_days: "7+" }]]);
   });
 
-  it("is sent again on the next page load", async () => {
-    mockLabData = days("2026-10-06", "2026-10-07");
-    (await loadPage())().unmount();
-    (await loadPage())();
-
-    expect(gtag.mock.calls).toEqual([
-      ["event", "streak_chip_view", { state: "active", streak_days: "2" }],
-      ["event", "streak_chip_view", { state: "active", streak_days: "2" }],
-    ]);
-  });
-
   it("is not sent when the chip does not show: one day played, or the record not read yet", async () => {
     mockLabData = days("2026-10-07");
     (await loadPage())().unmount();

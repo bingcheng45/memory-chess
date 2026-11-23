@@ -13,7 +13,7 @@ Word counts include the h1, description, quick answer, takeaways, audience lines
 
 ## What exists today
 
-- 14 guides under `/learn/<slug>`, defined in `src/lib/seo/learn/guides/*.ts` and ordered in `guides/index.ts`. The brief said 15. The 15th and 16th URLs are retired guides that now redirect (`chess-board-vision-drills` and `working-memory-exercises-for-chess`, in `src/lib/seo/learn/retired.ts`).
+- 14 guides under `/learn/<slug>` when this plan was written, defined in `src/lib/seo/learn/guides/*.ts` and ordered in `guides/index.ts`. The brief said 15. The 15th and 16th URLs are retired guides that now redirect (`chess-board-vision-drills` and `working-memory-exercises-for-chess`, in `src/lib/seo/learn/retired.ts`). `LEARN_GUIDES` has 19 now, after the four comparison pages (#130) and the board game guide (#137).
 - 3 articles under `/articles/<slug>`, defined in `src/lib/articles/entries/*.ts`. All three are about a person and translated into 23 locales. Learn is English-only.
 - The hub groups guides by 4 goals (`reduce-blunders`, `visualization`, `memory`, `routine`) in `src/lib/seo/learn/schema.ts`.
 - Learn is the last main section still drawn in the old dark editorial shell (`EditorialPageShell`). Home, Play, Articles, Leaderboard, Dashboard, About and Changelog use Lab Paper. `/learn` is not in `LAB_PAPER_ROUTES` (`src/lib/lab-paper/routes.ts`). Matching "our existing designs" therefore means moving Learn onto Lab Paper. See the reference screenshots `learn-1440.png` against `articles-1440.png`.
@@ -189,7 +189,7 @@ Each guide links 3 to 5 other guides (`relatedArticles`, which despite its name 
 
 ## Proposed topic groups
 
-Topics will vary widely, so the groups describe what a reader wants to fix, not which drill they use. Five groups hold today's 14 guides. Two more are registered as `planned`, and the hub shows a group only once it holds a guide. A new topic either joins a group or opens a planned one; it never forces a reshuffle.
+Topics will vary widely, so the groups describe what a reader wants to fix, not which drill they use. Five groups held the 14 guides that existed when this plan was written. Two more are registered as `planned`, and the hub shows a group only once it holds a guide. A new topic either joins a group or opens a planned one; it never forces a reshuffle.
 
 | Group id | Label | Guides | Status |
 |---|---|---|---|
@@ -216,7 +216,7 @@ The group order on the hub follows a reader's path: start, see the board, hold i
 - **No chess-knowledge topics.** Nothing on openings, endgames or basic tactics as subjects. `how-to-get-better-at-chess-for-beginners` defers openings on purpose. Searches like "how to learn chess openings" find nothing, which the search no-result state must handle.
 - **Two thin groups.** `foundations` and `memory` each hold 2 guides. A hub layout must not look broken with 2 entries in a group.
 - **Two guides have no FAQ** (`why-puzzle-rating-doesnt-transfer-to-games`, `20-minute-daily-chess-study-plan`), so they emit no FAQPage JSON-LD.
-- **7 of 14 guides cite no source.** The 7 that do cite 1 or 2.
+- **7 of the 14 guides that existed when this plan was written cite no source.** The 7 that do cite 1 or 2.
 - **No images in any guide.** `public/images/learn/` holds 4 SVGs (`blunder-board.svg`, `memory-stack.svg`, `routine-path.svg`, `visualization-map.svg`) that nothing references.
 - **Diagrams are checked but never drawn.** 50 positions across 11 guides are replayed by `guideFacts.test.ts`, and every one is described only in prose ("Put a White bishop on b5, a Black knight on c6 ..."). These are the cheapest diagrams the revamp can add: the data and the checks already exist.
 - **Everything is beginner level.** 12 guides say Beginner and 2 say Beginner to Intermediate. A level filter has nothing to filter today.

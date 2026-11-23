@@ -175,7 +175,7 @@ Read time "today" is the hand-typed `timeToRead`. "Derived" is words divided by 
 | [How Magnus Carlsen names a famous game from one position](/articles/magnus-carlsen) | 1134 | Magnus Carlsen | 12 pieces, 5s | `chess-pattern-recognition-drills`, `chess-visualization-exercises` | 11 |
 | [How Miguel Najdorf played 45 blindfold games at once](/articles/miguel-najdorf) | 954 | Miguel Najdorf | 12 pieces, 15s | `blindfold-chess-training-for-beginners`, `chess-visualization-exercises` | 10 |
 | [Garry Kasparov's memory test: 117 of 120 pieces](/articles/garry-kasparov) | 1073 | Garry Kasparov | 8 pieces, 5s | `chess-memory-training`, `chess-pattern-recognition-drills` | 8 |
-| [Dominic O'Brien's memory palace, and what it means for chess](/articles/dominic-obrien) | 1065 | Dominic O'Brien | 12 pieces, 20s | `chess-memory-training`, `chess-visualization-exercises` | 11 |
+| [Dominic O'Brien's memory palace, and what it means for chess](/articles/dominic-obrien) | 1065 | Dominic O'Brien | 12 pieces, 20s | `chess-memory-training`, `chess-visualization-exercises` | 12 |
 
 Each article has a portrait with a licence credit, a fact file, a typed-in body, one drill CTA, a "Train it with a guide" list and a numbered source list. Questions they answer: "How did Judit Polgár learn blindfold chess?", "What did de Groot's chess memory experiment find?", "How good is Magnus Carlsen's memory?", "Do strong players remember random positions better?", "What is the blindfold chess world record?", "Do chess players have a photographic memory?", "Can a memory palace help at chess?".
 

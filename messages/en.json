@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "Opens in {timeLeft}.",
     "seeToday": "See today's board",
     "remindButton": "Remind me daily",
-    "remindNote": "Downloads a calendar event that repeats every day when the board opens.",
+    "remindNote": "Downloads a calendar event that repeats every day at the time you pressed the button.",
     "remindDone": "Saved. Open the file to add the daily event to your calendar.",
     "remindTitle": "Memory Chess daily board",
     "remindDescription": "A new board opens every day at midnight UTC. Everyone plays the same board, and you get one try."

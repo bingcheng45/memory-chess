@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "{timeLeft} sonra açılır.",
     "seeToday": "Bugünün tahtasını gör",
     "remindButton": "Her gün hatırlat",
-    "remindNote": "Tahta açıldığında her gün tekrarlanan bir takvim etkinliği indirir.",
+    "remindNote": "Düğmeye bastığınız saatte her gün tekrarlanan bir takvim etkinliği indirir.",
     "remindDone": "Kaydedildi. Günlük etkinliği takvimine eklemek için dosyayı aç.",
     "remindTitle": "Memory Chess günlük tahtası",
     "remindDescription": "Yeni bir tahta her gün gece yarısı UTC'de açılır. Herkes aynı tahtayı oynar ve tek bir deneme hakkın var."

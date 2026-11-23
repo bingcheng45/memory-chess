@@ -184,11 +184,11 @@ These are computed by one function, `toPage(doc)`, as `toPage` in `src/lib/seo/l
 
 `LearnBlockView` is a single `switch (block.kind)` with a `never` default, so a new block kind does not compile until the renderer handles it. The page component maps `sections` to `<section id><h2>` plus blocks, then maps `end`. Layout variants change the CSS and the page frame around the blocks. They do not fork block markup, and no guide imports a component of its own.
 
-The prototype renderer `learn-proto/render.js` (scratch, not committed) implements this switch for every kind above, and `learn-proto/shell.html?guide=<slug>` renders any of the 14 converted guides through it.
+The prototype renderer `learn-proto/render.js` (scratch, not committed) implements this switch for every kind above, and `learn-proto/shell.html?guide=<slug>` renders any of the 14 guides converted before the migration (#63) through it.
 
 ## How today's guides map onto it
 
-`tools/build-content.cjs` converts all 14 guides mechanically. Run it from the repo root after the two extract commands in `inventory.md`:
+`tools/build-content.cjs` converted the 14 guides that existed before the migration (#63) mechanically. It reads the old `LearnGuide` shape, so it does not run on today's `LearnDocument` guides. It ran from the repo root after the two extract commands in `inventory.md`:
 
 ```bash
 node docs/plans/learn-revamp/tools/build-content.cjs "$PWD" /tmp/guides.json /tmp/articles.json /tmp/content.js

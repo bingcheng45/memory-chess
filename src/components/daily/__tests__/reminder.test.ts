@@ -18,14 +18,16 @@ describe("reminderIcs", () => {
     expect(lines.filter((line) => line === "END:VEVENT")).toHaveLength(1);
   });
 
-  it("starts at the next midnight UTC and repeats daily", () => {
-    expect(lines).toContain("DTSTART:20261028T000000Z");
-    expect(lines).toContain("DTEND:20261028T001500Z");
-    expect(lines).toContain("RRULE:FREQ=DAILY");
+  it("starts at the local click time as a floating time and repeats daily", () => {
+    const local = unfold(reminderIcs(new Date(2026, 9, 27, 13, 45, 10).getTime(), copy));
+
+    expect(local).toContain("DTSTART:20261027T134510");
+    expect(local).toContain("DTEND:20261027T140010");
+    expect(local).toContain("RRULE:FREQ=DAILY");
   });
 
-  it("starts a day later when asked exactly at midnight, so the first event is never in the past", () => {
-    expect(unfold(reminderIcs(Date.parse("2026-10-28T00:00:00Z"), copy))).toContain("DTSTART:20261029T000000Z");
+  it("keeps a click just after local midnight on that calendar day", () => {
+    expect(unfold(reminderIcs(new Date(2026, 9, 28, 0, 5, 0).getTime(), copy))).toContain("DTSTART:20261028T000500");
   });
 
   it("carries a stable UID, the moment it was made, the title and the daily page", () => {

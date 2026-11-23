@@ -21,7 +21,7 @@ beforeEach(() => {
     downloads.push({ name: this.download, href: this.href });
   });
   window.gtag = jest.fn();
-  jest.useFakeTimers({ now: Date.parse("2026-10-27T13:45:10Z") });
+  jest.useFakeTimers({ now: new Date(2026, 9, 27, 13, 45, 10) });
 });
 
 afterEach(() => {
@@ -47,7 +47,8 @@ describe("RemindMe", () => {
     expect(downloads).toEqual([{ name: "memory-chess-daily-board.ics", href: "blob:reminder-1" }]);
     expect(blobs[0].type).toBe("text/calendar;charset=utf-8");
     const ics = await textOf(blobs[0]);
-    expect(ics).toContain("\r\nDTSTART:20261028T000000Z\r\n");
+    expect(ics).toContain("\r\nDTSTART:20261027T134510\r\n");
+    expect(ics).toContain("\r\nDTEND:20261027T140010\r\n");
     expect(ics).toContain("\r\nRRULE:FREQ=DAILY\r\n");
     expect(ics).toContain("\r\nSUMMARY:Memory Chess daily board\r\n");
     expect(ics).toContain("\r\nURL:https://thememorychess.com/daily\r\n");

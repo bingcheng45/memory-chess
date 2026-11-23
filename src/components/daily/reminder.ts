@@ -1,5 +1,3 @@
-import { msToNextUtcDay } from "@/lib/lab/daily";
-
 export const REMINDER_URL = "https://thememorychess.com/daily";
 export const REMINDER_FILENAME = "memory-chess-daily-board.ics";
 
@@ -40,9 +38,16 @@ function fold(line: string): string {
   return parts.join("\r\n");
 }
 
-/** A calendar file with one event that repeats daily from the next 00:00 UTC, when the day's board opens. */
+const pad = (value: number): string => String(value).padStart(2, "0");
+
+/** RFC 5545 section 3.3.5 floating time: no zone, so the calendar keeps the same wall-clock time through daylight saving changes. */
+const floating = (at: number): string => {
+  const date = new Date(at);
+  return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}T${pad(date.getHours())}${pad(date.getMinutes())}${pad(date.getSeconds())}`;
+};
+
+/** A calendar file with one event that repeats daily at the player's local clock time of `now`, the moment they pressed the button. */
 export function reminderIcs(now: number, copy: ReminderCopy): string {
-  const start = now + msToNextUtcDay(now);
   const lines = [
     "BEGIN:VCALENDAR",
     "VERSION:2.0",
@@ -51,8 +56,8 @@ export function reminderIcs(now: number, copy: ReminderCopy): string {
     "BEGIN:VEVENT",
     `UID:${UID}`,
     `DTSTAMP:${stamp(now)}`,
-    `DTSTART:${stamp(start)}`,
-    `DTEND:${stamp(start + EVENT_MINUTES * 60_000)}`,
+    `DTSTART:${floating(now)}`,
+    `DTEND:${floating(now + EVENT_MINUTES * 60_000)}`,
     "RRULE:FREQ=DAILY",
     `SUMMARY:${escapeText(copy.title)}`,
     `DESCRIPTION:${escapeText(copy.description)}`,

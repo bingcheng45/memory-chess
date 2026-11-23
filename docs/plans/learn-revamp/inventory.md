@@ -14,7 +14,7 @@ Word counts include the h1, description, quick answer, takeaways, audience lines
 ## What exists today
 
 - 14 guides under `/learn/<slug>`, defined in `src/lib/seo/learn/guides/*.ts` and ordered in `guides/index.ts`. The brief said 15. The 15th and 16th URLs are retired guides that now redirect (`chess-board-vision-drills` and `working-memory-exercises-for-chess`, in `src/lib/seo/learn/retired.ts`).
-- 3 articles under `/articles/<slug>`, defined in `src/lib/articles/entries/*.ts`. All three are about a person and translated into 23 locales. Learn is English-only.
+- 3 articles under `/articles/<slug>`, defined in `src/lib/articles/entries/*.ts`. All three are about a person and translated into 23 locales. The Learn hub and most guides are English-only. Since PR 143, 5 guides are also served in ru, pt-BR, fr, de and es, kept out of search (`src/lib/seo/learn/servedGuides.json`, `GUIDE_LOCALE_INDEXING` in `src/lib/seo/learn/translatedGuides.ts`).
 - The hub groups guides by 4 goals (`reduce-blunders`, `visualization`, `memory`, `routine`) in `src/lib/seo/learn/schema.ts`.
 - Learn is the last main section still drawn in the old dark editorial shell (`EditorialPageShell`). Home, Play, Articles, Leaderboard, Dashboard, About and Changelog use Lab Paper. `/learn` is not in `LAB_PAPER_ROUTES` (`src/lib/lab-paper/routes.ts`). Matching "our existing designs" therefore means moving Learn onto Lab Paper. See the reference screenshots `learn-1440.png` against `articles-1440.png`.
 

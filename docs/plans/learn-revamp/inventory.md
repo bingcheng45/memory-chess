@@ -13,8 +13,8 @@ Word counts include the h1, description, quick answer, takeaways, audience lines
 
 ## What exists today
 
-- 14 guides under `/learn/<slug>`, defined in `src/lib/seo/learn/guides/*.ts` and ordered in `guides/index.ts`. The brief said 15. The 15th and 16th URLs are retired guides that now redirect (`chess-board-vision-drills` and `working-memory-exercises-for-chess`, in `src/lib/seo/learn/retired.ts`).
-- 3 articles under `/articles/<slug>`, defined in `src/lib/articles/entries/*.ts`. All three are about a person and translated into 23 locales. Learn is English-only.
+- 19 guides under `/learn/<slug>`, defined in `src/lib/seo/learn/guides/*.ts` and ordered in `guides/index.ts`. This inventory was taken when there were 14. The 5 added since (`how-to-play-memory-chess-board-game`, `chess-position-memory-trainers-compared`, `lichess-vs-chess-com-visualization-training`, `memory-chess-vs-lichess-coordinate-trainer`, `memory-chess-vs-darksquares`) are not in the tables below. Two more URLs are retired guides that now redirect (`chess-board-vision-drills` and `working-memory-exercises-for-chess`, in `src/lib/seo/learn/retired.ts`).
+- 6 articles under `/articles/<slug>`, defined in `src/lib/articles/entries/*.ts`. All six are about a person and translated into 23 locales. The tables below cover the first three; `miguel-najdorf`, `garry-kasparov` and `dominic-obrien` came later. Learn is English-only.
 - The hub groups guides by 4 goals (`reduce-blunders`, `visualization`, `memory`, `routine`) in `src/lib/seo/learn/schema.ts`.
 - Learn is the last main section still drawn in the old dark editorial shell (`EditorialPageShell`). Home, Play, Articles, Leaderboard, Dashboard, About and Changelog use Lab Paper. `/learn` is not in `LAB_PAPER_ROUTES` (`src/lib/lab-paper/routes.ts`). Matching "our existing designs" therefore means moving Learn onto Lab Paper. See the reference screenshots `learn-1440.png` against `articles-1440.png`.
 

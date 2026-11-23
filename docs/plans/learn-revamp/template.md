@@ -188,7 +188,7 @@ The prototype renderer `learn-proto/render.js` (scratch, not committed) implemen
 
 ## How today's guides map onto it
 
-`tools/build-content.cjs` converts all 14 guides mechanically. Run it from the repo root after the two extract commands in `inventory.md`:
+`tools/build-content.cjs` converts every guide listed in `src/lib/seo/learn/guides/index.ts` mechanically. Run it from the repo root after the two extract commands in `inventory.md`:
 
 ```bash
 node docs/plans/learn-revamp/tools/build-content.cjs "$PWD" /tmp/guides.json /tmp/articles.json /tmp/content.js

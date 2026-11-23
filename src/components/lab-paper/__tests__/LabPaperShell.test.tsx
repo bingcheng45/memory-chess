@@ -50,6 +50,7 @@ describe("the footer the locale layout renders", () => {
       ["Articles", "/articles"],
       ["About", "/about"],
       ["Blindfold chess", "/blindfold"],
+      ["Chess memory trainer", "/chess-memory-trainer"],
       ["Changelog", "/changelog"],
       ["Contact us", "/contact-us"],
       ["Privacy", "/privacy"],

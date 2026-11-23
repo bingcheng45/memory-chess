@@ -1,12 +1,12 @@
 # Learn revamp: what SEO must keep and add
 
-Learn is the site's main search entry point. This file lists what the revamp must keep exactly, what it should add, and the AdSense rules that a redesign can break without anyone noticing in a browser. Facts below were read from the source on `feat/brain-lab-landing` and from a production build served locally on port 4681.
+Learn is the site's main search entry point. This file lists what the revamp must keep exactly, what it should add, and the AdSense rules that a redesign can break without anyone noticing in a browser. Facts below were read from the source on `feat/brain-lab-landing` and from a production build served locally on port 4681. That branch merged into `main` as PR 42 on 2026-10-14 and is closed. Work from `main`.
 
 ## Keep exactly
 
 ### URLs
 
-- The hub stays at `/learn`. Each guide stays at `/learn/<slug>`, with the 14 slugs listed in `inventory.md`. No slug changes in the revamp.
+- The hub stays at `/learn`. Each guide stays at `/learn/<slug>`, with the slugs in `LEARN_GUIDES` (`src/lib/seo/learn/guides/index.ts`, 19 guides on 2026-11-23; `inventory.md` lists the first 14). No slug changes in the revamp.
 - Topic groups get fragment anchors on the hub (`/learn#board-vision`), not their own URLs. A group page with 2 guides would fall under the 300-word floor and share most of its text with the hub. Revisit when a group holds 5 or more guides.
 - `/learn/search` is the one new path (see `search.md`). It is `noindex, follow`, kept out of the sitemap, and "search" becomes a reserved slug that no guide may take.
 
@@ -71,7 +71,7 @@ Also keep:
 
 - **LCP.** The h1 and the quick answer are the largest elements, so LCP is text. Open Sans is loaded with `preload: false` in `src/components/lab-paper/shell.ts`. On Learn, Open Sans is the body face above the fold. Measure LCP before and after, and preload the latin subset for `/learn` routes if it shows up as the LCP delay.
 - **CLS.** Boards have a fixed aspect ratio. Images carry `width` and `height`. The search results area reserves no space on load because it does not exist until the reader types.
-- **INP.** The search index for 14 guides and 3 articles is small. The reference ranker in `learn-proto/search.js` answers in under 5 ms per query in Node on this machine (measured). Load it on first focus of the search field, not on page load.
+- **INP.** The search index for 19 guides and 6 articles (on 2026-11-23) is small. The reference ranker in `learn-proto/search.js` answered in under 5 ms per query over the first 14 guides and 3 articles in Node on this machine (measured then). Load it on first focus of the search field, not on page load.
 - **Motion.** Cross-document view transitions (`@view-transition { navigation: auto; }`) give hub-to-guide transitions with no JavaScript. They are off under `prefers-reduced-motion`, and browsers without support navigate normally.
 - **JavaScript.** Today's Learn pages ship no Learn-specific client JavaScript beyond the shell. The revamp adds the search island and nothing else. The table of contents, FAQ and boards stay server-rendered HTML.
 

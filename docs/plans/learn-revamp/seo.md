@@ -25,7 +25,7 @@ Learn is the site's main search entry point. This file lists what the revamp mus
 ### Metadata
 
 - `title`, `description`, canonical, Open Graph `article` fields (`publishedTime`, `modifiedTime`, `authors`, `tags`) and the per-guide `opengraph-image` and `twitter-image` routes stay as `buildLearnPageMetadata` builds them today.
-- Titles and descriptions stay unique across the site. The template caps them at 60 and 160 characters. 4 descriptions are over 160 today and need trimming (listed in `template.md`).
+- Titles and descriptions stay unique across the site. The template caps them at 60 and 160 characters, and `learnTemplate.test.ts` fails any guide over either cap.
 - The sitemap keeps `/learn` at priority 0.8 with `lastModified` from `LEARN_LAST_UPDATED`, and each guide at 0.7 with its own `updatedAt`. Only bump `updatedAt` when the guide's text changes, not when the template or CSS does.
 
 ### JSON-LD

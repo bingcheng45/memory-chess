@@ -254,7 +254,7 @@ The full converted documents for all 14 guides are in `learn-proto/content.js` a
 
 A test file, `learnTemplate.test.ts`, checks each of these over every guide:
 
-- `meta.title` is 60 characters or fewer, `meta.description` 160 or fewer. All 14 titles pass today. 4 descriptions do not and need trimming first: `how-to-get-better-at-chess-for-beginners` (170), `how-many-chess-puzzles-a-day` (169), `chess-pattern-recognition-drills` (168), `chess-visualization-exercises` (162).
+- `meta.title` is 60 characters or fewer, `meta.description` 160 or fewer. Every guide passes both today.
 - Every `questions` entry ends with "?" and does not repeat an FAQ question.
 - Every `InlineLink.href`, `FurtherItem.slug` and article `cta` resolves to a live page. `crossLinks.test.ts` already does this for today's two lists.
 - Every `board` replays: its `fen` is legal and every claim holds. `guideFacts.test.ts` moves onto `board.claims` and `facts`.

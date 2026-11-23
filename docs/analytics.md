@@ -47,6 +47,7 @@ they key their data by the raw page address, which the scrubber can't fully clea
 | `result_view_select` | `result_view` (`side`, `overlay`) | The result screen layout was switched. |
 | `result_share` / `lab_dashboard_share` | `method` (`native`, `download`, `copy_image`, `copy`, `post`), `network?` | A result card or progress card left the page. |
 | `reminder_set` | `surface` (`result`, `dashboard`, `daily`) | The daily board's calendar reminder was downloaded. |
+| `streak_chip_view` | `state` (`active`, `ends_today`), `streak_days` (`2`, `3-6`, `7+`) | The header's streak chip showed. Once per page load, not again on client-side navigation. `ends_today` is the chip warning that skipping today ends the streak. |
 | `lab_section_view` | none | The lab section (§06) scrolled into view. |
 | `lab_panel_action` | `panel`, `action` | A lab panel's link or control was used. |
 | `lab_export` / `lab_import` / `lab_backup_interest` | counts only | The lab record was downloaded, imported, or cross-device backup was asked for. |
@@ -67,7 +68,7 @@ they key their data by the raw page address, which the scrubber can't fully clea
 
 The privacy page promises these, and `before_send` in `SitePostHog.tsx` plus the event types enforce them:
 - No typed text. `player` and `q` query parameters are removed from every address (`src/lib/analytics/typedText.ts`).
-- No positions, squares, round ids, streak lengths or dates in events.
+- No positions, squares, round ids, streak lengths or dates in events. `streak_chip_view` sends a streak only as its group, `2`, `3-6` or `7+`.
 - No screen recordings, no names or emails, no cookies.
 
 Adding an event or a property changes what the privacy page has to say, in English and in its 23

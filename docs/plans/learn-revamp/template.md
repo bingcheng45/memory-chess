@@ -248,7 +248,7 @@ Example. The first section of `how-to-stop-blundering-in-chess` after conversion
 }
 ```
 
-The full converted documents for all 14 guides are in `learn-proto/content.js` as `DOCS`. Two are curated by hand: `how-to-stop-blundering-in-chess` (3 boards, a stat CTA) and `20-minute-daily-chess-study-plan` (plan, drills, a source, a stat CTA). The stat CTA copy in both is new and marked `_protoCopy`.
+The full converted documents for the 14 guides that existed when this plan was written are in `learn-proto/content.js` as `DOCS`. `LEARN_GUIDES` has 19 since the board game guide (#137) and the four comparison pages (#130) were added. Two are curated by hand: `how-to-stop-blundering-in-chess` (3 boards, a stat CTA) and `20-minute-daily-chess-study-plan` (plan, drills, a source, a stat CTA). The stat CTA copy in both is new and marked `_protoCopy`.
 
 ## Rules the types cannot hold
 

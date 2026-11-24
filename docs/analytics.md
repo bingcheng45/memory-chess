@@ -31,7 +31,7 @@ this page is out of date.
 | `$autocapture` | Clicks on buttons and links, and changes and submits on form controls (never their values). Element tag and attributes such as classes, `href`, `aria-label` and `data-attr`. **No text on screen** (`mask_all_text`). |
 | `$exception` | Uncaught JavaScript errors, with stack. |
 | `$web_vitals` | LCP, CLS, INP and FCP per page. |
-| `ai_crawler_visit` | `agent` (the matched bot name), `path`, `format` (`html`, `markdown` or `llms`), `referrer`. One `distinct_id` per agent: `ai-crawler:<agent>`. |
+| `ai_crawler_visit` | `agent` (the matched bot name, or the host a signed agent names, such as `chatgpt.com`), `path`, `format` (`html`, `markdown` or `llms`), `referrer`. One `distinct_id` per agent: `ai-crawler:<agent>`. |
 
 Session replay, heatmaps, dead-click capture, surveys and feature flags are off in code (`POSTHOG_OPTIONS` in
 `SitePostHog.tsx`), so turning them on in the PostHog project settings does nothing. Heatmaps stay off because
@@ -59,8 +59,8 @@ they key their data by the raw page address, which the scrubber can't fully clea
 
 `result_view` is also registered on every later event in the browser after the player chooses one.
 
-`round_source` values: `home_quick`, `home_tier`, `calibration`, `calibration_cta`, `guide_cta`,
-`article_cta`, `game_form`, `tile_drill`, `try_again`, `insight`, `result_next`, `plan`, `daily`, `review`,
+`round_source` values: `home_quick`, `home_intro`, `home_tier`, `calibration`, `calibration_cta`, `guide_cta`,
+`guide_try`, `blindfold_page`, `article_cta`, `game_form`, `tile_drill`, `try_again`, `insight`, `result_next`, `plan`, `daily`, `review`,
 `dashboard`, `share`, `link` (a round link naming no known source).
 
 ## Never collected

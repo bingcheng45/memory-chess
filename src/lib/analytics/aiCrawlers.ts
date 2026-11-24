@@ -13,6 +13,19 @@ const POSTHOG_CAPTURE_URL = "https://us.i.posthog.com/i/v0/e/";
 const MAX_HEADER_LENGTH = 512;
 const TIMEOUT_MS = 3000;
 
+/**
+ * A signed agent names itself with a quoted address, such as `"https://chatgpt.com"`. Charts read better with the
+ * bare host, so this keeps only that; anything that is not an address is kept as it came, without its quotes.
+ */
+export function signedAgentName(header: string): string {
+  const value = header.trim().replace(/^"(.*)"$/, "$1").trim();
+  try {
+    return new URL(value).hostname || value;
+  } catch {
+    return value;
+  }
+}
+
 export type AiCrawlerVisit = {
   agent: string;
   path: string;
@@ -33,7 +46,7 @@ export function aiCrawlerVisit(request: Request): AiCrawlerVisit | null {
   const named = userAgent.match(AI_AGENT_USER_AGENT)?.[0];
   if (!named && !signatureAgent && !markdownClient) return null;
 
-  const agent = (named ?? (signatureAgent || "markdown client")).trim().slice(0, MAX_HEADER_LENGTH);
+  const agent = (named ?? (signatureAgent ? signedAgentName(signatureAgent) : "markdown client")).trim().slice(0, MAX_HEADER_LENGTH);
   const format = /\/llms(-full)?\.txt$/i.test(pathname) ? "llms" : /\.mdx?$/i.test(pathname) || MARKDOWN_FIRST.test(accept) ? "markdown" : "html";
   const referrer = request.headers.get("referer");
   return { agent, path: pathname, format, ...(referrer ? { referrer: withoutTypedText(referrer).slice(0, 2048) } : {}) };

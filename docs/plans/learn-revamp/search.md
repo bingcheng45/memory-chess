@@ -1,6 +1,6 @@
 # Learn revamp: search by the reader's question
 
-Readers arrive with a question ("why do I keep hanging pieces"), not a guide title. The search matches that question to the guide that answers it, ranks by how well each guide answers it, and works with no JavaScript. It needs no new runtime dependency. With 14 guides and 3 articles the whole index fits in a few kilobytes, and a hand-written ranker of about 150 lines is easier to tune for chess words than a general library.
+Readers arrive with a question ("why do I keep hanging pieces"), not a guide title. The search matches that question to the guide that answers it, ranks by how well each guide answers it, and works with no JavaScript. It needs no new runtime dependency. With 19 guides and 6 articles the whole index fits in a few kilobytes, and a hand-written ranker of about 150 lines is easier to tune for chess words than a general library.
 
 A reference ranker exists as throwaway prototype code in the scratch folder (`learn-proto/search.js`). The numbers below come from running it.
 

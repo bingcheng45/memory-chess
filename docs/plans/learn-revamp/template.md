@@ -188,7 +188,7 @@ The prototype renderer `learn-proto/render.js` (scratch, not committed) implemen
 
 ## How today's guides map onto it
 
-`tools/build-content.cjs` converts all 14 guides mechanically. Run it from the repo root after the two extract commands in `inventory.md`:
+`tools/build-content.cjs` converts every guide listed in `src/lib/seo/learn/guides/index.ts` mechanically. Run it from the repo root after the two extract commands in `inventory.md`:
 
 ```bash
 node docs/plans/learn-revamp/tools/build-content.cjs "$PWD" /tmp/guides.json /tmp/articles.json /tmp/content.js
@@ -248,7 +248,7 @@ Example. The first section of `how-to-stop-blundering-in-chess` after conversion
 }
 ```
 
-The full converted documents for all 14 guides are in `learn-proto/content.js` as `DOCS`. Two are curated by hand: `how-to-stop-blundering-in-chess` (3 boards, a stat CTA) and `20-minute-daily-chess-study-plan` (plan, drills, a source, a stat CTA). The stat CTA copy in both is new and marked `_protoCopy`.
+The full converted documents for every guide are in `learn-proto/content.js` as `DOCS`. Two are curated by hand: `how-to-stop-blundering-in-chess` (3 boards, a stat CTA) and `20-minute-daily-chess-study-plan` (plan, drills, a source, a stat CTA). The stat CTA copy in both is new and marked `_protoCopy`.
 
 ## Rules the types cannot hold
 

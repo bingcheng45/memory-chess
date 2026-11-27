@@ -287,6 +287,21 @@ const guide: LearnDocument = {
           slug: "how-to-see-the-whole-board-in-chess",
           reason: "A scan of the whole board is faster when every square has a name.",
         },
+        {
+          kind: "guide",
+          slug: "memory-chess-vs-lichess-coordinate-trainer",
+          reason: "How the Lichess 30-second square drill and a recall round split the work.",
+        },
+        {
+          kind: "guide",
+          slug: "lichess-vs-chess-com-visualization-training",
+          reason: "Both big sites have a coordinate drill. Here is what else each one offers.",
+        },
+        {
+          kind: "article",
+          slug: "miguel-najdorf",
+          reason: "Najdorf's 45 blindfold games ran on square names alone, called out in notation.",
+        },
       ],
     },
     {

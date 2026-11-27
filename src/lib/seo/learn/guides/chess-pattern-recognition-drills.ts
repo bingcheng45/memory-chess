@@ -361,6 +361,11 @@ const guide: LearnDocument = {
           reason: "Why a shape you solve in puzzles goes unseen in your games.",
         },
         {
+          kind: "article",
+          slug: "garry-kasparov",
+          reason: "A 1987 test where Kasparov placed 117 of 120 pieces from five-second looks, with a drill that names groups first.",
+        },
+        {
           kind: "guide",
           slug: "how-many-chess-puzzles-a-day",
           reason: "How many puzzles a day it takes to keep the shapes fresh.",

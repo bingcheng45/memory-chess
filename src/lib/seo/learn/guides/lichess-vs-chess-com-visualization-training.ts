@@ -151,6 +151,16 @@ const guide: LearnDocument = {
           slug: "blindfold-chess-training-for-beginners",
           reason: "A staged route from board recall to full blindfold games.",
         },
+        {
+          kind: "guide",
+          slug: "memory-chess-vs-darksquares",
+          reason: "A paid alternative to both sites, built as a full blindfold course.",
+        },
+        {
+          kind: "article",
+          slug: "miguel-najdorf",
+          reason: "The 1947 record of 45 blindfold games, played with no board on any screen.",
+        },
       ],
     },
     {

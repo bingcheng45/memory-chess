@@ -250,6 +250,11 @@ const guide: LearnDocument = {
           slug: "chess-pattern-recognition-drills",
           reason: "Why remembering positions gets easier once you see familiar shapes.",
         },
+        {
+          kind: "article",
+          slug: "dominic-obrien",
+          reason: "For grown-ups who liked the peg game, how a world memory champion holds whole decks of cards.",
+        },
       ],
     },
     {

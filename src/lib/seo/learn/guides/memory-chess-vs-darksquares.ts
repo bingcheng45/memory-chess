@@ -168,6 +168,21 @@ const guide: LearnDocument = {
           slug: "blindfold-chess-training-for-beginners",
           reason: "A route to blindfold games that uses recall rounds as its first stage.",
         },
+        {
+          kind: "guide",
+          slug: "lichess-vs-chess-com-visualization-training",
+          reason: "The blindfold options on Lichess and Chess.com, if you want hidden-piece games without a course.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-play-memory-chess-board-game",
+          reason: "Came for the wooden peg game called Memory Chess? Its rules and variants are here.",
+        },
+        {
+          kind: "article",
+          slug: "miguel-najdorf",
+          reason: "How Najdorf played 45 blindfold games at once, the far end of where a course like this leads.",
+        },
       ],
     },
     {

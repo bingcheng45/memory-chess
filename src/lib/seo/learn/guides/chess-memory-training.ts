@@ -238,6 +238,21 @@ const guide: LearnDocument = {
           slug: "chess-visualization-exercises",
           reason: "Picture the board with no board in front of you at all.",
         },
+        {
+          kind: "guide",
+          slug: "chess-position-memory-trainers-compared",
+          reason: "Seven tools that run this show, hide and rebuild task, by price and piece count.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-play-memory-chess-board-game",
+          reason: "The wooden peg game that shares the Memory Chess name, for a child too young for chess.",
+        },
+        {
+          kind: "article",
+          slug: "dominic-obrien",
+          reason: "Why a memory palace that holds 54 decks of cards still cannot show you a chess board.",
+        },
       ],
     },
     {

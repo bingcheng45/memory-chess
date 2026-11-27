@@ -2,7 +2,7 @@ import { useLocale, useTranslations } from "next-intl";
 import type { ReactNode } from "react";
 import { Link } from "@/i18n/navigation";
 import ArticleCountsRow from "@/components/articles/ArticleCountsRow";
-import { ArticleDrill, EarlyDrillLink } from "@/components/articles/ArticleDrill";
+import { ArticleDrill, EarlyDrillLink, EarlyDrillOriginal } from "@/components/articles/ArticleDrill";
 import ArticleLink from "@/components/articles/ArticleLink";
 import ArticleRail from "@/components/articles/ArticleRail";
 import ArrivingPortrait from "@/components/articles/ArrivingPortrait";
@@ -72,10 +72,13 @@ function Portrait({ article }: { article: Article }) {
   const { slug, photo, person } = article;
   const { src, width, height, alt } = photo;
 
+  // A phone shows a thumbnail beside its caption, so the title and the drill button rise onto the first screen.
   return (
-    <figure className="row-start-1 mb-[22px] max-w-[190px] min-[821px]:mb-0 min-[821px]:max-w-none">
-      <ArrivingPortrait key={slug} slug={slug} photo={{ src, width, height, alt }} />
-      <figcaption className={`art-figcap mt-3 ${ARTICLE_LONG_WORDS}`}>
+    <figure className="row-start-1 mb-[22px] flex items-start gap-4 min-[821px]:mb-0 min-[821px]:block">
+      <div className="w-[72px] shrink-0 min-[821px]:w-auto">
+        <ArrivingPortrait key={slug} slug={slug} photo={{ src, width, height, alt }} />
+      </div>
+      <figcaption className={`art-figcap min-w-0 min-[821px]:mt-3 ${ARTICLE_LONG_WORDS}`}>
         <b className="block">{person.name}</b>
         <span>{person.role}</span>
         <Credit credit={photo} />
@@ -88,8 +91,10 @@ function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "c
   const t = useTranslations("articles.page");
   const locale = useLocale();
 
+  // From 821px the header is a grid: the five blocks without a row fill rows 1 to 5, and the early drill's
+  // two links take rows 6 and 7, so a desktop still meets them after the counts.
   return (
-    <header className="row-start-2 min-[821px]:col-start-2 min-[821px]:row-start-1">
+    <header className="row-start-2 min-[821px]:col-start-2 min-[821px]:row-start-1 min-[821px]:grid min-[821px]:grid-cols-[minmax(0,1fr)]">
       <p className="art-meta">
         <time dateTime={article.publishedAt} data-flight="date" className="inline-block">
           {formatArticleDate(article.publishedAt, locale)}
@@ -102,6 +107,7 @@ function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "c
         {article.title}
       </h1>
       <p className="art-lede mt-4 max-w-[58ch]">{article.description}</p>
+      <EarlyDrillLink />
       <div className="art-note mt-5">
         <address data-article-byline className="not-italic">
           {t.rich("byline", {
@@ -115,7 +121,7 @@ function HeadingBlock({ article, counts }: Pick<ArticlePageProps, "article" | "c
         <TranslationNote englishPath={articlePath(article.slug)} className={NOTE_CLASS} />
       </div>
       <ArticleCountsRow slug={article.slug} counts={counts} />
-      <EarlyDrillLink drill={article.drill} />
+      <EarlyDrillOriginal drill={article.drill} />
     </header>
   );
 }

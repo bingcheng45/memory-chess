@@ -33,7 +33,7 @@ jest.mock("@/i18n/navigation", () => ({
   usePathname: () => "/articles",
 }));
 
-const ARTICLE_SIZES = "(max-width: 820px) 190px, 280px";
+const ARTICLE_SIZES = "(max-width: 820px) 72px, 280px";
 
 const warmed = recordWarmedImages();
 const link = () => screen.getByRole("link", { name: /Open the article/ });

@@ -207,6 +207,15 @@ describe("ArticlePage body", () => {
     ]);
   });
 
+  it("puts the early drill straight under the intro, with the article's own round after the counts", () => {
+    const { container } = renderPage();
+    const early = container.querySelector("a[data-article-early-drill]")!.closest("p")!;
+    const original = container.querySelector("a[data-article-early-drill-original]")!.closest("p")!;
+
+    expect(early.previousElementSibling).toHaveTextContent(article.description);
+    expect(original.previousElementSibling).toBe(container.querySelector("[data-article-counts]"));
+  });
+
   it("sizes both drill links to a returning player's saved rating", () => {
     localStorage.setItem("memory-chess-storage", JSON.stringify({ state: { gameState: { skillRating: 1300 }, certainty: { rd: 60, rounds: 40 } }, version: 3 }));
     try {

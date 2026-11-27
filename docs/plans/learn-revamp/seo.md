@@ -18,9 +18,10 @@ Learn is the site's main search entry point. This file lists what the revamp mus
 
 ### Locale behaviour
 
-- `/learn` is in `ENGLISH_ONLY_ROUTES` (`src/lib/seo/englishOnly.ts`). Each guide has one URL, one self canonical and no hreflang alternates, in both the HTML and the `Link` header. `buildLearnPageMetadata` sets `alternates: { canonical }` only, and the revamp keeps that.
+- `/learn` is in `ENGLISH_ONLY_ROUTES` (`src/lib/seo/englishOnly.ts`), except the 5 guides in `TRANSLATED_GUIDE_SLUGS` (`src/lib/seo/learn/translatedGuides.ts`). Those are also served in `ru`, `pt-BR`, `fr`, `de` and `es` (`servedGuides.json`), and every translated copy is noindex (`GUIDE_LOCALE_INDEXING`). Every other guide has one URL, one self canonical and no hreflang alternates, in both the HTML and the `Link` header.
+- `buildLearnPageMetadata` gives each served locale its own self canonical. It adds hreflang alternates only on an indexed locale, and only once a locale other than English is indexed. Until then it sets `alternates: { canonical }` only. The revamp keeps that.
 - Links into Learn from translated pages carry `hrefLang="en"` and the "(English)" suffix from `englishOnlyLinkSuffix`. Keep both on any new link, such as an article CTA that points into a guide.
-- Moving Learn onto Lab Paper means adding `{ path: "/learn", scope: "subtree", locales: ["en"] }` to `LAB_PAPER_ROUTES`. The `locales: ["en"]` value matters. Learn has no translations, so no other locale should draw the Lab Paper banner and footer around it.
+- Learn is on Lab Paper through `{ path: "/learn", scope: "subtree", locales: ["en"] }` in `LAB_PAPER_ROUTES` (`src/lib/lab-paper/routes.ts`), plus one `page` entry per translated guide with the locales from `servedLocalesOf`. The locale lists matter. A locale with no copy of a page must not draw the Lab Paper banner and footer around it.
 
 ### Metadata
 
@@ -62,7 +63,7 @@ Also keep:
 
 ## Server-rendered content
 
-- Guides and the hub stay statically generated (`generateStaticParams` on the English locale only).
+- Guides and the hub stay statically generated (`generateStaticParams` builds each guide in English and in every locale that serves it).
 - Every block renders to HTML on the server, boards included. A board is a CSS grid with Unicode glyphs and one inline SVG, as `docs/design/brand-directions/lab-paper.md` specifies. Do not draw Learn diagrams with `BoardFigure` from `src/components/round`, which is a client component and loads piece images from `upload.wikimedia.org`.
 - The search works without JavaScript through `/learn/search?q=` (see `search.md`). With JavaScript, the same ranking runs in the browser and the form does not reload.
 - Check the floor with `ssr-words.sh` on `/learn` and two guides after the change. Baseline from this build, page chrome included: `/learn` 893 words, `/learn/how-to-stop-blundering-in-chess` 1582, `/learn/20-minute-daily-chess-study-plan` 1258.

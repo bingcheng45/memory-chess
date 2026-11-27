@@ -1,6 +1,6 @@
 # Return visits on round_complete
 
-A game round's `round_complete` event says whether it is the player's first round or a return visit, so day-1 and day-7 return rates can be read in GA4. The event name and its other parameters are unchanged. The homepage calibration round does not send these three.
+A game round's `round_complete` event says whether it is the player's first round or a return visit, so day-1 and day-7 return rates can be read in GA4 and, since 2026-11-21, in PostHog, which gets the same event with the same parameters. The event name and its other parameters are unchanged. The homepage calibration round does not send these three.
 
 ## The three parameters
 
@@ -33,7 +33,7 @@ GA4 fills a custom dimension only from the day it is registered, so register the
 
 ## The number it enables
 
-Day-1 return rate: users whose `round_complete` has `days_since_first_round = 1`, over users whose `round_complete` had `days_since_first_round = 0` and `rounds_played = 1` the day before. Day-7 is the same with `7`. In a GA4 free-form exploration, use the event `round_complete`, the dimension "Days since first round", and the metric Total users.
+Day-1 return rate: users whose `round_complete` has `days_since_first_round = 1`, over users whose `round_complete` had `days_since_first_round = 0` and `rounds_played = 1` the day before. Day-7 is the same with `7`. In a GA4 free-form exploration, use the event `round_complete`, the dimension "Days since first round", and the metric Total users. In PostHog, use a Trends insight on `round_complete`, counted by unique users and broken down by the property `days_since_first_round`. PostHog needs no registration step, but it holds these events only from 2026-11-21, so read earlier days in GA4.
 
 ## Privacy page
 

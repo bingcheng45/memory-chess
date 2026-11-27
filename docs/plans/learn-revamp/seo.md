@@ -1,6 +1,6 @@
 # Learn revamp: what SEO must keep and add
 
-Learn is the site's main search entry point. This file lists what the revamp must keep exactly, what it should add, and the AdSense rules that a redesign can break without anyone noticing in a browser. Facts below were read from the source on `feat/brain-lab-landing` and from a production build served locally on port 4681.
+Learn is the site's main search entry point. This file lists what the revamp must keep exactly, what it should add, and the AdSense rules that a redesign can break without anyone noticing in a browser. Facts below were read from the source on `feat/brain-lab-landing` (PR 42, merged into `main` on 2026-10-14) and from a production build served locally on port 4681.
 
 ## Keep exactly
 

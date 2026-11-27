@@ -1,6 +1,6 @@
 # Hero showcase and microscope: real positions, verified relations
 
-Branch: `feat/brain-lab-landing` (PR 42).
+Branch: `feat/brain-lab-landing` (PR 42), merged into `main` on 2026-10-14.
 
 ## What the visitor sees
 

@@ -223,5 +223,5 @@ The group order on the hub follows a reader's path: start, see the board, hold i
 - **No images in any guide.** `public/images/learn/` holds 4 SVGs (`blunder-board.svg`, `memory-stack.svg`, `routine-path.svg`, `visualization-map.svg`) that nothing references.
 - **Diagrams are checked but never drawn.** 50 positions across 11 guides are replayed by `guideFacts.test.ts`, and every one is described only in prose ("Put a White bishop on b5, a Black knight on c6 ..."). These are the cheapest diagrams the revamp can add: the data and the checks already exist.
 - **Everything is beginner level.** 12 guides say Beginner and 2 say Beginner to Intermediate. A level filter has nothing to filter today.
-- **Only 3 articles, all biographies.** Article CTAs from guides are limited to these three.
+- **Only 6 articles, all biographies.** Article CTAs from guides are limited to these six.
 - **Inbound links are uneven.** `how-to-think-in-chess-for-beginners` has 1 inbound guide link.

@@ -154,7 +154,7 @@ const guide: LearnDocument = {
         {
           kind: "guide",
           slug: "memory-chess-vs-darksquares",
-          reason: "A paid alternative to both sites, built as a full blindfold course.",
+          reason: "A third option beside both sites, built as a full blindfold course with a free tier.",
         },
         {
           kind: "article",

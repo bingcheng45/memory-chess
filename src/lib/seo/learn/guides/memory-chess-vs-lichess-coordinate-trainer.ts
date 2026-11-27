@@ -145,7 +145,7 @@ const guide: LearnDocument = {
         {
           kind: "guide",
           slug: "memory-chess-vs-darksquares",
-          reason: "A paid course that starts from square colours and ends in blindfold games.",
+          reason: "A free-to-start course that runs from square colours to blindfold games.",
         },
       ],
     },

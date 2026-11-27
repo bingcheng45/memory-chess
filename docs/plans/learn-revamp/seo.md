@@ -72,7 +72,7 @@ Also keep:
 
 - **LCP.** The h1 and the quick answer are the largest elements, so LCP is text. Open Sans is loaded with `preload: false` in `src/components/lab-paper/shell.ts`. On Learn, Open Sans is the body face above the fold. Measure LCP before and after, and preload the latin subset for `/learn` routes if it shows up as the LCP delay.
 - **CLS.** Boards have a fixed aspect ratio. Images carry `width` and `height`. The search results area reserves no space on load because it does not exist until the reader types.
-- **INP.** The search index for 14 guides and 3 articles is small. The reference ranker in `learn-proto/search.js` answers in under 5 ms per query in Node on this machine (measured). Load it on first focus of the search field, not on page load.
+- **INP.** The search index for 19 guides and 6 articles is small. The reference ranker in `learn-proto/search.js` answers in under 5 ms per query in Node on this machine (measured). Load it on first focus of the search field, not on page load.
 - **Motion.** Cross-document view transitions (`@view-transition { navigation: auto; }`) give hub-to-guide transitions with no JavaScript. They are off under `prefers-reduced-motion`, and browsers without support navigate normally.
 - **JavaScript.** Today's Learn pages ship no Learn-specific client JavaScript beyond the shell. The revamp adds the search island and nothing else. The table of contents, FAQ and boards stay server-rendered HTML.
 

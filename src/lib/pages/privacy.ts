@@ -84,6 +84,9 @@ const privacy: PageText = {
           p: "The Remind me daily button on today's board saves a daily calendar event as a file on your device, and the file is not sent to Memory Chess. Google Analytics receives a reminder_set event when you press the button. It names only where the button was, as its surface: result, dashboard or daily. It carries no time zone, no time and no board.",
         },
         {
+          p: "The streak chip in the page header shows once your lab record holds two days in a row. Google Analytics receives a streak_chip_view event the first time the chip shows after you load a page, and not again as you move between pages of the site. It has two parameters. state says whether the streak is active or ends_today, which means skipping today would end it. streak_days says only the size of its group, 2, 3-6 or 7+, never its exact length beyond two days. It carries no dates, no positions and no round ids.",
+        },
+        {
           p: "When you submit a score to the leaderboard, local storage on this device also keeps the id the leaderboard gives that entry, with its difficulty, country, score and the time you sent it, for your best entry on each difficulty. Only when you press Check my standing in the lab record does your browser send that entry id to Memory Chess, with whether to rank it worldwide or within the entry's own country. Memory Chess reads the entry from the leaderboard and replies with its rank and the number of entries it was ranked against. The reply is not stored. To limit how often standing can be checked, the server counts checks from each IP address in its memory for one minute, and drops an address at the first check after its minute is up. If the leaderboard no longer has the entry, its id is removed from this device. Google Analytics receives an event that says a standing check was made, with no entry id and no rank.",
         },
         {

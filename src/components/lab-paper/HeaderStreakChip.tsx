@@ -1,12 +1,17 @@
 "use client";
 
+import { useEffect } from "react";
 import { useTranslations } from "next-intl";
 import { useLabSummary } from "@/hooks/useLabData";
 import { Link } from "@/i18n/navigation";
+import { streakDaysGroup, trackEvent } from "@/lib/analytics/events";
 import { shiftDay } from "@/lib/lab/engine";
 import { LAB_METRICS } from "@/lib/lab/metrics";
 import { LAB_THRESHOLDS } from "@/lib/lab/readiness";
 import { streakOf } from "@/lib/lab/streak";
+
+// Module state lasts until the browser loads a page, so a chip remounted by client-side navigation sends no second view.
+let viewSent = false;
 
 /**
  * The current run of days played, on every Lab Paper page once it reaches the streak threshold, linking to the dashboard.
@@ -19,10 +24,19 @@ export function HeaderStreakChip() {
   const { summary, today } = useLabSummary();
   // The streak reads the summary's days alone, so the log is never read for it.
   const streak = today ? LAB_METRICS.streak.compute({ records: [], summary, today }).value : null;
-  if (!streak || streak.current < LAB_THRESHOLDS.streakDays) return null;
+  const shows = !!streak && streak.current >= LAB_THRESHOLDS.streakDays;
+  const count = streak?.current ?? 0;
+  const endsToday = shows && streakOf(summary.days, shiftDay(today, 1)).current < count;
 
-  const count = streak.current;
-  if (streakOf(summary.days, shiftDay(today, 1)).current < count) {
+  useEffect(() => {
+    if (!shows || viewSent) return;
+    viewSent = true;
+    trackEvent({ name: "streak_chip_view", params: { state: endsToday ? "ends_today" : "active", streak_days: streakDaysGroup(count) } });
+  }, [shows, endsToday, count]);
+
+  if (!shows) return null;
+
+  if (endsToday) {
     const label = t("streakEndsTodayChipLabel", { count });
     return (
       <Link className="lab-streak-chip" href="/daily" prefetch={false} title={label} aria-label={label}>

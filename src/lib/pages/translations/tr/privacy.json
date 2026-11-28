@@ -86,6 +86,9 @@
             "p": "Bugünün tahtasındaki “Her gün hatırlat” düğmesi, günlük bir takvim etkinliğini cihazına dosya olarak kaydeder ve bu dosya Memory Chess'e gönderilmez. Düğmeye bastığında Google Analytics bir reminder_set olayı alır. Bu olay yalnızca düğmenin nerede olduğunu surface olarak bildirir: result, dashboard veya daily. Saat dilimi, saat ve tahta içermez."
           },
           {
+            "p": "Sayfanın üst bölümündeki seri çipi, laboratuvar kaydında üst üste iki gün olduğunda görünür. Google Analytics, çip bir sayfayı yükledikten sonra ilk kez göründüğünde bir streak_chip_view olayı alır ve siteyi gezip sayfalar arasında geçtiğinde yeniden almaz. Bu olayın iki parametresi vardır. state, serinin active mi yoksa ends_today mi olduğunu söyler, yani bugünü atlamanın onu bitireceği anlamına gelir. streak_days yalnızca grubunun büyüklüğünü söyler, 2, 3-6 veya 7+, iki günün ötesinde asla tam uzunluğunu söylemez. Tarih, konum ve tur kimliği içermez."
+          },
+          {
             "p": "Sıralamaya bir skor gönderdiğinde, bu cihazdaki yerel depolama, her zorluk seviyesindeki en iyi kaydın için sıralamanın o kayda verdiği kimliği de zorluk, ülke, skor ve gönderdiğin zamanla birlikte tutar. Yalnızca laboratuvar kaydında “Sıramı kontrol et” düğmesine bastığında tarayıcın o kayıt kimliğini, kaydın dünya genelinde mi yoksa kendi ülkesi içinde mi sıralanacağı bilgisiyle birlikte Memory Chess'e gönderir. Memory Chess kaydı sıralamadan okur ve sırasını ve kaç kayıt arasında sıralandığını yanıt olarak verir. Yanıt saklanmaz. Sıranın ne sıklıkla kontrol edilebileceğini sınırlamak için sunucu, her IP adresinden gelen kontrolleri bir dakika boyunca belleğinde sayar ve bir adresi, dakikası dolduktan sonraki ilk kontrolde bellekten çıkarır. Sıralamada kayıt artık yoksa kimliği bu cihazdan kaldırılır. Google Analytics, kayıt kimliği ve sıra içermeden, bir sıra kontrolü yapıldığını belirten bir olay alır."
           },
           {

@@ -86,6 +86,9 @@
             "p": "Tlačítko „Připomínat denně“ u dnešní šachovnice uloží denní událost kalendáře jako soubor do vašeho zařízení a tento soubor se do Memory Chess neodesílá. Google Analytics dostane událost reminder_set, když tlačítko stisknete. Uvádí jen to, kde tlačítko bylo, jako surface: result, dashboard nebo daily. Neobsahuje časové pásmo, čas ani šachovnici."
           },
           {
+            "p": "Čip série v záhlaví stránky se zobrazí, jakmile váš laboratorní záznam obsahuje dva dny za sebou. Google Analytics dostane událost streak_chip_view, když se čip po načtení stránky zobrazí poprvé, a ne znovu, když přecházíte mezi stránkami webu. Má dva parametry. state říká, zda je série active, nebo ends_today, což znamená, že vynechání dneška by ji ukončilo. streak_days říká jen velikost její skupiny, 2, 3-6 nebo 7+, nikdy její přesnou délku nad dva dny. Neobsahuje kalendářní data, pozice ani identifikátory kol."
+          },
+          {
             "p": "Když odešlete výsledek do žebříčku, místní úložiště v tomto zařízení uchová také identifikátor, který žebříček záznamu přidělí, spolu s obtížností, zemí, výsledkem a časem odeslání, a to pro váš nejlepší záznam v každé obtížnosti. Pouze když v laboratorním záznamu stisknete Zjistit moje pořadí, odešle prohlížeč tento identifikátor záznamu do Memory Chess spolu s tím, zda se má pořadí určit celosvětově, nebo v rámci země záznamu. Memory Chess přečte záznam ze žebříčku a odpoví jeho pořadím a počtem záznamů, mezi kterými byl seřazen. Odpověď se neukládá. Aby bylo omezeno, jak často lze pořadí zjišťovat, server ve své paměti po dobu jedné minuty počítá dotazy z každé IP adresy a adresu vyřadí při prvním dotazu po uplynutí její minuty. Pokud žebříček záznam už nemá, jeho identifikátor se z tohoto zařízení odstraní. Google Analytics dostane událost o tom, že bylo pořadí zjišťováno, bez identifikátoru záznamu a bez pořadí."
           },
           {

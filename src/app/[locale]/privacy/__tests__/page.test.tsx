@@ -57,6 +57,16 @@ describe("PrivacyPage", () => {
     ).toBeInTheDocument();
   });
 
+  it("names the streak chip's event, its two parameters and the streak groups it sends", async () => {
+    render(await PrivacyPage(IN_ENGLISH));
+
+    expect(
+      screen.getByText(
+        "The streak chip in the page header shows once your lab record holds two days in a row. Google Analytics receives a streak_chip_view event the first time the chip shows after you load a page, and not again as you move between pages of the site. It has two parameters. state says whether the streak is active or ends_today, which means skipping today would end it. streak_days says only the size of its group, 2, 3-6 or 7+, never its exact length beyond two days. It carries no dates, no positions and no round ids.",
+      ),
+    ).toBeInTheDocument();
+  });
+
   it("says which fields a CSP violation report keeps, what is left out, what it is for and that it is deleted after 30 days", async () => {
     render(await PrivacyPage(IN_ENGLISH));
 

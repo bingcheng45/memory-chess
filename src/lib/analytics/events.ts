@@ -105,7 +105,8 @@ export type ReturnVisitParams = {
  * The GA4 event contract. Round events carry the setting, the score and `round_source`, never `source`, which
  * GA4 reads as the session's traffic source. A game round's round_complete also carries ReturnVisitParams, which
  * the homepage calibration does not send. Lab events carry counts and fixed ids only, never positions,
- * squares, round ids, dates or streak lengths, which the privacy page promises.
+ * squares, round ids, dates or streak lengths, which the privacy page promises. streak_chip_view sends a streak only
+ * as a StreakDaysGroup.
  */
 export type FunnelEvent =
   | {
@@ -211,7 +212,20 @@ export type FunnelEvent =
   | {
       name: "reminder_set";
       params: { surface: ReminderSurface };
+    }
+  /** Once per page load, when the header's streak chip first shows. */
+  | {
+      name: "streak_chip_view";
+      params: { state: StreakChipState; streak_days: StreakDaysGroup };
     };
+
+/** `ends_today` when the chip warns that skipping today ends the streak. */
+export type StreakChipState = "active" | "ends_today";
+
+/** A streak's days in groups, so the event never carries its exact length. The chip shows from two days. */
+export type StreakDaysGroup = "2" | "3-6" | "7+";
+
+export const streakDaysGroup = (days: number): StreakDaysGroup => (days <= 2 ? "2" : days <= 6 ? "3-6" : "7+");
 
 /** Where a reminder button sits: under the result screen's tomorrow line, on the dashboard, or on /daily. */
 export type ReminderSurface = "result" | "dashboard" | "daily";

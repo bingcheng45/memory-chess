@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "Aukeaa {timeLeft} päästä.",
     "seeToday": "Katso päivän lauta",
     "remindButton": "Muistuta joka päivä",
-    "remindNote": "Lataa kalenteritapahtuman, joka toistuu joka päivä laudan avautuessa.",
+    "remindNote": "Lataa kalenteritapahtuman, joka toistuu joka päivä siihen aikaan, kun painoit painiketta.",
     "remindDone": "Tallennettu. Avaa tiedosto lisätäksesi päivittäisen tapahtuman kalenteriisi.",
     "remindTitle": "Memory Chessin päivän lauta",
     "remindDescription": "Uusi lauta avautuu joka päivä keskiyöllä UTC. Kaikki pelaavat samaa lautaa, ja sinulla on yksi yritys."

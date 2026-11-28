@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "Se abre en {timeLeft}.",
     "seeToday": "Ver el tablero de hoy",
     "remindButton": "Recordármelo cada día",
-    "remindNote": "Descarga un evento de calendario que se repite cada día cuando se abre el tablero.",
+    "remindNote": "Descarga un evento de calendario que se repite cada día a la hora a la que pulsaste el botón.",
     "remindDone": "Guardado. Abre el archivo para añadir el evento diario a tu calendario.",
     "remindTitle": "Tablero diario de Memory Chess",
     "remindDescription": "Un tablero nuevo se abre cada día a medianoche UTC. Todo el mundo juega el mismo tablero y tienes un intento."

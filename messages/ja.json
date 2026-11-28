@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "{timeLeft}後に公開。",
     "seeToday": "今日の盤面を見る",
     "remindButton": "毎日リマインドする",
-    "remindNote": "盤面が公開される時刻に毎日繰り返すカレンダーの予定をダウンロードします。",
+    "remindNote": "ボタンを押した時刻に毎日繰り返すカレンダーの予定をダウンロードします。",
     "remindDone": "保存しました。ファイルを開いて、毎日の予定をカレンダーに追加してください。",
     "remindTitle": "Memory Chess デイリー盤面",
     "remindDescription": "新しい盤面は毎日UTCの午前0時に公開されます。全員が同じ盤面に挑戦し、チャンスは1回です。"

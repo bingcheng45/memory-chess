@@ -1768,7 +1768,7 @@
     "tomorrowOpens": "{timeLeft}后开放。",
     "seeToday": "查看今日棋局",
     "remindButton": "每天提醒我",
-    "remindNote": "下载一个日历事件，每天在棋局开放时重复。",
+    "remindNote": "下载一个日历事件，每天在你按下按钮的时间重复。",
     "remindDone": "已保存。打开该文件，即可把每日事件添加到你的日历。",
     "remindTitle": "Memory Chess 每日棋局",
     "remindDescription": "新棋局每天在 UTC 午夜开放。所有人玩同一局，你只有一次机会。"

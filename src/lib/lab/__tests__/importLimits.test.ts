@@ -29,16 +29,25 @@ describe("lab import limits", () => {
     expect(await readImportFile(file, NOW)).toEqual({ ok: true, rounds: [round({ id: "a" })], rejected: 0, overCap: 0, summary: null, player: null });
   });
 
-  it(`keeps the newest ${ROUND_CAP} of 10,000 rounds, quickly, and counts the rest`, () => {
-    const rounds = Array.from({ length: 10_000 }, (_, index) => round({ id: `r${index}`, endedAt: NOW - 10_000 + index }));
-    const text = JSON.stringify(buildExport(rounds, NOW));
-    const started = performance.now();
+  const tenThousandRounds = () =>
+    JSON.stringify(buildExport(Array.from({ length: 10_000 }, (_, index) => round({ id: `r${index}`, endedAt: NOW - 10_000 + index })), NOW));
 
-    const result = parseImport(text, NOW);
+  it(`keeps the newest ${ROUND_CAP} of 10,000 rounds and counts the rest`, () => {
+    const result = parseImport(tenThousandRounds(), NOW);
 
-    expect(performance.now() - started).toBeLessThan(3000);
     expect(result).toMatchObject({ ok: true, rejected: 0, overCap: 5000 });
     expect(result.ok && [result.rounds.length, result.rounds[0].id, result.rounds.at(-1)?.id]).toEqual([5000, "r5000", "r9999"]);
+  });
+
+  /** Wall time swings with load on a busy machine, so like derivePerf.test.ts it runs only with PERF=1. */
+  const itWhenAsked = process.env.PERF === "1" ? it : it.skip;
+  itWhenAsked("parses 10,000 rounds in under 3 seconds", () => {
+    const text = tenThousandRounds();
+    const started = performance.now();
+
+    parseImport(text, NOW);
+
+    expect(performance.now() - started).toBeLessThan(3000);
   });
 });
 

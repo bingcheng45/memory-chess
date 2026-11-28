@@ -41,7 +41,7 @@ they key their data by the raw page address, which the scrubber can't fully clea
 
 | Event | Properties | Meaning |
 |---|---|---|
-| `round_start` | `piece_count`, `memorize_time`, `round_source`, `round_mode?` | A round began. `round_source` says which control started it (see below). `round_mode` is `blindfold` only for blindfold rounds. |
+| `round_start` | `piece_count`, `memorize_time`, `round_source`, `round_mode?` | Study began, sent once per round. A game round sends it when its 3, 2, 1 countdown ends; the homepage calibration round has no countdown and sends it on Start. `round_source` says which control started it (see below). `round_mode` is `blindfold` only for blindfold rounds. |
 | `round_complete` | the same, plus `correct_pieces`, `accuracy`, `result_view?`, `days_since_first_round?`, `rounds_played?` (`1`, `2-5`, `6+`), `board_type?` (`daily`, `free`) | A round finished. The return-visit fields come from game rounds only, not the homepage calibration. |
 | `score_submit` | `difficulty` (a tier or `daily`), `piece_count`, `round_mode?` | A score was sent to a leaderboard or the daily board. |
 | `result_view_select` | `result_view` (`side`, `overlay`) | The result screen layout was switched. |

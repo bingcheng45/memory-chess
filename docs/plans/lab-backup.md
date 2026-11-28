@@ -51,7 +51,7 @@ Conflicts. A put is a compare and swap on the save time. `lab_backup_put(lookup,
 
 Why service role. The anon key ships to every browser. A function granted to `anon` could be called straight from the Supabase REST API, skipping the route's flag, rate limit and size check. Granting only `service_role` keeps the route as the one way in.
 
-Limits. A sealed record is at most 1 MiB, enforced by the route, the function and a table check. The heavy persona of 5,003 rounds is 2.8 MB of JSON and 0.33 MB gzipped, so 1 MiB leaves room for the 5 MB import cap. The rate limiter is the same in-memory fixed window as the standing check, so it caps bursts per serverless instance, not an exact quota. Add a Vercel firewall rule on `/api/lab/backup` before launch for a real ceiling.
+Limits. A sealed record is at most 1 MiB, enforced by the route, the function and a table check. The heavy persona of 5,003 rounds is 2.8 MB of JSON and 0.33 MB gzipped, so 1 MiB leaves room for the 5 MB import cap. The rate limiter is the same in-memory fixed window as the standing check, so it caps bursts per Cloudflare Worker isolate, not an exact quota. Add a Cloudflare rate limiting rule on `/api/lab/backup` before launch for a real ceiling.
 
 Retention. `lab_backup_expire()` deletes backups not written for 12 months. It needs a scheduled job, for example pg_cron daily, which is not set up.
 
@@ -64,10 +64,10 @@ The privacy test must assert this paragraph in the PR that turns the flag on, an
 ## Checklist to turn it on
 
 1. Build the UI above in the lazy home lab chunk, English only, with the privacy text, behind the same flag read on the server.
-2. Add `SUPABASE_SERVICE_ROLE_KEY` as a server-only Vercel variable. Never prefix it with `NEXT_PUBLIC_`.
+2. Add `SUPABASE_SERVICE_ROLE_KEY` as a secret on the `memory-chess` Worker, never in the `vars` of `wrangler.jsonc`. Never prefix it with `NEXT_PUBLIC_`.
 3. Apply `0003_lab_backups.sql` in the Supabase SQL editor, then run the rehearsal's checks by hand: `anon` cannot call the functions.
 4. Schedule `select public.lab_backup_expire();` daily.
-5. Add a firewall rate rule on `/api/lab/backup`.
+5. Add a Cloudflare rate limiting rule on `/api/lab/backup`.
 6. Set `LAB_BACKUP=on` in Preview first, restore on a second browser, then Production.
 
 ## Rolling back

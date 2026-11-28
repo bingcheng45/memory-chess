@@ -111,7 +111,8 @@ The round-funnel events start the day PR #33 merges. From then on production sen
 
 The clean production-only series for these events starts 2026-09-29. Read nothing earlier as comparable.
 
-Note added 2026-10-18 for PR #117. From the day it merges, a player's first-ever round from a link waits behind a
+Note added 2026-10-18 for PR #117, superseded by the one-start note of 2026-11-13 below. It is kept for reading the
+series between the two merges. From the day it merges, a player's first-ever round from a link waits behind a
 one-line rule and Start. That round's `round_start` fires when Start is pressed, so `home_quick` (and other link)
 `round_start` counts mean "players who pressed Start", not "visitors who landed". Visitors who leave at the rule
 send only `round_intro_view`. GA4 cannot tell an intro round's `round_start` from a later round's, so read the

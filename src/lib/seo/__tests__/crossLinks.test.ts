@@ -22,6 +22,26 @@ describe("links from guides to other guides", () => {
   });
 });
 
+describe("reading-list links into weakly linked pages", () => {
+  const linkingGuides = (kind: "guide" | "article", slug: string) =>
+    EN_LEARN_PAGES.filter((page) =>
+      page.end.some((block) => block.kind === "furtherReading" && block.items.some((item) => item.kind === kind && item.slug === slug)),
+    ).length;
+
+  it.each([
+    ["guide", "memory-chess-vs-darksquares"],
+    ["guide", "how-to-play-memory-chess-board-game"],
+    ["guide", "chess-position-memory-trainers-compared"],
+    ["guide", "lichess-vs-chess-com-visualization-training"],
+    ["guide", "memory-chess-vs-lichess-coordinate-trainer"],
+    ["article", "garry-kasparov"],
+    ["article", "dominic-obrien"],
+    ["article", "miguel-najdorf"],
+  ] as const)("the %s %s is on at least three guides' reading lists", (kind, slug) => {
+    expect(linkingGuides(kind, slug)).toBeGreaterThanOrEqual(3);
+  });
+});
+
 describe("links between guides and articles", () => {
   it("sends each guide's readers on to its article with a call to action named for it", () => {
     const ctas = Object.fromEntries(

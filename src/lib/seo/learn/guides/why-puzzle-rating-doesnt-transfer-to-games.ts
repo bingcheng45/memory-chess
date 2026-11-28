@@ -271,6 +271,11 @@ const guide: LearnDocument = {
           slug: "how-to-analyze-chess-games-for-beginners",
           reason: "Shows how to review each of the five test games without drowning in engine lines.",
         },
+        {
+          kind: "article",
+          slug: "dominic-obrien",
+          reason: "A memory champion's record shows the same limit, since skill built on one kind of material stays with it.",
+        },
       ],
     },
   ],

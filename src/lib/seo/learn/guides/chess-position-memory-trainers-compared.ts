@@ -229,6 +229,31 @@ const guide: LearnDocument = {
       why: "Six pieces with ten seconds is the medium preset, a fair first test before you choose a tool.",
     },
     {
+      kind: "furtherReading",
+      items: [
+        {
+          kind: "guide",
+          slug: "memory-chess-vs-darksquares",
+          reason: "DarkSquares up close, with its seven-level blindfold course and lifetime price.",
+        },
+        {
+          kind: "guide",
+          slug: "memory-chess-vs-lichess-coordinate-trainer",
+          reason: "Why learning the square names first makes any of these trainers easier.",
+        },
+        {
+          kind: "guide",
+          slug: "how-to-play-memory-chess-board-game",
+          reason: "Rules for the wooden peg game sold under the same name, which has no chess in it.",
+        },
+        {
+          kind: "article",
+          slug: "garry-kasparov",
+          reason: "The 1987 magazine test that gave Kasparov this same task with five-second looks.",
+        },
+      ],
+    },
+    {
       kind: "sources",
       items: [
         { title: "DarkSquares: Position Memory", url: "https://darksquares.net/train/position-memory" },

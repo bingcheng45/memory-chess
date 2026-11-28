@@ -220,6 +220,11 @@ const guide: LearnDocument = {
           slug: "how-to-stop-blundering-in-chess",
           reason: "The full pre-move scan that grows out of the game block's one question.",
         },
+        {
+          kind: "article",
+          slug: "garry-kasparov",
+          reason: "What the memory rounds look like at world-champion level, from a 1987 test of Kasparov.",
+        },
       ],
     },
     {

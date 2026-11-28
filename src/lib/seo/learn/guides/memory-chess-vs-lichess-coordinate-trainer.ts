@@ -137,6 +137,16 @@ const guide: LearnDocument = {
           slug: "lichess-vs-chess-com-visualization-training",
           reason: "What Lichess and Chess.com each offer beyond coordinates.",
         },
+        {
+          kind: "guide",
+          slug: "chess-position-memory-trainers-compared",
+          reason: "Other position-memory trainers to try once the squares feel automatic.",
+        },
+        {
+          kind: "guide",
+          slug: "memory-chess-vs-darksquares",
+          reason: "A free-to-start course that runs from square colours to blindfold games.",
+        },
       ],
     },
     {

@@ -1,6 +1,6 @@
 # Learn revamp: content inventory and topic groups
 
-This file lists every Learn guide and article as they stand on `feat/brain-lab-landing`, proposes the topic groups the new hub uses, and names the gaps. The counts come from the guide and article source files, not from the rendered pages.
+This file lists every Learn guide and article as they stood on `feat/brain-lab-landing`, the branch of PR 42. That branch merged into `main` on 2026-10-14 and is closed, so the counts here are a snapshot: `main` has since grown to 19 guides and 6 articles. The file also proposes the topic groups the new hub uses, and names the gaps. The counts come from the guide and article source files, not from the rendered pages.
 
 To regenerate the numbers, run the scripts in [`tools/`](tools/) from the repo root:
 

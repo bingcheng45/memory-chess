@@ -6,7 +6,7 @@ Learn is the site's main search entry point. This file lists what the revamp mus
 
 ### URLs
 
-- The hub stays at `/learn`. Each guide stays at `/learn/<slug>`, with the 14 slugs listed in `inventory.md`. No slug changes in the revamp.
+- The hub stays at `/learn`. Each guide stays at `/learn/<slug>`, with every slug in `LEARN_GUIDES` (`src/lib/seo/learn/guides/index.ts`). `inventory.md` lists only the 14 guides that existed when this plan was written. No slug changes in the revamp.
 - Topic groups get fragment anchors on the hub (`/learn#board-vision`), not their own URLs. A group page with 2 guides would fall under the 300-word floor and share most of its text with the hub. Revisit when a group holds 5 or more guides.
 - `/learn/search` is the one new path (see `search.md`). It is `noindex, follow`, kept out of the sitemap, and "search" becomes a reserved slug that no guide may take.
 

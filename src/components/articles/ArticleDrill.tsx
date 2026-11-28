@@ -16,27 +16,37 @@ const isArticleRound = (round: Round, drill: Round) => round.pieceCount === dril
 const articleRoundHref = ({ pieceCount, memorizeTime }: Round) =>
   playHref(pieceCount, memorizeTime, "article_cta");
 
-export function EarlyDrillLink({ drill }: { drill: Drill }) {
+/**
+ * Sits under the intro. A phone shows it as a full-width button on the first screen; from 821px the header's
+ * grid puts it in row 6, after the counts, as a text link. Both are the one element, since no text may hide
+ * at any width.
+ */
+export function EarlyDrillLink() {
   const t = useTranslations("articles.page");
   const round = useReaderRound();
 
   return (
-    <>
-      <p className="art-early mt-5">
-        <Link href={articleRoundHref(round)} data-article-early-drill className="art-early-link inline-flex min-h-11 items-center gap-2">
-          <b>{t("drillHeading")}</b>
-          <span>{t("drillAction", { pieces: round.pieceCount, seconds: round.memorizeTime })}</span>
-          <span aria-hidden="true">→</span>
-        </Link>
-      </p>
-      {isArticleRound(round, drill) ? null : (
-        <p>
-          <Link href={articleRoundHref(drill)} data-article-early-drill-original className={`${ARTICLE_LINK} art-drill-original inline-flex min-h-11 items-center`}>
-            {t("drillAction", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}
-          </Link>
-        </p>
-      )}
-    </>
+    <p className="art-early mt-5 min-[821px]:row-start-6">
+      <Link href={articleRoundHref(round)} data-article-early-drill className="art-early-link inline-flex min-h-11 items-center gap-2">
+        <b>{t("drillHeading")}</b>
+        <span>{t("drillAction", { pieces: round.pieceCount, seconds: round.memorizeTime })}</span>
+        <span aria-hidden="true">→</span>
+      </Link>
+    </p>
+  );
+}
+
+/** The article's own round, after the counts at every width, so the phone's button stands alone. */
+export function EarlyDrillOriginal({ drill }: { drill: Drill }) {
+  const t = useTranslations("articles.page");
+  const round = useReaderRound();
+
+  return isArticleRound(round, drill) ? null : (
+    <p className="mt-2 min-[821px]:row-start-7 min-[821px]:mt-0">
+      <Link href={articleRoundHref(drill)} data-article-early-drill-original className={`${ARTICLE_LINK} art-drill-original inline-flex min-h-11 items-center`}>
+        {t("drillAction", { pieces: drill.pieceCount, seconds: drill.memorizeTime })}
+      </Link>
+    </p>
   );
 }
 

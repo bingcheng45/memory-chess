@@ -10,7 +10,7 @@ type ArticlePortraitProps = {
   style?: CSSProperties;
 };
 
-export const ARTICLE_PAGE_PORTRAIT_SIZES = "(max-width: 820px) 190px, 280px";
+export const ARTICLE_PAGE_PORTRAIT_SIZES = "(max-width: 820px) 72px, 280px";
 
 export function portraitImageProps(photo: PortraitPhoto, sizes: string) {
   return { src: photo.src, width: photo.width, height: photo.height, sizes };

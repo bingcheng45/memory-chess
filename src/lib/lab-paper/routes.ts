@@ -15,6 +15,7 @@ export interface LabPaperRoute {
 export const LAB_PAPER_ROUTES: readonly LabPaperRoute[] = [
   { path: "/", scope: "page", locales: "all" },
   { path: "/changelog", scope: "page", locales: ["en"] },
+  { path: "/chess-memory-trainer", scope: "page", locales: ["en"] },
   { path: "/about", scope: "page", locales: servedLocalesOf("/about") },
   { path: "/terms", scope: "page", locales: servedLocalesOf("/terms") },
   { path: "/privacy", scope: "page", locales: servedLocalesOf("/privacy") },

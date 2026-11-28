@@ -15,6 +15,7 @@ export const ROUND_SOURCES = [
   "guide_cta",
   "guide_try",
   "blindfold_page",
+  "trainer_page",
   "article_cta",
   "game_form",
   "tile_drill",

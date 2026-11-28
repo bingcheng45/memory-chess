@@ -1,5 +1,6 @@
 import sitemap from "@/app/sitemap";
 import { ARTICLES, ARTICLES_LAST_UPDATED } from "@/lib/articles";
+import { CHANGELOG_ENTRIES } from "@/lib/changelog";
 import { EN_LEARN_PAGES as LEARN_PAGES } from "@/lib/seo/learn";
 import { PRIVACY_LAST_UPDATED } from "@/lib/seo/privacyPolicy";
 import { LOCALES } from "@/i18n/routing";
@@ -65,6 +66,28 @@ describe("sitemap", () => {
     expect(new Date(changelogEntry?.lastModified ?? 0).toISOString()).toBe(
       new Date(LATEST_CHANGELOG_ENTRY.publishedAt).toISOString(),
     );
+  });
+
+  it("dates no page earlier than the newest changelog entry that links to it", async () => {
+    // A stated date has to be moved by hand, so this catches the one that was
+    // forgotten. Sitemap dates name a day, so days are compared, not moments.
+    // /data is dated by the last day its figures cover, which the entry that
+    // launched it follows by design.
+    const dayOf = (date: string | Date) => new Date(date).toISOString().slice(0, 10);
+    const listedDay = new Map((await sitemap()).map((entry) => [entry.url, dayOf(entry.lastModified ?? "")]));
+    const stale = CHANGELOG_ENTRIES.flatMap((entry) =>
+      entry.groups
+        .flatMap((group) => group.changes ?? [])
+        .flatMap((change) => (typeof change === "string" ? [] : change.segments))
+        .flatMap((segment) => {
+          if (typeof segment === "string" || segment.href === "/data") return [];
+          const listed = listedDay.get(`https://thememorychess.com${segment.href}`);
+          const changed = dayOf(entry.publishedAt);
+          return listed && listed < changed ? [`${segment.href} is dated ${listed}, but ${entry.version} changed it on ${changed}`] : [];
+        }),
+    );
+
+    expect(stale).toEqual([]);
   });
 
   it("dates the privacy page with the date the page itself prints", async () => {

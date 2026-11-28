@@ -45,13 +45,13 @@ type SitemapEntryConfig = {
 const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   {
     path: "/",
-    lastModified: "2026-10-14T00:00:00.000Z",
+    lastModified: "2026-11-08T00:00:00.000Z",
     changeFrequency: "weekly",
     priority: 1.0,
   },
   {
     path: "/game",
-    lastModified: "2026-10-14T00:00:00.000Z",
+    lastModified: "2026-10-25T00:00:00.000Z",
     changeFrequency: "weekly",
     priority: 0.9,
   },
@@ -63,13 +63,13 @@ const SITEMAP_ENTRIES: SitemapEntryConfig[] = [
   },
   {
     path: "/daily",
-    lastModified: "2026-10-12T00:00:00.000Z",
+    lastModified: "2026-10-25T00:00:00.000Z",
     changeFrequency: "daily",
     priority: 0.8,
   },
   {
     path: "/leaderboard",
-    lastModified: "2026-08-28T00:00:00.000Z",
+    lastModified: "2026-10-25T00:00:00.000Z",
     changeFrequency: "daily",
     priority: 0.8,
   },

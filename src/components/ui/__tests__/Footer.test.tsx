@@ -29,6 +29,7 @@ test("English-only pages link to their bare canonical URL", () => {
   expect(hrefFor(/^Articles$/)).toBe("/articles");
   expect(hrefFor(/^Changelog$/)).toBe("/changelog");
   expect(hrefFor(/^Blindfold chess$/)).toBe("/blindfold");
+  expect(hrefFor(/^Chess memory trainer$/)).toBe("/chess-memory-trainer");
 });
 
 test("on a translated page, English-only links say they are in English", () => {

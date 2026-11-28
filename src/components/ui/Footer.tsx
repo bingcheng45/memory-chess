@@ -10,6 +10,7 @@ export const FOOTER_LINKS = [
   { href: "/articles", labelKey: "nav.articles" },
   { href: "/about", labelKey: "nav.about" },
   { href: "/blindfold", labelKey: "nav.blindfold" },
+  { href: "/chess-memory-trainer", labelKey: "nav.memoryTrainer" },
   { href: "/changelog", labelKey: "nav.changelog" },
   { href: "/contact-us", labelKey: "nav.contactUs" },
   { href: "/privacy", labelKey: "nav.privacy" },
